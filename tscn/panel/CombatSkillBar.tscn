@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://csharp/battle/CombatSkillBar.cs" id="1_skillbar"]
+[ext_resource type="Texture2D" path="res://textures/ui/combat/combat_skill_bar_panel_user_v3.png" id="2_bar_art"]
+
+[node name="CombatSkillBar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_skillbar")
+
+[node name="BarArtwork" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_left = 0.15
+anchor_right = 0.85
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -227.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("2_bar_art")
+patch_margin_left = 64
+patch_margin_top = 30
+patch_margin_right = 64
+patch_margin_bottom = 30
+draw_center = true
+modulate = Color(1, 1, 1, 1)
+z_index = 20

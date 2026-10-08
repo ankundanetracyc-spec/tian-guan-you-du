@@ -1,0 +1,86 @@
+{
+  "male": {
+    "canvas_and_transparency_pass": true,
+    "opaque_eye_skin_outside_opening": 0,
+    "reference_organ_sample_max_rgb_difference": {
+      "eye_left": 0,
+      "eye_right": 0,
+      "mouth_center": 0,
+      "nose_tip": 0
+    },
+    "continuous_rear_head_and_neck_pass": true,
+    "rear_largest_component_fraction": 1.0,
+    "front_crown_and_both_tresses_pass": true,
+    "posterior_drapes_not_in_front_pass": true,
+    "brow_eye_interior_free_of_front_hair_pass": true,
+    "full_neck_underpainting_pass": true,
+    "recomposition_matches_saved_png": true,
+    "reference_comparison": {
+      "light": {
+        "mean_channel_difference": 2.0114546881781683,
+        "max_channel_difference": 232,
+        "pixel_max_p99": 97.36999999987893
+      },
+      "dark": {
+        "mean_channel_difference": 0.7392177581787109,
+        "max_channel_difference": 196,
+        "pixel_max_p99": 28.0
+      }
+    },
+    "png_sha256": {
+      "hair_back": "2a061ab65da0fb28a53a33261a20ac661ef6f9969fcff36b8ac18978c5e3cf05",
+      "face_shape": "b584696489925efe1818a200fb4be6e01fd56aa08ee281d46f74abe32b7edbc8",
+      "clothing": "fb12274466cf47acf969c779de8e735e60a48d0f9ae496d9e0b06d8d2dcfb727",
+      "eyes": "ef48d8640a19f7e30afa57f477842364865b76b27555be6e1a563ea9aea189fc",
+      "eyebrows": "e488d1930e80fb2930da460d16bd23fcba71e7b238f4879e83e5373f1175568b",
+      "nose": "745da0f8d58deb2e841ebacaf42585e648bfc3641ce2b442cbb1a241f6206d17",
+      "mouth": "24d5820852e81a99c2672a976cf3dcca60567a250807063634e4b96a46148dec",
+      "face_accessory": "1913847bf9091720c48139f49dfbb3aa70c4d20de82f2718e3dcd8348c6e5e9c",
+      "hair_front": "47572eb5f9909d628830e4d78cb3267119d5bfc1e99042d1b48da50ba20f3f70"
+    },
+    "user_visual_approval": false,
+    "limits": "Pixel checks support visual review; whole-painting max difference includes semantic edge repairs and hidden-underpainting effects. They do not claim every semantic pixel is classified correctly."
+  },
+  "female": {
+    "canvas_and_transparency_pass": true,
+    "opaque_eye_skin_outside_opening": 0,
+    "reference_organ_sample_max_rgb_difference": {
+      "eye_left": 0,
+      "eye_right": 0,
+      "mouth_center": 0,
+      "nose_tip": 0
+    },
+    "continuous_rear_head_and_neck_pass": true,
+    "rear_largest_component_fraction": 0.9999392641017713,
+    "front_crown_and_both_tresses_pass": true,
+    "posterior_drapes_not_in_front_pass": true,
+    "brow_eye_interior_free_of_front_hair_pass": true,
+    "full_neck_underpainting_pass": true,
+    "recomposition_matches_saved_png": true,
+    "reference_comparison": {
+      "light": {
+        "mean_channel_difference": 3.0553692711724176,
+        "max_channel_difference": 245,
+        "pixel_max_p99": 160.0
+      },
+      "dark": {
+        "mean_channel_difference": 0.9505123562282987,
+        "max_channel_difference": 245,
+        "pixel_max_p99": 33.0
+      }
+    },
+    "png_sha256": {
+      "hair_back": "0c5c277f58eb821834180dfedd9d58b75476ec475835670abf007ba40b0e8131",
+      "face_shape": "d12ac81432540b584267db7c0113ad05b210920fe842948c12969c7d9d03d3dc",
+      "clothing": "2d81ad07a74163656af0f3d4597774acbac6aae67a1db6946914b48a87eead31",
+      "eyes": "7524507f3bd3c890c7822d7b42e7d20370a5fa16e9a27ccfdfee2d4cebf6febe",
+      "eyebrows": "c4d35ae73c5ef75f176e88808958259a0e57093f2f94a48916f2bd97468237b8",
+      "nose": "8a55247897531ef3ac1a17e32167804c6743ab46a462bf9dd79e11eb3369b56a",
+      "mouth": "685f62075de7debf8f66746256530234446d74e2ae9dd3f5b19b989d49739ddc",
+      "face_accessory": "1913847bf9091720c48139f49dfbb3aa70c4d20de82f2718e3dcd8348c6e5e9c",
+      "hair_front": "2abc7385d4778443a6a0859f835ae647f2ed681f1ad9301bcc7383c85394408c"
+    },
+    "user_visual_approval": false,
+    "limits": "Pixel checks support visual review; whole-painting max difference includes semantic edge repairs and hidden-underpainting effects. They do not claim every semantic pixel is classified correctly."
+  }
+}

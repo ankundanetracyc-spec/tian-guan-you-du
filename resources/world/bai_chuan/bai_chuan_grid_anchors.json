@@ -1,0 +1,31 @@
+{
+  "region_id": "bai_chuan",
+  "grid_size": [200, 200],
+  "kilometers_per_cell": 40,
+  "coordinate_note": "grid_origin is the fixed top-left cell from the current Bai Chuan world-map plan; footprint gives the occupied cell area. Runtime places its marker at the footprint center.",
+  "anchors": [
+    { "id": "qingxi_memory", "name": "青溪里·旧地", "level": 0, "faction_id": "", "location_node_id": "home_village", "grid_origin": [38, 166], "footprint": [1, 1], "enterable": false },
+
+    { "id": "xuandu_tianfu", "name": "玄都天府", "level": 1, "faction_id": "xuandu_tianfu", "location_node_id": "xuandu_tianfu_core", "grid_origin": [29, 31], "footprint": [3, 3], "enterable": true, "marker_texture": "res://textures/ui/world/faction_nodes/xuandu_tianfu_node_3x3_v1_current.png" },
+    { "id": "taiwei_daogong", "name": "太微道宫", "level": 1, "faction_id": "taiwei_daogong", "location_node_id": "taiwei_daogong_core", "grid_origin": [168, 27], "footprint": [3, 3], "enterable": true, "marker_texture": "res://textures/ui/world/faction_nodes/taiwei_daogong_node_3x3_v1_current.png" },
+    { "id": "yuxu_xianzong", "name": "玉虚仙宗", "level": 1, "faction_id": "yuxu_xianzong", "location_node_id": "yuxu_xianzong_core", "grid_origin": [34, 166], "footprint": [3, 3], "enterable": true, "marker_texture": "res://textures/ui/world/faction_nodes/yuxu_xianzong_node_3x3_v1_current.png" },
+    { "id": "wuxiang_shengzong", "name": "无相圣宗", "level": 1, "faction_id": "wuxiang_shengzong", "location_node_id": "wuxiang_shengzong_core", "grid_origin": [165, 164], "footprint": [3, 3], "enterable": true, "marker_texture": "res://textures/ui/world/faction_nodes/wuxiang_shengzong_node_3x3_v1_current.png" },
+
+    { "id": "xuandu_guanshan_prefecture", "name": "关山府", "level": 2, "faction_id": "xuandu_tianfu", "location_node_id": "guanshan_prefecture", "grid_origin": [18, 47], "footprint": [2, 2], "enterable": true, "marker_texture": "res://textures/ui/world/faction_nodes/second_level/xuandu_guanshan_prefecture_node_2x2_v1_current.png" },
+    { "id": "xuandu_chilu_hall", "name": "赤炉堂", "level": 2, "faction_id": "xuandu_tianfu", "location_node_id": "chilu_hall", "grid_origin": [53, 55], "footprint": [2, 2], "enterable": true, "marker_texture": "res://textures/ui/world/faction_nodes/second_level/xuandu_chilu_hall_node_2x2_v1_current.png" },
+    { "id": "xuandu_chishui_city", "name": "赤水城", "level": 2, "faction_id": "xuandu_tianfu", "location_node_id": "chishui_city", "grid_origin": [52, 23], "footprint": [2, 2], "enterable": true, "marker_texture": "res://textures/ui/world/faction_nodes/second_level/xuandu_chishui_city_node_2x2_v1_current.png" },
+
+    { "id": "taiwei_haichuan_association", "name": "海川会", "level": 2, "faction_id": "taiwei_daogong", "location_node_id": "lanpu_ferry", "grid_origin": [145, 16], "footprint": [2, 2], "enterable": true, "marker_texture": "res://textures/ui/world/faction_nodes/second_level/taiwei_haichuan_association_node_2x2_v1_current.png" },
+    { "id": "taiwei_changfeng_escort", "name": "长风护道会", "level": 2, "faction_id": "taiwei_daogong", "location_node_id": "changfeng_escort", "grid_origin": [181, 45], "footprint": [2, 2], "enterable": true, "marker_texture": "res://textures/ui/world/faction_nodes/second_level/taiwei_changfeng_escort_node_2x2_v1_current.png" },
+    { "id": "taiwei_chunshui_prefecture", "name": "春水府", "level": 2, "faction_id": "taiwei_daogong", "location_node_id": "chunshui_prefecture", "grid_origin": [151, 57], "footprint": [2, 2], "enterable": true, "marker_texture": "res://textures/ui/world/faction_nodes/second_level/taiwei_chunshui_prefecture_node_2x2_v1_current.png" },
+
+    { "id": "yuxu_qinglan_observatory", "name": "青岚观", "level": 2, "faction_id": "yuxu_xianzong", "location_node_id": "fulan_temple", "grid_origin": [48, 162], "footprint": [2, 2], "enterable": true, "marker_texture": "res://textures/ui/world/faction_nodes/second_level/yuxu_qinglan_observatory_node_2x2_v1_current.png" },
+    { "id": "yuxu_baishi_city", "name": "白石城", "level": 2, "faction_id": "yuxu_xianzong", "location_node_id": "white_stone_town", "grid_origin": [16, 141], "footprint": [2, 2], "enterable": true, "marker_texture": "res://textures/ui/world/faction_nodes/second_level/yuxu_baishi_city_node_2x2_v1_current.png" },
+    { "id": "yuxu_donglin_hunt", "name": "东林镇妖会", "level": 2, "faction_id": "yuxu_xianzong", "location_node_id": "", "grid_origin": [56, 132], "footprint": [2, 2], "enterable": false, "marker_texture": "res://textures/ui/world/faction_nodes/second_level/yuxu_donglin_hunt_node_2x2_v1_current.png" },
+    { "id": "east_woods", "name": "东林地", "level": 2, "faction_id": "yuxu_xianzong", "location_node_id": "east_woods", "grid_origin": [33, 175], "footprint": [1, 1], "enterable": true },
+
+    { "id": "wuxiang_youquan_cult", "name": "幽泉教", "level": 2, "faction_id": "wuxiang_shengzong", "location_node_id": "youquan_cult", "grid_origin": [144, 180], "footprint": [2, 2], "enterable": true, "marker_texture": "res://textures/ui/world/faction_nodes/second_level/wuxiang_youquan_cult_node_2x2_v1_current.png" },
+    { "id": "wuxiang_yexing_society", "name": "夜行会", "level": 2, "faction_id": "wuxiang_shengzong", "location_node_id": "yexing_society", "grid_origin": [181, 142], "footprint": [2, 2], "enterable": true, "marker_texture": "res://textures/ui/world/faction_nodes/second_level/wuxiang_yexing_society_node_2x2_v1_current.png" },
+    { "id": "wuxiang_huigu_temple", "name": "灰骨寺", "level": 2, "faction_id": "wuxiang_shengzong", "location_node_id": "huigu_temple", "grid_origin": [147, 130], "footprint": [2, 2], "enterable": true, "marker_texture": "res://textures/ui/world/faction_nodes/second_level/wuxiang_huigu_temple_node_2x2_v1_current.png" }
+  ]
+}

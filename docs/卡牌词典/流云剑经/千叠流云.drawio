@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="app.diagrams.net" modified="2026-07-18T00:00:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="liuyunqiandiezhuifeng" name="千叠流云">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1780" pageHeight="760" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="千叠流云&#xA;流云剑经 / 叠云卷 / 主修习得*1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="670" y="20" width="343" height="71" as="geometry" />
+        </mxCell>
+        <mxCell id="main" value="&lt;div style=&quot;text-align:center;&quot;&gt;卡牌名：千叠流云&lt;/div&gt;&lt;div style=&quot;text-align:left;&quot;&gt;资源路径：res://resources/activeskills/流云剑经/千叠流云.tres&lt;br&gt;类型：攻伐牌&lt;br&gt;关键词：无&lt;br&gt;耗费：精力 3、法力 2&lt;br&gt;目标：单体敌人&lt;br&gt;伤害类型：物理&lt;br&gt;伤害公式：10 + 剑道造诣×0.58 + 敏捷×0.22 + 体魄×0.12&lt;br&gt;效果：未处于流云剑势时，命中后获得2层剑意并触发1次流云追击；处于流云剑势时，以该剑势基础追击作为第一次追击。第二次追击初始概率80%；其后每次概率=上一次概率×min(0.90，log2(记录剑意+1)÷4)。自第二次追击起，每次额外耗费剑意1、法力1、精力6，任一不足即停止&lt;br&gt;状态关联：剑意、流云剑势&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=15;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="520" y="150" width="810" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="left" value="习得来源&#xA;来源秘籍：流云剑经&#xA;来源卷：叠云卷&#xA;主修习得数量：1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="150" y="190" width="320" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="right" value="升级/变体预留&#xA;同系：流云剑经&#xA;定位：高卷主修获得牌&#xA;奖励维持住流云剑势后的多段追击&#xA;意象：云势层叠，剑锋连绵" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1355" y="190" width="300" height="112" as="geometry" />
+        </mxCell>
+        <mxCell id="bottom" value="状态/关键词/条件&#xA;不在剑势中：命中后获得2层剑意并追击1次&#xA;处于剑势中：剑势触发的追击作为第一次追击，不再额外增加一次&#xA;第二次追击概率为80%&#xA;第一次追击前记录当前剑意层数；之后每次追击的概率按牌面公式降低&#xA;自第二次追击起：每次消耗1层剑意、1点法力、6点精力；任一项不足则停止&#xA;每次追击分别结算闪避与会心，不获得剑意提供的伤害加成" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="560" y="570" width="474" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="数值摘要&lt;br&gt;基础伤害：10&lt;br&gt;伤害类型：physical / 剑术伤害&lt;br&gt;倍率：剑道造诣*0.58，敏捷*0.22，体魄*0.12&lt;br&gt;消耗资源：法力2 + 精力28&lt;br&gt;不带消耗词条&lt;br&gt;可配置数量：1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="570" width="387" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="习得来源" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="left" target="main">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="升级/变体" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="main" target="right">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="状态/条件" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="main" target="bottom">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="数值" style="endArrow=none;dashed=1;html=1;" edge="1" parent="1" source="main" target="note">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

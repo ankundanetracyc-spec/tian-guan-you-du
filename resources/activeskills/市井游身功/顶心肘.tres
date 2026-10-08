@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="ActiveSkillData" format=3 uid="uid://cd8s3kpalw1i"]
+
+[ext_resource type="Script" path="res://csharp/gongfa/ActiveSkillData.cs" id="1"]
+[ext_resource type="Script" path="res://csharp/gongfa/DamageBonus.cs" id="2_dmg"]
+
+[sub_resource type="Resource" id="Resource_agility"]
+script = ExtResource("2_dmg")
+attribute = "agility"
+multiplier = 1.5
+metadata/_custom_type_script = "uid://corjswdok5c7"
+
+[sub_resource type="Resource" id="Resource_body_proficiency"]
+script = ExtResource("2_dmg")
+attribute = "body_proficiency"
+multiplier = 1.0
+metadata/_custom_type_script = "uid://corjswdok5c7"
+
+[resource]
+script = ExtResource("1")
+skill_name = "顶心肘"
+description = "借对方攻势贴身肘击。若上一张打出的牌是攻击牌，本次攻击会心提高。"
+source_gongfa_name = "市井游身功"
+skill_type = 0
+energy_cost = 2
+target_type = 2
+range_min = 1
+range_max = 1
+keywords = Array[String](["乘势"])
+momentum_condition_type = "after_attack"
+momentum_effect_params = "agility:0.02;body_proficiency:0.03"
+base_damage = 6.0
+damage_type = "physical"
+damage_bonuses = Array[ExtResource("2_dmg")]([SubResource("Resource_agility"), SubResource("Resource_body_proficiency")])
+metadata/_custom_type_script = "uid://cjcf3nq1ne5ql"

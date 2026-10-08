@@ -1,0 +1,450 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://csharp/panel/StoragePanel.cs" id="1_script"]
+[ext_resource type="Texture2D" path="res://textures/ui/infopanel_fullscreen_bg_v1.png" id="2_backdrop"]
+[ext_resource type="FontFile" path="res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf" id="4_font"]
+
+[sub_resource type="StyleBoxFlat" id="rail_bg"]
+bg_color = Color(0.045, 0.055, 0.05, 0.78)
+border_width_right = 1
+border_color = Color(0.72, 0.64, 0.45, 0.42)
+
+[sub_resource type="StyleBoxFlat" id="content_bg"]
+bg_color = Color(0.91, 0.875, 0.78, 0.8)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.27, 0.23, 0.17, 0.68)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="detail_bg"]
+bg_color = Color(0.015, 0.018, 0.02, 0.86)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.74, 0.76, 0.72, 0.36)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0, 0, 0.42)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="nav_idle"]
+bg_color = Color(1, 1, 1, 0)
+border_width_bottom = 1
+border_color = Color(0.72, 0.64, 0.45, 0.2)
+content_margin_left = 18.0
+
+[sub_resource type="StyleBoxFlat" id="nav_hover"]
+bg_color = Color(0.82, 0.7, 0.42, 0.16)
+border_width_left = 3
+border_color = Color(0.86, 0.72, 0.36, 0.92)
+content_margin_left = 18.0
+
+[sub_resource type="StyleBoxFlat" id="nav_pressed"]
+bg_color = Color(0.82, 0.7, 0.42, 0.68)
+border_width_left = 5
+border_width_bottom = 1
+border_width_right = 1
+border_color = Color(1, 0.88, 0.48, 1)
+content_margin_left = 16.0
+
+[sub_resource type="StyleBoxFlat" id="close_idle"]
+bg_color = Color(0.12, 0.11, 0.08, 0.82)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.61, 0.5, 0.28, 0.72)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="StoragePanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_script")
+
+[node name="Backdrop" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_backdrop")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Rail" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_left = 34.0
+offset_top = 84.0
+offset_right = 286.0
+offset_bottom = -38.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("rail_bg")
+
+[node name="RailMargin" type="MarginContainer" parent="Rail"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="Rail/RailMargin"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="AllButton" type="Button" parent="Rail/RailMargin/VBox" unique_name_in_owner=true]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.85, 0.7, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("nav_idle")
+theme_override_styles/hover = SubResource("nav_hover")
+theme_override_styles/pressed = SubResource("nav_pressed")
+text = "全部"
+alignment = 0
+
+[node name="EquipmentButton" type="Button" parent="Rail/RailMargin/VBox" unique_name_in_owner=true]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.85, 0.7, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("nav_idle")
+theme_override_styles/hover = SubResource("nav_hover")
+theme_override_styles/pressed = SubResource("nav_pressed")
+text = "装备"
+alignment = 0
+
+[node name="MaterialButton" type="Button" parent="Rail/RailMargin/VBox" unique_name_in_owner=true]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.85, 0.7, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("nav_idle")
+theme_override_styles/hover = SubResource("nav_hover")
+theme_override_styles/pressed = SubResource("nav_pressed")
+text = "材料"
+alignment = 0
+
+[node name="SecretButton" type="Button" parent="Rail/RailMargin/VBox" unique_name_in_owner=true]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.85, 0.7, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("nav_idle")
+theme_override_styles/hover = SubResource("nav_hover")
+theme_override_styles/pressed = SubResource("nav_pressed")
+text = "秘籍"
+alignment = 0
+
+[node name="FormationButton" type="Button" parent="Rail/RailMargin/VBox" unique_name_in_owner=true]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.85, 0.7, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("nav_idle")
+theme_override_styles/hover = SubResource("nav_hover")
+theme_override_styles/pressed = SubResource("nav_pressed")
+text = "阵盘"
+alignment = 0
+
+[node name="ToolButton" type="Button" parent="Rail/RailMargin/VBox" unique_name_in_owner=true]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.85, 0.7, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("nav_idle")
+theme_override_styles/hover = SubResource("nav_hover")
+theme_override_styles/pressed = SubResource("nav_pressed")
+text = "器具"
+alignment = 0
+
+[node name="TalismanButton" type="Button" parent="Rail/RailMargin/VBox" unique_name_in_owner=true]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.85, 0.7, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("nav_idle")
+theme_override_styles/hover = SubResource("nav_hover")
+theme_override_styles/pressed = SubResource("nav_pressed")
+text = "符箓"
+alignment = 0
+
+[node name="PillButton" type="Button" parent="Rail/RailMargin/VBox" unique_name_in_owner=true]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.85, 0.7, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("nav_idle")
+theme_override_styles/hover = SubResource("nav_hover")
+theme_override_styles/pressed = SubResource("nav_pressed")
+text = "丹药"
+alignment = 0
+
+[node name="FoodButton" type="Button" parent="Rail/RailMargin/VBox" unique_name_in_owner=true]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.85, 0.7, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("nav_idle")
+theme_override_styles/hover = SubResource("nav_hover")
+theme_override_styles/pressed = SubResource("nav_pressed")
+text = "灵膳"
+alignment = 0
+
+[node name="ArtifactButton" type="Button" parent="Rail/RailMargin/VBox" unique_name_in_owner=true]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.85, 0.7, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("nav_idle")
+theme_override_styles/hover = SubResource("nav_hover")
+theme_override_styles/pressed = SubResource("nav_pressed")
+text = "法宝"
+alignment = 0
+
+[node name="RailSpacer" type="Control" parent="Rail/RailMargin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Window" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 304.0
+offset_right = -42.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="Window"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 26
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 38
+
+[node name="VBox" type="VBoxContainer" parent="Window/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Header" type="HBoxContainer" parent="Window/Margin/VBox"]
+layout_mode = 2
+
+[node name="SummaryLabel" type="Label" parent="Window/Margin/VBox/Header" unique_name_in_owner=true]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.36, 0.34, 0.28, 0.9)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 17
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="CloseButton" type="Button" parent="Window/Margin/VBox/Header" unique_name_in_owner=true]
+custom_minimum_size = Vector2(88, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 0.87, 0.67, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("close_idle")
+text = "收 起"
+
+[node name="Rule" type="HSeparator" parent="Window/Margin/VBox"]
+layout_mode = 2
+
+[node name="Body" type="PanelContainer" parent="Window/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("content_bg")
+
+[node name="BodyMargin" type="MarginContainer" parent="Window/Margin/VBox/Body"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="Workspace" type="HBoxContainer" parent="Window/Margin/VBox/Body/BodyMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 14
+
+[node name="Stack" type="Control" parent="Window/Margin/VBox/Body/BodyMargin/Workspace"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="EmptySlotGrid" type="GridContainer" parent="Window/Margin/VBox/Body/BodyMargin/Workspace/Stack" unique_name_in_owner=true]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 10
+columns = 8
+
+[node name="Scroll" type="ScrollContainer" parent="Window/Margin/VBox/Body/BodyMargin/Workspace/Stack"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="SlotGrid" type="GridContainer" parent="Window/Margin/VBox/Body/BodyMargin/Workspace/Stack/Scroll" unique_name_in_owner=true]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 10
+columns = 8
+
+[node name="EmptyLabel" type="Label" parent="Window/Margin/VBox/Body/BodyMargin/Workspace/Stack" unique_name_in_owner=true]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.31, 0.29, 0.23, 0.82)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 22
+text = "行囊中暂无此类物品"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DetailPanel" type="PanelContainer" parent="Window/Margin/VBox/Body/BodyMargin/Workspace" unique_name_in_owner=true]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 0
+theme_override_styles/panel = SubResource("detail_bg")
+
+[node name="PopupMargin" type="MarginContainer" parent="DetailPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 16
+
+[node name="PopupVBox" type="VBoxContainer" parent="DetailPanel/PopupMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="DetailTitle" type="Label" parent="DetailPanel/PopupMargin/PopupVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.91, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 20
+text = "物品详情"
+
+[node name="DetailRule" type="HSeparator" parent="DetailPanel/PopupMargin/PopupVBox"]
+layout_mode = 2
+
+[node name="InfoIcon" type="TextureRect" parent="DetailPanel/PopupMargin/PopupVBox" unique_name_in_owner=true]
+custom_minimum_size = Vector2(0, 88)
+layout_mode = 2
+size_flags_horizontal = 4
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InfoName" type="Label" parent="DetailPanel/PopupMargin/PopupVBox" unique_name_in_owner=true]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.98, 0.97, 0.92, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 27
+text = "未选中物品"
+autowrap_mode = 2
+
+[node name="InfoCategory" type="Label" parent="DetailPanel/PopupMargin/PopupVBox" unique_name_in_owner=true]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.81, 0.84, 0.81, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 17
+text = "悬停或点击左侧物品格查看详情"
+
+[node name="InfoGrade" type="Label" parent="DetailPanel/PopupMargin/PopupVBox" unique_name_in_owner=true]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.84, 0.52, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 17
+
+[node name="InfoCount" type="Label" parent="DetailPanel/PopupMargin/PopupVBox" unique_name_in_owner=true]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.81, 0.84, 0.81, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 17
+
+[node name="InfoTags" type="RichTextLabel" parent="DetailPanel/PopupMargin/PopupVBox" unique_name_in_owner=true]
+custom_minimum_size = Vector2(0, 94)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.94, 0.94, 0.9, 1)
+theme_override_fonts/normal_font = ExtResource("4_font")
+theme_override_font_sizes/normal_font_size = 17
+fit_content = true
+scroll_active = false
+
+[node name="InfoEffectTitle" type="Label" parent="DetailPanel/PopupMargin/PopupVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.84, 0.52, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 17
+text = "使用效果"
+
+[node name="InfoDesc" type="RichTextLabel" parent="DetailPanel/PopupMargin/PopupVBox" unique_name_in_owner=true]
+custom_minimum_size = Vector2(0, 132)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.81, 0.84, 0.81, 1)
+theme_override_fonts/normal_font = ExtResource("4_font")
+theme_override_font_sizes/normal_font_size = 16
+fit_content = true
+scroll_active = false
+
+[node name="ActionButton" type="Button" parent="DetailPanel/PopupMargin/PopupVBox" unique_name_in_owner=true]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.91, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 18
+text = "穿戴"

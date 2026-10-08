@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="GongfaResource" format=3]
+
+[ext_resource type="Script" path="res://csharp/gongfa/GongfaResource.cs" id="1"]
+[ext_resource type="Script" path="res://csharp/gongfa/GongfaChapterConfig.cs" id="2"]
+[ext_resource type="Script" path="res://csharp/gongfa/GongfaDeckRewriteConfig.cs" id="3"]
+[ext_resource type="Script" path="res://csharp/gongfa/ActiveSkillData.cs" id="4"]
+[ext_resource type="Resource" path="res://resources/activeskills/避锋.tres" id="5"]
+[ext_resource type="Resource" path="res://resources/activeskills/惊鸿掠影谱/惊鸿掠步.tres" id="6"]
+[ext_resource type="Resource" path="res://resources/activeskills/惊鸿掠影谱/回身点锋.tres" id="7"]
+[ext_resource type="Resource" path="res://resources/activeskills/惊鸿掠影谱/身随剑转.tres" id="8"]
+
+[sub_resource type="Resource" id="RewriteStep"]
+script = ExtResource("3")
+mode = 1
+count = 1
+source_skill = ExtResource("5")
+source_skill_name = "避锋"
+result_skill = ExtResource("6")
+
+[sub_resource type="Resource" id="RewriteTurn"]
+script = ExtResource("3")
+mode = 0
+count = 1
+result_skill = ExtResource("8")
+
+[sub_resource type="Resource" id="Chapter1"]
+script = ExtResource("2")
+chapter_id = "jing_hong"
+chapter_name = "惊鸿卷"
+description = "剑后换位，步后再剑。"
+order = 1
+required_study_progress = 48.0
+required_attributes = {
+"agility": 5.0,
+"sword_proficiency": 6.0,
+}
+learned_active_skills = Array[ExtResource("4")]([ExtResource("6"), ExtResource("7")])
+naqi_bonuses = {"precision": 3.0, "initiative_speed": 3.0}
+sub_deck_rewrites = Array[ExtResource("3")]([SubResource("RewriteStep")])
+
+[sub_resource type="Resource" id="Chapter2"]
+script = ExtResource("2")
+chapter_id = "fan_ying"
+chapter_name = "返影卷"
+description = "出剑命中后，为下一次遁身降低精力消耗。"
+order = 2
+required_study_progress = 72.0
+required_attributes = {"agility": 8.0, "sword_proficiency": 10.0}
+required_chapter_ids = Array[String](["jing_hong"])learned_active_skills = Array[ExtResource("4")]([ExtResource("8")])
+naqi_bonuses = {"initiative_speed": 3.0, "critical": 2.0}
+sub_deck_rewrites = Array[ExtResource("3")]([SubResource("RewriteTurn")])
+
+[resource]
+script = ExtResource("1")
+gongfa_name = "惊鸿掠影谱"
+description = "仅可辅修的身法剑谱。以剑后换位、步后再剑为主要打法。"
+wuxing = 32
+required_study_progress = 48.0
+required_attributes = {"agility": 5.0,
+"sword_proficiency": 6.0, "sword_proficiency": 6.0}
+can_be_main = false
+bearing_compatibility = Array[int]([2])
+school_tags = Array[String](["sword", "movement"])
+can_be_sub = true
+default_unlocked_chapter_count = 1
+chapters = Array[ExtResource("2")]([SubResource("Chapter1"), SubResource("Chapter2")])

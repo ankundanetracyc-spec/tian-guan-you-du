@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="StatusEffect" format=3 uid="uid://dbulsjbaiicqi"]
+
+[ext_resource type="Script" uid="uid://35i5d2ysrrun" path="res://csharp/battle/StatusEffect.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+effect_id = "化解"
+name = "化解"
+description = "下次受到物理伤害时减少等同于层数的伤害值。受到任何伤害后消失。"
+max_stacks = 99999
+duration_default = -1
+duration_type = 3

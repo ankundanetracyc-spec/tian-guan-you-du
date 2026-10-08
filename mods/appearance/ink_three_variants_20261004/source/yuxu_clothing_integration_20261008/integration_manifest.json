@@ -1,0 +1,67 @@
+{
+  "revision": "yuxu_clothing_integration_20261008",
+  "source_package": "yuxu_daily_drafts_20261005",
+  "active_package": "ink_three_variants_20261004",
+  "part": "clothes",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "active_file_index_start": 4,
+  "saved_style_index_start": 3,
+  "styles": [
+    {
+      "rank": "zayi",
+      "display_name": "玉虚·杂役常服",
+      "saved_style_index": 3,
+      "male_source": "male/clothing/01.png",
+      "male_active": "male/clothing/04.png",
+      "male_sha256": "62caf0565c9bb5c53d3b853adddbeccf049840e81728a1dd6419803a6c9a513e",
+      "female_source": "female/clothing/01.png",
+      "female_active": "female/clothing/04.png",
+      "female_sha256": "412df74c69591eb7fad69db72785ae91fe854703de203e9071087c93e55681af"
+    },
+    {
+      "rank": "waimen",
+      "display_name": "玉虚·外门常服",
+      "saved_style_index": 4,
+      "male_source": "male/clothing/02.png",
+      "male_active": "male/clothing/05.png",
+      "male_sha256": "38ba8f542718ec7223bbdf164279dcb9c48efc2739370026de335d553607d8d2",
+      "female_source": "female/clothing/02.png",
+      "female_active": "female/clothing/05.png",
+      "female_sha256": "1fc59c19d25aaa9a6727d2a1bf08f374443863c52cf977603d9c05651a381e0d"
+    },
+    {
+      "rank": "neimen",
+      "display_name": "玉虚·内门常服",
+      "saved_style_index": 5,
+      "male_source": "male/clothing/03.png",
+      "male_active": "male/clothing/06.png",
+      "male_sha256": "af93377ba4d93ee0dd40e127cc518fe8ee24b50626a954b40be85f8285ba6a04",
+      "female_source": "female/clothing/03.png",
+      "female_active": "female/clothing/06.png",
+      "female_sha256": "6f38faebbe01181ddb7cb7b8fae3a79c9019e6bc7e80bc9cf361d8fa7ff2034e"
+    },
+    {
+      "rank": "zhenchuan",
+      "display_name": "玉虚·真传常服",
+      "saved_style_index": 6,
+      "male_source": "male/clothing/04.png",
+      "male_active": "male/clothing/07.png",
+      "male_sha256": "d2c25b76321c07f5d37fe5a8bbd99b75110932e2553026e6a4902b8dc9ec2dc5",
+      "female_source": "female/clothing/04.png",
+      "female_active": "female/clothing/07.png",
+      "female_sha256": "0eb7799be1fdca90823b8b24ec1a3f3c8ecca1dbc74edb5f386c4426e15331ec"
+    }
+  ],
+  "old_style_indices_preserved": [
+    0,
+    1,
+    2
+  ],
+  "wardrobe_access": "available to all characters in existing wardrobe; no sect or rank eligibility is added",
+  "purchase_or_unlock_rules_added": false,
+  "battle_sprite_costumes_added": false,
+  "visual_approved_by_user": false
+}

@@ -1,0 +1,24 @@
+{
+  "version": 5,
+  "canvas_px": { "width": 1024, "height": 2048 },
+  "render_rule": "每个部件都是1024x2048的真实透明PNG；不裁紧边、不使用棋盘格或深色底图；所有Sprite使用相同Position和Scale。",
+  "connector_style": "孔洞外圈沿用所在材质的低对比纹理色，不使用金属或镀金框。",
+  "connector_px": { "outer_diameter": 56, "aperture_diameter": 28, "rim_width": 14 },
+  "anchors_px": {
+    "crown": [545, 455],
+    "neck": [512, 903],
+    "far_shoulder": [380, 986],
+    "near_shoulder": [654, 986]
+  },
+  "layers_back_to_front": ["far_arm", "hair_back", "head", "body", "ornament", "hair_front", "near_arm"],
+  "parts": {
+    "male_bald": ["crown", "neck"],
+    "female_bald": ["crown", "neck"],
+    "hair_back": ["crown"],
+    "hair_front": ["crown"],
+    "ornament": ["crown"],
+    "body": ["neck", "far_shoulder", "near_shoulder"],
+    "far_arm": ["far_shoulder"],
+    "near_arm": ["near_shoulder"]
+  }
+}

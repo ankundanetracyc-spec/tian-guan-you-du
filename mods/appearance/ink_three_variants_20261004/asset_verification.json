@@ -1,0 +1,52 @@
+{
+  "pass": true,
+  "asset_revision": "yuxu_clothing_integration_20261008",
+  "physical_png_count": 99,
+  "active_choice_count": 96,
+  "common_canvas": [
+    1024,
+    1536
+  ],
+  "new_parts": 8,
+  "unchanged_existing_parts": 91,
+  "variant_counts": {
+    "male": [
+      7,
+      8,
+      9,
+      8,
+      3,
+      3,
+      3,
+      7,
+      3
+    ],
+    "female": [
+      7,
+      8,
+      4,
+      4,
+      4,
+      4,
+      4,
+      7,
+      3
+    ]
+  },
+  "preserved_previous_ordinals": true,
+  "rejected_front05_stays_disabled": true,
+  "visual_approved_by_user": false,
+  "current_asset_report": "source/yuxu_clothing_integration_20261008/asset_verification.json",
+  "runtime_texture_report": "source/yuxu_clothing_integration_20261008/runtime_texture_verification.json",
+  "game_report": "game_verification.json",
+  "wardrobe_report": "wardrobe_verification_20261008.json",
+  "start_menu_selection_checks": 96,
+  "start_menu_checks_include_yuxu_clothes": true,
+  "runtime_hair_mixes": 72,
+  "female_runtime_hair_mixes": 36,
+  "replaced_parts": 0,
+  "base01_dense_scalp_boundary_pass": true,
+  "new_clothes_per_gender": 4,
+  "old_clothing_ordinals_preserved": true,
+  "visual_approved_by_user": false
+}

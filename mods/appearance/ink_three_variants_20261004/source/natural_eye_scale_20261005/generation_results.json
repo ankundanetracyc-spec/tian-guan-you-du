@@ -1,0 +1,15 @@
+{
+  "tool": "built-in imagegen",
+  "mode": "targeted image edit, transparent background",
+  "selected": {
+    "ningyue_eyes.png": "exec-141fbfea-eb18-4f4e-a6fb-19f9bc9d9a62.png",
+    "panshi_eyes.png": "exec-834881fa-2ae3-45dd-84cf-e4ecc0dfde65.png",
+    "lingfeng_eyes.png": "exec-9e2ad9b1-8a17-4e5a-b373-6e589417f006.png"
+  },
+  "first_edit_prompts": "prompts.json",
+  "selected_ningyue_prompt": "ningyue_geometry_preserving_prompt.txt",
+  "selected_ningyue_reference": "panshi_eyes.png",
+  "panshi_lingfeng_reference_directory": "../masculine_soft_revision_20261005/",
+  "discarded_iterations": "discarded_iterations.json",
+  "postprocessing": "Background/skin spill cleanup and one uniform pair transform to existing pupils; no per-eye stretch or procedural drawing."
+}

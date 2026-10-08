@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c4jgg0n3ov8m6"]
+
+[ext_resource type="Script" path="res://csharp/panel/GameTimeUI.cs" id="1_v5lk5"]
+
+[node name="WorldInfo" type="Control" unique_id=638089897]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 432.0
+offset_bottom = 138.0
+mouse_filter = 0
+script = ExtResource("1_v5lk5")

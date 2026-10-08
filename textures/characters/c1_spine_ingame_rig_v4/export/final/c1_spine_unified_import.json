@@ -1,0 +1,182 @@
+{
+"skeleton": { "hash": "vEiw+PelZ4AxGUdR9xHORlm/uNs", "spine": "3.8.75", "images": "../parts/", "audio": "" },
+"bones": [
+	{ "name": "root" },
+	{ "name": "hips", "parent": "root", "length": 150, "y": 220 },
+	{ "name": "torso", "parent": "hips", "length": 300, "y": 260 },
+	{ "name": "neck", "parent": "torso", "length": 80, "y": 330 },
+	{ "name": "head", "parent": "neck", "length": 120, "y": 60 },
+	{ "name": "hair_back", "parent": "head", "length": 300 },
+	{ "name": "hair_front", "parent": "head", "length": 150 },
+	{ "name": "brows", "parent": "head", "length": 40, "y": -40 },
+	{ "name": "eyes", "parent": "head", "length": 40, "y": -59 },
+	{ "name": "nose", "parent": "head", "length": 20, "y": -72 },
+	{ "name": "mouth", "parent": "head", "length": 30, "y": -98 },
+	{ "name": "hair_accessory", "parent": "head", "length": 180, "x": -30, "y": 65 }
+],
+"slots": [
+	{ "name": "slot_hair_back", "bone": "hair_back", "attachment": "hair_back" },
+	{ "name": "slot_hair_accessory", "bone": "hair_accessory", "attachment": "hair_accessory" },
+	{ "name": "slot_body_full", "bone": "torso", "attachment": "body_full" },
+	{ "name": "slot_head", "bone": "head", "attachment": "head" },
+	{ "name": "slot_brows", "bone": "brows", "attachment": "brows" },
+	{ "name": "slot_eyes", "bone": "eyes", "attachment": "eyes" },
+	{ "name": "slot_nose", "bone": "nose", "attachment": "nose" },
+	{ "name": "slot_mouth", "bone": "mouth", "attachment": "mouth" },
+	{ "name": "slot_hair_front", "bone": "hair_front", "attachment": "hair_front" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"slot_head": {
+				"head": { "path": "02_head", "y": -390, "width": 720, "height": 960 }
+			},
+			"slot_eyes": {
+				"eyes": { "path": "04_eyes", "y": -331, "width": 720, "height": 960 }
+			},
+			"slot_mouth": {
+				"mouth": { "path": "06_mouth", "y": -292, "width": 720, "height": 960 }
+			},
+			"slot_body_full": {
+				"body_full": { "path": "01_body_full", "width": 720, "height": 960 }
+			},
+			"slot_hair_accessory": {
+				"hair_accessory": { "path": "09_hair_accessory", "x": 30, "y": -455, "width": 720, "height": 960 }
+			},
+			"slot_hair_back": {
+				"hair_back": { "path": "08_hair_back", "y": -390, "width": 720, "height": 960 }
+			},
+			"slot_hair_front": {
+				"hair_front": { "path": "07_hair_front", "y": -390, "width": 720, "height": 960 }
+			},
+			"slot_nose": {
+				"nose": { "path": "05_nose", "y": -318, "width": 720, "height": 960 }
+			},
+			"slot_brows": {
+				"brows": { "path": "03_brows", "y": -350, "width": 720, "height": 960 }
+			}
+		}
+	}
+],
+"animations": {
+	"attack": {
+		"bones": {
+			"torso": {
+				"rotate": [
+					{},
+					{ "time": 0.16, "angle": -3 },
+					{ "time": 0.34, "angle": 5 },
+					{ "time": 0.6 }
+				]
+			},
+			"head": {
+				"rotate": [
+					{},
+					{ "time": 0.25, "angle": -4 },
+					{ "time": 0.6 }
+				]
+			},
+			"hair_accessory": {
+				"rotate": [
+					{},
+					{ "time": 0.3, "angle": 10 },
+					{ "time": 0.6 }
+				]
+			}
+		}
+	},
+	"death_kneel": {
+		"bones": {
+			"hips": {
+				"translate": [
+					{},
+					{ "time": 0.8, "y": -26 }
+				]
+			},
+			"torso": {
+				"rotate": [
+					{},
+					{ "time": 0.8, "angle": -10 }
+				]
+			},
+			"head": {
+				"rotate": [
+					{},
+					{ "time": 0.8, "angle": 12 }
+				]
+			},
+			"hair_accessory": {
+				"rotate": [
+					{},
+					{ "time": 0.8, "angle": 15 }
+				]
+			}
+		}
+	},
+	"hurt": {
+		"bones": {
+			"torso": {
+				"rotate": [
+					{},
+					{ "time": 0.1, "angle": -5 },
+					{ "time": 0.28, "angle": 2 },
+					{ "time": 0.48 }
+				]
+			},
+			"head": {
+				"rotate": [
+					{},
+					{ "time": 0.1, "angle": 6 },
+					{ "time": 0.48 }
+				]
+			},
+			"hair_accessory": {
+				"rotate": [
+					{},
+					{ "time": 0.15, "angle": 8 },
+					{ "time": 0.48 }
+				]
+			}
+		}
+	},
+	"idle": {
+		"bones": {
+			"torso": {
+				"rotate": [
+					{},
+					{ "time": 0.5, "angle": 0.4 },
+					{ "time": 1 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.5, "y": 2 },
+					{ "time": 1 }
+				]
+			},
+			"head": {
+				"rotate": [
+					{},
+					{ "time": 0.5, "angle": -0.6 },
+					{ "time": 1 }
+				]
+			},
+			"hair_front": {
+				"rotate": [
+					{},
+					{ "time": 0.5, "angle": -0.8 },
+					{ "time": 1 }
+				]
+			},
+			"hair_accessory": {
+				"rotate": [
+					{},
+					{ "time": 0.35, "angle": 2.5 },
+					{ "time": 0.7, "angle": -2 },
+					{ "time": 1 }
+				]
+			}
+		}
+	}
+}
+}

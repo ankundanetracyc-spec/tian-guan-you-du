@@ -1,0 +1,20 @@
+{
+  "source_eyes": "male/eyes/01.png",
+  "source_brows": "male/eyebrows/01.png",
+  "enlargement_for_reference_only": 4,
+  "eyes_crop": [
+    400,
+    348,
+    637,
+    405
+  ],
+  "brows_crop": [
+    400,
+    327,
+    637,
+    367
+  ],
+  "no_first_variant_mutation": true,
+  "user_instruction": "Unified style and refinement to the first brow/eye pair, 2026-10-06",
+  "rejected_sources": "../rejected_style_mismatch/"
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="app.diagrams.net" agent="Codex" version="24.7.17">
+  <diagram id="tiaozhiduanluo" name="挑枝断筋">
+    <mxGraphModel grid="1" page="1" pageWidth="1700" pageHeight="760">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="挑枝断筋&#xA;折枝剑谱 / 摧枝卷 / 主修习得*1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="578" y="30" width="343" height="71" as="geometry" />
+        </mxCell>
+        <mxCell id="main" value="&lt;div style=&quot;text-align:center;&quot;&gt;卡牌名：挑枝断筋&lt;/div&gt;&lt;div style=&quot;text-align:left;&quot;&gt;资源路径：res://resources/activeskills/折枝剑谱/挑枝断筋.tres&lt;br&gt;类型：攻伐牌&lt;br&gt;关键词：无&lt;br&gt;耗费：精力 3、法力 1&lt;br&gt;目标：单体敌人&lt;br&gt;伤害类型：物理&lt;br&gt;伤害公式：9 + 剑道造诣×0.54 + 敏捷×0.20 + 体魄×0.14&lt;/div&gt;&lt;br&gt;状态关联：剑意、剑痕、外伤、折损" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=15;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="500" y="145" width="676" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="effect" value="命中：+1剑意、+2剑痕&#xA;施加后有3层剑痕：消耗3层，加入1张外伤并施加1层折损&#xA;折枝剑势中：再+1折损&#xA;目标任一战斗牌区已有外伤：会心+10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="240" y="465" width="399" height="101" as="geometry" />
+        </mxCell>
+        <mxCell id="role" value="定位：为摧枝一剑积累折损&#xA;递进：见骨 → 断络&#xA;一次完成施加剑痕、加入外伤和施加折损，为摧枝一剑提高伤害" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="830" y="465" width="412" height="82" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

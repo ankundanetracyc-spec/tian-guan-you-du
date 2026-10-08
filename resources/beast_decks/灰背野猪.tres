@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BasicDeckResource" format=3]
+
+[ext_resource type="Script" path="res://csharp/gongfa/BasicDeckResource.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+deck_name = "灰背野猪"
+deck_description = "厚皮承伤、拱撞压迫、拱身架招。"
+skill_entries = Array[Dictionary]([{
+"path": "res://resources/activeskills/妖兽/灰背野猪/拱撞.tres",
+"count": 4
+}, {
+"path": "res://resources/activeskills/妖兽/灰背野猪/拱身戒备.tres",
+"count": 4
+}])

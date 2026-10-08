@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="FontFile" path="res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf" id="1_font"]
+[ext_resource type="Script" path="res://scripts/ui/SceneActionButton.gd" id="2_sway"]
+[ext_resource type="Script" path="res://scripts/ui/SceneActionTassel.gd" id="3_tassel"]
+
+[sub_resource type="StyleBoxFlat" id="action_normal"]
+bg_color = Color(0.86, 0.82, 0.72, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.28, 0.22, 0.72)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+shadow_color = Color(0.05, 0.045, 0.03, 0.24)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="action_hover"]
+bg_color = Color(0.92, 0.88, 0.78, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.22, 0.2, 0.15, 0.86)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+shadow_color = Color(0.05, 0.045, 0.03, 0.32)
+shadow_size = 6
+
+[node name="SceneActionButton" type="Button"]
+custom_minimum_size = Vector2(84, 190)
+focus_mode = 0
+script = ExtResource("2_sway")
+theme_override_colors/font_color = Color(0.14, 0.12, 0.08, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("action_normal")
+theme_override_styles/hover = SubResource("action_hover")
+theme_override_styles/pressed = SubResource("action_normal")
+text = "行动"
+
+[node name="Tassel" type="Node2D" parent="."]
+script = ExtResource("3_tassel")

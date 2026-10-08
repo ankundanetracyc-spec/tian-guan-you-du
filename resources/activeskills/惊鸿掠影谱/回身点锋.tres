@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="ActiveSkillData" format=3]
+
+[ext_resource type="Script" path="res://csharp/gongfa/ActiveSkillData.cs" id="1"]
+[ext_resource type="Script" path="res://csharp/gongfa/DamageBonus.cs" id="2"]
+
+[sub_resource type="Resource" id="Sword"]
+script = ExtResource("2")
+attribute = "sword_proficiency"
+multiplier = 0.38
+
+[sub_resource type="Resource" id="Agility"]
+script = ExtResource("2")
+attribute = "agility"
+multiplier = 0.22
+
+[sub_resource type="Resource" id="Physique"]
+script = ExtResource("2")
+attribute = "physique"
+multiplier = 0.08
+
+[resource]
+script = ExtResource("1")
+skill_name = "回身点锋"
+skill_type = 0
+description = "回身一点，剑锋随步而至。命中后获得1层剑意；上一张打出的牌是遁身牌时，本次伤害提高20%；目标带有剑痕时，会心+4。"
+source_gongfa_name = "惊鸿掠影谱"
+energy_cost = 2
+required_equip_slot = 0
+required_weapon_type = 1
+condition_type = 3
+condition_value = "惊鸿掠影谱"
+target_type = 2
+range_min = 1
+range_max = 2
+base_damage = 3.0
+damage_type = "physical"
+damage_bonuses = Array[ExtResource("2")]([SubResource("Sword"), SubResource("Agility"), SubResource("Physique")])
+special_effects = Array[Dictionary]([{"effect":"gain_sword_intent","count":1},{"effect":"bonus_damage_if_previous_movement","multiplier":0.20},{"effect":"critical_if_target_marked","amount":4}])

@@ -1,0 +1,132 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://gdscripts/world/TileWorldMapPresentation.gd" id="1_world_map"]
+[ext_resource type="PackedScene" path="res://tscn/world/bai_chuan/dual_grid_v1/BaiChuanDualGridTerrainPrototype_v1.tscn" id="2_layout"]
+[ext_resource type="Script" path="res://csharp/world/TileWorldMapRuntimeBridge.cs" id="3_bridge"]
+
+[node name="TileWorldMapPresentation" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+clip_contents = true
+script = ExtResource("1_world_map")
+initial_zoom = 1.0
+
+[node name="RuntimeBridge" type="Node" parent="."]
+script = ExtResource("3_bridge")
+
+[node name="PaperBackground" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.94, 0.925, 0.88, 1)
+
+[node name="MapCanvas" type="Node2D" parent="."]
+position = Vector2(836, 470.5)
+
+[node name="BaiChuanDualGridTerrainV1" parent="MapCanvas" instance=ExtResource("2_layout")]
+
+[node name="ReturnButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 22.0
+offset_right = 136.0
+offset_bottom = 68.0
+text = "返回"
+
+[node name="HelpLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 76.0
+offset_right = 1050.0
+offset_bottom = 108.0
+mouse_filter = 2
+text = "WASD 逐格行走　·　单击预览路线与预计时间，再次点击启程　·　40 公里/格　·　普通行旅遁速 100 为基准"
+
+[node name="GridToggle" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -172.0
+offset_top = 22.0
+offset_right = -24.0
+offset_bottom = 68.0
+text = "格线：显示"
+
+[node name="ZoomOut" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -382.0
+offset_top = 22.0
+offset_right = -336.0
+offset_bottom = 68.0
+tooltip_text = "缩小（滚轮向下）"
+text = "−"
+
+[node name="ZoomReset" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -328.0
+offset_top = 22.0
+offset_right = -234.0
+offset_bottom = 68.0
+tooltip_text = "恢复地图初始视野"
+text = "100%"
+
+[node name="ZoomIn" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -226.0
+offset_top = 22.0
+offset_right = -180.0
+offset_bottom = 68.0
+tooltip_text = "放大（滚轮向上）"
+text = "+"
+
+[node name="SelectedCellInfo" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -166.0
+offset_right = 520.0
+offset_bottom = -24.0
+
+[node name="EnterNodeButton" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -214.0
+offset_right = 244.0
+offset_bottom = -166.0
+text = "进入此地"
+
+[node name="CellInfoLabel" type="Label" parent="SelectedCellInfo"]
+layout_mode = 2
+autowrap_mode = 3
+text = ""

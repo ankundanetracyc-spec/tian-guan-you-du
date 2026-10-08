@@ -1,0 +1,26 @@
+{
+  "method": "single uniform scale and translation; no local warp",
+  "transforms": {
+    "male_front": [
+      0.65,
+      184,
+      112
+    ],
+    "male_back": [
+      0.85,
+      77,
+      22
+    ],
+    "female_front": [
+      0.62,
+      198,
+      102
+    ],
+    "female_back": [
+      0.85,
+      84,
+      98
+    ]
+  },
+  "status": "visual fitting candidate; not three-point solver certified"
+}

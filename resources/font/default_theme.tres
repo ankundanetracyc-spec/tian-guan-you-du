@@ -1,0 +1,8 @@
+[gd_resource type="Theme" format=3 uid="uid://dpa3x8xstl5r2"]
+
+[ext_resource type="FontFile" uid="uid://u5r81bxd3vrk" path="res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf" id="1"]
+
+[resource]
+resource_name = "default_theme"
+default_font = ExtResource("1")
+default_font_size = 16

@@ -1,0 +1,88 @@
+{
+  "mode": "built-in image_gen",
+  "scope": "male three hair pairs",
+  "jobs": [
+    {
+      "key": "male_hair_front_6",
+      "sex": "male",
+      "slot": "hair_front",
+      "index": 6,
+      "name": "束风露额",
+      "prompt": "Use case: stylized-concept. Production asset for a nine-layer Chinese cultivation character portrait. Reference image is OUR OWN existing art: use exactly its warm charcoal black hair, restrained warm grey fibre highlights, fine matte ink-wash strand rendering, hand-painted detail density, calm lighting, no gloss. NOT photorealistic, not anime flat shading. Strict orthographic FRONT view, level camera, centred head axis, no yaw, no tilted skull. Compact natural crown (no tall dome or flattened wide cap), realistic width and hairline. ONLY draw the requested isolated HAIR layer on real TRANSPARENT alpha, crisp fine transparent flyaways, no background, shadow, glow, paper rectangle, face, skin, ears, eyebrows, eyes, nose, mouth, neck, clothes or mannequin. The haircut can naturally overlap ear positions, never carve ear-shaped outlines or holes.\nSubject: Male practical cultivator: carefully combed straight backward hair, no centre split; shallow natural M hairline, clear forehead, close-fitting temples, small short pointed sideburns ending at ear level, no long cheek or chest locks.\nLayer ownership: FRONT hair includes only front scalp cap, hairline, short temples and any specified cheek-facing locks. Interior below hairline must be transparent. Absolutely exclude back hair, ponytail, rear buns and back-of-body hanging hair. Place compact cap in upper-middle of a portrait canvas, with ample padding. Hairline and temples remain frontal and fit the reference face proportions.",
+      "reference": "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/practical_hair_expansion_20261006/male_head_reference.jpg",
+      "generated_original": "D:\\CodexData\\generated_images\\01a0fd74-de00-7ab2-9dfc-c15a97009561\\exec-1ae88874-dcbe-4a25-8204-d56e22822a6a.png",
+      "workspace_source": "male_hair_front_6.png"
+    },
+    {
+      "key": "male_hair_back_6",
+      "sex": "male",
+      "slot": "hair_back",
+      "index": 6,
+      "name": "束风短尾",
+      "prompt": "Use case: stylized-concept. Production asset for a nine-layer Chinese cultivation character portrait. Reference image is OUR OWN existing art: use exactly its warm charcoal black hair, restrained warm grey fibre highlights, fine matte ink-wash strand rendering, hand-painted detail density, calm lighting, no gloss. NOT photorealistic, not anime flat shading. Strict orthographic FRONT view, level camera, centred head axis, no yaw, no tilted skull. Compact natural crown (no tall dome or flattened wide cap), realistic width and hairline. ONLY draw the requested isolated HAIR layer on real TRANSPARENT alpha, crisp fine transparent flyaways, no background, shadow, glow, paper rectangle, face, skin, ears, eyebrows, eyes, nose, mouth, neck, clothes or mannequin. The haircut can naturally overlap ear positions, never carve ear-shaped outlines or holes.\nSubject: A compact high-bound ponytail behind the head, a small dark hair-wrapped tie just above the back of the crown, straight slender tail behind nape to upper back. Restrained relaxed motion; no ribbons.\nLayer ownership: REAR hair is a COMPLETE CONTINUOUS solid underlying back-scalp painting including hair hidden by face and clothing; do NOT cut a face-shaped hole. Front camera views the back hair component symmetrically as an underlying silhouette: head will later cover the middle. Draw rear knot/bun and nape/behind-shoulder hair only; no front bangs, face framing locks, forehead hairline or ears. Broad continuous rear head oval at top, matched to natural head size, connected to specified rear hairstyle below or above it. Ample padding around every strand.",
+      "reference": "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/practical_hair_expansion_20261006/male_head_reference.jpg",
+      "generated_original": "D:\\CodexData\\generated_images\\01a0fd74-de00-7ab2-9dfc-c15a97009561\\exec-3e9efba7-eaa1-4d40-9ab3-b15f68acb7ba.png",
+      "workspace_source": "male_hair_back_6.png"
+    },
+    {
+      "key": "male_hair_front_7",
+      "sex": "male",
+      "slot": "hair_front",
+      "index": 7,
+      "name": "守真拢发",
+      "prompt": "Use case: stylized-concept. Production asset for a nine-layer Chinese cultivation character portrait. Reference 1 is a cropped hair MATERIAL sample only, reference 2 is our bald head for proportions. Do NOT recreate the silhouette of reference 1; design the specified NEW hairstyle. References are OUR OWN existing art: use exactly its warm charcoal black hair, restrained warm grey fibre highlights, fine matte ink-wash strand rendering, hand-painted detail density, calm lighting, no gloss. NOT photorealistic, not anime flat shading. Strict orthographic FRONT view, level camera, centred head axis, no yaw, no tilted skull. Compact natural crown (no tall dome or flattened wide cap), realistic width and hairline. ONLY draw the requested isolated HAIR layer on real TRANSPARENT alpha, crisp fine transparent flyaways, no background, shadow, glow, paper rectangle, face, skin, ears, eyebrows, eyes, nose, mouth, neck, clothes or mannequin. The haircut can naturally overlap ear positions, never carve ear-shaped outlines or holes.\nSubject: Male composed cultivator: NO centre part. Fine orderly curved combed strands swept straight back in a shallow continuous fan, close to skull, all forehead exposed under a low soft M hairline. Small tapered short sideburns stopping at ear level, NO face framing wisps, open face region. No long chest hair.\nLayer ownership: FRONT hair includes only front scalp cap, hairline, short temples and any specified cheek-facing locks. Interior below hairline must be transparent. Absolutely exclude back hair, ponytail, rear buns and back-of-body hanging hair. Place compact cap in upper-middle of a portrait canvas, with ample padding. Hairline and temples remain frontal and fit the reference face proportions.\nStrong silhouette requirement: single smoothly backward-combed cap WITHOUT any centre V part or long paired curtain strands. Slight natural widow peak, fully clear forehead; elegant compact temples. Every hair strand flows toward the back rather than separating into two curtain halves.",
+      "reference": "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/practical_hair_expansion_20261006/male_head_reference.jpg",
+      "references": [
+        "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/practical_hair_expansion_20261006/hair_material_reference.jpg",
+        "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/practical_hair_expansion_20261006/male_face_registration_reference.jpg"
+      ],
+      "generated_original": "D:\\CodexData\\generated_images\\01a0fd74-de00-7ab2-9dfc-c15a97009561\\exec-845cdf5c-9476-4f93-946a-e95e855a8bc7.png",
+      "workspace_source": "male_hair_front_7.png"
+    },
+    {
+      "key": "male_hair_back_7",
+      "sex": "male",
+      "slot": "hair_back",
+      "index": 7,
+      "name": "守真束髻",
+      "prompt": "Use case: stylized-concept. Production asset for a nine-layer Chinese cultivation character portrait. Reference 1 is a cropped hair MATERIAL sample only, reference 2 is our bald head for proportions. Do NOT recreate the silhouette of reference 1; design the specified NEW hairstyle. References are OUR OWN existing art: use exactly its warm charcoal black hair, restrained warm grey fibre highlights, fine matte ink-wash strand rendering, hand-painted detail density, calm lighting, no gloss. NOT photorealistic, not anime flat shading. Strict orthographic FRONT view, level camera, centred head axis, no yaw, no tilted skull. Compact natural crown (no tall dome or flattened wide cap), realistic width and hairline. ONLY draw the requested isolated HAIR layer on real TRANSPARENT alpha, crisp fine transparent flyaways, no background, shadow, glow, paper rectangle, face, skin, ears, eyebrows, eyes, nose, mouth, neck, clothes or mannequin. The haircut can naturally overlap ear positions, never carve ear-shaped outlines or holes.\nSubject: A small tightly coiled round back-of-crown hair bun, compact dark wrapped coil, plus a continuous close-fitting rounded rear scalp and very short neat nape hair. No long tail. The bun rises only slightly above scalp.\nLayer ownership: REAR hair is a COMPLETE CONTINUOUS solid underlying back-scalp painting including hair hidden by face and clothing; do NOT cut a face-shaped hole. Front camera views the back hair component symmetrically as an underlying silhouette: head will later cover the middle. Draw rear knot/bun and nape/behind-shoulder hair only; no front bangs, face framing locks, forehead hairline or ears. Broad continuous rear head oval at top, matched to natural head size, connected to specified rear hairstyle below or above it. Ample padding around every strand.",
+      "reference": "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/practical_hair_expansion_20261006/male_head_reference.jpg",
+      "references": [
+        "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/practical_hair_expansion_20261006/hair_material_reference.jpg",
+        "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/practical_hair_expansion_20261006/male_face_registration_reference.jpg"
+      ],
+      "generated_original": "D:\\CodexData\\generated_images\\01a0fd74-de00-7ab2-9dfc-c15a97009561\\exec-8fec586b-56f9-46e9-90a8-ae3aeb26d5c9.png",
+      "workspace_source": "male_hair_back_7.png"
+    },
+    {
+      "key": "male_hair_front_8",
+      "sex": "male",
+      "slot": "hair_front",
+      "index": 8,
+      "name": "行舟短发",
+      "prompt": "Use case: stylized-concept. Production asset for a nine-layer Chinese cultivation character portrait. Reference 1 is a cropped hair MATERIAL sample only, reference 2 is our bald head for proportions. Do NOT recreate the silhouette of reference 1; design the specified NEW hairstyle. References are OUR OWN existing art: use exactly its warm charcoal black hair, restrained warm grey fibre highlights, fine matte ink-wash strand rendering, hand-painted detail density, calm lighting, no gloss. NOT photorealistic, not anime flat shading. Strict orthographic FRONT view, level camera, centred head axis, no yaw, no tilted skull. Compact natural crown (no tall dome or flattened wide cap), realistic width and hairline. ONLY draw the requested isolated HAIR layer on real TRANSPARENT alpha, crisp fine transparent flyaways, no background, shadow, glow, paper rectangle, face, skin, ears, eyebrows, eyes, nose, mouth, neck, clothes or mannequin. The haircut can naturally overlap ear positions, never carve ear-shaped outlines or holes.\nSubject: Male practical wandering cultivator: softly textured cropped layered hair, subtle off-centre part with short broken diagonal fringe stopping ABOVE eyebrows, compact crown, softly tapered short temples, no spikes or long side locks. Classic hand-painted handsome style.\nLayer ownership: FRONT hair includes only front scalp cap, hairline, short temples and any specified cheek-facing locks. Interior below hairline must be transparent. Absolutely exclude back hair, ponytail, rear buns and back-of-body hanging hair. Place compact cap in upper-middle of a portrait canvas, with ample padding. Hairline and temples remain frontal and fit the reference face proportions.",
+      "reference": "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/practical_hair_expansion_20261006/male_head_reference.jpg",
+      "references": [
+        "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/practical_hair_expansion_20261006/hair_material_reference.jpg",
+        "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/practical_hair_expansion_20261006/male_face_registration_reference.jpg"
+      ],
+      "generated_original": "D:\\CodexData\\generated_images\\01a0fd74-de00-7ab2-9dfc-c15a97009561\\exec-e38c0b2b-e233-4472-a416-8c278c96c6c0.png",
+      "workspace_source": "male_hair_front_8.png"
+    },
+    {
+      "key": "male_hair_back_8",
+      "sex": "male",
+      "slot": "hair_back",
+      "index": 8,
+      "name": "行舟短垂",
+      "prompt": "Use case: stylized-concept. Production asset for a nine-layer Chinese cultivation character portrait. Reference 1 is a cropped hair MATERIAL sample only, reference 2 is our bald head for proportions. Do NOT recreate the silhouette of reference 1; design the specified NEW hairstyle. References are OUR OWN existing art: use exactly its warm charcoal black hair, restrained warm grey fibre highlights, fine matte ink-wash strand rendering, hand-painted detail density, calm lighting, no gloss. NOT photorealistic, not anime flat shading. Strict orthographic FRONT view, level camera, centred head axis, no yaw, no tilted skull. Compact natural crown (no tall dome or flattened wide cap), realistic width and hairline. ONLY draw the requested isolated HAIR layer on real TRANSPARENT alpha, crisp fine transparent flyaways, no background, shadow, glow, paper rectangle, face, skin, ears, eyebrows, eyes, nose, mouth, neck, clothes or mannequin. The haircut can naturally overlap ear positions, never carve ear-shaped outlines or holes.\nSubject: Short layered rear hair, continuous rounded occipital cap, lightly feathered nape ending at neck/just above collar, narrow natural silhouette, no bun or long hair.\nLayer ownership: REAR hair is a COMPLETE CONTINUOUS solid underlying back-scalp painting including hair hidden by face and clothing; do NOT cut a face-shaped hole. Front camera views the back hair component symmetrically as an underlying silhouette: head will later cover the middle. Draw rear knot/bun and nape/behind-shoulder hair only; no front bangs, face framing locks, forehead hairline or ears. Broad continuous rear head oval at top, matched to natural head size, connected to specified rear hairstyle below or above it. Ample padding around every strand.",
+      "reference": "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/practical_hair_expansion_20261006/male_head_reference.jpg",
+      "references": [
+        "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/practical_hair_expansion_20261006/hair_material_reference.jpg",
+        "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/practical_hair_expansion_20261006/male_face_registration_reference.jpg"
+      ],
+      "generated_original": "D:\\CodexData\\generated_images\\01a0fd74-de00-7ab2-9dfc-c15a97009561\\exec-a23ecc11-5bce-44ee-9a51-24f893b21045.png",
+      "workspace_source": "male_hair_back_8.png"
+    }
+  ]
+}

@@ -1,0 +1,1925 @@
+{
+  "id": "our_selected_ink_portrait_rig_20261003_v1",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "coordinates": "Each character has its own top-left origin; x right, y down; pixels. Female pair-panel x must subtract 1024.",
+  "portrait_origin_px": [
+    0,
+    0
+  ],
+  "canvas_pivot_px": [
+    512,
+    768
+  ],
+  "placement": {
+    "offset": [
+      0,
+      0
+    ],
+    "scale": 1,
+    "rotation_degrees": 0
+  },
+  "draw_order_back_to_front": [
+    "hair_back",
+    "face_shape",
+    "clothing",
+    "eyes",
+    "eyebrows",
+    "nose",
+    "mouth",
+    "face_accessory",
+    "hair_front"
+  ],
+  "source_style_approved_by_user": true,
+  "rig_review_status": "Measured on the selected artwork; semantic PNG purity is a separate required gate",
+  "source_pair": "../reference/selected_pair_user.png",
+  "source_pair_sha256": "482d6d093e76c8067476054b83d37538af80967e20191646b84bb000d4734e33",
+  "artwork_source": "User-selected male/female portrait; no Guigu pixels, head shape, palette, dimensions, offsets or depth values copied",
+  "guigui_methods_adapted": [
+    "one portrait coordinate frame",
+    "stable semantic placement",
+    "paired eyes and paired brows",
+    "continuous alpha",
+    "explicit layer ordering"
+  ],
+  "registration": {
+    "minimum_controls": 3,
+    "maximum_residual_px": 2,
+    "transform": "one uniform similarity transform; no reflection or per-feature warping",
+    "do_not_use_alpha_bbox_as_origin": true
+  },
+  "slot_contract": {
+    "hair_front": "Visible crown, hairline, temple strands and all hair over the body; no skin or robe pixels",
+    "hair_back": "Complete continuous rear underpainting including hidden regions; no face hole or shoulder fade",
+    "face_shape": "Featureless face, original ears and full neck; no hair, features or clothing",
+    "eyebrows": "Paired original-style painted eyebrows, continuous alpha",
+    "eyes": "Paired original-style eye organs/lashes; no opaque surrounding skin",
+    "nose": "Original-style nose pigment and local soft wash; no opaque skin cutout",
+    "mouth": "Original-style lips and local soft wash; no opaque skin cutout",
+    "clothing": "Whole robe, clean neckline and no hair",
+    "face_accessory": "Male beard only; female blush/makeup only; empty defaults valid"
+  },
+  "families": {
+    "male": {
+      "compatibility_family": "our_selected_ink_male_20261003_v1",
+      "master": "../reference/male_selected_master.png",
+      "master_sha256": "d02e153c93f0d6c73d85f48bb5d940093378d76edb0a64e6d4156eb19fca2ef1",
+      "head_axis_x": 517,
+      "body_axis_x": 512,
+      "anchors": {
+        "head_axis": {
+          "label": "面部中轴",
+          "px": [
+            517,
+            411
+          ],
+          "uv": [
+            0.5048828125,
+            0.267578125
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "skull_crown_hidden": {
+          "label": "头骨顶（原光头图）",
+          "px": [
+            516,
+            173
+          ],
+          "uv": [
+            0.50390625,
+            0.11263020833333333
+          ],
+          "kind": "hidden",
+          "source": "Own original bald reference, for the region hidden by hair; anatomical guide only",
+          "lock_shape_on_new_variant": false
+        },
+        "hair_root_center": {
+          "label": "中央发际",
+          "px": [
+            517,
+            271
+          ],
+          "uv": [
+            0.5048828125,
+            0.17643229166666666
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "hairline_left": {
+          "label": "左发际",
+          "px": [
+            447,
+            310
+          ],
+          "uv": [
+            0.4365234375,
+            0.20182291666666666
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "hairline_right": {
+          "label": "右发际",
+          "px": [
+            590,
+            310
+          ],
+          "uv": [
+            0.576171875,
+            0.20182291666666666
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "temple_left": {
+          "label": "左鬓发接口",
+          "px": [
+            425,
+            348
+          ],
+          "uv": [
+            0.4150390625,
+            0.2265625
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "temple_right": {
+          "label": "右鬓发接口",
+          "px": [
+            610,
+            348
+          ],
+          "uv": [
+            0.595703125,
+            0.2265625
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "eye_left": {
+          "label": "左眼位",
+          "px": [
+            464,
+            375
+          ],
+          "uv": [
+            0.453125,
+            0.244140625
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "eye_right": {
+          "label": "右眼位",
+          "px": [
+            569,
+            374
+          ],
+          "uv": [
+            0.5556640625,
+            0.24348958333333334
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "eye_outer_left": {
+          "label": "左外眼角",
+          "px": [
+            426,
+            369
+          ],
+          "uv": [
+            0.416015625,
+            0.240234375
+          ],
+          "kind": "design",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "eye_inner_left": {
+          "label": "左内眼角",
+          "px": [
+            491,
+            380
+          ],
+          "uv": [
+            0.4794921875,
+            0.24739583333333334
+          ],
+          "kind": "design",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "eye_inner_right": {
+          "label": "右内眼角",
+          "px": [
+            540,
+            380
+          ],
+          "uv": [
+            0.52734375,
+            0.24739583333333334
+          ],
+          "kind": "design",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "eye_outer_right": {
+          "label": "右外眼角",
+          "px": [
+            610,
+            368
+          ],
+          "uv": [
+            0.595703125,
+            0.23958333333333334
+          ],
+          "kind": "design",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "brow_left": {
+          "label": "左眉定位",
+          "px": [
+            456,
+            346
+          ],
+          "uv": [
+            0.4453125,
+            0.22526041666666666
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "brow_right": {
+          "label": "右眉定位",
+          "px": [
+            579,
+            345
+          ],
+          "uv": [
+            0.5654296875,
+            0.224609375
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "brow_inner_left": {
+          "label": "左眉头",
+          "px": [
+            490,
+            353
+          ],
+          "uv": [
+            0.478515625,
+            0.22981770833333334
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "brow_inner_right": {
+          "label": "右眉头",
+          "px": [
+            541,
+            353
+          ],
+          "uv": [
+            0.5283203125,
+            0.22981770833333334
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "nose_bridge": {
+          "label": "鼻梁定位",
+          "px": [
+            517,
+            409
+          ],
+          "uv": [
+            0.5048828125,
+            0.2662760416666667
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "nose_tip": {
+          "label": "鼻尖定位",
+          "px": [
+            517,
+            444
+          ],
+          "uv": [
+            0.5048828125,
+            0.2890625
+          ],
+          "kind": "design",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "nostril_left": {
+          "label": "左鼻孔",
+          "px": [
+            505,
+            448
+          ],
+          "uv": [
+            0.4931640625,
+            0.2916666666666667
+          ],
+          "kind": "design",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "nostril_right": {
+          "label": "右鼻孔",
+          "px": [
+            528,
+            449
+          ],
+          "uv": [
+            0.515625,
+            0.2923177083333333
+          ],
+          "kind": "design",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "mouth_center": {
+          "label": "唇心",
+          "px": [
+            517,
+            481
+          ],
+          "uv": [
+            0.5048828125,
+            0.3131510416666667
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "mouth_left": {
+          "label": "左唇角",
+          "px": [
+            481,
+            480
+          ],
+          "uv": [
+            0.4697265625,
+            0.3125
+          ],
+          "kind": "design",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "mouth_right": {
+          "label": "右唇角",
+          "px": [
+            551,
+            480
+          ],
+          "uv": [
+            0.5380859375,
+            0.3125
+          ],
+          "kind": "design",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "chin": {
+          "label": "下巴",
+          "px": [
+            517,
+            541
+          ],
+          "uv": [
+            0.5048828125,
+            0.3522135416666667
+          ],
+          "kind": "design",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "ear_root_left": {
+          "label": "左耳根",
+          "px": [
+            417,
+            379
+          ],
+          "uv": [
+            0.4072265625,
+            0.24674479166666666
+          ],
+          "kind": "hidden",
+          "source": "Own original bald reference, for the region hidden by hair; anatomical guide only",
+          "lock_shape_on_new_variant": false
+        },
+        "ear_root_right": {
+          "label": "右耳根",
+          "px": [
+            616,
+            379
+          ],
+          "uv": [
+            0.6015625,
+            0.24674479166666666
+          ],
+          "kind": "hidden",
+          "source": "Own original bald reference, for the region hidden by hair; anatomical guide only",
+          "lock_shape_on_new_variant": false
+        },
+        "neck_upper_left": {
+          "label": "左颈侧",
+          "px": [
+            438,
+            520
+          ],
+          "uv": [
+            0.427734375,
+            0.3385416666666667
+          ],
+          "kind": "hidden",
+          "source": "Own original bald reference, for the region hidden by hair; anatomical guide only",
+          "lock_shape_on_new_variant": false
+        },
+        "neck_upper_right": {
+          "label": "右颈侧",
+          "px": [
+            597,
+            520
+          ],
+          "uv": [
+            0.5830078125,
+            0.3385416666666667
+          ],
+          "kind": "hidden",
+          "source": "Own original bald reference, for the region hidden by hair; anatomical guide only",
+          "lock_shape_on_new_variant": false
+        },
+        "collar_join_left": {
+          "label": "左颈领接合",
+          "px": [
+            441,
+            550
+          ],
+          "uv": [
+            0.4306640625,
+            0.3580729166666667
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "collar_join_right": {
+          "label": "右颈领接合",
+          "px": [
+            594,
+            550
+          ],
+          "uv": [
+            0.580078125,
+            0.3580729166666667
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "collar_v": {
+          "label": "交领开口底点",
+          "px": [
+            531,
+            694
+          ],
+          "uv": [
+            0.5185546875,
+            0.4518229166666667
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "cheek_left": {
+          "label": "左面饰区",
+          "px": [
+            449,
+            430
+          ],
+          "uv": [
+            0.4384765625,
+            0.2799479166666667
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "cheek_right": {
+          "label": "右面饰区",
+          "px": [
+            584,
+            430
+          ],
+          "uv": [
+            0.5703125,
+            0.2799479166666667
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "shoulder_left": {
+          "label": "左肩参考",
+          "px": [
+            74,
+            706
+          ],
+          "uv": [
+            0.072265625,
+            0.4596354166666667
+          ],
+          "kind": "design",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "shoulder_right": {
+          "label": "右肩参考",
+          "px": [
+            944,
+            706
+          ],
+          "uv": [
+            0.921875,
+            0.4596354166666667
+          ],
+          "kind": "design",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "waist_center": {
+          "label": "腰封参考",
+          "px": [
+            512,
+            1250
+          ],
+          "uv": [
+            0.5,
+            0.8138020833333334
+          ],
+          "kind": "design",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "hair_crown": {
+          "label": "当前发顶参考",
+          "px": [
+            517,
+            151
+          ],
+          "uv": [
+            0.5048828125,
+            0.09830729166666667
+          ],
+          "kind": "design",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "front_lock_tip_left": {
+          "label": "当前左发梢参考",
+          "px": [
+            444,
+            979
+          ],
+          "uv": [
+            0.43359375,
+            0.6373697916666666
+          ],
+          "kind": "design",
+          "source": "Selected-master tress traced during nine-part cleanup; design extent, not an import control point",
+          "lock_shape_on_new_variant": false
+        },
+        "front_lock_tip_right": {
+          "label": "当前右发梢参考",
+          "px": [
+            650,
+            978
+          ],
+          "uv": [
+            0.634765625,
+            0.63671875
+          ],
+          "kind": "design",
+          "source": "Selected-master tress traced during nine-part cleanup; design extent, not an import control point",
+          "lock_shape_on_new_variant": false
+        },
+        "eye_frame_top": {
+          "label": "eye_frame_top",
+          "px": [
+            516.5,
+            348.25
+          ],
+          "uv": [
+            0.50439453125,
+            0.22672526041666666
+          ],
+          "kind": "scaffold",
+          "source": "Import frame derived from this portrait, not a visible pigment landmark",
+          "lock_shape_on_new_variant": false
+        },
+        "brow_frame_top": {
+          "label": "brow_frame_top",
+          "px": [
+            517.5,
+            314.75
+          ],
+          "uv": [
+            0.50537109375,
+            0.20491536458333334
+          ],
+          "kind": "scaffold",
+          "source": "Import frame derived from this portrait, not a visible pigment landmark",
+          "lock_shape_on_new_variant": false
+        },
+        "nose_frame_bottom": {
+          "label": "nose_frame_bottom",
+          "px": [
+            516.5,
+            448.5
+          ],
+          "uv": [
+            0.50439453125,
+            0.2919921875
+          ],
+          "kind": "scaffold",
+          "source": "Import frame derived from this portrait, not a visible pigment landmark",
+          "lock_shape_on_new_variant": false
+        },
+        "nose_frame_side": {
+          "label": "nose_frame_side",
+          "px": [
+            530.125,
+            409
+          ],
+          "uv": [
+            0.5177001953125,
+            0.2662760416666667
+          ],
+          "kind": "scaffold",
+          "source": "Import frame derived from this portrait, not a visible pigment landmark",
+          "lock_shape_on_new_variant": false
+        },
+        "mouth_frame_left": {
+          "label": "mouth_frame_left",
+          "px": [
+            482.0,
+            481
+          ],
+          "uv": [
+            0.470703125,
+            0.3131510416666667
+          ],
+          "kind": "scaffold",
+          "source": "Import frame derived from this portrait, not a visible pigment landmark",
+          "lock_shape_on_new_variant": false
+        },
+        "mouth_frame_top": {
+          "label": "mouth_frame_top",
+          "px": [
+            517,
+            463.5
+          ],
+          "uv": [
+            0.5048828125,
+            0.3017578125
+          ],
+          "kind": "scaffold",
+          "source": "Import frame derived from this portrait, not a visible pigment landmark",
+          "lock_shape_on_new_variant": false
+        },
+        "collar_frame_top": {
+          "label": "collar_frame_top",
+          "px": [
+            517.5,
+            520.0
+          ],
+          "uv": [
+            0.50537109375,
+            0.3385416666666667
+          ],
+          "kind": "scaffold",
+          "source": "Import frame derived from this portrait, not a visible pigment landmark",
+          "lock_shape_on_new_variant": false
+        }
+      },
+      "slots": {
+        "hair_front": {
+          "pivot_px": [
+            517,
+            271
+          ],
+          "pivot_uv": [
+            0.5048828125,
+            0.17643229166666666
+          ],
+          "translation_from_canvas_center_px": [
+            5,
+            -497
+          ],
+          "recommended_registration_controls": [
+            "hair_root_center",
+            "hairline_left",
+            "hairline_right",
+            "temple_left",
+            "temple_right"
+          ],
+          "export_canvas": [
+            1024,
+            1536
+          ],
+          "export_offset_px": [
+            0,
+            0
+          ],
+          "controls_are_registration_scaffold": "The measured guide frames import calibration; guide shape points do not force every variant to have the same silhouette"
+        },
+        "hair_back": {
+          "pivot_px": [
+            517,
+            271
+          ],
+          "pivot_uv": [
+            0.5048828125,
+            0.17643229166666666
+          ],
+          "translation_from_canvas_center_px": [
+            5,
+            -497
+          ],
+          "recommended_registration_controls": [
+            "hair_root_center",
+            "temple_left",
+            "temple_right",
+            "neck_upper_left",
+            "neck_upper_right"
+          ],
+          "export_canvas": [
+            1024,
+            1536
+          ],
+          "export_offset_px": [
+            0,
+            0
+          ],
+          "controls_are_registration_scaffold": "The measured guide frames import calibration; guide shape points do not force every variant to have the same silhouette"
+        },
+        "face_shape": {
+          "pivot_px": [
+            517,
+            411
+          ],
+          "pivot_uv": [
+            0.5048828125,
+            0.267578125
+          ],
+          "translation_from_canvas_center_px": [
+            5,
+            -357
+          ],
+          "recommended_registration_controls": [
+            "head_axis",
+            "ear_root_left",
+            "ear_root_right",
+            "neck_upper_left",
+            "neck_upper_right"
+          ],
+          "export_canvas": [
+            1024,
+            1536
+          ],
+          "export_offset_px": [
+            0,
+            0
+          ],
+          "controls_are_registration_scaffold": "The measured guide frames import calibration; guide shape points do not force every variant to have the same silhouette"
+        },
+        "eyebrows": {
+          "pivot_px": [
+            517.5,
+            345.5
+          ],
+          "pivot_uv": [
+            0.50537109375,
+            0.22493489583333334
+          ],
+          "translation_from_canvas_center_px": [
+            5.5,
+            -422.5
+          ],
+          "recommended_registration_controls": [
+            "brow_left",
+            "brow_right",
+            "brow_frame_top"
+          ],
+          "export_canvas": [
+            1024,
+            1536
+          ],
+          "export_offset_px": [
+            0,
+            0
+          ],
+          "controls_are_registration_scaffold": "The measured guide frames import calibration; guide shape points do not force every variant to have the same silhouette"
+        },
+        "eyes": {
+          "pivot_px": [
+            516.5,
+            374.5
+          ],
+          "pivot_uv": [
+            0.50439453125,
+            0.24381510416666666
+          ],
+          "translation_from_canvas_center_px": [
+            4.5,
+            -393.5
+          ],
+          "recommended_registration_controls": [
+            "eye_left",
+            "eye_right",
+            "eye_frame_top"
+          ],
+          "export_canvas": [
+            1024,
+            1536
+          ],
+          "export_offset_px": [
+            0,
+            0
+          ],
+          "controls_are_registration_scaffold": "The measured guide frames import calibration; guide shape points do not force every variant to have the same silhouette"
+        },
+        "nose": {
+          "pivot_px": [
+            517,
+            409
+          ],
+          "pivot_uv": [
+            0.5048828125,
+            0.2662760416666667
+          ],
+          "translation_from_canvas_center_px": [
+            5,
+            -359
+          ],
+          "recommended_registration_controls": [
+            "nose_bridge",
+            "nose_frame_bottom",
+            "nose_frame_side"
+          ],
+          "export_canvas": [
+            1024,
+            1536
+          ],
+          "export_offset_px": [
+            0,
+            0
+          ],
+          "controls_are_registration_scaffold": "The measured guide frames import calibration; guide shape points do not force every variant to have the same silhouette"
+        },
+        "mouth": {
+          "pivot_px": [
+            517,
+            481
+          ],
+          "pivot_uv": [
+            0.5048828125,
+            0.3131510416666667
+          ],
+          "translation_from_canvas_center_px": [
+            5,
+            -287
+          ],
+          "recommended_registration_controls": [
+            "mouth_center",
+            "mouth_frame_left",
+            "mouth_frame_top"
+          ],
+          "export_canvas": [
+            1024,
+            1536
+          ],
+          "export_offset_px": [
+            0,
+            0
+          ],
+          "controls_are_registration_scaffold": "The measured guide frames import calibration; guide shape points do not force every variant to have the same silhouette"
+        },
+        "clothing": {
+          "pivot_px": [
+            517.5,
+            550.0
+          ],
+          "pivot_uv": [
+            0.50537109375,
+            0.3580729166666667
+          ],
+          "translation_from_canvas_center_px": [
+            5.5,
+            -218.0
+          ],
+          "recommended_registration_controls": [
+            "collar_join_left",
+            "collar_join_right",
+            "collar_frame_top"
+          ],
+          "export_canvas": [
+            1024,
+            1536
+          ],
+          "export_offset_px": [
+            0,
+            0
+          ],
+          "controls_are_registration_scaffold": "The measured guide frames import calibration; guide shape points do not force every variant to have the same silhouette"
+        },
+        "face_accessory": {
+          "pivot_px": [
+            517,
+            481
+          ],
+          "pivot_uv": [
+            0.5048828125,
+            0.3131510416666667
+          ],
+          "translation_from_canvas_center_px": [
+            5,
+            -287
+          ],
+          "recommended_registration_controls": [
+            "mouth_center",
+            "mouth_frame_left",
+            "mouth_frame_top"
+          ],
+          "export_canvas": [
+            1024,
+            1536
+          ],
+          "export_offset_px": [
+            0,
+            0
+          ],
+          "controls_are_registration_scaffold": "The measured guide frames import calibration; guide shape points do not force every variant to have the same silhouette"
+        }
+      },
+      "unseen_geometry_source": "../reference/male_bald_support.png",
+      "unseen_geometry_is_not_new_artwork": true
+    },
+    "female": {
+      "compatibility_family": "our_selected_ink_female_20261003_v1",
+      "master": "../reference/female_selected_master.png",
+      "master_sha256": "c95a79df97c852dbd669de58e1e71aac663d1e6a72f8551158a7d213853c2bf9",
+      "head_axis_x": 519,
+      "body_axis_x": 512,
+      "anchors": {
+        "head_axis": {
+          "label": "面部中轴",
+          "px": [
+            519,
+            414
+          ],
+          "uv": [
+            0.5068359375,
+            0.26953125
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "skull_crown_hidden": {
+          "label": "头骨顶（原光头图）",
+          "px": [
+            517,
+            169
+          ],
+          "uv": [
+            0.5048828125,
+            0.11002604166666667
+          ],
+          "kind": "hidden",
+          "source": "Own original bald reference, for the region hidden by hair; anatomical guide only",
+          "lock_shape_on_new_variant": false
+        },
+        "hair_root_center": {
+          "label": "中央发际",
+          "px": [
+            518,
+            257
+          ],
+          "uv": [
+            0.505859375,
+            0.16731770833333334
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "hairline_left": {
+          "label": "左发际",
+          "px": [
+            442,
+            310
+          ],
+          "uv": [
+            0.431640625,
+            0.20182291666666666
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "hairline_right": {
+          "label": "右发际",
+          "px": [
+            596,
+            310
+          ],
+          "uv": [
+            0.58203125,
+            0.20182291666666666
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "temple_left": {
+          "label": "左鬓发接口",
+          "px": [
+            422,
+            350
+          ],
+          "uv": [
+            0.412109375,
+            0.22786458333333334
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "temple_right": {
+          "label": "右鬓发接口",
+          "px": [
+            621,
+            350
+          ],
+          "uv": [
+            0.6064453125,
+            0.22786458333333334
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "eye_left": {
+          "label": "左眼位",
+          "px": [
+            464,
+            383
+          ],
+          "uv": [
+            0.453125,
+            0.24934895833333334
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "eye_right": {
+          "label": "右眼位",
+          "px": [
+            574,
+            382
+          ],
+          "uv": [
+            0.560546875,
+            0.24869791666666666
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "eye_outer_left": {
+          "label": "左外眼角",
+          "px": [
+            425,
+            375
+          ],
+          "uv": [
+            0.4150390625,
+            0.244140625
+          ],
+          "kind": "design",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "eye_inner_left": {
+          "label": "左内眼角",
+          "px": [
+            491,
+            389
+          ],
+          "uv": [
+            0.4794921875,
+            0.2532552083333333
+          ],
+          "kind": "design",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "eye_inner_right": {
+          "label": "右内眼角",
+          "px": [
+            546,
+            389
+          ],
+          "uv": [
+            0.533203125,
+            0.2532552083333333
+          ],
+          "kind": "design",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "eye_outer_right": {
+          "label": "右外眼角",
+          "px": [
+            615,
+            375
+          ],
+          "uv": [
+            0.6005859375,
+            0.244140625
+          ],
+          "kind": "design",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "brow_left": {
+          "label": "左眉定位",
+          "px": [
+            457,
+            351
+          ],
+          "uv": [
+            0.4462890625,
+            0.228515625
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "brow_right": {
+          "label": "右眉定位",
+          "px": [
+            582,
+            350
+          ],
+          "uv": [
+            0.568359375,
+            0.22786458333333334
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "brow_inner_left": {
+          "label": "左眉头",
+          "px": [
+            492,
+            358
+          ],
+          "uv": [
+            0.48046875,
+            0.23307291666666666
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "brow_inner_right": {
+          "label": "右眉头",
+          "px": [
+            543,
+            357
+          ],
+          "uv": [
+            0.5302734375,
+            0.232421875
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "nose_bridge": {
+          "label": "鼻梁定位",
+          "px": [
+            519,
+            410
+          ],
+          "uv": [
+            0.5068359375,
+            0.2669270833333333
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "nose_tip": {
+          "label": "鼻尖定位",
+          "px": [
+            519,
+            447
+          ],
+          "uv": [
+            0.5068359375,
+            0.291015625
+          ],
+          "kind": "design",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "nostril_left": {
+          "label": "左鼻孔",
+          "px": [
+            509,
+            454
+          ],
+          "uv": [
+            0.4970703125,
+            0.2955729166666667
+          ],
+          "kind": "design",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "nostril_right": {
+          "label": "右鼻孔",
+          "px": [
+            528,
+            454
+          ],
+          "uv": [
+            0.515625,
+            0.2955729166666667
+          ],
+          "kind": "design",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "mouth_center": {
+          "label": "唇心",
+          "px": [
+            519,
+            485
+          ],
+          "uv": [
+            0.5068359375,
+            0.3157552083333333
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "mouth_left": {
+          "label": "左唇角",
+          "px": [
+            486,
+            484
+          ],
+          "uv": [
+            0.474609375,
+            0.3151041666666667
+          ],
+          "kind": "design",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "mouth_right": {
+          "label": "右唇角",
+          "px": [
+            550,
+            484
+          ],
+          "uv": [
+            0.537109375,
+            0.3151041666666667
+          ],
+          "kind": "design",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "chin": {
+          "label": "下巴",
+          "px": [
+            519,
+            541
+          ],
+          "uv": [
+            0.5068359375,
+            0.3522135416666667
+          ],
+          "kind": "design",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "ear_root_left": {
+          "label": "左耳根",
+          "px": [
+            412,
+            380
+          ],
+          "uv": [
+            0.40234375,
+            0.24739583333333334
+          ],
+          "kind": "hidden",
+          "source": "Own original bald reference, for the region hidden by hair; anatomical guide only",
+          "lock_shape_on_new_variant": false
+        },
+        "ear_root_right": {
+          "label": "右耳根",
+          "px": [
+            626,
+            380
+          ],
+          "uv": [
+            0.611328125,
+            0.24739583333333334
+          ],
+          "kind": "hidden",
+          "source": "Own original bald reference, for the region hidden by hair; anatomical guide only",
+          "lock_shape_on_new_variant": false
+        },
+        "neck_upper_left": {
+          "label": "左颈侧",
+          "px": [
+            455,
+            520
+          ],
+          "uv": [
+            0.4443359375,
+            0.3385416666666667
+          ],
+          "kind": "hidden",
+          "source": "Own original bald reference, for the region hidden by hair; anatomical guide only",
+          "lock_shape_on_new_variant": false
+        },
+        "neck_upper_right": {
+          "label": "右颈侧",
+          "px": [
+            582,
+            520
+          ],
+          "uv": [
+            0.568359375,
+            0.3385416666666667
+          ],
+          "kind": "hidden",
+          "source": "Own original bald reference, for the region hidden by hair; anatomical guide only",
+          "lock_shape_on_new_variant": false
+        },
+        "collar_join_left": {
+          "label": "左颈领接合",
+          "px": [
+            450,
+            552
+          ],
+          "uv": [
+            0.439453125,
+            0.359375
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "collar_join_right": {
+          "label": "右颈领接合",
+          "px": [
+            584,
+            552
+          ],
+          "uv": [
+            0.5703125,
+            0.359375
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "collar_v": {
+          "label": "交领开口底点",
+          "px": [
+            520,
+            690
+          ],
+          "uv": [
+            0.5078125,
+            0.44921875
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "cheek_left": {
+          "label": "左面饰区",
+          "px": [
+            450,
+            434
+          ],
+          "uv": [
+            0.439453125,
+            0.2825520833333333
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "cheek_right": {
+          "label": "右面饰区",
+          "px": [
+            588,
+            434
+          ],
+          "uv": [
+            0.57421875,
+            0.2825520833333333
+          ],
+          "kind": "fixed",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "shoulder_left": {
+          "label": "左肩参考",
+          "px": [
+            124,
+            711
+          ],
+          "uv": [
+            0.12109375,
+            0.462890625
+          ],
+          "kind": "design",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "shoulder_right": {
+          "label": "右肩参考",
+          "px": [
+            906,
+            711
+          ],
+          "uv": [
+            0.884765625,
+            0.462890625
+          ],
+          "kind": "design",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "waist_center": {
+          "label": "腰封参考",
+          "px": [
+            512,
+            1250
+          ],
+          "uv": [
+            0.5,
+            0.8138020833333334
+          ],
+          "kind": "design",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "hair_crown": {
+          "label": "当前发顶参考",
+          "px": [
+            518,
+            142
+          ],
+          "uv": [
+            0.505859375,
+            0.09244791666666667
+          ],
+          "kind": "design",
+          "source": "Selected portrait measured at original resolution",
+          "lock_shape_on_new_variant": false
+        },
+        "front_lock_tip_left": {
+          "label": "当前左发梢参考",
+          "px": [
+            419,
+            941
+          ],
+          "uv": [
+            0.4091796875,
+            0.6126302083333334
+          ],
+          "kind": "design",
+          "source": "Selected-master tress traced during nine-part cleanup; design extent, not an import control point",
+          "lock_shape_on_new_variant": false
+        },
+        "front_lock_tip_right": {
+          "label": "当前右发梢参考",
+          "px": [
+            653,
+            950
+          ],
+          "uv": [
+            0.6376953125,
+            0.6184895833333334
+          ],
+          "kind": "design",
+          "source": "Selected-master tress traced during nine-part cleanup; design extent, not an import control point",
+          "lock_shape_on_new_variant": false
+        },
+        "eye_frame_top": {
+          "label": "eye_frame_top",
+          "px": [
+            519.0,
+            355.0
+          ],
+          "uv": [
+            0.5068359375,
+            0.23111979166666666
+          ],
+          "kind": "scaffold",
+          "source": "Import frame derived from this portrait, not a visible pigment landmark",
+          "lock_shape_on_new_variant": false
+        },
+        "brow_frame_top": {
+          "label": "brow_frame_top",
+          "px": [
+            519.5,
+            319.25
+          ],
+          "uv": [
+            0.50732421875,
+            0.20784505208333334
+          ],
+          "kind": "scaffold",
+          "source": "Import frame derived from this portrait, not a visible pigment landmark",
+          "lock_shape_on_new_variant": false
+        },
+        "nose_frame_bottom": {
+          "label": "nose_frame_bottom",
+          "px": [
+            518.5,
+            454.0
+          ],
+          "uv": [
+            0.50634765625,
+            0.2955729166666667
+          ],
+          "kind": "scaffold",
+          "source": "Import frame derived from this portrait, not a visible pigment landmark",
+          "lock_shape_on_new_variant": false
+        },
+        "nose_frame_side": {
+          "label": "nose_frame_side",
+          "px": [
+            532.75,
+            410
+          ],
+          "uv": [
+            0.520263671875,
+            0.2669270833333333
+          ],
+          "kind": "scaffold",
+          "source": "Import frame derived from this portrait, not a visible pigment landmark",
+          "lock_shape_on_new_variant": false
+        },
+        "mouth_frame_left": {
+          "label": "mouth_frame_left",
+          "px": [
+            487.0,
+            485
+          ],
+          "uv": [
+            0.4755859375,
+            0.3157552083333333
+          ],
+          "kind": "scaffold",
+          "source": "Import frame derived from this portrait, not a visible pigment landmark",
+          "lock_shape_on_new_variant": false
+        },
+        "mouth_frame_top": {
+          "label": "mouth_frame_top",
+          "px": [
+            519,
+            469.0
+          ],
+          "uv": [
+            0.5068359375,
+            0.3053385416666667
+          ],
+          "kind": "scaffold",
+          "source": "Import frame derived from this portrait, not a visible pigment landmark",
+          "lock_shape_on_new_variant": false
+        },
+        "collar_frame_top": {
+          "label": "collar_frame_top",
+          "px": [
+            517.0,
+            520.0
+          ],
+          "uv": [
+            0.5048828125,
+            0.3385416666666667
+          ],
+          "kind": "scaffold",
+          "source": "Import frame derived from this portrait, not a visible pigment landmark",
+          "lock_shape_on_new_variant": false
+        }
+      },
+      "slots": {
+        "hair_front": {
+          "pivot_px": [
+            518,
+            257
+          ],
+          "pivot_uv": [
+            0.505859375,
+            0.16731770833333334
+          ],
+          "translation_from_canvas_center_px": [
+            6,
+            -511
+          ],
+          "recommended_registration_controls": [
+            "hair_root_center",
+            "hairline_left",
+            "hairline_right",
+            "temple_left",
+            "temple_right"
+          ],
+          "export_canvas": [
+            1024,
+            1536
+          ],
+          "export_offset_px": [
+            0,
+            0
+          ],
+          "controls_are_registration_scaffold": "The measured guide frames import calibration; guide shape points do not force every variant to have the same silhouette"
+        },
+        "hair_back": {
+          "pivot_px": [
+            518,
+            257
+          ],
+          "pivot_uv": [
+            0.505859375,
+            0.16731770833333334
+          ],
+          "translation_from_canvas_center_px": [
+            6,
+            -511
+          ],
+          "recommended_registration_controls": [
+            "hair_root_center",
+            "temple_left",
+            "temple_right",
+            "neck_upper_left",
+            "neck_upper_right"
+          ],
+          "export_canvas": [
+            1024,
+            1536
+          ],
+          "export_offset_px": [
+            0,
+            0
+          ],
+          "controls_are_registration_scaffold": "The measured guide frames import calibration; guide shape points do not force every variant to have the same silhouette"
+        },
+        "face_shape": {
+          "pivot_px": [
+            519,
+            414
+          ],
+          "pivot_uv": [
+            0.5068359375,
+            0.26953125
+          ],
+          "translation_from_canvas_center_px": [
+            7,
+            -354
+          ],
+          "recommended_registration_controls": [
+            "head_axis",
+            "ear_root_left",
+            "ear_root_right",
+            "neck_upper_left",
+            "neck_upper_right"
+          ],
+          "export_canvas": [
+            1024,
+            1536
+          ],
+          "export_offset_px": [
+            0,
+            0
+          ],
+          "controls_are_registration_scaffold": "The measured guide frames import calibration; guide shape points do not force every variant to have the same silhouette"
+        },
+        "eyebrows": {
+          "pivot_px": [
+            519.5,
+            350.5
+          ],
+          "pivot_uv": [
+            0.50732421875,
+            0.22819010416666666
+          ],
+          "translation_from_canvas_center_px": [
+            7.5,
+            -417.5
+          ],
+          "recommended_registration_controls": [
+            "brow_left",
+            "brow_right",
+            "brow_frame_top"
+          ],
+          "export_canvas": [
+            1024,
+            1536
+          ],
+          "export_offset_px": [
+            0,
+            0
+          ],
+          "controls_are_registration_scaffold": "The measured guide frames import calibration; guide shape points do not force every variant to have the same silhouette"
+        },
+        "eyes": {
+          "pivot_px": [
+            519.0,
+            382.5
+          ],
+          "pivot_uv": [
+            0.5068359375,
+            0.2490234375
+          ],
+          "translation_from_canvas_center_px": [
+            7.0,
+            -385.5
+          ],
+          "recommended_registration_controls": [
+            "eye_left",
+            "eye_right",
+            "eye_frame_top"
+          ],
+          "export_canvas": [
+            1024,
+            1536
+          ],
+          "export_offset_px": [
+            0,
+            0
+          ],
+          "controls_are_registration_scaffold": "The measured guide frames import calibration; guide shape points do not force every variant to have the same silhouette"
+        },
+        "nose": {
+          "pivot_px": [
+            519,
+            410
+          ],
+          "pivot_uv": [
+            0.5068359375,
+            0.2669270833333333
+          ],
+          "translation_from_canvas_center_px": [
+            7,
+            -358
+          ],
+          "recommended_registration_controls": [
+            "nose_bridge",
+            "nose_frame_bottom",
+            "nose_frame_side"
+          ],
+          "export_canvas": [
+            1024,
+            1536
+          ],
+          "export_offset_px": [
+            0,
+            0
+          ],
+          "controls_are_registration_scaffold": "The measured guide frames import calibration; guide shape points do not force every variant to have the same silhouette"
+        },
+        "mouth": {
+          "pivot_px": [
+            519,
+            485
+          ],
+          "pivot_uv": [
+            0.5068359375,
+            0.3157552083333333
+          ],
+          "translation_from_canvas_center_px": [
+            7,
+            -283
+          ],
+          "recommended_registration_controls": [
+            "mouth_center",
+            "mouth_frame_left",
+            "mouth_frame_top"
+          ],
+          "export_canvas": [
+            1024,
+            1536
+          ],
+          "export_offset_px": [
+            0,
+            0
+          ],
+          "controls_are_registration_scaffold": "The measured guide frames import calibration; guide shape points do not force every variant to have the same silhouette"
+        },
+        "clothing": {
+          "pivot_px": [
+            517.0,
+            552.0
+          ],
+          "pivot_uv": [
+            0.5048828125,
+            0.359375
+          ],
+          "translation_from_canvas_center_px": [
+            5.0,
+            -216.0
+          ],
+          "recommended_registration_controls": [
+            "collar_join_left",
+            "collar_join_right",
+            "collar_frame_top"
+          ],
+          "export_canvas": [
+            1024,
+            1536
+          ],
+          "export_offset_px": [
+            0,
+            0
+          ],
+          "controls_are_registration_scaffold": "The measured guide frames import calibration; guide shape points do not force every variant to have the same silhouette"
+        },
+        "face_accessory": {
+          "pivot_px": [
+            519.0,
+            434.0
+          ],
+          "pivot_uv": [
+            0.5068359375,
+            0.2825520833333333
+          ],
+          "translation_from_canvas_center_px": [
+            7.0,
+            -334.0
+          ],
+          "recommended_registration_controls": [
+            "cheek_left",
+            "cheek_right",
+            "nose_bridge"
+          ],
+          "export_canvas": [
+            1024,
+            1536
+          ],
+          "export_offset_px": [
+            0,
+            0
+          ],
+          "controls_are_registration_scaffold": "The measured guide frames import calibration; guide shape points do not force every variant to have the same silhouette"
+        }
+      },
+      "unseen_geometry_source": "../reference/female_bald_support.png",
+      "unseen_geometry_is_not_new_artwork": true
+    }
+  },
+  "cleanup_package": "../../selected_ink_portrait_clean_20261003_v1/portrait_manifest.json"
+}

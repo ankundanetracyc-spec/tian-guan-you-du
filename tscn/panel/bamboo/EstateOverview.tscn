@@ -1,0 +1,255 @@
+[gd_scene format=3 uid="uid://bvvns1bfeh3ri"]
+
+[ext_resource type="Script" path="res://csharp/panel/bamboo/EstateOverview.cs" id="1_scroll"]
+[ext_resource type="Texture2D" path="res://textures/village_overview/qingxi_territory_overview_v3.png" id="2_qingxi_bg"]
+[ext_resource type="PackedScene" path="res://tscn/panel/SceneActionButton.tscn" id="3_action_button"]
+[ext_resource type="Texture2D" path="res://textures/ui/qingxi/quest_tracker_horizontal_v1.png" id="4_quest_frame"]
+[ext_resource type="Script" path="res://scripts/ui/SceneActionRope.gd" id="5_action_rope"]
+
+[sub_resource type="StyleBoxEmpty" id="flat"]
+
+[sub_resource type="StyleBoxFlat" id="side_panel"]
+bg_color = Color(0.015, 0.02, 0.016, 0.88)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.73, 0.72, 0.64, 0.48)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="EstateOverview" type="Control" unique_id=1443222444]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+# 全屏总览不能截走位于其下方的常驻时间栏点击；地标 Button 仍自行接收鼠标事件。
+mouse_filter = 2
+script = ExtResource("1_scroll")
+
+[node name="Background" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
+texture = ExtResource("2_qingxi_bg")
+mouse_filter = 2
+
+[node name="StageLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 38.0
+offset_top = 30.0
+offset_right = 420.0
+offset_bottom = 76.0
+theme_override_colors/font_color = Color(0.98, 0.92, 0.72, 1)
+theme_override_colors/font_shadow_color = Color(0.04, 0.05, 0.03, 0.9)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 26
+mouse_filter = 2
+
+[node name="QuestFrameArt" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_top = 0.25
+anchor_bottom = 0.25
+offset_left = -376.0
+offset_top = -14.0
+offset_right = 0.0
+offset_bottom = 414.0
+grow_horizontal = 0
+texture = ExtResource("4_quest_frame")
+expand_mode = 1
+stretch_mode = 6
+modulate = Color(0.78, 0.82, 0.77, 0.30)
+mouse_filter = 2
+
+[node name="QuestPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_top = 0.25
+anchor_bottom = 0.25
+offset_left = -360.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 400.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("side_panel")
+
+[node name="Margin" type="MarginContainer" parent="QuestPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 18
+
+[node name="VBox" type="VBoxContainer" parent="QuestPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Header" type="Label" parent="QuestPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 0.85, 0.63, 1)
+theme_override_font_sizes/font_size = 24
+text = "阶段目标 · 当前任务"
+
+[node name="TaskList" type="VBoxContainer" parent="QuestPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TipLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -336.0
+offset_top = 35.0
+offset_right = -38.0
+offset_bottom = 66.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.93, 0.95, 0.88, 0.9)
+theme_override_font_sizes/font_size = 16
+text = "选择地点，推进此地见闻"
+horizontal_alignment = 2
+mouse_filter = 2
+
+[node name="FeatureLayer" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="LocationPage" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Background" type="TextureRect" parent="LocationPage"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Shade" type="ColorRect" parent="LocationPage"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.04, 0.045, 0.035, 0.16)
+
+[node name="ActionRope" type="Control" parent="LocationPage"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("5_action_rope")
+action_container_path = NodePath("..")
+
+[node name="LocationTitle" type="Label" parent="LocationPage"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 28.0
+offset_right = 430.0
+offset_bottom = 78.0
+theme_override_colors/font_color = Color(0.98, 0.92, 0.72, 1)
+theme_override_colors/font_shadow_color = Color(0.04, 0.05, 0.03, 0.9)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 30
+
+[node name="BackButton" type="Button" parent="LocationPage"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -170.0
+offset_top = 28.0
+offset_right = -38.0
+offset_bottom = 74.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 18
+text = "返回青溪里"
+
+[node name="LocationAction" parent="LocationPage" instance=ExtResource("3_action_button")]
+text = "进入后山试炼"
+
+[node name="MeditationAction" parent="LocationPage" instance=ExtResource("3_action_button")]
+text = "静室"
+
+[node name="RestAction" parent="LocationPage" instance=ExtResource("3_action_button")]
+text = "休息"
+
+[node name="ResidentsPanel" type="PanelContainer" parent="LocationPage"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 132.0
+offset_right = 306.0
+offset_bottom = -200.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("side_panel")
+
+[node name="Margin" type="MarginContainer" parent="LocationPage/ResidentsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
+
+[node name="VBox" type="VBoxContainer" parent="LocationPage/ResidentsPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="Title" type="Button" parent="LocationPage/ResidentsPanel/Margin/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(28, 28)
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.94, 0.85, 0.63, 1)
+theme_override_colors/font_hover_color = Color(1, 0.96, 0.8, 1)
+theme_override_font_sizes/font_size = 18
+text = "▼"
+tooltip_text = "收起角色列表"
+flat = true
+alignment = 1
+
+[node name="ResidentList" type="VBoxContainer" parent="LocationPage/ResidentsPanel/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 7

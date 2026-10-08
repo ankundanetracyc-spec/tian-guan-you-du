@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="Electron" agent="Codex">
+  <diagram id="jinghong-lueying" name="惊鸿掠影谱">
+    <mxGraphModel dx="1273" dy="768" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1300" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=22;fontStyle=1;" value="惊鸿掠影谱&#xA;仅辅修 · 身法剑谱 · 敏捷" vertex="1">
+          <mxGeometry height="79" width="600" x="800" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="rule" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=16;" value="秘籍定位&#xA;可作主修：否　可作辅修：是　无可修炼至的境界&#xA;适用条件：上一张剑攻击 / 遁身牌　提供效果：换位、步后精准、剑意、遁身减耗&#xA;适合搭配：流云剑经、折枝剑谱、未来剑影分光" vertex="1">
+          <mxGeometry height="104" width="900" x="650" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="v1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=15;fontStyle=1;" value="第一卷：惊鸿卷&#xA;顺序：1&#xA;学习要求：有灵根；敏捷≥5；剑道造诣≥6&#xA;研读值：48&#xA;学会永久属性：敏捷+1，剑道造诣+1&#xA;习得：惊鸿掠步*1、回身点锋*1" vertex="1">
+          <mxGeometry height="138" width="400" x="900" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=15;" value="惊鸿掠步&lt;br&gt;类型：遁身牌&lt;br&gt;关键词：无&lt;br&gt;耗费：精力 2、法力 0&lt;br&gt;目标：自身&lt;br&gt;效果：移动2格&lt;br&gt;下一张由玩家主动打出的剑术攻击精准+6&lt;br&gt;若上一张是剑攻击，额外移动1格&lt;br&gt;主要作用：剑后换位，步后再剑" vertex="1">
+          <mxGeometry height="176" width="500" x="20" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=15;" value="回身点锋&lt;br&gt;类型：攻伐牌&lt;br&gt;关键词：无&lt;br&gt;耗费：精力 2、法力 0&lt;br&gt;目标：单体敌人&lt;br&gt;伤害类型：物理&lt;br&gt;伤害公式：6 + 剑道造诣×0.38 + 敏捷×0.22 + 体魄×0.08&lt;br&gt;命中获得1剑意；上一张为遁身牌时伤害+20%&lt;br&gt;目标带剑痕：会心+4" vertex="1">
+          <mxGeometry height="195" width="500" x="20" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="v2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=15;fontStyle=1;" value="第二卷：返影卷&#xA;顺序：2&#xA;学习要求：已学惊鸿卷；敏捷≥8；剑道造诣≥10&#xA;研读值：72&#xA;学会永久属性：敏捷+1，剑道造诣+1&#xA;习得：身随剑转*1" vertex="1">
+          <mxGeometry height="138" width="400" x="900" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=15;" value="身随剑转&lt;br&gt;类型：术诀牌&lt;br&gt;关键词：无&lt;br&gt;耗费：精力 0、法力 0&lt;br&gt;目标：自身&lt;br&gt;本次自身行动期间下一张由玩家主动打出的剑术攻击命中后：&lt;br&gt;下一张遁身牌精力消耗-4&lt;br&gt;若目标带剑痕，额外获得1剑意" vertex="1">
+          <mxGeometry height="176" width="500" x="20" y="900" as="geometry" />
+        </mxCell>
+        <mxCell id="combo" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;" value="常用出招顺序&#xA;回身点锋 → 惊鸿掠步（剑后多走1格）→ 下一张由玩家主动打出的剑术攻击牌精准+6&#xA;身随剑转 → 玩家主动打出的剑术攻击命中 → 遁身减耗 → 回身点锋步后增伤&#xA;与其他秘籍搭配：折枝的压枝检查本次自身行动期间是否使用过遁身牌；流云根据移动和玩家主动打出的剑术攻击获得效果" vertex="1">
+          <mxGeometry height="166" width="410" x="1760" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="rule" style="endArrow=block;html=1;" target="v1" value="学习第一卷">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="v1" style="endArrow=block;html=1;" target="v2" value="满足前置">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="v1_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;fontStyle=1;" value="纳气&#xA;精准+3&#xA;行动速度+3" vertex="1">
+          <mxGeometry height="84" width="270" x="570" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="v1_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=16;fontStyle=1;" value="化法&#xA;基础步法*1 → 惊鸿掠步*1" vertex="1">
+          <mxGeometry height="64" width="330" x="1400" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="v2_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;fontStyle=1;" value="纳气&#xA;行动速度+3&#xA;会心+2" vertex="1">
+          <mxGeometry height="84" width="270" x="570" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="v2_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=16;fontStyle=1;" value="化法&#xA;基础技能库额外加入 身随剑转*1" vertex="1">
+          <mxGeometry height="64" width="330" x="1400" y="880" as="geometry" />
+        </mxCell>
+        <mxCell id="summary" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=15;" value="属性与路线汇总&#xA;学会永久属性：敏捷+2，剑道造诣+2&#xA;纳气合计：精准+3，行动速度+6，会心+2&#xA;化法合计：替换1张基础步法，额外加入1张身随剑转" vertex="1">
+          <mxGeometry height="99" width="390" x="1780" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="ev1l" edge="1" parent="1" source="v1" style="endArrow=block;html=1;rounded=0;" target="v1_left" value="纳气">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ev1r" edge="1" parent="1" source="v1" style="endArrow=block;html=1;rounded=0;" target="v1_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ev2l" edge="1" parent="1" source="v2" style="endArrow=block;html=1;rounded=0;" target="v2_left" value="纳气">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ev2r" edge="1" parent="1" source="v2" style="endArrow=block;html=1;rounded=0;" target="v2_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ec1" edge="1" parent="1" source="v1" style="endArrow=block;html=1;rounded=0;" target="c1" value="习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ec2" edge="1" parent="1" source="v2" style="endArrow=block;html=1;rounded=0;" target="c3" value="习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ec1b" edge="1" parent="1" source="v1" style="endArrow=block;html=1;rounded=0;" target="c2" value="习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="status_rules" parent="1" vertex="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;align=left;verticalAlign=top;" value="状态与关联&amp;#xA;剑意：自身增益；回身点锋命中后获得。&amp;#xA;剑痕：目标状态；可提高回身点锋会心。">
+          <mxGeometry x="1760" y="850" width="410" height="190" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="FormationData" format=3]
+
+[ext_resource type="Script" path="res://csharp/formation/FormationData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+formation_name = "金刚阵"
+description = "凝聚金刚之力，提升全员物理防御。"
+level = 1
+max_durability = 5
+
+# 阵盘制作（词缀匹配）
+body_tag_requirements = ["五行[土]", "质地[石]", "功用[固本]"]
+ink_tag_requirements = ["质地[液]", "功用[通脉]"]
+
+# 阵眼 CPU — 需承载灵力
+eye_tag_requirements = ["功用[蕴灵]"]
+eye_bonus_tags = {}
+
+# 阵枢 功能芯片 — 防御类需护体
+pivot_tag_requirements = ["功用[护体]"]
+pivot_bonus_tags = {}
+
+# 阵基 电源
+fuel_tag_requirements = ["功用[蕴灵]", "质地[晶]"]
+fuel_bonus_tags = {}
+fuel_rate = 0.0
+
+# 效果（战阵）
+battle_physical_defense_bonus = 0.3
+
+# 倍率映射
+pivot_effect_mults = {
+	"玄武壳": 1.0
+}
+eye_range_mults = {
+	"空冥石": 1.0
+}

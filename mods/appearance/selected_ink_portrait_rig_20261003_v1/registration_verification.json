@@ -1,0 +1,32 @@
+{
+  "rig_id": "our_selected_ink_portrait_rig_20261003_v1",
+  "sexes": {
+    "male": {
+      "integer_shift_px": [
+        7,
+        -5
+      ],
+      "registered_png_exactly_matches_source": true,
+      "cropped_png_with_explicit_local_frame_matches_source": true,
+      "maximum_shifted_landmark_residual_px": 0.0,
+      "maximum_cropped_landmark_residual_px": 0.0,
+      "incorrect_control_rejected": "Controls do not share one transform: maximum residual 10.690px",
+      "different_family_rejected": "The source binding belongs to another portrait family"
+    },
+    "female": {
+      "integer_shift_px": [
+        7,
+        -5
+      ],
+      "registered_png_exactly_matches_source": true,
+      "cropped_png_with_explicit_local_frame_matches_source": true,
+      "maximum_shifted_landmark_residual_px": 0.0,
+      "maximum_cropped_landmark_residual_px": 0.0,
+      "incorrect_control_rejected": "Controls do not share one transform: maximum residual 10.724px",
+      "different_family_rejected": "The source binding belongs to another portrait family"
+    }
+  },
+  "uniform_rotation_and_scale_fit_max_residual_px": 1.2710574864626038e-13,
+  "source_style_reference": "User-selected picture, recovered exactly; no game artwork used",
+  "scope": "Placement and wrong-binding gates; semantic PNG cleanup and new variants are not approved by this check"
+}

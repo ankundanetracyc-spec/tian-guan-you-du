@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BuildingData" format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/EntityData.cs" id="1"]
+[ext_resource type="Script" path="res://csharp/resources/BuildingData.cs" id="2"]
+
+[resource]
+script = ExtResource("2")
+entity_name = "民居"
+icon_path = "res://textures/建筑/民居.png"
+summary = "供家族成员居住的基础建筑，也是村庄扩张的起点。"
+max_durability = 20
+current_durability = 20
+consume_durability = false
+grid_size = Vector2i(1, 1)
+build_cost_item_paths = Array[String](["res://resources/entities/items/石材.tres"])
+build_cost_counts = Array[int]([6])

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="BasicDeckResource" format=3]
+
+[ext_resource type="Script" path="res://csharp/gongfa/BasicDeckResource.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+deck_name = "林地凶狼"
+deck_description = "撕咬施压，游身架招避开正面交锋。"
+skill_entries = Array[Dictionary]([{"path":"res://resources/activeskills/妖兽/林地凶狼/撕咬.tres","count":4},{"path":"res://resources/activeskills/妖兽/林地凶狼/游身架招.tres","count":4}])

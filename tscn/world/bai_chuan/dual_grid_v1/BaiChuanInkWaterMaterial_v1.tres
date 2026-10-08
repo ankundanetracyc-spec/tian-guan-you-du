@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3]
+
+[ext_resource type="Shader" path="res://shaders/world_map/bai_chuan/water_ink_flow_v1.gdshader" id="1_shader"]
+[ext_resource type="Texture2D" path="res://textures/world_map/bai_chuan/dual_grid_v1/water_flow_noise_v1.png" id="2_noise"]
+
+[resource]
+shader = ExtResource("1_shader")
+shader_parameter/flow_noise = ExtResource("2_noise")
+shader_parameter/ink_deep_color = Color(0.494, 0.624, 0.659, 1)
+shader_parameter/ink_light_color = Color(0.682, 0.769, 0.788, 1)
+shader_parameter/ink_glint_color = Color(0.8, 0.859, 0.867, 1)
+shader_parameter/wash_strength = 0.2
+shader_parameter/ripple_strength = 0.04
+shader_parameter/flow_speed = 0.028

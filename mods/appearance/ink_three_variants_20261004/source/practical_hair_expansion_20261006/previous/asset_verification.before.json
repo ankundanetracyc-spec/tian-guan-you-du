@@ -1,0 +1,609 @@
+{
+  "pass": true,
+  "png_count": 67,
+  "common_canvas": [
+    1024,
+    1536
+  ],
+  "transparent_rgb_clean": true,
+  "variant_counts": {
+    "male": [
+      5,
+      5,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "female": [
+      5,
+      5,
+      4,
+      4,
+      4,
+      4,
+      4,
+      3,
+      3
+    ]
+  },
+  "bangs_withdrawn": true,
+  "new_hair_mix_visual_checks": 20,
+  "visual_approved_by_user": false,
+  "records": [
+    {
+      "sex": "male",
+      "slot": "hair_front",
+      "variant": 1,
+      "file": "male/hair_front/01.png",
+      "sha256": "f0af1327511852a730226b9b83faa5382c213f33aaa811f96936cb1a7db0b923",
+      "empty": false
+    },
+    {
+      "sex": "male",
+      "slot": "hair_front",
+      "variant": 2,
+      "file": "male/hair_front/02.png",
+      "sha256": "48fafdab140df7bf7f05de05d8fbafe8ff0bfd438ee0f2aabeba5db40fffaffe",
+      "empty": false
+    },
+    {
+      "sex": "male",
+      "slot": "hair_front",
+      "variant": 3,
+      "file": "male/hair_front/03.png",
+      "sha256": "ea876a3d1023b73898fd6d522bb183fae8f54a8cb30151f9ced0bd7bdafef5e3",
+      "empty": false
+    },
+    {
+      "sex": "male",
+      "slot": "hair_front",
+      "variant": 4,
+      "file": "male/hair_front/04.png",
+      "sha256": "dad94fa67c47f6ce0cbfa8dcc851a6f482cb22cfb7491fd8c6541fa636d9d94c",
+      "empty": false
+    },
+    {
+      "sex": "male",
+      "slot": "hair_front",
+      "variant": 5,
+      "file": "male/hair_front/05.png",
+      "sha256": "cade493e454c993230e2963bed295188631ad2f0e0954425c5c11027fdaf2e5f",
+      "empty": false
+    },
+    {
+      "sex": "male",
+      "slot": "hair_back",
+      "variant": 1,
+      "file": "male/hair_back/01.png",
+      "sha256": "81f50d52c68fc1b21832fa6d0a92c9294914dc3f9771e41588f1edcc4e5398d9",
+      "empty": false
+    },
+    {
+      "sex": "male",
+      "slot": "hair_back",
+      "variant": 2,
+      "file": "male/hair_back/02.png",
+      "sha256": "36c80f04274afcd63192a2a6bccb26add10e05a44f404b3628c752f089151076",
+      "empty": false
+    },
+    {
+      "sex": "male",
+      "slot": "hair_back",
+      "variant": 3,
+      "file": "male/hair_back/03.png",
+      "sha256": "b4335de22561ed2d4a1f5baa28c3feaac2d7b754752cf01b4d7f62543ad6504c",
+      "empty": false
+    },
+    {
+      "sex": "male",
+      "slot": "hair_back",
+      "variant": 4,
+      "file": "male/hair_back/04.png",
+      "sha256": "1086f9dfb5222e29bbd68b0bf4fe6d71f754d867e9797cc66f0a2f41052b8226",
+      "empty": false
+    },
+    {
+      "sex": "male",
+      "slot": "hair_back",
+      "variant": 5,
+      "file": "male/hair_back/05.png",
+      "sha256": "d537ef0f005583c83e65dfad02629bc6bf90d6868c9ddf3782efbf159d938a52",
+      "empty": false
+    },
+    {
+      "sex": "male",
+      "slot": "eyebrows",
+      "variant": 1,
+      "file": "male/eyebrows/01.png",
+      "sha256": "406865b4fe7634338fdcc0413564912721005f3bc0530d866e74e23034408611",
+      "empty": false
+    },
+    {
+      "sex": "male",
+      "slot": "eyebrows",
+      "variant": 2,
+      "file": "male/eyebrows/02.png",
+      "sha256": "82ff21e504be2833a492537ee972db2bb2307a95c800ed3f16972d9ed723f39c",
+      "empty": false
+    },
+    {
+      "sex": "male",
+      "slot": "eyebrows",
+      "variant": 3,
+      "file": "male/eyebrows/03.png",
+      "sha256": "23caf0efb4a8863fa01288539e54eb864a6cfb8ebfdc41cd1aaef6fd5e5ff3bf",
+      "empty": false
+    },
+    {
+      "sex": "male",
+      "slot": "eyes",
+      "variant": 1,
+      "file": "male/eyes/01.png",
+      "sha256": "17a5498df59fa6ad4741b91516fbaa269d23bb4eab80aba1efbd45fbf2a94767",
+      "empty": false
+    },
+    {
+      "sex": "male",
+      "slot": "eyes",
+      "variant": 2,
+      "file": "male/eyes/02.png",
+      "sha256": "a9abce5d0a3f23b7b2b04ceca70caa2ac0d1bc1f30c3fe5bfd19b761869751fd",
+      "empty": false
+    },
+    {
+      "sex": "male",
+      "slot": "eyes",
+      "variant": 3,
+      "file": "male/eyes/03.png",
+      "sha256": "7a322a1f953f33d91c4316dc9fb0d53497679c893329f8fa2b5d389a3b4161cd",
+      "empty": false
+    },
+    {
+      "sex": "male",
+      "slot": "nose",
+      "variant": 1,
+      "file": "male/nose/01.png",
+      "sha256": "0197d590a5e04592c5bb5fe9ba7e28b8ea3512f3d13e3e75cd85da768146f3d4",
+      "empty": false
+    },
+    {
+      "sex": "male",
+      "slot": "nose",
+      "variant": 2,
+      "file": "male/nose/02.png",
+      "sha256": "883a0a005b49d1fe2aa8c89120743dabd6e810178bcd3813db7a48d234d6db7b",
+      "empty": false
+    },
+    {
+      "sex": "male",
+      "slot": "nose",
+      "variant": 3,
+      "file": "male/nose/03.png",
+      "sha256": "2783b46b2f3c67de49f7a4df5cc66bcdf6a75674e3ba861b2d3b2098c55c289d",
+      "empty": false
+    },
+    {
+      "sex": "male",
+      "slot": "mouth",
+      "variant": 1,
+      "file": "male/mouth/01.png",
+      "sha256": "fdf826b8d8f53b692d55eb80d841a25ad309b38d7b97b07c6aa3bcefc47e1101",
+      "empty": false
+    },
+    {
+      "sex": "male",
+      "slot": "mouth",
+      "variant": 2,
+      "file": "male/mouth/02.png",
+      "sha256": "f5d89acdbc2ebc3c4d5a42e5d9c3899182acc63922f23098887d1c5af85bed5f",
+      "empty": false
+    },
+    {
+      "sex": "male",
+      "slot": "mouth",
+      "variant": 3,
+      "file": "male/mouth/03.png",
+      "sha256": "39d4a374ba4d60234b5fb67cf5103c795621e9ac23ea01ca7d83b8465e253971",
+      "empty": false
+    },
+    {
+      "sex": "male",
+      "slot": "face_shape",
+      "variant": 1,
+      "file": "male/face_shape/01.png",
+      "sha256": "ce61913beab0448f27a404d3ac37eb118f400df6e1d66a3ec715cbf4c755950c",
+      "empty": false,
+      "forehead_rgb_median": [
+        234.0,
+        209.0,
+        193.0
+      ]
+    },
+    {
+      "sex": "male",
+      "slot": "face_shape",
+      "variant": 2,
+      "file": "male/face_shape/02.png",
+      "sha256": "d460822f350a9858b590af8a36af4eb24e3cf075bf39ff9576d7d01eeaba1e4a",
+      "empty": false,
+      "forehead_rgb_median": [
+        233.0,
+        209.0,
+        192.0
+      ]
+    },
+    {
+      "sex": "male",
+      "slot": "face_shape",
+      "variant": 3,
+      "file": "male/face_shape/03.png",
+      "sha256": "892b45ff35674d8d89ca351f39cb03fb99400dc4b5485298d65a670a175a6e25",
+      "empty": false,
+      "forehead_rgb_median": [
+        233.0,
+        209.0,
+        192.0
+      ]
+    },
+    {
+      "sex": "male",
+      "slot": "clothing",
+      "variant": 1,
+      "file": "male/clothing/01.png",
+      "sha256": "eafdea5c58321c13e346e7a81f6e68475dd4332e516966b92aab0eed7ec825fe",
+      "empty": false
+    },
+    {
+      "sex": "male",
+      "slot": "clothing",
+      "variant": 2,
+      "file": "male/clothing/02.png",
+      "sha256": "41b4d852cd20b62ed9288a829a90314b0b95166c6735137778a2084e4ee2518b",
+      "empty": false
+    },
+    {
+      "sex": "male",
+      "slot": "clothing",
+      "variant": 3,
+      "file": "male/clothing/03.png",
+      "sha256": "090be28df7b8bb8e8057ebcf678919b04fc7d6872bcc521dcd2250f64a8cbe49",
+      "empty": false
+    },
+    {
+      "sex": "male",
+      "slot": "face_accessory",
+      "variant": 1,
+      "file": "male/face_accessory/01.png",
+      "sha256": "b69dae56a14d1a8314ed40664c4033ea0a550eea2673e04df42a66ac6b9faf2c",
+      "empty": true
+    },
+    {
+      "sex": "male",
+      "slot": "face_accessory",
+      "variant": 2,
+      "file": "male/face_accessory/02.png",
+      "sha256": "005b9677c9779273891c2a554c2f89c89a2b6633c7cd4651622b213d45dfb5a1",
+      "empty": false
+    },
+    {
+      "sex": "male",
+      "slot": "face_accessory",
+      "variant": 3,
+      "file": "male/face_accessory/03.png",
+      "sha256": "3f1f66e3474c84eb2a0674f6e7cbf40ae26cd7ed3746b5c5d4d0ca6d69443254",
+      "empty": false
+    },
+    {
+      "sex": "female",
+      "slot": "hair_front",
+      "variant": 1,
+      "file": "female/hair_front/01.png",
+      "sha256": "10901dc4cea84151a7cfc89be3a7c8a753d388bb25cc6ffdd0234b2dfd03c076",
+      "empty": false
+    },
+    {
+      "sex": "female",
+      "slot": "hair_front",
+      "variant": 2,
+      "file": "female/hair_front/02.png",
+      "sha256": "62dcc04c91010850747417b1ea6b54bf233a20cd82b8819460bbdcfd44280dc4",
+      "empty": false
+    },
+    {
+      "sex": "female",
+      "slot": "hair_front",
+      "variant": 3,
+      "file": "female/hair_front/03.png",
+      "sha256": "e764123c6bd7c737a5b7719ce4ecfceeb3797ea31d48d20ea07209734bcbb8e9",
+      "empty": false
+    },
+    {
+      "sex": "female",
+      "slot": "hair_front",
+      "variant": 4,
+      "file": "female/hair_front/04.png",
+      "sha256": "cb49305b84d75541954255d45f991dde19804207a87d073dc2778b6218506309",
+      "empty": false
+    },
+    {
+      "sex": "female",
+      "slot": "hair_front",
+      "variant": 5,
+      "file": "female/hair_front/05.png",
+      "sha256": "6b6110cea48a87fa0779bac2ae221321bedd7541fb666f54727e47a7ef673e55",
+      "empty": false
+    },
+    {
+      "sex": "female",
+      "slot": "hair_back",
+      "variant": 1,
+      "file": "female/hair_back/01.png",
+      "sha256": "c0a44a7ff3b780c22f0338d57d28f79fe263471955d445c76dc1a63aa9afb525",
+      "empty": false
+    },
+    {
+      "sex": "female",
+      "slot": "hair_back",
+      "variant": 2,
+      "file": "female/hair_back/02.png",
+      "sha256": "39aac5ced71b45ded34409023b02539737c81387f38efe6a4a4073f749dc46d9",
+      "empty": false
+    },
+    {
+      "sex": "female",
+      "slot": "hair_back",
+      "variant": 3,
+      "file": "female/hair_back/03.png",
+      "sha256": "d603b219a25a6c709ac540fa51b54fb020bffb6532f666b745db1f051f7dae06",
+      "empty": false
+    },
+    {
+      "sex": "female",
+      "slot": "hair_back",
+      "variant": 4,
+      "file": "female/hair_back/04.png",
+      "sha256": "9fbaa643b627f2d0aeb1cd4c5a743605e25ed6da08d67767e4d9f8e4dddd7dfa",
+      "empty": false
+    },
+    {
+      "sex": "female",
+      "slot": "hair_back",
+      "variant": 5,
+      "file": "female/hair_back/05.png",
+      "sha256": "2b9bad6f771a3b3ba4fbd6eeb90726d7b8c0f06cfda3673628becdc3d74cc308",
+      "empty": false
+    },
+    {
+      "sex": "female",
+      "slot": "eyebrows",
+      "variant": 1,
+      "file": "female/eyebrows/01.png",
+      "sha256": "443760e94663c32efd7368bdbe2e127654dfe28d29ae4f6c26df5da61218a7d2",
+      "empty": false
+    },
+    {
+      "sex": "female",
+      "slot": "eyebrows",
+      "variant": 2,
+      "file": "female/eyebrows/02.png",
+      "sha256": "6364f1d87783a2c1f69a386c8ba6ca91ddb4a8739369f4c48fc9430cff0dd503",
+      "empty": false
+    },
+    {
+      "sex": "female",
+      "slot": "eyebrows",
+      "variant": 3,
+      "file": "female/eyebrows/03.png",
+      "sha256": "9867d8f072360cca201304d74fd1e5cdecf7acd849d3710bf4ab1c36380f303b",
+      "empty": false
+    },
+    {
+      "sex": "female",
+      "slot": "eyebrows",
+      "variant": 4,
+      "file": "female/eyebrows/04.png",
+      "sha256": "345f15490295bd404f6d975908509f41914e6ce6d01e8c8fdbec19427c82f714",
+      "empty": false
+    },
+    {
+      "sex": "female",
+      "slot": "eyes",
+      "variant": 1,
+      "file": "female/eyes/01.png",
+      "sha256": "df082e4d63b21dd4538670a83fcfb2ee028938b6631ee7f56efa6da202522324",
+      "empty": false
+    },
+    {
+      "sex": "female",
+      "slot": "eyes",
+      "variant": 2,
+      "file": "female/eyes/02.png",
+      "sha256": "6bbbba4eddbe7ae6e07f7c0e4c2068b45ea97538c3baebf97f7f226ec0839737",
+      "empty": false
+    },
+    {
+      "sex": "female",
+      "slot": "eyes",
+      "variant": 3,
+      "file": "female/eyes/03.png",
+      "sha256": "8d41b2b12a9da4319ed7bc7ec8151aabe719ac00c926f7435bc0da1b921e2a69",
+      "empty": false
+    },
+    {
+      "sex": "female",
+      "slot": "eyes",
+      "variant": 4,
+      "file": "female/eyes/04.png",
+      "sha256": "b908546dd7287e6e02e27776209ac241e9fa5ae169170887b5bf408db6fbee5c",
+      "empty": false
+    },
+    {
+      "sex": "female",
+      "slot": "nose",
+      "variant": 1,
+      "file": "female/nose/01.png",
+      "sha256": "b0322200f05b93b85b4636cc6e1c054260baa10a0c9e8972320d0763a0ce3e4d",
+      "empty": false
+    },
+    {
+      "sex": "female",
+      "slot": "nose",
+      "variant": 2,
+      "file": "female/nose/02.png",
+      "sha256": "8f0f0e21739d137775d8efeee5b49e12329bce93d58af8092a9ecb1d9ff6b12c",
+      "empty": false
+    },
+    {
+      "sex": "female",
+      "slot": "nose",
+      "variant": 3,
+      "file": "female/nose/03.png",
+      "sha256": "bde1e0dddfe887fb8ec29ad67a655981eadb81ec4a99cdf50cd95c4ba6f9b8b5",
+      "empty": false
+    },
+    {
+      "sex": "female",
+      "slot": "nose",
+      "variant": 4,
+      "file": "female/nose/04.png",
+      "sha256": "9460abe32f88c01388e36fede30804ebbd5beb69839f955221eadff1107b5828",
+      "empty": false
+    },
+    {
+      "sex": "female",
+      "slot": "mouth",
+      "variant": 1,
+      "file": "female/mouth/01.png",
+      "sha256": "6c6fc4634b54eca42373de7cb96ce45a88eb04b29d29f9d7c4368bb24a9d7d52",
+      "empty": false
+    },
+    {
+      "sex": "female",
+      "slot": "mouth",
+      "variant": 2,
+      "file": "female/mouth/02.png",
+      "sha256": "5937324f24a49b337ac360607cd335cf0a3c54e6c25ed49a2cf0854dca116692",
+      "empty": false
+    },
+    {
+      "sex": "female",
+      "slot": "mouth",
+      "variant": 3,
+      "file": "female/mouth/03.png",
+      "sha256": "ccd791e37c2e86a9b687c52591d8d3d623f625349ad94c51e41a2f03c8cb074c",
+      "empty": false
+    },
+    {
+      "sex": "female",
+      "slot": "mouth",
+      "variant": 4,
+      "file": "female/mouth/04.png",
+      "sha256": "7a0f9730147f3586e40ddac839625335df66c5b87003af9e1e4970059d041552",
+      "empty": false
+    },
+    {
+      "sex": "female",
+      "slot": "face_shape",
+      "variant": 1,
+      "file": "female/face_shape/01.png",
+      "sha256": "e4193e01b56e0bd1c64052b3009e3668957f28a3b48e18c1833bd475a4381834",
+      "empty": false,
+      "forehead_rgb_median": [
+        233.0,
+        209.0,
+        191.0
+      ]
+    },
+    {
+      "sex": "female",
+      "slot": "face_shape",
+      "variant": 2,
+      "file": "female/face_shape/02.png",
+      "sha256": "4d174a573448450afb20f5dc7ebe1feb1ceaf8f40d7a6dea1d704e73b008bb44",
+      "empty": false,
+      "forehead_rgb_median": [
+        233.0,
+        209.0,
+        192.0
+      ]
+    },
+    {
+      "sex": "female",
+      "slot": "face_shape",
+      "variant": 3,
+      "file": "female/face_shape/03.png",
+      "sha256": "5988de09b527845941c84ddcb3931254fa64d785e05cfc4b3e5cab54c15e02fe",
+      "empty": false,
+      "forehead_rgb_median": [
+        233.0,
+        209.0,
+        192.0
+      ]
+    },
+    {
+      "sex": "female",
+      "slot": "face_shape",
+      "variant": 4,
+      "file": "female/face_shape/04.png",
+      "sha256": "e749529c2aafab5fb9d849d70e0bd9e6b03ae511de35572710911c89ede8d28d",
+      "empty": false,
+      "forehead_rgb_median": [
+        233.0,
+        209.0,
+        192.0
+      ]
+    },
+    {
+      "sex": "female",
+      "slot": "clothing",
+      "variant": 1,
+      "file": "female/clothing/01.png",
+      "sha256": "0c29fe6fc05c055c738b01e4c8e44c083259a8544002e16ae1b1b238fdcb365e",
+      "empty": false
+    },
+    {
+      "sex": "female",
+      "slot": "clothing",
+      "variant": 2,
+      "file": "female/clothing/02.png",
+      "sha256": "26656460f05c8507e50b9cc81a1c83ad258e35bda33368b1cf6101d6d7b4abce",
+      "empty": false
+    },
+    {
+      "sex": "female",
+      "slot": "clothing",
+      "variant": 3,
+      "file": "female/clothing/03.png",
+      "sha256": "ec421ecf099ea661bd311b54af6a6046d000a77ad7be1681cf6c061f143650d5",
+      "empty": false
+    },
+    {
+      "sex": "female",
+      "slot": "face_accessory",
+      "variant": 1,
+      "file": "female/face_accessory/01.png",
+      "sha256": "b69dae56a14d1a8314ed40664c4033ea0a550eea2673e04df42a66ac6b9faf2c",
+      "empty": true
+    },
+    {
+      "sex": "female",
+      "slot": "face_accessory",
+      "variant": 2,
+      "file": "female/face_accessory/02.png",
+      "sha256": "f799aa0618e06ee56bc17e86aec9b63793c884a4b958f8e28674990b1e894c3e",
+      "empty": false
+    },
+    {
+      "sex": "female",
+      "slot": "face_accessory",
+      "variant": 3,
+      "file": "female/face_accessory/03.png",
+      "sha256": "13c0a99d7664cf1904b996b439a1c18568acc33c3a4cde139ea8aa5f15b8d9fc",
+      "empty": false
+    }
+  ]
+}

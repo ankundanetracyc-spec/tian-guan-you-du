@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="EquipmentData" format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/EntityData.cs" id="1"]
+[ext_resource type="Script" path="res://csharp/resources/EquipmentData.cs" id="2"]
+
+[resource]
+script = ExtResource("2")
+definition_id = &"equip_cloth_armor"
+entity_name = "布甲"
+can_stack = false
+max_stack = 1
+icon_path = ""
+item_category = "装备"
+equip_type = 1
+quality = 1
+fixed_bonuses = {
+"max_health": 25,
+"physical_defense": 5,
+
+}

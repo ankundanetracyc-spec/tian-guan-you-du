@@ -1,0 +1,51 @@
+{
+  "map_id": "bai_chuan",
+  "hierarchy": "first_level -> second_level -> locations",
+  "political_levels": ["first_level", "second_level"],
+  "placement_status": "placed",
+  "position_source": "res://tscn/world/NodeWorldMap.tscn",
+  "notes": "二级势力是百川实际管理单元。首期每个一级势力配置三个固定辖域，共十二个；每个辖域对应一个可抵达地图地点，地点归属唯一，不重复挂接。",
+  "factions": [
+    {
+      "id": "yuxu_xianzong",
+      "name": "玉虚仙宗",
+      "scope_direction": "百川中部偏西的河谷、山地和旧道",
+      "second_level_ids": ["yuxu_qinglan_observatory", "yuxu_baishi_city", "yuxu_donglin_hunt"]
+    },
+    {
+      "id": "taiwei_daogong",
+      "name": "太微道宫",
+      "scope_direction": "中北部河源、台地和雪线过渡区",
+      "second_level_ids": ["taiwei_haichuan_association", "taiwei_changfeng_escort", "taiwei_chunshui_prefecture"]
+    },
+    {
+      "id": "xuandu_tianfu",
+      "name": "玄都天府",
+      "scope_direction": "西部群山、古驿和内陆盆地",
+      "second_level_ids": ["xuandu_guanshan_prefecture", "xuandu_chilu_hall", "xuandu_chishui_city"]
+    },
+    {
+      "id": "wuxiang_shengzong",
+      "name": "无相圣宗",
+      "scope_direction": "东南内陆台地、下游支流、旧盐泽与通海暗线",
+      "second_level_ids": ["wuxiang_youquan_cult", "wuxiang_yexing_society", "wuxiang_huigu_temple"]
+    }
+  ],
+  "second_level": [
+    {"id": "yuxu_qinglan_observatory", "name": "青岚观", "parent_faction_id": "yuxu_xianzong", "type": "道观", "scope_type": "山谷", "scope_description": "山间修行、符箓、镇邪与地方传承", "scene_node": "yuxu_xianzong/qinglan_observatory", "territory_status": "placed", "map_position": [1003, 897], "location_ids": ["fulan_temple"]},
+    {"id": "yuxu_baishi_city", "name": "白石城", "parent_faction_id": "yuxu_xianzong", "type": "城邦", "scope_type": "城镇周边", "scope_description": "交易、消息、落脚和低阶修士聚集", "scene_node": "yuxu_xianzong/baishi_city", "territory_status": "placed", "map_position": [1403, 787], "location_ids": ["white_stone_town"]},
+    {"id": "yuxu_donglin_hunt", "name": "东林镇妖会", "parent_faction_id": "yuxu_xianzong", "type": "镇妖组织", "scope_type": "林地与山野", "scope_description": "镇妖、采集灵材、守护山林与散修互助", "scene_node": "yuxu_xianzong/donglin_hunt", "territory_status": "placed", "map_position": [1123, 677], "location_ids": ["east_woods"]},
+
+    {"id": "taiwei_haichuan_association", "name": "海川会", "parent_faction_id": "taiwei_daogong", "type": "商贸会盟", "scope_type": "河运与近海", "scope_description": "河运、近海贸易、船队和航图", "scene_node": "taiwei_daogong/haichuan_association", "territory_status": "placed", "map_position": [733, 467], "location_ids": ["lanpu_ferry"]},
+    {"id": "taiwei_changfeng_escort", "name": "长风护道会", "parent_faction_id": "taiwei_daogong", "type": "护道组织", "scope_type": "古道与关驿", "scope_description": "修士护行、灵材商路保全和远行消息", "scene_node": "taiwei_daogong/changfeng_escort", "territory_status": "placed", "map_position": [1900, 520], "location_ids": ["changfeng_escort"]},
+    {"id": "taiwei_chunshui_prefecture", "name": "春水府", "parent_faction_id": "taiwei_daogong", "type": "水府与城镇", "scope_type": "湖泽与灌渠", "scope_description": "湖泽、灌渠、水产和水患处理", "scene_node": "taiwei_daogong/chunshui_prefecture", "territory_status": "placed", "map_position": [1800, 1080], "location_ids": ["chunshui_prefecture"]},
+
+    {"id": "xuandu_guanshan_prefecture", "name": "关山府", "parent_faction_id": "xuandu_tianfu", "type": "山口军府", "scope_type": "关隘与古驿", "scope_description": "关隘、古驿、护路和妖兽迁徙", "scene_node": "xuandu_tianfu/guanshan_prefecture", "territory_status": "placed", "map_position": [480, 520], "location_ids": ["guanshan_prefecture"]},
+    {"id": "xuandu_chilu_hall", "name": "赤炉堂", "parent_faction_id": "xuandu_tianfu", "type": "炼器堂口", "scope_type": "矿区与炉场", "scope_description": "炉火、矿材、兵器和修缮", "scene_node": "xuandu_tianfu/chilu_hall", "territory_status": "placed", "map_position": [580, 1250], "location_ids": ["chilu_hall"]},
+    {"id": "xuandu_chishui_city", "name": "赤水城", "parent_faction_id": "xuandu_tianfu", "type": "城邦", "scope_type": "内陆盆地", "scope_description": "盆地农产、集市和内陆交通", "scene_node": "xuandu_tianfu/chishui_city", "territory_status": "placed", "map_position": [850, 1350], "location_ids": ["chishui_city"]},
+
+    {"id": "wuxiang_youquan_cult", "name": "幽泉教", "parent_faction_id": "wuxiang_shengzong", "type": "魔道教派", "scope_type": "地下水脉", "scope_description": "阴法、地下水脉和隐秘修炼地", "scene_node": "wuxiang_shengzong/youquan_cult", "territory_status": "placed", "map_position": [2350, 1180], "location_ids": ["youquan_cult"]},
+    {"id": "wuxiang_yexing_society", "name": "夜行会", "parent_faction_id": "wuxiang_shengzong", "type": "秘密组织", "scope_type": "城镇暗线与灰市", "scope_description": "追踪、刺杀、情报和灰色委托", "scene_node": "wuxiang_shengzong/yexing_society", "territory_status": "placed", "map_position": [2250, 930], "location_ids": ["yexing_society"]},
+    {"id": "wuxiang_huigu_temple", "name": "灰骨寺", "parent_faction_id": "wuxiang_shengzong", "type": "魔道寺院", "scope_type": "葬地与旧战场", "scope_description": "尸傀、葬地和旧战场资源", "scene_node": "wuxiang_shengzong/huigu_temple", "territory_status": "placed", "map_position": [2550, 1450], "location_ids": ["huigu_temple"]}
+  ]
+}

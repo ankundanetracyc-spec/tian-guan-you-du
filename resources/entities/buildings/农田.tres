@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="BuildingData" format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/EntityData.cs" id="1"]
+[ext_resource type="Script" path="res://csharp/resources/BuildingData.cs" id="2"]
+
+[resource]
+script = ExtResource("2")
+entity_name = "农田"
+icon_path = ""
+summary = "用于耕作和轮种的田地，后续可选择黄粟、山麻或止血草。"
+max_durability = 10
+current_durability = 10
+consume_durability = false
+grid_size = Vector2i(1, 1)
+build_cost_item_paths = Array[String](["res://resources/entities/items/石材.tres"])
+build_cost_counts = Array[int]([2])
+labor_site_id = "farmland"
+labor_cycle_hours = 1.0
+labor_stamina_cost_per_hour = 6
+labor_primary_attr = "physique"
+labor_secondary_attr = "current_mind"
+labor_primary_weight = 0.6
+labor_secondary_weight = 0.4
+soil_fertility = 55.0
+soil_spirit = 0.0
+estate_facility_id = "farmland"

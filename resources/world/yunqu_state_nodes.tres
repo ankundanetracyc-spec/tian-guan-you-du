@@ -1,0 +1,1026 @@
+[gd_resource type="Resource" format=3 uid="uid://caf8obcijjwrf"]
+
+[ext_resource type="Script" uid="uid://dinixw40ebccy" path="res://csharp/world/WorldNodeData.cs" id="1_node"]
+[ext_resource type="Script" uid="uid://b7m8osclaibv6" path="res://csharp/world/WorldNodeMapData.cs" id="2_map"]
+[ext_resource type="Script" uid="uid://4jy4sabeasww" path="res://csharp/world/WorldTerritoryData.cs" id="3_territory"]
+[ext_resource type="Script" uid="uid://srk7b14pvmxy" path="res://csharp/world/WorldRouteData.cs" id="4_route"]
+[ext_resource type="Script" uid="uid://deb4mbcqhrp8k" path="res://csharp/world/WorldSubsceneData.cs" id="5_subscene"]
+[ext_resource type="Texture2D" uid="uid://c8c1uk0ld33s7" path="res://textures/world_map/bai_chuan/bai_chuan_master_v9_hd.png" id="6_background"]
+
+[sub_resource type="Resource" id="node_home"]
+script = ExtResource("1_node")
+node_id = "home_village"
+node_name = "青溪里"
+node_type = 6
+territory_id = "yunqu_state"
+map_position = Vector2(1563, 847)
+marker_size = 50.0
+terrain = "青溪山麓"
+spirit_pressure = 3
+description = "循着记忆在地图上找到的落点。眼前只有一座寂静的无名山，青溪里仿佛从未存在。"
+connected_nodes = Array[String](["white_stone_town", "qingxi_wilds"])
+
+[sub_resource type="Resource" id="sub_market"]
+script = ExtResource("5_subscene")
+subscene_id = "market"
+subscene_name = "坊市"
+description = "商货与散修消息汇集之处。"
+
+[sub_resource type="Resource" id="sub_notice"]
+script = ExtResource("5_subscene")
+subscene_id = "notice_hall"
+subscene_name = "告示所"
+description = "镇中路况与委托信息的汇集处。"
+
+[sub_resource type="Resource" id="sub_bookshop"]
+script = ExtResource("5_subscene")
+subscene_id = "bookshop"
+subscene_name = "书坊"
+description = "天机阁外围书坊的暂驻处。"
+
+[sub_resource type="Resource" id="sub_inn"]
+script = ExtResource("5_subscene")
+subscene_id = "inn"
+subscene_name = "客栈"
+description = "行人与散修的歇脚处。"
+
+[sub_resource type="Resource" id="node_white"]
+script = ExtResource("1_node")
+node_id = "white_stone_town"
+node_name = "白石镇"
+node_type = 0
+territory_id = "yunqu_state"
+map_position = Vector2(1403, 787)
+marker_size = 62.0
+terrain = "河谷平原"
+spirit_pressure = 2
+danger_level = 2
+population = 500
+description = "百川东南近域的商路枢纽。坊市、客栈与告示所收拢了南来北往的行人消息。"
+connected_nodes = Array[String](["home_village", "east_woods", "fulan_temple", "chunshui_prefecture", "stone_mist_wilds", "reed_marsh_wilds"])
+subscenes = Array[ExtResource("5_subscene")]([SubResource("sub_market"), SubResource("sub_notice"), SubResource("sub_bookshop"), SubResource("sub_inn")])
+
+[sub_resource type="Resource" id="node_qingxi_wilds"]
+script = ExtResource("1_node")
+node_id = "qingxi_wilds"
+node_name = "青溪山野"
+node_type = 7
+territory_id = "yunqu_state"
+map_position = Vector2(1403, 857)
+marker_size = 42.0
+terrain = "低丘与疏林"
+spirit_pressure = 3
+danger_level = 3
+description = "离开无名山后的第一片野地。没有聚落与归属，只有旧道、林雾和偶尔留下的足迹。"
+connected_nodes = Array[String](["home_village"])
+
+[sub_resource type="Resource" id="sub_forest"]
+script = ExtResource("5_subscene")
+subscene_id = "forest_edge"
+subscene_name = "林缘"
+description = "东林地最常有人活动的边缘。"
+
+[sub_resource type="Resource" id="node_eastwoods"]
+script = ExtResource("1_node")
+node_id = "east_woods"
+node_name = "东林地"
+node_type = 7
+territory_id = "yunqu_state"
+map_position = Vector2(1123, 677)
+marker_size = 48.0
+terrain = "林地"
+spirit_pressure = 4
+danger_level = 4
+faction_id = "eastwood_hunters"
+description = "广阔林地的入口。镇妖会、采药修士与巡山弟子共守林缘，深入之后妖气渐重，风险会逐渐上升。"
+connected_nodes = Array[String](["white_stone_town", "herb_valley"])
+subscenes = Array[ExtResource("5_subscene")]([SubResource("sub_forest")])
+
+[sub_resource type="Resource" id="sub_gate"]
+script = ExtResource("5_subscene")
+subscene_id = "mountain_gate"
+subscene_name = "山门"
+description = "伏岚观外的山道与门楼。"
+
+[sub_resource type="Resource" id="sub_courtyard"]
+script = ExtResource("5_subscene")
+subscene_id = "courtyard"
+subscene_name = "外院"
+description = "伏岚观接待外客的外院。"
+
+[sub_resource type="Resource" id="node_fulan"]
+script = ExtResource("1_node")
+node_id = "fulan_temple"
+node_name = "伏岚观"
+node_type = 1
+territory_id = "yunqu_state"
+map_position = Vector2(1003, 897)
+marker_size = 60.0
+terrain = "伏岚山道"
+spirit_pressure = 5
+danger_level = 3
+faction_id = "fulan_temple"
+description = "隐于山间的小宗门，清修护山，不轻易卷入地方争斗。"
+connected_nodes = Array[String](["white_stone_town", "misty_ridge", "fallen_star_field"])
+subscenes = Array[ExtResource("5_subscene")]([SubResource("sub_gate"), SubResource("sub_courtyard")])
+
+[sub_resource type="Resource" id="sub_valley"]
+script = ExtResource("5_subscene")
+subscene_id = "outer_valley"
+subscene_name = "外谷"
+description = "采药人常活动的谷口。"
+
+[sub_resource type="Resource" id="node_herb"]
+script = ExtResource("1_node")
+node_id = "herb_valley"
+node_name = "灵草谷"
+node_type = 7
+territory_id = "yunqu_state"
+map_position = Vector2(933, 737)
+marker_size = 45.0
+terrain = "山谷药地"
+spirit_pressure = 5
+danger_level = 4
+description = "山雾滋养出的野生药谷。谷中资源与风险会随时节和探索改变。"
+connected_nodes = Array[String](["east_woods", "misty_ridge"])
+subscenes = Array[ExtResource("5_subscene")]([SubResource("sub_valley")])
+
+[sub_resource type="Resource" id="sub_wharf"]
+script = ExtResource("5_subscene")
+subscene_id = "wharf"
+subscene_name = "渡口"
+description = "澜浦陆氏经营的水路停泊处。"
+
+[sub_resource type="Resource" id="node_lanpu"]
+script = ExtResource("1_node")
+node_id = "lanpu_ferry"
+node_name = "澜浦渡"
+node_type = 0
+territory_id = "yunqu_state"
+map_position = Vector2(733, 467)
+marker_size = 60.0
+terrain = "江畔渡口"
+spirit_pressure = 3
+danger_level = 3
+faction_id = "lanpu_lu"
+description = "澜浦陆氏经营的渡口与水路商货集散处。"
+connected_nodes = Array[String](["herb_valley", "guanshan_prefecture"])
+subscenes = Array[ExtResource("5_subscene")]([SubResource("sub_wharf")])
+
+[sub_resource type="Resource" id="node_misty"]
+script = ExtResource("1_node")
+node_id = "misty_ridge"
+node_name = "云岚荒径"
+node_type = 7
+territory_id = "yunqu_state"
+map_position = Vector2(803, 917)
+marker_size = 42.0
+terrain = "云岚丘陵"
+spirit_pressure = 4
+danger_level = 5
+description = "通往百川更深处的荒僻山径。无人定居，只有风声、旧路与未被证实的传闻。"
+connected_nodes = Array[String](["fulan_temple", "herb_valley"])
+
+[sub_resource type="Resource" id="node_changfeng"]
+script = ExtResource("1_node")
+node_id = "changfeng_escort"
+node_name = "长风护道会"
+node_type = 0
+territory_id = "yunqu_state"
+map_position = Vector2(1900, 520)
+marker_size = 58.0
+terrain = "古道台地"
+spirit_pressure = 3
+danger_level = 2
+faction_id = "taiwei_changfeng_escort"
+description = "太微道宫辖下的护道组织，修士沿古道护送行旅与灵材商队，守护关驿通行并传递远行消息。"
+connected_nodes = Array[String](["chunshui_prefecture", "cold_sand_wilds", "taiwei_daogong_core"])
+
+[sub_resource type="Resource" id="node_chunshui"]
+script = ExtResource("1_node")
+node_id = "chunshui_prefecture"
+node_name = "春水府"
+node_type = 0
+territory_id = "yunqu_state"
+map_position = Vector2(1800, 1080)
+marker_size = 58.0
+terrain = "湖泽与灌渠"
+spirit_pressure = 3
+danger_level = 2
+faction_id = "taiwei_chunshui_prefecture"
+description = "太微道宫辖下的水府，掌水网、灌渠和中部河谷的水患调度。"
+connected_nodes = Array[String](["white_stone_town", "changfeng_escort", "youquan_cult"])
+
+[sub_resource type="Resource" id="node_guanshan"]
+script = ExtResource("1_node")
+node_id = "guanshan_prefecture"
+node_name = "关山府"
+node_type = 4
+territory_id = "yunqu_state"
+map_position = Vector2(480, 520)
+marker_size = 58.0
+terrain = "山口与古驿"
+spirit_pressure = 3
+danger_level = 4
+faction_id = "xuandu_guanshan_prefecture"
+description = "玄都天府西侧的山口军府，守着旧驿路和山兽迁徙线。"
+connected_nodes = Array[String](["lanpu_ferry", "chilu_hall", "xuandu_tianfu_core"])
+
+[sub_resource type="Resource" id="node_chilu"]
+script = ExtResource("1_node")
+node_id = "chilu_hall"
+node_name = "赤炉堂"
+node_type = 1
+territory_id = "yunqu_state"
+map_position = Vector2(580, 1250)
+marker_size = 58.0
+terrain = "矿带与炉场"
+spirit_pressure = 4
+danger_level = 3
+faction_id = "xuandu_chilu_hall"
+description = "玄都天府的炼器堂口，依矿带设炉，承接兵器、法器与道路修缮。"
+connected_nodes = Array[String](["guanshan_prefecture", "chishui_city", "southwest_wilds"])
+
+[sub_resource type="Resource" id="node_chishui"]
+script = ExtResource("1_node")
+node_id = "chishui_city"
+node_name = "赤水城"
+node_type = 0
+territory_id = "yunqu_state"
+map_position = Vector2(850, 1350)
+marker_size = 60.0
+terrain = "内陆盆地"
+spirit_pressure = 2
+danger_level = 2
+faction_id = "xuandu_chishui_city"
+description = "玄都天府辖下的内陆城邦，连接矿带、农产和西部古驿。"
+connected_nodes = Array[String](["chilu_hall", "yuxu_xianzong_core", "red_cliff_wilds"])
+
+[sub_resource type="Resource" id="node_youquan"]
+script = ExtResource("1_node")
+node_id = "youquan_cult"
+node_name = "幽泉教"
+node_type = 1
+territory_id = "yunqu_state"
+map_position = Vector2(2350, 1180)
+marker_size = 58.0
+terrain = "地下水脉"
+spirit_pressure = 5
+danger_level = 5
+faction_id = "wuxiang_youquan_cult"
+description = "无相圣宗东南水脉中的魔道教派，入口藏在旧河道与暗泉之间。"
+connected_nodes = Array[String](["chunshui_prefecture", "yexing_society", "huigu_temple", "wuxiang_shengzong_core"])
+
+[sub_resource type="Resource" id="node_yexing"]
+script = ExtResource("1_node")
+node_id = "yexing_society"
+node_name = "夜行会"
+node_type = 0
+territory_id = "yunqu_state"
+map_position = Vector2(2250, 930)
+marker_size = 56.0
+terrain = "城镇暗线与灰市"
+spirit_pressure = 4
+danger_level = 5
+faction_id = "wuxiang_yexing_society"
+description = "无相圣宗控制的灰色联络点，白日隐于商路，夜间才显出真正的门路。"
+connected_nodes = Array[String](["youquan_cult", "black_water_wilds"])
+
+[sub_resource type="Resource" id="node_huigu"]
+script = ExtResource("1_node")
+node_id = "huigu_temple"
+node_name = "灰骨寺"
+node_type = 3
+territory_id = "yunqu_state"
+map_position = Vector2(2550, 1450)
+marker_size = 58.0
+terrain = "葬地与旧战场"
+spirit_pressure = 5
+danger_level = 6
+faction_id = "wuxiang_huigu_temple"
+description = "无相圣宗旧战场边缘的魔道寺院，掌尸傀、葬地和残留战场资源。"
+connected_nodes = Array[String](["youquan_cult"])
+
+[sub_resource type="Resource" id="sub_yuxu_heguang"]
+script = ExtResource("5_subscene")
+subscene_id = "heguang"
+subscene_name = "和光峰"
+description = "庶务、杂役与宗门供给汇集之处。"
+
+[sub_resource type="Resource" id="sub_yuxu_guanfu"]
+script = ExtResource("5_subscene")
+subscene_id = "guanfu"
+subscene_name = "观复峰"
+description = "外门、内门弟子日常修持与居住之处。"
+
+[sub_resource type="Resource" id="sub_yuxu_zifu"]
+script = ExtResource("5_subscene")
+subscene_id = "zifu"
+subscene_name = "紫府峰"
+description = "真传、长老与宗门中枢议事之地。"
+
+[sub_resource type="Resource" id="sub_yuxu_xuanlan"]
+script = ExtResource("5_subscene")
+subscene_id = "xuanlan"
+subscene_name = "玄览峰"
+description = "藏经、讲法与传承考核所在。"
+
+[sub_resource type="Resource" id="sub_yuxu_tianwen"]
+script = ExtResource("5_subscene")
+subscene_id = "tianwen"
+subscene_name = "天问峰"
+description = "演法、试炼与宗门比试所在。"
+
+[sub_resource type="Resource" id="sub_yuxu_tiangong"]
+script = ExtResource("5_subscene")
+subscene_id = "tiangong"
+subscene_name = "天工峰"
+description = "丹、器、符、阵诸般技艺的合峰传承之处。"
+
+[sub_resource type="Resource" id="sub_yuxu_zhizhong"]
+script = ExtResource("5_subscene")
+subscene_id = "zhizhong"
+subscene_name = "执中峰"
+description = "戒律、执法与宗内裁断所在。"
+
+[sub_resource type="Resource" id="sub_yuxu_yaopu"]
+script = ExtResource("5_subscene")
+subscene_id = "yaopu"
+subscene_name = "瑶圃峰"
+description = "灵植、灵兽与灵材培育所在。"
+
+[sub_resource type="Resource" id="node_yuxu_core"]
+script = ExtResource("1_node")
+node_id = "yuxu_xianzong_core"
+node_name = "玉虚仙宗"
+node_type = 1
+display_level = 2
+territory_id = "yunqu_state"
+map_position = Vector2(1150, 1280)
+marker_size = 76.0
+terrain = "玉虚群峰"
+spirit_pressure = 7
+danger_level = 5
+faction_id = "yuxu_xianzong"
+description = "百川中部偏西的仙宗本峰，山道与云台相接，是玉虚仙宗对外通行的总节点。"
+connected_nodes = Array[String](["chishui_city"])
+subscenes = Array[ExtResource("5_subscene")]([SubResource("sub_yuxu_heguang"), SubResource("sub_yuxu_guanfu"), SubResource("sub_yuxu_zifu"), SubResource("sub_yuxu_xuanlan"), SubResource("sub_yuxu_tianwen"), SubResource("sub_yuxu_tiangong"), SubResource("sub_yuxu_zhizhong"), SubResource("sub_yuxu_yaopu")])
+
+[sub_resource type="Resource" id="node_taiwei_core"]
+script = ExtResource("1_node")
+node_id = "taiwei_daogong_core"
+node_name = "太微道宫"
+node_type = 1
+display_level = 2
+territory_id = "yunqu_state"
+map_position = Vector2(2300, 580)
+marker_size = 76.0
+terrain = "太微台地"
+spirit_pressure = 7
+danger_level = 5
+faction_id = "taiwei_daogong"
+description = "百川东北的道宫本部，沿高地古道与长风护道会相通。"
+connected_nodes = Array[String](["changfeng_escort", "eastern_hillfoot"])
+
+[sub_resource type="Resource" id="node_xuandu_core"]
+script = ExtResource("1_node")
+node_id = "xuandu_tianfu_core"
+node_name = "玄都天府"
+node_type = 1
+display_level = 2
+territory_id = "yunqu_state"
+map_position = Vector2(650, 700)
+marker_size = 76.0
+terrain = "玄都山府"
+spirit_pressure = 7
+danger_level = 5
+faction_id = "xuandu_tianfu"
+description = "百川西北的天府本部，守着关山府通向腹地的旧驿路。"
+connected_nodes = Array[String](["guanshan_prefecture"])
+
+[sub_resource type="Resource" id="node_wuxiang_core"]
+script = ExtResource("1_node")
+node_id = "wuxiang_shengzong_core"
+node_name = "无相圣宗"
+node_type = 1
+display_level = 2
+territory_id = "yunqu_state"
+map_position = Vector2(2480, 1280)
+marker_size = 76.0
+terrain = "无相水脉"
+spirit_pressure = 8
+danger_level = 6
+faction_id = "wuxiang_shengzong"
+description = "百川东南的圣宗本部，隐在河网与海雾之间，只以幽泉教一线对外通行。"
+connected_nodes = Array[String](["youquan_cult"])
+
+[sub_resource type="Resource" id="node_stone_mist"]
+script = ExtResource("1_node")
+node_id = "stone_mist_wilds"
+node_name = "石雾荒原"
+node_type = 7
+territory_id = "yunqu_state"
+map_position = Vector2(1260, 520)
+marker_size = 40.0
+terrain = "碎石雾原"
+spirit_pressure = 3
+danger_level = 4
+description = "山前碎石与低雾交错的无人地，旧商道在这里分出数条难辨的岔路。"
+connected_nodes = Array[String](["white_stone_town"])
+
+[sub_resource type="Resource" id="node_reed_marsh"]
+script = ExtResource("1_node")
+node_id = "reed_marsh_wilds"
+node_name = "芦泽浅滩"
+node_type = 7
+territory_id = "yunqu_state"
+map_position = Vector2(1610, 690)
+marker_size = 40.0
+terrain = "浅滩芦泽"
+spirit_pressure = 3
+danger_level = 3
+description = "河汊退水后留下的芦泽浅滩，适合暂歇，却没有可以久留的居所。"
+connected_nodes = Array[String](["white_stone_town"])
+
+[sub_resource type="Resource" id="node_fallen_star"]
+script = ExtResource("1_node")
+node_id = "fallen_star_field"
+node_name = "陨星坡"
+node_type = 7
+territory_id = "yunqu_state"
+map_position = Vector2(1120, 1120)
+marker_size = 40.0
+terrain = "陨石缓坡"
+spirit_pressure = 4
+danger_level = 4
+description = "荒坡上散落着不明天外碎片，附近没有聚落，只有偶尔来寻矿的行脚人。"
+connected_nodes = Array[String](["fulan_temple"])
+
+[sub_resource type="Resource" id="node_red_cliff"]
+script = ExtResource("1_node")
+node_id = "red_cliff_wilds"
+node_name = "赤崖荒谷"
+node_type = 7
+territory_id = "yunqu_state"
+map_position = Vector2(1030, 1440)
+marker_size = 40.0
+terrain = "赤崖荒谷"
+spirit_pressure = 4
+danger_level = 5
+description = "赤色断崖围成的荒谷，风沙掩住旧战场的痕迹，行旅只能沿谷底短暂停留。"
+connected_nodes = Array[String](["chishui_city"])
+
+[sub_resource type="Resource" id="node_cold_sand"]
+script = ExtResource("1_node")
+node_id = "cold_sand_wilds"
+node_name = "寒砂台"
+node_type = 7
+territory_id = "yunqu_state"
+map_position = Vector2(2050, 300)
+marker_size = 40.0
+terrain = "寒砂高台"
+spirit_pressure = 3
+danger_level = 4
+description = "北地风口的寒砂高台，昼夜温差极大，是古道上少数能辨方向的空旷处。"
+connected_nodes = Array[String](["changfeng_escort", "north_snow_pass"])
+
+[sub_resource type="Resource" id="node_black_water"]
+script = ExtResource("1_node")
+node_id = "black_water_wilds"
+node_name = "黑水泽"
+node_type = 7
+territory_id = "yunqu_state"
+map_position = Vector2(2750, 950)
+marker_size = 40.0
+terrain = "黑水海泽"
+spirit_pressure = 5
+danger_level = 6
+description = "近海黑水与碎礁形成的荒泽，潮汐一变便会改掉浅滩的形状。"
+connected_nodes = Array[String](["yexing_society", "coastal_marsh"])
+
+[sub_resource type="Resource" id="node_pine_ridge_wilds"]
+script = ExtResource("1_node")
+node_id = "pine_ridge_wilds"
+node_name = "青岚坡"
+node_type = 7
+territory_id = "yunqu_state"
+map_position = Vector2(1070, 430)
+marker_size = 40.0
+terrain = "北麓缓坡"
+spirit_pressure = 3
+danger_level = 4
+description = "石雾荒原外的缓坡空地，风从雪线南下，只有零散的旧路标。"
+connected_nodes = Array[String](["white_stone_town", "pine_ridge_wilds", "riverbend_wilds"])
+
+[sub_resource type="Resource" id="node_north_snow_pass"]
+script = ExtResource("1_node")
+node_id = "north_snow_pass"
+node_name = "雪岭风口"
+node_type = 7
+territory_id = "yunqu_state"
+map_position = Vector2(1650, 260)
+marker_size = 40.0
+terrain = "雪线风口"
+spirit_pressure = 3
+danger_level = 5
+description = "北边雪地的风口，积雪遮住了旧驿痕迹，行旅只能短暂停留。"
+connected_nodes = Array[String](["cold_sand_wilds"])
+
+[sub_resource type="Resource" id="node_riverbend_wilds"]
+script = ExtResource("1_node")
+node_id = "riverbend_wilds"
+node_name = "回澜滩"
+node_type = 7
+territory_id = "yunqu_state"
+map_position = Vector2(1580, 560)
+marker_size = 40.0
+terrain = "河曲浅滩"
+spirit_pressure = 3
+danger_level = 3
+description = "河道转弯处的浅滩，水位变化快，没有固定聚落。"
+connected_nodes = Array[String](["stone_mist_wilds"])
+
+[sub_resource type="Resource" id="node_south_meadow"]
+script = ExtResource("1_node")
+node_id = "south_meadow"
+node_name = "云汀原"
+node_type = 7
+territory_id = "yunqu_state"
+map_position = Vector2(1500, 1250)
+marker_size = 40.0
+terrain = "河谷草甸"
+spirit_pressure = 3
+danger_level = 3
+description = "春水府西南的开阔草甸，商旅偶尔在此换马歇脚。"
+connected_nodes = Array[String](["chunshui_prefecture", "reed_bay"])
+
+[sub_resource type="Resource" id="node_reed_bay"]
+script = ExtResource("1_node")
+node_id = "reed_bay"
+node_name = "芦湾浅滩"
+node_type = 7
+territory_id = "yunqu_state"
+map_position = Vector2(1650, 1500)
+marker_size = 40.0
+terrain = "南岸芦泽"
+spirit_pressure = 3
+danger_level = 4
+description = "南岸河汊汇入大水前的芦湾，潮雾和浅流使这里始终无人定居。"
+connected_nodes = Array[String](["south_meadow"])
+
+[sub_resource type="Resource" id="node_coastal_marsh"]
+script = ExtResource("1_node")
+node_id = "coastal_marsh"
+node_name = "潮生泽"
+node_type = 7
+territory_id = "yunqu_state"
+map_position = Vector2(2850, 1250)
+marker_size = 40.0
+terrain = "近海潮泽"
+spirit_pressure = 4
+danger_level = 5
+description = "黑水泽南侧的潮汐湿地，退潮时露出一条窄窄的石脊。"
+connected_nodes = Array[String](["black_water_wilds", "east_coast_bight"])
+
+[sub_resource type="Resource" id="node_east_coast_bight"]
+script = ExtResource("1_node")
+node_id = "east_coast_bight"
+node_name = "海门浅滩"
+node_type = 7
+territory_id = "yunqu_state"
+map_position = Vector2(3000, 1500)
+marker_size = 40.0
+terrain = "海湾浅滩"
+spirit_pressure = 4
+danger_level = 5
+description = "海湾内侧的碎礁浅滩，潮声终日不息，偶有失散的行舟靠岸。"
+connected_nodes = Array[String](["coastal_marsh"])
+
+[sub_resource type="Resource" id="node_western_valley"]
+script = ExtResource("1_node")
+node_id = "western_valley"
+node_name = "西峡荒径"
+node_type = 7
+territory_id = "yunqu_state"
+map_position = Vector2(270, 900)
+marker_size = 40.0
+terrain = "西部峡谷"
+spirit_pressure = 3
+danger_level = 4
+description = "关山府西侧的狭长荒径，山风穿谷而过，旧驿只剩半截石碑。"
+connected_nodes = Array[String](["guanshan_prefecture"])
+
+[sub_resource type="Resource" id="node_southwest_wilds"]
+script = ExtResource("1_node")
+node_id = "southwest_wilds"
+node_name = "赤砂坡"
+node_type = 7
+territory_id = "yunqu_state"
+map_position = Vector2(200, 1400)
+marker_size = 40.0
+terrain = "西南荒坡"
+spirit_pressure = 3
+danger_level = 5
+description = "赤炉堂以西的荒坡，碎石和赤砂铺满谷底，暂无势力长期驻留。"
+connected_nodes = Array[String](["chilu_hall", "west_riverbank"])
+
+[sub_resource type="Resource" id="node_west_riverbank"]
+script = ExtResource("1_node")
+node_id = "west_riverbank"
+node_name = "断流滩"
+node_type = 7
+territory_id = "yunqu_state"
+map_position = Vector2(100, 1100)
+marker_size = 40.0
+terrain = "西南河滩"
+spirit_pressure = 3
+danger_level = 4
+description = "旧河道在山脚断流后的河滩，雨季短暂有水，平时只剩白色卵石。"
+connected_nodes = Array[String](["southwest_wilds"])
+
+[sub_resource type="Resource" id="node_eastern_hillfoot"]
+script = ExtResource("1_node")
+node_id = "eastern_hillfoot"
+node_name = "石门台"
+node_type = 7
+territory_id = "yunqu_state"
+map_position = Vector2(2150, 780)
+marker_size = 40.0
+terrain = "东部山前台地"
+spirit_pressure = 3
+danger_level = 4
+description = "太微道宫南侧的山前台地，石门旧址仍可辨认，适合作为远行中继。"
+connected_nodes = Array[String](["taiwei_daogong_core"])
+
+[sub_resource type="Resource" id="node_central_river_fork"]
+script = ExtResource("1_node")
+node_id = "central_river_fork"
+node_name = "河源岔口"
+node_type = 7
+territory_id = "yunqu_state"
+map_position = Vector2(1900, 850)
+marker_size = 40.0
+terrain = "中部河源"
+spirit_pressure = 3
+danger_level = 3
+description = "春水府北面的河源岔口，几条浅水支流在这里分开，未形成聚落。"
+connected_nodes = Array[String](["chunshui_prefecture"])
+
+[sub_resource type="Resource" id="route_qingxi_white"]
+script = ExtResource("4_route")
+route_id = "qingxi_white_stone"
+route_name = "山麓旧道"
+description = "沿山麓向北，旧道渐渐汇入白石镇外的商路。"
+from_node_id = "home_village"
+to_node_id = "white_stone_town"
+travel_days = 2
+
+[sub_resource type="Resource" id="route_qingxi_wild"]
+script = ExtResource("4_route")
+route_id = "qingxi_wilds"
+route_name = "疏林小径"
+description = "沿疏林间的旧径深入野地。"
+from_node_id = "home_village"
+to_node_id = "qingxi_wilds"
+
+[sub_resource type="Resource" id="route_white_east"]
+script = ExtResource("4_route")
+route_id = "white_eastwoods"
+route_name = "东林官道"
+description = "白石镇通往东林地的常用道路。"
+from_node_id = "white_stone_town"
+to_node_id = "east_woods"
+travel_days = 2
+
+[sub_resource type="Resource" id="route_white_fulan"]
+script = ExtResource("4_route")
+route_id = "white_fulan"
+route_name = "伏岚山道"
+description = "由镇外转入山道，云雾渐重。"
+from_node_id = "white_stone_town"
+to_node_id = "fulan_temple"
+travel_days = 3
+
+[sub_resource type="Resource" id="route_east_herb"]
+script = ExtResource("4_route")
+route_id = "eastwoods_herb"
+route_name = "谷口石径"
+description = "由东林地向东，沿石径可至灵草谷口。"
+from_node_id = "east_woods"
+to_node_id = "herb_valley"
+travel_days = 2
+
+[sub_resource type="Resource" id="route_herb_lanpu"]
+script = ExtResource("4_route")
+route_id = "herb_lanpu"
+route_name = "药谷水路"
+description = "药谷外的水道通向澜浦渡。"
+from_node_id = "herb_valley"
+to_node_id = "lanpu_ferry"
+travel_days = 2
+
+[sub_resource type="Resource" id="route_fulan_misty"]
+script = ExtResource("4_route")
+route_id = "fulan_misty"
+route_name = "云岚险径"
+description = "越过伏岚观北侧山岭，前方道路荒僻难行。"
+from_node_id = "fulan_temple"
+to_node_id = "misty_ridge"
+travel_days = 3
+
+[sub_resource type="Resource" id="route_herb_misty"]
+script = ExtResource("4_route")
+route_id = "herb_misty"
+route_name = "雾谷山径"
+description = "由灵草谷沿山脊北上，可见云岚荒径。"
+from_node_id = "herb_valley"
+to_node_id = "misty_ridge"
+travel_days = 3
+
+[sub_resource type="Resource" id="route_white_chunshui"]
+script = ExtResource("4_route")
+route_id = "white_chunshui"
+route_name = "春水商道"
+description = "从白石镇向东南沿河谷平缓地带通往春水府。"
+from_node_id = "white_stone_town"
+to_node_id = "chunshui_prefecture"
+travel_days = 4
+
+[sub_resource type="Resource" id="route_chunshui_changfeng"]
+script = ExtResource("4_route")
+route_id = "chunshui_changfeng"
+route_name = "长风古道"
+description = "春水府向北接入长风护道会的古道台地。"
+from_node_id = "chunshui_prefecture"
+to_node_id = "changfeng_escort"
+travel_days = 3
+
+[sub_resource type="Resource" id="route_chunshui_youquan"]
+script = ExtResource("4_route")
+route_id = "chunshui_youquan"
+route_name = "暗水旧渠"
+description = "由春水府沿旧渠向东，接近无相圣宗的地下水脉。"
+from_node_id = "chunshui_prefecture"
+to_node_id = "youquan_cult"
+travel_days = 4
+
+[sub_resource type="Resource" id="route_lanpu_guanshan"]
+script = ExtResource("4_route")
+route_id = "lanpu_guanshan"
+route_name = "关山水陆道"
+description = "由澜浦渡向西北转入关山府的古驿。"
+from_node_id = "lanpu_ferry"
+to_node_id = "guanshan_prefecture"
+travel_days = 3
+
+[sub_resource type="Resource" id="route_guanshan_chilu"]
+script = ExtResource("4_route")
+route_id = "guanshan_chilu"
+route_name = "炉场山道"
+description = "沿西部山前缓坡通往赤炉堂。"
+from_node_id = "guanshan_prefecture"
+to_node_id = "chilu_hall"
+travel_days = 4
+
+[sub_resource type="Resource" id="route_chilu_chishui"]
+script = ExtResource("4_route")
+route_id = "chilu_chishui"
+route_name = "赤水矿路"
+description = "赤炉堂下山后沿盆地边缘抵达赤水城。"
+from_node_id = "chilu_hall"
+to_node_id = "chishui_city"
+travel_days = 2
+
+[sub_resource type="Resource" id="route_youquan_yexing"]
+script = ExtResource("4_route")
+route_id = "youquan_yexing"
+route_name = "夜行暗线"
+description = "幽泉教与夜行会之间只保留熟路修士知晓的暗线。"
+from_node_id = "youquan_cult"
+to_node_id = "yexing_society"
+travel_days = 2
+
+[sub_resource type="Resource" id="route_youquan_huigu"]
+script = ExtResource("4_route")
+route_id = "youquan_huigu"
+route_name = "灰骨旧道"
+description = "由地下水脉向东南绕开山脊，通往灰骨寺旧战场。"
+from_node_id = "youquan_cult"
+to_node_id = "huigu_temple"
+travel_days = 3
+
+[sub_resource type="Resource" id="route_chishui_yuxu_core"]
+script = ExtResource("4_route")
+route_id = "chishui_yuxu_core"
+route_name = "玉虚南麓道"
+description = "由赤水城沿南麓缓坡通往玉虚仙宗本峰。"
+from_node_id = "chishui_city"
+to_node_id = "yuxu_xianzong_core"
+travel_days = 3
+
+[sub_resource type="Resource" id="route_guanshan_xuandu_core"]
+script = ExtResource("4_route")
+route_id = "guanshan_xuandu_core"
+route_name = "玄都旧驿"
+description = "关山府通往玄都天府的旧驿短线。"
+from_node_id = "guanshan_prefecture"
+to_node_id = "xuandu_tianfu_core"
+travel_days = 2
+
+[sub_resource type="Resource" id="route_changfeng_taiwei_core"]
+script = ExtResource("4_route")
+route_id = "changfeng_taiwei_core"
+route_name = "太微台道"
+description = "长风护道会沿高地古道护送行旅，接入太微道宫。"
+from_node_id = "changfeng_escort"
+to_node_id = "taiwei_daogong_core"
+travel_days = 3
+
+[sub_resource type="Resource" id="route_youquan_wuxiang_core"]
+script = ExtResource("4_route")
+route_id = "youquan_wuxiang_core"
+route_name = "无相水脉"
+description = "幽泉教入口与无相圣宗本部之间的隐秘短线。"
+from_node_id = "youquan_cult"
+to_node_id = "wuxiang_shengzong_core"
+
+[sub_resource type="Resource" id="route_white_stone_stone_mist"]
+script = ExtResource("4_route")
+route_id = "white_stone_stone_mist"
+route_name = "石雾旧商道"
+description = "白石镇北上通往石雾荒原的碎石商道。"
+from_node_id = "white_stone_town"
+to_node_id = "stone_mist_wilds"
+travel_days = 2
+
+[sub_resource type="Resource" id="route_white_stone_reed_marsh"]
+script = ExtResource("4_route")
+route_id = "white_stone_reed_marsh"
+route_name = "芦泽浅滩道"
+description = "白石镇沿河汊东行的浅滩小路。"
+from_node_id = "white_stone_town"
+to_node_id = "reed_marsh_wilds"
+travel_days = 2
+
+[sub_resource type="Resource" id="route_fulan_fallen_star"]
+script = ExtResource("4_route")
+route_id = "fulan_fallen_star"
+route_name = "陨星坡山径"
+description = "伏岚观南下穿过缓坡，抵达陨星坡。"
+from_node_id = "fulan_temple"
+to_node_id = "fallen_star_field"
+travel_days = 2
+
+[sub_resource type="Resource" id="route_chishui_red_cliff"]
+script = ExtResource("4_route")
+route_id = "chishui_red_cliff"
+route_name = "赤崖谷底道"
+description = "赤水城沿谷底通往赤崖荒谷。"
+from_node_id = "chishui_city"
+to_node_id = "red_cliff_wilds"
+travel_days = 2
+
+[sub_resource type="Resource" id="route_changfeng_cold_sand"]
+script = ExtResource("4_route")
+route_id = "changfeng_cold_sand"
+route_name = "寒砂北线"
+description = "长风护道会北上寒砂台的风口路线。"
+from_node_id = "changfeng_escort"
+to_node_id = "cold_sand_wilds"
+travel_days = 2
+
+[sub_resource type="Resource" id="route_yexing_black_water"]
+script = ExtResource("4_route")
+route_id = "yexing_black_water"
+route_name = "黑水暗滩"
+description = "夜行会沿海岸暗线通往黑水泽。"
+from_node_id = "yexing_society"
+to_node_id = "black_water_wilds"
+travel_days = 3
+
+[sub_resource type="Resource" id="route_stone_pine"]
+script = ExtResource("4_route")
+route_id = "stone_mist_pine_ridge"
+route_name = "青岚坡小径"
+description = "从石雾荒原向南绕过山前碎石坡。"
+from_node_id = "stone_mist_wilds"
+to_node_id = "pine_ridge_wilds"
+travel_days = 2
+
+[sub_resource type="Resource" id="route_cold_snow"]
+script = ExtResource("4_route")
+route_id = "cold_sand_snow_pass"
+route_name = "雪岭风口线"
+description = "长风护道会以北通往雪线风口的短线。"
+from_node_id = "cold_sand_wilds"
+to_node_id = "north_snow_pass"
+travel_days = 2
+
+[sub_resource type="Resource" id="route_stone_riverbend"]
+script = ExtResource("4_route")
+route_id = "stone_mist_riverbend"
+route_name = "回澜滩道"
+description = "石雾荒原沿河曲向东的浅滩路线。"
+from_node_id = "stone_mist_wilds"
+to_node_id = "riverbend_wilds"
+travel_days = 2
+
+[sub_resource type="Resource" id="route_chunshui_meadow"]
+script = ExtResource("4_route")
+route_id = "chunshui_south_meadow"
+route_name = "云汀草甸道"
+description = "由春水府向西南穿过开阔河谷。"
+from_node_id = "chunshui_prefecture"
+to_node_id = "south_meadow"
+travel_days = 3
+
+[sub_resource type="Resource" id="route_meadow_reed"]
+script = ExtResource("4_route")
+route_id = "south_meadow_reed_bay"
+route_name = "芦湾浅滩道"
+description = "云汀原继续向南接入芦湾浅滩。"
+from_node_id = "south_meadow"
+to_node_id = "reed_bay"
+travel_days = 2
+
+[sub_resource type="Resource" id="route_black_coastal"]
+script = ExtResource("4_route")
+route_id = "black_water_coastal_marsh"
+route_name = "潮生泽路"
+description = "从黑水泽沿海岸低地向南。"
+from_node_id = "black_water_wilds"
+to_node_id = "coastal_marsh"
+travel_days = 3
+
+[sub_resource type="Resource" id="route_coastal_bight"]
+script = ExtResource("4_route")
+route_id = "coastal_marsh_east_bight"
+route_name = "海门浅滩线"
+description = "潮生泽通往海湾内侧的碎礁浅滩。"
+from_node_id = "coastal_marsh"
+to_node_id = "east_coast_bight"
+travel_days = 2
+
+[sub_resource type="Resource" id="route_guanshan_western"]
+script = ExtResource("4_route")
+route_id = "guanshan_western_valley"
+route_name = "西峡旧驿"
+description = "关山府向西穿过狭谷的荒径。"
+from_node_id = "guanshan_prefecture"
+to_node_id = "western_valley"
+travel_days = 2
+
+[sub_resource type="Resource" id="route_chilu_southwest"]
+script = ExtResource("4_route")
+route_id = "chilu_southwest_wilds"
+route_name = "赤砂坡道"
+description = "赤炉堂沿山前缓坡通往西南荒坡。"
+from_node_id = "chilu_hall"
+to_node_id = "southwest_wilds"
+travel_days = 3
+
+[sub_resource type="Resource" id="route_southwest_westbank"]
+script = ExtResource("4_route")
+route_id = "southwest_west_riverbank"
+route_name = "断流滩支路"
+description = "赤砂坡向北接入旧河滩。"
+from_node_id = "southwest_wilds"
+to_node_id = "west_riverbank"
+travel_days = 2
+
+[sub_resource type="Resource" id="route_taiwei_hillfoot"]
+script = ExtResource("4_route")
+route_id = "taiwei_eastern_hillfoot"
+route_name = "石门台道"
+description = "太微道宫向南至山前台地的中继路。"
+from_node_id = "taiwei_daogong_core"
+to_node_id = "eastern_hillfoot"
+travel_days = 2
+
+[sub_resource type="Resource" id="route_chunshui_riverfork"]
+script = ExtResource("4_route")
+route_id = "chunshui_central_riverfork"
+route_name = "河源岔口道"
+description = "春水府向北回到中部河源的浅路。"
+from_node_id = "chunshui_prefecture"
+to_node_id = "central_river_fork"
+travel_days = 2
+
+[sub_resource type="Resource" id="territory_yunqu"]
+script = ExtResource("3_territory")
+territory_id = "yunqu_state"
+territory_name = "百川区域"
+region_subtitle = "东南近域"
+description = "山川与水路交错的百川东南近域。此处只展示已制作的百川地点。"
+main_faction = "玉虚仙宗"
+faction_summary = "百川各方势力尚待玩家自行接触。"
+
+[resource]
+script = ExtResource("2_map")
+map_name = "百川区域"
+map_size = Vector2(3200, 1800)
+background_texture = ExtResource("6_background")
+territories = Array[ExtResource("3_territory")]([SubResource("territory_yunqu")])
+nodes = Array[ExtResource("1_node")]([SubResource("node_home"), SubResource("node_white"), SubResource("node_qingxi_wilds"), SubResource("node_eastwoods"), SubResource("node_fulan"), SubResource("node_herb"), SubResource("node_lanpu"), SubResource("node_misty"), SubResource("node_changfeng"), SubResource("node_chunshui"), SubResource("node_guanshan"), SubResource("node_chilu"), SubResource("node_chishui"), SubResource("node_youquan"), SubResource("node_yexing"), SubResource("node_huigu"), SubResource("node_yuxu_core"), SubResource("node_taiwei_core"), SubResource("node_xuandu_core"), SubResource("node_wuxiang_core"), SubResource("node_stone_mist"), SubResource("node_reed_marsh"), SubResource("node_fallen_star"), SubResource("node_red_cliff"), SubResource("node_cold_sand"), SubResource("node_black_water"), SubResource("node_pine_ridge_wilds"), SubResource("node_north_snow_pass"), SubResource("node_riverbend_wilds"), SubResource("node_south_meadow"), SubResource("node_reed_bay"), SubResource("node_coastal_marsh"), SubResource("node_east_coast_bight"), SubResource("node_western_valley"), SubResource("node_southwest_wilds"), SubResource("node_west_riverbank"), SubResource("node_eastern_hillfoot"), SubResource("node_central_river_fork")])
+routes = Array[ExtResource("4_route")]([SubResource("route_qingxi_white"), SubResource("route_qingxi_wild"), SubResource("route_white_east"), SubResource("route_white_fulan"), SubResource("route_east_herb"), SubResource("route_herb_lanpu"), SubResource("route_fulan_misty"), SubResource("route_herb_misty"), SubResource("route_white_chunshui"), SubResource("route_chunshui_changfeng"), SubResource("route_chunshui_youquan"), SubResource("route_lanpu_guanshan"), SubResource("route_guanshan_chilu"), SubResource("route_chilu_chishui"), SubResource("route_youquan_yexing"), SubResource("route_youquan_huigu"), SubResource("route_chishui_yuxu_core"), SubResource("route_guanshan_xuandu_core"), SubResource("route_changfeng_taiwei_core"), SubResource("route_youquan_wuxiang_core"), SubResource("route_white_stone_stone_mist"), SubResource("route_white_stone_reed_marsh"), SubResource("route_fulan_fallen_star"), SubResource("route_chishui_red_cliff"), SubResource("route_changfeng_cold_sand"), SubResource("route_yexing_black_water"), SubResource("route_stone_pine"), SubResource("route_cold_snow"), SubResource("route_stone_riverbend"), SubResource("route_chunshui_meadow"), SubResource("route_meadow_reed"), SubResource("route_black_coastal"), SubResource("route_coastal_bight"), SubResource("route_guanshan_western"), SubResource("route_chilu_southwest"), SubResource("route_southwest_westbank"), SubResource("route_taiwei_hillfoot"), SubResource("route_chunshui_riverfork")])
+use_catalog = false

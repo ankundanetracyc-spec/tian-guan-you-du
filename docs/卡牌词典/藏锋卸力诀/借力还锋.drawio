@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="Electron" agent="Codex">
+  <diagram id="jieli-huanfeng" name="借力还锋">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageWidth="1700" pageHeight="760">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="main" value="&lt;div style=&quot;text-align:center;&quot;&gt;卡牌名：借力还锋&lt;/div&gt;&lt;div style=&quot;text-align:left;&quot;&gt;资源路径：res://resources/activeskills/藏锋卸力诀/借力还锋.tres&lt;br&gt;类型：攻伐牌&lt;br&gt;关键词：无&lt;br&gt;耗费：精力 2、法力 0&lt;br&gt;目标：单体敌人&lt;br&gt;伤害类型：物理&lt;br&gt;伤害公式：8 + 剑道造诣×0.42 + 体魄×0.20&lt;/div&gt;&lt;br&gt;来源：藏锋卸力诀 / 卸锋卷&lt;br&gt;描述：自身拥有护盾、化解或借力时精准+6；若本牌消耗了借力，命中后向目标施加1层剑痕。&lt;br&gt;状态关联：剑痕、借力、化解、护盾" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=15;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="420" y="90" width="689" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="effect" value="基础伤害类型：物理&lt;br&gt;伤害公式：8&#xA;剑道造诣×0.42 + 体魄×0.20&#xA;拥有护盾、化解或借力：精准+6&#xA;消耗借力后命中：施加1层剑痕" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="170" y="410" width="293" height="101" as="geometry" />
+        </mxCell>
+        <mxCell id="role" value="主要作用：与横剑卸劲配合，使用它提供的借力&#xA;防守成功后以较低精力消耗稳定反击" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="760" y="410" width="320" height="72" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

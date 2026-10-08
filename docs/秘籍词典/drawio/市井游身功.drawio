@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="app.diagrams.net" modified="2026-07-13T00:00:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="shijing" name="市井游身功">
+    <mxGraphModel dx="1700" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1500" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="市井游身功&#xA;凡人武学 / 仅辅修 / 体修·身法·诡招 / 油滑机变近身缠斗" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="580" y="20" width="600" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="overview" value="秘籍总览&#xA;只能辅修，不能作为主修功法&#xA;凡人也可学习，不要求灵根与修仙境界&#xA;四卷依次学习，每卷研读值满后学会该卷" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="620" y="140" width="520" height="99" as="geometry" />
+        </mxCell>
+        <mxCell id="base" value="当前资源表现&#xA;四卷学完永久获得：敏捷+1，体道造诣+0.6&#xA;装备辅修获得：敏捷+0.5，精准+2&#xA;招式按卷解锁：滚地翻、顶心肘、撒石灰、泥鳅身" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="620" y="330" width="520" height="99" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" value="第一卷：滑步卷&#xA;研读值：32&#xA;学习要求：敏捷≥3；体道造诣≥2&#xA;学会永久属性：敏捷+0.25；体道造诣+0.15&#xA;习得：滚地翻" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="720" y="520" width="320" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_l" value="纳气&#xA;先攻速度+2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="300" y="530" width="240" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_r" value="化法&#xA;基础技能库额外加入 滚地翻*1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="530" width="220" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" value="第二卷：借力卷&#xA;研读值：40&#xA;学习要求：已学滑步卷；敏捷≥5；体道造诣≥4&#xA;学会永久属性：敏捷+0.25；体道造诣+0.15&#xA;习得：顶心肘" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="720" y="710" width="320" height="166" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_r" value="化法&#xA;基础技能库额外加入 顶心肘*1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="720" width="220" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" value="第三卷：阴手卷&#xA;研读值：48&#xA;学习要求：已学借力卷；敏捷≥7；体道造诣≥5&#xA;学会永久属性：敏捷+0.25；体道造诣+0.15&#xA;习得：撒石灰" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="720" y="900" width="320" height="166" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_r" value="化法&#xA;基础技能库额外加入 撒石灰*1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="910" width="240" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" value="第四卷：脱身卷&#xA;研读值：56&#xA;学习要求：已学阴手卷；敏捷≥9；体道造诣≥7&#xA;学会永久属性：敏捷+0.25；体道造诣+0.15&#xA;习得：泥鳅身" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="720" y="1090" width="320" height="166" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_r" value="化法&#xA;基础技能库额外加入 泥鳅身*1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="1100" width="240" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="设计总结&#xA;适合和凡人兵器、街斗、轻巧流派联动&#xA;不适合并入仙道法修联动" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1510" y="770" width="220" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" style="endArrow=block;html=1;" edge="1" parent="1" source="overview" target="base">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" style="endArrow=block;html=1;" edge="1" parent="1" source="base" target="c1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" style="endArrow=block;html=1;" edge="1" parent="1" source="c1" target="c2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" style="endArrow=block;html=1;" edge="1" parent="1" source="c2" target="c3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" style="endArrow=block;html=1;" edge="1" parent="1" source="c3" target="c4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="纳气" style="endArrow=block;html=1;" edge="1" parent="1" source="c1" target="c1_l">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="化法" style="endArrow=block;html=1;" edge="1" parent="1" source="c1" target="c1_r">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" value="化法" style="endArrow=block;html=1;" edge="1" parent="1" source="c2" target="c2_r">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" value="化法" style="endArrow=block;html=1;" edge="1" parent="1" source="c3" target="c3_r">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" value="化法" style="endArrow=block;html=1;" edge="1" parent="1" source="c4" target="c4_r">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_l" value="纳气&#xA;精准+2；会心+1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="300" y="720" width="240" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="e_c2_l" edge="1" parent="1" source="c2" target="c2_l" value="纳气" style="endArrow=block;html=1;rounded=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_l" value="纳气&#xA;精准+2；闪避+1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="300" y="910" width="240" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="e_c3_l" edge="1" parent="1" source="c3" target="c3_l" value="纳气" style="endArrow=block;html=1;rounded=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_l" value="纳气&#xA;闪避+2；先攻速度+2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="300" y="1100" width="240" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="e_c4_l" edge="1" parent="1" source="c4" target="c4_l" value="纳气" style="endArrow=block;html=1;rounded=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="status_rules" parent="1" vertex="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;align=left;verticalAlign=top;" value="状态与关联&amp;#xA;身法：自身增益；提高闪避或支持遁身衔接。&amp;#xA;疲倦：高强度身法后的负担状态。">
+          <mxGeometry x="1760" y="850" width="410" height="190" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

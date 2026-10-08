@@ -1,0 +1,58 @@
+<mxfile host="Electron" agent="Codex">
+  <diagram id="base-deck-unlock" name="基础技能库总览">
+    <mxGraphModel dx="1207" dy="722" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f0df;strokeColor=#8b6f47;fontSize=22;fontStyle=1;" value="基础技能库总览&#xa;当前只保留：凡俗通用、体修、行炁" vertex="1">
+          <mxGeometry height="80" width="680" x="620" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="start" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=16;align=left;spacingLeft=16;" value="新角色／尚未确定主要侧重&#xa;&#xa;尚未配置当前战斗风格&#xa;三途养成进度彼此独立" vertex="1">
+          <mxGeometry height="145" width="340" x="760" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="common" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=16;align=left;spacingLeft=16;" value="凡俗通用基础技能库&#xa;未解锁专用技能库时使用&#xa;&#xa;技能：应敌、架招、养息、痛击&#xa;&#xa;提供基础攻守与一次调息；不产生路线资源。" vertex="1">
+          <mxGeometry height="195" width="340" x="760" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="rules" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=15;align=left;spacingLeft=16;spacingTop=10;" value="基础技能库公共规则&#xa;① 每名角色当前使用一套基础技能库，由当前主修侧重决定。&#xa;② 满足对应底板条件后可切换侧重；主修变化会切换技能库，三途养成进度保留。&#xa;③ 化法可新增秘籍技能，或为基础技能追加效果；追加时保留基础效果。&#xa;④ 基础技能库不内置流派专属状态；气血、血炉、心隙等由秘籍开启。" vertex="1">
+          <mxGeometry height="175" width="800" x="560" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="bodyLearn" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=15;align=left;spacingLeft=16;spacingTop=10;" value="学习可主修锻躯秘籍&#xa;且（体魄≥8 或 敏捷≥8）且体道造诣≥10&#xa;&#xa;可设为当前侧重；主修变化可切换，三途进度保留" vertex="1">
+          <mxGeometry height="135" width="380" x="130" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="bodyDeck" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4dfc5;strokeColor=#80533a;fontSize=15;align=left;spacingLeft=16;spacingTop=10;" value="体修基础技能库&#xa;锻躯当前侧重的基础技能&#xa;&#xa;技能：发劲、催血、平息、卸力、撼山&#xa;&#xa;气血入口、基础攻伐与化解应对；撼山为标志技能。" vertex="1">
+          <mxGeometry height="160" width="580" x="50" y="1030" as="geometry" />
+        </mxCell>
+        <mxCell id="qiLearn" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=15;align=left;spacingLeft=16;spacingTop=10;" value="学习可主修行炁秘籍&#xa;且（灵慧≥8 或 神魂≥8）且术法造诣≥10&#xa;&#xa;可设为当前侧重；主修变化可切换，三途进度保留" vertex="1">
+          <mxGeometry height="135" width="380" x="1410" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="qiDeck" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcebe3;strokeColor=#4e7c66;fontSize=15;align=left;spacingLeft=16;spacingTop=10;" value="行炁基础技能库&#xa;行炁当前侧重的基础技能&#xa;&#xa;技能：灵击、聚息、凝元、护元、灵爆&#xa;&#xa;蕴神当前侧重复用此底板并由主修化法特化；灵爆为标志技能。" vertex="1">
+          <mxGeometry height="160" width="600" x="1260" y="1030" as="geometry" />
+        </mxCell>
+        <mxCell id="soulLearn" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=15;align=left;spacingLeft=16;spacingTop=10;" value="学习可主修蕴神秘籍&#xa;且（神魂≥8 或 灵慧≥8）且术法造诣≥10&#xa;&#xa;可设为当前侧重；主修变化可切换，三途进度保留" vertex="1">
+          <mxGeometry height="135" width="380" x="770" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="start" style="endArrow=block;html=1;" target="common">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="common" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;" target="bodyLearn">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="bodyLearn" style="endArrow=block;html=1;" target="bodyDeck">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="common" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;" target="qiLearn">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="qiLearn" style="endArrow=block;html=1;" target="qiDeck">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="common" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;" target="soulLearn">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="soulLearn" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;" target="qiDeck">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="8000" height="8000" viewBox="0 0 8000 8000">
+<title>昭明界九州广袤布局草图</title>
+<desc>8000×8000逻辑地图；核心版图标尺约24000×18000公里。源稿以2400×1800绘制后按统一变换放置。五乘五仅为资源加载分块。</desc>
+<rect width="8000" height="8000" fill="#6699a0"/>
+<g id="source-art" transform="translate(400 1300) scale(3)">
+<g id="sea" inkscape:groupmode="layer" inkscape:label="海域背景">
+<rect width="2400" height="1800" fill="#6699a0"/>
+<path d="M80 250 C650 120 1250 260 2320 150 M40 520 C780 370 1370 610 2390 420 M30 820 C680 650 1420 930 2390 720 M40 1120 C720 930 1530 1200 2390 980" fill="none" stroke="#d7e9df" stroke-opacity=".18" stroke-width="7"/>
+</g>
+<g id="land" inkscape:groupmode="layer" inkscape:label="大陆轮廓">
+<polygon points="210,420 315,255 525,140 825,115 1090,205 1435,165 1690,255 1855,405 1985,610 1940,850 2050,1065 1910,1210 1640,1265 1380,1350 1035,1305 790,1370 550,1280 370,1140 270,925 185,690" fill="#e6d3a8" stroke="#595546" stroke-width="5"/>
+</g>
+<g id="territories" inkscape:groupmode="layer" inkscape:label="九州自然分区">
+<polygon id="xuanshuo" points="210,420 315,255 525,140 825,115 1090,205 1035,405 815,485 585,430 355,525 205,585" fill="rgb(184,208,209)" fill-opacity="0.882" stroke="#71664f" stroke-width="3" stroke-opacity=".82"/>
+<polygon id="xiangshan" points="1090,205 1435,165 1690,255 1765,435 1590,535 1350,515 1160,430 1035,405" fill="rgb(134,181,184)" fill-opacity="0.863" stroke="#71664f" stroke-width="3" stroke-opacity=".82"/>
+<polygon id="guanhe" points="205,585 355,525 585,430 815,485 750,735 565,860 330,790 195,690" fill="rgb(210,168,103)" fill-opacity="0.878" stroke="#71664f" stroke-width="3" stroke-opacity=".82"/>
+<polygon id="yunque" points="815,485 1035,405 1160,430 1350,515 1330,745 1160,865 890,815 750,735" fill="rgb(170,193,133)" fill-opacity="0.878" stroke="#71664f" stroke-width="3" stroke-opacity=".82"/>
+<polygon id="donghua" points="1350,515 1590,535 1765,435 1855,600 1940,850 1720,945 1470,835 1330,745" fill="rgb(207,167,102)" fill-opacity="0.863" stroke="#71664f" stroke-width="3" stroke-opacity=".82"/>
+<polygon id="yunxiu" points="330,790 565,860 750,735 890,815 865,1015 720,1135 525,1090 370,1140 270,925" fill="rgb(151,133,128)" fill-opacity="0.882" stroke="#71664f" stroke-width="3" stroke-opacity=".82"/>
+<polygon id="cangwu" points="865,1015 890,815 1160,865 1330,745 1470,835 1510,1065 1380,1215 1035,1305 720,1135" fill="rgb(106,148,104)" fill-opacity="0.878" stroke="#71664f" stroke-width="3" stroke-opacity=".82"/>
+<polygon id="guichao" points="1510,1065 1720,945 1940,850 2050,1065 1910,1210 1640,1265 1380,1350 1380,1215" fill="rgb(78,148,142)" fill-opacity="0.871" stroke="#71664f" stroke-width="3" stroke-opacity=".82"/>
+<polygon id="island-0" points="1870,250 1935,205 2010,225 2040,290 1970,330 1895,315" fill="rgb(96,157,166)" fill-opacity="0.922" stroke="#3d6970" stroke-width="3"/>
+<polygon id="island-1" points="2080,380 2160,330 2230,365 2250,430 2185,480 2115,455" fill="rgb(96,157,166)" fill-opacity="0.922" stroke="#3d6970" stroke-width="3"/>
+<polygon id="island-2" points="1990,520 2050,480 2115,505 2130,565 2070,600 2015,585" fill="rgb(96,157,166)" fill-opacity="0.922" stroke="#3d6970" stroke-width="3"/>
+<polygon id="island-3" points="2040,1190 2110,1135 2190,1165 2210,1230 2160,1280 2070,1260" fill="rgb(73,145,140)" fill-opacity="0.922" stroke="#3d6970" stroke-width="3"/>
+<polygon id="island-4" points="1880,1320 1940,1280 2005,1310 2015,1370 1945,1400 1885,1370" fill="rgb(73,145,140)" fill-opacity="0.922" stroke="#3d6970" stroke-width="3"/>
+</g>
+<g id="terrain" inkscape:groupmode="layer" inkscape:label="山河与地貌锚点">
+<polyline points="450,350 630,300 820,330 1010,290" fill="none" stroke="#5a5646" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.76"/>
+<path d="M416 350 L450 326 L484 350 Z" fill="#706b58" fill-opacity=".35" stroke="#574f43" stroke-opacity=".65" stroke-width="2"/>
+<path d="M438 348 L450 326 L462 348" fill="none" stroke="#eee2c1" stroke-opacity=".78" stroke-width="3"/>
+<path d="M786 330 L820 299 L854 330 Z" fill="#706b58" fill-opacity=".35" stroke="#574f43" stroke-opacity=".65" stroke-width="2"/>
+<path d="M808 328 L820 299 L832 328" fill="none" stroke="#eee2c1" stroke-opacity=".78" stroke-width="3"/>
+<polyline points="1140,320 1260,250 1390,315 1535,285" fill="none" stroke="#5a5646" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.76"/>
+<path d="M1106 320 L1140 296 L1174 320 Z" fill="#706b58" fill-opacity=".35" stroke="#574f43" stroke-opacity=".65" stroke-width="2"/>
+<path d="M1128 318 L1140 296 L1152 318" fill="none" stroke="#eee2c1" stroke-opacity=".78" stroke-width="3"/>
+<path d="M1356 315 L1390 284 L1424 315 Z" fill="#706b58" fill-opacity=".35" stroke="#574f43" stroke-opacity=".65" stroke-width="2"/>
+<path d="M1378 313 L1390 284 L1402 313" fill="none" stroke="#eee2c1" stroke-opacity=".78" stroke-width="3"/>
+<polyline points="410,820 555,760 700,790 820,900" fill="none" stroke="#5a5646" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.76"/>
+<path d="M376 820 L410 796 L444 820 Z" fill="#706b58" fill-opacity=".35" stroke="#574f43" stroke-opacity=".65" stroke-width="2"/>
+<path d="M398 818 L410 796 L422 818" fill="none" stroke="#eee2c1" stroke-opacity=".78" stroke-width="3"/>
+<path d="M666 790 L700 759 L734 790 Z" fill="#706b58" fill-opacity=".35" stroke="#574f43" stroke-opacity=".65" stroke-width="2"/>
+<path d="M688 788 L700 759 L712 788" fill="none" stroke="#eee2c1" stroke-opacity=".78" stroke-width="3"/>
+<polyline points="800,1040 950,950 1110,1020 1250,930 1390,990" fill="none" stroke="#5a5646" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.76"/>
+<path d="M766 1040 L800 1016 L834 1040 Z" fill="#706b58" fill-opacity=".35" stroke="#574f43" stroke-opacity=".65" stroke-width="2"/>
+<path d="M788 1038 L800 1016 L812 1038" fill="none" stroke="#eee2c1" stroke-opacity=".78" stroke-width="3"/>
+<path d="M1076 1020 L1110 989 L1144 1020 Z" fill="#706b58" fill-opacity=".35" stroke="#574f43" stroke-opacity=".65" stroke-width="2"/>
+<path d="M1098 1018 L1110 989 L1122 1018" fill="none" stroke="#eee2c1" stroke-opacity=".78" stroke-width="3"/>
+<path d="M1356 990 L1390 952 L1424 990 Z" fill="#706b58" fill-opacity=".35" stroke="#574f43" stroke-opacity=".65" stroke-width="2"/>
+<path d="M1378 988 L1390 952 L1402 988" fill="none" stroke="#eee2c1" stroke-opacity=".78" stroke-width="3"/>
+<polyline points="1510,910 1630,840 1770,930 1850,880" fill="none" stroke="#5a5646" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.76"/>
+<path d="M1476 910 L1510 886 L1544 910 Z" fill="#706b58" fill-opacity=".35" stroke="#574f43" stroke-opacity=".65" stroke-width="2"/>
+<path d="M1498 908 L1510 886 L1522 908" fill="none" stroke="#eee2c1" stroke-opacity=".78" stroke-width="3"/>
+<path d="M1736 930 L1770 899 L1804 930 Z" fill="#706b58" fill-opacity=".35" stroke="#574f43" stroke-opacity=".65" stroke-width="2"/>
+<path d="M1758 928 L1770 899 L1782 928" fill="none" stroke="#eee2c1" stroke-opacity=".78" stroke-width="3"/>
+<polyline points="915,420 945,555 1015,680 1125,795 1210,965 1430,1120 1630,1135" fill="none" stroke="#478797" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.72"/>
+<polyline points="915,420 945,555 1015,680 1125,795 1210,965 1430,1120 1630,1135" fill="none" stroke="#b7dfd2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.72"/>
+<polyline points="1140,470 1130,610 1060,760 950,900 820,1010" fill="none" stroke="#478797" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.72"/>
+<polyline points="1140,470 1130,610 1060,760 950,900 820,1010" fill="none" stroke="#b7dfd2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.72"/>
+<polyline points="1355,610 1470,670 1605,780 1720,900 1805,1050" fill="none" stroke="#478797" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.72"/>
+<polyline points="1355,610 1470,670 1605,780 1720,900 1805,1050" fill="none" stroke="#b7dfd2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.72"/>
+<ellipse cx="1275" cy="810" rx="85" ry="50" fill="#478e9d" fill-opacity=".5" stroke="#3a6e7a" stroke-width="3"/>
+<circle cx="920" cy="1040" r="26" fill="#4f8b5d" fill-opacity=".34" stroke="#47784d" stroke-opacity=".52" stroke-width="2"/>
+<circle cx="1010" cy="1120" r="26" fill="#4f8b5d" fill-opacity=".34" stroke="#47784d" stroke-opacity=".52" stroke-width="2"/>
+<circle cx="1115" cy="1085" r="26" fill="#4f8b5d" fill-opacity=".34" stroke="#47784d" stroke-opacity=".52" stroke-width="2"/>
+<circle cx="1235" cy="1150" r="26" fill="#4f8b5d" fill-opacity=".34" stroke="#47784d" stroke-opacity=".52" stroke-width="2"/>
+<circle cx="1320" cy="1050" r="26" fill="#4f8b5d" fill-opacity=".34" stroke="#47784d" stroke-opacity=".52" stroke-width="2"/>
+<circle cx="1410" cy="1125" r="26" fill="#4f8b5d" fill-opacity=".34" stroke="#47784d" stroke-opacity=".52" stroke-width="2"/>
+<circle cx="1080" cy="1230" r="26" fill="#4f8b5d" fill-opacity=".34" stroke="#47784d" stroke-opacity=".52" stroke-width="2"/>
+<circle cx="850" cy="1170" r="26" fill="#4f8b5d" fill-opacity=".34" stroke="#47784d" stroke-opacity=".52" stroke-width="2"/>
+</g>
+<g id="labels" inkscape:groupmode="layer" inkscape:label="州名标注">
+<text x="100" y="82" text-anchor="start" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="42px" font-weight="700" fill="#303732" fill-opacity="1.0">昭明界 · 九州广袤布局草图</text>
+<text x="102" y="122" text-anchor="start" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="21px" font-weight="400" fill="#2f4645" fill-opacity="1.0">序章后半自由修炼世界｜自然边界先于势力边界｜本图为 L0/L1 总览</text>
+<text x="620" y="275" text-anchor="middle" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="37px" font-weight="700" fill="#37382f" fill-opacity="1.0">玄朔州</text>
+<text x="620" y="317" text-anchor="middle" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="22px" font-weight="400" fill="#414337" fill-opacity="1.0">· 北冥雪原 ·</text>
+<text x="1260" y="280" text-anchor="middle" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="37px" font-weight="700" fill="#37382f" fill-opacity="1.0">相山州</text>
+<text x="1260" y="322" text-anchor="middle" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="22px" font-weight="400" fill="#414337" fill-opacity="1.0">· 相山北海 ·</text>
+<text x="475" y="640" text-anchor="middle" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="37px" font-weight="700" fill="#37382f" fill-opacity="1.0">关河州</text>
+<text x="475" y="682" text-anchor="middle" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="22px" font-weight="400" fill="#414337" fill-opacity="1.0">· 西陵荒域 ·</text>
+<text x="1040" y="610" text-anchor="middle" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="37px" font-weight="700" fill="#37382f" fill-opacity="1.0">云阙州</text>
+<text x="1040" y="652" text-anchor="middle" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="22px" font-weight="400" fill="#414337" fill-opacity="1.0">· 中州玉虚 ·</text>
+<text x="1585" y="680" text-anchor="middle" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="37px" font-weight="700" fill="#37382f" fill-opacity="1.0">东华州</text>
+<text x="1585" y="722" text-anchor="middle" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="22px" font-weight="400" fill="#414337" fill-opacity="1.0">· 东陆机巧 ·</text>
+<text x="600" y="980" text-anchor="middle" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="37px" font-weight="700" fill="#37382f" fill-opacity="1.0">云岫州</text>
+<text x="600" y="1022" text-anchor="middle" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="22px" font-weight="400" fill="#414337" fill-opacity="1.0">· 百脉山原 ·</text>
+<text x="1110" y="1050" text-anchor="middle" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="37px" font-weight="700" fill="#37382f" fill-opacity="1.0">苍梧州</text>
+<text x="1110" y="1092" text-anchor="middle" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="22px" font-weight="400" fill="#414337" fill-opacity="1.0">· 南荒万山 ·</text>
+<text x="1720" y="1120" text-anchor="middle" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="37px" font-weight="700" fill="#37382f" fill-opacity="1.0">归潮州</text>
+<text x="1720" y="1162" text-anchor="middle" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="22px" font-weight="400" fill="#414337" fill-opacity="1.0">· 南冥海疆 ·</text>
+<text x="2050" y="210" text-anchor="middle" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="37px" font-weight="700" fill="#3a4a49" fill-opacity="1.0">沧溟州</text>
+<text x="2050" y="248" text-anchor="middle" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="22px" font-weight="400" fill="#3c5654" fill-opacity="1.0">· 东海群岛 ·</text>
+</g>
+<g id="anchors" inkscape:groupmode="layer" inkscape:label="L1势力锚点">
+<circle id="anchor-0" cx="650" cy="230" r="10" fill="#f6da93" stroke="#614626" stroke-width="3"/>
+<polyline points="650,230 650,204" fill="none" stroke="#6b4f2d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.76"/>
+<text x="650" y="211" text-anchor="middle" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="21px" font-weight="700" fill="#3e392e" fill-opacity="1.0">北极仙宫</text>
+<circle id="anchor-1" cx="1200" cy="350" r="10" fill="#f6da93" stroke="#614626" stroke-width="3"/>
+<polyline points="1200,350 1200,378" fill="none" stroke="#6b4f2d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.76"/>
+<text x="1200" y="385" text-anchor="middle" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="21px" font-weight="700" fill="#3e392e" fill-opacity="1.0">九脉山庄</text>
+<circle id="anchor-2" cx="360" cy="620" r="10" fill="#f6da93" stroke="#614626" stroke-width="3"/>
+<polyline points="360,620 354,592" fill="none" stroke="#6b4f2d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.76"/>
+<text x="354" y="599" text-anchor="middle" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="21px" font-weight="700" fill="#3e392e" fill-opacity="1.0">西陵戍所</text>
+<circle id="anchor-3" cx="1050" cy="565" r="10" fill="#f6da93" stroke="#614626" stroke-width="3"/>
+<polyline points="1050,565 1050,535" fill="none" stroke="#6b4f2d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.76"/>
+<text x="1050" y="542" text-anchor="middle" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="21px" font-weight="700" fill="#3e392e" fill-opacity="1.0">玉虚仙宗</text>
+<circle id="anchor-4" cx="1840" cy="990" r="10" fill="#f6da93" stroke="#614626" stroke-width="3"/>
+<polyline points="1840,990 1840,960" fill="none" stroke="#6b4f2d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.76"/>
+<text x="1840" y="967" text-anchor="middle" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="21px" font-weight="700" fill="#3e392e" fill-opacity="1.0">天衡仙国</text>
+<circle id="anchor-5" cx="1590" cy="650" r="10" fill="#f6da93" stroke="#614626" stroke-width="3"/>
+<polyline points="1590,650 1590,622" fill="none" stroke="#6b4f2d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.76"/>
+<text x="1590" y="629" text-anchor="middle" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="21px" font-weight="700" fill="#3e392e" fill-opacity="1.0">千机城</text>
+<circle id="anchor-6" cx="1960" cy="250" r="10" fill="#f6da93" stroke="#614626" stroke-width="3"/>
+<polyline points="1960,250 1986,240" fill="none" stroke="#6b4f2d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.76"/>
+<text x="1986" y="247" text-anchor="middle" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="21px" font-weight="700" fill="#3e392e" fill-opacity="1.0">蓬莱仙盟</text>
+<circle id="anchor-7" cx="620" cy="925" r="10" fill="#f6da93" stroke="#614626" stroke-width="3"/>
+<polyline points="620,925 610,897" fill="none" stroke="#6b4f2d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.76"/>
+<text x="610" y="904" text-anchor="middle" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="21px" font-weight="700" fill="#3e392e" fill-opacity="1.0">铸剑城</text>
+<circle id="anchor-8" cx="1190" cy="1010" r="10" fill="#f6da93" stroke="#614626" stroke-width="3"/>
+<polyline points="1190,1010 1190,980" fill="none" stroke="#6b4f2d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.76"/>
+<text x="1190" y="987" text-anchor="middle" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="21px" font-weight="700" fill="#3e392e" fill-opacity="1.0">万妖谷</text>
+<circle id="anchor-9" cx="1690" cy="1110" r="10" fill="#f6da93" stroke="#614626" stroke-width="3"/>
+<polyline points="1690,1110 1710,1138" fill="none" stroke="#6b4f2d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.76"/>
+<text x="1710" y="1145" text-anchor="middle" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="21px" font-weight="700" fill="#3e392e" fill-opacity="1.0">不夜港</text>
+<circle id="anchor-10" cx="1280" cy="795" r="10" fill="#f6da93" stroke="#614626" stroke-width="3"/>
+<polyline points="1280,795 1298,823" fill="none" stroke="#6b4f2d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.76"/>
+<text x="1298" y="830" text-anchor="middle" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="21px" font-weight="700" fill="#3e392e" fill-opacity="1.0">青溪里</text>
+<circle id="anchor-11" cx="850" cy="720" r="10" fill="#f6da93" stroke="#614626" stroke-width="3"/>
+<polyline points="850,720 850,750" fill="none" stroke="#6b4f2d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.76"/>
+<text x="850" y="757" text-anchor="middle" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="21px" font-weight="700" fill="#3e392e" fill-opacity="1.0">长风镖局</text>
+</g>
+<g id="notes" inkscape:groupmode="layer" inkscape:label="设计说明">
+<rect x="86" y="1480" width="604" height="215" rx="16" fill="#2a5153" fill-opacity=".78" stroke="#dccfaf" stroke-opacity=".8" stroke-width="2"/>
+<text x="112" y="1506" text-anchor="start" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="21px" font-weight="700" fill="#f7e1a6" fill-opacity="1.0">设计裁定</text>
+<text x="112" y="1543" text-anchor="start" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="17px" font-weight="400" fill="#e8e7d3" fill-opacity="1.0">• 五乘五只保留为资源加载分块，不画成州界</text>
+<text x="112" y="1568" text-anchor="start" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="17px" font-weight="400" fill="#e8e7d3" fill-opacity="1.0">• 核心框架约 24000×18000 km，边缘海域不等同州界</text>
+<text x="112" y="1593" text-anchor="start" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="17px" font-weight="400" fill="#e8e7d3" fill-opacity="1.0">• 每州有多种组织，但总览只标少量 L1 锚点</text>
+<text x="112" y="1618" text-anchor="start" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="17px" font-weight="400" fill="#e8e7d3" fill-opacity="1.0">• 云岫州是百脉山原，不再等同于剑修流派</text>
+<text x="112" y="1643" text-anchor="start" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="17px" font-weight="400" fill="#e8e7d3" fill-opacity="1.0">• 玩家可散修、入宗、入仙国或成为家族客卿</text>
+<text x="1740" y="1680" text-anchor="start" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="17px" font-weight="400" fill="#e5efe5" fill-opacity="1.0">地图外沿保留未定外洋，作为后期航图与异象空间</text>
+<path d="M2220 135 L2207 176 L2233 176 Z" fill="#ecdfbb"/><line x1="2220" y1="160" x2="2220" y2="270" stroke="#ecdfbb" stroke-width="4"/><text x="2207" y="295" font-family="Microsoft YaHei,SimHei,sans-serif" font-size="17px" fill="#e8dfc3">北</text>
+</g>
+</g>
+</svg>

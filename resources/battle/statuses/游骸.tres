@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="StatusEffect" format=3]
+
+[ext_resource type="Script" path="res://csharp/battle/StatusEffect.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+effect_id = "游骸"
+name = "游骸"
+description = "乘物游骸真经的专属状态。敌方招式含物理伤害时，匹配的持招应对先结算。伤害来源与属性可追溯时，仅攻击者体魄＋敏捷＋体道造诣总和严格小于自身同三项总和2倍，才消耗1层并规避整招对自身的全部伤害；阈值不满足则保留游骸。来源不可追溯或无法读取体魄/敏捷时直接消耗1层并抵挡整招；体道造诣缺失按0计。范围招式逐目标判定。"
+max_stacks = 99
+duration_default = -1
+duration_type = 3

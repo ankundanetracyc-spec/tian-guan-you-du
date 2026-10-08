@@ -1,0 +1,842 @@
+[gd_resource type="Resource" format=3 uid="uid://doduabnc0wvln"]
+
+[ext_resource type="Script" uid="uid://dinixw40ebccy" path="res://csharp/world/WorldNodeData.cs" id="1_node"]
+[ext_resource type="Script" uid="uid://b7m8osclaibv6" path="res://csharp/world/WorldNodeMapData.cs" id="2_map"]
+[ext_resource type="Script" uid="uid://4jy4sabeasww" path="res://csharp/world/WorldTerritoryData.cs" id="19_territory"]
+[ext_resource type="Texture2D" uid="uid://cmem8grkj1nwn" path="res://textures/world_map/territory_masks_5x5_v2_land_only/zhaoming_territory_id_r00.png" id="36_mask00"]
+[ext_resource type="Texture2D" uid="uid://bferpnk6wdjvb" path="res://textures/world_map/territory_masks_5x5_v2_land_only/zhaoming_territory_id_r01.png" id="37_mask01"]
+[ext_resource type="Texture2D" uid="uid://va4twr2a2umf" path="res://textures/world_map/territory_masks_5x5_v2_land_only/zhaoming_territory_id_r02.png" id="38_mask02"]
+[ext_resource type="Texture2D" uid="uid://dxxqjjwa7sbqh" path="res://textures/world_map/territory_masks_5x5_v2_land_only/zhaoming_territory_id_r03.png" id="39_mask03"]
+[ext_resource type="Texture2D" uid="uid://cl32jp55i7be5" path="res://textures/world_map/territory_masks_5x5_v2_land_only/zhaoming_territory_id_r04.png" id="40_mask04"]
+[ext_resource type="Texture2D" uid="uid://co4m33mv3owcy" path="res://textures/world_map/territory_masks_5x5_v2_land_only/zhaoming_territory_id_r10.png" id="41_mask10"]
+[ext_resource type="Texture2D" uid="uid://ctpaoousno0r7" path="res://textures/world_map/territory_masks_5x5_v2_land_only/zhaoming_territory_id_r11.png" id="42_mask11"]
+[ext_resource type="Texture2D" uid="uid://dyfho4l2v4ryq" path="res://textures/world_map/territory_masks_5x5_v2_land_only/zhaoming_territory_id_r12.png" id="43_mask12"]
+[ext_resource type="Texture2D" uid="uid://crm140fkan673" path="res://textures/world_map/territory_masks_5x5_v2_land_only/zhaoming_territory_id_r13.png" id="44_mask13"]
+[ext_resource type="Texture2D" uid="uid://fbsn3u28o5sq" path="res://textures/world_map/territory_masks_5x5_v2_land_only/zhaoming_territory_id_r14.png" id="45_mask14"]
+[ext_resource type="Texture2D" uid="uid://uww3np65q00w" path="res://textures/world_map/territory_masks_5x5_v2_land_only/zhaoming_territory_id_r20.png" id="46_mask20"]
+[ext_resource type="Texture2D" uid="uid://dibu0cv6msjj5" path="res://textures/world_map/territory_masks_5x5_v2_land_only/zhaoming_territory_id_r21.png" id="47_mask21"]
+[ext_resource type="Texture2D" uid="uid://dtxvkprgnk21s" path="res://textures/world_map/territory_masks_5x5_v2_land_only/zhaoming_territory_id_r22.png" id="48_mask22"]
+[ext_resource type="Texture2D" uid="uid://ctgbc5aacvxq2" path="res://textures/world_map/territory_masks_5x5_v2_land_only/zhaoming_territory_id_r23.png" id="49_mask23"]
+[ext_resource type="Texture2D" uid="uid://co783fetfw2hj" path="res://textures/world_map/territory_masks_5x5_v2_land_only/zhaoming_territory_id_r24.png" id="50_mask24"]
+[ext_resource type="Texture2D" uid="uid://cu2ywlek1wvvg" path="res://textures/world_map/territory_masks_5x5_v2_land_only/zhaoming_territory_id_r30.png" id="51_mask30"]
+[ext_resource type="Texture2D" uid="uid://c2yrek3dvv3dl" path="res://textures/world_map/territory_masks_5x5_v2_land_only/zhaoming_territory_id_r31.png" id="52_mask31"]
+[ext_resource type="Texture2D" uid="uid://d2v8jyi220yc5" path="res://textures/world_map/territory_masks_5x5_v2_land_only/zhaoming_territory_id_r32.png" id="53_mask32"]
+[ext_resource type="Texture2D" uid="uid://byqe8u76y2it3" path="res://textures/world_map/territory_masks_5x5_v2_land_only/zhaoming_territory_id_r33.png" id="54_mask33"]
+[ext_resource type="Texture2D" uid="uid://23y0esm8hc0j" path="res://textures/world_map/territory_masks_5x5_v2_land_only/zhaoming_territory_id_r34.png" id="55_mask34"]
+[ext_resource type="Texture2D" uid="uid://csfeqobmi264c" path="res://textures/world_map/territory_masks_5x5_v2_land_only/zhaoming_territory_id_r40.png" id="56_mask40"]
+[ext_resource type="Texture2D" uid="uid://ccp8l4kq38p51" path="res://textures/world_map/territory_masks_5x5_v2_land_only/zhaoming_territory_id_r41.png" id="57_mask41"]
+[ext_resource type="Texture2D" uid="uid://pqp54wneug0h" path="res://textures/world_map/territory_masks_5x5_v2_land_only/zhaoming_territory_id_r42.png" id="58_mask42"]
+[ext_resource type="Texture2D" uid="uid://gnpjb8oanbdh" path="res://textures/world_map/territory_masks_5x5_v2_land_only/zhaoming_territory_id_r43.png" id="59_mask43"]
+[ext_resource type="Texture2D" uid="uid://cjgruddklo3jq" path="res://textures/world_map/territory_masks_5x5_v2_land_only/zhaoming_territory_id_r44.png" id="60_mask44"]
+[ext_resource type="Texture2D" uid="uid://dq21p4ij6mnmx" path="res://textures/world_map/production_samples/zhaoming_continuous_terrain_master_v24_atlas_base.png" id="61_zhaoming_preview"]
+
+[sub_resource type="Resource" id="node_mine"]
+script = ExtResource("1_node")
+node_id = "abandoned_mine"
+node_name = "废弃矿洞"
+node_type = 3
+display_level = 4
+is_ephemeral_template = true
+refresh_days = 4
+map_position = Vector2(3769, 3757)
+min_zoom = 2.2
+terrain = "山地"
+spirit_pressure = 3
+danger_level = 6
+description = "昔日的灵石矿，矿脉枯竭后被废弃，深处似乎另有洞天。"
+connected_nodes = Array[String](["east_woods"])
+
+[sub_resource type="Resource" id="event_moon_tide"]
+script = ExtResource("1_node")
+node_id = "moon_tide_whale_song"
+node_name = "月潮鲸歌"
+node_type = 3
+display_level = 4
+is_ephemeral_template = true
+refresh_days = 2
+min_zoom = 2.2
+marker_size = 42.0
+terrain = "东海／南冥近海"
+spirit_pressure = 7
+danger_level = 6
+description = "满月大潮时出现的鲸歌航线。跟随歌声可能寻得沉舟，也可能被引入归墟支流。"
+
+[sub_resource type="Resource" id="event_mirage_gate"]
+script = ExtResource("1_node")
+node_id = "mirage_return_gate"
+node_name = "蜃门回航"
+node_type = 3
+display_level = 4
+is_ephemeral_template = true
+refresh_days = 1
+min_zoom = 2.2
+marker_size = 42.0
+terrain = "东海雾区"
+spirit_pressure = 8
+danger_level = 7
+description = "蜃气凝成的旧航门；只有持沧海阁星图者能选择回到何处。"
+
+[sub_resource type="Resource" id="event_xiangliu_rain"]
+script = ExtResource("1_node")
+node_id = "xiangliu_poison_rain"
+node_name = "相柳毒雨"
+node_type = 4
+display_level = 4
+is_ephemeral_template = true
+min_zoom = 2.2
+marker_size = 44.0
+terrain = "南荒泽地"
+spirit_pressure = 6
+danger_level = 8
+description = "相柳后裔迁徙时落下的毒雨；药师会与万妖谷都会派人争夺雨后灵材。"
+
+[sub_resource type="Resource" id="event_spirit_spring"]
+script = ExtResource("1_node")
+node_id = "mountain_spirit_spring"
+node_name = "山间灵泉"
+node_type = 2
+display_level = 4
+is_ephemeral_template = true
+refresh_days = 2
+spawn_terrain_tags = Array[String](["mountain", "hills"])
+spawn_weight = 30
+min_zoom = 2.2
+marker_size = 36.0
+terrain = "山地"
+spirit_pressure = 5
+danger_level = 3
+description = "地脉短暂外泄形成的灵泉，可能被妖兽或采药人先一步发现。"
+
+[sub_resource type="Resource" id="event_herb_grove"]
+script = ExtResource("1_node")
+node_id = "wild_herb_grove"
+node_name = "灵药圃"
+node_type = 2
+display_level = 4
+is_ephemeral_template = true
+spawn_terrain_tags = Array[String](["forest", "wetland"])
+spawn_weight = 30
+min_zoom = 2.2
+marker_size = 36.0
+terrain = "林泽"
+spirit_pressure = 5
+danger_level = 4
+description = "受季候灵气催生的一片野生药圃，采摘越久越容易引来守药灵兽。"
+
+[sub_resource type="Resource" id="event_runestone"]
+script = ExtResource("1_node")
+node_id = "runestone_glimmer"
+node_name = "残碑微光"
+node_type = 3
+display_level = 4
+is_ephemeral_template = true
+refresh_days = 4
+spawn_terrain_tags = Array[String](["mountain", "plain", "desert"])
+spawn_weight = 20
+min_zoom = 2.2
+marker_size = 36.0
+terrain = "荒野"
+spirit_pressure = 4
+danger_level = 5
+description = "古碑在夜间显字，通常只留下一段功法残句或一条通往遗址的线索。"
+
+[sub_resource type="Resource" id="event_desert_fire"]
+script = ExtResource("1_node")
+node_id = "earthfire_rift"
+node_name = "地火裂脉"
+node_type = 2
+display_level = 4
+is_ephemeral_template = true
+refresh_days = 2
+spawn_territory_ids = Array[String](["west_desert", "eastland_qianji"])
+spawn_terrain_tags = Array[String](["desert", "badlands"])
+spawn_weight = 25
+min_zoom = 2.2
+marker_size = 36.0
+terrain = "荒漠"
+spirit_pressure = 6
+danger_level = 6
+description = "地火冲破砂岩的短暂裂口，是炼器材料与火毒并存之地。"
+
+[sub_resource type="Resource" id="event_frost_fissure"]
+script = ExtResource("1_node")
+node_id = "frost_fissure"
+node_name = "冻湖异光"
+node_type = 3
+display_level = 4
+is_ephemeral_template = true
+refresh_days = 1
+spawn_territory_ids = Array[String](["beiming_frostland"])
+spawn_terrain_tags = Array[String](["snow", "ice"])
+spawn_weight = 25
+min_zoom = 2.2
+marker_size = 36.0
+terrain = "冰原"
+spirit_pressure = 7
+danger_level = 6
+description = "冻湖裂缝中浮出的异光，可能是冰晶矿髓，也可能是天魔残影。"
+
+[sub_resource type="Resource" id="event_sunken_boat"]
+script = ExtResource("1_node")
+node_id = "sunken_boat_remnant"
+node_name = "沉舟残舱"
+node_type = 3
+display_level = 4
+is_ephemeral_template = true
+refresh_days = 2
+spawn_terrain_tags = Array[String](["sea", "lake", "river"])
+spawn_weight = 25
+min_zoom = 2.2
+marker_size = 36.0
+terrain = "水域"
+spirit_pressure = 5
+danger_level = 5
+description = "退潮或水位变化后露出的旧船残舱，常留有航图、遗物与水中禁制。"
+
+[sub_resource type="Resource" id="node_home"]
+script = ExtResource("1_node")
+node_id = "home_village"
+node_name = "青溪里"
+node_type = 6
+map_position = Vector2(3390, 3816)
+min_zoom = 1.6
+terrain = "平原"
+spirit_pressure = 3
+population = 50
+faction_id = "player_family"
+description = "李家最初掌管的青溪里辖地。"
+
+[sub_resource type="Resource" id="node_white_stone"]
+script = ExtResource("1_node")
+node_id = "white_stone_town"
+node_name = "白石镇"
+node_type = 0
+map_position = Vector2(3022, 3745)
+min_zoom = 1.6
+terrain = "平原"
+spirit_pressure = 2
+danger_level = 2
+population = 500
+description = "方圆百里最大的城镇，商路交汇，消息灵通。"
+connected_nodes = Array[String](["cold_pine_ridge"])
+
+[sub_resource type="Resource" id="node_cold_pine"]
+script = ExtResource("1_node")
+node_id = "cold_pine_ridge"
+node_name = "寒松岭"
+node_type = 1
+map_position = Vector2(3058, 3650)
+min_zoom = 1.6
+terrain = "山地"
+spirit_pressure = 6
+danger_level = 4
+population = 80
+faction_id = "cold_pine_clan"
+description = "松林深处的修仙家族领地，擅长冰寒功法。"
+connected_nodes = Array[String](["white_stone_town", "qinglan_observatory"])
+
+[sub_resource type="Resource" id="node_qinglan"]
+script = ExtResource("1_node")
+node_id = "qinglan_observatory"
+node_name = "青岚观"
+node_type = 1
+map_position = Vector2(3319, 3579)
+min_zoom = 1.6
+terrain = "山地"
+spirit_pressure = 7
+danger_level = 3
+population = 120
+faction_id = "qinglan_sect"
+description = "隐于云雾中的道观宗门，弟子清修，不问世事。"
+connected_nodes = Array[String](["cold_pine_ridge", "mirror_marsh"])
+
+[sub_resource type="Resource" id="node_mirror_marsh"]
+script = ExtResource("1_node")
+node_id = "mirror_marsh"
+node_name = "镜月泽"
+node_type = 3
+map_position = Vector2(3508, 3603)
+min_zoom = 1.6
+terrain = "水域"
+spirit_pressure = 5
+danger_level = 5
+description = "水雾弥漫的古泽，传说深处有古修洞府。"
+connected_nodes = Array[String](["qinglan_observatory", "east_woods"])
+
+[sub_resource type="Resource" id="node_east_woods"]
+script = ExtResource("1_node")
+node_id = "east_woods"
+node_name = "东林地"
+node_type = 2
+map_position = Vector2(3615, 3816)
+min_zoom = 1.6
+terrain = "森林"
+spirit_pressure = 4
+danger_level = 3
+description = "密林深处，妖兽出没，也是采药人的宝地。"
+connected_nodes = Array[String](["home_village", "mirror_marsh"])
+
+[sub_resource type="Resource" id="node_herb_valley"]
+script = ExtResource("1_node")
+node_id = "herb_valley"
+node_name = "灵草谷"
+node_type = 2
+map_position = Vector2(3627, 4030)
+min_zoom = 1.6
+terrain = "山谷"
+spirit_pressure = 5
+danger_level = 4
+description = "谷中灵气充沛，百年灵草遍地，有妖兽守护。"
+connected_nodes = Array[String](["home_village", "xuan_ferry"])
+
+[sub_resource type="Resource" id="node_xuan_ferry"]
+script = ExtResource("1_node")
+node_id = "xuan_ferry"
+node_name = "玄水渡"
+map_position = Vector2(3295, 4030)
+min_zoom = 1.6
+terrain = "水域"
+spirit_pressure = 3
+danger_level = 3
+population = 60
+description = "青溪湖上的古渡口，船夫世代在此摆渡，通往外界。"
+connected_nodes = Array[String](["home_village", "herb_valley", "red_sand_camp"])
+
+[sub_resource type="Resource" id="node_red_sand"]
+script = ExtResource("1_node")
+node_id = "red_sand_camp"
+node_name = "赤砂寨"
+map_position = Vector2(3010, 4030)
+min_zoom = 1.6
+terrain = "荒漠"
+spirit_pressure = 2
+danger_level = 5
+population = 150
+faction_id = "red_sand_tribe"
+description = "赤砂之地的寨子，民风彪悍，与妖兽常年交战。"
+connected_nodes = Array[String](["xuan_ferry"])
+
+[sub_resource type="Resource" id="node_yuxu"]
+script = ExtResource("1_node")
+node_id = "yuxu_sect"
+node_name = "玉虚仙宗"
+node_type = 1
+map_position = Vector2(3141, 2228)
+min_zoom = 0.88
+marker_size = 110.0
+terrain = "玉虚山脉"
+spirit_pressure = 10
+danger_level = 7
+faction_id = "yuxu"
+description = "中土腹地古老大宗，执掌玉虚山脉。"
+connected_nodes = Array[String](["xian_capital", "wind_snow_pass", "ghost_cry_ridge"])
+
+[sub_resource type="Resource" id="node_xian_capital"]
+script = ExtResource("1_node")
+node_id = "xian_capital"
+node_name = "仙国都城"
+node_type = 0
+map_position = Vector2(3390, 3271)
+min_zoom = 0.88
+marker_size = 100.0
+terrain = "中土平原"
+spirit_pressure = 5
+danger_level = 2
+population = 80000
+faction_id = "xian_kingdom"
+description = "中土腹地的仙国中枢。"
+connected_nodes = Array[String](["yuxu_sect", "qianji_city"])
+
+[sub_resource type="Resource" id="node_qianji"]
+script = ExtResource("1_node")
+node_id = "qianji_city"
+node_name = "千机城"
+node_type = 0
+map_position = Vector2(4646, 3295)
+min_zoom = 0.88
+marker_size = 96.0
+terrain = "中土东部"
+spirit_pressure = 5
+danger_level = 3
+population = 60000
+description = "独立城邦，法器交易中心。"
+connected_nodes = Array[String](["xian_capital", "notnight_port"])
+
+[sub_resource type="Resource" id="node_ghost"]
+script = ExtResource("1_node")
+node_id = "ghost_cry_ridge"
+node_name = "鬼哭岭"
+node_type = 4
+map_position = Vector2(901, 3342)
+min_zoom = 0.88
+marker_size = 108.0
+terrain = "西部荒山"
+danger_level = 9
+description = "魔修与鬼修聚集的西部荒岭。"
+connected_nodes = Array[String](["yuxu_sect", "xiling_garrison"])
+
+[sub_resource type="Resource" id="node_xiling"]
+script = ExtResource("1_node")
+node_id = "xiling_garrison"
+node_name = "西陵戍所"
+node_type = 4
+map_position = Vector2(1564, 3390)
+min_zoom = 0.88
+marker_size = 88.0
+terrain = "西部边陲"
+spirit_pressure = 3
+danger_level = 6
+population = 3000
+description = "监视绝灵渊的西部军事戍所。"
+connected_nodes = Array[String](["ghost_cry_ridge", "sword_forge_city"])
+
+[sub_resource type="Resource" id="node_sword_city"]
+script = ExtResource("1_node")
+node_id = "sword_forge_city"
+node_name = "铸剑城"
+node_type = 0
+map_position = Vector2(1114, 4836)
+min_zoom = 0.88
+marker_size = 92.0
+terrain = "中土西南"
+spirit_pressure = 6
+danger_level = 4
+population = 30000
+description = "剑修聚集之城，剑池引自剑冢温泉。"
+connected_nodes = Array[String](["xiling_garrison", "ten_thousand_mountains"])
+
+[sub_resource type="Resource" id="node_wind_pass"]
+script = ExtResource("1_node")
+node_id = "wind_snow_pass"
+node_name = "风雪关"
+node_type = 4
+map_position = Vector2(3081, 1019)
+min_zoom = 0.88
+marker_size = 92.0
+terrain = "北部雪原关隘"
+spirit_pressure = 5
+danger_level = 7
+population = 5000
+description = "进入北原的必经关隘。"
+connected_nodes = Array[String](["yuxu_sect", "arctic_palace"])
+
+[sub_resource type="Resource" id="node_arctic"]
+script = ExtResource("1_node")
+node_id = "arctic_palace"
+node_name = "北极仙宫"
+node_type = 1
+map_position = Vector2(924, 806)
+min_zoom = 0.88
+marker_size = 108.0
+terrain = "极北冰原"
+spirit_pressure = 9
+danger_level = 8
+description = "坐镇极北、对抗天魔的古老仙宫。"
+connected_nodes = Array[String](["wind_snow_pass"])
+
+[sub_resource type="Resource" id="node_tenmtn"]
+script = ExtResource("1_node")
+node_id = "ten_thousand_mountains"
+node_name = "十万大山"
+node_type = 2
+map_position = Vector2(3081, 5096)
+min_zoom = 0.88
+marker_size = 120.0
+terrain = "南方群山"
+spirit_pressure = 8
+danger_level = 9
+description = "万妖谷祖地，人族禁区。"
+connected_nodes = Array[String](["sword_forge_city", "demon_valley", "poison_marsh"])
+
+[sub_resource type="Resource" id="node_demon_valley"]
+script = ExtResource("1_node")
+node_id = "demon_valley"
+node_name = "万妖谷"
+node_type = 1
+map_position = Vector2(3461, 5262)
+min_zoom = 0.88
+marker_size = 110.0
+terrain = "南方群山"
+spirit_pressure = 9
+danger_level = 9
+faction_id = "demon_valley"
+description = "天下妖族联盟，边境设有妖市。"
+connected_nodes = Array[String](["ten_thousand_mountains", "poison_marsh"])
+
+[sub_resource type="Resource" id="node_poison"]
+script = ExtResource("1_node")
+node_id = "poison_marsh"
+node_name = "万毒泽"
+node_type = 3
+map_position = Vector2(3959, 5357)
+min_zoom = 0.88
+marker_size = 105.0
+terrain = "南疆沼泽"
+spirit_pressure = 7
+danger_level = 9
+description = "南疆深处的毒泽，传闻藏有万毒珠。"
+connected_nodes = Array[String](["ten_thousand_mountains", "demon_valley"])
+
+[sub_resource type="Resource" id="node_notnight"]
+script = ExtResource("1_node")
+node_id = "notnight_port"
+node_name = "不夜港"
+node_type = 0
+map_position = Vector2(4883, 3793)
+min_zoom = 0.88
+marker_size = 94.0
+terrain = "东海沿岸"
+spirit_pressure = 5
+danger_level = 3
+population = 40000
+description = "东海沿岸自由贸易港口。"
+connected_nodes = Array[String](["qianji_city", "penglai_alliance"])
+
+[sub_resource type="Resource" id="node_penglai"]
+script = ExtResource("1_node")
+node_id = "penglai_alliance"
+node_name = "蓬莱仙盟"
+node_type = 1
+map_position = Vector2(5393, 3484)
+min_zoom = 0.88
+marker_size = 105.0
+terrain = "蓬莱海域"
+spirit_pressure = 7
+danger_level = 5
+description = "东海三十六座大岛组成的松散仙盟。"
+connected_nodes = Array[String](["notnight_port", "yingzhou_sword_sect", "guixu"])
+
+[sub_resource type="Resource" id="node_yingzhou"]
+script = ExtResource("1_node")
+node_id = "yingzhou_sword_sect"
+node_name = "瀛洲剑派"
+node_type = 1
+map_position = Vector2(5867, 2916)
+min_zoom = 0.88
+marker_size = 100.0
+terrain = "东海极东仙岛"
+spirit_pressure = 9
+danger_level = 7
+description = "东海极东仙岛上的剑修门派。"
+connected_nodes = Array[String](["penglai_alliance", "fangzhang_isle"])
+
+[sub_resource type="Resource" id="node_fangzhang"]
+script = ExtResource("1_node")
+node_id = "fangzhang_isle"
+node_name = "方丈仙岛"
+node_type = 1
+map_position = Vector2(5128.2, 4525.5)
+min_zoom = 0.88
+marker_size = 96.0
+terrain = "东南群岛"
+spirit_pressure = 10
+danger_level = 8
+description = "百年才有一名弟子出岛的隐世仙岛。"
+connected_nodes = Array[String](["yingzhou_sword_sect"])
+
+[sub_resource type="Resource" id="node_guixu"]
+script = ExtResource("1_node")
+node_id = "guixu"
+node_name = "归墟"
+node_type = 3
+map_position = Vector2(5630, 4978)
+min_zoom = 0.88
+marker_size = 125.0
+terrain = "东海深渊"
+spirit_pressure = 10
+danger_level = 10
+description = "隙在海底的显现，越靠近时间流速越慢。"
+connected_nodes = Array[String](["penglai_alliance"])
+
+[sub_resource type="Resource" id="node_baiyujing"]
+script = ExtResource("1_node")
+node_id = "baiyu_capital"
+node_name = "白玉京"
+node_type = 0
+map_position = Vector2(3250, 2200)
+min_zoom = 1.25
+marker_size = 78.0
+terrain = "悬空天阙"
+spirit_pressure = 10
+danger_level = 6
+faction_id = "celestial_court_remnant"
+description = "传说天上白玉京，十二楼五城。如今只在云海裂隙中偶现其一角。"
+connected_nodes = Array[String](["yuxu_sect", "xian_capital"])
+
+[sub_resource type="Resource" id="node_daguang"]
+script = ExtResource("1_node")
+node_id = "daguang_road"
+node_name = "大光道"
+node_type = 0
+map_position = Vector2(3650, 2750)
+min_zoom = 1.25
+terrain = "古道"
+spirit_pressure = 4
+danger_level = 5
+description = "贯穿中州的古老石道，夜半常有无主灯火沿路而行。"
+connected_nodes = Array[String](["xian_capital", "qianji_city", "baiyu_capital"])
+
+[sub_resource type="Resource" id="node_ruoshui"]
+script = ExtResource("1_node")
+node_id = "ruoshui_ferry"
+node_name = "弱水津"
+node_type = 3
+map_position = Vector2(4440, 3450)
+min_zoom = 1.3
+marker_size = 62.0
+terrain = "冥河支流"
+spirit_pressure = 7
+danger_level = 7
+description = "弱水三千，舟楫难渡；只有持旧铜符者可见渡口。"
+connected_nodes = Array[String](["ghost_cry_ridge", "notnight_port"])
+
+[sub_resource type="Resource" id="node_kunlun"]
+script = ExtResource("1_node")
+node_id = "kunlun_ruins"
+node_name = "昆仑之墟"
+node_type = 3
+map_position = Vector2(1650, 1450)
+min_zoom = 1.3
+marker_size = 72.0
+terrain = "雪山遗址"
+spirit_pressure = 9
+danger_level = 9
+description = "万山之祖的残垣，冰层下封着不属于此世的玉简。"
+connected_nodes = Array[String](["arctic_palace", "wind_snow_pass"])
+
+[sub_resource type="Resource" id="node_cangwu"]
+script = ExtResource("1_node")
+node_id = "cangwu_sunfall"
+node_name = "苍梧落日台"
+node_type = 3
+map_position = Vector2(3000, 5150)
+min_zoom = 1.3
+marker_size = 62.0
+terrain = "古木高台"
+spirit_pressure = 8
+danger_level = 7
+description = "舜帝南巡的传说落点；日落时台影会指向一座未开之门。"
+connected_nodes = Array[String](["ten_thousand_mountains", "demon_valley"])
+
+[sub_resource type="Resource" id="node_jianmu"]
+script = ExtResource("1_node")
+node_id = "jianmu_remnant"
+node_name = "建木残枝"
+node_type = 2
+map_position = Vector2(2430, 4820)
+min_zoom = 1.45
+marker_size = 52.0
+terrain = "巨木林"
+spirit_pressure = 9
+danger_level = 8
+description = "上接天穹的建木仅余一枝，每逢甲子会结出一枚问道果。"
+connected_nodes = Array[String](["cangwu_sunfall", "ten_thousand_mountains"])
+
+[sub_resource type="Resource" id="node_xuanhuang"]
+script = ExtResource("1_node")
+node_id = "xuanhuang_mine"
+node_name = "玄黄矿脉"
+node_type = 2
+map_position = Vector2(1200, 3500)
+min_zoom = 1.45
+marker_size = 50.0
+terrain = "荒漠矿脉"
+spirit_pressure = 5
+danger_level = 6
+description = "地脉翻卷后露出的玄黄石矿，常引来沙下古兽。"
+connected_nodes = Array[String](["xiling_garrison"])
+
+[sub_resource type="Resource" id="node_tianwen"]
+script = ExtResource("1_node")
+node_id = "tianwen_cliff"
+node_name = "天问崖"
+node_type = 3
+map_position = Vector2(5300, 1550)
+min_zoom = 1.45
+marker_size = 54.0
+terrain = "海蚀孤崖"
+spirit_pressure = 8
+danger_level = 7
+description = "崖壁刻满无人能解的天问，海潮退去时会显出新的句子。"
+connected_nodes = Array[String](["penglai_alliance", "fangzhang_isle"])
+
+[sub_resource type="Resource" id="node_qingyun_temple"]
+script = ExtResource("1_node")
+node_id = "qingyun_temple"
+node_name = "青云观"
+node_type = 1
+display_level = 2
+map_position = Vector2(2880, 2690)
+min_zoom = 1.15
+marker_size = 66.0
+terrain = "丘陵山口"
+spirit_pressure = 6
+danger_level = 3
+population = 180
+faction_id = "qingyun_temple"
+description = "云阙州西北丘陵的清修道观，守着由关河州入中原的一条旧山道。"
+connected_nodes = Array[String](["yuxu_sect", "xian_capital", "bailu_academy"])
+
+[sub_resource type="Resource" id="node_bailu_academy"]
+script = ExtResource("1_node")
+node_id = "bailu_academy"
+node_name = "白鹿书院"
+node_type = 1
+display_level = 2
+map_position = Vector2(3540, 3020)
+min_zoom = 1.15
+marker_size = 62.0
+terrain = "河谷平原"
+spirit_pressure = 5
+danger_level = 2
+population = 420
+faction_id = "bailu_academy"
+description = "大光道北侧的书院与法脉传承地，诸州游学者常在此换取路引与旧志。"
+connected_nodes = Array[String](["xian_capital", "daguang_road", "jiang_manor"])
+
+[sub_resource type="Resource" id="node_jiang_manor"]
+script = ExtResource("1_node")
+node_id = "jiang_manor"
+node_name = "姜氏行宫"
+node_type = 1
+display_level = 2
+map_position = Vector2(3920, 3220)
+min_zoom = 1.15
+marker_size = 62.0
+terrain = "平原台地"
+spirit_pressure = 5
+danger_level = 3
+population = 600
+faction_id = "jiang_clan"
+description = "云阙州东部的修仙世家别府，掌握东华州来往商路的一段驿道。"
+connected_nodes = Array[String](["bailu_academy", "qianji_city", "daguang_road"])
+
+[sub_resource type="Resource" id="node_daguang_post"]
+script = ExtResource("1_node")
+node_id = "daguang_post"
+node_name = "长风驿"
+node_type = 0
+map_position = Vector2(3720, 2860)
+min_zoom = 1.75
+marker_size = 38.0
+terrain = "古道河谷"
+spirit_pressure = 3
+danger_level = 2
+population = 90
+description = "大光道上的小驿站，供凡商与低阶修士换马、避雨、收取各州消息。"
+connected_nodes = Array[String](["daguang_road", "bailu_academy"])
+
+[sub_resource type="Resource" id="node_chengxin_forest"]
+script = ExtResource("1_node")
+node_id = "chengxin_forest"
+node_name = "澄心碑林"
+node_type = 3
+map_position = Vector2(2720, 3060)
+min_zoom = 1.75
+marker_size = 36.0
+terrain = "低丘林地"
+spirit_pressure = 6
+danger_level = 4
+description = "散落着古朝律碑的林地，雨后偶有残缺法诀从碑文中显现。"
+connected_nodes = Array[String](["qingyun_temple", "xian_capital"])
+
+[sub_resource type="Resource" id="territory_north"]
+script = ExtResource("19_territory")
+territory_id = "beiming_frostland"
+territory_name = "玄朔州"
+description = "北极仙宫、风雪关与虚空裂隙所在的辽阔北境。"
+mask_color = Color(0.898039, 0.223529, 0.207843, 1)
+polygon = PackedVector2Array(120, 537, 1923, 267, 2486, 571, 2339, 1190, 2824, 1697, 1979, 1844, 965, 1720, 154, 1528)
+fill_color = Color(0.39, 0.54, 0.64, 0.15)
+outline_color = Color(0.55, 0.78, 0.9, 0.88)
+
+[sub_resource type="Resource" id="territory_ghost"]
+script = ExtResource("19_territory")
+territory_id = "xiangshan_northsea"
+territory_name = "相山州"
+description = "相山遗族、北海群礁与变动山脉所在；鬼哭岭属于西陵荒域的无主险地。"
+mask_color = Color(0, 0.513725, 0.560784, 1)
+polygon = PackedVector2Array(2486, 571, 4254, 458, 4626, 1021, 5076, 1754, 4063, 1923, 2824, 1697, 2339, 1190, 2486, 571)
+fill_color = Color(0.31, 0.25, 0.42, 0.16)
+outline_color = Color(0.66, 0.54, 0.82, 0.88)
+
+[sub_resource type="Resource" id="territory_west"]
+script = ExtResource("19_territory")
+territory_id = "west_desert"
+territory_name = "关河州"
+description = "西陵戍所、埋骨沙海与古道人皇旧道所在。"
+mask_color = Color(0.768627, 0.498039, 0.152941, 1)
+polygon = PackedVector2Array(154, 1528, 965, 1720, 1979, 1844, 1810, 2429, 2092, 3162, 1923, 3950, 909, 3781, 177, 3466)
+fill_color = Color(0.68, 0.48, 0.22, 0.16)
+outline_color = Color(0.9, 0.66, 0.31, 0.88)
+
+[sub_resource type="Resource" id="territory_yuxu"]
+script = ExtResource("19_territory")
+territory_id = "yuxu_heartland"
+territory_name = "云阙州"
+description = "大夏与玉虚仙宗共治的中州腹地；青溪湖只是其中南缘的一片起始区域。"
+mask_color = Color(0.427451, 0.568627, 0.243137, 1)
+polygon = PackedVector2Array(1979, 1844, 2824, 1697, 4063, 1923, 3894, 2542, 4232, 3162, 3894, 4006, 2824, 3804, 1923, 3950, 2092, 3162, 1810, 2429)
+fill_color = Color(0.54, 0.45, 0.28, 0.15)
+outline_color = Color(0.82, 0.68, 0.37, 0.9)
+
+[sub_resource type="Resource" id="territory_eastland"]
+script = ExtResource("19_territory")
+territory_id = "eastland_qianji"
+territory_name = "东华州"
+description = "千机城、公孙氏与火种原构成的东部工造、阵法和商路腹地。"
+mask_color = Color(0.694118, 0.490196, 0.141176, 1)
+polygon = PackedVector2Array(4063, 1923, 5076, 1754, 5189, 2542, 4964, 3218, 5076, 3871, 3894, 4006, 4232, 3162, 3894, 2542)
+fill_color = Color(0.53, 0.48, 0.3, 0.15)
+outline_color = Color(0.84, 0.7, 0.39, 0.88)
+
+[sub_resource type="Resource" id="territory_eastsea"]
+script = ExtResource("19_territory")
+territory_id = "east_sea"
+territory_name = "沧溟州"
+description = "蓬莱、方丈、瀛洲与海族航路交错的海上疆域。"
+mask_color = Color(0.086275, 0.513725, 0.603922, 1)
+polygon = PackedVector2Array(4626, 1021, 4975, 875, 5200, 1281, 5076, 1754, 5189, 2542, 4964, 3218, 5076, 3871, 4750, 3612, 4660, 2790, 4479, 1889)
+fill_color = Color(0.26, 0.52, 0.68, 0.15)
+outline_color = Color(0.38, 0.73, 0.9, 0.88)
+
+[sub_resource type="Resource" id="territory_swordsouth"]
+script = ExtResource("19_territory")
+territory_id = "sword_south_mountains"
+territory_name = "云岫州"
+description = "铸剑城、剑冢余脉与散修剑派盘踞的西南山地。"
+mask_color = Color(0.435294, 0.388235, 0.545098, 1)
+polygon = PackedVector2Array(177, 3466, 909, 3781, 1923, 3950, 2092, 4682, 1810, 5302, 1923, 5493, 515, 5302, 199, 4705)
+fill_color = Color(0.42, 0.42, 0.49, 0.15)
+outline_color = Color(0.7, 0.69, 0.84, 0.88)
+
+[sub_resource type="Resource" id="territory_south"]
+script = ExtResource("19_territory")
+territory_id = "southern_wilderness"
+territory_name = "苍梧州"
+description = "万妖谷、百族部落与上古图腾遗址的群山密林。"
+mask_color = Color(0.305882, 0.541176, 0.282353, 1)
+polygon = PackedVector2Array(1923, 3950, 2824, 3804, 3894, 4006, 4063, 4739, 3781, 5245, 3646, 5493, 1923, 5493, 1810, 5302, 2092, 4682)
+fill_color = Color(0.26, 0.49, 0.27, 0.16)
+outline_color = Color(0.46, 0.75, 0.39, 0.88)
+
+[sub_resource type="Resource" id="territory_notnight"]
+script = ExtResource("19_territory")
+territory_id = "nanming_sea"
+territory_name = "归潮州"
+description = "不夜港、南冥群岛与鲲鹏遗族航路交错的海贸边疆。"
+mask_color = Color(0.14902, 0.490196, 0.470588, 1)
+polygon = PackedVector2Array(3894, 4006, 5076, 3871, 4908, 4254, 5110, 4626, 4862, 4885, 5043, 5189, 4682, 5358, 4254, 5088, 3984, 5358, 3646, 5493, 3781, 5245, 4063, 4739)
+fill_color = Color(0.23, 0.47, 0.52, 0.16)
+outline_color = Color(0.4, 0.76, 0.73, 0.88)
+
+[resource]
+script = ExtResource("2_map")
+map_name = "昭明界"
+map_size = Vector2(6400, 6400)
+background_texture = ExtResource("61_zhaoming_preview")
+territory_id_mask_tiles = Array[Texture2D]([ExtResource("36_mask00"), ExtResource("37_mask01"), ExtResource("38_mask02"), ExtResource("39_mask03"), ExtResource("40_mask04"), ExtResource("41_mask10"), ExtResource("42_mask11"), ExtResource("43_mask12"), ExtResource("44_mask13"), ExtResource("45_mask14"), ExtResource("46_mask20"), ExtResource("47_mask21"), ExtResource("48_mask22"), ExtResource("49_mask23"), ExtResource("50_mask24"), ExtResource("51_mask30"), ExtResource("52_mask31"), ExtResource("53_mask32"), ExtResource("54_mask33"), ExtResource("55_mask34"), ExtResource("56_mask40"), ExtResource("57_mask41"), ExtResource("58_mask42"), ExtResource("59_mask43"), ExtResource("60_mask44")])
+territory_id_mask_grid = Vector2i(5, 5)
+territories = Array[ExtResource("19_territory")]([SubResource("territory_north"), SubResource("territory_ghost"), SubResource("territory_west"), SubResource("territory_yuxu"), SubResource("territory_eastland"), SubResource("territory_eastsea"), SubResource("territory_swordsouth"), SubResource("territory_south"), SubResource("territory_notnight")])
+nodes = Array[ExtResource("1_node")]([SubResource("node_home"), SubResource("node_white_stone"), SubResource("node_cold_pine"), SubResource("node_qinglan"), SubResource("node_mirror_marsh"), SubResource("node_east_woods"), SubResource("node_herb_valley"), SubResource("node_xuan_ferry"), SubResource("node_red_sand"), SubResource("node_yuxu"), SubResource("node_xian_capital"), SubResource("node_qianji"), SubResource("node_ghost"), SubResource("node_xiling"), SubResource("node_sword_city"), SubResource("node_wind_pass"), SubResource("node_arctic"), SubResource("node_tenmtn"), SubResource("node_demon_valley"), SubResource("node_poison"), SubResource("node_notnight"), SubResource("node_penglai"), SubResource("node_yingzhou"), SubResource("node_fangzhang"), SubResource("node_guixu"), SubResource("node_baiyujing"), SubResource("node_daguang"), SubResource("node_ruoshui"), SubResource("node_kunlun"), SubResource("node_cangwu"), SubResource("node_jianmu"), SubResource("node_xuanhuang"), SubResource("node_tianwen"), SubResource("node_qingyun_temple"), SubResource("node_bailu_academy"), SubResource("node_jiang_manor"), SubResource("node_daguang_post"), SubResource("node_chengxin_forest")])
+ephemeral_node_templates = Array[ExtResource("1_node")]([SubResource("node_mine"), SubResource("event_moon_tide"), SubResource("event_mirage_gate"), SubResource("event_xiangliu_rain"), SubResource("event_spirit_spring"), SubResource("event_herb_grove"), SubResource("event_runestone"), SubResource("event_desert_fire"), SubResource("event_frost_fissure"), SubResource("event_sunken_boat")])

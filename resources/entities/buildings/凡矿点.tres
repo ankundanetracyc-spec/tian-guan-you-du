@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="BuildingData" format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/EntityData.cs" id="1"]
+[ext_resource type="Script" path="res://csharp/resources/BuildingData.cs" id="2"]
+
+[resource]
+script = ExtResource("2")
+entity_name = "石场"
+icon_path = ""
+summary = "偏重体力的劳作建筑，石材稳定，后续可扩展碎石与杂矿副产。"
+max_durability = 50
+current_durability = 50
+consume_durability = true
+build_cost_item_paths = Array[String](["res://resources/entities/items/石材.tres"])
+build_cost_counts = Array[int]([8])
+labor_site_id = "quarry"
+labor_resource_id = "stone"
+labor_yield_min = 2
+labor_yield_max = 4
+labor_cycle_hours = 4.0
+labor_stamina_cost_per_hour = 12
+labor_primary_attr = "physique"
+labor_secondary_attr = "agility"
+labor_primary_weight = 0.85
+labor_secondary_weight = 0.15
+estate_facility_id = "quarry"

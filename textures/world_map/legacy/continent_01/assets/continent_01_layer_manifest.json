@@ -1,0 +1,139 @@
+{
+  "canvas": {
+    "width": 2931,
+    "height": 2009
+  },
+  "source": "continent_01_source_land_mask_original.png",
+  "presentation_rotation_degrees": 180,
+  "rotation_baked_into_visual_assets": true,
+  "visual_crop": {
+    "left": 126,
+    "top": 29,
+    "right": 3057,
+    "bottom": 2038,
+    "width": 2931,
+    "height": 2009,
+    "padding": 24,
+    "origin": {
+      "x": 1591.5,
+      "y": 1033.5
+    }
+  },
+  "coastline_smoothing": {
+    "method": "logical_canvas_low_frequency_silhouette",
+    "source_resolution": "3174x2246",
+    "downsample_factor": 14,
+    "threshold": 128,
+    "feather": 1.0,
+    "note": "Broad coastline retained; pixel-scale bays and repeated teeth removed."
+  },
+  "terrain_sources": {
+    "terrain_layer": "continent_01_terrain_mountains_reused_v3_small.png",
+    "surface_texture": "continent_01_surface_ink_wash_v1.png",
+    "clip_mask": "continent_01_land_base_foreshortened_v5_simplified_full.png",
+    "placement_manifest": "mountain_placement_v3_small.json",
+    "mountain_assets": [
+      "mountain_assets/mountain_ridge_far_v1.png",
+      "mountain_assets/mountain_cluster_mid_v1.png",
+      "mountain_assets/mountain_massif_near_v1.png",
+      "mountain_assets/mountain_ridge_side_v1.png"
+    ],
+    "mountain_placement": "reused_independent_depth_bands",
+    "mountain_density": "18 reused placements; each asset reduced to 68% of the previous presentation width",
+    "depth_treatment": "far_pale_mid_muted_near_deep_mist_faded_feet; reduced presentation scale",
+    "mountain_counter_rotation": true,
+    "coast_clip_guard": true,
+    "clip_to_presented_land_base": true,
+    "asset_preview": "mountain_assets/mountain_assets_preview_v1.png"
+  },
+  "layers": [
+    {
+      "id": "ocean",
+      "z_index": -120,
+      "asset": null,
+      "default_visible": false
+    },
+    {
+      "id": "land_base",
+      "z_index": -100,
+      "asset": "continent_01_land_base_foreshortened_v5_simplified_full.png",
+      "default_visible": true
+    },
+    {
+      "id": "state_tint",
+      "z_index": -90,
+      "asset": "continent_01_state_tint.png",
+      "default_visible": false
+    },
+    {
+      "id": "surface_texture",
+      "z_index": -85,
+      "asset": "continent_01_surface_ink_wash_v1.png",
+      "default_visible": true
+    },
+    {
+      "id": "roads",
+      "z_index": -80,
+      "asset": "continent_01_roads.png",
+      "default_visible": false
+    },
+    {
+      "id": "terrain",
+      "z_index": -75,
+      "asset": "continent_01_terrain_mountains_reused_v3_small.png",
+      "default_visible": true
+    },
+    {
+      "id": "state_boundaries",
+      "z_index": -50,
+      "asset": "continent_01_state_boundaries.png",
+      "default_visible": false
+    },
+    {
+      "id": "territory_labels",
+      "z_index": -50,
+      "asset": null,
+      "default_visible": true
+    },
+    {
+      "id": "interaction",
+      "z_index": 0,
+      "asset": null,
+      "default_visible": true
+    },
+    {
+      "id": "player",
+      "z_index": 10,
+      "asset": null,
+      "default_visible": true
+    },
+    {
+      "id": "effects",
+      "z_index": 20,
+      "asset": null,
+      "default_visible": true
+    },
+    {
+      "id": "fog",
+      "z_index": 30,
+      "asset": null,
+      "default_visible": false
+    },
+    {
+      "id": "debug",
+      "z_index": 999,
+      "asset": null,
+      "default_visible": false
+    }
+  ],
+  "previews": {
+    "states": "continent_01_state_preview.png",
+    "all_static": "continent_01_map_layers_preview_v4.png"
+  },
+  "land_base": "continent_01_land_base_foreshortened_v5_simplified_full.png",
+  "terrain_layer": "continent_01_terrain_mountains_reused_v3_small.png",
+  "clip_mask": "continent_01_land_base_foreshortened_v5_simplified_full.png",
+  "placement_manifest": "mountain_placement_v3_small.json",
+  "placement_count": 18,
+  "boundary_treatment": "simplified rounded coastline with a shared full-canvas alpha mask; no separate opaque boundary overlay"
+}\n

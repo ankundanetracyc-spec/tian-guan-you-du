@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="BreakthroughBonusConfig" format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/BreakthroughBonusConfig.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+realm = "练气六层"
+multipliers = {
+"agility": 0.08,
+"comprehension": 0.08,
+"cultivation_rate": 0.1,
+"fortune": 0.03,
+"intelligence": 0.08,
+"mana_regen_rate": 0.08,
+"physique": 0.08,
+"soul": 0.08,
+}
+fixed = {
+"agility": 2,
+"comprehension": 1,
+"initial_hand_size": 1,
+"intelligence": 2,
+"max_health": 40,
+"max_mana": 20,
+"max_mind": 10,
+"max_stamina": 15,
+"physique": 2,
+"soul": 2,
+}

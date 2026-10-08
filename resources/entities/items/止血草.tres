@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/ItemData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+definition_id = &"herb_zhixuecao"
+entity_name = "凝血草"
+item_category = "材料"
+item_subcategory = "草药"
+tags = Array[String](["五行[木]", "质地[草]", "功用[疗伤]", "功用[止血]", "相性[和]"])
+grade_value = 1
+can_stack = true
+max_stack = 999

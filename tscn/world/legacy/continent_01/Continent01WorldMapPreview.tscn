@@ -1,0 +1,152 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="PackedScene" path="res://tscn/world/legacy/continent_01/Continent01MapLayers.tscn" id="1_layers"]
+[ext_resource type="Texture2D" path="res://textures/ui/world/world_marker_city_ink.svg" id="2_marker"]
+[ext_resource type="Texture2D" path="res://textures/ui/world/player_location_marker_mini_ink_v2.png" id="3_player"]
+[ext_resource type="FontFile" path="res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf" id="4_font"]
+[ext_resource type="Texture2D" path="res://textures/world_map/legacy/continent_01/assets/continent_01_map_layers_preview_v4.png" id="5_composite"]
+
+[node name="Continent01WorldMapPreview" type="Node2D"]
+texture_filter = 4
+
+; The layer generator bakes the 180-degree mainland presentation into each
+; visual asset, so the editor scene itself has no temporary transform.
+[node name="MapLayers" parent="." instance=ExtResource("1_layers")]
+visible = true
+
+; Static editor reference: opening this scene shows the complete map immediately,
+; while WorldMapViewport keeps the independent runtime layers above.
+[node name="CompositePreview" type="Sprite2D" parent="."]
+visible = false
+z_index = -10
+position = Vector2(1591.5, 1033.5)
+texture = ExtResource("5_composite")
+
+[node name="StateNames" type="Node2D" parent="."]
+
+[node name="Guanhe" type="Label" parent="StateNames"]
+offset_left = 2398.0
+offset_top = 1479.0
+offset_right = 2698.0
+offset_bottom = 1537.0
+theme_override_colors/font_color = Color(0.24, 0.19, 0.12, 0.92)
+theme_override_colors/font_outline_color = Color(0.88, 0.82, 0.66, 0.8)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 36
+text = "关河州"
+horizontal_alignment = 1
+
+[node name="Xiangshan" type="Label" parent="StateNames"]
+offset_left = 938.0
+offset_top = 1494.0
+offset_right = 1238.0
+offset_bottom = 1552.0
+theme_override_colors/font_color = Color(0.18, 0.22, 0.22, 0.92)
+theme_override_colors/font_outline_color = Color(0.88, 0.84, 0.7, 0.8)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 36
+text = "相山州"
+horizontal_alignment = 1
+
+[node name="Yunqu" type="Label" parent="StateNames"]
+offset_left = 663.0
+offset_top = 529.0
+offset_right = 963.0
+offset_bottom = 587.0
+theme_override_colors/font_color = Color(0.16, 0.24, 0.16, 0.92)
+theme_override_colors/font_outline_color = Color(0.89, 0.84, 0.68, 0.8)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 36
+text = "云阙州"
+horizontal_alignment = 1
+
+[node name="PreviewSites" type="Node2D" parent="."]
+visible = false
+
+[node name="Qingxi" type="Node2D" parent="PreviewSites"]
+position = Vector2(1563, 847)
+
+[node name="Marker" type="Sprite2D" parent="PreviewSites/Qingxi"]
+texture = ExtResource("2_marker")
+scale = Vector2(0.58, 0.58)
+
+[node name="Player" type="Sprite2D" parent="PreviewSites/Qingxi"]
+position = Vector2(0, -31)
+texture = ExtResource("3_player")
+scale = Vector2(0.58, 0.58)
+
+[node name="Label" type="Label" parent="PreviewSites/Qingxi"]
+offset_left = -72.0
+offset_top = 28.0
+offset_right = 72.0
+offset_bottom = 54.0
+theme_override_colors/font_color = Color(0.18, 0.13, 0.08, 1)
+theme_override_colors/font_outline_color = Color(0.9, 0.83, 0.65, 0.9)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 18
+text = "青溪里"
+horizontal_alignment = 1
+
+[node name="WhiteStone" type="Node2D" parent="PreviewSites"]
+position = Vector2(1403, 787)
+
+[node name="Marker" type="Sprite2D" parent="PreviewSites/WhiteStone"]
+texture = ExtResource("2_marker")
+scale = Vector2(0.62, 0.62)
+
+[node name="Label" type="Label" parent="PreviewSites/WhiteStone"]
+offset_left = -72.0
+offset_top = 28.0
+offset_right = 72.0
+offset_bottom = 54.0
+theme_override_colors/font_color = Color(0.18, 0.13, 0.08, 1)
+theme_override_colors/font_outline_color = Color(0.9, 0.83, 0.65, 0.9)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 18
+text = "白石镇"
+horizontal_alignment = 1
+
+[node name="Fulan" type="Node2D" parent="PreviewSites"]
+position = Vector2(1003, 897)
+
+[node name="Marker" type="Sprite2D" parent="PreviewSites/Fulan"]
+texture = ExtResource("2_marker")
+scale = Vector2(0.58, 0.58)
+
+[node name="Label" type="Label" parent="PreviewSites/Fulan"]
+offset_left = -72.0
+offset_top = 28.0
+offset_right = 72.0
+offset_bottom = 54.0
+theme_override_colors/font_color = Color(0.18, 0.13, 0.08, 1)
+theme_override_colors/font_outline_color = Color(0.9, 0.83, 0.65, 0.9)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 18
+text = "伏岚观"
+horizontal_alignment = 1
+
+[node name="Lanpu" type="Node2D" parent="PreviewSites"]
+position = Vector2(733, 467)
+
+[node name="Marker" type="Sprite2D" parent="PreviewSites/Lanpu"]
+texture = ExtResource("2_marker")
+scale = Vector2(0.58, 0.58)
+
+[node name="Label" type="Label" parent="PreviewSites/Lanpu"]
+offset_left = -72.0
+offset_top = 28.0
+offset_right = 72.0
+offset_bottom = 54.0
+theme_override_colors/font_color = Color(0.18, 0.13, 0.08, 1)
+theme_override_colors/font_outline_color = Color(0.9, 0.83, 0.65, 0.9)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 18
+text = "澜浦渡"
+horizontal_alignment = 1

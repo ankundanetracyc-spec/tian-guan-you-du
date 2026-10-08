@@ -1,0 +1,900 @@
+{
+  "package": "ink_recovered_parts_20261004",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "slots": [
+    "hair_front",
+    "hair_back",
+    "eyebrows",
+    "eyes",
+    "nose",
+    "mouth",
+    "face_shape",
+    "clothing",
+    "face_accessory"
+  ],
+  "layer_order": [
+    "hair_back",
+    "face_shape",
+    "clothing",
+    "eyes",
+    "eyebrows",
+    "nose",
+    "mouth",
+    "face_accessory",
+    "hair_front"
+  ],
+  "asset_count": 87,
+  "old_facial_and_hair_options": "withdrawn; old pack disabled, files retained as history",
+  "additional_brow_eye_pairs": {
+    "male": 3,
+    "female": 3
+  },
+  "clothing_and_accessories": "Existing three clothing/accessory variants retained per sex; no new old-style facial or hair parts mixed in.",
+  "assets": [
+    {
+      "path": "male/hair_front/01.png",
+      "sha256": "75b6fd54b928322cfd5de61748d086a71b6347a4b710835c9b1ba956a3602579",
+      "alpha_bounds": [
+        238,
+        148,
+        821,
+        1210
+      ]
+    },
+    {
+      "path": "male/hair_front/02.png",
+      "sha256": "2ddf45139d57c839cf9bbdbdef22b2a2c7d667eff0e3ce39a53a9f7206853889",
+      "alpha_bounds": [
+        282,
+        156,
+        768,
+        1060
+      ]
+    },
+    {
+      "path": "male/hair_front/03.png",
+      "sha256": "bcbe371d8336098c9789893ac93da76790216acdeb1af266ba03338f6ea8817a",
+      "alpha_bounds": [
+        251,
+        149,
+        837,
+        1193
+      ]
+    },
+    {
+      "path": "male/hair_back/01.png",
+      "sha256": "bbb1832d0f7cb0821d57438d086280197bf30018010f6e8fc20af6230a77e3da",
+      "alpha_bounds": [
+        216,
+        143,
+        832,
+        1229
+      ]
+    },
+    {
+      "path": "male/hair_back/02.png",
+      "sha256": "8899ef7f5d10d77d03bd06ad45da97479f83c4addf821de9df0a6df2ce69c1b8",
+      "alpha_bounds": [
+        101,
+        60,
+        909,
+        1353
+      ]
+    },
+    {
+      "path": "male/hair_back/03.png",
+      "sha256": "0211e6fe4ca7039d761947fc4be3322dac5c1d788408e019a9dd260fcb341708",
+      "alpha_bounds": [
+        197,
+        146,
+        693,
+        743
+      ]
+    },
+    {
+      "path": "male/eyebrows/01.png",
+      "sha256": "453da32faebb28e7d47ed4cf99845b1298a2628aa4f22a8d7da1c035ee643977",
+      "alpha_bounds": [
+        438,
+        337,
+        598,
+        372
+      ]
+    },
+    {
+      "path": "male/eyebrows/02.png",
+      "sha256": "9440540a3eccc78a057fbde1e0963ad4b4e377ec3977f404698bd1a0a1c4126d",
+      "alpha_bounds": [
+        438,
+        338,
+        598,
+        372
+      ]
+    },
+    {
+      "path": "male/eyebrows/03.png",
+      "sha256": "c283abe5d44528aed5ea2a726ba2b859a02ce5cf827cc74ab866ee05f2dd4375",
+      "alpha_bounds": [
+        438,
+        337,
+        598,
+        373
+      ]
+    },
+    {
+      "path": "male/eyebrows/04.png",
+      "sha256": "ac57f4fb74a98466d1faa6e12b694efcebbaa15dcf14e3010513682bdae3a007",
+      "alpha_bounds": [
+        438,
+        338,
+        597,
+        372
+      ]
+    },
+    {
+      "path": "male/eyebrows/05.png",
+      "sha256": "3d9f50b59968db6df00b5d86895df2800fa403fc20882338f39de6137205c567",
+      "alpha_bounds": [
+        438,
+        338,
+        597,
+        372
+      ]
+    },
+    {
+      "path": "male/eyebrows/06.png",
+      "sha256": "bee61e6837881f1f626d48e9aee9517948d03e899dafde536faa20b0e2b3af1d",
+      "alpha_bounds": [
+        438,
+        338,
+        598,
+        372
+      ]
+    },
+    {
+      "path": "male/eyes/01.png",
+      "sha256": "743afcba497721a8fb9be4163015599c778fd3058e3ee229b3422ca8634602aa",
+      "alpha_bounds": [
+        430,
+        361,
+        605,
+        392
+      ]
+    },
+    {
+      "path": "male/eyes/02.png",
+      "sha256": "02eb0096647577927ed199c9b3c52339453fcbe3933c46156a8fa952304fc772",
+      "alpha_bounds": [
+        432,
+        360,
+        604,
+        392
+      ]
+    },
+    {
+      "path": "male/eyes/03.png",
+      "sha256": "2c74cf87a66310c848a9a528b3cf380438536ff689069045297d69a5d67d7a54",
+      "alpha_bounds": [
+        429,
+        359,
+        605,
+        392
+      ]
+    },
+    {
+      "path": "male/eyes/04.png",
+      "sha256": "6bf70eb32527c81637e738bf7e05054bdc9bf3334fa64df6b8f0d9abe6d16cdc",
+      "alpha_bounds": [
+        432,
+        359,
+        604,
+        392
+      ]
+    },
+    {
+      "path": "male/eyes/05.png",
+      "sha256": "cc1a067718a4b91c7cac68d640477fe02a1c21824dd53b90a0526b42b5aaaa2a",
+      "alpha_bounds": [
+        432,
+        359,
+        604,
+        391
+      ]
+    },
+    {
+      "path": "male/eyes/06.png",
+      "sha256": "43e1eb60ed5ac6b36ef50c5053a2c190f7555e23a5b645ea39d5712d95437b81",
+      "alpha_bounds": [
+        432,
+        359,
+        604,
+        392
+      ]
+    },
+    {
+      "path": "male/nose/01.png",
+      "sha256": "e7f1e4dafff79e2e2ca8d034372f3846eb257ec557d0d81a6e0df73b6552133b",
+      "alpha_bounds": [
+        492,
+        401,
+        547,
+        458
+      ]
+    },
+    {
+      "path": "male/nose/02.png",
+      "sha256": "24e5c3e07a389bf563a21eb1ba55de9ec20f6efd0f85fb171cef41e88f5ce82d",
+      "alpha_bounds": [
+        489,
+        405,
+        542,
+        450
+      ]
+    },
+    {
+      "path": "male/nose/03.png",
+      "sha256": "288b4a7a6813e40d1498f5d48615c95451494f422ad0203f7af9d4b01b5cec0b",
+      "alpha_bounds": [
+        492,
+        401,
+        547,
+        455
+      ]
+    },
+    {
+      "path": "male/mouth/01.png",
+      "sha256": "58464561d1b53be4c016f8609e16a029eb562816a1e799636223e84f90b6616f",
+      "alpha_bounds": [
+        475,
+        445,
+        557,
+        504
+      ]
+    },
+    {
+      "path": "male/mouth/02.png",
+      "sha256": "020ee20127c7f03d5ff0f4d831409d517b6c7e5f12ec14c854011997b5ee0814",
+      "alpha_bounds": [
+        478,
+        444,
+        558,
+        501
+      ]
+    },
+    {
+      "path": "male/mouth/03.png",
+      "sha256": "0535c75b32580c537f2c196ad369759032a6a4b0691364d1c2f099d0d0067a7d",
+      "alpha_bounds": [
+        477,
+        443,
+        558,
+        501
+      ]
+    },
+    {
+      "path": "male/face_shape/01.png",
+      "sha256": "6d9ee52f3f2d5e05c52ebb6814306f5e7f309cbf677e30b5b467943415225199",
+      "alpha_bounds": [
+        387,
+        204,
+        655,
+        705
+      ]
+    },
+    {
+      "path": "male/face_shape/02.png",
+      "sha256": "e3bc7f110595052243cfedbdd066066a084324ddb5eb4e6a301d82c05527d609",
+      "alpha_bounds": [
+        381,
+        184,
+        661,
+        705
+      ]
+    },
+    {
+      "path": "male/face_shape/03.png",
+      "sha256": "e12bfc4b2c17bb3b5902090f3a63457ff66d3694cc3620c329bd01335eb4587f",
+      "alpha_bounds": [
+        374,
+        179,
+        663,
+        705
+      ]
+    },
+    {
+      "path": "male/clothing/01.png",
+      "sha256": "d104a9d8959c91f78df803b8836f9eedd8e67d72af2d8826930c2e7e0b5a4d38",
+      "alpha_bounds": [
+        0,
+        520,
+        1024,
+        1536
+      ]
+    },
+    {
+      "path": "male/clothing/02.png",
+      "sha256": "8456bf77d0b1a28877d04b81cbd3993873dcf7c2909991e6815baeff17a100b9",
+      "alpha_bounds": [
+        0,
+        519,
+        1024,
+        1536
+      ]
+    },
+    {
+      "path": "male/clothing/03.png",
+      "sha256": "fc45c5d39dd6f9f083cbe295a7af935f81582b3c257b9ce72c983a6852b6d78a",
+      "alpha_bounds": [
+        0,
+        520,
+        1024,
+        1536
+      ]
+    },
+    {
+      "path": "male/face_accessory/01.png",
+      "sha256": "1913847bf9091720c48139f49dfbb3aa70c4d20de82f2718e3dcd8348c6e5e9c",
+      "alpha_bounds": null
+    },
+    {
+      "path": "male/face_accessory/02.png",
+      "sha256": "657ce1124bf694fdab8d3b01d4154fc00a99b3e4159683d34887b32aca82d5a9",
+      "alpha_bounds": [
+        473,
+        464,
+        560,
+        481
+      ]
+    },
+    {
+      "path": "male/face_accessory/03.png",
+      "sha256": "2831bf46300d477616489a399772b1224078e257fc333ad3ac7be6022d78bf20",
+      "alpha_bounds": [
+        473,
+        461,
+        559,
+        512
+      ]
+    },
+    {
+      "path": "female/hair_front/01.png",
+      "sha256": "3cc51dad3685cbbb9480e21af840b95195092593ae28cf689b06e03a43aa7000",
+      "alpha_bounds": [
+        264,
+        129,
+        772,
+        1075
+      ]
+    },
+    {
+      "path": "female/hair_front/02.png",
+      "sha256": "473f5a0ad2c085d7b79fc9782088b5c2c88ae591c98bc40daa28d36295792e97",
+      "alpha_bounds": [
+        337,
+        117,
+        693,
+        629
+      ]
+    },
+    {
+      "path": "female/hair_front/03.png",
+      "sha256": "9033c037fab553983084d3780d6139fdec14daa0ad5cc198ddb9d6482de45c00",
+      "alpha_bounds": [
+        353,
+        140,
+        699,
+        616
+      ]
+    },
+    {
+      "path": "female/hair_front/04.png",
+      "sha256": "75efa211dfa11e913e57e58b4b1e0796fa13faf9e42df591a5d664e6e43ee098",
+      "alpha_bounds": [
+        323,
+        132,
+        704,
+        669
+      ]
+    },
+    {
+      "path": "female/hair_front/05.png",
+      "sha256": "62f1d8b5f4b96fc55936f62fbcb48e6feda1734036f9114c1acf478594b24e87",
+      "alpha_bounds": [
+        327,
+        94,
+        698,
+        1067
+      ]
+    },
+    {
+      "path": "female/hair_front/06.png",
+      "sha256": "5e0614d871e07207b970563e09438170bc664399270bb203671ac574663895e2",
+      "alpha_bounds": [
+        279,
+        137,
+        771,
+        1247
+      ]
+    },
+    {
+      "path": "female/hair_back/01.png",
+      "sha256": "78c86ea01ad979a932c2fb2b974ee90217a802061eea233a03f2338c8b352d0c",
+      "alpha_bounds": [
+        157,
+        10,
+        814,
+        1062
+      ]
+    },
+    {
+      "path": "female/hair_back/02.png",
+      "sha256": "b13f9f400466e20f694f3b398dc48810da068767ac2f780d871535f5fc1ef4bb",
+      "alpha_bounds": [
+        360,
+        162,
+        679,
+        735
+      ]
+    },
+    {
+      "path": "female/hair_back/03.png",
+      "sha256": "c82c08a697babad6446094a6f26b18cf11df96823146328bb2ce53637ae22a7d",
+      "alpha_bounds": [
+        356,
+        27,
+        858,
+        913
+      ]
+    },
+    {
+      "path": "female/hair_back/04.png",
+      "sha256": "a082502295a65cf0ef342d520ac13b8e6addbc1ec5644d7447d8ff01e9cba37d",
+      "alpha_bounds": [
+        332,
+        190,
+        705,
+        682
+      ]
+    },
+    {
+      "path": "female/hair_back/05.png",
+      "sha256": "4e58d4ad570514f547b476c97f6e3c766ca1b675f4b88f3bff3ce2e2f669e337",
+      "alpha_bounds": [
+        368,
+        84,
+        690,
+        533
+      ]
+    },
+    {
+      "path": "female/hair_back/06.png",
+      "sha256": "476a696dbf8aa6bfb61bbb556c7a1a62a9d0723cb76a2c351ccd6395d36dbd40",
+      "alpha_bounds": [
+        166,
+        28,
+        815,
+        1130
+      ]
+    },
+    {
+      "path": "female/eyebrows/01.png",
+      "sha256": "8e01b25d8f14ea2227c7c7f8ca41038cb23be384ec0ae1dabcf116ea387716f9",
+      "alpha_bounds": [
+        437,
+        339,
+        603,
+        376
+      ]
+    },
+    {
+      "path": "female/eyebrows/02.png",
+      "sha256": "79f4ee38667faf2f95976ebe52d4fac11be6eea9da669ad174bb2a968bb88952",
+      "alpha_bounds": [
+        442,
+        339,
+        601,
+        371
+      ]
+    },
+    {
+      "path": "female/eyebrows/03.png",
+      "sha256": "f7c62eb43050ec916b5d7818a2518a1cb468a8ae94e48b56e90e986d0f7ba836",
+      "alpha_bounds": [
+        438,
+        343,
+        601,
+        376
+      ]
+    },
+    {
+      "path": "female/eyebrows/04.png",
+      "sha256": "13b9df9db5ba27ab1930370fc101fc6d8f5b84626a05283abc2849862f07405d",
+      "alpha_bounds": [
+        439,
+        340,
+        599,
+        371
+      ]
+    },
+    {
+      "path": "female/eyebrows/05.png",
+      "sha256": "983b1b5c4195be177046ecfff335ed74ab35226493809037ad50d73d334ec920",
+      "alpha_bounds": [
+        442,
+        346,
+        601,
+        376
+      ]
+    },
+    {
+      "path": "female/eyebrows/06.png",
+      "sha256": "8f72f394a991a0b96d70a1a1f9c2e772bd6218b3a7219981a7bbb5f40341490b",
+      "alpha_bounds": [
+        438,
+        342,
+        602,
+        376
+      ]
+    },
+    {
+      "path": "female/eyebrows/07.png",
+      "sha256": "e3cc751a029a3ac5c5006fa0f515c10a1fe77aa113fe3110f240e2e809213c18",
+      "alpha_bounds": [
+        442,
+        339,
+        601,
+        365
+      ]
+    },
+    {
+      "path": "female/eyebrows/08.png",
+      "sha256": "6b32ba51ae1327ea8176864c7e2b93474ef6d9918609f358299125a881177b41",
+      "alpha_bounds": [
+        438,
+        339,
+        601,
+        371
+      ]
+    },
+    {
+      "path": "female/eyebrows/09.png",
+      "sha256": "12616a2ac66acc45b75a721c44ca8b68f09ee8236da185b4992080ec7a252f7f",
+      "alpha_bounds": [
+        439,
+        339,
+        601,
+        371
+      ]
+    },
+    {
+      "path": "female/eyes/01.png",
+      "sha256": "1442b72dbe76e5e5ca182456ed0ff952d064bc676fb12fe6c06bdc8cb1fb9434",
+      "alpha_bounds": [
+        427,
+        362,
+        612,
+        398
+      ]
+    },
+    {
+      "path": "female/eyes/02.png",
+      "sha256": "cc36b58ad86fabd6725c3dd907401e4a5e19f22d6b6c2d20de3dae682a125d9c",
+      "alpha_bounds": [
+        430,
+        362,
+        609,
+        396
+      ]
+    },
+    {
+      "path": "female/eyes/03.png",
+      "sha256": "dede8e977421ec4b37a0e3474280523e0822b806483e2443e2287d95af856c2a",
+      "alpha_bounds": [
+        431,
+        362,
+        610,
+        397
+      ]
+    },
+    {
+      "path": "female/eyes/04.png",
+      "sha256": "0d91879042bad0ab85ea267f30e40e306c1059475a885981e7c37c362209c15c",
+      "alpha_bounds": [
+        431,
+        363,
+        609,
+        396
+      ]
+    },
+    {
+      "path": "female/eyes/05.png",
+      "sha256": "99fbc7588bbeeefb895caf52ac12d980f5afae1196caf46612f32d8f7322e1a9",
+      "alpha_bounds": [
+        428,
+        363,
+        611,
+        397
+      ]
+    },
+    {
+      "path": "female/eyes/06.png",
+      "sha256": "b9ba5e8e59b6ef1f3c75d7013a15cef94f729cc34b6e99cb2c6c743832b52eb9",
+      "alpha_bounds": [
+        430,
+        362,
+        610,
+        397
+      ]
+    },
+    {
+      "path": "female/eyes/07.png",
+      "sha256": "9172d484aadad00a557d3488a6fb97054714f3ea8d3cb6e89e469a86d7fcc1f2",
+      "alpha_bounds": [
+        431,
+        363,
+        609,
+        396
+      ]
+    },
+    {
+      "path": "female/eyes/08.png",
+      "sha256": "eec186f3f6f4711e5532671e103b8ca188feaf1715d127d6c855dcb3d8af6932",
+      "alpha_bounds": [
+        430,
+        362,
+        609,
+        396
+      ]
+    },
+    {
+      "path": "female/eyes/09.png",
+      "sha256": "30a8bee1abb207c5e47d3703c8df8e559548fc1eda854bfdba8d7bf73ec2b351",
+      "alpha_bounds": [
+        430,
+        362,
+        609,
+        396
+      ]
+    },
+    {
+      "path": "female/nose/01.png",
+      "sha256": "b9499d4def4169dce0531d7c69aa8fa6e8d51e8f0dee4fbdf03f33ed20cba324",
+      "alpha_bounds": [
+        493,
+        414,
+        544,
+        463
+      ]
+    },
+    {
+      "path": "female/nose/02.png",
+      "sha256": "e9896b38a6727de615417939053c3a01dffe47c7cd4ad27154cf36073d7ce4ff",
+      "alpha_bounds": [
+        493,
+        401,
+        548,
+        461
+      ]
+    },
+    {
+      "path": "female/nose/03.png",
+      "sha256": "748e1159be093a4e7adbdb3f7726058ff6c3a7c4913937d2db8837238feb718e",
+      "alpha_bounds": [
+        491,
+        410,
+        548,
+        462
+      ]
+    },
+    {
+      "path": "female/nose/04.png",
+      "sha256": "95837480350b27c5ec396c634492cab9fc0fde88ba93d08abb5b03d22154cafd",
+      "alpha_bounds": [
+        493,
+        401,
+        544,
+        466
+      ]
+    },
+    {
+      "path": "female/nose/05.png",
+      "sha256": "91da44b4c5313fa0ba423ca508ddfda8bb93b945a77361fd19ccd53ecae8ca83",
+      "alpha_bounds": [
+        492,
+        408,
+        544,
+        484
+      ]
+    },
+    {
+      "path": "female/nose/06.png",
+      "sha256": "90732eb58ae947916cbb97d98e1a66bcd52c96239aebbb26f4e6fb02aecc20b4",
+      "alpha_bounds": [
+        491,
+        404,
+        545,
+        458
+      ]
+    },
+    {
+      "path": "female/mouth/01.png",
+      "sha256": "b0ae2fa29c5d7316885666518538059c698181246f3cb658dbfb703fa7385164",
+      "alpha_bounds": [
+        476,
+        448,
+        556,
+        509
+      ]
+    },
+    {
+      "path": "female/mouth/02.png",
+      "sha256": "0198c5ca79016879b0090ad2277fd8eaed461298f79b2f75ff8396e0c03caae1",
+      "alpha_bounds": [
+        478,
+        450,
+        557,
+        509
+      ]
+    },
+    {
+      "path": "female/mouth/03.png",
+      "sha256": "298f6f8a5704445a0feae7ad3a315b2f1949548888d47fdd84f79a2484a1f096",
+      "alpha_bounds": [
+        485,
+        448,
+        561,
+        508
+      ]
+    },
+    {
+      "path": "female/mouth/04.png",
+      "sha256": "5a9efcfa8952a50441a2a10a5138dfbc59dd13d13f5c1d75b2b0429cc1dc095a",
+      "alpha_bounds": [
+        480,
+        449,
+        560,
+        508
+      ]
+    },
+    {
+      "path": "female/mouth/05.png",
+      "sha256": "0e642011e3869f073eabe14a91f8d71950f62f0e96523c6fc95e3a7b10e5cc4d",
+      "alpha_bounds": [
+        474,
+        446,
+        556,
+        507
+      ]
+    },
+    {
+      "path": "female/mouth/06.png",
+      "sha256": "2e8a43005cb71166057b2168bc8652027797280a6d721c7d2711d33b01cd979a",
+      "alpha_bounds": [
+        480,
+        448,
+        557,
+        508
+      ]
+    },
+    {
+      "path": "female/face_shape/01.png",
+      "sha256": "de1ddddefb8210cb557254a4b53c58df3e36a8893d172e6e61aefba9373bc1e4",
+      "alpha_bounds": [
+        380,
+        193,
+        662,
+        705
+      ]
+    },
+    {
+      "path": "female/face_shape/02.png",
+      "sha256": "3fcf09faa7ec8ddb3569064e740a51b114c06af8bceb529fd4f0a980ed7ac990",
+      "alpha_bounds": [
+        382,
+        212,
+        659,
+        705
+      ]
+    },
+    {
+      "path": "female/face_shape/03.png",
+      "sha256": "84c0d62b52d8627a2996a3d9508ae1184c7930b393e9ab9a4c9ad13129484047",
+      "alpha_bounds": [
+        389,
+        211,
+        654,
+        705
+      ]
+    },
+    {
+      "path": "female/face_shape/04.png",
+      "sha256": "db45b7f679beb07311739d495ed33199ef57d0400a75ff7646d8571cf57bceb8",
+      "alpha_bounds": [
+        380,
+        204,
+        659,
+        705
+      ]
+    },
+    {
+      "path": "female/face_shape/05.png",
+      "sha256": "8a30b59c455c7d042c268646359af2b0521a5ca1f3c7c7d84aee1054d801b5a3",
+      "alpha_bounds": [
+        378,
+        185,
+        650,
+        705
+      ]
+    },
+    {
+      "path": "female/face_shape/06.png",
+      "sha256": "79fab4d1763783a71e6bf7f66a5f275418c83d823fc9aafef18bb616ed1d82b3",
+      "alpha_bounds": [
+        389,
+        205,
+        652,
+        705
+      ]
+    },
+    {
+      "path": "female/clothing/01.png",
+      "sha256": "10e6ab3f04527c5c333f07df797b44d976ebdc11df5aa8a3c776aa8cc21edf06",
+      "alpha_bounds": [
+        0,
+        530,
+        1024,
+        1536
+      ]
+    },
+    {
+      "path": "female/clothing/02.png",
+      "sha256": "772badd760de39e1dd0f8ced89faf646284fa867b652d04686cf27eeb30587dd",
+      "alpha_bounds": [
+        0,
+        536,
+        1024,
+        1536
+      ]
+    },
+    {
+      "path": "female/clothing/03.png",
+      "sha256": "e29ba111c2a45530144097d1c3b31dedd753cc0c59b4271541a7495b8c6cc8d1",
+      "alpha_bounds": [
+        0,
+        520,
+        1024,
+        1536
+      ]
+    },
+    {
+      "path": "female/face_accessory/01.png",
+      "sha256": "1913847bf9091720c48139f49dfbb3aa70c4d20de82f2718e3dcd8348c6e5e9c",
+      "alpha_bounds": null
+    },
+    {
+      "path": "female/face_accessory/02.png",
+      "sha256": "518e373e3f40f9361866b6ea2282345845857e11afa9f4c6cd35533f006eaf4e",
+      "alpha_bounds": [
+        406,
+        393,
+        638,
+        461
+      ]
+    },
+    {
+      "path": "female/face_accessory/03.png",
+      "sha256": "e02f67a8e5f491fc9ac754e5d50851c7b51a8fc4b620736404c1361ec356ecaf",
+      "alpha_bounds": [
+        420,
+        402,
+        619,
+        447
+      ]
+    }
+  ],
+  "status": "suspended_by_user_20261004",
+  "active_package": "ink_three_variants_20261004"
+}

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BodyRefinementMethod" format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/BodyRefinementMethod.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+method_id = "sinew_blood_flow"
+method_name = "百络引行淬炼法"
+description = "先引行于筋络，再顺势带动血行；筋为主，血为辅，适合持续铺开根基。"
+duration_min_hours = 24
+duration_max_hours = 36
+base_yield_min = 8
+base_yield_max = 12
+target_parts = Array[String](["sinew", "blood"])
+allocation_ranges = {"sinew": Vector2(0.55, 0.7), "blood": Vector2(0.3, 0.45)}
+effective_level_ranges = {"sinew": Vector2(0, 5), "blood": Vector2(0, 5)}
+required_textures = Array[String](["木", "液"])
+required_utilities = Array[String](["行"])
+required_utility_grade = 1
+default_unlocked = true

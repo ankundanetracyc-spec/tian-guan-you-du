@@ -1,0 +1,134 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/bai_chuan/YuxuPeakInterior.gd" id="1_script"]
+[ext_resource type="FontFile" path="res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf" id="2_font"]
+[ext_resource type="PackedScene" path="res://tscn/panel/SceneActionButton.tscn" id="3_action_button"]
+[ext_resource type="Script" path="res://scripts/ui/SceneActionRope.gd" id="4_action_rope"]
+
+[sub_resource type="StyleBoxEmpty" id="info_card"]
+
+[sub_resource type="StyleBoxFlat" id="button_dark"]
+bg_color = Color(0.13, 0.12, 0.09, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.75, 0.64, 0.43, 0.78)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="YuxuPeakInterior" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+z_index = 12
+mouse_filter = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
+mouse_filter = 2
+
+[node name="ActionRope" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4_action_rope")
+action_container_path = NodePath("Tags")
+
+[node name="Tags" type="HBoxContainer" parent="ActionRope"]
+layout_mode = 1
+theme_override_constants/separation = 58
+alignment = 1
+
+[node name="InfoCard" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(760, 190)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.11
+anchor_right = 0.5
+anchor_bottom = 0.11
+offset_left = -380.0
+offset_top = 0.0
+offset_right = 380.0
+offset_bottom = 190.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("info_card")
+
+[node name="Margin" type="MarginContainer" parent="InfoCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 34
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 34
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="InfoCard/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="InfoCard/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16, 0.15, 0.12, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 30
+text = "峰名"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="InfoCard/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.29, 0.27, 0.22, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "峰内职责"
+horizontal_alignment = 1
+
+[node name="Body" type="Label" parent="InfoCard/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.22, 0.21, 0.18, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 15
+autowrap_mode = 2
+horizontal_alignment = 1
+visible = false
+text = ""
+
+[node name="AdmissionButton" parent="ActionRope/Tags" instance=ExtResource("3_action_button")]
+visible = false
+text = "申请拜入"
+
+[node name="BackButton" type="Button" parent="."]
+custom_minimum_size = Vector2(224, 46)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -260.0
+offset_top = 26.0
+offset_right = -36.0
+offset_bottom = 72.0
+grow_horizontal = 0
+grow_vertical = 1
+theme_override_colors/font_color = Color(0.95, 0.9, 0.76, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("button_dark")
+theme_override_styles/hover = SubResource("button_dark")
+text = "返回八峰总览"

@@ -1,0 +1,372 @@
+{
+  "id": "ink_recovered_parts_20261004",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "origin_px": [
+    0,
+    0
+  ],
+  "export_offset_px": [
+    0,
+    0
+  ],
+  "draw_order_back_to_front": [
+    "hair_back",
+    "face_shape",
+    "clothing",
+    "eyes",
+    "eyebrows",
+    "nose",
+    "mouth",
+    "face_accessory",
+    "hair_front"
+  ],
+  "registration_method": "Master pupil pair defines one uniform similarity transform for ALL master features; hair uses source correspondences; hidden blank faces use measured ears/chin. No horizontal/vertical independent deformation.",
+  "registration_file": "../registration.json",
+  "scale_pivots_normalized": {
+    "face_and_feature_scale": {
+      "x": 0.5068359375,
+      "y": 0.2799479166666667
+    },
+    "eye_variant_scale": {
+      "x": 0.5068359375,
+      "y": 0.24544270833333334
+    }
+  },
+  "families": {
+    "male": {
+      "eye_pupils_px": [
+        [
+          464,
+          375
+        ],
+        [
+          569,
+          375
+        ]
+      ],
+      "original_numbers": [
+        1,
+        2,
+        3
+      ],
+      "masters": {
+        "1": {
+          "source_landmarks": [
+            [
+              463,
+              313
+            ],
+            [
+              569,
+              311
+            ],
+            [
+              517,
+              378
+            ],
+            [
+              517,
+              412
+            ]
+          ],
+          "master_to_canvas": [
+            [
+              0.9902135231316727,
+              -0.018683274021352312,
+              11.379003558718807
+            ],
+            [
+              0.018683274021352312,
+              0.9902135231316727,
+              56.41281138790032
+            ]
+          ]
+        },
+        "2": {
+          "source_landmarks": [
+            [
+              459,
+              377
+            ],
+            [
+              567,
+              375
+            ],
+            [
+              516,
+              446
+            ],
+            [
+              516,
+              476
+            ]
+          ],
+          "master_to_canvas": [
+            [
+              0.9718889269797737,
+              -0.01799794309221803,
+              24.688207062050083
+            ],
+            [
+              0.01799794309221803,
+              0.9718889269797737,
+              0.3368186492972427
+            ]
+          ]
+        },
+        "3": {
+          "source_landmarks": [
+            [
+              462,
+              317
+            ],
+            [
+              567,
+              315
+            ],
+            [
+              516,
+              379
+            ],
+            [
+              516,
+              412
+            ]
+          ],
+          "master_to_canvas": [
+            [
+              0.9996373197932723,
+              -0.019040710853205186,
+              8.203463595974256
+            ],
+            [
+              0.019040710853205186,
+              0.9996373197932723,
+              49.31816121135188
+            ]
+          ]
+        }
+      }
+    },
+    "female": {
+      "eye_pupils_px": [
+        [
+          464,
+          379
+        ],
+        [
+          574,
+          379
+        ]
+      ],
+      "original_numbers": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "masters": {
+        "5": {
+          "source_landmarks": [
+            [
+              464,
+              401
+            ],
+            [
+              570,
+              399
+            ],
+            [
+              517,
+              461
+            ],
+            [
+              517,
+              494
+            ]
+          ],
+          "master_to_canvas": [
+            [
+              1.0373665480427046,
+              -0.019572953736654804,
+              -9.489323843416344
+            ],
+            [
+              0.019572953736654804,
+              1.0373665480427046,
+              -46.06583629893237
+            ]
+          ]
+        },
+        "6": {
+          "source_landmarks": [
+            [
+              460,
+              349
+            ],
+            [
+              575,
+              348
+            ],
+            [
+              518,
+              417
+            ],
+            [
+              518,
+              452
+            ]
+          ],
+          "master_to_canvas": [
+            [
+              0.9564494178133979,
+              -0.008316951459246939,
+              26.935883865114135
+            ],
+            [
+              0.008316951459246939,
+              0.9564494178133979,
+              41.37335551187056
+            ]
+          ]
+        },
+        "7": {
+          "source_landmarks": [
+            [
+              450,
+              383
+            ],
+            [
+              563,
+              381
+            ],
+            [
+              507,
+              449
+            ],
+            [
+              507,
+              482
+            ]
+          ],
+          "master_to_canvas": [
+            [
+              0.97314648085806,
+              -0.017223831519611682,
+              32.68081108588427
+            ],
+            [
+              0.017223831519611682,
+              0.97314648085806,
+              -1.4658263524622157
+            ]
+          ]
+        },
+        "8": {
+          "source_landmarks": [
+            [
+              458,
+              344
+            ],
+            [
+              575,
+              344
+            ],
+            [
+              517,
+              410
+            ],
+            [
+              517,
+              448
+            ]
+          ],
+          "master_to_canvas": [
+            [
+              0.9401709401709402,
+              -0.0,
+              33.40170940170941
+            ],
+            [
+              0.0,
+              0.9401709401709402,
+              55.58119658119659
+            ]
+          ]
+        },
+        "9": {
+          "source_landmarks": [
+            [
+              463,
+              378
+            ],
+            [
+              573,
+              376
+            ],
+            [
+              518,
+              446
+            ],
+            [
+              518,
+              473
+            ]
+          ],
+          "master_to_canvas": [
+            [
+              0.9996695307336418,
+              -0.018175809649702578,
+              8.023463317911421
+            ],
+            [
+              0.018175809649702578,
+              0.9996695307336418,
+              -7.290482485128905
+            ]
+          ]
+        },
+        "10": {
+          "source_landmarks": [
+            [
+              457,
+              384
+            ],
+            [
+              570,
+              382
+            ],
+            [
+              514,
+              450
+            ],
+            [
+              514,
+              484
+            ]
+          ],
+          "master_to_canvas": [
+            [
+              0.97314648085806,
+              -0.017223831519611682,
+              25.88600955139748
+            ],
+            [
+              0.017223831519611682,
+              0.97314648085806,
+              -2.559539653957586
+            ]
+          ]
+        }
+      }
+    }
+  },
+  "hair_ownership": "Front: visible scalp hair, hairline, temples and chest locks; back: nape, bun, rear ponytail, ribbons at rear ties and shoulder-behind curtain. No ear-shaped cutouts.",
+  "palette": "Matte warm light skin; charcoal ink strands; preserve coloured ribbons; runtime skin/hair tint disabled.",
+  "visual_review": "Artist/user acceptance remains pending; see rendered previews for actual composition."
+}

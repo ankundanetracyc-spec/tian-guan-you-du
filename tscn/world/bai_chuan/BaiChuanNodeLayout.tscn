@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://ctwgaktgb0ho3"]
+
+[ext_resource type="PackedScene" uid="uid://diwu1b5jw3864" path="res://tscn/world/bai_chuan/WorldMapLocation.tscn" id="1_location"]
+
+[node name="NodeLayout" type="Node2D" unique_id=705475060]
+editor_description = "百川区域地点节点层：所有地点均直接放置在场景中，移动节点即可同时改变编辑器预览、运行时位置与命中位置。"
+y_sort_enabled = true
+texture_filter = 4
+
+[node name="home_village" parent="." unique_id=85388858 instance=ExtResource("1_location")]
+editor_description = "青溪里 · 乡村节点"
+z_index = 12
+position = Vector2(1563, 847)
+scene_node_id = "home_village"
+
+[node name="white_stone_town" parent="." unique_id=26519192 instance=ExtResource("1_location")]
+editor_description = "白石镇 · 城镇节点"
+z_index = 12
+position = Vector2(1403, 787)
+scene_node_id = "white_stone_town"
+
+[node name="qingxi_wilds" parent="." unique_id=726227331 instance=ExtResource("1_location")]
+editor_description = "青溪山野 · 野外节点"
+z_index = 12
+position = Vector2(1403, 857)
+scene_node_id = "qingxi_wilds"
+
+[node name="east_woods" parent="." unique_id=1699636594 instance=ExtResource("1_location")]
+editor_description = "东林地 · 野外节点"
+z_index = 12
+position = Vector2(1123, 677)
+scene_node_id = "east_woods"
+
+[node name="fulan_temple" parent="." unique_id=1535069848 instance=ExtResource("1_location")]
+editor_description = "伏岚观 · 宗门节点"
+z_index = 12
+position = Vector2(1003, 897)
+scene_node_id = "fulan_temple"
+
+[node name="herb_valley" parent="." unique_id=1044974095 instance=ExtResource("1_location")]
+editor_description = "灵草谷 · 野外节点"
+z_index = 12
+position = Vector2(933, 737)
+scene_node_id = "herb_valley"
+
+[node name="lanpu_ferry" parent="." unique_id=718401442 instance=ExtResource("1_location")]
+editor_description = "澜浦渡 · 城镇节点"
+z_index = 12
+position = Vector2(733, 467)
+scene_node_id = "lanpu_ferry"
+
+[node name="misty_ridge" parent="." unique_id=2106320618 instance=ExtResource("1_location")]
+editor_description = "云岚荒径 · 野外节点"
+z_index = 12
+position = Vector2(803, 917)
+scene_node_id = "misty_ridge"
+
+[node name="changfeng_escort" parent="." unique_id=1327812816 instance=ExtResource("1_location")]
+editor_description = "长风护道会 · 太微道宫二级辖域地点"
+z_index = 12
+position = Vector2(1900, 520)
+scene_node_id = "changfeng_escort"
+
+[node name="chunshui_prefecture" parent="." unique_id=1553111430 instance=ExtResource("1_location")]
+editor_description = "春水府 · 太微道宫二级辖域地点"
+z_index = 12
+position = Vector2(1800, 1080)
+scene_node_id = "chunshui_prefecture"
+
+[node name="guanshan_prefecture" parent="." unique_id=704812841 instance=ExtResource("1_location")]
+editor_description = "关山府 · 玄都天府二级辖域地点"
+z_index = 12
+position = Vector2(480, 520)
+scene_node_id = "guanshan_prefecture"
+
+[node name="chilu_hall" parent="." unique_id=852999480 instance=ExtResource("1_location")]
+editor_description = "赤炉堂 · 玄都天府二级辖域地点"
+z_index = 12
+position = Vector2(580, 1250)
+scene_node_id = "chilu_hall"
+
+[node name="chishui_city" parent="." unique_id=1540401546 instance=ExtResource("1_location")]
+editor_description = "赤水城 · 玄都天府二级辖域地点"
+z_index = 12
+position = Vector2(850, 1350)
+scene_node_id = "chishui_city"
+
+[node name="youquan_cult" parent="." unique_id=1678584473 instance=ExtResource("1_location")]
+editor_description = "幽泉教 · 无相圣宗二级辖域地点"
+z_index = 12
+position = Vector2(2350, 1180)
+scene_node_id = "youquan_cult"
+
+[node name="yexing_society" parent="." unique_id=437987060 instance=ExtResource("1_location")]
+editor_description = "夜行会 · 无相圣宗二级辖域地点"
+z_index = 12
+position = Vector2(2250, 930)
+scene_node_id = "yexing_society"
+
+[node name="huigu_temple" parent="." unique_id=528077531 instance=ExtResource("1_location")]
+editor_description = "灰骨寺 · 无相圣宗二级辖域地点"
+z_index = 12
+position = Vector2(2550, 1450)
+scene_node_id = "huigu_temple"
+
+[node name="stone_mist_wilds" parent="." unique_id=913234864 instance=ExtResource("1_location")]
+editor_description = "石雾荒原 · 野外空节点"
+z_index = 12
+position = Vector2(1260, 520)
+scene_node_id = "stone_mist_wilds"
+
+[node name="reed_marsh_wilds" parent="." unique_id=1871026524 instance=ExtResource("1_location")]
+editor_description = "芦泽浅滩 · 野外空节点"
+z_index = 12
+position = Vector2(1610, 690)
+scene_node_id = "reed_marsh_wilds"
+
+[node name="fallen_star_field" parent="." unique_id=1798562344 instance=ExtResource("1_location")]
+editor_description = "陨星坡 · 野外空节点"
+z_index = 12
+position = Vector2(1120, 1120)
+scene_node_id = "fallen_star_field"
+
+[node name="red_cliff_wilds" parent="." unique_id=524049204 instance=ExtResource("1_location")]
+editor_description = "赤崖荒谷 · 野外空节点"
+z_index = 12
+position = Vector2(1030, 1440)
+scene_node_id = "red_cliff_wilds"
+
+[node name="cold_sand_wilds" parent="." unique_id=1686699346 instance=ExtResource("1_location")]
+editor_description = "寒砂台 · 野外空节点"
+z_index = 12
+position = Vector2(2050, 300)
+scene_node_id = "cold_sand_wilds"
+
+[node name="black_water_wilds" parent="." unique_id=1172556219 instance=ExtResource("1_location")]
+editor_description = "黑水泽 · 野外空节点"
+z_index = 12
+position = Vector2(2750, 950)
+scene_node_id = "black_water_wilds"

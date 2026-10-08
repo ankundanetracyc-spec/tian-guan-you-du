@@ -1,0 +1,26 @@
+{
+  "tool": "built-in imagegen",
+  "references": [
+    "preview/male_set_1.png",
+    "male/eyes/01.png",
+    "male/eyebrows/01.png"
+  ],
+  "constraints": "Transparent paired brows above paired eyes; own existing ink style; organs only without surrounding skin; matte charcoal brow and grey-brown iris; exported to existing own pupil/brow anchors.",
+  "jobs": [
+    {
+      "id": "stern_sword",
+      "name": "凝岳",
+      "brief": "Strong mature masculine sword eyebrows: thicker inner halves, firm nearly straight angular lower edges, short clean tapered tails, visible charcoal ink hair strokes. Eyes: calm resolute masculine gaze, narrower almond eye aperture with sturdy upper eyelid, small natural grey-brown iris partly covered by upper lid. Short subtle lash marks only; no long feminine wing eyeliner."
+    },
+    {
+      "id": "steady_straight",
+      "name": "磐石",
+      "brief": "Strong masculine dense straight brows, broad but naturally tapered, restrained slightly downward outer tails. Eyes: steady honest gaze, medium-width horizontal eye fissures and solid upper lids, natural small grey-brown irises, clear inner corners and very short lower lash marks. Rugged youthful male scholar, no exaggerated squint, no feminine lashes."
+    },
+    {
+      "id": "rising_edge",
+      "name": "凌锋",
+      "brief": "Masculine upward sword brows: a defined angular peak in the outer third, solid ink strokes, taper tail, avoid thin arched feminine brows. Eyes: alert confident heroic masculine eyes, subtle upward outer corners and sharp upper lid, small natural grey-brown irises. No oversized pupils, no heavy makeup, no hostile scowl."
+    }
+  ]
+}

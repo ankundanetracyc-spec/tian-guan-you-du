@@ -1,0 +1,82 @@
+<mxfile host="Electron" agent="Codex">
+  <diagram id="jinghong-lueying" name="惊鸿掠影谱">
+    <mxGraphModel dx="754" dy="455" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1300" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=22;fontStyle=1;" value="惊鸿掠影谱&#xa;仅辅修 · 身法剑谱 · 敏捷" vertex="1">
+          <mxGeometry height="90" width="600" x="800" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="rule" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=16;" value="秘籍定位与辅修规则&#xa;可作主修：否　可作辅修：是　无可修炼至的境界&#xa;装入辅修位时，整本只能选择纳气或化法一边；学会永久属性不受路线影响&#xa;输入：上一张剑攻击 / 遁身牌　输出：换位、步后精准、剑意、遁身减耗&#xa;服务：流云剑经、折枝剑谱、未来剑影分光" vertex="1">
+          <mxGeometry height="190" width="900" x="650" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="v1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=15;fontStyle=1;" value="第一卷：惊鸿卷&amp;#xa;顺序：1&amp;#xa;学习要求：有灵根；敏捷≥5；剑道造诣≥6&amp;#xa;学会永久属性：敏捷+1，剑道造诣+1&amp;#xa;习得：惊鸿掠步*1、回身点锋*1" vertex="1">
+          <mxGeometry height="190" width="400" x="900" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=15;" value="惊鸿掠步&#xa;遁身 / 灵活、消耗 / 精力12 / 移动2格&#xa;下一张本体剑攻击精准+6&#xa;若上一张是剑攻击，额外移动1格&#xa;职责：剑后换位，步后再剑" vertex="1">
+          <mxGeometry height="250" width="500" x="20" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=15;" value="回身点锋&#xa;攻击 / 精力14 / 射程1-2&#xa;伤害：6 + 剑道造诣×0.38 + 敏捷×0.22 + 体魄×0.08&#xa;命中获得1剑意；上一张为遁身牌时伤害+20%&#xa;目标带剑痕：会心+4" vertex="1">
+          <mxGeometry height="250" width="500" x="20" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="v2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=15;fontStyle=1;" value="第二卷：返影卷&amp;#xa;顺序：2&amp;#xa;学习要求：已学惊鸿卷；敏捷≥8；剑道造诣≥10&amp;#xa;学会永久属性：敏捷+1，剑道造诣+1&amp;#xa;习得：身随剑转*1" vertex="1">
+          <mxGeometry height="200" width="400" x="900" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=15;" value="身随剑转&#xa;特殊 / 消耗 / 精力0&#xa;本回合下一张本体剑攻击命中后：&#xa;下一张遁身牌精力消耗-4&#xa;若目标带剑痕，额外获得1剑意" vertex="1">
+          <mxGeometry height="260" width="500" x="20" y="900" as="geometry" />
+        </mxCell>
+        <mxCell id="combo" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;" value="秘籍内循环&#xa;回身点锋 → 惊鸿掠步（剑后多走1格）→ 下一剑精准+6&#xa;身随剑转 → 本体剑命中 → 遁身减耗 → 回身点锋步后增伤&#xa;跨秘籍：折枝的压枝读取“本回合用过遁身牌”；流云读取位移和本体剑攻击" vertex="1">
+          <mxGeometry height="240" width="410" x="1760" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="limit" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=15;" value="辅修边界&#xa;不生成折损、剑影或追击次数&#xa;不建立独立剑势&#xa;只在剑与步之间提供一次性桥接" vertex="1">
+          <mxGeometry height="190" width="390" x="1780" y="900" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="rule" style="endArrow=block;html=1;" target="v1" value="学习第一卷">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="v1" style="endArrow=block;html=1;" target="v2" value="满足前置">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="v1_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;fontStyle=1;" value="纳气&amp;#xa;精准+3&amp;#xa;行动速度+3" vertex="1">
+          <mxGeometry height="125" width="270" x="570" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="v1_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=16;fontStyle=1;" value="化法&amp;#xa;基础步法*1 → 惊鸿掠步*1" vertex="1">
+          <mxGeometry height="145" width="330" x="1400" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="v2_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;fontStyle=1;" value="纳气&amp;#xa;行动速度+3&amp;#xa;会心+2" vertex="1">
+          <mxGeometry height="125" width="270" x="570" y="890" as="geometry" />
+        </mxCell>
+        <mxCell id="v2_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=16;fontStyle=1;" value="化法&amp;#xa;基础牌库额外加入 身随剑转*1" vertex="1">
+          <mxGeometry height="145" width="330" x="1400" y="880" as="geometry" />
+        </mxCell>
+        <mxCell id="summary" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=15;" value="属性与路线汇总&amp;#xa;学会永久属性：敏捷+2，剑道造诣+2&amp;#xa;纳气合计：精准+3，行动速度+6，会心+2&amp;#xa;化法合计：替换1张基础步法，额外加入1张身随剑转&amp;#xa;辅修时整本只启用其中一条路线" vertex="1">
+          <mxGeometry height="210" width="390" x="1780" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="branch_note" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;" value="辅修路线选择&amp;#xa;纳气与化法二选一&amp;#xa;选择作用于已学全部卷章&amp;#xa;切换时先撤销旧路线，再应用新路线" vertex="1">
+          <mxGeometry height="130" width="840" x="710" y="1110" as="geometry" />
+        </mxCell>
+        <mxCell id="ev1l" edge="1" parent="1" source="v1" style="endArrow=block;html=1;rounded=0;" target="v1_left" value="纳气">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ev1r" edge="1" parent="1" source="v1" style="endArrow=block;html=1;rounded=0;" target="v1_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ev2l" edge="1" parent="1" source="v2" style="endArrow=block;html=1;rounded=0;" target="v2_left" value="纳气">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ev2r" edge="1" parent="1" source="v2" style="endArrow=block;html=1;rounded=0;" target="v2_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ec1" edge="1" parent="1" source="v1" style="endArrow=block;html=1;rounded=0;" target="c1" value="习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ec2" edge="1" parent="1" source="v2" style="endArrow=block;html=1;rounded=0;" target="c3" value="习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ec1b" edge="1" parent="1" source="v1" style="endArrow=block;html=1;rounded=0;" target="c2" value="习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

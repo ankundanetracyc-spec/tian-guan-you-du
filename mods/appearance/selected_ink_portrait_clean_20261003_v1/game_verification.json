@@ -1,0 +1,45 @@
+{
+  "build": {
+    "warnings": 0,
+    "errors": 0
+  },
+  "entry": "StartMenu/AppearanceCreatorTest -> CharacterAppearanceTest",
+  "current_test_source": "selected_ink_portrait_clean_20261003_v1",
+  "rig": "../selected_ink_portrait_rig_20261003_v1/rig/portrait_rig.json",
+  "sexes": [
+    "male",
+    "female"
+  ],
+  "nine_toggles_and_restore_per_sex": true,
+  "own_anchor_overlay_shown_and_hidden_per_sex": true,
+  "csharp_composite_matches_independent_godot_composite": true,
+  "godot_exit_code": 0,
+  "tested_png_sha256": {
+    "mods/appearance/selected_ink_portrait_clean_20261003_v1/male/clothing.png": "fb12274466cf47acf969c779de8e735e60a48d0f9ae496d9e0b06d8d2dcfb727",
+    "mods/appearance/selected_ink_portrait_clean_20261003_v1/male/eyebrows.png": "7a661e6ee9458964ca1efc04f8970a1beffccb96ab30834008c2b2d0b2039f71",
+    "mods/appearance/selected_ink_portrait_clean_20261003_v1/male/eyes.png": "5c406f9164f561256a6b3490115e3c47b5e8893ec31a87319074ad17ef54a6ca",
+    "mods/appearance/selected_ink_portrait_clean_20261003_v1/male/face_accessory.png": "1913847bf9091720c48139f49dfbb3aa70c4d20de82f2718e3dcd8348c6e5e9c",
+    "mods/appearance/selected_ink_portrait_clean_20261003_v1/male/face_shape.png": "b584696489925efe1818a200fb4be6e01fd56aa08ee281d46f74abe32b7edbc8",
+    "mods/appearance/selected_ink_portrait_clean_20261003_v1/male/hair_back.png": "609c881802ce97c1353f0b873a0563f6aa4e1b967b9427afa7c75d0f8dc89d23",
+    "mods/appearance/selected_ink_portrait_clean_20261003_v1/male/hair_front.png": "23c7ada6add27e7b8d98b2d009ddc6ff47d833c480e3de12e6cf93c7ac5a5eaf",
+    "mods/appearance/selected_ink_portrait_clean_20261003_v1/male/mouth.png": "24d5820852e81a99c2672a976cf3dcca60567a250807063634e4b96a46148dec",
+    "mods/appearance/selected_ink_portrait_clean_20261003_v1/male/nose.png": "745da0f8d58deb2e841ebacaf42585e648bfc3641ce2b442cbb1a241f6206d17",
+    "mods/appearance/selected_ink_portrait_clean_20261003_v1/female/clothing.png": "2d81ad07a74163656af0f3d4597774acbac6aae67a1db6946914b48a87eead31",
+    "mods/appearance/selected_ink_portrait_clean_20261003_v1/female/eyebrows.png": "93f12dff24d6a99efd726e2bb0343d985d57b23e367021e8b48fac1bd920876c",
+    "mods/appearance/selected_ink_portrait_clean_20261003_v1/female/eyes.png": "e37c4d69f771aa087df10a503b35bae2e8478113f27a46d8e79b56126d7467a2",
+    "mods/appearance/selected_ink_portrait_clean_20261003_v1/female/face_accessory.png": "1913847bf9091720c48139f49dfbb3aa70c4d20de82f2718e3dcd8348c6e5e9c",
+    "mods/appearance/selected_ink_portrait_clean_20261003_v1/female/face_shape.png": "d12ac81432540b584267db7c0113ad05b210920fe842948c12969c7d9d03d3dc",
+    "mods/appearance/selected_ink_portrait_clean_20261003_v1/female/hair_back.png": "ea4e0d85e3ae241483922f929ec476a064e6e64170e047587d5eed8ed93490bc",
+    "mods/appearance/selected_ink_portrait_clean_20261003_v1/female/hair_front.png": "5062af4d0333c8888fdbb2b1bbae29c20ceca3718b929294bb5e3c79a8864148",
+    "mods/appearance/selected_ink_portrait_clean_20261003_v1/female/mouth.png": "685f62075de7debf8f66746256530234446d74e2ae9dd3f5b19b989d49739ddc",
+    "mods/appearance/selected_ink_portrait_clean_20261003_v1/female/nose.png": "8a55247897531ef3ac1a17e32167804c6743ab46a462bf9dd79e11eb3369b56a"
+  },
+  "stdout": "Godot Engine v4.7.2.stable.mono.official.ed1daf0bf - https://godotengine.org\nOpenGL API 3.3.0 NVIDIA 596.36 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4060 Laptop GPU\n\nCLEAN_SELECTED_INK_UI_PASS: male; own anchors; nine toggles; cleaned nine PNG assets\nCLEAN_SELECTED_INK_UI_PASS: female; own anchors; nine toggles; cleaned nine PNG assets\nCLEAN_SELECTED_INK_ENTRY_PASS: start menu -> selected portrait with own anchors\nERROR: 1 RID allocations of type 'N5GLES37TextureE' were leaked at exit.\n",
+  "stderr_diagnostics": "ERROR: Resource file not found: res:// (expected type: unknown)\n   at: _load (core/io/resource_loader.cpp:325)\nERROR: Failed to instantiate an autoload, can't load from path: .\n   at: start (main/main.cpp:4533)\nERROR: Texture with GL ID of 23: leaked 12280 bytes.\n   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)\nERROR: Parameter \"RenderingServer::get_singleton()\" is null.\n   at: ~ImageTexture (scene/resources/image_texture.cpp:245)\n",
+  "cleaned_assets_approved_by_user": false,
+  "multiple_variants_complete": false,
+  "known_unrelated_diagnostics": [
+    "Empty McpRuntimeAutoload startup resource",
+    "Renderer texture/RID release diagnostic at shutdown"
+  ]
+}

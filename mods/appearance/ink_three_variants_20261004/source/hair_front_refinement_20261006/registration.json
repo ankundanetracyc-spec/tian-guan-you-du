@@ -1,0 +1,132 @@
+{
+  "canvas": [
+    1024,
+    1536
+  ],
+  "runtime_offset": [
+    0,
+    0
+  ],
+  "method": "whole-layer uniform visual fitting; no formal three-point residual certification",
+  "own_head_axes": {
+    "male": 517,
+    "female": 519
+  },
+  "parts": [
+    {
+      "key": "male_hair_front_8",
+      "name": "行舟短发",
+      "source": "male_hair_front_8.png",
+      "generated_original": "D:\\CodexData\\generated_images\\01a0fd74-de00-7ab2-9dfc-c15a97009561\\exec-07e81916-d783-4037-abab-26fbbc2c4897.png",
+      "output": "male/hair_front/08.png",
+      "sha256": "ecc4d7b1679e5d5d9378c625957bcc2deae3ac786f0e42058e7a2374b430007f",
+      "source_size": [
+        1283,
+        1226
+      ],
+      "uniform_transform": [
+        0.235,
+        358,
+        112
+      ],
+      "source_hairline_axis_visual_estimate": 676,
+      "registered_axis_x": 516.86,
+      "no_local_warp": true
+    },
+    {
+      "key": "female_hair_front_6",
+      "name": "拂云露额",
+      "source": "female_hair_front_6.png",
+      "generated_original": "D:\\CodexData\\generated_images\\01a0fd74-de00-7ab2-9dfc-c15a97009561\\exec-e2c074ab-1265-43ad-9156-3640e8133886.png",
+      "output": "female/hair_front/06.png",
+      "sha256": "5742c57f71888c2e9cb04ebcd20021a3296012d837405b0f73a352db8be06fd9",
+      "source_size": [
+        1312,
+        1199
+      ],
+      "uniform_transform": [
+        0.27,
+        342,
+        101
+      ],
+      "source_hairline_axis_visual_estimate": 654,
+      "registered_axis_x": 518.58,
+      "no_local_warp": true
+    },
+    {
+      "key": "female_hair_front_7",
+      "name": "素心分缕",
+      "source": "female_hair_front_7.png",
+      "generated_original": "D:\\CodexData\\generated_images\\01a0fd74-de00-7ab2-9dfc-c15a97009561\\exec-bae5d55f-4438-4861-8094-d940af68b533.png",
+      "output": "female/hair_front/07.png",
+      "sha256": "486d2cca6594803b523fef150d91127f29c9d201bdc6c9a8a2434cb7c15126bb",
+      "source_size": [
+        1312,
+        1199
+      ],
+      "uniform_transform": [
+        0.28,
+        335,
+        96
+      ],
+      "source_hairline_axis_visual_estimate": 658,
+      "registered_axis_x": 519.24,
+      "no_local_warp": true
+    },
+    {
+      "key": "female_hair_front_8",
+      "name": "听雨短帘",
+      "source": "female_hair_front_8.png",
+      "generated_original": "D:\\CodexData\\generated_images\\01a0fd74-de00-7ab2-9dfc-c15a97009561\\exec-644bb00e-dbc2-4519-8992-101ac1ec1a97.png",
+      "output": "female/hair_front/08.png",
+      "sha256": "a511d1e0019587e061774f3e6b163f7474e66b9a20dced8c323f93f8c482a0c2",
+      "source_size": [
+        1312,
+        1199
+      ],
+      "uniform_transform": [
+        0.3,
+        321,
+        128
+      ],
+      "source_hairline_axis_visual_estimate": 660,
+      "registered_axis_x": 519.0,
+      "no_local_warp": true
+    }
+  ],
+  "face_occlusion_metrics": {
+    "female_hair_front_6": {
+      "central_cheek_roi": [
+        444,
+        397,
+        594,
+        505
+      ],
+      "old_opaque_pixels": 0,
+      "new_opaque_pixels": 0,
+      "note": "fixed image ROI support only; not anatomical segmentation"
+    },
+    "female_hair_front_7": {
+      "central_cheek_roi": [
+        444,
+        397,
+        594,
+        505
+      ],
+      "old_opaque_pixels": 0,
+      "new_opaque_pixels": 0,
+      "note": "fixed image ROI support only; not anatomical segmentation"
+    },
+    "female_hair_front_8": {
+      "central_cheek_roi": [
+        444,
+        397,
+        594,
+        505
+      ],
+      "old_opaque_pixels": 983,
+      "new_opaque_pixels": 91,
+      "note": "fixed image ROI support only; not anatomical segmentation"
+    }
+  }
+}

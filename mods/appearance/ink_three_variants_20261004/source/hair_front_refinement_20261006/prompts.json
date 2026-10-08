@@ -1,0 +1,57 @@
+{
+  "mode": "built-in image_gen",
+  "jobs": [
+    {
+      "key": "male_hair_front_8",
+      "sex": "male",
+      "slot": "hair_front",
+      "index": 8,
+      "name": "行舟短发",
+      "prompt": "Use case: stylized-concept. A production FRONT HAIR sprite for OUR OWN Chinese cultivation portrait, a transparent modular painting. Image 1 is ONLY our own hair MATERIAL reference: copy its charcoal black, restrained warm grey fibre highlights, finely layered matte ink-wash lines and soft ink shadows. Image 2 is ONLY our own head PROPORTION/FRONTAL AXIS reference. Do not draw the head or its skin. Strict level FRONT VIEW: no yaw, no tilted head, no perspective foreshortening. Make the structural hair volume bilaterally balanced, same temple height and width, central axis straight vertical, crown apex centred. Natural individual strokes may differ slightly, but NO SIDE-SWEPT MASS or off-centre skull. Compact rounded crown, close to the real skull; not tall, flattened or wide. Clean separate FRONT layer only: the front scalp cap, hairline, short temple hair, specified bangs. Face opening, inner gaps, outside background all genuine TRANSPARENT alpha. NO face, skin, ears, eyebrows, eyes, scalp patches, neck, clothes, rear bun, rear ponytail, back-of-body hanging hair. Do not carve ear-shaped holes. Hair may naturally overlap ear positions. No glossy silver streaks, no photorealistic fibres, no 3D lighting, no background glow, shadow or flat rectangle. Full hair silhouette and flyaways with padding; no text or labels.\nSubject: Male cultivator soft, elegant practical short hair. Gently combed restrained rounded top with a shallow centre separation and a few fine tapered broken bangs descending only into the UPPER forehead. A clean open lower forehead, eyebrows and eyes will remain fully visible. Close-fitting temples end near the upper ears. Soft smooth strand groups, small controlled contour variation; no thick sharp spikes, no shaggy messy modern anime cut, no inward curls, no long cheek locks. Symmetric frontal temple structure, balanced delicate strand direction.",
+      "referenced_image_paths": [
+        "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/practical_hair_expansion_20261006/hair_material_reference.jpg",
+        "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/practical_hair_expansion_20261006/male_face_registration_reference.jpg"
+      ],
+      "workspace_source": "male_hair_front_8.png"
+    },
+    {
+      "key": "female_hair_front_6",
+      "sex": "female",
+      "slot": "hair_front",
+      "index": 6,
+      "name": "拂云露额",
+      "prompt": "Use case: stylized-concept. A production FRONT HAIR sprite for OUR OWN Chinese cultivation portrait, a transparent modular painting. Image 1 is ONLY our own hair MATERIAL reference: copy its charcoal black, restrained warm grey fibre highlights, finely layered matte ink-wash lines and soft ink shadows. Image 2 is ONLY our own head PROPORTION/FRONTAL AXIS reference. Do not draw the head or its skin. Strict level FRONT VIEW: no yaw, no tilted head, no perspective foreshortening. Make the structural hair volume bilaterally balanced, same temple height and width, central axis straight vertical, crown apex centred. Natural individual strokes may differ slightly, but NO SIDE-SWEPT MASS or off-centre skull. Compact rounded crown, close to the real skull; not tall, flattened or wide. Clean separate FRONT layer only: the front scalp cap, hairline, short temple hair, specified bangs. Face opening, inner gaps, outside background all genuine TRANSPARENT alpha. NO face, skin, ears, eyebrows, eyes, scalp patches, neck, clothes, rear bun, rear ponytail, back-of-body hanging hair. Do not carve ear-shaped holes. Hair may naturally overlap ear positions. No glossy silver streaks, no photorealistic fibres, no 3D lighting, no background glow, shadow or flat rectangle. Full hair silhouette and flyaways with padding; no text or labels.\nSubject: Female cultivator neat light tied hairstyle FRONT component. A precise CENTRAL middle part with two equal gently backward flowing sides, shallow natural M hairline, compact sleek feminine crown. Forehead fully open, temples kept close to the skull. Two fine soft tiny sideburn tufts ONLY just outside face edge at upper ear level; do not hang across cheek. No high pompadour, no asymmetric front wave. Balanced left/right temple curves and equal length tufts. Rear tie and tail must NOT be included.",
+      "referenced_image_paths": [
+        "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/practical_hair_expansion_20261006/hair_material_reference.jpg",
+        "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/practical_hair_expansion_20261006/female_face_registration_reference.jpg"
+      ],
+      "workspace_source": "female_hair_front_6.png"
+    },
+    {
+      "key": "female_hair_front_7",
+      "sex": "female",
+      "slot": "hair_front",
+      "index": 7,
+      "name": "素心分缕",
+      "prompt": "Use case: stylized-concept. A production FRONT HAIR sprite for OUR OWN Chinese cultivation portrait, a transparent modular painting. Image 1 is ONLY our own hair MATERIAL reference: copy its charcoal black, restrained warm grey fibre highlights, finely layered matte ink-wash lines and soft ink shadows. Image 2 is ONLY our own head PROPORTION/FRONTAL AXIS reference. Do not draw the head or its skin. Strict level FRONT VIEW: no yaw, no tilted head, no perspective foreshortening. Make the structural hair volume bilaterally balanced, same temple height and width, central axis straight vertical, crown apex centred. Natural individual strokes may differ slightly, but NO SIDE-SWEPT MASS or off-centre skull. Compact rounded crown, close to the real skull; not tall, flattened or wide. Clean separate FRONT layer only: the front scalp cap, hairline, short temple hair, specified bangs. Face opening, inner gaps, outside background all genuine TRANSPARENT alpha. NO face, skin, ears, eyebrows, eyes, scalp patches, neck, clothes, rear bun, rear ponytail, back-of-body hanging hair. Do not carve ear-shaped holes. Hair may naturally overlap ear positions. No glossy silver streaks, no photorealistic fibres, no 3D lighting, no background glow, shadow or flat rectangle. Full hair silhouette and flyaways with padding; no text or labels.\nSubject: Female cultivator low-bun hairstyle FRONT component. Fine soft hair combed directly backward from a shallow natural rounded-M frontal hairline, subtle curved strand groups on BOTH sides symmetrically. NO off-centre part, NO diagonal sweep, NO bulging mass on one side. Compact close-fitting smooth crown, restrained volume; forehead fully exposed. Tiny close-fitting temples, with a couple of wispy strokes directed OUTSIDE the face contour, not into cheeks. No long side locks. Rear bun must NOT be included.",
+      "referenced_image_paths": [
+        "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/practical_hair_expansion_20261006/hair_material_reference.jpg",
+        "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/practical_hair_expansion_20261006/female_face_registration_reference.jpg"
+      ],
+      "workspace_source": "female_hair_front_7.png"
+    },
+    {
+      "key": "female_hair_front_8",
+      "sex": "female",
+      "slot": "hair_front",
+      "index": 8,
+      "name": "听雨短帘",
+      "prompt": "Use case: stylized-concept. A production FRONT HAIR sprite for OUR OWN Chinese cultivation portrait, a transparent modular painting. Image 1 is ONLY our own hair MATERIAL reference: copy its charcoal black, restrained warm grey fibre highlights, finely layered matte ink-wash lines and soft ink shadows. Image 2 is ONLY our own head PROPORTION/FRONTAL AXIS reference. Do not draw the head or its skin. Strict level FRONT VIEW: no yaw, no tilted head, no perspective foreshortening. Make the structural hair volume bilaterally balanced, same temple height and width, central axis straight vertical, crown apex centred. Natural individual strokes may differ slightly, but NO SIDE-SWEPT MASS or off-centre skull. Compact rounded crown, close to the real skull; not tall, flattened or wide. Clean separate FRONT layer only: the front scalp cap, hairline, short temple hair, specified bangs. Face opening, inner gaps, outside background all genuine TRANSPARENT alpha. NO face, skin, ears, eyebrows, eyes, scalp patches, neck, clothes, rear bun, rear ponytail, back-of-body hanging hair. Do not carve ear-shaped holes. Hair may naturally overlap ear positions. No glossy silver streaks, no photorealistic fibres, no 3D lighting, no background glow, shadow or flat rectangle. Full hair silhouette and flyaways with padding; no text or labels.\nSubject: Female cultivator elegant lightweight straight short bob FRONT component. Shallow centred part, small light separated soft curtain bangs on the UPPER forehead, ending well ABOVE the eyebrow line. Slim side panels run OUTSIDE the cheek silhouette beside the ears, curve gently OUTWARD toward the jaw, ending by the jawline. Central face opening must be WIDE, uninterrupted and transparent from eyebrows down to chin: both eyebrows, both entire eyes, nose, lips and the full cheek surfaces remain uncovered. No inward hooked clumps, no feathered spikes over cheeks, no heavy curtain across eye corners, no bulky helmet. Natural low compact crown with gentle balanced flow. Only front cap/bangs and the slim face-EXTERIOR side panels, rear bob excluded.",
+      "referenced_image_paths": [
+        "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/practical_hair_expansion_20261006/hair_material_reference.jpg",
+        "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/practical_hair_expansion_20261006/female_face_registration_reference.jpg"
+      ],
+      "workspace_source": "female_hair_front_8.png"
+    }
+  ]
+}

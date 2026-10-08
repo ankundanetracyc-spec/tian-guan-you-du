@@ -1,0 +1,287 @@
+{
+  "version": 2,
+  "status": "prototype_anchor_review",
+  "purpose": "out_of_battle_front_facing_waist_up_portrait",
+  "reference": "res://mods/appearance/腰上男修拆件演示_v2/reference/user_selected_portrait.png",
+  "canvas": {
+    "width": 1024,
+    "height": 1536,
+    "origin": "top_left",
+    "transparent": true
+  },
+  "drawing_order": [
+    "hair_back",
+    "face",
+    "ear",
+    "clothes",
+    "eye",
+    "brow",
+    "nose",
+    "mouth",
+    "beard",
+    "hair_front"
+  ],
+  "pose": {
+    "head": "front_upright",
+    "gaze": "to_viewer",
+    "portrait_crop": "crown_to_lower_waist",
+    "center_axis_x": 512
+  },
+  "anchors_px": {
+    "center_axis": {
+      "x": 512,
+      "y": 0
+    },
+    "crown": {
+      "x": 512,
+      "y": 26
+    },
+    "shared_scalp_crown": {
+      "x": 512,
+      "y": 140
+    },
+    "forehead_hairline_center": {
+      "x": 512,
+      "y": 277
+    },
+    "eye_line": {
+      "x": 512,
+      "y": 378
+    },
+    "eye_center_left": {
+      "x": 455,
+      "y": 378
+    },
+    "eye_center_right": {
+      "x": 569,
+      "y": 378
+    },
+    "brow_center_left": {
+      "x": 455,
+      "y": 352
+    },
+    "brow_center_right": {
+      "x": 569,
+      "y": 352
+    },
+    "ear_center_left": {
+      "x": 391,
+      "y": 414
+    },
+    "ear_center_right": {
+      "x": 633,
+      "y": 414
+    },
+    "nose_tip": {
+      "x": 512,
+      "y": 446
+    },
+    "mouth_center": {
+      "x": 512,
+      "y": 477
+    },
+    "chin": {
+      "x": 512,
+      "y": 547
+    },
+    "neck_collar_intersection": {
+      "x": 512,
+      "y": 648
+    },
+    "shoulder_line_center": {
+      "x": 512,
+      "y": 690
+    },
+    "waist_sash_center": {
+      "x": 512,
+      "y": 1292
+    },
+    "crop_bottom": {
+      "x": 512,
+      "y": 1536
+    }
+  },
+  "nominal_bounds_px": {
+    "face_and_neck": {
+      "x": 366,
+      "y": 263,
+      "width": 292,
+      "height": 401
+    },
+    "facial_features": {
+      "x": 407,
+      "y": 321,
+      "width": 212,
+      "height": 172
+    },
+    "brow": {
+      "x": 408,
+      "y": 326,
+      "width": 209,
+      "height": 34
+    },
+    "eye": {
+      "x": 417,
+      "y": 364,
+      "width": 192,
+      "height": 32
+    },
+    "nose": {
+      "x": 482,
+      "y": 367,
+      "width": 60,
+      "height": 81
+    },
+    "mouth": {
+      "x": 470,
+      "y": 464,
+      "width": 84,
+      "height": 29
+    },
+    "beard": {
+      "x": 402,
+      "y": 421,
+      "width": 220,
+      "height": 140
+    },
+    "hair_back": {
+      "x": 260,
+      "y": 18,
+      "width": 560,
+      "height": 1462
+    },
+    "hair_front": {
+      "x": 310,
+      "y": 18,
+      "width": 404,
+      "height": 676
+    },
+    "clothes_and_pose": {
+      "x": 42,
+      "y": 632,
+      "width": 940,
+      "height": 904
+    }
+  },
+  "proportions": {
+    "face_skin_width_to_hairline_chin_height": 0.87,
+    "eye_center_spacing_px": 114,
+    "eye_spacing_to_face_width": 0.48,
+    "eye_line_to_nose_tip_px": 68,
+    "nose_tip_to_mouth_center_px": 31,
+    "mouth_center_to_chin_px": 70,
+    "face_width_to_shoulder_width": 0.27,
+    "crown_to_chin_to_canvas_height": 0.34
+  },
+  "scale_pivots_normalized": {
+    "face_and_feature_scale": {
+      "x": 0.5,
+      "y": 0.246
+    },
+    "eye_variant_scale": {
+      "x": 0.5,
+      "y": 0.246
+    }
+  },
+  "tolerances_px": {
+    "eye_center": 5,
+    "brow_center": 5,
+    "brow_to_eye_gap_min": 4,
+    "nose_tip": 7,
+    "mouth_center": 7,
+    "center_axis": 3,
+    "neck_under_collar_overlap_min": 28
+  },
+  "layer_contract": {
+    "export_canvas": "Every part is a full 1024x1536 transparent canvas with the same top-left origin. Never crop, re-center, or independently scale exported layers.",
+    "face": "Pure featureless head skin and continuous extended neck. No baked hair, ears, clothes or collar; one natural jaw contour and soft under-chin shading. Five distinct jaw variants keep facial feature anchors fixed.",
+    "clothes": "Bound body-pose-and-outfit layer. It covers the neck bottom and owns the torso silhouette, sleeves, posture, and any visible hands.",
+    "eye": "Eyes are an independent selectable layer aligned by their centers to the eye line; keep alpha inside the eye silhouette and do not include surrounding cheek skin.",
+    "brow": "Only eyebrow hairs inside two tidy tapered silhouettes. No outer-tail scalp hair, vertical scratch/scar strokes or skin. Preserve at least 4 transparent rows to eye.",
+    "raster_feature_alpha": "Eye, nose, and mouth PNGs use tight semantic alpha masks. Alpha must be zero outside the named feature silhouette; do not include surrounding face skin or skin shadows outside the lips.",
+    "hair": "Front owns the complete ordinary scalp visible from the front: normal crown y140, forehead hairline y279, temples and cheek locks. It sits above head and clothes. Cheek locks may be short or extend from one/both sides of the face. Rear hair is complete behind face, ears, neck and clothes, with no holes or cutouts. Buns, knots, braids and ribbons belong to rear; only ornaments rise above the ordinary crown. Both independently selectable layers share 1024x1536 canvas and head anchors.",
+    "beard": "Only actual facial beard hairs; no cheek/neck skin, jaw contour, side head hair or stray pixels below y560. Variant zero is empty.",
+    "ear": "Five natural proportionate ear pairs with modest variations, continuous root flesh overlapping cheek, muted color matched to head skin, no large flared ears."
+  },
+  "front_scalp_envelope_px": {
+    "rows": [
+      [
+        140,
+        418,
+        610
+      ],
+      [
+        150,
+        403,
+        625
+      ],
+      [
+        160,
+        396,
+        631
+      ],
+      [
+        180,
+        379,
+        649
+      ],
+      [
+        210,
+        350,
+        678
+      ],
+      [
+        240,
+        334,
+        692
+      ],
+      [
+        270,
+        322,
+        703
+      ],
+      [
+        300,
+        322,
+        703
+      ],
+      [
+        330,
+        322,
+        703
+      ],
+      [
+        350,
+        328,
+        702
+      ]
+    ],
+    "row_format": [
+      "y",
+      "left_min_x",
+      "right_max_x"
+    ],
+    "interpolation": "linear",
+    "visible_alpha_min": 64,
+    "purpose": "Maximum ordinary frontal scalp silhouette; styles may vary inside the envelope. Cheek-lock lengths below y350 are independent. Rear ornaments/high tie are not scalp and are exempt. Never clip alpha to pass."
+  },
+  "ear_attachment_contract_px": {
+    "left_inner_root": [
+      425,
+      390
+    ],
+    "right_inner_root": [
+      599,
+      390
+    ],
+    "height_range": [
+      68,
+      86
+    ],
+    "outward_projection_range": [
+      26,
+      42
+    ],
+    "skin": "Match the corresponding face skin; anatomical root overlaps cheek skin. No floating seam, oversized lobe, detached pixels."
+  }
+}

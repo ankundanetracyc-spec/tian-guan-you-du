@@ -1,0 +1,107 @@
+{
+  "source_mask": "continent_01_source_land_mask_original.png",
+  "source_mask_origin": "C:\\Users\\34784\\AppData\\Local\\Temp\\codex-clipboard-0cb07ece-9688-4beb-8115-79121c07912f.png",
+  "size": {
+    "width": 3174,
+    "height": 2246
+  },
+  "visual_crop": {
+    "left": 126,
+    "top": 29,
+    "right": 3057,
+    "bottom": 2038,
+    "width": 2931,
+    "height": 2009,
+    "padding": 24,
+    "origin": {
+      "x": 1591.5,
+      "y": 1033.5
+    }
+  },
+  "geometry": {
+    "land_mask": "continent_01_land_mask.png",
+    "cutout": "continent_01_land_cutout.png",
+    "coast_is_transparent": true,
+    "coastline_smoothing": {
+      "method": "gaussian_threshold",
+      "radius": 16.0,
+      "source_mask": "continent_01_source_land_mask.png"
+    },
+    "presentation_rotation_degrees": 180,
+    "rotation_baked_into_visual_assets": true
+  },
+  "terrain_sources": {
+    "mountain_assets": [
+      "mountain_assets/mountain_cluster_01.png",
+      "mountain_assets/mountain_cluster_02.png",
+      "mountain_assets/mountain_cluster_03.png",
+      "mountain_assets/mountain_cluster_04.png",
+      "mountain_assets/mountain_cluster_05.png",
+      "mountain_assets/mountain_cluster_06.png",
+      "mountain_assets/mountain_cluster_07.png",
+      "mountain_assets/mountain_cluster_08.png"
+    ],
+    "mountain_style": "淡墨远近层叠、平面化斜俯视",
+    "placement_policy": "主体与雾气均留在平滑大陆边界内",
+    "presentation_rotation_degrees": 180,
+    "mountain_counter_rotation": true,
+    "coast_clip_guard": true
+  },
+  "partition": {
+    "guanhe_xiangshan_boundary": [
+      [
+        197,
+        1256
+      ],
+      [
+        1129,
+        1390
+      ]
+    ],
+    "xiangshan_yunqu_boundary": [
+      [
+        1390,
+        1129
+      ],
+      [
+        2984,
+        800
+      ]
+    ],
+    "curve": "straight_segments",
+    "boundary_layer": "continent_01_state_boundaries.png",
+    "boundary_vector": "continent_01_state_boundaries.svg",
+    "presentation_rotation_degrees": 180,
+    "setting_notes": {
+      "xiangshan_state": "东北高地与山海带，山系密集、通行受地形影响",
+      "guanhe_state": "西部与西南荒域，盐泽、古渠和内湾之间保留大片无人地",
+      "yunqu_state": "东南河湖腹地，聚落与交通最密集，面积自然偏大"
+    }
+  },
+  "states": {
+    "guanhe_state": {
+      "name": "关河州",
+      "order": 2,
+      "color": "#B19169",
+      "mask": "guanhe_state_mask.png",
+      "area_pixels": 1058424,
+      "area_fraction": 0.3002
+    },
+    "xiangshan_state": {
+      "name": "相山州",
+      "order": 1,
+      "color": "#91A1A1",
+      "mask": "xiangshan_state_mask.png",
+      "area_pixels": 1338990,
+      "area_fraction": 0.3798
+    },
+    "yunqu_state": {
+      "name": "云阙州",
+      "order": 3,
+      "color": "#899E7C",
+      "mask": "yunqu_state_mask.png",
+      "area_pixels": 1127780,
+      "area_fraction": 0.3199
+    }
+  }
+}

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BeastModifier" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/BeastModifier.cs" id="1_modifier"]
+[ext_resource type="Resource" path="res://resources/beast_talents/灰背野猪·迅蹄.tres" id="2_talent"]
+[ext_resource type="Resource" path="res://resources/beast_decks/迅蹄野猪.tres" id="3_deck"]
+
+[resource]
+script = ExtResource("1_modifier")
+modifier_id = "greyback_boar_swift_trot"
+display_name = "迅蹄野猪"
+physique_multiplier = 0.9
+agility_multiplier = 1.4
+soul_multiplier = 1.1
+racial_talent_override = ExtResource("2_talent")
+deck_override = ExtResource("3_deck")

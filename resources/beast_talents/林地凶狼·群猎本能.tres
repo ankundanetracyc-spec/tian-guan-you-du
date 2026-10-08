@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ForestWolfPackHuntTalent" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/ForestWolfPackHuntTalent.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+talent_id = "forest_wolf_pack_hunt"
+talent_name = "群猎本能"
+description = "发动主动物理攻击后，其他存活的林地凶狼获得1层逐猎。逐猎最多3层；每层物理伤害+10%、行动速度+5%。"

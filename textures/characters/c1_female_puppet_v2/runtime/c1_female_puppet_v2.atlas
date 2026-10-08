@@ -1,0 +1,64 @@
+../layers/head.png
+size: 1024,1536
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+head
+  rotate: false
+  xy: 0, 0
+  size: 1024, 1536
+  orig: 1024, 1536
+  offset: 0, 0
+  index: -1
+
+../layers/arm_far.png
+size: 1024,1536
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+arm_far
+  rotate: false
+  xy: 0, 0
+  size: 1024, 1536
+  orig: 1024, 1536
+  offset: 0, 0
+  index: -1
+
+../layers/body.png
+size: 1024,1536
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body
+  rotate: false
+  xy: 0, 0
+  size: 1024, 1536
+  orig: 1024, 1536
+  offset: 0, 0
+  index: -1
+
+../layers/arm_near.png
+size: 1024,1536
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+arm_near
+  rotate: false
+  xy: 0, 0
+  size: 1024, 1536
+  orig: 1024, 1536
+  offset: 0, 0
+  index: -1
+
+../layers/body_kneel.png
+size: 1024,1536
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+body_kneel
+  rotate: false
+  xy: 0, 0
+  size: 1024, 1536
+  orig: 1024, 1536
+  offset: 0, 0
+  index: -1

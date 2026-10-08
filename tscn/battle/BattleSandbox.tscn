@@ -1,0 +1,51 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://csharp/battle/BattleSandbox.cs" id="1_sandbox"]
+[ext_resource type="Script" path="res://csharp/battle/BattleManager.cs" id="2_manager"]
+[ext_resource type="Script" path="res://csharp/battle/BattleMap.cs" id="3_map"]
+[ext_resource type="PackedScene" path="res://tscn/panel/BattleStatusPanel.tscn" id="4_status"]
+[ext_resource type="PackedScene" path="res://tscn/panel/CombatSkillBar.tscn" id="5_hand"]
+
+[node name="BattleSandbox" type="Node2D"]
+script = ExtResource("1_sandbox")
+
+[node name="BattleMgr" type="Node2D" parent="." node_paths=PackedStringArray("battle_map", "deploy_layer")]
+position = Vector2(960, 540)
+script = ExtResource("2_manager")
+battle_map = NodePath("../BattleMap")
+deploy_layer = NodePath("../DeployLayer")
+
+[node name="BattleMap" type="Node2D" parent="."]
+position = Vector2(960, 500)
+script = ExtResource("3_map")
+hex_size = 120.0
+hex_aspect_ratio = 0.8
+spatial_combat_enabled = true
+
+[node name="DeployLayer" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="Title" type="Label" parent="UILayer"]
+offset_left = 32.0
+offset_top = 24.0
+offset_right = 750.0
+offset_bottom = 82.0
+theme_override_font_sizes/font_size = 26
+text = "战斗沙盒：2v2 固定技能槽即时测试"
+
+[node name="Hint" type="Label" parent="UILayer"]
+offset_left = 34.0
+offset_top = 66.0
+offset_right = 860.0
+offset_bottom = 112.0
+theme_override_colors/font_color = Color(0.75, 0.78, 0.82, 1)
+theme_override_font_sizes/font_size = 16
+text = "十个固定技能槽＋即时队列测试；角色旁显示示例状态图标，悬停查看说明与剩余帧数。"
+
+[node name="CombatSkillBar" parent="UILayer" instance=ExtResource("5_hand")]
+
+[node name="BattleStatusPanel" parent="UILayer" instance=ExtResource("4_status")]

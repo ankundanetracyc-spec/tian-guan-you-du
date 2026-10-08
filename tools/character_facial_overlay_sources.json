@@ -1,0 +1,241 @@
+{
+  "mode": "built-in image_gen",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "registration_rule": "whole canvas affine only; native alpha preserved",
+  "assets": [
+    {
+      "sex": "male",
+      "part": "brow",
+      "index": 0,
+      "prompt": "Precisely edit existing modular eyebrow pair only. Reference beige is display background, output genuine TRANSPARENT 1024x1536 canvas. Preserve original small size, positions, brow style and warm charcoal ink-painted fine hair texture. male variant natural straight thick. Brow centers x455 and569, y352; each eyebrow about58px wide and 7..11px thick, hairs INSIDE the brow silhouette only. REMOVE ALL spurious vertical/diagonal hair streaks and scratch/scar lines beside the outer tails, above and below eyebrows. Render only TWO clean tapered eyebrow silhouettes, no surrounding skin/shadow, no eyes, head hair, loose lines, doubled brow rows, haze or any other pixels. Natural subtly asymmetric matched pair, not vector. Do not enlarge/recenter. Keep all alpha confined to intended eyebrows x425..494 and530..601, y338..359; entire rest canvas truly empty.",
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/portrait_cleanup_v14/brow_0.png",
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-91ad90fc-eb3e-4453-ac8e-c3a6a3a7b329.png",
+      "registration": {
+        "x_scale": 0.76,
+        "y_scale": 0.65,
+        "anchor_x": 513.0621107324853,
+        "anchor_y": 350.31578653465556,
+        "offset_x": -1.06211073248528,
+        "offset_y": 0.6842134653444418
+      }
+    },
+    {
+      "sex": "male",
+      "part": "brow",
+      "index": 1,
+      "prompt": "Use this CLEAN eyebrow pair as style reference. Paint FLAT horizontal brow pair, warm charcoal matte fine ink hair. Each brow is ONE tidy taper with every individual hair inside the silhouette. NO hairs protruding diagonally/upwards at outer ends, no scar lines anywhere. Output only two eyebrow silhouettes, transparent background1024x1536. Brow centers455/569y352, width60 each,height8..12. Preserve small placement and whitespace, no enlargement. No skin/shadows/eyes, no haze or detached pixels. Both outer tails smoothly end within eyebrow shape. Existing reference is clean; do not introduce scratch strokes. Almost horizontal, outer tail tapers, not arched.",
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/portrait_cleanup_v14/brow_1_retry.png",
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-d022ff05-609e-469c-9540-afed6997abfd.png",
+      "registration": {
+        "x_scale": 0.76,
+        "y_scale": 0.4,
+        "anchor_x": 515.8934973818406,
+        "anchor_y": 350.81645960961475,
+        "offset_x": -3.893497381840575,
+        "offset_y": 0.1835403903852466
+      }
+    },
+    {
+      "sex": "male",
+      "part": "brow",
+      "index": 2,
+      "prompt": "Use this CLEAN eyebrow pair as style reference. Paint GENTLE smooth arch brow pair, warm charcoal matte fine ink hair. Each brow is ONE tidy taper with every individual hair inside the silhouette. NO hairs protruding diagonally/upwards at outer ends, no scar lines anywhere. Output only two eyebrow silhouettes, transparent background1024x1536. Brow centers455/569y352, width60 each,height8..12. Preserve small placement and whitespace, no enlargement. No skin/shadows/eyes, no haze or detached pixels. Both outer tails smoothly end within eyebrow shape. Existing reference is clean; do not introduce scratch strokes. ",
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/portrait_cleanup_v14/brow_2_retry.png",
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-757f99de-d3dd-4014-bb94-c5924517a1e9.png",
+      "registration": {
+        "x_scale": 0.76,
+        "y_scale": 0.65,
+        "anchor_x": 513.3239653157157,
+        "anchor_y": 348.69859990676764,
+        "offset_x": -1.3239653157156681,
+        "offset_y": 2.3014000932323597
+      }
+    },
+    {
+      "sex": "male",
+      "part": "brow",
+      "index": 3,
+      "prompt": "Use this CLEAN eyebrow pair as style reference. Paint SLIGHT lifted outer arch brow pair, warm charcoal matte fine ink hair. Each brow is ONE tidy taper with every individual hair inside the silhouette. NO hairs protruding diagonally/upwards at outer ends, no scar lines anywhere. Output only two eyebrow silhouettes, transparent background1024x1536. Brow centers455/569y352, width60 each,height8..12. Preserve small placement and whitespace, no enlargement. No skin/shadows/eyes, no haze or detached pixels. Both outer tails smoothly end within eyebrow shape. Existing reference is clean; do not introduce scratch strokes. ",
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/portrait_cleanup_v14/brow_3_retry.png",
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-5df85b86-3187-4b80-b24e-72fe6e063f32.png",
+      "registration": {
+        "x_scale": 0.76,
+        "y_scale": 0.65,
+        "anchor_x": 513.7051868746561,
+        "anchor_y": 349.21548052785295,
+        "offset_x": -1.7051868746560785,
+        "offset_y": 1.7845194721470534
+      }
+    },
+    {
+      "sex": "male",
+      "part": "brow",
+      "index": 4,
+      "prompt": "Use this CLEAN eyebrow pair as style reference. Paint THIN straight brow pair, warm charcoal matte fine ink hair. Each brow is ONE tidy taper with every individual hair inside the silhouette. NO hairs protruding diagonally/upwards at outer ends, no scar lines anywhere. Output only two eyebrow silhouettes, transparent background1024x1536. Brow centers455/569y352, width60 each,height8..12. Preserve small placement and whitespace, no enlargement. No skin/shadows/eyes, no haze or detached pixels. Both outer tails smoothly end within eyebrow shape. Existing reference is clean; do not introduce scratch strokes. Almost horizontal, outer tail tapers, not arched.",
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/portrait_cleanup_v14/brow_4_retry.png",
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-63ffbf85-b3fd-4ce3-9130-8455ebe3b49b.png",
+      "registration": {
+        "x_scale": 0.76,
+        "y_scale": 0.36,
+        "anchor_x": 512.1939972983621,
+        "anchor_y": 350.10427571715354,
+        "offset_x": -0.1939972983620919,
+        "offset_y": 0.8957242828464587
+      }
+    },
+    {
+      "sex": "female",
+      "part": "brow",
+      "index": 0,
+      "prompt": "Precisely edit existing modular eyebrow pair only. Reference beige is display background, output genuine TRANSPARENT 1024x1536 canvas. Preserve original small size, positions, brow style and warm charcoal ink-painted fine hair texture. female variant natural gently slanted. Brow centers x455 and569, y349; each eyebrow about58px wide and 7..11px thick, hairs INSIDE the brow silhouette only. REMOVE ALL spurious vertical/diagonal hair streaks and scratch/scar lines beside the outer tails, above and below eyebrows. Render only TWO clean tapered eyebrow silhouettes, no surrounding skin/shadow, no eyes, head hair, loose lines, doubled brow rows, haze or any other pixels. Natural subtly asymmetric matched pair, not vector. Do not enlarge/recenter. Keep all alpha confined to intended eyebrows x425..494 and530..601, y338..359; entire rest canvas truly empty.",
+      "source": "mods/appearance/腰上女修拆件演示_v1/source/portrait_cleanup_v10/brow_0.png",
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-d99b48b5-b8de-403b-8414-ecfd2a05493a.png",
+      "registration": {
+        "x_scale": 0.9,
+        "y_scale": 0.62,
+        "anchor_x": 514.6686177491174,
+        "anchor_y": 357.0278808863219,
+        "offset_x": -2.668617749117402,
+        "offset_y": -8.027880886321896
+      }
+    },
+    {
+      "sex": "female",
+      "part": "brow",
+      "index": 1,
+      "prompt": "Precisely edit existing modular eyebrow pair only. Reference beige is display background, output genuine TRANSPARENT 1024x1536 canvas. Preserve original small size, positions, brow style and warm charcoal ink-painted fine hair texture. female variant flat straight. Brow centers x455 and569, y349; each eyebrow about58px wide and 7..11px thick, hairs INSIDE the brow silhouette only. REMOVE ALL spurious vertical/diagonal hair streaks and scratch/scar lines beside the outer tails, above and below eyebrows. Render only TWO clean tapered eyebrow silhouettes, no surrounding skin/shadow, no eyes, head hair, loose lines, doubled brow rows, haze or any other pixels. Natural subtly asymmetric matched pair, not vector. Do not enlarge/recenter. Keep all alpha confined to intended eyebrows x425..494 and530..601, y338..359; entire rest canvas truly empty.",
+      "source": "mods/appearance/腰上女修拆件演示_v1/source/portrait_cleanup_v10/brow_1.png",
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-47a3d2f3-4151-42bd-a8d6-82409e39ec1d.png",
+      "registration": {
+        "x_scale": 0.9,
+        "y_scale": 0.62,
+        "anchor_x": 515.3734937611408,
+        "anchor_y": 485.9697326203209,
+        "offset_x": -3.3734937611408213,
+        "offset_y": -136.96973262032088
+      }
+    },
+    {
+      "sex": "female",
+      "part": "brow",
+      "index": 2,
+      "prompt": "Precisely edit existing modular eyebrow pair only. Reference beige is display background, output genuine TRANSPARENT 1024x1536 canvas. Preserve original small size, positions, brow style and warm charcoal ink-painted fine hair texture. female variant gently arched. Brow centers x455 and569, y349; each eyebrow about58px wide and 7..11px thick, hairs INSIDE the brow silhouette only. REMOVE ALL spurious vertical/diagonal hair streaks and scratch/scar lines beside the outer tails, above and below eyebrows. Render only TWO clean tapered eyebrow silhouettes, no surrounding skin/shadow, no eyes, head hair, loose lines, doubled brow rows, haze or any other pixels. Natural subtly asymmetric matched pair, not vector. Do not enlarge/recenter. Keep all alpha confined to intended eyebrows x425..494 and530..601, y338..359; entire rest canvas truly empty.",
+      "source": "mods/appearance/腰上女修拆件演示_v1/source/portrait_cleanup_v10/brow_2.png",
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-ad015bed-4144-4799-9703-25f73fdb9ae7.png",
+      "registration": {
+        "x_scale": 0.9,
+        "y_scale": 0.62,
+        "anchor_x": 512.6703529712834,
+        "anchor_y": 357.5710375271903,
+        "offset_x": -0.6703529712833642,
+        "offset_y": -8.571037527190299
+      }
+    },
+    {
+      "sex": "female",
+      "part": "brow",
+      "index": 3,
+      "prompt": "Precisely edit existing modular eyebrow pair only. Reference beige is display background, output genuine TRANSPARENT 1024x1536 canvas. Preserve original small size, positions, brow style and warm charcoal ink-painted fine hair texture. female variant soft full. Brow centers x455 and569, y349; each eyebrow about58px wide and 7..11px thick, hairs INSIDE the brow silhouette only. REMOVE ALL spurious vertical/diagonal hair streaks and scratch/scar lines beside the outer tails, above and below eyebrows. Render only TWO clean tapered eyebrow silhouettes, no surrounding skin/shadow, no eyes, head hair, loose lines, doubled brow rows, haze or any other pixels. Natural subtly asymmetric matched pair, not vector. Do not enlarge/recenter. Keep all alpha confined to intended eyebrows x425..494 and530..601, y338..359; entire rest canvas truly empty.",
+      "source": "mods/appearance/腰上女修拆件演示_v1/source/portrait_cleanup_v10/brow_3.png",
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-5da9a7b4-a2df-485e-9846-408d8d19c1d7.png",
+      "registration": {
+        "x_scale": 0.8866463994561837,
+        "y_scale": 0.62,
+        "anchor_x": 515.8336953743931,
+        "anchor_y": 564.126669115768,
+        "offset_x": -3.8336953743930735,
+        "offset_y": -215.12666911576798
+      }
+    },
+    {
+      "sex": "female",
+      "part": "brow",
+      "index": 4,
+      "prompt": "Precisely edit existing modular eyebrow pair only. Reference beige is display background, output genuine TRANSPARENT 1024x1536 canvas. Preserve original small size, positions, brow style and warm charcoal ink-painted fine hair texture. female variant thin curved. Brow centers x455 and569, y349; each eyebrow about58px wide and 7..11px thick, hairs INSIDE the brow silhouette only. REMOVE ALL spurious vertical/diagonal hair streaks and scratch/scar lines beside the outer tails, above and below eyebrows. Render only TWO clean tapered eyebrow silhouettes, no surrounding skin/shadow, no eyes, head hair, loose lines, doubled brow rows, haze or any other pixels. Natural subtly asymmetric matched pair, not vector. Do not enlarge/recenter. Keep all alpha confined to intended eyebrows x425..494 and530..601, y338..359; entire rest canvas truly empty.",
+      "source": "mods/appearance/腰上女修拆件演示_v1/source/portrait_cleanup_v10/brow_4.png",
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-300363eb-afff-44cf-9163-fbc4a9635982.png",
+      "registration": {
+        "x_scale": 0.9,
+        "y_scale": 0.62,
+        "anchor_x": 514.7669413919414,
+        "anchor_y": 358.72701465201465,
+        "offset_x": -2.766941391941373,
+        "offset_y": -9.727014652014645
+      }
+    },
+    {
+      "sex": "male",
+      "part": "beard",
+      "index": 1,
+      "prompt": "Clean this modular beard asset, genuine transparent 1024x1536 canvas. Only a subtle short moustache at x491..535,y458..470. No chin/jaw beard. Preserve original placement, style and scale relative to young adult male face center512, chin547. Fine matte charcoal ink-painted individual hair, no glow. REMOVE ALL detached fragments, cheek/neck skin ghosts, ear remnants and long neck-side head hairs outside actual beard. Canvas beneath y559 is completely transparent; keep no pixels on neck, no jaw outline, no skin, head, eyes/lips, clothes, background. Beige is reference background only. Output beard hairs alone, not a face. Do not zoom/recenter.",
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/portrait_cleanup_v14/beard_1.png",
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-d1e1ea8f-0cb6-4c2c-a4ea-f7ea1b85ae32.png",
+      "registration": {
+        "x_scale": 0.6,
+        "y_scale": 0.75,
+        "anchor_x": 514,
+        "anchor_y": 649,
+        "offset_x": -2,
+        "offset_y": -185
+      }
+    },
+    {
+      "sex": "male",
+      "part": "beard",
+      "index": 2,
+      "prompt": "Clean this modular beard asset, genuine transparent 1024x1536 canvas. Only a tidy chin tuft at x487..537,y511..550. No jaw outline or moustache. Preserve original placement, style and scale relative to young adult male face center512, chin547. Fine matte charcoal ink-painted individual hair, no glow. REMOVE ALL detached fragments, cheek/neck skin ghosts, ear remnants and long neck-side head hairs outside actual beard. Canvas beneath y559 is completely transparent; keep no pixels on neck, no jaw outline, no skin, head, eyes/lips, clothes, background. Beige is reference background only. Output beard hairs alone, not a face. Do not zoom/recenter.",
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/portrait_cleanup_v14/beard_2.png",
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-032457d6-4455-4afd-96ac-e0c11c08746b.png",
+      "registration": {
+        "x_scale": 0.75,
+        "y_scale": 0.7,
+        "anchor_x": 515,
+        "anchor_y": 550,
+        "offset_x": -3,
+        "offset_y": -16
+      }
+    },
+    {
+      "sex": "male",
+      "part": "beard",
+      "index": 3,
+      "prompt": "Clean this modular beard asset, genuine transparent 1024x1536 canvas. Only sparse faint short charcoal stubble along natural jaw x442..582,y474..546, no solid jaw stroke. Preserve original placement, style and scale relative to young adult male face center512, chin547. Fine matte charcoal ink-painted individual hair, no glow. REMOVE ALL detached fragments, cheek/neck skin ghosts, ear remnants and long neck-side head hairs outside actual beard. Canvas beneath y559 is completely transparent; keep no pixels on neck, no jaw outline, no skin, head, eyes/lips, clothes, background. Beige is reference background only. Output beard hairs alone, not a face. Do not zoom/recenter.",
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/portrait_cleanup_v14/beard_3.png",
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-c7277384-2e7c-483b-a347-850f8096c1b5.png",
+      "registration": {
+        "x_scale": 0.8,
+        "y_scale": 0.93,
+        "anchor_x": 512,
+        "anchor_y": 550,
+        "offset_x": 0,
+        "offset_y": -3
+      }
+    },
+    {
+      "sex": "male",
+      "part": "beard",
+      "index": 4,
+      "prompt": "Clean this modular beard asset, genuine transparent 1024x1536 canvas. Only a tidy short dark beard hugging natural lower cheeks/jaw x436..588,y454..553, fine short hairs with transparent gaps, no skin or drawn jaw outline. Preserve original placement, style and scale relative to young adult male face center512, chin547. Fine matte charcoal ink-painted individual hair, no glow. REMOVE ALL detached fragments, cheek/neck skin ghosts, ear remnants and long neck-side head hairs outside actual beard. Canvas beneath y559 is completely transparent; keep no pixels on neck, no jaw outline, no skin, head, eyes/lips, clothes, background. Beige is reference background only. Output beard hairs alone, not a face. Do not zoom/recenter.",
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/portrait_cleanup_v14/beard_4.png",
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-668d7d84-7055-4d0a-9933-9f09adedd01a.png",
+      "registration": {
+        "x_scale": 0.76,
+        "y_scale": 0.72,
+        "anchor_x": 512,
+        "anchor_y": 550,
+        "offset_x": 0,
+        "offset_y": -12
+      }
+    },
+    {
+      "sex": "male",
+      "part": "beard",
+      "index": 0,
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/portrait_cleanup_v14/beard_0.png",
+      "prompt": "No beard; existing empty transparent layer."
+    }
+  ]
+}

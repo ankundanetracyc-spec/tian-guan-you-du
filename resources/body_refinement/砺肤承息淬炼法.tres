@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BodyRefinementMethod" format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/BodyRefinementMethod.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+method_id = "skin_breathing"
+method_name = "砺肤承息淬炼法"
+description = "以外物承压，配合呼吸与皮膜收放，先将最容易感知的表层锻成一体。"
+duration_min_hours = 18
+duration_max_hours = 30
+base_yield_min = 8
+base_yield_max = 12
+target_parts = Array[String](["skin"])
+allocation_ranges = {"skin": Vector2(1, 1)}
+effective_level_ranges = {"skin": Vector2(0, 5)}
+required_textures = Array[String](["甲"])
+required_utilities = Array[String](["护"])
+required_utility_grade = 1
+default_unlocked = true

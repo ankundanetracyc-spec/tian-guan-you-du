@@ -1,0 +1,155 @@
+{
+  "id": "selected_ink_portrait_clean_20261003_v1",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "rig_id": "our_selected_ink_portrait_rig_20261003_v1",
+  "rig": "../selected_ink_portrait_rig_20261003_v1/rig/portrait_rig.json",
+  "master": "../selected_ink_portrait_rig_20261003_v1/reference/selected_pair_user.png",
+  "draw_order_back_to_front": [
+    "hair_back",
+    "face_shape",
+    "clothing",
+    "eyes",
+    "eyebrows",
+    "nose",
+    "mouth",
+    "face_accessory",
+    "hair_front"
+  ],
+  "placement": {
+    "offset": [
+      0,
+      0
+    ],
+    "scale": 1,
+    "rotation_degrees": 0
+  },
+  "current_visual_source": true,
+  "test_entry_integrated": true,
+  "style_source_approved_by_user": true,
+  "cleaned_assets_approved_by_user": false,
+  "semantic_cleanup_approved": false,
+  "engineering_stage": "Cleaned base pair exported and in game test; awaiting visual feedback, not variant expansion",
+  "multiple_variants_complete": false,
+  "assets": {
+    "male": {
+      "hair_back": {
+        "file": "male/hair_back.png",
+        "variant": "base_01",
+        "compatibility_family": "our_selected_ink_male_20261003_v1"
+      },
+      "face_shape": {
+        "file": "male/face_shape.png",
+        "variant": "base_01",
+        "compatibility_family": "our_selected_ink_male_20261003_v1"
+      },
+      "clothing": {
+        "file": "male/clothing.png",
+        "variant": "base_01",
+        "compatibility_family": "our_selected_ink_male_20261003_v1"
+      },
+      "eyes": {
+        "file": "male/eyes.png",
+        "variant": "base_01",
+        "compatibility_family": "our_selected_ink_male_20261003_v1"
+      },
+      "eyebrows": {
+        "file": "male/eyebrows.png",
+        "variant": "base_01",
+        "compatibility_family": "our_selected_ink_male_20261003_v1"
+      },
+      "nose": {
+        "file": "male/nose.png",
+        "variant": "base_01",
+        "compatibility_family": "our_selected_ink_male_20261003_v1"
+      },
+      "mouth": {
+        "file": "male/mouth.png",
+        "variant": "base_01",
+        "compatibility_family": "our_selected_ink_male_20261003_v1"
+      },
+      "face_accessory": {
+        "file": "male/face_accessory.png",
+        "variant": "base_01",
+        "compatibility_family": "our_selected_ink_male_20261003_v1"
+      },
+      "hair_front": {
+        "file": "male/hair_front.png",
+        "variant": "base_01",
+        "compatibility_family": "our_selected_ink_male_20261003_v1"
+      }
+    },
+    "female": {
+      "hair_back": {
+        "file": "female/hair_back.png",
+        "variant": "base_01",
+        "compatibility_family": "our_selected_ink_female_20261003_v1"
+      },
+      "face_shape": {
+        "file": "female/face_shape.png",
+        "variant": "base_01",
+        "compatibility_family": "our_selected_ink_female_20261003_v1"
+      },
+      "clothing": {
+        "file": "female/clothing.png",
+        "variant": "base_01",
+        "compatibility_family": "our_selected_ink_female_20261003_v1"
+      },
+      "eyes": {
+        "file": "female/eyes.png",
+        "variant": "base_01",
+        "compatibility_family": "our_selected_ink_female_20261003_v1"
+      },
+      "eyebrows": {
+        "file": "female/eyebrows.png",
+        "variant": "base_01",
+        "compatibility_family": "our_selected_ink_female_20261003_v1"
+      },
+      "nose": {
+        "file": "female/nose.png",
+        "variant": "base_01",
+        "compatibility_family": "our_selected_ink_female_20261003_v1"
+      },
+      "mouth": {
+        "file": "female/mouth.png",
+        "variant": "base_01",
+        "compatibility_family": "our_selected_ink_female_20261003_v1"
+      },
+      "face_accessory": {
+        "file": "female/face_accessory.png",
+        "variant": "base_01",
+        "compatibility_family": "our_selected_ink_female_20261003_v1"
+      },
+      "hair_front": {
+        "file": "female/hair_front.png",
+        "variant": "base_01",
+        "compatibility_family": "our_selected_ink_female_20261003_v1"
+      }
+    }
+  },
+  "requested_variant_counts": {
+    "hair_front": 5,
+    "hair_back": 5,
+    "other_slots": 3
+  },
+  "actual_variant_count_per_slot": 1,
+  "production_method": "Built-in ImageGen localized male front-hair retouch, blended only over crown and hairline; original alpha and full-length chest-front locks preserved",
+  "sources": {
+    "visible_style": "Frozen user-selected master only",
+    "hidden_head_and_robe": "Own original bald references",
+    "featureless_skin_underpaint": "Own v3 blank painting, continuous skin surface matched to selected clear-skin light/color; head geometry, original ears and selected feature identity retained",
+    "hidden_rear_underpaint": "This round v4 complete rear candidate, one uniform premultiplied transform; rejected v4/v5 front styles are not used",
+    "guigu": "Technical layering study only; zero game artwork pixels imported"
+  },
+  "build_script": "../../../tools/build_selected_ink_portrait_clean.py",
+  "asset_verification": "asset_verification.json",
+  "game_verification": "game_verification.json",
+  "scope": "Start-menu test only; no formal NPC or save replacement",
+  "asset_checks_pass": true,
+  "game_checks_pass": true,
+  "eye_cleanup": "Paired eye openings/lashes and feathered eyelid pigment only; male upper-lid highlights use symmetric local placement and equal soft wash",
+  "neck_cleanup": "Complete own neck; V-edge pigment and cast wash owned by clothing",
+  "latest_art_revision": "Male front-hair crown part and forehead hairline localized retouch; original alpha, canvas origin, and complete chest-front locks retained; female and rear-hair assets unchanged"
+}

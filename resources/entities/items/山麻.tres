@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/ItemData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+definition_id = &"mat_hemp"
+entity_name = "山麻"
+item_category = "材料"
+item_subcategory = "纤维"
+tags = Array[String](["五行[木]", "质地[木]", "功用[轻盈]", "功用[卸力]", "相性[和]"])
+grade_value = 1
+can_stack = true
+max_stack = 999

@@ -1,0 +1,176 @@
+{
+  "package": "ink_portrait_pair_20261003_v5",
+  "build": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "entry": "StartMenu/AppearanceCreatorTest -> CharacterAppearanceTest",
+  "sexes": [
+    "male",
+    "female"
+  ],
+  "toggles_per_sex": 9,
+  "all_toggles_and_restore_passed": true,
+  "csharp_composite_matches_independent_godot_composite": true,
+  "godot_exit_code": 0,
+  "own_art_restoration": {
+    "male": {
+      "style_source": "User reference; no Guigu artwork or color palette",
+      "skin_reference_rgb_max_error": 1.0,
+      "skin_reference_rgb_mean_error": 0.09684232576185331,
+      "ears_reference_rgb_max_error": 1.0,
+      "eye_core_original_rgb_max_error": 9,
+      "opaque_eye_skin_pixels_outside_opening": 0,
+      "fully_transparent_pixels_have_zero_rgb": true,
+      "clear_skin_forehead_median_rgb": [
+        237.0,
+        218.0,
+        203.0
+      ],
+      "rear_center_is_painted": true,
+      "alpha_bounds": {
+        "hair_back": [
+          210,
+          149,
+          823,
+          1223
+        ],
+        "face_shape": [
+          370,
+          172,
+          660,
+          691
+        ],
+        "clothing": [
+          0,
+          520,
+          1024,
+          1536
+        ],
+        "eyes": [
+          416,
+          354,
+          619,
+          403
+        ],
+        "eyebrows": [
+          410,
+          333,
+          618,
+          364
+        ],
+        "nose": [
+          484,
+          404,
+          551,
+          470
+        ],
+        "mouth": [
+          472,
+          470,
+          563,
+          515
+        ],
+        "face_accessory": null,
+        "hair_front": [
+          267,
+          133,
+          768,
+          1056
+        ]
+      },
+      "checks_are_not_user_art_approval": true
+    },
+    "female": {
+      "style_source": "User reference; no Guigu artwork or color palette",
+      "skin_reference_rgb_max_error": 1.0,
+      "skin_reference_rgb_mean_error": 0.026152506470680237,
+      "ears_reference_rgb_max_error": 1.0,
+      "eye_core_original_rgb_max_error": 2,
+      "opaque_eye_skin_pixels_outside_opening": 0,
+      "fully_transparent_pixels_have_zero_rgb": true,
+      "clear_skin_forehead_median_rgb": [
+        237.0,
+        218.0,
+        203.0
+      ],
+      "rear_center_is_painted": true,
+      "alpha_bounds": {
+        "hair_back": [
+          211,
+          143,
+          824,
+          1217
+        ],
+        "face_shape": [
+          371,
+          169,
+          665,
+          691
+        ],
+        "clothing": [
+          0,
+          530,
+          1024,
+          1536
+        ],
+        "eyes": [
+          415,
+          358,
+          625,
+          410
+        ],
+        "eyebrows": [
+          410,
+          338,
+          623,
+          369
+        ],
+        "nose": [
+          484,
+          404,
+          551,
+          470
+        ],
+        "mouth": [
+          472,
+          470,
+          563,
+          515
+        ],
+        "face_accessory": null,
+        "hair_front": [
+          264,
+          130,
+          774,
+          1051
+        ]
+      },
+      "checks_are_not_user_art_approval": true
+    }
+  },
+  "tested_png_sha256": {
+    "male\\clothing.png": "3100f70f7593c6d2684301963a84f4daf4b68911c91d5997c37d4b8c16d73954",
+    "male\\eyebrows.png": "2bd4c14c89c3138a435c9115d83f1d374ece0d9dd46db51d273b4e5bb874b350",
+    "male\\eyes.png": "0c67ec311539e38c2d6b153f3861cd37ce8894392e852eeb054606a1d118a47e",
+    "male\\face_accessory.png": "1913847bf9091720c48139f49dfbb3aa70c4d20de82f2718e3dcd8348c6e5e9c",
+    "male\\face_shape.png": "0b79cc4575fd09771e0d0c34405fe961d5a9bca11854ad381770c103f413d857",
+    "male\\hair_back.png": "92999aca89c2e02a8b3c3b21e2ccdd52f5df3ecc99c31ca3d2c94f2ccef2244a",
+    "male\\hair_front.png": "5d0584459cff53c64c9b207e9d9fbadf74407bfec61e1aa3476660a82205b597",
+    "male\\mouth.png": "c9a883d7a06a6a9393db5affcb96fb8c7886f11c933f528feaa59064bb4bad0a",
+    "male\\nose.png": "9202c9f0deac091f3808a769b9c0bac5cfdea7fe529d211177bbe207b94507b0",
+    "female\\clothing.png": "e4958024c4427cceb1a56c44e84669814cd31cb04205bd7c9e3403d713880a13",
+    "female\\eyebrows.png": "e51207a6a9250c000371df2dc59e1de42da65f2af8ae822e89abbcded84d9b85",
+    "female\\eyes.png": "df33404d4432a220c174fe0725cdefa7a367548dd79db5ff2b6ff167885ccc44",
+    "female\\face_accessory.png": "1913847bf9091720c48139f49dfbb3aa70c4d20de82f2718e3dcd8348c6e5e9c",
+    "female\\face_shape.png": "46e4b9fa71b608b4818cd4a8ed97a4ddb2df61f3d936f0ccc045403815657cf9",
+    "female\\hair_back.png": "65746795775ee78c23a7bdd97fd3934c858e02ae862012329b95d3103d59c036",
+    "female\\hair_front.png": "8c4258adcfd8504c11cbb011713d4638d4431fcd766746dd4b1560469c4fa526",
+    "female\\mouth.png": "a6a096bc122fe611b14d7a09d0c238389c3d5da951d5bfe1a9b07fe51642d15b",
+    "female\\nose.png": "baf74e2a65b8ded6aa740aa5eaf410a616f974b2cec9de3736d59b1acd7fa19c"
+  },
+  "stdout": "Godot Engine v4.7.2.stable.mono.official.ed1daf0bf - https://godotengine.org\nOpenGL API 3.3.0 NVIDIA 596.36 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4060 Laptop GPU\n\nINK_PORTRAIT_V5_UI_PASS: male; nine toggles; current C# composite matches selected assets\nINK_PORTRAIT_V5_UI_PASS: female; nine toggles; current C# composite matches selected assets\nINK_PORTRAIT_V5_ENTRY_PASS: start menu -> nine-part test; both sexes verified\nERROR: 1 RID allocations of type 'N5GLES37TextureE' were leaked at exit.\n",
+  "stderr_diagnostics": "ERROR: Resource file not found: res:// (expected type: unknown)\n   at: _load (core/io/resource_loader.cpp:325)\nERROR: Failed to instantiate an autoload, can't load from path: .\n   at: start (main/main.cpp:4533)\nERROR: Texture with GL ID of 23: leaked 12280 bytes.\n   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)\nERROR: Parameter \"RenderingServer::get_singleton()\" is null.\n   at: ~ImageTexture (scene/resources/image_texture.cpp:245)\n",
+  "visual_review": "Reference/composite faces, isolated face/features, light/dark pair, nine-part sheets and actual game screenshots inspected; user art review pending",
+  "scope": "Current base pair; two transparent default face-accessory slots; multiple variants not complete"
+}

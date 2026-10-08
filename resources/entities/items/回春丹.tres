@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/ItemData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+definition_id = &"pill_rejuvenation"
+entity_name = "回春丹"
+item_category = "丹药"
+usage_type = 1
+battle_skill_path = "res://resources/activeskills/符箓/回春丹.tres"
+stack_count = 3
+can_stack = true
+max_stack = 999

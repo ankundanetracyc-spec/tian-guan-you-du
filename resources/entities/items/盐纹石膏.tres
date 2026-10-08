@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/ItemData.cs" id="1"]
+[ext_resource type="Resource" path="res://resources/material_craft/盐纹石膏材性.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+definition_id = &"mat_salt_gypsum"
+entity_name = "盐纹石膏"
+icon_path = "res://textures/items/item_salt_gypsum.png"
+item_category = "材料"
+item_subcategory = "矿石"
+tags = Array[String](["五行[土]", "质地[石]", "功用[固]", "相性[和]"])
+grade_value = 2
+can_stack = true
+max_stack = 999
+craft_data = ExtResource("2")

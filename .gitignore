@@ -1,0 +1,24 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+官方文档/
+
+# Rebuildable tooling and editor caches
+**/node_modules/
+**/__pycache__/
+*.tmp
+*.TMP
+~$*
+.$*.bkp
+*.csproj.old
+/outputs/**/*.import
+
+# Local runtimes, Godot caches, and temporary work
+/.codex/
+/runtime/
+/tmp/
+/tmp_*
+**/.godot*/
+
+# Godot keeps temporary copies of native extensions while hot-reloading them.
+/addons/limboai/bin/~*

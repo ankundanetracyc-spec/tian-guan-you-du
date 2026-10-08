@@ -1,0 +1,148 @@
+[
+  {
+    "file": "female/face_shape/04.png",
+    "source": "source/ethereal_revision/face_blank.png",
+    "scale": 0.41509433962264153,
+    "translation": [
+      306.2641509433962,
+      119.15094339622641
+    ],
+    "method": "shared master anatomy; transparent feature pigments; one whole-part transform"
+  },
+  {
+    "file": "female/eyebrows/04.png",
+    "source": "source/ethereal_revision/face_master.png",
+    "scale": 0.41509433962264153,
+    "translation": [
+      306.2641509433962,
+      119.15094339622641
+    ],
+    "method": "shared master anatomy; transparent feature pigments; one whole-part transform"
+  },
+  {
+    "file": "female/eyes/04.png",
+    "source": "source/ethereal_revision/face_master.png",
+    "scale": 0.41509433962264153,
+    "translation": [
+      306.2641509433962,
+      119.15094339622641
+    ],
+    "method": "shared master anatomy; transparent feature pigments; one whole-part transform"
+  },
+  {
+    "file": "female/nose/04.png",
+    "source": "source/ethereal_revision/face_master.png",
+    "scale": 0.41509433962264153,
+    "translation": [
+      306.2641509433962,
+      119.15094339622641
+    ],
+    "method": "shared master anatomy; transparent feature pigments; one whole-part transform"
+  },
+  {
+    "file": "female/mouth/04.png",
+    "source": "source/ethereal_revision/face_master.png",
+    "scale": 0.41509433962264153,
+    "translation": [
+      306.2641509433962,
+      119.15094339622641
+    ],
+    "method": "shared master anatomy; transparent feature pigments; one whole-part transform"
+  },
+  {
+    "file": "male/hair_front/04.png",
+    "source": "source/ethereal_revision/male_front_half.png",
+    "scale": 0.48,
+    "translation": [
+      271,
+      96
+    ],
+    "rear_knot_separated_from_front": false
+  },
+  {
+    "file": "male/hair_back/04.png",
+    "source": "source/ethereal_revision/male_back_half.png",
+    "scale": 0.8,
+    "translation": [
+      107,
+      135
+    ],
+    "rear_knot_separated_from_front": false
+  },
+  {
+    "file": "male/hair_front/05.png",
+    "source": "source/ethereal_revision/male_front_high_lowcrown.png",
+    "scale": 0.4,
+    "translation": [
+      312,
+      64
+    ],
+    "rear_knot_separated_from_front": true
+  },
+  {
+    "file": "male/hair_back/05.png",
+    "source": "source/ethereal_revision/male_back_high.png",
+    "scale": 0.8,
+    "translation": [
+      107,
+      160
+    ],
+    "rear_knot_separated_from_front": true,
+    "knot": {
+      "source": "source/ethereal_revision/male_front_high.png",
+      "scale": 0.47,
+      "translation": [
+        276,
+        90
+      ]
+    }
+  },
+  {
+    "file": "female/hair_front/04.png",
+    "source": "source/ethereal_revision/female_front_half.png",
+    "scale": 0.5,
+    "translation": [
+      263,
+      98
+    ],
+    "rear_knot_separated_from_front": false
+  },
+  {
+    "file": "female/hair_back/04.png",
+    "source": "source/ethereal_revision/female_back_half.png",
+    "scale": 0.8,
+    "translation": [
+      109,
+      135
+    ],
+    "rear_knot_separated_from_front": false
+  },
+  {
+    "file": "female/hair_front/05.png",
+    "source": "source/ethereal_revision/female_front_high_lowcrown.png",
+    "scale": 0.4,
+    "translation": [
+      314,
+      22
+    ],
+    "rear_knot_separated_from_front": true
+  },
+  {
+    "file": "female/hair_back/05.png",
+    "source": "source/ethereal_revision/female_back_high.png",
+    "scale": 0.8,
+    "translation": [
+      109,
+      160
+    ],
+    "rear_knot_separated_from_front": true,
+    "knot": {
+      "source": "source/ethereal_revision/female_front_high.png",
+      "scale": 0.48,
+      "translation": [
+        273,
+        105
+      ]
+    }
+  }
+]

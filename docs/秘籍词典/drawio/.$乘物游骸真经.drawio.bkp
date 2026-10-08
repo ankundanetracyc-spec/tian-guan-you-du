@@ -1,0 +1,86 @@
+<mxfile host="Electron" agent="Codex">
+  <diagram id="chengwu-youhai" name="乘物游骸真经">
+    <mxGraphModel dx="3570" dy="585" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2600" pageHeight="1868" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=20;" value="乘物游骸真经" vertex="1">
+          <mxGeometry height="74" width="560" x="740" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="overview" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=15;" value="锻躯秘籍 / 仅可主修&lt;br&gt;秘籍总览&lt;br&gt;凡人阶段学习本经：锁定锻躯路径并解锁锻躯修行&lt;br&gt;主修可修至：云息十三层&lt;br&gt;主气血、游骸、身法与血炉循环；化法为基础牌保留原效果后附加功法效果" vertex="1">
+          <mxGeometry height="118" width="560" x="740" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第一卷：寄形&lt;br&gt;卷章ID：jia_wu_cun_xing&lt;br&gt;顺序：1&lt;br&gt;定位：寄形于物，以气血养出游骸&lt;br&gt;学成可修至：云息三层&lt;br&gt;学习条件：凡人阶段；尚未锁定修行路径&lt;br&gt;学会效果：锁定锻躯路径；炼度由主修淬体谱决定&lt;/div&gt;" vertex="1">
+          <mxGeometry height="154" width="340" x="850" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="运血行功（纳气接口）&lt;br&gt;按主修淬体谱推进炼度&lt;br&gt;具体进度与数值待百炼表配置" vertex="1">
+          <mxGeometry height="82" width="260" x="360" y="395" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="化法&lt;br&gt;锻躯基础牌库 + 托骸寄物法*1&lt;br&gt;催血*1：保留原效果，附加游骸效果" vertex="1">
+          <mxGeometry height="82" width="280" x="1360" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_cards" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;习得：托骸寄物法 *1；催血 *1 获得化法附加效果&lt;br&gt;&lt;br&gt;托骸寄物法：&lt;br&gt;类型：心法牌&lt;br&gt;关键词：固有&lt;br&gt;耗费：精力 4&lt;br&gt;目标与射程：自身；0格&lt;br&gt;效果：进入持续整场战斗的托骸寄物法。打出本牌时，获得等同于当前气血层数的游骸。气血下降时，消耗全部游骸，获得等量身法；若这些身法成功闪避攻击，获得等同于本次消耗身法层数的血炉值。&lt;br&gt;&lt;br&gt;催血：&lt;br&gt;原效果：保持不变。&lt;br&gt;&lt;font color=&quot;#b85450&quot;&gt;化法附加：每次实际获得气血时，额外获得等量游骸。&lt;/font&gt;&lt;br&gt;&lt;br&gt;术语小注：&lt;br&gt;气血：仅存在于本场战斗的肉身活性层数；下降1层时按公共规则回复最大生命。&lt;br&gt;游骸：本经专属自身状态，上限等于气血上限；气血下降时会全部转成身法。&lt;br&gt;身法：下一次受击时消耗全部层数；每层使该次闪避概率提高5个百分点。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="520" width="740" x="-400" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第二卷：蜕骸&lt;br&gt;卷章ID：tui_hai_bi_jie&lt;br&gt;顺序：2&lt;br&gt;定位：临劫脱骸，以旧形避锋&lt;br&gt;学成可修至：云息六层&lt;br&gt;学习条件：已学寄形；云息一层&lt;br&gt;学会永久属性：无；炼度由主修淬体谱决定&lt;/div&gt;" vertex="1">
+          <mxGeometry height="154" width="340" x="850" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="运血行功（纳气接口）&lt;br&gt;按主修淬体谱推进炼度&lt;br&gt;具体进度与数值待百炼表配置" vertex="1">
+          <mxGeometry height="82" width="260" x="410" y="685" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="化法&lt;br&gt;卸力*1：保留原效果&lt;br&gt;附加气血回落、游骸释身法效果" vertex="1">
+          <mxGeometry height="82" width="280" x="1360" y="685" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_cards" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;习得：卸力 *1 获得化法附加效果&lt;br&gt;&lt;br&gt;卸力：&lt;br&gt;原效果：保持不变。&lt;br&gt;&lt;font color=&quot;#b85450&quot;&gt;化法附加：本次应对开始时，气血-1。由托骸寄物法将全部游骸转为身法；新获得的身法立即参与本次攻击的闪避结算。&lt;/font&gt;&lt;br&gt;&lt;br&gt;术语小注：&lt;br&gt;气血回落：本次气血-1，并触发公共生命回复与托骸寄物法的游骸转身法。&lt;br&gt;游骸：本次会被全部消耗，数量决定新身法层数。&lt;br&gt;身法：即使闪避失败也会在这次受击后耗尽；仅闪避成功时才触发本经的血炉收益。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="384" width="740" x="-400" y="766" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第三卷：挟势&lt;br&gt;卷章ID：xie_shi_huan_qu&lt;br&gt;顺序：3&lt;br&gt;定位：将脱骸所避之势炼入拳脚&lt;br&gt;学成可修至：云息九层&lt;br&gt;学习条件：已学蜕骸；云息三层&lt;br&gt;学会永久属性：无；炼度由主修淬体谱决定&lt;/div&gt;" vertex="1">
+          <mxGeometry height="154" width="340" x="850" y="960" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="运血行功（纳气接口）&lt;br&gt;按主修淬体谱推进炼度&lt;br&gt;具体进度与数值待百炼表配置" vertex="1">
+          <mxGeometry height="82" width="270" x="400" y="996" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="化法&lt;br&gt;拳脚*1：保留原伤害公式&lt;br&gt;附加按血炉值增加基础伤害效果" vertex="1">
+          <mxGeometry height="82" width="290" x="1360" y="1000" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_cards" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;习得：拳脚 *1 获得化法附加效果&lt;br&gt;&lt;br&gt;拳脚：&lt;br&gt;原效果：保持不变；仍以基础伤害8、体魄×0.40、身体熟练度×0.20、敏捷×0.25计算物理伤害。&lt;br&gt;&lt;font color=&quot;#b85450&quot;&gt;化法附加：本次伤害的基础伤害额外增加 floor(当前血炉值 / 6) × 4。&lt;/font&gt;&lt;br&gt;&lt;br&gt;术语小注：&lt;br&gt;血炉：锻躯公共战斗状态；受击造成实际生命损失后，依公共规则积攒。每满2点提供1%物理伤害加成。&lt;br&gt;当前血炉值：读取出牌时的数值；本牌不消耗血炉，因此可选择保留血炉，或在第四卷将其回炉。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="350" width="740" x="-400" y="1220" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第四卷：还形&lt;br&gt;卷章ID：lu_fu_zhen_xing&lt;br&gt;顺序：4&lt;br&gt;定位：回炉复血，使游骸循环无绝&lt;br&gt;学成可修至：云息十三层&lt;br&gt;学习条件：已学挟势；云息六层&lt;br&gt;学会永久属性：无；炼度由主修淬体谱决定&lt;/div&gt;" vertex="1">
+          <mxGeometry height="154" width="340" x="850" y="1280" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="运血行功（纳气接口）&lt;br&gt;按主修淬体谱推进炼度&lt;br&gt;具体进度与数值待百炼表配置" vertex="1">
+          <mxGeometry height="82" width="270" x="370" y="1315" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="化法&lt;br&gt;平息*1：保留原效果&lt;br&gt;附加消耗血炉、催血并重生游骸效果" vertex="1">
+          <mxGeometry height="82" width="290" x="1360" y="1320" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_cards" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;习得：平息 *1 获得化法附加效果&lt;br&gt;&lt;br&gt;平息：&lt;br&gt;原效果：保持不变。&lt;br&gt;&lt;font color=&quot;#b85450&quot;&gt;化法附加：在原效果结算后，若血炉值不少于6，则消耗6点血炉值，催血1。&lt;/font&gt;&lt;br&gt;&lt;br&gt;术语小注：&lt;br&gt;平息的原效果先使气血回落：旧游骸会转为身法，同时触发公共生命回复。随后本附加效果以血炉催血1；这次实际获得的气血又会通过第一卷的催血附加效果生成新的游骸。&lt;br&gt;血炉：消耗6点即舍弃3%物理伤害加成，换取新一轮气血与游骸。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="372" width="740" x="-400" y="1638" as="geometry" />
+        </mxCell>
+        <mxCell id="summary" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" value="&lt;div style=&quot;text-align:left;&quot;&gt;属性汇总&lt;br&gt;学会永久属性：无；肉身成长完全由主修淬体谱与百炼表决定。&lt;br&gt;运血行功累计：四卷均接入锻躯炼度进度，具体数值待百炼表配置。&lt;br&gt;化法主链：催血生游骸 → 卸力令气血回落、游骸转身法 → 闪避成功炼血炉 → 拳脚借血炉还击，或平息回炉催血、重生游骸。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="420" x="1660" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="status_rules" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;术语与状态详解&lt;br&gt;&lt;br&gt;气血&lt;br&gt;仅存在于当前战斗的肉身活性层数；气血下降1层时，按公共规则回复最大生命的3%。气血的获得统一称为催血。&lt;br&gt;&lt;br&gt;游骸&lt;br&gt;本经专属自身状态；上限等于气血上限。心法入场与每次实际催血都会获得游骸；气血回落时全部转为身法。&lt;br&gt;&lt;br&gt;身法&lt;br&gt;自身增益；下一次受击时消耗全部层数，每层使该次攻击的闪避概率提高5个百分点。托骸寄物法仅在闪避成功时，按本次消耗层数增加血炉。&lt;br&gt;&lt;br&gt;血炉&lt;br&gt;锻躯公共战斗状态；受击造成实际生命损失后按公共规则积攒。每满2点使物理伤害+1%；基础上限100，但当前上限可受功法、丹药等改变。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="330" width="430" x="1660" y="820" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" edge="1" parent="1" source="overview" style="endArrow=block;html=1;" target="c1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_left" value="纳气"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_right" value="化法"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_cards" value="习得"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_left" value="纳气"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_right" value="化法"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_cards" value="习得"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_left" value="纳气"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_right" value="化法"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_cards" value="习得"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e13" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_left" value="纳气"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e14" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_right" value="化法"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e15" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_cards" value="习得"><mxGeometry relative="1" as="geometry" /></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

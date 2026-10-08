@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BuildingData" format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/EntityData.cs" id="1"]
+[ext_resource type="Script" path="res://csharp/resources/BuildingData.cs" id="2"]
+
+[resource]
+script = ExtResource("2")
+entity_name = "哨塔"
+summary = "村口的瞭望与预警设施。守备民力能更有效地维护治安并降低外务风险。"
+max_durability = 20
+current_durability = 20
+consume_durability = false
+build_cost_counts = Array[int]([10, 4])
+build_cost_resource_ids = Array[String](["stone", "ore"])
+estate_facility_id = "watchtower"

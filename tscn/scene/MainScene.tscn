@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://danlvaa22qu43"]
+
+[ext_resource type="PackedScene" uid="uid://c4jgg0n3ov8m6" path="res://tscn/panel/TimePanel.tscn" id="3_time"]
+[ext_resource type="PackedScene" uid="uid://b4leek80jiuoq" path="res://tscn/panel/InfoPanel.tscn" id="4_info"]
+[ext_resource type="Script" uid="uid://dusfgeafchge1" path="res://csharp/CameraController.cs" id="5_cam"]
+[ext_resource type="Script" uid="uid://bmbnhx3skcjiw" path="res://csharp/battle/CombatTrigger.cs" id="7_combo"]
+[ext_resource type="Texture2D" uid="uid://b21sx2ls5eq4t" path="res://textures/weather/rain_particle.png" id="11_rain"]
+[ext_resource type="Script" uid="uid://c7ead3nhjnmk3" path="res://csharp/world/WeatherEffects.cs" id="13_wea"]
+[ext_resource type="PackedScene" uid="uid://base5bcjm2wd4" path="res://tscn/panel/MainHUD.tscn" id="15_hud"]
+[ext_resource type="PackedScene" path="res://tscn/panel/StoragePanel.tscn" id="21_storage_panel"]
+[ext_resource type="PackedScene" path="res://tscn/panel/bamboo/EstateOverview.tscn" id="38_qingxi_location"]
+[ext_resource type="Script" uid="uid://klkvhlkiyuoo" path="res://csharp/MainScene.cs" id="35_n2d"]
+[ext_resource type="Texture2D" uid="uid://lmafxp4kkye7" path="res://textures/桌面.png" id="43_desk_bg"]
+[ext_resource type="PackedScene" uid="uid://dxi5m2p0k7hf8" path="res://tscn/world/NodeWorldMap.tscn" id="44_node_map"]
+[ext_resource type="PackedScene" path="res://tscn/explore/DungeonExploreUI.tscn" id="45_back_hill_trial"]
+[ext_resource type="PackedScene" uid="uid://bhf4k8gslmr5p" path="res://tscn/panel/CultivationUI.tscn" id="46_cultivation"]
+[ext_resource type="PackedScene" path="res://tscn/panel/StoryDialoguePanel.tscn" id="47_story_dialogue"]
+[ext_resource type="PackedScene" path="res://tscn/panel/NpcInteractionPanel.tscn" id="48_npc_interactions"]
+[ext_resource type="PackedScene" path="res://tscn/panel/RealmPanel.tscn" id="49_realm_panel"]
+[ext_resource type="PackedScene" path="res://tscn/world/bai_chuan/YuxuXianzongOverview.tscn" id="51_yuxu_overview"]
+[ext_resource type="PackedScene" path="res://tscn/panel/CellCharacterList.tscn" id="52_cell_roster"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rain"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1200, 5, 1)
+direction = Vector3(0, 1, 0)
+spread = 3.0
+initial_velocity_min = 350.0
+initial_velocity_max = 650.0
+gravity = Vector3(0, 700, 0)
+
+[node name="Base" type="Node2D" unique_id=1049180398]
+script = ExtResource("35_n2d")
+
+[node name="MapLayer" type="CanvasLayer" parent="." unique_id=1996247213]
+layer = 30
+
+[node name="NodeWorldMap" parent="MapLayer" unique_id=2070528032 instance=ExtResource("44_node_map")]
+visible = false
+
+[node name="SceneLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="DesktopBg" type="TextureRect" parent="CanvasLayer" unique_id=2070528031]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("43_desk_bg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="QingxiLocation" parent="SceneLayer" instance=ExtResource("38_qingxi_location")]
+
+[node name="YuxuXianzongOverview" parent="SceneLayer" instance=ExtResource("51_yuxu_overview")]
+visible = false
+
+[node name="HUDLayer" type="CanvasLayer" parent="."]
+layer = 20
+
+[node name="MainHUD" parent="HUDLayer" unique_id=1987878072 instance=ExtResource("15_hud")]
+
+[node name="CellCharacterList" parent="HUDLayer" instance=ExtResource("52_cell_roster")]
+
+[node name="WorldInfo" parent="HUDLayer" unique_id=1945037783 instance=ExtResource("3_time")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1996247214]
+layer = 30
+
+[node name="HumanInfoPanel" parent="CanvasLayer" unique_id=1249017416 instance=ExtResource("4_info")]
+
+[node name="BackHillTrial" parent="CanvasLayer" instance=ExtResource("45_back_hill_trial")]
+
+[node name="CultivationUI" parent="CanvasLayer" instance=ExtResource("46_cultivation")]
+
+[node name="RealmPanel" parent="CanvasLayer" instance=ExtResource("49_realm_panel")]
+
+[node name="DialogueLayer" type="CanvasLayer" parent="." unique_id=1996247215]
+layer = 40
+
+[node name="StoryDialoguePanel" parent="DialogueLayer" instance=ExtResource("47_story_dialogue")]
+
+[node name="NpcInteractionPanel" parent="CanvasLayer" instance=ExtResource("48_npc_interactions")]
+
+[node name="StoragePanel" parent="CanvasLayer" unique_id=166770806 instance=ExtResource("21_storage_panel")]
+visible = false
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1521353664]
+position = Vector2(2500, 1750)
+position_smoothing_enabled = true
+script = ExtResource("5_cam")
+
+[node name="CombatTrigger" type="Node2D" parent="." unique_id=1439654648]
+position = Vector2(-7, 0)
+script = ExtResource("7_combo")
+
+[node name="Weather" type="CanvasLayer" parent="." unique_id=1573188403]
+visible = false
+script = ExtResource("13_wea")
+
+[node name="TestingOverlay" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="PrologueSkipButton" type="Button" parent="TestingOverlay"]
+visible = false
+offset_left = 320.0
+offset_top = 16.0
+offset_right = 416.0
+offset_bottom = 50.0
+mouse_filter = 0
+text = "跳过序章"
+
+[node name="Rain" type="GPUParticles2D" parent="Weather" unique_id=463681266]
+position = Vector2(960, -50)
+amount = 350
+texture = ExtResource("11_rain")
+lifetime = 1.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_rain")

@@ -1,0 +1,21 @@
+[gd_resource type="TileSet" format=3 uid="uid://cvb1b8qa2wvmw"]
+
+[ext_resource type="Texture2D" uid="uid://7evwrbe5tdke" path="res://textures/地块/平原1.png" id="1_plain1"]
+[ext_resource type="Texture2D" uid="uid://bukkor8bfhbp2" path="res://textures/地块/平原2.png" id="2_w3c1k"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_plain1"]
+texture = ExtResource("1_plain1")
+texture_region_size = Vector2i(1254, 1254)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_plain2"]
+texture = ExtResource("2_w3c1k")
+texture_region_size = Vector2i(1254, 1254)
+0:0/0 = 0
+
+[resource]
+tile_shape = 3
+tile_offset_axis = 1
+tile_size = Vector2i(1200, 1040)
+sources/0 = SubResource("TileSetAtlasSource_plain1")
+sources/1 = SubResource("TileSetAtlasSource_plain2")

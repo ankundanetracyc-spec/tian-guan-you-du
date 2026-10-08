@@ -1,0 +1,940 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" modified="2026-08-08T00:00:00.000Z" agent="Codex" version="26.0.16">
+  <diagram id="world-map-4x4" name="4x4世界地图底稿">
+    <mxGraphModel dx="1800" dy="1800" grid="1" gridSize="10" page="1" pageWidth="2400" pageHeight="2400">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="昭明界 4×4 制作格与节点布点底稿（不是九域划分）" style="text;html=1;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="35" y="18" width="720" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="hint" value="本图用于16格拼接与L1–L4节点布点；正式九域边界、势力归属请查看《昭明界九域总览.drawio》。L4为随机刷新，不绘为常驻点。" style="text;html=1;fontSize=13;fontColor=#555555;" vertex="1" parent="1">
+          <mxGeometry x="35" y="55" width="900" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="reg0" value="极北冰原&#xA;北极仙宫" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6eff5;fillOpacity=50;strokeColor=#77847f;fontSize=16;fontStyle=1;align=center;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="47" y="135" width="526" height="526" as="geometry" />
+        </mxCell>
+        <mxCell id="mount0" value="" style="shape=triangle;direction=north;fillColor=#aeb5ad;strokeColor=#727b74;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="85" y="224" width="105" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="water0" value="" style="shape=ellipse;fillColor=#a9d3df;strokeColor=#6d9eaa;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="351" y="466" width="155" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="forest0" value="" style="rounded=1;fillColor=#a9c59d;strokeColor=#6d9865;opacity=45;" vertex="1" parent="1">
+          <mxGeometry x="117" y="506" width="135" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="road0" value="" style="shape=line;strokeColor=#a28d65;strokeWidth=3;opacity=70;" vertex="1" parent="1">
+          <mxGeometry x="250" y="317" width="202" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="node0_0" value="北极仙宫&#xA;L1 · 山麓平台" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#7899b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="94" y="324" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node0_1" value="冰极殿&#xA;L2 · 道路交汇" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9ab9b1;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="250" y="351" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node0_2" value="冰晶矿脉&#xA;L3 · 河岸渡口" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="418" y="327" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node0_3" value="天魔裂隙&#xA;L3 · 林间空地" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="128" y="446" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node0_4" value="寒霜哨&#xA;L3 · 海湾泊位" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="324" y="452" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="reg1" value="北原关隘&#xA;风雪关 / 玄枵院" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ecf0df;fillOpacity=50;strokeColor=#77847f;fontSize=16;fontStyle=1;align=center;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="574" y="135" width="526" height="526" as="geometry" />
+        </mxCell>
+        <mxCell id="mount1" value="" style="shape=triangle;direction=north;fillColor=#aeb5ad;strokeColor=#727b74;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="612" y="224" width="105" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="water1" value="" style="shape=ellipse;fillColor=#a9d3df;strokeColor=#6d9eaa;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="878" y="466" width="155" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="forest1" value="" style="rounded=1;fillColor=#a9c59d;strokeColor=#6d9865;opacity=45;" vertex="1" parent="1">
+          <mxGeometry x="644" y="506" width="135" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="road1" value="" style="shape=line;strokeColor=#a28d65;strokeWidth=3;opacity=70;" vertex="1" parent="1">
+          <mxGeometry x="776" y="317" width="202" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="node1_0" value="风雪关&#xA;L1 · 山麓平台" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#7899b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="621" y="324" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node1_1" value="玄枵院&#xA;L2 · 道路交汇" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9ab9b1;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="776" y="351" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node1_2" value="钟山&#xA;L3 · 河岸渡口" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="945" y="327" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node1_3" value="昆仑之墟&#xA;L3 · 林间空地" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="655" y="446" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node1_4" value="雪狼岭&#xA;L3 · 海湾泊位" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="850" y="452" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="reg2" value="北海群礁&#xA;天机阁 / 海族" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dfeef1;fillOpacity=50;strokeColor=#77847f;fontSize=16;fontStyle=1;align=center;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="135" width="526" height="526" as="geometry" />
+        </mxCell>
+        <mxCell id="mount2" value="" style="shape=triangle;direction=north;fillColor=#aeb5ad;strokeColor=#727b74;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="1138" y="224" width="105" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="water2" value="" style="shape=ellipse;fillColor=#a9d3df;strokeColor=#6d9eaa;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="1404" y="466" width="155" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="forest2" value="" style="rounded=1;fillColor=#a9c59d;strokeColor=#6d9865;opacity=45;" vertex="1" parent="1">
+          <mxGeometry x="1170" y="506" width="135" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="road2" value="" style="shape=line;strokeColor=#a28d65;strokeWidth=3;opacity=70;" vertex="1" parent="1">
+          <mxGeometry x="1303" y="317" width="202" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="node2_0" value="北海分阁&#xA;L1 · 山麓平台" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#7899b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1148" y="324" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node2_1" value="雷渊泽&#xA;L2 · 道路交汇" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9ab9b1;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1303" y="351" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node2_2" value="北海渔村&#xA;L3 · 河岸渡口" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1472" y="327" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node2_3" value="听潮礁&#xA;L3 · 林间空地" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1181" y="446" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node2_4" value="蜃楼海域&#xA;L3 · 海湾泊位" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1377" y="452" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="reg3" value="北冥外海&#xA;鲲鹏遗族" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d9e8ed;fillOpacity=50;strokeColor=#77847f;fontSize=16;fontStyle=1;align=center;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="1627" y="135" width="526" height="526" as="geometry" />
+        </mxCell>
+        <mxCell id="mount3" value="" style="shape=triangle;direction=north;fillColor=#aeb5ad;strokeColor=#727b74;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="1665" y="224" width="105" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="water3" value="" style="shape=ellipse;fillColor=#a9d3df;strokeColor=#6d9eaa;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="1931" y="466" width="155" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="forest3" value="" style="rounded=1;fillColor=#a9c59d;strokeColor=#6d9865;opacity=45;" vertex="1" parent="1">
+          <mxGeometry x="1697" y="506" width="135" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="road3" value="" style="shape=line;strokeColor=#a28d65;strokeWidth=3;opacity=70;" vertex="1" parent="1">
+          <mxGeometry x="1829" y="317" width="202" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="node3_0" value="北冥&#xA;L1 · 山麓平台" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#7899b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1674" y="324" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node3_1" value="鲲鹏古巢&#xA;L2 · 道路交汇" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9ab9b1;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1829" y="351" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node3_2" value="相山&#xA;L3 · 河岸渡口" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1998" y="327" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node3_3" value="龙宫遗迹&#xA;L3 · 林间空地" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1708" y="446" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node3_4" value="迷雾航标&#xA;L3 · 海湾泊位" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1904" y="452" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="reg4" value="鬼哭岭&#xA;鬼修 / 魔修" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eee3e0;fillOpacity=50;strokeColor=#77847f;fontSize=16;fontStyle=1;align=center;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="47" y="662" width="526" height="526" as="geometry" />
+        </mxCell>
+        <mxCell id="mount4" value="" style="shape=triangle;direction=north;fillColor=#aeb5ad;strokeColor=#727b74;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="85" y="751" width="105" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="water4" value="" style="shape=ellipse;fillColor=#a9d3df;strokeColor=#6d9eaa;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="351" y="992" width="155" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="forest4" value="" style="rounded=1;fillColor=#a9c59d;strokeColor=#6d9865;opacity=45;" vertex="1" parent="1">
+          <mxGeometry x="117" y="1033" width="135" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="road4" value="" style="shape=line;strokeColor=#a28d65;strokeWidth=3;opacity=70;" vertex="1" parent="1">
+          <mxGeometry x="250" y="844" width="202" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="node4_0" value="鬼哭岭&#xA;L1 · 山麓平台" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#7899b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="94" y="850" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node4_1" value="西陵戍所&#xA;L2 · 道路交汇" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9ab9b1;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="250" y="878" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node4_2" value="绝灵渊&#xA;L3 · 河岸渡口" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="418" y="853" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node4_3" value="黑白坊市&#xA;L3 · 林间空地" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="128" y="972" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node4_4" value="枯禅寺&#xA;L3 · 海湾泊位" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="324" y="979" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node4_5" value="埋骨沙海&#xA;L3 · 峡谷入口" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f4deda;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="459" y="965" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="reg5" value="玉虚北麓&#xA;玉虚仙宗" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e5eedb;fillOpacity=50;strokeColor=#77847f;fontSize=16;fontStyle=1;align=center;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="574" y="662" width="526" height="526" as="geometry" />
+        </mxCell>
+        <mxCell id="mount5" value="" style="shape=triangle;direction=north;fillColor=#aeb5ad;strokeColor=#727b74;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="612" y="751" width="105" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="water5" value="" style="shape=ellipse;fillColor=#a9d3df;strokeColor=#6d9eaa;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="878" y="992" width="155" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="forest5" value="" style="rounded=1;fillColor=#a9c59d;strokeColor=#6d9865;opacity=45;" vertex="1" parent="1">
+          <mxGeometry x="644" y="1033" width="135" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="road5" value="" style="shape=line;strokeColor=#a28d65;strokeWidth=3;opacity=70;" vertex="1" parent="1">
+          <mxGeometry x="776" y="844" width="202" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="node5_0" value="玉虚仙宗&#xA;L1 · 山麓平台" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#7899b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="621" y="850" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node5_1" value="问道崖&#xA;L2 · 道路交汇" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9ab9b1;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="776" y="878" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node5_2" value="天机书坊&#xA;L3 · 河岸渡口" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="945" y="853" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node5_3" value="灵兽园&#xA;L3 · 林间空地" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="655" y="972" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node5_4" value="云台观星台&#xA;L3 · 海湾泊位" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="850" y="979" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="reg6" value="千机东陆&#xA;千机城" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e2eddc;fillOpacity=50;strokeColor=#77847f;fontSize=16;fontStyle=1;align=center;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="662" width="526" height="526" as="geometry" />
+        </mxCell>
+        <mxCell id="mount6" value="" style="shape=triangle;direction=north;fillColor=#aeb5ad;strokeColor=#727b74;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="1138" y="751" width="105" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="water6" value="" style="shape=ellipse;fillColor=#a9d3df;strokeColor=#6d9eaa;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="1404" y="992" width="155" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="forest6" value="" style="rounded=1;fillColor=#a9c59d;strokeColor=#6d9865;opacity=45;" vertex="1" parent="1">
+          <mxGeometry x="1170" y="1033" width="135" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="road6" value="" style="shape=line;strokeColor=#a28d65;strokeWidth=3;opacity=70;" vertex="1" parent="1">
+          <mxGeometry x="1303" y="844" width="202" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="node6_0" value="千机城&#xA;L1 · 山麓平台" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#7899b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1148" y="850" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node6_1" value="百工坊&#xA;L2 · 道路交汇" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9ab9b1;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1303" y="878" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node6_2" value="百炼坊&#xA;L3 · 河岸渡口" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1472" y="853" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node6_3" value="公孙氏阵坊&#xA;L3 · 林间空地" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1181" y="972" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node6_4" value="铁羽驿&#xA;L3 · 海湾泊位" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1377" y="979" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="reg7" value="东海北岸&#xA;商会 / 海族" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcecf1;fillOpacity=50;strokeColor=#77847f;fontSize=16;fontStyle=1;align=center;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="1627" y="662" width="526" height="526" as="geometry" />
+        </mxCell>
+        <mxCell id="mount7" value="" style="shape=triangle;direction=north;fillColor=#aeb5ad;strokeColor=#727b74;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="1665" y="751" width="105" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="water7" value="" style="shape=ellipse;fillColor=#a9d3df;strokeColor=#6d9eaa;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="1931" y="992" width="155" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="forest7" value="" style="rounded=1;fillColor=#a9c59d;strokeColor=#6d9865;opacity=45;" vertex="1" parent="1">
+          <mxGeometry x="1697" y="1033" width="135" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="road7" value="" style="shape=line;strokeColor=#a28d65;strokeWidth=3;opacity=70;" vertex="1" parent="1">
+          <mxGeometry x="1829" y="844" width="202" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="node7_0" value="东海驿港&#xA;L1 · 山麓平台" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#7899b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1674" y="850" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node7_1" value="海族互市&#xA;L2 · 道路交汇" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9ab9b1;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1829" y="878" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node7_2" value="盐田村&#xA;L3 · 河岸渡口" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1998" y="853" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node7_3" value="珊瑚浅滩&#xA;L3 · 林间空地" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1708" y="972" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node7_4" value="断帆礁&#xA;L3 · 海湾泊位" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1904" y="979" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="reg8" value="铸剑群山&#xA;铸剑城 / 剑修" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1e4d9;fillOpacity=50;strokeColor=#77847f;fontSize=16;fontStyle=1;align=center;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="47" y="1188" width="526" height="526" as="geometry" />
+        </mxCell>
+        <mxCell id="mount8" value="" style="shape=triangle;direction=north;fillColor=#aeb5ad;strokeColor=#727b74;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="85" y="1277" width="105" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="water8" value="" style="shape=ellipse;fillColor=#a9d3df;strokeColor=#6d9eaa;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="351" y="1519" width="155" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="forest8" value="" style="rounded=1;fillColor=#a9c59d;strokeColor=#6d9865;opacity=45;" vertex="1" parent="1">
+          <mxGeometry x="117" y="1559" width="135" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="road8" value="" style="shape=line;strokeColor=#a28d65;strokeWidth=3;opacity=70;" vertex="1" parent="1">
+          <mxGeometry x="250" y="1370" width="202" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="node8_0" value="铸剑城&#xA;L1 · 山麓平台" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#7899b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="94" y="1377" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node8_1" value="剑冢&#xA;L2 · 道路交汇" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9ab9b1;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="250" y="1404" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node8_2" value="剑池&#xA;L3 · 河岸渡口" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="418" y="1380" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node8_3" value="赤焰山&#xA;L3 · 林间空地" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="128" y="1498" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node8_4" value="太一门遗址&#xA;L3 · 海湾泊位" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="324" y="1505" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node8_5" value="听剑谷&#xA;L3 · 峡谷入口" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f4deda;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="459" y="1492" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="reg9" value="中土腹地&#xA;大夏 / 世家" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e9f0d9;fillOpacity=50;strokeColor=#77847f;fontSize=16;fontStyle=1;align=center;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="574" y="1188" width="526" height="526" as="geometry" />
+        </mxCell>
+        <mxCell id="mount9" value="" style="shape=triangle;direction=north;fillColor=#aeb5ad;strokeColor=#727b74;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="612" y="1277" width="105" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="water9" value="" style="shape=ellipse;fillColor=#a9d3df;strokeColor=#6d9eaa;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="878" y="1519" width="155" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="forest9" value="" style="rounded=1;fillColor=#a9c59d;strokeColor=#6d9865;opacity=45;" vertex="1" parent="1">
+          <mxGeometry x="644" y="1559" width="135" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="road9" value="" style="shape=line;strokeColor=#a28d65;strokeWidth=3;opacity=70;" vertex="1" parent="1">
+          <mxGeometry x="776" y="1370" width="202" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="node9_0" value="大夏仙都&#xA;L1 · 山麓平台" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#7899b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="621" y="1377" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node9_1" value="望月湖&#xA;L2 · 道路交汇" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9ab9b1;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="776" y="1404" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node9_2" value="李家村&#xA;L3 · 河岸渡口" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="945" y="1380" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node9_3" value="月华坊&#xA;L3 · 林间空地" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="655" y="1498" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node9_4" value="白石镇&#xA;L3 · 海湾泊位" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="850" y="1505" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node9_5" value="青岚观&#xA;L3 · 峡谷入口" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f4deda;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="986" y="1492" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node9_6" value="寒松岭&#xA;L3 · 泽地边缘" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f4deda;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="736" y="1606" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node9_7" value="镜月泽&#xA;L3 · 山口台地" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f4deda;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="911" y="1613" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node9_8" value="东林地&#xA;L3 · 岛屿港湾" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f4deda;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="628" y="1660" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node9_9" value="废弃矿洞&#xA;L3 · 平原聚落" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f4deda;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="796" y="1660" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node9_10" value="灵草谷&#xA;L3 · 矿口坡地" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f4deda;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="965" y="1660" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node9_11" value="玄水渡&#xA;L3 · 遗迹台地" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f4deda;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="844" y="1573" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="reg10" value="东南商路&#xA;丹鼎会 / 公孙氏" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e4edd8;fillOpacity=50;strokeColor=#77847f;fontSize=16;fontStyle=1;align=center;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="1188" width="526" height="526" as="geometry" />
+        </mxCell>
+        <mxCell id="mount10" value="" style="shape=triangle;direction=north;fillColor=#aeb5ad;strokeColor=#727b74;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="1138" y="1277" width="105" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="water10" value="" style="shape=ellipse;fillColor=#a9d3df;strokeColor=#6d9eaa;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="1404" y="1519" width="155" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="forest10" value="" style="rounded=1;fillColor=#a9c59d;strokeColor=#6d9865;opacity=45;" vertex="1" parent="1">
+          <mxGeometry x="1170" y="1559" width="135" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="road10" value="" style="shape=line;strokeColor=#a28d65;strokeWidth=3;opacity=70;" vertex="1" parent="1">
+          <mxGeometry x="1303" y="1370" width="202" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="node10_0" value="火种原&#xA;L1 · 山麓平台" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#7899b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1148" y="1377" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node10_1" value="丹鼎会&#xA;L2 · 道路交汇" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9ab9b1;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1303" y="1404" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node10_2" value="火灵田&#xA;L3 · 河岸渡口" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1472" y="1380" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node10_3" value="百炼窑&#xA;L3 · 林间空地" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1181" y="1498" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node10_4" value="灵石驿&#xA;L3 · 海湾泊位" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1377" y="1505" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node10_5" value="古阵残垣&#xA;L3 · 峡谷入口" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f4deda;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1512" y="1492" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="reg11" value="不夜港海湾&#xA;不夜港" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcecf2;fillOpacity=50;strokeColor=#77847f;fontSize=16;fontStyle=1;align=center;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="1627" y="1188" width="526" height="526" as="geometry" />
+        </mxCell>
+        <mxCell id="mount11" value="" style="shape=triangle;direction=north;fillColor=#aeb5ad;strokeColor=#727b74;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="1665" y="1277" width="105" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="water11" value="" style="shape=ellipse;fillColor=#a9d3df;strokeColor=#6d9eaa;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="1931" y="1519" width="155" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="forest11" value="" style="rounded=1;fillColor=#a9c59d;strokeColor=#6d9865;opacity=45;" vertex="1" parent="1">
+          <mxGeometry x="1697" y="1559" width="135" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="road11" value="" style="shape=line;strokeColor=#a28d65;strokeWidth=3;opacity=70;" vertex="1" parent="1">
+          <mxGeometry x="1829" y="1370" width="202" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="node11_0" value="不夜港&#xA;L1 · 山麓平台" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#7899b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1674" y="1377" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node11_1" value="蓬莱商馆&#xA;L2 · 道路交汇" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9ab9b1;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1829" y="1404" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node11_2" value="听潮坊&#xA;L3 · 河岸渡口" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1998" y="1380" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node11_3" value="远航船坞&#xA;L3 · 林间空地" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1708" y="1498" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node11_4" value="沉船湾&#xA;L3 · 海湾泊位" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1904" y="1505" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node11_5" value="海灯塔&#xA;L3 · 峡谷入口" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f4deda;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="2039" y="1492" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="reg12" value="西漠古道&#xA;散修 / 魔修" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#efe5da;fillOpacity=50;strokeColor=#77847f;fontSize=16;fontStyle=1;align=center;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="47" y="1714" width="526" height="526" as="geometry" />
+        </mxCell>
+        <mxCell id="mount12" value="" style="shape=triangle;direction=north;fillColor=#aeb5ad;strokeColor=#727b74;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="85" y="1804" width="105" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="water12" value="" style="shape=ellipse;fillColor=#a9d3df;strokeColor=#6d9eaa;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="351" y="2045" width="155" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="forest12" value="" style="rounded=1;fillColor=#a9c59d;strokeColor=#6d9865;opacity=45;" vertex="1" parent="1">
+          <mxGeometry x="117" y="2086" width="135" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="road12" value="" style="shape=line;strokeColor=#a28d65;strokeWidth=3;opacity=70;" vertex="1" parent="1">
+          <mxGeometry x="250" y="1897" width="202" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="node12_0" value="西漠散修集&#xA;L1 · 山麓平台" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#7899b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="94" y="1904" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node12_1" value="赤砂寨&#xA;L2 · 道路交汇" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9ab9b1;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="250" y="1931" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node12_2" value="骸骨商道&#xA;L3 · 河岸渡口" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="418" y="1906" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node12_3" value="魔修暗市&#xA;L3 · 林间空地" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="128" y="2025" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node12_4" value="风蚀石林&#xA;L3 · 海湾泊位" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="324" y="2032" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="reg13" value="南疆山林&#xA;百族 / 毒修" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e2edd9;fillOpacity=50;strokeColor=#77847f;fontSize=16;fontStyle=1;align=center;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="574" y="1714" width="526" height="526" as="geometry" />
+        </mxCell>
+        <mxCell id="mount13" value="" style="shape=triangle;direction=north;fillColor=#aeb5ad;strokeColor=#727b74;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="612" y="1804" width="105" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="water13" value="" style="shape=ellipse;fillColor=#a9d3df;strokeColor=#6d9eaa;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="878" y="2045" width="155" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="forest13" value="" style="rounded=1;fillColor=#a9c59d;strokeColor=#6d9865;opacity=45;" vertex="1" parent="1">
+          <mxGeometry x="644" y="2086" width="135" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="road13" value="" style="shape=line;strokeColor=#a28d65;strokeWidth=3;opacity=70;" vertex="1" parent="1">
+          <mxGeometry x="776" y="1897" width="202" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="node13_0" value="云梦泽&#xA;L1 · 山麓平台" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#7899b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="621" y="1904" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node13_1" value="凤栖林&#xA;L2 · 道路交汇" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9ab9b1;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="776" y="1931" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node13_2" value="南疆药市&#xA;L3 · 河岸渡口" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="945" y="1906" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node13_3" value="毒瘴林&#xA;L3 · 林间空地" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="655" y="2025" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node13_4" value="百草驿&#xA;L3 · 海湾泊位" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="850" y="2032" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="reg14" value="十万大山&#xA;万妖谷" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeada;fillOpacity=50;strokeColor=#77847f;fontSize=16;fontStyle=1;align=center;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="1714" width="526" height="526" as="geometry" />
+        </mxCell>
+        <mxCell id="mount14" value="" style="shape=triangle;direction=north;fillColor=#aeb5ad;strokeColor=#727b74;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="1138" y="1804" width="105" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="water14" value="" style="shape=ellipse;fillColor=#a9d3df;strokeColor=#6d9eaa;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="1404" y="2045" width="155" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="forest14" value="" style="rounded=1;fillColor=#a9c59d;strokeColor=#6d9865;opacity=45;" vertex="1" parent="1">
+          <mxGeometry x="1170" y="2086" width="135" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="road14" value="" style="shape=line;strokeColor=#a28d65;strokeWidth=3;opacity=70;" vertex="1" parent="1">
+          <mxGeometry x="1303" y="1897" width="202" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="node14_0" value="万妖谷&#xA;L1 · 山麓平台" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#7899b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1148" y="1904" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node14_1" value="妖市&#xA;L2 · 道路交汇" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9ab9b1;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1303" y="1931" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node14_2" value="图腾柱林&#xA;L3 · 河岸渡口" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1472" y="1906" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node14_3" value="麒麟崖&#xA;L3 · 林间空地" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1181" y="2025" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node14_4" value="万毒泽&#xA;L3 · 海湾泊位" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1377" y="2032" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node14_5" value="银杏祖庭&#xA;L3 · 峡谷入口" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f4deda;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1512" y="2018" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="reg15" value="蓬莱海域&#xA;蓬莱仙盟" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dcecf2;fillOpacity=50;strokeColor=#77847f;fontSize=16;fontStyle=1;align=center;verticalAlign=top;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="1627" y="1714" width="526" height="526" as="geometry" />
+        </mxCell>
+        <mxCell id="mount15" value="" style="shape=triangle;direction=north;fillColor=#aeb5ad;strokeColor=#727b74;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="1665" y="1804" width="105" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="water15" value="" style="shape=ellipse;fillColor=#a9d3df;strokeColor=#6d9eaa;opacity=55;" vertex="1" parent="1">
+          <mxGeometry x="1931" y="2045" width="155" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="forest15" value="" style="rounded=1;fillColor=#a9c59d;strokeColor=#6d9865;opacity=45;" vertex="1" parent="1">
+          <mxGeometry x="1697" y="2086" width="135" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="road15" value="" style="shape=line;strokeColor=#a28d65;strokeWidth=3;opacity=70;" vertex="1" parent="1">
+          <mxGeometry x="1829" y="1897" width="202" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="node15_0" value="蓬莱仙盟&#xA;L1 · 山麓平台" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#7899b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1674" y="1904" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node15_1" value="瀛洲剑派&#xA;L2 · 道路交汇" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9ab9b1;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1829" y="1931" width="44" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="node15_2" value="方丈仙岛&#xA;L3 · 河岸渡口" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1998" y="1906" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node15_3" value="归墟&#xA;L3 · 林间空地" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1708" y="2025" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node15_4" value="流亡者航道&#xA;L3 · 海湾泊位" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1904" y="2032" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node15_5" value="灵龟岛&#xA;L3 · 峡谷入口" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f4deda;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="2039" y="2018" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="node15_6" value="海月坊&#xA;L3 · 泽地边缘" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f4deda;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1789" y="2133" width="40" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="legend" value="底稿规则：每个节点贴近山、湖、林、道路或海湾锚点；不允许直接压在山体、水面或无通路位置。区域块仅负责加载和解锁，不等于势力边界。" style="text;html=1;fontSize=13;fontColor=#555555;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="35" y="1670" width="1500" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="new0" value="天柱山废墟&#xA;L1 · 山巅遗址" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#7899b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="690" y="720" width="42" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="new1" value="飞升台&#xA;L2 · 高台" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9ab9b1;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="730" y="770" width="42" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="new2" value="仙庭巡查台&#xA;L3 · 古道台地" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="650" y="800" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="new3" value="琅琊林废墟&#xA;L3 · 密林空地" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="610" y="860" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="new4" value="镜渊&#xA;L2 · 湖岸石台" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9ab9b1;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="760" y="1250" width="42" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="new5" value="澄心碑林&#xA;L3 · 古林" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="1300" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="new6" value="枯竭矿脉&#xA;L3 · 山脚矿口" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="1360" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="new7" value="人皇旧道&#xA;L3 · 商路" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="800" y="1340" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="new8" value="龙骨荒原&#xA;L2 · 荒原台地" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9ab9b1;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="250" y="970" width="42" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="new9" value="战魂谷&#xA;L3 · 峡谷入口" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="1020" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="new10" value="问道石阶&#xA;L3 · 山麓" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="710" y="900" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="new11" value="藏兵山&#xA;L2 · 山体裂口" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9ab9b1;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1210" y="920" width="42" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="new12" value="炼器试炼塔&#xA;L3 · 山腰平台" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="970" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="new13" value="断流古渠&#xA;L3 · 河岸" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1370" y="990" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="new14" value="太一门遗址&#xA;L2 · 山间台地" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9ab9b1;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="230" y="1370" width="42" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="new15" value="五行殿&#xA;L3 · 遗址内庭" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="1410" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="new16" value="剑气温泉&#xA;L3 · 山麓温泉" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="1320" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="new17" value="图腾柱林&#xA;L2 · 古林空地" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9ab9b1;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="1450" width="42" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="new18" value="银杏祖庭&#xA;L3 · 林谷深处" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="1510" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="new19" value="万毒珠传闻&#xA;L3 · 毒泽边缘" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="1540" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="new20" value="方丈仙岛&#xA;L2 · 孤岛港湾" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9ab9b1;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1680" y="1450" width="42" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="new21" value="龙宫遗迹&#xA;L3 · 深海礁群" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1770" y="1500" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="new22" value="流亡者航道&#xA;L3 · 外海航路" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1630" y="1580" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="new23" value="黑白坊市&#xA;L2 · 荒原驿道" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9ab9b1;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="150" y="730" width="42" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="new24" value="绝灵渊&#xA;L3 · 裂谷边缘" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="680" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="new25" value="埋骨沙海&#xA;L3 · 沙海古道" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="810" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="new26" value="公孙氏阵坊&#xA;L2 · 平原阵台" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9ab9b1;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="1180" width="42" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="new27" value="火种谷&#xA;L3 · 谷地平原" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="1230" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="new28" value="百炼窑&#xA;L3 · 山麓工坊" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3ead4;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1290" y="1260" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_0_0" value="霜刃门&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="110" y="514" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_0_1" value="寒泉村&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="247" y="540" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_0_2" value="北境商栈&#xA;L3 · 小势力" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="384" y="514" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_0_3" value="破冰渡&#xA;L3 · 小势力" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="163" y="593" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_1_0" value="雪原道场&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="637" y="514" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_1_1" value="风雪驿&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="774" y="540" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_1_2" value="玄冰药圃&#xA;L3 · 小势力" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="911" y="514" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_1_3" value="巡边营&#xA;L3 · 小势力" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="690" y="593" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_2_0" value="听潮观&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1163" y="514" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_2_1" value="海盐寨&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="540" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_2_2" value="沧海阁&#xA;L2 · 垂天航官遗脉" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1437" y="514" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_2_3" value="观澜遗台&#xA;L3 · 垂天观象台" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1216" y="593" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_3_0" value="北冥渔寨&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1690" y="514" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_3_1" value="鲸骨岛&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1827" y="540" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_3_2" value="逐浪会&#xA;L3 · 小势力" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1964" y="514" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_3_3" value="鲲骸祀坛&#xA;L3 · 鲲鹏遗族旧祀" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1743" y="593" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_4_0" value="阴符寨&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="110" y="1041" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_4_1" value="鬼市茶楼&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="247" y="1067" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_4_2" value="断魂坡&#xA;L3 · 小势力" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="384" y="1041" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_4_3" value="夜行驿&#xA;L3 · 小势力" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="163" y="1120" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_5_0" value="清虚别院&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="637" y="1041" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_5_1" value="白鹿书院&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="774" y="1067" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_5_2" value="云阶坊&#xA;L3 · 小势力" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="911" y="1041" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_5_3" value="栖霞药园&#xA;L3 · 小势力" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="690" y="1120" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_6_0" value="百器门&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1163" y="1041" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_6_1" value="飞梭会&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="1067" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_6_2" value="铜炉镇&#xA;L3 · 小势力" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1437" y="1041" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_6_3" value="偃师遗窟&#xA;L3 · 垂天工造遗址" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1216" y="1120" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_7_0" value="海贸行馆&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1690" y="1041" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_7_1" value="渔火镇&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1827" y="1067" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_7_2" value="潮汐渡&#xA;L3 · 小势力" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1964" y="1041" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_7_3" value="珊瑚药圃&#xA;L3 · 小势力" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1743" y="1120" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_8_0" value="洗剑山庄&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="110" y="1567" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_8_1" value="赤岩寨&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="247" y="1593" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_8_2" value="剑谷酒肆&#xA;L3 · 小势力" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="384" y="1567" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_8_3" value="陨铁洗剑潭&#xA;L3 · 人道纪剑池" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="163" y="1646" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_9_0" value="望月李家&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="637" y="1567" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_9_1" value="白石镇&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="774" y="1593" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_9_2" value="青岚观&#xA;L3 · 小势力" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="911" y="1567" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_9_3" value="寒松家&#xA;L3 · 小势力" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="690" y="1646" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_9_4" value="灵草谷&#xA;L3 · 小势力" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="869" y="1651" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_10_0" value="丹霞小筑&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1163" y="1567" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_10_1" value="符箓会&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="1593" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_10_2" value="阵师营&#xA;L3 · 小势力" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1437" y="1567" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_10_3" value="灵田庄&#xA;L3 · 小势力" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1216" y="1646" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_11_0" value="海商会馆&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1690" y="1567" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_11_1" value="夜航渡&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1827" y="1593" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_11_2" value="渔人村&#xA;L3 · 小势力" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1964" y="1567" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_11_3" value="潮生药市&#xA;L3 · 小势力" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1743" y="1646" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_12_0" value="黄沙帮&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="110" y="2093" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_12_1" value="折风客栈&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="247" y="2119" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_12_2" value="绿洲坊&#xA;L3 · 小势力" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="384" y="2093" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_12_3" value="断碑烽燧&#xA;L3 · 烬余纪边军遗址" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="163" y="2172" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_13_0" value="百毒寨&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="637" y="2093" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_13_1" value="灵木村&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="774" y="2119" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_13_2" value="药师会&#xA;L3 · 小势力" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="911" y="2093" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_13_3" value="相柳祀井&#xA;L3 · 灵长纪巫祀遗址" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="690" y="2172" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_14_0" value="青藤部&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1163" y="2093" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_14_1" value="白猿岭&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="2119" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_14_2" value="百兽寨&#xA;L3 · 小势力" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1437" y="2093" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_14_3" value="百灵互市&#xA;L3 · 万妖谷外市" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1216" y="2172" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_14_4" value="句芒祠遗址&#xA;L3 · 灵长纪木祀" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1395" y="2177" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_15_0" value="海月岛&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1690" y="2093" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_15_1" value="鲛人市&#xA;L2 · 小势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a9c8b8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1827" y="2119" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_15_2" value="蓬莱外岛&#xA;L3 · 小势力" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1964" y="2093" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="expand_15_4" value="云帆商队&#xA;L3 · 小势力" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#f3e6c9;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1922" y="2177" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="f0a" value="寒霄剑门&#xA;L2 · 北极外门" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d4db;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="205" y="390" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="f0b" value="寒潭观&#xA;L2 · 守裂隙者" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d4db;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="414" y="414" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="f1a" value="北原陈家&#xA;L2 · 关隘世家" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d4db;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="732" y="390" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="f1b" value="雪岭药谷&#xA;L2 · 冰灵草商" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d4db;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="940" y="414" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="f2a" value="玄潮书院&#xA;L2 · 天机外线" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d4db;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1258" y="390" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="f2b" value="北斗渔盟&#xA;L2 · 海图世家" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d4db;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1467" y="414" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="f3a" value="鲲庭遗民&#xA;L2 · 北冥旧族" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d4db;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1785" y="390" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="f3b" value="望潮司&#xA;L2 · 相山舟师" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d4db;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1994" y="414" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="f4a" value="冥灯门&#xA;L2 · 鬼市耳目" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d8c5d9;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="205" y="917" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="f4b" value="白骨宗&#xA;L2 · 西漠魔修" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d8c5d9;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="414" y="941" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="f5a" value="青云观&#xA;L2 · 垂天遗脉" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d8e2bd;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="732" y="917" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="f5b" value="澄心碑会&#xA;L2 · 烬余守约" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d8e2bd;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="940" y="941" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="f6a" value="天工阁&#xA;L2 · 千机附庸" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e4d4ad;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1258" y="917" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="f6b" value="墨机谷&#xA;L2 · 傀儡传承" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e4d4ad;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1467" y="941" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="f7a" value="沧海阁&#xA;L2 · 仙庭航官" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d9dc;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1785" y="917" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="f7b" value="鲛纱阁&#xA;L2 · 海族商会" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d9dc;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1994" y="941" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="f8a" value="枕剑庐&#xA;L2 · 剑冢守人" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5cce2;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="205" y="1444" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="f8b" value="剑池山庄&#xA;L2 · 铸剑世家" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5cce2;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="414" y="1468" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="f9a" value="姜氏王府&#xA;L2 · 大夏军府" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d8e2bd;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="732" y="1444" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="f9b" value="长风镖局&#xA;L2 · 人道旧路" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d8e2bd;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="940" y="1468" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="f10a" value="火种谷&#xA;L2 · 丹鼎外谷" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e4d4ad;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1258" y="1444" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="f10b" value="公孙阵府&#xA;L2 · 阵法世家" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e4d4ad;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1467" y="1468" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="f11a" value="南冥苏家&#xA;L2 · 海贸世家" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d9dc;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1785" y="1444" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="f11b" value="潮生门&#xA;L2 · 水法小宗" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d9dc;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1994" y="1468" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="f12a" value="苦禅寺&#xA;L2 · 绝灵渊旁" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ead3b3;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="205" y="1971" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="f12b" value="折戟山庄&#xA;L2 · 烬余边军" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ead3b3;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="414" y="1995" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="f13a" value="百草谷&#xA;L2 · 南疆药修" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8deb8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="732" y="1971" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="f13b" value="赤焰山庄&#xA;L2 · 火祀遗脉" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8deb8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="940" y="1995" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="f14a" value="万兽部&#xA;L2 · 百族大部" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8deb8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1258" y="1971" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="f14b" value="青木部&#xA;L2 · 木祀遗脉" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8deb8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1467" y="1995" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="f15a" value="扶桑岛&#xA;L2 · 昭明新派" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d9dc;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1785" y="1971" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="f15b" value="蜃楼阁&#xA;L2 · 海上散修" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d9dc;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1994" y="1995" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="h0a" value="天寒宗&#xA;L2 · 冰修大派" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d4db;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="82" y="476" width="36" height="12" as="geometry" /></mxCell><mxCell id="h0b" value="凌霜陆家&#xA;L2 · 北境世家" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d4db;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="270" y="501" width="36" height="12" as="geometry" /></mxCell><mxCell id="h0c" value="冰心谷&#xA;L2 · 女修小宗" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d4db;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="458" y="526" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="h1a" value="北岳门&#xA;L2 · 守关宗门" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d4db;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="609" y="476" width="36" height="12" as="geometry" /></mxCell><mxCell id="h1b" value="望雪楼&#xA;L2 · 北原散修" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d4db;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="797" y="501" width="36" height="12" as="geometry" /></mxCell><mxCell id="h1c" value="青冥白家&#xA;L2 · 冰灵世家" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d4db;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="985" y="526" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="h2a" value="听涛门&#xA;L2 · 海修宗门" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d4db;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1136" y="476" width="36" height="12" as="geometry" /></mxCell><mxCell id="h2b" value="沧浪帮&#xA;L2 · 海上散修" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d4db;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1324" y="501" width="36" height="12" as="geometry" /></mxCell><mxCell id="h2c" value="落星山庄&#xA;L2 · 观星世家" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d4db;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1512" y="526" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="h3a" value="鲲灵宫&#xA;L2 · 北冥妖宫" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d4db;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1663" y="476" width="36" height="12" as="geometry" /></mxCell><mxCell id="h3b" value="北海叶家&#xA;L2 · 海修世家" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d4db;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1851" y="501" width="36" height="12" as="geometry" /></mxCell><mxCell id="h3c" value="玄甲门&#xA;L2 · 体修小宗" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d4db;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="2039" y="526" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="h4a" value="阴尸宗&#xA;L2 · 尸道宗门" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d8c5d9;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="82" y="1003" width="36" height="12" as="geometry" /></mxCell><mxCell id="h4b" value="血河门&#xA;L2 · 魔修小宗" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d8c5d9;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="270" y="1028" width="36" height="12" as="geometry" /></mxCell><mxCell id="h4c" value="黑水寨&#xA;L2 · 散修势力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d8c5d9;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="458" y="1053" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="h5a" value="清微派&#xA;L2 · 道门旁支" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d8e2bd;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="609" y="1003" width="36" height="12" as="geometry" /></mxCell><mxCell id="h5b" value="紫阳门&#xA;L2 · 中州小宗" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d8e2bd;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="797" y="1028" width="36" height="12" as="geometry" /></mxCell><mxCell id="h5c" value="白鹿书院&#xA;L2 · 儒修传承" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d8e2bd;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="985" y="1053" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="h6a" value="金刚门&#xA;L2 · 体修宗门" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e4d4ad;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1136" y="1003" width="36" height="12" as="geometry" /></mxCell><mxCell id="h6b" value="青铜山庄&#xA;L2 · 炼器世家" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e4d4ad;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1324" y="1028" width="36" height="12" as="geometry" /></mxCell><mxCell id="h6c" value="火云谷&#xA;L2 · 炼丹小宗" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e4d4ad;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1512" y="1053" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="h7a" value="碧波宫&#xA;L2 · 水法宗门" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d9dc;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1663" y="1003" width="36" height="12" as="geometry" /></mxCell><mxCell id="h7b" value="珊瑚谷&#xA;L2 · 海族支脉" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d9dc;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1851" y="1028" width="36" height="12" as="geometry" /></mxCell><mxCell id="h7c" value="龙渊门&#xA;L2 · 海修小宗" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d9dc;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="2039" y="1053" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="h8a" value="青锋门&#xA;L2 · 剑修小宗" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5cce2;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="82" y="1530" width="36" height="12" as="geometry" /></mxCell><mxCell id="h8b" value="天游剑阁&#xA;L2 · 剑道传承" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5cce2;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="270" y="1555" width="36" height="12" as="geometry" /></mxCell><mxCell id="h8c" value="落霞山庄&#xA;L2 · 剑南世家" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5cce2;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="458" y="1580" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="h9a" value="清河崔家&#xA;L2 · 中州世家" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d8e2bd;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="609" y="1530" width="36" height="12" as="geometry" /></mxCell><mxCell id="h9b" value="青阳陆家&#xA;L2 · 中州世家" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d8e2bd;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="797" y="1555" width="36" height="12" as="geometry" /></mxCell><mxCell id="h9c" value="文昌书院&#xA;L2 · 儒修门庭" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d8e2bd;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="985" y="1580" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="h10a" value="七玄门&#xA;L2 · 符修宗门" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e4d4ad;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1136" y="1530" width="36" height="12" as="geometry" /></mxCell><mxCell id="h10b" value="灵符宗&#xA;L2 · 符箓传承" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e4d4ad;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1324" y="1555" width="36" height="12" as="geometry" /></mxCell><mxCell id="h10c" value="赤炉山&#xA;L2 · 炼器道场" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e4d4ad;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1512" y="1580" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="h11a" value="水月宫&#xA;L2 · 海上女修" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d9dc;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1663" y="1530" width="36" height="12" as="geometry" /></mxCell><mxCell id="h11b" value="玄鲛族&#xA;L2 · 海族支脉" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d9dc;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1851" y="1555" width="36" height="12" as="geometry" /></mxCell><mxCell id="h11c" value="飞云岛&#xA;L2 · 海外散修" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d9dc;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="2039" y="1580" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="h12a" value="天狼寨&#xA;L2 · 西漠散修" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ead3b3;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="82" y="2057" width="36" height="12" as="geometry" /></mxCell><mxCell id="h12b" value="流云观&#xA;L2 · 风修道观" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ead3b3;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="270" y="2082" width="36" height="12" as="geometry" /></mxCell><mxCell id="h12c" value="铁砂门&#xA;L2 · 体修小宗" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ead3b3;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="458" y="2107" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="h13a" value="万蛊门&#xA;L2 · 南疆毒修" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8deb8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="609" y="2057" width="36" height="12" as="geometry" /></mxCell><mxCell id="h13b" value="青蛇寨&#xA;L2 · 百族部落" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8deb8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="797" y="2082" width="36" height="12" as="geometry" /></mxCell><mxCell id="h13c" value="药王谷&#xA;L2 · 南疆药修" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8deb8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="985" y="2107" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="h14a" value="黑熊部&#xA;L2 · 百族部落" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8deb8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1136" y="2057" width="36" height="12" as="geometry" /></mxCell><mxCell id="h14b" value="金雕部&#xA;L2 · 百族部落" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8deb8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1324" y="2082" width="36" height="12" as="geometry" /></mxCell><mxCell id="h14c" value="玄木寨&#xA;L2 · 木修部落" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8deb8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1512" y="2107" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="h15a" value="紫府岛&#xA;L2 · 海外道统" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d9dc;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1663" y="2057" width="36" height="12" as="geometry" /></mxCell><mxCell id="h15b" value="天游宫&#xA;L2 · 蓬莱旁支" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d9dc;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1851" y="2082" width="36" height="12" as="geometry" /></mxCell><mxCell id="h15c" value="碧落门&#xA;L2 · 海外散派" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d9dc;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="2039" y="2107" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g0a" value="雪月宫&#xA;L2 · 冰修宗门" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d4db;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="286" y="382" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g0b" value="北玄沈家&#xA;L2 · 北境世家" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d4db;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="468" y="438" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g1a" value="玄冰门&#xA;L2 · 冰法小宗" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d4db;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="813" y="382" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g1b" value="风雷堡&#xA;L2 · 守关世家" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d4db;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="995" y="438" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g2a" value="海天阁&#xA;L2 · 观星一脉" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d4db;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1340" y="382" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g2b" value="金鳞岛&#xA;L2 · 海修散地" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d4db;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1522" y="438" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g3a" value="北冥鲲族&#xA;L2 · 妖族支脉" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d4db;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1867" y="382" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g3b" value="玄龟岛&#xA;L2 · 海族祖地" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d4db;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="2049" y="438" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g4a" value="阴煞宗&#xA;L2 · 鬼修一脉" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d8c5d9;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="286" y="909" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g4b" value="黄泉谷&#xA;L2 · 阴修散地" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d8c5d9;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="468" y="965" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g5a" value="紫霄宫&#xA;L2 · 玉虚旁支" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d8e2bd;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="813" y="909" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g5b" value="太虚门&#xA;L2 · 道门支脉" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d8e2bd;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="995" y="965" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g6a" value="百炼谷&#xA;L2 · 炼器宗门" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e4d4ad;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1340" y="909" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g6b" value="归元楼&#xA;L2 · 丹修世家" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e4d4ad;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1522" y="965" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g7a" value="沧浪门&#xA;L2 · 水法一脉" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d9dc;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1867" y="909" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g7b" value="青螺岛&#xA;L2 · 海修散地" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d9dc;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="2049" y="965" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g8a" value="七剑门&#xA;L2 · 剑修小宗" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5cce2;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="286" y="1436" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g8b" value="寒江剑派&#xA;L2 · 剑南散派" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5cce2;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="468" y="1492" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g9a" value="王氏族地&#xA;L2 · 中州世家" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d8e2bd;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="813" y="1436" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g9b" value="天元书院&#xA;L2 · 儒修传承" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d8e2bd;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="995" y="1492" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g10a" value="丹霞宗&#xA;L2 · 丹修小宗" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e4d4ad;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1340" y="1436" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g10b" value="神火门&#xA;L2 · 火法一脉" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e4d4ad;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1522" y="1492" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g11a" value="天水门&#xA;L2 · 水法小宗" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d9dc;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1867" y="1436" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g11b" value="孤鸿岛&#xA;L2 · 海外散修" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d9dc;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="2049" y="1492" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g12a" value="黄沙门&#xA;L2 · 西漠散派" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ead3b3;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="286" y="1963" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g12b" value="玄风谷&#xA;L2 · 风修小宗" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ead3b3;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="468" y="2019" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g13a" value="五仙教&#xA;L2 · 南疆毒修" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8deb8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="813" y="1963" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g13b" value="百花谷&#xA;L2 · 木修小宗" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8deb8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="995" y="2019" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g14a" value="白猿族&#xA;L2 · 妖族支脉" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8deb8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1340" y="1963" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g14b" value="赤虎部&#xA;L2 · 百族部落" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8deb8;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1522" y="2019" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g15a" value="碧游宫&#xA;L2 · 海外道统" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d9dc;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="1867" y="1963" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="g15b" value="天涯阁&#xA;L2 · 散修客栈" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d9dc;strokeColor=#596864;fontSize=6;" vertex="1" parent="1"><mxGeometry x="2049" y="2019" width="36" height="12" as="geometry" /></mxCell>
+        <mxCell id="l4_0" value="寒渊秘境现世&#xA;L4 · 随机探索" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#e9c6c6;strokeColor=#9c4f4f;fontSize=6;dashed=1;" vertex="1" parent="1"><mxGeometry x="130" y="570" width="40" height="14" as="geometry" /></mxCell>
+        <mxCell id="l4_1" value="相山地宫现世&#xA;L4 · 随机探索" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#e9c6c6;strokeColor=#9c4f4f;fontSize=6;dashed=1;" vertex="1" parent="1"><mxGeometry x="1740" y="570" width="40" height="14" as="geometry" /></mxCell>
+        <mxCell id="l4_2" value="黄泉古墓现世&#xA;L4 · 随机探索" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#e9c6c6;strokeColor=#9c4f4f;fontSize=6;dashed=1;" vertex="1" parent="1"><mxGeometry x="150" y="1120" width="40" height="14" as="geometry" /></mxCell>
+        <mxCell id="l4_3" value="白玉京投影&#xA;L4 · 随机探索" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#e9c6c6;strokeColor=#9c4f4f;fontSize=6;dashed=1;" vertex="1" parent="1"><mxGeometry x="900" y="1120" width="40" height="14" as="geometry" /></mxCell>
+        <mxCell id="l4_4" value="天工洞府现世&#xA;L4 · 随机探索" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#e9c6c6;strokeColor=#9c4f4f;fontSize=6;dashed=1;" vertex="1" parent="1"><mxGeometry x="1420" y="1120" width="40" height="14" as="geometry" /></mxCell>
+        <mxCell id="l4_5" value="蜃楼秘境现世&#xA;L4 · 随机探索" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#e9c6c6;strokeColor=#9c4f4f;fontSize=6;dashed=1;" vertex="1" parent="1"><mxGeometry x="1950" y="1120" width="40" height="14" as="geometry" /></mxCell>
+        <mxCell id="l4_6" value="剑冢残境现世&#xA;L4 · 随机探索" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#e9c6c6;strokeColor=#9c4f4f;fontSize=6;dashed=1;" vertex="1" parent="1"><mxGeometry x="150" y="1650" width="40" height="14" as="geometry" /></mxCell>
+        <mxCell id="l4_7" value="万蛊秘境现世&#xA;L4 · 随机探索" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#e9c6c6;strokeColor=#9c4f4f;fontSize=6;dashed=1;" vertex="1" parent="1"><mxGeometry x="830" y="2170" width="40" height="14" as="geometry" /></mxCell>
+        <mxCell id="l4_8" value="归墟潮眼现世&#xA;L4 · 随机探索" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#e9c6c6;strokeColor=#9c4f4f;fontSize=6;dashed=1;" vertex="1" parent="1"><mxGeometry x="1950" y="2170" width="40" height="14" as="geometry" /></mxCell>
+        <mxCell id="epoch_0" value="烛阴一脉&#xA;L2 · 太古遗脉" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b9d4db;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="350" y="470" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="epoch_1" value="九脉山庄&#xA;L2 · 灵长地师" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c7d9bc;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="1750" y="470" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="epoch_2" value="长风镖局&#xA;L2 · 人道旧路" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e2d3ad;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="870" y="1600" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="epoch_3" value="青云观&#xA;L3 · 垂天残卷" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#eadfc5;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="760" y="1080" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="epoch_4" value="澄心碑会&#xA;L2 · 烬余誓约" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#cad8e2;strokeColor=#596864;fontSize=6;" vertex="1" parent="1">
+          <mxGeometry x="360" y="1080" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="epoch_5" value="枕剑庐&#xA;L3 · 剑冢守人" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#eadfc5;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="1610" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="epoch_6" value="鲛纱阁&#xA;L3 · 海族中人" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#eadfc5;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1920" y="1610" width="36" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="epoch_7" value="扶桑岛&#xA;L3 · 昭明新派" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#eadfc5;strokeColor=#596864;fontSize=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1920" y="2110" width="36" height="12" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

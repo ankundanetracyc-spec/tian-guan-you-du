@@ -1,0 +1,132 @@
+[gd_scene format=3 uid="uid://ba473otdfvygp"]
+
+[ext_resource type="FontFile" uid="uid://u5r81bxd3vrk" path="res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf" id="5_font"]
+[ext_resource type="Script" uid="uid://d0nyfropeyuhu" path="res://scripts/world/map/FactionNodeAnchor.gd" id="6_anchor"]
+[ext_resource type="Texture2D" uid="uid://evonbvxiaxuv" path="res://textures/ui/world/world_marker_circle_ink.svg" id="7_circle"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_faction"]
+radius = 84.0
+
+[node name="BaiChuanFactionNodeLayout" type="Node2D" unique_id=817155534]
+editor_description = "百川四个一级势力的地标布局层。四个锚点可直接在场景内移动；坐标以 3200×1800 百川逻辑底图为准。"
+texture_filter = 4
+
+[node name="yuxu_xianzong" type="Node2D" parent="." unique_id=1054054817]
+editor_description = "玉虚仙宗 · 西南河谷平原"
+z_index = 8
+position = Vector2(1150, 1280)
+
+[node name="Landmark" type="Sprite2D" parent="yuxu_xianzong" unique_id=491683121]
+scale = Vector2(1.38, 1.38)
+texture = ExtResource("7_circle")
+
+[node name="Label" type="Label" parent="yuxu_xianzong" unique_id=59052952]
+offset_left = -125.0
+offset_top = 78.0
+offset_right = 125.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(0.22, 0.18, 0.12, 0.94)
+theme_override_colors/font_outline_color = Color(0.93, 0.88, 0.77, 0.94)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 22
+text = "玉虚仙宗"
+horizontal_alignment = 1
+
+[node name="HitArea" type="Area2D" parent="yuxu_xianzong" unique_id=740442201]
+script = ExtResource("6_anchor")
+faction_id = "yuxu_xianzong"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="yuxu_xianzong/HitArea" unique_id=466636090]
+visible = false
+shape = SubResource("CircleShape2D_faction")
+
+[node name="taiwei_daogong" type="Node2D" parent="." unique_id=362477557]
+editor_description = "太微道宫 · 东北雪线下河源台地"
+z_index = 8
+position = Vector2(2300, 580)
+
+[node name="Landmark" type="Sprite2D" parent="taiwei_daogong" unique_id=1453480905]
+scale = Vector2(1.38, 1.38)
+texture = ExtResource("7_circle")
+
+[node name="Label" type="Label" parent="taiwei_daogong" unique_id=529106869]
+offset_left = -125.0
+offset_top = 76.0
+offset_right = 125.0
+offset_bottom = 108.0
+theme_override_colors/font_color = Color(0.22, 0.18, 0.12, 0.94)
+theme_override_colors/font_outline_color = Color(0.93, 0.88, 0.77, 0.94)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 22
+text = "太微道宫"
+horizontal_alignment = 1
+
+[node name="HitArea" type="Area2D" parent="taiwei_daogong" unique_id=1714145611]
+script = ExtResource("6_anchor")
+faction_id = "taiwei_daogong"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="taiwei_daogong/HitArea" unique_id=1149571568]
+visible = false
+shape = SubResource("CircleShape2D_faction")
+
+[node name="xuandu_tianfu" type="Node2D" parent="." unique_id=365302743]
+editor_description = "玄都天府 · 西北古驿盆地"
+z_index = 8
+position = Vector2(650, 700)
+
+[node name="Landmark" type="Sprite2D" parent="xuandu_tianfu" unique_id=880523078]
+scale = Vector2(1.38, 1.38)
+texture = ExtResource("7_circle")
+
+[node name="Label" type="Label" parent="xuandu_tianfu" unique_id=2077415892]
+offset_left = -125.0
+offset_top = 74.0
+offset_right = 125.0
+offset_bottom = 106.0
+theme_override_colors/font_color = Color(0.22, 0.18, 0.12, 0.94)
+theme_override_colors/font_outline_color = Color(0.93, 0.88, 0.77, 0.94)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 22
+text = "玄都天府"
+horizontal_alignment = 1
+
+[node name="HitArea" type="Area2D" parent="xuandu_tianfu" unique_id=471406194]
+script = ExtResource("6_anchor")
+faction_id = "xuandu_tianfu"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="xuandu_tianfu/HitArea" unique_id=979292169]
+visible = false
+shape = SubResource("CircleShape2D_faction")
+
+[node name="wuxiang_shengzong" type="Node2D" parent="." unique_id=425439281]
+editor_description = "无相圣宗 · 东南内陆台地与下游支流，远离海岸线"
+z_index = 8
+position = Vector2(2480, 1280)
+
+[node name="Landmark" type="Sprite2D" parent="wuxiang_shengzong" unique_id=32391746]
+scale = Vector2(1.38, 1.38)
+texture = ExtResource("7_circle")
+
+[node name="Label" type="Label" parent="wuxiang_shengzong" unique_id=1068266855]
+offset_left = -125.0
+offset_top = 86.0
+offset_right = 125.0
+offset_bottom = 118.0
+theme_override_colors/font_color = Color(0.22, 0.18, 0.12, 0.94)
+theme_override_colors/font_outline_color = Color(0.93, 0.88, 0.77, 0.94)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 22
+text = "无相圣宗"
+horizontal_alignment = 1
+
+[node name="HitArea" type="Area2D" parent="wuxiang_shengzong" unique_id=1145605546]
+script = ExtResource("6_anchor")
+faction_id = "wuxiang_shengzong"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wuxiang_shengzong/HitArea" unique_id=143456859]
+visible = false
+shape = SubResource("CircleShape2D_faction")

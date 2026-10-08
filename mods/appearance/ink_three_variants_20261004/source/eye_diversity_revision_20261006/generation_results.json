@@ -1,0 +1,25 @@
+{
+  "mode": "built-in image_gen",
+  "selected_prompts": "selected_prompts.json",
+  "style_master": "source/style_expansion_20261006/reference_first/first_face_context.png and male/eyes/01.png",
+  "selected": [
+    {
+      "key": "ningyue",
+      "generated_original": "D:\\CodexData\\generated_images\\01a0fd74-de00-7ab2-9dfc-c15a97009561\\exec-4750d78f-d14e-4984-8e09-c0fcf1e15006.png",
+      "workspace_source": "ningyue_eyes.png",
+      "sha256": "30236d56bfc47848d0d2046e35a078fe0f80d704408682416eebd229a1d74b11"
+    },
+    {
+      "key": "changfeng",
+      "generated_original": "D:\\CodexData\\generated_images\\01a0fd74-de00-7ab2-9dfc-c15a97009561\\exec-f727f12a-b2a2-48eb-9637-bfe4594aceda.png",
+      "workspace_source": "changfeng_eyes.png",
+      "sha256": "8984019b75c98414f40f5bc69939e1e6f7b51c22c3f1d81630ac151aa8ca777b"
+    },
+    {
+      "key": "cangshan",
+      "generated_original": "D:\\CodexData\\generated_images\\01a0fd74-de00-7ab2-9dfc-c15a97009561\\exec-8d7079ae-a1c9-4a43-9358-81f6892455d6.png",
+      "workspace_source": "cangshan_eyes.png",
+      "sha256": "b2f1a71e8d9663b355b685335229e4f1353895bc0860879f7f53c8f3bdfa0b63"
+    }
+  ]
+}

@@ -1,0 +1,348 @@
+{
+  "mode": "built-in image_gen",
+  "skin_contract": "pure featureless head and continuous neck, no hair/ears/clothes; single natural jaw contour",
+  "ear_names": [
+    "标准耳",
+    "小巧耳",
+    "长耳",
+    "圆耳垂",
+    "贴耳"
+  ],
+  "canvas": [
+    1024,
+    1536
+  ],
+  "registration_rule": "whole canvas affine only, preserve original generated alpha",
+  "assets": [
+    {
+      "sex": "male",
+      "part": "face",
+      "index": 0,
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-c90c519f-88a8-45a2-9036-86f9eddc2eb4.png",
+      "prompt": "Use case: precise-object-edit. Input is an existing modular blank HEAD-SKIN layer displayed on beige solely so its actual outline is visible.\nRepaint it as ONE clean featureless head and continuous extended neck skin layer on genuine transparent1024x1536 canvas. REMOVE ALL black/brown hair at forehead, temples, jaw sides and neck, ALL ears, ALL white/blue clothing/collar and any double dark jaw contours. No hair or garment pixels anywhere.\nKeep the original small head placement, original upper face width, skin palette and softly ink-painted texture. Axis x512, forehead at y265..279; face upper temple edges x420/604 at eye line y380. Keep upper face size and forehead position. Male chin y547 / female chin550. Natural smooth jaw-to-neck transition with ONE subtle contour and restrained under-chin shadow, never a doubled outline, black stripe, cutout wedge or flat angular pasted edge. Continuous neck from jaw down to y790 under future robe; neck outer sides aroundx436/588 at y570, gently broaden toward base under clothing. The face is BLANK featureless skin: no eyes, brows, nose, lips, beard, eyelashes, hairline stubble or dark facial marks. Warm pale matte skin matching input with gentle paper/ink shading, no glow or plastic highlights.\nOutput head+neck skin only, true transparent alpha outside exact continuous skin outline. No haze, halo, detached fragments, skin-colored background, bust, shoulders, ears, clothes, ornaments or text. No zoom/recenter. Correct jaw anatomy, preserving enough continuous neck overlap for later clothing.\nVariant: male, STANDARD natural oval jaw; subtle gently rounded chin, proportionate to original young adult face.",
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/skin_ear_v12/face_0.png",
+      "registration": {
+        "x_scale": 0.7,
+        "y_scale": 0.8666666666666667,
+        "anchor_x": 512,
+        "anchor_y": 662,
+        "offset_y": -115
+      }
+    },
+    {
+      "sex": "female",
+      "part": "face",
+      "index": 0,
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-6ee9f0ce-eca8-4142-b6b5-ce50077926a2.png",
+      "prompt": "Use case: precise-object-edit. Input is an existing modular blank HEAD-SKIN layer displayed on beige solely so its actual outline is visible.\nRepaint it as ONE clean featureless head and continuous extended neck skin layer on genuine transparent1024x1536 canvas. REMOVE ALL black/brown hair at forehead, temples, jaw sides and neck, ALL ears, ALL white/blue clothing/collar and any double dark jaw contours. No hair or garment pixels anywhere.\nKeep the original small head placement, original upper face width, skin palette and softly ink-painted texture. Axis x512, forehead at y265..279; face upper temple edges x420/604 at eye line y380. Keep upper face size and forehead position. Male chin y547 / female chin550. Natural smooth jaw-to-neck transition with ONE subtle contour and restrained under-chin shadow, never a doubled outline, black stripe, cutout wedge or flat angular pasted edge. Continuous neck from jaw down to y790 under future robe; neck outer sides aroundx436/588 at y570, gently broaden toward base under clothing. The face is BLANK featureless skin: no eyes, brows, nose, lips, beard, eyelashes, hairline stubble or dark facial marks. Warm pale matte skin matching input with gentle paper/ink shading, no glow or plastic highlights.\nOutput head+neck skin only, true transparent alpha outside exact continuous skin outline. No haze, halo, detached fragments, skin-colored background, bust, shoulders, ears, clothes, ornaments or text. No zoom/recenter. Correct jaw anatomy, preserving enough continuous neck overlap for later clothing.\nVariant: female, STANDARD natural oval jaw; subtle gently rounded chin, proportionate to original young adult face.",
+      "source": "mods/appearance/腰上女修拆件演示_v1/source/skin_ear_v9/face_0.png",
+      "registration": {
+        "x_scale": 0.57,
+        "y_scale": 0.703125,
+        "anchor_x": 512,
+        "anchor_y": 750,
+        "offset_y": -200
+      }
+    },
+    {
+      "sex": "male",
+      "part": "face",
+      "index": 1,
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-ee85d429-bac4-477d-a465-588beee10758.png",
+      "prompt": "Use case: precise-object-edit. Input is the ACCEPTED PURE FEATURELESS HEAD SKIN AND NECK layer displayed on beige only to inspect anatomy. Make one modular jaw-shape variant. KEEP the full canvas1024x1536, EXACT original head registration and upper head geometry: axis512, upper head width184 and temples x420/604 at eyelevel380, forehead position235..279, identical upperhead throughy410. Neck remains continuous to~760 beneath futureclothing, inner side aroundx445/579 at y580. Change the lowerjaw anatomy BELOWy410 to the specified shape, maintaining headsize and fixedchin baseline. Soft warm pale MATTE ink-painted skin of reference. ONE subtle jaw contour and natural soft underchin shadow; no doubled black outline, hard cutout, dark hair-like jawstripe. HEAD SKIN + NECK ONLY. NO hair, stubble, beard, ears, eyes, brows, nose, mouth, clothing/collar, shoulders, background or text. Genuine transparent alpha outsidecontinuousskin, no halo/fragments. Featureless pure skin with subtle face-volume shading; preserve reference material and color. Do not zoom or recenter. Beige is reference backgroundonly, outputtransparent.\nGender:male. Variant:宽下颌. BROAD JAW: from cheeks below y420 broaden to strong jaw angles near x434 and590 at y486; broad rounded chin width70 at y535, chinbottom547. Visibly wider lower face, natural masculine oval, no square hard cut.",
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/skin_ear_v12/face_1.png",
+      "registration": {
+        "x_scale": 0.7215686274509804,
+        "y_scale": 0.832,
+        "anchor_x": 519.0,
+        "anchor_y": 615,
+        "offset_x": -7.0,
+        "offset_y": -68
+      }
+    },
+    {
+      "sex": "male",
+      "part": "face",
+      "index": 2,
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-08dae301-d1cf-4486-a308-90417593ccc2.png",
+      "prompt": "Use case: precise-object-edit. Input is the ACCEPTED PURE FEATURELESS HEAD SKIN AND NECK layer displayed on beige only to inspect anatomy. Make one modular jaw-shape variant. KEEP the full canvas1024x1536, EXACT original head registration and upper head geometry: axis512, upper head width184 and temples x420/604 at eyelevel380, forehead position235..279, identical upperhead throughy410. Neck remains continuous to~760 beneath futureclothing, inner side aroundx445/579 at y580. Change the lowerjaw anatomy BELOWy410 to the specified shape, maintaining headsize and fixedchin baseline. Soft warm pale MATTE ink-painted skin of reference. ONE subtle jaw contour and natural soft underchin shadow; no doubled black outline, hard cutout, dark hair-like jawstripe. HEAD SKIN + NECK ONLY. NO hair, stubble, beard, ears, eyes, brows, nose, mouth, clothing/collar, shoulders, background or text. Genuine transparent alpha outsidecontinuousskin, no halo/fragments. Featureless pure skin with subtle face-volume shading; preserve reference material and color. Do not zoom or recenter. Beige is reference backgroundonly, outputtransparent.\nGender:male. Variant:窄长脸. NARROW LONG FACE: narrow cheek taper below y410, lower cheek edges nearx447/577 at y465; slim elongated lower face, delicate slim chin width32 at y535 with chinbottom547. Distinct long narrow impression without moving upper feature area.",
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/skin_ear_v12/face_2.png",
+      "registration": {
+        "x_scale": 0.983957219251337,
+        "y_scale": 0.9780564263322884,
+        "anchor_x": 512.0,
+        "anchor_y": 553,
+        "offset_x": 0.0,
+        "offset_y": -6
+      }
+    },
+    {
+      "sex": "male",
+      "part": "face",
+      "index": 3,
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-71f721e5-42d3-42fc-8772-caedf66e2219.png",
+      "prompt": "Use case: precise-object-edit. Input is the ACCEPTED PURE FEATURELESS HEAD SKIN AND NECK layer displayed on beige only to inspect anatomy. Make one modular jaw-shape variant. KEEP the full canvas1024x1536, EXACT original head registration and upper head geometry: axis512, upper head width184 and temples x420/604 at eyelevel380, forehead position235..279, identical upperhead throughy410. Neck remains continuous to~760 beneath futureclothing, inner side aroundx445/579 at y580. Change the lowerjaw anatomy BELOWy410 to the specified shape, maintaining headsize and fixedchin baseline. Soft warm pale MATTE ink-painted skin of reference. ONE subtle jaw contour and natural soft underchin shadow; no doubled black outline, hard cutout, dark hair-like jawstripe. HEAD SKIN + NECK ONLY. NO hair, stubble, beard, ears, eyes, brows, nose, mouth, clothing/collar, shoulders, background or text. Genuine transparent alpha outsidecontinuousskin, no halo/fragments. Featureless pure skin with subtle face-volume shading; preserve reference material and color. Do not zoom or recenter. Beige is reference backgroundonly, outputtransparent.\nGender:male. Variant:圆润脸. ROUND FACE: fuller curved lower cheeks belowy410, round lowerjaw sides x433/591 at y485, softly broad curved chin width82 aty525 bottom547. Visibly round instead of pointed or angular.",
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/skin_ear_v12/face_3.png",
+      "registration": {
+        "x_scale": 0.6258503401360545,
+        "y_scale": 0.7554479418886199,
+        "anchor_x": 512.5,
+        "anchor_y": 647,
+        "offset_x": -0.5,
+        "offset_y": -100
+      }
+    },
+    {
+      "sex": "male",
+      "part": "face",
+      "index": 4,
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-c0b9cbd8-7329-4dd0-9690-464314f7bb2c.png",
+      "prompt": "Use case: precise-object-edit. Input is the ACCEPTED PURE FEATURELESS HEAD SKIN AND NECK layer displayed on beige only to inspect anatomy. Make one modular jaw-shape variant. KEEP the full canvas1024x1536, EXACT original head registration and upper head geometry: axis512, upper head width184 and temples x420/604 at eyelevel380, forehead position235..279, identical upperhead throughy410. Neck remains continuous to~760 beneath futureclothing, inner side aroundx445/579 at y580. Change the lowerjaw anatomy BELOWy410 to the specified shape, maintaining headsize and fixedchin baseline. Soft warm pale MATTE ink-painted skin of reference. ONE subtle jaw contour and natural soft underchin shadow; no doubled black outline, hard cutout, dark hair-like jawstripe. HEAD SKIN + NECK ONLY. NO hair, stubble, beard, ears, eyes, brows, nose, mouth, clothing/collar, shoulders, background or text. Genuine transparent alpha outsidecontinuousskin, no halo/fragments. Featureless pure skin with subtle face-volume shading; preserve reference material and color. Do not zoom or recenter. Beige is reference backgroundonly, outputtransparent.\nGender:male. Variant:方下颌. SQUARE JAW: firm masculine corners nearx438/586 aty506, flatter broad chin width90 aty535 bottom547, anatomically rounded corners, restrained angle shadows. Clearly square lower face, not wideoval variant.",
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/skin_ear_v12/face_4.png",
+      "registration": {
+        "x_scale": 0.9735449735449735,
+        "y_scale": 1.0576271186440678,
+        "anchor_x": 513.0,
+        "anchor_y": 531,
+        "offset_x": -1.0,
+        "offset_y": 16
+      }
+    },
+    {
+      "sex": "female",
+      "part": "face",
+      "index": 1,
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-421f906d-5f34-408b-bab9-12510286a146.png",
+      "prompt": "Use case: precise-object-edit. Input is the ACCEPTED PURE FEATURELESS HEAD SKIN AND NECK layer displayed on beige only to inspect anatomy. Make one modular jaw-shape variant. KEEP the full canvas1024x1536, EXACT original head registration and upper head geometry: axis512, upper head width184 and temples x420/604 at eyelevel380, forehead position235..279, identical upperhead throughy410. Neck remains continuous to~760 beneath futureclothing, inner side aroundx445/579 at y580. Change the lowerjaw anatomy BELOWy410 to the specified shape, maintaining headsize and fixedchin baseline. Soft warm pale MATTE ink-painted skin of reference. ONE subtle jaw contour and natural soft underchin shadow; no doubled black outline, hard cutout, dark hair-like jawstripe. HEAD SKIN + NECK ONLY. NO hair, stubble, beard, ears, eyes, brows, nose, mouth, clothing/collar, shoulders, background or text. Genuine transparent alpha outsidecontinuousskin, no halo/fragments. Featureless pure skin with subtle face-volume shading; preserve reference material and color. Do not zoom or recenter. Beige is reference backgroundonly, outputtransparent.\nGender:female. Variant:柔圆脸. SOFT ROUND FACE: fuller cheeks belowy410, soft curved sides x432/592 at y480, wide smoothly round chin width80 aty530 bottom550. Clearly rounded instead of oval or pointed.",
+      "source": "mods/appearance/腰上女修拆件演示_v1/source/skin_ear_v9/face_1.png",
+      "registration": {
+        "x_scale": 0.832579185520362,
+        "y_scale": 1.0128617363344052,
+        "anchor_x": 511.0,
+        "anchor_y": 543,
+        "offset_x": 1.0,
+        "offset_y": 7
+      }
+    },
+    {
+      "sex": "female",
+      "part": "face",
+      "index": 2,
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-5ba3ff49-d8e8-44b7-a83b-9663cfe11be2.png",
+      "prompt": "Use case: precise-object-edit. Input is the ACCEPTED PURE FEATURELESS HEAD SKIN AND NECK layer displayed on beige only to inspect anatomy. Make one modular jaw-shape variant. KEEP the full canvas1024x1536, EXACT original head registration and upper head geometry: axis512, upper head width184 and temples x420/604 at eyelevel380, forehead position235..279, identical upperhead throughy410. Neck remains continuous to~760 beneath futureclothing, inner side aroundx445/579 at y580. Change the lowerjaw anatomy BELOWy410 to the specified shape, maintaining headsize and fixedchin baseline. Soft warm pale MATTE ink-painted skin of reference. ONE subtle jaw contour and natural soft underchin shadow; no doubled black outline, hard cutout, dark hair-like jawstripe. HEAD SKIN + NECK ONLY. NO hair, stubble, beard, ears, eyes, brows, nose, mouth, clothing/collar, shoulders, background or text. Genuine transparent alpha outsidecontinuousskin, no halo/fragments. Featureless pure skin with subtle face-volume shading; preserve reference material and color. Do not zoom or recenter. Beige is reference backgroundonly, outputtransparent.\nGender:female. Variant:窄长脸. NARROW LONG FACE: cheeks taper belowy410, slender jaw nearx449/575 aty480, small slim rounded chin width30 aty540 bottom550. Visibly long narrow lower face; upper forehead and fixed feature positions unchanged.",
+      "source": "mods/appearance/腰上女修拆件演示_v1/source/skin_ear_v9/face_2.png",
+      "registration": {
+        "x_scale": 0.9787234042553191,
+        "y_scale": 1.0096153846153846,
+        "anchor_x": 511.5,
+        "anchor_y": 545,
+        "offset_x": 0.5,
+        "offset_y": 5
+      }
+    },
+    {
+      "sex": "female",
+      "part": "face",
+      "index": 3,
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-0f26309a-3f3e-487b-80f7-0b7d0bf5bdd0.png",
+      "prompt": "Use case: precise-object-edit. Input is the ACCEPTED PURE FEATURELESS HEAD SKIN AND NECK layer displayed on beige only to inspect anatomy. Make one modular jaw-shape variant. KEEP the full canvas1024x1536, EXACT original head registration and upper head geometry: axis512, upper head width184 and temples x420/604 at eyelevel380, forehead position235..279, identical upperhead throughy410. Neck remains continuous to~760 beneath futureclothing, inner side aroundx445/579 at y580. Change the lowerjaw anatomy BELOWy410 to the specified shape, maintaining headsize and fixedchin baseline. Soft warm pale MATTE ink-painted skin of reference. ONE subtle jaw contour and natural soft underchin shadow; no doubled black outline, hard cutout, dark hair-like jawstripe. HEAD SKIN + NECK ONLY. NO hair, stubble, beard, ears, eyes, brows, nose, mouth, clothing/collar, shoulders, background or text. Genuine transparent alpha outsidecontinuousskin, no halo/fragments. Featureless pure skin with subtle face-volume shading; preserve reference material and color. Do not zoom or recenter. Beige is reference backgroundonly, outputtransparent.\nGender:female. Variant:柔方脸. SOFT SQUARE FACE: subtle lowerjaw corners x439/585 aty502, broad softly flattened rounded chin width80 aty538 bottom550. Feminine anatomical rounded edges, visibly square lower face rather than roundoval.",
+      "source": "mods/appearance/腰上女修拆件演示_v1/source/skin_ear_v9/face_3.png",
+      "registration": {
+        "x_scale": 0.6323024054982818,
+        "y_scale": 0.7464454976303317,
+        "anchor_x": 511.0,
+        "anchor_y": 649,
+        "offset_x": 1.0,
+        "offset_y": -99
+      }
+    },
+    {
+      "sex": "female",
+      "part": "face",
+      "index": 4,
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-01653caf-83a2-4c9f-a3cc-1bd46ef628db.png",
+      "prompt": "Use case: precise-object-edit. Input is the ACCEPTED PURE FEATURELESS HEAD SKIN AND NECK layer displayed on beige only to inspect anatomy. Make one modular jaw-shape variant. KEEP the full canvas1024x1536, EXACT original head registration and upper head geometry: axis512, upper head width184 and temples x420/604 at eyelevel380, forehead position235..279, identical upperhead throughy410. Neck remains continuous to~760 beneath futureclothing, inner side aroundx445/579 at y580. Change the lowerjaw anatomy BELOWy410 to the specified shape, maintaining headsize and fixedchin baseline. Soft warm pale MATTE ink-painted skin of reference. ONE subtle jaw contour and natural soft underchin shadow; no doubled black outline, hard cutout, dark hair-like jawstripe. HEAD SKIN + NECK ONLY. NO hair, stubble, beard, ears, eyes, brows, nose, mouth, clothing/collar, shoulders, background or text. Genuine transparent alpha outsidecontinuousskin, no halo/fragments. Featureless pure skin with subtle face-volume shading; preserve reference material and color. Do not zoom or recenter. Beige is reference backgroundonly, outputtransparent.\nGender:female. Variant:心形脸. HEART FACE: maintain gently full uppercheeks nearx422/602 aty415, pronounced smooth taper from cheeks throughlowerjaw to small delicate rounded pointedchin width28 aty540 bottom550. Distinct heartshape, not same narrowlongjaw.",
+      "source": "mods/appearance/腰上女修拆件演示_v1/source/skin_ear_v9/face_4.png",
+      "registration": {
+        "x_scale": 0.7419354838709677,
+        "y_scale": 0.875,
+        "anchor_x": 512.5,
+        "anchor_y": 595,
+        "offset_x": -0.5,
+        "offset_y": -45
+      }
+    },
+    {
+      "sex": "male",
+      "part": "ear",
+      "index": 0,
+      "prompt": "Generate a VERY SMALL natural HUMAN EAR PAIR fitted to the exact head skin reference. Transparent 1024x1536 full canvas. The reference HEAD is NOT in output, only use its face size and pale warm matte SKIN COLOR. Each ear is narrow and sits beside the head, NOT on the eyes/cheeks. LEFT visible helix x396..421, attachment edge x425; RIGHT visible helix x603..628, attachment edge x599. Top360,bottom437. Only25px outward ear width,77px tall. Outer ears do not flare. Inner root is SHORT rounded tragus, continuous small subtle root nearx425/599 at y388..419; NO long straight skin strip, no point/wedge on upper root, no scar outline or pointed angular root reaching eye. Root must be softly attached to cheek boundary, ONLY2..4pixels overlap. Draw natural front-view human ear, neutral mature male, warm ivory matching reference skin instead of red/pink/orange. Gentle soft ink-painted anatomy, not photoreal shiny ear. Output ONLY isolated ears with exact registration, no head silhouette, face/eyes/neck/hair, background, shadows outside ears, haze or stray pixels. Keep full sparse canvas, do NOT enlarge or re-center. Ear width is deliberately SMALL.",
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-68d0f2d3-07a6-4de7-8c12-86312caafb17.png",
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/portrait_cleanup_v14/ear_0_final.png",
+      "registration": {
+        "x_scale": 0.9206349206349206,
+        "y_scale": 0.6666666666666666,
+        "anchor_x": 515.5,
+        "anchor_y": 567.0,
+        "offset_x": -3.5,
+        "offset_y": -168.0
+      },
+      "attachment": "Median middle ear roots registered to x425/599; small natural helix, shared gender skin palette, native alpha/color preserved."
+    },
+    {
+      "sex": "male",
+      "part": "ear",
+      "index": 1,
+      "prompt": "Create Petite, modest narrower helix and smaller lobe variant of this CLEAN small human ear pair. Keep the reference's SAME muted ivory skin color and softly painted matte ink texture, subtle anatomy, NO shiny pink highlights. Keep placement, small narrow individual shape and pair spacing; no zoom/recenter. Each ear top is a ROUNDED helix, never elf/pointed. Inner attachment root remains short softly rounded tragus with smooth flesh transition into cheek; NO long straight skin strip, no dark cut seam, no angular wedge or point sticking across eye. Anatomically small front-view male ear. Root must attach to the cheek side, not sit on outer eye. Ear thickness natural fine, no overly thick ridge. Pair only on genuine transparent1024x1536 full sparse canvas, no head/neck/eyes/hair, no background, glow/haze or detached fragments. Preserve same low saturation skin as reference across all variants. Variation modest and believable.",
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-5fa0da7f-84a2-4b91-be3e-38e2de8ade50.png",
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/portrait_cleanup_v14/ear_1_final.png",
+      "registration": {
+        "x_scale": 0.9109947643979057,
+        "y_scale": 0.7472527472527473,
+        "anchor_x": 513.5,
+        "anchor_y": 564.0,
+        "offset_x": -1.5,
+        "offset_y": -165.0
+      },
+      "attachment": "Median middle ear roots registered to x425/599; small natural helix, shared gender skin palette, native alpha/color preserved."
+    },
+    {
+      "sex": "male",
+      "part": "ear",
+      "index": 2,
+      "prompt": "Create Slightly long slim ear, only10% taller, slender attached lobe variant of this CLEAN small human ear pair. Keep the reference's SAME muted ivory skin color and softly painted matte ink texture, subtle anatomy, NO shiny pink highlights. Keep placement, small narrow individual shape and pair spacing; no zoom/recenter. Each ear top is a ROUNDED helix, never elf/pointed. Inner attachment root remains short softly rounded tragus with smooth flesh transition into cheek; NO long straight skin strip, no dark cut seam, no angular wedge or point sticking across eye. Anatomically small front-view male ear. Root must attach to the cheek side, not sit on outer eye. Ear thickness natural fine, no overly thick ridge. Pair only on genuine transparent1024x1536 full sparse canvas, no head/neck/eyes/hair, no background, glow/haze or detached fragments. Preserve same low saturation skin as reference across all variants. Variation modest and believable.",
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-e4d2723a-6788-4e3b-8bf0-cb3b49d2bb49.png",
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/portrait_cleanup_v14/ear_2_final.png",
+      "registration": {
+        "x_scale": 0.9560439560439561,
+        "y_scale": 0.6949152542372882,
+        "anchor_x": 513.0,
+        "anchor_y": 558.5,
+        "offset_x": -1.0,
+        "offset_y": -159.5
+      },
+      "attachment": "Median middle ear roots registered to x425/599; small natural helix, shared gender skin palette, native alpha/color preserved."
+    },
+    {
+      "sex": "male",
+      "part": "ear",
+      "index": 3,
+      "prompt": "Create Small soft rounded attached earlobe variant of this CLEAN small human ear pair. Keep the reference's SAME muted ivory skin color and softly painted matte ink texture, subtle anatomy, NO shiny pink highlights. Keep placement, small narrow individual shape and pair spacing; no zoom/recenter. Each ear top is a ROUNDED helix, never elf/pointed. Inner attachment root remains short softly rounded tragus with smooth flesh transition into cheek; NO long straight skin strip, no dark cut seam, no angular wedge or point sticking across eye. Anatomically small front-view male ear. Root must attach to the cheek side, not sit on outer eye. Ear thickness natural fine, no overly thick ridge. Pair only on genuine transparent1024x1536 full sparse canvas, no head/neck/eyes/hair, no background, glow/haze or detached fragments. Preserve same low saturation skin as reference across all variants. Variation modest and believable.",
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-60b1379c-859e-4e40-bef5-4173513bc6c2.png",
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/portrait_cleanup_v14/ear_3_final.png",
+      "registration": {
+        "x_scale": 0.9456521739130435,
+        "y_scale": 0.6727272727272727,
+        "anchor_x": 515.0,
+        "anchor_y": 566.5,
+        "offset_x": -3.0,
+        "offset_y": -167.5
+      },
+      "attachment": "Median middle ear roots registered to x425/599; small natural helix, shared gender skin palette, native alpha/color preserved."
+    },
+    {
+      "sex": "male",
+      "part": "ear",
+      "index": 4,
+      "prompt": "Create Close-fitting narrow helix and minimal outward projection variant of this CLEAN small human ear pair. Keep the reference's SAME muted ivory skin color and softly painted matte ink texture, subtle anatomy, NO shiny pink highlights. Keep placement, small narrow individual shape and pair spacing; no zoom/recenter. Each ear top is a ROUNDED helix, never elf/pointed. Inner attachment root remains short softly rounded tragus with smooth flesh transition into cheek; NO long straight skin strip, no dark cut seam, no angular wedge or point sticking across eye. Anatomically small front-view male ear. Root must attach to the cheek side, not sit on outer eye. Ear thickness natural fine, no overly thick ridge. Pair only on genuine transparent1024x1536 full sparse canvas, no head/neck/eyes/hair, no background, glow/haze or detached fragments. Preserve same low saturation skin as reference across all variants. Variation modest and believable.",
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-2f5eaac0-522b-43fb-bd06-6faa5ad00312.png",
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/portrait_cleanup_v14/ear_4_final.png",
+      "registration": {
+        "x_scale": 0.9613259668508287,
+        "y_scale": 0.6605504587155964,
+        "anchor_x": 512.5,
+        "anchor_y": 567.0,
+        "offset_x": -0.5,
+        "offset_y": -168.0
+      },
+      "attachment": "Median middle ear roots registered to x425/599; small natural helix, shared gender skin palette, native alpha/color preserved."
+    },
+    {
+      "sex": "female",
+      "part": "ear",
+      "index": 0,
+      "prompt": "Generate a VERY SMALL natural HUMAN EAR PAIR fitted to the exact head skin reference. Transparent 1024x1536 full canvas. The reference HEAD is NOT in output, only use its face size and pale warm matte SKIN COLOR. Each ear is narrow and sits beside the head, NOT on the eyes/cheeks. LEFT visible helix x396..421, attachment edge x425; RIGHT visible helix x603..628, attachment edge x599. Top360,bottom437. Only25px outward ear width,77px tall. Outer ears do not flare. Inner root is SHORT rounded tragus, continuous small subtle root nearx425/599 at y388..419; NO long straight skin strip, no point/wedge on upper root, no scar outline or pointed angular root reaching eye. Root must be softly attached to cheek boundary, ONLY2..4pixels overlap. Draw natural front-view human ear, neutral mature female, warm ivory matching reference skin instead of red/pink/orange. Gentle soft ink-painted anatomy, not photoreal shiny ear. Output ONLY isolated ears with exact registration, no head silhouette, face/eyes/neck/hair, background, shadows outside ears, haze or stray pixels. Keep full sparse canvas, do NOT enlarge or re-center. Ear width is deliberately SMALL.",
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-67a07288-1aa4-4c05-8bf4-8fac3f344fb8.png",
+      "source": "mods/appearance/腰上女修拆件演示_v1/source/portrait_cleanup_v10/ear_0_final.png",
+      "registration": {
+        "x_scale": 0.90625,
+        "y_scale": 0.6666666666666666,
+        "anchor_x": 512.0,
+        "anchor_y": 595.0,
+        "offset_x": 0.0,
+        "offset_y": -196.0
+      },
+      "attachment": "Median middle ear roots registered to x425/599; small natural helix, shared gender skin palette, native alpha/color preserved."
+    },
+    {
+      "sex": "female",
+      "part": "ear",
+      "index": 1,
+      "prompt": "Create Petite, modest narrower helix and smaller lobe variant of this CLEAN small human ear pair. Keep the reference's SAME muted ivory skin color and softly painted matte ink texture, subtle anatomy, NO shiny pink highlights. Keep placement, small narrow individual shape and pair spacing; no zoom/recenter. Each ear top is a ROUNDED helix, never elf/pointed. Inner attachment root remains short softly rounded tragus with smooth flesh transition into cheek; NO long straight skin strip, no dark cut seam, no angular wedge or point sticking across eye. Anatomically small front-view female ear. Root must attach to the cheek side, not sit on outer eye. Ear thickness natural fine, no overly thick ridge. Pair only on genuine transparent1024x1536 full sparse canvas, no head/neck/eyes/hair, no background, glow/haze or detached fragments. Preserve same low saturation skin as reference across all variants. Variation modest and believable.",
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-c414bf04-a356-4498-8661-6176943b97c6.png",
+      "source": "mods/appearance/腰上女修拆件演示_v1/source/portrait_cleanup_v10/ear_1_final.png",
+      "registration": {
+        "x_scale": 0.9015544041450777,
+        "y_scale": 0.6601941747572816,
+        "anchor_x": 511.5,
+        "anchor_y": 594.0,
+        "offset_x": 0.5,
+        "offset_y": -195.0
+      },
+      "attachment": "Median middle ear roots registered to x425/599; small natural helix, shared gender skin palette, native alpha/color preserved."
+    },
+    {
+      "sex": "female",
+      "part": "ear",
+      "index": 2,
+      "prompt": "Create Slightly long slim ear, only10% taller, slender attached lobe variant of this CLEAN small human ear pair. Keep the reference's SAME muted ivory skin color and softly painted matte ink texture, subtle anatomy, NO shiny pink highlights. Keep placement, small narrow individual shape and pair spacing; no zoom/recenter. Each ear top is a ROUNDED helix, never elf/pointed. Inner attachment root remains short softly rounded tragus with smooth flesh transition into cheek; NO long straight skin strip, no dark cut seam, no angular wedge or point sticking across eye. Anatomically small front-view female ear. Root must attach to the cheek side, not sit on outer eye. Ear thickness natural fine, no overly thick ridge. Pair only on genuine transparent1024x1536 full sparse canvas, no head/neck/eyes/hair, no background, glow/haze or detached fragments. Preserve same low saturation skin as reference across all variants. Variation modest and believable.",
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-7b9c2dae-7551-4951-814d-5ae742a115aa.png",
+      "source": "mods/appearance/腰上女修拆件演示_v1/source/portrait_cleanup_v10/ear_2_final.png",
+      "registration": {
+        "x_scale": 0.9405405405405406,
+        "y_scale": 0.5942028985507246,
+        "anchor_x": 511.5,
+        "anchor_y": 568.5,
+        "offset_x": 0.5,
+        "offset_y": -169.5
+      },
+      "attachment": "Median middle ear roots registered to x425/599; small natural helix, shared gender skin palette, native alpha/color preserved."
+    },
+    {
+      "sex": "female",
+      "part": "ear",
+      "index": 3,
+      "prompt": "Create Small soft rounded attached earlobe variant of this CLEAN small human ear pair. Keep the reference's SAME muted ivory skin color and softly painted matte ink texture, subtle anatomy, NO shiny pink highlights. Keep placement, small narrow individual shape and pair spacing; no zoom/recenter. Each ear top is a ROUNDED helix, never elf/pointed. Inner attachment root remains short softly rounded tragus with smooth flesh transition into cheek; NO long straight skin strip, no dark cut seam, no angular wedge or point sticking across eye. Anatomically small front-view female ear. Root must attach to the cheek side, not sit on outer eye. Ear thickness natural fine, no overly thick ridge. Pair only on genuine transparent1024x1536 full sparse canvas, no head/neck/eyes/hair, no background, glow/haze or detached fragments. Preserve same low saturation skin as reference across all variants. Variation modest and believable.",
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-ab1b51a2-4f9e-4cfa-9e16-038b02783042.png",
+      "source": "mods/appearance/腰上女修拆件演示_v1/source/portrait_cleanup_v10/ear_3_final.png",
+      "registration": {
+        "x_scale": 0.9206349206349206,
+        "y_scale": 0.6788990825688074,
+        "anchor_x": 511.5,
+        "anchor_y": 595.0,
+        "offset_x": 0.5,
+        "offset_y": -196.0
+      },
+      "attachment": "Median middle ear roots registered to x425/599; small natural helix, shared gender skin palette, native alpha/color preserved."
+    },
+    {
+      "sex": "female",
+      "part": "ear",
+      "index": 4,
+      "prompt": "Create Close-fitting narrow helix and minimal outward projection variant of this CLEAN small human ear pair. Keep the reference's SAME muted ivory skin color and softly painted matte ink texture, subtle anatomy, NO shiny pink highlights. Keep placement, small narrow individual shape and pair spacing; no zoom/recenter. Each ear top is a ROUNDED helix, never elf/pointed. Inner attachment root remains short softly rounded tragus with smooth flesh transition into cheek; NO long straight skin strip, no dark cut seam, no angular wedge or point sticking across eye. Anatomically small front-view female ear. Root must attach to the cheek side, not sit on outer eye. Ear thickness natural fine, no overly thick ridge. Pair only on genuine transparent1024x1536 full sparse canvas, no head/neck/eyes/hair, no background, glow/haze or detached fragments. Preserve same low saturation skin as reference across all variants. Variation modest and believable.",
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-fc854a46-077f-44c0-8193-52a6ded08562.png",
+      "source": "mods/appearance/腰上女修拆件演示_v1/source/portrait_cleanup_v10/ear_4_final.png",
+      "registration": {
+        "x_scale": 0.9405405405405406,
+        "y_scale": 0.6545454545454545,
+        "anchor_x": 511.5,
+        "anchor_y": 595.5,
+        "offset_x": 0.5,
+        "offset_y": -196.5
+      },
+      "attachment": "Median middle ear roots registered to x425/599; small natural helix, shared gender skin palette, native alpha/color preserved."
+    }
+  ],
+  "ear_contract": "small_attached_muted_skin",
+  "ear_contract_description": "Five modest natural ear silhouettes per sex; shared reference palette; soft short anatomical roots register to425/599, overlapping every selectable head. No oversized outward ear, long cheek strip, pointed root across eye, or detached neck fragments."
+}

@@ -1,0 +1,136 @@
+{
+  "male": {
+    "style_source": "User reference; no Guigu artwork or color palette",
+    "skin_reference_rgb_max_error": 1.0,
+    "skin_reference_rgb_mean_error": 0.09684232576185331,
+    "ears_reference_rgb_max_error": 1.0,
+    "eye_core_original_rgb_max_error": 9,
+    "opaque_eye_skin_pixels_outside_opening": 0,
+    "fully_transparent_pixels_have_zero_rgb": true,
+    "clear_skin_forehead_median_rgb": [
+      237.0,
+      218.0,
+      203.0
+    ],
+    "rear_center_is_painted": true,
+    "alpha_bounds": {
+      "hair_back": [
+        210,
+        149,
+        823,
+        1223
+      ],
+      "face_shape": [
+        370,
+        172,
+        660,
+        691
+      ],
+      "clothing": [
+        0,
+        520,
+        1024,
+        1536
+      ],
+      "eyes": [
+        416,
+        354,
+        619,
+        403
+      ],
+      "eyebrows": [
+        410,
+        333,
+        618,
+        364
+      ],
+      "nose": [
+        484,
+        404,
+        551,
+        470
+      ],
+      "mouth": [
+        472,
+        470,
+        563,
+        515
+      ],
+      "face_accessory": null,
+      "hair_front": [
+        267,
+        133,
+        768,
+        1056
+      ]
+    },
+    "checks_are_not_user_art_approval": true
+  },
+  "female": {
+    "style_source": "User reference; no Guigu artwork or color palette",
+    "skin_reference_rgb_max_error": 1.0,
+    "skin_reference_rgb_mean_error": 0.026152506470680237,
+    "ears_reference_rgb_max_error": 1.0,
+    "eye_core_original_rgb_max_error": 2,
+    "opaque_eye_skin_pixels_outside_opening": 0,
+    "fully_transparent_pixels_have_zero_rgb": true,
+    "clear_skin_forehead_median_rgb": [
+      237.0,
+      218.0,
+      203.0
+    ],
+    "rear_center_is_painted": true,
+    "alpha_bounds": {
+      "hair_back": [
+        211,
+        143,
+        824,
+        1217
+      ],
+      "face_shape": [
+        371,
+        169,
+        665,
+        691
+      ],
+      "clothing": [
+        0,
+        530,
+        1024,
+        1536
+      ],
+      "eyes": [
+        415,
+        358,
+        625,
+        410
+      ],
+      "eyebrows": [
+        410,
+        338,
+        623,
+        369
+      ],
+      "nose": [
+        484,
+        404,
+        551,
+        470
+      ],
+      "mouth": [
+        472,
+        470,
+        563,
+        515
+      ],
+      "face_accessory": null,
+      "hair_front": [
+        264,
+        130,
+        774,
+        1051
+      ]
+    },
+    "checks_are_not_user_art_approval": true
+  }
+}

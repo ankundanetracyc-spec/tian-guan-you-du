@@ -1,0 +1,185 @@
+{
+  "rig_id": "our_selected_ink_male_20261003_v1",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "runtime_offset": [
+    0,
+    0
+  ],
+  "project_head_axis_x": 517,
+  "project_central_hairline_reference": [
+    517,
+    271
+  ],
+  "reference_points_are_our_own_not_guigu": true,
+  "method": "whole-layer uniform visual fitting; not certified three-point residual registration",
+  "parts": [
+    {
+      "key": "male_hair_front_6",
+      "name": "束风露额",
+      "source": "male_hair_front_6.png",
+      "output": "male/hair_front/06.png",
+      "transform": [
+        0.35,
+        327,
+        52
+      ],
+      "source_size": [
+        1057,
+        1488
+      ],
+      "opaque_rgb_median": [
+        73.0,
+        68.0,
+        64.0
+      ],
+      "notes": [
+        "one uniform scale and translation",
+        "front cap and front-facing short temples/fringe only",
+        "no skin, ears or facial features"
+      ],
+      "source_head_axis_x_visual_estimate": 543,
+      "registered_head_axis_x": 517.05
+    },
+    {
+      "key": "male_hair_back_6",
+      "name": "束风短尾",
+      "source": "male_hair_back_6.png",
+      "output": "male/hair_back/06.png",
+      "transform": [
+        0.51,
+        247,
+        142
+      ],
+      "source_size": [
+        1057,
+        1488
+      ],
+      "opaque_rgb_median": [
+        61.0,
+        56.0,
+        52.0
+      ],
+      "notes": [
+        "one uniform scale and translation",
+        "project head centre and frontal hairline visual registration",
+        "no local warping",
+        "complete continuous rear scalp; no face hole"
+      ],
+      "source_head_axis_x_visual_estimate": 530,
+      "registered_head_axis_x": 517.3
+    },
+    {
+      "key": "male_hair_front_7",
+      "name": "守真拢发",
+      "source": "male_hair_front_7.png",
+      "output": "male/hair_front/07.png",
+      "transform": [
+        0.28,
+        341,
+        93
+      ],
+      "source_size": [
+        1240,
+        1269
+      ],
+      "opaque_rgb_median": [
+        72.0,
+        67.0,
+        63.0
+      ],
+      "notes": [
+        "one uniform scale and translation",
+        "front cap and front-facing short temples/fringe only",
+        "no skin, ears or facial features"
+      ],
+      "source_head_axis_x_visual_estimate": 628,
+      "registered_head_axis_x": 516.84
+    },
+    {
+      "key": "male_hair_back_7",
+      "name": "守真束髻",
+      "source": "male_hair_back_7.png",
+      "output": "male/hair_back/07.png",
+      "transform": [
+        0.33,
+        303,
+        78
+      ],
+      "source_size": [
+        1303,
+        1207
+      ],
+      "opaque_rgb_median": [
+        59.0,
+        55.0,
+        51.0
+      ],
+      "notes": [
+        "one uniform scale and translation",
+        "project head centre and frontal hairline visual registration",
+        "no local warping",
+        "complete continuous rear scalp; no face hole"
+      ],
+      "source_head_axis_x_visual_estimate": 650,
+      "registered_head_axis_x": 517.5
+    },
+    {
+      "key": "male_hair_front_8",
+      "name": "行舟短发",
+      "source": "male_hair_front_8.png",
+      "output": "male/hair_front/08.png",
+      "transform": [
+        0.3,
+        357,
+        66
+      ],
+      "source_size": [
+        1057,
+        1488
+      ],
+      "opaque_rgb_median": [
+        73.0,
+        68.0,
+        64.0
+      ],
+      "notes": [
+        "one uniform scale and translation",
+        "front cap and front-facing short temples/fringe only",
+        "no skin, ears or facial features"
+      ],
+      "source_head_axis_x_visual_estimate": 533,
+      "registered_head_axis_x": 516.9
+    },
+    {
+      "key": "male_hair_back_8",
+      "name": "行舟短垂",
+      "source": "male_hair_back_8.png",
+      "output": "male/hair_back/08.png",
+      "transform": [
+        0.32,
+        350,
+        135
+      ],
+      "source_size": [
+        1057,
+        1488
+      ],
+      "opaque_rgb_median": [
+        59.0,
+        54.0,
+        50.0
+      ],
+      "notes": [
+        "one uniform scale and translation",
+        "project head centre and frontal hairline visual registration",
+        "no local warping",
+        "complete continuous rear scalp; no face hole"
+      ],
+      "source_head_axis_x_visual_estimate": 523,
+      "registered_head_axis_x": 517.36
+    }
+  ]
+}

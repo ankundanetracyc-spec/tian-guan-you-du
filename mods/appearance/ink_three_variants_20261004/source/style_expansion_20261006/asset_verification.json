@@ -1,0 +1,92 @@
+{
+  "pass": true,
+  "new_parts": [
+    "male/eyebrows/07.png",
+    "male/eyebrows/08.png",
+    "male/eyebrows/09.png",
+    "male/eyes/07.png",
+    "male/eyes/08.png",
+    "male/eyes/09.png"
+  ],
+  "existing_physical_parts_unchanged": 73,
+  "total_physical_parts": 79,
+  "active_parts": 76,
+  "old_selection_ordinals_and_names_preserved": true,
+  "first_style_master_unchanged": true,
+  "separate_eye_and_brow_pngs": true,
+  "style_master": [
+    "male/eyebrows/01.png",
+    "male/eyes/01.png"
+  ],
+  "visual_review_cases": 18,
+  "records": [
+    {
+      "file": "male/eyebrows/07.png",
+      "sha256": "2c33c15d0db9c1a575705f0f573ae862f3c8cba80c145605bff1ebde69d5110e",
+      "bbox": [
+        413,
+        336,
+        623,
+        356
+      ],
+      "transparent_rgb_zero": true
+    },
+    {
+      "file": "male/eyebrows/08.png",
+      "sha256": "9a2afc9623dbe15eff0b29745e8ff693aa9d54ead94a7898454252582c56cf01",
+      "bbox": [
+        409,
+        337,
+        626,
+        355
+      ],
+      "transparent_rgb_zero": true
+    },
+    {
+      "file": "male/eyebrows/09.png",
+      "sha256": "6a7f290beb91d164b47b92a47a9b50055d0267a370be25975e9199aaac5c4cd4",
+      "bbox": [
+        399,
+        337,
+        635,
+        357
+      ],
+      "transparent_rgb_zero": true
+    },
+    {
+      "file": "male/eyes/07.png",
+      "sha256": "23249eec5cc23baa3ecbfa6d976cdd2f92c3664041feef6611ff13785ba58149",
+      "bbox": [
+        426,
+        368,
+        609,
+        388
+      ],
+      "transparent_rgb_zero": true
+    },
+    {
+      "file": "male/eyes/08.png",
+      "sha256": "9b0b5033ce1b955111eb7b10e138c7a31da07fc9c8063f53a6a559c0948171d3",
+      "bbox": [
+        426,
+        368,
+        608,
+        386
+      ],
+      "transparent_rgb_zero": true
+    },
+    {
+      "file": "male/eyes/09.png",
+      "sha256": "2a79fd7a0b1a06001a5a812804b7d92b455d77caed81f5ba1c84e8363c203ff9",
+      "bbox": [
+        427,
+        367,
+        606,
+        387
+      ],
+      "transparent_rgb_zero": true
+    }
+  ],
+  "visual_approved_by_user": false,
+  "technical_limit": "Visual trial variants registered by paired controls; not a formal three-control residual certification."
+}

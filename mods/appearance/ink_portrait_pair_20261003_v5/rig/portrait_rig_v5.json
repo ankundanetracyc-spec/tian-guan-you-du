@@ -1,0 +1,486 @@
+{
+  "id": "ink_portrait_pair_20261003_v5",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "coordinates": "top-left origin; x right, y down; pixel centers",
+  "placement": {
+    "offset": [
+      0,
+      0
+    ],
+    "scale": 1,
+    "rotation_degrees": 0
+  },
+  "draw_order_back_to_front": [
+    "hair_back",
+    "face_shape",
+    "clothing",
+    "eyes",
+    "eyebrows",
+    "nose",
+    "mouth",
+    "face_accessory",
+    "hair_front"
+  ],
+  "anchor_source": "Facial landmarks from the user references. New front hair crown, part, temples and natural lock tips remeasured on final alpha. Each hair painting registered by one uniform transform.",
+  "sexes_are_distinct_compatibility_families": true,
+  "registration": {
+    "landmarks_per_import_minimum": 3,
+    "maximum_landmark_residual_pixels": 2,
+    "single_global_transform_only": true,
+    "requires_isolated_layer_review": true
+  },
+  "male": {
+    "anchors": {
+      "hair_crown": [
+        517,
+        145
+      ],
+      "hair_part": [
+        517,
+        267
+      ],
+      "hairline_left": [
+        447,
+        280
+      ],
+      "hairline_right": [
+        581,
+        280
+      ],
+      "temple_left": [
+        436,
+        348
+      ],
+      "temple_right": [
+        593,
+        348
+      ],
+      "face_crown": [
+        516,
+        173
+      ],
+      "face_axis": [
+        517,
+        411
+      ],
+      "eye_left": [
+        454,
+        377
+      ],
+      "eye_right": [
+        569,
+        376
+      ],
+      "eye_outer_left": [
+        423,
+        376
+      ],
+      "eye_outer_right": [
+        610,
+        376
+      ],
+      "brow_left": [
+        452,
+        348
+      ],
+      "brow_right": [
+        579,
+        348
+      ],
+      "nose_center": [
+        517,
+        443
+      ],
+      "nose_tip": [
+        517,
+        454
+      ],
+      "mouth_center": [
+        517,
+        487
+      ],
+      "chin": [
+        517,
+        542
+      ],
+      "ear_root_left": [
+        417,
+        379
+      ],
+      "ear_root_right": [
+        616,
+        379
+      ],
+      "ear_bottom_left": [
+        398,
+        439
+      ],
+      "ear_bottom_right": [
+        635,
+        439
+      ],
+      "neck_left": [
+        438,
+        531
+      ],
+      "neck_right": [
+        596,
+        531
+      ],
+      "collar_join_left": [
+        431,
+        529
+      ],
+      "collar_join_right": [
+        601,
+        529
+      ],
+      "collar_v": [
+        531,
+        670
+      ],
+      "shoulder_left": [
+        74,
+        706
+      ],
+      "shoulder_right": [
+        944,
+        706
+      ],
+      "waist_center": [
+        512,
+        1250
+      ],
+      "front_lock_root_left": [
+        459,
+        542
+      ],
+      "front_lock_root_right": [
+        575,
+        542
+      ],
+      "front_lock_tip_left": [
+        398,
+        1054
+      ],
+      "front_lock_tip_right": [
+        634,
+        1054
+      ]
+    },
+    "measured_alpha_bounds": {
+      "hair_back": [
+        210,
+        149,
+        823,
+        1223
+      ],
+      "face_shape": [
+        370,
+        172,
+        660,
+        691
+      ],
+      "clothing": [
+        0,
+        520,
+        1024,
+        1536
+      ],
+      "eyes": [
+        416,
+        354,
+        619,
+        403
+      ],
+      "eyebrows": [
+        410,
+        333,
+        618,
+        364
+      ],
+      "nose": [
+        484,
+        404,
+        551,
+        470
+      ],
+      "mouth": [
+        472,
+        470,
+        563,
+        515
+      ],
+      "face_accessory": null,
+      "hair_front": [
+        267,
+        133,
+        768,
+        1056
+      ]
+    },
+    "rear_hair_source_transform": [
+      [
+        0.75,
+        0.0,
+        133.0
+      ],
+      [
+        0.0,
+        0.75,
+        102.5
+      ]
+    ],
+    "front_hair_source_transform": [
+      [
+        0.6200000047683716,
+        0.0,
+        199.55999755859375
+      ],
+      [
+        0.0,
+        0.6200000047683716,
+        112.0
+      ]
+    ],
+    "front_hair_material_gain": 0.8,
+    "skin_palette_offset_rgb": [
+      6,
+      12,
+      15
+    ]
+  },
+  "female": {
+    "anchors": {
+      "hair_crown": [
+        518,
+        136
+      ],
+      "hair_part": [
+        518,
+        260
+      ],
+      "hairline_left": [
+        452,
+        280
+      ],
+      "hairline_right": [
+        589,
+        280
+      ],
+      "temple_left": [
+        436,
+        348
+      ],
+      "temple_right": [
+        607,
+        348
+      ],
+      "face_crown": [
+        517,
+        169
+      ],
+      "face_axis": [
+        518,
+        414
+      ],
+      "eye_left": [
+        460,
+        383
+      ],
+      "eye_right": [
+        572,
+        382
+      ],
+      "eye_outer_left": [
+        423,
+        382
+      ],
+      "eye_outer_right": [
+        611,
+        382
+      ],
+      "brow_left": [
+        452,
+        351
+      ],
+      "brow_right": [
+        581,
+        351
+      ],
+      "nose_center": [
+        518,
+        445
+      ],
+      "nose_tip": [
+        518,
+        455
+      ],
+      "mouth_center": [
+        519,
+        489
+      ],
+      "chin": [
+        518,
+        542
+      ],
+      "ear_root_left": [
+        412,
+        380
+      ],
+      "ear_root_right": [
+        626,
+        380
+      ],
+      "ear_bottom_left": [
+        391,
+        438
+      ],
+      "ear_bottom_right": [
+        648,
+        438
+      ],
+      "neck_left": [
+        453,
+        531
+      ],
+      "neck_right": [
+        584,
+        531
+      ],
+      "collar_join_left": [
+        447,
+        548
+      ],
+      "collar_join_right": [
+        590,
+        548
+      ],
+      "collar_v": [
+        520,
+        690
+      ],
+      "shoulder_left": [
+        124,
+        711
+      ],
+      "shoulder_right": [
+        906,
+        711
+      ],
+      "waist_center": [
+        512,
+        1250
+      ],
+      "front_lock_root_left": [
+        465,
+        542
+      ],
+      "front_lock_root_right": [
+        574,
+        542
+      ],
+      "front_lock_tip_left": [
+        402,
+        1049
+      ],
+      "front_lock_tip_right": [
+        634,
+        1049
+      ]
+    },
+    "measured_alpha_bounds": {
+      "hair_back": [
+        211,
+        143,
+        824,
+        1217
+      ],
+      "face_shape": [
+        371,
+        169,
+        665,
+        691
+      ],
+      "clothing": [
+        0,
+        530,
+        1024,
+        1536
+      ],
+      "eyes": [
+        415,
+        358,
+        625,
+        410
+      ],
+      "eyebrows": [
+        410,
+        338,
+        623,
+        369
+      ],
+      "nose": [
+        484,
+        404,
+        551,
+        470
+      ],
+      "mouth": [
+        472,
+        470,
+        563,
+        515
+      ],
+      "face_accessory": null,
+      "hair_front": [
+        264,
+        130,
+        774,
+        1051
+      ]
+    },
+    "rear_hair_source_transform": [
+      [
+        0.75,
+        0.0,
+        134.0
+      ],
+      [
+        0.0,
+        0.75,
+        96.5
+      ]
+    ],
+    "front_hair_source_transform": [
+      [
+        0.6200000047683716,
+        0.0,
+        200.55999755859375
+      ],
+      [
+        0.0,
+        0.6200000047683716,
+        109.0999984741211
+      ]
+    ],
+    "front_hair_material_gain": 0.8,
+    "skin_palette_offset_rgb": [
+      0,
+      0,
+      0
+    ]
+  },
+  "slot_contract": {
+    "face_shape": "Only featureless scalp/face, ears and neck; no hair, facial features or clothing",
+    "hair_front": "Entire visible crown, hairline, face-side strands and locks over the clothing",
+    "hair_back": "Complete continuous rear hair underpainting including regions hidden by head, ears, neck and clothing; no cutouts or broad fades",
+    "clothing": "Complete robe with clean neckline and no hair",
+    "eyes_eyebrows_nose_mouth": "Small semantic overlays on the matching sex's face landmarks",
+    "face_accessory": "Transparent in this base set"
+  },
+  "art_style_source": "User male/female reference paintings only, including ears; Guigu is technical layering reference only"
+}

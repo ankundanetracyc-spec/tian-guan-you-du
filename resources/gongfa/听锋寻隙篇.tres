@@ -1,0 +1,62 @@
+[gd_resource type="Resource" script_class="GongfaResource" format=3]
+
+[ext_resource type="Script" path="res://csharp/gongfa/GongfaResource.cs" id="1"]
+[ext_resource type="Script" path="res://csharp/gongfa/GongfaChapterConfig.cs" id="2"]
+[ext_resource type="Script" path="res://csharp/gongfa/GongfaDeckRewriteConfig.cs" id="3"]
+[ext_resource type="Script" path="res://csharp/gongfa/ActiveSkillData.cs" id="4"]
+[ext_resource type="Resource" path="res://resources/activeskills/听锋寻隙篇/听锋辨隙.tres" id="5"]
+[ext_resource type="Resource" path="res://resources/activeskills/听锋寻隙篇/循隙一刺.tres" id="6"]
+[ext_resource type="Resource" path="res://resources/activeskills/听锋寻隙篇/观痕养意.tres" id="7"]
+
+[sub_resource type="Resource" id="RewriteListen"]
+script = ExtResource("3")
+mode = 0
+count = 1
+result_skill = ExtResource("5")
+
+[sub_resource type="Resource" id="RewriteObserve"]
+script = ExtResource("3")
+mode = 0
+count = 1
+result_skill = ExtResource("7")
+
+[sub_resource type="Resource" id="Chapter1"]
+script = ExtResource("2")
+chapter_id = "ting_feng"
+chapter_name = "听锋卷"
+description = "为指定敌人施加第一层剑痕，并提高下一次指定剑术攻击的精准。"
+order = 1
+required_study_progress = 56.0
+required_attributes = {
+"soul": 5.0,
+"sword_proficiency": 8.0,
+}
+learned_active_skills = Array[ExtResource("4")]([ExtResource("5"), ExtResource("6")])
+naqi_bonuses = {"precision": 4.0}
+sub_deck_rewrites = Array[ExtResource("3")]([SubResource("RewriteListen")])
+
+[sub_resource type="Resource" id="Chapter2"]
+script = ExtResource("2")
+chapter_id = "guan_xi"
+chapter_name = "观隙卷"
+description = "根据场上带有剑痕的敌人补充剑意和精力。"
+order = 2
+required_study_progress = 84.0
+required_attributes = {"soul": 8.0, "sword_proficiency": 12.0}
+required_chapter_ids = Array[String](["ting_feng"])learned_active_skills = Array[ExtResource("4")]([ExtResource("7")])
+naqi_bonuses = {"precision": 3.0, "critical": 2.0}
+sub_deck_rewrites = Array[ExtResource("3")]([SubResource("RewriteObserve")])
+
+[resource]
+script = ExtResource("1")
+gongfa_name = "听锋寻隙篇"
+description = "仅可辅修的识破剑诀。负责施加第一层剑痕，并围绕带痕目标提高命中和恢复精力。"
+wuxing = 32
+required_study_progress = 56.0
+required_attributes = {"soul": 5.0, "sword_proficiency": 8.0}
+can_be_main = false
+bearing_compatibility = Array[int]([3])
+school_tags = Array[String](["sword"])
+can_be_sub = true
+default_unlocked_chapter_count = 1
+chapters = Array[ExtResource("2")]([SubResource("Chapter1"), SubResource("Chapter2")])

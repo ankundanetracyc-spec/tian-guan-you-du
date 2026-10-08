@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ForestWolfShadowfootTalent" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/ForestWolfShadowfootTalent.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+talent_id = "forest_wolf_shadowfoot"
+talent_name = "影足"
+description = "保留群猎本能；额外身法 = round(敏捷 × 0.25)。"

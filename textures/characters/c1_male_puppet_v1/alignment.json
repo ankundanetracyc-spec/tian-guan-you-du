@@ -1,0 +1,135 @@
+{
+  "canvas": [
+    1024,
+    1536
+  ],
+  "layers": {
+    "head": [
+      [
+        "res://mods/appearance/皮影局内男修_v5/hair/hair_back.png",
+        [
+          0.6,
+          0.6
+        ],
+        [
+          225,
+          -121
+        ]
+      ],
+      [
+        "res://mods/appearance/皮影局内男修_v5/head/male_bald.png",
+        [
+          0.6,
+          0.6
+        ],
+        [
+          225,
+          -121
+        ]
+      ],
+      [
+        "res://mods/appearance/皮影局内男修_v5/ornament/cloud_hairpin.png",
+        [
+          0.6,
+          0.6
+        ],
+        [
+          225,
+          -121
+        ]
+      ],
+      [
+        "res://mods/appearance/皮影局内男修_v5/hair/hair_front.png",
+        [
+          0.6,
+          0.6
+        ],
+        [
+          225,
+          -121
+        ]
+      ]
+    ],
+    "arm_far": [
+      [
+        "res://textures/characters/c1_male_puppet_v1/source/arm_far_compact.png",
+        [
+          0.977129,
+          1.168307
+        ],
+        [
+          88.0,
+          -483.2
+        ]
+      ]
+    ],
+    "body": [
+      [
+        "res://mods/appearance/皮影局内男修_v5/body/vermilion_body.png",
+        [
+          0.92,
+          1.1
+        ],
+        [
+          60,
+          -570
+        ]
+      ]
+    ],
+    "arm_near": [
+      [
+        "res://textures/characters/c1_male_puppet_v1/source/arm_near_compact.png",
+        [
+          0.977129,
+          1.168307
+        ],
+        [
+          108.16,
+          -483.2
+        ]
+      ]
+    ],
+    "body_kneel": [
+      [
+        "res://textures/characters/c1_male_puppet_v1/source/body_kneel.png",
+        [
+          1,
+          1.05
+        ],
+        [
+          0,
+          -30
+        ]
+      ]
+    ]
+  },
+  "anchors_px": {
+    "hips": [
+      531,
+      706
+    ],
+    "torso": [
+      531,
+      550
+    ],
+    "head": [
+      532,
+      423
+    ],
+    "arm_far": [
+      410,
+      515
+    ],
+    "arm_near": [
+      662,
+      515
+    ]
+  },
+  "arm_scale_about_shoulder": 0.92,
+  "order": [
+    "head",
+    "arm_far",
+    "body",
+    "arm_near"
+  ]
+}

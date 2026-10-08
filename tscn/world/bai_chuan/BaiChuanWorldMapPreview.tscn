@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d0tlytsm7whnt"]
+
+[ext_resource type="PackedScene" uid="uid://c0edk1gq4hytn" path="res://tscn/world/bai_chuan/BaiChuanWorldMap.tscn" id="1_map"]
+
+[node name="BaiChuanWorldMapPreview" type="Node2D" unique_id=135155005]
+editor_description = "百川主场景的兼容预览入口；实际底图、道路、势力和地点均在 BaiChuanWorldMap.tscn 内统一编辑。"
+texture_filter = 4
+
+[node name="MapRoot" parent="." unique_id=225668281 instance=ExtResource("1_map")]

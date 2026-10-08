@@ -1,0 +1,361 @@
+[gd_scene format=3 uid="uid://ctxevw4afyegc"]
+
+[ext_resource type="FontFile" uid="uid://u5r81bxd3vrk" path="res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf" id="4_font"]
+[ext_resource type="Texture2D" uid="uid://evonbvxiaxuv" path="res://textures/ui/world/world_marker_circle_ink.svg" id="17_circle"]
+
+[node name="BaiChuanSecondLevelNodeLayout" type="Node2D" unique_id=1071724164]
+editor_description = "百川二级势力固定辖域的编辑器布局层。首期每个一级势力保留三个辖域，共十二个；每个节点已挂接一个唯一的可抵达地图地点。"
+y_sort_enabled = true
+texture_filter = 4
+
+[node name="yuxu_xianzong" type="Node2D" parent="." unique_id=777264324]
+editor_description = "一级势力：玉虚仙宗。三个二级辖域分散落在西南河谷与旧道。"
+position = Vector2(1150, 1280)
+
+[node name="qinglan_observatory" type="Node2D" parent="yuxu_xianzong" unique_id=523921680]
+editor_description = "青岚观｜对应地图地点：伏岚观｜山间修行、符箓、镇邪与地方传承"
+visible = false
+z_index = 10
+position = Vector2(-147, -383)
+metadata/second_level_id = "yuxu_qinglan_observatory"
+metadata/parent_faction_id = "yuxu_xianzong"
+metadata/territory_type = "道观"
+metadata/placement_status = "placed"
+metadata/mapped_location_id = "fulan_temple"
+
+[node name="Marker" type="Sprite2D" parent="yuxu_xianzong/qinglan_observatory" unique_id=1079407468]
+scale = Vector2(0.88, 0.88)
+texture = ExtResource("17_circle")
+
+[node name="Label" type="Label" parent="yuxu_xianzong/qinglan_observatory" unique_id=904148174]
+offset_left = -70.0
+offset_top = 48.0
+offset_right = 70.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.24, 0.2, 0.14, 0.9)
+theme_override_colors/font_outline_color = Color(0.93, 0.89, 0.79, 0.9)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 14
+text = "青岚观"
+horizontal_alignment = 1
+
+[node name="baishi_city" type="Node2D" parent="yuxu_xianzong" unique_id=631163869]
+editor_description = "白石城｜对应地图地点：白石镇｜交易、消息、落脚和低阶修士聚集"
+visible = false
+z_index = 10
+position = Vector2(253, -493)
+metadata/second_level_id = "yuxu_baishi_city"
+metadata/parent_faction_id = "yuxu_xianzong"
+metadata/territory_type = "城邦"
+metadata/placement_status = "placed"
+metadata/mapped_location_id = "white_stone_town"
+
+[node name="Marker" type="Sprite2D" parent="yuxu_xianzong/baishi_city" unique_id=486601953]
+scale = Vector2(0.88, 0.88)
+texture = ExtResource("17_circle")
+
+[node name="Label" type="Label" parent="yuxu_xianzong/baishi_city" unique_id=1190473700]
+offset_left = -70.0
+offset_top = 48.0
+offset_right = 70.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.24, 0.2, 0.14, 0.9)
+theme_override_colors/font_outline_color = Color(0.93, 0.89, 0.79, 0.9)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 14
+text = "白石城"
+horizontal_alignment = 1
+
+[node name="donglin_hunt" type="Node2D" parent="yuxu_xianzong" unique_id=688805916]
+editor_description = "东林镇妖会｜对应地图地点：东林地｜镇妖、采集灵材、守护山林与散修互助"
+visible = false
+z_index = 10
+position = Vector2(-27, -603)
+metadata/second_level_id = "yuxu_donglin_hunt"
+metadata/parent_faction_id = "yuxu_xianzong"
+metadata/territory_type = "猎会"
+metadata/placement_status = "placed"
+metadata/mapped_location_id = "east_woods"
+
+[node name="Marker" type="Sprite2D" parent="yuxu_xianzong/donglin_hunt" unique_id=287460447]
+scale = Vector2(0.88, 0.88)
+texture = ExtResource("17_circle")
+
+[node name="Label" type="Label" parent="yuxu_xianzong/donglin_hunt" unique_id=1039115919]
+offset_left = -70.0
+offset_top = 48.0
+offset_right = 70.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.24, 0.2, 0.14, 0.9)
+theme_override_colors/font_outline_color = Color(0.93, 0.89, 0.79, 0.9)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 14
+text = "东林镇妖会"
+horizontal_alignment = 1
+
+[node name="taiwei_daogong" type="Node2D" parent="." unique_id=753589484]
+editor_description = "一级势力：太微道宫。三个二级辖域沿古道、河运与中部水网分散落位。"
+position = Vector2(2300, 580)
+
+[node name="haichuan_association" type="Node2D" parent="taiwei_daogong" unique_id=829908580]
+editor_description = "海川会｜对应地图地点：澜浦渡｜河运、近海贸易、船队和航图"
+visible = false
+z_index = 10
+position = Vector2(-1567, -113)
+metadata/second_level_id = "taiwei_haichuan_association"
+metadata/parent_faction_id = "taiwei_daogong"
+metadata/territory_type = "商贸会盟"
+metadata/placement_status = "placed"
+metadata/mapped_location_id = "lanpu_ferry"
+
+[node name="Marker" type="Sprite2D" parent="taiwei_daogong/haichuan_association" unique_id=995301585]
+scale = Vector2(0.88, 0.88)
+texture = ExtResource("17_circle")
+
+[node name="Label" type="Label" parent="taiwei_daogong/haichuan_association" unique_id=196845232]
+offset_left = -70.0
+offset_top = 48.0
+offset_right = 70.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.24, 0.2, 0.14, 0.9)
+theme_override_colors/font_outline_color = Color(0.93, 0.89, 0.79, 0.9)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 14
+text = "海川会"
+horizontal_alignment = 1
+
+[node name="changfeng_escort" type="Node2D" parent="taiwei_daogong" unique_id=1074090654]
+editor_description = "长风护道会｜对应地图地点：长风护道会｜修士护行、灵材商路保全和远行消息"
+visible = false
+z_index = 10
+position = Vector2(-400, -60)
+metadata/second_level_id = "taiwei_changfeng_escort"
+metadata/parent_faction_id = "taiwei_daogong"
+metadata/territory_type = "护送组织"
+metadata/placement_status = "placed"
+metadata/mapped_location_id = "changfeng_escort"
+
+[node name="Marker" type="Sprite2D" parent="taiwei_daogong/changfeng_escort" unique_id=226468525]
+scale = Vector2(0.88, 0.88)
+texture = ExtResource("17_circle")
+
+[node name="Label" type="Label" parent="taiwei_daogong/changfeng_escort" unique_id=167164445]
+offset_left = -70.0
+offset_top = 48.0
+offset_right = 70.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.24, 0.2, 0.14, 0.9)
+theme_override_colors/font_outline_color = Color(0.93, 0.89, 0.79, 0.9)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 14
+text = "长风护道会"
+horizontal_alignment = 1
+
+[node name="chunshui_prefecture" type="Node2D" parent="taiwei_daogong" unique_id=1070178034]
+editor_description = "春水府｜对应地图地点：春水府｜湖泽、灌渠、水产和水患处理"
+visible = false
+z_index = 10
+position = Vector2(-500, 500)
+metadata/second_level_id = "taiwei_chunshui_prefecture"
+metadata/parent_faction_id = "taiwei_daogong"
+metadata/territory_type = "水府与城镇"
+metadata/placement_status = "placed"
+metadata/mapped_location_id = "chunshui_prefecture"
+
+[node name="Marker" type="Sprite2D" parent="taiwei_daogong/chunshui_prefecture" unique_id=1033148168]
+scale = Vector2(0.88, 0.88)
+texture = ExtResource("17_circle")
+
+[node name="Label" type="Label" parent="taiwei_daogong/chunshui_prefecture" unique_id=267460911]
+offset_left = -70.0
+offset_top = 48.0
+offset_right = 70.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.24, 0.2, 0.14, 0.9)
+theme_override_colors/font_outline_color = Color(0.93, 0.89, 0.79, 0.9)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 14
+text = "春水府"
+horizontal_alignment = 1
+
+[node name="xuandu_tianfu" type="Node2D" parent="." unique_id=1660288439]
+editor_description = "一级势力：玄都天府。三个二级辖域分布在西部关口、矿带与盆地。"
+position = Vector2(650, 700)
+
+[node name="guanshan_prefecture" type="Node2D" parent="xuandu_tianfu" unique_id=594898352]
+editor_description = "关山府｜对应地图地点：关山府｜关隘、古驿、护路和妖兽迁徙"
+visible = false
+z_index = 10
+position = Vector2(-170, -180)
+metadata/second_level_id = "xuandu_guanshan_prefecture"
+metadata/parent_faction_id = "xuandu_tianfu"
+metadata/territory_type = "山口军府"
+metadata/placement_status = "placed"
+metadata/mapped_location_id = "guanshan_prefecture"
+
+[node name="Marker" type="Sprite2D" parent="xuandu_tianfu/guanshan_prefecture" unique_id=1314590856]
+scale = Vector2(0.88, 0.88)
+texture = ExtResource("17_circle")
+
+[node name="Label" type="Label" parent="xuandu_tianfu/guanshan_prefecture" unique_id=271224913]
+offset_left = -70.0
+offset_top = 48.0
+offset_right = 70.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.24, 0.2, 0.14, 0.9)
+theme_override_colors/font_outline_color = Color(0.93, 0.89, 0.79, 0.9)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 14
+text = "关山府"
+horizontal_alignment = 1
+
+[node name="chilu_hall" type="Node2D" parent="xuandu_tianfu" unique_id=876275133]
+editor_description = "赤炉堂｜对应地图地点：赤炉堂｜炉火、矿材、兵器和修缮"
+visible = false
+z_index = 10
+position = Vector2(-70, 550)
+metadata/second_level_id = "xuandu_chilu_hall"
+metadata/parent_faction_id = "xuandu_tianfu"
+metadata/territory_type = "炼器堂口"
+metadata/placement_status = "placed"
+metadata/mapped_location_id = "chilu_hall"
+
+[node name="Marker" type="Sprite2D" parent="xuandu_tianfu/chilu_hall" unique_id=779287992]
+scale = Vector2(0.88, 0.88)
+texture = ExtResource("17_circle")
+
+[node name="Label" type="Label" parent="xuandu_tianfu/chilu_hall" unique_id=379281392]
+offset_left = -70.0
+offset_top = 48.0
+offset_right = 70.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.24, 0.2, 0.14, 0.9)
+theme_override_colors/font_outline_color = Color(0.93, 0.89, 0.79, 0.9)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 14
+text = "赤炉堂"
+horizontal_alignment = 1
+
+[node name="chishui_city" type="Node2D" parent="xuandu_tianfu" unique_id=768704463]
+editor_description = "赤水城｜对应地图地点：赤水城｜盆地农产、集市和内陆交通"
+visible = false
+z_index = 10
+position = Vector2(200, 650)
+metadata/second_level_id = "xuandu_chishui_city"
+metadata/parent_faction_id = "xuandu_tianfu"
+metadata/territory_type = "城邦"
+metadata/placement_status = "placed"
+metadata/mapped_location_id = "chishui_city"
+
+[node name="Marker" type="Sprite2D" parent="xuandu_tianfu/chishui_city" unique_id=331268542]
+scale = Vector2(0.88, 0.88)
+texture = ExtResource("17_circle")
+
+[node name="Label" type="Label" parent="xuandu_tianfu/chishui_city" unique_id=1313096909]
+offset_left = -70.0
+offset_top = 48.0
+offset_right = 70.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.24, 0.2, 0.14, 0.9)
+theme_override_colors/font_outline_color = Color(0.93, 0.89, 0.79, 0.9)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 14
+text = "赤水城"
+horizontal_alignment = 1
+
+[node name="wuxiang_shengzong" type="Node2D" parent="." unique_id=1419080895]
+editor_description = "一级势力：无相圣宗。三个二级辖域分布在东南内陆的暗线、水脉与旧战场。"
+position = Vector2(2480, 1280)
+
+[node name="youquan_cult" type="Node2D" parent="wuxiang_shengzong" unique_id=1224319316]
+editor_description = "幽泉教｜对应地图地点：幽泉教｜阴法、地下水脉和隐秘修炼地"
+visible = false
+z_index = 10
+position = Vector2(-10, -20)
+metadata/second_level_id = "wuxiang_youquan_cult"
+metadata/parent_faction_id = "wuxiang_shengzong"
+metadata/territory_type = "魔道教派"
+metadata/placement_status = "placed"
+metadata/mapped_location_id = "youquan_cult"
+
+[node name="Marker" type="Sprite2D" parent="wuxiang_shengzong/youquan_cult" unique_id=740166274]
+scale = Vector2(0.88, 0.88)
+texture = ExtResource("17_circle")
+
+[node name="Label" type="Label" parent="wuxiang_shengzong/youquan_cult" unique_id=682051158]
+offset_left = -70.0
+offset_top = 48.0
+offset_right = 70.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.24, 0.2, 0.14, 0.9)
+theme_override_colors/font_outline_color = Color(0.93, 0.89, 0.79, 0.9)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 14
+text = "幽泉教"
+horizontal_alignment = 1
+
+[node name="yexing_society" type="Node2D" parent="wuxiang_shengzong" unique_id=1069903613]
+editor_description = "夜行会｜对应地图地点：夜行会｜追踪、刺杀、情报和灰色委托"
+visible = false
+z_index = 10
+position = Vector2(-110, -270)
+metadata/second_level_id = "wuxiang_yexing_society"
+metadata/parent_faction_id = "wuxiang_shengzong"
+metadata/territory_type = "秘密组织"
+metadata/placement_status = "placed"
+metadata/mapped_location_id = "yexing_society"
+
+[node name="Marker" type="Sprite2D" parent="wuxiang_shengzong/yexing_society" unique_id=894447536]
+scale = Vector2(0.88, 0.88)
+texture = ExtResource("17_circle")
+
+[node name="Label" type="Label" parent="wuxiang_shengzong/yexing_society" unique_id=2031228108]
+offset_left = -70.0
+offset_top = 48.0
+offset_right = 70.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.24, 0.2, 0.14, 0.9)
+theme_override_colors/font_outline_color = Color(0.93, 0.89, 0.79, 0.9)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 14
+text = "夜行会"
+horizontal_alignment = 1
+
+[node name="huigu_temple" type="Node2D" parent="wuxiang_shengzong" unique_id=877240633]
+editor_description = "灰骨寺｜对应地图地点：灰骨寺｜尸傀、葬地和旧战场资源"
+visible = false
+z_index = 10
+position = Vector2(190, 250)
+metadata/second_level_id = "wuxiang_huigu_temple"
+metadata/parent_faction_id = "wuxiang_shengzong"
+metadata/territory_type = "魔道寺院"
+metadata/placement_status = "placed"
+metadata/mapped_location_id = "huigu_temple"
+
+[node name="Marker" type="Sprite2D" parent="wuxiang_shengzong/huigu_temple" unique_id=170172337]
+scale = Vector2(0.88, 0.88)
+texture = ExtResource("17_circle")
+
+[node name="Label" type="Label" parent="wuxiang_shengzong/huigu_temple" unique_id=703242108]
+offset_left = -70.0
+offset_top = 48.0
+offset_right = 70.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.24, 0.2, 0.14, 0.9)
+theme_override_colors/font_outline_color = Color(0.93, 0.89, 0.79, 0.9)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 14
+text = "灰骨寺"
+horizontal_alignment = 1

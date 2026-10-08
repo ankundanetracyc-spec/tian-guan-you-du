@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://2n4yj20xuw0d"]
+
+[ext_resource type="Script" uid="uid://dn70gpo3fbi3g" path="res://scripts/world/map/WorldMapViewport.gd" id="1_viewport"]
+[ext_resource type="PackedScene" uid="uid://c0edk1gq4hytn" path="res://tscn/world/bai_chuan/BaiChuanWorldMap.tscn" id="2_map"]
+
+[node name="WorldMapViewport" type="Control" unique_id=1840399962]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_viewport")
+
+[node name="MapRoot" parent="." unique_id=1018335892 instance=ExtResource("2_map")]
+
+[node name="MapCamera" type="Camera2D" parent="." unique_id=1686343944]
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
+[node name="MapOverlayLayer" type="CanvasLayer" parent="." unique_id=2073078149]
+layer = 20

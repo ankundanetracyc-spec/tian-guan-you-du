@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="FormationManualData" format=3]
+
+[ext_resource type="Script" path="res://csharp/formation/FormationManualData.cs" id="1_manual"]
+[ext_resource type="Script" path="res://csharp/formation/FormationPortData.cs" id="2_port"]
+
+[sub_resource type="Resource" id="SpellPort"]
+script = ExtResource("2_port")
+port_id = &"port_spell_played"
+display_name = "术法感应接口"
+kind = 0
+battle_event = "spell_played"
+source_tags = Array[String](["spell"])
+
+[resource]
+script = ExtResource("1_manual")
+manual_id = &"manual_small_circulation_input"
+manual_name = "小周天聚灵阵录"
+description = "提供周天感应与术法感应接口。首期运行时先接入术法感应，周天接口等待行炁公共资源实装。"
+input_ports = Array[ExtResource("2_port")]([SubResource("SpellPort")])

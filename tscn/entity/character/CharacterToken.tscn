@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://div0b8ltxo4ih"]
+
+[ext_resource type="Script" uid="uid://dpyc0m3q75krd" path="res://csharp/entity/character/CharacterToken.cs" id="1_script"]
+
+[node name="CharacterToken" type="Node2D" unique_id=1432298464]
+script = ExtResource("1_script")

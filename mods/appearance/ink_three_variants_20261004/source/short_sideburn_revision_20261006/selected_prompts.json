@@ -1,0 +1,40 @@
+{
+  "mode": "built-in image_gen",
+  "jobs": [
+    {
+      "key": "male_hair_front_8",
+      "sex": "male",
+      "slot": "hair_front",
+      "index": 8,
+      "name": "行舟短发",
+      "target": "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/straight_hair_redesign_20261006/male_hair_front_8.png",
+      "ref": "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/straight_hair_redesign_20261006/male_bald_head.jpg",
+      "prompt": "Use case: precise-object-edit. Image 1 is the editable transparent isolated male front-hair asset. Image 2 is ONLY the project's frontal bald head proportion reference, do not put any face or skin in the output. Edit ONLY the two sideburn/temple ends of Image 1; keep its crown, middle part, fringe, overall width, canvas placement, charcoal ink color and meticulously fine matte ink hair texture closely unchanged. Current lower left/right hair ends are long pointed blades, and sit rigidly across the ears. Replace them with short, gently narrowing natural temple hair with a soft rounded feathered end at the upper ear, NOT pointed triangular blades. The short sideburn should have a slender vertical growth flow then naturally fade into a few tiny fine hair tips, no inward hooks and no thick black block. Ensure coherent temple coverage wide enough for the head, no exposed narrow scalp ledge. Frontal view straight, level, balanced sides. Smooth clean straight hair, minimal flyaways, traditional fine Chinese ink portrait rendering. Preserve original transparent open forehead/face space. Output ONLY this independent front cap, fringe and SHORT front-of-ear temple hair, nothing behind ears, no rear/nape hair, no face, eyebrows, ears, skin, ear-shaped cutout, shadow, halo, labels or background. Genuinely transparent RGBA. Preserve full uncropped asset with margin. Keep near-original geometry and canvas size 1402x1122 if possible.",
+      "generated_original": "D:/CodexData/generated_images/01a0fd74-de00-7ab2-9dfc-c15a97009561/exec-26ae9791-6075-483d-91a6-ccc0a2a8dddf.png",
+      "workspace_source": "male_hair_front_8.png"
+    },
+    {
+      "key": "female_hair_front_8",
+      "sex": "female",
+      "slot": "hair_front",
+      "index": 8,
+      "name": "听雨短帘",
+      "target": "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/straight_hair_redesign_20261006/female_hair_front_8.png",
+      "ref": "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/straight_hair_redesign_20261006/female_bald_head.jpg",
+      "prompt": "Use case: precise-object-edit. Image 1 is the editable transparent isolated female front-hair asset. Image 2 ONLY shows our frontal bald head proportions; never paint face/skin in output. Correct ONLY the temple/sideburn area of Image 1 while preserving its existing crown height, overall width, middle part, soft short forehead fringe, original image placement, charcoal-black color and exceptionally fine matte Chinese ink hair fibers. Current two thick long hooked side strands curve inward over the cheeks: REMOVE those long cheek-framing hooked locks. New front layer should be a short clean temple taper, hair flows smoothly backward/tucked toward behind the ears; only a delicate small natural temple end in front of the upper ear, keeping the eye corners, cheeks and lower ear areas open. Do not add a pair of artificial pointed horns. The LONGER bob sides are BEHIND the face and belong to our existing separate rear-hair layer, so do NOT paint those in this front asset. The isolated front silhouette becomes a cap plus original forehead fringe plus two compact soft short temple transitions, not a U-shaped bob mask. Keep actual temple coverage rather than a cap too narrow for the head. Strict straight-on frontal view, level and naturally balanced, smooth straight simple hairstyle few flyaways, unified refined ink painting texture. Transparent open face area. Output ONLY isolated front-hair component: NO face, ears, eyebrows, skin, makeup, long rear panels, nape, ear-shaped holes, canvas glow, white fringe halo, labels or background. Genuinely transparent RGBA, preserve original full asset canvas/margins 1312x1199 if possible.",
+      "generated_original": "D:/CodexData/generated_images/01a0fd74-de00-7ab2-9dfc-c15a97009561/exec-b19a7b94-b3b5-4d56-af9c-40a9e0cad4e1.png",
+      "workspace_source": "female_hair_front_8.png"
+    },
+    {
+      "key": "male_hair_back_8",
+      "sex": "male",
+      "slot": "hair_back",
+      "index": 8,
+      "name": "行舟短垂",
+      "target": "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/straight_hair_redesign_20261006/male_hair_back_8.png",
+      "prompt": "Use case: precise-object-edit. Edit this existing independent opaque continuous REAR HAIR component on genuine transparent background. Preserve the exact crown height, upper head volume, central part, width, image placement, charcoal color and extremely fine matte ink-painted hair fiber detail. Only refine the LOWER outline behind both ears and the nape: remove the long sharp jagged tufts below the ear-lobes and beside the neck. Make the lower back of this neat short haircut SHORTER, softly contained and gradually thinning inward toward a compact close-cropped nape. Lower edge should be softly feathered with very tiny fibers, not large spikes, sawtooth notches, hooked tails, mullet or a blunt flat helmet. The center lower back remains gently rounded; side lower corners become soft tapered contours ending higher than the central nape, leaving no pointed protrusions framing the neck. Strict level frontal registration of a REAR layer, not side view and not a portrait viewed from behind. Hair only, no ears, skin, face, neck, clothes or front bangs. Keep solid continuous filled rear hair; absolutely no face hole, no ear-shaped notches or cutouts. Smooth straight hair, simple few strand groups and almost no flyaways. Transparent RGBA, full component with margin, preserve same image canvas1293x1216 and upper geometry closely.",
+      "generated_original": "D:/CodexData/generated_images/01a0fd74-de00-7ab2-9dfc-c15a97009561/exec-170e366c-3545-4c8d-bfcb-270aef819089.png",
+      "workspace_source": "male_hair_back_8.png"
+    }
+  ]
+}

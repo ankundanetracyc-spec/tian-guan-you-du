@@ -1,0 +1,92 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmpnnp8dyabj5"]
+
+[ext_resource type="Script" path="res://csharp/battle/BattleManager.cs" id="1_s1tjf"]
+[ext_resource type="Script" path="res://csharp/battle/BattleScene.cs" id="1_x8q35"]
+[ext_resource type="Script" path="res://csharp/battle/BattleMap.cs" id="2_s1tjf"]
+[ext_resource type="Script" path="res://csharp/CameraController.cs" id="4_t4coj"]
+[ext_resource type="PackedScene" path="res://tscn/panel/InfoPanel.tscn" id="5_x8q35"]
+[ext_resource type="PackedScene" path="res://tscn/panel/BattleStatusPanel.tscn" id="7_0gqof"]
+[ext_resource type="PackedScene" path="res://tscn/panel/CombatSkillBar.tscn" id="8_o4xkd"]
+[ext_resource type="Texture2D" path="res://textures/battle/ink_mountain_valley_background_v1.png" id="9_wolfbg"]
+
+[sub_resource type="StyleBoxFlat" id="BattleHeaderStyle"]
+bg_color = Color(0.035, 0.055, 0.05, 0.88)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.72, 0.60, 0.32, 0.8)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[node name="BattleScene" type="Node2D" unique_id=1109724049]
+script = ExtResource("1_x8q35")
+
+[node name="InkMountainValley" type="Sprite2D" parent="." unique_id=1843814210]
+position = Vector2(960, 540)
+texture = ExtResource("9_wolfbg")
+scale = Vector2(1.15, 1.15)
+z_index = -20
+
+[node name="BattleMgr" type="Node2D" parent="." unique_id=557405051]
+position = Vector2(960, 540)
+script = ExtResource("1_s1tjf")
+battle_map = NodePath("../BattleMap")
+deploy_layer = NodePath("../DeployLayer")
+
+[node name="BattleMap" type="Node2D" parent="." unique_id=1874885772]
+position = Vector2(960, 760)
+script = ExtResource("2_s1tjf")
+hex_size = 120.0
+hex_aspect_ratio = 0.8
+spatial_combat_enabled = true
+
+[node name="DeployLayer" type="Node2D" parent="." unique_id=160692146]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=786375379]
+position = Vector2(960, 529)
+limit_smoothed = true
+script = ExtResource("4_t4coj")
+move_speed = 900.0
+zoom_min = 0.4
+zoom_max = 2.5
+zoom_enabled = false
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=1877261879]
+
+[node name="BattleHeader" type="Panel" parent="UILayer"]
+offset_left = 645.0
+offset_top = 24.0
+offset_right = 1275.0
+offset_bottom = 92.0
+modulate = Color(1, 1, 1, 0.94)
+theme_override_styles/panel = SubResource("BattleHeaderStyle")
+
+[node name="Title" type="Label" parent="UILayer/BattleHeader"]
+offset_left = 18.0
+offset_top = 8.0
+offset_right = 612.0
+offset_bottom = 35.0
+theme_override_colors/font_color = Color(0.93, 0.84, 0.58, 1)
+theme_override_font_sizes/font_size = 20
+text = "山谷遭遇 · 战局"
+horizontal_alignment = 1
+
+[node name="Hint" type="Label" parent="UILayer/BattleHeader"]
+offset_left = 18.0
+offset_top = 36.0
+offset_right = 612.0
+offset_bottom = 59.0
+theme_override_colors/font_color = Color(0.78, 0.82, 0.74, 1)
+theme_override_font_sizes/font_size = 14
+text = "规划时添加并调整行动 · 确认后按顶部姓名时序执行"
+horizontal_alignment = 1
+
+[node name="InfoPanel" parent="UILayer" unique_id=901217319 instance=ExtResource("5_x8q35")]
+visible = false
+
+[node name="CombatSkillBar" parent="UILayer" unique_id=1104536465 instance=ExtResource("8_o4xkd")]
+
+[node name="BattleStatusPanel" parent="UILayer" unique_id=1447746195 instance=ExtResource("7_0gqof")]

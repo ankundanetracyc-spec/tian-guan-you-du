@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/ItemData.cs" id="1"]
+[ext_resource type="Resource" path="res://resources/material_craft/赤鳞蜕材性.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+definition_id = &"mat_red_scale_shed"
+entity_name = "赤鳞蜕"
+icon_path = "res://textures/items/item_red_scale_shed.png"
+item_category = "材料"
+item_subcategory = "兽材"
+tags = Array[String](["五行[火]", "质地[甲]", "功用[护]", "相性[阳]"])
+grade_value = 2
+can_stack = true
+max_stack = 999
+craft_data = ExtResource("2")

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>林地凶狼 · 16 帧待机预览</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #10171a; color: #eee4c8; font-family: "Microsoft YaHei", sans-serif; }
+    main { text-align: center; }
+    h1 { margin: 0 0 18px; font-size: 18px; font-weight: 500; letter-spacing: .12em; }
+    .stage { width: 628px; height: 628px; display: grid; place-items: center; background: radial-gradient(circle at 50% 70%, #385153 0, #1e2b2d 46%, #10171a 75%); border: 1px solid #4c665d; box-shadow: 0 18px 48px #000a; overflow: hidden; }
+    .wolf { width: 314px; height: 314px; background-image: url("../textures/battle/forest_wolf_idle_sheet_v2.png"); background-size: 1256px 1256px; background-repeat: no-repeat; animation: idle 2.667s steps(1) infinite; transform: scale(1.7); }
+    p { margin: 18px 0 0; color: #aebdb4; font-size: 14px; }
+    @keyframes idle {
+      0%, 6.24% { background-position: 0 0; }
+      6.25%, 12.49% { background-position: -314px 0; }
+      12.5%, 18.74% { background-position: -628px 0; }
+      18.75%, 24.99% { background-position: -942px 0; }
+      25%, 31.24% { background-position: 0 -314px; }
+      31.25%, 37.49% { background-position: -314px -314px; }
+      37.5%, 43.74% { background-position: -628px -314px; }
+      43.75%, 49.99% { background-position: -942px -314px; }
+      50%, 56.24% { background-position: 0 -628px; }
+      56.25%, 62.49% { background-position: -314px -628px; }
+      62.5%, 68.74% { background-position: -628px -628px; }
+      68.75%, 74.99% { background-position: -942px -628px; }
+      75%, 81.24% { background-position: 0 -942px; }
+      81.25%, 87.49% { background-position: -314px -942px; }
+      87.5%, 93.74% { background-position: -628px -942px; }
+      93.75%, 99.99% { background-position: -942px -942px; }
+      100% { background-position: 0 0; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>林地凶狼 · 16 帧待机循环</h1>
+    <div class="stage"><div class="wolf" aria-label="动画预览"></div></div>
+    <p>16 帧 · 6 FPS · 无缝循环</p>
+  </main>
+</body>
+</html>

@@ -1,0 +1,48 @@
+{
+  "tool": "built-in imagegen",
+  "references": [
+    "preview/male_set_1.png",
+    "male/eyes/02.png",
+    "male/eyebrows/02.png"
+  ],
+  "prompt_set": {
+    "common": "Original male portrait is the authoritative painting style and natural masculine anatomy reference; original isolated part is the material reference. Chinese ink and light watercolour, matte charcoal strokes, warm grey-brown hues, subtle paper wash. Strict frontal view, equal left/right height; one pair in one row on transparent canvas. No jagged corners, angry scowl, face, skin plate, other features, background or labels.",
+    "eyes": "Only eyeballs, lids and complete short upper lashes with sparse lower lashes. Soft rounded almond curves and corners; grey-brown small natural irises, direct gaze, matching restrained iris lights. No detached highlights, opaque eye-socket complexion, brows or heavy eyeliner.",
+    "eyebrows": "Only eyebrows, moderately full but softly curving masculine shapes, feathered inner heads and naturally tapered fine-hair tails. No knife shape, hard triangle, black geometric bar, skin, eyes or scalp hair.",
+    "ningyue": "Calm gently curved almond eyes and nearly straight softly curving brows, rounded tails.",
+    "panshi": "Warm composed slightly fuller almond eyes and full low broad gentle brow arc with individual irregular hair strokes.",
+    "lingfeng": "Alert graceful almond eyes, short soft uplifted outer corner; mildly rising brows with low rounded peak and fine-hair taper."
+  },
+  "jobs": [
+    {
+      "id": "ningyue_eyes",
+      "source": "ningyue_eyes.png",
+      "generated_file": "exec-0c86f63b-6779-4ad9-af7a-d0759973d468.png"
+    },
+    {
+      "id": "ningyue_eyebrows",
+      "source": "ningyue_eyebrows.png",
+      "generated_file": "exec-987e7251-1fd4-43df-a495-69cc1cfe67c7.png"
+    },
+    {
+      "id": "panshi_eyes",
+      "source": "panshi_eyes.png",
+      "generated_file": "exec-c3165219-ff90-4b70-b755-6920c5eab1ac.png"
+    },
+    {
+      "id": "panshi_eyebrows",
+      "source": "panshi_eyebrows.png",
+      "generated_file": "exec-b52c9340-65a6-4fca-af84-e44f5eb98469.png"
+    },
+    {
+      "id": "lingfeng_eyes",
+      "source": "lingfeng_eyes.png",
+      "generated_file": "exec-a9fbdd35-3d28-44c1-913c-ec7839a7338e.png"
+    },
+    {
+      "id": "lingfeng_eyebrows",
+      "source": "lingfeng_eyebrows.png",
+      "generated_file": "exec-91fe8e8a-4b30-4ee4-b3ff-4ef55fb958a9.png"
+    }
+  ]
+}

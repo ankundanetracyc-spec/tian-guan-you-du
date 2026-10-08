@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="StatusEffect" format=3]
+
+[ext_resource type="Script" path="res://csharp/battle/StatusEffect.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+effect_id = "借力"
+name = "借力"
+description = "借住来势积蓄反制之机。每层使下一张由自身主动打出的物理伤害牌伤害提高5%；该牌结算后移除全部借力。"
+max_stacks = 99
+duration_default = -1
+duration_type = 3

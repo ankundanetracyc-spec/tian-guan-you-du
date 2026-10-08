@@ -1,0 +1,31 @@
+{
+  "pass": true,
+  "revision": "yuxu_clothing_integration_20261008",
+  "source_asset_report": "../../../yuxu_daily_drafts_20261005/asset_verification.json",
+  "files_copied": 8,
+  "source_destination_sha256_match": true,
+  "canvas": [
+    1024,
+    1536
+  ],
+  "source_asset_report_checks": {
+    "rgba": true,
+    "transparent_rgb_zero": true,
+    "neck_hole_alpha_zero": true
+  },
+  "new_clothes_per_gender": 4,
+  "saved_style_indices": [
+    3,
+    4,
+    5,
+    6
+  ],
+  "old_clothing_indices_preserved": [
+    0,
+    1,
+    2
+  ],
+  "active_choices": 96,
+  "physical_component_pngs": 99,
+  "visual_approved_by_user": false
+}

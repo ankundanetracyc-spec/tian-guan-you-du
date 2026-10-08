@@ -1,0 +1,263 @@
+[gd_scene format=3 uid="uid://daqmn0vi1ktsd"]
+
+[ext_resource type="Texture2D" path="res://textures/ui/status_icons/01a720233f6d0121bd413a6a8798b445.png" id="1_3qpip"]
+[ext_resource type="Texture2D" path="res://textures/ui/status_icons/b28def9452e78d3f71846379bc97df9e.png" id="1_6nbwy"]
+[ext_resource type="Script" path="res://csharp/panel/StatusBarGroup.cs" id="1_hiqq1"]
+[ext_resource type="Texture2D" path="res://textures/ui/status_icons/f51b5fe386a43002bfe965f4cc1db33f.png" id="2_hiqq1"]
+[ext_resource type="Texture2D" path="res://textures/ui/status_icons/f6eac24ff3305a90d92b6ac61d6092d4.png" id="2_mon1m"]
+[ext_resource type="Texture2D" path="res://textures/ui/status_icons/5e1a0c121ce7e659f33619abe7134b97.png" id="4_ve7rg"]
+[ext_resource type="Texture2D" path="res://textures/ui/status_icons/60bb86921e9e3f7c790cad4cfe5215e5.png" id="5_ssxc6"]
+[ext_resource type="Texture2D" path="res://textures/ui/status_icons/8392a4705c43ebaa7630a22f5a87b229.png" id="6_2cmvq"]
+[ext_resource type="Texture2D" path="res://textures/ui/status_icons/188f3de06f76573e70c3a7e7bc0a6385.png" id="7_3gc3j"]
+
+[node name="StatusBarGroup" type="Control" unique_id=1877126737]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -62.5
+offset_top = -50.0
+offset_right = 62.5
+offset_bottom = 50.0
+size_flags_horizontal = 3
+script = ExtResource("1_hiqq1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=56755674]
+layout_mode = 0
+offset_left = -81.0
+offset_right = 83.0
+offset_bottom = 55.0
+theme_override_constants/separation = 0
+
+[node name="Health" type="Control" parent="VBoxContainer" unique_id=187197653]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HealthBar3" type="TextureProgressBar" parent="VBoxContainer/Health" unique_id=189641186]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -69.0
+offset_top = -73.0
+offset_right = 315.0
+offset_bottom = 311.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.36, 0.2)
+mouse_filter = 2
+step = -1.0
+value = 100.0
+texture_progress = ExtResource("1_6nbwy")
+
+[node name="HealthBar2" type="TextureProgressBar" parent="VBoxContainer/Health" unique_id=935526656]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -69.0
+offset_top = -73.0
+offset_right = 315.0
+offset_bottom = 311.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.36, 0.2)
+mouse_filter = 2
+step = -1.0
+value = 100.0
+texture_progress = ExtResource("2_hiqq1")
+
+[node name="HealthBar" type="TextureProgressBar" parent="VBoxContainer/Health" unique_id=2100349040]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -69.0
+offset_top = -73.0
+offset_right = 315.0
+offset_bottom = 311.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.36, 0.2)
+mouse_filter = 2
+step = -1.0
+value = 100.0
+texture_progress = ExtResource("2_mon1m")
+
+[node name="Mana" type="Control" parent="VBoxContainer" unique_id=272883909]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ManaBar3" type="TextureProgressBar" parent="VBoxContainer/Mana" unique_id=1231798579]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -69.0
+offset_top = -38.0
+offset_right = 315.0
+offset_bottom = 346.0
+scale = Vector2(0.36, 0.2)
+mouse_filter = 2
+step = -1.0
+value = 100.0
+texture_progress = ExtResource("1_6nbwy")
+
+[node name="ManaBar2" type="TextureProgressBar" parent="VBoxContainer/Mana" unique_id=1865599968]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -69.0
+offset_top = -38.0
+offset_right = 315.0
+offset_bottom = 346.0
+scale = Vector2(0.36, 0.2)
+mouse_filter = 2
+step = -1.0
+value = 100.0
+texture_progress = ExtResource("4_ve7rg")
+
+[node name="ManaBar" type="TextureProgressBar" parent="VBoxContainer/Mana" unique_id=1933406856]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -69.0
+offset_top = -38.0
+offset_right = 315.0
+offset_bottom = 346.0
+scale = Vector2(0.36, 0.2)
+mouse_filter = 2
+step = -1.0
+value = 100.0
+texture_progress = ExtResource("5_ssxc6")
+
+[node name="Stamina" type="Control" parent="VBoxContainer" unique_id=126309586]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="StaminaBar3" type="TextureProgressBar" parent="VBoxContainer/Stamina" unique_id=1390621340]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -71.0
+offset_top = -3.0
+offset_right = 313.0
+offset_bottom = 381.0
+scale = Vector2(0.36, 0.2)
+mouse_filter = 2
+step = -1.0
+value = 100.0
+texture_progress = ExtResource("1_6nbwy")
+
+[node name="StaminaBar2" type="TextureProgressBar" parent="VBoxContainer/Stamina" unique_id=710405542]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -71.0
+offset_top = -3.0
+offset_right = 313.0
+offset_bottom = 381.0
+scale = Vector2(0.37, 0.2)
+mouse_filter = 2
+step = -1.0
+value = 100.0
+texture_progress = ExtResource("6_2cmvq")
+
+[node name="StaminaBar" type="TextureProgressBar" parent="VBoxContainer/Stamina" unique_id=1767267697]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -71.0
+offset_top = -3.0
+offset_right = 313.0
+offset_bottom = 381.0
+scale = Vector2(0.37, 0.2)
+mouse_filter = 2
+step = -1.0
+value = 100.0
+texture_progress = ExtResource("7_3gc3j")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2020570970]
+scale = Vector2(0.541, 0.6009259)
+texture = ExtResource("1_3qpip")
+
+[node name="NameLabel" type="Label" parent="." unique_id=705563368]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -70.0
+offset_top = -73.0
+offset_right = 68.0
+offset_bottom = -50.0
+theme_override_colors/font_color = Color(0.19604403, 0.69941634, 0.6448223, 1)
+text = "姓名"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=453942027]
+layout_mode = 0
+offset_left = -26.0
+offset_top = -44.0
+offset_right = 28.0
+offset_bottom = 46.0
+theme_override_constants/separation = 15
+
+[node name="HealthValueLabel" type="Label" parent="VBoxContainer2" unique_id=826944567]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "100/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ManaValueLabel" type="Label" parent="VBoxContainer2" unique_id=214834766]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "100/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StaminaValueLabel" type="Label" parent="VBoxContainer2" unique_id=1902907518]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "100/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="." unique_id=161348276]
+layout_mode = 0
+offset_left = 82.0
+offset_top = -44.0
+offset_right = 122.0
+offset_bottom = 46.0
+theme_override_constants/separation = 15
+
+[node name="HealthPreviewLabel" type="Label" parent="VBoxContainer3" unique_id=1072091217]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9999998, 0.2205818, 0.21741536, 1)
+theme_override_font_sizes/font_size = 14
+vertical_alignment = 1
+
+[node name="ManaPreviewLabel" type="Label" parent="VBoxContainer3" unique_id=276419090]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4762246, 0.48678988, 0.82416904, 1)
+theme_override_font_sizes/font_size = 14
+vertical_alignment = 1
+
+[node name="StaminaPreviewLabel" type="Label" parent="VBoxContainer3" unique_id=1633844306]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5764706, 0.68235296, 0, 1)
+theme_override_font_sizes/font_size = 14
+vertical_alignment = 1

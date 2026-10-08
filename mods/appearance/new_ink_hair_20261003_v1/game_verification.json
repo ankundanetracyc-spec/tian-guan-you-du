@@ -1,0 +1,159 @@
+{
+  "entry_pass": true,
+  "male_female_nine_toggles_pass": true,
+  "anchors_toggle_pass": true,
+  "independent_composition_pass": true,
+  "build_warnings": 0,
+  "build_errors": 0,
+  "verified_files": {
+    "male\\clothing.png": {
+      "sha256": "fb12274466cf47acf969c779de8e735e60a48d0f9ae496d9e0b06d8d2dcfb727",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA"
+    },
+    "male\\eyebrows.png": {
+      "sha256": "e488d1930e80fb2930da460d16bd23fcba71e7b238f4879e83e5373f1175568b",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA"
+    },
+    "male\\eyes.png": {
+      "sha256": "ef48d8640a19f7e30afa57f477842364865b76b27555be6e1a563ea9aea189fc",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA"
+    },
+    "male\\face_accessory.png": {
+      "sha256": "1913847bf9091720c48139f49dfbb3aa70c4d20de82f2718e3dcd8348c6e5e9c",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA"
+    },
+    "male\\face_shape.png": {
+      "sha256": "b584696489925efe1818a200fb4be6e01fd56aa08ee281d46f74abe32b7edbc8",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA"
+    },
+    "male\\hair_back.png": {
+      "sha256": "a582461acea8f76044e2322adff388731b83dd756d97fdd6c86c85c1962ff62f",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA"
+    },
+    "male\\hair_front.png": {
+      "sha256": "350abdda03b3c711a188bac2a755c0d762d84d8d1a867f05fade7d8ec48e6f72",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA"
+    },
+    "male\\mouth.png": {
+      "sha256": "24d5820852e81a99c2672a976cf3dcca60567a250807063634e4b96a46148dec",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA"
+    },
+    "male\\nose.png": {
+      "sha256": "745da0f8d58deb2e841ebacaf42585e648bfc3641ce2b442cbb1a241f6206d17",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA"
+    },
+    "female\\clothing.png": {
+      "sha256": "2d81ad07a74163656af0f3d4597774acbac6aae67a1db6946914b48a87eead31",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA"
+    },
+    "female\\eyebrows.png": {
+      "sha256": "4c0e92c49c378dce638aa56832485d9cf756cc21ce87ec609f855e4299a9ee42",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA"
+    },
+    "female\\eyes.png": {
+      "sha256": "877ece3cf5d6f77d861cff991e0a2195342add2a8d8d7c3a89bd291f43605738",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA"
+    },
+    "female\\face_accessory.png": {
+      "sha256": "1913847bf9091720c48139f49dfbb3aa70c4d20de82f2718e3dcd8348c6e5e9c",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA"
+    },
+    "female\\face_shape.png": {
+      "sha256": "9785c133a7487ea3f8c0dce184025f9acf8cc4cee5b81fcc666e702b6995b3ac",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA"
+    },
+    "female\\hair_back.png": {
+      "sha256": "a37d4fc6255530e38644ac9c7a3e032298a6f1a07e2ee55e15d7ea43edaf6202",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA"
+    },
+    "female\\hair_front.png": {
+      "sha256": "f543076f601dbf7850e93360ad2db012d39db62dc8c2cb1cf910b28518f0fad5",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA"
+    },
+    "female\\mouth.png": {
+      "sha256": "92d9184af745e3df8499bf82aacfec53572d02bb74896e7be36ed64f6316e310",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA"
+    },
+    "female\\nose.png": {
+      "sha256": "d48a4f80ee551bf39c94b836c5e6fcd97b8bf687f15d5d88dcd09d8644807202",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA"
+    }
+  },
+  "runtime_diagnostics": "ERROR: Resource file not found: res:// (expected type: unknown)\n   at: _load (core/io/resource_loader.cpp:325)\nERROR: Failed to instantiate an autoload, can't load from path: .\n   at: start (main/main.cpp:4533)\nERROR: Texture with GL ID of 23: leaked 12280 bytes.\n   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)\nERROR: Parameter \"RenderingServer::get_singleton()\" is null.\n   at: ~ImageTexture (scene/resources/image_texture.cpp:245)\n",
+  "user_visual_approved": false,
+  "revision": "Female matte skin, new ink eyes and slight feature placement refinement",
+  "exit_code": 0,
+  "rig": "rig/portrait_rig.json"
+}

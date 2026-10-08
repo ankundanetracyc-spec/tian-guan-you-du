@@ -1,0 +1,142 @@
+{
+  "enabled": false,
+  "package_id": "ink_recovered_parts_20261004",
+  "rig_id": "ink_recovered_parts_20261004",
+  "rig_file": "res://mods/appearance/ink_recovered_parts_20261004/rig/portrait_rig.json",
+  "canvas": {
+    "width": 1024,
+    "height": 1536
+  },
+  "index_start": 1,
+  "index_padding": 2,
+  "allow_skin_tone_tint": false,
+  "allow_hair_color_tint": false,
+  "components": [
+    {
+      "id": "male_front_hair",
+      "gender": "male",
+      "part": "hair_front",
+      "file": "male/hair_front/{index}.png",
+      "variant_count": 3
+    },
+    {
+      "id": "male_back_hair",
+      "gender": "male",
+      "part": "hair_back",
+      "file": "male/hair_back/{index}.png",
+      "variant_count": 3
+    },
+    {
+      "id": "male_eyebrows",
+      "gender": "male",
+      "part": "brow",
+      "file": "male/eyebrows/{index}.png",
+      "variant_count": 6
+    },
+    {
+      "id": "male_eyes",
+      "gender": "male",
+      "part": "eye",
+      "file": "male/eyes/{index}.png",
+      "variant_count": 6
+    },
+    {
+      "id": "male_nose",
+      "gender": "male",
+      "part": "nose",
+      "file": "male/nose/{index}.png",
+      "variant_count": 3
+    },
+    {
+      "id": "male_mouth",
+      "gender": "male",
+      "part": "mouth",
+      "file": "male/mouth/{index}.png",
+      "variant_count": 3
+    },
+    {
+      "id": "male_face",
+      "gender": "male",
+      "part": "face",
+      "file": "male/face_shape/{index}.png",
+      "variant_count": 3
+    },
+    {
+      "id": "male_clothes",
+      "gender": "male",
+      "part": "clothes",
+      "file": "male/clothing/{index}.png",
+      "variant_count": 3
+    },
+    {
+      "id": "male_beard",
+      "gender": "male",
+      "part": "beard",
+      "file": "male/face_accessory/{index}.png",
+      "variant_count": 3
+    },
+    {
+      "id": "female_front_hair",
+      "gender": "female",
+      "part": "hair_front",
+      "file": "female/hair_front/{index}.png",
+      "variant_count": 6
+    },
+    {
+      "id": "female_back_hair",
+      "gender": "female",
+      "part": "hair_back",
+      "file": "female/hair_back/{index}.png",
+      "variant_count": 6
+    },
+    {
+      "id": "female_eyebrows",
+      "gender": "female",
+      "part": "brow",
+      "file": "female/eyebrows/{index}.png",
+      "variant_count": 9
+    },
+    {
+      "id": "female_eyes",
+      "gender": "female",
+      "part": "eye",
+      "file": "female/eyes/{index}.png",
+      "variant_count": 9
+    },
+    {
+      "id": "female_nose",
+      "gender": "female",
+      "part": "nose",
+      "file": "female/nose/{index}.png",
+      "variant_count": 6
+    },
+    {
+      "id": "female_mouth",
+      "gender": "female",
+      "part": "mouth",
+      "file": "female/mouth/{index}.png",
+      "variant_count": 6
+    },
+    {
+      "id": "female_face",
+      "gender": "female",
+      "part": "face",
+      "file": "female/face_shape/{index}.png",
+      "variant_count": 6
+    },
+    {
+      "id": "female_clothes",
+      "gender": "female",
+      "part": "clothes",
+      "file": "female/clothing/{index}.png",
+      "variant_count": 3
+    },
+    {
+      "id": "female_makeup",
+      "gender": "female",
+      "part": "makeup",
+      "file": "female/face_accessory/{index}.png",
+      "variant_count": 3
+    }
+  ]
+}

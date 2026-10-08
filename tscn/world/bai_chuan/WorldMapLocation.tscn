@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://diwu1b5jw3864"]
+
+[ext_resource type="Script" uid="uid://ojhum6f8uaj0" path="res://scripts/world/map/WorldMapLocation.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://evonbvxiaxuv" path="res://textures/ui/world/world_marker_circle_ink.svg" id="2_marker"]
+[ext_resource type="Texture2D" uid="uid://bla5s8pypf18d" path="res://textures/ui/world/world_marker_ring_ink.svg" id="3_ring"]
+[ext_resource type="FontFile" uid="uid://u5r81bxd3vrk" path="res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf" id="4_font"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_location"]
+radius = 18.0
+
+[node name="WorldMapLocation" type="Area2D" unique_id=496811294]
+script = ExtResource("1_script")
+
+[node name="Visual" type="Node2D" parent="." unique_id=1274152653]
+
+[node name="Marker" type="Sprite2D" parent="Visual" unique_id=411891730]
+texture = ExtResource("2_marker")
+
+[node name="Ring" type="Sprite2D" parent="Visual" unique_id=1923152080]
+visible = false
+texture = ExtResource("3_ring")
+
+[node name="Title" type="Label" parent="Visual" unique_id=5470175]
+offset_left = -90.0
+offset_top = 32.0
+offset_right = 90.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0.93, 0.87, 0.73, 1)
+theme_override_colors/font_outline_color = Color(0.08, 0.07, 0.05, 0.85)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+
+[node name="Population" type="Label" parent="Visual" unique_id=1557874069]
+offset_left = 14.0
+offset_top = -30.0
+offset_right = 42.0
+offset_bottom = -4.0
+theme_override_colors/font_color = Color(0.13, 0.1, 0.06, 1)
+theme_override_colors/font_outline_color = Color(0.85, 0.69, 0.36, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+
+[node name="PlayerMarker" type="Sprite2D" parent="Visual" unique_id=1217880885]
+visible = false
+position = Vector2(0, -26)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=630550375]
+visible = false
+shape = SubResource("CircleShape2D_location")

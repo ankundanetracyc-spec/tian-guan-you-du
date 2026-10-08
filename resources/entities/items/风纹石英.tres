@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/ItemData.cs" id="1"]
+[ext_resource type="Resource" path="res://resources/material_craft/风纹石英材性.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+definition_id = &"mat_fengwen_quartz"
+entity_name = "风纹石英"
+icon_path = "res://textures/items/item_fengwen_quartz.png"
+item_category = "材料"
+item_subcategory = "晶石"
+tags = Array[String](["五行[金]", "质地[晶]", "功用[通]", "相性[和]"])
+grade_value = 4
+can_stack = true
+max_stack = 999
+craft_data = ExtResource("2")

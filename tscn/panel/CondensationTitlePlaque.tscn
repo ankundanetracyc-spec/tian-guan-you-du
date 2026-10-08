@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Texture2D" path="res://textures/ui/cultivation/condensation_title_plaque_transparent_v1.png" id="1_plaque"]
+[ext_resource type="FontFile" path="res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf" id="2_font"]
+
+[node name="CondensationTitlePlaque" type="Control"]
+layout_mode = 3
+anchors_preset = 10
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -230.0
+offset_right = 230.0
+offset_bottom = 126.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+z_index = 20
+
+[node name="PlaqueTexture" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 0.0
+offset_top = -17.0
+offset_right = 460.0
+offset_bottom = 127.0
+mouse_filter = 2
+texture = ExtResource("1_plaque")
+expand_mode = 1
+stretch_mode = 0
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 13.0
+offset_right = 424.0
+offset_bottom = 61.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.956863, 0.941176, 0.87451, 1)
+theme_override_colors/font_shadow_color = Color(0.0352941, 0.027451, 0.0196078, 0.92)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 28
+text = "凝核"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Round" type="Label" parent="."]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 67.0
+offset_right = 424.0
+offset_bottom = 112.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.956863, 0.941176, 0.87451, 1)
+theme_override_colors/font_shadow_color = Color(0.0352941, 0.027451, 0.0196078, 0.92)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 15
+text = "当前回合1/总回合8"
+horizontal_alignment = 1
+vertical_alignment = 1

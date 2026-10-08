@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ActiveSkillData" format=3 uid="uid://yiuihmy3or78"]
+
+[ext_resource type="Script" path="res://csharp/gongfa/ActiveSkillData.cs" id="1"]
+[ext_resource type="Script" path="res://csharp/gongfa/DamageBonus.cs" id="2_dmg"]
+
+[sub_resource type="Resource" id="Resource_agility"]
+script = ExtResource("2_dmg")
+attribute = "agility"
+multiplier = 1.0
+metadata/_custom_type_script = "uid://corjswdok5c7"
+
+[resource]
+script = ExtResource("1")
+skill_name = "撒石灰"
+description = "向相邻敌人撒出石灰并造成物理伤害；打出后从本场战斗中移除。"
+source_gongfa_name = "市井游身功"
+skill_type = 0
+energy_cost = 1
+target_type = 2
+range_min = 1
+range_max = 1
+keywords = Array[String](["消耗"])
+base_damage = 2.0
+damage_type = "physical"
+damage_bonuses = Array[ExtResource("2_dmg")]([SubResource("Resource_agility")])
+metadata/_custom_type_script = "uid://cjcf3nq1ne5ql"

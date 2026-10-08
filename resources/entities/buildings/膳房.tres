@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BuildingData" format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/EntityData.cs" id="1"]
+[ext_resource type="Script" path="res://csharp/resources/BuildingData.cs" id="2"]
+
+[resource]
+script = ExtResource("2")
+entity_name = "膳房"
+summary = "将粮食、药材与稀有食材烹制为灵膳的场所，也能在灾年改善民生。"
+max_durability = 14
+current_durability = 14
+consume_durability = false
+build_cost_counts = Array[int]([8, 4])
+build_cost_resource_ids = Array[String](["stone", "herbs"])
+estate_facility_id = "kitchen"

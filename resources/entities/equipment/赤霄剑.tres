@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EquipmentData" format=3 uid="uid://b5nkd1swo8k8p"]
+
+[ext_resource type="Script" path="res://csharp/resources/EquipmentData.cs" id="2"]
+
+[resource]
+script = ExtResource("2")
+definition_id = &"equip_chixiao_sword"
+can_stack = false
+max_stack = 1
+quality = 2
+weapon_type = 1
+fixed_bonuses = {
+"critical": 5,
+"physical_defense": 5,
+"physique": 3,
+"soul": 2
+}
+weapon_skill_paths = Array[String](["res://resources/activeskills/武器技能/赤霄斩.tres", "res://resources/activeskills/武器技能/烈焰突刺.tres"])
+item_category = "装备"
+entity_name = "赤霄剑"
+icon_path = ""

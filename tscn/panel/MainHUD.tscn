@@ -1,0 +1,242 @@
+[gd_scene format=3 uid="uid://base5bcjm2wd4"]
+
+[ext_resource type="Script" path="res://csharp/panel/MainHUD.cs" id="1_script"]
+[ext_resource type="Texture2D" path="res://textures/ui/qingxi/realm_button_ink_v3.png" id="3_realm_icon"]
+[ext_resource type="Texture2D" path="res://textures/ui/qingxi/bottom_nav_refinement_ink_v3.png" id="4_refinement_icon"]
+[ext_resource type="Texture2D" path="res://textures/ui/qingxi/bottom_nav_world_ink_v2.png" id="6_world_icon"]
+[ext_resource type="Texture2D" path="res://textures/ui/qingxi/bottom_nav_inventory_ink_v2.png" id="7_inventory_icon"]
+[ext_resource type="Texture2D" path="res://textures/ui/qingxi/bottom_nav_character_ink_v1.png" id="8_character_icon"]
+[ext_resource type="Texture2D" path="res://textures/ui/qingxi/bottom_nav_rumors_ink_v1.png" id="9_rumors_icon"]
+[ext_resource type="Texture2D" path="res://textures/ui/qingxi/bottom_nav_letters_ink_v1.png" id="10_letters_icon"]
+[ext_resource type="Texture2D" path="res://textures/ui/qingxi/bottom_nav_craft_ink_v1.png" id="11_craft_icon"]
+
+[sub_resource type="StyleBoxEmpty" id="flat"]
+
+[sub_resource type="StyleBoxFlat" id="pressed_style"]
+bg_color = Color(0, 0, 0, 0.25)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="hover_style"]
+bg_color = Color(1, 1, 1, 0.12)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="MainHUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_script")
+
+[node name="Hbox" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -830.0
+offset_top = -150.0
+offset_right = -132.0
+offset_bottom = -18.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 14
+alignment = 2
+
+[node name="V_World" type="VBoxContainer" parent="Hbox"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="BtnWorld" type="Button" parent="Hbox/V_World"]
+custom_minimum_size = Vector2(104, 98)
+layout_mode = 2
+theme_override_styles/normal = SubResource("flat")
+theme_override_styles/pressed = SubResource("pressed_style")
+theme_override_styles/hover = SubResource("hover_style")
+icon = ExtResource("6_world_icon")
+expand_icon = true
+
+[node name="Label" type="Label" parent="Hbox/V_World"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 21
+text = "世界"
+horizontal_alignment = 1
+
+[node name="V_Character" type="VBoxContainer" parent="Hbox"]
+layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="BtnCharacter" type="Button" parent="Hbox/V_Character"]
+custom_minimum_size = Vector2(104, 98)
+layout_mode = 2
+theme_override_styles/normal = SubResource("flat")
+theme_override_styles/pressed = SubResource("pressed_style")
+theme_override_styles/hover = SubResource("hover_style")
+icon = ExtResource("8_character_icon")
+expand_icon = true
+
+[node name="Label" type="Label" parent="Hbox/V_Character"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 21
+text = "角色"
+horizontal_alignment = 1
+
+[node name="V_Inventory" type="VBoxContainer" parent="Hbox"]
+layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="BtnInventory" type="Button" parent="Hbox/V_Inventory"]
+custom_minimum_size = Vector2(104, 98)
+layout_mode = 2
+theme_override_styles/normal = SubResource("flat")
+theme_override_styles/pressed = SubResource("pressed_style")
+theme_override_styles/hover = SubResource("hover_style")
+icon = ExtResource("7_inventory_icon")
+expand_icon = true
+
+[node name="Label" type="Label" parent="Hbox/V_Inventory"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 21
+text = "行囊"
+horizontal_alignment = 1
+
+[node name="V_Rumors" type="VBoxContainer" parent="Hbox"]
+layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="BtnRumors" type="Button" parent="Hbox/V_Rumors"]
+custom_minimum_size = Vector2(104, 98)
+layout_mode = 2
+theme_override_styles/normal = SubResource("flat")
+theme_override_styles/pressed = SubResource("pressed_style")
+theme_override_styles/hover = SubResource("hover_style")
+icon = ExtResource("9_rumors_icon")
+expand_icon = true
+
+[node name="Label" type="Label" parent="Hbox/V_Rumors"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 21
+text = "见闻"
+horizontal_alignment = 1
+
+[node name="V_Letters" type="VBoxContainer" parent="Hbox"]
+layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="BtnLetters" type="Button" parent="Hbox/V_Letters"]
+custom_minimum_size = Vector2(104, 98)
+layout_mode = 2
+theme_override_styles/normal = SubResource("flat")
+theme_override_styles/pressed = SubResource("pressed_style")
+theme_override_styles/hover = SubResource("hover_style")
+icon = ExtResource("10_letters_icon")
+expand_icon = true
+
+[node name="Label" type="Label" parent="Hbox/V_Letters"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 21
+text = "信件"
+horizontal_alignment = 1
+
+[node name="V_Craft" type="VBoxContainer" parent="Hbox"]
+layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="BtnCraft" type="Button" parent="Hbox/V_Craft"]
+custom_minimum_size = Vector2(104, 98)
+layout_mode = 2
+theme_override_styles/normal = SubResource("flat")
+theme_override_styles/pressed = SubResource("pressed_style")
+theme_override_styles/hover = SubResource("hover_style")
+icon = ExtResource("11_craft_icon")
+expand_icon = true
+
+[node name="Label" type="Label" parent="Hbox/V_Craft"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 21
+text = "百工"
+horizontal_alignment = 1
+
+[node name="V_Cultivation" type="VBoxContainer" parent="Hbox"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="BtnCultivation" type="Button" parent="Hbox/V_Cultivation"]
+custom_minimum_size = Vector2(104, 98)
+layout_mode = 2
+theme_override_styles/normal = SubResource("flat")
+theme_override_styles/pressed = SubResource("pressed_style")
+theme_override_styles/hover = SubResource("hover_style")
+icon = ExtResource("4_refinement_icon")
+expand_icon = true
+
+[node name="Label" type="Label" parent="Hbox/V_Cultivation"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 21
+text = "修行"
+horizontal_alignment = 1
+
+[node name="V_Realm" type="VBoxContainer" parent="Hbox"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="BtnRealm" type="Button" parent="Hbox/V_Realm"]
+custom_minimum_size = Vector2(104, 98)
+layout_mode = 2
+theme_override_styles/normal = SubResource("flat")
+theme_override_styles/pressed = SubResource("pressed_style")
+theme_override_styles/hover = SubResource("hover_style")
+icon = ExtResource("3_realm_icon")
+expand_icon = true
+disabled = true
+
+[node name="Label" type="Label" parent="Hbox/V_Realm"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 21
+text = "境界"
+horizontal_alignment = 1
+
+[node name="ActionBarToggle" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -122.0
+offset_top = -93.0
+offset_right = -24.0
+offset_bottom = -47.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0.92, 0.72, 1)
+theme_override_font_sizes/font_size = 18
+text = "收起 ▲"

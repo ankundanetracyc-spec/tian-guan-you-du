@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "purpose": "out_of_battle_half_body_portrait",
+  "master": "res://mods/appearance/水墨头像标准包/母版/男修_半身标准母版_v3.png",
+  "canvas": { "width": 1024, "height": 1536, "origin": "top_left" },
+  "drawing_order": ["hair_back", "face", "clothes", "eye", "nose", "mouth", "beard", "hair_front"],
+  "anchors": {
+    "center_axis_x": 512,
+    "head_pose": "front_upright",
+    "portrait_crop": "crown_to_upper_thigh",
+    "head_to_visible_body_ratio": "1:3.5_to_1:4"
+  },
+  "rules": [
+    "All eight layers use this exact 1024 x 1536 transparent canvas; never crop to pixels, re-centre, or scale an individual layer.",
+    "The clothes layer is a bound body-pose-and-outfit layer: it owns the half-body silhouette, sleeves, exposed hands and all posture. It contains no head or hair and is never mixed independently from a body pose.",
+    "The face layer owns the complete head skin, ears and a neck deliberately extended under the collar. The clothes layer is drawn later and must cover the lower neck. Eye includes brows. Hair is only split into hair_back and hair_front.",
+    "The head must be front-facing and centered. Clothes may have a restrained sleeve or hem gesture, but cannot rotate the torso enough to break head replacement."
+  ]
+}

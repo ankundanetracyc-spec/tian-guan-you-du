@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BuildingData" format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/EntityData.cs" id="1"]
+[ext_resource type="Script" path="res://csharp/resources/BuildingData.cs" id="2"]
+
+[resource]
+script = ExtResource("2")
+entity_name = "工坊"
+summary = "把家业资源转化为器具、丹药与符箓等实体成果的基础作坊。"
+max_durability = 18
+current_durability = 18
+consume_durability = false
+build_cost_counts = Array[int]([12, 8])
+build_cost_resource_ids = Array[String](["stone", "ore"])
+estate_facility_id = "workshop"

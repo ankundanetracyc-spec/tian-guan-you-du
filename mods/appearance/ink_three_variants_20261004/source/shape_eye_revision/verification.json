@@ -1,0 +1,48 @@
+{
+  "pass": true,
+  "pngs": 67,
+  "changed_pngs": [
+    "male/eyes/03.png",
+    "male/hair_front/05.png",
+    "female/hair_front/05.png"
+  ],
+  "unchanged_pngs": 64,
+  "hair_metrics": {
+    "male": {
+      "before": {
+        "width": 310,
+        "central_top": 162,
+        "central_hairline": 287
+      },
+      "after": {
+        "width": 292,
+        "central_top": 153,
+        "central_hairline": 286
+      }
+    },
+    "female": {
+      "before": {
+        "width": 324,
+        "central_top": 151,
+        "central_hairline": 285
+      },
+      "after": {
+        "width": 283,
+        "central_top": 140,
+        "central_hairline": 283
+      }
+    }
+  },
+  "whole_pair_eye_anchors": [
+    [
+      464,
+      375
+    ],
+    [
+      569,
+      375
+    ]
+  ],
+  "visual_mix_checks": 20,
+  "visual_approved_by_user": false
+}

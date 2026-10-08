@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="app.diagrams.net" agent="Codex" version="24.7.17">
+  <diagram id="zhezhiduanshi" name="折枝·断势">
+    <mxGraphModel grid="1" page="1" pageWidth="1700" pageHeight="760">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="折枝·断势&#xA;折枝剑谱 / 压枝卷 / 习得*1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="584.5" y="30" width="312" height="71" as="geometry" />
+        </mxCell>
+        <mxCell id="main" value="&lt;div style=&quot;text-align:center;&quot;&gt;卡牌名：折枝·断势&lt;/div&gt;&lt;div style=&quot;text-align:left;&quot;&gt;资源路径：res://resources/activeskills/折枝剑谱/折枝·断势.tres&lt;br&gt;类型：心法牌&lt;br&gt;关键词：无&lt;br&gt;耗费：精力 0、法力 0&lt;br&gt;目标：自身&lt;br&gt;辅修获得1层剑意；主修获得2层剑意&lt;/div&gt;&lt;br&gt;状态关联：剑意、剑痕、外伤、折损" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=15;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="500" y="160" width="689" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="effect" value="进入折枝剑势&#xA;从下一次自身行动开始起，每次自身行动开始时消耗1层剑意维持&#xA;剑意不足：本次自身行动期间剑势失效&#xA;剑势中成功消耗剑痕并加入外伤时，追加折损" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="270" y="480" width="306" height="101" as="geometry" />
+        </mxCell>
+        <mxCell id="role" value="定位：进入折枝剑势&#xA;作用：先进入折枝剑势，再通过后续攻击削弱敌人&#xA;处于剑势时，消耗剑痕并加入外伤还会施加折损" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="840" y="480" width="333" height="82" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

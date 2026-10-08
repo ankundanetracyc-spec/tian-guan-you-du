@@ -1,0 +1,15 @@
+{
+  "mode": "built-in imagegen",
+  "selected": {
+    "wenyu_first_eyes.png": "exec-96351822-7e6f-40b0-a642-909e7b94cfee.png",
+    "wenyu_first_eyebrows.png": "exec-86bb87bb-90c0-458b-9bdd-a58cf9ab8efa.png",
+    "changfeng_first_eyes.png": "exec-1181bfb6-7386-4c24-a407-3e4fa73d61b7.png",
+    "changfeng_first_eyebrows.png": "exec-1f0cd162-b3a9-40f6-a72c-5fbedd04f159.png",
+    "cangshan_first_eyes.png": "exec-f02d8e5f-0fd5-4b7e-afa4-4c143f541feb.png",
+    "cangshan_first_eyebrows.png": "exec-6db3aa13-08df-4fb4-bf2f-2ac9dc13984d.png"
+  },
+  "prompts": "first_style_jobs.json",
+  "references": "reference_first/reference_record.json",
+  "superseded_sources": "rejected_style_mismatch/",
+  "rejected_reason": "User rejected coarse style and refinement mismatch with the first brow/eye pair; raw drafts were never published."
+}

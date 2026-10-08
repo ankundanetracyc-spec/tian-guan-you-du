@@ -1,0 +1,79 @@
+{
+  "pass": true,
+  "applied": true,
+  "new_parts": 6,
+  "unchanged_existing_parts": 79,
+  "physical_file_count": 85,
+  "parts": [
+    {
+      "file": "male\\hair_front\\06.png",
+      "rgba": true,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "transparent_rgb_zero": true,
+      "continuous_alpha": true,
+      "sha256": "c75fd89e90647d1c50367ce4828b44fe368d4826610c19305ba389e6116994dd"
+    },
+    {
+      "file": "male\\hair_back\\06.png",
+      "rgba": true,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "transparent_rgb_zero": true,
+      "continuous_alpha": true,
+      "sha256": "2ed3d2cf56ff55a9a20236a4f84ccbe726dd1565ab3538c2cae3940732711e66"
+    },
+    {
+      "file": "male\\hair_front\\07.png",
+      "rgba": true,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "transparent_rgb_zero": true,
+      "continuous_alpha": true,
+      "sha256": "45140ab0ae0fcec6f0b0fa6eafa788e9243744a05f4827eeecb5f9148886cd00"
+    },
+    {
+      "file": "male\\hair_back\\07.png",
+      "rgba": true,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "transparent_rgb_zero": true,
+      "continuous_alpha": true,
+      "sha256": "89c5d266f8942e412ee27926f0cc8c458bea5ac47f32d51862983b3f5f760e27"
+    },
+    {
+      "file": "male\\hair_front\\08.png",
+      "rgba": true,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "transparent_rgb_zero": true,
+      "continuous_alpha": true,
+      "sha256": "99703879d37cf9a9f238a4ede6f303c5248593d9fd454c99385e1786a865e732"
+    },
+    {
+      "file": "male\\hair_back\\08.png",
+      "rgba": true,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "transparent_rgb_zero": true,
+      "continuous_alpha": true,
+      "sha256": "57a8bc2f224108ada4c3f00ab08d69a382b78057521849d79e6ffa4cddf966c7"
+    }
+  ],
+  "new_front_back_mixes": 9,
+  "original_front_back_mixes": 6,
+  "three_face_trials": 9,
+  "geometric_certification": "visual fitting only, no three-point residual certification"
+}

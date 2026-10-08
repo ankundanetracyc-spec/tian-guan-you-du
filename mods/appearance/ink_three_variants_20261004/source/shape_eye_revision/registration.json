@@ -1,0 +1,42 @@
+[
+  {
+    "file": "male/hair_front/05.png",
+    "source": "source/shape_eye_revision/male_front_high_oval.png",
+    "scale": 0.355,
+    "translation": [
+      335,
+      74
+    ],
+    "method": "repainted rounded silhouette; single uniform registration"
+  },
+  {
+    "file": "female/hair_front/05.png",
+    "source": "source/shape_eye_revision/female_front_high_oval.png",
+    "scale": 0.355,
+    "translation": [
+      337,
+      39
+    ],
+    "method": "repainted rounded silhouette; single uniform registration"
+  },
+  {
+    "file": "male/eyes/03.png",
+    "source": "source/shape_eye_revision/male_eyes_3_refined.png",
+    "scale": 0.1483050847457627,
+    "translation": [
+      402.60169491525426,
+      296.54661016949154
+    ],
+    "pupil_targets": [
+      [
+        464,
+        375
+      ],
+      [
+        569,
+        375
+      ]
+    ],
+    "method": "paired eye transform; transparent outer ink; no opaque skin plate"
+  }
+]

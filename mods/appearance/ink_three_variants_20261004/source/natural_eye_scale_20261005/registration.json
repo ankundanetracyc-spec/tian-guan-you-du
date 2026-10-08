@@ -1,0 +1,302 @@
+[
+  {
+    "name": "凝岳",
+    "index": 4,
+    "source": "ningyue_eyes.png",
+    "source_sha256": "fba3da42532fe7f99a18a50e06f9c728ca494230584d93782c3b935f35f98e0f",
+    "source_pupils": [
+      [
+        431,
+        506
+      ],
+      [
+        1104,
+        506
+      ]
+    ],
+    "target_pupils": [
+      [
+        464,
+        375
+      ],
+      [
+        569,
+        375
+      ]
+    ],
+    "whole_pair_uniform_transform": [
+      0.15601783060921248,
+      396.7563150074294,
+      296.0549777117385
+    ],
+    "organ_colour_mask_only": [
+      [
+        260,
+        489
+      ],
+      [
+        316,
+        478
+      ],
+      [
+        376,
+        478
+      ],
+      [
+        431,
+        483
+      ],
+      [
+        501,
+        501
+      ],
+      [
+        566,
+        527
+      ],
+      [
+        644,
+        567
+      ],
+      [
+        567,
+        566
+      ],
+      [
+        487,
+        568
+      ],
+      [
+        410,
+        557
+      ],
+      [
+        339,
+        538
+      ],
+      [
+        285,
+        510
+      ]
+    ],
+    "lashes_not_clipped": true,
+    "metrics": {
+      "reference": {
+        "left_opaque_eye_width": 65,
+        "left_opaque_eye_height": 20,
+        "light_sclera_pixels": 278
+      },
+      "previous": {
+        "left_opaque_eye_width": 81,
+        "left_opaque_eye_height": 21,
+        "light_sclera_pixels": 206
+      },
+      "candidate": {
+        "left_opaque_eye_width": 68,
+        "left_opaque_eye_height": 16,
+        "light_sclera_pixels": 202
+      }
+    },
+    "visual_approved_by_user": false
+  },
+  {
+    "name": "磐石",
+    "index": 5,
+    "source": "panshi_eyes.png",
+    "source_sha256": "e9bebc70596d899348751de1f54a099e949af92997969fdbaabeda90ee7b58ea",
+    "source_pupils": [
+      [
+        441,
+        502
+      ],
+      [
+        1090,
+        502
+      ]
+    ],
+    "target_pupils": [
+      [
+        464,
+        375
+      ],
+      [
+        569,
+        375
+      ]
+    ],
+    "whole_pair_uniform_transform": [
+      0.1617873651771957,
+      392.6517719568567,
+      293.78274268104775
+    ],
+    "organ_colour_mask_only": [
+      [
+        284,
+        489
+      ],
+      [
+        328,
+        473
+      ],
+      [
+        382,
+        474
+      ],
+      [
+        440,
+        477
+      ],
+      [
+        504,
+        493
+      ],
+      [
+        565,
+        517
+      ],
+      [
+        631,
+        563
+      ],
+      [
+        568,
+        556
+      ],
+      [
+        488,
+        561
+      ],
+      [
+        413,
+        553
+      ],
+      [
+        348,
+        535
+      ],
+      [
+        296,
+        510
+      ]
+    ],
+    "lashes_not_clipped": true,
+    "metrics": {
+      "reference": {
+        "left_opaque_eye_width": 68,
+        "left_opaque_eye_height": 18,
+        "light_sclera_pixels": 302
+      },
+      "previous": {
+        "left_opaque_eye_width": 75,
+        "left_opaque_eye_height": 21,
+        "light_sclera_pixels": 260
+      },
+      "candidate": {
+        "left_opaque_eye_width": 66,
+        "left_opaque_eye_height": 16,
+        "light_sclera_pixels": 189
+      }
+    },
+    "visual_approved_by_user": false
+  },
+  {
+    "name": "凌锋",
+    "index": 6,
+    "source": "lingfeng_eyes.png",
+    "source_sha256": "57eaf6aa95e719fba83c20cf50095523ae8067c505b6d62c748b17ce18f50d75",
+    "source_pupils": [
+      [
+        449,
+        500
+      ],
+      [
+        1086,
+        500
+      ]
+    ],
+    "target_pupils": [
+      [
+        464,
+        375
+      ],
+      [
+        569,
+        375
+      ]
+    ],
+    "whole_pair_uniform_transform": [
+      0.16483516483516483,
+      389.989010989011,
+      292.5824175824176
+    ],
+    "organ_colour_mask_only": [
+      [
+        284,
+        492
+      ],
+      [
+        338,
+        472
+      ],
+      [
+        401,
+        479
+      ],
+      [
+        449,
+        486
+      ],
+      [
+        506,
+        505
+      ],
+      [
+        564,
+        532
+      ],
+      [
+        621,
+        558
+      ],
+      [
+        560,
+        558
+      ],
+      [
+        479,
+        561
+      ],
+      [
+        413,
+        554
+      ],
+      [
+        353,
+        538
+      ],
+      [
+        306,
+        514
+      ]
+    ],
+    "lashes_not_clipped": true,
+    "metrics": {
+      "reference": {
+        "left_opaque_eye_width": 72,
+        "left_opaque_eye_height": 21,
+        "light_sclera_pixels": 334
+      },
+      "previous": {
+        "left_opaque_eye_width": 76,
+        "left_opaque_eye_height": 22,
+        "light_sclera_pixels": 265
+      },
+      "candidate": {
+        "left_opaque_eye_width": 66,
+        "left_opaque_eye_height": 18,
+        "light_sclera_pixels": 205
+      }
+    },
+    "visual_approved_by_user": false
+  }
+]

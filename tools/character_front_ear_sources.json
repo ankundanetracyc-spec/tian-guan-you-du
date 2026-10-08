@@ -1,0 +1,132 @@
+{
+  "mode": "built-in image_gen edit",
+  "assets": [
+    {
+      "sex": "male",
+      "index": 0,
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/hair_front_clean_0_v9.png",
+      "registration": {
+        "x_scale": 0.8,
+        "y_scale": 0.55,
+        "source_hairline_y": 370,
+        "destination_hairline_y": 279
+      },
+      "prompt": "Use case: precise-object-edit. Asset type: isolated transparent front-hair PNG for a modular Chinese fantasy portrait. Input image 1 is the faulty front-hair edit target (its invisible RGB may contain an entire person); input image 2 is the assembled portrait for exact art style, scalp size, center-part hairline and skin-boundary reference. Repaint ONLY the actual front hair, never return a person. Output one true-alpha 1024x1536 PNG with the SAME full-canvas coordinate system; do NOT auto-zoom, crop, center the visible content or enlarge the hair. The narrow central part meets at pixel (512,279), left temple root is (426,305), right temple root (598,305); face lies around x420..610,y280..547. Front hair is a slim center-parted hairline strip and natural cheek locks ONLY, not the whole upper crown, not the rear hair. Preserve dark brown/black, detailed crisp hand-painted strand texture and the reference's subtle ink style. Remove all skin-colored fragments, ears, robe fabric, shoulder patches, disconnected stray bits, rectangular panels, abrupt chopped ends and cloudy semi-transparent haze. Every lock starts continuously at its temple and tapers to a clean natural pointed tip with a few intentional crisp strands. No white fringe, blurred terminal, duplicate hairline, broad dark halo or ghost pixels. Absolutely no face, scalp skin, ear, eyebrow, eye, nose, mouth, neck, body, clothing, ornament, braid or band. Everything except the specified hair is truly transparent.\nVariant: male short front 0. Both slender cheek locks end around y450; all hair lies in x405..620,y255..460; lower two thirds of full canvas entirely transparent. Hair volume above y255 belongs to rear and must not be painted."
+    },
+    {
+      "sex": "male",
+      "index": 1,
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/hair_front_clean_1_v9.png",
+      "registration": {
+        "x_scale": 0.8,
+        "y_scale": 0.55,
+        "source_hairline_y": 370,
+        "destination_hairline_y": 279
+      },
+      "prompt": "Use case: precise-object-edit. Edit the supplied clean transparent male forelock asset. Keep the SAME 1024x1536 canvas, identical upper hair shape, size, center part, and hairline at (512,370). Change ONLY the lengths of the cheek locks: TWO narrow long cheek locks, viewer left and right, descending from the temples to approximately y1150 in this source canvas. Each is a slim tapering forelock, not a broad curtain or rear hair; blank between the two, natural clean pointed ends. Preserve sharp dark charcoal brown hand-painted strands. Output isolated front hair only on genuine transparent alpha, all interior face area and all empty canvas transparent. No skin, ear, clothes, ornament, braid, neck, body, white halo, faint cloudy matte, chopped geometric ends or detached fragments. Do not zoom or recenter."
+    },
+    {
+      "sex": "male",
+      "index": 2,
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/hair_front_clean_2_v9.png",
+      "registration": {
+        "x_scale": 0.8,
+        "y_scale": 0.55,
+        "source_hairline_y": 370,
+        "destination_hairline_y": 279
+      },
+      "prompt": "Use case: precise-object-edit. Edit the supplied clean transparent male forelock asset. Keep the SAME 1024x1536 canvas, identical upper hair shape, size, center part, and hairline at (512,370). Change ONLY the lengths of the cheek locks: ONE long narrow cheek lock on VIEWER RIGHT descends to y1150; VIEWER LEFT temple lock remains short and ends around y650. No lower left curtain or disconnected remnant. Preserve sharp dark charcoal brown hand-painted strands. Output isolated front hair only on genuine transparent alpha, all interior face area and all empty canvas transparent. No skin, ear, clothes, ornament, braid, neck, body, white halo, faint cloudy matte, chopped geometric ends or detached fragments. Do not zoom or recenter."
+    },
+    {
+      "sex": "male",
+      "index": 3,
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/hair_front_clean_3_v9.png",
+      "registration": {
+        "x_scale": 0.8,
+        "y_scale": 0.55,
+        "source_hairline_y": 370,
+        "destination_hairline_y": 279
+      },
+      "prompt": "Use case: precise-object-edit. Edit this clean transparent male forelock asset. Keep the SAME 1024x1536 canvas and EXACT identical upper hair shape, compact size and center-part hairline at pixel (512,370). Change ONLY cheek-lock lengths: ONE long narrow cheek lock on VIEWER LEFT descends to y1150; VIEWER RIGHT temple lock remains short and ends around y650. No lower right curtain or disconnected remnant. Preserve sharp dark charcoal brown hand-painted strands. Output front hair ONLY, true transparent alpha. Everything inside the face hole and around hair is fully transparent. No skin, ear, clothes, ornament, braid, neck, body, white halo, faint cloudy matte, geometric ends or detached fragments. Do not zoom or recenter; upper crown must NOT grow wider or taller."
+    },
+    {
+      "sex": "male",
+      "index": 4,
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/hair_front_clean_4_v9.png",
+      "registration": {
+        "x_scale": 0.8,
+        "y_scale": 0.55,
+        "source_hairline_y": 370,
+        "destination_hairline_y": 279
+      },
+      "prompt": "Use case: precise-object-edit. Edit this clean transparent male forelock asset. Keep the SAME 1024x1536 canvas and EXACT identical upper hair shape, compact size and center-part hairline at pixel (512,370). Change ONLY cheek-lock lengths: A neat, tidy, symmetric short forelock. Both fine cheek locks stop at y580 in the source canvas. Tight temple hair with fewer flyaways and cleaner pointed tips; retain the same center-part hairline. Preserve sharp dark charcoal brown hand-painted strands. Output front hair ONLY, true transparent alpha. Everything inside the face hole and around hair is fully transparent. No skin, ear, clothes, ornament, braid, neck, body, white halo, faint cloudy matte, geometric ends or detached fragments. Do not zoom or recenter; upper crown must NOT grow wider or taller."
+    },
+    {
+      "sex": "female",
+      "index": 0,
+      "source": "mods/appearance/腰上女修拆件演示_v1/source/hair_front_clean_0_v6.png",
+      "registration": {
+        "x_scale": 0.8,
+        "y_scale": 0.36,
+        "source_hairline_y": 370,
+        "destination_hairline_y": 279
+      },
+      "prompt": "Use case: precise-object-edit. Input 1 is an old female front-hair cutout with erroneous hidden face/robe RGB; input 2 is a CLEAN isolated male front-hair template solely for framing and hair-only transparency. Create the female SHORT front forelocks ONLY, following input 1's feminine dark, fine ink-painted hair style, but the pure hair-only layout of input 2. One full 1024x1536 true-alpha canvas. Keep template 2's modest size and center-part hairline at approximately (512,370), top of front section y245, temple locks near x410/614, both tips near y650. Natural slender feminine cheek locks with crisp tapered ends; fewer bulky outer tufts than male. All interior and exterior empty area truly transparent, no face, ears, scalp skin, features, neck, clothes, ribbon, braid, ornament, disconnected shards or cloudy ghost-alpha matte. No white fringe, blur or geometric clipping. Do not enlarge or auto-center."
+    },
+    {
+      "sex": "female",
+      "index": 1,
+      "source": "mods/appearance/腰上女修拆件演示_v1/source/hair_front_clean_1_v6.png",
+      "registration": {
+        "x_scale": 0.8,
+        "y_scale": 0.36,
+        "source_hairline_y": 370,
+        "destination_hairline_y": 279
+      },
+      "prompt": "Use case: precise-object-edit. Edit ONLY the specified cheek-lock lengths of this clean female front-hair template. VIEWER LEFT cheek lock extends as a narrow continuous tapered forelock to y1200; VIEWER RIGHT lock is short and ends at y680. No detached lower left fragments or ribbon. Keep identical upper hair mass, silhouette, canvas position, source hairline at (512,370), fine dark charcoal brown ink-painted texture and 1024x1536 full canvas. Output isolated hair only on genuine transparent alpha. NO ears, skin, scalp flesh, face, features, neck, robe, ornament, braid, smudged tips, geometric cutoff, white fringe, cloudy halo, ghost alpha or disconnected fragments. Each forelock connects continuously to its temple and tapers gracefully to a crisp point. Do not zoom, enlarge or recenter."
+    },
+    {
+      "sex": "female",
+      "index": 2,
+      "source": "mods/appearance/腰上女修拆件演示_v1/source/hair_front_clean_2_v6.png",
+      "registration": {
+        "x_scale": 0.8,
+        "y_scale": 0.36,
+        "source_hairline_y": 370,
+        "destination_hairline_y": 279
+      },
+      "prompt": "Use case: precise-object-edit. Edit ONLY the specified cheek-lock lengths of this clean female front-hair template. VIEWER RIGHT cheek lock extends as a narrow continuous tapered forelock to y1200; VIEWER LEFT lock is short and ends at y680. No broad rear curtain. Keep identical upper hair mass, silhouette, canvas position, source hairline at (512,370), fine dark charcoal brown ink-painted texture and 1024x1536 full canvas. Output isolated hair only on genuine transparent alpha. NO ears, skin, scalp flesh, face, features, neck, robe, ornament, braid, smudged tips, geometric cutoff, white fringe, cloudy halo, ghost alpha or disconnected fragments. Each forelock connects continuously to its temple and tapers gracefully to a crisp point. Do not zoom, enlarge or recenter."
+    },
+    {
+      "sex": "female",
+      "index": 3,
+      "source": "mods/appearance/腰上女修拆件演示_v1/source/hair_front_clean_3_v6.png",
+      "registration": {
+        "x_scale": 0.8,
+        "y_scale": 0.36,
+        "source_hairline_y": 370,
+        "destination_hairline_y": 279
+      },
+      "prompt": "Use case: precise-object-edit. Edit ONLY the specified cheek-lock lengths of this clean female front-hair template. Both fine cheek locks end at y700, naturally tapered, balanced beside both cheeks. Compact light forelocks with only a few purposeful wisps. Keep identical upper hair mass, silhouette, canvas position, source hairline at (512,370), fine dark charcoal brown ink-painted texture and 1024x1536 full canvas. Output isolated hair only on genuine transparent alpha. NO ears, skin, scalp flesh, face, features, neck, robe, ornament, braid, smudged tips, geometric cutoff, white fringe, cloudy halo, ghost alpha or disconnected fragments. Each forelock connects continuously to its temple and tapers gracefully to a crisp point. Do not zoom, enlarge or recenter."
+    },
+    {
+      "sex": "female",
+      "index": 4,
+      "source": "mods/appearance/腰上女修拆件演示_v1/source/hair_front_clean_4_v6.png",
+      "registration": {
+        "x_scale": 0.8,
+        "y_scale": 0.36,
+        "source_hairline_y": 370,
+        "destination_hairline_y": 279
+      },
+      "prompt": "Use case: precise-object-edit. Edit ONLY the specified cheek-lock lengths of this clean female front-hair template. Neat SHORT forelocks ending at y590 on both sides. Keep the same center part and tidy slick temple strands. No braid or braided crown (those belong to rear hair). Keep identical upper hair mass, silhouette, canvas position, source hairline at (512,370), fine dark charcoal brown ink-painted texture and 1024x1536 full canvas. Output isolated hair only on genuine transparent alpha. NO ears, skin, scalp flesh, face, features, neck, robe, ornament, braid, smudged tips, geometric cutoff, white fringe, cloudy halo, ghost alpha or disconnected fragments. Each forelock connects continuously to its temple and tapers gracefully to a crisp point. Do not zoom, enlarge or recenter."
+    },
+    {
+      "sex": "female",
+      "part": "ear",
+      "index": 0,
+      "source": "mods/appearance/腰上女修拆件演示_v1/source/ear_standard_clean_v6.png",
+      "prompt": "Use case: precise-object-edit. Modular portrait asset: extract and clean ONLY the left and right STANDARD EARS of the supplied female head reference; remove the hair around them completely. Output exactly one 1024x1536 full canvas with real transparent alpha. Keep the pair small and in the SAME coordinates as the reference: viewer-left ear outer helix around x369..405, y360..449, ear root x417,y397; viewer-right ear outer helix x620..655,y360..449, ear root x608,y397. Frontal view, matching the female reference's pale muted ink-painted skin and fine ear folds, no earrings. Ears have complete lobes and natural crisp anti-aliased contours. Keep the entire rest of the 1024x1536 canvas transparent including the head between the ears; do NOT add any head, face, cheek, temple, scalp, neck, hair, clothes, halo, cloud, blurry alpha or gray background. Do not enlarge, zoom or center each ear separately. Pair is at the original top-quarter head height, not the center of the image."
+    }
+  ]
+}

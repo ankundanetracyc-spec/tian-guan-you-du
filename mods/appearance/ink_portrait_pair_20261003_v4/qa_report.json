@@ -1,0 +1,142 @@
+{
+  "male": {
+    "canvas": [
+      1024,
+      1536
+    ],
+    "alpha_bounds": {
+      "hair_back": [
+        210,
+        149,
+        823,
+        1223
+      ],
+      "face_shape": [
+        370,
+        172,
+        660,
+        691
+      ],
+      "clothing": [
+        0,
+        520,
+        1024,
+        1536
+      ],
+      "eyes": [
+        423,
+        353,
+        611,
+        395
+      ],
+      "eyebrows": [
+        418,
+        340,
+        608,
+        356
+      ],
+      "nose": [
+        493,
+        409,
+        539,
+        467
+      ],
+      "mouth": [
+        477,
+        473,
+        554,
+        506
+      ],
+      "face_accessory": null,
+      "hair_front": [
+        267,
+        133,
+        768,
+        1056
+      ]
+    },
+    "eyes_pixels": 4162,
+    "eye_wash_pixels": 2448,
+    "opaque_eye_skin_pixels_outside_opening": 0,
+    "opaque_eye_rgb_changed_from_user_reference": 0,
+    "rear_exposed_pixels_over_12": 2630,
+    "rear_center_is_painted": true,
+    "clear_skin_forehead_median_rgb": [
+      237.0,
+      218.0,
+      203.0
+    ],
+    "fully_transparent_pixels_have_zero_rgb": true,
+    "checks_are_technical_not_visual_acceptance": true
+  },
+  "female": {
+    "canvas": [
+      1024,
+      1536
+    ],
+    "alpha_bounds": {
+      "hair_back": [
+        211,
+        143,
+        824,
+        1217
+      ],
+      "face_shape": [
+        371,
+        169,
+        665,
+        691
+      ],
+      "clothing": [
+        0,
+        530,
+        1024,
+        1536
+      ],
+      "eyes": [
+        422,
+        357,
+        617,
+        402
+      ],
+      "eyebrows": [
+        419,
+        345,
+        614,
+        361
+      ],
+      "nose": [
+        494,
+        408,
+        541,
+        470
+      ],
+      "mouth": [
+        479,
+        471,
+        555,
+        507
+      ],
+      "face_accessory": null,
+      "hair_front": [
+        264,
+        130,
+        774,
+        1051
+      ]
+    },
+    "eyes_pixels": 4505,
+    "eye_wash_pixels": 2568,
+    "opaque_eye_skin_pixels_outside_opening": 0,
+    "opaque_eye_rgb_changed_from_user_reference": 0,
+    "rear_exposed_pixels_over_12": 8023,
+    "rear_center_is_painted": true,
+    "clear_skin_forehead_median_rgb": [
+      237.0,
+      218.0,
+      203.0
+    ],
+    "fully_transparent_pixels_have_zero_rgb": true,
+    "checks_are_technical_not_visual_acceptance": true
+  }
+}

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ci8xfdd54nff5"]
+
+[ext_resource type="Script" path="res://csharp/battle/FloatingText.cs" id="1_kv52g"]
+
+[node name="FloatingText" type="Node2D" unique_id=2026851772]
+script = ExtResource("1_kv52g")
+
+[node name="Label" type="Label" parent="." unique_id=575717521]
+offset_right = 40.0
+offset_bottom = 23.0

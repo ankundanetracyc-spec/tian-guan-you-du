@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="Electron" agent="Codex">
+  <diagram id="zhezhi" name="折枝剑谱">
+    <mxGraphModel dx="3048" dy="512" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2600" pageHeight="1700" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=20;" value="折枝剑谱&#xA;" vertex="1">
+          <mxGeometry height="74" width="560" x="740" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="overview" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=15;" value="剑修秘籍 / 可主修可辅修&lt;br&gt;秘籍总览&lt;br&gt;灵根要求：有灵根即可&lt;br&gt;主修可修至：云息十三层&lt;br&gt;辅修可用至：云息九层&lt;br&gt;定位：施加剑痕、制造外伤、降低护心，并以摧枝一剑打出高伤害" vertex="1">
+          <mxGeometry height="138" width="560" x="740" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="mechanics" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;" value="状态说明&#xA;剑意：每层剑术伤害+5%&#xA;剑痕：每层使剑术精准+2，最多9层，持续2个目标回合&#xA;外伤：消耗剑痕后加入目标弃牌堆，后续降低行动、身法与遁身效率&#xA;折损：每层护心-4%，最多5层；摧枝一剑消耗折损提高伤害&#xA;折枝剑势：从下一次自身行动开始起，每次自身行动开始时消耗1层剑意；消耗剑痕并加入外伤时施加折损" vertex="1">
+          <mxGeometry height="148" width="410" x="1690" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="compare" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" value="流派侧重点&#xA;拂枝点痕 → 压枝加入外伤 → 裂柯施加折损 → 挑枝断筋继续积累折损 → 摧枝一剑&#xA;先施加本牌剑痕，再检查并消耗剑痕&#xA;摧枝一剑结算后按已有外伤重新施加剑痕，供后续招式继续使用" vertex="1">
+          <mxGeometry height="112" width="390" x="1710" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;" value="第一卷：拂枝&#xa;卷章ID：fu_zhi&#xa;顺序：1&#xa;定位：入门施痕，建立伤势前置&#xa;学成可修至：云息三层&#xa;学习条件：&#xa;灵根：任意&#xa;境界：凡人境界及以上&#xa;学会永久属性：剑道造诣+1.5，体魄+1.25，敏捷+0.25" vertex="1">
+          <mxGeometry height="240" width="350" x="845" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="纳气&lt;br&gt;精准+6&lt;br&gt;会心+2" vertex="1">
+          <mxGeometry height="82" width="260" x="395" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="化法&lt;br&gt;斩剑*2 -&amp;gt; 拂枝点痕*2&lt;br&gt;养锋*1 -&amp;gt; 照痕养锋*1" vertex="1">
+          <mxGeometry height="82" width="300" x="1360" y="405" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_cards" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;习得：拂枝点痕*2，照痕养锋*1&lt;br&gt;&lt;br&gt;拂枝点痕：&lt;br&gt;类型：攻伐牌&lt;br&gt;关键词：无&lt;br&gt;耗费：精力 2、法力 0&lt;br&gt;目标：单体敌人&lt;br&gt;伤害类型：物理&lt;br&gt;伤害公式：7 + 剑道造诣×0.48 + 敏捷×0.16 + 体魄×0.12&lt;br&gt;&lt;br&gt;照痕养锋：&lt;br&gt;类型：术诀牌&lt;br&gt;关键词：消耗&lt;br&gt;耗费：精力 0、法力 0&lt;br&gt;目标：自身&lt;/div&gt;" vertex="1">
+          <mxGeometry height="277" width="580" x="-400" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;" value="第二卷：压枝&#xA;卷章ID：ya_zhi&#xA;顺序：2&#xA;定位：开启折枝剑势，将剑痕压成伤势&#xA;学成可修至：云息六层&#xA;学习条件：&#xa;灵根：任意&#xa;境界：云息三层及以上&#xa;前置：已学拂枝&#xa;剑道造诣≥12，敏捷≥5&#xA;学会永久属性：剑道造诣+2，体魄+1.25，敏捷+0.25" vertex="1">
+          <mxGeometry height="240" width="350" x="845" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="纳气&lt;br&gt;精准+4&lt;br&gt;行动速度+6" vertex="1">
+          <mxGeometry height="82" width="260" x="395" y="720" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="化法&lt;br&gt;点锋*2 -&amp;gt; 压枝*2&lt;br&gt;基础步法*1 -&amp;gt; 折步寻隙*1" vertex="1">
+          <mxGeometry height="82" width="300" x="1360" y="710" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_cards" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;习得：折枝·断势*1，压枝*2，折步寻隙*1&lt;br&gt;&lt;br&gt;折枝·断势：&lt;br&gt;类型：心法牌&lt;br&gt;关键词：无&lt;br&gt;耗费：精力 0、法力 0&lt;br&gt;目标：自身&lt;br&gt;&lt;br&gt;压枝：&lt;br&gt;类型：攻伐牌&lt;br&gt;关键词：无&lt;br&gt;耗费：精力 2、法力 0&lt;br&gt;目标：单体敌人&lt;br&gt;伤害类型：物理&lt;br&gt;伤害公式：6 + 剑道造诣×0.42 + 敏捷×0.20 + 体魄×0.12&lt;br&gt;&lt;br&gt;折步寻隙：&lt;br&gt;类型：遁身牌&lt;br&gt;关键词：消耗&lt;br&gt;耗费：精力 2、法力 0&lt;br&gt;目标：自身&lt;/div&gt;" vertex="1">
+          <mxGeometry height="377" width="580" x="-400" y="457" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;" value="第三卷：裂柯&#xa;卷章ID：lie_ke&#xa;顺序：3&#xa;定位：主修核心卷，稳定制造外伤与折损&#xa;限制：主修向核心卷&#xa;学成可修至：云息九层&#xa;学习条件：&#xa;灵根：任意&#xa;境界：云息六层及以上&#xa;主修&#xa;前置：已学压枝，敏捷≥7&#xa;学会永久属性：剑道造诣+1.5，体魄+1.25，敏捷+0.25" vertex="1">
+          <mxGeometry height="240" width="350" x="845" y="1000" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="纳气&lt;br&gt;精准+6&lt;br&gt;护心+4" vertex="1">
+          <mxGeometry height="82" width="260" x="395" y="1050" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="化法&lt;br&gt;敛息观剑*1 -&amp;gt; 裂柯*1&lt;br&gt;格剑*1 -&amp;gt; 回锋添痕*1" vertex="1">
+          <mxGeometry height="82" width="320" x="1360" y="1040" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_cards" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;主修习得：裂柯*1，回锋添痕*1&lt;br&gt;&lt;br&gt;裂柯：&lt;br&gt;类型：攻伐牌&lt;br&gt;关键词：无&lt;br&gt;耗费：精力 3、法力 0&lt;br&gt;目标：单体敌人&lt;br&gt;伤害类型：物理&lt;br&gt;伤害公式：8 + 剑道造诣×0.50 + 敏捷×0.18 + 体魄×0.14&lt;br&gt;&lt;br&gt;回锋添痕：&lt;br&gt;类型：术诀牌&lt;br&gt;关键词：应对&lt;br&gt;耗费：精力 2、法力 0&lt;br&gt;目标：攻击者；由敌方攻击自身时的应对触发&lt;/div&gt;" vertex="1">
+          <mxGeometry height="277" width="580" x="-400" y="864" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;" value="第四卷：摧枝&#xa;卷章ID：cui_zhi&#xa;顺序：4&#xa;定位：主修收束卷，消耗折损打爆发&#xa;限制：主修向核心卷&#xa;学成可修至：云息十三层&#xa;学习条件：&#xa;灵根：任意&#xa;境界：云息九层及以上&#xa;主修&#xa;前置：已学裂柯，敏捷≥9&#xa;学会永久属性：剑道造诣+1.5，体魄+1.25，敏捷+0.25" vertex="1">
+          <mxGeometry height="240" width="350" x="845" y="1335" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="纳气&lt;br&gt;会心+6&lt;br&gt;行动速度+8" vertex="1">
+          <mxGeometry height="82" width="260" x="395" y="1390" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="化法&lt;br&gt;基础技能库 + 挑枝断筋*1&lt;br&gt;摧枝一剑：本卷习得牌" vertex="1">
+          <mxGeometry height="82" width="320" x="1360" y="1390" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_cards" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;主修习得：挑枝断筋*1，摧枝一剑*1&lt;br&gt;&lt;br&gt;挑枝断筋：&lt;br&gt;类型：攻伐牌&lt;br&gt;关键词：无&lt;br&gt;耗费：精力 3、法力 1&lt;br&gt;目标：单体敌人&lt;br&gt;伤害类型：物理&lt;br&gt;伤害公式：9 + 剑道造诣×0.54 + 敏捷×0.20 + 体魄×0.14&lt;br&gt;&lt;br&gt;摧枝一剑：&lt;br&gt;类型：攻伐牌&lt;br&gt;关键词：无&lt;br&gt;耗费：精力 3、法力 2&lt;br&gt;目标：单体敌人&lt;br&gt;伤害类型：物理&lt;br&gt;伤害公式：12 + 剑道造诣×0.68 + 敏捷×0.20 + 体魄×0.16&lt;/div&gt;" vertex="1">
+          <mxGeometry height="311" width="580" x="-400" y="1171" as="geometry" />
+        </mxCell>
+        <mxCell id="summary" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" value="属性汇总&#xA;学会永久属性总收益：剑道造诣+8，体魄+5，敏捷+1&#xA;纳气总收益：精准+8，会心+10，行动速度+6，护心+8&#xA;牌路：拂枝点痕，压枝，裂柯，挑枝断筋，摧枝一剑，旧伤回痕" vertex="1">
+          <mxGeometry height="94" width="420" x="1680" y="790" as="geometry" />
+        </mxCell>
+        <mxCell id="combo" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;" value="招式循环及与其他秘籍的联动&#xA;拂枝点痕 → 压枝 → 裂柯 → 挑枝断筋 → 摧枝一剑&#xA;照痕养锋负责补充剑意并增加剑痕，回锋添痕在敌方回合重新施加剑痕&#xA;与其他秘籍搭配：任何遁身牌都可令压枝精准+4；折步寻隙本身将该收益提高到+8；剑痕可供所有剑术提高精准；外伤可为后续重剑、御剑等路线提供限制敌人行动的机会" vertex="1">
+          <mxGeometry height="130" width="430" x="1700" y="990" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" edge="1" parent="1" source="overview" style="endArrow=block;html=1;" target="c1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_left" value="纳气">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_cards" value="习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_left" value="纳气">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_cards" value="习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_left" value="纳气">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_cards" value="习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_left" value="纳气">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_cards" value="习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

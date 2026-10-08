@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ActiveSkillData" format=3 uid="uid://wq4i5vcfedkro"]
+
+[ext_resource type="Script" path="res://csharp/gongfa/ActiveSkillData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+skill_name = "滚身卸劲"
+description = "低身卸劲，不再进行位移；获得3层身法，应对下一次来攻。"
+skill_type = 3
+source_gongfa_name = "市井游身功"
+mana_cost = 0
+energy_cost = 2
+target_type = 0
+range_min = 0
+range_max = 0
+keywords = Array[String]([])
+status_effects = Array[Dictionary]([{"hit_formula":"1.0","stacks":3,"status_id":"身法"}])
+damage_type = "physical"
+metadata/_custom_type_script = "uid://cjcf3nq1ne5ql"

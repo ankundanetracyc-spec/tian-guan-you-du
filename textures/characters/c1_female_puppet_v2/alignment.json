@@ -1,0 +1,102 @@
+{
+  "canvas": [
+    1024,
+    1536
+  ],
+  "layers": {
+    "head": [
+      [
+        "res://textures/characters/c1_female_puppet_v2/source/head.png",
+        [
+          0.6,
+          0.6
+        ],
+        [
+          220,
+          14
+        ]
+      ]
+    ],
+    "arm_far": [
+      [
+        "res://textures/characters/c1_female_puppet_v2/source/arm_far.png",
+        [
+          0.42,
+          0.4116
+        ],
+        [
+          172.16,
+          407.28
+        ]
+      ]
+    ],
+    "body": [
+      [
+        "res://textures/characters/c1_female_puppet_v2/source/body.png",
+        [
+          0.94,
+          0.912
+        ],
+        [
+          29,
+          149
+        ]
+      ]
+    ],
+    "arm_near": [
+      [
+        "res://textures/characters/c1_female_puppet_v2/source/arm_near.png",
+        [
+          0.5208,
+          0.5712
+        ],
+        [
+          399.44,
+          258.48
+        ]
+      ]
+    ],
+    "body_kneel": [
+      [
+        "res://textures/characters/c1_female_puppet_v2/source/body_kneel.png",
+        [
+          1,
+          1
+        ],
+        [
+          15,
+          55
+        ]
+      ]
+    ]
+  },
+  "anchors_px": {
+    "hips": [
+      638,
+      592
+    ],
+    "torso": [
+      620,
+      475
+    ],
+    "head": [
+      585,
+      375
+    ],
+    "arm_far": [
+      488,
+      435
+    ],
+    "arm_near": [
+      680,
+      450
+    ]
+  },
+  "arm_scale_about_shoulder": 0.84,
+  "order": [
+    "head",
+    "arm_far",
+    "body",
+    "arm_near"
+  ]
+}

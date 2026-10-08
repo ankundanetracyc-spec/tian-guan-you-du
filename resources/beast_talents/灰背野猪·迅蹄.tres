@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="GreybackBoarSwiftTrotTalent" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/GreybackBoarSwiftTrotTalent.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+talent_id = "greyback_boar_swift_trot"
+talent_name = "迅蹄"
+description = "保留厚皮；额外行动速度 = 敏捷 × 0.5。"

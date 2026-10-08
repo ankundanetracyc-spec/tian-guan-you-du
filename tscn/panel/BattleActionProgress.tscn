@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://csharp/panel/BattleActionProgress.cs" id="1_progress"]
+
+[sub_resource type="StyleBoxFlat" id="track_panel"]
+bg_color = Color(0.035, 0.055, 0.05, 0.88)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.72, 0.60, 0.32, 0.8)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="BattleActionProgress" type="Control"]
+custom_minimum_size = Vector2(680, 78)
+script = ExtResource("1_progress")
+
+[node name="Track" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("track_panel")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 4.0
+offset_right = 180.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(0.92, 0.84, 0.60, 1)
+theme_override_font_sizes/font_size = 14
+text = "行动进度"
+
+[node name="State" type="Label" parent="."]
+offset_left = 480.0
+offset_top = 4.0
+offset_right = 664.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(0.78, 0.84, 0.75, 1)
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 2
+text = "行动蓄势"
+
+[node name="Rail" type="ColorRect" parent="."]
+offset_left = 16.0
+offset_top = 49.0
+offset_right = 664.0
+offset_bottom = 52.0
+mouse_filter = 2
+color = Color(0.74, 0.63, 0.40, 0.7)
+
+[node name="MarkerLayer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

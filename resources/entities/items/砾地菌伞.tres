@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/ItemData.cs" id="1"]
+[ext_resource type="Resource" path="res://resources/material_craft/砾地菌伞材性.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+definition_id = &"mat_gravel_mushroom"
+entity_name = "砾地菌伞"
+icon_path = "res://textures/items/item_gravel_mushroom.png"
+item_category = "材料"
+item_subcategory = "菌材"
+tags = Array[String](["五行[木]", "质地[木]", "功用[生]", "相性[和]"])
+grade_value = 2
+can_stack = true
+max_stack = 999
+craft_data = ExtResource("2")

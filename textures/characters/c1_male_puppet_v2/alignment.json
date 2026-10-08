@@ -1,0 +1,102 @@
+{
+  "canvas": [
+    1024,
+    1536
+  ],
+  "layers": {
+    "head": [
+      [
+        "res://textures/characters/c1_male_puppet_v2/source/head.png",
+        [
+          0.4,
+          0.4
+        ],
+        [
+          310,
+          0
+        ]
+      ]
+    ],
+    "arm_far": [
+      [
+        "res://textures/characters/c1_male_puppet_v2/source/arm_far.png",
+        [
+          0.612,
+          0.612
+        ],
+        [
+          105.2,
+          161.8
+        ]
+      ]
+    ],
+    "body": [
+      [
+        "res://textures/characters/c1_male_puppet_v2/source/body.png",
+        [
+          0.86,
+          0.91
+        ],
+        [
+          80,
+          160
+        ]
+      ]
+    ],
+    "arm_near": [
+      [
+        "res://textures/characters/c1_male_puppet_v2/source/arm_near.png",
+        [
+          0.585,
+          0.585
+        ],
+        [
+          371.1,
+          200.5
+        ]
+      ]
+    ],
+    "body_kneel": [
+      [
+        "res://textures/characters/c1_male_puppet_v2/source/body_kneel.png",
+        [
+          0.86,
+          0.91
+        ],
+        [
+          80,
+          190
+        ]
+      ]
+    ]
+  },
+  "anchors_px": {
+    "hips": [
+      635,
+      600
+    ],
+    "torso": [
+      600,
+      450
+    ],
+    "head": [
+      595,
+      320
+    ],
+    "arm_far": [
+      440,
+      385
+    ],
+    "arm_near": [
+      705,
+      430
+    ]
+  },
+  "arm_scale_about_shoulder": 0.9,
+  "order": [
+    "head",
+    "arm_far",
+    "arm_near",
+    "body"
+  ]
+}

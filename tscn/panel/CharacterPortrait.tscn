@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bo6mdteua4kus"]
+
+[ext_resource type="Script" uid="uid://c765dd4n8xj04" path="res://csharp/panel/CharacterPortrait.cs" id="3_script"]
+[ext_resource type="Script" path="res://csharp/panel/PortraitRenderer.cs" id="4_renderer"]
+
+[ext_resource type="Texture2D" path="res://textures/角色/棋子/衣服1.png" id="5_body"]
+[ext_resource type="Texture2D" path="res://textures/角色/棋子/头部1.png" id="6_head"]
+
+[node name="CharacterPortrait" type="Control" unique_id=1004291061]
+custom_minimum_size = Vector2(256, 384)
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("3_script")
+
+[node name="ModularRenderer" type="Control" parent="." unique_id=1834667362]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+visible = false
+script = ExtResource("4_renderer")
+
+[node name="BodyLayer" type="TextureRect" parent="." unique_id=122285248]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 2.0
+offset_top = 134.0
+offset_right = 258.0
+offset_bottom = 518.0
+texture = ExtResource("5_body")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HeadLayer" type="TextureRect" parent="." unique_id=1629959132]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 94.0
+offset_top = 182.0
+offset_right = 350.0
+offset_bottom = 566.0
+scale = Vector2(0.28, 0.28)
+texture = ExtResource("6_head")
+expand_mode = 1
+stretch_mode = 5

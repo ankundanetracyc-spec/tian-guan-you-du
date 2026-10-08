@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ActiveSkillData" format=3]
+
+[ext_resource type="Script" path="res://csharp/gongfa/ActiveSkillData.cs" id="1"]
+[ext_resource type="Script" path="res://csharp/gongfa/DamageBonus.cs" id="2"]
+
+[sub_resource type="Resource" id="DamageSoul"]
+script = ExtResource("2")
+attribute = "soul"
+multiplier = 0.65
+
+[sub_resource type="Resource" id="DamageIntelligence"]
+script = ExtResource("2")
+attribute = "intelligence"
+multiplier = 0.2
+
+[resource]
+script = ExtResource("1")
+skill_name = "魂刺"
+description = "以一缕灵力凝作神魂尖刺，直指敌手识海。"
+skill_type = 0
+energy_cost = 1
+target_type = 2
+range_min = 1
+range_max = 3
+base_damage = 4.0
+damage_type = "soul"
+damage_bonuses = Array[ExtResource("2")]([SubResource("DamageSoul"), SubResource("DamageIntelligence")])

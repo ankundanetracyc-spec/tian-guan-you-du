@@ -1,0 +1,77 @@
+{
+  "id": "ink_portrait_pair_20261003_v3",
+  "canvas": [1024, 1536],
+  "coordinates": "top-left origin; x right, y down; pixel centers",
+  "placement": {"offset": [0, 0], "scale": 1, "rotation_degrees": 0},
+  "draw_order_back_to_front": ["hair_back", "face_shape", "clothing", "eyes", "eyebrows", "nose", "mouth", "face_accessory", "hair_front"],
+  "anchor_source": "Measured on this package's finished male/female portrait, alpha silhouettes, and facial-part connected regions; not inherited from the 2026-10-02 rig",
+  "sexes_are_distinct_compatibility_families": true,
+  "registration": {
+    "landmarks_per_import_minimum": 3,
+    "maximum_landmark_residual_pixels": 2,
+    "single_global_transform_only": true,
+    "requires_isolated_layer_review": true
+  },
+  "male": {
+    "anchors": {
+      "hair_crown": [517, 143], "hair_part": [517, 269],
+      "hairline_left": [445, 278], "hairline_right": [590, 278],
+      "temple_left": [422, 348], "temple_right": [613, 348],
+      "face_crown": [516, 173], "face_axis": [517, 411],
+      "eye_left": [454, 377], "eye_right": [569, 376],
+      "eye_outer_left": [423, 376], "eye_outer_right": [610, 376],
+      "brow_left": [452, 348], "brow_right": [579, 348],
+      "nose_center": [517, 443], "nose_tip": [517, 454],
+      "mouth_center": [517, 487], "chin": [517, 542],
+      "ear_root_left": [417, 379], "ear_root_right": [616, 379],
+      "ear_bottom_left": [398, 439], "ear_bottom_right": [635, 439],
+      "neck_left": [438, 531], "neck_right": [596, 531],
+      "collar_join_left": [431, 529], "collar_join_right": [601, 529],
+      "collar_v": [531, 670], "shoulder_left": [74, 706],
+      "shoulder_right": [944, 706], "waist_center": [512, 1250],
+      "front_lock_root_left": [403, 542], "front_lock_root_right": [631, 542],
+      "front_lock_tip_left": [420, 1069], "front_lock_tip_right": [679, 1069]
+    },
+    "measured_alpha_bounds": {
+      "face_shape": [370, 173, 659, 690],
+      "hair_front": [241, 143, 789, 1069],
+      "eyes": [423, 357, 610, 399],
+      "eyebrows": [423, 335, 611, 361]
+    }
+  },
+  "female": {
+    "anchors": {
+      "hair_crown": [518, 137], "hair_part": [518, 267],
+      "hairline_left": [449, 276], "hairline_right": [587, 276],
+      "temple_left": [418, 350], "temple_right": [621, 350],
+      "face_crown": [517, 169], "face_axis": [518, 414],
+      "eye_left": [460, 383], "eye_right": [572, 382],
+      "eye_outer_left": [423, 382], "eye_outer_right": [611, 382],
+      "brow_left": [452, 351], "brow_right": [581, 351],
+      "nose_center": [518, 445], "nose_tip": [518, 455],
+      "mouth_center": [519, 489], "chin": [518, 542],
+      "ear_root_left": [412, 380], "ear_root_right": [626, 380],
+      "ear_bottom_left": [391, 438], "ear_bottom_right": [648, 438],
+      "neck_left": [453, 531], "neck_right": [584, 531],
+      "collar_join_left": [447, 548], "collar_join_right": [590, 548],
+      "collar_v": [520, 690], "shoulder_left": [124, 711],
+      "shoulder_right": [906, 711], "waist_center": [512, 1250],
+      "front_lock_root_left": [398, 549], "front_lock_root_right": [638, 549],
+      "front_lock_tip_left": [430, 1069], "front_lock_tip_right": [664, 1069]
+    },
+    "measured_alpha_bounds": {
+      "face_shape": [371, 169, 664, 690],
+      "hair_front": [284, 137, 739, 1069],
+      "eyes": [423, 359, 611, 402],
+      "eyebrows": [423, 337, 611, 361]
+    }
+  },
+  "slot_contract": {
+    "face_shape": "Only featureless scalp/face, ears and neck; no hair, facial features or clothing",
+    "hair_front": "Entire visible crown, hairline, face-side strands and locks over the clothing",
+    "hair_back": "Outer drapes behind face/clothing; no torso-sized fill or face/skin pixels",
+    "clothing": "Complete robe with clean neckline and no hair",
+    "eyes_eyebrows_nose_mouth": "Small semantic overlays on the matching sex's face landmarks",
+    "face_accessory": "Transparent in this base set"
+  }
+}

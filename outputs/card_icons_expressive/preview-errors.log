@@ -1,0 +1,12 @@
+WARNING: res://resources/activeskills/拳脚.tres:4 - ext_resource, invalid UID: uid://corjswdok5c7 - using text path instead: res://csharp/gongfa/DamageBonus.cs
+   at: load (scene/resources/resource_format_text.cpp:501)
+   GDScript backtrace (most recent call first):
+       [0] render_cards (res://outputs/card_icons_expressive/preview.gd:16)
+WARNING: res://resources/activeskills/卸力.tres:4 - ext_resource, invalid UID: uid://corjswdok5c7 - using text path instead: res://csharp/gongfa/DamageBonus.cs
+   at: load (scene/resources/resource_format_text.cpp:501)
+   GDScript backtrace (most recent call first):
+       [0] render_cards (res://outputs/card_icons_expressive/preview.gd:16)
+ERROR: Texture with GL ID of 23: leaked 12280 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Parameter "RenderingServer::get_singleton()" is null.
+   at: ~ImageTexture (scene/resources/image_texture.cpp:245)

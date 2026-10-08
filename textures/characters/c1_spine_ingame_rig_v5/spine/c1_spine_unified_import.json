@@ -1,0 +1,325 @@
+{
+  "skeleton": {
+    "hash": "",
+    "spine": "3.8.75",
+    "x": -360,
+    "y": 0,
+    "width": 720,
+    "height": 960,
+    "images": "../parts/",
+    "audio": ""
+  },
+  "bones": [
+    {
+      "name": "root"
+    },
+    {
+      "name": "hips",
+      "parent": "root",
+      "y": 220,
+      "length": 150
+    },
+    {
+      "name": "torso",
+      "parent": "hips",
+      "y": 260,
+      "length": 300
+    },
+    {
+      "name": "neck",
+      "parent": "torso",
+      "y": 330,
+      "length": 120
+    },
+    {
+      "name": "head_hair",
+      "parent": "neck",
+      "y": 60,
+      "length": 160
+    },
+    {
+      "name": "brows",
+      "parent": "head_hair",
+      "y": -40,
+      "length": 40
+    },
+    {
+      "name": "eyes",
+      "parent": "head_hair",
+      "y": -59,
+      "length": 40
+    },
+    {
+      "name": "nose",
+      "parent": "head_hair",
+      "y": -72,
+      "length": 20
+    },
+    {
+      "name": "mouth",
+      "parent": "head_hair",
+      "y": -98,
+      "length": 30
+    }
+  ],
+  "slots": [
+    {
+      "name": "slot_body_full",
+      "bone": "torso",
+      "attachment": "body_full"
+    },
+    {
+      "name": "slot_head_hair",
+      "bone": "head_hair",
+      "attachment": "head_hair"
+    },
+    {
+      "name": "slot_brows",
+      "bone": "brows",
+      "attachment": "brows"
+    },
+    {
+      "name": "slot_eyes",
+      "bone": "eyes",
+      "attachment": "eyes"
+    },
+    {
+      "name": "slot_nose",
+      "bone": "nose",
+      "attachment": "nose"
+    },
+    {
+      "name": "slot_mouth",
+      "bone": "mouth",
+      "attachment": "mouth"
+    }
+  ],
+  "skins": [
+    {
+      "name": "default",
+      "attachments": {
+        "slot_body_full": {
+          "body_full": {
+            "path": "01_body_full",
+            "x": 0,
+            "y": 0,
+            "width": 720,
+            "height": 960
+          }
+        },
+        "slot_head_hair": {
+          "head_hair": {
+            "path": "02_head_hair_full",
+            "x": 0,
+            "y": -390,
+            "width": 720,
+            "height": 960
+          }
+        },
+        "slot_brows": {
+          "brows": {
+            "path": "03_brows",
+            "x": 0,
+            "y": -350,
+            "width": 720,
+            "height": 960
+          }
+        },
+        "slot_eyes": {
+          "eyes": {
+            "path": "04_eyes",
+            "x": 0,
+            "y": -331,
+            "width": 720,
+            "height": 960
+          }
+        },
+        "slot_nose": {
+          "nose": {
+            "path": "05_nose",
+            "x": 0,
+            "y": -318,
+            "width": 720,
+            "height": 960
+          }
+        },
+        "slot_mouth": {
+          "mouth": {
+            "path": "06_mouth",
+            "x": 0,
+            "y": -292,
+            "width": 720,
+            "height": 960
+          }
+        }
+      }
+    }
+  ],
+  "animations": {
+    "idle": {
+      "bones": {
+        "torso": {
+          "translate": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 0.5,
+              "x": 0,
+              "y": 2
+            },
+            {
+              "time": 1.0,
+              "x": 0,
+              "y": 0
+            }
+          ],
+          "rotate": [
+            {
+              "angle": 0
+            },
+            {
+              "time": 0.5,
+              "angle": 0.4
+            },
+            {
+              "time": 1.0,
+              "angle": 0
+            }
+          ]
+        },
+        "head_hair": {
+          "rotate": [
+            {
+              "angle": 0
+            },
+            {
+              "time": 0.5,
+              "angle": -0.6
+            },
+            {
+              "time": 1.0,
+              "angle": 0
+            }
+          ]
+        }
+      }
+    },
+    "attack": {
+      "bones": {
+        "torso": {
+          "rotate": [
+            {
+              "angle": 0
+            },
+            {
+              "time": 0.16,
+              "angle": -3
+            },
+            {
+              "time": 0.34,
+              "angle": 5
+            },
+            {
+              "time": 0.6,
+              "angle": 0
+            }
+          ]
+        },
+        "head_hair": {
+          "rotate": [
+            {
+              "angle": 0
+            },
+            {
+              "time": 0.25,
+              "angle": -4
+            },
+            {
+              "time": 0.6,
+              "angle": 0
+            }
+          ]
+        }
+      }
+    },
+    "hurt": {
+      "bones": {
+        "torso": {
+          "rotate": [
+            {
+              "angle": 0
+            },
+            {
+              "time": 0.1,
+              "angle": -5
+            },
+            {
+              "time": 0.28,
+              "angle": 2
+            },
+            {
+              "time": 0.48,
+              "angle": 0
+            }
+          ]
+        },
+        "head_hair": {
+          "rotate": [
+            {
+              "angle": 0
+            },
+            {
+              "time": 0.1,
+              "angle": 6
+            },
+            {
+              "time": 0.48,
+              "angle": 0
+            }
+          ]
+        }
+      }
+    },
+    "death_kneel": {
+      "bones": {
+        "hips": {
+          "translate": [
+            {
+              "x": 0,
+              "y": 0
+            },
+            {
+              "time": 0.8,
+              "x": 0,
+              "y": -26
+            }
+          ]
+        },
+        "torso": {
+          "rotate": [
+            {
+              "angle": 0
+            },
+            {
+              "time": 0.8,
+              "angle": -10
+            }
+          ]
+        },
+        "head_hair": {
+          "rotate": [
+            {
+              "angle": 0
+            },
+            {
+              "time": 0.8,
+              "angle": 12
+            }
+          ]
+        }
+      }
+    }
+  }
+}

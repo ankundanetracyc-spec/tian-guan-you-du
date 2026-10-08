@@ -1,0 +1,83 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://csharp/panel/StorageItemSlot.cs" id="1_script"]
+[ext_resource type="FontFile" path="res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf" id="3_font"]
+
+[sub_resource type="StyleBoxFlat" id="slot_bg"]
+bg_color = Color(0.89, 0.84, 0.73, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.28, 0.23, 0.15, 0.88)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="StorageItemSlot" type="Control"]
+custom_minimum_size = Vector2(102, 122)
+mouse_filter = 1
+script = ExtResource("1_script")
+
+[node name="Frame" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+offset_bottom = 96.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("slot_bg")
+
+[node name="ItemIcon" type="TextureRect" parent="Frame" unique_name_in_owner=true]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ItemCount" type="Label" parent="Frame" unique_name_in_owner=true]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -26.0
+offset_right = -6.0
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.2, 0.13, 0.06, 1)
+theme_override_colors/font_outline_color = Color(0.95, 0.91, 0.79, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 12
+text = "x0"
+horizontal_alignment = 2
+
+[node name="ItemName" type="Label" parent="." unique_name_in_owner=true]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 100.0
+offset_bottom = 122.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.015, 0.012, 0.008, 1)
+theme_override_fonts/font = ExtResource("3_font")
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="HoverTimer" type="Timer" parent="."]
+one_shot = true

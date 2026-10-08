@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MaterialCraftData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/MaterialCraftData.cs" id="1"]
+
+[sub_resource type="Resource" id="镇"]
+script = ExtResource("1")
+utility_id = "镇"
+grade = 1
+
+[resource]
+script = ExtResource("1")
+element = "土"
+polarity = -1
+texture = "石"
+utilities = Array[ExtResource("1")]([SubResource("镇")])

@@ -1,0 +1,335 @@
+[gd_scene format=3 uid="uid://bf77pss4wwv5d"]
+
+[ext_resource type="Script" uid="uid://b1v4e67yr6q0a" path="res://csharp/entity/SkillCard.cs" id="1_skill_card"]
+[ext_resource type="Script" uid="uid://bc031vpx2xxdi" path="res://csharp/battle/BattleCornerFrame.cs" id="corner_frame"]
+
+[sub_resource type="Shader" id="card_icon_round_mask"]
+code = "shader_type canvas_item;
+
+// 直接在图标自身上写透明度蒙版；不会影响纹理颜色，也不会裁掉整张图标。
+void fragment() {
+	vec2 point = UV - vec2(0.5);
+	float radius = 0.055;
+	vec2 half_size = vec2(0.5 - radius);
+	vec2 corner = abs(point) - half_size;
+	float distance_to_corner = length(max(corner, vec2(0.0))) + min(max(corner.x, corner.y), 0.0) - radius;
+	vec4 texel = texture(TEXTURE, UV);
+	texel.a *= 1.0 - smoothstep(0.0, 0.004, distance_to_corner);
+	COLOR = texel * COLOR;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="card_icon_round_material"]
+shader = SubResource("card_icon_round_mask")
+
+[sub_resource type="StyleBoxFlat" id="card_border"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.4, 0.22, 0.06, 0.95)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+anti_aliasing_size = 1.5
+
+[sub_resource type="StyleBoxFlat" id="inner_border"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.95, 0.7, 0.28, 0.88)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+anti_aliasing_size = 1.5
+
+[sub_resource type="StyleBoxFlat" id="select_highlight"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0.78, 0.3, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="title_strip"]
+bg_color = Color(0.98, 0.82, 0.4, 0.98)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(0.38, 0.21, 0.06, 0.92)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="stamina_badge"]
+bg_color = Color(0.08, 0.22, 0.13, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5, 0.71, 0.45, 0.92)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="mana_badge"]
+bg_color = Color(0.07, 0.17, 0.24, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.48, 0.66, 0.68, 0.9)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="effect_shade"]
+content_margin_left = 14.0
+content_margin_top = 9.0
+content_margin_right = 14.0
+content_margin_bottom = 9.0
+bg_color = Color(0.035, 0.045, 0.04, 0.72)
+border_width_top = 1
+border_color = Color(0.74, 0.63, 0.41, 0.52)
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="type_badge"]
+bg_color = Color(0.98, 0.91, 0.7, 0.98)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.36, 0.2, 0.06, 0.95)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="BattleCard" type="Control" unique_id=1951421830]
+clip_children = 1
+custom_minimum_size = Vector2(240, 360)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 240.0
+offset_bottom = 360.0
+mouse_filter = 1
+script = ExtResource("1_skill_card")
+
+[node name="IconArea" type="Control" parent="." unique_id=298148596]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CardIcon" type="TextureRect" parent="IconArea" unique_id=659928319]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="CardBorder" type="Panel" parent="." unique_id=1403678943]
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("card_border")
+
+[node name="CardInnerBorder" type="Panel" parent="." unique_id=1589722295]
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("inner_border")
+
+[node name="SelectHighlight" type="Panel" parent="." unique_id=51366188]
+z_index = 8
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("select_highlight")
+script = ExtResource("corner_frame")
+theme_override_styles/panel = SubResource("select_highlight")
+
+[node name="TitleStrip" type="PanelContainer" parent="." unique_id=604349248]
+z_index = 4
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 16.0
+offset_top = 14.0
+offset_right = -16.0
+offset_bottom = 53.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("title_strip")
+
+[node name="Title" type="Label" parent="TitleStrip" unique_id=453064011]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.06, 0.055, 0.04, 1)
+theme_override_font_sizes/font_size = 18
+text = "未命名战斗牌"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cost" type="Label" parent="." unique_id=1009694741]
+visible = false
+layout_mode = 0
+offset_left = 19.0
+offset_top = 20.0
+offset_right = 54.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(0.98, 0.92, 0.72, 1)
+theme_override_font_sizes/font_size = 18
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CostBadges" type="Control" parent="." unique_id=1066215513]
+z_index = 30
+anchors_preset = 0
+offset_left = -34.0
+offset_top = -20.0
+offset_right = 32.0
+offset_bottom = 70.0
+scale = Vector2(1.2, 1.2)
+mouse_filter = 2
+
+[node name="StaminaBadge" type="PanelContainer" parent="CostBadges" unique_id=1623116374]
+z_index = 1
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 44.0
+tooltip_text = "精力消耗"
+mouse_filter = 2
+theme_override_styles/panel = SubResource("stamina_badge")
+
+[node name="Value" type="Label" parent="CostBadges/StaminaBadge" unique_id=846724979]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.96, 0.82, 1)
+theme_override_font_sizes/font_size = 20
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ManaBadge" type="PanelContainer" parent="CostBadges" unique_id=1924179165]
+z_index = 1
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 0
+offset_top = 46.0
+offset_right = 44.0
+offset_bottom = 44.0
+tooltip_text = "法力消耗"
+mouse_filter = 2
+theme_override_styles/panel = SubResource("mana_badge")
+
+[node name="Value" type="Label" parent="CostBadges/ManaBadge" unique_id=575648428]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.98, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EffectShade" type="PanelContainer" parent="." unique_id=515234132]
+z_index = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -145.0
+offset_right = -9.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("effect_shade")
+
+[node name="Effect" type="Label" parent="EffectShade" unique_id=887125892]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.97, 0.95, 0.89, 1)
+theme_override_font_sizes/font_size = 15
+text = "造成 12 点伤害。
+若目标带有破绽，额外造成 4 点伤害。"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ArtDivider" type="ColorRect" parent="." unique_id=1358496907]
+z_index = 4
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 10.0
+offset_top = 214.0
+offset_right = -10.0
+offset_bottom = 217.0
+grow_horizontal = 2
+mouse_filter = 2
+color = Color(0.78, 0.56, 0.2, 0.92)
+
+[node name="TypeBadge" type="PanelContainer" parent="." unique_id=201840405]
+z_index = 5
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -36.0
+offset_top = 204.0
+offset_right = 36.0
+offset_bottom = 229.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("type_badge")
+
+[node name="Label" type="Label" parent="TypeBadge" unique_id=543238451]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.08, 0.06, 0.03, 1)
+theme_override_font_sizes/font_size = 18
+text = "攻伐"
+horizontal_alignment = 1
+vertical_alignment = 1

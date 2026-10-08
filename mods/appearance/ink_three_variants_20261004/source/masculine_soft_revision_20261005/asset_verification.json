@@ -1,0 +1,118 @@
+{
+  "pass": true,
+  "changed_parts": [
+    "male/eyes/04.png",
+    "male/eyes/05.png",
+    "male/eyes/06.png",
+    "male/eyebrows/04.png",
+    "male/eyebrows/05.png",
+    "male/eyebrows/06.png"
+  ],
+  "unchanged_parts": 67,
+  "six_independent_transparent_parts": true,
+  "canvas": [
+    1024,
+    1536
+  ],
+  "visual_review_cases": 18,
+  "new_eye_brow_cross_combinations": 9,
+  "visual_approved_by_user": false,
+  "records": [
+    {
+      "file": "male/eyebrows/04.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "bbox": [
+        393,
+        335,
+        643,
+        360
+      ],
+      "sha256": "e3f18a9050730d9dba332d872e3120171f2a54884bfc727d3c6bd465e02e375b",
+      "transparent_rgb_zero": true,
+      "same_as_candidate": true
+    },
+    {
+      "file": "male/eyebrows/05.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "bbox": [
+        384,
+        331,
+        652,
+        363
+      ],
+      "sha256": "16e75eceed6180d111f3f62b3e2e4af349ebc5de22bbbf15efaa52cbea88935a",
+      "transparent_rgb_zero": true,
+      "same_as_candidate": true
+    },
+    {
+      "file": "male/eyebrows/06.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "bbox": [
+        394,
+        335,
+        641,
+        360
+      ],
+      "sha256": "6cdacd5b73712aaec17b10193da482ca732cf5ab1caf07dac4e73c04c2d23cdd",
+      "transparent_rgb_zero": true,
+      "same_as_candidate": true
+    },
+    {
+      "file": "male/eyes/04.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "bbox": [
+        413,
+        365,
+        620,
+        390
+      ],
+      "sha256": "475bf2bce3be93b54f8e6ddc8c147e79e8c75b39aadefc9b31a9c5339ed39d66",
+      "transparent_rgb_zero": true,
+      "same_as_candidate": true
+    },
+    {
+      "file": "male/eyes/05.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "bbox": [
+        414,
+        365,
+        618,
+        391
+      ],
+      "sha256": "f4d582fbe48cefce815680e7d878db6de02de43ae46b5d2e1b724128e1961b31",
+      "transparent_rgb_zero": true,
+      "same_as_candidate": true
+    },
+    {
+      "file": "male/eyes/06.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "bbox": [
+        414,
+        365,
+        618,
+        394
+      ],
+      "sha256": "acdf5a9de52575a76345c627b0ab997602e856614647fcb4f1ef7cce1f1c2490",
+      "transparent_rgb_zero": true,
+      "same_as_candidate": true
+    }
+  ]
+}

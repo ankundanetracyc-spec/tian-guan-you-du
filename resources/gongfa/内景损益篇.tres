@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="GongfaResource" format=3]
+[ext_resource type="Script" path="res://csharp/gongfa/GongfaResource.cs" id="1"]
+[ext_resource type="Script" path="res://csharp/gongfa/GongfaChapterConfig.cs" id="2"]
+[ext_resource type="Resource" path="res://resources/activeskills/内景损益篇/内景损益.tres" id="3"]
+[ext_resource type="Resource" path="res://resources/activeskills/内景损益篇/淬厉.tres" id="4"]
+[sub_resource type="Resource" id="a"]
+script=ExtResource("2")
+chapter_id="neijing"
+chapter_name="内景"
+description="读取牌堆伤势，以生命上限代价换取锻躯物理增伤。"
+order=1
+required_study_progress=24.0
+required_attributes={"physique":5.0,"body_proficiency":4.0}
+allowed_bearings=Array[int]([0,1])
+learn_permanent_bonuses={"physique":1.0}
+learned_active_skills=Array[Resource]([ExtResource("4")])
+[sub_resource type="Resource" id="b"]
+script=ExtResource("2")
+chapter_id="lubo"
+chapter_name="履薄"
+description="在受创中持续向弃牌堆积累伤势。"
+order=2
+required_study_progress=48.0
+required_realm="云息三层"
+required_attributes={"physique":7.0,"body_proficiency":5.0}
+required_chapter_ids=Array[String](["neijing"])
+allowed_bearings=Array[int]([1])
+learn_permanent_bonuses={"body_proficiency":0.5}
+[sub_resource type="Resource" id="c"]
+script=ExtResource("2")
+chapter_id="sunyi"
+chapter_name="损益"
+description="统一读取伤势数量，不拆分新的伤势资源。"
+order=3
+required_study_progress=84.0
+required_realm="云息六层"
+required_attributes={"physique":8.0,"body_proficiency":7.0}
+required_chapter_ids=Array[String](["lubo"])
+allowed_bearings=Array[int]([1])
+learn_permanent_bonuses={"physique":0.5}
+[sub_resource type="Resource" id="d"]
+script=ExtResource("2")
+chapter_id="baihai"
+chapter_name="百骸"
+description="按牌堆伤势数追加段数的多段攻伐。"
+order=4
+required_study_progress=128.0
+required_realm="云息九层"
+required_attributes={"physique":10.0,"body_proficiency":9.0}
+required_chapter_ids=Array[String](["sunyi"])
+allowed_bearings=Array[int]([1])
+learn_permanent_bonuses={"body_proficiency":1.0}
+[resource]
+script=ExtResource("1")
+gongfa_name="内景损益篇"
+description="以伤势业障为代价并从中取得持续物理增伤的锻躯法门。"
+wuxing=0
+can_be_main=true
+can_be_sub=true
+bearing_compatibility=Array[int]([1])
+school_tags=Array[String](["body"])
+body_nourish_rate_per_day=0.8
+body_nourish_weights={"skin":0.10,"sinew":0.05,"bone":0.10,"blood":0.15,"viscera":0.35,"heart":0.25}
+main_realm_start="凡人"
+main_realm_end="云息十三层"
+heart_method_skill=ExtResource("3")
+chapters=Array[Resource]([SubResource("a"),SubResource("b"),SubResource("c"),SubResource("d")])

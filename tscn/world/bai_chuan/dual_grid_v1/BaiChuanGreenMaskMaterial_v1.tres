@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3]
+
+[ext_resource type="Shader" path="res://shaders/world_map/bai_chuan/terrain_green_variant_mask_v2.gdshader" id="1_shader"]
+[ext_resource type="Texture2D" path="res://textures/world_map/bai_chuan/dual_grid_v1/green_wash_field_v1.png" id="2_atlas"]
+
+[resource]
+shader = ExtResource("1_shader")
+shader_parameter/terrain_field = ExtResource("2_atlas")
+shader_parameter/map_size = Vector2(200, 200)
+shader_parameter/logical_tile_size = 256.0
+shader_parameter/map_origin = Vector2(128, 128)

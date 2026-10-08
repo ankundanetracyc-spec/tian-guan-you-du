@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173c3a">
+  <meta name="description" content="青溪问道卡牌与秘籍编辑、校验和战斗测试工具">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23173c3a'/%3E%3Cpath d='M17 16h24c4 0 7 3 7 7v25H24c-4 0-7-3-7-7V16Z' fill='%23e8dfc9'/%3E%3Cpath d='M24 22h18M24 30h18M24 38h11' stroke='%23173c3a' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="app.css?v=2">
+  <title>青溪问道 · 卡牌与秘籍工坊</title>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-lockup">
+        <div class="brand-seal" aria-hidden="true">青</div>
+        <div>
+          <div class="brand-title">青溪问道</div>
+          <div class="brand-subtitle">卡牌与秘籍工坊</div>
+        </div>
+      </div>
+      <div class="top-actions">
+        <span id="saveIndicator" class="save-indicator">本地自动保存</span>
+        <span id="syncIndicator" class="sync-indicator">仅本机</span>
+        <button class="ghost-button" id="syncButton" type="button">局域网同步</button>
+        <button class="ghost-button" id="importButton" type="button">导入 JSON</button>
+        <button class="primary-button" id="exportBundleButton" type="button">导出工作包</button>
+        <input id="importFile" type="file" accept=".json,application/json" hidden>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <nav class="side-nav" aria-label="功能导航">
+        <button class="nav-button active" data-view="cards" type="button">
+          <span class="nav-icon">牌</span><span>卡牌工坊</span>
+        </button>
+        <button class="nav-button" data-view="manuals" type="button">
+          <span class="nav-icon">诀</span><span>秘籍工坊</span>
+        </button>
+        <button class="nav-button" data-view="test" type="button">
+          <span class="nav-icon">试</span><span>推演测试</span>
+        </button>
+        <button class="nav-button" data-view="rules" type="button">
+          <span class="nav-icon">录</span><span>规则索引</span>
+        </button>
+      </nav>
+
+      <section class="main-content">
+        <section id="cardsView" class="view active" aria-labelledby="cardsTitle">
+          <div class="view-heading">
+            <div>
+              <p class="eyebrow">ACTIVE SKILL DATA</p>
+              <h1 id="cardsTitle">卡牌工坊</h1>
+              <p class="view-description">按项目 ActiveSkillData 字段创建战斗卡牌，保存后可直接导出项目草稿。</p>
+            </div>
+            <div class="heading-actions">
+              <button class="secondary-button" id="newCardButton" type="button">＋ 新建卡牌</button>
+              <button class="secondary-button" id="duplicateCardButton" type="button">复制当前</button>
+              <button class="danger-button" id="deleteCardButton" type="button">删除</button>
+            </div>
+          </div>
+          <div class="editor-layout">
+            <aside class="library-panel panel-card">
+              <div class="panel-heading">
+                <div>
+                  <h2>我的卡牌</h2>
+                  <span id="cardCount" class="muted-label">0 张</span>
+                </div>
+                <button class="icon-button" id="clearCardSearchButton" type="button" title="清除搜索">×</button>
+              </div>
+              <label class="search-box">
+                <span aria-hidden="true">⌕</span>
+                <input id="cardSearch" type="search" placeholder="搜索卡名、关键词或来源">
+              </label>
+              <div id="cardList" class="item-list" aria-label="卡牌列表"></div>
+            </aside>
+
+            <form id="cardForm" class="editor-panel panel-card" autocomplete="off">
+              <div class="form-heading">
+                <div>
+                  <span class="section-kicker">卡牌定义</span>
+                  <h2 id="cardFormTitle">未命名卡牌</h2>
+                </div>
+                <div id="cardValidationBadge" class="validation-badge neutral">待检查</div>
+              </div>
+
+              <fieldset>
+                <legend>基础信息</legend>
+                <div class="form-grid two-columns">
+                  <label>卡牌名<input id="cardName" name="cardName" required></label>
+                  <label>资源路径<input id="cardResourcePath" name="cardResourcePath" placeholder="res://resources/activeskills/..."></label>
+                  <label>来源类型<select id="cardSourceType" name="cardSourceType"></select></label>
+                  <label>来源秘籍<input id="cardSourceGongfa" name="cardSourceGongfa" placeholder="可留空"></label>
+                  <label>卡牌类型<select id="cardSkillType" name="cardSkillType"></select></label>
+                  <label>五行<select id="cardElement" name="cardElement"></select></label>
+                  <label>需求境界<input id="cardRequiredRealm" name="cardRequiredRealm" placeholder="例如：云息三层"></label>
+                </div>
+                <div class="array-heading compact-top"><span>使用属性门槛</span><button class="tiny-button" data-map-add="cardRequiredAttributes" type="button">＋ 添加</button></div>
+                <div id="cardRequiredAttributes" class="repeat-list map-list">暂无条目，点击右侧添加</div>
+                <label>展示描述<textarea id="cardDescription" name="cardDescription" rows="3" placeholder="先写清目标、数值、触发时机和持续/移除条件"></textarea></label>
+              </fieldset>
+
+              <fieldset>
+                <legend>费用与目标</legend>
+                <div class="form-grid three-columns">
+                  <label>精力费用<input id="cardEnergyCost" name="cardEnergyCost" type="number" min="0" max="3" step="1"></label>
+                  <label>法力费用<input id="cardManaCost" name="cardManaCost" type="number" min="0" max="3" step="1"></label>
+                  <label>灵识占用<input id="cardSpiritOccupy" name="cardSpiritOccupy" type="number" min="0" max="3" step="1"></label>
+                  <label>目标类型<select id="cardTargetType" name="cardTargetType"></select></label>
+                  <label>最小射程<input id="cardRangeMin" name="cardRangeMin" type="number" min="0" max="99" step="1"></label>
+                  <label>最大射程<input id="cardRangeMax" name="cardRangeMax" type="number" min="0" max="99" step="1"></label>
+                  <label>范围半径<input id="cardAoeRange" name="cardAoeRange" type="number" min="0" max="99" step="1"></label>
+                  <label>移动距离<input id="cardMoveDistance" name="cardMoveDistance" type="number" min="0" max="99" step="1"></label>
+                  <label class="checkbox-label"><input id="cardCanTargetEmpty" name="cardCanTargetEmpty" type="checkbox"><span>可打空格</span></label>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>关键词与条件</legend>
+                <div id="cardKeywords" class="keyword-grid"></div>
+                <div class="form-grid two-columns compact-top">
+                  <label>功法条件类型<select id="cardConditionType" name="cardConditionType"></select></label>
+                  <label>功法条件值<input id="cardConditionValue" name="cardConditionValue"></label>
+                  <label>应对触发条件<select id="cardCounterCondition" name="cardCounterCondition"></select></label>
+                  <label>流转条件类型<input id="cardFlowConditionType" name="cardFlowConditionType"></label>
+                  <label>流转参数<input id="cardFlowConditionParams" name="cardFlowConditionParams" placeholder="用逗号分隔"></label>
+                  <label>乘势条件类型<input id="cardMomentumConditionType" name="cardMomentumConditionType"></label>
+                  <label>乘势参数<input id="cardMomentumEffectParams" name="cardMomentumEffectParams"></label>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>伤害公式</legend>
+                <div class="form-grid three-columns">
+                  <label>基础伤害<input id="cardBaseDamage" name="cardBaseDamage" type="number" min="0" step="0.1"></label>
+                  <label>伤害类型<select id="cardDamageType" name="cardDamageType"></select></label>
+                  <label class="span-two">公式<input id="cardDamageFormula" name="cardDamageFormula" placeholder="round(8 + 体魄×0.4 + 体道造诣×0.2)"></label>
+                </div>
+                <div class="array-heading"><span>属性倍率</span><button class="tiny-button" id="addDamageBonusButton" type="button">＋ 添加</button></div>
+                <div id="cardDamageBonuses" class="repeat-list"></div>
+              </fieldset>
+
+              <fieldset>
+                <legend>状态与即时效果</legend>
+                <div class="array-heading"><span>状态效果</span><button class="tiny-button" id="addStatusButton" type="button">＋ 添加</button></div>
+                <div id="cardStatusEffects" class="repeat-list"></div>
+                <div class="array-heading effect-heading"><span>即时效果</span><button class="tiny-button" id="addSpecialButton" type="button">＋ 添加</button></div>
+                <div id="cardSpecialEffects" class="repeat-list"></div>
+              </fieldset>
+
+              <div class="form-footer">
+                <div id="cardValidationList" class="validation-list"></div>
+                <div class="form-footer-actions">
+                  <button class="secondary-button" id="exportCardJsonButton" type="button">导出 JSON</button>
+                  <button class="secondary-button" id="exportCardTresButton" type="button">导出 .tres 草稿</button>
+                  <button class="primary-button" id="saveCardButton" type="submit">保存卡牌</button>
+                </div>
+              </div>
+            </form>
+
+            <aside class="preview-panel">
+              <div class="preview-label">牌面预览</div>
+              <div id="cardPreview" class="card-preview"></div>
+              <div class="preview-note">预览使用当前编辑内容；项目内正式图谱仍以卡牌词典为主稿。</div>
+            </aside>
+          </div>
+        </section>
+
+        <section id="manualsView" class="view" aria-labelledby="manualsTitle">
+          <div class="view-heading">
+            <div>
+              <p class="eyebrow">GONGFA RESOURCE</p>
+              <h1 id="manualsTitle">秘籍工坊</h1>
+              <p class="view-description">按 GongfaResource 与秘籍词典结构编辑总览、卷章、习得、纳气和化法。</p>
+            </div>
+            <div class="heading-actions">
+              <button class="secondary-button" id="newManualButton" type="button">＋ 新建秘籍</button>
+              <button class="secondary-button" id="duplicateManualButton" type="button">复制当前</button>
+              <button class="danger-button" id="deleteManualButton" type="button">删除</button>
+            </div>
+          </div>
+          <div class="editor-layout manual-layout">
+            <aside class="library-panel panel-card">
+              <div class="panel-heading">
+                <div>
+                  <h2>我的秘籍</h2>
+                  <span id="manualCount" class="muted-label">0 本</span>
+                </div>
+                <button class="icon-button" id="clearManualSearchButton" type="button" title="清除搜索">×</button>
+              </div>
+              <label class="search-box">
+                <span aria-hidden="true">⌕</span>
+                <input id="manualSearch" type="search" placeholder="搜索秘籍、流派或卷章">
+              </label>
+              <div id="manualList" class="item-list" aria-label="秘籍列表"></div>
+            </aside>
+
+            <form id="manualForm" class="editor-panel panel-card" autocomplete="off">
+              <div class="form-heading">
+                <div>
+                  <span class="section-kicker">秘籍定义</span>
+                  <h2 id="manualFormTitle">未命名秘籍</h2>
+                </div>
+                <div id="manualValidationBadge" class="validation-badge neutral">待检查</div>
+              </div>
+
+              <fieldset>
+                <legend>总览与槽位</legend>
+                <div class="form-grid two-columns">
+                  <label>秘籍名<input id="manualName" name="manualName" required></label>
+                  <label>资源路径<input id="manualResourcePath" name="manualResourcePath"></label>
+                  <label>五行<select id="manualWuxing" name="manualWuxing"></select></label>
+                  <label>五行条件<select id="manualWuxingMode" name="manualWuxingMode"></select></label>
+                  <label>需求境界<input id="manualRequiredRealm" name="manualRequiredRealm" placeholder="例如：凡人"></label>
+                  <label>需求研读值<input id="manualRequiredStudyProgress" name="manualRequiredStudyProgress" type="number" min="0" step="1"></label>
+                  <label>主修起始境界<input id="manualMainRealmStart" name="manualMainRealmStart"></label>
+                  <label>主修终止境界<input id="manualMainRealmEnd" name="manualMainRealmEnd"></label>
+                  <label>辅修起始境界<input id="manualSubRealmStart" name="manualSubRealmStart"></label>
+                  <label>辅修终止境界<input id="manualSubRealmEnd" name="manualSubRealmEnd"></label>
+                  <label class="checkbox-label"><input id="manualCanBeMain" name="manualCanBeMain" type="checkbox"><span>可作主修</span></label>
+                  <label class="checkbox-label"><input id="manualCanBeSub" name="manualCanBeSub" type="checkbox"><span>可作辅修</span></label>
+                </div>
+                <label>秘籍描述<textarea id="manualDescription" name="manualDescription" rows="3"></textarea></label>
+                <div class="form-grid two-columns">
+                  <label>流派标签<input id="manualSchoolTags" name="manualSchoolTags" placeholder="用逗号分隔，例如：fist,body"></label>
+                  <label>承载兼容<input id="manualBearingCompatibility" name="manualBearingCompatibility" placeholder="用逗号分隔，例如：BODY,QI"></label>
+                  <label>跨承载策略<select id="manualCrossBearingPolicy" name="manualCrossBearingPolicy"></select></label>
+                  <label>默认解锁卷章数<input id="manualDefaultChapterCount" name="manualDefaultChapterCount" type="number" min="0" step="1"></label>
+                  <label>养形每日炼度<input id="manualBodyNourishRate" name="manualBodyNourishRate" type="number" min="0" step="0.1"></label>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>秘籍加成</legend>
+                <div class="dictionary-grid">
+                  <div><div class="array-heading"><span>学会永久固定加成</span><button class="tiny-button" data-map-add="manualLearnPermanentBonuses" type="button">＋ 添加</button></div><div id="manualLearnPermanentBonuses" class="repeat-list map-list"></div></div>
+                  <div><div class="array-heading"><span>学会永久倍率加成</span><button class="tiny-button" data-map-add="manualLearnPermanentMultipliers" type="button">＋ 添加</button></div><div id="manualLearnPermanentMultipliers" class="repeat-list map-list"></div></div>
+                  <div><div class="array-heading"><span>辅修固定加成</span><button class="tiny-button" data-map-add="manualPassiveBonuses" type="button">＋ 添加</button></div><div id="manualPassiveBonuses" class="repeat-list map-list"></div></div>
+                  <div><div class="array-heading"><span>辅修倍率加成</span><button class="tiny-button" data-map-add="manualPassiveMultipliers" type="button">＋ 添加</button></div><div id="manualPassiveMultipliers" class="repeat-list map-list"></div></div>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>卷章主链</legend>
+                <div class="chapter-workspace">
+                  <div class="chapter-list-wrap">
+                    <div class="array-heading"><span>卷章</span><button class="tiny-button" id="addChapterButton" type="button">＋ 新卷章</button></div>
+                    <div id="chapterList" class="chapter-list"></div>
+                  </div>
+                  <div id="chapterEditor" class="chapter-editor"></div>
+                </div>
+              </fieldset>
+
+              <div class="form-footer">
+                <div id="manualValidationList" class="validation-list"></div>
+                <div class="form-footer-actions">
+                  <button class="secondary-button" id="exportManualJsonButton" type="button">导出 JSON</button>
+                  <button class="secondary-button" id="exportManualMarkdownButton" type="button">导出文字稿</button>
+                  <button class="secondary-button" id="exportManualTresButton" type="button">导出 .tres 草稿</button>
+                  <button class="primary-button" id="saveManualButton" type="submit">保存秘籍</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <section id="testView" class="view" aria-labelledby="testTitle">
+          <div class="view-heading">
+            <div>
+              <p class="eyebrow">SANDBOX SIMULATOR</p>
+              <h1 id="testTitle">推演测试</h1>
+              <p class="view-description">用小型可追踪沙盘检查费用、抽牌、伤害、护持、状态和秘籍卷章门槛。</p>
+            </div>
+            <div class="heading-actions"><button class="primary-button" id="startTestButton" type="button">开始新测试</button></div>
+          </div>
+          <div class="test-layout">
+            <section class="test-setup panel-card">
+              <div class="panel-heading"><div><h2>战斗设置</h2><span class="muted-label">当前工具内模拟，不替代 Godot 战斗结算</span></div></div>
+              <div class="test-section realm-section">
+                <label>测试境界<select id="testRealmSelect"></select></label>
+                <div id="realmSummary" class="realm-summary"></div>
+              </div>
+              <div class="test-section">
+                <div class="array-heading"><span>测试牌组</span><span id="testDeckCount" class="muted-label"></span></div>
+                <div id="testDeckList" class="check-list"></div>
+              </div>
+              <div class="test-section">
+                <div class="form-grid three-columns">
+                  <label>精力<input id="testEnergy" type="number" min="0" max="6" step="1"></label>
+                  <label>精力上限<input id="testMaxEnergy" type="number" min="1" max="12" step="1"></label>
+                  <label>法力<input id="testMana" type="number" min="0" max="9" step="1"></label>
+                  <label>法力上限<input id="testMaxMana" type="number" min="0" max="9" step="1"></label>
+                  <label>灵识占用<input id="testSpirit" type="number" min="0" max="9" step="1"></label>
+                  <label>灵识容量<input id="testMaxSpirit" type="number" min="0" max="9" step="1"></label>
+                  <label>敌方生命<input id="testEnemyHp" type="number" min="1" max="999" step="1"></label>
+                  <label>自身护持<input id="testShield" type="number" min="0" max="999" step="1"></label>
+                </div>
+              </div>
+              <div class="test-section">
+                <div class="array-heading"><span>测试属性</span><button class="tiny-button" id="resetTestAttributesButton" type="button">恢复默认</button></div>
+                <div id="testAttributes" class="repeat-list map-list"></div>
+              </div>
+            </section>
+
+            <section class="test-board panel-card">
+              <div class="test-resource-bar">
+                <div class="resource-chip"><span>精力</span><strong id="testEnergyReadout">0/0</strong></div>
+                <div class="resource-chip"><span>法力</span><strong id="testManaReadout">0/0</strong></div>
+                <div class="resource-chip"><span>灵识</span><strong id="testSpiritReadout">0/0</strong></div>
+                <div class="resource-chip enemy-chip"><span>敌方生命</span><strong id="testEnemyReadout">0</strong></div>
+              </div>
+              <div class="test-actions">
+                <button class="secondary-button" id="drawTestCardButton" type="button">抽一张</button>
+                <button class="secondary-button" id="endTestTurnButton" type="button">结束回合</button>
+                <button class="ghost-button" id="clearTestLogButton" type="button">清空记录</button>
+              </div>
+              <div class="zone-heading"><span>手牌</span><span id="testHandCount" class="muted-label"></span></div>
+              <div id="testHand" class="test-hand"></div>
+              <div class="zone-heading"><span>结算记录</span><span id="testTurnReadout" class="muted-label"></span></div>
+              <div id="testLog" class="test-log" aria-live="polite"></div>
+            </section>
+
+            <section class="manual-test panel-card">
+              <div class="panel-heading"><div><h2>秘籍卷章测试</h2><span class="muted-label">检查前置卷章、境界和属性门槛</span></div></div>
+              <label>测试秘籍<select id="testManualSelect"></select></label>
+              <label>测试卷章<select id="testChapterSelect"></select></label>
+              <div class="form-grid two-columns">
+                <label>角色境界<input id="manualTestRealm" placeholder="例如：凡人"></label>
+                <label>已学卷章<input id="manualTestLearned" placeholder="用逗号分隔 chapter_id"></label>
+              </div>
+              <div id="manualTestRequirements" class="requirement-box"></div>
+              <button class="primary-button full-width" id="runManualTestButton" type="button">模拟学习本卷</button>
+              <div id="manualTestResult" class="test-result"></div>
+            </section>
+          </div>
+        </section>
+
+        <section id="rulesView" class="view" aria-labelledby="rulesTitle">
+          <div class="view-heading">
+            <div>
+              <p class="eyebrow">PROJECT REFERENCE</p>
+              <h1 id="rulesTitle">规则索引</h1>
+              <p class="view-description">这里把工具实际执行的约束集中显示，便于在手机上制作时随时回看。</p>
+            </div>
+          </div>
+          <div class="rules-grid">
+            <article class="rule-card"><span class="rule-number">01</span><h2>三资源费用</h2><p>精力负责常规动作，每回合增加 3、上限通常为 6；法力回合开始恢复、回合结束清零；灵识是持续实体的占用容量。</p><code>energy_cost · mana_cost · spirit_occupy</code></article>
+            <article class="rule-card"><span class="rule-number">02</span><h2>卡牌牌头</h2><p>每张牌都应写明类型、关键词、精力、法力、灵识占用、目标与射程。应对和消耗属于关键词，不是牌型或资源。</p><code>ActiveSkillData</code></article>
+            <article class="rule-card"><span class="rule-number">03</span><h2>秘籍层级</h2><p>学会永久加成、辅修被动、纳气加成、化法改写和习得卡牌分开填写，不把技能库收益伪装成属性收益。</p><code>GongfaResource · GongfaChapterConfig</code></article>
+            <article class="rule-card"><span class="rule-number">04</span><h2>化法边界</h2><p>加入只填结果牌与数量；替换必须写原基础牌、结果牌和数量，且原牌应存在于当前路线的基础技能库。</p><code>ADD · REPLACE</code></article>
+            <article class="rule-card"><span class="rule-number">05</span><h2>词典权威</h2><p>正式设计仍以 docs/ 下的主文档、卡牌词典图谱和秘籍词典图谱为准。工具是编辑和推演助手，不反向覆盖主稿。</p><code>docs/README.md · docs/策划案摘要/README.md</code></article>
+            <article class="rule-card"><span class="rule-number">06</span><h2>导出流程</h2><p>建议先导出 JSON 留档，再把确认后的内容同步到卡牌词典、秘籍图谱/文字稿和 resources/*.tres，并运行项目校验。</p><code>JSON · Markdown · Godot .tres draft</code></article>
+          </div>
+          <div class="source-panel panel-card"><h2>本工具依据</h2><p>战斗总案、卡牌词典模板、秘籍词典模板、秘籍规范，以及当前项目的 ActiveSkillData / GongfaResource / GongfaChapterConfig 字段。</p><div class="source-tags"><span>战斗构筑与三资源系统</span><span>卡牌词典</span><span>秘籍词典</span><span>秘籍规范</span></div></div>
+        </section>
+      </section>
+    </main>
+
+    <div id="syncDialog" class="modal-backdrop" hidden>
+      <section class="sync-dialog panel-card" role="dialog" aria-modal="true" aria-labelledby="syncDialogTitle">
+        <div class="form-heading">
+          <div>
+            <span class="section-kicker">LOCAL NETWORK</span>
+            <h2 id="syncDialogTitle">局域网同步</h2>
+          </div>
+          <button class="icon-button" id="closeSyncButton" type="button" aria-label="关闭">×</button>
+        </div>
+        <p class="sync-intro">电脑关机时继续使用手机本地数据；电脑开机并在同一网络时，用“合并同步”交换本地草稿和测试设置。</p>
+        <label>电脑同步地址<input id="syncEndpoint" type="url" placeholder="例如：http://192.168.1.20:8765"></label>
+        <div class="sync-hint">如果当前页面就是从电脑地址打开，通常会自动填好。电脑端只保存同步副本，不会改写项目正式资源。</div>
+        <div id="syncSummary" class="sync-summary">尚未连接同步服务</div>
+        <div class="sync-actions">
+          <button class="secondary-button" id="checkSyncButton" type="button">检查连接</button>
+          <button class="primary-button" id="mergeSyncButton" type="button">合并同步</button>
+        </div>
+        <div id="syncLog" class="sync-log" aria-live="polite">同步记录会显示在这里。</div>
+      </section>
+    </div>
+
+    <footer class="app-footer"><span>青溪问道 · 卡牌与秘籍工坊</span><span id="footerStatus">准备就绪</span></footer>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="project-catalog.js?v=2"></script>
+  <script src="app.js?v=2"></script>
+</body>
+</html>

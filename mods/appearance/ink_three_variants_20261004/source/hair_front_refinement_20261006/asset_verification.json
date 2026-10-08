@@ -1,0 +1,55 @@
+{
+  "pass": true,
+  "applied": true,
+  "replaced_fronts": 4,
+  "unchanged_existing_parts": 87,
+  "active_choice_count": 88,
+  "physical_png_count": 91,
+  "face_occlusion_metrics": {
+    "female_hair_front_6": {
+      "central_cheek_roi": [
+        444,
+        397,
+        594,
+        505
+      ],
+      "old_opaque_pixels": 0,
+      "new_opaque_pixels": 0,
+      "note": "fixed image ROI support only; not anatomical segmentation"
+    },
+    "female_hair_front_7": {
+      "central_cheek_roi": [
+        444,
+        397,
+        594,
+        505
+      ],
+      "old_opaque_pixels": 0,
+      "new_opaque_pixels": 0,
+      "note": "fixed image ROI support only; not anatomical segmentation"
+    },
+    "female_hair_front_8": {
+      "central_cheek_roi": [
+        444,
+        397,
+        594,
+        505
+      ],
+      "old_opaque_pixels": 983,
+      "new_opaque_pixels": 91,
+      "note": "fixed image ROI support only; not anatomical segmentation"
+    }
+  },
+  "no_skin_or_ears_in_fronts": true,
+  "previous_ordinals_and_names": true,
+  "visual_layer_inspection": true,
+  "preview_trials_viewed": {
+    "female_new_hair_mixes": 9,
+    "female_four_face_trials": 12,
+    "original_back_trials": 19,
+    "light_dark_split_layers": 4
+  },
+  "visual_rejected_by_user": true,
+  "rejection_reason": "All four styles rejected; male cap narrower than scalp; replaced by straight_hair_redesign_20261006",
+  "subsequent_male_scalp_boundary_uncovered_pixels": 34
+}

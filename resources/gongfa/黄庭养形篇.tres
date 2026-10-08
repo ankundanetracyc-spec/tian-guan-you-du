@@ -1,0 +1,91 @@
+[gd_resource type="Resource" script_class="GongfaResource" format=3]
+
+[ext_resource type="Script" path="res://csharp/gongfa/GongfaResource.cs" id="1_gongfa"]
+[ext_resource type="Script" path="res://csharp/gongfa/GongfaChapterConfig.cs" id="2_chapter"]
+[ext_resource type="Resource" path="res://resources/activeskills/黄庭养形篇/黄庭养形.tres" id="3_heart"]
+[ext_resource type="Resource" path="res://resources/activeskills/黄庭养形篇/返照.tres" id="4_fanzhao"]
+[ext_resource type="Resource" path="res://resources/activeskills/黄庭养形篇/抱一.tres" id="5_baoyi"]
+[ext_resource type="Resource" path="res://resources/activeskills/黄庭养形篇/周行.tres" id="6_zhouxing"]
+[ext_resource type="Resource" path="res://resources/activeskills/黄庭养形篇/归藏.tres" id="7_guicang"]
+
+[sub_resource type="Resource" id="ChapterShouZhong"]
+script = ExtResource("2_chapter")
+chapter_id = "shou_zhong"
+chapter_name = "守中"
+description = "立黄庭之基，建立主动回落气血的手牌循环。"
+order = 1
+required_study_progress = 24.0
+required_attributes = {"physique": 5.0, "body_proficiency": 4.0}
+allowed_bearings = Array[int]([0, 1])
+learn_permanent_bonuses = {"physique": 1.0}
+learned_active_skills = Array[Resource]([ExtResource("4_fanzhao")])
+naqi_bonuses = {"max_health": 30.0}
+left_branch_name = "淬炼"
+right_branch_name = "化法"
+
+[sub_resource type="Resource" id="ChapterBaoYi"]
+script = ExtResource("2_chapter")
+chapter_id = "bao_yi"
+chapter_name = "抱一"
+description = "回落后抱元复起，使气血循环不断。"
+order = 2
+required_study_progress = 48.0
+required_realm = "云息三层"
+required_attributes = {"physique": 7.0, "body_proficiency": 5.0}
+required_chapter_ids = Array[String](["shou_zhong"])
+allowed_bearings = Array[int]([1])
+learn_permanent_bonuses = {"physique": 0.5, "body_proficiency": 0.5}
+learned_active_skills = Array[Resource]([ExtResource("5_baoyi")])
+naqi_bonuses = {"max_qi_blood": 1.0}
+left_branch_name = "淬炼"
+right_branch_name = "化法"
+
+[sub_resource type="Resource" id="ChapterZhouXing"]
+script = ExtResource("2_chapter")
+chapter_id = "zhou_xing"
+chapter_name = "周行"
+description = "让回落与再催血形成更高密度的周身循环。"
+order = 3
+required_study_progress = 84.0
+required_realm = "云息六层"
+required_attributes = {"physique": 8.0, "body_proficiency": 7.0}
+required_chapter_ids = Array[String](["bao_yi"])
+allowed_bearings = Array[int]([1])
+learn_permanent_bonuses = {"physique": 0.5, "body_proficiency": 0.5}
+learned_active_skills = Array[Resource]([ExtResource("6_zhouxing")])
+left_branch_name = "淬炼"
+right_branch_name = "化法"
+
+[sub_resource type="Resource" id="ChapterGuiCang"]
+script = ExtResource("2_chapter")
+chapter_id = "gui_cang"
+chapter_name = "归藏"
+description = "将基础催血纳入黄庭循环，收束云息期的气血构筑。"
+order = 4
+required_study_progress = 128.0
+required_realm = "云息九层"
+required_attributes = {"physique": 10.0, "body_proficiency": 9.0}
+required_chapter_ids = Array[String](["zhou_xing"])
+allowed_bearings = Array[int]([1])
+learn_permanent_bonuses = {"physique": 1.0}
+learned_active_skills = Array[Resource]([ExtResource("7_guicang")])
+left_branch_name = "淬炼"
+right_branch_name = "化法"
+naqi_bonuses = {"max_health": 20.0}
+
+[resource]
+script = ExtResource("1_gongfa")
+gongfa_name = "黄庭养形篇"
+description = "锻躯主修法。以主动气血回落换取手牌与精力，再催血续接循环。"
+wuxing = 0
+can_be_main = true
+can_be_sub = true
+bearing_compatibility = Array[int]([1])
+school_tags = Array[String](["body"])
+body_nourish_rate_per_day = 0.8
+body_nourish_weights = {"skin": 0.20, "sinew": 0.15, "bone": 0.15, "blood": 0.20, "viscera": 0.15, "heart": 0.15}
+main_realm_start = "凡人"
+main_realm_end = "云息十三层"
+heart_method_skill = ExtResource("3_heart")
+default_unlocked_chapter_count = 1
+chapters = Array[ExtResource("2_chapter")]([SubResource("ChapterShouZhong"), SubResource("ChapterBaoYi"), SubResource("ChapterZhouXing"), SubResource("ChapterGuiCang")])

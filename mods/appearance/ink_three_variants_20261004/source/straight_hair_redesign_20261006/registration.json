@@ -1,0 +1,946 @@
+{
+  "canvas": [
+    1024,
+    1536
+  ],
+  "runtime_offset": [
+    0,
+    0
+  ],
+  "own_head_axes": {
+    "male": 517,
+    "female": 519
+  },
+  "method": "whole-layer uniform visual fitting plus actual scalp outline comparison; no formal three-point residual certification",
+  "parts": [
+    {
+      "key": "male_hair_front_8",
+      "name": "行舟短发",
+      "source": "male_hair_front_8.png",
+      "generated_original": "D:\\CodexData\\generated_images\\01a0fd74-de00-7ab2-9dfc-c15a97009561\\exec-a5165689-daa2-4d26-9b26-ee0ed2198726.png",
+      "output": "male/hair_front/08.png",
+      "source_sha256": "f44125cb1d70a095e82a2e1f8d42e8a54fe98ea8a688f2ce6366b0a8da1dd625",
+      "source_size": [
+        1402,
+        1122
+      ],
+      "uniform_transform": [
+        0.26,
+        330,
+        119
+      ],
+      "source_axis_visual_estimate": 720,
+      "registered_axis_x": 517.2,
+      "no_local_warp": true
+    },
+    {
+      "key": "female_hair_front_6",
+      "name": "拂云露额",
+      "source": "female_hair_front_6.png",
+      "generated_original": "D:\\CodexData\\generated_images\\01a0fd74-de00-7ab2-9dfc-c15a97009561\\exec-5820fc88-d160-4f31-9719-95877ebafeec.png",
+      "output": "female/hair_front/06.png",
+      "source_sha256": "54e70ad71cc6432910b1ac61754fbd66404b47e9e6f54dbd3c6733b540422637",
+      "source_size": [
+        1512,
+        1040
+      ],
+      "uniform_transform": [
+        0.265,
+        316,
+        95
+      ],
+      "source_axis_visual_estimate": 766,
+      "registered_axis_x": 518.99,
+      "no_local_warp": true
+    },
+    {
+      "key": "female_hair_front_7",
+      "name": "素心分缕",
+      "source": "female_hair_front_7.png",
+      "generated_original": "D:\\CodexData\\generated_images\\01a0fd74-de00-7ab2-9dfc-c15a97009561\\exec-94656605-4cbd-40fe-95dd-dcc94e8deae0.png",
+      "output": "female/hair_front/07.png",
+      "source_sha256": "1cbcbe8c060b43f49ee27791dac8d71d0a53504dc9fdebb9d55d8c0c716369f0",
+      "source_size": [
+        1536,
+        1024
+      ],
+      "uniform_transform": [
+        0.285,
+        300,
+        114
+      ],
+      "source_axis_visual_estimate": 768,
+      "registered_axis_x": 518.88,
+      "no_local_warp": true
+    },
+    {
+      "key": "female_hair_front_8",
+      "name": "听雨短帘",
+      "source": "female_hair_front_8.png",
+      "generated_original": "D:\\CodexData\\generated_images\\01a0fd74-de00-7ab2-9dfc-c15a97009561\\exec-c55d73fe-e004-461b-8f0d-d3217e267872.png",
+      "output": "female/hair_front/08.png",
+      "source_sha256": "0c31875baeffe102d781df6e091cf58e15bbb92030cd9e188c4320ad30890cd5",
+      "source_size": [
+        1312,
+        1199
+      ],
+      "uniform_transform": [
+        0.3,
+        322,
+        121
+      ],
+      "source_axis_visual_estimate": 656,
+      "registered_axis_x": 518.8,
+      "no_local_warp": true
+    },
+    {
+      "key": "male_hair_back_8",
+      "name": "行舟短垂",
+      "source": "male_hair_back_8.png",
+      "generated_original": "D:\\CodexData\\generated_images\\01a0fd74-de00-7ab2-9dfc-c15a97009561\\exec-e26f0b4e-4899-4446-84af-4562c0dd4893.png",
+      "output": "male/hair_back/08.png",
+      "source_sha256": "8e5c091434e5b1b88461b435ab9411ab58469158a4407884eb44021a1f96a63a",
+      "source_size": [
+        1293,
+        1216
+      ],
+      "uniform_transform": [
+        0.32,
+        310,
+        135
+      ],
+      "source_axis_visual_estimate": 646,
+      "registered_axis_x": 516.72,
+      "no_local_warp": true
+    },
+    {
+      "key": "female_hair_back_8",
+      "name": "听雨齐颈",
+      "source": "female_hair_back_8.png",
+      "generated_original": "D:\\CodexData\\generated_images\\01a0fd74-de00-7ab2-9dfc-c15a97009561\\exec-c07f1167-af49-47f5-bd2a-47001decd2e9.png",
+      "output": "female/hair_back/08.png",
+      "source_sha256": "10c30705f1016a4779b2c513bb18fcb8def4e96a026855d7585da8ea60ebeb18",
+      "source_size": [
+        1264,
+        1244
+      ],
+      "uniform_transform": [
+        0.37,
+        285,
+        136
+      ],
+      "source_axis_visual_estimate": 632,
+      "registered_axis_x": 518.84,
+      "no_local_warp": true
+    }
+  ],
+  "scalp_width_profiles": {
+    "male_hair_front_8": [
+      {
+        "y": 180,
+        "scalp_edges": [
+          473,
+          562
+        ],
+        "hair_edges": [
+          401,
+          625
+        ],
+        "margins_left_right": [
+          72,
+          63
+        ],
+        "rejected_margins_left_right": [
+          63,
+          41
+        ]
+      },
+      {
+        "y": 200,
+        "scalp_edges": [
+          436,
+          596
+        ],
+        "hair_edges": [
+          387,
+          642
+        ],
+        "margins_left_right": [
+          49,
+          46
+        ],
+        "rejected_margins_left_right": [
+          41,
+          24
+        ]
+      },
+      {
+        "y": 220,
+        "scalp_edges": [
+          415,
+          616
+        ],
+        "hair_edges": [
+          373,
+          651
+        ],
+        "margins_left_right": [
+          42,
+          35
+        ],
+        "rejected_margins_left_right": [
+          32,
+          17
+        ]
+      },
+      {
+        "y": 240,
+        "scalp_edges": [
+          402,
+          628
+        ],
+        "hair_edges": [
+          360,
+          661
+        ],
+        "margins_left_right": [
+          42,
+          33
+        ],
+        "rejected_margins_left_right": [
+          31,
+          18
+        ]
+      },
+      {
+        "y": 260,
+        "scalp_edges": [
+          394,
+          636
+        ],
+        "hair_edges": [
+          355,
+          673
+        ],
+        "margins_left_right": [
+          39,
+          37
+        ],
+        "rejected_margins_left_right": [
+          25,
+          11
+        ]
+      },
+      {
+        "y": 280,
+        "scalp_edges": [
+          389,
+          640
+        ],
+        "hair_edges": [
+          354,
+          672
+        ],
+        "margins_left_right": [
+          35,
+          32
+        ],
+        "rejected_margins_left_right": [
+          17,
+          7
+        ]
+      },
+      {
+        "y": 300,
+        "scalp_edges": [
+          387,
+          642
+        ],
+        "hair_edges": [
+          355,
+          673
+        ],
+        "margins_left_right": [
+          32,
+          31
+        ],
+        "rejected_margins_left_right": [
+          13,
+          0
+        ]
+      },
+      {
+        "y": 320,
+        "scalp_edges": [
+          388,
+          641
+        ],
+        "hair_edges": [
+          358,
+          668
+        ],
+        "margins_left_right": [
+          30,
+          27
+        ],
+        "rejected_margins_left_right": [
+          7,
+          -3
+        ]
+      },
+      {
+        "y": 330,
+        "scalp_edges": [
+          390,
+          639
+        ],
+        "hair_edges": [
+          361,
+          664
+        ],
+        "margins_left_right": [
+          29,
+          25
+        ],
+        "rejected_margins_left_right": [
+          4,
+          -2
+        ]
+      },
+      {
+        "y": 340,
+        "scalp_edges": [
+          392,
+          637
+        ],
+        "hair_edges": [
+          361,
+          664
+        ],
+        "margins_left_right": [
+          31,
+          27
+        ],
+        "rejected_margins_left_right": [
+          4,
+          -9
+        ]
+      }
+    ],
+    "female_hair_front_6": [
+      {
+        "y": 180,
+        "scalp_edges": [
+          465,
+          570
+        ],
+        "hair_edges": [
+          389,
+          642
+        ],
+        "margins_left_right": [
+          76,
+          72
+        ],
+        "rejected_margins_left_right": [
+          51,
+          53
+        ]
+      },
+      {
+        "y": 200,
+        "scalp_edges": [
+          433,
+          603
+        ],
+        "hair_edges": [
+          374,
+          658
+        ],
+        "margins_left_right": [
+          59,
+          55
+        ],
+        "rejected_margins_left_right": [
+          34,
+          39
+        ]
+      },
+      {
+        "y": 220,
+        "scalp_edges": [
+          414,
+          621
+        ],
+        "hair_edges": [
+          363,
+          664
+        ],
+        "margins_left_right": [
+          51,
+          43
+        ],
+        "rejected_margins_left_right": [
+          29,
+          28
+        ]
+      },
+      {
+        "y": 240,
+        "scalp_edges": [
+          402,
+          633
+        ],
+        "hair_edges": [
+          358,
+          676
+        ],
+        "margins_left_right": [
+          44,
+          43
+        ],
+        "rejected_margins_left_right": [
+          21,
+          21
+        ]
+      },
+      {
+        "y": 260,
+        "scalp_edges": [
+          394,
+          641
+        ],
+        "hair_edges": [
+          353,
+          682
+        ],
+        "margins_left_right": [
+          41,
+          41
+        ],
+        "rejected_margins_left_right": [
+          15,
+          16
+        ]
+      },
+      {
+        "y": 280,
+        "scalp_edges": [
+          389,
+          645
+        ],
+        "hair_edges": [
+          354,
+          681
+        ],
+        "margins_left_right": [
+          35,
+          36
+        ],
+        "rejected_margins_left_right": [
+          14,
+          16
+        ]
+      },
+      {
+        "y": 300,
+        "scalp_edges": [
+          389,
+          646
+        ],
+        "hair_edges": [
+          356,
+          678
+        ],
+        "margins_left_right": [
+          33,
+          32
+        ],
+        "rejected_margins_left_right": [
+          12,
+          12
+        ]
+      },
+      {
+        "y": 320,
+        "scalp_edges": [
+          388,
+          646
+        ],
+        "hair_edges": [
+          360,
+          673
+        ],
+        "margins_left_right": [
+          28,
+          27
+        ],
+        "rejected_margins_left_right": [
+          8,
+          10
+        ]
+      },
+      {
+        "y": 330,
+        "scalp_edges": [
+          390,
+          645
+        ],
+        "hair_edges": [
+          365,
+          668
+        ],
+        "margins_left_right": [
+          25,
+          23
+        ],
+        "rejected_margins_left_right": [
+          6,
+          6
+        ]
+      },
+      {
+        "y": 340,
+        "scalp_edges": [
+          391,
+          643
+        ],
+        "hair_edges": [
+          373,
+          657
+        ],
+        "margins_left_right": [
+          18,
+          14
+        ],
+        "rejected_margins_left_right": [
+          1,
+          2
+        ]
+      }
+    ],
+    "female_hair_front_7": [
+      {
+        "y": 180,
+        "scalp_edges": [
+          465,
+          570
+        ],
+        "hair_edges": [
+          418,
+          618
+        ],
+        "margins_left_right": [
+          47,
+          48
+        ],
+        "rejected_margins_left_right": [
+          54,
+          51
+        ]
+      },
+      {
+        "y": 200,
+        "scalp_edges": [
+          433,
+          603
+        ],
+        "hair_edges": [
+          400,
+          641
+        ],
+        "margins_left_right": [
+          33,
+          38
+        ],
+        "rejected_margins_left_right": [
+          34,
+          33
+        ]
+      },
+      {
+        "y": 220,
+        "scalp_edges": [
+          414,
+          621
+        ],
+        "hair_edges": [
+          384,
+          654
+        ],
+        "margins_left_right": [
+          30,
+          33
+        ],
+        "rejected_margins_left_right": [
+          24,
+          26
+        ]
+      },
+      {
+        "y": 240,
+        "scalp_edges": [
+          402,
+          633
+        ],
+        "hair_edges": [
+          375,
+          663
+        ],
+        "margins_left_right": [
+          27,
+          30
+        ],
+        "rejected_margins_left_right": [
+          20,
+          21
+        ]
+      },
+      {
+        "y": 260,
+        "scalp_edges": [
+          394,
+          641
+        ],
+        "hair_edges": [
+          363,
+          671
+        ],
+        "margins_left_right": [
+          31,
+          30
+        ],
+        "rejected_margins_left_right": [
+          16,
+          17
+        ]
+      },
+      {
+        "y": 280,
+        "scalp_edges": [
+          389,
+          645
+        ],
+        "hair_edges": [
+          361,
+          678
+        ],
+        "margins_left_right": [
+          28,
+          33
+        ],
+        "rejected_margins_left_right": [
+          14,
+          16
+        ]
+      },
+      {
+        "y": 300,
+        "scalp_edges": [
+          389,
+          646
+        ],
+        "hair_edges": [
+          359,
+          680
+        ],
+        "margins_left_right": [
+          30,
+          34
+        ],
+        "rejected_margins_left_right": [
+          13,
+          15
+        ]
+      },
+      {
+        "y": 320,
+        "scalp_edges": [
+          388,
+          646
+        ],
+        "hair_edges": [
+          361,
+          681
+        ],
+        "margins_left_right": [
+          27,
+          35
+        ],
+        "rejected_margins_left_right": [
+          9,
+          12
+        ]
+      },
+      {
+        "y": 330,
+        "scalp_edges": [
+          390,
+          645
+        ],
+        "hair_edges": [
+          362,
+          681
+        ],
+        "margins_left_right": [
+          28,
+          36
+        ],
+        "rejected_margins_left_right": [
+          9,
+          10
+        ]
+      },
+      {
+        "y": 340,
+        "scalp_edges": [
+          391,
+          643
+        ],
+        "hair_edges": [
+          363,
+          676
+        ],
+        "margins_left_right": [
+          28,
+          33
+        ],
+        "rejected_margins_left_right": [
+          3,
+          3
+        ]
+      }
+    ],
+    "female_hair_front_8": [
+      {
+        "y": 180,
+        "scalp_edges": [
+          465,
+          570
+        ],
+        "hair_edges": [
+          432,
+          604
+        ],
+        "margins_left_right": [
+          33,
+          34
+        ],
+        "rejected_margins_left_right": [
+          29,
+          29
+        ]
+      },
+      {
+        "y": 200,
+        "scalp_edges": [
+          433,
+          603
+        ],
+        "hair_edges": [
+          413,
+          625
+        ],
+        "margins_left_right": [
+          20,
+          22
+        ],
+        "rejected_margins_left_right": [
+          23,
+          22
+        ]
+      },
+      {
+        "y": 220,
+        "scalp_edges": [
+          414,
+          621
+        ],
+        "hair_edges": [
+          396,
+          636
+        ],
+        "margins_left_right": [
+          18,
+          15
+        ],
+        "rejected_margins_left_right": [
+          18,
+          18
+        ]
+      },
+      {
+        "y": 240,
+        "scalp_edges": [
+          402,
+          633
+        ],
+        "hair_edges": [
+          386,
+          648
+        ],
+        "margins_left_right": [
+          16,
+          15
+        ],
+        "rejected_margins_left_right": [
+          17,
+          17
+        ]
+      },
+      {
+        "y": 260,
+        "scalp_edges": [
+          394,
+          641
+        ],
+        "hair_edges": [
+          375,
+          657
+        ],
+        "margins_left_right": [
+          19,
+          16
+        ],
+        "rejected_margins_left_right": [
+          14,
+          17
+        ]
+      },
+      {
+        "y": 280,
+        "scalp_edges": [
+          389,
+          645
+        ],
+        "hair_edges": [
+          371,
+          666
+        ],
+        "margins_left_right": [
+          18,
+          21
+        ],
+        "rejected_margins_left_right": [
+          15,
+          23
+        ]
+      },
+      {
+        "y": 300,
+        "scalp_edges": [
+          389,
+          646
+        ],
+        "hair_edges": [
+          364,
+          670
+        ],
+        "margins_left_right": [
+          25,
+          24
+        ],
+        "rejected_margins_left_right": [
+          20,
+          19
+        ]
+      },
+      {
+        "y": 320,
+        "scalp_edges": [
+          388,
+          646
+        ],
+        "hair_edges": [
+          358,
+          677
+        ],
+        "margins_left_right": [
+          30,
+          31
+        ],
+        "rejected_margins_left_right": [
+          22,
+          24
+        ]
+      },
+      {
+        "y": 330,
+        "scalp_edges": [
+          390,
+          645
+        ],
+        "hair_edges": [
+          358,
+          680
+        ],
+        "margins_left_right": [
+          32,
+          35
+        ],
+        "rejected_margins_left_right": [
+          18,
+          18
+        ]
+      },
+      {
+        "y": 340,
+        "scalp_edges": [
+          391,
+          643
+        ],
+        "hair_edges": [
+          357,
+          682
+        ],
+        "margins_left_right": [
+          34,
+          39
+        ],
+        "rejected_margins_left_right": [
+          22,
+          23
+        ]
+      }
+    ]
+  },
+  "dense_scalp_boundary_checks": {
+    "male_hair_front_8": {
+      "scalp_rows": [
+        180,
+        340
+      ],
+      "old_uncovered_boundary_pixels": 34,
+      "new_uncovered_boundary_pixels": 0,
+      "note": "actual dense face01 scalp contour; style-specific hairline and ears excluded below this range"
+    },
+    "female_hair_front_6": {
+      "scalp_rows": [
+        180,
+        340
+      ],
+      "old_uncovered_boundary_pixels": 0,
+      "new_uncovered_boundary_pixels": 0,
+      "note": "actual dense face01 scalp contour; style-specific hairline and ears excluded below this range"
+    },
+    "female_hair_front_7": {
+      "scalp_rows": [
+        180,
+        340
+      ],
+      "old_uncovered_boundary_pixels": 0,
+      "new_uncovered_boundary_pixels": 0,
+      "note": "actual dense face01 scalp contour; style-specific hairline and ears excluded below this range"
+    },
+    "female_hair_front_8": {
+      "scalp_rows": [
+        180,
+        340
+      ],
+      "old_uncovered_boundary_pixels": 0,
+      "new_uncovered_boundary_pixels": 0,
+      "note": "actual dense face01 scalp contour; style-specific hairline and ears excluded below this range"
+    }
+  },
+  "base01_scanned_widths_pass": true
+}

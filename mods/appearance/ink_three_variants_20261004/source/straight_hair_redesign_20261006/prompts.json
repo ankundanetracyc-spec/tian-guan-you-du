@@ -1,0 +1,83 @@
+{
+  "mode": "built-in image_gen",
+  "jobs": [
+    {
+      "key": "male_hair_front_8",
+      "sex": "male",
+      "slot": "hair_front",
+      "index": 8,
+      "name": "行舟短发",
+      "workspace_source": "male_hair_front_8.png",
+      "prompt": "Use case: stylized-concept. Transparent modular hair artwork for our Chinese ink-wash cultivation character portraits. INPUT 1: our own warm charcoal hair material swatch, ONLY for colour, fine hand-painted fibres and matte ink shadows. INPUT 2: OUR OWN bald portrait, ONLY for frontal skull width, crown curvature, forehead/temple proportion and head axis. Output ONLY the requested HAIR COMPONENT, no head, face, skin, ears, eyes, brows, neck or clothes. Preserve our fine painterly ink detail; no photorealism, CGI shine, white streaks, glossy plastic or flat anime shading. Warm charcoal black with soft restrained warm grey highlights. STYLE CHANGE: straight, SIMPLE, clean, calm hair flow with a FEW large coherent smooth strand groups. Minimal broken ends, NO curls, NO inward hooks, NO messy spikes, NO shaggy feathering, NO windblown flyaways. Natural compact crown, no tall dome and no flattened wide helmet. Strict level FRONT view, head axis vertical; balanced left/right skull volume and temple heights. IMPORTANT SKULL FIT: the hair cap must be wide enough to wrap the entire bald head reference. Do not taper the temples inward above the ear roots. Continuous substantial side hair outside both scalp contours down to upper-ear height. Shape must have enough width at the LOWER temples as well as at the upper crown, not just a wide top and narrow bottom. True transparent alpha with ample padding around the full component; no background, glow, shadow, ear-shaped notches, text or labels.\nSubject and layer ownership: FRONT HAIR. Male cultivated, neat straight short haircut: clean shallow central separation, two gently backward-combed smooth sides, a few short straight fine tapered bangs lying in the upper forehead. Forehead below bangs fully open. The cap sides continue fairly vertically outside the temples and end at upper-ear height, with tiny straight close sideburns, no inward pinching. Soft compact top that fits the wide skull. No thick pointed fringe or fluffy modern anime silhouette. Rear nape hair excluded.",
+      "referenced_image_paths": [
+        "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/practical_hair_expansion_20261006/hair_material_reference.jpg",
+        "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/straight_hair_redesign_20261006/male_bald_head.jpg"
+      ]
+    },
+    {
+      "key": "female_hair_front_6",
+      "sex": "female",
+      "slot": "hair_front",
+      "index": 6,
+      "name": "拂云露额",
+      "workspace_source": "female_hair_front_6.png",
+      "prompt": "Use case: stylized-concept. Transparent modular hair artwork for our Chinese ink-wash cultivation character portraits. INPUT 1: our own warm charcoal hair material swatch, ONLY for colour, fine hand-painted fibres and matte ink shadows. INPUT 2: OUR OWN bald portrait, ONLY for frontal skull width, crown curvature, forehead/temple proportion and head axis. Output ONLY the requested HAIR COMPONENT, no head, face, skin, ears, eyes, brows, neck or clothes. Preserve our fine painterly ink detail; no photorealism, CGI shine, white streaks, glossy plastic or flat anime shading. Warm charcoal black with soft restrained warm grey highlights. STYLE CHANGE: straight, SIMPLE, clean, calm hair flow with a FEW large coherent smooth strand groups. Minimal broken ends, NO curls, NO inward hooks, NO messy spikes, NO shaggy feathering, NO windblown flyaways. Natural compact crown, no tall dome and no flattened wide helmet. Strict level FRONT view, head axis vertical; balanced left/right skull volume and temple heights. IMPORTANT SKULL FIT: the hair cap must be wide enough to wrap the entire bald head reference. Do not taper the temples inward above the ear roots. Continuous substantial side hair outside both scalp contours down to upper-ear height. Shape must have enough width at the LOWER temples as well as at the upper crown, not just a wide top and narrow bottom. True transparent alpha with ample padding around the full component; no background, glow, shadow, ear-shaped notches, text or labels.\nSubject and layer ownership: FRONT HAIR of a neat light tied female hairstyle. Clean exact centre part, two smooth straight combed-back sides, shallow natural M hairline, close natural feminine crown. Simple quiet smooth outline, fully exposed forehead. Compact temples outside skull edges, without loose cheek strands. NO tendrils or curving sideburn wisps. Do not include the rear tie or ponytail.",
+      "referenced_image_paths": [
+        "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/practical_hair_expansion_20261006/hair_material_reference.jpg",
+        "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/straight_hair_redesign_20261006/female_bald_head.jpg"
+      ]
+    },
+    {
+      "key": "female_hair_front_7",
+      "sex": "female",
+      "slot": "hair_front",
+      "index": 7,
+      "name": "素心分缕",
+      "workspace_source": "female_hair_front_7.png",
+      "prompt": "Use case: stylized-concept. Transparent modular hair artwork for our Chinese ink-wash cultivation character portraits. INPUT 1: our own warm charcoal hair material swatch, ONLY for colour, fine hand-painted fibres and matte ink shadows. INPUT 2: OUR OWN bald portrait, ONLY for frontal skull width, crown curvature, forehead/temple proportion and head axis. Output ONLY the requested HAIR COMPONENT, no head, face, skin, ears, eyes, brows, neck or clothes. Preserve our fine painterly ink detail; no photorealism, CGI shine, white streaks, glossy plastic or flat anime shading. Warm charcoal black with soft restrained warm grey highlights. STYLE CHANGE: straight, SIMPLE, clean, calm hair flow with a FEW large coherent smooth strand groups. Minimal broken ends, NO curls, NO inward hooks, NO messy spikes, NO shaggy feathering, NO windblown flyaways. Natural compact crown, no tall dome and no flattened wide helmet. Strict level FRONT view, head axis vertical; balanced left/right skull volume and temple heights. IMPORTANT SKULL FIT: the hair cap must be wide enough to wrap the entire bald head reference. Do not taper the temples inward above the ear roots. Continuous substantial side hair outside both scalp contours down to upper-ear height. Shape must have enough width at the LOWER temples as well as at the upper crown, not just a wide top and narrow bottom. True transparent alpha with ample padding around the full component; no background, glow, shadow, ear-shaped notches, text or labels.\nSubject and layer ownership: FRONT HAIR of a neat low bun female hairstyle. Hair brushed smoothly STRAIGHT BACK from a gentle rounded frontal hairline, WITHOUT any visible part or centre seam. The material swatch has a part but DO NOT copy that part: this hairstyle is evenly brushed-back, clearly different from a centre-part style. Forehead fully open, very low restrained front volume, lateral strands closely contained, no long side locks or curling temple tails. Rear bun excluded.",
+      "referenced_image_paths": [
+        "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/practical_hair_expansion_20261006/hair_material_reference.jpg",
+        "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/straight_hair_redesign_20261006/female_bald_head.jpg"
+      ]
+    },
+    {
+      "key": "female_hair_front_8",
+      "sex": "female",
+      "slot": "hair_front",
+      "index": 8,
+      "name": "听雨短帘",
+      "workspace_source": "female_hair_front_8.png",
+      "prompt": "Use case: stylized-concept. Transparent modular hair artwork for our Chinese ink-wash cultivation character portraits. INPUT 1: our own warm charcoal hair material swatch, ONLY for colour, fine hand-painted fibres and matte ink shadows. INPUT 2: OUR OWN bald portrait, ONLY for frontal skull width, crown curvature, forehead/temple proportion and head axis. Output ONLY the requested HAIR COMPONENT, no head, face, skin, ears, eyes, brows, neck or clothes. Preserve our fine painterly ink detail; no photorealism, CGI shine, white streaks, glossy plastic or flat anime shading. Warm charcoal black with soft restrained warm grey highlights. STYLE CHANGE: straight, SIMPLE, clean, calm hair flow with a FEW large coherent smooth strand groups. Minimal broken ends, NO curls, NO inward hooks, NO messy spikes, NO shaggy feathering, NO windblown flyaways. Natural compact crown, no tall dome and no flattened wide helmet. Strict level FRONT view, head axis vertical; balanced left/right skull volume and temple heights. IMPORTANT SKULL FIT: the hair cap must be wide enough to wrap the entire bald head reference. Do not taper the temples inward above the ear roots. Continuous substantial side hair outside both scalp contours down to upper-ear height. Shape must have enough width at the LOWER temples as well as at the upper crown, not just a wide top and narrow bottom. True transparent alpha with ample padding around the full component; no background, glow, shadow, ear-shaped notches, text or labels.\nSubject and layer ownership: FRONT HAIR of an elegant simple straight short bob. A shallow soft ARC of neat light STRAIGHT eyebrow-above bangs, separated into 4 or 5 calm coherent sections; no middle-loop curtain fringe, no curls. Slender straight side panels fall OUTSIDE the FACE beside the ears, very slightly inward only at their lowest ends OUTSIDE the jaw. End by jaw height. A generous broad face opening below the fringe, leave both whole eyes and cheek surfaces clearly exposed. No feathered hooks entering the cheeks. Compact cap fits full skull width. Rear bob excluded.",
+      "referenced_image_paths": [
+        "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/practical_hair_expansion_20261006/hair_material_reference.jpg",
+        "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/straight_hair_redesign_20261006/female_bald_head.jpg"
+      ]
+    },
+    {
+      "key": "male_hair_back_8",
+      "sex": "male",
+      "slot": "hair_back",
+      "index": 8,
+      "name": "行舟短垂",
+      "workspace_source": "male_hair_back_8.png",
+      "prompt": "Use case: stylized-concept. Transparent modular hair artwork for our Chinese ink-wash cultivation character portraits. INPUT 1: our own warm charcoal hair material swatch, ONLY for colour, fine hand-painted fibres and matte ink shadows. INPUT 2: OUR OWN bald portrait, ONLY for frontal skull width, crown curvature, forehead/temple proportion and head axis. Output ONLY the requested HAIR COMPONENT, no head, face, skin, ears, eyes, brows, neck or clothes. Preserve our fine painterly ink detail; no photorealism, CGI shine, white streaks, glossy plastic or flat anime shading. Warm charcoal black with soft restrained warm grey highlights. STYLE CHANGE: straight, SIMPLE, clean, calm hair flow with a FEW large coherent smooth strand groups. Minimal broken ends, NO curls, NO inward hooks, NO messy spikes, NO shaggy feathering, NO windblown flyaways. Natural compact crown, no tall dome and no flattened wide helmet. Strict level FRONT view, head axis vertical; balanced left/right skull volume and temple heights. IMPORTANT SKULL FIT: the hair cap must be wide enough to wrap the entire bald head reference. Do not taper the temples inward above the ear roots. Continuous substantial side hair outside both scalp contours down to upper-ear height. Shape must have enough width at the LOWER temples as well as at the upper crown, not just a wide top and narrow bottom. True transparent alpha with ample padding around the full component; no background, glow, shadow, ear-shaped notches, text or labels.\nSubject and layer ownership: REAR HAIR of the same simple neat straight male short haircut. Complete continuous back-scalp solid painting viewed as an underlying symmetric frontal silhouette, connected to SHORT straight nape hair just behind ears and upper neck. Smooth contained contour, no spikes, shaggy tails or floating strands. The rear will be behind our bald face and clothes, so fill the hidden head region continuously. NO face-shaped hole, bangs, frontal hairline or cheek-facing side locks.",
+      "referenced_image_paths": [
+        "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/practical_hair_expansion_20261006/hair_material_reference.jpg",
+        "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/straight_hair_redesign_20261006/male_bald_head.jpg"
+      ]
+    },
+    {
+      "key": "female_hair_back_8",
+      "sex": "female",
+      "slot": "hair_back",
+      "index": 8,
+      "name": "听雨齐颈",
+      "workspace_source": "female_hair_back_8.png",
+      "prompt": "Use case: stylized-concept. Transparent modular hair artwork for our Chinese ink-wash cultivation character portraits. INPUT 1: our own warm charcoal hair material swatch, ONLY for colour, fine hand-painted fibres and matte ink shadows. INPUT 2: OUR OWN bald portrait, ONLY for frontal skull width, crown curvature, forehead/temple proportion and head axis. Output ONLY the requested HAIR COMPONENT, no head, face, skin, ears, eyes, brows, neck or clothes. Preserve our fine painterly ink detail; no photorealism, CGI shine, white streaks, glossy plastic or flat anime shading. Warm charcoal black with soft restrained warm grey highlights. STYLE CHANGE: straight, SIMPLE, clean, calm hair flow with a FEW large coherent smooth strand groups. Minimal broken ends, NO curls, NO inward hooks, NO messy spikes, NO shaggy feathering, NO windblown flyaways. Natural compact crown, no tall dome and no flattened wide helmet. Strict level FRONT view, head axis vertical; balanced left/right skull volume and temple heights. IMPORTANT SKULL FIT: the hair cap must be wide enough to wrap the entire bald head reference. Do not taper the temples inward above the ear roots. Continuous substantial side hair outside both scalp contours down to upper-ear height. Shape must have enough width at the LOWER temples as well as at the upper crown, not just a wide top and narrow bottom. True transparent alpha with ample padding around the full component; no background, glow, shadow, ear-shaped notches, text or labels.\nSubject and layer ownership: REAR HAIR of the same simple straight female short bob. Complete continuous symmetric solid back-scalp oval, connected to straight close side panels falling behind ears and neck to just below jaw / upper neck. Quiet clean slightly rounded lower outline, fine vertical straight ink strands, no outward waves or curls. Keep the hidden head region filled continuously, NO face-shaped hole. Bangs and face-facing side panels excluded; those are a separate front component.",
+      "referenced_image_paths": [
+        "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/practical_hair_expansion_20261006/hair_material_reference.jpg",
+        "E:/stacklands/mods/appearance/ink_three_variants_20261004/source/straight_hair_redesign_20261006/female_bald_head.jpg"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://lc55gtnnc2r3"]
+
+[ext_resource type="Texture2D" uid="uid://dirpvkphjg5s4" path="res://textures/world_map/bai_chuan/bai_chuan_tile_r0c0_v9_hd.png" id="1_r0c0"]
+[ext_resource type="Texture2D" uid="uid://d2nxi3xr8vs2j" path="res://textures/world_map/bai_chuan/bai_chuan_tile_r0c1_v9_hd.png" id="2_r0c1"]
+[ext_resource type="Texture2D" uid="uid://cxqlpdkuydbt3" path="res://textures/world_map/bai_chuan/bai_chuan_tile_r0c2_v9_hd.png" id="3_r0c2"]
+[ext_resource type="Texture2D" uid="uid://tnbd5rs1udkk" path="res://textures/world_map/bai_chuan/bai_chuan_tile_r0c3_v9_hd.png" id="4_r0c3"]
+[ext_resource type="Texture2D" uid="uid://b4wpy3pyw27ho" path="res://textures/world_map/bai_chuan/bai_chuan_tile_r1c0_v9_hd.png" id="5_r1c0"]
+[ext_resource type="Texture2D" uid="uid://dn3jj6xofnoi1" path="res://textures/world_map/bai_chuan/bai_chuan_tile_r1c1_v9_hd.png" id="6_r1c1"]
+[ext_resource type="Texture2D" uid="uid://jfk633haa5pt" path="res://textures/world_map/bai_chuan/bai_chuan_tile_r1c2_v9_hd.png" id="7_r1c2"]
+[ext_resource type="Texture2D" uid="uid://dke8qurgoagbu" path="res://textures/world_map/bai_chuan/bai_chuan_tile_r1c3_v9_hd.png" id="8_r1c3"]
+[ext_resource type="Texture2D" uid="uid://2imv4v0kauxq" path="res://textures/world_map/bai_chuan/bai_chuan_tile_r2c0_v9_hd.png" id="9_r2c0"]
+[ext_resource type="Texture2D" uid="uid://bdbwfy24uepqh" path="res://textures/world_map/bai_chuan/bai_chuan_tile_r2c1_v9_hd.png" id="10_r2c1"]
+[ext_resource type="Texture2D" uid="uid://disb8bucaufq8" path="res://textures/world_map/bai_chuan/bai_chuan_tile_r2c2_v9_hd.png" id="11_r2c2"]
+[ext_resource type="Texture2D" uid="uid://b4uslhf44bld3" path="res://textures/world_map/bai_chuan/bai_chuan_tile_r2c3_v9_hd.png" id="12_r2c3"]
+[ext_resource type="PackedScene" path="res://tscn/world/bai_chuan/BaiChuanRoadLayout.tscn" id="13_roads"]
+[ext_resource type="PackedScene" uid="uid://ctxevw4afyegc" path="res://tscn/world/bai_chuan/BaiChuanSecondLevelNodeLayout.tscn" id="14_second_level"]
+
+[node name="BaiChuanMapLayers" type="Node2D" unique_id=813013326]
+texture_filter = 4
+
+[node name="TileR0C0" type="Sprite2D" parent="." unique_id=352793235]
+visible = false
+position = Vector2(400, 300)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_r0c0")
+
+[node name="TileR0C1" type="Sprite2D" parent="." unique_id=1714448818]
+visible = false
+position = Vector2(1200, 300)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_r0c1")
+
+[node name="TileR0C2" type="Sprite2D" parent="." unique_id=1963093255]
+visible = false
+position = Vector2(2000, 300)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_r0c2")
+
+[node name="TileR0C3" type="Sprite2D" parent="." unique_id=1749131559]
+visible = false
+position = Vector2(2800, 300)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_r0c3")
+
+[node name="TileR1C0" type="Sprite2D" parent="." unique_id=2044282200]
+visible = false
+position = Vector2(400, 900)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_r1c0")
+
+[node name="TileR1C1" type="Sprite2D" parent="." unique_id=1968476737]
+visible = false
+position = Vector2(1200, 900)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_r1c1")
+
+[node name="TileR1C2" type="Sprite2D" parent="." unique_id=1059495123]
+visible = false
+position = Vector2(2000, 900)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_r1c2")
+
+[node name="TileR1C3" type="Sprite2D" parent="." unique_id=347964260]
+visible = false
+position = Vector2(2800, 900)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_r1c3")
+
+[node name="TileR2C0" type="Sprite2D" parent="." unique_id=1254563036]
+visible = false
+position = Vector2(400, 1500)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_r2c0")
+
+[node name="TileR2C1" type="Sprite2D" parent="." unique_id=765785886]
+visible = false
+position = Vector2(1200, 1500)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_r2c1")
+
+[node name="TileR2C2" type="Sprite2D" parent="." unique_id=1542539094]
+visible = false
+position = Vector2(2000, 1500)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_r2c2")
+
+[node name="TileR2C3" type="Sprite2D" parent="." unique_id=490834927]
+visible = false
+position = Vector2(2800, 1500)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_r2c3")
+
+[node name="Roads" parent="." unique_id=1141467887 instance=ExtResource("13_roads")]
+texture_filter = 4
+
+[node name="SecondLevelNodes" parent="." unique_id=1436657426 instance=ExtResource("14_second_level")]

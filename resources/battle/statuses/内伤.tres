@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://csharp/battle/StatusEffect.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+effect_id = "内伤"
+name = "内伤"
+description = "伤入经脉，气机不畅。每层使行动速度降低5%、法力消耗提高10%、法力上限降低1、护心降低8%；即时队列战斗中持续720帧。"
+is_debuff = true
+max_stacks = 4
+duration_default = 720
+duration_type = 2

@@ -1,0 +1,250 @@
+{
+  "status": "source_archive_after_active_wardrobe_integration",
+  "enabled": false,
+  "canvas": [
+    1024,
+    1536
+  ],
+  "acquisition": "wardrobe selectable; no purchase or rank gating in this iteration",
+  "battle_costume": "pending user decision",
+  "active_integration": {
+    "package_id": "ink_three_variants_20261004",
+    "registration": "source/yuxu_clothing_integration_20261008/integration_manifest.json",
+    "wardrobe_verification": "wardrobe_verification_20261008.json",
+    "enabled_here": false
+  },
+  "registrations": [
+    {
+      "sex": "male",
+      "rank": "zayi",
+      "name": "玉虚·杂役常服",
+      "file": "male/clothing/01.png",
+      "source": "source\\male_zayi.png",
+      "source_sha256": "799bdd7a7a6a6a5dbbce2fdff01fa64a0919414181d25250fb20c2e6df7d882c",
+      "transform": [
+        1,
+        0,
+        0
+      ],
+      "canvas": [
+        1024,
+        1536
+      ],
+      "neck_collars": [
+        [
+          441,
+          550
+        ],
+        [
+          594,
+          550
+        ]
+      ],
+      "frame_basis": "existing own portrait clothing template",
+      "visual_approved_by_user": false
+    },
+    {
+      "sex": "male",
+      "rank": "waimen",
+      "name": "玉虚·外门常服",
+      "file": "male/clothing/02.png",
+      "source": "source\\male_waimen.png",
+      "source_sha256": "d711d49a34507265d831d7a1485690c3fabffa9edff71d560373bf5351299939",
+      "transform": [
+        1,
+        0,
+        0
+      ],
+      "canvas": [
+        1024,
+        1536
+      ],
+      "neck_collars": [
+        [
+          441,
+          550
+        ],
+        [
+          594,
+          550
+        ]
+      ],
+      "frame_basis": "existing own portrait clothing template",
+      "visual_approved_by_user": false
+    },
+    {
+      "sex": "male",
+      "rank": "neimen",
+      "name": "玉虚·内门常服",
+      "file": "male/clothing/03.png",
+      "source": "source\\male_neimen.png",
+      "source_sha256": "b96837dbb1de68aa3e6c3e6a388b30d7e4fbddc788708c53b98ea5a73615c63e",
+      "transform": [
+        1,
+        0,
+        0
+      ],
+      "canvas": [
+        1024,
+        1536
+      ],
+      "neck_collars": [
+        [
+          441,
+          550
+        ],
+        [
+          594,
+          550
+        ]
+      ],
+      "frame_basis": "existing own portrait clothing template",
+      "visual_approved_by_user": false
+    },
+    {
+      "sex": "male",
+      "rank": "zhenchuan",
+      "name": "玉虚·真传常服",
+      "file": "male/clothing/04.png",
+      "source": "source\\male_zhenchuan.png",
+      "source_sha256": "baa1256fd49fee7718a216ed4ea536d7f648732a221d8ee08c4d7a625b40cd61",
+      "transform": [
+        1,
+        0,
+        0
+      ],
+      "canvas": [
+        1024,
+        1536
+      ],
+      "neck_collars": [
+        [
+          441,
+          550
+        ],
+        [
+          594,
+          550
+        ]
+      ],
+      "frame_basis": "existing own portrait clothing template",
+      "visual_approved_by_user": false
+    },
+    {
+      "sex": "female",
+      "rank": "zayi",
+      "name": "玉虚·杂役常服",
+      "file": "female/clothing/01.png",
+      "source": "source\\female_zayi.png",
+      "source_sha256": "6ecdf7d7209952b3e3d9b379c41b74275984df00d78c3ff16995d42066e57c59",
+      "transform": [
+        1,
+        0,
+        0
+      ],
+      "canvas": [
+        1024,
+        1536
+      ],
+      "neck_collars": [
+        [
+          450,
+          552
+        ],
+        [
+          584,
+          552
+        ]
+      ],
+      "frame_basis": "existing own portrait clothing template",
+      "visual_approved_by_user": false
+    },
+    {
+      "sex": "female",
+      "rank": "waimen",
+      "name": "玉虚·外门常服",
+      "file": "female/clothing/02.png",
+      "source": "source\\female_waimen.png",
+      "source_sha256": "a057dcef75f0a08a5c6f231309661cf9593621fdaf9c1a7a64fa8e812a1926ca",
+      "transform": [
+        1,
+        0,
+        0
+      ],
+      "canvas": [
+        1024,
+        1536
+      ],
+      "neck_collars": [
+        [
+          450,
+          552
+        ],
+        [
+          584,
+          552
+        ]
+      ],
+      "frame_basis": "existing own portrait clothing template",
+      "visual_approved_by_user": false
+    },
+    {
+      "sex": "female",
+      "rank": "neimen",
+      "name": "玉虚·内门常服",
+      "file": "female/clothing/03.png",
+      "source": "source\\female_neimen.png",
+      "source_sha256": "8792e0f4add7177bc2a8874058027e011be788b7719af748143a82d52868e44f",
+      "transform": [
+        1,
+        0,
+        0
+      ],
+      "canvas": [
+        1024,
+        1536
+      ],
+      "neck_collars": [
+        [
+          450,
+          552
+        ],
+        [
+          584,
+          552
+        ]
+      ],
+      "frame_basis": "existing own portrait clothing template",
+      "visual_approved_by_user": false
+    },
+    {
+      "sex": "female",
+      "rank": "zhenchuan",
+      "name": "玉虚·真传常服",
+      "file": "female/clothing/04.png",
+      "source": "source\\female_zhenchuan.png",
+      "source_sha256": "2aa1ac34304dd85cda1127d2219f565a7554b6ebe2a468e25a70b803f47f3f69",
+      "transform": [
+        1,
+        0,
+        0
+      ],
+      "canvas": [
+        1024,
+        1536
+      ],
+      "neck_collars": [
+        [
+          450,
+          552
+        ],
+        [
+          584,
+          552
+        ]
+      ],
+      "frame_basis": "existing own portrait clothing template",
+      "visual_approved_by_user": false
+    }
+  ]
+}

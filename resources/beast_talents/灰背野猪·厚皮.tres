@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="GreybackBoarThickHideTalent" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/GreybackBoarThickHideTalent.cs" id="1_thick_hide"]
+
+[resource]
+script = ExtResource("1_thick_hide")
+talent_id = "greyback_boar_thick_hide"
+talent_name = "厚皮"
+description = "物理防御 = round(体魄 × 0.30)。"

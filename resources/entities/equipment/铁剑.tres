@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="EquipmentData" format=3 uid="uid://bdtycliu1x1l7"]
+
+[ext_resource type="Script" path="res://csharp/resources/EquipmentData.cs" id="2"]
+
+[resource]
+script = ExtResource("2")
+definition_id = &"equip_iron_sword"
+can_stack = false
+max_stack = 1
+weapon_type = 1
+fixed_bonuses = {
+"critical": 2,
+"physical_defense": 3,
+"physique": 2
+}
+weapon_skill_paths = Array[String](["res://resources/activeskills/武器技能/挥砍.tres", "res://resources/activeskills/武器技能/突刺.tres"])
+item_category = "装备"
+entity_name = "铁剑"
+icon_path = ""

@@ -1,0 +1,40 @@
+{
+  "package": "ink_portrait_pair_20261003_v4",
+  "build": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "entry": "StartMenu/AppearanceCreatorTest -> CharacterAppearanceTest",
+  "sexes": [
+    "male",
+    "female"
+  ],
+  "toggles_per_sex": 9,
+  "all_toggles_and_restore_passed": true,
+  "csharp_composite_matches_independent_godot_composite": true,
+  "godot_exit_code": 0,
+  "tested_png_sha256": {
+    "male\\clothing.png": "3100f70f7593c6d2684301963a84f4daf4b68911c91d5997c37d4b8c16d73954",
+    "male\\eyebrows.png": "2d46a9ff7d3b609e38c0005922e9d7d3d115fd6336c93411fed35b967cbb6a7e",
+    "male\\eyes.png": "9345f4df457d675c06eefc40b12b0c4fb552899dfbce489042a950c58073ff26",
+    "male\\face_accessory.png": "1913847bf9091720c48139f49dfbb3aa70c4d20de82f2718e3dcd8348c6e5e9c",
+    "male\\face_shape.png": "ba5c5fd5df4e85a764f04d18329c6d9ea4bf09b90c05d3b32eb623823fbbbc5a",
+    "male\\hair_back.png": "92999aca89c2e02a8b3c3b21e2ccdd52f5df3ecc99c31ca3d2c94f2ccef2244a",
+    "male\\hair_front.png": "5d0584459cff53c64c9b207e9d9fbadf74407bfec61e1aa3476660a82205b597",
+    "male\\mouth.png": "052800f3bd45d257f11db1b37275097106bd8732caa66341cc0c1aef1218d88a",
+    "male\\nose.png": "70af47dfe79943a4da5cc25e6d46ec7b4f68684998cb6472ea03d6a7c3de3f9e",
+    "female\\clothing.png": "e4958024c4427cceb1a56c44e84669814cd31cb04205bd7c9e3403d713880a13",
+    "female\\eyebrows.png": "80e4516080b0207d662858d3a6bda34b6a752e63b4a3c3d4f863889cf5614310",
+    "female\\eyes.png": "40fa84819799273026896c10cd2d11807d7b5be0d3b6b600f8c0c2c8f95c466a",
+    "female\\face_accessory.png": "1913847bf9091720c48139f49dfbb3aa70c4d20de82f2718e3dcd8348c6e5e9c",
+    "female\\face_shape.png": "b1cd526c66c4ae45d4fa37a61ad345d1213af60c12796c40359033665f0f16b5",
+    "female\\hair_back.png": "65746795775ee78c23a7bdd97fd3934c858e02ae862012329b95d3103d59c036",
+    "female\\hair_front.png": "8c4258adcfd8504c11cbb011713d4638d4431fcd766746dd4b1560469c4fa526",
+    "female\\mouth.png": "457773ba1ac7c3ae7e3436ae1d2b9baa9b7a7fdec13558eb0368bc1656576bda",
+    "female\\nose.png": "1a3c335a087b051d3f17ee9c7c1bb773ae78a5d299d56064b78a13a20fe04394"
+  },
+  "stdout": "Godot Engine v4.7.2.stable.mono.official.ed1daf0bf - https://godotengine.org\nOpenGL API 3.3.0 NVIDIA 596.36 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4060 Laptop GPU\n\nINK_PORTRAIT_V4_UI_PASS: male; nine toggles; current C# composite matches selected assets\nINK_PORTRAIT_V4_UI_PASS: female; nine toggles; current C# composite matches selected assets\nINK_PORTRAIT_V4_ENTRY_PASS: start menu -> nine-part test; both sexes verified\nERROR: 1 RID allocations of type 'N5GLES37TextureE' were leaked at exit.\n",
+  "stderr_diagnostics": "ERROR: Resource file not found: res:// (expected type: unknown)\n   at: _load (core/io/resource_loader.cpp:325)\nERROR: Failed to instantiate an autoload, can't load from path: .\n   at: start (main/main.cpp:4533)\nERROR: Texture with GL ID of 23: leaked 12280 bytes.\n   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)\nERROR: Parameter \"RenderingServer::get_singleton()\" is null.\n   at: ~ImageTexture (scene/resources/image_texture.cpp:245)\n",
+  "visual_review": "Light/dark, isolated parts, no front/back/eyes and game screenshots inspected; user art review pending",
+  "scope": "Current base pair; two transparent default face-accessory slots; multiple variants not complete"
+}

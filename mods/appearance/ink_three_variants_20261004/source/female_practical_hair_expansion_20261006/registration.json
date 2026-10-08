@@ -1,0 +1,164 @@
+{
+  "rig_id": "our_selected_ink_female_20261003_v1",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "runtime_offset": [
+    0,
+    0
+  ],
+  "project_head_axis_x": 519,
+  "project_central_hairline_reference": [
+    518,
+    257
+  ],
+  "reference_points_are_our_own_not_guigu": true,
+  "method": "whole-layer uniform visual fitting; not certified three-point residual registration",
+  "parts": [
+    {
+      "key": "female_hair_front_6",
+      "name": "拂云露额",
+      "source": "female_hair_front_6.png",
+      "output": "female/hair_front/06.png",
+      "transform": [
+        0.34,
+        281,
+        76
+      ],
+      "source_size": [
+        1312,
+        1199
+      ],
+      "opaque_rgb_median": [
+        72.0,
+        68.0,
+        63.0
+      ],
+      "source_head_axis_x_visual_estimate": 700,
+      "registered_head_axis_x": 519.0,
+      "no_local_warp": true,
+      "layer_ownership": "front cap, fringe and cheek-facing locks only"
+    },
+    {
+      "key": "female_hair_back_6",
+      "name": "拂云轻束",
+      "source": "female_hair_back_6.png",
+      "output": "female/hair_back/06.png",
+      "transform": [
+        0.5,
+        254,
+        150
+      ],
+      "source_size": [
+        1057,
+        1488
+      ],
+      "opaque_rgb_median": [
+        60.0,
+        56.0,
+        51.0
+      ],
+      "source_head_axis_x_visual_estimate": 530,
+      "registered_head_axis_x": 519.0,
+      "no_local_warp": true,
+      "layer_ownership": "continuous rear scalp, rear knot, nape and behind-body hair; no face hole"
+    },
+    {
+      "key": "female_hair_front_7",
+      "name": "素心分缕",
+      "source": "female_hair_front_7.png",
+      "output": "female/hair_front/07.png",
+      "transform": [
+        0.32,
+        325,
+        83
+      ],
+      "source_size": [
+        1188,
+        1324
+      ],
+      "opaque_rgb_median": [
+        72.0,
+        67.0,
+        63.0
+      ],
+      "source_head_axis_x_visual_estimate": 607,
+      "registered_head_axis_x": 519.24,
+      "no_local_warp": true,
+      "layer_ownership": "front cap, fringe and cheek-facing locks only"
+    },
+    {
+      "key": "female_hair_back_7",
+      "name": "素心盘髻",
+      "source": "female_hair_back_7.png",
+      "output": "female/hair_back/07.png",
+      "transform": [
+        0.34,
+        296,
+        200
+      ],
+      "source_size": [
+        1312,
+        1199
+      ],
+      "opaque_rgb_median": [
+        60.0,
+        55.0,
+        51.0
+      ],
+      "source_head_axis_x_visual_estimate": 656,
+      "registered_head_axis_x": 519.04,
+      "no_local_warp": true,
+      "layer_ownership": "continuous rear scalp, rear knot, nape and behind-body hair; no face hole"
+    },
+    {
+      "key": "female_hair_front_8",
+      "name": "听雨短帘",
+      "source": "female_hair_front_8.png",
+      "output": "female/hair_front/08.png",
+      "transform": [
+        0.3,
+        337,
+        110
+      ],
+      "source_size": [
+        1215,
+        1295
+      ],
+      "opaque_rgb_median": [
+        73.0,
+        68.0,
+        63.0
+      ],
+      "source_head_axis_x_visual_estimate": 607,
+      "registered_head_axis_x": 519.1,
+      "no_local_warp": true,
+      "layer_ownership": "front cap, fringe and cheek-facing locks only"
+    },
+    {
+      "key": "female_hair_back_8",
+      "name": "听雨齐颈",
+      "source": "female_hair_back_8.png",
+      "output": "female/hair_back/08.png",
+      "transform": [
+        0.31,
+        330,
+        196
+      ],
+      "source_size": [
+        1201,
+        1310
+      ],
+      "opaque_rgb_median": [
+        60.0,
+        55.0,
+        51.0
+      ],
+      "source_head_axis_x_visual_estimate": 610,
+      "registered_head_axis_x": 519.1,
+      "no_local_warp": true,
+      "layer_ownership": "continuous rear scalp, rear knot, nape and behind-body hair; no face hole"
+    }
+  ]
+}

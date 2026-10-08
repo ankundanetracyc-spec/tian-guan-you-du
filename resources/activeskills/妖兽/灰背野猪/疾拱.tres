@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ActiveSkillData" format=3]
+
+[ext_resource type="Script" path="res://csharp/gongfa/ActiveSkillData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+skill_name = "疾拱"
+description = "迅蹄踏地，借速度斜冲。伤害 = round(10 + 体魄×0.8 + 敏捷×1.6)。"
+skill_type = 0
+energy_cost = 1
+target_type = 2
+range_min = 1
+range_max = 1
+damage_type = "physical"
+damage_formula = "round(10 + physique*0.8 + agility*1.6)"

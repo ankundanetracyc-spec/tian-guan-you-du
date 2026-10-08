@@ -1,0 +1,40 @@
+{
+  "pass": true,
+  "changed_pngs": [
+    "male/hair_back/05.png",
+    "male/hair_front/04.png",
+    "male/hair_front/05.png",
+    "female/hair_back/05.png",
+    "female/hair_front/04.png",
+    "female/hair_front/05.png"
+  ],
+  "other_pngs_unchanged": 61,
+  "metrics": {
+    "male": {
+      "central_crown_y": 162,
+      "central_hairline_y": 287,
+      "alpha_bounds": [
+        363,
+        160,
+        676,
+        393
+      ]
+    },
+    "female": {
+      "central_crown_y": 151,
+      "central_hairline_y": 285,
+      "alpha_bounds": [
+        352,
+        148,
+        685,
+        405
+      ]
+    }
+  },
+  "knot_lowered_pixels": 35,
+  "half_front_down_pixels": {
+    "male": 10,
+    "female": 14
+  },
+  "user_visual_approval": false
+}

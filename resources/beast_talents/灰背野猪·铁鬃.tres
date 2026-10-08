@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="GreybackBoarIronBristleTalent" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/GreybackBoarIronBristleTalent.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+talent_id = "greyback_boar_iron_bristle"
+talent_name = "铁鬃"
+description = "物理防御 = round(体魄 × 0.50)。"

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://jh2flni42noe"]
+
+[ext_resource type="Script" uid="uid://bmndj27bv7brx" path="res://csharp/panel/AppearanceLab.cs" id="1"]
+
+[node name="AppearanceLab" type="Control" unique_id=459082000]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1")

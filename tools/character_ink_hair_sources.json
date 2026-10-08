@@ -1,0 +1,389 @@
+{
+  "mode": "built-in image_gen",
+  "finish": "matte neutral black, refined ink brushwork, no glow",
+  "assets": [
+    {
+      "sex": "male",
+      "part": "back",
+      "index": 0,
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-f9a33f06-df60-4535-b547-38950660aa08.png",
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/ink_hair_v10/hair_back_0.png",
+      "prompt": "Use case: precise-object-edit. Production modular portrait REAR HAIR asset, not a person or hairstyle showcase. Input 1: old faulty rear hair to identify STYLE only, never preserve its cutoffs, skin, ears, garments or halo. Input 2: CLEAN jet-black FRONT HAIR reference, defining the exact hue, strand texture, lighting, smooth silky finish and scale. Repaint the entire rear hair as ONE complete hair-only painting with genuine transparent alpha on the full 1024x1536 canvas. Full behind-head hair mass must be painted, including all areas hidden by the face, ears, neck, shoulders and clothing: continuous solid hair from scalp to naturally tapering tails, NO face-shaped hole, ear-shaped gaps, missing central stripe, horizontal neck crop, rectangular notch or disconnected patch. Face/head/clothing will cover the hidden hair at runtime. Do not draw ANY front cheek locks in this rear layer; all long strands flow behind the ears, neck and shoulders.\nFixed rig: middle axis x512, ordinary scalp crown top y140 (head ornaments may rise higher), common center-part flow converges near x512,y230, front hairline y279 and temple roots (426,305)/(598,305). Ordinary side scalp stays around x340..684 at y300..450, allowing a head-sized compact cap, not giant inflated hair. Base face/ears cover x370..656,y265..550; robe begins around y550 and shoulders y722. Paint hair behind these regions continuously. Natural tails finish before y1490, all visible tips inside canvas. Do NOT zoom or recenter to fill frame. MATTE deep neutral black ink matching reference 2, base near #18191b, restrained midtones #303235, sparse quiet fine brush lines and smooth aligned strand flow. Refined ink wash with clear tapered strands, neither glossy nor coarse. No glow, bloom, shining rim, luminous halo, silver/white highlights, metallic shine or glossy reflections. All pixels outside the actual hair/ornament contour must have alpha zero, no ghost matte. Fewer purposeful fine flyaways; gentle flow, no tangled explosion. Match Chinese fantasy ink-painted portrait, no photoreal/plastic gloss.\nNo skin, ears, face, features, neck, body, robe sleeves, bamboo/cloud garment patterns, background, gray fog, white fringe, chalky gray hair, brown tint, blur, alpha haze, cutoff or collage. Head buns/knots/ribbons/crown braid belong to rear if specified. Male must NEVER have a braid. Preserve true transparency; do not substitute black background or checkerboard.\nVariant: Loosely released long rear hair; smooth gentle vertical flow, restrained volume, no knot or ornament; no braid.\nReference 1 is the shape target; reference 2 ONLY defines black ink tone and brush finish. For rear, repaint all hidden hair as one uninterrupted filled mass, including behind face. For front, preserve its exact registered placement and original silhouette. Do not turn it into glossy hair.",
+      "registration": {
+        "x_scale": 0.78,
+        "y_scale": 0.82,
+        "offset_y": 0.4
+      },
+      "scalp_crown": {
+        "source_y": 109.0,
+        "destination_y": 140,
+        "excludes_head_ornament": false
+      }
+    },
+    {
+      "sex": "male",
+      "part": "back",
+      "index": 1,
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-7b893f78-2e1c-439a-a205-464a62d62038.png",
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/ink_hair_v10/hair_back_1.png",
+      "prompt": "Use case: precise-object-edit. Production modular portrait REAR HAIR asset, not a person or hairstyle showcase. Input 1: already complete pure rear hair reference for compact scalp and continuous hidden mass; preserve head size and anchors, alter hairstyle. Input 2: CLEAN jet-black FRONT HAIR reference, defining the exact hue, strand texture, lighting, smooth silky finish and scale. Repaint the entire rear hair as ONE complete hair-only painting with genuine transparent alpha on the full 1024x1536 canvas. Full behind-head hair mass must be painted, including all areas hidden by the face, ears, neck, shoulders and clothing: continuous solid hair from scalp to naturally tapering tails, NO face-shaped hole, ear-shaped gaps, missing central stripe, horizontal neck crop, rectangular notch or disconnected patch. Face/head/clothing will cover the hidden hair at runtime. Do not draw ANY front cheek locks in this rear layer; all long strands flow behind the ears, neck and shoulders.\nFixed rig: middle axis x512, ordinary scalp crown top y140 (head ornaments may rise higher), common center-part flow converges near x512,y230, front hairline y279 and temple roots (426,305)/(598,305). Ordinary side scalp stays around x340..684 at y300..450, allowing a head-sized compact cap, not giant inflated hair. Base face/ears cover x370..656,y265..550; robe begins around y550 and shoulders y722. Paint hair behind these regions continuously. Natural tails finish before y1490, all visible tips inside canvas. Do NOT zoom or recenter to fill frame. MATTE deep neutral black ink matching reference 2, base near #18191b, restrained midtones #303235, sparse quiet fine brush lines and smooth aligned strand flow. Refined ink wash with clear tapered strands, neither glossy nor coarse. No glow, bloom, shining rim, luminous halo, silver/white highlights, metallic shine or glossy reflections. All pixels outside the actual hair/ornament contour must have alpha zero, no ghost matte. Fewer purposeful fine flyaways; gentle flow, no tangled explosion. Match Chinese fantasy ink-painted portrait, no photoreal/plastic gloss.\nNo skin, ears, face, features, neck, body, robe sleeves, bamboo/cloud garment patterns, background, gray fog, white fringe, chalky gray hair, brown tint, blur, alpha haze, cutoff or collage. Head buns/knots/ribbons/crown braid belong to rear if specified. Male must NEVER have a braid. Preserve true transparency; do not substitute black background or checkerboard.\nVariant: NEAT STRAIGHT LONG LOOSE REAR HAIR. Calm compact scalp, smoothly combed close behind ears and narrow neck, vertically aligned tails. NO bun, NO braid, NO ribbon, NO puffed or squared pompadour crown, NO windswept splaying sideways.\nMATTE refined ink black, preserve exact compact scalp size; no halo/gloss. Paint complete central hidden mass.",
+      "registration": {
+        "y_scale": 0.9458457,
+        "offset_y": 7.60608
+      },
+      "scalp_crown": {
+        "source_y": 124.0,
+        "destination_y": 140,
+        "excludes_head_ornament": false
+      }
+    },
+    {
+      "sex": "male",
+      "part": "back",
+      "index": 2,
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-8fa6980f-e6ce-4d8b-b331-9f2a45bd5a1c.png",
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/skin_ear_v12/hair_back_2.png",
+      "prompt": "Use case: precise-object-edit. Input1 is the complete current male HIGH-TIED REAR HAIR on beige, for whole canvas registration and complete hair mass. Input2 is the accepted matte BLACK FRONT HAIR on beige, for exact dark hue and smooth quiet ink-brush finish.\nFix the extra protruding secondary hair lump at upper RIGHT behind the central high tie; REMOVE this second hump, duplicate blue band and side knot completely. Keep exactly ONE compact centered high knot/pony loop with ONE restrained blue binding. Ordinary scalp crown y140, centered512, ordinary head cap compact and smoothly rounded matching frontal reference silhouette. The only structure above the normal head is the intentional central topknot. No extra piled side mound, puff, secondary tie or gray highlight patch at upper right.\nRepaint ALL rear hair in the same matte deep neutral black and refined smooth ink texture as Input2; dark mass #18191b, quiet midtones #303235. Avoid bright dense stringy gray/silver strokes, coarse scribbles, gloss or bloom. Smooth long unbraided tails fall behind head/ears/neck/shoulders and finish insidecanvasbeforey1460.\nFull1024x1536 transparent layer, preserve axis/crown/head size and whole silhouette registration. COMPLETE SOLID hair mass behind the face x420..604,y279..550 and behind neck/clothes, no face hole, ear gaps, neck cuts or shoulder clipping. No face, skin, ears, frontal cheek locks, body, garment, braids, background, halo, haze or dirty tips. All pixels outside exact hair/one tie contour alpha zero. Beige is reference backdrop ONLY, output true transparency.",
+      "registration": {
+        "x_scale": 0.94,
+        "y_scale": 1,
+        "offset_y": -15
+      },
+      "scalp_crown": {
+        "source_y": 155,
+        "destination_y": 140,
+        "excludes_head_ornament": true
+      }
+    },
+    {
+      "sex": "male",
+      "part": "back",
+      "index": 3,
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-37ecefaa-98bd-4e7a-8fb6-958b4c0a638c.png",
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/ink_hair_v10/hair_back_3.png",
+      "prompt": "Use case: precise-object-edit. Production modular portrait REAR HAIR asset, not a person or hairstyle showcase. Input 1: complete pure rear hair reference for compact scalp and uninterrupted filled hair under head. Input 2: CLEAN jet-black FRONT HAIR reference, defining the exact hue, strand texture, lighting, smooth silky finish and scale. Repaint the entire rear hair as ONE complete hair-only painting with genuine transparent alpha on the full 1024x1536 canvas. Full behind-head hair mass must be painted, including all areas hidden by the face, ears, neck, shoulders and clothing: continuous solid hair from scalp to naturally tapering tails, NO face-shaped hole, ear-shaped gaps, missing central stripe, horizontal neck crop, rectangular notch or disconnected patch. Face/head/clothing will cover the hidden hair at runtime. Do not draw ANY front cheek locks in this rear layer; all long strands flow behind the ears, neck and shoulders.\nFixed rig: middle axis x512, ordinary scalp crown top y140 (head ornaments may rise higher), common center-part flow converges near x512,y230, front hairline y279 and temple roots (426,305)/(598,305). Ordinary side scalp stays around x340..684 at y300..450, allowing a head-sized compact cap, not giant inflated hair. Base face/ears cover x370..656,y265..550; robe begins around y550 and shoulders y722. Paint hair behind these regions continuously. Natural tails finish before y1490, all visible tips inside canvas. Do NOT zoom or recenter to fill frame. MATTE deep neutral black ink matching reference 2, base near #18191b, restrained midtones #303235, sparse quiet fine brush lines and smooth aligned strand flow. Refined ink wash with clear tapered strands, neither glossy nor coarse. No glow, bloom, shining rim, luminous halo, silver/white highlights, metallic shine or glossy reflections. All pixels outside the actual hair/ornament contour must have alpha zero, no ghost matte. Fewer purposeful fine flyaways; gentle flow, no tangled explosion. Match Chinese fantasy ink-painted portrait, no photoreal/plastic gloss.\nNo skin, ears, face, features, neck, body, robe sleeves, bamboo/cloud garment patterns, background, gray fog, white fringe, chalky gray hair, brown tint, blur, alpha haze, cutoff or collage. Head buns/knots/ribbons/crown braid belong to rear if specified. Male must NEVER have a braid. Preserve true transparency; do not substitute black background or checkerboard.\nVariant: smooth LOW-TIED ponytail, dark blue tie AT y650 behind the NECK/ROBE. Entire hair sheet remains solid and full width x365..655 from y265 through y580, including ALL hidden ears/neck areas. Only gather toward the center AFTER y600; do not gather into a narrow tail at y400 or y500. Natural gently curved long tapered tail. No braids or bun. Calmer and smoother than reference, with few stray strands. Keep scalp top y140, cap head-sized x340..684, genuine alpha outside external contour.",
+      "registration": {
+        "x_scale": 0.9,
+        "y_scale": 0.79,
+        "offset_y": 0.04
+      },
+      "scalp_crown": {
+        "source_y": 103.0,
+        "destination_y": 140,
+        "excludes_head_ornament": false
+      }
+    },
+    {
+      "sex": "male",
+      "part": "back",
+      "index": 4,
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-44fbcd80-988e-45f5-8db0-3de4c9dc3d57.png",
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/ink_hair_v10/hair_back_4.png",
+      "prompt": "Use case: precise-object-edit. Production modular portrait REAR HAIR asset, not a person or hairstyle showcase. Input 1: old faulty rear hair to identify STYLE only, never preserve its cutoffs, skin, ears, garments or halo. Input 2: CLEAN jet-black FRONT HAIR reference, defining the exact hue, strand texture, lighting, smooth silky finish and scale. Repaint the entire rear hair as ONE complete hair-only painting with genuine transparent alpha on the full 1024x1536 canvas. Full behind-head hair mass must be painted, including all areas hidden by the face, ears, neck, shoulders and clothing: continuous solid hair from scalp to naturally tapering tails, NO face-shaped hole, ear-shaped gaps, missing central stripe, horizontal neck crop, rectangular notch or disconnected patch. Face/head/clothing will cover the hidden hair at runtime. Do not draw ANY front cheek locks in this rear layer; all long strands flow behind the ears, neck and shoulders.\nFixed rig: middle axis x512, ordinary scalp crown top y140 (head ornaments may rise higher), common center-part flow converges near x512,y230, front hairline y279 and temple roots (426,305)/(598,305). Ordinary side scalp stays around x340..684 at y300..450, allowing a head-sized compact cap, not giant inflated hair. Base face/ears cover x370..656,y265..550; robe begins around y550 and shoulders y722. Paint hair behind these regions continuously. Natural tails finish before y1490, all visible tips inside canvas. Do NOT zoom or recenter to fill frame. MATTE deep neutral black ink matching reference 2, base near #18191b, restrained midtones #303235, sparse quiet fine brush lines and smooth aligned strand flow. Refined ink wash with clear tapered strands, neither glossy nor coarse. No glow, bloom, shining rim, luminous halo, silver/white highlights, metallic shine or glossy reflections. All pixels outside the actual hair/ornament contour must have alpha zero, no ghost matte. Fewer purposeful fine flyaways; gentle flow, no tangled explosion. Match Chinese fantasy ink-painted portrait, no photoreal/plastic gloss.\nNo skin, ears, face, features, neck, body, robe sleeves, bamboo/cloud garment patterns, background, gray fog, white fringe, chalky gray hair, brown tint, blur, alpha haze, cutoff or collage. Head buns/knots/ribbons/crown braid belong to rear if specified. Male must NEVER have a braid. Preserve true transparency; do not substitute black background or checkerboard.\nVariant: Blue cloth headband, compact smooth scalp, long straight UNBRAIDED loose rear tail, no bun and absolutely NO BRAID.\nReference 1 target; reference 2 matte ink finish only. Do not enlarge or recenter. No coarse highlights.",
+      "registration": {
+        "x_scale": 0.76,
+        "y_scale": 0.7,
+        "offset_y": 11.5
+      },
+      "scalp_crown": {
+        "source_y": 64.0,
+        "destination_y": 140,
+        "excludes_head_ornament": false
+      }
+    },
+    {
+      "sex": "male",
+      "part": "front",
+      "index": 0,
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-f9ffa9c4-0f80-4d08-bc3c-c8c119d10acf.png",
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/full_front_crown_v11/hair_front_0.png",
+      "prompt": "Use case: precise-object-edit.\nInput1 target: isolated FULL FRONTAL CROWN hair layer. Change the messy, fluffy, chalky hair into compact smoothly combed MATTE BLACK hair. Input2: old low front hair only for restrained black ink finish; do not copy its low crown.\nKEEP the full frontal crown height y140, central hairline y279, axis512, transparent face opening and short tapered cheek locks. Repaint the entire scalp as smooth rounded neatly groomed black frontal hair, gently parted at center, front-facing. The outer cap should lie close to the ordinary head, outer left/right edges near x340/684 at y280..350; keep inner temples420/604. REMOVE protruding tangled tufts and looped flyaway curls. Only a few orderly tapered edge strands. Do not flatten crown, do not zoom or recenter.\nDark near-black ink mass, quiet soft brush flow, low contrast subtle #303235 midtones; do not draw hundreds of bright gray-white stringy highlight lines. NO shine, gloss, halo, bloom, fog or fuzzy contour. Hair-only 1024x1536 real transparent layer; everything outside hair and inside face opening alpha zero. No skin, ears, face, rear long tail, bun, braid, ornament or ribbon. Do not paint a complete person. Smooth refined Chinese ink wash, not photoreal shiny wig or charcoal scribbles.\nRestore pure opaque ordinary frontal scalp above forehead; rear hair will be separate. All hair tips clean pointed, no flat cuts or dirty fragments.\nmale short front, two short cheek locks.",
+      "registration": {
+        "x_scale": 0.9154229,
+        "y_scale": 1.0072464,
+        "anchor_x": 512,
+        "anchor_y": 279,
+        "offset_x": -0.45771,
+        "offset_y": -33.23913
+      },
+      "scalp_crown": {
+        "source_y": 174,
+        "destination_y": 140,
+        "excludes_head_ornament": false
+      }
+    },
+    {
+      "sex": "male",
+      "part": "front",
+      "index": 1,
+      "prompt": "Precisely edit ONLY the lateral fullness of this complete FRONT hair sprite. Output transparent1024x1536, fixed axis512 crown y140 and hairline279. Preserve forehead opening, black matte smooth fine ink hair texture, existing cheek locks and length. Crown must NOT rise or move down. Make normal scalp 7..10% narrower around temples: reduce inflated outer sides at y240..350 without shrinking full sprite or changing face opening. Desired scalp outline at y160x430..596,y180x400..625,y210x378..649,y240x363..663,y270x350..677,y300x344..682,y330x344..682,y350x355..674. Keep small tasteful style variation but NO big puff or flyaway protrusions outside the normal outline. Hairline remains y279 and opening inner temples aroundx425/599, face area x470..554 y330..440 empty. Long cheek locks remain flowing from face sides, no hair dropped across center face or detached bits. male, TWO long cheek locks. Front shows full normal crown, NOT only bangs. No rearhair, ornaments, head/ears/skin, background, white halo, blur or grey haze. Render crisp clean tapered ends. Reference beige is backgroundonly; genuine alpha.",
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/portrait_cleanup_v14/front_1.png",
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-2fe38723-111a-45fc-a3db-e7791956a837.png",
+      "registration": {
+        "x_scale": 0.62,
+        "y_scale": 0.6714975845410628,
+        "anchor_x": 512,
+        "anchor_y": 399,
+        "offset_y": -120
+      },
+      "scalp_crown": {
+        "source_y": 192,
+        "registered_y": 140
+      }
+    },
+    {
+      "sex": "male",
+      "part": "front",
+      "index": 2,
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-676bb1bd-7b38-4ce6-8460-4f2ff829f035.png",
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/full_front_crown_v11/hair_front_2.png",
+      "prompt": "Use case: precise-object-edit.\nInput1 target is a registered pure FRONT hair layer. Keep its full crown y140, forehead hairline279, all cheek-lock side arrangement, lengths and clean pointed tips. Change ONLY the over-fluffy outer scalp and rough bright stringy texture into a compact smoothly combed MATTE BLACK ink cap. Input2 is the ACCEPTED tidy short-front reference on a beige background: use its ACTUAL visible compact crown shape and subtle brush finish. Beige is only a reference backdrop, do not include it in output.\nRepaint ordinary frontal scalp as softly rounded, neatly groomed smooth near-black hair, gently parted in center, matching Input2. Full frontal crown is essential, must not become a low strip. Keep inner temples420/604 and ordinary outer cap near340/684; REMOVE protruding tangled tufts and looped curls, no blown-up fluffy wig. Longer cheek locks keep their current paths and length; they originate beside face and belong in front, not shoulder-wide rear hair.\nDeep neutral black ink mass #18191b, restrained quiet midtones #303235, soft purposeful brush flow. REMOVE chalky silver/gray hairline highlights and hundreds of bright scribbly lines. No gloss, glowing halo, bloom, haze, white fringe or blurry tips.\nHAIR ONLY on genuine transparent1024x1536 full canvas. All outside hair and inside face opening alpha zero. No skin, ears, neck, body, clothing, rear tails, braid, bun, ribbon or ornament. Preserve normal crown/hairline placement and ample canvas blank space; no zoom/recenter/crop.\nPreserve male front variant 2 exactly below temples.",
+      "registration": {
+        "x_scale": 0.9064039,
+        "y_scale": 0.9652778,
+        "anchor_x": 512,
+        "anchor_y": 279,
+        "offset_x": 1.35961,
+        "offset_y": -3.86111
+      },
+      "scalp_crown": {
+        "source_y": 139,
+        "destination_y": 140,
+        "excludes_head_ornament": false
+      }
+    },
+    {
+      "sex": "male",
+      "part": "front",
+      "index": 3,
+      "prompt": "Precisely edit ONLY the lateral fullness of this complete FRONT hair sprite. Output transparent1024x1536, fixed axis512 crown y140 and hairline279. Preserve forehead opening, black matte smooth fine ink hair texture, existing cheek locks and length. Crown must NOT rise or move down. Make normal scalp 7..10% narrower around temples: reduce inflated outer sides at y240..350 without shrinking full sprite or changing face opening. Desired scalp outline at y160x430..596,y180x400..625,y210x378..649,y240x363..663,y270x350..677,y300x344..682,y330x344..682,y350x355..674. Keep small tasteful style variation but NO big puff or flyaway protrusions outside the normal outline. Hairline remains y279 and opening inner temples aroundx425/599, face area x470..554 y330..440 empty. Long cheek locks remain flowing from face sides, no hair dropped across center face or detached bits. male, LEFT long cheek lock. Front shows full normal crown, NOT only bangs. No rearhair, ornaments, head/ears/skin, background, white halo, blur or grey haze. Render crisp clean tapered ends. Reference beige is backgroundonly; genuine alpha.",
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/portrait_cleanup_v14/front_3.png",
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-748fd98f-e475-43d0-a7f2-af6b3e26aee6.png",
+      "registration": {
+        "x_scale": 0.77,
+        "y_scale": 0.7988505747126436,
+        "anchor_x": 512,
+        "anchor_y": 324,
+        "offset_y": -45
+      },
+      "scalp_crown": {
+        "source_y": 150,
+        "registered_y": 140
+      }
+    },
+    {
+      "sex": "male",
+      "part": "front",
+      "index": 4,
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-30abb4b0-9da6-4f83-a645-df76c79687f1.png",
+      "source": "mods/appearance/腰上男修拆件演示_v2/test_sources/full_front_crown_v11/hair_front_4.png",
+      "prompt": "Use case: precise-object-edit.\nInput1 target is a registered pure FRONT hair layer. Keep its full crown y140, forehead hairline279, all cheek-lock side arrangement, lengths and clean pointed tips. Change ONLY the over-fluffy outer scalp and rough bright stringy texture into a compact smoothly combed MATTE BLACK ink cap. Input2 is the ACCEPTED tidy short-front reference on a beige background: use its ACTUAL visible compact crown shape and subtle brush finish. Beige is only a reference backdrop, do not include it in output.\nRepaint ordinary frontal scalp as softly rounded, neatly groomed smooth near-black hair, gently parted in center, matching Input2. Full frontal crown is essential, must not become a low strip. Keep inner temples420/604 and ordinary outer cap near340/684; REMOVE protruding tangled tufts and looped curls, no blown-up fluffy wig. Longer cheek locks keep their current paths and length; they originate beside face and belong in front, not shoulder-wide rear hair.\nDeep neutral black ink mass #18191b, restrained quiet midtones #303235, soft purposeful brush flow. REMOVE chalky silver/gray hairline highlights and hundreds of bright scribbly lines. No gloss, glowing halo, bloom, haze, white fringe or blurry tips.\nHAIR ONLY on genuine transparent1024x1536 full canvas. All outside hair and inside face opening alpha zero. No skin, ears, neck, body, clothing, rear tails, braid, bun, ribbon or ornament. Preserve normal crown/hairline placement and ample canvas blank space; no zoom/recenter/crop.\nPreserve male front variant 4 exactly below temples.",
+      "registration": {
+        "x_scale": 0.9633508,
+        "y_scale": 0.9858156,
+        "anchor_x": 512,
+        "anchor_y": 279,
+        "offset_x": -2.40838,
+        "offset_y": -1.97163
+      },
+      "scalp_crown": {
+        "source_y": 140,
+        "destination_y": 140,
+        "excludes_head_ornament": false
+      }
+    },
+    {
+      "sex": "female",
+      "part": "back",
+      "index": 0,
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-9543cff6-17df-48eb-9c11-500382478131.png",
+      "source": "mods/appearance/腰上女修拆件演示_v1/source/ink_hair_v7/hair_back_0.png",
+      "prompt": "Use case: precise-object-edit. Production modular portrait REAR HAIR asset, not a person or hairstyle showcase. Input 1: already complete pure rear hair reference showing the compact rig and complete hidden mass. Keep its overall scalp size and location, change hairstyle as requested. Input 2: CLEAN jet-black FRONT HAIR reference, defining the exact hue, strand texture, lighting, smooth silky finish and scale. Repaint the entire rear hair as ONE complete hair-only painting with genuine transparent alpha on the full 1024x1536 canvas. Full behind-head hair mass must be painted, including all areas hidden by the face, ears, neck, shoulders and clothing: continuous solid hair from scalp to naturally tapering tails, NO face-shaped hole, ear-shaped gaps, missing central stripe, horizontal neck crop, rectangular notch or disconnected patch. Face/head/clothing will cover the hidden hair at runtime. Do not draw ANY front cheek locks in this rear layer; all long strands flow behind the ears, neck and shoulders.\nFixed rig: middle axis x512, ordinary scalp crown top y140 (head ornaments may rise higher), common center-part flow converges near x512,y230, front hairline y279 and temple roots (426,305)/(598,305). Ordinary side scalp stays around x340..684 at y300..450, allowing a head-sized compact cap, not giant inflated hair. Base face/ears cover x370..656,y265..550; robe begins around y550 and shoulders y722. Paint hair behind these regions continuously. Natural tails finish before y1490, all visible tips inside canvas. Do NOT zoom or recenter to fill frame. MATTE deep neutral black ink matching reference 2, base near #18191b, restrained midtones #303235, sparse quiet fine brush lines and smooth aligned strand flow. Refined ink wash with clear tapered strands, neither glossy nor coarse. No glow, bloom, shining rim, luminous halo, silver/white highlights, metallic shine or glossy reflections. All pixels outside the actual hair/ornament contour must have alpha zero, no ghost matte. Fewer purposeful fine flyaways; gentle flow, no tangled explosion. Match Chinese fantasy ink-painted portrait, no photoreal/plastic gloss.\nNo skin, ears, face, features, neck, body, robe sleeves, bamboo/cloud garment patterns, background, gray fog, white fringe, chalky gray hair, brown tint, blur, alpha haze, cutoff or collage. Head buns/knots/ribbons/crown braid belong to rear if specified. Male must NEVER have a braid. Preserve true transparency; do not substitute black background or checkerboard.\nVariant: Symmetric long rear hair with ONE small high bun and restrained blue band above scalp, orderly smooth tails behind shoulders. Compact delicate feminine head; NO face, ears or front locks.\nKeep reference 1's COMPACT scalp exact size x350..675,y140..450. No enlarged top cap, no lateral explosive flying strands. Neat matte ink-black. Don't add photoreal gleam.",
+      "registration": {
+        "y_scale": 1,
+        "offset_y": -39.0
+      },
+      "scalp_crown": {
+        "source_y": 179.0,
+        "destination_y": 140,
+        "excludes_head_ornament": true
+      }
+    },
+    {
+      "sex": "female",
+      "part": "back",
+      "index": 1,
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-5b8248ba-b99b-42a8-b6e5-f66bed8f5578.png",
+      "source": "mods/appearance/腰上女修拆件演示_v1/source/ink_hair_v7/hair_back_1.png",
+      "prompt": "Use case: precise-object-edit. Production modular portrait REAR HAIR asset, not a person or hairstyle showcase. Input 1: complete pure rear hair reference for compact scalp and uninterrupted filled hair under head. Input 2: CLEAN jet-black FRONT HAIR reference, defining the exact hue, strand texture, lighting, smooth silky finish and scale. Repaint the entire rear hair as ONE complete hair-only painting with genuine transparent alpha on the full 1024x1536 canvas. Full behind-head hair mass must be painted, including all areas hidden by the face, ears, neck, shoulders and clothing: continuous solid hair from scalp to naturally tapering tails, NO face-shaped hole, ear-shaped gaps, missing central stripe, horizontal neck crop, rectangular notch or disconnected patch. Face/head/clothing will cover the hidden hair at runtime. Do not draw ANY front cheek locks in this rear layer; all long strands flow behind the ears, neck and shoulders.\nFixed rig: middle axis x512, ordinary scalp crown top y140 (head ornaments may rise higher), common center-part flow converges near x512,y230, front hairline y279 and temple roots (426,305)/(598,305). Ordinary side scalp stays around x340..684 at y300..450, allowing a head-sized compact cap, not giant inflated hair. Base face/ears cover x370..656,y265..550; robe begins around y550 and shoulders y722. Paint hair behind these regions continuously. Natural tails finish before y1490, all visible tips inside canvas. Do NOT zoom or recenter to fill frame. MATTE deep neutral black ink matching reference 2, base near #18191b, restrained midtones #303235, sparse quiet fine brush lines and smooth aligned strand flow. Refined ink wash with clear tapered strands, neither glossy nor coarse. No glow, bloom, shining rim, luminous halo, silver/white highlights, metallic shine or glossy reflections. All pixels outside the actual hair/ornament contour must have alpha zero, no ghost matte. Fewer purposeful fine flyaways; gentle flow, no tangled explosion. Match Chinese fantasy ink-painted portrait, no photoreal/plastic gloss.\nNo skin, ears, face, features, neck, body, robe sleeves, bamboo/cloud garment patterns, background, gray fog, white fringe, chalky gray hair, brown tint, blur, alpha haze, cutoff or collage. Head buns/knots/ribbons/crown braid belong to rear if specified. Male must NEVER have a braid. Preserve true transparency; do not substitute black background or checkerboard.\nVariant: smooth LOW-TIED ponytail, dark blue tie AT y650 behind the NECK/ROBE. Entire hair sheet remains solid and full width x365..655 from y265 through y580, including ALL hidden ears/neck areas. Only gather toward the center AFTER y600; do not gather into a narrow tail at y400 or y500. Natural gently curved long tapered tail. No braids or bun. Calmer and smoother than reference, with few stray strands. Keep scalp top y140, cap head-sized x340..684, genuine alpha outside external contour.",
+      "registration": {
+        "x_scale": 0.9,
+        "y_scale": 0.843,
+        "offset_y": 0.095
+      },
+      "scalp_crown": {
+        "source_y": 114.0,
+        "destination_y": 140,
+        "excludes_head_ornament": false
+      }
+    },
+    {
+      "sex": "female",
+      "part": "back",
+      "index": 2,
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-8e76f89d-8207-45b9-b1ae-a57a4a6d850d.png",
+      "source": "mods/appearance/腰上女修拆件演示_v1/source/ink_hair_v7/hair_back_2.png",
+      "prompt": "Use case: precise-object-edit. Production modular portrait REAR HAIR asset, not a person or hairstyle showcase. Input 1: complete pure rear hair reference for rig and continuous hidden hair. Keep overall scalp size and location, change hairstyle as requested. Input 2: CLEAN jet-black FRONT HAIR reference, defining the exact hue, strand texture, lighting, smooth silky finish and scale. Repaint the entire rear hair as ONE complete hair-only painting with genuine transparent alpha on the full 1024x1536 canvas. Full behind-head hair mass must be painted, including all areas hidden by the face, ears, neck, shoulders and clothing: continuous solid hair from scalp to naturally tapering tails, NO face-shaped hole, ear-shaped gaps, missing central stripe, horizontal neck crop, rectangular notch or disconnected patch. Face/head/clothing will cover the hidden hair at runtime. Do not draw ANY front cheek locks in this rear layer; all long strands flow behind the ears, neck and shoulders.\nFixed rig: middle axis x512, ordinary scalp crown top y140 (head ornaments may rise higher), common center-part flow converges near x512,y230, front hairline y279 and temple roots (426,305)/(598,305). Ordinary side scalp stays around x340..684 at y300..450, allowing a head-sized compact cap, not giant inflated hair. Base face/ears cover x370..656,y265..550; robe begins around y550 and shoulders y722. Paint hair behind these regions continuously. Natural tails finish before y1490, all visible tips inside canvas. Do NOT zoom or recenter to fill frame. MATTE deep neutral black ink matching reference 2, base near #18191b, restrained midtones #303235, sparse quiet fine brush lines and smooth aligned strand flow. Refined ink wash with clear tapered strands, neither glossy nor coarse. No glow, bloom, shining rim, luminous halo, silver/white highlights, metallic shine or glossy reflections. All pixels outside the actual hair/ornament contour must have alpha zero, no ghost matte. Fewer purposeful fine flyaways; gentle flow, no tangled explosion. Match Chinese fantasy ink-painted portrait, no photoreal/plastic gloss.\nNo skin, ears, face, features, neck, body, robe sleeves, bamboo/cloud garment patterns, background, gray fog, white fringe, chalky gray hair, brown tint, blur, alpha haze, cutoff or collage. Head buns/knots/ribbons/crown braid belong to rear if specified. Male must NEVER have a braid. Preserve true transparency; do not substitute black background or checkerboard.\nVariant: One HIGH PONYTAIL with compact topknot and restrained blue band above the head, smooth long rear tail falling slightly toward viewer right, all behind shoulders.\nKeep reference 1 compact head size. Matte black ink, tidy orderly flow, no flying tangled strands, no glow or gloss, no zoom.",
+      "registration": {
+        "y_scale": 0.9860789,
+        "offset_y": -51.23898
+      },
+      "scalp_crown": {
+        "source_y": 190.0,
+        "destination_y": 140,
+        "excludes_head_ornament": true
+      }
+    },
+    {
+      "sex": "female",
+      "part": "back",
+      "index": 3,
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-57630194-4771-4f7e-9787-8aec6ac04a65.png",
+      "source": "mods/appearance/腰上女修拆件演示_v1/source/ink_hair_v7/hair_back_3.png",
+      "prompt": "Use case: precise-object-edit. Production modular portrait REAR HAIR asset, not a person or hairstyle showcase. Input 1: complete pure rear hair reference for rig and continuous hidden hair. Keep overall scalp size and location, change hairstyle as requested. Input 2: CLEAN jet-black FRONT HAIR reference, defining the exact hue, strand texture, lighting, smooth silky finish and scale. Repaint the entire rear hair as ONE complete hair-only painting with genuine transparent alpha on the full 1024x1536 canvas. Full behind-head hair mass must be painted, including all areas hidden by the face, ears, neck, shoulders and clothing: continuous solid hair from scalp to naturally tapering tails, NO face-shaped hole, ear-shaped gaps, missing central stripe, horizontal neck crop, rectangular notch or disconnected patch. Face/head/clothing will cover the hidden hair at runtime. Do not draw ANY front cheek locks in this rear layer; all long strands flow behind the ears, neck and shoulders.\nFixed rig: middle axis x512, ordinary scalp crown top y140 (head ornaments may rise higher), common center-part flow converges near x512,y230, front hairline y279 and temple roots (426,305)/(598,305). Ordinary side scalp stays around x340..684 at y300..450, allowing a head-sized compact cap, not giant inflated hair. Base face/ears cover x370..656,y265..550; robe begins around y550 and shoulders y722. Paint hair behind these regions continuously. Natural tails finish before y1490, all visible tips inside canvas. Do NOT zoom or recenter to fill frame. MATTE deep neutral black ink matching reference 2, base near #18191b, restrained midtones #303235, sparse quiet fine brush lines and smooth aligned strand flow. Refined ink wash with clear tapered strands, neither glossy nor coarse. No glow, bloom, shining rim, luminous halo, silver/white highlights, metallic shine or glossy reflections. All pixels outside the actual hair/ornament contour must have alpha zero, no ghost matte. Fewer purposeful fine flyaways; gentle flow, no tangled explosion. Match Chinese fantasy ink-painted portrait, no photoreal/plastic gloss.\nNo skin, ears, face, features, neck, body, robe sleeves, bamboo/cloud garment patterns, background, gray fog, white fringe, chalky gray hair, brown tint, blur, alpha haze, cutoff or collage. Head buns/knots/ribbons/crown braid belong to rear if specified. Male must NEVER have a braid. Preserve true transparency; do not substitute black background or checkerboard.\nVariant: Neat SHOULDER LENGTH loose rear hair, compact cap, soft natural individually tapered ends around y700. NO flat horizontal haircut edge, no bun or ribbon. A complete filled cap and neck mass, no hole behind head.\nKeep reference 1 compact head size. Matte black ink, tidy orderly flow, no flying tangled strands, no glow or gloss, no zoom.",
+      "registration": {
+        "x_scale": 0.9,
+        "y_scale": 1,
+        "offset_y": 2.0
+      },
+      "scalp_crown": {
+        "source_y": 138.0,
+        "destination_y": 140,
+        "excludes_head_ornament": false
+      }
+    },
+    {
+      "sex": "female",
+      "part": "back",
+      "index": 4,
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-11b24ad5-1633-4dd2-99e7-194c3acab8d9.png",
+      "source": "mods/appearance/腰上女修拆件演示_v1/source/ink_hair_v7/hair_back_4.png",
+      "prompt": "Use case: precise-object-edit. Production modular portrait REAR HAIR asset, not a person or hairstyle showcase. Input 1: already complete pure rear hair reference for compact scalp and continuous hidden mass; preserve head size and anchors, alter hairstyle. Input 2: CLEAN jet-black FRONT HAIR reference, defining the exact hue, strand texture, lighting, smooth silky finish and scale. Repaint the entire rear hair as ONE complete hair-only painting with genuine transparent alpha on the full 1024x1536 canvas. Full behind-head hair mass must be painted, including all areas hidden by the face, ears, neck, shoulders and clothing: continuous solid hair from scalp to naturally tapering tails, NO face-shaped hole, ear-shaped gaps, missing central stripe, horizontal neck crop, rectangular notch or disconnected patch. Face/head/clothing will cover the hidden hair at runtime. Do not draw ANY front cheek locks in this rear layer; all long strands flow behind the ears, neck and shoulders.\nFixed rig: middle axis x512, ordinary scalp crown top y140 (head ornaments may rise higher), common center-part flow converges near x512,y230, front hairline y279 and temple roots (426,305)/(598,305). Ordinary side scalp stays around x340..684 at y300..450, allowing a head-sized compact cap, not giant inflated hair. Base face/ears cover x370..656,y265..550; robe begins around y550 and shoulders y722. Paint hair behind these regions continuously. Natural tails finish before y1490, all visible tips inside canvas. Do NOT zoom or recenter to fill frame. MATTE deep neutral black ink matching reference 2, base near #18191b, restrained midtones #303235, sparse quiet fine brush lines and smooth aligned strand flow. Refined ink wash with clear tapered strands, neither glossy nor coarse. No glow, bloom, shining rim, luminous halo, silver/white highlights, metallic shine or glossy reflections. All pixels outside the actual hair/ornament contour must have alpha zero, no ghost matte. Fewer purposeful fine flyaways; gentle flow, no tangled explosion. Match Chinese fantasy ink-painted portrait, no photoreal/plastic gloss.\nNo skin, ears, face, features, neck, body, robe sleeves, bamboo/cloud garment patterns, background, gray fog, white fringe, chalky gray hair, brown tint, blur, alpha haze, cutoff or collage. Head buns/knots/ribbons/crown braid belong to rear if specified. Male must NEVER have a braid. Preserve true transparency; do not substitute black background or checkerboard.\nVariant: One compact crown braid and a small top knot, plus ONE slender braid descending behind the LEFT shoulder, restrained small green tie. Complete rear cap behind head and ears, no front cheek braid, no disconnected central gap. All hair stays behind robe.\nMATTE refined ink black, preserve exact compact scalp size; no halo/gloss. Paint complete central hidden mass.",
+      "registration": {
+        "y_scale": 0.9945398,
+        "offset_y": 17.14275
+      },
+      "scalp_crown": {
+        "source_y": 122.0,
+        "destination_y": 140,
+        "excludes_head_ornament": false
+      }
+    },
+    {
+      "sex": "female",
+      "part": "front",
+      "index": 0,
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-785a0c46-7533-47da-9d32-d4f2b0867338.png",
+      "source": "mods/appearance/腰上女修拆件演示_v1/source/full_front_crown_v8/hair_front_0.png",
+      "prompt": "Use case: precise-object-edit.\nInput1 target: isolated FULL FRONTAL CROWN hair layer. Change the messy, fluffy, chalky hair into compact smoothly combed MATTE BLACK hair. Input2: old low front hair only for restrained black ink finish; do not copy its low crown.\nKEEP the full frontal crown height y140, central hairline y279, axis512, transparent face opening and short tapered cheek locks. Repaint the entire scalp as smooth rounded neatly groomed black frontal hair, gently parted at center, front-facing. The outer cap should lie close to the ordinary head, outer left/right edges near x340/684 at y280..350; keep inner temples420/604. REMOVE protruding tangled tufts and looped flyaway curls. Only a few orderly tapered edge strands. Do not flatten crown, do not zoom or recenter.\nDark near-black ink mass, quiet soft brush flow, low contrast subtle #303235 midtones; do not draw hundreds of bright gray-white stringy highlight lines. NO shine, gloss, halo, bloom, fog or fuzzy contour. Hair-only 1024x1536 real transparent layer; everything outside hair and inside face opening alpha zero. No skin, ears, face, rear long tail, bun, braid, ornament or ribbon. Do not paint a complete person. Smooth refined Chinese ink wash, not photoreal shiny wig or charcoal scribbles.\nRestore pure opaque ordinary frontal scalp above forehead; rear hair will be separate. All hair tips clean pointed, no flat cuts or dirty fragments.\nfemale short front, two short cheek locks.",
+      "registration": {
+        "x_scale": 0.9246231,
+        "y_scale": 1.0373134,
+        "anchor_x": 512,
+        "anchor_y": 279,
+        "offset_x": -0.46231,
+        "offset_y": -30.08209
+      },
+      "scalp_crown": {
+        "source_y": 174,
+        "destination_y": 140,
+        "excludes_head_ornament": false
+      }
+    },
+    {
+      "sex": "female",
+      "part": "front",
+      "index": 1,
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-4fc785bd-fbbc-4d49-9d5e-de8ee062d29e.png",
+      "source": "mods/appearance/腰上女修拆件演示_v1/source/full_front_crown_v8/hair_front_1.png",
+      "prompt": "Use case: precise-object-edit.\nInput1 target is a registered pure FRONT hair layer. Keep its full crown y140, forehead hairline279, all cheek-lock side arrangement, lengths and clean pointed tips. Change ONLY the over-fluffy outer scalp and rough bright stringy texture into a compact smoothly combed MATTE BLACK ink cap. Input2 is the ACCEPTED tidy short-front reference on a beige background: use its ACTUAL visible compact crown shape and subtle brush finish. Beige is only a reference backdrop, do not include it in output.\nRepaint ordinary frontal scalp as softly rounded, neatly groomed smooth near-black hair, gently parted in center, matching Input2. Full frontal crown is essential, must not become a low strip. Keep inner temples420/604 and ordinary outer cap near340/684; REMOVE protruding tangled tufts and looped curls, no blown-up fluffy wig. Longer cheek locks keep their current paths and length; they originate beside face and belong in front, not shoulder-wide rear hair.\nDeep neutral black ink mass #18191b, restrained quiet midtones #303235, soft purposeful brush flow. REMOVE chalky silver/gray hairline highlights and hundreds of bright scribbly lines. No gloss, glowing halo, bloom, haze, white fringe or blurry tips.\nHAIR ONLY on genuine transparent1024x1536 full canvas. All outside hair and inside face opening alpha zero. No skin, ears, neck, body, clothing, rear tails, braid, bun, ribbon or ornament. Preserve normal crown/hairline placement and ample canvas blank space; no zoom/recenter/crop.\nPreserve female front variant 1 exactly below temples.",
+      "registration": {
+        "x_scale": 0.897561,
+        "y_scale": 0.9788732,
+        "anchor_x": 512,
+        "anchor_y": 279,
+        "offset_x": -3.14146,
+        "offset_y": -1.95775
+      },
+      "scalp_crown": {
+        "source_y": 139,
+        "destination_y": 140,
+        "excludes_head_ornament": false
+      }
+    },
+    {
+      "sex": "female",
+      "part": "front",
+      "index": 2,
+      "prompt": "Precisely edit ONLY the lateral fullness of this complete FRONT hair sprite. Output transparent1024x1536, fixed axis512 crown y140 and hairline279. Preserve forehead opening, black matte smooth fine ink hair texture, existing cheek locks and length. Crown must NOT rise or move down. Make normal scalp 7..10% narrower around temples: reduce inflated outer sides at y240..350 without shrinking full sprite or changing face opening. Desired scalp outline at y160x430..596,y180x400..625,y210x378..649,y240x363..663,y270x350..677,y300x344..682,y330x344..682,y350x355..674. Keep small tasteful style variation but NO big puff or flyaway protrusions outside the normal outline. Hairline remains y279 and opening inner temples aroundx425/599, face area x470..554 y330..440 empty. Long cheek locks remain flowing from face sides, no hair dropped across center face or detached bits. female, RIGHT cheek lock. Front shows full normal crown, NOT only bangs. No rearhair, ornaments, head/ears/skin, background, white halo, blur or grey haze. Render crisp clean tapered ends. Reference beige is backgroundonly; genuine alpha.",
+      "source": "mods/appearance/腰上女修拆件演示_v1/source/portrait_cleanup_v10/front_2.png",
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-f23bc02c-ae0a-4579-bfb7-e8070de20118.png",
+      "registration": {
+        "x_scale": 0.56,
+        "y_scale": 0.6495327102803738,
+        "anchor_x": 512,
+        "anchor_y": 371,
+        "offset_y": -92
+      },
+      "scalp_crown": {
+        "source_y": 157,
+        "registered_y": 140
+      }
+    },
+    {
+      "sex": "female",
+      "part": "front",
+      "index": 3,
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-61e2a314-0dc9-47d7-a7bc-0a58c99f34a5.png",
+      "source": "mods/appearance/腰上女修拆件演示_v1/source/full_front_crown_v8/hair_front_3.png",
+      "prompt": "Use case: precise-object-edit.\nInput1 target is a registered pure FRONT hair layer. Keep its full crown y140, forehead hairline279, all cheek-lock side arrangement, lengths and clean pointed tips. Change ONLY the over-fluffy outer scalp and rough bright stringy texture into a compact smoothly combed MATTE BLACK ink cap. Input2 is the ACCEPTED tidy short-front reference on a beige background: use its ACTUAL visible compact crown shape and subtle brush finish. Beige is only a reference backdrop, do not include it in output.\nRepaint ordinary frontal scalp as softly rounded, neatly groomed smooth near-black hair, gently parted in center, matching Input2. Full frontal crown is essential, must not become a low strip. Keep inner temples420/604 and ordinary outer cap near340/684; REMOVE protruding tangled tufts and looped curls, no blown-up fluffy wig. Longer cheek locks keep their current paths and length; they originate beside face and belong in front, not shoulder-wide rear hair.\nDeep neutral black ink mass #18191b, restrained quiet midtones #303235, soft purposeful brush flow. REMOVE chalky silver/gray hairline highlights and hundreds of bright scribbly lines. No gloss, glowing halo, bloom, haze, white fringe or blurry tips.\nHAIR ONLY on genuine transparent1024x1536 full canvas. All outside hair and inside face opening alpha zero. No skin, ears, neck, body, clothing, rear tails, braid, bun, ribbon or ornament. Preserve normal crown/hairline placement and ample canvas blank space; no zoom/recenter/crop.\nPreserve female front variant 3 exactly below temples.",
+      "registration": {
+        "x_scale": 0.9108911,
+        "y_scale": 1.0,
+        "anchor_x": 512,
+        "anchor_y": 279,
+        "offset_x": 0.0,
+        "offset_y": -2.0
+      },
+      "scalp_crown": {
+        "source_y": 142,
+        "destination_y": 140,
+        "excludes_head_ornament": false
+      }
+    },
+    {
+      "sex": "female",
+      "part": "front",
+      "index": 4,
+      "generated": "D:\\CodexData\\generated_images\\01a0ebdb-1c0e-7b90-8e1f-01b8ef00c304\\exec-e6563315-c830-4831-8f59-e00fff512374.png",
+      "source": "mods/appearance/腰上女修拆件演示_v1/source/full_front_crown_v8/hair_front_4.png",
+      "prompt": "Use case: precise-object-edit.\nInput1 target is a registered pure FRONT hair layer. Keep its full crown y140, forehead hairline279, all cheek-lock side arrangement, lengths and clean pointed tips. Change ONLY the over-fluffy outer scalp and rough bright stringy texture into a compact smoothly combed MATTE BLACK ink cap. Input2 is the ACCEPTED tidy short-front reference on a beige background: use its ACTUAL visible compact crown shape and subtle brush finish. Beige is only a reference backdrop, do not include it in output.\nRepaint ordinary frontal scalp as softly rounded, neatly groomed smooth near-black hair, gently parted in center, matching Input2. Full frontal crown is essential, must not become a low strip. Keep inner temples420/604 and ordinary outer cap near340/684; REMOVE protruding tangled tufts and looped curls, no blown-up fluffy wig. Longer cheek locks keep their current paths and length; they originate beside face and belong in front, not shoulder-wide rear hair.\nDeep neutral black ink mass #18191b, restrained quiet midtones #303235, soft purposeful brush flow. REMOVE chalky silver/gray hairline highlights and hundreds of bright scribbly lines. No gloss, glowing halo, bloom, haze, white fringe or blurry tips.\nHAIR ONLY on genuine transparent1024x1536 full canvas. All outside hair and inside face opening alpha zero. No skin, ears, neck, body, clothing, rear tails, braid, bun, ribbon or ornament. Preserve normal crown/hairline placement and ample canvas blank space; no zoom/recenter/crop.\nPreserve female front variant 4 exactly below temples.",
+      "registration": {
+        "x_scale": 0.8803828,
+        "y_scale": 0.972028,
+        "anchor_x": 512,
+        "anchor_y": 279,
+        "offset_x": 0.44019,
+        "offset_y": -4.86014
+      },
+      "scalp_crown": {
+        "source_y": 141,
+        "destination_y": 140,
+        "excludes_head_ornament": false
+      }
+    }
+  ],
+  "shared_scalp_crown_y": 140,
+  "alignment_rule": "Front owns the complete ordinary frontal crown, hairline, temples and cheek locks. Normal crown y140, hairline y279. Rear fits this normal head; only head ornaments may project above it. Full rear hidden mass is preserved. All registrations transform whole canvases, never semantic hair cutouts.",
+  "front_contract": "complete_frontal_crown"
+}

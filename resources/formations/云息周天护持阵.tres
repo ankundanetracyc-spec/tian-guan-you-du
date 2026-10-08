@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="FormationCircuitData" format=3]
+
+[ext_resource type="Script" path="res://csharp/formation/FormationCircuitData.cs" id="1_circuit"]
+[ext_resource type="Script" path="res://csharp/formation/FormationHardwareData.cs" id="2_hardware"]
+[ext_resource type="Script" path="res://csharp/formation/FormationNodeData.cs" id="3_node"]
+[ext_resource type="Script" path="res://csharp/formation/FormationWireData.cs" id="4_wire"]
+
+[sub_resource type="Resource" id="Hardware"]
+script = ExtResource("2_hardware")
+component_slots = 4
+pulse_layers = 1
+eye_complexity = 4
+source_capacity = 4
+source_recharge_per_turn = 1
+source_peak_output = 2
+spirit_link_peak_output = 2
+board_peak_load = 2
+board_material_tags = Array[String](["五行[土]", "功用[固本]"])
+ink_material_tags = Array[String](["质地[液]", "功用[通脉]"])
+eye_material_tags = Array[String](["功用[蕴灵]"])
+source_material_tags = Array[String](["质地[晶]", "功用[聚灵]"])
+
+[sub_resource type="Resource" id="Input"]
+script = ExtResource("3_node")
+node_id = &"spell_input"
+display_name = "术法感应枢"
+kind = 0
+input_event = "spell_played"
+accepted_source_tags = Array[String](["spell"])
+
+[sub_resource type="Resource" id="Counter"]
+script = ExtResource("3_node")
+node_id = &"third_spell_counter"
+display_name = "三候枢"
+kind = 2
+interval = 3
+
+[sub_resource type="Resource" id="Actuator"]
+script = ExtResource("3_node")
+node_id = &"ward_actuator"
+display_name = "护持阵器"
+kind = 6
+energy_cost = 2
+peak_load = 2
+priority = 1
+effect_value = 2
+actuator_effect = 0
+required_material_tags = Array[String](["功用[护体]"])
+
+[sub_resource type="Resource" id="WireInputCounter"]
+script = ExtResource("4_wire")
+from_node_id = &"spell_input"
+to_node_id = &"third_spell_counter"
+
+[sub_resource type="Resource" id="WireCounterActuator"]
+script = ExtResource("4_wire")
+from_node_id = &"third_spell_counter"
+to_node_id = &"ward_actuator"
+
+[resource]
+script = ExtResource("1_circuit")
+circuit_id = &"yunxi_third_spell_ward"
+circuit_name = "云息·三候护持阵"
+description = "每打出三张消耗法力的术法，候枢送出一次控制脉冲；护持阵器从阵源抽取阵能后获得护持。"
+required_formation_proficiency = 5.0
+required_manual_ids = Array[String](["manual_small_circulation_input", "manual_guard_output"])
+hardware = SubResource("Hardware")
+nodes = Array[ExtResource("3_node")]([SubResource("Input"), SubResource("Counter"), SubResource("Actuator")])
+pulse_wires = Array[ExtResource("4_wire")]([SubResource("WireInputCounter"), SubResource("WireCounterActuator")])

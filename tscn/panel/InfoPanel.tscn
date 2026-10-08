@@ -1,0 +1,2569 @@
+[gd_scene format=3 uid="uid://b4leek80jiuoq"]
+
+[ext_resource type="Script" uid="uid://cygxkwjiqnb5a" path="res://csharp/panel/InfoPanel.cs" id="1"]
+[ext_resource type="Texture2D" uid="uid://b0oy2mxb5cc48" path="res://textures/ui/infopanel_fullscreen_bg_v1.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://m7pk75kibfia" path="res://textures/ui/infopanel_nav_plaque_clean_v2.png" id="4_kmrcf"]
+[ext_resource type="FontFile" uid="uid://u5r81bxd3vrk" path="res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf" id="5_zhengkai"]
+[ext_resource type="Texture2D" uid="uid://cm4amsra85isi" path="res://textures/ui/infopanel_attribute_icons_ink_v2.png" id="6_ink_icons"]
+[ext_resource type="Texture2D" uid="uid://df81lnu562cux" path="res://textures/ui/infopanel_nav_icons_ink_v1.png" id="7_nav_icons"]
+[ext_resource type="Texture2D" uid="uid://cpjmsykwyrskm" path="res://textures/ui/gongfa_branch_plaque_minimal_v2.png" id="10_gongfa_node"]
+[ext_resource type="Texture2D" uid="uid://cjujosc77tf0g" path="res://textures/ui/gongfa_study_slot_v1.png" id="11_gongfa_study"]
+[ext_resource type="Texture2D" uid="uid://gaxfekjyuehe" path="res://textures/ui/gongfa_back_button_v1.png" id="12_gongfa_back"]
+[ext_resource type="Script" uid="uid://3m8rb5d6itdo" path="res://csharp/panel/GongfaTreeFlow.cs" id="13_gongfa_flow"]
+[ext_resource type="Texture2D" uid="uid://ctjqk7kg5inc0" path="res://textures/ui/battle_card_frame_ink_v1.png" id="14_battle_card"]
+[ext_resource type="PackedScene" uid="uid://bf77pss4wwv5d" path="res://tscn/panel/BattleCard.tscn" id="15_battle_card_scene"]
+[ext_resource type="Script" uid="uid://cgqgm4g3tgglk" path="res://csharp/panel/DaoBearingFlow.cs" id="17_dao_flow"]
+[ext_resource type="Texture2D" path="res://textures/ui/dao_node_ink_seal_v2.png" id="19_dao_node_seal"]
+
+[sub_resource type="StyleBoxFlat" id="left_rail"]
+bg_color = Color(0.045, 0.055, 0.05, 0.78)
+border_width_right = 1
+border_color = Color(0.72, 0.64, 0.45, 0.38)
+
+[sub_resource type="AtlasTexture" id="nav_icon_attr"]
+atlas = ExtResource("7_nav_icons")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="nav_icon_battle"]
+atlas = ExtResource("7_nav_icons")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="nav_icon_gongfa"]
+atlas = ExtResource("7_nav_icons")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="nav_icon_equip"]
+atlas = ExtResource("7_nav_icons")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="nav_icon_dao"]
+atlas = ExtResource("7_nav_icons")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="nav_icon_relations"]
+atlas = ExtResource("7_nav_icons")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="StyleBoxFlat" id="p"]
+bg_color = Color(0.91, 0.875, 0.78, 0.89)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.27, 0.23, 0.17, 0.68)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="Theme" id="attribute_page_theme"]
+default_font = ExtResource("5_zhengkai")
+default_font_size = 18
+Label/colors/font_color = Color(0.1, 0.09, 0.07, 1)
+Label/font_sizes/font_size = 18
+Label/fonts/font = ExtResource("5_zhengkai")
+
+[sub_resource type="StyleBoxFlat" id="attribute_divider"]
+content_margin_top = 1.0
+content_margin_bottom = 1.0
+bg_color = Color(0.29, 0.24, 0.16, 0.52)
+
+[sub_resource type="AtlasTexture" id="attr_icon_body"]
+atlas = ExtResource("6_ink_icons")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="attr_icon_eye"]
+atlas = ExtResource("6_ink_icons")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="attr_icon_feather"]
+atlas = ExtResource("6_ink_icons")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="attr_icon_flame"]
+atlas = ExtResource("6_ink_icons")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="attr_icon_plum"]
+atlas = ExtResource("6_ink_icons")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="attr_icon_book"]
+atlas = ExtResource("6_ink_icons")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="StyleBoxFlat" id="dao_condition_tag"]
+bg_color = Color(0.73, 0.68, 0.56, 0.38)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.24, 0.2, 0.14, 0.32)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="gongfa_node_idle"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.28, 0.23, 0.15, 0.72)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="gongfa_node_hover"]
+bg_color = Color(1, 0.91, 0.62, 0.16)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.68, 0.48, 0.17, 0.9)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="gongfa_node_disabled"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3, 0.27, 0.22, 0.34)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id="gongfa_equip_slot"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2, 0.18, 0.14, 0.68)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="gongfa_equip_slot_hover"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.45, 0.33, 0.17, 0.84)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="gongfa_equip_slot_pressed"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.23, 0.13, 0.9)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="InfoPanel" type="Control" unique_id=1694305193 groups=["human_info_panel"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="Backdrop" type="TextureRect" parent="." unique_id=1879861563]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Header" type="Control" parent="." unique_id=506313577]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 84.0
+grow_horizontal = 2
+
+[node name="Title" type="Label" parent="Header" unique_id=1622228312]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 18.0
+offset_right = 450.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.12, 0.11, 0.09, 1)
+theme_override_font_sizes/font_size = 34
+text = "概览"
+
+[node name="Close" type="Button" parent="Header" unique_id=947320632]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 18.0
+offset_right = 94.0
+offset_bottom = 84.0
+theme_override_colors/font_color = Color(0.1, 0.09, 0.07, 1)
+theme_override_font_sizes/font_size = 30
+text = "←"
+flat = true
+
+[node name="Backdrop" type="TextureRect" parent="Header/Close" unique_id=534475152]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("12_gongfa_back")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LeftRail" type="PanelContainer" parent="." unique_id=825138459]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 96.0
+offset_right = 293.0
+offset_bottom = 1049.0
+theme_override_styles/panel = SubResource("left_rail")
+
+[node name="Box" type="VBoxContainer" parent="LeftRail" unique_id=1150437882]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="NameValue" type="Label" parent="LeftRail/Box" unique_id=158582865]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "无名"
+horizontal_alignment = 1
+
+[node name="RealmValue" type="Label" parent="LeftRail/Box" unique_id=1273847139]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "凡人"
+horizontal_alignment = 1
+
+[node name="SpiritrootValue" type="Label" parent="LeftRail/Box" unique_id=1622826426]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "无灵根"
+horizontal_alignment = 1
+
+[node name="Nav" type="VBoxContainer" parent="LeftRail/Box" unique_id=2121284555]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TabAttr" type="Button" parent="LeftRail/Box/Nav" unique_id=734416111]
+custom_minimum_size = Vector2(232, 64)
+layout_mode = 2
+flat = true
+
+[node name="SelectedPlaque" type="TextureRect" parent="LeftRail/Box/Nav/TabAttr" unique_id=2147433413]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_kmrcf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Caption" type="Label" parent="LeftRail/Box/Nav/TabAttr" unique_id=1092093858]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 106.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.11, 0.09, 0.06, 1)
+theme_override_font_sizes/font_size = 30
+text = "属性"
+vertical_alignment = 1
+
+[node name="NavIcon" type="TextureRect" parent="LeftRail/Box/Nav/TabAttr" unique_id=1482086452]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 17.0
+offset_right = 96.0
+offset_bottom = 47.0
+mouse_filter = 2
+texture = SubResource("nav_icon_attr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TabBattle" type="Button" parent="LeftRail/Box/Nav" unique_id=1348030401]
+custom_minimum_size = Vector2(232, 64)
+layout_mode = 2
+flat = true
+
+[node name="Caption" type="Label" parent="LeftRail/Box/Nav/TabBattle" unique_id=235995991]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 106.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.72, 0.57, 0.28, 1)
+theme_override_font_sizes/font_size = 30
+text = "战斗"
+vertical_alignment = 1
+
+[node name="NavIcon" type="TextureRect" parent="LeftRail/Box/Nav/TabBattle" unique_id=1356486350]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 17.0
+offset_right = 96.0
+offset_bottom = 47.0
+mouse_filter = 2
+texture = SubResource("nav_icon_battle")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TabGongfa" type="Button" parent="LeftRail/Box/Nav" unique_id=383655134]
+custom_minimum_size = Vector2(232, 64)
+layout_mode = 2
+flat = true
+
+[node name="Caption" type="Label" parent="LeftRail/Box/Nav/TabGongfa" unique_id=1400918469]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 106.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.72, 0.57, 0.28, 1)
+theme_override_font_sizes/font_size = 30
+text = "功法"
+vertical_alignment = 1
+
+[node name="NavIcon" type="TextureRect" parent="LeftRail/Box/Nav/TabGongfa" unique_id=786349688]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 17.0
+offset_right = 96.0
+offset_bottom = 47.0
+mouse_filter = 2
+texture = SubResource("nav_icon_gongfa")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TabEquip" type="Button" parent="LeftRail/Box/Nav" unique_id=1498626913]
+custom_minimum_size = Vector2(232, 64)
+layout_mode = 2
+flat = true
+
+[node name="Caption" type="Label" parent="LeftRail/Box/Nav/TabEquip" unique_id=179872851]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 106.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.72, 0.57, 0.28, 1)
+theme_override_font_sizes/font_size = 30
+text = "装备"
+vertical_alignment = 1
+
+[node name="NavIcon" type="TextureRect" parent="LeftRail/Box/Nav/TabEquip" unique_id=1896911040]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 17.0
+offset_right = 96.0
+offset_bottom = 47.0
+mouse_filter = 2
+texture = SubResource("nav_icon_equip")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TabDao" type="Button" parent="LeftRail/Box/Nav" unique_id=1383239962]
+custom_minimum_size = Vector2(232, 64)
+layout_mode = 2
+flat = true
+
+[node name="Caption" type="Label" parent="LeftRail/Box/Nav/TabDao" unique_id=51032852]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 106.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.72, 0.57, 0.28, 1)
+theme_override_font_sizes/font_size = 30
+text = "道承"
+vertical_alignment = 1
+
+[node name="NavIcon" type="TextureRect" parent="LeftRail/Box/Nav/TabDao" unique_id=809548666]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 17.0
+offset_right = 96.0
+offset_bottom = 47.0
+mouse_filter = 2
+texture = SubResource("nav_icon_dao")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TabRelations" type="Button" parent="LeftRail/Box/Nav" unique_id=1327495605]
+custom_minimum_size = Vector2(232, 64)
+layout_mode = 2
+flat = true
+
+[node name="Caption" type="Label" parent="LeftRail/Box/Nav/TabRelations" unique_id=1752015380]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 106.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.72, 0.57, 0.28, 1)
+theme_override_font_sizes/font_size = 30
+text = "关系"
+vertical_alignment = 1
+
+[node name="NavIcon" type="TextureRect" parent="LeftRail/Box/Nav/TabRelations" unique_id=502256433]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 17.0
+offset_right = 96.0
+offset_bottom = 47.0
+mouse_filter = 2
+texture = SubResource("nav_icon_relations")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Content" type="PanelContainer" parent="." unique_id=2044664272]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 306.0
+offset_top = 98.0
+offset_right = -30.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("p")
+
+[node name="Page" type="ScrollContainer" parent="Content" unique_id=1025603545]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Body" type="VBoxContainer" parent="Content/Page" unique_id=11127617]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 14
+
+[node name="OverviewLayout" type="VBoxContainer" parent="Content/Page/Body"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("attribute_page_theme")
+theme_override_constants/separation = 14
+
+[node name="Title" type="Label" parent="Content/Page/Body/OverviewLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "概览"
+
+[node name="AttributeLayout" type="VBoxContainer" parent="Content/Page/Body" unique_id=1050071762]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("attribute_page_theme")
+theme_override_constants/separation = 14
+
+[node name="Title" type="Label" parent="Content/Page/Body/AttributeLayout" unique_id=256433361]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "属性"
+
+[node name="BasicSection" type="VBoxContainer" parent="Content/Page/Body/AttributeLayout" unique_id=172046729]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Content/Page/Body/AttributeLayout/BasicSection" unique_id=1568619701]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "基础属性"
+
+[node name="Line" type="HSeparator" parent="Content/Page/Body/AttributeLayout/BasicSection" unique_id=798281582]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+theme_override_styles/separator = SubResource("attribute_divider")
+
+[node name="RowOne" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/BasicSection" unique_id=463293204]
+layout_mode = 2
+theme_override_constants/separation = 28
+
+[node name="PhysiqueRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/BasicSection/RowOne" unique_id=2130036903]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Icon" type="TextureRect" parent="Content/Page/Body/AttributeLayout/BasicSection/RowOne/PhysiqueRow" unique_id=1439816997]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = SubResource("attr_icon_body")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/BasicSection/RowOne/PhysiqueRow" unique_id=1630843308]
+layout_mode = 2
+text = "体魄　—"
+
+[node name="IntelligenceRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/BasicSection/RowOne" unique_id=187151797]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Icon" type="TextureRect" parent="Content/Page/Body/AttributeLayout/BasicSection/RowOne/IntelligenceRow" unique_id=313910959]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = SubResource("attr_icon_eye")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/BasicSection/RowOne/IntelligenceRow" unique_id=2016521793]
+layout_mode = 2
+text = "灵慧　—"
+
+[node name="RowTwo" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/BasicSection" unique_id=697170813]
+layout_mode = 2
+theme_override_constants/separation = 28
+
+[node name="AgilityRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/BasicSection/RowTwo" unique_id=1432524807]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Icon" type="TextureRect" parent="Content/Page/Body/AttributeLayout/BasicSection/RowTwo/AgilityRow" unique_id=392043834]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = SubResource("attr_icon_feather")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/BasicSection/RowTwo/AgilityRow" unique_id=495500398]
+layout_mode = 2
+text = "敏捷　—"
+
+[node name="SoulRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/BasicSection/RowTwo" unique_id=1904148106]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Icon" type="TextureRect" parent="Content/Page/Body/AttributeLayout/BasicSection/RowTwo/SoulRow" unique_id=166378723]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = SubResource("attr_icon_flame")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/BasicSection/RowTwo/SoulRow" unique_id=725549451]
+layout_mode = 2
+text = "神魂　—"
+
+[node name="RowThree" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/BasicSection" unique_id=2037461583]
+layout_mode = 2
+theme_override_constants/separation = 28
+
+[node name="FortuneRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/BasicSection/RowThree" unique_id=1281731583]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Icon" type="TextureRect" parent="Content/Page/Body/AttributeLayout/BasicSection/RowThree/FortuneRow" unique_id=1683872552]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = SubResource("attr_icon_plum")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/BasicSection/RowThree/FortuneRow" unique_id=1158642902]
+layout_mode = 2
+text = "福缘　—"
+
+[node name="ComprehensionRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/BasicSection/RowThree" unique_id=1855095383]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Icon" type="TextureRect" parent="Content/Page/Body/AttributeLayout/BasicSection/RowThree/ComprehensionRow" unique_id=1291254005]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = SubResource("attr_icon_book")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/BasicSection/RowThree/ComprehensionRow" unique_id=1985082679]
+layout_mode = 2
+text = "悟性　—"
+
+[node name="BottomLine" type="HSeparator" parent="Content/Page/Body/AttributeLayout/BasicSection" unique_id=2110075671]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+theme_override_styles/separator = SubResource("attribute_divider")
+
+[node name="CombatSection" type="VBoxContainer" parent="Content/Page/Body/AttributeLayout" unique_id=432523038]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Content/Page/Body/AttributeLayout/CombatSection" unique_id=1858733924]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "战斗属性"
+
+[node name="Line" type="HSeparator" parent="Content/Page/Body/AttributeLayout/CombatSection" unique_id=366322386]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+theme_override_styles/separator = SubResource("attribute_divider")
+
+[node name="RowOne" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CombatSection" unique_id=89618748]
+layout_mode = 2
+theme_override_constants/separation = 28
+
+[node name="HealthRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CombatSection/RowOne" unique_id=1490619968]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/CombatSection/RowOne/HealthRow" unique_id=527505380]
+layout_mode = 2
+text = "生命　—"
+
+[node name="MindRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CombatSection/RowOne" unique_id=1991779149]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/CombatSection/RowOne/MindRow" unique_id=1565186548]
+layout_mode = 2
+text = "心境　—"
+
+[node name="RowTwo" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CombatSection" unique_id=671004736]
+layout_mode = 2
+theme_override_constants/separation = 28
+
+[node name="StaminaRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CombatSection/RowTwo" unique_id=1995333096]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/CombatSection/RowTwo/StaminaRow" unique_id=1946156976]
+layout_mode = 2
+text = "精力　—"
+
+[node name="ManaRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CombatSection/RowTwo" unique_id=1995333097]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/CombatSection/RowTwo/ManaRow" unique_id=1946156977]
+layout_mode = 2
+text = "法力　—"
+
+[node name="ResourceRowTwo" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CombatSection" unique_id=936465779]
+layout_mode = 2
+theme_override_constants/separation = 28
+
+[node name="SpiritPerceptionRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CombatSection/ResourceRowTwo" unique_id=953827758]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/CombatSection/ResourceRowTwo/SpiritPerceptionRow" unique_id=1537676791]
+layout_mode = 2
+text = "灵识　—"
+
+[node name="RowThree" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CombatSection" unique_id=1250626781]
+layout_mode = 2
+theme_override_constants/separation = 28
+
+[node name="PhysicalDefenseRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CombatSection/RowThree" unique_id=501448357]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/CombatSection/RowThree/PhysicalDefenseRow" unique_id=1633716936]
+layout_mode = 2
+text = "物理防御　—"
+
+[node name="RowFour" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CombatSection" unique_id=842614212]
+layout_mode = 2
+theme_override_constants/separation = 28
+
+[node name="PrecisionRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CombatSection/RowFour" unique_id=885715908]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/CombatSection/RowFour/PrecisionRow" unique_id=1465599001]
+layout_mode = 2
+text = "精准　—"
+
+[node name="DodgeRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CombatSection/RowFour" unique_id=888881387]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/CombatSection/RowFour/DodgeRow" unique_id=1717506051]
+layout_mode = 2
+text = "身法　—"
+
+[node name="RowFive" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CombatSection" unique_id=1216886864]
+layout_mode = 2
+theme_override_constants/separation = 28
+
+[node name="CriticalRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CombatSection/RowFive" unique_id=1225613574]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/CombatSection/RowFive/CriticalRow" unique_id=1096162170]
+layout_mode = 2
+text = "会心　—"
+
+[node name="CritResistRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CombatSection/RowFive" unique_id=1305789900]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/CombatSection/RowFive/CritResistRow" unique_id=1917145408]
+layout_mode = 2
+text = "护心　—"
+
+[node name="RowSix" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CombatSection" unique_id=402201080]
+layout_mode = 2
+theme_override_constants/separation = 28
+
+[node name="CritDamageRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CombatSection/RowSix" unique_id=343956332]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/CombatSection/RowSix/CritDamageRow" unique_id=1673522383]
+layout_mode = 2
+text = "会心伤害　—"
+
+[node name="RowSeven" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CombatSection" unique_id=402201081]
+layout_mode = 2
+theme_override_constants/separation = 28
+
+[node name="StaminaRegenRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CombatSection/RowSeven" unique_id=402201082]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/CombatSection/RowSeven/StaminaRegenRow" unique_id=402201083]
+layout_mode = 2
+text = "精力回复　—"
+
+[node name="ManaRegenRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CombatSection/RowSeven" unique_id=402201084]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/CombatSection/RowSeven/ManaRegenRow" unique_id=402201085]
+layout_mode = 2
+text = "法力回复　—"
+
+[node name="BottomLine" type="HSeparator" parent="Content/Page/Body/AttributeLayout/CombatSection" unique_id=716427352]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+theme_override_styles/separator = SubResource("attribute_divider")
+
+[node name="RootWeightSection" type="VBoxContainer" parent="Content/Page/Body/AttributeLayout" unique_id=2082333562]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Content/Page/Body/AttributeLayout/RootWeightSection" unique_id=1009431912]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "灵根权重"
+
+[node name="Line" type="HSeparator" parent="Content/Page/Body/AttributeLayout/RootWeightSection" unique_id=951384217]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+theme_override_styles/separator = SubResource("attribute_divider")
+
+[node name="Row" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/RootWeightSection" unique_id=1378278434]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="MetalRootRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/RootWeightSection/Row" unique_id=1271643398]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/RootWeightSection/Row/MetalRootRow" unique_id=2008048296]
+layout_mode = 2
+text = "金灵根　—"
+
+[node name="WoodRootRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/RootWeightSection/Row" unique_id=1772135978]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/RootWeightSection/Row/WoodRootRow" unique_id=1629842375]
+layout_mode = 2
+text = "木灵根　—"
+
+[node name="WaterRootRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/RootWeightSection/Row" unique_id=411634090]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/RootWeightSection/Row/WaterRootRow" unique_id=436647645]
+layout_mode = 2
+text = "水灵根　—"
+
+[node name="FireRootRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/RootWeightSection/Row" unique_id=1473761625]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/RootWeightSection/Row/FireRootRow" unique_id=2126140739]
+layout_mode = 2
+text = "火灵根　—"
+
+[node name="EarthRootRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/RootWeightSection/Row" unique_id=861928324]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/RootWeightSection/Row/EarthRootRow" unique_id=2138300663]
+layout_mode = 2
+text = "土灵根　—"
+
+[node name="BottomLine" type="HSeparator" parent="Content/Page/Body/AttributeLayout/RootWeightSection" unique_id=1692209597]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+theme_override_styles/separator = SubResource("attribute_divider")
+
+[node name="CultivationSection" type="VBoxContainer" parent="Content/Page/Body/AttributeLayout" unique_id=1143291850]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Content/Page/Body/AttributeLayout/CultivationSection" unique_id=882918223]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "修行属性"
+
+[node name="Line" type="HSeparator" parent="Content/Page/Body/AttributeLayout/CultivationSection" unique_id=159562910]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+theme_override_styles/separator = SubResource("attribute_divider")
+
+[node name="RowOne" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CultivationSection" unique_id=778600549]
+layout_mode = 2
+theme_override_constants/separation = 28
+
+[node name="SpiritRootRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CultivationSection/RowOne" unique_id=900690519]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/CultivationSection/RowOne/SpiritRootRow" unique_id=311447811]
+layout_mode = 2
+text = "灵根　—"
+
+[node name="RealmRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CultivationSection/RowOne" unique_id=711614264]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/CultivationSection/RowOne/RealmRow" unique_id=1772813103]
+layout_mode = 2
+text = "境界　—"
+
+[node name="StrandsRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CultivationSection/RowOne" unique_id=1960218673]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/CultivationSection/RowOne/StrandsRow" unique_id=1308397399]
+layout_mode = 2
+text = "灵力　—"
+
+[node name="RowTwo" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CultivationSection" unique_id=1817559162]
+layout_mode = 2
+theme_override_constants/separation = 28
+
+[node name="CoreRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CultivationSection/RowTwo" unique_id=1983885324]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/CultivationSection/RowTwo/CoreRow" unique_id=1275626655]
+layout_mode = 2
+text = "灵核　—"
+
+[node name="LearningRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CultivationSection/RowTwo" unique_id=805051252]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/CultivationSection/RowTwo/LearningRow" unique_id=257491425]
+layout_mode = 2
+text = "学习效率　—"
+
+[node name="CultivationRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CultivationSection/RowTwo" unique_id=454457121]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/CultivationSection/RowTwo/CultivationRow" unique_id=1294355281]
+layout_mode = 2
+text = "修炼效率　—"
+
+[node name="BottomLine" type="HSeparator" parent="Content/Page/Body/AttributeLayout/CultivationSection" unique_id=1878602366]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+theme_override_styles/separator = SubResource("attribute_divider")
+
+[node name="ProficiencySection" type="VBoxContainer" parent="Content/Page/Body/AttributeLayout" unique_id=680387579]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Content/Page/Body/AttributeLayout/ProficiencySection" unique_id=1008500264]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "造诣"
+
+[node name="Line" type="HSeparator" parent="Content/Page/Body/AttributeLayout/ProficiencySection" unique_id=314542618]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+theme_override_styles/separator = SubResource("attribute_divider")
+
+[node name="RowOne" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/ProficiencySection" unique_id=1720883985]
+layout_mode = 2
+theme_override_constants/separation = 28
+
+[node name="SwordRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/ProficiencySection/RowOne" unique_id=1477577991]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/ProficiencySection/RowOne/SwordRow" unique_id=1264049724]
+layout_mode = 2
+text = "剑道　—"
+
+[node name="BladeRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/ProficiencySection/RowOne" unique_id=1032648015]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/ProficiencySection/RowOne/BladeRow" unique_id=611703785]
+layout_mode = 2
+text = "刀道　—"
+
+[node name="SpearRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/ProficiencySection/RowOne" unique_id=258858112]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/ProficiencySection/RowOne/SpearRow" unique_id=1459113712]
+layout_mode = 2
+text = "枪道　—"
+
+[node name="RowTwo" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/ProficiencySection" unique_id=947865144]
+layout_mode = 2
+theme_override_constants/separation = 28
+
+[node name="BodyRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/ProficiencySection/RowTwo" unique_id=633946594]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/ProficiencySection/RowTwo/BodyRow" unique_id=147976782]
+layout_mode = 2
+text = "体道　—"
+
+[node name="MagicRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/ProficiencySection/RowTwo" unique_id=1885337867]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/ProficiencySection/RowTwo/MagicRow" unique_id=1786779684]
+layout_mode = 2
+text = "术法　—"
+
+[node name="ForgingRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/ProficiencySection/RowTwo" unique_id=1542687372]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/ProficiencySection/RowTwo/ForgingRow" unique_id=1494464341]
+layout_mode = 2
+text = "器道　—"
+
+[node name="RowThree" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/ProficiencySection" unique_id=1998225173]
+layout_mode = 2
+theme_override_constants/separation = 28
+
+[node name="TalismanRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/ProficiencySection/RowThree" unique_id=1365948256]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/ProficiencySection/RowThree/TalismanRow" unique_id=1820836731]
+layout_mode = 2
+text = "符道　—"
+
+[node name="FormationRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/ProficiencySection/RowThree" unique_id=693294764]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/ProficiencySection/RowThree/FormationRow" unique_id=1629854778]
+layout_mode = 2
+text = "阵道　—"
+
+[node name="AlchemyRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/ProficiencySection/RowThree" unique_id=1926968178]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/ProficiencySection/RowThree/AlchemyRow" unique_id=1509089738]
+layout_mode = 2
+text = "丹道　—"
+
+[node name="BottomLine" type="HSeparator" parent="Content/Page/Body/AttributeLayout/ProficiencySection" unique_id=912616540]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+theme_override_styles/separator = SubResource("attribute_divider")
+
+[node name="BattleLayout" type="VBoxContainer" parent="Content/Page/Body" unique_id=1469376146]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("attribute_page_theme")
+theme_override_constants/separation = 14
+
+[node name="Title" type="Label" parent="Content/Page/Body/BattleLayout" unique_id=1577852398]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "战斗 · 技能槽装配"
+
+[node name="Subtitle" type="Label" parent="Content/Page/Body/BattleLayout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.22, 0.18, 0.12, 1)
+theme_override_font_sizes/font_size = 15
+text = "即时战斗使用固定技能槽与独立队列；心法与固有能力随已装备功法直接生效，不占技能槽。"
+autowrap_mode = 2
+
+[node name="Columns" type="HBoxContainer" parent="Content/Page/Body/BattleLayout" unique_id=1839335034]
+visible = false
+custom_minimum_size = Vector2(0, 570)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="Library" type="PanelContainer" parent="Content/Page/Body/BattleLayout/Columns" unique_id=771593362]
+custom_minimum_size = Vector2(285, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("p")
+
+[node name="Box" type="VBoxContainer" parent="Content/Page/Body/BattleLayout/Columns/Library" unique_id=1824161045]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Heading" type="Label" parent="Content/Page/Body/BattleLayout/Columns/Library/Box" unique_id=1974645464]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "技能库"
+horizontal_alignment = 1
+
+[node name="Hint" type="Label" parent="Content/Page/Body/BattleLayout/Columns/Library/Box" unique_id=1702464004]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12, 0.095, 0.065, 1)
+text = "已掌握的战斗牌会在此分类显示"
+horizontal_alignment = 1
+
+[node name="Kinds" type="VBoxContainer" parent="Content/Page/Body/BattleLayout/Columns/Library/Box" unique_id=1276848441]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Attack" type="Button" parent="Content/Page/Body/BattleLayout/Columns/Library/Box/Kinds" unique_id=1676903066]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12, 0.095, 0.065, 1)
+theme_override_colors/font_pressed_color = Color(0.12, 0.095, 0.065, 1)
+theme_override_colors/font_hover_color = Color(0.12, 0.095, 0.065, 1)
+theme_override_colors/font_disabled_color = Color(0.31, 0.27, 0.2, 1)
+text = "攻伐牌　0"
+flat = true
+
+[node name="Technique" type="Button" parent="Content/Page/Body/BattleLayout/Columns/Library/Box/Kinds" unique_id=1961384604]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12, 0.095, 0.065, 1)
+theme_override_colors/font_pressed_color = Color(0.12, 0.095, 0.065, 1)
+theme_override_colors/font_hover_color = Color(0.12, 0.095, 0.065, 1)
+theme_override_colors/font_disabled_color = Color(0.31, 0.27, 0.2, 1)
+text = "术诀牌　0"
+flat = true
+
+[node name="Defense" type="Button" parent="Content/Page/Body/BattleLayout/Columns/Library/Box/Kinds" unique_id=788593904]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12, 0.095, 0.065, 1)
+theme_override_colors/font_pressed_color = Color(0.12, 0.095, 0.065, 1)
+theme_override_colors/font_hover_color = Color(0.12, 0.095, 0.065, 1)
+theme_override_colors/font_disabled_color = Color(0.31, 0.27, 0.2, 1)
+text = "守御牌　0"
+flat = true
+
+[node name="Heart" type="Button" parent="Content/Page/Body/BattleLayout/Columns/Library/Box/Kinds" unique_id=826977100]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12, 0.095, 0.065, 1)
+theme_override_colors/font_pressed_color = Color(0.12, 0.095, 0.065, 1)
+theme_override_colors/font_hover_color = Color(0.12, 0.095, 0.065, 1)
+theme_override_colors/font_disabled_color = Color(0.31, 0.27, 0.2, 1)
+text = "心法牌　0"
+flat = true
+
+[node name="Burden" type="Button" parent="Content/Page/Body/BattleLayout/Columns/Library/Box/Kinds"]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12, 0.095, 0.065, 1)
+theme_override_colors/font_pressed_color = Color(0.12, 0.095, 0.065, 1)
+theme_override_colors/font_hover_color = Color(0.12, 0.095, 0.065, 1)
+theme_override_colors/font_disabled_color = Color(0.31, 0.27, 0.2, 1)
+text = "业障牌　0"
+flat = true
+
+[node name="CardScroll" type="ScrollContainer" parent="Content/Page/Body/BattleLayout/Columns/Library/Box"]
+custom_minimum_size = Vector2(0, 230)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="CardList" type="VBoxContainer" parent="Content/Page/Body/BattleLayout/Columns/Library/Box/CardScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="Deck" type="PanelContainer" parent="Content/Page/Body/BattleLayout/Columns" unique_id=964891470]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("p")
+
+[node name="Box" type="VBoxContainer" parent="Content/Page/Body/BattleLayout/Columns/Deck" unique_id=1494397826]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Heading" type="Label" parent="Content/Page/Body/BattleLayout/Columns/Deck/Box" unique_id=1840851197]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "当前卡组　0 / 40"
+horizontal_alignment = 1
+
+[node name="DeckGridScroll" type="ScrollContainer" parent="Content/Page/Body/BattleLayout/Columns/Deck/Box"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="DeckGrid" type="FlowContainer" parent="Content/Page/Body/BattleLayout/Columns/Deck/Box/DeckGridScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 14
+theme_override_constants/v_separation = 14
+
+[node name="Slots" type="HBoxContainer" parent="Content/Page/Body/BattleLayout/Columns/Deck/Box" unique_id=1761928068]
+visible = false
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Card1" type="Control" parent="Content/Page/Body/BattleLayout/Columns/Deck/Box/Slots" unique_id=1026424619]
+custom_minimum_size = Vector2(78, 118)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Card" parent="Content/Page/Body/BattleLayout/Columns/Deck/Box/Slots/Card1" unique_id=293408095 instance=ExtResource("15_battle_card_scene")]
+layout_mode = 0
+scale = Vector2(0.325, 0.325)
+mouse_filter = 2
+
+[node name="Card2" type="Control" parent="Content/Page/Body/BattleLayout/Columns/Deck/Box/Slots" unique_id=2101711766]
+custom_minimum_size = Vector2(78, 118)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Card" parent="Content/Page/Body/BattleLayout/Columns/Deck/Box/Slots/Card2" unique_id=316908538 instance=ExtResource("15_battle_card_scene")]
+layout_mode = 0
+scale = Vector2(0.325, 0.325)
+mouse_filter = 2
+
+[node name="Card3" type="Control" parent="Content/Page/Body/BattleLayout/Columns/Deck/Box/Slots" unique_id=334047823]
+custom_minimum_size = Vector2(78, 118)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Card" parent="Content/Page/Body/BattleLayout/Columns/Deck/Box/Slots/Card3" unique_id=1685278952 instance=ExtResource("15_battle_card_scene")]
+layout_mode = 0
+scale = Vector2(0.325, 0.325)
+mouse_filter = 2
+
+[node name="Preview" type="HBoxContainer" parent="Content/Page/Body/BattleLayout/Columns/Deck/Box" unique_id=1487874095]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 18
+
+[node name="CardFrame" type="TextureRect" parent="Content/Page/Body/BattleLayout/Columns/Deck/Box/Preview" unique_id=1890706315]
+visible = false
+custom_minimum_size = Vector2(205, 308)
+layout_mode = 2
+texture = ExtResource("14_battle_card")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CardPreview" parent="Content/Page/Body/BattleLayout/Columns/Deck/Box/Preview" unique_id=1431096838 instance=ExtResource("15_battle_card_scene")]
+custom_minimum_size = Vector2(250, 370)
+layout_mode = 2
+
+[node name="Description" type="Label" parent="Content/Page/Body/BattleLayout/Columns/Deck/Box/Preview" unique_id=492039409]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "尚未选择战斗牌
+
+完成卷章研读后，相关战斗牌会进入技能库；从左侧选择后可加入当前牌组。"
+autowrap_mode = 2
+
+[node name="DeckOverview" type="PanelContainer" parent="Content/Page/Body/BattleLayout"]
+visible = false
+custom_minimum_size = Vector2(0, 170)
+layout_mode = 2
+theme_override_styles/panel = SubResource("p")
+
+[node name="Box" type="VBoxContainer" parent="Content/Page/Body/BattleLayout/DeckOverview"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Heading" type="Label" parent="Content/Page/Body/BattleLayout/DeckOverview/Box"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "卡组全览"
+
+[node name="Hint" type="Label" parent="Content/Page/Body/BattleLayout/DeckOverview/Box"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.22, 0.18, 0.12, 1)
+theme_override_font_sizes/font_size = 15
+text = "固定基础牌与已装入功法牌"
+
+[node name="CardScroll" type="ScrollContainer" parent="Content/Page/Body/BattleLayout/DeckOverview/Box"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="CardList" type="FlowContainer" parent="Content/Page/Body/BattleLayout/DeckOverview/Box/CardScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+
+[node name="Workspace" type="HBoxContainer" parent="Content/Page/Body/BattleLayout"]
+custom_minimum_size = Vector2(0, 570)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 14
+
+[node name="Library" type="PanelContainer" parent="Content/Page/Body/BattleLayout/Workspace"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("p")
+
+[node name="Box" type="VBoxContainer" parent="Content/Page/Body/BattleLayout/Workspace/Library"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="Heading" type="Label" parent="Content/Page/Body/BattleLayout/Workspace/Library/Box"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "可用技能"
+horizontal_alignment = 1
+
+[node name="Hint" type="Label" parent="Content/Page/Body/BattleLayout/Workspace/Library/Box"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.22, 0.18, 0.12, 1)
+theme_override_font_sizes/font_size = 13
+text = "已学技能 · 点击加入或移出槽位"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Kinds" type="GridContainer" parent="Content/Page/Body/BattleLayout/Workspace/Library/Box"]
+layout_mode = 2
+columns = 2
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+
+[node name="All" type="Button" parent="Content/Page/Body/BattleLayout/Workspace/Library/Box/Kinds"]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12, 0.095, 0.065, 1)
+theme_override_colors/font_hover_color = Color(0.48, 0.29, 0.035, 1)
+text = "○ 全部　0"
+flat = true
+
+[node name="Attack" type="Button" parent="Content/Page/Body/BattleLayout/Workspace/Library/Box/Kinds"]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12, 0.095, 0.065, 1)
+theme_override_colors/font_hover_color = Color(0.48, 0.29, 0.035, 1)
+text = "○ 攻伐　0"
+flat = true
+
+[node name="Technique" type="Button" parent="Content/Page/Body/BattleLayout/Workspace/Library/Box/Kinds"]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12, 0.095, 0.065, 1)
+theme_override_colors/font_hover_color = Color(0.48, 0.29, 0.035, 1)
+text = "○ 术诀　0"
+flat = true
+
+[node name="Defense" type="Button" parent="Content/Page/Body/BattleLayout/Workspace/Library/Box/Kinds"]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12, 0.095, 0.065, 1)
+theme_override_colors/font_hover_color = Color(0.48, 0.29, 0.035, 1)
+text = "○ 守御　0"
+flat = true
+
+[node name="SkillScroll" type="ScrollContainer" parent="Content/Page/Body/BattleLayout/Workspace/Library/Box"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="SkillList" type="VBoxContainer" parent="Content/Page/Body/BattleLayout/Workspace/Library/Box/SkillScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="Loadout" type="PanelContainer" parent="Content/Page/Body/BattleLayout/Workspace"]
+custom_minimum_size = Vector2(480, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("p")
+
+[node name="Box" type="VBoxContainer" parent="Content/Page/Body/BattleLayout/Workspace/Loadout"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="HeadingRow" type="HBoxContainer" parent="Content/Page/Body/BattleLayout/Workspace/Loadout/Box"]
+layout_mode = 2
+
+[node name="Heading" type="Label" parent="Content/Page/Body/BattleLayout/Workspace/Loadout/Box/HeadingRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+text = "固定技能槽"
+
+[node name="Counter" type="Label" parent="Content/Page/Body/BattleLayout/Workspace/Loadout/Box/HeadingRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.48, 0.29, 0.035, 1)
+theme_override_font_sizes/font_size = 18
+text = "0 / 10"
+horizontal_alignment = 2
+
+[node name="Hint" type="Label" parent="Content/Page/Body/BattleLayout/Workspace/Loadout/Box"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.22, 0.18, 0.12, 1)
+theme_override_font_sizes/font_size = 13
+text = "顺序决定战斗栏位置；最多装配 10 个技能"
+horizontal_alignment = 1
+
+[node name="SlotScroll" type="ScrollContainer" parent="Content/Page/Body/BattleLayout/Workspace/Loadout/Box"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="SlotGrid" type="GridContainer" parent="Content/Page/Body/BattleLayout/Workspace/Loadout/Box/SlotScroll"]
+custom_minimum_size = Vector2(950, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 5
+theme_override_constants/h_separation = 7
+theme_override_constants/v_separation = 8
+
+[node name="DetailPanel" type="PanelContainer" parent="Content/Page/Body/BattleLayout/Workspace"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("p")
+
+[node name="Box" type="VBoxContainer" parent="Content/Page/Body/BattleLayout/Workspace/DetailPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Heading" type="Label" parent="Content/Page/Body/BattleLayout/Workspace/DetailPanel/Box"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "技能详情"
+horizontal_alignment = 1
+
+[node name="DetailTitle" type="Label" parent="Content/Page/Body/BattleLayout/Workspace/DetailPanel/Box"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "尚无可装配技能"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="DetailMeta" type="Label" parent="Content/Page/Body/BattleLayout/Workspace/DetailPanel/Box"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.48, 0.29, 0.035, 1)
+theme_override_font_sizes/font_size = 13
+text = "等待角色学会技能"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Divider" type="HSeparator" parent="Content/Page/Body/BattleLayout/Workspace/DetailPanel/Box"]
+layout_mode = 2
+
+[node name="DetailText" type="RichTextLabel" parent="Content/Page/Body/BattleLayout/Workspace/DetailPanel/Box"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.12, 0.095, 0.065, 1)
+theme_override_font_sizes/normal_font_size = 15
+bbcode_enabled = true
+fit_content = false
+scroll_active = true
+text = "技能槽只承载可主动使用或可应对排队的技能。"
+
+[node name="FooterHint" type="Label" parent="Content/Page/Body/BattleLayout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.28, 0.23, 0.16, 1)
+theme_override_font_sizes/font_size = 14
+text = "战斗中点击技能槽即可排队；再次点击可取消尚未结算的指令。"
+horizontal_alignment = 1
+
+[node name="DaoLayout" type="VBoxContainer" parent="Content/Page/Body" unique_id=122547526]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("attribute_page_theme")
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="Content/Page/Body/DaoLayout" unique_id=2013511442]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "道承 · 技能库道途"
+
+[node name="Subtitle" type="Label" parent="Content/Page/Body/DaoLayout" unique_id=1618612670]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 0.26, 0.19, 1)
+theme_override_font_sizes/font_size = 16
+text = "锁定道承后显示当前路线节点网；节点按属性与前置节点逐步解锁。"
+
+[node name="Workspace" type="Control" parent="Content/Page/Body/DaoLayout" unique_id=834358213]
+custom_minimum_size = Vector2(0, 760)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GraphViewport" type="Control" parent="Content/Page/Body/DaoLayout/Workspace" unique_id=659223583]
+custom_minimum_size = Vector2(0, 560)
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TreeCanvas" type="Control" parent="Content/Page/Body/DaoLayout/Workspace/GraphViewport" unique_id=245280015]
+custom_minimum_size = Vector2(820, 560)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(410, 280)
+
+[node name="Flow" type="Control" parent="Content/Page/Body/DaoLayout/Workspace/GraphViewport/TreeCanvas" unique_id=936296445]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("17_dao_flow")
+
+[node name="InitialRoot" type="Button" parent="Content/Page/Body/DaoLayout/Workspace/GraphViewport/TreeCanvas" unique_id=267926124]
+visible = false
+layout_mode = 0
+offset_left = 302.0
+offset_top = 50.0
+offset_right = 520.0
+offset_bottom = 140.0
+theme_override_colors/font_color = Color(0.12, 0.095, 0.065, 1)
+theme_override_font_sizes/font_size = 17
+text = "初始技能库
+13 张"
+flat = true
+
+[node name="InkBlot" type="TextureRect" parent="Content/Page/Body/DaoLayout/Workspace/GraphViewport/TreeCanvas/InitialRoot"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("19_dao_node_seal")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BodyRoute" type="Button" parent="Content/Page/Body/DaoLayout/Workspace/GraphViewport/TreeCanvas" unique_id=689268592]
+visible = false
+layout_mode = 0
+offset_left = 32.0
+offset_top = 340.0
+offset_right = 250.0
+offset_bottom = 430.0
+theme_override_colors/font_color = Color(0.12, 0.095, 0.065, 1)
+theme_override_font_sizes/font_size = 17
+text = "锻躯 · 体修技能库
+撼山为标志牌"
+flat = true
+
+[node name="InkBlot" type="TextureRect" parent="Content/Page/Body/DaoLayout/Workspace/GraphViewport/TreeCanvas/BodyRoute"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("19_dao_node_seal")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="QiRoute" type="Button" parent="Content/Page/Body/DaoLayout/Workspace/GraphViewport/TreeCanvas" unique_id=431328674]
+visible = false
+layout_mode = 0
+offset_left = 572.0
+offset_top = 340.0
+offset_right = 790.0
+offset_bottom = 430.0
+theme_override_colors/font_color = Color(0.12, 0.095, 0.065, 1)
+theme_override_font_sizes/font_size = 17
+text = "行炁 · 仙道技能库
+灵爆为标志牌"
+flat = true
+
+[node name="InkBlot" type="TextureRect" parent="Content/Page/Body/DaoLayout/Workspace/GraphViewport/TreeCanvas/QiRoute"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("19_dao_node_seal")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SoulRoute" type="Button" parent="Content/Page/Body/DaoLayout/Workspace/GraphViewport/TreeCanvas" unique_id=214820203]
+visible = false
+layout_mode = 0
+offset_left = 302.0
+offset_top = 340.0
+offset_right = 520.0
+offset_bottom = 430.0
+theme_override_colors/font_color = Color(0.12, 0.095, 0.065, 1)
+theme_override_font_sizes/font_size = 17
+text = "蕴神 · 仙道技能库
+与行炁共用"
+flat = true
+
+[node name="InkBlot" type="TextureRect" parent="Content/Page/Body/DaoLayout/Workspace/GraphViewport/TreeCanvas/SoulRoute"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("19_dao_node_seal")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BodyCondition" type="Label" parent="Content/Page/Body/DaoLayout/Workspace/GraphViewport/TreeCanvas" unique_id=454609651]
+visible = false
+layout_mode = 0
+offset_left = 46.0
+offset_top = 224.0
+offset_right = 264.0
+offset_bottom = 274.0
+theme_override_colors/font_color = Color(0.34, 0.3, 0.23, 0.76)
+theme_override_font_sizes/font_size = 14
+text = "主修锻躯
+体魄/敏捷≥8 · 体道≥10"
+horizontal_alignment = 1
+
+[node name="SoulCondition" type="Label" parent="Content/Page/Body/DaoLayout/Workspace/GraphViewport/TreeCanvas" unique_id=392334234]
+visible = false
+layout_mode = 0
+offset_left = 302.0
+offset_top = 208.0
+offset_right = 520.0
+offset_bottom = 258.0
+theme_override_colors/font_color = Color(0.34, 0.3, 0.23, 0.76)
+theme_override_font_sizes/font_size = 14
+text = "主修蕴神
+神魂/灵慧≥8 · 术法≥10"
+horizontal_alignment = 1
+
+[node name="QiCondition" type="Label" parent="Content/Page/Body/DaoLayout/Workspace/GraphViewport/TreeCanvas" unique_id=496474028]
+visible = false
+layout_mode = 0
+offset_left = 556.0
+offset_top = 224.0
+offset_right = 774.0
+offset_bottom = 274.0
+theme_override_colors/font_color = Color(0.34, 0.3, 0.23, 0.76)
+theme_override_font_sizes/font_size = 14
+text = "主修行炁
+灵慧/神魂≥8 · 术法≥10"
+horizontal_alignment = 1
+
+[node name="ZoomOut" type="Button" parent="Content/Page/Body/DaoLayout/Workspace/GraphViewport" unique_id=1869468355]
+visible = false
+layout_mode = 0
+offset_left = 628.0
+offset_top = 12.0
+offset_right = 660.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0.12, 0.095, 0.065, 1)
+theme_override_font_sizes/font_size = 20
+text = "−"
+flat = true
+
+[node name="ZoomValue" type="Label" parent="Content/Page/Body/DaoLayout/Workspace/GraphViewport" unique_id=1961272893]
+visible = false
+layout_mode = 0
+offset_left = 664.0
+offset_top = 14.0
+offset_right = 722.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0.3, 0.26, 0.19, 1)
+theme_override_font_sizes/font_size = 14
+text = "100%"
+horizontal_alignment = 1
+
+[node name="ZoomIn" type="Button" parent="Content/Page/Body/DaoLayout/Workspace/GraphViewport" unique_id=1158142012]
+visible = false
+layout_mode = 0
+offset_left = 726.0
+offset_top = 12.0
+offset_right = 758.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0.12, 0.095, 0.065, 1)
+theme_override_font_sizes/font_size = 20
+text = "+"
+flat = true
+
+[node name="Detail" type="PanelContainer" parent="Content/Page/Body/DaoLayout/Workspace" unique_id=1981441524]
+custom_minimum_size = Vector2(310, 260)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -320.0
+offset_bottom = 260.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("p")
+
+[node name="Box" type="VBoxContainer" parent="Content/Page/Body/DaoLayout/Workspace/Detail" unique_id=502822241]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="DetailTitle" type="Label" parent="Content/Page/Body/DaoLayout/Workspace/Detail/Box" unique_id=306583266]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "初始技能库"
+
+[node name="DetailBody" type="Label" parent="Content/Page/Body/DaoLayout/Workspace/Detail/Box" unique_id=1367242862]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.12, 0.095, 0.065, 1)
+theme_override_font_sizes/font_size = 16
+autowrap_mode = 2
+
+[node name="GongfaLayout" type="VBoxContainer" parent="Content/Page/Body" unique_id=1050911220]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("attribute_page_theme")
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="Content/Page/Body/GongfaLayout" unique_id=1868531215]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "功法"
+
+[node name="Workspace" type="HBoxContainer" parent="Content/Page/Body/GongfaLayout" unique_id=153590469]
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 18
+
+[node name="EquipColumn" type="VBoxContainer" parent="Content/Page/Body/GongfaLayout/Workspace"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 3
+[node name="TreePanel" type="Panel" parent="Content/Page/Body/GongfaLayout/Workspace" unique_id=2088533070]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("p")
+
+[node name="TreeFlow" type="Control" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel" unique_id=1846509779]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("13_gongfa_flow")
+
+[node name="TreeRows" type="VBoxContainer" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel" unique_id=2063355700]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 62.0
+offset_top = 52.0
+offset_right = -62.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+
+[node name="Row1" type="HBoxContainer" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows" unique_id=768849605]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Left" type="Button" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows/Row1" unique_id=1732038840]
+custom_minimum_size = Vector2(220, 86)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.1, 0.09, 0.07, 1)
+theme_override_styles/normal = SubResource("gongfa_node_idle")
+theme_override_styles/hover = SubResource("gongfa_node_hover")
+theme_override_styles/disabled = SubResource("gongfa_node_disabled")
+text = "左支
+未研读"
+flat = true
+
+[node name="Backdrop" type="TextureRect" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows/Row1/Left" unique_id=69318451]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_gongfa_node")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+
+[node name="Chapter" type="Label" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows/Row1" unique_id=807161845]
+custom_minimum_size = Vector2(112, 88)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "第一卷
+未得卷章"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Right" type="Button" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows/Row1" unique_id=362151084]
+custom_minimum_size = Vector2(220, 86)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.1, 0.09, 0.07, 1)
+theme_override_styles/normal = SubResource("gongfa_node_idle")
+theme_override_styles/hover = SubResource("gongfa_node_hover")
+theme_override_styles/disabled = SubResource("gongfa_node_disabled")
+text = "右支
+未研读"
+flat = true
+
+[node name="Backdrop" type="TextureRect" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows/Row1/Right" unique_id=498740012]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_gongfa_node")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Row2" type="HBoxContainer" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows" unique_id=1489586760]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Left" type="Button" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows/Row2" unique_id=1250116836]
+custom_minimum_size = Vector2(220, 86)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.1, 0.09, 0.07, 1)
+theme_override_styles/normal = SubResource("gongfa_node_idle")
+theme_override_styles/hover = SubResource("gongfa_node_hover")
+theme_override_styles/disabled = SubResource("gongfa_node_disabled")
+text = "左支
+未研读"
+flat = true
+
+[node name="Backdrop" type="TextureRect" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows/Row2/Left" unique_id=1738503449]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_gongfa_node")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+
+[node name="Chapter" type="Label" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows/Row2" unique_id=1082175543]
+custom_minimum_size = Vector2(112, 88)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "第二卷
+未得卷章"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Right" type="Button" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows/Row2" unique_id=1221442633]
+custom_minimum_size = Vector2(220, 86)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.1, 0.09, 0.07, 1)
+theme_override_styles/normal = SubResource("gongfa_node_idle")
+theme_override_styles/hover = SubResource("gongfa_node_hover")
+theme_override_styles/disabled = SubResource("gongfa_node_disabled")
+text = "右支
+未研读"
+flat = true
+
+[node name="Backdrop" type="TextureRect" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows/Row2/Right" unique_id=1291589482]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_gongfa_node")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Row3" type="HBoxContainer" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows" unique_id=1559329082]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Left" type="Button" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows/Row3" unique_id=1210116089]
+custom_minimum_size = Vector2(220, 86)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.1, 0.09, 0.07, 1)
+theme_override_styles/normal = SubResource("gongfa_node_idle")
+theme_override_styles/hover = SubResource("gongfa_node_hover")
+theme_override_styles/disabled = SubResource("gongfa_node_disabled")
+text = "左支
+未研读"
+flat = true
+
+[node name="Backdrop" type="TextureRect" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows/Row3/Left" unique_id=913724116]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_gongfa_node")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+
+[node name="Chapter" type="Label" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows/Row3" unique_id=558584094]
+custom_minimum_size = Vector2(112, 88)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "第三卷
+未得卷章"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Right" type="Button" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows/Row3" unique_id=293147721]
+custom_minimum_size = Vector2(220, 86)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.1, 0.09, 0.07, 1)
+theme_override_styles/normal = SubResource("gongfa_node_idle")
+theme_override_styles/hover = SubResource("gongfa_node_hover")
+theme_override_styles/disabled = SubResource("gongfa_node_disabled")
+text = "右支
+未研读"
+flat = true
+
+[node name="Backdrop" type="TextureRect" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows/Row3/Right" unique_id=291590870]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_gongfa_node")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Row4" type="HBoxContainer" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows" unique_id=108937590]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Left" type="Button" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows/Row4" unique_id=878761490]
+custom_minimum_size = Vector2(220, 86)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.1, 0.09, 0.07, 1)
+theme_override_styles/normal = SubResource("gongfa_node_idle")
+theme_override_styles/hover = SubResource("gongfa_node_hover")
+theme_override_styles/disabled = SubResource("gongfa_node_disabled")
+text = "左支
+未研读"
+flat = true
+
+[node name="Backdrop" type="TextureRect" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows/Row4/Left" unique_id=109508740]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_gongfa_node")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+
+[node name="Chapter" type="Label" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows/Row4" unique_id=1345938187]
+custom_minimum_size = Vector2(112, 88)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "第四卷
+未得卷章"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Right" type="Button" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows/Row4" unique_id=1428520699]
+custom_minimum_size = Vector2(220, 86)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.1, 0.09, 0.07, 1)
+theme_override_styles/normal = SubResource("gongfa_node_idle")
+theme_override_styles/hover = SubResource("gongfa_node_hover")
+theme_override_styles/disabled = SubResource("gongfa_node_disabled")
+text = "右支
+未研读"
+flat = true
+
+[node name="Backdrop" type="TextureRect" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows/Row4/Right" unique_id=1503996876]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_gongfa_node")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Row5" type="HBoxContainer" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows" unique_id=743011784]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Left" type="Button" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows/Row5" unique_id=1022840379]
+custom_minimum_size = Vector2(220, 86)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.1, 0.09, 0.07, 1)
+theme_override_styles/normal = SubResource("gongfa_node_idle")
+theme_override_styles/hover = SubResource("gongfa_node_hover")
+theme_override_styles/disabled = SubResource("gongfa_node_disabled")
+text = "左支
+未研读"
+flat = true
+
+[node name="Backdrop" type="TextureRect" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows/Row5/Left" unique_id=675888653]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_gongfa_node")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+
+[node name="Chapter" type="Label" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows/Row5" unique_id=1454657517]
+custom_minimum_size = Vector2(112, 88)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "第五卷
+未得卷章"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Right" type="Button" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows/Row5" unique_id=2026405483]
+custom_minimum_size = Vector2(220, 86)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.1, 0.09, 0.07, 1)
+theme_override_styles/normal = SubResource("gongfa_node_idle")
+theme_override_styles/hover = SubResource("gongfa_node_hover")
+theme_override_styles/disabled = SubResource("gongfa_node_disabled")
+text = "右支
+未研读"
+flat = true
+
+[node name="Backdrop" type="TextureRect" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows/Row5/Right" unique_id=1060895150]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_gongfa_node")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GongfaTreeLayout" type="Control" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel" unique_id=4627183]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="FlowFX" type="Control" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/GongfaTreeLayout" unique_id=1975647168]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("13_gongfa_flow")
+
+[node name="LayerOne" type="Label" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/GongfaTreeLayout" unique_id=765123822]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 65.0
+offset_top = 223.0
+offset_right = 159.0
+offset_bottom = 257.0
+theme_override_font_sizes/font_size = 16
+text = "第一卷"
+horizontal_alignment = 1
+
+[node name="LeftOne" type="Button" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/GongfaTreeLayout" unique_id=917048652]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -370.0
+offset_top = 200.0
+offset_right = -214.0
+offset_bottom = 280.0
+theme_override_colors/font_color = Color(0.1, 0.09, 0.07, 1)
+theme_override_styles/normal = SubResource("gongfa_node_idle")
+theme_override_styles/hover = SubResource("gongfa_node_hover")
+theme_override_styles/disabled = SubResource("gongfa_node_disabled")
+text = "行炁
+未研读"
+flat = true
+
+[node name="Backdrop" type="TextureRect" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/GongfaTreeLayout/LeftOne" unique_id=1229430844]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_gongfa_node")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+
+[node name="RightOne" type="Button" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/GongfaTreeLayout" unique_id=181180156]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 214.0
+offset_top = 200.0
+offset_right = 370.0
+offset_bottom = 280.0
+theme_override_colors/font_color = Color(0.1, 0.09, 0.07, 1)
+theme_override_styles/normal = SubResource("gongfa_node_idle")
+theme_override_styles/hover = SubResource("gongfa_node_hover")
+theme_override_styles/disabled = SubResource("gongfa_node_disabled")
+text = "化法
+未研读"
+flat = true
+
+[node name="Backdrop" type="TextureRect" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/GongfaTreeLayout/RightOne" unique_id=570935472]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_gongfa_node")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LayerTwo" type="Label" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/GongfaTreeLayout" unique_id=1179456740]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 65.0
+offset_top = 433.0
+offset_right = 159.0
+offset_bottom = 467.0
+theme_override_font_sizes/font_size = 16
+text = "第二卷"
+horizontal_alignment = 1
+
+[node name="LeftTwo" type="Button" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/GongfaTreeLayout" unique_id=1634773069]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -370.0
+offset_top = 410.0
+offset_right = -214.0
+offset_bottom = 490.0
+theme_override_colors/font_color = Color(0.1, 0.09, 0.07, 1)
+theme_override_styles/normal = SubResource("gongfa_node_idle")
+theme_override_styles/hover = SubResource("gongfa_node_hover")
+theme_override_styles/disabled = SubResource("gongfa_node_disabled")
+text = "行炁
+境界不足"
+flat = true
+
+[node name="Backdrop" type="TextureRect" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/GongfaTreeLayout/LeftTwo" unique_id=45399673]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_gongfa_node")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+
+[node name="RightTwo" type="Button" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/GongfaTreeLayout" unique_id=480070199]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 214.0
+offset_top = 410.0
+offset_right = 370.0
+offset_bottom = 490.0
+theme_override_colors/font_color = Color(0.1, 0.09, 0.07, 1)
+theme_override_styles/normal = SubResource("gongfa_node_idle")
+theme_override_styles/hover = SubResource("gongfa_node_hover")
+theme_override_styles/disabled = SubResource("gongfa_node_disabled")
+text = "化法
+境界不足"
+flat = true
+
+[node name="Backdrop" type="TextureRect" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/GongfaTreeLayout/RightTwo" unique_id=2061159205]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_gongfa_node")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LayerThree" type="Label" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/GongfaTreeLayout" unique_id=22563951]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 65.0
+offset_top = 643.0
+offset_right = 159.0
+offset_bottom = 677.0
+theme_override_font_sizes/font_size = 16
+text = "第三卷"
+horizontal_alignment = 1
+
+[node name="LeftThree" type="Button" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/GongfaTreeLayout" unique_id=798309461]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -370.0
+offset_top = 620.0
+offset_right = -214.0
+offset_bottom = 700.0
+theme_override_colors/font_color = Color(0.1, 0.09, 0.07, 1)
+theme_override_styles/normal = SubResource("gongfa_node_idle")
+theme_override_styles/hover = SubResource("gongfa_node_hover")
+theme_override_styles/disabled = SubResource("gongfa_node_disabled")
+text = "行炁
+境界不足"
+flat = true
+
+[node name="Backdrop" type="TextureRect" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/GongfaTreeLayout/LeftThree" unique_id=1051485530]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_gongfa_node")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+
+[node name="RightThree" type="Button" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/GongfaTreeLayout" unique_id=352778295]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 214.0
+offset_top = 620.0
+offset_right = 370.0
+offset_bottom = 700.0
+theme_override_colors/font_color = Color(0.1, 0.09, 0.07, 1)
+theme_override_styles/normal = SubResource("gongfa_node_idle")
+theme_override_styles/hover = SubResource("gongfa_node_hover")
+theme_override_styles/disabled = SubResource("gongfa_node_disabled")
+text = "化法
+境界不足"
+flat = true
+
+[node name="Backdrop" type="TextureRect" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/GongfaTreeLayout/RightThree" unique_id=1000205315]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_gongfa_node")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LayerFour" type="Label" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/GongfaTreeLayout" unique_id=159301954]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 65.0
+offset_top = 510.0
+offset_right = 159.0
+offset_bottom = 544.0
+theme_override_font_sizes/font_size = 16
+text = "第四卷"
+horizontal_alignment = 1
+
+[node name="LeftFour" type="Button" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/GongfaTreeLayout" unique_id=797911951]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -370.0
+offset_top = 487.0
+offset_right = -214.0
+offset_bottom = 567.0
+theme_override_colors/font_color = Color(0.1, 0.09, 0.07, 1)
+theme_override_styles/normal = SubResource("gongfa_node_idle")
+theme_override_styles/hover = SubResource("gongfa_node_hover")
+theme_override_styles/disabled = SubResource("gongfa_node_disabled")
+text = "行炁
+境界不足"
+flat = true
+
+[node name="Backdrop" type="TextureRect" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/GongfaTreeLayout/LeftFour" unique_id=902110614]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_gongfa_node")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+
+[node name="RightFour" type="Button" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/GongfaTreeLayout" unique_id=1806173060]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 214.0
+offset_top = 487.0
+offset_right = 370.0
+offset_bottom = 567.0
+theme_override_colors/font_color = Color(0.1, 0.09, 0.07, 1)
+theme_override_styles/normal = SubResource("gongfa_node_idle")
+theme_override_styles/hover = SubResource("gongfa_node_hover")
+theme_override_styles/disabled = SubResource("gongfa_node_disabled")
+text = "化法
+境界不足"
+flat = true
+
+[node name="Backdrop" type="TextureRect" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/GongfaTreeLayout/RightFour" unique_id=384447018]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_gongfa_node")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LayerFive" type="Label" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/GongfaTreeLayout" unique_id=428461190]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 65.0
+offset_top = 650.0
+offset_right = 159.0
+offset_bottom = 684.0
+theme_override_font_sizes/font_size = 16
+text = "第五卷"
+horizontal_alignment = 1
+
+[node name="LeftFive" type="Button" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/GongfaTreeLayout" unique_id=992831929]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -370.0
+offset_top = 627.0
+offset_right = -214.0
+offset_bottom = 707.0
+theme_override_colors/font_color = Color(0.1, 0.09, 0.07, 1)
+theme_override_styles/normal = SubResource("gongfa_node_idle")
+theme_override_styles/hover = SubResource("gongfa_node_hover")
+theme_override_styles/disabled = SubResource("gongfa_node_disabled")
+text = "行炁
+境界不足"
+flat = true
+
+[node name="Backdrop" type="TextureRect" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/GongfaTreeLayout/LeftFive" unique_id=126152125]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_gongfa_node")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+
+[node name="RightFive" type="Button" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/GongfaTreeLayout" unique_id=1220533657]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 214.0
+offset_top = 627.0
+offset_right = 370.0
+offset_bottom = 707.0
+theme_override_colors/font_color = Color(0.1, 0.09, 0.07, 1)
+theme_override_styles/normal = SubResource("gongfa_node_idle")
+theme_override_styles/hover = SubResource("gongfa_node_hover")
+theme_override_styles/disabled = SubResource("gongfa_node_disabled")
+text = "化法
+境界不足"
+flat = true
+
+[node name="Backdrop" type="TextureRect" parent="Content/Page/Body/GongfaLayout/Workspace/TreePanel/GongfaTreeLayout/RightFive" unique_id=1454360047]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_gongfa_node")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DetailPanel" type="PanelContainer" parent="Content/Page/Body/GongfaLayout/Workspace" unique_id=1576688473]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("p")
+
+[node name="Box" type="VBoxContainer" parent="Content/Page/Body/GongfaLayout/Workspace/DetailPanel" unique_id=1515804527]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="DetailTitle" type="Label" parent="Content/Page/Body/GongfaLayout/Workspace/DetailPanel/Box" unique_id=1113740546]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "尚未装配功法"
+
+[node name="DetailState" type="Label" parent="Content/Page/Body/GongfaLayout/Workspace/DetailPanel/Box" unique_id=1147746419]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "选择下方主修或辅修栏位"
+
+[node name="Line" type="HSeparator" parent="Content/Page/Body/GongfaLayout/Workspace/DetailPanel/Box" unique_id=413452920]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+theme_override_styles/separator = SubResource("attribute_divider")
+
+[node name="DetailText" type="RichTextLabel" parent="Content/Page/Body/GongfaLayout/Workspace/DetailPanel/Box" unique_id=452294218]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.12, 0.095, 0.065, 1)
+bbcode_enabled = true
+fit_content = false
+scroll_active = false
+text = "已研读的每一卷会在中央展开为一层；主修可同时启用两条分支，辅修每层只能启用其一。"
+
+[node name="EquipPanel" type="PanelContainer" parent="Content/Page/Body/GongfaLayout/Workspace/EquipColumn" unique_id=1634229097]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("p")
+
+[node name="Box" type="VBoxContainer" parent="Content/Page/Body/GongfaLayout/Workspace/EquipColumn/EquipPanel" unique_id=860839301]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Heading" type="Label" parent="Content/Page/Body/GongfaLayout/Workspace/EquipColumn/EquipPanel/Box" unique_id=1457232153]
+layout_mode = 2
+theme_override_font_sizes/font_size = 21
+text = "主辅修装配"
+
+[node name="EquipSlots" type="VBoxContainer" parent="Content/Page/Body/GongfaLayout/Workspace/EquipColumn/EquipPanel/Box" unique_id=705959147]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="MainSlot" type="Button" parent="Content/Page/Body/GongfaLayout/Workspace/EquipColumn/EquipPanel/Box/EquipSlots" unique_id=1335486072]
+custom_minimum_size = Vector2(252, 164)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.1, 0.09, 0.07, 1)
+theme_override_styles/normal = SubResource("gongfa_equip_slot")
+theme_override_styles/hover = SubResource("gongfa_equip_slot_hover")
+theme_override_styles/pressed = SubResource("gongfa_equip_slot_pressed")
+text = "主修
+尚未装配"
+
+[node name="Backdrop" type="TextureRect" parent="Content/Page/Body/GongfaLayout/Workspace/EquipColumn/EquipPanel/Box/EquipSlots/MainSlot" unique_id=659456418]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SubSlot" type="Button" parent="Content/Page/Body/GongfaLayout/Workspace/EquipColumn/EquipPanel/Box/EquipSlots" unique_id=1679405226]
+custom_minimum_size = Vector2(252, 164)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.1, 0.09, 0.07, 1)
+theme_override_styles/normal = SubResource("gongfa_equip_slot")
+theme_override_styles/hover = SubResource("gongfa_equip_slot_hover")
+theme_override_styles/pressed = SubResource("gongfa_equip_slot_pressed")
+text = "辅修
+尚未装配"
+
+[node name="Backdrop" type="TextureRect" parent="Content/Page/Body/GongfaLayout/Workspace/EquipColumn/EquipPanel/Box/EquipSlots/SubSlot" unique_id=1731252464]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BookPicker" type="VBoxContainer" parent="Content/Page/Body/GongfaLayout/Workspace/EquipColumn/EquipPanel/Box" unique_id=180367713]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Hint" type="Label" parent="Content/Page/Body/GongfaLayout/Workspace/EquipColumn/EquipPanel/Box/BookPicker" unique_id=183039292]
+layout_mode = 2
+text = "已研读秘籍"
+
+[node name="List" type="HBoxContainer" parent="Content/Page/Body/GongfaLayout/Workspace/EquipColumn/EquipPanel/Box/BookPicker" unique_id=427051264]
+layout_mode = 2
+theme_override_constants/separation = 8

@@ -1,0 +1,87 @@
+[
+  {
+    "file": "female\\eyes\\01.png",
+    "source": "source\\eyes_bangs_revision\\female_eyes_1_small.png",
+    "sha256": "d4fb5fbb70747319a0ced1d913d6bd2892b1f4609f60aff3dea5d0ac067999b0",
+    "scale": 0.15942028985507245,
+    "translation": [
+      396.5652173913044,
+      300.8840579710145
+    ],
+    "pupil_targets": [
+      [
+        464,
+        379
+      ],
+      [
+        574,
+        379
+      ]
+    ],
+    "core_width_px": 53.6
+  },
+  {
+    "file": "female\\eyes\\02.png",
+    "source": "source\\eyes_bangs_revision\\female_eyes_2_small.png",
+    "sha256": "a56d11cb75be372f7b82e3db1b8433f26d4a013691e96b9cd64553922d7ea9d9",
+    "scale": 0.16272189349112426,
+    "translation": [
+      394.0295857988166,
+      291.29289940828403
+    ],
+    "pupil_targets": [
+      [
+        464,
+        379
+      ],
+      [
+        574,
+        379
+      ]
+    ],
+    "core_width_px": 53.9
+  },
+  {
+    "file": "female\\eyes\\03.png",
+    "source": "source\\eyes_bangs_revision\\female_eyes_3_small.png",
+    "sha256": "2d946f5022f449bee8b568d465606dcc36c23d4a828a7737f852f94876849a3e",
+    "scale": 0.16923076923076924,
+    "translation": [
+      389.03076923076924,
+      293.03076923076924
+    ],
+    "pupil_targets": [
+      [
+        464,
+        379
+      ],
+      [
+        574,
+        379
+      ]
+    ],
+    "core_width_px": 50.8
+  },
+  {
+    "file": "male\\hair_front\\02.png",
+    "source": "source\\eyes_bangs_revision\\male_front_bangs.png",
+    "sha256": "b84ed0180e3091818dfa90090dc0cf4f887d2d4e11713011289cce5a9604211c",
+    "scale": 0.4,
+    "translation": [
+      312,
+      97
+    ],
+    "style": "forehead-covering broken fringe"
+  },
+  {
+    "file": "female\\hair_front\\02.png",
+    "source": "source\\eyes_bangs_revision\\female_front_bangs.png",
+    "sha256": "552df665c132be869e9987ec5ef7d225e82e83ff02296d69461226bd0cf6f642",
+    "scale": 0.47,
+    "translation": [
+      278,
+      80
+    ],
+    "style": "forehead-covering broken fringe"
+  }
+]

@@ -1,0 +1,111 @@
+[gd_resource type="Resource" script_class="GongfaResource" format=3 uid="uid://6ae8wyjr7tn5"]
+
+[ext_resource type="Script" path="res://csharp/gongfa/GongfaResource.cs" id="1"]
+[ext_resource type="Script" path="res://csharp/gongfa/GongfaChapterConfig.cs" id="2"]
+[ext_resource type="Script" path="res://csharp/gongfa/GongfaDeckRewriteConfig.cs" id="3"]
+[ext_resource type="Script" path="res://csharp/gongfa/ActiveSkillData.cs" id="4"]
+[ext_resource type="Resource" path="res://resources/activeskills/市井游身功/滚地翻.tres" id="5"]
+[ext_resource type="Resource" path="res://resources/activeskills/市井游身功/顶心肘.tres" id="6"]
+[ext_resource type="Resource" path="res://resources/activeskills/市井游身功/撒石灰.tres" id="7"]
+[ext_resource type="Resource" path="res://resources/activeskills/市井游身功/泥鳅身.tres" id="8"]
+
+[sub_resource type="Resource" id="RewriteStep"]
+script = ExtResource("3")
+mode = 0
+count = 1
+result_skill = ExtResource("5")
+
+[sub_resource type="Resource" id="RewriteBorrow"]
+script = ExtResource("3")
+mode = 0
+count = 1
+result_skill = ExtResource("6")
+
+[sub_resource type="Resource" id="RewriteTrick"]
+script = ExtResource("3")
+mode = 0
+count = 1
+result_skill = ExtResource("7")
+
+[sub_resource type="Resource" id="RewriteEscape"]
+script = ExtResource("3")
+mode = 0
+count = 1
+result_skill = ExtResource("8")
+
+[sub_resource type="Resource" id="Chapter1"]
+script = ExtResource("2")
+chapter_id = "hua_bu"
+chapter_name = "滑步卷"
+description = "练习低身翻滚与快速换位，先让脚下活起来。"
+order = 1
+required_study_progress = 32.0
+required_attributes = {
+"agility": 3.0,
+"body_proficiency": 2.0,
+}
+learned_active_skills = Array[ExtResource("4")]([ExtResource("5")])
+naqi_bonuses = {"initiative_speed": 2.0}
+sub_deck_rewrites = Array[ExtResource("3")]([SubResource("RewriteStep")])
+
+[sub_resource type="Resource" id="Chapter2"]
+script = ExtResource("2")
+chapter_id = "jie_li"
+chapter_name = "借力卷"
+description = "趁换位贴身时顶肘追打，把身法转成攻势。"
+order = 2
+required_study_progress = 40.0
+required_attributes = {"agility": 5.0, "body_proficiency": 4.0}
+required_chapter_ids = Array[String](["hua_bu"])
+learn_permanent_bonuses = {"agility": 0.25, "body_proficiency": 0.15}
+learned_active_skills = Array[ExtResource("4")]([ExtResource("6")])
+naqi_bonuses = {"precision": 2.0, "critical": 1.0}
+sub_deck_rewrites = Array[ExtResource("3")]([SubResource("RewriteBorrow")])
+
+[sub_resource type="Resource" id="Chapter3"]
+script = ExtResource("2")
+chapter_id = "yin_shou"
+chapter_name = "阴手卷"
+description = "不与敌人正面硬拼，用石灰干扰视线与出手节奏。"
+order = 3
+required_study_progress = 48.0
+required_attributes = {"agility": 7.0, "body_proficiency": 5.0}
+required_chapter_ids = Array[String](["jie_li"])
+learn_permanent_bonuses = {"agility": 0.25, "body_proficiency": 0.15}
+learned_active_skills = Array[ExtResource("4")]([ExtResource("7")])
+naqi_bonuses = {"precision": 2.0, "dodge": 1.0}
+sub_deck_rewrites = Array[ExtResource("3")]([SubResource("RewriteTrick")])
+
+[sub_resource type="Resource" id="Chapter4"]
+script = ExtResource("2")
+chapter_id = "tuo_shen"
+chapter_name = "脱身卷"
+description = "受到攻击时扭身卸力，保住站位后再寻找进身机会。"
+order = 4
+required_study_progress = 56.0
+required_attributes = {"agility": 9.0, "body_proficiency": 7.0}
+required_chapter_ids = Array[String](["yin_shou"])
+learn_permanent_bonuses = {"agility": 0.25, "body_proficiency": 0.15}
+learned_active_skills = Array[ExtResource("4")]([ExtResource("8")])
+naqi_bonuses = {"dodge": 2.0, "initiative_speed": 2.0}
+sub_deck_rewrites = Array[ExtResource("3")]([SubResource("RewriteEscape")])
+
+[resource]
+script = ExtResource("1")
+gongfa_name = "市井游身功"
+description = "只能辅修的凡人身法。以翻滚换位、贴身追打、阴手干扰和受击脱身组成完整循环。"
+wuxing = 0
+required_study_progress = 32.0
+required_attributes = {"agility": 3.0, "body_proficiency": 2.0}
+can_be_main = false
+bearing_compatibility = Array[int]([1])
+school_tags = Array[String](["movement", "fist"])
+can_be_sub = true
+default_unlocked_chapter_count = 1
+passive_bonuses = {
+"agility": 0.5,
+"body_proficiency": 0.3,
+"precision": 2.0,
+}
+chapters = Array[ExtResource("2")]([SubResource("Chapter1"), SubResource("Chapter2"), SubResource("Chapter3"), SubResource("Chapter4")])
+metadata/_custom_type_script = "uid://c4hon8frxfohr"

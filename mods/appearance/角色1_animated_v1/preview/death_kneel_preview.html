@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>角色1 死亡跪地序列帧预览 (64帧 @64fps)</title>
+<style>
+  body { background:#2b2b33; color:#eee; font-family:system-ui,sans-serif; margin:0; padding:20px; }
+  .stage { position:relative; width:720px; height:960px; background:#45454f;
+           border:2px solid #666; margin:10px auto; }
+  canvas { width:720px; height:960px; image-rendering:pixelated; }
+  .grid { position:absolute; inset:0; pointer-events:none; opacity:.18;
+          background:repeating-linear-gradient(0deg, #fff 0 1px, transparent 1px 60px),
+                     repeating-linear-gradient(90deg, #fff 0 1px, transparent 1px 60px); }
+  .anchor { position:absolute; width:16px; height:16px; margin:-8px 0 0 -8px;
+            border:2px solid #f66; border-radius:50%; left:360px; top:940px; pointer-events:none; }
+  .ground { position:absolute; left:0; right:0; top:940px; height:0; border-top:2px dashed #6cf; pointer-events:none; }
+  .controls { text-align:center; margin:10px; }
+  button { padding:8px 16px; margin:0 4px; cursor:pointer; }
+  .info { text-align:center; color:#aab; }
+  input[type=range]{ width:600px; vertical-align:middle; }
+</style>
+</head>
+<body>
+<h2 style="text-align:center">角色1 · 死亡跪地序列帧（64帧 @64fps，透明底，锚点对齐 360,940）</h2>
+<div class="stage">
+  <canvas id="cv" width="720" height="960"></canvas>
+  <div class="grid"></div>
+  <div class="anchor"></div>
+  <div class="ground"></div>
+</div>
+<div class="controls">
+  <button id="play">暂停</button>
+  <button id="prev">◀</button><button id="next">▶</button>
+  帧 <span id="fi">1</span>/64
+  <br>
+  <input type="range" id="slider" min="1" max="64" value="1">
+  <br>
+  播放速率: <input type="range" id="speed" min="10" max="200" value="64" style="width:200px"> <span id="spd">64</span> 帧/秒
+  <label><input type="checkbox" id="gridchk" checked> 网格/锚点</label>
+</div>
+<div class="info">阶段：001-012 踉跄 → 013-024 跪落 → 025-040 瘫软 → 041-048 垂落 → 049-064 定格</div>
+<script>
+const frames = Array.from({length:64}, (_,i)=>`../death_kneel/${String(i+1).padStart(3,'0')}.png`);
+const cv = document.getElementById('cv'), ctx = cv.getContext('2d');
+const img = new Image(); let idx = 0, playing = true, speed = 64, last = 0;
+const slider = document.getElementById('slider'), fi = document.getElementById('fi');
+function draw(i){ idx = i; fi.textContent = i+1; slider.value = i+1;
+  img.onload = ()=>{ ctx.clearRect(0,0,720,960); ctx.drawImage(img,0,0,720,960); };
+  img.src = frames[i]; }
+function loop(t){
+  requestAnimationFrame(loop);
+  if(!playing) return;
+  if(last && t-last >= 1000/speed){ last = t; draw((idx+1)%64); }
+  else if(!last) last = t;
+}
+document.getElementById('play').onclick = ()=>{ playing=!playing; last=0;
+  document.getElementById('play').textContent = playing?'暂停':'播放'; };
+document.getElementById('prev').onclick = ()=> draw((idx+63)%64);
+document.getElementById('next').onclick = ()=> draw((idx+1)%64);
+slider.oninput = ()=>{ playing=false; document.getElementById('play').textContent='播放'; draw(+slider.value-1); };
+document.getElementById('speed').oninput = (e)=>{ speed=+e.target.value;
+  document.getElementById('spd').textContent = speed; };
+document.getElementById('gridchk').onchange = (e)=>{
+  document.querySelector('.grid').style.opacity = e.target.checked?'0.18':'0';
+  document.querySelector('.anchor').style.opacity = e.target.checked?'1':'0';
+  document.querySelector('.ground').style.opacity = e.target.checked?'1':'0';
+};
+draw(0); requestAnimationFrame(loop);
+</script>
+</body>
+</html>

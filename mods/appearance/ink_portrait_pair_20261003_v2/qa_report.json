@@ -1,0 +1,71 @@
+{
+  "male": {
+    "canvas": [
+      1024,
+      1536
+    ],
+    "alpha_pixels": {
+      "hair_back": 314128,
+      "face_shape": 94438,
+      "clothing": 876692,
+      "eyes": 5623,
+      "eyebrows": 3035,
+      "nose": 1905,
+      "mouth": 2016,
+      "face_accessory": 0,
+      "hair_front": 36096
+    },
+    "alpha_mismatch_pixels_over_5": 0,
+    "recomposition_on_background": {
+      "light": {
+        "mean_channel_difference": 0.1935,
+        "pixels_with_difference_over_12": 0
+      },
+      "dark": {
+        "mean_channel_difference": 0.0178,
+        "pixels_with_difference_over_12": 2
+      }
+    },
+    "mirrored_eyelid_highlights": {
+      "left_rgb": [
+        239,
+        209,
+        187
+      ],
+      "right_rgb": [
+        238,
+        208,
+        187
+      ],
+      "largest_channel_difference": 1
+    }
+  },
+  "female": {
+    "canvas": [
+      1024,
+      1536
+    ],
+    "alpha_pixels": {
+      "hair_back": 309387,
+      "face_shape": 93788,
+      "clothing": 828268,
+      "eyes": 6795,
+      "eyebrows": 2563,
+      "nose": 1820,
+      "mouth": 1953,
+      "face_accessory": 0,
+      "hair_front": 43303
+    },
+    "alpha_mismatch_pixels_over_5": 0,
+    "recomposition_on_background": {
+      "light": {
+        "mean_channel_difference": 0.1989,
+        "pixels_with_difference_over_12": 0
+      },
+      "dark": {
+        "mean_channel_difference": 0.032,
+        "pixels_with_difference_over_12": 1
+      }
+    }
+  }
+}

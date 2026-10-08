@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="StatusEffect" format=3]
+
+[ext_resource type="Script" path="res://csharp/battle/StatusEffect.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+effect_id = "剑痕"
+name = "剑痕"
+description = "被剑势留下的破绽标记，可被相关剑术消耗或利用。"
+max_stacks = 99
+duration_default = -1
+is_debuff = true

@@ -1,0 +1,129 @@
+{
+  "skeleton": {
+    "hash": "",
+    "spine": "3.8.75",
+    "x": -360,
+    "y": 0,
+    "width": 720,
+    "height": 960,
+    "images": "../layers/",
+    "audio": ""
+  },
+  "bones": [
+    { "name": "root" },
+    { "name": "hips", "parent": "root", "y": 300, "length": 160 },
+    { "name": "torso", "parent": "hips", "length": 420 },
+    { "name": "neck", "parent": "torso", "y": 360, "length": 60 },
+    { "name": "head", "parent": "neck", "y": 60, "length": 120 },
+    { "name": "hair_back", "parent": "head", "length": 160 },
+    { "name": "hair_front", "parent": "head", "length": 140 },
+    { "name": "arm_far", "parent": "torso", "x": -145, "y": 300, "length": 180 },
+    { "name": "arm_near", "parent": "torso", "x": 145, "y": 300, "length": 180 },
+    { "name": "waist", "parent": "hips", "y": 100, "length": 180 },
+    { "name": "feet", "parent": "root", "length": 120 }
+  ],
+  "slots": [
+    { "name": "slot_hair_back", "bone": "hair_back", "attachment": "hair_back" },
+    { "name": "slot_head_face", "bone": "head", "attachment": "head_face" },
+    { "name": "slot_hair_front", "bone": "hair_front", "attachment": "hair_front" },
+    { "name": "slot_body_clothes", "bone": "torso", "attachment": "body_clothes" },
+    { "name": "slot_sleeve_right_hand", "bone": "arm_near", "attachment": "sleeve_right_hand" },
+    { "name": "slot_sleeve_left_scroll", "bone": "arm_far", "attachment": "sleeve_left_scroll" },
+    { "name": "slot_waist_accessories", "bone": "waist", "attachment": "waist_accessories" },
+    { "name": "slot_feet_shoes", "bone": "feet", "attachment": "feet_shoes" }
+  ],
+  "skins": [
+    {
+      "name": "default",
+      "attachments": {
+        "slot_hair_back": {
+          "hair_back": { "path": "01_hair_back", "y": -240, "width": 720, "height": 960 }
+        },
+        "slot_head_face": {
+          "head_face": { "path": "02_head_face", "y": -240, "width": 720, "height": 960 }
+        },
+        "slot_hair_front": {
+          "hair_front": { "path": "03_hair_front", "y": -240, "width": 720, "height": 960 }
+        },
+        "slot_body_clothes": {
+          "body_clothes": { "path": "04_body_clothes", "y": 180, "width": 720, "height": 960 }
+        },
+        "slot_sleeve_right_hand": {
+          "sleeve_right_hand": { "path": "05_sleeve_right_hand", "x": -145, "y": -120, "width": 720, "height": 960 }
+        },
+        "slot_sleeve_left_scroll": {
+          "sleeve_left_scroll": { "path": "06_sleeve_left_scroll", "x": 145, "y": -120, "width": 720, "height": 960 }
+        },
+        "slot_waist_accessories": {
+          "waist_accessories": { "path": "07_waist_accessories", "y": 80, "width": 720, "height": 960 }
+        },
+        "slot_feet_shoes": {
+          "feet_shoes": { "path": "08_feet_shoes", "y": 480, "width": 720, "height": 960 }
+        }
+      }
+    }
+  ],
+  "animations": {
+    "idle": {
+      "bones": {
+        "torso": {
+          "translate": [
+            { "x": 0, "y": 0 },
+            { "time": 0.5, "x": 0, "y": 2 },
+            { "time": 1, "x": 0, "y": 0 }
+          ],
+          "rotate": [
+            { "angle": 0 },
+            { "time": 0.5, "angle": 0.45 },
+            { "time": 1, "angle": 0 }
+          ]
+        },
+        "head": {
+          "rotate": [
+            { "angle": 0 },
+            { "time": 0.5, "angle": -0.7 },
+            { "time": 1, "angle": 0 }
+          ]
+        },
+        "hair_back": {
+          "rotate": [
+            { "angle": 0 },
+            { "time": 0.5, "angle": 1.2 },
+            { "time": 1, "angle": 0 }
+          ]
+        },
+        "hair_front": {
+          "rotate": [
+            { "angle": 0 },
+            { "time": 0.5, "angle": -0.6 },
+            { "time": 1, "angle": 0 }
+          ]
+        },
+        "arm_far": {
+          "rotate": [
+            { "angle": 0 },
+            { "time": 0.5, "angle": -0.5 },
+            { "time": 1, "angle": 0 }
+          ]
+        },
+        "arm_near": {
+          "rotate": [
+            { "angle": 0 },
+            { "time": 0.5, "angle": 0.65 },
+            { "time": 1, "angle": 0 }
+          ]
+        },
+        "waist": {
+          "rotate": [
+            { "angle": 0 },
+            { "time": 0.5, "angle": 0.6 },
+            { "time": 1, "angle": 0 }
+          ]
+        }
+      }
+    },
+    "attack": {},
+    "hurt": {},
+    "death_kneel": {}
+  }
+}

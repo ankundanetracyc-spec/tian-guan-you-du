@@ -1,0 +1,14 @@
+Source: textures/characters/c1/001.png
+Canvas: 720x960 RGBA
+Layer order: 01_hair_back -> 02_feet_shoes -> 03_body_clothes -> 04_sleeve_scroll -> 05_sleeve_pointing -> 06_waist_accessories -> 07_head_face -> 08_hair_front
+Backfill: constrained cloth underlay + head/neck underlay
+Pose previews: idle_mid, attack_mid, hurt_hit, death_kneel_end
+01_hair_back: bbox=(196, 26, 409, 470), visible_pixels=14495
+02_feet_shoes: bbox=(239, 817, 469, 932), visible_pixels=9823
+03_body_clothes: bbox=(201, 192, 506, 854), visible_pixels=141652
+04_sleeve_scroll: bbox=(201, 210, 325, 598), visible_pixels=24419
+05_sleeve_pointing: bbox=(404, 207, 586, 508), visible_pixels=22259
+06_waist_accessories: bbox=(283, 348, 461, 664), visible_pixels=22874
+07_head_face: bbox=(333, 86, 437, 286), visible_pixels=12001
+08_hair_front: bbox=(311, 58, 448, 238), visible_pixels=9115
+Residual bbox before fallback: (186, 35, 590, 898)

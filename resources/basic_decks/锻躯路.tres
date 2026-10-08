@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="BasicDeckResource" format=3]
+
+[ext_resource type="Script" path="res://csharp/gongfa/BasicDeckResource.cs" id="1"]
+[ext_resource type="Script" path="res://csharp/gongfa/BasicDeckUpgradeConfig.cs" id="2"]
+
+[sub_resource type="Resource" id="Heavy"]
+script = ExtResource("2")
+upgrade_id = "body_heavy"
+branch_group = "body_style"
+upgrade_name = "开碑"
+description = "体魄达到16后，解锁蓄势重击技能。"
+required_attributes = {"physique": 16.0}
+additions = Array[Dictionary]([{ "path": "res://resources/activeskills/蓄势重击.tres", "count": 1 }])
+
+[sub_resource type="Resource" id="Guard"]
+script = ExtResource("2")
+upgrade_id = "body_guard"
+branch_group = "body_style"
+upgrade_name = "卸劲"
+description = "体术造诣达到14后，锻躯技能库中的部分卸力替换为避锋。"
+required_attributes = {"body_proficiency": 14.0}
+replacements = Array[Dictionary]([{ "source_path": "res://resources/activeskills/卸力.tres", "result_path": "res://resources/activeskills/避锋.tres", "count": 2 }])
+
+[resource]
+script = ExtResource("1")
+deck_name = "锻躯基础技能库"
+deck_description = "当前主修侧重为锻躯时使用；更换主修可切换基础技能库，三途养成进度保留；以精力维持应对、以气血调度肉身；包含发劲、催血、平息、卸力、撼山。"
+required_dao_bearing = 1
+upgrade_branches = Array[ExtResource("2")]([SubResource("Heavy"), SubResource("Guard")])
+skill_entries = Array[Dictionary]([{ "path": "res://resources/activeskills/发劲.tres", "count": 5 }, { "path": "res://resources/activeskills/催血.tres", "count": 2 }, { "path": "res://resources/activeskills/平息.tres", "count": 1 }, { "path": "res://resources/activeskills/卸力.tres", "count": 4 }, { "path": "res://resources/activeskills/撼山.tres", "count": 1 }])

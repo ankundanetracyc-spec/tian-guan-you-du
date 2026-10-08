@@ -1,0 +1,121 @@
+<mxfile host="Electron" agent="Codex">
+  <diagram id="chengwu-youhai" name="乘物游骸真经">
+    <mxGraphModel dx="3807" dy="722" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2600" pageHeight="1868" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=20;" value="乘物游骸真经" vertex="1">
+          <mxGeometry height="74" width="560" x="740" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="overview" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=15;" value="锻躯秘籍 / 可主修、可辅修&lt;br&gt;主修可修至：云息十三层&lt;br&gt;主气血、游骸与身法；每轮首次主动气血下降获得游骸，满足肉身根基阈值时消耗游骸规避含物理伤害招式的全部伤害；主修心法每消耗1层游骸便获得身法3层；可托身化骸养身法，也可用解形攻伐，最终将本场已耗游骸化作冯虚多段攻伐。&lt;br&gt;不接入血炉与借力；血炉、借力由其他专门功法开启。&lt;br&gt;淬炼修正只作用于战斗内属性，并随本卷心法被动显示在Buff栏信息详情；战斗结束移除，不进入角色永久属性。&lt;br&gt;心法被动：战斗开始时显示在Buff栏，常驻至战斗结束；即时队列战斗不设技能冷却、准备或收招，也不自动回落气血。" vertex="1">
+          <mxGeometry height="190" width="560" x="740" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;" value="第一卷：游骸&#xa;卷章ID：you_hai&#xa;顺序：1&#xa;定位：以主动回落寄形于骸，建立确定闪避的起点&#xa;学成可修至：云息三层&#xa;学习条件：&#xa;灵根：任意&#xa;路径：未确定或锻躯&#xa;境界：凡人境界及以上&#xa;研读属性：敏捷≥5；体道造诣≥4&#xa;学会永久属性：敏捷 +1" vertex="1">
+          <mxGeometry height="240" width="340" x="850" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="淬炼（仅战斗内）&lt;br&gt;战斗属性：最大生命 +20%" vertex="1">
+          <mxGeometry height="92" width="260" x="360" y="395" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="化法&lt;br&gt;催血（体修基础技能追加效果，保留原效果）&lt;br&gt;关键词：生命、闪避&lt;br&gt;原效果：获得气血1层。&lt;br&gt;追加：施放前自身身法不少于10层且当前没有游骸时，额外获得游骸1层。&lt;br&gt;耗费与目标沿用催血：精力1；自身。" vertex="1">
+          <mxGeometry height="184" width="280" x="1360" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_cards" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;" value="心法被动：乘物游骸&lt;br&gt;习得：蜕形&lt;br&gt;&lt;br&gt;乘物游骸：&lt;br&gt;类型：心法&lt;br&gt;关键词：生命、闪避&lt;br&gt;效果：每轮首次由自身主动使气血下降时，获得游骸1层；同次技能效果至多触发一次。&lt;br&gt;主修额外效果：每次实际消耗1层游骸，获得身法3层；抵挡、托身、解形、撼山化法等消耗均计入本场已消耗游骸。&lt;br&gt;&lt;br&gt;蜕形：&lt;br&gt;类型：术诀&lt;br&gt;关键词：生命、闪避、回复&lt;br&gt;耗费：精力1；法力0&lt;br&gt;目标：自身&lt;br&gt;效果：气血-1；触发公共气血回落，回复最大生命×3%；获得身法2层。&lt;br&gt;使用次数：不限。" vertex="1">
+          <mxGeometry height="520" width="740" x="-400" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;" value="第二卷：托身 卷章ID：tuo_shen 顺序：2 定位：托身耗骸换取持续身法，并为冯虚蓄势 学成可修至：云息六层 学习条件： 灵根：任意 路径：锻躯 境界：云息三层及以上 前置：已学游骸 研读属性：敏捷≥7；体道造诣≥5 学会永久属性：敏捷 +1" vertex="1">
+          <mxGeometry height="240" width="340" x="850" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="淬炼（仅战斗内）&lt;br&gt;战斗属性：气血上限 +1" vertex="1">
+          <mxGeometry height="92" width="270" x="390" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="化法&lt;br&gt;撼山（体修基础技能追加效果，保留原效果）&lt;br&gt;关键词：闪避&lt;br&gt;原效果：对指定1名敌方造成物理伤害，伤害 = round(15 + 体魄×0.85 + 体道造诣×0.55)。&lt;br&gt;追加：施放时若自身拥有游骸，消耗1层并计入本场已消耗游骸；本次伤害提高50%。&lt;br&gt;使用次数：每轮1次。&lt;br&gt;耗费与目标沿用撼山：精力3；指定1名敌方。" vertex="1">
+          <mxGeometry height="220" width="290" x="1360" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_cards" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;" value="习得：托身&lt;br&gt;&lt;br&gt;托身：&lt;br&gt;类型：术诀&lt;br&gt;关键词：闪避&lt;br&gt;耗费：精力0；法力0&lt;br&gt;目标：自身&lt;br&gt;效果：仅当自身当前拥有游骸时可施放；消耗游骸1层并计入本场已消耗游骸；获得身法2层。&lt;br&gt;使用次数：不限。" vertex="1">
+          <mxGeometry height="384" width="740" x="-400" y="766" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;" value="第三卷：解形&#xa;卷章ID：jie_xing&#xa;顺序：3&#xa;定位：令基础平息也成为身法与游骸的衔接点&#xa;学成可修至：云息九层&#xa;学习条件：&#xa;灵根：任意&#xa;路径：锻躯&#xa;境界：云息六层及以上&#xa;前置：已学托身&#xa;研读属性：敏捷≥9；体道造诣≥7&#xa;学会永久属性：体魄 +0.5；敏捷 +0.5" vertex="1">
+          <mxGeometry height="240" width="340" x="850" y="960" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="淬炼（仅战斗内）&lt;br&gt;战斗属性：物理伤害 +10%" vertex="1">
+          <mxGeometry height="92" width="270" x="400" y="995" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="化法&lt;br&gt;平息（体修基础技能追加效果，保留原效果）&lt;br&gt;关键词：生命、回复、闪避&lt;br&gt;原效果：气血-1；触发公共气血回落，回复最大生命×3%。&lt;br&gt;追加：本技能使气血下降后，获得身法1层。&lt;br&gt;耗费与目标沿用平息：精力1；自身。" vertex="1">
+          <mxGeometry height="200" width="290" x="1360" y="990" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_cards" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;" value="习得：遗蜕、解形&lt;br&gt;&lt;br&gt;遗蜕：&lt;br&gt;类型：术诀&lt;br&gt;关键词：生命、闪避、回复&lt;br&gt;耗费：精力2；法力0&lt;br&gt;目标：自身&lt;br&gt;效果：气血-1；触发公共气血回落，回复最大生命×3%；获得游骸1层。本场第二次由自身主动使气血下降时，额外获得游骸1层。&lt;br&gt;使用次数：不限。&lt;br&gt;&lt;br&gt;解形：&lt;br&gt;类型：攻伐&lt;br&gt;关键词：闪避&lt;br&gt;耗费：精力1；法力0&lt;br&gt;目标：指定1名敌方&lt;br&gt;伤害类型：物理&lt;br&gt;效果：仅当自身拥有游骸时可用；消耗游骸1层并计入本场已消耗游骸；本场限用1次；伤害 = round(7 + 体魄×0.35 + 敏捷×0.25 + 体道造诣×0.25)。" vertex="1">
+          <mxGeometry height="450" width="740" x="-400" y="1220" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;" value="第四卷：冯虚 卷章ID：feng_xu 顺序：4 定位：按本场耗骸数施展多段攻伐，收束攻防循环 学成可修至：云息十三层 学习条件： 灵根：任意 路径：锻躯 境界：云息九层及以上 前置：已学解形 研读属性：敏捷≥10；体道造诣≥9 学会永久属性：敏捷 +0.5；体道造诣 +0.5" vertex="1">
+          <mxGeometry height="240" width="340" x="850" y="1280" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="淬炼（仅战斗内）&lt;br&gt;战斗属性：气血上限 +1&lt;br&gt;身法 +10%" vertex="1">
+          <mxGeometry height="92" width="270" x="370" y="1315" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="化法&lt;br&gt;发劲（体修基础技能追加效果，保留原效果）&lt;br&gt;关键词：闪避&lt;br&gt;原效果：对指定1名敌方造成物理伤害，伤害 = round(8 + 体魄×0.40 + 体道造诣×0.20 + 敏捷×0.25)。&lt;br&gt;追加：若本场已消耗游骸不少于1层，对同一目标额外结算1段物理伤害；该段伤害 = round(4 + 体魄×0.20 + 敏捷×0.15 + 体道造诣×0.15)。&lt;br&gt;耗费与目标沿用发劲：精力1；指定1名敌方。" vertex="1">
+          <mxGeometry height="275" width="290" x="1360" y="1310" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_cards" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;" value="习得：冯虚&lt;br&gt;&lt;br&gt;冯虚：&lt;br&gt;类型：攻伐&lt;br&gt;关键词：闪避&lt;br&gt;耗费：精力3；法力0&lt;br&gt;目标：指定1名敌方&lt;br&gt;伤害类型：物理&lt;br&gt;效果：本场限用1次；仅当本场已消耗游骸不少于2层时可用；不消耗当前游骸。伤害段数 = 1 + floor(本场已消耗游骸÷2)；每段伤害 = round(8 + 体魄×0.45 + 敏捷×0.30 + 体道造诣×0.30)。" vertex="1">
+          <mxGeometry height="372" width="740" x="-400" y="1700" as="geometry" />
+        </mxCell>
+        <mxCell id="summary" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" value="淬炼修正只作用于战斗内属性，并随本卷心法被动显示在Buff栏信息详情；战斗结束移除，不进入角色永久属性。&lt;br&gt;即时队列战斗主链：每轮首次主动气血下降 → 获得游骸 → 敌方含物理伤害招式到来时按肉身根基判定整招抵挡 → 每次实际消耗游骸后，主修心法追加身法3层 → 托身转为持续身法、解形主动攻伐、发劲追加伤害、撼山化法增幅，最终以冯虚读取本场已消耗游骸完成多段收束。&lt;br&gt;限次：撼山化法每轮1次；解形与冯虚各每场1次；其余主动技能不限次。技能没有准备、收招或冷却；每次行动仍占一个队列位。&lt;br&gt;淬炼百分比按同属性加算后修正战斗基值；气血上限仍按层数增加。淬炼只在战斗内生效，并显示在本秘籍心法Buff图标详情，不进入角色永久属性。" vertex="1">
+          <mxGeometry height="130" width="420" x="1660" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="status_rules" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;align=left;verticalAlign=top;" value="术语与状态详解&lt;br&gt;&lt;br&gt;气血&lt;br&gt;锻躯公共战斗状态，基础上限3层；每次主动下降1层回复最大生命×3%；即时队列战斗无回合末自动下降，其他自动回落来源须由对应状态或技能定义；战斗结束重置。&lt;br&gt;&lt;br&gt;游骸&lt;br&gt;敌方招式即将结算且含物理伤害时检查。来源可追溯且双方体魄、敏捷可读时，比较体魄＋敏捷＋体道造诣；仅当攻击者总和严格小于自身总和的2倍，才消耗1层并规避该招对自身造成的全部伤害，包括物理、神魂及多段伤害；阈值不满足则不消耗并继续身法判定。来源不可追溯或无法读取体魄/敏捷时，直接消耗1层并抵挡该招对自身全部伤害；缺少体道造诣按0计。范围招式由各目标分别判定。队首匹配应对先处理，再判定游骸。&lt;br&gt;&lt;br&gt;本场已消耗游骸层数&lt;br&gt;本场战斗内的来源计数：每当游骸因整项技能伤害闪避或技能效果而被消耗时+1；不占状态栏，仅供冯虚读取；战斗结束重置。&lt;br&gt;&lt;br&gt;身法&lt;br&gt;持续型增益状态，最多20层，持续1回合。每层使自身基础身法属性（dodge）提高1%；有效身法属性 = floor(基础dodge × (1 + 身法层数 × 0.01 + 本经淬炼身法加成))。获得新层时叠加并刷新为1回合；获得层的回合不扣时长，从下一完整回合结束时递减；受击不消耗层数；1回合时长归零或战斗结束时移除。" vertex="1">
+          <mxGeometry height="470" width="430" x="1660" y="820" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" edge="1" parent="1" source="overview" style="endArrow=block;html=1;" target="c1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_a" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_left" value="淬炼">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_b" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_c" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_cards" value="本卷被动与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_a" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_left" value="淬炼">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_b" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_c" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_cards" value="习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_a" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_left" value="淬炼">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_b" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_c" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_cards" value="习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_a" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_left" value="淬炼">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_b" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_c" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_cards" value="习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Mv1PqdFcm8ive_kurOkp-1" edge="1" parent="1" source="c3_cards" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;innerLoopWaypoints=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" target="c3_cards">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

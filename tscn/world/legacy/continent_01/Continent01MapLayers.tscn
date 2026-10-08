@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Texture2D" path="res://textures/world_map/legacy/continent_01/assets/continent_01_land_base_foreshortened_v5_simplified_full.png" id="1_land"]
+[ext_resource type="Texture2D" path="res://textures/world_map/legacy/continent_01/assets/continent_01_state_tint.png" id="2_states"]
+[ext_resource type="Texture2D" path="res://textures/world_map/legacy/continent_01/assets/continent_01_terrain_mountains_reused_v3_small.png" id="3_terrain"]
+[ext_resource type="Texture2D" path="res://textures/world_map/legacy/continent_01/assets/continent_01_roads.png" id="4_roads"]
+[ext_resource type="Texture2D" path="res://textures/world_map/legacy/continent_01/assets/continent_01_state_boundaries.png" id="5_boundaries"]
+[ext_resource type="Texture2D" path="res://textures/world_map/legacy/continent_01/assets/continent_01_surface_ink_wash_v1.png" id="6_surface"]
+
+[node name="Continent01MapLayers" type="Node2D"]
+texture_filter = 4
+
+; All static visual layers share the same full presented canvas. This keeps the
+; editor preview and runtime registration identical and prevents the land base
+; from masking a terrain layer that was authored at a different scale.
+[node name="VisualOrigin" type="Node2D" parent="."]
+position = Vector2(1591.5, 1033.5)
+
+[node name="LandBase" type="Sprite2D" parent="."]
+position = Vector2(1591.5, 1033.5)
+texture = ExtResource("1_land")
+scale = Vector2(1, 1)
+
+[node name="StateTint" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+position = Vector2(1591.5, 1033.5)
+texture = ExtResource("2_states")
+
+[node name="SurfaceTexture" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(1591.5, 1033.5)
+texture = ExtResource("6_surface")
+
+[node name="Roads" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+position = Vector2(1591.5, 1033.5)
+texture = ExtResource("4_roads")
+
+[node name="Terrain" type="Sprite2D" parent="."]
+z_index = 3
+position = Vector2(1591.5, 1033.5)
+texture = ExtResource("3_terrain")
+
+[node name="StateBoundaries" type="Sprite2D" parent="."]
+visible = false
+z_index = 4
+position = Vector2(1591.5, 1033.5)
+texture = ExtResource("5_boundaries")

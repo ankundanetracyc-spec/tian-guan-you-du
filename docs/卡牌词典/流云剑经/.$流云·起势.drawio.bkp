@@ -1,0 +1,33 @@
+<mxfile host="app.diagrams.net" modified="2026-07-18T00:00:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="liuyunqishi" name="流云·起势">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="流云·起势&#xa;云澜剑经 / 行云卷 / 习得*1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="560" y="20" width="360" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="main" value="卡牌名：流云·起势&#xa;资源路径：res://resources/activeskills/云澜剑经/流云·起势.tres&#xa;类型：POWER&#xa;来源：云澜剑经 / 行云卷&#xa;描述：起流云之势。进入流云剑势；每回合开始消耗剑意维持，剑意不足时本回合失效。&#xa;目标：self&#xa;射程：0-0&#xa;消耗：法力0 / 精力0 / 灵识0" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="560" y="150" width="380" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="left" value="来源/前置&#xa;来源秘籍：云澜剑经&#xa;来源卷：行云卷&#xa;习得数量：1&#xa;心法牌也算习得牌" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="160" y="190" width="280" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="right" value="主修/辅修差异&#xa;辅修：获得剑意*1，进入流云剑势（辅修）&#xa;主修：获得剑意*2，进入流云剑势（主修）&#xa;主修剑势：每回合首次遁身后获得剑意*1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="170" width="310" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="bottom" value="状态/关键词/条件&#xa;关键词：消耗，心法牌&#xa;状态：剑意，流云剑势&#xa;维持：每回合开始消耗剑意*2&#xa;失效：剑意不足时，本回合流云剑势失效&#xa;流云追击：剑术伤害后追加小段剑术伤害，不递归" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="560" y="460" width="400" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="数值摘要&#xa;辅修剑势：精准+4，会心+4，追击=4+剑道*0.10+敏捷*0.06&#xa;主修剑势：精准+6，会心+8，追击=5+剑道*0.13+敏捷*0.08&#xa;消耗资源：无&#xa;可配置数量：1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="430" width="330" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="来源" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="left" target="main"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e2" value="主辅修差异" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="main" target="right"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e3" value="状态/条件" style="endArrow=block;html=1;rounded=0;" edge="1" parent="1" source="main" target="bottom"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e4" value="数值" style="endArrow=none;dashed=1;html=1;" edge="1" parent="1" source="main" target="note"><mxGeometry relative="1" as="geometry" /></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
+

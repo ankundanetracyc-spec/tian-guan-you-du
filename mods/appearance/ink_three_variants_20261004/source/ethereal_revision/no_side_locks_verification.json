@@ -1,0 +1,26 @@
+{
+  "pass": true,
+  "changed_pngs": [
+    "male/hair_front/05.png",
+    "female/hair_front/05.png"
+  ],
+  "other_pngs_unchanged": 65,
+  "front_alpha_bounds": {
+    "male": [
+      362,
+      110,
+      676,
+      351
+    ],
+    "female": [
+      350,
+      107,
+      692,
+      370
+    ]
+  },
+  "no_dangling_locks_below_y450": true,
+  "visual_front_5_back_1_to_5_checks": 10,
+  "generation_tool": "built-in imagegen",
+  "user_visual_approval": false
+}

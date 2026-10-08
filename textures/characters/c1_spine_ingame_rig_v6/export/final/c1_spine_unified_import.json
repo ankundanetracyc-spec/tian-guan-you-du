@@ -1,0 +1,97 @@
+{
+"skeleton": { "hash": "gYJmAWhlba5tbG409m4V+WbZ7P4", "spine": "3.8.75", "images": "../parts/", "audio": "" },
+"bones": [
+	{ "name": "root" },
+	{ "name": "hips", "parent": "root", "length": 150, "y": -250 },
+	{ "name": "torso", "parent": "hips", "length": 300, "y": 250 },
+	{ "name": "neck", "parent": "torso", "length": 120, "y": 330 },
+	{ "name": "head", "parent": "neck", "length": 160, "y": 70 }
+],
+"slots": [
+	{ "name": "slot_character_full", "bone": "root", "attachment": "character_full" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"slot_character_full": {
+				"character_full": { "path": "01_character_full", "width": 720, "height": 960 }
+			}
+		}
+	}
+],
+"animations": {
+	"attack": {
+		"bones": {
+			"root": {
+				"rotate": [
+					{},
+					{ "time": 0.16, "angle": -3 },
+					{ "time": 0.34, "angle": 5 },
+					{ "time": 0.82, "curve": "stepped" },
+					{ "time": 1 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.16, "x": 8 },
+					{ "time": 0.34, "x": -4 },
+					{ "time": 0.82, "curve": "stepped" },
+					{ "time": 1 }
+				]
+			}
+		}
+	},
+	"death_kneel": {
+		"bones": {
+			"root": {
+				"rotate": [
+					{},
+					{ "time": 0.8, "angle": -10, "curve": "stepped" },
+					{ "time": 1, "angle": -10 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.8, "y": -26, "curve": "stepped" },
+					{ "time": 1, "y": -26 }
+				]
+			}
+		}
+	},
+	"hurt": {
+		"bones": {
+			"root": {
+				"rotate": [
+					{},
+					{ "time": 0.1, "angle": -5 },
+					{ "time": 0.28, "angle": 2 },
+					{ "time": 0.48, "curve": "stepped" },
+					{ "time": 1 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.1, "x": -8 },
+					{ "time": 0.28, "x": 3 },
+					{ "time": 0.48, "curve": "stepped" },
+					{ "time": 1 }
+				]
+			}
+		}
+	},
+	"idle": {
+		"bones": {
+			"root": {
+				"rotate": [
+					{},
+					{ "time": 0.5, "angle": 0.4 },
+					{ "time": 1 }
+				],
+				"translate": [
+					{},
+					{ "time": 0.5, "y": 2 },
+					{ "time": 1 }
+				]
+			}
+		}
+	}
+}
+}

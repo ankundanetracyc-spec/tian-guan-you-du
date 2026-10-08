@@ -1,0 +1,80 @@
+{
+  "canvas": [
+    1024,
+    1536
+  ],
+  "runtime_offset": [
+    0,
+    0
+  ],
+  "method": "whole-layer uniform fitting; preserves previous scale/translation where source layout retained; not formal three-point residual certification",
+  "parts": [
+    {
+      "key": "male_hair_front_8",
+      "source": "male_hair_front_8.png",
+      "generated_original": "D:/CodexData/generated_images/01a0fd74-de00-7ab2-9dfc-c15a97009561/exec-26ae9791-6075-483d-91a6-ccc0a2a8dddf.png",
+      "source_size": [
+        1402,
+        1122
+      ],
+      "uniform_transform": [
+        0.26,
+        330,
+        119
+      ],
+      "source_sha256": "e60f7b627f6e53ed98466765f2600bd4f33c71fc5b6a200d1a52f10569cf0fab",
+      "output": "male/hair_front/08.png",
+      "no_local_warp": true
+    },
+    {
+      "key": "female_hair_front_8",
+      "source": "female_hair_front_8.png",
+      "generated_original": "D:/CodexData/generated_images/01a0fd74-de00-7ab2-9dfc-c15a97009561/exec-b19a7b94-b3b5-4d56-af9c-40a9e0cad4e1.png",
+      "source_size": [
+        1312,
+        1199
+      ],
+      "uniform_transform": [
+        0.3,
+        322,
+        121
+      ],
+      "source_sha256": "3bc76ed2d01a5e216f5ac656c0d2d8d86b5d794088e550735aea2d80f88e5df8",
+      "output": "female/hair_front/08.png",
+      "no_local_warp": true
+    },
+    {
+      "key": "male_hair_back_8",
+      "source": "male_hair_back_8.png",
+      "generated_original": "D:/CodexData/generated_images/01a0fd74-de00-7ab2-9dfc-c15a97009561/exec-170e366c-3545-4c8d-bfcb-270aef819089.png",
+      "source_size": [
+        1294,
+        1216
+      ],
+      "uniform_transform": [
+        0.32,
+        310,
+        135
+      ],
+      "source_sha256": "1449a5fdbb10bfd6418fd2e4a1c7b398e4fb472100d857a96c181dda6f59d61d",
+      "output": "male/hair_back/08.png",
+      "no_local_warp": true
+    }
+  ],
+  "base01_scalp_checks": {
+    "male": {
+      "uncovered_dense_scalp_boundary_pixels": 0,
+      "rows": [
+        180,
+        340
+      ]
+    },
+    "female": {
+      "uncovered_dense_scalp_boundary_pixels": 0,
+      "rows": [
+        180,
+        340
+      ]
+    }
+  }
+}

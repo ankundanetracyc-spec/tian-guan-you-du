@@ -1,0 +1,2396 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Script" path="res://csharp/world/WorldNodeData.cs" id="1_node"]
+[ext_resource type="Script" path="res://csharp/world/WorldNodeMapData.cs" id="2_map"]
+[ext_resource type="Script" path="res://csharp/world/WorldTerritoryData.cs" id="3_territory"]
+[ext_resource type="Script" path="res://csharp/world/WorldRouteData.cs" id="4_route"]
+[ext_resource type="Script" path="res://csharp/world/WorldSubsceneData.cs" id="6_subscene"]
+[ext_resource type="Texture2D" path="res://textures/world_map/zhaoming_vast_nine_states_runtime_8000_native.png" id="5_background"]
+[ext_resource type="Texture2D" path="res://textures/world_map/territory_masks_vast_nine_states_5x5_8000/zhaoming_territory_id_r00.png" id="mask_00"]
+[ext_resource type="Texture2D" path="res://textures/world_map/territory_masks_vast_nine_states_5x5_8000/zhaoming_territory_id_r01.png" id="mask_01"]
+[ext_resource type="Texture2D" path="res://textures/world_map/territory_masks_vast_nine_states_5x5_8000/zhaoming_territory_id_r02.png" id="mask_02"]
+[ext_resource type="Texture2D" path="res://textures/world_map/territory_masks_vast_nine_states_5x5_8000/zhaoming_territory_id_r03.png" id="mask_03"]
+[ext_resource type="Texture2D" path="res://textures/world_map/territory_masks_vast_nine_states_5x5_8000/zhaoming_territory_id_r04.png" id="mask_04"]
+[ext_resource type="Texture2D" path="res://textures/world_map/territory_masks_vast_nine_states_5x5_8000/zhaoming_territory_id_r10.png" id="mask_10"]
+[ext_resource type="Texture2D" path="res://textures/world_map/territory_masks_vast_nine_states_5x5_8000/zhaoming_territory_id_r11.png" id="mask_11"]
+[ext_resource type="Texture2D" path="res://textures/world_map/territory_masks_vast_nine_states_5x5_8000/zhaoming_territory_id_r12.png" id="mask_12"]
+[ext_resource type="Texture2D" path="res://textures/world_map/territory_masks_vast_nine_states_5x5_8000/zhaoming_territory_id_r13.png" id="mask_13"]
+[ext_resource type="Texture2D" path="res://textures/world_map/territory_masks_vast_nine_states_5x5_8000/zhaoming_territory_id_r14.png" id="mask_14"]
+[ext_resource type="Texture2D" path="res://textures/world_map/territory_masks_vast_nine_states_5x5_8000/zhaoming_territory_id_r20.png" id="mask_20"]
+[ext_resource type="Texture2D" path="res://textures/world_map/territory_masks_vast_nine_states_5x5_8000/zhaoming_territory_id_r21.png" id="mask_21"]
+[ext_resource type="Texture2D" path="res://textures/world_map/territory_masks_vast_nine_states_5x5_8000/zhaoming_territory_id_r22.png" id="mask_22"]
+[ext_resource type="Texture2D" path="res://textures/world_map/territory_masks_vast_nine_states_5x5_8000/zhaoming_territory_id_r23.png" id="mask_23"]
+[ext_resource type="Texture2D" path="res://textures/world_map/territory_masks_vast_nine_states_5x5_8000/zhaoming_territory_id_r24.png" id="mask_24"]
+[ext_resource type="Texture2D" path="res://textures/world_map/territory_masks_vast_nine_states_5x5_8000/zhaoming_territory_id_r30.png" id="mask_30"]
+[ext_resource type="Texture2D" path="res://textures/world_map/territory_masks_vast_nine_states_5x5_8000/zhaoming_territory_id_r31.png" id="mask_31"]
+[ext_resource type="Texture2D" path="res://textures/world_map/territory_masks_vast_nine_states_5x5_8000/zhaoming_territory_id_r32.png" id="mask_32"]
+[ext_resource type="Texture2D" path="res://textures/world_map/territory_masks_vast_nine_states_5x5_8000/zhaoming_territory_id_r33.png" id="mask_33"]
+[ext_resource type="Texture2D" path="res://textures/world_map/territory_masks_vast_nine_states_5x5_8000/zhaoming_territory_id_r34.png" id="mask_34"]
+[ext_resource type="Texture2D" path="res://textures/world_map/territory_masks_vast_nine_states_5x5_8000/zhaoming_territory_id_r40.png" id="mask_40"]
+[ext_resource type="Texture2D" path="res://textures/world_map/territory_masks_vast_nine_states_5x5_8000/zhaoming_territory_id_r41.png" id="mask_41"]
+[ext_resource type="Texture2D" path="res://textures/world_map/territory_masks_vast_nine_states_5x5_8000/zhaoming_territory_id_r42.png" id="mask_42"]
+[ext_resource type="Texture2D" path="res://textures/world_map/territory_masks_vast_nine_states_5x5_8000/zhaoming_territory_id_r43.png" id="mask_43"]
+[ext_resource type="Texture2D" path="res://textures/world_map/territory_masks_vast_nine_states_5x5_8000/zhaoming_territory_id_r44.png" id="mask_44"]
+
+[sub_resource type="Resource" id="sub_white_market"]
+script = ExtResource("6_subscene")
+subscene_id = "market"
+subscene_name = "坊市"
+description = "货商、摊贩与短暂停留的行旅修士往来之处。"
+
+[sub_resource type="Resource" id="sub_white_inn"]
+script = ExtResource("6_subscene")
+subscene_id = "inn"
+subscene_name = "客栈"
+description = "供行人歇脚、打听消息的客栈。"
+
+[sub_resource type="Resource" id="sub_white_notice"]
+script = ExtResource("6_subscene")
+subscene_id = "notice_hall"
+subscene_name = "告示厅"
+description = "镇上公告、委托信息和差役文书的集中处。"
+
+[sub_resource type="Resource" id="sub_white_bookshop"]
+script = ExtResource("6_subscene")
+subscene_id = "bookshop"
+subscene_name = "书坊"
+description = "抄书、售卷与交换外地见闻的小书坊。"
+
+[sub_resource type="Resource" id="sub_east_edge"]
+script = ExtResource("6_subscene")
+subscene_id = "forest_edge"
+subscene_name = "东林边缘"
+description = "行猎会与采集者常驻的林缘营地。"
+
+[sub_resource type="Resource" id="sub_fulan_gate"]
+script = ExtResource("6_subscene")
+subscene_id = "mountain_gate"
+subscene_name = "伏岚山门"
+description = "入山来客需在此递帖、问路或等候传讯。"
+
+[sub_resource type="Resource" id="sub_fulan_court"]
+script = ExtResource("6_subscene")
+subscene_id = "courtyard"
+subscene_name = "伏岚外院"
+description = "外执、记名弟子与来客暂居的院落。"
+
+[sub_resource type="Resource" id="sub_lanpu_wharf"]
+script = ExtResource("6_subscene")
+subscene_id = "wharf"
+subscene_name = "澜浦码头"
+description = "陆氏船只停泊、验契与交卸货物的码头。"
+
+[sub_resource type="Resource" id="sub_herb_outer"]
+script = ExtResource("6_subscene")
+subscene_id = "outer_valley"
+subscene_name = "药谷外缘"
+description = "季候变化明显的低风险采药区域。"
+
+[sub_resource type="Resource" id="node_home_village"]
+script = ExtResource("1_node")
+node_id = "home_village"
+node_name = "青溪里"
+node_type = 6
+display_level = 1
+territory_id = "yunque"
+requires_unlock = false
+unlocked = true
+unlock_hint = "你记得这里，却已没有可循的归路。"
+map_position = Vector2(4240, 3685)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "无名山"
+spirit_pressure = 2
+danger_level = 1
+population = 0
+faction_id = ""
+description = "地图仍在记忆中标出青溪里的位置；循迹而至，却只会看见一座无名山。"
+connected_nodes = Array[String](["white_stone_town"])
+[sub_resource type="Resource" id="node_white_stone_town"]
+script = ExtResource("1_node")
+node_id = "white_stone_town"
+node_name = "白石镇"
+node_type = 0
+display_level = 1
+territory_id = "yunque"
+requires_unlock = false
+unlocked = true
+map_position = Vector2(3790, 3400)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "河谷城镇"
+spirit_pressure = 3
+danger_level = 2
+population = 2600
+faction_id = "white_stone_town"
+description = "云阙州东南近域的普通聚集地。此处供人补给、暂住、交易和打听消息，却不替任何人安排修行道路。"
+connected_nodes = Array[String](["home_village", "east_woods", "fulan_temple", "lanpu_ferry", "herb_valley"])
+subscenes = Array[ExtResource("6_subscene")]([SubResource("sub_white_market"), SubResource("sub_white_inn"), SubResource("sub_white_notice"), SubResource("sub_white_bookshop")])
+[sub_resource type="Resource" id="node_east_woods"]
+script = ExtResource("1_node")
+node_id = "east_woods"
+node_name = "东林地"
+node_type = 2
+display_level = 1
+territory_id = "yunque"
+requires_unlock = false
+unlocked = true
+map_position = Vector2(4510, 3580)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "低丘林地"
+spirit_pressure = 3
+danger_level = 2
+population = 40
+faction_id = "eastwood_hunters"
+description = "白石镇外的低丘林地。行猎会成员、采集者与低阶妖兽在林缘交错出没。"
+connected_nodes = Array[String](["white_stone_town", "mirror_marsh"])
+subscenes = Array[ExtResource("6_subscene")]([SubResource("sub_east_edge")])
+[sub_resource type="Resource" id="node_herb_valley"]
+script = ExtResource("1_node")
+node_id = "herb_valley"
+node_name = "灵草谷"
+node_type = 2
+display_level = 2
+territory_id = "yunque"
+requires_unlock = true
+unlocked = false
+unlock_hint = "先在序章后取得出门资格，再沿路线探索云阙州，与当地人建立联系。"
+map_position = Vector2(4000, 3850)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "湖泽药谷"
+spirit_pressure = 5
+danger_level = 4
+population = 180
+faction_id = "灵草谷采药会"
+description = "河网与湿地交汇的药材产区，谷内灵草受季候影响明显。"
+connected_nodes = Array[String](["white_stone_town"])
+
+[sub_resource type="Resource" id="node_qinglan_observatory"]
+script = ExtResource("1_node")
+node_id = "fulan_temple"
+node_name = "伏岚观"
+node_type = 1
+display_level = 1
+territory_id = "yunque"
+requires_unlock = true
+unlocked = false
+unlock_hint = "在白石镇、东林地或行旅人口中打听伏岚山道。"
+map_position = Vector2(3430, 3100)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "山间道观"
+spirit_pressure = 5
+danger_level = 2
+population = 120
+faction_id = "fulan_temple"
+description = "云阙州东南的清修小宗门，重护山、镇邪与门规。来客能否入山，取决于来意与自身行止。"
+connected_nodes = Array[String](["white_stone_town"])
+subscenes = Array[ExtResource("6_subscene")]([SubResource("sub_fulan_gate"), SubResource("sub_fulan_court")])
+[sub_resource type="Resource" id="node_xuan_ferry"]
+script = ExtResource("1_node")
+node_id = "lanpu_ferry"
+node_name = "澜浦渡"
+node_type = 0
+display_level = 1
+territory_id = "yunque"
+requires_unlock = true
+unlocked = false
+unlock_hint = "先从白石镇或行旅人口中得知澜浦陆氏的水路。"
+map_position = Vector2(3100, 2590)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "河港渡口"
+spirit_pressure = 4
+danger_level = 3
+population = 900
+faction_id = "lanpu_lu"
+description = "澜浦陆氏经营的河港渡口，守水路，也常收短期护送与采买人手。"
+connected_nodes = Array[String](["white_stone_town", "mirror_marsh"])
+subscenes = Array[ExtResource("6_subscene")]([SubResource("sub_lanpu_wharf")])
+[sub_resource type="Resource" id="node_mirror_marsh"]
+script = ExtResource("1_node")
+node_id = "mirror_marsh"
+node_name = "镜月泽"
+node_type = 3
+display_level = 2
+territory_id = "yunque"
+requires_unlock = true
+unlocked = false
+unlock_hint = "先在序章后取得出门资格，再沿路线探索云阙州，与当地人建立联系。"
+map_position = Vector2(4450, 4000)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "镜泽湿地"
+spirit_pressure = 7
+danger_level = 6
+population = 0
+faction_id = "无主险地"
+description = "湖泽深处会映出并不存在的道路，既可能发现遗迹，也可能误入临时异象。"
+connected_nodes = Array[String](["east_woods", "xuan_ferry"])
+
+[sub_resource type="Resource" id="node_arctic_palace"]
+script = ExtResource("1_node")
+node_id = "arctic_palace"
+node_name = "北极仙宫"
+node_type = 1
+display_level = 1
+territory_id = "xuanshuo"
+requires_unlock = true
+unlocked = false
+unlock_hint = "先在序章后取得出门资格，再沿路线探索玄朔州，与当地人建立联系。"
+map_position = Vector2(2350, 1990)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "雪原冰海"
+spirit_pressure = 8
+danger_level = 5
+population = 6200
+faction_id = "北极仙宫"
+description = "北境守界宗门，镇守冰海裂隙与雪关旧线，门下并非只有战斗修士。"
+connected_nodes = Array[String](["xuanxiao_academy"])
+
+[sub_resource type="Resource" id="node_xuanxiao_academy"]
+script = ExtResource("1_node")
+node_id = "xuanxiao_academy"
+node_name = "玄枵院"
+node_type = 1
+display_level = 2
+territory_id = "xuanshuo"
+requires_unlock = true
+unlocked = false
+unlock_hint = "先在序章后取得出门资格，再沿路线探索玄朔州，与当地人建立联系。"
+map_position = Vector2(2860, 2200)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "雪原学宫"
+spirit_pressure = 7
+danger_level = 4
+population = 1400
+faction_id = "玄枵院"
+description = "研究北冥星历、冰脉与古代天象的学宫，允许外来修士以客席、学徒或委托人身份往来。"
+connected_nodes = Array[String](["arctic_palace", "nine_vein_manor"])
+
+[sub_resource type="Resource" id="node_nine_vein_manor"]
+script = ExtResource("1_node")
+node_id = "nine_vein_manor"
+node_name = "九脉山庄"
+node_type = 0
+display_level = 1
+territory_id = "xiangshan"
+requires_unlock = true
+unlocked = false
+unlock_hint = "先在序章后取得出门资格，再沿路线探索相山州，与当地人建立联系。"
+map_position = Vector2(4000, 2350)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "山原庄园"
+spirit_pressure = 6
+danger_level = 3
+population = 2200
+faction_id = "九脉山庄·客卿"
+description = "掌握多条山脉旧图的地师家族聚居地。玩家可在此作为家族客卿发展，不进入家族经营管理。"
+connected_nodes = Array[String](["xuanxiao_academy", "yuxu_sect", "tianji_branch"])
+
+[sub_resource type="Resource" id="node_tianji_branch"]
+script = ExtResource("1_node")
+node_id = "tianji_branch"
+node_name = "天机阁·相山分阁"
+node_type = 1
+display_level = 2
+territory_id = "xiangshan"
+requires_unlock = true
+unlocked = false
+unlock_hint = "先在序章后取得出门资格，再沿路线探索相山州，与当地人建立联系。"
+map_position = Vector2(4750, 2440)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "北海山城"
+spirit_pressure = 6
+danger_level = 3
+population = 1800
+faction_id = "天机阁"
+description = "天机阁在相山州的分阁，提供地脉测绘、情报交易和短期委托。"
+connected_nodes = Array[String](["nine_vein_manor"])
+
+[sub_resource type="Resource" id="node_xiling_garrison"]
+script = ExtResource("1_node")
+node_id = "xiling_garrison"
+node_name = "西陵戍所"
+node_type = 4
+display_level = 1
+territory_id = "guanhe"
+requires_unlock = true
+unlocked = false
+unlock_hint = "先在序章后取得出门资格，再沿路线探索关河州，与当地人建立联系。"
+map_position = Vector2(1480, 3160)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "荒漠关城"
+spirit_pressure = 4
+danger_level = 6
+population = 3400
+faction_id = "西陵戍所"
+description = "古道边的军务据点，负责维护关河商路与失控灵脉的警戒线。"
+connected_nodes = Array[String](["ghost_cry_ridge", "xuanhuang_mine", "sword_forge_city"])
+
+[sub_resource type="Resource" id="node_ghost_cry_ridge"]
+script = ExtResource("1_node")
+node_id = "ghost_cry_ridge"
+node_name = "鬼哭岭"
+node_type = 3
+display_level = 2
+territory_id = "guanhe"
+requires_unlock = true
+unlocked = false
+unlock_hint = "先在序章后取得出门资格，再沿路线探索关河州，与当地人建立联系。"
+map_position = Vector2(2080, 3400)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "风蚀峡谷"
+spirit_pressure = 7
+danger_level = 8
+population = 0
+faction_id = "无主险地"
+description = "旧战场与风蚀峡谷叠在一起，夜间回声常会引出并不属于此地的脚步。"
+connected_nodes = Array[String](["xiling_garrison"])
+
+[sub_resource type="Resource" id="node_xuanhuang_mine"]
+script = ExtResource("1_node")
+node_id = "xuanhuang_mine"
+node_name = "玄黄矿脉"
+node_type = 2
+display_level = 2
+territory_id = "guanhe"
+requires_unlock = true
+unlocked = false
+unlock_hint = "先在序章后取得出门资格，再沿路线探索关河州，与当地人建立联系。"
+map_position = Vector2(1750, 2860)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "荒漠矿区"
+spirit_pressure = 5
+danger_level = 6
+population = 600
+faction_id = "玄黄矿盟"
+description = "被玄黄砂包围的古矿脉，矿工和寻遗修士都在争夺更深处的旧坑。"
+connected_nodes = Array[String](["xiling_garrison"])
+
+[sub_resource type="Resource" id="node_yuxu_sect"]
+script = ExtResource("1_node")
+node_id = "yuxu_sect"
+node_name = "玉虚仙宗"
+node_type = 1
+display_level = 1
+territory_id = "yunque"
+requires_unlock = true
+unlocked = false
+unlock_hint = "先在序章后取得出门资格，再沿路线探索云阙州，与当地人建立联系。"
+map_position = Vector2(3550, 2995)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "中州山门"
+spirit_pressure = 8
+danger_level = 3
+population = 9000
+faction_id = "玉虚仙宗"
+description = "中州传法宗门，拥有多种兼修与客席路径，是九州诸多修士往来的节点之一。"
+connected_nodes = Array[String](["qinglan_observatory", "nine_vein_manor"])
+
+[sub_resource type="Resource" id="node_xian_kingdom"]
+script = ExtResource("1_node")
+node_id = "xian_kingdom"
+node_name = "天衡仙国"
+node_type = 0
+display_level = 1
+territory_id = "guichao"
+requires_unlock = true
+unlocked = false
+unlock_hint = "先在序章后取得出门资格，再沿路线探索归潮州，与当地人建立联系。"
+map_position = Vector2(5920, 4270)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "河口仙都"
+spirit_pressure = 7
+danger_level = 4
+population = 24000
+faction_id = "天衡仙国"
+description = "位于归潮州北部、东华州南缘的河口腹地，以城邑、驿路与国祀维系广域秩序。后续愿力玩法在此展开；愿力与灵力分立，不替代修士的吐纳、境界与个人成长。"
+connected_nodes = Array[String](["bailu_academy", "qianji_city", "notnight_port"])
+
+[sub_resource type="Resource" id="node_bailu_academy"]
+script = ExtResource("1_node")
+node_id = "bailu_academy"
+node_name = "白鹿书院"
+node_type = 1
+display_level = 2
+territory_id = "yunque"
+requires_unlock = true
+unlocked = false
+unlock_hint = "先在序章后取得出门资格，再沿路线探索云阙州，与当地人建立联系。"
+map_position = Vector2(3370, 3460)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "河畔书院"
+spirit_pressure = 5
+danger_level = 2
+population = 2600
+faction_id = "白鹿书院"
+description = "兼收凡俗学子与修行者的书院，重视典籍、推演、游学和地方见闻。"
+connected_nodes = Array[String](["qinglan_observatory", "xian_kingdom"])
+
+[sub_resource type="Resource" id="node_chengxin_steles"]
+script = ExtResource("1_node")
+node_id = "chengxin_steles"
+node_name = "澄心碑会"
+node_type = 1
+display_level = 2
+territory_id = "yunque"
+requires_unlock = true
+unlocked = false
+unlock_hint = "先在序章后取得出门资格，再沿路线探索云阙州，与当地人建立联系。"
+map_position = Vector2(3760, 3610)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "湖畔碑林"
+spirit_pressure = 6
+danger_level = 3
+population = 500
+faction_id = "澄心碑会"
+description = "由碑林守护者、游方学者和修士共同维持的地方组织，适合接取短期研究与护送委托。"
+connected_nodes = Array[String]([])
+
+[sub_resource type="Resource" id="node_qianji_city"]
+script = ExtResource("1_node")
+node_id = "qianji_city"
+node_name = "千机城"
+node_type = 0
+display_level = 1
+territory_id = "donghua"
+requires_unlock = true
+unlocked = false
+unlock_hint = "先在序章后取得出门资格，再沿路线探索东华州，与当地人建立联系。"
+map_position = Vector2(5170, 3250)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "东陆工坊城"
+spirit_pressure = 7
+danger_level = 3
+population = 24000
+faction_id = "千机城"
+description = "东华州的大型工坊城，阵法、机关、炼器和商队在城中形成复杂的协作网络。"
+connected_nodes = Array[String](["xian_kingdom", "dan_ding_hall", "baiji_gate", "notnight_port"])
+
+[sub_resource type="Resource" id="node_dan_ding_hall"]
+script = ExtResource("1_node")
+node_id = "dan_ding_hall"
+node_name = "丹鼎会"
+node_type = 1
+display_level = 2
+territory_id = "donghua"
+requires_unlock = true
+unlocked = false
+unlock_hint = "先在序章后取得出门资格，再沿路线探索东华州，与当地人建立联系。"
+map_position = Vector2(4930, 3490)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "河港会馆"
+spirit_pressure = 6
+danger_level = 3
+population = 1100
+faction_id = "丹鼎会"
+description = "由丹师与药商组成的会馆，提供学习、试炼和炼丹材料交易。"
+connected_nodes = Array[String](["qianji_city"])
+
+[sub_resource type="Resource" id="node_baiji_gate"]
+script = ExtResource("1_node")
+node_id = "baiji_gate"
+node_name = "百器门"
+node_type = 1
+display_level = 2
+territory_id = "donghua"
+requires_unlock = true
+unlocked = false
+unlock_hint = "先在序章后取得出门资格，再沿路线探索东华州，与当地人建立联系。"
+map_position = Vector2(5470, 3580)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "工坊山门"
+spirit_pressure = 6
+danger_level = 4
+population = 1500
+faction_id = "百器门"
+description = "器师门庭与外来工匠共用的山门，重视器物实作，不限制弟子兼修其他道路。"
+connected_nodes = Array[String](["qianji_city"])
+
+[sub_resource type="Resource" id="node_sword_forge_city"]
+script = ExtResource("1_node")
+node_id = "sword_forge_city"
+node_name = "铸剑城"
+node_type = 0
+display_level = 1
+territory_id = "yunxiu"
+requires_unlock = true
+unlocked = false
+unlock_hint = "先在序章后取得出门资格，再沿路线探索云岫州，与当地人建立联系。"
+map_position = Vector2(2260, 4075)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "高地城邦"
+spirit_pressure = 6
+danger_level = 4
+population = 7600
+faction_id = "铸剑城"
+description = "百脉山原中的地方城邦，以铸剑工艺闻名，但城内同时有镖局、药商、山民与多种散修传承。"
+connected_nodes = Array[String](["xiling_garrison", "changfeng_escort", "yaowang_valley", "demon_valley"])
+
+[sub_resource type="Resource" id="node_changfeng_escort"]
+script = ExtResource("1_node")
+node_id = "changfeng_escort"
+node_name = "长风镖局"
+node_type = 0
+display_level = 2
+territory_id = "yunxiu"
+requires_unlock = true
+unlocked = false
+unlock_hint = "先在序章后取得出门资格，再沿路线探索云岫州，与当地人建立联系。"
+map_position = Vector2(2860, 3460)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "山口驿站"
+spirit_pressure = 4
+danger_level = 4
+population = 420
+faction_id = "长风镖局"
+description = "跨越山原和中州的行旅组织，玩家可以以护送、采集或独行客身份建立关系。"
+connected_nodes = Array[String](["white_stone_town", "sword_forge_city"])
+
+[sub_resource type="Resource" id="node_yaowang_valley"]
+script = ExtResource("1_node")
+node_id = "yaowang_valley"
+node_name = "药王谷"
+node_type = 1
+display_level = 1
+territory_id = "cangwu"
+requires_unlock = true
+unlocked = false
+unlock_hint = "先在序章后取得出门资格，再沿路线探索苍梧州，与当地人建立联系。"
+map_position = Vector2(3490, 4480)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "雨林药谷"
+spirit_pressure = 8
+danger_level = 5
+population = 4800
+faction_id = "药王谷"
+description = "南荒药师聚居的山谷，接受外来修士以弟子、客卿或采药合作人身份往来。"
+connected_nodes = Array[String](["sword_forge_city", "demon_valley", "wuxian_teach", "cangwu_sunfall"])
+
+[sub_resource type="Resource" id="node_demon_valley"]
+script = ExtResource("1_node")
+node_id = "demon_valley"
+node_name = "万妖谷"
+node_type = 1
+display_level = 1
+territory_id = "cangwu"
+requires_unlock = true
+unlocked = false
+unlock_hint = "先在序章后取得出门资格，再沿路线探索苍梧州，与当地人建立联系。"
+map_position = Vector2(4000, 4300)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "南荒群峰"
+spirit_pressure = 9
+danger_level = 7
+population = 5200
+faction_id = "万妖谷"
+description = "多族妖修和通灵者共同维护的山谷联盟，内部有不同族群与个人修行传统。"
+connected_nodes = Array[String](["sword_forge_city", "yaowang_valley", "wuxian_teach"])
+
+[sub_resource type="Resource" id="node_wuxian_teach"]
+script = ExtResource("1_node")
+node_id = "wuxian_teach"
+node_name = "五仙教"
+node_type = 1
+display_level = 2
+territory_id = "cangwu"
+requires_unlock = true
+unlocked = false
+unlock_hint = "先在序章后取得出门资格，再沿路线探索苍梧州，与当地人建立联系。"
+map_position = Vector2(4360, 4660)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "瘴泽山门"
+spirit_pressure = 8
+danger_level = 7
+population = 1700
+faction_id = "五仙教"
+description = "擅长虫、蛇、蛊与山地药理的地方宗门，和药王谷既合作又有边界争执。"
+connected_nodes = Array[String](["yaowang_valley", "demon_valley"])
+
+[sub_resource type="Resource" id="node_cangwu_sunfall"]
+script = ExtResource("1_node")
+node_id = "cangwu_sunfall"
+node_name = "苍梧落日台"
+node_type = 3
+display_level = 2
+territory_id = "cangwu"
+requires_unlock = true
+unlocked = false
+unlock_hint = "先在序章后取得出门资格，再沿路线探索苍梧州，与当地人建立联系。"
+map_position = Vector2(3640, 4930)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "古木断崖"
+spirit_pressure = 8
+danger_level = 8
+population = 0
+faction_id = "无主险地"
+description = "古木与断崖之间的观日遗址，传说藏有跨越南荒群山的旧航标。"
+connected_nodes = Array[String](["yaowang_valley"])
+
+[sub_resource type="Resource" id="node_penglai_alliance"]
+script = ExtResource("1_node")
+node_id = "penglai_alliance"
+node_name = "蓬莱仙盟"
+node_type = 1
+display_level = 1
+territory_id = "cangming"
+requires_unlock = true
+unlocked = false
+unlock_hint = "先在序章后取得出门资格，再沿路线探索沧溟州，与当地人建立联系。"
+map_position = Vector2(6280, 2050)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "东海群岛"
+spirit_pressure = 8
+danger_level = 5
+population = 6800
+faction_id = "蓬莱仙盟"
+description = "由海岛宗门、航队和修士家族组成的松散仙盟，负责维护东海主航线。"
+connected_nodes = Array[String](["yingzhou_sect", "notnight_port", "tianwen_cliff"])
+
+[sub_resource type="Resource" id="node_yingzhou_sect"]
+script = ExtResource("1_node")
+node_id = "yingzhou_sect"
+node_name = "瀛洲剑派"
+node_type = 1
+display_level = 2
+territory_id = "cangming"
+requires_unlock = true
+unlocked = false
+unlock_hint = "先在序章后取得出门资格，再沿路线探索沧溟州，与当地人建立联系。"
+map_position = Vector2(6610, 2560)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "海岛山门"
+spirit_pressure = 8
+danger_level = 5
+population = 2300
+faction_id = "瀛洲剑派"
+description = "东海群岛中的一支剑道宗门，影响范围主要在本岛与附近航线，不代表整州修行方向。"
+connected_nodes = Array[String](["penglai_alliance", "fangzhang_isle"])
+
+[sub_resource type="Resource" id="node_fangzhang_isle"]
+script = ExtResource("1_node")
+node_id = "fangzhang_isle"
+node_name = "方丈仙岛"
+node_type = 1
+display_level = 2
+territory_id = "cangming"
+requires_unlock = true
+unlocked = false
+unlock_hint = "先在序章后取得出门资格，再沿路线探索沧溟州，与当地人建立联系。"
+map_position = Vector2(6880, 2830)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "远海仙岛"
+spirit_pressure = 9
+danger_level = 6
+population = 900
+faction_id = "方丈仙岛"
+description = "以岛屿秘境、灵植和古代航标闻名的仙岛，常年只对持有信物者开放。"
+connected_nodes = Array[String](["yingzhou_sect", "tianwen_cliff"])
+
+[sub_resource type="Resource" id="node_tianwen_cliff"]
+script = ExtResource("1_node")
+node_id = "tianwen_cliff"
+node_name = "天问崖"
+node_type = 3
+display_level = 2
+territory_id = "cangming"
+requires_unlock = true
+unlocked = false
+unlock_hint = "先在序章后取得出门资格，再沿路线探索沧溟州，与当地人建立联系。"
+map_position = Vector2(6040, 3100)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "外海断崖"
+spirit_pressure = 9
+danger_level = 7
+population = 0
+faction_id = "无主海崖"
+description = "位于外海边缘的断崖与古观星台，风暴季节会出现无法解释的星光潮。"
+connected_nodes = Array[String](["penglai_alliance", "fangzhang_isle"])
+
+[sub_resource type="Resource" id="node_notnight_port"]
+script = ExtResource("1_node")
+node_id = "notnight_port"
+node_name = "不夜港"
+node_type = 0
+display_level = 1
+territory_id = "guichao"
+requires_unlock = true
+unlocked = false
+unlock_hint = "先在序章后取得出门资格，再沿路线探索归潮州，与当地人建立联系。"
+map_position = Vector2(5500, 4630)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "潮汐港城"
+spirit_pressure = 7
+danger_level = 5
+population = 16000
+faction_id = "不夜港"
+description = "南冥自由港，商队、海盗、散修、异族和各地中介都能在此找到临时落脚处。"
+connected_nodes = Array[String](["qianji_city", "xian_kingdom", "xuan_ferry", "penglai_alliance", "chaosheng_gate"])
+
+[sub_resource type="Resource" id="node_chaosheng_gate"]
+script = ExtResource("1_node")
+node_id = "chaosheng_gate"
+node_name = "潮生门"
+node_type = 1
+display_level = 2
+territory_id = "guichao"
+requires_unlock = true
+unlocked = false
+unlock_hint = "先在序章后取得出门资格，再沿路线探索归潮州，与当地人建立联系。"
+map_position = Vector2(5950, 4900)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "潮汐海门"
+spirit_pressure = 8
+danger_level = 6
+population = 2100
+faction_id = "潮生门"
+description = "依潮汐而建的海门宗派，掌握部分南冥近海航路与潮汐法阵。"
+connected_nodes = Array[String](["notnight_port", "guixu"])
+
+[sub_resource type="Resource" id="node_guixu"]
+script = ExtResource("1_node")
+node_id = "guixu"
+node_name = "归墟"
+node_type = 3
+display_level = 2
+territory_id = "guichao"
+requires_unlock = true
+unlocked = false
+unlock_hint = "先在序章后取得出门资格，再沿路线探索归潮州，与当地人建立联系。"
+map_position = Vector2(6790, 5080)
+min_zoom = 0.35
+max_zoom = -1.0
+marker_size = 150.0
+terrain = "深海异境"
+spirit_pressure = 10
+danger_level = 10
+population = 0
+faction_id = "归墟"
+description = "南冥海疆的深海险地，既是高危探索目标，也是后期通往外洋与异象空间的门槛。"
+connected_nodes = Array[String](["chaosheng_gate"])
+
+[sub_resource type="Resource" id="territory_cangming"]
+script = ExtResource("3_territory")
+territory_id = "cangming"
+territory_name = "沧溟州"
+region_subtitle = "东海群岛"
+description = "沧溟州是以群岛、海峡、潮汐和远洋航线构成的海上疆域，岛屿之间的距离本身就是修行与贸易的门槛。"
+main_faction = "蓬莱仙盟、瀛洲剑派、方丈仙岛"
+faction_summary = "仙盟、岛宗、海商、海族与寻宝者共用航路；瀛洲剑派只是群岛势力之一，不代表整州只修剑。"
+territory_level = 0
+parent_territory_id = ""
+controlling_faction_id = ""
+controlling_faction_name = ""
+governance_type = "地理州域"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.086275, 0.513725, 0.603922, 1.000000)
+polygon = PackedVector2Array(5530, 1630, 7570, 1630, 7570, 3580, 5920, 3580, 5530, 2830)
+fill_color = Color(0.313725, 0.588235, 0.627451, 0.060000)
+outline_color = Color(0.086275, 0.513725, 0.603922, 0.460000)
+min_zoom = 0.35
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_xuanshuo"]
+script = ExtResource("3_territory")
+territory_id = "xuanshuo"
+territory_name = "玄朔州"
+region_subtitle = "北冥雪原"
+description = "北冥雪原与极北冰海相接，雪关、冻土、裂谷和古老守界遗迹绵延数千里。这里既有镇守边荒的宗门，也有逐冰海而生的商旅与部族。"
+main_faction = "北极仙宫、玄枵院、雪关诸部"
+faction_summary = "守界宗门、北境学宫、冰海部族与边地商路并存；州名来自地理与旧朝疆域，不代表某一条修行流派。"
+territory_level = 0
+parent_territory_id = ""
+controlling_faction_id = ""
+controlling_faction_name = ""
+governance_type = "地理州域"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.898039, 0.223529, 0.207843, 1.000000)
+polygon = PackedVector2Array(1030, 2560, 1345, 2065, 1975, 1720, 2875, 1645, 3670, 1915, 3505, 2515, 2845, 2755, 2155, 2590, 1465, 2875, 1015, 3055)
+fill_color = Color(0.721569, 0.815686, 0.819608, 0.060000)
+outline_color = Color(0.898039, 0.223529, 0.207843, 0.460000)
+min_zoom = 0.35
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_xiangshan"]
+script = ExtResource("3_territory")
+territory_id = "xiangshan"
+territory_name = "相山州"
+region_subtitle = "相山北海"
+description = "相山州由起伏山脉、北海群礁与古代地脉构成，山庄、分阁、渡口和散修集市沿地脉分布。"
+main_faction = "九脉山庄、天机阁相山分阁、北海商盟"
+faction_summary = "地师家族、商盟分阁和地方宗门共同经营山海通道；玩家可从客卿、学徒或独行寻脉者切入。"
+territory_level = 0
+parent_territory_id = ""
+controlling_faction_id = ""
+controlling_faction_name = ""
+governance_type = "地理州域"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.000000, 0.513725, 0.560784, 1.000000)
+polygon = PackedVector2Array(3670, 1915, 4705, 1795, 5470, 2065, 5695, 2605, 5170, 2905, 4450, 2845, 3880, 2590, 3505, 2515)
+fill_color = Color(0.525490, 0.709804, 0.721569, 0.060000)
+outline_color = Color(0.000000, 0.513725, 0.560784, 0.460000)
+min_zoom = 0.35
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_guanhe"]
+script = ExtResource("3_territory")
+territory_id = "guanhe"
+territory_name = "关河州"
+region_subtitle = "西陵荒域"
+description = "西陵荒域从风蚀盆地伸向古河道，边军戍所、矿脉、荒漠城镇与无人险地相互交错。"
+main_faction = "西陵戍所、玄黄矿盟、荒域行商"
+faction_summary = "军务、矿业、古道商旅和寻遗修士各有立足处；危险来自地形、旧战场与失控的灵脉，而非单一宗门。"
+territory_level = 0
+parent_territory_id = ""
+controlling_faction_id = ""
+controlling_faction_name = ""
+governance_type = "地理州域"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.768627, 0.498039, 0.152941, 1.000000)
+polygon = PackedVector2Array(1015, 3055, 1465, 2875, 2155, 2590, 2845, 2755, 2650, 3505, 2095, 3880, 1390, 3670, 985, 3370)
+fill_color = Color(0.823529, 0.658824, 0.403922, 0.060000)
+outline_color = Color(0.768627, 0.498039, 0.152941, 0.460000)
+min_zoom = 0.35
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_yunque"]
+script = ExtResource("3_territory")
+territory_id = "yunque"
+territory_name = "云阙州"
+region_subtitle = "中州玉虚"
+description = "云阙州位于九州腹心，河网、湖泽、古都和田野向四方铺开，是最适合初次远行、求学和建立人脉的中州腹地。"
+main_faction = "玉虚仙宗、伏岚观、澜浦陆氏、东林行猎会、澄心碑会、天机阁分支"
+faction_summary = "大宗门、地方小宗、县豪家族、散修互助网络与跨州见证机构并存；青溪里只作为主角记忆中的接引痕迹存在。"
+territory_level = 0
+parent_territory_id = ""
+controlling_faction_id = ""
+controlling_faction_name = ""
+governance_type = "地理州域"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.427451, 0.568627, 0.243137, 1.000000)
+polygon = PackedVector2Array(2845, 2755, 3505, 2515, 3880, 2590, 4450, 2845, 4390, 3535, 3880, 3895, 3070, 3745, 2650, 3505)
+fill_color = Color(0.666667, 0.756863, 0.521569, 0.060000)
+outline_color = Color(0.427451, 0.568627, 0.243137, 0.460000)
+min_zoom = 0.35
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_donghua"]
+script = ExtResource("3_territory")
+territory_id = "donghua"
+territory_name = "东华州"
+region_subtitle = "东陆机巧"
+description = "东华州拥有平原、河港、工坊城与灵材产区，阵法、炼器、丹道和商贸在这里交汇，亦有大量不依附宗门的匠修。"
+main_faction = "千机城、丹鼎会、百器门"
+faction_summary = "城邦工坊、丹师会馆、器师门庭和跨州商路并立；加入任何一方都不会锁定玩家的修行流派。"
+territory_level = 0
+parent_territory_id = ""
+controlling_faction_id = ""
+controlling_faction_name = ""
+governance_type = "地理州域"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.694118, 0.490196, 0.141176, 1.000000)
+polygon = PackedVector2Array(4450, 2845, 5170, 2905, 5695, 2605, 5965, 3100, 6220, 3850, 5560, 4135, 4810, 3805, 4390, 3535)
+fill_color = Color(0.811765, 0.654902, 0.400000, 0.060000)
+outline_color = Color(0.694118, 0.490196, 0.141176, 0.460000)
+min_zoom = 0.35
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_yunxiu"]
+script = ExtResource("3_territory")
+territory_id = "yunxiu"
+territory_name = "云岫州"
+region_subtitle = "百脉山原"
+description = "百脉山原由层叠山原、峡谷、古道和高地城镇组成，山脉之间保留着多种传承与地方技艺。铸剑城只是其中一座地方城邦。"
+main_faction = "铸剑城、长风镖局、百脉散修会"
+faction_summary = "城邦、镖局、山民聚落与不同传承的山门共同存在；这里强调地理交通和百脉交汇，不把整州定义成剑修州。"
+territory_level = 0
+parent_territory_id = ""
+controlling_faction_id = ""
+controlling_faction_name = ""
+governance_type = "地理州域"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.435294, 0.388235, 0.545098, 1.000000)
+polygon = PackedVector2Array(1390, 3670, 2095, 3880, 2650, 3505, 3070, 3745, 2995, 4345, 2560, 4705, 1975, 4570, 1510, 4720, 1210, 4075)
+fill_color = Color(0.592157, 0.521569, 0.501961, 0.060000)
+outline_color = Color(0.435294, 0.388235, 0.545098, 0.460000)
+min_zoom = 0.35
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_cangwu"]
+script = ExtResource("3_territory")
+territory_id = "cangwu"
+territory_name = "苍梧州"
+region_subtitle = "南荒万山"
+description = "南荒万山横跨雨林、瘴泽、古木与群峰，妖族、部族、药师和探遗者都在这里留下聚落与道路。"
+main_faction = "药王谷、万妖谷、五仙教"
+faction_summary = "药师谷地、妖族联盟、部族祭祀与外来探险队各自守着不同山路；善恶与归属不会只按族群划分。"
+territory_level = 0
+parent_territory_id = ""
+controlling_faction_id = ""
+controlling_faction_name = ""
+governance_type = "地理州域"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.305882, 0.541176, 0.282353, 1.000000)
+polygon = PackedVector2Array(2995, 4345, 3070, 3745, 3880, 3895, 4390, 3535, 4810, 3805, 4930, 4495, 4540, 4945, 3505, 5215, 2560, 4705)
+fill_color = Color(0.415686, 0.580392, 0.407843, 0.060000)
+outline_color = Color(0.305882, 0.541176, 0.282353, 0.460000)
+min_zoom = 0.35
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_guichao"]
+script = ExtResource("3_territory")
+territory_id = "guichao"
+territory_name = "归潮州"
+region_subtitle = "南冥海疆"
+description = "南冥海疆由潮汐海岸、自由港、群岛和归墟外环组成，是九州面向未知外洋的前沿。"
+main_faction = "天衡仙国、不夜港、潮生门、南冥海商"
+faction_summary = "河口仙国、自由港、潮汐宗门、海商和异族航队共存；愿力作为后续与灵力分立的玩法入口，归墟则是跨越九州边界的高危门槛。"
+territory_level = 0
+parent_territory_id = ""
+controlling_faction_id = ""
+controlling_faction_name = ""
+governance_type = "地理州域"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.149020, 0.490196, 0.470588, 1.000000)
+polygon = PackedVector2Array(4930, 4495, 5560, 4135, 6220, 3850, 6550, 4495, 6130, 4930, 5320, 5095, 4540, 5350, 4540, 4945)
+fill_color = Color(0.305882, 0.580392, 0.556863, 0.060000)
+outline_color = Color(0.149020, 0.490196, 0.470588, 0.460000)
+min_zoom = 0.35
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_xuanshuo_arctic"]
+script = ExtResource("3_territory")
+territory_id = "xuanshuo_arctic"
+territory_name = "北极仙宫辖域"
+region_subtitle = "大势力范围"
+description = "北极仙宫在北冥雪原维持守界、观天与冰海互市秩序。"
+main_faction = "北极仙宫"
+faction_summary = "上级势力：北极仙宫；治理关系：仙宫统辖。"
+territory_level = 1
+parent_territory_id = "xuanshuo"
+controlling_faction_id = "arctic_palace"
+controlling_faction_name = "北极仙宫"
+governance_type = "仙宫统辖"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.898039, 0.223529, 0.207843, 1.000000)
+polygon = PackedVector2Array(1030, 2560, 1345, 2065, 1975, 1720, 2875, 1645, 3670, 1915, 3505, 2515, 2845, 2755, 2155, 2590, 1465, 2875, 1015, 3055)
+fill_color = Color(0.898039, 0.223529, 0.207843, 0.130000)
+outline_color = Color(0.898039, 0.223529, 0.207843, 0.820000)
+min_zoom = 1.2
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_xuanshuo_arctic_core"]
+script = ExtResource("3_territory")
+territory_id = "xuanshuo_arctic_core"
+territory_name = "北极仙宫直辖核心"
+region_subtitle = "大势力直辖"
+description = "仙宫山门、守界台与冰原灵脉组成的直辖核心。"
+main_faction = "北极仙宫"
+faction_summary = "上级势力：北极仙宫；治理关系：大势力直辖。"
+territory_level = 2
+parent_territory_id = "xuanshuo_arctic"
+controlling_faction_id = "arctic_palace"
+controlling_faction_name = "北极仙宫"
+governance_type = "大势力直辖"
+is_direct_domain = true
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.898039, 0.223529, 0.207843, 1.000000)
+polygon = PackedVector2Array(1690, 2080, 2080, 1870, 2710, 1840, 3190, 2035, 3100, 2350, 2680, 2500, 2125, 2395, 1750, 2290)
+fill_color = Color(0.898039, 0.223529, 0.207843, 0.075000)
+outline_color = Color(0.898039, 0.223529, 0.207843, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_xuanshuo_xuanxiao"]
+script = ExtResource("3_territory")
+territory_id = "xuanshuo_xuanxiao"
+territory_name = "玄枵院属地"
+region_subtitle = "学宫属地"
+description = "以星历、冰川测绘和古代守界档案见长的学宫属地。"
+main_faction = "北极仙宫"
+faction_summary = "上级势力：北极仙宫；治理关系：学宫属地。"
+territory_level = 2
+parent_territory_id = "xuanshuo_arctic"
+controlling_faction_id = "arctic_palace"
+controlling_faction_name = "北极仙宫"
+governance_type = "学宫属地"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.898039, 0.223529, 0.207843, 1.000000)
+polygon = PackedVector2Array(1300, 2170, 1690, 2080, 1750, 2290, 1495, 2800, 1165, 2860, 1120, 2560)
+fill_color = Color(0.898039, 0.223529, 0.207843, 0.075000)
+outline_color = Color(0.898039, 0.223529, 0.207843, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_xuanshuo_snow_pass"]
+script = ExtResource("3_territory")
+territory_id = "xuanshuo_snow_pass"
+territory_name = "雪关诸部属地"
+region_subtitle = "部族盟属"
+description = "雪关部族、驭兽队与边地商旅共享的冰海前哨。"
+main_faction = "北极仙宫"
+faction_summary = "上级势力：北极仙宫；治理关系：部族盟属。"
+territory_level = 2
+parent_territory_id = "xuanshuo_arctic"
+controlling_faction_id = "arctic_palace"
+controlling_faction_name = "北极仙宫"
+governance_type = "部族盟属"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.898039, 0.223529, 0.207843, 1.000000)
+polygon = PackedVector2Array(2710, 1840, 3400, 1990, 3310, 2410, 3100, 2350, 3100, 2035)
+fill_color = Color(0.898039, 0.223529, 0.207843, 0.075000)
+outline_color = Color(0.898039, 0.223529, 0.207843, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_xiangshan_nine_veins"]
+script = ExtResource("3_territory")
+territory_id = "xiangshan_nine_veins"
+territory_name = "九脉山庄辖域"
+region_subtitle = "大势力范围"
+description = "九脉山庄依山海地脉经营寻脉、渡运和古图保全。"
+main_faction = "九脉山庄"
+faction_summary = "上级势力：九脉山庄；治理关系：山庄统辖。"
+territory_level = 1
+parent_territory_id = "xiangshan"
+controlling_faction_id = "nine_vein_manor"
+controlling_faction_name = "九脉山庄"
+governance_type = "山庄统辖"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.000000, 0.513725, 0.560784, 1.000000)
+polygon = PackedVector2Array(3670, 1915, 4705, 1795, 5470, 2065, 5695, 2605, 5170, 2905, 4450, 2845, 3880, 2590, 3505, 2515)
+fill_color = Color(0.000000, 0.513725, 0.560784, 0.130000)
+outline_color = Color(0.000000, 0.513725, 0.560784, 0.820000)
+min_zoom = 1.2
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_xiangshan_nine_core"]
+script = ExtResource("3_territory")
+territory_id = "xiangshan_nine_core"
+territory_name = "九脉山庄直辖核心"
+region_subtitle = "大势力直辖"
+description = "山庄本部和九条地脉交会的直辖山城。"
+main_faction = "九脉山庄"
+faction_summary = "上级势力：九脉山庄；治理关系：大势力直辖。"
+territory_level = 2
+parent_territory_id = "xiangshan_nine_veins"
+controlling_faction_id = "nine_vein_manor"
+controlling_faction_name = "九脉山庄"
+governance_type = "大势力直辖"
+is_direct_domain = true
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.000000, 0.513725, 0.560784, 1.000000)
+polygon = PackedVector2Array(4030, 2005, 4660, 1915, 5155, 2125, 5110, 2455, 4690, 2665, 4180, 2530, 3850, 2305)
+fill_color = Color(0.000000, 0.513725, 0.560784, 0.075000)
+outline_color = Color(0.000000, 0.513725, 0.560784, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_xiangshan_tianji"]
+script = ExtResource("3_territory")
+territory_id = "xiangshan_tianji"
+territory_name = "天机阁相山分阁属地"
+region_subtitle = "分阁属地"
+description = "天机阁分阁借山庄地脉权限开展测绘、推演和情报交易。"
+main_faction = "九脉山庄"
+faction_summary = "上级势力：九脉山庄；治理关系：分阁属地。"
+territory_level = 2
+parent_territory_id = "xiangshan_nine_veins"
+controlling_faction_id = "nine_vein_manor"
+controlling_faction_name = "九脉山庄"
+governance_type = "分阁属地"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.000000, 0.513725, 0.560784, 1.000000)
+polygon = PackedVector2Array(4660, 1915, 5350, 2125, 5560, 2560, 5155, 2455, 5155, 2125)
+fill_color = Color(0.000000, 0.513725, 0.560784, 0.075000)
+outline_color = Color(0.000000, 0.513725, 0.560784, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_xiangshan_northsea"]
+script = ExtResource("3_territory")
+territory_id = "xiangshan_northsea"
+territory_name = "北海商盟属地"
+region_subtitle = "商盟盟属"
+description = "北海商盟控制群礁渡口和海货集散点，保留较大的自治空间。"
+main_faction = "九脉山庄"
+faction_summary = "上级势力：九脉山庄；治理关系：商盟盟属。"
+territory_level = 2
+parent_territory_id = "xiangshan_nine_veins"
+controlling_faction_id = "nine_vein_manor"
+controlling_faction_name = "九脉山庄"
+governance_type = "商盟盟属"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.000000, 0.513725, 0.560784, 1.000000)
+polygon = PackedVector2Array(3745, 1960, 4030, 2005, 3850, 2305, 3595, 2455, 3610, 2200)
+fill_color = Color(0.000000, 0.513725, 0.560784, 0.075000)
+outline_color = Color(0.000000, 0.513725, 0.560784, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_guanhe_xiling"]
+script = ExtResource("3_territory")
+territory_id = "guanhe_xiling"
+territory_name = "西陵戍所辖域"
+region_subtitle = "大势力范围"
+description = "西陵戍所以关隘、军镇和旧河道为骨架维持荒域秩序。"
+main_faction = "西陵戍所"
+faction_summary = "上级势力：西陵戍所；治理关系：戍所统辖。"
+territory_level = 1
+parent_territory_id = "guanhe"
+controlling_faction_id = "xiling_garrison"
+controlling_faction_name = "西陵戍所"
+governance_type = "戍所统辖"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.768627, 0.498039, 0.152941, 1.000000)
+polygon = PackedVector2Array(1015, 3055, 1465, 2875, 2155, 2590, 2845, 2755, 2650, 3505, 2095, 3880, 1390, 3670, 985, 3370)
+fill_color = Color(0.768627, 0.498039, 0.152941, 0.130000)
+outline_color = Color(0.768627, 0.498039, 0.152941, 0.820000)
+min_zoom = 1.2
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_guanhe_xiling_core"]
+script = ExtResource("3_territory")
+territory_id = "guanhe_xiling_core"
+territory_name = "西陵戍所直辖核心"
+region_subtitle = "军镇直辖"
+description = "戍所关城、军田和旧朝烽燧组成的直辖核心。"
+main_faction = "西陵戍所"
+faction_summary = "上级势力：西陵戍所；治理关系：军镇直辖。"
+territory_level = 2
+parent_territory_id = "guanhe_xiling"
+controlling_faction_id = "xiling_garrison"
+controlling_faction_name = "西陵戍所"
+governance_type = "军镇直辖"
+is_direct_domain = true
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.768627, 0.498039, 0.152941, 1.000000)
+polygon = PackedVector2Array(1180, 3100, 1540, 2965, 1900, 2845, 1900, 3340, 1660, 3580, 1300, 3460, 1105, 3280)
+fill_color = Color(0.768627, 0.498039, 0.152941, 0.075000)
+outline_color = Color(0.768627, 0.498039, 0.152941, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_guanhe_mine_league"]
+script = ExtResource("3_territory")
+territory_id = "guanhe_mine_league"
+territory_name = "玄黄矿盟属地"
+region_subtitle = "矿盟属地"
+description = "矿盟负责玄黄矿脉的开采、护运与工坊分成。"
+main_faction = "西陵戍所"
+faction_summary = "上级势力：西陵戍所；治理关系：矿盟属地。"
+territory_level = 2
+parent_territory_id = "guanhe_xiling"
+controlling_faction_id = "xiling_garrison"
+controlling_faction_name = "西陵戍所"
+governance_type = "矿盟属地"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.768627, 0.498039, 0.152941, 1.000000)
+polygon = PackedVector2Array(1900, 2845, 2125, 2665, 2755, 2815, 2560, 3190, 2200, 3250, 1900, 3340)
+fill_color = Color(0.768627, 0.498039, 0.152941, 0.075000)
+outline_color = Color(0.768627, 0.498039, 0.152941, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_guanhe_ghost_ridge"]
+script = ExtResource("3_territory")
+territory_id = "guanhe_ghost_ridge"
+territory_name = "鬼哭岭属地"
+region_subtitle = "战场管辖"
+description = "旧战场峡谷由戍所登记、探遗队和地方守墓人共同管理。"
+main_faction = "西陵戍所"
+faction_summary = "上级势力：西陵戍所；治理关系：战场管辖。"
+territory_level = 2
+parent_territory_id = "guanhe_xiling"
+controlling_faction_id = "xiling_garrison"
+controlling_faction_name = "西陵戍所"
+governance_type = "战场管辖"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.768627, 0.498039, 0.152941, 1.000000)
+polygon = PackedVector2Array(1900, 3340, 2200, 3250, 2560, 3190, 2575, 3430, 2050, 3760, 1660, 3580)
+fill_color = Color(0.768627, 0.498039, 0.152941, 0.075000)
+outline_color = Color(0.768627, 0.498039, 0.152941, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_guanhe_black_white"]
+script = ExtResource("3_territory")
+territory_id = "guanhe_black_white"
+territory_name = "黑白坊市属地"
+region_subtitle = "坊市属地"
+description = "荒域行商聚集的黑白坊市，以通行凭证和货物税换取戍所保护。"
+main_faction = "西陵戍所"
+faction_summary = "上级势力：西陵戍所；治理关系：坊市属地。"
+territory_level = 2
+parent_territory_id = "guanhe_xiling"
+controlling_faction_id = "xiling_garrison"
+controlling_faction_name = "西陵戍所"
+governance_type = "坊市属地"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.768627, 0.498039, 0.152941, 1.000000)
+polygon = PackedVector2Array(1180, 3100, 1900, 2845, 1900, 3340, 1660, 3580, 1300, 3460, 1105, 3280)
+fill_color = Color(0.768627, 0.498039, 0.152941, 0.075000)
+outline_color = Color(0.768627, 0.498039, 0.152941, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_yunque_yuxu"]
+script = ExtResource("3_territory")
+territory_id = "yunque_yuxu"
+territory_name = "玉虚仙宗辖域"
+region_subtitle = "大势力范围"
+description = "玉虚仙宗在中州腹地主持传法、护脉和跨州修士往来。"
+main_faction = "玉虚仙宗"
+faction_summary = "上级势力：玉虚仙宗；治理关系：仙宗统辖。"
+territory_level = 1
+parent_territory_id = "yunque"
+controlling_faction_id = "yuxu_sect"
+controlling_faction_name = "玉虚仙宗"
+governance_type = "仙宗统辖"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.427451, 0.568627, 0.243137, 1.000000)
+polygon = PackedVector2Array(2845, 2755, 3505, 2515, 3880, 2590, 4450, 2845, 4390, 3535, 3880, 3895, 3070, 3745, 2650, 3505)
+fill_color = Color(0.427451, 0.568627, 0.243137, 0.130000)
+outline_color = Color(0.427451, 0.568627, 0.243137, 0.820000)
+min_zoom = 1.2
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_yunque_yuxu_core"]
+script = ExtResource("3_territory")
+territory_id = "yunque_yuxu_core"
+territory_name = "玉虚仙宗直辖核心"
+region_subtitle = "宗门直辖"
+description = "玉虚山门、主峰灵脉与传法台组成的宗门直辖地。"
+main_faction = "玉虚仙宗"
+faction_summary = "上级势力：玉虚仙宗；治理关系：宗门直辖。"
+territory_level = 2
+parent_territory_id = "yunque_yuxu"
+controlling_faction_id = "yuxu_sect"
+controlling_faction_name = "玉虚仙宗"
+governance_type = "宗门直辖"
+is_direct_domain = true
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.427451, 0.568627, 0.243137, 1.000000)
+polygon = PackedVector2Array(3280, 2710, 3640, 2605, 3970, 2725, 4060, 3100, 3790, 3340, 3340, 3220, 3100, 2950)
+fill_color = Color(0.427451, 0.568627, 0.243137, 0.075000)
+outline_color = Color(0.427451, 0.568627, 0.243137, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_yunque_qingyun"]
+script = ExtResource("3_territory")
+territory_id = "yunque_qingyun"
+territory_name = "青云观属地"
+region_subtitle = "道观属地"
+description = "青云观是中州地方道观网络的一支，保留独立收徒与游方传统。"
+main_faction = "玉虚仙宗"
+faction_summary = "上级势力：玉虚仙宗；治理关系：道观属地。"
+territory_level = 2
+parent_territory_id = "yunque_yuxu"
+controlling_faction_id = "yuxu_sect"
+controlling_faction_name = "玉虚仙宗"
+governance_type = "道观属地"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.427451, 0.568627, 0.243137, 1.000000)
+polygon = PackedVector2Array(2860, 2800, 3280, 2710, 3100, 2950, 3340, 3220, 3100, 3670, 2740, 3430, 2800, 3100)
+fill_color = Color(0.427451, 0.568627, 0.243137, 0.075000)
+outline_color = Color(0.427451, 0.568627, 0.243137, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_yunque_bailu"]
+script = ExtResource("3_territory")
+territory_id = "yunque_bailu"
+territory_name = "白鹿书院属地"
+region_subtitle = "书院属地"
+description = "白鹿书院以典籍、游学和地方治理学问为主，接受玉虚传法保护。"
+main_faction = "玉虚仙宗"
+faction_summary = "上级势力：玉虚仙宗；治理关系：书院属地。"
+territory_level = 2
+parent_territory_id = "yunque_yuxu"
+controlling_faction_id = "yuxu_sect"
+controlling_faction_name = "玉虚仙宗"
+governance_type = "书院属地"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.427451, 0.568627, 0.243137, 1.000000)
+polygon = PackedVector2Array(3970, 2725, 4360, 2905, 4330, 3460, 3850, 3820, 3490, 3640, 3340, 3220, 3790, 3340, 4060, 3100)
+fill_color = Color(0.427451, 0.568627, 0.243137, 0.075000)
+outline_color = Color(0.427451, 0.568627, 0.243137, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_yunque_chengxin"]
+script = ExtResource("3_territory")
+territory_id = "yunque_chengxin"
+territory_name = "澄心碑会属地"
+region_subtitle = "会约属地"
+description = "碑会守护古碑与地方记忆，按自身规约而非宗门戒律行事。"
+main_faction = "玉虚仙宗"
+faction_summary = "上级势力：玉虚仙宗；治理关系：会约属地。"
+territory_level = 2
+parent_territory_id = "yunque_yuxu"
+controlling_faction_id = "yuxu_sect"
+controlling_faction_name = "玉虚仙宗"
+governance_type = "会约属地"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.427451, 0.568627, 0.243137, 1.000000)
+polygon = PackedVector2Array(3700, 3220, 4060, 3100, 4330, 3460, 3850, 3820, 3490, 3640, 3520, 3400)
+fill_color = Color(0.427451, 0.568627, 0.243137, 0.075000)
+outline_color = Color(0.427451, 0.568627, 0.243137, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_donghua_qianji"]
+script = ExtResource("3_territory")
+territory_id = "donghua_qianji"
+territory_name = "千机城辖域"
+region_subtitle = "大势力范围"
+description = "千机城以工坊、河港和器物贸易为核心，吸纳各类匠修与商队。"
+main_faction = "千机城"
+faction_summary = "上级势力：千机城；治理关系：城邦统辖。"
+territory_level = 1
+parent_territory_id = "donghua"
+controlling_faction_id = "qianji_city"
+controlling_faction_name = "千机城"
+governance_type = "城邦统辖"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.694118, 0.490196, 0.141176, 1.000000)
+polygon = PackedVector2Array(4450, 2845, 5170, 2905, 5695, 2605, 5965, 3100, 6220, 3850, 5560, 4135, 4810, 3805, 4390, 3535)
+fill_color = Color(0.694118, 0.490196, 0.141176, 0.130000)
+outline_color = Color(0.694118, 0.490196, 0.141176, 0.820000)
+min_zoom = 1.2
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_donghua_qianji_core"]
+script = ExtResource("3_territory")
+territory_id = "donghua_qianji_core"
+territory_name = "千机城直辖核心"
+region_subtitle = "城邦直辖"
+description = "千机城主城、核心工坊和河港税关组成的城邦直辖地。"
+main_faction = "千机城"
+faction_summary = "上级势力：千机城；治理关系：城邦直辖。"
+territory_level = 2
+parent_territory_id = "donghua_qianji"
+controlling_faction_id = "qianji_city"
+controlling_faction_name = "千机城"
+governance_type = "城邦直辖"
+is_direct_domain = true
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.694118, 0.490196, 0.141176, 1.000000)
+polygon = PackedVector2Array(4930, 2980, 5350, 2950, 5680, 3160, 5680, 3580, 5350, 3790, 4900, 3580)
+fill_color = Color(0.694118, 0.490196, 0.141176, 0.075000)
+outline_color = Color(0.694118, 0.490196, 0.141176, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_donghua_gongsun"]
+script = ExtResource("3_territory")
+territory_id = "donghua_gongsun"
+territory_name = "公孙氏阵府属地"
+region_subtitle = "家族属地"
+description = "公孙氏阵府负责城外阵基、桥梁和灵脉工事。"
+main_faction = "千机城"
+faction_summary = "上级势力：千机城；治理关系：家族属地。"
+territory_level = 2
+parent_territory_id = "donghua_qianji"
+controlling_faction_id = "qianji_city"
+controlling_faction_name = "千机城"
+governance_type = "家族属地"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.694118, 0.490196, 0.141176, 1.000000)
+polygon = PackedVector2Array(4495, 2935, 4930, 2980, 4900, 3580, 4570, 3460, 4435, 3190)
+fill_color = Color(0.694118, 0.490196, 0.141176, 0.075000)
+outline_color = Color(0.694118, 0.490196, 0.141176, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_donghua_danding"]
+script = ExtResource("3_territory")
+territory_id = "donghua_danding"
+territory_name = "丹鼎会属地"
+region_subtitle = "会馆属地"
+description = "丹鼎会控制东陆丹材集散与丹师互助会馆。"
+main_faction = "千机城"
+faction_summary = "上级势力：千机城；治理关系：会馆属地。"
+territory_level = 2
+parent_territory_id = "donghua_qianji"
+controlling_faction_id = "qianji_city"
+controlling_faction_name = "千机城"
+governance_type = "会馆属地"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.694118, 0.490196, 0.141176, 1.000000)
+polygon = PackedVector2Array(5680, 3160, 5905, 3130, 6100, 3790, 5680, 3580)
+fill_color = Color(0.694118, 0.490196, 0.141176, 0.075000)
+outline_color = Color(0.694118, 0.490196, 0.141176, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_donghua_baiji"]
+script = ExtResource("3_territory")
+territory_id = "donghua_baiji"
+territory_name = "百器门属地"
+region_subtitle = "门庭属地"
+description = "百器门在城邦许可下维护器师山门与外来工匠聚落。"
+main_faction = "千机城"
+faction_summary = "上级势力：千机城；治理关系：门庭属地。"
+territory_level = 2
+parent_territory_id = "donghua_qianji"
+controlling_faction_id = "qianji_city"
+controlling_faction_name = "千机城"
+governance_type = "门庭属地"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.694118, 0.490196, 0.141176, 1.000000)
+polygon = PackedVector2Array(5350, 3790, 5680, 3580, 6100, 3790, 5545, 4075, 4900, 3745)
+fill_color = Color(0.694118, 0.490196, 0.141176, 0.075000)
+outline_color = Color(0.694118, 0.490196, 0.141176, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_yunxiu_alliance"]
+script = ExtResource("3_territory")
+territory_id = "yunxiu_alliance"
+territory_name = "百脉会盟辖域"
+region_subtitle = "大势力范围"
+description = "百脉会盟是山原城邦、镖局与地方家族的松散议约，不把云岫州归为单一流派。"
+main_faction = "百脉会盟"
+faction_summary = "上级势力：百脉会盟；治理关系：会盟统辖。"
+territory_level = 1
+parent_territory_id = "yunxiu"
+controlling_faction_id = "yunxiu_alliance"
+controlling_faction_name = "百脉会盟"
+governance_type = "会盟统辖"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.435294, 0.388235, 0.545098, 1.000000)
+polygon = PackedVector2Array(1390, 3670, 2095, 3880, 2650, 3505, 3070, 3745, 2995, 4345, 2560, 4705, 1975, 4570, 1510, 4720, 1210, 4075)
+fill_color = Color(0.435294, 0.388235, 0.545098, 0.130000)
+outline_color = Color(0.435294, 0.388235, 0.545098, 0.820000)
+min_zoom = 1.2
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_yunxiu_alliance_core"]
+script = ExtResource("3_territory")
+territory_id = "yunxiu_alliance_core"
+territory_name = "百脉会盟直辖核心"
+region_subtitle = "会盟直辖"
+description = "山原议庭与共用山口构成的会盟直辖地。"
+main_faction = "百脉会盟"
+faction_summary = "上级势力：百脉会盟；治理关系：会盟直辖。"
+territory_level = 2
+parent_territory_id = "yunxiu_alliance"
+controlling_faction_id = "yunxiu_alliance"
+controlling_faction_name = "百脉会盟"
+governance_type = "会盟直辖"
+is_direct_domain = true
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.435294, 0.388235, 0.545098, 1.000000)
+polygon = PackedVector2Array(2080, 3925, 2605, 3565, 2920, 3805, 2605, 4240, 2080, 4390, 1750, 4150)
+fill_color = Color(0.435294, 0.388235, 0.545098, 0.075000)
+outline_color = Color(0.435294, 0.388235, 0.545098, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_yunxiu_sword_forge"]
+script = ExtResource("3_territory")
+territory_id = "yunxiu_sword_forge"
+territory_name = "铸剑城盟属地"
+region_subtitle = "城邦盟属"
+description = "铸剑城以地方城邦身份参加会盟，同时保有自己的铸造与市政传统。"
+main_faction = "百脉会盟"
+faction_summary = "上级势力：百脉会盟；治理关系：城邦盟属。"
+territory_level = 2
+parent_territory_id = "yunxiu_alliance"
+controlling_faction_id = "yunxiu_alliance"
+controlling_faction_name = "百脉会盟"
+governance_type = "城邦盟属"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.435294, 0.388235, 0.545098, 1.000000)
+polygon = PackedVector2Array(1450, 3715, 2080, 3925, 1750, 4150, 1555, 4660, 1300, 4090)
+fill_color = Color(0.435294, 0.388235, 0.545098, 0.075000)
+outline_color = Color(0.435294, 0.388235, 0.545098, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_yunxiu_changfeng"]
+script = ExtResource("3_territory")
+territory_id = "yunxiu_changfeng"
+territory_name = "长风镖局盟属地"
+region_subtitle = "镖局盟属"
+description = "长风镖局负责山口驿路和跨州护送，是会盟最重要的流动组织。"
+main_faction = "百脉会盟"
+faction_summary = "上级势力：百脉会盟；治理关系：镖局盟属。"
+territory_level = 2
+parent_territory_id = "yunxiu_alliance"
+controlling_faction_id = "yunxiu_alliance"
+controlling_faction_name = "百脉会盟"
+governance_type = "镖局盟属"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.435294, 0.388235, 0.545098, 1.000000)
+polygon = PackedVector2Array(2605, 4240, 2920, 3805, 2995, 4300, 2515, 4645, 2005, 4525, 2080, 4390)
+fill_color = Color(0.435294, 0.388235, 0.545098, 0.075000)
+outline_color = Color(0.435294, 0.388235, 0.545098, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_yunxiu_clans"]
+script = ExtResource("3_territory")
+territory_id = "yunxiu_clans"
+territory_name = "山原家族盟属地"
+region_subtitle = "家族盟属"
+description = "各地家族以客卿与互市参与会盟，不形成单一宗门控制。"
+main_faction = "百脉会盟"
+faction_summary = "上级势力：百脉会盟；治理关系：家族盟属。"
+territory_level = 2
+parent_territory_id = "yunxiu_alliance"
+controlling_faction_id = "yunxiu_alliance"
+controlling_faction_name = "百脉会盟"
+governance_type = "家族盟属"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.435294, 0.388235, 0.545098, 1.000000)
+polygon = PackedVector2Array(2605, 3565, 2995, 3805, 2920, 3805, 2605, 4240, 2080, 3925)
+fill_color = Color(0.435294, 0.388235, 0.545098, 0.075000)
+outline_color = Color(0.435294, 0.388235, 0.545098, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_cangwu_demon"]
+script = ExtResource("3_territory")
+territory_id = "cangwu_demon"
+territory_name = "万妖谷辖域"
+region_subtitle = "大势力范围"
+description = "万妖谷以族群议约、山路互市和南荒灵脉共同维持多族聚居地。"
+main_faction = "万妖谷"
+faction_summary = "上级势力：万妖谷；治理关系：妖谷统辖。"
+territory_level = 1
+parent_territory_id = "cangwu"
+controlling_faction_id = "demon_valley"
+controlling_faction_name = "万妖谷"
+governance_type = "妖谷统辖"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.305882, 0.541176, 0.282353, 1.000000)
+polygon = PackedVector2Array(2995, 4345, 3070, 3745, 3880, 3895, 4390, 3535, 4810, 3805, 4930, 4495, 4540, 4945, 3505, 5215, 2560, 4705)
+fill_color = Color(0.305882, 0.541176, 0.282353, 0.130000)
+outline_color = Color(0.305882, 0.541176, 0.282353, 0.820000)
+min_zoom = 1.2
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_cangwu_demon_core"]
+script = ExtResource("3_territory")
+territory_id = "cangwu_demon_core"
+territory_name = "万妖谷直辖核心"
+region_subtitle = "妖谷直辖"
+description = "万妖谷主谷、族群议场和古木灵脉组成的直辖核心。"
+main_faction = "万妖谷"
+faction_summary = "上级势力：万妖谷；治理关系：妖谷直辖。"
+territory_level = 2
+parent_territory_id = "cangwu_demon"
+controlling_faction_id = "demon_valley"
+controlling_faction_name = "万妖谷"
+governance_type = "妖谷直辖"
+is_direct_domain = true
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.305882, 0.541176, 0.282353, 1.000000)
+polygon = PackedVector2Array(3850, 3955, 4330, 3580, 4750, 3850, 4540, 4240, 4180, 4420, 3760, 4300)
+fill_color = Color(0.305882, 0.541176, 0.282353, 0.075000)
+outline_color = Color(0.305882, 0.541176, 0.282353, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_cangwu_yaowang"]
+script = ExtResource("3_territory")
+territory_id = "cangwu_yaowang"
+territory_name = "药王谷属地"
+region_subtitle = "药谷属地"
+description = "药王谷以采药、救治和灵植培育参与南荒事务。"
+main_faction = "万妖谷"
+faction_summary = "上级势力：万妖谷；治理关系：药谷属地。"
+territory_level = 2
+parent_territory_id = "cangwu_demon"
+controlling_faction_id = "demon_valley"
+controlling_faction_name = "万妖谷"
+governance_type = "药谷属地"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.305882, 0.541176, 0.282353, 1.000000)
+polygon = PackedVector2Array(3040, 4300, 3100, 3805, 3550, 3940, 3760, 4300, 3520, 4750, 3100, 4660)
+fill_color = Color(0.305882, 0.541176, 0.282353, 0.075000)
+outline_color = Color(0.305882, 0.541176, 0.282353, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_cangwu_wuxian"]
+script = ExtResource("3_territory")
+territory_id = "cangwu_wuxian"
+territory_name = "五仙教属地"
+region_subtitle = "教门属地"
+description = "五仙教守着瘴泽与虫蛇灵脉，在万妖谷的统辖范围内保持教门边界。"
+main_faction = "万妖谷"
+faction_summary = "上级势力：万妖谷；治理关系：教门属地。"
+territory_level = 2
+parent_territory_id = "cangwu_demon"
+controlling_faction_id = "demon_valley"
+controlling_faction_name = "万妖谷"
+governance_type = "教门属地"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.305882, 0.541176, 0.282353, 1.000000)
+polygon = PackedVector2Array(3760, 4300, 4180, 4420, 4480, 4870, 3520, 5140, 3520, 4750)
+fill_color = Color(0.305882, 0.541176, 0.282353, 0.075000)
+outline_color = Color(0.305882, 0.541176, 0.282353, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_cangwu_tribes"]
+script = ExtResource("3_territory")
+territory_id = "cangwu_tribes"
+territory_name = "百族部落盟属地"
+region_subtitle = "部族盟属"
+description = "南荒百族部落以山路、猎场和季节性聚落方式参加万妖谷议约。"
+main_faction = "万妖谷"
+faction_summary = "上级势力：万妖谷；治理关系：部族盟属。"
+territory_level = 2
+parent_territory_id = "cangwu_demon"
+controlling_faction_id = "demon_valley"
+controlling_faction_name = "万妖谷"
+governance_type = "部族盟属"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.305882, 0.541176, 0.282353, 1.000000)
+polygon = PackedVector2Array(4540, 4240, 4855, 4450, 4480, 4870, 4180, 4420)
+fill_color = Color(0.305882, 0.541176, 0.282353, 0.075000)
+outline_color = Color(0.305882, 0.541176, 0.282353, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_cangming_penglai"]
+script = ExtResource("3_territory")
+territory_id = "cangming_penglai"
+territory_name = "蓬莱仙盟辖域"
+region_subtitle = "大势力范围"
+description = "蓬莱仙盟串联东海岛宗、航队和修士家族，维持群岛间的主航权。"
+main_faction = "蓬莱仙盟"
+faction_summary = "上级势力：蓬莱仙盟；治理关系：仙盟统辖。"
+territory_level = 1
+parent_territory_id = "cangming"
+controlling_faction_id = "penglai_alliance"
+controlling_faction_name = "蓬莱仙盟"
+governance_type = "仙盟统辖"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.086275, 0.513725, 0.603922, 1.000000)
+polygon = PackedVector2Array(5620, 1720, 6490, 1690, 7330, 1960, 7420, 2800, 6880, 3250, 6100, 3370, 5680, 2860)
+fill_color = Color(0.086275, 0.513725, 0.603922, 0.130000)
+outline_color = Color(0.086275, 0.513725, 0.603922, 0.820000)
+min_zoom = 1.2
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_cangming_penglai_core"]
+script = ExtResource("3_territory")
+territory_id = "cangming_penglai_core"
+territory_name = "蓬莱仙盟直辖核心"
+region_subtitle = "仙盟直辖"
+description = "蓬莱主岛、盟议庭和东海航标组成的仙盟直辖核心。"
+main_faction = "蓬莱仙盟"
+faction_summary = "上级势力：蓬莱仙盟；治理关系：仙盟直辖。"
+territory_level = 2
+parent_territory_id = "cangming_penglai"
+controlling_faction_id = "penglai_alliance"
+controlling_faction_name = "蓬莱仙盟"
+governance_type = "仙盟直辖"
+is_direct_domain = true
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.086275, 0.513725, 0.603922, 1.000000)
+polygon = PackedVector2Array(5890, 1750, 6430, 1735, 6730, 1990, 6550, 2380, 6100, 2440, 5800, 2140)
+fill_color = Color(0.086275, 0.513725, 0.603922, 0.075000)
+outline_color = Color(0.086275, 0.513725, 0.603922, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_cangming_yingzhou"]
+script = ExtResource("3_territory")
+territory_id = "cangming_yingzhou"
+territory_name = "瀛洲剑派盟属地"
+region_subtitle = "岛宗盟属"
+description = "瀛洲剑派只在本岛和附近航线拥有影响力，是仙盟下的地方岛宗。"
+main_faction = "蓬莱仙盟"
+faction_summary = "上级势力：蓬莱仙盟；治理关系：岛宗盟属。"
+territory_level = 2
+parent_territory_id = "cangming_penglai"
+controlling_faction_id = "penglai_alliance"
+controlling_faction_name = "蓬莱仙盟"
+governance_type = "岛宗盟属"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.086275, 0.513725, 0.603922, 1.000000)
+polygon = PackedVector2Array(6730, 1990, 7330, 2020, 7360, 2740, 6940, 2980, 6550, 2380)
+fill_color = Color(0.086275, 0.513725, 0.603922, 0.075000)
+outline_color = Color(0.086275, 0.513725, 0.603922, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_cangming_fangzhang"]
+script = ExtResource("3_territory")
+territory_id = "cangming_fangzhang"
+territory_name = "方丈仙岛盟属地"
+region_subtitle = "仙岛盟属"
+description = "方丈仙岛以灵植、秘境和古航标维护自己的岛屿传统。"
+main_faction = "蓬莱仙盟"
+faction_summary = "上级势力：蓬莱仙盟；治理关系：仙岛盟属。"
+territory_level = 2
+parent_territory_id = "cangming_penglai"
+controlling_faction_id = "penglai_alliance"
+controlling_faction_name = "蓬莱仙盟"
+governance_type = "仙岛盟属"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.086275, 0.513725, 0.603922, 1.000000)
+polygon = PackedVector2Array(5800, 2440, 6550, 2380, 6940, 2980, 6790, 3250, 6100, 3340, 5680, 2800)
+fill_color = Color(0.086275, 0.513725, 0.603922, 0.075000)
+outline_color = Color(0.086275, 0.513725, 0.603922, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_guichao_tianheng"]
+script = ExtResource("3_territory")
+territory_id = "guichao_tianheng"
+territory_name = "天衡仙国辖域"
+region_subtitle = "大势力范围"
+description = "天衡仙国在归潮州北部和东华南缘建立河口、城邑与愿契秩序。愿力玩法在此展开，并与灵力分立。"
+main_faction = "天衡仙国"
+faction_summary = "上级势力：天衡仙国；治理关系：仙国统辖。"
+territory_level = 1
+parent_territory_id = "guichao"
+controlling_faction_id = "tianheng_kingdom"
+controlling_faction_name = "天衡仙国"
+governance_type = "仙国统辖"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.149020, 0.490196, 0.470588, 1.000000)
+polygon = PackedVector2Array(5050, 4525, 5560, 4135, 6220, 3850, 6550, 4495, 6130, 4930, 5320, 5095, 4540, 5350, 4540, 4945)
+fill_color = Color(0.149020, 0.490196, 0.470588, 0.130000)
+outline_color = Color(0.149020, 0.490196, 0.470588, 0.820000)
+min_zoom = 1.2
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_guichao_tianheng_core"]
+script = ExtResource("3_territory")
+territory_id = "guichao_tianheng_core"
+territory_name = "天衡仙国直辖河口"
+region_subtitle = "仙国直辖"
+description = "天衡都城、河口神坛与愿契官署组成的仙国直辖核心。"
+main_faction = "天衡仙国"
+faction_summary = "上级势力：天衡仙国；治理关系：仙国直辖。"
+territory_level = 2
+parent_territory_id = "guichao_tianheng"
+controlling_faction_id = "tianheng_kingdom"
+controlling_faction_name = "天衡仙国"
+governance_type = "仙国直辖"
+is_direct_domain = true
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.149020, 0.490196, 0.470588, 1.000000)
+polygon = PackedVector2Array(5560, 4210, 6175, 3925, 6340, 4360, 6130, 4660, 5710, 4660, 5380, 4450)
+fill_color = Color(0.149020, 0.490196, 0.470588, 0.075000)
+outline_color = Color(0.149020, 0.490196, 0.470588, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_guichao_notnight"]
+script = ExtResource("3_territory")
+territory_id = "guichao_notnight"
+territory_name = "不夜港盟属地"
+region_subtitle = "自由港盟属"
+description = "不夜港接受天衡的水关保护，同时保留自由港自治权。"
+main_faction = "天衡仙国"
+faction_summary = "上级势力：天衡仙国；治理关系：自由港盟属。"
+territory_level = 2
+parent_territory_id = "guichao_tianheng"
+controlling_faction_id = "tianheng_kingdom"
+controlling_faction_name = "天衡仙国"
+governance_type = "自由港盟属"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.149020, 0.490196, 0.470588, 1.000000)
+polygon = PackedVector2Array(5140, 4555, 5380, 4450, 5710, 4660, 5440, 4930, 4750, 5080, 4690, 4930)
+fill_color = Color(0.149020, 0.490196, 0.470588, 0.075000)
+outline_color = Color(0.149020, 0.490196, 0.470588, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_guichao_chaosheng"]
+script = ExtResource("3_territory")
+territory_id = "guichao_chaosheng"
+territory_name = "潮生门属地"
+region_subtitle = "宗门属地"
+description = "潮生门掌管部分潮汐法阵与近海灵脉，受仙国文书约束但保持宗门自治。"
+main_faction = "天衡仙国"
+faction_summary = "上级势力：天衡仙国；治理关系：宗门属地。"
+territory_level = 2
+parent_territory_id = "guichao_tianheng"
+controlling_faction_id = "tianheng_kingdom"
+controlling_faction_name = "天衡仙国"
+governance_type = "宗门属地"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.149020, 0.490196, 0.470588, 1.000000)
+polygon = PackedVector2Array(6130, 4660, 6340, 4360, 6490, 4510, 6100, 4870, 5440, 4930, 5710, 4660)
+fill_color = Color(0.149020, 0.490196, 0.470588, 0.075000)
+outline_color = Color(0.149020, 0.490196, 0.470588, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="territory_guichao_sea_clans"]
+script = ExtResource("3_territory")
+territory_id = "guichao_sea_clans"
+territory_name = "鲛纱阁盟属地"
+region_subtitle = "海商盟属"
+description = "鲛纱阁与南冥海商、海族航队共同维护外海互市，属于仙国共管属地。"
+main_faction = "天衡仙国"
+faction_summary = "上级势力：天衡仙国；治理关系：海商盟属。"
+territory_level = 2
+parent_territory_id = "guichao_tianheng"
+controlling_faction_id = "tianheng_kingdom"
+controlling_faction_name = "天衡仙国"
+governance_type = "海商盟属"
+is_direct_domain = false
+requires_unlock = false
+unlocked = true
+mask_color = Color(0.149020, 0.490196, 0.470588, 1.000000)
+polygon = PackedVector2Array(6175, 3925, 6490, 4510, 6340, 4360, 6130, 4660)
+fill_color = Color(0.149020, 0.490196, 0.470588, 0.075000)
+outline_color = Color(0.149020, 0.490196, 0.470588, 0.580000)
+min_zoom = 2.0
+max_zoom = -1.0
+
+[sub_resource type="Resource" id="route_qingxi_white_stone"]
+script = ExtResource("4_route")
+route_id = "qingxi_white_stone"
+route_name = "记忆中的旧路"
+description = "自白石镇回望那条旧路，尽头只剩无名山的轮廓。"
+from_node_id = "white_stone_town"
+to_node_id = "home_village"
+travel_days = 1
+unlocked = true
+[sub_resource type="Resource" id="route_qingxi_east_woods"]
+script = ExtResource("4_route")
+route_id = "white_east"
+route_name = "白石镇—东林林道"
+description = "镇外通向东林边缘的短途林道，行商与猎人都常走此路。"
+from_node_id = "white_stone_town"
+to_node_id = "east_woods"
+travel_days = 1
+unlocked = true
+[sub_resource type="Resource" id="route_white_qinglan"]
+script = ExtResource("4_route")
+route_id = "white_fulan"
+route_name = "白石镇—伏岚山道"
+description = "从镇西山口入伏岚山，雨季常有落石，需先找到入山路径。"
+from_node_id = "white_stone_town"
+to_node_id = "fulan_temple"
+travel_days = 2
+unlocked = false
+[sub_resource type="Resource" id="route_qingxi_xuan_ferry"]
+script = ExtResource("4_route")
+route_id = "white_lanpu"
+route_name = "白石镇—澜浦水路"
+description = "沿河下行可抵澜浦渡，需先获知渡口与通行规矩。"
+from_node_id = "white_stone_town"
+to_node_id = "lanpu_ferry"
+travel_days = 2
+unlocked = false
+[sub_resource type="Resource" id="route_white_herb"]
+script = ExtResource("4_route")
+route_id = "white_herb"
+route_name = "白石镇—灵草谷药道"
+description = "药商与采药人反复使用的湿地小道，灵草季会变得拥挤。"
+from_node_id = "white_stone_town"
+to_node_id = "herb_valley"
+travel_days = 2
+unlocked = false
+
+[sub_resource type="Resource" id="route_white_changfeng"]
+script = ExtResource("4_route")
+route_id = "white_changfeng"
+route_name = "白石镇—长风镖路"
+description = "随镖队翻越山口，可换取护送经验与沿途消息。"
+from_node_id = "white_stone_town"
+to_node_id = "changfeng_escort"
+travel_days = 3
+unlocked = false
+
+[sub_resource type="Resource" id="route_qinglan_yuxu"]
+script = ExtResource("4_route")
+route_id = "fulan_yuxu"
+route_name = "伏岚观—玉虚外山道"
+description = "伏岚山外通向玉虚仙宗外围的旧山路，首期仅作为远方方向保留。"
+from_node_id = "fulan_temple"
+to_node_id = "yuxu_sect"
+travel_days = 3
+unlocked = false
+
+[sub_resource type="Resource" id="route_qinglan_bailu"]
+script = ExtResource("4_route")
+route_id = "qinglan_bailu"
+route_name = "青岚观—白鹿书院"
+description = "沿河谷下行的游学路线，适合携带典籍和见闻前往。"
+from_node_id = "fulan_temple"
+to_node_id = "bailu_academy"
+travel_days = 2
+unlocked = false
+
+[sub_resource type="Resource" id="route_bailu_xian"]
+script = ExtResource("4_route")
+route_id = "bailu_xian"
+route_name = "白鹿书院—天衡仙国远行线"
+description = "由云阙沿人皇旧道东行，转入东华南缘与南冥河口，需经过数个关驿与水陆换乘点。"
+from_node_id = "bailu_academy"
+to_node_id = "xian_kingdom"
+travel_days = 10
+unlocked = false
+
+[sub_resource type="Resource" id="route_xian_qianji"]
+script = ExtResource("4_route")
+route_id = "xian_qianji"
+route_name = "天衡仙国—千机城古运线"
+description = "沿归潮北部河口折返东华工坊带，连接愿契文书、器物贸易与跨州商路。"
+from_node_id = "xian_kingdom"
+to_node_id = "qianji_city"
+travel_days = 8
+unlocked = false
+
+[sub_resource type="Resource" id="route_qianji_dan"]
+script = ExtResource("4_route")
+route_id = "qianji_dan"
+route_name = "千机城—丹鼎会"
+description = "工坊城内外的丹材采购路线。"
+from_node_id = "qianji_city"
+to_node_id = "dan_ding_hall"
+travel_days = 2
+unlocked = false
+
+[sub_resource type="Resource" id="route_qianji_baiji"]
+script = ExtResource("4_route")
+route_id = "qianji_baiji"
+route_name = "千机城—百器门"
+description = "从城东工坊区前往器师山门的道路。"
+from_node_id = "qianji_city"
+to_node_id = "baiji_gate"
+travel_days = 3
+unlocked = false
+
+[sub_resource type="Resource" id="route_qianji_night"]
+script = ExtResource("4_route")
+route_id = "qianji_night"
+route_name = "千机城—不夜港海道"
+description = "从东华河港转入南冥海线，受季风影响明显。"
+from_node_id = "qianji_city"
+to_node_id = "notnight_port"
+travel_days = 7
+unlocked = false
+
+[sub_resource type="Resource" id="route_xian_notnight"]
+script = ExtResource("4_route")
+route_id = "xian_notnight"
+route_name = "天衡仙国—不夜港潮路"
+description = "沿归潮北部潮河与盐田下行至自由港，是仙国人员、海商和外来修士最常用的短线。"
+from_node_id = "xian_kingdom"
+to_node_id = "notnight_port"
+travel_days = 3
+unlocked = false
+
+[sub_resource type="Resource" id="route_xuan_ferry_night"]
+script = ExtResource("4_route")
+route_id = "xuan_ferry_night"
+route_name = "玄水渡—不夜港远航线"
+description = "横跨九州东南的远航路线，需要可靠船队或仙国凭证。"
+from_node_id = "xuan_ferry"
+to_node_id = "notnight_port"
+travel_days = 12
+unlocked = false
+
+[sub_resource type="Resource" id="route_xiling_ghost"]
+script = ExtResource("4_route")
+route_id = "xiling_ghost"
+route_name = "西陵戍所—鬼哭岭"
+description = "进入旧战场峡谷的警戒线，戍所会要求留下行踪记录。"
+from_node_id = "xiling_garrison"
+to_node_id = "ghost_cry_ridge"
+travel_days = 2
+unlocked = false
+
+[sub_resource type="Resource" id="route_xiling_mine"]
+script = ExtResource("4_route")
+route_id = "xiling_mine"
+route_name = "西陵戍所—玄黄矿脉"
+description = "通往矿区的荒漠补给路，沙暴季需要跟随矿盟车队。"
+from_node_id = "xiling_garrison"
+to_node_id = "xuanhuang_mine"
+travel_days = 3
+unlocked = false
+
+[sub_resource type="Resource" id="route_xiling_sword"]
+script = ExtResource("4_route")
+route_id = "xiling_sword"
+route_name = "西陵戍所—铸剑城古道"
+description = "穿过关河与百脉山原的旧朝商道。"
+from_node_id = "xiling_garrison"
+to_node_id = "sword_forge_city"
+travel_days = 6
+unlocked = false
+
+[sub_resource type="Resource" id="route_sword_changfeng"]
+script = ExtResource("4_route")
+route_id = "sword_changfeng"
+route_name = "铸剑城—长风镖局"
+description = "山城与镖局的近路，适合打听跨州行程。"
+from_node_id = "sword_forge_city"
+to_node_id = "changfeng_escort"
+travel_days = 2
+unlocked = false
+
+[sub_resource type="Resource" id="route_sword_yaowang"]
+script = ExtResource("4_route")
+route_id = "sword_yaowang"
+route_name = "铸剑城—药王谷山线"
+description = "翻越百脉山原南坡，途中有药材交换点。"
+from_node_id = "sword_forge_city"
+to_node_id = "yaowang_valley"
+travel_days = 6
+unlocked = false
+
+[sub_resource type="Resource" id="route_sword_demon"]
+script = ExtResource("4_route")
+route_id = "sword_demon"
+route_name = "铸剑城—万妖谷山线"
+description = "穿越山原与南荒交界，需尊重各族的山路规矩。"
+from_node_id = "sword_forge_city"
+to_node_id = "demon_valley"
+travel_days = 7
+unlocked = false
+
+[sub_resource type="Resource" id="route_yaowang_demon"]
+script = ExtResource("4_route")
+route_id = "yaowang_demon"
+route_name = "药王谷—万妖谷雨林线"
+description = "南荒内部的通行路线，外来者需有熟人引路。"
+from_node_id = "yaowang_valley"
+to_node_id = "demon_valley"
+travel_days = 3
+unlocked = false
+
+[sub_resource type="Resource" id="route_yaowang_wuxian"]
+script = ExtResource("4_route")
+route_id = "yaowang_wuxian"
+route_name = "药王谷—五仙教瘴泽线"
+description = "穿行瘴泽的药师路线，需准备驱瘴与辨毒手段。"
+from_node_id = "yaowang_valley"
+to_node_id = "wuxian_teach"
+travel_days = 4
+unlocked = false
+
+[sub_resource type="Resource" id="route_yaowang_sunfall"]
+script = ExtResource("4_route")
+route_id = "yaowang_sunfall"
+route_name = "药王谷—苍梧落日台"
+description = "通往南荒古航标的支线。"
+from_node_id = "yaowang_valley"
+to_node_id = "cangwu_sunfall"
+travel_days = 4
+unlocked = false
+
+[sub_resource type="Resource" id="route_demon_wuxian"]
+script = ExtResource("4_route")
+route_id = "demon_wuxian"
+route_name = "万妖谷—五仙教山口线"
+description = "族群与宗门共享的山口线路，季节变化会影响安全度。"
+from_node_id = "demon_valley"
+to_node_id = "wuxian_teach"
+travel_days = 3
+unlocked = false
+
+[sub_resource type="Resource" id="route_arctic_xuanxiao"]
+script = ExtResource("4_route")
+route_id = "arctic_xuanxiao"
+route_name = "北极仙宫—玄枵院雪线"
+description = "沿冰脊前往星历学宫，需准备御寒与辨识裂隙的手段。"
+from_node_id = "arctic_palace"
+to_node_id = "xuanxiao_academy"
+travel_days = 3
+unlocked = false
+
+[sub_resource type="Resource" id="route_xuanxiao_nine"]
+script = ExtResource("4_route")
+route_id = "xuanxiao_nine"
+route_name = "玄枵院—九脉山庄北线"
+description = "穿越北境山口与相山北缘的古线。"
+from_node_id = "xuanxiao_academy"
+to_node_id = "nine_vein_manor"
+travel_days = 4
+unlocked = false
+
+[sub_resource type="Resource" id="route_nine_yuxu"]
+script = ExtResource("4_route")
+route_id = "nine_yuxu"
+route_name = "九脉山庄—玉虚仙宗地脉线"
+description = "沿古地脉南下的山路，地师与传法修士常在此交换消息。"
+from_node_id = "nine_vein_manor"
+to_node_id = "yuxu_sect"
+travel_days = 6
+unlocked = false
+
+[sub_resource type="Resource" id="route_nine_tianji"]
+script = ExtResource("4_route")
+route_id = "nine_tianji"
+route_name = "九脉山庄—天机阁相山分阁"
+description = "相山州内部的测绘与情报路线。"
+from_node_id = "nine_vein_manor"
+to_node_id = "tianji_branch"
+travel_days = 2
+unlocked = false
+
+[sub_resource type="Resource" id="route_penglai_yingzhou"]
+script = ExtResource("4_route")
+route_id = "penglai_yingzhou"
+route_name = "蓬莱仙盟—瀛洲航线"
+description = "东海主航线的一段，潮汐和风向决定实际耗时。"
+from_node_id = "penglai_alliance"
+to_node_id = "yingzhou_sect"
+travel_days = 3
+unlocked = false
+
+[sub_resource type="Resource" id="route_penglai_night"]
+script = ExtResource("4_route")
+route_id = "penglai_night"
+route_name = "蓬莱仙盟—不夜港南航线"
+description = "从东海群岛驶向南冥自由港的远洋航线。"
+from_node_id = "penglai_alliance"
+to_node_id = "notnight_port"
+travel_days = 8
+unlocked = false
+
+[sub_resource type="Resource" id="route_yingzhou_fangzhang"]
+script = ExtResource("4_route")
+route_id = "yingzhou_fangzhang"
+route_name = "瀛洲—方丈仙岛"
+description = "岛宗之间的季风航路，只有在特定潮窗开放。"
+from_node_id = "yingzhou_sect"
+to_node_id = "fangzhang_isle"
+travel_days = 4
+unlocked = false
+
+[sub_resource type="Resource" id="route_notnight_chaosheng"]
+script = ExtResource("4_route")
+route_id = "notnight_chaosheng"
+route_name = "不夜港—潮生门"
+description = "沿南冥潮岸东行，港口商队与潮生门弟子共用。"
+from_node_id = "notnight_port"
+to_node_id = "chaosheng_gate"
+travel_days = 2
+unlocked = false
+
+[sub_resource type="Resource" id="route_chaosheng_guixu"]
+script = ExtResource("4_route")
+route_id = "chaosheng_guixu"
+route_name = "潮生门—归墟"
+description = "进入深海异境的危险航段，通常需要组队或持有特殊信物。"
+from_node_id = "chaosheng_gate"
+to_node_id = "guixu"
+travel_days = 5
+unlocked = false
+
+[sub_resource type="Resource" id="route_tianwen_penglai"]
+script = ExtResource("4_route")
+route_id = "tianwen_penglai"
+route_name = "天问崖—蓬莱仙盟"
+description = "外海观星台与东海主航线之间的断续航路。"
+from_node_id = "tianwen_cliff"
+to_node_id = "penglai_alliance"
+travel_days = 5
+unlocked = false
+
+[sub_resource type="Resource" id="route_tianwen_fangzhang"]
+script = ExtResource("4_route")
+route_id = "tianwen_fangzhang"
+route_name = "天问崖—方丈仙岛"
+description = "风暴前后才较为稳定的外海支线。"
+from_node_id = "tianwen_cliff"
+to_node_id = "fangzhang_isle"
+travel_days = 4
+unlocked = false
+
+[sub_resource type="Resource" id="route_east_mirror"]
+script = ExtResource("4_route")
+route_id = "east_mirror"
+route_name = "东林地—镜月泽"
+description = "从林地边缘进入湖泽的野路，雨后会出现镜面异象。"
+from_node_id = "east_woods"
+to_node_id = "mirror_marsh"
+travel_days = 2
+unlocked = false
+
+[sub_resource type="Resource" id="route_xuan_mirror"]
+script = ExtResource("4_route")
+route_id = "xuan_mirror"
+route_name = "玄水渡—镜月泽水线"
+description = "沿河网南下的水线，需先取得渡口许可。"
+from_node_id = "xuan_ferry"
+to_node_id = "mirror_marsh"
+travel_days = 4
+unlocked = false
+
+[resource]
+script = ExtResource("2_map")
+map_name = "昭明界·九州广袤"
+map_size = Vector2(8000, 8000)
+background_texture = ExtResource("5_background")
+background_grid = Vector2i(1, 1)
+territory_id_mask_grid = Vector2i(5, 5)
+use_catalog = false
+territory_id_mask_tiles = Array[Texture2D]([
+ExtResource("mask_00"), ExtResource("mask_01"), ExtResource("mask_02"), ExtResource("mask_03"), ExtResource("mask_04"), ExtResource("mask_10"), ExtResource("mask_11"), ExtResource("mask_12"), ExtResource("mask_13"), ExtResource("mask_14"), ExtResource("mask_20"), ExtResource("mask_21"), ExtResource("mask_22"), ExtResource("mask_23"), ExtResource("mask_24"), ExtResource("mask_30"), ExtResource("mask_31"), ExtResource("mask_32"), ExtResource("mask_33"), ExtResource("mask_34"), ExtResource("mask_40"), ExtResource("mask_41"), ExtResource("mask_42"), ExtResource("mask_43"), ExtResource("mask_44")])
+territories = Array[ExtResource("3_territory")]([SubResource("territory_cangming"), SubResource("territory_xuanshuo"), SubResource("territory_xiangshan"), SubResource("territory_guanhe"), SubResource("territory_yunque"), SubResource("territory_donghua"), SubResource("territory_yunxiu"), SubResource("territory_cangwu"), SubResource("territory_guichao"), SubResource("territory_xuanshuo_arctic"), SubResource("territory_xuanshuo_arctic_core"), SubResource("territory_xuanshuo_xuanxiao"), SubResource("territory_xuanshuo_snow_pass"), SubResource("territory_xiangshan_nine_veins"), SubResource("territory_xiangshan_nine_core"), SubResource("territory_xiangshan_tianji"), SubResource("territory_xiangshan_northsea"), SubResource("territory_guanhe_xiling"), SubResource("territory_guanhe_xiling_core"), SubResource("territory_guanhe_mine_league"), SubResource("territory_guanhe_ghost_ridge"), SubResource("territory_guanhe_black_white"), SubResource("territory_yunque_yuxu"), SubResource("territory_yunque_yuxu_core"), SubResource("territory_yunque_qingyun"), SubResource("territory_yunque_bailu"), SubResource("territory_yunque_chengxin"), SubResource("territory_donghua_qianji"), SubResource("territory_donghua_qianji_core"), SubResource("territory_donghua_gongsun"), SubResource("territory_donghua_danding"), SubResource("territory_donghua_baiji"), SubResource("territory_yunxiu_alliance"), SubResource("territory_yunxiu_alliance_core"), SubResource("territory_yunxiu_sword_forge"), SubResource("territory_yunxiu_changfeng"), SubResource("territory_yunxiu_clans"), SubResource("territory_cangwu_demon"), SubResource("territory_cangwu_demon_core"), SubResource("territory_cangwu_yaowang"), SubResource("territory_cangwu_wuxian"), SubResource("territory_cangwu_tribes"), SubResource("territory_cangming_penglai"), SubResource("territory_cangming_penglai_core"), SubResource("territory_cangming_yingzhou"), SubResource("territory_cangming_fangzhang"), SubResource("territory_guichao_tianheng"), SubResource("territory_guichao_tianheng_core"), SubResource("territory_guichao_notnight"), SubResource("territory_guichao_chaosheng"), SubResource("territory_guichao_sea_clans")])
+nodes = Array[ExtResource("1_node")]([SubResource("node_home_village"), SubResource("node_white_stone_town"), SubResource("node_east_woods"), SubResource("node_herb_valley"), SubResource("node_qinglan_observatory"), SubResource("node_xuan_ferry"), SubResource("node_mirror_marsh"), SubResource("node_arctic_palace"), SubResource("node_xuanxiao_academy"), SubResource("node_nine_vein_manor"), SubResource("node_tianji_branch"), SubResource("node_xiling_garrison"), SubResource("node_ghost_cry_ridge"), SubResource("node_xuanhuang_mine"), SubResource("node_yuxu_sect"), SubResource("node_xian_kingdom"), SubResource("node_bailu_academy"), SubResource("node_chengxin_steles"), SubResource("node_qianji_city"), SubResource("node_dan_ding_hall"), SubResource("node_baiji_gate"), SubResource("node_sword_forge_city"), SubResource("node_changfeng_escort"), SubResource("node_yaowang_valley"), SubResource("node_demon_valley"), SubResource("node_wuxian_teach"), SubResource("node_cangwu_sunfall"), SubResource("node_penglai_alliance"), SubResource("node_yingzhou_sect"), SubResource("node_fangzhang_isle"), SubResource("node_tianwen_cliff"), SubResource("node_notnight_port"), SubResource("node_chaosheng_gate"), SubResource("node_guixu")])
+routes = Array[ExtResource("4_route")]([SubResource("route_qingxi_white_stone"), SubResource("route_qingxi_east_woods"), SubResource("route_white_qinglan"), SubResource("route_qingxi_xuan_ferry"), SubResource("route_white_herb"), SubResource("route_white_changfeng"), SubResource("route_qinglan_yuxu"), SubResource("route_bailu_xian"), SubResource("route_xian_qianji"), SubResource("route_qianji_dan"), SubResource("route_qianji_baiji"), SubResource("route_qianji_night"), SubResource("route_xian_notnight"), SubResource("route_xuan_ferry_night"), SubResource("route_xiling_ghost"), SubResource("route_xiling_mine"), SubResource("route_xiling_sword"), SubResource("route_sword_changfeng"), SubResource("route_sword_yaowang"), SubResource("route_sword_demon"), SubResource("route_yaowang_demon"), SubResource("route_yaowang_wuxian"), SubResource("route_yaowang_sunfall"), SubResource("route_demon_wuxian"), SubResource("route_arctic_xuanxiao"), SubResource("route_xuanxiao_nine"), SubResource("route_nine_yuxu"), SubResource("route_nine_tianji"), SubResource("route_penglai_yingzhou"), SubResource("route_penglai_night"), SubResource("route_yingzhou_fangzhang"), SubResource("route_notnight_chaosheng"), SubResource("route_chaosheng_guixu"), SubResource("route_tianwen_penglai"), SubResource("route_tianwen_fangzhang"), SubResource("route_east_mirror"), SubResource("route_xuan_mirror")])
+ephemeral_node_templates = Array[ExtResource("1_node")]([])

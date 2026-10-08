@@ -1,0 +1,198 @@
+[gd_scene format=3]
+
+[ext_resource type="FontFile" path="res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf" id="1_font"]
+[ext_resource type="Texture2D" path="res://textures/ui/roster_portrait_frame_v1.png" id="2_portrait_frame"]
+[ext_resource type="Texture2D" path="res://textures/ui/roster_row_backing_v1.png" id="3_row_backing"]
+[ext_resource type="Texture2D" path="res://textures/ui/roster_status_tag_v1.png" id="4_status_tag"]
+[ext_resource type="Texture2D" path="res://textures/ui/roster_utility_icons_v1.png" id="6_utility_icons"]
+
+[sub_resource type="StyleBoxFlat" id="row_normal"]
+bg_color = Color(1, 1, 1, 0.08)
+border_width_bottom = 1
+border_color = Color(0.27, 0.24, 0.18, 0.35)
+
+[sub_resource type="StyleBoxFlat" id="row_hover"]
+bg_color = Color(0.36, 0.42, 0.32, 0.16)
+border_width_bottom = 1
+border_color = Color(0.24, 0.3, 0.22, 0.62)
+
+[sub_resource type="StyleBoxFlat" id="avatar_style"]
+bg_color = Color(0.3, 0.33, 0.26, 0.25)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.19, 0.18, 0.14, 0.7)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+
+[sub_resource type="AtlasTexture" id="more_icon"]
+atlas = ExtResource("6_utility_icons")
+region = Rect2(724, 0, 724, 724)
+
+[node name="RosterRow" type="Button"]
+custom_minimum_size = Vector2(0, 76)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_styles/normal = SubResource("row_normal")
+theme_override_styles/hover = SubResource("row_hover")
+flat = true
+
+[node name="Backdrop" type="TextureRect" parent="."]
+visible = false
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_row_backing")
+expand_mode = 1
+stretch_mode = 0
+
+[node name="Columns" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_right = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="Avatar" type="PanelContainer" parent="Columns"]
+custom_minimum_size = Vector2(58, 58)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("avatar_style")
+
+[node name="Mark" type="Label" parent="Columns/Avatar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.09, 0.07, 1)
+theme_override_font_sizes/font_size = 25
+text = "李"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Frame" type="TextureRect" parent="Columns/Avatar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_portrait_frame")
+expand_mode = 1
+stretch_mode = 5
+z_index = 2
+
+
+[node name="Person" type="VBoxContainer" parent="Columns"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Name" type="Label" parent="Columns/Person"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.08, 0.07, 0.05, 1)
+theme_override_font_sizes/font_size = 23
+text = "李氏族人"
+
+[node name="Detail" type="Label" parent="Columns/Person"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.31, 0.3, 0.24, 1)
+theme_override_font_sizes/font_size = 15
+text = "无灵根 · 18岁"
+
+[node name="Identity" type="Label" parent="Columns"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+theme_override_colors/font_color = Color(0.12, 0.11, 0.08, 1)
+text = "李家族人\n青溪里"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Realm" type="Label" parent="Columns"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.12, 0.11, 0.08, 1)
+text = "凡人"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tags" type="Label" parent="Columns"]
+custom_minimum_size = Vector2(188, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.12, 0.11, 0.08, 1)
+text = "未入道"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Backdrop" type="TextureRect" parent="Columns/Tags"]
+visible = false
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_status_tag")
+expand_mode = 1
+# 题签原图比例为 3:1；保持比例居中，不能随列表行高被竖向拉扯。
+stretch_mode = 5
+
+[node name="State" type="Label" parent="Columns"]
+custom_minimum_size = Vector2(148, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.12, 0.11, 0.08, 1)
+text = "待安排"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Backdrop" type="TextureRect" parent="Columns/State"]
+visible = false
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_status_tag")
+expand_mode = 1
+# 与灵根题签一致，保留水墨两端笔势的原始比例。
+stretch_mode = 5
+
+[node name="Action" type="Label" parent="Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.22, 0.31, 0.22, 1)
+theme_override_font_sizes/font_size = 18
+text = "查看"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoreIcon" type="TextureRect" parent="Columns/Action"]
+visible = false
+layout_mode = 0
+offset_left = 74.0
+offset_top = 25.0
+offset_right = 92.0
+offset_bottom = 43.0
+mouse_filter = 2
+texture = SubResource("more_icon")
+expand_mode = 1
+stretch_mode = 5

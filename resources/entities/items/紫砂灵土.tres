@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/ItemData.cs" id="1"]
+[ext_resource type="Resource" path="res://resources/material_craft/紫砂灵土材性.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+definition_id = &"mat_zisha_spirit_soil"
+entity_name = "紫砂灵土"
+icon_path = "res://textures/items/item_zisha_spirit_soil.png"
+item_category = "材料"
+item_subcategory = "矿材"
+tags = Array[String](["五行[土]", "质地[砂]", "功用[藏]", "相性[阴]"])
+grade_value = 2
+can_stack = true
+max_stack = 999
+craft_data = ExtResource("2")

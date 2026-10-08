@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BuildingData" format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/EntityData.cs" id="1"]
+[ext_resource type="Script" path="res://csharp/resources/BuildingData.cs" id="2"]
+
+[resource]
+script = ExtResource("2")
+entity_name = "聚灵室"
+summary = "以灵石维系的小型聚灵设施。建成后可在村务页启停；运转时每月每室消耗一枚灵石，并改善驻地修行环境。"
+max_durability = 18
+current_durability = 18
+consume_durability = false
+grid_size = Vector2i(1, 1)
+build_cost_item_paths = Array[String]([])
+build_cost_counts = Array[int]([10, 8])
+build_cost_resource_ids = Array[String](["stone", "spirit_stones"])
+estate_facility_id = "spirit_gathering"

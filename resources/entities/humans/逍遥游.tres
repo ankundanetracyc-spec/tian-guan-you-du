@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="HumanData" format=3 uid="uid://b4aossbqgv68x"]
+
+[ext_resource type="Script" path="res://csharp/gongfa/ActiveSkillData.cs" id="1_3dvvf"]
+[ext_resource type="Script" path="res://csharp/resources/HumanData.cs" id="2"]
+
+[resource]
+script = ExtResource("2")
+entity_name = "逍遥游"
+faction = 2
+icon_path = "res://textures/characters/tokens/character_token_human.png"

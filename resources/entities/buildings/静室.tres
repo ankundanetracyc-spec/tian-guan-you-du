@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BuildingData" format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/EntityData.cs" id="1"]
+[ext_resource type="Script" path="res://csharp/resources/BuildingData.cs" id="2"]
+
+[resource]
+script = ExtResource("2")
+entity_name = "静室"
+summary = "设于李家宅院中的单人修行居所。可供一名族人静修、闭关与借灵石供修。"
+max_durability = 24
+current_durability = 24
+consume_durability = false
+grid_size = Vector2i(1, 1)
+build_cost_resource_ids = Array[String](["stone"])
+build_cost_counts = Array[int]([6])
+estate_facility_id = "meditation_room"

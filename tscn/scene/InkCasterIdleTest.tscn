@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://chn0lhsy5j1yn"]
+
+[ext_resource type="Texture2D" uid="uid://c3au1haccsh2b" path="res://tscn/scene/cf9f657f-ee34-4679-8cd7-ece7679f40ba.png" id="1_hxk7y"]
+
+[sub_resource type="Animation" id="Animation_RESET"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InkCaster:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.23333333, 0.0009999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [15, 15]
+}
+
+[sub_resource type="Animation" id="Animation_idle_cast"]
+resource_name = "idle_cast"
+length = 1.333333
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InkCaster:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.083333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.083333, 1.166667, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_idle"]
+_data = {
+&"RESET": SubResource("Animation_RESET"),
+&"idle_cast": SubResource("Animation_idle_cast")
+}
+
+[node name="InkCasterIdleTest" type="Node2D" unique_id=185846895]
+
+[node name="Backdrop" type="Polygon2D" parent="." unique_id=1161358130]
+visible = false
+color = Color(0.07, 0.075, 0.07, 1)
+polygon = PackedVector2Array(-960, -540, 960, -540, 960, 540, -960, 540)
+
+[node name="InkCaster" type="Sprite2D" parent="." unique_id=90953312]
+position = Vector2(0, 97.25)
+scale = Vector2(1, 1.1741214)
+texture = ExtResource("1_hxk7y")
+hframes = 4
+vframes = 4
+frame = 15
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1741838960]
+libraries/ = SubResource("AnimationLibrary_idle")
+autoplay = &"idle_cast"

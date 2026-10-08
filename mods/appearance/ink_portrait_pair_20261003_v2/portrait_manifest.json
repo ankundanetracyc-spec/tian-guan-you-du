@@ -1,0 +1,43 @@
+{
+  "canvas": [
+    1024,
+    1536
+  ],
+  "format": "RGBA PNG, one shared origin and zero offsets",
+  "layer_order_back_to_front": [
+    "hair_back",
+    "face_shape",
+    "clothing",
+    "eyes",
+    "eyebrows",
+    "nose",
+    "mouth",
+    "face_accessory",
+    "hair_front"
+  ],
+  "slot_names_zh": {
+    "hair_front": "前发",
+    "hair_back": "后发",
+    "eyebrows": "眉毛",
+    "eyes": "眼睛",
+    "nose": "鼻子",
+    "mouth": "嘴巴",
+    "face_shape": "脸型（含耳朵及完整颈部）",
+    "clothing": "衣服",
+    "face_accessory": "面饰（本套为空）"
+  },
+  "source": "2026-10-03 new male/female full portraits and the user's bald references only",
+  "sexes": [
+    "male",
+    "female"
+  ],
+  "runtime_integrated": false,
+  "test_entry_integrated": false,
+  "current_visual_source": false,
+  "style_approved_by_user": true,
+  "semantic_cleanup_approved": false,
+  "rig": "../selected_ink_portrait_rig_20261003_v1/rig/portrait_rig.json",
+  "selection": "../selected_ink_portrait_rig_20261003_v1/portrait_selection.json",
+  "frozen_selected_master_source": true,
+  "clean_successor": "../selected_ink_portrait_clean_20261003_v1/portrait_manifest.json"
+}

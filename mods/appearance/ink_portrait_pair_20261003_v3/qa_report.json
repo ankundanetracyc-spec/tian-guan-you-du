@@ -1,0 +1,89 @@
+{
+  "male": {
+    "canvas": [
+      1024,
+      1536
+    ],
+    "alpha_pixels": {
+      "hair_back": 72301,
+      "face_shape": 95435,
+      "clothing": 877478,
+      "eyes": 5623,
+      "eyebrows": 3035,
+      "nose": 1905,
+      "mouth": 2016,
+      "face_accessory": 0,
+      "hair_front": 78771
+    },
+    "alpha_mismatch_pixels_over_5": 16275,
+    "recomposition_on_background": {
+      "light": {
+        "mean_channel_difference": 6.7084,
+        "pixels_with_difference_over_12": 277617
+      },
+      "dark": {
+        "mean_channel_difference": 6.1782,
+        "pixels_with_difference_over_12": 268922
+      }
+    },
+    "slot_purity": {
+      "clothing_alpha_above_y520": 0,
+      "front_hair_skin_like_pixels": 252,
+      "rear_hair_skin_like_pixels": 202
+    },
+    "hair_toggle": {
+      "pixels_changed_without_back_over_12": 0,
+      "pixels_changed_without_front_over_12": 59358
+    },
+    "mirrored_eyelid_highlights": {
+      "left_rgb": [
+        239,
+        209,
+        187
+      ],
+      "right_rgb": [
+        238,
+        208,
+        187
+      ],
+      "largest_channel_difference": 1
+    }
+  },
+  "female": {
+    "canvas": [
+      1024,
+      1536
+    ],
+    "alpha_pixels": {
+      "hair_back": 67564,
+      "face_shape": 94391,
+      "clothing": 829147,
+      "eyes": 6795,
+      "eyebrows": 2563,
+      "nose": 1820,
+      "mouth": 1953,
+      "face_accessory": 0,
+      "hair_front": 87631
+    },
+    "alpha_mismatch_pixels_over_5": 15790,
+    "recomposition_on_background": {
+      "light": {
+        "mean_channel_difference": 7.3012,
+        "pixels_with_difference_over_12": 260281
+      },
+      "dark": {
+        "mean_channel_difference": 6.7347,
+        "pixels_with_difference_over_12": 252241
+      }
+    },
+    "slot_purity": {
+      "clothing_alpha_above_y520": 0,
+      "front_hair_skin_like_pixels": 329,
+      "rear_hair_skin_like_pixels": 109
+    },
+    "hair_toggle": {
+      "pixels_changed_without_back_over_12": 0,
+      "pixels_changed_without_front_over_12": 71415
+    }
+  }
+}

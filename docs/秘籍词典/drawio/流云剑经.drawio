@@ -1,0 +1,124 @@
+<mxfile host="Electron" agent="Codex">
+  <diagram id="liuyun" name="流云剑经">
+    <mxGraphModel dx="4297" dy="1023" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2600" pageHeight="1700" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=20;" value="流云剑经&#xa;" vertex="1">
+          <mxGeometry height="74" width="560" x="740" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="overview" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=15;" value="剑修秘籍 / 可主修可辅修&lt;br&gt;秘籍总览&lt;br&gt;灵根要求：有灵根即可&lt;br&gt;主修可修至：云息十三层&lt;br&gt;偏灵活与多段追击伤害" vertex="1">
+          <mxGeometry height="118" width="560" x="740" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="buffs" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;" value="通用状态&#xa;剑意：每层剑术伤害+5%&#xa;基础剑攻击命中后获得1层剑意&#xa;若自身上一次行动期间及本次自身行动期间均未获得新剑意，则在本次自身行动结束时清零&#xa;流云剑势：从下一次自身行动开始起，每次自身行动开始时消耗2层剑意；每张由玩家主动打出的剑术攻击牌命中后追加1次流云追击&#xa;其他招式写明的额外追击可在基础追击之外再追加1次；追击不产剑意且不会再次触发追击" vertex="1">
+          <mxGeometry height="166" width="360" x="1770" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;" value="第一卷：照水&#xa;卷章ID：zhao_shui&#xa;顺序：1&#xa;定位：入门卷，照水观剑，养锋起意&#xa;学成可修至：云息三层&#xa;学习条件：&#xa;灵根：任意&#xa;境界：凡人境界及以上&#xa;学会永久属性：剑道造诣+1.5，敏捷+1.5" vertex="1">
+          <mxGeometry height="240" width="340" x="850" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="纳气&lt;br&gt;精准+4&lt;br&gt;会心+4" vertex="1">
+          <mxGeometry height="82" width="260" x="360" y="375" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="化法&lt;br&gt;斩剑*2 -&amp;gt; 掠水云锋*2&lt;br&gt;养锋*1 -&amp;gt; 澄心藏锋*1&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="94" width="280" x="1360" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_cards" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;习得：掠水云锋*2，澄心藏锋*1&lt;br&gt;&lt;br&gt;掠水云锋：&lt;br&gt;类型：攻伐牌&lt;br&gt;关键词：无&lt;br&gt;耗费：精力 2、法力 0&lt;br&gt;目标：单体敌人&lt;br&gt;伤害类型：物理&lt;br&gt;伤害公式：8 + 剑道造诣×0.52 + 体魄×0.16 + 敏捷×0.12&lt;br&gt;效果：命中后获得1层剑意；本次自身行动期间尚未使用遁身牌时，下一张遁身牌精力耗费-2；已使用遁身牌时，本次会心+4&lt;br&gt;状态关联：剑意&lt;br&gt;&lt;br&gt;澄心藏锋：&lt;br&gt;类型：术诀牌&lt;br&gt;关键词：消耗&lt;br&gt;耗费：精力 0、法力 0&lt;br&gt;目标：自身&lt;br&gt;回复精力：12 + 剑道造诣×0.32 + 体魄×0.10&lt;br&gt;效果：无剑意时获得2层剑意；已有剑意时获得1层剑意，并获得护盾=4 + 剑道造诣×0.10&lt;br&gt;状态关联：剑意、护盾&lt;/div&gt;" vertex="1">
+          <mxGeometry height="350" width="740" x="-400" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;" value="第二卷：行云&#xa;卷章ID：xing_yun&#xa;顺序：2&#xa;定位：身法卷，先动再出剑，并提前入势&#xa;学成可修至：云息六层&#xa;学习条件：&#xa;灵根：任意&#xa;境界：云息三层及以上&#xa;前置：已学照水&#xa;敏捷≥5&#xa;学会永久属性：剑道造诣+1.5，敏捷+1.5，体魄+0.5" vertex="1">
+          <mxGeometry height="240" width="340" x="850" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="纳气&lt;div&gt;闪避+6&lt;br&gt;&lt;div&gt;行动速度+4&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="82" width="260" x="410" y="670" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="化法&lt;br&gt;点锋*2 -&amp;gt; 踏云穿锋*2&lt;br&gt;基础步法*1 -&amp;gt; 流云转步*1&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="94" width="280" x="1360" y="655" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_cards" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;习得：流云·行势*1，踏云穿锋*2，流云转步*1&lt;br&gt;&lt;br&gt;流云·行势：&lt;br&gt;类型：心法牌&lt;br&gt;关键词：无&lt;br&gt;耗费：精力 2、法力 0&lt;br&gt;目标：自身&lt;br&gt;效果：辅修获得1层剑意并进入流云剑势（辅修）；主修获得2层剑意并进入流云剑势（主修）。从下一次自身行动开始时，每次维持耗费剑意2；剑意不足时本次自身行动期间失效&lt;br&gt;状态关联：剑意、流云剑势&lt;br&gt;&lt;br&gt;踏云穿锋：&lt;br&gt;类型：攻伐牌&lt;br&gt;关键词：无&lt;br&gt;耗费：精力 2、法力 0&lt;br&gt;目标：单体敌人&lt;br&gt;伤害类型：物理&lt;br&gt;伤害公式：6 + 剑道造诣×0.42 + 敏捷×0.24 + 体魄×0.08&lt;br&gt;效果：命中后获得1层剑意；本次自身行动期间已使用遁身牌时，本次伤害+25%并回复4点精力；处于流云剑势时，本次会心+6&lt;br&gt;状态关联：剑意、流云剑势&lt;br&gt;&lt;br&gt;流云转步：&lt;br&gt;类型：遁身牌&lt;br&gt;关键词：消耗&lt;br&gt;耗费：精力 2、法力 0&lt;br&gt;目标：自身&lt;br&gt;效果：移动2格；本次自身行动期间下一张由玩家主动打出的剑术攻击牌精准+8，命中后额外获得1层剑意&lt;br&gt;状态关联：剑意&lt;/div&gt;" vertex="1">
+          <mxGeometry height="484" width="740" x="-400" y="526" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;" value="第三卷：听澜&#xa;卷章ID：ting_lan&#xa;顺序：3&#xa;定位：主修核心卷，听澜持势，守中回锋&#xa;限制：主修向核心卷&#xa;学成可修至：云息九层&#xa;学习条件：&#xa;灵根：任意&#xa;境界：云息六层及以上&#xa;主修&#xa;前置：已学行云，敏捷≥7&#xa;学会永久属性：敏捷+1，体魄+0.75" vertex="1">
+          <mxGeometry height="240" width="340" x="850" y="960" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="纳气&lt;br&gt;精准+8&lt;br&gt;闪避+6" vertex="1">
+          <mxGeometry height="82" width="260" x="390" y="990" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="化法&lt;br&gt;敛息观剑*1 -&amp;gt; 听澜养意*1&lt;br&gt;格剑*1 -&amp;gt; 截云回锋*1&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="94" width="300" x="1360" y="980" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_cards" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;习得：听澜养意*1，截云回锋*1&lt;br&gt;&lt;br&gt;听澜养意：&lt;br&gt;类型：术诀牌&lt;br&gt;关键词：消耗&lt;br&gt;耗费：精力 0、法力 0&lt;br&gt;目标：自身&lt;br&gt;回复精力：10 + 剑道造诣×0.24 + 敏捷×0.12&lt;br&gt;效果：获得2层剑意；处于流云剑势时，下一次自身行动开始时的剑势维持耗费剑意-1，最低为0&lt;br&gt;状态关联：剑意、流云剑势&lt;br&gt;&lt;br&gt;截云回锋：&lt;br&gt;类型：术诀牌&lt;br&gt;关键词：应对&lt;br&gt;耗费：精力 2、法力 0&lt;br&gt;目标：自身；由敌方攻击自身时的应对触发&lt;br&gt;效果：获得化解=max(1，floor(剑道造诣÷6)+floor(敏捷÷12))；获得回锋至下一次自身行动结束。回锋使下一张由玩家主动打出的剑术攻击牌精准+6，命中后追加1次流云追击并施加1层剑痕&lt;br&gt;状态关联：化解、回锋、剑痕&lt;/div&gt;" vertex="1">
+          <mxGeometry height="320" width="740" x="-400" y="1040" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;" value="第四卷：叠云&#xa;卷章ID：die_yun&#xa;顺序：4&#xa;定位：主修收束卷，流云千叠，获得连续追击&#xa;限制：主修向核心卷&#xa;学成可修至：云息十三层&#xa;学习条件：&#xa;灵根：任意&#xa;境界：云息九层及以上&#xa;主修&#xa;前置：已学听澜，敏捷≥9&#xa;学会永久属性：敏捷+1，体魄+0.75" vertex="1">
+          <mxGeometry height="240" width="340" x="850" y="1300" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="纳气&lt;div&gt;会心+8&lt;/div&gt;&lt;div&gt;行动速度+10&lt;/div&gt;" vertex="1">
+          <mxGeometry height="82" width="260" x="390" y="1320" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="化法&lt;br&gt;基础技能库 + 云行递锋*1" vertex="1">
+          <mxGeometry height="82" width="300" x="1360" y="1330" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_cards" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;习得：千叠流云*1&lt;br&gt;&lt;br&gt;千叠流云：&lt;br&gt;类型：攻伐牌&lt;br&gt;关键词：无&lt;br&gt;耗费：精力 3、法力 2&lt;br&gt;目标：单体敌人&lt;br&gt;伤害类型：物理&lt;br&gt;伤害公式：10 + 剑道造诣×0.58 + 敏捷×0.22 + 体魄×0.12&lt;br&gt;效果：未处于流云剑势时，命中后获得2层剑意并触发1次流云追击；处于流云剑势时，以剑势基础追击作为第一次追击。第二次追击初始概率80%；之后每次概率=上一次概率×min(0.90，log2(记录剑意+1)÷4)。自第二次追击起，每次额外耗费剑意1、法力1、精力6，任一不足即停止&lt;br&gt;状态关联：剑意、流云剑势&lt;/div&gt;" vertex="1">
+          <mxGeometry height="230" width="740" x="-400" y="1380" as="geometry" />
+        </mxCell>
+        <mxCell id="summary" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" value="属性汇总&#xa;学会永久属性总收益：剑道造诣+8，敏捷+5，体魄+2&#xa;纳气总收益：精准+12，闪避+12，会心+12，行动速度+14&#xa;纳气只给派生战斗属性；主修差异集中在听澜卷、叠云卷与剑势维持" vertex="1">
+          <mxGeometry height="130" width="390" x="1670" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="combo" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;" value="招式循环及与其他秘籍的联动&#xa;掠水云锋 → 流云转步 → 踏云穿锋：剑接步、步接剑&#xa;截云回锋：敌方回合防守；下一张由玩家主动打出的剑术攻击牌提高精准，命中后追加一次追击&#xa;听澜养意补充剑意并降低剑势维持消耗；千叠流云消耗剑意完成连续追击&#xa;跨秘籍：遁身条件接受任何秘籍的遁身牌；截云回锋的追击命中可施加剑痕；剑痕可提高玩家主动打出的剑术攻击与流云追击的精准" vertex="1">
+          <mxGeometry height="148" width="430" x="1660" y="820" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" edge="1" parent="1" source="overview" style="endArrow=block;html=1;" target="c1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_left" value="纳气">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_cards" value="习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_left" value="纳气">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_cards" value="习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_left" value="纳气">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_cards" value="习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e16" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_left" value="纳气">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e17" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e18" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_cards" value="习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JyJ4yYEEaSyzmMrGl6Rq-1" edge="1" parent="1" source="c3_cards" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;innerLoopWaypoints=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" target="c3_cards">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

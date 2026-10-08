@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/ItemData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+definition_id = &"crop_huangsu"
+entity_name = "黄粟"
+item_category = "材料"
+item_subcategory = "粮食"
+tags = Array[String](["五行[土]", "质地[谷]", "功用[果腹]", "功用[固本]", "相性[和]"])
+grade_value = 1
+can_stack = true
+max_stack = 999

@@ -1,0 +1,60 @@
+{
+  "pass": true,
+  "changed_parts": [
+    "male/eyes/04.png",
+    "male/eyes/05.png",
+    "male/eyes/06.png"
+  ],
+  "unchanged_physical_parts": 70,
+  "brows_unchanged": true,
+  "visual_review_cases": 18,
+  "records": [
+    {
+      "file": "male/eyes/04.png",
+      "sha256": "0bdb710bacbf2c293f6e71adf2f081f733ef64e07154822c16d28e2f239b5683",
+      "bbox": [
+        407,
+        362,
+        627,
+        397
+      ],
+      "light_sclera_pixel_indicator_before_after": [
+        278,
+        206
+      ],
+      "transparent_rgb_zero": true
+    },
+    {
+      "file": "male/eyes/05.png",
+      "sha256": "46bee4a02991350b95a49c60c934269123c0c822e8f68859e6c42543c68e6429",
+      "bbox": [
+        411,
+        367,
+        623,
+        395
+      ],
+      "light_sclera_pixel_indicator_before_after": [
+        302,
+        260
+      ],
+      "transparent_rgb_zero": true
+    },
+    {
+      "file": "male/eyes/06.png",
+      "sha256": "4007cb5301de98f2080bc69939f22e0390669edbf4382827725fbb996f08afd7",
+      "bbox": [
+        411,
+        367,
+        621,
+        397
+      ],
+      "light_sclera_pixel_indicator_before_after": [
+        334,
+        265
+      ],
+      "transparent_rgb_zero": true
+    }
+  ],
+  "sclera_indicator_note": "Same final canvas ROI and RGB threshold, used as a bright sclera proxy alongside visual review; not an anatomical segmentation measurement.",
+  "visual_approved_by_user": false
+}

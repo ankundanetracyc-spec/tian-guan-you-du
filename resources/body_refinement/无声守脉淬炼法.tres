@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BodyRefinementMethod" format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/BodyRefinementMethod.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+method_id = "silent_pulse_guard"
+method_name = "无声守脉淬炼法"
+description = "收声守脉，令心神不乱，再以余力牵动筋脉；心为主，筋为辅。"
+duration_min_hours = 30
+duration_max_hours = 48
+base_yield_min = 8
+base_yield_max = 12
+target_parts = Array[String](["heart", "sinew"])
+allocation_ranges = {"heart": Vector2(0.5, 0.7), "sinew": Vector2(0.3, 0.5)}
+effective_level_ranges = {"heart": Vector2(0, 5), "sinew": Vector2(0, 5)}
+required_textures = Array[String](["玉", "晶"])
+required_utilities = Array[String](["镇"])
+required_utility_grade = 1
+default_unlocked = true

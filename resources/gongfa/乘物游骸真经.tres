@@ -1,0 +1,93 @@
+[gd_resource type="Resource" script_class="GongfaResource" format=3]
+
+[ext_resource type="Script" path="res://csharp/gongfa/GongfaResource.cs" id="1"]
+[ext_resource type="Script" path="res://csharp/gongfa/GongfaChapterConfig.cs" id="2"]
+[ext_resource type="Resource" path="res://resources/activeskills/乘物游骸真经/乘物游骸.tres" id="3"]
+[ext_resource type="Resource" path="res://resources/activeskills/乘物游骸真经/蜕形.tres" id="4"]
+[ext_resource type="Resource" path="res://resources/activeskills/乘物游骸真经/托身.tres" id="5"]
+[ext_resource type="Resource" path="res://resources/activeskills/乘物游骸真经/解形.tres" id="6"]
+[ext_resource type="Resource" path="res://resources/activeskills/乘物游骸真经/冯虚.tres" id="7"]
+
+[sub_resource type="Resource" id="one"]
+script = ExtResource("2")
+chapter_id = "you_hai"
+chapter_name = "游骸"
+description = "以主动回落寄形于骸，建立确定闪避的起点。"
+order = 1
+required_study_progress = 24.0
+required_attributes = {"agility": 5.0, "body_proficiency": 4.0}
+allowed_bearings = Array[int]([0, 1])
+learn_permanent_bonuses = {"agility": 1.0}
+learned_active_skills = Array[Resource]([ExtResource("4")])
+naqi_bonuses = {"max_health": 30.0, "dodge": 1.0}
+left_branch_name = "淬炼"
+right_branch_name = "化法"
+
+[sub_resource type="Resource" id="two"]
+script = ExtResource("2")
+chapter_id = "tuo_shen"
+chapter_name = "托身"
+description = "以身法延长游骸后的受击优势。"
+order = 2
+required_study_progress = 48.0
+required_realm = "云息三层"
+required_attributes = {"agility": 7.0, "body_proficiency": 5.0}
+required_chapter_ids = Array[String](["you_hai"])
+allowed_bearings = Array[int]([1])
+learn_permanent_bonuses = {"agility": 1.0}
+learned_active_skills = Array[Resource]([ExtResource("5")])
+naqi_bonuses = {"dodge": 2.0, "max_qi_blood": 1.0}
+left_branch_name = "淬炼"
+right_branch_name = "化法"
+
+[sub_resource type="Resource" id="three"]
+script = ExtResource("2")
+chapter_id = "jie_xing"
+chapter_name = "解形"
+description = "将游骸由守势转为可主动支取的攻伐资源。"
+order = 3
+required_study_progress = 84.0
+required_realm = "云息六层"
+required_attributes = {"agility": 9.0, "body_proficiency": 7.0}
+required_chapter_ids = Array[String](["tuo_shen"])
+allowed_bearings = Array[int]([1])
+learn_permanent_bonuses = {"physique": 0.5, "agility": 0.5}
+learned_active_skills = Array[Resource]([ExtResource("6")])
+naqi_multipliers = {"physical_damage": 0.05}
+naqi_bonuses = {"dodge": 2.0}
+left_branch_name = "淬炼"
+right_branch_name = "化法"
+
+[sub_resource type="Resource" id="four"]
+script = ExtResource("2")
+chapter_id = "feng_xu"
+chapter_name = "冯虚"
+description = "以本场已耗游骸为尺，将防守资源反转成重型反击。"
+order = 4
+required_study_progress = 128.0
+required_realm = "云息九层"
+required_attributes = {"agility": 10.0, "body_proficiency": 9.0}
+required_chapter_ids = Array[String](["jie_xing"])
+allowed_bearings = Array[int]([1])
+learn_permanent_bonuses = {"agility": 0.5, "body_proficiency": 0.5}
+learned_active_skills = Array[Resource]([ExtResource("7")])
+naqi_bonuses = {"max_qi_blood": 1.0, "dodge": 3.0}
+left_branch_name = "淬炼"
+right_branch_name = "化法"
+
+[resource]
+script = ExtResource("1")
+gongfa_name = "乘物游骸真经"
+description = "气血、游骸与身法并行的锻躯真经：以肉身根基压住敌方，游骸整张避伤，再把已耗游骸化为反击。"
+wuxing = 0
+can_be_main = true
+can_be_sub = true
+bearing_compatibility = Array[int]([1])
+school_tags = Array[String](["body"])
+body_nourish_rate_per_day = 0.8
+body_nourish_weights = {"skin": 0.25, "sinew": 0.40, "bone": 0.10, "blood": 0.10, "viscera": 0.05, "heart": 0.10}
+main_realm_start = "凡人"
+main_realm_end = "云息十三层"
+heart_method_skill = ExtResource("3")
+default_unlocked_chapter_count = 1
+chapters = Array[Resource]([SubResource("one"), SubResource("two"), SubResource("three"), SubResource("four")])

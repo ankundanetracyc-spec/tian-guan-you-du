@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/ItemData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+definition_id = &"meal_spirit_rice_porridge"
+entity_name = "灵米粥"
+item_category = "灵膳"
+item_subcategory = "灵粥"
+tags = Array[String](["功用[蕴灵]", "功用[固本]", "相性[和]"])
+grade_value = 3
+can_stack = true
+max_stack = 99

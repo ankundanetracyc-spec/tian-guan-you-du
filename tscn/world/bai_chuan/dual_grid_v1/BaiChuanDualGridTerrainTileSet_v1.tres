@@ -1,0 +1,162 @@
+[gd_resource type="TileSet" format=3 uid="uid://boermgdhhosvb"]
+
+[ext_resource type="Texture2D" uid="uid://tp8x7bb1ur4d" path="res://textures/world_map/bai_chuan/dual_grid_v1/plain_terrain_xuan_paper_texture_v1.png" id="1_plain"]
+[ext_resource type="Texture2D" uid="uid://bf2wd60tq7lqe" path="res://textures/world_map/bai_chuan/dual_grid_v1/green_terrain_atlas_v2.png" id="2_green"]
+[ext_resource type="Texture2D" uid="uid://bg3yj32n3vrcj" path="res://textures/world_map/bai_chuan/dual_grid_v1/water_ink_blue_tile_v2.png" id="3_water"]
+[ext_resource type="Texture2D" uid="uid://bsiyruxsxgvsh" path="res://textures/world_map/bai_chuan/dual_grid_v1/terrain_dual_grid_masks_v2.png" id="4_masks"]
+[ext_resource type="Texture2D" uid="uid://bx6qx1uf38ler" path="res://textures/world_map/bai_chuan/dual_grid_v1/logical_grid_line_v1.png" id="5_grid"]
+
+[sub_resource type="TileSetAtlasSource" id="PlainTerrain"]
+texture = ExtResource("1_plain")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+0:0/0/custom_data_0 = "plain"
+
+[sub_resource type="TileSetAtlasSource" id="GreenTerrain"]
+texture = ExtResource("2_green")
+texture_region_size = Vector2i(627, 627)
+0:0/0 = 0
+0:0/0/custom_data_0 = "green"
+1:0/0 = 0
+1:0/0/custom_data_0 = "green"
+1:0/0/custom_data_1 = 1
+0:1/0 = 0
+0:1/0/custom_data_0 = "green"
+0:1/0/custom_data_1 = 2
+1:1/0 = 0
+1:1/0/custom_data_0 = "green"
+1:1/0/custom_data_1 = 3
+
+[sub_resource type="TileSetAtlasSource" id="WaterTerrain"]
+texture = ExtResource("3_water")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+0:0/0/custom_data_0 = "water"
+
+[sub_resource type="TileSetAtlasSource" id="WaterDualGridMasks"]
+texture = ExtResource("4_masks")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+0:0/0/custom_data_0 = "water_mask_00"
+1:0/0 = 0
+1:0/0/custom_data_0 = "water_mask_01"
+2:0/0 = 0
+2:0/0/custom_data_0 = "water_mask_02"
+3:0/0 = 0
+3:0/0/custom_data_0 = "water_mask_03"
+0:1/0 = 0
+0:1/0/custom_data_0 = "water_mask_04"
+1:1/0 = 0
+1:1/0/custom_data_0 = "water_mask_05"
+2:1/0 = 0
+2:1/0/custom_data_0 = "water_mask_06"
+3:1/0 = 0
+3:1/0/custom_data_0 = "water_mask_07"
+0:2/0 = 0
+0:2/0/custom_data_0 = "water_mask_08"
+1:2/0 = 0
+1:2/0/custom_data_0 = "water_mask_09"
+2:2/0 = 0
+2:2/0/custom_data_0 = "water_mask_10"
+3:2/0 = 0
+3:2/0/custom_data_0 = "water_mask_11"
+0:3/0 = 0
+0:3/0/custom_data_0 = "water_mask_12"
+1:3/0 = 0
+1:3/0/custom_data_0 = "water_mask_13"
+2:3/0 = 0
+2:3/0/custom_data_0 = "water_mask_14"
+3:3/0 = 0
+3:3/0/custom_data_0 = "water_mask_15"
+
+[sub_resource type="TileSetAtlasSource" id="LogicalGrid"]
+texture = ExtResource("5_grid")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+0:0/0/custom_data_0 = "logical_grid_line"
+
+[sub_resource type="TileSetAtlasSource" id="GreenDualGridMasks"]
+texture = ExtResource("4_masks")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+0:0/0/custom_data_0 = "green_mask_00"
+1:0/0 = 0
+1:0/0/custom_data_0 = "green_mask_01"
+2:0/0 = 0
+2:0/0/custom_data_0 = "green_mask_02"
+3:0/0 = 0
+3:0/0/custom_data_0 = "green_mask_03"
+0:1/0 = 0
+0:1/0/custom_data_0 = "green_mask_04"
+1:1/0 = 0
+1:1/0/custom_data_0 = "green_mask_05"
+2:1/0 = 0
+2:1/0/custom_data_0 = "green_mask_06"
+3:1/0 = 0
+3:1/0/custom_data_0 = "green_mask_07"
+0:2/0 = 0
+0:2/0/custom_data_0 = "green_mask_08"
+1:2/0 = 0
+1:2/0/custom_data_0 = "green_mask_09"
+2:2/0 = 0
+2:2/0/custom_data_0 = "green_mask_10"
+3:2/0 = 0
+3:2/0/custom_data_0 = "green_mask_11"
+0:3/0 = 0
+0:3/0/custom_data_0 = "green_mask_12"
+1:3/0 = 0
+1:3/0/custom_data_0 = "green_mask_13"
+2:3/0 = 0
+2:3/0/custom_data_0 = "green_mask_14"
+3:3/0 = 0
+3:3/0/custom_data_0 = "green_mask_15"
+
+[sub_resource type="TileSetAtlasSource" id="PlainDualGridMasks"]
+texture = ExtResource("4_masks")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+0:0/0/custom_data_0 = "plain_mask_00"
+1:0/0 = 0
+1:0/0/custom_data_0 = "plain_mask_01"
+2:0/0 = 0
+2:0/0/custom_data_0 = "plain_mask_02"
+3:0/0 = 0
+3:0/0/custom_data_0 = "plain_mask_03"
+0:1/0 = 0
+0:1/0/custom_data_0 = "plain_mask_04"
+1:1/0 = 0
+1:1/0/custom_data_0 = "plain_mask_05"
+2:1/0 = 0
+2:1/0/custom_data_0 = "plain_mask_06"
+3:1/0 = 0
+3:1/0/custom_data_0 = "plain_mask_07"
+0:2/0 = 0
+0:2/0/custom_data_0 = "plain_mask_08"
+1:2/0 = 0
+1:2/0/custom_data_0 = "plain_mask_09"
+2:2/0 = 0
+2:2/0/custom_data_0 = "plain_mask_10"
+3:2/0 = 0
+3:2/0/custom_data_0 = "plain_mask_11"
+0:3/0 = 0
+0:3/0/custom_data_0 = "plain_mask_12"
+1:3/0 = 0
+1:3/0/custom_data_0 = "plain_mask_13"
+2:3/0 = 0
+2:3/0/custom_data_0 = "plain_mask_14"
+3:3/0 = 0
+3:3/0/custom_data_0 = "plain_mask_15"
+
+[resource]
+tile_size = Vector2i(256, 256)
+custom_data_layer_0/name = "terrain_kind"
+custom_data_layer_0/type = 4
+custom_data_layer_1/name = "green_art_variant"
+custom_data_layer_1/type = 2
+sources/0 = SubResource("PlainTerrain")
+sources/1 = SubResource("GreenTerrain")
+sources/2 = SubResource("WaterTerrain")
+sources/3 = SubResource("WaterDualGridMasks")
+sources/4 = SubResource("LogicalGrid")
+sources/5 = SubResource("GreenDualGridMasks")
+sources/6 = SubResource("PlainDualGridMasks")

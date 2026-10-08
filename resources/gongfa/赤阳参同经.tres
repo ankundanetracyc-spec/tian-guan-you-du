@@ -1,0 +1,90 @@
+[gd_resource type="Resource" script_class="GongfaResource" format=3]
+
+[ext_resource type="Script" path="res://csharp/gongfa/GongfaResource.cs" id="1_gongfa"]
+[ext_resource type="Script" path="res://csharp/gongfa/GongfaChapterConfig.cs" id="2_chapter"]
+[ext_resource type="Resource" path="res://resources/activeskills/赤阳参同经/赤阳参同.tres" id="3_heart"]
+[ext_resource type="Resource" path="res://resources/activeskills/赤阳参同经/伏火.tres" id="4_fuhuo"]
+[ext_resource type="Resource" path="res://resources/activeskills/赤阳参同经/偃月.tres" id="5_yanyue"]
+[ext_resource type="Resource" path="res://resources/activeskills/赤阳参同经/朱明.tres" id="6_zhuming"]
+
+[sub_resource type="Resource" id="ChapterFuHuo"]
+script = ExtResource("2_chapter")
+chapter_id = "fu_huo"
+chapter_name = "伏火"
+description = "立参同之炉，将主动气血回落炼为血炉。"
+order = 1
+required_study_progress = 24.0
+required_attributes = {"physique": 5.0, "body_proficiency": 4.0}
+allowed_bearings = Array[int]([0, 1])
+learn_permanent_bonuses = {"physique": 1.0}
+learned_active_skills = Array[Resource]([ExtResource("4_fuhuo")])
+left_branch_name = "淬炼"
+right_branch_name = "化法"
+naqi_bonuses = {"max_health": 30.0, "max_qi_blood": 1.0}
+
+[sub_resource type="Resource" id="ChapterDaYe"]
+script = ExtResource("2_chapter")
+chapter_id = "da_ye"
+chapter_name = "大冶"
+description = "一举焚血，快速筑高炉火。"
+order = 2
+required_study_progress = 48.0
+required_realm = "云息三层"
+required_attributes = {"physique": 7.0, "body_proficiency": 5.0}
+required_chapter_ids = Array[String](["fu_huo"])
+allowed_bearings = Array[int]([1])
+learn_permanent_bonuses = {"physique": 0.5, "body_proficiency": 0.5}
+left_branch_name = "淬炼"
+right_branch_name = "化法"
+naqi_bonuses = {"blood_furnace_value_cap": 30.0}
+
+[sub_resource type="Resource" id="ChapterYanYue"]
+script = ExtResource("2_chapter")
+chapter_id = "yan_yue"
+chapter_name = "偃月"
+description = "分炉炼形，在持续输出与局部爆发间取舍。"
+order = 3
+required_study_progress = 84.0
+required_realm = "云息六层"
+required_attributes = {"physique": 8.0, "body_proficiency": 7.0}
+required_chapter_ids = Array[String](["da_ye"])
+allowed_bearings = Array[int]([1])
+learn_permanent_bonuses = {"physique": 0.5}
+learned_active_skills = Array[Resource]([ExtResource("5_yanyue")])
+left_branch_name = "淬炼"
+right_branch_name = "化法"
+naqi_bonuses = {"blood_furnace_value_cap": 20.0}
+
+[sub_resource type="Resource" id="ChapterZhuMing"]
+script = ExtResource("2_chapter")
+chapter_id = "zhu_ming"
+chapter_name = "朱明"
+description = "满炉一击，完成云息期的清炉收束。"
+order = 4
+required_study_progress = 128.0
+required_realm = "云息九层"
+required_attributes = {"physique": 10.0, "body_proficiency": 9.0}
+required_chapter_ids = Array[String](["yan_yue"])
+allowed_bearings = Array[int]([1])
+learn_permanent_bonuses = {"body_proficiency": 1.0}
+learned_active_skills = Array[Resource]([ExtResource("6_zhuming")])
+left_branch_name = "淬炼"
+right_branch_name = "化法"
+naqi_bonuses = {"blood_furnace_value_cap": 20.0}
+
+[resource]
+script = ExtResource("1_gongfa")
+gongfa_name = "赤阳参同经"
+description = "锻躯主修法。主动烧气血，将公共回血转为血炉，再以炉火维持输出或清炉爆发。"
+wuxing = 0
+can_be_main = true
+can_be_sub = true
+bearing_compatibility = Array[int]([1])
+school_tags = Array[String](["body"])
+body_nourish_rate_per_day = 0.8
+body_nourish_weights = {"skin": 0.10, "sinew": 0.10, "bone": 0.10, "blood": 0.35, "viscera": 0.15, "heart": 0.20}
+main_realm_start = "凡人"
+main_realm_end = "云息十三层"
+heart_method_skill = ExtResource("3_heart")
+default_unlocked_chapter_count = 1
+chapters = Array[ExtResource("2_chapter")]([SubResource("ChapterFuHuo"), SubResource("ChapterDaYe"), SubResource("ChapterYanYue"), SubResource("ChapterZhuMing")])

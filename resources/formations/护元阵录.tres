@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="FormationManualData" format=3]
+
+[ext_resource type="Script" path="res://csharp/formation/FormationManualData.cs" id="1_manual"]
+[ext_resource type="Script" path="res://csharp/formation/FormationPortData.cs" id="2_port"]
+
+[sub_resource type="Resource" id="WardPort"]
+script = ExtResource("2_port")
+port_id = &"port_guard_ward"
+display_name = "护持阵器接口"
+kind = 1
+actuator_effect = 0
+minimum_energy_cost = 2
+required_material_tags = Array[String](["功用[护体]"])
+
+[resource]
+script = ExtResource("1_manual")
+manual_id = &"manual_guard_output"
+manual_name = "护元阵录"
+description = "提供护持阵器输出接口。阵器仍须由阵源与灵络供能。"
+output_ports = Array[ExtResource("2_port")]([SubResource("WardPort")])

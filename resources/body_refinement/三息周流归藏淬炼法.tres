@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BodyRefinementMethod" format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/BodyRefinementMethod.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+method_id = "three_breaths_return"
+method_name = "三息周流归藏淬炼法"
+description = "三息相接，血、脏、心依次归藏；分配较散，但能同时铺开内里三处根基。"
+duration_min_hours = 36
+duration_max_hours = 54
+base_yield_min = 10
+base_yield_max = 16
+target_parts = Array[String](["blood", "viscera", "heart"])
+allocation_ranges = {"blood": Vector2(0.4, 0.55), "viscera": Vector2(0.2, 0.3), "heart": Vector2(0.2, 0.4)}
+effective_level_ranges = {"blood": Vector2(0, 5), "viscera": Vector2(0, 5), "heart": Vector2(0, 5)}
+required_textures = Array[String](["液", "玉"])
+required_utilities = Array[String](["生"])
+required_utility_grade = 1
+default_unlocked = true

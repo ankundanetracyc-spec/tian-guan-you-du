@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3]
+
+[ext_resource type="Texture2D" path="res://textures/world_map/bai_chuan/dual_grid_v1/plain_terrain_xuan_paper_texture_v1.png" id="1_paper"]
+[ext_resource type="Shader" path="res://shaders/world_map/bai_chuan/terrain_dual_grid_mask_v1.gdshader" id="2_shader"]
+
+[resource]
+shader = ExtResource("2_shader")
+shader_parameter/paper_texture = ExtResource("1_paper")
+shader_parameter/paper_period = Vector2(8192, 8192)
+shader_parameter/use_terrain_mask = true

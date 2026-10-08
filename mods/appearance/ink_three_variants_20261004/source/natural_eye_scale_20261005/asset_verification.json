@@ -1,0 +1,112 @@
+{
+  "pass": true,
+  "changed_parts": [
+    "male/eyes/04.png",
+    "male/eyes/05.png",
+    "male/eyes/06.png"
+  ],
+  "unchanged_physical_parts": 70,
+  "brows_unchanged": true,
+  "visual_review_cases": 18,
+  "records": [
+    {
+      "file": "male/eyes/04.png",
+      "sha256": "0798ab587d87cf87b00186486329d216baad7a463c059ad1acb723005346513c",
+      "bbox": [
+        417,
+        366,
+        617,
+        391
+      ],
+      "size": [
+        1024,
+        1536
+      ],
+      "metrics": {
+        "reference": {
+          "left_opaque_eye_width": 65,
+          "left_opaque_eye_height": 20,
+          "light_sclera_pixels": 278
+        },
+        "previous": {
+          "left_opaque_eye_width": 81,
+          "left_opaque_eye_height": 21,
+          "light_sclera_pixels": 206
+        },
+        "candidate": {
+          "left_opaque_eye_width": 68,
+          "left_opaque_eye_height": 16,
+          "light_sclera_pixels": 202
+        }
+      },
+      "transparent_rgb_zero": true
+    },
+    {
+      "file": "male/eyes/05.png",
+      "sha256": "b8a582960de0efda5f5026c3523af7b0843a3f3b6d9f741d5a2b549651686939",
+      "bbox": [
+        416,
+        366,
+        620,
+        392
+      ],
+      "size": [
+        1024,
+        1536
+      ],
+      "metrics": {
+        "reference": {
+          "left_opaque_eye_width": 68,
+          "left_opaque_eye_height": 18,
+          "light_sclera_pixels": 302
+        },
+        "previous": {
+          "left_opaque_eye_width": 75,
+          "left_opaque_eye_height": 21,
+          "light_sclera_pixels": 260
+        },
+        "candidate": {
+          "left_opaque_eye_width": 66,
+          "left_opaque_eye_height": 16,
+          "light_sclera_pixels": 189
+        }
+      },
+      "transparent_rgb_zero": true
+    },
+    {
+      "file": "male/eyes/06.png",
+      "sha256": "08718ef51163c987815235881fe872b2871d5a4905ce0574d2e70f661d813420",
+      "bbox": [
+        420,
+        367,
+        614,
+        392
+      ],
+      "size": [
+        1024,
+        1536
+      ],
+      "metrics": {
+        "reference": {
+          "left_opaque_eye_width": 72,
+          "left_opaque_eye_height": 21,
+          "light_sclera_pixels": 334
+        },
+        "previous": {
+          "left_opaque_eye_width": 76,
+          "left_opaque_eye_height": 22,
+          "light_sclera_pixels": 265
+        },
+        "candidate": {
+          "left_opaque_eye_width": 66,
+          "left_opaque_eye_height": 18,
+          "light_sclera_pixels": 205
+        }
+      },
+      "transparent_rgb_zero": true
+    }
+  ],
+  "size_indicator_note": "Same opaque colour ROI; includes eyelid strokes rather than anatomical segmentation. All candidates are smaller than previous revision; within original male eye family width 65-72 px. Ningyue width is 68 vs its original 65, so this is not an assertion of identical own-reference dimensions.",
+  "sclera_indicator_note": "Same canvas ROI and RGB threshold, an auxiliary light sclera indicator checked alongside visual previews; not an anatomical segmentation area.",
+  "visual_approved_by_user": false
+}

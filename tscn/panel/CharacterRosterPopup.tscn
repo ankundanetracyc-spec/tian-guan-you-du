@@ -1,0 +1,434 @@
+[gd_scene format=3 uid="uid://df6yueyspknlo"]
+
+[ext_resource type="Script" path="res://csharp/panel/CharacterRosterPopup.cs" id="1_script"]
+[ext_resource type="Texture2D" path="res://textures/ui/infopanel_fullscreen_bg_v1.png" id="2_bg"]
+[ext_resource type="FontFile" path="res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf" id="4_font"]
+[ext_resource type="PackedScene" path="res://tscn/panel/RosterRow.tscn" id="5_row"]
+[ext_resource type="Texture2D" path="res://textures/ui/roster_filter_idle_v1.png" id="8_filter_idle"]
+[ext_resource type="Texture2D" path="res://textures/ui/roster_filter_selected_v1.png" id="9_filter_selected"]
+[ext_resource type="Texture2D" path="res://textures/ui/roster_utility_icons_v1.png" id="10_utility_icons"]
+
+[sub_resource type="StyleBoxFlat" id="content_panel"]
+bg_color = Color(0.9, 0.865, 0.78, 0.74)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.24, 0.21, 0.16, 0.52)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+content_margin_left = 20.0
+content_margin_top = 14.0
+content_margin_right = 20.0
+content_margin_bottom = 14.0
+
+[sub_resource type="StyleBoxFlat" id="tab_normal"]
+bg_color = Color(0.75, 0.73, 0.64, 0.22)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="tab_active"]
+bg_color = Color(0.27, 0.34, 0.27, 0.78)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="row_normal"]
+bg_color = Color(1, 1, 1, 0.08)
+border_width_bottom = 1
+border_color = Color(0.27, 0.24, 0.18, 0.35)
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxFlat" id="row_hover"]
+bg_color = Color(0.36, 0.42, 0.32, 0.16)
+border_width_bottom = 1
+border_color = Color(0.24, 0.3, 0.22, 0.62)
+content_margin_left = 12.0
+content_margin_right = 12.0
+
+[sub_resource type="StyleBoxFlat" id="avatar_style"]
+bg_color = Color(0.3, 0.33, 0.26, 0.25)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.19, 0.18, 0.14, 0.7)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+
+[sub_resource type="StyleBoxFlat" id="search_normal"]
+bg_color = Color(0.97, 0.945, 0.865, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.22, 0.2, 0.15, 0.54)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+content_margin_left = 8.0
+content_margin_right = 8.0
+
+[sub_resource type="StyleBoxFlat" id="search_focus"]
+bg_color = Color(1, 0.98, 0.91, 0.98)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.31, 0.39, 0.29, 0.86)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+content_margin_left = 8.0
+content_margin_right = 8.0
+
+[sub_resource type="AtlasTexture" id="search_icon"]
+atlas = ExtResource("10_utility_icons")
+region = Rect2(0, 0, 724, 724)
+
+[sub_resource type="AtlasTexture" id="more_icon"]
+atlas = ExtResource("10_utility_icons")
+region = Rect2(724, 0, 724, 724)
+
+[sub_resource type="AtlasTexture" id="next_icon"]
+atlas = ExtResource("10_utility_icons")
+region = Rect2(1448, 0, 724, 724)
+
+[node name="CharacterRosterPopup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("4_font")
+script = ExtResource("1_script")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Header" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 118.0
+grow_horizontal = 2
+
+[node name="CloseBtn" type="Button" parent="Header" unique_name_in_owner=true]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 26.0
+offset_right = 168.0
+offset_bottom = 82.0
+theme_override_colors/font_color = Color(0.09, 0.08, 0.06, 1)
+theme_override_font_sizes/font_size = 24
+flat = true
+text = "← 返回"
+
+[node name="TitleLabel" type="Label" parent="Header" unique_name_in_owner=true]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 20.0
+offset_bottom = 90.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.06, 0.055, 0.04, 1)
+theme_override_font_sizes/font_size = 48
+text = "角色名册"
+horizontal_alignment = 1
+
+[node name="CharCountLabel" type="Label" parent="Header" unique_name_in_owner=true]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -230.0
+offset_top = 42.0
+offset_right = -64.0
+offset_bottom = 78.0
+theme_override_colors/font_color = Color(0.12, 0.11, 0.08, 1)
+theme_override_font_sizes/font_size = 21
+text = "共 0 人"
+horizontal_alignment = 2
+
+[node name="RosterPage" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -760.0
+offset_top = 126.0
+offset_right = 760.0
+offset_bottom = 964.0
+theme_override_styles/panel = SubResource("content_panel")
+
+[node name="Content" type="VBoxContainer" parent="RosterPage"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="FilterBar" type="HBoxContainer" parent="RosterPage/Content"]
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="All" type="Button" parent="RosterPage/Content/FilterBar"]
+custom_minimum_size = Vector2(126, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.09, 0.07, 1)
+theme_override_font_sizes/font_size = 21
+flat = true
+text = "全部"
+
+[node name="Backdrop" type="TextureRect" parent="RosterPage/Content/FilterBar/All"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("9_filter_selected")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Family" type="Button" parent="RosterPage/Content/FilterBar"]
+custom_minimum_size = Vector2(126, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.09, 0.07, 1)
+theme_override_font_sizes/font_size = 21
+flat = true
+text = "家族"
+
+[node name="Backdrop" type="TextureRect" parent="RosterPage/Content/FilterBar/Family"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("8_filter_idle")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Cultivator" type="Button" parent="RosterPage/Content/FilterBar"]
+custom_minimum_size = Vector2(126, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.09, 0.07, 1)
+theme_override_font_sizes/font_size = 21
+flat = true
+text = "修士"
+
+[node name="Backdrop" type="TextureRect" parent="RosterPage/Content/FilterBar/Cultivator"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("8_filter_idle")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Visitor" type="Button" parent="RosterPage/Content/FilterBar"]
+custom_minimum_size = Vector2(126, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.09, 0.07, 1)
+theme_override_font_sizes/font_size = 21
+flat = true
+text = "外来"
+
+[node name="Backdrop" type="TextureRect" parent="RosterPage/Content/FilterBar/Visitor"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("8_filter_idle")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Fill" type="Control" parent="RosterPage/Content/FilterBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Search" type="LineEdit" parent="RosterPage/Content/FilterBar"]
+custom_minimum_size = Vector2(230, 42)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.09, 0.07, 1)
+theme_override_colors/font_placeholder_color = Color(0.34, 0.32, 0.26, 0.82)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("search_normal")
+theme_override_styles/focus = SubResource("search_focus")
+placeholder_text = "　搜索姓名"
+
+[node name="SearchIcon" type="TextureRect" parent="RosterPage/Content/FilterBar/Search"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 8.0
+offset_right = 27.0
+offset_bottom = 29.0
+mouse_filter = 2
+texture = SubResource("search_icon")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SelectionHint" type="Label" parent="RosterPage/Content" unique_name_in_owner=true]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.28, 0.27, 0.21, 1)
+theme_override_font_sizes/font_size = 17
+text = "青溪里族人名册 · 点击人物查看根基、功法与日程。"
+
+[node name="Columns" type="HBoxContainer" parent="RosterPage/Content"]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Person" type="Label" parent="RosterPage/Content/Columns"]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.12, 0.11, 0.08, 1)
+text = "姓名"
+horizontal_alignment = 1
+
+[node name="Identity" type="Label" parent="RosterPage/Content/Columns"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.12, 0.11, 0.08, 1)
+text = "身份 / 所属"
+horizontal_alignment = 1
+
+[node name="Realm" type="Label" parent="RosterPage/Content/Columns"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.12, 0.11, 0.08, 1)
+text = "境界"
+horizontal_alignment = 1
+
+[node name="Tags" type="Label" parent="RosterPage/Content/Columns"]
+custom_minimum_size = Vector2(188, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.12, 0.11, 0.08, 1)
+text = "灵根"
+horizontal_alignment = 1
+
+[node name="State" type="Label" parent="RosterPage/Content/Columns"]
+custom_minimum_size = Vector2(148, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.12, 0.11, 0.08, 1)
+text = "状态"
+horizontal_alignment = 1
+
+[node name="Action" type="Label" parent="RosterPage/Content/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.12, 0.11, 0.08, 1)
+text = "操作"
+horizontal_alignment = 1
+
+[node name="ListPanel" type="PanelContainer" parent="RosterPage/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("tab_normal")
+
+[node name="Rows" type="VBoxContainer" parent="RosterPage/Content/ListPanel"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Row1" parent="RosterPage/Content/ListPanel/Rows" instance=ExtResource("5_row")]
+
+[node name="Row2" parent="RosterPage/Content/ListPanel/Rows" instance=ExtResource("5_row")]
+
+[node name="Row3" parent="RosterPage/Content/ListPanel/Rows" instance=ExtResource("5_row")]
+
+[node name="Row4" parent="RosterPage/Content/ListPanel/Rows" instance=ExtResource("5_row")]
+
+[node name="Row5" parent="RosterPage/Content/ListPanel/Rows" instance=ExtResource("5_row")]
+
+[node name="Row6" parent="RosterPage/Content/ListPanel/Rows" instance=ExtResource("5_row")]
+
+[node name="Row7" parent="RosterPage/Content/ListPanel/Rows" instance=ExtResource("5_row")]
+
+[node name="Row8" parent="RosterPage/Content/ListPanel/Rows" instance=ExtResource("5_row")]
+
+[node name="Footer" type="HBoxContainer" parent="RosterPage/Content"]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 12
+
+[node name="Prev" type="Button" parent="RosterPage/Content/Footer"]
+custom_minimum_size = Vector2(38, 34)
+layout_mode = 2
+flat = true
+
+[node name="Icon" type="TextureRect" parent="RosterPage/Content/Footer/Prev"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("next_icon")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+
+[node name="Page" type="Label" parent="RosterPage/Content/Footer"]
+layout_mode = 2
+custom_minimum_size = Vector2(104, 0)
+theme_override_font_sizes/font_size = 19
+theme_override_colors/font_color = Color(0.12, 0.11, 0.08, 1)
+text = "第 1 页 / 1 页"
+horizontal_alignment = 1
+
+[node name="Next" type="Button" parent="RosterPage/Content/Footer"]
+custom_minimum_size = Vector2(38, 34)
+layout_mode = 2
+flat = true
+
+[node name="Icon" type="TextureRect" parent="RosterPage/Content/Footer/Next"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("next_icon")
+expand_mode = 1
+stretch_mode = 5

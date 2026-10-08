@@ -1,0 +1,76 @@
+using Godot;
+using Godot.Collections;
+
+public partial class BattleManager : Node2D
+{
+    public void add_wound_card(GodotObject target, string wound, int count = 1, string destination = "discard")
+    {
+        if(_realtimeMode&&target is Creature creature&&(wound is "内伤" or "外伤"))
+        {
+            if(count<=0)return;
+            var effect=GD.Load<StatusEffect>($"res://resources/battle/statuses/{wound}.tres");
+            if(effect is not null)
+            {
+                creature.add_status(effect,effect.duration_default,Mathf.Max(1,count),"wound",4,"伤势");
+                creature.current_mana=Math.Min(creature.current_mana,get_effective_mana_capacity(creature));
+            }
+            return;
+        }
+        var path=wound=="伤势"?"res://resources/activeskills/业障/伤势.tres":BattleWoundRules.get_wound_path(wound);
+        if(string.IsNullOrEmpty(path)||get_deck_manager(target) is not {} deck)return;
+        var source=GD.Load<ActiveSkillData>(path);if(source is null)return;
+        for(var i=0;i<count;i++)deck.discard(source.Duplicate() as ActiveSkillData);
+        RefreshWoundHealth(target);
+    }
+    public int count_wounds(GodotObject u)
+    {
+        if(_realtimeMode&&u is Creature creature)return creature.get_status_stacks("内伤")+creature.get_status_stacks("外伤");
+        var deck=get_deck_manager(u);return Hand(u).Count(BodyCardRuntime.IsWound)+(deck?.draw_pile.Count(BodyCardRuntime.IsWound)??0)+(deck?.discard_pile.Count(BodyCardRuntime.IsWound)??0);
+    }
+    public Godot.Collections.Dictionary get_realtime_wound_counts(GodotObject u)
+    {
+        var counts=new Godot.Collections.Dictionary{{"external",0},{"internal",0}};
+        if(u is Creature creature){counts["external"]=creature.get_status_stacks("外伤");counts["internal"]=creature.get_status_stacks("内伤");}
+        return counts;
+    }
+    public int get_effective_mana_capacity(GodotObject u)=>Math.Max(0,u.Get("max_mana").AsInt32()-(u is Creature creature?Math.Min(2,creature.get_status_stacks("内伤")):0));
+    public int get_skill_mana_cost(GodotObject u,ActiveSkillData skill)
+    {
+        var wounds=get_realtime_wound_counts(u);
+        var multiplier=BattleWoundRules.get_mana_cost_multiplier(wounds,skill);
+        return Mathf.CeilToInt(skill.mana_cost*multiplier);
+    }
+    public int get_skill_energy_cost(GodotObject u,ActiveSkillData skill)
+    {
+        var cost=body_cards.Cost(u,skill);
+        if(skill.skill_type!=ActiveSkillData.SkillType.MOVEMENT)return cost;
+        var wounds=get_realtime_wound_counts(u);
+        return Mathf.CeilToInt(cost*BattleWoundRules.get_energy_cost_multiplier(wounds,skill));
+    }
+    public float get_realtime_action_speed_multiplier(GodotObject u)=>BattleWoundRules.get_action_speed_multiplier(get_realtime_wound_counts(u));
+    public int consume_hand_wounds(GodotObject u,int count)
+    {
+        if(_realtimeMode&&u is Creature realtimeCreature)
+        {
+            var inner=realtimeCreature.get_status_stacks("内伤");
+            var outer=realtimeCreature.get_status_stacks("外伤");
+            var available=inner+outer;
+            var consumed=Math.Min(Math.Max(0,count),available);
+            var consumedInner=Math.Min(inner,consumed);
+            realtimeCreature.consume_status_stacks("内伤",consumedInner);
+            realtimeCreature.consume_status_stacks("外伤",consumed-consumedInner);
+            return consumed;
+        }
+        var hand=Hand(u);var selected=hand.Where(BodyCardRuntime.IsWound).Take(count).ToArray();
+        foreach(var c in selected){hand.Remove(c);get_deck_manager(u)?.exhaust_card(c);}
+        _hands[u]=hand;RefreshWoundHealth(u);if(u==active_unit)_handPanel?.Call("populate_hand",hand);
+        return selected.Length;
+    }
+    private void RefreshWoundHealth(GodotObject u)
+    {
+        if(u is not Creature c)return;
+        if(!u.HasMeta("unwounded_health"))u.SetMeta("unwounded_health",c.max_health);
+        c.max_health=Math.Max(1,Mathf.RoundToInt(u.GetMeta("unwounded_health").AsInt32()*(1-count_wounds(u)*.01f)));
+        c.current_health=Math.Min(c.current_health,c.max_health);
+    }
+}

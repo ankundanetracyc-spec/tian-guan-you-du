@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="HumanData" format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/HumanData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+entity_name = ""
+faction = 2
+icon_path = "res://textures/characters/tokens/character_token_human.png"

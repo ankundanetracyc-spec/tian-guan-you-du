@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="app.diagrams.net" modified="2026-07-19T00:00:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="liuyunqishi" name="流云·行势">
+    <mxGraphModel dx="885" dy="534" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1756" pageHeight="760" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=18;" value="流云·行势&#xA;流云剑经 / 行云卷 / 习得*1" vertex="1">
+          <mxGeometry height="71" width="312" x="658" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="main" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=15;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:center;&quot;&gt;卡牌名：流云·行势&lt;/div&gt;&lt;div style=&quot;text-align:left;&quot;&gt;资源路径：res://resources/activeskills/流云剑经/流云·行势.tres&lt;br&gt;类型：心法牌&lt;br&gt;关键词：无&lt;br&gt;耗费：精力 2、法力 0&lt;br&gt;目标：自身&lt;/div&gt;&lt;br&gt;来源：流云剑经 / 行云卷&lt;br&gt;描述：行云无定，剑势相随。进入流云剑势；打出所在的自身行动期间不消耗剑意；从下一次自身行动开始起，每次自身行动开始时消耗2层剑意维持。&lt;br&gt;状态关联：剑意、流云剑势" vertex="1">
+          <mxGeometry height="290" width="716" x="560" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;" value="习得来源&#xA;来源秘籍：流云剑经&#xA;来源卷：行云卷&#xA;习得数量：1" vertex="1">
+          <mxGeometry height="94" width="280" x="160" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;" value="主修/辅修差异&#xA;辅修：获得剑意*1，进入流云剑势（辅修）&#xA;主修：获得剑意*2，进入流云剑势（主修）&#xA;主修剑势：每次自身行动期间首次使用遁身牌后获得剑意*1" vertex="1">
+          <mxGeometry height="94" width="310" x="1331" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="bottom" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;" value="状态/关键词/条件&#xA;关键词：无&#xA;打出后离开本场牌堆&#xA;辅修获得剑意*1，主修获得剑意*2&#xA;从下一次自身行动开始起，每次自身行动开始时消耗剑意*2&#xA;每张由玩家主动打出的剑术攻击牌命中后追加1次流云追击&#xA;追击不产剑意、不会再次触发追击" vertex="1">
+          <mxGeometry height="150" width="363" x="560" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="note" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" value="数值摘要&#xA;辅修剑势：精准+4，会心+4，追击=4+剑道*0.10+敏捷*0.06&#xA;主修剑势：精准+6，会心+8，追击=5+剑道*0.13+敏捷*0.08&#xA;消耗资源：精力18&#xA;可配置数量：1" vertex="1">
+          <mxGeometry height="114" width="474" x="1040" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="left" style="endArrow=block;html=1;rounded=0;" target="main" value="来源">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="main" style="endArrow=block;html=1;rounded=0;" target="right" value="主辅修差异">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="main" style="endArrow=block;html=1;rounded=0;" target="bottom" value="状态/条件">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="main" style="endArrow=none;dashed=1;html=1;" target="note" value="数值">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

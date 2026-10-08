@@ -1,0 +1,38 @@
+{
+  "status": "complete_portrait_pair_pending_visual_approval",
+  "mode": "built_in_imagegen",
+  "canvas": [1024, 1536],
+  "background": "transparent_rgba",
+  "source_images": {
+    "male": "reference/male_bald_user.png",
+    "female": "reference/female_bald_user.png"
+  },
+  "deliverables": {
+    "male": "male_portrait.png",
+    "female": "female_portrait.png"
+  },
+  "selected_generation_steps": [
+    {
+      "id": "male_base",
+      "output": "male_portrait.png",
+      "inputs": ["reference/male_bald_user.png", "reference/female_bald_user.png"],
+      "prompt": "Edit the male reference into a complete transparent front-facing waist-up portrait. Preserve his identity, facial feature positions, green robe, gold embroidery, layered lapels, belt, sleeves and crop. Match every exposed skin area to the female reference's pale warm ivory-peach complexion and soft ink-wash finish. Add restrained center-parted long hair with a matte deep near-black charcoal ink pigment and fine tapered brush strands. Use delicate gongbi plus light ink wash across face, hair and fabric. No background, halo, text or watermark."
+    },
+    {
+      "id": "female_base",
+      "inputs": ["reference/female_bald_user.png", "male_portrait.png"],
+      "prompt": "Edit the female reference into a complete transparent front-facing waist-up portrait. Preserve her admired face, eye and brow geometry, nose, lips, expression, pale warm ivory-peach skin, blue-gray and ivory floral robe, belt, sleeves and crop. Add restrained center-parted long hair matching the male companion's matte deep near-black charcoal ink tone and fine tapered brush texture. Use the same delicate gongbi plus light ink wash. No background, halo, text or watermark."
+    },
+    {
+      "id": "female_hair_tone",
+      "output": "female_portrait.png",
+      "inputs": ["female_base", "male_portrait.png"],
+      "prompt": "Repaint only the female hairstyle from silvery gray to the male portrait's dark matte charcoal ink tone. Retain the exact hairstyle silhouette, female face, skin, robe, embroidery, composition and transparent silhouette. Remove broad bright gray highlights; keep subtle fine ink-brush strands. No new background, glow, ornament, text or watermark."
+    }
+  ],
+  "notes": [
+    "The two user-provided bald references are the visual source; no existing project portrait was used as an image input.",
+    "These are complete portraits, not the nine-layer modular exports. No game runtime asset has been replaced.",
+    "Game and GitHub research informed the separation of face, features, hair and clothing, but no Tale of Immortal pixel art was copied."
+  ]
+}

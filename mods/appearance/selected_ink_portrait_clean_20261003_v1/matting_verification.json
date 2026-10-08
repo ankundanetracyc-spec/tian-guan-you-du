@@ -1,0 +1,162 @@
+{
+  "male": {
+    "selected_master_sha256": "d02e153c93f0d6c73d85f48bb5d940093378d76edb0a64e6d4156eb19fca2ef1",
+    "canvas": [
+      1024,
+      1536
+    ],
+    "export_offset": [
+      0,
+      0
+    ],
+    "pair_light_rgb_mean_error": 2.0114546881781683,
+    "facial_light_rgb_max_error": 119,
+    "opaque_eye_skin_outside_opening": 0,
+    "complete_rear_single_uniform_transform": [
+      [
+        0.3799999952316284,
+        0.0,
+        322.44000244140625
+      ],
+      [
+        0.0,
+        0.3799999952316284,
+        172.1999969482422
+      ]
+    ],
+    "rear_center_alpha": 255,
+    "visible_rear_difference_pixels": 52454,
+    "zero_alpha_rgb_zero": true,
+    "bounds": {
+      "eyes": [
+        425,
+        358,
+        613,
+        391
+      ],
+      "eyebrows": [
+        431,
+        340,
+        604,
+        358
+      ],
+      "nose": [
+        472,
+        374,
+        567,
+        470
+      ],
+      "mouth": [
+        472,
+        470,
+        562,
+        519
+      ],
+      "face_shape": [
+        370,
+        172,
+        660,
+        714
+      ],
+      "clothing": [
+        0,
+        520,
+        1024,
+        1536
+      ],
+      "hair_back": [
+        268,
+        181,
+        769,
+        748
+      ],
+      "face_accessory": null,
+      "hair_front": [
+        339,
+        143,
+        716,
+        980
+      ]
+    }
+  },
+  "female": {
+    "selected_master_sha256": "c95a79df97c852dbd669de58e1e71aac663d1e6a72f8551158a7d213853c2bf9",
+    "canvas": [
+      1024,
+      1536
+    ],
+    "export_offset": [
+      0,
+      0
+    ],
+    "pair_light_rgb_mean_error": 3.0553692711724176,
+    "facial_light_rgb_max_error": 161,
+    "opaque_eye_skin_outside_opening": 0,
+    "complete_rear_single_uniform_transform": [
+      [
+        0.3799999952316284,
+        0.0,
+        324.44000244140625
+      ],
+      [
+        0.0,
+        0.3799999952316284,
+        158.1999969482422
+      ]
+    ],
+    "rear_center_alpha": 255,
+    "visible_rear_difference_pixels": 59402,
+    "zero_alpha_rgb_zero": true,
+    "bounds": {
+      "eyes": [
+        423,
+        363,
+        619,
+        402
+      ],
+      "eyebrows": [
+        426,
+        346,
+        611,
+        363
+      ],
+      "nose": [
+        473,
+        375,
+        565,
+        470
+      ],
+      "mouth": [
+        475,
+        470,
+        562,
+        523
+      ],
+      "face_shape": [
+        371,
+        169,
+        665,
+        714
+      ],
+      "clothing": [
+        0,
+        530,
+        1024,
+        1536
+      ],
+      "hair_back": [
+        268,
+        181,
+        769,
+        748
+      ],
+      "face_accessory": null,
+      "hair_front": [
+        354,
+        137,
+        715,
+        951
+      ]
+    }
+  }
+}

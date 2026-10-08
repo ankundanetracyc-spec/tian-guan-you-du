@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BreakthroughBonusConfig" format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/BreakthroughBonusConfig.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+realm = "练气二层"
+multipliers = {
+"agility": 0.03,
+"intelligence": 0.03,
+"physique": 0.03,
+"soul": 0.03,
+}
+fixed = {
+"intelligence": 1,
+"max_health": 15,
+"max_stamina": 5,
+"physique": 1,
+}

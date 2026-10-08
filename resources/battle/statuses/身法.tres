@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="StatusEffect" format=3 uid="uid://bveypa36opev0"]
+
+[ext_resource type="Script" uid="uid://35i5d2ysrrun" path="res://csharp/battle/StatusEffect.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+effect_id = "身法"
+name = "身法"
+description = "持续增益，最多20层。每层使自身基础身法（dodge）提高1%；持续1200帧（20秒），获得新层时刷新持续时间；受击不消耗层数。"
+max_stacks = 20
+duration_default = 1200
+duration_type = 2

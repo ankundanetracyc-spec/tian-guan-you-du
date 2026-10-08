@@ -1,0 +1,161 @@
+{
+  "region_id": "bai_chuan",
+  "display_name": "百川",
+  "version": "v9_4x3_hd",
+  "layout": "4x3_horizontal_highres",
+  "master_canvas": {
+    "width": 3200,
+    "height": 1800
+  },
+  "tile_core": {
+    "width": 800,
+    "height": 600
+  },
+  "tile_bleed": 64,
+  "tiles": [
+    {
+      "id": "r0c0",
+      "asset": "bai_chuan_tile_r0c0_v9_hd.png",
+      "bleed_asset": "bai_chuan_tile_r0c0_v9_hd_bleed.png",
+      "origin": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "r0c1",
+      "asset": "bai_chuan_tile_r0c1_v9_hd.png",
+      "bleed_asset": "bai_chuan_tile_r0c1_v9_hd_bleed.png",
+      "origin": [
+        800,
+        0
+      ]
+    },
+    {
+      "id": "r0c2",
+      "asset": "bai_chuan_tile_r0c2_v9_hd.png",
+      "bleed_asset": "bai_chuan_tile_r0c2_v9_hd_bleed.png",
+      "origin": [
+        1600,
+        0
+      ]
+    },
+    {
+      "id": "r0c3",
+      "asset": "bai_chuan_tile_r0c3_v9_hd.png",
+      "bleed_asset": "bai_chuan_tile_r0c3_v9_hd_bleed.png",
+      "origin": [
+        2400,
+        0
+      ]
+    },
+    {
+      "id": "r1c0",
+      "asset": "bai_chuan_tile_r1c0_v9_hd.png",
+      "bleed_asset": "bai_chuan_tile_r1c0_v9_hd_bleed.png",
+      "origin": [
+        0,
+        600
+      ]
+    },
+    {
+      "id": "r1c1",
+      "asset": "bai_chuan_tile_r1c1_v9_hd.png",
+      "bleed_asset": "bai_chuan_tile_r1c1_v9_hd_bleed.png",
+      "origin": [
+        800,
+        600
+      ]
+    },
+    {
+      "id": "r1c2",
+      "asset": "bai_chuan_tile_r1c2_v9_hd.png",
+      "bleed_asset": "bai_chuan_tile_r1c2_v9_hd_bleed.png",
+      "origin": [
+        1600,
+        600
+      ]
+    },
+    {
+      "id": "r1c3",
+      "asset": "bai_chuan_tile_r1c3_v9_hd.png",
+      "bleed_asset": "bai_chuan_tile_r1c3_v9_hd_bleed.png",
+      "origin": [
+        2400,
+        600
+      ]
+    },
+    {
+      "id": "r2c0",
+      "asset": "bai_chuan_tile_r2c0_v9_hd.png",
+      "bleed_asset": "bai_chuan_tile_r2c0_v9_hd_bleed.png",
+      "origin": [
+        0,
+        1200
+      ]
+    },
+    {
+      "id": "r2c1",
+      "asset": "bai_chuan_tile_r2c1_v9_hd.png",
+      "bleed_asset": "bai_chuan_tile_r2c1_v9_hd_bleed.png",
+      "origin": [
+        800,
+        1200
+      ]
+    },
+    {
+      "id": "r2c2",
+      "asset": "bai_chuan_tile_r2c2_v9_hd.png",
+      "bleed_asset": "bai_chuan_tile_r2c2_v9_hd_bleed.png",
+      "origin": [
+        1600,
+        1200
+      ]
+    },
+    {
+      "id": "r2c3",
+      "asset": "bai_chuan_tile_r2c3_v9_hd.png",
+      "bleed_asset": "bai_chuan_tile_r2c3_v9_hd_bleed.png",
+      "origin": [
+        2400,
+        1200
+      ]
+    }
+  ],
+  "composition": {
+    "immortal_alliance": "central open basin reserved for neutral alliance heartland and later nodes",
+    "sea": "small lower-right coastal bay",
+    "mountain_barrier": "none; left edge is an open pale transition",
+    "snow": "normal pale northern snowfield with low foothills",
+    "static_elements": [
+      "ink-wash ground",
+      "layered interior mountains",
+      "northern snowfield",
+      "rivers",
+      "coastline",
+      "sea",
+      "mist/depth shading"
+    ],
+    "excluded": [
+      "nodes",
+      "icons",
+      "labels",
+      "political borders",
+      "faction tint",
+      "visible trees",
+      "forest icons"
+    ],
+    "streaming": "12 logical 800x600 tiles (4 columns x 3 rows), each backed by a 1600x1200 redraw; 128px physical (64px logical) edge bleed for seam-safe streaming"
+  },
+  "style": "restrained Chinese ink-and-wash shanshui map; open normal left terrain, pale northern snowfield, fully redrawn bare layered interior mountains, richer river network, low saturation, compact horizontal composition",
+  "source": "each logical v9 tile was individually redrawn at 1600x1200 from its tile reference, then its 128px physical edge was feathered back to the original tile edge before the 4x3 stitch",
+  "master_pixels": {
+    "width": 6400,
+    "height": 3600
+  },
+  "tile_pixels": {
+    "width": 1600,
+    "height": 1200
+  },
+  "tile_bleed_pixels": 128
+}

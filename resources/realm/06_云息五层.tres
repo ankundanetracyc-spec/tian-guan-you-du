@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="RealmConfig" format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/RealmConfig.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+realm_name = "云息五层"
+required_attributes = {
+"spirit_strands": 108,
+}
+battle_base_attributes = {
+"cards_per_turn": 3,
+"initial_hand_size": 5,
+}
+realm_multiplier_bonuses = {
+"agility": 0.12,
+"comprehension": 0.08,
+"cultivation_rate": 0.1,
+"intelligence": 0.12,
+"physique": 0.12,
+"soul": 0.12,
+}
+realm_fixed_bonuses = {
+"agility": 1,
+"intelligence": 2,
+"max_age": 10,
+"physique": 3,
+"soul": 2,
+}

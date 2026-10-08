@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BodyRefinementMethod" format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/BodyRefinementMethod.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+method_id = "bone_form"
+method_name = "贯形淬炼法"
+description = "以沉重、坚实之物贯通形骸，着重磨出骨架的承载与回弹。"
+duration_min_hours = 30
+duration_max_hours = 42
+base_yield_min = 8
+base_yield_max = 12
+target_parts = Array[String](["bone"])
+allocation_ranges = {"bone": Vector2(1, 1)}
+effective_level_ranges = {"bone": Vector2(0, 5)}
+required_textures = Array[String](["骨", "石"])
+required_utilities = Array[String](["固"])
+required_utility_grade = 1
+default_unlocked = true

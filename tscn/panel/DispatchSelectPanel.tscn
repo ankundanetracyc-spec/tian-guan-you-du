@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://dispatch_select_panel"]
+
+[ext_resource type="Script" uid="uid://cfhtwpq7tr784" path="res://csharp/panel/DispatchSelectPanel.cs" id="1"]
+
+[node name="DispatchSelectPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("1")
+
+[node name="Bg" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.08, 0.07, 0.05, 0.18)
+mouse_filter = 1
+
+[node name="PanelBg" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -250.0
+offset_right = 350.0
+offset_bottom = 250.0
+color = Color(0.18, 0.16, 0.13, 0.98)
+
+[node name="TitleLabel" type="Label" parent="PanelBg"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 20.0
+offset_right = 400.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(0.98, 0.95, 0.88, 1)
+theme_override_font_sizes/font_size = 22
+text = "选择派遣队伍"
+
+[node name="CharContainer" type="Panel" parent="PanelBg"]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 60.0
+offset_right = 680.0
+offset_bottom = 390.0
+self_modulate = Color(1, 1, 1, 0.98)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelBg/CharContainer"]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBox" type="VBoxContainer" parent="PanelBg/CharContainer/ScrollContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(640, 0)
+
+[node name="InfoLabel" type="Label" parent="PanelBg"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 400.0
+offset_right = 660.0
+offset_bottom = 430.0
+theme_override_colors/font_color = Color(0.9, 0.86, 0.76, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="ConfirmBtn" type="Button" parent="PanelBg"]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 420.0
+offset_right = 580.0
+offset_bottom = 460.0
+text = "出发"
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.98, 0.95, 0.88, 1)
+
+[node name="CancelBtn" type="Button" parent="PanelBg"]
+layout_mode = 0
+offset_left = 590.0
+offset_top = 420.0
+offset_right = 670.0
+offset_bottom = 460.0
+text = "取消"
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.98, 0.95, 0.88, 1)

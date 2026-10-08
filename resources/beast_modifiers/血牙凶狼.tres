@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BeastModifier" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/BeastModifier.cs" id="1"]
+[ext_resource type="Resource" path="res://resources/beast_decks/血牙凶狼.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+modifier_id = "forest_wolf_bloodfang"
+display_name = "血牙凶狼"
+physique_multiplier = 1.2
+agility_multiplier = 0.9
+soul_multiplier = 1.15
+deck_override = ExtResource("2")
