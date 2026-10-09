@@ -1,4 +1,4 @@
-using Godot;
+﻿using Godot;
 
 /// <summary>屏幕空间血条、状态与头顶应对牌；位置跟随角色。</summary>
 public partial class BattleUnitOverlay : CanvasLayer
@@ -14,8 +14,11 @@ public partial class BattleUnitOverlay : CanvasLayer
     private PanelContainer? statusInfoPanel;
     private Label? statusInfoLabel;
     private StatusInstance? hoveredStatus;
+    private string? hoveredStatusFallbackText;
     private Button? pauseButton;
     private Button? speedButton;
+    private Button? retreatButton;
+    private Label? retreatNotice;
     public void Setup(BattleManager owner){manager=owner;}
     public override void _Ready()
     {
@@ -29,6 +32,10 @@ public partial class BattleUnitOverlay : CanvasLayer
         BattleUiArt.Skin(pauseButton);pauseButton.Icon=BattleUiArt.Texture("icon_pause");pauseButton.ExpandIcon=true;pauseButton.AddThemeConstantOverride("icon_max_width",20);
         pauseButton.AddThemeFontSizeOverride("font_size",18);AddChild(pauseButton);
         pauseButton.Pressed+=manager.toggle_battle_pause;
+        retreatButton=new Button{Text="撤退",Size=new(140,40)};BattleUiArt.Skin(retreatButton);AddChild(retreatButton);
+        retreatButton.Pressed+=manager.queue_player_retreat;
+        retreatNotice=new Label{HorizontalAlignment=HorizontalAlignment.Center,Size=new(460,32),MouseFilter=Control.MouseFilterEnum.Ignore};
+        retreatNotice.AddThemeFontSizeOverride("font_size",21);retreatNotice.AddThemeColorOverride("font_color",new Color("d6a28b"));AddChild(retreatNotice);
         refresh_pause_button();
         CallDeferred(nameof(PrepareInfo));
     }
@@ -153,25 +160,29 @@ public partial class BattleUnitOverlay : CanvasLayer
     {
         RefreshHoveredStatusInfo();
         var scale=BattleUiArt.Scale(GetViewport());var origin=BattleUiArt.Origin(GetViewport());
-        if(speedButton is not null){speedButton.Scale=Vector2.One*scale;speedButton.Position=origin+new Vector2(1350,18)*scale;}
-        if(pauseButton is not null){pauseButton.Scale=Vector2.One*scale;pauseButton.Position=origin+new Vector2(1500,18)*scale;}
+        if(retreatButton is not null){retreatButton.Scale=Vector2.One*scale;retreatButton.Position=origin+new Vector2(1506,18)*scale;retreatButton.Disabled=!manager.can_queue_retreat();retreatButton.TooltipText=manager.get_retreat_chance(out var chance)?$"加入撤退行动 · 当前成功率 {chance:P0} · 每轮最多尝试一次":"当前不可加入：须处于规划阶段、队列有空位且双方遁速已配置，本场允许撤退。";}
+        if(retreatNotice is not null){retreatNotice.Scale=Vector2.One*scale;retreatNotice.Position=origin+new Vector2(606,110)*scale;retreatNotice.Text=manager.get_retreat_notice();}
+        if(speedButton is not null){speedButton.Scale=Vector2.One*scale;speedButton.Position=origin+new Vector2(1190,18)*scale;}
+        if(pauseButton is not null){pauseButton.Scale=Vector2.One*scale;pauseButton.Position=origin+new Vector2(1340,18)*scale;}
 
         foreach(var dead in views.Keys.Where(u=>!IsInstanceValid(u)).ToArray()){views[dead].QueueFree();views.Remove(dead);signatures.Remove(dead);queueSignatures.Remove(dead);}
         foreach(var unit in manager.all_units.OfType<Creature>().Where(IsInstanceValid)){
             if(!views.TryGetValue(unit,out var view)){
                 // 视图为队列和血条预留同一块屏幕空间；队列本身只绘制紧凑图标。
                 // 给我方“队首靠右、向左展开”和敌方相反的布局留出空间。
-                view=new Control{Size=new(174,100),MouseFilter=Control.MouseFilterEnum.Ignore,ZIndex=90};AddChild(view);views[unit]=view;
+                view=new Control{Size=new(232,110),MouseFilter=Control.MouseFilterEnum.Ignore,ZIndex=90};AddChild(view);views[unit]=view;
                 var queue=new Control{Name="Queue",Visible=false,MouseFilter=Control.MouseFilterEnum.Ignore};queue.AddChild(new Control{Name="Cards"});view.AddChild(queue);
-                var bar=new BattleHealthBar{Name="Health",Size=new(174,40),IsAlly=unit.faction==(int)WorldEntity.Faction.PLAYER};view.AddChild(bar);
-                var name=new Label{Name="Name",Position=new(12,7),Size=new(80,18),ClipText=true,MouseFilter=Control.MouseFilterEnum.Ignore};name.AddThemeFontSizeOverride("font_size",13);name.AddThemeColorOverride("font_color",BattleUiArt.Text);view.AddChild(name);
-                var label=new Label{Name="Value",Position=new(95,7),Size=new(65,18),HorizontalAlignment=HorizontalAlignment.Right,MouseFilter=Control.MouseFilterEnum.Ignore};label.AddThemeFontSizeOverride("font_size",12);label.AddThemeColorOverride("font_color",BattleUiArt.Text);view.AddChild(label);
-                var intent=new Label{Name="Intent",Position=new(0,42),Size=new(174,18),HorizontalAlignment=HorizontalAlignment.Center,MouseFilter=Control.MouseFilterEnum.Ignore};intent.AddThemeFontSizeOverride("font_size",11);view.AddChild(intent);
-                var statuses=new HFlowContainer{Name="Statuses",Position=new(0,-38),Size=new(174,36),MouseFilter=Control.MouseFilterEnum.Ignore};
+                var bar=new BattleHealthBar{Name="Health",Size=new(232,54),IsAlly=unit.faction==(int)WorldEntity.Faction.PLAYER};view.AddChild(bar);
+                var name=new Label{Name="Name",Position=new(24,9),Size=new(92,24),ClipText=true,MouseFilter=Control.MouseFilterEnum.Ignore};name.AddThemeFontSizeOverride("font_size",16);name.AddThemeColorOverride("font_color",BattleUiArt.Text);view.AddChild(name);
+                var label=new Label{Name="Value",Position=new(122,9),Size=new(86,24),ClipText=true,HorizontalAlignment=HorizontalAlignment.Right,MouseFilter=Control.MouseFilterEnum.Ignore};label.AddThemeFontSizeOverride("font_size",15);label.AddThemeColorOverride("font_color",BattleUiArt.Text);view.AddChild(label);
+                var intent=new Label{Name="Intent",Position=new(0,57),Size=new(232,20),HorizontalAlignment=HorizontalAlignment.Center,MouseFilter=Control.MouseFilterEnum.Ignore};intent.AddThemeFontSizeOverride("font_size",11);view.AddChild(intent);
+                var statuses=new HFlowContainer{Name="Statuses",Position=new(0,-38),Size=new(232,36),MouseFilter=Control.MouseFilterEnum.Ignore};
                 statuses.AddThemeConstantOverride("separation",4);view.AddChild(statuses);
             }
             view.Scale=Vector2.One*scale;
-            view.Position=unit.GetGlobalTransformWithCanvas().Origin-new Vector2(87*scale,manager.get_unit_display_height()+48*scale);
+            var team=unit.faction==(int)WorldEntity.Faction.PLAYER?manager.player_units:manager.enemy_units;
+            var stagger=team.Count==5 && team.IndexOf(unit)==1?30f:0f;
+            view.Position=unit.GetGlobalTransformWithCanvas().Origin-new Vector2(116*scale,manager.get_unit_display_height()+(64+stagger)*scale);
             view.GetNode<BattleHealthBar>("Health").MaxValue=Math.Max(1,unit.max_health);view.GetNode<BattleHealthBar>("Health").Value=unit.current_health;view.GetNode<BattleHealthBar>("Health").QueueRedraw();
             view.GetNode<Label>("Name").Text=unit.entity_name;
             view.GetNode<Label>("Value").Text=$"{unit.current_health}/{unit.max_health}";
@@ -285,20 +296,18 @@ public partial class BattleUnitOverlay : CanvasLayer
     }
     private Control CreateStatusBadge(string id,string name,int count,string tip,bool bad,StatusInstance? instance)
     {
-        var badge=new PanelContainer{CustomMinimumSize=new(36,36),TooltipText=$"{name} ×{count}\n{tip}",MouseFilter=Control.MouseFilterEnum.Stop};
+        var badge=new PanelContainer{CustomMinimumSize=new(36,36),MouseFilter=Control.MouseFilterEnum.Stop};
         badge.AddThemeStyleboxOverride("panel",new StyleBoxFlat{BgColor=bad?new Color(.26f,.07f,.06f,.95f):new Color(.035f,.09f,.07f,.95f),BorderColor=bad?new Color(.94f,.35f,.28f):new Color(.52f,.80f,.58f),BorderWidthLeft=1,BorderWidthTop=1,BorderWidthRight=1,BorderWidthBottom=1,CornerRadiusTopLeft=9,CornerRadiusTopRight=9,CornerRadiusBottomLeft=9,CornerRadiusBottomRight=9});
         var icon=new TextureRect{Texture=GetStatusIcon(id,instance),ExpandMode=TextureRect.ExpandModeEnum.IgnoreSize,StretchMode=TextureRect.StretchModeEnum.KeepAspectCentered,MouseFilter=Control.MouseFilterEnum.Ignore};icon.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);badge.AddChild(icon);
         var stack=new Label{Text=count.ToString(),HorizontalAlignment=HorizontalAlignment.Center,VerticalAlignment=VerticalAlignment.Center,Position=new(17,16),Size=new(18,18),MouseFilter=Control.MouseFilterEnum.Ignore};stack.AddThemeFontSizeOverride("font_size",15);stack.AddThemeColorOverride("font_outline_color",Colors.Black);stack.AddThemeConstantOverride("outline_size",4);badge.AddChild(stack);
-        if(instance is not null)
-        {
-            badge.MouseEntered+=()=>ShowStatusInfo(badge,instance);
-            badge.MouseExited+=HideStatusInfo;
-        }
+        badge.MouseEntered+=()=>ShowStatusInfo(badge,instance,name,count,tip);
+        badge.MouseExited+=HideStatusInfo;
         return badge;
     }
-    private void ShowStatusInfo(Control badge,StatusInstance instance)
+    private void ShowStatusInfo(Control badge,StatusInstance? instance,string name,int count,string tip)
     {
         hoveredStatus=instance;
+        hoveredStatusFallbackText=instance is null?$"{name} ×{count}\n{tip}":null;
         if(statusInfoPanel is null)
         {
             statusInfoPanel=new PanelContainer{ZIndex=260,MouseFilter=Control.MouseFilterEnum.Ignore,CustomMinimumSize=new Vector2(240,0)};
@@ -312,12 +321,19 @@ public partial class BattleUnitOverlay : CanvasLayer
     }
     private void HideStatusInfo()
     {
-        hoveredStatus=null;statusInfoPanel?.Hide();
+        hoveredStatus=null;hoveredStatusFallbackText=null;statusInfoPanel?.Hide();
     }
     private void RefreshHoveredStatusInfo()
     {
-        if(hoveredStatus is null||statusInfoLabel is null||!GodotObject.IsInstanceValid(hoveredStatus)||hoveredStatus.effect is null)
-        {if(hoveredStatus is not null)HideStatusInfo();return;}
+        if(statusInfoLabel is null)return;
+        if(hoveredStatus is null)
+        {
+            if(string.IsNullOrWhiteSpace(hoveredStatusFallbackText)){statusInfoPanel?.Hide();return;}
+            statusInfoLabel.Text=hoveredStatusFallbackText;
+            return;
+        }
+        if(!GodotObject.IsInstanceValid(hoveredStatus)||hoveredStatus.effect is null)
+        {HideStatusInfo();return;}
         var effect=hoveredStatus.effect;var name=string.IsNullOrWhiteSpace(effect.name)?effect.effect_id:effect.name;
         var duration=effect.duration_type switch
         {

@@ -1,4 +1,4 @@
-using Godot;
+﻿using Godot;
 using Godot.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +6,8 @@ using System.Linq;
 /// <summary>Save/load integration for the active single-player run.</summary>
 public partial class MainScene
 {
+    public void notify_battle_rewards_changed()=>mark_save_dirty();
+
     private GameSaveManager? _save_manager;
     private PersistentGameSave? _loaded_game_save;
     private bool _save_is_dirty;
@@ -16,6 +18,9 @@ public partial class MainScene
         _save_manager = GetNodeOrNull<GameSaveManager>("/root/GameSaveManager");
         _loaded_game_save = _save_manager?.consume_pending_load();
         if (_loaded_game_save is null) return;
+        var battleTransition=GetNodeOrNull<BattleTransitionManager>("/root/BattleTransitionManager");
+        battleTransition?.restore_reward_ledger(_loaded_game_save.battle_reward_ledger);
+        battleTransition?.CallDeferred("resume_pending_loot");
 
         var npcManager = GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager");
         npcManager?.set_simulation_enabled(false);

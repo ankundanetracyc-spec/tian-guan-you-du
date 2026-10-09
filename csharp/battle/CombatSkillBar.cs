@@ -1,4 +1,4 @@
-using Godot;
+﻿using Godot;
 using Godot.Collections;
 
 /// <summary>
@@ -157,7 +157,7 @@ public partial class CombatSkillBar : Control
     {
         if (slots is not null) slots.Visible = visible;
         if (barArtwork is not null) barArtwork.Visible = visible;
-        if (queueLabel is not null) queueLabel.Visible = visible;
+        if (queueLabel is not null) queueLabel.Visible = false;
     }
 
     private void CreateCompactResources()
@@ -219,7 +219,7 @@ public partial class CombatSkillBar : Control
         var queueCount = manager.get_battle_unit(currentUnit).skill_queue.Count;
         var queueCapacity = manager.get_action_slot_capacity(currentUnit);
         var mayPlan = manager.can_player_plan();
-        queueLabel!.Text = $"行动队列 {queueCount}/{queueCapacity}";
+        queueLabel!.Text = "";queueLabel.Hide();
         for (var i = 0; i < skills.Count && i < buttons.Count; i++)
         {
             var queuedCount = manager.get_battle_unit(currentUnit).skill_queue.Count(entry => entry.kind == BattleQueuedSkill.ActionKind.Skill && entry.skill == skills[i]);

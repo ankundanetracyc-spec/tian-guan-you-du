@@ -1,4 +1,4 @@
-using Godot;
+﻿using Godot;
 using Godot.Collections;
 
 public partial class BattleManager : Node2D
@@ -31,7 +31,7 @@ public partial class BattleManager : Node2D
                 GetViewport().SetInputAsHandled(); return;
             }
         }
-        if (@event is InputEventKey { Pressed: true, Echo: false, Keycode: Key.Escape }) { if (!UndoQueuePlanning()) finish_battle(); GetViewport().SetInputAsHandled(); }
+        if (@event is InputEventKey { Pressed: true, Echo: false, Keycode: Key.Escape }) { if (!UndoQueuePlanning() && battle_running) toggle_battle_pause(); GetViewport().SetInputAsHandled(); }
     }
     private bool CheckBattleOver()
     {
@@ -44,18 +44,24 @@ public partial class BattleManager : Node2D
         if (player_units.All(unit => !Alive(unit)) || enemy_units.All(unit => !Alive(unit))) { finish_battle(); return true; }
         return false;
     }
-    /// <summary>回传双方的最终快照；Esc 作为测试期的安全退出，正式结束也会走同一出口。</summary>
-    private void finish_battle()
+    /// <summary>回传双方的最终快照，胜负与撤离统一进入结算。</summary>
+    private void finish_battle(bool escaped=false)
     {
         if (_returning_to_world)return; SetBattlePaused(false); _returning_to_world=true; battle_running=false; _segmentPhase=SegmentPhase.None; _skillBar?.Hide(); _skillBar?.clear_targeting(); _planHud?.Hide(); _handPanel?.Call("hide_hand");
         var attackers=new Godot.Collections.Array(); var defenders=new Godot.Collections.Array();
         foreach(var unit in player_units.Concat(enemy_units))
             if(GodotObject.IsInstanceValid(unit) && unit.HasMeta("unwounded_health"))
             {unit.Set("max_health",unit.GetMeta("unwounded_health"));unit.RemoveMeta("unwounded_health");}
+        var transition=GetTree().Root.GetNodeOrNull<BattleTransitionManager>("BattleTransitionManager");
+        transition?.set_battle_outcome_note(string.Join("\n", player_units.Where(GodotObject.IsInstanceValid).Select(unit=>{
+            var wounds=get_realtime_wound_counts(unit);
+            return $"{unit.Get("entity_name").AsString()}：外伤 {wounds["external"].AsInt32()} 层，内伤 {wounds["internal"].AsInt32()} 层";
+        })));
         RestoreBattleResources();
         foreach(var unit in player_units)if(GodotObject.IsInstanceValid(unit))attackers.Add(unit.Call("get_snapshot_data"));
         foreach(var unit in enemy_units)if(GodotObject.IsInstanceValid(unit))defenders.Add(unit.Call("get_snapshot_data"));
-        GetTree().Root.GetNodeOrNull<BattleTransitionManager>("BattleTransitionManager")?.end_team_battle(attackers,defenders);
+        if(escaped) transition?.end_team_battle_escaped(attackers,defenders);
+        else transition?.end_team_battle(attackers,defenders);
     }
     private GodotObject? FindTarget(GodotObject unit) => (unit.Get("faction").AsInt32() == 1 ? enemy_units : player_units).FirstOrDefault(Alive);
     private static bool RequiresTargetSelection(ActiveSkillData skill) => skill.target_type is 2 or 3 || skill.can_target_empty || skill.aoe_range > 0;

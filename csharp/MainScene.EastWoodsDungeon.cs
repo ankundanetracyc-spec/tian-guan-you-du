@@ -1,4 +1,4 @@
-using Godot;
+﻿using Godot;
 using Godot.Collections;
 using System;
 using System.Linq;
@@ -218,11 +218,11 @@ public partial class MainScene
             }
             else if (defenderWon)
             {
-                lootSummary = transfer_npc_loot_to_player(attackerNpc, !attackerNpc.is_alive);
+                lootSummary = context.GetValueOrDefault("loot_handled_by_settlement",false).AsBool()?"战利品已由战后结算记录收取，未收部分保留待领。":transfer_npc_loot_to_player(attackerNpc, !attackerNpc.is_alive);
                 _npc_world.record_dungeon_battle_outcome(attackerNpc, "player", attackerNpc.is_alive ? "被玩家击退" : "被玩家击杀", lootSummary);
                 show_message("东林地遭遇", $"你赢下了这场战斗。{lootSummary}");
             }
-            else show_message("东林地遭遇", "战斗提前结束，双方暂时分开；没有结算胜负或掠夺。");
+            else show_message("东林地遭遇", summary.GetValueOrDefault("escaped",false).AsBool()?"你已成功撤离，双方分开；没有结算胜利奖励或掠夺。":"战斗提前结束，双方暂时分开；没有结算胜负或掠夺。");
         }
         else if (attackerNpc is not null && defenderNpc is not null)
         {

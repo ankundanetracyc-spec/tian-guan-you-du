@@ -1,4 +1,4 @@
-using Godot;
+﻿using Godot;
 using Godot.Collections;
 
 public partial class BattleManager : Node2D
@@ -122,8 +122,11 @@ public partial class BattleManager : Node2D
             // 测试入口和正式入口均允许提供可实例化的角色场景；资源异常时用标准角色兜底，不能把空队伍误判成战斗结束。
             var unit = packed.Instantiate();
             if (unit is not WorldEntity) { GD.PushError($"BattleManager: 战斗单位场景无效，使用标准角色回退：{packed.ResourcePath}"); unit?.QueueFree(); unit = new Character(); }
+            // 隔离战斗资源，避免 PackedScene 共用数据污染世界角色或演练存档。
+            if(unit is WorldEntity entity && entity.entity_data is not null)entity.entity_data=entity.entity_data.Duplicate(true) as EntityData;
             DeployLayer?.AddChild(unit);
             unit.Set("initialized_from_data", true); unit.Call("apply_battle_data", snapshot);
+            unit.SetMeta("battle_dun_speed",snapshot.dun_speed);
             unit.SetMeta("basic_deck_path", snapshot.basic_deck_path);
             unit.SetMeta("basic_deck_upgrade_ids", snapshot.basic_deck_upgrade_ids);
             unit.SetMeta("dao_bearing", snapshot.dao_bearing);

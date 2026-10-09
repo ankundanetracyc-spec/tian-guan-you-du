@@ -21,6 +21,7 @@ public partial class GameSaveManager : Node
         active_slot_id = $"{DateTime.Now:yyyyMMdd_HHmmss}_{Guid.NewGuid():N}";
         active_slot_name = safeName;
         _pendingLoad = null;
+        GetNodeOrNull<BattleTransitionManager>("/root/BattleTransitionManager")?.clear_reward_ledger();
         GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.restore_calendar(1, 1, 1, 0, 0f);
         GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager")?.clear_for_new_game();
     }
@@ -101,6 +102,7 @@ public partial class GameSaveManager : Node
             return false;
         }
 
+        snapshot.battle_reward_ledger=GetNodeOrNull<BattleTransitionManager>("/root/BattleTransitionManager")?.export_reward_ledger()??[];
         snapshot.format_version = PersistentGameSave.CurrentFormatVersion;
         snapshot.slot_id = active_slot_id;
         snapshot.save_name = active_slot_name;

@@ -12,7 +12,7 @@ public partial class BattleHealthBar : Control
         DrawTextureRect(BattleUiArt.Texture("health_frame"),new Rect2(Vector2.Zero,Size),false);
         var ratio=Mathf.Clamp(Value/Mathf.Max(1,MaxValue),0,1);
         // 纹理中预留的窄槽在外框内部，不作为另一条控件挂在框下。
-        var slot=new Rect2(14,28,146,6);
+        var slot=new Rect2(Size.X*.08f,Size.Y*.70f,Size.X*.84f,Size.Y*.15f);
         DrawRect(slot,new Color("102322"));
         if(ratio<=0)return;
         var fill=BattleUiArt.Texture(IsAlly?"health_fill_ally":"health_fill_enemy");

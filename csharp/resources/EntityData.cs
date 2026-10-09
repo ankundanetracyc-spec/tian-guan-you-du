@@ -7,6 +7,8 @@ public partial class EntityData : Resource
     [Export] public int entity_type = 3;
     [Export] public int faction;
     [Export] public string icon_path = "";
+    /// <summary>战斗掉落配置：item_path、chance、min_count、max_count；仅引用已有物品。</summary>
+    [Export] public Godot.Collections.Array<Godot.Collections.Dictionary> battle_loot = [];
     [Export(PropertyHint.File, "*.png,*.webp,*.jpg")] public string battle_portrait_path = "";
     [Export] public int appearance_seed;
     [Export] public int appearance_face_style = -1;

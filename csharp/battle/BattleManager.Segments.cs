@@ -1,4 +1,4 @@
-using Godot;
+﻿using Godot;
 using Godot.Collections;
 
 public partial class BattleManager
@@ -13,6 +13,7 @@ public partial class BattleManager
     {
         if (!battle_running || !_realtimeMode) return;
         _segmentNumber++;
+        _retreatAttemptedThisRound=false;
         _segmentPhase = SegmentPhase.Planning;
         _planningElapsed = 0;
         _playerQueueConfirmed = false;
@@ -116,6 +117,10 @@ public partial class BattleManager
         if (GodotObject.IsInstanceValid(unit) && unit!.HasMeta("battle_action_slots"))
             return Mathf.Clamp(unit.GetMeta("battle_action_slots").AsInt32(), 5, 10);
         var realm = unit is Creature creature ? creature.cultivation_realm : "";
+        return get_action_slot_capacity_for_realm(realm);
+    }
+    public int get_action_slot_capacity_for_realm(string realm)
+    {
         if (!string.IsNullOrWhiteSpace(realm) && action_slots_by_realm.TryGetValue(realm, out var configured))
             return Mathf.Clamp(configured.AsInt32(), 5, 10);
         return get_action_slot_capacity();
@@ -327,6 +332,7 @@ public partial class BattleManager
             return;
         }
 
+        if (action.kind == BattleQueuedSkill.ActionKind.Retreat) { ResolveRetreat(unit); return; }
         var skill = action.skill;
         Pay(unit, skill);
         body_cards.Before(unit, skill);

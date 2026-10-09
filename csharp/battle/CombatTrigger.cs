@@ -1,4 +1,4 @@
-using Godot;
+﻿using Godot;
 using Godot.Collections;
 
 /// <summary>Bridges world entities and the battle-scene transition package.</summary>
@@ -36,7 +36,9 @@ public partial class CombatTrigger : Node
         var returnData = manager.Call("consume_battle_return_data").AsGodotDictionary();
         var context = returnData.GetValueOrDefault("context", new Dictionary()).AsGodotDictionary();
         var summary = returnData.GetValueOrDefault("summary", new Dictionary()).AsGodotDictionary();
+        (manager as BattleTransitionManager)?.resume_pending_loot();
         var currentScene = GetTree().CurrentScene;
+        (currentScene as MainScene)?.notify_battle_rewards_changed();
         if (currentScene?.HasMethod("handle_persistent_battle_return") == true)
             currentScene.Call("handle_persistent_battle_return", results[0], results[1], summary, context);
         if (context.GetValueOrDefault("kind", "").AsString() == "yuxu_tianwen_practice")

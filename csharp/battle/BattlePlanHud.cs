@@ -1,4 +1,4 @@
-using Godot;
+﻿using Godot;
 using Godot.Collections;
 
 /// <summary>规划、逐项选目标、行动三个阶段共用的战斗界面。</summary>
@@ -16,6 +16,8 @@ public partial class BattlePlanHud : Control
     private string _signature="",_names="";
     private bool _queueVisible=true;
     private bool _planningQueueVisible=true, _lastPlanning;
+    private Tween? _planningTween;
+    private bool _planningAnimating;
     private int _dragIndex=-1;
     private Vector2 _dragOrigin;
     private bool _dragging;
@@ -36,11 +38,11 @@ public partial class BattlePlanHud : Control
         var tab=BattleUiArt.Icon("planning_title_tab",new(220,48));tab.Name="TitleTab";tab.Position=new(240,-24);_planningPanel.AddChild(tab);
         _heading=Label("行动队列",new(0,0),new(150,26),17);tab.AddChild(_heading);
         _planningSlots=new Control{Position=new(20,32),Size=new(588,136),MouseFilter=MouseFilterEnum.Ignore};_planningPanel.AddChild(_planningSlots);
-        var controls=new HBoxContainer{Size=new(596,40),Alignment=BoxContainer.AlignmentMode.Center,MouseFilter=MouseFilterEnum.Ignore};controls.AddThemeConstantOverride("separation",12);_planningControls=controls;
+        var controls=new HBoxContainer{Size=new(444,40),Alignment=BoxContainer.AlignmentMode.Center,MouseFilter=MouseFilterEnum.Ignore};controls.AddThemeConstantOverride("separation",12);_planningControls=controls;
         var rest=Button("休整 +2 精力",140);rest.Pressed+=()=>_manager.queue_system_action(0);controls.AddChild(rest);
         var breathe=Button("吐纳 +1 法力",140);breathe.Pressed+=()=>_manager.queue_system_action(1);controls.AddChild(breathe);
         var confirm=Button("确认队列",140);confirm.Pressed+=_manager.confirm_player_queue;controls.AddChild(confirm);
-        _planningToggle=Button("隐藏队列",140);_planningToggle.Pressed+=()=>{CancelQueueDrag();_planningQueueVisible=!_planningQueueVisible;UpdateVisibility();};controls.AddChild(_planningToggle);AddChild(controls);controls.Name="PlanningControls";
+        _planningToggle=Button("隐藏队列",140);_planningToggle.Pressed+=TogglePlanningQueue;AddChild(_planningToggle);AddChild(controls);controls.Name="PlanningControls";
         _targetPanel=Panel("queue_panel",new(24,168),new(156,394));AddChild(_targetPanel);
         _targetPanel.AddChild(Label("选择目标",new(8,8),new(140,32),19));
         _targetRows=new Control{Position=new(12,46),MouseFilter=MouseFilterEnum.Ignore};_targetPanel.AddChild(_targetRows);
@@ -75,8 +77,9 @@ public partial class BattlePlanHud : Control
         var queue=Queue();var cap=_manager.get_action_slot_capacity(_manager.get_main_player_unit());
         // 按槽位总宽加左右各 20、上 32、下 16 的内边距计算，按钮完全位于框外。
         var width=cap*120+28;_planningPanel.Position=new((1672-width)/2,180);_planningPanel.Size=new(width,184);
-        _planningPanel.GetNode<Control>("TitleTab").Position=new((width-248)/2,-24);_heading.Position=new(60,14);_heading.Size=new(130,26);_heading.Text=$"行动队列  {queue.Count}/{cap}";
+        _planningPanel.GetNode<Control>("TitleTab").Position=new((width-220)/2,-24);_heading.Position=new(40,14);_heading.Size=new(140,26);_heading.Text=$"行动队列  {queue.Count}/{cap}";
         _planningControls.Position=new((1672-596)/2,_planningPanel.Position.Y+_planningPanel.Size.Y+12);
+        if(!_planningAnimating)_planningToggle.Position=PlanningTogglePosition();
         _planningSlots.Size=new(width-40,136);BattleUiArt.ClearChildren(_planningSlots);BattleUiArt.ClearChildren(_actionSlots);BattleUiArt.ClearChildren(_targetRows);
         var warnings=_manager.get_player_queue_resource_warnings();
         var rowHeight=cap>7?52:62;var gap=cap>7?4:6;var height=60+cap*rowHeight+(cap-1)*gap;
@@ -163,7 +166,7 @@ public partial class BattlePlanHud : Control
         var card=new Control{Size=new(108,136),MouseFilter=MouseFilterEnum.Ignore};
         if(action is not null&&action.kind==BattleQueuedSkill.ActionKind.Skill)card.AddChild(CombatSkillBar.CreateSkillIconVisual(action.skill,new(96,102),new(6,6)));
         var frame=BattleUiArt.Icon(action is null?"skill_slot_empty":"skill_card_frame",new(108,136));card.AddChild(frame);
-        if(action is not null&&action.kind!=BattleQueuedSkill.ActionKind.Skill)card.AddChild(Label(action.kind==BattleQueuedSkill.ActionKind.Rest?"休":"吐",new(6,10),new(96,90),40));
+        if(action is not null&&action.kind!=BattleQueuedSkill.ActionKind.Skill)card.AddChild(Label(action.kind==BattleQueuedSkill.ActionKind.Rest?"休":action.kind==BattleQueuedSkill.ActionKind.Retreat?"撤":"吐",new(6,10),new(96,90),40));
         card.AddChild(Label(action?.get_display_name()??"空位",new(6,109),new(96,23),16));return card;
     }
     private void RebuildTimeline(Array<string> names)
@@ -177,11 +180,23 @@ public partial class BattlePlanHud : Control
         var planning=_manager.is_planning_phase();var selecting=_manager.is_selecting_queue_targets();
         if(planning&&!_lastPlanning)_planningQueueVisible=true;
         _lastPlanning=planning;
-        _planningPanel.Visible=planning&&!selecting&&_planningQueueVisible;_targetPanel.Visible=selecting;
-        _planningControls.Visible=planning&&!selecting;
+        _planningPanel.Visible=planning&&!selecting&&_planningQueueVisible&&!_planningAnimating;_targetPanel.Visible=selecting;
+        _planningControls.Visible=planning&&!selecting&&_planningQueueVisible&&!_planningAnimating;
+        _planningToggle.Visible=planning&&!selecting;
+        if(!_planningAnimating)_planningToggle.Position=PlanningTogglePosition();
         _planningToggle.Text=_planningQueueVisible?"隐藏队列":"显示队列";
         _actionPanel.Visible=!planning&&_queueVisible;_toggle.Visible=!planning;_toggle.Text=_queueVisible?"隐藏队列":"显示队列";
         if(_progress is not null)_progress.Visible=!planning;
+    }
+    private Vector2 PlanningTogglePosition()=>_planningQueueVisible?_planningControls.Position+new Vector2(456,0):new Vector2((1672-140)/2,_planningPanel.Position.Y-18);
+    private void TogglePlanningQueue()
+    {
+        if(_planningAnimating)return;
+        CancelQueueDrag();_planningQueueVisible=!_planningQueueVisible;_planningAnimating=true;
+        _planningToggle.Disabled=true;UpdateVisibility();
+        _planningTween?.Kill();_planningTween=CreateTween();
+        _planningTween.TweenProperty(_planningToggle,"position",PlanningTogglePosition(),.24).SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.InOut);
+        _planningTween.TweenCallback(Callable.From(()=>{_planningAnimating=false;_planningToggle.Disabled=false;UpdateVisibility();}));
     }
     private static Panel Panel(string art,Vector2 position,Vector2 size)
     {

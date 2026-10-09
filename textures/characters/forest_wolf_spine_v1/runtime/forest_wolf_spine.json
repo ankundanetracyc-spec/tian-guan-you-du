@@ -1,0 +1,260 @@
+{
+  "skeleton": {
+    "hash": "forest-wolf-idle-v1",
+    "spine": "3.8.75",
+    "x": -157.0,
+    "y": -157.0,
+    "width": 314,
+    "height": 314,
+    "images": "./",
+    "audio": ""
+  },
+  "bones": [
+    {
+      "name": "root"
+    },
+    {
+      "name": "sprite",
+      "parent": "root",
+      "length": 314
+    }
+  ],
+  "slots": [
+    {
+      "name": "wolf_sprite",
+      "bone": "sprite",
+      "attachment": "wolf_idle_00"
+    }
+  ],
+  "skins": [
+    {
+      "name": "default",
+      "attachments": {
+        "wolf_sprite": {
+          "wolf_idle_00": {
+            "type": "region",
+            "name": "wolf_idle_00",
+            "path": "wolf_idle_00",
+            "x": 0,
+            "y": 0,
+            "width": 314,
+            "height": 314
+          },
+          "wolf_idle_01": {
+            "type": "region",
+            "name": "wolf_idle_01",
+            "path": "wolf_idle_01",
+            "x": 0,
+            "y": 0,
+            "width": 314,
+            "height": 314
+          },
+          "wolf_idle_02": {
+            "type": "region",
+            "name": "wolf_idle_02",
+            "path": "wolf_idle_02",
+            "x": 0,
+            "y": 0,
+            "width": 314,
+            "height": 314
+          },
+          "wolf_idle_03": {
+            "type": "region",
+            "name": "wolf_idle_03",
+            "path": "wolf_idle_03",
+            "x": 0,
+            "y": 0,
+            "width": 314,
+            "height": 314
+          },
+          "wolf_idle_04": {
+            "type": "region",
+            "name": "wolf_idle_04",
+            "path": "wolf_idle_04",
+            "x": 0,
+            "y": 0,
+            "width": 314,
+            "height": 314
+          },
+          "wolf_idle_05": {
+            "type": "region",
+            "name": "wolf_idle_05",
+            "path": "wolf_idle_05",
+            "x": 0,
+            "y": 0,
+            "width": 314,
+            "height": 314
+          },
+          "wolf_idle_06": {
+            "type": "region",
+            "name": "wolf_idle_06",
+            "path": "wolf_idle_06",
+            "x": 0,
+            "y": 0,
+            "width": 314,
+            "height": 314
+          },
+          "wolf_idle_07": {
+            "type": "region",
+            "name": "wolf_idle_07",
+            "path": "wolf_idle_07",
+            "x": 0,
+            "y": 0,
+            "width": 314,
+            "height": 314
+          },
+          "wolf_idle_08": {
+            "type": "region",
+            "name": "wolf_idle_08",
+            "path": "wolf_idle_08",
+            "x": 0,
+            "y": 0,
+            "width": 314,
+            "height": 314
+          },
+          "wolf_idle_09": {
+            "type": "region",
+            "name": "wolf_idle_09",
+            "path": "wolf_idle_09",
+            "x": 0,
+            "y": 0,
+            "width": 314,
+            "height": 314
+          },
+          "wolf_idle_10": {
+            "type": "region",
+            "name": "wolf_idle_10",
+            "path": "wolf_idle_10",
+            "x": 0,
+            "y": 0,
+            "width": 314,
+            "height": 314
+          },
+          "wolf_idle_11": {
+            "type": "region",
+            "name": "wolf_idle_11",
+            "path": "wolf_idle_11",
+            "x": 0,
+            "y": 0,
+            "width": 314,
+            "height": 314
+          },
+          "wolf_idle_12": {
+            "type": "region",
+            "name": "wolf_idle_12",
+            "path": "wolf_idle_12",
+            "x": 0,
+            "y": 0,
+            "width": 314,
+            "height": 314
+          },
+          "wolf_idle_13": {
+            "type": "region",
+            "name": "wolf_idle_13",
+            "path": "wolf_idle_13",
+            "x": 0,
+            "y": 0,
+            "width": 314,
+            "height": 314
+          },
+          "wolf_idle_14": {
+            "type": "region",
+            "name": "wolf_idle_14",
+            "path": "wolf_idle_14",
+            "x": 0,
+            "y": 0,
+            "width": 314,
+            "height": 314
+          },
+          "wolf_idle_15": {
+            "type": "region",
+            "name": "wolf_idle_15",
+            "path": "wolf_idle_15",
+            "x": 0,
+            "y": 0,
+            "width": 314,
+            "height": 314
+          }
+        }
+      }
+    }
+  ],
+  "animations": {
+    "idle": {
+      "slots": {
+        "wolf_sprite": {
+          "attachment": [
+            {
+              "time": 0.0,
+              "name": "wolf_idle_00"
+            },
+            {
+              "time": 0.125,
+              "name": "wolf_idle_01"
+            },
+            {
+              "time": 0.25,
+              "name": "wolf_idle_02"
+            },
+            {
+              "time": 0.375,
+              "name": "wolf_idle_03"
+            },
+            {
+              "time": 0.5,
+              "name": "wolf_idle_04"
+            },
+            {
+              "time": 0.625,
+              "name": "wolf_idle_05"
+            },
+            {
+              "time": 0.75,
+              "name": "wolf_idle_06"
+            },
+            {
+              "time": 0.875,
+              "name": "wolf_idle_07"
+            },
+            {
+              "time": 1.0,
+              "name": "wolf_idle_08"
+            },
+            {
+              "time": 1.125,
+              "name": "wolf_idle_09"
+            },
+            {
+              "time": 1.25,
+              "name": "wolf_idle_10"
+            },
+            {
+              "time": 1.375,
+              "name": "wolf_idle_11"
+            },
+            {
+              "time": 1.5,
+              "name": "wolf_idle_12"
+            },
+            {
+              "time": 1.625,
+              "name": "wolf_idle_13"
+            },
+            {
+              "time": 1.75,
+              "name": "wolf_idle_14"
+            },
+            {
+              "time": 1.875,
+              "name": "wolf_idle_15"
+            },
+            {
+              "time": 2.0,
+              "name": "wolf_idle_00"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

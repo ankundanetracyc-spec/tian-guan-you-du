@@ -1808,6 +1808,7 @@ public partial class Character : Creature
         ensure_basic_deck();
         refresh_dao_bearing_nodes();
         refresh_basic_deck_for_bearing();
+        snapshot.dun_speed=human.dun_speed; snapshot.charisma=human.charisma; snapshot.social=human.social; snapshot.management=human.management;
         snapshot.dao_bearing = human.dao_bearing;
         snapshot.body_proficiency=human.body_proficiency;
         snapshot.sword_proficiency=human.sword_proficiency;

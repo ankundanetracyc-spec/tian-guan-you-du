@@ -13,6 +13,7 @@ public partial class PersistentGameSave : Resource
     [Export] public long saved_at_unix;
 
     [Export] public HumanData? player_data;
+    [Export] public Dictionary battle_reward_ledger = [];
     [Export] public int year = 1;
     [Export] public int month = 1;
     [Export] public int day = 1;

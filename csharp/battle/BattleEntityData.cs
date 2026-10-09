@@ -1,4 +1,4 @@
-using Godot;
+﻿using Godot;
 using Godot.Collections;
 
 /// <summary>
@@ -8,6 +8,9 @@ using Godot.Collections;
 public partial class BattleEntityData : Resource
 {
     [Export] public string uid = "";
+    [Export] public float dun_speed;
+    [Export] public float social, management;
+    [Export] public Array<Dictionary> battle_loot = [];
     [Export] public string entity_name = "未命名";
     [Export] public int entity_type;
     [Export] public int faction;
@@ -109,6 +112,7 @@ public partial class BattleEntityData : Resource
             var name = property["name"].AsStringName();
             if (name != "resource_path" && name != "resource_name") Set(name, source.Get(name));
         }
+        battle_loot = source.battle_loot.Duplicate(true);
         equipment_paths = source.equipment_paths.Duplicate();
         gongfa_paths = source.gongfa_paths.Duplicate();
         sub_gongfa_paths = source.sub_gongfa_paths.Duplicate();

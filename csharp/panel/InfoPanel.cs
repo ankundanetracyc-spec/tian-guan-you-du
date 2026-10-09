@@ -1,4 +1,4 @@
-using Godot;
+﻿using Godot;
 
 /// <summary>
 /// 人物档案卷轴。视觉主体完全由 InfoPanel.tscn 保持：画芯、轴卷、墨迹与各页布局都不在此处重建。
@@ -834,15 +834,16 @@ public partial class InfoPanel : Control
             AttributeGrid("基础属性",
                 [("体魄", unit.physique.ToString("0.0"), 0), ("灵慧", unit.intelligence.ToString("0.0"), 1),
                  ("敏捷", unit.agility.ToString("0.0"), 2), ("神魂", unit.soul.ToString("0.0"), 3),
-                 ("福缘", unit.fortune.ToString("0.0"), 4), ("悟性", unit.comprehension.ToString("0.0"), 5)]);
+                 ("福缘", unit.fortune.ToString("0.0"), 4), ("悟性", unit.comprehension.ToString("0.0"), 5), ("魅力", data_number(unit,"charisma").ToString("0.0"), -1), ("交际", data_number(unit,"social").ToString("0.0"), -1), ("治事", data_number(unit,"management").ToString("0.0"), -1)]);
             AttributeGrid("战斗属性",
                 [("生命", $"{unit.current_health}/{unit.max_health}", -1), ("精力", $"{unit.current_stamina}/{unit.max_stamina}", -1), ("法力", $"{unit.current_mana}/{unit.max_mana}", -1),
-                 ("心境", $"{unit.current_mind}/{unit.max_mind}", -1),
+                 ("速度", unit.initiative_speed.ToString("0.0"), -1), ("灵识容量", $"{unit.used_spirit_perception}/{unit.max_spirit_perception}", -1),
                  ("物理防御", unit.physical_defense.ToString(), -1), ("精准", unit.precision.ToString(), -1),
                  ("身法", unit.dodge.ToString(), -1),
                  ("会心", unit.critical.ToString(), -1), ("护心", unit.crit_resist.ToString(), -1),
                  ("会心伤害", unit.crit_damage_mult.ToString("0.00"), -1),
-                 ("精力回复", $"{unit.get_energy_recovery_interval():0.#}帧/1点", -1), ("法力回复", $"{unit.get_mana_recovery_interval():0.#}帧/1点", -1)]);
+                 ("物理减伤", $"{unit.physical_damage_reduction*100:0.#}%", -1)]);
+            AttributeGrid("行旅属性", [("遁速", human?.dun_speed.ToString("0.#") ?? "未配置", -1)]);
             AttributeGrid("灵根权重",
                 [("金灵根", RootWeight(0).ToString(), -1), ("木灵根", RootWeight(1).ToString(), -1),
                  ("水灵根", RootWeight(2).ToString(), -1), ("火灵根", RootWeight(3).ToString(), -1),
@@ -1904,7 +1905,7 @@ public partial class InfoPanel : Control
         ContentMarginLeft = 3, ContentMarginRight = 3, ContentMarginTop = 3, ContentMarginBottom = 3
     };
 
-    private static string battle_attribute_name(string name) => name switch { "physique" => "体魄", "agility" => "敏捷", "intelligence" => "灵慧", "soul" => "神魂", "comprehension" => "悟性", "body_proficiency" => "体修造诣", "magic_proficiency" => "术法造诣", "sword_proficiency" => "剑道造诣", "talisman_proficiency" => "符道造诣", "cultivation_rate" => "修炼效率", "mind_regen_rate" => "神识恢复", "mana_regen_rate" => "法力恢复", "physical_damage" => "物理伤害", "max_health" => "生命上限", "max_qi_blood" => "气血上限", "blood_furnace_value_cap" => "血炉上限", "physical_defense" => "物理防御", "precision" => "精准", "dodge" => "身法", "critical" => "会心", "crit_resist" => "护心", "crit_damage_mult" => "会心伤害", "initiative_speed" => "动作速度", _ => name };
+    private static string battle_attribute_name(string name) => name switch { "physique" => "体魄", "agility" => "敏捷", "intelligence" => "灵慧", "soul" => "神魂", "comprehension" => "悟性", "body_proficiency" => "体修造诣", "magic_proficiency" => "术法造诣", "sword_proficiency" => "剑道造诣", "talisman_proficiency" => "符道造诣", "cultivation_rate" => "修炼效率", "mind_regen_rate" => "神识恢复", "mana_regen_rate" => "法力恢复", "physical_damage" => "物理伤害", "max_health" => "生命上限", "max_qi_blood" => "气血上限", "blood_furnace_value_cap" => "血炉上限", "physical_defense" => "物理防御", "precision" => "精准", "dodge" => "身法", "critical" => "会心", "crit_resist" => "护心", "crit_damage_mult" => "会心伤害", "initiative_speed" => "速度", _ => name };
 
     private static string gongfa_chapter_name(GongfaResource? book, string chapterId)
     {
@@ -2077,12 +2078,13 @@ public partial class InfoPanel : Control
         Row("PhysiqueRow", "体魄", unit.physique.ToString("0.0")); Row("IntelligenceRow", "灵慧", unit.intelligence.ToString("0.0"));
         Row("AgilityRow", "敏捷", unit.agility.ToString("0.0")); Row("SoulRow", "神魂", unit.soul.ToString("0.0"));
         Row("FortuneRow", "福缘", unit.fortune.ToString("0.0")); Row("ComprehensionRow", "悟性", unit.comprehension.ToString("0.0"));
+        Row("CharismaRow", "魅力", data_number(unit,"charisma").ToString("0.0")); Row("SocialRow", "交际", data_number(unit,"social").ToString("0.0")); Row("ManagementRow", "治事", data_number(unit,"management").ToString("0.0"));
         Row("HealthRow", "生命", $"{unit.current_health}/{unit.max_health}"); Row("StaminaRow", "精力", $"{unit.current_stamina}/{unit.max_stamina}"); Row("ManaRow", "法力", $"{unit.current_mana}/{unit.max_mana}");
-        Row("MindRow", "心境", $"{unit.current_mind}/{unit.max_mind}");
+        Row("MindRow", "速度", unit.initiative_speed.ToString("0.0"));
         Row("SpiritPerceptionRow", "灵识", $"{unit.used_spirit_perception}/{unit.max_spirit_perception}");
         Row("PhysicalDefenseRow", "物理防御", unit.physical_defense.ToString()); Row("PrecisionRow", "精准", unit.precision.ToString()); Row("DodgeRow", "身法", unit.dodge.ToString());
         Row("CriticalRow", "会心", unit.critical.ToString()); Row("CritResistRow", "护心", unit.crit_resist.ToString()); Row("CritDamageRow", "会心伤害", unit.crit_damage_mult.ToString("0.00"));
-        Row("StaminaRegenRow", "精力回复", $"{unit.get_energy_recovery_interval():0.#}帧/1点"); Row("ManaRegenRow", "法力回复", $"{unit.get_mana_recovery_interval():0.#}帧/1点");
+        Row("StaminaRegenRow", "物理减伤", $"{unit.physical_damage_reduction*100:0.#}%"); Row("ManaRegenRow", "遁速", human?.dun_speed.ToString("0.#") ?? "未配置");
         Row("MetalRootRow", "金灵根", Root(0).ToString()); Row("WoodRootRow", "木灵根", Root(1).ToString()); Row("WaterRootRow", "水灵根", Root(2).ToString()); Row("FireRootRow", "火灵根", Root(3).ToString()); Row("EarthRootRow", "土灵根", Root(4).ToString());
         Row("SpiritRootRow", "灵根", human?.spirit_root_name ?? "未详"); Row("RealmRow", "境界", unit.cultivation_realm + (unit is Creature creature && creature.get_current_realm_attribute_increment() > 0 ? $"（本层境界倍率 +{creature.get_current_realm_attribute_increment() * 100:0}%）" : "")); Row("StrandsRow", "灵力", $"{unit.spirit_strands} 缕");
         Row("CoreRow", "灵核", human?.get_spirit_core_summary() ?? "—"); Row("LearningRow", "学习效率", human is null ? "—" : human.get_learning_rate().ToString("0.00") + "/小时"); Row("CultivationRow", "修炼效率", human is null ? "—" : human.get_cultivation_rate().ToString("0.000") + "/小时");
@@ -2108,25 +2110,28 @@ public partial class InfoPanel : Control
         void Base(string row, string name, string description, string formula) => Bind(row, $"{name}\n{description}", $"{name}\n{formula}");
 
         Base("PhysiqueRow", "体魄", "主要参与生命、护心与会心计算。", $"当前体魄 = 基础体魄 + 功法 + 装备 + 状态修正\n生命贡献 = 6 × 最终体魄 + 2 × 基础体魄\n会心贡献 = 0.5 × 体魄；护心贡献 = 3 × 体魄\n当前值：{unit.physique:0.0}");
-        Base("IntelligenceRow", "灵慧", "弱参与生命，参与心境、精准、身法、会心与护心。", $"当前灵慧 = 基础灵慧 + 功法 + 装备 + 状态修正\n生命贡献 = 1.5 × 灵慧；心境贡献 = 1.5 × 灵慧\n精准贡献 = 4 × 灵慧；身法贡献 = 1 × 灵慧；会心贡献 = 0.3 × 灵慧；护心贡献 = 2 × 灵慧\n当前值：{unit.intelligence:0.0}");
+        Base("IntelligenceRow", "灵慧", "参与生命、速度、精准、身法、会心与护心。", $"当前灵慧 = 基础灵慧 + 功法 + 装备 + 状态修正\n生命贡献 = 1.5 × 灵慧；速度贡献 = 0.75 × 灵慧\n精准贡献 = 4 × 灵慧；身法贡献 = 1 × 灵慧；会心贡献 = 0.3 × 灵慧；护心贡献 = 2 × 灵慧\n当前值：{unit.intelligence:0.0}");
         Base("AgilityRow", "敏捷", "参与生命、精准、身法、会心与护心。", $"当前敏捷 = 基础敏捷 + 功法 + 装备 + 状态修正\n生命贡献 = 3 × 敏捷；精准贡献 = 3 × 敏捷；身法贡献 = 4 × 敏捷；会心贡献 = 0.8 × 敏捷；护心贡献 = 2 × 敏捷\n当前值：{unit.agility:0.0}");
-        Base("SoulRow", "神魂", "主参与心境，参与生命、精准、身法、会心与护心。", $"当前神魂 = 基础神魂 + 功法 + 装备 + 状态修正\n生命贡献 = 3 × 神魂；心境贡献 = 4 × 神魂\n精准贡献 = 1 × 神魂；身法贡献 = 2 × 神魂；会心贡献 = 1.2 × 神魂；护心贡献 = 1.5 × 神魂\n当前值：{unit.soul:0.0}");
+        Base("SoulRow", "神魂", "参与生命、速度、精准、身法、会心与护心。", $"当前神魂 = 基础神魂 + 功法 + 装备 + 状态修正\n生命贡献 = 3 × 神魂；速度贡献 = 0.75 × 神魂\n精准贡献 = 1 × 神魂；身法贡献 = 2 × 神魂；会心贡献 = 1.2 × 神魂；护心贡献 = 1.5 × 神魂\n当前值：{unit.soul:0.0}");
         Base("FortuneRow", "福缘", "参与事件、探索与收获的福缘判定；当前不参与固定战斗派生属性计算。", $"当前福缘 = 基础福缘 + 功法/事件修正\n当前值：{unit.fortune:0.0}");
         Base("ComprehensionRow", "悟性", "参与功法研读、修行与相关事件的悟性判定；当前不参与固定战斗派生属性计算。", $"当前悟性 = 基础悟性 + 功法/事件修正\n当前值：{unit.comprehension:0.0}");
 
+        Base("CharismaRow", "魅力", "参与交涉、招揽与人物事件。", $"当前魅力：{data_number(unit,"charisma"):0.0}");
+        Base("SocialRow", "交际", "参与往来、交易与外务事件。", $"当前交际：{data_number(unit,"social"):0.0}");
+        Base("ManagementRow", "治事", "参与事务调度与经营事件。", $"当前治事：{data_number(unit,"management"):0.0}");
         Base("HealthRow", "生命", "生命归零时角色无法继续行动。", $"当前生命：{unit.current_health}/{unit.max_health}\n生命上限由角色属性、功法、装备与状态共同决定。");
-        Base("StaminaRow", "精力", "即时战斗中施展大多数招式所需的资源；战斗内上限为6并按帧恢复。", $"战斗内上限：6\n当前/上限：{unit.current_stamina}/{unit.max_stamina}");
-        Base("ManaRow", "法力", "即时战斗中施展术法、剑气与法器效果所需的资源；战斗内上限为3并按帧持续恢复。", $"基础恢复：480帧/1点；灵慧＋神魂按对数曲线缩短\n当前/上限：{unit.current_mana}/{unit.max_mana}");
-        Base("MindRow", "心境", "角色的神魂状态，影响部分修行与事件结果；它不等同于灵识。", $"心境上限 = 30 + 4 × 神魂 + 1.5 × 灵慧 + 0.5 × 体魄\n当前：{unit.current_mind}/{unit.max_mind}");
+        Base("StaminaRow", "精力", "用于施展招式；每轮补给3点，休整回复2点，均不超过上限。", $"战斗内上限：6\n当前/上限：{unit.current_stamina}/{unit.max_stamina}");
+        Base("ManaRow", "法力", "用于术法等行动；每轮恢复到本轮容量，吐纳回复1点，不持续回复。", $"法力容量由境界及已有修正规则决定\n当前/上限：{unit.current_mana}/{unit.max_mana}");
+        Base("MindRow", "速度", "每秒获得的行动进度，达到1000时执行队首。不是遁速或身法。", $"基础值及功法、状态、伤势共同影响战斗实际速度。\n常驻速度：{unit.initiative_speed:0.0}");
         Base("SpiritPerceptionRow", "灵识", "御使飞剑、法宝、傀儡、阵旗等持续实体的容量；不是普通术法的即时费用。", $"显示方式 = 已占用 / 容量\n收回、损毁或驱散持续实体后释放占用\n当前：{unit.used_spirit_perception}/{unit.max_spirit_perception}");
         Base("PhysicalDefenseRow", "物理防御", "减轻武器、拳脚等物理伤害。", $"当前物理防御 = 基础 + 装备 + 功法 + 状态修正\n当前值：{unit.physical_defense}");
         Base("PrecisionRow", "精准", "决定攻击与技艺命中的基础能力。", $"精准 = 4 × 灵慧 + 3 × 敏捷 + 神魂 + 0.5 × 体魄\n当前值：{unit.precision}");
-        Base("DodgeRow", "身法", "决定规避与先机的基础能力。", $"身法 = 4 × 敏捷 + 2 × 神魂 + 灵慧 + 0.5 × 体魄\n当前值：{unit.dodge}");
+        Base("DodgeRow", "身法", "决定规避的基础能力，不替代速度或遁速。", $"身法 = 4 × 敏捷 + 2 × 神魂 + 灵慧 + 0.5 × 体魄\n当前值：{unit.dodge}");
         Base("CriticalRow", "会心", "影响造成关键效果的基础能力。", $"会心 = 0.5 × 体魄 + 0.8 × 敏捷 + 1.2 × 神魂 + 0.3 × 灵慧\n当前值：{unit.critical}");
         Base("CritResistRow", "护心", "抵抗敌方会心与关键伤害的基础能力。", $"护心 = 3 × 体魄 + 2 × 灵慧 + 2 × 敏捷 + 1.5 × 神魂\n当前值：{unit.crit_resist}");
         Base("CritDamageRow", "会心伤害", "会心触发时使用的伤害倍率。", $"会心伤害倍率 = 基础倍率 + 功法/装备/状态修正\n当前倍率：{unit.crit_damage_mult:0.00}");
-        Base("StaminaRegenRow", "精力回复", "即时战斗中精力恢复1点所需的帧数；数值越低回复越快。", $"基础360帧/1点；体魄＋敏捷按对数曲线缩短\n当前：{unit.get_energy_recovery_interval():0.#}帧/1点");
-        Base("ManaRegenRow", "法力回复", "即时战斗中法力恢复1点所需的帧数；数值越低回复越快。", $"基础480帧/1点；灵慧＋神魂按对数曲线缩短\n当前：{unit.get_mana_recovery_interval():0.#}帧/1点");
+        Base("StaminaRegenRow", "物理减伤", "按现行伤害规则减轻物理伤害。", $"当前：{unit.physical_damage_reduction*100:0.#}%");
+        Base("ManaRegenRow", "遁速", "影响大世界移动与撤退成功概率，不影响战斗行动条。", $"当前：{human?.dun_speed.ToString("0.#") ?? "未配置"}");
 
         var roots = new[] { ("MetalRootRow", "金"), ("WoodRootRow", "木"), ("WaterRootRow", "水"), ("FireRootRow", "火"), ("EarthRootRow", "土") };
         for (var index = 0; index < roots.Length; index++)
@@ -2323,10 +2328,12 @@ public partial class InfoPanel : Control
         set_label("AlchemyValue", data_number(unit, "alchemy_proficiency").ToString("0.0"));
         set_label("HealthValue", $"{unit.current_health}/{unit.max_health}"); set_label("ManaValue", $"{unit.current_mana}/{unit.max_mana}");
         set_label("SpiritPerceptionValue", $"{unit.used_spirit_perception}/{unit.max_spirit_perception}");
-        set_label("MindValue", $"{unit.current_mind}/{unit.max_mind}"); set_label("ElixirValue", data_number(unit, "pill_toxicity").ToString("0.0"));
+        set_label("MindValue", unit.initiative_speed.ToString("0.0")); set_label("ElixirValue", data_number(unit, "pill_toxicity").ToString("0.0"));
         set_label("LearnRate", unit is Character human ? human.get_learning_rate().ToString("0.00") + "/小时" : "0/小时");
         set_label("CultivateRate", unit is Character cultivator ? cultivator.get_cultivation_rate().ToString("0.000") + "/小时" : "0/小时");
-        set_label("InitiativeSpeedValue", unit.initiative_speed.ToString("0.0")); set_label("CardsPerTurnValue", unit.cards_per_turn.ToString()); set_label("InitialHandSizeValue", unit.initial_hand_size.ToString());
+        set_label("InitiativeSpeedValue", unit.initiative_speed.ToString("0.0"));
+        foreach(var retired in new[]{"CardsPerTurnValue","InitialHandSizeValue"})
+            if(FindChild(retired,true,false)?.GetParent() is HBoxContainer retiredRow)retiredRow.Hide();
         set_label("PhyDefValue", unit.physical_defense.ToString());
         set_label("EvasionValue", unit.precision.ToString()); set_label("DodgeValue", unit.dodge.ToString()); set_label("CritRateValue", unit.critical.ToString());
         set_label("CritResValue", unit.crit_resist.ToString()); set_label("CritDmgValue", unit.crit_damage_mult.ToString("0.00"));
@@ -2336,21 +2343,21 @@ public partial class InfoPanel : Control
 
     private void refresh_tooltips(Creature unit)
     {
-        attribute("PhysiqueValue", "体魄是角色的肉身根基。\n贡献：生命上限 +12 × 体魄；会心 +2 × 体魄；护心 +8 × 体魄。", $"当前体魄 = 基础体魄 + 功法修正 + 装备修正 + 状态修正\n当前值：{unit.physique:0.0}");
-        attribute("IntelligenceValue", "灵慧是思虑与感知的根基。\n贡献：精准 +6 × 灵慧；身法 +2 × 灵慧；护心 +2 × 灵慧。", $"当前灵慧 = 基础灵慧 + 功法修正 + 装备修正 + 状态修正\n当前值：{unit.intelligence:0.0}");
-        attribute("AgilityValue", "敏捷是身躯反应与行动的根基。\n贡献：精力上限 +7 × 敏捷；精准 +4 × 敏捷；身法 +5 × 敏捷；会心 +3 × 敏捷；护心 +2 × 敏捷。", $"当前敏捷 = 基础敏捷 + 功法修正 + 装备修正 + 状态修正\n当前值：{unit.agility:0.0}");
-        attribute("SoulValue", "神魂是心境与灵性活动的根基。\n贡献：心境上限 +7 × 神魂；精准 +2 × 神魂；身法 +4 × 神魂；会心 +6 × 神魂。", $"当前神魂 = 基础神魂 + 功法修正 + 装备修正 + 状态修正\n当前值：{unit.soul:0.0}");
+        attribute("PhysiqueValue", "体魄是角色的肉身根基。\n参与生命、速度、精准、身法、会心与护心。", $"当前体魄 = 基础体魄 + 功法修正 + 装备修正 + 状态修正\n当前值：{unit.physique:0.0}");
+        attribute("IntelligenceValue", "灵慧是思虑与感知的根基。\n参与生命、速度、精准、身法、会心与护心。", $"当前灵慧 = 基础灵慧 + 功法修正 + 装备修正 + 状态修正\n当前值：{unit.intelligence:0.0}");
+        attribute("AgilityValue", "敏捷是身躯反应与行动的根基。\n参与生命、速度、精准、身法、会心与护心；战斗精力上限固定为6。", $"当前敏捷 = 基础敏捷 + 功法修正 + 装备修正 + 状态修正\n当前值：{unit.agility:0.0}");
+        attribute("SoulValue", "神魂参与生命、速度、精准、身法、会心与护心。", $"当前神魂 = 基础神魂 + 功法修正 + 装备修正 + 状态修正\n当前值：{unit.soul:0.0}");
         attribute("FortuneValue", "福缘代表事件、探索与收获中的潜在机缘。\n贡献：进入事件与结算的福缘判定；当前尚无固定战斗派生值。", $"当前福缘 = 基础福缘 + 功法修正 + 事件修正\n当前值：{unit.fortune:0.0}");
         attribute("ComprehensionValue", "悟性代表理解法门与领会变化的能力。\n贡献：进入功法研读、修行与相关事件的悟性判定；当前尚无固定战斗派生值。", $"当前悟性 = 基础悟性 + 功法修正 + 事件修正\n当前值：{unit.comprehension:0.0}");
         attribute("CharismaValue", "魅力影响交涉、招揽与人物事件。\n贡献：进入交涉、招揽与部分关系事件的魅力判定。", "当前魅力 = 基础魅力 + 性格初始修正 + 功法/物品/状态修正");
         attribute("SocialValue", "交际影响往来、交易与对外事务。\n贡献：进入交易、结交与外务事件的交际判定。", "当前交际 = 基础交际 + 性格初始修正 + 功法/物品/状态修正");
         attribute("ManagementValue", "治事影响辖地调度、账务与长期经营。\n贡献：进入民力调度、经营结算与相关事件的治事判定。", "当前治事 = 基础治事 + 性格初始修正 + 功法/物品/状态修正");
-        attribute("HealthValue", "生命归零时角色无法继续行动。", $"生命上限 = 50 + 12 × 体魄\n当前值由伤害、恢复与上限共同决定：{unit.current_health}/{unit.max_health}");
-        attribute("MindValue", "心境代表神魂状态，影响部分修行与事件结果。", $"心境上限 = 45 + 7 × 神魂\n当前值由日程、事件与恢复共同决定：{unit.current_mind}/{unit.max_mind}");
-        attribute("EvasionValue", "精准决定攻击与技艺命中的基础能力。", $"精准 = 6 × 灵慧 + 4 × 敏捷 + 2 × 神魂\n当前精准：{unit.precision}");
-        attribute("DodgeValue", "身法决定规避与先机的基础能力。", $"身法 = 2 × 灵慧 + 5 × 敏捷 + 4 × 神魂\n当前身法：{unit.dodge}");
-        attribute("CritRateValue", "会心影响造成关键效果的基础能力。", $"会心 = 2 × 体魄 + 3 × 敏捷 + 6 × 神魂\n当前会心：{unit.critical}");
-        attribute("CritResValue", "护心抵消敌方会心与关键伤害的基础能力。", $"护心 = 8 × 体魄 + 2 × 灵慧 + 2 × 敏捷\n当前护心：{unit.crit_resist}");
+        attribute("HealthValue", "生命归零时角色无法继续行动。", $"生命上限 = 60 + 6 × 体魄 + 2 × 基础体魄 + 3 × 敏捷 + 3 × 神魂 + 1.5 × 灵慧\n当前值由伤害、恢复与上限共同决定：{unit.current_health}/{unit.max_health}");
+        attribute("MindValue", "速度决定行动进度积蓄；达到1000执行队首。", $"当前速度：{unit.initiative_speed:0.0}");
+        attribute("EvasionValue", "精准决定攻击与技艺命中的基础能力。", $"精准 = 4 × 灵慧 + 3 × 敏捷 + 神魂 + 0.5 × 体魄\n当前精准：{unit.precision}");
+        attribute("DodgeValue", "身法决定规避的基础能力，不替代速度或遁速。", $"身法 = 灵慧 + 4 × 敏捷 + 2 × 神魂 + 0.5 × 体魄\n当前身法：{unit.dodge}");
+        attribute("CritRateValue", "会心影响造成关键效果的基础能力。", $"会心 = 0.5 × 体魄 + 0.8 × 敏捷 + 1.2 × 神魂 + 0.3 × 灵慧\n当前会心：{unit.critical}");
+        attribute("CritResValue", "护心抵消敌方会心与关键伤害的基础能力。", $"护心 = 3 × 体魄 + 2 × 灵慧 + 2 × 敏捷 + 1.5 × 神魂\n当前护心：{unit.crit_resist}");
         attribute("PhyDefValue", "物理防御减轻武器、拳脚等物理伤害。", "当前物理防御 = 基础防御 + 装备 + 功法 + 状态修正");
         attribute("SpiritStrandsValue", "灵力是修行积累的根基，达到要求后可尝试突破。", "当前灵力 = 已完成的修行积累；修炼日程与环境共同决定增长速度。");
         proficiency("SwordValue", "剑道"); proficiency("BladeValue", "刀道"); proficiency("SpearValue", "枪道"); proficiency("BodyValue", "体修"); proficiency("MagicValue", "术法");

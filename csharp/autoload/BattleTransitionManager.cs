@@ -1,4 +1,4 @@
-using Godot;
+﻿using Godot;
 using Godot.Collections;
 using GArray = Godot.Collections.Array;
 
@@ -20,12 +20,10 @@ public partial class BattleTransitionManager : Node
 
     public void start_team_battle(Godot.Collections.Array<PackedScene> attacker_packeds, Godot.Collections.Array<PackedScene> defender_packeds, GArray attacker_datas, GArray defender_datas, string world_path)
     {
+        if(_awaitingSettlement || GodotObject.IsInstanceValid(_flowView))return;
         pending_attackers = attacker_packeds; pending_defenders = defender_packeds;
         pending_attacker_data = attacker_datas; pending_defender_data = defender_datas; world_scene_path = world_path;
-        saved_entity_data.Clear();
-        var world = GetTree().CurrentScene;
-        if (world is not null) { save_entity_data_recursive(world); saved_world = new PackedScene(); if (saved_world.Pack(world) != Error.Ok) saved_world = null; }
-        if (GetTree().ChangeSceneToFile("res://tscn/battle/BattleScene.tscn") != Error.Ok) GD.PushError("BattleTransitionMgr: 无法加载战斗场景");
+        ShowBattleBriefing();
     }
 
     public GArray consume_pending_battle_package()
@@ -39,11 +37,7 @@ public partial class BattleTransitionManager : Node
 
     public void end_team_battle(GArray updated_attackers, GArray updated_defenders)
     {
-        result_attackers = updated_attackers; result_defenders = updated_defenders; has_results = true;
-        var attackersAlive = alive_count(updated_attackers); var defendersAlive = alive_count(updated_defenders);
-        last_summary = new Dictionary { ["attackers_alive"] = attackersAlive, ["defenders_alive"] = defendersAlive, ["player_victory"] = attackersAlive > 0 && defendersAlive <= 0, ["is_draw"] = attackersAlive <= 0 && defendersAlive <= 0 };
-        var error = saved_world is not null ? GetTree().ChangeSceneToPacked(saved_world) : Error.Failed;
-        if (error != Error.Ok && !string.IsNullOrEmpty(world_scene_path)) GetTree().ChangeSceneToFile(world_scene_path);
+        PrepareSettlement(updated_attackers,updated_defenders,false);
     }
 
     public bool has_pending_results() => has_results;

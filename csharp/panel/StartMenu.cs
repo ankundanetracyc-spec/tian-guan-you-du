@@ -191,6 +191,7 @@ public partial class StartMenu : Control
         }
         var characterScene = ResourceLoader.Load<PackedScene>(BattleTestCharacterScenePath);
         if (characterScene is null) { GD.PushError("StartMenu: 找不到战斗测试角色场景"); return; }
+        transition.set_battle_return_context(new Godot.Collections.Dictionary{{"is_training",true},{"allow_prebattle_cancel",true},{"title","试炼遭遇"}});
         transition.start_team_battle(
             new Godot.Collections.Array<PackedScene> { characterScene },
             enemyScenes,

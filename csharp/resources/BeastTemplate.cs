@@ -5,6 +5,9 @@ using Godot;
 public partial class BeastTemplate : Resource
 {
     [Export] public string species_id = "";
+    /// <summary>未配置为0，不擅自用战斗速度代替遁速。</summary>
+    [Export] public float dun_speed;
+    [Export] public Godot.Collections.Array<Godot.Collections.Dictionary> battle_loot = [];
     [Export] public string display_name = "";
     [Export] public string cultivation_realm = "凡兽";
     [Export] public float physique_min = 5f, physique_mean = 5f, physique_max = 5f;
