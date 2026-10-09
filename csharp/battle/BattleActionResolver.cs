@@ -19,7 +19,7 @@ public static class BattleActionResolver
         var damage = preview_damage(attacker,skill);
         if (critical) damage *= calc_crit_multiplier(attacker, defender);
         if (isSoulDamage)
-            damage *= calc_soul_confrontation_multiplier(attacker, defender, skill) * get_source_illumination_multiplier(attacker, defender);
+            damage *= calc_soul_confrontation_multiplier(attacker, defender, skill);
 
         var finalDamage = Mathf.Max(Mathf.RoundToInt(damage), 1);
         var blocked = damageType == "physical" ? Mathf.Min(Mathf.Max(block_stacks, 0), finalDamage) : 0;
@@ -38,6 +38,8 @@ public static class BattleActionResolver
             damage *= 1.0f + attacker.Call("get_blood_furnace_physical_damage_multiplier").AsSingle();
         if (damageType == "physical" && attacker.HasMethod("get_gongfa_physical_damage_multiplier"))
             damage *= 1.0f + attacker.Call("get_gongfa_physical_damage_multiplier").AsSingle();
+        if (damageType == "physical" && attacker is Creature creature)
+            damage *= 1.0f + creature.get_combat_tempering_physical_damage_multiplier();
         if (damageType == "physical" && attacker.HasMethod("get_species_physical_damage_multiplier"))
             damage *= 1.0f + attacker.Call("get_species_physical_damage_multiplier").AsSingle();
         if(skill.keywords.Contains("重击")&&CardRules.Number(attacker,"punch_frame")>0)damage*=1.5f;
@@ -78,9 +80,20 @@ public static class BattleActionResolver
     {
         if (damage_type is "soul" or "spiritual") return Mathf.Max(damage, 1);
         if (damage_type != "physical") return Mathf.Max(damage, 1);
+        // 化解可以将一次物理伤害完全抵消；只有仍有正伤害时才继续计算物防与百分比减免。
+        if (damage <= 0) return 0;
         var afterDefense = Mathf.Max(damage - Mathf.RoundToInt(GetNumber(defender, "physical_defense")), Mathf.CeilToInt(damage * .01f));
-        var reduction = Mathf.Clamp(GetNumber(defender, "physical_damage_reduction"), 0f, .90f);
-        return Mathf.Max(Mathf.RoundToInt(afterDefense * (1f - reduction)), 1);
+        var baseReduction = Mathf.Clamp(GetNumber(defender, "physical_damage_reduction"), 0f, .90f);
+        var woundReduction = 0f;
+        if (defender is Creature creature && creature.get_status_stacks("心法:内景损益") > 0)
+        {
+            var wounds = creature.get_status_stacks("内伤") + creature.get_status_stacks("外伤");
+            var perWoundReduction = Mathf.Max(0f, creature.get_combat_tempering_total("wound_physical_reduction_pp_per_stack"));
+            woundReduction = Mathf.Clamp(wounds * perWoundReduction / 100f, 0f, .90f);
+        }
+        // 独立百分比减伤层按剩余伤害乘算；百分比减伤合计封顶90%，保留至少10%的结算伤害。
+        var combinedReduction = Mathf.Min(1f - (1f - baseReduction) * (1f - woundReduction), .90f);
+        return Mathf.Max(Mathf.RoundToInt(afterDefense * (1f - combinedReduction)), 1);
     }
 
     public static float calc_soul_confrontation_multiplier(GodotObject attacker, GodotObject defender, ActiveSkillData skill)
@@ -106,7 +119,5 @@ public static class BattleActionResolver
         return result.VariantType is Variant.Type.Int or Variant.Type.Float ? Mathf.Clamp(result.AsSingle(), .01f, .99f) : fallback;
     }
 
-    private static float get_source_illumination_multiplier(GodotObject attacker, GodotObject defender) =>
-        defender.HasMethod("get_status_stacks_from_source") ? Mathf.Pow(1.15f, Mathf.Max(0, defender.Call("get_status_stacks_from_source", "照痕", attacker.GetInstanceId().ToString()).AsInt32())) : 1;
     private static float GetNumber(GodotObject unit, StringName property) => CardRules.Number(unit,property.ToString());
 }

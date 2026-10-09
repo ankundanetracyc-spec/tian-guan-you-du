@@ -1,12 +1,16 @@
 using Godot;
 
-/// <summary>功法化法阶段对基础牌组的单条改写规则。</summary>
+/// <summary>功法化法阶段对基础技能或本秘籍授予技能的单条改写规则。</summary>
 public partial class GongfaDeckRewriteConfig : Resource
 {
     public enum RewriteMode { ADD, REPLACE }
+    public enum RewriteTargetScope { BASIC_SKILL, OWN_GONGFA_SKILL }
 
     [Export] public bool enabled = true;
     [Export] public RewriteMode mode = RewriteMode.ADD;
+    // 存量资源未序列化此字段时默认保持原基础技能目标。
+    [Export] public RewriteTargetScope target_scope = RewriteTargetScope.BASIC_SKILL;
+    /// <summary>旧基础牌库的复制数量；即时战斗技能按技能授予，不复制成多份。</summary>
     [Export] public int count = 1;
     [ExportGroup("Match")]
     [Export] public Resource? source_skill;

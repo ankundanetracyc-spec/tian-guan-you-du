@@ -14,6 +14,7 @@ public partial class SkillExecutor : Node
         // 术诀和守御牌不走命中判定，避免无伤害牌被最低 1 点伤害规则误伤自身。
         if (!DealsDamage(skill))
         {
+            BattleInkCombatVfx.PlayUtility(attacker, target, skill);
             if(GetManager() is BattleManager bodyManager && bodyManager.body_cards.Utility(attacker,skill)){Finish(attacker,is_counter,false);return;}
             ApplyStatusEffects(skill, attacker, target);
             ApplySelfSpecialEffects(skill, attacker);
@@ -22,6 +23,8 @@ public partial class SkillExecutor : Node
             Finish(attacker, is_counter, false);
             return;
         }
+        (GetManager() as BattleManager)?.body_cards.PrepareAttack(attacker, skill);
+        (GetManager() as BattleManager)?.body_cards.PrepareRedSunAttack(attacker, skill);
         await Lunge(attacker, target, skill);
         if (!GodotObject.IsInstanceValid(attacker) || !GodotObject.IsInstanceValid(target)) { Finish(attacker, is_counter, false); return; }
         var killed=false;
@@ -31,12 +34,21 @@ public partial class SkillExecutor : Node
         manager?.Call("try_auto_response", target, attacker, skill.damage_type);
         var segments=body?.Segments(attacker,skill)??1;
         var evaded=body?.EvadeWithYouhai(target,attacker,skill)??false;
-        if(evaded)FloatingText(target,"游骸",Colors.Yellow);
-        else for(var i=0;i<segments&&!killed;i++)killed=ApplyToTarget(attacker,skill,target,is_counter,false);
-        var followup=body?.FurnaceFollowup(attacker,skill);
+        var blockRemaining=skill.damage_type=="physical"?GetStatusStacks(target,"化解"):0;
+        if(evaded)
+        {
+            if(blockRemaining>0)ConsumeStatus(target,"化解",blockRemaining);
+            FloatingText(target,"游骸",Colors.Yellow);
+            BattleInkCombatVfx.PlayImpact(target, skill, attacker, evaded: true);
+        }
+        else
+        {
+            for(var i=0;i<segments&&!killed;i++)killed=ApplyToTarget(attacker,skill,target,is_counter,false,ref blockRemaining,i);
+            if(blockRemaining>0)ConsumeStatus(target,"化解",blockRemaining);
+        }
+        body?.EndIncomingAttack(target);
         body?.AfterAttack(attacker,skill);
         if(!is_counter&&skill.skill_type==ActiveSkillData.SkillType.ATTACK&&skill.damage_type=="physical")GetManager()?.Call("trigger_species_attack_talent",attacker);
-        if(followup is not null&&!killed)killed=ApplyToTarget(attacker,followup,target,true);
         Finish(attacker, is_counter, killed);
     }
 
@@ -46,35 +58,45 @@ public partial class SkillExecutor : Node
         var killed = false;
         var cells = battle_map.Call("get_aoe_cells", target_cell, skill.aoe_range).AsGodotArray();
         var seen = new HashSet<ulong>();
+        var body=(GetManager() as BattleManager)?.body_cards;
+        var attackPrepared=false;
         foreach (var value in cells)
         {
             var target = battle_map.Call("get_unit_at_cell", value).AsGodotObject();
             if (!GodotObject.IsInstanceValid(target) || target!.Get("current_health").AsInt32() <= 0 || target.Get("faction").AsInt32() == attacker.Get("faction").AsInt32() || !seen.Add(target.GetInstanceId())) continue;
+            if(!attackPrepared){body?.PrepareAttack(attacker,skill);attackPrepared=true;}
             await Lunge(attacker, target, skill);
             if(!GodotObject.IsInstanceValid(target))continue;
             var manager=GetManager();
-            var body=(manager as BattleManager)?.body_cards;
             if(!is_counter)manager?.Call("try_auto_response",target,attacker,skill.damage_type);
+            var blockRemaining=skill.damage_type=="physical"?GetStatusStacks(target!,"化解"):0;
             if(body?.EvadeWithYouhai(target,attacker,skill)==true)
             {
+                if(blockRemaining>0)ConsumeStatus(target!,"化解",blockRemaining);
                 FloatingText(target,"游骸",Colors.Yellow);
+                BattleInkCombatVfx.PlayImpact(target, skill, attacker, evaded: true);
+                body.EndIncomingAttack(target!);
                 continue;
             }
-            killed |= ApplyToTarget(attacker, skill, target, is_counter, false);
+            killed |= ApplyToTarget(attacker, skill, target, is_counter, false,ref blockRemaining);
+            if(blockRemaining>0)ConsumeStatus(target!,"化解",blockRemaining);
+            body?.EndIncomingAttack(target!);
         }
         if(!is_counter&&skill.skill_type==ActiveSkillData.SkillType.ATTACK&&skill.damage_type=="physical")GetManager()?.Call("trigger_species_attack_talent",attacker);
         Finish(attacker, is_counter, killed);
     }
 
-    private bool ApplyToTarget(GodotObject attacker, ActiveSkillData skill, GodotObject target, bool isCounter, bool allowResponse = true)
+    private bool ApplyToTarget(GodotObject attacker, ActiveSkillData skill, GodotObject target, bool isCounter, bool allowResponse, ref int blockRemaining, int segment = 0)
     {
         if (!isCounter && allowResponse) GetManager()?.Call("try_auto_response", target, attacker, skill.damage_type);
-        var block = GetStatusStacks(target, "化解");
-        var result = BattleActionResolver.resolve_hit(attacker, target, skill, block);
-        if (block > 0) ConsumeStatus(target, "化解", block);
+        var body=(GetManager() as BattleManager)?.body_cards;
+        var segmentSkill=body?.ForDamageSegment(skill,segment)??skill;
+        var result = BattleActionResolver.resolve_hit(attacker, target, segmentSkill, blockRemaining);
+        blockRemaining=Mathf.Max(0,blockRemaining-result.BlockedDamage);
+        if (result.BlockedDamage > 0) ConsumeStatus(target, "化解", result.BlockedDamage);
         if (result.Evaded)
         {
-            BattleInkSlashEffect.PlayImpact(target, false, true);
+            BattleInkCombatVfx.PlayImpact(target, skill, attacker, evaded: true);
             FloatingText(target, "闪避！", Colors.Yellow);
             ResolveCounter(target, attacker, skill, 0, 0, isCounter);
             return false;
@@ -108,9 +130,9 @@ public partial class SkillExecutor : Node
         ApplyStatusEffects(skill, attacker, target);
         ApplySelfSpecialEffects(skill, attacker);
         ApplyWounds(skill, target);
-        BattleInkSlashEffect.PlayImpactForSkill(target, skill, result.Critical, attacker);
+        if (damage > 0) BattleInkSlashEffect.PlayImpactForSkill(target, skill, result.Critical, attacker, segment);
         var hitDirection = (GetPosition(target) - GetPosition(attacker)).Normalized();
-        if (target is Node targetNode) targetNode.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_hit(hitDirection);
+        if (damage > 0 && target is Node targetNode) targetNode.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_hit(hitDirection, BattleInkCombatVfx.HitWeight(skill), result.Critical);
         if (target.HasMethod("hit_flash")) target.Call("hit_flash", hitDirection);
         show_damage_number(target, damage, skill.damage_type, result.Critical);
         if (target.Get("current_health").AsInt32() > 0) return false;
@@ -134,7 +156,7 @@ public partial class SkillExecutor : Node
             var status = GD.Load<StatusEffect>($"res://resources/battle/statuses/{id}.tres");
             if (status is null || !target.HasMethod("add_status")) continue;
             var stacks = effect.TryGetValue("stacks", out var stackValue) ? stackValue.AsInt32() : 1;
-            if(id=="化解")stacks=CardRules.Block(skill,caster,stacks);
+            if(id=="化解")stacks=CardRules.Block(skill,caster,stacks)+((GetManager() as BattleManager)?.body_cards.AdditionalResponseBlock(caster,skill)??0);
             target.Call("add_status", status, -1, Mathf.Max(1, stacks), caster.GetInstanceId().ToString(), status.max_stacks, caster.Get("entity_name").AsString());
             FloatingText(target, id, Colors.Orange);
         }
@@ -177,6 +199,16 @@ public partial class SkillExecutor : Node
                 case "spend_blood_furnace":
                     if(skill.skill_name!="偃月")caster.Set("blood_furnace_value", Mathf.Max(0, caster.Get("blood_furnace_value").AsInt32() - count));
                     break;
+                case "redsun_spend_furnace_for_block" when caster is Creature furnaceUser && skill.source_gongfa_name=="赤阳参同经":
+                    var furnaceLimit=effect.GetValueOrDefault("max",20).AsInt32();
+                    var furnaceSpend=Math.Min(Math.Max(0,furnaceLimit),Math.Max(0,furnaceUser.blood_furnace_value));
+                    furnaceSpend-=furnaceSpend%2;
+                    if(furnaceSpend>0)
+                    {
+                        furnaceUser.blood_furnace_value-=furnaceSpend;
+                        AddStatus(caster,"化解",furnaceSpend/2,caster);
+                    }
+                    break;
                 case "gain_punch_frame":
                     caster.Set("punch_frame", Mathf.Min(1, caster.Get("punch_frame").AsInt32() + count));
                     break;
@@ -194,9 +226,6 @@ public partial class SkillExecutor : Node
                 case "evasion":
                     AddStatus(caster,"身法",Mathf.RoundToInt(effect.GetValueOrDefault("power",.05f).AsSingle()/.05f),caster);
                     break;
-                case "apply_sword_mark_to_attacker" when GodotObject.IsInstanceValid(attacker):
-                    AddStatus(attacker!, "剑痕", count, caster);
-                    break;
             }
         }
     }
@@ -211,11 +240,13 @@ public partial class SkillExecutor : Node
         node.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_attack(direction);
         BattleInkSlashEffect.PlayAttack(attacker, target, skill);
         tween.TweenProperty(node, "global_position", home + direction * 30, .06).SetTrans(Tween.TransitionType.Quad).SetEase(Tween.EaseType.Out);
-        tween.TweenProperty(node, "global_position", home, .12).SetTrans(Tween.TransitionType.Bounce).SetEase(Tween.EaseType.Out);
+        // Keep root movement within the awaited presentation, so consecutive actions cannot drift.
+        tween.TweenProperty(node, "global_position", home, .12).SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.Out);
         await ToSignal(tween, Tween.SignalName.Finished);
     }
     public void execute_response(GodotObject defender, GodotObject attacker, ActiveSkillData skill)
     {
+        BattleInkCombatVfx.PlayUtility(defender, defender, skill);
         ApplyStatusEffects(skill, defender, defender);
         ApplySelfSpecialEffects(skill, defender, attacker);
         FloatingText(defender, $"应对：{skill.skill_name}", new Color(1f, .78f, .3f));

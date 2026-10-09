@@ -16,6 +16,9 @@ public partial class BattleManager
         _segmentPhase = SegmentPhase.Planning;
         _planningElapsed = 0;
         _playerQueueConfirmed = false;
+        _selectingQueueTargets = false;
+        _targetQueueIndex = -1;
+        _targetSelectionHistory.Clear();
         _resolvingUnit = null;
         _queuedHandledTargets.Clear();
         _pendingInstantSkill = null;
@@ -28,7 +31,8 @@ public partial class BattleManager
             action_gauges[unit] = 0f;
             if (!Alive(unit)) continue;
 
-            body_cards.Begin(unit);
+            if (unit is Creature roundCreature && GodotObject.IsInstanceValid(roundCreature)) roundCreature.battle_round_id = _segmentNumber;
+            body_cards.BeginRound(unit);
             ResetRoundSkillUses(unit);
             foreach (var circuit in _formationCircuits.GetValueOrDefault(unit, [])) circuit.begin_owner_turn();
             var staminaMax = Mathf.Max(0, unit.Get("max_stamina").AsInt32());
@@ -48,6 +52,7 @@ public partial class BattleManager
             _skillBar?.set_battle_unit(_mainPlayerUnit!);
             _skillBar?.set_loadout(_combatSkills.GetValueOrDefault(_mainPlayerUnit!, []));
             _skillBar?.Show();
+            _skillBar?.set_actions_visible(true);
         }
         _planHud?.Show();
         _planHud?.RefreshAll();
@@ -57,23 +62,13 @@ public partial class BattleManager
     private void AdvancePlanning(float frames)
     {
         if (_segmentPhase != SegmentPhase.Planning) return;
-        _planningElapsed += frames / (SimulationFps * Mathf.Max(1, battleSpeed));
-        if (GodotObject.IsInstanceValid(_mainPlayerUnit) && !_playerQueueConfirmed &&
-            planning_timeout_seconds > 0 && _planningElapsed >= planning_timeout_seconds)
-            confirm_player_queue();
+        // 单机规划无倒计时；只由玩家确认后推进。
     }
 
     public void confirm_player_queue()
     {
         if (!can_player_plan()) return;
-        _playerQueueConfirmed = true;
-        _pendingInstantSkill = null;
-        _skillBar?.clear_targeting();
-        unitOverlay?.ClearTargetFrames();
-        PlanAllyTeam();
-        _segmentPhase = SegmentPhase.Executing;
-        _skillBar?.Hide();
-        _planHud?.RefreshAll();
+        BeginQueueTargetSelection();
     }
 
     public bool queue_system_action(int actionKind)
@@ -184,7 +179,7 @@ public partial class BattleManager
         if (skill.uses_per_round > 0)
         {
             var remaining = _skillRoundCharges.TryGetValue(unit, out var round) ? round.GetValueOrDefault(skill, skill.uses_per_round) : skill.uses_per_round;
-            parts.Add($"段 {Mathf.Max(0, remaining - queued)}");
+            parts.Add($"轮 {Mathf.Max(0, remaining - queued)}");
         }
         var battleLimit = skill.uses_per_battle > 0 ? skill.uses_per_battle : skill.max_charges;
         if (battleLimit > 0)
@@ -239,15 +234,16 @@ public partial class BattleManager
         if (_segmentPhase != SegmentPhase.Executing) return;
         if (GodotObject.IsInstanceValid(_resolvingUnit))
         {
-            _battleVisualElapsedSeconds += wallFrames / SimulationFps;
-            UpdateShieldVisualClocks();
+            AdvanceCombatTime(wallFrames);
             return;
         }
 
         PruneDeadQueues();
         if (CheckBattleOver()) return;
 
-        // 跳过行动不消耗费用或次数。连续跳过时在同一模拟步内继续寻找下一个结算点。
+        var remainingFrames = Mathf.Max(0, wallFrames);
+        // 行动进度按战斗时间逐帧推进；进度条走满后才结算当前队首。
+        // 若费用／次数不足，跳过该项并在同一模拟步内继续检查后续队列。
         for (var guard = 0; guard < 32; guard++)
         {
             var due = all_units
@@ -260,8 +256,17 @@ public partial class BattleManager
                 return;
             }
 
-            var seconds = TimeUntilAction(due!);
-            if (seconds > 0.0001f) AdvanceCombatTime(seconds * SimulationFps);
+            var framesUntilAction = TimeUntilAction(due!) * SimulationFps;
+            if (framesUntilAction > remainingFrames + 0.0001f)
+            {
+                AdvanceCombatTime(remainingFrames);
+                return;
+            }
+            if (framesUntilAction > 0f)
+            {
+                AdvanceCombatTime(framesUntilAction);
+                remainingFrames = Mathf.Max(0, remainingFrames - framesUntilAction);
+            }
             if (CheckBattleOver()) return;
 
             var queue = get_battle_unit(due!).skill_queue;
@@ -292,7 +297,6 @@ public partial class BattleManager
         foreach (var unit in all_units)
         {
             if (!Alive(unit)) continue;
-            body_cards.Tick(unit, frames);
             if (unit is Creature creature && GodotObject.IsInstanceValid(creature)) creature.tick_status_frames(frames);
             if (!battle_units.ContainsKey(unit) || get_battle_unit(unit).skill_queue.Count == 0) continue;
             var currentGauge = action_gauges.ContainsKey(unit) ? action_gauges[unit].AsSingle() : 0f;
@@ -391,7 +395,6 @@ public partial class BattleManager
         {
             if (unit is Creature creature && GodotObject.IsInstanceValid(creature))
                 creature.process_status_event("turn_end", new Dictionary { ["battle_manager"] = this, ["unit"] = unit });
-            body_cards.Fall(unit, 1, false);
             unit.Set("current_mana", 0);
             action_gauges[unit] = 0f;
         }

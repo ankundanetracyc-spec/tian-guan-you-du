@@ -59,6 +59,8 @@ public partial class BattleManager : Node2D
             var consumedInner=Math.Min(inner,consumed);
             realtimeCreature.consume_status_stacks("内伤",consumedInner);
             realtimeCreature.consume_status_stacks("外伤",consumed-consumedInner);
+            var healingPerStack=realtimeCreature.get_combat_tempering_total("wound_consume_heal_percent_per_stack");
+            if(healingPerStack>0)realtimeCreature.apply_healing(Mathf.RoundToInt(realtimeCreature.max_health*healingPerStack*consumed/100f));
             return consumed;
         }
         var hand=Hand(u);var selected=hand.Where(BodyCardRuntime.IsWound).Take(count).ToArray();

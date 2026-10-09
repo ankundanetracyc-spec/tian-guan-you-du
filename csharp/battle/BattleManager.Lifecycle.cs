@@ -18,6 +18,11 @@ public partial class BattleManager : Node2D
         {
             var skill = _pendingInstantSkill;
             var target = pick_card_target(skill, mouse.Position);
+            if (_selectingQueueTargets)
+            {
+                if (AcceptQueueTarget(target)) GetViewport().SetInputAsHandled();
+                return;
+            }
             if (IsValidTarget(skill, active_unit!, target))
             {
                 _pendingInstantSkill = null; _skillBar?.clear_targeting();
@@ -26,7 +31,7 @@ public partial class BattleManager : Node2D
                 GetViewport().SetInputAsHandled(); return;
             }
         }
-        if (@event is InputEventKey { Pressed: true, Echo: false, Keycode: Key.Escape }) { finish_battle(); GetViewport().SetInputAsHandled(); }
+        if (@event is InputEventKey { Pressed: true, Echo: false, Keycode: Key.Escape }) { if (!UndoQueuePlanning()) finish_battle(); GetViewport().SetInputAsHandled(); }
     }
     private bool CheckBattleOver()
     {
@@ -135,6 +140,7 @@ public partial class BattleManager : Node2D
         SetBattlePaused(false);
         _battleVisualElapsedSeconds=0;
         _segmentPhase=SegmentPhase.None; _planningElapsed=0; _playerQueueConfirmed=false; _mainPlayerUnit=null; _resolvingUnit=null; _segmentNumber=0;
+        _selectingQueueTargets=false; _targetQueueIndex=-1; _targetSelectionHistory.Clear(); _layoutViewportSize=Vector2.Zero;
         RestoreBattleResources();
         body_cards.Reset();
         _chengjiResponses.Clear();

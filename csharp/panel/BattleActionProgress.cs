@@ -6,59 +6,65 @@ public partial class BattleActionProgress : Control
     private const float Threshold = 1000f;
     private Control? _markerLayer;
     private Label? _state;
+    private ColorRect? _rail;
     private readonly Godot.Collections.Dictionary _markers = [];
+    private readonly Dictionary<GodotObject,ColorRect> _rows = [];
 
     public override void _Ready()
     {
         _markerLayer = GetNodeOrNull<Control>("MarkerLayer");
         _state = GetNodeOrNull<Label>("State");
+        _rail = GetNodeOrNull<ColorRect>("Rail");
+        GetNodeOrNull<Panel>("Track")?.AddThemeStyleboxOverride("panel", BattleUiArt.Style("timeline_panel", new(680,78),80,16));
+        GetNodeOrNull<Label>("Label")?.Hide();
+        _state?.Hide();
+        _rail?.Hide();
     }
 
     public override void _Process(double _)
     {
         var manager = GetTree().GetFirstNodeInGroup("battle_mgr") as BattleManager;
-        if (manager is null || _markerLayer is null) return;
-        var queues = manager.get_queue_snapshot();
-        _state?.SetText(queues.Count == 0 ? "行动蓄势" : string.Join("    ", queues.Select(item =>
+        if (manager is null || _markerLayer is null)
         {
-            var unit = item["unit"].AsGodotObject();
-            return $"{(GodotObject.IsInstanceValid(unit) ? unit!.Get("entity_name").AsString() : "未知")}：{item["text"].AsString()}";
-        })));
+            Hide();
+            return;
+        }
+        Visible = manager.get_segment_phase() == BattleManager.SegmentPhase.Executing;
+        if (!Visible) return;
+        _state?.SetText("按角色速度推进");
+        var activeCount=manager.all_units.Count(unit=>GodotObject.IsInstanceValid(unit)&&unit.Get("current_health").AsInt32()>0&&manager.battle_units.ContainsKey(unit)&&manager.get_battle_unit(unit).skill_queue.Count>0);
+        Size=new Vector2(Size.X,Mathf.Max(60,activeCount*22+16));
+        foreach (var markerValue in _markers.Values)
+            if (markerValue.AsGodotObject() is CanvasItem oldMarker) oldMarker.Visible = false;
+
+        foreach(var row in _rows.Values)row.Hide();
+        var lane=0;
         foreach (var unit in manager.all_units)
         {
             if (!GodotObject.IsInstanceValid(unit) || unit.Get("current_health").AsInt32() <= 0) continue;
+            if (!manager.battle_units.ContainsKey(unit) || manager.get_battle_unit(unit).skill_queue.Count == 0) continue;
             if (!_markers.TryGetValue(unit, out var value) || value.AsGodotObject() is not Panel marker)
             {
+                var row=new ColorRect{Color=new Color(BattleUiArt.Accent,.2f),MouseFilter=MouseFilterEnum.Ignore};_markerLayer.AddChild(row);_rows[unit]=row;
                 marker = CreateMarker(unit); _markerLayer.AddChild(marker); _markers[unit] = marker;
             }
+            marker.Visible = true;
             var progress = Mathf.Clamp(manager.action_gauges.GetValueOrDefault(unit, 0f).AsSingle() / Threshold, 0f, 1f);
-            marker.Position = new Vector2(Mathf.Lerp(10, Mathf.Max(10, Size.X - marker.Size.X - 10), progress), 20);
-            var queue = queues.FirstOrDefault(item => item["unit"].AsGodotObject() == unit);
-            marker.GetNodeOrNull<Label>("Queue")?.SetText(queue is null ? "" : queue["text"].AsString());
+            var y = 7f+lane++*22;
+            var rowTrack=_rows[unit];rowTrack.Show();rowTrack.Position=new(18,y+19);rowTrack.Size=new(Size.X-36,1);
+            var startX = 18f;
+            var endX = Mathf.Max(startX, Size.X - marker.Size.X - 16f);
+            marker.Position = new Vector2(Mathf.Lerp(startX, endX, progress), y);
         }
     }
 
     private static Panel CreateMarker(GodotObject unit)
     {
         var player = unit.Get("faction").AsInt32() == (int)WorldEntity.Faction.PLAYER;
-        var marker = new Panel { Size = new Vector2(88, 34), MouseFilter = player ? MouseFilterEnum.Stop : MouseFilterEnum.Ignore, TooltipText = player ? "点击取消队列最前方、尚未结算的牌" : "敌方行动条" };
-        marker.AddThemeStyleboxOverride("panel", new StyleBoxFlat
-        {
-            BgColor = player ? new Color(.12f, .35f, .28f, .96f) : new Color(.42f, .16f, .14f, .96f),
-            BorderColor = player ? new Color(.54f, .82f, .64f, 1) : new Color(.92f, .55f, .40f, 1),
-            BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1,
-            CornerRadiusTopLeft = 8, CornerRadiusTopRight = 8, CornerRadiusBottomLeft = 8, CornerRadiusBottomRight = 8
-        });
-        var text = new Label { Text = unit.Get("entity_name").AsString(), HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center, MouseFilter = MouseFilterEnum.Ignore };
-        text.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect); text.AddThemeFontSizeOverride("font_size", 13); marker.AddChild(text);
-        var queue = new Label { Name = "Queue", Position = new Vector2(-44, 38), Size = new Vector2(176, 26), HorizontalAlignment = HorizontalAlignment.Center, MouseFilter = MouseFilterEnum.Ignore };
-        queue.AddThemeFontSizeOverride("font_size", 12); queue.AddThemeColorOverride("font_color", new Color("f3e6bd")); marker.AddChild(queue);
-        if (player) marker.GuiInput += input =>
-        {
-            if (input is not InputEventMouseButton { Pressed: true, ButtonIndex: MouseButton.Left }) return;
-            if (marker.GetTree().GetFirstNodeInGroup("battle_mgr") is BattleManager manager) manager.cancel_queued_card(unit, 0);
-            marker.AcceptEvent();
-        };
+        var marker = new Panel { Size = new Vector2(106,20), MouseFilter = MouseFilterEnum.Pass, TooltipText = unit.Get("entity_name").AsString() };
+        marker.AddThemeStyleboxOverride("panel", new StyleBoxEmpty());
+        var icon=BattleUiArt.Icon(player ? "icon_timeline_ally" : "icon_timeline_enemy",new(14,14));icon.Position=new(0,3);marker.AddChild(icon);
+        var name=new Label{Text=unit.Get("entity_name").AsString(),Position=new(18,0),Size=new(88,20),VerticalAlignment=VerticalAlignment.Center,ClipText=true,MouseFilter=MouseFilterEnum.Ignore};name.AddThemeFontSizeOverride("font_size",12);name.AddThemeColorOverride("font_color",BattleUiArt.Text);marker.AddChild(name);
         return marker;
     }
 }

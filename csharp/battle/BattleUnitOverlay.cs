@@ -15,16 +15,18 @@ public partial class BattleUnitOverlay : CanvasLayer
     private Label? statusInfoLabel;
     private StatusInstance? hoveredStatus;
     private Button? pauseButton;
+    private Button? speedButton;
     public void Setup(BattleManager owner){manager=owner;}
     public override void _Ready()
     {
         Layer=5;
-        targetFrames=new TargetFrameLayer{Size=GetViewport().GetVisibleRect().Size};AddChild(targetFrames);
-        GetViewport().SizeChanged+=()=>{if(targetFrames is not null)targetFrames.Size=GetViewport().GetVisibleRect().Size;};
-        var speed=new Button{Text="倍速 ×1",Position=new(24,90),Size=new(135,42)};
+        targetFrames=new TargetFrameLayer();AddChild(targetFrames);
+        var speed=new Button{Text="倍速 ×1",Size=new(140,40)};
+        speedButton=speed;BattleUiArt.Skin(speed);speed.Icon=BattleUiArt.Texture("icon_speed");speed.ExpandIcon=true;speed.AddThemeConstantOverride("icon_max_width",22);
         speed.AddThemeFontSizeOverride("font_size",20);AddChild(speed);
         speed.Pressed+=()=>{manager.set_battle_speed(manager.get_battle_speed_scale()==1?2:manager.get_battle_speed_scale()==2?3:1);speed.Text=$"倍速 ×{manager.get_battle_speed_scale()}";};
-        pauseButton=new Button{Text="暂停 · 空格",Position=new(170,90),Size=new(160,42)};
+        pauseButton=new Button{Text="暂停",Size=new(156,40)};
+        BattleUiArt.Skin(pauseButton);pauseButton.Icon=BattleUiArt.Texture("icon_pause");pauseButton.ExpandIcon=true;pauseButton.AddThemeConstantOverride("icon_max_width",20);
         pauseButton.AddThemeFontSizeOverride("font_size",18);AddChild(pauseButton);
         pauseButton.Pressed+=manager.toggle_battle_pause;
         refresh_pause_button();
@@ -33,7 +35,7 @@ public partial class BattleUnitOverlay : CanvasLayer
     public void refresh_pause_button()
     {
         if(pauseButton is not null&&GodotObject.IsInstanceValid(pauseButton))
-            pauseButton.Text=manager.is_battle_paused()?"继续 · 空格":"暂停 · 空格";
+            pauseButton.Text=manager.is_battle_paused()?"继续":"暂停";
     }
     public void ShowTargetFrames(IEnumerable<GodotObject> targets,Color color,float duration=.55f)
         => ShowTargetFrames(targets,color,duration,null,null);
@@ -57,7 +59,10 @@ public partial class BattleUnitOverlay : CanvasLayer
         // 不再依赖一张全屏画布的坐标换算：每个框直接挂在覆盖层，和血条使用完全相同的屏幕坐标系。
         foreach(var unit in targets.OfType<Node2D>().Where(GodotObject.IsInstanceValid).Distinct())
         {
-            var frame=new BattleCornerFrame{Size=new Vector2(204,330),Position=unit.GetGlobalTransformWithCanvas().Origin-new Vector2(102,292),ZIndex=220,MouseFilter=Control.MouseFilterEnum.Ignore,Modulate=color};
+            var rect=manager.get_unit_screen_rect(unit).Grow(8);
+            var frame=new Control{Size=rect.Size,Position=rect.Position,ZIndex=220,MouseFilter=Control.MouseFilterEnum.Ignore};
+            var edge=28f*BattleUiArt.Scale(GetViewport());
+            foreach(var (id,pos) in new[]{("tl",Vector2.Zero),("tr",new Vector2(rect.Size.X-edge,0)),("bl",new Vector2(0,rect.Size.Y-edge)),("br",rect.Size-new Vector2(edge,edge))}){var corner=BattleUiArt.Icon($"target_corner_{id}",new(edge,edge));corner.Position=pos;frame.AddChild(corner);}
             AddChild(frame);
             activeTargetPreviews.Add(frame);
             frame.QueueRedraw();
@@ -74,8 +79,8 @@ public partial class BattleUnitOverlay : CanvasLayer
                 }
             }
 
-            var tween=frame.CreateTween();tween.TweenInterval(duration);tween.TweenProperty(frame,"modulate:a",0f,.18f);tween.TweenCallback(Callable.From(frame.QueueFree));
-            if(detail is not null)
+            if(float.IsFinite(duration)){var tween=frame.CreateTween();tween.TweenInterval(duration);tween.TweenProperty(frame,"modulate:a",0f,.18f);tween.TweenCallback(Callable.From(frame.QueueFree));}
+            if(detail is not null && float.IsFinite(duration))
             {
                 var detailTween=detail.CreateTween();detailTween.TweenInterval(duration);detailTween.TweenProperty(detail,"modulate:a",0f,.18f);detailTween.TweenCallback(Callable.From(detail.QueueFree));
             }
@@ -147,31 +152,43 @@ public partial class BattleUnitOverlay : CanvasLayer
     public override void _Process(double delta)
     {
         RefreshHoveredStatusInfo();
+        var scale=BattleUiArt.Scale(GetViewport());var origin=BattleUiArt.Origin(GetViewport());
+        if(speedButton is not null){speedButton.Scale=Vector2.One*scale;speedButton.Position=origin+new Vector2(1350,18)*scale;}
+        if(pauseButton is not null){pauseButton.Scale=Vector2.One*scale;pauseButton.Position=origin+new Vector2(1500,18)*scale;}
+
         foreach(var dead in views.Keys.Where(u=>!IsInstanceValid(u)).ToArray()){views[dead].QueueFree();views.Remove(dead);signatures.Remove(dead);queueSignatures.Remove(dead);}
         foreach(var unit in manager.all_units.OfType<Creature>().Where(IsInstanceValid)){
             if(!views.TryGetValue(unit,out var view)){
                 // 视图为队列和血条预留同一块屏幕空间；队列本身只绘制紧凑图标。
                 // 给我方“队首靠右、向左展开”和敌方相反的布局留出空间。
-                view=new Control{Size=new(600,340),MouseFilter=Control.MouseFilterEnum.Ignore,ZIndex=90};AddChild(view);views[unit]=view;
-                var queue=new Control{Name="Queue",Position=new(0,120),Size=new(600,160),MouseFilter=Control.MouseFilterEnum.Ignore,ClipContents=false};
-                var cards=new Control{Name="Cards",Position=new(0,0),Size=new(600,160),MouseFilter=Control.MouseFilterEnum.Ignore,ClipContents=false};
-                queue.AddChild(cards);view.AddChild(queue);
-                var bar=new ProgressBar{Name="Health",Position=new(185,280),Size=new(230,26),ShowPercentage=false,MouseFilter=Control.MouseFilterEnum.Ignore};
-                bar.AddThemeStyleboxOverride("background",new StyleBoxFlat{BgColor=new(.03f,.045f,.04f),CornerRadiusTopLeft=6,CornerRadiusTopRight=6,CornerRadiusBottomLeft=6,CornerRadiusBottomRight=6});
-                bar.AddThemeStyleboxOverride("fill",new StyleBoxFlat{BgColor=new(.68f,.19f,.14f),CornerRadiusTopLeft=5,CornerRadiusTopRight=5,CornerRadiusBottomLeft=5,CornerRadiusBottomRight=5});view.AddChild(bar);
-                var label=new Label{Name="Value",Position=new(185,280),Size=new(230,26),HorizontalAlignment=HorizontalAlignment.Center,MouseFilter=Control.MouseFilterEnum.Ignore};label.AddThemeFontSizeOverride("font_size",18);view.AddChild(label);
-                var statuses=new HFlowContainer{Name="Statuses",Position=new(170,250),Size=new(260,84),MouseFilter=Control.MouseFilterEnum.Ignore};
+                view=new Control{Size=new(174,100),MouseFilter=Control.MouseFilterEnum.Ignore,ZIndex=90};AddChild(view);views[unit]=view;
+                var queue=new Control{Name="Queue",Visible=false,MouseFilter=Control.MouseFilterEnum.Ignore};queue.AddChild(new Control{Name="Cards"});view.AddChild(queue);
+                var bar=new BattleHealthBar{Name="Health",Size=new(174,40),IsAlly=unit.faction==(int)WorldEntity.Faction.PLAYER};view.AddChild(bar);
+                var name=new Label{Name="Name",Position=new(12,7),Size=new(80,18),ClipText=true,MouseFilter=Control.MouseFilterEnum.Ignore};name.AddThemeFontSizeOverride("font_size",13);name.AddThemeColorOverride("font_color",BattleUiArt.Text);view.AddChild(name);
+                var label=new Label{Name="Value",Position=new(95,7),Size=new(65,18),HorizontalAlignment=HorizontalAlignment.Right,MouseFilter=Control.MouseFilterEnum.Ignore};label.AddThemeFontSizeOverride("font_size",12);label.AddThemeColorOverride("font_color",BattleUiArt.Text);view.AddChild(label);
+                var intent=new Label{Name="Intent",Position=new(0,42),Size=new(174,18),HorizontalAlignment=HorizontalAlignment.Center,MouseFilter=Control.MouseFilterEnum.Ignore};intent.AddThemeFontSizeOverride("font_size",11);view.AddChild(intent);
+                var statuses=new HFlowContainer{Name="Statuses",Position=new(0,-38),Size=new(174,36),MouseFilter=Control.MouseFilterEnum.Ignore};
                 statuses.AddThemeConstantOverride("separation",4);view.AddChild(statuses);
             }
-            view.Position=unit.GetGlobalTransformWithCanvas().Origin-new Vector2(300,550);
-            UpdateQueue(unit,view);
-            view.GetNode<ProgressBar>("Health").MaxValue=Math.Max(1,unit.max_health);view.GetNode<ProgressBar>("Health").Value=unit.current_health;
-            view.GetNode<Label>("Value").Text=$"{unit.current_health} / {unit.max_health}";
+            view.Scale=Vector2.One*scale;
+            view.Position=unit.GetGlobalTransformWithCanvas().Origin-new Vector2(87*scale,manager.get_unit_display_height()+48*scale);
+            view.GetNode<BattleHealthBar>("Health").MaxValue=Math.Max(1,unit.max_health);view.GetNode<BattleHealthBar>("Health").Value=unit.current_health;view.GetNode<BattleHealthBar>("Health").QueueRedraw();
+            view.GetNode<Label>("Name").Text=unit.entity_name;
+            view.GetNode<Label>("Value").Text=$"{unit.current_health}/{unit.max_health}";
+            var snapshot=manager.get_queue_snapshot_for_unit(unit);
+            view.GetNode<Label>("Intent").Text=manager.get_segment_phase()==BattleManager.SegmentPhase.Executing && snapshot.Count>0 && snapshot[0].GetValueOrDefault("visible",false).AsBool()?snapshot[0].GetValueOrDefault("text","").AsString():"";
             var statusRow=view.GetNode<HFlowContainer>("Statuses");
-            statusRow.Position=new Vector2(170,272-statusRow.GetCombinedMinimumSize().Y);
-            var entries=unit.status_snapshot().Select(s=>(id:s.effect!.effect_id,name:s.effect.name.Length>0?s.effect.name:s.effect.effect_id,count:s.stacks,tip:s.effect.description,bad:s.effect.is_debuff,instance:s)).ToList();
-            if(unit.shield>0)entries.Add(("护持","护持",unit.shield,"优先抵扣伤害。",false,null!));
+            statusRow.Position=new Vector2(0,-statusRow.GetCombinedMinimumSize().Y-4);
+            var entries=unit.status_snapshot()
+                .Where(s=>s.effect is not null&&!IsInternalStatusBadge(s.effect.effect_id))
+                .Select(s=>(id:s.effect!.effect_id,name:s.effect.name.Length>0?s.effect.name:s.effect.effect_id,count:s.stacks,tip:s.effect.description,bad:s.effect.is_debuff,instance:s)).ToList();
+            if(unit.shield>0)entries.Add(("护盾","护盾",unit.shield,"优先抵扣伤害。",false,null!));
             if(unit.qi_blood>0)entries.Add(("气血","气血",unit.qi_blood,"当前体修气血资源。",false,null!));
+            if(unit.blood_furnace_value>0)
+            {
+                var bonus=unit.blood_furnace_value/2;
+                entries.Add(("血炉","血炉",unit.blood_furnace_value,$"战斗资源。每2点提高1%物理伤害，当前提供物理伤害 +{bonus}%；可被相关招式消耗；战斗结束时清空。",false,null!));
+            }
             var sig=string.Join("|",entries.Select(e=>$"{e.id}:{e.name}:{e.count}:{e.bad}"));if(signatures.GetValueOrDefault(unit)==sig)continue;signatures[unit]=sig;
             var row=view.GetNode<HFlowContainer>("Statuses");foreach(var child in row.GetChildren()){row.RemoveChild(child);child.QueueFree();}
             foreach(var e in entries) row.AddChild(CreateStatusBadge(e.id,e.name,e.count,e.tip,e.bad,e.instance));
@@ -270,7 +287,7 @@ public partial class BattleUnitOverlay : CanvasLayer
     {
         var badge=new PanelContainer{CustomMinimumSize=new(36,36),TooltipText=$"{name} ×{count}\n{tip}",MouseFilter=Control.MouseFilterEnum.Stop};
         badge.AddThemeStyleboxOverride("panel",new StyleBoxFlat{BgColor=bad?new Color(.26f,.07f,.06f,.95f):new Color(.035f,.09f,.07f,.95f),BorderColor=bad?new Color(.94f,.35f,.28f):new Color(.52f,.80f,.58f),BorderWidthLeft=1,BorderWidthTop=1,BorderWidthRight=1,BorderWidthBottom=1,CornerRadiusTopLeft=9,CornerRadiusTopRight=9,CornerRadiusBottomLeft=9,CornerRadiusBottomRight=9});
-        var icon=new TextureRect{Texture=GetStatusIcon(id),ExpandMode=TextureRect.ExpandModeEnum.IgnoreSize,StretchMode=TextureRect.StretchModeEnum.KeepAspectCentered,MouseFilter=Control.MouseFilterEnum.Ignore};icon.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);badge.AddChild(icon);
+        var icon=new TextureRect{Texture=GetStatusIcon(id,instance),ExpandMode=TextureRect.ExpandModeEnum.IgnoreSize,StretchMode=TextureRect.StretchModeEnum.KeepAspectCentered,MouseFilter=Control.MouseFilterEnum.Ignore};icon.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);badge.AddChild(icon);
         var stack=new Label{Text=count.ToString(),HorizontalAlignment=HorizontalAlignment.Center,VerticalAlignment=VerticalAlignment.Center,Position=new(17,16),Size=new(18,18),MouseFilter=Control.MouseFilterEnum.Ignore};stack.AddThemeFontSizeOverride("font_size",15);stack.AddThemeColorOverride("font_outline_color",Colors.Black);stack.AddThemeConstantOverride("outline_size",4);badge.AddChild(stack);
         if(instance is not null)
         {
@@ -312,17 +329,67 @@ public partial class BattleUnitOverlay : CanvasLayer
         };
         statusInfoLabel.Text=$"{name} ×{hoveredStatus.stacks}\n{effect.description}\n{duration}";
     }
-    private static Texture2D? GetStatusIcon(string id)
+    private static bool IsInternalStatusBadge(string id)=>id is "化解" or "身法" or "借力";
+    internal static Texture2D? GetStatusIcon(string id,StatusInstance? instance)
+    {
+        if(id.StartsWith("心法:"))
+        {
+            var heartIcon=instance?.source_name switch
+            {
+                "乘物游骸真经"=>"心法_乘物游骸",
+                "内景损益篇"=>"心法_内景损益",
+                "灵枢经筋篇"=>"心法_灵枢经筋",
+                "补虚行血诀"=>"心法_补虚行血",
+                "赤阳参同经"=>"心法_赤阳参同",
+                "阴符应物经"=>"心法_阴符应物",
+                "黄庭养形篇"=>"心法_黄庭养形",
+                _=>null
+            };
+            return heartIcon is null?GetLegacyStatusIcon(5):LoadStatusIcon(heartIcon);
+        }
+        var iconName=id switch
+        {
+            "护盾" or "护持"=>"护盾",
+            "内伤"=>"内伤",
+            "气血"=>"气血",
+            "血炉"=>"血炉",
+            "外伤"=>"外伤",
+            "身法"=>"身法",
+            "化解"=>"化解",
+            "借力"=>"借力",
+            "游骸"=>"游骸",
+            "逐猎"=>"逐猎",
+            _=>null
+        };
+        if(iconName is not null)
+        {
+            var icon=LoadStatusIcon(iconName);
+            if(icon is not null)return icon;
+        }
+        return id switch
+        {
+            "血炉"=>GetLegacyStatusIcon(1),
+            "疲倦" or "exhausted"=>GetLegacyStatusIcon(6),
+            _=>null
+        };
+    }
+    private static Texture2D? LoadStatusIcon(string name)
+    {
+        var pngPath = $"res://textures/ui/combat/status_icons/{name}_v1.png";
+        if (ResourceLoader.Exists(pngPath)) return GD.Load<Texture2D>(pngPath);
+        var svgPath = $"res://textures/ui/combat/status_icons/{name}_v1.svg";
+        return ResourceLoader.Exists(svgPath) ? GD.Load<Texture2D>(svgPath) : null;
+    }
+    private static Texture2D? GetLegacyStatusIcon(int slot)
     {
         var atlas=GD.Load<Texture2D>(StatusIconAtlas); if(atlas is null)return null;
-        var slot=id switch {"护持" or "化解" or "灵护"=>0,"灼烧"=>1,"身法" or "逐猎"=>2,"剑痕" or "剑意"=>3,"魂隙" or "内伤"=>4,"引灵" or "气血" or "灵涌"=>5,"疲倦"=>6,"折损" or "定影" or "照痕" or "外伤"=>7,_ when id.StartsWith("心法:")=>5,_=>6};
-        var width=atlas.GetWidth()/4;var height=atlas.GetHeight()/2;
+        var width=atlas.GetWidth()/4f;var height=atlas.GetHeight()/2f;
         return new AtlasTexture{Atlas=atlas,Region=new Rect2(slot%4*width,slot/4*height,width,height)};
     }
     public override void _UnhandledInput(InputEvent input)
     {
         if(input is not InputEventMouseButton{Pressed:true,ButtonIndex:MouseButton.Left} mouse)return;
-        var unit=manager.all_units.OfType<WorldEntity>().Where(IsInstanceValid).FirstOrDefault(u=>new Rect2(u.GetGlobalTransformWithCanvas().Origin-new Vector2(95,300),new Vector2(190,310)).HasPoint(mouse.Position));
+        var unit=manager.all_units.OfType<WorldEntity>().Where(IsInstanceValid).FirstOrDefault(u=>manager.get_unit_screen_rect(u).HasPoint(mouse.Position));
         if(unit is null)return;
         if(mouse.DoubleClick){if(info is null)return;info.show_entity(unit);GetViewport().SetInputAsHandled();return;}
         if(!manager.is_waiting_for_skill_target() && unit.Get("faction").AsInt32()==(int)WorldEntity.Faction.PLAYER){manager.select_active_unit(unit);GetViewport().SetInputAsHandled();}

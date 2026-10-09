@@ -354,12 +354,7 @@ public partial class Character : Creature
         {
             if (book is null) continue;
             var isMain = book == main_gongfa;
-            foreach (var skill in book.granted_active_skills) Add(skill);
-            foreach (var chapter in book.get_sorted_chapters())
-            {
-                if (!is_gongfa_chapter_learned(book, chapter.get_id())) continue;
-                foreach (var skill in chapter.get_learned_skills(isMain)) Add(skill);
-            }
+            foreach (var skill in GongfaSkillRewriteRuntime.ApplyBookSkillRewrites(this, book, isMain)) Add(skill);
         }
         return result;
     }
@@ -386,10 +381,11 @@ public partial class Character : Creature
     public bool toggle_loaded_skill(Resource skill)
     {
         if(human is null||string.IsNullOrWhiteSpace(skill.ResourcePath))return false;
-        if(human.loaded_skill_paths.Contains(skill.ResourcePath)){human.loaded_skill_paths.Remove(skill.ResourcePath);return false;}
+        var loadedPath = human.loaded_skill_paths.FirstOrDefault(path => resolve_combat_skill_slot_path(path) == skill.ResourcePath);
+        if (!string.IsNullOrWhiteSpace(loadedPath)) { human.loaded_skill_paths.Remove(loadedPath); return false; }
         human.loaded_skill_paths.Add(skill.ResourcePath);return true;
     }
-    public bool is_skill_loaded(Resource skill)=>human?.loaded_skill_paths.Contains(skill.ResourcePath)==true;
+    public bool is_skill_loaded(Resource skill)=>human is not null && human.loaded_skill_paths.Any(path => resolve_combat_skill_slot_path(path) == skill.ResourcePath);
     public bool is_battle_deck_configured()=>human?.battle_deck_configured == true;
     /// <summary>即时战斗技能槽只承载可主动使用或可应对排队的指令；主修/辅修槽位中的秘籍自动提供心法被动。</summary>
     public static bool is_combat_skill_slot_eligible(ActiveSkillData? skill)
@@ -399,10 +395,27 @@ public partial class Character : Creature
         if (string.Equals(skill.slot_category, "passive", StringComparison.OrdinalIgnoreCase)) return false;
         if (skill.keywords.Any(keyword => keyword.Contains("固有", StringComparison.Ordinal))) return false;
         if (skill.special_effects.Any(effect => effect.GetValueOrDefault("effect", "").AsString() == "draw")) return false;
+        // 即时战斗的精力恢复由系统行动“休整”提供，旧基础库中的“养息”不再占用技能槽。
+        if (skill.skill_name == "养息") return false;
         return true;
     }
     /// <summary>返回当前基础技能库可转为固定技能槽的去重路径；基础牌的数量仍由凝核牌局/旧技能库逻辑另行读取。</summary>
     public Array<string> get_default_combat_skill_paths()
+    {
+        if (human is null || (human.basic_deck_path != InitialDeckPath && human.basic_deck_path != BodyDeckPath)) return [];
+        var paths = get_basic_deck_skill_paths_before_gongfa();
+        paths = GongfaSkillRewriteRuntime.ApplyBasicSkillRewrites(this, paths);
+        var result = new Array<string>();
+        foreach (var path in paths)
+        {
+            if (string.IsNullOrWhiteSpace(path) || result.Contains(path)) continue;
+            var skill = ResourceLoader.Load<ActiveSkillData>(path);
+            if (is_combat_skill_slot_eligible(skill)) result.Add(path);
+            if (result.Count >= 10) break;
+        }
+        return result;
+    }
+    private Array<string> get_basic_deck_skill_paths_before_gongfa()
     {
         if (human is null || (human.basic_deck_path != InitialDeckPath && human.basic_deck_path != BodyDeckPath)) return [];
         var deck = ResourceLoader.Load<BasicDeckResource>(human.basic_deck_path);
@@ -413,15 +426,21 @@ public partial class Character : Creature
             var upgrade = deck.get_upgrade_by_id(upgradeId);
             if (upgrade is not null) paths = upgrade.apply_to_paths(paths);
         }
-        var result = new Array<string>();
-        foreach (var path in paths)
+        return paths;
+    }
+    /// <summary>将已保存的旧技能路径解析为当前化法版本，兼容化法学习或主辅修变化前保存的槽位。</summary>
+    public string resolve_combat_skill_slot_path(string path)
+    {
+        if (string.IsNullOrWhiteSpace(path)) return path;
+        var basicPaths = get_basic_deck_skill_paths_before_gongfa();
+        if (GongfaSkillRewriteRuntime.TryResolveBasicSkillPath(this, basicPaths, path, out var rewrittenPath)) return rewrittenPath;
+        foreach (var book in get_known_gongfas())
         {
-            if (string.IsNullOrWhiteSpace(path) || result.Contains(path)) continue;
-            var skill = ResourceLoader.Load<ActiveSkillData>(path);
-            if (is_combat_skill_slot_eligible(skill)) result.Add(path);
-            if (result.Count >= 10) break;
+            if (book is null) continue;
+            var resolved = GongfaSkillRewriteRuntime.ResolveBookSkillPath(this, book, book == main_gongfa, path);
+            if (resolved != path) return resolved;
         }
-        return result;
+        return path;
     }
     /// <summary>从主修/辅修槽位中的锻躯秘籍取得开战自动生效的心法；心法不单独学习或装配，也不进入技能槽。</summary>
     public Array<string> get_combat_passive_paths()
@@ -439,6 +458,28 @@ public partial class Character : Creature
         foreach (var book in sub_gongfa_list) AddSlotHeart(book, false);
         return result;
     }
+    /// <summary>汇总已研读且当前槽位启用的淬炼，只把左支淬炼计入战斗快照。</summary>
+    public Godot.Collections.Dictionary get_active_combat_tempering_by_gongfa()
+    {
+        var result=new Godot.Collections.Dictionary();
+        if(human is null)return result;
+        void AddBook(GongfaResource? book,bool isMain)
+        {
+            if(book is null)return;
+            var totals=new Godot.Collections.Dictionary();
+            foreach(var chapter in book.get_sorted_chapters())
+            {
+                if(!is_gongfa_chapter_learned(book,chapter.get_id()))continue;
+                if(!isMain&&get_sub_gongfa_chapter_route(book,chapter.get_id())!="left")continue;
+                foreach(Variant key in chapter.combat_tempering_bonuses.Keys)
+                    totals[key]=totals.GetValueOrDefault(key,0f).AsSingle()+chapter.combat_tempering_bonuses[key].AsSingle();
+            }
+            if(totals.Count>0)result[book.gongfa_name]=totals;
+        }
+        AddBook(main_gongfa,true);
+        foreach(var book in sub_gongfa_list)AddBook(book,false);
+        return result;
+    }
     public Array<string> get_combat_skill_slot_paths()
     {
         if (human is null) return [];
@@ -446,9 +487,10 @@ public partial class Character : Creature
         foreach (var path in human.combat_skill_slot_paths)
         {
             if (string.IsNullOrWhiteSpace(path)) continue;
-            var skill = ResourceLoader.Load<ActiveSkillData>(path);
-            if (!is_combat_skill_slot_eligible(skill) || result.Contains(path)) continue;
-            result.Add(path); if (result.Count >= 10) break;
+            var resolvedPath = resolve_combat_skill_slot_path(path);
+            var skill = ResourceLoader.Load<ActiveSkillData>(resolvedPath);
+            if (!is_combat_skill_slot_eligible(skill) || result.Contains(resolvedPath)) continue;
+            result.Add(resolvedPath); if (result.Count >= 10) break;
         }
         if (result.Count > 0) return result;
         // 玩家已经确认过装配后，空数组就是主动清空，不再被默认技能库重新填回。
@@ -462,9 +504,10 @@ public partial class Character : Creature
         foreach (var path in human.loaded_skill_paths)
         {
             if (string.IsNullOrWhiteSpace(path)) continue;
-            var skill = ResourceLoader.Load<ActiveSkillData>(path);
-            if (!is_combat_skill_slot_eligible(skill) || result.Contains(path)) continue;
-            result.Add(path); if (result.Count >= 10) break;
+            var resolvedPath = resolve_combat_skill_slot_path(path);
+            var skill = ResourceLoader.Load<ActiveSkillData>(resolvedPath);
+            if (!is_combat_skill_slot_eligible(skill) || result.Contains(resolvedPath)) continue;
+            result.Add(resolvedPath); if (result.Count >= 10) break;
         }
         return result;
     }
@@ -476,16 +519,19 @@ public partial class Character : Creature
         foreach (var path in paths)
         {
             if (string.IsNullOrWhiteSpace(path)) continue;
-            var skill = ResourceLoader.Load<ActiveSkillData>(path);
-            if (!is_combat_skill_slot_eligible(skill) || human.combat_skill_slot_paths.Contains(path) || human.combat_skill_slot_paths.Count >= 10) continue;
-            human.combat_skill_slot_paths.Add(path);
+            var resolvedPath = resolve_combat_skill_slot_path(path);
+            var skill = ResourceLoader.Load<ActiveSkillData>(resolvedPath);
+            if (!is_combat_skill_slot_eligible(skill) || human.combat_skill_slot_paths.Contains(resolvedPath) || human.combat_skill_slot_paths.Count >= 10) continue;
+            human.combat_skill_slot_paths.Add(resolvedPath);
         }
         return true;
     }
-    public bool is_battle_skill_equipped(ActiveSkillData skill) => human is not null && (!human.battle_deck_configured || human.loaded_skill_paths.Contains(skill.ResourcePath));
+    public bool is_battle_skill_equipped(ActiveSkillData skill) => human is not null && (!human.battle_deck_configured || human.loaded_skill_paths.Any(path => resolve_combat_skill_slot_path(path) == skill.ResourcePath));
     public bool toggle_battle_skill(ActiveSkillData skill, int deck_limit = 40)
     {
         if (human is null || skill is null || string.IsNullOrEmpty(skill.ResourcePath)) return false;
+        var loadedSourcePath = human.loaded_skill_paths.FirstOrDefault(path => resolve_combat_skill_slot_path(path) == skill.ResourcePath);
+        if (!string.IsNullOrEmpty(loadedSourcePath)) { human.loaded_skill_paths.Remove(loadedSourcePath); return false; }
         if (!human.battle_deck_configured)
         {
             human.loaded_skill_paths.Clear();
@@ -1191,7 +1237,6 @@ public partial class Character : Creature
         return 1f + total;
     }
     /// <summary>供战斗结算读取的功法物理伤害倍率；只统计已研读且已装配的卷章。</summary>
-    public float get_gongfa_physical_damage_multiplier() => Mathf.Max(0f, get_gongfa_naqi_multiplier("physical_damage") - 1f);
     public bool is_in_breakthrough_retreat()=>human?.is_in_breakthrough_retreat==true;
     /// <summary>六层至七层不走普通闭关；必须由凝核牌局结算后调用 complete_condensation。</summary>
     public bool requires_condensation_breakthrough()
@@ -1776,6 +1821,7 @@ public partial class Character : Creature
         snapshot.combat_skill_slot_paths = get_combat_skill_slot_paths();
         snapshot.combat_skill_slots_configured = human.combat_skill_slots_configured;
         snapshot.combat_passive_paths = get_combat_passive_paths();
+        snapshot.combat_tempering_by_gongfa = get_active_combat_tempering_by_gongfa();
         snapshot.battle_deck_configured = human.battle_deck_configured;
         snapshot.main_gongfa_path = human.main_gongfa_path;
         snapshot.sub_gongfa_paths = human.sub_gongfa_paths.Duplicate();
@@ -1784,7 +1830,19 @@ public partial class Character : Creature
         snapshot.pack_item_counts = pack_counts.Duplicate();
         return snapshot;
     }
-    public bool equip_main_gongfa(GongfaResource gongfa)=>switch_main_gongfa(gongfa); public bool switch_main_gongfa(GongfaResource gongfa){if(gongfa is null||human is null||!has_learned_gongfa(gongfa)||!gongfa.can_be_main||!gongfa.is_wuxing_compatible(spirit_root_type))return false;remove_sub_gongfa(gongfa);main_gongfa=gongfa;human.main_gongfa_path=gongfa.ResourcePath;set_cultivation_focus_from_main();refresh_gongfa_effects();MainGongfaChanged?.Invoke(this,gongfa);return true;} public void unequip_main_gongfa(){main_gongfa=null;if(human is not null)human.main_gongfa_path="";refresh_gongfa_effects();} public bool add_sub_gongfa(GongfaResource gongfa){if(gongfa is null||gongfa==main_gongfa||sub_gongfa_list.Contains(gongfa)||sub_gongfa_list.Count>=max_sub_slots)return false;sub_gongfa_list.Add(gongfa);if(human is not null)human.sub_gongfa_paths.Add(gongfa.ResourcePath);refresh_gongfa_effects();return true;} public void remove_sub_gongfa(GongfaResource gongfa){sub_gongfa_list.Remove(gongfa);human?.sub_gongfa_paths.Remove(gongfa.ResourcePath);refresh_gongfa_effects();}
+    public bool equip_main_gongfa(GongfaResource gongfa)=>switch_main_gongfa(gongfa);
+    public bool switch_main_gongfa(GongfaResource gongfa)
+    {
+        if(gongfa is null||human is null||!has_learned_gongfa(gongfa)||!gongfa.can_be_main||!gongfa.is_wuxing_compatible(spirit_root_type))return false;
+        remove_sub_gongfa(gongfa);main_gongfa=gongfa;human.main_gongfa_path=gongfa.ResourcePath;set_cultivation_focus_from_main();refresh_gongfa_effects();MainGongfaChanged?.Invoke(this,gongfa);return true;
+    }
+    public void unequip_main_gongfa(){main_gongfa=null;if(human is not null)human.main_gongfa_path="";refresh_gongfa_effects();}
+    public bool add_sub_gongfa(GongfaResource gongfa)
+    {
+        if(gongfa is null||human is null||!has_learned_gongfa(gongfa)||!gongfa.can_be_sub||gongfa==main_gongfa||sub_gongfa_list.Contains(gongfa)||sub_gongfa_list.Count>=max_sub_slots)return false;
+        sub_gongfa_list.Add(gongfa);human.sub_gongfa_paths.Add(gongfa.ResourcePath);refresh_gongfa_effects();return true;
+    }
+    public void remove_sub_gongfa(GongfaResource gongfa){sub_gongfa_list.Remove(gongfa);human?.sub_gongfa_paths.Remove(gongfa.ResourcePath);refresh_gongfa_effects();}
     public string get_sub_gongfa_chapter_route(GongfaResource gongfa,string chapterId)=>human?.equipped_gongfa_chapter_routes.GetValueOrDefault(gongfa.ResourcePath+":"+chapterId,"").AsString()??"";
     public void set_sub_gongfa_chapter_route(GongfaResource gongfa,string chapterId,string route){if(human is not null)human.equipped_gongfa_chapter_routes[gongfa.ResourcePath+":"+chapterId]=route;}
     public Array<string> get_learned_gongfa_chapter_ids(GongfaResource gongfa){var result=new Array<string>();if(human is null)return result;var values=human.learned_gongfa_chapters.GetValueOrDefault(gongfa.ResourcePath,new Array<string>()).AsGodotArray();foreach(var value in values)result.Add(value.AsString());return result;}

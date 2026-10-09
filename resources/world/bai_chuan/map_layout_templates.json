@@ -1,0 +1,345 @@
+{
+  "version": 2,
+  "regional_distribution": {
+    "algorithm": "regional_center_surround_edge_v2",
+    "mountain_centers_per_path_cell": 0.075,
+    "woodland_fill": 0.74,
+    "foothill_fill": 0.065,
+    "ridge_core_fill": 0.19,
+    "water_garden_count": 20,
+    "plain_accent_fill": 0.009,
+    "ridges": [
+      {
+        "id": "northwest",
+        "points": [
+          [
+            10,
+            30
+          ],
+          [
+            26,
+            22
+          ],
+          [
+            44,
+            29
+          ],
+          [
+            63,
+            17
+          ],
+          [
+            85,
+            24
+          ]
+        ],
+        "width": 5
+      },
+      {
+        "id": "northeast",
+        "points": [
+          [
+            118,
+            22
+          ],
+          [
+            135,
+            37
+          ],
+          [
+            153,
+            28
+          ],
+          [
+            179,
+            41
+          ],
+          [
+            190,
+            32
+          ]
+        ],
+        "width": 4
+      },
+      {
+        "id": "west",
+        "points": [
+          [
+            17,
+            74
+          ],
+          [
+            30,
+            91
+          ],
+          [
+            25,
+            111
+          ],
+          [
+            44,
+            119
+          ],
+          [
+            66,
+            113
+          ]
+        ],
+        "width": 5
+      },
+      {
+        "id": "central",
+        "points": [
+          [
+            72,
+            75
+          ],
+          [
+            88,
+            66
+          ],
+          [
+            108,
+            74
+          ],
+          [
+            119,
+            97
+          ],
+          [
+            109,
+            115
+          ]
+        ],
+        "width": 4
+      },
+      {
+        "id": "southwest",
+        "points": [
+          [
+            13,
+            170
+          ],
+          [
+            24,
+            182
+          ],
+          [
+            51,
+            178
+          ],
+          [
+            69,
+            161
+          ],
+          [
+            89,
+            154
+          ]
+        ],
+        "width": 4
+      },
+      {
+        "id": "southeast",
+        "points": [
+          [
+            119,
+            129
+          ],
+          [
+            140,
+            143
+          ],
+          [
+            157,
+            136
+          ],
+          [
+            178,
+            153
+          ],
+          [
+            191,
+            171
+          ]
+        ],
+        "width": 5
+      }
+    ],
+    "woodlands": [
+      {
+        "id": "northwest",
+        "points": [
+          [
+            12,
+            44
+          ],
+          [
+            32,
+            55
+          ],
+          [
+            54,
+            43
+          ],
+          [
+            77,
+            57
+          ]
+        ],
+        "width": 6,
+        "family": "broadleaf"
+      },
+      {
+        "id": "northeast",
+        "points": [
+          [
+            127,
+            55
+          ],
+          [
+            147,
+            62
+          ],
+          [
+            165,
+            56
+          ],
+          [
+            185,
+            69
+          ]
+        ],
+        "width": 6,
+        "family": "bamboo"
+      },
+      {
+        "id": "west",
+        "points": [
+          [
+            13,
+            95
+          ],
+          [
+            20,
+            109
+          ],
+          [
+            16,
+            128
+          ],
+          [
+            31,
+            135
+          ]
+        ],
+        "width": 5,
+        "family": "pine"
+      },
+      {
+        "id": "central",
+        "points": [
+          [
+            70,
+            106
+          ],
+          [
+            91,
+            119
+          ],
+          [
+            108,
+            111
+          ],
+          [
+            127,
+            119
+          ]
+        ],
+        "width": 5,
+        "family": "broadleaf"
+      },
+      {
+        "id": "southwest",
+        "points": [
+          [
+            14,
+            150
+          ],
+          [
+            33,
+            146
+          ],
+          [
+            51,
+            154
+          ],
+          [
+            64,
+            169
+          ]
+        ],
+        "width": 7,
+        "family": "broadleaf"
+      },
+      {
+        "id": "southeast",
+        "points": [
+          [
+            127,
+            173
+          ],
+          [
+            148,
+            163
+          ],
+          [
+            169,
+            178
+          ],
+          [
+            186,
+            186
+          ]
+        ],
+        "width": 6,
+        "family": "pine"
+      },
+      {
+        "id": "middle_east",
+        "points": [
+          [
+            151,
+            87
+          ],
+          [
+            160,
+            101
+          ],
+          [
+            177,
+            108
+          ]
+        ],
+        "width": 4,
+        "family": "willow"
+      }
+    ]
+  },
+  "default_seed": 20261009,
+  "columns": 200,
+  "rows": 200,
+  "tile_size": 256,
+  "anchor_margin": 1,
+  "small_grove_size": [
+    3,
+    6
+  ],
+  "small_grove_count": 28,
+  "wood_families": [
+    "broadleaf",
+    "pine",
+    "willow",
+    "bamboo"
+  ]
+}

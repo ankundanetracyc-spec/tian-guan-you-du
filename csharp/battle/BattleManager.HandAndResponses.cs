@@ -54,7 +54,7 @@ public partial class BattleManager : Node2D
     public void _finish_current_action(GodotObject unit)
     {
         if(unit is Creature creature)creature.process_status_event("turn_end",new Dictionary{["battle_manager"]=this,["unit"]=unit});
-        body_cards.Fall(unit,1,false);
+        if(!_realtimeMode)body_cards.Fall(unit,1,false);
         unit.Set("current_mana", 0); action_gauges[unit] = 0f; active_unit = null; turn_state = TurnState.IDLE;
     }
     private Array<ActiveSkillData> Hand(GodotObject unit) => _hands.TryGetValue(unit,out var value)
@@ -70,7 +70,7 @@ public partial class BattleManager : Node2D
     public void mark_unit_damaged_this_turn(GodotObject unit) { }
     public void resolve_pending_counter_followups(GodotObject target, Dictionary context)
     {
-        body_cards.ResponseResolved(target,context.GetValueOrDefault("blocked_damage",0).AsInt32(),context.GetValueOrDefault("damage",0).AsInt32()==0,_chengjiResponses.Remove(target.GetInstanceId()));
+        body_cards.ResponseResolved(target,context.GetValueOrDefault("blocked_damage",0).AsInt32(),context.GetValueOrDefault("damage",0).AsInt32(),_chengjiResponses.Remove(target.GetInstanceId()));
     }
     /// <summary>攻击命中判定前自动触发一张可用的“应对”牌。</summary>
     public bool try_auto_response(GodotObject defender, GodotObject attacker, string damageType = "physical")
@@ -98,6 +98,7 @@ public partial class BattleManager : Node2D
 
                 Pay(defender, queued.skill);
                 body_cards.Before(defender, queued.skill);
+                body_cards.OnResponseTriggered(defender, queued.skill);
                 StartSkillCooldown(defender, queued.skill);
                 segmentQueue.RemoveAt(0);
                 action_gauges[defender] = 0f;
@@ -114,6 +115,8 @@ public partial class BattleManager : Node2D
             var armed = queue[0]; if (!CardRules.ResponseMatches(armed.skill, damageType)) return false;
             if (!_realtimeMode) unitOverlay?.ShowResponse(defender, armed.skill);
             armed.phase = BattleQueuedSkill.Phase.Resolving;
+            body_cards.Before(defender,armed.skill);
+            body_cards.OnResponseTriggered(defender,armed.skill);
             StartSkillCooldown(defender, armed.skill);
             _executor?.execute_response(defender, attacker, armed.skill);
             if (defender == active_unit) _skillBar?.refresh_slots();
@@ -140,4 +143,3 @@ public partial class BattleManager : Node2D
     }
     /// <summary>供周天、受击等战斗子系统接入。阵脉是瞬时事件，不会在此保存或扣除。</summary>
 }
-                                                                             

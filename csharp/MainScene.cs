@@ -69,7 +69,9 @@ public partial class MainScene : Node2D
         estate?.set_meditation_available(false);
         estate?.set_rest_available(false);
         spawn_or_restore_player();
+        if (player is not null) realm_panel?.bind_player(player);
         hud?.bind_player(player);
+        configure_tile_world_map_bridge();
         storage?.bind_player(player);
         if(player is not null) { player.breakthrough_completed += on_player_breakthrough; player.MainGongfaChanged += (_, _) => refresh_qingxi_quest(); player.GongfaChapterCompleted += (_, _, _, _) => refresh_qingxi_quest(); player.GongfaChapterCompleted += on_yuxu_gongfa_chapter_completed; }
         if(GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is { } time) { if(_loaded_game_save is null)_qingxi_arrival_hour=time.get_total_game_hours(); time.time_changed += on_action_time_changed; time.time_changed += update_yuxu_monthly_allowance; time.time_changed += mark_save_dirty; }

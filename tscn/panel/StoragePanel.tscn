@@ -317,8 +317,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/h_separation = 8
-theme_override_constants/v_separation = 10
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 14
 columns = 8
 
 [node name="Scroll" type="ScrollContainer" parent="Window/Margin/VBox/Body/BodyMargin/Workspace/Stack"]
@@ -333,8 +333,8 @@ horizontal_scroll_mode = 0
 [node name="SlotGrid" type="GridContainer" parent="Window/Margin/VBox/Body/BodyMargin/Workspace/Stack/Scroll" unique_name_in_owner=true]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/h_separation = 8
-theme_override_constants/v_separation = 10
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 14
 columns = 8
 
 [node name="EmptyLabel" type="Label" parent="Window/Margin/VBox/Body/BodyMargin/Workspace/Stack" unique_name_in_owner=true]

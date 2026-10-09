@@ -1,0 +1,781 @@
+{
+  "version": 2,
+  "status": "art_generated_not_connected",
+  "design_canvas": [
+    1672,
+    941
+  ],
+  "generator": "built-in imagegen",
+  "background": "textures/battle/ink_terrace_multiteam_20261009_v2.png",
+  "palette": {
+    "surface": "#1B3031",
+    "trim": "#A9956C",
+    "text": "#F4F0DF",
+    "highlight": "#C4B58C",
+    "energy": "#75A98D",
+    "mana": "#6E9EAC",
+    "warning": "#A55343"
+  },
+  "notes": [
+    "Display sizes and margins use design-canvas pixels; convert margins to texture pixels before NinePatchRect use.",
+    "Do not stretch icons. Raster text and counts are intentionally absent.",
+    "planning_panel raised title must be handled independently for adaptive width; use its extracted title and a plain reusable body.",
+    "UI assets are candidates for visual review and not loaded by existing scenes.",
+    "Muted v2 supersedes bright-gold v1 as user-selected palette direction."
+  ],
+  "assets": [
+    {
+      "id": "skillbar_panel",
+      "file": "skillbar_panel_v2.png",
+      "source": "source/wide_frames.png",
+      "source_bounds": {
+        "left": 16,
+        "top": 172,
+        "width": 1886,
+        "height": 277
+      },
+      "texture_size": [
+        1902,
+        293
+      ],
+      "display_size": [
+        1344,
+        184
+      ],
+      "nine_patch_display_margins": [
+        64,
+        24,
+        64,
+        24
+      ],
+      "alpha": true
+    },
+    {
+      "id": "timeline_panel",
+      "file": "timeline_panel_v2.png",
+      "source": "source/wide_frames.png",
+      "source_bounds": {
+        "left": 88,
+        "top": 567,
+        "width": 1744,
+        "height": 160
+      },
+      "texture_size": [
+        1760,
+        176
+      ],
+      "display_size": [
+        720,
+        80
+      ],
+      "nine_patch_display_margins": [
+        90,
+        20,
+        90,
+        20
+      ],
+      "alpha": true
+    },
+    {
+      "id": "battle_title",
+      "file": "battle_title_v2.png",
+      "source": "source/panels.png",
+      "source_bounds": {
+        "left": 9,
+        "top": 235,
+        "width": 431,
+        "height": 105
+      },
+      "texture_size": [
+        447,
+        121
+      ],
+      "display_size": [
+        200,
+        40
+      ],
+      "nine_patch_display_margins": [
+        36,
+        12,
+        36,
+        12
+      ],
+      "alpha": true
+    },
+    {
+      "id": "control_button",
+      "file": "control_button_v2.png",
+      "source": "source/panels.png",
+      "source_bounds": {
+        "left": 494,
+        "top": 245,
+        "width": 291,
+        "height": 87
+      },
+      "texture_size": [
+        307,
+        103
+      ],
+      "display_size": [
+        140,
+        40
+      ],
+      "nine_patch_display_margins": [
+        16,
+        12,
+        16,
+        12
+      ],
+      "alpha": true
+    },
+    {
+      "id": "resource_chip",
+      "file": "resource_chip_v2.png",
+      "source": "source/panels.png",
+      "source_bounds": {
+        "left": 861,
+        "top": 246,
+        "width": 202,
+        "height": 84
+      },
+      "texture_size": [
+        218,
+        100
+      ],
+      "display_size": [
+        96,
+        40
+      ],
+      "nine_patch_display_margins": [
+        14,
+        12,
+        14,
+        12
+      ],
+      "alpha": true
+    },
+    {
+      "id": "health_frame",
+      "file": "health_frame_v2.png",
+      "source": "source/panels.png",
+      "source_bounds": {
+        "left": 28,
+        "top": 547,
+        "width": 396,
+        "height": 113
+      },
+      "texture_size": [
+        412,
+        129
+      ],
+      "display_size": [
+        174,
+        40
+      ],
+      "nine_patch_display_margins": [
+        18,
+        12,
+        18,
+        12
+      ],
+      "alpha": true
+    },
+    {
+      "id": "health_fill_ally",
+      "file": "health_fill_ally_v2.png",
+      "source": "source/panels.png",
+      "source_bounds": {
+        "left": 467,
+        "top": 589,
+        "width": 294,
+        "height": 30
+      },
+      "texture_size": [
+        310,
+        46
+      ],
+      "display_size": [
+        158,
+        7
+      ],
+      "nine_patch_display_margins": null,
+      "alpha": true
+    },
+    {
+      "id": "health_fill_enemy",
+      "file": "health_fill_enemy_v2.png",
+      "source": "source/panels.png",
+      "source_bounds": {
+        "left": 795,
+        "top": 589,
+        "width": 273,
+        "height": 30
+      },
+      "texture_size": [
+        289,
+        46
+      ],
+      "display_size": [
+        158,
+        7
+      ],
+      "nine_patch_display_margins": null,
+      "alpha": true
+    },
+    {
+      "id": "queue_row",
+      "file": "queue_row_v2.png",
+      "source": "source/panels.png",
+      "source_bounds": {
+        "left": 53,
+        "top": 850,
+        "width": 270,
+        "height": 115
+      },
+      "texture_size": [
+        286,
+        131
+      ],
+      "display_size": [
+        132,
+        62
+      ],
+      "nine_patch_display_margins": [
+        14,
+        12,
+        14,
+        12
+      ],
+      "alpha": true
+    },
+    {
+      "id": "queue_row_active",
+      "file": "queue_row_active_v2.png",
+      "source": "source/panels.png",
+      "source_bounds": {
+        "left": 428,
+        "top": 849,
+        "width": 265,
+        "height": 116
+      },
+      "texture_size": [
+        281,
+        132
+      ],
+      "display_size": [
+        132,
+        62
+      ],
+      "nine_patch_display_margins": [
+        14,
+        12,
+        14,
+        12
+      ],
+      "alpha": true
+    },
+    {
+      "id": "queue_row_warning",
+      "file": "queue_row_warning_v2.png",
+      "source": "source/panels.png",
+      "source_bounds": {
+        "left": 787,
+        "top": 850,
+        "width": 273,
+        "height": 116
+      },
+      "texture_size": [
+        289,
+        132
+      ],
+      "display_size": [
+        132,
+        62
+      ],
+      "nine_patch_display_margins": [
+        14,
+        12,
+        14,
+        12
+      ],
+      "alpha": true
+    },
+    {
+      "id": "skill_card_frame",
+      "file": "skill_card_frame_v2.png",
+      "source": "source/panels.png",
+      "source_bounds": {
+        "left": 81,
+        "top": 1082,
+        "width": 236,
+        "height": 309
+      },
+      "texture_size": [
+        252,
+        325
+      ],
+      "display_size": [
+        108,
+        136
+      ],
+      "nine_patch_display_margins": [
+        12,
+        12,
+        12,
+        28
+      ],
+      "alpha": true
+    },
+    {
+      "id": "skill_slot_empty",
+      "file": "skill_slot_empty_v2.png",
+      "source": "source/panels.png",
+      "source_bounds": {
+        "left": 445,
+        "top": 1081,
+        "width": 235,
+        "height": 310
+      },
+      "texture_size": [
+        251,
+        326
+      ],
+      "display_size": [
+        108,
+        136
+      ],
+      "nine_patch_display_margins": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "alpha": true
+    },
+    {
+      "id": "target_corners",
+      "file": "target_corners_v2.png",
+      "source": "source/panels.png",
+      "source_bounds": {
+        "left": 783,
+        "top": 1083,
+        "width": 266,
+        "height": 306
+      },
+      "texture_size": [
+        282,
+        322
+      ],
+      "display_size": [
+        180,
+        216
+      ],
+      "nine_patch_display_margins": null,
+      "alpha": true
+    },
+    {
+      "id": "icon_energy",
+      "file": "icon_energy_v2.png",
+      "source": "source/icons.png",
+      "source_bounds": {
+        "left": 82,
+        "top": 61,
+        "width": 254,
+        "height": 326
+      },
+      "texture_size": [
+        160,
+        160
+      ],
+      "display_size": [
+        28,
+        28
+      ],
+      "nine_patch_display_margins": null,
+      "alpha": true
+    },
+    {
+      "id": "icon_mana",
+      "file": "icon_mana_v2.png",
+      "source": "source/icons.png",
+      "source_bounds": {
+        "left": 455,
+        "top": 71,
+        "width": 210,
+        "height": 302
+      },
+      "texture_size": [
+        160,
+        160
+      ],
+      "display_size": [
+        28,
+        28
+      ],
+      "nine_patch_display_margins": null,
+      "alpha": true
+    },
+    {
+      "id": "icon_speed",
+      "file": "icon_speed_v2.png",
+      "source": "source/icons.png",
+      "source_bounds": {
+        "left": 777,
+        "top": 143,
+        "width": 282,
+        "height": 194
+      },
+      "texture_size": [
+        160,
+        160
+      ],
+      "display_size": [
+        20,
+        20
+      ],
+      "nine_patch_display_margins": null,
+      "alpha": true
+    },
+    {
+      "id": "icon_pause",
+      "file": "icon_pause_v2.png",
+      "source": "source/icons.png",
+      "source_bounds": {
+        "left": 1164,
+        "top": 112,
+        "width": 203,
+        "height": 242
+      },
+      "texture_size": [
+        160,
+        160
+      ],
+      "display_size": [
+        20,
+        20
+      ],
+      "nine_patch_display_margins": null,
+      "alpha": true
+    },
+    {
+      "id": "icon_queue_current",
+      "file": "icon_queue_current_v2.png",
+      "source": "source/icons.png",
+      "source_bounds": {
+        "left": 132,
+        "top": 483,
+        "width": 149,
+        "height": 198
+      },
+      "texture_size": [
+        160,
+        160
+      ],
+      "display_size": [
+        20,
+        20
+      ],
+      "nine_patch_display_margins": null,
+      "alpha": true
+    },
+    {
+      "id": "icon_queue_down",
+      "file": "icon_queue_down_v2.png",
+      "source": "source/icons.png",
+      "source_bounds": {
+        "left": 438,
+        "top": 501,
+        "width": 230,
+        "height": 169
+      },
+      "texture_size": [
+        160,
+        160
+      ],
+      "display_size": [
+        20,
+        20
+      ],
+      "nine_patch_display_margins": null,
+      "alpha": true
+    },
+    {
+      "id": "icon_timeline_current",
+      "file": "icon_timeline_current_v2.png",
+      "source": "source/icons.png",
+      "source_bounds": {
+        "left": 788,
+        "top": 457,
+        "width": 240,
+        "height": 245
+      },
+      "texture_size": [
+        160,
+        160
+      ],
+      "display_size": [
+        20,
+        20
+      ],
+      "nine_patch_display_margins": null,
+      "alpha": true
+    },
+    {
+      "id": "icon_timeline_ally",
+      "file": "icon_timeline_ally_v2.png",
+      "source": "source/icons.png",
+      "source_bounds": {
+        "left": 1152,
+        "top": 468,
+        "width": 231,
+        "height": 232
+      },
+      "texture_size": [
+        160,
+        160
+      ],
+      "display_size": [
+        20,
+        20
+      ],
+      "nine_patch_display_margins": null,
+      "alpha": true
+    },
+    {
+      "id": "icon_timeline_enemy",
+      "file": "icon_timeline_enemy_v2.png",
+      "source": "source/icons.png",
+      "source_bounds": {
+        "left": 88,
+        "top": 785,
+        "width": 232,
+        "height": 232
+      },
+      "texture_size": [
+        160,
+        160
+      ],
+      "display_size": [
+        20,
+        20
+      ],
+      "nine_patch_display_margins": null,
+      "alpha": true
+    },
+    {
+      "id": "icon_play",
+      "file": "icon_play_v2.png",
+      "source": "source/icons.png",
+      "source_bounds": {
+        "left": 488,
+        "top": 792,
+        "width": 171,
+        "height": 217
+      },
+      "texture_size": [
+        160,
+        160
+      ],
+      "display_size": [
+        20,
+        20
+      ],
+      "nine_patch_display_margins": null,
+      "alpha": true
+    },
+    {
+      "id": "icon_undo",
+      "file": "icon_undo_v2.png",
+      "source": "source/icons.png",
+      "source_bounds": {
+        "left": 787,
+        "top": 799,
+        "width": 249,
+        "height": 226
+      },
+      "texture_size": [
+        160,
+        160
+      ],
+      "display_size": [
+        20,
+        20
+      ],
+      "nine_patch_display_margins": null,
+      "alpha": true
+    },
+    {
+      "id": "icon_warning",
+      "file": "icon_warning_v2.png",
+      "source": "source/icons.png",
+      "source_bounds": {
+        "left": 1183,
+        "top": 770,
+        "width": 163,
+        "height": 265
+      },
+      "texture_size": [
+        160,
+        160
+      ],
+      "display_size": [
+        20,
+        20
+      ],
+      "nine_patch_display_margins": null,
+      "alpha": true
+    },
+    {
+      "id": "queue_panel",
+      "file": "queue_panel_v2.png",
+      "source": "source/containers.png",
+      "source_bounds": {
+        "left": 57,
+        "top": 127,
+        "width": 286,
+        "height": 780
+      },
+      "texture_size": [
+        302,
+        796
+      ],
+      "display_size": [
+        156,
+        440
+      ],
+      "nine_patch_display_margins": [
+        30,
+        40,
+        30,
+        40
+      ],
+      "alpha": true
+    },
+    {
+      "id": "planning_panel",
+      "file": "planning_panel_v2.png",
+      "source": "source/containers.png",
+      "source_bounds": {
+        "left": 396,
+        "top": 265,
+        "width": 1109,
+        "height": 476
+      },
+      "texture_size": [
+        1125,
+        492
+      ],
+      "display_size": [
+        760,
+        300
+      ],
+      "nine_patch_display_margins": null,
+      "alpha": true
+    },
+    {
+      "id": "planning_title_tab",
+      "file": "planning_title_tab_v2.png",
+      "source": "source/containers.png",
+      "source_bounds": {
+        "left": 774,
+        "top": 265,
+        "width": 364,
+        "height": 63
+      },
+      "texture_size": [
+        380,
+        79
+      ],
+      "display_size": [
+        220,
+        48
+      ],
+      "nine_patch_display_margins": null,
+      "alpha": true
+    },
+    {
+      "id": "target_corner_tl",
+      "file": "target_corner_tl_v2.png",
+      "source": "source/panels.png",
+      "source_bounds": {
+        "left": 783,
+        "top": 1083,
+        "width": 71,
+        "height": 72
+      },
+      "texture_size": [
+        160,
+        160
+      ],
+      "display_size": [
+        28,
+        28
+      ],
+      "nine_patch_display_margins": null,
+      "alpha": true
+    },
+    {
+      "id": "target_corner_tr",
+      "file": "target_corner_tr_v2.png",
+      "source": "source/panels.png",
+      "source_bounds": {
+        "left": 976,
+        "top": 1083,
+        "width": 73,
+        "height": 73
+      },
+      "texture_size": [
+        160,
+        160
+      ],
+      "display_size": [
+        28,
+        28
+      ],
+      "nine_patch_display_margins": null,
+      "alpha": true
+    },
+    {
+      "id": "target_corner_bl",
+      "file": "target_corner_bl_v2.png",
+      "source": "source/panels.png",
+      "source_bounds": {
+        "left": 784,
+        "top": 1319,
+        "width": 70,
+        "height": 70
+      },
+      "texture_size": [
+        160,
+        160
+      ],
+      "display_size": [
+        28,
+        28
+      ],
+      "nine_patch_display_margins": null,
+      "alpha": true
+    },
+    {
+      "id": "target_corner_br",
+      "file": "target_corner_br_v2.png",
+      "source": "source/panels.png",
+      "source_bounds": {
+        "left": 977,
+        "top": 1318,
+        "width": 72,
+        "height": 71
+      },
+      "texture_size": [
+        160,
+        160
+      ],
+      "display_size": [
+        28,
+        28
+      ],
+      "nine_patch_display_margins": null,
+      "alpha": true
+    }
+  ]
+}

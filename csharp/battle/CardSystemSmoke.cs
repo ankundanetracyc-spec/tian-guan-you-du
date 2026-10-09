@@ -85,7 +85,7 @@ public partial class CardSystemSmoke : Node
             Check(defender.current_health==83&&manager.body_cards.CanPlay(defender,power),"气血回落与条件联动");
             manager.body_cards.Before(defender,power);
             Check(!manager.body_cards.CanPlay(defender,power),"每回合限一次");
-            var momentum=GD.Load<ActiveSkillData>("res://resources/activeskills/市井游身功/顶心肘.tres");
+            var momentum=new ActiveSkillData{skill_name="乘势测试",keywords=["乘势"]};
             manager.body_cards.Begin(defender);
             Check(manager.body_cards.Momentum(defender,momentum)==0,"乘势没有前置攻击不生效");
             manager.body_cards.Before(defender,attack);

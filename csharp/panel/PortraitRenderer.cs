@@ -10,7 +10,12 @@ public partial class PortraitRenderer : Control
     private static readonly System.Collections.Generic.Dictionary<string,Dictionary> SelectionCache=[];
     private readonly System.Collections.Generic.Dictionary<string,TextureRect> _layers=[];
     private string _current_key="";
+    private bool _headshotMode;
+    private const float HeadshotZoom = 2.8f;
+    private const float HeadshotFocusY = .268f;
     public override void _Ready(){MouseFilter=MouseFilterEnum.Ignore;ensure_layers();}
+    /// <summary>名单头像使用现有立绘的头部近景裁切；应在配置人物外观前调用。</summary>
+    public void set_headshot_mode(bool enabled){_headshotMode=enabled;ClipContents=enabled;}
     public void show_character(GodotObject character)
     {
         var data=character.Get("entity_data").AsGodotObject() as EntityData;
@@ -47,12 +52,27 @@ public partial class PortraitRenderer : Control
             layer.Scale=Vector2.One;layer.Modulate=Colors.White;
         }
         apply_appearance(data,selected);
+        if(_headshotMode) apply_headshot_crop();
     }
     public void clear_portrait(){foreach(var layer in _layers.Values){layer.Texture=null;layer.Visible=false;}_current_key="";}
     public string get_cache_key()=>_current_key;
     public bool has_required_layers()=>_layers.TryGetValue("face",out var face)&&face.Texture is not null&&_layers.TryGetValue("clothes",out var clothes)&&clothes.Texture is not null;
     public static void clear_selection_cache()=>SelectionCache.Clear();
     private void ensure_layers(){if(_layers.Count>0)return;for(var i=0;i<LayerOrder.Length;i++){var l=new TextureRect{Name=LayerOrder[i].Capitalize(),ExpandMode=TextureRect.ExpandModeEnum.IgnoreSize,StretchMode=TextureRect.StretchModeEnum.KeepAspectCentered,MouseFilter=MouseFilterEnum.Ignore,ZIndex=i};l.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);AddChild(l);_layers[LayerOrder[i]]=l;}}
+    private void apply_headshot_crop()
+    {
+        ClipContents = true;
+        var cropSize = Size.X > 0f && Size.Y > 0f ? Size : CustomMinimumSize;
+        var focus = new Vector2(cropSize.X * .5f, cropSize.Y * HeadshotFocusY);
+        var centeringOffset = cropSize * .5f - focus;
+        foreach (var layer in _layers.Values)
+        {
+            if (layer.Texture is null) continue;
+            layer.PivotOffset = focus;
+            layer.Scale *= new Vector2(HeadshotZoom, HeadshotZoom);
+            layer.Position += centeringOffset;
+        }
+    }
     private void apply_appearance(EntityData data,Dictionary selected)
     {
         var faceScale=new Vector2(data.appearance_face_width,data.appearance_face_height);

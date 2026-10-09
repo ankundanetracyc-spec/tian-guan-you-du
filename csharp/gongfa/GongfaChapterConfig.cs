@@ -1,7 +1,7 @@
 using Godot;
 using Godot.Collections;
 
-/// <summary>功法卷章的学习门槛、常驻加成、纳气加成和牌组改写。</summary>
+/// <summary>功法卷章的学习门槛、常驻加成、纳气加成和化法技能改写。</summary>
 public partial class GongfaChapterConfig : Resource
 {
     [Export] public string chapter_id = "";
@@ -31,6 +31,9 @@ public partial class GongfaChapterConfig : Resource
     [Export] public Dictionary naqi_multipliers = [];
     [Export] public Dictionary main_naqi_bonuses = [];
     [Export] public Dictionary main_naqi_multipliers = [];
+    [ExportGroup("Combat Tempering Bonuses")]
+    /// <summary>淬炼分支的战斗内属性；通过战斗快照传递，不写入角色常驻属性。</summary>
+    [Export] public Dictionary combat_tempering_bonuses = [];
     [ExportGroup("Huafa Rewrites")]
     [Export] public Array<GongfaDeckRewriteConfig> sub_deck_rewrites = [];
     [Export] public Array<GongfaDeckRewriteConfig> main_deck_rewrites = [];
@@ -52,6 +55,7 @@ public partial class GongfaChapterConfig : Resource
     }
     public Dictionary get_naqi_bonuses(bool is_main) => merge(naqi_bonuses, is_main ? main_naqi_bonuses : null);
     public Dictionary get_naqi_multipliers(bool is_main) => merge(naqi_multipliers, is_main ? main_naqi_multipliers : null);
+    public Dictionary get_combat_tempering_bonuses() => combat_tempering_bonuses.Duplicate();
     private static Dictionary merge(Dictionary baseValues, Dictionary? extra)
     {
         Dictionary result = baseValues.Duplicate();

@@ -15,9 +15,16 @@ const SETTINGS_PATH := "user://world_map_settings.cfg"
 const WORLD_ANCHORS_PATH := "res://resources/world/bai_chuan/bai_chuan_grid_anchors.json"
 const UI_FONT := preload("res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf")
 const PLAYER_MARKER_TEXTURE := preload("res://textures/ui/world/player_pawn_marker_v1.png")
+const DESTINATION_MARKER_TEXTURE := preload("res://textures/ui/world/world_map_destination_flag_ink_v1.png")
+const ROUTE_FOOTPRINT_TEXTURE := preload("res://textures/ui/world/world_map_route_cloth_shoeprint_umber_v1.svg")
+const ROUTE_FOOTPRINT_LAYER_SCRIPT := preload("res://gdscripts/world/WorldMapFootprintRoute.gd")
 const PLACEHOLDER_MARKER_TEXTURE := preload("res://textures/ui/world/world_marker_circle_ink.svg")
 const PRIMARY_MARKER_RING_TEXTURE := preload("res://textures/ui/world/world_marker_ring_ink.svg")
 const MEMORY_MARKER_TEXTURE := preload("res://textures/ui/world/world_marker_empty_ink.svg")
+const PLAYER_MARKER_DISPLAY_SIZE := Vector2i(140, 168)
+const DESTINATION_MARKER_DISPLAY_HEIGHT := 100.0
+const DESTINATION_MARKER_POLE_X_RATIO := 0.5
+const DESTINATION_MARKER_MAX_CELL_RATIO := 0.42
 const MIN_ZOOM := 0.02
 const MAX_ZOOM := 2.5
 const ZOOM_STEP := 1.2
@@ -62,8 +69,9 @@ var _pan_press_position := Vector2.ZERO
 var _last_pan_position := Vector2.ZERO
 var _middle_zoom_active := false
 var _middle_zoom_last_position := Vector2.ZERO
-var _selected_outline: Line2D
-var _route_line: Line2D
+var _selected_cell_marker: Sprite2D
+var _destination_marker_display_size := Vector2.ZERO
+var _route_footprints: Node2D
 var _player_marker: Sprite2D
 var _player_marker_map_position := Vector2.ZERO
 var _fog_sprite: Sprite2D
@@ -82,6 +90,7 @@ var _world_anchors: Array[Dictionary] = []
 var _anchors_by_cell: Dictionary = {}
 var _anchor_markers: Array[Node2D] = []
 var _population_counts: Dictionary = {}
+var _grid_population_badges: Dictionary = {}
 var _world_markers_prepared := false
 
 func _ready() -> void:
@@ -95,20 +104,7 @@ func _ready() -> void:
 	var sample_controls := _map_root.get_node_or_null("SampleControls") as CanvasLayer
 	if sample_controls != null:
 		sample_controls.visible = false
-	_selected_outline = Line2D.new()
-	_selected_outline.name = "SelectedCellOutline"
-	_selected_outline.width = 7.0
-	_selected_outline.default_color = Color(0.43, 0.24, 0.20, 0.9)
-	_selected_outline.z_index = 115
-	_selected_outline.closed = true
-	_selected_outline.points = PackedVector2Array([
-		Vector2(-TILE_SIZE * 0.5, -TILE_SIZE * 0.5),
-		Vector2(TILE_SIZE * 0.5, -TILE_SIZE * 0.5),
-		Vector2(TILE_SIZE * 0.5, TILE_SIZE * 0.5),
-		Vector2(-TILE_SIZE * 0.5, TILE_SIZE * 0.5),
-	])
-	_selected_outline.visible = false
-	_map_canvas.add_child(_selected_outline)
+	_create_selection_marker()
 	_create_fog_layer()
 	_create_route_layer()
 	_load_world_anchors()
@@ -263,10 +259,9 @@ func set_player_cell(cell: Vector2i) -> bool:
 	_selected_cell = cell
 	_player_marker_map_position = _terrain.position + _terrain.map_to_local(cell)
 	_preview_path.clear()
-	_route_line.clear_points()
+	_update_route_points()
 	_reveal_around_player()
-	_selected_outline.position = _terrain.position + _terrain.map_to_local(cell)
-	_selected_outline.visible = true
+	_update_selected_cell_marker()
 	_map_pan = Vector2.ZERO
 	_layout_map()
 	_refresh_cell_info()
@@ -306,10 +301,9 @@ func restore_persistent_state(cell: Vector2i, explored_cells: PackedByteArray, r
 		_pending_resume_path = remaining_path.duplicate()
 	_build_pathfinder()
 	_reveal_around_player()
-	_selected_outline.position = _player_marker_map_position
-	_selected_outline.visible = true
 	_preview_path.clear()
-	_route_line.clear_points()
+	_update_route_points()
+	_update_selected_cell_marker()
 	_map_pan = Vector2.ZERO
 	_layout_map()
 	_refresh_cell_info()
@@ -346,8 +340,13 @@ func get_location_node_id_at_cell(cell: Vector2i) -> String:
 func get_location_anchor_cell(node_id: String) -> Vector2i:
 	for anchor in _world_anchors:
 		if str(anchor.get("location_node_id", "")) == node_id:
-			return anchor.get("cell", Vector2i(-1, -1))
+			var cell: Vector2i = anchor.get("cell", Vector2i(-1, -1))
+			return cell
 	return Vector2i(-1, -1)
+
+func has_world_grid_anchor(node_id: String) -> bool:
+	var cell := get_location_anchor_cell(node_id)
+	return _is_cell_in_bounds(cell) and is_cell_traversable(cell)
 
 func get_npc_grid_path(from_cell: Vector2i, to_cell: Vector2i) -> Array[Vector2i]:
 	if _npc_pathfinder == null or not _is_cell_in_bounds(from_cell) or not _is_cell_in_bounds(to_cell):
@@ -488,9 +487,8 @@ func _on_cell_clicked(cell: Vector2i) -> void:
 	if cell == _player_cell:
 		_selected_cell = cell
 		_preview_path.clear()
-		_route_line.clear_points()
-		_selected_outline.position = _terrain.position + _terrain.map_to_local(cell)
-		_selected_outline.visible = true
+		_update_route_points()
+		_update_selected_cell_marker()
 		_refresh_cell_info()
 		cell_selected.emit(cell)
 		return
@@ -498,17 +496,15 @@ func _on_cell_clicked(cell: Vector2i) -> void:
 	if not _is_cell_explored(cell):
 		_selected_cell = cell
 		_preview_path.clear()
-		_route_line.clear_points()
-		_selected_outline.position = _terrain.position + _terrain.map_to_local(cell)
-		_selected_outline.visible = true
+		_update_route_points()
+		_update_selected_cell_marker()
 		_refresh_cell_info()
 		return
 	if not is_cell_traversable(cell):
 		_selected_cell = cell
 		_preview_path.clear()
-		_route_line.clear_points()
-		_selected_outline.position = _terrain.position + _terrain.map_to_local(cell)
-		_selected_outline.visible = true
+		_update_route_points()
+		_update_selected_cell_marker()
 		_cell_info_label.text = "第 %d 列 · 第 %d 行　｜　%s · 不可通行" % [cell.x + 1, cell.y + 1, "水域" if get_cell_terrain(cell) == "water" else "地形"]
 		_cell_info_panel.visible = true
 		return
@@ -516,8 +512,7 @@ func _on_cell_clicked(cell: Vector2i) -> void:
 		_start_travel(_preview_path.duplicate())
 		return
 	_selected_cell = cell
-	_selected_outline.position = _terrain.position + _terrain.map_to_local(cell)
-	_selected_outline.visible = true
+	_update_selected_cell_marker()
 	_preview_path = _find_shortest_path(_player_cell, cell)
 	_update_route_points()
 	if _preview_path.is_empty():
@@ -566,19 +561,36 @@ func _create_fog_layer() -> void:
 	_map_canvas.add_child(_fog_sprite)
 
 func _create_route_layer() -> void:
-	_route_line = Line2D.new()
-	_route_line.name = "RoutePreview"
-	_route_line.default_color = Color("c1853d")
-	_route_line.joint_mode = Line2D.LINE_JOINT_ROUND
-	_route_line.begin_cap_mode = Line2D.LINE_CAP_ROUND
-	_route_line.end_cap_mode = Line2D.LINE_CAP_ROUND
-	_route_line.antialiased = true
-	_route_line.z_index = 110
-	_map_canvas.add_child(_route_line)
+	_route_footprints = ROUTE_FOOTPRINT_LAYER_SCRIPT.new() as Node2D
+	_route_footprints.name = "RouteFootprints"
+	_route_footprints.position = _terrain.position
+	_route_footprints.z_index = 110
+	_map_canvas.add_child(_route_footprints)
+	_route_footprints.call("configure", _terrain, ROUTE_FOOTPRINT_TEXTURE)
+	_route_footprints.call("set_display_zoom", _user_zoom)
+
+func _create_selection_marker() -> void:
+	var marker_image := DESTINATION_MARKER_TEXTURE.get_image()
+	var marker_bounds := marker_image.get_used_rect()
+	if marker_bounds.size.x > 0 and marker_bounds.size.y > 0:
+		marker_image = marker_image.get_region(marker_bounds)
+	var resize_scale := DESTINATION_MARKER_DISPLAY_HEIGHT / float(marker_image.get_height())
+	var marker_width := maxi(1, roundi(float(marker_image.get_width()) * resize_scale))
+	var marker_height := int(DESTINATION_MARKER_DISPLAY_HEIGHT)
+	marker_image.resize(marker_width, marker_height, Image.INTERPOLATE_LANCZOS)
+	_destination_marker_display_size = Vector2(float(marker_width), float(marker_height))
+	_selected_cell_marker = Sprite2D.new()
+	_selected_cell_marker.name = "SelectedCellMarker"
+	_selected_cell_marker.centered = false
+	_selected_cell_marker.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	_selected_cell_marker.texture = ImageTexture.create_from_image(marker_image)
+	_selected_cell_marker.z_index = 115
+	_selected_cell_marker.visible = false
+	_map_canvas.add_child(_selected_cell_marker)
 
 func _create_player_marker() -> void:
 	var marker_image := PLAYER_MARKER_TEXTURE.get_image()
-	marker_image.resize(48, 58, Image.INTERPOLATE_LANCZOS)
+	marker_image.resize(PLAYER_MARKER_DISPLAY_SIZE.x, PLAYER_MARKER_DISPLAY_SIZE.y, Image.INTERPOLATE_LANCZOS)
 	_player_marker = Sprite2D.new()
 	_player_marker.name = "PlayerCellMarker"
 	_player_marker.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
@@ -727,9 +739,8 @@ func _start_travel(path: Array[Vector2i]) -> void:
 			_update_route_points()
 	_selected_cell = _player_cell
 	_preview_path.clear()
-	_route_line.clear_points()
-	_selected_outline.position = _terrain.position + _terrain.map_to_local(_player_cell)
-	_selected_outline.visible = true
+	_update_route_points()
+	_update_selected_cell_marker()
 	_moving = false
 	_layout_map()
 	_active_travel_path.clear()
@@ -743,19 +754,29 @@ func _advance_game_time(hours: float) -> void:
 		time_manager.call("advance_time", hours, "world_map_travel")
 
 func _update_route_points() -> void:
-	if _route_line == null:
+	if _route_footprints == null:
 		return
-	_route_line.clear_points()
-	for cell in _preview_path:
-		_route_line.add_point(_terrain.position + _terrain.map_to_local(cell))
+	_route_footprints.call("set_route", _preview_path, _user_zoom)
+
+func _update_selected_cell_marker() -> void:
+	if _selected_cell_marker == null:
+		return
+	_selected_cell_marker.visible = _is_cell_in_bounds(_selected_cell) and _selected_cell != _player_cell
+	if not _selected_cell_marker.visible:
+		return
+	var max_scale_by_cell := TILE_SIZE * DESTINATION_MARKER_MAX_CELL_RATIO / maxf(_destination_marker_display_size.x, _destination_marker_display_size.y)
+	var marker_scale := minf(1.0 / maxf(_user_zoom, 0.01), max_scale_by_cell)
+	var cell_center := _terrain.position + _terrain.map_to_local(_selected_cell)
+	var pole_anchor := Vector2(_destination_marker_display_size.x * DESTINATION_MARKER_POLE_X_RATIO, _destination_marker_display_size.y)
+	_selected_cell_marker.position = cell_center - pole_anchor * marker_scale
+	_selected_cell_marker.scale = Vector2.ONE * marker_scale
 
 func _update_screen_sized_markers() -> void:
 	if _user_zoom <= 0.0:
 		return
-	if _route_line != null:
-		_route_line.width = 3.0 / _user_zoom
-	if _selected_outline != null:
-		_selected_outline.width = 5.0 / _user_zoom
+	if _route_footprints != null:
+		_route_footprints.call("set_display_zoom", _user_zoom)
+	_update_selected_cell_marker()
 	for marker in _anchor_markers:
 		if is_instance_valid(marker):
 			marker.scale = Vector2.ONE / _user_zoom
@@ -791,6 +812,57 @@ func set_population_counts(counts: Dictionary) -> void:
 		var count := int(_population_counts.get(location_node_id, 0)) if not location_node_id.is_empty() else 0
 		label.text = str(count)
 		badge.visible = count > 0
+
+func set_grid_population_counts(counts: Dictionary) -> void:
+	var active_cells: Dictionary = {}
+	for cell_variant in counts:
+		if not cell_variant is Vector2i:
+			continue
+		var cell: Vector2i = cell_variant
+		var count := int(counts[cell_variant])
+		if count <= 0 or not _is_cell_in_bounds(cell) or not get_location_node_id_at_cell(cell).is_empty():
+			continue
+		active_cells[cell] = count
+		var badge := _grid_population_badges.get(cell) as PanelContainer
+		if badge == null or not is_instance_valid(badge):
+			badge = _create_grid_population_badge(cell)
+			_grid_population_badges[cell] = badge
+		var label := badge.get_node_or_null("Count") as Label
+		if label != null:
+			label.text = str(count)
+		badge.visible = true
+	for cell_variant in _grid_population_badges.keys():
+		if active_cells.has(cell_variant):
+			continue
+		var badge := _grid_population_badges[cell_variant] as PanelContainer
+		if is_instance_valid(badge):
+			badge.queue_free()
+		_grid_population_badges.erase(cell_variant)
+
+func _create_grid_population_badge(cell: Vector2i) -> PanelContainer:
+	var badge := PanelContainer.new()
+	badge.name = "GridPopulationBadge_%d_%d" % [cell.x, cell.y]
+	badge.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	badge.z_index = 106
+	badge.size = Vector2(28.0, 27.0)
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.18, 0.16, 0.13, 0.94)
+	style.border_color = Color("c9ad75")
+	style.set_border_width_all(2)
+	style.set_corner_radius_all(9)
+	badge.add_theme_stylebox_override("panel", style)
+	var label := Label.new()
+	label.name = "Count"
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	label.custom_minimum_size = Vector2(24.0, 23.0)
+	label.add_theme_font_override("font", UI_FONT)
+	label.add_theme_font_size_override("font_size", 14)
+	label.add_theme_color_override("font_color", Color("f5ead1"))
+	badge.add_child(label)
+	badge.position = _terrain.position + _terrain.map_to_local(cell) + Vector2(TILE_SIZE * 0.34, -TILE_SIZE * 0.34) - badge.size * 0.5
+	_map_canvas.add_child(badge)
+	return badge
 
 func _get_anchor_name(cell: Vector2i) -> String:
 	var anchor: Dictionary = _anchors_by_cell.get(cell, {})

@@ -3,6 +3,9 @@
 [ext_resource type="Script" path="res://csharp/gongfa/ActiveSkillData.cs" id="1"]
 
 [resource]
+uses_per_battle = 0
+uses_per_round = 0
+max_charges = 0
 script = ExtResource("1")
 tags = Array[String](["闪避"])
 skill_name = "托身"
@@ -13,6 +16,6 @@ energy_cost = 0
 target_type = 1
 keywords = Array[String]([])
 status_effects = Array[Dictionary]([{"status_id":"身法", "hit_formula":"1.0", "stacks":2}])
-preparation_frames = 96
-recovery_frames = 48
-cooldown_frames = 240
+preparation_frames = 0
+recovery_frames = 0
+cooldown_frames = 0

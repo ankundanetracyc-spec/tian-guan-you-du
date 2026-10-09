@@ -34,11 +34,11 @@ public partial class ActiveSkillData : Resource
     [Export] public bool can_target_empty;
     [Export] public int move_distance;
     [ExportGroup("即时战斗时序")]
-    /// <summary>准备阶段基础时长；采用四倍后的清晰档位，时长改变后允许出现非整档实际值。</summary>
-    [Export(PropertyHint.Range, "48,1440,1")] public int preparation_frames = 240;
-    /// <summary>结算后的收招基础时长。</summary>
-    [Export(PropertyHint.Range, "0,720,1")] public int recovery_frames = 96;
-    /// <summary>技能完成结算后的再次可用间隔；0 表示收招完成后即可再次排队。</summary>
+    /// <summary>旧战斗流程兼容字段；即时队列战斗不使用准备时长。</summary>
+    [Export(PropertyHint.Range, "0,1440,1")] public int preparation_frames;
+    /// <summary>旧战斗流程兼容字段；即时队列战斗不使用收招时长。</summary>
+    [Export(PropertyHint.Range, "0,720,1")] public int recovery_frames;
+    /// <summary>旧战斗流程兼容字段；即时队列战斗以每轮或每场次数限制招式。</summary>
     [Export(PropertyHint.Range, "0,3600,1")] public int cooldown_frames;
     /// <summary>有限次数技能的最大使用次数；0 表示不限制次数。</summary>
     [Export(PropertyHint.Range, "0,99,1")] public int max_charges;
@@ -54,6 +54,8 @@ public partial class ActiveSkillData : Resource
     [ExportGroup("机制标记")]
     /// <summary>运行时规则标记；不作为构筑关键词显示。</summary>
     [Export] public Array<string> keywords = [];
+    /// <summary>由已研读化法附加到本招式上的运行时效果 ID，不作为玩家可见关键词。</summary>
+    [Export] public Array<string> gongfa_rewrite_effect_ids = [];
     [Export] public string momentum_condition_type = "";
     [Export] public string momentum_effect_params = "";
     [Export] public string flow_condition_type = "";
@@ -88,7 +90,7 @@ public partial class ActiveSkillData : Resource
     }
 
     public int get_energy_cost() => energy_cost;
-    public string get_cost_description() => skill_type == SkillType.POWER ? "" : $"精力: {energy_cost}，法力: {mana_cost}" + (spirit_occupy > 0 ? $"，灵识占用: {spirit_occupy}" : "");
+    public string get_cost_description() => skill_type == SkillType.POWER ? "" : $"精力: {energy_cost}，法力: {mana_cost}";
 
     /// <summary>所有卡牌共用的牌面短描述：只写目标、数值与关键机制，不使用叙事性长句。</summary>
     public string get_brief_description(GodotObject? owner = null)
@@ -109,7 +111,7 @@ public partial class ActiveSkillData : Resource
             if (!string.IsNullOrEmpty(status)) lines.Add($"获得 {count} 层{status}。");
         }
         if (keywords.Contains("应对")) lines.Insert(0, "应对：队首遇到匹配来袭时立即触发；未触发则正常结算基础效果。");
-        return lines.Count == 0 ? (string.IsNullOrWhiteSpace(description)?"施展本牌效果。":description) : string.Join("\n", lines);
+        return lines.Count == 0 ? (string.IsNullOrWhiteSpace(description)?"施展本技能效果。":description) : string.Join("\n", lines);
     }
     public string get_skill_description(GodotObject? owner = null) => get_brief_description(owner) + get_counter_effect_description(owner);
 
@@ -135,16 +137,7 @@ public partial class ActiveSkillData : Resource
             "counter_block" => $"获得 {CardRules.Block(this, owner, count)} 层化解。",
             "gain_punch_frame" => $"获得 {count} 层拳架。",
             "gain_qi_blood" => $"获得 {count} 层气血。",
-            "gain_sword_intent" => $"获得 {count} 层剑意。",
-            "apply_sword_mark" => $"对目标施加 {count} 层剑痕。",
-            "apply_sword_mark_if_absent" => $"目标无剑痕时施加 {count} 层剑痕。",
-            "apply_sword_mark_to_attacker" => $"对攻击者施加 {count} 层剑痕。",
-            "consume_marks_add_wound" => $"消耗剑痕并加入外伤。",
-            "bonus_damage_if_target_marked" or "bonus_damage_if_pre_mark" => "目标带有剑痕时提高伤害。",
-            "critical_if_target_marked" => "目标带有剑痕时提高会心。",
-            "precision_if_target_marked" => "目标带有剑痕时提高精准。",
             "precision_if_guarding" => "自身有护持、化解或借力时提高精准。",
-            "enter_sword_stance" => "进入折枝剑势。",
             "spend_qi_blood" => "消耗 1 层气血。",
             "evasion" => "本次受击提高闪避。",
             _ => description

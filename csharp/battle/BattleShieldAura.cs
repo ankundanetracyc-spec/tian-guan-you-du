@@ -55,6 +55,7 @@ public partial class BattleShieldAura : Node2D
 
     public override void _Process(double delta)
     {
+        _material?.SetShaderParameter("effect_time", _elapsed);
         if (_preview)
         {
             _elapsed += (float)delta;
@@ -69,6 +70,7 @@ public partial class BattleShieldAura : Node2D
         }
 
         var nextShield = Mathf.Max(0, _owner.Get("shield").AsInt32());
+        Position = _owner.ToLocal(BattleInkCombatVfx.Anchor(_owner));
         var nextActive = nextShield > 0 && _owner.Get("current_health").AsInt32() > 0;
         _elapsed += (float)delta;
         if (nextShield != _shield || nextActive != _active)
@@ -127,9 +129,10 @@ public partial class BattleShieldAura : Node2D
         if (_shieldShader is null) return;
 
         _material = new ShaderMaterial { Shader = _shieldShader };
-        _material.SetShaderParameter("shield_tint", new Color(0.06f, 0.20f, 0.48f, 1f));
-        _material.SetShaderParameter("edge_tint", new Color(0.38f, 0.70f, 0.98f, 1f));
-        _material.SetShaderParameter("impact_tint", new Color(0.78f, 0.92f, 1f, 1f));
+        _material.SetShaderParameter("shield_tint", new Color(0.105f, 0.21f, 0.19f, 1f));
+        _material.SetShaderParameter("edge_tint", new Color(0.07f, 0.14f, 0.12f, 1f));
+        _material.SetShaderParameter("impact_tint", new Color(0.025f, 0.038f, 0.031f, 1f));
+        _material.SetShaderParameter("ink_noise", BattleInkRibbon.SharedNoise);
         _material.SetShaderParameter("impact_origin", new Vector2(0.18f, 0.50f));
         _material.SetShaderParameter("impact_progress", -1f);
 

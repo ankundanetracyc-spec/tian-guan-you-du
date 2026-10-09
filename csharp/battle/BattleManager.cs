@@ -14,7 +14,7 @@ public partial class BattleManager : Node2D
     [Export] public NodePath battle_map = new();
     [Export] public NodePath deploy_layer = new();
     [Export(PropertyHint.Range, "5,10,1")] public int action_slots_per_segment = 5;
-    [Export(PropertyHint.Range, "5,180,1")] public float planning_timeout_seconds = 30f;
+    [Export(PropertyHint.Range, "0,180,1")] public float planning_timeout_seconds = 0f;
     [Export] public Dictionary action_slots_by_realm = [];
     public Array<GodotObject> player_units = [], enemy_units = [], all_units = [];
     public Dictionary action_gauges = [], battle_units = [];
@@ -79,7 +79,7 @@ public partial class BattleManager : Node2D
     public bool is_battle_paused()=>_battlePaused;
     public SegmentPhase get_segment_phase()=>_segmentPhase;
     public bool is_planning_phase()=>_segmentPhase==SegmentPhase.Planning;
-    public bool can_player_plan()=>_segmentPhase==SegmentPhase.Planning&&!_playerQueueConfirmed&&GodotObject.IsInstanceValid(_mainPlayerUnit);
+    public bool can_player_plan()=>_segmentPhase==SegmentPhase.Planning&&!_selectingQueueTargets&&!_playerQueueConfirmed&&GodotObject.IsInstanceValid(_mainPlayerUnit);
     public int get_action_slot_capacity()=>Mathf.Clamp(action_slots_per_segment,5,10);
     public bool is_waiting_for_skill_target()=>_pendingInstantSkill is not null;
     public void set_battle_speed(float value)=>battleSpeed=value>=3?3:value>=2?2:1;

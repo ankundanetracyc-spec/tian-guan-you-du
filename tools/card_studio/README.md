@@ -4,8 +4,8 @@
 
 ## 已包含
 
-- 预置 `resources/activeskills/` 下现有 94 张卡牌。
-- 预置 `resources/gongfa/` 下现有 14 本秘籍及卷章。
+- 预置 `resources/activeskills/` 下当前收录的主动技能。
+- 预置 `resources/gongfa/` 下当前收录的秘籍及卷章。
 - 预置 `resources/realm/` 下现有凡人、云息一层至七层境界档案。
 - 卡牌编辑、费用/目标/关键词/状态/公式校验和牌面预览。
 - 秘籍总览、卷章、习得、纳气和化法编辑。

@@ -44,7 +44,7 @@ public partial class StoryDialoguePanel : Control
             return;
         }
         if (_speaker.Text == _portraitSpeaker) return;
-        show_world_npc_portrait(new WorldNpcData
+        show_world_npc_portrait(QingxiResidentAppearance.Find(_speaker.Text) ?? new WorldNpcData
         {
             npc_id = "dialogue_" + _speaker.Text,
             npc_name = _speaker.Text,

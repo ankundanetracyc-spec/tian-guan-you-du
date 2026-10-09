@@ -14,46 +14,56 @@ public partial class RealmPanel : Control
     private VBoxContainer? _stageRail;
     private HBoxContainer? _majorTabs;
     private Label? _bonuses;
-    private TextureRect? _outerMist;
-    private TextureRect? _innerMist;
-    private TextureRect? _coreLight;
-    private double _motionTime;
+    private RealmQiVisual? _qiVisual;
+    private Label? _currentRealm;
+    private Label? _realmCaption;
+    private Label? _nextRealm;
+    private Label? _visualHint;
+    private Button? _skipAnimation;
+    private string _observedRealm = "";
+    private string _pendingFrom = "";
+    private string _pendingTo = "";
+    private float _refreshElapsed;
 
     public override void _Ready()
     {
         SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         ZIndex = 650;
         Build();
+        VisibilityChanged += OnVisibilityChanged;
         Hide();
     }
 
     public override void _Process(double delta)
     {
-        if (!Visible || _outerMist is null || _innerMist is null || _coreLight is null) return;
-
-        _motionTime += delta;
-        // 旋转只发生在纸面内部的裁切节点；每帧按实际尺寸设定中心，避免缩放时漂移越界。
-        _outerMist.PivotOffset = _outerMist.Size * .5f;
-        _innerMist.PivotOffset = _innerMist.Size * .5f;
-        _coreLight.PivotOffset = _coreLight.Size * .5f;
-        _outerMist.Rotation = (float)(_motionTime * 0.018d);
-        _innerMist.Rotation = (float)(-_motionTime * 0.028d);
-        var mistBreath = 1f + 0.018f * Mathf.Sin((float)(_motionTime * 0.72d));
-        _innerMist.Scale = new Vector2(.74f * mistBreath, .74f * mistBreath);
-        var lightBreath = .26f + .15f * (0.5f + 0.5f * Mathf.Sin((float)(_motionTime * 1.05d)));
-        _coreLight.Modulate = new Color(.96f, .97f, .92f, lightBreath);
-        var lightScale = 0.97f + 0.03f * Mathf.Sin((float)(_motionTime * 1.05d));
-        _coreLight.Scale = new Vector2(lightScale, lightScale);
+        if (!Visible || _qiVisual?.IsTransitioning == true) return;
+        _refreshElapsed += (float)delta;
+        if (_refreshElapsed < .25f) return;
+        _refreshElapsed = 0f;
+        if (GodotObject.IsInstanceValid(_player)) RefreshVisual();
     }
 
-    public bool is_unlocked(Character? target) =>
-        GodotObject.IsInstanceValid(target) &&
-        GetNodeOrNull<RealmManager>("/root/RealmManager")?.is_realm_after_or_equal(target!.cultivation_realm, "云息一层") == true;
+    public override void _ExitTree()
+    {
+        if (GodotObject.IsInstanceValid(_player)) _player!.BreakthroughCompleted -= OnBreakthrough;
+    }
+
+    public bool is_unlocked(Character? target) => GodotObject.IsInstanceValid(target) && Index(target!.cultivation_realm) >= 0;
+
+    public void bind_player(Character target)
+    {
+        if (_player == target) return;
+        if (GodotObject.IsInstanceValid(_player)) _player!.BreakthroughCompleted -= OnBreakthrough;
+        _player = target;
+        _observedRealm = target.cultivation_realm;
+        target.BreakthroughCompleted += OnBreakthrough;
+    }
 
     public void show_for(Character target)
     {
         if (!is_unlocked(target)) return;
-        _player = target;
+        bind_player(target);
+        _qiVisual?.StopTransition();
         Rebuild();
         Refresh();
         Show();
@@ -72,7 +82,7 @@ public partial class RealmPanel : Control
         background.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         paper.AddChild(background);
 
-        // 复用粒子库的透明环流与柔光，且在独立裁切框中旋转。
+        // 同一片气由疏到密；六层以前不叠中心光球，成核后仍保留气的流动。
         var cloudEye = new Control { MouseFilter = MouseFilterEnum.Ignore, ClipContents = true };
         cloudEye.SetAnchorsPreset(LayoutPreset.FullRect);
         // 主视觉放在纸面正中，为左下加成和右上题字各留一角。
@@ -80,21 +90,9 @@ public partial class RealmPanel : Control
         cloudEye.OffsetLeft = 0; cloudEye.OffsetTop = 0; cloudEye.OffsetRight = 0; cloudEye.OffsetBottom = 0;
         paper.AddChild(cloudEye);
 
-        _outerMist = Texture("res://textures/particle_vfx/1024/alpha/effect_4.png", TextureRect.StretchModeEnum.KeepAspectCentered);
-        _outerMist.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        _outerMist.Modulate = new Color(.86f, .88f, .84f, .58f);
-        cloudEye.AddChild(_outerMist);
-
-        _innerMist = Texture("res://textures/particle_vfx/1024/alpha/effect_4.png", TextureRect.StretchModeEnum.KeepAspectCentered);
-        _innerMist.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        _innerMist.Modulate = new Color(.98f, .99f, .94f, .44f);
-        _innerMist.Scale = new Vector2(.74f, .74f);
-        cloudEye.AddChild(_innerMist);
-
-        _coreLight = Texture("res://textures/particle_vfx/1024/alpha/spotlight_1.png", TextureRect.StretchModeEnum.KeepAspectCentered);
-        _coreLight.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        _coreLight.Modulate = new Color(.96f, .97f, .92f, .26f);
-        cloudEye.AddChild(_coreLight);
+        _qiVisual = new RealmQiVisual();
+        _qiVisual.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        cloudEye.AddChild(_qiVisual);
 
         var root = new VBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
         root.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
@@ -114,11 +112,33 @@ public partial class RealmPanel : Control
         // 右上题字、左下加成与中部云眼三者互不挤占。
         var content = new Control { SizeFlagsVertical = SizeFlags.ExpandFill, MouseFilter = MouseFilterEnum.Ignore };
         root.AddChild(content);
-        var poem = Texture("res://textures/ui/realm_yunxi_poem_brush_black_v3.png", TextureRect.StretchModeEnum.KeepAspectCentered);
+        var poem = new RealmPoemVisual();
         poem.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        poem.AnchorLeft = .61f; poem.AnchorTop = .01f; poem.AnchorRight = .99f; poem.AnchorBottom = .58f;
+        poem.AnchorLeft = .73f; poem.AnchorTop = .015f; poem.AnchorRight = .985f; poem.AnchorBottom = .72f;
         poem.OffsetLeft = 0; poem.OffsetTop = 0; poem.OffsetRight = 0; poem.OffsetBottom = 0;
         content.AddChild(poem);
+
+        var realmInfo = new VBoxContainer { Alignment = BoxContainer.AlignmentMode.Center, MouseFilter = MouseFilterEnum.Ignore };
+        realmInfo.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        realmInfo.AnchorLeft = .31f; realmInfo.AnchorTop = .76f; realmInfo.AnchorRight = .69f; realmInfo.AnchorBottom = .995f;
+        realmInfo.OffsetLeft = 0; realmInfo.OffsetTop = 0; realmInfo.OffsetRight = 0; realmInfo.OffsetBottom = 0;
+        realmInfo.AddThemeConstantOverride("separation", 8);
+        content.AddChild(realmInfo);
+        _realmCaption = Label("当前境界", 14, new Color("c1b797"));
+        _currentRealm = Label("", 32, new Color("eee8d5"));
+        _nextRealm = Label("", 16, new Color("c7c1ac"));
+        _visualHint = Label("", 15, new Color("b9bba9"));
+        foreach (var line in new[] { _realmCaption, _currentRealm, _nextRealm, _visualHint })
+        {
+            line.HorizontalAlignment = HorizontalAlignment.Center;
+            realmInfo.AddChild(line);
+        }
+        _skipAnimation = new Button { Text = "跳过动画", Visible = false, MouseFilter = MouseFilterEnum.Stop };
+        _skipAnimation.AddThemeStyleboxOverride("normal", new StyleBoxEmpty());
+        _skipAnimation.AddThemeStyleboxOverride("hover", new StyleBoxEmpty());
+        _skipAnimation.AddThemeColorOverride("font_color", new Color("c7c1ac"));
+        _skipAnimation.Pressed += FinishPresentation;
+        realmInfo.AddChild(_skipAnimation);
 
         var bonus = new VBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
         bonus.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
@@ -180,12 +200,13 @@ public partial class RealmPanel : Control
         if (_stageRail is null) return;
         var button = new Button
         {
-            Text = Stages[stage],
+            Text = current ? $"· {Stages[stage]} ·" : Stages[stage],
             CustomMinimumSize = new Vector2(180, 40),
             Alignment = HorizontalAlignment.Center,
             MouseFilter = MouseFilterEnum.Ignore
         };
         ButtonStyle(button, current);
+        button.SelfModulate = new Color(1f, 1f, 1f, current ? 1f : .70f);
         _stageRail.AddChild(button);
     }
 
@@ -194,6 +215,76 @@ public partial class RealmPanel : Control
         if (_player is null || _bonuses is null) return;
         var config = GetNodeOrNull<RealmManager>("/root/RealmManager")?.get_realm_config(_player.cultivation_realm);
         _bonuses.Text = Bonuses(config);
+        RefreshVisual();
+    }
+
+    private float CloudAccumulation()
+    {
+        if (!GodotObject.IsInstanceValid(_player)) return 0f;
+        var config = GetNodeOrNull<RealmManager>("/root/RealmManager")?.get_realm_config("云息六层");
+        if (config is null || !config.required_attributes.TryGetValue("spirit_strands", out var required) || required.AsSingle() <= 0f)
+            return 0f;
+        return Mathf.Clamp((_player!.spirit_strands + _player.get_cultivation_progress()) / required.AsSingle(), 0f, 1f);
+    }
+
+    private void RefreshVisual()
+    {
+        if (!GodotObject.IsInstanceValid(_player) || _qiVisual is null) return;
+        var index = Index(_player!.cultivation_realm);
+        if (index < 0) return;
+        if (index >= 6) _qiVisual.ShowCore();
+        else _qiVisual.ShowCloud(CloudAccumulation());
+        if (_realmCaption is not null) _realmCaption.Visible = true;
+        if (_currentRealm is not null) _currentRealm.Text = Stages[index];
+        if (_nextRealm is not null) _nextRealm.Text = index + 1 < Stages.Length ? $"下一层　{Stages[index + 1]}" : "";
+        if (_visualHint is not null) _visualHint.Text = index >= 6 ? "灵核已成，内部气息缓缓流动" : index == 5 ? "灵云充盈，尚未凝核" : "灵气渐聚，随修炼逐渐充盈";
+        if (_skipAnimation is not null) _skipAnimation.Visible = false;
+    }
+
+    private void OnBreakthrough(Character character, string newRealm)
+    {
+        var previous = _observedRealm;
+        _observedRealm = newRealm;
+        // 本轮只制作一至七层；后续关窍和周行表现另行接入。
+        if (Index(newRealm) is < 0 or > 6) return;
+        _pendingFrom = previous;
+        _pendingTo = newRealm;
+        CallDeferred(nameof(PresentBreakthrough));
+    }
+
+    private void PresentBreakthrough()
+    {
+        if (!GodotObject.IsInstanceValid(_player) || _qiVisual is null || _player!.cultivation_realm != _pendingTo) return;
+        Rebuild();
+        Refresh();
+        Show();
+        MoveToFront();
+        if (_skipAnimation is not null) _skipAnimation.Visible = true;
+        if (_realmCaption is not null) _realmCaption.Visible = false;
+        if (_currentRealm is not null) _currentRealm.Text = "境界突破";
+        if (_nextRealm is not null) _nextRealm.Text = $"{_pendingFrom} → {_pendingTo}";
+        if (_pendingFrom == "云息六层" && _pendingTo == "云息七层")
+            _qiVisual.PlayCondensation(text => { if (_visualHint is not null) _visualHint.Text = text; }, FinishPresentation);
+        else
+        {
+            var amount = CloudAccumulation();
+            if (_visualHint is not null) _visualHint.Text = "气息渐稳，灵云舒展";
+            _qiVisual.PlayAccumulation(Mathf.Max(0f, amount - .025f), amount, FinishPresentation);
+        }
+    }
+
+    private void FinishPresentation()
+    {
+        _qiVisual?.StopTransition();
+        Rebuild();
+        Refresh();
+    }
+
+    private void OnVisibilityChanged()
+    {
+        if (Visible) return;
+        _qiVisual?.StopTransition();
+        if (_skipAnimation is not null) _skipAnimation.Visible = false;
     }
 
     private static int Index(string realm)

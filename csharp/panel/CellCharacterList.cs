@@ -3,6 +3,12 @@ using Godot.Collections;
 
 public partial class CellCharacterList : Control
 {
+    private const float PanelWidth = 336f;
+    private const float RowHeight = 80f;
+    private const int RowSeparation = 6;
+    private const float ContentTop = 72f;
+    private const float ContentBottom = 16f;
+    private const float PreferredHeight = ContentTop + RowHeight * 7 + RowSeparation * 6 + ContentBottom;
     [Export] public bool is_persistent;
     private Container? _characters;
     private Control? _list_panel;
@@ -25,16 +31,18 @@ public partial class CellCharacterList : Control
         _toggle_button = GetNodeOrNull<Button>("ListPanel/ToggleButton");
         if (_list_panel is not null)
         {
-            _list_panel.AddThemeStyleboxOverride("panel", row_style(new Color(.055f, .06f, .052f, .93f), new Color("a48b5b"), 8));
+            _list_panel.AddThemeStyleboxOverride("panel", row_style(new Color(.86f, .81f, .69f, .92f), new Color(.42f, .35f, .24f, .72f), 10));
             build_header();
         }
         if (GetNodeOrNull<ScrollContainer>("ListPanel/CharacterScroll") is { } scroll)
         {
-            scroll.OffsetLeft = 10;
-            scroll.OffsetTop = 58;
-            scroll.OffsetRight = -12;
-            scroll.OffsetBottom = -10;
+            scroll.OffsetLeft = 14;
+            scroll.OffsetTop = ContentTop;
+            scroll.OffsetRight = -14;
+            scroll.OffsetBottom = -ContentBottom;
         }
+        _characters?.AddThemeConstantOverride("separation", RowSeparation);
+        GetViewport().SizeChanged += refresh_layout;
         if (_toggle_button is not null)
         {
             _toggle_button.GetParent()?.RemoveChild(_toggle_button);
@@ -71,35 +79,35 @@ public partial class CellCharacterList : Control
         header.AnchorRight = 1;
         header.AnchorTop = 0;
         header.AnchorBottom = 0;
-        header.OffsetLeft = 13;
-        header.OffsetTop = 8;
-        header.OffsetRight = -13;
-        header.OffsetBottom = 48;
+        header.OffsetLeft = 18;
+        header.OffsetTop = 18;
+        header.OffsetRight = -18;
+        header.OffsetBottom = 52;
         header.AddThemeConstantOverride("separation", 8);
         _list_panel.AddChild(header);
 
         _header_title = new Label { Text = "当前位置", VerticalAlignment = VerticalAlignment.Center, SizeFlagsHorizontal = SizeFlags.ExpandFill, MouseFilter = MouseFilterEnum.Ignore };
-        _header_title.AddThemeFontSizeOverride("font_size", 18);
-        _header_title.AddThemeColorOverride("font_color", new Color("e5d09c"));
+        _header_title.AddThemeFontSizeOverride("font_size", 22);
+        _header_title.AddThemeColorOverride("font_color", new Color("403623"));
         header.AddChild(_header_title);
 
-        var count_badge = new PanelContainer { Name = "CountBadge", CustomMinimumSize = new Vector2(58, 28), MouseFilter = MouseFilterEnum.Ignore };
-        count_badge.AddThemeStyleboxOverride("panel", row_style(new Color(.23f, .19f, .12f, .88f), new Color("90764a"), 12));
+        var count_badge = new PanelContainer { Name = "CountBadge", CustomMinimumSize = new Vector2(60, 32), MouseFilter = MouseFilterEnum.Ignore };
+        count_badge.AddThemeStyleboxOverride("panel", row_style(new Color(.30f, .33f, .28f, .94f), new Color(.52f, .44f, .30f, .9f), 12));
         header.AddChild(count_badge);
         _header_count = new Label { Text = "0 位", HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center, MouseFilter = MouseFilterEnum.Ignore };
-        _header_count.AddThemeFontSizeOverride("font_size", 13);
+        _header_count.AddThemeFontSizeOverride("font_size", 16);
         _header_count.AddThemeColorOverride("font_color", new Color("f1e5c5"));
         count_badge.AddChild(_header_count);
 
-        var divider = new ColorRect { Name = "HeaderDivider", Color = new Color("b49a65", .55f), MouseFilter = MouseFilterEnum.Ignore };
+        var divider = new ColorRect { Name = "HeaderDivider", Color = new Color("806c47", .5f), MouseFilter = MouseFilterEnum.Ignore };
         divider.AnchorLeft = 0;
         divider.AnchorRight = 1;
         divider.AnchorTop = 0;
         divider.AnchorBottom = 0;
-        divider.OffsetLeft = 12;
-        divider.OffsetTop = 51;
-        divider.OffsetRight = -12;
-        divider.OffsetBottom = 52;
+        divider.OffsetLeft = 18;
+        divider.OffsetTop = 60;
+        divider.OffsetRight = -18;
+        divider.OffsetBottom = 61;
         _list_panel.AddChild(divider);
     }
 
@@ -130,7 +138,7 @@ public partial class CellCharacterList : Control
         }
         update_header(string.IsNullOrWhiteSpace(_title_text) ? "村中人物" : _title_text, count);
         _expanded = true;
-        resize_panel(count);
+        resize_panel();
         apply_expanded_state();
         show_and_raise();
     }
@@ -156,7 +164,7 @@ public partial class CellCharacterList : Control
             _characters?.AddChild(make_empty_state());
         update_header(context_id.StartsWith("world-cell:") ? "当前位置" : context_id.StartsWith("world:") ? "当前地点" : "在场人物", count);
         if (context_changed && !context_id.StartsWith("world-cell:")) _expanded = true;
-        resize_panel(count);
+        resize_panel();
         apply_expanded_state();
         show_and_raise();
     }
@@ -185,28 +193,28 @@ public partial class CellCharacterList : Control
         }
         update_header("在场人物", labels.Count);
         _expanded = true;
-        resize_panel(labels.Count);
+        resize_panel();
         apply_expanded_state();
         show_and_raise();
     }
 
     /// <summary>地点场景将可交谈人物交给同一份左侧名单，不再另建人物面板。</summary>
-    public void show_action_rows(IEnumerable<(string label, Action action)> rows, string context_id = "")
+    public void show_npc_action_rows(IEnumerable<(WorldNpcData npc, Action action)> rows, string context_id = "")
     {
         _world_mode = true;
         _roster_context = context_id;
         clear_children();
         var count = 0;
-        foreach (var (label, action) in rows)
+        foreach (var (npc, action) in rows)
         {
-            var row = make_row(label, 15);
-            row.Pressed += action;
+            var row = make_character_row(npc.npc_name, $"{npc.formal_identity}  ·  {npc.cultivation_realm}",
+                portrait => portrait.CallDeferred("show_world_npc", npc), action);
             _characters?.AddChild(row);
             count++;
         }
         update_header("可交谈人物", count);
         _expanded = true;
-        resize_panel(count);
+        resize_panel();
         apply_expanded_state();
         show_and_raise();
     }
@@ -233,15 +241,16 @@ public partial class CellCharacterList : Control
         var row = new Button
         {
             Text = "",
-            CustomMinimumSize = new Vector2(0, 72),
+            CustomMinimumSize = new Vector2(0, RowHeight),
             MouseFilter = MouseFilterEnum.Stop,
             FocusMode = FocusModeEnum.None,
             ClipContents = true,
         };
-        row.AddThemeColorOverride("font_color", new Color("f1dfad"));
-        row.AddThemeStyleboxOverride("normal", row_style(new Color(.105f, .115f, .095f, .91f), new Color(.55f, .47f, .31f, .65f)));
-        row.AddThemeStyleboxOverride("hover", row_style(new Color(.21f, .19f, .13f, .97f), new Color("c3a66b")));
-        row.AddThemeStyleboxOverride("pressed", row_style(new Color(.17f, .15f, .11f, .98f), new Color("d0b579")));
+        row.AddThemeColorOverride("font_color", new Color("453a27"));
+        row.AddThemeColorOverride("font_hover_color", new Color("332818"));
+        row.AddThemeStyleboxOverride("normal", row_style(new Color(.91f, .86f, .75f, .91f), new Color(.49f, .41f, .29f, .62f), 6));
+        row.AddThemeStyleboxOverride("hover", row_style(new Color(.98f, .93f, .82f, .98f), new Color(.63f, .49f, .28f, .92f), 6));
+        row.AddThemeStyleboxOverride("pressed", row_style(new Color(.84f, .78f, .64f, .98f), new Color(.54f, .40f, .23f, .9f), 6));
 
         var margin = new MarginContainer { MouseFilter = MouseFilterEnum.Ignore };
         margin.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
@@ -252,26 +261,30 @@ public partial class CellCharacterList : Control
         row.AddChild(margin);
 
         var content = new HBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
-        content.AddThemeConstantOverride("separation", 10);
+        content.AddThemeConstantOverride("separation", 12);
         margin.AddChild(content);
 
-        var portrait_frame = new PanelContainer { CustomMinimumSize = new Vector2(48, 60), MouseFilter = MouseFilterEnum.Ignore };
-        portrait_frame.AddThemeStyleboxOverride("panel", row_style(new Color(.78f, .72f, .59f, .96f), new Color("b59a63"), 4));
+        var portrait_frame = new PanelContainer { CustomMinimumSize = new Vector2(64, 64), MouseFilter = MouseFilterEnum.Ignore };
+        portrait_frame.AddThemeStyleboxOverride("panel", row_style(new Color(.72f, .66f, .53f, .98f), new Color("8f7548"), 6));
         content.AddChild(portrait_frame);
-        var portrait = new PortraitRenderer { CustomMinimumSize = new Vector2(44, 56), MouseFilter = MouseFilterEnum.Ignore };
-        portrait_frame.AddChild(portrait);
+        var avatar_crop = new Control { Name = "AvatarCrop", ClipContents = true, CustomMinimumSize = new Vector2(60, 60), MouseFilter = MouseFilterEnum.Ignore };
+        portrait_frame.AddChild(avatar_crop);
+        var portrait = new PortraitRenderer { CustomMinimumSize = new Vector2(60, 60), MouseFilter = MouseFilterEnum.Ignore };
+        portrait.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        portrait.set_headshot_mode(true);
+        avatar_crop.AddChild(portrait);
         configure_portrait(portrait);
 
         var text_column = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ShrinkCenter, MouseFilter = MouseFilterEnum.Ignore };
         text_column.AddThemeConstantOverride("separation", 3);
         content.AddChild(text_column);
         var name_label = new Label { Text = title, TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis, MouseFilter = MouseFilterEnum.Ignore };
-        name_label.AddThemeFontSizeOverride("font_size", 16);
-        name_label.AddThemeColorOverride("font_color", new Color("f1dfad"));
+        name_label.AddThemeFontSizeOverride("font_size", 20);
+        name_label.AddThemeColorOverride("font_color", new Color("3b3020"));
         text_column.AddChild(name_label);
         var details_label = new Label { Text = subtitle, TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis, MouseFilter = MouseFilterEnum.Ignore };
-        details_label.AddThemeFontSizeOverride("font_size", 12);
-        details_label.AddThemeColorOverride("font_color", new Color("c7c2ad"));
+        details_label.AddThemeFontSizeOverride("font_size", 16);
+        details_label.AddThemeColorOverride("font_color", new Color("6b604d"));
         text_column.AddChild(details_label);
 
         row.Pressed += on_pressed;
@@ -281,7 +294,7 @@ public partial class CellCharacterList : Control
     private static Control make_empty_state()
     {
         var panel = new PanelContainer { CustomMinimumSize = new Vector2(0, 56), MouseFilter = MouseFilterEnum.Ignore };
-        panel.AddThemeStyleboxOverride("panel", row_style(new Color(.12f, .12f, .10f, .55f), new Color(.53f, .48f, .36f, .42f), 5));
+        panel.AddThemeStyleboxOverride("panel", row_style(new Color(.81f, .76f, .65f, .76f), new Color(.57f, .48f, .33f, .48f), 5));
         var label = new Label
         {
             Text = "此处暂无其他人物",
@@ -290,7 +303,7 @@ public partial class CellCharacterList : Control
             MouseFilter = MouseFilterEnum.Ignore,
         };
         label.AddThemeFontSizeOverride("font_size", 14);
-        label.AddThemeColorOverride("font_color", new Color("c9c2af"));
+        label.AddThemeColorOverride("font_color", new Color("6c614d"));
         panel.AddChild(label);
         return panel;
     }
@@ -299,16 +312,36 @@ public partial class CellCharacterList : Control
     {
         var row = new Button
         {
-            Text = text,
+            Text = "",
             CustomMinimumSize = new Vector2(0, 38),
             MouseFilter = MouseFilterEnum.Stop,
-            Alignment = HorizontalAlignment.Center,
+            FocusMode = FocusModeEnum.None,
+            ClipContents = true,
         };
         row.AddThemeFontSizeOverride("font_size", font_size);
-        row.AddThemeColorOverride("font_color", new Color("f1dfad"));
-        row.AddThemeColorOverride("font_hover_color", new Color("fff4cc"));
-        row.AddThemeStyleboxOverride("normal", row_style(new Color(.12f, .13f, .1f, .86f), new Color(.68f, .55f, .3f, .62f)));
-        row.AddThemeStyleboxOverride("hover", row_style(new Color(.31f, .24f, .13f, .94f), new Color(.76f, .58f, .3f, .9f)));
+        row.AddThemeColorOverride("font_color", new Color("453a27"));
+        row.AddThemeColorOverride("font_hover_color", new Color("332818"));
+        row.AddThemeStyleboxOverride("normal", row_style(new Color(.91f, .86f, .75f, .91f), new Color(.49f, .41f, .29f, .62f), 6));
+        row.AddThemeStyleboxOverride("hover", row_style(new Color(.98f, .93f, .82f, .98f), new Color(.63f, .49f, .28f, .92f), 6));
+        var margin = new MarginContainer { MouseFilter = MouseFilterEnum.Ignore };
+        margin.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        margin.AddThemeConstantOverride("margin_left", 10);
+        margin.AddThemeConstantOverride("margin_right", 10);
+        margin.AddThemeConstantOverride("margin_top", 2);
+        margin.AddThemeConstantOverride("margin_bottom", 2);
+        var label = new Label
+        {
+            Text = text,
+            HorizontalAlignment = HorizontalAlignment.Center,
+            VerticalAlignment = VerticalAlignment.Center,
+            TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis,
+            ClipContents = true,
+            MouseFilter = MouseFilterEnum.Ignore,
+        };
+        label.AddThemeFontSizeOverride("font_size", font_size);
+        label.AddThemeColorOverride("font_color", new Color("453a27"));
+        margin.AddChild(label);
+        row.AddChild(margin);
         return row;
     }
 
@@ -324,9 +357,9 @@ public partial class CellCharacterList : Control
         {
             _toggle_button.Text = _expanded ? "◀" : "▶";
             _toggle_button.TooltipText = _expanded ? "收起角色列表" : "展开角色列表";
-            _toggle_button.Size = new Vector2(30, Mathf.Max(60, _expanded_height * .5f));
+            _toggle_button.Size = new Vector2(30, Mathf.Clamp(_expanded_height * .2f, 64f, 96f));
             _toggle_button.ZIndex = 1;
-            var targetPosition = new Vector2(_expanded ? 270 : 0, (_expanded_height - _toggle_button.Size.Y) * .5f);
+            var targetPosition = new Vector2(_expanded ? PanelWidth : 0, (_expanded_height - _toggle_button.Size.Y) * .5f);
             if (animate)
             {
                 _toggle_tween?.Kill();
@@ -337,7 +370,7 @@ public partial class CellCharacterList : Control
             }
             else _toggle_button.Position = targetPosition;
         }
-        Size = new Vector2(300, _expanded_height);
+        Size = new Vector2(PanelWidth + 30, _expanded_height);
         if (_list_panel is not null)
         {
             _list_panel.AnchorLeft = 0;
@@ -345,7 +378,7 @@ public partial class CellCharacterList : Control
             _list_panel.AnchorTop = 0;
             _list_panel.AnchorBottom = 1;
             _list_panel.OffsetLeft = 0;
-            _list_panel.OffsetRight = 270;
+            _list_panel.OffsetRight = PanelWidth;
             _list_panel.Visible = true;
             if (_characters is not null) _characters.Visible = _expanded;
             if (animate)
@@ -354,20 +387,29 @@ public partial class CellCharacterList : Control
                 _toggle_tween = CreateTween();
                 _toggle_tween.SetTrans(Tween.TransitionType.Cubic);
                 _toggle_tween.SetEase(Tween.EaseType.InOut);
-                _toggle_tween.TweenProperty(_list_panel, "position", _expanded ? Vector2.Zero : new Vector2(-270, 0), .2);
+                _toggle_tween.TweenProperty(_list_panel, "position", _expanded ? Vector2.Zero : new Vector2(-PanelWidth, 0), .2);
             }
-            else _list_panel.Position = _expanded ? Vector2.Zero : new Vector2(-270, 0);
+            else _list_panel.Position = _expanded ? Vector2.Zero : new Vector2(-PanelWidth, 0);
         }
     }
 
-    private void resize_panel(int count)
+    private void resize_panel()
     {
         var viewport_height = GetViewportRect().Size.Y;
-        var max_height = Mathf.Max(150f, viewport_height - 190f);
-        // 侧栏按内容收高，人数较多时才启用内部滚动，避免单人名单留下一整块空黑面板。
-        _expanded_height = Mathf.Min(max_height, Mathf.Max(142f, 70f + Mathf.Max(1, count) * 80f));
-        Size = new Vector2(300, _expanded_height);
+        var max_height = Mathf.Max(160f, viewport_height - 396f);
+        // 名单框固定占用适中视区；人数多少只影响滚动内容，不改变面板高度。
+        _expanded_height = Mathf.Min(max_height, PreferredHeight);
+        Size = new Vector2(PanelWidth + 30, _expanded_height);
     }
+
+    private void refresh_layout()
+    {
+        resize_panel();
+        apply_expanded_state();
+        Position = new Vector2(0, (GetViewportRect().Size.Y - Size.Y) * .5f);
+    }
+
+    public override void _ExitTree() => GetViewport().SizeChanged -= refresh_layout;
 
     private void clear_children()
     {
@@ -379,7 +421,7 @@ public partial class CellCharacterList : Control
     {
         ZIndex = 10;
         var viewportHeight = GetViewportRect().Size.Y;
-        Position = new Vector2(0, Mathf.Max(118f, (viewportHeight - Size.Y) * 0.5f));
+        Position = new Vector2(0, (viewportHeight - Size.Y) * 0.5f);
         Show();
         MoveToFront();
     }

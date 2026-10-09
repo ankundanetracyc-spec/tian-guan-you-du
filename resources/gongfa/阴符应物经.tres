@@ -6,6 +6,42 @@
 [ext_resource type="Resource" path="res://resources/activeskills/阴符应物经/承机.tres" id="4_chengji"]
 [ext_resource type="Resource" path="res://resources/activeskills/阴符应物经/挟势.tres" id="5_xieshi"]
 [ext_resource type="Resource" path="res://resources/activeskills/阴符应物经/合劲.tres" id="6_hejin"]
+[ext_resource type="Script" path="res://csharp/gongfa/GongfaDeckRewriteConfig.cs" id="7_rewrite"]
+[ext_resource type="Resource" path="res://resources/activeskills/阴符应物经/化法/卸力.tres" id="8_huafa_xieli"]
+[ext_resource type="Resource" path="res://resources/activeskills/阴符应物经/化法/承机.tres" id="huafaMissing12"]
+[ext_resource type="Resource" path="res://resources/activeskills/阴符应物经/化法/挟势.tres" id="huafaMissing13"]
+[ext_resource type="Resource" path="res://resources/activeskills/阴符应物经/化法/合劲.tres" id="huafaMissing14"]
+
+[sub_resource type="Resource" id="RewriteMissing12"]
+script = ExtResource("7_rewrite")
+mode = 1
+count = 1
+target_scope = 1
+source_skill_name = "承机"
+result_skill = ExtResource("huafaMissing12")
+
+[sub_resource type="Resource" id="RewriteMissing13"]
+script = ExtResource("7_rewrite")
+mode = 1
+count = 1
+target_scope = 1
+source_skill_name = "挟势"
+result_skill = ExtResource("huafaMissing13")
+
+[sub_resource type="Resource" id="RewriteMissing14"]
+script = ExtResource("7_rewrite")
+mode = 1
+count = 1
+target_scope = 1
+source_skill_name = "合劲"
+result_skill = ExtResource("huafaMissing14")
+
+[sub_resource type="Resource" id="RewriteXieLi"]
+script = ExtResource("7_rewrite")
+mode = 1
+count = 1
+source_skill_name = "卸力"
+result_skill = ExtResource("8_huafa_xieli")
 
 [sub_resource type="Resource" id="ChapterChengJi"]
 script = ExtResource("2_chapter")
@@ -20,7 +56,8 @@ learn_permanent_bonuses = {"physique": 0.5, "body_proficiency": 0.5}
 learned_active_skills = Array[Resource]([ExtResource("4_chengji")])
 left_branch_name = "淬炼"
 right_branch_name = "化法"
-naqi_bonuses = {"max_health": 30.0}
+sub_deck_rewrites = Array[ExtResource("7_rewrite")]([SubResource("RewriteMissing12")])
+combat_tempering_bonuses = {"max_health_flat": 30.0}
 
 [sub_resource type="Resource" id="ChapterXieShi"]
 script = ExtResource("2_chapter")
@@ -37,7 +74,8 @@ learn_permanent_bonuses = {"agility": 0.5, "body_proficiency": 0.5}
 learned_active_skills = Array[Resource]([ExtResource("5_xieshi")])
 left_branch_name = "淬炼"
 right_branch_name = "化法"
-naqi_bonuses = {"max_health": 20.0}
+sub_deck_rewrites = Array[ExtResource("7_rewrite")]([SubResource("RewriteMissing13")])
+combat_tempering_bonuses = {"max_health_flat": 20.0, "defuse_gain_layers": 1.0}
 
 [sub_resource type="Resource" id="ChapterYingWu"]
 script = ExtResource("2_chapter")
@@ -53,6 +91,8 @@ allowed_bearings = Array[int]([1])
 learn_permanent_bonuses = {"physique": 0.5}
 left_branch_name = "淬炼"
 right_branch_name = "化法"
+combat_tempering_bonuses = {"physical_damage_percent": 3.0}
+sub_deck_rewrites = Array[ExtResource("7_rewrite")]([SubResource("RewriteXieLi")])
 
 [sub_resource type="Resource" id="ChapterHeJin"]
 script = ExtResource("2_chapter")
@@ -69,11 +109,13 @@ learn_permanent_bonuses = {"body_proficiency": 1.0}
 learned_active_skills = Array[Resource]([ExtResource("6_hejin")])
 left_branch_name = "淬炼"
 right_branch_name = "化法"
+sub_deck_rewrites = Array[ExtResource("7_rewrite")]([SubResource("RewriteMissing14")])
+combat_tempering_bonuses = {"physical_damage_percent": 3.0, "borrowed_force_damage_pp_per_stack": 1.0}
 
 [resource]
 script = ExtResource("1_gongfa")
 gongfa_name = "阴符应物经"
-description = "锻躯主修法。以应对牌抵消当前物理伤害，将敌势转为借力后收束反制。"
+description = "锻躯主修法。以应对技能抵消当前物理伤害，将敌势转为借力后收束反制。"
 wuxing = 0
 can_be_main = true
 can_be_sub = true

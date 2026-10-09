@@ -44,7 +44,7 @@ offset_right = 860.0
 offset_bottom = 112.0
 theme_override_colors/font_color = Color(0.75, 0.78, 0.82, 1)
 theme_override_font_sizes/font_size = 16
-text = "十个固定技能槽＋即时队列测试；角色旁显示示例状态图标，悬停查看说明与剩余帧数。"
+text = "十个固定技能槽＋即时队列测试；角色旁显示战斗状态与资源，悬停查看说明与持续条件。"
 
 [node name="CombatSkillBar" parent="UILayer" instance=ExtResource("5_hand")]
 

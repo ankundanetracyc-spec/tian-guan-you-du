@@ -8,6 +8,7 @@ public partial class StatusInstance : RefCounted
     public int remaining_hits = 1;
     public float remaining_frames = -1;
     public int stacks = 1;
+    public int applied_round_id;
     public string source_id = "";
     public string source_name = "";
 

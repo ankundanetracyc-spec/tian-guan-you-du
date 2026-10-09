@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ActiveSkillData" format=3]
+[ext_resource type="Script" path="res://csharp/gongfa/ActiveSkillData.cs" id="1"]
+[resource]
+uses_per_battle = 0
+uses_per_round = 0
+max_charges = 0
+script = ExtResource("1")
+tags = Array[String](["生命","闪避","回复"])
+skill_name = "返照"
+skill_type = 2
+description = "气血-1并触发公共气血回落；获得身法2层。若本次气血回落后气血降至0层，额外获得身法1层。"
+source_gongfa_name = "黄庭养形篇"
+gongfa_rewrite_effect_ids = Array[String](["huangting_c1_fanzhao"])
+energy_cost = 1
+target_type = 1
+special_effects = Array[Dictionary]([{"effect":"spend_qi_blood", "count":1}])
+keywords = Array[String]([])
+preparation_frames = 0
+recovery_frames = 0
+cooldown_frames = 0

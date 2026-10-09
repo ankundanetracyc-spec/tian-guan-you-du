@@ -6,8 +6,8 @@
 script = ExtResource("1")
 effect_id = "内伤"
 name = "内伤"
-description = "伤入经脉，气机不畅。每层使行动速度降低5%、法力消耗提高10%、法力上限降低1、护心降低8%；即时队列战斗中持续720帧。"
+description = "伤入经脉，气机不畅。每层使行动速度降低5%、法力消耗提高10%、法力上限降低1、护心降低8%；最多4层、持续1回合。同类新增层刷新本类时长，主动消耗只移除相应层数；获得层的回合不扣时长。"
 is_debuff = true
 max_stacks = 4
-duration_default = 720
-duration_type = 2
+duration_default = 1
+duration_type = 0

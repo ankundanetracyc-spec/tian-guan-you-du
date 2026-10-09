@@ -15,6 +15,8 @@ public partial class NpcWorldManager : Node
 
     private int _last_processed_month = -1;
     private WorldNodeMapData? _map_data;
+    private Node? _tile_world_map;
+    private int _last_world_grid_hour = -1;
 
     public override void _Ready()
     {
@@ -22,6 +24,7 @@ public partial class NpcWorldManager : Node
         if (time is not null)
         {
             _last_processed_month = month_index(time);
+            _last_world_grid_hour = time.get_total_game_hours();
             time.time_changed += on_time_changed;
         }
     }
@@ -33,12 +36,35 @@ public partial class NpcWorldManager : Node
             normalize_npc_location(npc);
     }
 
+    public void set_tile_world_map(Node tileWorldMap)
+    {
+        _tile_world_map = tileWorldMap;
+        foreach (var npc in npcs)
+        {
+            normalize_npc_location(npc);
+            initialize_world_grid_position(npc);
+        }
+        var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
+        if (time is not null) _last_world_grid_hour = time.get_total_game_hours();
+        EmitSignal(SignalName.world_npcs_changed);
+    }
+
+    public bool has_world_grid_anchor(string nodeId)
+    {
+        if (_tile_world_map is null) return true; // Preserve data-only use in tests and non-map tools.
+        var cell = get_location_anchor_cell(nodeId);
+        return is_valid_world_grid_cell(cell) && _tile_world_map.Call("is_cell_traversable", cell).AsBool();
+    }
+
     public void set_simulation_enabled(bool enabled)
     {
         var was_enabled = simulation_enabled;
         simulation_enabled = enabled;
         if (enabled && !was_enabled && GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is { } time)
+        {
             _last_processed_month = month_index(time);
+            _last_world_grid_hour = time.get_total_game_hours();
+        }
     }
 
     public int get_last_processed_month() => _last_processed_month;
@@ -49,6 +75,7 @@ public partial class NpcWorldManager : Node
         npcs.Clear();
         var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
         _last_processed_month = time is null ? -1 : month_index(time);
+        _last_world_grid_hour = time is null ? -1 : time.get_total_game_hours();
         EmitSignal(SignalName.world_npcs_changed);
     }
 
@@ -66,8 +93,13 @@ public partial class NpcWorldManager : Node
         _last_processed_month = lastProcessedMonth >= 0
             ? lastProcessedMonth
             : time is null ? -1 : month_index(time);
+        _last_world_grid_hour = time is null ? -1 : time.get_total_game_hours();
         if (_map_data is not null)
-            foreach (var npc in npcs) normalize_npc_location(npc);
+            foreach (var npc in npcs)
+            {
+                normalize_npc_location(npc);
+                initialize_world_grid_position(npc);
+            }
         EmitSignal(SignalName.world_npcs_changed);
     }
 
@@ -75,6 +107,7 @@ public partial class NpcWorldManager : Node
     {
         if (npc is null || string.IsNullOrWhiteSpace(npc.npc_id)) return;
         if (!normalize_npc_location(npc)) return;
+        initialize_world_grid_position(npc);
         var existing = get_npc(npc.npc_id);
         if (existing is not null) npcs.Remove(existing);
         npcs.Add(npc);
@@ -102,6 +135,55 @@ public partial class NpcWorldManager : Node
     }
 
     public int get_node_npc_count(string node_id) => get_node_roster(node_id).Count;
+
+    /// <summary>世界地图节点人数包含驻留者，以及当前格正处于该节点占地内的行旅者。</summary>
+    public int get_world_location_population_count(string nodeId)
+    {
+        if (_tile_world_map is null) return get_node_npc_count(nodeId);
+        var count = 0;
+        foreach (var npc in npcs)
+        {
+            if (npc is null || !npc.is_alive || !string.IsNullOrEmpty(npc.dungeon_id) || !npc.has_world_grid_position) continue;
+            if (!npc.is_traveling && npc.current_node_id == nodeId)
+            {
+                count++;
+                continue;
+            }
+            if (npc.is_traveling && get_location_node_id_at_cell(npc.current_grid_cell) == nodeId) count++;
+        }
+        return count;
+    }
+
+    /// <summary>普通格的人数徽标只统计当前实际经过该格的行旅者。</summary>
+    public Godot.Collections.Dictionary get_ordinary_grid_population_counts()
+    {
+        var counts = new Godot.Collections.Dictionary();
+        if (_tile_world_map is null) return counts;
+        foreach (var npc in npcs)
+        {
+            if (npc is null || !npc.is_alive || !npc.is_traveling || !npc.has_world_grid_position || !string.IsNullOrEmpty(npc.dungeon_id)) continue;
+            if (!string.IsNullOrEmpty(get_location_node_id_at_cell(npc.current_grid_cell))) continue;
+            var cell = npc.current_grid_cell;
+            counts[cell] = counts.ContainsKey(cell) ? counts[cell].AsInt32() + 1 : 1;
+        }
+        return counts;
+    }
+
+    /// <summary>地点占地内共用稳定节点名单；普通格只显示当前真实落在该格的人物。</summary>
+    public Array<WorldNpcData> get_world_grid_roster(Vector2I cell, string locationNodeId = "")
+    {
+        var result = new Array<WorldNpcData>();
+        foreach (var npc in npcs)
+        {
+            if (npc is null || !npc.is_alive || !npc.has_world_grid_position || !string.IsNullOrEmpty(npc.dungeon_id)) continue;
+            var isNodeResident = !npc.is_traveling && !string.IsNullOrEmpty(locationNodeId) && npc.current_node_id == locationNodeId;
+            var isTravelingInsideThisLocation = npc.is_traveling && !string.IsNullOrEmpty(locationNodeId) &&
+                get_location_node_id_at_cell(npc.current_grid_cell) == locationNodeId;
+            var isAtOrdinaryCell = string.IsNullOrEmpty(locationNodeId) && npc.current_grid_cell == cell;
+            if (isNodeResident || isTravelingInsideThisLocation || isAtOrdinaryCell) result.Add(npc);
+        }
+        return result;
+    }
 
     /// <summary>返回地点下的空间划分，供地点人物名单按子场景分组。</summary>
     public Array<WorldSubsceneData> get_node_subscenes(string node_id)
@@ -136,6 +218,10 @@ public partial class NpcWorldManager : Node
         npc.travel_days_remaining = 0;
         npc.travel_days_total = 0;
         npc.is_traveling = false;
+        npc.world_travel_path.Clear();
+        npc.world_travel_next_cell_index = 1;
+        npc.world_travel_cell_progress_hours = 0f;
+        set_npc_grid_position(npc, get_location_anchor_cell(node_id));
         npc.current_state = state;
         npc.dungeon_id = "";
         npc.dungeon_node_id = "";
@@ -372,11 +458,194 @@ public partial class NpcWorldManager : Node
 
     private void on_time_changed()
     {
-        if (!simulation_enabled) return;
         var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
         if (time is null) return;
-        simulate_until_month(month_index(time));
+        var nowHour = time.get_total_game_hours();
+        var targetMonth = month_index(time);
+        if (!simulation_enabled)
+        {
+            _last_world_grid_hour = nowHour;
+            return;
+        }
+        if (_last_world_grid_hour < 0 || _last_processed_month < 0)
+        {
+            _last_world_grid_hour = nowHour;
+            _last_processed_month = targetMonth;
+            return;
+        }
+        if (nowHour < _last_world_grid_hour || targetMonth < _last_processed_month)
+        {
+            // 读档/测试回拨历法时不倒放 NPC 行程，也不补演未来月份。
+            _last_world_grid_hour = nowHour;
+            _last_processed_month = targetMonth;
+            return;
+        }
+
+        var cursorHour = _last_world_grid_hour;
+        for (var month = _last_processed_month + 1; month <= targetMonth; month++)
+        {
+            var monthBoundaryHour = month * 30 * 24;
+            if (monthBoundaryHour > cursorHour)
+            {
+                advance_world_grid_travel(monthBoundaryHour - cursorHour, cursorHour);
+                cursorHour = monthBoundaryHour;
+            }
+            simulate_month(month);
+            _last_processed_month = month;
+        }
+        if (nowHour > cursorHour)
+            advance_world_grid_travel(nowHour - cursorHour, cursorHour);
+        _last_world_grid_hour = nowHour;
     }
+
+    private void advance_world_grid_travel(int elapsedHours, int segmentStartHour)
+    {
+        if (_tile_world_map is null || elapsedHours <= 0) return;
+        var anyCellChanged = false;
+        foreach (var npc in npcs
+                     .Where(item => item is not null && item.is_alive && item.is_traveling && item.has_world_grid_position && string.IsNullOrEmpty(item.dungeon_id))
+                     .OrderBy(item => item.npc_id, StringComparer.Ordinal))
+        {
+            var remainingHours = (double)elapsedHours;
+            var usedHours = 0.0;
+            var guard = 0;
+            while (remainingHours > 0.0001 && npc.world_travel_next_cell_index < npc.world_travel_path.Count && guard++ < 40000)
+            {
+                var nextCell = npc.world_travel_path[npc.world_travel_next_cell_index];
+                var edgeHours = get_npc_cell_travel_hours(nextCell, npc.dun_speed);
+                if (!double.IsFinite(edgeHours) || edgeHours <= 0.0) break;
+                var neededHours = Math.Max(0.0, edgeHours - npc.world_travel_cell_progress_hours);
+                if (remainingHours + 0.0001 < neededHours)
+                {
+                    npc.world_travel_cell_progress_hours += (float)remainingHours;
+                    usedHours += remainingHours;
+                    remainingHours = 0.0;
+                    break;
+                }
+
+                remainingHours -= neededHours;
+                usedHours += neededHours;
+                npc.current_grid_cell = nextCell;
+                npc.world_travel_cell_progress_hours = 0f;
+                npc.world_travel_next_cell_index++;
+                anyCellChanged = true;
+                if (npc.world_travel_next_cell_index >= npc.world_travel_path.Count)
+                {
+                    var arrivalHour = segmentStartHour + usedHours;
+                    var arrivalMonth = Math.Max(0, (int)Math.Floor(arrivalHour / (30.0 * 24.0)));
+                    complete_world_grid_travel(npc, arrivalMonth);
+                    break;
+                }
+            }
+
+            if (npc.is_traveling)
+            {
+                var remainingTripHours = get_remaining_world_travel_hours(npc);
+                npc.travel_days_remaining = Math.Max(1, Mathf.CeilToInt((float)(remainingTripHours / 24.0)));
+            }
+        }
+        if (anyCellChanged) EmitSignal(SignalName.world_npcs_changed);
+    }
+
+    private void complete_world_grid_travel(WorldNpcData npc, int month)
+    {
+        var origin = npc.travel_origin_node_id;
+        var destination = npc.travel_destination_node_id;
+        npc.current_node_id = destination;
+        var destinationNode = _map_data?.get_node(destination);
+        npc.current_subscene_id = destinationNode is null ? "" : choose_arrival_subscene(destinationNode, month, npc.npc_id);
+        npc.current_state = "抵达";
+        npc.is_traveling = false;
+        npc.travel_origin_node_id = "";
+        npc.travel_destination_node_id = "";
+        var totalDays = Math.Max(1, npc.travel_days_total);
+        npc.travel_days_remaining = 0;
+        npc.travel_days_total = 0;
+        npc.world_travel_path.Clear();
+        npc.world_travel_next_cell_index = 1;
+        npc.world_travel_cell_progress_hours = 0f;
+        var subsceneNote = string.IsNullOrWhiteSpace(npc.current_subscene_id)
+            ? ""
+            : $"，进入 {get_subscene_name(destination, npc.current_subscene_id)}";
+        record(npc, month, "arrive", "抵达", "按遁速沿固定格网完成逐格行旅。", $"抵达 {destination}{subsceneNote}。", 0, "", false, origin, destination, totalDays, 0);
+    }
+
+    private double get_remaining_world_travel_hours(WorldNpcData npc)
+    {
+        if (_tile_world_map is null || npc.world_travel_path.Count == 0) return 0.0;
+        var totalHours = 0.0;
+        for (var index = npc.world_travel_next_cell_index; index < npc.world_travel_path.Count; index++)
+            totalHours += get_npc_cell_travel_hours(npc.world_travel_path[index], npc.dun_speed);
+        return Math.Max(0.0, totalHours - npc.world_travel_cell_progress_hours);
+    }
+
+    private void initialize_world_grid_position(WorldNpcData npc)
+    {
+        if (_tile_world_map is null || npc is null) return;
+        if (!npc.is_traveling)
+        {
+            if (!npc.has_world_grid_position || !is_valid_world_grid_cell(npc.current_grid_cell))
+                set_npc_grid_position(npc, get_location_anchor_cell(npc.current_node_id));
+            return;
+        }
+
+        if (npc.has_world_grid_position && is_valid_world_grid_cell(npc.current_grid_cell) &&
+            npc.world_travel_path.Count > 1 && npc.world_travel_next_cell_index < npc.world_travel_path.Count)
+            return;
+
+        if (!npc.has_world_grid_position || !is_valid_world_grid_cell(npc.current_grid_cell))
+            set_npc_grid_position(npc, get_location_anchor_cell(npc.travel_origin_node_id));
+        if (!npc.has_world_grid_position) return;
+        var destinationCell = get_location_anchor_cell(npc.travel_destination_node_id);
+        var path = get_npc_grid_path(npc.current_grid_cell, destinationCell);
+        if (path.Count > 1)
+        {
+            npc.world_travel_path.Clear();
+            foreach (var cell in path) npc.world_travel_path.Add(cell);
+            npc.world_travel_next_cell_index = 1;
+            npc.world_travel_cell_progress_hours = 0f;
+            var remainingDays = Math.Max(1, Mathf.CeilToInt((float)(get_remaining_world_travel_hours(npc) / 24.0)));
+            npc.travel_days_remaining = remainingDays;
+            npc.travel_days_total = Math.Max(npc.travel_days_total, remainingDays);
+        }
+    }
+
+    private void set_npc_grid_position(WorldNpcData npc, Vector2I cell)
+    {
+        npc.has_world_grid_position = _tile_world_map is not null && is_valid_world_grid_cell(cell) &&
+            _tile_world_map.Call("is_cell_traversable", cell).AsBool();
+        npc.current_grid_cell = npc.has_world_grid_position ? cell : new Vector2I(-1, -1);
+        if (!npc.is_traveling)
+        {
+            npc.world_travel_path.Clear();
+            npc.world_travel_next_cell_index = 1;
+            npc.world_travel_cell_progress_hours = 0f;
+        }
+    }
+
+    private Vector2I get_location_anchor_cell(string nodeId)
+    {
+        if (_tile_world_map is null || string.IsNullOrWhiteSpace(nodeId)) return new Vector2I(-1, -1);
+        return _tile_world_map.Call("get_location_anchor_cell", nodeId).AsVector2I();
+    }
+
+    private string get_location_node_id_at_cell(Vector2I cell)
+        => _tile_world_map is null ? "" : _tile_world_map.Call("get_location_node_id_at_cell", cell).AsString();
+
+    private Array<Vector2I> get_npc_grid_path(Vector2I fromCell, Vector2I toCell)
+    {
+        var result = new Array<Vector2I>();
+        if (_tile_world_map is null) return result;
+        var path = _tile_world_map.Call("get_npc_grid_path", fromCell, toCell).AsGodotArray<Vector2I>();
+        foreach (var cell in path) result.Add(cell);
+        return result;
+    }
+
+    private double get_npc_cell_travel_hours(Vector2I cell, float dunSpeed)
+        => _tile_world_map is null ? 2400.0 / Math.Max(0.01, dunSpeed) : _tile_world_map.Call("get_npc_cell_travel_hours", cell, dunSpeed).AsDouble();
+
+    private static bool is_valid_world_grid_cell(Vector2I cell)
+        => cell.X >= 0 && cell.X < 200 && cell.Y >= 0 && cell.Y < 200;
 
     /// <summary>把遗漏的月份逐月结算；只由主动时间推进或测试调用。</summary>
     public void simulate_until_month(int target_month)
@@ -490,7 +759,26 @@ public partial class NpcWorldManager : Node
         }
         var destination = neighbors[rng.RandiRange(0, neighbors.Count - 1)];
         var route = _map_data?.get_route_between(npc.current_node_id, destination);
+        var origin = npc.current_node_id;
         var travel_days = Mathf.Max(1, route?.travel_days ?? 1);
+        if (_tile_world_map is not null)
+        {
+            initialize_world_grid_position(npc);
+            var destinationCell = get_location_anchor_cell(destination);
+            var path = get_npc_grid_path(npc.current_grid_cell, destinationCell);
+            if (!is_valid_world_grid_cell(npc.current_grid_cell) || path.Count < 2)
+            {
+                work(npc, month, rng, "相邻地点在当前固定格网中没有可通行路径，本月改为营生。");
+                return;
+            }
+            npc.world_travel_path.Clear();
+            foreach (var cell in path) npc.world_travel_path.Add(cell);
+            npc.world_travel_next_cell_index = 1;
+            npc.world_travel_cell_progress_hours = 0f;
+            npc.has_world_grid_position = true;
+            var totalHours = get_remaining_world_travel_hours(npc);
+            travel_days = Math.Max(1, Mathf.CeilToInt((float)(totalHours / 24.0)));
+        }
         npc.travel_origin_node_id = npc.current_node_id;
         npc.is_traveling = true;
         npc.travel_destination_node_id = destination;
@@ -506,6 +794,15 @@ public partial class NpcWorldManager : Node
         var origin = npc.travel_origin_node_id;
         var destination = npc.travel_destination_node_id;
         var total = Mathf.Max(1, npc.travel_days_total);
+        if (_tile_world_map is not null)
+        {
+            npc.travel_days_remaining = Math.Max(1, Mathf.CeilToInt((float)(get_remaining_world_travel_hours(npc) / 24.0)));
+            npc.current_state = "途中";
+            record(npc, month, "travel_progress", "途中", "行程尚未完成，继续沿已知路线前行。", $"仍需 {npc.travel_days_remaining} 日抵达。", 0, "", false, origin, destination, total, npc.travel_days_remaining);
+            return;
+        }
+
+        // 无固定格网的纯数据测试场景保留旧兼容路径；实际世界地图通过上面的逐格时间轴行进。
         npc.travel_days_remaining = Mathf.Max(0, npc.travel_days_remaining - 30);
         if (npc.travel_days_remaining > 0)
         {
@@ -522,6 +819,9 @@ public partial class NpcWorldManager : Node
         npc.travel_origin_node_id = "";
         npc.travel_destination_node_id = "";
         npc.travel_days_total = 0;
+        npc.world_travel_path.Clear();
+        npc.world_travel_next_cell_index = 1;
+        npc.world_travel_cell_progress_hours = 0f;
         var subscene_note = string.IsNullOrWhiteSpace(npc.current_subscene_id)
             ? ""
             : $"，进入 {get_subscene_name(destination, npc.current_subscene_id)}";
@@ -536,6 +836,9 @@ public partial class NpcWorldManager : Node
         npc.travel_destination_node_id = "";
         npc.travel_days_remaining = 0;
         npc.travel_days_total = 0;
+        npc.world_travel_path.Clear();
+        npc.world_travel_next_cell_index = 1;
+        npc.world_travel_cell_progress_hours = 0f;
         npc.current_state = "已故";
         npc.death_cause = cause;
         record(npc, month, "death", "死亡", cause, outcome, 0, "", true);
@@ -569,12 +872,14 @@ public partial class NpcWorldManager : Node
     {
         var result = new Array<string>();
         if (_map_data is null) return result;
+        if (_tile_world_map is not null && !has_world_grid_anchor(node_id)) return result;
         foreach (var neighbor_id in _map_data.get_neighbors(node_id))
         {
             var neighbor = _map_data.get_node(neighbor_id);
             var route = _map_data.get_route_between(node_id, neighbor_id);
             if (neighbor is null || route is null || !route.unlocked) continue;
             if (neighbor.requires_unlock && !neighbor.unlocked) continue;
+            if (_tile_world_map is not null && !has_world_grid_anchor(neighbor_id)) continue;
             if (!result.Contains(neighbor_id)) result.Add(neighbor_id);
         }
         return result;
@@ -606,6 +911,7 @@ public partial class NpcWorldManager : Node
             GD.PushWarning($"npc_subscene_missing npc={npc.npc_id} node={npc.current_node_id} subscene={npc.current_subscene_id}");
             npc.current_subscene_id = "";
         }
+        initialize_world_grid_position(npc);
         return true;
     }
 

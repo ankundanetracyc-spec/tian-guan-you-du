@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ActiveSkillData" format=3]
+
+[ext_resource type="Script" path="res://csharp/gongfa/ActiveSkillData.cs" id="1"]
+
+[resource]
+uses_per_battle = 0
+uses_per_round = 0
+max_charges = 0
+script = ExtResource("1")
+tags = Array[String](["防御"])
+skill_name = "卸力"
+skill_type = 5
+description = "敌方物理攻击自身时获得化解。化解层数 = max(1, floor(体魄/2) + floor(体道造诣/3))；每层抵消本次攻击1点物理伤害。匹配的来袭攻击即将结算且本技能位于队首时立即应对；触发时自动消耗当前血炉中至多20点的偶数点，每消耗2点，本次化解增加1层。未触发时按正常行动时序结算基础效果，不消耗血炉。"
+source_gongfa_name = "赤阳参同经"
+energy_cost = 1
+mana_cost = 0
+target_type = 0
+slot_category = "response"
+keywords = Array[String](["应对"])
+counter_condition = "on_physical_attacked"
+status_effects = Array[Dictionary]([{"status_id":"化解", "stacks":1}])
+stacks_formula = "max(1, floor(physique/2) + floor(body_proficiency/3))"
+gongfa_rewrite_effect_ids = Array[String](["chiyang_c2_xieli"])
+preparation_frames = 0
+recovery_frames = 0
+cooldown_frames = 0

@@ -42,7 +42,16 @@ public partial class CultivationDeckBuilder : RefCounted
 
     private static Array<string> GetSelectedSkillPaths(GodotObject unit)
     {
-        if (unit is Character human && human.entity_data is HumanData data) return data.loaded_skill_paths;
+        if (unit is Character human && human.entity_data is HumanData data)
+        {
+            Array<string> result = [];
+            foreach (var path in data.loaded_skill_paths)
+            {
+                var resolved = human.resolve_combat_skill_slot_path(path);
+                if (!string.IsNullOrWhiteSpace(resolved) && !result.Contains(resolved)) result.Add(resolved);
+            }
+            return result;
+        }
         if (unit.HasMeta("loaded_skill_paths"))
         {
             Array<string> result = [];
@@ -74,7 +83,20 @@ public partial class CultivationDeckBuilder : RefCounted
             var upgrade = deck.get_upgrade_by_id(upgradeId);
             if (upgrade is not null) paths = upgrade.apply_to_paths(paths);
         }
-        if (unit is Character character) paths = ApplyGongfaRewrites(character, paths);
+        if (unit is Character character)
+        {
+            var rewrittenSkills = GongfaSkillRewriteRuntime.ApplyBasicSkillRewriteSkills(character, paths, out var rewrittenPaths);
+            for (var i = 0; i < rewrittenSkills.Count; i++)
+            {
+                var skill = rewrittenSkills[i].Duplicate() as ActiveSkillData;
+                if (skill is null) continue;
+                skill.SetMeta("basic_deck_source", path);
+                skill.SetMeta("battle_card_source", "basic");
+                skill.SetMeta("battle_card_path", i < rewrittenPaths.Count ? rewrittenPaths[i] : skill.ResourcePath);
+                cards.Add(skill);
+            }
+            return;
+        }
         foreach (var skillPath in paths)
         {
             // 基础牌使用运行时副本保存来源；不能往共享资源写 Meta，
@@ -88,39 +110,6 @@ public partial class CultivationDeckBuilder : RefCounted
             skill.SetMeta("battle_card_path", skillPath);
             cards.Add(skill);
         }
-    }
-
-    /// <summary>化法只改写基础牌运行时副本，不改动资源文件，也不会误伤功法牌或同名外来牌。</summary>
-    private static Array<string> ApplyGongfaRewrites(Character human, Array<string> source)
-    {
-        var result = source.Duplicate() as Array<string> ?? [];
-        foreach (var book in new[] { human.main_gongfa }.Concat(human.sub_gongfa_list))
-        {
-            if (book is null) continue;
-            var isMain = book == human.main_gongfa;
-            foreach (var chapter in book.get_sorted_chapters())
-            {
-                if (!human.is_gongfa_chapter_learned(book, chapter.get_id())) continue;
-                foreach (var rewrite in chapter.get_deck_rewrites(isMain))
-                {
-                    if (!rewrite.enabled || rewrite.get_result_skill(isMain) is not ActiveSkillData replacement || string.IsNullOrEmpty(replacement.ResourcePath)) continue;
-                    var count = Mathf.Max(1, rewrite.count);
-                    if (rewrite.mode == GongfaDeckRewriteConfig.RewriteMode.ADD)
-                    {
-                        for (var i = 0; i < count; i++) result.Add(replacement.ResourcePath);
-                        continue;
-                    }
-                    var changed = 0;
-                    for (var i = 0; i < result.Count && changed < count; i++)
-                    {
-                        var card = ResourceLoader.Load<ActiveSkillData>(result[i]);
-                        if (!rewrite.matches(card)) continue;
-                        result[i] = replacement.ResourcePath; changed++;
-                    }
-                }
-            }
-        }
-        return result;
     }
 
     private static string GetBasicDeckPath(GodotObject unit)

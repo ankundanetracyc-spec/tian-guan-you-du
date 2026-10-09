@@ -1,4 +1,4 @@
-<mxfile host="Electron" agent="Codex">
+<?xml version="1.0" encoding="utf-8"?><mxfile host="Electron" agent="Codex">
   <diagram id="chiyang-cantong" name="赤阳参同经">
     <mxGraphModel dx="3614" dy="610" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2600" pageHeight="1868" math="0" shadow="0">
       <root>
@@ -16,10 +16,10 @@
         <mxCell id="c1_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="淬炼（仅战斗内）&lt;br&gt;战斗属性：最大生命 +30&lt;br&gt;气血上限 +1" vertex="1">
           <mxGeometry height="92" width="260" x="360" y="395" as="geometry" />
         </mxCell>
-        <mxCell id="c1_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="化法&lt;br&gt;平息（体修基础技能追加效果，保留原效果）&lt;br&gt;关键词：生命、回复、增伤&lt;br&gt;主动气血下降前，可选择消耗至多10点现有血炉，且只按2点一档消耗；每消耗2点回复最大生命×1%。&lt;br&gt;随后平息原效果照常结算：气血-1；赤阳心法将本次公共回血转为血炉。&lt;br&gt;耗费与目标沿用平息：精力1；目标自身。&lt;br&gt;本卷化法只追加效果，不计入习得。" vertex="1">
+        <mxCell id="c1_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="化法&lt;br&gt;平息（追加效果，保留基础效果）&lt;br&gt;类型：术诀&lt;br&gt;关键词：生命、回复、增伤&lt;br&gt;耗费：精力 1、法力 0&lt;br&gt;目标：自身&lt;br&gt;效果：施放时自动消耗当前血炉中至多10点的偶数点；每消耗2点回复最大生命&#215;1%。随后按平息基础效果结算：气血-1；赤阳心法将本次公共气血回落回复转为血炉；本次新生血炉不能用于本次回复。" vertex="1">
           <mxGeometry height="250" width="280" x="1360" y="390" as="geometry" />
         </mxCell>
-        <mxCell id="c1_cards" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：赤阳参同&lt;br&gt;习得：伏火&lt;br&gt;&lt;br&gt;赤阳参同：&lt;br&gt;类型：心法&lt;br&gt;关键词：生命、增伤&lt;br&gt;效果：获得同名唯一Buff与血炉；自身主动使气血下降时，本次不回复生命，改为获得血炉值，数值 = 本次气血下降层数×当前气血回落回复率R。&lt;br&gt;主修额外追加：每次赤阳攻伐实际消耗血炉时，每点已消耗血炉提高该招物理伤害倍率1.5%；辅修为每点1%。仅作用于本招，不改血炉通用效果。技能消耗后仍留存的血炉，照常按每2点提高物理伤害1%结算。&lt;br&gt;&lt;br&gt;伏火：&lt;br&gt;类型：术诀&lt;br&gt;关键词：生命、增伤&lt;br&gt;耗费：精力 0；法力 0&lt;br&gt;目标：自身&lt;br&gt;&lt;br&gt;效果：本场限用一次；仅当自身气血至少为1层时可打出；气血-1；本次转化使用的气血回落回复率R+3个百分点。&lt;/div&gt;" vertex="1">
+        <mxCell id="c1_cards" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：赤阳参同&lt;br&gt;习得：伏火&lt;br&gt;&lt;br&gt;赤阳参同：&lt;br&gt;类型：心法&lt;br&gt;关键词：生命、增伤&lt;br&gt;效果：获得同名唯一Buff与血炉；自身主动使气血下降时，本次不回复生命，改为获得血炉值，数值 = 本次气血下降层数×当前气血回落回复率R。&lt;br&gt;主修额外追加：每次赤阳攻伐实际消耗血炉时，每点已消耗血炉提高该招物理伤害倍率1.5%；辅修为每点1%。仅作用于本招，不改血炉通用效果。技能消耗后仍留存的血炉，照常按每2点提高物理伤害1%结算。&lt;br&gt;&lt;br&gt;伏火：&lt;br&gt;类型：术诀&lt;br&gt;关键词：生命、增伤&lt;br&gt;耗费：精力 0、法力 0&lt;br&gt;目标：自身&lt;br&gt;&lt;br&gt;效果：仅当自身气血至少为1层时可用；气血-1；本次转化使用的气血回落回复率R+3个百分点。&lt;br&gt;使用次数：本场1次&lt;/div&gt;" vertex="1">
           <mxGeometry height="520" width="740" x="-400" y="150" as="geometry" />
         </mxCell>
         <mxCell id="c2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;" value="第二卷：大冶&#xA;卷章ID：da_ye&#xA;顺序：2&#xA;定位：一举焚血，快速筑高炉火&#xA;学成可修至：云息六层&#xA;学习条件：&#xA;灵根：火&#xA;路径：锻躯&#xA;境界：云息三层及以上&#xA;前置：已学伏火&#xA;研读属性：体魄≥7；体道造诣≥6&#xA;学会永久属性：体魄 +0.5；体道造诣 +0.5" vertex="1">
@@ -28,10 +28,10 @@
         <mxCell id="c2_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="淬炼（仅战斗内）&lt;br&gt;战斗属性：血炉值上限 +30" vertex="1">
           <mxGeometry height="92" width="270" x="390" y="760" as="geometry" />
         </mxCell>
-        <mxCell id="c2_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="化法&lt;br&gt;卸力（体修基础技能追加效果，保留原效果）&lt;br&gt;关键词：增伤、防御&lt;br&gt;原效果：敌方物理攻击自身时获得化解；化解层数 = max(1, floor(体魄÷2) + floor(体道造诣÷3))，每层抵消当前攻击1点物理伤害。&lt;br&gt;追加：进入持招阶段时选择消耗至多20点血炉，且只按2点一档；所选血炉立即扣除，取消持招不返还。触发时每消耗2点，本次额外获得化解1层。&lt;br&gt;耗费与目标沿用卸力：精力1；自身（敌方攻击自身时使用）。&lt;br&gt;本卷化法只追加效果，不计入习得。" vertex="1">
+        <mxCell id="c2_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="化法&lt;br&gt;卸力（追加效果，保留基础效果）&lt;br&gt;类型：守御&lt;br&gt;关键词：防御&lt;br&gt;耗费：精力 1、法力 0&lt;br&gt;目标：自身（敌方物理攻击自身时应对）&lt;br&gt;效果：敌方物理攻击自身时获得化解；化解层数 = max(1, floor(体魄&#247;2) + floor(体道造诣&#247;3))，每层抵消本次攻击1点物理伤害。匹配的来袭攻击即将结算且本技能位于队首时立即应对；触发时自动消耗当前血炉中至多20点的偶数点，每消耗2点，本次化解增加1层。未触发时按正常行动时序结算基础效果，不消耗血炉。" vertex="1">
           <mxGeometry height="200" width="290" x="1360" y="680" as="geometry" />
         </mxCell>
-        <mxCell id="c2_cards" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;习得：大冶&lt;br&gt;&lt;br&gt;大冶：&lt;br&gt;类型：术诀&lt;br&gt;关键词：生命、增伤&lt;br&gt;耗费：精力 2；法力 0&lt;br&gt;目标：自身&lt;br&gt;&lt;br&gt;效果：气血-2；本次气血回落回复率R+4个百分点。&lt;/div&gt;" vertex="1">
+        <mxCell id="c2_cards" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;习得：大冶&lt;br&gt;&lt;br&gt;大冶：&lt;br&gt;类型：术诀&lt;br&gt;关键词：生命、增伤&lt;br&gt;耗费：精力 2、法力 0&lt;br&gt;目标：自身&lt;br&gt;&lt;br&gt;效果：仅当自身至少有2层气血时可用；气血-2；本次气血回落回复率R+4个百分点。&lt;br&gt;&lt;/div&gt;" vertex="1">
           <mxGeometry height="384" width="740" x="-400" y="766" as="geometry" />
         </mxCell>
         <mxCell id="c3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;" value="第三卷：偃月&#xA;卷章ID：yan_yue&#xA;顺序：3&#xA;定位：分炉换势，以血炉换取持续身法&#xA;学成可修至：云息九层&#xA;学习条件：&#xA;灵根：火&#xA;路径：锻躯&#xA;境界：云息六层及以上&#xA;前置：已学大冶&#xA;研读属性：体魄≥8；体道造诣≥8&#xA;学会永久属性：体魄 +0.5" vertex="1">
@@ -40,10 +40,10 @@
         <mxCell id="c3_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="淬炼（仅战斗内）&lt;br&gt;战斗属性：物理伤害 +5%&lt;br&gt;血炉值上限 +20" vertex="1">
           <mxGeometry height="92" width="270" x="400" y="995" as="geometry" />
         </mxCell>
-        <mxCell id="c3_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="化法&lt;br&gt;发劲（体修基础技能追加效果，保留原效果）&lt;br&gt;关键词：增伤&lt;br&gt;原始伤害：round(8 + 体魄×0.40 + 体道造诣×0.20 + 敏捷×0.25)。&lt;br&gt;追加：结算前可选择消耗至多10点血炉；辅修时原始伤害乘以(1 + 实际消耗血炉×1%)；主修时乘以(1 + 实际消耗血炉×1.5%)。不设本场限次；本招专属倍率之外，剩余血炉仍照常提供通用增伤。&lt;br&gt;耗费与目标沿用发劲：精力 1；指定1名敌方（单体）。&lt;br&gt;本卷化法只追加效果，不计入习得。" vertex="1">
+        <mxCell id="c3_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="化法&lt;br&gt;发劲（追加效果，保留基础效果）&lt;br&gt;类型：攻伐&lt;br&gt;关键词：增伤&lt;br&gt;耗费：精力 1、法力 0&lt;br&gt;目标：指定1名敌方&lt;br&gt;伤害类型：物理&lt;br&gt;效果：对指定敌方造成物理伤害，基础伤害 = round(8 + 体魄×0.40 + 体道造诣×0.20 + 敏捷×0.25)。施放时自动消耗当前血炉中至多10点；辅修每点实际消耗使本招伤害倍率提高1%，主修提高1.5%；剩余血炉仍照常提供通用增伤。" vertex="1">
           <mxGeometry height="250" width="290" x="1360" y="990" as="geometry" />
         </mxCell>
-        <mxCell id="c3_cards" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;习得：偃月&lt;br&gt;&lt;br&gt;偃月：&lt;br&gt;类型：术诀&lt;br&gt;关键词：增伤、闪避&lt;br&gt;耗费：精力 1；法力 0&lt;br&gt;目标：自身&lt;br&gt;&lt;br&gt;效果：自身至少有2点血炉时可用；消耗至多20点血炉，且只按2点一档消耗；每消耗2点获得身法1层，持续1回合。可重复使用，不造成伤害。&lt;/div&gt;" vertex="1">
+        <mxCell id="c3_cards" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;习得：偃月&lt;br&gt;&lt;br&gt;偃月：&lt;br&gt;类型：术诀&lt;br&gt;关键词：闪避&lt;br&gt;耗费：精力 1、法力 0&lt;br&gt;目标：自身&lt;br&gt;&lt;br&gt;效果：自身至少有2点血炉时可用；自动消耗当前血炉中至多20点的偶数点；每消耗2点获得身法1层，持续1回合。不造成伤害。&lt;br&gt;&lt;/div&gt;" vertex="1">
           <mxGeometry height="350" width="740" x="-400" y="1220" as="geometry" />
         </mxCell>
         <mxCell id="c4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;" value="第四卷：朱明&#xA;卷章ID：zhu_ming&#xA;顺序：4&#xA;定位：以化法改写撼山，清炉换倍率终结&#xA;学成可修至：云息十三层&#xA;学习条件：&#xA;灵根：火&#xA;路径：锻躯&#xA;境界：云息九层及以上&#xA;前置：已学偃月&#xA;研读属性：体魄≥10；体道造诣≥10&#xA;学会永久属性：体道造诣 +1" vertex="1">
@@ -52,10 +52,10 @@
         <mxCell id="c4_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="淬炼（仅战斗内）&lt;br&gt;战斗属性：气血回落回复率 +2 个百分点&lt;br&gt;血炉值上限 +20" vertex="1">
           <mxGeometry height="92" width="270" x="370" y="1315" as="geometry" />
         </mxCell>
-        <mxCell id="c4_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="化法&lt;br&gt;撼山（体修基础技能追加效果，保留原效果）&lt;br&gt;关键词：增伤&lt;br&gt;血炉至少20点时可用；消耗全部血炉。原始伤害 = round(15 + 体魄×0.85 + 体道造诣×0.55)。&lt;br&gt;辅修倍率 = 1 + 实际消耗血炉×1%；主修倍率 = 1 + 实际消耗血炉×1.5%。清炉后的最终伤害仍按通用物理伤害流程结算。&lt;br&gt;耗费与目标沿用撼山：精力3；指定1名敌方（单体）。&lt;br&gt;本卷化法只追加效果，不计入习得；不再另授独立的朱明攻伐。" vertex="1">
-          <mxGeometry height="220" width="290" x="1360" y="1310" as="geometry" />
+        <mxCell id="c4_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="化法&lt;br&gt;撼山（追加效果，保留基础效果）&lt;br&gt;类型：攻伐&lt;br&gt;关键词：增伤&lt;br&gt;耗费：精力 3、法力 0&lt;br&gt;目标：指定1名敌方&lt;br&gt;伤害类型：物理&lt;br&gt;效果：血炉至少20点时可用并消耗全部血炉；撼山基础伤害 = round(15 + 体魄×0.85 + 体道造诣×0.55)。辅修倍率 = 1 + 实际消耗血炉×1%；主修倍率 = 1 + 实际消耗血炉×1.5%；按通用物理伤害流程结算。&lt;br&gt;使用次数：每轮1次&lt;br&gt;本卷不另授独立朱明攻伐。" vertex="1">
+          <mxGeometry height="280" width="290" x="1360" y="1310" as="geometry" />
         </mxCell>
-        <mxCell id="c4_cards" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;习得：本卷无新增主动技能；学习后由化法追加改写基础技能撼山。&lt;br&gt;&lt;br&gt;撼山（赤阳化法）：&lt;br&gt;类型：攻伐&lt;br&gt;关键词：增伤&lt;br&gt;耗费：精力 3；法力 0&lt;br&gt;目标：指定1名敌方&lt;br&gt;&lt;br&gt;伤害类型：物理&lt;br&gt;效果：血炉至少20点时可用；消耗全部血炉；原始伤害 = round(15 + 体魄×0.85 + 体道造诣×0.55)。辅修倍率 = 1 + 实际消耗血炉×1%；主修倍率 = 1 + 实际消耗血炉×1.5%。每轮限用1次。&lt;/div&gt;" vertex="1">
+        <mxCell id="c4_cards" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;习得：本卷无新增主动技能；学习后由化法追加改写基础技能撼山。&lt;br&gt;&lt;br&gt;撼山（赤阳化法）：&lt;br&gt;类型：攻伐&lt;br&gt;关键词：增伤&lt;br&gt;耗费：精力 3、法力 0&lt;br&gt;目标：指定1名敌方&lt;br&gt;&lt;br&gt;伤害类型：物理&lt;br&gt;效果：血炉至少20点时可用；消耗全部血炉；原始伤害 = round(15 + 体魄×0.85 + 体道造诣×0.55)。辅修倍率 = 1 + 实际消耗血炉×1%；主修倍率 = 1 + 实际消耗血炉×1.5%。&lt;br&gt;使用次数：每轮1次&lt;/div&gt;" vertex="1">
           <mxGeometry height="372" width="740" x="-400" y="1638" as="geometry" />
         </mxCell>
         <mxCell id="summary" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" value="&lt;div style=&quot;text-align:left;&quot;&gt;淬炼修正只作用于战斗内属性，并随本卷心法被动显示在Buff栏信息详情；战斗结束移除，不进入角色永久属性。&lt;br&gt;战斗主链：主动烧气血 → 按R转化血炉 → 留炉享受原有常驻增伤；需要回复、化解或闪避时分别通过赤阳化法或偃月燃炉，输出时由发劲小额燃炉、撼山清炉换取伤害倍率。&lt;br&gt;主修时，每点消耗血炉可把赤阳攻伐倍率从1%提高到1.5%，每次消炉都可生效；第四卷只有撼山这一个清炉终结招，不另设朱明攻伐。&lt;/div&gt;" vertex="1">
@@ -116,4 +116,3 @@
     </mxGraphModel>
   </diagram>
 </mxfile>
-

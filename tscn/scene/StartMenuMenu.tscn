@@ -53,10 +53,10 @@ border_color = Color(0.105882, 0.172549, 0.152941, 1)
 
 [node name="StartMenuMenu" type="VBoxContainer"]
 offset_left = 1480.0
-offset_top = 220.0
+offset_top = 190.0
 offset_right = 1840.0
-offset_bottom = 1010.0
-theme_override_constants/separation = 10
+offset_bottom = 1055.0
+theme_override_constants/separation = 8
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 2
@@ -98,6 +98,18 @@ theme_override_styles/normal = SubResource("StyleNormal")
 theme_override_styles/hover = SubResource("StyleHover")
 theme_override_styles/pressed = SubResource("StylePressed")
 text = "载入存档"
+alignment = 0
+
+[node name="Encyclopedia" type="Button" parent="."]
+custom_minimum_size = Vector2(360, 52)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.172549, 0.290196, 0.254902, 1)
+theme_override_fonts/font = ExtResource("2_regular")
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("StyleNormal")
+theme_override_styles/hover = SubResource("StyleHover")
+theme_override_styles/pressed = SubResource("StylePressed")
+text = "修行百科"
 alignment = 0
 
 [node name="Settings" type="Button" parent="."]

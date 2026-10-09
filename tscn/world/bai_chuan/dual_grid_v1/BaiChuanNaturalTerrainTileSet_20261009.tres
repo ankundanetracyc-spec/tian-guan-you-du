@@ -1,0 +1,23 @@
+[gd_resource type="TileSet" format=3]
+
+[ext_resource type="Texture2D" path="res://textures/world_map/bai_chuan/natural_scenery_20261009_v2/21_warm_paper_tile.png" id="1_plain"]
+[ext_resource type="Texture2D" path="res://textures/world_map/bai_chuan/dual_grid_v1/logical_grid_line_v1.png" id="2_grid"]
+
+[sub_resource type="TileSetAtlasSource" id="PlainTerrain"]
+texture = ExtResource("1_plain")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+0:0/0/custom_data_0 = "plain"
+
+[sub_resource type="TileSetAtlasSource" id="LogicalGrid"]
+texture = ExtResource("2_grid")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+0:0/0/custom_data_0 = "logical_grid_line"
+
+[resource]
+tile_size = Vector2i(256, 256)
+custom_data_layer_0/name = "terrain_kind"
+custom_data_layer_0/type = 4
+sources/0 = SubResource("PlainTerrain")
+sources/4 = SubResource("LogicalGrid")

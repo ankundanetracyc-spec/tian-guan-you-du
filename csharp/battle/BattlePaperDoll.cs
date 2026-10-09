@@ -15,13 +15,19 @@ public partial class BattlePaperDoll : Node2D
     private Node2D? _spineCharacter;
     private float _idlePhase;
     private Tween? _actionTween;
+    private bool _contactPoseHeld;
+    private float _spineSpeedBeforeHold = 1f;
     private Vector2 _idleBasePosition = new(0, -75);
     private bool _usesSpineCharacter;
+    private bool _portraitFacesLeft;
+    private float _combatChestY = -236f;
+    private float _combatHeadY = -348f;
     private string _spineAnimation = "idle";
     private static bool _spineRuntimeWarningShown;
 
     public void Configure(BattleEntityData data)
     {
+        EndContactPoseHold();
         var isForestWolf = data.entity_name.Contains("凶狼") || data.entity_name.Contains("林地狼") || data.entity_name.Contains("森林狼");
         var path = string.IsNullOrWhiteSpace(data.battle_portrait_path)
             ? (isForestWolf ? ForestWolfPortraitPath : DefaultPortraitPath)
@@ -36,7 +42,10 @@ public partial class BattlePaperDoll : Node2D
 
         // 局内男女使用相同的骨骼与动作，分别加载自己的彩色无五官皮影。
         var isWolf = path == ForestWolfPortraitPath;
+        _portraitFacesLeft = isWolf;
         var isFemale = !isWolf && data.gender == 1;
+        _combatChestY = isWolf ? -55f : isFemale ? -204f : -236f;
+        _combatHeadY = isWolf ? -88f : isFemale ? -304f : -348f;
         if (!isWolf) _idleBasePosition = new Vector2(0, isFemale ? -153 : -180);
         var facesEnemy = data.faction == (int)WorldEntity.Faction.ENEMY;
         var spineFailure = "未尝试加载 Spine";
@@ -63,6 +72,13 @@ public partial class BattlePaperDoll : Node2D
         _portrait.Modulate = Colors.White;
         _portrait.Scale = isWolf ? new Vector2(0.09f, 0.09f) : isFemale ? new Vector2(0.174f, 0.174f) : new Vector2(0.192f, 0.192f);
         _idleBasePosition = isWolf ? new Vector2(0, -42) : isFemale ? new Vector2(0, -105) : new Vector2(0, -120);
+        if (_portrait.Texture is not null)
+        {
+            var bounds = _portrait.Texture.GetImage().GetUsedRect();
+            _idleBasePosition.Y = -(bounds.End.Y - _portrait.Texture.GetHeight() * .5f) * _portrait.Scale.Y;
+            _combatHeadY = -bounds.Size.Y * _portrait.Scale.Y;
+            _combatChestY = _combatHeadY * .62f;
+        }
 
         // 人形素材面朝右、狼素材面朝左；交战双方始终朝向对手。
         _portrait.FlipH = isWolf ? !facesEnemy : facesEnemy;
@@ -74,14 +90,16 @@ public partial class BattlePaperDoll : Node2D
         _portrait ??= CreatePortrait();
     }
 
+    public void SetDisplayHeight(float height) => Scale = Vector2.One * height / Mathf.Max(1, Mathf.Abs(_combatHeadY));
+
     public override void _Process(double delta)
     {
-        _idlePhase += (float)delta;
+        if (!_contactPoseHeld) _idlePhase += (float)delta;
         var idleOffset = new Vector2(0, Mathf.Sin(_idlePhase * 1.8f) * 2.2f);
 
         if (_usesSpineCharacter && IsInstanceValid(_spineCharacter))
         {
-            if (_spineAnimation is not "idle" and not "death_kneel" && !_spineCharacter!.Call("is_playing", 0).AsBool())
+            if (!_contactPoseHeld && _spineAnimation is not "idle" and not "death_kneel" && !_spineCharacter!.Call("is_playing", 0).AsBool())
                 PlaySpineAnimation("idle", true);
             _spineCharacter!.Position = _idleBasePosition + idleOffset;
             return;
@@ -93,6 +111,8 @@ public partial class BattlePaperDoll : Node2D
 
     public void play_attack(Vector2 direction)
     {
+        EndContactPoseHold();
+        face_direction(direction);
         if (_usesSpineCharacter) PlaySpineAnimation("attack", false);
         _actionTween?.Kill();
         Position = Vector2.Zero;
@@ -106,24 +126,61 @@ public partial class BattlePaperDoll : Node2D
         _actionTween.TweenProperty(this, "rotation", 0f, .16f);
     }
 
-    public void play_hit(Vector2 direction)
+    public void face_direction(Vector2 direction)
     {
+        if (Mathf.Abs(direction.X) < 0.001f) return;
+        if (_usesSpineCharacter && IsInstanceValid(_spineCharacter)) _spineCharacter!.Call("set_flip_x", direction.X < 0f);
+        else if (_portrait is not null) _portrait.FlipH = _portraitFacesLeft ? direction.X >= 0f : direction.X < 0f;
+    }
+
+    public Vector2 combat_anchor(bool head = false) => ToGlobal(new Vector2(0f, head ? _combatHeadY : _combatChestY));
+
+    public void play_hit(Vector2 direction, float weight = 1f, bool critical = false)
+    {
+        EndContactPoseHold();
         if (_usesSpineCharacter) PlaySpineAnimation("hurt", false);
         _actionTween?.Kill();
         Position = Vector2.Zero;
         Modulate = Colors.White;
         _actionTween = CreateTween();
         _actionTween.SetParallel();
-        _actionTween.TweenProperty(this, "position", direction * 9f, .045f);
-        _actionTween.TweenProperty(this, "modulate", new Color(1f, .36f, .3f), .045f);
+        var force = Mathf.Clamp(weight, 0.6f, 1.6f);
+        _actionTween.TweenProperty(this, "position", direction * (10f * force), .035f);
+        _actionTween.TweenProperty(this, "rotation", direction.X * 0.035f * force, .035f);
+        _actionTween.TweenProperty(this, "modulate", new Color(.70f, .73f, .69f), .035f);
+        _actionTween.Chain().TweenCallback(Callable.From(BeginContactPoseHold));
+        _actionTween.Chain().TweenInterval(BattleInkCombatVfx.ContactHoldSeconds(force, critical));
+        _actionTween.Chain().TweenCallback(Callable.From(EndContactPoseHold));
         _actionTween.Chain().SetParallel();
-        _actionTween.TweenProperty(this, "position", Vector2.Zero, .14f).SetTrans(Tween.TransitionType.Bounce).SetEase(Tween.EaseType.Out);
+        _actionTween.TweenProperty(this, "position", Vector2.Zero, .16f).SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.Out);
+        _actionTween.TweenProperty(this, "rotation", 0f, .16f);
         _actionTween.TweenProperty(this, "modulate", Colors.White, .14f);
     }
 
     public void play_death()
     {
+        EndContactPoseHold();
+        _actionTween?.Kill();
         if (_usesSpineCharacter) PlaySpineAnimation("death_kneel", false);
+    }
+
+    private void BeginContactPoseHold()
+    {
+        if (_contactPoseHeld) return;
+        _contactPoseHeld = true;
+        if (_usesSpineCharacter && IsInstanceValid(_spineCharacter))
+        {
+            _spineSpeedBeforeHold = _spineCharacter!.Call("get_speed").AsSingle();
+            _spineCharacter.Call("set_speed", 0f);
+        }
+    }
+
+    private void EndContactPoseHold()
+    {
+        if (!_contactPoseHeld) return;
+        _contactPoseHeld = false;
+        if (_usesSpineCharacter && IsInstanceValid(_spineCharacter))
+            _spineCharacter!.Call("set_speed", _spineSpeedBeforeHold);
     }
 
     private bool TryCreateSpineCharacter(bool flipX, bool isFemale, out string failureReason)

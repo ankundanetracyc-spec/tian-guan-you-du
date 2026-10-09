@@ -7,6 +7,7 @@ public partial class BattleManager : Node2D
 
     public override void _Process(double delta)
     {
+        FitBattleFormation();
         if(!battle_running||_battlePaused)return;
         if (_realtimeMode) { ProcessRealtimeBattle((float)delta * SimulationFps * battleSpeed); return; }
         // 倍速只改变实时队列推进；技能演出与目标提示仍由统一结算入口控制。
@@ -71,6 +72,16 @@ public partial class BattleManager : Node2D
             foreach (var path in character.get_combat_skill_slot_paths()) if (!string.IsNullOrEmpty(path) && !paths.Contains(path)) paths.Add(path);
         if (paths.Count == 0 && !slotConfigExplicit) AddMetaPaths("loaded_skill_paths");
         if (paths.Count == 0 && !slotConfigExplicit) AddMetaPaths("active_skill_paths");
+        if (unit is Character owner)
+        {
+            var resolvedPaths = new List<string>();
+            foreach (var path in paths)
+            {
+                var resolved = owner.resolve_combat_skill_slot_path(path);
+                if (!string.IsNullOrWhiteSpace(resolved) && !resolvedPaths.Contains(resolved)) resolvedPaths.Add(resolved);
+            }
+            paths = resolvedPaths;
+        }
         foreach (var path in paths)
         {
             var skill = ResourceLoader.Load<ActiveSkillData>(path)?.Duplicate() as ActiveSkillData;
@@ -118,7 +129,6 @@ public partial class BattleManager : Node2D
         UpdateShieldVisualClocks();
         foreach (var unit in all_units)
         {
-            body_cards.Tick(unit, frames);
             if (unit is Creature creature && GodotObject.IsInstanceValid(creature)) creature.tick_status_frames(frames);
         }
 

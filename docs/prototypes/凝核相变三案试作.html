@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#081414">
+  <title>云息凝核 · 相变三案试作</title>
+  <style>
+    :root{
+      color-scheme:dark;
+      --bg:#071111;--panel:#0e1d1b;--panel2:#122522;--line:#2d4942;
+      --text:#eee9d9;--muted:#a3b1a6;--gold:#d6b878;--jade:#8fc2a5;
+      --mist:#82c8ca;--warn:#e6a471;--bad:#dc8774;--shadow:0 24px 80px #0008;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:radial-gradient(ellipse at 50% -20%,#1b3c35 0,#0a1918 48%,var(--bg) 78%);color:var(--text);font:15px/1.55 "Noto Serif SC","Songti SC",serif;min-height:100vh}
+    button{font:inherit;color:inherit}
+    .app{max-width:1500px;margin:auto;padding:26px 30px 36px}
+    .top{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;border-bottom:1px solid #45635a;padding-bottom:17px;margin-bottom:22px}
+    .eyebrow{font:11px/1.2 system-ui,sans-serif;letter-spacing:.2em;color:var(--gold);text-transform:uppercase}
+    h1{font-size:clamp(25px,3vw,37px);font-weight:500;letter-spacing:.07em;margin:7px 0 2px}
+    .subtitle{margin:0;color:var(--muted);font-size:14px}
+    .top-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    .tag{border:1px solid #607b69;border-radius:999px;padding:6px 11px;color:#c9d7c8;font:12px system-ui,sans-serif;background:#0c1b19}
+    .tag.gold{border-color:#8e784e;color:#ebd6a2}
+    .layout{display:grid;grid-template-columns:228px minmax(460px,1fr) 262px;gap:17px;align-items:stretch}
+    .panel{background:linear-gradient(160deg,#122320f2,#0c1918f7);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+    .modes{padding:15px 12px}
+    .section-label{color:var(--muted);font:11px system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;margin:3px 7px 11px}
+    .mode{display:block;width:100%;text-align:left;padding:13px 12px;margin:0 0 8px;border-radius:10px;border:1px solid transparent;background:transparent;cursor:pointer;transition:.2s}
+    .mode:hover{background:#172c28;border-color:#345248}
+    .mode.active{background:linear-gradient(110deg,#1b3730,#132622);border-color:#9a8657;box-shadow:inset 3px 0 var(--gold)}
+    .mode-no{display:block;color:var(--gold);font:11px system-ui,sans-serif;letter-spacing:.1em;margin-bottom:4px}
+    .mode-title{display:block;font-size:16px;letter-spacing:.05em}
+    .mode-sub{display:block;font-size:12px;line-height:1.45;color:var(--muted);margin-top:5px}
+    .note{margin:18px 7px 4px;border-top:1px solid #253e39;padding-top:13px;color:#9eafa3;font-size:12px;line-height:1.65}
+    .stage-panel{padding:13px;min-width:0}
+    .stage-head{display:flex;justify-content:space-between;align-items:start;gap:12px;padding:5px 7px 12px}
+    .stage-head h2{font-weight:500;font-size:18px;margin:0 0 2px;letter-spacing:.04em}
+    .stage-head p{margin:0;font-size:12px;color:var(--muted)}
+    .round{white-space:nowrap;text-align:right;color:#e6d39d;font:13px system-ui,sans-serif;padding:5px 9px;border:1px solid #4d5140;border-radius:8px;background:#111c18}
+    .round strong{font-size:16px}
+    .canvas-wrap{position:relative;border:1px solid #304b44;border-radius:11px;overflow:hidden;background:#081514}
+    canvas{display:block;width:100%;height:auto;aspect-ratio:1000/570;cursor:default}
+    .canvas-caption{position:absolute;left:14px;top:12px;padding:6px 9px;border-radius:7px;background:#071312ba;border:1px solid #344c43;color:#b8c8bb;font:11px system-ui,sans-serif;letter-spacing:.04em;pointer-events:none}
+    .canvas-bottom{position:absolute;left:14px;right:14px;bottom:12px;display:flex;justify-content:space-between;gap:10px;color:#d2d8cb;font:11px system-ui,sans-serif;text-shadow:0 1px 5px #000;pointer-events:none}
+    .controls{min-height:89px;display:flex;align-items:center;gap:9px;flex-wrap:wrap;padding:13px 7px 4px}
+    .action{border:1px solid #466157;background:linear-gradient(180deg,#1c332d,#12231f);padding:9px 13px;border-radius:8px;cursor:pointer;transition:.18s;box-shadow:0 4px 12px #0002}
+    .action:hover:not(:disabled){border-color:var(--gold);transform:translateY(-1px);background:#213a32}
+    .action.primary{color:#131713;background:linear-gradient(180deg,#e3cb91,#c6a963);border-color:#e3cb91;font-weight:600}
+    .action.primary:hover:not(:disabled){background:#ecd9a5}
+    .action.danger{border-color:#714f43;color:#efb6a0}
+    .action:disabled{opacity:.4;cursor:not-allowed;transform:none}
+    .control-hint{width:100%;color:var(--muted);font-size:12px;margin:1px 2px 0}
+    .right{padding:17px 16px;display:flex;flex-direction:column;gap:15px}
+    .right h3{font-size:15px;font-weight:500;letter-spacing:.04em;margin:0}
+    .stats{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .stat{background:#0b1716;border:1px solid #263e38;border-radius:9px;padding:9px 10px;min-height:67px}
+    .stat span{display:block;color:var(--muted);font-size:11px}
+    .stat strong{display:block;font:22px/1.25 system-ui,sans-serif;color:#f0dfb1;margin-top:4px}
+    .stat small{font-size:11px;color:#98aa9d;font-family:inherit}
+    .divider{height:1px;background:#2a403a}
+    .objective{color:#c2cec1;font-size:13px;line-height:1.65}
+    .objective b{color:#ead7a4;font-weight:500}
+    .sequence{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-top:9px}
+    .phase{border:1px solid #314940;background:#0b1816;border-radius:6px;padding:4px 7px;color:#aebdb0;font:11px system-ui,sans-serif}
+    .phase.now{color:#f1dda5;border-color:#927d4e;background:#27271c}
+    .arrow{color:#6a8276;font:12px system-ui,sans-serif}
+    .log{margin-top:auto;min-height:92px;background:#0a1614;border:1px solid #253d37;border-radius:9px;padding:10px 11px}
+    .log-title{font:10px system-ui,sans-serif;letter-spacing:.16em;color:#91a398;margin-bottom:6px}
+    .log-text{font-size:12px;line-height:1.6;color:#d5daca;min-height:39px}
+    .result{display:none;padding:11px 12px;border:1px solid #85734d;background:linear-gradient(120deg,#28251a,#17231c);border-radius:9px}
+    .result.show{display:block}
+    .result strong{display:block;color:#f0daa0;font-size:15px;font-weight:500}
+    .result p{margin:4px 0 0;color:#bdc7b6;font-size:12px;line-height:1.55}
+    .restart{width:100%;padding:8px;border:1px solid #46584b;border-radius:7px;background:transparent;color:#c0c9bb;cursor:pointer;font-size:12px}
+    .restart:hover{border-color:#b59c62;color:#ead7a4}
+    .fineprint{max-width:1500px;margin:13px auto 0;padding:0 30px;color:#71867a;font:11px/1.6 system-ui,sans-serif}
+    @media(max-width:1100px){.layout{grid-template-columns:190px minmax(380px,1fr)}.right{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:start}.right .log{margin-top:0}.right .result,.right .restart{grid-column:auto}}
+    @media(max-width:720px){.app{padding:17px 12px 24px}.top{display:block}.top-right{justify-content:flex-start;margin-top:13px}.layout{grid-template-columns:1fr;gap:11px}.modes{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:9px}.section-label,.note{display:none}.mode{margin:0;padding:9px 8px}.mode-title{font-size:13px}.mode-sub{font-size:10px}.mode-no{font-size:9px}.right{grid-column:auto;display:flex}.stage-head h2{font-size:16px}.canvas-bottom{font-size:9px}.fineprint{padding:0 14px}.controls{gap:7px}.action{padding:8px 10px;font-size:13px}}
+    @media(max-width:430px){.mode-sub{display:none}.modes{grid-template-columns:repeat(3,1fr)}.mode-title{font-size:12px}.stage-panel{padding:8px}.canvas-caption{font-size:9px;left:8px;top:8px}.canvas-bottom{left:8px;right:8px;bottom:8px}.round{font-size:11px}.round strong{font-size:14px}}
+  </style>
+</head>
+<body>
+<main class="app">
+  <header class="top">
+    <div>
+      <div class="eyebrow">云息 · 相变推演</div>
+      <h1>一团灵云，如何凝成灵核</h1>
+      <p class="subtitle">三种可操作的凝核思路。每一步都沿着气、液、固的变化推进。</p>
+    </div>
+    <div class="top-right"><span class="tag">规则试作 · 不含随机判定</span><span class="tag gold">每局至多八步</span></div>
+  </header>
+
+  <section class="layout">
+    <nav class="panel modes" aria-label="选择凝核方案">
+      <div class="section-label">凝核方案</div>
+      <button class="mode active" data-mode="dew">
+        <span class="mode-no">方案一</span><span class="mode-title">控露点</span>
+        <span class="mode-sub">积云越露点，缓冷成滴，再让液滴附着灵核。</span>
+      </button>
+      <button class="mode" data-mode="merge">
+        <span class="mode-no">方案二</span><span class="mode-title">液滴并合</span>
+        <span class="mode-sub">先合并等量液滴，再把匀滴送入灵核。</span>
+      </button>
+      <button class="mode" data-mode="front">
+        <span class="mode-no">方案三</span><span class="mode-title">固化前沿</span>
+        <span class="mode-sub">从灵核向外推晶面，控制前沿相遇的次序。</span>
+      </button>
+      <div class="note">三案共用同一视觉：灵核始终居中，灵云是一团连续的气相。露滴与晶面只在相变时出现。</div>
+    </nav>
+
+    <section class="panel stage-panel">
+      <div class="stage-head">
+        <div><h2 id="modeHeading">控露点 · 过饱和凝露</h2><p id="modeLead">先聚云越过露点，再缓慢降温，让凝液依附已有灵核。</p></div>
+        <div class="round" id="roundLabel">第 <strong>1</strong> 步 / 8</div>
+      </div>
+      <div class="canvas-wrap">
+        <canvas id="scene" width="1000" height="570" aria-label="灵云与灵核的相变示意画面"></canvas>
+        <div class="canvas-caption" id="canvasCaption">气相 · 灵云正在聚集</div>
+        <div class="canvas-bottom"><span>灵核为凝结中心</span><span id="canvasStatus">等待第一步操作</span></div>
+      </div>
+      <div class="controls" id="controls"></div>
+    </section>
+
+    <aside class="panel right">
+      <h3>相变状态</h3>
+      <div class="stats" id="stats"></div>
+      <div class="divider"></div>
+      <div>
+        <h3>本案逻辑</h3>
+        <div class="objective" id="objective"></div>
+        <div class="sequence" id="sequence"></div>
+      </div>
+      <div class="result" id="result"><strong id="resultTitle"></strong><p id="resultCopy"></p></div>
+      <div class="log"><div class="log-title">最近变化</div><div class="log-text" id="logText">灵云尚未越过露点，灵核等待凝液。</div></div>
+      <button class="restart" id="restart">重开本案</button>
+    </aside>
+  </section>
+  <p class="fineprint">这是一组机制与画面试作；阶段名、数值和品质结算仍待你确认后再并入正式策划案。</p>
+</main>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const canvas = $('scene');
+  const ctx = canvas.getContext('2d');
+  const maxTurns = 8;
+  const names = {
+    dew: {title:'控露点 · 过饱和凝露',lead:'先聚云越过露点，再缓慢降温，让凝液依附已有灵核。'},
+    merge: {title:'液滴并合 · 匀滴归核',lead:'液滴先碰并、缩小界面，再逐滴附着到灵核表面。'},
+    front: {title:'固化前沿 · 四面推晶',lead:'灵核向外结晶；分散牵引晶面，避免单向突进夹住液相。'}
+  };
+  const seqs = {
+    dew: ['灵气','过露点','液滴','固化'],
+    merge: ['灵气','凝成液滴','碰并匀滴','附核成固'],
+    front: ['灵核','界面推进','晶面相遇','固相闭合']
+  };
+  let currentMode = 'dew';
+  let state;
+  let selectedDrops = [];
+  let hoverFace = -1;
+
+  const dropSpots = [
+    [270,175],[390,125],[565,130],[720,180],
+    [755,370],[620,435],[420,445],[245,360]
+  ];
+  const faceNames = ['上','右','下','左'];
+  const faceActions = ['向上引冷','向右引冷','向下引冷','向左引冷'];
+  const faceVectors = [[0,-1],[1,0],[0,1],[-1,0]];
+
+  function fresh(mode) {
+    selectedDrops = [];
+    state = {
+      mode, turns:0, solid:0, defects:0,
+      log:mode==='dew'?'灵云尚未越过露点，灵核等待凝液。':mode==='merge'?'八枚同体量小露已凝成，等待碰并或附核。':'灵核种子已成，外层液相完整，等待牵引晶面。',
+      vapor:4, liquid:[], satellite:0,
+      drops: mode === 'merge' ? dropSpots.map((p,i)=>({id:i+1,mass:1,x:p[0],y:p[1]})) : [],
+      front:[0,0,0,0], pockets:0
+    };
+    $('result').classList.remove('show');
+    render();
+  }
+
+  function note(text){ state.log = text; }
+  function spend(text){
+    state.turns++;
+    note(text);
+    if(state.turns >= maxTurns) finish();
+    render();
+  }
+  function finish(){
+    state.finished = true;
+    const r = resultFor();
+    $('resultTitle').textContent = r.title;
+    $('resultCopy').textContent = r.copy;
+    $('result').classList.add('show');
+  }
+  function resultFor(){
+    if(currentMode === 'dew'){
+      if(state.solid >= 4 && state.defects <= 1) return {title:'凝成 · 澄明',copy:`灵核纳入 ${state.solid} 份凝液，游离新核 ${state.defects} 处。缓凝路线完整。`};
+      if(state.solid >= 2) return {title:'凝成 · 初稳',copy:`灵核纳入 ${state.solid} 份凝液；急冷留下 ${state.defects} 处游离晶种。`};
+      return {title:'云聚未足',copy:`灵核只纳入 ${state.solid} 份凝液。可多聚云息，等越过露点后再缓冷。`};
+    }
+    if(currentMode === 'merge'){
+      const left = state.drops.reduce((n,d)=>n+d.mass,0);
+      if(state.solid >= 8 && state.defects === 0) return {title:'凝成 · 匀晶',copy:'八份液量全部归核；等量碰并后逐滴附着，表面没有明显夹液。'};
+      if(state.solid >= 6) return {title:'凝成 · 可用',copy:`灵核纳入 ${state.solid} 份液量，尚有 ${left} 份未附核；大滴冲击留下 ${state.defects} 处晶面瑕疵。`};
+      return {title:'归核未全',copy:`灵核纳入 ${state.solid} 份液量，仍有 ${left} 份凝液悬在云中。`};
+    }
+    if(state.solid >= 8 && state.pockets === 0) return {title:'凝成 · 合璧',copy:'四面前沿依次合拢，液相完整排出，灵核外层结成连续晶壳。'};
+    if(state.solid >= 6) return {title:'凝成 · 偏枝',copy:`固化前沿推进 ${state.solid}/8 格，留下 ${state.pockets} 处夹液空隙。`};
+    return {title:'晶壳未合',copy:`固化前沿推进 ${state.solid}/8 格；需要让各面继续向外生长。`};
+  }
+
+  function validAction(fn){ return !state.finished && state.turns < maxTurns && fn(); }
+
+  function doDew(action){
+    if(!validAction(()=>true)) return;
+    if(action === 'gather'){
+      if(state.vapor >= 12) return;
+      state.vapor = Math.min(12,state.vapor+2);
+      spend('引云入室：云中灵气增加，尚未凝结。');
+    } else if(action === 'slow'){
+      if(state.vapor < 6) return;
+      const count = Math.min(2,Math.floor((state.vapor-4)/2));
+      state.vapor -= count*2;
+      for(let i=0;i<count;i++) state.liquid.push({id:Date.now()+i,mass:1});
+      spend(`缓缓降温：${count} 份过饱和灵气凝成露滴，优先附着在灵核附近。`);
+    } else if(action === 'flash'){
+      if(state.vapor < 6) return;
+      const count = Math.min(4,state.vapor-4);
+      state.vapor -= count;
+      for(let i=0;i<count;i++) state.liquid.push({id:Date.now()+i,mass:1});
+      if(count >= 2){state.satellite++;state.defects++;}
+      spend(`骤然降温：${count} 份灵气迅速成滴${count>=2?'，云中另生一处游离晶种。':'。'}`);
+    } else if(action === 'feed'){
+      if(!state.liquid.length) return;
+      state.liquid.shift();state.solid++;
+      spend('露滴贴上灵核表面，液相沿既有晶面凝成固层。');
+    }
+  }
+
+  function mergeSelected(){
+    if(state.finished || selectedDrops.length !== 2 || state.turns >= maxTurns) return;
+    const [aId,bId] = selectedDrops;
+    const ai = state.drops.findIndex(d=>d.id===aId), bi = state.drops.findIndex(d=>d.id===bId);
+    if(ai<0 || bi<0 || ai===bi) return;
+    const a=state.drops[ai],b=state.drops[bi];
+    const merged={id:Math.max(...state.drops.map(d=>d.id))+1,mass:a.mass+b.mass,x:(a.x+b.x)/2,y:(a.y+b.y)/2};
+    if(a.mass!==b.mass) state.defects++;
+    state.drops=state.drops.filter(d=>d.id!==aId && d.id!==bId);state.drops.push(merged);
+    selectedDrops=[];
+    spend(a.mass===b.mass?`两枚同量液滴碰并为 ${merged.mass} 份匀滴，液量未损。`:`大小不等的液滴碰并为 ${merged.mass} 份液团，界面留下一道接缝。`);
+  }
+  function feedSelected(){
+    if(state.finished || selectedDrops.length!==1 || state.turns>=maxTurns) return;
+    const i=state.drops.findIndex(d=>d.id===selectedDrops[0]);
+    if(i<0) return;
+    const d=state.drops[i];
+    state.drops.splice(i,1);state.solid+=d.mass;
+    if(d.mass>=3) state.defects += Math.ceil((d.mass-2)/2);
+    selectedDrops=[];
+    spend(d.mass<=2?`${d.mass} 份匀滴平贴灵核，沿表面凝成固层。`:`${d.mass} 份大滴撞上灵核；前沿包入液相，形成晶面瑕疵。`);
+    if(state.drops.length===0 && !state.finished){state.finished=true;finish();render();}
+  }
+
+  function growFace(face){
+    if(state.finished || state.turns>=maxTurns || state.front[face]>=2) return;
+    const before=state.front[face];
+    state.front[face]++;
+    state.solid++;
+    if(state.front[face]===2){
+      const neighbors=[(face+3)%4,(face+1)%4];
+      if(neighbors.every(n=>state.front[n]===0)){
+        state.pockets++;state.defects++;
+        note(`${faceNames[face]}面骤长到前沿尖端，邻面尚未跟上，界面卷入一处液相。`);
+      } else note(`${faceNames[face]}面向外推进，前沿与邻面接续。`);
+    } else note(`${faceNames[face]}面开始结晶，灵核外沿长出一段固相前沿。`);
+    spend(state.log);
+  }
+
+  function renderControls(){
+    const box=$('controls');box.innerHTML='';
+    const add=(label,fn,opts={})=>{const b=document.createElement('button');b.className=`action ${opts.primary?'primary':''} ${opts.danger?'danger':''}`;b.textContent=label;b.disabled=!!opts.disabled;b.onclick=fn;box.appendChild(b);return b;};
+    if(currentMode==='dew'){
+      add('引云聚息',()=>doDew('gather'),{disabled:state.vapor>=12});
+      add('缓冷凝露',()=>doDew('slow'),{primary:true,disabled:state.vapor<6});
+      add('骤冷成滴',()=>doDew('flash'),{danger:true,disabled:state.vapor<6});
+      add('露滴附核',()=>doDew('feed'),{disabled:state.liquid.length===0});
+      const hint=document.createElement('div');hint.className='control-hint';hint.textContent=`露点在 6 份云息；缓冷每两份成一滴，骤冷成滴更多但会留下游离晶种。当前云息 ${state.vapor}，露滴 ${state.liquid.length}。`;box.appendChild(hint);
+    } else if(currentMode==='merge'){
+      add('并合所选两滴',mergeSelected,{primary:true,disabled:selectedDrops.length!==2 || state.turns>=maxTurns});
+      add('所选露滴附核',feedSelected,{disabled:selectedDrops.length!==1 || state.turns>=maxTurns});
+      const hint=document.createElement('div');hint.className='control-hint';hint.textContent='在画面中点选液滴：选两滴后并合，选一滴后附核。合并同体量液滴不留接缝；大滴直附会夹液。';box.appendChild(hint);
+    } else {
+      faceNames.forEach((name,i)=>add(faceActions[i],()=>growFace(i),{primary:i===hoverFace,disabled:state.front[i]>=2 || state.turns>=maxTurns}));
+      const hint=document.createElement('div');hint.className='control-hint';hint.textContent='每次牵引一个方向的冷势，晶面前沿向外推进一格。某一面连长两格而邻面未起，会卷入液相。';box.appendChild(hint);
+    }
+    if(state.finished){for(const b of box.querySelectorAll('button')) b.disabled=true;}
+  }
+
+  function renderStats(){
+    const host=$('stats');let values=[];
+    if(currentMode==='dew') values=[['云中灵气',state.vapor,'份'],['凝成露滴',state.liquid.length,'枚'],['固化入核',state.solid,'份'],['游离晶种',state.satellite,'处']];
+    if(currentMode==='merge') values=[['悬浮露滴',state.drops.length,'枚'],['液相总量',state.drops.reduce((n,d)=>n+d.mass,0),'份'],['固化入核',state.solid,'份'],['晶面接缝',state.defects,'处']];
+    if(currentMode==='front') values=[['前沿进度',`${state.solid}/8`,'格'],['未结晶液相',8-state.solid,'份'],['夹液空隙',state.pockets,'处'],['已推进面',state.front.filter(x=>x>0).length,'面']];
+    host.innerHTML=values.map(([a,b,c])=>`<div class="stat"><span>${a}</span><strong>${b}<small> ${c}</small></strong></div>`).join('');
+  }
+  function renderText(){
+    $('modeHeading').textContent=names[currentMode].title;
+    $('modeLead').textContent=names[currentMode].lead;
+    $('roundLabel').innerHTML=state.finished?'推演完成':`第 <strong>${state.turns+1}</strong> 步 / 8`;
+    $('logText').textContent=state.log;
+    const cap=currentMode==='dew'?(state.vapor>=6?'过饱和 · 可凝露':state.solid?'固相 · 灵核正在长大':'气相 · 灵云正在聚集'):currentMode==='merge'?'液相 · 点选液滴进行碰并或附核':'固液界面 · 选择晶面牵引冷势';
+    $('canvasCaption').textContent=cap;
+    $('canvasStatus').textContent=state.finished?'本案结算完成':currentMode==='merge'?`已选 ${selectedDrops.length} 滴`:`已推进 ${state.turns} / 8 步`;
+    const obj=currentMode==='dew'
+      ? '<b>过饱和成核：</b>云息达到露点后降温，气相凝为液滴；已有灵核降低凝结门槛，缓冷时液滴沿核面附着。骤冷会让云中同时出现游离晶种。'
+      : currentMode==='merge'
+      ? '<b>液滴并合：</b>气相已越过露点，八份凝液悬在灵核周围。同量液滴先并成匀滴，再附着成固；把大小不同的液滴硬并会留下界面。'
+      : '<b>固化前沿：</b>灵核是固相种子，四面晶体向外排开周围液相。分散推进让前沿彼此衔接；单面过长会形成枝晶，并在交界处夹住液体。';
+    $('objective').innerHTML=obj;
+    $('sequence').innerHTML=seqs[currentMode].map((x,i)=>`${i?'<span class="arrow">›</span>':''}<span class="phase ${phaseIndex()===i?'now':''}">${x}</span>`).join('');
+  }
+  function phaseIndex(){
+    if(currentMode==='dew') return state.solid?3:state.liquid.length?2:state.vapor>=6?1:0;
+    if(currentMode==='merge') return state.solid?3:state.drops.length<8?2:1;
+    return state.solid>=8?3:state.solid?2:0;
+  }
+  function render(){renderText();renderStats();renderControls();draw();}
+
+  function resizeCanvas(){
+    const rect=canvas.getBoundingClientRect(),dpr=window.devicePixelRatio||1;
+    canvas.width=Math.max(1,Math.round(rect.width*dpr));canvas.height=Math.max(1,Math.round(rect.height*dpr));
+    ctx.setTransform(canvas.width/1000,0,0,canvas.height/570,0,0);draw();
+  }
+  function roundedCloud(){
+    const g=ctx.createRadialGradient(500,285,60,500,285,480);
+    g.addColorStop(0,'rgba(46,121,106,.10)');g.addColorStop(.40,'rgba(67,139,124,.26)');g.addColorStop(.74,'rgba(51,105,103,.19)');g.addColorStop(1,'rgba(27,67,66,0)');
+    ctx.fillStyle=g;ctx.beginPath();ctx.ellipse(500,290,455,248,0,0,Math.PI*2);ctx.fill();
+    const fogs=[[320,260,205,125],[445,210,250,132],[625,250,224,145],[720,320,175,122],[570,390,235,115],[360,375,220,125]];
+    fogs.forEach(([x,y,rx,ry],i)=>{const f=ctx.createRadialGradient(x,y,12,x,y,Math.max(rx,ry));f.addColorStop(0,`rgba(${i%2?'93,165,145':'78,150,151'},${.10+(state.vapor||0)*.004})`);f.addColorStop(1,'rgba(53,110,102,0)');ctx.fillStyle=f;ctx.beginPath();ctx.ellipse(x,y,rx,ry,i%2?.13:-.1,0,Math.PI*2);ctx.fill();});
+  }
+  function drawVapor(){
+    const amount=currentMode==='dew'?state.vapor:currentMode==='merge'?3:2;
+    for(let i=0;i<66;i++){
+      const a=i*2.399963+0.4,r=72+(i*37%310),x=500+Math.cos(a)*r*1.17,y=290+Math.sin(a)*r*.63;
+      if((x-500)**2/455**2+(y-290)**2/248**2>1.03) continue;
+      const pulse=.25+((i*17)%61)/100;
+      ctx.beginPath();ctx.arc(x,y,(i%7===0?2.2:1.05),0,Math.PI*2);ctx.fillStyle=`rgba(184,230,209,${pulse*(.28+Math.min(amount,12)*.018)})`;ctx.fill();
+    }
+  }
+  function drawDrop(x,y,mass,selected=false,label=''){
+    const r=15+Math.min(mass-1,7)*4.5;
+    ctx.save();ctx.translate(x,y);
+    ctx.shadowColor=selected?'#f2d999':'#93e5db';ctx.shadowBlur=selected?22:14;
+    const g=ctx.createRadialGradient(-r*.34,-r*.43,1,0,0,r*1.25);g.addColorStop(0,'#f6f6dc');g.addColorStop(.28,'#b8efe0');g.addColorStop(.72,'#62aaa5');g.addColorStop(1,'#34716f');
+    ctx.fillStyle=g;ctx.beginPath();ctx.moveTo(0,-r*1.28);ctx.bezierCurveTo(r*.98,-r*.32,r*.95,r*.66,0,r);ctx.bezierCurveTo(-r*.95,r*.66,-r*.98,-r*.32,0,-r*1.28);ctx.fill();
+    ctx.shadowBlur=0;ctx.strokeStyle=selected?'#f3d892':'rgba(210,245,226,.58)';ctx.lineWidth=selected?2:1;ctx.stroke();
+    if(mass>1){ctx.fillStyle='#09201c';ctx.font='bold 10px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(String(mass),0,1);}
+    if(label){ctx.fillStyle='#e5e9da';ctx.font='10px system-ui';ctx.textAlign='center';ctx.textBaseline='top';ctx.fillText(label,0,r+8);}
+    ctx.restore();
+  }
+  function drawCore(radius=42){
+    const x=500,y=290;
+    const aura=ctx.createRadialGradient(x,y,radius*.4,x,y,radius*3.7);aura.addColorStop(0,'rgba(223,196,123,.30)');aura.addColorStop(.32,'rgba(122,187,164,.17)');aura.addColorStop(1,'rgba(84,150,136,0)');ctx.fillStyle=aura;ctx.beginPath();ctx.arc(x,y,radius*3.7,0,Math.PI*2);ctx.fill();
+    ctx.save();ctx.shadowColor='#c2dfba';ctx.shadowBlur=23;
+    const g=ctx.createRadialGradient(x-radius*.38,y-radius*.48,radius*.04,x,y,radius*1.15);g.addColorStop(0,'#fff5cd');g.addColorStop(.18,'#e6d99e');g.addColorStop(.45,'#a4c5a7');g.addColorStop(.76,'#537d72');g.addColorStop(1,'#1a3631');
+    ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,radius,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;
+    ctx.strokeStyle='rgba(244,226,171,.82)';ctx.lineWidth=1.4;ctx.stroke();
+    if(radius>36){
+      ctx.globalAlpha=.48;ctx.strokeStyle='#e9dfb5';ctx.lineWidth=1;
+      for(let i=0;i<6;i++){const a=Math.PI*i/3+.16;ctx.beginPath();ctx.moveTo(x+Math.cos(a)*radius*.15,y+Math.sin(a)*radius*.15);ctx.lineTo(x+Math.cos(a)*radius*.89,y+Math.sin(a)*radius*.89);ctx.stroke();}
+      ctx.globalAlpha=1;
+    }
+    ctx.restore();
+    ctx.beginPath();ctx.arc(x-radius*.25,y-radius*.30,Math.max(2,radius*.075),0,Math.PI*2);ctx.fillStyle='#fffbe3';ctx.fill();
+  }
+  function drawFront(){
+    const r=42+Math.min(state.solid,8)*1.4;
+    const colors=['#a3e0c4','#a8dfe2','#9dc9e9','#c4dea0'];
+    state.front.forEach((n,i)=>{
+      if(!n)return;
+      const [dx,dy]=faceVectors[i];
+      const len=39+n*39,width=13+n*4;
+      const sx=500+dx*20,sy=290+dy*20,ex=500+dx*(r+len),ey=290+dy*(r+len);
+      ctx.save();ctx.lineCap='round';
+      const grad=ctx.createLinearGradient(sx,sy,ex,ey);grad.addColorStop(0,'rgba(218,227,179,.82)');grad.addColorStop(.48,colors[i]);grad.addColorStop(1,'rgba(122,207,194,.34)');
+      ctx.strokeStyle=grad;ctx.lineWidth=width;ctx.shadowColor=colors[i];ctx.shadowBlur=12;
+      ctx.beginPath();ctx.moveTo(sx,sy);ctx.lineTo(ex,ey);ctx.stroke();
+      ctx.shadowBlur=0;ctx.fillStyle='#e7f1d4';ctx.beginPath();ctx.arc(ex,ey,4+n*1.5,0,Math.PI*2);ctx.fill();
+      ctx.restore();
+    });
+    drawCore(r);
+  }
+  function draw(){
+    if(!ctx||!state)return;
+    ctx.clearRect(0,0,1000,570);
+    const bg=ctx.createLinearGradient(0,0,1000,570);bg.addColorStop(0,'#081514');bg.addColorStop(.48,'#0b201d');bg.addColorStop(1,'#081412');ctx.fillStyle=bg;ctx.fillRect(0,0,1000,570);
+    const vignette=ctx.createRadialGradient(500,285,80,500,285,610);vignette.addColorStop(0,'rgba(30,67,58,.05)');vignette.addColorStop(1,'rgba(0,0,0,.56)');ctx.fillStyle=vignette;ctx.fillRect(0,0,1000,570);
+    roundedCloud();drawVapor();
+    if(currentMode==='dew'){
+      const radius=42+Math.min(state.solid,8)*3.2;drawCore(radius);
+      state.liquid.forEach((d,i)=>{const a=i*2.4+.75,r=105+(i%3)*27;drawDrop(500+Math.cos(a)*r*1.18,290+Math.sin(a)*r*.68,1,false);});
+      for(let i=0;i<state.satellite;i++){
+        const x=255+i*55,y=220+(i%2)*130;ctx.beginPath();ctx.arc(x,y,4,0,Math.PI*2);ctx.fillStyle='#e7bb7c';ctx.shadowColor='#e7bb7c';ctx.shadowBlur=12;ctx.fill();ctx.shadowBlur=0;
+      }
+    }else if(currentMode==='merge'){
+      const radius=42+Math.min(state.solid,8)*3.4;drawCore(radius);
+      state.drops.forEach(d=>drawDrop(d.x,d.y,d.mass,selectedDrops.includes(d.id),`${d.mass}份`));
+      if(selectedDrops.length===2){const a=state.drops.find(d=>d.id===selectedDrops[0]),b=state.drops.find(d=>d.id===selectedDrops[1]);if(a&&b){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle='rgba(239,211,143,.68)';ctx.setLineDash([5,5]);ctx.stroke();ctx.setLineDash([]);}}
+    }else{
+      drawFront();
+      if(state.pockets){for(let i=0;i<state.pockets;i++){const x=555+i*20,y=325+i*10;ctx.beginPath();ctx.arc(x,y,5,0,Math.PI*2);ctx.fillStyle='#f1a47b';ctx.shadowColor='#e78d70';ctx.shadowBlur=13;ctx.fill();ctx.shadowBlur=0;}}
+    }
+    ctx.fillStyle='rgba(211,223,203,.55)';ctx.font='11px system-ui';ctx.textAlign='center';ctx.fillText('灵核',500,515);
+  }
+
+  canvas.addEventListener('click',event=>{
+    if(currentMode!=='merge'||state.finished)return;
+    const r=canvas.getBoundingClientRect(),x=(event.clientX-r.left)*1000/r.width,y=(event.clientY-r.top)*570/r.height;
+    const d=state.drops.slice().sort((a,b)=>Math.hypot(a.x-x,a.y-y)-Math.hypot(b.x-x,b.y-y))[0];
+    if(!d||Math.hypot(d.x-x,d.y-y)>34+Math.min(d.mass-1,7)*4)return;
+    if(selectedDrops.includes(d.id)) selectedDrops=selectedDrops.filter(id=>id!==d.id);
+    else if(selectedDrops.length<2) selectedDrops.push(d.id);
+    else selectedDrops=[selectedDrops[1],d.id];
+    render();
+  });
+  $('restart').addEventListener('click',()=>fresh(currentMode));
+  document.querySelectorAll('.mode').forEach(b=>b.addEventListener('click',()=>{
+    currentMode=b.dataset.mode;document.querySelectorAll('.mode').forEach(x=>x.classList.toggle('active',x===b));fresh(currentMode);
+  }));
+  window.addEventListener('resize',resizeCanvas);
+  fresh(currentMode);resizeCanvas();
+})();
+</script>
+</body>
+</html>

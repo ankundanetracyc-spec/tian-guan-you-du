@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="ActiveSkillData" format=3]
+
+[ext_resource type="Script" path="res://csharp/gongfa/ActiveSkillData.cs" id="1"]
+[ext_resource type="Script" path="res://csharp/gongfa/DamageBonus.cs" id="2"]
+
+[sub_resource type="Resource" id="Physique"]
+script = ExtResource("2")
+attribute = "physique"
+multiplier = 0.85
+
+[sub_resource type="Resource" id="BodyProficiency"]
+script = ExtResource("2")
+attribute = "body_proficiency"
+multiplier = 0.55
+
+[resource]
+uses_per_battle = 0
+max_charges = 0
+script = ExtResource("1")
+tags = Array[String](["增伤"])
+skill_name = "撼山"
+skill_type = 0
+description = "血炉至少20点时可用并消耗全部血炉；撼山基础伤害 = round(15 + 体魄×0.85 + 体道造诣×0.55)。辅修倍率 = 1 + 实际消耗血炉×1%；主修倍率 = 1 + 实际消耗血炉×1.5%；最终伤害按通用物理伤害流程结算。\n使用次数：每轮1次"
+source_gongfa_name = "赤阳参同经"
+energy_cost = 3
+mana_cost = 0
+target_type = 2
+range_min = 1
+range_max = 1
+slot_category = "active"
+base_damage = 15.0
+damage_type = "physical"
+damage_bonuses = Array[ExtResource("2")]([SubResource("Physique"), SubResource("BodyProficiency")])
+damage_formula = "round(15 + 体魄×0.85 + 体道造诣×0.55)"
+uses_per_round = 1
+gongfa_rewrite_effect_ids = Array[String](["chiyang_c4_hanshan"])
+keywords = Array[String]([])
+preparation_frames = 0
+recovery_frames = 0
+cooldown_frames = 0

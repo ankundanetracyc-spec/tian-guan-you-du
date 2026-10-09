@@ -6,12 +6,12 @@
 script = ExtResource("1")
 skill_name = "架招"
 icon_path = "res://textures/ui/combat/skill_icons/凡俗_架招_v1.png"
-description = "准备完成后持招。敌方物理攻击自身时优先结算：获得化解。化解层数 = 3 + floor(体魄/4) + floor(敏捷/5)。每层抵消本次攻击1点物理伤害，攻击结算后消散。"
+description = "应对：位于队首且遇到敌方物理攻击时立即触发，获得化解。化解层数 = 3 + floor(体魄/4) + floor(敏捷/5)；每层抵消该次攻击1点物理伤害，攻击结算后消散。未触发时按正常行动时序结算基础效果。\n使用次数：不限。"
 skill_type = 3
 energy_cost = 1
-preparation_frames = 96
-recovery_frames = 48
-cooldown_frames = 240
+preparation_frames = 0
+recovery_frames = 0
+cooldown_frames = 0
 target_type = 0
 range_min = 0
 range_max = 0

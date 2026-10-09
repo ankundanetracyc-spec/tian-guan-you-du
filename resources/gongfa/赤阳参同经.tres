@@ -5,7 +5,40 @@
 [ext_resource type="Resource" path="res://resources/activeskills/赤阳参同经/赤阳参同.tres" id="3_heart"]
 [ext_resource type="Resource" path="res://resources/activeskills/赤阳参同经/伏火.tres" id="4_fuhuo"]
 [ext_resource type="Resource" path="res://resources/activeskills/赤阳参同经/偃月.tres" id="5_yanyue"]
-[ext_resource type="Resource" path="res://resources/activeskills/赤阳参同经/朱明.tres" id="6_zhuming"]
+[ext_resource type="Resource" path="res://resources/activeskills/赤阳参同经/大冶.tres" id="6_daye"]
+[ext_resource type="Script" path="res://csharp/gongfa/GongfaDeckRewriteConfig.cs" id="7_rewrite"]
+[ext_resource type="Resource" path="res://resources/activeskills/赤阳参同经/化法/平息.tres" id="8_huafa_pingxi"]
+[ext_resource type="Resource" path="res://resources/activeskills/赤阳参同经/化法/卸力.tres" id="9_huafa_xieli"]
+[ext_resource type="Resource" path="res://resources/activeskills/赤阳参同经/化法/发劲.tres" id="10_huafa_fajin"]
+[ext_resource type="Resource" path="res://resources/activeskills/赤阳参同经/化法/撼山.tres" id="11_huafa_hanshan"]
+
+[sub_resource type="Resource" id="RewritePingxi"]
+script = ExtResource("7_rewrite")
+mode = 1
+count = 1
+source_skill_name = "平息"
+result_skill = ExtResource("8_huafa_pingxi")
+
+[sub_resource type="Resource" id="RewriteXieli"]
+script = ExtResource("7_rewrite")
+mode = 1
+count = 1
+source_skill_name = "卸力"
+result_skill = ExtResource("9_huafa_xieli")
+
+[sub_resource type="Resource" id="RewriteFajin"]
+script = ExtResource("7_rewrite")
+mode = 1
+count = 1
+source_skill_name = "发劲"
+result_skill = ExtResource("10_huafa_fajin")
+
+[sub_resource type="Resource" id="RewriteHanshan"]
+script = ExtResource("7_rewrite")
+mode = 1
+count = 1
+source_skill_name = "撼山"
+result_skill = ExtResource("11_huafa_hanshan")
 
 [sub_resource type="Resource" id="ChapterFuHuo"]
 script = ExtResource("2_chapter")
@@ -20,7 +53,8 @@ learn_permanent_bonuses = {"physique": 1.0}
 learned_active_skills = Array[Resource]([ExtResource("4_fuhuo")])
 left_branch_name = "淬炼"
 right_branch_name = "化法"
-naqi_bonuses = {"max_health": 30.0, "max_qi_blood": 1.0}
+combat_tempering_bonuses = {"max_health_flat": 30.0, "qi_blood_cap": 1.0}
+sub_deck_rewrites = Array[ExtResource("7_rewrite")]([SubResource("RewritePingxi")])
 
 [sub_resource type="Resource" id="ChapterDaYe"]
 script = ExtResource("2_chapter")
@@ -34,9 +68,11 @@ required_attributes = {"physique": 7.0, "body_proficiency": 5.0}
 required_chapter_ids = Array[String](["fu_huo"])
 allowed_bearings = Array[int]([1])
 learn_permanent_bonuses = {"physique": 0.5, "body_proficiency": 0.5}
+learned_active_skills = Array[Resource]([ExtResource("6_daye")])
 left_branch_name = "淬炼"
 right_branch_name = "化法"
-naqi_bonuses = {"blood_furnace_value_cap": 30.0}
+combat_tempering_bonuses = {"blood_furnace_cap": 30.0}
+sub_deck_rewrites = Array[ExtResource("7_rewrite")]([SubResource("RewriteXieli")])
 
 [sub_resource type="Resource" id="ChapterYanYue"]
 script = ExtResource("2_chapter")
@@ -53,7 +89,8 @@ learn_permanent_bonuses = {"physique": 0.5}
 learned_active_skills = Array[Resource]([ExtResource("5_yanyue")])
 left_branch_name = "淬炼"
 right_branch_name = "化法"
-naqi_bonuses = {"blood_furnace_value_cap": 20.0}
+combat_tempering_bonuses = {"physical_damage_percent": 5.0, "blood_furnace_cap": 20.0}
+sub_deck_rewrites = Array[ExtResource("7_rewrite")]([SubResource("RewriteFajin")])
 
 [sub_resource type="Resource" id="ChapterZhuMing"]
 script = ExtResource("2_chapter")
@@ -67,10 +104,10 @@ required_attributes = {"physique": 10.0, "body_proficiency": 9.0}
 required_chapter_ids = Array[String](["yan_yue"])
 allowed_bearings = Array[int]([1])
 learn_permanent_bonuses = {"body_proficiency": 1.0}
-learned_active_skills = Array[Resource]([ExtResource("6_zhuming")])
 left_branch_name = "淬炼"
 right_branch_name = "化法"
-naqi_bonuses = {"blood_furnace_value_cap": 20.0}
+combat_tempering_bonuses = {"fall_heal_rate_pp": 2.0, "blood_furnace_cap": 20.0}
+sub_deck_rewrites = Array[ExtResource("7_rewrite")]([SubResource("RewriteHanshan")])
 
 [resource]
 script = ExtResource("1_gongfa")

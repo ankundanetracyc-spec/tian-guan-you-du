@@ -1714,6 +1714,28 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "功法"
 
+[node name="HeartMethodPanel" type="PanelContainer" parent="Content/Page/Body/GongfaLayout"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("p")
+
+[node name="Box" type="VBoxContainer" parent="Content/Page/Body/GongfaLayout/HeartMethodPanel"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="HeartMethodTitle" type="Label" parent="Content/Page/Body/GongfaLayout/HeartMethodPanel/Box"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "心法被动 · 主修与辅修自动生效"
+
+[node name="HeartMethodText" type="RichTextLabel" parent="Content/Page/Body/GongfaLayout/HeartMethodPanel/Box"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.12, 0.095, 0.065, 1)
+theme_override_font_sizes/normal_font_size = 15
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+text = "装配主修或辅修功法后，心法被动会自动生效并显示在此处。"
+
 [node name="Workspace" type="HBoxContainer" parent="Content/Page/Body/GongfaLayout" unique_id=153590469]
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
@@ -2489,7 +2511,7 @@ size_flags_vertical = 3
 theme_override_colors/default_color = Color(0.12, 0.095, 0.065, 1)
 bbcode_enabled = true
 fit_content = false
-scroll_active = false
+scroll_active = true
 text = "已研读的每一卷会在中央展开为一层；主修可同时启用两条分支，辅修每层只能启用其一。"
 
 [node name="EquipPanel" type="PanelContainer" parent="Content/Page/Body/GongfaLayout/Workspace/EquipColumn" unique_id=1634229097]

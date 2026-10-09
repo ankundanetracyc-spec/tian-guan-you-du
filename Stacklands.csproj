@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
   </PropertyGroup>
   <!-- 主场景脚本较大；在内存紧张时，Roslyn 生成调试符号会耗尽内存。 -->
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">

@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>云息 · 境界表现预览</title>
+<style>
+@font-face{font-family:ZhenKai;src:url('../../resources/font/LXGWZhenKaiSlabGB-Regular.ttf') format('truetype');font-display:swap}
+:root{color-scheme:dark;font-family:ZhenKai,'KaiTi',serif;color:#eee8d5;background:#24221d}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px;gap:15px}
+button,input{font:inherit}button{cursor:pointer;color:inherit}button:focus-visible,input:focus-visible{outline:2px solid #d7cba0;outline-offset:5px}button:disabled{opacity:.4;cursor:default}
+.preview-header{width:min(100%,1420px);display:flex;justify-content:space-between;gap:16px;font-size:14px;color:#b7b09b;letter-spacing:1px}.preview-header span:last-child{color:#969280}
+.realm{position:relative;width:min(100%,1420px);aspect-ratio:1672/941;overflow:hidden;isolation:isolate;background:#605746 url('../../textures/ui/realm_yunxi_paper_v6.png') center/cover no-repeat}
+.major{position:absolute;top:1.3%;left:45.85%;width:8.3%;height:5.1%;background:url('../../textures/ui/realm_tag_opaque_v1.png') center/100% 100% no-repeat;display:grid;place-items:center;font-size:clamp(13px,1.25vw,20px);letter-spacing:5px}
+.hairline{position:absolute;top:11%;left:2.6%;right:2.6%;border-top:1px solid #302b226b}
+.stage-rail{position:absolute;left:1%;top:13%;width:11%;display:flex;flex-direction:column-reverse;gap:clamp(3px,.4vw,7px)}
+.stage{height:clamp(23px,2.7vw,44px);border:0;background:url('../../textures/ui/realm_tag_opaque_v1.png') center/100% 100% no-repeat;opacity:.57;font-size:clamp(11px,1.02vw,17px);color:#d3cbb2;letter-spacing:1px;transition:opacity .25s,transform .25s}
+.stage.active{opacity:1;color:#fff1cd;transform:translateX(5px);filter:brightness(1.16)}.stage.active::before,.stage.active::after{content:'·';margin:0 5px;color:#c4b88e}.stage:hover{opacity:1}
+.qi{position:absolute;left:28%;top:14%;width:44%;height:72%;pointer-events:none}canvas{width:100%;height:100%;display:block}
+.poem{position:absolute;left:72%;top:13%;width:24%;height:54%;pointer-events:none;opacity:.38;mix-blend-mode:multiply}
+.poem svg{position:absolute;overflow:hidden}
+.realm-info{position:absolute;left:29%;right:29%;top:76%;text-align:center;line-height:1.5;font-size:clamp(11px,1vw,17px)}
+.realm-caption{font-size:clamp(10px,.84vw,14px);letter-spacing:4px;color:#c1b797;margin-bottom:5px}
+.realm-info h1{margin:0 0 7px;font-size:clamp(23px,1.92vw,32px);font-weight:normal;letter-spacing:6px}.realm-info p{margin:5px 0;color:#ccc5ad}.realm-info .hint{color:#b9bba9;font-size:clamp(10px,.90vw,15px)}
+.annotation{position:absolute;left:6.5%;bottom:8%;width:20%;border-top:1px solid #b0a58450;padding-top:13px;color:#d0c8b1;font-size:clamp(11px,1vw,16px);line-height:1.8}
+.annotation strong{font-weight:normal;color:#eee2ba;display:block;margin-bottom:7px}.annotation p{margin:0}
+.controls{width:min(100%,1420px);display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;color:#c5bfaa;font-size:15px}
+.progress{display:flex;align-items:center;gap:12px;flex:1;min-width:245px;white-space:nowrap}.progress input{min-width:80px;width:clamp(80px,12vw,190px);accent-color:#b9b596}.progress output{min-width:37px;font-size:13px;color:#aaa68e}
+.controls button{background:#38362d;border:1px solid #6e6853;border-radius:3px;padding:9px 19px}.controls button:hover:not(:disabled){background:#464233}.controls .primary{color:#eee4c5;border-color:#b0a282}.controls .quiet{background:transparent}
+.notice{margin:0;width:min(100%,1420px);font-size:13px;line-height:1.7;color:#a49e8d}.error{position:absolute;inset:25% 25%;display:none;place-items:center;text-align:center;line-height:1.8;color:#f0dfc2}
+.breath-controls{width:min(100%,1420px);display:flex;gap:8px;align-items:center;flex-wrap:wrap;color:#c5bfaa;font-size:14px}.breath-controls button{border:1px solid #6e6853;background:#38362d;padding:7px 12px;border-radius:3px}.breath-controls button[aria-pressed="true"]{color:#fff1cd;border-color:#cfbe8f;background:#514b3b}.breath-gallery{width:min(100%,1420px);display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.breath-gallery[hidden]{display:none}.breath-card{margin:0;border:1px solid #6e685366;background:#605746 url('../../textures/ui/realm_yunxi_paper_v6.png') center/cover}.breath-card canvas{aspect-ratio:1.08;width:100%;height:auto}.breath-card figcaption{text-align:center;font-size:15px;color:#e2d9bb;padding:0 0 12px}.breath-gallery-note{width:min(100%,1420px);color:#a49e8d;font-size:13px;margin:0}.breath-gallery-note[hidden]{display:none}@media(max-width:700px){.breath-gallery{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){body{padding:10px;justify-content:flex-start}.preview-header{font-size:11px}.annotation{bottom:5%;width:23%;font-size:10px;padding-top:5px}.realm-info{top:76%;left:27%;right:27%}.realm-info h1{font-size:15px;letter-spacing:0;margin-bottom:0}.realm-info p{font-size:10px;margin:1px}.controls{gap:12px;font-size:13px}.controls button{padding:8px 12px}.notice{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.stage{transition:none}}
+</style>
+</head>
+<body>
+<header class="preview-header"><span>境界界面 · 一至十层表现预览</span><span>沿用原有界面素材</span></header>
+<main class="realm" aria-label="云息境界界面">
+  <div class="major">云息</div><div class="hairline"></div>
+  <nav class="stage-rail" aria-label="选择预览境界"></nav>
+  <div class="qi"><canvas id="cloud" aria-label="灵气积聚与凝核动画"></canvas></div>
+  <div class="poem" role="img" aria-label="融入纸面的云息题字">
+  </div>
+  <aside class="annotation"><strong id="visual-title">灵气初聚</strong><p id="visual-description">稀疏的气缓缓聚合，尚无灵核。</p></aside>
+  <section class="realm-info" aria-live="polite"><div class="realm-caption" id="realm-caption">当前境界</div><h1 id="current">云息一层</h1><p id="next">下一层　云息二层</p><p class="hint" id="hint">灵气渐聚，随修炼逐渐充盈</p></section>
+  <div class="error" id="error" role="alert"></div>
+</main>
+<section class="controls" aria-label="表现预览控制">
+  <label class="progress">本层修炼进度 <input id="progress" type="range" min="0" max="100" value="0"><output id="progress-value">0%</output></label>
+  <button id="condense" class="primary">播放凝核过程</button>
+  <button id="path-animation">播放七至十层</button>
+  <button id="sequence">连续看一至七层</button>
+  <button id="skip" class="quiet" hidden>跳过动画</button>
+</section>
+<section class="breath-controls" aria-label="归元息预览"><span>归元息预览</span><span id="breath-buttons"></span><button id="breath-overview" aria-expanded="false">展开零至九息总览</button></section>
+<section class="breath-gallery" id="breath-gallery" aria-label="零至九息对照" hidden></section>
+<p class="breath-gallery-note" id="gallery-note" hidden>总览为同一时刻的静态对照；上方大图持续转动。此处只展示息的数量与形态，不决定境界层数和获取方式。</p>
+<p class="notice">点击左侧境界签查看各层。“播放七至十层”演示气流由灵核进入内环，再依次引向中环、外环。三环以灵核为圆心，在不同平面缓慢转动，境界分配仅作视觉示意；此页不进行突破结算。</p>
+<script type="module">
+const names=['一','二','三','四','五','六','七','八','九','十'];
+const titles=['灵气初聚','灵气渐丰','气息绵长','灵云渐成','灵云渐厚','灵云充盈','灵核自持','内环初成','中环相续','三环周行'];
+const descriptions=['稀疏的气缓缓聚合，尚无灵核。','气的范围与浓度随积累增加。','松散的灵气渐渐连成一片。','云气向内积聚，仍没有中心小核。','云气层叠，流动更为厚重。','前六层的灵气汇成一团，等待凝核。','小而紧密的一团气，内部仍缓缓流动。','灵核引出一线气流，在内环绕行；环心与灵核重合。','气流从内环引向中环，两层气环在不同平面缓缓转动。','气流由内向外贯通三环；远处淡薄、近处明晰，环面缓缓摆转。'];
+const $=id=>document.getElementById(id);
+const canvas=$('cloud'),rail=document.querySelector('.stage-rail');
+const gl=canvas.getContext('webgl',{alpha:true,premultipliedAlpha:false,antialias:false});
+let program,uniforms,thresholds=[],stage=0,progress=0,animation=null,lastTime=0,clock=0;
+let rotationPhase=0,innerRotationPhase=0,rotationSpeed=.055,innerRotationSpeed=-.075;
+let state={radius:.09,density:.28,core:0,pull:0,rebound:0};
+let ready=false;
+let breathPreview=null,galleryPending=[],galleryImages=[];
+const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+async function placePoem(){
+  const response=await fetch('../../resources/ui/realm_poem_layout.json');
+  if(!response.ok)throw new Error('Missing poem layout');
+  const layout=await response.json();
+  const container=document.querySelector('.poem'),ns='http://www.w3.org/2000/svg';
+  const glyphs=[];
+  layout.columns_left_to_right.forEach((column,columnIndex)=>column.forEach((rect,row)=>{
+    const svg=document.createElementNS(ns,'svg');svg.setAttribute('viewBox',rect.join(' '));svg.setAttribute('preserveAspectRatio','none');
+    const ink=document.createElementNS(ns,'image');ink.setAttribute('href','../../'+layout.source);ink.setAttribute('width','1024');ink.setAttribute('height','1536');
+    svg.append(ink);container.append(svg);glyphs.push({svg,rect,column:columnIndex,row});
+  }));
+  container.style.opacity=String(layout.opacity);
+  function positionGlyphs(){
+    const width=container.clientWidth,height=container.clientHeight;
+    const maxWidth=Math.max(...glyphs.map(g=>g.rect[2])),maxHeight=Math.max(...glyphs.map(g=>g.rect[3]));
+    const scale=Math.min(width*layout.glyph_width/maxWidth,height*layout.glyph_height/maxHeight);
+    glyphs.forEach(({svg,rect,column,row})=>{
+      svg.style.width=rect[2]*scale+'px';svg.style.height=rect[3]*scale+'px';
+      svg.style.left=(width*(.1+column*(.8/3))-rect[2]*scale/2)+'px';
+      svg.style.top=height*(row*layout.row_pitch+(column%2===0?layout.low_offset:0))+'px';
+    });
+  }
+  new ResizeObserver(positionGlyphs).observe(container);positionGlyphs();
+}
+placePoem().catch(error=>console.error('题字暂时无法载入',error));
+const lerp=(a,b,t)=>a+(b-a)*t;
+const smooth=t=>t*t*(3-2*t);
+function cloudState(amount){amount=Math.max(0,Math.min(1,amount));return {radius:.09+.21*Math.pow(amount,.55),density:.28+.46*amount,core:0,pull:0,rebound:0}}
+function coreState(){return {radius:.055,density:1,core:1,pull:0,rebound:0}}
+const pathSteps=[0,1/3,2/3,1];
+function pathState(index){return {...coreState(),pathVisibility:1,pathProgress:pathSteps[Math.max(0,Math.min(3,index-6))],pathSurge:0}}
+function accumulation(index,value){
+  if(index>=5)return 1;
+  return lerp(thresholds[index],thresholds[index+1],value)/thresholds[5];
+}
+function sync(){
+  [...rail.children].forEach((button,index)=>{button.classList.toggle('active',index===stage);button.setAttribute('aria-pressed',String(index===stage))});
+  $('realm-caption').hidden=false;
+  $('current').textContent=`云息${names[stage]}层`;
+  $('next').textContent=`下一层　云息${stage===9?'十一':names[stage+1]}层`;
+  $('hint').textContent=stage>=7?['气流自灵核引出，沿内环周行','内环引气向外，中环随之形成','三环由内向外相续，缓缓转动'][stage-7]:stage===6?'灵核已成，内部气息缓缓流动':stage===5?'灵云充盈，尚未凝核':'灵气渐聚，随修炼逐渐充盈';
+  $('visual-title').textContent=titles[stage];$('visual-description').textContent=descriptions[stage];
+  $('progress').value=String(Math.round(progress*100));
+  $('progress').disabled=!ready||stage>=5||!!animation;
+  $('progress-value').textContent=stage>=5?'—':`${Math.round(progress*100)}%`;
+  $('condense').disabled=!ready||!!animation;$('sequence').disabled=!ready||!!animation;
+  $('path-animation').disabled=!ready||!!animation;
+  $('skip').hidden=!animation;
+  [...$('breath-buttons').children].forEach((button,index)=>button.setAttribute('aria-pressed',String(index===breathPreview)));
+  if(breathPreview!==null){
+    $('realm-caption').textContent='归元息 · 形态预览';
+    $('current').textContent=`${names[breathPreview-1]??'零'}息${breathPreview===9?' · 九息圆满':''}`;
+    $('next').textContent=breathPreview===9?'九团氤氲随灵核一同舒卷':breathPreview===0?'三环周行，尚未积得归元息':`已积${breathPreview}息 · 下一息尚待积累`;
+    $('hint').textContent='各团气息独立游走、转向，穿行于灵核与三环之间';
+    $('visual-title').textContent=breathPreview===0?'周行未得息':breathPreview===9?'九息相和':'归元息渐积';
+    $('visual-description').textContent='各团氤氲忽近忽远、独立游走，雾尾随方向舒卷。';
+  }else $('realm-caption').textContent='当前境界';
+}
+function choose(index,value=0){
+  animation=null;breathPreview=null;stage=index;progress=value;
+  if(ready)state=stage>=7?pathState(stage):stage===6?coreState():cloudState(accumulation(stage,progress));
+  sync();
+}
+names.forEach((name,index)=>{const button=document.createElement('button');button.className='stage';button.textContent=`云息${name}层`;button.addEventListener('click',()=>choose(index));rail.append(button)});
+$('progress').addEventListener('input',e=>{progress=Number(e.target.value)/100;state=cloudState(accumulation(stage,progress));sync()});
+function beginCondensation(){
+  breathPreview=null;stage=5;progress=1;animation={kind:'condensation',elapsed:0};state=cloudState(1);sync();
+  $('current').textContent='凝核';$('next').textContent='云息六层 → 云息七层';
+  $('realm-caption').hidden=true;
+}
+$('condense').addEventListener('click',beginCondensation);
+$('sequence').addEventListener('click',()=>{breathPreview=null;stage=0;progress=0;animation={kind:'sequence',elapsed:0};state=cloudState(accumulation(0,0));sync()});
+$('path-animation').addEventListener('click',()=>{breathPreview=null;stage=6;progress=0;animation={kind:'path',elapsed:0};state=coreState();sync()});
+$('skip').addEventListener('click',()=>choose(animation?.kind==='path'?9:6));
+for(let count=0;count<=9;count++){
+  const label=count===0?'零':names[count-1];
+  const button=document.createElement('button');button.textContent=label+'息';button.style.margin='3px';button.setAttribute('aria-pressed','false');
+  button.addEventListener('click',()=>{choose(9);breathPreview=count;sync()});$('breath-buttons').append(button);
+  const card=document.createElement('figure');card.className='breath-card';const image=document.createElement('canvas');image.width=360;image.height=334;
+  const caption=document.createElement('figcaption');caption.textContent=label+'息'+(count===9?' · 圆满':'');card.append(image,caption);$('breath-gallery').append(card);galleryImages.push(image);
+}
+$('breath-overview').addEventListener('click',()=>{
+  const open=$('breath-gallery').hidden;$('breath-gallery').hidden=!open;$('gallery-note').hidden=!open;
+  $('breath-overview').setAttribute('aria-expanded',String(open));$('breath-overview').textContent=open?'收起零至九息总览':'展开零至九息总览';
+  if(open)galleryPending=Array.from({length:10},(_,i)=>i);
+});
+function updateAnimation(dt){
+  if(!animation)return;
+  animation.elapsed+=dt;
+  if(animation.kind==='path'){
+    const t=animation.elapsed;
+    if(t>=10.5){choose(9);return}
+    if(t<1.1){state={...coreState(),pathVisibility:smooth(t/1.1),pathProgress:.015,pathSurge:0};$('hint').textContent='从灵核引出气流，接入最近的环路';return}
+    const part=Math.min(2,Math.floor((t-1.1)/2.8));
+    const local=Math.min(1,((t-1.1)-part*2.8)/2.8);
+    const fraction=smooth(local);
+    stage=6+part+(local>=1?1:0);sync();
+    state={...coreState(),pathVisibility:1,pathProgress:lerp(pathSteps[part],pathSteps[part+1],fraction),pathSurge:0};
+    $('realm-caption').hidden=true;$('current').textContent=['内环渐成','中环渐成','外环渐成'][part];$('next').textContent=`云息${names[part+6]}层 → 云息${names[part+7]}层`;
+    $('hint').textContent=part===0?'气流离核，绕出第一重环':part===1?'从内环引出一缕气，向中环延展':'气流再向外引，三重气环相续';
+    if(t>=9.5){stage=9;sync();state=pathState(9);$('hint').textContent='三环相续，气流由内向外周行'}
+    return;
+  }
+  if(animation.kind==='sequence'){
+    const position=animation.elapsed/1.9;
+    if(position>=6){beginCondensation();return}
+    stage=Math.min(5,Math.floor(position));progress=position-stage;
+    state=cloudState(accumulation(stage,progress));sync();return;
+  }
+  const t=animation.elapsed;
+  if(t<2.2){const f=.5-.5*Math.cos(t/2.2*Math.PI);state={radius:lerp(.3,.185,f),density:lerp(.74,.87,f),core:0,pull:f,rebound:0};$('hint').textContent='灵云向内收拢'}
+  else if(t<3){state={radius:.185,density:.87,core:0,pull:1,rebound:Math.sin((t-2.2)/.8*Math.PI)*.62};$('hint').textContent='压聚的灵气向外回弹'}
+  else if(t<5.1){const f=smooth((t-3)/2.1);state={radius:lerp(.185,.055,f),density:lerp(.87,1,f),core:f,pull:1,rebound:0};$('hint').textContent='散气重新引回，中心逐渐紧密'}
+  else if(t<5.3){const f=Math.sin((t-5.1)/.2*Math.PI/2);state={...coreState(),pull:1-f*.35,heat:f};$('hint').textContent='灵核凝定，气华骤明'}
+  else if(t<5.6){state={...coreState(),pull:.65,heat:1};$('hint').textContent='灵核凝定，气华骤明'}
+  else if(t<8.4){const f=(t-5.6)/2.8;state={...coreState(),pull:.65*(1-f),heat:(1-f)*(1-f)};$('hint').textContent='气华渐敛，灵核自持'}
+  else choose(6);
+}
+function compile(type,source){const shader=gl.createShader(type);gl.shaderSource(shader,source);gl.compileShader(shader);if(!gl.getShaderParameter(shader,gl.COMPILE_STATUS)){const message=gl.getShaderInfoLog(shader);gl.deleteShader(shader);throw new Error(message)}return shader}
+function frame(now){
+  const dt=lastTime?Math.min((now-lastTime)/1000,.08):0;lastTime=now;
+  if(!document.hidden){
+    const motionActive=!reducedMotion||!!animation;
+    if(motionActive)clock+=dt;
+    updateAnimation(dt);
+    if(motionActive){
+      const pull=state.pull*(1-state.rebound*.65),response=1-Math.exp(-dt*6);
+      rotationSpeed=lerp(rotationSpeed,.055+pull*1.85,response);
+      innerRotationSpeed=lerp(innerRotationSpeed,-.075+pull*1.55,response);
+      rotationPhase+=rotationSpeed*dt;innerRotationPhase+=innerRotationSpeed*dt;
+    }
+    const rect=canvas.getBoundingClientRect(),ratio=Math.min(window.devicePixelRatio||1,1.5);
+    const width=Math.max(1,Math.round(rect.width*ratio)),height=Math.max(1,Math.round(rect.height*ratio));
+    if(canvas.width!==width||canvas.height!==height){canvas.width=width;canvas.height=height;gl.viewport(0,0,width,height)}
+    gl.uniform1f(uniforms.animation_time,clock);
+    gl.uniform1f(uniforms.rotation_phase,rotationPhase);
+    gl.uniform1f(uniforms.inner_rotation_phase,innerRotationPhase);
+    gl.uniform1f(uniforms.cloud_radius,state.radius);gl.uniform1f(uniforms.cloud_density,state.density);
+    gl.uniform1f(uniforms.core_amount,state.core);gl.uniform1f(uniforms.core_heat,state.heat??0);gl.uniform1f(uniforms.inward_pull,state.pull);
+    gl.uniform1f(uniforms.rebound,state.rebound);gl.uniform1f(uniforms.aspect_ratio,width/height);
+    gl.uniform1f(uniforms.path_visibility,state.pathVisibility??0);gl.uniform1f(uniforms.path_progress,state.pathProgress??0);gl.uniform1f(uniforms.path_surge,state.pathSurge??0);
+    gl.uniform1f(uniforms.breath_count,breathPreview??0);
+    if(galleryPending.length){
+      const count=galleryPending.shift();
+      gl.uniform1f(uniforms.animation_time,0.7);gl.uniform1f(uniforms.cloud_radius,.055);gl.uniform1f(uniforms.cloud_density,1);gl.uniform1f(uniforms.core_amount,1);gl.uniform1f(uniforms.core_heat,0);gl.uniform1f(uniforms.inward_pull,0);gl.uniform1f(uniforms.rebound,0);gl.uniform1f(uniforms.path_visibility,1);gl.uniform1f(uniforms.path_progress,1);gl.uniform1f(uniforms.breath_count,count);
+      gl.drawArrays(gl.TRIANGLES,0,6);
+      const image=galleryImages[count],context=image.getContext('2d');context.clearRect(0,0,image.width,image.height);context.drawImage(canvas,0,0,image.width,image.height);
+      gl.uniform1f(uniforms.animation_time,clock);gl.uniform1f(uniforms.cloud_radius,state.radius);gl.uniform1f(uniforms.cloud_density,state.density);gl.uniform1f(uniforms.core_amount,state.core);gl.uniform1f(uniforms.core_heat,state.heat??0);gl.uniform1f(uniforms.inward_pull,state.pull);gl.uniform1f(uniforms.rebound,state.rebound);gl.uniform1f(uniforms.path_visibility,state.pathVisibility??0);gl.uniform1f(uniforms.path_progress,state.pathProgress??0);gl.uniform1f(uniforms.breath_count,breathPreview??0);
+    }
+    gl.drawArrays(gl.TRIANGLES,0,6);
+  }
+  requestAnimationFrame(frame);
+}
+sync();
+try{
+  if(!gl)throw new Error('WebGL unavailable');
+  // 直接读取游戏使用的同一份气团着色器，避免预览与游戏各画一套。
+  const sourceRequests=[fetch('../../shaders/realm_qi_cloud.gdshader'),...names.slice(0,6).map((name,index)=>fetch(`../../resources/realm/${String(index+2).padStart(2,'0')}_云息${name}层.tres`))];
+  const responses=await Promise.all(sourceRequests);
+  if(responses.some(response=>!response.ok))throw new Error('Missing presentation resources');
+  const [godotSource,...configs]=await Promise.all(responses.map(response=>response.text()));
+  thresholds=configs.map(source=>Number(source.match(/"spirit_strands"\s*:\s*([\d.]+)/)?.[1]));
+  if(thresholds.some(n=>!Number.isFinite(n)||n<=0)||thresholds.some((n,i)=>i>0&&n<thresholds[i-1]))throw new Error('Missing cultivation presentation range');
+  const fragmentSource='precision highp float;\nvarying vec2 qi_uv;\n'+godotSource
+    .replace(/shader_type[^;]+;/g,'').replace(/render_mode[^;]+;/g,'')
+    .replace(/uniform (\w+) (\w+)\s*=\s*[^;]+;/g,'uniform $1 $2;')
+    .replace(/void fragment\(\)/,'void main()').replace(/\bUV\b/g,'qi_uv').replace(/\bCOLOR\b/g,'gl_FragColor').replace(/\btexture\(/g,'texture2D(');
+  const vertexSource='attribute vec2 position; varying vec2 qi_uv; void main(){qi_uv=vec2(position.x*.5+.5,.5-position.y*.5);gl_Position=vec4(position,0.,1.);}';
+  program=gl.createProgram();gl.attachShader(program,compile(gl.VERTEX_SHADER,vertexSource));gl.attachShader(program,compile(gl.FRAGMENT_SHADER,fragmentSource));gl.linkProgram(program);
+  if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw new Error(gl.getProgramInfoLog(program));
+  gl.useProgram(program);
+  const swirlImage=new Image();swirlImage.src='../../textures/particle_vfx/1024/alpha/effect_4.png';await swirlImage.decode();
+  const swirlTexture=gl.createTexture();gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,swirlTexture);
+  gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL,false);
+  gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,swirlImage);
+  gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
+  gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
+  gl.uniform1i(gl.getUniformLocation(program,'swirl_texture'),0);
+  const buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),gl.STATIC_DRAW);
+  const attribute=gl.getAttribLocation(program,'position');gl.enableVertexAttribArray(attribute);gl.vertexAttribPointer(attribute,2,gl.FLOAT,false,0,0);
+  uniforms=Object.fromEntries(['animation_time','rotation_phase','inner_rotation_phase','cloud_radius','cloud_density','core_amount','core_heat','inward_pull','rebound','aspect_ratio','path_visibility','path_progress','path_surge','breath_count'].map(key=>[key,gl.getUniformLocation(program,key)]));
+  ready=true;choose(0);requestAnimationFrame(frame);
+}catch(error){
+  console.error(error);$('error').style.display='grid';$('error').textContent='暂时无法显示灵气动画。请通过本地预览地址打开，并使用支持 WebGL 的浏览器。';
+  [...rail.children].forEach(button=>button.disabled=true);$('progress').disabled=true;$('condense').disabled=true;$('sequence').disabled=true;$('path-animation').disabled=true;
+}
+canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();animation=null;ready=false;sync();$('error').style.display='grid';$('error').textContent='画面连接已中断，请刷新页面恢复预览。'});
+</script>
+</body>
+</html>

@@ -5,10 +5,13 @@ public partial class MainScene
 {
     private Vector2I _player_world_grid_cell = new(38, 166);
     private bool _tile_world_npc_signal_connected;
+    private bool _tile_world_map_bridge_configured;
 
     public void configure_tile_world_map_bridge()
     {
         if (tile_world_map is null)
+            return;
+        if (_tile_world_map_bridge_configured)
             return;
 
         if (tile_world_map.HasSignal("player_cell_changed"))
@@ -18,6 +21,8 @@ public partial class MainScene
         if (tile_world_map.HasSignal("node_enter_requested"))
             tile_world_map.Connect("node_enter_requested", Callable.From<string>(on_tile_world_node_enter_requested));
         tile_world_map.Connect("visibility_changed", Callable.From(on_tile_world_map_visibility_changed));
+        _npc_world?.set_tile_world_map(tile_world_map);
+        _tile_world_map_bridge_configured = true;
         connect_tile_world_npc_population();
         sync_tile_world_map_state();
     }
@@ -59,9 +64,10 @@ public partial class MainScene
         {
             var counts = new Godot.Collections.Dictionary();
             foreach (var node in mapData.get_all_nodes())
-                counts[node.node_id] = _npc_world?.get_node_npc_count(node.node_id) ?? 0;
+                counts[node.node_id] = _npc_world?.get_world_location_population_count(node.node_id) ?? 0;
             tile_world_map.Call("set_population_counts", counts);
         }
+        tile_world_map.Call("set_grid_population_counts", _npc_world?.get_ordinary_grid_population_counts() ?? new Godot.Collections.Dictionary());
 
         refresh_tile_world_character_list();
     }
@@ -101,9 +107,7 @@ public partial class MainScene
         var contextId = string.IsNullOrEmpty(locationNodeId)
             ? $"world-cell:{cell.X},{cell.Y}"
             : $"world:{locationNodeId}";
-        var roster = string.IsNullOrEmpty(locationNodeId)
-            ? new Godot.Collections.Array<WorldNpcData>()
-            : _npc_world?.get_node_roster(locationNodeId) ?? new Godot.Collections.Array<WorldNpcData>();
+        var roster = _npc_world?.get_world_grid_roster(cell, locationNodeId) ?? new Godot.Collections.Array<WorldNpcData>();
         (GetTree().GetFirstNodeInGroup("cell_character_list") as CellCharacterList)?.show_world_npcs(roster, contextId);
     }
 

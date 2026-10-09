@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#081311">
+<title>凝核简约策略试作 · 待审</title>
+<style>
+:root{color-scheme:dark;--bg:#081311;--panel:#10201d;--line:#365149;--text:#f0ecde;--muted:#b0bbae;--gold:#e2c987;--jade:#9ed8bd}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 48% -18%,#29493d 0,#12251f 40%,var(--bg) 80%);color:var(--text);font:15px/1.55 "Noto Serif SC","Songti SC",serif}
+button{font:inherit;color:inherit;touch-action:manipulation}.app{max-width:1120px;margin:auto;padding:20px 22px 30px}
+header{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;border-bottom:1px solid #456156;padding:0 2px 12px;margin-bottom:13px}
+.eyebrow{font:10px system-ui,sans-serif;letter-spacing:.15em;color:var(--gold)}h1{font-size:clamp(24px,3vw,34px);font-weight:500;letter-spacing:.04em;margin:4px 0}.subtitle{margin:0;color:#c6d0c5;font-size:13px}
+.badge{border:1px solid #526457;border-radius:999px;padding:6px 10px;color:#e5d8ad;background:#101c18;font:11px system-ui,sans-serif;white-space:nowrap}
+.panel{background:linear-gradient(155deg,#12231ff5,#0d1a18f7);border:1px solid var(--line);border-radius:14px;box-shadow:0 22px 65px #0007}
+.main{padding:12px}.rule{display:flex;align-items:center;gap:10px;padding:8px 11px;margin-bottom:10px;border:1px solid #394f43;border-radius:9px;background:#0b1916;color:#d3ddcf;font-size:12px}.rule b{color:#f0dca6;font-weight:500;white-space:nowrap}
+.canvas-wrap{position:relative;overflow:hidden;border:1px solid #36534a;border-radius:11px;background:#081513}
+canvas{display:block;width:100%;height:auto;aspect-ratio:1000/430}.caption{position:absolute;left:11px;top:10px;padding:5px 8px;border:1px solid #496155;border-radius:7px;background:#081411db;color:#e0e6d8;font:10px system-ui,sans-serif;pointer-events:none}
+.note{display:flex;justify-content:space-between;gap:10px;padding:7px 4px 1px;color:#aebbad;font:10px system-ui,sans-serif}
+.meter-row{display:grid;grid-template-columns:110px 1fr 44px;gap:11px;align-items:center;padding:11px 4px 8px}
+.meter-title{font-size:12px;color:#d9dfd4}.meter{height:12px;border:1px solid #304a40;border-radius:99px;overflow:hidden;background:#07110f}
+.meter i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#538f79,#b7d8a7,#f0d99a);transition:width .35s ease}
+.marks{display:flex;justify-content:space-between;color:#91a394;font:9px system-ui,sans-serif;padding:0 1px;margin-top:3px}.meter-state{color:#bdc9bc;font-size:10px;text-align:right}
+.role-row{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding:5px 4px 10px;border-top:1px solid #2c4239}
+.label{color:#9fb1a4;font:10px system-ui,sans-serif;letter-spacing:.08em;margin-right:2px}
+.role{padding:6px 12px;border:1px solid #41584d;border-radius:7px;background:#10201b;color:#c3cec1;cursor:pointer;font-size:11px}
+.role:hover{border-color:#a89969}.role.selected{border-color:var(--gold);background:#332f20;color:#f2dfa9}
+.profile-text{flex:1 1 310px;color:#bac8b9;font-size:11px}
+.actions{display:grid;grid-template-columns:1fr 1fr 150px;gap:8px}
+.action{min-height:56px;padding:8px 11px;border:1px solid #50695d;border-radius:9px;background:linear-gradient(160deg,#1d362c,#10211c);text-align:left;cursor:pointer}
+.action:hover:not(:disabled){border-color:var(--gold);background:linear-gradient(160deg,#294435,#142720)}
+.action strong{display:block;font-size:13px;font-weight:500;color:#e9e6d9}.action small{display:block;margin-top:2px;color:#afbdad;font:10px/1.4 system-ui,sans-serif}
+.action.finish{border-color:#8ba17d;background:linear-gradient(180deg,#d8d3a5,#b0b889);color:#172018;text-align:center;font-weight:600;align-self:stretch}
+.action.finish strong{color:#172018}.action.finish small{color:#34432f}
+.action:disabled{opacity:.38;cursor:not-allowed}
+.status{min-height:19px;margin:8px 3px 1px;color:#bdc9bc;font-size:11px}
+.result{display:none;margin-top:8px;padding:9px 11px;border:1px solid #89794e;border-radius:9px;background:linear-gradient(120deg,#29271d,#16241d)}
+.result.show{display:block}.result strong{color:#f0dca6;font-size:14px;font-weight:500}.result span{display:block;margin-top:2px;color:#c9d3c2;font-size:11px}
+footer{padding:9px 2px 0;color:#84978b;font:10px/1.5 system-ui,sans-serif}
+@media(max-width:700px){.app{padding:12px 9px 20px}header{align-items:flex-start;flex-direction:column}.badge{align-self:flex-start}.main{padding:8px}.rule{align-items:flex-start;font-size:11px}.meter-row{grid-template-columns:88px 1fr 38px;gap:7px;padding-left:2px;padding-right:2px}.actions{grid-template-columns:1fr 1fr}.action.finish{grid-column:1/-1;min-height:44px}.note{font-size:9px}.profile-text{flex-basis:100%}}
+</style>
+</head>
+<body>
+<main class="app">
+<header>
+  <div><div class="eyebrow">云息 · 凝核策略试作（待审）</div><h1>灵气聚成核</h1><p class="subtitle">灵核是聚在丹田中心的高密度灵气团，不是石头或水滴。</p></div>
+  <span class="badge">不计时 · 不限步数 · 无随机判定</span>
+</header>
+
+<section class="panel main">
+  <div class="rule"><b>两种选择</b><span>聚气会更快变密，也会让环流偏斜；调息能把环流调匀，但会松开一些灵气。你决定何时调息、何时凝核。</span></div>
+  <div class="canvas-wrap">
+    <canvas id="scene" width="1000" height="430" aria-label="灵气围绕丹田中心聚拢，亮带偏斜表示环流不匀"></canvas>
+    <div class="caption" id="caption">丹田中心 · 灵核尚未形成</div>
+  </div>
+  <div class="note"><span>看中心光团是否密实；环绕光带越偏，气流越不匀。</span></div>
+
+  <div class="meter-row">
+    <span class="meter-title">凝聚程度</span>
+    <div><div class="meter"><i id="meter"></i></div><div class="marks"><span>散</span><span>聚</span><span>密</span></div></div>
+    <span class="meter-state" id="meterState">尚散</span>
+  </div>
+
+  <div class="role-row">
+    <span class="label">修士底子</span>
+    <button class="role selected" data-role="wood" type="button">木修</button>
+    <button class="role" data-role="fire" type="button">火修</button>
+    <button class="role" data-role="earth" type="button">土修</button>
+    <span class="profile-text" id="profileText">木灵根 · 木行主修 · 柔和相性：聚气稳，较容易调匀。</span>
+  </div>
+
+  <div class="actions">
+    <button class="action" id="gather" type="button"><strong>聚气</strong><small>凝聚度上升，环流更偏。</small></button>
+    <button class="action" id="balance" type="button"><strong>调息</strong><small>环流更匀，凝聚度回落。</small></button>
+    <button class="action finish" id="finish" type="button" disabled><strong>凝成灵核</strong><small>凝聚到“密”后可用</small></button>
+  </div>
+  <div class="status" id="status" aria-live="polite">聚气后观察环流；若偏斜明显，可以调息，但凝聚度会回落。</div>
+  <div class="result" id="result"><strong id="resultTitle"></strong><span id="resultText"></span></div>
+</section>
+<footer>待审原型：只保留一条凝聚刻度，环流偏斜由画面呈现。三种角色展示灵根、主修和相性的差异；具体数值未定稿。正式策划仍采用八息方案。</footer>
+</main>
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const canvas = $('scene'), ctx = canvas.getContext('2d');
+  const roles = {
+    wood: {name:'木修',text:'木灵根 · 木行主修 · 柔和相性：聚气稳，较容易调匀。',gain:18,drift:.13,loss:10,smooth:.58,flowAngle:-.55},
+    fire: {name:'火修',text:'火灵根 · 火行主修 · 刚烈相性：聚气最快，也更容易偏；及时调息仍能拉回。',gain:25,drift:.18,loss:12,smooth:.52,flowAngle:.30},
+    earth:{name:'土修',text:'土灵根 · 土行主修 · 沉稳相性：聚气较慢，环流不易偏。',gain:16,drift:.10,loss:8,smooth:.48,flowAngle:1.15}
+  };
+  let role = 'wood';
+  let state = {density:0,biasX:0,biasY:0,done:false};
+  function biasSize(s){return Math.hypot(s.biasX,s.biasY)}
+  function clampBias(s){const m=biasSize(s);if(m>1){s.biasX/=m;s.biasY/=m}}
+  function update(){
+    const r=roles[role];
+    $('meter').style.width=state.density+'%';
+    $('meterState').textContent=state.density<25?'尚散':state.density<68?'渐聚':state.density<100?'已密':'可凝核';
+    $('caption').textContent=state.done?'灵核已成 · 高密度灵气团':state.density?'丹田中心 · 灵气正在变密':'丹田中心 · 灵核尚未形成';
+    $('profileText').textContent=r.text;
+    $('gather').disabled=state.done||state.density>=100;
+    $('balance').disabled=state.done||state.density===0;
+    $('finish').disabled=state.done||state.density<100;
+    document.querySelectorAll('.role').forEach(b=>b.classList.toggle('selected',b.dataset.role===role));
+    draw();
+  }
+  function gather(){
+    if(state.done||state.density>=100)return;
+    const r=roles[role];
+    state.density=Math.min(100,state.density+r.gain);
+    state.biasX+=Math.cos(r.flowAngle)*r.drift;
+    state.biasY+=Math.sin(r.flowAngle)*r.drift;
+    clampBias(state);
+    $('status').textContent='灵气聚得更密了，环流也向一侧偏去。你可以继续聚气，或调息把环流拉匀。';
+    update();
+  }
+  function balance(){
+    if(state.done||state.density===0||state.density>=100)return;
+    const r=roles[role];
+    state.density=Math.max(0,state.density-r.loss);
+    state.biasX*=1-r.smooth;
+    state.biasY*=1-r.smooth;
+    $('status').textContent='环流已经调匀一些，但中心灵气也随之松开。接下来需要重新聚拢。';
+    update();
+  }
+  function finish(){
+    if(state.done||state.density<100)return;
+    state.done=true;
+    const m=biasSize(state);
+    if(m<.30){
+      $('resultTitle').textContent='灵核匀整';
+      $('resultText').textContent='灵气密聚于丹田中心，环流也较匀顺。';
+    }else if(m<.62){
+      $('resultTitle').textContent='灵核已成，气流稍偏';
+      $('resultText').textContent='灵核凝成了，但环流仍有偏斜；多次聚气后及时调息会更稳。';
+    }else{
+      $('resultTitle').textContent='灵核已成，偏流明显';
+      $('resultText').textContent='灵核凝成了，但气团一侧更紧；这名修士聚气迅速，调息较难。';
+    }
+    $('result').classList.add('show');
+    $('status').textContent='凝核完成。切换修士可以比较不同底子适合的操作节奏。';
+    update();
+  }
+  function reset(nextRole){
+    const changed=nextRole!==role;
+    role=nextRole;
+    state={density:0,biasX:0,biasY:0,done:false};
+    $('result').classList.remove('show');
+    $('status').textContent=changed?'修士已切换，本局从头开始。':'聚气后观察环流；若偏斜明显，可以调息，但凝聚度会回落。';
+    update();
+  }
+  function draw(){
+    ctx.clearRect(0,0,1000,430);
+    const bg=ctx.createLinearGradient(0,0,1000,430);
+    bg.addColorStop(0,'#091613');bg.addColorStop(.52,'#10241f');bg.addColorStop(1,'#081310');
+    ctx.fillStyle=bg;ctx.fillRect(0,0,1000,430);
+    const cx=500,cy=215,bx=cx+state.biasX*100,by=cy+state.biasY*64,m=biasSize(state);
+    const vignette=ctx.createRadialGradient(cx,cy,45,cx,cy,560);
+    vignette.addColorStop(0,'rgba(49,94,75,.07)');vignette.addColorStop(1,'rgba(0,0,0,.50)');
+    ctx.fillStyle=vignette;ctx.fillRect(0,0,1000,430);
+    const haze=ctx.createRadialGradient(bx,by,12,bx,by,300);
+    haze.addColorStop(0,'rgba(127,195,155,'+(.16+state.density*.001)+')');
+    haze.addColorStop(.46,'rgba(74,150,124,'+(.18+Math.min(.2,m*.16))+')');
+    haze.addColorStop(1,'rgba(44,105,91,0)');
+    ctx.fillStyle=haze;ctx.beginPath();ctx.ellipse(bx,by,315,176,-.10,0,Math.PI*2);ctx.fill();
+    [[250,150,190,90],[750,160,192,86],[285,310,205,72],[710,310,195,78],[500,80,230,58]].forEach((v,i)=>{
+      const x=v[0]+state.biasX*45,y=v[1]+state.biasY*28;
+      const g=ctx.createRadialGradient(x,y,4,x,y,v[2]);
+      g.addColorStop(0,i%2?'rgba(130,192,157,.22)':'rgba(105,175,154,.20)');
+      g.addColorStop(1,'rgba(45,107,91,0)');
+      ctx.fillStyle=g;ctx.beginPath();ctx.ellipse(x,y,v[2],v[3],i%2?.08:-.09,0,Math.PI*2);ctx.fill();
+    });
+    for(let i=0;i<90;i++){
+      const a=i*2.399963+.3,r=80+(i*47%325);
+      const x=cx+Math.cos(a)*r+state.biasX*(24+i%27);
+      const y=cy+Math.sin(a)*r*.48+state.biasY*(16+i%19);
+      ctx.beginPath();ctx.arc(x,y,i%8===0?1.8:1.1,0,Math.PI*2);
+      ctx.fillStyle='rgba(216,239,213,'+(.13+(i%5)*.03)+')';ctx.fill();
+    }
+    ctx.save();
+    ctx.translate(cx,cy);
+    ctx.beginPath();ctx.ellipse(state.biasX*90,state.biasY*58,176,77,-.12+state.biasX*.13,-.38,2.30+state.biasX*.18);
+    ctx.strokeStyle='rgba(190,229,198,'+(.22+Math.min(.24,state.density*.002))+')';ctx.lineWidth=2;ctx.stroke();
+    ctx.beginPath();ctx.ellipse(state.biasX*102,state.biasY*66,200,92,.18+state.biasY*.12,2.95,5.55);
+    ctx.strokeStyle='rgba(93,173,149,.25)';ctx.lineWidth=1;ctx.stroke();
+    ctx.restore();
+    if(state.density>0){
+      const p=state.density/100,rad=10+76*Math.sqrt(p);
+      const glow=ctx.createRadialGradient(cx,cy,rad*.2,cx,cy,rad*2.7);
+      glow.addColorStop(0,'rgba(237,224,166,'+(.17+p*.22)+')');
+      glow.addColorStop(.4,'rgba(130,203,164,'+(.16+p*.16)+')');
+      glow.addColorStop(1,'rgba(66,145,121,0)');
+      ctx.fillStyle=glow;ctx.beginPath();ctx.arc(cx,cy,rad*2.7,0,Math.PI*2);ctx.fill();
+      const orb=ctx.createRadialGradient(cx-rad*.3,cy-rad*.38,rad*.03,cx,cy,rad);
+      orb.addColorStop(0,'rgba(251,247,210,'+(.36+p*.48)+')');
+      orb.addColorStop(.28,'rgba(197,229,184,'+(.43+p*.46)+')');
+      orb.addColorStop(.68,'rgba(92,169,139,'+(.48+p*.45)+')');
+      orb.addColorStop(1,'rgba(37,99,85,'+(.60+p*.38)+')');
+      ctx.save();ctx.shadowColor='#9bd9b5';ctx.shadowBlur=24+p*24;
+      ctx.fillStyle=orb;ctx.beginPath();ctx.arc(cx,cy,rad,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;
+      ctx.strokeStyle='rgba(237,241,201,'+(.2+p*.35)+')';ctx.lineWidth=1;
+      ctx.beginPath();ctx.ellipse(cx-rad*.08,cy-rad*.04,rad*.72,rad*.32,-.55,.18,4.9);ctx.stroke();
+      ctx.beginPath();ctx.ellipse(cx+rad*.08,cy+rad*.04,rad*.42,rad*.78,.48,2.7,5.7);ctx.stroke();ctx.restore();
+    }else{
+      const center=ctx.createRadialGradient(cx,cy,1,cx,cy,29);
+      center.addColorStop(0,'rgba(231,218,165,.72)');center.addColorStop(.2,'rgba(151,205,161,.27)');center.addColorStop(1,'rgba(88,151,127,0)');
+      ctx.fillStyle=center;ctx.beginPath();ctx.arc(cx,cy,29,0,Math.PI*2);ctx.fill();
+      ctx.fillStyle='rgba(240,223,173,.82)';ctx.beginPath();ctx.arc(cx,cy,2.2,0,Math.PI*2);ctx.fill();
+    }
+    ctx.fillStyle='rgba(221,233,215,.78)';ctx.font='11px system-ui';ctx.textAlign='center';
+    ctx.fillText(state.density?'中心灵核 · 高密度灵气':'丹田中心 · 灵核未成',cx,397);
+  }
+  document.querySelectorAll('.role').forEach(b=>b.addEventListener('click',()=>reset(b.dataset.role)));
+  $('gather').addEventListener('click',gather);
+  $('balance').addEventListener('click',balance);
+  $('finish').addEventListener('click',finish);
+  window.addEventListener('resize',draw);
+  update();
+})();
+</script>
+</body>
+</html>

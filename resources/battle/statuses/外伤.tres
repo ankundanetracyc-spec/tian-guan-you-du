@@ -6,8 +6,8 @@
 script = ExtResource("1")
 effect_id = "外伤"
 name = "外伤"
-description = "创口未合，动则牵痛。每层使行动速度降低5%、闪避降低8%；即时队列战斗中持续720帧。"
+description = "创口未合，动则牵痛。每层使行动速度降低5%、闪避降低8%；最多4层、持续1回合。同类新增层刷新本类时长，主动消耗只移除相应层数；获得层的回合不扣时长。"
 is_debuff = true
 max_stacks = 4
-duration_default = 720
-duration_type = 2
+duration_default = 1
+duration_type = 0

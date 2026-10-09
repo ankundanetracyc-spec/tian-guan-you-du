@@ -93,6 +93,8 @@ public partial class BattleEntityData : Resource
     [Export] public Array<string> combat_skill_slot_paths = [];
     [Export] public bool combat_skill_slots_configured;
     [Export] public Array<string> combat_passive_paths = [];
+    /// <summary>按心法归属汇总的淬炼值，仅在战斗快照中使用。</summary>
+    [Export] public Dictionary combat_tempering_by_gongfa = [];
     [Export] public bool battle_deck_configured;
     [Export] public Array<string> pack_item_paths = [];
     [Export] public Array<int> pack_item_counts = [];
@@ -115,6 +117,7 @@ public partial class BattleEntityData : Resource
         loaded_skill_paths = source.loaded_skill_paths.Duplicate();
         combat_skill_slot_paths = source.combat_skill_slot_paths.Duplicate();
         combat_passive_paths = source.combat_passive_paths.Duplicate();
+        combat_tempering_by_gongfa = source.combat_tempering_by_gongfa.Duplicate(true);
         pack_item_paths = source.pack_item_paths.Duplicate();
         pack_item_counts = source.pack_item_counts.Duplicate();
         formation_circuits = source.formation_circuits.Duplicate();

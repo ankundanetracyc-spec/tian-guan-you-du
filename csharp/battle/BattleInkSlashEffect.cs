@@ -7,23 +7,25 @@ using Godot;
 public partial class BattleInkSlashEffect : Node2D
 {
     private const string CombatShaderPath = "res://shaders/battle_ink_combat.gdshader";
-    private const string SwordShaderPath = "res://shaders/battle_ink_sword.gdshader";
+    private const string BrushShaderPath = "res://shaders/battle_ink_brush.gdshader";
     private const float WhiteTextureSize = 256f;
     private const int MaxConcurrentEffects = 12;
     private const float SlashDuration = 0.42f;
-    private const float ImpactDuration = 0.30f;
+    private const float ImpactDuration = 0.38f;
     private const float PunchDuration = 0.28f;
-    private const float PunchImpactDuration = 0.24f;
-    private const float SwordCleaveDuration = 0.40f;
-    private const float SwordImpactDuration = 0.48f;
+    private const float PunchImpactDuration = 0.34f;
+    private const float SwordCleaveDuration = 0.60f;
+    private const float SwordImpactDuration = 0.56f;
     private const float DeathDuration = 0.90f;
     private static int _activeEffects;
     private static uint _punchSequence;
     private static uint _swordSequence;
     private static Shader? _combatShader;
+    private static Shader? _brushShader;
     private static ImageTexture? _whiteTexture;
 
-    private enum EffectMode { Slash, Impact, Punch, PunchImpact, Death, SwordCleave, SwordImpact }
+    // Values match battle_ink_combat.gdshader, including fallback modes.
+    private enum EffectMode { Slash = 0, Punch = 1, Impact = 2, PunchImpact = 3, Death = 4, SwordCleave = 5, SwordImpact = 6 }
 
     private EffectMode _mode;
     private Vector2 _direction = Vector2.Right;
@@ -37,6 +39,7 @@ public partial class BattleInkSlashEffect : Node2D
     private bool _evaded;
     private bool _registered;
     private Sprite2D? _shaderVisual;
+    private BattleInkRibbon? _inkRibbon;
     private ShaderMaterial? _shaderMaterial;
     private readonly Vector2[] _wetRibbon = new Vector2[36];
     private readonly Vector2[] _bodyRibbon = new Vector2[36];
@@ -53,6 +56,7 @@ public partial class BattleInkSlashEffect : Node2D
     public override void _Process(double delta)
     {
         _elapsed += (float)delta;
+        _inkRibbon?.SetProgress(Mathf.Clamp(_elapsed / Mathf.Max(_duration, 0.001f), 0f, 1f), _elapsed);
         if (_shaderMaterial is not null)
         {
             var progress = Mathf.Clamp(_elapsed / Mathf.Max(_duration, 0.001f), 0f, 1f);
@@ -65,7 +69,7 @@ public partial class BattleInkSlashEffect : Node2D
     public override void _Draw()
     {
         // 正常路径由单张 CanvasItem Shader 绘制；程序化版本保留作渲染资源异常时的回退。
-        if (_shaderVisual is not null) return;
+        if (_shaderVisual is not null || _inkRibbon is not null) return;
 
         switch (_mode)
         {
@@ -96,42 +100,17 @@ public partial class BattleInkSlashEffect : Node2D
 
     public static void PlaySlash(GodotObject attacker, GodotObject target, ActiveSkillData skill)
     {
-        if (attacker is not Node2D attackerNode || target is not Node2D targetNode) return;
-        var scene = CurrentScene();
-        if (scene is null) return;
-
-        var start = CombatAnchor(attackerNode);
-        var end = CombatAnchor(targetNode);
-        var offset = end - start;
-        var length = Mathf.Max(offset.Length(), 160f);
-        var direction = offset.LengthSquared() < 0.01f ? Vector2.Right : offset.Normalized();
-        var effect = CreateEffect(scene);
-        if (effect is null) return;
-
-        effect.GlobalPosition = start;
-        effect._mode = EffectMode.Slash;
-        effect._direction = direction;
-        effect._normal = new Vector2(-direction.Y, direction.X);
-        effect._length = length;
-        effect._duration = SlashDuration;
-        effect._seed = (attacker.GetInstanceId() ^ target.GetInstanceId()) % 997UL;
-        effect._inkColor = InkColor(skill);
-        effect._elapsed = 0f;
-        effect.ConfigureShaderVisual();
-        effect.QueueRedraw();
+        BattleInkCombatVfx.PlayAttack(attacker, target, skill);
     }
 
     public static void PlayAttack(GodotObject attacker, GodotObject target, ActiveSkillData skill)
     {
-        if (IsPunchSkill(skill)) PlayPunch(attacker, target, skill);
-        else if (BattleSwordVfx.IsSwordSkill(skill)) PlaySwordCleave(attacker, target);
-        else PlaySlash(attacker, target, skill);
+        BattleInkCombatVfx.PlayAttack(attacker, target, skill);
     }
 
     public static bool IsPunchSkill(ActiveSkillData skill)
     {
-        if (skill.source_gongfa_name.Contains("太祖长拳")) return true;
-        return skill.skill_name is "发劲" or "痛击" or "蓄势重击" or "太祖起手" or "进步崩拳" or "沉桥压身";
+        return skill.skill_name is "发劲" or "痛击" or "蓄势重击";
     }
 
     private static void PlayPunch(GodotObject attacker, GodotObject target, ActiveSkillData skill)
@@ -162,32 +141,14 @@ public partial class BattleInkSlashEffect : Node2D
         effect.QueueRedraw();
     }
 
-    public static void PlayImpact(GodotObject target, bool critical, bool evaded = false)
+    public static void PlayImpact(GodotObject target, bool critical, bool evaded = false, GodotObject? attacker = null)
     {
-        if (target is not Node2D targetNode) return;
-        var scene = CurrentScene();
-        if (scene is null) return;
-
-        var effect = CreateEffect(scene);
-        if (effect is null) return;
-
-        effect.GlobalPosition = CombatAnchor(targetNode);
-        effect._mode = EffectMode.Impact;
-        effect._duration = ImpactDuration;
-        effect._seed = (target.GetInstanceId() * 13UL) % 997UL;
-        effect._inkColor = new Color(0.055f, 0.075f, 0.07f, 0.94f);
-        effect._critical = critical;
-        effect._evaded = evaded;
-        effect._elapsed = 0f;
-        effect.ConfigureShaderVisual();
-        effect.QueueRedraw();
+        BattleInkCombatVfx.PlayImpact(target, attacker: attacker, critical: critical, evaded: evaded);
     }
 
-    public static void PlayImpactForSkill(GodotObject target, ActiveSkillData skill, bool critical, GodotObject? attacker = null)
+    public static void PlayImpactForSkill(GodotObject target, ActiveSkillData skill, bool critical, GodotObject? attacker = null, int segment = 0)
     {
-        if (IsPunchSkill(skill)) PlayPunchImpact(target, critical, InkColor(skill));
-        else if (BattleSwordVfx.IsSwordSkill(skill)) PlaySwordImpact(target, attacker, critical);
-        else PlayImpact(target, critical);
+        BattleInkCombatVfx.PlayImpact(target, skill, attacker, critical, segment: segment);
     }
 
     private static void PlayPunchImpact(GodotObject target, bool critical, Color inkColor)
@@ -212,22 +173,7 @@ public partial class BattleInkSlashEffect : Node2D
 
     public static void PlayDeath(GodotObject target)
     {
-        if (target is not Node2D targetNode) return;
-        var scene = CurrentScene();
-        if (scene is null) return;
-
-        var effect = CreateEffect(scene);
-        if (effect is null) return;
-
-        effect.GlobalPosition = CombatAnchor(targetNode);
-        effect._mode = EffectMode.Death;
-        effect._duration = DeathDuration;
-        effect._seed = (target.GetInstanceId() * 29UL + 137UL) % 997UL;
-        effect._inkColor = new Color(0.035f, 0.048f, 0.045f, 0.95f);
-        effect._normal = Vector2.Up;
-        effect._elapsed = 0f;
-        effect.ConfigureShaderVisual();
-        effect.QueueRedraw();
+        BattleInkCombatVfx.PlayDeath(target);
     }
 
     private static BattleInkSlashEffect? CreateEffect(Node scene)
@@ -291,6 +237,43 @@ public partial class BattleInkSlashEffect : Node2D
         _shaderMaterial.SetShaderParameter("seed_value", _seed);
         _shaderMaterial.SetShaderParameter("critical", _critical ? 1f : 0f);
         _shaderMaterial.SetShaderParameter("evaded", _evaded ? 1f : 0f);
+
+        if (_mode is EffectMode.SwordCleave or EffectMode.SwordImpact)
+        {
+            _shaderVisual.Visible = false;
+            _inkRibbon = new BattleInkRibbon { Name = "LivingInkRibbon" };
+            AddChild(_inkRibbon);
+            _inkRibbon.Configure(_mode == EffectMode.SwordCleave ? Mathf.Clamp(_length * 1.12f, 300f, 440f) : (_critical ? 226f : 190f),
+                _seed, new Color(0.035f, 0.047f, 0.043f, 0.98f), _mode == EffectMode.SwordImpact, _critical, _direction);
+            _inkRibbon.SetProgress(0f, 0f);
+            return;
+        }
+
+        if (_mode is EffectMode.SwordCleave or EffectMode.SwordImpact or EffectMode.Impact or EffectMode.PunchImpact)
+        {
+            _brushShader ??= GD.Load<Shader>(BrushShaderPath);
+            if (_brushShader is null) return;
+            _shaderMaterial.Shader = _brushShader;
+            _shaderMaterial.SetShaderParameter("effect_mode", _mode switch
+            {
+                EffectMode.SwordCleave => 0f,
+                EffectMode.SwordImpact => 1f,
+                EffectMode.Impact => 2f,
+                _ => 3f
+            });
+            if (_mode == EffectMode.SwordCleave)
+                _shaderVisual.Scale = new Vector2(Mathf.Clamp(_length * 1.20f, 300f, 490f), 200f) / WhiteTextureSize;
+            else if (_mode == EffectMode.SwordImpact)
+                _shaderVisual.Scale = new Vector2(_critical ? 282f : 246f, 164f) / WhiteTextureSize;
+            else
+                _shaderVisual.Scale = Vector2.One * (_critical ? 266f : 220f) / WhiteTextureSize;
+            _shaderVisual.Rotation = _direction.Angle();
+            if (_mode == EffectMode.SwordCleave)
+            {
+                _shaderVisual.Rotation = 0f;
+                _shaderVisual.FlipH = _direction.X < 0f;
+            }
+        }
     }
 
     private static ImageTexture WhiteTexture()
@@ -502,7 +485,7 @@ public partial class BattleInkSlashEffect : Node2D
     private static Node? CurrentScene()
         => Engine.GetMainLoop() is SceneTree tree ? tree.CurrentScene : null;
 
-    private static Vector2 CombatAnchor(Node2D unit) => unit.GlobalPosition + new Vector2(0f, -112f);
+    private static Vector2 CombatAnchor(Node2D unit) => BattleInkCombatVfx.Anchor(unit);
 
     private static Color InkColor(ActiveSkillData skill)
         => IsPunchSkill(skill)

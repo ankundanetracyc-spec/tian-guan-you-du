@@ -3,23 +3,63 @@
 [ext_resource type="Script" path="res://csharp/gongfa/GongfaChapterConfig.cs" id="2"]
 [ext_resource type="Resource" path="res://resources/activeskills/内景损益篇/内景损益.tres" id="3"]
 [ext_resource type="Resource" path="res://resources/activeskills/内景损益篇/淬厉.tres" id="4"]
+[ext_resource type="Script" path="res://csharp/gongfa/GongfaDeckRewriteConfig.cs" id="6_rewrite"]
+[ext_resource type="Resource" path="res://resources/activeskills/内景损益篇/化法/卸力.tres" id="7_huafa_xieli"]
+[ext_resource type="Resource" path="res://resources/activeskills/内景损益篇/化法/淬厉.tres" id="huafaMissing6"]
+[ext_resource type="Resource" path="res://resources/activeskills/内景损益篇/化法/发劲.tres" id="huafaMissing7"]
+[ext_resource type="Resource" path="res://resources/activeskills/内景损益篇/化法/撼山.tres" id="huafaMissing8"]
+
+[sub_resource type="Resource" id="RewriteMissing6"]
+script = ExtResource("6_rewrite")
+mode = 1
+count = 1
+target_scope = 1
+source_skill_name = "淬厉"
+result_skill = ExtResource("huafaMissing6")
+
+[sub_resource type="Resource" id="RewriteMissing7"]
+script = ExtResource("6_rewrite")
+mode = 1
+count = 1
+target_scope = 0
+source_skill_name = "发劲"
+result_skill = ExtResource("huafaMissing7")
+
+[sub_resource type="Resource" id="RewriteMissing8"]
+script = ExtResource("6_rewrite")
+mode = 1
+count = 1
+target_scope = 0
+source_skill_name = "撼山"
+result_skill = ExtResource("huafaMissing8")
+
+[sub_resource type="Resource" id="RewriteXieLi"]
+script=ExtResource("6_rewrite")
+mode=1
+count=1
+source_skill_name="卸力"
+result_skill=ExtResource("7_huafa_xieli")
 [sub_resource type="Resource" id="a"]
 script=ExtResource("2")
 chapter_id="neijing"
 chapter_name="内景"
-description="读取牌堆伤势，以生命上限代价换取锻躯物理增伤。"
+description="读取当前内伤与外伤层数，强化锻躯攻伐，并提高物理承伤能力。"
 order=1
+combat_tempering_bonuses = {"max_health_flat": 35.0, "wound_physical_reduction_pp_per_stack": 0.5}
 required_study_progress=24.0
 required_attributes={"physique":5.0,"body_proficiency":4.0}
 allowed_bearings=Array[int]([0,1])
 learn_permanent_bonuses={"physique":1.0}
 learned_active_skills=Array[Resource]([ExtResource("4")])
+sub_deck_rewrites = Array[ExtResource("6_rewrite")]([SubResource("RewriteMissing6")])
 [sub_resource type="Resource" id="b"]
 script=ExtResource("2")
 chapter_id="lubo"
 chapter_name="履薄"
-description="在受创中持续向弃牌堆积累伤势。"
+description="在受创中持续积累外伤状态。"
 order=2
+combat_tempering_bonuses = {"physical_damage_percent": 3.0}
+sub_deck_rewrites = Array[ExtResource("6_rewrite")]([SubResource("RewriteXieLi")])
 required_study_progress=48.0
 required_realm="云息三层"
 required_attributes={"physique":7.0,"body_proficiency":5.0}
@@ -30,8 +70,10 @@ learn_permanent_bonuses={"body_proficiency":0.5}
 script=ExtResource("2")
 chapter_id="sunyi"
 chapter_name="损益"
-description="统一读取伤势数量，不拆分新的伤势资源。"
+description="统一读取现有内伤与外伤层数，不拆分新的伤势资源；淬炼使伤势同时转为物理承伤收益。"
 order=3
+combat_tempering_bonuses = {"max_health_flat": 20.0, "wound_physical_reduction_pp_per_stack": 0.5}
+sub_deck_rewrites = Array[ExtResource("6_rewrite")]([SubResource("RewriteMissing7")])
 required_study_progress=84.0
 required_realm="云息六层"
 required_attributes={"physique":8.0,"body_proficiency":7.0}
@@ -42,8 +84,10 @@ learn_permanent_bonuses={"physique":0.5}
 script=ExtResource("2")
 chapter_id="baihai"
 chapter_name="百骸"
-description="按牌堆伤势数追加段数的多段攻伐。"
+description="按当前内伤与外伤层数追加段数的多段攻伐。"
 order=4
+combat_tempering_bonuses = {"physical_damage_percent": 6.0}
+sub_deck_rewrites = Array[ExtResource("6_rewrite")]([SubResource("RewriteMissing8")])
 required_study_progress=128.0
 required_realm="云息九层"
 required_attributes={"physique":10.0,"body_proficiency":9.0}
@@ -53,7 +97,7 @@ learn_permanent_bonuses={"body_proficiency":1.0}
 [resource]
 script=ExtResource("1")
 gongfa_name="内景损益篇"
-description="以伤势业障为代价并从中取得持续物理增伤的锻躯法门。"
+description="读取当前内外伤层数，把伤势转为锻躯攻伐与承受物理冲击的收益。"
 wuxing=0
 can_be_main=true
 can_be_sub=true

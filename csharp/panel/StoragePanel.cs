@@ -6,6 +6,10 @@ public partial class StoragePanel : Control
 {
     private const string ArtifactFilter = "__artifacts__";
     private const int GridSlotCount = Character.InventorySlotCapacity;
+    private const int GridMaximumColumns = 8;
+    private const float GridSlotWidth = 128f;
+    private const float GridSlotHeight = 168f;
+    private const float GridHorizontalGap = 12f;
     [Signal] public delegate void secret_book_requestedEventHandler(string item_path);
 
     private Character? _player;
@@ -37,6 +41,17 @@ public partial class StoragePanel : Control
         populate_empty_grid();
         filter_to_category("");
         Hide();
+    }
+
+    public override void _Process(double delta)
+    {
+        if (_grid is null || _empty_grid is null || _grid.GetParent() is not Control scroll) return;
+        var availableWidth = scroll.Size.X;
+        if (availableWidth <= 1f) return;
+        var columns = Mathf.Clamp(Mathf.FloorToInt((availableWidth + GridHorizontalGap) / (GridSlotWidth + GridHorizontalGap)), 1, GridMaximumColumns);
+        if (_grid.Columns == columns && _empty_grid.Columns == columns) return;
+        _grid.Columns = columns;
+        _empty_grid.Columns = columns;
     }
 
     public Rect2 get_ui_rect() => GetNodeOrNull<Control>("Window")?.GetGlobalRect() ?? GetGlobalRect();
@@ -90,6 +105,8 @@ public partial class StoragePanel : Control
         {
             var slot=scene.Instantiate<StorageItemSlot>();
             slot.inventory_reorder_enabled=true;
+            slot.CustomMinimumSize = new Vector2(GridSlotWidth, GridSlotHeight);
+            slot.SizeFlagsHorizontal = SizeFlags.ExpandFill;
             _grid.AddChild(slot);
             if (normalAt.TryGetValue(position,out var normal))
             {
@@ -138,9 +155,16 @@ public partial class StoragePanel : Control
         {
             var cell = new Control
             {
-                CustomMinimumSize = new Vector2(102, 122), MouseFilter = MouseFilterEnum.Ignore
+                CustomMinimumSize = new Vector2(GridSlotWidth, GridSlotHeight),
+                SizeFlagsHorizontal = SizeFlags.ExpandFill,
+                MouseFilter = MouseFilterEnum.Ignore
             };
-            var frame = new Panel { CustomMinimumSize = new Vector2(102, 96), MouseFilter = MouseFilterEnum.Ignore };
+            var frame = new Panel { CustomMinimumSize = new Vector2(GridSlotWidth, GridSlotWidth), MouseFilter = MouseFilterEnum.Ignore };
+            frame.SetAnchorsAndOffsetsPreset(LayoutPreset.CenterTop);
+            frame.OffsetLeft = -GridSlotWidth * .5f;
+            frame.OffsetTop = 0;
+            frame.OffsetRight = GridSlotWidth * .5f;
+            frame.OffsetBottom = GridSlotWidth;
             frame.AddThemeStyleboxOverride("panel", _empty_slot_style);
             cell.AddChild(frame);
             _empty_grid.AddChild(cell);

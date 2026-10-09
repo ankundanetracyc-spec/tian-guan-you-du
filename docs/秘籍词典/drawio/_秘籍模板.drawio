@@ -19,10 +19,10 @@
         <mxCell id="naqi1" value="纳气&#xa;固定加成：&#xa;习得：" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
           <mxGeometry x="220" y="370" width="240" height="110" as="geometry" />
         </mxCell>
-        <mxCell id="huafa1" value="化法&#xa;加入：基础技能库 + 新牌*1&#xa;或替换：原基础牌*1 -> 新牌*1&#xa;习得：" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+        <mxCell id="huafa1" value="化法&#xa;目标：基础技能库 / 本秘籍授予技能&#xa;加入：技能名&#xa;或替换：原技能 → 新技能" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
           <mxGeometry x="1260" y="370" width="240" height="110" as="geometry" />
         </mxCell>
-        <mxCell id="learn1" value="习得&#xa;主动牌：&#xa;被动：注明由主修/辅修槽位自动提供的心法效果" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="learn1" value="习得&#xa;主动技能：&#xa;被动：注明由主修/辅修槽位自动提供的心法效果" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
           <mxGeometry x="220" y="600" width="240" height="110" as="geometry" />
         </mxCell>
         <mxCell id="e0" value="起始卷" style="endArrow=block;html=1;" edge="1" parent="1" source="overview" target="chapter1">

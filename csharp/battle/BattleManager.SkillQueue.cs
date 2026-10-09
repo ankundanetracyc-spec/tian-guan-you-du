@@ -410,8 +410,8 @@ public partial class BattleManager : Node2D
         // 按屏幕上的角色身体选取，避免只能拖到脚底的六边形格子。
         return all_units.OfType<Node2D>()
             .Where(unit=>IsValidTarget(skill,active_unit,unit))
-            .Where(unit=>new Rect2(unit.GetGlobalTransformWithCanvas().Origin-new Vector2(100,300),new Vector2(200,330)).HasPoint(viewportPosition))
-            .OrderBy(unit=>(unit.GetGlobalTransformWithCanvas().Origin-new Vector2(0,130)).DistanceSquaredTo(viewportPosition)).FirstOrDefault();
+            .Where(unit=>get_unit_screen_rect(unit).Grow(8).HasPoint(viewportPosition))
+            .OrderBy(unit=>get_unit_screen_rect(unit).GetCenter().DistanceSquaredTo(viewportPosition)).FirstOrDefault();
     }
 
     private void TryPlaySkill(ActiveSkillData skill, GodotObject? target)
@@ -445,14 +445,8 @@ public partial class BattleManager : Node2D
     private void OnRealtimeCardSelected(ActiveSkillData skill)
     {
         if (!can_player_plan() || !GodotObject.IsInstanceValid(active_unit) || active_unit != _mainPlayerUnit || !is_skill_ready(active_unit!, skill)) return;
-        PreviewSkillTargets(skill, active_unit!, RequiresTargetSelection(skill) ? 12f : .7f);
-        if (RequiresTargetSelection(skill) && !IsAutomaticScope(skill))
-        {
-            _pendingInstantSkill = skill;
-            _skillBar?.begin_targeting(skill, _combatSkills.GetValueOrDefault(active_unit!, []).IndexOf(skill));
-            return;
-        }
-        if(QueueRealtimeCard(active_unit!, skill, DefaultTarget(skill, active_unit!))) unitOverlay?.ClearTargetFrames();
+        // 先排招式顺序；确认后才依次选择多目标招式的目标。
+        QueueRealtimeCard(active_unit!, skill, RequiresTargetSelection(skill) ? null : DefaultTarget(skill, active_unit!));
     }
 
     public void on_skill_selected(ActiveSkillData skill, int _index) => OnRealtimeCardSelected(skill);
@@ -576,14 +570,26 @@ public partial class BattleManager : Node2D
     private static int EnemyExpectedDamage(ActiveSkillData skill,GodotObject attacker,GodotObject defender)
     {
         if(Mathf.IsZeroApprox(skill.base_damage)&&skill.damage_bonuses.Count==0&&string.IsNullOrWhiteSpace(skill.damage_formula))return 0;
-        var raw=Mathf.Max(1,Mathf.RoundToInt(BattleActionResolver.preview_damage(attacker,skill)));
-        if(skill.damage_type=="physical")
+        var segments=1;
+        if(Engine.GetMainLoop() is SceneTree tree&&tree.GetFirstNodeInGroup("battle_mgr") is BattleManager manager)
+            segments=Mathf.Max(1,manager.body_cards.Segments(attacker,skill));
+        var blockRemaining=skill.damage_type=="physical"?GetStatus(defender,"化解"):0;
+        var shield=Mathf.Max(0,defender.Get("shield").AsInt32());
+        var total=0;
+        for(var i=0;i<segments;i++)
         {
-            var blocked=defender.Get("shield").AsInt32()+GetStatus(defender,"化解");
-            raw=BattleActionResolver.apply_defense(Mathf.Max(0,raw-blocked),"physical",defender);
+            var raw=Mathf.Max(1,Mathf.RoundToInt(BattleActionResolver.preview_damage(attacker,skill)));
+            if(skill.damage_type=="physical")
+            {
+                var blocked=Mathf.Min(blockRemaining,raw);
+                blockRemaining-=blocked;
+                raw=BattleActionResolver.apply_defense(raw-blocked,"physical",defender);
+            }
+            var absorbed=Mathf.Min(shield,raw);
+            shield-=absorbed;
+            total+=raw-absorbed;
         }
-        else raw=Mathf.Max(1,raw-defender.Get("shield").AsInt32());
-        return raw;
+        return total;
     }
     private static int GetStatus(GodotObject unit,string id)=>unit.HasMethod("get_status_stacks")?unit.Call("get_status_stacks",id).AsInt32():0;
     private static string EnemyDecisionState(GodotObject unit,IEnumerable<ActiveSkillData> candidates)
@@ -601,4 +607,3 @@ public partial class BattleManager : Node2D
         else _executor!.execute_skill(unit, skill, target, false);
     }
 }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    

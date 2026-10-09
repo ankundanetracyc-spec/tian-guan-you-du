@@ -3,8 +3,9 @@ using Godot.Collections;
 
 public partial class BattleManager : Node2D
 {
-    private Node? Map => GetNodeOrNull<Node>(battle_map);
-    private Node? DeployLayer => GetNodeOrNull<Node>(deploy_layer);
+    private Node? Map => GetNodeOrNull<Node>(battle_map) ?? GetNodeOrNull<Node>("../BattleMap");
+    private Node? DeployLayer => GetNodeOrNull<Node>(deploy_layer) ?? GetNodeOrNull<Node>("../DeployLayer");
+    private bool _sceneUiConnected;
 
     public override void _Ready()
     {
@@ -15,29 +16,35 @@ public partial class BattleManager : Node2D
 
     private void connect_skill_bar()
     {
-        _skillBar = GetTree().CurrentScene?.GetNodeOrNull<CombatSkillBar>("UILayer/CombatSkillBar");
+        if (_sceneUiConnected) return;
+        // 场景切换期间 CurrentScene 的赋值时机与节点 Ready 顺序不同步；
+        // BattleMgr 的父节点才是当前实际战斗场景，测试入口和正式入口都从这里取 UI。
+        var scene = GetParent() ?? GetTree().CurrentScene;
+        if (scene is null) return;
+        var uiLayer = scene.GetNodeOrNull<CanvasLayer>("UILayer");
+        if (uiLayer is null) return;
+        uiLayer.Layer = 10;
+        ApplyBattleArtwork(scene);
+
+        _skillBar = scene.GetNodeOrNull<CombatSkillBar>("UILayer/CombatSkillBar");
         // 即时战斗场景只允许有固定技能槽。旧场景/热重载可能还带着
-        // SkillHandPanel 或 BattleActionProgress；它们会创建 BattleCard，
-        // 覆盖技能栏并把旧牌面留在最上层，因此在连接技能栏时一次性清掉。
-        _handPanel = GetTree().CurrentScene?.GetNodeOrNull<Node>("UILayer/SkillHandPanel");
+        // SkillHandPanel 或旧版 BattleActionProgress；清掉旧节点，
+        // 再由 BattlePlanHud 创建当前版行动进度条，避免重复显示。
+        _handPanel = scene.GetNodeOrNull<Node>("UILayer/SkillHandPanel");
         if (_skillBar is not null)
         {
             RemoveLegacyRealtimePanels();
             _handPanel = null;
         }
-        _statusPanel = GetTree().CurrentScene?.GetNodeOrNull<BattleStatusPanel>("UILayer/BattleStatusPanel");
+        _statusPanel = scene.GetNodeOrNull<BattleStatusPanel>("UILayer/BattleStatusPanel");
         _statusPanel?.Hide();
         if(_skillBar is not null)_skillBar.ProcessMode=ProcessModeEnum.Always;
         unitOverlay=new BattleUnitOverlay();unitOverlay.Setup(this);AddChild(unitOverlay);
-        var uiLayer = GetTree().CurrentScene?.GetNodeOrNull<CanvasLayer>("UILayer");
-        if (uiLayer is not null)
-        {
-            _planHud = new BattlePlanHud();
-            _planHud.Setup(this);
-            _planHud.ProcessMode = ProcessModeEnum.Always;
-            _planHud.Hide();
-            uiLayer.AddChild(_planHud);
-        }
+        _planHud = new BattlePlanHud();
+        _planHud.ProcessMode = ProcessModeEnum.Always;
+        _planHud.Hide();
+        uiLayer.AddChild(_planHud);
+        _planHud.Setup(this);
         if (_skillBar is not null)
         {
             _skillBar.skill_selected += on_skill_selected;
@@ -45,11 +52,12 @@ public partial class BattleManager : Node2D
             _skillBar.Hide();
         }
         _handPanel?.Call("hide_hand");
+        _sceneUiConnected = true;
     }
 
     private void RemoveLegacyRealtimePanels()
     {
-        var scene = GetTree().CurrentScene;
+        var scene = GetParent() ?? GetTree().CurrentScene;
         if (scene is null) return;
         foreach (var path in new[] { "UILayer/SkillHandPanel", "UILayer/BattleActionProgress" })
         {
@@ -97,8 +105,11 @@ public partial class BattleManager : Node2D
 
     public void setup_team_battle(Godot.Collections.Array attackerScenes, Godot.Collections.Array defenderScenes, Godot.Collections.Array attackerData, Godot.Collections.Array defenderData)
     {
+        // 若场景切换时延迟挂载尚未执行，必须先建好队列 HUD，再启动首轮规划。
+        connect_skill_bar();
         ResetBattle();
         SpawnTeam(attackerScenes, attackerData); SpawnTeam(defenderScenes, defenderData);
+        FitBattleFormation(true);
         battle_running = all_units.Count > 0; turn_state = TurnState.IDLE;
         InitializeRealtimeBattle();
     }
@@ -132,7 +143,12 @@ public partial class BattleManager : Node2D
             // 精力在战斗中使用独立的 6 点上限；法力上限沿用角色境界快照。
             unit.Set("max_stamina", BattleEnergyCap); unit.Set("current_stamina", 0);
             unit.Set("current_mana", 0);
-            if (unit is Creature creature) creature.initialize_body_combat_state(snapshot.basic_deck_path.EndsWith("锻躯路.tres") || snapshot.body_path_awakened);
+            if (unit is Creature creature)
+            {
+                // 锻躯是所有修士共有的根基；装配心法的角色不能因为主修倾向不同而失去气血资源。
+                creature.initialize_body_combat_state(unit is Character || snapshot.basic_deck_path.EndsWith("锻躯路.tres") || snapshot.body_path_awakened);
+                creature.apply_combat_tempering_stats();
+            }
             // 战斗由角色身体区域的双击入口处理，避免世界实体单击就打开面板。
             unit.Set("input_pickable", false); unit.Set("visible", true);
             AddPaperDoll(unit, snapshot);

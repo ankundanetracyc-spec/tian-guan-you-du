@@ -554,7 +554,7 @@ select { appearance: auto; }
   </div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <script>window.PROJECT_CATALOG = {
-  "generatedAt": "2026-09-18T14:09:42.567Z",
+  "generatedAt": "2026-10-08T13:24:20.272Z",
   "project": "青溪问道",
   "cards": [
     {
@@ -565,7 +565,7 @@ select { appearance: auto; }
       "skill_name": "抱一",
       "resource_path": "res://resources/activeskills/黄庭养形篇/抱一.tres",
       "icon_path": "",
-      "description": "每回合限一次；仅当本回合已主动使气血下降时可打出；获得气血1层。",
+      "description": "仅当本场已主动使气血下降时可用；获得气血1层。\n使用次数：本场1次",
       "skill_type": "BUFF",
       "element": "NONE",
       "source_type": "秘籍习得",
@@ -602,57 +602,6 @@ select { appearance: auto; }
           "count": 1
         }
       ],
-      "stacks_formula": "",
-      "move_formula": ""
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "card",
-      "id": "project_card_494adb03",
-      "projectSource": true,
-      "skill_name": "抱元观微",
-      "resource_path": "res://resources/activeskills/明微抱元经/抱元观微.tres",
-      "icon_path": "",
-      "description": "凝神抱元，以镜意观照敌我。进入抱元观微状态，持续整场战斗。",
-      "skill_type": "POWER",
-      "element": "NONE",
-      "source_type": "秘籍习得",
-      "source_gongfa": "明微抱元经",
-      "required_realm": "",
-      "required_attributes": {},
-      "energy_cost": 0,
-      "mana_cost": 0,
-      "spirit_occupy": 0,
-      "required_equip_slot": -1,
-      "required_weapon_type": 0,
-      "target_type": 1,
-      "range_min": 0,
-      "range_max": 0,
-      "aoe_range": 0,
-      "can_target_empty": false,
-      "move_distance": 0,
-      "keywords": [
-        "固有"
-      ],
-      "condition_type": "NONE",
-      "condition_value": "",
-      "momentum_condition_type": "",
-      "momentum_effect_params": "",
-      "flow_condition_type": "",
-      "flow_condition_params": [],
-      "counter_condition": "",
-      "base_damage": 0,
-      "damage_type": "physical",
-      "damage_formula": "",
-      "damage_bonuses": [],
-      "status_effects": [
-        {
-          "status_id": "抱元观微",
-          "stacks": 1,
-          "hit_formula": "1.0"
-        }
-      ],
-      "special_effects": [],
       "stacks_formula": "",
       "move_formula": ""
     },
@@ -762,19 +711,19 @@ select { appearance: auto; }
       "skill_name": "补虚行血",
       "resource_path": "res://resources/activeskills/补虚行血诀/补虚行血.tres",
       "icon_path": "",
-      "description": "获得【补虚行血】（唯一Buff，持续至本场战斗结束）。【补虚行血】：每回合首次气血由1层降至0层时，本回合下一张由自身主动打出的催血牌少消耗1点精力，且额外获得气血1层。\n主修额外追加：该催血牌结算后抽牌1张。",
+      "description": "本心法由当前主修或辅修秘籍自动提供；战斗开始时作为常驻被动显示于Buff栏，持续至战斗结束。本场首次气血由1层降至0层时，本场下一项由自身主动施放的催血技能少耗1点精力并额外获得气血1层。主修额外追加：该催血技能结算后获得身法1层。",
       "skill_type": "POWER",
       "element": "NONE",
       "source_type": "秘籍习得",
       "source_gongfa": "补虚行血诀",
       "required_realm": "",
       "required_attributes": {},
-      "energy_cost": 1,
+      "energy_cost": 0,
       "mana_cost": 0,
       "spirit_occupy": 0,
       "required_equip_slot": -1,
       "required_weapon_type": 0,
-      "target_type": 1,
+      "target_type": 0,
       "range_min": 0,
       "range_max": 0,
       "aoe_range": 0,
@@ -794,114 +743,6 @@ select { appearance: auto; }
       "damage_type": "physical",
       "damage_formula": "",
       "damage_bonuses": [],
-      "status_effects": [],
-      "special_effects": [],
-      "stacks_formula": "",
-      "move_formula": ""
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "card",
-      "id": "project_card_abc6623f",
-      "projectSource": true,
-      "skill_name": "藏锋待发",
-      "resource_path": "res://resources/activeskills/藏锋卸力诀/藏锋待发.tres",
-      "icon_path": "",
-      "description": "藏锋守中，蓄力待发。获得护盾；若这些护盾保留到自身下一回合开始，获得1层剑意。",
-      "skill_type": "SPECIAL",
-      "element": "NONE",
-      "source_type": "秘籍习得",
-      "source_gongfa": "藏锋卸力诀",
-      "required_realm": "",
-      "required_attributes": {},
-      "energy_cost": 1,
-      "mana_cost": 0,
-      "spirit_occupy": 0,
-      "required_equip_slot": -1,
-      "required_weapon_type": 0,
-      "target_type": 1,
-      "range_min": 0,
-      "range_max": 0,
-      "aoe_range": 0,
-      "can_target_empty": false,
-      "move_distance": 0,
-      "keywords": [
-        "消耗"
-      ],
-      "condition_type": "3",
-      "condition_value": "藏锋卸力诀",
-      "momentum_condition_type": "",
-      "momentum_effect_params": "",
-      "flow_condition_type": "",
-      "flow_condition_params": [],
-      "counter_condition": "",
-      "base_damage": 0,
-      "damage_type": "physical",
-      "damage_formula": "",
-      "damage_bonuses": [],
-      "status_effects": [],
-      "special_effects": [
-        {
-          "effect": "shield",
-          "formula": "base:5;sword_proficiency:0.18;physique:0.18"
-        },
-        {
-          "effect": "gain_intent_next_turn_if_shield_remains",
-          "count": 1
-        }
-      ],
-      "stacks_formula": "",
-      "move_formula": ""
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "card",
-      "id": "project_card_bfcb5440",
-      "projectSource": true,
-      "skill_name": "沉桥压身",
-      "resource_path": "res://resources/activeskills/太祖长拳/沉桥压身.tres",
-      "icon_path": "",
-      "description": "沉桥压身，重击相邻敌人；消耗拳架时额外造成伤害。",
-      "skill_type": "ATTACK",
-      "element": "NONE",
-      "source_type": "秘籍习得",
-      "source_gongfa": "太祖长拳",
-      "required_realm": "",
-      "required_attributes": {},
-      "energy_cost": 3,
-      "mana_cost": 0,
-      "spirit_occupy": 0,
-      "required_equip_slot": -1,
-      "required_weapon_type": 0,
-      "target_type": 2,
-      "range_min": 1,
-      "range_max": 1,
-      "aoe_range": 0,
-      "can_target_empty": false,
-      "move_distance": 0,
-      "keywords": [
-        "重击"
-      ],
-      "condition_type": "NONE",
-      "condition_value": "",
-      "momentum_condition_type": "",
-      "momentum_effect_params": "",
-      "flow_condition_type": "",
-      "flow_condition_params": [],
-      "counter_condition": "",
-      "base_damage": 16,
-      "damage_type": "physical",
-      "damage_formula": "",
-      "damage_bonuses": [
-        {
-          "attribute": "physique",
-          "multiplier": 1.8
-        },
-        {
-          "attribute": "body_proficiency",
-          "multiplier": 1.6
-        }
-      ],
       "status_effects": [],
       "special_effects": [],
       "stacks_formula": "",
@@ -971,19 +812,19 @@ select { appearance: auto; }
       "skill_name": "乘物游骸",
       "resource_path": "res://resources/activeskills/乘物游骸真经/乘物游骸.tres",
       "icon_path": "",
-      "description": "获得【乘物游骸】（唯一Buff，持续至本场战斗结束）。【乘物游骸】：每回合首次由自身主动打出的卡牌使气血下降时，获得游骸1层。\n主修额外追加：游骸成功闪避一张敌方卡牌的物理伤害后，对该攻击方额外结算1段物理伤害；该段伤害 = round(4 + 体魄×0.20 + 敏捷×0.15 + 体道造诣×0.15)。",
+      "description": "本心法由当前主修或辅修秘籍自动提供；战斗开始时作为常驻被动显示于Buff栏，持续至战斗结束。每轮首次由自身主动使气血下降时，获得游骸1层；同次技能效果至多触发一次。主修额外追加：每次实际消耗1层游骸后，获得身法3层；抵挡、托身、解形、撼山化法等消耗均计入本场已消耗游骸。",
       "skill_type": "POWER",
       "element": "NONE",
       "source_type": "秘籍习得",
       "source_gongfa": "乘物游骸真经",
       "required_realm": "",
       "required_attributes": {},
-      "energy_cost": 1,
+      "energy_cost": 0,
       "mana_cost": 0,
       "spirit_occupy": 0,
       "required_equip_slot": -1,
       "required_weapon_type": 0,
-      "target_type": 1,
+      "target_type": 0,
       "range_min": 0,
       "range_max": 0,
       "aoe_range": 0,
@@ -1003,13 +844,7 @@ select { appearance: auto; }
       "damage_type": "physical",
       "damage_formula": "",
       "damage_bonuses": [],
-      "status_effects": [
-        {
-          "status_id": "游骸",
-          "stacks": 1,
-          "hit_formula": "1.0"
-        }
-      ],
+      "status_effects": [],
       "special_effects": [],
       "stacks_formula": "",
       "move_formula": ""
@@ -1078,19 +913,19 @@ select { appearance: auto; }
       "skill_name": "赤阳参同",
       "resource_path": "res://resources/activeskills/赤阳参同经/赤阳参同.tres",
       "icon_path": "",
-      "description": "获得【赤阳参同】（唯一Buff，持续至本场战斗结束）与【血炉】。\n【赤阳参同】：自身主动使气血下降时，本次不回复生命，改为获得血炉值；血炉值 = 气血下降层数×当前气血回落回复率。其余“气血回落时”效果仍可触发。\n主修额外追加：每回合首次主动消耗血炉值时，若实际消耗不少于20点，对该牌原目标额外结算1段物理伤害；伤害 = round(4 + 体魄×0.25 + 体道造诣×0.15 + 实际消耗血炉值×0.20)。",
+      "description": "本心法由当前主修或辅修秘籍自动提供；战斗开始时作为常驻被动显示于Buff栏，持续至战斗结束。自身主动使气血下降时，本次不回复生命，改为获得血炉值，数值 = 本次气血下降层数×当前气血回落回复率R。其他气血回落效果仍触发。每当赤阳化法技能实际消耗血炉时，辅修每点消耗使该招物理伤害倍率提高1%，主修提高1.5%；仅作用于本招，不改血炉通用效果。技能结算后剩余血炉仍按公共规则每2点提高1%物理伤害。",
       "skill_type": "POWER",
       "element": "NONE",
       "source_type": "秘籍习得",
       "source_gongfa": "赤阳参同经",
       "required_realm": "",
       "required_attributes": {},
-      "energy_cost": 1,
+      "energy_cost": 0,
       "mana_cost": 0,
       "spirit_occupy": 0,
       "required_equip_slot": -1,
       "required_weapon_type": 0,
-      "target_type": 1,
+      "target_type": 0,
       "range_min": 0,
       "range_max": 0,
       "aoe_range": 0,
@@ -1122,8 +957,8 @@ select { appearance: auto; }
       "projectSource": true,
       "skill_name": "催血",
       "resource_path": "res://resources/activeskills/催血.tres",
-      "icon_path": "res://textures/cards/expressive_ink/cuixue_ink_v4.png",
-      "description": "获得气血：1层。",
+      "icon_path": "res://textures/ui/combat/skill_icons/锻躯_催血_v1.png",
+      "description": "获得气血1层。",
       "skill_type": "BUFF",
       "element": "NONE",
       "source_type": "基础通用",
@@ -1166,95 +1001,12 @@ select { appearance: auto; }
     {
       "schemaVersion": 1,
       "kind": "card",
-      "id": "project_card_6a42ae26",
-      "projectSource": true,
-      "skill_name": "摧枝一剑",
-      "resource_path": "res://resources/activeskills/折枝剑谱/摧枝一剑.tres",
-      "icon_path": "",
-      "description": "枝裂势尽，一剑绝命。命中后最多消耗5层折损，每层使本次伤害提高15%；结算后根据目标已有的外伤重新施加剑痕。",
-      "skill_type": "ATTACK",
-      "element": "NONE",
-      "source_type": "秘籍习得",
-      "source_gongfa": "折枝剑谱",
-      "required_realm": "",
-      "required_attributes": {},
-      "energy_cost": 3,
-      "mana_cost": 2,
-      "spirit_occupy": 0,
-      "required_equip_slot": 0,
-      "required_weapon_type": 1,
-      "target_type": 2,
-      "range_min": 1,
-      "range_max": 2,
-      "aoe_range": 0,
-      "can_target_empty": false,
-      "move_distance": 0,
-      "keywords": [],
-      "condition_type": "1",
-      "condition_value": "折枝剑谱",
-      "momentum_condition_type": "",
-      "momentum_effect_params": "",
-      "flow_condition_type": "",
-      "flow_condition_params": [],
-      "counter_condition": "",
-      "base_damage": 6,
-      "damage_type": "physical",
-      "damage_formula": "",
-      "damage_bonuses": [
-        {
-          "attribute": "sword_proficiency",
-          "multiplier": 0.68
-        },
-        {
-          "attribute": "agility",
-          "multiplier": 0.2
-        },
-        {
-          "attribute": "physique",
-          "multiplier": 0.16
-        }
-      ],
-      "status_effects": [],
-      "special_effects": [
-        {
-          "effect": "require_target_status",
-          "status_id": "折损",
-          "stacks": 1
-        },
-        {
-          "effect": "consume_fracture_for_damage",
-          "max_stacks": 5,
-          "damage_per_stack": 0.15,
-          "consume_after_hit": true
-        },
-        {
-          "effect": "critical_if_target_has_wound_any_zone",
-          "amount": 12
-        },
-        {
-          "effect": "consume_marks_add_wound",
-          "marks": 3,
-          "wound": "外伤",
-          "destination": "discard"
-        },
-        {
-          "effect": "restore_marks_from_wounds",
-          "wounds_per_mark": 2,
-          "max_marks": 2
-        }
-      ],
-      "stacks_formula": "",
-      "move_formula": ""
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "card",
       "id": "project_card_0988dfa5",
       "projectSource": true,
       "skill_name": "淬厉",
       "resource_path": "res://resources/activeskills/内景损益篇/淬厉.tres",
       "icon_path": "",
-      "description": "向弃牌堆加入2张【伤势】；抽牌1张。",
+      "description": "自身获得内伤2层；获得身法1层。",
       "skill_type": "DRAW",
       "element": "NONE",
       "source_type": "秘籍习得",
@@ -1287,14 +1039,62 @@ select { appearance: auto; }
       "status_effects": [],
       "special_effects": [
         {
-          "effect": "draw",
-          "count": 1
-        },
-        {
           "effect": "add_wound",
           "wound": "内伤",
           "count": 2,
           "destination": "discard"
+        }
+      ],
+      "stacks_formula": "",
+      "move_formula": ""
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "card",
+      "id": "project_card_223a893d",
+      "projectSource": true,
+      "skill_name": "大冶",
+      "resource_path": "res://resources/activeskills/赤阳参同经/大冶.tres",
+      "icon_path": "",
+      "description": "仅当自身至少有2层气血时可用；气血-2；本次气血回落回复率R+4个百分点。",
+      "skill_type": "BUFF",
+      "element": "NONE",
+      "source_type": "秘籍习得",
+      "source_gongfa": "赤阳参同经",
+      "required_realm": "",
+      "required_attributes": {},
+      "energy_cost": 2,
+      "mana_cost": 0,
+      "spirit_occupy": 0,
+      "required_equip_slot": -1,
+      "required_weapon_type": 0,
+      "target_type": 1,
+      "range_min": 0,
+      "range_max": 0,
+      "aoe_range": 0,
+      "can_target_empty": false,
+      "move_distance": 0,
+      "keywords": [],
+      "condition_type": "NONE",
+      "condition_value": "",
+      "momentum_condition_type": "",
+      "momentum_effect_params": "",
+      "flow_condition_type": "",
+      "flow_condition_params": [],
+      "counter_condition": "",
+      "base_damage": 0,
+      "damage_type": "physical",
+      "damage_formula": "",
+      "damage_bonuses": [],
+      "status_effects": [],
+      "special_effects": [
+        {
+          "effect": "spend_qi_blood",
+          "count": 2
+        },
+        {
+          "effect": "gain_blood_furnace",
+          "count": 14
         }
       ],
       "stacks_formula": "",
@@ -1353,60 +1153,6 @@ select { appearance: auto; }
     {
       "schemaVersion": 1,
       "kind": "card",
-      "id": "project_card_079aa926",
-      "projectSource": true,
-      "skill_name": "顶心肘",
-      "resource_path": "res://resources/activeskills/市井游身功/顶心肘.tres",
-      "icon_path": "",
-      "description": "借对方攻势贴身肘击。若上一张打出的牌是攻击牌，本次攻击会心提高。",
-      "skill_type": "ATTACK",
-      "element": "NONE",
-      "source_type": "秘籍习得",
-      "source_gongfa": "市井游身功",
-      "required_realm": "",
-      "required_attributes": {},
-      "energy_cost": 2,
-      "mana_cost": 0,
-      "spirit_occupy": 0,
-      "required_equip_slot": -1,
-      "required_weapon_type": 0,
-      "target_type": 2,
-      "range_min": 1,
-      "range_max": 1,
-      "aoe_range": 0,
-      "can_target_empty": false,
-      "move_distance": 0,
-      "keywords": [
-        "乘势"
-      ],
-      "condition_type": "NONE",
-      "condition_value": "",
-      "momentum_condition_type": "after_attack",
-      "momentum_effect_params": "agility:0.02;body_proficiency:0.03",
-      "flow_condition_type": "",
-      "flow_condition_params": [],
-      "counter_condition": "",
-      "base_damage": 6,
-      "damage_type": "physical",
-      "damage_formula": "",
-      "damage_bonuses": [
-        {
-          "attribute": "agility",
-          "multiplier": 1.5
-        },
-        {
-          "attribute": "body_proficiency",
-          "multiplier": 1
-        }
-      ],
-      "status_effects": [],
-      "special_effects": [],
-      "stacks_formula": "",
-      "move_formula": ""
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "card",
       "id": "project_card_f638bd5a",
       "projectSource": true,
       "skill_name": "短打",
@@ -1449,6 +1195,62 @@ select { appearance: auto; }
         {
           "attribute": "agility",
           "multiplier": 0.35
+        }
+      ],
+      "status_effects": [],
+      "special_effects": [],
+      "stacks_formula": "",
+      "move_formula": ""
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "card",
+      "id": "project_card_aeb8d4a7",
+      "projectSource": true,
+      "skill_name": "发劲",
+      "resource_path": "res://resources/activeskills/发劲.tres",
+      "icon_path": "res://textures/ui/combat/skill_icons/锻躯_发劲_v1.png",
+      "description": "对指定1名敌方造成物理伤害。伤害 = round(8 + 体魄×0.4 + 体道造诣×0.2 + 敏捷×0.25)。",
+      "skill_type": "ATTACK",
+      "element": "NONE",
+      "source_type": "基础通用",
+      "source_gongfa": "",
+      "required_realm": "",
+      "required_attributes": {},
+      "energy_cost": 1,
+      "mana_cost": 0,
+      "spirit_occupy": 0,
+      "required_equip_slot": -1,
+      "required_weapon_type": 0,
+      "target_type": 2,
+      "range_min": 1,
+      "range_max": 1,
+      "aoe_range": 0,
+      "can_target_empty": false,
+      "move_distance": 0,
+      "keywords": [],
+      "condition_type": "NONE",
+      "condition_value": "",
+      "momentum_condition_type": "",
+      "momentum_effect_params": "",
+      "flow_condition_type": "",
+      "flow_condition_params": [],
+      "counter_condition": "",
+      "base_damage": 8,
+      "damage_type": "physical",
+      "damage_formula": "round(8 + 体魄×0.4 + 体道造诣×0.2 + 敏捷×0.25)",
+      "damage_bonuses": [
+        {
+          "attribute": "physique",
+          "multiplier": 0.4
+        },
+        {
+          "attribute": "body_proficiency",
+          "multiplier": 0.2
+        },
+        {
+          "attribute": "agility",
+          "multiplier": 0.25
         }
       ],
       "status_effects": [],
@@ -1515,12 +1317,68 @@ select { appearance: auto; }
     {
       "schemaVersion": 1,
       "kind": "card",
+      "id": "project_card_e242878e",
+      "projectSource": true,
+      "skill_name": "发劲",
+      "resource_path": "res://resources/activeskills/赤阳参同经/化法/发劲.tres",
+      "icon_path": "",
+      "description": "对指定1名敌方造成物理伤害，基础伤害 = round(8 + 体魄×0.40 + 体道造诣×0.20 + 敏捷×0.25)。施放时自动消耗当前血炉中至多10点；辅修每点实际消耗使本招倍率提高1%，主修提高1.5%；剩余血炉的公共增伤照常生效。",
+      "skill_type": "ATTACK",
+      "element": "NONE",
+      "source_type": "秘籍习得",
+      "source_gongfa": "赤阳参同经",
+      "required_realm": "",
+      "required_attributes": {},
+      "energy_cost": 1,
+      "mana_cost": 0,
+      "spirit_occupy": 0,
+      "required_equip_slot": -1,
+      "required_weapon_type": 0,
+      "target_type": 2,
+      "range_min": 1,
+      "range_max": 1,
+      "aoe_range": 0,
+      "can_target_empty": false,
+      "move_distance": 0,
+      "keywords": [],
+      "condition_type": "NONE",
+      "condition_value": "",
+      "momentum_condition_type": "",
+      "momentum_effect_params": "",
+      "flow_condition_type": "",
+      "flow_condition_params": [],
+      "counter_condition": "",
+      "base_damage": 8,
+      "damage_type": "physical",
+      "damage_formula": "round(8 + 体魄×0.40 + 体道造诣×0.20 + 敏捷×0.25)",
+      "damage_bonuses": [
+        {
+          "attribute": "physique",
+          "multiplier": 0.4
+        },
+        {
+          "attribute": "body_proficiency",
+          "multiplier": 0.2
+        },
+        {
+          "attribute": "agility",
+          "multiplier": 0.25
+        }
+      ],
+      "status_effects": [],
+      "special_effects": [],
+      "stacks_formula": "",
+      "move_formula": ""
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "card",
       "id": "project_card_8417d566",
       "projectSource": true,
       "skill_name": "返照",
       "resource_path": "res://resources/activeskills/黄庭养形篇/返照.tres",
       "icon_path": "",
-      "description": "气血-1；抽牌2张。",
+      "description": "气血-1；触发公共气血回落；获得身法2层。",
       "skill_type": "DRAW",
       "element": "NONE",
       "source_type": "秘籍习得",
@@ -1555,10 +1413,6 @@ select { appearance: auto; }
         {
           "effect": "spend_qi_blood",
           "count": 1
-        },
-        {
-          "effect": "draw",
-          "count": 2
         }
       ],
       "stacks_formula": "",
@@ -1572,7 +1426,7 @@ select { appearance: auto; }
       "skill_name": "冯虚",
       "resource_path": "res://resources/activeskills/乘物游骸真经/冯虚.tres",
       "icon_path": "",
-      "description": "仅当本场已消耗游骸层数不少于2时可打出；不消耗当前游骸；对指定1名敌方结算物理伤害：伤害段数 = 1 + floor(本场实际消耗游骸层数÷2)；每段伤害 = round(8 + 体魄×0.45 + 敏捷×0.30 + 体道造诣×0.30)。",
+      "description": "本场已消耗游骸不少于2层时可用；不消耗当前游骸。对指定1名敌方造成物理伤害，伤害段数 = 1 + floor(本场已消耗游骸÷2)；每段伤害 = round(8 + 体魄×0.45 + 敏捷×0.30 + 体道造诣×0.30)。\n使用次数：本场1次",
       "skill_type": "ATTACK",
       "element": "NONE",
       "source_type": "秘籍习得",
@@ -1590,9 +1444,7 @@ select { appearance: auto; }
       "aoe_range": 0,
       "can_target_empty": false,
       "move_distance": 0,
-      "keywords": [
-        "消耗"
-      ],
+      "keywords": [],
       "condition_type": "NONE",
       "condition_value": "",
       "momentum_condition_type": "",
@@ -1630,7 +1482,7 @@ select { appearance: auto; }
       "skill_name": "伏火",
       "resource_path": "res://resources/activeskills/赤阳参同经/伏火.tres",
       "icon_path": "",
-      "description": "每回合限一次。仅当自身气血至少为1层时可打出；气血-1；本次气血回落回复率R+3个百分点。",
+      "description": "自身气血至少1层时可用；气血-1；本次转化使用的气血回落回复率R+3个百分点。\n使用次数：本场1次",
       "skill_type": "BUFF",
       "element": "NONE",
       "source_type": "秘籍习得",
@@ -1677,81 +1529,12 @@ select { appearance: auto; }
     {
       "schemaVersion": 1,
       "kind": "card",
-      "id": "project_card_f27f9522",
-      "projectSource": true,
-      "skill_name": "拂枝点痕",
-      "resource_path": "res://resources/activeskills/折枝剑谱/拂枝点痕.tres",
-      "icon_path": "",
-      "description": "剑锋轻拂，点隙留痕。命中后获得剑意并施加剑痕；攻击未留痕目标时额外施加一层剑痕。",
-      "skill_type": "ATTACK",
-      "element": "NONE",
-      "source_type": "秘籍习得",
-      "source_gongfa": "折枝剑谱",
-      "required_realm": "",
-      "required_attributes": {},
-      "energy_cost": 2,
-      "mana_cost": 0,
-      "spirit_occupy": 0,
-      "required_equip_slot": 0,
-      "required_weapon_type": 1,
-      "target_type": 2,
-      "range_min": 1,
-      "range_max": 1,
-      "aoe_range": 0,
-      "can_target_empty": false,
-      "move_distance": 0,
-      "keywords": [],
-      "condition_type": "NONE",
-      "condition_value": "",
-      "momentum_condition_type": "",
-      "momentum_effect_params": "",
-      "flow_condition_type": "",
-      "flow_condition_params": [],
-      "counter_condition": "",
-      "base_damage": 3,
-      "damage_type": "physical",
-      "damage_formula": "",
-      "damage_bonuses": [
-        {
-          "attribute": "sword_proficiency",
-          "multiplier": 0.48
-        },
-        {
-          "attribute": "agility",
-          "multiplier": 0.16
-        },
-        {
-          "attribute": "physique",
-          "multiplier": 0.12
-        }
-      ],
-      "status_effects": [],
-      "special_effects": [
-        {
-          "effect": "gain_sword_intent",
-          "count": 1
-        },
-        {
-          "effect": "apply_sword_mark",
-          "count": 1
-        },
-        {
-          "effect": "apply_sword_mark_if_absent",
-          "count": 1
-        }
-      ],
-      "stacks_formula": "",
-      "move_formula": ""
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "card",
       "id": "project_card_fbc86340",
       "projectSource": true,
       "skill_name": "拱身架招",
       "resource_path": "res://resources/activeskills/妖兽/灰背野猪/拱身戒备.tres",
       "icon_path": "",
-      "description": "敌方攻击自身时自动打出。化解层数 = 3 + floor(体魄/4) + floor(敏捷/5)。",
+      "description": "准备完成后持招；敌方物理攻击自身时自动打出。化解层数 = 3 + floor(体魄/4) + floor(敏捷/5)。",
       "skill_type": "BUFF",
       "element": "NONE",
       "source_type": "妖兽",
@@ -1840,67 +1623,12 @@ select { appearance: auto; }
     {
       "schemaVersion": 1,
       "kind": "card",
-      "id": "project_card_3effb869",
-      "projectSource": true,
-      "skill_name": "观痕养意",
-      "resource_path": "res://resources/activeskills/听锋寻隙篇/观痕养意.tres",
-      "icon_path": "",
-      "description": "观痕养意，借敌之隙调匀气息。场上存在带有剑痕的敌人时获得1层剑意；每名带有剑痕的敌人恢复2点精力，最多计算3名。",
-      "skill_type": "SPECIAL",
-      "element": "NONE",
-      "source_type": "秘籍习得",
-      "source_gongfa": "听锋寻隙篇",
-      "required_realm": "",
-      "required_attributes": {},
-      "energy_cost": 1,
-      "mana_cost": 0,
-      "spirit_occupy": 0,
-      "required_equip_slot": -1,
-      "required_weapon_type": 0,
-      "target_type": 1,
-      "range_min": 0,
-      "range_max": 0,
-      "aoe_range": 0,
-      "can_target_empty": false,
-      "move_distance": 0,
-      "keywords": [
-        "消耗"
-      ],
-      "condition_type": "3",
-      "condition_value": "听锋寻隙篇",
-      "momentum_condition_type": "",
-      "momentum_effect_params": "",
-      "flow_condition_type": "",
-      "flow_condition_params": [],
-      "counter_condition": "",
-      "base_damage": 0,
-      "damage_type": "physical",
-      "damage_formula": "",
-      "damage_bonuses": [],
-      "status_effects": [],
-      "special_effects": [
-        {
-          "effect": "gain_intent_if_marked_enemy_exists",
-          "count": 1
-        },
-        {
-          "effect": "restore_stamina_per_marked_enemy",
-          "amount": 2,
-          "max_targets": 3
-        }
-      ],
-      "stacks_formula": "",
-      "move_formula": ""
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "card",
       "id": "project_card_8f04569c",
       "projectSource": true,
       "skill_name": "归藏",
       "resource_path": "res://resources/activeskills/黄庭养形篇/归藏.tres",
       "icon_path": "",
-      "description": "仅当本回合已主动使气血下降至少2次时可打出；抽牌3张；本回合随后两张由自身主动打出的锻躯牌各少消耗1点精力，最低为0。",
+      "description": "仅当本场已主动使气血下降至少2次时可用；获得身法3层；接下来两次主动施放的锻躯技能各少耗1点精力，最低为0。\n使用次数：本场1次",
       "skill_type": "DRAW",
       "element": "NONE",
       "source_type": "秘籍习得",
@@ -1918,56 +1646,6 @@ select { appearance: auto; }
       "aoe_range": 0,
       "can_target_empty": false,
       "move_distance": 0,
-      "keywords": [
-        "消耗"
-      ],
-      "condition_type": "NONE",
-      "condition_value": "",
-      "momentum_condition_type": "",
-      "momentum_effect_params": "",
-      "flow_condition_type": "",
-      "flow_condition_params": [],
-      "counter_condition": "",
-      "base_damage": 0,
-      "damage_type": "physical",
-      "damage_formula": "",
-      "damage_bonuses": [],
-      "status_effects": [],
-      "special_effects": [
-        {
-          "effect": "draw",
-          "count": 3
-        }
-      ],
-      "stacks_formula": "",
-      "move_formula": ""
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "card",
-      "id": "project_card_1be1d378",
-      "projectSource": true,
-      "skill_name": "滚身卸劲",
-      "resource_path": "res://resources/activeskills/市井游身功/滚地翻.tres",
-      "icon_path": "",
-      "description": "低身卸劲，不再进行位移；获得3层身法，应对下一次来攻。",
-      "skill_type": "BUFF",
-      "element": "NONE",
-      "source_type": "秘籍习得",
-      "source_gongfa": "市井游身功",
-      "required_realm": "",
-      "required_attributes": {},
-      "energy_cost": 2,
-      "mana_cost": 0,
-      "spirit_occupy": 0,
-      "required_equip_slot": -1,
-      "required_weapon_type": 0,
-      "target_type": 0,
-      "range_min": 0,
-      "range_max": 0,
-      "aoe_range": 0,
-      "can_target_empty": false,
-      "move_distance": 0,
       "keywords": [],
       "condition_type": "NONE",
       "condition_value": "",
@@ -1980,13 +1658,7 @@ select { appearance: auto; }
       "damage_type": "physical",
       "damage_formula": "",
       "damage_bonuses": [],
-      "status_effects": [
-        {
-          "status_id": "身法",
-          "stacks": 3,
-          "hit_formula": "1.0"
-        }
-      ],
+      "status_effects": [],
       "special_effects": [],
       "stacks_formula": "",
       "move_formula": ""
@@ -2046,12 +1718,64 @@ select { appearance: auto; }
       "projectSource": true,
       "skill_name": "撼山",
       "resource_path": "res://resources/activeskills/撼山.tres",
-      "icon_path": "res://textures/cards/expressive_ink/hanshan_ink_v4.png",
-      "description": "对指定1名敌方造成物理伤害。伤害 = round(15 + 体魄×0.85 + 体道造诣×0.55)。",
+      "icon_path": "res://textures/ui/combat/skill_icons/锻躯_撼山_v1.png",
+      "description": "对指定1名敌方造成物理伤害。伤害 = round(15 + 体魄×0.85 + 体道造诣×0.55)。若由《乘物游骸真经》撼山化法替换，自身有游骸时消耗1层并使本次伤害提高50%。\n使用次数：每轮1次",
       "skill_type": "ATTACK",
       "element": "NONE",
       "source_type": "基础通用",
       "source_gongfa": "",
+      "required_realm": "",
+      "required_attributes": {},
+      "energy_cost": 3,
+      "mana_cost": 0,
+      "spirit_occupy": 0,
+      "required_equip_slot": -1,
+      "required_weapon_type": 0,
+      "target_type": 2,
+      "range_min": 1,
+      "range_max": 1,
+      "aoe_range": 0,
+      "can_target_empty": false,
+      "move_distance": 0,
+      "keywords": [],
+      "condition_type": "NONE",
+      "condition_value": "",
+      "momentum_condition_type": "",
+      "momentum_effect_params": "",
+      "flow_condition_type": "",
+      "flow_condition_params": [],
+      "counter_condition": "",
+      "base_damage": 15,
+      "damage_type": "physical",
+      "damage_formula": "round(15 + 体魄×0.85 + 体道造诣×0.55)",
+      "damage_bonuses": [
+        {
+          "attribute": "physique",
+          "multiplier": 0.85
+        },
+        {
+          "attribute": "body_proficiency",
+          "multiplier": 0.55
+        }
+      ],
+      "status_effects": [],
+      "special_effects": [],
+      "stacks_formula": "",
+      "move_formula": ""
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "card",
+      "id": "project_card_6410ddf2",
+      "projectSource": true,
+      "skill_name": "撼山",
+      "resource_path": "res://resources/activeskills/赤阳参同经/化法/撼山.tres",
+      "icon_path": "",
+      "description": "血炉至少20点时可用并消耗全部血炉；撼山基础伤害 = round(15 + 体魄×0.85 + 体道造诣×0.55)。辅修倍率 = 1 + 实际消耗血炉×1%；主修倍率 = 1 + 实际消耗血炉×1.5%；最终伤害按通用物理伤害流程结算。\n使用次数：每轮1次",
+      "skill_type": "ATTACK",
+      "element": "NONE",
+      "source_type": "秘籍习得",
+      "source_gongfa": "赤阳参同经",
       "required_realm": "",
       "required_attributes": {},
       "energy_cost": 3,
@@ -2099,7 +1823,7 @@ select { appearance: auto; }
       "skill_name": "合劲",
       "resource_path": "res://resources/activeskills/阴符应物经/合劲.tres",
       "icon_path": "",
-      "description": "对指定1名敌方造成物理伤害。伤害 = round((10 + 体魄×0.55 + 体道造诣×0.35)×(1 + 借力层数×0.08))。借力每层总增伤8%（公共效果5% + 【合劲】额外3%）；本牌结算后移除全部借力。",
+      "description": "对指定1名敌方造成物理伤害。伤害 = round((10 + 体魄×0.55 + 体道造诣×0.35)×(1 + 借力层数×0.08))。借力每层总增伤8%（公共效果5% + 本技能额外3%）；本技能结算后移除全部借力。\n使用次数：本场1次",
       "skill_type": "ATTACK",
       "element": "NONE",
       "source_type": "秘籍习得",
@@ -2117,9 +1841,7 @@ select { appearance: auto; }
       "aoe_range": 0,
       "can_target_empty": false,
       "move_distance": 0,
-      "keywords": [
-        "消耗"
-      ],
+      "keywords": [],
       "condition_type": "NONE",
       "condition_value": "",
       "momentum_condition_type": "",
@@ -2143,60 +1865,6 @@ select { appearance: auto; }
       "status_effects": [],
       "special_effects": [],
       "stacks_formula": "",
-      "move_formula": ""
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "card",
-      "id": "project_card_c30bfd76",
-      "projectSource": true,
-      "skill_name": "横剑卸劲",
-      "resource_path": "res://resources/activeskills/藏锋卸力诀/横剑卸劲.tres",
-      "icon_path": "",
-      "description": "横剑卸劲，借来势还其身。敌方攻击自身时自动打出并获得化解；至少化解1点伤害后获得借力，使下一张由玩家主动打出的剑术攻击牌精力消耗减少3点。",
-      "skill_type": "SPECIAL",
-      "element": "NONE",
-      "source_type": "秘籍习得",
-      "source_gongfa": "藏锋卸力诀",
-      "required_realm": "",
-      "required_attributes": {},
-      "energy_cost": 2,
-      "mana_cost": 0,
-      "spirit_occupy": 0,
-      "required_equip_slot": 0,
-      "required_weapon_type": 1,
-      "target_type": 1,
-      "range_min": 0,
-      "range_max": 0,
-      "aoe_range": 0,
-      "can_target_empty": false,
-      "move_distance": 0,
-      "keywords": [
-        "应对"
-      ],
-      "condition_type": "3",
-      "condition_value": "藏锋卸力诀",
-      "momentum_condition_type": "",
-      "momentum_effect_params": "",
-      "flow_condition_type": "",
-      "flow_condition_params": [],
-      "counter_condition": "on_attacked",
-      "base_damage": 0,
-      "damage_type": "physical",
-      "damage_formula": "",
-      "damage_bonuses": [],
-      "status_effects": [],
-      "special_effects": [
-        {
-          "effect": "counter_block"
-        },
-        {
-          "effect": "gain_borrowed_force_if_blocked",
-          "stamina_reduction": 3,
-          "expires_next_turn_end": true
-        }
-      ],
-      "stacks_formula": "max(1, floor(sword_proficiency/8) + floor(physique/12))",
       "move_formula": ""
     },
     {
@@ -2255,19 +1923,19 @@ select { appearance: auto; }
       "skill_name": "黄庭养形",
       "resource_path": "res://resources/activeskills/黄庭养形篇/黄庭养形.tres",
       "icon_path": "",
-      "description": "获得【黄庭养形】（唯一Buff，持续至本场战斗结束）。【黄庭养形】：每回合首次由自身主动打出的卡牌使气血下降后，抽牌1张。\n主修额外追加：本回合第二次主动使气血下降后，获得精力1点。",
+      "description": "本心法由当前主修或辅修秘籍自动提供；战斗开始时作为常驻被动显示于Buff栏，持续至战斗结束。自身首次主动使气血下降后获得身法1层。主修额外追加：本场第二次主动使气血下降后，获得精力1点。",
       "skill_type": "POWER",
       "element": "NONE",
       "source_type": "秘籍习得",
       "source_gongfa": "黄庭养形篇",
       "required_realm": "",
       "required_attributes": {},
-      "energy_cost": 1,
+      "energy_cost": 0,
       "mana_cost": 0,
       "spirit_occupy": 0,
       "required_equip_slot": -1,
       "required_weapon_type": 0,
-      "target_type": 1,
+      "target_type": 0,
       "range_min": 0,
       "range_max": 0,
       "aoe_range": 0,
@@ -2395,67 +2063,6 @@ select { appearance: auto; }
     {
       "schemaVersion": 1,
       "kind": "card",
-      "id": "project_card_fd7a25de",
-      "projectSource": true,
-      "skill_name": "回锋添痕",
-      "resource_path": "res://resources/activeskills/折枝剑谱/回锋添痕.tres",
-      "icon_path": "",
-      "description": "回锋添痕，借势再折。敌方攻击自身时自动打出，获得化解并向攻击者施加剑痕。",
-      "skill_type": "SPECIAL",
-      "element": "NONE",
-      "source_type": "秘籍习得",
-      "source_gongfa": "折枝剑谱",
-      "required_realm": "",
-      "required_attributes": {},
-      "energy_cost": 2,
-      "mana_cost": 0,
-      "spirit_occupy": 0,
-      "required_equip_slot": 0,
-      "required_weapon_type": 1,
-      "target_type": 1,
-      "range_min": 0,
-      "range_max": 0,
-      "aoe_range": 0,
-      "can_target_empty": false,
-      "move_distance": 0,
-      "keywords": [
-        "应对"
-      ],
-      "condition_type": "1",
-      "condition_value": "折枝剑谱",
-      "momentum_condition_type": "",
-      "momentum_effect_params": "",
-      "flow_condition_type": "",
-      "flow_condition_params": [],
-      "counter_condition": "on_attacked",
-      "base_damage": 0,
-      "damage_type": "physical",
-      "damage_formula": "",
-      "damage_bonuses": [],
-      "status_effects": [],
-      "special_effects": [
-        {
-          "effect": "counter_block"
-        },
-        {
-          "effect": "apply_sword_mark_to_attacker",
-          "count": 1
-        },
-        {
-          "effect": "bonus_block_if_attacker_fractured",
-          "count": 1
-        },
-        {
-          "effect": "apply_fracture_if_stance_and_attacker_wounded",
-          "count": 1
-        }
-      ],
-      "stacks_formula": "max(1, floor(sword_proficiency/6) + floor(physique/10))",
-      "move_formula": ""
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "card",
       "id": "project_card_14c7d6e8",
       "projectSource": true,
       "skill_name": "回气",
@@ -2498,75 +2105,6 @@ select { appearance: auto; }
         {
           "effect": "restore_stamina",
           "formula": "base:14;physique:0.15;agility:0.15;intelligence:0.15;soul:0.15"
-        }
-      ],
-      "stacks_formula": "",
-      "move_formula": ""
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "card",
-      "id": "project_card_538c3e00",
-      "projectSource": true,
-      "skill_name": "回身点锋",
-      "resource_path": "res://resources/activeskills/惊鸿掠影谱/回身点锋.tres",
-      "icon_path": "",
-      "description": "回身一点，剑锋随步而至。命中后获得1层剑意；上一张打出的牌是遁身牌时，本次伤害提高20%；目标带有剑痕时，会心+4。",
-      "skill_type": "ATTACK",
-      "element": "NONE",
-      "source_type": "秘籍习得",
-      "source_gongfa": "惊鸿掠影谱",
-      "required_realm": "",
-      "required_attributes": {},
-      "energy_cost": 2,
-      "mana_cost": 0,
-      "spirit_occupy": 0,
-      "required_equip_slot": 0,
-      "required_weapon_type": 1,
-      "target_type": 2,
-      "range_min": 1,
-      "range_max": 2,
-      "aoe_range": 0,
-      "can_target_empty": false,
-      "move_distance": 0,
-      "keywords": [],
-      "condition_type": "3",
-      "condition_value": "惊鸿掠影谱",
-      "momentum_condition_type": "",
-      "momentum_effect_params": "",
-      "flow_condition_type": "",
-      "flow_condition_params": [],
-      "counter_condition": "",
-      "base_damage": 3,
-      "damage_type": "physical",
-      "damage_formula": "",
-      "damage_bonuses": [
-        {
-          "attribute": "sword_proficiency",
-          "multiplier": 0.38
-        },
-        {
-          "attribute": "agility",
-          "multiplier": 0.22
-        },
-        {
-          "attribute": "physique",
-          "multiplier": 0.08
-        }
-      ],
-      "status_effects": [],
-      "special_effects": [
-        {
-          "effect": "gain_sword_intent",
-          "count": 1
-        },
-        {
-          "effect": "bonus_damage_if_previous_movement",
-          "multiplier": 0.2
-        },
-        {
-          "effect": "critical_if_target_marked",
-          "amount": 4
         }
       ],
       "stacks_formula": "",
@@ -2670,62 +2208,12 @@ select { appearance: auto; }
     {
       "schemaVersion": 1,
       "kind": "card",
-      "id": "project_card_552bf38f",
-      "projectSource": true,
-      "skill_name": "架梁",
-      "resource_path": "res://resources/activeskills/太祖长拳/架梁.tres",
-      "icon_path": "",
-      "description": "架肘沉肩，如梁承重。敌方攻击自身时自动打出，获得化解状态。",
-      "skill_type": "SPECIAL",
-      "element": "NONE",
-      "source_type": "秘籍习得",
-      "source_gongfa": "太祖长拳",
-      "required_realm": "",
-      "required_attributes": {},
-      "energy_cost": 1,
-      "mana_cost": 0,
-      "spirit_occupy": 0,
-      "required_equip_slot": -1,
-      "required_weapon_type": 0,
-      "target_type": 2,
-      "range_min": 0,
-      "range_max": 1,
-      "aoe_range": 0,
-      "can_target_empty": false,
-      "move_distance": 0,
-      "keywords": [
-        "应对"
-      ],
-      "condition_type": "NONE",
-      "condition_value": "",
-      "momentum_condition_type": "",
-      "momentum_effect_params": "",
-      "flow_condition_type": "",
-      "flow_condition_params": [],
-      "counter_condition": "on_attacked",
-      "base_damage": 0,
-      "damage_type": "physical",
-      "damage_formula": "",
-      "damage_bonuses": [],
-      "status_effects": [],
-      "special_effects": [
-        {
-          "effect": "gain_punch_frame",
-          "count": 1
-        }
-      ],
-      "stacks_formula": "floor(physique/4) + floor(body_proficiency/3) + 1",
-      "move_formula": ""
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "card",
       "id": "project_card_ea35b7b3",
       "projectSource": true,
       "skill_name": "架招",
       "resource_path": "res://resources/activeskills/架招.tres",
-      "icon_path": "res://textures/cards/expressive_ink/jiazhao_ink_v4.png",
-      "description": "敌方攻击自身时使用；获得化解。化解层数 = 3 + floor(体魄/4) + floor(敏捷/5)。化解仅抵消本次攻击的物理伤害：每层抵消1点；该次攻击结算后全部消散。",
+      "icon_path": "res://textures/ui/combat/skill_icons/凡俗_架招_v1.png",
+      "description": "应对：位于队首且遇到敌方物理攻击时立即触发，获得化解。化解层数 = 3 + floor(体魄/4) + floor(敏捷/5)；每层抵消该次攻击1点物理伤害，攻击结算后消散。未触发时按正常行动时序结算基础效果。\n使用次数：不限。",
       "skill_type": "BUFF",
       "element": "NONE",
       "source_type": "基础通用",
@@ -2752,7 +2240,7 @@ select { appearance: auto; }
       "momentum_effect_params": "",
       "flow_condition_type": "",
       "flow_condition_params": [],
-      "counter_condition": "on_attacked",
+      "counter_condition": "on_physical_attacked",
       "base_damage": 0,
       "damage_type": "physical",
       "damage_formula": "",
@@ -2776,7 +2264,7 @@ select { appearance: auto; }
       "skill_name": "解形",
       "resource_path": "res://resources/activeskills/乘物游骸真经/解形.tres",
       "icon_path": "",
-      "description": "仅当自身拥有游骸时可打出；消耗1层游骸；对指定1名敌方造成物理伤害：伤害 = round(7 + 体魄×0.35 + 敏捷×0.25 + 体道造诣×0.25)。该层游骸计入本场已消耗游骸层数。",
+      "description": "仅当自身拥有游骸时可用；消耗游骸1层并计入本场已消耗游骸；对指定1名敌方造成物理伤害：round(7 + 体魄×0.35 + 敏捷×0.25 + 体道造诣×0.25)。\n使用次数：本场1次",
       "skill_type": "ATTACK",
       "element": "NONE",
       "source_type": "秘籍习得",
@@ -2794,9 +2282,7 @@ select { appearance: auto; }
       "aoe_range": 0,
       "can_target_empty": false,
       "move_distance": 0,
-      "keywords": [
-        "消耗"
-      ],
+      "keywords": [],
       "condition_type": "NONE",
       "condition_value": "",
       "momentum_condition_type": "",
@@ -2822,172 +2308,6 @@ select { appearance: auto; }
         }
       ],
       "status_effects": [],
-      "special_effects": [],
-      "stacks_formula": "",
-      "move_formula": ""
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "card",
-      "id": "project_card_58f739be",
-      "projectSource": true,
-      "skill_name": "借力还锋",
-      "resource_path": "res://resources/activeskills/藏锋卸力诀/借力还锋.tres",
-      "icon_path": "",
-      "description": "借力还锋，以守势送出一剑。自身拥有护盾、化解或借力时精准+6；若本牌消耗了借力，命中后向目标施加1层剑痕。",
-      "skill_type": "ATTACK",
-      "element": "NONE",
-      "source_type": "秘籍习得",
-      "source_gongfa": "藏锋卸力诀",
-      "required_realm": "",
-      "required_attributes": {},
-      "energy_cost": 2,
-      "mana_cost": 0,
-      "spirit_occupy": 0,
-      "required_equip_slot": 0,
-      "required_weapon_type": 1,
-      "target_type": 2,
-      "range_min": 1,
-      "range_max": 1,
-      "aoe_range": 0,
-      "can_target_empty": false,
-      "move_distance": 0,
-      "keywords": [],
-      "condition_type": "3",
-      "condition_value": "藏锋卸力诀",
-      "momentum_condition_type": "",
-      "momentum_effect_params": "",
-      "flow_condition_type": "",
-      "flow_condition_params": [],
-      "counter_condition": "",
-      "base_damage": 4,
-      "damage_type": "physical",
-      "damage_formula": "",
-      "damage_bonuses": [
-        {
-          "attribute": "sword_proficiency",
-          "multiplier": 0.42
-        },
-        {
-          "attribute": "physique",
-          "multiplier": 0.2
-        }
-      ],
-      "status_effects": [],
-      "special_effects": [
-        {
-          "effect": "precision_if_guarding",
-          "amount": 6
-        },
-        {
-          "effect": "consume_borrowed_force_and_mark",
-          "count": 1
-        }
-      ],
-      "stacks_formula": "",
-      "move_formula": ""
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "card",
-      "id": "project_card_5731f5cc",
-      "projectSource": true,
-      "skill_name": "进步崩拳",
-      "resource_path": "res://resources/activeskills/太祖长拳/进步崩拳.tres",
-      "icon_path": "",
-      "description": "上步进身，以崩拳重击相邻敌人；消耗拳架时额外造成伤害。",
-      "skill_type": "ATTACK",
-      "element": "NONE",
-      "source_type": "秘籍习得",
-      "source_gongfa": "太祖长拳",
-      "required_realm": "",
-      "required_attributes": {},
-      "energy_cost": 2,
-      "mana_cost": 0,
-      "spirit_occupy": 0,
-      "required_equip_slot": -1,
-      "required_weapon_type": 0,
-      "target_type": 2,
-      "range_min": 1,
-      "range_max": 1,
-      "aoe_range": 0,
-      "can_target_empty": false,
-      "move_distance": 0,
-      "keywords": [
-        "重击"
-      ],
-      "condition_type": "NONE",
-      "condition_value": "",
-      "momentum_condition_type": "",
-      "momentum_effect_params": "",
-      "flow_condition_type": "",
-      "flow_condition_params": [],
-      "counter_condition": "",
-      "base_damage": 12,
-      "damage_type": "physical",
-      "damage_formula": "",
-      "damage_bonuses": [
-        {
-          "attribute": "physique",
-          "multiplier": 1.5
-        },
-        {
-          "attribute": "body_proficiency",
-          "multiplier": 2
-        }
-      ],
-      "status_effects": [],
-      "special_effects": [],
-      "stacks_formula": "",
-      "move_formula": ""
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "card",
-      "id": "project_card_41fcbabd",
-      "projectSource": true,
-      "skill_name": "惊鸿蓄锋",
-      "resource_path": "res://resources/activeskills/惊鸿掠影谱/惊鸿掠步.tres",
-      "icon_path": "",
-      "description": "振衣蓄锋，不再进行位移；获得2层身法，为下一次交锋留出余地。",
-      "skill_type": "BUFF",
-      "element": "NONE",
-      "source_type": "秘籍习得",
-      "source_gongfa": "惊鸿掠影谱",
-      "required_realm": "",
-      "required_attributes": {},
-      "energy_cost": 2,
-      "mana_cost": 0,
-      "spirit_occupy": 0,
-      "required_equip_slot": 0,
-      "required_weapon_type": 1,
-      "target_type": 0,
-      "range_min": 0,
-      "range_max": 0,
-      "aoe_range": 0,
-      "can_target_empty": false,
-      "move_distance": 0,
-      "keywords": [
-        "消耗"
-      ],
-      "condition_type": "3",
-      "condition_value": "惊鸿掠影谱",
-      "momentum_condition_type": "",
-      "momentum_effect_params": "",
-      "flow_condition_type": "",
-      "flow_condition_params": [],
-      "counter_condition": "",
-      "base_damage": 0,
-      "damage_type": "physical",
-      "damage_formula": "",
-      "damage_bonuses": [],
-      "status_effects": [
-        {
-          "status_id": "身法",
-          "stacks": 2,
-          "hit_formula": "1.0"
-        }
-      ],
       "special_effects": [],
       "stacks_formula": "",
       "move_formula": ""
@@ -3256,86 +2576,6 @@ select { appearance: auto; }
     {
       "schemaVersion": 1,
       "kind": "card",
-      "id": "project_card_25a77fc6",
-      "projectSource": true,
-      "skill_name": "裂柯",
-      "resource_path": "res://resources/activeskills/折枝剑谱/裂柯.tres",
-      "icon_path": "",
-      "description": "裂柯，伤从痕开。只能攻击带有剑痕的敌人；命中后先施加1层剑痕，再消耗2层剑痕，并向目标弃牌堆加入1张外伤。",
-      "skill_type": "ATTACK",
-      "element": "NONE",
-      "source_type": "秘籍习得",
-      "source_gongfa": "折枝剑谱",
-      "required_realm": "",
-      "required_attributes": {},
-      "energy_cost": 3,
-      "mana_cost": 0,
-      "spirit_occupy": 0,
-      "required_equip_slot": 0,
-      "required_weapon_type": 1,
-      "target_type": 2,
-      "range_min": 1,
-      "range_max": 2,
-      "aoe_range": 0,
-      "can_target_empty": false,
-      "move_distance": 0,
-      "keywords": [],
-      "condition_type": "1",
-      "condition_value": "折枝剑谱",
-      "momentum_condition_type": "",
-      "momentum_effect_params": "",
-      "flow_condition_type": "",
-      "flow_condition_params": [],
-      "counter_condition": "",
-      "base_damage": 4,
-      "damage_type": "physical",
-      "damage_formula": "",
-      "damage_bonuses": [
-        {
-          "attribute": "sword_proficiency",
-          "multiplier": 0.5
-        },
-        {
-          "attribute": "agility",
-          "multiplier": 0.18
-        },
-        {
-          "attribute": "physique",
-          "multiplier": 0.14
-        }
-      ],
-      "status_effects": [],
-      "special_effects": [
-        {
-          "effect": "require_target_status",
-          "status_id": "剑痕",
-          "stacks": 1
-        },
-        {
-          "effect": "gain_sword_intent",
-          "count": 1
-        },
-        {
-          "effect": "apply_sword_mark",
-          "count": 1
-        },
-        {
-          "effect": "consume_marks_add_wound",
-          "marks": 2,
-          "wound": "外伤",
-          "destination": "discard"
-        },
-        {
-          "effect": "apply_fracture_if_target_has_wound_any_zone",
-          "count": 1
-        }
-      ],
-      "stacks_formula": "",
-      "move_formula": ""
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "card",
       "id": "project_card_3ffa0b1f",
       "projectSource": true,
       "skill_name": "灵爆",
@@ -3449,19 +2689,19 @@ select { appearance: auto; }
       "skill_name": "灵枢经筋",
       "resource_path": "res://resources/activeskills/灵枢经筋篇/灵枢经筋.tres",
       "icon_path": "",
-      "description": "获得【灵枢经筋】（唯一Buff，持续至本场战斗结束）。【灵枢经筋】：每回合首次主动消耗手中的【伤势】牌时，获得借力1层。\n主修额外追加：若该次主动消耗累计不少于3张【伤势】，恢复气血1层。",
+      "description": "本心法由当前主修或辅修秘籍自动提供；战斗开始时作为常驻被动显示于Buff栏，持续至战斗结束。本场首次主动消耗内伤或外伤状态层时，获得借力1层。主修额外追加：同一次主动效果消耗至少3层内伤或外伤时，获得气血1层。",
       "skill_type": "POWER",
       "element": "NONE",
       "source_type": "秘籍习得",
       "source_gongfa": "灵枢经筋篇",
       "required_realm": "",
       "required_attributes": {},
-      "energy_cost": 1,
+      "energy_cost": 0,
       "mana_cost": 0,
       "spirit_occupy": 0,
       "required_equip_slot": -1,
       "required_weapon_type": 0,
-      "target_type": 1,
+      "target_type": 0,
       "range_min": 0,
       "range_max": 0,
       "aoe_range": 0,
@@ -3482,55 +2722,6 @@ select { appearance: auto; }
       "damage_formula": "",
       "damage_bonuses": [],
       "status_effects": [],
-      "special_effects": [],
-      "stacks_formula": "",
-      "move_formula": ""
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "card",
-      "id": "project_card_8dae61bd",
-      "projectSource": true,
-      "skill_name": "留痕",
-      "resource_path": "res://resources/activeskills/明微抱元经/留痕.tres",
-      "icon_path": "",
-      "description": "以神魂映照，令痕迹深入目标。造成神魂伤害，并留下照痕。",
-      "skill_type": "ATTACK",
-      "element": "NONE",
-      "source_type": "秘籍习得",
-      "source_gongfa": "明微抱元经",
-      "required_realm": "",
-      "required_attributes": {},
-      "energy_cost": 2,
-      "mana_cost": 4,
-      "spirit_occupy": 0,
-      "required_equip_slot": -1,
-      "required_weapon_type": 0,
-      "target_type": 2,
-      "range_min": 1,
-      "range_max": 3,
-      "aoe_range": 0,
-      "can_target_empty": false,
-      "move_distance": 0,
-      "keywords": [],
-      "condition_type": "NONE",
-      "condition_value": "",
-      "momentum_condition_type": "",
-      "momentum_effect_params": "",
-      "flow_condition_type": "",
-      "flow_condition_params": [],
-      "counter_condition": "",
-      "base_damage": 8,
-      "damage_type": "soul",
-      "damage_formula": "",
-      "damage_bonuses": [],
-      "status_effects": [
-        {
-          "status_id": "照痕",
-          "stacks": 1,
-          "hit_formula": "1.0"
-        }
-      ],
       "special_effects": [],
       "stacks_formula": "",
       "move_formula": ""
@@ -3586,19 +2777,19 @@ select { appearance: auto; }
       "skill_name": "内景损益",
       "resource_path": "res://resources/activeskills/内景损益篇/内景损益.tres",
       "icon_path": "",
-      "description": "获得【内景损益】（唯一Buff，持续至本场战斗结束）。【内景损益】：战斗牌堆每有1张【伤势】，自身主动打出的锻躯物理伤害提高3%。\n主修额外追加：每张伤势额外提高2%，即合计提高5%。",
+      "description": "本心法由当前主修或辅修秘籍自动提供；战斗开始时作为常驻被动显示于Buff栏，持续至战斗结束。每有1层内伤或外伤，自身主动施放的锻躯物理伤害提高3%。主修额外追加：每层再提高2%，合计5%。",
       "skill_type": "POWER",
       "element": "NONE",
       "source_type": "秘籍习得",
       "source_gongfa": "内景损益篇",
       "required_realm": "",
       "required_attributes": {},
-      "energy_cost": 1,
+      "energy_cost": 0,
       "mana_cost": 0,
       "spirit_occupy": 0,
       "required_equip_slot": -1,
       "required_weapon_type": 0,
-      "target_type": 1,
+      "target_type": 0,
       "range_min": 0,
       "range_max": 0,
       "aoe_range": 0,
@@ -3671,57 +2862,12 @@ select { appearance: auto; }
     {
       "schemaVersion": 1,
       "kind": "card",
-      "id": "project_card_c51a0e10",
-      "projectSource": true,
-      "skill_name": "泥鳅身",
-      "resource_path": "res://resources/activeskills/市井游身功/泥鳅身.tres",
-      "icon_path": "",
-      "description": "扭身卸力，如泥鳅般滑溜。敌方攻击自身时自动打出，获得3层身法。",
-      "skill_type": "SPECIAL",
-      "element": "NONE",
-      "source_type": "秘籍习得",
-      "source_gongfa": "市井游身功",
-      "required_realm": "",
-      "required_attributes": {},
-      "energy_cost": 2,
-      "mana_cost": 0,
-      "spirit_occupy": 0,
-      "required_equip_slot": -1,
-      "required_weapon_type": 0,
-      "target_type": 1,
-      "range_min": 0,
-      "range_max": 1,
-      "aoe_range": 0,
-      "can_target_empty": false,
-      "move_distance": 0,
-      "keywords": [
-        "应对"
-      ],
-      "condition_type": "NONE",
-      "condition_value": "",
-      "momentum_condition_type": "",
-      "momentum_effect_params": "",
-      "flow_condition_type": "",
-      "flow_condition_params": [],
-      "counter_condition": "on_attacked",
-      "base_damage": 0,
-      "damage_type": "physical",
-      "damage_formula": "",
-      "damage_bonuses": [],
-      "status_effects": [],
-      "special_effects": [],
-      "stacks_formula": "",
-      "move_formula": ""
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "card",
       "id": "project_card_ece6d344",
       "projectSource": true,
       "skill_name": "平息",
       "resource_path": "res://resources/activeskills/吐纳归元.tres",
-      "icon_path": "",
-      "description": "气血-1；本次气血下降触发公共规则，回复最大生命×3%。",
+      "icon_path": "res://textures/cards/expressive_ink/yangxi_ink_v4.png",
+      "description": "准备完成时气血-1；触发公共气血回落，回复最大生命×3%。",
       "skill_type": "BUFF",
       "element": "NONE",
       "source_type": "基础通用",
@@ -3764,19 +2910,67 @@ select { appearance: auto; }
     {
       "schemaVersion": 1,
       "kind": "card",
-      "id": "project_card_b33adf40",
+      "id": "project_card_fc36e1d4",
       "projectSource": true,
-      "skill_name": "去故",
-      "resource_path": "res://resources/activeskills/灵枢经筋篇/去故.tres",
-      "icon_path": "",
-      "description": "仅当手中至少有2张【伤势】牌时可打出；消耗手中至多3张【伤势】牌；每消耗1张，获得借力1层。",
-      "skill_type": "DRAW",
+      "skill_name": "平息",
+      "resource_path": "res://resources/activeskills/平息.tres",
+      "icon_path": "res://textures/ui/combat/skill_icons/锻躯_平息_v1.png",
+      "description": "气血-1；触发公共气血回落，回复最大生命×3%。",
+      "skill_type": "BUFF",
       "element": "NONE",
-      "source_type": "秘籍习得",
-      "source_gongfa": "灵枢经筋篇",
+      "source_type": "基础通用",
+      "source_gongfa": "",
       "required_realm": "",
       "required_attributes": {},
-      "energy_cost": 0,
+      "energy_cost": 1,
+      "mana_cost": 0,
+      "spirit_occupy": 0,
+      "required_equip_slot": -1,
+      "required_weapon_type": 0,
+      "target_type": 0,
+      "range_min": 0,
+      "range_max": 0,
+      "aoe_range": 0,
+      "can_target_empty": false,
+      "move_distance": 0,
+      "keywords": [],
+      "condition_type": "NONE",
+      "condition_value": "",
+      "momentum_condition_type": "",
+      "momentum_effect_params": "",
+      "flow_condition_type": "",
+      "flow_condition_params": [],
+      "counter_condition": "",
+      "base_damage": 0,
+      "damage_type": "physical",
+      "damage_formula": "",
+      "damage_bonuses": [],
+      "status_effects": [],
+      "special_effects": [
+        {
+          "effect": "spend_qi_blood",
+          "count": 1
+        }
+      ],
+      "stacks_formula": "",
+      "move_formula": ""
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "card",
+      "id": "project_card_aca6dc99",
+      "projectSource": true,
+      "skill_name": "平息",
+      "resource_path": "res://resources/activeskills/赤阳参同经/化法/平息.tres",
+      "icon_path": "",
+      "description": "施放时自动消耗当前血炉中至多10点的偶数点；每消耗2点回复最大生命×1%。随后气血-1；赤阳心法将本次气血回落回复转为血炉，新生血炉不参与本次回复。",
+      "skill_type": "BUFF",
+      "element": "NONE",
+      "source_type": "秘籍习得",
+      "source_gongfa": "赤阳参同经",
+      "required_realm": "",
+      "required_attributes": {},
+      "energy_cost": 1,
       "mana_cost": 0,
       "spirit_occupy": 0,
       "required_equip_slot": -1,
@@ -3787,9 +2981,7 @@ select { appearance: auto; }
       "aoe_range": 0,
       "can_target_empty": false,
       "move_distance": 0,
-      "keywords": [
-        "消耗"
-      ],
+      "keywords": [],
       "condition_type": "NONE",
       "condition_value": "",
       "momentum_condition_type": "",
@@ -3809,32 +3001,30 @@ select { appearance: auto; }
     {
       "schemaVersion": 1,
       "kind": "card",
-      "id": "project_card_adf301ca",
+      "id": "project_card_b33adf40",
       "projectSource": true,
-      "skill_name": "撒石灰",
-      "resource_path": "res://resources/activeskills/市井游身功/撒石灰.tres",
+      "skill_name": "去故",
+      "resource_path": "res://resources/activeskills/灵枢经筋篇/去故.tres",
       "icon_path": "",
-      "description": "向相邻敌人撒出石灰并造成物理伤害；打出后从本场战斗中移除。",
-      "skill_type": "ATTACK",
+      "description": "仅当至少有2层内伤或外伤时可用；消耗至多3层（优先内伤），每层转为借力1层。\n使用次数：本场1次",
+      "skill_type": "DRAW",
       "element": "NONE",
       "source_type": "秘籍习得",
-      "source_gongfa": "市井游身功",
+      "source_gongfa": "灵枢经筋篇",
       "required_realm": "",
       "required_attributes": {},
-      "energy_cost": 1,
+      "energy_cost": 0,
       "mana_cost": 0,
       "spirit_occupy": 0,
       "required_equip_slot": -1,
       "required_weapon_type": 0,
-      "target_type": 2,
-      "range_min": 1,
-      "range_max": 1,
+      "target_type": 1,
+      "range_min": 0,
+      "range_max": 0,
       "aoe_range": 0,
       "can_target_empty": false,
       "move_distance": 0,
-      "keywords": [
-        "消耗"
-      ],
+      "keywords": [],
       "condition_type": "NONE",
       "condition_value": "",
       "momentum_condition_type": "",
@@ -3842,15 +3032,10 @@ select { appearance: auto; }
       "flow_condition_type": "",
       "flow_condition_params": [],
       "counter_condition": "",
-      "base_damage": 2,
+      "base_damage": 0,
       "damage_type": "physical",
       "damage_formula": "",
-      "damage_bonuses": [
-        {
-          "attribute": "agility",
-          "multiplier": 1
-        }
-      ],
+      "damage_bonuses": [],
       "status_effects": [],
       "special_effects": [],
       "stacks_formula": "",
@@ -3909,7 +3094,7 @@ select { appearance: auto; }
       "skill_name": "摄魂",
       "resource_path": "res://resources/activeskills/摄魂.tres",
       "icon_path": "",
-      "description": "直摄敌手神魂，造成重创并撕开魂隙。",
+      "description": "直摄敌手神魂，造成重创。",
       "skill_type": "ATTACK",
       "element": "NONE",
       "source_type": "基础通用",
@@ -3948,64 +3133,8 @@ select { appearance: auto; }
           "multiplier": 0.45
         }
       ],
-      "status_effects": [
-        {
-          "status_id": "魂隙",
-          "stacks": 1,
-          "hit_formula": "1.0"
-        }
-      ],
-      "special_effects": [],
-      "stacks_formula": "",
-      "move_formula": ""
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "card",
-      "id": "project_card_6be2cbbc",
-      "projectSource": true,
-      "skill_name": "身随剑转",
-      "resource_path": "res://resources/activeskills/惊鸿掠影谱/身随剑转.tres",
-      "icon_path": "",
-      "description": "身随剑转，剑落步生。收束呼吸与剑势，立刻回复少量精力，不再依赖遁身与位移。",
-      "skill_type": "SPECIAL",
-      "element": "NONE",
-      "source_type": "秘籍习得",
-      "source_gongfa": "惊鸿掠影谱",
-      "required_realm": "",
-      "required_attributes": {},
-      "energy_cost": 1,
-      "mana_cost": 0,
-      "spirit_occupy": 0,
-      "required_equip_slot": -1,
-      "required_weapon_type": 0,
-      "target_type": 1,
-      "range_min": 0,
-      "range_max": 0,
-      "aoe_range": 0,
-      "can_target_empty": false,
-      "move_distance": 0,
-      "keywords": [
-        "消耗"
-      ],
-      "condition_type": "3",
-      "condition_value": "惊鸿掠影谱",
-      "momentum_condition_type": "",
-      "momentum_effect_params": "",
-      "flow_condition_type": "",
-      "flow_condition_params": [],
-      "counter_condition": "",
-      "base_damage": 0,
-      "damage_type": "physical",
-      "damage_formula": "",
-      "damage_bonuses": [],
       "status_effects": [],
-      "special_effects": [
-        {
-          "effect": "restore_stamina",
-          "formula": "base:4;sword_proficiency:0.2"
-        }
-      ],
+      "special_effects": [],
       "stacks_formula": "",
       "move_formula": ""
     },
@@ -4055,202 +3184,12 @@ select { appearance: auto; }
     {
       "schemaVersion": 1,
       "kind": "card",
-      "id": "project_card_8cb43e62",
-      "projectSource": true,
-      "skill_name": "太祖起手",
-      "resource_path": "res://resources/activeskills/太祖长拳/太祖长拳.tres",
-      "icon_path": "",
-      "description": "以刚猛起手式攻击相邻敌人，并获得拳架。",
-      "skill_type": "ATTACK",
-      "element": "NONE",
-      "source_type": "秘籍习得",
-      "source_gongfa": "太祖长拳",
-      "required_realm": "",
-      "required_attributes": {},
-      "energy_cost": 1,
-      "mana_cost": 0,
-      "spirit_occupy": 0,
-      "required_equip_slot": -1,
-      "required_weapon_type": 0,
-      "target_type": 2,
-      "range_min": 1,
-      "range_max": 1,
-      "aoe_range": 0,
-      "can_target_empty": false,
-      "move_distance": 0,
-      "keywords": [],
-      "condition_type": "NONE",
-      "condition_value": "",
-      "momentum_condition_type": "",
-      "momentum_effect_params": "",
-      "flow_condition_type": "",
-      "flow_condition_params": [],
-      "counter_condition": "",
-      "base_damage": 5,
-      "damage_type": "physical",
-      "damage_formula": "",
-      "damage_bonuses": [
-        {
-          "attribute": "physique",
-          "multiplier": 1.2
-        },
-        {
-          "attribute": "body_proficiency",
-          "multiplier": 1.3
-        }
-      ],
-      "status_effects": [],
-      "special_effects": [
-        {
-          "effect": "gain_punch_frame",
-          "count": 1
-        }
-      ],
-      "stacks_formula": "",
-      "move_formula": ""
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "card",
-      "id": "project_card_05b8e011",
-      "projectSource": true,
-      "skill_name": "挑枝断筋",
-      "resource_path": "res://resources/activeskills/折枝剑谱/挑枝断筋.tres",
-      "icon_path": "",
-      "description": "挑枝断筋，新旧痕迹一并牵裂。命中后施加2层剑痕；目标随后至少有3层剑痕时，消耗3层并向目标弃牌堆加入1张外伤。",
-      "skill_type": "ATTACK",
-      "element": "NONE",
-      "source_type": "秘籍习得",
-      "source_gongfa": "折枝剑谱",
-      "required_realm": "",
-      "required_attributes": {},
-      "energy_cost": 3,
-      "mana_cost": 1,
-      "spirit_occupy": 0,
-      "required_equip_slot": 0,
-      "required_weapon_type": 1,
-      "target_type": 2,
-      "range_min": 1,
-      "range_max": 2,
-      "aoe_range": 0,
-      "can_target_empty": false,
-      "move_distance": 0,
-      "keywords": [],
-      "condition_type": "1",
-      "condition_value": "折枝剑谱",
-      "momentum_condition_type": "",
-      "momentum_effect_params": "",
-      "flow_condition_type": "",
-      "flow_condition_params": [],
-      "counter_condition": "",
-      "base_damage": 4,
-      "damage_type": "physical",
-      "damage_formula": "",
-      "damage_bonuses": [
-        {
-          "attribute": "sword_proficiency",
-          "multiplier": 0.54
-        },
-        {
-          "attribute": "agility",
-          "multiplier": 0.2
-        },
-        {
-          "attribute": "physique",
-          "multiplier": 0.14
-        }
-      ],
-      "status_effects": [],
-      "special_effects": [
-        {
-          "effect": "gain_sword_intent",
-          "count": 1
-        },
-        {
-          "effect": "apply_sword_mark",
-          "count": 2
-        },
-        {
-          "effect": "consume_marks_add_wound",
-          "marks": 3,
-          "wound": "外伤",
-          "destination": "discard"
-        },
-        {
-          "effect": "apply_fracture_on_wound",
-          "count": 1
-        },
-        {
-          "effect": "critical_if_target_has_wound_any_zone",
-          "amount": 10
-        }
-      ],
-      "stacks_formula": "",
-      "move_formula": ""
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "card",
-      "id": "project_card_4bea376a",
-      "projectSource": true,
-      "skill_name": "听锋辨隙",
-      "resource_path": "res://resources/activeskills/听锋寻隙篇/听锋辨隙.tres",
-      "icon_path": "",
-      "description": "听锋辨隙，先定其破绽。选择1至3格内的一名敌人，施加1层剑痕；本回合下一张由玩家主动打出且以该敌人为目标的剑术攻击牌精准+6。",
-      "skill_type": "SPECIAL",
-      "element": "NONE",
-      "source_type": "秘籍习得",
-      "source_gongfa": "听锋寻隙篇",
-      "required_realm": "",
-      "required_attributes": {},
-      "energy_cost": 1,
-      "mana_cost": 0,
-      "spirit_occupy": 0,
-      "required_equip_slot": -1,
-      "required_weapon_type": 0,
-      "target_type": 2,
-      "range_min": 1,
-      "range_max": 3,
-      "aoe_range": 0,
-      "can_target_empty": false,
-      "move_distance": 0,
-      "keywords": [
-        "消耗"
-      ],
-      "condition_type": "3",
-      "condition_value": "听锋寻隙篇",
-      "momentum_condition_type": "",
-      "momentum_effect_params": "",
-      "flow_condition_type": "",
-      "flow_condition_params": [],
-      "counter_condition": "",
-      "base_damage": 0,
-      "damage_type": "physical",
-      "damage_formula": "",
-      "damage_bonuses": [],
-      "status_effects": [],
-      "special_effects": [
-        {
-          "effect": "apply_sword_mark",
-          "count": 1
-        },
-        {
-          "effect": "prime_next_sword_attack_against_target",
-          "precision": 6
-        }
-      ],
-      "stacks_formula": "",
-      "move_formula": ""
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "card",
       "id": "project_card_dc558518",
       "projectSource": true,
       "skill_name": "痛击",
       "resource_path": "res://resources/activeskills/痛击.tres",
-      "icon_path": "res://textures/cards/expressive_ink/tongji_ink_v4.png",
-      "description": "看准破绽的一记重击；比两次应敌更省手牌，但需预留精力。",
+      "icon_path": "res://textures/ui/combat/skill_icons/凡俗_痛击_v1.png",
+      "description": "看准破绽的一记重击；比两次应敌更省精力，但准备更久，需要提前预留精力。",
       "skill_type": "ATTACK",
       "element": "NONE",
       "source_type": "基础通用",
@@ -4358,7 +3297,7 @@ select { appearance: auto; }
       "skill_name": "蜕形",
       "resource_path": "res://resources/activeskills/乘物游骸真经/蜕形.tres",
       "icon_path": "",
-      "description": "气血-1；获得身法2层。",
+      "description": "气血-1；触发公共气血回落，回复最大生命×3%；获得身法2层。",
       "skill_type": "BUFF",
       "element": "NONE",
       "source_type": "秘籍习得",
@@ -4412,7 +3351,7 @@ select { appearance: auto; }
       "skill_name": "托身",
       "resource_path": "res://resources/activeskills/乘物游骸真经/托身.tres",
       "icon_path": "",
-      "description": "仅当自身当前拥有游骸时可打出；获得身法2层。",
+      "description": "仅当自身当前拥有游骸时可施放；消耗游骸1层并计入本场已消耗游骸；获得身法2层。",
       "skill_type": "BUFF",
       "element": "NONE",
       "source_type": "秘籍习得",
@@ -4430,9 +3369,7 @@ select { appearance: auto; }
       "aoe_range": 0,
       "can_target_empty": false,
       "move_distance": 0,
-      "keywords": [
-        "保留"
-      ],
+      "keywords": [],
       "condition_type": "NONE",
       "condition_value": "",
       "momentum_condition_type": "",
@@ -4508,7 +3445,7 @@ select { appearance: auto; }
       "skill_name": "挟势",
       "resource_path": "res://resources/activeskills/阴符应物经/挟势.tres",
       "icon_path": "",
-      "description": "对指定1名敌方造成物理伤害。伤害（未计借力） = round(6 + 体魄×0.45 + 体道造诣×0.30)。本牌享受【借力】对物理伤害的加成；本牌结算后不移除借力。",
+      "description": "对指定1名敌方造成物理伤害。伤害（未计借力） = round(6 + 体魄×0.45 + 体道造诣×0.30)。本技能享受借力对物理伤害的加成；本技能结算后不移除借力。",
       "skill_type": "ATTACK",
       "element": "NONE",
       "source_type": "秘籍习得",
@@ -4559,8 +3496,8 @@ select { appearance: auto; }
       "projectSource": true,
       "skill_name": "卸力",
       "resource_path": "res://resources/activeskills/卸力.tres",
-      "icon_path": "res://textures/cards/expressive_ink/xieli_ink_v4.png",
-      "description": "敌方攻击自身时使用；获得化解。化解层数 = max(1, floor(体魄/2) + floor(体道造诣/3))。化解仅抵消本次攻击的物理伤害：每层抵消1点；该次攻击结算后全部消散。",
+      "icon_path": "res://textures/ui/combat/skill_icons/锻躯_卸力_v1.png",
+      "description": "应对：位于队首且遇到敌方物理攻击时立即触发，获得化解。化解层数 = max(1, floor(体魄/2) + floor(体道造诣/3))；每层抵消该次攻击1点物理伤害，攻击结算后消散。未触发时按正常行动时序结算基础效果。",
       "skill_type": "SPECIAL",
       "element": "NONE",
       "source_type": "基础通用",
@@ -4572,9 +3509,9 @@ select { appearance: auto; }
       "spirit_occupy": 0,
       "required_equip_slot": -1,
       "required_weapon_type": 0,
-      "target_type": 2,
+      "target_type": 0,
       "range_min": 0,
-      "range_max": 1,
+      "range_max": 0,
       "aoe_range": 0,
       "can_target_empty": false,
       "move_distance": 0,
@@ -4587,12 +3524,69 @@ select { appearance: auto; }
       "momentum_effect_params": "",
       "flow_condition_type": "",
       "flow_condition_params": [],
-      "counter_condition": "on_attacked",
+      "counter_condition": "on_physical_attacked",
       "base_damage": 0,
       "damage_type": "physical",
       "damage_formula": "",
       "damage_bonuses": [],
-      "status_effects": [],
+      "status_effects": [
+        {
+          "status_id": "化解",
+          "stacks": 1,
+          "hit_formula": "1.0"
+        }
+      ],
+      "special_effects": [],
+      "stacks_formula": "max(1, floor(physique/2) + floor(body_proficiency/3))",
+      "move_formula": ""
+    },
+    {
+      "schemaVersion": 1,
+      "kind": "card",
+      "id": "project_card_63813b58",
+      "projectSource": true,
+      "skill_name": "卸力",
+      "resource_path": "res://resources/activeskills/赤阳参同经/化法/卸力.tres",
+      "icon_path": "",
+      "description": "敌方物理攻击自身时获得化解。化解层数 = max(1, floor(体魄/2) + floor(体道造诣/3))；每层抵消本次攻击1点物理伤害。匹配的来袭攻击即将结算且本技能位于队首时立即应对；触发时自动消耗当前血炉中至多20点的偶数点，每消耗2点，本次化解增加1层。未触发时按正常行动时序结算基础效果，不消耗血炉。",
+      "skill_type": "SPECIAL",
+      "element": "NONE",
+      "source_type": "秘籍习得",
+      "source_gongfa": "赤阳参同经",
+      "required_realm": "",
+      "required_attributes": {},
+      "energy_cost": 1,
+      "mana_cost": 0,
+      "spirit_occupy": 0,
+      "required_equip_slot": -1,
+      "required_weapon_type": 0,
+      "target_type": 0,
+      "range_min": 0,
+      "range_max": 0,
+      "aoe_range": 0,
+      "can_target_empty": false,
+      "move_distance": 0,
+      "keywords": [
+        "应对"
+      ],
+      "condition_type": "NONE",
+      "condition_value": "",
+      "momentum_condition_type": "",
+      "momentum_effect_params": "",
+      "flow_condition_type": "",
+      "flow_condition_params": [],
+      "counter_condition": "on_physical_attacked",
+      "base_damage": 0,
+      "damage_type": "physical",
+      "damage_formula": "",
+      "damage_bonuses": [],
+      "status_effects": [
+        {
+          "status_id": "化解",
+          "stacks": 1,
+          "hit_formula": "1.0"
+        }
+      ],
       "special_effects": [],
       "stacks_formula": "max(1, floor(physique/2) + floor(body_proficiency/3))",
       "move_formula": ""
@@ -4655,173 +3649,30 @@ select { appearance: auto; }
     {
       "schemaVersion": 1,
       "kind": "card",
-      "id": "project_card_1d8bddcd",
-      "projectSource": true,
-      "skill_name": "循隙一刺",
-      "resource_path": "res://resources/activeskills/听锋寻隙篇/循隙一刺.tres",
-      "icon_path": "",
-      "description": "循隙递锋，一刺中的。目标没有剑痕时，命中后施加1层剑痕；目标已有剑痕时，本次伤害提高15%，且不消耗剑痕。",
-      "skill_type": "ATTACK",
-      "element": "NONE",
-      "source_type": "秘籍习得",
-      "source_gongfa": "听锋寻隙篇",
-      "required_realm": "",
-      "required_attributes": {},
-      "energy_cost": 2,
-      "mana_cost": 0,
-      "spirit_occupy": 0,
-      "required_equip_slot": 0,
-      "required_weapon_type": 1,
-      "target_type": 2,
-      "range_min": 1,
-      "range_max": 2,
-      "aoe_range": 0,
-      "can_target_empty": false,
-      "move_distance": 0,
-      "keywords": [],
-      "condition_type": "3",
-      "condition_value": "听锋寻隙篇",
-      "momentum_condition_type": "",
-      "momentum_effect_params": "",
-      "flow_condition_type": "",
-      "flow_condition_params": [],
-      "counter_condition": "",
-      "base_damage": 3,
-      "damage_type": "physical",
-      "damage_formula": "",
-      "damage_bonuses": [
-        {
-          "attribute": "sword_proficiency",
-          "multiplier": 0.44
-        },
-        {
-          "attribute": "soul",
-          "multiplier": 0.14
-        },
-        {
-          "attribute": "agility",
-          "multiplier": 0.1
-        }
-      ],
-      "status_effects": [],
-      "special_effects": [
-        {
-          "effect": "apply_sword_mark_if_absent",
-          "count": 1
-        },
-        {
-          "effect": "bonus_damage_if_target_marked",
-          "multiplier": 0.15
-        }
-      ],
-      "stacks_formula": "",
-      "move_formula": ""
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "card",
-      "id": "project_card_1815309b",
-      "projectSource": true,
-      "skill_name": "压枝",
-      "resource_path": "res://resources/activeskills/折枝剑谱/压枝.tres",
-      "icon_path": "",
-      "description": "压枝，旧痕作伤。命中后施加1层剑痕；目标随后至少有2层剑痕时，消耗2层并向目标弃牌堆加入1张外伤。",
-      "skill_type": "ATTACK",
-      "element": "NONE",
-      "source_type": "秘籍习得",
-      "source_gongfa": "折枝剑谱",
-      "required_realm": "",
-      "required_attributes": {},
-      "energy_cost": 2,
-      "mana_cost": 0,
-      "spirit_occupy": 0,
-      "required_equip_slot": 0,
-      "required_weapon_type": 1,
-      "target_type": 2,
-      "range_min": 1,
-      "range_max": 2,
-      "aoe_range": 0,
-      "can_target_empty": false,
-      "move_distance": 0,
-      "keywords": [],
-      "condition_type": "NONE",
-      "condition_value": "",
-      "momentum_condition_type": "",
-      "momentum_effect_params": "",
-      "flow_condition_type": "",
-      "flow_condition_params": [],
-      "counter_condition": "",
-      "base_damage": 3,
-      "damage_type": "physical",
-      "damage_formula": "",
-      "damage_bonuses": [
-        {
-          "attribute": "sword_proficiency",
-          "multiplier": 0.42
-        },
-        {
-          "attribute": "agility",
-          "multiplier": 0.2
-        },
-        {
-          "attribute": "physique",
-          "multiplier": 0.12
-        }
-      ],
-      "status_effects": [],
-      "special_effects": [
-        {
-          "effect": "gain_sword_intent",
-          "count": 1
-        },
-        {
-          "effect": "apply_sword_mark",
-          "count": 1
-        },
-        {
-          "effect": "bonus_damage_if_pre_mark",
-          "minimum": 2,
-          "multiplier": 0.2
-        },
-        {
-          "effect": "consume_marks_add_wound",
-          "marks": 2,
-          "wound": "外伤",
-          "destination": "discard"
-        }
-      ],
-      "stacks_formula": "",
-      "move_formula": ""
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "card",
       "id": "project_card_fde1a9b3",
       "projectSource": true,
       "skill_name": "偃月",
       "resource_path": "res://resources/activeskills/赤阳参同经/偃月.tres",
       "icon_path": "",
-      "description": "消耗至多20点血炉值；对指定1名敌方造成物理伤害：伤害 = round(8 + 体魄×0.45 + 体道造诣×0.30 + 实际消耗血炉值×0.70)。",
-      "skill_type": "ATTACK",
+      "description": "自身至少有2点血炉时可用；自动消耗当前血炉中至多20点的偶数点；每消耗2点获得身法1层，持续1回合。不造成伤害。",
+      "skill_type": "BUFF",
       "element": "NONE",
       "source_type": "秘籍习得",
       "source_gongfa": "赤阳参同经",
       "required_realm": "",
       "required_attributes": {},
-      "energy_cost": 2,
+      "energy_cost": 1,
       "mana_cost": 0,
       "spirit_occupy": 0,
       "required_equip_slot": -1,
       "required_weapon_type": 0,
-      "target_type": 2,
+      "target_type": 1,
       "range_min": 0,
       "range_max": 0,
       "aoe_range": 0,
       "can_target_empty": false,
       "move_distance": 0,
-      "keywords": [
-        "消耗"
-      ],
+      "keywords": [],
       "condition_type": "NONE",
       "condition_value": "",
       "momentum_condition_type": "",
@@ -4829,26 +3680,12 @@ select { appearance: auto; }
       "flow_condition_type": "",
       "flow_condition_params": [],
       "counter_condition": "",
-      "base_damage": 8,
+      "base_damage": 0,
       "damage_type": "physical",
-      "damage_formula": "round(8 + 体魄×0.45 + 体道造诣×0.30 + min(20, blood_furnace_value)×0.70)",
-      "damage_bonuses": [
-        {
-          "attribute": "physique",
-          "multiplier": 0.45
-        },
-        {
-          "attribute": "body_proficiency",
-          "multiplier": 0.3
-        }
-      ],
+      "damage_formula": "",
+      "damage_bonuses": [],
       "status_effects": [],
-      "special_effects": [
-        {
-          "effect": "spend_blood_furnace",
-          "count": 20
-        }
-      ],
+      "special_effects": [],
       "stacks_formula": "",
       "move_formula": ""
     },
@@ -4859,8 +3696,8 @@ select { appearance: auto; }
       "projectSource": true,
       "skill_name": "养息",
       "resource_path": "res://resources/activeskills/养息.tres",
-      "icon_path": "res://textures/cards/expressive_ink/yangxi_ink_v4.png",
-      "description": "调匀呼吸，获得1点精力。本场消耗。",
+      "icon_path": "res://textures/ui/combat/skill_icons/凡俗_养息_v1.png",
+      "description": "准备完成时调匀呼吸，获得1点精力。本场消耗。",
       "skill_type": "SPECIAL",
       "element": "NONE",
       "source_type": "基础通用",
@@ -4911,19 +3748,19 @@ select { appearance: auto; }
       "skill_name": "阴符应物",
       "resource_path": "res://resources/activeskills/阴符应物经/阴符应物.tres",
       "icon_path": "",
-      "description": "获得【阴符应物】（唯一Buff，持续至本场战斗结束）。【阴符应物】：自身以【化解】应对敌方攻击时，每完整抵消4点该次攻击伤害，获得借力1层。\n主修额外追加：改为每完整抵消3点该次攻击伤害，获得借力1层。",
+      "description": "本心法由当前主修或辅修秘籍自动提供；战斗开始时作为常驻被动显示于Buff栏，持续至战斗结束。以化解应对攻击时，每完整抵消4点该次攻击伤害，获得借力1层。主修额外追加：改为每完整抵消3点获得借力1层。",
       "skill_type": "POWER",
       "element": "NONE",
       "source_type": "秘籍习得",
       "source_gongfa": "阴符应物经",
       "required_realm": "",
       "required_attributes": {},
-      "energy_cost": 1,
+      "energy_cost": 0,
       "mana_cost": 0,
       "spirit_occupy": 0,
       "required_equip_slot": -1,
       "required_weapon_type": 0,
-      "target_type": 1,
+      "target_type": 0,
       "range_min": 0,
       "range_max": 0,
       "aoe_range": 0,
@@ -5003,7 +3840,7 @@ select { appearance: auto; }
       "projectSource": true,
       "skill_name": "应敌",
       "resource_path": "res://resources/activeskills/应敌.tres",
-      "icon_path": "res://textures/cards/expressive_ink/yingdi_ink_v4.png",
+      "icon_path": "res://textures/ui/combat/skill_icons/凡俗_应敌_v1.png",
       "description": "以最朴素的步势迎敌，造成基础近身伤害。",
       "skill_type": "ATTACK",
       "element": "NONE",
@@ -5107,7 +3944,7 @@ select { appearance: auto; }
       "skill_name": "游身架招",
       "resource_path": "res://resources/activeskills/妖兽/林地凶狼/游身架招.tres",
       "icon_path": "",
-      "description": "敌方物理攻击自身时自动打出。化解层数 = 2 + floor(敏捷/4)。",
+      "description": "准备完成后持招；敌方物理攻击自身时自动打出。化解层数 = 2 + floor(敏捷/4)。",
       "skill_type": "BUFF",
       "element": "NONE",
       "source_type": "妖兽",
@@ -5203,223 +4040,12 @@ select { appearance: auto; }
     {
       "schemaVersion": 1,
       "kind": "card",
-      "id": "project_card_b51cdfd5",
-      "projectSource": true,
-      "skill_name": "照痕养锋",
-      "resource_path": "res://resources/activeskills/折枝剑谱/照痕养锋.tres",
-      "icon_path": "",
-      "description": "照痕养锋，静候再发。场上存在带有剑痕的敌人时获得1层剑意，并使本回合下一张折枝攻击额外施加1层剑痕；场上没有剑痕时额外恢复4点精力。",
-      "skill_type": "SPECIAL",
-      "element": "NONE",
-      "source_type": "秘籍习得",
-      "source_gongfa": "折枝剑谱",
-      "required_realm": "",
-      "required_attributes": {},
-      "energy_cost": 1,
-      "mana_cost": 0,
-      "spirit_occupy": 0,
-      "required_equip_slot": 0,
-      "required_weapon_type": 1,
-      "target_type": 1,
-      "range_min": 0,
-      "range_max": 0,
-      "aoe_range": 0,
-      "can_target_empty": false,
-      "move_distance": 0,
-      "keywords": [
-        "消耗"
-      ],
-      "condition_type": "NONE",
-      "condition_value": "",
-      "momentum_condition_type": "",
-      "momentum_effect_params": "",
-      "flow_condition_type": "",
-      "flow_condition_params": [],
-      "counter_condition": "",
-      "base_damage": 0,
-      "damage_type": "physical",
-      "damage_formula": "",
-      "damage_bonuses": [],
-      "status_effects": [],
-      "special_effects": [
-        {
-          "effect": "restore_stamina",
-          "formula": "base:10;sword_proficiency:0.28;physique:0.10"
-        },
-        {
-          "effect": "gain_intent_and_prime_mark_if_marked_enemy",
-          "intent": 1,
-          "mark": 1
-        },
-        {
-          "effect": "restore_stamina_if_no_marked_enemy",
-          "amount": 4
-        }
-      ],
-      "stacks_formula": "",
-      "move_formula": ""
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "card",
-      "id": "project_card_7c83c918",
-      "projectSource": true,
-      "skill_name": "照形",
-      "resource_path": "res://resources/activeskills/明微抱元经/照形.tres",
-      "icon_path": "",
-      "description": "照见其形，直探其魂。造成神魂伤害，并在目标身上留下自身来源的照痕。",
-      "skill_type": "ATTACK",
-      "element": "NONE",
-      "source_type": "秘籍习得",
-      "source_gongfa": "明微抱元经",
-      "required_realm": "",
-      "required_attributes": {},
-      "energy_cost": 1,
-      "mana_cost": 3,
-      "spirit_occupy": 0,
-      "required_equip_slot": -1,
-      "required_weapon_type": 0,
-      "target_type": 2,
-      "range_min": 1,
-      "range_max": 3,
-      "aoe_range": 0,
-      "can_target_empty": false,
-      "move_distance": 0,
-      "keywords": [],
-      "condition_type": "NONE",
-      "condition_value": "",
-      "momentum_condition_type": "",
-      "momentum_effect_params": "",
-      "flow_condition_type": "",
-      "flow_condition_params": [],
-      "counter_condition": "",
-      "base_damage": 6,
-      "damage_type": "soul",
-      "damage_formula": "",
-      "damage_bonuses": [],
-      "status_effects": [
-        {
-          "status_id": "照痕",
-          "stacks": 1,
-          "hit_formula": "1.0"
-        }
-      ],
-      "special_effects": [],
-      "stacks_formula": "",
-      "move_formula": ""
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "card",
-      "id": "project_card_9d77b70d",
-      "projectSource": true,
-      "skill_name": "折枝·断势",
-      "resource_path": "res://resources/activeskills/折枝剑谱/折枝·断势.tres",
-      "icon_path": "",
-      "description": "折枝断势，先夺其形。进入折枝剑势；下一回合起每回合消耗1层剑意维持。处于剑势时，每次成功消耗剑痕并加入外伤，额外施加1层折损。",
-      "skill_type": "POWER",
-      "element": "NONE",
-      "source_type": "秘籍习得",
-      "source_gongfa": "折枝剑谱",
-      "required_realm": "",
-      "required_attributes": {},
-      "energy_cost": 1,
-      "mana_cost": 0,
-      "spirit_occupy": 0,
-      "required_equip_slot": 0,
-      "required_weapon_type": 1,
-      "target_type": 1,
-      "range_min": 0,
-      "range_max": 0,
-      "aoe_range": 0,
-      "can_target_empty": false,
-      "move_distance": 0,
-      "keywords": [],
-      "condition_type": "NONE",
-      "condition_value": "",
-      "momentum_condition_type": "",
-      "momentum_effect_params": "",
-      "flow_condition_type": "",
-      "flow_condition_params": [],
-      "counter_condition": "",
-      "base_damage": 0,
-      "damage_type": "physical",
-      "damage_formula": "",
-      "damage_bonuses": [],
-      "status_effects": [],
-      "special_effects": [
-        {
-          "effect": "enter_sword_stance",
-          "stance_id": "折枝剑势",
-          "sub_intent": 1,
-          "main_intent": 2,
-          "upkeep_intent": 1,
-          "upkeep_starts_next_turn": true
-        }
-      ],
-      "stacks_formula": "",
-      "move_formula": ""
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "card",
-      "id": "project_card_034b59c2",
-      "projectSource": true,
-      "skill_name": "折枝寻隙",
-      "resource_path": "res://resources/activeskills/折枝剑谱/折步寻隙.tres",
-      "icon_path": "",
-      "description": "折枝寻隙，压身递剑。不再进行位移；获得2层身法，借空隙避开下一次来攻。",
-      "skill_type": "BUFF",
-      "element": "NONE",
-      "source_type": "秘籍习得",
-      "source_gongfa": "折枝剑谱",
-      "required_realm": "",
-      "required_attributes": {},
-      "energy_cost": 2,
-      "mana_cost": 0,
-      "spirit_occupy": 0,
-      "required_equip_slot": 0,
-      "required_weapon_type": 1,
-      "target_type": 0,
-      "range_min": 0,
-      "range_max": 0,
-      "aoe_range": 0,
-      "can_target_empty": false,
-      "move_distance": 0,
-      "keywords": [
-        "消耗"
-      ],
-      "condition_type": "NONE",
-      "condition_value": "",
-      "momentum_condition_type": "",
-      "momentum_effect_params": "",
-      "flow_condition_type": "",
-      "flow_condition_params": [],
-      "counter_condition": "",
-      "base_damage": 0,
-      "damage_type": "physical",
-      "damage_formula": "",
-      "damage_bonuses": [],
-      "status_effects": [
-        {
-          "status_id": "身法",
-          "stacks": 2,
-          "hit_formula": "1.0"
-        }
-      ],
-      "special_effects": [],
-      "stacks_formula": "",
-      "move_formula": ""
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "card",
       "id": "project_card_957ec97d",
       "projectSource": true,
       "skill_name": "周行",
       "resource_path": "res://resources/activeskills/黄庭养形篇/周行.tres",
       "icon_path": "",
-      "description": "获得气血1层；若本回合已主动使气血下降，抽牌1张。",
+      "description": "获得气血1层；若本场已主动使气血下降，获得身法1层。",
       "skill_type": "DRAW",
       "element": "NONE",
       "source_type": "秘籍习得",
@@ -5454,10 +4080,6 @@ select { appearance: auto; }
         {
           "effect": "gain_qi_blood",
           "count": 1
-        },
-        {
-          "effect": "draw",
-          "count": 1
         }
       ],
       "stacks_formula": "",
@@ -5471,27 +4093,25 @@ select { appearance: auto; }
       "skill_name": "朱明",
       "resource_path": "res://resources/activeskills/赤阳参同经/朱明.tres",
       "icon_path": "",
-      "description": "消耗全部血炉值；对指定1名敌方造成物理伤害：伤害 = round(12 + 体魄×0.60 + 体道造诣×0.40 + 实际消耗血炉值×1.00)。",
-      "skill_type": "ATTACK",
+      "description": "第四卷化法已并入撼山；此旧资源不再提供独立攻伐。",
+      "skill_type": "CURSE",
       "element": "NONE",
       "source_type": "秘籍习得",
       "source_gongfa": "赤阳参同经",
       "required_realm": "",
       "required_attributes": {},
-      "energy_cost": 3,
+      "energy_cost": 0,
       "mana_cost": 0,
       "spirit_occupy": 0,
       "required_equip_slot": -1,
       "required_weapon_type": 0,
-      "target_type": 2,
+      "target_type": 0,
       "range_min": 0,
       "range_max": 0,
       "aoe_range": 0,
       "can_target_empty": false,
       "move_distance": 0,
-      "keywords": [
-        "消耗"
-      ],
+      "keywords": [],
       "condition_type": "NONE",
       "condition_value": "",
       "momentum_condition_type": "",
@@ -5499,19 +4119,10 @@ select { appearance: auto; }
       "flow_condition_type": "",
       "flow_condition_params": [],
       "counter_condition": "",
-      "base_damage": 12,
+      "base_damage": 0,
       "damage_type": "physical",
-      "damage_formula": "round(12 + 体魄×0.60 + 体道造诣×0.40 + blood_furnace_value×1.00)",
-      "damage_bonuses": [
-        {
-          "attribute": "physique",
-          "multiplier": 0.6
-        },
-        {
-          "attribute": "body_proficiency",
-          "multiplier": 0.4
-        }
-      ],
+      "damage_formula": "",
+      "damage_bonuses": [],
       "status_effects": [],
       "special_effects": [],
       "stacks_formula": "",
@@ -5560,7 +4171,7 @@ select { appearance: auto; }
       },
       "default_unlocked_chapter_count": 1,
       "granted_active_skills": [],
-      "heart_method_skill": "",
+      "heart_method_skill": "res://resources/activeskills/补虚行血诀/补虚行血.tres",
       "sub_heart_method_skill": "",
       "main_heart_method_skill": "",
       "general_breakthrough_multipliers": {},
@@ -5594,7 +4205,6 @@ select { appearance: auto; }
           "main_naqi_bonuses": {},
           "main_naqi_multipliers": {},
           "learned_active_skills": [
-            "res://resources/activeskills/补虚行血诀/补虚行血.tres",
             "res://resources/activeskills/补虚行血诀/还阳.tres"
           ],
           "main_learned_active_skills": [],
@@ -5707,146 +4317,6 @@ select { appearance: auto; }
     {
       "schemaVersion": 1,
       "kind": "manual",
-      "id": "project_manual_d5f0f205",
-      "projectSource": true,
-      "gongfa_name": "藏锋卸力诀",
-      "resource_path": "res://resources/gongfa/藏锋卸力诀.tres",
-      "description": "仅可辅修的守御剑诀。通过化解、护盾和借力降低高消耗剑招的使用压力。",
-      "wuxing": "ALL",
-      "wuxing_requirement_mode": "OR",
-      "required_realm": "",
-      "required_study_progress": 64,
-      "required_attributes": {
-        "physique": 8,
-        "sword_proficiency": 8
-      },
-      "can_be_main": false,
-      "can_be_sub": true,
-      "bearing_compatibility": [
-        1
-      ],
-      "school_tags": [
-        "sword"
-      ],
-      "cross_bearing_policy": "NONE",
-      "main_realm_start": "",
-      "main_realm_end": "",
-      "sub_realm_start": "",
-      "sub_realm_end": "",
-      "learn_permanent_bonuses": {},
-      "learn_permanent_multipliers": {},
-      "passive_bonuses": {},
-      "passive_multipliers": {},
-      "body_nourish_rate_per_day": 0.8,
-      "body_nourish_weights": {
-        "skin": 0.3,
-        "sinew": 0.2,
-        "bone": 0.2,
-        "blood": 0.1,
-        "viscera": 0.1,
-        "heart": 0.1
-      },
-      "default_unlocked_chapter_count": 1,
-      "granted_active_skills": [],
-      "heart_method_skill": "",
-      "sub_heart_method_skill": "",
-      "main_heart_method_skill": "",
-      "general_breakthrough_multipliers": {},
-      "general_breakthrough_fixed": {},
-      "chapters": [
-        {
-          "chapter_id": "xie_feng",
-          "chapter_name": "卸锋卷",
-          "description": "受到攻击时化解伤害，并把防守转为下一次剑术攻击的减耗和精准。",
-          "order": 1,
-          "required_study_progress": 64,
-          "required_realm": "",
-          "required_attributes": {
-            "physique": 8,
-            "sword_proficiency": 8
-          },
-          "required_chapter_ids": [],
-          "allowed_bearings": [],
-          "requires_main_slot": false,
-          "left_branch_name": "淬炼",
-          "right_branch_name": "化法",
-          "learn_permanent_bonuses": {},
-          "learn_permanent_multipliers": {},
-          "naqi_bonuses": {
-            "crit_resist": 4,
-            "physical_defense": 2
-          },
-          "naqi_multipliers": {},
-          "main_naqi_bonuses": {},
-          "main_naqi_multipliers": {},
-          "learned_active_skills": [
-            "res://csharp/gongfa/ActiveSkillData.cs",
-            "res://resources/activeskills/藏锋卸力诀/横剑卸劲.tres",
-            "res://resources/activeskills/藏锋卸力诀/借力还锋.tres"
-          ],
-          "main_learned_active_skills": [],
-          "sub_deck_rewrites": [
-            {
-              "enabled": true,
-              "mode": "REPLACE",
-              "count": 1,
-              "source_skill_path": "",
-              "source_skill_name": "格剑",
-              "result_skill_path": "res://resources/activeskills/藏锋卸力诀/横剑卸劲.tres",
-              "main_result_skill_path": ""
-            }
-          ],
-          "main_deck_rewrites": []
-        },
-        {
-          "chapter_id": "shou_zhong",
-          "chapter_name": "守中卷",
-          "description": "以护盾守住敌方攻势，并在下一回合获得剑意。",
-          "order": 2,
-          "required_study_progress": 96,
-          "required_realm": "",
-          "required_attributes": {
-            "physique": 12,
-            "sword_proficiency": 12
-          },
-          "required_chapter_ids": [
-            "xie_feng",
-            "4",
-            "7"
-          ],
-          "allowed_bearings": [],
-          "requires_main_slot": false,
-          "left_branch_name": "淬炼",
-          "right_branch_name": "化法",
-          "learn_permanent_bonuses": {},
-          "learn_permanent_multipliers": {},
-          "naqi_bonuses": {
-            "crit_resist": 4,
-            "precision": 2
-          },
-          "naqi_multipliers": {},
-          "main_naqi_bonuses": {},
-          "main_naqi_multipliers": {},
-          "learned_active_skills": [],
-          "main_learned_active_skills": [],
-          "sub_deck_rewrites": [
-            {
-              "enabled": true,
-              "mode": "ADD",
-              "count": 1,
-              "source_skill_path": "",
-              "source_skill_name": "",
-              "result_skill_path": "res://resources/activeskills/藏锋卸力诀/藏锋待发.tres",
-              "main_result_skill_path": ""
-            }
-          ],
-          "main_deck_rewrites": []
-        }
-      ]
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "manual",
       "id": "project_manual_e1a447d9",
       "projectSource": true,
       "gongfa_name": "乘物游骸真经",
@@ -5885,7 +4355,7 @@ select { appearance: auto; }
       },
       "default_unlocked_chapter_count": 1,
       "granted_active_skills": [],
-      "heart_method_skill": "",
+      "heart_method_skill": "res://resources/activeskills/乘物游骸真经/乘物游骸.tres",
       "sub_heart_method_skill": "",
       "main_heart_method_skill": "",
       "general_breakthrough_multipliers": {},
@@ -5922,7 +4392,6 @@ select { appearance: auto; }
           "main_naqi_bonuses": {},
           "main_naqi_multipliers": {},
           "learned_active_skills": [
-            "res://resources/activeskills/乘物游骸真经/乘物游骸.tres",
             "res://resources/activeskills/乘物游骸真经/蜕形.tres"
           ],
           "main_learned_active_skills": [],
@@ -6089,7 +4558,7 @@ select { appearance: auto; }
       },
       "default_unlocked_chapter_count": 1,
       "granted_active_skills": [],
-      "heart_method_skill": "",
+      "heart_method_skill": "res://resources/activeskills/赤阳参同经/赤阳参同.tres",
       "sub_heart_method_skill": "",
       "main_heart_method_skill": "",
       "general_breakthrough_multipliers": {},
@@ -6126,11 +4595,20 @@ select { appearance: auto; }
           "main_naqi_bonuses": {},
           "main_naqi_multipliers": {},
           "learned_active_skills": [
-            "res://resources/activeskills/赤阳参同经/赤阳参同.tres",
             "res://resources/activeskills/赤阳参同经/伏火.tres"
           ],
           "main_learned_active_skills": [],
-          "sub_deck_rewrites": [],
+          "sub_deck_rewrites": [
+            {
+              "enabled": true,
+              "mode": "REPLACE",
+              "count": 1,
+              "source_skill_path": "",
+              "source_skill_name": "平息",
+              "result_skill_path": "res://resources/activeskills/赤阳参同经/化法/平息.tres",
+              "main_result_skill_path": ""
+            }
+          ],
           "main_deck_rewrites": []
         },
         {
@@ -6164,9 +4642,21 @@ select { appearance: auto; }
           "naqi_multipliers": {},
           "main_naqi_bonuses": {},
           "main_naqi_multipliers": {},
-          "learned_active_skills": [],
+          "learned_active_skills": [
+            "res://resources/activeskills/赤阳参同经/大冶.tres"
+          ],
           "main_learned_active_skills": [],
-          "sub_deck_rewrites": [],
+          "sub_deck_rewrites": [
+            {
+              "enabled": true,
+              "mode": "REPLACE",
+              "count": 1,
+              "source_skill_path": "",
+              "source_skill_name": "卸力",
+              "result_skill_path": "res://resources/activeskills/赤阳参同经/化法/卸力.tres",
+              "main_result_skill_path": ""
+            }
+          ],
           "main_deck_rewrites": []
         },
         {
@@ -6203,7 +4693,17 @@ select { appearance: auto; }
             "res://resources/activeskills/赤阳参同经/偃月.tres"
           ],
           "main_learned_active_skills": [],
-          "sub_deck_rewrites": [],
+          "sub_deck_rewrites": [
+            {
+              "enabled": true,
+              "mode": "REPLACE",
+              "count": 1,
+              "source_skill_path": "",
+              "source_skill_name": "发劲",
+              "result_skill_path": "res://resources/activeskills/赤阳参同经/化法/发劲.tres",
+              "main_result_skill_path": ""
+            }
+          ],
           "main_deck_rewrites": []
         },
         {
@@ -6236,11 +4736,19 @@ select { appearance: auto; }
           "naqi_multipliers": {},
           "main_naqi_bonuses": {},
           "main_naqi_multipliers": {},
-          "learned_active_skills": [
-            "res://resources/activeskills/赤阳参同经/朱明.tres"
-          ],
+          "learned_active_skills": [],
           "main_learned_active_skills": [],
-          "sub_deck_rewrites": [],
+          "sub_deck_rewrites": [
+            {
+              "enabled": true,
+              "mode": "REPLACE",
+              "count": 1,
+              "source_skill_path": "",
+              "source_skill_name": "撼山",
+              "result_skill_path": "res://resources/activeskills/赤阳参同经/化法/撼山.tres",
+              "main_result_skill_path": ""
+            }
+          ],
           "main_deck_rewrites": []
         }
       ]
@@ -6252,7 +4760,7 @@ select { appearance: auto; }
       "projectSource": true,
       "gongfa_name": "黄庭养形篇",
       "resource_path": "res://resources/gongfa/黄庭养形篇.tres",
-      "description": "锻躯主修法。以主动气血回落换取手牌与精力，再催血续接循环。",
+      "description": "锻躯主修法。以主动气血回落换取身法与精力，再催血续接循环。",
       "wuxing": "NONE",
       "wuxing_requirement_mode": "OR",
       "required_realm": "",
@@ -6286,7 +4794,7 @@ select { appearance: auto; }
       },
       "default_unlocked_chapter_count": 1,
       "granted_active_skills": [],
-      "heart_method_skill": "",
+      "heart_method_skill": "res://resources/activeskills/黄庭养形篇/黄庭养形.tres",
       "sub_heart_method_skill": "",
       "main_heart_method_skill": "",
       "general_breakthrough_multipliers": {},
@@ -6295,7 +4803,7 @@ select { appearance: auto; }
         {
           "chapter_id": "shou_zhong",
           "chapter_name": "守中",
-          "description": "立黄庭之基，建立主动回落气血的手牌循环。",
+          "description": "立黄庭之基，以主动气血回落触发身法与精力，再以催血续接循环。",
           "order": 1,
           "required_study_progress": 24,
           "required_realm": "",
@@ -6322,7 +4830,6 @@ select { appearance: auto; }
           "main_naqi_bonuses": {},
           "main_naqi_multipliers": {},
           "learned_active_skills": [
-            "res://resources/activeskills/黄庭养形篇/黄庭养形.tres",
             "res://resources/activeskills/黄庭养形篇/返照.tres"
           ],
           "main_learned_active_skills": [],
@@ -6445,145 +4952,11 @@ select { appearance: auto; }
     {
       "schemaVersion": 1,
       "kind": "manual",
-      "id": "project_manual_7244d3cf",
-      "projectSource": true,
-      "gongfa_name": "惊鸿掠影谱",
-      "resource_path": "res://resources/gongfa/惊鸿掠影谱.tres",
-      "description": "仅可辅修的身法剑谱。以剑后换位、步后再剑为主要打法。",
-      "wuxing": "ALL",
-      "wuxing_requirement_mode": "OR",
-      "required_realm": "",
-      "required_study_progress": 48,
-      "required_attributes": {
-        "agility": 5,
-        "sword_proficiency": 6
-      },
-      "can_be_main": false,
-      "can_be_sub": true,
-      "bearing_compatibility": [
-        2
-      ],
-      "school_tags": [
-        "sword",
-        "movement"
-      ],
-      "cross_bearing_policy": "NONE",
-      "main_realm_start": "",
-      "main_realm_end": "",
-      "sub_realm_start": "",
-      "sub_realm_end": "",
-      "learn_permanent_bonuses": {},
-      "learn_permanent_multipliers": {},
-      "passive_bonuses": {},
-      "passive_multipliers": {},
-      "body_nourish_rate_per_day": 0.8,
-      "body_nourish_weights": {},
-      "default_unlocked_chapter_count": 1,
-      "granted_active_skills": [],
-      "heart_method_skill": "",
-      "sub_heart_method_skill": "",
-      "main_heart_method_skill": "",
-      "general_breakthrough_multipliers": {},
-      "general_breakthrough_fixed": {},
-      "chapters": [
-        {
-          "chapter_id": "jing_hong",
-          "chapter_name": "惊鸿卷",
-          "description": "剑后换位，步后再剑。",
-          "order": 1,
-          "required_study_progress": 48,
-          "required_realm": "",
-          "required_attributes": {
-            "agility": 5,
-            "sword_proficiency": 6
-          },
-          "required_chapter_ids": [],
-          "allowed_bearings": [],
-          "requires_main_slot": false,
-          "left_branch_name": "淬炼",
-          "right_branch_name": "化法",
-          "learn_permanent_bonuses": {},
-          "learn_permanent_multipliers": {},
-          "naqi_bonuses": {
-            "precision": 3,
-            "initiative_speed": 3
-          },
-          "naqi_multipliers": {},
-          "main_naqi_bonuses": {},
-          "main_naqi_multipliers": {},
-          "learned_active_skills": [
-            "res://csharp/gongfa/ActiveSkillData.cs",
-            "res://resources/activeskills/惊鸿掠影谱/惊鸿掠步.tres",
-            "res://resources/activeskills/惊鸿掠影谱/回身点锋.tres"
-          ],
-          "main_learned_active_skills": [],
-          "sub_deck_rewrites": [
-            {
-              "enabled": true,
-              "mode": "REPLACE",
-              "count": 1,
-              "source_skill_path": "res://resources/activeskills/避锋.tres",
-              "source_skill_name": "避锋",
-              "result_skill_path": "res://resources/activeskills/惊鸿掠影谱/惊鸿掠步.tres",
-              "main_result_skill_path": ""
-            }
-          ],
-          "main_deck_rewrites": []
-        },
-        {
-          "chapter_id": "fan_ying",
-          "chapter_name": "返影卷",
-          "description": "出剑命中后，为下一次遁身降低精力消耗。",
-          "order": 2,
-          "required_study_progress": 72,
-          "required_realm": "",
-          "required_attributes": {
-            "agility": 8,
-            "sword_proficiency": 10
-          },
-          "required_chapter_ids": [
-            "jing_hong",
-            "4",
-            "8"
-          ],
-          "allowed_bearings": [],
-          "requires_main_slot": false,
-          "left_branch_name": "淬炼",
-          "right_branch_name": "化法",
-          "learn_permanent_bonuses": {},
-          "learn_permanent_multipliers": {},
-          "naqi_bonuses": {
-            "initiative_speed": 3,
-            "critical": 2
-          },
-          "naqi_multipliers": {},
-          "main_naqi_bonuses": {},
-          "main_naqi_multipliers": {},
-          "learned_active_skills": [],
-          "main_learned_active_skills": [],
-          "sub_deck_rewrites": [
-            {
-              "enabled": true,
-              "mode": "ADD",
-              "count": 1,
-              "source_skill_path": "",
-              "source_skill_name": "",
-              "result_skill_path": "res://resources/activeskills/惊鸿掠影谱/身随剑转.tres",
-              "main_result_skill_path": ""
-            }
-          ],
-          "main_deck_rewrites": []
-        }
-      ]
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "manual",
       "id": "project_manual_fade1228",
       "projectSource": true,
       "gongfa_name": "灵枢经筋篇",
       "resource_path": "res://resources/gongfa/灵枢经筋篇.tres",
-      "description": "伤势业障牌的消耗与借力构筑。",
+      "description": "消耗内外伤状态并转化为借力、回复与攻伐收益。",
       "wuxing": "NONE",
       "wuxing_requirement_mode": "OR",
       "required_realm": "",
@@ -6617,7 +4990,7 @@ select { appearance: auto; }
       },
       "default_unlocked_chapter_count": 1,
       "granted_active_skills": [],
-      "heart_method_skill": "",
+      "heart_method_skill": "res://resources/activeskills/灵枢经筋篇/灵枢经筋.tres",
       "sub_heart_method_skill": "",
       "main_heart_method_skill": "",
       "general_breakthrough_multipliers": {},
@@ -6652,7 +5025,6 @@ select { appearance: auto; }
           "main_naqi_bonuses": {},
           "main_naqi_multipliers": {},
           "learned_active_skills": [
-            "res://resources/activeskills/灵枢经筋篇/灵枢经筋.tres",
             "res://resources/activeskills/灵枢经筋篇/去故.tres"
           ],
           "main_learned_active_skills": [],
@@ -6763,192 +5135,11 @@ select { appearance: auto; }
     {
       "schemaVersion": 1,
       "kind": "manual",
-      "id": "project_manual_07a9397d",
-      "projectSource": true,
-      "gongfa_name": "明微抱元经",
-      "resource_path": "res://resources/gongfa/明微抱元经.tres",
-      "description": "通用主修根本法。以自身来源的照痕定标、定影锁魂、见隙破抗、烛微收束为主的神魂攻杀法门。",
-      "wuxing": "ALL",
-      "wuxing_requirement_mode": "OR",
-      "required_realm": "",
-      "required_study_progress": 8,
-      "required_attributes": {},
-      "can_be_main": true,
-      "can_be_sub": false,
-      "bearing_compatibility": [
-        3
-      ],
-      "school_tags": [
-        "soul"
-      ],
-      "cross_bearing_policy": "NONE",
-      "main_realm_start": "凡人",
-      "main_realm_end": "",
-      "sub_realm_start": "",
-      "sub_realm_end": "",
-      "learn_permanent_bonuses": {},
-      "learn_permanent_multipliers": {},
-      "passive_bonuses": {},
-      "passive_multipliers": {},
-      "body_nourish_rate_per_day": 0.8,
-      "body_nourish_weights": {},
-      "default_unlocked_chapter_count": 1,
-      "granted_active_skills": [],
-      "heart_method_skill": "",
-      "sub_heart_method_skill": "",
-      "main_heart_method_skill": "",
-      "general_breakthrough_multipliers": {},
-      "general_breakthrough_fixed": {},
-      "chapters": [
-        {
-          "chapter_id": "zhao_xing",
-          "chapter_name": "照形篇",
-          "description": "先照其形，再察其魂。以神魂攻势在目标身上留下自身来源的照痕，为后续返照、定影与烛微收束奠基。",
-          "order": 1,
-          "required_study_progress": 24,
-          "required_realm": "",
-          "required_attributes": {
-            "soul": 5,
-            "intelligence": 4
-          },
-          "required_chapter_ids": [],
-          "allowed_bearings": [
-            0,
-            3
-          ],
-          "requires_main_slot": false,
-          "left_branch_name": "淬炼",
-          "right_branch_name": "化法",
-          "learn_permanent_bonuses": {},
-          "learn_permanent_multipliers": {},
-          "naqi_bonuses": {},
-          "naqi_multipliers": {},
-          "main_naqi_bonuses": {},
-          "main_naqi_multipliers": {
-            "cultivation_rate": 0.15,
-            "mind_regen_rate": 0.15
-          },
-          "learned_active_skills": [
-            "res://csharp/gongfa/ActiveSkillData.cs",
-            "res://resources/activeskills/明微抱元经/抱元观微.tres",
-            "res://resources/activeskills/明微抱元经/照形.tres",
-            "res://resources/activeskills/明微抱元经/留痕.tres"
-          ],
-          "main_learned_active_skills": [],
-          "sub_deck_rewrites": [],
-          "main_deck_rewrites": []
-        },
-        {
-          "chapter_id": "fan_zhao",
-          "chapter_name": "返照篇",
-          "description": "返其来势，反震其魂。趁自身施加的照痕未散，转守为攻。",
-          "order": 2,
-          "required_study_progress": 48,
-          "required_realm": "云息三层",
-          "required_attributes": {
-            "soul": 7,
-            "intelligence": 5
-          },
-          "required_chapter_ids": [
-            "zhao_xing"
-          ],
-          "allowed_bearings": [
-            3
-          ],
-          "requires_main_slot": false,
-          "left_branch_name": "淬炼",
-          "right_branch_name": "化法",
-          "learn_permanent_bonuses": {},
-          "learn_permanent_multipliers": {},
-          "naqi_bonuses": {},
-          "naqi_multipliers": {},
-          "main_naqi_bonuses": {},
-          "main_naqi_multipliers": {
-            "cultivation_rate": 0.15,
-            "mana_regen_rate": 0.15
-          },
-          "learned_active_skills": [],
-          "main_learned_active_skills": [],
-          "sub_deck_rewrites": [],
-          "main_deck_rewrites": []
-        },
-        {
-          "chapter_id": "ding_ying",
-          "chapter_name": "定影篇",
-          "description": "三痕既成，形影可定。以锁魂窗口放大神魂攻杀。",
-          "order": 3,
-          "required_study_progress": 84,
-          "required_realm": "云息六层",
-          "required_attributes": {
-            "soul": 9,
-            "intelligence": 7
-          },
-          "required_chapter_ids": [
-            "fan_zhao"
-          ],
-          "allowed_bearings": [
-            3
-          ],
-          "requires_main_slot": false,
-          "left_branch_name": "淬炼",
-          "right_branch_name": "化法",
-          "learn_permanent_bonuses": {},
-          "learn_permanent_multipliers": {},
-          "naqi_bonuses": {},
-          "naqi_multipliers": {},
-          "main_naqi_bonuses": {},
-          "main_naqi_multipliers": {
-            "cultivation_rate": 0.18,
-            "mind_regen_rate": 0.18
-          },
-          "learned_active_skills": [],
-          "main_learned_active_skills": [],
-          "sub_deck_rewrites": [],
-          "main_deck_rewrites": []
-        },
-        {
-          "chapter_id": "zhu_wei",
-          "chapter_name": "烛微篇",
-          "description": "烛照幽微，直指神魂。定影之后破其魂隙，以高额神魂伤害收束。",
-          "order": 4,
-          "required_study_progress": 128,
-          "required_realm": "云息九层",
-          "required_attributes": {
-            "soul": 10,
-            "intelligence": 9
-          },
-          "required_chapter_ids": [
-            "ding_ying"
-          ],
-          "allowed_bearings": [
-            3
-          ],
-          "requires_main_slot": false,
-          "left_branch_name": "淬炼",
-          "right_branch_name": "化法",
-          "learn_permanent_bonuses": {},
-          "learn_permanent_multipliers": {},
-          "naqi_bonuses": {},
-          "naqi_multipliers": {},
-          "main_naqi_bonuses": {},
-          "main_naqi_multipliers": {
-            "cultivation_rate": 0.22
-          },
-          "learned_active_skills": [],
-          "main_learned_active_skills": [],
-          "sub_deck_rewrites": [],
-          "main_deck_rewrites": []
-        }
-      ]
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "manual",
       "id": "project_manual_dfba1bac",
       "projectSource": true,
       "gongfa_name": "内景损益篇",
       "resource_path": "res://resources/gongfa/内景损益篇.tres",
-      "description": "以伤势业障为代价并从中取得持续物理增伤的锻躯法门。",
+      "description": "读取当前内外伤层数，把伤势转为锻躯攻伐与承受物理冲击的收益。",
       "wuxing": "NONE",
       "wuxing_requirement_mode": "OR",
       "required_realm": "",
@@ -6982,7 +5173,7 @@ select { appearance: auto; }
       },
       "default_unlocked_chapter_count": 1,
       "granted_active_skills": [],
-      "heart_method_skill": "",
+      "heart_method_skill": "res://resources/activeskills/内景损益篇/内景损益.tres",
       "sub_heart_method_skill": "",
       "main_heart_method_skill": "",
       "general_breakthrough_multipliers": {},
@@ -6991,7 +5182,7 @@ select { appearance: auto; }
         {
           "chapter_id": "neijing",
           "chapter_name": "内景",
-          "description": "读取牌堆伤势，以生命上限代价换取锻躯物理增伤。",
+          "description": "读取当前内伤与外伤层数，强化锻躯攻伐，并提高物理承伤能力。",
           "order": 1,
           "required_study_progress": 24,
           "required_realm": "",
@@ -7016,7 +5207,6 @@ select { appearance: auto; }
           "main_naqi_bonuses": {},
           "main_naqi_multipliers": {},
           "learned_active_skills": [
-            "res://resources/activeskills/内景损益篇/内景损益.tres",
             "res://resources/activeskills/内景损益篇/淬厉.tres"
           ],
           "main_learned_active_skills": [],
@@ -7026,7 +5216,7 @@ select { appearance: auto; }
         {
           "chapter_id": "lubo",
           "chapter_name": "履薄",
-          "description": "在受创中持续向弃牌堆积累伤势。",
+          "description": "在受创中持续积累外伤状态。",
           "order": 2,
           "required_study_progress": 48,
           "required_realm": "云息三层",
@@ -7059,7 +5249,7 @@ select { appearance: auto; }
         {
           "chapter_id": "sunyi",
           "chapter_name": "损益",
-          "description": "统一读取伤势数量，不拆分新的伤势资源。",
+          "description": "统一读取现有内伤与外伤层数，不拆分新的伤势资源；淬炼使伤势同时转为物理承伤收益。",
           "order": 3,
           "required_study_progress": 84,
           "required_realm": "云息六层",
@@ -7092,7 +5282,7 @@ select { appearance: auto; }
         {
           "chapter_id": "baihai",
           "chapter_name": "百骸",
-          "description": "按牌堆伤势数追加段数的多段攻伐。",
+          "description": "按当前内伤与外伤层数追加段数的多段攻伐。",
           "order": 4,
           "required_study_progress": 128,
           "required_realm": "云息九层",
@@ -7127,610 +5317,11 @@ select { appearance: auto; }
     {
       "schemaVersion": 1,
       "kind": "manual",
-      "id": "project_manual_defab905",
-      "projectSource": true,
-      "gongfa_name": "市井游身功",
-      "resource_path": "res://resources/gongfa/市井游身功.tres",
-      "description": "只能辅修的凡人身法。以翻滚换位、贴身追打、阴手干扰和受击脱身组成完整循环。",
-      "wuxing": "NONE",
-      "wuxing_requirement_mode": "OR",
-      "required_realm": "",
-      "required_study_progress": 32,
-      "required_attributes": {
-        "agility": 3,
-        "body_proficiency": 2
-      },
-      "can_be_main": false,
-      "can_be_sub": true,
-      "bearing_compatibility": [
-        1
-      ],
-      "school_tags": [
-        "movement",
-        "fist"
-      ],
-      "cross_bearing_policy": "NONE",
-      "main_realm_start": "",
-      "main_realm_end": "",
-      "sub_realm_start": "",
-      "sub_realm_end": "",
-      "learn_permanent_bonuses": {},
-      "learn_permanent_multipliers": {},
-      "passive_bonuses": {
-        "agility": 0.5,
-        "body_proficiency": 0.3,
-        "precision": "2.0.0"
-      },
-      "passive_multipliers": {},
-      "body_nourish_rate_per_day": 0.8,
-      "body_nourish_weights": {},
-      "default_unlocked_chapter_count": 1,
-      "granted_active_skills": [],
-      "heart_method_skill": "",
-      "sub_heart_method_skill": "",
-      "main_heart_method_skill": "",
-      "general_breakthrough_multipliers": {},
-      "general_breakthrough_fixed": {},
-      "chapters": [
-        {
-          "chapter_id": "hua_bu",
-          "chapter_name": "滑步卷",
-          "description": "练习低身翻滚与快速换位，先让脚下活起来。",
-          "order": 1,
-          "required_study_progress": 32,
-          "required_realm": "",
-          "required_attributes": {
-            "agility": "3.0.0",
-            "body_proficiency": "2.0.0",
-            "initiative_speed": 2
-          },
-          "required_chapter_ids": [],
-          "allowed_bearings": [],
-          "requires_main_slot": false,
-          "left_branch_name": "淬炼",
-          "right_branch_name": "化法",
-          "learn_permanent_bonuses": {},
-          "learn_permanent_multipliers": {},
-          "naqi_bonuses": {
-            "initiative_speed": 2
-          },
-          "naqi_multipliers": {},
-          "main_naqi_bonuses": {},
-          "main_naqi_multipliers": {},
-          "learned_active_skills": [],
-          "main_learned_active_skills": [],
-          "sub_deck_rewrites": [
-            {
-              "enabled": true,
-              "mode": "ADD",
-              "count": 1,
-              "source_skill_path": "",
-              "source_skill_name": "",
-              "result_skill_path": "res://resources/activeskills/市井游身功/滚地翻.tres",
-              "main_result_skill_path": ""
-            }
-          ],
-          "main_deck_rewrites": []
-        },
-        {
-          "chapter_id": "jie_li",
-          "chapter_name": "借力卷",
-          "description": "趁换位贴身时顶肘追打，把身法转成攻势。",
-          "order": 2,
-          "required_study_progress": 40,
-          "required_realm": "",
-          "required_attributes": {
-            "agility": 5,
-            "body_proficiency": 4
-          },
-          "required_chapter_ids": [
-            "hua_bu"
-          ],
-          "allowed_bearings": [],
-          "requires_main_slot": false,
-          "left_branch_name": "淬炼",
-          "right_branch_name": "化法",
-          "learn_permanent_bonuses": {
-            "agility": 0.25,
-            "body_proficiency": 0.15
-          },
-          "learn_permanent_multipliers": {},
-          "naqi_bonuses": {
-            "precision": 2,
-            "critical": 1
-          },
-          "naqi_multipliers": {},
-          "main_naqi_bonuses": {},
-          "main_naqi_multipliers": {},
-          "learned_active_skills": [
-            "res://csharp/gongfa/ActiveSkillData.cs",
-            "res://resources/activeskills/市井游身功/顶心肘.tres"
-          ],
-          "main_learned_active_skills": [],
-          "sub_deck_rewrites": [
-            {
-              "enabled": true,
-              "mode": "ADD",
-              "count": 1,
-              "source_skill_path": "",
-              "source_skill_name": "",
-              "result_skill_path": "res://resources/activeskills/市井游身功/顶心肘.tres",
-              "main_result_skill_path": ""
-            }
-          ],
-          "main_deck_rewrites": []
-        },
-        {
-          "chapter_id": "yin_shou",
-          "chapter_name": "阴手卷",
-          "description": "不与敌人正面硬拼，用石灰干扰视线与出手节奏。",
-          "order": 3,
-          "required_study_progress": 48,
-          "required_realm": "",
-          "required_attributes": {
-            "agility": 7,
-            "body_proficiency": 5
-          },
-          "required_chapter_ids": [
-            "jie_li"
-          ],
-          "allowed_bearings": [],
-          "requires_main_slot": false,
-          "left_branch_name": "淬炼",
-          "right_branch_name": "化法",
-          "learn_permanent_bonuses": {
-            "agility": 0.25,
-            "body_proficiency": 0.15
-          },
-          "learn_permanent_multipliers": {},
-          "naqi_bonuses": {
-            "precision": 2,
-            "dodge": 1
-          },
-          "naqi_multipliers": {},
-          "main_naqi_bonuses": {},
-          "main_naqi_multipliers": {},
-          "learned_active_skills": [
-            "res://csharp/gongfa/ActiveSkillData.cs",
-            "res://resources/activeskills/市井游身功/撒石灰.tres"
-          ],
-          "main_learned_active_skills": [],
-          "sub_deck_rewrites": [
-            {
-              "enabled": true,
-              "mode": "ADD",
-              "count": 1,
-              "source_skill_path": "",
-              "source_skill_name": "",
-              "result_skill_path": "res://resources/activeskills/市井游身功/撒石灰.tres",
-              "main_result_skill_path": ""
-            }
-          ],
-          "main_deck_rewrites": []
-        },
-        {
-          "chapter_id": "tuo_shen",
-          "chapter_name": "脱身卷",
-          "description": "受到攻击时扭身卸力，保住站位后再寻找进身机会。",
-          "order": 4,
-          "required_study_progress": 56,
-          "required_realm": "",
-          "required_attributes": {
-            "agility": 9,
-            "body_proficiency": 7
-          },
-          "required_chapter_ids": [
-            "yin_shou"
-          ],
-          "allowed_bearings": [],
-          "requires_main_slot": false,
-          "left_branch_name": "淬炼",
-          "right_branch_name": "化法",
-          "learn_permanent_bonuses": {
-            "agility": 0.25,
-            "body_proficiency": 0.15
-          },
-          "learn_permanent_multipliers": {},
-          "naqi_bonuses": {
-            "dodge": 2,
-            "initiative_speed": 2
-          },
-          "naqi_multipliers": {},
-          "main_naqi_bonuses": {},
-          "main_naqi_multipliers": {},
-          "learned_active_skills": [
-            "res://csharp/gongfa/ActiveSkillData.cs",
-            "res://resources/activeskills/市井游身功/泥鳅身.tres"
-          ],
-          "main_learned_active_skills": [],
-          "sub_deck_rewrites": [
-            {
-              "enabled": true,
-              "mode": "ADD",
-              "count": 1,
-              "source_skill_path": "",
-              "source_skill_name": "",
-              "result_skill_path": "res://resources/activeskills/市井游身功/泥鳅身.tres",
-              "main_result_skill_path": ""
-            }
-          ],
-          "main_deck_rewrites": []
-        }
-      ]
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "manual",
-      "id": "project_manual_02b0bfa4",
-      "projectSource": true,
-      "gongfa_name": "太祖长拳",
-      "resource_path": "res://resources/gongfa/太祖长拳.tres",
-      "description": "只能辅修的凡人拳法。从起手、进身、桩功到架势，逐卷建立近身攻守。",
-      "wuxing": "NONE",
-      "wuxing_requirement_mode": "OR",
-      "required_realm": "",
-      "required_study_progress": 24,
-      "required_attributes": {
-        "physique": 2,
-        "body_proficiency": 1
-      },
-      "can_be_main": false,
-      "can_be_sub": true,
-      "bearing_compatibility": [
-        1
-      ],
-      "school_tags": [
-        "fist"
-      ],
-      "cross_bearing_policy": "NONE",
-      "main_realm_start": "",
-      "main_realm_end": "",
-      "sub_realm_start": "",
-      "sub_realm_end": "",
-      "learn_permanent_bonuses": {},
-      "learn_permanent_multipliers": {},
-      "passive_bonuses": {
-        "body_proficiency": 0.5,
-        "physique": 0.5
-      },
-      "passive_multipliers": {},
-      "body_nourish_rate_per_day": 0.8,
-      "body_nourish_weights": {},
-      "default_unlocked_chapter_count": 1,
-      "granted_active_skills": [],
-      "heart_method_skill": "",
-      "sub_heart_method_skill": "",
-      "main_heart_method_skill": "",
-      "general_breakthrough_multipliers": {},
-      "general_breakthrough_fixed": {},
-      "chapters": [
-        {
-          "chapter_id": "qi_shou",
-          "chapter_name": "起手卷",
-          "description": "从起手与站桩学起，建立拳架与近身攻击。",
-          "order": 1,
-          "required_study_progress": 24,
-          "required_realm": "",
-          "required_attributes": {
-            "body_proficiency": 1,
-            "physique": 2
-          },
-          "required_chapter_ids": [],
-          "allowed_bearings": [],
-          "requires_main_slot": false,
-          "left_branch_name": "淬炼",
-          "right_branch_name": "化法",
-          "learn_permanent_bonuses": {},
-          "learn_permanent_multipliers": {},
-          "naqi_bonuses": {
-            "physical_defense": 1
-          },
-          "naqi_multipliers": {},
-          "main_naqi_bonuses": {},
-          "main_naqi_multipliers": {},
-          "learned_active_skills": [
-            "res://csharp/gongfa/ActiveSkillData.cs",
-            "res://resources/activeskills/太祖长拳/太祖长拳.tres"
-          ],
-          "main_learned_active_skills": [],
-          "sub_deck_rewrites": [
-            {
-              "enabled": true,
-              "mode": "ADD",
-              "count": 1,
-              "source_skill_path": "",
-              "source_skill_name": "",
-              "result_skill_path": "res://resources/activeskills/太祖长拳/太祖长拳.tres",
-              "main_result_skill_path": ""
-            }
-          ],
-          "main_deck_rewrites": []
-        },
-        {
-          "chapter_id": "jin_shen",
-          "chapter_name": "进身卷",
-          "description": "以步带拳，消耗拳架后打出更重的崩劲。",
-          "order": 2,
-          "required_study_progress": 32,
-          "required_realm": "",
-          "required_attributes": {
-            "physique": 4,
-            "body_proficiency": 3
-          },
-          "required_chapter_ids": [
-            "qi_shou"
-          ],
-          "allowed_bearings": [],
-          "requires_main_slot": false,
-          "left_branch_name": "淬炼",
-          "right_branch_name": "化法",
-          "learn_permanent_bonuses": {
-            "physique": 0.25,
-            "body_proficiency": 0.25
-          },
-          "learn_permanent_multipliers": {},
-          "naqi_bonuses": {
-            "body_proficiency": 0.5,
-            "precision": 1
-          },
-          "naqi_multipliers": {},
-          "main_naqi_bonuses": {},
-          "main_naqi_multipliers": {},
-          "learned_active_skills": [
-            "res://csharp/gongfa/ActiveSkillData.cs",
-            "res://resources/activeskills/太祖长拳/进步崩拳.tres"
-          ],
-          "main_learned_active_skills": [],
-          "sub_deck_rewrites": [
-            {
-              "enabled": true,
-              "mode": "ADD",
-              "count": 1,
-              "source_skill_path": "",
-              "source_skill_name": "",
-              "result_skill_path": "res://resources/activeskills/太祖长拳/进步崩拳.tres",
-              "main_result_skill_path": ""
-            }
-          ],
-          "main_deck_rewrites": []
-        },
-        {
-          "chapter_id": "zhuang_gong",
-          "chapter_name": "桩功卷",
-          "description": "沉肩稳架，将成功化解的攻势转为下一击的拳架。",
-          "order": 3,
-          "required_study_progress": 40,
-          "required_realm": "",
-          "required_attributes": {
-            "physique": 6,
-            "body_proficiency": 5
-          },
-          "required_chapter_ids": [
-            "jin_shen"
-          ],
-          "allowed_bearings": [],
-          "requires_main_slot": false,
-          "left_branch_name": "淬炼",
-          "right_branch_name": "化法",
-          "learn_permanent_bonuses": {
-            "physique": 0.25,
-            "body_proficiency": 0.25
-          },
-          "learn_permanent_multipliers": {},
-          "naqi_bonuses": {
-            "physical_defense": 1,
-            "crit_resist": 2
-          },
-          "naqi_multipliers": {},
-          "main_naqi_bonuses": {},
-          "main_naqi_multipliers": {},
-          "learned_active_skills": [
-            "res://csharp/gongfa/ActiveSkillData.cs",
-            "res://resources/activeskills/太祖长拳/架梁.tres"
-          ],
-          "main_learned_active_skills": [],
-          "sub_deck_rewrites": [
-            {
-              "enabled": true,
-              "mode": "ADD",
-              "count": 1,
-              "source_skill_path": "",
-              "source_skill_name": "",
-              "result_skill_path": "res://resources/activeskills/太祖长拳/架梁.tres",
-              "main_result_skill_path": ""
-            }
-          ],
-          "main_deck_rewrites": []
-        },
-        {
-          "chapter_id": "jia_shi",
-          "chapter_name": "架势卷",
-          "description": "沉桥压身，将基础重击转为消耗拳架的终结招式。",
-          "order": 4,
-          "required_study_progress": 48,
-          "required_realm": "",
-          "required_attributes": {
-            "physique": 8,
-            "body_proficiency": 7
-          },
-          "required_chapter_ids": [
-            "zhuang_gong"
-          ],
-          "allowed_bearings": [],
-          "requires_main_slot": false,
-          "left_branch_name": "淬炼",
-          "right_branch_name": "化法",
-          "learn_permanent_bonuses": {
-            "physique": 0.25,
-            "body_proficiency": 0.25
-          },
-          "learn_permanent_multipliers": {},
-          "naqi_bonuses": {
-            "body_proficiency": 0.5
-          },
-          "naqi_multipliers": {},
-          "main_naqi_bonuses": {},
-          "main_naqi_multipliers": {},
-          "learned_active_skills": [
-            "res://csharp/gongfa/ActiveSkillData.cs",
-            "res://resources/activeskills/太祖长拳/沉桥压身.tres"
-          ],
-          "main_learned_active_skills": [],
-          "sub_deck_rewrites": [
-            {
-              "enabled": true,
-              "mode": "REPLACE",
-              "count": 1,
-              "source_skill_path": "",
-              "source_skill_name": "撼山",
-              "result_skill_path": "res://resources/activeskills/太祖长拳/沉桥压身.tres",
-              "main_result_skill_path": ""
-            }
-          ],
-          "main_deck_rewrites": []
-        }
-      ]
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "manual",
-      "id": "project_manual_22bfcc84",
-      "projectSource": true,
-      "gongfa_name": "听锋寻隙篇",
-      "resource_path": "res://resources/gongfa/听锋寻隙篇.tres",
-      "description": "仅可辅修的识破剑诀。负责施加第一层剑痕，并围绕带痕目标提高命中和恢复精力。",
-      "wuxing": "ALL",
-      "wuxing_requirement_mode": "OR",
-      "required_realm": "",
-      "required_study_progress": 56,
-      "required_attributes": {
-        "soul": 5,
-        "sword_proficiency": 8
-      },
-      "can_be_main": false,
-      "can_be_sub": true,
-      "bearing_compatibility": [
-        3
-      ],
-      "school_tags": [
-        "sword"
-      ],
-      "cross_bearing_policy": "NONE",
-      "main_realm_start": "",
-      "main_realm_end": "",
-      "sub_realm_start": "",
-      "sub_realm_end": "",
-      "learn_permanent_bonuses": {},
-      "learn_permanent_multipliers": {},
-      "passive_bonuses": {},
-      "passive_multipliers": {},
-      "body_nourish_rate_per_day": 0.8,
-      "body_nourish_weights": {},
-      "default_unlocked_chapter_count": 1,
-      "granted_active_skills": [],
-      "heart_method_skill": "",
-      "sub_heart_method_skill": "",
-      "main_heart_method_skill": "",
-      "general_breakthrough_multipliers": {},
-      "general_breakthrough_fixed": {},
-      "chapters": [
-        {
-          "chapter_id": "ting_feng",
-          "chapter_name": "听锋卷",
-          "description": "为指定敌人施加第一层剑痕，并提高下一次指定剑术攻击的精准。",
-          "order": 1,
-          "required_study_progress": 56,
-          "required_realm": "",
-          "required_attributes": {
-            "soul": 5,
-            "sword_proficiency": 8
-          },
-          "required_chapter_ids": [],
-          "allowed_bearings": [],
-          "requires_main_slot": false,
-          "left_branch_name": "淬炼",
-          "right_branch_name": "化法",
-          "learn_permanent_bonuses": {},
-          "learn_permanent_multipliers": {},
-          "naqi_bonuses": {
-            "precision": 4
-          },
-          "naqi_multipliers": {},
-          "main_naqi_bonuses": {},
-          "main_naqi_multipliers": {},
-          "learned_active_skills": [
-            "res://csharp/gongfa/ActiveSkillData.cs",
-            "res://resources/activeskills/听锋寻隙篇/听锋辨隙.tres",
-            "res://resources/activeskills/听锋寻隙篇/循隙一刺.tres"
-          ],
-          "main_learned_active_skills": [],
-          "sub_deck_rewrites": [
-            {
-              "enabled": true,
-              "mode": "ADD",
-              "count": 1,
-              "source_skill_path": "",
-              "source_skill_name": "",
-              "result_skill_path": "res://resources/activeskills/听锋寻隙篇/听锋辨隙.tres",
-              "main_result_skill_path": ""
-            }
-          ],
-          "main_deck_rewrites": []
-        },
-        {
-          "chapter_id": "guan_xi",
-          "chapter_name": "观隙卷",
-          "description": "根据场上带有剑痕的敌人补充剑意和精力。",
-          "order": 2,
-          "required_study_progress": 84,
-          "required_realm": "",
-          "required_attributes": {
-            "soul": 8,
-            "sword_proficiency": 12
-          },
-          "required_chapter_ids": [
-            "ting_feng",
-            "4",
-            "7"
-          ],
-          "allowed_bearings": [],
-          "requires_main_slot": false,
-          "left_branch_name": "淬炼",
-          "right_branch_name": "化法",
-          "learn_permanent_bonuses": {},
-          "learn_permanent_multipliers": {},
-          "naqi_bonuses": {
-            "precision": 3,
-            "critical": 2
-          },
-          "naqi_multipliers": {},
-          "main_naqi_bonuses": {},
-          "main_naqi_multipliers": {},
-          "learned_active_skills": [],
-          "main_learned_active_skills": [],
-          "sub_deck_rewrites": [
-            {
-              "enabled": true,
-              "mode": "ADD",
-              "count": 1,
-              "source_skill_path": "",
-              "source_skill_name": "",
-              "result_skill_path": "res://resources/activeskills/听锋寻隙篇/观痕养意.tres",
-              "main_result_skill_path": ""
-            }
-          ],
-          "main_deck_rewrites": []
-        }
-      ]
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "manual",
       "id": "project_manual_e513b04c",
       "projectSource": true,
       "gongfa_name": "阴符应物经",
       "resource_path": "res://resources/gongfa/阴符应物经.tres",
-      "description": "锻躯主修法。以应对牌抵消当前物理伤害，将敌势转为借力后收束反制。",
+      "description": "锻躯主修法。以应对技能抵消当前物理伤害，将敌势转为借力后收束反制。",
       "wuxing": "NONE",
       "wuxing_requirement_mode": "OR",
       "required_realm": "",
@@ -7764,7 +5355,7 @@ select { appearance: auto; }
       },
       "default_unlocked_chapter_count": 1,
       "granted_active_skills": [],
-      "heart_method_skill": "",
+      "heart_method_skill": "res://resources/activeskills/阴符应物经/阴符应物.tres",
       "sub_heart_method_skill": "",
       "main_heart_method_skill": "",
       "general_breakthrough_multipliers": {},
@@ -7801,7 +5392,6 @@ select { appearance: auto; }
           "main_naqi_bonuses": {},
           "main_naqi_multipliers": {},
           "learned_active_skills": [
-            "res://resources/activeskills/阴符应物经/阴符应物.tres",
             "res://resources/activeskills/阴符应物经/承机.tres"
           ],
           "main_learned_active_skills": [],
@@ -7909,207 +5499,6 @@ select { appearance: auto; }
           "main_naqi_multipliers": {},
           "learned_active_skills": [
             "res://resources/activeskills/阴符应物经/合劲.tres"
-          ],
-          "main_learned_active_skills": [],
-          "sub_deck_rewrites": [],
-          "main_deck_rewrites": []
-        }
-      ]
-    },
-    {
-      "schemaVersion": 1,
-      "kind": "manual",
-      "id": "project_manual_991cba61",
-      "projectSource": true,
-      "gongfa_name": "折枝剑谱",
-      "resource_path": "res://resources/gongfa/折枝剑谱.tres",
-      "description": "可主修也可辅修的伤势剑谱。以剑痕起手，折痕成伤，再将外伤与折损转化为斩杀。",
-      "wuxing": "ALL",
-      "wuxing_requirement_mode": "OR",
-      "required_realm": "",
-      "required_study_progress": 64,
-      "required_attributes": {
-        "agility": 8,
-        "sword_proficiency": 10
-      },
-      "can_be_main": true,
-      "can_be_sub": true,
-      "bearing_compatibility": [
-        1,
-        2
-      ],
-      "school_tags": [
-        "sword"
-      ],
-      "cross_bearing_policy": "NONE",
-      "main_realm_start": "",
-      "main_realm_end": "",
-      "sub_realm_start": "",
-      "sub_realm_end": "",
-      "learn_permanent_bonuses": {},
-      "learn_permanent_multipliers": {},
-      "passive_bonuses": {
-        "agility": 0.5,
-        "sword_proficiency": 0.5
-      },
-      "passive_multipliers": {},
-      "body_nourish_rate_per_day": 0.8,
-      "body_nourish_weights": {},
-      "default_unlocked_chapter_count": 1,
-      "granted_active_skills": [],
-      "heart_method_skill": "",
-      "sub_heart_method_skill": "",
-      "main_heart_method_skill": "",
-      "general_breakthrough_multipliers": {},
-      "general_breakthrough_fixed": {},
-      "chapters": [
-        {
-          "chapter_id": "ya_zhi",
-          "chapter_name": "压枝卷",
-          "description": "从点痕、压枝与起势开始，建立折枝剑谱的第一层伤势循环。",
-          "order": 1,
-          "required_study_progress": 64,
-          "required_realm": "",
-          "required_attributes": {
-            "agility": "8.0.0",
-            "sword_proficiency": "10.0.0",
-            "precision": 2,
-            "critical": 1
-          },
-          "required_chapter_ids": [],
-          "allowed_bearings": [],
-          "requires_main_slot": false,
-          "left_branch_name": "淬炼",
-          "right_branch_name": "化法",
-          "learn_permanent_bonuses": {},
-          "learn_permanent_multipliers": {},
-          "naqi_bonuses": {
-            "precision": 2,
-            "critical": 1
-          },
-          "naqi_multipliers": {},
-          "main_naqi_bonuses": {},
-          "main_naqi_multipliers": {},
-          "learned_active_skills": [],
-          "main_learned_active_skills": [],
-          "sub_deck_rewrites": [],
-          "main_deck_rewrites": []
-        },
-        {
-          "chapter_id": "fu_zhi",
-          "chapter_name": "拂枝卷",
-          "description": "学会借剑痕养锋，并让轻剑招式稳定制造剑痕与压制。",
-          "order": 2,
-          "required_study_progress": 84,
-          "required_realm": "",
-          "required_attributes": {
-            "agility": 10,
-            "sword_proficiency": 12
-          },
-          "required_chapter_ids": [
-            "ya_zhi"
-          ],
-          "allowed_bearings": [],
-          "requires_main_slot": false,
-          "left_branch_name": "淬炼",
-          "right_branch_name": "化法",
-          "learn_permanent_bonuses": {
-            "agility": 0.5,
-            "sword_proficiency": 0.5
-          },
-          "learn_permanent_multipliers": {},
-          "naqi_bonuses": {
-            "critical": 2,
-            "initiative_speed": 2
-          },
-          "naqi_multipliers": {},
-          "main_naqi_bonuses": {},
-          "main_naqi_multipliers": {},
-          "learned_active_skills": [
-            "res://csharp/gongfa/ActiveSkillData.cs",
-            "res://resources/activeskills/折枝剑谱/拂枝点痕.tres",
-            "res://resources/activeskills/折枝剑谱/照痕养锋.tres"
-          ],
-          "main_learned_active_skills": [],
-          "sub_deck_rewrites": [],
-          "main_deck_rewrites": []
-        },
-        {
-          "chapter_id": "lie_ke",
-          "chapter_name": "裂柯卷",
-          "description": "将应对与斩击串联起来，进一步提高折痕后的爆发与衔接能力。",
-          "order": 3,
-          "required_study_progress": 104,
-          "required_realm": "",
-          "required_attributes": {
-            "agility": 12,
-            "physique": 8,
-            "sword_proficiency": 14
-          },
-          "required_chapter_ids": [
-            "fu_zhi"
-          ],
-          "allowed_bearings": [],
-          "requires_main_slot": false,
-          "left_branch_name": "淬炼",
-          "right_branch_name": "化法",
-          "learn_permanent_bonuses": {
-            "agility": 0.5,
-            "sword_proficiency": 0.5
-          },
-          "learn_permanent_multipliers": {},
-          "naqi_bonuses": {
-            "precision": 2,
-            "physical_defense": 1
-          },
-          "naqi_multipliers": {},
-          "main_naqi_bonuses": {},
-          "main_naqi_multipliers": {},
-          "learned_active_skills": [
-            "res://csharp/gongfa/ActiveSkillData.cs",
-            "res://resources/activeskills/折枝剑谱/裂柯.tres",
-            "res://resources/activeskills/折枝剑谱/回锋添痕.tres"
-          ],
-          "main_learned_active_skills": [],
-          "sub_deck_rewrites": [],
-          "main_deck_rewrites": []
-        },
-        {
-          "chapter_id": "cui_zhi",
-          "chapter_name": "摧枝卷",
-          "description": "掌握折枝终卷，将积累的剑痕、外伤与折损转化为真正的斩杀。",
-          "order": 4,
-          "required_study_progress": 128,
-          "required_realm": "",
-          "required_attributes": {
-            "agility": 14,
-            "physique": 10,
-            "sword_proficiency": 16
-          },
-          "required_chapter_ids": [
-            "lie_ke"
-          ],
-          "allowed_bearings": [],
-          "requires_main_slot": false,
-          "left_branch_name": "淬炼",
-          "right_branch_name": "化法",
-          "learn_permanent_bonuses": {
-            "agility": 0.5,
-            "physique": 0.5,
-            "sword_proficiency": 0.5
-          },
-          "learn_permanent_multipliers": {},
-          "naqi_bonuses": {
-            "critical": 3,
-            "crit_damage_mult": 0.04
-          },
-          "naqi_multipliers": {},
-          "main_naqi_bonuses": {},
-          "main_naqi_multipliers": {},
-          "learned_active_skills": [
-            "res://csharp/gongfa/ActiveSkillData.cs",
-            "res://resources/activeskills/折枝剑谱/挑枝断筋.tres",
-            "res://resources/activeskills/折枝剑谱/摧枝一剑.tres"
           ],
           "main_learned_active_skills": [],
           "sub_deck_rewrites": [],
@@ -8339,7 +5728,7 @@ select { appearance: auto; }
   const ATTRIBUTE_LABELS = Object.fromEntries(ATTRIBUTE_OPTIONS);
   const REQUIRED_ATTRIBUTE_KEYS = new Set(["physique", "intelligence", "agility", "soul", "sword_proficiency", "blade_proficiency", "spear_proficiency", "body_proficiency", "magic_proficiency"]);
   const FORBIDDEN_REQUIRED_KEYS = new Set(["fortune", "comprehension", "charisma", "spirit_strands", "core_count", "max_health", "max_stamina", "max_mind", "max_mana", "max_spirit_perception", "physical_defense", "precision", "dodge", "critical", "crit_resist", "initiative_speed", "health_regen_rate", "stamina_regen_rate", "mana_regen_rate"]);
-  const EFFECT_OPTIONS = [["gain_energy", "获得精力"], ["restore_stamina", "恢复精力"], ["restore_mana", "恢复法力"], ["draw", "抽牌"], ["shield", "获得护持"], ["heal", "恢复生命"], ["damage", "追加伤害"], ["gain_qi_blood", "获得气血"], ["gain_sword_intent", "获得剑意"], ["gain_punch_frame", "获得拳架"], ["add_status", "施加状态"], ["remove_status", "移除状态"]];
+  const EFFECT_OPTIONS = [["gain_energy", "获得精力"], ["restore_stamina", "恢复精力"], ["restore_mana", "恢复法力"], ["draw", "抽牌"], ["shield", "获得护持"], ["heal", "恢复生命"], ["damage", "追加伤害"], ["gain_qi_blood", "获得气血"], ["gain_punch_frame", "获得拳架"], ["add_status", "施加状态"], ["remove_status", "移除状态"]];
   const EFFECT_LABELS = Object.fromEntries(EFFECT_OPTIONS);
   const STATUS_LABELS = { physique: "体魄", intelligence: "灵慧", agility: "敏捷", soul: "神魂", body_proficiency: "体道造诣", sword_proficiency: "剑道造诣" };
   const REALMS = Array.isArray(CATALOG.realms) && CATALOG.realms.length ? CATALOG.realms : [{ name: "凡人", battle_base_attributes: { initial_hand_size: 4, cards_per_turn: 2 } }];
@@ -8816,7 +6205,7 @@ select { appearance: auto; }
   function drawTestCards(count) { for (let index = 0; index < count; index++) { refillDrawPile(); const id = testState.drawPile.shift(); if (!id) { addTestLog("牌堆已空，无法继续抽牌。", "warning"); break; } testState.hand.push(id); } }
   function startTest() { const realm = valueOf("testRealmSelect") || REALM_NAMES[0]; const profile = realmProfile(realm, readTestAttributes()); testState = { turn: 1, realm, baseAttrs: readTestAttributes(), attrs: profile.adjusted, energy: Math.min(numberOf("testEnergy", 3), numberOf("testMaxEnergy", 6)), maxEnergy: numberOf("testMaxEnergy", 6), mana: numberOf("testMana", profile.maxMana), maxMana: numberOf("testMaxMana", profile.maxMana), spirit: numberOf("testSpirit", 0), maxSpirit: numberOf("testMaxSpirit", profile.maxSpirit), enemyHp: numberOf("testEnemyHp", 60), maxEnemyHp: numberOf("testEnemyHp", 60), shield: numberOf("testShield", 0), playerHp: 100, hand: [], drawPile: shuffle(testDeckIds), discard: [], exhausted: [], statuses: {}, log: [] }; addTestLog(`开始测试：${realm}。初始手牌 ${profile.initialHandSize} 张，每回合抽 ${profile.cardsPerTurn} 张。`, "success"); drawTestCards(profile.initialHandSize); renderTest(); }
   function testStateOrStart() { if (!testState) startTest(); return testState; }
-  function executeSpecial(effect, card) { const count = Number(effect.count || 1); const formula = effect.formula || ""; switch (effect.effect) { case "gain_energy": case "restore_stamina": testState.energy = Math.min(testState.maxEnergy, testState.energy + (formula ? Math.round(formulaValue(formula, testState.attrs, count)) : count)); addTestLog(`${card.skill_name}：获得精力 ${count}。`, "success"); break; case "restore_mana": testState.mana = Math.min(testState.maxMana, testState.mana + (formula ? Math.round(formulaValue(formula, testState.attrs, count)) : count)); addTestLog(`${card.skill_name}：恢复法力 ${count}。`, "success"); break; case "draw": drawTestCards(count); addTestLog(`${card.skill_name}：抽牌 ${count}。`, "success"); break; case "shield": testState.shield += Math.round(formula ? formulaValue(formula, testState.attrs, count) : count); addTestLog(`${card.skill_name}：获得护持 ${count}。`, "success"); break; case "heal": testState.playerHp = Math.min(100, testState.playerHp + Math.round(formula ? formulaValue(formula, testState.attrs, count) : count)); addTestLog(`${card.skill_name}：恢复生命 ${count}。`, "success"); break; case "damage": { const damage = Math.max(0, Math.round(formula ? formulaValue(formula, testState.attrs, count) : count)); testState.enemyHp = Math.max(0, testState.enemyHp - damage); addTestLog(`${card.skill_name}：追加 ${damage} 点伤害。`, "success"); break; } case "gain_qi_blood": case "gain_sword_intent": case "gain_punch_frame": case "add_status": { const status = effect.effect === "add_status" ? (formula || "状态") : effect.effect.replace("gain_", ""); testState.statuses[status] = (testState.statuses[status] || 0) + count; addTestLog(`${card.skill_name}：${status} +${count}。`, "success"); break; } case "remove_status": { const status = formula || "状态"; delete testState.statuses[status]; addTestLog(`${card.skill_name}：移除 ${status}。`, "success"); break; } default: addTestLog(`${card.skill_name}：效果 ${effect.effect || "未配置"} 仅记录，尚未接入沙盘。`, "warning"); } }
+  function executeSpecial(effect, card) { const count = Number(effect.count || 1); const formula = effect.formula || ""; switch (effect.effect) { case "gain_energy": case "restore_stamina": testState.energy = Math.min(testState.maxEnergy, testState.energy + (formula ? Math.round(formulaValue(formula, testState.attrs, count)) : count)); addTestLog(`${card.skill_name}：获得精力 ${count}。`, "success"); break; case "restore_mana": testState.mana = Math.min(testState.maxMana, testState.mana + (formula ? Math.round(formulaValue(formula, testState.attrs, count)) : count)); addTestLog(`${card.skill_name}：恢复法力 ${count}。`, "success"); break; case "draw": drawTestCards(count); addTestLog(`${card.skill_name}：抽牌 ${count}。`, "success"); break; case "shield": testState.shield += Math.round(formula ? formulaValue(formula, testState.attrs, count) : count); addTestLog(`${card.skill_name}：获得护持 ${count}。`, "success"); break; case "heal": testState.playerHp = Math.min(100, testState.playerHp + Math.round(formula ? formulaValue(formula, testState.attrs, count) : count)); addTestLog(`${card.skill_name}：恢复生命 ${count}。`, "success"); break; case "damage": { const damage = Math.max(0, Math.round(formula ? formulaValue(formula, testState.attrs, count) : count)); testState.enemyHp = Math.max(0, testState.enemyHp - damage); addTestLog(`${card.skill_name}：追加 ${damage} 点伤害。`, "success"); break; } case "gain_qi_blood": case "gain_punch_frame": case "add_status": { const status = effect.effect === "add_status" ? (formula || "状态") : effect.effect.replace("gain_", ""); testState.statuses[status] = (testState.statuses[status] || 0) + count; addTestLog(`${card.skill_name}：${status} +${count}。`, "success"); break; } case "remove_status": { const status = formula || "状态"; delete testState.statuses[status]; addTestLog(`${card.skill_name}：移除 ${status}。`, "success"); break; } default: addTestLog(`${card.skill_name}：效果 ${effect.effect || "未配置"} 仅记录，尚未接入沙盘。`, "warning"); } }
   function playTestCard(index) { testStateOrStart(); const card = cardById(testState.hand[index]); if (!card) return; if (testState.energy < card.energy_cost) return addTestLog(`${card.skill_name} 无法打出：精力不足。`, "warning"), renderTest(); if (testState.mana < card.mana_cost) return addTestLog(`${card.skill_name} 无法打出：法力不足。`, "warning"), renderTest(); if (testState.spirit + card.spirit_occupy > testState.maxSpirit) return addTestLog(`${card.skill_name} 无法打出：灵识容量不足。`, "warning"), renderTest(); testState.energy -= card.energy_cost; testState.mana -= card.mana_cost; testState.spirit += card.spirit_occupy; testState.hand.splice(index, 1); const damage = damageValue(card, testState.attrs); if (damage > 0) { testState.enemyHp = Math.max(0, testState.enemyHp - damage); addTestLog(`${card.skill_name}：造成 ${damage} 点${card.damage_type === "soul" ? "神魂" : card.damage_type === "physical" ? "物理" : "法术"}伤害。`, "success"); } for (const effect of card.special_effects || []) executeSpecial(effect, card); for (const status of card.status_effects || []) if (status.status_id) { const stacks = card.stacks_formula ? Math.max(1, Math.round(formulaValue(card.stacks_formula, testState.attrs, Number(status.stacks || 1)))) : Number(status.stacks || 1); testState.statuses[status.status_id] = (testState.statuses[status.status_id] || 0) + stacks; addTestLog(`${card.skill_name}：${status.status_id} +${stacks} 层。`, "success"); } if (card.keywords?.includes("消耗") || card.skill_type === "POWER") testState.exhausted.push(card.id); else testState.discard.push(card.id); if (card.keywords?.includes("应对")) addTestLog("这是一张应对牌，当前沙盘按主动点击测试，不自动触发。", "muted"); renderTest(); }
   function endTestTurn() { testStateOrStart(); const retained = []; for (const id of testState.hand) { const card = cardById(id); if (card?.keywords?.includes("保留")) retained.push(id); else testState.discard.push(id); } testState.hand = retained; testState.mana = 0; testState.energy = Math.min(testState.maxEnergy, testState.energy + 3); testState.turn += 1; const profile = realmProfile(testState.realm, testState.baseAttrs); drawTestCards(profile.cardsPerTurn); addTestLog(`结束回合，精力恢复至 ${testState.energy}，法力清零，抽取 ${profile.cardsPerTurn} 张。`, "success"); renderTest(); }
   function renderTest() { if (!testState) return; byId("testEnergy").value = testState.energy; byId("testMaxEnergy").value = testState.maxEnergy; byId("testMana").value = testState.mana; byId("testMaxMana").value = testState.maxMana; byId("testSpirit").value = testState.spirit; byId("testMaxSpirit").value = testState.maxSpirit; byId("testEnemyHp").value = testState.enemyHp; byId("testShield").value = testState.shield; byId("testEnergyReadout").textContent = `${testState.energy}/${testState.maxEnergy}`; byId("testManaReadout").textContent = `${testState.mana}/${testState.maxMana}`; byId("testSpiritReadout").textContent = `${testState.spirit}/${testState.maxSpirit}`; byId("testEnemyReadout").textContent = `${testState.enemyHp}/${testState.maxEnemyHp}`; byId("testTurnReadout").textContent = `第 ${testState.turn} 回合 · ${testState.realm}`; byId("testHandCount").textContent = `${testState.hand.length} 张`; byId("testHand").innerHTML = testState.hand.map((id, index) => { const card = cardById(id); return card ? `<button class="test-card ${card.energy_cost > testState.energy || card.mana_cost > testState.mana ? "unplayable" : ""}" data-play-card="${index}" type="button"><strong>${escapeHtml(card.skill_name)}</strong><span>精 ${formatNumber(card.energy_cost)} · 法 ${formatNumber(card.mana_cost)}</span><small>${escapeHtml(cardDescription(card).slice(0, 64))}</small></button>` : ""; }).join("") || `<div class="empty-state">手牌为空，抽牌或结束回合</div>`; byId("testLog").innerHTML = testState.log.slice().reverse().map(item => `<div class="log-line ${item.tone}"><span>›</span>${escapeHtml(item.message)}</div>`).join("") || `<div class="empty-state">尚无结算记录</div>`; }

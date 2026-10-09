@@ -1,0 +1,358 @@
+{
+  "status": "installed in current static map scene; engine runtime not checked",
+  "tool": "built-in imagegen",
+  "ground_color": "#E5D5BC",
+  "assets": [
+    {
+      "id": "01_single_peak",
+      "name": "单峰石山",
+      "file": "01_single_peak.png",
+      "suggested_footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "id": "02_round_hill",
+      "name": "圆顶山丘",
+      "file": "02_round_hill.png",
+      "suggested_footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "id": "03_twin_peak",
+      "name": "双峰小山",
+      "file": "03_twin_peak.png",
+      "suggested_footprint": [
+        2,
+        1
+      ],
+      "size": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "id": "04_three_peak",
+      "name": "三峰小山群",
+      "file": "04_three_peak.png",
+      "suggested_footprint": [
+        2,
+        2
+      ],
+      "size": [
+        1564,
+        1006
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "05_low_ridge",
+      "name": "矮石山脊",
+      "file": "05_low_ridge.png",
+      "suggested_footprint": [
+        2,
+        1
+      ],
+      "size": [
+        2110,
+        745
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "06_distant_hills",
+      "name": "淡墨远岫",
+      "file": "06_distant_hills.png",
+      "suggested_footprint": [
+        2,
+        1
+      ],
+      "size": [
+        2110,
+        745
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "07_round_broadleaf",
+      "name": "圆冠乔木",
+      "file": "07_round_broadleaf_upright_v2.png",
+      "suggested_footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1402,
+        1122
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "08_airy_broadleaf",
+      "name": "疏冠乔木",
+      "file": "08_airy_broadleaf_upright_v2.png",
+      "suggested_footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1247,
+        1261
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "09_upright_pine",
+      "name": "挺拔青松",
+      "file": "09_upright_pine.png",
+      "suggested_footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1312,
+        1199
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "10_willow",
+      "name": "垂柳",
+      "file": "10_willow.png",
+      "suggested_footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1402,
+        1122
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "11_poplar",
+      "name": "高冠白杨",
+      "file": "11_poplar.png",
+      "suggested_footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "id": "12_bamboo",
+      "name": "疏竹丛",
+      "file": "12_bamboo.png",
+      "suggested_footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1568,
+        1003
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "13_moss_boulders",
+      "name": "苔石",
+      "file": "13_moss_boulders.png",
+      "suggested_footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1568,
+        1003
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "14_rock_terrace",
+      "name": "层岩坡",
+      "file": "14_rock_terrace.png",
+      "suggested_footprint": [
+        2,
+        1
+      ],
+      "size": [
+        1568,
+        1003
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "15_dry_ridge",
+      "name": "碎石浅岭",
+      "file": "15_dry_ridge.png",
+      "suggested_footprint": [
+        2,
+        1
+      ],
+      "size": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "id": "16_willow_bank",
+      "name": "柳岸",
+      "file": "16_willow_bank.png",
+      "suggested_footprint": [
+        2,
+        1
+      ],
+      "size": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "id": "17_pebble_rill",
+      "name": "石间浅溪",
+      "file": "17_pebble_rill.png",
+      "suggested_footprint": [
+        2,
+        1
+      ],
+      "size": [
+        1568,
+        1003
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "18_lotus_water",
+      "name": "疏荷水面",
+      "file": "18_lotus_water.png",
+      "suggested_footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1568,
+        1003
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "19_rock_spring",
+      "name": "石隙清泉",
+      "file": "19_rock_spring.png",
+      "suggested_footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1536,
+        1024
+      ],
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "id": "20_lake_shore",
+      "name": "浅湖石岸",
+      "file": "20_lake_shore.png",
+      "suggested_footprint": [
+        2,
+        1
+      ],
+      "size": [
+        1568,
+        1003
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    }
+  ],
+  "support_ground": {
+    "file": "21_warm_paper_tile.png",
+    "target_color": "#E5D5BC",
+    "actual_mean_rgb": [
+      227.21,
+      206.89,
+      176.91
+    ]
+  },
+  "revision_prompts": "tree_revisions.json",
+  "scene": "E:\\stacklands\\tscn\\world\\bai_chuan\\dual_grid_v1\\BaiChuanDualGridTerrainPrototype_v1.tscn"
+}

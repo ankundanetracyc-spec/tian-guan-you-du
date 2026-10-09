@@ -19,11 +19,11 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="青溪问道"
+config/name="天光有渡"
 run/main_scene="res://tscn/scene/StartMenu.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="SlayTheSpire2"
-config/features=PackedStringArray("4.7", "C#", "Mobile")
+config/features=PackedStringArray("4.6", "Mobile")
 run/flush_stdout_on_print=true
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false

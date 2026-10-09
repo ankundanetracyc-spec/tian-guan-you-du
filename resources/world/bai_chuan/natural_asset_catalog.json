@@ -1,0 +1,921 @@
+{
+  "version": 1,
+  "tool": "built-in imagegen",
+  "families": [
+    {
+      "id": "peak",
+      "name": "高峰与小山群"
+    },
+    {
+      "id": "hill",
+      "name": "低丘与山脊"
+    },
+    {
+      "id": "broadleaf",
+      "name": "阔叶乔木"
+    },
+    {
+      "id": "pine",
+      "name": "松树"
+    },
+    {
+      "id": "willow",
+      "name": "柳树"
+    },
+    {
+      "id": "bamboo",
+      "name": "竹丛"
+    },
+    {
+      "id": "deadwood",
+      "name": "枯木"
+    },
+    {
+      "id": "boulder",
+      "name": "散石"
+    },
+    {
+      "id": "terrace",
+      "name": "岩台"
+    },
+    {
+      "id": "tree_rock",
+      "name": "树石组合"
+    },
+    {
+      "id": "shrub",
+      "name": "低灌木"
+    },
+    {
+      "id": "bank",
+      "name": "岸景"
+    },
+    {
+      "id": "stream",
+      "name": "浅溪"
+    },
+    {
+      "id": "lotus",
+      "name": "荷叶"
+    },
+    {
+      "id": "spring",
+      "name": "泉石"
+    },
+    {
+      "id": "pond",
+      "name": "小潭"
+    },
+    {
+      "id": "cliff",
+      "name": "短崖"
+    },
+    {
+      "id": "cave",
+      "name": "洞口"
+    }
+  ],
+  "assets": [
+    {
+      "id": "01_single_peak",
+      "family": "peak",
+      "name": "单峰石山",
+      "path": "res://textures/world_map/bai_chuan/natural_scenery_20261009_v2/01_single_peak.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1536,
+        1024
+      ],
+      "bounds": [
+        471,
+        248,
+        1115,
+        752
+      ],
+      "weight": 1
+    },
+    {
+      "id": "02_round_hill",
+      "family": "hill",
+      "name": "圆顶山丘",
+      "path": "res://textures/world_map/bai_chuan/natural_scenery_20261009_v2/02_round_hill.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1536,
+        1024
+      ],
+      "bounds": [
+        309,
+        318,
+        1253,
+        779
+      ],
+      "weight": 1
+    },
+    {
+      "id": "03_twin_peak",
+      "family": "peak",
+      "name": "双峰小山",
+      "path": "res://textures/world_map/bai_chuan/natural_scenery_20261009_v2/03_twin_peak.png",
+      "footprint": [
+        2,
+        1
+      ],
+      "size": [
+        1536,
+        1024
+      ],
+      "bounds": [
+        187,
+        182,
+        1375,
+        852
+      ],
+      "weight": 1
+    },
+    {
+      "id": "04_three_peak",
+      "family": "peak",
+      "name": "三峰小山群",
+      "path": "res://textures/world_map/bai_chuan/natural_scenery_20261009_v2/04_three_peak.png",
+      "footprint": [
+        2,
+        2
+      ],
+      "size": [
+        1564,
+        1006
+      ],
+      "bounds": [
+        318,
+        181,
+        1334,
+        810
+      ],
+      "weight": 1
+    },
+    {
+      "id": "05_low_ridge",
+      "family": "hill",
+      "name": "矮石山脊",
+      "path": "res://textures/world_map/bai_chuan/natural_scenery_20261009_v2/05_low_ridge.png",
+      "footprint": [
+        2,
+        1
+      ],
+      "size": [
+        2110,
+        745
+      ],
+      "bounds": [
+        156,
+        221,
+        1991,
+        606
+      ],
+      "weight": 1
+    },
+    {
+      "id": "06_distant_hills",
+      "family": "hill",
+      "name": "淡墨远岫",
+      "path": "res://textures/world_map/bai_chuan/natural_scenery_20261009_v2/06_distant_hills.png",
+      "footprint": [
+        2,
+        1
+      ],
+      "size": [
+        2110,
+        745
+      ],
+      "bounds": [
+        395,
+        235,
+        1803,
+        544
+      ],
+      "weight": 1
+    },
+    {
+      "id": "07_round_broadleaf_upright_v2",
+      "family": "broadleaf",
+      "name": "圆冠乔木",
+      "path": "res://textures/world_map/bai_chuan/natural_scenery_20261009_v2/07_round_broadleaf_upright_v2.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1402,
+        1122
+      ],
+      "bounds": [
+        316,
+        59,
+        1107,
+        1065
+      ],
+      "weight": 1
+    },
+    {
+      "id": "08_airy_broadleaf_upright_v2",
+      "family": "broadleaf",
+      "name": "疏冠乔木",
+      "path": "res://textures/world_map/bai_chuan/natural_scenery_20261009_v2/08_airy_broadleaf_upright_v2.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1247,
+        1261
+      ],
+      "bounds": [
+        259,
+        61,
+        985,
+        1198
+      ],
+      "weight": 1
+    },
+    {
+      "id": "09_upright_pine",
+      "family": "pine",
+      "name": "挺拔青松",
+      "path": "res://textures/world_map/bai_chuan/natural_scenery_20261009_v2/09_upright_pine.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1312,
+        1199
+      ],
+      "bounds": [
+        280,
+        143,
+        1009,
+        1076
+      ],
+      "weight": 1
+    },
+    {
+      "id": "10_willow",
+      "family": "willow",
+      "name": "垂柳",
+      "path": "res://textures/world_map/bai_chuan/natural_scenery_20261009_v2/10_willow.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1402,
+        1122
+      ],
+      "bounds": [
+        207,
+        32,
+        1272,
+        1073
+      ],
+      "weight": 1
+    },
+    {
+      "id": "11_poplar",
+      "family": "broadleaf",
+      "name": "高冠白杨",
+      "path": "res://textures/world_map/bai_chuan/natural_scenery_20261009_v2/11_poplar.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1536,
+        1024
+      ],
+      "bounds": [
+        525,
+        12,
+        1088,
+        1014
+      ],
+      "weight": 1
+    },
+    {
+      "id": "12_bamboo",
+      "family": "bamboo",
+      "name": "疏竹丛",
+      "path": "res://textures/world_map/bai_chuan/natural_scenery_20261009_v2/12_bamboo.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1568,
+        1003
+      ],
+      "bounds": [
+        516,
+        88,
+        1129,
+        910
+      ],
+      "weight": 1
+    },
+    {
+      "id": "13_moss_boulders",
+      "family": "boulder",
+      "name": "苔石",
+      "path": "res://textures/world_map/bai_chuan/natural_scenery_20261009_v2/13_moss_boulders.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1568,
+        1003
+      ],
+      "bounds": [
+        256,
+        266,
+        1356,
+        772
+      ],
+      "weight": 1
+    },
+    {
+      "id": "14_rock_terrace",
+      "family": "terrace",
+      "name": "层岩坡",
+      "path": "res://textures/world_map/bai_chuan/natural_scenery_20261009_v2/14_rock_terrace.png",
+      "footprint": [
+        2,
+        1
+      ],
+      "size": [
+        1568,
+        1003
+      ],
+      "bounds": [
+        58,
+        324,
+        1533,
+        757
+      ],
+      "weight": 1
+    },
+    {
+      "id": "15_dry_ridge",
+      "family": "tree_rock",
+      "name": "碎石浅岭",
+      "path": "res://textures/world_map/bai_chuan/natural_scenery_20261009_v2/15_dry_ridge.png",
+      "footprint": [
+        2,
+        1
+      ],
+      "size": [
+        1536,
+        1024
+      ],
+      "bounds": [
+        87,
+        180,
+        1472,
+        813
+      ],
+      "weight": 1
+    },
+    {
+      "id": "16_willow_bank",
+      "family": "bank",
+      "name": "柳岸",
+      "path": "res://textures/world_map/bai_chuan/natural_scenery_20261009_v2/16_willow_bank.png",
+      "footprint": [
+        2,
+        1
+      ],
+      "size": [
+        1536,
+        1024
+      ],
+      "bounds": [
+        292,
+        91,
+        1223,
+        923
+      ],
+      "weight": 1
+    },
+    {
+      "id": "17_pebble_rill",
+      "family": "stream",
+      "name": "石间浅溪",
+      "path": "res://textures/world_map/bai_chuan/natural_scenery_20261009_v2/17_pebble_rill.png",
+      "footprint": [
+        2,
+        1
+      ],
+      "size": [
+        1568,
+        1003
+      ],
+      "bounds": [
+        147,
+        311,
+        1422,
+        733
+      ],
+      "weight": 1
+    },
+    {
+      "id": "18_lotus_water",
+      "family": "lotus",
+      "name": "疏荷水面",
+      "path": "res://textures/world_map/bai_chuan/natural_scenery_20261009_v2/18_lotus_water.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1568,
+        1003
+      ],
+      "bounds": [
+        268,
+        182,
+        1382,
+        841
+      ],
+      "weight": 1
+    },
+    {
+      "id": "19_rock_spring",
+      "family": "spring",
+      "name": "石隙清泉",
+      "path": "res://textures/world_map/bai_chuan/natural_scenery_20261009_v2/19_rock_spring.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1536,
+        1024
+      ],
+      "bounds": [
+        289,
+        180,
+        1270,
+        794
+      ],
+      "weight": 1
+    },
+    {
+      "id": "20_lake_shore",
+      "family": "bank",
+      "name": "浅湖石岸",
+      "path": "res://textures/world_map/bai_chuan/natural_scenery_20261009_v2/20_lake_shore.png",
+      "footprint": [
+        2,
+        1
+      ],
+      "size": [
+        1568,
+        1003
+      ],
+      "bounds": [
+        245,
+        212,
+        1420,
+        827
+      ],
+      "weight": 1
+    },
+    {
+      "id": "pine_tall_b",
+      "family": "pine",
+      "name": "疏枝直松",
+      "path": "res://textures/world_map/bai_chuan/natural_families_20261009/pine_tall_b.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1312,
+        1199
+      ],
+      "bounds": [
+        313,
+        109,
+        1040,
+        1154
+      ],
+      "weight": 1
+    },
+    {
+      "id": "pine_compact_c",
+      "family": "pine",
+      "name": "矮冠直松",
+      "path": "res://textures/world_map/bai_chuan/natural_families_20261009/pine_compact_c.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1312,
+        1199
+      ],
+      "bounds": [
+        333,
+        89,
+        1049,
+        1127
+      ],
+      "weight": 1
+    },
+    {
+      "id": "willow_b",
+      "family": "willow",
+      "name": "细叶垂柳",
+      "path": "res://textures/world_map/bai_chuan/natural_families_20261009/willow_b.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1402,
+        1122
+      ],
+      "bounds": [
+        264,
+        53,
+        1163,
+        1086
+      ],
+      "weight": 1
+    },
+    {
+      "id": "bamboo_b",
+      "family": "bamboo",
+      "name": "细竿疏竹",
+      "path": "res://textures/world_map/bai_chuan/natural_families_20261009/bamboo_b.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1402,
+        1122
+      ],
+      "bounds": [
+        383,
+        31,
+        1070,
+        1065
+      ],
+      "weight": 1
+    },
+    {
+      "id": "deadwood_a",
+      "family": "deadwood",
+      "name": "枯枝立木",
+      "path": "res://textures/world_map/bai_chuan/natural_families_20261009/deadwood_a.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1402,
+        1122
+      ],
+      "bounds": [
+        323,
+        25,
+        1177,
+        1085
+      ],
+      "weight": 1
+    },
+    {
+      "id": "deadwood_b",
+      "family": "deadwood",
+      "name": "断木卧石",
+      "path": "res://textures/world_map/bai_chuan/natural_families_20261009/deadwood_b.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1568,
+        1003
+      ],
+      "bounds": [
+        297,
+        296,
+        1308,
+        754
+      ],
+      "weight": 1
+    },
+    {
+      "id": "boulder_b",
+      "family": "boulder",
+      "name": "裂纹孤石",
+      "path": "res://textures/world_map/bai_chuan/natural_families_20261009/boulder_b.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1568,
+        1003
+      ],
+      "bounds": [
+        337,
+        256,
+        1254,
+        831
+      ],
+      "weight": 1
+    },
+    {
+      "id": "terrace_b",
+      "family": "terrace",
+      "name": "斜层岩台",
+      "path": "res://textures/world_map/bai_chuan/natural_families_20261009/terrace_b.png",
+      "footprint": [
+        2,
+        1
+      ],
+      "size": [
+        1568,
+        1003
+      ],
+      "bounds": [
+        145,
+        265,
+        1426,
+        780
+      ],
+      "weight": 1
+    },
+    {
+      "id": "tree_rock_b",
+      "family": "tree_rock",
+      "name": "松石小景",
+      "path": "res://textures/world_map/bai_chuan/natural_families_20261009/tree_rock_b.png",
+      "footprint": [
+        2,
+        1
+      ],
+      "size": [
+        1565,
+        1005
+      ],
+      "bounds": [
+        284,
+        301,
+        1339,
+        817
+      ],
+      "weight": 1
+    },
+    {
+      "id": "shrub_a",
+      "family": "shrub",
+      "name": "圆叶低灌",
+      "path": "res://textures/world_map/bai_chuan/natural_families_20261009/shrub_a.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1402,
+        1122
+      ],
+      "bounds": [
+        207,
+        194,
+        1200,
+        974
+      ],
+      "weight": 1
+    },
+    {
+      "id": "shrub_b",
+      "family": "shrub",
+      "name": "疏枝低灌",
+      "path": "res://textures/world_map/bai_chuan/natural_families_20261009/shrub_b.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1402,
+        1122
+      ],
+      "bounds": [
+        159,
+        131,
+        1278,
+        1012
+      ],
+      "weight": 1
+    },
+    {
+      "id": "stream_b",
+      "family": "stream",
+      "name": "曲流浅涧",
+      "path": "res://textures/world_map/bai_chuan/natural_families_20261009/stream_b.png",
+      "footprint": [
+        2,
+        1
+      ],
+      "size": [
+        1536,
+        1024
+      ],
+      "bounds": [
+        94,
+        166,
+        1470,
+        885
+      ],
+      "weight": 1
+    },
+    {
+      "id": "lotus_b",
+      "family": "lotus",
+      "name": "青荷浮叶",
+      "path": "res://textures/world_map/bai_chuan/natural_families_20261009/lotus_b.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1536,
+        1024
+      ],
+      "bounds": [
+        233,
+        243,
+        1334,
+        824
+      ],
+      "weight": 1
+    },
+    {
+      "id": "spring_b",
+      "family": "spring",
+      "name": "双石流泉",
+      "path": "res://textures/world_map/bai_chuan/natural_families_20261009/spring_b.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        1536,
+        1024
+      ],
+      "bounds": [
+        118,
+        166,
+        1428,
+        884
+      ],
+      "weight": 1
+    },
+    {
+      "id": "pond_a",
+      "family": "pond",
+      "name": "卵石小潭",
+      "path": "res://textures/world_map/bai_chuan/natural_families_20261009/pond_a.png",
+      "footprint": [
+        2,
+        2
+      ],
+      "size": [
+        1536,
+        1024
+      ],
+      "bounds": [
+        160,
+        233,
+        1369,
+        810
+      ],
+      "weight": 1
+    },
+    {
+      "id": "pond_b",
+      "family": "pond",
+      "name": "石岸静潭",
+      "path": "res://textures/world_map/bai_chuan/natural_families_20261009/pond_b.png",
+      "footprint": [
+        2,
+        2
+      ],
+      "size": [
+        1536,
+        1024
+      ],
+      "bounds": [
+        123,
+        261,
+        1435,
+        795
+      ],
+      "weight": 1
+    },
+    {
+      "id": "cliff_a",
+      "family": "cliff",
+      "name": "短壁断崖",
+      "path": "res://textures/world_map/bai_chuan/natural_families_20261009/cliff_a.png",
+      "footprint": [
+        2,
+        2
+      ],
+      "size": [
+        1565,
+        1005
+      ],
+      "bounds": [
+        306,
+        225,
+        1333,
+        817
+      ],
+      "weight": 1
+    },
+    {
+      "id": "cliff_b",
+      "family": "cliff",
+      "name": "层叠岩壁",
+      "path": "res://textures/world_map/bai_chuan/natural_families_20261009/cliff_b.png",
+      "footprint": [
+        2,
+        2
+      ],
+      "size": [
+        1565,
+        1005
+      ],
+      "bounds": [
+        160,
+        191,
+        1485,
+        863
+      ],
+      "weight": 1
+    },
+    {
+      "id": "cave_a",
+      "family": "cave",
+      "name": "幽岩小洞",
+      "path": "res://textures/world_map/bai_chuan/natural_families_20261009/cave_a.png",
+      "footprint": [
+        2,
+        2
+      ],
+      "size": [
+        1568,
+        1003
+      ],
+      "bounds": [
+        218,
+        226,
+        1434,
+        833
+      ],
+      "weight": 1
+    },
+    {
+      "id": "cave_b",
+      "family": "cave",
+      "name": "裂岩洞口",
+      "path": "res://textures/world_map/bai_chuan/natural_families_20261009/cave_b.png",
+      "footprint": [
+        2,
+        2
+      ],
+      "size": [
+        1568,
+        1003
+      ],
+      "bounds": [
+        232,
+        244,
+        1341,
+        867
+      ],
+      "weight": 1
+    }
+  ],
+  "ground": "res://textures/world_map/bai_chuan/natural_scenery_20261009_v2/21_warm_paper_tile.png"
+}

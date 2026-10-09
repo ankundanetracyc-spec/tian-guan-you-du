@@ -13,25 +13,30 @@ public partial class InkVfxShowcase : Control
     private const int MaskWidth = 512;
     private const int MaskHeight = 288;
 
-    private enum PreviewType { Shader, Shield, Death, Punch, SwordCleave, SwordImpact }
+    private enum PreviewType { Shader, Shield, Death, Punch, SwordCleave, SwordImpact, Impact, CriticalImpact, SwordExchange, RealSkill }
 
-    private readonly record struct EffectDefinition(string Id, string Name, string Summary, Color Color, float Spread, float Distortion, float EdgeDarkness, float Duration, float Mode, PreviewType Preview);
+    private readonly record struct EffectDefinition(string Id, string Name, string Summary, Color Color, float Spread, float Distortion, float EdgeDarkness, float Duration, float Mode, PreviewType Preview, string SkillPath = "");
 
-    private static readonly EffectDefinition[] Effects =
+    private static readonly EffectDefinition[] BaseEffects =
     [
         new("bleed", "墨晕扩散", "中心墨团向纸面缓慢渗开，保留湿边和中心沉积。", new Color("18211f"), 1.0f, 0.040f, 0.95f, 2.4f, 0f, PreviewType.Shader),
         new("drop", "墨滴回渗", "墨滴落纸后形成不规则外圈，边缘有轻微回流。", new Color("26352f"), 1.18f, 0.052f, 0.86f, 2.6f, 1f, PreviewType.Shader),
         new("brush", "笔锋扫掠", "一笔横扫留下带方向性的湿墨拖尾。", new Color("1c2925"), 0.82f, 0.032f, 1.08f, 1.75f, 2f, PreviewType.Shader),
         new("burst", "碎墨爆散", "墨团向外炸开，边缘破碎并带有颗粒感。", new Color("222b28"), 1.28f, 0.070f, 0.70f, 1.55f, 3f, PreviewType.Shader),
         new("dry_edge", "干湿边缘", "主体淡化，只观察外圈、回渗和干燥边界。", new Color("29302c"), 1.04f, 0.045f, 1.20f, 2.2f, 4f, PreviewType.Shader),
-        new("battle_shield", "战斗·常驻护盾", "青蓝水墨护盾外壳；保留伪 3D 球面、流动纹理和受击波纹。", new Color("316ca0"), 0f, 0f, 0f, 2.4f, 0f, PreviewType.Shield),
-        new("battle_death", "战斗·死亡墨散", "角色消散时向外分裂的墨团、断线和飞散墨点。", new Color("18211f"), 0f, 0f, 0f, 0.9f, 0f, PreviewType.Death),
-        new("battle_punch", "战斗·拳击 1", "肉色水墨前臂与拳头带着三层拳风冲出，命中时展开暖赭墨花。", new Color("a85c4d"), 0f, 0f, 0f, 0.65f, 0f, PreviewType.Punch),
-        new("battle_sword_cleave", "战斗·剑劈斩（出手）", "攻击方挥出弦月黑墨，笔势轻快、两端收尖；周围少量随机墨点独立飞散。", new Color("3d7187"), 0f, 0f, 0f, 0.55f, 0f, PreviewType.SwordCleave),
-        new("battle_sword_impact", "战斗·剑斩受击", "目标身上短促显现黑墨切痕，粗细急变、飞白收锋；附少量独立墨点。", new Color("7da8b7"), 0f, 0f, 0f, 0.55f, 0f, PreviewType.SwordImpact),
+        new("battle_shield", "战斗·常驻护盾", "青灰湿墨形成护持边界；来袭一侧积墨受力，淡墨向外洇开。", new Color("316ca0"), 0f, 0f, 0f, 2.4f, 0f, PreviewType.Shield),
+        new("battle_death", "战斗·死亡墨散", "深墨短暂沉积，再收束为不规则枯墨，湿边逐渐散淡。", new Color("18211f"), 0f, 0f, 0f, 0.9f, 0f, PreviewType.Death),
+        new("battle_punch", "战斗·发劲", "暖灰劲痕加速推出，接触顿笔后向受力方向散开，干湿笔触逐层收淡。", new Color("a85c4d"), 0f, 0f, 0f, 0.65f, 0f, PreviewType.Punch),
+        new("battle_sword_cleave", "练手·剑劈斩（出手）", "浓墨笔锋疾扫，淡墨随笔势流动，拖尾逐渐破开；只留几滴抛落的余墨。", new Color("3d7187"), 0f, 0f, 0f, 0.70f, 0f, PreviewType.SwordCleave),
+        new("battle_sword_impact", "练手·剑斩受击", "短促落锋形成浓墨切痕，湿边略微洇开，再由枯笔断裂消散。", new Color("7da8b7"), 0f, 0f, 0f, 0.65f, 0f, PreviewType.SwordImpact),
+        new("battle_ink_hit", "战斗·泼墨命中", "接触处浓墨压缩后爆开，不规则墨花与断裂冲击纹向外散去，墨滴抛落后收淡。", new Color("18211f"), 0f, 0f, 0f, 0.5f, 0f, PreviewType.Impact),
+        new("battle_ink_critical", "战斗·重击墨爆", "重击扩展墨花范围，以克制的赭红积墨强调接触瞬间，余劲沿受力方向断笔收淡。", new Color("783d2d"), 0f, 0f, 0f, 0.5f, 0f, PreviewType.CriticalImpact),
+        new("battle_ink_exchange", "练手·水墨剑斩", "观察出手、落剑、受击与余墨消散的完整节奏。", new Color("18211f"), 0f, 0f, 0f, 0.9f, 0f, PreviewType.SwordExchange),
     ];
 
     private readonly List<Button> _effectButtons = [];
+    private EffectDefinition[] _effects = [];
+    private int _previewDirection;
     private readonly List<ImageTexture> _masks = [];
     private TextureRect? _inkLayer;
     private Control? _stage;
@@ -48,10 +53,23 @@ public partial class InkVfxShowcase : Control
     private float _elapsed;
     private bool _playing;
     private bool _shieldPreviewImpactPlayed;
+    private int _previewGeneration;
 
     public override void _Ready()
     {
         SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        var definitions = new List<EffectDefinition>(BaseEffects);
+        foreach (var path in SkillFiles("res://resources/activeskills"))
+        {
+            // Weapon resources remain legacy practice material; active skills are previewed from their real data.
+            if (path.Contains("/武器技能/")) continue;
+            var skill = GD.Load<ActiveSkillData>(path);
+            if (skill is null || skill.skill_type == ActiveSkillData.SkillType.POWER || skill.skill_type == ActiveSkillData.SkillType.CURSE) continue;
+            var suffix = string.IsNullOrEmpty(skill.source_gongfa_name) ? "" : " · " + skill.source_gongfa_name;
+            definitions.Add(new EffectDefinition(path, skill.skill_name + suffix, BattleInkCombatVfx.Describe(skill), new Color("18211f"),
+                0f, 0f, 0f, 0.85f, 0f, PreviewType.RealSkill, path));
+        }
+        _effects = definitions.ToArray();
         _masks.Add(CreateMask(0));
         _masks.Add(CreateMask(1));
         _masks.Add(CreateMask(2));
@@ -60,7 +78,23 @@ public partial class InkVfxShowcase : Control
 
         BuildBackdrop();
         BuildLayout();
-        SelectEffect(0);
+        var initial = System.Array.FindIndex(_effects, effect => effect.SkillPath.EndsWith("/应敌.tres"));
+        SelectEffect(initial >= 0 ? initial : 0);
+    }
+
+    private static IEnumerable<string> SkillFiles(string directory)
+    {
+        foreach (var file in DirAccess.GetFilesAt(directory).OrderBy(value => value))
+            if (file.EndsWith(".tres")) yield return directory + "/" + file;
+        foreach (var folder in DirAccess.GetDirectoriesAt(directory).OrderBy(value => value))
+            foreach (var path in SkillFiles(directory + "/" + folder)) yield return path;
+    }
+
+    public void PreviewSkill(string path, int direction = 0)
+    {
+        _previewDirection = Mathf.PosMod(direction, 4);
+        var index = System.Array.FindIndex(_effects, effect => effect.SkillPath == path);
+        if (index >= 0) SelectEffect(index);
     }
 
     public override void _Process(double delta)
@@ -182,16 +216,16 @@ public partial class InkVfxShowcase : Control
         left.AddChild(MakeLabel("效果类型", 23, new Color("30291f")));
         left.AddChild(MakeLabel("选择一种表现，右侧会自动播放。\n空格：重播　Esc：返回", 15, new Color("615645")));
 
-        for (var i = 0; i < Effects.Length; i++)
+        for (var i = 0; i < _effects.Length; i++)
         {
             var index = i;
-            var button = MakeChoiceButton(Effects[i].Name);
+            var button = MakeChoiceButton(_effects[i].Name);
             button.Pressed += () => SelectEffect(index);
             _effectButtons.Add(button);
             left.AddChild(button);
         }
 
-        var note = MakeLabel("首版策略\n不使用完整流体模拟；以程序化墨形、低采样扩散和纸张噪声换取更好的运行时性价比。战斗三类效果与真实战斗入口共用表现层。", 13, new Color("6b604e"));
+        var note = MakeLabel("观察交手\n下方技能来自当前技能资源。短打、灵息、神魂、符箓与妖兽招式分别呈现；切换方向可检查出手、落点与受力。", 13, new Color("6b604e"));
         note.AutowrapMode = TextServer.AutowrapMode.WordSmart;
         note.SizeFlagsVertical = SizeFlags.Expand;
         left.AddChild(note);
@@ -240,6 +274,10 @@ public partial class InkVfxShowcase : Control
         var replay = MakeButton("重播", 100, 38);
         replay.Position = new Vector2(22, 58);
         replay.Pressed += Replay;
+        var facing = MakeButton("切换交手方向", 160, 36);
+        facing.Position = new Vector2(154f, 76f);
+        facing.Pressed += () => { _previewDirection = (_previewDirection + 1) % 4; Replay(); };
+        stage.AddChild(facing);
         stage.AddChild(replay);
 
         var info = new VBoxContainer { Name = "Info", Position = new Vector2(22, 0), SizeFlagsHorizontal = SizeFlags.ExpandFill, MouseFilter = MouseFilterEnum.Ignore };
@@ -259,9 +297,9 @@ public partial class InkVfxShowcase : Control
 
     private void SelectEffect(int index)
     {
-        if (index < 0 || index >= Effects.Length || _inkLayer is null) return;
+        if (index < 0 || index >= _effects.Length || _inkLayer is null) return;
         _currentIndex = index;
-        _current = Effects[index];
+        _current = _effects[index];
         var isBattlePreview = _current.Preview != PreviewType.Shader;
         _inkLayer.Visible = !isBattlePreview;
         if (_battleLayer is not null) _battleLayer.Visible = isBattlePreview;
@@ -290,6 +328,7 @@ public partial class InkVfxShowcase : Control
 
     private void Replay()
     {
+        _previewGeneration++;
         _elapsed = 0f;
         _playing = true;
         _shieldPreviewImpactPlayed = false;
@@ -315,7 +354,17 @@ public partial class InkVfxShowcase : Control
         var center = new Vector2(size.X * 0.5f, size.Y * 0.50f);
         _battleAttacker.Position = center + new Vector2(-165f, 112f);
         _battleTarget.Position = center + new Vector2(165f, 112f);
-        _shieldPreview.Position = center;
+        if (_previewDirection == 1)
+        {
+            _battleAttacker.Position = center + new Vector2(165f, 112f);
+            _battleTarget.Position = center + new Vector2(-165f, 112f);
+        }
+        else if (_previewDirection == 2) _battleTarget.Position += Vector2.Up * 100f;
+        else if (_previewDirection == 3) _battleTarget.Position += Vector2.Down * 100f;
+        var direction = (_battleTarget.Position - _battleAttacker.Position).Normalized();
+        _battleAttacker.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.face_direction(direction);
+        _battleTarget.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.face_direction(-direction);
+        _shieldPreview.Position = _battleLayer!.ToLocal(BattleInkCombatVfx.Anchor(_battleTarget));
     }
 
     private void TriggerBattlePreview()
@@ -330,14 +379,35 @@ public partial class InkVfxShowcase : Control
             return;
         }
 
+        if (_current.Preview == PreviewType.RealSkill)
+        {
+            var skill = GD.Load<ActiveSkillData>(_current.SkillPath);
+            if (skill is null) return;
+            var attacker = _battleAttacker;
+            var target = _battleTarget;
+            var direction = (target.GlobalPosition - attacker.GlobalPosition).Normalized();
+            if (!BattleInkCombatVfx.DealsDamage(skill)) { BattleInkCombatVfx.PlayUtility(attacker, target, skill); return; }
+            attacker.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_attack(direction);
+            BattleInkCombatVfx.PlayAttack(attacker, target, skill);
+            var generation = _previewGeneration;
+            GetTree().CreateTimer(BattleInkCombatVfx.ContactSeconds).Timeout += () =>
+            {
+                if (generation != _previewGeneration || !IsInstanceValid(target)) return;
+                BattleInkCombatVfx.PlayImpact(target, skill, attacker);
+                target.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_hit(direction, BattleInkCombatVfx.HitWeight(skill));
+            };
+            return;
+        }
+
         if (_current.Preview == PreviewType.Punch)
         {
-            var skill = new ActiveSkillData { skill_name = "拳击战斗1", damage_type = "physical" };
+            var skill = new ActiveSkillData { skill_name = "发劲", damage_type = "physical" };
             BattleInkSlashEffect.PlayAttack(_battleAttacker, _battleTarget, skill);
             var target = _battleTarget;
+            var generation = _previewGeneration;
             GetTree().CreateTimer(0.16f).Timeout += () =>
             {
-                if (GodotObject.IsInstanceValid(target)) BattleInkSlashEffect.PlayImpactForSkill(target, skill, false);
+                if (generation == _previewGeneration && GodotObject.IsInstanceValid(target)) BattleInkSlashEffect.PlayImpactForSkill(target, skill, false);
             };
             return;
         }
@@ -351,6 +421,24 @@ public partial class InkVfxShowcase : Control
 
         if (_current.Preview == PreviewType.SwordImpact)
             BattleInkSlashEffect.PlaySwordImpact(_battleTarget, _battleAttacker);
+
+        if (_current.Preview is PreviewType.Impact or PreviewType.CriticalImpact)
+            BattleInkSlashEffect.PlayImpact(_battleTarget, _current.Preview == PreviewType.CriticalImpact);
+
+        if (_current.Preview == PreviewType.SwordExchange)
+        {
+            var attacker = _battleAttacker;
+            var target = _battleTarget;
+            var generation = _previewGeneration;
+            attacker.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_attack(Vector2.Right);
+            BattleInkSlashEffect.PlaySwordCleave(attacker, target);
+            GetTree().CreateTimer(0.15f).Timeout += () =>
+            {
+                if (generation != _previewGeneration || !IsInstanceValid(target)) return;
+                BattleInkSlashEffect.PlaySwordImpact(target, attacker);
+                target.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_hit(Vector2.Right);
+            };
+        }
     }
 
     private static ImageTexture CreateMask(int type)
@@ -427,20 +515,12 @@ public partial class InkVfxShowcase : Control
             Color = new Color(0.06f, 0.08f, 0.07f, 0.22f),
             Position = new Vector2(0f, -20f)
         });
-        marker.AddChild(new Polygon2D
-        {
-            Polygon = [new Vector2(-24f, 8f), new Vector2(-20f, -38f), new Vector2(-10f, -62f), new Vector2(0f, -70f), new Vector2(12f, -61f), new Vector2(22f, -36f), new Vector2(25f, 8f), new Vector2(12f, 15f), new Vector2(-14f, 15f)],
-            Color = color,
-            Position = new Vector2(0f, -58f)
-        });
-        marker.AddChild(new Polygon2D
-        {
-            Polygon = [new Vector2(-13f, 10f), new Vector2(-11f, -10f), new Vector2(0f, -20f), new Vector2(12f, -10f), new Vector2(14f, 10f)],
-            Color = new Color(0.88f, 0.80f, 0.62f, 0.64f),
-            Position = new Vector2(0f, -125f)
-        });
+        var doll = new BattlePaperDoll { Name = "BattlePaperDoll" };
+        marker.AddChild(doll);
+        doll.Configure(new BattleEntityData { entity_name = text, gender = 0,
+            faction = text == "目标" ? (int)WorldEntity.Faction.ENEMY : 1 });
         var label = MakeLabel(text, 13, new Color(0.19f, 0.16f, 0.11f, 0.90f));
-        label.Position = new Vector2(-28f, -178f);
+        label.Position = new Vector2(-28f, 18f);
         label.MouseFilter = Control.MouseFilterEnum.Ignore;
         marker.AddChild(label);
         return marker;
@@ -521,3 +601,4 @@ public partial class InkVfxShowcase : Control
         };
     }
 }
+

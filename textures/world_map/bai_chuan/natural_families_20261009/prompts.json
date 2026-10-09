@@ -1,0 +1,225 @@
+{
+  "tool": "built-in imagegen",
+  "jobs": [
+    {
+      "id": "pine_tall_b",
+      "family": "pine",
+      "name": "疏枝直松",
+      "footprint": [
+        1,
+        1
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: original small local Chinese xianxia overworld MAP SPRITE. Match reference painting medium, fine charcoal contours, restrained dry brush, light slate blue gray rock and muted sage olive foliage. Reference is STYLE ONLY: design a NEW distinctive shape, no tracing. Simple readable ordinary map prop, not a panorama or giant regional landscape. Elevated front oblique view, whole subject inside clear margins. Ground contact has only a tiny warm beige wash close to RGB(227,207,177), fading to genuine alpha transparency. Actual transparent empty canvas, no opaque paper rectangle, white fog or halo, cast shadow, fake checkerboard, text, grid, border, characters, buildings or grass. No decorative extra elements beyond requested subject. Subject: ONE upright slender pine with tall nearly straight vertical trunk, sparse irregular upward and horizontal short branches, narrow open silhouette.",
+      "reference": "E:/stacklands/textures/world_map/bai_chuan/natural_scenery_20261009_v2/09_upright_pine.png"
+    },
+    {
+      "id": "pine_compact_c",
+      "family": "pine",
+      "name": "矮冠直松",
+      "footprint": [
+        1,
+        1
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: original small local Chinese xianxia overworld MAP SPRITE. Match reference painting medium, fine charcoal contours, restrained dry brush, light slate blue gray rock and muted sage olive foliage. Reference is STYLE ONLY: design a NEW distinctive shape, no tracing. Simple readable ordinary map prop, not a panorama or giant regional landscape. Elevated front oblique view, whole subject inside clear margins. Ground contact has only a tiny warm beige wash close to RGB(227,207,177), fading to genuine alpha transparency. Actual transparent empty canvas, no opaque paper rectangle, white fog or halo, cast shadow, fake checkerboard, text, grid, border, characters, buildings or grass. No decorative extra elements beyond requested subject. Subject: ONE short mature pine with a vertically straight slim trunk and compact asymmetric dark sage umbrella canopy. Never bent or S-shaped trunk.",
+      "reference": "E:/stacklands/textures/world_map/bai_chuan/natural_scenery_20261009_v2/09_upright_pine.png"
+    },
+    {
+      "id": "willow_b",
+      "family": "willow",
+      "name": "细叶垂柳",
+      "footprint": [
+        1,
+        1
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: original small local Chinese xianxia overworld MAP SPRITE. Match reference painting medium, fine charcoal contours, restrained dry brush, light slate blue gray rock and muted sage olive foliage. Reference is STYLE ONLY: design a NEW distinctive shape, no tracing. Simple readable ordinary map prop, not a panorama or giant regional landscape. Elevated front oblique view, whole subject inside clear margins. Ground contact has only a tiny warm beige wash close to RGB(227,207,177), fading to genuine alpha transparency. Actual transparent empty canvas, no opaque paper rectangle, white fog or halo, cast shadow, fake checkerboard, text, grid, border, characters, buildings or grass. No decorative extra elements beyond requested subject. Subject: ONE willow with a straight upright slender trunk and long fine loosely hanging foliage, narrow airy crown, no curved main trunk.",
+      "reference": "E:/stacklands/textures/world_map/bai_chuan/natural_scenery_20261009_v2/07_round_broadleaf_upright_v2.png"
+    },
+    {
+      "id": "bamboo_b",
+      "family": "bamboo",
+      "name": "细竿疏竹",
+      "footprint": [
+        1,
+        1
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: original small local Chinese xianxia overworld MAP SPRITE. Match reference painting medium, fine charcoal contours, restrained dry brush, light slate blue gray rock and muted sage olive foliage. Reference is STYLE ONLY: design a NEW distinctive shape, no tracing. Simple readable ordinary map prop, not a panorama or giant regional landscape. Elevated front oblique view, whole subject inside clear margins. Ground contact has only a tiny warm beige wash close to RGB(227,207,177), fading to genuine alpha transparency. Actual transparent empty canvas, no opaque paper rectangle, white fog or halo, cast shadow, fake checkerboard, text, grid, border, characters, buildings or grass. No decorative extra elements beyond requested subject. Subject: One sparse bamboo clump, five straight upright slim stems at different heights, delicate pointed olive leaves with open gaps.",
+      "reference": "E:/stacklands/textures/world_map/bai_chuan/natural_scenery_20261009_v2/07_round_broadleaf_upright_v2.png"
+    },
+    {
+      "id": "deadwood_a",
+      "family": "deadwood",
+      "name": "枯枝立木",
+      "footprint": [
+        1,
+        1
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: original small local Chinese xianxia overworld MAP SPRITE. Match reference painting medium, fine charcoal contours, restrained dry brush, light slate blue gray rock and muted sage olive foliage. Reference is STYLE ONLY: design a NEW distinctive shape, no tracing. Simple readable ordinary map prop, not a panorama or giant regional landscape. Elevated front oblique view, whole subject inside clear margins. Ground contact has only a tiny warm beige wash close to RGB(227,207,177), fading to genuine alpha transparency. Actual transparent empty canvas, no opaque paper rectangle, white fog or halo, cast shadow, fake checkerboard, text, grid, border, characters, buildings or grass. No decorative extra elements beyond requested subject. Subject: ONE slender upright leafless tree, few delicate irregular forked bare branches, restrained dark gray bark, minimal small roots.",
+      "reference": "E:/stacklands/textures/world_map/bai_chuan/natural_scenery_20261009_v2/07_round_broadleaf_upright_v2.png"
+    },
+    {
+      "id": "deadwood_b",
+      "family": "deadwood",
+      "name": "断木卧石",
+      "footprint": [
+        1,
+        1
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: original small local Chinese xianxia overworld MAP SPRITE. Match reference painting medium, fine charcoal contours, restrained dry brush, light slate blue gray rock and muted sage olive foliage. Reference is STYLE ONLY: design a NEW distinctive shape, no tracing. Simple readable ordinary map prop, not a panorama or giant regional landscape. Elevated front oblique view, whole subject inside clear margins. Ground contact has only a tiny warm beige wash close to RGB(227,207,177), fading to genuine alpha transparency. Actual transparent empty canvas, no opaque paper rectangle, white fog or halo, cast shadow, fake checkerboard, text, grid, border, characters, buildings or grass. No decorative extra elements beyond requested subject. Subject: One small weathered fallen hollow trunk with two short broken branches beside a tiny gray stone, low horizontal silhouette.",
+      "reference": "E:/stacklands/textures/world_map/bai_chuan/natural_scenery_20261009_v2/13_moss_boulders.png"
+    },
+    {
+      "id": "boulder_b",
+      "family": "boulder",
+      "name": "裂纹孤石",
+      "footprint": [
+        1,
+        1
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: original small local Chinese xianxia overworld MAP SPRITE. Match reference painting medium, fine charcoal contours, restrained dry brush, light slate blue gray rock and muted sage olive foliage. Reference is STYLE ONLY: design a NEW distinctive shape, no tracing. Simple readable ordinary map prop, not a panorama or giant regional landscape. Elevated front oblique view, whole subject inside clear margins. Ground contact has only a tiny warm beige wash close to RGB(227,207,177), fading to genuine alpha transparency. Actual transparent empty canvas, no opaque paper rectangle, white fog or halo, cast shadow, fake checkerboard, text, grid, border, characters, buildings or grass. No decorative extra elements beyond requested subject. Subject: One rounded weathered gray boulder with a smaller chipped stone at its foot, sparse moss in one crack, low simple silhouette.",
+      "reference": "E:/stacklands/textures/world_map/bai_chuan/natural_scenery_20261009_v2/13_moss_boulders.png"
+    },
+    {
+      "id": "terrace_b",
+      "family": "terrace",
+      "name": "斜层岩台",
+      "footprint": [
+        2,
+        1
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: original small local Chinese xianxia overworld MAP SPRITE. Match reference painting medium, fine charcoal contours, restrained dry brush, light slate blue gray rock and muted sage olive foliage. Reference is STYLE ONLY: design a NEW distinctive shape, no tracing. Simple readable ordinary map prop, not a panorama or giant regional landscape. Elevated front oblique view, whole subject inside clear margins. Ground contact has only a tiny warm beige wash close to RGB(227,207,177), fading to genuine alpha transparency. Actual transparent empty canvas, no opaque paper rectangle, white fog or halo, cast shadow, fake checkerboard, text, grid, border, characters, buildings or grass. No decorative extra elements beyond requested subject. Subject: A small low asymmetric sloping rocky terrace, three broad thin natural ledges stepping down to the left, tiny moss spots.",
+      "reference": "E:/stacklands/textures/world_map/bai_chuan/natural_scenery_20261009_v2/13_moss_boulders.png"
+    },
+    {
+      "id": "tree_rock_b",
+      "family": "tree_rock",
+      "name": "松石小景",
+      "footprint": [
+        2,
+        1
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: original small local Chinese xianxia overworld MAP SPRITE. Match reference painting medium, fine charcoal contours, restrained dry brush, light slate blue gray rock and muted sage olive foliage. Reference is STYLE ONLY: design a NEW distinctive shape, no tracing. Simple readable ordinary map prop, not a panorama or giant regional landscape. Elevated front oblique view, whole subject inside clear margins. Ground contact has only a tiny warm beige wash close to RGB(227,207,177), fading to genuine alpha transparency. Actual transparent empty canvas, no opaque paper rectangle, white fog or halo, cast shadow, fake checkerboard, text, grid, border, characters, buildings or grass. No decorative extra elements beyond requested subject. Subject: One small local vignette of a modest stone outcrop and ONE tiny upright straight-trunk pine at its left foot; airy low silhouette.",
+      "reference": "E:/stacklands/textures/world_map/bai_chuan/natural_scenery_20261009_v2/04_three_peak.png"
+    },
+    {
+      "id": "shrub_a",
+      "family": "shrub",
+      "name": "圆叶低灌",
+      "footprint": [
+        1,
+        1
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: original small local Chinese xianxia overworld MAP SPRITE. Match reference painting medium, fine charcoal contours, restrained dry brush, light slate blue gray rock and muted sage olive foliage. Reference is STYLE ONLY: design a NEW distinctive shape, no tracing. Simple readable ordinary map prop, not a panorama or giant regional landscape. Elevated front oblique view, whole subject inside clear margins. Ground contact has only a tiny warm beige wash close to RGB(227,207,177), fading to genuine alpha transparency. Actual transparent empty canvas, no opaque paper rectangle, white fog or halo, cast shadow, fake checkerboard, text, grid, border, characters, buildings or grass. No decorative extra elements beyond requested subject. Subject: One low loose rounded sage olive leafy shrub, delicate twig structure glimpsed through foliage, no grass blades and no tree.",
+      "reference": "E:/stacklands/textures/world_map/bai_chuan/natural_scenery_20261009_v2/07_round_broadleaf_upright_v2.png"
+    },
+    {
+      "id": "shrub_b",
+      "family": "shrub",
+      "name": "疏枝低灌",
+      "footprint": [
+        1,
+        1
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: original small local Chinese xianxia overworld MAP SPRITE. Match reference painting medium, fine charcoal contours, restrained dry brush, light slate blue gray rock and muted sage olive foliage. Reference is STYLE ONLY: design a NEW distinctive shape, no tracing. Simple readable ordinary map prop, not a panorama or giant regional landscape. Elevated front oblique view, whole subject inside clear margins. Ground contact has only a tiny warm beige wash close to RGB(227,207,177), fading to genuine alpha transparency. Actual transparent empty canvas, no opaque paper rectangle, white fog or halo, cast shadow, fake checkerboard, text, grid, border, characters, buildings or grass. No decorative extra elements beyond requested subject. Subject: Two unequal tiny low woody shrubs forming one compact natural cluster, irregular open twiggy foliage in muted gray olive; no grass blades.",
+      "reference": "E:/stacklands/textures/world_map/bai_chuan/natural_scenery_20261009_v2/07_round_broadleaf_upright_v2.png"
+    },
+    {
+      "id": "stream_b",
+      "family": "stream",
+      "name": "曲流浅涧",
+      "footprint": [
+        2,
+        1
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: original small local Chinese xianxia overworld MAP SPRITE. Match reference painting medium, fine charcoal contours, restrained dry brush, light slate blue gray rock and muted sage olive foliage. Reference is STYLE ONLY: design a NEW distinctive shape, no tracing. Simple readable ordinary map prop, not a panorama or giant regional landscape. Elevated front oblique view, whole subject inside clear margins. Ground contact has only a tiny warm beige wash close to RGB(227,207,177), fading to genuine alpha transparency. Actual transparent empty canvas, no opaque paper rectangle, white fog or halo, cast shadow, fake checkerboard, text, grid, border, characters, buildings or grass. No decorative extra elements beyond requested subject. Subject: One small local segment of pale dusty blue shallow stream with one gentle bend, irregular sandy banks and three small gray stones, no tree.",
+      "reference": "E:/stacklands/textures/world_map/bai_chuan/natural_scenery_20261009_v2/19_rock_spring.png"
+    },
+    {
+      "id": "lotus_b",
+      "family": "lotus",
+      "name": "青荷浮叶",
+      "footprint": [
+        1,
+        1
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: original small local Chinese xianxia overworld MAP SPRITE. Match reference painting medium, fine charcoal contours, restrained dry brush, light slate blue gray rock and muted sage olive foliage. Reference is STYLE ONLY: design a NEW distinctive shape, no tracing. Simple readable ordinary map prop, not a panorama or giant regional landscape. Elevated front oblique view, whole subject inside clear margins. Ground contact has only a tiny warm beige wash close to RGB(227,207,177), fading to genuine alpha transparency. Actual transparent empty canvas, no opaque paper rectangle, white fog or halo, cast shadow, fake checkerboard, text, grid, border, characters, buildings or grass. No decorative extra elements beyond requested subject. Subject: A sparse little patch of five uneven muted sage floating lotus leaves and one small ivory lotus bud, tiny pale blue water wash, no reeds or grass.",
+      "reference": "E:/stacklands/textures/world_map/bai_chuan/natural_scenery_20261009_v2/19_rock_spring.png"
+    },
+    {
+      "id": "spring_b",
+      "family": "spring",
+      "name": "双石流泉",
+      "footprint": [
+        1,
+        1
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: original small local Chinese xianxia overworld MAP SPRITE. Match reference painting medium, fine charcoal contours, restrained dry brush, light slate blue gray rock and muted sage olive foliage. Reference is STYLE ONLY: design a NEW distinctive shape, no tracing. Simple readable ordinary map prop, not a panorama or giant regional landscape. Elevated front oblique view, whole subject inside clear margins. Ground contact has only a tiny warm beige wash close to RGB(227,207,177), fading to genuine alpha transparency. Actual transparent empty canvas, no opaque paper rectangle, white fog or halo, cast shadow, fake checkerboard, text, grid, border, characters, buildings or grass. No decorative extra elements beyond requested subject. Subject: A compact clear spring trickle between two modest gray boulders into a tiny pale dusty blue shallow pool, no tree.",
+      "reference": "E:/stacklands/textures/world_map/bai_chuan/natural_scenery_20261009_v2/19_rock_spring.png"
+    },
+    {
+      "id": "pond_a",
+      "family": "pond",
+      "name": "卵石小潭",
+      "footprint": [
+        2,
+        2
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: original small local Chinese xianxia overworld MAP SPRITE. Match reference painting medium, fine charcoal contours, restrained dry brush, light slate blue gray rock and muted sage olive foliage. Reference is STYLE ONLY: design a NEW distinctive shape, no tracing. Simple readable ordinary map prop, not a panorama or giant regional landscape. Elevated front oblique view, whole subject inside clear margins. Ground contact has only a tiny warm beige wash close to RGB(227,207,177), fading to genuine alpha transparency. Actual transparent empty canvas, no opaque paper rectangle, white fog or halo, cast shadow, fake checkerboard, text, grid, border, characters, buildings or grass. No decorative extra elements beyond requested subject. Subject: One tiny irregular shallow pale blue pond surrounded on one side by four small rounded gray pebbles, sandy warm shoreline, quiet thin ripples, no trees.",
+      "reference": "E:/stacklands/textures/world_map/bai_chuan/natural_scenery_20261009_v2/19_rock_spring.png"
+    },
+    {
+      "id": "pond_b",
+      "family": "pond",
+      "name": "石岸静潭",
+      "footprint": [
+        2,
+        2
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: original small local Chinese xianxia overworld MAP SPRITE. Match reference painting medium, fine charcoal contours, restrained dry brush, light slate blue gray rock and muted sage olive foliage. Reference is STYLE ONLY: design a NEW distinctive shape, no tracing. Simple readable ordinary map prop, not a panorama or giant regional landscape. Elevated front oblique view, whole subject inside clear margins. Ground contact has only a tiny warm beige wash close to RGB(227,207,177), fading to genuine alpha transparency. Actual transparent empty canvas, no opaque paper rectangle, white fog or halo, cast shadow, fake checkerboard, text, grid, border, characters, buildings or grass. No decorative extra elements beyond requested subject. Subject: One small asymmetric kidney-shaped pale blue quiet pond with a low cracked slate rock along one short bank and sparse floating leaves, no tree.",
+      "reference": "E:/stacklands/textures/world_map/bai_chuan/natural_scenery_20261009_v2/19_rock_spring.png"
+    },
+    {
+      "id": "cliff_a",
+      "family": "cliff",
+      "name": "短壁断崖",
+      "footprint": [
+        2,
+        2
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: original small local Chinese xianxia overworld MAP SPRITE. Match reference painting medium, fine charcoal contours, restrained dry brush, light slate blue gray rock and muted sage olive foliage. Reference is STYLE ONLY: design a NEW distinctive shape, no tracing. Simple readable ordinary map prop, not a panorama or giant regional landscape. Elevated front oblique view, whole subject inside clear margins. Ground contact has only a tiny warm beige wash close to RGB(227,207,177), fading to genuine alpha transparency. Actual transparent empty canvas, no opaque paper rectangle, white fog or halo, cast shadow, fake checkerboard, text, grid, border, characters, buildings or grass. No decorative extra elements beyond requested subject. Subject: One modest local vertical rock escarpment, flat uneven upper lip and broken gray stone planes, three small fallen rocks at foot, no trees, no tall peaks.",
+      "reference": "E:/stacklands/textures/world_map/bai_chuan/natural_scenery_20261009_v2/04_three_peak.png"
+    },
+    {
+      "id": "cliff_b",
+      "family": "cliff",
+      "name": "层叠岩壁",
+      "footprint": [
+        2,
+        2
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: original small local Chinese xianxia overworld MAP SPRITE. Match reference painting medium, fine charcoal contours, restrained dry brush, light slate blue gray rock and muted sage olive foliage. Reference is STYLE ONLY: design a NEW distinctive shape, no tracing. Simple readable ordinary map prop, not a panorama or giant regional landscape. Elevated front oblique view, whole subject inside clear margins. Ground contact has only a tiny warm beige wash close to RGB(227,207,177), fading to genuine alpha transparency. Actual transparent empty canvas, no opaque paper rectangle, white fog or halo, cast shadow, fake checkerboard, text, grid, border, characters, buildings or grass. No decorative extra elements beyond requested subject. Subject: One small broad low layered cliff face with unequal horizontal stone ledges and a stepped slope on the right, spare moss in crevices, no trees.",
+      "reference": "E:/stacklands/textures/world_map/bai_chuan/natural_scenery_20261009_v2/04_three_peak.png"
+    },
+    {
+      "id": "cave_a",
+      "family": "cave",
+      "name": "幽岩小洞",
+      "footprint": [
+        2,
+        2
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: original small local Chinese xianxia overworld MAP SPRITE. Match reference painting medium, fine charcoal contours, restrained dry brush, light slate blue gray rock and muted sage olive foliage. Reference is STYLE ONLY: design a NEW distinctive shape, no tracing. Simple readable ordinary map prop, not a panorama or giant regional landscape. Elevated front oblique view, whole subject inside clear margins. Ground contact has only a tiny warm beige wash close to RGB(227,207,177), fading to genuine alpha transparency. Actual transparent empty canvas, no opaque paper rectangle, white fog or halo, cast shadow, fake checkerboard, text, grid, border, characters, buildings or grass. No decorative extra elements beyond requested subject. Subject: One modest rounded gray rock outcrop with a small dark natural cave opening offset to left, minimal stones at entrance, no trees, architecture or symbols.",
+      "reference": "E:/stacklands/textures/world_map/bai_chuan/natural_scenery_20261009_v2/13_moss_boulders.png"
+    },
+    {
+      "id": "cave_b",
+      "family": "cave",
+      "name": "裂岩洞口",
+      "footprint": [
+        2,
+        2
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: original small local Chinese xianxia overworld MAP SPRITE. Match reference painting medium, fine charcoal contours, restrained dry brush, light slate blue gray rock and muted sage olive foliage. Reference is STYLE ONLY: design a NEW distinctive shape, no tracing. Simple readable ordinary map prop, not a panorama or giant regional landscape. Elevated front oblique view, whole subject inside clear margins. Ground contact has only a tiny warm beige wash close to RGB(227,207,177), fading to genuine alpha transparency. Actual transparent empty canvas, no opaque paper rectangle, white fog or halo, cast shadow, fake checkerboard, text, grid, border, characters, buildings or grass. No decorative extra elements beyond requested subject. Subject: One small angular gray crag with a narrow dark triangular cave entrance low on right, natural broken rock footing, no trees or buildings.",
+      "reference": "E:/stacklands/textures/world_map/bai_chuan/natural_scenery_20261009_v2/13_moss_boulders.png"
+    }
+  ]
+}

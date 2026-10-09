@@ -7,21 +7,59 @@
 [ext_resource type="Resource" path="res://resources/activeskills/黄庭养形篇/抱一.tres" id="5_baoyi"]
 [ext_resource type="Resource" path="res://resources/activeskills/黄庭养形篇/周行.tres" id="6_zhouxing"]
 [ext_resource type="Resource" path="res://resources/activeskills/黄庭养形篇/归藏.tres" id="7_guicang"]
+[ext_resource type="Script" path="res://csharp/gongfa/GongfaDeckRewriteConfig.cs" id="8_rewrite"]
+[ext_resource type="Resource" path="res://resources/activeskills/黄庭养形篇/化法/催血.tres" id="9_huafa_cuixue"]
+
+[ext_resource type="Resource" path="res://resources/activeskills/黄庭养形篇/化法/返照.tres" id="huafaMissing1"]
+[ext_resource type="Resource" path="res://resources/activeskills/黄庭养形篇/化法/抱一.tres" id="huafaMissing2"]
+[ext_resource type="Resource" path="res://resources/activeskills/黄庭养形篇/化法/周行.tres" id="huafaMissing3"]
+
+[sub_resource type="Resource" id="RewriteMissing1"]
+script = ExtResource("8_rewrite")
+mode = 1
+count = 1
+target_scope = 1
+source_skill_name = "返照"
+result_skill = ExtResource("huafaMissing1")
+
+[sub_resource type="Resource" id="RewriteMissing2"]
+script = ExtResource("8_rewrite")
+mode = 1
+count = 1
+target_scope = 1
+source_skill_name = "抱一"
+result_skill = ExtResource("huafaMissing2")
+
+[sub_resource type="Resource" id="RewriteMissing3"]
+script = ExtResource("8_rewrite")
+mode = 1
+count = 1
+target_scope = 1
+source_skill_name = "周行"
+result_skill = ExtResource("huafaMissing3")
+
+[sub_resource type="Resource" id="RewriteCuiXue"]
+script = ExtResource("8_rewrite")
+mode = 1
+count = 1
+source_skill_name = "催血"
+result_skill = ExtResource("9_huafa_cuixue")
 
 [sub_resource type="Resource" id="ChapterShouZhong"]
 script = ExtResource("2_chapter")
 chapter_id = "shou_zhong"
 chapter_name = "守中"
-description = "立黄庭之基，建立主动回落气血的手牌循环。"
+description = "立黄庭之基，以主动气血回落触发身法与精力，再以催血续接循环。"
 order = 1
 required_study_progress = 24.0
 required_attributes = {"physique": 5.0, "body_proficiency": 4.0}
 allowed_bearings = Array[int]([0, 1])
 learn_permanent_bonuses = {"physique": 1.0}
 learned_active_skills = Array[Resource]([ExtResource("4_fanzhao")])
-naqi_bonuses = {"max_health": 30.0}
 left_branch_name = "淬炼"
 right_branch_name = "化法"
+sub_deck_rewrites = Array[ExtResource("8_rewrite")]([SubResource("RewriteMissing1")])
+combat_tempering_bonuses = {"max_health_flat": 30.0}
 
 [sub_resource type="Resource" id="ChapterBaoYi"]
 script = ExtResource("2_chapter")
@@ -36,9 +74,10 @@ required_chapter_ids = Array[String](["shou_zhong"])
 allowed_bearings = Array[int]([1])
 learn_permanent_bonuses = {"physique": 0.5, "body_proficiency": 0.5}
 learned_active_skills = Array[Resource]([ExtResource("5_baoyi")])
-naqi_bonuses = {"max_qi_blood": 1.0}
 left_branch_name = "淬炼"
 right_branch_name = "化法"
+sub_deck_rewrites = Array[ExtResource("8_rewrite")]([SubResource("RewriteMissing2")])
+combat_tempering_bonuses = {"qi_blood_cap": 1.0}
 
 [sub_resource type="Resource" id="ChapterZhouXing"]
 script = ExtResource("2_chapter")
@@ -55,6 +94,8 @@ learn_permanent_bonuses = {"physique": 0.5, "body_proficiency": 0.5}
 learned_active_skills = Array[Resource]([ExtResource("6_zhouxing")])
 left_branch_name = "淬炼"
 right_branch_name = "化法"
+sub_deck_rewrites = Array[ExtResource("8_rewrite")]([SubResource("RewriteMissing3")])
+combat_tempering_bonuses = {"fall_heal_rate_pp": 1.0, "physical_damage_percent": 3.0}
 
 [sub_resource type="Resource" id="ChapterGuiCang"]
 script = ExtResource("2_chapter")
@@ -71,12 +112,13 @@ learn_permanent_bonuses = {"physique": 1.0}
 learned_active_skills = Array[Resource]([ExtResource("7_guicang")])
 left_branch_name = "淬炼"
 right_branch_name = "化法"
-naqi_bonuses = {"max_health": 20.0}
+combat_tempering_bonuses = {"physical_damage_percent": 5.0, "max_health_flat": 20.0}
+sub_deck_rewrites = Array[ExtResource("8_rewrite")]([SubResource("RewriteCuiXue")])
 
 [resource]
 script = ExtResource("1_gongfa")
 gongfa_name = "黄庭养形篇"
-description = "锻躯主修法。以主动气血回落换取手牌与精力，再催血续接循环。"
+description = "锻躯主修法。以主动气血回落换取身法与精力，再催血续接循环。"
 wuxing = 0
 can_be_main = true
 can_be_sub = true

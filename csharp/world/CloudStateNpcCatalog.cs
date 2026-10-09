@@ -67,6 +67,9 @@ public static class CloudStateNpcCatalog
         foreach (var node in mapData.get_all_nodes())
         {
             if (node is null || node.node_id == "home_village" || !node.enterable) continue;
+            // Only create world-map population at authored fixed-grid locations.
+            // Generic/legacy wilderness placeholders stay data-only until they receive a real anchor.
+            if (!manager.has_world_grid_anchor(node.node_id)) continue;
             var amount = population_for(node, rng);
             var subscene_ids = unlocked_subscene_ids(node);
             for (var index = 0; index < amount; index++)

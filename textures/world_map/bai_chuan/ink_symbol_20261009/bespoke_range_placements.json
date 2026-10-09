@@ -1,0 +1,80 @@
+[
+  {
+    "name": "NorthwestContinuousRange",
+    "asset": "northwest_continuous_range_v1.png",
+    "origin": [
+      57,
+      18
+    ],
+    "footprint": [
+      24,
+      16
+    ],
+    "role": "primary_continuous_range"
+  },
+  {
+    "name": "SouthernFoldedRange",
+    "asset": "southern_folded_range_v1.png",
+    "origin": [
+      116,
+      153
+    ],
+    "footprint": [
+      24,
+      14
+    ],
+    "role": "primary_continuous_range"
+  },
+  {
+    "name": "NortheastCragGroup",
+    "asset": "northeast_crag_group_v1.png",
+    "origin": [
+      140,
+      24
+    ],
+    "footprint": [
+      18,
+      12
+    ],
+    "role": "secondary_compact_group"
+  },
+  {
+    "name": "WesternWeatheredGroup",
+    "asset": "western_weathered_group_v1.png",
+    "origin": [
+      30,
+      113
+    ],
+    "footprint": [
+      14,
+      9
+    ],
+    "role": "secondary_low_range"
+  },
+  {
+    "name": "SouthwestSaddleGroup",
+    "asset": "southwest_saddle_group_v1.png",
+    "origin": [
+      23,
+      141
+    ],
+    "footprint": [
+      16,
+      12
+    ],
+    "role": "secondary_saddle_group"
+  },
+  {
+    "name": "EasternLowGroup",
+    "asset": "eastern_low_group_v1.png",
+    "origin": [
+      158,
+      114
+    ],
+    "footprint": [
+      12,
+      8
+    ],
+    "role": "small_low_group"
+  }
+]

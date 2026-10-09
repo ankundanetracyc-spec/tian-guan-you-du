@@ -26,6 +26,9 @@ public partial class TradePanel : Control
     }
 
     private const int VisibleSlotCount = 30;
+    private const float TradeSlotWidth = 128f;
+    private const float TradeSlotIconSize = 128f;
+    private const float TradeSlotBaseHeight = 160f;
     private const string SlotScenePath = "res://tscn/panel/StorageItemSlot.tscn";
     private static readonly string[] DefaultNpcTradeItems =
     [
@@ -76,13 +79,7 @@ public partial class TradePanel : Control
     public override void _Process(double delta)
     {
         if (_item_hover_panel?.Visible != true) return;
-        var viewport = GetViewportRect().Size;
-        var mouse = GetViewport().GetMousePosition();
-        var pointer = mouse + new Vector2(16, 18);
-        var size = _item_hover_panel.Size;
-        if (pointer.X + size.X > viewport.X - 12) pointer.X = mouse.X - size.X - 16;
-        if (pointer.Y + size.Y > viewport.Y - 12) pointer.Y = mouse.Y - size.Y - 18;
-        _item_hover_panel.Position = new Vector2(Mathf.Clamp(pointer.X, 12, Mathf.Max(12, viewport.X - size.X - 12)), Mathf.Clamp(pointer.Y, 12, Mathf.Max(12, viewport.Y - size.Y - 12)));
+        position_item_hover_panel();
     }
 
     public void show_for(Character player, WorldNpcData npc)
@@ -304,7 +301,7 @@ public partial class TradePanel : Control
             SizeFlagsHorizontal = SizeFlags.ExpandFill,
             SizeFlagsVertical = SizeFlags.ExpandFill,
             AutowrapMode = TextServer.AutowrapMode.WordSmart,
-            ScrollActive = true,
+            ScrollActive = false,
             MouseFilter = MouseFilterEnum.Ignore,
         };
         apply_font(_item_hover_detail, 15, new Color("f1ead7"));
@@ -352,7 +349,7 @@ public partial class TradePanel : Control
         {
             if (_slot_scene.Instantiate() is not StorageItemSlot slot) continue;
             grid.AddChild(slot);
-            slot.CustomMinimumSize = new Vector2(128, 164);
+            configure_trade_slot(slot);
             if (load_item(entry.path) is { } item)
             {
                 slot.set_item(slot_index, entry.path, item, entry.count);
@@ -375,7 +372,7 @@ public partial class TradePanel : Control
         {
             if (_slot_scene.Instantiate() is not StorageItemSlot empty) break;
             grid.AddChild(empty);
-            empty.CustomMinimumSize = new Vector2(128, 164);
+            configure_trade_slot(empty);
             empty.set_empty(slot_index++);
         }
     }
@@ -403,23 +400,105 @@ public partial class TradePanel : Control
         if (!string.IsNullOrWhiteSpace(item.item_subcategory)) category = string.IsNullOrWhiteSpace(category) ? item.item_subcategory : $"{category} / {item.item_subcategory}";
         var grade = item.craft_data is MaterialCraftData material ? $"品阶：{material.material_grade_name()}（{material.material_score():0.##}）" : item.get_grade_string();
         var metadata = new[] { category, grade, $"数量 x{entry.count}" }.Where(value => !string.IsNullOrWhiteSpace(value));
-        if (_item_hover_meta is not null) _item_hover_meta.Text = string.Join(" · ", metadata);
+        var metadataText = string.Join(" · ", metadata);
+        if (_item_hover_meta is not null) _item_hover_meta.Text = metadataText;
         if (_item_hover_detail is not null)
         {
             var tags = StoragePanel.build_tags(item.tags, item.craft_data as MaterialCraftData);
             var effect = StoragePanel.build_item_usage_effect(item);
             _item_hover_detail.Text = $"词缀与功用\n{tags}\n\n使用效果\n{effect}";
         }
-        var detailLength = _item_hover_detail?.Text.Length ?? 0;
-        _item_hover_panel.Size = new Vector2(410, Mathf.Clamp(136 + detailLength / 31 * 19, 190, 430));
-        var viewport = GetViewportRect().Size;
-        var mouse = GetViewport().GetMousePosition();
-        var pointer = mouse + new Vector2(16, 18);
-        if (pointer.X + _item_hover_panel.Size.X > viewport.X - 12) pointer.X = mouse.X - _item_hover_panel.Size.X - 16;
-        if (pointer.Y + _item_hover_panel.Size.Y > viewport.Y - 12) pointer.Y = mouse.Y - _item_hover_panel.Size.Y - 18;
-        _item_hover_panel.Position = new Vector2(Mathf.Clamp(pointer.X, 12, Mathf.Max(12, viewport.X - _item_hover_panel.Size.X - 12)), Mathf.Clamp(pointer.Y, 12, Mathf.Max(12, viewport.Y - _item_hover_panel.Size.Y - 12)));
+        size_item_hover_panel(metadataText);
+        position_item_hover_panel();
         _item_hover_panel.Show();
         _item_hover_panel.MoveToFront();
+    }
+
+    private void configure_trade_slot(StorageItemSlot slot)
+    {
+        slot.CustomMinimumSize = new Vector2(TradeSlotWidth, TradeSlotBaseHeight);
+        if (slot.GetNodeOrNull<Control>("Frame") is { } frame) frame.OffsetBottom = TradeSlotIconSize;
+        if (slot.GetNodeOrNull<Label>("ItemName") is { } name)
+        {
+            name.OffsetTop = TradeSlotIconSize + 4;
+            name.OffsetBottom = TradeSlotBaseHeight;
+        }
+    }
+
+    private void size_item_hover_panel(string metadataText)
+    {
+        if (_item_hover_panel is null || _item_hover_detail is null) return;
+        var viewport = GetViewportRect().Size;
+        var panelWidth = Mathf.Max(1f, Mathf.Min(520f, viewport.X - 24f));
+        var maxHeight = Mathf.Max(1f, viewport.Y - 24f);
+        var contentWidth = Mathf.Max(1f, panelWidth - 34f);
+        var headingWidth = Mathf.Max(1f, contentWidth - 68f);
+        var detailText = _item_hover_detail.Text;
+        var detailFont = viewport.X < 620f ? 13 : 15;
+        var metaFont = viewport.X < 620f ? 12 : 14;
+        var detailHeight = 0f;
+        var totalHeight = 0f;
+
+        for (; detailFont >= 9; detailFont--)
+        {
+            var titleLines = estimate_wrapped_lines(_item_hover_name?.Text ?? "", headingWidth, 21);
+            var metaLines = estimate_wrapped_lines(metadataText, headingWidth, metaFont);
+            var headerHeight = Mathf.Max(58f, titleLines * 29f + metaLines * (metaFont + 5f) + 5f);
+            var detailLines = estimate_wrapped_lines(detailText, contentWidth, detailFont);
+            var lineHeight = detailFont * 1.55f;
+            // Extra room covers small differences in font metrics and automatic wrapping.
+            detailHeight = (detailLines + 1) * lineHeight;
+            totalHeight = headerHeight + detailHeight + 66f;
+            if (totalHeight <= maxHeight) break;
+        }
+
+        apply_font(_item_hover_detail, detailFont, new Color("f1ead7"));
+        if (_item_hover_meta is not null) apply_font(_item_hover_meta, metaFont, new Color("c8bd9d"));
+        _item_hover_detail.CustomMinimumSize = new Vector2(0, detailHeight);
+        _item_hover_panel.CustomMinimumSize = new Vector2(panelWidth, Mathf.Min(totalHeight, maxHeight));
+        _item_hover_panel.Size = new Vector2(panelWidth, Mathf.Min(totalHeight, maxHeight));
+    }
+
+    private static int estimate_wrapped_lines(string text, float width, int fontSize)
+    {
+        var lines = 0;
+        foreach (var line in text.Split('\n'))
+        {
+            if (line.Length == 0)
+            {
+                lines++;
+                continue;
+            }
+
+            var lineCount = 1;
+            var usedWidth = 0f;
+            foreach (var character in line)
+            {
+                var glyphWidth = character >= 0x2E80 ? fontSize : fontSize * .58f;
+                if (usedWidth > 0 && usedWidth + glyphWidth > width)
+                {
+                    lineCount++;
+                    usedWidth = 0;
+                }
+                usedWidth += glyphWidth;
+            }
+            lines += lineCount;
+        }
+        return Math.Max(1, lines);
+    }
+
+    private void position_item_hover_panel()
+    {
+        if (_item_hover_panel is null) return;
+        var viewport = GetViewportRect().Size;
+        var mouse = GetViewport().GetMousePosition();
+        var size = _item_hover_panel.Size;
+        var pointer = mouse + new Vector2(16, 18);
+        if (pointer.X + size.X > viewport.X - 12) pointer.X = mouse.X - size.X - 16;
+        if (pointer.Y + size.Y > viewport.Y - 12) pointer.Y = mouse.Y - size.Y - 18;
+        _item_hover_panel.Position = new Vector2(
+            Mathf.Clamp(pointer.X, 12, Mathf.Max(12, viewport.X - size.X - 12)),
+            Mathf.Clamp(pointer.Y, 12, Mathf.Max(12, viewport.Y - size.Y - 12)));
     }
 
     private void on_trade_slot_info_cleared(StorageItemSlot slot)
@@ -444,11 +523,11 @@ public partial class TradePanel : Control
             entry.quantity_label?.QueueFree();
             entry.quantity_slider = null;
             entry.quantity_label = null;
-            entry.slot.CustomMinimumSize = new Vector2(128, 164);
+            configure_trade_slot(entry.slot);
             return;
         }
 
-        entry.slot.CustomMinimumSize = new Vector2(128, 214);
+        entry.slot.CustomMinimumSize = new Vector2(TradeSlotWidth, 214);
         if (entry.quantity_slider is not null)
         {
             entry.quantity_slider.MaxValue = entry.count;
@@ -642,7 +721,7 @@ public partial class TradePanel : Control
         label.AddThemeColorOverride("font_outline_color", new Color(.16f, .12f, .06f, .88f));
         label.AddThemeConstantOverride("outline_size", 6);
         label.SetAnchorsAndOffsetsPreset(LayoutPreset.TopWide);
-        label.OffsetBottom = 132;
+        label.OffsetBottom = TradeSlotIconSize;
         label.Visible = false;
         return label;
     }
@@ -651,7 +730,7 @@ public partial class TradePanel : Control
     {
         var frame = new Panel { MouseFilter = MouseFilterEnum.Ignore, Visible = false };
         frame.SetAnchorsAndOffsetsPreset(LayoutPreset.TopWide);
-        frame.OffsetBottom = 132;
+        frame.OffsetBottom = TradeSlotIconSize;
         frame.AddThemeStyleboxOverride("panel", panel_style(new Color(1f, .9f, .5f, .10f), new Color("e8c967"), 4));
         return frame;
     }

@@ -15,17 +15,17 @@ multiplier = 0.55
 
 [resource]
 script = ExtResource("1")
-tags = Array[String](["闪避"])
+tags = Array[String](["增伤"])
 skill_name = "撼山"
 icon_path = "res://textures/ui/combat/skill_icons/锻躯_撼山_v1.png"
-description = "每轮限用1次。对指定1名敌方造成物理伤害：round(15 + 体魄×0.85 + 体道造诣×0.55)。若已学《乘物游骸真经》撼山化法且自身拥有游骸，施放时消耗游骸1层并计入本场已消耗游骸，本次伤害提高50%。"
+description = "对指定1名敌方造成物理伤害。伤害 = round(15 + 体魄×0.85 + 体道造诣×0.55)。若由《乘物游骸真经》撼山化法替换，自身有游骸时消耗1层并使本次伤害提高50%。\n使用次数：每轮1次"
 skill_type = 0
 energy_cost = 3
 mana_cost = 0
 spirit_occupy = 0
-preparation_frames = 480
-recovery_frames = 192
-cooldown_frames = 720
+preparation_frames = 0
+recovery_frames = 0
+cooldown_frames = 0
 slot_category = "active"
 target_type = 2
 range_min = 1
@@ -35,3 +35,4 @@ damage_type = "physical"
 keywords = Array[String]([])
 damage_bonuses = Array[ExtResource("2")]([SubResource("Physique"), SubResource("BodyProficiency")])
 damage_formula = "round(15 + 体魄×0.85 + 体道造诣×0.55)"
+uses_per_round = 1

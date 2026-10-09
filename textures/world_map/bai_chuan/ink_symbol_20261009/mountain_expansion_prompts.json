@@ -1,0 +1,13 @@
+{
+  "mode": "built-in imagegen",
+  "prompts": [
+    {
+      "asset": "mountain_main_peak_v1.png",
+      "prompt": "Use case: stylized-concept. Asset type: original transparent Chinese cultivation map mountain sprite, upright oblique view. Reference image is only palette/ink medium guidance, not copy target. Create a NEW towering asymmetrical main mountain massif with three connected uneven summits, highest left of middle, one sharp sloping shoulder and a lower saddle on right. Tall rugged but rounded Chinese peaks with sparse long angular ink contours and restrained pale blue-gray and sage washes; simple readable silhouette at small map scale. Short low foothills at base. Main rock has pale ivory paper highlights, not icy snow. Base dissolves softly into genuine alpha transparency with a very narrow dilute warm ivory grounding wash, no solid white foundation or rectangular backdrop. Match reference subdued blue-gray ink palette and dry-brush line weight, but use a distinct peak contour. ONE cohesive isolated massif, suitable for 3x3 square map footprint. Subject fills 85% image with margin, transparent background. No trees, grass, buildings, river, clouds, text, grid, watermark, cast shadow or giant fog halo."
+    },
+    {
+      "asset": "mountain_low_ridge_v1.png",
+      "prompt": "Use case: stylized-concept. Asset: original transparent Chinese ink-wash low foothill ridge sprite for a square-grid cultivation game map. Reference image supplies ink brush style and muted blue-gray/sage palette only, not contour to duplicate. Draw ONE connected LOW WIDE asymmetrical ridge: four small rolling rocky hills, tallest off-center right, broad low left shoulder and broken small stones on right; total height about 40% of width, no tall peak. Sparse decisive charcoal contours, gentle pale sage-blue-gray washes, warm ivory rock highlights, little dry-brush texture. Simple readable silhouette. Base blends softly into actual transparent alpha, a very narrow dilute warm ivory grounding wash only, no white solid foundation/rectangle or expansive fog. Subject occupies width with margin. No tree, grass, buildings, mountains in background, river, sky, text, grid, watermark or cast shadow. Match the medium and palette of the reference while designing a different low silhouette."
+    }
+  ]
+}

@@ -22,20 +22,15 @@
 
 ## 四、当前收录
 
-- [流云剑经 图谱](E:\stacklands\docs\秘籍词典\drawio\流云剑经.drawio) / [文字稿](E:\stacklands\docs\秘籍词典\md\流云剑经.md)
-- [折枝剑谱 图谱（废案）](E:\stacklands\docs\秘籍词典\drawio\折枝剑谱.drawio) / [文字稿（废案）](E:\stacklands\docs\秘籍词典\md\折枝剑谱.md)
-- [惊鸿掠影谱 图谱](E:\stacklands\docs\秘籍词典\drawio\惊鸿掠影谱.drawio)
-- [听锋寻隙篇 图谱](E:\stacklands\docs\秘籍词典\drawio\听锋寻隙篇.drawio)
-- [藏锋卸力诀 图谱](E:\stacklands\docs\秘籍词典\drawio\藏锋卸力诀.drawio)
-- [太祖长拳 图谱](E:\stacklands\docs\秘籍词典\drawio\太祖长拳.drawio) / [文字稿](E:\stacklands\docs\秘籍词典\md\太祖长拳.md)
-- [市井游身功 图谱](E:\stacklands\docs\秘籍词典\drawio\市井游身功.drawio) / [文字稿](E:\stacklands\docs\秘籍词典\md\市井游身功.md)
-- [乘物游骸真经 图谱（初步设计好的）](E:\stacklands\docs\秘籍词典\drawio\初步设计好的\乘物游骸真经.drawio)
-- [补虚行血诀 图谱](E:\stacklands\docs\秘籍词典\drawio\初步设计好的\补虚行血诀.drawio)
 - [黄庭养形篇 图谱](E:\stacklands\docs\秘籍词典\drawio\初步设计好的\黄庭养形篇.drawio)
+- [补虚行血诀 图谱](E:\stacklands\docs\秘籍词典\drawio\初步设计好的\补虚行血诀.drawio)
+- [乘物游骸真经 图谱](E:\stacklands\docs\秘籍词典\drawio\初步设计好的\乘物游骸真经.drawio)
 - [赤阳参同经 图谱](E:\stacklands\docs\秘籍词典\drawio\初步设计好的\赤阳参同经.drawio)
 - [内景损益篇 图谱](E:\stacklands\docs\秘籍词典\drawio\初步设计好的\内景损益篇.drawio)
 - [灵枢经筋篇 图谱](E:\stacklands\docs\秘籍词典\drawio\初步设计好的\灵枢经筋篇.drawio)
 - [阴符应物经 图谱](E:\stacklands\docs\秘籍词典\drawio\初步设计好的\阴符应物经.drawio)
+
+当前收录只包含以上七本现行锻躯秘籍；其他体系秘籍和专属技能已从当前项目移除。
 
 模板见：
 

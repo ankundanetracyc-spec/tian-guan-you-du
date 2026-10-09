@@ -9,6 +9,7 @@ public partial class StartMenu : Control
     private TextureRect? _backdrop;
     private Control? _creationOverlay;
     private Control? _battleTestOverlay;
+    private EncyclopediaPanel? _encyclopediaPanel;
     private static readonly (string Path, string Name, string Summary)[] InitialGongfas =
     [
         ("res://resources/gongfa/黄庭养形篇.tres", "黄庭养形篇", "品阶：凡阶上品\n适配：杂灵根 / 平和灵根\n引气养形，温和绵长。修行稳妥，适合初入仙途者。"),
@@ -64,12 +65,20 @@ public partial class StartMenu : Control
         menu.MoveToFront();
         AddMenuButton(menu.GetNode<Button>("NewSave"), OpenNewGameSetup);
         AddMenuButton(menu.GetNode<Button>("LoadSave"), OpenLoadSaves);
+        AddMenuButton(menu.GetNode<Button>("Encyclopedia"), OpenEncyclopedia);
         AddMenuButton(menu.GetNode<Button>("Settings"), () => ShowNotice("设置", "画面、声音与操作设置将集中于此。"));
         AddMenuButton(menu.GetNode<Button>("AppearanceTest"), () => GetTree().ChangeSceneToFile("res://tscn/scene/CharacterSequenceShowcase.tscn"));
         AddMenuButton(menu.GetNode<Button>("AppearanceCreatorTest"), () => GetTree().ChangeSceneToFile("res://tscn/scene/CharacterAppearanceTest.tscn"));
         AddMenuButton(menu.GetNode<Button>("InkVfxTest"), () => GetTree().ChangeSceneToFile("res://tscn/scene/InkVfxShowcase.tscn"));
         AddMenuButton(menu.GetNode<Button>("BattleTest"), OpenBattleTestSetup);
         AddMenuButton(menu.GetNode<Button>("CondensationTest"), OpenCondensationTest);
+    }
+
+    private void OpenEncyclopedia()
+    {
+        _encyclopediaPanel ??= new EncyclopediaPanel { Name = "EncyclopediaPanel" };
+        if (_encyclopediaPanel.GetParent() is null) AddChild(_encyclopediaPanel);
+        _encyclopediaPanel.show_panel();
     }
 
     private void OpenLoadSaves()

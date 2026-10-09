@@ -1241,7 +1241,7 @@ public partial class InfoPanel : Control
         {
             var remove = gongfa_popup_button("卸下当前秘籍"); remove.Pressed += () => { if (sub) human.remove_sub_gongfa(equipped); else human.unequip_main_gongfa(); _gongfaModal.Hide(); populate_static_gongfa_page(human); }; _gongfaModalChoices.AddChild(remove);
         }
-        foreach (var book in human.get_known_gongfas().Where(human.has_learned_gongfa))
+        foreach (var book in human.get_known_gongfas().Where(human.has_learned_gongfa).Where(book => sub ? book.can_be_sub : book.can_be_main && book.is_wuxing_compatible(human.spirit_root_type)))
         {
             var choose = gongfa_popup_button($"装配《{book.gongfa_name}》"); choose.TooltipText = book.description;
             choose.Pressed += () => { _gongfaPickerSlot = sub ? "sub" : "main"; equip_selected_gongfa(human, book); _gongfaModal.Hide(); }; _gongfaModalChoices.AddChild(choose);
@@ -1368,6 +1368,159 @@ public partial class InfoPanel : Control
         button.AddThemeStyleboxOverride("normal", new StyleBoxFlat { BgColor = new Color(.77f, .67f, .40f, .45f), BorderColor = new Color(.38f, .26f, .08f, .7f), BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1, CornerRadiusTopLeft = 5, CornerRadiusTopRight = 5, CornerRadiusBottomLeft = 5, CornerRadiusBottomRight = 5 }); return button;
     }
 
+    private static string gongfa_tempering_benefit(string key, float value) => key switch
+    {
+        "max_health_flat" => $"最大生命 +{value:0.#}",
+        "max_health_percent" => $"最大生命 +{value:0.#}%",
+        "qi_blood_cap" => $"气血上限 +{value:0.#}",
+        "physical_damage_percent" => $"物理伤害 +{value:0.#}%",
+        "dodge_percent" => $"身法 +{value:0.#}%",
+        "blood_furnace_cap" => $"血炉上限 +{value:0.#}",
+        "fall_heal_rate_pp" => $"气血回落回复率 +{value:0.#}个百分点",
+        "wound_physical_reduction_pp_per_stack" => $"每层伤势使所受物理伤害减免额外 +{value:0.#}个百分点",
+        "wound_consume_heal_percent_per_stack" => $"主动消耗每层伤势回复最大生命 +{value:0.#}%",
+        "defuse_gain_layers" => $"化解获得层数 +{value:0.#}",
+        "borrowed_force_damage_pp_per_stack" => $"借力每层物理伤害加成 +{value:0.#}个百分点",
+        _ => $"{battle_attribute_name(key)} +{value:0.#}"
+    };
+
+    private static string gongfa_tempering_preview(string key, float value) => key switch
+    {
+        "fall_heal_rate_pp" => $"回落回复 +{value:0.#}个百分点",
+        "wound_physical_reduction_pp_per_stack" => $"伤势每层：物理减伤 +{value:0.#}个百分点",
+        "wound_consume_heal_percent_per_stack" => $"伤势每层消耗回复 +{value:0.#}%",
+        "borrowed_force_damage_pp_per_stack" => $"借力每层物理增伤 +{value:0.#}个百分点",
+        _ => trim_gongfa_preview(gongfa_tempering_benefit(key, value))
+    };
+
+    private static List<string> gongfa_tempering_lines(GongfaChapterConfig chapter)
+    {
+        var lines = new List<string>();
+        foreach (Variant key in chapter.combat_tempering_bonuses.Keys)
+            lines.Add(gongfa_tempering_benefit(key.AsString(), chapter.combat_tempering_bonuses[key].AsSingle()));
+        return lines;
+    }
+
+    private static string trim_gongfa_preview(string value, int maxLength = 18)
+    {
+        value = value.Replace("\r", " ").Replace("\n", " ").Trim();
+        if (value.Length <= maxLength) return value;
+        return value[..Math.Max(1, maxLength - 1)] + "…";
+    }
+
+    private static string gongfa_skill_target(ActiveSkillData skill) => CardRules.IsResponse(skill)
+        ? "自身（敌方攻击自身时应对）"
+        : skill.target_type switch { 2 => "指定敌方", 3 => "指定任意目标", _ => "自身" };
+
+    private static string gongfa_rewrite_detail(GongfaDeckRewriteConfig rewrite, bool isMain, GodotObject owner)
+    {
+        var resultSkill = rewrite.get_result_skill(isMain) as ActiveSkillData;
+        if (resultSkill is null) return "化法结果技能未配置。";
+        var sourceName = !string.IsNullOrWhiteSpace(rewrite.source_skill_name)
+            ? rewrite.source_skill_name
+            : rewrite.source_skill?.Get("skill_name").AsString() ?? "基础技能";
+        var operation = rewrite.mode == GongfaDeckRewriteConfig.RewriteMode.ADD
+            ? $"新增《{resultSkill.skill_name}》"
+            : sourceName == resultSkill.skill_name
+                ? $"《{resultSkill.skill_name}》追加化法效果（保留基础效果）"
+                : $"将《{sourceName}》改写为《{resultSkill.skill_name}》";
+        var lines = new List<string> { $"化法：{operation}", $"类型：{resultSkill.get_card_category()}" };
+        if (resultSkill.tags.Count > 0) lines.Add($"关键词：{string.Join("、", resultSkill.tags)}");
+        if (resultSkill.skill_type != ActiveSkillData.SkillType.POWER)
+            lines.Add($"耗费：精力 {resultSkill.energy_cost}；法力 {resultSkill.mana_cost}");
+        lines.Add($"目标：{gongfa_skill_target(resultSkill)}");
+        if (resultSkill.damage_type != "physical" ||
+            resultSkill.base_damage > 0 ||
+            resultSkill.damage_bonuses.Count > 0 ||
+            !string.IsNullOrWhiteSpace(resultSkill.damage_formula))
+            lines.Add($"伤害类型：{resultSkill.damage_type switch { "physical" => "物理", "soul" => "神魂", "spell" => "法术", _ => resultSkill.damage_type }}");
+        var face = System.Text.RegularExpressions.Regex.Replace(CardPresentation.Face(resultSkill, owner), @"(?m)^使用次数：.*(?:\r?\n|$)", "").Trim();
+        lines.Add($"效果：{face}");
+        var perBattle = resultSkill.uses_per_battle > 0 ? resultSkill.uses_per_battle : resultSkill.max_charges;
+        var limits = new List<string>();
+        if (resultSkill.uses_per_round > 0) limits.Add($"每轮{resultSkill.uses_per_round}次");
+        if (perBattle > 0) limits.Add($"本场{perBattle}次");
+        lines.Add($"使用次数：{(limits.Count > 0 ? string.Join("；", limits) : "不限")}");
+        return string.Join("\n", lines);
+    }
+
+    private static string gongfa_branch_status(bool learned, bool isMain, string route, string branch)
+    {
+        if (!learned) return "未研读";
+        if (isMain) return "主脉通达";
+        return route == branch ? "已激活" : "可选择";
+    }
+
+    private static List<string> gongfa_branch_preview(GongfaChapterConfig chapter, bool left, bool isMain, GodotObject owner)
+    {
+        if (left)
+        {
+            var tempering = new List<string>();
+            foreach (Variant key in chapter.combat_tempering_bonuses.Keys)
+                tempering.Add(gongfa_tempering_preview(key.AsString(), chapter.combat_tempering_bonuses[key].AsSingle()));
+            if (tempering.Count == 0) return ["无淬炼加成"];
+            return tempering.Take(2).ToList();
+        }
+
+        var previews = new List<string>();
+        foreach (var rewrite in chapter.get_deck_rewrites(isMain).Where(item => item.enabled).Take(2))
+        {
+            if (rewrite.get_result_skill(isMain) is not ActiveSkillData skill) continue;
+            var sourceName = !string.IsNullOrWhiteSpace(rewrite.source_skill_name)
+                ? rewrite.source_skill_name
+                : rewrite.source_skill?.Get("skill_name").AsString() ?? "基础技能";
+            var operation = rewrite.mode == GongfaDeckRewriteConfig.RewriteMode.ADD
+                ? $"新增《{skill.skill_name}》"
+                : sourceName == skill.skill_name
+                    ? $"《{skill.skill_name}》追加化法"
+                    : $"改写《{sourceName}》→《{skill.skill_name}》";
+            previews.Add(operation);
+            var effect = GongfaSkillRewriteRuntime.GetEffectPreview(skill);
+            if (string.IsNullOrWhiteSpace(effect))
+                effect = CardPresentation.Face(skill, owner).Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).FirstOrDefault() ?? skill.description;
+            if (!string.IsNullOrWhiteSpace(effect)) previews.Add(trim_gongfa_preview(effect));
+        }
+        return previews.Count > 0 ? previews : ["无"];
+    }
+
+    private static string gongfa_branch_tooltip(GongfaChapterConfig chapter, bool left, bool isMain, GodotObject owner)
+    {
+        var lines = left
+            ? new List<string> { "淬炼（仅战斗内）", "战斗属性：" }.Concat(gongfa_tempering_lines(chapter)).ToList()
+            : chapter.get_deck_rewrites(isMain).Where(item => item.enabled).Select(item => gongfa_rewrite_detail(item, isMain, owner)).ToList();
+        return lines.Count > 0 ? string.Join("\n", lines) : left ? "淬炼（仅战斗内）\n无" : "化法\n无";
+    }
+
+    private void update_gongfa_heart_method_display(Character human, GongfaResource? main, GongfaResource? sub)
+    {
+        var heartText = _staticGongfaPage?.GetNodeOrNull<RichTextLabel>("HeartMethodPanel/Box/HeartMethodText");
+        if (heartText is null) return;
+        var entries = new List<string>();
+        void Add(GongfaResource? book, bool isMain)
+        {
+            var skill = book?.get_heart_method_skill(isMain);
+            if (book is null || skill is null) return;
+            var description = skill.description.Trim();
+            var firstSentenceEnd = description.IndexOf('。');
+            if (firstSentenceEnd >= 0 && description[..(firstSentenceEnd + 1)].Contains("心法由当前", StringComparison.Ordinal))
+                description = description[(firstSentenceEnd + 1)..].Trim();
+            const string mainExtraMarker = "主修额外追加：";
+            var mainExtraIndex = description.IndexOf(mainExtraMarker, StringComparison.Ordinal);
+            if (mainExtraIndex >= 0)
+            {
+                var baseEffect = description[..mainExtraIndex].Trim();
+                var mainExtra = description[(mainExtraIndex + mainExtraMarker.Length)..].Trim();
+                description = isMain && mainExtra.Length > 0 ? $"{baseEffect}\n主修追加：{mainExtra}" : baseEffect;
+            }
+            var keywords = skill.tags.Count > 0 ? $"关键词：{string.Join("、", skill.tags)}\n" : "";
+            entries.Add($"[b]{(isMain ? "主修" : "辅修")}《{book.gongfa_name}》 · {skill.skill_name}[/b]\n{keywords}{description}");
+        }
+        Add(main, true);
+        foreach (var book in human.sub_gongfa_list) Add(book, false);
+        heartText.BbcodeEnabled = true;
+        heartText.Text = entries.Count > 0 ? string.Join("\n\n", entries) : "装配主修或辅修功法后，心法被动会自动生效并显示在此处。";
+    }
+
     private void update_static_gongfa_tree(Character human)
     {
         if (_staticGongfaPage is null) return;
@@ -1387,6 +1540,8 @@ public partial class InfoPanel : Control
             left.ClipText = right.ClipText = true;
             left.SizeFlagsVertical = right.SizeFlagsVertical = SizeFlags.ShrinkCenter;
             left.CustomMinimumSize = right.CustomMinimumSize = new Vector2(240, 104);
+            left.AddThemeFontSizeOverride("font_size", 13);
+            right.AddThemeFontSizeOverride("font_size", 13);
             var present = i < displayedCount;
             row.Visible = present;
             if (!present) continue;
@@ -1397,19 +1552,20 @@ public partial class InfoPanel : Control
             var rightName = string.IsNullOrWhiteSpace(chapter.right_branch_name) ? "化法" : chapter.right_branch_name;
             layer.Text = $"第{chinese_volume_number(chapter.order)}卷\n{chapter.chapter_name}";
             layer.TooltipText = $"《{_viewedGongfa!.gongfa_name}》第{chapter.order}卷 · {chapter.chapter_name}";
-            var state = !learned ? "传承未通" : !_viewingSubGongfa ? "主脉通达" : "择此支脉";
-            left.Text = $"{leftName}\n{state}";
-            right.Text = $"{rightName}\n{state}";
+            var route = human.get_sub_gongfa_chapter_route(_viewedGongfa!, chapter.get_id());
+            var leftPreview = gongfa_branch_preview(chapter, true, !_viewingSubGongfa, human);
+            var rightPreview = gongfa_branch_preview(chapter, false, !_viewingSubGongfa, human);
+            left.Text = $"{leftName} · {gongfa_branch_status(learned, !_viewingSubGongfa, route, "left")}\n{string.Join("\n", leftPreview)}";
+            right.Text = $"{rightName} · {gongfa_branch_status(learned, !_viewingSubGongfa, route, "right")}\n{string.Join("\n", rightPreview)}";
+            left.TooltipText = gongfa_branch_tooltip(chapter, true, !_viewingSubGongfa, human);
+            right.TooltipText = gongfa_branch_tooltip(chapter, false, !_viewingSubGongfa, human);
             left.Disabled = right.Disabled = !learned;
             var leftActive = learned && !_viewingSubGongfa;
             var rightActive = learned && !_viewingSubGongfa;
             if (_viewingSubGongfa && learned)
             {
-                var active = human.get_sub_gongfa_chapter_route(_viewedGongfa!, chapter.get_id());
-                left.Text = $"{leftName}\n{(active == "left" ? "此脉已通" : "择此支脉")}";
-                right.Text = $"{rightName}\n{(active == "right" ? "此脉已通" : "择此支脉")}";
-                leftActive = active == "left";
-                rightActive = active == "right";
+                leftActive = route == "left";
+                rightActive = route == "right";
             }
             left.SetMeta("gongfa_active", leftActive); right.SetMeta("gongfa_active", rightActive);
             // 选中与已激活始终用深墨字，避免落在浅色金笺上失去可读性。
@@ -1510,14 +1666,13 @@ public partial class InfoPanel : Control
         var category = battle_skill_category(skill);
         if (skill.skill_type == ActiveSkillData.SkillType.POWER)
         {
-            _battleDetailMeta.Text = "心法被动　开战自动生效";
+            _battleDetailMeta.Text = "常驻被动　开战显示于Buff栏";
             var passiveSource = string.IsNullOrWhiteSpace(skill.source_gongfa_name) ? "秘籍" : skill.source_gongfa_name;
-            _battleDetailText.Text = $"[b]技能效果[/b]\n{skill.get_skill_description(current_card)}\n\n[b]来源[/b]\n{passiveSource}\n\n[b]生效方式[/b]\n由当前主修或辅修槽位中的秘籍自动提供；开战时随战斗快照生效。无需单独装配，不设心法槽位。";
+            _battleDetailText.Text = $"[b]效果[/b]\n{skill.get_skill_description(current_card)}\n\n[b]来源[/b]\n{passiveSource}";
             return;
         }
-        var cooldown = skill.cooldown_frames > 0 ? $"冷却 {skill.cooldown_frames} 帧" : "无额外冷却";
         _battleDetailTitle.Text = skill.skill_name;
-        _battleDetailMeta.Text = $"{category}　精力 {skill.energy_cost}　法力 {skill.mana_cost}\n准备 {skill.preparation_frames} 帧 · 收招 {skill.recovery_frames} 帧 · {cooldown}";
+        _battleDetailMeta.Text = $"{category}　精力 {skill.energy_cost}　法力 {skill.mana_cost}";
         var source = string.IsNullOrWhiteSpace(skill.source_gongfa_name) ? "通用" : skill.source_gongfa_name;
         _battleDetailText.Text = $"[b]技能效果[/b]\n{skill.get_skill_description(current_card)}\n\n[b]来源[/b]\n{source}\n\n[b]装配操作[/b]\n左侧点击加入或移出；中间槽位下方可调整顺序或移除。";
     }
@@ -1764,6 +1919,7 @@ public partial class InfoPanel : Control
         // 兼容旧存档：同一本秘籍不能同时占用主修、辅修槽。
         if (main is not null && human.sub_gongfa_list.Contains(main)) human.remove_sub_gongfa(main);
         var sub = human.sub_gongfa_list.FirstOrDefault();
+        update_gongfa_heart_method_display(human, main, sub);
         if (_viewedGongfa is null || (_viewedGongfa != main && _viewedGongfa != sub && _gongfaPickerSlot.Length == 0))
         {
             _viewedGongfa = main ?? sub;
@@ -1845,9 +2001,9 @@ public partial class InfoPanel : Control
                 requirements.Add($"[color={(met ? "#2f6f3a" : "#9b3027")}]{gongfa_chapter_name(_viewedGongfa, prerequisite)}：{(met ? "已研读 ✓" : "未研读 ✕")}[/color]");
             }
             if (requirements.Count == 0) requirements.Add("[color=#2f6f3a]无额外条件[/color]");
-            var learnedCards = chapter.get_learned_skills(isMain).OfType<ActiveSkillData>().Select(card => $"《{card.skill_name}》 · {card.get_brief_description()}");
+            var learnedSkills = chapter.get_learned_skills(isMain).OfType<ActiveSkillData>().Select(skill => $"《{skill.skill_name}》 · {CardPresentation.Face(skill, human)}");
             var permanent = chapter.learn_permanent_bonuses.Keys.Select(key => $"{battle_attribute_name(key.AsString())} +{chapter.learn_permanent_bonuses[key]}");
-            text.Text = $"[b]解锁条件[/b]\n{string.Join("\n", requirements)}\n\n[b]学会永久属性[/b]\n{(permanent.Any() ? string.Join("\n", permanent) : "无")}\n\n[b]本卷授牌[/b]\n{(learnedCards.Any() ? string.Join("\n", learnedCards) : "无新增卡牌")}\n\n{chapter.description}";
+            text.Text = $"[b]解锁条件[/b]\n{string.Join("\n", requirements)}\n\n[b]学会永久属性[/b]\n{(permanent.Any() ? string.Join("\n", permanent) : "无")}\n\n[b]本卷习得技能[/b]\n{(learnedSkills.Any() ? string.Join("\n", learnedSkills) : "无新增技能")}\n\n{chapter.description}";
             return;
         }
         var left = _gongfaSelectedBranch == "left"; var branchName = left ? chapter.left_branch_name : chapter.right_branch_name;
@@ -1857,12 +2013,12 @@ public partial class InfoPanel : Control
         var benefits = new List<string>();
         if (left)
         {
-            foreach (Variant key in chapter.get_naqi_bonuses(isMain).Keys) benefits.Add($"{battle_attribute_name(key.AsString())} +{chapter.get_naqi_bonuses(isMain)[key]}");
-            foreach (Variant key in chapter.get_naqi_multipliers(isMain).Keys) benefits.Add($"{battle_attribute_name(key.AsString())} +{chapter.get_naqi_multipliers(isMain)[key].AsSingle() * 100:0.#}%");
+            benefits.AddRange(gongfa_tempering_lines(chapter));
         }
-        else foreach (var rewrite in chapter.get_deck_rewrites(isMain)) benefits.Add($"化法：{(rewrite.mode == GongfaDeckRewriteConfig.RewriteMode.ADD ? "加入" : "改写")} {rewrite.count} 张牌");
-        if (benefits.Count == 0) benefits.Add(left ? "本分支暂未配置可生效的数值加成。" : "本分支暂未配置可生效的牌组改写。");
-        text.Text = $"[b]分支加成[/b]\n{string.Join("\n", benefits)}\n\n{chapter.description}";
+        else foreach (var rewrite in chapter.get_deck_rewrites(isMain).Where(item => item.enabled))
+            benefits.Add(gongfa_rewrite_detail(rewrite, isMain, human));
+        if (benefits.Count == 0) benefits.Add("无");
+        text.Text = $"[b]{(left ? "淬炼属性（仅战斗内）" : "化法效果")}[/b]\n{string.Join("\n", benefits)}\n\n{chapter.description}";
         if (_gongfaBranchActivate is not null)
         {
             _gongfaBranchActivate.Visible = true;
@@ -1878,11 +2034,16 @@ public partial class InfoPanel : Control
         if (slot == "main") success = human.switch_main_gongfa(book);
         else if (_gongfaPickerSlot == "sub")
         {
+            if(!human.has_learned_gongfa(book)||!book.can_be_sub)return;
+            if(human.sub_gongfa_list.Contains(book))success=true;
+            else
+            {
             // 同一本秘籍转入辅修时，自动从主修卸下；反向切为主修同理由 switch_main_gongfa 处理。
             if (book == human.main_gongfa) human.unequip_main_gongfa();
             var oldSub = human.sub_gongfa_list.FirstOrDefault();
             if (oldSub is not null) human.remove_sub_gongfa(oldSub);
             success = human.add_sub_gongfa(book);
+            }
         }
         if (!success) return;
         _viewedGongfa = book;

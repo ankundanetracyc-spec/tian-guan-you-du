@@ -3,6 +3,9 @@
 [ext_resource type="Script" path="res://csharp/gongfa/ActiveSkillData.cs" id="1"]
 
 [resource]
+uses_per_battle = 0
+uses_per_round = 0
+max_charges = 0
 script = ExtResource("1")
 tags = Array[String](["生命","闪避","回复"])
 skill_name = "蜕形"
@@ -14,6 +17,6 @@ target_type = 1
 special_effects = Array[Dictionary]([{"effect":"spend_qi_blood", "count":1}])
 status_effects = Array[Dictionary]([{"status_id":"身法", "hit_formula":"1.0", "stacks":2}])
 keywords = Array[String]([])
-preparation_frames = 144
-recovery_frames = 96
-cooldown_frames = 360
+preparation_frames = 0
+recovery_frames = 0
+cooldown_frames = 0

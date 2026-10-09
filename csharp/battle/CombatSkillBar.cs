@@ -49,6 +49,7 @@ public partial class CombatSkillBar : Control
         SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         barArtwork = GetNodeOrNull<NinePatchRect>("BarArtwork");
         CreateBar();
+        CreateCompactResources();
         FitBarArtworkToBottom();
         Hide();
     }
@@ -79,6 +80,7 @@ public partial class CombatSkillBar : Control
         resourceCluster.AddChild(CreateResourceRow("精力", 6, new Color(.31f, .78f, .43f), out energyPips, out energyValue));
         resourceCluster.AddChild(CreateResourceRow("法力", 3, new Color(.30f, .57f, .94f), out manaPips, out manaValue));
         header.AddChild(resourceCluster);
+        resourceCluster.Hide();
         var spacer = new Control { SizeFlagsHorizontal = SizeFlags.ExpandFill, MouseFilter = MouseFilterEnum.Ignore };
         header.AddChild(spacer);
         queueLabel = new Label { Text = "技能队列 0/3", HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Center, CustomMinimumSize = new Vector2(120, 0), MouseFilter = MouseFilterEnum.Ignore };
@@ -150,6 +152,33 @@ public partial class CombatSkillBar : Control
 
     public void refresh_slots() => RefreshSlots();
 
+    // 保留原技能栏的美术与几何，仅切换原槽位和底板的可见性。
+    public void set_actions_visible(bool visible)
+    {
+        if (slots is not null) slots.Visible = visible;
+        if (barArtwork is not null) barArtwork.Visible = visible;
+        if (queueLabel is not null) queueLabel.Visible = visible;
+    }
+
+    private void CreateCompactResources()
+    {
+        AddCompactResource("EnergyChip", "icon_energy", out energyValue);
+        AddCompactResource("ManaChip", "icon_mana", out manaValue);
+    }
+
+    private void AddCompactResource(string name, string icon, out Label value)
+    {
+        var chip = new Panel { Name = name, Size = new(100,40), MouseFilter = MouseFilterEnum.Ignore, ZIndex = 31 };
+        chip.AddThemeStyleboxOverride("panel", BattleUiArt.Style("resource_chip", new(100,40)));
+        // 火纹/水焰下部墨色较重，向上作 2 px 光学补偿，与数字视觉中心对齐。
+        var group=new HBoxContainer{Position=new(6,0),Size=new(88,40),Alignment=BoxContainer.AlignmentMode.Center,MouseFilter=MouseFilterEnum.Ignore};group.AddThemeConstantOverride("separation",4);chip.AddChild(group);
+        var iconBox=new Control{CustomMinimumSize=new(24,40),MouseFilter=MouseFilterEnum.Ignore};group.AddChild(iconBox);
+        var image = BattleUiArt.Icon(icon, new(24,24)); image.Position = new(0,6); iconBox.AddChild(image);
+        value = new Label { VerticalAlignment = VerticalAlignment.Center, MouseFilter = MouseFilterEnum.Ignore };
+        value.AddThemeFontSizeOverride("font_size",18); value.AddThemeColorOverride("font_color",BattleUiArt.Text);
+        group.AddChild(value); AddChild(chip);
+    }
+
     public void begin_targeting(ActiveSkillData skill, int slot)
     {
         targetingSkill = skill; targetingSlot = slot;
@@ -220,7 +249,7 @@ public partial class CombatSkillBar : Control
 
     public override void _UnhandledInput(InputEvent input)
     {
-        if (!Visible || input is not InputEventKey { Pressed: true, Echo: false } key) return;
+        if (!Visible || slots?.Visible != true || input is not InputEventKey { Pressed: true, Echo: false } key) return;
         var index = key.Keycode switch { Key.Key1 => 0, Key.Key2 => 1, Key.Key3 => 2, Key.Key4 => 3, Key.Key5 => 4, Key.Key6 => 5, Key.Key7 => 6, Key.Key8 => 7, Key.Key9 => 8, Key.Key0 => 9, _ => -1 };
         if (index < 0 || index >= skills.Count || index >= buttons.Count || buttons[index].Disabled) return;
         EmitSkill(skills[index], index); GetViewport().SetInputAsHandled();
@@ -229,7 +258,7 @@ public partial class CombatSkillBar : Control
     private void RefreshSlots()
     {
         if (slots is null) return;
-        foreach (var child in slots.GetChildren()) child.QueueFree();
+        BattleUiArt.ClearChildren(slots);
         buttons.Clear();
         slotFrames.Clear();
         for (var index = 0; index < skills.Count; index++)
@@ -273,8 +302,16 @@ public partial class CombatSkillBar : Control
         button.AddChild(icon);
         var frame = CreateFrame(); frame.Modulate = new Color(1f, 1f, 1f, .78f); button.AddChild(frame); slotFrames.Add(frame);
         // 费用在框上方、名称在框下方；两者都被限制在底栏的槽位安全区内。
-        var cost = new Label { Text = FormatCost(skill), Position = new Vector2(4, 8), Size = new Vector2(SlotWidth - 8, 20), HorizontalAlignment = HorizontalAlignment.Center, MouseFilter = MouseFilterEnum.Ignore, ZIndex = 4, ClipText = true };
-        cost.AddThemeFontSizeOverride("font_size", 15); cost.AddThemeColorOverride("font_color", new Color(.86f, .94f, .87f)); button.AddChild(cost);
+        var cost = new Control { Position = new Vector2((SlotWidth-FrameWidth)*.5f,8), Size = new Vector2(FrameWidth,20), MouseFilter = MouseFilterEnum.Ignore, ZIndex = 4 };
+        var costX=0f;
+        foreach(var (symbol,amount) in new[]{("icon_energy",skill.energy_cost),("icon_mana",skill.mana_cost)})
+        {
+            if(amount<=0)continue;
+            var costIcon=BattleUiArt.Icon(symbol,new(16,16));costIcon.Position=new(costX,1);cost.AddChild(costIcon);
+            var number=new Label{Text=amount.ToString(),Position=new(costX+18,0),Size=new(20,20),VerticalAlignment=VerticalAlignment.Center,MouseFilter=MouseFilterEnum.Ignore};
+            number.AddThemeFontSizeOverride("font_size",13);number.AddThemeColorOverride("font_color",BattleUiArt.Text);cost.AddChild(number);costX+=40;
+        }
+        button.AddChild(cost);
         var uses = new Label { Name = "ChargeText", Text = "", Position = new Vector2(28, 139), Size = new Vector2(SlotWidth - 56, 16), HorizontalAlignment = HorizontalAlignment.Center, MouseFilter = MouseFilterEnum.Ignore, ZIndex = 4, ClipText = true };
         uses.AddThemeFontSizeOverride("font_size", 11); uses.AddThemeColorOverride("font_color", new Color(.98f, .82f, .48f)); button.AddChild(uses);
         var name = new Label { Text = skill.skill_name, Position = new Vector2(4, 160), Size = new Vector2(SlotWidth - 8, 18), HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center, MouseFilter = MouseFilterEnum.Ignore, ZIndex = 4, ClipText = true };
@@ -352,6 +389,8 @@ public partial class CombatSkillBar : Control
         barArtwork.AnchorBottom = 1f;
         barArtwork.OffsetTop = -displayHeight;
         barArtwork.OffsetBottom = 0;
+        GetNode<Control>("EnergyChip").Position = new(viewportSize.X * leftAnchor, viewportSize.Y - displayHeight - 44);
+        GetNode<Control>("ManaChip").Position = new(viewportSize.X * leftAnchor + 110, viewportSize.Y - displayHeight - 44);
 
         if (panel is null) return;
         // 资源区位于底板上沿之前；槽位行从底板可见区起始处开始，
