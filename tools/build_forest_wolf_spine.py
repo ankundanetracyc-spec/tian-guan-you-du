@@ -104,6 +104,16 @@ def extract_frames(sheet: np.ndarray, frame_size: int) -> list[Image.Image]:
         target_x = (frame_size - out_w) // 2
         target_y = frame_size - 12 - out_h
         frame.alpha_composite(sprite, (target_x, target_y))
+        frame_pixels = np.asarray(frame).copy()
+        component_count, component_labels, component_stats, _ = cv2.connectedComponentsWithStats(
+            (frame_pixels[:, :, 3] > 0).astype(np.uint8), connectivity=8
+        )
+        for component_index in range(1, component_count):
+            if component_stats[component_index, cv2.CC_STAT_AREA] < 24:
+                speck = component_labels == component_index
+                frame_pixels[speck, 3] = 0
+                frame_pixels[speck, :3] = 0
+        frame = Image.fromarray(frame_pixels, "RGBA")
         frames.append(frame)
     return frames
 
