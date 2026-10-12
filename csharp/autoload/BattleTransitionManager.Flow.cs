@@ -145,7 +145,31 @@ public partial class BattleTransitionManager
             _cappedWorldPlayerUid="";_worldStatusBattleHealthCapDelta=0;
         }
         var rewardPlayer=all.FirstOrDefault(d=>d.faction==(int)WorldEntity.Faction.PLAYER&&!d.uid.StartsWith("worldnpc:"));
-        if(!Training)_rewardLedger[_battleId]=new GDictionary{{"entries",rewards},{"player_uid",rewardPlayer?.uid??""},{"claimed",rewards.Count==0}};
+        if(!Training&&!spectator)_rewardLedger[_battleId]=new GDictionary{{"entries",rewards},{"player_uid",rewardPlayer?.uid??""},{"claimed",rewards.Count==0}};
+        if(spectator)
+        {
+            var main = GetTree().CurrentScene as MainScene;
+            try
+            {
+                main?.handle_persistent_battle_return(
+                    result_attackers, result_defenders, last_summary.Duplicate(true), return_context.Duplicate(true));
+            }
+            catch(System.Exception error)
+            {
+                GD.PushError($"NPC 后台战斗结算失败：{error}");
+            }
+            finally
+            {
+                main?.finish_east_woods_spectator_battle();
+                _awaitingSettlement=false;
+                result_attackers=[]; result_defenders=[];
+                last_summary.Clear(); return_context.Clear();
+                _beforeBattle.Clear(); _attackerOrder.Clear(); _defenderOrder.Clear(); _outcomeNote="";
+                if(GodotObject.IsInstanceValid(_spectatorBattleScene))_spectatorBattleScene!.QueueFree();
+                _spectatorBattleScene=null; _spectatorBattleActive=false;
+            }
+            return;
+        }
         var title=Training?(escaped?"演练结束 · 已撤离":victory?"演练结束 · 胜利":"演练结束 · 败北"):escaped?"成功撤离":victory?"战斗胜利":spectator?"战斗结束":"战斗败北";
         try
         {
@@ -156,13 +180,14 @@ public partial class BattleTransitionManager
         finally{EndFlowTransition();}
     }
     public void end_team_battle_escaped(GArray attackers,GArray defenders)=>PrepareSettlement(attackers,defenders,true);
+    public void end_spectator_team_battle(GArray attackers,GArray defenders)=>PrepareSettlement(attackers,defenders,false);
     private void ReturnAfterSettlement()
     {
         CloseFlow();_awaitingSettlement=false;has_results=!Training;
         if(Training)
         {
             result_attackers=[];result_defenders=[];
-            if(return_context.GetValueOrDefault("kind","").AsString()!="yuxu_tianwen_practice")
+            if(return_context.GetValueOrDefault("kind","").AsString() is not ("yuxu_tianwen_practice" or "yuxu_npc_spar"))
             {
                 last_summary.Clear();return_context.Clear();return;
             }

@@ -9,8 +9,10 @@ public partial class SkillExecutor : Node
     private readonly PackedScene? _floatingText = GD.Load<PackedScene>("res://tscn/battle/FloatingText.tscn");
     private readonly System.Collections.Generic.Dictionary<Node2D,(Vector2 Position,int ZIndex)> _attackHomes=[];
     private readonly System.Collections.Generic.Dictionary<Node2D,BattleInkCombatVfx> _incomingAttackVisuals=[];
+    private bool IsSpectatorBattle => GetManager() is BattleManager manager && manager.is_spectator_battle();
     private async System.Threading.Tasks.Task PresentationWait(float seconds)
     {
+        if (IsSpectatorBattle) return;
         if(IsInsideTree())await ToSignal(GetTree().CreateTimer(seconds,processAlways:false),SceneTreeTimer.SignalName.Timeout);
     }
 
@@ -23,7 +25,7 @@ public partial class SkillExecutor : Node
         {
             await PresentationWait(.12f);
             if(!GodotObject.IsInstanceValid(attacker)||!GodotObject.IsInstanceValid(target)){Finish(attacker,is_counter,false);return;}
-            BattleInkCombatVfx.PlayUtility(attacker, target, skill);
+            if (!IsSpectatorBattle) BattleInkCombatVfx.PlayUtility(attacker, target, skill);
             if(GetManager() is BattleManager bodyManager && bodyManager.gongfa_combat.Utility(attacker,skill)){await SettleAction(attacker,skill);Finish(attacker,is_counter,false);return;}
             ApplyStatusEffects(skill, attacker, target);
             ApplySelfSpecialEffects(skill, attacker);
@@ -50,7 +52,7 @@ public partial class SkillExecutor : Node
         {
             if(blockRemaining>0)ConsumeStatus(target,"化解",blockRemaining);
             FloatingText(target,"游骸",Colors.Yellow);
-            BattleInkCombatVfx.PlayImpact(target, skill, attacker, evaded: true);
+            if (!IsSpectatorBattle) BattleInkCombatVfx.PlayImpact(target, skill, attacker, evaded: true);
         }
         else
         {
@@ -87,7 +89,7 @@ public partial class SkillExecutor : Node
             {
                 if(blockRemaining>0)ConsumeStatus(target!,"化解",blockRemaining);
                 FloatingText(target,"游骸",Colors.Yellow);
-                BattleInkCombatVfx.PlayImpact(target, skill, attacker, evaded: true);
+                if (!IsSpectatorBattle) BattleInkCombatVfx.PlayImpact(target, skill, attacker, evaded: true);
                 body.EndIncomingAttack(target!);
                 await SettleAction(attacker,skill);
                 continue;
@@ -110,7 +112,7 @@ public partial class SkillExecutor : Node
         if (result.BlockedDamage > 0) ConsumeStatus(target, "化解", result.BlockedDamage);
         if (result.Evaded)
         {
-            BattleInkCombatVfx.PlayImpact(target, skill, attacker, evaded: true);
+            if (!IsSpectatorBattle) BattleInkCombatVfx.PlayImpact(target, skill, attacker, evaded: true);
             FloatingText(target, "闪避！", Colors.Yellow);
             ResolveCounter(target, attacker, skill, 0, 0, isCounter);
             return false;
@@ -131,9 +133,9 @@ public partial class SkillExecutor : Node
         target.Set("current_health", Mathf.Max(0, target.Get("current_health").AsInt32() - damage));
         body?.OnHealthDamageReceived(target, damage);
         if (damage > 0 && attacker.Get("faction").AsInt32() != target.Get("faction").AsInt32() && GetManager() is BattleManager woundManager && woundManager.is_realtime_battle()) woundManager.add_wound_card(target, "外伤", 1);
-        if (absorbed > 0 && target is Node shieldNode)
+        if (!IsSpectatorBattle && absorbed > 0 && target is Node shieldNode)
             shieldNode.GetNodeOrNull<BattleShieldAura>("BattleShieldAura")?.PlayImpact((GetPosition(target) - GetPosition(attacker)).Normalized());
-        if (target.HasMethod("update_ui")) target.Call("update_ui");
+        if (!IsSpectatorBattle && target.HasMethod("update_ui")) target.Call("update_ui");
         if (damage > 0 && target.HasMethod("gain_blood_furnace_from_hit")) target.Call("gain_blood_furnace_from_hit");
         context["damage"] = damage; context["blocked_damage"] = result.BlockedDamage;
         context = ProcessStatus(target, "after_damage", context);
@@ -145,18 +147,18 @@ public partial class SkillExecutor : Node
         ApplyStatusEffects(skill, attacker, target);
         ApplySelfSpecialEffects(skill, attacker);
         ApplyWounds(skill, target);
-        if (damage > 0) BattleInkSlashEffect.PlayImpactForSkill(target, skill, result.Critical, attacker, segment);
+        if (!IsSpectatorBattle && damage > 0) BattleInkSlashEffect.PlayImpactForSkill(target, skill, result.Critical, attacker, segment);
         var hitDirection = (GetPosition(target) - GetPosition(attacker)).Normalized();
-        if (damage > 0 && target is Node targetNode) targetNode.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_hit(hitDirection, BattleInkCombatVfx.HitWeight(skill), result.Critical);
-        if (target.HasMethod("hit_flash")) target.Call("hit_flash", hitDirection);
+        if (!IsSpectatorBattle && damage > 0 && target is Node targetNode) targetNode.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_hit(hitDirection, BattleInkCombatVfx.HitWeight(skill), result.Critical);
+        if (!IsSpectatorBattle && target.HasMethod("hit_flash")) target.Call("hit_flash", hitDirection);
         show_damage_number(target, damage, skill.damage_type, result.Critical);
         if (target.Get("current_health").AsInt32() > 0) return false;
-        if (target is Node deathNode && !deathNode.HasMeta("battle_death_ink_played"))
+        if (!IsSpectatorBattle && target is Node deathNode && !deathNode.HasMeta("battle_death_ink_played"))
         {
             deathNode.SetMeta("battle_death_ink_played", true);
             BattleInkSlashEffect.PlayDeath(target);
         }
-        if (target.HasMethod("play_death_animation")) target.Call("play_death_animation");
+        if (!IsSpectatorBattle && target.HasMethod("play_death_animation")) target.Call("play_death_animation");
         return true;
     }
 
@@ -204,7 +206,7 @@ public partial class SkillExecutor : Node
                     var heal = Mathf.RoundToInt(caster.Get("max_health").AsInt32() * effect.GetValueOrDefault("percent", .03f).AsSingle());
                     if (caster.HasMethod("apply_healing")) caster.Call("apply_healing", Mathf.Max(1, heal));
                     else caster.Set("current_health", Mathf.Min(caster.Get("max_health").AsInt32(), caster.Get("current_health").AsInt32() + Mathf.Max(1, heal)));
-                    if (caster.HasMethod("update_ui")) caster.Call("update_ui");
+                    if (!IsSpectatorBattle && caster.HasMethod("update_ui")) caster.Call("update_ui");
                     break;
                 case "gain_blood_furnace":
                     var cap = caster.Get("blood_furnace_value_cap").AsInt32();
@@ -249,7 +251,7 @@ public partial class SkillExecutor : Node
 
     private async System.Threading.Tasks.Task Lunge(GodotObject attacker, GodotObject target, ActiveSkillData skill)
     {
-        if (attacker is not Node2D node || target is not Node2D targetNode) return;
+        if (IsSpectatorBattle || attacker is not Node2D node || target is not Node2D targetNode) return;
         var home = node.GlobalPosition;
         // Read the action, approach if needed, then start the common attack/contact flow.
         await PresentationWait(.14f);
@@ -276,6 +278,11 @@ public partial class SkillExecutor : Node
     private async System.Threading.Tasks.Task CompleteAttackContact(GodotObject attacker,GodotObject target,ActiveSkillData skill,bool isCounter)
     {
         if(!GodotObject.IsInstanceValid(attacker)||!GodotObject.IsInstanceValid(target))return;
+        if (GetManager() is BattleManager spectator && spectator.is_spectator_battle())
+        {
+            if (!isCounter) await spectator.PresentAutoResponse(target, attacker, skill.damage_type);
+            return;
+        }
         BattleInkCombatVfx? visual=null;
         if(attacker is Node2D node)_incomingAttackVisuals.Remove(node,out visual);
         var mode=GodotObject.IsInstanceValid(visual)?visual!.ProcessMode:ProcessModeEnum.Pausable;
@@ -294,6 +301,11 @@ public partial class SkillExecutor : Node
     }
     private async System.Threading.Tasks.Task SettleAction(GodotObject attacker,ActiveSkillData skill)
     {
+        if (IsSpectatorBattle)
+        {
+            if (attacker is Node2D spectatorActor) { _attackHomes.Remove(spectatorActor); _incomingAttackVisuals.Remove(spectatorActor); }
+            return;
+        }
         if(!GodotObject.IsInstanceValid(attacker))
         {
             if(attacker is Node2D gone){_attackHomes.Remove(gone);_incomingAttackVisuals.Remove(gone);}
@@ -323,7 +335,7 @@ public partial class SkillExecutor : Node
     public void execute_response(GodotObject defender, GodotObject attacker, ActiveSkillData skill, bool showTriggerLabel = true)
     {
         show_action_name(defender, skill.skill_name);
-        BattleInkCombatVfx.PlayUtility(defender, defender, skill);
+        if (!IsSpectatorBattle) BattleInkCombatVfx.PlayUtility(defender, defender, skill);
         ApplyStatusEffects(skill, defender, defender);
         ApplySelfSpecialEffects(skill, defender, attacker);
         if (showTriggerLabel) FloatingText(defender, $"应对：{skill.skill_name}", new Color(.73f, .81f, .76f));
@@ -335,7 +347,7 @@ public partial class SkillExecutor : Node
     }
     public void show_action_name(GodotObject caster, string name)
     {
-        if (caster is not Node2D owner || !GodotObject.IsInstanceValid(owner) || string.IsNullOrWhiteSpace(name)) return;
+        if (IsSpectatorBattle || caster is not Node2D owner || !GodotObject.IsInstanceValid(owner) || string.IsNullOrWhiteSpace(name)) return;
         if (_floatingText?.Instantiate() is not global::FloatingText view) return;
         (GetManager()?.GetParent() ?? GetTree().CurrentScene)?.AddChild(view);
         view.Scale = Vector2.One * BattleUiArt.Scale(GetViewport()) / Mathf.Max(.001f, GetViewport().GetCanvasTransform().Scale.Y);
@@ -380,7 +392,7 @@ public partial class SkillExecutor : Node
     private readonly System.Collections.Generic.Dictionary<ulong, (ulong Time, int Lane)> _floatingLanes = [];
     private void FloatingText(GodotObject unit,string text,Color color,bool compact = false)
     {
-        if (!GodotObject.IsInstanceValid(unit)) return;
+        if (IsSpectatorBattle || !GodotObject.IsInstanceValid(unit)) return;
         if(_floatingText?.Instantiate() is not Node2D view)return;
         (GetManager()?.GetParent() ?? GetTree().CurrentScene)?.AddChild(view);
         var id = unit.GetInstanceId();

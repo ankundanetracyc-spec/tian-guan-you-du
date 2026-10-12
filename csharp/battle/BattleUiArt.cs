@@ -8,6 +8,19 @@ internal static class BattleUiArt
     internal static readonly Color Text = new("f4f0df"), Accent = new("c4b58c"), Warning = new("b56854");
     private static readonly Dictionary<string, Texture2D> Textures = [];
 
+    internal static StyleBoxTexture PaperBarStyle()
+    {
+        var atlas = new AtlasTexture
+        {
+            Atlas = Texture("res://textures/ui/combat/combat_skill_bar_paper_20261012.png"),
+            Region = new Rect2(38,176,2096,390)
+        };
+        var style = new StyleBoxTexture { Texture = atlas };
+        style.SetTextureMargin(Side.Left,64); style.SetTextureMargin(Side.Right,64);
+        style.SetTextureMargin(Side.Top,40); style.SetTextureMargin(Side.Bottom,40);
+        return style;
+    }
+
     internal static Texture2D Texture(string name)
     {
         var path = name.StartsWith("res://") ? name : $"{Directory}{name}_v2.png";

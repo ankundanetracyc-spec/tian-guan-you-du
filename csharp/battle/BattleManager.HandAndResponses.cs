@@ -75,6 +75,9 @@ public partial class BattleManager : Node2D
     // 现行队列战斗的命中入口必须等待特写；同步入口保留给旧模式与规则调用。
     public async System.Threading.Tasks.Task<bool> PresentAutoResponse(GodotObject defender, GodotObject attacker, string damageType)
     {
+        // Preserve the queued response decision and payment, but skip its visible
+        // freeze-frame focus during unattended NPC battles.
+        if (_spectatorBattle) return try_auto_response(defender, attacker, damageType);
         if (!_realtimeMode || _segmentPhase != SegmentPhase.Executing || !Alive(defender) || !Alive(attacker)
             || _queuedHandledTargets.Contains(defender.GetInstanceId()) || !battle_units.ContainsKey(defender))
             return try_auto_response(defender, attacker, damageType);

@@ -9,11 +9,22 @@ public partial class EastWoodsDungeonPanel : Control
     public event Action? Closed;
     public event Action<string>? RouteNodeEntered;
     public event Action<string, string>? RouteStepped;
+    public event Action? RouteTravelStarted;
+    public event Action<string>? RouteTravelFinished;
 
     private readonly Dictionary<string, Button> _nodeButtons = new(StringComparer.Ordinal);
     private readonly Dictionary<string, Control> _pawnLayers = new(StringComparer.Ordinal);
     private readonly Dictionary<string, Label> _nodeTitles = new(StringComparer.Ordinal);
-    private readonly Dictionary<string, string> _pawnOccupantStamps = new(StringComparer.Ordinal);
+    private readonly Dictionary<string, Vector2> _pawnLayerSizeStamps = new(StringComparer.Ordinal);
+    private readonly Dictionary<string, List<WorldNpcData>> _npcsByNode = new(StringComparer.Ordinal);
+    private readonly HashSet<string> _pathEdges = new(StringComparer.Ordinal);
+    private readonly HashSet<string> _pathNodes = new(StringComparer.Ordinal);
+    private sealed class ConnectionVisual
+    {
+        public required Line2D Line;
+        public bool IsPath;
+    }
+    private readonly Dictionary<string, ConnectionVisual> _connectionVisuals = new(StringComparer.Ordinal);
     private Control? _mapRoot;
     private Control? _connectionLayer;
     private Texture2D? _pawnTexture;
@@ -33,17 +44,21 @@ public partial class EastWoodsDungeonPanel : Control
     private bool _activeDutyReady;
     private float _playerDunSpeed = EastWoodsDungeonRules.BaseDunSpeed;
     private bool _isTraveling;
+    private bool _npcEncounterBusy;
     private int _travelGeneration;
     private List<string> _pendingPath = [];
     private string _pendingTarget = "";
     private Vector2 _gridOrigin;
     private float _cellSize = 120f;
     private float _cellGap = 10f;
-    private string _connectionStamp = "";
+    private string _connectionLayoutStamp = "";
+    private Godot.Collections.Dictionary? _cachedLayoutState;
+    private string _cachedLayoutSeed = "";
     private string _actionBarStamp = "";
-    private readonly Dictionary<string, string> _nodeStyleStamps = new(StringComparer.Ordinal);
+    private readonly Dictionary<string, (Color Edge, int Radius, bool Emphasized)> _nodeStyleStamps = new(StringComparer.Ordinal);
     private int _minGridX;
     private int _minGridY;
+    private bool _routeStepUpdating;
 
     public override void _Ready()
     {
@@ -61,6 +76,7 @@ public partial class EastWoodsDungeonPanel : Control
     {
         clear_npc_motion();
         finish_pawn_step();
+        _npcEncounterBusy = false;
         _insideDungeon = true;
         _travelGeneration++;
         _isTraveling = false;
@@ -102,6 +118,14 @@ public partial class EastWoodsDungeonPanel : Control
     }
 
     public string get_current_route_node_id() => _current;
+    public bool is_route_traveling() => _isTraveling;
+
+    public void set_npc_encounter_busy(bool busy)
+    {
+        if (_npcEncounterBusy == busy) return;
+        _npcEncounterBusy = busy;
+        if (Visible) refresh_action_bar();
+    }
 
     public Godot.Collections.Dictionary get_route_state()
     {
@@ -109,7 +133,12 @@ public partial class EastWoodsDungeonPanel : Control
         foreach (var id in _visited.OrderBy(id => id, StringComparer.Ordinal)) visited.Add(id);
         var discovered = new Godot.Collections.Array<string>();
         foreach (var id in _discoveredNodes.OrderBy(id => id, StringComparer.Ordinal)) discovered.Add(id);
-        return new Godot.Collections.Dictionary { ["current"] = _current, ["visited"] = visited, ["discovered"] = discovered, ["actions"] = _actionProgress.Duplicate(true), ["inside"] = _insideDungeon, ["layout"] = EastWoodsDungeonRules.get_layout_state() };
+        if (_cachedLayoutState is null || _cachedLayoutSeed != EastWoodsDungeonRules.LayoutSeed)
+        {
+            _cachedLayoutState = EastWoodsDungeonRules.get_layout_state();
+            _cachedLayoutSeed = EastWoodsDungeonRules.LayoutSeed;
+        }
+        return new Godot.Collections.Dictionary { ["current"] = _current, ["visited"] = visited, ["discovered"] = discovered, ["actions"] = _actionProgress.Duplicate(true), ["inside"] = _insideDungeon, ["layout"] = _cachedLayoutState };
     }
 
     public void restore_route_state(Godot.Collections.Dictionary state)
@@ -118,6 +147,8 @@ public partial class EastWoodsDungeonPanel : Control
         finish_pawn_step();
         if (state.Count == 0) return;
         EastWoodsDungeonRules.restore_layout(state.GetValueOrDefault("layout", new Godot.Collections.Dictionary()).AsGodotDictionary());
+        _cachedLayoutState = null;
+        _cachedLayoutSeed = "";
         rebuild_map_nodes();
         _insideDungeon = state.GetValueOrDefault("inside", false).AsBool();
         _actionProgress = state.GetValueOrDefault("actions", new Godot.Collections.Dictionary()).AsGodotDictionary().Duplicate(true);
@@ -140,7 +171,7 @@ public partial class EastWoodsDungeonPanel : Control
 
     public override void _UnhandledKeyInput(InputEvent @event)
     {
-        if (!Visible || _isTraveling || _travelPawn is not null || _actionBusy || _actionModal?.Visible == true || @event is not InputEventKey key || !key.Pressed || key.Echo) return;
+        if (!Visible || _isTraveling || _npcEncounterBusy || _travelPawn is not null || _actionBusy || _actionModal?.Visible == true || @event is not InputEventKey key || !key.Pressed || key.Echo) return;
         var direction = key.Keycode switch
         {
             Key.W or Key.Up => new Vector2I(0, -1),
@@ -233,8 +264,8 @@ public partial class EastWoodsDungeonPanel : Control
         if (_mapRoot is null) return;
         clear_hover();
         foreach (var button in _nodeButtons.Values) { _mapRoot.RemoveChild(button); button.QueueFree(); }
-        _nodeButtons.Clear(); _pawnLayers.Clear(); _nodeTitles.Clear(); _nodeStyleStamps.Clear(); _pawnOccupantStamps.Clear();
-        _connectionStamp = ""; _actionBarStamp = "";
+        _nodeButtons.Clear(); _pawnLayers.Clear(); _nodeTitles.Clear(); _nodeStyleStamps.Clear(); _pawnLayerSizeStamps.Clear();
+        clear_connections(); _actionBarStamp = "";
         build_map_nodes();
         CallDeferred(nameof(layout_map));
     }
@@ -327,6 +358,7 @@ public partial class EastWoodsDungeonPanel : Control
             _nodeTitles[node.Id].Size = new Vector2(_cellSize - 8, 22);
             _pawnLayers[node.Id].Position = new Vector2(5, 24);
             _pawnLayers[node.Id].Size = new Vector2(_cellSize - 10, _cellSize - 29);
+            _nodeTitles[node.Id].AddThemeFontSizeOverride("font_size", Mathf.RoundToInt(Mathf.Clamp(_cellSize * 0.105f, 11, 15)));
         }
         refresh();
         update_map_camera();
@@ -334,78 +366,60 @@ public partial class EastWoodsDungeonPanel : Control
 
     private void refresh()
     {
+        // RouteStepped synchronously advances time and NPCs. Their change signals
+        // may request another refresh before move_one_node() finishes the step.
+        // The caller refreshes once after all route callbacks have settled.
+        if (_routeStepUpdating) return;
         if (_mapRoot is null || _connectionLayer is null) return;
         update_visibility();
         var visibleNodes = EastWoodsDungeonRules.get_nodes();
-        var pathEdges = new HashSet<string>(StringComparer.Ordinal);
-        var pathNodes = new HashSet<string>(StringComparer.Ordinal);
+        _pathEdges.Clear();
+        _pathNodes.Clear();
         for (var index = 1; index < _pendingPath.Count; index++)
         {
-            pathEdges.Add(edge_key(_pendingPath[index - 1], _pendingPath[index]));
-            pathNodes.Add(_pendingPath[index - 1]);
-            pathNodes.Add(_pendingPath[index]);
+            _pathEdges.Add(edge_key(_pendingPath[index - 1], _pendingPath[index]));
+            _pathNodes.Add(_pendingPath[index - 1]);
+            _pathNodes.Add(_pendingPath[index]);
         }
 
-        var connectionStamp = $"{_cellSize}:{_cellGap}:" +
-            string.Join(",", _discoveredNodes.OrderBy(id => id, StringComparer.Ordinal)) + ":" +
-            string.Join(",", pathEdges.OrderBy(edge => edge, StringComparer.Ordinal));
-        if (_connectionStamp != connectionStamp)
-        {
-            _connectionStamp = connectionStamp;
-            foreach (var child in _connectionLayer.GetChildren()) { _connectionLayer.RemoveChild(child); child.QueueFree(); }
-            foreach (var node in visibleNodes)
-            {
-                foreach (var neighborId in EastWoodsDungeonRules.get_neighbors(node.Id))
-                {
-                    if (string.CompareOrdinal(node.Id, neighborId) >= 0) continue;
-                    var neighbor = EastWoodsDungeonRules.get_node(neighborId);
-                    if (neighbor is null || !is_node_discovered(node.Id) || !is_node_discovered(neighborId)) continue;
-                    var isPath = pathEdges.Contains(edge_key(node.Id, neighborId));
-                    add_terrain_connection(node, neighbor);
-                    var line = new Line2D
-                    {
-                        Width = isPath ? 5 : Mathf.Max(2, _cellSize * 0.025f),
-                        DefaultColor = isPath ? new Color("e6bd68") : new Color(0.22f, 0.23f, 0.19f, 0.72f),
-                        Points = [node_center(node), node_center(neighbor)],
-                    };
-                    _connectionLayer.AddChild(line);
-                }
-            }
-        }
+        refresh_connections(visibleNodes, _pathEdges);
 
+        foreach (var nodeNpcs in _npcsByNode.Values) nodeNpcs.Clear();
         var npcManager = GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager");
-        var npcsByNode = new Dictionary<string, List<WorldNpcData>>(StringComparer.Ordinal);
         if (npcManager is not null)
         {
             foreach (var npc in npcManager.npcs)
             {
                 if (npc is null || !npc.is_alive || npc.dungeon_id != EastWoodsDungeonRules.DungeonId) continue;
-                if (!npcsByNode.TryGetValue(npc.dungeon_node_id, out var nodeNpcs))
+                if (!_npcsByNode.TryGetValue(npc.dungeon_node_id, out var nodeNpcs))
                 {
                     nodeNpcs = [];
-                    npcsByNode[npc.dungeon_node_id] = nodeNpcs;
+                    _npcsByNode[npc.dungeon_node_id] = nodeNpcs;
                 }
                 nodeNpcs.Add(npc);
             }
-            foreach (var nodeNpcs in npcsByNode.Values)
+            foreach (var nodeNpcs in _npcsByNode.Values)
                 nodeNpcs.Sort((left, right) => string.CompareOrdinal(left.npc_id, right.npc_id));
         }
 
         foreach (var node in visibleNodes)
         {
             var button = _nodeButtons[node.Id];
-            button.Visible = is_node_discovered(node.Id);
-            button.Modulate = is_node_visible(node.Id) ? Colors.White : new Color(.48f, .51f, .48f);
+            var discovered = is_node_discovered(node.Id);
+            if (button.Visible != discovered) button.Visible = discovered;
+            var nodeModulate = is_node_visible(node.Id) ? Colors.White : new Color(.48f, .51f, .48f);
+            if (button.Modulate != nodeModulate) button.Modulate = nodeModulate;
             var isCurrent = node.Id == _current;
             var isSelected = node.Id == _selected;
-            var inPath = pathNodes.Contains(node.Id);
+            var inPath = _pathNodes.Contains(node.Id);
             var edge = isCurrent ? new Color("995d46") : isSelected || inPath ? new Color("99784b") : new Color("68776b");
             var radius = Mathf.RoundToInt(_cellSize * .07f);
-            var styleStamp = $"{edge}:{radius}:{isCurrent || isSelected}";
+            var emphasized = isCurrent || isSelected;
+            var styleStamp = (edge, radius, emphasized);
             if (!_nodeStyleStamps.TryGetValue(node.Id, out var oldStamp) || oldStamp != styleStamp)
             {
                 _nodeStyleStamps[node.Id] = styleStamp;
-                button.AddThemeStyleboxOverride("normal", panel_style(new Color("ded8bf"), edge, radius, isCurrent || isSelected ? 3 : 1));
+                button.AddThemeStyleboxOverride("normal", panel_style(new Color("ded8bf"), edge, radius, emphasized ? 3 : 1));
                 button.AddThemeStyleboxOverride("hover", panel_style(new Color("e8e1cc"), new Color("995d46"), radius, 3));
                 button.AddThemeStyleboxOverride("pressed", panel_style(new Color("c9cbb6"), new Color("995d46"), radius, 3));
             }
@@ -413,28 +427,102 @@ public partial class EastWoodsDungeonPanel : Control
             var title = dutyTarget ? (_activeDutyReady ? "出口 · 回宗回报" : "巡查 · 静冠洼地") : node.ShowTitleOnMap ? node.Title : "";
             if (is_node_visible(node.Id) && EastWoodsActions.Content(node.Id) is { } content && action_remaining(node.Id, content) > 0)
                 title += (title.Length > 0 ? " · " : "") + (content.Battle ? "兽踪" : content.ItemPath.Length > 0 ? "可采集" : "异状");
-            _nodeTitles[node.Id].Text = title;
-            _nodeTitles[node.Id].Visible = !string.IsNullOrWhiteSpace(title);
-            _nodeTitles[node.Id].AddThemeFontSizeOverride("font_size", Mathf.RoundToInt(Mathf.Clamp(_cellSize * 0.105f, 11, 15)));
-
-            var occupants = new List<(bool IsPlayer, WorldNpcData? Npc)>();
-            if (isCurrent) occupants.Add((true, null));
-            if (is_node_visible(node.Id) && npcsByNode.TryGetValue(node.Id, out var nodeNpcs))
-                occupants.AddRange(nodeNpcs.Where(npc => !_npcMotions.ContainsKey(npc.npc_id)).Select(npc => (false, (WorldNpcData?)npc)));
+            var titleLabel = _nodeTitles[node.Id];
+            if (titleLabel.Text != title) titleLabel.Text = title;
+            var titleVisible = !string.IsNullOrWhiteSpace(title);
+            if (titleLabel.Visible != titleVisible) titleLabel.Visible = titleVisible;
 
             var pawns = _pawnLayers[node.Id];
-            var occupantStamp = $"{pawns.Size.X:R}x{pawns.Size.Y:R}|" +
-                string.Join("\u001f", occupants.Select(occupant => occupant.IsPlayer ? "@player" : occupant.Npc!.npc_id));
-            if (!_pawnOccupantStamps.TryGetValue(node.Id, out var previousOccupantStamp) || previousOccupantStamp != occupantStamp)
+            List<WorldNpcData>? nodeNpcs = null;
+            if (is_node_visible(node.Id) && _npcsByNode.TryGetValue(node.Id, out var foundNpcs) && foundNpcs.Count > 0)
+                nodeNpcs = foundNpcs;
+            if (!pawn_occupants_match(node.Id, pawns, isCurrent, nodeNpcs))
             {
-                _pawnOccupantStamps[node.Id] = occupantStamp;
-                foreach (var child in pawns.GetChildren()) { pawns.RemoveChild(child); child.QueueFree(); }
+                while (pawns.GetChildCount() > 0)
+                {
+                    var child = pawns.GetChild(0);
+                    pawns.RemoveChild(child);
+                    child.QueueFree();
+                }
+                var occupants = new List<(bool IsPlayer, WorldNpcData? Npc)>();
+                if (isCurrent) occupants.Add((true, null));
+                if (nodeNpcs is not null)
+                    foreach (var npc in nodeNpcs)
+                        if (!_npcMotions.ContainsKey(npc.npc_id)) occupants.Add((false, npc));
+                _pawnLayerSizeStamps[node.Id] = pawns.Size;
                 add_pawns(pawns, occupants);
             }
         }
 
         update_details();
         refresh_action_bar();
+    }
+
+    private bool pawn_occupants_match(string nodeId, Control layer, bool hasPlayer, List<WorldNpcData>? nodeNpcs)
+    {
+        if (!_pawnLayerSizeStamps.TryGetValue(nodeId, out var previousSize) || previousSize != layer.Size) return false;
+        var expectedCount = hasPlayer ? 1 : 0;
+        if (nodeNpcs is not null)
+            foreach (var npc in nodeNpcs)
+                if (!_npcMotions.ContainsKey(npc.npc_id)) expectedCount++;
+        if (layer.GetChildCount() != expectedCount) return false;
+
+        var childIndex = 0;
+        if (hasPlayer && layer.GetChild(childIndex++).Name != "PlayerPawn") return false;
+        if (nodeNpcs is not null)
+            foreach (var npc in nodeNpcs)
+            {
+                if (_npcMotions.ContainsKey(npc.npc_id)) continue;
+                var child = layer.GetChild(childIndex++);
+                if (!child.HasMeta("npc_id") || child.GetMeta("npc_id").AsString() != npc.npc_id) return false;
+            }
+        return true;
+    }
+
+    private void refresh_connections(IReadOnlyList<EastWoodsDungeonRules.NodeDefinition> nodes, HashSet<string> pathEdges)
+    {
+        if (_connectionLayer is null) return;
+        var layoutStamp = $"{_cellSize:R}:{_cellGap:R}";
+        if (_connectionLayoutStamp != layoutStamp)
+        {
+            clear_connections();
+            _connectionLayoutStamp = layoutStamp;
+        }
+
+        // Discovery is monotonic during play. Add only newly revealed links and update
+        // the small route overlay in place; rebuilding every known edge on each step
+        // made later travel progressively more expensive.
+        foreach (var node in nodes)
+        {
+            if (!is_node_discovered(node.Id)) continue;
+            foreach (var neighborId in EastWoodsDungeonRules.get_neighbors(node.Id))
+            {
+                if (string.CompareOrdinal(node.Id, neighborId) >= 0 || !is_node_discovered(neighborId)) continue;
+                var neighbor = EastWoodsDungeonRules.get_node(neighborId);
+                if (neighbor is null) continue;
+                var key = edge_key(node.Id, neighborId);
+                var isPath = pathEdges.Contains(key);
+                if (!_connectionVisuals.TryGetValue(key, out var visual))
+                {
+                    var line = add_terrain_connection(node, neighbor, isPath);
+                    if (line is not null) _connectionVisuals[key] = new ConnectionVisual { Line = line, IsPath = isPath };
+                }
+                else if (visual.IsPath != isPath)
+                {
+                    visual.IsPath = isPath;
+                    visual.Line.Width = isPath ? 5 : Mathf.Max(2, _cellSize * 0.025f);
+                    visual.Line.DefaultColor = isPath ? new Color("e6bd68") : new Color(0.22f, 0.23f, 0.19f, 0.72f);
+                }
+            }
+        }
+    }
+
+    private void clear_connections()
+    {
+        if (_connectionLayer is not null)
+            foreach (var child in _connectionLayer.GetChildren()) { _connectionLayer.RemoveChild(child); child.QueueFree(); }
+        _connectionVisuals.Clear();
+        _connectionLayoutStamp = "";
     }
 
     private void add_pawns(Control layer, List<(bool IsPlayer, WorldNpcData? Npc)> occupants)
@@ -527,7 +615,7 @@ public partial class EastWoodsDungeonPanel : Control
     private void on_node_clicked(string nodeId)
     {
         if (!is_node_discovered(nodeId)) return;
-        if (_isTraveling || _travelPawn is not null || _actionBusy || _actionModal?.Visible == true || nodeId == _current) return;
+        if (_isTraveling || _npcEncounterBusy || _travelPawn is not null || _actionBusy || _actionModal?.Visible == true || nodeId == _current) return;
         if (_pendingTarget == nodeId && _pendingPath.Count > 1)
         {
             start_pending_path();
@@ -544,10 +632,15 @@ public partial class EastWoodsDungeonPanel : Control
 
     private void start_pending_path()
     {
-        if (_isTraveling || _travelPawn is not null || _pendingPath.Count < 2) return;
+        if (_isTraveling || _npcEncounterBusy || _travelPawn is not null || _pendingPath.Count < 2) return;
         var path = _pendingPath.ToArray();
+        // Route simulation updates NPC positions edge by edge. Drop any in-flight
+        // NPC presentation first so it cannot trigger extra map refreshes while
+        // the player's continuous route is already refreshing each edge.
+        clear_npc_motion();
         var generation = ++_travelGeneration;
         _isTraveling = true;
+        RouteTravelStarted?.Invoke();
         _pendingPath.Clear();
         _pendingTarget = "";
         refresh();
@@ -568,11 +661,12 @@ public partial class EastWoodsDungeonPanel : Control
         _isTraveling = false;
         _selected = _current;
         refresh();
+        RouteTravelFinished?.Invoke(_current);
     }
 
     private void move_one_node(string nodeId)
     {
-        if (_travelPawn is not null || _actionBusy || _actionModal?.Visible == true || CanMove?.Invoke() == false) return;
+        if (_npcEncounterBusy || _travelPawn is not null || _actionBusy || _actionModal?.Visible == true || CanMove?.Invoke() == false) return;
         if (!EastWoodsDungeonRules.get_neighbors(_current).Contains(nodeId)) return;
         if (!_isTraveling)
         {
@@ -589,9 +683,13 @@ public partial class EastWoodsDungeonPanel : Control
         _current = nodeId;
         _selected = nodeId;
         _visited.Add(nodeId);
-        refresh();
-        RouteStepped?.Invoke(previous, nodeId);
-        RouteNodeEntered?.Invoke(nodeId);
+        _routeStepUpdating = true;
+        try
+        {
+            RouteStepped?.Invoke(previous, nodeId);
+            RouteNodeEntered?.Invoke(nodeId);
+        }
+        finally { _routeStepUpdating = false; }
         refresh();
         if (generation == _travelGeneration && Visible) animate_player_step(previous, sourcePosition);
     }

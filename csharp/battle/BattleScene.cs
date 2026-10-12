@@ -17,6 +17,7 @@ public partial class BattleScene : Node2D
         if (!GodotObject.IsInstanceValid(battle_mgr)) { GD.PushError("BattleScene: 找不到 BattleMgr 节点"); return; }
         var package = transitionManager!.Call("consume_pending_battle_package").AsGodotArray();
         if (package.Count != 4) { GD.PushError("BattleScene: 未收到完整的战斗包数据"); return; }
+        battle_mgr!.Call("set_spectator_battle", transitionManager.Call("is_spectator_battle_active").AsBool());
         battle_mgr!.Call("setup_team_battle", package[0], package[1], package[2], package[3]);
     }
 }

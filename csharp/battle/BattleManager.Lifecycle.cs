@@ -5,6 +5,7 @@ public partial class BattleManager : Node2D
 {
     public override void _Input(InputEvent @event)
     {
+        if(_spectatorBattle)return;
         if(FlowTransitionActive){GetViewport().SetInputAsHandled();return;}
         if(@event is InputEventKey{Pressed:true,Echo:false,Keycode:Key.Space}&&_realtimeMode&&battle_running)
         {
@@ -15,6 +16,7 @@ public partial class BattleManager : Node2D
 
     public override void _UnhandledInput(InputEvent @event)
     {
+        if(_spectatorBattle)return;
         if(FlowTransitionActive){GetViewport().SetInputAsHandled();return;}
         if (_realtimeMode && @event is InputEventMouseButton { Pressed: true, ButtonIndex: MouseButton.Left } mouse && _pendingInstantSkill is not null && GodotObject.IsInstanceValid(active_unit))
         {
@@ -53,8 +55,8 @@ public partial class BattleManager : Node2D
     {
         if (_returning_to_world)return; SetBattlePaused(false); _returning_to_world=true; battle_running=false; _segmentPhase=SegmentPhase.None; _skillBar?.clear_targeting();
         var transition=GetTree().Root.GetNodeOrNull<BattleTransitionManager>("BattleTransitionManager");
-        if(transition is not null)await transition.HoldBattleOutro();
-        await FadeBattleControls();
+        if(!_spectatorBattle&&transition is not null)await transition.HoldBattleOutro();
+        if(!_spectatorBattle)await FadeBattleControls();
         var attackers=new Godot.Collections.Array(); var defenders=new Godot.Collections.Array();
         foreach(var unit in player_units.Concat(enemy_units))
             if(GodotObject.IsInstanceValid(unit) && unit.HasMeta("unwounded_health"))
@@ -66,7 +68,8 @@ public partial class BattleManager : Node2D
         RestoreBattleResources();
         foreach(var unit in player_units)if(GodotObject.IsInstanceValid(unit))attackers.Add(unit.Call("get_snapshot_data"));
         foreach(var unit in enemy_units)if(GodotObject.IsInstanceValid(unit))defenders.Add(unit.Call("get_snapshot_data"));
-        if(escaped) transition?.end_team_battle_escaped(attackers,defenders);
+        if(_spectatorBattle) transition?.end_spectator_team_battle(attackers,defenders);
+        else if(escaped) transition?.end_team_battle_escaped(attackers,defenders);
         else transition?.end_team_battle(attackers,defenders);
     }
     private GodotObject? FindTarget(GodotObject unit) => (unit.Get("faction").AsInt32() == 1 ? enemy_units : player_units).FirstOrDefault(Alive);

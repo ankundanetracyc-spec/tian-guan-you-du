@@ -329,11 +329,14 @@ public partial class MainScene : Node2D
     {
         if (!GodotObject.IsInstanceValid(npc)) return;
         var name = string.IsNullOrWhiteSpace(npc.npc_name) ? "无名修士" : npc.npc_name;
-        npc_interactions?.show_menu(name, new List<(string, Action)>
+        var actions = new List<(string, Action)>
         {
             ("交谈", () => open_world_npc_talk(npc)),
             ("交易", () => open_world_npc_trade(npc)),
-        });
+        };
+        if (can_sect_spar(npc)) actions.Add(("切磋", () => request_npc_spar(npc)));
+        if (can_npc_purchase(npc)) actions.Add(("求购", () => request_npc_purchase(npc)));
+        npc_interactions?.show_menu(name, actions);
     }
     private void start_resident_dialogue(string resident)
     {

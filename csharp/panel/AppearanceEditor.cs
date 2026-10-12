@@ -29,8 +29,6 @@ public partial class AppearanceEditor : Control
     private PortraitRenderer? _portraitPreview;
     private BattlePaperDoll? _battlePreview;
     private readonly Dictionary<string, ChoiceRow> _choiceRows = [];
-    private readonly Dictionary<string, HSlider> _sliders = [];
-    private readonly Dictionary<string, Label> _sliderValues = [];
 
     private const int PaletteCount = 5;
     private static readonly string[] EarNames = { "标准耳", "小巧耳", "长耳", "圆耳垂", "贴耳" };
@@ -117,10 +115,10 @@ public partial class AppearanceEditor : Control
         var root = new VBoxContainer(); root.AddThemeConstantOverride("separation", 14); margin.AddChild(root);
 
         var heading = new HBoxContainer(); heading.AddThemeConstantOverride("separation", 16); root.AddChild(heading);
-        var title = text("角色捏脸", 30); title.SizeFlagsHorizontal = SizeFlags.ExpandFill; heading.AddChild(title);
+        var title = text("角色仪容", 30); title.SizeFlagsHorizontal = SizeFlags.ExpandFill; heading.AddChild(title);
         var close = new Button { Text = "×", CustomMinimumSize = new Vector2(48, 42) };
         close.Pressed += cancel_edit; heading.AddChild(close);
-        root.AddChild(text("局外立绘可组合五官；局内预览使用无五官皮影。调整只影响当前角色。", 16));
+        root.AddChild(text("可调整局外立绘的五官与外观；局内预览为无五官皮影。", 16));
 
         var work = new HBoxContainer { SizeFlagsVertical = SizeFlags.ExpandFill };
         work.AddThemeConstantOverride("separation", 16); root.AddChild(work);
@@ -152,11 +150,6 @@ public partial class AppearanceEditor : Control
         var scroll = new ScrollContainer { SizeFlagsVertical = SizeFlags.ExpandFill, HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled };
         settings.AddChild(scroll);
         _choiceBox = new VBoxContainer(); _choiceBox.AddThemeConstantOverride("separation", 6); _choiceBox.SizeFlagsHorizontal = SizeFlags.ExpandFill; scroll.AddChild(_choiceBox);
-        settings.AddChild(new HSeparator());
-        add_slider(settings, "脸宽", "face_width", .90, 1.10, .01);
-        add_slider(settings, "脸长", "face_height", .90, 1.10, .01);
-        add_slider(settings, "眼睛大小", "eye_scale", .90, 1.15, .01);
-        add_slider(settings, "眼位上下", "eye_offset_y", -10, 10, 1);
 
         var footer = new HBoxContainer(); footer.AddThemeConstantOverride("separation", 10); root.AddChild(footer);
         var random = new Button { Text = "随机一组", CustomMinimumSize = new Vector2(120, 44) }; random.Pressed += randomize_draft; footer.AddChild(random);
@@ -266,17 +259,6 @@ public partial class AppearanceEditor : Control
         return rng.RandiRange(0, Math.Max(0, count - 1));
     }
 
-    private void add_slider(VBoxContainer parent, string title, string key, double min, double max, double step)
-    {
-        var row = new VBoxContainer(); row.AddThemeConstantOverride("separation", 2); parent.AddChild(row);
-        var header = new HBoxContainer(); row.AddChild(header);
-        var label = text(title, 15); label.SizeFlagsHorizontal = SizeFlags.ExpandFill; header.AddChild(label);
-        var valueLabel = text("—", 14); valueLabel.AutowrapMode = TextServer.AutowrapMode.Off; valueLabel.CustomMinimumSize = new Vector2(54, 0); valueLabel.HorizontalAlignment = HorizontalAlignment.Right; header.AddChild(valueLabel);
-        var slider = new HSlider { MinValue = min, MaxValue = max, Step = step, SizeFlagsHorizontal = SizeFlags.ExpandFill, CustomMinimumSize = new Vector2(0, 22) };
-        slider.ValueChanged += value => on_slider_changed(key, value); row.AddChild(slider);
-        _sliders[key] = slider; _sliderValues[key] = valueLabel;
-    }
-
     private void refresh_controls()
     {
         if (_draftData is null) return;
@@ -292,17 +274,6 @@ public partial class AppearanceEditor : Control
             if (row.Previous is not null) row.Previous.Disabled = row.Values.Count <= 1;
             if (row.Next is not null) row.Next.Disabled = row.Values.Count <= 1;
         }
-        set_slider("face_width", _draftData.appearance_face_width);
-        set_slider("face_height", _draftData.appearance_face_height);
-        set_slider("eye_scale", _draftData.appearance_eye_scale);
-        set_slider("eye_offset_y", _draftData.appearance_eye_offset_y);
-    }
-
-    private void set_slider(string key, double value)
-    {
-        if (_sliders.TryGetValue(key, out var slider)) slider.SetValueNoSignal(value);
-        if (_sliderValues.TryGetValue(key, out var label))
-            label.Text = key == "eye_offset_y" ? value.ToString("0") : value.ToString("0.00");
     }
 
     private void change_choice(string key, int delta)
@@ -326,24 +297,7 @@ public partial class AppearanceEditor : Control
             set_field(_draftData, row.Field, row.Values[rng.RandiRange(0, row.Values.Count - 1)]);
             if (row.Key == "eye") _draftData.appearance_eyebrow_style = _draftData.appearance_eye_style;
         }
-        _draftData.appearance_face_width = 1.0f;
-        _draftData.appearance_face_height = 1.0f;
-        _draftData.appearance_eye_scale = 1.0f;
-        _draftData.appearance_eye_offset_y = 0;
         refresh_controls(); refresh_previews();
-    }
-
-    private void on_slider_changed(string key, double value)
-    {
-        if (_draftData is null) return;
-        switch (key)
-        {
-            case "face_width": _draftData.appearance_face_width = (float)value; break;
-            case "face_height": _draftData.appearance_face_height = (float)value; break;
-            case "eye_scale": _draftData.appearance_eye_scale = (float)value; break;
-            case "eye_offset_y": _draftData.appearance_eye_offset_y = (float)value; break;
-        }
-        set_slider(key, value); refresh_previews();
     }
 
     private void refresh_previews()
@@ -372,10 +326,6 @@ public partial class AppearanceEditor : Control
         _sourceData.appearance_hair_back_style = _draftData.appearance_hair_back_style;
         _sourceData.appearance_clothes_style = _draftData.appearance_clothes_style;
         _sourceData.appearance_beard_style = _draftData.appearance_beard_style;
-        _sourceData.appearance_face_width = _draftData.appearance_face_width;
-        _sourceData.appearance_face_height = _draftData.appearance_face_height;
-        _sourceData.appearance_eye_scale = _draftData.appearance_eye_scale;
-        _sourceData.appearance_eye_offset_y = _draftData.appearance_eye_offset_y;
         _sourceData.EmitChanged();
         AppearanceApplied?.Invoke();
         Hide();

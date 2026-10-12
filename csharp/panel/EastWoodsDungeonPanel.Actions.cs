@@ -22,7 +22,7 @@ public partial class EastWoodsDungeonPanel
     public int action_remaining(string node, EastWoodsActions.ActionDef action) => action.Stock > 0 ? Math.Max(0, action.Stock - progress(node + ":" + action.Id)) : progress(node + ":" + action.Id) > 0 ? 0 : 1;
     public bool can_execute_action(string node, string id)
     {
-        if (node != _current || _actionBusy || _isTraveling || _travelPawn is not null) return false;
+        if (node != _current || _actionBusy || _isTraveling || _npcEncounterBusy || _travelPawn is not null) return false;
         var action = EastWoodsActions.Find(node, id);
         return action is not null && action_remaining(node, action) >= Math.Max(1, action.Quantity);
     }
@@ -35,11 +35,13 @@ public partial class EastWoodsDungeonPanel
     }
     public void interrupt_travel(bool stopNpcMotion = true)
     {
+        var wasTraveling = _isTraveling;
         if (stopNpcMotion) clear_npc_motion();
         finish_pawn_step();
         _travelGeneration++; _isTraveling = false;
         _pendingPath.Clear(); _pendingTarget = "";
         refresh();
+        if (wasTraveling) RouteTravelFinished?.Invoke(_current);
     }
     public void show_action_result(string title, string body)
     {
@@ -50,7 +52,7 @@ public partial class EastWoodsDungeonPanel
         if (_actionModal?.Visible != true) return false;
         _actionModal.Hide(); _offeredAction = ""; return true;
     }
-    public bool can_leave() => Visible && _current == "forest_edge" && !_isTraveling && !_actionBusy && _travelPawn is null;
+    public bool can_leave() => Visible && _current == "forest_edge" && !_isTraveling && !_actionBusy && !_npcEncounterBusy && _travelPawn is null;
 
     public void return_one_level()
     {
@@ -61,7 +63,7 @@ public partial class EastWoodsDungeonPanel
 
     public void locate_exit()
     {
-        if (_actionBusy) return;
+        if (_actionBusy || _npcEncounterBusy) return;
         close_action_details();
         interrupt_travel();
         if (_current == "forest_edge")
@@ -135,9 +137,17 @@ public partial class EastWoodsDungeonPanel
     private void refresh_action_bar()
     {
         if (_actionRows is null || _actionBar is null) return;
+        if (_isTraveling)
+        {
+            // The panel is hidden for the whole route. Keep its controls intact and
+            // rebuild once at arrival instead of replacing them for every crossed cell.
+            _actionBar.Hide();
+            _actionBarStamp = "";
+            return;
+        }
         var currentContent = EastWoodsActions.Content(_current);
         var contentStamp = currentContent is null ? "" : $"{currentContent.Id}:{action_remaining(_current, currentContent)}";
-        var stamp = $"{_current}:{_isTraveling}:{_travelPawn is not null}:{_pendingPath.Count < 2}:{_actionBusy}:{_activeDutyId}:{_activeDutyStage}:{_activeDutyReady}:{contentStamp}";
+        var stamp = $"{_current}:{_isTraveling}:{_travelPawn is not null}:{_pendingPath.Count < 2}:{_actionBusy}:{_npcEncounterBusy}:{_activeDutyId}:{_activeDutyStage}:{_activeDutyReady}:{contentStamp}";
         if (_actionBarStamp == stamp) return;
         _actionBarStamp = stamp;
 
@@ -168,7 +178,7 @@ public partial class EastWoodsDungeonPanel
         foreach (var action in choices)
         {
             var button = make_button(action.Name, 100, 32); button.Name = "Action_" + action.Id;
-            button.Disabled = _actionBusy;
+            button.Disabled = _actionBusy || _npcEncounterBusy;
             button.Pressed += () => offer_action(action); row.AddChild(button);
         }
         var inspect = make_button("此地见闻", 116, 32); inspect.Pressed += () => show_action_result("此地见闻", node?.Description ?? ""); row.AddChild(inspect);

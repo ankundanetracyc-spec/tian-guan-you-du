@@ -45,8 +45,62 @@ public partial class NpcSocialSmoke : Node
             var refusal = NpcSocialRules.Evaluate(wary, famous, "introduce");
             NpcSocialRules.Remember(wary, famous, "introduce", "野外", 1, refusal);
             Check(!refusal.ExchangesName && !NpcSocialRules.KnowsName(wary), "谨慎拒绝不能仍交换姓名");
+            Check(refusal.DecisionSteps.Any(s => s.Rule == "caution_veto") && refusal.Factors.Count == refusal.DecisionSteps.Count(s => s.Visible),
+                "每条提示必须来自实际判定，谨慎拒绝必须有对应规则");
+            wary.faction_id = famous.sect_affiliation_id;
+            var sectAcceptance = NpcSocialRules.Evaluate(wary, famous, "introduce");
+            Check(sectAcceptance.ExchangesName && sectAcceptance.DecisionSteps.Any(s => s.Rule == "same_sect") &&
+                sectAcceptance.DecisionSteps.Any(s => s.Rule == "basis_overcomes_caution") && !sectAcceptance.DecisionSteps.Any(s => s.Rule == "caution_veto"),
+                "同门条件必须实际改变谨慎拒绝分支，而非仅修改提示");
+            wary.faction_id = "other";
+            wary.player_social_memory["heard_player_rank"] = "真传弟子";
+            var fameAcceptance = NpcSocialRules.Evaluate(wary, famous, "introduce");
+            Check(fameAcceptance.ExchangesName && fameAcceptance.DecisionSteps.Any(s => s.Rule == "heard_rank") &&
+                !fameAcceptance.DecisionSteps.Any(s => s.Rule == "same_sect"), "闻名依据与同门依据不能混用");
+            wary.player_social_memory.Clear();
+            wary.player_social_memory["player_name"] = famous.entity_name;
+            var familiar = NpcSocialRules.Evaluate(wary, famous, "introduce");
+            Check(familiar.DecisionSteps.Any(s => s.Rule == "known_name") && !familiar.DecisionSteps.Any(s => s.Rule == "heard_rank"),
+                "熟人闲谈不得重复展示陌生结识判定");
+            wary.player_social_memory["relationship"] = "enemy";
+            var enemy = NpcSocialRules.Evaluate(wary, famous, "introduce");
+            Check(!enemy.ExchangesName && enemy.DecisionSteps.Count == 1 && enemy.DecisionSteps[0].Rule == "hostile_veto",
+                "敌对提前阻断后不得显示未执行的后续判断");
+            wary.player_social_memory.Clear();
             wary.social_personality["risk"] = "冒进"; NpcPersonalityRules.Ensure(wary);
             Check(NpcPersonalityRules.Is(wary, "risk", "冒进"), "补缺不能覆盖已设性格");
+            var stableA = new WorldNpcData { npc_id = "personality_stable" };
+            var stableB = new WorldNpcData { npc_id = "personality_stable" };
+            NpcPersonalityRules.Ensure(stableA); NpcPersonalityRules.Ensure(stableB);
+            Check(stableA.social_personality.Count == 6 && stableA.social_priorities.Count == 1 &&
+                stableA.social_personality.Keys.All(k => stableA.social_personality[k].AsString() == stableB.social_personality[k].AsString()),
+                "六轴生成应按稳定 ID 一致，不能每次查阅重抽");
+            Check(!NpcPersonalityRules.InspectionText(stableA, false).Contains("所重：") && stableA.player_known_npc_info.Count == 0,
+                "正式认知不能读取真实所重，测试查阅不得写入知识");
+            Check(NpcPersonalityRules.InspectionText(stableA, true).Contains("真实性情") && stableA.player_known_npc_info.Count == 0,
+                "测试查看不能自动熟悉人物");
+            var motiveNpc = new WorldNpcData { npc_id = "motive", faction_id = "yuxu_xianzong", personality = "爽直" };
+            motiveNpc.social_priorities.Add("声名");
+            motiveNpc.player_social_memory["heard_player_rank"] = "真传弟子";
+            var proactiveMotive = NpcSocialRules.Evaluate(motiveNpc, famous, "introduce", true);
+            Check(NpcPersonalityRules.HasVisitPriority(motiveNpc, true) && proactiveMotive.DecisionSteps.Any(s => s.Rule == "renown_visit") &&
+                !NpcSocialRules.Evaluate(motiveNpc, famous, "introduce").DecisionSteps.Any(s => s.Rule == "renown_visit"),
+                "主动来访的所重因素不能伪用于玩家主动搭话");
+            NpcSocialRules.Remember(motiveNpc, famous, "introduce", "宗内", 1, proactiveMotive);
+            var knownText = NpcPersonalityRules.InspectionText(motiveNpc, false);
+            Check(knownText.Contains("姓名：") && knownText.Contains("曾主动") && !knownText.Contains("所重：") &&
+                !knownText.Contains("仁心："), "交际所得只应包含实际信息和行为印象");
+            var sparCautious = new WorldNpcData { npc_id = "spar_cautious", faction_id = "yuxu_xianzong", cultivation_realm = "云息二层", personality = "谨慎" };
+            var sparPlayer = new HumanData { sect_affiliation_id = "yuxu_xianzong", cultivation_realm = "云息三层" };
+            Check(!NpcSparringRules.Evaluate(sparCautious, sparPlayer).AgreesToSpar, "谨慎者不能无条件接受陌生切磋");
+            sparCautious.player_social_memory["player_name"] = "沈照微";
+            Check(NpcSparringRules.Evaluate(sparCautious, sparPlayer).AgreesToSpar, "不能读取未获知的真实修为来拒绝熟人");
+            sparCautious.player_social_memory["player_realm"] = "云息三层";
+            Check(!NpcSparringRules.Evaluate(sparCautious, sparPlayer).AgreesToSpar, "已知修为差距未影响谨慎对练判断");
+            sparCautious.social_personality["risk"] = "冒进";
+            Check(NpcSparringRules.Evaluate(sparCautious, sparPlayer).AgreesToSpar, "改变风险性情应实际改变对练分支");
+            sparCautious.player_social_memory["relationship"] = "enemy";
+            Check(!NpcSparringRules.Evaluate(sparCautious, sparPlayer).AgreesToSpar, "不能把敌对冲突当作友好对练");
             var saves = GetNode<GameSaveManager>("/root/GameSaveManager"); Check(!saves.has_active_slot, "不能写正式存档槽");
             var fixture = new PersistentGameSave { year = 1, month = 1, day = 8, hour = 9, current_node_id = "yuxu_xianzong_core", world_cell = new(34, 166), npc_population_version = 1, npc_simulation_enabled = false,
                 player_data = new HumanData { entity_name = "沈照微", cultivation_realm = "云息三层", current_age = 16, sect_affiliation_id = "yuxu_xianzong", sect_current_rank = "外门弟子", current_world_stamina = 100 },
@@ -93,7 +147,9 @@ public partial class NpcSocialSmoke : Node
             Check(ResourceSaver.Save(saved, path) == Error.Ok, "资源存档失败");
             var reloaded = ResourceLoader.Load<PersistentGameSave>(path, cacheMode: ResourceLoader.CacheMode.Ignore)!;
             Check(reloaded.world_npcs.First(n => n.npc_id == npc.npc_id).player_social_memory["player_name"].AsString() == "沈照微", "实际资源读档丢失姓名");
-            Check(reloaded.world_npcs.First(n => n.npc_id == npc.npc_id).social_personality.Count == 4, "实际读档丢失四倾向性格");
+            var restoredNpc = reloaded.world_npcs.First(n => n.npc_id == npc.npc_id);
+            Check(restoredNpc.social_personality.Count == 6 && restoredNpc.social_priorities.Count > 0 &&
+                restoredNpc.player_known_npc_info.ContainsKey("name"), "实际读档丢失六轴、所重或交际所得");
             DirAccess.RemoveAbsolute(ProjectSettings.GlobalizePath(path));
             main.open_world_npc_talk(npc); Check(Read<Label>(dialogue, "_body").Text.Contains("闲谈近况"), "熟人仍重复初识");
             var stamina = player.current_world_stamina; dialogue.close(); dialogue.close(); dialogue.close();

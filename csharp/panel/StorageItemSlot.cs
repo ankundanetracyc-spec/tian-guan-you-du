@@ -57,13 +57,13 @@ public partial class StorageItemSlot : Control
         if (icon_rect is not null)
         {
             icon_rect.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-            icon_rect.OffsetLeft = 14; icon_rect.OffsetTop = 14;
-            icon_rect.OffsetRight = -14; icon_rect.OffsetBottom = -49;
+            icon_rect.OffsetLeft = 12; icon_rect.OffsetTop = 10;
+            icon_rect.OffsetRight = -12; icon_rect.OffsetBottom = -62;
         }
         if (name_label is not null)
         {
             name_label.SetAnchorsAndOffsetsPreset(LayoutPreset.BottomWide);
-            name_label.OffsetLeft = 5; name_label.OffsetTop = -46;
+            name_label.OffsetLeft = 5; name_label.OffsetTop = -59;
             name_label.OffsetRight = -5; name_label.OffsetBottom = -7;
             name_label.AddThemeFontSizeOverride("font_size", 20);
             name_label.MaxLinesVisible = 2;

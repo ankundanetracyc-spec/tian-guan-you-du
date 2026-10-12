@@ -39,7 +39,7 @@ public partial class EastWoodsDungeonPanel
 
     private void queue_npc_step(WorldNpcData npc, string from, string to)
     {
-        if (!IsVisibleInTree() || EastWoodsDungeonRules.get_node(from) is null || !EastWoodsDungeonRules.get_neighbors(from).Contains(to)) return;
+        if (_isTraveling || !IsVisibleInTree() || EastWoodsDungeonRules.get_node(from) is null || !EastWoodsDungeonRules.get_neighbors(from).Contains(to)) return;
         if (!is_node_visible(from) && !is_node_visible(to)) return;
         if (!_npcMotions.TryGetValue(npc.npc_id, out var motion))
         {
@@ -59,7 +59,7 @@ public partial class EastWoodsDungeonPanel
 
     private void play_npc_steps()
     {
-        if (!IsVisibleInTree()) return;
+        if (!IsVisibleInTree() || _npcEncounterBusy || _isTraveling) return;
         foreach (var pair in _npcMotions.ToArray())
             if (!pair.Value.Npc.is_alive || pair.Value.Npc.dungeon_id != EastWoodsDungeonRules.DungeonId || _motionManager?.npcs.Contains(pair.Value.Npc) != true)
                 remove_npc_motion(pair.Key);
@@ -109,7 +109,6 @@ public partial class EastWoodsDungeonPanel
     {
         if (_npcMotions.Count == 0) return;
         foreach (var id in _npcMotions.Keys.ToArray()) remove_npc_motion(id);
-        _pawnOccupantStamps.Clear();
         if (redraw && IsInsideTree()) refresh();
     }
 

@@ -58,14 +58,18 @@ public partial class StoryDialoguePanel
         var portrait = new PortraitRenderer { Name = "SocialHeadshot", CustomMinimumSize = new Vector2(112, 112) };
         portrait.set_headshot_mode(true); portraitRow.AddChild(portrait); portrait.show_world_npc(npc);
         var name = social_label(npc.npc_name, 25); name.HorizontalAlignment = HorizontalAlignment.Center; column.AddChild(name);
-        var heading = social_label(title, 20, "737b65"); heading.HorizontalAlignment = HorizontalAlignment.Center; column.AddChild(heading);
+        var heading = social_label(title + (NpcPersonalityRules.TestInspection ? " · 测试查阅" : " · 已知信息"), 20, "737b65");
+        heading.HorizontalAlignment = HorizontalAlignment.Center;
+        heading.MouseFilter = MouseFilterEnum.Pass;
+        heading.TooltipText = NpcPersonalityRules.InspectionText(npc, NpcPersonalityRules.TestInspection);
+        column.AddChild(heading);
         return column;
     }
-    public void show_social_choices(Character player, WorldNpcData npc, string opening, IReadOnlyList<(string Text, Action Choose)> choices, Action cancel)
+    public void show_social_choices(Character player, WorldNpcData npc, string opening, IReadOnlyList<(string Text, Action Choose)> choices, Action cancel, string? title = null, string cancelHint = "Esc 婉拒")
     {
         show_npc_speech(npc.npc_name, opening);
         _socialChoosing = true; _socialCancel = cancel;
-        var column = build_social_stage(npc, NpcSocialRules.KnowsName(npc) ? "闲谈来访" : "希望结识");
+        var column = build_social_stage(npc, title ?? (NpcSocialRules.KnowsName(npc) ? "闲谈来访" : "希望结识"));
         column.AddChild(social_label(opening, 22));
         foreach (var (text, choose) in choices)
         {
@@ -73,7 +77,7 @@ public partial class StoryDialoguePanel
             button.Pressed += () => { if (!_socialChoosing) return; _socialChoosing = false; _socialCancel = null; choose(); };
             column.AddChild(button);
         }
-        column.AddChild(social_label("Esc 婉拒", 15, "797c6d"));
+        column.AddChild(social_label(cancelHint, 15, "797c6d"));
     }
     public void show_social_result(WorldNpcData npc, NpcSocialRules.Response response, Action? completed = null)
     {
@@ -94,6 +98,7 @@ public partial class StoryDialoguePanel
         _socialOutcome.Modulate = new Color(1, 1, 1, 0); column.AddChild(_socialOutcome);
         _socialDone = social_button("略过展示"); _socialDone.Pressed += close; column.AddChild(_socialDone);
         _socialRevealIndex = 0; _socialRevealElapsed = 0; _socialRevealing = true;
+        if (_socialFactors.Count == 0) finish_social_reveal();
     }
     private bool handle_social_close()
     {

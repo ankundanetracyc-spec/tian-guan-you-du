@@ -53,7 +53,8 @@ public partial class BattlePlanHud : Control
         _targetPanel.AddChild(Label("选择目标",new(8,8),new(140,32),19));
         _targetPanel.Name="TargetPanel";
         _targetRows=new Control{Name="TargetRows",Position=new(12,46),MouseFilter=MouseFilterEnum.Ignore};_targetPanel.AddChild(_targetRows);
-        _actionPanel=Panel("res://textures/ui/combat/combat_skill_bar_panel_user_v3.png",new(124,689),new(1424,252));AddChild(_actionPanel);
+        _actionPanel=new Panel{Position=new(124,689),Size=new(1424,252),MouseFilter=MouseFilterEnum.Ignore};
+        _actionPanel.AddThemeStyleboxOverride("panel",BattleUiArt.PaperBarStyle());AddChild(_actionPanel);
         _actionPanel.Name="ActionPanel";
         _actionSlots=new Control{Name="ActionSlots",Position=new(48,18),Size=new(1328,216),MouseFilter=MouseFilterEnum.Ignore};_actionPanel.AddChild(_actionSlots);
         _actionIndicator=Label("▼",Vector2.Zero,new(30,24),22);_actionIndicator.Name="CurrentActionIndicator";_actionIndicator.ZIndex=8;_actionIndicator.AddThemeColorOverride("font_color",BattleUiArt.Text);_actionPanel.AddChild(_actionIndicator);

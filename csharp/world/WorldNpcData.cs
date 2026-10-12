@@ -46,10 +46,17 @@ public partial class WorldNpcData : Resource
     [Export] public Dictionary trade_inventory = [];
     /// <summary>个人实际随身物品，与交易库存、抽象资源余额分开保存；键为 ItemData 资源路径。</summary>
     [Export] public Dictionary carried_items = [];
+    [Export] public int purchase_last_processed_month = -1;
+    [Export] public NpcPurchaseRequest? purchase_request;
+    /// <summary>只预留正式存档结构；不自动补贡献或发布私委。</summary>
+    [Export] public Array<NpcPrivateCommissionEscrow> private_commission_escrows = [];
 
     [Export] public string personality = "";
-    /// <summary>社交四倾向首版定性档；与旧性格、心境、业力及关系分开，保存后不重抽。</summary>
+    /// <summary>六轴定性性情；与心境、业力及关系分开，保存后不重抽。</summary>
     [Export] public Dictionary social_personality = [];
+    [Export] public Array<string> social_priorities = [];
+    /// <summary>玩家通过交际实际获知的信息和行为印象；不是 NPC 对玩家的记忆。</summary>
+    [Export] public Dictionary player_known_npc_info = [];
     [Export] public string long_term_goal = "";
     [Export] public string short_term_goal = "";
     [Export] public Array<string> behavior_tags = [];

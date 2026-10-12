@@ -91,20 +91,12 @@ public partial class StoragePanel
             button.Pressed += () => filter_to_category(category);
         }
 
-        var mountain = new TextureRect
-        {
-            Texture = navigation_icon(10), ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
-            StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
-            Modulate = new Color("657665"), MouseFilter = MouseFilterEnum.Ignore
-        };
-        place(mountain, _canvas, 291, 91, 57, 40);
-        place(text("随身物资", 29, Ink), _canvas, 354, 91, 310, 41);
         var search = new LineEdit
         {
             PlaceholderText = "搜索物品名称", ClearButtonEnabled = true, MaxLength = 80
         };
         style_input(search);
-        place(search, _canvas, 1255, 94, 253, 39);
+        place(search, _canvas, 284, 94, 1224, 39);
         search.TextChanged += value =>
         {
             _search_text = value.Trim();
@@ -128,7 +120,7 @@ public partial class StoragePanel
             Name = "InventoryScroll", HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled,
             VerticalScrollMode = ScrollContainer.ScrollMode.Auto, MouseFilter = MouseFilterEnum.Stop
         };
-        place(_grid_scroll, _canvas, 284, 156, 1348, 632);
+        place(_grid_scroll, _canvas, 284, 156, 1348, 704);
         _grid = new GridContainer { Name = "SlotGrid", Columns = GridMaximumColumns, SizeFlagsHorizontal = SizeFlags.ExpandFill };
         _grid.AddThemeConstantOverride("h_separation", (int)GridHorizontalGap);
         _grid.AddThemeConstantOverride("v_separation", 14);
@@ -137,20 +129,20 @@ public partial class StoragePanel
         _empty = text("", 22, new Color("766d56"));
         _empty.HorizontalAlignment = HorizontalAlignment.Center;
         _empty.MouseFilter = MouseFilterEnum.Ignore;
-        place(_empty, _canvas, 284, 800, 1348, 30);
+        place(_empty, _canvas, 284, 460, 1348, 30);
 
-        place(rule(), _canvas, 284, 840, 1348, 1);
+        place(rule(), _canvas, 284, 874, 1348, 1);
         var footerMountain = new TextureRect
         {
             Texture = navigation_icon(10), ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
             StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
             Modulate = new Color("798674"), MouseFilter = MouseFilterEnum.Ignore
         };
-        place(footerMountain, _canvas, 299, 851, 77, 47);
-        place(text("悬停查看物品详情 · 左键选择可用物品", 19, new Color("514c3a")), _canvas, 392, 853, 750, 43);
+        place(footerMountain, _canvas, 299, 882, 60, 30);
+        place(text("悬停查看物品详情 · 左键选择可用物品", 19, new Color("514c3a")), _canvas, 378, 881, 750, 34);
         _summary = text("", 16, new Color("7b735e"));
         _summary.HorizontalAlignment = HorizontalAlignment.Right;
-        place(_summary, _canvas, 1210, 857, 400, 35);
+        place(_summary, _canvas, 1210, 883, 400, 30);
         build_detail_popup();
     }
 

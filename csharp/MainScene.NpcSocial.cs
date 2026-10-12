@@ -40,7 +40,7 @@ public partial class MainScene
                 story_dialogue.show_social_result(npc, new("你有些疲惫，便先告辞了。", "那便改日再聊。", []));
                 return;
             }
-            var response = NpcSocialRules.Evaluate(npc, human, choice);
+            var response = NpcSocialRules.Evaluate(npc, human, choice, proactive);
             if (choice != "leave") { player.try_spend_world_stamina(WorldStaminaRules.ConversationCost); response = response with { StaminaSpent = WorldStaminaRules.ConversationCost, ActionName = NpcSocialRules.KnowsName(npc) ? "闲谈" : "结识" }; }
             var month = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is { } time ? get_game_month_index(time) : 0;
             NpcSocialRules.Remember(npc, human, choice, place, month, response);
@@ -76,11 +76,13 @@ public partial class MainScene
             .OrderBy(n => n.player_social_memory.GetValueOrDefault("last_month", -1).AsInt32())
             .ThenByDescending(n => NpcPersonalityRules.Is(n, "sociability", "外向"))
             .ThenByDescending(n => NpcSocialRules.KnowsName(n) && NpcPersonalityRules.Is(n, "attachment", "重情"))
-            .ThenBy(n => n.player_social_memory.GetValueOrDefault("last_month", -1).AsInt32())
+            .ThenByDescending(n => NpcPersonalityRules.HasVisitPriority(n, human.sect_current_rank is "真传" or "真传弟子"))
             .ThenBy(n => n.npc_id, StringComparer.Ordinal).FirstOrDefault();
         if (candidate is null) return;
         _socialVisitMonth = month;
         mark_save_dirty();
-        begin_npc_social_talk(candidate, true);
+        if (can_npc_purchase(candidate)) request_npc_purchase(candidate, true);
+        else if (can_sect_spar(candidate) && NpcSparringRules.WantsToInvite(candidate, human)) request_npc_spar(candidate, true);
+        else begin_npc_social_talk(candidate, true);
     }
 }

@@ -23,6 +23,7 @@ public partial class CellCharacterList : Control
     private float _expanded_height = 150f;
     private readonly System.Collections.Generic.Dictionary<Control, Action> _pendingPortraits = new();
     private string _worldRosterStamp = "";
+    private bool _worldNpcRosterCached;
 
     // Offscreen portraits are not composed. Limit visible portrait work to one per frame.
     public override void _Process(double delta)
@@ -190,11 +191,22 @@ public partial class CellCharacterList : Control
         // 地点内部已经接管左侧名单时，世界地图的刷新不能把子场景名单覆盖掉。
         if (_world_mode && _roster_context.StartsWith("interior:") && !context_id.StartsWith("interior:"))
             return;
-        foreach (var npc in characters) npc?.ensure_appearance_identity();
-        var stamp = context_id + "|" + string.Join(";", System.Linq.Enumerable.Select(characters,
-            npc => npc is null ? "" : $"{npc.GetInstanceId()}:{npc.npc_name}:{npc.formal_identity}:{npc.cultivation_realm}:{npc.appearance_seed}:{npc.current_age}:{npc.gender}:{npc.faction_id}"));
-        if (_world_mode && stamp == _worldRosterStamp)
+        var rosterParts = new System.Collections.Generic.List<string>();
+        foreach (var npc in characters)
         {
+            if (npc is null || !GodotObject.IsInstanceValid(npc)) continue;
+            npc.ensure_appearance_identity();
+            rosterParts.Add($"{npc.GetInstanceId()}:{npc.npc_name}:{npc.formal_identity}:{npc.cultivation_realm}:{npc.appearance_seed}:{npc.current_age}:{npc.gender}:{npc.faction_id}");
+        }
+        var validCount = rosterParts.Count;
+        var stamp = string.Join(";", rosterParts);
+        var headerTitle = context_id.StartsWith("world-cell:") ? "当前位置" : context_id.StartsWith("world:") ? "当前地点" : "在场人物";
+        if (_world_mode && _worldNpcRosterCached && stamp == _worldRosterStamp)
+        {
+            var cachedSameContext = _roster_context == context_id;
+            _roster_context = context_id;
+            if (!cachedSameContext && GetNodeOrNull<ScrollContainer>("ListPanel/CharacterScroll") is { } cachedScroll) cachedScroll.ScrollVertical = 0;
+            update_header(headerTitle, validCount);
             show_and_raise();
             return;
         }
@@ -203,6 +215,7 @@ public partial class CellCharacterList : Control
         _roster_context = context_id;
         clear_children();
         _worldRosterStamp = stamp;
+        _worldNpcRosterCached = true;
         if (!sameContext && GetNodeOrNull<ScrollContainer>("ListPanel/CharacterScroll") is { } scroll) scroll.ScrollVertical = 0;
         var count = 0;
         foreach (var npc in characters)
@@ -221,11 +234,17 @@ public partial class CellCharacterList : Control
         }
         if (count == 0)
             _characters?.AddChild(make_empty_state());
-        update_header(context_id.StartsWith("world-cell:") ? "当前位置" : context_id.StartsWith("world:") ? "当前地点" : "在场人物", count);
+        update_header(headerTitle, count);
         // Movement updates the roster, not the user's expand/collapse preference.
         resize_panel();
         apply_expanded_state();
         show_and_raise();
+    }
+
+    /// <summary>Route travel keeps the last roster cached, but delays portrait work until arrival.</summary>
+    public void suspend_world_npcs()
+    {
+        if (_world_mode) Hide();
     }
 
     /// <summary>按世界节点与内部空间读取同一份运行时 NPC 名单。</summary>
@@ -477,6 +496,7 @@ public partial class CellCharacterList : Control
     {
         _pendingPortraits.Clear();
         _worldRosterStamp = "";
+        _worldNpcRosterCached = false;
         if (_characters is null) return;
         foreach (var child in _characters.GetChildren()) { _characters.RemoveChild(child); child.QueueFree(); }
     }

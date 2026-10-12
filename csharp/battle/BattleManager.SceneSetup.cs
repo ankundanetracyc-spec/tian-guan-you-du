@@ -17,6 +17,13 @@ public partial class BattleManager : Node2D
     private void connect_skill_bar()
     {
         if (_sceneUiConnected) return;
+        var transition = GetTree().Root.GetNodeOrNull<BattleTransitionManager>("BattleTransitionManager");
+        if (transition?.is_spectator_battle_active() == true)
+        {
+            _spectatorBattle = true;
+            _sceneUiConnected = true;
+            return;
+        }
         // 场景切换期间 CurrentScene 的赋值时机与节点 Ready 顺序不同步；
         // BattleMgr 的父节点才是当前实际战斗场景，测试入口和正式入口都从这里取 UI。
         var scene = GetParent() ?? GetTree().CurrentScene;
@@ -153,7 +160,7 @@ public partial class BattleManager : Node2D
             }
             // 战斗由角色身体区域的双击入口处理，避免世界实体单击就打开面板。
             unit.Set("input_pickable", false); unit.Set("visible", true);
-            AddPaperDoll(unit, snapshot);
+            if (!_spectatorBattle) AddPaperDoll(unit, snapshot);
             var cell = FormationCell(snapshot.faction, FactionCount(snapshot.faction));
             Map?.Call("register_unit", unit, cell);
             if (unit is Node2D node) node.GlobalPosition = Map?.Call("get_cell_center", cell).AsVector2() ?? Vector2.Zero;

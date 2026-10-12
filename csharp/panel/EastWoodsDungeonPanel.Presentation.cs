@@ -31,9 +31,9 @@ public partial class EastWoodsDungeonPanel
         return DungeonTerrainVisuals.Get(terrain, seed == "legacy" ? EastWoodsDungeonRules.DungeonId : EastWoodsDungeonRules.DungeonId + "|" + seed, id);
     }
 
-    private void add_terrain_connection(EastWoodsDungeonRules.NodeDefinition from, EastWoodsDungeonRules.NodeDefinition to)
+    private Line2D? add_terrain_connection(EastWoodsDungeonRules.NodeDefinition from, EastWoodsDungeonRules.NodeDefinition to, bool isPath)
     {
-        if (_connectionLayer is null) return;
+        if (_connectionLayer is null) return null;
         var start = node_center(from);
         var end = node_center(to);
         var direction = (end - start).Normalized();
@@ -44,6 +44,16 @@ public partial class EastWoodsDungeonPanel
         // Narrow ground strips make the link a terrain transition, not a floating black wire.
         add_half(start, middle, from.Id);
         add_half(middle, end, to.Id);
+
+        var line = new Line2D
+        {
+            Width = isPath ? 5 : Mathf.Max(2, _cellSize * 0.025f),
+            DefaultColor = isPath ? new Color("e6bd68") : new Color(0.22f, 0.23f, 0.19f, 0.72f),
+            Points = [node_center(from), node_center(to)],
+        };
+        _connectionLayer.AddChild(line);
+        return line;
+
         void add_half(Vector2 a, Vector2 b, string id)
         {
             var vertical = Mathf.Abs(a.Y - b.Y) > .01f;

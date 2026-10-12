@@ -20,6 +20,7 @@ public partial class BattleManager : Node2D
     public Dictionary action_gauges = [], battle_units = [];
     public GodotObject? active_unit;
     public bool battle_running, auto_battle;
+    private bool _spectatorBattle;
     public TurnState turn_state = TurnState.IDLE;
     private readonly Dictionary _decks = [];
     private readonly Dictionary _firstHands = [], _hands = [];
@@ -75,6 +76,8 @@ public partial class BattleManager : Node2D
     private int _segmentNumber;
     private readonly List<GodotObject> _livingUnits = new();
     public float get_battle_speed_scale()=>battleSpeed;
+    public void set_spectator_battle(bool spectator) => _spectatorBattle = spectator;
+    public bool is_spectator_battle() => _spectatorBattle;
     public bool is_realtime_battle()=>_realtimeMode;
     public bool is_battle_paused()=>_battlePaused;
     public SegmentPhase get_segment_phase()=>_segmentPhase;

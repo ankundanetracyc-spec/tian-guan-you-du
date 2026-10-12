@@ -456,11 +456,15 @@ public partial class NpcWorldManager : Node
     /// <summary>玩家走过一条路线边后，按各自遁速累积 NPC 行程，并返回本次唯一遭遇。</summary>
     public Dictionary advance_east_woods_route(string playerFromNodeId, string playerRouteNodeId, float elapsedGameHours, HumanData? playerData)
     {
+        // Scan and order the East Woods roster once per route edge, then reuse it
+        // for movement, player encounters, and NPC conflict checks.
+        var local = npcs.Where(npc => npc is not null && npc.is_alive && npc.dungeon_id == EastWoodsDungeonRules.DungeonId)
+            .OrderBy(npc => npc.npc_id, StringComparer.Ordinal).ToArray();
         var moved = new HashSet<string>();
         var previousNodes = new System.Collections.Generic.Dictionary<string, string>(StringComparer.Ordinal);
         var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
         var actionStamp = time?.get_total_game_hours() ?? 0;
-        foreach (var npc in npcs.Where(npc => npc is not null && npc.is_alive && npc.dungeon_id == EastWoodsDungeonRules.DungeonId).OrderBy(npc => npc.npc_id, StringComparer.Ordinal))
+        foreach (var npc in local)
         {
             previousNodes[npc.npc_id] = npc.dungeon_node_id;
             npc.dungeon_travel_progress += Mathf.Max(0f, elapsedGameHours);
@@ -484,7 +488,7 @@ public partial class NpcWorldManager : Node
         EmitSignal(SignalName.world_npcs_changed);
         if (playerData is not null)
         {
-            foreach (var npc in npcs.Where(npc => npc is not null && npc.is_alive && npc.dungeon_id == EastWoodsDungeonRules.DungeonId).OrderBy(npc => npc.npc_id, StringComparer.Ordinal))
+            foreach (var npc in local)
             {
                 var crossedPlayer = previousNodes.TryGetValue(npc.npc_id, out var previousNode) &&
                     previousNode == playerRouteNodeId && npc.dungeon_node_id == playerFromNodeId;
@@ -504,8 +508,6 @@ public partial class NpcWorldManager : Node
             }
         }
 
-        var local = npcs.Where(npc => npc is not null && npc.is_alive && npc.dungeon_id == EastWoodsDungeonRules.DungeonId)
-            .OrderBy(npc => npc.npc_id, StringComparer.Ordinal).ToArray();
         for (var leftIndex = 0; leftIndex < local.Length; leftIndex++)
         for (var rightIndex = leftIndex + 1; rightIndex < local.Length; rightIndex++)
         {
@@ -520,12 +522,12 @@ public partial class NpcWorldManager : Node
             if (!sharedNode && !crossedPaths) continue;
             if (should_npc_attack(first, second, actionStamp, out var firstChance))
             {
-                record_dungeon_action(first, "dungeon_attack", "突袭", $"与 {second.npc_name} 相遇；短测概率 {firstChance:P0}。", "沿途 NPC 冲突进入正式战斗。", first.dungeon_node_id, second.npc_id);
+                record_dungeon_action(first, "dungeon_attack", "突袭", $"与 {second.npc_name} 相遇；短测概率 {firstChance:P0}。", "沿途 NPC 冲突按既有战斗规则由双方 AI 在后台自动完成。", first.dungeon_node_id, second.npc_id);
                 return new Dictionary { ["attacker_npc_id"] = first.npc_id, ["target_npc_id"] = second.npc_id, ["target_player"] = false, ["route_node_id"] = first.dungeon_node_id };
             }
             if (should_npc_attack(second, first, actionStamp, out var secondChance))
             {
-                record_dungeon_action(second, "dungeon_attack", "突袭", $"与 {first.npc_name} 相遇；短测概率 {secondChance:P0}。", "沿途 NPC 冲突进入正式战斗。", second.dungeon_node_id, first.npc_id);
+                record_dungeon_action(second, "dungeon_attack", "突袭", $"与 {first.npc_name} 相遇；短测概率 {secondChance:P0}。", "沿途 NPC 冲突按既有战斗规则由双方 AI 在后台自动完成。", second.dungeon_node_id, first.npc_id);
                 return new Dictionary { ["attacker_npc_id"] = second.npc_id, ["target_npc_id"] = first.npc_id, ["target_player"] = false, ["route_node_id"] = second.dungeon_node_id };
             }
         }
@@ -872,6 +874,7 @@ public partial class NpcWorldManager : Node
             if (npc.is_yuxu_lineage_staff) continue;
             update_age(npc, month);
             if (!npc.is_alive) continue;
+            NpcPurchaseRules.SettleMonth(npc, month);
             // 副本行程由同一遁速时间轴推进；不能在月演算里把人抽走到大世界地点。
             if (!string.IsNullOrWhiteSpace(npc.dungeon_id)) continue;
             resolve_month_action(npc, month);

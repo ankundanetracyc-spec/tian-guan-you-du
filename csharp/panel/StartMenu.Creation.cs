@@ -27,16 +27,6 @@ public partial class StartMenu
         public float Increment;
     }
 
-    private sealed class RootChoiceControl
-    {
-        public int Index;
-        public Label Percent = null!;
-        public Label Residual = null!;
-        public ProgressBar Bar = null!;
-        public Button MoveOut = null!;
-        public Button MoveIn = null!;
-    }
-
     private void build_new_game_creation()
     {
         if (_creationOverlay is not null)
@@ -126,7 +116,7 @@ public partial class StartMenu
             aptitudePage.Root.Visible = currentPage == 1;
             pageHint.Text = currentPage == 0
                 ? "选择姓名、性别与立绘部件；所有变化都会即时预览。"
-                : "资质调整与灵根余权共用剩余点数；初始功法和设定模板也在此确认。";
+                : "分配剩余资质点并选择初始功法；灵根由开局随机判定。";
             next.Text = currentPage == 0 ? "下一页" : "入世";
             style_creation_tab(appearanceTab, currentPage == 0);
             style_creation_tab(aptitudeTab, currentPage == 1);
@@ -227,15 +217,6 @@ public partial class StartMenu
         var skinOptions = new[] { "浅瓷", "暖白", "麦色", "棕褐", "深肤" };
         var hairOptions = new[] { "本色", "浅棕", "栗色", "灰白", "赤褐" };
 
-        var adjustmentHeading = creation_label("脸部细调", 18);
-        controls.AddChild(new HSeparator());
-        controls.AddChild(adjustmentHeading);
-        var adjustmentGrid = new GridContainer { Columns = 2, SizeFlagsHorizontal = SizeFlags.ExpandFill };
-        adjustmentGrid.AddThemeConstantOverride("h_separation", 14);
-        adjustmentGrid.AddThemeConstantOverride("v_separation", 4);
-        controls.AddChild(adjustmentGrid);
-        var sliders = new Dictionary<string, (HSlider slider, Label value)>();
-
         var portraitButtons = new HBoxContainer();
         portraitButtons.AddThemeConstantOverride("separation", 10);
         var randomAppearance = PlainButton("随机组合");
@@ -334,35 +315,6 @@ public partial class StartMenu
                 add_component_choice("发色", "hair_color", "appearance_hair_color", Enumerable.Range(0, hairOptions.Length).ToList(), hairOptions);
         }
 
-        void add_slider(string title, string key, double min, double max, double step)
-        {
-            var cell = new VBoxContainer { CustomMinimumSize = new Vector2(250, 56), SizeFlagsHorizontal = SizeFlags.ExpandFill };
-            var header = new HBoxContainer();
-            var label = creation_label(title, 14);
-            label.SizeFlagsHorizontal = SizeFlags.ExpandFill;
-            header.AddChild(label);
-            var valueLabel = creation_label("", 14);
-            valueLabel.HorizontalAlignment = HorizontalAlignment.Right;
-            valueLabel.CustomMinimumSize = new Vector2(52, 0);
-            header.AddChild(valueLabel);
-            cell.AddChild(header);
-            var slider = new HSlider { MinValue = min, MaxValue = max, Step = step, SizeFlagsHorizontal = SizeFlags.ExpandFill, CustomMinimumSize = new Vector2(0, 24) };
-            cell.AddChild(slider);
-            sliders[key] = (slider, valueLabel);
-            slider.ValueChanged += value =>
-            {
-                set_appearance_adjustment(profile.player_appearance_data, key, (float)value);
-                valueLabel.Text = key == "eye_offset_y" ? value.ToString("0") : value.ToString("0.00");
-                refresh_portrait();
-            };
-            adjustmentGrid.AddChild(cell);
-        }
-
-        add_slider("脸宽", "face_width", .90, 1.10, .01);
-        add_slider("脸长", "face_height", .90, 1.10, .01);
-        add_slider("眼睛大小", "eye_scale", .90, 1.15, .01);
-        add_slider("眼位上下", "eye_offset_y", -10, 10, 1);
-
         void refresh()
         {
             if (lastGender != profile.player_gender)
@@ -377,12 +329,6 @@ public partial class StartMenu
                 var selectedValue = get_appearance_field(profile.player_appearance_data, choice.Field);
                 var selectedIndex = choice.Values.IndexOf(selectedValue);
                 choice.Selector.Select(selectedIndex < 0 ? 0 : selectedIndex + 1);
-            }
-            foreach (var (key, controls) in sliders)
-            {
-                var value = get_appearance_adjustment(profile.player_appearance_data, key);
-                controls.slider.SetValueNoSignal(value);
-                controls.value.Text = key == "eye_offset_y" ? value.ToString("0") : value.ToString("0.00");
             }
             refresh_portrait();
         }
@@ -407,8 +353,14 @@ public partial class StartMenu
         pointsLabel.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         pointsLabel.VerticalAlignment = VerticalAlignment.Center;
         status.AddChild(pointsLabel);
-        var reroll = PlainButton("重掷资质");
+        var rootType = creation_label("灵根：" + profile.fated_youngest_root_name, 18);
+        rootType.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+        rootType.HorizontalAlignment = HorizontalAlignment.Right;
+        rootType.VerticalAlignment = VerticalAlignment.Center;
+        status.AddChild(rootType);
+        var reroll = PlainButton("重新抽取资质");
         reroll.CustomMinimumSize = new Vector2(150, 42);
+        reroll.TooltipText = "重新抽取灵根与九项初始属性，并重置剩余资质点。";
         status.AddChild(reroll);
 
         var columns = new HBoxContainer { SizeFlagsVertical = SizeFlags.ExpandFill };
@@ -423,10 +375,37 @@ public partial class StartMenu
         temperamentCard.Panel.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         temperamentCard.Panel.SizeFlagsStretchRatio = 1.04f;
         columns.AddChild(temperamentCard.Panel);
-        var rootCard = creation_card("灵根权重", "五行权重始终合计百分之一百；调整余权会消耗资质点。");
+        var rootCard = creation_card("灵根与五行权重", "五行权重仅供查看；可单独重新抽取灵根。");
         rootCard.Panel.SizeFlagsHorizontal = SizeFlags.ExpandFill;
-        rootCard.Panel.SizeFlagsStretchRatio = 1.34f;
+        rootCard.Panel.SizeFlagsStretchRatio = 1.18f;
         columns.AddChild(rootCard.Panel);
+
+        var rootWeightRows = new List<(ProgressBar Bar, Label Value)>();
+        var rootNames = new[] { "金", "木", "水", "火", "土" };
+        for (var index = 0; index < rootNames.Length; index++)
+        {
+            var row = new HBoxContainer { CustomMinimumSize = new Vector2(0, 40) };
+            row.AddThemeConstantOverride("separation", 8);
+            var name = creation_label(rootNames[index], 16);
+            name.CustomMinimumSize = new Vector2(28, 0);
+            name.VerticalAlignment = VerticalAlignment.Center;
+            row.AddChild(name);
+            var bar = new ProgressBar { MinValue = 0, MaxValue = 100, ShowPercentage = false, SizeFlagsHorizontal = SizeFlags.ExpandFill, CustomMinimumSize = new Vector2(64, 16) };
+            row.AddChild(bar);
+            var value = creation_label("0%", 15);
+            value.CustomMinimumSize = new Vector2(48, 0);
+            value.HorizontalAlignment = HorizontalAlignment.Right;
+            value.VerticalAlignment = VerticalAlignment.Center;
+            row.AddChild(value);
+            rootCard.Body.AddChild(row);
+            rootWeightRows.Add((bar, value));
+        }
+        var rootWeightTotal = creation_label("权重合计：—", 14);
+        rootCard.Body.AddChild(rootWeightTotal);
+        var rerollRoot = PlainButton("重新抽取灵根");
+        rerollRoot.CustomMinimumSize = new Vector2(0, 38);
+        rerollRoot.TooltipText = "只更新灵根类型与五行权重，保留属性分配、剩余点数和初始功法。";
+        rootCard.Body.AddChild(rerollRoot);
 
         var attributeRows = new List<AttributeChoiceControl>();
         void add_attribute(VBoxContainer parent, string key, string title, float increment)
@@ -465,55 +444,6 @@ public partial class StartMenu
             (Key: "charisma", Title: "魅力"), (Key: "social", Title: "交际"),
             (Key: "management", Title: "治事")
         }) add_attribute(temperamentCard.Body, item.Key, item.Title, 5);
-
-        var rootType = creation_label(profile.fated_youngest_root_name + "　·　权重合计 100%", 15);
-        rootCard.Body.AddChild(rootType);
-        var rootHint = creation_label("先选“转出”，再选另一项“转入”。", 14);
-        rootHint.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-        rootCard.Body.AddChild(rootHint);
-        var rootRows = new List<RootChoiceControl>();
-        var rootNames = new[] { "金", "木", "水", "火", "土" };
-        var rootDonor = -1;
-        for (var index = 0; index < rootNames.Length; index++)
-        {
-            var rootIndex = index;
-            var row = new HBoxContainer { CustomMinimumSize = new Vector2(0, 50) };
-            row.AddThemeConstantOverride("separation", 6);
-            var name = creation_label(rootNames[index], 16);
-            name.CustomMinimumSize = new Vector2(26, 0);
-            name.VerticalAlignment = VerticalAlignment.Center;
-            row.AddChild(name);
-            var bar = new ProgressBar { MinValue = 0, MaxValue = 100, ShowPercentage = false, SizeFlagsHorizontal = SizeFlags.ExpandFill, CustomMinimumSize = new Vector2(60, 17) };
-            row.AddChild(bar);
-            var percent = creation_label("0%", 15);
-            percent.CustomMinimumSize = new Vector2(46, 0);
-            percent.HorizontalAlignment = HorizontalAlignment.Right;
-            percent.VerticalAlignment = VerticalAlignment.Center;
-            row.AddChild(percent);
-            var residual = creation_label("余 0", 13);
-            residual.CustomMinimumSize = new Vector2(48, 0);
-            residual.HorizontalAlignment = HorizontalAlignment.Center;
-            residual.VerticalAlignment = VerticalAlignment.Center;
-            row.AddChild(residual);
-            var moveOut = PlainButton("转出");
-            moveOut.CustomMinimumSize = new Vector2(62, 34);
-            row.AddChild(moveOut);
-            var moveIn = PlainButton("转入");
-            moveIn.CustomMinimumSize = new Vector2(62, 34);
-            row.AddChild(moveIn);
-            moveOut.Pressed += () =>
-            {
-                rootDonor = rootDonor == rootIndex ? -1 : rootIndex;
-                refresh();
-            };
-            moveIn.Pressed += () =>
-            {
-                if (rootDonor >= 0 && profile.move_root_residual(rootDonor, rootIndex)) rootDonor = -1;
-                refresh();
-            };
-            rootCard.Body.AddChild(row);
-            rootRows.Add(new RootChoiceControl { Index = rootIndex, Percent = percent, Residual = residual, Bar = bar, MoveOut = moveOut, MoveIn = moveIn });
-        }
 
         var configuration = new HBoxContainer { CustomMinimumSize = new Vector2(0, 172) };
         configuration.AddThemeConstantOverride("separation", 14);
@@ -583,18 +513,18 @@ public partial class StartMenu
                 row.Value.Text = value.ToString(value % 1 == 0 ? "0" : "0.0");
                 row.Increase.Disabled = profile.fated_remaining_points < 1 || value >= (row.Increment == 1 ? 10 : 100);
             }
-            foreach (var row in rootRows)
+            rootType.Text = "灵根：" + profile.fated_youngest_root_name;
+            var rootWeightTotalValue = 0;
+            for (var index = 0; index < rootWeightRows.Count; index++)
             {
-                var weight = profile.fated_youngest_root_weights[row.Index].AsInt32();
-                var residual = profile.fated_root_residual_weights[row.Index].AsInt32();
-                row.Percent.Text = $"{weight}%";
-                row.Residual.Text = $"余 {residual}";
-                row.Bar.Value = weight;
-                row.MoveOut.Text = rootDonor == row.Index ? "已选" : "转出";
-                row.MoveOut.Disabled = profile.fated_remaining_points < 1 || residual <= 0;
-                row.MoveIn.Disabled = rootDonor < 0 || rootDonor == row.Index || profile.fated_remaining_points < 1;
+                var weight = index < profile.fated_youngest_root_weights.Count
+                    ? profile.fated_youngest_root_weights[index].AsInt32()
+                    : 0;
+                rootWeightRows[index].Bar.Value = weight;
+                rootWeightRows[index].Value.Text = $"{weight}%";
+                rootWeightTotalValue += weight;
             }
-            rootType.Text = profile.fated_youngest_root_name + "　·　权重合计 100%";
+            rootWeightTotal.Text = $"权重合计：{rootWeightTotalValue}%";
             var selectedTechnique = Array.FindIndex(InitialGongfas, book => book.Path == profile.selected_initial_gongfa_path);
             if (selectedTechnique < 0) selectedTechnique = 0;
             techniqueChoice.Select(selectedTechnique);
@@ -602,7 +532,8 @@ public partial class StartMenu
             techniqueSummary.Text = $"《{detail.Name}》\n{detail.Summary}\n玄鉴会在夜里将所选功法第一卷传入心神。";
         };
 
-        reroll.Pressed += () => { profile.roll_fated_aptitude(); rootDonor = -1; refresh(); };
+        reroll.Pressed += () => { profile.roll_fated_aptitude(); refresh(); };
+        rerollRoot.Pressed += () => { profile.reroll_fated_root(); refresh(); };
         savePreset.Pressed += () =>
         {
             profile.save_preset(presetName.Text);
@@ -612,7 +543,6 @@ public partial class StartMenu
         {
             if (presetChoice.ItemCount == 0 || presetChoice.GetItemText(presetChoice.Selected) == "尚无已存方案") return;
             if (!profile.load_preset(presetChoice.GetItemText(presetChoice.Selected))) return;
-            rootDonor = -1;
             refreshAppearance();
             refresh();
         };
@@ -713,10 +643,6 @@ public partial class StartMenu
         data.appearance_beard_style = -1;
         data.appearance_skin_tone = -1;
         data.appearance_hair_color = -1;
-        data.appearance_face_width = 1;
-        data.appearance_face_height = 1;
-        data.appearance_eye_scale = 1;
-        data.appearance_eye_offset_y = 0;
     }
 
     private static int get_appearance_field(EntityData data, string field) => field switch
@@ -757,23 +683,4 @@ public partial class StartMenu
         }
     }
 
-    private static float get_appearance_adjustment(EntityData data, string key) => key switch
-    {
-        "face_width" => data.appearance_face_width,
-        "face_height" => data.appearance_face_height,
-        "eye_scale" => data.appearance_eye_scale,
-        "eye_offset_y" => data.appearance_eye_offset_y,
-        _ => 0
-    };
-
-    private static void set_appearance_adjustment(EntityData data, string key, float value)
-    {
-        switch (key)
-        {
-            case "face_width": data.appearance_face_width = value; break;
-            case "face_height": data.appearance_face_height = value; break;
-            case "eye_scale": data.appearance_eye_scale = value; break;
-            case "eye_offset_y": data.appearance_eye_offset_y = value; break;
-        }
-    }
 }

@@ -1,8 +1,8 @@
 using Godot;
 
 /// <summary>
-/// 人物档案卷轴。视觉主体完全由 InfoPanel.tscn 保持：画芯、轴卷、墨迹与各页布局都不在此处重建。
-/// 这里仅负责把运行时角色资料填进已有的素材面板，并接回标签入口。
+/// 人物档案与角色管理。正式入口沿用 InfoPanel.tscn，认可版布局由各部分文件生成原生控件。
+/// 场景中的旧版字段保留兼容与属性说明来源，角色值、秘籍和装备均读取运行时数据。
 /// </summary>
 public partial class InfoPanel : Control
 {
@@ -87,7 +87,7 @@ public partial class InfoPanel : Control
         if (characterPage is not null) characterPage.SizeFlagsVertical = SizeFlags.ExpandFill;
         _newBody = GetNodeOrNull<VBoxContainer>("Content/Page/Body");
         if (_newBody is not null) _newBody.SizeFlagsVertical = SizeFlags.ExpandFill;
-        if (_newBody is not null) { _newLayout = true; _staticOverviewPage = GetNodeOrNull<Control>("Content/Page/Body/OverviewLayout"); _staticAttributePage = GetNodeOrNull<Control>("Content/Page/Body/AttributeLayout"); _staticBattlePage = GetNodeOrNull<Control>("Content/Page/Body/BattleLayout"); _staticGongfaPage = GetNodeOrNull<Control>("Content/Page/Body/GongfaLayout"); setup_new_layout(); setup_overview_layout(); configure_static_gongfa_layout(); bind_static_gongfa_controls(); bind_static_battle_controls(); build_tooltip(); Hide(); return; }
+        if (_newBody is not null) { _newLayout = true; _staticOverviewPage = GetNodeOrNull<Control>("Content/Page/Body/OverviewLayout"); _staticAttributePage = GetNodeOrNull<Control>("Content/Page/Body/AttributeLayout"); _staticBattlePage = GetNodeOrNull<Control>("Content/Page/Body/BattleLayout"); _staticGongfaPage = GetNodeOrNull<Control>("Content/Page/Body/GongfaLayout"); setup_new_layout(); setup_overview_layout(); build_gongfa_modal(); build_tooltip(); setup_character_redesign(); Hide(); return; }
         // 根节点覆盖全屏只用于定位卷轴，不能截走卷轴外的地图点击。
         MouseFilter = MouseFilterEnum.Ignore;
         _scrollBody = GetNodeOrNull<Control>("ScrollBody");
@@ -172,6 +172,7 @@ public partial class InfoPanel : Control
 
     public void hide_panel()
     {
+        _readerPanel?.Hide(); _gongfaModal?.Hide();
         _tooltipPanel?.Hide();
         _moodDetailsOverlay?.Hide();
         leave_npc_mode();
@@ -224,6 +225,8 @@ public partial class InfoPanel : Control
 
     private void clear_runtime_body()
     {
+        if (_staticOverviewPage is not null)
+            foreach (var child in _staticOverviewPage.GetChildren().Where(child => child.Name == "NpcSupplementMargin").ToList()) { _staticOverviewPage.RemoveChild(child); child.QueueFree(); }
         if (_newBody is null) return;
         foreach (var child in _newBody.GetChildren())
             if (child != _staticOverviewPage && child != _staticAttributePage && child != _staticBattlePage && child != _staticGongfaPage)
@@ -251,6 +254,7 @@ public partial class InfoPanel : Control
     {
         if (_moodDetailsOverlay?.Visible == true) { _moodDetailsOverlay.Hide(); return true; }
         if (_gongfaModal?.Visible == true) { _gongfaModal.Hide(); return true; }
+        if (_readerPanel?.Visible == true) { hide_tooltip(); return true; }
         if (_tooltipPanel?.Visible == true) { _tooltipPanel.Hide(); return true; }
         return false;
     }
@@ -560,6 +564,7 @@ public partial class InfoPanel : Control
     private void render_new_page(int page)
     {
         if (!_newLayout || _newBody is null || current_card is not Creature unit) return;
+        if (_characterCanvas is not null) { render_character_redesign(page, unit); return; }
         hide_tooltip(); _moodDetailsOverlay?.Hide();
         var pageTitles = new[] { "概览", "属性", "战斗", "功法", "装备", "关系" };
         var headerTitle = GetNodeOrNull<Label>("Header/Title");
@@ -1110,6 +1115,7 @@ public partial class InfoPanel : Control
         if (resultSkill.uses_per_round > 0) limits.Add($"每轮{resultSkill.uses_per_round}次");
         if (perBattle > 0) limits.Add($"本场{perBattle}次");
         lines.Add($"使用次数：{(limits.Count > 0 ? string.Join("；", limits) : "不限")}");
+        if (resultSkill.cooldown_rounds > 0) lines.Add(CardPresentation.CombatCooldownText(resultSkill, owner, null));
         return string.Join("\n", lines);
     }
 
@@ -1254,6 +1260,7 @@ public partial class InfoPanel : Control
     /// <summary>战斗页管理即时战斗的固定技能槽，不再读写旧卡组。</summary>
     private void populate_static_battle_page(Creature unit)
     {
+        if (_characterCanvas is not null) { refresh_character_battle(unit); return; }
         if (_staticBattlePage is null) return;
         var page = GetNodeOrNull<ScrollContainer>("Content/Page");
         if (page is not null) _staticBattlePage.CustomMinimumSize = new Vector2(0, Mathf.Max(720, page.Size.Y - 8));
@@ -1594,6 +1601,7 @@ public partial class InfoPanel : Control
 
     private void populate_static_gongfa_page(Character human)
     {
+        if (_characterCanvas is not null) { refresh_character_gongfa(human); return; }
         if (_staticGongfaPage is null) return;
         var main = human.main_gongfa;
         // 兼容旧存档：同一本秘籍不能同时占用主修、辅修槽。
@@ -2096,6 +2104,7 @@ public partial class InfoPanel : Control
 
     private void show_tooltip(string text)
     {
+        if (_characterCanvas is not null) { show_character_reading(null, "说明", text); return; }
         if (_tooltipPanel is null || _tooltipLabel is null || string.IsNullOrWhiteSpace(text) || !Visible) return;
         _tooltipLabel.Text = text;
         _tooltipPanel.Size = new Vector2(420, Mathf.Clamp(82 + text.Length / 24 * 18, 116, 280));
@@ -2104,7 +2113,7 @@ public partial class InfoPanel : Control
         _tooltipPanel.Show(); _tooltipPanel.MoveToFront();
     }
 
-    private void hide_tooltip() { _tooltipPanel?.Hide(); }
+    private void hide_tooltip() { ++_readerTicket; _tooltipPanel?.Hide(); _readerPanel?.Hide(); }
 
 
     private void set_label(string name, string value)

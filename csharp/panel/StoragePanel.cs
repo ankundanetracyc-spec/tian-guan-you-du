@@ -8,7 +8,8 @@ public partial class StoragePanel : Control
     private const int GridSlotCount = Character.InventorySlotCapacity;
     private const int GridMaximumColumns = 8;
     private const float GridHorizontalGap = 12f;
-    private const float GridSlotHeight = 200f;
+    // 30 格按八列四行展示，完整网格落在正文与页脚之间。
+    private const float GridSlotHeight = 164f;
     private const float PopupWidth = 394f;
 
     private Character? _player;
@@ -30,6 +31,7 @@ public partial class StoragePanel : Control
 
     public override void _Ready()
     {
+        AddToGroup("storage_panel");
         AddToGroup("map_overlay_blocker");
         ZIndex = 20;
         MouseFilter = MouseFilterEnum.Stop;

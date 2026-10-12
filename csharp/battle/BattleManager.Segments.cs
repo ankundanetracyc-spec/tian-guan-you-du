@@ -89,6 +89,22 @@ public partial class BattleManager
         turn_state = TurnState.IDLE;
         PlanEnemyTeams();
         PlanAllyTeam();
+        if (_spectatorBattle)
+        {
+            if (GodotObject.IsInstanceValid(_mainPlayerUnit))
+            {
+                var forecast = CreateHealthForecast();
+                BuildAiQueue(_mainPlayerUnit!, forecast, false);
+                EnsureSegmentSlots(_mainPlayerUnit!);
+                ApplyQueueForecast(_mainPlayerUnit!, forecast);
+            }
+            _playerQueueConfirmed = true;
+            _segmentPhase = SegmentPhase.Executing;
+            _skillBar?.Hide();
+            _planHud?.Hide();
+            _statusPanel?.Hide();
+            return;
+        }
         if (GodotObject.IsInstanceValid(_mainPlayerUnit))
         {
             _skillBar?.set_battle_unit(_mainPlayerUnit!);
@@ -416,6 +432,11 @@ public partial class BattleManager
 
     private async void CompleteSystemActionPresentation(GodotObject unit)
     {
+        if (_spectatorBattle)
+        {
+            if (battle_running && GodotObject.IsInstanceValid(unit) && _resolvingUnit == unit) CompleteSegmentAction(unit);
+            return;
+        }
         // 回复也有独立的一拍，避免与相邻技能在同一画面闪过。
         await ToSignal(GetTree().CreateTimer(.34,processAlways:false),SceneTreeTimer.SignalName.Timeout);
         if(battle_running&&GodotObject.IsInstanceValid(unit)&&_resolvingUnit==unit)CompleteSegmentAction(unit);

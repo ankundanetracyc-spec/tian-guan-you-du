@@ -49,6 +49,7 @@ public partial class InfoPanel
     private void render_shared_npc_overview()
     {
         if(_newBody is null || _npc_card is not WorldNpcData npc || _staticOverviewPage is null) return;
+        show_redesigned_npc_shell(npc);
         clear_runtime_body(); hide_tooltip(); _moodDetailsOverlay?.Hide();
         _staticOverviewPage.Show();
         _staticAttributePage?.Hide(); _staticBattlePage?.Hide(); _staticGongfaPage?.Hide();
@@ -81,7 +82,7 @@ public partial class InfoPanel
         _npc_page.AddThemeConstantOverride("separation",18);
         var supplementMargin=new MarginContainer { Name="NpcSupplementMargin" };
         foreach(string side in new[]{"left","right","top","bottom"}) supplementMargin.AddThemeConstantOverride("margin_"+side,30);
-        _newBody.AddChild(supplementMargin); supplementMargin.AddChild(_npc_page);
+        (_characterCanvas is not null ? _staticOverviewPage : _newBody).AddChild(supplementMargin); supplementMargin.AddChild(_npc_page);
         Label Text(string text,int size=20)
         {
             var label=new Label { Text=text, AutowrapMode=TextServer.AutowrapMode.WordSmart };

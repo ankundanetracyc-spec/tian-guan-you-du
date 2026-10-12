@@ -15,33 +15,45 @@ public partial class GameStartProfile : Node
     public int fated_youngest_root_type = 22, fated_youngest_element = 2, fated_remaining_points;
     public bool has_fated_roll;
     public string fated_youngest_root_name = "木水火灵根";
-    public Godot.Collections.Array fated_youngest_root_weights = [0, 40, 35, 25, 0], fated_root_base_weights = [0, 0, 0, 0, 0], fated_root_residual_weights = [0, 0, 0, 0, 0];
+    public Godot.Collections.Array fated_youngest_root_weights = [0, 40, 35, 25, 0];
     public bool is_test_mode;
     private static readonly string[] PortraitFields =
     [
         "appearance_seed", "appearance_face_style", "appearance_eyebrow_style", "appearance_eye_style",
         "appearance_brow_style", "appearance_nose_style", "appearance_mouth_style", "appearance_makeup_style",
         "appearance_skin_tone", "appearance_hair_color", "appearance_hair_style", "appearance_hair_back_style",
-        "appearance_ear_style", "appearance_clothes_style", "appearance_beard_style", "appearance_face_width", "appearance_face_height",
-        "appearance_eye_scale", "appearance_eye_offset_y",
+        "appearance_ear_style", "appearance_clothes_style", "appearance_beard_style",
     ];
     public float fated_base_physique = 5, fated_base_intelligence = 5, fated_base_agility = 5, fated_base_soul = 5, fated_base_fortune = 50, fated_base_comprehension = 50, fated_base_charisma = 50, fated_base_social = 50, fated_base_management = 50;
     private static readonly string[] RootKeys = ["METAL", "WOOD", "WATER", "FIRE", "EARTH"], RootNames = ["金", "木", "水", "火", "土"];
     public string get_generation_character(int generation) => generation > 0 && generation <= generation_characters.Count ? generation_characters[generation - 1][..1] : "";
     public void set_generation_poem(string source) { var chars = source.Where(ch => ch is >= '\u4e00' and <= '\u9fff').Select(ch => ch.ToString()).ToArray(); if (chars.Length >= 2) generation_characters = new Array<string>(chars); }
+    private static HumanData generate_rooted_aptitude()
+    {
+        var generator = new CharacterGenerator();
+        var draft = generator.generate("凡人", 1);
+        while (draft.spirit_root_type == 0) draft = generator.generate("凡人", 1);
+        return draft;
+    }
+    private void assign_fated_root(HumanData draft)
+    {
+        fated_youngest_root_type = draft.spirit_root_type;
+        fated_youngest_root_name = draft.spirit_root_name;
+        fated_youngest_element = draft.spirit_element;
+        fated_youngest_root_weights = draft.root_weights.Duplicate();
+    }
+    public void reroll_fated_root() => assign_fated_root(generate_rooted_aptitude());
     public void roll_fated_aptitude()
     {
-        var draft = new CharacterGenerator().generate("凡人", 1);
-        fated_youngest_root_type = draft!.Get("spirit_root_type").AsInt32(); fated_youngest_root_name = draft.Get("spirit_root_name").AsString(); fated_youngest_element = draft.Get("spirit_element").AsInt32(); fated_youngest_root_weights = draft.Get("root_weights").AsGodotArray(); normalize_root_weights();
+        var draft = generate_rooted_aptitude();
+        assign_fated_root(draft);
         foreach (var name in new[] { "physique", "intelligence", "agility", "soul", "fortune", "comprehension", "charisma", "social", "management" }) Set("fated_base_" + name, draft.Get("base_" + name));
-        rebuild_root_weight_layers(); fated_remaining_points = (int)GD.RandRange(6, 10); has_fated_roll = true;
+        fated_remaining_points = (int)GD.RandRange(6, 10); has_fated_roll = true;
     }
-    public bool move_root_residual(int from, int to) { if (fated_remaining_points < 1 || from == to || from < 0 || to < 0 || fated_root_residual_weights[from].AsInt32() <= 0) return false; fated_root_residual_weights[from] = fated_root_residual_weights[from].AsInt32() - 1; fated_root_residual_weights[to] = fated_root_residual_weights[to].AsInt32() + 1; fated_remaining_points--; refresh_root_weights(); return true; }
     public bool increase_base_attribute(string attribute)
     { var increment = attribute is "fortune" or "comprehension" or "charisma" or "social" or "management" ? 5f : 1f; var max = increment == 5 ? 100f : 10f; var key = "fated_base_" + attribute; if (fated_remaining_points < 1 || Get(key).AsSingle() >= max || !new[] { "physique", "intelligence", "agility", "soul", "fortune", "comprehension", "charisma", "social", "management" }.Contains(attribute)) return false; Set(key, Get(key).AsSingle() + increment); fated_remaining_points--; return true; }
     public string get_fated_base_attribute_description() => $"体魄 {fated_base_physique:F1}    灵慧 {fated_base_intelligence:F1}    敏捷 {fated_base_agility:F1}    神魂 {fated_base_soul:F1}\n机缘 {fated_base_fortune:F0}    悟性 {fated_base_comprehension:F0}    魅力 {fated_base_charisma:F0}    交际 {fated_base_social:F0}    治事 {fated_base_management:F0}";
-    public string get_residual_weight_description() => "余权：" + string.Join(" · ", Enumerable.Range(0, 5).Where(i => fated_root_residual_weights[i].AsInt32() > 0).Select(i => $"{RootNames[i]} {fated_root_residual_weights[i].AsInt32()}"));
-    public string get_fated_aptitude_description() => fated_youngest_root_name + "\n" + string.Join("  ·  ", Enumerable.Range(0, 5).Where(i => fated_youngest_root_weights[i].AsInt32() > 0).Select(i => $"{RootNames[i]} {fated_youngest_root_weights[i].AsInt32()}%")) + "\n灵根权重合计：100%";
+    public string get_fated_aptitude_description() => $"灵根：{fated_youngest_root_name}";
     public string compose_family_name(string given, int generation) { var character = get_generation_character(generation); return surname + (!string.IsNullOrEmpty(character) && given.StartsWith(character) ? given : character + given); }
     public float get_remaining_base_points() => Mathf.Max(0, BaseAttributeTotal - (fated_base_physique + fated_base_intelligence + fated_base_agility + fated_base_soul));
     public void set_fated_attribute(string attribute, float value)
@@ -50,13 +62,6 @@ public partial class GameStartProfile : Node
         var key="fated_base_"+attribute;
         var otherTotal=fated_base_physique+fated_base_intelligence+fated_base_agility+fated_base_soul-Get(key).AsSingle();
         Set(key,Mathf.Clamp(value,2,Mathf.Min(10,BaseAttributeTotal-otherTotal)));
-    }
-    public void set_root_weight(int index, int value)
-    {
-        if (index is < 0 or > 4) return;
-        while (fated_youngest_root_weights.Count < 5) fated_youngest_root_weights.Add(0);
-        fated_youngest_root_weights[index] = Mathf.Clamp(value, 0, 100);
-        normalize_root_weights(index);
     }
     public void apply_to_youngest(HumanData data)
     {
@@ -98,14 +103,14 @@ public partial class GameStartProfile : Node
         player_appearance_data.appearance_beard_style = -1;
         player_appearance_data.appearance_skin_tone = -1;
         player_appearance_data.appearance_hair_color = -1;
-        player_appearance_data.appearance_face_width = 1.0f;
-        player_appearance_data.appearance_face_height = 1.0f;
-        player_appearance_data.appearance_eye_scale = 1.0f;
-        player_appearance_data.appearance_eye_offset_y = 0.0f;
     }
     public void apply_player_appearance(HumanData target)
     {
         foreach (var field in PortraitFields) target.Set(field, player_appearance_data.Get(field));
+        target.appearance_face_width = 1.0f;
+        target.appearance_face_height = 1.0f;
+        target.appearance_eye_scale = 1.0f;
+        target.appearance_eye_offset_y = 0.0f;
         if (target.appearance_hair_back_style < 0 && target.appearance_hair_style >= 0
             && GetNodeOrNull<PortraitCatalog>("/root/PortraitCatalog") is { } portraitCatalog)
         {
@@ -118,7 +123,7 @@ public partial class GameStartProfile : Node
     public void save_preset(string name)
     {
         name = string.IsNullOrWhiteSpace(name) ? "未命名设定" : name.Trim(); var cfg = new ConfigFile(); cfg.Load(PresetFile); var key = name.Replace("/", "_").Replace("\\", "_");
-        cfg.SetValue(key,"name",player_name); cfg.SetValue(key,"gender",player_gender); cfg.SetValue(key,"gongfa",selected_initial_gongfa_path); cfg.SetValue(key,"weights",fated_youngest_root_weights); cfg.SetValue(key,"remaining_points",fated_remaining_points); cfg.SetValue(key,"physique",fated_base_physique); cfg.SetValue(key,"intelligence",fated_base_intelligence); cfg.SetValue(key,"agility",fated_base_agility); cfg.SetValue(key,"soul",fated_base_soul);
+        cfg.SetValue(key,"name",player_name); cfg.SetValue(key,"gender",player_gender); cfg.SetValue(key,"gongfa",selected_initial_gongfa_path); cfg.SetValue(key,"root_type",fated_youngest_root_type); cfg.SetValue(key,"root_name",fated_youngest_root_name); cfg.SetValue(key,"root_element",fated_youngest_element); cfg.SetValue(key,"weights",fated_youngest_root_weights); cfg.SetValue(key,"remaining_points",fated_remaining_points); cfg.SetValue(key,"physique",fated_base_physique); cfg.SetValue(key,"intelligence",fated_base_intelligence); cfg.SetValue(key,"agility",fated_base_agility); cfg.SetValue(key,"soul",fated_base_soul);
         cfg.SetValue(key,"fortune",fated_base_fortune); cfg.SetValue(key,"comprehension",fated_base_comprehension); cfg.SetValue(key,"charisma",fated_base_charisma); cfg.SetValue(key,"social",fated_base_social); cfg.SetValue(key,"management",fated_base_management);
         foreach (var field in PortraitFields) cfg.SetValue(key, "portrait_" + field, player_appearance_data.Get(field));
         cfg.Save(PresetFile);
@@ -128,54 +133,28 @@ public partial class GameStartProfile : Node
     {
         var cfg=new ConfigFile();if(cfg.Load(PresetFile)!=Error.Ok||!cfg.HasSection(name))return false;
         player_name=cfg.GetValue(name,"name",player_name).AsString(); player_gender=cfg.GetValue(name,"gender",player_gender).AsInt32(); selected_initial_gongfa_path=cfg.GetValue(name,"gongfa",selected_initial_gongfa_path).AsString(); fated_youngest_root_weights=cfg.GetValue(name,"weights",fated_youngest_root_weights).AsGodotArray();
+        if (cfg.HasSectionKey(name, "root_type"))
+        {
+            fated_youngest_root_type=cfg.GetValue(name,"root_type",fated_youngest_root_type).AsInt32();
+            fated_youngest_root_name=cfg.GetValue(name,"root_name",fated_youngest_root_name).AsString();
+            fated_youngest_element=cfg.GetValue(name,"root_element",fated_youngest_element).AsInt32();
+        }
+        else restore_legacy_root_identity_from_weights();
         fated_base_physique=cfg.GetValue(name,"physique",fated_base_physique).AsSingle(); fated_base_intelligence=cfg.GetValue(name,"intelligence",fated_base_intelligence).AsSingle(); fated_base_agility=cfg.GetValue(name,"agility",fated_base_agility).AsSingle(); fated_base_soul=cfg.GetValue(name,"soul",fated_base_soul).AsSingle();
         fated_base_fortune=cfg.GetValue(name,"fortune",fated_base_fortune).AsSingle(); fated_base_comprehension=cfg.GetValue(name,"comprehension",fated_base_comprehension).AsSingle(); fated_base_charisma=cfg.GetValue(name,"charisma",fated_base_charisma).AsSingle(); fated_base_social=cfg.GetValue(name,"social",fated_base_social).AsSingle(); fated_base_management=cfg.GetValue(name,"management",fated_base_management).AsSingle(); fated_remaining_points=cfg.GetValue(name,"remaining_points",fated_remaining_points).AsInt32(); has_fated_roll=true;
         foreach (var field in PortraitFields) player_appearance_data.Set(field, cfg.GetValue(name, "portrait_" + field, player_appearance_data.Get(field)));
-        normalize_root_weights(); return true;
+        return true;
     }
-    private void rebuild_root_weight_layers() { for (var i = 0; i < 5; i++) fated_root_base_weights[i] = 0; var count = fated_youngest_root_weights.Count(value => value.AsInt32() > 0); var baseValue = count switch { 1 => 80, 2 => 45, 3 => 30, 4 => 25, 5 => 20, _ => 0 }; for (var i = 0; i < 5; i++) if (fated_youngest_root_weights[i].AsInt32() > 0) fated_root_base_weights[i] = baseValue; fated_root_residual_weights = []; for (var i = 0; i < 5; i++) fated_root_residual_weights.Add(fated_youngest_root_weights[i].AsInt32() - fated_root_base_weights[i].AsInt32()); }
-    private void refresh_root_weights() { for (var i = 0; i < 5; i++) fated_youngest_root_weights[i] = fated_root_base_weights[i].AsInt32() + fated_root_residual_weights[i].AsInt32(); }
-    /// <summary>灵根权重是构成占比，任何来源都必须恰好合计 100%。</summary>
-    private void normalize_root_weights(int fixedIndex = -1)
-    {
-        while (fated_youngest_root_weights.Count < 5) fated_youngest_root_weights.Add(0);
-        for (var i = 0; i < 5; i++) fated_youngest_root_weights[i] = Mathf.Clamp(fated_youngest_root_weights[i].AsInt32(), 0, 100);
-        var indices = Enumerable.Range(0, 5).Where(i => i != fixedIndex).ToArray();
-        var target = fixedIndex >= 0 ? 100 - fated_youngest_root_weights[fixedIndex].AsInt32() : 100;
-        var source = indices.Sum(i => fated_youngest_root_weights[i].AsInt32());
-        var assigned = 0;
-        if (source <= 0)
-        {
-            foreach (var index in indices)
-            {
-                var share = target / indices.Length + (assigned < target % indices.Length ? 1 : 0);
-                fated_youngest_root_weights[index] = share;
-                assigned++;
-            }
-        }
-        else
-        {
-            foreach (var index in indices)
-            {
-                var share = Mathf.FloorToInt(target * fated_youngest_root_weights[index].AsInt32() / (float)source);
-                fated_youngest_root_weights[index] = share;
-                assigned += share;
-            }
-            var remainder = target - assigned;
-            foreach (var index in indices.OrderByDescending(i => fated_youngest_root_weights[i].AsInt32()).ThenBy(i => i))
-            {
-                if (remainder-- <= 0) break;
-                fated_youngest_root_weights[index] = fated_youngest_root_weights[index].AsInt32() + 1;
-            }
-        }
-        rebuild_root_weight_layers();
-        refresh_root_identity();
-    }
-    private void refresh_root_identity()
+    private void restore_legacy_root_identity_from_weights()
     {
         var active=Enumerable.Range(0,5).Where(index=>index<fated_youngest_root_weights.Count&&fated_youngest_root_weights[index].AsInt32()>0).ToArray();
         if(active.Length==0){fated_youngest_root_type=0;fated_youngest_root_name="无灵根";fated_youngest_element=0;return;}
-        var keys=active.Select(index=>RootKeys[index]).ToArray(); var combinations=new[]{"METAL","WOOD","WATER","FIRE","EARTH","METAL_WOOD","METAL_WATER","METAL_FIRE","METAL_EARTH","WOOD_WATER","WOOD_FIRE","WOOD_EARTH","WATER_FIRE","WATER_EARTH","FIRE_EARTH","METAL_WOOD_WATER","METAL_WOOD_FIRE","METAL_WOOD_EARTH","METAL_WATER_FIRE","METAL_WATER_EARTH","METAL_FIRE_EARTH","WOOD_WATER_FIRE","WOOD_WATER_EARTH","WOOD_FIRE_EARTH","WATER_FIRE_EARTH","METAL_WOOD_WATER_FIRE","METAL_WOOD_WATER_EARTH","METAL_WOOD_FIRE_EARTH","METAL_WATER_FIRE_EARTH","WOOD_WATER_FIRE_EARTH","METAL_WOOD_WATER_FIRE_EARTH"};
-        fated_youngest_root_type=System.Array.IndexOf(combinations,string.Join('_',keys))+1; fated_youngest_root_name=string.Concat(active.Select(index=>RootNames[index]))+(active.Length==1?"灵根（天灵根）":"灵根"); fated_youngest_element=active[0]+1;
+        var keys=active.Select(index=>RootKeys[index]).ToArray();
+        if (!System.Enum.TryParse<GongfaResource.Wuxing>(string.Join('_',keys), out var rootType))
+        {
+            fated_youngest_root_type=0; fated_youngest_root_name="无灵根"; fated_youngest_element=0;
+            return;
+        }
+        fated_youngest_root_type=(int)rootType; fated_youngest_root_name=string.Concat(active.Select(index=>RootNames[index]))+(active.Length==1?"灵根（天灵根）":"灵根"); fated_youngest_element=active[0]+1;
     }
 }

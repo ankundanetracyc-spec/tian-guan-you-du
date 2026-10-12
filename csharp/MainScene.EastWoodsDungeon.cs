@@ -16,6 +16,8 @@ public partial class MainScene
         _east_woods_dungeon.Closed += return_from_east_woods_dungeon;
         _east_woods_dungeon.RouteNodeEntered += on_east_woods_route_node_entered;
         _east_woods_dungeon.RouteStepped += on_east_woods_route_stepped;
+        _east_woods_dungeon.RouteTravelStarted += on_east_woods_route_travel_started;
+        _east_woods_dungeon.RouteTravelFinished += on_east_woods_route_travel_finished;
         _east_woods_dungeon.ActionRequested += on_east_woods_action;
         _east_woods_dungeon.CanMove = () => GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is not null;
         return _east_woods_dungeon;
@@ -65,12 +67,27 @@ public partial class MainScene
         time.advance_time(elapsedHours, "east_woods_dungeon");
         var encounter = _npc_world?.advance_east_woods_route(_fromNodeId, toNodeId, elapsedHours, player?.entity_data as HumanData) ?? new Godot.Collections.Dictionary();
         mark_save_dirty();
-        refresh_east_woods_route_roster(toNodeId);
+        if (_east_woods_dungeon?.is_route_traveling() != true) refresh_east_woods_route_roster(toNodeId);
         if (encounter.Count > 0)
         {
             _east_woods_dungeon?.interrupt_travel();
             CallDeferred(nameof(start_east_woods_encounter), encounter);
         }
+    }
+
+    private void on_east_woods_route_travel_started()
+    {
+        (GetTree().GetFirstNodeInGroup("cell_character_list") as CellCharacterList)?.suspend_world_npcs();
+    }
+
+    private void on_east_woods_route_travel_finished(string routeNodeId)
+    {
+        refresh_east_woods_route_roster(routeNodeId);
+    }
+
+    public void finish_east_woods_spectator_battle()
+    {
+        _east_woods_dungeon?.set_npc_encounter_busy(false);
     }
 
     private void refresh_east_woods_route_roster(string routeNodeId)
@@ -124,12 +141,21 @@ public partial class MainScene
             ["target_node_id"] = defender?.dungeon_node_id ?? "",
             ["route_state"] = routeState.Duplicate(true),
         });
-        transition.start_team_battle(
-            new Godot.Collections.Array<PackedScene> { attackerScene },
-            new Godot.Collections.Array<PackedScene> { defenderScene },
-            new Godot.Collections.Array { attackerSnapshot },
-            new Godot.Collections.Array { defenderSnapshot },
-            GetTree().CurrentScene?.SceneFilePath ?? "res://tscn/scene/MainScene.tscn");
+        var attackerScenes = new Godot.Collections.Array<PackedScene> { attackerScene };
+        var defenderScenes = new Godot.Collections.Array<PackedScene> { defenderScene };
+        var attackerData = new Godot.Collections.Array { attackerSnapshot };
+        var defenderData = new Godot.Collections.Array { defenderSnapshot };
+        var worldPath = GetTree().CurrentScene?.SceneFilePath ?? "res://tscn/scene/MainScene.tscn";
+        if (targetsPlayer)
+        {
+            transition.start_team_battle(attackerScenes, defenderScenes, attackerData, defenderData, worldPath);
+        }
+        else
+        {
+            _east_woods_dungeon?.set_npc_encounter_busy(true);
+            if (!transition.start_spectator_team_battle(attackerScenes, defenderScenes, attackerData, defenderData, worldPath))
+                _east_woods_dungeon?.set_npc_encounter_busy(false);
+        }
     }
 
     private (PackedScene? Scene, BattleEntityData? Snapshot) create_npc_battle_package(WorldNpcData npc, int battleFaction)
@@ -248,21 +274,18 @@ public partial class MainScene
                 lootSummary = transfer_npc_loot_to_npc(attackerNpc, defenderNpc, !defenderNpc.is_alive, out itemTransfers);
                 _npc_world.record_dungeon_battle_outcome(defenderNpc, attackerNpc.npc_id, defenderNpc.is_alive ? "败于沿途冲突" : "在沿途冲突中身亡", lootSummary, incidentId);
                 _npc_world.record_dungeon_battle_outcome(attackerNpc, defenderNpc.npc_id, "战胜同行", lootSummary, incidentId);
-                show_message("林中冲突", $"{attackerNpc.npc_name} 战胜了 {defenderNpc.npc_name}。{lootSummary}");
             }
             else if (defenderWon)
             {
                 lootSummary = transfer_npc_loot_to_npc(defenderNpc, attackerNpc, !attackerNpc.is_alive, out itemTransfers);
                 _npc_world.record_dungeon_battle_outcome(attackerNpc, defenderNpc.npc_id, attackerNpc.is_alive ? "败于沿途冲突" : "在沿途冲突中身亡", lootSummary, incidentId);
                 _npc_world.record_dungeon_battle_outcome(defenderNpc, attackerNpc.npc_id, "击退沿途袭击", lootSummary, incidentId);
-                show_message("林中冲突", $"{defenderNpc.npc_name} 战胜了 {attackerNpc.npc_name}。{lootSummary}");
             }
             else
             {
                 lootSummary = "本场结束时未分出胜负，未发生物品转移。";
                 _npc_world.record_dungeon_battle_outcome(attackerNpc, defenderNpc.npc_id, "冲突结束，未分胜负", lootSummary, incidentId);
                 _npc_world.record_dungeon_battle_outcome(defenderNpc, attackerNpc.npc_id, "冲突结束，未分胜负", lootSummary, incidentId);
-                show_message("林中冲突", "双方暂时分开；没有结算胜负或物品转移。");
             }
             record_east_woods_npc_incident(context, attackerNpc, defenderNpc, attackerWon
                 ? EastWoodsNpcIncidentRecord.ResultAttackerWon
@@ -275,6 +298,7 @@ public partial class MainScene
         dungeon.restore_route_state(_east_woods_dungeon_state);
         dungeon.set_player_dun_speed(player?.dun_speed ?? EastWoodsDungeonRules.BaseDunSpeed);
         dungeon.show_dungeon();
+        dungeon.set_npc_encounter_busy(false);
         if (player?.entity_data is HumanData human) dungeon.set_active_duty_context(human.sect_active_yuxu_duty_id, human.sect_active_yuxu_duty_stage, human.sect_active_yuxu_duty_ready);
         refresh_east_woods_route_roster(dungeon.get_current_route_node_id());
         mark_save_dirty();

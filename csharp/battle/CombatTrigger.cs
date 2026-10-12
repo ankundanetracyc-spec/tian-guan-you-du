@@ -56,6 +56,8 @@ public partial class CombatTrigger : Node
             if (currentScene?.HasMethod("show_yuxu_tianwen_practice_result") == true)
                 currentScene.Call("show_yuxu_tianwen_practice_result", summary, context);
         }
+        if (context.GetValueOrDefault("kind", "").AsString() == "yuxu_npc_spar" && currentScene is MainScene main)
+            main.show_npc_spar_result(summary, context);
     }
     private void CollectEntities(Node? node, Dictionary result)
     { if (node is null) return; var id = node.Get("unique_id").AsString(); if (!string.IsNullOrEmpty(id)) result[id] = node; foreach (var child in node.GetChildren()) CollectEntities(child, result); }

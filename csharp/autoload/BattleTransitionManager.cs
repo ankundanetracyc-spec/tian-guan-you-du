@@ -19,6 +19,9 @@ public partial class BattleTransitionManager : Node
     private PackedScene? saved_world;
     private Dictionary saved_entity_data = [];
     private PersistentGameSave? _worldProgressSnapshot;
+    private Node? _spectatorBattleScene;
+    private bool _spectatorBattleActive;
+    public bool is_spectator_battle_active() => _spectatorBattleActive;
     public PersistentGameSave? consume_world_progress_snapshot()
     {
         if (!has_battle_return_data) return null;
@@ -33,6 +36,53 @@ public partial class BattleTransitionManager : Node
         pending_attackers = attacker_packeds; pending_defenders = defender_packeds;
         pending_attacker_data = attacker_datas; pending_defender_data = defender_datas; world_scene_path = world_path;
         ShowBattleBriefing();
+    }
+
+    public bool start_spectator_team_battle(Godot.Collections.Array<PackedScene> attacker_packeds, Godot.Collections.Array<PackedScene> defender_packeds, GArray attacker_datas, GArray defender_datas, string world_path)
+    {
+        if (_awaitingSettlement || GodotObject.IsInstanceValid(_flowView) || _spectatorBattleActive ||
+            attacker_packeds.Count == 0 || defender_packeds.Count == 0 || attacker_datas.Count == 0 || defender_datas.Count == 0)
+            return false;
+
+        pending_attackers = attacker_packeds;
+        pending_defenders = defender_packeds;
+        pending_attacker_data = attacker_datas;
+        pending_defender_data = defender_datas;
+        world_scene_path = world_path;
+        _beforeBattle = Data(attacker_datas).Concat(Data(defender_datas)).Select(data => (BattleEntityData)data.Duplicate(true)).ToList();
+        _attackerOrder = Data(attacker_datas).Select(data => data.uid).ToList();
+        _defenderOrder = Data(defender_datas).Select(data => data.uid).ToList();
+        _battleId = Guid.NewGuid().ToString("N");
+        _outcomeNote = "";
+
+        // NPC-versus-NPC results use the same battle manager and rule code, but
+        // need no background, camera, HUD, or character presentation scene.
+        var scene = new BattleScene();
+        var manager = new BattleManager
+        {
+            Name = "BattleMgr",
+            Position = new Vector2(960, 540),
+            battle_map = new NodePath("../BattleMap"),
+            deploy_layer = new NodePath("../DeployLayer"),
+        };
+        var map = new BattleMap
+        {
+            Name = "BattleMap",
+            Position = new Vector2(960, 760),
+            map_radius = 5,
+            hex_size = 120,
+            hex_aspect_ratio = 0.8f,
+            spatial_combat_enabled = true,
+        };
+        scene.AddChild(manager);
+        scene.AddChild(map);
+        scene.AddChild(new Node2D { Name = "DeployLayer" });
+        _spectatorBattleActive = true;
+        scene.Name = "EastWoodsNpcSpectatorBattle";
+        scene.Hide();
+        _spectatorBattleScene = scene;
+        GetTree().Root.AddChild(scene);
+        return true;
     }
 
     public GArray consume_pending_battle_package()
