@@ -3,11 +3,12 @@
 [ext_resource type="Script" path="res://csharp/gongfa/GongfaChapterConfig.cs" id="2"]
 [ext_resource type="Resource" path="res://resources/activeskills/灵枢经筋篇/灵枢经筋.tres" id="3"]
 [ext_resource type="Resource" path="res://resources/activeskills/灵枢经筋篇/去故.tres" id="4"]
+[ext_resource type="Resource" path="res://resources/activeskills/灵枢经筋篇/引筋.tres" id="6_yinjing"]
 [ext_resource type="Script" path="res://csharp/gongfa/GongfaDeckRewriteConfig.cs" id="5_rewrite"]
 [ext_resource type="Resource" path="res://resources/activeskills/灵枢经筋篇/化法/平息.tres" id="6_huafa_pingxi"]
 [ext_resource type="Resource" path="res://resources/activeskills/灵枢经筋篇/化法/去故.tres" id="huafaMissing9"]
 [ext_resource type="Resource" path="res://resources/activeskills/灵枢经筋篇/化法/催血.tres" id="huafaMissing10"]
-[ext_resource type="Resource" path="res://resources/activeskills/灵枢经筋篇/化法/发劲.tres" id="huafaMissing11"]
+[ext_resource type="Resource" path="res://resources/activeskills/灵枢经筋篇/化法/引筋.tres" id="huafaMissing11"]
 
 [sub_resource type="Resource" id="RewriteMissing9"]
 script = ExtResource("5_rewrite")
@@ -29,8 +30,8 @@ result_skill = ExtResource("huafaMissing10")
 script = ExtResource("5_rewrite")
 mode = 1
 count = 1
-target_scope = 0
-source_skill_name = "发劲"
+target_scope = 1
+source_skill_name = "引筋"
 result_skill = ExtResource("huafaMissing11")
 
 [sub_resource type="Resource" id="RewritePingXi"]
@@ -45,55 +46,80 @@ chapter_id="ling_shu"
 chapter_name="灵枢"
 description="以伤势入经筋，以消耗伤势换取借力。"
 order=1
-combat_tempering_bonuses = {"max_health_flat": 30.0}
+combat_tempering_bonuses = {"max_health_percent": 15}
 required_study_progress=24.0
-required_attributes={"physique":5.0,"body_proficiency":4.0}
-allowed_bearings=Array[int]([0,1])
-learn_permanent_bonuses={"physique":0.5,"body_proficiency":0.5}
+required_attributes = {"physique": 6.0, "agility": 5.0}
+learn_permanent_bonuses = {"physique": 0.5, "body_proficiency": 0.5}
 learned_active_skills=Array[Resource]([ExtResource("4")])
 sub_deck_rewrites = Array[ExtResource("5_rewrite")]([SubResource("RewriteMissing9")])
+heart_method_description = "效果：每次主动效果成功消耗至少1层内伤或外伤，获得借力1层。\n主修额外效果：每次满足上述条件时，再获得借力1层。"
+
+
+learn_bonus_revision = "study-balance-20261012"
+previous_learn_permanent_bonuses = {"physique": 0.5, "body_proficiency": 0.5}
+
 [sub_resource type="Resource" id="b"]
 script=ExtResource("2")
 chapter_id="tiao_shu"
 chapter_name="调枢"
 description="消伤养形，以伤势换取回血窗口。"
 order=2
-combat_tempering_bonuses = {"qi_blood_cap": 1.0}
+combat_tempering_bonuses = {"qi_blood_cap": 1}
 sub_deck_rewrites = Array[ExtResource("5_rewrite")]([SubResource("RewriteMissing10")])
+heart_method_upgrade_id = "lingshu_c2"
+heart_method_upgrade_description = "同一次主动消耗至少2层伤势时，额外获得身法1层。"
 required_study_progress=48.0
 required_realm="云息三层"
-required_attributes={"physique":7.0,"body_proficiency":5.0}
+required_attributes = {"physique": 7.0, "agility": 6.0, "body_proficiency": 0.5}
 required_chapter_ids=Array[String](["ling_shu"])
-allowed_bearings=Array[int]([1])
-learn_permanent_bonuses={"body_proficiency":0.5}
+learn_permanent_bonuses = {"body_proficiency": 0.5}
+heart_method_description = "效果：每次主动效果成功消耗至少1层内伤或外伤，获得借力1层。 同一次主动消耗至少2层伤势时，额外获得身法1层。\n主修额外效果：每次满足上述条件时，再获得借力1层。"
+
+
+learn_bonus_revision = "study-balance-20261012"
+previous_learn_permanent_bonuses = {"body_proficiency": 0.5}
+
 [sub_resource type="Resource" id="c"]
 script=ExtResource("2")
 chapter_id="tong_tian"
 chapter_name="通天"
 description="令基础平息也能调度伤势构筑。"
 order=3
-combat_tempering_bonuses = {"wound_consume_heal_percent_per_stack": 1.0, "physical_damage_percent": 3.0}
+combat_tempering_bonuses = {"wound_consume_heal_percent_per_stack": 1, "physical_damage_percent": 4}
 sub_deck_rewrites = Array[ExtResource("5_rewrite")]([SubResource("RewritePingXi")])
 required_study_progress=84.0
 required_realm="云息六层"
-required_attributes={"physique":8.0,"body_proficiency":7.0}
+required_attributes = {"physique": 8.0, "agility": 8.0, "body_proficiency": 1}
 required_chapter_ids=Array[String](["tiao_shu"])
-allowed_bearings=Array[int]([1])
-learn_permanent_bonuses={"physique":0.5}
+learn_permanent_bonuses = {"physique": 0.5, "body_proficiency": 1}
+heart_method_description = "效果：每次主动效果成功消耗至少1层内伤或外伤，获得借力1层。 同一次主动消耗至少2层伤势时，额外获得身法1层。\n主修额外效果：每次满足上述条件时，再获得借力1层。"
+
+
+learn_bonus_revision = "study-balance-20261012"
+previous_learn_permanent_bonuses = {"physique": 0.5}
+
 [sub_resource type="Resource" id="d"]
 script=ExtResource("2")
 chapter_id="yin_jin"
 chapter_name="引筋"
 description="以伤势为价，收束一记筋骨重击。"
 order=4
-combat_tempering_bonuses = {"physical_damage_percent": 5.0, "max_health_flat": 20.0}
+combat_tempering_bonuses = {"max_health_percent": 10, "physical_damage_percent": 6}
 sub_deck_rewrites = Array[ExtResource("5_rewrite")]([SubResource("RewriteMissing11")])
+learned_active_skills=Array[Resource]([ExtResource("6_yinjing")])
+heart_method_upgrade_id = "lingshu_c4"
+heart_method_upgrade_description = "同一次主动消耗至少3层伤势时，额外获得气血1层。"
 required_study_progress=128.0
 required_realm="云息九层"
-required_attributes={"physique":10.0,"body_proficiency":9.0}
+required_attributes = {"physique": 10.0, "agility": 9.0, "body_proficiency": 2}
 required_chapter_ids=Array[String](["tong_tian"])
-allowed_bearings=Array[int]([1])
-learn_permanent_bonuses={"body_proficiency":1.0}
+learn_permanent_bonuses = {"body_proficiency": 1}
+heart_method_description = "效果：每次主动效果成功消耗至少1层内伤或外伤，获得借力1层。 同一次主动消耗至少2层伤势时，额外获得身法1层。 同一次主动消耗至少3层伤势时，额外获得气血1层。\n主修额外效果：每次满足上述条件时，再获得借力1层。"
+
+
+learn_bonus_revision = "study-balance-20261012"
+previous_learn_permanent_bonuses = {"body_proficiency": 1.0}
+
 [resource]
 script=ExtResource("1")
 gongfa_name="灵枢经筋篇"
@@ -101,11 +127,10 @@ description="消耗内外伤状态并转化为借力、回复与攻伐收益。"
 wuxing=0
 can_be_main=true
 can_be_sub=true
-bearing_compatibility=Array[int]([1])
-school_tags=Array[String](["body"])
+school_tags=Array[String](["cloud_breath"])
 body_nourish_rate_per_day=0.8
 body_nourish_weights={"skin":0.15,"sinew":0.35,"bone":0.15,"blood":0.15,"viscera":0.10,"heart":0.10}
 main_realm_start="凡人"
-main_realm_end="云息十三层"
+main_realm_end="云息十层"
 heart_method_skill=ExtResource("3")
 chapters=Array[Resource]([SubResource("a"),SubResource("b"),SubResource("c"),SubResource("d")])

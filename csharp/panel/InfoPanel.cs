@@ -1,4 +1,4 @@
-﻿using Godot;
+using Godot;
 
 /// <summary>
 /// 人物档案卷轴。视觉主体完全由 InfoPanel.tscn 保持：画芯、轴卷、墨迹与各页布局都不在此处重建。
@@ -11,8 +11,8 @@ public partial class InfoPanel : Control
     public event Action? AppearanceChanged;
     public WorldEntity? current_card { get; private set; }
 
-    // 装配页沿用局内技能槽的比例，并按人物页中栏放大，保证五槽一行能铺满。
-    private const float BattleLoadoutScale = 1.55f;
+    // 人物页中间栏采用两排各五槽，卡面沿用局内原始比例，避免固定槽挤压两侧信息栏。
+    private const float BattleLoadoutScale = 1f;
     private const float BattleLoadoutSlotWidth = CombatSkillBar.SlotWidth * BattleLoadoutScale;
     private const float BattleLoadoutSlotHeight = CombatSkillBar.SlotHeight * BattleLoadoutScale;
     private const float BattleLoadoutFrameWidth = CombatSkillBar.FrameWidth * BattleLoadoutScale;
@@ -22,7 +22,7 @@ public partial class InfoPanel : Control
 
     private Control? _scrollBody;
     private ScrollContainer? _profilePage;
-    private ScrollContainer? _gongfaPage, _equipPage, _daoPage, _relationsPage;
+    private ScrollContainer? _gongfaPage, _equipPage, _relationsPage;
     private Button? _scheduleButton;
     private Control? _profileSection, _attributeSection, _appearancePreview;
     private WardrobePicker? _wardrobe;
@@ -31,7 +31,8 @@ public partial class InfoPanel : Control
     private PortraitRenderer? _profilePortraitRenderer;
     private Label? _overviewName, _overviewRenownValue, _overviewRenownBreakdown, _overviewKarmaValue, _overviewMoodSummary;
     private VBoxContainer? _overviewMoodSection;
-    private Control? _overviewMoodScale;
+    private MoodDiscControl? _overviewMoodScale;
+    private Label? _overviewMoodReason;
     private readonly Dictionary<string, Label> _overviewValueLabels = [];
     private PanelContainer? _tooltipPanel;
     private Label? _tooltipLabel;
@@ -44,7 +45,6 @@ public partial class InfoPanel : Control
     private Control? _staticAttributePage;
     private Control? _staticGongfaPage;
     private Control? _staticBattlePage;
-    private Control? _staticDaoPage;
     private string _battleFilter = "all";
     private string _battleSelectedPath = "";
     private GridContainer? _battleSlotGrid;
@@ -66,7 +66,6 @@ public partial class InfoPanel : Control
     private readonly List<(Button button, Label caption)> _newTabs = [];
     private Texture2D? _selectedTabPlaque;
     private int _activeNewPage;
-    private string _daoSelectedNodeId = "";
     private float _livePageRefresh;
     private string _gongfaModalMode = "";
     private WorldNpcData? _npc_card;
@@ -88,14 +87,13 @@ public partial class InfoPanel : Control
         if (characterPage is not null) characterPage.SizeFlagsVertical = SizeFlags.ExpandFill;
         _newBody = GetNodeOrNull<VBoxContainer>("Content/Page/Body");
         if (_newBody is not null) _newBody.SizeFlagsVertical = SizeFlags.ExpandFill;
-        if (_newBody is not null) { _newLayout = true; _staticOverviewPage = GetNodeOrNull<Control>("Content/Page/Body/OverviewLayout"); _staticAttributePage = GetNodeOrNull<Control>("Content/Page/Body/AttributeLayout"); _staticBattlePage = GetNodeOrNull<Control>("Content/Page/Body/BattleLayout"); _staticGongfaPage = GetNodeOrNull<Control>("Content/Page/Body/GongfaLayout"); _staticDaoPage = GetNodeOrNull<Control>("Content/Page/Body/DaoLayout"); setup_new_layout(); setup_overview_layout(); configure_static_gongfa_layout(); bind_static_gongfa_controls(); bind_static_dao_controls(); bind_static_battle_controls(); build_tooltip(); Hide(); return; }
+        if (_newBody is not null) { _newLayout = true; _staticOverviewPage = GetNodeOrNull<Control>("Content/Page/Body/OverviewLayout"); _staticAttributePage = GetNodeOrNull<Control>("Content/Page/Body/AttributeLayout"); _staticBattlePage = GetNodeOrNull<Control>("Content/Page/Body/BattleLayout"); _staticGongfaPage = GetNodeOrNull<Control>("Content/Page/Body/GongfaLayout"); setup_new_layout(); setup_overview_layout(); configure_static_gongfa_layout(); bind_static_gongfa_controls(); bind_static_battle_controls(); build_tooltip(); Hide(); return; }
         // 根节点覆盖全屏只用于定位卷轴，不能截走卷轴外的地图点击。
         MouseFilter = MouseFilterEnum.Ignore;
         _scrollBody = GetNodeOrNull<Control>("ScrollBody");
         _profilePage = GetNodeOrNull<ScrollContainer>("ScrollBody/ContentPanel/ScrollContainer");
         _gongfaPage = GetNodeOrNull<ScrollContainer>("ScrollBody/ContentPanel/GongfaContainer");
         _equipPage = GetNodeOrNull<ScrollContainer>("ScrollBody/ContentPanel/EquipContainer");
-        _daoPage = GetNodeOrNull<ScrollContainer>("ScrollBody/ContentPanel/DaoContainer");
         _relationsPage = GetNodeOrNull<ScrollContainer>("ScrollBody/ContentPanel/RelationsContainer");
         _profileSection = GetNodeOrNull<Control>("ScrollBody/ContentPanel/ScrollContainer/VBoxContainer2/AttrProfileRow");
         _attributeSection = GetNodeOrNull<Control>("ScrollBody/ContentPanel/ScrollContainer/VBoxContainer2/AttributesContent");
@@ -111,7 +109,7 @@ public partial class InfoPanel : Control
         }
 
         bind_tab("TabProfile", 0); bind_tab("TabAttr", 1); bind_tab("TabGongfa", 2);
-        bind_tab("TabEquip", 3); bind_tab("TabDao", 4); bind_tab("TabRelations", 5);
+        bind_tab("TabEquip", 3); bind_tab("TabRelations", 4);
         configure_fullscreen_layout();
         add_runtime_actions();
         bind_gongfa_controls();
@@ -148,8 +146,9 @@ public partial class InfoPanel : Control
     public void show_entity(WorldEntity entity)
     {
         if (!GodotObject.IsInstanceValid(entity)) return;
+        hide_tooltip(); _moodDetailsOverlay?.Hide(); _overviewIsPreview=false;
         leave_npc_mode();
-        if (_newLayout) { current_card = entity; populate(entity); var daoTab = GetNodeOrNull<Button>("LeftRail/Box/Nav/TabDao"); if (daoTab is not null) daoTab.Visible = entity is Character human && human.has_dao_bearing(); ZIndex = 20; Show(); render_new_page(0); MoveToFront(); return; }
+        if (_newLayout) { current_card = entity; populate(entity); ZIndex = 20; Show(); render_new_page(0); MoveToFront(); return; }
         current_card = entity;
         populate(entity);
         ZIndex = 20; Show(); _scrollBody?.Show(); show_page(0); MoveToFront();
@@ -174,6 +173,7 @@ public partial class InfoPanel : Control
     public void hide_panel()
     {
         _tooltipPanel?.Hide();
+        _moodDetailsOverlay?.Hide();
         leave_npc_mode();
         Hide();
         current_card = null;
@@ -186,20 +186,19 @@ public partial class InfoPanel : Control
         if (title is not null) title.Text = "概览";
         set_label("NameValue", string.IsNullOrWhiteSpace(_npc_card?.npc_name) ? "无名" : _npc_card!.npc_name);
         set_label("RealmValue", string.IsNullOrWhiteSpace(_npc_card?.cultivation_realm) ? "境界未详" : _npc_card!.cultivation_realm);
-        set_label("SpiritrootValue", string.IsNullOrWhiteSpace(_npc_card?.formal_identity) ? (_npc_card?.species ?? "身份未详") : _npc_card!.formal_identity);
+        set_label("SpiritrootValue", string.IsNullOrWhiteSpace(_npc_card?.spirit_root_name) ? "灵根未详" : _npc_card!.spirit_root_name);
         set_tab_mode(true);
         _staticOverviewPage?.Hide();
         _staticAttributePage?.Hide();
         _staticBattlePage?.Hide();
         _staticGongfaPage?.Hide();
-        _staticDaoPage?.Hide();
         clear_runtime_body();
     }
 
     private void set_tab_mode(bool npc_mode)
     {
-        var tabs = new[] { "TabOverview", "TabAttr", "TabBattle", "TabGongfa", "TabEquip", "TabDao", "TabRelations" };
-        var captions = new[] { "概览", "属性", "战斗", "功法", "装备", "侧重", "关系" };
+        var tabs = new[] { "TabOverview", "TabAttr", "TabBattle", "TabGongfa", "TabEquip", "TabRelations" };
+        var captions = new[] { "概览", "属性", "战斗", "功法", "装备", "关系" };
         for (var i = 0; i < tabs.Length; i++)
         {
             var tab = GetNodeOrNull<Button>($"LeftRail/Box/Nav/{tabs[i]}");
@@ -227,133 +226,12 @@ public partial class InfoPanel : Control
     {
         if (_newBody is null) return;
         foreach (var child in _newBody.GetChildren())
-            if (child != _staticOverviewPage && child != _staticAttributePage && child != _staticBattlePage && child != _staticGongfaPage && child != _staticDaoPage)
+            if (child != _staticOverviewPage && child != _staticAttributePage && child != _staticBattlePage && child != _staticGongfaPage)
                 child.QueueFree();
         _npc_page = null;
     }
 
-    private void render_npc_page()
-    {
-        if (!_newLayout || _newBody is null || _npc_card is null) return;
-        _staticOverviewPage?.Hide();
-        _staticAttributePage?.Hide();
-        _staticBattlePage?.Hide();
-        _staticGongfaPage?.Hide();
-        _staticDaoPage?.Hide();
-        clear_runtime_body();
-
-        var npc = _npc_card;
-        _npc_page = new VBoxContainer { Name = "NpcReadonlyPage", SizeFlagsHorizontal = SizeFlags.ExpandFill };
-        _npc_page.AddThemeConstantOverride("separation", 14);
-        _newBody.AddChild(_npc_page);
-
-        Label text(string value, int size = 17)
-        {
-            var label = new Label { Text = value, AutowrapMode = TextServer.AutowrapMode.WordSmart };
-            label.AddThemeFontSizeOverride("font_size", size);
-            label.AddThemeColorOverride("font_color", new Color(.12f, .11f, .09f));
-            return label;
-        }
-
-        PanelContainer section(string title, params (string label, string value)[] rows)
-        {
-            var panel = new PanelContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
-            panel.AddThemeStyleboxOverride("panel", new StyleBoxFlat
-            {
-                BgColor = new Color(.73f, .68f, .56f, .18f),
-                BorderColor = new Color(.35f, .28f, .17f, .42f),
-                BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1,
-                CornerRadiusTopLeft = 6, CornerRadiusTopRight = 6, CornerRadiusBottomLeft = 6, CornerRadiusBottomRight = 6,
-                ContentMarginLeft = 16, ContentMarginRight = 16, ContentMarginTop = 12, ContentMarginBottom = 12,
-            });
-            var box = new VBoxContainer(); box.AddThemeConstantOverride("separation", 8); panel.AddChild(box);
-            box.AddChild(text(title, 23));
-            box.AddChild(new HSeparator());
-            foreach (var row in rows)
-            {
-                var line = new HBoxContainer(); line.AddThemeConstantOverride("separation", 18); box.AddChild(line);
-                var key = text(row.label, 16); key.CustomMinimumSize = new Vector2(132, 0); line.AddChild(key);
-                var value = text(string.IsNullOrWhiteSpace(row.value) ? "未详" : row.value, 16); value.SizeFlagsHorizontal = SizeFlags.ExpandFill; line.AddChild(value);
-            }
-            return panel;
-        }
-
-        _npc_page.AddChild(text("概览", 28));
-        var manager = GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager");
-        var node_name = manager?.get_node_name(npc.current_node_id) ?? (string.IsNullOrWhiteSpace(npc.current_node_id) ? "未定地点" : npc.current_node_id);
-        var subscene_name = manager?.get_subscene_name(npc.current_node_id, npc.current_subscene_id) ?? (string.IsNullOrWhiteSpace(npc.current_subscene_id) ? "地点内" : npc.current_subscene_id);
-        var location = npc.is_traveling ? $"途中：{npc.travel_destination_node_id}" : $"{node_name} · {subscene_name}";
-        var identityRow = new HBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
-        identityRow.AddThemeConstantOverride("separation", 18);
-        var portraitFrame = new PanelContainer { CustomMinimumSize = new Vector2(220, 330), SizeFlagsVertical = SizeFlags.ShrinkBegin };
-        portraitFrame.AddThemeStyleboxOverride("panel", new StyleBoxFlat
-        {
-            BgColor = new Color(.88f, .84f, .74f, .72f), BorderColor = new Color(.35f, .28f, .17f, .42f),
-            BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1,
-            ContentMarginLeft = 8, ContentMarginRight = 8, ContentMarginTop = 8, ContentMarginBottom = 8,
-        });
-        identityRow.AddChild(portraitFrame);
-        var portrait = new PortraitRenderer { Name = "NpcPortrait", CustomMinimumSize = new Vector2(204, 306), SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ExpandFill };
-        portraitFrame.AddChild(portrait);
-        portrait.show_world_npc(npc);
-        var identitySection = section("身份", ("姓名", npc.npc_name), ("身份", npc.formal_identity), ("性别与年龄", $"{(npc.gender == 1 ? "女" : "男")} · {npc.current_age} 岁"), ("种族", npc.species), ("所属势力", npc_faction_name(npc.faction_id)), ("出身", npc.origin_description));
-        identitySection.SizeFlagsHorizontal = SizeFlags.ExpandFill;
-        identityRow.AddChild(identitySection);
-        _npc_page.AddChild(identityRow);
-        _npc_page.AddChild(section("所在", ("位置", location), ("状态", npc.current_state), ("生存", npc.is_alive ? "在世" : $"已故 · {npc.death_cause}")));
-        var karmaMood = section("业力与心境", ("业力", format_signed_value(npc.karma_value)));
-        if (karmaMood.GetChild(0) is VBoxContainer karmaMoodBox)
-        {
-            int mood = Mathf.Clamp(npc.mood_value, -50, 50);
-            int moodBand = get_mood_band_index(mood);
-            karmaMoodBox.AddChild(text($"心境：{MoodBandNames[moodBand]}（{format_signed_value(mood)}）", 19));
-            karmaMoodBox.AddChild(create_mood_scale(mood));
-        }
-        _npc_page.AddChild(karmaMood);
-        var relation_tags = npc.relation_tags.Count == 0 ? "暂无记录" : string.Join("、", npc.relation_tags);
-        var behavior_tags = npc.behavior_tags.Count == 0 ? "暂无记录" : string.Join("、", npc.behavior_tags);
-        _npc_page.AddChild(section("关系与印象", ("与主角关系", npc.player_relationship.ToString()), ("关系标签", relation_tags), ("已知特征", behavior_tags)));
-
-        var history = new PanelContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
-        history.AddThemeStyleboxOverride("panel", new StyleBoxFlat
-        {
-            BgColor = new Color(.73f, .68f, .56f, .18f), BorderColor = new Color(.35f, .28f, .17f, .42f),
-            BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1,
-            CornerRadiusTopLeft = 6, CornerRadiusTopRight = 6, CornerRadiusBottomLeft = 6, CornerRadiusBottomRight = 6,
-            ContentMarginLeft = 16, ContentMarginRight = 16, ContentMarginTop = 12, ContentMarginBottom = 12,
-        });
-        var history_box = new VBoxContainer(); history_box.AddThemeConstantOverride("separation", 8); history.AddChild(history_box);
-        history_box.AddChild(text("近期行迹", 23)); history_box.AddChild(new HSeparator());
-        if (npc.action_history.Count == 0) history_box.AddChild(text("尚无可见记录。", 16));
-        else
-        {
-            var start = Mathf.Max(0, npc.action_history.Count - 3);
-            for (var i = start; i < npc.action_history.Count; i++)
-            {
-                var record = npc.action_history[i];
-                if (record is null) continue;
-                var when = string.IsNullOrWhiteSpace(record.date_label) ? $"第 {record.month_index} 月" : record.date_label;
-                var action = string.IsNullOrWhiteSpace(record.action_name) ? "行动" : record.action_name;
-                var outcome = string.IsNullOrWhiteSpace(record.outcome) ? "暂无结果记录。" : record.outcome;
-                history_box.AddChild(text($"{when}　{action}\n{outcome}", 16));
-            }
-        }
-        _npc_page.AddChild(history);
-
-        var actions = new HBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
-        actions.AddThemeConstantOverride("separation", 12);
-        var talk = new Button { Text = "交谈", CustomMinimumSize = new Vector2(0, 46), SizeFlagsHorizontal = SizeFlags.ExpandFill };
-        talk.AddThemeFontSizeOverride("font_size", 18);
-        talk.AddThemeColorOverride("font_color", new Color("3a3020"));
-        talk.Pressed += () => NpcTalkRequested?.Invoke(npc);
-        actions.AddChild(talk);
-        var trade = new Button { Text = "交易", CustomMinimumSize = new Vector2(0, 46), SizeFlagsHorizontal = SizeFlags.ExpandFill };
-        trade.AddThemeFontSizeOverride("font_size", 18);
-        trade.AddThemeColorOverride("font_color", new Color("3a3020"));
-        trade.Pressed += () => NpcTradeRequested?.Invoke(npc);
-        actions.AddChild(trade);
-        _npc_page.AddChild(actions);
-    }
+    private void render_npc_page() => render_shared_npc_overview();
 
     private static string npc_faction_name(string faction_id) => faction_id switch
     {
@@ -371,6 +249,7 @@ public partial class InfoPanel : Control
     /// <summary>供统一返回键优先收起人物页内的临时查看层。</summary>
     public bool dismiss_top_overlay()
     {
+        if (_moodDetailsOverlay?.Visible == true) { _moodDetailsOverlay.Hide(); return true; }
         if (_gongfaModal?.Visible == true) { _gongfaModal.Hide(); return true; }
         if (_tooltipPanel?.Visible == true) { _tooltipPanel.Hide(); return true; }
         return false;
@@ -385,8 +264,7 @@ public partial class InfoPanel : Control
         if (_attributeSection is not null) _attributeSection.Visible = page == 1;
         if (_gongfaPage is not null) _gongfaPage.Visible = page == 2;
         if (_equipPage is not null) _equipPage.Visible = page == 3;
-        if (_daoPage is not null) _daoPage.Visible = page == 4;
-        if (_relationsPage is not null) _relationsPage.Visible = page == 5;
+        if (_relationsPage is not null) _relationsPage.Visible = page == 4;
         for (var i = 0; i < _tabButtons.Length; i++)
         {
             var selected = i == page;
@@ -395,8 +273,7 @@ public partial class InfoPanel : Control
         }
         if (page == 2) populate_gongfa(current_card as Character);
         if (page == 3) populate_equip(current_card as Character);
-        if (page == 4) populate_dao(current_card as Character);
-        if (page == 5) populate_relations();
+        if (page == 4) populate_relations();
     }
 
     private void setup_new_layout()
@@ -408,7 +285,7 @@ public partial class InfoPanel : Control
             nav.AddChild(overview);
             nav.MoveChild(overview, 0);
         }
-        var paths = new[] { "TabOverview", "TabAttr", "TabBattle", "TabGongfa", "TabEquip", "TabDao", "TabRelations" };
+        var paths = new[] { "TabOverview", "TabAttr", "TabBattle", "TabGongfa", "TabEquip", "TabRelations" };
         _selectedTabPlaque = GD.Load<Texture2D>("res://textures/ui/infopanel_nav_plaque_clean_v2.png");
         for (var i = 0; i < paths.Length; i++)
         {
@@ -435,7 +312,6 @@ public partial class InfoPanel : Control
         }
         GetNodeOrNull<Button>("Header/Close")!.Pressed += hide_panel;
         GetNodeOrNull<Button>("RightRail/Box/Schedule")?.Hide();
-        GetNodeOrNull<Button>("LeftRail/Box/Nav/TabDao")?.Hide();
     }
 
     private void setup_overview_layout()
@@ -445,33 +321,32 @@ public partial class InfoPanel : Control
         _appearanceEntry = new PanelContainer { Name = "AppearanceEntry", SizeFlagsHorizontal = SizeFlags.ExpandFill };
         _appearanceEntry.AddThemeStyleboxOverride("panel", new StyleBoxFlat
         {
-            BgColor = new Color(.73f, .68f, .56f, .2f), BorderColor = new Color(.35f, .28f, .17f, .42f),
-            BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1,
+            BgColor = Colors.Transparent, BorderColor = new Color(.35f, .28f, .17f, .42f),
             CornerRadiusTopLeft = 6, CornerRadiusTopRight = 6, CornerRadiusBottomLeft = 6, CornerRadiusBottomRight = 6,
-            ContentMarginLeft = 14, ContentMarginRight = 14, ContentMarginTop = 10, ContentMarginBottom = 10,
+            ContentMarginLeft = 26, ContentMarginRight = 26, ContentMarginTop = 30, ContentMarginBottom = 24,
         });
-        _appearanceEntry.SizeFlagsVertical = SizeFlags.ExpandFill;
-        var row = new HBoxContainer { SizeFlagsVertical = SizeFlags.ExpandFill }; row.AddThemeConstantOverride("separation", 24); _appearanceEntry.AddChild(row);
-        var leftColumn = new VBoxContainer { Name = "OverviewPortraitColumn", CustomMinimumSize = new Vector2(356, 0), SizeFlagsVertical = SizeFlags.ExpandFill };
+        _appearanceEntry.SizeFlagsVertical = SizeFlags.ShrinkBegin;
+        var row = new HBoxContainer { Name="OverviewRow", SizeFlagsVertical = SizeFlags.ExpandFill }; row.AddThemeConstantOverride("separation", 34); _appearanceEntry.AddChild(row);
+        var leftColumn = new VBoxContainer { Name = "OverviewPortraitColumn", CustomMinimumSize = new Vector2(370, 0), SizeFlagsVertical = SizeFlags.ExpandFill };
         row.AddChild(leftColumn);
-        _appearancePortraitFrame = new PanelContainer { Name = "PortraitFrame", CustomMinimumSize = new Vector2(350, 520), SizeFlagsVertical = SizeFlags.ShrinkBegin };
+        _appearancePortraitFrame = new PanelContainer { Name = "PortraitFrame", CustomMinimumSize = new Vector2(370, 690), SizeFlagsVertical = SizeFlags.ShrinkBegin };
         _appearancePortraitFrame.AddThemeStyleboxOverride("panel", new StyleBoxFlat { BgColor = new Color(.88f, .84f, .74f, .72f), BorderColor = new Color(.35f, .28f, .17f, .42f), BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1, ContentMarginLeft = 10, ContentMarginRight = 10, ContentMarginTop = 10, ContentMarginBottom = 10 });
         leftColumn.AddChild(_appearancePortraitFrame);
         _profilePortraitRenderer = new PortraitRenderer { Name = "ProfilePortrait", CustomMinimumSize = new Vector2(330, 500), SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ExpandFill };
         _appearancePortraitFrame.AddChild(_profilePortraitRenderer);
 
-        var details = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ExpandFill };
-        details.AddThemeConstantOverride("separation", 14); row.AddChild(details);
-        _overviewName = new Label { Name = "OverviewName", Text = "无名", MouseFilter = MouseFilterEnum.Ignore };
-        _overviewName.AddThemeFontSizeOverride("font_size", 28); _overviewName.AddThemeColorOverride("font_color", new Color(.13f, .11f, .08f)); details.AddChild(_overviewName);
+        var details = new VBoxContainer { Name="OverviewDetails", CustomMinimumSize=new Vector2(350,0), SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ExpandFill, SizeFlagsStretchRatio=.95f };
+        details.AddThemeConstantOverride("separation", 18); row.AddChild(details);
+        _overviewName = new Label { Name = "OverviewName", Text = "无名", AutowrapMode=TextServer.AutowrapMode.WordSmart, MouseFilter = MouseFilterEnum.Ignore };
+        _overviewName.AddThemeFontSizeOverride("font_size", 38); _overviewName.AddThemeColorOverride("font_color", new Color(.13f, .11f, .08f)); details.AddChild(_overviewName);
         var facts = new GridContainer { Name = "OverviewFacts", Columns = 2, SizeFlagsHorizontal = SizeFlags.ExpandFill };
-        facts.AddThemeConstantOverride("h_separation", 14); facts.AddThemeConstantOverride("v_separation", 10); details.AddChild(facts);
-        foreach (var field in new[] { (key: "gender", title: "性别"), (key: "age", title: "年龄"), (key: "realm", title: "境界"), (key: "spirit_root", title: "灵根"), (key: "identity", title: "身份"), (key: "faction", title: "所属势力"), (key: "location", title: "当前位置") })
+        facts.AddThemeConstantOverride("h_separation", 22); facts.AddThemeConstantOverride("v_separation", 18); details.AddChild(facts);
+        foreach (var field in new[] { (key: "gender", title: "性别"), (key: "age", title: "年龄"), (key: "species", title: "种族"), (key: "realm", title: "境界"), (key: "spirit_root", title: "灵根"), (key: "identity", title: "身份"), (key: "faction", title: "所属势力"), (key: "location", title: "当前位置") })
         {
             var name = new Label { Text = field.title, CustomMinimumSize = new Vector2(78, 0), MouseFilter = MouseFilterEnum.Ignore };
-            name.AddThemeFontSizeOverride("font_size", 16); name.AddThemeColorOverride("font_color", new Color(.34f, .29f, .20f)); facts.AddChild(name);
+            name.AddThemeFontSizeOverride("font_size", 21); name.AddThemeColorOverride("font_color", new Color(.34f, .29f, .20f)); facts.AddChild(name);
             var value = new Label { Name = field.key, Text = "未详", AutowrapMode = TextServer.AutowrapMode.WordSmart, SizeFlagsHorizontal = SizeFlags.ExpandFill, MouseFilter = MouseFilterEnum.Ignore };
-            value.AddThemeFontSizeOverride("font_size", 17); value.AddThemeColorOverride("font_color", new Color(.13f, .11f, .08f)); facts.AddChild(value);
+            value.AddThemeFontSizeOverride("font_size", 22); value.AddThemeColorOverride("font_color", new Color(.13f, .11f, .08f)); facts.AddChild(value);
             _overviewValueLabels[field.key] = value;
         }
         details.AddChild(new HSeparator());
@@ -481,15 +356,27 @@ public partial class InfoPanel : Control
         _overviewRenownBreakdown.AddThemeFontSizeOverride("font_size", 14); _overviewRenownBreakdown.AddThemeColorOverride("font_color", new Color(.36f, .32f, .24f)); details.AddChild(_overviewRenownBreakdown);
         _overviewKarmaValue = new Label { Name = "OverviewKarma", Text = "业力：未详", MouseFilter = MouseFilterEnum.Ignore };
         _overviewKarmaValue.AddThemeFontSizeOverride("font_size", 20); _overviewKarmaValue.AddThemeColorOverride("font_color", new Color(.16f, .14f, .10f)); details.AddChild(_overviewKarmaValue);
-        _overviewMoodSection = new VBoxContainer { Name = "OverviewMoodSection", SizeFlagsHorizontal = SizeFlags.ExpandFill };
-        _overviewMoodSection.AddThemeConstantOverride("separation", 6);
+        _overviewMoodSection = new VBoxContainer { Name = "OverviewMoodSection", CustomMinimumSize=new Vector2(440,0), SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsStretchRatio=1.15f };
+        _overviewMoodSection.AddThemeConstantOverride("separation", 18);
+        var moodTitle = new Label { Text="心境", MouseFilter=MouseFilterEnum.Ignore };
+        moodTitle.AddThemeFontSizeOverride("font_size",30); _overviewMoodSection.AddChild(moodTitle);
+        _overviewMoodSection.AddChild(new HSeparator());
+        _overviewMoodScale = new MoodDiscControl { Name="MoodDisc", SizeFlagsHorizontal=SizeFlags.ExpandFill };
+        bind_mood_disc(_overviewMoodScale);
+        _overviewMoodSection.AddChild(_overviewMoodScale);
+        var moodHint = new Label { Text="越近圆心，心绪越轻", HorizontalAlignment=HorizontalAlignment.Center, MouseFilter=MouseFilterEnum.Ignore };
+        moodHint.AddThemeFontSizeOverride("font_size",18); moodHint.AddThemeColorOverride("font_color",new Color("#81745c")); _overviewMoodSection.AddChild(moodHint);
         _overviewMoodSummary = new Label { Name = "OverviewMoodSummary", Text = "心境：未详", MouseFilter = MouseFilterEnum.Ignore };
         _overviewMoodSummary.AddThemeFontSizeOverride("font_size", 20); _overviewMoodSummary.AddThemeColorOverride("font_color", new Color(.16f, .14f, .10f)); _overviewMoodSection.AddChild(_overviewMoodSummary);
-        _overviewMoodScale = create_mood_scale(0);
-        _overviewMoodSection.AddChild(_overviewMoodScale);
-        details.AddChild(_overviewMoodSection);
+        _overviewMoodReason = new Label { Text="暂无已确认的长期心绪记录。", AutowrapMode=TextServer.AutowrapMode.WordSmart, MouseFilter=MouseFilterEnum.Ignore };
+        _overviewMoodReason.AddThemeFontSizeOverride("font_size",18); _overviewMoodReason.AddThemeColorOverride("font_color",new Color("#756c59")); _overviewMoodSection.AddChild(_overviewMoodReason);
+        row.AddChild(_overviewMoodSection);
+        var moodDetails=new Button { Name="MoodDetails",Text="查看心境详情",Flat=true,CustomMinimumSize=new Vector2(0,42),SizeFlagsHorizontal=SizeFlags.ShrinkCenter };
+        moodDetails.AddThemeFontSizeOverride("font_size",20); moodDetails.AddThemeColorOverride("font_color",new Color("#62543b"));
+        _overviewMoodSection.AddChild(moodDetails); moodDetails.Pressed+=open_mood_details;
         _staticOverviewPage.AddChild(_appearanceEntry);
         _staticOverviewPage.MoveChild(_appearanceEntry, Math.Min(1, _staticOverviewPage.GetChildCount() - 1));
+        build_overview_world_status_section();
 
         _wardrobe = new WardrobePicker { Name = "WardrobePicker" };
         _wardrobe.ClothingApplied += () => { refresh_profile_portrait(); AppearanceChanged?.Invoke(); render_new_page(_activeNewPage); };
@@ -531,8 +418,10 @@ public partial class InfoPanel : Control
         if (_overviewRenownBreakdown is not null) _overviewRenownBreakdown.Text = "";
         if (_overviewKarmaValue is not null) _overviewKarmaValue.Text = "业力：未详";
         set_overview_mood(null);
+        var data = human?.entity_data as HumanData;
+        var currentGameHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+        refresh_overview_world_status(data, currentGameHour);
         if (human is null) { set_overview_value("identity", "无"); set_overview_value("faction", "无"); return; }
-        var data = human.entity_data as HumanData;
         var gender = !string.IsNullOrWhiteSpace(human.family_gender) ? human.family_gender : data is null ? "未详" : data.gender == 1 ? "女" : "男";
         var identity = !string.IsNullOrWhiteSpace(data?.sect_current_rank) ? data!.sect_current_rank
             : !string.IsNullOrWhiteSpace(data?.family_guest_affiliation_id) ? "家族客卿" : "无";
@@ -544,8 +433,13 @@ public partial class InfoPanel : Control
             : "位置未详";
         set_overview_value("gender", gender);
         set_overview_value("age", $"{unit.current_age} 岁");
+        set_overview_value("species", "人族");
         set_overview_value("realm", string.IsNullOrWhiteSpace(unit.cultivation_realm) ? "未详" : unit.cultivation_realm);
         set_overview_value("spirit_root", string.IsNullOrWhiteSpace(data?.spirit_root_name) ? "未详" : data!.spirit_root_name);
+        if (_overviewValueLabels.TryGetValue("spirit_root", out var rootLabel))
+            bind_tooltip(rootLabel, format_root_weight_tooltip(data?.root_weights));
+        if (find_label(this, "SpiritrootValue") is { } sidebarRoot)
+            bind_tooltip(sidebarRoot, format_root_weight_tooltip(data?.root_weights));
         set_overview_value("identity", identity);
         set_overview_value("faction", faction);
         set_overview_value("location", string.IsNullOrWhiteSpace(location) ? "位置未详" : location);
@@ -554,7 +448,8 @@ public partial class InfoPanel : Control
         if (_overviewRenownValue is not null) _overviewRenownValue.Text = $"声望：百川 {renown}";
         if (_overviewRenownBreakdown is not null) _overviewRenownBreakdown.Text = RegionalRenownSystem.get_bai_chuan_overview_breakdown_text(data);
         if (_overviewKarmaValue is not null) _overviewKarmaValue.Text = $"业力：{format_signed_value(data.karma_value)}";
-        set_overview_mood(data.mood_value);
+        // 旧横轴不能推导八种个人心绪；尚未记录圆盘状态时如实显示未详。
+        set_overview_mood(null);
     }
 
     private void set_overview_value(string key, string value)
@@ -576,90 +471,34 @@ public partial class InfoPanel : Control
         if (current_card is Character character) update_appearance_entry(character);
     }
 
-    private static readonly string[] MoodBandNames = ["忧思难解", "怅然若失", "略有烦忧", "古井无波", "心生欢喜", "欣然自得", "意兴飞扬"];
-    private static readonly string[] MoodBandRanges = ["-50～-41", "-40～-26", "-25～-6", "-5～+5", "+6～+25", "+26～+40", "+41～+50"];
-    private static readonly int[] MoodBandWidths = [10, 15, 20, 11, 20, 15, 10];
-    private static readonly Color[] MoodBandColors =
-    [
-        new("#a9b1ae"), new("#bbc0b8"), new("#c9c8bb"), new("#d7cfb7"),
-        new("#c7c8bb"), new("#b7c0ba"), new("#a6b7b8")
-    ];
-
-    private void set_overview_mood(int? value)
+    private void set_overview_mood(Vector2? position, string reason = "")
     {
         if (_overviewMoodSummary is null || _overviewMoodScale is null) return;
-        if (value is null)
-        {
-            _overviewMoodSummary.Text = "心境：未详";
-            _overviewMoodScale.Hide();
-            return;
-        }
-        int clamped = Mathf.Clamp(value.Value, -50, 50);
-        int band = get_mood_band_index(clamped);
-        _overviewMoodSummary.Text = $"心境：{MoodBandNames[band]}（{format_signed_value(clamped)}）";
-        var parent = _overviewMoodScale.GetParent();
-        var index = _overviewMoodScale.GetIndex();
-        _overviewMoodScale.QueueFree();
-        _overviewMoodScale = create_mood_scale(clamped);
-        parent?.AddChild(_overviewMoodScale);
-        if (parent is not null) parent.MoveChild(_overviewMoodScale, index);
-        _overviewMoodScale.Show();
+        _overviewMoodScale.ShowState(position);
+        _overviewMoodSummary.Text = $"当前心境　{_overviewMoodScale.CurrentName}";
+        if (_overviewMoodReason is not null)
+            _overviewMoodReason.Text = !string.IsNullOrWhiteSpace(reason) ? reason
+                : position is null ? "暂无已确认的长期心绪记录。" : "心境稳定，暂无持续主导的心绪。";
+        _overviewMoodScale.StateReason=_overviewMoodReason?.Text ?? "暂无记录。";
     }
 
-    private static int get_mood_band_index(int value) => value switch
+    /// <summary>只供界面演示使用，不写入角色与正式存档。</summary>
+    public void preview_mood(Vector2 position)
     {
-        <= -41 => 0, <= -26 => 1, <= -6 => 2, <= 5 => 3, <= 25 => 4, <= 40 => 5, _ => 6
-    };
+        _overviewIsPreview=true;
+        set_overview_mood(position, position.Length() < .001f
+            ? "外观预览：心境稳定，暂无持续主导的心绪。"
+            : "外观预览：落点距离圆心越远，心绪越强。");
+    }
 
     private static string format_signed_value(int value) => value > 0 ? $"+{value}" : value.ToString();
 
-    private static Control create_mood_scale(int value)
+    private static string format_root_weight_tooltip(Godot.Collections.Array? weights)
     {
-        var root = new Control { Name = "MoodScale", CustomMinimumSize = new Vector2(0, 76), SizeFlagsHorizontal = SizeFlags.ExpandFill, MouseFilter = MouseFilterEnum.Ignore };
-        var currentBand = get_mood_band_index(Mathf.Clamp(value, -50, 50));
-        var segments = new HBoxContainer { Name = "Bands", MouseFilter = MouseFilterEnum.Ignore };
-        segments.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        segments.OffsetTop = 24;
-        segments.AddThemeConstantOverride("separation", 3);
-        root.AddChild(segments);
-        for (int i = 0; i < MoodBandNames.Length; i++)
-        {
-            var segment = new PanelContainer
-            {
-                Name = $"MoodBand{i + 1}",
-                SizeFlagsHorizontal = SizeFlags.ExpandFill,
-                SizeFlagsStretchRatio = MoodBandWidths[i],
-                TooltipText = MoodBandRanges[i]
-            };
-            segment.AddThemeStyleboxOverride("panel", new StyleBoxFlat
-            {
-                BgColor = MoodBandColors[i].Darkened(i == currentBand ? .04f : .0f),
-                BorderColor = i == currentBand ? new Color("#66553b") : new Color("#66553b", .35f),
-                BorderWidthLeft = i == currentBand ? 2 : 1, BorderWidthTop = i == currentBand ? 2 : 1,
-                BorderWidthRight = i == currentBand ? 2 : 1, BorderWidthBottom = i == currentBand ? 2 : 1,
-                CornerRadiusTopLeft = 4, CornerRadiusTopRight = 4, CornerRadiusBottomLeft = 4, CornerRadiusBottomRight = 4,
-                ContentMarginLeft = 2, ContentMarginRight = 2, ContentMarginTop = 3, ContentMarginBottom = 2,
-            });
-            var labels = new VBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
-            labels.AddThemeConstantOverride("separation", 2);
-            var name = new Label { Text = MoodBandNames[i], HorizontalAlignment = HorizontalAlignment.Center, ClipText = true, MouseFilter = MouseFilterEnum.Ignore };
-            name.AddThemeFontSizeOverride("font_size", 13); name.AddThemeColorOverride("font_color", new Color("#282820")); labels.AddChild(name);
-            var range = new Label { Text = MoodBandRanges[i], HorizontalAlignment = HorizontalAlignment.Center, ClipText = true, MouseFilter = MouseFilterEnum.Ignore };
-            range.AddThemeFontSizeOverride("font_size", 11); range.AddThemeColorOverride("font_color", new Color("#4b463a")); labels.AddChild(range);
-            segment.AddChild(labels);
-            segments.AddChild(segment);
-        }
-        float markerX = Mathf.Clamp(Mathf.Clamp(value, -50, 50) + 50, 0, 100) / 100f;
-        var marker = new ColorRect { Name = "CurrentMoodMarker", Color = new Color("#5b4730"), MouseFilter = MouseFilterEnum.Ignore };
-        marker.AnchorLeft = markerX; marker.AnchorRight = markerX; marker.OffsetLeft = -1; marker.OffsetRight = 1; marker.OffsetTop = 12; marker.OffsetBottom = 34;
-        root.AddChild(marker);
-        var pointer = new Label { Name = "CurrentMoodPointer", Text = "▼", HorizontalAlignment = HorizontalAlignment.Center, MouseFilter = MouseFilterEnum.Ignore };
-        pointer.AddThemeFontSizeOverride("font_size", 15); pointer.AddThemeColorOverride("font_color", new Color("#5b4730"));
-        pointer.AnchorLeft = markerX; pointer.AnchorRight = markerX; pointer.OffsetLeft = -9; pointer.OffsetRight = 9; pointer.OffsetTop = 0; pointer.OffsetBottom = 23;
-        root.AddChild(pointer);
-        return root;
+        if (weights is null || weights.Count < 5) return "灵根权重：未详";
+        string[] names = ["金", "木", "水", "火", "土"];
+        return "灵根权重\n" + string.Join("　", Enumerable.Range(0, 5).Select(i => $"{names[i]} {weights[i].AsInt32()}%"));
     }
-
     /// <summary>把主辅修装配卡提升到页面顶部，让功法树和详情成为主要工作区。</summary>
     private void configure_static_gongfa_layout()
     {
@@ -721,8 +560,8 @@ public partial class InfoPanel : Control
     private void render_new_page(int page)
     {
         if (!_newLayout || _newBody is null || current_card is not Creature unit) return;
-        if (page == 5 && (current_card is not Character daoHuman || !daoHuman.has_dao_bearing())) page = 0;
-        var pageTitles = new[] { "概览", "属性", "战斗", "功法", "装备", "侧重", "关系" };
+        hide_tooltip(); _moodDetailsOverlay?.Hide();
+        var pageTitles = new[] { "概览", "属性", "战斗", "功法", "装备", "关系" };
         var headerTitle = GetNodeOrNull<Label>("Header/Title");
         if (headerTitle is not null) headerTitle.Text = pageTitles[page];
         _activeNewPage = page; _livePageRefresh = 0;
@@ -738,12 +577,12 @@ public partial class InfoPanel : Control
         void ClearTransientBody()
         {
             foreach (var child in _newBody.GetChildren())
-                if (child != _staticOverviewPage && child != _staticAttributePage && child != _staticBattlePage && child != _staticGongfaPage && child != _staticDaoPage) { if (child is CanvasItem canvas) canvas.Visible = false; child.QueueFree(); }
+                if (child != _staticOverviewPage && child != _staticAttributePage && child != _staticBattlePage && child != _staticGongfaPage) { if (child is CanvasItem canvas) canvas.Visible = false; child.QueueFree(); }
         }
         if (page == 0 && _staticOverviewPage is not null)
         {
             ClearTransientBody();
-            _staticAttributePage?.Hide(); _staticBattlePage?.Hide(); _staticDaoPage?.Hide(); _staticGongfaPage?.Hide();
+            _staticAttributePage?.Hide(); _staticBattlePage?.Hide(); _staticGongfaPage?.Hide();
             _staticOverviewPage.Show();
             populate_overview_page(unit, current_card as Character);
             return;
@@ -751,7 +590,7 @@ public partial class InfoPanel : Control
         if (page == 1 && _staticAttributePage is not null)
         {
             ClearTransientBody();
-            _staticOverviewPage?.Hide(); _staticBattlePage?.Hide(); _staticDaoPage?.Hide(); _staticGongfaPage?.Hide();
+            _staticOverviewPage?.Hide(); _staticBattlePage?.Hide(); _staticGongfaPage?.Hide();
             _staticAttributePage.Show();
             populate_static_attribute_page(unit, current_card as Character);
             return;
@@ -759,7 +598,7 @@ public partial class InfoPanel : Control
         if (page == 2 && _staticBattlePage is not null)
         {
             ClearTransientBody();
-            _staticOverviewPage?.Hide(); _staticAttributePage?.Hide(); _staticGongfaPage?.Hide(); _staticDaoPage?.Hide(); _staticBattlePage.Show();
+            _staticOverviewPage?.Hide(); _staticAttributePage?.Hide(); _staticGongfaPage?.Hide(); _staticBattlePage.Show();
             populate_static_battle_page(unit);
             return;
         }
@@ -767,29 +606,21 @@ public partial class InfoPanel : Control
         {
             ClearTransientBody();
             _staticOverviewPage?.Hide(); _staticAttributePage?.Hide();
-            _staticBattlePage?.Hide(); _staticDaoPage?.Hide();
+            _staticBattlePage?.Hide();
             _staticGongfaPage.Show();
             populate_static_gongfa_page(gongfaHuman);
             return;
         }
-        if (page == 5 && _staticDaoPage is not null)
-        {
-            _staticOverviewPage?.Hide(); _staticAttributePage?.Hide(); _staticBattlePage?.Hide(); _staticGongfaPage?.Hide();
-            ClearTransientBody();
-            _staticDaoPage.Show();
-            populate_static_dao_page(current_card as Character);
-            return;
-        }
         if (page == 4)
         {
-            _staticOverviewPage?.Hide(); _staticAttributePage?.Hide(); _staticBattlePage?.Hide(); _staticGongfaPage?.Hide(); _staticDaoPage?.Hide();
+            _staticOverviewPage?.Hide(); _staticAttributePage?.Hide(); _staticBattlePage?.Hide(); _staticGongfaPage?.Hide();
             ClearTransientBody();
             render_equipment_page(current_card as Character);
             return;
         }
         _staticOverviewPage?.Hide();
         _staticAttributePage?.Hide(); _staticBattlePage?.Hide();
-        _staticGongfaPage?.Hide(); _staticDaoPage?.Hide();
+        _staticGongfaPage?.Hide();
         ClearTransientBody();
         Label Text(string value, int size = 17) { var label = new Label { Text = value, AutowrapMode = TextServer.AutowrapMode.WordSmart }; label.AddThemeFontSizeOverride("font_size", size); label.AddThemeColorOverride("font_color", new Color(.12f, .11f, .09f)); _newBody.AddChild(label); return label; }
         Texture2D? AttributeIcon(int index)
@@ -854,7 +685,7 @@ public partial class InfoPanel : Control
                  ("学习效率", human is null ? "—" : human.get_learning_rate().ToString("0.00") + "/小时", -1), ("修炼效率", human is null ? "—" : human.get_cultivation_rate().ToString("0.000") + "/小时", -1)], 3);
             AttributeGrid("造诣",
                 [("剑道", data_number(unit, "sword_proficiency").ToString("0.0"), -1), ("刀道", data_number(unit, "blade_proficiency").ToString("0.0"), -1),
-                 ("枪道", data_number(unit, "spear_proficiency").ToString("0.0"), -1), ("体修", data_number(unit, "body_proficiency").ToString("0.0"), -1),
+                 ("枪道", data_number(unit, "spear_proficiency").ToString("0.0"), -1), ("体道", data_number(unit, "body_proficiency").ToString("0.0"), -1),
                  ("术法", data_number(unit, "magic_proficiency").ToString("0.0"), -1), ("器道", data_number(unit, "forging_proficiency").ToString("0.0"), -1),
                  ("符道", data_number(unit, "talisman_proficiency").ToString("0.0"), -1), ("阵道", data_number(unit, "formation_proficiency").ToString("0.0"), -1),
                  ("丹道", data_number(unit, "alchemy_proficiency").ToString("0.0"), -1)], 3);
@@ -862,8 +693,7 @@ public partial class InfoPanel : Control
         else if (page == 2) Text("战斗界面暂未开放。");
         else if (page == 3 && human is not null) Text($"主修：{human.main_gongfa?.gongfa_name ?? "尚未设置"}\n辅修：{(human.sub_gongfa_list.Count == 0 ? "暂无" : string.Join("、", human.sub_gongfa_list.Select(g => g.gongfa_name)))}");
         else if (page == 4) Text(human is null || human.pack_items.Count == 0 ? "随身物资：暂无" : $"随身物资\n{string.Join("\n", human.pack_items)}");
-        else if (page == 5) Text(human is null ? "尚未确定主要侧重。" : $"当前主要侧重：{human.get_dao_bearing_name()}\n更换主修可改变侧重，其他修行进度会保留。");
-        else if (page == 6) Text("亲缘、声望与往来会在家族发展中逐步记录。 ");
+        else if (page == 5) Text("亲缘、声望与往来会在家族发展中逐步记录。 ");
     }
 
     /// <summary>装备页将常规穿戴和法宝构筑分开：四件穿戴直接给属性，法宝独占槽位与灵识容量。</summary>
@@ -987,168 +817,6 @@ public partial class InfoPanel : Control
             DrawLine(new Vector2(center, 248), new Vector2(33, 370), ink, 3); DrawLine(new Vector2(center, 248), new Vector2(Size.X - 33, 370), ink, 3);
             foreach (var point in new[] { new Vector2(center, 80), new Vector2(center, 145), new Vector2(center, 210), new Vector2(center, 278) }) DrawCircle(point, 4, new Color(.30f, .25f, .16f, .60f));
         }
-    }
-
-    private static StyleBoxFlat DaoNodeStyle(bool active, bool available) => new()
-    {
-        BgColor = Colors.Transparent,
-        BorderWidthLeft = 0, BorderWidthTop = 0, BorderWidthRight = 0, BorderWidthBottom = 0,
-        ContentMarginLeft = 8, ContentMarginRight = 8, ContentMarginTop = 6, ContentMarginBottom = 6
-    };
-
-    /// <summary>道承节点在运行时按当前路线生成，场景只保留画布与详情框架。</summary>
-    private void populate_static_dao_page(Character? human)
-    {
-        if (_staticDaoPage is null) return;
-        var canvas = _staticDaoPage.GetNodeOrNull<Control>("Workspace/GraphViewport/TreeCanvas");
-        if (canvas is null || human is null || !human.has_dao_bearing()) { _staticDaoPage.Hide(); return; }
-
-        human.refresh_dao_bearing_nodes();
-        var title = _staticDaoPage.GetNodeOrNull<Label>("Title");
-        var subtitle = _staticDaoPage.GetNodeOrNull<Label>("Subtitle");
-        if (title is not null) title.Text = $"修行侧重 · {human.get_dao_bearing_name()}";
-        if (subtitle is not null) subtitle.Text = "当前主修偏向的节点网；淬体、行炁参悟与蕴神观想均可在各自页面独立推进。";
-
-        foreach (var child in canvas.GetChildren())
-        {
-            var name = child.Name.ToString();
-            if (name.StartsWith("DaoRuntime", StringComparison.Ordinal)) child.Free();
-            else if (child is CanvasItem visual) visual.Visible = false;
-        }
-        canvas.Scale = Vector2.One;
-        canvas.Position = Vector2.Zero;
-        var definitions = human.get_dao_bearing_nodes();
-        var root = definitions.FirstOrDefault(node => node.IsRoot) ?? definitions.FirstOrDefault();
-        if (root is null) return;
-
-        var canvasWidth = canvas.Size.X > 20 ? canvas.Size.X : 820f;
-        var graphWidth = Mathf.Max(500f, canvasWidth - 330f);
-        var nodeSize = new Vector2(180, 180);
-        var positions = new Dictionary<string, Vector2> { [root.Id] = new Vector2(graphWidth * .5f - nodeSize.X * .5f, 72) };
-        var branches = definitions.Where(node => node.Id != root.Id).ToList();
-        var columns = Math.Max(1, Math.Min(3, branches.Count));
-        var gap = 24f;
-        var rowWidth = columns * nodeSize.X + (columns - 1) * gap;
-        for (var i = 0; i < branches.Count; i++)
-        {
-            var column = i % columns;
-            var row = i / columns;
-            positions[branches[i].Id] = new Vector2(Mathf.Max(16f, graphWidth * .5f - rowWidth * .5f) + column * (nodeSize.X + gap), 318 + row * 174);
-        }
-
-        foreach (var node in definitions)
-        {
-            foreach (var prerequisite in node.PrerequisiteIds)
-            {
-                if (!positions.TryGetValue(prerequisite, out var from) || !positions.TryGetValue(node.Id, out var to)) continue;
-                add_dao_runtime_edge(canvas, from + new Vector2(nodeSize.X * .5f, nodeSize.Y), to + new Vector2(nodeSize.X * .5f, 0), human.is_dao_node_unlocked(node.Id));
-            }
-        }
-        foreach (var node in definitions)
-        {
-            if (!positions.TryGetValue(node.Id, out var position)) continue;
-            var button = create_dao_runtime_node(human, node, nodeSize);
-            button.Position = position;
-            canvas.AddChild(button);
-        }
-
-        if (string.IsNullOrEmpty(_daoSelectedNodeId) || definitions.All(node => node.Id != _daoSelectedNodeId)) _daoSelectedNodeId = root.Id;
-        var selected = definitions.FirstOrDefault(node => node.Id == _daoSelectedNodeId) ?? root;
-        set_static_dao_detail(selected, human);
-    }
-
-    private void bind_static_dao_controls()
-    {
-        if (_staticDaoPage is null) return;
-        var viewport = _staticDaoPage.GetNodeOrNull<Control>("Workspace/GraphViewport");
-        var canvas = viewport?.GetNodeOrNull<Control>("TreeCanvas");
-        if (viewport is null || canvas is null) return;
-        var workspace = _staticDaoPage.GetNodeOrNull<Container>("Workspace");
-        var detail = _staticDaoPage.GetNodeOrNull<Control>("Workspace/Detail");
-        if (workspace is not null && detail is not null) { workspace.MoveChild(detail, 0); detail.ZIndex = 20; detail.MouseFilter = MouseFilterEnum.Stop; }
-        viewport.GetNodeOrNull<Button>("ZoomOut")?.Hide();
-        viewport.GetNodeOrNull<Label>("ZoomValue")?.Hide();
-        viewport.GetNodeOrNull<Button>("ZoomIn")?.Hide();
-        canvas.MouseFilter = MouseFilterEnum.Ignore;
-    }
-
-    private static void add_dao_runtime_edge(Control canvas, Vector2 from, Vector2 to, bool active)
-    {
-        var line = new Line2D { Name = $"DaoRuntimeEdge_{canvas.GetChildCount()}", Width = active ? 4f : 3f, DefaultColor = active ? new Color(.53f, .36f, .13f, .88f) : new Color(.33f, .31f, .26f, .48f), ZIndex = -2, Antialiased = true };
-        line.AddPoint(from); line.AddPoint(to); canvas.AddChild(line);
-    }
-
-    private Button create_dao_runtime_node(Character human, DaoBearingNodeDefinition node, Vector2 size)
-    {
-        var unlocked = human.is_dao_node_unlocked(node.Id);
-        var available = human.is_dao_node_available(node.Id);
-        var status = get_dao_node_state(human, node);
-        var button = new Button
-        {
-            Name = $"DaoRuntimeNode_{node.Id}",
-            Text = $"{node.Name}\n{node.Subtitle}\n{status}",
-            Size = size,
-            Flat = true,
-            TooltipText = $"{node.Name}\n{node.Description}\n\n{node.RewardSummary}",
-        };
-        button.AddThemeFontSizeOverride("font_size", 17);
-        button.AddThemeColorOverride("font_color", unlocked ? new Color(.13f, .22f, .16f) : node.IsPlanned ? new Color(.29f, .28f, .24f, .82f) : available ? new Color(.38f, .24f, .08f) : new Color(.31f, .30f, .26f, .78f));
-        button.AddThemeStyleboxOverride("normal", DaoNodeStyle(unlocked, available));
-        button.AddThemeStyleboxOverride("hover", DaoNodeStyle(true, true));
-        var plaque = new TextureRect
-        {
-            Name = "Plaque",
-            Texture = GD.Load<Texture2D>("res://textures/ui/dao_node_plaque_v1.png"),
-            MouseFilter = MouseFilterEnum.Ignore,
-            ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
-            StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
-            ShowBehindParent = true,
-            Modulate = unlocked ? new Color(.72f, .90f, .78f, .96f) : node.IsPlanned ? new Color(.66f, .67f, .63f, .70f) : available ? new Color(.92f, .78f, .45f, .95f) : new Color(.58f, .60f, .56f, .72f),
-        };
-        plaque.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        button.AddChild(plaque);
-        button.Pressed += () => { _daoSelectedNodeId = node.Id; set_static_dao_detail(node, human); };
-        return button;
-    }
-
-    private static string get_dao_node_state(Character human, DaoBearingNodeDefinition node)
-    {
-        if (node.IsPlanned) return "待定";
-        if (human.is_dao_node_unlocked(node.Id)) return "已解锁";
-        if (human.is_dao_node_available(node.Id)) return "属性满足";
-        return "属性未达标";
-    }
-
-    private static string dao_attribute_name(string key) => key switch
-    {
-        "physique" => "体魄",
-        "intelligence" => "灵慧",
-        "agility" => "敏捷",
-        "soul" => "神魂",
-        "fortune" => "福缘",
-        "comprehension" => "悟性",
-        "body_proficiency" => "体道造诣",
-        "magic_proficiency" => "术法造诣",
-        _ => key,
-    };
-
-    private static string get_dao_node_requirement_text(DaoBearingNodeDefinition node)
-    {
-        var text = node.IsRoot ? "解锁条件：已确定当前主要侧重" : "属性条件：";
-        if (!node.IsRoot && node.RequiredAttributes.Count == 0) text += "待定";
-        else if (!node.IsRoot) text += string.Join("、", node.RequiredAttributes.Select(item => $"{dao_attribute_name(item.Key)}≥{item.Value:0.#}"));
-        if (node.PrerequisiteIds.Count > 0) text += "\n前置节点：全部解锁";
-        return text;
-    }
-
-    private void set_static_dao_detail(DaoBearingNodeDefinition node, Character human)
-    {
-        if (_staticDaoPage is null) return;
-        var title = _staticDaoPage.GetNodeOrNull<Label>("Workspace/Detail/Box/DetailTitle");
-        var body = _staticDaoPage.GetNodeOrNull<Label>("Workspace/Detail/Box/DetailBody");
-        if (title is null || body is null) return;
-        title.Text = node.Name;
-        body.Text = $"状态：{get_dao_node_state(human, node)}\n\n{node.Description}\n\n获得：\n{node.RewardSummary}\n\n{get_dao_node_requirement_text(node)}\n\n主动技能奖励只进入可装配技能池，不会自动占用即时战斗技能槽。";
     }
 
     private void update_new_tab_selection(int selected)
@@ -1459,7 +1127,7 @@ public partial class InfoPanel : Control
             var tempering = new List<string>();
             foreach (Variant key in chapter.combat_tempering_bonuses.Keys)
                 tempering.Add(gongfa_tempering_preview(key.AsString(), chapter.combat_tempering_bonuses[key].AsSingle()));
-            if (tempering.Count == 0) return ["无淬炼加成"];
+            if (tempering.Count == 0) return ["无修持加成"];
             return tempering.Take(2).ToList();
         }
 
@@ -1487,9 +1155,9 @@ public partial class InfoPanel : Control
     private static string gongfa_branch_tooltip(GongfaChapterConfig chapter, bool left, bool isMain, GodotObject owner)
     {
         var lines = left
-            ? new List<string> { "淬炼（仅战斗内）", "战斗属性：" }.Concat(gongfa_tempering_lines(chapter)).ToList()
+            ? new List<string> { "修持（仅战斗内）", "战斗属性：" }.Concat(gongfa_tempering_lines(chapter)).ToList()
             : chapter.get_deck_rewrites(isMain).Where(item => item.enabled).Select(item => gongfa_rewrite_detail(item, isMain, owner)).ToList();
-        return lines.Count > 0 ? string.Join("\n", lines) : left ? "淬炼（仅战斗内）\n无" : "化法\n无";
+        return lines.Count > 0 ? string.Join("\n", lines) : left ? "修持（仅战斗内）\n无" : "化法\n无";
     }
 
     private void update_gongfa_heart_method_display(Character human, GongfaResource? main, GongfaResource? sub)
@@ -1501,18 +1169,10 @@ public partial class InfoPanel : Control
         {
             var skill = book?.get_heart_method_skill(isMain);
             if (book is null || skill is null) return;
-            var description = skill.description.Trim();
-            var firstSentenceEnd = description.IndexOf('。');
-            if (firstSentenceEnd >= 0 && description[..(firstSentenceEnd + 1)].Contains("心法由当前", StringComparison.Ordinal))
-                description = description[(firstSentenceEnd + 1)..].Trim();
-            const string mainExtraMarker = "主修额外追加：";
-            var mainExtraIndex = description.IndexOf(mainExtraMarker, StringComparison.Ordinal);
-            if (mainExtraIndex >= 0)
-            {
-                var baseEffect = description[..mainExtraIndex].Trim();
-                var mainExtra = description[(mainExtraIndex + mainExtraMarker.Length)..].Trim();
-                description = isMain && mainExtra.Length > 0 ? $"{baseEffect}\n主修追加：{mainExtra}" : baseEffect;
-            }
+            var learnedOrder = book.get_sorted_chapters()
+                .Where(chapter => human.is_gongfa_chapter_learned(book, chapter.get_id()))
+                .Select(chapter => chapter.order).DefaultIfEmpty(0).Max();
+            var description = book.get_heart_method_description(learnedOrder, isMain);
             var keywords = skill.tags.Count > 0 ? $"关键词：{string.Join("、", skill.tags)}\n" : "";
             entries.Add($"[b]{(isMain ? "主修" : "辅修")}《{book.gongfa_name}》 · {skill.skill_name}[/b]\n{keywords}{description}");
         }
@@ -1549,10 +1209,13 @@ public partial class InfoPanel : Control
             var chapter = chapters[i];
             var learned = human.is_gongfa_chapter_learned(_viewedGongfa!, chapter.get_id());
             layer.SetMeta("gongfa_learned", learned);
-            var leftName = string.IsNullOrWhiteSpace(chapter.left_branch_name) ? "纳气" : chapter.left_branch_name;
+            var leftName = string.IsNullOrWhiteSpace(chapter.left_branch_name) ? "修持" : chapter.left_branch_name;
             var rightName = string.IsNullOrWhiteSpace(chapter.right_branch_name) ? "化法" : chapter.right_branch_name;
             layer.Text = $"第{chinese_volume_number(chapter.order)}卷\n{chapter.chapter_name}";
-            layer.TooltipText = $"《{_viewedGongfa!.gongfa_name}》第{chapter.order}卷 · {chapter.chapter_name}";
+            var worldSpellNames = chapter.learned_world_spells.OfType<WorldSpellData>()
+                .Select(spell => spell.spell_name).Where(name => !string.IsNullOrWhiteSpace(name)).ToList();
+            layer.TooltipText = $"《{_viewedGongfa!.gongfa_name}》第{chapter.order}卷 · {chapter.chapter_name}" +
+                (worldSpellNames.Count > 0 ? $"\n大世界术法：{string.Join("、", worldSpellNames)}" : "");
             var route = human.get_sub_gongfa_chapter_route(_viewedGongfa!, chapter.get_id());
             var leftPreview = gongfa_branch_preview(chapter, true, !_viewingSubGongfa, human);
             var rightPreview = gongfa_branch_preview(chapter, false, !_viewingSubGongfa, human);
@@ -1681,6 +1344,22 @@ public partial class InfoPanel : Control
     private void bind_static_battle_controls()
     {
         if (_staticBattlePage is null) return;
+        // 旧卡组展示是过渡布局，人物战斗页只保留技能库、10 个固定槽与单项详情。
+        _staticBattlePage.GetNodeOrNull<Control>("Columns")?.Hide();
+        _staticBattlePage.GetNodeOrNull<Control>("DeckOverview")?.Hide();
+        var workspace = _staticBattlePage.GetNodeOrNull<HBoxContainer>("Workspace");
+        if (workspace is not null) workspace.AddThemeConstantOverride("separation", 12);
+        var library = workspace?.GetNodeOrNull<PanelContainer>("Library");
+        if (library is not null) library.CustomMinimumSize = new Vector2(270, 0);
+        var loadout = workspace?.GetNodeOrNull<PanelContainer>("Loadout");
+        if (loadout is not null) loadout.CustomMinimumSize = new Vector2(610, 0);
+        var detail = workspace?.GetNodeOrNull<PanelContainer>("DetailPanel");
+        if (detail is not null) detail.CustomMinimumSize = new Vector2(270, 0);
+        if (_staticBattlePage.GetNodeOrNull<GridContainer>("Workspace/Loadout/Box/SlotScroll/SlotGrid") is { } slotGrid)
+        {
+            slotGrid.Columns = 5;
+            slotGrid.CustomMinimumSize = Vector2.Zero;
+        }
         foreach (var (node, filter) in new[] { ("All", "all"), ("Attack", "attack"), ("Technique", "technique"), ("Defense", "defense") })
         {
             var button = _staticBattlePage.GetNodeOrNull<Button>($"Workspace/Library/Box/Kinds/{node}");
@@ -1905,7 +1584,7 @@ public partial class InfoPanel : Control
         ContentMarginLeft = 3, ContentMarginRight = 3, ContentMarginTop = 3, ContentMarginBottom = 3
     };
 
-    private static string battle_attribute_name(string name) => name switch { "physique" => "体魄", "agility" => "敏捷", "intelligence" => "灵慧", "soul" => "神魂", "comprehension" => "悟性", "body_proficiency" => "体修造诣", "magic_proficiency" => "术法造诣", "sword_proficiency" => "剑道造诣", "talisman_proficiency" => "符道造诣", "cultivation_rate" => "修炼效率", "mind_regen_rate" => "神识恢复", "mana_regen_rate" => "法力恢复", "physical_damage" => "物理伤害", "max_health" => "生命上限", "max_qi_blood" => "气血上限", "blood_furnace_value_cap" => "血炉上限", "physical_defense" => "物理防御", "precision" => "精准", "dodge" => "身法", "critical" => "会心", "crit_resist" => "护心", "crit_damage_mult" => "会心伤害", "initiative_speed" => "速度", _ => name };
+    private static string battle_attribute_name(string name) => name switch { "physique" => "体魄", "agility" => "敏捷", "intelligence" => "灵慧", "soul" => "神魂", "comprehension" => "悟性", "body_proficiency" => "体道造诣", "magic_proficiency" => "术法造诣", "sword_proficiency" => "剑道造诣", "talisman_proficiency" => "符道造诣", "cultivation_rate" => "修炼效率", "mind_regen_rate" => "神识恢复", "mana_regen_rate" => "法力恢复", "physical_damage" => "物理伤害", "max_health" => "生命上限", "max_qi_blood" => "气血上限", "blood_furnace_value_cap" => "血炉上限", "physical_defense" => "物理防御", "precision" => "精准", "dodge" => "身法", "critical" => "会心", "crit_resist" => "护心", "crit_damage_mult" => "会心伤害", "initiative_speed" => "速度", _ => name };
 
     private static string gongfa_chapter_name(GongfaResource? book, string chapterId)
     {
@@ -1949,7 +1628,14 @@ public partial class InfoPanel : Control
             var learned = chapters.Count(chapter => human.is_gongfa_chapter_learned(_viewedGongfa, chapter.get_id()));
             detailTitle.Text = $"《{_viewedGongfa.gongfa_name}》";
             detailState.Text = $"{(_viewingSubGongfa ? "辅修" : "主修")}　已研读 {learned}/{chapters.Count} 卷";
-            detailText.Text = _viewedGongfa.description.Length > 0 ? _viewedGongfa.description : "每卷对应本功法的一层传承。主修可同时启用两支；辅修可随时切换每层已研读的一支。";
+            var worldSpellSummary = chapters.SelectMany(chapter => chapter.learned_world_spells.OfType<WorldSpellData>()
+                .Select(spell => $"{spell.get_icon_bbcode(42)} 第{chinese_volume_number(chapter.order)}卷 · {spell.spell_name} · {(human.is_gongfa_chapter_learned(_viewedGongfa, chapter.get_id()) ? "已解锁" : "学会本卷后解锁")}"))
+                .ToList();
+            var overview = _viewedGongfa.description.Length > 0 ? _viewedGongfa.description : "每卷对应本功法的一层传承。主修可同时启用两支；辅修可随时切换每层已研读的一支。";
+            detailText.BbcodeEnabled = true;
+            detailText.Text = overview + (worldSpellSummary.Count > 0
+                ? $"\n\n[b]本功法的大世界术法[/b]\n{string.Join("\n", worldSpellSummary)}\n点击对应卷章可查看完整效果。"
+                : "");
         }
         update_gongfa_tree_selection_detail(human, detailTitle, detailState, detailText);
 
@@ -1960,6 +1646,13 @@ public partial class InfoPanel : Control
 
     /// <summary>功法页当前不含研读位；研读操作统一在静室等地点完成。</summary>
     private void refresh_gongfa_live_study_state(Character human) { }
+
+    private static string gongfa_chapter_world_spell_details(GongfaChapterConfig chapter, bool chapter_learned)
+    {
+        var spells = chapter.learned_world_spells.OfType<WorldSpellData>().ToList();
+        if (spells.Count == 0) return "";
+        return $"[b]本卷大世界术法[/b]\n{string.Join("\n\n", spells.Select(spell => spell.get_manual_detail_text(chapter_learned)))}";
+    }
 
     private void update_gongfa_tree_selection_detail(Character human, Label title, Label state, RichTextLabel text)
     {
@@ -1975,11 +1668,6 @@ public partial class InfoPanel : Control
             title.Text = $"第{chinese_volume_number(chapter.order)}卷 · {chapter.chapter_name}";
             state.Text = learned ? "本卷已研读 · 可查看两条分支" : "本卷尚未研读 · 查看解锁条件";
             var requirements = new List<string>();
-            if (chapter.allowed_bearings.Count > 0)
-            {
-                var expected = string.Join(" / ", chapter.allowed_bearings.Select(b => b switch { 0 => "未定", 1 => "锻躯", 2 => "行炁", 3 => "蕴神", _ => "未知" }));
-                requirements.Add($"修行倾向：{expected}（仅作风格提示，不限制研读）");
-            }
             if (_viewedGongfa.wuxing != GongfaResource.Wuxing.NONE)
             {
                 var root = _viewedGongfa.wuxing.ToString().Replace("_", "、");
@@ -2002,9 +1690,13 @@ public partial class InfoPanel : Control
                 requirements.Add($"[color={(met ? "#2f6f3a" : "#9b3027")}]{gongfa_chapter_name(_viewedGongfa, prerequisite)}：{(met ? "已研读 ✓" : "未研读 ✕")}[/color]");
             }
             if (requirements.Count == 0) requirements.Add("[color=#2f6f3a]无额外条件[/color]");
-            var learnedSkills = chapter.get_learned_skills(isMain).OfType<ActiveSkillData>().Select(skill => $"《{skill.skill_name}》 · {CardPresentation.Face(skill, human)}");
-            var permanent = chapter.learn_permanent_bonuses.Keys.Select(key => $"{battle_attribute_name(key.AsString())} +{chapter.learn_permanent_bonuses[key]}");
-            text.Text = $"[b]解锁条件[/b]\n{string.Join("\n", requirements)}\n\n[b]学会永久属性[/b]\n{(permanent.Any() ? string.Join("\n", permanent) : "无")}\n\n[b]本卷习得技能[/b]\n{(learnedSkills.Any() ? string.Join("\n", learnedSkills) : "无新增技能")}\n\n{chapter.description}";
+            var learnedSkills = chapter.get_learned_skills(isMain).OfType<ActiveSkillData>().Select(skill => $"《{skill.skill_name}》 · {CardPresentation.Face(skill, human)}").ToList();
+            var permanent = chapter.learn_permanent_bonuses.Keys.Select(key => $"{battle_attribute_name(key.AsString())} +{chapter.learn_permanent_bonuses[key]}").ToList();
+            var heartVersion = _viewedGongfa.get_heart_method_description(chapter.order, isMain);
+            var heartDetails = string.IsNullOrWhiteSpace(heartVersion) ? "" : $"\n\n[b]本卷心法[/b]\n{heartVersion}";
+            var worldSpellDetails = gongfa_chapter_world_spell_details(chapter, learned);
+            text.Text = $"[b]解锁条件[/b]\n{string.Join("\n", requirements)}\n\n[b]学会永久属性[/b]\n{(permanent.Count > 0 ? string.Join("\n", permanent) : "无")}\n\n[b]本卷习得技能[/b]\n{(learnedSkills.Count > 0 ? string.Join("\n", learnedSkills) : "无新增技能")}" +
+                heartDetails + (worldSpellDetails.Length > 0 ? $"\n\n{worldSpellDetails}" : "") + $"\n\n{chapter.description}";
             return;
         }
         var left = _gongfaSelectedBranch == "left"; var branchName = left ? chapter.left_branch_name : chapter.right_branch_name;
@@ -2019,7 +1711,9 @@ public partial class InfoPanel : Control
         else foreach (var rewrite in chapter.get_deck_rewrites(isMain).Where(item => item.enabled))
             benefits.Add(gongfa_rewrite_detail(rewrite, isMain, human));
         if (benefits.Count == 0) benefits.Add("无");
-        text.Text = $"[b]{(left ? "淬炼属性（仅战斗内）" : "化法效果")}[/b]\n{string.Join("\n", benefits)}\n\n{chapter.description}";
+        var branchWorldSpellDetails = gongfa_chapter_world_spell_details(chapter, learned);
+        text.Text = $"[b]{(left ? "修持属性（仅战斗内）" : "化法效果")}[/b]\n{string.Join("\n", benefits)}" +
+            (branchWorldSpellDetails.Length > 0 ? $"\n\n{branchWorldSpellDetails}" : "") + $"\n\n{chapter.description}";
         if (_gongfaBranchActivate is not null)
         {
             _gongfaBranchActivate.Visible = true;
@@ -2086,10 +1780,10 @@ public partial class InfoPanel : Control
         Row("CriticalRow", "会心", unit.critical.ToString()); Row("CritResistRow", "护心", unit.crit_resist.ToString()); Row("CritDamageRow", "会心伤害", unit.crit_damage_mult.ToString("0.00"));
         Row("StaminaRegenRow", "物理减伤", $"{unit.physical_damage_reduction*100:0.#}%"); Row("ManaRegenRow", "遁速", human?.dun_speed.ToString("0.#") ?? "未配置");
         Row("MetalRootRow", "金灵根", Root(0).ToString()); Row("WoodRootRow", "木灵根", Root(1).ToString()); Row("WaterRootRow", "水灵根", Root(2).ToString()); Row("FireRootRow", "火灵根", Root(3).ToString()); Row("EarthRootRow", "土灵根", Root(4).ToString());
-        Row("SpiritRootRow", "灵根", human?.spirit_root_name ?? "未详"); Row("RealmRow", "境界", unit.cultivation_realm + (unit is Creature creature && creature.get_current_realm_attribute_increment() > 0 ? $"（本层境界倍率 +{creature.get_current_realm_attribute_increment() * 100:0}%）" : "")); Row("StrandsRow", "灵力", $"{unit.spirit_strands} 缕");
+        Row("SpiritRootRow", "灵根", human?.spirit_root_name ?? "未详"); Row("RealmRow", "境界", unit.cultivation_realm); Row("StrandsRow", "灵力", $"{unit.spirit_strands} 缕");
         Row("CoreRow", "灵核", human?.get_spirit_core_summary() ?? "—"); Row("LearningRow", "学习效率", human is null ? "—" : human.get_learning_rate().ToString("0.00") + "/小时"); Row("CultivationRow", "修炼效率", human is null ? "—" : human.get_cultivation_rate().ToString("0.000") + "/小时");
         Row("SwordRow", "剑道", data_number(unit, "sword_proficiency").ToString("0.0")); Row("BladeRow", "刀道", data_number(unit, "blade_proficiency").ToString("0.0")); Row("SpearRow", "枪道", data_number(unit, "spear_proficiency").ToString("0.0"));
-        Row("BodyRow", "体修", data_number(unit, "body_proficiency").ToString("0.0")); Row("MagicRow", "术法", data_number(unit, "magic_proficiency").ToString("0.0")); Row("ForgingRow", "器道", data_number(unit, "forging_proficiency").ToString("0.0"));
+        Row("BodyRow", "体道", data_number(unit, "body_proficiency").ToString("0.0")); Row("MagicRow", "术法", data_number(unit, "magic_proficiency").ToString("0.0")); Row("ForgingRow", "器道", data_number(unit, "forging_proficiency").ToString("0.0"));
         Row("TalismanRow", "符道", data_number(unit, "talisman_proficiency").ToString("0.0")); Row("FormationRow", "阵道", data_number(unit, "formation_proficiency").ToString("0.0")); Row("AlchemyRow", "丹道", data_number(unit, "alchemy_proficiency").ToString("0.0"));
         bind_static_attribute_tooltips(unit, human, rootData);
     }
@@ -2142,11 +1836,11 @@ public partial class InfoPanel : Control
         Base("SpiritRootRow", "灵根", "角色是否具备引灵入道的资质，以及灵根构成的概述。", $"当前灵根：{human?.spirit_root_name ?? "未详"}\n无灵根角色不能进行常规修炼。");
         Base("RealmRow", "境界", "当前修行阶段，决定突破门槛与可用内容。", $"当前境界：{unit.cultivation_realm}\n突破需满足对应的灵力、属性与功法条件。");
         Base("StrandsRow", "灵力", "修行积累的根基，达到要求后可尝试突破。", $"当前灵力：{unit.spirit_strands} 缕\n增长由修炼效率、环境和功法适配共同决定。");
-        Base("CoreRow", "灵核", "云息六层至七层凝成的统一修行根基，不区分锻躯、行炁或蕴神。", $"当前灵核：{human?.get_spirit_core_summary() ?? "未凝"}\n体积、密度与杂质由凝核牌局结算；玄基仍在后续独立突破。");
+        Base("CoreRow", "灵核", "云息六层至七层凝成的统一修行根基。", $"当前灵核：{human?.get_spirit_core_summary() ?? "未凝"}\n体积、密度与杂质由凝核牌局结算；玄基仍在后续独立突破。");
         Base("LearningRow", "学习效率", "影响秘籍研读的推进速度；不受灵根和环境灵气影响。", $"学习效率 = max(0.01, 0.55 + 悟性×0.030 + 神魂×0.012 + 灵慧×0.015)\n当前：{(human?.get_learning_rate() ?? 0):0.00}/小时");
         Base("CultivationRow", "修炼效率", "影响灵力积累速度；灵根、环境与主修功法缺一不可。", $"修炼效率 = 0.0020 × 境界倍率 × 灵根倍率 × 环境系数\n灵根倍率 = 灵根资质 × 功法五行匹配\n灵石、阵法与机缘均提高环境灵气浓度\n当前：{(human?.get_cultivation_rate() ?? 0):0.000}/小时");
 
-        foreach (var (row, name) in new[] { ("SwordRow", "剑道"), ("BladeRow", "刀道"), ("SpearRow", "枪道"), ("BodyRow", "体修"), ("MagicRow", "术法"), ("ForgingRow", "器道"), ("TalismanRow", "符道"), ("FormationRow", "阵道"), ("AlchemyRow", "丹道") })
+        foreach (var (row, name) in new[] { ("SwordRow", "剑道"), ("BladeRow", "刀道"), ("SpearRow", "枪道"), ("BodyRow", "体道"), ("MagicRow", "术法"), ("ForgingRow", "器道"), ("TalismanRow", "符道"), ("FormationRow", "阵道"), ("AlchemyRow", "丹道") })
             Base(row, name, $"{name}造诣影响相关技艺、配方与战斗手段的掌握。", $"当前{name}造诣 = 基础造诣 + 功法/装备/技艺修正\n当前值：{data_number(unit, row switch { "SwordRow" => "sword_proficiency", "BladeRow" => "blade_proficiency", "SpearRow" => "spear_proficiency", "BodyRow" => "body_proficiency", "MagicRow" => "magic_proficiency", "ForgingRow" => "forging_proficiency", "TalismanRow" => "talisman_proficiency", "FormationRow" => "formation_proficiency", _ => "alchemy_proficiency" }):0.0}");
     }
 
@@ -2191,9 +1885,9 @@ public partial class InfoPanel : Control
                 foreach (var child in bar.GetChildren().ToArray()) { bar.RemoveChild(child); nav.AddChild(child); if (child is Control control) { control.CustomMinimumSize = new Vector2(242, 48); control.SizeFlagsHorizontal = SizeFlags.ExpandFill; } }
                 bar.Hide();
             }
-            foreach (var page in new[] { _profilePage, _gongfaPage, _equipPage, _daoPage, _relationsPage }) if (page is not null) { page.OffsetTop = 0; page.OffsetBottom = 0; page.SetAnchorsPreset(LayoutPreset.FullRect); }
+            foreach (var page in new[] { _profilePage, _gongfaPage, _equipPage, _relationsPage }) if (page is not null) { page.OffsetTop = 0; page.OffsetBottom = 0; page.SetAnchorsPreset(LayoutPreset.FullRect); }
         }
-        var tabNames = new[] { "总览", "属性", "功法", "装备", "侧重", "关系" }; for (var i = 0; i < _tabButtons.Length; i++) if (_tabButtons[i] is not null) _tabButtons[i].Text = tabNames[i];
+        var tabNames = new[] { "总览", "属性", "功法", "装备", "关系" }; for (var i = 0; i < tabNames.Length; i++) if (_tabButtons[i] is not null) _tabButtons[i].Text = tabNames[i];
         build_fullscreen_sidebars();
     }
 
@@ -2308,7 +2002,6 @@ public partial class InfoPanel : Control
     private static StyleBoxFlat gongfa_card_style() => new() { BgColor = new Color(.87f, .83f, .71f, .38f), BorderColor = new Color(.42f, .34f, .22f, .6f), BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1, CornerRadiusTopLeft = 5, CornerRadiusTopRight = 5, CornerRadiusBottomLeft = 5, CornerRadiusBottomRight = 5, ContentMarginLeft = 10, ContentMarginRight = 10, ContentMarginTop = 6, ContentMarginBottom = 6 };
 
     private void populate_equip(Character? human) => set_label("PackTitle", human is null || human.pack_items.Count == 0 ? "随身物资：暂无" : $"随身物资：{human.pack_items.Count} 类");
-    private void populate_dao(Character? human) => set_label("CurrentBearing", human is null ? "尚未确定侧重" : $"当前主要侧重：{human.get_dao_bearing_name()}");
     private void populate_relations() => set_label("EmptyRelations", "亲缘、声望与往来会在家族发展中逐步记录。");
 
     private void populate_attribute_values(Creature unit)
@@ -2360,7 +2053,7 @@ public partial class InfoPanel : Control
         attribute("CritResValue", "护心抵消敌方会心与关键伤害的基础能力。", $"护心 = 3 × 体魄 + 2 × 灵慧 + 2 × 敏捷 + 1.5 × 神魂\n当前护心：{unit.crit_resist}");
         attribute("PhyDefValue", "物理防御减轻武器、拳脚等物理伤害。", "当前物理防御 = 基础防御 + 装备 + 功法 + 状态修正");
         attribute("SpiritStrandsValue", "灵力是修行积累的根基，达到要求后可尝试突破。", "当前灵力 = 已完成的修行积累；修炼日程与环境共同决定增长速度。");
-        proficiency("SwordValue", "剑道"); proficiency("BladeValue", "刀道"); proficiency("SpearValue", "枪道"); proficiency("BodyValue", "体修"); proficiency("MagicValue", "术法");
+        proficiency("SwordValue", "剑道"); proficiency("BladeValue", "刀道"); proficiency("SpearValue", "枪道"); proficiency("BodyValue", "体道"); proficiency("MagicValue", "术法");
         proficiency("ForgingValue", "器道"); proficiency("TalismanValue", "符道"); proficiency("FormationValue", "阵道"); proficiency("AlchemyValue", "丹道");
     }
 

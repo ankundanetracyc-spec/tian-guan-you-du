@@ -50,14 +50,18 @@ chapter_name = "承机"
 description = "承敌之机，令化解成为借力入口。"
 order = 1
 required_study_progress = 24.0
-required_attributes = {"physique": 5.0, "body_proficiency": 4.0}
-allowed_bearings = Array[int]([0, 1])
+required_attributes = {"physique": 5.0, "agility": 5.0}
 learn_permanent_bonuses = {"physique": 0.5, "body_proficiency": 0.5}
 learned_active_skills = Array[Resource]([ExtResource("4_chengji")])
-left_branch_name = "淬炼"
+left_branch_name = "修持"
 right_branch_name = "化法"
 sub_deck_rewrites = Array[ExtResource("7_rewrite")]([SubResource("RewriteMissing12")])
-combat_tempering_bonuses = {"max_health_flat": 30.0}
+combat_tempering_bonuses = {"max_health_percent": 15}
+heart_method_description = "效果：累计以化解实际抵消的敌方物理伤害，每满4点获得借力1层；不足部分留至本场后续应对。\n主修额外效果：上述借力转化门槛降低1点。"
+
+
+learn_bonus_revision = "study-balance-20261012"
+previous_learn_permanent_bonuses = {"physique": 0.5, "body_proficiency": 0.5}
 
 [sub_resource type="Resource" id="ChapterXieShi"]
 script = ExtResource("2_chapter")
@@ -67,32 +71,42 @@ description = "借势而不竭势，保留层数给后续收束。"
 order = 2
 required_study_progress = 48.0
 required_realm = "云息三层"
-required_attributes = {"physique": 6.0, "body_proficiency": 6.0}
+required_attributes = {"physique": 6.0, "agility": 7.0, "body_proficiency": 0.5}
 required_chapter_ids = Array[String](["cheng_ji"])
-allowed_bearings = Array[int]([1])
 learn_permanent_bonuses = {"agility": 0.5, "body_proficiency": 0.5}
 learned_active_skills = Array[Resource]([ExtResource("5_xieshi")])
-left_branch_name = "淬炼"
+left_branch_name = "修持"
 right_branch_name = "化法"
 sub_deck_rewrites = Array[ExtResource("7_rewrite")]([SubResource("RewriteMissing13")])
-combat_tempering_bonuses = {"max_health_flat": 20.0, "defuse_gain_layers": 1.0}
+combat_tempering_bonuses = {"defuse_gain_layers": 1}
+heart_method_description = "效果：累计以化解实际抵消的敌方物理伤害，每满4点获得借力1层；不足部分留至本场后续应对。\n主修额外效果：上述借力转化门槛降低1点。"
+
+
+learn_bonus_revision = "study-balance-20261012"
+previous_learn_permanent_bonuses = {"agility": 0.5, "body_proficiency": 0.5}
 
 [sub_resource type="Resource" id="ChapterYingWu"]
 script = ExtResource("2_chapter")
 chapter_id = "ying_wu"
 chapter_name = "应物"
 description = "使基础卸力也承接敌势，稳定积蓄借力。"
+heart_method_upgrade_id = "yinfu_c3"
+heart_method_upgrade_description = "心法累计抵消伤害的借力转化门槛再降低1点；辅修每满3点、主修每满2点获得借力1层。"
 order = 3
 required_study_progress = 84.0
 required_realm = "云息六层"
-required_attributes = {"physique": 8.0, "body_proficiency": 7.0}
+required_attributes = {"physique": 8.0, "agility": 8.0, "body_proficiency": 1}
 required_chapter_ids = Array[String](["xie_shi"])
-allowed_bearings = Array[int]([1])
-learn_permanent_bonuses = {"physique": 0.5}
-left_branch_name = "淬炼"
+learn_permanent_bonuses = {"physique": 0.5, "body_proficiency": 1}
+left_branch_name = "修持"
 right_branch_name = "化法"
-combat_tempering_bonuses = {"physical_damage_percent": 3.0}
+combat_tempering_bonuses = {"max_health_percent": 10, "physical_damage_percent": 4}
 sub_deck_rewrites = Array[ExtResource("7_rewrite")]([SubResource("RewriteXieLi")])
+heart_method_description = "效果：累计以化解实际抵消的敌方物理伤害，每满3点获得借力1层；不足部分留至本场后续应对。\n主修额外效果：上述借力转化门槛降低1点。"
+
+
+learn_bonus_revision = "study-balance-20261012"
+previous_learn_permanent_bonuses = {"physique": 0.5}
 
 [sub_resource type="Resource" id="ChapterHeJin"]
 script = ExtResource("2_chapter")
@@ -102,29 +116,32 @@ description = "合众势为一击，完成借力体系的终结反制。"
 order = 4
 required_study_progress = 128.0
 required_realm = "云息九层"
-required_attributes = {"physique": 10.0, "body_proficiency": 9.0}
+required_attributes = {"physique": 9.0, "agility": 10.0, "body_proficiency": 2}
 required_chapter_ids = Array[String](["ying_wu"])
-allowed_bearings = Array[int]([1])
-learn_permanent_bonuses = {"body_proficiency": 1.0}
+learn_permanent_bonuses = {"body_proficiency": 1}
 learned_active_skills = Array[Resource]([ExtResource("6_hejin")])
-left_branch_name = "淬炼"
+left_branch_name = "修持"
 right_branch_name = "化法"
 sub_deck_rewrites = Array[ExtResource("7_rewrite")]([SubResource("RewriteMissing14")])
-combat_tempering_bonuses = {"physical_damage_percent": 3.0, "borrowed_force_damage_pp_per_stack": 1.0}
+combat_tempering_bonuses = {"borrowed_force_damage_pp_per_stack": 1, "physical_damage_percent": 6}
+heart_method_description = "效果：累计以化解实际抵消的敌方物理伤害，每满3点获得借力1层；不足部分留至本场后续应对。\n主修额外效果：上述借力转化门槛降低1点。"
+
+
+learn_bonus_revision = "study-balance-20261012"
+previous_learn_permanent_bonuses = {"body_proficiency": 1.0}
 
 [resource]
 script = ExtResource("1_gongfa")
 gongfa_name = "阴符应物经"
-description = "锻躯主修法。以应对技能抵消当前物理伤害，将敌势转为借力后收束反制。"
+description = "以应对技能抵消当前物理伤害，将敌势转为借力后收束反制。"
 wuxing = 0
 can_be_main = true
 can_be_sub = true
-bearing_compatibility = Array[int]([1])
-school_tags = Array[String](["body"])
+school_tags = Array[String](["cloud_breath"])
 body_nourish_rate_per_day = 0.8
 body_nourish_weights = {"skin": 0.30, "sinew": 0.15, "bone": 0.25, "blood": 0.05, "viscera": 0.15, "heart": 0.10}
 main_realm_start = "凡人"
-main_realm_end = "云息十三层"
+main_realm_end = "云息十层"
 heart_method_skill = ExtResource("3_heart")
 default_unlocked_chapter_count = 1
 chapters = Array[ExtResource("2_chapter")]([SubResource("ChapterChengJi"), SubResource("ChapterXieShi"), SubResource("ChapterYingWu"), SubResource("ChapterHeJin")])

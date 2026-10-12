@@ -14,7 +14,7 @@ public static class BattleActionResolver
         // 神魂伤害直指神魂：不进入闪避与会心判定，仅由双方神魂差参与伤害结算。
         var isSoulDamage = damageType is "soul" or "spiritual";
         if (!isSoulDamage && roll_evasion(attacker, defender, extra_evasion)) return new(true, false, 0, 0);
-        var extraCrit=Engine.GetMainLoop() is SceneTree critTree && critTree.GetFirstNodeInGroup("battle_mgr") is BattleManager critManager?critManager.body_cards.SettlingMomentum(attacker,skill):0;
+        var extraCrit=Engine.GetMainLoop() is SceneTree critTree && critTree.GetFirstNodeInGroup("battle_mgr") is BattleManager critManager?critManager.gongfa_combat.SettlingMomentum(attacker,skill):0;
         var critical = !isSoulDamage && roll_crit(attacker, defender,extraCrit);
         var damage = preview_damage(attacker,skill);
         if (critical) damage *= calc_crit_multiplier(attacker, defender);
@@ -33,7 +33,7 @@ public static class BattleActionResolver
         if(!GodotObject.IsInstanceValid(attacker))return damage;
         var damageType=skill.damage_type;
         if(Engine.GetMainLoop() is SceneTree tree && tree.GetFirstNodeInGroup("battle_mgr") is BattleManager manager)
-            damage*=manager.body_cards.DamageMultiplier(attacker,skill);
+            damage*=manager.gongfa_combat.DamageMultiplier(attacker,skill);
         if (damageType == "physical" && attacker.HasMethod("get_blood_furnace_physical_damage_multiplier"))
             damage *= 1.0f + attacker.Call("get_blood_furnace_physical_damage_multiplier").AsSingle();
         if (damageType == "physical" && attacker.HasMethod("get_gongfa_physical_damage_multiplier"))

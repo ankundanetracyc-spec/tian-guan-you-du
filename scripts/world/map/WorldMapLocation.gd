@@ -103,9 +103,6 @@ func set_population(count: int) -> void:
 func set_player_present(present: bool) -> void:
 	player_marker.visible = present
 
-func _process(_delta: float) -> void:
-	_update_visuals()
-
 func _update_visuals() -> void:
 	if map_camera == null:
 		return

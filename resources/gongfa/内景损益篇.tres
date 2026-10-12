@@ -1,13 +1,15 @@
 [gd_resource type="Resource" script_class="GongfaResource" format=3]
 [ext_resource type="Script" path="res://csharp/gongfa/GongfaResource.cs" id="1"]
 [ext_resource type="Script" path="res://csharp/gongfa/GongfaChapterConfig.cs" id="2"]
+[ext_resource type="Resource" path="res://resources/world_spells/观照山河.tres" id="world_spell_neijing"]
 [ext_resource type="Resource" path="res://resources/activeskills/内景损益篇/内景损益.tres" id="3"]
 [ext_resource type="Resource" path="res://resources/activeskills/内景损益篇/淬厉.tres" id="4"]
+[ext_resource type="Resource" path="res://resources/activeskills/内景损益篇/百骸.tres" id="5_baihai"]
 [ext_resource type="Script" path="res://csharp/gongfa/GongfaDeckRewriteConfig.cs" id="6_rewrite"]
 [ext_resource type="Resource" path="res://resources/activeskills/内景损益篇/化法/卸力.tres" id="7_huafa_xieli"]
 [ext_resource type="Resource" path="res://resources/activeskills/内景损益篇/化法/淬厉.tres" id="huafaMissing6"]
 [ext_resource type="Resource" path="res://resources/activeskills/内景损益篇/化法/发劲.tres" id="huafaMissing7"]
-[ext_resource type="Resource" path="res://resources/activeskills/内景损益篇/化法/撼山.tres" id="huafaMissing8"]
+[ext_resource type="Resource" path="res://resources/activeskills/内景损益篇/化法/痛击.tres" id="huafaMissing8"]
 
 [sub_resource type="Resource" id="RewriteMissing6"]
 script = ExtResource("6_rewrite")
@@ -30,7 +32,7 @@ script = ExtResource("6_rewrite")
 mode = 1
 count = 1
 target_scope = 0
-source_skill_name = "撼山"
+source_skill_name = "痛击"
 result_skill = ExtResource("huafaMissing8")
 
 [sub_resource type="Resource" id="RewriteXieLi"]
@@ -43,69 +45,94 @@ result_skill=ExtResource("7_huafa_xieli")
 script=ExtResource("2")
 chapter_id="neijing"
 chapter_name="内景"
-description="读取当前内伤与外伤层数，强化锻躯攻伐，并提高物理承伤能力。"
+description="读取当前内伤与外伤层数，强化主动技能的物理攻伐，并提高物理承伤能力。"
 order=1
-combat_tempering_bonuses = {"max_health_flat": 35.0, "wound_physical_reduction_pp_per_stack": 0.5}
+combat_tempering_bonuses = {"max_health_percent": 15, "wound_physical_reduction_pp_per_stack": 0.5}
 required_study_progress=24.0
-required_attributes={"physique":5.0,"body_proficiency":4.0}
-allowed_bearings=Array[int]([0,1])
-learn_permanent_bonuses={"physique":1.0}
+required_attributes = {"physique": 6.0}
+learn_permanent_bonuses = {"physique": 1.0, "body_proficiency": 0.5}
 learned_active_skills=Array[Resource]([ExtResource("4")])
+learned_world_spells=Array[Resource]([ExtResource("world_spell_neijing")])
 sub_deck_rewrites = Array[ExtResource("6_rewrite")]([SubResource("RewriteMissing6")])
+heart_method_description = "效果：每层当前内伤或外伤，使自身主动物理伤害倍率提高3%。\n主修额外效果：每层伤势提供的上述伤害倍率再提高1个百分点。"
+
+
+learn_bonus_revision = "study-balance-20261012"
+previous_learn_permanent_bonuses = {"physique": 1.0}
+
 [sub_resource type="Resource" id="b"]
 script=ExtResource("2")
 chapter_id="lubo"
 chapter_name="履薄"
 description="在受创中持续积累外伤状态。"
 order=2
-combat_tempering_bonuses = {"physical_damage_percent": 3.0}
+combat_tempering_bonuses = {"physical_damage_percent": 4}
 sub_deck_rewrites = Array[ExtResource("6_rewrite")]([SubResource("RewriteXieLi")])
+heart_method_upgrade_id = "neijing_c2"
+heart_method_upgrade_description = "每回合首次受到实际生命伤害后，获得外伤1层。"
 required_study_progress=48.0
 required_realm="云息三层"
-required_attributes={"physique":7.0,"body_proficiency":5.0}
+required_attributes = {"physique": 7.0, "body_proficiency": 0.5}
 required_chapter_ids=Array[String](["neijing"])
-allowed_bearings=Array[int]([1])
-learn_permanent_bonuses={"body_proficiency":0.5}
+learn_permanent_bonuses = {"body_proficiency": 0.5}
+heart_method_description = "效果：每层当前内伤或外伤，使自身主动物理伤害倍率提高3%。 每回合首次受到实际生命伤害后，获得外伤1层。\n主修额外效果：每层伤势提供的上述伤害倍率再提高1个百分点。"
+
+
+learn_bonus_revision = "study-balance-20261012"
+previous_learn_permanent_bonuses = {"body_proficiency": 0.5}
+
 [sub_resource type="Resource" id="c"]
 script=ExtResource("2")
 chapter_id="sunyi"
 chapter_name="损益"
-description="统一读取现有内伤与外伤层数，不拆分新的伤势资源；淬炼使伤势同时转为物理承伤收益。"
+description="统一读取现有内伤与外伤层数，不拆分新的伤势资源；修持使伤势同时转为物理承伤收益。"
 order=3
-combat_tempering_bonuses = {"max_health_flat": 20.0, "wound_physical_reduction_pp_per_stack": 0.5}
+combat_tempering_bonuses = {"max_health_percent": 10, "wound_physical_reduction_pp_per_stack": 0.5}
 sub_deck_rewrites = Array[ExtResource("6_rewrite")]([SubResource("RewriteMissing7")])
+heart_method_upgrade_id = "neijing_c3"
+heart_method_upgrade_description = "每层伤势使主动物理伤害倍率额外提高1个百分点；主修再提高1个百分点。"
 required_study_progress=84.0
 required_realm="云息六层"
-required_attributes={"physique":8.0,"body_proficiency":7.0}
+required_attributes = {"physique": 9.0, "body_proficiency": 1}
 required_chapter_ids=Array[String](["lubo"])
-allowed_bearings=Array[int]([1])
-learn_permanent_bonuses={"physique":0.5}
+learn_permanent_bonuses = {"physique": 0.5, "body_proficiency": 1}
+heart_method_description = "效果：每层当前内伤或外伤，使自身主动物理伤害倍率提高4%。 每回合首次受到实际生命伤害后，获得外伤1层。\n主修额外效果：每层伤势提供的上述伤害倍率再提高1个百分点。"
+
+
+learn_bonus_revision = "study-balance-20261012"
+previous_learn_permanent_bonuses = {"physique": 0.5}
+
 [sub_resource type="Resource" id="d"]
 script=ExtResource("2")
 chapter_id="baihai"
 chapter_name="百骸"
 description="按当前内伤与外伤层数追加段数的多段攻伐。"
 order=4
-combat_tempering_bonuses = {"physical_damage_percent": 6.0}
+combat_tempering_bonuses = {"physical_damage_percent": 6}
 sub_deck_rewrites = Array[ExtResource("6_rewrite")]([SubResource("RewriteMissing8")])
+learned_active_skills=Array[Resource]([ExtResource("5_baihai")])
 required_study_progress=128.0
 required_realm="云息九层"
-required_attributes={"physique":10.0,"body_proficiency":9.0}
+required_attributes = {"physique": 10.0, "body_proficiency": 2}
 required_chapter_ids=Array[String](["sunyi"])
-allowed_bearings=Array[int]([1])
-learn_permanent_bonuses={"body_proficiency":1.0}
+learn_permanent_bonuses = {"body_proficiency": 1}
+heart_method_description = "效果：每层当前内伤或外伤，使自身主动物理伤害倍率提高4%。 每回合首次受到实际生命伤害后，获得外伤1层。\n主修额外效果：每层伤势提供的上述伤害倍率再提高1个百分点。"
+
+
+learn_bonus_revision = "study-balance-20261012"
+previous_learn_permanent_bonuses = {"body_proficiency": 1.0}
+
 [resource]
 script=ExtResource("1")
 gongfa_name="内景损益篇"
-description="读取当前内外伤层数，把伤势转为锻躯攻伐与承受物理冲击的收益。"
+description="读取当前内外伤层数，把伤势转为主动技能物理攻伐与承受物理冲击的收益。"
 wuxing=0
 can_be_main=true
 can_be_sub=true
-bearing_compatibility=Array[int]([1])
-school_tags=Array[String](["body"])
+school_tags=Array[String](["cloud_breath"])
 body_nourish_rate_per_day=0.8
 body_nourish_weights={"skin":0.10,"sinew":0.05,"bone":0.10,"blood":0.15,"viscera":0.35,"heart":0.25}
 main_realm_start="凡人"
-main_realm_end="云息十三层"
+main_realm_end="云息十层"
 heart_method_skill=ExtResource("3")
 chapters=Array[Resource]([SubResource("a"),SubResource("b"),SubResource("c"),SubResource("d")])

@@ -8,6 +8,9 @@
 script = ExtResource("1")
 species_id = "forest_wolf"
 display_name = "林地凶狼"
+cultivation_realm = "通智"
+cultivation_stage = "初期"
+battle_portrait_path = "res://textures/characters/forest_wolf_spine_rig_v6/source/wolf_assembled_portrait.png"
 physique_min = 4.2
 physique_mean = 5.1
 physique_max = 6.3

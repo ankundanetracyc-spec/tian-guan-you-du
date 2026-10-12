@@ -1,4 +1,4 @@
-﻿using Godot;
+using Godot;
 
 /// <summary>屏幕空间血条、状态与头顶应对牌；位置跟随角色。</summary>
 public partial class BattleUnitOverlay : CanvasLayer
@@ -194,7 +194,7 @@ public partial class BattleUnitOverlay : CanvasLayer
                 .Where(s=>s.effect is not null&&!IsInternalStatusBadge(s.effect.effect_id))
                 .Select(s=>(id:s.effect!.effect_id,name:s.effect.name.Length>0?s.effect.name:s.effect.effect_id,count:s.stacks,tip:s.effect.description,bad:s.effect.is_debuff,instance:s)).ToList();
             if(unit.shield>0)entries.Add(("护盾","护盾",unit.shield,"优先抵扣伤害。",false,null!));
-            if(unit.qi_blood>0)entries.Add(("气血","气血",unit.qi_blood,"当前体修气血资源。",false,null!));
+            if(unit.qi_blood>0)entries.Add(("气血","气血",unit.qi_blood,"公共战斗气血层数。",false,null!));
             if(unit.blood_furnace_value>0)
             {
                 var bonus=unit.blood_furnace_value/2;

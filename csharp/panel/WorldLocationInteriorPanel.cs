@@ -31,6 +31,8 @@ public partial class WorldLocationInteriorPanel : Control
     private readonly HashSet<string> _east_woods_visited = ["forest_edge"];
     private readonly HashSet<string> _east_woods_inspected = [];
     private string _selected_subscene_id = "";
+    public bool is_npc_in_current_space(WorldNpcData npc) => Visible && _node?.node_id == npc.current_node_id &&
+        (string.IsNullOrEmpty(_selected_subscene_id) || npc.current_subscene_id == _selected_subscene_id);
     private string _east_woods_current = "forest_edge";
 
     public override void _Ready()

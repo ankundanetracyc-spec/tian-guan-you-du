@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>大世界术法交互原型 v5</title>
+  <style>
+    :root { color-scheme: light; --ink:#302e28; --muted:#777263; --paper:#f2ecdccc; --edge:#8f846d; --jade:#526c5d; --red:#a65343; }
+    * { box-sizing:border-box; }
+    html,body { margin:0; min-height:100%; background:#d3cebf; color:var(--ink); font-family:"Microsoft YaHei","Noto Sans CJK SC",sans-serif; }
+    body { padding:20px; }
+    .wrap { width:min(100%,1672px); margin:0 auto; }
+    .caption { margin:0 0 10px 4px; color:#48463f; font-size:14px; letter-spacing:.04em; }
+    .screen { position:relative; width:100%; aspect-ratio:1672/941; overflow:hidden; border:1px solid #887e68; border-radius:7px; background:#e7dfca; box-shadow:0 16px 46px #342f2426; isolation:isolate; }
+    .map { position:absolute; inset:0; overflow:hidden; background-image:url("../../textures/world_map/bai_chuan/natural_scenery_20261009_v2/installed_start_region_preview.png"); background-repeat:no-repeat; background-size:auto 505%; background-position:center 52%; }
+    .map-shade { position:absolute; inset:0; background:linear-gradient(90deg,#f2ead020,#f2ead000 50%,#f2ead018); pointer-events:none; }
+    .time-card { position:absolute; left:18px; top:16px; width:354px; min-height:112px; padding:15px 20px; display:flex; align-items:center; justify-content:space-between; color:#f2ebd6; background:#17211fe8; border:1px solid #947d4f; border-radius:8px; box-shadow:0 3px 12px #28241926; }
+    .time-title { font-family:serif; font-size:21px; letter-spacing:.08em; }
+    .time-value { margin-top:8px; color:#ded5bd; font-size:14px; }
+    .sun { color:#d5b56e; font-size:30px; }
+    .map-title { position:absolute; left:24px; top:140px; display:flex; align-items:center; gap:16px; }
+    .back { min-height:42px; padding:0 18px; color:#34332d; background:#f2ecdcef; border:1px solid #8b8069; border-radius:6px; font-size:15px; }
+    .move-hint { color:#49463c; font-size:14px; text-shadow:0 1px #f5eedb; }
+    .keys { display:inline-flex; gap:4px; margin:0 8px; vertical-align:middle; }
+    .keys span { display:grid; place-items:center; width:27px; height:27px; background:#f4eedf; border:1px solid #8d826c; border-radius:4px; font-size:12px; }
+    .toolbar { position:absolute; z-index:6; right:22px; top:20px; display:flex; align-items:center; gap:7px; }
+    .tool { display:grid; place-items:center; min-width:44px; height:42px; padding:0 12px; color:#39372f; background:#f3eedfcc; border:1px solid #968b73; border-radius:6px; font-size:14px; box-shadow:0 2px 6px #3b342414; cursor:pointer; }
+    .tool.zoom { min-width:42px; font-size:19px; }
+    .tool.spell { min-width:88px; font-size:16px; }
+    .tool.spell:hover,.tool:hover { background:#fff9e8; }
+    .active-mark { display:none; position:absolute; top:-9px; right:-8px; padding:4px 6px; color:#435c51; background:#e2e8d9; border:1px solid #899783; border-radius:12px; font-size:10px; white-space:nowrap; }
+    .active-mark.visible { display:inline-block; }
+    .left-card { position:absolute; left:26px; top:225px; width:230px; padding:14px 16px; border:1px solid #a99b7e; border-radius:8px; background:#f0ead8d9; box-shadow:0 3px 14px #544b3920; }
+    .left-card h3 { margin:0 0 10px; font-size:16px; font-weight:500; }
+    .left-card .row { display:flex; justify-content:space-between; padding:7px 0; border-top:1px solid #b9ad9566; color:#5b584d; font-size:13px; }
+    .left-card .row b { color:#39372f; font-weight:500; }
+    .status { position:absolute; left:26px; bottom:24px; width:330px; padding:13px 16px; color:#f2ebd6; background:#17211fe8; border:1px solid #947d4f; border-radius:8px; box-shadow:0 3px 14px #28241928; font-size:14px; line-height:1.8; }
+    .status strong { font-family:serif; font-size:18px; font-weight:500; }
+    .nav { position:absolute; right:24px; bottom:24px; display:flex; gap:8px; }
+    .nav span { display:grid; place-items:center; width:72px; height:74px; color:#38362f; background:#f3eedfcc; border:1px solid #988a70; border-radius:6px; font-family:serif; font-size:14px; }
+    .spell-entry { position:absolute; z-index:6; right:24px; bottom:112px; width:72px; height:74px; }
+    .nav-spell { display:grid; place-items:center; width:100%; height:100%; color:#38362f; background:#f3eedfcc; border:1px solid #988a70; border-radius:6px; font-family:serif; font-size:14px; cursor:pointer; }
+    .nav-spell:hover,.nav-spell:focus-visible { background:#fff9e8; outline:2px solid #71857466; }
+    .marker { position:absolute; display:grid; place-items:center; width:90px; height:90px; color:#47463d; font-size:13px; text-align:center; text-shadow:0 1px #f6f0df; }
+    .marker::before { content:""; position:absolute; inset:12px; border:1px solid #6f756588; border-radius:50%; box-shadow:inset 0 0 15px #66736418; }
+    .marker small { display:block; margin-top:3px; color:#777263; font-size:11px; }
+    .marker.town { left:58%; top:31%; }
+    .marker.current { left:40%; top:48%; color:#8f493c; }
+    .marker.current::before { border:2px solid #a65343a6; box-shadow:0 0 0 5px #a6534317; }
+    .route { position:absolute; left:45%; top:54%; width:17%; border-top:3px dotted #9c604dba; transform:rotate(-15deg); transform-origin:left; }
+    .selection { position:absolute; left:27%; bottom:30px; width:410px; padding:12px 15px; border:1px solid #a99b7e; border-radius:7px; background:#f0ead9ed; box-shadow:0 3px 14px #544b3920; }
+    .selection small { color:#777263; font-size:11px; letter-spacing:.09em; }
+    .selection h3 { margin:3px 0 8px; font-size:15px; font-weight:500; }
+    .selection .mini { display:flex; justify-content:space-between; color:#696456; font-size:12px; }
+    .selection b { color:#39372f; font-weight:500; }
+    .panel { position:absolute; z-index:5; right:24px; bottom:194px; width:min(410px,42vw); max-height:min(480px,calc(100% - 230px)); overflow:visible; padding:16px 16px 14px; border:1px solid #91856d; border-radius:8px; background:rgba(246,241,226,.97); box-shadow:0 8px 26px #302b2028; opacity:0; transform:translateY(8px); pointer-events:none; transition:opacity .16s,transform .16s; }
+    .panel::after { content:""; position:absolute; right:24px; bottom:-8px; width:14px; height:14px; background:#f6f1e2; border-right:1px solid #91856d; border-bottom:1px solid #91856d; transform:rotate(45deg); }
+    .panel.open { opacity:1; transform:translateY(0); pointer-events:auto; }
+    .panel-head { display:flex; justify-content:space-between; align-items:flex-start; padding-bottom:12px; border-bottom:1px solid #b6aa9066; }
+    .panel-head h2 { margin:0; font-family:serif; font-size:22px; font-weight:500; letter-spacing:.06em; }
+    .panel-head p { margin:5px 0 0; color:var(--muted); font-size:12px; }
+    .close { border:0; background:transparent; color:#686253; font-size:24px; line-height:1; cursor:pointer; }
+    .spell-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(76px,1fr)); gap:8px; margin-top:13px; }
+    .spell-card { min-width:0; min-height:82px; padding:7px 4px 6px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; color:#38362f; border:1px solid #b09d76; border-radius:6px; background:#eee5d0; cursor:pointer; }
+    .spell-card:hover,.spell-card:focus-visible { border-color:#718574; background:#f5edd8; outline:none; box-shadow:0 0 0 2px #71857424; }
+    .spell-card.active { border-color:#637a65; background:#e8ead8; }
+    .spell-icon { width:42px; height:42px; display:grid; place-items:center; border:1px solid #9b8a68; border-radius:50%; color:#455c4e; background:#f7f0df; font-family:serif; font-size:21px; }
+    .spell-name { max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-family:serif; font-size:12px; font-weight:500; }
+    .spell-state { display:none; color:#617359; font-size:10px; white-space:nowrap; }
+    .spell-card.active .spell-state { display:block; }
+    .spell-tooltip { position:absolute; z-index:9; width:min(350px,calc(100% - 24px)); max-height:calc(100% - 24px); overflow:auto; padding:12px; color:#f1ead7; background:rgba(6,8,7,.97); border:1px solid #b79a5c; border-radius:6px; box-shadow:0 8px 24px #19150f66; opacity:0; pointer-events:none; transform:translateY(3px); transition:opacity .12s,transform .12s; }
+    .spell-tooltip.visible { opacity:1; pointer-events:auto; transform:translateY(0); }
+    .tooltip-head { display:flex; align-items:center; gap:10px; padding-bottom:9px; border-bottom:1px solid #b79a5c70; }
+    .tooltip-icon { flex:0 0 54px; width:54px; height:54px; display:grid; place-items:center; border:1px solid #b79a5c; border-radius:5px; color:#ead9ad; background:#17201c; font-family:serif; font-size:24px; }
+    .tooltip-title { color:#f1dfad; font-family:serif; font-size:20px; }
+    .tooltip-meta { margin-top:4px; color:#c8bd9d; font-size:12px; line-height:1.45; }
+    .tooltip-section { margin:9px 0 4px; color:#e6c77e; font-size:13px; }
+    .tooltip-body { color:#f1ead7; font-size:13px; line-height:1.6; }
+    .tooltip-route { margin-top:8px; padding-top:7px; border-top:1px solid #b79a5c70; color:#e0d4b4; font-size:12px; line-height:1.55; }
+    .hint { margin:11px 1px 0; color:#777263; font-size:11px; line-height:1.5; }
+    .travel-status { display:none; position:absolute; z-index:3; top:88px; left:50%; transform:translateX(-50%); padding:10px 16px; border:1px solid #928262; border-radius:18px; background:#f2ead5ed; box-shadow:0 3px 12px #39322620; color:#4c493e; font-size:12px; white-space:nowrap; }
+    .travel-status.visible { display:block; }
+    .travel-status b { color:#435c51; font-weight:500; }
+    .toast { position:absolute; z-index:8; left:50%; bottom:24px; transform:translate(-50%,20px); opacity:0; padding:10px 16px; border:1px solid #8f8062; border-radius:6px; background:#f4eedf; color:#464238; font-size:13px; transition:.2s; pointer-events:none; }
+    .toast.visible { opacity:1; transform:translate(-50%,0); }
+    @media(max-width:900px) {
+      body { padding:8px; }
+      .screen { min-height:650px; aspect-ratio:auto; }
+      .time-card { width:280px; min-height:88px; padding:11px 14px; }
+      .time-title { font-size:18px; }
+      .map-title { top:118px; }
+      .left-card { display:none; }
+      .toolbar { right:10px; top:10px; gap:4px; }
+      .tool { min-width:36px; height:38px; padding:0 8px; }
+      .tool.spell { min-width:64px; }
+      .panel { right:12px; bottom:126px; width:min(410px,calc(100% - 24px)); max-height:calc(100% - 150px); }
+      .selection { left:12px; right:12px; bottom:116px; width:auto; }
+      .status { left:12px; bottom:12px; width:220px; font-size:12px; }
+      .nav { right:12px; bottom:12px; gap:4px; }
+      .nav span { width:40px; height:48px; font-size:10px; }
+      .spell-entry { right:12px; bottom:68px; width:40px; height:48px; }
+      .nav-spell { font-size:10px; }
+      .travel-status { top:108px; font-size:11px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <p class="caption">大世界术法入口 · 交互原型 v5（底图与 HUD 参照当前方格地图；路线数字为示例）</p>
+    <section class="screen" aria-label="百川方格世界地图术法交互原型">
+      <div class="map">
+        <div class="map-shade"></div>
+        <div class="time-card"><div><div class="time-title">百川历</div><div class="time-value">三年 · 七月十五日　巳时</div></div><span class="sun">☼</span></div>
+        <div class="map-title"><button class="back">返回地图</button><div class="move-hint"><span class="keys"><span>W</span><span>A</span><span>S</span><span>D</span></span>移动地图</div></div>
+        <div class="toolbar">
+          <button class="tool zoom">−</button><button class="tool">100%</button><button class="tool zoom">＋</button><button class="tool">格线：显</button>
+        </div>
+        <div class="left-card"><h3>当前行旅</h3><div class="row"><span>所在区域</span><b>百川中部</b></div><div class="row"><span>已发现地点</span><b>12 处</b></div><div class="row"><span>行旅状态</span><b id="travel-label">停驻</b></div></div>
+        <div class="marker town">白石镇<small>聚集地</small></div>
+        <div class="marker current">当前位置<small>第 52 格</small></div>
+        <div class="route" id="route"></div>
+        <div class="selection"><small>已选目的地</small><h3>白石镇　·　已发现路线</h3><div class="mini"><span>距离 <b>240 公里</b>　6 格</span><span>普通行旅 <b>6 日</b></span></div></div>
+        <div class="status"><strong>云行客　·　云水境</strong><br>生命　72 / 100<br>体力　<span id="stamina">32</span> / 100</div>
+        <nav class="nav" aria-label="常驻导航"><span>世界</span><span>角色</span><span>行囊</span><span>见闻</span><span>信件</span><span>百工</span><span>修行</span><span>境界</span></nav>
+        <div class="spell-entry">
+          <button class="nav-spell" id="spell-tab" aria-label="术法" aria-expanded="false" aria-controls="spell-panel">术法</button>
+          <span class="active-mark" id="active-mark">行遁中</span>
+        </div>
+      </div>
+      <aside class="panel" id="spell-panel" aria-label="已掌握的术法">
+        <header class="panel-head"><div><h2>已掌握的术法</h2><p>当前场景可用 · 1 种</p></div><button class="close" id="close-panel" aria-label="关闭术法列表">×</button></header>
+        <div class="spell-grid" aria-label="已掌握术法网格">
+          <button class="spell-card" id="spell-card" type="button" aria-label="游骸行遁，点击开启或关闭"><span class="spell-icon">骸</span><span class="spell-name">游骸行遁</span><span class="spell-state" id="spell-state">生效中</span></button>
+        </div>
+        <p class="hint">持续术法：点击术法项开启，再次点击关闭。一次性术法：点击术法项直接使用。</p>
+      </aside>
+      <aside class="spell-tooltip" id="spell-tooltip" aria-label="游骸行遁信息栏">
+        <div class="tooltip-head"><span class="tooltip-icon">骸</span><div><div class="tooltip-title">游骸行遁</div><div class="tooltip-meta">遁行 · 持续施展<br>《乘物游骸真经》· 第一卷「游骸」</div></div></div>
+        <div class="tooltip-section">术法详情</div>
+        <div class="tooltip-body">开启后，行旅遁速提高至原来的 1.5 倍；每跨入一格消耗 1 点大世界体力。地形耗时修正、逐格揭雾与旅途事件照常结算。</div>
+        <div class="tooltip-route">当前路线：6 格 · 240 公里<br>普通行旅 6 日　·　开启后 4 日<br>预计消耗 6 点体力</div>
+      </aside>
+      <div class="travel-status" id="travel-status"><b>游骸行遁中</b>　已行 <span id="tiles-done">0</span> / 6 格　·　已耗 <span id="spent">0</span> 体力　·　预计剩余 4 日</div>
+      <div class="toast" id="toast"></div>
+    </section>
+  </main>
+  <script>
+    const panel = document.getElementById('spell-panel');
+    const tab = document.getElementById('spell-tab');
+    const card = document.getElementById('spell-card');
+    const tooltip = document.getElementById('spell-tooltip');
+    const screen = document.querySelector('.screen');
+    const toast = document.getElementById('toast');
+    let traveling = false;
+    let stopRequested = false;
+    let traveled = 0;
+    let stamina = 32;
+    let travelTimer = null;
+    let tooltipHideTimer = null;
+    function hideSpellTooltip() {
+      window.clearTimeout(tooltipHideTimer);
+      tooltip.classList.remove('visible');
+    }
+    function positionSpellTooltip() {
+      const screenRect = screen.getBoundingClientRect();
+      const cardRect = card.getBoundingClientRect();
+      const tooltipRect = tooltip.getBoundingClientRect();
+      let x = cardRect.left - screenRect.left - tooltipRect.width - 12;
+      if (x < 12) x = cardRect.right - screenRect.left + 12;
+      let y = cardRect.top - screenRect.top;
+      if (y + tooltipRect.height > screenRect.height - 12) y = screenRect.height - tooltipRect.height - 12;
+      y = Math.max(12, y);
+      tooltip.style.left = x + 'px';
+      tooltip.style.top = y + 'px';
+    }
+    function showSpellTooltip() {
+      window.clearTimeout(tooltipHideTimer);
+      tooltip.classList.add('visible');
+      window.requestAnimationFrame(positionSpellTooltip);
+    }
+    function scheduleTooltipHide() {
+      window.clearTimeout(tooltipHideTimer);
+      tooltipHideTimer = window.setTimeout(() => {
+        if (!card.matches(':hover') && !tooltip.matches(':hover')) hideSpellTooltip();
+      }, 120);
+    }
+    function setPanel(open) {
+      panel.classList.toggle('open', open);
+      tab.setAttribute('aria-expanded', String(open));
+      if (!open) hideSpellTooltip();
+    }
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('visible');
+      window.setTimeout(() => toast.classList.remove('visible'), 1900);
+    }
+    function syncResources() {
+      document.getElementById('stamina').textContent = stamina;
+      document.getElementById('tiles-done').textContent = traveled;
+      document.getElementById('spent').textContent = traveled;
+    }
+    function finishTravel(message) {
+      traveling = false;
+      stopRequested = false;
+      window.clearInterval(travelTimer);
+      travelTimer = null;
+      document.getElementById('active-mark').classList.remove('visible');
+      document.getElementById('travel-label').textContent = '停驻';
+      document.getElementById('travel-status').classList.remove('visible');
+      card.classList.remove('active');
+      document.getElementById('spell-state').textContent = '';
+      showToast(message);
+    }
+    tab.addEventListener('click', () => setPanel(!panel.classList.contains('open')));
+    document.getElementById('close-panel').addEventListener('click', () => setPanel(false));
+    card.addEventListener('pointerenter', showSpellTooltip);
+    card.addEventListener('pointerleave', scheduleTooltipHide);
+    card.addEventListener('focus', showSpellTooltip);
+    card.addEventListener('blur', scheduleTooltipHide);
+    tooltip.addEventListener('pointerenter', () => window.clearTimeout(tooltipHideTimer));
+    tooltip.addEventListener('pointerleave', scheduleTooltipHide);
+    card.addEventListener('click', () => {
+      if (traveling) {
+        stopRequested = true;
+        document.getElementById('spell-state').textContent = '关闭中';
+        showToast('已关闭游骸行遁，将在当前格结算后停止。');
+        setPanel(false);
+        return;
+      }
+      if (stamina < 1) {
+        showToast('体力不足，无法跨入第一格。');
+        return;
+      }
+      traveling = true;
+      stopRequested = false;
+      traveled = 0;
+      card.classList.add('active');
+      document.getElementById('spell-state').textContent = '生效中';
+      document.getElementById('active-mark').classList.add('visible');
+      document.getElementById('travel-label').textContent = '游骸行遁';
+      document.getElementById('travel-status').classList.add('visible');
+      syncResources();
+      setPanel(false);
+      showToast('游骸行遁已开启，开始沿当前路线逐格行进。');
+      travelTimer = window.setInterval(() => {
+        if (stamina < 1) { finishTravel('体力不足，游骸行遁已结束。'); return; }
+        stamina -= 1;
+        traveled += 1;
+        syncResources();
+        if (stopRequested) { finishTravel('游骸行遁已关闭，行程停在当前格。'); return; }
+        if (traveled >= 6) finishTravel('已抵达白石镇，游骸行遁结束。');
+      }, 1100);
+    });
+    document.addEventListener('keydown', event => { if (event.key === 'Escape') setPanel(false); });
+  </script>
+</body>
+</html>

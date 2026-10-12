@@ -51,23 +51,44 @@ public partial class WorldEntity : Area2D
     public void set_info_known_to_player(bool known) { if(entity_data is not null) entity_data.known_to_player=known; }
     public void play_death_animation()
     {
-        GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_death();
+        var paperDoll = GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll");
+        paperDoll?.play_death();
+        if(paperDoll is not null)AddToGroup("battle_action_visuals");
         InputPickable = false;
         tween?.Kill();
-        tween = CreateTween();
+        tween = CreateTween().SetPauseMode(Tween.TweenPauseMode.Stop);
         tween.SetParallel();
 
-        // Give the human death_kneel clip time to reach and hold its final
-        // pose.  Beasts keep the old short removal timing.
+        // Let Spine characters and beasts finish their death pose before fading.
         var isSpineCharacter = entity_type == EntityType.CHARACTER;
-        var fadeDelay = isSpineCharacter ? 1.08f : .1f;
-        var removeDelay = isSpineCharacter ? 1.46f : .5f;
+        var isSpineBeast = entity_type == EntityType.BEAST && paperDoll?.uses_spine_character() == true;
+        var fadeDelay = isSpineBeast ? 1.28f : isSpineCharacter ? 1.08f : .1f;
+        var removeDelay = isSpineBeast ? 1.65f : isSpineCharacter ? 1.46f : .5f;
         tween.TweenProperty(this, "modulate", Colors.Red, .1f);
+        if(paperDoll is not null)
+        {
+            CompleteBattleDeathAnimation(paperDoll,fadeDelay);
+            return;
+        }
         tween.TweenProperty(this, "scale", Vector2.Zero, .34f).SetDelay(fadeDelay);
         tween.TweenCallback(Callable.From(QueueFree)).SetDelay(removeDelay);
     }
+    private async void CompleteBattleDeathAnimation(BattlePaperDoll paperDoll,float minimumHold)
+    {
+        await ToSignal(GetTree().CreateTimer(minimumHold,processAlways:false),SceneTreeTimer.SignalName.Timeout);
+        while(IsInsideTree()&&IsInstanceValid(paperDoll)&&paperDoll.is_action_animation_playing())
+            await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);
+        if(!IsInsideTree())return;
+        tween=CreateTween().SetPauseMode(Tween.TweenPauseMode.Stop);
+        tween.TweenProperty(this,"scale",Vector2.Zero,.34f);
+        await ToSignal(tween,Tween.SignalName.Finished);
+        // 留存战斗数据供最后一击后的结算读取；场景离开时统一销毁。
+        RemoveFromGroup("battle_action_visuals");
+        Hide();
+        ProcessMode=ProcessModeEnum.Disabled;
+    }
     public PackedScene? pack_for_battle() { var scene=new PackedScene(); return scene.Pack(this)==Error.Ok ? scene : null; }
     public virtual void apply_battle_data(BattleEntityData data) { unique_id=data.uid;entity_name=data.entity_name;entity_type=(EntityType)data.entity_type;faction=data.faction;stack_count=data.stack_count;max_stack=data.max_stack;face_camera=data.face_camera;update_ui(); }
-    public virtual BattleEntityData get_snapshot_data() { var data=new BattleEntityData{uid=unique_id,entity_name=entity_name,entity_type=(int)entity_type,faction=faction,stack_count=stack_count,max_stack=max_stack,face_camera=face_camera}; if(entity_data is not null){data.battle_loot=entity_data.battle_loot.Duplicate(true);data.battle_portrait_path=entity_data.battle_portrait_path;data.appearance_seed=entity_data.appearance_seed;data.appearance_face_style=entity_data.appearance_face_style;data.appearance_hair_style=entity_data.appearance_hair_style;} return data; }
+    public virtual BattleEntityData get_snapshot_data() { var data=new BattleEntityData{uid=unique_id,entity_name=entity_name,entity_type=(int)entity_type,faction=faction,stack_count=stack_count,max_stack=max_stack,face_camera=face_camera}; if(entity_data is not null){data.portrait_data=BattlePortraitView.Capture(entity_data);data.battle_loot=entity_data.battle_loot.Duplicate(true);data.battle_portrait_path=entity_data.battle_portrait_path;data.appearance_seed=entity_data.appearance_seed;data.appearance_face_style=entity_data.appearance_face_style;data.appearance_hair_style=entity_data.appearance_hair_style;} return data; }
     private void ensure_visual_nodes() { collision_shape=GetNodeOrNull<CollisionShape2D>("CollisionShape2D")??new CollisionShape2D{Name="CollisionShape2D",Shape=new RectangleShape2D{Size=new(120,120)}}; if(collision_shape.GetParent() is null) AddChild(collision_shape); bg_rect=GetNodeOrNull<Control>("Bg")??new Control{Name="Bg",CustomMinimumSize=new(120,120),MouseFilter=Control.MouseFilterEnum.Ignore}; if(bg_rect.GetParent() is null) AddChild(bg_rect); entity_image_rect=bg_rect.GetNodeOrNull<TextureRect>("TextureRect")??new TextureRect{Name="TextureRect",ExpandMode=TextureRect.ExpandModeEnum.IgnoreSize,StretchMode=TextureRect.StretchModeEnum.KeepAspectCentered,MouseFilter=Control.MouseFilterEnum.Ignore}; if(entity_image_rect.GetParent() is null) bg_rect.AddChild(entity_image_rect); label=bg_rect.GetNodeOrNull<Label>("Label")??new Label{Name="Label",HorizontalAlignment=HorizontalAlignment.Center,VerticalAlignment=VerticalAlignment.Center,MouseFilter=Control.MouseFilterEnum.Ignore}; if(label.GetParent() is null) bg_rect.AddChild(label); }
 }

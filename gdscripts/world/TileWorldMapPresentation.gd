@@ -14,14 +14,14 @@ const INITIAL_FOCUS_CELL := Vector2i(38, 166)
 const SETTINGS_PATH := "user://world_map_settings.cfg"
 const WORLD_ANCHORS_PATH := "res://resources/world/bai_chuan/bai_chuan_grid_anchors.json"
 const UI_FONT := preload("res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf")
-const PLAYER_MARKER_TEXTURE := preload("res://textures/ui/world/player_pawn_marker_v1.png")
+const PLAYER_MARKER_TEXTURE := preload("res://textures/ui/world/player_pawn_marker_v6.tres")
 const DESTINATION_MARKER_TEXTURE := preload("res://textures/ui/world/world_map_destination_flag_ink_v1.png")
 const ROUTE_FOOTPRINT_TEXTURE := preload("res://textures/ui/world/world_map_route_cloth_shoeprint_umber_v1.svg")
 const ROUTE_FOOTPRINT_LAYER_SCRIPT := preload("res://gdscripts/world/WorldMapFootprintRoute.gd")
 const PLACEHOLDER_MARKER_TEXTURE := preload("res://textures/ui/world/world_marker_circle_ink.svg")
 const PRIMARY_MARKER_RING_TEXTURE := preload("res://textures/ui/world/world_marker_ring_ink.svg")
 const MEMORY_MARKER_TEXTURE := preload("res://textures/ui/world/world_marker_empty_ink.svg")
-const PLAYER_MARKER_DISPLAY_SIZE := Vector2i(140, 168)
+const PLAYER_MARKER_DISPLAY_HEIGHT := TILE_SIZE / 2.0
 const DESTINATION_MARKER_DISPLAY_HEIGHT := 100.0
 const DESTINATION_MARKER_POLE_X_RATIO := 0.5
 const DESTINATION_MARKER_MAX_CELL_RATIO := 0.42
@@ -142,8 +142,13 @@ func _input(event: InputEvent) -> void:
 	if not visible or not is_node_ready() or not event is InputEventMouseButton:
 		return
 	var mouse_event := event as InputEventMouseButton
-	if not mouse_event.pressed or not Rect2(Vector2.ZERO, size).has_point(get_local_mouse_position()):
+	var local_event_position: Vector2 = get_global_transform_with_canvas().affine_inverse() * mouse_event.position
+	if not mouse_event.pressed or not Rect2(Vector2.ZERO, size).has_point(local_event_position):
 		return
+	# _input precedes GUI scrolling: never steal the visible roster's wheel.
+	for roster in get_tree().get_nodes_in_group("cell_character_list"):
+		if roster.has_method("contains_roster_point") and roster.call("contains_roster_point", mouse_event.position):
+			return
 	match mouse_event.button_index:
 		MOUSE_BUTTON_WHEEL_UP:
 			_zoom_about_view_center(_user_zoom * ZOOM_STEP)
@@ -563,11 +568,10 @@ func _create_fog_layer() -> void:
 func _create_route_layer() -> void:
 	_route_footprints = ROUTE_FOOTPRINT_LAYER_SCRIPT.new() as Node2D
 	_route_footprints.name = "RouteFootprints"
-	_route_footprints.position = _terrain.position
 	_route_footprints.z_index = 110
 	_map_canvas.add_child(_route_footprints)
 	_route_footprints.call("configure", _terrain, ROUTE_FOOTPRINT_TEXTURE)
-	_route_footprints.call("set_display_zoom", _user_zoom)
+	_route_footprints.call("refresh_view")
 
 func _create_selection_marker() -> void:
 	var marker_image := DESTINATION_MARKER_TEXTURE.get_image()
@@ -590,11 +594,18 @@ func _create_selection_marker() -> void:
 
 func _create_player_marker() -> void:
 	var marker_image := PLAYER_MARKER_TEXTURE.get_image()
-	marker_image.resize(PLAYER_MARKER_DISPLAY_SIZE.x, PLAYER_MARKER_DISPLAY_SIZE.y, Image.INTERPOLATE_LANCZOS)
+	var marker_bounds := marker_image.get_used_rect()
+	if marker_bounds.size.x > 0 and marker_bounds.size.y > 0:
+		marker_image = marker_image.get_region(marker_bounds)
+	var marker_height := roundi(PLAYER_MARKER_DISPLAY_HEIGHT)
+	var marker_width := maxi(1, roundi(float(marker_image.get_width()) * PLAYER_MARKER_DISPLAY_HEIGHT / float(marker_image.get_height())))
+	marker_image.resize(marker_width, marker_height, Image.INTERPOLATE_LANCZOS)
 	_player_marker = Sprite2D.new()
 	_player_marker.name = "PlayerCellMarker"
+	_player_marker.centered = true
 	_player_marker.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	_player_marker.texture = ImageTexture.create_from_image(marker_image)
+	_player_marker.offset = Vector2(0.0, -float(marker_height) * 0.5)
 	_player_marker.z_index = 120
 	_player_marker_map_position = _terrain.position + _terrain.map_to_local(_player_cell)
 	_map_canvas.add_child(_player_marker)
@@ -720,6 +731,8 @@ func _start_travel(path: Array[Vector2i]) -> void:
 		if not is_cell_traversable(next_cell):
 			break
 		var next_position := _terrain.position + _terrain.map_to_local(next_cell)
+		if next_cell.x != _player_cell.x:
+			_player_marker.flip_h = next_cell.x < _player_cell.x
 		var next_canvas_position := _clamped_canvas_position(_view_center_local() - next_position * _user_zoom, next_position)
 		var tween := create_tween().set_parallel(true)
 		tween.tween_method(_set_player_marker_map_position, _player_marker_map_position, next_position, MOVE_ANIMATION_SECONDS).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
@@ -728,7 +741,7 @@ func _start_travel(path: Array[Vector2i]) -> void:
 		_player_cell = next_cell
 		_player_marker_map_position = next_position
 		_active_travel_next_index = index + 1
-		_advance_game_time(_base_hours_per_cell() * _terrain_travel_cost(next_cell))
+		await _advance_game_time(_base_hours_per_cell() * _terrain_travel_cost(next_cell))
 		_reveal_around_player()
 		player_cell_changed.emit(_player_cell)
 		world_state_changed.emit()
@@ -750,13 +763,16 @@ func _start_travel(path: Array[Vector2i]) -> void:
 
 func _advance_game_time(hours: float) -> void:
 	var time_manager := get_node_or_null("/root/GameTimeManager")
-	if time_manager != null and time_manager.has_method("advance_time"):
+	if time_manager != null and time_manager.has_method("advance_time_smooth"):
+		time_manager.call("advance_time_smooth", hours, "world_map_travel")
+		await time_manager.smooth_time_advanced
+	elif time_manager != null and time_manager.has_method("advance_time"):
 		time_manager.call("advance_time", hours, "world_map_travel")
 
 func _update_route_points() -> void:
 	if _route_footprints == null:
 		return
-	_route_footprints.call("set_route", _preview_path, _user_zoom)
+	_route_footprints.call("set_route", _preview_path)
 
 func _update_selected_cell_marker() -> void:
 	if _selected_cell_marker == null:
@@ -775,7 +791,7 @@ func _update_screen_sized_markers() -> void:
 	if _user_zoom <= 0.0:
 		return
 	if _route_footprints != null:
-		_route_footprints.call("set_display_zoom", _user_zoom)
+		_route_footprints.call("refresh_view")
 	_update_selected_cell_marker()
 	for marker in _anchor_markers:
 		if is_instance_valid(marker):

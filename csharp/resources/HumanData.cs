@@ -10,17 +10,21 @@ public partial class HumanData : LivingData
     [Export] public int spirit_element;
     [Export] public Godot.Collections.Array spirit_affinity = [];
     [Export] public int core_count;
-    /// <summary>云息六层至七层凝成的统一灵核结果；不区分锻躯、行炁或蕴神。</summary>
+    /// <summary>云息六层至七层凝成的统一灵核结果。</summary>
     [Export] public bool has_spirit_core;
+    /// <summary>八回合凝核全部结算后的最终程度。0表示没有新制结果，不由旧体/密/杂推算。</summary>
+    [Export] public int condensation_final_score;
     [Export] public float spirit_core_volume = 1.0f;
     [Export] public float spirit_core_density = 1.0f;
     [Export] public float spirit_core_impurity;
     [Export] public string spirit_core_quality = "";
-    /// <summary>当前主要修行侧重；字段名为存档兼容保留，不作为其他养成线的门槛。</summary>
+    /// <summary>历史分类存档兼容字段；不参与战斗、技能池、秘籍资格或养成判定。</summary>
     [Export] public int dao_bearing;
-    /// <summary>已解锁的侧重节点 ID；更换侧重时保留已有节点记录。</summary>
+    /// <summary>历史进阶节点存档兼容字段；读取后不参与任何运行时判定。</summary>
     [Export] public Array<string> dao_node_ids = [];
+    /// <summary>历史修炼分类存档兼容字段；不参与战斗状态初始化。</summary>
     [Export] public bool body_path_awakened;
+    /// <summary>历史修炼分类存档兼容字段；不参与秘籍或技能筛选。</summary>
     [Export] public int energy_lineage;
     [Export] public int spirit_root_type;
     [Export] public string spirit_root_name = "无灵根";
@@ -31,6 +35,14 @@ public partial class HumanData : LivingData
     [Export] public string sect_entry_rank = "";
     /// <summary>当前宗门身份；后续晋升系统可变更此值而不覆盖起始身份。</summary>
     [Export] public string sect_current_rank = "";
+    /// <summary>玉虚真传当前师父与带教师兄/师姐的稳定世界人物 ID。</summary>
+    [Export] public string sect_teacher_npc_id = "";
+    [Export] public string sect_guide_npc_id = "";
+    /// <summary>真传入门选定的师门研读秘籍；首卷完成后章节与技能仍走通用秘籍系统。</summary>
+    [Export] public string sect_lineage_gongfa_path = "";
+    /// <summary>本次师门借阅仅开放首卷时为 true；入门前已掌握的秘籍沿用原有卷章权限。</summary>
+    [Export] public bool sect_lineage_first_volume_only_access;
+    [Export] public bool sect_lineage_reported_first_volume;
     /// <summary>宗门职位与正式弟子身份分开；空值表示尚未登记职位。</summary>
     [Export] public string sect_office_title = "";
     /// <summary>旧存档兼容字段；仅作为逐势力态度摘要的旧文本，不代表百川区域声望。</summary>
@@ -51,7 +63,7 @@ public partial class HumanData : LivingData
     [Export] public int sect_unclaimed_spirit_stones;
     /// <summary>独立的家族客卿身份 ID；空值表示当前没有登记，不影响宗门身份。</summary>
     [Export] public string family_guest_affiliation_id = "";
-    [Export] public string basic_deck_path = "res://resources/basic_decks/初始牌库.tres";
+    [Export] public string basic_deck_path = "res://resources/basic_decks/公共基础技能池.tres";
     [Export] public Array<string> basic_deck_upgrade_ids = [];
     /// <summary>即时战斗固定技能槽；凝核牌局仍使用独立的牌局数据。</summary>
     [Export] public Array<string> combat_skill_slot_paths = [];
@@ -78,6 +90,8 @@ public partial class HumanData : LivingData
     /// <summary>大世界、地点与副本共用的持久体力；与即时战斗精力 current_stamina 分开保存。</summary>
     [Export] public float current_world_stamina = WorldStaminaRules.InitialCapacity;
     [Export] public float max_world_stamina = WorldStaminaRules.InitialCapacity;
+    /// <summary>主角在大世界与地点活动时持续存在的状态；与即时战斗临时状态分开。</summary>
+    [Export] public Godot.Collections.Array<WorldStatusRecord> world_status_records = [];
 
     // 单人模式不再读取这些旧日程字段；保留它们仅用于兼容既有存档。
     [Export] public bool daily_schedule_enabled = false;
@@ -136,19 +150,27 @@ public partial class HumanData : LivingData
     [Export] public float intro_gongfa_study_progress;
     /// <summary>未满一缕的修炼积累；与 spirit_strands 一同保存，避免日程结算丢失小数进度。</summary>
     [Export] public float cultivation_progress;
-    /// <summary>行炁路线五种运作特性的独立参悟值。它们不是元素伤害，也不能互相兑换。</summary>
+    // 归元息状态随完整人物资源保存；阶段0/1/2分别为周行、牵引、平衡。
+    [Export] public int yuanxi_count;
+    [Export] public bool yuanxi_active;
+    [Export] public int yuanxi_target;
+    [Export] public int yuanxi_phase;
+    [Export] public double yuanxi_phase_hours;
+    [Export] public int yuanxi_clock_hour;
+    [Export] public string yuanxi_notice = "";
+    /// <summary>旧五行参悟存档字段，仅供兼容读取；现行修命／修性系统不读取。</summary>
     [Export] public float qi_wood_insight;
     [Export] public float qi_fire_insight;
     [Export] public float qi_earth_insight;
     [Export] public float qi_metal_insight;
     [Export] public float qi_water_insight;
-    /// <summary>修炼累计的完整小时；每满二十四小时进行一次灵感判定。</summary>
+    /// <summary>旧五行参悟存档字段，仅供兼容读取；现行修命／修性系统不读取。</summary>
     [Export] public float qi_cultivation_hours;
-    /// <summary>修炼灵感连续未触发次数，用于第九次后的保底。</summary>
+    /// <summary>旧五行参悟存档字段，仅供兼容读取；现行修命／修性系统不读取。</summary>
     [Export] public int qi_cultivation_failed_rolls;
-    /// <summary>尚未参悟的行炁灵感条目；每项保存特性、九品制品级、来源与绝对失效时刻。</summary>
+    /// <summary>旧五行参悟存档字段，仅供兼容读取；现行修命／修性系统不读取。</summary>
     [Export] public Godot.Collections.Array qi_inspirations = [];
-    /// <summary>当前大层已提升的行炁节点等级，键为稳定节点 ID，值为 1—3。</summary>
+    /// <summary>旧五行节点存档兼容字段；现行修命／修性系统不读取。</summary>
     [Export] public Dictionary qi_node_levels = [];
     /// <summary>六部位累计有效炼度；键使用 BodyRefinementRules 的稳定 ID。</summary>
     [Export] public Dictionary body_refinement_progress = [];
@@ -161,7 +183,7 @@ public partial class HumanData : LivingData
     [Export] public int active_body_refinement_finish_hour;
     [Export] public int active_body_refinement_duration_hours;
     [Export] public Dictionary last_body_refinement_result = [];
-    /// <summary>蕴神观想：已纳入灵台的具体观景、各自独立的五十重进度，以及当前三槽装配。</summary>
+    /// <summary>修性三景：已纳入灵台的具体观景、各自独立的五十重进度，以及当前三景装配。</summary>
     [Export] public Array<string> learned_visualization_ids = [];
     [Export] public Dictionary visualization_progress = [];
     [Export] public Dictionary equipped_visualizations = [];
@@ -222,6 +244,18 @@ public partial class HumanData : LivingData
                 return false;
         sect_contribution_records.Add(record.Duplicate(true) as YuxuSectContributionRecord ?? record);
         return true;
+    }
+
+    public bool remove_yuxu_contribution(string recordId)
+    {
+        if (string.IsNullOrWhiteSpace(recordId) || sect_contribution_records is null) return false;
+        for (var index = sect_contribution_records.Count - 1; index >= 0; index--)
+        {
+            if (sect_contribution_records[index] is not { } record || record.record_id != recordId) continue;
+            sect_contribution_records.RemoveAt(index);
+            return true;
+        }
+        return false;
     }
 
     public long get_yuxu_contribution_total()

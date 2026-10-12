@@ -57,16 +57,10 @@ public partial class MainScene
 
     private void refresh_tile_world_population_counts()
     {
-        if (tile_world_map is null)
+        if (tile_world_map?.Visible != true)
             return;
 
-        if (node_map?.map_data is { } mapData)
-        {
-            var counts = new Godot.Collections.Dictionary();
-            foreach (var node in mapData.get_all_nodes())
-                counts[node.node_id] = _npc_world?.get_world_location_population_count(node.node_id) ?? 0;
-            tile_world_map.Call("set_population_counts", counts);
-        }
+        tile_world_map.Call("set_population_counts", _npc_world?.get_world_location_population_counts() ?? new Godot.Collections.Dictionary());
         tile_world_map.Call("set_grid_population_counts", _npc_world?.get_ordinary_grid_population_counts() ?? new Godot.Collections.Dictionary());
 
         refresh_tile_world_character_list();
@@ -118,6 +112,5 @@ public partial class MainScene
             return;
 
         on_node_enter_requested(nodeId);
-        tile_world_map?.Hide();
     }
 }

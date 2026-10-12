@@ -4,10 +4,11 @@
 
 [resource]
 script = ExtResource("1")
+non_response_skill = null
 skill_name = "避锋"
 icon_path = "res://textures/cards/expressive_ink/bifeng_ink_v4.png"
 skill_type = 3
-description = "应对：受到物理攻击时自动打出。本次受击的闪避判定中，身法 +20%。"
+description = "应对：受到物理攻击时自动打出。本次受击的闪避判定中，身法 +20%。\n未触发应对时空放，不消耗精力、法力或使用次数，不产生效果。"
 energy_cost = 1
 cooldown_frames = 240
 target_type = 0

@@ -12,14 +12,19 @@ public partial class WeatherMgr : Node
     [Export] public float weather_duration_hours;
 
     private int _lastWeatherCheckHour = -1;
-    private const int WeatherCheckIntervalHours = 12;
+    private int _lastWeatherDecisionHour = -1;
+    private const int WeatherCheckIntervalHours = 24;
+    private const float MinimumWeatherDurationHours = 7.0f * 24.0f; // Seven in-game days.
     private readonly RandomNumberGenerator _random = new();
+    private ulong _weatherSeedOffset;
 
     [Signal] public delegate void weather_changedEventHandler(string new_weather, float intensity);
 
     public override void _Ready()
     {
         SetProcess(false);
+        _random.Randomize();
+        _weatherSeedOffset = _random.Randi();
         recalc_temperature();
         recalc_weather();
 
@@ -28,6 +33,7 @@ public partial class WeatherMgr : Node
             return;
 
         _lastWeatherCheckHour = timeManager.get_total_game_hours();
+        _lastWeatherDecisionHour = _lastWeatherCheckHour;
         var callback = Callable.From(on_game_time_changed);
         if (!timeManager.IsConnected(GameTimeMgr.SignalName.time_changed, callback))
             timeManager.Connect(GameTimeMgr.SignalName.time_changed, callback);
@@ -45,6 +51,7 @@ public partial class WeatherMgr : Node
         if (_lastWeatherCheckHour < 0)
         {
             _lastWeatherCheckHour = currentHour;
+            _lastWeatherDecisionHour = currentHour;
             return;
         }
 
@@ -52,11 +59,12 @@ public partial class WeatherMgr : Node
         if (hoursPassed <= 0)
             return;
 
+        _lastWeatherCheckHour = currentHour;
         weather_duration_hours += hoursPassed;
-        if (weather_duration_hours < WeatherCheckIntervalHours)
+        if (_lastWeatherDecisionHour >= 0 && currentHour - _lastWeatherDecisionHour < WeatherCheckIntervalHours)
             return;
 
-        _lastWeatherCheckHour = currentHour;
+        _lastWeatherDecisionHour = currentHour;
         recalc_temperature();
         try_change_weather();
     }
@@ -87,21 +95,15 @@ public partial class WeatherMgr : Node
 
     private void try_change_weather()
     {
-        var minimumHours = weather switch
-        {
-            "rain" or "snow" => 72.0f,
-            "thunderstorm" => 48.0f,
-            "cloudy" => 12.0f,
-            _ => 8.0f,
-        };
-
-        if (weather_duration_hours >= minimumHours)
+        if (weather_duration_hours >= MinimumWeatherDurationHours)
             recalc_weather();
     }
 
     private void recalc_weather()
     {
         var oldWeather = weather;
+        var oldIntensity = weather_intensity;
+        var oldWindSpeed = wind_speed;
         var timeManager = get_time_manager();
         var season = timeManager?.get_season() ?? "春";
         var rainChance = 0.0f;
@@ -129,7 +131,7 @@ public partial class WeatherMgr : Node
             snowChance = 0.1f;
         }
 
-        _random.Seed = (ulong)(timeManager?.get_total_game_hours() ?? 0);
+        _random.Seed = (ulong)(timeManager?.get_total_game_hours() ?? 0) ^ _weatherSeedOffset;
         var roll = _random.Randf();
         if (roll < thunderChance && temperature > 20.0f)
         {
@@ -159,11 +161,39 @@ public partial class WeatherMgr : Node
 
         wind_speed = weather == "clear" ? _random.RandfRange(0.0f, 3.0f) : _random.RandfRange(0.0f, 8.0f);
         if (weather == oldWeather)
+        {
+            // Keep the current rain/snow tier through this weather spell; otherwise a daily roll
+            // could turn light rain into a downpour before the spell itself changes.
+            weather_intensity = oldIntensity;
+            wind_speed = oldWindSpeed;
             return;
+        }
 
         weather_duration_hours = 0.0f;
         EmitSignal(SignalName.weather_changed, weather, weather_intensity);
     }
 
     public float get_temperature() => temperature;
+
+    public void restore_persistent_state(string savedWeather, float savedIntensity, float savedWindSpeed, float savedDurationHours)
+    {
+        var timeManager = get_time_manager();
+        if (string.IsNullOrWhiteSpace(savedWeather))
+        {
+            recalc_temperature();
+            recalc_weather();
+        }
+        else
+        {
+            weather = savedWeather;
+            weather_intensity = Mathf.Clamp(savedIntensity, 0.0f, 1.0f);
+            wind_speed = Mathf.Clamp(savedWindSpeed, 0.0f, 8.0f);
+            weather_duration_hours = Mathf.Max(savedDurationHours, 0.0f);
+            recalc_temperature();
+            EmitSignal(SignalName.weather_changed, weather, weather_intensity);
+        }
+
+        _lastWeatherCheckHour = timeManager?.get_total_game_hours() ?? -1;
+        _lastWeatherDecisionHour = _lastWeatherCheckHour;
+    }
 }

@@ -75,6 +75,18 @@ var _life_unclaimed_allowance := 0
 var _life_page_open := false
 var _sect_is_member := false
 var _sect_active_duty_id := ""
+var _sect_active_incident_id := ""
+var _sect_incident_summaries: Array = []
+var _sect_duty_ready := false
+var _sect_duty_stage := 0
+var _sect_has_bone := false
+var _sect_root_count := 0
+var _lineage_is_true_disciple := false
+var _lineage_teacher_name := ""
+var _lineage_guide_name := ""
+var _lineage_book_name := ""
+var _lineage_first_volume_complete := false
+var _lineage_reported_first_volume := false
 var _duty_board_open := false
 var _duty_board: Control
 var _exchange_board_open := false
@@ -186,14 +198,32 @@ func set_life_context(is_member: bool, current_rank: String, monthly_allowance: 
 	else:
 		_refresh_content()
 
-func set_sect_duty_context(is_member: bool, active_duty_id: String) -> void:
+func set_sect_duty_context(is_member: bool, active_duty_id: String, ready: bool = false, stage: int = 0, has_bone: bool = false, root_count: int = 0, active_incident_id: String = "", incident_summaries: Array = []) -> void:
 	_sect_is_member = is_member
 	_sect_active_duty_id = active_duty_id
+	_sect_active_incident_id = active_incident_id
+	_sect_incident_summaries = incident_summaries.duplicate(true)
+	_sect_duty_ready = ready
+	_sect_duty_stage = stage
+	_sect_has_bone = has_bone
+	_sect_root_count = root_count
 	if is_instance_valid(_duty_board):
-		_duty_board.call("set_active_duty", active_duty_id)
+		_duty_board.call("set_active_duty", active_duty_id, ready, stage, has_bone, root_count, active_incident_id, _sect_incident_summaries)
 	if _duty_board_open and not is_member:
 		_close_duty_board()
 	elif _life_page_open:
+		_refresh_life_page()
+	elif is_visible_in_tree():
+		_refresh_main_actions()
+
+func set_lineage_context(is_true_disciple: bool, teacher_name: String, guide_name: String, book_name: String, first_volume_complete: bool, reported_first_volume: bool) -> void:
+	_lineage_is_true_disciple = is_true_disciple
+	_lineage_teacher_name = teacher_name
+	_lineage_guide_name = guide_name
+	_lineage_book_name = book_name
+	_lineage_first_volume_complete = first_volume_complete
+	_lineage_reported_first_volume = reported_first_volume
+	if _life_page_open:
 		_refresh_life_page()
 	elif is_visible_in_tree():
 		_refresh_main_actions()
@@ -276,6 +306,11 @@ func _build_life_actions() -> void:
 		["yaopu_watch", "药园值守"],
 		["yaopu_cultivate", "培护灵植"],
 		["tianwen_practice", "演法台"],
+		["lineage_choose_teacher", "择师"],
+		["lineage_book_selection", "师门选书"],
+		["lineage_report", "首卷汇报"],
+		["tiangong_baigong", "百工"],
+		["zhizhong_case_review", "案件核验"],
 	]
 	for item in items:
 		var action_id := str(item[0])
@@ -362,6 +397,21 @@ func _refresh_life_page() -> void:
 	body_label.text = "这里是你在宗门中的基础居所。\n未领取月例：%d 枚灵石；本月月例：%d 枚。未领取部分持续累积，不生利息。" % [_life_unclaimed_allowance, _life_monthly_allowance]
 	admission_button.hide()
 	var life_actions := ["meditation", "rest", "claim_allowance"]
+	if _is_true_disciple():
+		if _lineage_teacher_name.is_empty():
+			life_actions.insert(0, "lineage_choose_teacher")
+			body_label.text += "\n师承尚未登记；先选择一位宗内师父。"
+		else:
+			body_label.text += "\n师父：%s；带教师兄/师姐：%s。" % [_lineage_teacher_name, _lineage_guide_name if not _lineage_guide_name.is_empty() else "待安排"]
+			if _lineage_book_name.is_empty():
+				body_label.text += "\n可前往玄览峰，在已有门槛允许的首卷中选择一本云息秘籍。"
+			elif _lineage_first_volume_complete and not _lineage_reported_first_volume:
+				body_label.text += "\n《%s》第一卷已读成，可向带教师兄/师姐汇报。" % _lineage_book_name
+				life_actions.append("lineage_report")
+			elif _lineage_reported_first_volume:
+				body_label.text += "\n《%s》首卷汇报已完成；后续修行由你自行安排。" % _lineage_book_name
+			else:
+				body_label.text += "\n所选首卷：《%s》。回静室研读，完成第一卷后再来汇报。" % _lineage_book_name
 	if _current_peak_id == "guanfu" and _life_rank in ["杂役", "杂役弟子", "外门", "外门弟子", "内门", "内门弟子"]:
 		life_actions.insert(2, "teaching")
 		body_label.text += "\n授业处可研读已掌握的功法；研读内容与时间消耗沿用现有修行系统。"
@@ -384,6 +434,7 @@ func _open_duty_board() -> void:
 	$ActionRope.hide()
 	admission_button.hide()
 	_duty_board.call("open_board", _sect_active_duty_id)
+	_duty_board.call("set_active_duty", _sect_active_duty_id, _sect_duty_ready, _sect_duty_stage, _sect_has_bone, _sect_root_count, _sect_active_incident_id, _sect_incident_summaries)
 
 func _open_exchange_board() -> void:
 	if _current_peak_id != "heguang" or not _sect_is_member or _exchange_board_open:
@@ -431,9 +482,21 @@ func _refresh_main_actions() -> void:
 		var practice_button := _action_buttons.get("tianwen_practice") as Button
 		if practice_button != null:
 			practice_button.show()
+	if _current_peak_id == "tiangong" and _sect_is_member:
+		var baigong_button := _action_buttons.get("tiangong_baigong") as Button
+		if baigong_button != null:
+			baigong_button.show()
+	if _current_peak_id == "zhizhong" and _sect_is_member and _sect_active_duty_id == "east_woods_conflict_review" and not _sect_active_incident_id.is_empty():
+		var case_review_button := _action_buttons.get("zhizhong_case_review") as Button
+		if case_review_button != null:
+			case_review_button.show()
 	if _current_peak_id == "yaopu" and _sect_is_member:
 		for action_id in ["yaopu_watch", "yaopu_cultivate"]:
 			var button := _action_buttons.get(action_id) as Button
 			if button != null:
 				button.show()
+	if _current_peak_id == "xuanlan" and _sect_is_member and _lineage_is_true_disciple and not _lineage_teacher_name.is_empty() and _lineage_book_name.is_empty():
+		var lineage_button := _action_buttons.get("lineage_book_selection") as Button
+		if lineage_button != null:
+			lineage_button.show()
 	_refresh_admission_button()

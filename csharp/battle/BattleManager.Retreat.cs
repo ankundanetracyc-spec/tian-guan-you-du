@@ -16,12 +16,12 @@ public partial class BattleManager
         return GetNodeOrNull<BattleTransitionManager>("/root/BattleTransitionManager")?.try_get_retreat_chance(own,enemies.Max(e=>e.GetMeta("battle_dun_speed").AsSingle()),out chance)==true;
     }
     public bool can_queue_retreat()=>can_player_plan() && !_retreatAttemptedThisRound && get_retreat_chance(out _) &&
-        get_battle_unit(_mainPlayerUnit!).skill_queue.Count<get_action_slot_capacity(_mainPlayerUnit) &&
+        get_filled_action_slot_count(_mainPlayerUnit)<get_action_slot_capacity(_mainPlayerUnit) &&
         !get_battle_unit(_mainPlayerUnit!).skill_queue.Any(a=>a.kind==BattleQueuedSkill.ActionKind.Retreat);
     public void queue_player_retreat()
     {
         if(!can_queue_retreat())return;
-        get_battle_unit(_mainPlayerUnit!).skill_queue.Add(BattleQueuedSkill.Retreat());QueueChanged();
+        PlacePlayerAction(BattleQueuedSkill.Retreat());
     }
     private void ResolveRetreat(GodotObject unit)
     {

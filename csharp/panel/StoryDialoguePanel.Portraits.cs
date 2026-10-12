@@ -37,6 +37,8 @@ public partial class StoryDialoguePanel : Control
 
     public override void _Process(double delta)
     {
+        process_social_reveal(delta);
+        if (_socialContent is not null) return;
         if (!Visible || _speaker is null) return;
         if (_speaker.HorizontalAlignment != HorizontalAlignment.Right)
         {
@@ -99,11 +101,11 @@ public partial class StoryDialoguePanel : Control
 
         var viewport = GetViewportRect().Size;
         float height = Mathf.Min(560.0f, viewport.Y * 0.52f);
-        height = Mathf.Min(height, Mathf.Max(240.0f, viewport.Y - 270.0f));
+        height = Mathf.Min(height, Mathf.Max(120.0f, viewport.Y - _dialogueHeight - 20.0f));
         const float visible_portrait_ratio = 0.76f;
         float full_image_height = height / visible_portrait_ratio;
         float width = full_image_height * 2.0f / 3.0f;
-        float top = Mathf.Max(0.0f, viewport.Y - 250.0f - height);
+        float top = Mathf.Max(0.0f, viewport.Y - _dialogueHeight - height);
         float margin = Mathf.Max(24.0f, viewport.X * 0.045f);
         _speakerPortrait.AnchorLeft = 0;
         _speakerPortrait.AnchorTop = 0;
@@ -128,7 +130,7 @@ public partial class StoryDialoguePanel : Control
                 MouseFilter = MouseFilterEnum.Ignore,
                 ClipContents = true,
                 ZAsRelative = false,
-                ZIndex = 10001,
+                ZIndex = 241,
                 Visible = false,
             };
             AddChild(_speakerPortrait);

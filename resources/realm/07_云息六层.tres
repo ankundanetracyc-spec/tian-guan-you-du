@@ -14,7 +14,6 @@ battle_base_attributes = {
 }
 realm_multiplier_bonuses = {
 "agility": 0.15,
-"comprehension": 0.1,
 "fortune": 0.05,
 "intelligence": 0.15,
 "physique": 0.15,
@@ -22,7 +21,6 @@ realm_multiplier_bonuses = {
 }
 realm_fixed_bonuses = {
 "agility": 2,
-"comprehension": 1,
 "intelligence": 2,
 "max_age": 15,
 "physique": 4,

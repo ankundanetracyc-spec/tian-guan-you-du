@@ -32,7 +32,7 @@ public partial class BattleActionProgress : Control
         Visible = manager.get_segment_phase() == BattleManager.SegmentPhase.Executing;
         if (!Visible) return;
         _state?.SetText("按角色速度推进");
-        var activeCount=manager.all_units.Count(unit=>GodotObject.IsInstanceValid(unit)&&unit.Get("current_health").AsInt32()>0&&manager.battle_units.ContainsKey(unit)&&manager.get_battle_unit(unit).skill_queue.Count>0);
+        var activeCount=manager.all_units.Count(unit=>GodotObject.IsInstanceValid(unit)&&unit.Get("current_health").AsInt32()>0&&manager.battle_units.ContainsKey(unit)&&manager.get_battle_unit(unit).has_pending_segment_action);
         Size=new Vector2(Size.X,Mathf.Max(60,activeCount*22+16));
         foreach (var markerValue in _markers.Values)
             if (markerValue.AsGodotObject() is CanvasItem oldMarker) oldMarker.Visible = false;
@@ -42,7 +42,7 @@ public partial class BattleActionProgress : Control
         foreach (var unit in manager.all_units)
         {
             if (!GodotObject.IsInstanceValid(unit) || unit.Get("current_health").AsInt32() <= 0) continue;
-            if (!manager.battle_units.ContainsKey(unit) || manager.get_battle_unit(unit).skill_queue.Count == 0) continue;
+            if (!manager.battle_units.ContainsKey(unit) || !manager.get_battle_unit(unit).has_pending_segment_action) continue;
             if (!_markers.TryGetValue(unit, out var value) || value.AsGodotObject() is not Panel marker)
             {
                 var row=new ColorRect{Color=new Color(BattleUiArt.Accent,.2f),MouseFilter=MouseFilterEnum.Ignore};_markerLayer.AddChild(row);_rows[unit]=row;

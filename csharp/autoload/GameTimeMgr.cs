@@ -7,6 +7,9 @@ using Godot;
 public partial class GameTimeMgr : Node
 {
     public const int AUTO_SIMULATION_TICK_HOURS = 4;
+    // 入世第一年对应昭明历 2371 年；仅转换显示，不改变存档的相对时间。
+    public const int ZhaomingStartYear = 2371;
+    public int get_zhaoming_year() => ZhaomingStartYear + year - 1;
 
     [Export] public int year = 1;
     [Export] public int month = 1;

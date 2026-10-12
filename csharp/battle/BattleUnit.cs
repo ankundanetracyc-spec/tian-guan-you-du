@@ -13,11 +13,16 @@ public partial class BattleUnit : RefCounted
     public Dictionary special_resources = [];
     public bool has_drawn_opening_hand;
     public readonly List<BattleQueuedSkill> skill_queue = [];
+    // 现行战斗保留整轮槽位，只移动游标；旧牌局仍可使用原先的可变列表。
+    public int segment_action_index;
+    public BattleQueuedSkill? current_segment_action => segment_action_index >= 0 && segment_action_index < skill_queue.Count ? skill_queue[segment_action_index] : null;
+    public bool has_pending_segment_action => current_segment_action is not null;
 
     public void setup(GodotObject owner, GodotObject? deck_manager)
     {
         character = owner; deck = deck_manager; hand.Clear(); action_gauge = 0;
         status_effects.Clear(); intent.Clear(); special_resources.Clear(); has_drawn_opening_hand = false; skill_queue.Clear();
+        segment_action_index = 0;
     }
 
     public Array<GodotObject> draw_for_action()

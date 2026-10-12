@@ -6,8 +6,11 @@ using Godot;
 public static class YuxuSectPrototypeBalance
 {
     public const int OfficialStudyDutyReward = 5;
+    public const int OfficialConflictVerificationReward = OfficialStudyDutyReward;
     public const int OfficialYaopuDutyReward = OfficialStudyDutyReward;
     public const int OfficialBeastDropSubmissionReward = OfficialStudyDutyReward;
+    public const int OfficialBitterMossRootSubmissionReward = 5;
+    public const int BitterMossRootSubmissionCount = 2;
     public const int OfficialYaopuCultivationReward = 10;
     public const int YaopuWatchHours = 4;
     public const float YaopuWatchStaminaCost = 2.0f;
@@ -35,7 +38,7 @@ public static class YuxuSectPrototypeBalance
     {
         "凡俗武学" => 5,
         "剑修" => 10,
-        "锻躯" => 15,
+        "云息秘籍" => 15,
         _ => 0
     };
 
@@ -43,8 +46,8 @@ public static class YuxuSectPrototypeBalance
     {
         if (item?.gongfa is not GongfaResource gongfa)
             return "其他";
-        if (gongfa.school_tags.Contains("body"))
-            return "锻躯";
+        if (gongfa.school_tags.Contains("cloud_breath"))
+            return "云息秘籍";
         if (gongfa.school_tags.Contains("sword"))
             return "剑修";
         if (gongfa.school_tags.Contains("fist") || gongfa.school_tags.Contains("movement"))
@@ -80,8 +83,8 @@ public static class YuxuSectPrototypeBalance
     {
         if (item is null || item.item_category is not ("材料" or "秘籍")) return false;
         if (string.IsNullOrWhiteSpace(item.entity_name) || string.IsNullOrWhiteSpace(item.definition_id.ToString())) return false;
-        if (item.entity_name.Trim() is "木材" or "凝血草" or "止血草" or "灵米粥" or "回春丹") return false;
-        if (item.definition_id.ToString() is "mat_wood" or "herb_zhixuecao" or "meal_spirit_rice_porridge" or "pill_rejuvenation") return false;
+        if (item.entity_name.Trim() is "木材" or "爆炎符" or "豆麦" or "黄粟" or "回春丹" or "魂玉" or "雷击符" or "灵米粥" or "肉干" or "山麻" or "山薯" or "石材" or "铁矿石" or "妖丹" or "野菜" or "阵台" or "止血草" or "凝血草") return false;
+        if (item.definition_id.ToString() is "mat_wood" or "talisman_flame_burst" or "food_doumai" or "crop_huangsu" or "pill_rejuvenation" or "mat_soul_jade" or "talisman_lightning_strike" or "meal_spirit_rice_porridge" or "food_jerky" or "mat_hemp" or "food_shanyu" or "mat_stone" or "mat_iron_ore" or "mat_demon_core" or "food_wild_vegetable" or "tool_array_platform" or "herb_zhixuecao") return false;
         if (item.item_category == "材料" && item.craft_data is not MaterialCraftData) return false;
         if (item.item_category == "秘籍" && item.gongfa is not GongfaResource) return false;
         if (string.IsNullOrWhiteSpace(item.icon_path) || !ResourceLoader.Exists(item.icon_path) || GD.Load<Texture2D>(item.icon_path) is null)

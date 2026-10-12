@@ -4,8 +4,9 @@
 
 [resource]
 script = ExtResource("1")
+non_response_skill = null
 skill_name = "硬鬃架招"
-description = "敌方物理攻击自身时自动打出。化解层数 = 5 + floor(体魄/3)。"
+description = "敌方物理攻击自身时自动打出。化解层数 = 5 + floor(体魄/3)。\n未触发应对时空放，不消耗精力、法力或使用次数，不产生效果。"
 skill_type = 3
 energy_cost = 0
 target_type = 0

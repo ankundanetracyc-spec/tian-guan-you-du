@@ -4,8 +4,8 @@ using Godot;
 public partial class ActionTransitionPanel : Control
 {
     private const float RingSize = 304f;
-    // 两张圆环素材的透明边界视觉重心略偏右下；统一向左上收 1px，避免进度环看起来偏离文字中心。
-    private static readonly Vector2 RingVisualOffset = new(-1f, -1f);
+    // 环形素材的中心孔与正方形画布中心基本重合，不再额外偏移。
+    private static readonly Vector2 RingVisualOffset = Vector2.Zero;
     private ColorRect? _shade;
     private Control? _center;
     private TextureProgressBar? _progress;
@@ -13,12 +13,14 @@ public partial class ActionTransitionPanel : Control
     private Label? _state;
     private Label? _detail;
     private bool _playing;
+    public bool IsPlaying => _playing;
 
     public override void _Ready()
     {
         SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         ZIndex = 900;
         MouseFilter = MouseFilterEnum.Stop;
+        ProcessMode = ProcessModeEnum.Always;
         AddToGroup("action_transition");
         build();
         Hide();
@@ -51,17 +53,59 @@ public partial class ActionTransitionPanel : Control
         tween.TweenCallback(Callable.From(() => _state.Text = "正在结算…"));
         tween.TweenProperty(_progress, "value", 92d, .32f);
         tween.TweenInterval(.18f);
-        tween.TweenCallback(Callable.From(() =>
+        tween.TweenCallback(Callable.From(() => settle_and_finish(settle, complete, after)));
+    }
+
+    private async void settle_and_finish(Action settle, string complete, Action? after)
+    {
+        var previousPause = GetTree().Paused;
+        var manager = GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager");
+        var deferred = false;
+        var success = false;
+        try
         {
+            // Prevent scene actions, Esc and autosave from observing a half-settled month.
+            GetTree().Paused = true;
+            if (manager is not null) { manager.defer_time_settlement(); deferred = true; }
             settle();
-            _state.Text = "已完成";
-            _detail.Text = complete;
-        }));
-        tween.TweenProperty(_progress, "value", 100d, .18f);
-        tween.TweenInterval(.28f);
-        tween.TweenProperty(_shade, "modulate:a", 0f, .18f);
-        tween.Parallel().TweenProperty(_center, "modulate:a", 0f, .18f);
-        tween.TweenCallback(Callable.From(() => { Hide(); _playing = false; after?.Invoke(); }));
+            if (manager is not null)
+                await manager.flush_time_settlement_async((ratio, state) => { _progress!.Value = 92 + ratio * 8; _state!.Text = state; });
+            _state!.Text = "已完成"; _detail!.Text = complete; _progress!.Value = 100;
+            await ToSignal(GetTree().CreateTimer(.28, processAlways: true), SceneTreeTimer.SignalName.Timeout);
+            success = true;
+        }
+        catch (Exception ex)
+        {
+            GD.PushError($"长行动结算失败：{ex}");
+            // If the player action failed after changing the calendar, still reconcile that elapsed time.
+            if (deferred && manager?.HasPendingSettlement == true) await manager.flush_time_settlement_async();
+        }
+        finally
+        {
+            GetTree().Paused = previousPause;
+            Hide(); _playing = false;
+        }
+        if (success) after?.Invoke();
+    }
+
+    // The same view for actual computation, with no artificial multi-second animation.
+    public async System.Threading.Tasks.Task run_work_async(string title, Func<Action<double, string>, System.Threading.Tasks.Task> work)
+    {
+        if (_playing) throw new InvalidOperationException("加载界面正在处理另一项行动");
+        _playing = true;
+        var previousPause = GetTree().Paused;
+        try
+        {
+            _title!.Text = title; _state!.Text = "正在准备…"; _detail!.Text = "人物、行旅与行动记录结算完成后继续。";
+            _progress!.Value = 0; _shade!.Modulate = _center!.Modulate = Colors.White; _center.Scale = Vector2.One;
+            Show(); MoveToFront(); GetTree().Paused = true;
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            await work((ratio, state) => { _progress.Value = Math.Clamp(ratio, 0, 1) * 100; _state.Text = state; });
+        }
+        finally
+        {
+            Hide(); _playing = false; GetTree().Paused = previousPause;
+        }
     }
 
     private void build()
@@ -70,7 +114,7 @@ public partial class ActionTransitionPanel : Control
         _shade.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         AddChild(_shade);
 
-        _center = new Control { CustomMinimumSize = new Vector2(540, 430) };
+        _center = new Control { CustomMinimumSize = new Vector2(540, 430), PivotOffset = new Vector2(270, 215) };
         _center.SetAnchorsPreset(LayoutPreset.Center);
         _center.OffsetLeft = -270;
         _center.OffsetTop = -215;

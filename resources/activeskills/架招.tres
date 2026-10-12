@@ -4,9 +4,10 @@
 
 [resource]
 script = ExtResource("1")
+non_response_skill = null
 skill_name = "架招"
 icon_path = "res://textures/ui/combat/skill_icons/凡俗_架招_v1.png"
-description = "应对：位于队首且遇到敌方物理攻击时立即触发，获得化解。化解层数 = 3 + floor(体魄/4) + floor(敏捷/5)；每层抵消该次攻击1点物理伤害，攻击结算后消散。未触发时按正常行动时序结算基础效果。\n使用次数：不限。"
+description = "应对：位于队首且遇到敌方物理攻击时立即触发，获得化解。化解层数 = 3 + floor(体魄/4) + floor(敏捷/5)；每层抵消该次攻击1点物理伤害，攻击结算后消散。\n使用次数：不限。\n未触发应对时空放，不消耗精力、法力或使用次数，不产生效果。"
 skill_type = 3
 energy_cost = 1
 preparation_frames = 0

@@ -1,6 +1,6 @@
 using Godot;
 
-/// <summary>蕴神观想的稳定槽位、五十重进度与节点规则。</summary>
+/// <summary>修性三景的稳定槽位、五十重进度与节点规则。</summary>
 public static class VisualizationRules
 {
     public const string Sky = "sky";

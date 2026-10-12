@@ -1,4 +1,4 @@
-﻿using Godot;
+using Godot;
 using Godot.Collections;
 
 /// <summary>
@@ -8,6 +8,8 @@ using Godot.Collections;
 public partial class BattleEntityData : Resource
 {
     [Export] public string uid = "";
+    [Export] public EntityData? portrait_data;
+    [Export] public int battle_external_wounds, battle_internal_wounds;
     [Export] public float dun_speed;
     [Export] public float social, management;
     [Export] public Array<Dictionary> battle_loot = [];
@@ -45,12 +47,15 @@ public partial class BattleEntityData : Resource
     [Export] public int comprehension;
     [Export] public int spirit_strands;
     [Export] public int core_count;
+    /// <summary>旧快照兼容字段；新战斗不读取或写入。</summary>
     [Export] public int dao_bearing;
     [Export] public float body_proficiency;
     [Export] public float sword_proficiency;
     [Export] public float magic_proficiency;
     [Export] public float formation_proficiency;
+    /// <summary>历史分类快照兼容字段；新战斗不读取它。</summary>
     [Export] public bool body_path_awakened;
+    /// <summary>历史修炼分类快照兼容字段；不参与战斗行为。</summary>
     [Export] public int energy_lineage;
     [Export] public float mana_regen_rate = 0.04f;
     [Export] public int lifespan_bonus;
@@ -96,7 +101,9 @@ public partial class BattleEntityData : Resource
     [Export] public Array<string> combat_skill_slot_paths = [];
     [Export] public bool combat_skill_slots_configured;
     [Export] public Array<string> combat_passive_paths = [];
-    /// <summary>按心法归属汇总的淬炼值，仅在战斗快照中使用。</summary>
+    /// <summary>已研读并随当前主修/辅修生效的心法卷章追加效果，键为秘籍名|效果ID。</summary>
+    [Export] public Dictionary combat_heart_method_upgrades = [];
+    /// <summary>按心法归属汇总的修持值，仅在战斗快照中使用。</summary>
     [Export] public Dictionary combat_tempering_by_gongfa = [];
     [Export] public bool battle_deck_configured;
     [Export] public Array<string> pack_item_paths = [];
@@ -112,6 +119,7 @@ public partial class BattleEntityData : Resource
             var name = property["name"].AsStringName();
             if (name != "resource_path" && name != "resource_name") Set(name, source.Get(name));
         }
+        portrait_data = source.portrait_data?.Duplicate(true) as EntityData;
         battle_loot = source.battle_loot.Duplicate(true);
         equipment_paths = source.equipment_paths.Duplicate();
         gongfa_paths = source.gongfa_paths.Duplicate();
@@ -121,6 +129,7 @@ public partial class BattleEntityData : Resource
         loaded_skill_paths = source.loaded_skill_paths.Duplicate();
         combat_skill_slot_paths = source.combat_skill_slot_paths.Duplicate();
         combat_passive_paths = source.combat_passive_paths.Duplicate();
+        combat_heart_method_upgrades = source.combat_heart_method_upgrades.Duplicate(true);
         combat_tempering_by_gongfa = source.combat_tempering_by_gongfa.Duplicate(true);
         pack_item_paths = source.pack_item_paths.Duplicate();
         pack_item_counts = source.pack_item_counts.Duplicate();

@@ -80,9 +80,9 @@ public partial class BattleInkCombatVfx : Node2D
     public static Vector2 Anchor(Node2D unit, bool head = false) => unit.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll") is { } doll
         ? doll.combat_anchor(head) : unit.GlobalPosition + new Vector2(0f, head ? -202f : -112f);
 
-    public static void PlayAttack(GodotObject attacker, GodotObject target, ActiveSkillData skill)
+    public static BattleInkCombatVfx? PlayAttack(GodotObject attacker, GodotObject target, ActiveSkillData skill)
     {
-        if (attacker is not Node2D from || target is not Node2D to || !DealsDamage(skill)) return;
+        if (attacker is not Node2D from || target is not Node2D to || !DealsDamage(skill)) return null;
         var kind = Profile(skill);
         var start = Anchor(from);
         var end = Anchor(to, kind is Kind.SoulNeedle or Kind.SoulDraw);
@@ -92,11 +92,12 @@ public partial class BattleInkCombatVfx : Node2D
         var direction = distance > 0.1f ? offset / distance : Facing(from);
         var height = kind is Kind.Heavy or Kind.Charge or Kind.SpiritBurst ? 230f : 174f;
         var effect = Spawn((start + end) * 0.5f, new Vector2(Mathf.Max(distance, 1f) + 100f, height), direction.Angle(), kind, 0, 0.44f, skill);
-        if (effect is null) return;
+        if (effect is null) return null;
         effect._material!.SetShaderParameter("travel_span", distance / (distance + 100f));
         effect._material.SetShaderParameter("contact_progress", ContactSeconds / effect._duration);
         effect._holdAt = ContactSeconds;
         effect._hold = 0.035f + ContactHoldSeconds(HitWeight(skill));
+        return effect;
     }
 
     public static void PlayImpact(GodotObject target, ActiveSkillData? skill = null, GodotObject? attacker = null, bool critical = false, bool evaded = false, int segment = 0)
@@ -156,8 +157,10 @@ public partial class BattleInkCombatVfx : Node2D
             _carrier = ImageTexture.CreateFromImage(image);
             image.Dispose();
         }
-        var effect = new BattleInkCombatVfx { Name = "CombatInk", _duration = duration, ProcessMode = ProcessModeEnum.Pausable, ZIndex = 80 };
+        // Formation actors use depth 565–720; strokes must remain above them and below damage labels.
+        var effect = new BattleInkCombatVfx { Name = "CombatInk", _duration = duration, ProcessMode = ProcessModeEnum.Pausable, ZIndex = 900, ZAsRelative = false };
         tree.CurrentScene.AddChild(effect);
+        effect.AddToGroup("battle_action_visuals");
         effect.GlobalPosition = position;
         effect.GlobalRotation = rotation;
         _active++; effect._registered = true;
@@ -178,7 +181,7 @@ public partial class BattleInkCombatVfx : Node2D
     {
         _elapsed += (float)delta;
         var local = Mathf.Max(0f, _elapsed - _delay);
-        // Stop only the presentation clock at contact; settlement and other units continue.
+        // 命中停顿只改变画面进度；管理器等待整个特效结束后再推进下一行动。
         var visual = local - Mathf.Clamp(local - _holdAt, 0f, _hold);
         _material?.SetShaderParameter("progress", Mathf.Clamp(visual / _duration, 0f, 1f));
         if (_elapsed >= _duration + _delay + _hold) QueueFree();

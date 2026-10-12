@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="MaterialCraftData" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="MaterialCraftData" load_steps=4 format=3]
 
 [ext_resource type="Script" path="res://csharp/resources/MaterialCraftData.cs" id="1"]
+[ext_resource type="Script" path="res://csharp/resources/MaterialUtilityGrade.cs" id="2"]
 
 [sub_resource type="Resource" id="破"]
-script = ExtResource("1")
+script = ExtResource("2")
 utility_id = "破"
 grade = 2
 
@@ -12,4 +13,4 @@ script = ExtResource("1")
 element = "土"
 polarity = 1
 texture = "骨"
-utilities = Array[ExtResource("1")]([SubResource("破")])
+utilities = Array[ExtResource("2")]([SubResource("破")])

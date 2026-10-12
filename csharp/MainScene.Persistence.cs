@@ -1,4 +1,4 @@
-﻿using Godot;
+using Godot;
 using Godot.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,21 +6,47 @@ using System.Linq;
 /// <summary>Save/load integration for the active single-player run.</summary>
 public partial class MainScene
 {
-    public void notify_battle_rewards_changed()=>mark_save_dirty();
+    public void notify_battle_rewards_changed()
+    {
+        hud?.refresh_player_status();
+        mark_save_dirty();
+    }
 
     private GameSaveManager? _save_manager;
     private PersistentGameSave? _loaded_game_save;
+    private YuxuSectTreasuryLedger _yuxu_sect_treasury_ledger = new();
     private bool _save_is_dirty;
     private double _save_dirty_seconds;
+    private bool _returning_from_battle;
 
     private void prepare_save_session()
     {
         _save_manager = GetNodeOrNull<GameSaveManager>("/root/GameSaveManager");
-        _loaded_game_save = _save_manager?.consume_pending_load();
-        if (_loaded_game_save is null) return;
+        _loaded_game_save = GetNodeOrNull<BattleTransitionManager>("/root/BattleTransitionManager")?.consume_world_progress_snapshot();
+        _returning_from_battle = _loaded_game_save is not null;
+        _loaded_game_save ??= _save_manager?.consume_pending_load();
+        _yuxu_sect_treasury_ledger = new YuxuSectTreasuryLedger();
+        if (_loaded_game_save is null)
+        {
+            GetNodeOrNull<WeatherMgr>("/root/WeatherManager")?.restore_persistent_state("", 0.0f, 0.0f, 0.0f);
+            EastWoodsDungeonRules.generate_layout(System.Guid.NewGuid().ToString("N"));
+            _east_woods_dungeon_state = new Dictionary { ["layout"] = EastWoodsDungeonRules.get_layout_state() };
+            return;
+        }
+        _yuxu_sect_treasury_ledger = _loaded_game_save.yuxu_sect_treasury?.Duplicate(true) as YuxuSectTreasuryLedger ?? new YuxuSectTreasuryLedger();
+        if (_loaded_game_save.player_data is { } savedPlayer &&
+            !string.IsNullOrWhiteSpace(savedPlayer.sect_active_yuxu_duty_id) &&
+            string.IsNullOrWhiteSpace(savedPlayer.sect_active_yuxu_duty_instance_id))
+        {
+            savedPlayer.sect_active_yuxu_duty_instance_id = System.Guid.NewGuid().ToString("N");
+            _save_is_dirty = true;
+        }
         var battleTransition=GetNodeOrNull<BattleTransitionManager>("/root/BattleTransitionManager");
-        battleTransition?.restore_reward_ledger(_loaded_game_save.battle_reward_ledger);
-        battleTransition?.CallDeferred("resume_pending_loot");
+        if (!_returning_from_battle)
+        {
+            battleTransition?.restore_reward_ledger(_loaded_game_save.battle_reward_ledger);
+            battleTransition?.CallDeferred("resume_pending_loot");
+        }
 
         var npcManager = GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager");
         npcManager?.set_simulation_enabled(false);
@@ -31,6 +57,11 @@ public partial class MainScene
             _loaded_game_save.day,
             _loaded_game_save.hour,
             _loaded_game_save.pending_hours);
+        GetNodeOrNull<WeatherMgr>("/root/WeatherManager")?.restore_persistent_state(
+            _loaded_game_save.weather_type,
+            _loaded_game_save.weather_intensity,
+            _loaded_game_save.weather_wind_speed,
+            _loaded_game_save.weather_duration_hours);
 
         _player_world_grid_cell = _loaded_game_save.world_cell;
         _player_world_node_id = string.IsNullOrWhiteSpace(_loaded_game_save.current_node_id)
@@ -46,7 +77,9 @@ public partial class MainScene
         _npc_world?.restore_persistent_state(
             _loaded_game_save.world_npcs,
             _loaded_game_save.npc_simulation_enabled,
-            _loaded_game_save.npc_last_processed_month);
+            _loaded_game_save.npc_last_processed_month,
+            _loaded_game_save.east_woods_npc_incidents,
+            _loaded_game_save.npc_population_version);
     }
 
     private void restore_map_save_state()
@@ -68,10 +101,11 @@ public partial class MainScene
         }
 
         player = new Character();
+        player.unique_id = _loaded_game_save.scene_progress.GetValueOrDefault("player_unique_id", "").AsString();
+        AddChild(player);
         player.load_from_data(savedPlayer.Duplicate(true) as HumanData ?? savedPlayer);
         player.entity_type = WorldEntity.EntityType.CHARACTER;
         player.faction = (int)WorldEntity.Faction.PLAYER;
-        AddChild(player);
     }
 
     private void show_loaded_game()
@@ -84,8 +118,20 @@ public partial class MainScene
 
         if (departed)
         {
+            if (_npc_world is not null && node_map?.map_data is { } populationMap && CloudStateNpcCatalog.ensure_population(_npc_world, populationMap))
+                mark_save_dirty();
             // A saved random roster is authoritative; never regenerate it on load.
             _cloud_state_initialized = true;
+            if (_east_woods_dungeon_state.GetValueOrDefault("inside", false).AsBool())
+            {
+                estate?.Hide();
+                tile_world_map?.Hide();
+                node_map?.Hide();
+                open_east_woods_dungeon();
+                hud?.Show();
+                mark_save_dirty();
+                return;
+            }
             open_world();
             if (_loaded_game_save.remaining_travel_path.Count > 1)
                 tile_world_map?.CallDeferred("resume_saved_travel");
@@ -106,6 +152,7 @@ public partial class MainScene
 
     private void process_save_autosave(double delta)
     {
+        if (_npc_world?.HasPendingSettlement == true || action_transition?.IsPlaying == true || GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.IsSmoothAdvanceBusy == true) return;
         if (!_save_is_dirty || _save_manager?.has_active_slot != true) return;
         _save_dirty_seconds += delta;
         if (_save_dirty_seconds >= 1.5)
@@ -119,14 +166,38 @@ public partial class MainScene
         _save_is_dirty = true;
     }
 
+    public void notify_yuanxi_changed(Character character)
+    {
+        if (character != player) return;
+        mark_save_dirty();
+        if (!character.is_yunxi_complete()) return;
+        RefreshJournalTracker();
+        refresh_journal_entries();
+    }
+
     private bool save_progress_now(bool showFeedback)
     {
+        if (_npc_world?.HasPendingSettlement == true || action_transition?.IsPlaying == true || GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.IsSmoothAdvanceBusy == true) return false;
         if (_save_manager?.has_active_slot != true || player?.entity_data is not HumanData playerData)
             return false;
+
+        var save = capture_battle_world_snapshot();
+        if (save is null || !_save_manager.save_snapshot(save)) return false;
+        _save_is_dirty = false;
+        _save_dirty_seconds = 0;
+        if (showFeedback) show_message("存档完成", "当前修行进度已保存。");
+        return true;
+    }
+
+    /// <summary>In-memory battle handoff, using exactly the same state as a formal progress save.</summary>
+    public PersistentGameSave? capture_battle_world_snapshot()
+    {
+        if (player?.entity_data is not HumanData playerData) return null;
 
         var save = new PersistentGameSave
         {
             player_data = playerData.Duplicate(true) as HumanData ?? playerData,
+            yuxu_sect_treasury = _yuxu_sect_treasury_ledger.Duplicate(true) as YuxuSectTreasuryLedger ?? new YuxuSectTreasuryLedger(),
             current_node_id = _player_world_node_id,
             world_cell = _player_world_grid_cell,
             scene_progress = capture_scene_progress(),
@@ -139,6 +210,14 @@ public partial class MainScene
             save.day = time.day;
             save.hour = time.hour;
             save.pending_hours = time.get_pending_hours();
+        }
+
+        if (GetNodeOrNull<WeatherMgr>("/root/WeatherManager") is { } weather)
+        {
+            save.weather_type = weather.weather;
+            save.weather_intensity = weather.weather_intensity;
+            save.weather_wind_speed = weather.wind_speed;
+            save.weather_duration_hours = weather.weather_duration_hours;
         }
 
         if (tile_world_map is not null)
@@ -157,15 +236,13 @@ public partial class MainScene
         if (_npc_world is not null)
         {
             save.world_npcs = _npc_world.get_persistent_npcs();
+            save.east_woods_npc_incidents = _npc_world.get_persistent_east_woods_incidents();
             save.npc_simulation_enabled = _npc_world.simulation_enabled;
             save.npc_last_processed_month = _npc_world.get_last_processed_month();
+            save.npc_population_version = _npc_world.population_version;
         }
 
-        if (!_save_manager.save_snapshot(save)) return false;
-        _save_is_dirty = false;
-        _save_dirty_seconds = 0;
-        if (showFeedback) show_message("存档完成", "当前修行进度已保存。");
-        return true;
+        return save;
     }
 
     private Dictionary capture_scene_progress()
@@ -173,6 +250,9 @@ public partial class MainScene
         return new Dictionary
         {
             ["qingxi_prologue"] = (int)_qingxi_prologue,
+            ["player_unique_id"] = player?.unique_id ?? "",
+            ["social_membership_month"] = _socialMembershipMonth,
+            ["social_visit_month"] = _socialVisitMonth,
             ["xuanjian_awakened"] = _xuanjian_awakened,
             ["rested_after_xuanjian"] = _rested_after_xuanjian,
             ["static_room_authorized"] = _static_room_authorized,
@@ -190,6 +270,7 @@ public partial class MainScene
             ["prologue_goal_recorded"] = _prologue_goal_recorded,
             ["cloud_state_initialized"] = _cloud_state_initialized,
             ["east_woods_dungeon_state"] = _east_woods_dungeon?.get_route_state() ?? _east_woods_dungeon_state.Duplicate(true),
+            ["journal_tracking"] = PackJournalTracking(),
             ["active_quest"] = pack_entry(_active_quest),
             ["completed_quests"] = pack_entries(_completed_quests),
             ["earned_rumors"] = pack_entries(_earned_rumors),
@@ -198,7 +279,12 @@ public partial class MainScene
 
     private void restore_scene_progress(Dictionary state)
     {
+        _socialMembershipMonth = read_int(state, "social_membership_month", -1);
+        _socialVisitMonth = read_int(state, "social_visit_month", -1);
+        RestoreJournalTracking(state);
         _east_woods_dungeon_state = state.GetValueOrDefault("east_woods_dungeon_state", new Dictionary()).AsGodotDictionary().Duplicate(true);
+        EastWoodsDungeonRules.restore_layout(_east_woods_dungeon_state.GetValueOrDefault("layout", new Dictionary()).AsGodotDictionary());
+        _east_woods_dungeon_state["layout"] = EastWoodsDungeonRules.get_layout_state();
         if (state.Count == 0) return;
         var step = read_int(state, "qingxi_prologue", (int)QingxiPrologueStep.Awakened);
         _qingxi_prologue = step is >= 0 and <= (int)QingxiPrologueStep.Departed
@@ -241,6 +327,8 @@ public partial class MainScene
             ["place"] = entry.Place,
             ["state"] = entry.State,
             ["time"] = entry.Time ?? "",
+            ["id"] = entry.Id,
+            ["accepted_order"] = entry.AcceptedOrder,
         };
     }
 
@@ -262,7 +350,9 @@ public partial class MainScene
             entry.GetValueOrDefault("source", "").AsString(),
             entry.GetValueOrDefault("place", "").AsString(),
             entry.GetValueOrDefault("state", "").AsString(),
-            entry.GetValueOrDefault("time", "").AsString());
+            entry.GetValueOrDefault("time", "").AsString(),
+            entry.GetValueOrDefault("id", "").AsString(),
+            entry.GetValueOrDefault("accepted_order", 0L).AsInt64());
     }
 
     private static IEnumerable<JournalPanel.Entry> unpack_entries(Variant value)

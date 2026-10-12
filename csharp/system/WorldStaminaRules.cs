@@ -4,7 +4,8 @@ public static class WorldStaminaRules
     public const float InitialCapacity = 100.0f;
     public const float ConversationCost = 1.0f;
     public const float InteractionCost = 1.0f;
-    public const float CultivationCostPerGameHour = 0.5f;
+    // 2026-10-10 用户确认：吐纳与归元养息只推进时间，不消耗大世界体力。
+    public const float CultivationCostPerGameHour = 0.0f;
     public const float StudyCostPerGameHour = 1.0f;
     public const float RestRecoveryPerGameHour = 1.0f;
 }

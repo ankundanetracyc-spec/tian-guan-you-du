@@ -11,9 +11,12 @@ public partial class StorageItemSlot : Control
     private const double InfoHoverDelay = 0.45;
     private TextureRect? icon_rect;
     private Label? name_label;
-    private Label? count_label;
     private Godot.Timer? hover_timer;
     private bool is_trade_slot;
+    private bool is_pointer_inside;
+    private bool is_selected;
+    private bool inventory_layout;
+    private InventoryPaperFrame? inventory_frame;
 
     public string item_path = "";
     public int item_count;
@@ -28,13 +31,10 @@ public partial class StorageItemSlot : Control
         MouseFilter = MouseFilterEnum.Stop;
         icon_rect = GetNodeOrNull<TextureRect>("Frame/ItemIcon");
         name_label = GetNodeOrNull<Label>("ItemName");
-        count_label = GetNodeOrNull<Label>("Frame/ItemCount");
         for (var ancestor = GetParent(); ancestor is not null; ancestor = ancestor.GetParent())
         {
             if (ancestor is not TradePanel) continue;
             is_trade_slot = true;
-            count_label?.QueueFree();
-            count_label = null;
             break;
         }
         hover_timer = GetNodeOrNull<Godot.Timer>("HoverTimer");
@@ -44,9 +44,42 @@ public partial class StorageItemSlot : Control
         GuiInput += on_gui_input;
     }
 
+    /// <summary>只用于行囊；交易面板继续使用原有128像素方格布局。</summary>
+    public void configure_inventory_layout(float width, float height)
+    {
+        inventory_layout = true;
+        CustomMinimumSize = new Vector2(width, height);
+        if (GetNodeOrNull<Panel>("Frame") is { } frame)
+        {
+            frame.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+            frame.AddThemeStyleboxOverride("panel", new StyleBoxEmpty());
+        }
+        if (icon_rect is not null)
+        {
+            icon_rect.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+            icon_rect.OffsetLeft = 14; icon_rect.OffsetTop = 14;
+            icon_rect.OffsetRight = -14; icon_rect.OffsetBottom = -49;
+        }
+        if (name_label is not null)
+        {
+            name_label.SetAnchorsAndOffsetsPreset(LayoutPreset.BottomWide);
+            name_label.OffsetLeft = 5; name_label.OffsetTop = -46;
+            name_label.OffsetRight = -5; name_label.OffsetBottom = -7;
+            name_label.AddThemeFontSizeOverride("font_size", 20);
+            name_label.MaxLinesVisible = 2;
+            name_label.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
+        }
+        inventory_frame = new InventoryPaperFrame();
+        AddChild(inventory_frame);
+        MoveChild(inventory_frame, 0);
+        inventory_frame.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        update_slot_tint();
+    }
+
     public void set_item(int new_slot_index, string new_item_path, Resource item_data, int count)
     {
         slot_index = new_slot_index;
+        is_selected = false;
         item_path = new_item_path;
         item_count = count;
         is_artifact = false;
@@ -56,15 +89,18 @@ public partial class StorageItemSlot : Control
         if (name_label is not null)
         {
             var item_name = item_data.Get("entity_name").AsString();
-            name_label.Text = is_trade_slot ? $"{item_name} x{count}" : item_name;
+            name_label.Text = is_trade_slot
+                ? $"{item_name} x{count}"
+                : count > 1 ? $"{item_name} * {count}" : item_name;
         }
-        if (count_label is not null) count_label.Text = $"x{count}";
         if (icon_rect is not null) icon_rect.Texture = load_icon(item_data);
+        update_slot_tint();
     }
 
     public void set_artifact(ArtifactInstanceData artifact)
     {
         slot_index = -1;
+        is_selected = false;
         item_path = "";
         item_count = 1;
         is_artifact = true;
@@ -72,17 +108,18 @@ public partial class StorageItemSlot : Control
         artifact_data = artifact;
         MouseFilter = MouseFilterEnum.Stop;
         if (name_label is not null) name_label.Text = string.IsNullOrWhiteSpace(artifact.artifact_name) ? artifact.form?.form_name ?? "未命名法宝" : artifact.artifact_name;
-        if (count_label is not null) count_label.Text = artifact.max_durability > 0 ? $"耐久 {Math.Max(0, artifact.current_durability)}/{artifact.max_durability}" : artifact.ritual_mode;
         if (icon_rect is not null)
         {
             var path = artifact.form?.icon_path ?? "";
             icon_rect.Texture = string.IsNullOrWhiteSpace(path) || !ResourceLoader.Exists(path) ? null : ResourceLoader.Load<Texture2D>(path);
         }
+        update_slot_tint();
     }
 
     public void set_empty(int new_slot_index)
     {
         slot_index = new_slot_index;
+        is_selected = false;
         item_path = "";
         item_count = 0;
         is_artifact = false;
@@ -90,8 +127,8 @@ public partial class StorageItemSlot : Control
         artifact_data = null;
         if (icon_rect is not null) icon_rect.Texture = null;
         if (name_label is not null) name_label.Text = "";
-        if (count_label is not null) count_label.Text = "";
-        Modulate = Colors.White;
+        is_pointer_inside = false;
+        update_slot_tint();
         MouseFilter = MouseFilterEnum.Stop;
         hover_timer?.Stop();
     }
@@ -104,14 +141,37 @@ public partial class StorageItemSlot : Control
 
     private void on_mouse_entered()
     {
-        Modulate = new Color(1.08f, 1.04f, 0.9f, 1f);
+        is_pointer_inside = true;
+        update_slot_tint();
         hover_timer?.Start(InfoHoverDelay);
     }
     private void on_mouse_exited()
     {
-        Modulate = Colors.White;
+        is_pointer_inside = false;
+        update_slot_tint();
         hover_timer?.Stop();
         EmitSignal(SignalName.info_cleared, this);
+    }
+
+    public void set_inventory_selected(bool selected)
+    {
+        is_selected = selected;
+        update_slot_tint();
+    }
+
+    private void update_slot_tint()
+    {
+        if (inventory_layout && inventory_frame is not null)
+        {
+            Modulate = Colors.White;
+            inventory_frame.Selected = is_selected || is_pointer_inside;
+            inventory_frame.EmptyMountain = is_empty;
+            inventory_frame.QueueRedraw();
+            return;
+        }
+        Modulate = is_selected
+            ? new Color(1.08f, 0.91f, 0.68f, 1f)
+            : is_pointer_inside ? new Color(1.08f, 1.04f, 0.9f, 1f) : Colors.White;
     }
 
     private void on_gui_input(InputEvent @event)

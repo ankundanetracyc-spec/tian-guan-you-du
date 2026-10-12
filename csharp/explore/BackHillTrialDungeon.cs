@@ -10,7 +10,7 @@ public partial class BackHillTrialDungeon : DungeonGraph
         new(NodeType.BATTLE, "林影低吼", "密叶之后传来低吼，来者显然不愿让出山路。", "forest_wolf"),
         new(NodeType.BATTLE, "湿石伏影", "潮湿的石缝间有什么鼓动了一下，腥气扑面而来。", "giant_toad"),
         new(NodeType.BATTLE, "枯叶游痕", "枯叶无风自移，一道细长的影子从石根间掠过。", "poison_snake"),
-        new(NodeType.RESOURCE, "山间药草", "背阴处长着几株可入药的草叶。", Resource: "herb", Amount: 1),
+        new(NodeType.RESOURCE, "苦苔根", "背阴处的石缝间长着几丛苦苔根。", Resource: "mat_bitter_moss_root", Amount: 1),
         new(NodeType.REST, "溪边歇脚", "溪水清冽，可以洗去尘土、稍作歇息。"),
         new(NodeType.EVENT, "旧猎径", "石缝里留着褪色的猎户刻痕，山路的尽头藏在林影之后。", EventId: "back_hill_path")
     ];
@@ -35,7 +35,7 @@ public partial class BackHillTrialDungeon : DungeonGraph
             previous = current;
         }
         var spring = nextId++;
-        Add(spring, NodeType.RESOURCE, 6, 0, "灵泉坳", "山坳中央有一汪清泉。玄鉴微微发热，指向岩缝中的一株聚灵草。", resource: "herb", amount: 2);
+        Add(spring, NodeType.RESOURCE, 6, 0, "灵泉坳", "山坳中央有一汪清泉。玄鉴微微发热，指向岩缝边的一丛灵泉藻。", resource: "mat_spirit_spring_algae", amount: 2);
         foreach (var parent in previous) connect_nodes(parent, spring);
         var trace = nextId++;
         Add(trace, NodeType.EVENT, 7, 0, "半山腰爪痕", "岩石上留着一道深重爪痕，前方的山势愈发陡峭。", eventId: "back_hill_high_beast");

@@ -1,5 +1,7 @@
 using Godot;
 using Godot.Collections;
+using System;
+using System.Collections.Generic;
 
 /// <summary>百川区域人物的静态根源与动态状态。所有世界行为都必须能回溯到这里或行动记录。</summary>
 public partial class WorldNpcData : Resource
@@ -33,6 +35,10 @@ public partial class WorldNpcData : Resource
 
     [Export] public string faction_id = "";
     [Export] public string formal_identity = "";
+    /// <summary>玉虚师承候选之间的稳定关联；不与私人关系分数合并。</summary>
+    [Export] public bool is_yuxu_lineage_staff;
+    [Export] public string sect_assigned_guide_npc_id = "";
+    [Export] public string sect_teacher_npc_id = "";
     [Export] public Array<string> learned_gongfa_ids = [];
     [Export] public Array<string> equipment_ids = [];
     [Export] public Dictionary resources = [];
@@ -42,11 +48,15 @@ public partial class WorldNpcData : Resource
     [Export] public Dictionary carried_items = [];
 
     [Export] public string personality = "";
+    /// <summary>社交四倾向首版定性档；与旧性格、心境、业力及关系分开，保存后不重抽。</summary>
+    [Export] public Dictionary social_personality = [];
     [Export] public string long_term_goal = "";
     [Export] public string short_term_goal = "";
     [Export] public Array<string> behavior_tags = [];
     [Export] public Array<string> relation_tags = [];
     [Export] public int player_relationship;
+    /// <summary>与主角实际交往的记忆；姓名、境界须经交流获知，不由好感分数推导。</summary>
+    [Export] public Dictionary player_social_memory = [];
     /// <summary>NPC 对其他稳定人物 ID 的个人关系分值；与玩家关系、势力态度、区域声望分开保存。</summary>
     [Export] public Dictionary personal_relationships = [];
     /// <summary>区域公开声望，按 region_id 分开；不与势力态度或私人关系合并。</summary>
@@ -77,7 +87,9 @@ public partial class WorldNpcData : Resource
     [Export] public string dungeon_previous_node_id = "";
     [Export] public float dungeon_travel_progress;
     [Export] public int dungeon_step_index;
+    [Export] public int dungeon_placement_version;
     [Export] public Array<NpcActionRecord> action_history = [];
+    private HashSet<string>? _dungeonActionTargets;
 
     public int get_resource(string resource_id) => resources.TryGetValue(resource_id, out var value) ? value.AsInt32() : 0;
     public void change_resource(string resource_id, int delta) => resources[resource_id] = Mathf.Max(0, get_resource(resource_id) + delta);
@@ -90,8 +102,22 @@ public partial class WorldNpcData : Resource
         else carried_items[itemPath] = next;
     }
     public long get_regional_renown(string regionId) => regional_renown.TryGetValue(regionId, out var value) ? value.AsInt64() : 0L;
+    public bool has_dungeon_action_with_target(string targetNpcId)
+    {
+        if (_dungeonActionTargets is null)
+        {
+            _dungeonActionTargets = new HashSet<string>(StringComparer.Ordinal);
+            foreach (var entry in action_history)
+                if (entry is not null && entry.action_id.StartsWith("dungeon_", StringComparison.Ordinal))
+                    _dungeonActionTargets.Add(entry.target_npc_id);
+        }
+        return _dungeonActionTargets.Contains(targetNpcId);
+    }
+
     public void record(NpcActionRecord entry)
     {
         action_history.Add(entry);
+        if (_dungeonActionTargets is not null && entry.action_id.StartsWith("dungeon_", StringComparison.Ordinal))
+            _dungeonActionTargets.Add(entry.target_npc_id);
     }
 }

@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>大世界术法入口预览</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #302e28;
+      --muted-ink: #777263;
+      --paper: #eee7d3;
+      --paper-light: #f7f2e4;
+      --paper-edge: #9e9073;
+      --jade: #687d70;
+      --jade-dark: #435c51;
+      --cinnabar: #a65343;
+      --gold: #b18e4f;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; background: #d3cebf; color: var(--ink); font-family: "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; }
+    body { padding: 20px; }
+    .wrap { width: min(100%, 1672px); margin: 0 auto; }
+    .caption { margin: 0 0 10px 4px; color: #48463f; font-size: 14px; letter-spacing: .04em; }
+    .screen {
+      position: relative; width: 100%; aspect-ratio: 1672 / 941; overflow: hidden;
+      border: 1px solid #887e68; border-radius: 7px;
+      background: #e7dfca; box-shadow: 0 16px 46px #342f2426;
+      isolation: isolate;
+    }
+    .map {
+      position: absolute; inset: 0; overflow: hidden;
+      background:
+        radial-gradient(ellipse at 47% 54%, #c7d0bd66 0 8%, transparent 25%),
+        radial-gradient(ellipse at 68% 33%, #d1c6a16e 0 10%, transparent 23%),
+        radial-gradient(ellipse at 27% 68%, #d0c5a76e 0 13%, transparent 29%),
+        linear-gradient(135deg, #e7e1cf, #ddd7c5 44%, #e8e2d2);
+    }
+    .map::before {
+      content: ""; position: absolute; inset: 0; opacity: .33;
+      background-image: linear-gradient(#7775681a 1px, transparent 1px), linear-gradient(90deg, #7775681a 1px, transparent 1px);
+      background-size: 6.1% 10.4%;
+      mask-image: linear-gradient(90deg, transparent, #000 11%, #000 88%, transparent);
+    }
+    .river { position:absolute; width: 70%; height: 31%; left: 15%; top: 36%; opacity:.62; transform: rotate(-12deg); border: 3px solid transparent; border-bottom-color:#7b979188; border-radius:50%; filter:blur(1px); }
+    .river::after { content:""; position:absolute; width:60%; height:75%; right:-5%; top:20%; border-bottom:2px solid #7b979177; border-radius:50%; transform:rotate(18deg); }
+    .ridge { position:absolute; width:38%; height:23%; top:17%; left:40%; opacity:.22; background:repeating-linear-gradient(162deg, transparent 0 19px, #696a5d 20px 22px, transparent 23px 34px); clip-path:polygon(0 89%, 14% 47%, 25% 68%, 43% 11%, 59% 72%, 72% 38%, 100% 100%); }
+    .forest { position:absolute; width:24%; height:20%; left:18%; top:31%; opacity:.45; background:radial-gradient(ellipse at 14% 65%,#718273 0 3%,transparent 4%),radial-gradient(ellipse at 25% 48%,#7e8978 0 3%,transparent 4%),radial-gradient(ellipse at 37% 69%,#6f806e 0 4%,transparent 5%),radial-gradient(ellipse at 49% 45%,#82907d 0 4%,transparent 5%),radial-gradient(ellipse at 65% 72%,#718273 0 4%,transparent 5%),radial-gradient(ellipse at 80% 50%,#82907d 0 4%,transparent 5%); }
+    .map-title { position:absolute; left: 32px; top: 24px; display:flex; align-items:center; gap:15px; color:#3d3b33; }
+    .back { border:1px solid #847a65; background:#f2ecdccc; border-radius:6px; padding:10px 18px; color:var(--ink); font-size:15px; }
+    .title { font-size:22px; letter-spacing:.12em; }
+    .subtitle { margin-top:4px; color:#777263; font-size:12px; letter-spacing:.08em; }
+    .toolbar { position:absolute; right:22px; top:20px; display:flex; align-items:center; gap:7px; }
+    .tool { display:grid; place-items:center; min-width:42px; height:42px; padding:0 12px; color:#39372f; background:#f3eedfcc; border:1px solid #968b73; border-radius:6px; font-size:14px; box-shadow:0 2px 6px #3b342414; }
+    .tool.zoom { font-size:19px; min-width:42px; }
+    .left-card { position:absolute; left:26px; top:119px; width:230px; border:1px solid #a99b7e; border-radius:8px; background:#f0ead8d9; box-shadow:0 3px 14px #544b3920; padding:16px 17px; }
+    .left-card h3 { margin:0 0 10px; font-size:16px; font-weight:500; }
+    .left-card .row { display:flex; justify-content:space-between; padding:7px 0; border-top:1px solid #b9ad9566; color:#5b584d; font-size:13px; }
+    .left-card .row b { color:#39372f; font-weight:500; }
+    .status { position:absolute; left:26px; bottom:24px; width:230px; padding:12px 15px; border:1px solid #a99b7e; border-radius:8px; background:#f0ead8e8; font-size:13px; line-height:1.75; color:#5d594e; }
+    .status strong { color:#34332d; font-weight:500; }
+    .marker { position:absolute; display:grid; place-items:center; width:90px; height:90px; border-radius:50%; color:#47463d; font-size:14px; text-align:center; text-shadow:0 1px #f6f0df; }
+    .marker::before { content:""; position:absolute; inset:11px; border:1px solid #6f756588; border-radius:50%; box-shadow:inset 0 0 15px #66736418; }
+    .marker small { display:block; margin-top:3px; font-size:11px; color:#777263; }
+    .marker.yuxu { left:35%; top:58%; }
+    .marker.stone { left:58%; top:31%; }
+    .marker.east { left:72%; top:64%; }
+    .marker.current { left:44%; top:47%; color:#8f493c; }
+    .marker.current::before { border:2px solid #a65343a6; box-shadow:0 0 0 5px #a6534317; }
+    .route { position:absolute; left:49%; top:54%; width:22%; height:1px; border-top:3px dotted #9c604dba; transform:rotate(-16deg); transform-origin:left; }
+    .route-dots { position:absolute; left:60%; top:48%; color:#8d5e4d; font-size:19px; letter-spacing:12px; transform:rotate(-16deg); }
+    .selection-card { position:absolute; left:282px; bottom:26px; width:488px; padding:14px 17px 15px; border:1px solid #a99b7e; border-radius:8px; background:#f0ead9ed; box-shadow:0 3px 14px #544b3920; }
+    .selection-card .eyebrow { font-size:11px; color:#7c7667; letter-spacing:.11em; }
+    .selection-card h3 { margin:4px 0 10px; font-size:16px; font-weight:500; }
+    .selection-card .mini-row { display:flex; justify-content:space-between; color:#696456; font-size:12px; }
+    .selection-card b { color:#39372f; font-weight:500; }
+    .spell-tab {
+      position:absolute; z-index:4; right:18px; top:48%; width:54px; min-height:132px; transform:translateY(-50%);
+      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;
+      border:1px solid #917e58; border-radius:10px 3px 3px 10px; background:#eee5cdee; color:#403a2d;
+      box-shadow:0 4px 16px #342c1d2d; cursor:pointer; transition:background .18s, transform .18s;
+    }
+    .spell-tab:hover { background:#f5edda; transform:translate(-2px,-50%); }
+    .seal { display:grid; place-items:center; width:30px; height:30px; border:1px solid #a65343; color:#a65343; font-family:serif; font-size:20px; border-radius:4px; transform:rotate(45deg); }
+    .seal span { transform:rotate(-45deg); }
+    .tab-text { writing-mode:vertical-rl; letter-spacing:.18em; font-size:14px; }
+    .count { font-size:11px; color:#6d6759; }
+    .side-panel {
+      position:absolute; z-index:5; top:78px; right:82px; bottom:22px; width:min(390px, 38vw);
+      padding:22px 20px 18px; display:flex; flex-direction:column; gap:14px;
+      border:1px solid #9e9073; border-radius:10px; background:rgba(246,241,226,.97);
+      box-shadow:0 10px 30px #302b2028; backdrop-filter:blur(4px);
+      transform:translateX(calc(100% + 80px)); opacity:0; pointer-events:none; transition:transform .24s ease, opacity .18s ease;
+    }
+    .side-panel.open { transform:translateX(0); opacity:1; pointer-events:auto; }
+    .panel-head { display:flex; justify-content:space-between; align-items:flex-start; padding-bottom:12px; border-bottom:1px solid #b6aa9066; }
+    .panel-head h2 { margin:0; font-size:22px; font-weight:500; letter-spacing:.08em; }
+    .panel-head p { margin:5px 0 0; color:#777263; font-size:12px; }
+    .close { border:0; background:transparent; color:#686253; font-size:23px; cursor:pointer; padding:0 4px; }
+    .category { display:flex; align-items:center; gap:8px; color:#4a574c; font-size:13px; }
+    .category span { padding:6px 12px; border-radius:14px; border:1px solid #9da694; background:#dce3d8; }
+    .spell-card { padding:14px 14px 13px; border:1px solid #9a8b6c; border-radius:8px; background:linear-gradient(135deg,#eee5d0,#e6e1cf); cursor:pointer; }
+    .spell-card:hover { border-color:#728273; }
+    .spell-top { display:flex; gap:12px; align-items:center; }
+    .spell-icon { width:46px; height:46px; flex:0 0 46px; display:grid; place-items:center; border:1px solid #a65343; border-radius:50%; color:#a65343; font-family:serif; font-size:23px; background:#f4eddd; }
+    .spell-name { font-size:18px; font-weight:500; }
+    .spell-type { margin-top:4px; color:#777263; font-size:12px; }
+    .spell-summary { margin:11px 0 0 58px; color:#5c594f; font-size:13px; line-height:1.6; }
+    .detail { flex:1; overflow:auto; padding:3px 2px 0; }
+    .detail h3 { margin:1px 0 8px; font-size:16px; font-weight:500; }
+    .source { color:#777263; font-size:12px; margin-bottom:13px; }
+    .effect { padding:11px 12px; border-left:3px solid #718574; background:#e1e6db8c; font-size:13px; line-height:1.65; }
+    .stats { margin:13px 0 0; display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+    .stat { padding:9px 10px; border:1px solid #c0b49a; border-radius:6px; background:#f5efdf; }
+    .stat small { display:block; color:#7b7668; font-size:11px; }
+    .stat strong { display:block; margin-top:4px; color:#38362e; font-size:14px; font-weight:500; }
+    .compare { margin-top:14px; border-top:1px solid #b6aa9066; padding-top:12px; }
+    .compare-title { margin-bottom:8px; font-size:13px; font-weight:500; }
+    .compare-row { display:flex; justify-content:space-between; padding:6px 0; font-size:12px; color:#6d6759; }
+    .compare-row strong { color:#37352f; font-weight:500; }
+    .compare-row.highlight { color:#435c51; border-top:1px solid #c6cdbd; }
+    .compare-row.highlight strong { color:#435c51; }
+    .cost-line { margin-top:8px; padding:9px 10px; border-radius:6px; background:#efe5cf; font-size:12px; color:#625c4c; }
+    .cost-line b { color:#8f493c; font-weight:600; }
+    .footnote { margin-top:10px; color:#858071; font-size:11px; line-height:1.5; }
+    .panel-actions { display:flex; gap:9px; padding-top:12px; border-top:1px solid #b6aa9066; }
+    .action { flex:1; min-height:44px; border-radius:6px; font-size:14px; cursor:pointer; }
+    .action.secondary { border:1px solid #9d947e; color:#575346; background:#eee8d8; }
+    .action.primary { border:1px solid #4b6254; color:#f5f0df; background:#5f7968; box-shadow:inset 0 1px #ffffff33; }
+    .action.primary:hover { background:#4c6858; }
+    .action.primary:disabled { opacity:.45; cursor:not-allowed; }
+    .travel-status { display:none; position:absolute; z-index:3; top:88px; left:50%; transform:translateX(-50%); padding:10px 17px; border:1px solid #928262; border-radius:18px; background:#f2ead5ed; box-shadow:0 3px 12px #39322620; color:#4c493e; font-size:12px; }
+    .travel-status.visible { display:block; }
+    .travel-status b { color:#435c51; font-weight:500; }
+    .travel-status button { margin-left:14px; border:0; background:transparent; color:#a65343; cursor:pointer; font-size:12px; }
+    .toast { position:absolute; z-index:8; left:50%; bottom:24px; transform:translate(-50%,20px); opacity:0; padding:10px 16px; border:1px solid #8f8062; border-radius:6px; background:#f4eedf; color:#464238; font-size:13px; transition:.2s; pointer-events:none; }
+    .toast.visible { opacity:1; transform:translate(-50%,0); }
+    .legend { position:absolute; right:28px; bottom:24px; color:#777263; font-size:11px; }
+    @media (max-width: 760px) {
+      body { padding:8px; }
+      .screen { min-height:620px; aspect-ratio:auto; }
+      .left-card { display:none; }
+      .status { left:14px; bottom:14px; width:180px; }
+      .selection-card { left:14px; right:74px; bottom:112px; width:auto; }
+      .toolbar .tool:nth-child(-n+2) { display:none; }
+      .side-panel { right:62px; top:78px; bottom:16px; width:min(390px,calc(100% - 84px)); padding:17px 15px 13px; }
+      .spell-tab { right:8px; }
+      .legend { display:none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <p class="caption">大世界术法入口 · 交互原型（术法规则已确认，路线数据为示例）</p>
+    <section class="screen" aria-label="世界地图术法簿预览">
+      <div class="map">
+        <div class="river"></div><div class="ridge"></div><div class="forest"></div>
+        <div class="map-title"><button class="back">返回</button><div><div class="title">百川 · 行旅图</div><div class="subtitle">云息三层　·　行旅时间随行动推进</div></div></div>
+        <div class="toolbar"><button class="tool">格线：显</button><button class="tool zoom">−</button><button class="tool">100%</button><button class="tool zoom">＋</button></div>
+        <div class="left-card"><h3>当前行旅</h3><div class="row"><span>所在区域</span><b>百川中部</b></div><div class="row"><span>已发现地点</span><b>12 处</b></div><div class="row"><span>行旅状态</span><b id="travel-label">停驻</b></div></div>
+        <div class="marker yuxu">玉虚仙宗<small>西南</small></div>
+        <div class="marker stone">白石镇<small>聚集地</small></div>
+        <div class="marker east">东林地<small>林缘</small></div>
+        <div class="marker current">当前位置<small>第 52 格</small></div>
+        <div class="route"></div><div class="route-dots">· · · · ·</div>
+        <div class="selection-card">
+          <div class="eyebrow">已选目的地</div>
+          <h3>白石镇　·　已发现路线</h3>
+          <div class="mini-row"><span>距离 <b>240 公里</b>　6 格</span><span>普通行旅 <b id="ordinary-time">6 日</b></span></div>
+        </div>
+        <div class="status"><strong>云息三层</strong><br>生命　72 / 100　　体力　<span id="stamina">32</span> / 100</div>
+        <div class="legend">点击地格预览路线　·　再次点击启程</div>
+      </div>
+      <button class="spell-tab" id="spell-tab" aria-label="打开术法簿"><span class="seal"><span>游</span></span><span class="tab-text" id="tab-title">术法簿</span><span class="count">1 种</span></button>
+      <aside class="side-panel open" id="side-panel">
+        <header class="panel-head"><div><h2>术法簿</h2><p>已学 1 种 · 大世界可用</p></div><button class="close" id="close-panel" aria-label="关闭">×</button></header>
+        <div class="category"><span>遁行　1</span><small>随功法研读解锁</small></div>
+        <article class="spell-card" id="spell-card" tabindex="0" aria-label="游骸行遁">
+          <div class="spell-top"><div class="spell-icon">骸</div><div><div class="spell-name">游骸行遁</div><div class="spell-type">遁行 · 持续施展</div></div></div>
+          <p class="spell-summary">行旅有效遁速提高 50%；每跨入一格消耗 1 点大世界体力。</p>
+        </article>
+        <div class="detail">
+          <h3>游骸行遁</h3>
+          <div class="source">《乘物游骸真经》· 第一卷「游骸」</div>
+          <div class="effect">持续行旅时，按角色遁速 × 1.5 计算每格耗时。地形耗时修正仍生效；逐格揭雾与旅途事件照常结算。</div>
+          <div class="stats">
+            <div class="stat"><small>本段提升</small><strong>遁速 × 1.5</strong></div>
+            <div class="stat"><small>行旅费用</small><strong>每格 1 体力</strong></div>
+            <div class="stat"><small>路线长度</small><strong>6 格 · 240 公里</strong></div>
+            <div class="stat"><small>当前体力</small><strong><span id="stamina-detail">32</span> / 100</strong></div>
+          </div>
+          <div class="compare">
+            <div class="compare-title">本段路线预览</div>
+            <div class="compare-row"><span>普通行旅</span><strong>6 日</strong></div>
+            <div class="compare-row highlight"><span>施展后</span><strong>4 日</strong></div>
+            <div class="compare-row"><span>预计节省</span><strong>2 日</strong></div>
+            <div class="cost-line">预计消耗 <b>6 点体力</b>　·　启程后预计余 <b>26 点</b></div>
+            <div class="footnote">示例按平地、遁速 100 计算。实际路线预览会计入所经地形。</div>
+          </div>
+        </div>
+        <footer class="panel-actions"><button class="action secondary" id="close-btn">返回地图</button><button class="action primary" id="cast-btn">施术并启程</button></footer>
+      </aside>
+      <div class="travel-status" id="travel-status"><b>游骸行遁中</b>　已行 0 / 6 格　·　已耗 0 体力　·　预计剩余 4 日<button id="stop-btn">中止行程</button></div>
+      <div class="toast" id="toast">游骸行遁已启用，开始按路线逐格行进。</div>
+    </section>
+  </main>
+  <script>
+    const panel = document.getElementById('side-panel');
+    const tab = document.getElementById('spell-tab');
+    const tabTitle = document.getElementById('tab-title');
+    const castButton = document.getElementById('cast-btn');
+    const travelStatus = document.getElementById('travel-status');
+    const toast = document.getElementById('toast');
+    let traveling = false;
+    function setPanel(open) { panel.classList.toggle('open', open); }
+    function showToast(text) {
+      toast.textContent = text; toast.classList.add('visible');
+      window.setTimeout(() => toast.classList.remove('visible'), 2100);
+    }
+    tab.addEventListener('click', () => setPanel(!panel.classList.contains('open')));
+    document.getElementById('close-panel').addEventListener('click', () => setPanel(false));
+    document.getElementById('close-btn').addEventListener('click', () => setPanel(false));
+    document.getElementById('spell-card').addEventListener('click', () => showToast('已选中游骸行遁：路线对照已更新。'));
+    castButton.addEventListener('click', () => {
+      if (traveling) return;
+      traveling = true;
+      castButton.textContent = '行遁进行中';
+      castButton.disabled = true;
+      tabTitle.textContent = '行遁中';
+      document.getElementById('travel-label').textContent = '游骸行遁';
+      travelStatus.classList.add('visible');
+      setPanel(false);
+      showToast('游骸行遁已启用，开始按路线逐格行进。');
+    });
+    document.getElementById('stop-btn').addEventListener('click', () => {
+      traveling = false;
+      castButton.textContent = '施术并启程';
+      castButton.disabled = false;
+      tabTitle.textContent = '术法簿';
+      document.getElementById('travel-label').textContent = '停驻';
+      travelStatus.classList.remove('visible');
+      setPanel(true);
+      showToast('行程已中止，术法结束。');
+    });
+    document.addEventListener('keydown', event => { if (event.key === 'Escape') setPanel(false); });
+  </script>
+</body>
+</html>

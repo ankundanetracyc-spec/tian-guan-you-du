@@ -7,62 +7,62 @@
         <mxCell id="title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=20;" value="内景损益篇" vertex="1">
           <mxGeometry height="74" width="560" x="740" y="20" as="geometry" />
         </mxCell>
-        <mxCell id="overview" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=15;" value="锻躯秘籍 / 可主修、可辅修&lt;br&gt;主修可修至：云息十三层&lt;br&gt;以限时内外伤层数强化锻躯攻伐与物理承伤；以多段攻伐收束&lt;br&gt;锻躯内伤由对应技能施加；外伤只在相应技能效果明确时加入&lt;br&gt;即时战斗适配：60 FPS队列；心法被动：战斗开始时显示在Buff栏，常驻至战斗结束；气血无自动回落，身法、伤势与整场限次按公共规则。&lt;br&gt;淬炼修正只作用于战斗内属性，并随本卷心法被动显示在Buff栏信息详情；战斗结束移除，不进入角色永久属性。" vertex="1">
+        <mxCell id="overview" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=15;" value="云息秘籍 / 可主修、可辅修&lt;br&gt;主修可修至：云息十层&lt;br&gt;以限时内外伤层数强化主动技能物理伤害与物理承伤；以多段攻伐收束&lt;br&gt;内伤由对应技能施加；外伤只在相应技能效果明确时加入&lt;br&gt;即时战斗适配：60 FPS队列；心法被动：战斗开始时显示在Buff栏，常驻至战斗结束；气血无自动回落，身法、伤势与整场限次按公共规则。&lt;br&gt;修持修正只作用于战斗内属性，并随本卷心法被动显示在Buff栏信息详情；战斗结束移除，不进入角色永久属性。" vertex="1">
           <mxGeometry height="185" width="560" x="740" y="140" as="geometry" />
         </mxCell>
-        <mxCell id="c1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;" value="第一卷：损益&#xA;卷章ID：sun_yi&#xA;顺序：1&#xA;定位：立损益之法，以主动承伤积累内外伤状态&#xA;学成可修至：云息三层&#xA;学习条件：&#xA;灵根：任意&#xA;路径：未确定或锻躯&#xA;境界：凡人境界及以上&#xA;研读属性：体魄≥6；体道造诣≥6&#xA;学会永久属性：体魄 +1" vertex="1">
-          <mxGeometry height="240" width="340" x="850" y="360" as="geometry" />
+        <mxCell id="c1" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第一卷：损益&lt;br&gt;卷章ID：sun_yi&lt;br&gt;顺序：1&lt;br&gt;&lt;br&gt;定位：立损益之法，以主动承伤积累内外伤状态&lt;br&gt;学成可修至：云息三层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：凡人境界及以上&lt;br&gt;研读属性：体魄≥6&lt;br&gt;&lt;br&gt;学会永久属性：体魄 +1；体道造诣 +0.5&lt;/div&gt;" vertex="1">
+          <mxGeometry height="380" width="340" x="850" y="370" as="geometry" />
         </mxCell>
-        <mxCell id="c1_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="淬炼（仅战斗内）&lt;br&gt;战斗属性：最大生命 +35&lt;br&gt;每层伤势使自身所受物理伤害减免额外 +0.5 个百分点" vertex="1">
-          <mxGeometry height="92" width="260" x="360" y="395" as="geometry" />
+        <mxCell id="c1_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;最大生命 +15%&lt;br&gt;每层伤势使自身所受物理伤害减免额外 +0.5 个百分点&lt;/div&gt;" vertex="1">
+          <mxGeometry height="150" width="260" x="360" y="370" as="geometry" />
         </mxCell>
-        <mxCell id="c1_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="化法&lt;br&gt;技能：淬厉（追加效果，保留原效果）&lt;br&gt;类型：术诀&lt;br&gt;关键词：伤势、攻防联动&lt;br&gt;耗费：精力 1、法力 0&lt;br&gt;目标：自身&lt;br&gt;效果：获得内伤2层和身法1层；结算后若当前内伤不少于2层，额外获得借力1层。" vertex="1">
-          <mxGeometry height="250" width="280" x="1360" y="390" as="geometry" />
+        <mxCell id="c1_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;技能：淬厉&lt;br&gt;类型：术诀&lt;br&gt;关键词：伤势、攻防联动&lt;br&gt;耗费：精力 1、法力 0&lt;br&gt;目标：自身&lt;br&gt;原技能效果：获得内伤2层和身法1层。&lt;br&gt;化法追加：结算后若当前内伤不少于2层，额外获得借力1层。&lt;br&gt;使用次数：不限&lt;/div&gt;" vertex="1">
+          <mxGeometry height="240" width="280" x="1360" y="370" as="geometry" />
         </mxCell>
-        <mxCell id="c1_cards" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：内景损益&lt;br&gt;习得：淬厉&lt;br&gt;&lt;br&gt;内景损益：&lt;br&gt;类型：心法&lt;br&gt;关键词：增伤、防御、伤势&lt;br&gt;效果：获得同名唯一Buff；每有1层内伤或外伤，自身主动施放的锻躯物理伤害提高3%。&lt;br&gt;主修额外追加：每层内伤或外伤额外提高2%，即合计提高5%。&lt;br&gt;&lt;br&gt;淬厉：&lt;br&gt;类型：术诀&lt;br&gt;关键词：闪避、伤势&lt;br&gt;耗费：精力 1、法力 0&lt;br&gt;目标：自身&lt;br&gt;&lt;br&gt;效果：向自身获得内伤2层；获得身法1层。&lt;/div&gt;" vertex="1">
-          <mxGeometry height="520" width="740" x="-400" y="150" as="geometry" />
+        <mxCell id="c1_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：内景损益&lt;br&gt;习得：淬厉&lt;br&gt;&lt;br&gt;内景损益：&lt;br&gt;类型：心法&lt;br&gt;关键词：增伤、防御、伤势&lt;br&gt;效果：每层当前内伤或外伤，使自身主动物理伤害倍率提高3%。&lt;br&gt;主修额外效果：每层伤势提供的上述伤害倍率再提高1个百分点。&lt;br&gt;&lt;br&gt;淬厉：&lt;br&gt;类型：术诀&lt;br&gt;关键词：闪避、伤势&lt;br&gt;耗费：精力 1、法力 0&lt;br&gt;目标：自身&lt;br&gt;效果：获得内伤2层和身法1层。&lt;br&gt;&lt;br&gt;大世界术法：观照山河&lt;br&gt;类型：探察&lt;br&gt;施展方式：一次施展&lt;br&gt;习得条件：学会本卷后永久解锁；无需装配来源秘籍。&lt;br&gt;使用场景：世界地图静止时；行旅、战斗和事件期间不可用&lt;br&gt;目标：以当前地格为中心&lt;br&gt;耗费：5点大世界体力&lt;br&gt;时间：施术后推进1小时，NPC与全局世界时间按统一时钟推进&lt;br&gt;效果：永久揭开以当前位置为中心、半径8格的圆形地图迷雾（格距平方不超过64）；不移动角色，不触发地点进入、发现奖励或沿途事件，也不揭示未配置在地图上的人物或事件内容。&lt;br&gt;使用次数：不限；体力不足时不可施展&lt;br&gt;中止与失败：场景不合法或体力不足时不扣费、不推进时间。&lt;br&gt;实施状态：候选术法；地图施放尚未接入。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="600" width="740" x="-400" y="370" as="geometry" />
         </mxCell>
-        <mxCell id="c2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;" value="第二卷：履薄&#xA;卷章ID：lu_bo&#xA;顺序：2&#xA;定位：以承伤造痕，使防守取舍也累积外伤状态&#xA;学成可修至：云息六层&#xA;学习条件：&#xA;灵根：任意&#xA;路径：锻躯&#xA;境界：云息三层及以上&#xA;前置：已学损益&#xA;研读属性：体魄≥7；体道造诣≥7&#xA;学会永久属性：体魄 +1" vertex="1">
-          <mxGeometry height="240" width="340" x="850" y="650" as="geometry" />
+        <mxCell id="c2" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第二卷：履薄&lt;br&gt;卷章ID：lu_bo&lt;br&gt;顺序：2&lt;br&gt;&lt;br&gt;定位：以承伤造痕，使防守取舍也累积外伤状态&lt;br&gt;学成可修至：云息六层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：云息三层及以上&lt;br&gt;前置：已学损益&lt;br&gt;研读属性：体魄≥7；体道造诣≥0.5&lt;br&gt;&lt;br&gt;学会永久属性：体道造诣 +0.5&lt;/div&gt;" vertex="1">
+          <mxGeometry height="380" width="340" x="850" y="1040" as="geometry" />
         </mxCell>
-        <mxCell id="c2_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="淬炼（仅战斗内）&lt;br&gt;战斗属性：物理伤害 +3%" vertex="1">
-          <mxGeometry height="92" width="270" x="390" y="760" as="geometry" />
+        <mxCell id="c2_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;物理伤害 +4%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="270" x="390" y="1040" as="geometry" />
         </mxCell>
-        <mxCell id="c2_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="化法&lt;br&gt;卸力（追加效果，保留基础效果）&lt;br&gt;类型：守御&lt;br&gt;关键词：伤势、防御&lt;br&gt;耗费：精力 1、法力 0&lt;br&gt;目标：自身（敌方攻击自身时应对）&lt;br&gt;效果：敌方攻击自身时获得化解；化解层数 = max(1, floor(体魄&#247;2) + floor(体道造诣&#247;3))，每层抵消本次攻击1点物理伤害。该次攻击结算后，若自身生命实际减少，获得外伤2层。" vertex="1">
-          <mxGeometry height="250" width="290" x="1360" y="680" as="geometry" />
+        <mxCell id="c2_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;技能：卸力&lt;br&gt;类型：守御&lt;br&gt;关键词：伤势、防御&lt;br&gt;耗费：精力 1、法力 0&lt;br&gt;目标：自身（敌方攻击自身时应对）&lt;br&gt;原技能效果：应对敌方对自身的物理攻击，获得化解；化解层数 = max(1, floor(体魄÷2) + floor(体道造诣÷3))，每层抵消本次攻击1点物理伤害，攻击结算后消散。&lt;br&gt;化法追加：该次攻击结算后，若自身生命实际减少，获得外伤2层。&lt;br&gt;使用次数：不限&lt;/div&gt;" vertex="1">
+          <mxGeometry height="320" width="290" x="1360" y="1040" as="geometry" />
         </mxCell>
-        <mxCell id="c2_cards" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;习得：履薄&lt;br&gt;&lt;br&gt;履薄：&lt;br&gt;类型：术诀&lt;br&gt;关键词：伤势&lt;br&gt;耗费：精力 1、法力 0&lt;br&gt;目标：自身&lt;br&gt;&lt;br&gt;效果：获得持续1回合的履薄状态；获得状态的回合不扣时长，从下一完整回合结束时递减；效果期间每第二次受到敌方攻击并损失实际生命时，额外获得外伤1层；计数在效果结束或刷新时归零。&lt;/div&gt;" vertex="1">
-          <mxGeometry height="384" width="740" x="-400" y="766" as="geometry" />
+        <mxCell id="c2_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：内景损益&lt;br&gt;&lt;br&gt;内景损益：&lt;br&gt;类型：心法&lt;br&gt;关键词：增伤、防御、伤势&lt;br&gt;效果：每层当前内伤或外伤，使自身主动物理伤害倍率提高3%。 每回合首次受到实际生命伤害后，获得外伤1层。&lt;br&gt;主修额外效果：每层伤势提供的上述伤害倍率再提高1个百分点。&lt;br&gt;&lt;br&gt;习得：无新增主动技能&lt;/div&gt;" vertex="1">
+          <mxGeometry height="220" width="740" x="-400" y="1040" as="geometry" />
         </mxCell>
-        <mxCell id="c3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;" value="第三卷：守缺&#xA;卷章ID：shou_que&#xA;顺序：3&#xA;定位：在内外伤状态的时限内维持攻势&#xA;学成可修至：云息九层&#xA;学习条件：&#xA;灵根：任意&#xA;路径：锻躯&#xA;境界：云息六层及以上&#xA;前置：已学履薄&#xA;研读属性：体魄≥9；体道造诣≥8&#xA;学会永久属性：体魄 +0.5；体道造诣 +0.5" vertex="1">
-          <mxGeometry height="240" width="340" x="850" y="960" as="geometry" />
+        <mxCell id="c3" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第三卷：守缺&lt;br&gt;卷章ID：shou_que&lt;br&gt;顺序：3&lt;br&gt;&lt;br&gt;定位：在内外伤状态的时限内维持攻势&lt;br&gt;学成可修至：云息九层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：云息六层及以上&lt;br&gt;前置：已学履薄&lt;br&gt;研读属性：体魄≥9；体道造诣≥1&lt;br&gt;&lt;br&gt;学会永久属性：体魄 +0.5；体道造诣 +1&lt;/div&gt;" vertex="1">
+          <mxGeometry height="380" width="340" x="850" y="1490" as="geometry" />
         </mxCell>
-        <mxCell id="c3_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="淬炼（仅战斗内）&lt;br&gt;战斗属性：每层伤势使自身所受物理伤害减免额外 +0.5 个百分点&lt;br&gt;最大生命 +20" vertex="1">
-          <mxGeometry height="92" width="270" x="400" y="995" as="geometry" />
+        <mxCell id="c3_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;最大生命 +10%&lt;br&gt;每层伤势使自身所受物理伤害减免额外 +0.5 个百分点&lt;/div&gt;" vertex="1">
+          <mxGeometry height="150" width="270" x="400" y="1490" as="geometry" />
         </mxCell>
-        <mxCell id="c3_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="化法&lt;br&gt;技能：发劲（追加效果，保留原效果）&lt;br&gt;类型：攻伐&lt;br&gt;关键词：伤势、增伤&lt;br&gt;耗费：精力 1、法力 0&lt;br&gt;目标：指定1名敌方&lt;br&gt;伤害类型：物理&lt;br&gt;伤害公式：round(8 + 体魄×0.40 + 体道造诣×0.20 + 敏捷×0.25)&lt;br&gt;效果：保留发劲基础伤害；每2层当前内伤与外伤使本次伤害倍率额外提高5%，最多提高20%。" vertex="1">
-          <mxGeometry height="250" width="290" x="1360" y="990" as="geometry" />
+        <mxCell id="c3_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;技能：发劲&lt;br&gt;类型：攻伐&lt;br&gt;关键词：伤势、增伤&lt;br&gt;耗费：精力 1、法力 0&lt;br&gt;目标：指定1名敌方&lt;br&gt;伤害类型：物理&lt;br&gt;原技能效果：对指定1名敌方造成物理伤害；伤害 = round(8 + 体魄×0.40 + 体道造诣×0.20 + 敏捷×0.25)。&lt;br&gt;化法追加：每2层当前内伤与外伤使本次伤害倍率额外提高5%，最多提高20%。&lt;br&gt;使用次数：不限&lt;/div&gt;" vertex="1">
+          <mxGeometry height="300" width="290" x="1360" y="1490" as="geometry" />
         </mxCell>
-        <mxCell id="c3_cards" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;习得：无新增主动技能&lt;br&gt;&lt;br&gt;本卷效果：延续内景损益对当前内伤与外伤状态层数的读取；不新增伤势资源；内外伤分别计时、各自最多4层。&lt;br&gt;&lt;br&gt;设计注意：伤势数量与物理增伤均读取内伤、外伤状态层数之和；状态过期或被消耗后不再计入。&lt;/div&gt;" vertex="1">
-          <mxGeometry height="350" width="740" x="-400" y="1220" as="geometry" />
+        <mxCell id="c3_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：内景损益&lt;br&gt;&lt;br&gt;内景损益：&lt;br&gt;类型：心法&lt;br&gt;关键词：增伤、防御、伤势&lt;br&gt;效果：每层当前内伤或外伤，使自身主动物理伤害倍率提高4%。 每回合首次受到实际生命伤害后，获得外伤1层。&lt;br&gt;主修额外效果：每层伤势提供的上述伤害倍率再提高1个百分点。&lt;br&gt;&lt;br&gt;习得：无新增主动技能&lt;/div&gt;" vertex="1">
+          <mxGeometry height="220" width="740" x="-400" y="1490" as="geometry" />
         </mxCell>
-        <mxCell id="c4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;" value="第四卷：百骸&#xA;卷章ID：bai_hai&#xA;顺序：4&#xA;定位：百骸俱损而力贯一击，完成云息期伤势收束&#xA;学成可修至：云息十三层&#xA;学习条件：&#xA;灵根：任意&#xA;路径：锻躯&#xA;境界：云息九层及以上&#xA;前置：已学守缺&#xA;研读属性：体魄≥10；体道造诣≥10&#xA;学会永久属性：体魄 +0.5；体道造诣 +0.5" vertex="1">
-          <mxGeometry height="240" width="340" x="850" y="1280" as="geometry" />
+        <mxCell id="c4" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第四卷：百骸&lt;br&gt;卷章ID：bai_hai&lt;br&gt;顺序：4&lt;br&gt;&lt;br&gt;定位：百骸俱损而力贯一击，完成云息期伤势收束&lt;br&gt;学成可修至：云息十层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：云息九层及以上&lt;br&gt;前置：已学守缺&lt;br&gt;研读属性：体魄≥10；体道造诣≥2&lt;br&gt;&lt;br&gt;学会永久属性：体道造诣 +1&lt;/div&gt;" vertex="1">
+          <mxGeometry height="400" width="340" x="850" y="1940" as="geometry" />
         </mxCell>
-        <mxCell id="c4_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="淬炼（仅战斗内）&lt;br&gt;战斗属性：物理伤害 +6%" vertex="1">
-          <mxGeometry height="92" width="270" x="370" y="1315" as="geometry" />
+        <mxCell id="c4_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;物理伤害 +6%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="270" x="370" y="1940" as="geometry" />
         </mxCell>
-        <mxCell id="c4_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="化法&lt;br&gt;技能：撼山（追加效果，保留原效果）&lt;br&gt;类型：攻伐&lt;br&gt;关键词：伤势、增伤&lt;br&gt;耗费：精力 3、法力 0&lt;br&gt;目标：指定1名敌方&lt;br&gt;伤害类型：物理&lt;br&gt;伤害公式：round(15 + 体魄×0.85 + 体道造诣×0.55)&lt;br&gt;效果：保留撼山基础伤害；每层当前内伤与外伤使本次伤害倍率额外提高2%，最多提高16%。&lt;br&gt;使用次数：每轮1次" vertex="1">
-          <mxGeometry height="250" width="290" x="1360" y="1310" as="geometry" />
+        <mxCell id="c4_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;技能：痛击&lt;br&gt;类型：攻伐&lt;br&gt;关键词：伤势、增伤&lt;br&gt;耗费：精力 2、法力 0&lt;br&gt;目标：指定1名敌方&lt;br&gt;伤害类型：物理&lt;br&gt;原技能效果：对指定1名敌方造成物理伤害；伤害 = round(11 + 体魄×0.45 + 敏捷×0.30)。&lt;br&gt;化法追加：每层当前内伤或外伤使本次伤害倍率额外提高2%，最多提高16%。&lt;br&gt;使用次数：不限&lt;/div&gt;" vertex="1">
+          <mxGeometry height="300" width="290" x="1360" y="1940" as="geometry" />
         </mxCell>
-        <mxCell id="c4_cards" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;习得：百骸&lt;br&gt;&lt;br&gt;百骸：&lt;br&gt;类型：攻伐&lt;br&gt;关键词：增伤、伤势&lt;br&gt;耗费：精力 3、法力 0&lt;br&gt;目标：指定1名敌方&lt;br&gt;&lt;br&gt;伤害类型：物理&lt;br&gt;效果：对目标结算物理伤害；伤害段数 = 1 + floor(内伤与外伤状态层数合计÷3)；每段伤害 = round(6 + 体魄×0.35 + 体道造诣×0.25)。&lt;br&gt;使用次数：本场1次&lt;/div&gt;" vertex="1">
-          <mxGeometry height="372" width="740" x="-400" y="1638" as="geometry" />
+        <mxCell id="c4_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;习得：百骸&lt;br&gt;&lt;br&gt;百骸：&lt;br&gt;类型：攻伐&lt;br&gt;关键词：增伤、伤势&lt;br&gt;耗费：精力 3、法力 0&lt;br&gt;目标：指定1名敌方&lt;br&gt;伤害类型：物理&lt;br&gt;效果：伤害段数 = 1 + floor((当前内伤与外伤层数合计)÷3)；每段伤害 = round(6 + 体魄×0.35 + 体道造诣×0.25)。&lt;br&gt;使用次数：本场1次&lt;/div&gt;" vertex="1">
+          <mxGeometry height="260" width="740" x="-400" y="1940" as="geometry" />
         </mxCell>
-        <mxCell id="summary" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" value="&lt;div style=&quot;text-align:left;&quot;&gt;淬炼修正只作用于战斗内属性，并随本卷心法被动显示在Buff栏信息详情；战斗结束移除，不进入角色永久属性。&lt;br&gt;战斗主链：淬厉或承伤入伤势 → 每层伤势提高锻躯物理伤害；已学第一、三卷时，每层另使自身所受物理伤害减免提高1个百分点 → 百骸每累计3层内伤与外伤状态多结算一段伤害。&lt;br&gt;与灵枢经筋篇混修时，内外伤状态可再被消耗兑现。&lt;/div&gt;" vertex="1">
-          <mxGeometry height="130" width="420" x="1660" y="650" as="geometry" />
+        <mxCell id="summary" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" value="&lt;div style=&quot;text-align:left;&quot;&gt;现行技能：淬厉、百骸；各卷化法改写淬厉、卸力、发劲、痛击。内外伤状态层数同时提高主动伤害并提供战斗内减伤；第二卷增加首次实损后的外伤，第四卷以多段攻击收束。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="420" x="1660" y="684.0" as="geometry" />
         </mxCell>
-        <mxCell id="status_rules" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;术语与状态详解&lt;br&gt;&lt;br&gt;内外伤&lt;br&gt;本场战斗的限时状态；内伤、外伤各最多4层、分别持续1回合；同类新增层刷新本类计时，主动消耗只移除对应层数；获得层的回合不扣时长，从下一完整回合结束时递减；伤势数量为当前内伤与外伤层数之和。自身技能主动施加为内伤，敌方攻击造成实际生命损失时施加为外伤；消耗后立即移除，不影响最大生命。&lt;br&gt;&lt;br&gt;内景损益&lt;br&gt;本经同名唯一心法Buff，持续至本场战斗结束；每有1层内伤或外伤，自身主动锻躯物理伤害提高3%。主修时每层额外提高2%，合计5%。已学第一、三卷淬炼时，每层伤势另使自身所受物理伤害减免提高1个百分点，每卷提供0.5个百分点；每段结算时读取当前伤势，与其他独立百分比减伤乘算，百分比减伤合计上限90%，并在护盾吸收前结算；仅减免物理伤害。&lt;br&gt;&lt;br&gt;判定边界&lt;br&gt;只有造成生命实际减少的攻击才满足留痕、履薄的承伤条件；化解只是本次攻击的伤害抵消，不是护盾。&lt;/div&gt;&lt;br&gt;&lt;br&gt;身法&lt;br&gt;持续增益状态，最多20层，持续1回合；每层使自身基础身法（dodge）提高1%；获得新层时刷新为1回合；获得层的回合不扣时长，从下一完整回合结束时递减，受击不消耗；1回合时长归零或战斗结束时移除。&lt;br&gt;&lt;br&gt;淬炼&lt;br&gt;仅本场战斗生效，随本经心法Buff显示于图标信息栏；不进入角色永久属性。" vertex="1">
-          <mxGeometry height="430" width="430" x="1660" y="820" as="geometry" />
+        <mxCell id="status_rules" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;术语与状态详解&lt;br&gt;&lt;br&gt;内外伤&lt;br&gt;本场战斗的限时状态；内伤、外伤各最多4层、分别持续1回合；同类新增层刷新本类计时，主动消耗只移除对应层数；获得层的回合不扣时长，从下一完整回合结束时递减；伤势数量为当前内伤与外伤层数之和。自身技能主动施加为内伤，敌方攻击造成实际生命损失时施加为外伤；消耗后立即移除，不影响最大生命。&lt;br&gt;&lt;br&gt;内景损益&lt;br&gt;本经唯一心法Buff，持续至本场战斗结束；心法效果按已学卷章的对应版本生效，完整内容见各卷心法条目。&lt;br&gt;&lt;br&gt;判定边界&lt;br&gt;只有造成生命实际减少的攻击才满足留痕、履薄的承伤条件；化解只是本次攻击的伤害抵消，不是护盾。&lt;/div&gt;&lt;br&gt;&lt;br&gt;身法&lt;br&gt;持续增益状态，最多20层，持续1回合；每层使自身基础身法（dodge）提高1%；获得新层时刷新为1回合；获得层的回合不扣时长，从下一完整回合结束时递减，受击不消耗；1回合时长归零或战斗结束时移除。&lt;br&gt;&lt;br&gt;修持&lt;br&gt;仅本场战斗生效，随本经心法Buff显示于图标信息栏；不进入角色永久属性。" vertex="1">
+          <mxGeometry height="542" width="430" x="1660" y="854.0" as="geometry" />
         </mxCell>
         <mxCell id="e0" edge="1" parent="1" source="overview" style="endArrow=block;html=1;" target="c1">
           <mxGeometry relative="1" as="geometry" />
@@ -76,40 +76,40 @@
         <mxCell id="e3" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c4">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e1_a" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_left" value="淬炼">
+        <mxCell id="e1_a" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_left" value="修持">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="e1_b" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_right" value="化法">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e1_c" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_cards" value="本卷被动与习得">
+        <mxCell id="e1_c" edge="1" parent="1" source="c1" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c1_cards" value="本卷被动与习得">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e2_a" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_left" value="淬炼">
+        <mxCell id="e2_a" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_left" value="修持">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="e2_b" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_right" value="化法">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e2_c" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_cards" value="习得">
+        <mxCell id="e2_c" edge="1" parent="1" source="c2" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c2_cards" value="习得">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e3_a" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_left" value="淬炼">
+        <mxCell id="e3_a" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_left" value="修持">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="e3_b" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_right" value="化法">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e3_c" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_cards" value="习得">
+        <mxCell id="e3_c" edge="1" parent="1" source="c3" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c3_cards" value="习得">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e4_a" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_left" value="淬炼">
+        <mxCell id="e4_a" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_left" value="修持">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="e4_b" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_right" value="化法">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e4_c" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_cards" value="习得">
+        <mxCell id="e4_c" edge="1" parent="1" source="c4" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c4_cards" value="习得">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>

@@ -1,13 +1,17 @@
 [gd_resource type="Resource" script_class="GongfaResource" format=3]
 [ext_resource type="Script" path="res://csharp/gongfa/GongfaResource.cs" id="1"]
 [ext_resource type="Script" path="res://csharp/gongfa/GongfaChapterConfig.cs" id="2"]
+[ext_resource type="Resource" path="res://resources/world_spells/温脉归元.tres" id="world_spell_buxu"]
 [ext_resource type="Resource" path="res://resources/activeskills/补虚行血诀/补虚行血.tres" id="3"]
 [ext_resource type="Resource" path="res://resources/activeskills/补虚行血诀/还阳.tres" id="4"]
+[ext_resource type="Resource" path="res://resources/activeskills/补虚行血诀/余温.tres" id="8_yuwen"]
+[ext_resource type="Resource" path="res://resources/activeskills/补虚行血诀/归元.tres" id="9_guiyuan"]
 [ext_resource type="Script" path="res://csharp/gongfa/GongfaDeckRewriteConfig.cs" id="5_rewrite"]
 [ext_resource type="Resource" path="res://resources/activeskills/补虚行血诀/化法/平息.tres" id="6_huafa_pingxi"]
 [ext_resource type="Resource" path="res://resources/activeskills/补虚行血诀/化法/催血.tres" id="7_huafa_cuixue"]
 [ext_resource type="Resource" path="res://resources/activeskills/补虚行血诀/化法/还阳.tres" id="huafaMissing4"]
 [ext_resource type="Resource" path="res://resources/activeskills/补虚行血诀/化法/卸力.tres" id="huafaMissing5"]
+[ext_resource type="Resource" path="res://resources/activeskills/补虚行血诀/化法/归元.tres" id="10_huafa_guiyuan"]
 
 [sub_resource type="Resource" id="RewriteMissing4"]
 script = ExtResource("5_rewrite")
@@ -35,75 +39,100 @@ result_skill=ExtResource("6_huafa_pingxi")
 script=ExtResource("5_rewrite")
 mode=1
 count=1
-source_skill_name="催血"
-result_skill=ExtResource("7_huafa_cuixue")
+target_scope=1
+source_skill_name="归元"
+result_skill=ExtResource("10_huafa_guiyuan")
 [sub_resource type="Resource" id="a"]
 script=ExtResource("2")
 chapter_id="buxu"
 chapter_name="补虚"
 description="以气血见底为转机，建立零层回填循环。"
 order=1
-combat_tempering_bonuses = {"max_health_flat": 30.0, "qi_blood_cap": 1.0}
+combat_tempering_bonuses = {"max_health_percent": 15, "qi_blood_cap": 1}
 required_study_progress=24.0
-required_attributes={"physique":5.0,"body_proficiency":4.0}
-allowed_bearings=Array[int]([0,1])
-learn_permanent_bonuses={"physique":1.0}
+required_attributes = {"physique": 5.0}
+learn_permanent_bonuses = {"physique": 1.0, "body_proficiency": 0.5}
 learned_active_skills=Array[Resource]([ExtResource("4")])
+learned_world_spells=Array[Resource]([ExtResource("world_spell_buxu")])
 sub_deck_rewrites = Array[ExtResource("5_rewrite")]([SubResource("RewriteMissing4")])
+heart_method_description = "效果：自身主动使气血由1层降至0层后，下一次主动施展的催血少耗精力1点，且额外获得气血1层；强化待触发期间不叠加，催血结算后清除，可由之后新的1层降至0层再次准备。\n主修额外效果：受本心法强化的催血结算后，额外获得身法2层。"
+
+
+learn_bonus_revision = "study-balance-20261012"
+previous_learn_permanent_bonuses = {"physique": 1.0}
+
 [sub_resource type="Resource" id="b"]
 script=ExtResource("2")
 chapter_id="shouque"
 chapter_name="守缺"
 description="守虚以待，令空血成为可调度的窗口。"
 order=2
-combat_tempering_bonuses = {"fall_heal_rate_pp": 2.0}
+combat_tempering_bonuses = {"fall_heal_rate_pp": 1}
 sub_deck_rewrites = Array[ExtResource("5_rewrite")]([SubResource("RewriteMissing5")])
 required_study_progress=48.0
 required_realm="云息三层"
-required_attributes={"physique":7.0,"body_proficiency":5.0}
+required_attributes = {"physique": 6.0, "body_proficiency": 0.5}
 required_chapter_ids=Array[String](["buxu"])
-allowed_bearings=Array[int]([1])
-learn_permanent_bonuses={"physique":0.5}
+learn_permanent_bonuses = {"physique": 0.5, "body_proficiency": 0.5}
+heart_method_description = "效果：自身主动使气血由1层降至0层后，下一次主动施展的催血少耗精力1点，且额外获得气血1层；强化待触发期间不叠加，催血结算后清除，可由之后新的1层降至0层再次准备。\n主修额外效果：受本心法强化的催血结算后，额外获得身法2层。"
+
+
+learn_bonus_revision = "study-balance-20261012"
+previous_learn_permanent_bonuses = {"physique": 0.5}
+
 [sub_resource type="Resource" id="c"]
 script=ExtResource("2")
 chapter_id="yuwen"
 chapter_name="余温"
-description="将回落余温转为持续的再起余地。"
+description="以气血回落维持身法；研读本卷后，气血再次归零会额外唤起身法。"
 order=3
-combat_tempering_bonuses = {"max_health_flat": 20.0, "fall_heal_rate_pp": 1.0}
+combat_tempering_bonuses = {"max_health_percent": 10, "fall_heal_rate_pp": 1}
 sub_deck_rewrites = Array[ExtResource("5_rewrite")]([SubResource("RewritePingXi")])
+learned_active_skills = Array[Resource]([ExtResource("8_yuwen")])
+heart_method_upgrade_id = "buxu_c3"
+heart_method_upgrade_description = "每次主动使气血由1层降至0层，额外获得身法1层。"
 required_study_progress=84.0
 required_realm="云息六层"
-required_attributes={"physique":8.0,"body_proficiency":7.0}
+required_attributes = {"physique": 7.0, "body_proficiency": 1}
 required_chapter_ids=Array[String](["shouque"])
-allowed_bearings=Array[int]([1])
-learn_permanent_bonuses={"body_proficiency":1.0}
+learn_permanent_bonuses = {"body_proficiency": 1}
+heart_method_description = "效果：自身主动使气血由1层降至0层后，下一次主动施展的催血少耗精力1点，且额外获得气血1层；强化待触发期间不叠加，催血结算后清除，可由之后新的1层降至0层再次准备。 每次上述气血回落后，获得身法1层。\n主修额外效果：受本心法强化的催血结算后，额外获得身法2层。"
+
+
+learn_bonus_revision = "study-balance-20261012"
+previous_learn_permanent_bonuses = {"body_proficiency": 1.0}
+
 [sub_resource type="Resource" id="d"]
 script=ExtResource("2")
 chapter_id="guiyuan"
 chapter_name="归元"
 description="空血复起，一次回满整个气血循环。"
 order=4
-combat_tempering_bonuses = {"qi_blood_cap": 1.0, "physical_damage_percent": 4.0}
+combat_tempering_bonuses = {"qi_blood_cap": 1, "physical_damage_percent": 8}
 sub_deck_rewrites = Array[ExtResource("5_rewrite")]([SubResource("RewriteCuiXue")])
+learned_active_skills = Array[Resource]([ExtResource("9_guiyuan")])
 required_study_progress=128.0
 required_realm="云息九层"
-required_attributes={"physique":10.0,"body_proficiency":9.0}
+required_attributes = {"physique": 9.0, "body_proficiency": 2}
 required_chapter_ids=Array[String](["yuwen"])
-allowed_bearings=Array[int]([1])
-learn_permanent_bonuses={"physique":1.0}
+learn_permanent_bonuses = {"physique": 1.0, "body_proficiency": 1}
+heart_method_description = "效果：自身主动使气血由1层降至0层后，下一次主动施展的催血少耗精力1点，且额外获得气血1层；强化待触发期间不叠加，催血结算后清除，可由之后新的1层降至0层再次准备。 每次上述气血回落后，获得身法1层。\n主修额外效果：受本心法强化的催血结算后，额外获得身法2层。"
+
+
+learn_bonus_revision = "study-balance-20261012"
+previous_learn_permanent_bonuses = {"physique": 1.0}
+
 [resource]
 script=ExtResource("1")
 gongfa_name="补虚行血诀"
-description="以气血归零为发动点的锻躯行血法。"
+description="以气血归零为发动点的行血法。"
 wuxing=0
 can_be_main=true
 can_be_sub=true
-bearing_compatibility=Array[int]([1])
-school_tags=Array[String](["body"])
+school_tags=Array[String](["cloud_breath"])
 body_nourish_rate_per_day=0.8
 body_nourish_weights={"skin":0.10,"sinew":0.05,"bone":0.10,"blood":0.40,"viscera":0.20,"heart":0.15}
 main_realm_start="凡人"
-main_realm_end="云息十三层"
+main_realm_end="云息十层"
 heart_method_skill=ExtResource("3")
 chapters=Array[Resource]([SubResource("a"),SubResource("b"),SubResource("c"),SubResource("d")])

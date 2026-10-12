@@ -1,4 +1,4 @@
-﻿using Godot;
+using Godot;
 
 public partial class BattleManager
 {
@@ -13,7 +13,7 @@ public partial class BattleManager
         _selectingQueueTargets = true;
         _targetQueueIndex = 0;
         _targetSelectionHistory.Clear();
-        _skillBar?.set_actions_visible(false);
+        _skillBar?.set_actions_visible(false,true);
         ContinueQueueTargetSelection();
     }
     private void ContinueQueueTargetSelection()
@@ -26,7 +26,8 @@ public partial class BattleManager
         {
             var action = queue[_targetQueueIndex];
             if (action.kind != BattleQueuedSkill.ActionKind.Skill) { _targetQueueIndex++; continue; }
-            var skill = action.skill;
+            var skill = CardRules.NormalCast(action.skill);
+            if (skill is null) { action.target = _mainPlayerUnit; _targetQueueIndex++; continue; }
             if (!RequiresTargetSelection(skill) || IsAutomaticScope(skill))
             {
                 action.target = DefaultTarget(skill, _mainPlayerUnit!); _targetQueueIndex++; continue;
@@ -83,9 +84,50 @@ public partial class BattleManager
                 ContinueQueueTargetSelection();
             }
         }
-        else if (queue.Count > 0) cancel_player_action(queue.Count - 1);
+        else
+        {
+            while (_playerPlanningHistory.Count > 0)
+            {
+                var last = _playerPlanningHistory[^1];
+                _playerPlanningHistory.RemoveAt(_playerPlanningHistory.Count - 1);
+                var index = queue.IndexOf(last);
+                if (index >= 0) { cancel_player_action(index); break; }
+            }
+        }
         return true;
     }
+    // 预算扣除所有已排费用，允许赤字；不写回角色，也不用于实际支付。
+    public Vector2I get_player_queue_resource_budget()
+    {
+        if (!GodotObject.IsInstanceValid(_mainPlayerUnit) || !battle_units.ContainsKey(_mainPlayerUnit!)) return Vector2I.Zero;
+        var unit = _mainPlayerUnit!;
+        var energy = unit.Get("current_stamina").AsInt32();
+        var mana = unit.Get("current_mana").AsInt32();
+        foreach (var action in get_battle_unit(unit).skill_queue)
+        {
+            if (action.kind == BattleQueuedSkill.ActionKind.Rest)
+                energy = Math.Min(unit.Get("max_stamina").AsInt32(), energy + 2);
+            else if (action.kind == BattleQueuedSkill.ActionKind.Breathe)
+                mana = Math.Min(get_effective_mana_capacity(unit), mana + 1);
+            else if (action.kind == BattleQueuedSkill.ActionKind.Skill)
+            {
+                energy -= get_skill_energy_cost(unit, action.skill);
+                mana -= get_skill_mana_cost(unit, action.skill);
+                ApplyPlannedResourceReturn(unit, action.skill, ref energy);
+            }
+        }
+        return new Vector2I(energy, mana);
+    }
+
+    private static void ApplyPlannedResourceReturn(GodotObject unit, ActiveSkillData skill, ref int energy)
+    {
+        // 只计入现有执行器明确定义的无条件返还；不预支应对、受击或心法触发收益。
+        if (CardRules.IsResponse(skill)) return;
+        foreach (var effect in skill.special_effects)
+            if (effect.GetValueOrDefault("effect", "").AsString() == "gain_energy")
+                energy = Math.Min(unit.Get("max_stamina").AsInt32(), energy + Math.Max(1, effect.GetValueOrDefault("count", 1).AsInt32()));
+    }
+
     public List<string> get_player_queue_resource_warnings()
     {
         var result = new List<string>();
@@ -102,7 +144,7 @@ public partial class BattleManager
                 var e = get_skill_energy_cost(unit, action.skill); var m = get_skill_mana_cost(unit, action.skill);
                 warning = energy < e ? "精力不足" : mana < m ? "法力不足" : "";
                 // 不足的行动会跳过，不扣费，继续预测后续行动。
-                if (warning == "") { energy -= e; mana -= m; }
+                if (warning == "") { energy -= e; mana -= m; ApplyPlannedResourceReturn(unit, action.skill, ref energy); }
             }
             result.Add(warning);
         }

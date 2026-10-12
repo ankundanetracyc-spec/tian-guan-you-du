@@ -17,6 +17,8 @@ uniform float path_visibility = 0.0;
 uniform float path_progress = 0.0;
 uniform float path_surge = 0.0;
 uniform float breath_count = 0.0;
+uniform float breath_previous_count = 9.0;
+uniform float breath_reveal = 1.0;
 
 float qi_hash(vec2 p) {
     p = fract(p * vec2(123.34, 456.21));
@@ -35,7 +37,7 @@ float qi_noise(vec2 p) {
 float qi_fbm(vec2 p) {
     float v = 0.0;
     float a = 0.5;
-    mat2 turn = mat2(0.80, -0.60, 0.60, 0.80);
+    mat2 turn = mat2(vec2(0.80, -0.60), vec2(0.60, 0.80));
     for (int i = 0; i < 4; i++) {
         v += a * qi_noise(p);
         p = turn * p * 2.03 + vec2(11.7, 8.3);
@@ -57,7 +59,7 @@ vec4 qi_ring_shape(float index) {
 vec2 qi_ring_center(float index) { return vec2(0.0); }
 vec2 qi_ring_point(float index, float theta) {
     vec4 shape = qi_ring_shape(index);
-    mat2 forward = mat2(cos(shape.z), sin(shape.z), -sin(shape.z), cos(shape.z));
+    mat2 forward = mat2(vec2(cos(shape.z), sin(shape.z)), vec2(-sin(shape.z), cos(shape.z)));
     return forward * (vec2(cos(theta), sin(theta)) * shape.xy) + qi_ring_center(index);
 }
 float qi_bridge(vec2 p, vec2 start, vec2 end, float visible) {
@@ -86,7 +88,7 @@ vec4 qi_path(vec2 p) {
         float index = float(i);
         float completion = clamp(path_progress * 3.0 - index, 0.0, 1.0);
         vec4 shape = qi_ring_shape(index);
-        mat2 undo = mat2(cos(shape.z), -sin(shape.z), sin(shape.z), cos(shape.z));
+        mat2 undo = mat2(vec2(cos(shape.z), -sin(shape.z)), vec2(sin(shape.z), cos(shape.z)));
         vec2 ellipse = (undo * (p - qi_ring_center(index))) / shape.xy;
         float theta = atan(ellipse.y,ellipse.x);
         float entry_angle = -2.55 + index * 2.1;
@@ -154,6 +156,8 @@ vec4 qi_breaths(vec2 p, float front_layer) {
         float seed = float(i);
         if (seed + 0.5 > breath_count) continue;
         vec3 position = qi_breath_position(seed,animation_time);
+        float reveal = seed + 0.5 > breath_previous_count ? breath_reveal : 1.0;
+        position *= mix(0.18, 1.0, reveal);
         float z = position.z;
         float near_side = clamp(0.5+0.5*z,0.0,1.0);
         if ((z >= 0.0 && front_layer < 0.5) || (z < 0.0 && front_layer > 0.5)) continue;
@@ -171,6 +175,7 @@ vec4 qi_breaths(vec2 p, float front_layer) {
         float tail = exp(-tail_local.x*tail_local.x*0.38-tail_local.y*tail_local.y*3.5);
         float fine = exp(-pow(local.y+sin(local.x*3.0+animation_time*0.6+seed)*0.15,2.0)*25.0)*exp(-local.x*local.x*1.3);
         float alpha = clamp((body*(0.50+gas*0.35)+tail*0.18+fine*0.12)*(0.52+near_side*0.48),0.0,0.8);
+        alpha *= reveal;
         vec3 ink = mix(vec3(0.53,0.66,0.63),vec3(0.95,0.94,0.82),body*0.65+near_side*0.20);
         color_sum += ink*alpha*(1.0-alpha_sum);
         alpha_sum += alpha*(1.0-alpha_sum);
@@ -186,7 +191,7 @@ void fragment() {
     vec2 q = p / radius;
     float r = length(q);
     float angle = rotation_phase + (1.0 - min(r, 1.0)) * inward_pull * 1.35;
-    mat2 rotation = mat2(cos(angle), -sin(angle), sin(angle), cos(angle));
+    mat2 rotation = mat2(vec2(cos(angle), -sin(angle)), vec2(sin(angle), cos(angle)));
     vec2 flow = rotation * q;
     float drift = animation_time * 0.045 + rotation_phase * 0.12;
     vec2 warp = vec2(qi_fbm(flow * 2.2 + vec2(drift, 7.1)),
@@ -197,7 +202,7 @@ void fragment() {
     // The outer and inner layers turn at different speeds, as in the original panel.
     vec2 outer_uv = flow * 0.5 + warp * 0.014 + vec2(0.5);
     float inner_angle = inner_rotation_phase - 0.38;
-    mat2 inner_rotation = mat2(cos(inner_angle), -sin(inner_angle), sin(inner_angle), cos(inner_angle));
+    mat2 inner_rotation = mat2(vec2(cos(inner_angle), -sin(inner_angle)), vec2(sin(inner_angle), cos(inner_angle)));
     vec2 inner_uv = inner_rotation * q * 0.68 + warp * 0.010 + vec2(0.5);
     float outer_strands = texture(swirl_texture, clamp(outer_uv, vec2(0.0), vec2(1.0))).a * 2.1;
     float inner_strands = texture(swirl_texture, clamp(inner_uv, vec2(0.0), vec2(1.0))).a * 2.1;

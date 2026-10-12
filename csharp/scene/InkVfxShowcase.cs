@@ -54,6 +54,7 @@ public partial class InkVfxShowcase : Control
     private bool _playing;
     private bool _shieldPreviewImpactPlayed;
     private int _previewGeneration;
+    private Tween? _previewMotion;
 
     public override void _Ready()
     {
@@ -348,7 +349,10 @@ public partial class InkVfxShowcase : Control
 
     private void PositionBattlePreview()
     {
+        _previewMotion?.Kill();
         if (_stage is null || _battleAttacker is null || _battleTarget is null || _shieldPreview is null) return;
+        _battleAttacker.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.hold_attack_contact(false);
+        _battleTarget.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.hold_attack_contact(false);
         var size = _stage.Size;
         if (size.X < 300f || size.Y < 200f) size = new Vector2(700f, 430f);
         var center = new Vector2(size.X * 0.5f, size.Y * 0.50f);
@@ -385,17 +389,8 @@ public partial class InkVfxShowcase : Control
             if (skill is null) return;
             var attacker = _battleAttacker;
             var target = _battleTarget;
-            var direction = (target.GlobalPosition - attacker.GlobalPosition).Normalized();
             if (!BattleInkCombatVfx.DealsDamage(skill)) { BattleInkCombatVfx.PlayUtility(attacker, target, skill); return; }
-            attacker.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_attack(direction);
-            BattleInkCombatVfx.PlayAttack(attacker, target, skill);
-            var generation = _previewGeneration;
-            GetTree().CreateTimer(BattleInkCombatVfx.ContactSeconds).Timeout += () =>
-            {
-                if (generation != _previewGeneration || !IsInstanceValid(target)) return;
-                BattleInkCombatVfx.PlayImpact(target, skill, attacker);
-                target.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_hit(direction, BattleInkCombatVfx.HitWeight(skill));
-            };
+            PreviewAttackStaging(attacker,target,skill,_previewGeneration);
             return;
         }
 
@@ -439,6 +434,45 @@ public partial class InkVfxShowcase : Control
                 target.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_hit(Vector2.Right);
             };
         }
+    }
+
+    private async void PreviewAttackStaging(Node2D attacker,Node2D target,ActiveSkillData skill,int generation)
+    {
+        bool Current() => IsInsideTree() && generation==_previewGeneration && IsInstanceValid(attacker) && IsInstanceValid(target);
+        async System.Threading.Tasks.Task Wait(float seconds) =>
+            await ToSignal(GetTree().CreateTimer(seconds,processAlways:false),SceneTreeTimer.SignalName.Timeout);
+        var home=attacker.GlobalPosition;
+        await Wait(.14f);
+        if(!Current())return;
+        var close=BattleAttackMotion.UsesApproach(skill);
+        if(close)
+        {
+            _previewMotion=attacker.CreateTween();
+            _previewMotion.TweenProperty(attacker,"global_position",BattleAttackMotion.ContactPosition(attacker,target,home),BattleAttackMotion.ApproachSeconds)
+                .SetTrans(Tween.TransitionType.Expo).SetEase(Tween.EaseType.Out);
+            await Wait(BattleAttackMotion.ApproachSeconds);
+            if(!Current())return;
+        }
+        var direction=(target.GlobalPosition-attacker.GlobalPosition).Normalized();
+        var doll=attacker.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll");
+        doll?.play_attack(direction);
+        BattleInkCombatVfx.PlayAttack(attacker,target,skill);
+        await Wait(BattleInkCombatVfx.ContactSeconds);
+        if(!Current())return;
+        BattleInkCombatVfx.PlayImpact(target,skill,attacker);
+        target.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_hit(direction,BattleInkCombatVfx.HitWeight(skill));
+        doll?.hold_attack_contact(true);
+        await Wait(BattleInkCombatVfx.ContactHoldSeconds(BattleInkCombatVfx.HitWeight(skill))+.055f);
+        if(!Current())return;
+        doll?.hold_attack_contact(false);
+        if(!close)return;
+        var contact=attacker.GlobalPosition;
+        doll?.play_retreat(direction);
+        _previewMotion=attacker.CreateTween();
+        _previewMotion.TweenMethod(Callable.From<float>(progress=>
+        {
+            if(Current())attacker.GlobalPosition=BattleAttackMotion.ReturnPosition(contact,home,progress);
+        }),0f,1f,BattleAttackMotion.ReturnSeconds).SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.Out);
     }
 
     private static ImageTexture CreateMask(int type)
@@ -601,4 +635,3 @@ public partial class InkVfxShowcase : Control
         };
     }
 }
-

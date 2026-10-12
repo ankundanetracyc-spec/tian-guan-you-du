@@ -24,7 +24,8 @@ public partial class RealmQiVisual : ColorRect
     public override void _Ready()
     {
         MouseFilter = MouseFilterEnum.Ignore;
-        Color = Colors.White;
+        // 着色器在fragment中自行输出颜色；载入失败时底板应透明，不能遮住纸面。
+        Color = Colors.Transparent;
         _qiMaterial = new ShaderMaterial
         {
             Shader = ResourceLoader.Load<Shader>("res://shaders/realm_qi_cloud.gdshader")
@@ -76,6 +77,18 @@ public partial class RealmQiVisual : ColorRect
         SetCore();
     }
 
+    /// <summary>牌局按凝核程度呈现逐步压聚；未定形前始终为云，不提前生成小核。</summary>
+    public void ShowCompression(int score)
+    {
+        StopTransition();
+        var amount = 1f - 1f / (1f + Mathf.Max(0, score) / 100f);
+        _radius = Mathf.Lerp(.30f, .085f, amount);
+        _density = Mathf.Lerp(.74f, 1f, amount);
+        _core = 0f; _heat = 0f; _pull = .15f + amount * .55f;
+        _rebound = 0f; _pathVisibility = 0f;
+        ApplyParameters();
+    }
+
     private void SetCore()
     {
         _radius = .055f;
@@ -96,6 +109,34 @@ public partial class RealmQiVisual : ColorRect
         _pathVisibility = 1f;
         _pathProgress = Mathf.Clamp(progress, 0f, 1f);
         ApplyParameters();
+    }
+
+    public void ShowBreaths(int count)
+    {
+        _qiMaterial?.SetShaderParameter("breath_count", Mathf.Clamp(count, 0, 9));
+        _qiMaterial?.SetShaderParameter("breath_previous_count", Mathf.Clamp(count, 0, 9));
+        _qiMaterial?.SetShaderParameter("breath_reveal", 1f);
+    }
+
+    public void PlayPathGrowth(float from, float to, Action completed)
+    {
+        ShowPath(from); ShowBreaths(0);
+        _transition = CreateTween();
+        _transition.TweenMethod(Callable.From<float>(p => { _pathProgress = Mathf.Lerp(from, to, p); ApplyParameters(); }), 0f, 1f, 2.8)
+            .SetTrans(Tween.TransitionType.Sine).SetEase(Tween.EaseType.InOut);
+        _transition.TweenCallback(Callable.From(completed));
+    }
+
+    /// <summary>只演出已经结算的息数变化，不推进时间或修改修行进度。</summary>
+    public void PlayBreathGain(int from, int to, Action completed)
+    {
+        ShowPath(1f); ShowBreaths(to);
+        _qiMaterial?.SetShaderParameter("breath_previous_count", Mathf.Clamp(from, 0, 9));
+        _qiMaterial?.SetShaderParameter("breath_reveal", 0f);
+        _transition = CreateTween();
+        _transition.TweenMethod(Callable.From<float>(p => _qiMaterial?.SetShaderParameter("breath_reveal", p)), 0f, 1f, 3.2)
+            .SetTrans(Tween.TransitionType.Sine).SetEase(Tween.EaseType.InOut);
+        _transition.TweenCallback(Callable.From(() => { ShowBreaths(to); completed(); }));
     }
 
     public void PlayAccumulation(float from, float to, Action completed)

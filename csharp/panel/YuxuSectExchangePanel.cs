@@ -202,7 +202,7 @@ public partial class YuxuSectExchangePanel : Control
 
         var categories = _catalog.Select(entry => entry.Category).Distinct(StringComparer.Ordinal).ToHashSet(StringComparer.Ordinal);
         add_filter_button(rail, _categoryButtons, "全部", "全部", isLevelFilter: false);
-        foreach (var category in new[] { "材料", "凡俗武学", "剑修", "锻躯", "其他" })
+        foreach (var category in new[] { "材料", "凡俗武学", "剑修", "云息秘籍", "其他" })
             if (categories.Contains(category))
                 add_filter_button(rail, _categoryButtons, category, category, isLevelFilter: false);
 
@@ -751,7 +751,7 @@ public partial class YuxuSectExchangePanel : Control
         "材料" => "材",
         "凡俗武学" => "武",
         "剑修" => "剑",
-        "锻躯" => "锻",
+        "云息秘籍" => "秘",
         _ => category
     };
 }

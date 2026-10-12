@@ -5,11 +5,14 @@
 
 [resource]
 script = ExtResource("1")
+non_response_skill = null
 tags = Array[String](["生命","防御"])
 skill_name = "卸力"
-icon_path = "res://textures/ui/combat/skill_icons/锻躯_卸力_v1.png"
+source_gongfa_name = "补虚行血诀"
+icon_path = "res://textures/ui/combat/skill_icons/基础技能_卸力_v1.png"
+gongfa_rewrite_effect_ids = Array[String](["buxu_c2_xieli"])
 skill_type = 5
-description = "应对敌方物理攻击并获得卸力原化解层数。若自身气血为0层且本技能实际触发，本次化解额外增加1层。"
+description = "应对敌方物理攻击并获得卸力原化解层数。若自身气血为0层且本技能实际触发，本次化解额外增加1层。\n未触发应对时空放，不消耗精力、法力或使用次数，不产生效果。"
 energy_cost = 1
 mana_cost = 0
 spirit_occupy = 0

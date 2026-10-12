@@ -40,6 +40,8 @@ public partial class ActiveSkillData : Resource
     [Export(PropertyHint.Range, "0,720,1")] public int recovery_frames;
     /// <summary>旧战斗流程兼容字段；即时队列战斗以每轮或每场次数限制招式。</summary>
     [Export(PropertyHint.Range, "0,3600,1")] public int cooldown_frames;
+    /// <summary>成功使用后跳过的完整回合数；0表示不设冷却。使用于R回合时，最早R+N+1回合恢复。</summary>
+    [Export(PropertyHint.Range, "0,99,1")] public int cooldown_rounds;
     /// <summary>有限次数技能的最大使用次数；0 表示不限制次数。</summary>
     [Export(PropertyHint.Range, "0,99,1")] public int max_charges;
     /// <summary>每个规划段的使用次数上限；0 表示不限制。旧 max_charges 继续作为每场上限兼容字段。</summary>
@@ -96,7 +98,7 @@ public partial class ActiveSkillData : Resource
     public string get_brief_description(GodotObject? owner = null)
     {
         var lines = new List<string>();
-        if (!Mathf.IsZeroApprox(base_damage) || damage_bonuses.Count > 0)
+        if (!Mathf.IsZeroApprox(base_damage) || damage_bonuses.Count > 0 || !string.IsNullOrWhiteSpace(damage_formula))
             lines.Add($"对一名指定敌人造成 {Mathf.RoundToInt(BattleActionResolver.preview_damage(owner,this))} 点{damage_name()}伤害。");
         foreach (var effect in special_effects)
         {
@@ -110,7 +112,7 @@ public partial class ActiveSkillData : Resource
             if(status=="化解")count=CardRules.Block(this,owner,count);
             if (!string.IsNullOrEmpty(status)) lines.Add($"获得 {count} 层{status}。");
         }
-        if (keywords.Contains("应对")) lines.Insert(0, "应对：队首遇到匹配来袭时立即触发；未触发则正常结算基础效果。");
+        if (keywords.Contains("应对")) lines.Insert(0, "应对触发：当前槽遇到匹配来袭时立即触发。" + (CardRules.NormalCast(this) is null ? "未触发则空放，不消耗费用。" : "未触发则结算独立的普通打出效果与费用。"));
         return lines.Count == 0 ? (string.IsNullOrWhiteSpace(description)?"施展本技能效果。":description) : string.Join("\n", lines);
     }
     public string get_skill_description(GodotObject? owner = null) => get_brief_description(owner) + get_counter_effect_description(owner);
@@ -154,6 +156,6 @@ public partial class ActiveSkillData : Resource
         return 0;
     }
 
-    private string damage_name() => damage_type switch { "magic" or "spiritual" => "法术", "soul" => "神魂", _ => "物理" };
+    private string damage_name() => damage_type switch { "magic" => "法术", "soul" or "spiritual" => "神魂", _ => "物理" };
 }
 // Segment counter extras.

@@ -15,8 +15,6 @@ public partial class GongfaResource : Resource
         WOOD_WATER_FIRE_EARTH, METAL_WOOD_WATER_FIRE_EARTH, ALL
     }
     public enum WuxingRequirementMode { OR, AND }
-    public enum DaoBearing { UNSET, BODY, QI, SOUL }
-    public enum CrossBearingPolicy { NONE, LOW_TIER_ONLY, PERMANENT_LEARNED_ONLY, FULL }
 
     [ExportGroup("基础信息")]
     [Export] public string gongfa_name = "未命名秘籍";
@@ -30,9 +28,7 @@ public partial class GongfaResource : Resource
     [ExportGroup("槽位配置")]
     [Export] public bool can_be_main = true;
     [Export] public bool can_be_sub = true;
-    [Export] public Array<int> bearing_compatibility = [];
     [Export] public Array<string> school_tags = [];
-    [Export] public CrossBearingPolicy cross_bearing_policy;
     [Export] public string main_realm_start = "";
     [Export] public string main_realm_end = "";
     [Export] public string sub_realm_start = "";
@@ -40,7 +36,7 @@ public partial class GongfaResource : Resource
     [ExportGroup("永久加成·学会即得")]
     [Export] public Dictionary learn_permanent_bonuses = [];
     [Export] public Dictionary learn_permanent_multipliers = [];
-    [ExportGroup("养形谱·锻躯")]
+    [ExportGroup("修命·养形谱")]
     /// <summary>正常吐纳每 24 小时提供的总养形炼度；具体分配由下方谱表决定。</summary>
     [Export] public float body_nourish_rate_per_day = 0.8f;
     /// <summary>部位稳定 ID到养形分配权重；为空时使用均衡默认谱。</summary>
@@ -97,8 +93,19 @@ public partial class GongfaResource : Resource
         !is_main && sub_heart_method_skill is not null ? sub_heart_method_skill :
         heart_method_skill ?? (is_main ? sub_heart_method_skill : main_heart_method_skill);
 
-    public bool is_bearing_compatible(DaoBearing bearing) =>
-        bearing == DaoBearing.UNSET || (bearing_compatibility.Count == 0 ? !can_be_main : bearing_compatibility.Contains((int)bearing));
+    public string get_heart_method_description(int chapterOrder, bool isMain)
+    {
+        var description = get_sorted_chapters()
+            .Where(chapter => chapter.order <= chapterOrder && !string.IsNullOrWhiteSpace(chapter.heart_method_description))
+            .LastOrDefault()?.heart_method_description ?? get_heart_method_skill(isMain)?.description ?? "";
+        const string marker = "主修额外效果：";
+        description = description.Replace("主修额外追加：", marker);
+        var mainIndex = description.IndexOf(marker, StringComparison.Ordinal);
+        if (mainIndex >= 0)
+            description = isMain ? description[..mainIndex].Trim() + "\n" + description[mainIndex..].Trim()
+                : description[..mainIndex].Trim();
+        return description.Trim();
+    }
 
     public bool is_wuxing_compatible(int spirit_root_type)
     {

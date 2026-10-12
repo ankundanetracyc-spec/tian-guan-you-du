@@ -1,4 +1,4 @@
-﻿using Godot;
+using Godot;
 using Godot.Collections;
 
 /// <summary>Bridges world entities and the battle-scene transition package.</summary>
@@ -20,31 +20,41 @@ public partial class CombatTrigger : Node
     { foreach (var item in units) { var unit = item.AsGodotObject(); if (!GodotObject.IsInstanceValid(unit)) continue; var scene = unit!.Call("pack_for_battle").AsGodotObject() as PackedScene; if (scene is not null) { scenes.Add(scene); snapshots.Add(unit.Call("get_snapshot_data")); } } }
     public void check_and_restore_battle_results()
     {
-        var manager = TransitionManager(); if (manager is null || !manager.Call("has_pending_results").AsBool()) return;
-        var results = manager.Call("consume_results").AsGodotArray(); if (results.Count < 2) return;
-        var byId = new Dictionary(); CollectEntities(GetTree().CurrentScene, byId);
-        foreach (var group in new[] { results[0].AsGodotArray(), results[1].AsGodotArray() }) foreach (var item in group)
+        var manager = TransitionManager(); if (manager is null) return;
+        var hasBattleResults = manager.Call("has_pending_results").AsBool();
+        var hasReturnData = manager.Call("has_pending_battle_return_data").AsBool();
+        if (!hasBattleResults && !hasReturnData) return;
+        Godot.Collections.Array results = [];
+        if (hasBattleResults)
         {
-            if (item.AsGodotObject() is not BattleEntityData data || data.uid.StartsWith(TempEnemyPrefix)) continue;
-            var entity = byId.TryGetValue(data.uid, out var candidate) ? candidate.AsGodotObject() : null;
-            if (!GodotObject.IsInstanceValid(entity)) continue;
-            if (data.current_health <= 0 && data.faction != 1) { (entity as Node)?.QueueFree(); continue; }
-            if (data.current_health <= 0) { data.current_health = Mathf.Max(1, Mathf.RoundToInt(data.max_health * .1f)); data.current_stamina = Mathf.Max(1, Mathf.RoundToInt(data.max_stamina * .1f)); data.current_mana = Mathf.Max(1, Mathf.RoundToInt(data.max_mana * .1f)); }
-            entity!.Call("apply_battle_data", data);
+            results = manager.Call("consume_results").AsGodotArray(); if (results.Count < 2) return;
+            var byId = new Dictionary(); CollectEntities(GetTree().CurrentScene, byId);
+            foreach (var group in new[] { results[0].AsGodotArray(), results[1].AsGodotArray() }) foreach (var item in group)
+            {
+                if (item.AsGodotObject() is not BattleEntityData data || data.uid.StartsWith(TempEnemyPrefix)) continue;
+                var entity = byId.TryGetValue(data.uid, out var candidate) ? candidate.AsGodotObject() : null;
+                if (!GodotObject.IsInstanceValid(entity)) continue;
+                if (data.current_health <= 0 && data.faction != 1) { (entity as Node)?.QueueFree(); continue; }
+                if (data.current_health <= 0) { data.current_health = Mathf.Max(1, Mathf.RoundToInt(data.max_health * .1f)); data.current_stamina = Mathf.Max(1, Mathf.RoundToInt(data.max_stamina * .1f)); data.current_mana = Mathf.Max(1, Mathf.RoundToInt(data.max_mana * .1f)); }
+                entity!.Call("apply_battle_data", data);
+            }
         }
 
         var returnData = manager.Call("consume_battle_return_data").AsGodotDictionary();
         var context = returnData.GetValueOrDefault("context", new Dictionary()).AsGodotDictionary();
         var summary = returnData.GetValueOrDefault("summary", new Dictionary()).AsGodotDictionary();
-        (manager as BattleTransitionManager)?.resume_pending_loot();
         var currentScene = GetTree().CurrentScene;
-        (currentScene as MainScene)?.notify_battle_rewards_changed();
-        if (currentScene?.HasMethod("handle_persistent_battle_return") == true)
-            currentScene.Call("handle_persistent_battle_return", results[0], results[1], summary, context);
+        if (hasBattleResults)
+        {
+            (manager as BattleTransitionManager)?.resume_pending_loot();
+            (currentScene as MainScene)?.notify_battle_rewards_changed();
+            if (currentScene?.HasMethod("handle_persistent_battle_return") == true)
+                currentScene.Call("handle_persistent_battle_return", results[0], results[1], summary, context);
+        }
         if (context.GetValueOrDefault("kind", "").AsString() == "yuxu_tianwen_practice")
         {
             if (currentScene?.HasMethod("show_yuxu_tianwen_practice_result") == true)
-                currentScene.Call("show_yuxu_tianwen_practice_result", summary);
+                currentScene.Call("show_yuxu_tianwen_practice_result", summary, context);
         }
     }
     private void CollectEntities(Node? node, Dictionary result)

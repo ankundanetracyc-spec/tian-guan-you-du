@@ -131,15 +131,15 @@ public partial class InstantBattleDamageSmoke : Node
         defenderState.setup(defender, null);
         manager.battle_units[attacker] = attackerState;
         manager.battle_units[defender] = defenderState;
-        manager.body_cards.Begin(attacker);
-        manager.body_cards.Begin(defender);
+        manager.gongfa_combat.Begin(attacker);
+        manager.gongfa_combat.Begin(defender);
 
         var innerScenePower = GD.Load<ActiveSkillData>("res://resources/activeskills/内景损益篇/内景损益.tres")!;
-        check(manager.body_cards.Utility(defender, innerScenePower), "内景心法由战斗被动入口生效");
+        check(manager.gongfa_combat.Utility(defender, innerScenePower), "内景心法由战斗被动入口生效");
         var youhai = GD.Load<StatusEffect>("res://resources/battle/statuses/游骸.tres")!;
         attacker.add_status(youhai, -1, 4, "smoke");
         var toshen = GD.Load<ActiveSkillData>("res://resources/activeskills/乘物游骸真经/托身.tres")!;
-        for (var i = 0; i < 4; i++) check(manager.body_cards.Utility(attacker, toshen), $"托身消耗游骸并计入第 {i + 1} 层");
+        for (var i = 0; i < 4; i++) check(manager.gongfa_combat.Utility(attacker, toshen), $"托身消耗游骸并计入第 {i + 1} 层");
         check(attacker.GetMeta("spent_youhai").AsInt32() == 4, "本场已消耗游骸驱动冯虚三段");
 
         var skill = GD.Load<ActiveSkillData>("res://resources/activeskills/乘物游骸真经/冯虚.tres")!.Duplicate() as ActiveSkillData

@@ -8,7 +8,7 @@ public partial class BattleManager : Node2D
     public override void _Process(double delta)
     {
         FitBattleFormation();
-        if(!battle_running||_battlePaused)return;
+        if(!battle_running||_battlePaused||FlowTransitionActive)return;
         if (_realtimeMode) { ProcessRealtimeBattle((float)delta * SimulationFps * battleSpeed); return; }
         // 倍速只改变实时队列推进；技能演出与目标提示仍由统一结算入口控制。
         foreach(var creature in all_units.OfType<Creature>().Where(IsInstanceValid))creature.tick_status_frames((float)delta*60);
@@ -28,7 +28,7 @@ public partial class BattleManager : Node2D
     {
         foreach (var unit in all_units)
         {
-            body_cards.Begin(unit);
+            gongfa_combat.Begin(unit);
             ApplyEquippedCombatPassives(unit);
             var loadout = LoadCombatSkills(unit);
             _combatSkills[unit] = loadout;
@@ -49,9 +49,9 @@ public partial class BattleManager : Node2D
         foreach (var item in value.AsGodotArray())
         {
             var skill = ResourceLoader.Load<ActiveSkillData>(item.AsString());
-            if (skill is null || skill.skill_type != ActiveSkillData.SkillType.POWER || !BodyCardRuntime.IsBody(skill)) continue;
+            if (skill is null || skill.skill_type != ActiveSkillData.SkillType.POWER || string.IsNullOrWhiteSpace(skill.source_gongfa_name)) continue;
             // 主修/辅修秘籍快照自动提供心法被动；心法不经过技能队列，也不支付资源。
-            body_cards.Utility(unit, skill);
+            gongfa_combat.Utility(unit, skill);
         }
     }
 

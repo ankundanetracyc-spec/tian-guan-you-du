@@ -45,34 +45,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -830.0
 offset_top = -150.0
-offset_right = -132.0
+offset_right = -96.0
 offset_bottom = -18.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/separation = 14
 alignment = 2
-
-[node name="V_World" type="VBoxContainer" parent="Hbox"]
-visible = false
-layout_mode = 2
-theme_override_constants/separation = 2
-alignment = 1
-
-[node name="BtnWorld" type="Button" parent="Hbox/V_World"]
-custom_minimum_size = Vector2(104, 98)
-layout_mode = 2
-theme_override_styles/normal = SubResource("flat")
-theme_override_styles/pressed = SubResource("pressed_style")
-theme_override_styles/hover = SubResource("hover_style")
-icon = ExtResource("6_world_icon")
-expand_icon = true
-
-[node name="Label" type="Label" parent="Hbox/V_World"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 21
-text = "世界"
-horizontal_alignment = 1
 
 [node name="V_Character" type="VBoxContainer" parent="Hbox"]
 layout_mode = 2
@@ -114,69 +92,6 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 21
 text = "行囊"
-horizontal_alignment = 1
-
-[node name="V_Rumors" type="VBoxContainer" parent="Hbox"]
-layout_mode = 2
-theme_override_constants/separation = 2
-alignment = 1
-
-[node name="BtnRumors" type="Button" parent="Hbox/V_Rumors"]
-custom_minimum_size = Vector2(104, 98)
-layout_mode = 2
-theme_override_styles/normal = SubResource("flat")
-theme_override_styles/pressed = SubResource("pressed_style")
-theme_override_styles/hover = SubResource("hover_style")
-icon = ExtResource("9_rumors_icon")
-expand_icon = true
-
-[node name="Label" type="Label" parent="Hbox/V_Rumors"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 21
-text = "见闻"
-horizontal_alignment = 1
-
-[node name="V_Letters" type="VBoxContainer" parent="Hbox"]
-layout_mode = 2
-theme_override_constants/separation = 2
-alignment = 1
-
-[node name="BtnLetters" type="Button" parent="Hbox/V_Letters"]
-custom_minimum_size = Vector2(104, 98)
-layout_mode = 2
-theme_override_styles/normal = SubResource("flat")
-theme_override_styles/pressed = SubResource("pressed_style")
-theme_override_styles/hover = SubResource("hover_style")
-icon = ExtResource("10_letters_icon")
-expand_icon = true
-
-[node name="Label" type="Label" parent="Hbox/V_Letters"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 21
-text = "信件"
-horizontal_alignment = 1
-
-[node name="V_Craft" type="VBoxContainer" parent="Hbox"]
-layout_mode = 2
-theme_override_constants/separation = 2
-alignment = 1
-
-[node name="BtnCraft" type="Button" parent="Hbox/V_Craft"]
-custom_minimum_size = Vector2(104, 98)
-layout_mode = 2
-theme_override_styles/normal = SubResource("flat")
-theme_override_styles/pressed = SubResource("pressed_style")
-theme_override_styles/hover = SubResource("hover_style")
-icon = ExtResource("11_craft_icon")
-expand_icon = true
-
-[node name="Label" type="Label" parent="Hbox/V_Craft"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 21
-text = "百工"
 horizontal_alignment = 1
 
 [node name="V_Cultivation" type="VBoxContainer" parent="Hbox"]
@@ -224,6 +139,91 @@ theme_override_font_sizes/font_size = 21
 text = "境界"
 horizontal_alignment = 1
 
+[node name="V_Craft" type="VBoxContainer" parent="Hbox"]
+layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="BtnCraft" type="Button" parent="Hbox/V_Craft"]
+custom_minimum_size = Vector2(104, 98)
+layout_mode = 2
+theme_override_styles/normal = SubResource("flat")
+theme_override_styles/pressed = SubResource("pressed_style")
+theme_override_styles/hover = SubResource("hover_style")
+icon = ExtResource("11_craft_icon")
+expand_icon = true
+
+[node name="Label" type="Label" parent="Hbox/V_Craft"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 21
+text = "百工"
+horizontal_alignment = 1
+
+[node name="V_Rumors" type="VBoxContainer" parent="Hbox"]
+layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="BtnRumors" type="Button" parent="Hbox/V_Rumors"]
+custom_minimum_size = Vector2(104, 98)
+layout_mode = 2
+theme_override_styles/normal = SubResource("flat")
+theme_override_styles/pressed = SubResource("pressed_style")
+theme_override_styles/hover = SubResource("hover_style")
+icon = ExtResource("9_rumors_icon")
+expand_icon = true
+
+[node name="Label" type="Label" parent="Hbox/V_Rumors"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 21
+text = "见闻"
+horizontal_alignment = 1
+
+[node name="V_Letters" type="VBoxContainer" parent="Hbox"]
+layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="BtnLetters" type="Button" parent="Hbox/V_Letters"]
+custom_minimum_size = Vector2(104, 98)
+layout_mode = 2
+theme_override_styles/normal = SubResource("flat")
+theme_override_styles/pressed = SubResource("pressed_style")
+theme_override_styles/hover = SubResource("hover_style")
+icon = ExtResource("10_letters_icon")
+expand_icon = true
+
+[node name="Label" type="Label" parent="Hbox/V_Letters"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 21
+text = "信件"
+horizontal_alignment = 1
+
+[node name="V_World" type="VBoxContainer" parent="Hbox"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="BtnWorld" type="Button" parent="Hbox/V_World"]
+custom_minimum_size = Vector2(104, 98)
+layout_mode = 2
+theme_override_styles/normal = SubResource("flat")
+theme_override_styles/pressed = SubResource("pressed_style")
+theme_override_styles/hover = SubResource("hover_style")
+icon = ExtResource("6_world_icon")
+expand_icon = true
+
+[node name="Label" type="Label" parent="Hbox/V_World"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 21
+text = "世界"
+horizontal_alignment = 1
+
 [node name="ActionBarToggle" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 3
@@ -231,12 +231,12 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -122.0
-offset_top = -93.0
-offset_right = -24.0
-offset_bottom = -47.0
+offset_left = -82.0
+offset_top = -112.0
+offset_right = -22.0
+offset_bottom = -52.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_color = Color(1, 0.92, 0.72, 1)
 theme_override_font_sizes/font_size = 18
-text = "收起 ▲"
+text = "▶"

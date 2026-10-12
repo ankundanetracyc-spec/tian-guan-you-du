@@ -43,7 +43,7 @@ public partial class BasicDeckUpgradeConfig : Resource
         if (!GodotObject.IsInstanceValid(character)) return false;
         foreach (var key in requirements.Keys)
         {
-            // 角色的体修/术法等造诣保存在 entity_data；统一走卡牌属性读取，
+            // 角色的各项技艺造诣保存在 entity_data；统一走卡牌属性读取，
             // 让基础技能库解锁、升级分支和战斗公式读取同一份数值。
             if (CardRules.Number(character, key.AsString()) < requirements[key].AsDouble()) return false;
         }

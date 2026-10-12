@@ -8,11 +8,14 @@ public partial class MainHUD : Control
     public event Action<string>? TaskRequested;
 
     private Character? _player;
+    private GameTimeMgr? _timeManager;
     private Label? _realmLabel;
+    private Label? _playerNameLabel;
     private Label? _healthLabel;
     private ProgressBar? _healthBar;
     private Label? _worldStaminaLabel;
     private ProgressBar? _worldStaminaBar;
+    private Label? _worldStatusLabel;
     private HBoxContainer? _actionBar;
     private Button? _actionBarToggle;
     private bool _actionBarExpanded = true;
@@ -33,52 +36,84 @@ public partial class MainHUD : Control
         ConnectButton("BtnCultivation", () => CultivationRequested?.Invoke());
         _actionBar = GetNodeOrNull<HBoxContainer>("Hbox");
         _actionBarToggle = GetNodeOrNull<Button>("ActionBarToggle");
-        if (_actionBarToggle is not null) _actionBarToggle.Pressed += toggle_action_bar;
+        _timeManager = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
+        if (_timeManager is not null) _timeManager.time_changed += RefreshPlayerStatus;
+        ConfigureNavigation();
         BuildPlayerStatus();
         BuildTaskTracker();
     }
 
-    public override void _Process(double delta) => RefreshPlayerStatus();
+    public override void _ExitTree()
+    {
+        if (_timeManager is not null) _timeManager.time_changed -= RefreshPlayerStatus;
+        bind_player(null);
+    }
 
-    public void bind_player(Character? player) { _player = player; RefreshPlayerStatus(); }
+    public void bind_player(Character? player)
+    {
+        if (ReferenceEquals(_player, player))
+        {
+            RefreshPlayerStatus();
+            return;
+        }
+
+        if (GodotObject.IsInstanceValid(_player))
+        {
+            _player!.WorldStaminaChanged -= on_player_world_stamina_changed;
+            _player.BreakthroughCompleted -= on_player_breakthrough_completed;
+        }
+
+        _player = player;
+        if (GodotObject.IsInstanceValid(_player))
+        {
+            _player!.WorldStaminaChanged += on_player_world_stamina_changed;
+            _player.BreakthroughCompleted += on_player_breakthrough_completed;
+        }
+        RefreshPlayerStatus();
+    }
+
+    public void refresh_player_status() => RefreshPlayerStatus();
+
+    private void on_player_world_stamina_changed(Character _) => RefreshPlayerStatus();
+    private void on_player_breakthrough_completed(Character _, string __) => RefreshPlayerStatus();
 
     public void set_task_entries(IEnumerable<JournalPanel.Entry> entries, bool visible)
     {
         if (_taskTracker is null || _taskList is null) return;
-        foreach (var child in _taskList.GetChildren()) child.QueueFree();
+        foreach (var child in _taskList.GetChildren()) { _taskList.RemoveChild(child); child.QueueFree(); }
+        var index = 0;
         foreach (var entry in entries.Take(2))
         {
-            var summary = entry.Body.Length > 96 ? entry.Body[..93] + "…" : entry.Body;
-            var button = new Button
-            {
-                Text = $"{entry.Title}　·　{entry.State}\n{summary}",
-                Alignment = HorizontalAlignment.Left,
-                AutowrapMode = TextServer.AutowrapMode.WordSmart,
-                CustomMinimumSize = new Vector2(0, 78),
-                TooltipText = "点击查看任务详情",
-                MouseFilter = MouseFilterEnum.Stop
+            if (index > 0) _taskList.AddChild(WorldHudStyle.Rule());
+            var button = new Button { Name = "TaskEntry" + index, Text = "", MouseFilter = MouseFilterEnum.Stop, ClipContents = true,
+                TooltipText = $"{entry.Title}\n{entry.Body}\n双击查看任务详情" };
+            WorldHudStyle.StyleSmallButton(button);
+            var margin = new MarginContainer { MouseFilter = MouseFilterEnum.Ignore };
+            button.AddChild(margin); margin.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+            var box = new VBoxContainer { MouseFilter = MouseFilterEnum.Ignore }; box.AddThemeConstantOverride("separation", 5); margin.AddChild(box);
+            var heading = new HBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
+            var source = WorldHudStyle.Text(entry.Source, 14, true);
+            source.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+            source.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
+            heading.AddChild(source);
+            heading.AddChild(WorldHudStyle.Text(entry.State, 13, true));
+            box.AddChild(heading);
+            var title = WorldHudStyle.Text(entry.Title, 20);
+            title.AutowrapMode = TextServer.AutowrapMode.WordSmart;
+            box.AddChild(title);
+            var objective = WorldHudStyle.Text(entry.Body, 16, true);
+            objective.AutowrapMode = TextServer.AutowrapMode.WordSmart;
+            objective.MaxLinesVisible = 2; objective.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
+            box.AddChild(objective);
+            margin.MinimumSizeChanged += () => button.CustomMinimumSize = new Vector2(0, margin.GetCombinedMinimumSize().Y);
+            button.GuiInput += e => {
+                if (e is InputEventMouseButton { ButtonIndex: MouseButton.Left, Pressed: true, DoubleClick: true })
+                { TaskRequested?.Invoke(string.IsNullOrEmpty(entry.Id) ? entry.Title : entry.Id); button.AcceptEvent(); }
             };
-            button.AddThemeFontSizeOverride("font_size", 16);
-            button.AddThemeColorOverride("font_color", new Color("30291f"));
-            button.AddThemeStyleboxOverride("normal", new StyleBoxFlat
-            {
-                BgColor = new Color(.91f, .86f, .72f, .91f), BorderColor = new Color(.45f, .34f, .18f, .72f),
-                BorderWidthLeft = 1, BorderWidthRight = 1, BorderWidthTop = 1, BorderWidthBottom = 1,
-                CornerRadiusTopLeft = 6, CornerRadiusTopRight = 6, CornerRadiusBottomLeft = 6, CornerRadiusBottomRight = 6,
-                ContentMarginLeft = 11, ContentMarginRight = 11, ContentMarginTop = 6, ContentMarginBottom = 6
-            });
-            button.AddThemeStyleboxOverride("hover", new StyleBoxFlat
-            {
-                BgColor = new Color(.98f, .92f, .77f, .98f), BorderColor = new Color(.65f, .49f, .23f, .95f),
-                BorderWidthLeft = 1, BorderWidthRight = 1, BorderWidthTop = 1, BorderWidthBottom = 1,
-                CornerRadiusTopLeft = 6, CornerRadiusTopRight = 6, CornerRadiusBottomLeft = 6, CornerRadiusBottomRight = 6,
-                ContentMarginLeft = 11, ContentMarginRight = 11, ContentMarginTop = 6, ContentMarginBottom = 6
-            });
-            button.Pressed += () => TaskRequested?.Invoke(entry.Title);
-            _taskList.AddChild(button);
+            _taskList.AddChild(button); index++;
         }
-        _taskTracker.Visible = visible;
-        CallDeferred(nameof(refresh_task_tracker_layout));
+        _taskTracker.Visible = visible && index > 0;
+        CallDeferred(nameof(apply_task_tracker_horizontal_layout));
     }
 
     public void set_journal_unread_count(int count)
@@ -110,46 +145,75 @@ public partial class MainHUD : Control
 
     private void BuildPlayerStatus()
     {
-        var panel = new Button { Name = "PlayerStatus", Text = "", MouseFilter = MouseFilterEnum.Stop, ZIndex = 100, FocusMode = FocusModeEnum.None };
+        var panel = new Button
+        {
+            Name = "PlayerStatus", Text = "", MouseFilter = MouseFilterEnum.Stop,
+            ZIndex = 100, FocusMode = FocusModeEnum.All, TooltipText = "查看人物状态", ClipContents = true
+        };
         panel.SetAnchorsPreset(LayoutPreset.BottomLeft);
-        panel.OffsetLeft = 22; panel.OffsetTop = -198; panel.OffsetRight = 352; panel.OffsetBottom = -22;
-        panel.AddThemeStyleboxOverride("normal", new StyleBoxFlat
+        panel.OffsetLeft = 22; panel.OffsetTop = -172; panel.OffsetRight = 402; panel.OffsetBottom = -22;
+        foreach (var state in new[] { "normal", "hover", "pressed" })
+            panel.AddThemeStyleboxOverride(state, new StyleBoxEmpty());
+        panel.AddThemeStyleboxOverride("focus", new StyleBoxFlat
         {
-            BgColor = new Color(.035f, .045f, .04f, .93f), BorderColor = new Color("a78d5a"),
-            BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1,
-            CornerRadiusTopLeft = 9, CornerRadiusTopRight = 9, CornerRadiusBottomLeft = 9, CornerRadiusBottomRight = 9,
-            ContentMarginLeft = 2, ContentMarginRight = 2, ContentMarginTop = 2, ContentMarginBottom = 2
+            BgColor = Colors.Transparent, BorderColor = WorldHudStyle.StaminaInk,
+            BorderWidthBottom = 1
         });
-        panel.AddThemeStyleboxOverride("hover", new StyleBoxFlat
-        {
-            BgColor = new Color(.07f, .075f, .06f, .97f), BorderColor = new Color("d1b475"),
-            BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1,
-            CornerRadiusTopLeft = 9, CornerRadiusTopRight = 9, CornerRadiusBottomLeft = 9, CornerRadiusBottomRight = 9,
-            ContentMarginLeft = 2, ContentMarginRight = 2, ContentMarginTop = 2, ContentMarginBottom = 2
-        });
-        panel.AddThemeStyleboxOverride("pressed", panel.GetThemeStylebox("hover"));
         panel.Pressed += () => PlayerStatusRequested?.Invoke();
         AddChild(panel);
+        var frame = new WorldHudFrame();
+        panel.AddChild(frame);
+        frame.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        panel.MouseEntered += () => frame.Modulate = new Color(.96f, .98f, .95f);
+        panel.MouseExited += () => frame.Modulate = Colors.White;
         var margin = new MarginContainer { MouseFilter = MouseFilterEnum.Ignore };
-        margin.AddThemeConstantOverride("margin_left", 16); margin.AddThemeConstantOverride("margin_right", 16); margin.AddThemeConstantOverride("margin_top", 13); margin.AddThemeConstantOverride("margin_bottom", 13); panel.AddChild(margin);
+        panel.AddChild(margin);
+        margin.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        margin.AddThemeConstantOverride("margin_left", 16); margin.AddThemeConstantOverride("margin_right", 16);
+        margin.AddThemeConstantOverride("margin_top", 10); margin.AddThemeConstantOverride("margin_bottom", 10);
         var box = new VBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
-        box.AddThemeConstantOverride("separation", 5); margin.AddChild(box);
-        _realmLabel = new Label { Text = "未定道途", MouseFilter = MouseFilterEnum.Ignore };
-        _realmLabel.AddThemeFontSizeOverride("font_size", 20); _realmLabel.AddThemeColorOverride("font_color", new Color("e6cf96")); box.AddChild(_realmLabel);
-        _healthLabel = new Label { Text = "生命 0 / 0", MouseFilter = MouseFilterEnum.Ignore };
-        _healthLabel.AddThemeFontSizeOverride("font_size", 15); _healthLabel.AddThemeColorOverride("font_color", new Color("f2ead9")); box.AddChild(_healthLabel);
-        _healthBar = new ProgressBar { ShowPercentage = false, CustomMinimumSize = new Vector2(0, 15), MaxValue = 1, Value = 0, MouseFilter = MouseFilterEnum.Ignore };
-        _healthBar.AddThemeStyleboxOverride("background", new StyleBoxFlat { BgColor = new Color(.12f, .08f, .07f), CornerRadiusTopLeft = 4, CornerRadiusTopRight = 4, CornerRadiusBottomLeft = 4, CornerRadiusBottomRight = 4 });
-        _healthBar.AddThemeStyleboxOverride("fill", new StyleBoxFlat { BgColor = new Color("a64e40"), CornerRadiusTopLeft = 4, CornerRadiusTopRight = 4, CornerRadiusBottomLeft = 4, CornerRadiusBottomRight = 4 });
-        box.AddChild(_healthBar);
-        _worldStaminaLabel = new Label { Text = "体力 100 / 100", MouseFilter = MouseFilterEnum.Ignore };
-        _worldStaminaLabel.AddThemeFontSizeOverride("font_size", 15); _worldStaminaLabel.AddThemeColorOverride("font_color", new Color("e2e4d2")); box.AddChild(_worldStaminaLabel);
-        _worldStaminaBar = new ProgressBar { ShowPercentage = false, CustomMinimumSize = new Vector2(0, 13), MaxValue = 100, Value = 100, MouseFilter = MouseFilterEnum.Ignore };
-        _worldStaminaBar.AddThemeStyleboxOverride("background", new StyleBoxFlat { BgColor = new Color(.09f, .10f, .08f), CornerRadiusTopLeft = 4, CornerRadiusTopRight = 4, CornerRadiusBottomLeft = 4, CornerRadiusBottomRight = 4 });
-        _worldStaminaBar.AddThemeStyleboxOverride("fill", new StyleBoxFlat { BgColor = new Color("718b68"), CornerRadiusTopLeft = 4, CornerRadiusTopRight = 4, CornerRadiusBottomLeft = 4, CornerRadiusBottomRight = 4 });
-        box.AddChild(_worldStaminaBar);
+        box.AddThemeConstantOverride("separation", 5);
+        margin.AddChild(box);
+        var heading = new HBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
+        heading.AddThemeConstantOverride("separation", 10);
+        box.AddChild(heading);
+        _playerNameLabel = WorldHudStyle.Text("修行者", 24);
+        _playerNameLabel.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+        _playerNameLabel.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
+        heading.AddChild(_playerNameLabel);
+        _realmLabel = WorldHudStyle.Text("未定道途", 18, true);
+        heading.AddChild(_realmLabel);
+        heading.AddChild(WorldHudStyle.Text("›", 18, true));
+        box.AddChild(WorldHudStyle.Rule());
+        var health = BuildStatusRow(box, "生命", WorldHudStyle.HealthInk);
+        _healthLabel = health.value; _healthBar = health.bar;
+        var stamina = BuildStatusRow(box, "体力", WorldHudStyle.StaminaInk);
+        _worldStaminaLabel = stamina.value; _worldStaminaBar = stamina.bar;
+        _worldStatusLabel = WorldHudStyle.Text("", 15, true);
+        _worldStatusLabel.CustomMinimumSize = new Vector2(0, 20);
+        _worldStatusLabel.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+        _worldStatusLabel.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
+        _worldStatusLabel.ClipText = true;
+        box.AddChild(_worldStatusLabel);
     }
 
+    private static (Label value, ProgressBar bar) BuildStatusRow(VBoxContainer parent, string title, Color ink)
+    {
+        var group = new VBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
+        group.AddThemeConstantOverride("separation", 2);
+        parent.AddChild(group);
+        var caption = new HBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
+        group.AddChild(caption);
+        var name = WorldHudStyle.Text(title, 18);
+        name.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+        caption.AddChild(name);
+        var value = WorldHudStyle.Text("— / —", 20);
+        value.HorizontalAlignment = HorizontalAlignment.Right;
+        caption.AddChild(value);
+        var bar = WorldHudStyle.Bar(ink);
+        group.AddChild(bar);
+        return (value, bar);
+    }
     private void BuildTaskTracker()
     {
         var panel = new PanelContainer { Name = "TaskTracker", MouseFilter = MouseFilterEnum.Pass, ZIndex = 10 };
@@ -159,24 +223,14 @@ public partial class MainHUD : Control
         panel.OffsetLeft = -476; panel.OffsetTop = 0; panel.OffsetRight = -40; panel.OffsetBottom = 232;
         panel.AddThemeStyleboxOverride("panel", new StyleBoxEmpty());
         AddChild(panel);
+        var frame = new WorldHudFrame { Name = "TaskPaper", Rectangular = true };
+        panel.AddChild(frame);
 
-        var margin = new MarginContainer();
-        margin.AddThemeConstantOverride("margin_left", 21); margin.AddThemeConstantOverride("margin_right", 19);
-        margin.AddThemeConstantOverride("margin_top", 22); margin.AddThemeConstantOverride("margin_bottom", 20);
+        var margin = new MarginContainer { Name = "Margin" };
         panel.AddChild(margin);
-        var box = new VBoxContainer(); box.AddThemeConstantOverride("separation", 9); margin.AddChild(box);
-        var heading = new Label { Text = "阶段目标 · 当前任务", HorizontalAlignment = HorizontalAlignment.Center, MouseFilter = MouseFilterEnum.Ignore };
-        heading.AddThemeFontSizeOverride("font_size", 19); heading.AddThemeColorOverride("font_color", new Color("352d22"));
-        box.AddChild(heading);
-        _taskList = new VBoxContainer(); _taskList.AddThemeConstantOverride("separation", 8); box.AddChild(_taskList);
+        _taskList = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
+        _taskList.AddThemeConstantOverride("separation", 8); margin.AddChild(_taskList);
         panel.Hide();
-    }
-
-    private void refresh_task_tracker_layout()
-    {
-        if (_taskTracker is null || _taskList is null) return;
-        var height = Mathf.Clamp(_taskList.GetCombinedMinimumSize().Y + 80, 190, 246);
-        _taskTracker.OffsetBottom = height;
     }
 
     private void RefreshPlayerStatus()
@@ -185,12 +239,27 @@ public partial class MainHUD : Control
         if (_realmLabel is not null)
         {
             var realm = _player!.cultivation_realm;
-            _realmLabel.Text = $"{_player.entity_name} · {realm}";
+            _realmLabel.Text = realm;
+            if (_playerNameLabel is not null) _playerNameLabel.Text = _player.entity_name;
+            if (GetNodeOrNull<Button>("PlayerStatus") is { } status)
+            {
+                var currentGameHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+                var worldStatuses = WorldStatusRules.format_summary((_player.entity_data as HumanData)?.world_status_records, currentGameHour);
+                status.TooltipText = $"{_player.entity_name} · {realm}\n生命 {_player.current_health} / {_player.max_health}\n体力 {_player.current_world_stamina:0.#} / {_player.max_world_stamina:0.#}\n大世界状态：{worldStatuses}\n点击查看人物状态";
+            }
         }
-        if (_healthLabel is not null) _healthLabel.Text = $"生命 {_player!.current_health} / {_player.max_health}";
+        if (_healthLabel is not null) _healthLabel.Text = $"{_player!.current_health} / {_player.max_health}";
         if (_healthBar is not null) { _healthBar.MaxValue = Math.Max(1, _player!.max_health); _healthBar.Value = _player.current_health; }
-        if (_worldStaminaLabel is not null) _worldStaminaLabel.Text = $"体力 {_player!.current_world_stamina:0.#} / {_player.max_world_stamina:0.#}";
+        if (_worldStaminaLabel is not null) _worldStaminaLabel.Text = $"{_player!.current_world_stamina:0.#} / {_player.max_world_stamina:0.#}";
         if (_worldStaminaBar is not null) { _worldStaminaBar.MaxValue = Math.Max(1, _player!.max_world_stamina); _worldStaminaBar.Value = _player.current_world_stamina; }
+        if (_worldStatusLabel is not null)
+        {
+            var currentGameHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+            _worldStatusLabel.Text = WorldStatusRules.format_hud_line((_player!.entity_data as HumanData)?.world_status_records, currentGameHour);
+            _worldStatusLabel.Visible = !string.IsNullOrWhiteSpace(_worldStatusLabel.Text);
+            if (GetNodeOrNull<Control>("PlayerStatus") is { } statusPanel)
+                statusPanel.OffsetTop = _worldStatusLabel.Visible ? -204 : -172;
+        }
         if (FindButton("BtnRealm") is { } realmButton)
         {
             var realms = GetNodeOrNull<RealmManager>("/root/RealmManager");
@@ -213,6 +282,6 @@ public partial class MainHUD : Control
     {
         _actionBarExpanded = !_actionBarExpanded;
         if (_actionBar is not null) _actionBar.Visible = _actionBarExpanded;
-        if (_actionBarToggle is not null) _actionBarToggle.Text = _actionBarExpanded ? "收起 ▲" : "展开 ▼";
+        RefreshNavigationToggle();
     }
 }

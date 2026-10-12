@@ -13,14 +13,11 @@ public partial class CardSystemSmoke : Node
         try
         {
             var manager=new BattleManager();AddChild(manager);
-            var bodyDeck=GD.Load<BasicDeckResource>("res://resources/basic_decks/锻躯路.tres") ?? throw new Exception("锻躯基础技能库资源");
-            var bodyPaths=bodyDeck.get_deck_skills();
-            Check(bodyPaths.Count==13,"锻躯基础技能库总张数");
-            Check(bodyPaths.Count(path=>path=="res://resources/activeskills/发劲.tres")==5,"锻躯基础技能库发劲数量");
-            Check(bodyPaths.Count(path=>path=="res://resources/activeskills/催血.tres")==2,"锻躯基础技能库催血数量");
-            Check(bodyPaths.Count(path=>path=="res://resources/activeskills/平息.tres")==1,"锻躯基础技能库平息数量");
-            Check(bodyPaths.Count(path=>path=="res://resources/activeskills/卸力.tres")==4,"锻躯基础技能库卸力数量");
-            Check(bodyPaths.Count(path=>path=="res://resources/activeskills/撼山.tres")==1,"锻躯基础技能库撼山数量");
+            var basicPool=GD.Load<BasicDeckResource>("res://resources/basic_decks/公共基础技能池.tres") ?? throw new Exception("公共基础技能池资源");
+            var basicPaths=basicPool.get_deck_skills();
+            Check(basicPaths.Count==8,"公共基础技能池八项名录");
+            Check(basicPaths.Distinct().Count()==basicPaths.Count,"公共基础技能不按卡牌数量重复");
+            Check(basicPaths.Contains("res://resources/activeskills/养息.tres"),"公共基础八项保留养息名录");
             var bodyTiming=new[]{
                 (Path:"res://resources/activeskills/发劲.tres",Name:"发劲",Energy:1,Preparation:144,Recovery:96,Cooldown:240,Target:2,Category:"active"),
                 (Path:"res://resources/activeskills/催血.tres",Name:"催血",Energy:1,Preparation:144,Recovery:96,Cooldown:360,Target:0,Category:"active"),
@@ -79,19 +76,19 @@ public partial class CardSystemSmoke : Node
             var cleaned=deck.discard_hand_at_turn_start([ethereal,response,hold]);
             Check(cleaned.Count==1&&cleaned.Contains(hold)&&deck.exhausted_pile.Contains(ethereal)&&deck.discard_pile.Contains(response),"开始回合虚无消耗、应对弃置、保留留下");
             var power=GD.Load<ActiveSkillData>("res://resources/activeskills/黄庭养形篇/抱一.tres");
-            Check(!manager.body_cards.CanPlay(defender,power),"抱一回落条件");
+            Check(!manager.gongfa_combat.CanPlay(defender,power),"抱一回落条件");
             defender.max_qi_blood=3;defender.qi_blood=1;defender.current_health=80;
-            manager.body_cards.Fall(defender,1,true);
-            Check(defender.current_health==83&&manager.body_cards.CanPlay(defender,power),"气血回落与条件联动");
-            manager.body_cards.Before(defender,power);
-            Check(!manager.body_cards.CanPlay(defender,power),"每回合限一次");
+            manager.gongfa_combat.Fall(defender,1,true);
+            Check(defender.current_health==83&&manager.gongfa_combat.CanPlay(defender,power),"气血回落与条件联动");
+            manager.gongfa_combat.Before(defender,power);
+            Check(!manager.gongfa_combat.CanPlay(defender,power),"每回合限一次");
             var momentum=new ActiveSkillData{skill_name="乘势测试",keywords=["乘势"]};
-            manager.body_cards.Begin(defender);
-            Check(manager.body_cards.Momentum(defender,momentum)==0,"乘势没有前置攻击不生效");
-            manager.body_cards.Before(defender,attack);
-            Check(Mathf.IsEqualApprox(manager.body_cards.Momentum(defender,momentum),.43f),"乘势按属性计算会心加成");
-            manager.body_cards.Before(defender,momentum);
-            Check(Mathf.IsEqualApprox(manager.body_cards.SettlingMomentum(defender,momentum),.43f),"乘势结算保存前牌条件");
+            manager.gongfa_combat.Begin(defender);
+            Check(manager.gongfa_combat.Momentum(defender,momentum)==0,"乘势没有前置攻击不生效");
+            manager.gongfa_combat.Before(defender,attack);
+            Check(Mathf.IsEqualApprox(manager.gongfa_combat.Momentum(defender,momentum),.43f),"乘势按属性计算会心加成");
+            manager.gongfa_combat.Before(defender,momentum);
+            Check(Mathf.IsEqualApprox(manager.gongfa_combat.SettlingMomentum(defender,momentum),.43f),"乘势结算保存前牌条件");
             var actor=new Character();AddChild(actor);
             actor.apply_battle_data(new BattleEntityData{max_health=100,current_health=100,body_proficiency=17,sword_proficiency=13,magic_proficiency=11});
             Check(CardRules.Number(actor,"body_proficiency")==17&&CardRules.Number(actor,"sword_proficiency")==13&&CardRules.Number(actor,"magic_proficiency")==11,"战斗快照保留造诣");

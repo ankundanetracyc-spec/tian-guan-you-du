@@ -1,4 +1,4 @@
-﻿using Godot;
+using Godot;
 using Godot.Collections;
 
 public partial class BattleManager : Node2D
@@ -128,13 +128,12 @@ public partial class BattleManager : Node2D
             unit.Set("initialized_from_data", true); unit.Call("apply_battle_data", snapshot);
             unit.SetMeta("battle_dun_speed",snapshot.dun_speed);
             unit.SetMeta("basic_deck_path", snapshot.basic_deck_path);
-            unit.SetMeta("basic_deck_upgrade_ids", snapshot.basic_deck_upgrade_ids);
-            unit.SetMeta("dao_bearing", snapshot.dao_bearing);
             unit.SetMeta("active_skill_paths", snapshot.active_skill_paths);
             unit.SetMeta("loaded_skill_paths", snapshot.loaded_skill_paths);
             unit.SetMeta("combat_skill_slot_paths", snapshot.combat_skill_slot_paths);
             unit.SetMeta("combat_skill_slots_configured", snapshot.combat_skill_slots_configured);
             unit.SetMeta("combat_passive_paths", snapshot.combat_passive_paths);
+            unit.SetMeta("combat_heart_method_upgrades", snapshot.combat_heart_method_upgrades);
             unit.SetMeta("battle_deck_configured", snapshot.battle_deck_configured);
             _resourceSnapshots[unit] = new BattleResourceSnapshot
             {
@@ -148,8 +147,8 @@ public partial class BattleManager : Node2D
             unit.Set("current_mana", 0);
             if (unit is Creature creature)
             {
-                // 锻躯是所有修士共有的根基；装配心法的角色不能因为主修倾向不同而失去气血资源。
-                creature.initialize_body_combat_state(unit is Character || snapshot.basic_deck_path.EndsWith("锻躯路.tres") || snapshot.body_path_awakened);
+                // 气血是公共战斗资源；所有修士统一初始化，不依赖秘籍分类或历史存档字段。
+                creature.initialize_body_combat_state(unit is Character);
                 creature.apply_combat_tempering_stats();
             }
             // 战斗由角色身体区域的双击入口处理，避免世界实体单击就打开面板。

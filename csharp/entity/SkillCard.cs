@@ -68,7 +68,7 @@ public partial class SkillCard : Control
         else{Scale=Vector2.One*.94f;var target=mouse-Size*Scale*new Vector2(.5f,.42f);var blend=1f-Mathf.Exp(-(float)delta*24f);dragVisualPosition=dragVisualPosition.Lerp(target,blend);GlobalPosition=dragVisualPosition;Modulate=Colors.White;}
         if(highlight is not null)highlight.Show();
     }
-    private Dictionary costs(){var result=new Dictionary{{"energy",skill_data is not null && owner_unit is not null && GetTree()?.GetFirstNodeInGroup("battle_mgr") is BattleManager bm?bm.body_cards.Cost(owner_unit,skill_data):skill_data?.get_energy_cost()??0},{"mana",skill_data?.mana_cost??0}};return result;}
+    private Dictionary costs(){var result=new Dictionary{{"energy",skill_data is not null && owner_unit is not null && GetTree()?.GetFirstNodeInGroup("battle_mgr") is BattleManager bm?bm.gongfa_combat.Cost(owner_unit,skill_data):skill_data?.get_energy_cost()??0},{"mana",skill_data?.mana_cost??0}};return result;}
     private void set_costs(Dictionary values){var e=values["energy"].AsInt32();var n=values["mana"].AsInt32();if(badge is not null)badge.Visible=e>0;if(cost is not null)cost.Text=format_cost(e);if(staminaBadge is not null)staminaBadge.Visible=e>0;if(stamina is not null)stamina.Text=format_cost(e);if(manaBadge is not null)manaBadge.Visible=n>0;if(mana is not null)mana.Text=format_cost(n);if(spiritBadge is not null)spiritBadge.Hide();}
     private string settlement_text()
     {
@@ -111,7 +111,7 @@ public partial class SkillCard : Control
         return $"{string.Join(" + ", terms)} = {total:0.##}";
     }
 
-    private static string attribute_name(string id) => id switch { "physique" => "体魄", "agility" => "敏捷", "intelligence" => "灵慧", "soul" => "神魂", "comprehension" => "悟性", "body_proficiency" => "体修造诣", "magic_proficiency" => "术法造诣", "sword_proficiency" => "剑道造诣", _ => "相关属性" };
+    private static string attribute_name(string id) => id switch { "physique" => "体魄", "agility" => "敏捷", "intelligence" => "灵慧", "soul" => "神魂", "comprehension" => "悟性", "body_proficiency" => "体道造诣", "magic_proficiency" => "术法造诣", "sword_proficiency" => "剑道造诣", _ => "相关属性" };
     private static string effect_name(string id) => id switch { "shield" => "获得护持", "restore_stamina" => "恢复精力", "restore_mana" => "恢复法力", "draw" => "抽取卡牌", "move" => "移动", _ => "特殊效果" };
     private static string format_cost(int value)=>value>=1000?$"{value/1000f:0.#}千":value.ToString();
     private string skill_type()=>skill_data is null ? "术诀" : skill_data.get_card_category();

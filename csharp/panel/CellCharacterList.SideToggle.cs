@@ -26,7 +26,8 @@ public partial class CellCharacterList
     private void toggle_expanded_from_side()
     {
         _expanded = !_expanded;
-        Size = new Vector2(300, _expanded_height);
+        // 折叠把手占用列表外侧的独立 30px；不要让列表残留在把手下面。
+        Size = new Vector2(_expanded ? PanelWidth + 30f : 30f, _expanded_height);
         if (_list_panel is not null)
         {
             _list_panel.Visible = true;
@@ -45,11 +46,11 @@ public partial class CellCharacterList
         _toggle_tween.SetEase(Tween.EaseType.InOut);
         if (_toggle_button is not null)
         {
-            var toggle_position = new Vector2(_expanded ? 270 : 0, (_expanded_height - _toggle_button.Size.Y) * .5f);
+            var toggle_position = new Vector2(_expanded ? PanelWidth : 0f, (_expanded_height - _toggle_button.Size.Y) * .5f);
             _toggle_tween.TweenProperty(_toggle_button, "position", toggle_position, .2);
         }
         if (_list_panel is not null)
-            _toggle_tween.Parallel().TweenProperty(_list_panel, "position", _expanded ? Vector2.Zero : new Vector2(-270, 0), .2);
+            _toggle_tween.Parallel().TweenProperty(_list_panel, "position", _expanded ? Vector2.Zero : new Vector2(-PanelWidth, 0), .2);
     }
 
     private static StyleBoxFlat side_toggle_style(Color color, Color border)

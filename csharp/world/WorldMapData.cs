@@ -66,8 +66,8 @@ public partial class WorldMapData : Resource
     public WorldMapData() { }
     public WorldMapData(int p_radius) { grid_radius = p_radius; }
 
-    public static string get_resource_display_name(string resource_id) => resource_id switch { "mat_herb" or "herb" or "药草" or "凝血草" => "凝血草", "mat_ore" or "ore" or "矿石" => "矿石", "mat_stone" or "stone" or "石材" => "石材", "mat_hemp" or "hemp" or "山麻" => "山麻", _ => resource_id };
-    public static string normalize_resource_id(string resource_id) => resource_id switch { "herb" or "药草" or "凝血草" => "mat_herb", "ore" or "矿石" => "mat_ore", "stone" or "石材" => "mat_stone", "hemp" or "山麻" => "mat_hemp", _ => resource_id };
+    public static string get_resource_display_name(string resource_id) => resource_id switch { "mat_herb" or "herb" or "herbs" or "药草" or "药材" => "药材", "mat_ore" or "ore" or "矿石" or "矿材" => "矿材", "mat_stone" or "stone" or "石材" => "石材", _ => resource_id };
+    public static string normalize_resource_id(string resource_id) => resource_id switch { "herb" or "mat_herb" or "药草" => "herbs", "ore" or "mat_ore" or "矿石" => "ore", "stone" or "mat_stone" or "石材" => "stone", _ => resource_id };
     public static string get_site_type_name(int site_type) => SITE_TYPE_NAMES.TryGetValue(site_type, out var value) ? value.AsString() : "";
 
     public virtual void generate_terrain() { }
@@ -120,7 +120,7 @@ public partial class WorldMapData : Resource
             case MysteryType.BATTLE: { var options = new[] { ("wild_boar", 1), ("forest_wolf", 2), ("giant_toad", 1) }; var v = options[GD.RandRange(0, options.Length - 1)]; mystery.enemy_id = v.Item1; mystery.enemy_count = v.Item2; break; }
             case MysteryType.ELITE: { var options = new[] { ("demon_ape", 1), ("poison_snake", 1) }; var v = options[GD.RandRange(0, options.Length - 1)]; mystery.enemy_id = v.Item1; mystery.enemy_count = v.Item2; break; }
             case MysteryType.EVENT: mystery.event_id = new[] { "injured_traveler", "strange_altar", "old_hermit" }[GD.RandRange(0, 2)]; break;
-            case MysteryType.RESOURCE: { var options = new[] { ("mat_herb", 4), ("mat_ore", 3) }; var v = options[GD.RandRange(0, options.Length - 1)]; mystery.resource_type = v.Item1; mystery.resource_amount = v.Item2; break; }
+            case MysteryType.RESOURCE: { var options = new[] { ("herbs", 4), ("ore", 3) }; var v = options[GD.RandRange(0, options.Length - 1)]; mystery.resource_type = v.Item1; mystery.resource_amount = v.Item2; break; }
         }
     }
 }

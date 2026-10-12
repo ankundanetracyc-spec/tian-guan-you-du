@@ -32,14 +32,9 @@ public partial class TradePanel : Control
     private const string SlotScenePath = "res://tscn/panel/StorageItemSlot.tscn";
     private static readonly string[] DefaultNpcTradeItems =
     [
-        "res://resources/entities/items/止血草.tres",
         "res://resources/entities/items/灵石.tres",
-        "res://resources/entities/items/铁矿石.tres",
-        "res://resources/entities/items/山麻.tres",
         "res://resources/entities/items/兽皮.tres",
         "res://resources/entities/items/兽骨.tres",
-        "res://resources/entities/items/回春丹.tres",
-        "res://resources/entities/items/雷击符.tres",
         "res://resources/entities/items/黄庭养形篇秘籍.tres",
     ];
 

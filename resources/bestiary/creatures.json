@@ -1,0 +1,1744 @@
+[
+  {
+    "id": "qing_tail_fox",
+    "name": "青尾狐",
+    "category": "妖",
+    "realm": "通智",
+    "stage": "初期",
+    "humanParity": "云息",
+    "habitat": "栖于松林、旧祠与山道边缘",
+    "habit": "栖于松林、旧祠与山道边缘，常以灵火标记猎物，再把目标引向同伴伏击圈。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "青尾狐习性：偏向提高敏捷相关能力；首轮不附加新状态或额外行动。",
+    "technique": "狐火点名：对单个目标造成物理伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/qing_tail_fox.png",
+    "stats": {
+      "physique": {
+        "min": 5,
+        "mean": 6,
+        "max": 7
+      },
+      "intelligence": {
+        "min": 6,
+        "mean": 7,
+        "max": 8
+      },
+      "agility": {
+        "min": 10,
+        "mean": 11,
+        "max": 12
+      },
+      "soul": {
+        "min": 7,
+        "mean": 8,
+        "max": 9
+      }
+    },
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "red_mane_wolf",
+    "name": "赤鬃狼",
+    "category": "妖",
+    "realm": "通智",
+    "stage": "初期",
+    "humanParity": "云息",
+    "habitat": "以小群活动",
+    "habit": "以小群活动，沿兽径追踪受伤猎物；争夺猎场时会先试探，再集中扑击。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "赤鬃狼习性：偏向提高敏捷相关能力；首轮不附加新状态或额外行动。",
+    "technique": "裂风扑击：对单个目标造成物理伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/red_mane_wolf.png",
+    "stats": {
+      "physique": {
+        "min": 8,
+        "mean": 9,
+        "max": 10
+      },
+      "intelligence": {
+        "min": 3,
+        "mean": 4,
+        "max": 5
+      },
+      "agility": {
+        "min": 9,
+        "mean": 10,
+        "max": 11
+      },
+      "soul": {
+        "min": 4,
+        "mean": 5,
+        "max": 6
+      }
+    },
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "rock_back_badger",
+    "name": "岩背獾",
+    "category": "妖",
+    "realm": "通智",
+    "stage": "初期",
+    "humanParity": "云息",
+    "habitat": "在松土和碎石坡下掘洞",
+    "habit": "在松土和碎石坡下掘洞，洞口会留下新翻的湿土与断根。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "岩背獾习性：偏向提高物理防御相关能力；首轮不附加新状态或额外行动。",
+    "technique": "翻土突袭：对单个目标造成物理伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/rock_back_badger.png",
+    "stats": {
+      "physique": {
+        "min": 9,
+        "mean": 10,
+        "max": 11
+      },
+      "intelligence": {
+        "min": 2,
+        "mean": 3,
+        "max": 4
+      },
+      "agility": {
+        "min": 5,
+        "mean": 6,
+        "max": 7
+      },
+      "soul": {
+        "min": 4,
+        "mean": 5,
+        "max": 6
+      }
+    },
+    "physicalDefense": 3,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "wind_feather_ape",
+    "name": "风翎猿",
+    "category": "妖",
+    "realm": "妖府",
+    "stage": "初期",
+    "humanParity": "玄基",
+    "habitat": "栖居悬崖与高树",
+    "habit": "栖居悬崖与高树，喜欢收集石块和果核，借风势远距离投掷。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "风翎猿习性：偏向提高术法相关能力；首轮不附加新状态或额外行动。",
+    "technique": "回风掷石：对单个目标造成物理伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/wind_feather_ape.png",
+    "stats": null,
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "iron_hoof_antelope",
+    "name": "铁蹄羚",
+    "category": "妖",
+    "realm": "通智",
+    "stage": "初期",
+    "humanParity": "云息",
+    "habitat": "以群体迁徙穿越山脊",
+    "habit": "以群体迁徙穿越山脊，遇到威胁时会整群朝同一方向冲锋。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "铁蹄羚习性：偏向提高敏捷相关能力；首轮不附加新状态或额外行动。",
+    "technique": "碎岩冲锋：对单个目标造成物理伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/iron_hoof_antelope.png",
+    "stats": {
+      "physique": {
+        "min": 8,
+        "mean": 9,
+        "max": 10
+      },
+      "intelligence": {
+        "min": 3,
+        "mean": 4,
+        "max": 5
+      },
+      "agility": {
+        "min": 9,
+        "mean": 10,
+        "max": 11
+      },
+      "soul": {
+        "min": 3,
+        "mean": 4,
+        "max": 5
+      }
+    },
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "marsh_scale_python",
+    "name": "沼鳞蟒",
+    "category": "妖",
+    "realm": "通智",
+    "stage": "初期",
+    "humanParity": "云息",
+    "habitat": "潜伏在浅水和芦苇根间",
+    "habit": "潜伏在浅水和芦苇根间，以水面气泡与拖行痕迹标示活动范围。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "沼鳞蟒习性：偏向提高敏捷相关能力；首轮不附加新状态或额外行动。",
+    "technique": "缠颈拖拽：对单个目标造成物理伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/marsh_scale_python.png",
+    "stats": {
+      "physique": {
+        "min": 7,
+        "mean": 8,
+        "max": 9
+      },
+      "intelligence": {
+        "min": 5,
+        "mean": 6,
+        "max": 7
+      },
+      "agility": {
+        "min": 8,
+        "mean": 9,
+        "max": 10
+      },
+      "soul": {
+        "min": 6,
+        "mean": 7,
+        "max": 8
+      }
+    },
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "thunder_beak_crow",
+    "name": "雷喙鸦",
+    "category": "妖",
+    "realm": "妖府",
+    "stage": "初期",
+    "humanParity": "玄基",
+    "habitat": "在雷雨前聚集高枝",
+    "habit": "在雷雨前聚集高枝，衔取金属碎片筑巢，善于辨认带电气味。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "雷喙鸦习性：偏向提高术法相关能力；首轮不附加新状态或额外行动。",
+    "technique": "引雷啄痕：对单个目标造成物理伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/thunder_beak_crow.png",
+    "stats": null,
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "moon_mark_leopard",
+    "name": "月纹豹",
+    "category": "妖",
+    "realm": "妖府",
+    "stage": "初期",
+    "humanParity": "玄基",
+    "habitat": "独自在月光稀薄的林地狩猎",
+    "habit": "独自在月光稀薄的林地狩猎，以树影隐藏身形，优先袭击暴露目标。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "月纹豹习性：偏向提高术法相关能力；首轮不附加新状态或额外行动。",
+    "technique": "折月伏袭：对单个目标造成物理伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/moon_mark_leopard.png",
+    "stats": null,
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "copper_back_turtle",
+    "name": "铜背龟",
+    "category": "妖",
+    "realm": "通智",
+    "stage": "初期",
+    "humanParity": "云息",
+    "habitat": "栖居溪谷浅滩",
+    "habit": "栖居溪谷浅滩，甲壳嵌有河石，遇险时会把自身缩入壳中。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "铜背龟习性：偏向提高物理防御相关能力；首轮不附加新状态或额外行动。",
+    "technique": "覆甲回震：自身或一名同伴获得护盾；只结算护盾，不附带控制或场景效果。",
+    "portrait": "res://textures/bestiary/static/copper_back_turtle.png",
+    "stats": {
+      "physique": {
+        "min": 11,
+        "mean": 12,
+        "max": 13
+      },
+      "intelligence": {
+        "min": 3,
+        "mean": 4,
+        "max": 5
+      },
+      "agility": {
+        "min": 2,
+        "mean": 3,
+        "max": 4
+      },
+      "soul": {
+        "min": 6,
+        "mean": 7,
+        "max": 8
+      }
+    },
+    "physicalDefense": 5,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "ember_tail_marten",
+    "name": "烬尾貂",
+    "category": "妖",
+    "realm": "通智",
+    "stage": "初期",
+    "humanParity": "云息",
+    "habitat": "出没于温泉与火山石缝",
+    "habit": "出没于温泉与火山石缝，常叼走火种、松脂和营地食物。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "烬尾貂习性：偏向提高敏捷相关能力；首轮不附加新状态或额外行动。",
+    "technique": "火尾扫掠：对单个目标造成物理伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/ember_tail_marten.png",
+    "stats": {
+      "physique": {
+        "min": 4,
+        "mean": 5,
+        "max": 6
+      },
+      "intelligence": {
+        "min": 5,
+        "mean": 6,
+        "max": 7
+      },
+      "agility": {
+        "min": 11,
+        "mean": 12,
+        "max": 13
+      },
+      "soul": {
+        "min": 5,
+        "mean": 6,
+        "max": 7
+      }
+    },
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "mist_horn_deer",
+    "name": "雾角鹿",
+    "category": "妖",
+    "realm": "通智",
+    "stage": "初期",
+    "humanParity": "云息",
+    "habitat": "成群出现在山谷林缘",
+    "habit": "成群出现在山谷林缘，角枝会凝露，晨雾中能带领同伴避开捕食者。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "雾角鹿习性：偏向提高灵慧相关能力；首轮不附加新状态或额外行动。",
+    "technique": "山岚藏群：对单个目标造成物理伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/mist_horn_deer.png",
+    "stats": {
+      "physique": {
+        "min": 6,
+        "mean": 7,
+        "max": 8
+      },
+      "intelligence": {
+        "min": 6,
+        "mean": 7,
+        "max": 8
+      },
+      "agility": {
+        "min": 8,
+        "mean": 9,
+        "max": 10
+      },
+      "soul": {
+        "min": 7,
+        "mean": 8,
+        "max": 9
+      }
+    },
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "red_fang_boar",
+    "name": "赤牙野猪",
+    "category": "妖",
+    "realm": "通智",
+    "stage": "初期",
+    "humanParity": "云息",
+    "habitat": "在林地坡脚拱开草根觅食",
+    "habit": "在林地坡脚拱开草根觅食，领地边缘常有成排的树皮刮痕。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "赤牙野猪习性：偏向提高体魄相关能力；首轮不附加新状态或额外行动。",
+    "technique": "獠牙拱阵：对单个目标造成物理伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/red_fang_boar.png",
+    "stats": {
+      "physique": {
+        "min": 11,
+        "mean": 12,
+        "max": 13
+      },
+      "intelligence": {
+        "min": 2,
+        "mean": 3,
+        "max": 4
+      },
+      "agility": {
+        "min": 5,
+        "mean": 6,
+        "max": 7
+      },
+      "soul": {
+        "min": 3,
+        "mean": 4,
+        "max": 5
+      }
+    },
+    "physicalDefense": 3,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "peach_branch_spirit",
+    "name": "桃枝精",
+    "category": "精",
+    "realm": "妖府",
+    "stage": "初期",
+    "humanParity": "玄基",
+    "habitat": "依附古桃园和山门庭院生长",
+    "habit": "依附古桃园和山门庭院生长，以花期与附近灵气变化调节开合。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "桃枝精习性：偏向提高术法相关能力；首轮不附加新状态或额外行动。",
+    "technique": "落英催眠：对单个目标造成灵性伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/peach_branch_spirit.png",
+    "stats": null,
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "bamboo_node_spirit",
+    "name": "竹节精",
+    "category": "精",
+    "realm": "通智",
+    "stage": "初期",
+    "humanParity": "云息",
+    "habitat": "在密竹林中沿节生长",
+    "habit": "在密竹林中沿节生长，风过时会以竹叶摩擦声彼此传递讯息。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "竹节精习性：偏向提高体魄相关能力；首轮不附加新状态或额外行动。",
+    "technique": "破节连刺：对单个目标造成灵性伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/bamboo_node_spirit.png",
+    "stats": {
+      "physique": {
+        "min": 6,
+        "mean": 7,
+        "max": 8
+      },
+      "intelligence": {
+        "min": 6,
+        "mean": 7,
+        "max": 8
+      },
+      "agility": {
+        "min": 6,
+        "mean": 7,
+        "max": 8
+      },
+      "soul": {
+        "min": 6,
+        "mean": 7,
+        "max": 8
+      }
+    },
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "green_vine_spirit",
+    "name": "青藤精",
+    "category": "精",
+    "realm": "通智",
+    "stage": "初期",
+    "humanParity": "云息",
+    "habitat": "盘绕潮湿崖壁与古树",
+    "habit": "盘绕潮湿崖壁与古树，不会主动离开根系覆盖的区域。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "青藤精习性：偏向提高生命相关能力；首轮不附加新状态或额外行动。",
+    "technique": "万缕缚：对单个目标造成灵性伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/green_vine_spirit.png",
+    "stats": {
+      "physique": {
+        "min": 7,
+        "mean": 8,
+        "max": 9
+      },
+      "intelligence": {
+        "min": 5,
+        "mean": 6,
+        "max": 7
+      },
+      "agility": {
+        "min": 3,
+        "mean": 4,
+        "max": 5
+      },
+      "soul": {
+        "min": 7,
+        "mean": 8,
+        "max": 9
+      }
+    },
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "stone_lantern_spirit",
+    "name": "石灯精",
+    "category": "精",
+    "realm": "妖府",
+    "stage": "初期",
+    "humanParity": "玄基",
+    "habitat": "寄居古道石灯和寺院灯座",
+    "habit": "寄居古道石灯和寺院灯座，点亮时会吸引夜行小兽躲入光圈。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "石灯精习性：偏向提高护盾相关能力；首轮不附加新状态或额外行动。",
+    "technique": "守灯结界：自身或一名同伴获得护盾；只结算护盾，不附带控制或场景效果。",
+    "portrait": "res://textures/bestiary/static/stone_lantern_spirit.png",
+    "stats": null,
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "stream_spring_spirit",
+    "name": "溪泉精",
+    "category": "精",
+    "realm": "通智",
+    "stage": "初期",
+    "humanParity": "云息",
+    "habitat": "依水脉移动",
+    "habit": "依水脉移动，水面浮叶和细小涟漪是其接近的迹象。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "溪泉精习性：偏向提高神魂相关能力；首轮不附加新状态或额外行动。",
+    "technique": "回澜净流：对单个目标造成灵性伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/stream_spring_spirit.png",
+    "stats": {
+      "physique": {
+        "min": 4,
+        "mean": 5,
+        "max": 6
+      },
+      "intelligence": {
+        "min": 8,
+        "mean": 9,
+        "max": 10
+      },
+      "agility": {
+        "min": 6,
+        "mean": 7,
+        "max": 8
+      },
+      "soul": {
+        "min": 8,
+        "mean": 9,
+        "max": 10
+      }
+    },
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "cloud_floss_spirit",
+    "name": "云絮精",
+    "category": "精",
+    "realm": "妖府",
+    "stage": "初期",
+    "humanParity": "玄基",
+    "habitat": "游荡于高山云层和风口",
+    "habit": "游荡于高山云层和风口，常随上升气流迁徙。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "云絮精习性：偏向提高术法相关能力；首轮不附加新状态或额外行动。",
+    "technique": "云团分身：对单个目标造成灵性伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/cloud_floss_spirit.png",
+    "stats": null,
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "frost_bell_spirit",
+    "name": "霜铃精",
+    "category": "精",
+    "realm": "通智",
+    "stage": "初期",
+    "humanParity": "云息",
+    "habitat": "生于冰瀑与雪线石缝",
+    "habit": "生于冰瀑与雪线石缝，周围会传出清脆而有节律的铃声。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "霜铃精习性：偏向提高灵慧相关能力；首轮不附加新状态或额外行动。",
+    "technique": "寒铃慢步：对单个目标造成灵性伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/frost_bell_spirit.png",
+    "stats": {
+      "physique": {
+        "min": 5,
+        "mean": 6,
+        "max": 7
+      },
+      "intelligence": {
+        "min": 7,
+        "mean": 8,
+        "max": 9
+      },
+      "agility": {
+        "min": 6,
+        "mean": 7,
+        "max": 8
+      },
+      "soul": {
+        "min": 7,
+        "mean": 8,
+        "max": 9
+      }
+    },
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "sand_crystal_spirit",
+    "name": "砂晶精",
+    "category": "精",
+    "realm": "通智",
+    "stage": "初期",
+    "humanParity": "云息",
+    "habitat": "在风蚀岩壁中聚集",
+    "habit": "在风蚀岩壁中聚集，晶面会映出附近光源与热流。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "砂晶精习性：偏向提高神魂相关能力；首轮不附加新状态或额外行动。",
+    "technique": "碎晶回射：自身或一名同伴获得护盾；只结算护盾，不附带控制或场景效果。",
+    "portrait": "res://textures/bestiary/static/sand_crystal_spirit.png",
+    "stats": {
+      "physique": {
+        "min": 6,
+        "mean": 7,
+        "max": 8
+      },
+      "intelligence": {
+        "min": 5,
+        "mean": 6,
+        "max": 7
+      },
+      "agility": {
+        "min": 6,
+        "mean": 7,
+        "max": 8
+      },
+      "soul": {
+        "min": 7,
+        "mean": 8,
+        "max": 9
+      }
+    },
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "phosphor_flower_spirit",
+    "name": "磷花精",
+    "category": "精",
+    "realm": "妖府",
+    "stage": "初期",
+    "humanParity": "玄基",
+    "habitat": "生于潮湿洞穴和腐木间",
+    "habit": "生于潮湿洞穴和腐木间，夜间会以微光吸引飞虫。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "磷花精习性：偏向提高术法相关能力；首轮不附加新状态或额外行动。",
+    "technique": "幽磷引路：对单个目标造成灵性伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/phosphor_flower_spirit.png",
+    "stats": null,
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "mushroom_umbrella_spirit",
+    "name": "菌伞精",
+    "category": "精",
+    "realm": "通智",
+    "stage": "初期",
+    "humanParity": "云息",
+    "habitat": "寄居朽木与阴湿土层",
+    "habit": "寄居朽木与阴湿土层，以孢子分解落叶和动物遗骸。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "菌伞精习性：偏向提高生命相关能力；首轮不附加新状态或额外行动。",
+    "technique": "孢雾繁殖：对单个目标造成灵性伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/mushroom_umbrella_spirit.png",
+    "stats": {
+      "physique": {
+        "min": 6,
+        "mean": 7,
+        "max": 8
+      },
+      "intelligence": {
+        "min": 7,
+        "mean": 8,
+        "max": 9
+      },
+      "agility": {
+        "min": 3,
+        "mean": 4,
+        "max": 5
+      },
+      "soul": {
+        "min": 6,
+        "mean": 7,
+        "max": 8
+      }
+    },
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "ancient_wood_spirit",
+    "name": "古木精",
+    "category": "精",
+    "realm": "妖府",
+    "stage": "初期",
+    "humanParity": "玄基",
+    "habitat": "守护生长数百年的林木与根系",
+    "habit": "守护生长数百年的林木与根系，能感知区域内树木受损。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "古木精习性：偏向提高护盾相关能力；首轮不附加新状态或额外行动。",
+    "technique": "盘根护脉：自身或一名同伴获得护盾；只结算护盾，不附带控制或场景效果。",
+    "portrait": "res://textures/bestiary/static/ancient_wood_spirit.png",
+    "stats": null,
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "snow_lotus_spirit",
+    "name": "雪莲精",
+    "category": "精",
+    "realm": "妖府",
+    "stage": "初期",
+    "humanParity": "玄基",
+    "habitat": "生于高寒雪坡和融雪溪源",
+    "habit": "生于高寒雪坡和融雪溪源，花瓣上的露珠会随昼夜凝结或消散。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "雪莲精习性：偏向提高护盾相关能力；首轮不附加新状态或额外行动。",
+    "technique": "玉露回护：自身或一名同伴获得护盾；只结算护盾，不附带控制或场景效果。",
+    "portrait": "res://textures/bestiary/static/snow_lotus_spirit.png",
+    "stats": null,
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "gray_throat_demon_dog",
+    "name": "灰喉魔犬",
+    "category": "魔",
+    "realm": "通智",
+    "stage": "初期",
+    "humanParity": "云息",
+    "habitat": "在战场遗迹与烧毁的村道徘徊",
+    "habit": "在战场遗迹与烧毁的村道徘徊，循着血腥和焦痕追踪活物。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "灰喉魔犬习性：偏向提高体魄相关能力；首轮不附加新状态或额外行动。",
+    "technique": "追烬嗅踪：对单个目标造成神魂伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/gray_throat_demon_dog.png",
+    "stats": {
+      "physique": {
+        "min": 8,
+        "mean": 9,
+        "max": 10
+      },
+      "intelligence": {
+        "min": 4,
+        "mean": 5,
+        "max": 6
+      },
+      "agility": {
+        "min": 7,
+        "mean": 8,
+        "max": 9
+      },
+      "soul": {
+        "min": 5,
+        "mean": 6,
+        "max": 7
+      }
+    },
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "corrosion_spider_demon",
+    "name": "蚀纹魔蛛",
+    "category": "魔",
+    "realm": "通智",
+    "stage": "初期",
+    "humanParity": "云息",
+    "habitat": "盘踞矿洞裂隙",
+    "habit": "盘踞矿洞裂隙，蛛网会留下暗紫蚀纹并缓慢腐蚀器物。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "蚀纹魔蛛习性：偏向提高灵慧相关能力；首轮不附加新状态或额外行动。",
+    "technique": "蚀纹蛛网：对单个目标造成神魂伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/corrosion_spider_demon.png",
+    "stats": {
+      "physique": {
+        "min": 5,
+        "mean": 6,
+        "max": 7
+      },
+      "intelligence": {
+        "min": 7,
+        "mean": 8,
+        "max": 9
+      },
+      "agility": {
+        "min": 6,
+        "mean": 7,
+        "max": 8
+      },
+      "soul": {
+        "min": 7,
+        "mean": 8,
+        "max": 9
+      }
+    },
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "lamp_eater_demon",
+    "name": "噬灯魔",
+    "category": "魔",
+    "realm": "通智",
+    "stage": "初期",
+    "humanParity": "云息",
+    "habitat": "潜入废寺和废弃营地",
+    "habit": "潜入废寺和废弃营地，吞噬灯火后沿墙角移动。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "噬灯魔习性：偏向提高灵慧相关能力；首轮不附加新状态或额外行动。",
+    "technique": "吞火断明：对单个目标造成神魂伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/lamp_eater_demon.png",
+    "stats": {
+      "physique": {
+        "min": 5,
+        "mean": 6,
+        "max": 7
+      },
+      "intelligence": {
+        "min": 7,
+        "mean": 8,
+        "max": 9
+      },
+      "agility": {
+        "min": 7,
+        "mean": 8,
+        "max": 9
+      },
+      "soul": {
+        "min": 7,
+        "mean": 8,
+        "max": 9
+      }
+    },
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "crack_armor_demon_soldier",
+    "name": "裂甲魔卒",
+    "category": "魔",
+    "realm": "通智",
+    "stage": "初期",
+    "humanParity": "云息",
+    "habitat": "从古战场甲片与浊息中聚成",
+    "habit": "从古战场甲片与浊息中聚成，动作笨重但善于集中破坏防线。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "裂甲魔卒习性：偏向提高体魄相关能力；首轮不附加新状态或额外行动。",
+    "technique": "破阵重斩：对单个目标造成物理伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/crack_armor_demon_soldier.png",
+    "stats": {
+      "physique": {
+        "min": 11,
+        "mean": 12,
+        "max": 13
+      },
+      "intelligence": {
+        "min": 3,
+        "mean": 4,
+        "max": 5
+      },
+      "agility": {
+        "min": 4,
+        "mean": 5,
+        "max": 6
+      },
+      "soul": {
+        "min": 6,
+        "mean": 7,
+        "max": 8
+      }
+    },
+    "physicalDefense": 3,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "hunger_nightmare",
+    "name": "饥魇",
+    "category": "魔",
+    "realm": "妖府",
+    "stage": "初期",
+    "humanParity": "玄基",
+    "habitat": "由长期饥饿与遗弃粮仓中的浊息聚成",
+    "habit": "由长期饥饿与遗弃粮仓中的浊息聚成，会追逐携带补给者。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "饥魇习性：偏向提高神魂相关能力；首轮不附加新状态或额外行动。",
+    "technique": "贪食回息：对单个目标造成神魂伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/hunger_nightmare.png",
+    "stats": null,
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "black_sand_mantis",
+    "name": "黑砂魔螳",
+    "category": "魔",
+    "realm": "通智",
+    "stage": "初期",
+    "humanParity": "云息",
+    "habitat": "藏身崩塌矿道和沙尘地带",
+    "habit": "藏身崩塌矿道和沙尘地带，甲壳与碎石颜色接近。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "黑砂魔螳习性：偏向提高敏捷相关能力；首轮不附加新状态或额外行动。",
+    "technique": "砂隐割喉：对单个目标造成物理伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/black_sand_mantis.png",
+    "stats": {
+      "physique": {
+        "min": 6,
+        "mean": 7,
+        "max": 8
+      },
+      "intelligence": {
+        "min": 4,
+        "mean": 5,
+        "max": 6
+      },
+      "agility": {
+        "min": 10,
+        "mean": 11,
+        "max": 12
+      },
+      "soul": {
+        "min": 5,
+        "mean": 6,
+        "max": 7
+      }
+    },
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "blood_cry_crow",
+    "name": "啼血魔鸦",
+    "category": "魔",
+    "realm": "妖府",
+    "stage": "初期",
+    "humanParity": "玄基",
+    "habitat": "聚集在灾厄现场上空",
+    "habit": "聚集在灾厄现场上空，叫声会让附近生灵放弃守护队友。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "啼血魔鸦习性：偏向提高神魂相关能力；首轮不附加新状态或额外行动。",
+    "technique": "血羽凶鸣：对单个目标造成神魂伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/blood_cry_crow.png",
+    "stats": null,
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "voice_stealer_demon",
+    "name": "夺声魔",
+    "category": "魔",
+    "realm": "妖府",
+    "stage": "初期",
+    "humanParity": "玄基",
+    "habitat": "寄居钟楼、戏台和古井",
+    "habit": "寄居钟楼、戏台和古井，以吸走声音后留下的寂静为领地。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "夺声魔习性：偏向提高神魂相关能力；首轮不附加新状态或额外行动。",
+    "technique": "无声禁言：对单个目标造成神魂伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/voice_stealer_demon.png",
+    "stats": null,
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "dream_eater_butterfly",
+    "name": "蚀梦魔蝶",
+    "category": "魔",
+    "realm": "妖府",
+    "stage": "初期",
+    "humanParity": "玄基",
+    "habitat": "夜间贴近露宿者与灵兽巢穴",
+    "habit": "夜间贴近露宿者与灵兽巢穴，以鳞粉制造相似梦境。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "蚀梦魔蝶习性：偏向提高神魂相关能力；首轮不附加新状态或额外行动。",
+    "technique": "蝶梦重影：对单个目标造成神魂伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/dream_eater_butterfly.png",
+    "stats": null,
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "ash_demon_fetus",
+    "name": "灰烬魔胎",
+    "category": "魔",
+    "realm": "妖府",
+    "stage": "初期",
+    "humanParity": "玄基",
+    "habitat": "在多次焚毁又重燃的遗址中形成",
+    "habit": "在多次焚毁又重燃的遗址中形成，外壳包着仍未散尽的火星。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "灰烬魔胎习性：偏向提高神魂相关能力；首轮不附加新状态或额外行动。",
+    "technique": "余烬爆散：对单个目标造成神魂伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/ash_demon_fetus.png",
+    "stats": null,
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "faceless_wanderer",
+    "name": "无面巡行者",
+    "category": "魔",
+    "realm": "妖府",
+    "stage": "初期",
+    "humanParity": "玄基",
+    "habitat": "沿城墙和废弃驿道重复巡查",
+    "habit": "沿城墙和废弃驿道重复巡查，模仿曾在此驻守的生灵动作。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "无面巡行者习性：偏向提高神魂相关能力；首轮不附加新状态或额外行动。",
+    "technique": "借形回击：对单个目标造成神魂伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/faceless_wanderer.png",
+    "stats": null,
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "vow_binding_demon",
+    "name": "缚愿魔",
+    "category": "魔",
+    "realm": "妖府",
+    "stage": "初期",
+    "humanParity": "玄基",
+    "habitat": "依附被反复许诺却未兑现的器物或契纸",
+    "habit": "依附被反复许诺却未兑现的器物或契纸，会把愿望扭成束缚。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "缚愿魔习性：偏向提高神魂相关能力；首轮不附加新状态或额外行动。",
+    "technique": "愿契反噬：对单个目标造成神魂伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/vow_binding_demon.png",
+    "stats": null,
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "lantern_guiding_ghost",
+    "name": "引灯鬼",
+    "category": "鬼",
+    "realm": "通智",
+    "stage": "初期",
+    "humanParity": "云息",
+    "habitat": "徘徊在山路、墓道和旧渡口",
+    "habit": "徘徊在山路、墓道和旧渡口，以忽远忽近的灯光引人离开主路。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "引灯鬼习性：偏向提高神魂相关能力；首轮不附加新状态或额外行动。",
+    "technique": "引灯错径：对单个目标造成神魂伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/lantern_guiding_ghost.png",
+    "stats": {
+      "physique": {
+        "min": 3,
+        "mean": 4,
+        "max": 5
+      },
+      "intelligence": {
+        "min": 7,
+        "mean": 8,
+        "max": 9
+      },
+      "agility": {
+        "min": 6,
+        "mean": 7,
+        "max": 8
+      },
+      "soul": {
+        "min": 8,
+        "mean": 9,
+        "max": 10
+      }
+    },
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "drowning_ghost",
+    "name": "溺水鬼",
+    "category": "鬼",
+    "realm": "通智",
+    "stage": "初期",
+    "humanParity": "云息",
+    "habitat": "依附水井、河湾和沉船",
+    "habit": "依附水井、河湾和沉船，出现前水面常有向内旋转的涟漪。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "溺水鬼习性：偏向提高生命相关能力；首轮不附加新状态或额外行动。",
+    "technique": "逆流拖魂：对单个目标造成神魂伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/drowning_ghost.png",
+    "stats": {
+      "physique": {
+        "min": 7,
+        "mean": 8,
+        "max": 9
+      },
+      "intelligence": {
+        "min": 6,
+        "mean": 7,
+        "max": 8
+      },
+      "agility": {
+        "min": 4,
+        "mean": 5,
+        "max": 6
+      },
+      "soul": {
+        "min": 8,
+        "mean": 9,
+        "max": 10
+      }
+    },
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "paper_clothes_ghost",
+    "name": "纸衣鬼",
+    "category": "鬼",
+    "realm": "通智",
+    "stage": "初期",
+    "humanParity": "云息",
+    "habitat": "由祭纸和遗落衣物凝成",
+    "habit": "由祭纸和遗落衣物凝成，能在风中折叠成不同的人形。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "纸衣鬼习性：偏向提高神魂相关能力；首轮不附加新状态或额外行动。",
+    "technique": "百纸替身：对单个目标造成神魂伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/paper_clothes_ghost.png",
+    "stats": {
+      "physique": {
+        "min": 2,
+        "mean": 3,
+        "max": 4
+      },
+      "intelligence": {
+        "min": 7,
+        "mean": 8,
+        "max": 9
+      },
+      "agility": {
+        "min": 8,
+        "mean": 9,
+        "max": 10
+      },
+      "soul": {
+        "min": 9,
+        "mean": 10,
+        "max": 11
+      }
+    },
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "crying_palanquin_ghost",
+    "name": "哭轿鬼",
+    "category": "鬼",
+    "realm": "妖府",
+    "stage": "初期",
+    "humanParity": "玄基",
+    "habitat": "出现于旧婚道和荒村",
+    "habit": "出现于旧婚道和荒村，哭声会沿着空屋回响，诱使听者追随。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "哭轿鬼习性：偏向提高神魂相关能力；首轮不附加新状态或额外行动。",
+    "technique": "哭声绕梁：对单个目标造成神魂伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/crying_palanquin_ghost.png",
+    "stats": null,
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "well_bottom_ghost",
+    "name": "井底鬼",
+    "category": "鬼",
+    "realm": "通智",
+    "stage": "初期",
+    "humanParity": "云息",
+    "habitat": "沉在多年未清理的古井底部",
+    "habit": "沉在多年未清理的古井底部，常借井绳、桶影或水声影响地面。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "井底鬼习性：偏向提高体魄相关能力；首轮不附加新状态或额外行动。",
+    "technique": "井绳索命：对单个目标造成神魂伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/well_bottom_ghost.png",
+    "stats": {
+      "physique": {
+        "min": 8,
+        "mean": 9,
+        "max": 10
+      },
+      "intelligence": {
+        "min": 6,
+        "mean": 7,
+        "max": 8
+      },
+      "agility": {
+        "min": 3,
+        "mean": 4,
+        "max": 5
+      },
+      "soul": {
+        "min": 8,
+        "mean": 9,
+        "max": 10
+      }
+    },
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "face_borrowing_ghost",
+    "name": "借面鬼",
+    "category": "鬼",
+    "realm": "妖府",
+    "stage": "初期",
+    "humanParity": "玄基",
+    "habitat": "附着在旧面具、画像和祖祠牌位上",
+    "habit": "附着在旧面具、画像和祖祠牌位上，喜欢模仿熟悉者的轮廓。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "借面鬼习性：偏向提高神魂相关能力；首轮不附加新状态或额外行动。",
+    "technique": "借面惑心：对单个目标造成神魂伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/face_borrowing_ghost.png",
+    "stats": null,
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "shadow_seam_ghost",
+    "name": "影缝鬼",
+    "category": "鬼",
+    "realm": "通智",
+    "stage": "初期",
+    "humanParity": "云息",
+    "habitat": "沿门缝、窗格和树影移动",
+    "habit": "沿门缝、窗格和树影移动，白日时躲入狭窄阴影。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "影缝鬼习性：偏向提高敏捷相关能力；首轮不附加新状态或额外行动。",
+    "technique": "穿影缝袭：对单个目标造成神魂伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/shadow_seam_ghost.png",
+    "stats": {
+      "physique": {
+        "min": 5,
+        "mean": 6,
+        "max": 7
+      },
+      "intelligence": {
+        "min": 6,
+        "mean": 7,
+        "max": 8
+      },
+      "agility": {
+        "min": 11,
+        "mean": 12,
+        "max": 13
+      },
+      "soul": {
+        "min": 7,
+        "mean": 8,
+        "max": 9
+      }
+    },
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "wall_walking_ghost",
+    "name": "墙行鬼",
+    "category": "鬼",
+    "realm": "妖府",
+    "stage": "初期",
+    "humanParity": "玄基",
+    "habitat": "附着于废城墙和古宅夹层",
+    "habit": "附着于废城墙和古宅夹层，能借裂缝改变墙面方向。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "墙行鬼习性：偏向提高神魂相关能力；首轮不附加新状态或额外行动。",
+    "technique": "壁中换位：对单个目标造成神魂伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/wall_walking_ghost.png",
+    "stats": null,
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "coffin_nail_ghost",
+    "name": "棺钉鬼",
+    "category": "鬼",
+    "realm": "妖府",
+    "stage": "初期",
+    "humanParity": "玄基",
+    "habitat": "寄宿在旧棺木铁钉和封棺符上",
+    "habit": "寄宿在旧棺木铁钉和封棺符上，守着未能安葬的遗物。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "棺钉鬼习性：偏向提高神魂相关能力；首轮不附加新状态或额外行动。",
+    "technique": "七钉封门：对单个目标造成神魂伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/coffin_nail_ghost.png",
+    "stats": null,
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "book_spirit_ghost",
+    "name": "书魄鬼",
+    "category": "鬼",
+    "realm": "妖府",
+    "stage": "初期",
+    "humanParity": "玄基",
+    "habitat": "依附古籍、账册与未焚旧信",
+    "habit": "依附古籍、账册与未焚旧信，重复书写生前最后读到的句子。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "书魄鬼习性：偏向提高神魂相关能力；首轮不附加新状态或额外行动。",
+    "technique": "残页缚字：对单个目标造成神魂伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/book_spirit_ghost.png",
+    "stats": null,
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "umbrella_ghost",
+    "name": "伞下鬼",
+    "category": "鬼",
+    "realm": "通智",
+    "stage": "初期",
+    "humanParity": "云息",
+    "habitat": "寄居破伞与雨巷",
+    "habit": "寄居破伞与雨巷，伞面覆盖处的雨声会变得异常安静。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "伞下鬼习性：偏向提高护盾相关能力；首轮不附加新状态或额外行动。",
+    "technique": "伞影庇身：自身或一名同伴获得护盾；只结算护盾，不附带控制或场景效果。",
+    "portrait": "res://textures/bestiary/static/umbrella_ghost.png",
+    "stats": {
+      "physique": {
+        "min": 5,
+        "mean": 6,
+        "max": 7
+      },
+      "intelligence": {
+        "min": 7,
+        "mean": 8,
+        "max": 9
+      },
+      "agility": {
+        "min": 4,
+        "mean": 5,
+        "max": 6
+      },
+      "soul": {
+        "min": 9,
+        "mean": 10,
+        "max": 11
+      }
+    },
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "homeward_child_ghost",
+    "name": "归途童鬼",
+    "category": "鬼",
+    "realm": "通智",
+    "stage": "初期",
+    "humanParity": "云息",
+    "habitat": "在旧驿站和荒村路口徘徊",
+    "habit": "在旧驿站和荒村路口徘徊，重复寻找一条早已消失的回家小路。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "归途童鬼习性：偏向提高神魂相关能力；首轮不附加新状态或额外行动。",
+    "technique": "回家路标：对单个目标造成神魂伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/homeward_child_ghost.png",
+    "stats": {
+      "physique": {
+        "min": 3,
+        "mean": 4,
+        "max": 5
+      },
+      "intelligence": {
+        "min": 8,
+        "mean": 9,
+        "max": 10
+      },
+      "agility": {
+        "min": 7,
+        "mean": 8,
+        "max": 9
+      },
+      "soul": {
+        "min": 9,
+        "mean": 10,
+        "max": 11
+      }
+    },
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "gray_back_boar",
+    "name": "灰背野猪",
+    "category": "妖",
+    "realm": "通智",
+    "stage": "初期",
+    "humanParity": "云息",
+    "habitat": "以獠牙拱开草根",
+    "habit": "以獠牙拱开草根，受惊时会正面冲撞。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "灰背野猪习性：偏向提高物理防御相关能力；首轮不附加新状态或额外行动。",
+    "technique": "拱撞：对单个目标造成物理伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/gray_back_boar.png",
+    "stats": {
+      "physique": {
+        "min": 10,
+        "mean": 11,
+        "max": 12
+      },
+      "intelligence": {
+        "min": 3,
+        "mean": 4,
+        "max": 5
+      },
+      "agility": {
+        "min": 5,
+        "mean": 6,
+        "max": 7
+      },
+      "soul": {
+        "min": 3,
+        "mean": 4,
+        "max": 5
+      }
+    },
+    "physicalDefense": 3,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "giant_toad",
+    "name": "巨沼蟾蜍",
+    "category": "妖",
+    "realm": "通智",
+    "stage": "初期",
+    "humanParity": "云息",
+    "habitat": "伏地等候猎物",
+    "habit": "伏地等候猎物，身躯厚实。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "巨沼蟾蜍习性：偏向提高体魄相关能力；首轮不附加新状态或额外行动。",
+    "technique": "舌击：对单个目标造成物理伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/giant_toad.png",
+    "stats": {
+      "physique": {
+        "min": 9,
+        "mean": 10,
+        "max": 11
+      },
+      "intelligence": {
+        "min": 5,
+        "mean": 6,
+        "max": 7
+      },
+      "agility": {
+        "min": 4,
+        "mean": 5,
+        "max": 6
+      },
+      "soul": {
+        "min": 5,
+        "mean": 6,
+        "max": 7
+      }
+    },
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "red_ring_snake",
+    "name": "赤环毒蛇",
+    "category": "妖",
+    "realm": "通智",
+    "stage": "初期",
+    "humanParity": "云息",
+    "habitat": "借环纹伪装",
+    "habit": "借环纹伪装，受惊时迅速咬击。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "赤环毒蛇习性：偏向提高敏捷相关能力；首轮不附加新状态或额外行动。",
+    "technique": "赤环咬：对单个目标造成物理伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/red_ring_snake.png",
+    "stats": {
+      "physique": {
+        "min": 5,
+        "mean": 6,
+        "max": 7
+      },
+      "intelligence": {
+        "min": 7,
+        "mean": 8,
+        "max": 9
+      },
+      "agility": {
+        "min": 12,
+        "mean": 13,
+        "max": 14
+      },
+      "soul": {
+        "min": 5,
+        "mean": 6,
+        "max": 7
+      }
+    },
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "mountain_ape",
+    "name": "山魈",
+    "category": "妖",
+    "realm": "妖府",
+    "stage": "初期",
+    "humanParity": "玄基",
+    "habitat": "体格高大",
+    "habit": "体格高大，善于守住栖身地。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
+    "talent": "山魈习性：偏向提高术法相关能力；首轮不附加新状态或额外行动。",
+    "technique": "山魈重击：对单个目标造成物理伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "portrait": "res://textures/bestiary/static/mountain_ape.png",
+    "stats": null,
+    "physicalDefense": null,
+    "designStatus": "首轮百科设定·待战斗校准"
+  },
+  {
+    "id": "mountain_hare",
+    "name": "山野兔",
+    "category": "凡兽",
+    "realm": "凡兽",
+    "stage": "",
+    "humanParity": "",
+    "habitat": "山坡草丛、林缘与浅洞",
+    "habit": "警觉敏捷，受惊便迅速逃离。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外效果。",
+    "talent": "",
+    "technique": "",
+    "portrait": "res://textures/bestiary/static/mountain_hare.png",
+    "stats": {
+      "physique": {
+        "min": 1,
+        "mean": 2,
+        "max": 3
+      },
+      "intelligence": {
+        "min": 0,
+        "mean": 1,
+        "max": 2
+      },
+      "agility": {
+        "min": 5,
+        "mean": 6,
+        "max": 7
+      },
+      "soul": {
+        "min": 0,
+        "mean": 1,
+        "max": 2
+      }
+    },
+    "physicalDefense": null,
+    "designStatus": "普通动物·仅普通攻击"
+  },
+  {
+    "id": "yellow_horn_deer",
+    "name": "黄角鹿",
+    "category": "凡兽",
+    "realm": "凡兽",
+    "stage": "",
+    "humanParity": "",
+    "habitat": "林缘草地与山谷",
+    "habit": "成群觅食，以角抵开威胁。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外效果。",
+    "talent": "",
+    "technique": "",
+    "portrait": "res://textures/bestiary/static/yellow_horn_deer.png",
+    "stats": {
+      "physique": {
+        "min": 4,
+        "mean": 5,
+        "max": 6
+      },
+      "intelligence": {
+        "min": 1,
+        "mean": 2,
+        "max": 3
+      },
+      "agility": {
+        "min": 5,
+        "mean": 6,
+        "max": 7
+      },
+      "soul": {
+        "min": 2,
+        "mean": 3,
+        "max": 4
+      }
+    },
+    "physicalDefense": null,
+    "designStatus": "普通动物·仅普通攻击"
+  },
+  {
+    "id": "forest_chicken",
+    "name": "林鸡",
+    "category": "凡兽",
+    "realm": "凡兽",
+    "stage": "",
+    "humanParity": "",
+    "habitat": "灌木、林下空地与村边",
+    "habit": "地面觅食，受惊时短促扑翼逃开。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外效果。",
+    "talent": "",
+    "technique": "",
+    "portrait": "res://textures/bestiary/static/forest_chicken.png",
+    "stats": {
+      "physique": {
+        "min": 1,
+        "mean": 2,
+        "max": 3
+      },
+      "intelligence": {
+        "min": 0,
+        "mean": 1,
+        "max": 2
+      },
+      "agility": {
+        "min": 3,
+        "mean": 4,
+        "max": 5
+      },
+      "soul": {
+        "min": 0,
+        "mean": 1,
+        "max": 2
+      }
+    },
+    "physicalDefense": null,
+    "designStatus": "普通动物·仅普通攻击"
+  },
+  {
+    "id": "squirrel",
+    "name": "松鼠",
+    "category": "凡兽",
+    "realm": "凡兽",
+    "stage": "",
+    "humanParity": "",
+    "habitat": "松林与老树枝间",
+    "habit": "储藏坚果，善于攀爬和躲藏。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外效果。",
+    "talent": "",
+    "technique": "",
+    "portrait": "res://textures/bestiary/static/squirrel.png",
+    "stats": {
+      "physique": {
+        "min": 1,
+        "mean": 2,
+        "max": 3
+      },
+      "intelligence": {
+        "min": 1,
+        "mean": 2,
+        "max": 3
+      },
+      "agility": {
+        "min": 7,
+        "mean": 8,
+        "max": 9
+      },
+      "soul": {
+        "min": 1,
+        "mean": 2,
+        "max": 3
+      }
+    },
+    "physicalDefense": null,
+    "designStatus": "普通动物·仅普通攻击"
+  },
+  {
+    "id": "wild_goat",
+    "name": "野山羊",
+    "category": "凡兽",
+    "realm": "凡兽",
+    "stage": "",
+    "humanParity": "",
+    "habitat": "岩坡、山脊与稀疏草场",
+    "habit": "擅长攀行，遇险会以角自卫。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外效果。",
+    "talent": "",
+    "technique": "",
+    "portrait": "res://textures/bestiary/static/wild_goat.png",
+    "stats": {
+      "physique": {
+        "min": 5,
+        "mean": 6,
+        "max": 7
+      },
+      "intelligence": {
+        "min": 1,
+        "mean": 2,
+        "max": 3
+      },
+      "agility": {
+        "min": 4,
+        "mean": 5,
+        "max": 6
+      },
+      "soul": {
+        "min": 2,
+        "mean": 3,
+        "max": 4
+      }
+    },
+    "physicalDefense": null,
+    "designStatus": "普通动物·仅普通攻击"
+  },
+  {
+    "id": "stream_otter",
+    "name": "溪边水獭",
+    "category": "凡兽",
+    "realm": "凡兽",
+    "stage": "",
+    "humanParity": "",
+    "habitat": "溪流浅滩与河岸石缝",
+    "habit": "善于游水捕鱼，通常避开大型生物。",
+    "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外效果。",
+    "talent": "",
+    "technique": "",
+    "portrait": "res://textures/bestiary/static/stream_otter.png",
+    "stats": {
+      "physique": {
+        "min": 3,
+        "mean": 4,
+        "max": 5
+      },
+      "intelligence": {
+        "min": 3,
+        "mean": 4,
+        "max": 5
+      },
+      "agility": {
+        "min": 6,
+        "mean": 7,
+        "max": 8
+      },
+      "soul": {
+        "min": 3,
+        "mean": 4,
+        "max": 5
+      }
+    },
+    "physicalDefense": null,
+    "designStatus": "普通动物·仅普通攻击"
+  }
+]

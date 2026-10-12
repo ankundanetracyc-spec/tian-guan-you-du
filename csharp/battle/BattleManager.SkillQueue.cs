@@ -23,7 +23,7 @@ public partial class BattleManager : Node2D
                 card.wound_timing_adjusted=true;
             }
             card.phase = BattleQueuedSkill.Phase.Preparing; card.elapsed_frames = 0;
-            body_cards.Before(unit, card.skill);
+            gongfa_combat.Before(unit, card.skill);
             return;
         }
         if (card.phase == BattleQueuedSkill.Phase.Preparing)
@@ -65,7 +65,9 @@ public partial class BattleManager : Node2D
             _enemyKnowledge[enemy] = knowledge = new EnemyKnowledgeState();
         var player = player_units.FirstOrDefault(Alive);
         var playerQueue = GodotObject.IsInstanceValid(player) ? get_battle_unit(player!).skill_queue : [];
-        var observed = playerQueue.Count > 0 ? playerQueue[0] : null;
+        var observed = GodotObject.IsInstanceValid(player) && _segmentPhase != SegmentPhase.None
+            ? get_battle_unit(player!).current_segment_action : playerQueue.FirstOrDefault();
+        if (observed?.kind != BattleQueuedSkill.ActionKind.Skill) observed = null;
         if (observed is null)
         {
             knowledge.ObservedCard = null; knowledge.RevealElapsed = 0; knowledge.Revealed = false;
@@ -95,6 +97,7 @@ public partial class BattleManager : Node2D
 
     private void StartSkillCooldown(GodotObject unit, ActiveSkillData skill)
     {
+        StartRoundSkillCooldown(unit, skill);
         if (_skillCooldowns.TryGetValue(unit, out var cooldowns) && !_realtimeMode && skill.cooldown_frames > 0) cooldowns[skill] = skill.cooldown_frames;
         if (skill.max_charges > 0 && _skillCharges.TryGetValue(unit, out var charges)) charges[skill] = Mathf.Max(0, charges.GetValueOrDefault(skill, skill.max_charges) - 1);
         ConsumeSegmentSkillUses(unit, skill);
@@ -108,7 +111,7 @@ public partial class BattleManager : Node2D
     {
         if (!GodotObject.IsInstanceValid(unit) || skill is null || !battle_units.ContainsKey(unit)) return -1;
         var queue = get_battle_unit(unit).skill_queue;
-        return queue.FindIndex(entry => entry.skill == skill);
+        return queue.FindIndex(entry => !entry.completed && entry.kind == BattleQueuedSkill.ActionKind.Skill && entry.skill == skill);
     }
 
     /// <summary>技能栏的二次左键取消入口，队列控件只负责展示。</summary>
@@ -145,9 +148,9 @@ public partial class BattleManager : Node2D
 
     public void on_queued_skill_resolved(GodotObject unit)
     {
-        if (_segmentPhase == SegmentPhase.Executing && _resolvingUnit == unit)
+        if (_segmentPhase == SegmentPhase.Executing)
         {
-            CompleteSegmentAction(unit);
+            if (_resolvingUnit == unit) CompleteSegmentAction(unit);
             return;
         }
         var queue = get_battle_unit(unit).skill_queue; if (queue.Count == 0) return;
@@ -155,6 +158,7 @@ public partial class BattleManager : Node2D
     }
     public bool cancel_queued_card(GodotObject unit, int index)
     {
+        if (_segmentPhase != SegmentPhase.None) return unit == _mainPlayerUnit && cancel_player_action(index);
         var queue = get_battle_unit(unit).skill_queue; if (index < 0 || index >= queue.Count) return false;
         var card = queue[index]; if (card.phase is BattleQueuedSkill.Phase.Resolving or BattleQueuedSkill.Phase.Recovering) return false;
         queue.RemoveAt(index);
@@ -167,14 +171,16 @@ public partial class BattleManager : Node2D
         var result = new Array<Dictionary>();
         foreach (var unit in all_units.Where(Alive))
         {
-            var queue = get_battle_unit(unit).skill_queue;
-            if (queue.Count == 0) { result.Add(new Dictionary { ["unit"] = unit, ["text"] = "待命", ["progress"] = 0f }); continue; }
-            var card = queue[0]; var enemy = unit.Get("faction").AsInt32() != (int)WorldEntity.Faction.PLAYER;
+            var state = get_battle_unit(unit);
+            var queue = state.skill_queue;
+            var card = _segmentPhase != SegmentPhase.None ? state.current_segment_action : queue.FirstOrDefault();
+            if (card is null) { result.Add(new Dictionary { ["unit"] = unit, ["text"] = "待命", ["progress"] = 0f }); continue; }
+            var enemy = unit.Get("faction").AsInt32() != (int)WorldEntity.Faction.PLAYER;
             var visible = !enemy || card.intent_revealed || card.phase is BattleQueuedSkill.Phase.Recovering or BattleQueuedSkill.Phase.HoldingResponse;
             var phase = card.phase switch { BattleQueuedSkill.Phase.Waiting => "待行动", BattleQueuedSkill.Phase.Preparing => "准备", BattleQueuedSkill.Phase.Recovering => "收招", BattleQueuedSkill.Phase.HoldingResponse => "待应", _ => "结算" };
             var name = card.get_display_name();
             var icon = card.kind == BattleQueuedSkill.ActionKind.Skill ? card.skill.icon_path : "";
-            result.Add(new Dictionary { ["unit"] = unit, ["text"] = visible ? $"{name} · {phase}" : "?", ["skill_name"] = visible ? name : "", ["icon_path"] = visible ? icon : "", ["progress"] = card.progress(), ["intent_progress"] = IntentRevealProgress(unit, card), ["queue_count"] = queue.Count });
+            result.Add(new Dictionary { ["unit"] = unit, ["text"] = visible ? $"{name} · {phase}" : "?", ["skill_name"] = visible ? name : "", ["icon_path"] = visible ? icon : "", ["progress"] = card.progress(), ["intent_progress"] = IntentRevealProgress(unit, card), ["queue_count"] = queue.Count - (_segmentPhase != SegmentPhase.None ? state.segment_action_index : 0) });
         }
         return result;
     }
@@ -186,13 +192,16 @@ public partial class BattleManager : Node2D
         if (!GodotObject.IsInstanceValid(unit) || !battle_units.ContainsKey(unit)) return result;
         // 玩家与队友的具体队列不挂在角色头顶；玩家队列固定显示在底部，队友队列由 AI 控制。
         if (unit.Get("faction").AsInt32() == (int)WorldEntity.Faction.PLAYER) return result;
-        var queue = get_battle_unit(unit).skill_queue;
+        var state = get_battle_unit(unit);
+        var queue = state.skill_queue;
+        var start = _segmentPhase != SegmentPhase.None ? state.segment_action_index : 0;
         var enemy = unit.Get("faction").AsInt32() != (int)WorldEntity.Faction.PLAYER;
         // 敌方只公开当前首个行动；后续行动即使已经排队，也不能提前展示。
-        var visibleCount = enemy ? Math.Min(1, queue.Count) : queue.Count;
+        var remaining = Math.Max(0, queue.Count - start);
+        var visibleCount = enemy ? Math.Min(1, remaining) : remaining;
         for (var i = 0; i < visibleCount; i++)
         {
-            var card = queue[i];
+            var card = queue[start + i];
             var visible = !enemy || card.intent_revealed || card.phase is BattleQueuedSkill.Phase.Recovering or BattleQueuedSkill.Phase.HoldingResponse;
             var phase = card.phase switch
             {
@@ -205,6 +214,7 @@ public partial class BattleManager : Node2D
             result.Add(new Dictionary
             {
                 ["index"] = i,
+                ["slot_index"] = start + i,
                 ["text"] = visible ? card.get_display_name() : "?",
                 ["skill_name"] = visible ? card.get_display_name() : "",
                 ["icon_path"] = visible && card.kind == BattleQueuedSkill.ActionKind.Skill ? card.skill.icon_path : "",
@@ -252,7 +262,7 @@ public partial class BattleManager : Node2D
             .Where(skill => CardRules.IsResponse(skill) && CardRules.ResponseMatches(skill, damageType) && is_skill_ready(unit, skill))
             .OrderBy(skill => skill.preparation_frames)
             .FirstOrDefault();
-        if (response is null || !body_cards.CanPlay(unit, response)) return false;
+        if (response is null || !gongfa_combat.CanPlay(unit, response)) return false;
 
         // 应对只能替换尚未开始准备的队首指令；不打断已经开始的动作。
         if (queue.Count > 0 && queue[0].phase != BattleQueuedSkill.Phase.Waiting) return false;
@@ -304,7 +314,7 @@ public partial class BattleManager : Node2D
 
     private void BeginTurn(GodotObject unit)
     {
-        body_cards.Begin(unit);
+        gongfa_combat.Begin(unit);
         active_unit = unit; turn_state = unit.Get("faction").AsInt32() == 1 ? TurnState.PLAYER_TURN : TurnState.ENEMY_TURN;
         RefreshStamina(unit);
         RefreshMana(unit);
@@ -423,7 +433,7 @@ public partial class BattleManager : Node2D
         }
         if (skill.skill_type == ActiveSkillData.SkillType.CURSE || active_unit is null || !Hand(active_unit).Contains(skill)) return;
         if (!GodotObject.IsInstanceValid(active_unit) || !GodotObject.IsInstanceValid(target) || !CanPay(active_unit!, skill)) return;
-        Pay(active_unit!, skill); if(!CardRules.IsResponse(skill))body_cards.Before(active_unit!,skill); turn_state = TurnState.PROCESSING;
+        Pay(active_unit!, skill); if(!CardRules.IsResponse(skill))gongfa_combat.Before(active_unit!,skill); turn_state = TurnState.PROCESSING;
         // “打出牌”与“打出术法”是两个事件；后者按现行费用制以实际支付法力为准。
         emit_formation_event(active_unit!, "card_played", "card");
         if (skill.mana_cost > 0) emit_formation_event(active_unit!, "spell_played", "spell");
@@ -467,7 +477,9 @@ public partial class BattleManager : Node2D
     {
         var queue = get_battle_unit(unit).skill_queue;
         var planningPlayer = _segmentPhase == SegmentPhase.None || _segmentPhase == SegmentPhase.Planning && unit == _mainPlayerUnit && can_player_plan();
-        if (!Alive(unit) || !planningPlayer || queue.Count >= get_action_slot_capacity(unit) || !is_skill_ready(unit, skill) || skill.skill_type == ActiveSkillData.SkillType.CURSE || !body_cards.CanPlay(unit, skill)) return false;
+        if (!Alive(unit) || !planningPlayer || get_filled_action_slot_count(unit) >= get_action_slot_capacity(unit) || !is_skill_ready(unit, skill) || skill.skill_type == ActiveSkillData.SkillType.CURSE || !gongfa_combat.CanPlay(unit, skill)) return false;
+        if (_segmentPhase == SegmentPhase.Planning && unit == _mainPlayerUnit)
+            return PlacePlayerAction(new BattleQueuedSkill(skill, target));
         queue.Add(new BattleQueuedSkill(skill, target));
         if (unit == active_unit)
         {
@@ -516,7 +528,7 @@ public partial class BattleManager : Node2D
 
     private int EnemyCardScore(ActiveSkillData skill, GodotObject unit, GodotObject? target, List<ActiveSkillData> candidates, EnemyKnowledgeState? knowledge = null)
     {
-        var energyCost=body_cards.Cost(unit,skill);
+        var energyCost=gongfa_combat.Cost(unit,skill);
         var remainingEnergy=unit.Get("current_stamina").AsInt32()-energyCost;
         var isSelf=skill.target_type is 0 or 1;
         var score=0;
@@ -559,7 +571,7 @@ public partial class BattleManager : Node2D
         }
 
         // 有后续可支付的伤害或控制牌时，保留能接出它的精力；必杀不会受此惩罚。
-        var followup=candidates.Where(c=>c!=skill&&body_cards.Cost(unit,c)<=remainingEnergy).ToList();
+        var followup=candidates.Where(c=>c!=skill&&gongfa_combat.Cost(unit,c)<=remainingEnergy).ToList();
         if(followup.Count>0)score+=80;
         else if(kills==0&&remainingEnergy==0&&totalDamage<80)score-=90;
         score-=energyCost*18;
@@ -572,7 +584,7 @@ public partial class BattleManager : Node2D
         if(Mathf.IsZeroApprox(skill.base_damage)&&skill.damage_bonuses.Count==0&&string.IsNullOrWhiteSpace(skill.damage_formula))return 0;
         var segments=1;
         if(Engine.GetMainLoop() is SceneTree tree&&tree.GetFirstNodeInGroup("battle_mgr") is BattleManager manager)
-            segments=Mathf.Max(1,manager.body_cards.Segments(attacker,skill));
+            segments=Mathf.Max(1,manager.gongfa_combat.Segments(attacker,skill));
         var blockRemaining=skill.damage_type=="physical"?GetStatus(defender,"化解"):0;
         var shield=Mathf.Max(0,defender.Get("shield").AsInt32());
         var total=0;
@@ -599,7 +611,7 @@ public partial class BattleManager : Node2D
     {
         var deck = get_deck_manager(unit); if (deck is null) { _finish_current_action(unit); return; }
         var hand = Hand(unit); hand.Remove(skill); _hands[unit] = hand;
-        Pay(unit, skill); body_cards.Before(unit, skill); turn_state = TurnState.PROCESSING;
+        Pay(unit, skill); gongfa_combat.Before(unit, skill); turn_state = TurnState.PROCESSING;
         if (skill.keywords.Contains("消耗") || skill.skill_type == ActiveSkillData.SkillType.POWER) deck.exhaust_card(skill); else deck.discard(skill);
         if (unit.Get("faction").AsInt32() != (int)WorldEntity.Faction.PLAYER) unitOverlay?.ShowPlayedCard(unit, skill);
         if (skill.aoe_range > 0 && Map is not null)

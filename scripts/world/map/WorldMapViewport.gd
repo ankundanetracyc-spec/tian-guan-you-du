@@ -551,9 +551,9 @@ func _refresh_location_states() -> void:
 		var data = marker.node_data
 		var visible := _node_visible(data)
 		marker.visible = visible
+		marker.map_scale = map_scale
 		marker.set_state(id == selected_id, id == current_id, id == target_id, int(population_counts.get(id, 0)))
 		marker.set_player_present(int(player_counts.get(id, 0)) > 0)
-		marker.map_scale = map_scale
 	_refresh_enter_button()
 
 func _refresh_enter_button() -> void:

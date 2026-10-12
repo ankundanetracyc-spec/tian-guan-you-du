@@ -46,7 +46,7 @@ public static class PrologueText
     public const string CultivationTask = "引灵入云\n持续苦修，攒足十二缕灵力，突破至云息一层。";
 
     public const string BreakthroughNarration = "灵力循经脉流转周天，少年抬眼睁眼。院落间风吹草木的细碎声响，在此刻骤然清晰分明。";
-    public const string BreakthroughFatherPaths = "已是云息一层。往后修行大致有三条路途：锻躯炼体、行炁御灵、蕴神修识。记下便可，不必急于抉择取舍。";
+    public const string BreakthroughFatherPaths = "已是云息一层。修行不再以三条定途分人：诸法皆可研习，修命养形与修性观物也都能并行。你先按眼下所学行功，往后再慢慢体会各门秘籍的相济之处。";
     public const string BreakthroughFatherBeast = "田间异兽损毁庄稼。明日随我一同前去，此战由你独自出手。";
     public const string BeastTask = "砺行知险\n跟随父亲离开村落，操控幼子独自斩杀一头野兽。";
 }

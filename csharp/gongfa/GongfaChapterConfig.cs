@@ -1,7 +1,7 @@
 using Godot;
 using Godot.Collections;
 
-/// <summary>功法卷章的学习门槛、常驻加成、纳气加成和化法技能改写。</summary>
+/// <summary>功法卷章的学习门槛、属性分支、已学技能/大世界术法和化法技能改写。</summary>
 public partial class GongfaChapterConfig : Resource
 {
     [Export] public string chapter_id = "";
@@ -13,26 +13,36 @@ public partial class GongfaChapterConfig : Resource
     [Export] public string required_realm = "";
     [Export] public Dictionary required_attributes = [];
     [Export] public Array<string> required_chapter_ids = [];
-    /// <summary>旧资源兼容字段；用于展示修行倾向，不限制研读或其他养成线。</summary>
-    [Export] public Array<int> allowed_bearings = [];
     [Export] public bool requires_main_slot;
     [ExportGroup("传承分支")]
-    // 本作锻躯秘籍的左侧为淬炼；旧资源未序列化名称时也应正确显示。
-    [Export] public string left_branch_name = "淬炼";
+    // 现行秘籍左侧分支默认显示修持；旧资源未序列化名称时也应正确显示。
+    [Export] public string left_branch_name = "修持";
     [Export] public string right_branch_name = "化法";
     [ExportGroup("Permanent Learn Bonuses")]
     [Export] public Dictionary learn_permanent_bonuses = [];
+    /// <summary>永久奖励修订标记与修订前基准，用于已研读存档的一次性差额补发。</summary>
+    [Export] public string learn_bonus_revision = "";
+    [Export] public Dictionary previous_learn_permanent_bonuses = [];
     [Export] public Dictionary learn_permanent_multipliers = [];
     [ExportGroup("Learned Skills")]
     [Export] public Array<Resource> learned_active_skills = [];
     [Export] public Array<Resource> main_learned_active_skills = [];
+    [ExportGroup("Heart Method Progression")]
+    /// <summary>本卷研读后解锁的机制标记；与左右分支选择无关。</summary>
+    [Export] public string heart_method_upgrade_id = "";
+    [Export(PropertyHint.MultilineText)] public string heart_method_upgrade_description = "";
+    /// <summary>学至本卷时的完整心法描述，含主修额外效果；仅展示，不重复应用机制。</summary>
+    [Export(PropertyHint.MultilineText)] public string heart_method_description = "";
+    [ExportGroup("大世界术法")]
+    /// <summary>研读本卷后永久解锁的大世界术法；与战斗技能分开存放。</summary>
+    [Export] public Array<Resource> learned_world_spells = [];
     [ExportGroup("Naqi Bonuses")]
     [Export] public Dictionary naqi_bonuses = [];
     [Export] public Dictionary naqi_multipliers = [];
     [Export] public Dictionary main_naqi_bonuses = [];
     [Export] public Dictionary main_naqi_multipliers = [];
     [ExportGroup("Combat Tempering Bonuses")]
-    /// <summary>淬炼分支的战斗内属性；通过战斗快照传递，不写入角色常驻属性。</summary>
+    /// <summary>修持分支的战斗内属性；通过战斗快照传递，不写入角色常驻属性。</summary>
     [Export] public Dictionary combat_tempering_bonuses = [];
     [ExportGroup("Huafa Rewrites")]
     [Export] public Array<GongfaDeckRewriteConfig> sub_deck_rewrites = [];

@@ -1,7 +1,7 @@
 using Godot;
 
 /// <summary>
-/// 锻躯六部位的稳定 ID、炼度门槛与首轮节点奖励。
+/// 修命淬体六部位的稳定 ID、炼度门槛与首轮节点奖励。
 /// 门槛使用显式累计表，便于后续平衡时只改配置，不改变结算逻辑。
 /// </summary>
 public static class BodyRefinementRules

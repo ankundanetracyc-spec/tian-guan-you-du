@@ -5,9 +5,7 @@ using Godot.Collections;
 public partial class Character : Creature
 {
     public const int InventorySlotCapacity = 30;
-    private const string InitialDeckPath = "res://resources/basic_decks/初始牌库.tres";
-    private const string LegacyInitialDeckPath = "res://resources/basic_decks/拳脚路.tres";
-    private const string BodyDeckPath = "res://resources/basic_decks/锻躯路.tres";
+    private const string PublicBasicSkillPoolPath = "res://resources/basic_decks/公共基础技能池.tres";
     // 早期灵石的可用储灵量：三灵根在密度 180、每日修炼十二时的条件下约可持续十日。
     // 灵石只提供环境，实际消耗仍随角色在该环境中的纳气速率变化。
     private const float SpiritStoneStoredLingqi = .36f;
@@ -31,10 +29,8 @@ public partial class Character : Creature
     public Array<ArtifactInstanceData> artifact_inventory => human?.artifact_inventory ?? new Array<ArtifactInstanceData>();
     public int max_pack_slots { get => InventorySlotCapacity; set { } }
     private readonly Array<SecretBook> _study_books=[]; private float _session_hours; private int _last_schedule_hour; private readonly Dictionary _last_schedule_report=[];
-    private readonly RandomNumberGenerator _qi_insight_rng = new();
-    private bool is_qi_cloud_breath() => cultivation_realm.StartsWith("云息", StringComparison.Ordinal);
     private bool is_visualization_cloud_breath() => cultivation_realm.StartsWith("云息", StringComparison.Ordinal);
-    public int spirit_root_type {get=>human?.spirit_root_type??0;set{if(human is not null)human.spirit_root_type=value;}} public string spirit_root_name{get=>human?.spirit_root_name??"无灵根";set{if(human is not null)human.spirit_root_name=value;}} public int dao_bearing{get=>human?.dao_bearing??0;set{if(human is not null)human.dao_bearing=value;}} public int core_count{get=>human?.core_count??0;set{if(human is not null)human.core_count=value;}}
+    public int spirit_root_type {get=>human?.spirit_root_type??0;set{if(human is not null)human.spirit_root_type=value;}} public string spirit_root_name{get=>human?.spirit_root_name??"无灵根";set{if(human is not null)human.spirit_root_name=value;}} public int core_count{get=>human?.core_count??0;set{if(human is not null)human.core_count=value;}}
     public bool has_spirit_core=>human?.has_spirit_core??false;
     public float spirit_core_volume=>human?.spirit_core_volume??1f;
     public float spirit_core_density=>human?.spirit_core_density??1f;
@@ -51,12 +47,12 @@ public partial class Character : Creature
     public int get_available_world_action_hours(float costPerHour, int requestedHours) { if (requestedHours <= 0 || costPerHour <= 0f) return Math.Max(0, requestedHours); return Math.Min(requestedHours, Mathf.FloorToInt((current_world_stamina + 0.0001f) / costPerHour)); }
     public int daily_cultivation_hours{get=>human?.daily_cultivation_hours??0;set{if(human is not null)human.daily_cultivation_hours=value;}} public int daily_study_hours{get=>human?.daily_study_hours??0;set{if(human is not null)human.daily_study_hours=value;}} public int daily_rest_hours{get=>human?.daily_rest_hours??0;set{if(human is not null)human.daily_rest_hours=value;}} public int daily_labor_hours{get=>human?.daily_labor_hours??0;set{if(human is not null)human.daily_labor_hours=value;}} public bool daily_schedule_enabled{get=>human?.daily_schedule_enabled??false;set{if(human is not null)human.daily_schedule_enabled=value;}} public bool schedule_auto_breakthrough{get=>human?.schedule_auto_breakthrough??false;set{if(human is not null)human.schedule_auto_breakthrough=value;}} public bool study_auto_next_chapter{get=>human?.study_auto_next_chapter??false;set{if(human is not null)human.study_auto_next_chapter=value;}}
     public int cultivation_priority{get=>human?.cultivation_priority??0;set{if(human is not null)human.cultivation_priority=value;}} public int study_priority{get=>human?.study_priority??0;set{if(human is not null)human.study_priority=value;}} public int rest_priority{get=>human?.rest_priority??0;set{if(human is not null)human.rest_priority=value;}} public int labor_priority{get=>human?.labor_priority??0;set{if(human is not null)human.labor_priority=value;}} public float labor_progress_hours{get=>human?.labor_progress_hours??0;set{if(human is not null)human.labor_progress_hours=value;}} public string assigned_labor_site_id{get=>human?.assigned_labor_site_id??"";set{if(human is not null)human.assigned_labor_site_id=value;}} public string residence_room_id{get=>human?.residence_room_id??"";set{if(human is not null)human.residence_room_id=value;}} public string spouse_name{get=>human?.spouse_name??"";set{if(human is not null)human.spouse_name=value;}}
-    public float ambient_lingqi_pressure{get=>human?.ambient_lingqi_pressure??100;set{if(human is not null)human.ambient_lingqi_pressure=value;}} public string basic_deck_path{get=>human?.basic_deck_path??"";set{if(human is not null)human.basic_deck_path=value;}} public int max_sub_slots{get=>human?.max_sub_slots??2;set{if(human is not null)human.max_sub_slots=value;}} public float mana_regen_rate{get=>human?.mana_regen_rate??.04f;set{if(human is not null)human.mana_regen_rate=value;}}
+    public float ambient_lingqi_pressure{get=>human?.ambient_lingqi_pressure??100;set{if(human is not null)human.ambient_lingqi_pressure=value;}} public string basic_deck_path{get=>human?.basic_deck_path??"";set{if(human is not null)human.basic_deck_path=value;}} public int max_sub_slots{get=>Math.Max(0,(human?.max_sub_slots??2)+Mathf.RoundToInt(get_realm_attribute_adjustment("sub_slot_increase").fixedBonus));set{if(human is not null)human.max_sub_slots=value;}} public float mana_regen_rate{get=>human?.mana_regen_rate??.04f;set{if(human is not null)human.mana_regen_rate=value;}}
     public int meditation_room_index{get=>human?.meditation_room_index??-1;}
     public bool meditation_spirit_stone_supply{get=>human?.meditation_spirit_stone_supply??false;}
-    public override void _Ready(){entity_data ??=new HumanData();if(entity_data is not HumanData)entity_data=new HumanData{entity_name=entity_data.entity_name};ensure_basic_deck();ensure_spirit_core_state();ensure_body_refinement_state();ensure_qi_state();ensure_visualization_state();ensure_inventory_state();_qi_insight_rng.Randomize();load_gongfa_data();refresh_dao_bearing_nodes();apply_missing_gongfa_permanent_bonuses();base._Ready();refresh_gongfa_effects();var time=GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");if(time is not null){_last_schedule_hour=time.get_total_game_hours();time.time_changed+=process_breakthrough_retreat;time.time_changed+=process_body_refinement;}}
-    public override void load_from_data(EntityData source){var data=source as HumanData??new HumanData{entity_name=source.entity_name};entity_data=data.Duplicate(true) as HumanData;ensure_basic_deck();ensure_spirit_core_state();ensure_body_refinement_state();ensure_qi_state();ensure_visualization_state();ensure_inventory_state();_qi_insight_rng.Randomize();load_gongfa_data();refresh_dao_bearing_nodes();apply_missing_gongfa_permanent_bonuses();base.load_from_data(entity_data!);refresh_gongfa_effects();}
-    private void ensure_basic_deck(){if(human is null)return;if(string.IsNullOrEmpty(human.basic_deck_path)||human.basic_deck_path==LegacyInitialDeckPath)human.basic_deck_path=InitialDeckPath;if(Mathf.IsEqualApprox(human.dun_speed,100.0f)){var legacy_speed=!Mathf.IsEqualApprox(human.dun_speed_cells_per_day,1.0f)?human.dun_speed_cells_per_day:human.travel_speed_cells_per_day;if(!Mathf.IsEqualApprox(legacy_speed,1.0f))human.dun_speed=legacy_speed*100.0f;}human.dun_speed=Mathf.Max(0.01f,human.dun_speed);human.dun_speed_cells_per_day=1.0f;human.travel_speed_cells_per_day=1.0f;}
+    public override void _Ready(){entity_data ??=new HumanData();if(entity_data is not HumanData)entity_data=new HumanData{entity_name=entity_data.entity_name};ensure_basic_deck();ensure_spirit_core_state();ensure_body_refinement_state();ensure_visualization_state();ensure_inventory_state();load_gongfa_data();apply_missing_gongfa_permanent_bonuses();base._Ready();refresh_gongfa_effects();var time=GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");if(time is not null){_last_schedule_hour=time.get_total_game_hours();time.time_changed+=process_breakthrough_retreat;time.time_changed+=process_body_refinement;time.time_changed+=process_yuanxi_external_time;}}
+    public override void load_from_data(EntityData source){var data=source as HumanData??new HumanData{entity_name=source.entity_name};entity_data=data.Duplicate(true) as HumanData;ensure_basic_deck();ensure_spirit_core_state();ensure_body_refinement_state();ensure_visualization_state();ensure_inventory_state();load_gongfa_data();apply_missing_gongfa_permanent_bonuses();base.load_from_data(entity_data!);refresh_gongfa_effects();}
+    private void ensure_basic_deck(){if(human is null)return;human.basic_deck_path=PublicBasicSkillPoolPath;if(Mathf.IsEqualApprox(human.dun_speed,100.0f)){var legacy_speed=!Mathf.IsEqualApprox(human.dun_speed_cells_per_day,1.0f)?human.dun_speed_cells_per_day:human.travel_speed_cells_per_day;if(!Mathf.IsEqualApprox(legacy_speed,1.0f))human.dun_speed=legacy_speed*100.0f;}human.dun_speed=Mathf.Max(0.01f,human.dun_speed);human.dun_speed_cells_per_day=1.0f;human.travel_speed_cells_per_day=1.0f;}
     private void ensure_spirit_core_state()
     {
         if (human is null) return;
@@ -71,14 +67,6 @@ public partial class Character : Creature
         foreach (var part in BodyRefinementRules.Parts) if (!human.body_refinement_progress.ContainsKey(part)) human.body_refinement_progress[part] = 0f;
         foreach (var method in BodyRefinementCatalog.LoadDefaultMethods())
             if (method.default_unlocked && !human.learned_body_refinement_method_paths.Contains(method.ResourcePath)) human.learned_body_refinement_method_paths.Add(method.ResourcePath);
-    }
-    private void ensure_qi_state()
-    {
-        if (human is null) return;
-        human.qi_inspirations ??= [];
-        human.qi_node_levels ??= [];
-        foreach (var node in QiNodeCatalog.CurrentRealm)
-            if (human.qi_node_levels.ContainsKey(node.Id)) human.qi_node_levels[node.Id] = Mathf.Clamp(human.qi_node_levels[node.Id].AsInt32(), 0, node.MaxLevel);
     }
     private void ensure_visualization_state()
     {
@@ -209,6 +197,19 @@ public partial class Character : Creature
         notify_inventory_changed();
         return true;
     }
+    public bool can_add_item_to_inventory(string path, int count = 1)
+    {
+        if (human is null || count <= 0) return false;
+        ensure_inventory_state();
+        var item = load_inventory_item(path);
+        if (item is null) return false;
+        var remaining = count;
+        var maxStack = item.can_stack ? Math.Max(1, item.max_stack) : 1;
+        if (item.can_stack)
+            for (var i = 0; i < human.inventory_item_paths.Count && remaining > 0; i++)
+                if (human.inventory_item_paths[i] == path) remaining -= Math.Min(Math.Max(0, maxStack - human.inventory_item_counts[i]), remaining);
+        return (item.can_stack ? Mathf.CeilToInt(remaining / (float)maxStack) : remaining) <= get_inventory_free_slot_count();
+    }
     public bool add_item_to_inventory(string path, int count = 1)
     {
         if (human is null || count <= 0) return false;
@@ -328,7 +329,7 @@ public partial class Character : Creature
         notify_inventory_changed(); return true;
     }
     private void sync_artifact_spirit_perception() { if (human is not null) human.used_spirit_perception = get_used_artifact_spirit(); }
-    private void load_gongfa_data(){if(human is null)return;main_gongfa=load_gongfa(human.main_gongfa_path);lock_dao_bearing_from_main();sub_gongfa_list.Clear();foreach(var path in human.sub_gongfa_paths){var g=load_gongfa(path);if(g is not null)sub_gongfa_list.Add(g);}}
+    private void load_gongfa_data(){if(human is null)return;main_gongfa=load_gongfa(human.main_gongfa_path);sub_gongfa_list.Clear();foreach(var path in human.sub_gongfa_paths){var g=load_gongfa(path);if(g is not null)sub_gongfa_list.Add(g);}}
     private static GongfaResource? load_gongfa(string path)=>string.IsNullOrEmpty(path)?null:ResourceLoader.Load<GongfaResource>(path);
     public bool has_learned_gongfa(GongfaResource gongfa)=>human?.learned_gongfa_paths.Contains(gongfa.ResourcePath)==true;
     public Array<GongfaResource> get_known_gongfas()
@@ -337,12 +338,12 @@ public partial class Character : Creature
         void Add(GongfaResource? value){if(value is not null&&!result.Any(item=>item.ResourcePath==value.ResourcePath))result.Add(value);}
         Add(main_gongfa); foreach(var value in sub_gongfa_list)Add(value);
         if(human is not null)foreach(var path in human.learned_gongfa_paths)Add(load_gongfa(path));
+        if(human is not null)Add(load_gongfa(human.sect_lineage_gongfa_path));
         return result;
     }
     /// <summary>汇总已研读卷章授予的可调整主动技能。心法由当前主修/辅修槽位单独提供，不作为习得技能。</summary>
     public Array<ActiveSkillData> get_available_battle_skills()
     {
-        refresh_dao_bearing_nodes();
         Array<ActiveSkillData> result = [];
         void Add(Resource? resource)
         {
@@ -363,6 +364,15 @@ public partial class Character : Creature
     public bool can_learn_gongfa_chapter(GongfaResource gongfa, GongfaChapterConfig chapter)
     {
         if (human is null || gongfa is null || chapter is null) return false;
+        // 玉虚师承首期只开放所选秘籍的第一卷；首卷之后的借阅权限尚未定案。
+        if (human.sect_affiliation_id == "yuxu_xianzong" &&
+            human.sect_lineage_gongfa_path == gongfa.ResourcePath &&
+            human.sect_lineage_first_volume_only_access &&
+            (human.sect_current_rank is "真传" or "真传弟子") &&
+            gongfa.get_sorted_chapters().FirstOrDefault() is { } firstChapter &&
+            firstChapter.get_id() != chapter.get_id() &&
+            is_gongfa_chapter_learned(gongfa, firstChapter.get_id()))
+            return false;
         // 研读同样必须先具备该书要求的灵根；灵根权重只在实际修炼速率中结算。
         if (!gongfa.is_wuxing_compatible(spirit_root_type)) return false;
         if (!string.IsNullOrEmpty(chapter.required_realm))
@@ -402,7 +412,7 @@ public partial class Character : Creature
     /// <summary>返回当前基础技能库可转为固定技能槽的去重路径；基础牌的数量仍由凝核牌局/旧技能库逻辑另行读取。</summary>
     public Array<string> get_default_combat_skill_paths()
     {
-        if (human is null || (human.basic_deck_path != InitialDeckPath && human.basic_deck_path != BodyDeckPath)) return [];
+        if (human is null || human.basic_deck_path != PublicBasicSkillPoolPath) return [];
         var paths = get_basic_deck_skill_paths_before_gongfa();
         paths = GongfaSkillRewriteRuntime.ApplyBasicSkillRewrites(this, paths);
         var result = new Array<string>();
@@ -411,22 +421,15 @@ public partial class Character : Creature
             if (string.IsNullOrWhiteSpace(path) || result.Contains(path)) continue;
             var skill = ResourceLoader.Load<ActiveSkillData>(path);
             if (is_combat_skill_slot_eligible(skill)) result.Add(path);
-            if (result.Count >= 10) break;
         }
         return result;
     }
     private Array<string> get_basic_deck_skill_paths_before_gongfa()
     {
-        if (human is null || (human.basic_deck_path != InitialDeckPath && human.basic_deck_path != BodyDeckPath)) return [];
+        if (human is null || human.basic_deck_path != PublicBasicSkillPoolPath) return [];
         var deck = ResourceLoader.Load<BasicDeckResource>(human.basic_deck_path);
         if (deck is null) return [];
-        var paths = deck.get_deck_skills();
-        foreach (var upgradeId in human.basic_deck_upgrade_ids)
-        {
-            var upgrade = deck.get_upgrade_by_id(upgradeId);
-            if (upgrade is not null) paths = upgrade.apply_to_paths(paths);
-        }
-        return paths;
+        return deck.get_deck_skills();
     }
     /// <summary>将已保存的旧技能路径解析为当前化法版本，兼容化法学习或主辅修变化前保存的槽位。</summary>
     public string resolve_combat_skill_slot_path(string path)
@@ -442,7 +445,7 @@ public partial class Character : Creature
         }
         return path;
     }
-    /// <summary>从主修/辅修槽位中的锻躯秘籍取得开战自动生效的心法；心法不单独学习或装配，也不进入技能槽。</summary>
+    /// <summary>从主修/辅修槽位中的秘籍取得开战自动生效的心法；心法不单独学习或装配，也不进入技能槽。</summary>
     public Array<string> get_combat_passive_paths()
     {
         var result = new Array<string>();
@@ -450,7 +453,7 @@ public partial class Character : Creature
         void AddSlotHeart(GongfaResource? book, bool isMain)
         {
             var skill = book?.get_heart_method_skill(isMain);
-            if (skill is null || string.IsNullOrWhiteSpace(skill.ResourcePath) || !BodyCardRuntime.IsBody(skill)) return;
+            if (skill is null || string.IsNullOrWhiteSpace(skill.ResourcePath)) return;
             if (result.Contains(skill.ResourcePath)) return;
             result.Add(skill.ResourcePath);
         }
@@ -458,7 +461,33 @@ public partial class Character : Creature
         foreach (var book in sub_gongfa_list) AddSlotHeart(book, false);
         return result;
     }
-    /// <summary>汇总已研读且当前槽位启用的淬炼，只把左支淬炼计入战斗快照。</summary>
+    /// <summary>汇总已学心法机制标记和当前完整描述；主辅修均读取。</summary>
+    public Dictionary get_combat_heart_method_upgrades()
+    {
+        var result = new Dictionary();
+        if (human is null) return result;
+        void AddBook(GongfaResource? book, bool isMain)
+        {
+            var heart = book?.get_heart_method_skill(isMain);
+            if (book is null || heart is null) return;
+            var learnedOrder = 0;
+            foreach (var chapter in book.get_sorted_chapters())
+            {
+                if (!is_gongfa_chapter_learned(book, chapter.get_id())) continue;
+                learnedOrder = Math.Max(learnedOrder, chapter.order);
+                if (
+                    string.IsNullOrWhiteSpace(chapter.heart_method_upgrade_id) ||
+                    string.IsNullOrWhiteSpace(chapter.heart_method_upgrade_description)) continue;
+                result[$"{book.gongfa_name}|{chapter.heart_method_upgrade_id}"] = chapter.heart_method_upgrade_description;
+            }
+            if (learnedOrder > 0)
+                result[$"{book.gongfa_name}|current_description"] = book.get_heart_method_description(learnedOrder, isMain);
+        }
+        AddBook(main_gongfa, true);
+        foreach (var book in sub_gongfa_list) AddBook(book, false);
+        return result;
+    }
+    /// <summary>汇总已研读且当前槽位启用的修持，只把左支修持计入战斗快照。</summary>
     public Godot.Collections.Dictionary get_active_combat_tempering_by_gongfa()
     {
         var result=new Godot.Collections.Dictionary();
@@ -553,7 +582,7 @@ public partial class Character : Creature
     public float get_cultivation_rate_at_pressure(float pressure)
     {
         if(spirit_root_type==0||main_gongfa is null||!main_gongfa.is_wuxing_compatible(spirit_root_type))return 0;
-        const float baseRate=.0020f;
+        const float baseRate=.0050f;
         // 功法章节的 cultivation_rate 是旧方案遗留；修炼快慢只由境界、灵根与灵力环境决定。
         return Mathf.Max(0,baseRate*get_realm_cultivation_multiplier()*get_element_efficiency(main_gongfa)*get_cultivation_environment_factor(pressure));
     }
@@ -562,7 +591,8 @@ public partial class Character : Creature
     {
         var realms=GetNodeOrNull<RealmManager>("/root/RealmManager"); var next=realms?.get_next_realm_name(cultivation_realm)??"";
         var need=string.IsNullOrEmpty(next)?0:realms?.get_effective_requirements_for_next_realm(this).GetValueOrDefault("spirit_strands",0).AsInt32()??0;
-        return new Dictionary{{"next_realm",next},{"current",spirit_strands},{"required",need},{"partial",get_cultivation_progress()}};
+        var origin=realms?.get_current_layer_spirit_origin(this,cultivation_realm)??0;
+        return new Dictionary{{"next_realm",next},{"current",Mathf.Max(0,spirit_strands-origin)},{"required",Mathf.Max(0,need-origin)},{"partial",get_cultivation_progress()},{"is_current_layer",origin>0}};
     }
     /// <summary>主修功法的灵根倍率：灵根数量资质修正 × 五行匹配压缩系数。</summary>
     public float get_element_efficiency(GongfaResource? gongfa)
@@ -632,16 +662,18 @@ public partial class Character : Creature
         return encoded.Split('_').Where(value=>value is "METAL" or "WOOD" or "WATER" or "FIRE" or "EARTH").ToArray();
     }
     private float get_root_quality_multiplier()=>get_effective_root_elements().Length switch{1=>2.55f,2=>1.38f,3=>1f,4=>.58f,5=>.35f,_=>0f};
-    private float get_realm_cultivation_multiplier()=>get_realm_tier() switch{1=>1f,2=>1.04f,3=>1.08f,4=>1.13f,5=>1.18f,6=>1.24f,7=>1.31f,8=>1.38f,9=>1.46f,10=>1.55f,11=>1.65f,12=>1.76f,13=>1.88f,_=>1f};
+    private float get_realm_cultivation_multiplier()=>get_realm_cultivation_multiplier_for_tier(get_realm_tier());
+    public static float get_realm_cultivation_multiplier_for_tier(int tier)=>tier switch{1=>1f,2=>1.04f,3=>1.08f,4=>1.13f,5=>1.18f,6=>1.24f,7=>1.31f,8=>1.38f,9=>1.46f,10=>1.55f,11=>1.65f,12=>1.76f,13=>1.88f,_=>1f};
     private float get_realm_required_lingqi_pressure()=>get_realm_tier() switch{1=>100f,2=>108f,3=>116f,4=>124f,5=>132f,6=>140f,7=>150f,8=>160f,9=>170f,10=>180f,11=>188f,12=>195f,13=>200f,_=>100f};
     public float get_realm_required_lingqi_pressure_for_ui()=>get_realm_required_lingqi_pressure();
     private int get_realm_tier()
     {
+        if (is_yuanxi_realm()) return 10;
         const string prefix="云息";
         if(!cultivation_realm.StartsWith(prefix)||!cultivation_realm.EndsWith("层"))return 1;
         return int.TryParse(cultivation_realm[prefix.Length..^1],out var tier)?Mathf.Clamp(tier,1,13):1;
     }
-    public bool can_cultivate()=>spirit_root_type!=0&&main_gongfa is not null&&main_gongfa.is_wuxing_compatible(spirit_root_type)&&!is_cultivation_blocked_by_breakthrough()&&!is_in_breakthrough_retreat();
+    public bool can_cultivate()=>!is_yuanxi_realm()&&spirit_root_type!=0&&main_gongfa is not null&&main_gongfa.is_wuxing_compatible(spirit_root_type)&&!is_cultivation_blocked_by_breakthrough()&&!is_in_breakthrough_retreat();
     public int get_available_cultivation_hours(int requestedHours) => get_available_world_action_hours(WorldStaminaRules.CultivationCostPerGameHour, requestedHours);
     public int get_available_study_hours(int requestedHours) => get_available_world_action_hours(WorldStaminaRules.StudyCostPerGameHour, requestedHours);
     public Dictionary get_world_cultivation_preview_for_strands(int strands)
@@ -668,8 +700,7 @@ public partial class Character : Creature
         if (strands <= 0 || hours <= 0 || !try_spend_world_stamina(staminaCost)) return new Dictionary { ["success"] = false, ["reason"] = "体力不足" };
         human!.cultivation_progress = 0f; spirit_strands += strands;
         GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.add_hours(hours);
-        var qiGained = settle_qi_inspiration_from_cultivation(hours);
-        return new Dictionary { ["success"] = true, ["strands"] = strands, ["hours"] = hours, ["stamina_spent"] = staminaCost, ["qi_inspiration_gained"] = qiGained };
+        return new Dictionary { ["success"] = true, ["strands"] = strands, ["hours"] = hours, ["stamina_spent"] = staminaCost };
     }
     public Dictionary cultivate_with_world_stamina_for_hours(int requestedHours)
     {
@@ -679,8 +710,7 @@ public partial class Character : Creature
         if (hours <= 0 || !try_spend_world_stamina(staminaCost)) return new Dictionary { ["success"] = false, ["reason"] = "体力不足" };
         human!.cultivation_progress = 0f; if (strands > 0) spirit_strands += strands;
         GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.add_hours(hours);
-        var qiGained = settle_qi_inspiration_from_cultivation(hours);
-        return new Dictionary { ["success"] = true, ["strands"] = strands, ["hours"] = hours, ["stamina_spent"] = staminaCost, ["qi_inspiration_gained"] = qiGained };
+        return new Dictionary { ["success"] = true, ["strands"] = strands, ["hours"] = hours, ["stamina_spent"] = staminaCost };
     }
     public Dictionary study_for_world_hours(int requestedHours)
     {
@@ -708,7 +738,7 @@ public partial class Character : Creature
     public float get_cultivation_session_remaining()=>_session_hours;
     public float get_next_strand_progress()=>0;
     /// <summary>手动吐纳按一小时结算，并保留未满一缕的小数进度。</summary>
-    public bool manual_cultivate(){if(!can_cultivate()||!try_spend_world_stamina(WorldStaminaRules.CultivationCostPerGameHour))return false;advance_cultivation_hours(1f);GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.add_hours(1);settle_qi_inspiration_from_cultivation(1f);return true;}
+    public bool manual_cultivate(){if(!can_cultivate()||!try_spend_world_stamina(WorldStaminaRules.CultivationCostPerGameHour))return false;advance_cultivation_hours(1f);GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.add_hours(1);return true;}
     public override void _Process(double delta){base._Process(delta);}
     /// <summary>供人物页与功法页复用的研读摘要。</summary>
     public Dictionary get_current_study_summary()
@@ -725,274 +755,6 @@ public partial class Character : Creature
     public Dictionary cultivate_for_strands(int strands) => cultivate_with_world_stamina_for_strands(strands);
     public Dictionary cultivate_for_hours(int hours) => cultivate_with_world_stamina_for_hours(hours);
 
-    private float get_qi_insight_value(string element) => element switch
-    {
-        "木" => human?.qi_wood_insight ?? 0f,
-        "火" => human?.qi_fire_insight ?? 0f,
-        "土" => human?.qi_earth_insight ?? 0f,
-        "金" => human?.qi_metal_insight ?? 0f,
-        "水" => human?.qi_water_insight ?? 0f,
-        _ => 0f
-    };
-
-    private void add_qi_insight_value(string element, float amount)
-    {
-        if (human is null || amount == 0f || !QiNodeCatalog.IsTrait(element)) return;
-        switch (element)
-        {
-            case "木": human.qi_wood_insight = Mathf.Max(0f, human.qi_wood_insight + amount); break;
-            case "火": human.qi_fire_insight = Mathf.Max(0f, human.qi_fire_insight + amount); break;
-            case "土": human.qi_earth_insight = Mathf.Max(0f, human.qi_earth_insight + amount); break;
-            case "金": human.qi_metal_insight = Mathf.Max(0f, human.qi_metal_insight + amount); break;
-            case "水": human.qi_water_insight = Mathf.Max(0f, human.qi_water_insight + amount); break;
-        }
-    }
-
-    public Dictionary get_qi_insight_snapshot() => new()
-    {
-        ["木"] = get_qi_insight_value("木"),
-        ["火"] = get_qi_insight_value("火"),
-        ["土"] = get_qi_insight_value("土"),
-        ["金"] = get_qi_insight_value("金"),
-        ["水"] = get_qi_insight_value("水"),
-        ["total"] = QiNodeCatalog.Traits.Sum(get_qi_insight_value)
-    };
-
-    private int qi_now() => GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
-
-    private void prune_qi_inspirations()
-    {
-        if (human is null) return;
-        var now = qi_now();
-        for (var index = human.qi_inspirations.Count - 1; index >= 0; index--)
-        {
-            var value = human.qi_inspirations[index];
-            if (value.VariantType != Variant.Type.Dictionary)
-            {
-                human.qi_inspirations.RemoveAt(index);
-                continue;
-            }
-            var entry = value.AsGodotDictionary();
-            if (entry.GetValueOrDefault("expires_at_hour", now).AsInt32() <= now) human.qi_inspirations.RemoveAt(index);
-        }
-    }
-
-    /// <summary>返回当前仍在窗口内的灵感；绝对失效时刻保存在存档中，参悟本身不推进时间。</summary>
-    public Godot.Collections.Array get_qi_inspirations()
-    {
-        var result = new Godot.Collections.Array();
-        // 灵感只属于云息期；离开当前大境界后不再把旧条目带回任何后续界面。
-        if (human is null || !is_qi_cloud_breath()) return result;
-        prune_qi_inspirations();
-        var now = qi_now();
-        foreach (Variant value in human.qi_inspirations)
-        {
-            if (value.VariantType != Variant.Type.Dictionary) continue;
-            var entry = value.AsGodotDictionary().Duplicate(true);
-            var remainingHours = Mathf.Max(0, entry.GetValueOrDefault("expires_at_hour", now).AsInt32() - now);
-            entry["remaining_hours"] = remainingHours;
-            entry["remaining_days"] = remainingHours / 24f;
-            result.Add(entry);
-        }
-        return result;
-    }
-
-    /// <summary>所有活动统一从九品起步；传入 grade 仅用于已确定品质的稀有事件。</summary>
-    public Dictionary grant_qi_inspiration(string source, string element = "", int grade = 0)
-    {
-        if (human is null || !is_qi_cloud_breath() || main_gongfa is null || is_in_breakthrough_retreat())
-            return new Dictionary{{"success",false},{"reason","当前无法获得行炁灵感"}};
-        prune_qi_inspirations();
-        var trait = QiNodeCatalog.IsTrait(element) ? element : QiNodeCatalog.Traits[(int)_qi_insight_rng.RandiRange(0, QiNodeCatalog.Traits.Count - 1)];
-        var actualGrade = grade <= 0 ? QiInspirationCatalog.RollGrade(source, _qi_insight_rng) : QiInspirationCatalog.ClampGrade(grade);
-        var now = qi_now();
-        var entry = new Dictionary
-        {
-            {"trait", trait},
-            {"grade", actualGrade},
-            {"grade_name", QiInspirationCatalog.GradeName(actualGrade)},
-            {"insight", QiInspirationCatalog.InsightReward(actualGrade)},
-            {"source", QiInspirationCatalog.SourceName(source)},
-            {"created_at_hour", now},
-            {"expires_at_hour", now + QiInspirationCatalog.DurationHours(actualGrade)}
-        };
-        human.qi_inspirations.Add(entry);
-        return new Dictionary{{"success",true},{"inspiration",entry.Duplicate(true)},{"trait",trait},{"grade",actualGrade},{"grade_name",QiInspirationCatalog.GradeName(actualGrade)}};
-    }
-
-    /// <summary>供论道、切磋、探索等活动调用的语义别名。</summary>
-    public Dictionary gain_qi_inspiration(string source, string element = "") => grant_qi_inspiration(source, element);
-
-    /// <summary>
-    /// 活动结算入口。只有活动真正完成时才会发放灵感；失败、撤退或未完成的尝试不生成条目。
-    /// 品级仍由来源的九品权重决定，特殊事件可传入已确定的 grade。
-    /// </summary>
-    public Dictionary settle_qi_activity_inspiration(string source, bool completed, string element = "", int grade = 0)
-    {
-        if (!completed)
-            return new Dictionary { ["success"] = false, ["triggered"] = false, ["reason"] = "活动未完成，不产生灵感" };
-        var result = grant_qi_inspiration(source, element, grade);
-        result["triggered"] = result.GetValueOrDefault("success", false).AsBool();
-        return result;
-    }
-
-    public bool can_practice_qi_insight() => human is not null && is_qi_cloud_breath() && main_gongfa is not null && !is_in_breakthrough_retreat() && get_qi_inspirations().Count > 0;
-
-    /// <summary>参悟一条已获得的灵感，立即把其收益写入对应五行特性，不消耗时间。</summary>
-    public Dictionary consume_qi_inspiration(int index)
-    {
-        if (human is null || !is_qi_cloud_breath() || main_gongfa is null || is_in_breakthrough_retreat()) return new Dictionary{{"success",false},{"reason","当前无法参悟灵感"}};
-        prune_qi_inspirations();
-        if (index < 0 || index >= human.qi_inspirations.Count) return new Dictionary{{"success",false},{"reason","该灵感已失效"}};
-        var entry = human.qi_inspirations[index].AsGodotDictionary();
-        var element = entry.GetValueOrDefault("trait", "").AsString();
-        var amount = entry.GetValueOrDefault("insight", 0f).AsSingle();
-        if (!QiNodeCatalog.IsTrait(element) || amount <= 0f) return new Dictionary{{"success",false},{"reason","灵感数据无效"}};
-        add_qi_insight_value(element, amount);
-        human.qi_inspirations.RemoveAt(index);
-        return new Dictionary{{"success",true},{"element",element},{"insight",amount},{"grade",entry.GetValueOrDefault("grade",1).AsInt32()},{"grade_name",entry.GetValueOrDefault("grade_name","九品").AsString()},{"source",entry.GetValueOrDefault("source","未知活动").AsString()}};
-    }
-
-    /// <summary>兼容旧界面调用：按特性选择当前最优的一条灵感，但不再消耗固定时间。</summary>
-    public Dictionary practice_qi_insight(string element)
-    {
-        if (!can_practice_qi_insight() || !QiNodeCatalog.IsTrait(element)) return new Dictionary{{"success",false},{"reason","当前没有可参悟的对应灵感"}};
-        var inspirations = get_qi_inspirations();
-        var selected = -1; var bestGrade = -1;
-        for (var index = 0; index < inspirations.Count; index++)
-        {
-            var entry = inspirations[index].AsGodotDictionary();
-            if (entry.GetValueOrDefault("trait", "").AsString() != element) continue;
-            var grade = entry.GetValueOrDefault("grade", 1).AsInt32();
-            if (grade > bestGrade) { bestGrade = grade; selected = index; }
-        }
-        return selected < 0 ? new Dictionary{{"success",false},{"reason","当前没有可参悟的对应灵感"}} : consume_qi_inspiration(selected);
-    }
-
-    /// <summary>修炼每满二十四小时进行一次灵感判定；连续八次未触发后第九次保底。</summary>
-    private float settle_qi_inspiration_from_cultivation(float hours)
-    {
-        if (human is null || !is_qi_cloud_breath() || hours <= 0f) return 0f;
-        human.qi_cultivation_hours += hours;
-        var wholeDays = Mathf.FloorToInt(human.qi_cultivation_hours / 24f);
-        if (wholeDays <= 0) return 0f;
-        human.qi_cultivation_hours -= wholeDays * 24f;
-        var gained = 0f;
-        for (var index = 0; index < wholeDays; index++)
-        {
-            var trigger = human.qi_cultivation_failed_rolls >= 8 || _qi_insight_rng.Randf() < 0.08f;
-            if (!trigger)
-            {
-                human.qi_cultivation_failed_rolls++;
-                continue;
-            }
-            var result = grant_qi_inspiration("修炼");
-            if (result.GetValueOrDefault("success", false).AsBool()) gained++;
-            human.qi_cultivation_failed_rolls = 0;
-        }
-        return gained;
-    }
-
-    public Dictionary get_qi_node_levels()
-    {
-        var result = new Dictionary();
-        if (human is null) return result;
-        foreach (Variant key in human.qi_node_levels.Keys) result[key.AsString()] = human.qi_node_levels[key].AsInt32();
-        return result;
-    }
-
-    public int get_qi_node_level(string nodeId)
-    {
-        var node = QiNodeCatalog.Get(nodeId);
-        if (human is null || node is null) return 0;
-        return Mathf.Clamp(human.qi_node_levels.GetValueOrDefault(nodeId, 0).AsInt32(), 0, node.MaxLevel);
-    }
-
-    private static int qi_prerequisite_required_level(QiNodeDefinition node, QiNodeDefinition prerequisite, int targetLevel)
-    {
-        return node.Kind switch
-        {
-            "生" or "克" => targetLevel >= 2 ? 2 : 1,
-            "用" => prerequisite.Kind == "根" ? 2 : targetLevel >= 2 ? 2 : 1,
-            "合" => targetLevel >= 2 ? 2 : 1,
-            _ => 1
-        };
-    }
-
-    private bool qi_node_prerequisites_met(QiNodeDefinition node, int targetLevel, out Array<string> missing)
-    {
-        missing = [];
-        foreach (var prerequisite in node.Prerequisites)
-        {
-            var prerequisiteNode = QiNodeCatalog.Get(prerequisite);
-            var requiredLevel = prerequisiteNode is null ? 1 : qi_prerequisite_required_level(node, prerequisiteNode, targetLevel);
-            if (get_qi_node_level(prerequisite) < requiredLevel) missing.Add(prerequisite);
-        }
-        return missing.Count == 0;
-    }
-
-    public Dictionary get_qi_node_status(string nodeId)
-    {
-        var node = QiNodeCatalog.Get(nodeId);
-        if (node is null) return new Dictionary{{"valid",false}};
-        var level = get_qi_node_level(nodeId);
-        var nextLevel = level + 1;
-        var status = new Dictionary
-        {
-            ["valid"] = true,
-            ["level"] = level,
-            ["max_level"] = node.MaxLevel,
-            ["next_level"] = nextLevel,
-            ["maxed"] = level >= node.MaxLevel
-        };
-        if (level >= node.MaxLevel)
-        {
-            status["available"] = false;
-            status["affordable"] = false;
-            status["cost"] = 0f;
-            status["cost_text"] = "已达最高阶";
-            status["missing_prerequisites"] = new Array<string>();
-            return status;
-        }
-
-        qi_node_prerequisites_met(node, nextLevel, out var missing);
-        var missingText = string.Join("、", missing.Select(id =>
-        {
-            var prerequisite = QiNodeCatalog.Get(id);
-            var requiredLevel = prerequisite is null ? 1 : qi_prerequisite_required_level(node, prerequisite, nextLevel);
-            return $"{prerequisite?.Name ?? id}（需{requiredLevel}阶）";
-        }));
-        var perTraitCost = node.GetLevelCost(nextLevel);
-        var affordable = node.CostElements.All(element => get_qi_insight_value(element) + 0.0001f >= perTraitCost);
-        status["available"] = missing.Count == 0;
-        status["affordable"] = affordable;
-        status["cost"] = perTraitCost;
-        status["cost_text"] = node.GetCostText(nextLevel);
-        status["missing_prerequisites"] = missing;
-        status["missing_prerequisites_text"] = missingText;
-        return status;
-    }
-
-    public bool can_unlock_qi_node(string nodeId)
-    {
-        if (!is_qi_cloud_breath() || human is null || main_gongfa is null || is_in_breakthrough_retreat()) return false;
-        var status = get_qi_node_status(nodeId);
-        return status.GetValueOrDefault("valid", false).AsBool()
-            && status.GetValueOrDefault("available", false).AsBool()
-            && status.GetValueOrDefault("affordable", false).AsBool();
-    }
-
-    /// <summary>提升一个节点一级，分别从所有参与特性中扣除同额参悟值。</summary>
-    public Dictionary unlock_qi_node(string nodeId)
-    {
-        var node = QiNodeCatalog.Get(nodeId);
-        if (node is null || !can_unlock_qi_node(nodeId)) return new Dictionary{{"success",false}};
-        var nextLevel = get_qi_node_level(nodeId) + 1;
-        var cost = node.GetLevelCost(nextLevel);
-        foreach (var element in node.CostElements) add_qi_insight_value(element, -cost);
-        human!.qi_node_levels[nodeId] = nextLevel;
-        return new Dictionary{{"success",true},{"node_id",nodeId},{"level",nextLevel},{"cost",node.GetCostText(nextLevel)}};
-    }
     // 单人模式不再提供研读位；内部只保留当前读本，以兼容已有存档进度。
     public Array<Dictionary> get_study_slot_snapshot(){var result=new Array<Dictionary>();var book=_study_books.FirstOrDefault();var slot=new Dictionary{{"slot_index",0},{"occupied",book is not null}};if(book is not null)slot["book"]=book;result.Add(slot);return result;} public bool has_free_study_slot()=>_study_books.Count<1;
     public GongfaResource? get_current_study_gongfa()=>_study_books.FirstOrDefault()?.gongfa;
@@ -1127,8 +889,23 @@ public partial class Character : Creature
     {
         if (human is null) return;
         var stamp = gongfa.ResourcePath + ":" + chapterId;
-        if (human.applied_gongfa_permanent_bonuses.ContainsKey(stamp)) return;
         var chapter = gongfa.get_chapter_by_id(chapterId); if (chapter is null) return;
+        var revisionStamp = string.IsNullOrWhiteSpace(chapter.learn_bonus_revision)
+            ? "" : stamp + ":" + chapter.learn_bonus_revision;
+        if (human.applied_gongfa_permanent_bonuses.ContainsKey(stamp))
+        {
+            if (revisionStamp.Length > 0 && !human.applied_gongfa_permanent_bonuses.ContainsKey(revisionStamp))
+            {
+                foreach (Variant key in chapter.learn_permanent_bonuses.Keys)
+                {
+                    var previous = chapter.previous_learn_permanent_bonuses.GetValueOrDefault(key, 0f).AsSingle();
+                    var difference = chapter.learn_permanent_bonuses[key].AsSingle() - previous;
+                    if (difference > 0f) apply_permanent_attribute(key.AsString(), difference);
+                }
+                human.applied_gongfa_permanent_bonuses[revisionStamp] = true;
+            }
+            return;
+        }
         foreach (Variant key in chapter.learn_permanent_bonuses.Keys) apply_permanent_attribute(key.AsString(), chapter.learn_permanent_bonuses[key].AsSingle());
         var bookStamp = gongfa.ResourcePath + ":book";
         if (!human.applied_gongfa_permanent_bonuses.ContainsKey(bookStamp))
@@ -1137,6 +914,7 @@ public partial class Character : Creature
             human.applied_gongfa_permanent_bonuses[bookStamp] = true;
         }
         human.applied_gongfa_permanent_bonuses[stamp] = true;
+        if (revisionStamp.Length > 0) human.applied_gongfa_permanent_bonuses[revisionStamp] = true;
     }
     private void apply_permanent_attribute(string key, float value)
     {
@@ -1256,7 +1034,7 @@ public partial class Character : Creature
         human.spirit_core_quality=quality;
         cultivation_realm="云息七层";
         recalculate_attributes();
-        refresh_basic_deck_for_bearing();
+        refresh_shared_basic_skill_pool();
         EmitSignal(SignalName.breakthrough_completed,this,cultivation_realm);
         BreakthroughCompleted?.Invoke(this,cultivation_realm);
         return true;
@@ -1264,6 +1042,8 @@ public partial class Character : Creature
     public string get_spirit_core_summary()
     {
         if(!has_spirit_core)return "未凝";
+        if(condensation_final_score>=CondensationOutcomeRules.SuccessScore)
+            return $"凝核程度 {condensation_final_score}　四项定额各 +{get_condensation_flat_bonus("physique")}";
         var title=string.IsNullOrWhiteSpace(spirit_core_quality)?"云息灵核":spirit_core_quality;
         return $"{title}　体 {spirit_core_volume:0.00}　密 {spirit_core_density:0.00}　杂 {spirit_core_impurity:0.00}";
     }
@@ -1271,7 +1051,7 @@ public partial class Character : Creature
     public int get_breakthrough_base_hours()
     {
         var realms=GetNodeOrNull<RealmManager>("/root/RealmManager"); var next=realms?.get_next_realm_name(cultivation_realm)??"";
-        var tier=next.StartsWith("云息")&&next.EndsWith("层")&&int.TryParse(next[2..^1],out var value)?value:1;
+        var tier=next switch { "云息一层"=>1,"云息二层"=>2,"云息三层"=>3,"云息四层"=>4,"云息五层"=>5,"云息六层"=>6,"云息七层"=>7,"云息八层"=>8,"云息九层"=>9,"云息十层"=>10,_=>1 };
         var days=tier switch { 1=>1, 2=>2, 3=>3, 4=>5, 5=>6, 6=>8, 7=>12, 8=>10, 9=>13, 10=>18, 11=>15, 12=>20, 13=>28, _=>1 };
         return days*24;
     }
@@ -1290,7 +1070,7 @@ public partial class Character : Creature
     }
     public bool start_breakthrough_retreat(bool useMeditationRoom=false)
     {
-        if(human is null||!is_breakthrough_ready())return false;
+        if(human is null||!is_breakthrough_ready()||requires_condensation_breakthrough())return false;
         if(useMeditationRoom&&!can_use_meditation_room_for_retreat())return false;
         if(useMeditationRoom&&meditation_room_index<0)
         {
@@ -1317,8 +1097,8 @@ public partial class Character : Creature
     private void finish_breakthrough_retreat()
     {
         if(human is null)return; var realms=GetNodeOrNull<RealmManager>("/root/RealmManager");
-        var next=human.breakthrough_target_realm; if(string.IsNullOrEmpty(next)||realms is null||!realms.can_breakthrough(this)){clear_breakthrough_retreat();return;}
-        cultivation_realm=next; clear_breakthrough_retreat(); recalculate_attributes(); refresh_basic_deck_for_bearing(); EmitSignal(SignalName.breakthrough_completed,this,next); BreakthroughCompleted?.Invoke(this,next);
+        var next=human.breakthrough_target_realm; if(string.IsNullOrEmpty(next)||realms is null||next!=realms.get_next_realm_name(cultivation_realm)||!realms.can_breakthrough(this)){clear_breakthrough_retreat();return;}
+        cultivation_realm=next; clear_breakthrough_retreat(); recalculate_attributes(); refresh_shared_basic_skill_pool(); EmitSignal(SignalName.breakthrough_completed,this,next); BreakthroughCompleted?.Invoke(this,next);
     }
     private void clear_breakthrough_retreat(){if(human is null)return;human.is_in_breakthrough_retreat=false;human.breakthrough_target_realm="";human.breakthrough_started_hour=0;human.breakthrough_finish_hour=0;human.breakthrough_uses_meditation_room=false;}
     /// <summary>按实际投入小时累计灵力；速率单位为“缕/小时”，小数部分进入存档而非被截断。</summary>
@@ -1356,7 +1136,7 @@ public partial class Character : Creature
         }
     }
 
-    /// <summary>温观是蕴神的保底来源。当前主修景得六成，其余两景各得两成；未装配景永不被动增长。</summary>
+    /// <summary>温观是修性养成的保底来源。当前主修景得六成，其余两景各得两成；未装配景永不被动增长。</summary>
     private void add_visualization_nourish_progress(float hours)
     {
         if (human is null || !is_visualization_cloud_breath() || hours <= 0f) return;
@@ -1710,76 +1490,10 @@ public partial class Character : Creature
             return;
         }
     }
-    public string get_dao_bearing_name()=>dao_bearing switch{1=>"锻躯",2=>"行炁",3=>"蕴神",_=>"未定"}; public bool has_dao_bearing()=>dao_bearing!=0; public bool needs_dao_bearing_for_next_realm()=>false; public bool can_set_dao_bearing(int bearing)=>bearing is >=1 and <=3; public string get_dao_bearing_material_name(int bearing)=>bearing switch{1=>"妖丹",2=>"灵石",3=>"魂玉",_=>""};
-    public IReadOnlyList<DaoBearingNodeDefinition> get_dao_bearing_nodes() => DaoBearingNodeCatalog.For(dao_bearing);
-    public bool is_dao_node_unlocked(string nodeId) => human?.dao_node_ids.Contains(nodeId) == true;
-    public bool is_dao_node_available(string nodeId)
+    /// <summary>所有角色统一使用公共基础技能池；不读取主修秘籍或历史存档分类。</summary>
+    public void refresh_shared_basic_skill_pool()
     {
-        if (human is null || dao_bearing == 0) return false;
-        var node = get_dao_bearing_nodes().FirstOrDefault(item => item.Id == nodeId);
-        if (node is null || node.IsPlanned || is_dao_node_unlocked(node.Id)) return false;
-        if (!node.PrerequisiteIds.All(is_dao_node_unlocked)) return false;
-        return DaoBearingNodeCatalog.MeetsAttributes(this, node);
-    }
-    /// <summary>按当前属性自动纳入道承节点；未定稿的预留节点不会被自动解锁。</summary>
-    public void refresh_dao_bearing_nodes()
-    {
-        if (human is null || dao_bearing == 0) return;
-        human.dao_node_ids ??= [];
-        var changed = true;
-        while (changed)
-        {
-            changed = false;
-            foreach (var node in get_dao_bearing_nodes())
-            {
-                if (node.IsPlanned || is_dao_node_unlocked(node.Id)) continue;
-                if (!node.PrerequisiteIds.All(is_dao_node_unlocked) || !DaoBearingNodeCatalog.MeetsAttributes(this, node)) continue;
-                human.dao_node_ids.Add(node.Id);
-                add_dao_node_reward_skills(node);
-                changed = true;
-            }
-        }
-    }
-    private void add_dao_node_reward_skills(DaoBearingNodeDefinition node)
-    {
-        foreach (var path in node.RewardSkillPaths)
-        {
-            var skill = ResourceLoader.Load<ActiveSkillData>(path);
-            if (skill is null || active_skills.Any(item => item is not null && item.ResourcePath == path)) continue;
-            active_skills.Add(skill);
-        }
-    }
-    private void lock_dao_bearing_from_main()
-    {
-        if (human is null) return;
-        if (human.dao_bearing == 0) set_cultivation_focus_from_main();
-        else refresh_basic_deck_for_bearing();
-    }
-    private void set_cultivation_focus_from_main()
-    {
-        if (human is null || main_gongfa is null || !main_gongfa.can_be_main) return;
-        var candidates = new List<int>();
-        foreach (var bearing in main_gongfa.bearing_compatibility)
-        {
-            if (bearing is >= 1 and <= 3 && !candidates.Contains(bearing)) candidates.Add(bearing);
-        }
-        if (candidates.Count == 1 || candidates.Count > 1 && !candidates.Contains(human.dao_bearing)) human.dao_bearing = candidates[0];
-        refresh_dao_bearing_nodes();
-        refresh_basic_deck_for_bearing();
-    }
-    /// <summary>当前主要侧重决定正在使用的基础技能库；它不限制其他养成线，也不清除既有进度。</summary>
-    public void refresh_basic_deck_for_bearing()
-    {
-        if (human is null) return;
-        var routePath = human.dao_bearing switch
-        {
-            1 => BodyDeckPath,
-            2 => "res://resources/basic_decks/纳气路.tres",
-            3 => "res://resources/basic_decks/神魂路.tres",
-            _ => ""
-        };
-        var routeDeck = string.IsNullOrEmpty(routePath) ? null : ResourceLoader.Load<BasicDeckResource>(routePath);
-        human.basic_deck_path = routeDeck is not null && routeDeck.is_unlocked_for(this) ? routePath : InitialDeckPath;
+        if (human is not null) human.basic_deck_path = PublicBasicSkillPoolPath;
     }
     public override void apply_battle_data(BattleEntityData snapshot)
     {
@@ -1791,25 +1505,22 @@ public partial class Character : Creature
         human.formation_proficiency=snapshot.formation_proficiency;
         human.formation_circuits=snapshot.formation_circuits.Duplicate();
         human.formation_manual_ids=snapshot.formation_manual_ids.Duplicate();
-        human.dao_bearing=snapshot.dao_bearing;
         human.basic_deck_path=snapshot.basic_deck_path;
+        ensure_basic_deck();
         human.combat_skill_slot_paths=snapshot.combat_skill_slot_paths.Duplicate();
         human.combat_skill_slots_configured=snapshot.combat_skill_slots_configured;
         human.combat_passive_paths=snapshot.combat_passive_paths.Duplicate();
         human.main_gongfa_path=snapshot.main_gongfa_path;
         human.sub_gongfa_paths=snapshot.sub_gongfa_paths.Duplicate();
         load_gongfa_data();
-        refresh_dao_bearing_nodes();
     }
     public override BattleEntityData get_snapshot_data()
     {
         var snapshot = base.get_snapshot_data();
         if (human is null) return snapshot;
         ensure_basic_deck();
-        refresh_dao_bearing_nodes();
-        refresh_basic_deck_for_bearing();
-        snapshot.dun_speed=human.dun_speed; snapshot.charisma=human.charisma; snapshot.social=human.social; snapshot.management=human.management;
-        snapshot.dao_bearing = human.dao_bearing;
+        refresh_shared_basic_skill_pool();
+        snapshot.gender=human.gender; snapshot.dun_speed=human.dun_speed; snapshot.charisma=human.charisma; snapshot.social=human.social; snapshot.management=human.management;
         snapshot.body_proficiency=human.body_proficiency;
         snapshot.sword_proficiency=human.sword_proficiency;
         snapshot.magic_proficiency=human.magic_proficiency;
@@ -1817,11 +1528,11 @@ public partial class Character : Creature
         snapshot.formation_circuits=human.formation_circuits.Duplicate();
         snapshot.formation_manual_ids=human.formation_manual_ids.Duplicate();
         snapshot.basic_deck_path = human.basic_deck_path;
-        snapshot.basic_deck_upgrade_ids = human.basic_deck_upgrade_ids.Duplicate();
         snapshot.loaded_skill_paths = human.loaded_skill_paths.Duplicate();
         snapshot.combat_skill_slot_paths = get_combat_skill_slot_paths();
         snapshot.combat_skill_slots_configured = human.combat_skill_slots_configured;
         snapshot.combat_passive_paths = get_combat_passive_paths();
+        snapshot.combat_heart_method_upgrades = get_combat_heart_method_upgrades();
         snapshot.combat_tempering_by_gongfa = get_active_combat_tempering_by_gongfa();
         snapshot.battle_deck_configured = human.battle_deck_configured;
         snapshot.main_gongfa_path = human.main_gongfa_path;
@@ -1835,7 +1546,7 @@ public partial class Character : Creature
     public bool switch_main_gongfa(GongfaResource gongfa)
     {
         if(gongfa is null||human is null||!has_learned_gongfa(gongfa)||!gongfa.can_be_main||!gongfa.is_wuxing_compatible(spirit_root_type))return false;
-        remove_sub_gongfa(gongfa);main_gongfa=gongfa;human.main_gongfa_path=gongfa.ResourcePath;set_cultivation_focus_from_main();refresh_gongfa_effects();MainGongfaChanged?.Invoke(this,gongfa);return true;
+        remove_sub_gongfa(gongfa);main_gongfa=gongfa;human.main_gongfa_path=gongfa.ResourcePath;refresh_shared_basic_skill_pool();refresh_gongfa_effects();MainGongfaChanged?.Invoke(this,gongfa);return true;
     }
     public void unequip_main_gongfa(){main_gongfa=null;if(human is not null)human.main_gongfa_path="";refresh_gongfa_effects();}
     public bool add_sub_gongfa(GongfaResource gongfa)

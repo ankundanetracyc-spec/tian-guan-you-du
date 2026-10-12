@@ -42,9 +42,16 @@ public partial class NodeWorldMap : Control
     public override void _Ready()
     {
         MouseFilter = MouseFilterEnum.Pass;
+        VisibilityChanged += on_visibility_changed;
         _renderer = GetNodeOrNull<Node>("WorldMapViewport");
         connect_renderer_signals();
         configure_renderer();
+    }
+
+    public override void _ExitTree()
+    {
+        if (GodotObject.IsInstanceValid(_npc_world)) _npc_world!.world_npcs_changed -= refresh_counts;
+        if (GodotObject.IsInstanceValid(_travel_mgr)) _travel_mgr!.travelers_changed -= refresh_counts;
     }
 
     private CellCharacterList? get_cell_roster()
@@ -76,6 +83,11 @@ public partial class NodeWorldMap : Control
     private void on_renderer_node_double_clicked(string node_id) => EmitSignal(SignalName.node_double_clicked, node_id);
     private void on_renderer_node_enter_requested(string node_id) => EmitSignal(SignalName.node_enter_requested, node_id);
     private void on_renderer_return_requested() => EmitSignal(SignalName.return_requested);
+
+    private void on_visibility_changed()
+    {
+        if (IsVisibleInTree()) refresh_counts();
+    }
 
     public bool is_node_unlocked(string node_id)
     {
@@ -139,6 +151,7 @@ public partial class NodeWorldMap : Control
 
     public void refresh_counts()
     {
+        if (!IsVisibleInTree()) return;
         push_player_counts();
         push_population_counts();
         _renderer?.Call("set_player_travelers", _player_travelers);

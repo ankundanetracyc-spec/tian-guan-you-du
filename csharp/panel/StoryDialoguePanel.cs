@@ -6,15 +6,20 @@ public partial class StoryDialoguePanel : Control
     private Label? _speaker;
     private Label? _body;
     private Action? _on_closed;
+    private PanelContainer? _dialogueFrame;
+    private VBoxContainer? _dialogueColumn;
+    private Label? _continueHint;
+    private float _dialogueHeight = 250;
 
     public override void _Ready()
     {
         SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         MouseFilter = MouseFilterEnum.Stop;
-        ZIndex = 10000;
+        ZIndex = 240;
         GuiInput += on_background_input;
 
         var frame = new PanelContainer { MouseFilter = MouseFilterEnum.Stop };
+        _dialogueFrame = frame;
         frame.AnchorLeft = 0;
         frame.AnchorRight = 1;
         frame.AnchorTop = 1;
@@ -35,6 +40,7 @@ public partial class StoryDialoguePanel : Control
         frame.AddChild(margin);
 
         var column = new VBoxContainer();
+        _dialogueColumn = column;
         column.AddThemeConstantOverride("separation", 8);
         margin.AddChild(column);
         _speaker = new Label { Text = "旁白" };
@@ -42,7 +48,7 @@ public partial class StoryDialoguePanel : Control
         _speaker.AddThemeColorOverride("font_color", new Color("e6c77e"));
         column.AddChild(_speaker);
 
-        _body = new Label { AutowrapMode = TextServer.AutowrapMode.Off, HorizontalAlignment = HorizontalAlignment.Left, SizeFlagsVertical = SizeFlags.ExpandFill };
+        _body = new Label { AutowrapMode = TextServer.AutowrapMode.WordSmart, HorizontalAlignment = HorizontalAlignment.Left, SizeFlagsVertical = SizeFlags.ExpandFill };
         _body.AddThemeFontSizeOverride("font_size", 23);
         _body.AddThemeColorOverride("font_color", new Color("f2eee2"));
         column.AddChild(_body);
@@ -54,6 +60,7 @@ public partial class StoryDialoguePanel : Control
             MouseFilter = MouseFilterEnum.Ignore
         };
         continueHint.AddThemeFontSizeOverride("font_size", 15);
+        _continueHint = continueHint;
         continueHint.AddThemeColorOverride("font_color", new Color("c9b98d"));
         column.AddChild(continueHint);
 
@@ -67,6 +74,7 @@ public partial class StoryDialoguePanel : Control
 
     private void present(string speaker, string body, bool speaker_on_right, Action? on_closed)
     {
+        reset_social_presentation();
         _speaker!.Text = string.IsNullOrWhiteSpace(speaker) ? "旁白" : speaker;
         _speaker.HorizontalAlignment = speaker_on_right ? HorizontalAlignment.Right : HorizontalAlignment.Left;
         _body!.Text = body;
@@ -78,6 +86,7 @@ public partial class StoryDialoguePanel : Control
     public void close()
     {
         if (!Visible) return;
+        if (handle_social_close()) return;
         hide_speaker_portrait();
         Hide();
         var callback = _on_closed;
@@ -89,7 +98,7 @@ public partial class StoryDialoguePanel : Control
     {
         if (@event is InputEventMouseButton { Pressed: true, ButtonIndex: MouseButton.Left })
         {
-            close();
+            if (!_socialChoosing) close();
             GetViewport().SetInputAsHandled();
         }
     }

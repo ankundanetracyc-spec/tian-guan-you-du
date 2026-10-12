@@ -5,6 +5,7 @@ using GDict = Godot.Collections.Dictionary;
 public partial class CultivationUI : Control
 {
 	private GodotObject? _target;
+	private YuanxiPanel? _yuanxiPanel;
 	private PanelContainer? _panel;
 	private Label? _name, _realm, _power, _rate, _plan, _studyHint, _breakthroughHint;
 	private OptionButton? _mode, _studyBook;
@@ -26,18 +27,12 @@ public partial class CultivationUI : Control
 	private readonly Dictionary<string, Label> _bodyRewardLabels = [];
 	private readonly Dictionary<string, Label[]> _bodyNodeLabels = [];
 	private Texture2D? _bodyPartSigilSheet;
-	private PanelContainer? _qiPanel;
-	private Label? _qiName, _qiRealm, _qiPower, _qiInsight, _qiInspirationHint, _qiDirectionName, _qiDirectionKind, _qiDirectionDescription, _qiStatus;
-	private Button? _qiPractice;
-	private OptionButton? _qiInspirationPicker;
-	private readonly Dictionary<string, Button> _qiDirectionButtons = [];
 	private PanelContainer? _visualPanel;
 	private Label? _visualName, _visualRealm, _visualSummary, _visualMethodHint, _visualResult;
 	private OptionButton? _visualFocus, _visualMethod;
 	private Button? _visualPractice;
 	private readonly Dictionary<string, OptionButton> _visualSlots = [];
 	private readonly Dictionary<string, Label> _visualDetails = [];
-	private string _qiSelectedTrait = "木";
 	/// <summary>正式突破与测试入口均由主场景接管，避免面板持有另一套牌局状态。</summary>
 	public event Action<Character>? CondensationRequested;
 	public event Action<Character>? CondensationTestRequested;
@@ -48,29 +43,32 @@ public partial class CultivationUI : Control
 		AddToGroup("cultivation_ui_panel");
 		ZIndex = 500;
 		MouseFilter = MouseFilterEnum.Pass;
-		GetNodeOrNull<CanvasItem>("Panel")?.Hide();
+		build_room_shell();
 		build_ui();
 		build_overview_ui();
 		build_body_ui();
-		build_qi_ui();
+		
 		build_visualization_ui();
+		finish_room_shell();
 		Hide();
 	}
 
-	public Rect2 get_ui_rect() => _overviewPanel?.Visible == true ? _overviewPanel.GetGlobalRect() : _visualPanel?.Visible == true ? _visualPanel.GetGlobalRect() : _qiPanel?.Visible == true ? _qiPanel.GetGlobalRect() : _bodyPanel?.Visible == true ? _bodyPanel.GetGlobalRect() : _panel?.Visible == true ? _panel.GetGlobalRect() : GetGlobalRect();
+	public Rect2 get_ui_rect() => _room.Visible ? _room.GetGlobalRect() : _overviewPanel?.Visible == true ? _overviewPanel.GetGlobalRect() : _visualPanel?.Visible == true ? _visualPanel.GetGlobalRect() : _bodyPanel?.Visible == true ? _bodyPanel.GetGlobalRect() : _panel?.Visible == true ? _panel.GetGlobalRect() : GetGlobalRect();
 
 	public void show_entity(GodotObject entity)
 	{
 		if (!GodotObject.IsInstanceValid(entity)) return;
+		_yuanxiPanel?.Hide();
 		_target = entity;
 		_bodyReadOnly = false;
+		_roomActions = true;
 		set_date_defaults();
 		refresh();
 		_overviewPanel?.Hide();
-		_qiPanel?.Hide();
+		
 		_bodyPanel?.Hide();
 		_visualPanel?.Hide();
-		_panel?.Show();
+		select_room_page(0);
 		Show();
 		MoveToFront();
 	}
@@ -79,80 +77,11 @@ public partial class CultivationUI : Control
 	public void show_teaching_for(GodotObject entity)
 	{
 		show_entity(entity);
+		select_room_page(1);
 		_study?.GrabFocus();
 	}
 
-	private void build_ui()
-	{
-		_panel = new PanelContainer { Name = "CultivationPanel", CustomMinimumSize = new Vector2(860, 760), MouseFilter = MouseFilterEnum.Stop };
-		_panel.SetAnchorsPreset(LayoutPreset.Center);
-		_panel.OffsetLeft = -430; _panel.OffsetTop = -380; _panel.OffsetRight = 430; _panel.OffsetBottom = 380;
-		AddChild(_panel);
-
-		var style = new StyleBoxFlat { BgColor = new Color(.95f, .92f, .84f, .99f), BorderColor = new Color(.25f, .22f, .16f, .96f), BorderWidthLeft = 2, BorderWidthRight = 2, BorderWidthTop = 2, BorderWidthBottom = 2, CornerRadiusTopLeft = 22, CornerRadiusTopRight = 22, CornerRadiusBottomLeft = 22, CornerRadiusBottomRight = 22, ContentMarginLeft = 30, ContentMarginRight = 30, ContentMarginTop = 24, ContentMarginBottom = 24 };
-		_panel.AddThemeStyleboxOverride("panel", style);
-		var root = new VBoxContainer(); root.AddThemeConstantOverride("separation", 12); _panel.AddChild(root);
-		var head = new HBoxContainer(); root.AddChild(head);
-		head.AddChild(label("静室", 34, true));
-		var bodyButton = new Button { Text = "修命·淬体" }; style_small_button(bodyButton); bodyButton.Pressed += show_body_page; head.AddChild(bodyButton);
-		var overviewButton = new Button { Text = "修行总览" }; style_small_button(overviewButton); overviewButton.Pressed += () => { if (_target is not null) show_cultivation_overview(_target); }; head.AddChild(overviewButton);
-		var condensationTest = new Button { Text = "凝核测试" }; style_small_button(condensationTest); condensationTest.TooltipText = "打开八回合凝核牌局测试；测试局不会写入境界或存档。"; condensationTest.Pressed += condensation_test; head.AddChild(condensationTest);
-		var close = new Button { Text = "收起" }; style_small_button(close); close.Pressed += close_panel; head.AddChild(close);
-		_name = label("", 22); _realm = label("", 17); root.AddChild(_name); root.AddChild(_realm);
-
-		var statsPanel = new PanelContainer(); statsPanel.AddThemeStyleboxOverride("panel", section_style()); root.AddChild(statsPanel);
-		var statsMargin = new MarginContainer(); statsMargin.AddThemeConstantOverride("margin_left", 16); statsMargin.AddThemeConstantOverride("margin_right", 16); statsMargin.AddThemeConstantOverride("margin_top", 10); statsMargin.AddThemeConstantOverride("margin_bottom", 10); statsPanel.AddChild(statsMargin);
-		var stats = new GridContainer { Columns = 2 }; stats.AddThemeConstantOverride("h_separation", 18); statsMargin.AddChild(stats);
-		stats.AddChild(label("当前灵力：", 16)); _power = label("", 16, true); stats.AddChild(_power);
-		stats.AddChild(label("修炼速度：", 16)); _rate = label("", 16, true); stats.AddChild(_rate);
-		root.AddChild(section_label("吐纳修行"));
-
-		var practicePanel = new PanelContainer(); practicePanel.AddThemeStyleboxOverride("panel", section_style()); root.AddChild(practicePanel);
-		var practiceMargin = new MarginContainer(); practiceMargin.AddThemeConstantOverride("margin_left", 16); practiceMargin.AddThemeConstantOverride("margin_right", 16); practiceMargin.AddThemeConstantOverride("margin_top", 12); practiceMargin.AddThemeConstantOverride("margin_bottom", 12); practicePanel.AddChild(practiceMargin);
-		var practice = new VBoxContainer(); practice.AddThemeConstantOverride("separation", 8); practiceMargin.AddChild(practice);
-		var modeRow = new HBoxContainer(); practice.AddChild(modeRow);
-		modeRow.AddChild(label("修炼方式：", 17));
-		_mode = new OptionButton { SizeFlagsHorizontal = SizeFlags.ExpandFill };
-		_mode.AddItem("炼得指定灵力"); _mode.AddItem("修炼指定天数"); _mode.AddItem("修炼至指定日期"); _mode.AddItem("修炼至下一境界所需灵力");
-		_mode.ItemSelected += _ => { update_mode_visibility(); refresh_plan(); };
-		modeRow.AddChild(_mode);
-
-		_strandRow = new VBoxContainer(); practice.AddChild(_strandRow);
-		var strandsRow = new HBoxContainer(); _strandRow.AddChild(strandsRow);
-		strandsRow.AddChild(label("目标灵力：", 16));
-		_strands = spin(1, 999, 1); _strands.ValueChanged += _ => refresh_plan(); strandsRow.AddChild(_strands);
-		strandsRow.AddChild(label("缕", 16));
-
-		_dayRow = new VBoxContainer(); practice.AddChild(_dayRow);
-		var daysRow = new HBoxContainer(); _dayRow.AddChild(daysRow);
-		daysRow.AddChild(label("修炼时长：", 16));
-		_days = spin(1, 999, 1); _days.ValueChanged += _ => refresh_plan(); daysRow.AddChild(_days);
-		daysRow.AddChild(label("日（按完整日计）", 16));
-
-		_dateRow = new VBoxContainer(); practice.AddChild(_dateRow);
-		var dateRow = new HBoxContainer(); _dateRow.AddChild(dateRow);
-		dateRow.AddChild(label("结束日期：", 16));
-		_year = spin(1, 9999, 1); _year.ValueChanged += _ => refresh_plan(); dateRow.AddChild(_year); dateRow.AddChild(label("年", 16));
-		_month = spin(1, 12, 1); _month.ValueChanged += _ => refresh_plan(); dateRow.AddChild(_month); dateRow.AddChild(label("月", 16));
-		_date = spin(1, 30, 1); _date.ValueChanged += _ => refresh_plan(); dateRow.AddChild(_date); dateRow.AddChild(label("日", 16));
-
-		_plan = label("", 16); _plan.AutowrapMode = TextServer.AutowrapMode.WordSmart; practice.AddChild(_plan);
-		_cultivate = new Button { Text = "开始修炼", CustomMinimumSize = new Vector2(0, 48) }; style_action_button(_cultivate); _cultivate.Pressed += cultivate; practice.AddChild(_cultivate);
-		root.AddChild(section_label("研读与突破"));
-		var lower = new HBoxContainer(); lower.SizeFlagsVertical = SizeFlags.ExpandFill; lower.AddThemeConstantOverride("separation", 12); root.AddChild(lower);
-		var studyPanel = new PanelContainer(); studyPanel.SizeFlagsHorizontal = SizeFlags.ExpandFill; studyPanel.AddThemeStyleboxOverride("panel", section_style()); lower.AddChild(studyPanel);
-		var studyMargin = new MarginContainer(); studyMargin.AddThemeConstantOverride("margin_left", 16); studyMargin.AddThemeConstantOverride("margin_right", 16); studyMargin.AddThemeConstantOverride("margin_top", 12); studyMargin.AddThemeConstantOverride("margin_bottom", 12); studyPanel.AddChild(studyMargin);
-		var studyBox = new VBoxContainer(); studyBox.AddThemeConstantOverride("separation", 10); studyMargin.AddChild(studyBox);
-		studyBox.AddChild(label("研读功法", 20, true));
-		var studyPickerRow = new HBoxContainer(); studyPickerRow.AddChild(label("当前研读：", 16)); _studyBook = new OptionButton { SizeFlagsHorizontal = SizeFlags.ExpandFill }; _studyBook.ItemSelected += select_study_book; studyPickerRow.AddChild(_studyBook); studyBox.AddChild(studyPickerRow);
-		_studyHint = label("", 16); _studyHint.AutowrapMode = TextServer.AutowrapMode.WordSmart; _studyHint.SizeFlagsVertical = SizeFlags.ExpandFill; studyBox.AddChild(_studyHint);
-		_study = new Button { Text = "研读一日", CustomMinimumSize = new Vector2(0, 44) }; style_action_button(_study); _study.Pressed += study; studyBox.AddChild(_study);
-		var breakthroughPanel = new PanelContainer(); breakthroughPanel.SizeFlagsHorizontal = SizeFlags.ExpandFill; breakthroughPanel.AddThemeStyleboxOverride("panel", section_style()); lower.AddChild(breakthroughPanel);
-		var breakthroughMargin = new MarginContainer(); breakthroughMargin.AddThemeConstantOverride("margin_left", 16); breakthroughMargin.AddThemeConstantOverride("margin_right", 16); breakthroughMargin.AddThemeConstantOverride("margin_top", 12); breakthroughMargin.AddThemeConstantOverride("margin_bottom", 12); breakthroughPanel.AddChild(breakthroughMargin);
-		var breakthroughBox = new VBoxContainer(); breakthroughBox.AddThemeConstantOverride("separation", 10); breakthroughMargin.AddChild(breakthroughBox);
-		breakthroughBox.AddChild(label("闭关突破", 20, true)); _breakthroughHint = label("", 16); _breakthroughHint.AutowrapMode = TextServer.AutowrapMode.WordSmart; _breakthroughHint.SizeFlagsVertical = SizeFlags.ExpandFill; breakthroughBox.AddChild(_breakthroughHint);
-		_breakthrough = new Button { Text = "闭关突破", CustomMinimumSize = new Vector2(0, 44) }; style_action_button(_breakthrough); _breakthrough.Pressed += breakthrough; breakthroughBox.AddChild(_breakthrough);
-	}
+	private void build_ui() => build_room_ui();
 
 	/// <summary>修命与修性的统一进度总览；只汇总已有养成数据。</summary>
 	private void build_overview_ui()
@@ -185,7 +114,7 @@ public partial class CultivationUI : Control
 		cards.AddThemeConstantOverride("separation", 16);
 		root.AddChild(cards);
 		_overviewBodySummary = add_overview_card(cards, "修命", "六部位锻体", "锻体、养形与淬体共同打磨肉身；气血仍是可由多种来源运用的公共状态。", "查看修命进度", () => { if (_target is not null) show_body_overview(_target); });
-		_overviewNatureSummary = add_overview_card(cards, "修性", "灵台三景·观变察势应物", "三景面向所有战斗软侧重开放；本轮只细化日象·烈日，其余图景留配置接口。", "查看修性图景", () => { if (_target is not null) show_visualization_overview(_target); });
+		_overviewNatureSummary = add_overview_card(cards, "修性", "灵台三景·观变察势应物", "三景面向所有修士开放；本轮只细化日象·烈日，其余图景留配置接口。", "查看修性图景", () => { if (_target is not null) show_visualization_overview(_target); });
 		_overviewPanel.Hide();
 	}
 
@@ -212,11 +141,12 @@ public partial class CultivationUI : Control
 
 	public void show_cultivation_overview(GodotObject entity)
 	{
+		_room.Hide();
 		if (!GodotObject.IsInstanceValid(entity) || _overviewPanel is null) return;
 		_target = entity;
 		_bodyReadOnly = false;
 		refresh_cultivation_overview();
-		_panel?.Hide(); _bodyPanel?.Hide(); _qiPanel?.Hide(); _visualPanel?.Hide();
+		_panel?.Hide(); _bodyPanel?.Hide();  _visualPanel?.Hide();
 		_overviewPanel.Show(); Show(); MoveToFront();
 	}
 
@@ -225,8 +155,7 @@ public partial class CultivationUI : Control
 		if (_target is null || _overviewPanel is null) return;
 		_overviewName!.Text = value("entity_name", "-").AsString();
 		_overviewRealm!.Text = $"{value("cultivation_realm", "凡人").AsString()}　·　{value("spirit_root_name", "").AsString()}";
-		var focus = call("get_dao_bearing_name").AsString();
-		_overviewFocus!.Text = $"当前战斗侧重：{(string.IsNullOrWhiteSpace(focus) ? "未定" : focus)}（随主修秘籍变化）";
+		_overviewFocus!.Text = "战斗构筑：公共基础技能池与已学秘籍；技能和心法效果按各自规则联动。";
 
 		var body = call("get_body_refinement_state").AsGodotDictionary();
 		var parts = body.GetValueOrDefault("parts", new Godot.Collections.Array()).AsGodotArray().Select(item => item.AsGodotDictionary()).ToList();
@@ -242,92 +171,7 @@ public partial class CultivationUI : Control
 		_overviewNatureSummary!.Text = $"当前装配：\n{sceneSummary}\n三景进度与装配记录保留；本轮只细化日象·烈日，其余图景效果待定。";
 	}
 
-	/// <summary>行炁展示五种法力运用方向；节点效果与成长规则另待策划定稿。</summary>
-	private void build_qi_ui()
-	{
-		_qiPanel = new PanelContainer { Name = "QiCultivationPanel", CustomMinimumSize = new Vector2(1220, 820), MouseFilter = MouseFilterEnum.Stop };
-		_qiPanel.SetAnchorsPreset(LayoutPreset.Center);
-		_qiPanel.OffsetLeft = -610; _qiPanel.OffsetTop = -410; _qiPanel.OffsetRight = 610; _qiPanel.OffsetBottom = 410;
-		_qiPanel.AddThemeStyleboxOverride("panel", new StyleBoxFlat
-		{
-			BgColor = new Color(.93f, .90f, .81f, .995f), BorderColor = new Color(.25f, .22f, .16f, .96f),
-			BorderWidthLeft = 2, BorderWidthRight = 2, BorderWidthTop = 2, BorderWidthBottom = 2,
-			CornerRadiusTopLeft = 22, CornerRadiusTopRight = 22, CornerRadiusBottomLeft = 22, CornerRadiusBottomRight = 22,
-			ContentMarginLeft = 28, ContentMarginRight = 28, ContentMarginTop = 22, ContentMarginBottom = 22
-		});
-		AddChild(_qiPanel);
-
-		var root = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ExpandFill };
-		root.AddThemeConstantOverride("separation", 10); _qiPanel.AddChild(root);
-		var head = new HBoxContainer(); root.AddChild(head);
-		head.AddChild(label("行炁·运法", 32, true));
-		var overview = new Button { Text = "修行总览" }; style_small_button(overview); overview.Pressed += () => { if (_target is not null) show_cultivation_overview(_target); }; head.AddChild(overview);
-		var close = new Button { Text = "收起" }; style_small_button(close); close.Pressed += close_panel; head.AddChild(close);
-		_qiName = label("", 21); root.AddChild(_qiName);
-		_qiRealm = label("", 16); root.AddChild(_qiRealm);
-
-		var statusPanel = new PanelContainer(); statusPanel.AddThemeStyleboxOverride("panel", section_style()); root.AddChild(statusPanel);
-		var statusGrid = new GridContainer { Columns = 4 }; statusGrid.AddThemeConstantOverride("h_separation", 8);
-		margin(statusPanel, 16, 16, 10, 10).AddChild(statusGrid);
-		statusGrid.AddChild(label("当前灵力：", 15)); _qiPower = label("", 15, true); statusGrid.AddChild(_qiPower);
-		statusGrid.AddChild(label("各方向参悟：", 15)); _qiInsight = label("", 15, true); statusGrid.AddChild(_qiInsight);
-
-		var progressPanel = new PanelContainer(); progressPanel.AddThemeStyleboxOverride("panel", section_style()); root.AddChild(progressPanel);
-		_qiInspirationHint = label("", 15); _qiInspirationHint.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-		margin(progressPanel, 16, 16, 10, 10).AddChild(_qiInspirationHint);
-
-		var directionPanel = new PanelContainer { SizeFlagsVertical = SizeFlags.ExpandFill };
-		directionPanel.AddThemeStyleboxOverride("panel", section_style()); root.AddChild(directionPanel);
-		var directionBox = new VBoxContainer(); directionBox.AddThemeConstantOverride("separation", 12);
-		margin(directionPanel, 20, 20, 16, 16).AddChild(directionBox);
-		directionBox.AddChild(label("五种法力运用方向", 22, true));
-		var directionHint = label("五行是理解法力运转的五种意象，不是元素伤害、灵根类别或互斥流派。", 14);
-		directionHint.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-		directionBox.AddChild(directionHint);
-		var directionGrid = new GridContainer { Columns = 3, SizeFlagsVertical = SizeFlags.ExpandFill };
-		directionGrid.AddThemeConstantOverride("h_separation", 10); directionGrid.AddThemeConstantOverride("v_separation", 10);
-		directionBox.AddChild(directionGrid);
-		foreach (var trait in QiNodeCatalog.Traits)
-		{
-			var button = new Button { Text = $"{trait}\n{qi_direction_name(trait)}", CustomMinimumSize = new Vector2(210, 88), SizeFlagsHorizontal = SizeFlags.ExpandFill, ToggleMode = true };
-			button.TooltipText = qi_direction_description(trait);
-			button.Pressed += () => select_qi_direction(trait);
-			_qiDirectionButtons[trait] = button;
-			directionGrid.AddChild(button);
-		}
-
-		var detailPanel = new PanelContainer { CustomMinimumSize = new Vector2(0, 170) };
-		detailPanel.AddThemeStyleboxOverride("panel", section_style()); directionBox.AddChild(detailPanel);
-		var detailBox = new VBoxContainer(); detailBox.AddThemeConstantOverride("separation", 8);
-		margin(detailPanel, 18, 18, 14, 14).AddChild(detailBox);
-		_qiDirectionKind = label("", 14); detailBox.AddChild(_qiDirectionKind);
-		_qiDirectionName = label("", 25, true); detailBox.AddChild(_qiDirectionName);
-		_qiDirectionDescription = label("", 16); _qiDirectionDescription.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-		_qiDirectionDescription.SizeFlagsVertical = SizeFlags.ExpandFill; detailBox.AddChild(_qiDirectionDescription);
-		_qiStatus = label("", 14); _qiStatus.AutowrapMode = TextServer.AutowrapMode.WordSmart; detailBox.AddChild(_qiStatus);
-		_qiPanel.Hide();
-	}
-
-	private static string qi_direction_name(string trait) => trait switch
-	{
-		"木" => "生发",
-		"火" => "激发",
-		"土" => "承载",
-		"金" => "凝练",
-		"水" => "流转",
-		_ => "运法"
-	};
-
-	private static string qi_direction_description(string trait) => trait switch
-	{
-		"木" => "以生发与延续为意，理解法力如何令术式逐步展开、持续发挥。",
-		"火" => "以激发与爆发为意，理解法力如何集中并推动术式骤然显效。",
-		"土" => "以承载与稳定为意，理解法力如何维持结构、承受运行负荷。",
-		"金" => "以凝练与收束为意，理解法力如何聚合力量、明确施术边界。",
-		"水" => "以流转与回还为意，理解法力如何在术式之间周转、转化。",
-		_ => "理解法力在不同术式中的运行方式。"
-	};
-	/// <summary>蕴神的三景装配与静室观法；合观、显境只展示局外接口，不在此处生成战斗状态。</summary>
+	/// <summary>修性的三景装配与静室观法；合观、显境只展示局外接口，不在此处生成战斗状态。</summary>
 	private void build_visualization_ui()
 	{
 		_visualPanel = new PanelContainer { Name = "VisualizationPanel", MouseFilter = MouseFilterEnum.Stop, ZIndex = 20 };
@@ -371,7 +215,7 @@ public partial class CultivationUI : Control
 	}
 
 	/// <summary>
-	/// 锻躯面板独立于吐纳面板显示，避免把“修炼功法”和“淬体法”挤在同一张纵向表单里。
+	/// 修命淬体面板独立于吐纳面板显示，避免把“修炼功法”和“淬体法”挤在同一张纵向表单里。
 	/// 静室态的右侧负责选择法门、基础材料和启动一次淬体；底部入口复用面板但切换为只读查看态。
 	/// </summary>
 	private void build_body_ui()
@@ -400,7 +244,8 @@ public partial class CultivationUI : Control
 		var leftMargin = margin(left, 20, 20, 18, 18); var leftBox = new VBoxContainer(); leftBox.AddThemeConstantOverride("separation", 9); leftMargin.AddChild(leftBox);
 		leftBox.AddChild(label("六部位成长轴", 24, true));
 		leftBox.AddChild(label("从上到下：皮、筋、骨、血、脏、心。每条横轴只显示当前炼段，节点奖励在五炼、十炼、十五炼解锁。", 15));
-		var axes = new VBoxContainer { SizeFlagsVertical = SizeFlags.ExpandFill }; axes.AddThemeConstantOverride("separation", 7); leftBox.AddChild(axes);
+		var axesScroll = new ScrollContainer { SizeFlagsVertical = SizeFlags.ExpandFill, HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled, CustomMinimumSize = new Vector2(0, 360) }; leftBox.AddChild(axesScroll);
+		var axes = new VBoxContainer { SizeFlagsVertical = SizeFlags.ExpandFill, SizeFlagsHorizontal = SizeFlags.ExpandFill }; axes.AddThemeConstantOverride("separation", 7); axesScroll.AddChild(axes);
 		foreach (var part in BodyRefinementRules.Parts) axes.AddChild(build_body_part_card(part));
 		_bodyNourishHint = label("", 14); _bodyNourishHint.AutowrapMode = TextServer.AutowrapMode.WordSmart; _bodyNourishHint.CustomMinimumSize = new Vector2(0, 38); _bodyNourishHint.Name = "BodyNourishHint"; leftBox.AddChild(_bodyNourishHint);
 
@@ -458,74 +303,43 @@ public partial class CultivationUI : Control
 
 	private void show_body_page()
 	{
-		if (_target is null || _bodyPanel is null || _panel is null) return;
-		_bodyReadOnly = false;
-		refresh_body_ui(); _overviewPanel?.Hide(); _qiPanel?.Hide(); _visualPanel?.Hide(); _panel.Hide(); _bodyPanel.Show(); Show(); MoveToFront();
+		_bodyReadOnly = false; _roomActions = true; select_room_page(3); Show(); MoveToFront();
 	}
+	private void hide_body_page() { if (_bodyReadOnly) close_panel(); else select_room_page(0); }
 
-	private void hide_body_page()
-	{
-		if (_bodyReadOnly)
-		{
-			close_panel();
-			return;
-		}
-		_bodyPanel?.Hide(); _panel?.Show(); refresh();
-	}
-
-	/// <summary>从底部锻躯入口打开只读的淬炼总览；不提供材料槽和行动按钮。</summary>
+	/// <summary>从主界面修命入口打开只读的淬炼总览；不提供材料槽和行动按钮。</summary>
 	public void show_body_overview(GodotObject entity)
 	{
 		if (!GodotObject.IsInstanceValid(entity) || _bodyPanel is null) return;
-		_target = entity;
-		_bodyReadOnly = true;
-		refresh_body_ui();
-		_overviewPanel?.Hide(); _qiPanel?.Hide(); _visualPanel?.Hide(); _panel?.Hide(); _bodyPanel.Show(); Show(); MoveToFront();
+		_target = entity; _bodyReadOnly = true; _roomActions = false; _roomPage = 3;
+		select_room_page(3); Show(); MoveToFront();
 	}
 
-	/// <summary>从主界面底部的行炁入口打开五行参悟盘。</summary>
-	public void show_qi_page(GodotObject entity)
-	{
-		if (!GodotObject.IsInstanceValid(entity) || !entity.Get("cultivation_realm").AsString().StartsWith("云息", StringComparison.Ordinal) || _qiPanel is null) return;
-		_target = entity;
-		_bodyReadOnly = false;
-		_overviewPanel?.Hide(); _panel?.Hide(); _bodyPanel?.Hide(); _visualPanel?.Hide(); _qiPanel.Show(); Show(); MoveToFront();
-		refresh_qi_ui();
-	}
+	/// <summary>从主界面修性入口打开三景图。</summary>
+	private void show_visualization_page() { select_room_page(4); Show(); MoveToFront(); }
+	private void hide_visualization_page() => select_room_page(0);
 
-	private void show_visualization_page()
-	{
-		if (_target is null || _visualPanel is null) return;
-		_overviewPanel?.Hide(); _panel?.Hide(); _bodyPanel?.Hide(); _qiPanel?.Hide(); _visualPanel.Show(); Show(); MoveToFront();
-		refresh_visualization_ui();
-	}
-
-	private void hide_visualization_page()
-	{
-		_visualPanel?.Hide(); _panel?.Show(); refresh();
-	}
-
-	/// <summary>供主界面路线入口调用；蕴神观想对所有云息修士开放。</summary>
+	/// <summary>供主界面修性入口调用；三景观想对所有云息修士开放。</summary>
 	public void show_visualization_overview(GodotObject entity)
 	{
 		if (!GodotObject.IsInstanceValid(entity) || _visualPanel is null) return;
-		_target = entity;
-		_overviewPanel?.Hide(); _panel?.Hide(); _bodyPanel?.Hide(); _qiPanel?.Hide(); _visualPanel.Show(); Show(); MoveToFront();
-		refresh_visualization_ui();
+		_target = entity; _roomActions = false; _roomPage = 4; select_room_page(4); Show(); MoveToFront();
 	}
 
 	/// <summary>统一关闭修炼面板，供主场景返回键处理。</summary>
 	public void close_panel()
 	{
+		_room.Hide();
+		_yuanxiPanel?.Hide();
 		_bodyReadOnly = false;
-		_overviewPanel?.Hide(); _visualPanel?.Hide(); _qiPanel?.Hide(); _bodyPanel?.Hide(); _panel?.Hide(); Hide();
+		_overviewPanel?.Hide(); _visualPanel?.Hide();  _bodyPanel?.Hide(); _panel?.Hide(); Hide();
 	}
 
 	private void refresh_visualization_ui()
 	{
 		if (_visualPanel is null || _target is null) return;
 		_visualName!.Text = value("entity_name", "-").AsString();
-		_visualRealm!.Text = $"{value("cultivation_realm", "凡人").AsString()}　·　修性面向所有战斗软侧重开放";
+		_visualRealm!.Text = $"{value("cultivation_realm", "凡人").AsString()}　·　修性面向所有修士开放";
 		var state = call("get_visualization_state").AsGodotDictionary();
 		var available = state.GetValueOrDefault("available", false).AsBool();
 		var scenes = state.GetValueOrDefault("scenes", new Godot.Collections.Array()).AsGodotArray().Select(raw => raw.AsGodotDictionary()).ToList();
@@ -771,8 +585,8 @@ public partial class CultivationUI : Control
 	}
 
 	private static StyleBoxFlat section_style() => new() { BgColor = new Color(1f, .98f, .91f, .54f), BorderColor = new Color(.44f, .37f, .26f, .68f), BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1, CornerRadiusTopLeft = 12, CornerRadiusTopRight = 12, CornerRadiusBottomLeft = 12, CornerRadiusBottomRight = 12 };
-	private static void style_small_button(Button button) { button.AddThemeFontSizeOverride("font_size", 17); button.AddThemeColorOverride("font_color", new Color("2a251f")); button.AddThemeStyleboxOverride("normal", new StyleBoxFlat { BgColor = new Color(.83f, .74f, .52f), CornerRadiusTopLeft = 8, CornerRadiusTopRight = 8, CornerRadiusBottomLeft = 8, CornerRadiusBottomRight = 8, ContentMarginLeft = 14, ContentMarginRight = 14 }); }
-	private static void style_action_button(Button button) { button.AddThemeFontSizeOverride("font_size", 18); button.AddThemeColorOverride("font_color", new Color("251f16")); button.AddThemeStyleboxOverride("normal", new StyleBoxFlat { BgColor = new Color(.84f, .72f, .43f), BorderColor = new Color(.37f, .27f, .14f), BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1, CornerRadiusTopLeft = 10, CornerRadiusTopRight = 10, CornerRadiusBottomLeft = 10, CornerRadiusBottomRight = 10 }); button.AddThemeStyleboxOverride("hover", new StyleBoxFlat { BgColor = new Color(.95f, .82f, .5f), CornerRadiusTopLeft = 10, CornerRadiusTopRight = 10, CornerRadiusBottomLeft = 10, CornerRadiusBottomRight = 10 }); }
+	private static void style_small_button(Button button) { button.AddThemeFontSizeOverride("font_size", 18); }
+	private static void style_action_button(Button button) => QuietRoomStyle.Primary(button);
 
 	private static SpinBox spin(int min, int max, int value) => new() { MinValue = min, MaxValue = max, Value = value, Step = 1, Rounded = true, CustomMinimumSize = new Vector2(100, 0) };
 	private Variant value(string key, Variant fallback = default) => GodotObject.IsInstanceValid(_target) ? _target!.Get(key) : fallback;
@@ -816,90 +630,6 @@ public partial class CultivationUI : Control
 		return $"{year}年{remainder / 30 + 1}月{remainder % 30 + 1}日 {hour:00}时";
 	}
 
-	private Godot.Collections.Array get_qi_inspirations()
-	{
-		var result = call("get_qi_inspirations");
-		return result.VariantType == Variant.Type.Array ? result.AsGodotArray() : new Godot.Collections.Array();
-	}
-
-	private void refresh_qi_inspiration_picker()
-	{
-		if (_qiInspirationPicker is null) return;
-		var previous = _qiInspirationPicker.Selected;
-		var inspirations = get_qi_inspirations();
-		_qiInspirationPicker.Clear();
-		for (var index = 0; index < inspirations.Count; index++)
-		{
-			var entry = inspirations[index].AsGodotDictionary();
-			var trait = entry.GetValueOrDefault("trait", "").AsString();
-			var gradeName = entry.GetValueOrDefault("grade_name", "九品").AsString();
-			var amount = entry.GetValueOrDefault("insight", 0f).AsSingle();
-			var source = entry.GetValueOrDefault("source", "未知活动").AsString();
-			var days = entry.GetValueOrDefault("remaining_days", 0f).AsSingle();
-			_qiInspirationPicker.AddItem($"{trait} · {gradeName}灵感 · +{amount:0.##}悟 · {source} · 余{days:0.#}日");
-		}
-		if (inspirations.Count == 0)
-		{
-			_qiInspirationPicker.AddItem("暂无可参悟灵感");
-			_qiInspirationPicker.Disabled = true;
-			if (_qiInspirationHint is not null) _qiInspirationHint.Text = "灵感来自修炼、切磋、论道与特殊活动；所有品质都从九品起步。";
-			return;
-		}
-		_qiInspirationPicker.Disabled = false;
-		_qiInspirationPicker.Selected = Mathf.Clamp(previous, 0, inspirations.Count - 1);
-		if (_qiInspirationHint is not null) _qiInspirationHint.Text = "参悟只消耗这一条灵感，不推进时间；过期灵感会从列表中移除。";
-	}
-
-	private void refresh_qi_ui()
-	{
-		if (_target is null) return;
-		if (_qiName is not null) _qiName.Text = value("entity_name", "-").AsString();
-		if (_qiRealm is not null) _qiRealm.Text = $"当前境界：{value("cultivation_realm", "凡人").AsString()}　·　五行运法方向与参悟记录";
-		if (_qiPower is not null) _qiPower.Text = $"{value("spirit_strands", 0).AsInt32()} 缕";
-		var insight = call("get_qi_insight_snapshot").AsGodotDictionary();
-		if (_qiInsight is not null)
-			_qiInsight.Text = string.Join("　", QiNodeCatalog.Traits.Select(trait => $"{trait}悟 {insight.GetValueOrDefault(trait, 0f).AsSingle():0.0}"));
-		refresh_qi_inspiration_picker();
-		if (_qiInspirationHint is not null)
-			_qiInspirationHint.Text = $"旧存档中的五行参悟值与 {call("get_qi_inspirations").AsGodotArray().Count} 条临时灵感仅作保留，不会被新方向界面消耗或自动折算。";
-		refresh_qi_detail();
-		if (_qiPractice is not null)
-		{
-			_qiPractice.Text = "参悟灵感（即时）";
-			_qiPractice.Disabled = !call("can_practice_qi_insight").AsBool();
-			_qiPractice.TooltipText = _qiPractice.Disabled ? "当前没有可参悟的灵感，或角色尚未走行炁路线。" : "立即把选中的灵感转化为对应特性参悟值，不消耗时间。";
-		}
-	}
-
-	private void select_qi_direction(string trait)
-	{
-		if (!QiNodeCatalog.IsTrait(trait)) return;
-		_qiSelectedTrait = trait;
-		refresh_qi_detail();
-	}
-
-	private void refresh_qi_detail()
-	{
-		if (_target is null) return;
-		var insight = call("get_qi_insight_snapshot").AsGodotDictionary();
-		var currentInsight = insight.GetValueOrDefault(_qiSelectedTrait, 0f).AsSingle();
-		if (_qiDirectionKind is not null) _qiDirectionKind.Text = $"五行运法方向　·　{_qiSelectedTrait}象意：{QiNodeCatalog.TraitAspects(_qiSelectedTrait)}";
-		if (_qiDirectionName is not null) _qiDirectionName.Text = $"{_qiSelectedTrait} · {qi_direction_name(_qiSelectedTrait)}";
-		if (_qiDirectionDescription is not null) _qiDirectionDescription.Text = qi_direction_description(_qiSelectedTrait);
-		if (_qiStatus is not null) _qiStatus.Text = $"当前参悟记录：{currentInsight:0.##}\n当前展示运法方向；节点数量、成长阶段与战斗效果待专题定稿。";
-		foreach (var (trait, button) in _qiDirectionButtons) button.ButtonPressed = trait == _qiSelectedTrait;
-	}
-
-	private void practice_qi()
-	{
-		if (_target is null) return;
-		var index = _qiInspirationPicker?.Selected ?? -1;
-		var inspirations = get_qi_inspirations();
-		if (index < 0 || index >= inspirations.Count) return;
-		_target.Call("consume_qi_inspiration", index);
-		refresh();
-	}
-
 	private void refresh()
 	{
 		if (_target is null || _strands is null) return;
@@ -908,7 +638,7 @@ public partial class CultivationUI : Control
 		var progress = call("get_next_realm_progress").AsGodotDictionary();
 		var required = progress.GetValueOrDefault("required", 0).AsInt32();
 		var current = progress.GetValueOrDefault("current", 0).AsInt32();
-		_power!.Text = required > 0 ? $"{current} / {required} 缕" : $"{value("spirit_strands", 0).AsInt32()} 缕";
+		_power!.Text = required > 0 ? $"{(progress.GetValueOrDefault("is_current_layer", false).AsBool() ? "本层 " : "累计 ")}{current} / {required} 缕" : $"{value("spirit_strands", 0).AsInt32()} 缕";
 		_rate!.Text = $"{call("get_cultivation_rate").AsSingle():0.####} 缕 / 小时";
 		_strands.MaxValue = Math.Max(1, call("get_strands_until_next_realm").AsInt32());
 		if (_strands.Value > _strands.MaxValue) _strands.Value = _strands.MaxValue;
@@ -919,7 +649,8 @@ public partial class CultivationUI : Control
 		update_breakthrough();
 		if (_overviewPanel?.Visible == true) refresh_cultivation_overview();
 		if (_bodyPanel?.Visible == true) refresh_body_ui();
-		if (_qiPanel?.Visible == true) refresh_qi_ui();
+		refresh_room_header(); refresh_room_study();
+		_roomPowerBar.MaxValue = Math.Max(1, required); _roomPowerBar.Value = current;
 	}
 
 	private void refresh_plan()
@@ -943,8 +674,9 @@ public partial class CultivationUI : Control
 		var staminaCost = preview.GetValueOrDefault("stamina_cost", 0f).AsSingle();
 		var staminaLimited = preview.GetValueOrDefault("stamina_limited", false).AsBool();
 		var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
-		_plan.Text = time is null ? "" : $"本次将炼得 {strands} 缕灵力，耗时 {hours / 24f:0.0} 日，消耗体力 {staminaCost:0.#} 点（当前 {value("current_world_stamina", 0f).AsSingle():0.#}），预计结束于 {format_date_after(time, hours)}。修炼结束时未满一缕的灵力会散去。{(staminaLimited ? "体力不足以完成原定时长，已按可持续时长预估。" : "")}";
-		_cultivate.Disabled = hours <= 0 || strands <= 0;
+		_plan.Text = time is null ? "" : $"预计灵力　{strands} 缕\n耗时　{hours} 小时\n体力消耗　{staminaCost:0.#} 点\n结束　{format_date_after(time, hours)}\n\n未满一缕的灵力在结束时散去。{(staminaLimited ? "\n体力不足，已按可持续时长预估。" : "")}";
+		if (mode is 1 or 2 && strands == 0) _plan.Text += "\n本次时长不足以获得一整缕，可增加修炼天数或改用指定灵力。";
+		_cultivate.Disabled = hours <= 0 || (_target is Character practitioner && !practitioner.can_cultivate());
 	}
 
 	private void cultivate()
@@ -960,29 +692,30 @@ public partial class CultivationUI : Control
 
 	private void update_study()
 	{
-		if(_study is null||_studyHint is null)return;
-		if(call("has_completed_intro_gongfa_first_volume").AsBool())
+		if (_target is Character student && _study is not null && _studyHint is not null)
 		{
-			_studyHint.Text="玄鉴传下的第一卷已经研读完成。请前往角色页面，将此功法装配为主修。";
-			_study.Text="第一卷已读成"; _study.Disabled=true; return;
+			var book = selected_study_book();
+			var chapter = book?.get_sorted_chapters().FirstOrDefault(c => !student.is_gongfa_chapter_learned(book, c.get_id()));
+			if (book is null) { _studyHint.Text = "暂无可研读功法"; _study.Text = "开始研读"; _study.Disabled = true; return; }
+			if (chapter is null && (book.chapters.Count > 0 || student.has_learned_gongfa(book)))
+			{ _studyHint.Text = "全卷已研读"; _study.Text = "已读完"; _study.Disabled = true; return; }
+			// Match SecretBook's existing first-volume access; later volumes use chapter requirements.
+			var eligible = !student.has_learned_gongfa(book) || chapter is null || student.can_learn_gongfa_chapter(book, chapter);
+			var hours = student.get_available_study_hours(24);
+			var progress = chapter is null ? 0 : student.get_gongfa_chapter_study_progress(book, chapter.get_id());
+			var required = chapter?.required_study_progress ?? book.required_study_progress;
+			_studyHint.Text = $"{chapter?.chapter_name ?? "当前卷"}\n研读进度  {progress:0.0} / {required:0.0}" +
+				(!eligible ? "\n尚未满足本卷研读条件" : $"\n耗时  {hours} 小时　体力  {hours * WorldStaminaRules.StudyCostPerGameHour:0.#}");
+			_study.Text = !eligible ? "条件未满足" : hours <= 0 ? "体力不足" : "开始研读";
+			_study.Disabled = !eligible || hours <= 0;
+			return;
 		}
-		var summary=call("get_current_study_summary").AsGodotDictionary();
-		if(summary.GetValueOrDefault("active",false).AsBool())
-		{
-			var name=summary.GetValueOrDefault("gongfa_name","无名秘籍").AsString(); var chapter=summary.GetValueOrDefault("chapter_name","当前卷").AsString();
-			var hours = _target is Character reader ? reader.get_available_study_hours(24) : 0;
-			_studyHint.Text=$"研读《{name}》· {chapter}：{summary.GetValueOrDefault("progress",0f).AsSingle():0.0} / {summary.GetValueOrDefault("required",0f).AsSingle():0.0}。每游戏小时消耗 1 点体力；本次可研读 {hours} 小时。";
-			_study.Text=hours>=24?"研读一日（24体力）":hours>0?$"研读 {hours} 小时":"体力不足"; _study.Disabled=hours<=0; return;
-		}
-		var pending=call("get_pending_intro_gongfa").AsGodotObject() as GongfaResource;
-		if(pending is not null){var hours=_target is Character reader?reader.get_available_study_hours(24):0;_studyHint.Text=$"玄鉴中留有《{pending.gongfa_name}》的首卷，可在静室中慢慢研读。每游戏小时消耗 1 点体力；本次可研读 {hours} 小时。";_study.Text=hours<=0?"体力不足":$"开始研读《{pending.gongfa_name}》";_study.Disabled=hours<=0;return;}
-		_studyHint.Text="当前没有可研读的功法。"; _study.Text="暂无可研读功法"; _study.Disabled=true;
 	}
 
 	private void refresh_study_choices()
 	{
 		if (_studyBook is null || _target is not Character human) return;
-		var selectedPath = human.get_current_study_gongfa()?.ResourcePath ?? "";
+		var selectedPath = selected_study_book()?.ResourcePath ?? human.get_current_study_gongfa()?.ResourcePath ?? "";
 		_studyCandidates.Clear();
 		foreach (var book in human.get_known_gongfas()) if (!_studyCandidates.Any(item => item.ResourcePath == book.ResourcePath)) _studyCandidates.Add(book);
 		if (human.get_pending_intro_gongfa() is { } pending && !_studyCandidates.Any(item => item.ResourcePath == pending.ResourcePath)) _studyCandidates.Add(pending);
@@ -997,19 +730,35 @@ public partial class CultivationUI : Control
 	private void select_study_book(long index)
 	{
 		if (_target is not Character human || index < 0 || index >= _studyCandidates.Count) return;
-		if (human.select_gongfa_for_study(_studyCandidates[(int)index])) refresh();
+		_studyBook!.Select((int)index);
+		update_study(); refresh_room_study();
 	}
+	private GongfaResource? selected_study_book() => _studyBook is not null && _studyBook.Selected >= 0 && _studyBook.Selected < _studyCandidates.Count ? _studyCandidates[_studyBook.Selected] : null;
 
-	private void study(){if(_target is not Character reader)return;var hours=reader.get_available_study_hours(24);if(hours<=0){refresh();return;}var staminaCost=hours*WorldStaminaRules.StudyCostPerGameHour;play_transition("研读功法",$"静室中一日无声，心神沉入功法字句之间。本次研读 {hours} 小时，消耗体力 {staminaCost:0.#} 点。",$"研读结束。新的体悟已记入功法进度，余下体力 {reader.current_world_stamina:0.#}。",()=>{_target.Call("study_for_world_hours",24);refresh();});}
+	private void study(){if(_target is not Character reader || selected_study_book() is not { } book)return;var hours=reader.get_available_study_hours(24);if(hours<=0 || !reader.select_gongfa_for_study(book)){refresh();return;}var staminaCost=hours*WorldStaminaRules.StudyCostPerGameHour;play_transition("研读功法",$"研读 {hours} 小时，消耗体力 {staminaCost:0.#} 点。","研读结束。",()=>{reader.study_for_world_hours(hours);refresh();});}
 
 	private void update_breakthrough()
 	{
 		if (_breakthrough is null || _breakthroughHint is null || _target is null) return;
 		var realms = GetNodeOrNull<RealmManager>("/root/RealmManager");
-		if (realms is null) { _breakthrough.Disabled = true; return; }
+		if (realms is null) { _breakthrough.Text = "闭关突破"; _breakthrough.Disabled = true; return; }
 		var next = realms.get_next_realm_name(value("cultivation_realm", "").AsString());
-		if (string.IsNullOrEmpty(next)) { _breakthroughHint.Text = "当前已达可显示的最高境界。"; _breakthrough.Disabled = true; return; }
-		if (!call("is_breakthrough_ready").AsBool()) { _breakthroughHint.Text = $"灵力圆满后，方可突破至 {next}。"; _breakthrough.Disabled = true; return; }
+		if (string.IsNullOrEmpty(next))
+		{
+			if (_target is Character completedYuanxi && completedYuanxi.is_yunxi_complete())
+			{
+				_breakthrough.Text = "准备铸玄基";
+				_breakthroughHint.Text = "云息十层圆满，可准备铸玄基；后续修行暂未开放。";
+			}
+			else
+			{
+				_breakthrough.Text = "后续境界";
+				_breakthroughHint.Text = "当前已达可显示的最高境界。";
+			}
+			_breakthrough.Disabled = true;
+			return;
+		}
+		if (!call("is_breakthrough_ready").AsBool()) { _breakthrough.Text = "闭关突破"; _breakthroughHint.Text = $"灵力圆满后，方可突破至 {next}。"; _breakthrough.Disabled = true; return; }
 		if (_target is Character condensationTarget && condensationTarget.requires_condensation_breakthrough())
 		{
 			_breakthroughHint.Text = "云息六层至七层改为八回合凝核牌局：每回合六张牌，必须对调两张，杂质达到 100 立即失败。";
@@ -1045,7 +794,8 @@ public partial class CultivationUI : Control
 
 	private void play_transition(string title, string plan, string complete, Action settle)
 	{
-		if (GetTree().GetFirstNodeInGroup("action_transition") is ActionTransitionPanel transition) { transition.play(title, plan, complete, settle); return; }
-		settle();
+		void finish() { settle(); refresh_room_header(); }
+		if (GetTree().GetFirstNodeInGroup("action_transition") is ActionTransitionPanel transition) { transition.play(title, plan, complete, finish); return; }
+		finish();
 	}
 }

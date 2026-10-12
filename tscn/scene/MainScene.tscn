@@ -34,7 +34,7 @@ gravity = Vector3(0, 700, 0)
 script = ExtResource("35_n2d")
 
 [node name="MapLayer" type="CanvasLayer" parent="." unique_id=1996247213]
-layer = 30
+layer = 15
 
 [node name="NodeWorldMap" parent="MapLayer" unique_id=2070528032 instance=ExtResource("44_node_map")]
 visible = false

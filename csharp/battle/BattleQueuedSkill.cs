@@ -1,9 +1,9 @@
-﻿using Godot;
+using Godot;
 
 /// <summary>单名角色技能队列中的一条指令。所有时间均以战斗模拟帧计。</summary>
 public class BattleQueuedSkill
 {
-    public enum ActionKind { Skill, Rest, Breathe, Retreat }
+    public enum ActionKind { Skill, Rest, Breathe, Retreat, Empty }
     public enum Phase { Waiting, Preparing, Resolving, Recovering, HoldingResponse }
 
     public ActionKind kind = ActionKind.Skill;
@@ -18,6 +18,8 @@ public class BattleQueuedSkill
     public bool intent_revealed;
     public float intent_elapsed;
     public bool wound_timing_adjusted;
+    public bool completed;
+    public bool skipped;
 
     public BattleQueuedSkill(ActiveSkillData source, GodotObject? chosenTarget)
     {
@@ -35,10 +37,12 @@ public class BattleQueuedSkill
     }
 
     public static BattleQueuedSkill Retreat() => new(ActionKind.Retreat);
+    public static BattleQueuedSkill Empty() => new(ActionKind.Empty);
     public static BattleQueuedSkill Rest() => new(ActionKind.Rest);
     public static BattleQueuedSkill Breathe() => new(ActionKind.Breathe);
     public string get_display_name() => kind switch
     {
+        ActionKind.Empty => "空位",
         ActionKind.Retreat => "撤退",
         ActionKind.Rest => "休整",
         ActionKind.Breathe => "吐纳",

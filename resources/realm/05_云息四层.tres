@@ -6,7 +6,7 @@
 script = ExtResource("1")
 realm_name = "云息四层"
 required_attributes = {
-"spirit_strands": 72,
+"spirit_strands": 60,
 }
 battle_base_attributes = {
 "cards_per_turn": 3,
@@ -14,7 +14,6 @@ battle_base_attributes = {
 }
 realm_multiplier_bonuses = {
 "agility": 0.1,
-"comprehension": 0.05,
 "intelligence": 0.1,
 "physique": 0.1,
 "soul": 0.1,

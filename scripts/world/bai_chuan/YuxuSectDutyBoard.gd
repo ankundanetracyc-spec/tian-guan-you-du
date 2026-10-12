@@ -5,6 +5,8 @@ signal duty_action_requested(action_id: String)
 const SCENE_ACTION_BUTTON = preload("res://tscn/panel/SceneActionButton.tscn")
 const ROPE_SCRIPT = preload("res://scripts/ui/SceneActionRope.gd")
 const UI_FONT = preload("res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf")
+const INCIDENT_DUTY_ID := "east_woods_conflict_review"
+const INCIDENTS_PER_ROW := 7
 
 const TAG_SIZE := Vector2(90.0, 150.0)
 const TAG_GAP := 82.0
@@ -109,11 +111,14 @@ const IMPLEMENTED_OFFICIAL_DUTY_PAGES := [
 				["yaopu_watch", "值守", "瑶圃药园值守", "玉虚仙宗·瑶圃峰药园", "巡看灵土、苗圃与药架，按时完成当值", "完成四个游戏时辰的药园值守；正式轮值按数日安排，此时长仅供短测", 5],
 				["yaopu_cultivate_mist_bell", "培育", "培育雾铃花", "玉虚仙宗·瑶圃峰雾铃园", "照料宗门苗株并等待生长，采收后大部分交宗门入库", "照料一株并等待二十四个游戏时辰，采收雾铃花四株：三株交宗门、一株自留；此为短测周期", 10]
 			]},
-			{"top": 0.45, "edge": 0.375, "realm": "云息境可承办；沿标定路线走完一圈", "tasks": [
-				["east_woods_patrol", "巡查", "东林地巡线", "东林地·林缘至静冠洼地巡线", "沿标定路线巡回并查看沿途有无异常；通常无异常，按时走完全程即可", "沿路线至少推进四个节点，并抵达静冠洼地复核；节点耗时按基础值与当前遁速动态结算，不采集资源", 5],
-				["beast_bone_submission", "提交", "上缴兽骨", "和光峰·宗门事务处", "将现有妖兽掉落物兽骨交由宗门登记", "提交行囊中的兽骨一份；兽骨须来自现有妖兽掉落，核验后交宗门", 5]
+			{"top": 0.45, "edge": 0.375, "realm": "云息境可承办；野外行事留意妖兽", "tasks": [
+				["east_woods_patrol", "巡查", "东林地巡线", "东林地·林缘至静冠洼地巡线", "沿标定路线巡回并查看沿途有无异常；通常无异常，按时走完全程即可", "沿路线至少推进四个节点，抵达静冠洼地复核后，返回和光峰事务处回报；节点耗时按基础值与当前遁速动态结算，不要求探查、采集或杀怪", 5],
+				["beast_bone_submission", "提交", "上缴兽骨", "和光峰·宗门事务处", "将现有妖兽掉落物兽骨交由宗门登记", "提交行囊中的兽骨一份；兽骨须来自现有妖兽掉落，核验后交宗门", 5],
+				["bitter_moss_root_submission", "采集", "苦苔根交付", "东林地 → 和光峰", "为宗门筹集苦苔根，可在东林地林地、阴湿地带探查采集", "携带苦苔根两份回和光峰交付；已有存货亦可交付，提交时才扣物并核发贡献", 5]
 			]},
-			{"top": 0.24, "edge": 0.165, "realm": "当前开放的低阶宗门公事", "tasks": []}
+			{"top": 0.24, "edge": 0.165, "realm": "云息境可承办；天问峰演法台", "tasks": [
+				["tianwen_practice", "演法", "林地凶狼演法", "玉虚仙宗·天问峰演法台", "完成一场现有凶狼演练并回传战斗结果", "完成一次演法并回传实际战果；不要求获胜，不掉落物品", 5]
+			]}
 		]
 	},
 	{
@@ -131,6 +136,13 @@ const IMPLEMENTED_OFFICIAL_DUTY_PAGES := [
 var _page_index := 0
 var _source_id := "official"
 var _active_duty_id := ""
+var _active_task_id := ""
+var _active_incident_id := ""
+var _active_duty_ready := false
+var _active_duty_stage := 0
+var _has_bone := false
+var _root_count := 0
+var _incident_summaries: Array = []
 var _selected_duty_id := ""
 var _hovered_duty_id := ""
 var _duty_by_id: Dictionary = {}
@@ -180,10 +192,30 @@ func open_board(active_duty_id: String) -> void:
 	show()
 	move_to_front()
 
-func set_active_duty(active_duty_id: String) -> void:
+func set_active_duty(active_duty_id: String, ready: bool = false, stage: int = 0, has_bone: bool = false, root_count: int = 0, active_incident_id: String = "", incident_summaries: Array = []) -> void:
+	var previous_incident_ids := _incident_summary_ids(_incident_summaries)
+	var next_incident_ids := _incident_summary_ids(incident_summaries)
 	_active_duty_id = active_duty_id
+	_active_incident_id = active_incident_id
+	_active_task_id = INCIDENT_DUTY_ID + ":" + active_incident_id if active_duty_id == INCIDENT_DUTY_ID and not active_incident_id.is_empty() else active_duty_id
+	_active_duty_ready = ready
+	_active_duty_stage = stage
+	_has_bone = has_bone
+	_root_count = maxi(0, root_count)
+	_incident_summaries = incident_summaries.duplicate(true)
+	if previous_incident_ids != next_incident_ids:
+		_rebuild_task_index()
+		if is_visible_in_tree():
+			_update_page()
 	if not _selected_duty_id.is_empty():
 		_refresh_detail()
+
+func _incident_summary_ids(summaries: Array) -> String:
+	var ids: Array[String] = []
+	for incident in summaries:
+		if incident is Dictionary:
+			ids.append(str(incident.get("incident_id", "")))
+	return "|".join(ids)
 
 func close_detail() -> bool:
 	if not _detail_panel.visible:
@@ -194,8 +226,43 @@ func close_detail() -> bool:
 	return true
 
 func _build_task_index() -> void:
-	_pages_by_source["official"] = IMPLEMENTED_OFFICIAL_DUTY_PAGES
-	_pages_by_source["private"] = _make_empty_pages(IMPLEMENTED_OFFICIAL_DUTY_PAGES)
+	_rebuild_task_index()
+
+func _rebuild_task_index() -> void:
+	var official_pages: Array = IMPLEMENTED_OFFICIAL_DUTY_PAGES.duplicate(true)
+	var incidents_per_page := INCIDENTS_PER_ROW * 3
+	var incident_page_count := ceili(float(_incident_summaries.size()) / float(incidents_per_page))
+	for page_index in range(incident_page_count):
+		var rows: Array = []
+		for row_index in range(3):
+			var tasks: Array = []
+			var first_index := page_index * incidents_per_page + row_index * INCIDENTS_PER_ROW
+			var last_index := mini(first_index + INCIDENTS_PER_ROW, _incident_summaries.size())
+			for incident_index in range(first_index, last_index):
+				var incident: Dictionary = _incident_summaries[incident_index]
+				var incident_id := str(incident.get("incident_id", ""))
+				if incident_id.is_empty():
+					continue
+				var attacker_name := str(incident.get("attacker_npc_name", incident.get("attacker_npc_id", "发起方")))
+				var target_name := str(incident.get("target_npc_name", incident.get("target_npc_id", "对方")))
+				var occurred_at := str(incident.get("occurred_at", "时间未载"))
+				var route_node_id := str(incident.get("route_node_id", "地点未载"))
+				var task_id := INCIDENT_DUTY_ID + ":" + incident_id
+				var title := "东林冲突 · %s与%s" % [attacker_name, target_name]
+				var place := "东林地·深入林地（%s）" % route_node_id
+				var action := "接取这一件已结束冲突的事实核验事务；到执中峰查看来源事实并上呈"
+				var requirement := "案卷 %s；发生时间 %s；双方身份 ID 与具体事实在执中峰查看" % [incident_id, occurred_at]
+				tasks.append([task_id, "核验", title, place, action, requirement, 5])
+			rows.append({
+				"top": [0.66, 0.45, 0.24][row_index],
+				"edge": [0.585, 0.375, 0.165][row_index],
+				"realm": "执中峰事实核验；只核对并上呈，不作责任判断",
+				"tasks": tasks
+			})
+		official_pages.append({"title": "东林地案件 · %d" % (page_index + 1), "rows": rows})
+	_pages_by_source["official"] = official_pages
+	_pages_by_source["private"] = _make_empty_pages(official_pages)
+	_duty_by_id.clear()
 	for source_id in _pages_by_source:
 		for page in _pages_by_source[source_id]:
 			for row in page["rows"]:
@@ -226,6 +293,7 @@ func _task_from_row(raw_task: Array, realm_judgment: String) -> Dictionary:
 	var action := str(raw_task[4])
 	var requirement := str(raw_task[5])
 	var reward := int(raw_task[6]) if raw_task.size() > 6 else 0
+	var incident_id := task_id.substr((INCIDENT_DUTY_ID + ":").length()) if task_id.begins_with(INCIDENT_DUTY_ID + ":") else ""
 	var detail := "%s。前往[u]%s[/u]，%s；完成要求为[u]%s[/u]。" % [realm_judgment, place, action, requirement]
 	if reward > 0:
 		detail += "事务核验通过后核发[u]%d点贡献[/u]。" % reward
@@ -237,7 +305,8 @@ func _task_from_row(raw_task: Array, realm_judgment: String) -> Dictionary:
 		"realm": realm_judgment,
 		"preview": "%s · %s贡献" % [realm_judgment, reward] if reward > 0 else "%s · %s" % [realm_judgment, place],
 		"reward": reward,
-		"detail": detail
+		"detail": detail,
+		"incident_id": incident_id
 	}
 
 func _build_source_tabs() -> void:
@@ -616,10 +685,27 @@ func _refresh_detail() -> void:
 	_detail_title.text = str(task["title"])
 	_detail_realm.text = "境界判断 · " + str(task["realm"])
 	_detail_body.text = str(task["detail"])
-	if _active_duty_id == _selected_duty_id:
+	if _active_task_id == _selected_duty_id:
 		if _selected_duty_id == "beast_bone_submission":
+			_detail_body.text += "\n\n当前行囊：兽骨 %s；交付将扣除一份，贡献仅结算一次。" % ("已备齐" if _has_bone else "尚缺一份")
 			_accept_button.text = "提交兽骨"
-			_accept_button.disabled = false
+			_accept_button.disabled = not _has_bone
+		elif _selected_duty_id == "bitter_moss_root_submission":
+			_detail_body.text += "\n\n当前行囊：苦苔根 %d/2；交付扣除两份，贡献仅结算一次。" % _root_count
+			_accept_button.text = "提交苦苔根"
+			_accept_button.disabled = _root_count < 2
+		elif _selected_duty_id == "east_woods_patrol":
+			_detail_body.text += "\n\n" + ("巡查已复核，可在此回报领取贡献。" if _active_duty_ready else "巡查进度：%d/4；仍需抵达静冠洼地复核，然后返回此处。" % mini(_active_duty_stage, 4))
+			_accept_button.text = "回报巡查" if _active_duty_ready else "巡查进行中"
+			_accept_button.disabled = not _active_duty_ready
+		elif _selected_duty_id == "tianwen_practice":
+			_detail_body.text += "\n\n已接取。前往天问峰演法台完成一场林地凶狼演练并回传结果；不要求获胜，结果返回后核发 5 点贡献，不掉落物品。"
+			_accept_button.text = "已接取"
+			_accept_button.disabled = true
+		elif not str(task.get("incident_id", "")).is_empty():
+			_detail_body.text += "\n\n已接取案卷 %s。前往执中峰查看来源事实；核验并上呈后事务结束，状态为已上呈、待裁断。" % _active_incident_id
+			_accept_button.text = "前往执中峰核验"
+			_accept_button.disabled = true
 		else:
 			_accept_button.text = "已接取"
 			_accept_button.disabled = true
@@ -639,19 +725,28 @@ func _refresh_detail() -> void:
 func _on_accept_pressed() -> void:
 	if _selected_duty_id.is_empty():
 		return
-	if _active_duty_id == _selected_duty_id and _selected_duty_id == "beast_bone_submission":
+	if _active_duty_id == _selected_duty_id and (_selected_duty_id in ["beast_bone_submission", "bitter_moss_root_submission"] or (_selected_duty_id == "east_woods_patrol" and _active_duty_ready)):
 		duty_action_requested.emit("heguang_submit_duty:" + _selected_duty_id)
 		return
 	if not _active_duty_id.is_empty():
 		return
-	_active_duty_id = _selected_duty_id
+	if _selected_duty_id.begins_with(INCIDENT_DUTY_ID + ":"):
+		_active_duty_id = INCIDENT_DUTY_ID
+		_active_incident_id = _selected_duty_id.substr((INCIDENT_DUTY_ID + ":").length())
+		_active_task_id = _selected_duty_id
+	else:
+		_active_duty_id = _selected_duty_id
+		_active_incident_id = ""
+		_active_task_id = _selected_duty_id
 	_refresh_detail()
 	duty_action_requested.emit("heguang_accept_duty:" + _selected_duty_id)
 
 func _on_cancel_pressed() -> void:
-	if not _selected_duty_id.is_empty() and _active_duty_id == _selected_duty_id:
+	if not _selected_duty_id.is_empty() and _active_task_id == _selected_duty_id:
 		var canceled_id := _selected_duty_id
 		_active_duty_id = ""
+		_active_task_id = ""
+		_active_incident_id = ""
 		close_detail()
 		duty_action_requested.emit("heguang_cancel_duty:" + canceled_id)
 		return

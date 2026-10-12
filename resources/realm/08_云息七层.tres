@@ -6,7 +6,7 @@
 script = ExtResource("1")
 realm_name = "云息七层"
 required_attributes = {
-"spirit_strands": 159,
+"spirit_strands": 144,
 }
 battle_base_attributes = {
 "cards_per_turn": 3,
@@ -19,7 +19,6 @@ realm_multiplier_bonuses = {
 "soul": 0.1,
 }
 realm_fixed_bonuses = {
-"comprehension": 1,
 "max_age": 20,
 "physique": 2,
 "soul": 2,

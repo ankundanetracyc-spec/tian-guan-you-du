@@ -13,10 +13,19 @@ public partial class BattleTransitionManager : Node
     private GArray result_attackers = [];
     private GArray result_defenders = [];
     private bool has_results;
+    private bool has_battle_return_data;
     private Dictionary last_summary = [];
     private Dictionary return_context = [];
     private PackedScene? saved_world;
     private Dictionary saved_entity_data = [];
+    private PersistentGameSave? _worldProgressSnapshot;
+    public PersistentGameSave? consume_world_progress_snapshot()
+    {
+        if (!has_battle_return_data) return null;
+        var snapshot = _worldProgressSnapshot;
+        _worldProgressSnapshot = null;
+        return snapshot;
+    }
 
     public void start_team_battle(Godot.Collections.Array<PackedScene> attacker_packeds, Godot.Collections.Array<PackedScene> defender_packeds, GArray attacker_datas, GArray defender_datas, string world_path)
     {
@@ -28,6 +37,24 @@ public partial class BattleTransitionManager : Node
 
     public GArray consume_pending_battle_package()
     {
+        _cappedWorldPlayerUid = "";
+        _worldStatusBattleHealthCapDelta = 0;
+        var playerUid = return_context.GetValueOrDefault("world_player_uid", "").AsString();
+        var capRatio = return_context.GetValueOrDefault("player_battle_health_cap_ratio", 1f).AsSingle();
+        if (!Training && !string.IsNullOrWhiteSpace(playerUid) && capRatio > 0f && capRatio < 1f)
+        {
+            foreach (var snapshot in pending_attacker_data.Concat(pending_defender_data)
+                         .Select(value => value.AsGodotObject()).OfType<BattleEntityData>())
+            {
+                if (snapshot.uid != playerUid || snapshot.max_health <= 0) continue;
+                _cappedWorldPlayerUid = playerUid;
+                var originalMaxHealth = snapshot.max_health;
+                snapshot.max_health = Math.Max(1, Mathf.RoundToInt(originalMaxHealth * capRatio));
+                _worldStatusBattleHealthCapDelta = originalMaxHealth - snapshot.max_health;
+                snapshot.current_health = Math.Min(snapshot.current_health, snapshot.max_health);
+                break;
+            }
+        }
         var result = new GArray { pending_attackers, pending_defenders, pending_attacker_data, pending_defender_data };
         pending_attackers = []; pending_defenders = []; pending_attacker_data = []; pending_defender_data = [];
         return result;
@@ -41,6 +68,7 @@ public partial class BattleTransitionManager : Node
     }
 
     public bool has_pending_results() => has_results;
+    public bool has_pending_battle_return_data() => has_battle_return_data;
     public GArray consume_results()
     {
         var result = new GArray { result_attackers, result_defenders, saved_entity_data };
@@ -51,7 +79,7 @@ public partial class BattleTransitionManager : Node
     public Dictionary consume_battle_return_data()
     {
         var result = new Dictionary { ["summary"] = last_summary.Duplicate(true), ["context"] = return_context.Duplicate(true) };
-        last_summary.Clear(); return_context.Clear(); return result;
+        last_summary.Clear(); return_context.Clear(); has_battle_return_data = false; saved_world = null; saved_entity_data.Clear(); return result;
     }
 
     private void save_entity_data_recursive(Node node)

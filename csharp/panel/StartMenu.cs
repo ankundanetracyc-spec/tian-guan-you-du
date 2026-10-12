@@ -3,10 +3,20 @@ using Godot;
 /// <summary>项目启动入口：以水墨山村与玄镜为意象的正式首页。</summary>
 public partial class StartMenu : Control
 {
-    private const string BackdropPath = "res://textures/start_menu/ink_mountain_dawn_v2.png";
+    private static readonly string[] BackdropPaths =
+    [
+        "res://textures/start_menu/title_menu_dawn_v2.png",
+        "res://textures/start_menu/title_menu_world_v2.png",
+        "res://textures/start_menu/title_menu_power_v4.png"
+    ];
     private const string NewGameBackdropPath = "res://textures/start_menu/new_game_ink_study_bg.png";
     private const string BattleTestCharacterScenePath = "res://tscn/battle/BattleTestCharacter.tscn";
     private TextureRect? _backdrop;
+    private TextureRect? _nextBackdrop;
+    private int _backdropIndex;
+    private double _backdropHoldElapsed;
+    private double _backdropFadeElapsed;
+    private bool _isBackdropFading;
     private Control? _creationOverlay;
     private Control? _battleTestOverlay;
     private EncyclopediaPanel? _encyclopediaPanel;
@@ -20,58 +30,112 @@ public partial class StartMenu : Control
     public override void _Ready()
     {
         SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        ApplySavedStartMenuSettings();
         BuildBackdrop();
         BuildMenu();
+        if (System.Array.IndexOf(OS.GetCmdlineUserArgs(), "--encyclopedia-beasts") >= 0)
+            CallDeferred(nameof(OpenBeastEncyclopedia));
     }
 
     public override void _Process(double delta)
     {
-        if (_backdrop is null) return;
+        if (_backdrop is null || _nextBackdrop is null) return;
         // 仅由鼠标驱动视差；鼠标静止时背景完全静止。
         var size = GetViewportRect().Size;
         if (size.X <= 0 || size.Y <= 0) return;
         var cursorOffset = (GetViewport().GetMousePosition() - size * 0.5f) / (size * 0.5f);
+        cursorOffset = cursorOffset.Clamp(-Vector2.One, Vector2.One);
+        _backdrop.PivotOffset = size * .5f;
+        _nextBackdrop.PivotOffset = size * .5f;
         var target = new Vector2(-cursorOffset.X * 14f, -cursorOffset.Y * 8f);
         _backdrop.Position = _backdrop.Position.Lerp(target, (float)(1.0 - Math.Exp(-7.0 * delta)));
+        _nextBackdrop.Position = _nextBackdrop.Position.Lerp(target, (float)(1.0 - Math.Exp(-7.0 * delta)));
+        if (_settingsOverlay is null && _demoOverlay is null)
+            UpdateBackdropRotation(delta);
     }
 
     private void BuildBackdrop()
     {
-        _backdrop = new TextureRect
-        {
-            Texture = GD.Load<Texture2D>(BackdropPath),
-            ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
-            StretchMode = TextureRect.StretchModeEnum.KeepAspectCovered, MouseFilter = MouseFilterEnum.Ignore
-        };
-        _backdrop.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        _backdrop.Scale = new Vector2(1.025f, 1.025f);
-        _backdrop.PivotOffset = new Vector2(960, 540);
-        AddChild(_backdrop);
-        var shade = new ColorRect { Color = new Color(0.025f, 0.055f, 0.052f, 0.38f), MouseFilter = MouseFilterEnum.Ignore };
+        var imageLayer = new Control { Name = "StartMenuBackdropLayer", MouseFilter = MouseFilterEnum.Ignore };
+        imageLayer.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        AddChild(imageLayer);
+        _backdrop = CreateBackdropTexture(BackdropPaths[0], 1f);
+        _nextBackdrop = CreateBackdropTexture(BackdropPaths[1], 0f);
+        imageLayer.AddChild(_backdrop);
+        imageLayer.AddChild(_nextBackdrop);
+        var shade = new ColorRect { Color = new Color(0.025f, 0.055f, 0.052f, 0.055f), MouseFilter = MouseFilterEnum.Ignore };
         shade.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         AddChild(shade);
-        // 菜单所在的右侧四分之一区域稍暗，既不遮住山景，也确保按钮层次清晰。
-        var rightWash = new ColorRect { Color = new Color(0.025f, 0.055f, 0.052f, 0.42f), MouseFilter = MouseFilterEnum.Ignore };
-        rightWash.SetAnchorsPreset(LayoutPreset.RightWide);
-        rightWash.OffsetLeft = -480;
-        rightWash.OffsetRight = 0;
-        AddChild(rightWash);
+    }
+
+    private static TextureRect CreateBackdropTexture(string path, float alpha)
+    {
+        var texture = new TextureRect
+        {
+            Texture = GD.Load<Texture2D>(path),
+            ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
+            StretchMode = TextureRect.StretchModeEnum.KeepAspectCovered,
+            MouseFilter = MouseFilterEnum.Ignore,
+            Modulate = new Color(1f, 1f, 1f, alpha)
+        };
+        texture.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        texture.Scale = new Vector2(1.025f, 1.025f);
+        texture.PivotOffset = new Vector2(960, 540);
+        return texture;
+    }
+
+    private void UpdateBackdropRotation(double delta)
+    {
+        if (!_isBackdropFading)
+        {
+            _backdropHoldElapsed += delta;
+            if (_backdropHoldElapsed < 16.0)
+                return;
+
+            _backdropHoldElapsed = 0;
+            _backdropFadeElapsed = 0;
+            _nextBackdrop!.Texture = GD.Load<Texture2D>(BackdropPaths[(_backdropIndex + 1) % BackdropPaths.Length]);
+            _nextBackdrop.Modulate = new Color(1f, 1f, 1f, 0f);
+            _nextBackdrop.MoveToFront();
+            _isBackdropFading = true;
+        }
+
+        _backdropFadeElapsed += delta;
+        var amount = Mathf.Clamp((float)(_backdropFadeElapsed / 1.8), 0f, 1f);
+        // 保持底图不透明，仅淡入上层，避免两张半透明画面叠加时出现暗闪。
+        _backdrop!.Modulate = Colors.White;
+        _nextBackdrop!.Modulate = new Color(1f, 1f, 1f, amount);
+        if (amount < 1f)
+            return;
+
+        (_backdrop, _nextBackdrop) = (_nextBackdrop, _backdrop);
+        _backdropIndex = (_backdropIndex + 1) % BackdropPaths.Length;
+        _backdrop.Modulate = Colors.White;
+        _nextBackdrop.Modulate = new Color(1f, 1f, 1f, 0f);
+        _backdropHoldElapsed = 0;
+        _backdropFadeElapsed = 0;
+        _isBackdropFading = false;
+        RefreshBackdropSelectors();
     }
 
     private void BuildMenu()
     {
-        // 菜单层级与视觉资源均由 StartMenuMenu.tscn 固定维护；这里仅绑定交互。
         var menu = GetNode<VBoxContainer>("StartMenuMenu");
+        BuildPaperInkMenu(menu);
         menu.MoveToFront();
         AddMenuButton(menu.GetNode<Button>("NewSave"), OpenNewGameSetup);
         AddMenuButton(menu.GetNode<Button>("LoadSave"), OpenLoadSaves);
         AddMenuButton(menu.GetNode<Button>("Encyclopedia"), OpenEncyclopedia);
-        AddMenuButton(menu.GetNode<Button>("Settings"), () => ShowNotice("设置", "画面、声音与操作设置将集中于此。"));
+        AddMenuButton(menu.GetNode<Button>("Settings"), OpenStartMenuSettings);
+        AddMenuButton(menu.GetNode<Button>("Quit"), () => GetTree().Quit());
+        AddMenuButton(menu.GetNode<Button>("DemoToggle"), ToggleDemoEntries);
         AddMenuButton(menu.GetNode<Button>("AppearanceTest"), () => GetTree().ChangeSceneToFile("res://tscn/scene/CharacterSequenceShowcase.tscn"));
         AddMenuButton(menu.GetNode<Button>("AppearanceCreatorTest"), () => GetTree().ChangeSceneToFile("res://tscn/scene/CharacterAppearanceTest.tscn"));
         AddMenuButton(menu.GetNode<Button>("InkVfxTest"), () => GetTree().ChangeSceneToFile("res://tscn/scene/InkVfxShowcase.tscn"));
         AddMenuButton(menu.GetNode<Button>("BattleTest"), OpenBattleTestSetup);
         AddMenuButton(menu.GetNode<Button>("CondensationTest"), OpenCondensationTest);
+        AddMenuButton(menu.GetNode<Button>("YuanxiPreview"), () => GetTree().ChangeSceneToFile("res://tscn/scene/YuanxiPreviewScene.tscn"));
+        BuildBackdropSelectors();
     }
 
     private void OpenEncyclopedia()
@@ -79,6 +143,13 @@ public partial class StartMenu : Control
         _encyclopediaPanel ??= new EncyclopediaPanel { Name = "EncyclopediaPanel" };
         if (_encyclopediaPanel.GetParent() is null) AddChild(_encyclopediaPanel);
         _encyclopediaPanel.show_panel();
+    }
+
+    private void OpenBeastEncyclopedia()
+    {
+        _encyclopediaPanel ??= new EncyclopediaPanel { Name = "EncyclopediaPanel" };
+        if (_encyclopediaPanel.GetParent() is null) AddChild(_encyclopediaPanel);
+        _encyclopediaPanel.show_beasts();
     }
 
     private void OpenLoadSaves()
@@ -208,7 +279,7 @@ public partial class StartMenu : Control
         unit.combat_skill_slot_paths=new Godot.Collections.Array<string>(paths.Take(10));
         unit.combat_passive_paths=[];unit.battle_deck_configured=false;
     }
-    private static (string name,string path)[] TestDeckOptions()=>[("初始技能库","res://resources/basic_decks/初始牌库.tres"),("锻躯路","res://resources/basic_decks/锻躯路.tres"),("纳气路","res://resources/basic_decks/纳气路.tres"),("神魂路","res://resources/basic_decks/神魂路.tres")];
+    private static (string name,string path)[] TestDeckOptions()=>[("公共基础技能池","res://resources/basic_decks/公共基础技能池.tres")];
     private static (string name,string path)[] TestBookOptions()
     {
         var list=new List<(string,string)>{("不加入秘籍牌","")};
@@ -229,14 +300,14 @@ public partial class StartMenu : Control
         data.entity_name = name; data.appearance_seed = 1200 + seed; data.faction = faction;
         var character = new Character(); character.load_from_data(data);
         character.entity_type = WorldEntity.EntityType.CHARACTER; character.faction = faction; character.unique_id = $"temp_enemy_start_menu_{seed}";
-        var snapshot = character.get_snapshot_data(); character.Free();
+        var snapshot = character.get_snapshot_data(); character.QueueFree();
         return snapshot;
     }
 
     private static PackedScene CreateGreybackBoarScene(BeastModifier? modifier,bool elite)
     {
-        var beast=new Beast{species_id="wild_boar",racial_talent=ResourceLoader.Load<BeastRacialTalent>("res://resources/beast_talents/灰背野猪·厚皮.tres"),beast_deck=ResourceLoader.Load<BasicDeckResource>("res://resources/beast_decks/灰背野猪.tres"),beast_modifier=modifier,is_elite=elite};
-        var scene=new PackedScene();if(scene.Pack(beast)!=Error.Ok)GD.PushError("StartMenu: 无法创建灰背野猪测试场景");beast.Free();return scene;
+        var beast=new Beast{species_id="wild_boar",cultivation_realm="通智",entity_data=new LivingData{cultivation_realm="通智",battle_portrait_path="res://textures/bestiary/static/gray_back_boar.png"},racial_talent=ResourceLoader.Load<BeastRacialTalent>("res://resources/beast_talents/灰背野猪·厚皮.tres"),beast_deck=ResourceLoader.Load<BasicDeckResource>("res://resources/beast_decks/灰背野猪.tres"),beast_modifier=modifier,is_elite=elite};
+        var scene=new PackedScene();if(scene.Pack(beast)!=Error.Ok)GD.PushError("StartMenu: 无法创建灰背野猪测试场景");beast.QueueFree();return scene;
     }
 
     private static float RoundOne(float value)=>Mathf.Round(value*10f)/10f;
@@ -249,13 +320,13 @@ public partial class StartMenu : Control
         var name=modifier?.display_name??"灰背野猪";if(elite)name="精英·"+name;
         var maxHealth=Mathf.RoundToInt(60+physique*8+agility*3+soul*3+intelligence*1.5f);var maxMind=Mathf.RoundToInt(30+soul*4+intelligence*1.5f+physique*.5f);
         var iron=modifier?.modifier_id=="greyback_boar_iron_bristle";var swift=modifier?.modifier_id=="greyback_boar_swift_trot";
-        return new BattleEntityData{uid=$"battle_test_greyback_boar_{index}",entity_name=name,entity_type=(int)WorldEntity.EntityType.BEAST,faction=(int)WorldEntity.Faction.ENEMY,cultivation_realm="凡兽",physique=physique,intelligence=intelligence,agility=agility,soul=soul,max_health=maxHealth,current_health=maxHealth,max_mind=maxMind,current_mind=maxMind,max_mana=0,current_mana=0,physical_defense=Mathf.RoundToInt(physique*(iron?.5f:.3f)),precision=Mathf.RoundToInt(intelligence*4+agility*3+soul+physique*.5f),dodge=Mathf.RoundToInt(agility*4+soul*2+intelligence+physique*.5f),critical=Mathf.RoundToInt(physique*.5f+agility*.8f+soul*1.2f+intelligence*.3f),crit_resist=Mathf.RoundToInt(physique*3+intelligence*2+agility*2+soul*1.5f),crit_damage_mult=1.5f,initiative_speed=Creature.calculate_base_initiative_speed(physique,intelligence,agility,soul)+(swift?agility*.5f:0),initial_hand_size=5,cards_per_turn=3,battle_portrait_path=BattlePaperDoll.DefaultPortraitPath};
+        return new BattleEntityData{uid=$"battle_test_greyback_boar_{index}",entity_name=name,entity_type=(int)WorldEntity.EntityType.BEAST,faction=(int)WorldEntity.Faction.ENEMY,cultivation_realm="通智",physique=physique,intelligence=intelligence,agility=agility,soul=soul,max_health=maxHealth,current_health=maxHealth,max_mind=maxMind,current_mind=maxMind,max_mana=0,current_mana=0,physical_defense=Mathf.RoundToInt(physique*(iron?.5f:.3f)),precision=Mathf.RoundToInt(intelligence*4+agility*3+soul+physique*.5f),dodge=Mathf.RoundToInt(agility*4+soul*2+intelligence+physique*.5f),critical=Mathf.RoundToInt(physique*.5f+agility*.8f+soul*1.2f+intelligence*.3f),crit_resist=Mathf.RoundToInt(physique*3+intelligence*2+agility*2+soul*1.5f),crit_damage_mult=1.5f,initiative_speed=Creature.calculate_base_initiative_speed(physique,intelligence,agility,soul)+(swift?agility*.5f:0),initial_hand_size=5,cards_per_turn=3,battle_portrait_path="res://textures/bestiary/static/gray_back_boar.png"};
     }
 
     private static PackedScene CreateForestWolfScene(BeastModifier? modifier,bool elite)
     {
         var wolf=new Beast{beast_template=ResourceLoader.Load<BeastTemplate>("res://resources/beast_templates/林地凶狼.tres"),beast_modifier=modifier,is_elite=elite};
-        var scene=new PackedScene();if(scene.Pack(wolf)!=Error.Ok)GD.PushError("StartMenu: 无法创建林地凶狼测试场景");wolf.Free();return scene;
+        var scene=new PackedScene();if(scene.Pack(wolf)!=Error.Ok)GD.PushError("StartMenu: 无法创建林地凶狼测试场景");wolf.QueueFree();return scene;
     }
 
     private static BattleEntityData CreateForestWolfTestUnit(BeastModifier? modifier,bool elite,int index)
@@ -265,7 +336,7 @@ public partial class StartMenu : Control
         if(elite){physique=CeilOne(physique*1.25f);intelligence=CeilOne(intelligence*1.25f);agility=CeilOne(agility*1.25f);soul=CeilOne(soul*1.25f);}
         var name=modifier?.display_name??"林地凶狼";if(elite)name="精英·"+name;
         var maxHealth=Mathf.RoundToInt(60+physique*8+agility*3+soul*3+intelligence*1.5f);var maxMind=Mathf.RoundToInt(30+soul*4+intelligence*1.5f+physique*.5f);var shadow=modifier?.modifier_id=="forest_wolf_shadowfoot";
-        return new BattleEntityData{uid=$"battle_test_forest_wolf_{index}",entity_name=name,entity_type=(int)WorldEntity.EntityType.BEAST,faction=(int)WorldEntity.Faction.ENEMY,cultivation_realm="凡兽",physique=physique,intelligence=intelligence,agility=agility,soul=soul,max_health=maxHealth,current_health=maxHealth,max_mind=maxMind,current_mind=maxMind,max_mana=0,current_mana=0,physical_defense=0,precision=Mathf.RoundToInt(intelligence*4+agility*3+soul+physique*.5f),dodge=Mathf.RoundToInt(agility*4+soul*2+intelligence+physique*.5f)+(shadow?Mathf.RoundToInt(agility*.25f):0),critical=Mathf.RoundToInt(physique*.5f+agility*.8f+soul*1.2f+intelligence*.3f),crit_resist=Mathf.RoundToInt(physique*3+intelligence*2+agility*2+soul*1.5f),crit_damage_mult=1.5f,initiative_speed=Creature.calculate_base_initiative_speed(physique,intelligence,agility,soul),initial_hand_size=5,cards_per_turn=3,battle_portrait_path=BattlePaperDoll.DefaultPortraitPath};
+        return new BattleEntityData{uid=$"battle_test_forest_wolf_{index}",entity_name=name,entity_type=(int)WorldEntity.EntityType.BEAST,faction=(int)WorldEntity.Faction.ENEMY,cultivation_realm="通智",physique=physique,intelligence=intelligence,agility=agility,soul=soul,max_health=maxHealth,current_health=maxHealth,max_mind=maxMind,current_mind=maxMind,max_mana=0,current_mana=0,physical_defense=0,precision=Mathf.RoundToInt(intelligence*4+agility*3+soul+physique*.5f),dodge=Mathf.RoundToInt(agility*4+soul*2+intelligence+physique*.5f)+(shadow?Mathf.RoundToInt(agility*.25f):0),critical=Mathf.RoundToInt(physique*.5f+agility*.8f+soul*1.2f+intelligence*.3f),crit_resist=Mathf.RoundToInt(physique*3+intelligence*2+agility*2+soul*1.5f),crit_damage_mult=1.5f,initiative_speed=Creature.calculate_base_initiative_speed(physique,intelligence,agility,soul),initial_hand_size=5,cards_per_turn=3,battle_portrait_path=BattlePaperDoll.DefaultPortraitPath};
     }
 
     private void OpenNewGameSetup()

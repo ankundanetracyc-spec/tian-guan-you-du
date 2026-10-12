@@ -7,13 +7,14 @@
 script = ExtResource("2")
 entity_name = "农田"
 icon_path = ""
-summary = "用于耕作和轮种的田地，后续可选择黄粟、山麻或止血草。"
+summary = "用于耕作和轮种的田地，后续可配置不同作物与药用植物。"
 max_durability = 10
 current_durability = 10
 consume_durability = false
 grid_size = Vector2i(1, 1)
-build_cost_item_paths = Array[String](["res://resources/entities/items/石材.tres"])
+build_cost_item_paths = Array[String]([])
 build_cost_counts = Array[int]([2])
+build_cost_resource_ids = Array[String](["stone"])
 labor_site_id = "farmland"
 labor_cycle_hours = 1.0
 labor_stamina_cost_per_hour = 6

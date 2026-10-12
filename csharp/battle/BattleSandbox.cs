@@ -12,6 +12,9 @@ public partial class BattleSandbox : Node2D
         var enemies=new Godot.Collections.Array { make_unit("山魈",2,2),make_unit("黑风盗",2,3)};
         var playerScenes=new Array<PackedScene>{make_character_scene(),make_character_scene()}; var enemyScenes=new Array<PackedScene>{make_character_scene(),make_character_scene()};
         manager.Call("setup_team_battle",playerScenes,enemyScenes,players,enemies);
+        // 仅显式启动布局验收时启用，不影响菜单测试或正式战斗。
+        if(OS.GetCmdlineUserArgs().Contains("--queue-layout-check"))
+            AddChild(new BattleQueueLayoutCheck());
         // 沙盒示例状态便于直接检查帧倒计时、层数角标与悬停说明；正式战斗不预置这些状态。
         var units=manager.Get("all_units").AsGodotArray();
         var inner=GD.Load<StatusEffect>("res://resources/battle/statuses/内伤.tres");

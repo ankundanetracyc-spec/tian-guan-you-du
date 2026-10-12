@@ -3,17 +3,22 @@ using Godot;
 /// <summary>左上角紧凑时间纸签。单人模式的时间只由明确行动推进，因此不提供暂停或倍速控件。</summary>
 public partial class GameTimeUI : Control
 {
-    private static readonly Color Ink = new("343d33");
     private GameTimeMgr? _manager;
     private WeatherMgr? _weather;
-    private Label _date = null!, _hour = null!, _conditions = null!;
+    private Label _date = null!, _conditions = null!;
     private string _lastReadout = "";
+    private bool _showZhaoming = true;
+    private Button _calendarToggle = null!;
+    private const string PreferencesPath = "user://hud_preferences.cfg";
 
     public override void _Ready()
     {
         ZIndex = 1000;
         // 时间读数只是信息显示，不占用右侧独立测试入口的鼠标事件。
         MouseFilter = MouseFilterEnum.Ignore;
+        var preferences = new ConfigFile();
+        if (preferences.Load(PreferencesPath) == Error.Ok)
+            _showZhaoming = preferences.GetValue("time", "zhaoming_calendar", true).AsBool();
         BuildPanel();
         _manager = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
         _weather = GetNodeOrNull<WeatherMgr>("/root/WeatherManager");
@@ -27,45 +32,53 @@ public partial class GameTimeUI : Control
 
     private void BuildPanel()
     {
-        var panel = new PanelContainer { Position = new Vector2(18, 16), Size = new Vector2(354, 112), MouseFilter = MouseFilterEnum.Ignore };
-        var frame = new StyleBoxFlat
+        var panel = new Control
         {
-            BgColor = new Color(.035f, .045f, .04f, .91f),
-            BorderColor = new Color("b49a65"),
-            BorderWidthLeft = 1,
-            BorderWidthTop = 1,
-            BorderWidthRight = 1,
-            BorderWidthBottom = 1,
-            CornerRadiusTopLeft = 8,
-            CornerRadiusTopRight = 8,
-            CornerRadiusBottomLeft = 8,
-            CornerRadiusBottomRight = 8,
-            ContentMarginLeft = 2,
-            ContentMarginTop = 2,
-            ContentMarginRight = 2,
-            ContentMarginBottom = 2,
+            Name = "TimePaper", Position = new Vector2(22, 20),
+            Size = new Vector2(430, 78), MouseFilter = MouseFilterEnum.Ignore
         };
-        panel.AddThemeStyleboxOverride("panel", frame);
         AddChild(panel);
-        var margin = new MarginContainer { MouseFilter = MouseFilterEnum.Ignore };
-        margin.AddThemeConstantOverride("margin_left", 15); margin.AddThemeConstantOverride("margin_top", 10); margin.AddThemeConstantOverride("margin_right", 15); margin.AddThemeConstantOverride("margin_bottom", 10); panel.AddChild(margin);
-        var column = new VBoxContainer { Name = "TimeReadout", MouseFilter = MouseFilterEnum.Ignore };
-        column.AddThemeConstantOverride("separation", 2); margin.AddChild(column);
-        var head = new HBoxContainer { MouseFilter = MouseFilterEnum.Ignore }; column.AddChild(head);
-        _date = MakeLabel("", 15, new Color("e0c98f")); _date.SizeFlagsHorizontal = SizeFlags.ExpandFill; head.AddChild(_date);
-        var calendar_mark = MakeLabel("百川历", 12, new Color(.67f, .68f, .59f));
-        head.AddChild(calendar_mark);
-        _hour = MakeLabel("", 28, Ink); _hour.AddThemeColorOverride("font_color", new Color("f3ecd9")); column.AddChild(_hour);
-        _conditions = MakeLabel("", 13, new Color("c2cbb4")); column.AddChild(_conditions);
-
+        var frame = new WorldHudFrame { Position = Vector2.Zero, Size = new Vector2(430, 46) };
+        panel.AddChild(frame);
+        _date = WorldHudStyle.Text("", 22);
+        _date.Position = new Vector2(16, 5);
+        _date.Size = new Vector2(348, 36);
+        _date.HorizontalAlignment = HorizontalAlignment.Center;
+        panel.AddChild(_date);
+        var divider = WorldHudStyle.Rule();
+        divider.Position = new Vector2(370, 10);
+        divider.Size = new Vector2(1, 26);
+        panel.AddChild(divider);
+        _calendarToggle = new Button
+        {
+            Name = "CalendarToggle", Text = "切换", Position = new Vector2(375, 5),
+            Size = new Vector2(44, 36), MouseFilter = MouseFilterEnum.Stop
+        };
+        WorldHudStyle.StyleSmallButton(_calendarToggle, 16);
+        _calendarToggle.Pressed += ToggleCalendar;
+        panel.AddChild(_calendarToggle);
+        _conditions = WorldHudStyle.Text("", 17, true);
+        _conditions.Position = new Vector2(12, 51);
+        _conditions.Size = new Vector2(406, 24);
+        _conditions.HorizontalAlignment = HorizontalAlignment.Center;
+        var weatherPaper = new WorldHudFrame
+        {
+            Position = new Vector2(7, 49), Size = new Vector2(416, 28),
+            MouseFilter = MouseFilterEnum.Ignore, ShowBorder = false
+        };
+        panel.AddChild(weatherPaper);
+        panel.AddChild(_conditions);
     }
 
-    private static Label MakeLabel(string text, int size, Color color)
+    private void ToggleCalendar()
     {
-        var label = new Label { Text = text, VerticalAlignment = VerticalAlignment.Center, MouseFilter = MouseFilterEnum.Ignore };
-        label.AddThemeFontSizeOverride("font_size", size);
-        label.AddThemeColorOverride("font_color", color);
-        return label;
+        _showZhaoming = !_showZhaoming;
+        _lastReadout = "";
+        RefreshReadout();
+        var preferences = new ConfigFile();
+        preferences.Load(PreferencesPath);
+        preferences.SetValue("time", "zhaoming_calendar", _showZhaoming);
+        preferences.Save(PreferencesPath);
     }
 
     private void RefreshReadout()
@@ -76,10 +89,12 @@ public partial class GameTimeUI : Control
         var key = $"{_manager.year}/{_manager.month}/{_manager.day}/{_manager.hour}/{weather}/{temperature}";
         if (key == _lastReadout) return;
         _lastReadout = key;
-        _date.Text = $"{_manager.year}年 · {_manager.month}月{_manager.day}日";
-        _hour.Text = $"{_manager.get_time_branch()}时  {_manager.hour:00}时";
+        var year = _showZhaoming ? $"昭明历{_manager.get_zhaoming_year()}年" : $"入世第{_manager.year}年";
+        _date.Text = $"{year}{_manager.month}月{_manager.day}日 · {_manager.hour:00}时";
+        _calendarToggle.TooltipText = _showZhaoming ? "当前：昭明历。点击切换入世年数。" : "当前：入世年数。点击切换昭明历。";
+
         var phase = _manager.hour switch { >= 6 and < 18 => "昼", _ => "夜" };
         var name = weather switch { "clear" => "晴", "cloudy" => "多云", "rain" => "雨", "snow" => "雪", "thunderstorm" => "雷雨", _ => weather };
-        _conditions.Text = $"{_manager.get_season()} · {phase}　{name} {temperature}".Trim();
+        _conditions.Text = $"{_manager.get_time_branch()}时 · {_manager.get_season()} · {phase}　{name} {temperature}".Trim();
     }
 }

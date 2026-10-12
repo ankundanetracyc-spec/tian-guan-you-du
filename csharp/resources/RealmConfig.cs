@@ -1,7 +1,7 @@
 using Godot;
 using Godot.Collections;
 
-/// <summary>境界的突破门槛与属性加成配置。</summary>
+/// <summary>境界突破门槛与属性成长配置。每层记录成长倍率增量、定额加成；界面按当前境界累计展示。</summary>
 public partial class RealmConfig : Resource
 {
     private static readonly HashSet<string> RequiredAttributeKeys =

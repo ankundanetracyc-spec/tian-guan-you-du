@@ -7,13 +7,16 @@ public partial class RealmPanel : Control
     [
         "云息一层", "云息二层", "云息三层", "云息四层",
         "云息五层", "云息六层", "云息七层", "云息八层",
-        "云息九层", "云息十层", "云息十一层", "云息十二层", "云息十三层"
+        "云息九层", "云息十层"
     ];
 
     private Character? _player;
     private VBoxContainer? _stageRail;
     private HBoxContainer? _majorTabs;
     private Label? _bonuses;
+    private Label? _bonusHeading;
+    private Button? _bonusToggle;
+    private bool _showCumulativeBonuses;
     private RealmQiVisual? _qiVisual;
     private Label? _currentRealm;
     private Label? _realmCaption;
@@ -21,9 +24,14 @@ public partial class RealmPanel : Control
     private Label? _visualHint;
     private Button? _skipAnimation;
     private string _observedRealm = "";
+    private int _observedBreaths;
+    private int _pendingBreathsFrom;
+    private int _pendingBreathsTo;
     private string _pendingFrom = "";
     private string _pendingTo = "";
     private float _refreshElapsed;
+    private int _previewStage = -1;
+    public event Action? PresentationStarted;
 
     public override void _Ready()
     {
@@ -45,7 +53,14 @@ public partial class RealmPanel : Control
 
     public override void _ExitTree()
     {
-        if (GodotObject.IsInstanceValid(_player)) _player!.BreakthroughCompleted -= OnBreakthrough;
+        UnbindPlayer();
+    }
+
+    private void UnbindPlayer()
+    {
+        if (!GodotObject.IsInstanceValid(_player)) return;
+        _player!.BreakthroughCompleted -= OnBreakthrough;
+        _player.YuanxiChanged -= OnYuanxiChanged;
     }
 
     public bool is_unlocked(Character? target) => GodotObject.IsInstanceValid(target) && Index(target!.cultivation_realm) >= 0;
@@ -53,16 +68,19 @@ public partial class RealmPanel : Control
     public void bind_player(Character target)
     {
         if (_player == target) return;
-        if (GodotObject.IsInstanceValid(_player)) _player!.BreakthroughCompleted -= OnBreakthrough;
+        UnbindPlayer();
         _player = target;
         _observedRealm = target.cultivation_realm;
+        _observedBreaths = target.yuanxi_count;
         target.BreakthroughCompleted += OnBreakthrough;
+        target.YuanxiChanged += OnYuanxiChanged;
     }
 
     public void show_for(Character target)
     {
         if (!is_unlocked(target)) return;
         bind_player(target);
+        _previewStage = -1;
         _qiVisual?.StopTransition();
         Rebuild();
         Refresh();
@@ -73,7 +91,8 @@ public partial class RealmPanel : Control
     private void Build()
     {
         // 全屏暗宣纸；背景本身保持实体色，不在代码中再次调色或做透明遮罩。
-        var paper = new PanelContainer { MouseFilter = MouseFilterEnum.Stop, ClipContents = true };
+        // 普通Panel不会像PanelContainer一样将背景/云眼/文字全部强制铺满重排。
+        var paper = new Panel { MouseFilter = MouseFilterEnum.Stop, ClipContents = true };
         paper.SetAnchorsPreset(LayoutPreset.FullRect);
         paper.AddThemeStyleboxOverride("panel", Box(new Color(0, 0, 0, 0), new Color(0, 0, 0, 0), 0, 0));
         AddChild(paper);
@@ -105,7 +124,7 @@ public partial class RealmPanel : Control
         header.AddChild(new Control { SizeFlagsHorizontal = SizeFlags.ExpandFill, MouseFilter = MouseFilterEnum.Ignore });
         var close = new Button { Text = "关闭", CustomMinimumSize = new Vector2(78, 38), MouseFilter = MouseFilterEnum.Stop };
         ButtonStyle(close, false);
-        close.Pressed += Hide;
+        close.Pressed += () => Hide();
         header.AddChild(close);
         root.AddChild(Separator());
 
@@ -148,13 +167,25 @@ public partial class RealmPanel : Control
         content.AddChild(bonus);
         bonus.AddChild(Separator());
         // 纸面底色复杂且偏暗，使用明亮的暖色文字保证加成清楚可读。
-        bonus.AddChild(Label("本层加成", 18, new Color(.95f, .84f, .48f)));
+        var bonusHeader = new HBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
+        bonusHeader.AddThemeConstantOverride("separation", 12);
+        bonus.AddChild(bonusHeader);
+        _bonusHeading = Label("本境界加成", 18, new Color(.95f, .84f, .48f));
+        _bonusHeading.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+        bonusHeader.AddChild(_bonusHeading);
+        _bonusToggle = new Button { Text = "查看累计", MouseFilter = MouseFilterEnum.Stop };
+        ButtonStyle(_bonusToggle, false);
+        _bonusToggle.AddThemeFontSizeOverride("font_size", 14);
+        _bonusToggle.Pressed += () => { _showCumulativeBonuses = !_showCumulativeBonuses; Refresh(); };
+        bonusHeader.AddChild(_bonusToggle);
+        bonus.AddChild(Label("仅列境界贡献，成长倍率显示增加量", 14, new Color(.81f, .78f, .68f)));
         _bonuses = Label("", 17, new Color(.96f, .94f, .87f));
         _bonuses.AutowrapMode = TextServer.AutowrapMode.WordSmart;
         bonus.AddChild(_bonuses);
 
         // 大境界与小境界都在纸面外；小境界标签水平书写，由下至上堆叠。
-        _majorTabs = new HBoxContainer { Alignment = BoxContainer.AlignmentMode.Center, MouseFilter = MouseFilterEnum.Stop };
+        // 容器横跨整个顶部，空白区域必须放行鼠标，否则会盖住右上角关闭按钮。
+        _majorTabs = new HBoxContainer { Alignment = BoxContainer.AlignmentMode.Center, MouseFilter = MouseFilterEnum.Ignore };
         _majorTabs.SetAnchorsPreset(LayoutPreset.TopWide);
         _majorTabs.OffsetTop = 12; _majorTabs.OffsetBottom = 64;
         _majorTabs.ZIndex = 20;
@@ -163,7 +194,7 @@ public partial class RealmPanel : Control
         _stageRail = new VBoxContainer { Alignment = BoxContainer.AlignmentMode.Center, MouseFilter = MouseFilterEnum.Stop };
         _stageRail.SetAnchorsPreset(LayoutPreset.FullRect);
         _stageRail.AnchorLeft = .12f; _stageRail.AnchorRight = .12f;
-        // 避开左下角加成说明，同时为云息十三层预留完整高度。
+        // 避开左下角加成说明，并为云息十层境界签预留完整高度。
         _stageRail.AnchorTop = .10f; _stageRail.AnchorBottom = .68f;
         _stageRail.OffsetLeft = -205; _stageRail.OffsetTop = 0; _stageRail.OffsetRight = -15; _stageRail.OffsetBottom = 0;
         _stageRail.AddThemeConstantOverride("separation", 6);
@@ -177,7 +208,7 @@ public partial class RealmPanel : Control
         if (_stageRail is null) return;
         foreach (var child in _stageRail.GetChildren()) child.QueueFree();
         var current = Index(_player?.cultivation_realm ?? "");
-        if (current < 0) return;
+        if (current < 0 || current >= Stages.Length) return;
 
         // 显示已到达的全部层数，并在末尾保留下一层预览。
         for (var stage = 0; stage <= Math.Min(current + 1, Stages.Length - 1); stage++)
@@ -203,18 +234,22 @@ public partial class RealmPanel : Control
             Text = current ? $"· {Stages[stage]} ·" : Stages[stage],
             CustomMinimumSize = new Vector2(180, 40),
             Alignment = HorizontalAlignment.Center,
-            MouseFilter = MouseFilterEnum.Ignore
+            MouseFilter = MouseFilterEnum.Stop
         };
         ButtonStyle(button, current);
         button.SelfModulate = new Color(1f, 1f, 1f, current ? 1f : .70f);
+        button.Pressed += () => { _previewStage = stage; Refresh(); };
         _stageRail.AddChild(button);
     }
 
     private void Refresh()
     {
         if (_player is null || _bonuses is null) return;
-        var config = GetNodeOrNull<RealmManager>("/root/RealmManager")?.get_realm_config(_player.cultivation_realm);
-        _bonuses.Text = Bonuses(config);
+        var realm = _previewStage >= 0 ? Stages[_previewStage] : _player.cultivation_realm;
+        var config = GetNodeOrNull<RealmManager>("/root/RealmManager")?.get_realm_config(realm);
+        if (_bonusHeading is not null) _bonusHeading.Text = _showCumulativeBonuses ? "累计加成" : "本境界加成";
+        if (_bonusToggle is not null) _bonusToggle.Text = _showCumulativeBonuses ? "查看本境界" : "查看累计";
+        _bonuses.Text = Bonuses(config, realm);
         RefreshVisual();
     }
 
@@ -230,31 +265,42 @@ public partial class RealmPanel : Control
     private void RefreshVisual()
     {
         if (!GodotObject.IsInstanceValid(_player) || _qiVisual is null) return;
-        var index = Index(_player!.cultivation_realm);
+        var index = _previewStage >= 0 ? _previewStage : Index(_player!.cultivation_realm);
         if (index < 0) return;
-        if (index >= 6) _qiVisual.ShowCore();
-        else _qiVisual.ShowCloud(CloudAccumulation());
+        if (index >= Stages.Length) return;
+        if (index >= 7) _qiVisual.ShowPath(Mathf.Clamp((index - 6) / 3f, 0, 1));
+        else if (index >= 6) _qiVisual.ShowCore();
+        else _qiVisual.ShowCloud(_previewStage >= 0 ? (index + 1) / 6f : CloudAccumulation());
         if (_realmCaption is not null) _realmCaption.Visible = true;
+        if (_realmCaption is not null) _realmCaption.Text = _previewStage >= 0 ? "境界预览（不改变修为）" : "当前境界";
         if (_currentRealm is not null) _currentRealm.Text = Stages[index];
         if (_nextRealm is not null) _nextRealm.Text = index + 1 < Stages.Length ? $"下一层　{Stages[index + 1]}" : "";
         if (_visualHint is not null) _visualHint.Text = index >= 6 ? "灵核已成，内部气息缓缓流动" : index == 5 ? "灵云充盈，尚未凝核" : "灵气渐聚，随修炼逐渐充盈";
         if (_skipAnimation is not null) _skipAnimation.Visible = false;
+        _qiVisual.ShowBreaths(index == 9 && _player!.is_yuanxi_realm() ? _player.yuanxi_count : 0);
+        if (index == 9 && _player!.is_yuanxi_realm())
+        {
+            if (_currentRealm is not null) _currentRealm.Text = _player.is_yunxi_complete() ? "云息十层圆满" : "云息十层";
+            if (_nextRealm is not null) _nextRealm.Text = _player.is_yunxi_complete() ? "后续　准备铸玄基" : $"归元息　{_player.yuanxi_count}／九息";
+            if (_visualHint is not null) _visualHint.Text = _player.is_yuanxi_active() ? $"正在养成第{_player.yuanxi_count + 1}息 · {_player.get_yuanxi_phase_name()}" : _player.is_yunxi_complete() ? "归元九息已成，可准备铸玄基" : "三环相续，周行养息";
+        }
     }
 
     private void OnBreakthrough(Character character, string newRealm)
     {
         var previous = _observedRealm;
         _observedRealm = newRealm;
-        // 本轮只制作一至七层；后续关窍和周行表现另行接入。
-        if (Index(newRealm) is < 0 or > 6) return;
+        if (Index(newRealm) is < 0 or > 9) return;
         _pendingFrom = previous;
         _pendingTo = newRealm;
+        _previewStage = -1;
         CallDeferred(nameof(PresentBreakthrough));
     }
 
     private void PresentBreakthrough()
     {
         if (!GodotObject.IsInstanceValid(_player) || _qiVisual is null || _player!.cultivation_realm != _pendingTo) return;
+        PresentationStarted?.Invoke();
         Rebuild();
         Refresh();
         Show();
@@ -265,12 +311,41 @@ public partial class RealmPanel : Control
         if (_nextRealm is not null) _nextRealm.Text = $"{_pendingFrom} → {_pendingTo}";
         if (_pendingFrom == "云息六层" && _pendingTo == "云息七层")
             _qiVisual.PlayCondensation(text => { if (_visualHint is not null) _visualHint.Text = text; }, FinishPresentation);
+        else if (Index(_pendingTo) >= 7)
+        {
+            if (_visualHint is not null) _visualHint.Text = "灵流向外续行，新环逐渐贯通";
+            _qiVisual.PlayPathGrowth(Mathf.Clamp((Index(_pendingFrom) - 6) / 3f, 0, 1), (Index(_pendingTo) - 6) / 3f, FinishPresentation);
+        }
         else
         {
             var amount = CloudAccumulation();
             if (_visualHint is not null) _visualHint.Text = "气息渐稳，灵云舒展";
             _qiVisual.PlayAccumulation(Mathf.Max(0f, amount - .025f), amount, FinishPresentation);
         }
+    }
+
+    private void OnYuanxiChanged(Character character)
+    {
+        var previous = _observedBreaths;
+        _observedBreaths = character.yuanxi_count;
+        // 前八息在养息页演出，不打断连续闭关；九息圆满才自动弹出境界结果。
+        if (!character.is_yuanxi_realm() || _observedBreaths <= previous || _observedBreaths != 9) return;
+        _pendingBreathsFrom = previous;
+        _pendingBreathsTo = _observedBreaths;
+        _previewStage = -1;
+        CallDeferred(nameof(PresentBreaths));
+    }
+
+    private void PresentBreaths()
+    {
+        if (!GodotObject.IsInstanceValid(_player) || !_player!.is_yuanxi_realm() || _qiVisual is null) return;
+        PresentationStarted?.Invoke();
+        Rebuild(); Refresh(); Show(); MoveToFront();
+        if (_skipAnimation is not null) _skipAnimation.Visible = true;
+        if (_currentRealm is not null) _currentRealm.Text = _pendingBreathsTo == 9 ? "云息十层圆满" : "归元息已成";
+        if (_nextRealm is not null) _nextRealm.Text = _pendingBreathsTo == 9 ? "后续　准备铸玄基" : $"归元息　{_pendingBreathsTo}／九息";
+        if (_visualHint is not null) _visualHint.Text = _pendingBreathsTo == 9 ? "九息相续，气机圆融" : "环流分出新息，渐与已有气息相和";
+        _qiVisual.PlayBreathGain(_pendingBreathsFrom, _pendingBreathsTo, FinishPresentation);
     }
 
     private void FinishPresentation()
@@ -298,19 +373,72 @@ public partial class RealmPanel : Control
         };
     }
 
-    private static string Bonuses(RealmConfig? config)
+    private string Bonuses(RealmConfig? config, string realm)
     {
         if (config is null) return "此层的正式配置尚未接入。";
+        var manager = GetNodeOrNull<RealmManager>("/root/RealmManager");
+        var realmIndex = manager?.realm_order.IndexOf(realm) ?? -1;
+        if (manager is null || realmIndex < 0) return "此层的正式配置尚未接入。";
+
         var values = new List<string>();
-        foreach (Variant key in config.realm_fixed_bonuses.Keys) values.Add($"{AttributeName(key.AsString())} +{config.realm_fixed_bonuses[key]}");
-        foreach (Variant key in config.realm_multiplier_bonuses.Keys) values.Add($"{AttributeName(key.AsString())} +{config.realm_multiplier_bonuses[key].AsSingle() * 100:0}%");
-        return values.Count == 0 ? "本层尚无可展示的固定加成。" : string.Join("\n", values);
+        var keys = new HashSet<string>();
+        for (var index = 0; index <= realmIndex; index++)
+        {
+            var layer = manager.get_realm_config(manager.realm_order[index]);
+            if (layer is null) continue;
+            foreach (Variant key in layer.realm_fixed_bonuses.Keys) keys.Add(key.AsString());
+            foreach (Variant key in layer.realm_multiplier_bonuses.Keys) keys.Add(key.AsString());
+        }
+
+        var basicAttributes = new[] { "physique", "intelligence", "agility", "soul", "fortune", "comprehension" };
+        (float growth, float flat) DisplayContribution(string key)
+        {
+            var current = _player?.get_realm_attribute_adjustment_for_realm(realm, key) ?? SumRealmBonuses(manager, realmIndex, key);
+            if (_showCumulativeBonuses) return (current.Item1 - 1f, current.Item2);
+            var previous = realmIndex > 0
+                ? _player?.get_realm_attribute_adjustment_for_realm(manager.realm_order[realmIndex - 1], key) ?? SumRealmBonuses(manager, realmIndex - 1, key)
+                : (1f, 0f);
+            return (current.Item1 - previous.Item1, current.Item2 - previous.Item2);
+        }
+        foreach (var key in basicAttributes.Where(keys.Contains))
+        {
+            var (growth, flat) = DisplayContribution(key);
+            values.Add($"{AttributeName(key)}　成长倍率 {growth:+0.00;-0.00;+0.00}　定额加成 {FormatFlat(flat)}");
+        }
+
+        // 寿元和辅修位是直接增加值，不套用基础属性公式，也不显示虚假的一点零零倍率。
+        foreach (var key in new[] { "max_age", "sub_slot_increase" }.Where(keys.Contains).OrderBy(key => AttributeName(key)))
+        {
+            var (_, flat) = DisplayContribution(key);
+            values.Add($"{AttributeName(key)}　定额加成 {FormatFlat(flat)}");
+        }
+
+        var previousEfficiency = _showCumulativeBonuses || realmIndex == 0 ? 1f : Character.get_realm_cultivation_multiplier_for_tier(realmIndex);
+        values.Add($"修炼效率　成长倍率 {Character.get_realm_cultivation_multiplier_for_tier(realmIndex + 1) - previousEfficiency:+0.00;-0.00;+0.00}");
+
+        return values.Count == 0 ? "本层没有额外属性加成。" : string.Join("\n", values);
     }
+
+    private static (float growthMultiplier, float fixedBonus) SumRealmBonuses(RealmManager manager, int realmIndex, string key)
+    {
+        var growth = 1f;
+        var fixedBonus = 0f;
+        for (var index = 0; index <= realmIndex; index++)
+        {
+            var layer = manager.get_realm_config(manager.realm_order[index]);
+            if (layer is null) continue;
+            if (layer.realm_multiplier_bonuses.TryGetValue(key, out var multiplier)) growth += multiplier.AsSingle();
+            if (layer.realm_fixed_bonuses.TryGetValue(key, out var flat)) fixedBonus += flat.AsSingle();
+        }
+        return (growth, fixedBonus);
+    }
+
+    private static string FormatFlat(float value) => $"{(value >= 0 ? "+" : "")}{value:0.##}";
 
     private static string AttributeName(string key) => key switch
     {
         "current_age" => "当前年龄", "gender" => "性别", "physique" => "体魄", "intelligence" => "灵慧",
-        "agility" => "敏捷", "soul" => "神魂", "fortune" => "机缘", "comprehension" => "悟性",
+        "agility" => "敏捷", "soul" => "神魂", "fortune" => "福缘", "comprehension" => "悟性",
         "charisma" => "魅力", "spirit_strands" => "灵力", "core_count" => "云息灵核",
         "max_health" => "生命上限", "max_mana" => "法力上限", "max_stamina" => "精力上限",
         "max_mind" => "心境上限", "physical_defense" => "物理防御", "precision" => "精准",
@@ -319,7 +447,7 @@ public partial class RealmPanel : Control
         "health_regen_rate" => "生命恢复", "stamina_regen_rate" => "精力恢复", "mind_regen_rate" => "心境恢复",
         "learning_rate" => "研读效率", "cultivation_rate" => "修炼效率", "critical" => "会心",
         "crit_damage_mult" => "会心伤害", "sword_proficiency" => "剑术造诣", "blade_proficiency" => "刀术造诣",
-        "spear_proficiency" => "枪术造诣", "body_proficiency" => "锻躯造诣", "magic_proficiency" => "术法造诣",
+        "spear_proficiency" => "枪术造诣", "body_proficiency" => "体道造诣", "magic_proficiency" => "术法造诣",
         "forging_proficiency" => "炼器造诣", "talisman_proficiency" => "符箓造诣",
         "formation_proficiency" => "阵法造诣", "alchemy_proficiency" => "炼丹造诣",
         "mana_regen_rate" => "法力恢复", "max_spirit_perception" => "灵识上限", "max_age" => "寿元上限",

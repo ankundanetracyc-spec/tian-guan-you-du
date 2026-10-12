@@ -6,7 +6,9 @@
 script = ExtResource("1")
 tags = Array[String](["生命","伤势","回复"])
 skill_name = "催血"
-icon_path = "res://textures/ui/combat/skill_icons/锻躯_催血_v1.png"
+source_gongfa_name = "灵枢经筋篇"
+icon_path = "res://textures/ui/combat/skill_icons/基础技能_催血_v1.png"
+gongfa_rewrite_effect_ids = Array[String](["lingshu_c2_cuixue"])
 description = "施放时获得气血1层；若施放前自身有伤势，自动消耗1层（优先内伤），成功消耗时回复最大生命×3%。"
 skill_type = 3
 energy_cost = 1

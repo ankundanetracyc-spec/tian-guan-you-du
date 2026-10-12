@@ -4,7 +4,7 @@ using Godot;
 public partial class CondensationTestScene : Control
 {
     private const string BackdropPath = "res://textures/start_menu/ink_mountain_dawn_v2.png";
-    private CondensationPanel? _panel;
+    private CondensationCardGamePanel? _panel;
     private Character? _target;
 
     public override void _Ready()
@@ -14,7 +14,7 @@ public partial class CondensationTestScene : Control
         _target = BuildTarget();
         AddChild(_target);
         _target.Visible = false;
-        _panel = new CondensationPanel { Name = "CondensationPanel" };
+        _panel = new CondensationCardGamePanel { Name = "CondensationCardGamePanel" };
         AddChild(_panel);
         _panel.Closed += ReturnToStartMenu;
         CallDeferred(nameof(StartTest));
@@ -42,6 +42,8 @@ public partial class CondensationTestScene : Control
         var data = new CharacterGenerator().generate("云息", (int)WorldEntity.Faction.PLAYER);
         data.entity_name = "凝核试演者";
         data.cultivation_realm = "云息六层";
+        data.base_intelligence = 15;
+        data.base_comprehension = 50;
         var character = new Character();
         character.load_from_data(data);
         character.entity_type = WorldEntity.EntityType.CHARACTER;

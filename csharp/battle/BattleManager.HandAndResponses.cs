@@ -54,7 +54,7 @@ public partial class BattleManager : Node2D
     public void _finish_current_action(GodotObject unit)
     {
         if(unit is Creature creature)creature.process_status_event("turn_end",new Dictionary{["battle_manager"]=this,["unit"]=unit});
-        if(!_realtimeMode)body_cards.Fall(unit,1,false);
+        if(!_realtimeMode)gongfa_combat.Fall(unit,1,false);
         unit.Set("current_mana", 0); action_gauges[unit] = 0f; active_unit = null; turn_state = TurnState.IDLE;
     }
     private Array<ActiveSkillData> Hand(GodotObject unit) => _hands.TryGetValue(unit,out var value)
@@ -70,8 +70,40 @@ public partial class BattleManager : Node2D
     public void mark_unit_damaged_this_turn(GodotObject unit) { }
     public void resolve_pending_counter_followups(GodotObject target, Dictionary context)
     {
-        body_cards.ResponseResolved(target,context.GetValueOrDefault("blocked_damage",0).AsInt32(),context.GetValueOrDefault("damage",0).AsInt32(),_chengjiResponses.Remove(target.GetInstanceId()));
+        gongfa_combat.ResponseResolved(target,context.GetValueOrDefault("blocked_damage",0).AsInt32(),context.GetValueOrDefault("damage",0).AsInt32(),_chengjiResponses.Remove(target.GetInstanceId()));
     }
+    // 现行队列战斗的命中入口必须等待特写；同步入口保留给旧模式与规则调用。
+    public async System.Threading.Tasks.Task<bool> PresentAutoResponse(GodotObject defender, GodotObject attacker, string damageType)
+    {
+        if (!_realtimeMode || _segmentPhase != SegmentPhase.Executing || !Alive(defender) || !Alive(attacker)
+            || _queuedHandledTargets.Contains(defender.GetInstanceId()) || !battle_units.ContainsKey(defender))
+            return try_auto_response(defender, attacker, damageType);
+        var queued = get_battle_unit(defender).current_segment_action;
+        if (queued is null || queued.kind != BattleQueuedSkill.ActionKind.Skill
+            || !CardRules.ResponseMatches(queued.skill, damageType) || !CanResolveSegmentAction(defender, queued, responseTriggered: true)
+            || defender is not Node2D responder)
+            return try_auto_response(defender, attacker, damageType);
+
+        var incomingDoll = (attacker as Node)?.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll");
+        incomingDoll?.hold_attack_contact(true);
+        BattleResponseFocus? focus = null;
+        try
+        {
+            focus = BattleResponseFocus.Begin(this, responder, queued.skill);
+            await focus.IntroFinished;
+            if (!IsInsideTree() || !battle_running || !Alive(defender) || !Alive(attacker)) return false;
+            focus.ReleaseTimeStop();
+            var triggered = try_auto_response(defender, attacker, damageType);
+            await focus.FinishPresentation(triggered);
+            return triggered;
+        }
+        finally
+        {
+            if (GodotObject.IsInstanceValid(focus)) focus!.CancelPresentation();
+            if (GodotObject.IsInstanceValid(incomingDoll)) incomingDoll!.hold_attack_contact(false);
+        }
+    }
+
     /// <summary>攻击命中判定前自动触发一张可用的“应对”牌。</summary>
     public bool try_auto_response(GodotObject defender, GodotObject attacker, string damageType = "physical")
     {
@@ -80,16 +112,15 @@ public partial class BattleManager : Node2D
             if (_segmentPhase == SegmentPhase.Executing)
             {
                 if (!Alive(defender) || !Alive(attacker) || !_queuedHandledTargets.Add(defender.GetInstanceId())) return false;
-                var segmentQueue = get_battle_unit(defender).skill_queue;
-                if (segmentQueue.Count == 0 || segmentQueue[0].kind != BattleQueuedSkill.ActionKind.Skill ||
-                    !CardRules.ResponseMatches(segmentQueue[0].skill, damageType))
+                var queued = get_battle_unit(defender).current_segment_action;
+                if (queued is null || queued.kind != BattleQueuedSkill.ActionKind.Skill ||
+                    !CardRules.ResponseMatches(queued.skill, damageType))
                 {
                     _queuedHandledTargets.Remove(defender.GetInstanceId());
                     return false;
                 }
 
-                var queued = segmentQueue[0];
-                if (!CanResolveSegmentAction(defender, queued))
+                if (!CanResolveSegmentAction(defender, queued, responseTriggered: true))
                 {
 
                     SkipSegmentAction(defender);
@@ -97,13 +128,11 @@ public partial class BattleManager : Node2D
                 }
 
                 Pay(defender, queued.skill);
-                body_cards.Before(defender, queued.skill);
-                body_cards.OnResponseTriggered(defender, queued.skill);
+                gongfa_combat.Before(defender, queued.skill);
+                gongfa_combat.OnResponseTriggered(defender, queued.skill);
                 StartSkillCooldown(defender, queued.skill);
-                segmentQueue.RemoveAt(0);
-                action_gauges[defender] = 0f;
-                if (defender == _mainPlayerUnit) _planHud?.RefreshPlayerQueue();
-                if (body_cards.Utility(defender, queued.skill)) _executor?.execute_counter_extras(defender, attacker, queued.skill);
+                AdvanceSegmentSlot(defender);
+                if (gongfa_combat.Utility(defender, queued.skill)) _executor?.execute_counter_extras(defender, attacker, queued.skill);
                 else _executor?.execute_segment_response(defender, attacker, queued.skill);
 
                 _skillBar?.refresh_slots();
@@ -115,8 +144,8 @@ public partial class BattleManager : Node2D
             var armed = queue[0]; if (!CardRules.ResponseMatches(armed.skill, damageType)) return false;
             if (!_realtimeMode) unitOverlay?.ShowResponse(defender, armed.skill);
             armed.phase = BattleQueuedSkill.Phase.Resolving;
-            body_cards.Before(defender,armed.skill);
-            body_cards.OnResponseTriggered(defender,armed.skill);
+            gongfa_combat.Before(defender,armed.skill);
+            gongfa_combat.OnResponseTriggered(defender,armed.skill);
             StartSkillCooldown(defender, armed.skill);
             _executor?.execute_response(defender, attacker, armed.skill);
             if (defender == active_unit) _skillBar?.refresh_slots();
@@ -140,6 +169,14 @@ public partial class BattleManager : Node2D
     public void show_damage_number(GodotObject target, int amount, string damageType = "physical", bool critical = false)
     {
         if (_executor is not null && amount > 0) _executor.show_damage_number(target, amount, damageType, critical);
+    }
+    public void show_recovery_number(GodotObject target, int amount, string resource = "生命")
+    {
+        if (battle_running && all_units.Contains(target)) _executor?.show_recovery_number(target, amount, resource);
+    }
+    public void show_status_gain(GodotObject target, string name, int amount, bool debuff = false)
+    {
+        if (battle_running && all_units.Contains(target)) _executor?.show_status_gain(target, name, amount, debuff);
     }
     /// <summary>供周天、受击等战斗子系统接入。阵脉是瞬时事件，不会在此保存或扣除。</summary>
 }

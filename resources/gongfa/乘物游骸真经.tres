@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://csharp/gongfa/GongfaResource.cs" id="1"]
 [ext_resource type="Script" path="res://csharp/gongfa/GongfaChapterConfig.cs" id="2"]
+[ext_resource type="Resource" path="res://resources/world_spells/游骸行遁.tres" id="world_spell_youhai"]
 [ext_resource type="Resource" path="res://resources/activeskills/乘物游骸真经/乘物游骸.tres" id="3"]
 [ext_resource type="Resource" path="res://resources/activeskills/乘物游骸真经/蜕形.tres" id="4"]
 [ext_resource type="Resource" path="res://resources/activeskills/乘物游骸真经/托身.tres" id="5"]
@@ -9,7 +10,7 @@
 [ext_resource type="Resource" path="res://resources/activeskills/乘物游骸真经/冯虚.tres" id="7"]
 [ext_resource type="Script" path="res://csharp/gongfa/GongfaDeckRewriteConfig.cs" id="8_rewrite"]
 [ext_resource type="Resource" path="res://resources/activeskills/乘物游骸真经/化法/催血.tres" id="9_huafa_cuixue"]
-[ext_resource type="Resource" path="res://resources/activeskills/乘物游骸真经/化法/撼山.tres" id="10_huafa_hanshan"]
+[ext_resource type="Resource" path="res://resources/activeskills/乘物游骸真经/化法/游骸发劲.tres" id="10_huafa_hanshan"]
 [ext_resource type="Resource" path="res://resources/activeskills/乘物游骸真经/化法/平息.tres" id="11_huafa_pingxi"]
 [ext_resource type="Resource" path="res://resources/activeskills/乘物游骸真经/化法/发劲.tres" id="12_huafa_fajin"]
 
@@ -24,7 +25,7 @@ result_skill = ExtResource("9_huafa_cuixue")
 script = ExtResource("8_rewrite")
 mode = 1
 count = 1
-source_skill_name = "撼山"
+source_skill_name = "发劲"
 result_skill = ExtResource("10_huafa_hanshan")
 
 [sub_resource type="Resource" id="RewritePingXi"]
@@ -48,14 +49,19 @@ chapter_name = "游骸"
 description = "以主动回落寄形于骸，建立确定闪避的起点。"
 order = 1
 required_study_progress = 24.0
-required_attributes = {"agility": 5.0, "body_proficiency": 4.0}
-allowed_bearings = Array[int]([0, 1])
-learn_permanent_bonuses = {"agility": 1.0}
+required_attributes = {"agility": 5.0}
+learn_permanent_bonuses = {"agility": 1.0, "body_proficiency": 0.5}
 learned_active_skills = Array[Resource]([ExtResource("4")])
-left_branch_name = "淬炼"
+learned_world_spells = Array[Resource]([ExtResource("world_spell_youhai")])
+left_branch_name = "修持"
 right_branch_name = "化法"
-combat_tempering_bonuses = {"max_health_percent": 20.0}
+combat_tempering_bonuses = {"max_health_percent": 15}
 sub_deck_rewrites = Array[ExtResource("8_rewrite")]([SubResource("RewriteCuiXue")])
+heart_method_description = "效果：每回合首次由自身主动使气血层数降低后，获得游骸1层；同次效果至多触发一次。\n主修额外效果：每次实际消耗游骸，获得身法3层；抵挡、托身和化法消耗均计入。"
+
+
+learn_bonus_revision = "study-balance-20261012"
+previous_learn_permanent_bonuses = {"agility": 1.0}
 
 [sub_resource type="Resource" id="two"]
 script = ExtResource("2")
@@ -65,15 +71,21 @@ description = "以身法延长游骸后的受击优势。"
 order = 2
 required_study_progress = 48.0
 required_realm = "云息三层"
-required_attributes = {"agility": 7.0, "body_proficiency": 5.0}
+required_attributes = {"agility": 7.0, "body_proficiency": 0.5}
 required_chapter_ids = Array[String](["you_hai"])
-allowed_bearings = Array[int]([1])
-learn_permanent_bonuses = {"agility": 1.0}
+learn_permanent_bonuses = {"agility": 1.0, "body_proficiency": 0.5}
 learned_active_skills = Array[Resource]([ExtResource("5")])
-left_branch_name = "淬炼"
+left_branch_name = "修持"
 right_branch_name = "化法"
-combat_tempering_bonuses = {"qi_blood_cap": 1.0}
+combat_tempering_bonuses = {"qi_blood_cap": 1, "dodge_percent": 4}
 sub_deck_rewrites = Array[ExtResource("8_rewrite")]([SubResource("RewriteHanShan")])
+heart_method_upgrade_id = "chengwu_c2"
+heart_method_upgrade_description = "每回合心法首次给予游骸时，额外获得身法1层。"
+heart_method_description = "效果：每回合首次由自身主动使气血层数降低后，获得游骸1层和身法1层；同次效果至多触发一次。\n主修额外效果：每次实际消耗游骸，获得身法3层；抵挡、托身和化法消耗均计入。"
+
+
+learn_bonus_revision = "study-balance-20261012"
+previous_learn_permanent_bonuses = {"agility": 1.0}
 
 [sub_resource type="Resource" id="three"]
 script = ExtResource("2")
@@ -83,15 +95,18 @@ description = "将游骸由守势转为可主动支取的攻伐资源。"
 order = 3
 required_study_progress = 84.0
 required_realm = "云息六层"
-required_attributes = {"agility": 9.0, "body_proficiency": 7.0}
+required_attributes = {"agility": 9.0, "body_proficiency": 1}
 required_chapter_ids = Array[String](["tuo_shen"])
-allowed_bearings = Array[int]([1])
-learn_permanent_bonuses = {"physique": 0.5, "agility": 0.5}
-learned_active_skills = Array[Resource]([ExtResource("6")])
-left_branch_name = "淬炼"
+learn_permanent_bonuses = {"physique": 0.5, "agility": 0.5, "body_proficiency": 1}
+left_branch_name = "修持"
 right_branch_name = "化法"
-combat_tempering_bonuses = {"physical_damage_percent": 10.0}
+combat_tempering_bonuses = {"physical_damage_percent": 5}
 sub_deck_rewrites = Array[ExtResource("8_rewrite")]([SubResource("RewritePingXi")])
+heart_method_description = "效果：每回合首次由自身主动使气血层数降低后，获得游骸1层和身法1层；同次效果至多触发一次。\n主修额外效果：每次实际消耗游骸，获得身法3层；抵挡、托身和化法消耗均计入。"
+
+
+learn_bonus_revision = "study-balance-20261012"
+previous_learn_permanent_bonuses = {"physique": 0.5, "agility": 0.5}
 
 [sub_resource type="Resource" id="four"]
 script = ExtResource("2")
@@ -101,29 +116,34 @@ description = "以本场已耗游骸为尺，将防守资源反转成重型反�
 order = 4
 required_study_progress = 128.0
 required_realm = "云息九层"
-required_attributes = {"agility": 10.0, "body_proficiency": 9.0}
+required_attributes = {"agility": 10.0, "body_proficiency": 2}
 required_chapter_ids = Array[String](["jie_xing"])
-allowed_bearings = Array[int]([1])
-learn_permanent_bonuses = {"agility": 0.5, "body_proficiency": 0.5}
+learn_permanent_bonuses = {"agility": 0.5, "body_proficiency": 1}
 learned_active_skills = Array[Resource]([ExtResource("7")])
-left_branch_name = "淬炼"
+left_branch_name = "修持"
 right_branch_name = "化法"
-combat_tempering_bonuses = {"qi_blood_cap": 1.0, "dodge_percent": 10.0}
+combat_tempering_bonuses = {"max_health_percent": 10, "dodge_percent": 6, "physical_damage_percent": 5}
 sub_deck_rewrites = Array[ExtResource("8_rewrite")]([SubResource("RewriteFaJin")])
+heart_method_upgrade_id = "chengwu_c4"
+heart_method_upgrade_description = "心法给予游骸时，再额外获得身法1层。"
+heart_method_description = "效果：每回合首次由自身主动使气血层数降低后，获得游骸1层和身法2层；同次效果至多触发一次。\n主修额外效果：每次实际消耗游骸，获得身法3层；抵挡、托身和化法消耗均计入。"
+
+
+learn_bonus_revision = "study-balance-20261012"
+previous_learn_permanent_bonuses = {"agility": 0.5, "body_proficiency": 0.5}
 
 [resource]
 script = ExtResource("1")
 gongfa_name = "乘物游骸真经"
-description = "气血、游骸与身法并行的锻躯真经：以肉身根基压住敌方，游骸整张避伤，再把已耗游骸化为反击。"
+description = "气血、游骸与身法并行的云息秘籍：以自身根基压住敌方，游骸整张避伤，再把已耗游骸化为反击。"
 wuxing = 0
 can_be_main = true
 can_be_sub = true
-bearing_compatibility = Array[int]([1])
-school_tags = Array[String](["body"])
+school_tags = Array[String](["cloud_breath"])
 body_nourish_rate_per_day = 0.8
 body_nourish_weights = {"skin": 0.25, "sinew": 0.40, "bone": 0.10, "blood": 0.10, "viscera": 0.05, "heart": 0.10}
 main_realm_start = "凡人"
-main_realm_end = "云息十三层"
+main_realm_end = "云息十层"
 heart_method_skill = ExtResource("3")
 default_unlocked_chapter_count = 1
 chapters = Array[Resource]([SubResource("one"), SubResource("two"), SubResource("three"), SubResource("four")])

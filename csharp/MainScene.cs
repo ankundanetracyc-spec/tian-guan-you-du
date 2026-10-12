@@ -6,15 +6,13 @@ public partial class MainScene : Node2D
     // Main scene coordinates world actions and stamina settlement.
     private enum QingxiPrologueStep { Awakened, MetLiFamily, BeastHuntResolved, Departed }
     private enum DialogueBeatKind { Narration, PlayerSpeech, PlayerThought, NpcSpeech }
-    private static readonly string[] BuildingPaths=["res://resources/entities/buildings/民居.tres","res://resources/entities/buildings/农田.tres","res://resources/entities/buildings/凡矿点.tres","res://resources/entities/buildings/药圃.tres","res://resources/entities/buildings/矿场.tres","res://resources/entities/buildings/工坊.tres","res://resources/entities/buildings/膳房.tres","res://resources/entities/buildings/哨塔.tres","res://resources/entities/buildings/静室.tres"];
     private static readonly System.Collections.Generic.Dictionary<string,string> ResourceItems=new()
     {
-        ["food"]="res://resources/entities/items/豆麦.tres",
-        ["herb"]="res://resources/entities/items/止血草.tres", ["herbs"]="res://resources/entities/items/止血草.tres", ["mat_herb"]="res://resources/entities/items/止血草.tres",
-        ["stone"]="res://resources/entities/items/石材.tres", ["mat_stone"]="res://resources/entities/items/石材.tres", ["hemp"]="res://resources/entities/items/山麻.tres", ["mat_hemp"]="res://resources/entities/items/山麻.tres",
-        ["ore"]="res://resources/entities/items/铁矿石.tres", ["mat_ore"]="res://resources/entities/items/铁矿石.tres", ["spirit_stones"]="res://resources/entities/items/灵石.tres"
+        ["mat_bitter_moss_root"]="res://resources/entities/items/苦苔根.tres",
+        ["mat_spirit_spring_algae"]="res://resources/entities/items/灵泉藻.tres",
+        ["spirit_stones"]="res://resources/entities/items/灵石.tres"
     };
-    private MainHUD? hud; private GameTimeUI? time_ui; private Button? _prologue_skip_button; private bool _prologue_skip_available; private StoragePanel? storage; private EstateResourceSystem? estate_resources; private BuildPopup? build; private CharacterRosterPopup? roster; private InfoPanel? info; private CultivationUI? cultivation_ui; private CondensationPanel? condensation_panel; private RealmPanel? realm_panel; private StoryDialoguePanel? story_dialogue; private NpcInteractionPanel? npc_interactions; private TradePanel? trade_panel; private PrologueGuide? prologue_guide; private NodeWorldMap? node_map; private Control? tile_world_map; private WorldLocationInteriorPanel? location_interior; private EstateOverview? estate; private DungeonExploreUI? back_hill_trial; private QingxiTerritoryState? territory_state; private QingxiTerritoryPanel? territory_panel; private QingxiFarmlandPanel? farmland_panel; private FamilyResidencePanel? residence_panel; private TerritoryLedgerPanel? territory_ledger; private OpeningIntro? opening_intro; private JournalPanel? journal; private BaigongPanel? baigong; private ActionTransitionPanel? action_transition; private bool _suppress_persistent_chrome; private Character? player; private QingxiPrologueStep _qingxi_prologue = QingxiPrologueStep.Awakened; private bool _xuanjian_awakened, _rested_after_xuanjian, _static_room_authorized, _first_breakthrough_reported, _back_hill_departure_arranged, _rested_for_back_hill, _first_back_hill_battle_explained, _qingxi_herbs_gathered, _back_hill_nest_seen, _back_hill_trial_complete, _beast_hunt_prompt_open, _beast_hunt_trigger_queued; private int _qingxi_arrival_hour, _journal_started_hour=-1, _journal_rumor_stage, _journal_unread; private readonly List<JournalPanel.Entry> _earned_rumors=[]; private readonly List<JournalPanel.Entry> _completed_quests=[]; private JournalPanel.Entry? _active_quest; private bool _prologue_goal_recorded; private readonly List<BuildingData> building_data=[]; private readonly List<Character> family=[]; private readonly List<Character> retainers=[];
+    private MainHUD? hud; private GameTimeUI? time_ui; private Button? _prologue_skip_button; private bool _prologue_skip_available; private StoragePanel? storage; private EstateResourceSystem? estate_resources; private InfoPanel? info; private CultivationUI? cultivation_ui; private CondensationPanel? condensation_panel; private RealmPanel? realm_panel; private StoryDialoguePanel? story_dialogue; private NpcInteractionPanel? npc_interactions; private TradePanel? trade_panel; private PrologueGuide? prologue_guide; private NodeWorldMap? node_map; private Control? tile_world_map; private WorldLocationInteriorPanel? location_interior; private EstateOverview? estate; private DungeonExploreUI? back_hill_trial; private QingxiTerritoryState? territory_state; private QingxiTerritoryPanel? territory_panel; private QingxiFarmlandPanel? farmland_panel; private FamilyResidencePanel? residence_panel; private TerritoryLedgerPanel? territory_ledger; private OpeningIntro? opening_intro; private JournalPanel? journal; private BaigongPanel? baigong; private ActionTransitionPanel? action_transition; private bool _suppress_persistent_chrome; private Character? player; private QingxiPrologueStep _qingxi_prologue = QingxiPrologueStep.Awakened; private bool _xuanjian_awakened, _rested_after_xuanjian, _static_room_authorized, _first_breakthrough_reported, _back_hill_departure_arranged, _rested_for_back_hill, _first_back_hill_battle_explained, _qingxi_herbs_gathered, _back_hill_nest_seen, _back_hill_trial_complete, _beast_hunt_prompt_open, _beast_hunt_trigger_queued; private int _qingxi_arrival_hour, _journal_started_hour=-1, _journal_rumor_stage, _journal_unread; private readonly List<JournalPanel.Entry> _earned_rumors=[]; private readonly List<JournalPanel.Entry> _completed_quests=[]; private JournalPanel.Entry? _active_quest; private bool _prologue_goal_recorded; private readonly List<Character> family=[]; private readonly List<Character> retainers=[];
     private string _player_world_node_id = "home_village"; private NpcWorldManager? _npc_world; private WorldNpcData? _qingxi_shopkeeper; private bool _cloud_state_initialized; private bool _world_travel_in_progress; private bool _world_open_in_progress; private bool _trade_hud_was_visible;
     public override void _Ready()
     {
@@ -30,6 +28,7 @@ public partial class MainScene : Node2D
         condensation_panel = new CondensationPanel { Name = "CondensationPanel" };
         GetNode<CanvasLayer>("CanvasLayer").AddChild(condensation_panel);
         realm_panel=GetNodeOrNull<RealmPanel>("CanvasLayer/RealmPanel");
+        if (realm_panel is not null) realm_panel.PresentationStarted += () => cultivation_ui?.close_panel();
         story_dialogue=GetNodeOrNull<StoryDialoguePanel>("DialogueLayer/StoryDialoguePanel");
         npc_interactions=GetNodeOrNull<NpcInteractionPanel>("CanvasLayer/NpcInteractionPanel");
         node_map=GetNodeOrNull<NodeWorldMap>("MapLayer/NodeWorldMap");
@@ -69,19 +68,30 @@ public partial class MainScene : Node2D
         estate?.set_meditation_available(false);
         estate?.set_rest_available(false);
         spawn_or_restore_player();
+        expire_player_world_statuses();
         if (player is not null) realm_panel?.bind_player(player);
         hud?.bind_player(player);
         configure_tile_world_map_bridge();
         storage?.bind_player(player);
         if(player is not null) { player.breakthrough_completed += on_player_breakthrough; player.MainGongfaChanged += (_, _) => refresh_qingxi_quest(); player.GongfaChapterCompleted += (_, _, _, _) => refresh_qingxi_quest(); player.GongfaChapterCompleted += on_yuxu_gongfa_chapter_completed; }
-        if(GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is { } time) { if(_loaded_game_save is null)_qingxi_arrival_hour=time.get_total_game_hours(); time.time_changed += on_action_time_changed; time.time_changed += update_yuxu_monthly_allowance; time.time_changed += mark_save_dirty; }
+        if(GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is { } time) { if(_loaded_game_save is null)_qingxi_arrival_hour=time.get_total_game_hours(); time.time_changed += on_action_time_changed; time.time_changed += update_yuxu_monthly_allowance; time.time_changed += mark_save_dirty; time.time_changed += on_world_status_time_changed; }
         refresh_qingxi_quest();
         set_prologue_skip_available(_loaded_game_save is null);
         if (_loaded_game_save is null) CallDeferred(nameof(show_opening));
         else CallDeferred(nameof(show_loaded_game));
     }
-    public override void _Process(double delta){update_persistent_chrome();process_save_autosave(delta);}
-    public override void _ExitTree(){save_progress_now(false);}
+    public override void _Process(double delta){update_persistent_chrome();process_save_autosave(delta);process_npc_social_visit(delta);}
+    public override void _ExitTree()
+    {
+        save_progress_now(false);
+        if (GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is { } time)
+        {
+            time.time_changed -= on_action_time_changed;
+            time.time_changed -= update_yuxu_monthly_allowance;
+            time.time_changed -= mark_save_dirty;
+            time.time_changed -= on_world_status_time_changed;
+        }
+    }
     public override void _UnhandledInput(InputEvent @event)
     {
         if (@event is not InputEventKey { Pressed: true, Echo: false } key) return;
@@ -96,32 +106,35 @@ public partial class MainScene : Node2D
 
     private bool return_to_previous_page()
     {
+        if (action_transition?.IsPlaying == true || GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.IsSmoothAdvanceBusy == true) return true;
         if (hud?.close_player_profile() == true) return true;
-        if (GetNodeOrNull<EastWoodsDungeonPanel>("SceneLayer/EastWoodsDungeonPanel") is { Visible: true } east_woods_dungeon) { east_woods_dungeon.close(); return true; }
-        if (GetNodeOrNull<EastWoodsLocationPanel>("SceneLayer/EastWoodsLocationPanel") is { Visible: true } east_woods_location) { east_woods_location.close(); return true; }
         if (trade_panel?.Visible == true) { trade_panel.close(); return true; }
         if (story_dialogue?.Visible == true) { story_dialogue.close(); return true; }
         if (npc_interactions?.Visible == true) { npc_interactions.close(); return true; }
-        if (location_interior?.Visible == true) { close_world_location(); return true; }
+        if (_restPanel?.Visible == true) { _restPanel.Close(); return true; }
+        if (cultivation_ui?.Visible == true) { cultivation_ui.close_panel(); return true; }
         if (condensation_panel?.TryClosePileBrowser() == true) return true;
         if (condensation_panel?.Visible == true) { condensation_panel.ClosePanel(); return true; }
-        if (tile_world_map?.Visible == true || node_map?.Visible == true) { close_world_map(); return true; }
-        if (cultivation_ui?.Visible == true) { cultivation_ui.close_panel(); return true; }
         if (realm_panel?.Visible == true) { realm_panel.Hide(); return true; }
         if (info?.Visible == true) { if (info.dismiss_top_overlay()) return true; info.hide_panel(); return true; }
         if (storage?.Visible == true) { storage.hide_panel(); return true; }
         if (journal?.Visible == true) { journal.hide_panel(); return true; }
         if (baigong?.Visible == true) { baigong.close(); return true; }
+        // Shared overlays are above the current scene. Never return the scene underneath them.
+        if (GetNodeOrNull<EastWoodsDungeonPanel>("SceneLayer/EastWoodsDungeonPanel") is { Visible: true } east_woods_dungeon) { east_woods_dungeon.return_one_level(); return true; }
+        if (location_interior?.Visible == true) { close_world_location(); return true; }
         if (GetNodeOrNull<Control>("SceneLayer/YuxuXianzongOverview") is { Visible: true } yuxuOverview)
         {
             if (yuxuOverview.HasMethod("handle_back") && yuxuOverview.Call("handle_back").AsBool()) return true;
             yuxuOverview.Call("close_overview");
             return true;
         }
+        // After leaving the prologue, the world is the root page, not a Qingxi overlay.
+        if (tile_world_map?.Visible == true || node_map?.Visible == true) { close_world_map(); return true; }
         return false;
     }
 
-    private void update_persistent_chrome(){var modal=(storage?.Visible??false)||(info?.Visible??false)||(realm_panel?.Visible??false)||(cultivation_ui?.Visible??false)||(condensation_panel?.Visible??false)||(story_dialogue?.Visible??false)||(journal?.Visible??false)||(baigong?.Visible??false)||(trade_panel?.Visible??false)||(hud?.player_profile_visible??false);var visible=!modal&&!_suppress_persistent_chrome;hud?.set_estate_summary_visible(visible);if(GetNodeOrNull<Control>("HUDLayer/WorldInfo") is { } timePanel)timePanel.Visible=visible;if(_prologue_skip_button is not null)_prologue_skip_button.Visible=_prologue_skip_available&&visible;}
+    private void update_persistent_chrome(){var modal=(_restPanel?.Visible??false)||(storage?.Visible??false)||(info?.Visible??false)||(realm_panel?.Visible??false)||(cultivation_ui?.Visible??false)||(condensation_panel?.Visible??false)||(story_dialogue?.Visible??false)||(journal?.Visible??false)||(baigong?.Visible??false)||(trade_panel?.Visible??false)||(hud?.player_profile_visible??false);var visible=!modal&&!_suppress_persistent_chrome;hud?.set_estate_summary_visible(visible);if(GetNodeOrNull<Control>("HUDLayer/WorldInfo") is { } timePanel)timePanel.Visible=visible;if(_prologue_skip_button is not null)_prologue_skip_button.Visible=_prologue_skip_available&&visible;}
     private void connect_ui()
     {
         if(hud is not null)
@@ -137,7 +150,7 @@ public partial class MainScene : Node2D
             hud.WorldMapRequested+=open_world;
             hud.TaskRequested+=open_journal_task;
         }
-        if (storage is not null) storage.secret_book_requested += select_secret_book;
+        if (journal is not null) journal.TrackingRequested += OnJournalTrackingRequested;
         if (info is not null) { info.NpcTradeRequested += open_world_npc_trade; info.NpcTalkRequested += open_world_npc_talk; }
         if(cultivation_ui is not null) { cultivation_ui.CondensationRequested+=open_condensation; cultivation_ui.CondensationTestRequested+=open_condensation_test; }
         if(condensation_panel is not null) { condensation_panel.Closed+=close_condensation; condensation_panel.CondensationFinished+=on_condensation_finished; }
@@ -206,9 +219,20 @@ public partial class MainScene : Node2D
         _prologue_skip_available = available;
         if (_prologue_skip_button is not null) _prologue_skip_button.Visible = available && !_suppress_persistent_chrome;
     }
-    private void seed_buildings(){foreach(var path in BuildingPaths){var data=ResourceLoader.Load<BuildingData>(path);if(data is not null)building_data.Add(data);}}
     /// <summary>普通凡人村庄的余粮与建材储备；灵石只是一枚偶得之物。</summary>
-    private void seed_estate_resources(){if(player is not null){player.add_item_to_inventory(get_resource_item_path(EstateResourceSystem.Food),90);player.add_item_to_inventory(get_resource_item_path(EstateResourceSystem.Stone),30);player.add_item_to_inventory(get_resource_item_path(EstateResourceSystem.Herbs),20);player.add_item_to_inventory(get_resource_item_path(EstateResourceSystem.Ore),8);player.add_item_to_inventory(get_resource_item_path(EstateResourceSystem.SpiritStones),1);}estate_resources?.register_facility("meditation_room");estate_resources?.register_facility("meditation_room");territory_state?.recalculate_auto_labor(get_estate_resource_amount(EstateResourceSystem.Food), territory_state?.total_labor??0);}
+    /// <summary>辖地储备由抽象资源账本持有；灵石作为可携带物品发放。</summary>
+    private void seed_estate_resources()
+    {
+        estate_resources?.add(EstateResourceSystem.Food, 90);
+        estate_resources?.add(EstateResourceSystem.Stone, 30);
+        estate_resources?.add(EstateResourceSystem.Herbs, 20);
+        estate_resources?.add(EstateResourceSystem.Ore, 8);
+        var spiritStones = get_resource_item_path(EstateResourceSystem.SpiritStones);
+        if (player is not null && !string.IsNullOrEmpty(spiritStones)) player.add_item_to_inventory(spiritStones, 1);
+        estate_resources?.register_facility("meditation_room");
+        estate_resources?.register_facility("meditation_room");
+        territory_state?.recalculate_auto_labor(get_estate_resource_amount(EstateResourceSystem.Food), territory_state?.total_labor ?? 0);
+    }
     private void spawn_family(){if(family.Count>0)return;var generator=new CharacterGenerator();var names=new NameGenerator();var profile=GetNodeOrNull<GameStartProfile>("/root/GameStartProfile");string FamilyName(string given,int generation)=>profile?.compose_family_name(given,generation)??"李"+given;var fatherGiven=names.generate_single_given(0);var motherName=names.generate_single_full(1);while(motherName.StartsWith(profile?.surname??"李"))motherName=names.generate_single_full(1);var son1=names.generate_single_given(0);var son2=names.generate_single_given(0);while(son2==son1)son2=names.generate_single_given(0);var son3=names.generate_single_given(0);while(son3==son1||son3==son2)son3=names.generate_single_given(0);var daughter=names.generate_single_given(1);var memberNames=new[]{FamilyName(fatherGiven,1),motherName,FamilyName(son1,2),FamilyName(son2,2),FamilyName(son3,2),FamilyName(daughter,2)};var ages=new[]{38,37,18,16,14,12};for(var i=0;i<memberNames.Length;i++){var data=generator.generate(i==0?"云息":"凡人",(int)WorldEntity.Faction.PLAYER);if(i==0){data.main_gongfa_path="res://resources/gongfa/黄庭养形篇.tres";data.learned_gongfa_paths.Add(data.main_gongfa_path);}if(i==4)profile?.apply_to_youngest(data);data.entity_name=memberNames[i];data.gender=i is 1 or 5?1:0;data.current_age=ages[i];data.faction_name=profile?.family_name??"本家";if(i==0)data.spouse_name=motherName;else if(i==1)data.spouse_name=memberNames[0];var character=new Character();character.load_from_data(data);character.entity_type=WorldEntity.EntityType.CHARACTER;character.faction=(int)WorldEntity.Faction.PLAYER;character.is_family=true;character.family_gen=i<2?1:2;character.family_gender=i is 1 or 5?"女":"男";family.Add(character);AddChild(character);if(i==0)character.cultivation_realm="云息六层";}}
     private void seed_retainers()
     {
@@ -235,21 +259,12 @@ public partial class MainScene : Node2D
     private void show_opening(){node_map?.Hide();estate?.Show();estate?.MoveToFront();estate?.open_location_view("li_residence");hud?.Show();hud?.MoveToFront();show_dialogue_sequence((DialogueBeatKind.PlayerSpeech,"","痛，痛，头好痛！！！"),(DialogueBeatKind.Narration,"","你从一张硬木床榻上醒来。旧木梁撑着低矮的屋顶，床侧小几上搁着半盏凉茶，窗棂外竹影轻晃。"),(DialogueBeatKind.Narration,"","你下意识伸手去够床头。"),(DialogueBeatKind.Narration,"","指尖只碰到冰凉的硬木床沿，什么都没有。"),(DialogueBeatKind.PlayerThought,"","手机……不在了。"),(DialogueBeatKind.Narration,"","视线落回屋内：青瓷花瓶，山水卷轴，一盏油灯。没有电灯，没有电线，没有一样熟悉的东西。"),(DialogueBeatKind.PlayerThought,"","这里看起来不像现代……我不会是穿越了吧？"),(DialogueBeatKind.Narration,"","屋外传出一阵脚步声，在门口停了一瞬。"));}
     private void show_prologue_title(){open_territory();_suppress_persistent_chrome=true;var screen=new ColorRect{Color=Colors.Black,MouseFilter=Control.MouseFilterEnum.Stop};screen.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);var title=new Label{Text="序章·启明",HorizontalAlignment=HorizontalAlignment.Center,VerticalAlignment=VerticalAlignment.Center,MouseFilter=Control.MouseFilterEnum.Ignore};title.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);title.AddThemeFontSizeOverride("font_size",48);title.AddThemeColorOverride("font_color",new Color(.96f,.9f,.7f));screen.AddChild(title);GetNode<CanvasLayer>("CanvasLayer").AddChild(screen);var tween=CreateTween();tween.TweenInterval(1.5);tween.TweenProperty(screen,"modulate:a",0f,.8);tween.TweenCallback(Callable.From(screen.QueueFree));tween.TweenCallback(Callable.From(begin_prologue_guide));}
     private void begin_prologue_guide(){_suppress_persistent_chrome=false;if(family.Count<=4)return;prologue_guide?.begin(family[4]);hud?.set_guided_button("BtnCharacter");}
-    private void open_build(){if(build is null)return;var values=new Godot.Collections.Array();foreach(var data in building_data){var entry=new Godot.Collections.Dictionary{{"entity_name",data.entity_name},{"resource_path",data.ResourcePath},{"enabled",can_afford_building(data)},{"cost_text",format_building_cost(data)}};values.Add(entry);}build.open(values);}
-    private void open_meditation_room_build(){if(build is null)return;var data=building_data.FirstOrDefault(item=>item.estate_facility_id=="meditation_room");if(data is null)return;var values=new Godot.Collections.Array{new Godot.Collections.Dictionary{{"entity_name",data.entity_name},{"resource_path",data.ResourcePath},{"enabled",can_afford_building(data)},{"cost_text",format_building_cost(data)}}};build.open(values);}
-    private void build_meditation_room_from_residence()
-    {
-        var data=building_data.FirstOrDefault(item=>item.estate_facility_id=="meditation_room"); if(data is null||!consume_building_cost(data))return;
-        register_built_building(data); residence_panel?.refresh();
-    }
     private void open_territory(){estate?.Hide();territory_panel?.open();hud?.Show();hud?.MoveToFront();}
     private void open_ledger(string mode){territory_panel?.Hide();territory_ledger?.open(mode);hud?.Hide();}
-    private void open_location_map(){territory_panel?.Hide();estate?.Show();estate?.MoveToFront();hud?.Show();hud?.MoveToFront();}
+    private void open_location_map(){if(_qingxi_prologue==QingxiPrologueStep.Departed){open_world();return;}territory_panel?.Hide();estate?.Show();estate?.MoveToFront();hud?.Show();hud?.MoveToFront();}
     private void open_territory_section(string section){switch(section){case "residential":estate?.Hide();residence_panel?.open("meditation");break;case "village":estate?.Hide();territory_panel?.open("governance");break;case "farmland":estate?.Hide();farmland_panel?.open();break;case "storage":open_storage();break;case "gate":estate?.Hide();territory_panel?.open("defense");break;}}
-    private void select_building(string path){var data=ResourceLoader.Load<BuildingData>(path);if(data is null)return;foreach(var manager in GetTree().GetNodesInGroup("map_interaction_mgr"))if(manager.HasMethod("enter_build_mode")){manager.Call("enter_build_mode",data);return;}if(!consume_building_cost(data))return;register_built_building(data);show_message("营建完成",$"{data.entity_name} 已纳入青溪里辖地。\n{data.summary}");}
     private Godot.Collections.Array family_array(){var result=new Godot.Collections.Array();foreach(var character in family)result.Add(character);return result;}
     private Godot.Collections.Array roster_array(){var result=family_array();foreach(var character in retainers)result.Add(character);return result;}
-    private void open_roster(){roster?.refresh(roster_array());prologue_guide?.on_roster_opened();}
     private void open_player_profile(){if(player is not null)show_character(player);}
     private void open_player_status_profile()
     {
@@ -291,7 +306,7 @@ public partial class MainScene : Node2D
                 show_message("槐荫坪","村里人闲时常在老槐树下歇脚闲谈。周满仓也会带些日用物件来，想换东西可以找他商量。 ");
                 break;
             case "farmland":
-                if(!_qingxi_herbs_gathered) { if(!try_spend_player_world_stamina(WorldStaminaRules.InteractionCost,"采集"))break; _qingxi_herbs_gathered=true; player?.add_item_to_inventory("res://resources/entities/items/止血草.tres"); show_message("田陌","你在田垄间认出几株止血草，也看见兽蹄印绕开了有人烟的田地。兽患会是往后的事；先收下草药，熟悉采集与行囊。 "); }
+                if(!_qingxi_herbs_gathered) { if(!try_spend_player_world_stamina(WorldStaminaRules.InteractionCost,"采集"))break; _qingxi_herbs_gathered=true; player?.add_item_to_inventory("res://resources/entities/items/苦苔根.tres"); show_message("田陌","你从田埂边采下一截苦苔根，也看见兽蹄印绕开了有人烟的田地。兽患会是往后的事；这份根材可在行囊中查看。 "); }
                 else show_message("田陌","农人仍照看着田地。这里可采集寻常药草、听农户闲谈，也会随时令出现新的小事。 ");
                 break;
             case "back_hill":
@@ -368,30 +383,32 @@ public partial class MainScene : Node2D
         else if(player?.main_gongfa is null) set_qingxi_task("定为主修", "打开角色页面，将已研读的功法装配为主修。");
         else if(player?.cultivation_realm=="云息一层"&&!_first_breakthrough_reported) set_qingxi_task("初入云息", "你已突破云息一层。去找李守拙，将此事告诉他。");
         else set_qingxi_task("静室引气", "进入静室，继续引气修行。");
-        var visibleTasks = new List<JournalPanel.Entry> { get_phase_goal() };
-        if (_qingxi_prologue == QingxiPrologueStep.Departed) visibleTasks.Add(get_cultivation_guidance_task());
-        else if (_active_quest is not null) visibleTasks.Add(_active_quest);
-        estate?.set_compact_task_tracker_visible(false);
-        hud?.set_task_entries(visibleTasks, true);
-        hud?.set_task_tracker_horizontal_layout();
+        RefreshJournalTracker();
         mark_save_dirty();
     }
 
     private void set_qingxi_task(string title, string body)
     {
+        _ = IdentifyJournalTask(get_phase_goal());
         if (_active_quest is not null && _active_quest.Title != title)
             _completed_quests.Add(_active_quest with { State = "已完成" });
         if (_active_quest is null || _active_quest.Title != title || _active_quest.Body != body)
-            _active_quest = new JournalPanel.Entry(title, body, "阶段任务", "青溪里", "进行中");
+            _active_quest = IdentifyJournalTask(new JournalPanel.Entry(title, body, "阶段任务", "青溪里", "进行中"));
     }
 
     private List<JournalPanel.Entry> get_quest_entries()
     {
+        for (var i = 0; i < _completed_quests.Count; i++) _completed_quests[i] = IdentifyJournalTask(_completed_quests[i]);
         var entries = new List<JournalPanel.Entry> { get_phase_goal() };
         if (_active_quest is not null) entries.Add(_active_quest);
         if (_qingxi_prologue == QingxiPrologueStep.Departed) entries.Add(get_cultivation_guidance_task());
+        entries.AddRange(get_yuxu_lineage_journal_tasks());
+        if (get_active_yuxu_journal_task() is {} duty) entries.Add(duty);
+        if (player?.entity_data is HumanData human)
+            entries.AddRange(human.sect_contribution_records.Where(r => r.transaction_kind == YuxuSectContributionRecord.KindOfficialDutyReward)
+                .Reverse().Select(r => new JournalPanel.Entry(r.source_title, r.cost_summary + "\n" + r.result_summary, "玉虚仙宗·宗门公事", "玉虚仙宗", "已完成", r.occurred_at, "yuxu.settled." + r.source_transaction_id)));
         entries.AddRange(_completed_quests.AsEnumerable().Reverse());
-        return entries;
+        return entries.Select(IdentifyJournalTask).ToList();
     }
 
     private JournalPanel.Entry get_cultivation_guidance_task()
@@ -409,12 +426,10 @@ public partial class MainScene : Node2D
             return new("稳固灵核", $"当前境界：{realm}。继续养护灵核并精进修为，目标是云息九层。", "长期主线", "个人修行", "进行中");
         if (tier == 9)
             return new("核成阵", "你已修至云息九层。继续精进，向云息十层迈进；此处进入核成阵节点。", "长期主线", "个人修行", "进行中");
-        if (tier is 10 or 11)
-            return new("阵养灵", $"当前境界：{realm}。继续修行，使核阵渐趋自洽，目标是云息十二层。", "长期主线", "个人修行", "进行中");
-        if (tier == 12)
-            return new("阵灵点睛", "你已修至云息十二层。继续精进，完成云息十三层的阵灵点睛，达到云息圆满。", "长期主线", "个人修行", "进行中");
-        if (tier >= 13)
-            return new("云息圆满", "云息十三层，阵灵初成。云息期的修行目标已达成；后续境界继续以修炼界面当前开放的指引为准。", "长期主线", "个人修行", "已完成");
+		if (tier >= 10 && player?.is_yunxi_complete() == true)
+			return new("准备铸玄基", "归元九息已成，云息十层圆满。铸玄基后的修行内容暂未开放。", "长期主线", "个人修行", "进行中");
+		if (tier >= 10)
+			return new("归元养息", "云息十层之后，继续修习归元九息。九息圆满后，便可准备铸玄基；归元息不是新的境界层数。", "长期主线", "个人修行", "进行中");
         return new("继续精进", $"当前境界：{realm}。继续修行，在修炼界面查看当前开放的境界目标与突破条件。", "长期主线", "个人修行", "进行中");
     }
 
@@ -501,7 +516,7 @@ public partial class MainScene : Node2D
             (DialogueBeatKind.PlayerSpeech,"","李叔你……也是修士？"),
             (DialogueBeatKind.NpcSpeech,"李守拙","你既然有灵根，有些事该让你知道。你知道修行分几个境界吗？"),
             (DialogueBeatKind.Narration,"","你摇了摇头。"),
-            (DialogueBeatKind.NpcSpeech,"李守拙","始于云息，引气入体，一层一层往上修，共十三层。云息之上是玄基，筑道基、开灵府，算是真正踏入修行的门了。再往上是金丹，结丹一成，就算是个人物了，走到哪都有人给几分面子，没人敢轻易招惹。"),
+            (DialogueBeatKind.NpcSpeech,"李守拙","始于云息，引气入体，共有十层。十层修完，还要归元养息；九息圆满之后，才算准备好铸玄基。云息之上是玄基，筑道基、开灵府，算是真正踏入修行的门了。再往上是金丹，结丹一成，就算是个人物了，走到哪都有人给几分面子，没人敢轻易招惹。"),
             (DialogueBeatKind.NpcSpeech,"李守拙","金丹之上是什么样，我就不清楚了。我这辈子，止步于玄基，再没往上走过。"),
             (DialogueBeatKind.PlayerSpeech,"","那您现在……怎么会在这儿当里正？"),
             (DialogueBeatKind.NpcSpeech,"李守拙","年轻时修到玄基，本来以为能再往上走走。后来跑商，路上出了意外，被人暗算了一道，道基直接损了，境界跌到如今的云息六层，再没上去过。"),
@@ -526,15 +541,17 @@ public partial class MainScene : Node2D
         {
             var dawnHours=Math.Max(1,((time.get_total_game_hours()/24)+1)*24+6-time.get_total_game_hours());
             var restored = Mathf.Min(player.max_world_stamina-player.current_world_stamina,dawnHours*WorldStaminaRules.RestRecoveryPerGameHour);
-            var firstRest=new ConfirmationDialog{Title="休息至次日",DialogText=$"夜已深了。休息至次日清晨，明日再去问李守拙。预计恢复体力 {restored:0.#} 点。",OkButtonText="休息至次日清晨",CancelButtonText="返回"}; AddChild(firstRest);
-            firstRest.PopupCentered(); firstRest.Confirmed+=()=>{firstRest.QueueFree();run_time_transition("休息至次日",$"夜色渐深。你将休息 {dawnHours / 24f:0.0} 日，恢复体力 {restored:0.#} 点，至次日清晨。","晨光透过窗棂。你已休息至次日清晨。",()=>{player.current_health=player.max_health;player.restore_world_stamina(dawnHours*WorldStaminaRules.RestRecoveryPerGameHour);time.add_hours(dawnHours);_rested_after_xuanjian=true;refresh_qingxi_quest();},()=>show_message("醒来","晨光透过窗棂。你已休息至次日清晨。 "));}; firstRest.Canceled+=firstRest.QueueFree; return;
+            open_rest_panel("李宅 · 偏房", _ => run_time_transition("休息至次日", $"夜色渐深。你将休息 {dawnHours / 24f:0.0} 日，恢复体力 {restored:0.#} 点，至次日清晨。", "晨光透过窗棂。你已休息至次日清晨。",
+                () => { player.current_health=player.max_health; player.restore_world_stamina(dawnHours*WorldStaminaRules.RestRecoveryPerGameHour); advance_player_world_status_rest(dawnHours); time.add_hours(dawnHours); _rested_after_xuanjian=true; refresh_qingxi_quest(); },
+                () => show_message("醒来", "晨光透过窗棂。你已休息至次日清晨。")), dawnHours, "夜已深了，休息至次日清晨，明日再去问李守拙。"); return;
         }
         if(_back_hill_departure_arranged&&!_rested_for_back_hill)
         {
             var dawnHours=Math.Max(1,((time.get_total_game_hours()/24)+1)*24+6-time.get_total_game_hours());
             var restored = Mathf.Min(player.max_world_stamina-player.current_world_stamina,dawnHours*WorldStaminaRules.RestRecoveryPerGameHour);
-            var departureRest=new ConfirmationDialog{Title="休息至次日",DialogText=$"李守拙约你明日一早上山。休息至次日清晨后便可前往后山，预计恢复体力 {restored:0.#} 点。",OkButtonText="休息至次日清晨",CancelButtonText="返回"}; AddChild(departureRest);
-            departureRest.PopupCentered(); departureRest.Confirmed+=()=>{departureRest.QueueFree();run_time_transition("休息至次日",$"你将在李宅歇息 {dawnHours / 24f:0.0} 日，恢复体力 {restored:0.#} 点，养足精神后赴约上山。","李守拙已在宅门外等候。可以前往后山。",()=>{player.current_health=player.max_health;player.restore_world_stamina(dawnHours*WorldStaminaRules.RestRecoveryPerGameHour);time.add_hours(dawnHours);_rested_for_back_hill=true;estate?.set_back_hill_trial_available(true);refresh_qingxi_quest();},()=>show_message("天明","李守拙已在宅门外等候。可以前往后山。 "));}; departureRest.Canceled+=departureRest.QueueFree; return;
+            open_rest_panel("李宅 · 偏房", _ => run_time_transition("休息至次日", $"你将在李宅歇息 {dawnHours / 24f:0.0} 日，恢复体力 {restored:0.#} 点，养足精神后赴约上山。", "李守拙已在宅门外等候。可以前往后山。",
+                () => { player.current_health=player.max_health; player.restore_world_stamina(dawnHours*WorldStaminaRules.RestRecoveryPerGameHour); advance_player_world_status_rest(dawnHours); time.add_hours(dawnHours); _rested_for_back_hill=true; estate?.set_back_hill_trial_available(true); refresh_qingxi_quest(); },
+                () => show_message("天明", "李守拙已在宅门外等候。可以前往后山。")), dawnHours, "李守拙约你明日一早上山。先休息至次日清晨。"); return;
         }
         open_general_rest_dialog("李宅", () =>
         {
@@ -546,80 +563,15 @@ public partial class MainScene : Node2D
     private void open_general_rest_dialog(string restPlace, Action? afterRest = null)
     {
         if (player is null || GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is not { } time) return;
-        var dialog = new ConfirmationDialog { Title = "休息", OkButtonText = "开始休息", CancelButtonText = "返回" };
-        AddChild(dialog);
-        var body = new VBoxContainer { CustomMinimumSize = new Vector2(420, 0) };
-        dialog.AddChild(body);
-        var note = new Label { Text = $"醒来时生命值恢复；体力每游戏小时恢复 {WorldStaminaRules.RestRecoveryPerGameHour:0.#} 点。请选择休息时长，或指定醒来的日期。" };
-        note.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-        body.AddChild(note);
-        var mode = new OptionButton();
-        mode.AddItem("按时长休息");
-        mode.AddItem("休息至指定日期");
-        body.AddChild(mode);
-        var hoursRow = new HBoxContainer();
-        hoursRow.AddChild(new Label { Text = "休息时长：" });
-        var hours = new SpinBox { MinValue = 1, MaxValue = 720, Value = 8, Step = 1, Rounded = true };
-        hoursRow.AddChild(hours);
-        hoursRow.AddChild(new Label { Text = "小时" });
-        body.AddChild(hoursRow);
-        var dateRow = new HBoxContainer();
-        dateRow.AddChild(new Label { Text = "醒来日期：" });
-        var year = new SpinBox { MinValue = 1, MaxValue = 9999, Value = time.year, Step = 1, Rounded = true };
-        var month = new SpinBox { MinValue = 1, MaxValue = 12, Value = time.month, Step = 1, Rounded = true };
-        var day = new SpinBox { MinValue = 1, MaxValue = 30, Value = Math.Min(30, time.day + 1), Step = 1, Rounded = true };
-        dateRow.AddChild(year); dateRow.AddChild(new Label { Text = "年" });
-        dateRow.AddChild(month); dateRow.AddChild(new Label { Text = "月" });
-        dateRow.AddChild(day); dateRow.AddChild(new Label { Text = "日" });
-        body.AddChild(dateRow);
-        var preview = new Label();
-        body.AddChild(preview);
-
-        int dateHours()
+        open_rest_panel(restPlace, count =>
         {
-            var targetHour = (((int)year.Value - 1) * 12 + ((int)month.Value - 1)) * 30 * 24 + ((int)day.Value - 1) * 24;
-            return Math.Max(1, targetHour + time.hour - time.get_total_game_hours());
-        }
-        string ending(int count)
-        {
-            var total = time.get_total_game_hours() + count;
-            var dayIndex = total / 24;
-            return $"{dayIndex / 360 + 1}年{dayIndex % 360 / 30 + 1}月{dayIndex % 30 + 1}日 {total % 24:00}时";
-        }
-        void refreshPreview()
-        {
-            var count = mode.Selected == 0 ? (int)hours.Value : dateHours();
-            hoursRow.Visible = mode.Selected == 0;
-            dateRow.Visible = mode.Selected == 1;
-            preview.Text = $"本次将休息 {count / 24f:0.0} 日，恢复体力 {Mathf.Min(player.max_world_stamina-player.current_world_stamina,count*WorldStaminaRules.RestRecoveryPerGameHour):0.#} 点，醒来时间：{ending(count)}。";
-        }
-        mode.ItemSelected += _ => refreshPreview();
-        hours.ValueChanged += _ => refreshPreview();
-        year.ValueChanged += _ => refreshPreview();
-        month.ValueChanged += _ => refreshPreview();
-        day.ValueChanged += _ => refreshPreview();
-        refreshPreview();
-
-        dialog.PopupCentered();
-        dialog.Confirmed += () =>
-        {
-            var count = mode.Selected == 0 ? (int)hours.Value : dateHours();
-            dialog.QueueFree();
-            run_time_transition(
-                "休息",
-                $"你将在{restPlace}休息 {count / 24f:0.0} 日，醒来时间：{ending(count)}。",
-                "休息过后，你睁开眼，伤势已经平复。",
-                () =>
-                {
-                    if (player is null) return;
-                    player.current_health = player.max_health;
-                    player.restore_world_stamina(count * WorldStaminaRules.RestRecoveryPerGameHour);
-                    time.add_hours(count);
-                    afterRest?.Invoke();
-                },
-                () => show_message("醒来", "休息过后，你睁开眼，伤势已经平复，体力也随之恢复。"));
-        };
-        dialog.Canceled += () => dialog.QueueFree();
+            var end = time.get_total_game_hours() + count; var day = end / 24;
+            var ending = $"{day / 360 + 1}年{day % 360 / 30 + 1}月{day % 30 + 1}日 {end % 24:00}时";
+            run_time_transition("休息", $"你将在{restPlace}休息 {count / 24f:0.0} 日，醒来时间：{ending}。",
+                "休养过后，你的气血已复，行旅体力也得以恢复。",
+                () => { if (player is null) return; player.current_health = player.max_health; player.restore_world_stamina(count * WorldStaminaRules.RestRecoveryPerGameHour); advance_player_world_status_rest(count); time.add_hours(count); afterRest?.Invoke(); },
+                () => show_message("醒来", "休养过后，你的气血已复，行旅体力也得以恢复。"));
+        });
     }
     private void run_time_transition(string title,string plan,string complete,Action settle,Action? after=null)
     {
@@ -636,11 +588,6 @@ public partial class MainScene : Node2D
             (DialogueBeatKind.NpcSpeech,"李守拙","你手上的牌不只用来进攻。遇上重招，留一张化解或护身，比一味抢攻稳当。"),
             (DialogueBeatKind.NpcSpeech,"李守拙","看它怎么动，再决定这回合要不要出手。往后遇敌，就靠你自己判断了。"));
     }
-    private void grant_activity_inspiration(string source)
-    {
-        if (player is null) return;
-        player.settle_qi_activity_inspiration(source, true);
-    }
     private void grant_back_hill_beast_materials(string enemyId,int count,bool elite)
     {
         if (player is null) return;
@@ -649,10 +596,14 @@ public partial class MainScene : Node2D
         player.add_item_to_inventory("res://resources/entities/items/兽骨.tres",bones);
         show_message("战利品",$"你收好{(hides>0?$"兽皮 ×{hides}、":"")}兽骨 ×{bones}，可在行囊中查看品阶与功用。");
     }
-    private void collect_back_hill_resource(string resource,int amount){if(ResourceItems.TryGetValue(resource,out var path))player?.add_item_to_inventory(path,amount);show_message("采集所得", "你收好了一些后山外缘的寻常草药。");}
+    private void collect_back_hill_resource(string resource,int amount)
+    {
+        if (!ResourceItems.TryGetValue(resource, out var path) || player?.add_item_to_inventory(path, amount) != true) return;
+        var name = ResourceLoader.Load<ItemData>(path)?.entity_name ?? "材料";
+        show_message("采集所得", $"你收好{name} ×{amount}。");
+    }
     private void resolve_back_hill_event(string eventId,string title)
     {
-        grant_activity_inspiration("奇遇");
         if(eventId=="back_hill_high_beast")
         {
             _back_hill_nest_seen=true;refresh_qingxi_quest();
@@ -664,7 +615,7 @@ public partial class MainScene : Node2D
         }
         show_message(title,"这点山间见闻被你默默记下。");
     }
-    private void finish_back_hill_trial(){var first=!_back_hill_trial_complete;_back_hill_trial_complete=true;grant_activity_inspiration("探索");if(first)_journal_started_hour=GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours()??-1;refresh_qingxi_quest();show_message("后山初探",first?"你沿回村小径下山。后山外围的东西，比往年凶得多；而半山腰那道爪痕，更让人无法忽视。":"你再次沿回村小径下山，收好这一路的所得。");if(first)try_trigger_qingxi_beast_hunt();}
+    private void finish_back_hill_trial(){var first=!_back_hill_trial_complete;_back_hill_trial_complete=true;if(first)_journal_started_hour=GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours()??-1;refresh_qingxi_quest();show_message("后山初探",first?"你沿回村小径下山。后山外围的东西，比往年凶得多；而半山腰那道爪痕，更让人无法忽视。":"你再次沿回村小径下山，收好这一路的所得。");if(first)try_trigger_qingxi_beast_hunt();}
     private void open_rumors()
     {
         if (journal is null) return;
@@ -763,18 +714,15 @@ public partial class MainScene : Node2D
     }
     public void open_world_npc_talk(WorldNpcData npc)
     {
-        if (npc is null || !try_spend_player_world_stamina(WorldStaminaRules.ConversationCost, "交谈")) return;
-        info?.hide_panel();
-        npc_interactions?.close();
-        var body = npc.player_relationship <= 0
-            ? "对方与你尚不相熟，只愿意以几句闲谈交换近况。"
-            : "对方与你已有往来，愿意多说一些眼下的见闻。";
-        body += "\n\n" + RegionalRenownSystem.get_bai_chuan_recognition_line(player?.entity_data as HumanData);
-        show_npc_dialogue(npc.npc_name, body, npc);
+        begin_npc_social_talk(npc, false);
     }
-    private void open_family(){var panel=GetNodeOrNull<FamilyTreePanel>("CanvasLayer/FamilyTreePanel");panel?.refresh();panel?.MoveToFront();}
     private void open_world()
     {
+        if (_east_woods_dungeon?.Visible == true)
+        {
+            _east_woods_dungeon.locate_exit();
+            return;
+        }
         if(_qingxi_prologue!=QingxiPrologueStep.Departed) return;
         enter_cloud_state_if_departed();
         var yuxuOverview = GetNodeOrNull<Control>("SceneLayer/YuxuXianzongOverview");
@@ -832,15 +780,11 @@ public partial class MainScene : Node2D
     }
     private void close_world_map()
     {
+        // There is no location page behind the world after departure. Keep its camera and travel intact.
+        if (_qingxi_prologue == QingxiPrologueStep.Departed) return;
         tile_world_map?.Hide();
         node_map?.hide_world_roster();
         node_map?.Hide();
-        if (_qingxi_prologue == QingxiPrologueStep.Departed)
-        {
-            hud?.Show();
-            hud?.set_world_map_available(true);
-            return;
-        }
         open_location_map();
     }
 
@@ -859,6 +803,8 @@ public partial class MainScene : Node2D
 
         node_map.hide_world_roster();
         node_map.Hide();
+        tile_world_map?.Hide();
+        estate?.Hide();
         if (node_id == "yuxu_xianzong_core")
         {
             open_faction_overview_if_available(node_id);
@@ -866,7 +812,7 @@ public partial class MainScene : Node2D
         }
         if (node_id == "east_woods")
         {
-            get_or_create_east_woods_location().show_location();
+            open_east_woods_dungeon();
             return;
         }
         location_interior?.show_for(node, _npc_world);
@@ -956,21 +902,17 @@ public partial class MainScene : Node2D
         dialog.PopupCentered();
         dialog.Confirmed += () =>
         {
-            if (player?.entity_data is HumanData current && string.IsNullOrEmpty(current.sect_affiliation_id))
-            {
-                var currentRank = get_yuxu_entry_rank(get_player_spirit_root_count());
-                if (!string.IsNullOrEmpty(currentRank))
-                {
-                    current.sect_affiliation_id = "yuxu_xianzong";
-                    current.sect_entry_rank = currentRank;
-                    current.sect_current_rank = currentRank;
-                    if (current.sect_allowance_month_cursor < 0 && GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is { } gameTime)
-                        current.sect_allowance_month_cursor = get_game_month_index(gameTime);
-                }
-            }
-            refresh_yuxu_admission_context();
-            GetNodeOrNull<Node>("SceneLayer/YuxuXianzongOverview")?.Call("refresh_admission_detail");
             dialog.QueueFree();
+            var currentRank = get_yuxu_entry_rank(get_player_spirit_root_count());
+            if (string.IsNullOrEmpty(currentRank))
+            {
+                refresh_yuxu_admission_context();
+                return;
+            }
+            if (is_yuxu_true_disciple(currentRank))
+                open_yuxu_lineage_teacher_picker(teacher => complete_yuxu_admission(currentRank, teacher));
+            else
+                complete_yuxu_admission(currentRank);
         };
         dialog.Canceled += () => dialog.QueueFree();
     }
@@ -1056,29 +998,6 @@ public partial class MainScene : Node2D
         var rooms=estate_resources?.get_facility_count("meditation_room")??0; var occupied=family.Count(member=>GodotObject.IsInstanceValid(member)&&member.meditation_room_index>=0);
         return rooms==0?"尚无静室。族人仍可于宅院闭关，但无法获得静室加速。":$"静室 {rooms} 间，闭关中 {occupied} 人，可用 {Math.Max(0,rooms-occupied)} 间。";
     }
-    private void craft_estate_item(string recipe)
-    {
-        if (player is null) return;
-        var herbs = get_resource_item_path(EstateResourceSystem.Herbs);
-        var food = get_resource_item_path(EstateResourceSystem.Food);
-        var success = false;
-        switch (recipe)
-        {
-            case "medicine":
-                if (player.has_inventory_item(herbs, 4) && player.remove_item_from_inventory(herbs, 4)) success = player.add_item_to_inventory("res://resources/entities/items/回春丹.tres");
-                break;
-            case "meal":
-                if (player.has_inventory_item(food, 8) && player.has_inventory_item(herbs, 2) && player.remove_item_from_inventory(food, 8) && player.remove_item_from_inventory(herbs, 2))
-                {
-                    success = player.add_item_to_inventory("res://resources/entities/items/灵米粥.tres");
-                    if (!success) { player.add_item_to_inventory(food, 8); player.add_item_to_inventory(herbs, 2); }
-                }
-                break;
-        }
-        if (success) storage?.refresh_slots();
-        territory_panel?.open("village");
-    }
-    private void select_secret_book(string item_path){if(roster is null)return;var title=ResourceLoader.Load<ItemData>(item_path)?.entity_name??"秘籍";roster.show_study_candidates(family_array(),title);}
     public bool add_item_to_inventory(string item_path,int count=1)=>player?.add_item_to_inventory(item_path,count)??false;
     // 旧调用点保留兼容名，但运行时统一写入当前玩家行囊。
     public bool add_item_to_warehouse(string item_path,int count=1)=>add_item_to_inventory(item_path,count);
@@ -1086,17 +1005,17 @@ public partial class MainScene : Node2D
     public bool remove_item_from_warehouse(string item_path,int count=1)=>remove_item_from_inventory(item_path,count);
     public int get_inventory_item_count(string item_path)=>player?.get_inventory_total_count(item_path)??0;
     public int get_warehouse_item_count(string item_path)=>get_inventory_item_count(item_path);
-    public string get_resource_item_path(string resource_id)=>ResourceItems.GetValueOrDefault(resource_id,resource_id);
+    public string get_resource_item_path(string resource_id)=>ResourceItems.GetValueOrDefault(resource_id,"");
     public int get_estate_resource_amount(string resource_id)
     {
         var path = get_resource_item_path(resource_id);
-        return ResourceLoader.Load<ItemData>(path) is not null ? get_inventory_item_count(path) : estate_resources?.get_amount(resource_id) ?? 0;
+        return !string.IsNullOrEmpty(path) && ResourceLoader.Load<ItemData>(path) is not null ? get_inventory_item_count(path) : estate_resources?.get_amount(resource_id) ?? 0;
     }
     public int consume_estate_resource(string resource_id,int amount)
     {
         if (amount <= 0) return 0;
         var path = get_resource_item_path(resource_id);
-        if (ResourceLoader.Load<ItemData>(path) is not null)
+        if (!string.IsNullOrEmpty(path) && ResourceLoader.Load<ItemData>(path) is not null)
         {
             var paid = Math.Min(amount, get_inventory_item_count(path));
             return paid > 0 && remove_item_from_inventory(path, paid) ? paid : 0;
@@ -1111,45 +1030,56 @@ public partial class MainScene : Node2D
         if (player is null) return false;
         for (var i=0; i<building_cost_count(data); i++)
         {
-            var path = building_cost_item_path(data,i); var amount = i<data.build_cost_counts.Length ? data.build_cost_counts[i] : 1;
-            if (string.IsNullOrEmpty(path) || !player.has_inventory_item(path,amount)) return false;
+            var amount = i<data.build_cost_counts.Length ? data.build_cost_counts[i] : 1;
+            var path = i < data.build_cost_item_paths.Length ? data.build_cost_item_paths[i] : "";
+            if (!string.IsNullOrEmpty(path))
+            {
+                if (!player.has_inventory_item(path, amount)) return false;
+                continue;
+            }
+            if (i >= data.build_cost_resource_ids.Length) return false;
+            var resourceId = data.build_cost_resource_ids[i];
+            var resourceItemPath = get_resource_item_path(resourceId);
+            if (!string.IsNullOrEmpty(resourceItemPath) && ResourceLoader.Load<ItemData>(resourceItemPath) is not null)
+            {
+                if (!player.has_inventory_item(resourceItemPath, amount)) return false;
+            }
+            else if (estate_resources?.can_afford(resourceId, amount) != true) return false;
         }
         return true;
     }
     public bool consume_building_cost(BuildingData data)
     {
         if (!can_afford_building(data) || player is null) return false;
-        var removed = new List<(string path,int amount)>();
+        var removedItems = new List<(string path,int amount)>();
+        var spentResources = new List<(string resourceId,int amount)>();
         for (var i=0; i<building_cost_count(data); i++)
         {
-            var path = building_cost_item_path(data,i); var amount = i<data.build_cost_counts.Length ? data.build_cost_counts[i] : 1;
-            if (!player.remove_item_from_inventory(path,amount))
+            var amount = i<data.build_cost_counts.Length ? data.build_cost_counts[i] : 1;
+            var path = i < data.build_cost_item_paths.Length ? data.build_cost_item_paths[i] : "";
+            var resourceId = i < data.build_cost_resource_ids.Length ? data.build_cost_resource_ids[i] : "";
+            if (string.IsNullOrEmpty(path))
             {
-                foreach (var (rollbackPath,rollbackAmount) in removed) player.add_item_to_inventory(rollbackPath,rollbackAmount);
+                var resourceItemPath = get_resource_item_path(resourceId);
+                if (!string.IsNullOrEmpty(resourceItemPath) && ResourceLoader.Load<ItemData>(resourceItemPath) is not null) path = resourceItemPath;
+            }
+            var paid = !string.IsNullOrEmpty(path)
+                ? player.remove_item_from_inventory(path, amount)
+                : !string.IsNullOrEmpty(resourceId) && estate_resources?.spend(resourceId, amount) == true;
+            if (!paid)
+            {
+                foreach (var (rollbackPath,rollbackAmount) in removedItems) player.add_item_to_inventory(rollbackPath,rollbackAmount);
+                foreach (var (rollbackResourceId,rollbackAmount) in spentResources) estate_resources?.add(rollbackResourceId,rollbackAmount);
                 return false;
             }
-            removed.Add((path,amount));
+            if (!string.IsNullOrEmpty(path)) removedItems.Add((path, amount));
+            else spentResources.Add((resourceId, amount));
         }
         return true;
     }
     public void register_built_building(BuildingData data){if(string.IsNullOrEmpty(data.estate_facility_id))return;estate_resources?.register_facility(data.estate_facility_id);}
     private void RefreshCultivationEnvironment(){const float pressure=100f;foreach(var member in family)if(GodotObject.IsInstanceValid(member))member.ambient_lingqi_pressure=pressure;}
     private static int building_cost_count(BuildingData data)=>Math.Max(data.build_cost_item_paths.Length,data.build_cost_resource_ids.Length);
-    private string building_cost_item_path(BuildingData data,int index)
-    {
-        if (index < data.build_cost_item_paths.Length && !string.IsNullOrEmpty(data.build_cost_item_paths[index])) return data.build_cost_item_paths[index];
-        return index < data.build_cost_resource_ids.Length ? get_resource_item_path(data.build_cost_resource_ids[index]) : "";
-    }
-    private string format_building_cost(BuildingData data)
-    {
-        var parts=new List<string>();
-        for(var i=0;i<building_cost_count(data);i++)
-        {
-            var path=building_cost_item_path(data,i); var name=ResourceLoader.Load<ItemData>(path)?.entity_name ?? (i<data.build_cost_resource_ids.Length ? EstateResourceSystem.get_display_name(data.build_cost_resource_ids[i]) : "物资");
-            parts.Add($"{name} { (i<data.build_cost_counts.Length?data.build_cost_counts[i]:1)}");
-        }
-        return parts.Count==0?"无需基础物资":string.Join("　",parts);
-    }
     public Godot.Collections.Array get_village_home_characters(){return roster_array();}
     public Godot.Collections.Array get_player_characters()=>get_village_home_characters(); public void process_character_labor(Character character,float hours){if(!GodotObject.IsInstanceValid(character)||hours<=0)return;character.spend_stamina(Mathf.CeilToInt(hours));}
     public void show_village_building_info(Vector2I _,Building building)=>show_message(building.entity_name,building.entity_data is BuildingData data?data.summary:"");
@@ -1182,14 +1112,7 @@ public partial class MainScene : Node2D
         if(npc is not null) story_dialogue?.show_npc_speech(speaker,body,npc,on_closed);
         else story_dialogue?.show_npc_speech(speaker,body,on_closed);
     }
-    private static WorldNpcData? resolve_scripted_dialogue_npc(string speaker) => speaker switch
-    {
-        "李守拙" => new WorldNpcData { npc_id="qingxi_li_shouzhuo", npc_name="李守拙", gender=0, appearance_seed=860118, current_age=54, cultivation_realm="云息六层", faction_id="qingxi_village" },
-        "周满仓" => new WorldNpcData { npc_id="qingxi_zhou_mancang", npc_name="周满仓", gender=0, appearance_seed=860119, current_age=43, cultivation_realm="凡人", faction_id="qingxi_village" },
-        "陈素秋" => new WorldNpcData { npc_id="qingxi_chen_suqiu", npc_name="陈素秋", gender=1, appearance_seed=860120, current_age=36, cultivation_realm="凡人", faction_id="qingxi_village" },
-        "吴承安" => new WorldNpcData { npc_id="qingxi_wu_chengan", npc_name="吴承安", gender=0, appearance_seed=860121, current_age=28, cultivation_realm="凡人", faction_id="qingxi_village" },
-        _ => null,
-    };
+    private static WorldNpcData? resolve_scripted_dialogue_npc(string speaker) => QingxiResidentAppearance.Find(speaker);
     private void show_player_thought(string body,Action? on_closed=null)
     {
         if(player is not null) story_dialogue?.show_player_thought(player.entity_name,body,player,on_closed);

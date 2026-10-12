@@ -9,10 +9,15 @@ public partial class MainScene
     private const string YuxuYaopuWatchDutyId = "yaopu_watch";
     private const string YuxuYaopuCultivationDutyId = "yaopu_cultivate_mist_bell";
     private const string YuxuEastWoodsPatrolDutyId = "east_woods_patrol";
+    private const string YuxuEastWoodsConflictReviewDutyId = "east_woods_conflict_review";
+    private const string YuxuTianwenPracticeDutyId = "tianwen_practice";
     private const string YuxuBeastBoneSubmissionDutyId = "beast_bone_submission";
+    private const string YuxuBitterMossRootDutyId = "bitter_moss_root_submission";
+    private const string BitterMossRootItemPath = "res://resources/entities/items/苦苔根.tres";
     private const string MistBellFlowerItemPath = "res://resources/entities/items/雾铃花.tres";
     private const string BeastBoneItemPath = "res://resources/entities/items/兽骨.tres";
     private const int YuxuStudyDutyContributionReward = YuxuSectPrototypeBalance.OfficialStudyDutyReward;
+    private const int YuxuTianwenPracticeDutyReward = 5;
 
     private string _player_current_yuxu_peak_id = "";
     private bool _yuxu_tianwen_practice_confirm_open;
@@ -87,6 +92,7 @@ public partial class MainScene
 
     public void on_yuxu_membership_state_changed()
     {
+        sync_social_membership_month();
         mark_save_dirty();
         refresh_yuxu_life_context();
     }
@@ -99,6 +105,15 @@ public partial class MainScene
 
     private void refresh_yuxu_life_context()
     {
+        if (player?.entity_data is HumanData dutyHuman)
+        {
+            if (dutyHuman.sect_affiliation_id == YuxuSectId)
+                reconcile_yuxu_conflict_duty_state(dutyHuman);
+            if (_east_woods_dungeon is not null)
+                _east_woods_dungeon.set_active_duty_context(dutyHuman.sect_affiliation_id == YuxuSectId ? dutyHuman.sect_active_yuxu_duty_id : "", dutyHuman.sect_active_yuxu_duty_stage, dutyHuman.sect_active_yuxu_duty_ready);
+        }
+        RefreshJournalTracker();
+        refresh_journal_entries();
         var overview = GetNodeOrNull<Node>("SceneLayer/YuxuXianzongOverview");
         if (overview is null || player?.entity_data is not HumanData human) return;
         var isMember = human.sect_affiliation_id == YuxuSectId;
@@ -115,26 +130,109 @@ public partial class MainScene
             human.sect_unclaimed_spirit_stones);
 
         var peakInterior = GetNodeOrNull<Node>("SceneLayer/YuxuXianzongOverview/PeakInterior");
+        var activeIncidentId = isMember && human.sect_active_yuxu_duty_id == YuxuEastWoodsConflictReviewDutyId
+            ? human.sect_active_yuxu_duty_incident_id
+            : "";
         peakInterior?.Call("set_sect_duty_context",
             isMember,
-            isMember ? human.sect_active_yuxu_duty_id : "");
+            isMember ? human.sect_active_yuxu_duty_id : "",
+            isMember && human.sect_active_yuxu_duty_ready,
+            isMember ? human.sect_active_yuxu_duty_stage : 0,
+            isMember && player.has_inventory_item(BeastBoneItemPath),
+            isMember ? player.get_inventory_total_count(BitterMossRootItemPath) : 0,
+            activeIncidentId,
+            isMember ? get_yuxu_conflict_case_summaries() : new Godot.Collections.Array<Godot.Collections.Dictionary>());
+        var isTrueDisciple = isMember && is_yuxu_true_disciple(human.sect_current_rank);
+        var npcManager = _npc_world ?? GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager");
+        var teacher = isTrueDisciple ? npcManager?.get_npc(human.sect_teacher_npc_id) : null;
+        var guide = isTrueDisciple ? npcManager?.get_npc(human.sect_guide_npc_id) : null;
+        var lineageBook = isTrueDisciple && !string.IsNullOrWhiteSpace(human.sect_lineage_gongfa_path)
+            ? ResourceLoader.Load<GongfaResource>(human.sect_lineage_gongfa_path)
+            : null;
+        var lineageFirst = lineageBook?.get_sorted_chapters().FirstOrDefault();
+        var lineageFirstComplete = lineageBook is not null && lineageFirst is not null &&
+            player.is_gongfa_chapter_learned(lineageBook, lineageFirst.get_id());
+        peakInterior?.Call("set_lineage_context",
+            isTrueDisciple,
+            teacher?.npc_name ?? "",
+            guide?.npc_name ?? "",
+            lineageBook?.gongfa_name ?? "",
+            lineageFirstComplete,
+            isTrueDisciple && human.sect_lineage_reported_first_volume);
         peakInterior?.Call("set_contribution_balance",
             isMember ? human.get_yuxu_contribution_total() : 0L);
         if (_east_woods_dungeon is not null)
             _east_woods_dungeon.set_active_duty_context(
                 isMember ? human.sect_active_yuxu_duty_id : "",
-                isMember ? human.sect_active_yuxu_duty_stage : 0);
+                isMember ? human.sect_active_yuxu_duty_stage : 0,
+                isMember && human.sect_active_yuxu_duty_ready);
     }
 
     private static bool is_supported_yuxu_duty(string dutyId)
-        => dutyId is YuxuStudyDutyId or YuxuYaopuWatchDutyId or YuxuYaopuCultivationDutyId or YuxuEastWoodsPatrolDutyId or YuxuBeastBoneSubmissionDutyId;
+        => dutyId is YuxuStudyDutyId or YuxuYaopuWatchDutyId or YuxuYaopuCultivationDutyId or YuxuEastWoodsPatrolDutyId or YuxuEastWoodsConflictReviewDutyId or YuxuTianwenPracticeDutyId or YuxuBeastBoneSubmissionDutyId or YuxuBitterMossRootDutyId;
 
     private static void clear_active_yuxu_duty(HumanData human)
     {
         human.sect_active_yuxu_duty_id = "";
         human.sect_active_yuxu_duty_instance_id = "";
+        human.sect_active_yuxu_duty_incident_id = "";
         human.sect_active_yuxu_duty_started_hour = -1;
         human.sect_active_yuxu_duty_stage = 0;
+        human.sect_active_yuxu_duty_ready = false;
+    }
+
+    private void reconcile_yuxu_conflict_duty_state(HumanData human)
+    {
+        if (_npc_world is null) return;
+        var changed = _npc_world.reconcile_east_woods_submissions(incidentId =>
+        {
+            var sourceId = $"yuxu:official:{YuxuEastWoodsConflictReviewDutyId}:{incidentId}";
+            return human.sect_contribution_records.Any(record => record is not null && record.source_transaction_id == sourceId);
+        });
+        var activeCaseId = human.sect_active_yuxu_duty_id == YuxuEastWoodsConflictReviewDutyId
+            ? human.sect_active_yuxu_duty_incident_id
+            : "";
+        var activeInstanceId = activeCaseId.Length > 0 ? human.sect_active_yuxu_duty_instance_id : "";
+        changed |= _npc_world.reconcile_east_woods_assignments(activeCaseId, activeInstanceId);
+
+        if (human.sect_active_yuxu_duty_id == YuxuEastWoodsConflictReviewDutyId)
+        {
+            var incident = _npc_world.get_east_woods_incident(human.sect_active_yuxu_duty_incident_id);
+            if (incident is null || incident.case_status != EastWoodsNpcIncidentRecord.StatusAssigned ||
+                incident.assigned_duty_instance_id != human.sect_active_yuxu_duty_instance_id)
+            {
+                clear_active_yuxu_duty(human);
+                changed = true;
+            }
+        }
+        else if (!string.IsNullOrWhiteSpace(human.sect_active_yuxu_duty_incident_id))
+        {
+            human.sect_active_yuxu_duty_incident_id = "";
+            changed = true;
+        }
+        if (changed) mark_save_dirty();
+    }
+
+    private Godot.Collections.Array<Godot.Collections.Dictionary> get_yuxu_conflict_case_summaries()
+    {
+        var summaries = new Godot.Collections.Array<Godot.Collections.Dictionary>();
+        if (_npc_world is null) return summaries;
+        foreach (var incident in _npc_world.get_east_woods_incidents_for_review())
+        {
+            summaries.Add(new Godot.Collections.Dictionary
+            {
+                ["incident_id"] = incident.incident_id,
+                ["occurred_at"] = incident.occurred_at,
+                ["location_name"] = incident.location_name,
+                ["route_node_id"] = incident.route_node_id,
+                ["attacker_npc_id"] = incident.attacker_npc_id,
+                ["attacker_npc_name"] = incident.attacker_npc_name,
+                ["target_npc_id"] = incident.target_npc_id,
+                ["target_npc_name"] = incident.target_npc_name,
+                ["case_status"] = incident.case_status,
+            });
+        }
+        return summaries;
     }
 
     private void handle_yuxu_yaopu_action(string actionId, HumanData human)
@@ -226,27 +324,41 @@ public partial class MainScene
             return;
         }
 
-        var elapsed = Math.Max(0, cultivationTime.get_total_game_hours() - human.sect_active_yuxu_duty_started_hour);
-        var required = YuxuSectPrototypeBalance.YaopuCultivationHours;
-        if (elapsed < required)
+        var harvestReadyForSettlement = human.sect_active_yuxu_duty_stage >= 2;
+        if (!harvestReadyForSettlement)
         {
-            var remaining = required - elapsed;
-            show_message("雾铃花尚未成熟", $"苗株已生长 {elapsed} / {required} 个游戏时辰；还需 {remaining} 个游戏时辰。你可以先处理其他事务，之后再回来。");
-            return;
+            var elapsed = Math.Max(0, cultivationTime.get_total_game_hours() - human.sect_active_yuxu_duty_started_hour);
+            var required = YuxuSectPrototypeBalance.YaopuCultivationHours;
+            if (elapsed < required)
+            {
+                var remaining = required - elapsed;
+                show_message("雾铃花尚未成熟", $"苗株已生长 {elapsed} / {required} 个游戏时辰；还需 {remaining} 个游戏时辰。你可以先处理其他事务，之后再回来。");
+                return;
+            }
         }
 
         var yieldCount = YuxuSectPrototypeBalance.YaopuCultivationYieldCount;
         var deliveryCount = YuxuSectPrototypeBalance.YaopuCultivationSectDeliveryCount;
         var keptCount = Math.Max(0, yieldCount - deliveryCount);
-        if (!player.add_item_to_inventory(MistBellFlowerItemPath, yieldCount))
+        if (!harvestReadyForSettlement && !player.add_item_to_inventory(MistBellFlowerItemPath, yieldCount))
         {
             show_message("行囊已满", $"雾铃花已成熟，但行囊无法容纳 {yieldCount} 株；整理行囊后再来采收。任务进度会保留。");
             return;
         }
+        if (!harvestReadyForSettlement)
+        {
+            human.sect_active_yuxu_duty_stage = 2;
+            mark_save_dirty();
+            refresh_yuxu_life_context();
+        }
+        if (player.get_inventory_total_count(MistBellFlowerItemPath) < deliveryCount)
+        {
+            show_message("尚缺交付物", $"本次采收已记入事务进度；提交仍需雾铃花 ×{deliveryCount}，物品不足时可补足后再来。");
+            return;
+        }
         if (!player.remove_item_from_inventory(MistBellFlowerItemPath, deliveryCount))
         {
-            player.remove_item_from_inventory(MistBellFlowerItemPath, yieldCount);
-            show_message("交收未完成", "雾铃花交收数量发生变化，采收已撤回；事务进度保留，可稍后重试。");
+            show_message("交收未完成", "雾铃花交收数量发生变化；已采收物品留在行囊，事务进度保留，可稍后重试。");
             return;
         }
         if (!settle_yuxu_official_duty(
@@ -256,9 +368,11 @@ public partial class MainScene
                 human.sect_active_yuxu_duty_instance_id,
                 $"培护并采收雾铃花 ×{yieldCount}；交宗门 ×{deliveryCount}，弟子自留 ×{keptCount}；等待二十四个游戏时辰。",
                 $"雾铃花 ×{deliveryCount} 已交宗门，×{keptCount} 留归弟子。",
-                rollback: () => player?.remove_item_from_inventory(MistBellFlowerItemPath, keptCount),
+                rollback: () => player?.add_item_to_inventory(MistBellFlowerItemPath, deliveryCount) ?? false,
                 rewardOverride: YuxuSectPrototypeBalance.OfficialYaopuCultivationReward,
-                itemMessage: $"雾铃花 ×{keptCount} 已留入行囊。 "))
+                itemMessage: $"雾铃花 ×{keptCount} 已留入行囊。 ",
+                treasuryItemPath: MistBellFlowerItemPath,
+                treasuryItemCount: deliveryCount))
             return;
     }
 
@@ -273,6 +387,7 @@ public partial class MainScene
             show_message("巡线暂停", "游戏历法尚未就绪，本次节点行进没有计入巡线进度。");
             return;
         }
+        if (human.sect_active_yuxu_duty_ready) return;
         human.sect_active_yuxu_duty_stage++;
         mark_save_dirty();
         refresh_yuxu_life_context();
@@ -282,14 +397,10 @@ public partial class MainScene
             show_message("巡线尚未完成", "已到静冠洼地，但标定路线尚未走完；继续按路线巡回后再回此处复核。");
             return;
         }
-        settle_yuxu_official_duty(
-                human,
-                YuxuEastWoodsPatrolDutyId,
-                "东林地巡查",
-                human.sect_active_yuxu_duty_instance_id,
-                $"沿标定路线推进 {human.sect_active_yuxu_duty_stage} 个节点并完成复核；节点耗时按基础值与当前遁速结算，不消耗物资。",
-                "巡线各处未见异常，记录已回报。",
-                null);
+        human.sect_active_yuxu_duty_ready = true;
+        mark_save_dirty();
+        refresh_yuxu_life_context();
+        _east_woods_dungeon?.show_action_result("巡查复核完成", "本次巡线未见需要处理的异常。记录已保留，请沿林径返回林缘，离开后前往和光峰宗门事务处回报；贡献尚未核发。");
     }
 
     private bool settle_yuxu_official_duty(
@@ -299,21 +410,44 @@ public partial class MainScene
         string transactionSuffix,
         string costSummary,
         string resultSummary,
-        Action? rollback = null,
+        Func<bool>? rollback = null,
         int rewardOverride = 0,
-        string itemMessage = "")
+        string itemMessage = "",
+        string treasuryItemPath = "",
+        int treasuryItemCount = 0)
     {
-        if (player is null) return false;
-        if (human.sect_active_yuxu_duty_id != dutyId)
+        bool try_rollback_consumed_items()
         {
-            rollback?.Invoke();
+            if (rollback is null || rollback()) return true;
+            GD.PushError($"玉虚事务 {dutyId} / {transactionSuffix} 回滚行囊物品失败。");
+            return false;
+        }
+
+        if (player is null)
+        {
+            try_rollback_consumed_items();
+            return false;
+        }
+        if (human.sect_active_yuxu_duty_id != dutyId ||
+            string.IsNullOrWhiteSpace(transactionSuffix) ||
+            human.sect_active_yuxu_duty_instance_id != transactionSuffix)
+        {
+            try_rollback_consumed_items();
+            return false;
+        }
+        if (treasuryItemCount < 0 ||
+            (treasuryItemCount == 0) != string.IsNullOrWhiteSpace(treasuryItemPath))
+        {
+            try_rollback_consumed_items();
+            show_message("事务未结算", "公库物资数量或物品定义无效；交付物已退回，未发放贡献。");
             return false;
         }
         var reward = rewardOverride > 0 ? rewardOverride : YuxuSectPrototypeBalance.OfficialYaopuDutyReward;
+        var sourceTransactionId = $"yuxu:official:{dutyId}:{transactionSuffix}";
         var record = new YuxuSectContributionRecord
         {
             record_id = Guid.NewGuid().ToString("N"),
-            source_transaction_id = $"yuxu:official:{dutyId}:{(string.IsNullOrWhiteSpace(transactionSuffix) ? Guid.NewGuid().ToString("N") : transactionSuffix)}",
+            source_transaction_id = sourceTransactionId,
             transaction_kind = YuxuSectContributionRecord.KindOfficialDutyReward,
             source_title = $"宗门公事·{title}",
             occurred_at = get_yuxu_contribution_timestamp(),
@@ -321,10 +455,35 @@ public partial class MainScene
             cost_summary = costSummary,
             result_summary = $"{resultSummary} 核发 {reward} 点贡献。"
         };
+
+        var treasuryRecordAdded = false;
+        if (treasuryItemCount > 0)
+        {
+            var treasuryRecord = new YuxuSectTreasuryRecord
+            {
+                record_id = Guid.NewGuid().ToString("N"),
+                source_transaction_id = sourceTransactionId,
+                source_duty_id = dutyId,
+                movement_kind = YuxuSectTreasuryRecord.KindDeposit,
+                item_path = treasuryItemPath,
+                quantity = treasuryItemCount,
+                source_title = $"宗门公事·{title}",
+                occurred_at = record.occurred_at,
+            };
+            if (!_yuxu_sect_treasury_ledger.try_record_movement(treasuryRecord))
+            {
+                try_rollback_consumed_items();
+                show_message("事务未结算", "公库入库流水无法登记；交付物已退回，未发放贡献。可检查事务状态后再试。");
+                return false;
+            }
+            treasuryRecordAdded = true;
+        }
         if (!human.record_yuxu_contribution(record))
         {
-            rollback?.Invoke();
-            show_message("事务未结算", "这项事务的流水无法登记；物品奖励已回退，未发放贡献。可检查事务状态后再试。");
+            if (treasuryRecordAdded)
+                _yuxu_sect_treasury_ledger.remove_record_by_source_transaction(sourceTransactionId);
+            try_rollback_consumed_items();
+            show_message("事务未结算", "公事回执/贡献流水无法登记；公库账已回退，交付物已退回，未发放贡献。可检查事务状态后再试。");
             return false;
         }
         clear_active_yuxu_duty(human);
@@ -368,6 +527,30 @@ public partial class MainScene
             !is_supported_yuxu_life_rank(human.sect_current_rank))
             return;
 
+        if (peakId == "xuanlan" && actionId == "lineage_book_selection")
+        {
+            request_yuxu_lineage_book_choice(human);
+            return;
+        }
+
+        if (peakId == "zifu" && actionId == "lineage_choose_teacher")
+        {
+            request_yuxu_lineage_teacher_choice(human);
+            return;
+        }
+
+        if (peakId == "zifu" && actionId == "lineage_report")
+        {
+            report_yuxu_lineage_first_volume(human);
+            return;
+        }
+
+        if (peakId == "zhizhong" && actionId == "zhizhong_case_review")
+        {
+            show_yuxu_conflict_review_dialog(human);
+            return;
+        }
+
         if (peakId == "heguang")
         {
             handle_yuxu_heguang_action(actionId, human);
@@ -383,6 +566,17 @@ public partial class MainScene
         if (peakId == "tianwen" && actionId == "tianwen_practice")
         {
             request_yuxu_tianwen_practice();
+            return;
+        }
+
+        if (peakId == "tiangong" && actionId == "tiangong_baigong")
+        {
+            var overview = GetNodeOrNull<Control>("SceneLayer/YuxuXianzongOverview");
+            if (_player_current_yuxu_peak_id != "tiangong" || overview?.Visible != true ||
+                overview.GetNodeOrNull<Control>("PeakInterior")?.Visible != true)
+                return;
+            if (baigong is not null && player is not null)
+                baigong.show_for(player);
             return;
         }
 
@@ -417,27 +611,41 @@ public partial class MainScene
         if (actionId.StartsWith(submitDutyPrefix, StringComparison.Ordinal))
         {
             var dutyId = actionId[submitDutyPrefix.Length..];
-            if (dutyId != YuxuBeastBoneSubmissionDutyId || human.sect_active_yuxu_duty_id != dutyId) return;
-            if (player is null || !player.has_inventory_item(BeastBoneItemPath))
+            if (human.sect_affiliation_id != YuxuSectId || _player_current_yuxu_peak_id != "heguang" || _east_woods_dungeon?.Visible == true) return;
+            if (dutyId == YuxuEastWoodsPatrolDutyId)
             {
-                show_message("尚缺交付物", "上缴兽骨需携带一份现有物品“兽骨”；可通过击败已有妖兽取得，再回此处提交。");
+                if (human.sect_active_yuxu_duty_id != dutyId || !human.sect_active_yuxu_duty_ready) return;
+                settle_yuxu_official_duty(human, dutyId, "东林地巡查", human.sect_active_yuxu_duty_instance_id,
+                    $"沿标定路线推进 {human.sect_active_yuxu_duty_stage} 个节点并在静冠洼地复核；返回和光峰回报，无物品消耗。", "巡线记录已收讫，沿途未见异常。");
                 return;
             }
-            if (!player.remove_item_from_inventory(BeastBoneItemPath))
+            if (dutyId is not (YuxuBeastBoneSubmissionDutyId or YuxuBitterMossRootDutyId) || human.sect_active_yuxu_duty_id != dutyId) return;
+            var isRoot = dutyId == YuxuBitterMossRootDutyId;
+            var itemPath = isRoot ? BitterMossRootItemPath : BeastBoneItemPath;
+            var itemName = isRoot ? "苦苔根" : "兽骨";
+            var quantity = isRoot ? YuxuSectPrototypeBalance.BitterMossRootSubmissionCount : 1;
+            if (player is null || player.get_inventory_total_count(itemPath) < quantity)
             {
-                show_message("提交未完成", "兽骨数量发生变化，未扣除物品或发放贡献。");
+                show_message("尚缺交付物", $"需携带{itemName} ×{quantity}，回和光峰提交；已有存货也可交付。");
+                return;
+            }
+            if (!player.remove_item_from_inventory(itemPath, quantity))
+            {
+                show_message("提交未完成", $"{itemName}数量发生变化，未扣除物品或发放贡献。");
                 return;
             }
             settle_yuxu_official_duty(
                 human,
-                YuxuBeastBoneSubmissionDutyId,
-                "上缴兽骨",
+                dutyId,
+                isRoot ? "苦苔根交付" : "上缴兽骨",
                 human.sect_active_yuxu_duty_instance_id,
-                "提交现有妖兽掉落物兽骨 ×1，由宗门登记。",
-                "兽骨已收讫并完成登记。",
-                rollback: () => player?.add_item_to_inventory(BeastBoneItemPath),
-                rewardOverride: YuxuSectPrototypeBalance.OfficialBeastDropSubmissionReward,
-                itemMessage: "兽骨 ×1 已交宗门。 ");
+                $"提交{itemName} ×{quantity}，由宗门登记。",
+                $"{itemName}已收讫并完成登记。",
+                rollback: () => player?.add_item_to_inventory(itemPath, quantity) ?? false,
+                rewardOverride: isRoot ? YuxuSectPrototypeBalance.OfficialBitterMossRootSubmissionReward : YuxuSectPrototypeBalance.OfficialBeastDropSubmissionReward,
+                itemMessage: $"{itemName} ×{quantity} 已交宗门。 ",
+                treasuryItemPath: isRoot ? "" : itemPath,
+                treasuryItemCount: isRoot ? 0 : quantity);
             return;
         }
 
@@ -445,7 +653,24 @@ public partial class MainScene
         if (actionId.StartsWith(acceptDutyPrefix, StringComparison.Ordinal))
         {
             var dutyId = actionId[acceptDutyPrefix.Length..];
+            var incidentId = "";
+            var incidentDutyPrefix = YuxuEastWoodsConflictReviewDutyId + ":";
+            if (dutyId.StartsWith(incidentDutyPrefix, StringComparison.Ordinal))
+            {
+                incidentId = dutyId[incidentDutyPrefix.Length..];
+                dutyId = YuxuEastWoodsConflictReviewDutyId;
+            }
             if (!is_supported_yuxu_duty(dutyId)) return;
+            if (dutyId == YuxuEastWoodsConflictReviewDutyId)
+            {
+                var incident = _npc_world?.get_east_woods_incident(incidentId);
+                if (string.IsNullOrWhiteSpace(incidentId) || incident is null || incident.case_status != EastWoodsNpcIncidentRecord.StatusAvailable)
+                {
+                    refresh_yuxu_life_context();
+                    show_message("案件已不可接取", "该事件已被接取、上呈或不再存在；事务板已更新，未产生贡献流水。");
+                    return;
+                }
+            }
             if (dutyId == YuxuStudyDutyId && !has_available_yuxu_study_chapter())
             {
                 refresh_yuxu_life_context();
@@ -454,6 +679,7 @@ public partial class MainScene
             }
             if (!string.IsNullOrWhiteSpace(human.sect_active_yuxu_duty_id) && human.sect_active_yuxu_duty_id != dutyId)
             {
+                refresh_yuxu_life_context();
                 show_message("宗门事务", "你已有一项事务在办；可先打开该事务并取消接取。");
                 return;
             }
@@ -462,10 +688,20 @@ public partial class MainScene
                 refresh_yuxu_life_context();
                 return;
             }
+            var dutyInstanceId = Guid.NewGuid().ToString("N");
+            if (dutyId == YuxuEastWoodsConflictReviewDutyId &&
+                _npc_world?.try_assign_east_woods_incident(incidentId, dutyInstanceId) != true)
+            {
+                refresh_yuxu_life_context();
+                show_message("案件已不可接取", "此事件已不在可接取状态；没有变更人物关系或发放贡献。");
+                return;
+            }
             human.sect_active_yuxu_duty_id = dutyId;
-            human.sect_active_yuxu_duty_instance_id = Guid.NewGuid().ToString("N");
+            human.sect_active_yuxu_duty_instance_id = dutyInstanceId;
+            human.sect_active_yuxu_duty_incident_id = incidentId;
             human.sect_active_yuxu_duty_started_hour = -1;
             human.sect_active_yuxu_duty_stage = 0;
+            human.sect_active_yuxu_duty_ready = false;
             mark_save_dirty();
             refresh_yuxu_life_context();
             show_message("接取事务", dutyId switch
@@ -473,8 +709,11 @@ public partial class MainScene
                 YuxuStudyDutyId => "已接取静室研习。按弟子身份前往所属静室，完成一卷当前可研读的秘籍即可交由宗门核验；可随时回和光峰取消。",
                 YuxuYaopuWatchDutyId => "已接取药园值守。前往瑶圃峰，在药园当值四个游戏时辰；完成后核发贡献。",
                 YuxuYaopuCultivationDutyId => "已接取雾铃花培育。前往瑶圃峰照料苗株，等待一个游戏昼夜后采收；四株中三株交宗门，一株自留。",
-                YuxuEastWoodsPatrolDutyId => "已接取东林地巡查。进入东林地副本，沿路线至少推进四个节点，并在静冠洼地复核；节点耗时按当前遁速动态结算，不采集资源。",
+                YuxuEastWoodsPatrolDutyId => "已接取东林地巡查。进入东林地副本，沿路线至少推进四个节点，在静冠洼地复核后回和光峰回报；节点耗时按当前遁速动态结算，不要求探查、采集或杀怪。",
+                YuxuEastWoodsConflictReviewDutyId => $"已接取东林地冲突核验，案卷 ID：{incidentId}。此事务固定关联该事件；前往执中峰查看结构化来源事实，核验后上呈。",
+                YuxuTianwenPracticeDutyId => $"已接取天问峰演法公事。前往天问峰完成一场现有林地凶狼演练并回传结果；不要求获胜，结果回传后核发 {YuxuTianwenPracticeDutyReward} 点贡献，不掉落物品。",
                 YuxuBeastBoneSubmissionDutyId => "已接取兽骨上缴。携带一份现有妖兽掉落物兽骨，回到此处打开详情并提交。",
+                YuxuBitterMossRootDutyId => "已接取苦苔根交付。可在东林地林地、阴湿地带探查采集；携带苦苔根两份回和光峰提交，奖励5贡献。已有存货也可交付。",
                 _ => "已接取宗门事务。"
             });
             return;
@@ -484,13 +723,153 @@ public partial class MainScene
         if (actionId.StartsWith(cancelDutyPrefix, StringComparison.Ordinal))
         {
             var dutyId = actionId[cancelDutyPrefix.Length..];
+            var incidentId = "";
+            var incidentDutyPrefix = YuxuEastWoodsConflictReviewDutyId + ":";
+            if (dutyId.StartsWith(incidentDutyPrefix, StringComparison.Ordinal))
+            {
+                incidentId = dutyId[incidentDutyPrefix.Length..];
+                dutyId = YuxuEastWoodsConflictReviewDutyId;
+            }
             if (human.sect_active_yuxu_duty_id != dutyId) return;
+            if (dutyId == YuxuEastWoodsConflictReviewDutyId)
+            {
+                if (human.sect_active_yuxu_duty_incident_id != incidentId ||
+                    _npc_world?.release_east_woods_incident(incidentId, human.sect_active_yuxu_duty_instance_id) != true)
+                {
+                    refresh_yuxu_life_context();
+                    return;
+                }
+            }
             clear_active_yuxu_duty(human);
             mark_save_dirty();
             refresh_yuxu_life_context();
             show_message("取消接取", "已取消这项事务。贡献和物品均未发生变化。");
             return;
         }
+    }
+
+    private void show_yuxu_conflict_review_dialog(HumanData human)
+    {
+        var overview = GetNodeOrNull<Control>("SceneLayer/YuxuXianzongOverview");
+        var interior = overview?.GetNodeOrNull<Control>("PeakInterior");
+        var incidentId = human.sect_active_yuxu_duty_incident_id;
+        var incident = _npc_world?.get_east_woods_incident(incidentId);
+        if (_player_current_yuxu_peak_id != "zhizhong" || overview?.Visible != true || interior?.Visible != true ||
+            human.sect_active_yuxu_duty_id != YuxuEastWoodsConflictReviewDutyId || incident is null ||
+            incident.case_status != EastWoodsNpcIncidentRecord.StatusAssigned ||
+            incident.assigned_duty_instance_id != human.sect_active_yuxu_duty_instance_id)
+        {
+            show_message("暂无待核验案卷", "请先在和光峰事务板接取一件仍可核验的东林地 NPC 冲突，再到执中峰查看来源事实。");
+            return;
+        }
+
+        var dutyInstanceId = human.sect_active_yuxu_duty_instance_id;
+        var dialog = new ConfirmationDialog
+        {
+            Title = "执中峰 · 案件核验",
+            DialogText = format_yuxu_conflict_incident_facts(incident),
+            OkButtonText = "核验并上呈",
+            CancelButtonText = "返回案卷",
+            MinSize = new Vector2I(960, 560),
+        };
+        dialog.Confirmed += () =>
+        {
+            submit_yuxu_conflict_incident(human, incidentId, dutyInstanceId);
+            dialog.QueueFree();
+        };
+        dialog.Canceled += () => dialog.QueueFree();
+        GetNode<CanvasLayer>("CanvasLayer").AddChild(dialog);
+        dialog.PopupCentered();
+    }
+
+    private static string format_yuxu_conflict_incident_facts(EastWoodsNpcIncidentRecord incident)
+    {
+        var result = incident.battle_result switch
+        {
+            EastWoodsNpcIncidentRecord.ResultAttackerWon => "发起方战胜",
+            EastWoodsNpcIncidentRecord.ResultTargetWon => "被袭方战胜",
+            _ => "未分胜负",
+        };
+        var attackerPath = $"{incident.attacker_previous_node_id} → {incident.attacker_node_id}";
+        var targetPath = $"{incident.target_previous_node_id} → {incident.target_node_id}";
+        var lines = new System.Collections.Generic.List<string>
+        {
+            $"案卷 ID：{incident.incident_id}",
+            $"发生时间：{incident.occurred_at}（游戏时辰序 {incident.occurred_game_hour}）",
+            $"地点：{incident.location_name} · 路线节点 {incident.route_node_id}",
+            $"发起方：{incident.attacker_npc_name}（NPC ID：{incident.attacker_npc_id}；路线 {attackerPath}）",
+            $"被袭方：{incident.target_npc_name}（NPC ID：{incident.target_npc_id}；路线 {targetPath}）",
+            $"战斗结果：{result}",
+            $"死亡事实：发起方{(incident.attacker_died ? "死亡" : "未死亡")}；被袭方{(incident.target_died ? "死亡" : "未死亡")}",
+            "实际物品转移：",
+        };
+        if (incident.item_transfers is null || incident.item_transfers.Count == 0)
+        {
+            lines.Add("未发生实际物品转移。");
+        }
+        else
+        {
+            foreach (var transfer in incident.item_transfers)
+            {
+                if (transfer is null || transfer.quantity <= 0) continue;
+                var itemName = ResourceLoader.Load<ItemData>(transfer.item_path)?.entity_name ?? "物品";
+                lines.Add($"{itemName}（ItemData：{transfer.item_path}）×{transfer.quantity}；{transfer.from_npc_name}（{transfer.from_npc_id}）→ {transfer.to_npc_name}（{transfer.to_npc_id}）");
+            }
+        }
+        lines.Add("仅核对以上来源事实。确认后将上呈执中峰并结束本事务；本次不作责任判断、惩戒或关系处置。上呈状态为“待裁断”。");
+        return string.Join("\n", lines);
+    }
+
+    private void submit_yuxu_conflict_incident(HumanData human, string incidentId, string dutyInstanceId)
+    {
+        var overview = GetNodeOrNull<Control>("SceneLayer/YuxuXianzongOverview");
+        var interior = overview?.GetNodeOrNull<Control>("PeakInterior");
+        var incident = _npc_world?.get_east_woods_incident(incidentId);
+        if (player?.entity_data != human || human.sect_affiliation_id != YuxuSectId ||
+            _player_current_yuxu_peak_id != "zhizhong" || overview?.Visible != true || interior?.Visible != true ||
+            human.sect_active_yuxu_duty_id != YuxuEastWoodsConflictReviewDutyId ||
+            human.sect_active_yuxu_duty_incident_id != incidentId ||
+            human.sect_active_yuxu_duty_instance_id != dutyInstanceId || incident is null ||
+            incident.case_status != EastWoodsNpcIncidentRecord.StatusAssigned ||
+            incident.assigned_duty_instance_id != dutyInstanceId || _npc_world is null)
+        {
+            show_message("案卷状态已变化", "当前人物、接取事务或案卷状态已改变；没有结算贡献或更改案卷状态。");
+            refresh_yuxu_life_context();
+            return;
+        }
+
+        var transactionId = $"yuxu:official:{YuxuEastWoodsConflictReviewDutyId}:{incident.incident_id}";
+        var record = new YuxuSectContributionRecord
+        {
+            record_id = Guid.NewGuid().ToString("N"),
+            source_transaction_id = transactionId,
+            transaction_kind = YuxuSectContributionRecord.KindOfficialDutyReward,
+            source_title = "宗门公事·东林地冲突事实核验与上呈",
+            occurred_at = get_yuxu_contribution_timestamp(),
+            contribution_delta = YuxuSectPrototypeBalance.OfficialConflictVerificationReward,
+            cost_summary = $"核验并上呈东林地冲突案卷 {incident.incident_id} 的结构化来源事实；未消耗物品。",
+            result_summary = "来源事实已核验并上呈执中峰；状态为已上呈、待裁断，不作责任裁定。"
+        };
+        if (!human.record_yuxu_contribution(record))
+        {
+            show_message("案卷未结算", "贡献流水未能登记；案卷仍保留原接取状态，没有重复发放贡献。");
+            refresh_yuxu_life_context();
+            return;
+        }
+        if (!_npc_world.try_submit_east_woods_incident(incident.incident_id, dutyInstanceId, record.occurred_at))
+        {
+            if (!human.remove_yuxu_contribution(record.record_id))
+                GD.PushError($"执中峰案卷 {incident.incident_id} 上呈状态冲突后，无法回退尚未提交的贡献记录。");
+            show_message("案卷状态已变化", "案卷上呈状态未能登记，贡献流水已回退；请重新核对案卷状态。");
+            mark_save_dirty();
+            refresh_yuxu_life_context();
+            return;
+        }
+
+        clear_active_yuxu_duty(human);
+        mark_save_dirty();
+        refresh_yuxu_life_context();
+        show_message("案卷已上呈", $"东林地案卷 {incident.incident_id} 已上呈执中峰，当前状态为“已上呈·待裁断”。本期不处理最终裁断、申诉或责任后果；宗门核发 {YuxuSectPrototypeBalance.OfficialConflictVerificationReward} 点贡献。");
     }
 
     private bool has_available_yuxu_study_chapter()
@@ -515,9 +894,24 @@ public partial class MainScene
 
     private void on_yuxu_gongfa_chapter_completed(Character character, string bookName, string chapterId, string chapterName)
     {
-        if (character != player || player?.entity_data is not HumanData human ||
-            human.sect_affiliation_id != YuxuSectId || human.sect_active_yuxu_duty_id != YuxuStudyDutyId)
+        if (character != player || player?.entity_data is not HumanData human || human.sect_affiliation_id != YuxuSectId)
             return;
+
+        var bookPath = player.get_known_gongfas()
+            .FirstOrDefault(book => book is not null && book.gongfa_name == bookName)?.ResourcePath ?? bookName;
+        var lineageBook = string.IsNullOrWhiteSpace(human.sect_lineage_gongfa_path)
+            ? null
+            : ResourceLoader.Load<GongfaResource>(human.sect_lineage_gongfa_path);
+        var lineageFirstChapter = lineageBook?.get_sorted_chapters().FirstOrDefault();
+        if (!human.sect_lineage_reported_first_volume && lineageBook is not null && lineageFirstChapter is not null &&
+            bookPath == human.sect_lineage_gongfa_path && chapterId == lineageFirstChapter.get_id())
+        {
+            mark_save_dirty();
+            refresh_yuxu_life_context();
+            show_message("师门首卷已读成", $"《{bookName}》第一卷已经完成。回紫府峰向带教师兄/师姐汇报；本次研读仍按原秘籍规则结算。 ");
+        }
+
+        if (human.sect_active_yuxu_duty_id != YuxuStudyDutyId) return;
 
         var expectedPeak = is_yuxu_true_disciple(human.sect_current_rank) ? "zifu" : "guanfu";
         var overview = GetNodeOrNull<Control>("SceneLayer/YuxuXianzongOverview");
@@ -525,8 +919,6 @@ public partial class MainScene
             overview.GetNodeOrNull<Control>("PeakInterior")?.Visible != true)
             return;
 
-        var bookPath = player.get_known_gongfas()
-            .FirstOrDefault(book => book is not null && book.gongfa_name == bookName)?.ResourcePath ?? bookName;
         var transactionId = $"yuxu:official:{YuxuStudyDutyId}:{bookPath}:{chapterId}";
         var record = new YuxuSectContributionRecord
         {
@@ -713,10 +1105,15 @@ public partial class MainScene
     private void request_yuxu_tianwen_practice()
     {
         if (_yuxu_tianwen_practice_confirm_open || player is null) return;
+        var activeDutyId = player.entity_data is HumanData human ? human.sect_active_yuxu_duty_id : "";
+        var activeDutyInstanceId = player.entity_data is HumanData activeHuman ? activeHuman.sect_active_yuxu_duty_instance_id : "";
+        var dutyText = activeDutyId == YuxuTianwenPracticeDutyId && !string.IsNullOrWhiteSpace(activeDutyInstanceId)
+            ? $"你已接取天问峰演法公事。本场战斗结果回传后即核验并核发 {YuxuTianwenPracticeDutyReward} 点贡献；不要求获胜，不掉落物品。"
+            : "本场照常回传战斗结果，但不结算宗门贡献，也不掉落物品；可先到和光峰事务板接取演法公事。";
         var dialog = new ConfirmationDialog
         {
             Title = "天问峰 · 演法台",
-            DialogText = "以当前人物与技能配置，和按现有兽种资料生成的林地凶狼（凡兽）进行一场演练。战斗沿用正式战斗规则，战斗结果会照常回传；本场不掉落物品，也不结算宗门贡献。战斗中按 Esc 可结束并返回峰内。",
+            DialogText = $"以当前人物与技能配置，和按现有兽种资料生成的林地凶狼（凡兽）进行一场演练。战斗沿用正式战斗规则，战斗结果会照常回传。{dutyText}战斗中按 Esc 可结束并返回峰内。",
             OkButtonText = "开始演练",
             CancelButtonText = "暂不前往"
         };
@@ -776,7 +1173,12 @@ public partial class MainScene
 
         transition.set_battle_return_context(new Godot.Collections.Dictionary
         {
-            ["kind"] = "yuxu_tianwen_practice"
+            ["kind"] = "yuxu_tianwen_practice",
+            ["duty_instance_id"] = player.entity_data is HumanData human &&
+                human.sect_affiliation_id == YuxuSectId &&
+                human.sect_active_yuxu_duty_id == YuxuTianwenPracticeDutyId
+                    ? human.sect_active_yuxu_duty_instance_id
+                    : ""
         });
         transition.start_team_battle(
             new Godot.Collections.Array<PackedScene> { playerScene },
@@ -786,17 +1188,46 @@ public partial class MainScene
             GetTree().CurrentScene.SceneFilePath);
     }
 
-    public void show_yuxu_tianwen_practice_result(Godot.Collections.Dictionary summary)
+    public void show_yuxu_tianwen_practice_result(Godot.Collections.Dictionary summary, Godot.Collections.Dictionary context)
     {
+        // MainScene's deferred loaded-game presentation runs first; then restore the origin peak.
+        CallDeferred(nameof(restore_tianwen_practice_location));
         var attackersAlive = summary.GetValueOrDefault("attackers_alive", 0).AsInt32();
         var defendersAlive = summary.GetValueOrDefault("defenders_alive", 0).AsInt32();
         var outcome = summary.GetValueOrDefault("player_victory", false).AsBool()
             ? "你在本场演法中取胜。"
             : summary.GetValueOrDefault("is_draw", false).AsBool()
                 ? "双方同时倒下，本场演法以平局结束。"
-                : attackersAlive > 0 && defendersAlive > 0
+                : summary.GetValueOrDefault("escaped", false).AsBool()
+                    ? "本场演法以撤离结果结束。"
+                    : attackersAlive > 0 && defendersAlive > 0
                     ? "本场演法已由你提前结束。"
                     : "本场演法结束，你未能取胜。";
+        if (player?.entity_data is HumanData human &&
+            human.sect_affiliation_id == YuxuSectId &&
+            human.sect_active_yuxu_duty_id == YuxuTianwenPracticeDutyId &&
+            !string.IsNullOrWhiteSpace(human.sect_active_yuxu_duty_instance_id) &&
+            context.GetValueOrDefault("duty_instance_id", "").AsString() == human.sect_active_yuxu_duty_instance_id)
+        {
+            settle_yuxu_official_duty(
+                human,
+                YuxuTianwenPracticeDutyId,
+                "天问峰凶狼演法",
+                human.sect_active_yuxu_duty_instance_id,
+                "在天问峰完成一次林地凶狼演法并回传战斗结果；无物品消耗，不设胜负门槛。",
+                outcome.TrimEnd('。') + "演法结果已回传；不掉落物品。",
+                rewardOverride: YuxuTianwenPracticeDutyReward);
+            return;
+        }
         show_message("演法结束", outcome + "本场不发放物品或宗门贡献。");
+    }
+
+    private void restore_tianwen_practice_location()
+    {
+        if (_qingxi_prologue != QingxiPrologueStep.Departed || _player_world_node_id != "yuxu_xianzong_core") return;
+        estate?.Hide(); tile_world_map?.Hide(); node_map?.Hide(); location_interior?.Hide();
+        open_faction_overview_if_available(_player_world_node_id);
+        GetNodeOrNull<Node>("SceneLayer/YuxuXianzongOverview")?.Call("_on_peak_pressed", "tianwen");
+        mark_save_dirty();
     }
 }

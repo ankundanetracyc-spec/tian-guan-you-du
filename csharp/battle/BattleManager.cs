@@ -29,8 +29,8 @@ public partial class BattleManager : Node2D
     private BattlePlanHud? _planHud;
     private BattleStatusPanel? _statusPanel;
     private bool _returning_to_world;
-    private BodyCardRuntime? _bodyCards;
-    public BodyCardRuntime body_cards => _bodyCards ??= new BodyCardRuntime(this);
+    private GongfaCombatRuntime? _gongfaCombat;
+    public GongfaCombatRuntime gongfa_combat => _gongfaCombat ??= new GongfaCombatRuntime(this);
     private readonly HashSet<ulong> _chengjiResponses=[];
     private BattleUnitOverlay? unitOverlay;
     private float battleSpeed=1;

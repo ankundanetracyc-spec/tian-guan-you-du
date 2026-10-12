@@ -8,9 +8,8 @@ script = ExtResource("1")
 tags = Array[String](["生命","闪避","回复"])
 skill_name = "返照"
 skill_type = 2
-description = "气血-1并触发公共气血回落；获得身法2层。若本次气血回落后气血降至0层，额外获得身法1层。"
+description = "气血-1；触发气血层数降低时的回复效果；获得身法2层。若本次主动气血回落后气血降至0层，额外获得身法1层。"
 source_gongfa_name = "黄庭养形篇"
-gongfa_rewrite_effect_ids = Array[String](["huangting_c1_fanzhao"])
 energy_cost = 1
 target_type = 1
 special_effects = Array[Dictionary]([{"effect":"spend_qi_blood", "count":1}])
@@ -18,3 +17,5 @@ keywords = Array[String]([])
 preparation_frames = 0
 recovery_frames = 0
 cooldown_frames = 0
+
+gongfa_rewrite_effect_ids = Array[String](["huangting_c1_fanzhao"])

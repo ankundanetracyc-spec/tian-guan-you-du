@@ -45,8 +45,6 @@ public partial class PrologueGuide : Control
         _child.BreakthroughCompleted += on_breakthrough_completed;
     }
 
-    // 辖地可随时查看，不用一次打开操作打断幼子的修行线。
-    public void on_roster_opened() { }
     public void on_territory_opened(string section) { }
 
     public void on_character_opened(WorldEntity entity)

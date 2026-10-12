@@ -22,6 +22,7 @@ public partial class BattleManager
         foreach (var enemy in enemy_units.Where(Alive))
         {
             BuildAiQueue(enemy, forecast, false);
+            EnsureSegmentSlots(enemy);
             ApplyQueueForecast(enemy, forecast);
         }
     }
@@ -35,6 +36,7 @@ public partial class BattleManager
         foreach (var ally in player_units.Where(unit => Alive(unit) && unit != _mainPlayerUnit))
         {
             BuildAiQueue(ally, forecast, true);
+            EnsureSegmentSlots(ally);
             ApplyQueueForecast(ally, forecast);
         }
     }
@@ -48,6 +50,7 @@ public partial class BattleManager
         if (!Alive(unit) || !_combatSkills.TryGetValue(unit, out var loadout)) return;
         var queue = get_battle_unit(unit).skill_queue;
         queue.Clear();
+        get_battle_unit(unit).segment_action_index = 0;
         var stamina = unit.Get("current_stamina").AsInt32();
         var mana = unit.Get("current_mana").AsInt32();
         var staminaMax = unit.Get("max_stamina").AsInt32();
@@ -106,11 +109,11 @@ public partial class BattleManager
         AiCandidate? best = null;
         foreach (var skill in loadout)
         {
-            if (skill.skill_type == ActiveSkillData.SkillType.CURSE || !body_cards.CanPlay(unit, skill)) continue;
+            if (skill.skill_type == ActiveSkillData.SkillType.CURSE || !gongfa_combat.CanPlay(unit, skill)) continue;
             if (IsOncePerSegmentBodySkill(skill) && plannedLimitedSkills.Contains(skill.skill_name)) continue;
             if (!is_skill_ready(unit, skill)) continue;
-            var energyCost = get_skill_energy_cost(unit, skill);
-            var manaCost = get_skill_mana_cost(unit, skill);
+            var energyCost = AiReservedEnergyCost(unit, skill);
+            var manaCost = AiReservedManaCost(unit, skill);
             if (requireAffordable && (energyCost > stamina || manaCost > mana)) continue;
 
             foreach (var target in AiTargets(unit, skill))
@@ -144,11 +147,11 @@ public partial class BattleManager
         var useful = new List<(int priority, float score, int energyGap, int manaGap)>();
         foreach (var skill in loadout)
         {
-            if (skill.skill_type == ActiveSkillData.SkillType.CURSE || !body_cards.CanPlay(unit, skill)) continue;
+            if (skill.skill_type == ActiveSkillData.SkillType.CURSE || !gongfa_combat.CanPlay(unit, skill)) continue;
             if (IsOncePerSegmentBodySkill(skill) && plannedLimitedSkills.Contains(skill.skill_name)) continue;
             if (!is_skill_ready(unit, skill)) continue;
-            var energyCost = get_skill_energy_cost(unit, skill);
-            var manaCost = get_skill_mana_cost(unit, skill);
+            var energyCost = AiReservedEnergyCost(unit, skill);
+            var manaCost = AiReservedManaCost(unit, skill);
             var energyGap = Math.Max(0, energyCost - stamina);
             var manaGap = Math.Max(0, manaCost - mana);
             if (energyGap == 0 && manaGap == 0) continue;
@@ -176,6 +179,11 @@ public partial class BattleManager
         var manaShare = targetPlan.manaGap / (float)Math.Max(1, manaMax - mana);
         return energyShare >= manaShare ? BattleQueuedSkill.ActionKind.Rest : BattleQueuedSkill.ActionKind.Breathe;
     }
+
+    private int AiReservedEnergyCost(GodotObject unit, ActiveSkillData skill) => Math.Max(get_skill_energy_cost(unit, skill),
+        CardRules.NormalCast(skill) is { } normal ? get_skill_energy_cost(unit, normal) : 0);
+    private int AiReservedManaCost(GodotObject unit, ActiveSkillData skill) => Math.Max(get_skill_mana_cost(unit, skill),
+        CardRules.NormalCast(skill) is { } normal ? get_skill_mana_cost(unit, normal) : 0);
 
     private AiCandidate ScoreAiSkill(
         GodotObject unit,
@@ -280,11 +288,26 @@ public partial class BattleManager
         result.Score -= energyCost * 24f + manaCost * 30f;
         if (teammate && GodotObject.IsInstanceValid(target) && target!.Get("faction").AsInt32() != unit.Get("faction").AsInt32())
             result.Score += 0; // 队友对敌人的偏好来自共享血量预测，不读取敌方隐藏队列。
+        if (CardRules.IsResponse(skill))
+        {
+            // 应对状态只覆盖匹配来袭，不当作已经获得的常驻防护或确定的回复／伤害。
+            result.Damage = 0; result.Healing = 0; result.AppliedStatus = ""; result.StatusTarget = null;
+            if (CardRules.NormalCast(skill) is { } normal)
+            {
+                var ordinary = ScoreAiSkill(unit, normal, target, forecast, energyCost, manaCost, repeatCount, plannedStatuses, teammate);
+                if (ordinary.Priority > result.Priority || ordinary.Priority == result.Priority && ordinary.Score > result.Score)
+                {
+                    ordinary.Skill = skill;
+                    return ordinary;
+                }
+            }
+        }
         return result;
     }
 
     private IEnumerable<GodotObject?> AiTargets(GodotObject unit, ActiveSkillData skill)
     {
+        skill = CardRules.NormalCast(skill) ?? skill;
         if (skill.target_type == 0) { yield return unit; yield break; }
         var candidates = all_units.Where(Alive).Where(target =>
         {
@@ -349,7 +372,8 @@ public partial class BattleManager
         foreach (var action in get_battle_unit(unit).skill_queue)
         {
             if (action.kind != BattleQueuedSkill.ActionKind.Skill) continue;
-            var skill = action.skill;
+            var skill = CardRules.NormalCast(action.skill);
+            if (skill is null) continue;
             var target = GodotObject.IsInstanceValid(action.target) ? action.target : DefaultTarget(skill, unit);
             var damage = EstimateAiDamage(unit, skill, target, forecast);
             if (damage <= 0) continue;

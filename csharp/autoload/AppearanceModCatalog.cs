@@ -83,7 +83,7 @@ public partial class AppearanceModCatalog : Node
 		Dictionary config = parsed.AsGodotDictionary();
 		if (!config.GetValueOrDefault("enabled", false).AsBool())
 			return;
-		Dictionary scalePivots = read_scale_pivots(config);
+
 		Variant components = config.GetValueOrDefault("components", new Godot.Collections.Array());
 		if (components.VariantType != Variant.Type.Array)
 			return;
@@ -92,6 +92,7 @@ public partial class AppearanceModCatalog : Node
 			if (rawEntry.VariantType != Variant.Type.Dictionary)
 				continue;
 			Dictionary source = rawEntry.AsGodotDictionary();
+			Dictionary scalePivots=read_scale_pivots(config,source.GetValueOrDefault("gender","").AsString());
 			int variantCount = Math.Max(1, source.GetValueOrDefault("variant_count", 1).AsInt32());
 			for (int variantIndex = 0; variantIndex < variantCount; variantIndex++)
 			{
@@ -133,7 +134,7 @@ public partial class AppearanceModCatalog : Node
 		}
 	}
 
-	private static Dictionary read_scale_pivots(Dictionary config)
+	private static Dictionary read_scale_pivots(Dictionary config,string gender)
 	{
 		string rigPath = config.GetValueOrDefault("rig_file", "").AsString();
 		if (rigPath.Length > 0 && Godot.FileAccess.FileExists(rigPath))
@@ -141,9 +142,24 @@ public partial class AppearanceModCatalog : Node
 			Variant rigParsed = Json.ParseString(Godot.FileAccess.GetFileAsString(rigPath));
 			if (rigParsed.VariantType == Variant.Type.Dictionary)
 			{
-				Variant pivots = rigParsed.AsGodotDictionary().GetValueOrDefault("scale_pivots_normalized", new Dictionary());
-				if (pivots.VariantType == Variant.Type.Dictionary)
-					return pivots.AsGodotDictionary();
+				var rig=rigParsed.AsGodotDictionary();
+				var pivots=rig.GetValueOrDefault("scale_pivots_normalized",new Dictionary()).AsGodotDictionary();
+				if(pivots.Count>0)return pivots;
+				// 当前立绘骨架记录的是男女原图锚点，不是旧骨架的 scale_pivots 字段。
+				var families=rig.GetValueOrDefault("families",new Dictionary()).AsGodotDictionary();
+				var family=families.GetValueOrDefault(gender,new Dictionary()).AsGodotDictionary();
+				var anchors=family.GetValueOrDefault("anchors",new Dictionary()).AsGodotDictionary();
+				var head=anchors.GetValueOrDefault("head_axis",new Dictionary()).AsGodotDictionary();
+				var left=anchors.GetValueOrDefault("eye_left",new Dictionary()).AsGodotDictionary();
+				var right=anchors.GetValueOrDefault("eye_right",new Dictionary()).AsGodotDictionary();
+				if(head.TryGetValue("uv",out var h)&&left.TryGetValue("uv",out var l)&&right.TryGetValue("uv",out var r))
+				{
+					var hv=h.AsGodotArray();var lv=l.AsGodotArray();var rv=r.AsGodotArray();
+					return new Dictionary{
+						["face_and_feature_scale"]=new Dictionary{["x"]=hv[0],["y"]=hv[1]},
+						["eye_variant_scale"]=new Dictionary{["x"]=(lv[0].AsSingle()+rv[0].AsSingle())*.5f,["y"]=(lv[1].AsSingle()+rv[1].AsSingle())*.5f}
+					};
+				}
 			}
 		}
 		Variant fallback = config.GetValueOrDefault("scale_pivots_normalized", new Dictionary());

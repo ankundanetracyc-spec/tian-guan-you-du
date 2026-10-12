@@ -4,11 +4,12 @@
 
 [resource]
 script = ExtResource("1")
+non_response_skill = null
 tags = Array[String](["伤势", "防御"])
 skill_name = "卸力"
-icon_path = "res://textures/ui/combat/skill_icons/锻躯_卸力_v1.png"
+icon_path = "res://textures/ui/combat/skill_icons/基础技能_卸力_v1.png"
 skill_type = 5
-description = "敌方攻击自身时获得化解，化解层数按卸力原公式计算；每层抵消本次攻击1点物理伤害。该次攻击结算后，若自身生命实际减少，获得外伤2层。"
+description = "敌方攻击自身时获得化解，化解层数按卸力原公式计算；每层抵消本次攻击1点物理伤害。该次攻击结算后，若自身生命实际减少，获得外伤2层。\n未触发应对时空放，不消耗精力、法力或使用次数，不产生效果。"
 energy_cost = 1
 mana_cost = 0
 spirit_occupy = 0

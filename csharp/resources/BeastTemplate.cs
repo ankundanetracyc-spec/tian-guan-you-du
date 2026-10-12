@@ -10,6 +10,8 @@ public partial class BeastTemplate : Resource
     [Export] public Godot.Collections.Array<Godot.Collections.Dictionary> battle_loot = [];
     [Export] public string display_name = "";
     [Export] public string cultivation_realm = "凡兽";
+    [Export] public string cultivation_stage = "";
+    [Export(PropertyHint.File, "*.png,*.webp,*.jpg,*.svg")] public string battle_portrait_path = "";
     [Export] public float physique_min = 5f, physique_mean = 5f, physique_max = 5f;
     [Export] public float intelligence_min = 5f, intelligence_mean = 5f, intelligence_max = 5f;
     [Export] public float agility_min = 5f, agility_mean = 5f, agility_max = 5f;

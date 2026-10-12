@@ -72,17 +72,12 @@ public partial class CultivationDeckBuilder : RefCounted
             }
             return;
         }
-        if (unit is Character human) human.refresh_basic_deck_for_bearing();
+        if (unit is Character human) human.refresh_shared_basic_skill_pool();
         var path = GetBasicDeckPath(unit);
         if (string.IsNullOrEmpty(path)) return;
         var deck = ResourceLoader.Load<BasicDeckResource>(path);
         if (deck is null) return;
         var paths = deck.get_deck_skills();
-        foreach (var upgradeId in GetSelectedUpgrades(unit))
-        {
-            var upgrade = deck.get_upgrade_by_id(upgradeId);
-            if (upgrade is not null) paths = upgrade.apply_to_paths(paths);
-        }
         if (unit is Character character)
         {
             var rewrittenSkills = GongfaSkillRewriteRuntime.ApplyBasicSkillRewriteSkills(character, paths, out var rewrittenPaths);
@@ -117,18 +112,6 @@ public partial class CultivationDeckBuilder : RefCounted
         if (unit is Character human && !string.IsNullOrEmpty(human.basic_deck_path)) return human.basic_deck_path;
         if (unit.HasMeta("basic_deck_path")) return unit.GetMeta("basic_deck_path").AsString();
         return unit.Get("entity_data").AsGodotObject() is HumanData data ? data.basic_deck_path : "";
-    }
-
-    private static Array<string> GetSelectedUpgrades(GodotObject unit)
-    {
-        if (unit is Character human && human.entity_data is HumanData humanData) return humanData.basic_deck_upgrade_ids;
-        if (unit.HasMeta("basic_deck_upgrade_ids"))
-        {
-            Array<string> result = [];
-            foreach (var value in unit.GetMeta("basic_deck_upgrade_ids").AsGodotArray()) result.Add(value.AsString());
-            return result;
-        }
-        return unit.Get("entity_data").AsGodotObject() is HumanData data ? data.basic_deck_upgrade_ids : [];
     }
 
     public static Dictionary get_card_sources(GodotObject? data)

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="WorldSpellData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://csharp/gongfa/WorldSpellData.cs" id="1"]
+[ext_resource type="Texture2D" path="res://textures/ui/world/world_spell_wenmai_guiyuan_v1.png" id="2_icon"]
+
+[resource]
+script = ExtResource("1")
+spell_id = "buxu_wenmai_guiyuan"
+spell_name = "温脉归元"
+icon_texture = ExtResource("2_icon")
+use_type = "护持"
+cast_mode = "一次施展"
+scene = "世界地图静止时；行旅、战斗、事件及地点副本中不可用"
+target_rule = "自身；当前生命低于上限"
+resource_cost = "4点大世界体力"
+world_time = "施术后推进2小时，NPC与全局世界时间按统一时钟推进"
+effect = "回复生命 min(缺失生命, max(1, round(最大生命 × 10%))) 点。"
+usage_limit = "每连续24游戏小时至多1次"
+stop_and_failure = "生命已满、场景不合法、体力不足或距上次施术未满24小时，均不扣费、不推进时间。成功时先完成回复，再推进世界时间。"

@@ -3,6 +3,10 @@ using Godot.Collections;
 
 public partial class ActiveSkillData
 {
+    [ExportGroup("未触发应对时")]
+    /// <summary>独立的普通打出效果与费用；未配置则空放，不付费、不发动效果或消耗次数。不得引用应对技能。</summary>
+    [Export] public ActiveSkillData? non_response_skill;
+
     [ExportGroup("应对额外效果")]
     [Export] public Array<Dictionary> counter_special_effects = [];
     [Export] public Array<Dictionary> counter_status_effects = [];

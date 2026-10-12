@@ -21,21 +21,43 @@ public partial class CellCharacterList : Control
     private bool _expanded = true;
     private string _roster_context = "";
     private float _expanded_height = 150f;
+    private readonly System.Collections.Generic.Dictionary<Control, Action> _pendingPortraits = new();
+    private string _worldRosterStamp = "";
+
+    // Offscreen portraits are not composed. Limit visible portrait work to one per frame.
+    public override void _Process(double delta)
+    {
+        if (!_expanded || !IsVisibleInTree()) return;
+        var scroll = GetNodeOrNull<ScrollContainer>("ListPanel/CharacterScroll");
+        if (scroll is null) return;
+        foreach (var entry in _pendingPortraits)
+        {
+            if (!GodotObject.IsInstanceValid(entry.Key)) { _pendingPortraits.Remove(entry.Key); break; }
+            if (!entry.Key.GetGlobalRect().Intersects(scroll.GetGlobalRect())) continue;
+            _pendingPortraits.Remove(entry.Key);
+            entry.Value();
+            break;
+        }
+    }
 
     public override void _Ready()
     {
         AddToGroup("cell_character_list");
         MouseFilter = MouseFilterEnum.Pass;
+        MouseForcePassScrollEvents = false;
         _list_panel = GetNodeOrNull<Control>("ListPanel");
         _characters = GetNodeOrNull<Container>("ListPanel/CharacterScroll/CharacterVBox");
         _toggle_button = GetNodeOrNull<Button>("ListPanel/ToggleButton");
         if (_list_panel is not null)
         {
+            _list_panel.GuiInput += _GuiInput;
             _list_panel.AddThemeStyleboxOverride("panel", row_style(new Color(.86f, .81f, .69f, .92f), new Color(.42f, .35f, .24f, .72f), 10));
             build_header();
         }
         if (GetNodeOrNull<ScrollContainer>("ListPanel/CharacterScroll") is { } scroll)
         {
+            scroll.VerticalScrollMode = ScrollContainer.ScrollMode.Auto;
+            scroll.MouseForcePassScrollEvents = false;
             scroll.OffsetLeft = 14;
             scroll.OffsetTop = ContentTop;
             scroll.OffsetRight = -14;
@@ -60,6 +82,25 @@ public partial class CellCharacterList : Control
     }
 
     public Rect2 get_ui_rect() => GetNodeOrNull<Control>("ListPanel")?.GetGlobalRect() ?? GetGlobalRect();
+
+    /// <summary>Map input runs before GUI dispatch; let the visible roster own its wheel area.</summary>
+    public bool contains_roster_point(Vector2 viewport_position) => IsVisibleInTree() && _expanded &&
+        _list_panel is not null && new Rect2(Vector2.Zero, _list_panel.Size).HasPoint(
+            _list_panel.GetGlobalTransformWithCanvas().AffineInverse() * viewport_position);
+
+    public override void _GuiInput(InputEvent input)
+    {
+        // Also scroll over the title and padding. At either end consume the wheel,
+        // rather than letting it zoom the map underneath (including short lists).
+        if (!_expanded || !IsVisibleInTree() || input is not InputEventMouseButton wheel ||
+            wheel.ButtonIndex is not (MouseButton.WheelUp or MouseButton.WheelDown)) return;
+        if (wheel.Pressed && GetNodeOrNull<ScrollContainer>("ListPanel/CharacterScroll") is { } scroll)
+        {
+            var amount = Mathf.RoundToInt((RowHeight + RowSeparation) * (wheel.Factor > 0 ? wheel.Factor : 1));
+            scroll.ScrollVertical += wheel.ButtonIndex == MouseButton.WheelDown ? amount : -amount;
+        }
+        AcceptEvent();
+    }
 
     public void refresh_persistent()
     {
@@ -149,21 +190,39 @@ public partial class CellCharacterList : Control
         // 地点内部已经接管左侧名单时，世界地图的刷新不能把子场景名单覆盖掉。
         if (_world_mode && _roster_context.StartsWith("interior:") && !context_id.StartsWith("interior:"))
             return;
-        var context_changed = _roster_context != context_id;
+        foreach (var npc in characters) npc?.ensure_appearance_identity();
+        var stamp = context_id + "|" + string.Join(";", System.Linq.Enumerable.Select(characters,
+            npc => npc is null ? "" : $"{npc.GetInstanceId()}:{npc.npc_name}:{npc.formal_identity}:{npc.cultivation_realm}:{npc.appearance_seed}:{npc.current_age}:{npc.gender}:{npc.faction_id}"));
+        if (_world_mode && stamp == _worldRosterStamp)
+        {
+            show_and_raise();
+            return;
+        }
+        var sameContext = _world_mode && _roster_context == context_id;
         _world_mode = true;
         _roster_context = context_id;
         clear_children();
+        _worldRosterStamp = stamp;
+        if (!sameContext && GetNodeOrNull<ScrollContainer>("ListPanel/CharacterScroll") is { } scroll) scroll.ScrollVertical = 0;
         var count = 0;
         foreach (var npc in characters)
         {
             if (npc is null || !GodotObject.IsInstanceValid(npc)) continue;
-            _characters?.AddChild(make_world_row(npc));
+            // Keep the complete scroll extent, but defer rich rows as well as portraits.
+            var slot = new Control { CustomMinimumSize = new Vector2(0, RowHeight), MouseFilter = MouseFilterEnum.Ignore };
+            _characters?.AddChild(slot);
+            _pendingPortraits[slot] = () =>
+            {
+                var row = make_world_row(npc);
+                slot.AddChild(row);
+                row.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+            };
             count++;
         }
         if (count == 0)
             _characters?.AddChild(make_empty_state());
         update_header(context_id.StartsWith("world-cell:") ? "当前位置" : context_id.StartsWith("world:") ? "当前地点" : "在场人物", count);
-        if (context_changed && !context_id.StartsWith("world-cell:")) _expanded = true;
+        // Movement updates the roster, not the user's expand/collapse preference.
         resize_panel();
         apply_expanded_state();
         show_and_raise();
@@ -269,11 +328,14 @@ public partial class CellCharacterList : Control
         content.AddChild(portrait_frame);
         var avatar_crop = new Control { Name = "AvatarCrop", ClipContents = true, CustomMinimumSize = new Vector2(60, 60), MouseFilter = MouseFilterEnum.Ignore };
         portrait_frame.AddChild(avatar_crop);
-        var portrait = new PortraitRenderer { CustomMinimumSize = new Vector2(60, 60), MouseFilter = MouseFilterEnum.Ignore };
-        portrait.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        portrait.set_headshot_mode(true);
-        avatar_crop.AddChild(portrait);
-        configure_portrait(portrait);
+        _pendingPortraits[avatar_crop] = () =>
+        {
+            var portrait = new PortraitRenderer { CustomMinimumSize = new Vector2(60, 60), MouseFilter = MouseFilterEnum.Ignore };
+            portrait.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+            portrait.set_headshot_mode(true);
+            avatar_crop.AddChild(portrait);
+            configure_portrait(portrait);
+        };
 
         var text_column = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ShrinkCenter, MouseFilter = MouseFilterEnum.Ignore };
         text_column.AddThemeConstantOverride("separation", 3);
@@ -413,8 +475,10 @@ public partial class CellCharacterList : Control
 
     private void clear_children()
     {
+        _pendingPortraits.Clear();
+        _worldRosterStamp = "";
         if (_characters is null) return;
-        foreach (var child in _characters.GetChildren()) child.QueueFree();
+        foreach (var child in _characters.GetChildren()) { _characters.RemoveChild(child); child.QueueFree(); }
     }
 
     private void show_and_raise()

@@ -41,6 +41,8 @@ public partial class MainHUD
         set_profile_value("ProfileSubtitle", $"{player.entity_name} · 个人信息");
         set_profile_value("RealmValue", string.IsNullOrWhiteSpace(player.cultivation_realm) ? "未详" : player.cultivation_realm);
         set_profile_value("WorldStaminaValue", $"{player.current_world_stamina:0.#} / {player.max_world_stamina:0.#}");
+        var currentGameHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+        set_profile_value("WorldStatusValue", WorldStatusRules.format_details(data?.world_status_records, currentGameHour));
         set_profile_value("RootValue", string.IsNullOrWhiteSpace(data?.spirit_root_name) ? "未详" : data!.spirit_root_name);
         set_profile_value("LocationValue", string.IsNullOrWhiteSpace(currentLocation) ? "位置未详" : currentLocation);
         set_profile_value("AffiliationValue", get_affiliation_text(data));
@@ -57,6 +59,12 @@ public partial class MainHUD
         rebuild_contribution_history(data);
         _playerProfileOverlay.Show();
         _playerProfileOverlay.MoveToFront();
+    }
+
+    public void refresh_player_world_status_details(Character player, long currentGameHour)
+    {
+        if (!player_profile_visible || player.entity_data is not HumanData data) return;
+        set_profile_value("WorldStatusValue", WorldStatusRules.format_details(data.world_status_records, currentGameHour));
     }
 
     public bool close_player_profile()
@@ -133,6 +141,7 @@ public partial class MainHUD
         layout.AddChild(grid);
         add_profile_card(grid, "境界", "RealmValue");
         add_profile_card(grid, "行旅体力（与战斗精力分开）", "WorldStaminaValue");
+        add_profile_card(grid, "大世界状态", "WorldStatusValue");
         add_profile_card(grid, "灵根", "RootValue");
         add_profile_card(grid, "当前位置", "LocationValue");
         add_profile_card(grid, "正式归属", "AffiliationValue");
@@ -173,7 +182,7 @@ public partial class MainHUD
         box.AddThemeConstantOverride("separation", 3);
         margin.AddChild(box);
         box.AddChild(make_profile_label(title, 14, new Color("817660")));
-        var value = make_profile_label("—", valueNodeName == "RegionalRenownValue" ? 15 : 18, new Color("332d22"));
+        var value = make_profile_label("—", valueNodeName is "RegionalRenownValue" or "WorldStatusValue" ? 15 : 18, new Color("332d22"));
         value.Name = valueNodeName;
         value.AutowrapMode = TextServer.AutowrapMode.WordSmart;
         box.AddChild(value);

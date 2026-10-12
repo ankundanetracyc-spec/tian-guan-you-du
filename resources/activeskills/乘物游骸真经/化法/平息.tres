@@ -6,8 +6,8 @@
 script = ExtResource("1")
 tags = Array[String](["生命", "闪避", "回复"])
 skill_name = "平息"
-icon_path = "res://textures/ui/combat/skill_icons/锻躯_平息_v1.png"
-description = "气血-1；气血下降触发公共规则，回复最大生命×3%；本技能使气血下降后，获得身法1层。"
+icon_path = "res://textures/ui/combat/skill_icons/基础技能_平息_v1.png"
+description = "气血-1；触发气血层数降低时的回复效果；本技能使气血下降后，获得身法1层。"
 skill_type = 3
 energy_cost = 1
 mana_cost = 0

@@ -20,6 +20,7 @@ $costLabel = (Text @(0x8017,0x8D39,0xFF1A))
 $typeLabel = (Text @(0x7C7B,0x578B,0xFF1A))
 $keywordLabel = (Text @(0x5173,0x952E,0x8BCD,0xFF1A))
 $tagLabel = (Text @(0x6807,0x7B7E,0xFF1A))
+$keywordSeparatorPattern = '[' + (Text @(0x3001)) + (Text @(0xFF0C)) + ',/]'
 $targetLabel = (Text @(0x76EE,0x6807))
 $exhaustKeyword = (Text @(0x5173,0x952E,0x8BCD,0xFF1A)) + '.*' + (Text @(0x6D88,0x8017))
 $specFileName = (Text @(0x79D8,0x7C4D,0x89C4,0x8303)) + '.md'
@@ -64,7 +65,8 @@ $allowedKeywords = @(
 $buildKeywords = @(
     (Text @(0x751F,0x547D)), (Text @(0x95EA,0x907F)), (Text @(0x56DE,0x590D)),
     (Text @(0x7CBE,0x529B)), (Text @(0x589E,0x4F24)), (Text @(0x4F24,0x52BF)),
-    (Text @(0x9632,0x5FA1)), (Text @(0x653B,0x9632,0x8054,0x52A8))
+    (Text @(0x9632,0x5FA1)), (Text @(0x653B,0x9632,0x8054,0x52A8)),
+    (Text @(0x6CD5,0x529B)), (Text @(0x5FAA,0x73AF)), (Text @(0x7206,0x53D1))
 )
 $allowedKeywords += $buildKeywords
 
@@ -86,10 +88,14 @@ if ($FocusPaths.Count -eq 0 -and (Test-Path -LiteralPath $cardDictionaryRoot)) {
 }
 foreach ($file in $keywordFiles) {
     $content = [System.IO.File]::ReadAllText($file.FullName, [System.Text.Encoding]::UTF8)
+    if ($file.Extension -eq '.drawio') {
+        [xml]$diagram = $content
+        $content = (@($diagram.SelectNodes('//mxCell[@value]') | ForEach-Object { $_.GetAttribute('value') }) -join "`n")
+    }
     $keywordMatches = [regex]::Matches($content, [regex]::Escape($keywordLabel) + '([^<&\r\n]+)')
     foreach ($keywordMatch in $keywordMatches) {
         $keywordText = $keywordMatch.Groups[1].Value.Trim()
-        foreach ($keyword in ($keywordText -split '[、，,/]')) {
+        foreach ($keyword in ($keywordText -split $keywordSeparatorPattern)) {
             $normalized = $keyword.Trim().TrimEnd([char[]]@((Text @(0x3002)), (Text @(0xFF1B)), ';'))
             if ([string]::IsNullOrWhiteSpace($normalized) -or $normalized -notin $allowedKeywords) {
                 $errors.Add("$($file.FullName): invalid card keyword '$keywordText'.")
@@ -100,7 +106,7 @@ foreach ($file in $keywordFiles) {
     $tagMatches = [regex]::Matches($content, [regex]::Escape($tagLabel) + '([^<&\r\n]+)')
     foreach ($tagMatch in $tagMatches) {
         $tagText = $tagMatch.Groups[1].Value.Trim()
-        foreach ($tag in ($tagText -split '[、，,/]')) {
+        foreach ($tag in ($tagText -split $keywordSeparatorPattern)) {
             $normalized = $tag.Trim().TrimEnd([char[]]@((Text @(0x3002)), (Text @(0xFF1B)), ';'))
             if ([string]::IsNullOrWhiteSpace($normalized) -or $normalized -in $mechanicTags) {
                 $errors.Add("$($file.FullName): mechanic or build keyword '$normalized' cannot be used in the legacy faction/element tag line.")

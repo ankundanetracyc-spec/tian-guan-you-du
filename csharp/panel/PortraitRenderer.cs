@@ -11,11 +11,22 @@ public partial class PortraitRenderer : Control
     private readonly System.Collections.Generic.Dictionary<string,TextureRect> _layers=[];
     private string _current_key="";
     private bool _headshotMode;
+    private Control? _headshotComposition;
+    private Control _faceComposition=null!;
+    private Vector2 CompositionSize=>_headshotComposition?.Size??new Vector2(1024,1536);
     private const float HeadshotZoom = 2.8f;
     private const float HeadshotFocusY = .268f;
-    public override void _Ready(){MouseFilter=MouseFilterEnum.Ignore;ensure_layers();}
+    public override void _Ready(){MouseFilter=MouseFilterEnum.Ignore;ensure_layers();Resized+=apply_headshot_crop;}
     /// <summary>名单头像使用现有立绘的头部近景裁切；应在配置人物外观前调用。</summary>
-    public void set_headshot_mode(bool enabled){_headshotMode=enabled;ClipContents=enabled;}
+    public void set_headshot_mode(bool enabled)
+    {
+        if(_headshotMode==enabled)return;
+        _headshotMode=enabled;ClipContents=enabled;
+        // 切换模式时重建组合画布，避免沿用旧裁切的缩放与枢轴。
+        foreach(var layer in _layers.Values){layer.GetParent()?.RemoveChild(layer);layer.QueueFree();}
+        _layers.Clear();
+        if(_headshotComposition is not null){RemoveChild(_headshotComposition);_headshotComposition.QueueFree();_headshotComposition=null;}
+    }
     public void show_character(GodotObject character)
     {
         var data=character.Get("entity_data").AsGodotObject() as EntityData;
@@ -49,50 +60,67 @@ public partial class PortraitRenderer : Control
             layer.Texture=path.Length>0&&ResourceLoader.Exists(path)?ResourceLoader.Load<Texture2D>(path):null;
             layer.Visible=layer.Texture is not null;
             layer.Position=new Vector2(entry.GetValueOrDefault("offset_x",0).AsSingle(),entry.GetValueOrDefault("offset_y",0).AsSingle());
-            layer.Scale=Vector2.One;layer.Modulate=Colors.White;
+            layer.Scale=Vector2.One;layer.PivotOffset=Vector2.Zero;layer.Modulate=Colors.White;
         }
+        if(_headshotComposition is not null && _layers["face"].Texture is { } faceTexture)
+            _headshotComposition.Size=faceTexture.GetSize();
+        _faceComposition.Size=CompositionSize;
+        foreach(var layer in _layers.Values)layer.Size=CompositionSize;
         apply_appearance(data,selected);
-        if(_headshotMode) apply_headshot_crop();
+        apply_headshot_crop();
     }
     public void clear_portrait(){foreach(var layer in _layers.Values){layer.Texture=null;layer.Visible=false;}_current_key="";}
     public string get_cache_key()=>_current_key;
     public bool has_required_layers()=>_layers.TryGetValue("face",out var face)&&face.Texture is not null&&_layers.TryGetValue("clothes",out var clothes)&&clothes.Texture is not null;
     public static void clear_selection_cache()=>SelectionCache.Clear();
-    private void ensure_layers(){if(_layers.Count>0)return;for(var i=0;i<LayerOrder.Length;i++){var l=new TextureRect{Name=LayerOrder[i].Capitalize(),ExpandMode=TextureRect.ExpandModeEnum.IgnoreSize,StretchMode=TextureRect.StretchModeEnum.KeepAspectCentered,MouseFilter=MouseFilterEnum.Ignore,ZIndex=i};l.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);AddChild(l);_layers[LayerOrder[i]]=l;}}
+    private void ensure_layers()
+    {
+        if(_layers.Count>0)return;
+        _headshotComposition=new Control{Name="PortraitComposition",Size=new(1024,1536),MouseFilter=MouseFilterEnum.Ignore};
+        AddChild(_headshotComposition);
+        var composition=_headshotComposition;
+        _faceComposition=new Control{Name="FaceComposition",Size=composition.Size,MouseFilter=MouseFilterEnum.Ignore};composition.AddChild(_faceComposition);
+        for(var i=0;i<LayerOrder.Length;i++)
+        {
+            var layer=new TextureRect{Name=LayerOrder[i].Capitalize(),ExpandMode=TextureRect.ExpandModeEnum.IgnoreSize,StretchMode=TextureRect.StretchModeEnum.KeepAspectCentered,MouseFilter=MouseFilterEnum.Ignore,ZIndex=i};
+            (FacialLayers.Contains(LayerOrder[i])?_faceComposition:composition).AddChild(layer);
+            layer.Size=CompositionSize;_layers[LayerOrder[i]]=layer;
+        }
+    }
     private void apply_headshot_crop()
     {
-        ClipContents = true;
-        var cropSize = Size.X > 0f && Size.Y > 0f ? Size : CustomMinimumSize;
-        var focus = new Vector2(cropSize.X * .5f, cropSize.Y * HeadshotFocusY);
-        var centeringOffset = cropSize * .5f - focus;
-        foreach (var layer in _layers.Values)
-        {
-            if (layer.Texture is null) continue;
-            layer.PivotOffset = focus;
-            layer.Scale *= new Vector2(HeadshotZoom, HeadshotZoom);
-            layer.Position += centeringOffset;
-        }
+        if(_headshotComposition is null)return;
+        ClipContents=_headshotMode;
+        var cropSize=Size.X>0 && Size.Y>0?Size:CustomMinimumSize;
+        if(cropSize.X<=0 || cropSize.Y<=0)return;
+        var sourceSize=_headshotComposition.Size;
+        if(sourceSize.X<=0 || sourceSize.Y<=0)return;
+        // 在原尺寸画布组合五官后，仅变换整幅立绘，保留各部件的枢轴、比例和像素偏移。
+        var scale=Mathf.Min(cropSize.X/sourceSize.X,cropSize.Y/sourceSize.Y)*(_headshotMode?HeadshotZoom:1f);
+        var focus=new Vector2(sourceSize.X*.5f,sourceSize.Y*(_headshotMode?HeadshotFocusY:.5f));
+        _headshotComposition.Scale=Vector2.One*scale;
+        _headshotComposition.Position=cropSize*.5f-focus*scale;
     }
     private void apply_appearance(EntityData data,Dictionary selected)
     {
         var faceScale=new Vector2(data.appearance_face_width,data.appearance_face_height);
         var faceEntry=selected.GetValueOrDefault("face",new Dictionary()).AsGodotDictionary();
         var rigPivots=faceEntry.GetValueOrDefault("scale_pivots_normalized",new Dictionary()).AsGodotDictionary();
-        var facePivot=read_pivot(rigPivots,"face_and_feature_scale",new Vector2(.5f,.5f));
-        var eyePivot=read_pivot(rigPivots,"eye_variant_scale",facePivot);
-        foreach(var part in FacialLayers)
+        _faceComposition.Scale=Vector2.One;
+        var facePivot=read_pivot(rigPivots,"face_and_feature_scale",Vector2.Zero);
+        var eyePivot=read_pivot(rigPivots,"eye_variant_scale",Vector2.Zero);
+        // 没有真实锚点时保留素材原形，不再退回全幅中心而挤歪五官。
+        if(rigPivots.Count>0)
         {
-            var layer=_layers[part];
-            if(layer.Texture is null)continue;
-            layer.PivotOffset=new Vector2(Size.X*facePivot.X,Size.Y*facePivot.Y);
-            layer.Scale=faceScale;
-        }
-        var eye=_layers["eye"];
-        if(eye.Texture is not null)
-        {
-            eye.PivotOffset=new Vector2(Size.X*eyePivot.X,Size.Y*eyePivot.Y);
-            eye.Scale*=data.appearance_eye_scale;
-            eye.Position+=Vector2.Down*data.appearance_eye_offset_y;
+            _faceComposition.PivotOffset=CompositionSize*facePivot;
+            _faceComposition.Scale=faceScale;
+            var eye=_layers["eye"];
+            if(eye.Texture is not null)
+            {
+                eye.PivotOffset=CompositionSize*eyePivot;
+                eye.Scale=Vector2.One*data.appearance_eye_scale;
+                eye.Position+=Vector2.Down*data.appearance_eye_offset_y;
+            }
         }
         if(faceEntry.GetValueOrDefault("allow_skin_tone_tint",true).AsBool()&&data.appearance_skin_tone>=0&&data.appearance_skin_tone<SkinTones.Length&&_layers["face"].Texture is not null)
         {

@@ -25,7 +25,7 @@ public partial class BattleManager : Node2D
     public int count_wounds(GodotObject u)
     {
         if(_realtimeMode&&u is Creature creature)return creature.get_status_stacks("内伤")+creature.get_status_stacks("外伤");
-        var deck=get_deck_manager(u);return Hand(u).Count(BodyCardRuntime.IsWound)+(deck?.draw_pile.Count(BodyCardRuntime.IsWound)??0)+(deck?.discard_pile.Count(BodyCardRuntime.IsWound)??0);
+        var deck=get_deck_manager(u);return Hand(u).Count(GongfaCombatRuntime.IsWound)+(deck?.draw_pile.Count(GongfaCombatRuntime.IsWound)??0)+(deck?.discard_pile.Count(GongfaCombatRuntime.IsWound)??0);
     }
     public Godot.Collections.Dictionary get_realtime_wound_counts(GodotObject u)
     {
@@ -42,7 +42,7 @@ public partial class BattleManager : Node2D
     }
     public int get_skill_energy_cost(GodotObject u,ActiveSkillData skill)
     {
-        var cost=body_cards.Cost(u,skill);
+        var cost=gongfa_combat.Cost(u,skill);
         if(skill.skill_type!=ActiveSkillData.SkillType.MOVEMENT)return cost;
         var wounds=get_realtime_wound_counts(u);
         return Mathf.CeilToInt(cost*BattleWoundRules.get_energy_cost_multiplier(wounds,skill));
@@ -63,7 +63,7 @@ public partial class BattleManager : Node2D
             if(healingPerStack>0)realtimeCreature.apply_healing(Mathf.RoundToInt(realtimeCreature.max_health*healingPerStack*consumed/100f));
             return consumed;
         }
-        var hand=Hand(u);var selected=hand.Where(BodyCardRuntime.IsWound).Take(count).ToArray();
+        var hand=Hand(u);var selected=hand.Where(GongfaCombatRuntime.IsWound).Take(count).ToArray();
         foreach(var c in selected){hand.Remove(c);get_deck_manager(u)?.exhaust_card(c);}
         _hands[u]=hand;RefreshWoundHealth(u);if(u==active_unit)_handPanel?.Call("populate_hand",hand);
         return selected.Length;

@@ -1,10 +1,11 @@
-﻿using Godot;
+using Godot;
 using Godot.Collections;
 
 public partial class BattleManager : Node2D
 {
     public override void _Input(InputEvent @event)
     {
+        if(FlowTransitionActive){GetViewport().SetInputAsHandled();return;}
         if(@event is InputEventKey{Pressed:true,Echo:false,Keycode:Key.Space}&&_realtimeMode&&battle_running)
         {
             toggle_battle_pause();
@@ -14,6 +15,7 @@ public partial class BattleManager : Node2D
 
     public override void _UnhandledInput(InputEvent @event)
     {
+        if(FlowTransitionActive){GetViewport().SetInputAsHandled();return;}
         if (_realtimeMode && @event is InputEventMouseButton { Pressed: true, ButtonIndex: MouseButton.Left } mouse && _pendingInstantSkill is not null && GodotObject.IsInstanceValid(active_unit))
         {
             var skill = _pendingInstantSkill;
@@ -35,6 +37,8 @@ public partial class BattleManager : Node2D
     }
     private bool CheckBattleOver()
     {
+        // 最后一击也必须等受击、倒地与特效收尾，不能提前切走结算界面。
+        if(_segmentPhase==SegmentPhase.Executing&&_resolvingUnit is not null)return false;
         // 空队伍是入口或资源配置错误，不是胜负结果；保留场景并输出错误，避免画面闪回导致问题被掩盖。
         if (player_units.Count == 0 || enemy_units.Count == 0)
         {
@@ -45,14 +49,16 @@ public partial class BattleManager : Node2D
         return false;
     }
     /// <summary>回传双方的最终快照，胜负与撤离统一进入结算。</summary>
-    private void finish_battle(bool escaped=false)
+    private async void finish_battle(bool escaped=false)
     {
-        if (_returning_to_world)return; SetBattlePaused(false); _returning_to_world=true; battle_running=false; _segmentPhase=SegmentPhase.None; _skillBar?.Hide(); _skillBar?.clear_targeting(); _planHud?.Hide(); _handPanel?.Call("hide_hand");
+        if (_returning_to_world)return; SetBattlePaused(false); _returning_to_world=true; battle_running=false; _segmentPhase=SegmentPhase.None; _skillBar?.clear_targeting();
+        var transition=GetTree().Root.GetNodeOrNull<BattleTransitionManager>("BattleTransitionManager");
+        if(transition is not null)await transition.HoldBattleOutro();
+        await FadeBattleControls();
         var attackers=new Godot.Collections.Array(); var defenders=new Godot.Collections.Array();
         foreach(var unit in player_units.Concat(enemy_units))
             if(GodotObject.IsInstanceValid(unit) && unit.HasMeta("unwounded_health"))
             {unit.Set("max_health",unit.GetMeta("unwounded_health"));unit.RemoveMeta("unwounded_health");}
-        var transition=GetTree().Root.GetNodeOrNull<BattleTransitionManager>("BattleTransitionManager");
         transition?.set_battle_outcome_note(string.Join("\n", player_units.Where(GodotObject.IsInstanceValid).Select(unit=>{
             var wounds=get_realtime_wound_counts(unit);
             return $"{unit.Get("entity_name").AsString()}：外伤 {wounds["external"].AsInt32()} 层，内伤 {wounds["internal"].AsInt32()} 层";
@@ -94,7 +100,7 @@ public partial class BattleManager : Node2D
     public bool CanPay(GodotObject unit, ActiveSkillData skill)
     {
         // 即时队列允许资源尚不足的牌先排队；资源门槛在其真正开始准备时检查。
-        return body_cards.CanPlay(unit,skill) && (_realtimeMode || (unit.Get("current_stamina").AsInt32() >= body_cards.Cost(unit,skill) && unit.Get("current_mana").AsInt32() >= skill.mana_cost));
+        return gongfa_combat.CanPlay(unit,skill) && (_realtimeMode || (unit.Get("current_stamina").AsInt32() >= gongfa_combat.Cost(unit,skill) && unit.Get("current_mana").AsInt32() >= skill.mana_cost));
     }
     private void Pay(GodotObject unit, ActiveSkillData skill)
     {
@@ -148,7 +154,7 @@ public partial class BattleManager : Node2D
         _segmentPhase=SegmentPhase.None; _planningElapsed=0; _playerQueueConfirmed=false; _mainPlayerUnit=null; _resolvingUnit=null; _segmentNumber=0;
         _selectingQueueTargets=false; _targetQueueIndex=-1; _targetSelectionHistory.Clear(); _layoutViewportSize=Vector2.Zero;
         RestoreBattleResources();
-        body_cards.Reset();
+        gongfa_combat.Reset();
         _chengjiResponses.Clear();
         _queuedPlayerCards.Clear();
         _livingUnits.Clear();
@@ -159,6 +165,7 @@ public partial class BattleManager : Node2D
         _enemyKnowledge.Clear();
         _combatSkills.Clear();
         _skillCooldowns.Clear();
+        _skillReadyRounds.Clear();
         _skillCharges.Clear();
         _pendingTargetSkills.Clear();
         _returning_to_world = false;

@@ -14,6 +14,8 @@ public partial class NpcActionRecord : Resource
     [Export] public int travel_days;
     [Export] public int travel_days_remaining;
     [Export] public string target_npc_id = "";
+    /// <summary>Links battle-history entries to their single authoritative structured incident record.</summary>
+    [Export] public string dungeon_incident_id = "";
     [Export] public string reason = "";
     [Export] public string outcome = "";
     [Export] public int resource_delta;

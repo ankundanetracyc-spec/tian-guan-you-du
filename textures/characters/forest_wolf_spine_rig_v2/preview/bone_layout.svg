@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1024" viewBox="0 0 1536 1024">
+<image href="../source/wolf_rig_master.png" width="1536" height="1024"/>
+<rect x="1" y="1" width="1534" height="1022" fill="none" stroke="#ffffff" stroke-opacity=".45" stroke-width="2"/>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+<line x1="760" y1="996" x2="910" y2="555" stroke="#e3b86b" stroke-width="7" stroke-opacity=".9"/>
+<line x1="910" y1="555" x2="720" y2="455" stroke="#ffe5a6" stroke-width="7" stroke-opacity=".9"/>
+<line x1="720" y1="455" x2="472" y2="410" stroke="#97d9c4" stroke-width="7" stroke-opacity=".9"/>
+<line x1="472" y1="410" x2="300" y2="275" stroke="#fff8df" stroke-width="7" stroke-opacity=".9"/>
+<line x1="720" y1="455" x2="585" y2="570" stroke="#ffb347" stroke-width="7" stroke-opacity=".9"/>
+<line x1="585" y1="570" x2="624" y2="760" stroke="#ffb347" stroke-width="7" stroke-opacity=".9"/>
+<line x1="624" y1="760" x2="610" y2="938" stroke="#ffb347" stroke-width="7" stroke-opacity=".9"/>
+<line x1="720" y1="455" x2="397" y2="540" stroke="#62d5cb" stroke-width="7" stroke-opacity=".9"/>
+<line x1="397" y1="540" x2="397" y2="690" stroke="#62d5cb" stroke-width="7" stroke-opacity=".9"/>
+<line x1="397" y1="690" x2="378" y2="865" stroke="#62d5cb" stroke-width="7" stroke-opacity=".9"/>
+<line x1="910" y1="555" x2="832" y2="562" stroke="#83a8ff" stroke-width="7" stroke-opacity=".9"/>
+<line x1="832" y1="562" x2="882" y2="672" stroke="#83a8ff" stroke-width="7" stroke-opacity=".9"/>
+<line x1="882" y1="672" x2="848" y2="812" stroke="#83a8ff" stroke-width="7" stroke-opacity=".9"/>
+<line x1="910" y1="555" x2="1035" y2="565" stroke="#ff7c79" stroke-width="7" stroke-opacity=".9"/>
+<line x1="1035" y1="565" x2="1080" y2="710" stroke="#ff7c79" stroke-width="7" stroke-opacity=".9"/>
+<line x1="1080" y1="710" x2="1110" y2="867" stroke="#ff7c79" stroke-width="7" stroke-opacity=".9"/>
+<line x1="910" y1="555" x2="1080" y2="405" stroke="#b2e87c" stroke-width="7" stroke-opacity=".9"/>
+<line x1="1080" y1="405" x2="1280" y2="535" stroke="#b2e87c" stroke-width="7" stroke-opacity=".9"/>
+<line x1="1280" y1="535" x2="1450" y2="755" stroke="#b2e87c" stroke-width="7" stroke-opacity=".9"/>
+</g><g font-family="Segoe UI, sans-serif" font-size="17" font-weight="700" paint-order="stroke" stroke="#101820" stroke-width="4" stroke-linejoin="round">
+<circle cx="760" cy="996" r="9" fill="#ffffff" stroke="#101820" stroke-width="3"/>
+<text x="772" y="986" fill="#ffffff" stroke="#101820">root</text>
+<circle cx="910" cy="555" r="9" fill="#e3b86b" stroke="#101820" stroke-width="3"/>
+<text x="922" y="545" fill="#e3b86b" stroke="#101820">hips</text>
+<circle cx="720" cy="455" r="9" fill="#ffe5a6" stroke="#101820" stroke-width="3"/>
+<text x="732" y="445" fill="#ffe5a6" stroke="#101820">torso</text>
+<circle cx="472" cy="410" r="9" fill="#97d9c4" stroke="#101820" stroke-width="3"/>
+<text x="484" y="400" fill="#97d9c4" stroke="#101820">neck</text>
+<circle cx="300" cy="275" r="9" fill="#fff8df" stroke="#101820" stroke-width="3"/>
+<text x="312" y="265" fill="#fff8df" stroke="#101820">head</text>
+<circle cx="585" cy="570" r="9" fill="#ffb347" stroke="#101820" stroke-width="3"/>
+<text x="597" y="560" fill="#ffb347" stroke="#101820">foreleg_near_upper</text>
+<circle cx="624" cy="760" r="9" fill="#ffb347" stroke="#101820" stroke-width="3"/>
+<text x="636" y="750" fill="#ffb347" stroke="#101820">foreleg_near_knee</text>
+<circle cx="610" cy="938" r="9" fill="#ffb347" stroke="#101820" stroke-width="3"/>
+<text x="622" y="928" fill="#ffb347" stroke="#101820">foreleg_near_paw</text>
+<circle cx="397" cy="540" r="9" fill="#62d5cb" stroke="#101820" stroke-width="3"/>
+<text x="409" y="530" fill="#62d5cb" stroke="#101820">foreleg_far_upper</text>
+<circle cx="397" cy="690" r="9" fill="#62d5cb" stroke="#101820" stroke-width="3"/>
+<text x="409" y="680" fill="#62d5cb" stroke="#101820">foreleg_far_knee</text>
+<circle cx="378" cy="865" r="9" fill="#62d5cb" stroke="#101820" stroke-width="3"/>
+<text x="390" y="855" fill="#62d5cb" stroke="#101820">foreleg_far_paw</text>
+<circle cx="832" cy="562" r="9" fill="#83a8ff" stroke="#101820" stroke-width="3"/>
+<text x="844" y="552" fill="#83a8ff" stroke="#101820">hindleg_far_upper</text>
+<circle cx="882" cy="672" r="9" fill="#83a8ff" stroke="#101820" stroke-width="3"/>
+<text x="894" y="662" fill="#83a8ff" stroke="#101820">hindleg_far_knee</text>
+<circle cx="848" cy="812" r="9" fill="#83a8ff" stroke="#101820" stroke-width="3"/>
+<text x="860" y="802" fill="#83a8ff" stroke="#101820">hindleg_far_paw</text>
+<circle cx="1035" cy="565" r="9" fill="#ff7c79" stroke="#101820" stroke-width="3"/>
+<text x="1047" y="555" fill="#ff7c79" stroke="#101820">hindleg_near_upper</text>
+<circle cx="1080" cy="710" r="9" fill="#ff7c79" stroke="#101820" stroke-width="3"/>
+<text x="1092" y="700" fill="#ff7c79" stroke="#101820">hindleg_near_knee</text>
+<circle cx="1110" cy="867" r="9" fill="#ff7c79" stroke="#101820" stroke-width="3"/>
+<text x="1122" y="857" fill="#ff7c79" stroke="#101820">hindleg_near_paw</text>
+<circle cx="1080" cy="405" r="9" fill="#b2e87c" stroke="#101820" stroke-width="3"/>
+<text x="1092" y="395" fill="#b2e87c" stroke="#101820">tail_base</text>
+<circle cx="1280" cy="535" r="9" fill="#b2e87c" stroke="#101820" stroke-width="3"/>
+<text x="1292" y="525" fill="#b2e87c" stroke="#101820">tail_mid</text>
+<circle cx="1450" cy="755" r="9" fill="#b2e87c" stroke="#101820" stroke-width="3"/>
+<text x="1462" y="745" fill="#b2e87c" stroke="#101820">tail_tip</text>
+</g></svg>

@@ -4,7 +4,7 @@ public partial class SkillExecutor
 {
     public void execute_segment_response(GodotObject defender, GodotObject attacker, ActiveSkillData skill)
     {
-        execute_response(defender, attacker, skill);
+        execute_response(defender, attacker, skill, showTriggerLabel: false);
         execute_counter_extras(defender, attacker, skill);
     }
 

@@ -17,7 +17,7 @@ multiplier = 0.55
 script = ExtResource("1")
 tags = Array[String](["伤势","增伤"])
 skill_name = "撼山"
-icon_path = "res://textures/ui/combat/skill_icons/锻躯_撼山_v1.png"
+icon_path = "res://textures/ui/combat/skill_icons/基础技能_撼山_v1.png"
 description = "对指定1名敌方造成物理伤害，基础伤害 = round(15 + 体魄×0.85 + 体道造诣×0.55)。每层当前内伤与外伤使本次伤害倍率额外提高2%，最多提高16%。
 使用次数：每轮1次"
 skill_type = 0

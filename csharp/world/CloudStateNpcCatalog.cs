@@ -10,7 +10,8 @@ using Godot.Collections;
 /// </summary>
 public static class CloudStateNpcCatalog
 {
-    private const string PopulationMeta = "cloud_state_population_loaded";
+    public const int PopulationVersion = 1;
+    private static readonly System.Collections.Generic.Dictionary<string, ItemData> CarriedItemDefinitions = new(StringComparer.Ordinal);
 
     private static readonly string[] Surnames =
     ["李", "王", "张", "刘", "陈", "杨", "赵", "黄", "周", "吴", "徐", "孙", "胡", "朱", "高", "林", "何", "郭", "马", "罗", "梁", "宋", "郑", "谢", "韩", "唐", "冯", "于", "萧", "程", "曹", "袁", "沈", "彭", "吕", "苏", "卢", "蒋", "蔡", "贾", "丁", "魏", "薛", "叶", "余", "潘", "杜", "戴", "夏", "钟", "汪", "田", "任", "姜", "范", "方", "石", "姚", "谭", "廖", "邹", "熊", "金", "陆", "秦", "江", "史", "顾", "侯", "邵", "孟", "龙", "段", "雷", "钱", "汤", "尹", "黎", "易", "常", "乔", "贺"];
@@ -19,7 +20,7 @@ public static class CloudStateNpcCatalog
     ["安", "宁", "远", "清", "川", "云", "松", "鹤", "舟", "衡", "岳", "岑", "昭", "明", "景", "晏", "怀", "谨", "言", "修", "玄", "朔", "凌", "霁", "澜", "渊", "珩", "瑾", "瑜", "宸", "彦", "昊", "辰", "铭", "哲", "霖", "浩", "然", "恒", "博", "文", "逸", "遥", "翔", "飞", "婉", "宁", "若", "初", "灵", "秀", "慧", "静", "芷", "兰", "蕙", "瑶", "琳", "月", "雪", "岚", "漪", "凝", "含", "素", "紫", "碧", "珊", "晴", "音", "棠", "微", "舒", "妍", "倩", "莹", "萱", "荷", "莲", "菱", "秋", "晚", "青", "绮", "真", "妤", "婧", "芸", "薇"];
 
     private static readonly string[] CultivationRealms =
-    ["凡人", "凡人", "云息一层", "云息二层", "云息二层", "云息三层", "云息四层", "玄基一层", "玄基二层", "金丹一层"];
+    ["凡人", "凡人", "云息一层", "云息二层", "云息二层", "云息三层", "云息四层", "云息五层", "云息六层", "云息七层"];
 
     private static readonly string[] CommonIdentities =
     ["行旅散修", "采药人", "猎户", "商旅", "护路人", "寻路客", "抄经人", "炼气士"];
@@ -47,21 +48,136 @@ public static class CloudStateNpcCatalog
     {
         if (manager is null || mapData is null) return;
         manager.set_world_map(mapData);
-        if (!manager.HasMeta(PopulationMeta))
-        {
-            // 当前原型没有接入存档人口表；重新开始一次运行时，整片百川区域人口重新抽取。
-            manager.npcs.Clear();
-            generate_population(manager, mapData);
-            manager.SetMeta(PopulationMeta, true);
-        }
+        ensure_population(manager, mapData);
         manager.set_simulation_enabled(true);
     }
 
-    private static void generate_population(NpcWorldManager manager, WorldNodeMapData mapData)
+    /// <summary>给玉虚真传支线补齐稳定的择师与带教候选；只生成缺失 ID，读档和重进不会换人。</summary>
+    public static bool ensure_yuxu_lineage_staff(NpcWorldManager manager, WorldNodeMapData mapData)
     {
+        if (manager is null || mapData is null || mapData.get_node("yuxu_xianzong_core") is not { } sectNode)
+            return false;
+
         var rng = new RandomNumberGenerator();
         rng.Randomize();
-        var usedNames = new System.Collections.Generic.HashSet<string>();
+        var usedNames = new System.Collections.Generic.HashSet<string>(
+            manager.get_active_npcs().Select(npc => npc.npc_name), StringComparer.Ordinal);
+        var changed = false;
+        var subscene = unlocked_subscene_ids(sectNode).Contains("zifu") ? "zifu" : "";
+
+        EnsurePair("金丹后期", "长老", "yuxu_lineage_teacher_late", "yuxu_lineage_guide_late");
+        EnsurePair("金丹圆满", "长老", "yuxu_lineage_teacher_perfection", "yuxu_lineage_guide_perfection");
+        return changed;
+
+        void EnsurePair(string teacherRealm, string teacherIdentity, string teacherId, string guideId)
+        {
+            var teacher = manager.get_npc(teacherId);
+            if (teacher is null)
+            {
+                teacher = create_lineage_staff(
+                    teacherId,
+                    sectNode,
+                    subscene,
+                    teacherRealm,
+                    teacherIdentity,
+                    $"玉虚仙宗修士，现于紫府峰处理师门事务。",
+                    rng,
+                    usedNames,
+                    isFemale: null);
+                teacher.sect_assigned_guide_npc_id = guideId;
+                manager.register_npc(teacher);
+                changed = true;
+            }
+            else if (teacher.sect_assigned_guide_npc_id != guideId)
+            {
+                teacher.sect_assigned_guide_npc_id = guideId;
+                changed = true;
+            }
+
+            if (manager.get_npc(guideId) is not null) return;
+            var guide = create_lineage_staff(
+                guideId,
+                sectNode,
+                subscene,
+                "云息十层",
+                "真传弟子",
+                $"由{teacher.npc_name}门下培养，现任玉虚真传带教同门。",
+                rng,
+                usedNames,
+                isFemale: rng.RandiRange(0, 1) == 1);
+            guide.sect_teacher_npc_id = teacherId;
+            guide.relation_tags.Add("师承带教");
+            manager.register_npc(guide);
+            changed = true;
+        }
+    }
+
+    private static WorldNpcData create_lineage_staff(
+        string id,
+        WorldNodeData sectNode,
+        string subscene,
+        string realm,
+        string identity,
+        string originDescription,
+        RandomNumberGenerator rng,
+        System.Collections.Generic.HashSet<string> usedNames,
+        bool? isFemale)
+    {
+        var gender = isFemale.HasValue ? (isFemale.Value ? 1 : 0) : rng.RandiRange(0, 1);
+        var (rootName, weights, _) = pick_yuxu_member_profile(rng);
+        var age = rng.RandiRange(16, 68);
+        var npc = new WorldNpcData
+        {
+            npc_id = id,
+            npc_name = next_name(rng, usedNames),
+            species = "人族",
+            birth_year = 1 - age,
+            birth_month = rng.RandiRange(1, 12),
+            origin_node_id = sectNode.node_id,
+            origin_description = originDescription,
+            spirit_root_name = rootName,
+            root_weights = weights,
+            cultivation_realm = realm,
+            faction_id = "yuxu_xianzong",
+            formal_identity = identity,
+            is_yuxu_lineage_staff = true,
+            current_age = age,
+            max_age = age + rng.RandiRange(24, 72),
+            personality = pick(Personalities, rng),
+            long_term_goal = "在师门中传授修行经验。",
+            short_term_goal = "处理玉虚仙宗的日常事务。",
+            current_node_id = sectNode.node_id,
+            current_subscene_id = subscene,
+            current_state = "师门常驻",
+            is_alive = true,
+            gender = gender,
+        };
+        npc.relation_tags.Add("玉虚仙宗");
+        npc.relation_tags.Add("师承候选");
+        NpcPersonalityRules.Ensure(npc);
+        npc.ensure_appearance_identity();
+        return npc;
+    }
+
+    public static bool ensure_population(NpcWorldManager manager, WorldNodeMapData mapData)
+    {
+        if (manager.population_version >= PopulationVersion) return false;
+        var levels = new System.Collections.Generic.Dictionary<string, int>(StringComparer.Ordinal);
+        using (var file = Godot.FileAccess.Open("res://resources/world/bai_chuan/bai_chuan_grid_anchors.json", Godot.FileAccess.ModeFlags.Read))
+        {
+            if (file is null) return false;
+            var json = Json.ParseString(file.GetAsText()).AsGodotDictionary();
+            foreach (var value in json["anchors"].AsGodotArray())
+            {
+                var anchor = value.AsGodotDictionary();
+                var id = anchor["location_node_id"].AsString();
+                if (id.Length > 0) levels[id] = anchor["level"].AsInt32();
+            }
+        }
+        var rng = new RandomNumberGenerator();
+        rng.Randomize();
+        var usedNames = new System.Collections.Generic.HashSet<string>(manager.npcs.Select(n => n.npc_name), StringComparer.Ordinal);
+        var added = new System.Collections.Generic.List<WorldNpcData>();
         var sequence = 0;
 
         foreach (var node in mapData.get_all_nodes())
@@ -69,30 +185,38 @@ public static class CloudStateNpcCatalog
             if (node is null || node.node_id == "home_village" || !node.enterable) continue;
             // Only create world-map population at authored fixed-grid locations.
             // Generic/legacy wilderness placeholders stay data-only until they receive a real anchor.
-            if (!manager.has_world_grid_anchor(node.node_id)) continue;
-            var amount = population_for(node, rng);
+            if (!levels.ContainsKey(node.node_id) || !manager.has_world_grid_anchor(node.node_id)) continue;
+            // Include dead and traveling originals: migration never replaces a lost or absent person.
+            var existing = manager.npcs.Count(n => !n.is_yuxu_lineage_staff &&
+                (n.origin_node_id == node.node_id || string.IsNullOrWhiteSpace(n.origin_node_id) && n.current_node_id == node.node_id));
+            var amount = Math.Max(0, population_for(node, levels[node.node_id]) - existing);
             var subscene_ids = unlocked_subscene_ids(node);
             for (var index = 0; index < amount; index++)
             {
                 var subscene_id = subscene_ids.Count == 0
                     ? ""
                     : subscene_ids[rng.RandiRange(0, subscene_ids.Count - 1)];
-                manager.register_npc(create_npc(node, subscene_id, sequence++, rng, usedNames));
+                var npc = create_npc(node, subscene_id, sequence++, rng, usedNames);
+                npc.npc_id = "runtime_npc_" + Guid.NewGuid().ToString("N");
+                manager.register_npc(npc, false);
+                added.Add(npc);
             }
         }
+        manager.seed_initial_world_travel(added);
+        manager.population_version = PopulationVersion;
+        return true;
     }
 
-    private static int population_for(WorldNodeData node, RandomNumberGenerator rng)
+    public static int population_for(WorldNodeData node, int anchorLevel)
     {
+        if (node.node_id == "east_woods") return 10;
+        if (anchorLevel == 1) return 60;
+        if (anchorLevel == 2) return 30;
         return node.node_type switch
         {
-            WorldNodeData.NodeType.Sect => rng.RandiRange(2, 4),
-            WorldNodeData.NodeType.City => rng.RandiRange(2, 4),
-            WorldNodeData.NodeType.Village => rng.RandiRange(1, 3),
-            WorldNodeData.NodeType.Resource => rng.RandiRange(1, 2),
-            WorldNodeData.NodeType.Dungeon => rng.RandiRange(0, 1),
-            WorldNodeData.NodeType.War => rng.RandiRange(1, 2),
-            WorldNodeData.NodeType.Wilderness => rng.RandiRange(0, 2),
+            WorldNodeData.NodeType.City => 50,
+            WorldNodeData.NodeType.Village => 12,
+            WorldNodeData.NodeType.Resource => 6,
             _ => 0,
         };
     }
@@ -159,6 +283,7 @@ public static class CloudStateNpcCatalog
         npc.behavior_tags.Add(node.node_type == WorldNodeData.NodeType.Wilderness ? "野外活动" : "地点活动");
         npc.behavior_tags.Add(realm == "凡人" ? "凡俗营生" : "修行");
         npc.relation_tags.Add(string.IsNullOrWhiteSpace(node.faction_id) ? "地方熟人" : node.faction_id);
+        NpcPersonalityRules.Ensure(npc);
         npc.ensure_appearance_identity();
         return npc;
     }
@@ -170,12 +295,16 @@ public static class CloudStateNpcCatalog
         {
             "res://resources/entities/items/兽骨.tres",
             "res://resources/entities/items/兽皮.tres",
-            "res://resources/entities/items/肉干.tres",
             "res://resources/entities/items/灵石.tres",
         };
         if (rng.RandiRange(0, 99) >= 65) return;
         var path = choices[rng.RandiRange(0, choices.Length - 1)];
-        if (ResourceLoader.Load<ItemData>(path) is null) return;
+        if (!CarriedItemDefinitions.ContainsKey(path))
+        {
+            var item = ResourceLoader.Load<ItemData>(path);
+            if (item is null) return;
+            CarriedItemDefinitions[path] = item;
+        }
         npc.carried_items[path] = rng.RandiRange(1, 2);
     }
 
@@ -198,11 +327,8 @@ public static class CloudStateNpcCatalog
         var paths = new[]
         {
             "res://resources/entities/items/灵石.tres",
-            "res://resources/entities/items/铁矿石.tres",
-            "res://resources/entities/items/山麻.tres",
             "res://resources/entities/items/兽皮.tres",
             "res://resources/entities/items/兽骨.tres",
-            "res://resources/entities/items/雷击符.tres",
         };
         var count = rng.RandiRange(3, 5);
         for (var i = 0; i < count; i++)

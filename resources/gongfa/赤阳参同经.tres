@@ -6,11 +6,12 @@
 [ext_resource type="Resource" path="res://resources/activeskills/赤阳参同经/伏火.tres" id="4_fuhuo"]
 [ext_resource type="Resource" path="res://resources/activeskills/赤阳参同经/偃月.tres" id="5_yanyue"]
 [ext_resource type="Resource" path="res://resources/activeskills/赤阳参同经/大冶.tres" id="6_daye"]
+[ext_resource type="Resource" path="res://resources/activeskills/赤阳参同经/朱明.tres" id="7_zhuming"]
 [ext_resource type="Script" path="res://csharp/gongfa/GongfaDeckRewriteConfig.cs" id="7_rewrite"]
 [ext_resource type="Resource" path="res://resources/activeskills/赤阳参同经/化法/平息.tres" id="8_huafa_pingxi"]
 [ext_resource type="Resource" path="res://resources/activeskills/赤阳参同经/化法/卸力.tres" id="9_huafa_xieli"]
 [ext_resource type="Resource" path="res://resources/activeskills/赤阳参同经/化法/发劲.tres" id="10_huafa_fajin"]
-[ext_resource type="Resource" path="res://resources/activeskills/赤阳参同经/化法/撼山.tres" id="11_huafa_hanshan"]
+[ext_resource type="Resource" path="res://resources/activeskills/赤阳参同经/化法/朱明.tres" id="11_huafa_zhuming"]
 
 [sub_resource type="Resource" id="RewritePingxi"]
 script = ExtResource("7_rewrite")
@@ -37,24 +38,28 @@ result_skill = ExtResource("10_huafa_fajin")
 script = ExtResource("7_rewrite")
 mode = 1
 count = 1
-source_skill_name = "撼山"
-result_skill = ExtResource("11_huafa_hanshan")
+target_scope = 1
+source_skill_name = "朱明"
+result_skill = ExtResource("11_huafa_zhuming")
 
 [sub_resource type="Resource" id="ChapterFuHuo"]
 script = ExtResource("2_chapter")
 chapter_id = "fu_huo"
 chapter_name = "伏火"
-description = "立参同之炉，将主动气血回落炼为血炉。"
+description = "立参同之炉，将主动气血回落炼为血炉；本卷起，赤阳化法消耗血炉时同时激发身法。"
 order = 1
 required_study_progress = 24.0
-required_attributes = {"physique": 5.0, "body_proficiency": 4.0}
-allowed_bearings = Array[int]([0, 1])
-learn_permanent_bonuses = {"physique": 1.0}
-learned_active_skills = Array[Resource]([ExtResource("4_fuhuo")])
-left_branch_name = "淬炼"
+required_attributes = {"physique": 6.0}
+learn_permanent_bonuses = {"physique": 1.0, "body_proficiency": 0.5}
+left_branch_name = "修持"
 right_branch_name = "化法"
-combat_tempering_bonuses = {"max_health_flat": 30.0, "qi_blood_cap": 1.0}
+combat_tempering_bonuses = {"max_health_percent": 15, "qi_blood_cap": 1}
 sub_deck_rewrites = Array[ExtResource("7_rewrite")]([SubResource("RewritePingxi")])
+heart_method_description = "效果：自身主动使气血层数降低时，本次不回复生命，改为获得血炉值 = 气血实际降低层数×当前气血回落回复率R；其他回落效果照常触发。赤阳化法以血炉强化本招伤害时，每点实际消耗使本招伤害倍率提高1%。\n主修额外效果：上述每点血炉提供的本招伤害倍率再提高0.5个百分点；不改血炉的公共效果。"
+
+
+learn_bonus_revision = "study-balance-20261012"
+previous_learn_permanent_bonuses = {"physique": 1.0}
 
 [sub_resource type="Resource" id="ChapterDaYe"]
 script = ExtResource("2_chapter")
@@ -64,15 +69,21 @@ description = "一举焚血，快速筑高炉火。"
 order = 2
 required_study_progress = 48.0
 required_realm = "云息三层"
-required_attributes = {"physique": 7.0, "body_proficiency": 5.0}
+required_attributes = {"physique": 7.0, "body_proficiency": 0.5}
 required_chapter_ids = Array[String](["fu_huo"])
-allowed_bearings = Array[int]([1])
 learn_permanent_bonuses = {"physique": 0.5, "body_proficiency": 0.5}
 learned_active_skills = Array[Resource]([ExtResource("6_daye")])
-left_branch_name = "淬炼"
+left_branch_name = "修持"
 right_branch_name = "化法"
-combat_tempering_bonuses = {"blood_furnace_cap": 30.0}
+combat_tempering_bonuses = {"blood_furnace_cap": 20}
 sub_deck_rewrites = Array[ExtResource("7_rewrite")]([SubResource("RewriteXieli")])
+heart_method_upgrade_id = "chiyang_c2"
+heart_method_upgrade_description = "每次赤阳化法实际消耗至少1点血炉后，获得身法1层。"
+heart_method_description = "效果：自身主动使气血层数降低时，本次不回复生命，改为获得血炉值 = 气血实际降低层数×当前气血回落回复率R；其他回落效果照常触发。赤阳化法以血炉强化本招伤害时，每点实际消耗使本招伤害倍率提高1%。 每次赤阳化法实际消耗至少1点血炉后，获得身法1层。\n主修额外效果：上述每点血炉提供的本招伤害倍率再提高0.5个百分点；不改血炉的公共效果。"
+
+
+learn_bonus_revision = "study-balance-20261012"
+previous_learn_permanent_bonuses = {"physique": 0.5, "body_proficiency": 0.5}
 
 [sub_resource type="Resource" id="ChapterYanYue"]
 script = ExtResource("2_chapter")
@@ -82,15 +93,19 @@ description = "分炉炼形，在持续输出与局部爆发间取舍。"
 order = 3
 required_study_progress = 84.0
 required_realm = "云息六层"
-required_attributes = {"physique": 8.0, "body_proficiency": 7.0}
+required_attributes = {"physique": 8.0, "body_proficiency": 1}
 required_chapter_ids = Array[String](["da_ye"])
-allowed_bearings = Array[int]([1])
-learn_permanent_bonuses = {"physique": 0.5}
+learn_permanent_bonuses = {"physique": 0.5, "body_proficiency": 1}
 learned_active_skills = Array[Resource]([ExtResource("5_yanyue")])
-left_branch_name = "淬炼"
+left_branch_name = "修持"
 right_branch_name = "化法"
-combat_tempering_bonuses = {"physical_damage_percent": 5.0, "blood_furnace_cap": 20.0}
+combat_tempering_bonuses = {"physical_damage_percent": 5, "blood_furnace_cap": 10}
 sub_deck_rewrites = Array[ExtResource("7_rewrite")]([SubResource("RewriteFajin")])
+heart_method_description = "效果：自身主动使气血层数降低时，本次不回复生命，改为获得血炉值 = 气血实际降低层数×当前气血回落回复率R；其他回落效果照常触发。赤阳化法以血炉强化本招伤害时，每点实际消耗使本招伤害倍率提高1%。 每次赤阳化法实际消耗至少1点血炉后，获得身法1层。\n主修额外效果：上述每点血炉提供的本招伤害倍率再提高0.5个百分点；不改血炉的公共效果。"
+
+
+learn_bonus_revision = "study-balance-20261012"
+previous_learn_permanent_bonuses = {"physique": 0.5}
 
 [sub_resource type="Resource" id="ChapterZhuMing"]
 script = ExtResource("2_chapter")
@@ -100,28 +115,34 @@ description = "满炉一击，完成云息期的清炉收束。"
 order = 4
 required_study_progress = 128.0
 required_realm = "云息九层"
-required_attributes = {"physique": 10.0, "body_proficiency": 9.0}
+required_attributes = {"physique": 10.0, "body_proficiency": 2}
 required_chapter_ids = Array[String](["yan_yue"])
-allowed_bearings = Array[int]([1])
-learn_permanent_bonuses = {"body_proficiency": 1.0}
-left_branch_name = "淬炼"
+learn_permanent_bonuses = {"body_proficiency": 1}
+left_branch_name = "修持"
 right_branch_name = "化法"
-combat_tempering_bonuses = {"fall_heal_rate_pp": 2.0, "blood_furnace_cap": 20.0}
+combat_tempering_bonuses = {"max_health_percent": 10, "fall_heal_rate_pp": 1, "blood_furnace_cap": 10}
 sub_deck_rewrites = Array[ExtResource("7_rewrite")]([SubResource("RewriteHanshan")])
+learned_active_skills = Array[Resource]([ExtResource("7_zhuming")])
+heart_method_upgrade_id = "chiyang_c4"
+heart_method_upgrade_description = "每次赤阳化法实际消耗至少1点血炉后，再获得身法1层。"
+heart_method_description = "效果：自身主动使气血层数降低时，本次不回复生命，改为获得血炉值 = 气血实际降低层数×当前气血回落回复率R；其他回落效果照常触发。赤阳化法以血炉强化本招伤害时，每点实际消耗使本招伤害倍率提高1%。 每次赤阳化法实际消耗至少1点血炉后，获得身法2层。\n主修额外效果：上述每点血炉提供的本招伤害倍率再提高0.5个百分点；不改血炉的公共效果。"
+
+
+learn_bonus_revision = "study-balance-20261012"
+previous_learn_permanent_bonuses = {"body_proficiency": 1.0}
 
 [resource]
 script = ExtResource("1_gongfa")
 gongfa_name = "赤阳参同经"
-description = "锻躯主修法。主动烧气血，将公共回血转为血炉，再以炉火维持输出或清炉爆发。"
+description = "主动烧气血，将公共回血转为血炉，再以炉火维持输出或清炉爆发。"
 wuxing = 0
 can_be_main = true
 can_be_sub = true
-bearing_compatibility = Array[int]([1])
-school_tags = Array[String](["body"])
+school_tags = Array[String](["cloud_breath"])
 body_nourish_rate_per_day = 0.8
 body_nourish_weights = {"skin": 0.10, "sinew": 0.10, "bone": 0.10, "blood": 0.35, "viscera": 0.15, "heart": 0.20}
 main_realm_start = "凡人"
-main_realm_end = "云息十三层"
+main_realm_end = "云息十层"
 heart_method_skill = ExtResource("3_heart")
 default_unlocked_chapter_count = 1
 chapters = Array[ExtResource("2_chapter")]([SubResource("ChapterFuHuo"), SubResource("ChapterDaYe"), SubResource("ChapterYanYue"), SubResource("ChapterZhuMing")])
