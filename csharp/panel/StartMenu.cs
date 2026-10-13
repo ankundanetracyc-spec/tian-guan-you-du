@@ -135,6 +135,7 @@ public partial class StartMenu : Control
         AddMenuButton(menu.GetNode<Button>("BattleTest"), OpenBattleTestSetup);
         AddMenuButton(menu.GetNode<Button>("CondensationTest"), OpenCondensationTest);
         AddMenuButton(menu.GetNode<Button>("YuanxiPreview"), () => GetTree().ChangeSceneToFile("res://tscn/scene/YuanxiPreviewScene.tscn"));
+        AddMenuButton(menu.GetNode<Button>("SocialInteractionTest"), () => GetTree().ChangeSceneToFile("res://tscn/scene/NpcSocialPreviewScene.tscn"));
         BuildBackdropSelectors();
     }
 

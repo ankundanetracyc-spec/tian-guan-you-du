@@ -29,6 +29,10 @@ public partial class EastWoodsMapSmoke : Node
             var compact = OS.GetCmdlineUserArgs().Contains("--compact");
             GetWindow().ContentScaleSize = compact ? new Vector2I(1280, 720) : new Vector2I(1920, 1080);
             var npcManager = GetNode<NpcWorldManager>("/root/NpcWorldManager");
+            EastWoodsDungeonRules.use_legacy_layout();
+            var slowPoint = EastWoodsActions.ResourcePoints().Single(point => point.Action.Recovery == EastWoodsActions.ResourceRecoveryGroup.SlowGrowth);
+            Check(!EastWoodsActions.ResourcePoints().Any(point => point.Action.Recovery == EastWoodsActions.ResourceRecoveryGroup.Mineral),
+                "普通岩格被错误暴露为矿脉资源点。");
             for (var i = 0; i < 12; i++)
                 npcManager.npcs.Add(new WorldNpcData
                 {
@@ -39,6 +43,10 @@ public partial class EastWoodsMapSmoke : Node
             _panel = new EastWoodsDungeonPanel(); AddChild(_panel); _panel.show_dungeon();
             await Frames();
             var map = _panel.GetNode<Control>("MapViewport/OrthogonalNodeMap");
+            Check(_panel.find_action(slowPoint.Node, slowPoint.Action.Id) is { Recovery: EastWoodsActions.ResourceRecoveryGroup.SlowGrowth } &&
+                  EastWoodsDungeonRules.get_node(slowPoint.Node) is { Terrain: 0 or 1 } &&
+                  EastWoodsDungeonRules.get_neighbors(slowPoint.Node).Select(EastWoodsDungeonRules.get_node).Any(neighbor => neighbor?.Terrain == 5),
+                "30日慢生资源没有接入实际湿润林缘地格与采集入口。");
             Check(_panel.is_node_visible("deep_meet") && !_panel.is_node_visible("mid_split"), "四格视野边界错误");
             Check(!map.GetNode<Button>("Node_quiet_grove").Visible, "未知地块泄漏");
             var fogState = _panel.get_route_state();

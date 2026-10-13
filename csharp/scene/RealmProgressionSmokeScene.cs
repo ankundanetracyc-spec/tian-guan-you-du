@@ -35,6 +35,30 @@ public partial class RealmProgressionSmokeScene : Control
             var expectedTotals=new[]{6,18,36,60,96,144,144,198,258,324};
             for(var i=1;i<expectedRealms.Length;i++)
                 Check(realms.get_realm_config(expectedRealms[i])!.required_attributes["spirit_strands"].AsInt32()==expectedTotals[i-1],expectedRealms[i]+"基准门槛");
+            var pillData = new HumanData
+            {
+                entity_name = "突破丹药验收临时人物", cultivation_realm = "云息三层", spirit_strands = 60,
+                spirit_root_type = (int)GongfaResource.Wuxing.METAL_WOOD_WATER,
+                spirit_root_name = "三灵根", root_weights = [34, 33, 33, 0, 0],
+                main_gongfa_path = "res://resources/gongfa/黄庭养形篇.tres",
+                ambient_lingqi_pressure = 180, current_world_stamina = 100, max_world_stamina = 100
+            };
+            var pillCharacter = new Character { entity_data = pillData, ProcessMode = ProcessModeEnum.Disabled };
+            AddChild(pillCharacter); pillCharacter.Hide();
+            var threeToFourPill = ResourceLoader.Load<ItemData>(Character.YunxiThreeToFourPillPath);
+            var nineToTenPill = ResourceLoader.Load<ItemData>(Character.YunxiNineToTenPillPath);
+            Check(threeToFourPill?.definition_id.ToString() == "pill_yunxi_meridian_stabilizing" && nineToTenPill?.definition_id.ToString() == "pill_yunxi_return_origin", "两枚关口丹药使用稳定物品ID");
+            Check(threeToFourPill is not null && ResourceLoader.Load<Texture2D>(threeToFourPill.icon_path) is not null && nineToTenPill is not null && ResourceLoader.Load<Texture2D>(nineToTenPill.icon_path) is not null, "两枚关口丹药均有可加载图标");
+            Check(pillCharacter.grant_new_journey_yunxi_breakthrough_pills() && pillCharacter.get_inventory_total_count(Character.YunxiThreeToFourPillPath) == 1 && pillCharacter.get_inventory_total_count(Character.YunxiNineToTenPillPath) == 1, "新旅程各发一枚突破丹");
+            Check(pillCharacter.grant_new_journey_yunxi_breakthrough_pills() && pillCharacter.get_inventory_total_count(Character.YunxiThreeToFourPillPath) == 1 && pillCharacter.get_inventory_total_count(Character.YunxiNineToTenPillPath) == 1, "重复初始化不会重复发放突破丹");
+            Check(pillCharacter.remove_item_from_inventory(Character.YunxiThreeToFourPillPath) && !pillCharacter.start_breakthrough_retreat() && pillCharacter.cultivation_realm == "云息三层", "三至四缺丹时不得开始突破");
+            var addedFirstPill = pillCharacter.add_item_to_inventory(Character.YunxiThreeToFourPillPath);
+            var startedFirstPillBreakthrough = pillCharacter.start_breakthrough_retreat();
+            Check(addedFirstPill && startedFirstPillBreakthrough && pillCharacter.cultivation_realm == "云息四层" && pillCharacter.get_inventory_total_count(Character.YunxiThreeToFourPillPath) == 0, "三至四成功晋层才消耗定脉丹");
+            pillCharacter.cultivation_realm = "云息九层"; pillCharacter.spirit_strands = 324;
+            Check(pillCharacter.remove_item_from_inventory(Character.YunxiNineToTenPillPath) && !pillCharacter.start_breakthrough_retreat() && pillCharacter.cultivation_realm == "云息九层", "九至十缺丹时不得开始突破");
+            Check(pillCharacter.add_item_to_inventory(Character.YunxiNineToTenPillPath) && pillCharacter.start_breakthrough_retreat() && pillCharacter.cultivation_realm == "云息十层" && pillCharacter.get_inventory_total_count(Character.YunxiNineToTenPillPath) == 0, "九至十成功晋层才消耗归元定息丹");
+            Check(pillCharacter.has_required_breakthrough_pill("云息五层"), "其他云息晋层不要求关口丹药");
             data.cultivation_realm="云息七层";data.condensation_final_score=100;character.spirit_strands=144;
             Check(character.get_next_realm_progress()["required"].AsInt32()==54&&character.get_strands_until_next_realm()==54,"七层只计算本层54缕");
             character.spirit_strands=197;

@@ -17,7 +17,9 @@ public partial class MainScene
         var manager = _npc_world ?? GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager");
         if (manager is null || node_map?.map_data is not { } mapData) return false;
         _npc_world = manager;
-        return CloudStateNpcCatalog.ensure_yuxu_lineage_staff(manager, mapData);
+        var changed = CloudStateNpcCatalog.ensure_yuxu_lineage_staff(manager, mapData);
+        if (changed) mark_save_dirty();
+        return changed;
     }
 
     private List<WorldNpcData> get_yuxu_lineage_teachers()
@@ -35,21 +37,22 @@ public partial class MainScene
             .ToList();
     }
 
-    private void open_yuxu_lineage_teacher_picker(Action<WorldNpcData> onTeacherSelected)
+    private void open_yuxu_lineage_teacher_picker(Action<WorldNpcData> onTeacherSelected, Action? onCancelled = null)
     {
         var candidates = get_yuxu_lineage_teachers();
         if (candidates.Count == 0)
         {
             show_message("师父名录暂缺", "当前没有可供选择的金丹后期或圆满师父及其云息十层带教同门。师承候选未能登记，入门状态不会改变。 ");
+            onCancelled?.Invoke();
             return;
         }
 
         var dialog = new ConfirmationDialog
         {
-            Title = "观复峰·择师",
-            DialogText = "天灵根入门即为真传。请选择一位宗内金丹后期或圆满修士为师；师父会另指派一位云息十层的师兄或师姐，陪你熟悉宗门并完成首卷带教。",
+            Title = "紫府峰·拜师",
+            DialogText = "接引弟子领你来到紫府峰。天灵根入门即为真传；请在宗内金丹后期或圆满师长中择一位为师。师父事务繁忙，会另指派一位云息十层的师兄或师姐照应你。",
             OkButtonText = "拜入此师门",
-            CancelButtonText = "再考虑"
+            CancelButtonText = "暂不拜师"
         };
         var body = new VBoxContainer { CustomMinimumSize = new Vector2(520, 56) };
         var choice = new OptionButton();
@@ -68,7 +71,11 @@ public partial class MainScene
             dialog.QueueFree();
             if (selected is not null) onTeacherSelected(selected);
         };
-        dialog.Canceled += () => dialog.QueueFree();
+        dialog.Canceled += () =>
+        {
+            dialog.QueueFree();
+            onCancelled?.Invoke();
+        };
     }
 
     private bool assign_yuxu_lineage_teacher(HumanData human, WorldNpcData teacher)
@@ -102,20 +109,43 @@ public partial class MainScene
         });
     }
 
-    private void complete_yuxu_admission(string rank, WorldNpcData? teacher = null)
+    private void complete_yuxu_admission(string rank, WorldNpcData? teacher = null, WorldNpcData? admissionGuide = null)
     {
-        if (player?.entity_data is not HumanData human || !string.IsNullOrEmpty(human.sect_affiliation_id)) return;
+        if (player?.entity_data is not HumanData human)
+        {
+            finish_yuxu_gate_and_return_to_world();
+            return;
+        }
+        if (!string.IsNullOrEmpty(human.sect_affiliation_id))
+        {
+            finish_yuxu_gate_and_return_to_world();
+            return;
+        }
         var currentRank = get_yuxu_entry_rank(get_player_spirit_root_count());
-        if (string.IsNullOrEmpty(currentRank) || currentRank != rank) return;
+        if (string.IsNullOrEmpty(currentRank) || currentRank != rank)
+        {
+            finish_yuxu_gate_and_return_to_world();
+            return;
+        }
+        if (admissionGuide is null || string.IsNullOrWhiteSpace(admissionGuide.npc_id) ||
+            _npc_world?.get_npc(admissionGuide.npc_id) is not { is_alive: true })
+        {
+            show_message("入门手续未完成", "接引弟子的名录尚未落定，宗门身份没有变更。 ");
+            finish_yuxu_gate_and_return_to_world();
+            return;
+        }
         if (is_yuxu_true_disciple(currentRank) && (teacher is null || !assign_yuxu_lineage_teacher(human, teacher)))
         {
             show_message("入门尚未完成", "真传师承还未完成登记；未加入宗门，请重新办理入门。 ");
+            finish_yuxu_gate_and_return_to_world();
             return;
         }
 
         human.sect_affiliation_id = YuxuSectId;
         human.sect_entry_rank = currentRank;
         human.sect_current_rank = currentRank;
+        human.sect_admission_guide_npc_id = admissionGuide.npc_id;
+        human.sect_entry_total_game_hours = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? -1;
         human.sect_lineage_gongfa_path = "";
         human.sect_lineage_first_volume_only_access = false;
         human.sect_lineage_reported_first_volume = false;
@@ -125,11 +155,7 @@ public partial class MainScene
         refresh_yuxu_admission_context();
         refresh_yuxu_life_context();
         GetNodeOrNull<Node>("SceneLayer/YuxuXianzongOverview")?.Call("refresh_admission_detail");
-        if (teacher is not null)
-        {
-            var guide = _npc_world?.get_npc(human.sect_guide_npc_id);
-            show_message("拜师与带教", $"你拜入{teacher.npc_name}门下，成为玉虚真传。师父命{guide?.npc_name ?? "一位云息十层的同门"}先带你熟悉紫府峰与玄览峰。首卷研读与汇报完成后，日常修行由你自行安排，师父不作事事手把手的陪练。 ");
-        }
+        open_yuxu_peak_after_admission(is_yuxu_true_disciple(currentRank) ? "zifu" : "guanfu");
     }
 
     private List<GongfaResource> get_yuxu_lineage_book_choices(Character reader)

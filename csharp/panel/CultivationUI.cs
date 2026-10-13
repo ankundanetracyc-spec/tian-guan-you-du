@@ -737,7 +737,7 @@ public partial class CultivationUI : Control
 
 	private void study(){if(_target is not Character reader || selected_study_book() is not { } book)return;var hours=reader.get_available_study_hours(24);if(hours<=0 || !reader.select_gongfa_for_study(book)){refresh();return;}var staminaCost=hours*WorldStaminaRules.StudyCostPerGameHour;play_transition("研读功法",$"研读 {hours} 小时，消耗体力 {staminaCost:0.#} 点。","研读结束。",()=>{reader.study_for_world_hours(hours);refresh();});}
 
-	private void update_breakthrough()
+    private void update_breakthrough()
 	{
 		if (_breakthrough is null || _breakthroughHint is null || _target is null) return;
 		var realms = GetNodeOrNull<RealmManager>("/root/RealmManager");
@@ -758,17 +758,25 @@ public partial class CultivationUI : Control
 			_breakthrough.Disabled = true;
 			return;
 		}
-		if (!call("is_breakthrough_ready").AsBool()) { _breakthrough.Text = "闭关突破"; _breakthroughHint.Text = $"灵力圆满后，方可突破至 {next}。"; _breakthrough.Disabled = true; return; }
+		var pillHint = _target is Character pillCharacter ? pillCharacter.get_breakthrough_pill_hint(next) : "";
+		if (!call("is_breakthrough_ready").AsBool()) { _breakthrough.Text = "闭关突破"; _breakthroughHint.Text = $"灵力圆满后，方可突破至 {next}。{(string.IsNullOrEmpty(pillHint) ? "" : $"\n{pillHint}")}"; _breakthrough.Disabled = true; return; }
 		if (_target is Character condensationTarget && condensationTarget.requires_condensation_breakthrough())
 		{
 			_breakthroughHint.Text = "云息六层至七层改为八回合凝核牌局：每回合六张牌，必须对调两张，杂质达到 100 立即失败。";
 			_breakthrough.Text = "进入凝核牌局"; _breakthrough.Disabled = false; return;
 		}
+		if (_target is Character missingPillTarget && !missingPillTarget.has_required_breakthrough_pill(next))
+		{
+			_breakthroughHint.Text = pillHint;
+			_breakthrough.Text = "缺少突破丹";
+			_breakthrough.Disabled = true;
+			return;
+		}
 		var room = call("can_use_meditation_room_for_retreat").AsBool();
 		var range = call("get_breakthrough_retreat_hour_range", room).AsGodotDictionary();
 		var low = range.GetValueOrDefault("min_hours", 0).AsInt32(); var high = range.GetValueOrDefault("max_hours", 0).AsInt32();
 		var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
-		_breakthroughHint.Text = time is null ? "" : $"闭关突破至 {next} 约需 {low / 24f:0.0}～{high / 24f:0.0} 日，将在 {format_date_after(time, low)} 至 {format_date_after(time, high)} 之间结束。";
+		_breakthroughHint.Text = time is null ? pillHint : $"闭关突破至 {next} 约需 {low / 24f:0.0}～{high / 24f:0.0} 日，将在 {format_date_after(time, low)} 至 {format_date_after(time, high)} 之间结束。{(string.IsNullOrEmpty(pillHint) ? "" : $"\n{pillHint}")}";
 		_breakthrough.Text = room ? "入静室闭关突破" : "闭关突破";
 		_breakthrough.Disabled = false;
 	}

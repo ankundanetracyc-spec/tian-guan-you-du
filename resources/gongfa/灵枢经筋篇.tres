@@ -52,7 +52,7 @@ required_attributes = {"physique": 6.0, "agility": 5.0}
 learn_permanent_bonuses = {"physique": 0.5, "body_proficiency": 0.5}
 learned_active_skills=Array[Resource]([ExtResource("4")])
 sub_deck_rewrites = Array[ExtResource("5_rewrite")]([SubResource("RewriteMissing9")])
-heart_method_description = "效果：每次主动效果成功消耗至少1层内伤或外伤，获得借力1层。\n主修额外效果：每次满足上述条件时，再获得借力1层。"
+heart_method_description = "效果：每次主动效果成功消耗内伤或外伤至少1层，获得借力1层。\n主修额外效果：每次主动效果成功消耗内伤或外伤至少1层时，另获得借力1层。"
 
 
 learn_bonus_revision = "study-balance-20261012"
@@ -73,7 +73,7 @@ required_realm="云息三层"
 required_attributes = {"physique": 7.0, "agility": 6.0, "body_proficiency": 0.5}
 required_chapter_ids=Array[String](["ling_shu"])
 learn_permanent_bonuses = {"body_proficiency": 0.5}
-heart_method_description = "效果：每次主动效果成功消耗至少1层内伤或外伤，获得借力1层。 同一次主动消耗至少2层伤势时，额外获得身法1层。\n主修额外效果：每次满足上述条件时，再获得借力1层。"
+heart_method_description = "效果：每次主动效果成功消耗内伤或外伤至少1层，获得借力1层；同一次主动效果消耗内伤、外伤合计至少2层时，另获得身法1层。\n主修额外效果：每次主动效果成功消耗内伤或外伤至少1层时，另获得借力1层。"
 
 
 learn_bonus_revision = "study-balance-20261012"
@@ -92,7 +92,7 @@ required_realm="云息六层"
 required_attributes = {"physique": 8.0, "agility": 8.0, "body_proficiency": 1}
 required_chapter_ids=Array[String](["tiao_shu"])
 learn_permanent_bonuses = {"physique": 0.5, "body_proficiency": 1}
-heart_method_description = "效果：每次主动效果成功消耗至少1层内伤或外伤，获得借力1层。 同一次主动消耗至少2层伤势时，额外获得身法1层。\n主修额外效果：每次满足上述条件时，再获得借力1层。"
+heart_method_description = "效果：每次主动效果成功消耗内伤或外伤至少1层，获得借力1层；同一次主动效果消耗内伤、外伤合计至少2层时，另获得身法1层。\n主修额外效果：每次主动效果成功消耗内伤或外伤至少1层时，另获得借力1层。"
 
 
 learn_bonus_revision = "study-balance-20261012"
@@ -114,7 +114,7 @@ required_realm="云息九层"
 required_attributes = {"physique": 10.0, "agility": 9.0, "body_proficiency": 2}
 required_chapter_ids=Array[String](["tong_tian"])
 learn_permanent_bonuses = {"body_proficiency": 1}
-heart_method_description = "效果：每次主动效果成功消耗至少1层内伤或外伤，获得借力1层。 同一次主动消耗至少2层伤势时，额外获得身法1层。 同一次主动消耗至少3层伤势时，额外获得气血1层。\n主修额外效果：每次满足上述条件时，再获得借力1层。"
+heart_method_description = "效果：每次主动效果成功消耗内伤或外伤至少1层，获得借力1层；同一次主动效果消耗内伤、外伤合计至少2层时，另获得身法1层；合计至少3层时，另获得气血1层。\n主修额外效果：每次主动效果成功消耗内伤或外伤至少1层时，另获得借力1层。"
 
 
 learn_bonus_revision = "study-balance-20261012"

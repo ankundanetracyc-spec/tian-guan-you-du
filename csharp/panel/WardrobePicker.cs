@@ -39,6 +39,14 @@ public partial class WardrobePicker : Control
         var footer = new HBoxContainer { Alignment = BoxContainer.AlignmentMode.Center }; footer.AddThemeConstantOverride("separation", 24); box.AddChild(footer);
         var cancelButton = new Button { Name = "CancelClothing", Text = "取消", CustomMinimumSize = new Vector2(150, 44) }; cancelButton.Pressed += close_draft; footer.AddChild(cancelButton);
         var apply = new Button { Name = "ApplyClothing", Text = "换上", CustomMinimumSize = new Vector2(150, 44) }; apply.Pressed += apply_clothing; footer.AddChild(apply);
+        foreach (var button in new Button[] { _choices, cancelButton, apply })
+        {
+            WorldHudStyle.StyleSmallButton(button, 19);
+            button.AddThemeColorOverride("font_hover_pressed_color", WorldHudStyle.Ink);
+            foreach (var state in new[] { "normal", "hover", "pressed", "hover_pressed" }) button.AddThemeStyleboxOverride(state, WorldHudStyle.Paper());
+            button.MouseEntered += () => button.Modulate = new Color(1.07f, 1.05f, 1.01f);
+            button.MouseExited += () => button.Modulate = Colors.White;
+        }
         Hide();
     }
 

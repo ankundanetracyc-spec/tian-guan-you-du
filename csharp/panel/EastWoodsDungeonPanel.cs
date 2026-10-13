@@ -425,7 +425,7 @@ public partial class EastWoodsDungeonPanel : Control
             }
             var dutyTarget = _activeDutyId == "east_woods_patrol" && node.Id == (_activeDutyReady ? "forest_edge" : "quiet_grove");
             var title = dutyTarget ? (_activeDutyReady ? "出口 · 回宗回报" : "巡查 · 静冠洼地") : node.ShowTitleOnMap ? node.Title : "";
-            if (is_node_visible(node.Id) && EastWoodsActions.Content(node.Id) is { } content && action_remaining(node.Id, content) > 0)
+            if (is_node_visible(node.Id) && available_actions(node.Id).FirstOrDefault() is { } content)
                 title += (title.Length > 0 ? " · " : "") + (content.Battle ? "兽踪" : content.ItemPath.Length > 0 ? "可采集" : "异状");
             var titleLabel = _nodeTitles[node.Id];
             if (titleLabel.Text != title) titleLabel.Text = title;

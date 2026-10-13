@@ -52,7 +52,7 @@ public partial class InfoPanel
         foreach (var text in new[] { "全部", "已学", "持有" })
         {
             var button = CharacterButton(text, 20, text == _manualFilter); button.CustomMinimumSize = new Vector2(80, 44); filters.AddChild(button);
-            button.Pressed += () => { _manualFilter = text; foreach (var sibling in filters.GetChildren().OfType<Button>().Where(b => b.HasMeta("manual_status"))) sibling.AddThemeStyleboxOverride("normal", CharacterStyle(sibling == button, 10)); refresh_character_gongfa(human); };
+            button.Pressed += () => { _manualFilter = text; foreach (var sibling in filters.GetChildren().OfType<Button>().Where(b => b.HasMeta("manual_status"))) sibling.AddThemeStyleboxOverride("normal", CharacterButtonStyle(sibling == button)); refresh_character_gongfa(human); };
             button.SetMeta("manual_status", true);
         }
         var keyword = CharacterButton(_manualKeyword.Length == 0 ? "关键词：全部 ▾" : _manualKeyword + " ▾", 20); keyword.CustomMinimumSize = new Vector2(190, 44); keyword.ClipText = true; filters.AddChild(keyword);

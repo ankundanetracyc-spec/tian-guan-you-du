@@ -70,10 +70,9 @@ public partial class StoragePanel
             button.AddThemeConstantOverride("h_separation", 20);
             var idle = new StyleBoxEmpty { ContentMarginLeft = 21, ContentMarginRight = 16 };
             button.AddThemeStyleboxOverride("normal", idle);
-            button.AddThemeStyleboxOverride("hover", new StyleBoxFlat
-            {
-                BgColor = new Color(0.92f, 0.89f, 0.75f, 0.08f), ContentMarginLeft = 21, ContentMarginRight = 16
-            });
+            button.AddThemeStyleboxOverride("hover", idle);
+            button.MouseEntered += () => button.Modulate = new Color(1.07f, 1.05f, 1.01f);
+            button.MouseExited += () => button.Modulate = Colors.White;
             foreach (var state in new[] { "pressed", "hover_pressed" })
             {
                 var paper = WorldHudStyle.Paper();
@@ -310,19 +309,21 @@ public partial class StoragePanel
     {
         button.AddThemeFontOverride("font", _inventory_font);
         button.AddThemeFontSizeOverride("font_size", size);
-        foreach (var state in new[] { "font_color", "font_hover_color", "font_pressed_color", "font_focus_color" })
+        foreach (var state in new[] { "font_color", "font_hover_color", "font_pressed_color", "font_focus_color", "font_hover_pressed_color" })
             button.AddThemeColorOverride(state, light ? Ink : PaperText);
-        foreach (var state in new[] { "normal", "hover", "pressed" })
+        foreach (var state in new[] { "normal", "hover", "pressed", "hover_pressed" })
         {
-            if (light) button.AddThemeStyleboxOverride(state, WorldHudStyle.Paper(state == "hover"));
+            if (light) button.AddThemeStyleboxOverride(state, WorldHudStyle.Paper());
             else button.AddThemeStyleboxOverride(state, new StyleBoxFlat
             {
-                BgColor = new Color(.08f, .09f, .07f, state == "hover" ? .96f : .84f),
-                BorderColor = new Color("b6aa8a"), BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1,
+                BgColor = new Color(.08f, .09f, .07f, .84f),
+                BorderColor = new Color(state is "hover" or "hover_pressed" ? "d4bc87" : "b6aa8a"), BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1,
                 ContentMarginLeft = 12, ContentMarginRight = 12, CornerRadiusTopLeft = 4, CornerRadiusTopRight = 4,
                 CornerRadiusBottomLeft = 4, CornerRadiusBottomRight = 4
             });
         }
+        button.MouseEntered += () => { if (!button.Disabled) button.Modulate = new Color(1.07f, 1.05f, 1.01f); };
+        button.MouseExited += () => button.Modulate = Colors.White;
         button.AddThemeStyleboxOverride("focus", focus_style());
     }
     private void style_input(LineEdit input)

@@ -32,7 +32,7 @@ public partial class CultivationUI
         _roomMain = QuietRoomStyle.Text("", 21); status.AddChild(_roomMain);
         var nav = new VBoxContainer { AnchorLeft = .025f, AnchorRight = .165f, AnchorTop = .205f, AnchorBottom = .91f };
         nav.AddThemeConstantOverride("separation", 18); _room.AddChild(nav);
-        var titles = new[] { "吐纳修行", "功法研读", "闭关突破", "修命·淬体", "修性·观法" };
+        var titles = new[] { "吐纳修行", "功法研读", "闭关突破", "修命·淬体", "修性·观法", "灵感·瓶颈" };
         for (var i = 0; i < titles.Length; i++)
         {
             var page = i; var tab = new Button { Name = "RoomTab" + i, Text = titles[i], ToggleMode = true, CustomMinimumSize = new Vector2(0, 72) };
@@ -46,7 +46,7 @@ public partial class CultivationUI
         _room.Hide();
     }
     public override void _ExitTree() { if (GodotObject.IsInstanceValid(_roomClock)) _roomClock!.time_changed -= room_time_changed; }
-    private void room_time_changed() { if (Visible && _room.Visible) { refresh_room_header(); if (_panel?.Visible == true) refresh_plan(); } }
+    private void room_time_changed() { if (Visible && _room.Visible) { refresh_room_header(); if (_panel?.Visible == true) refresh_plan(); if (_inspirationPage?.Visible == true) refresh_room_inspiration(); } }
     private PanelContainer room_page(string name)
     {
         var page = new PanelContainer { Name = name, MouseFilter = MouseFilterEnum.Pass };
@@ -89,7 +89,7 @@ public partial class CultivationUI
         practice.AddChild(new Control { SizeFlagsVertical = SizeFlags.ExpandFill });
         _cultivate = new Button { Text = "开始修炼" }; QuietRoomStyle.Primary(_cultivate); _cultivate.Pressed += cultivate; practice.AddChild(_cultivate);
         var note = QuietRoomStyle.Text("开始后才推进游戏时间", 16); note.HorizontalAlignment = HorizontalAlignment.Center; practice.AddChild(note);
-        build_room_study(); build_room_breakthrough(); sync_mode_tabs();
+        build_room_study(); build_room_breakthrough(); build_room_inspiration(); sync_mode_tabs();
     }
     private void build_room_study()
     {
@@ -154,7 +154,7 @@ public partial class CultivationUI
         if (!_roomActions && page != _roomPage) return;
         _roomPage = page; _room.Show();
         _overviewPanel?.Hide();
-        _panel!.Visible = page == 0; _studyPage.Visible = page == 1; _breakPage.Visible = page == 2;
+        _panel!.Visible = page == 0; _studyPage.Visible = page == 1; _breakPage.Visible = page == 2; if (_inspirationPage is not null) _inspirationPage.Visible = page == 5;
         _roomBodyScroll.Visible = page == 3; _bodyPanel!.Visible = page == 3;
         _roomNatureScroll.Visible = page == 4; _visualPanel!.Visible = page == 4;
         _yuanxiPanel?.Hide();
@@ -170,7 +170,7 @@ public partial class CultivationUI
         }
         for (var i = 0; i < _roomTabs.Count; i++) { _roomTabs[i].ButtonPressed = i == page; _roomTabs[i].Disabled = !_roomActions && i != page; }
         refresh_room_header();
-        if (page == 3) refresh_body_ui(); else if (page == 4) refresh_visualization_ui(); else refresh();
+        if (page == 3) refresh_body_ui(); else if (page == 4) refresh_visualization_ui(); else if (page == 5) refresh_room_inspiration(); else refresh();
     }
     private void refresh_room_header()
     {

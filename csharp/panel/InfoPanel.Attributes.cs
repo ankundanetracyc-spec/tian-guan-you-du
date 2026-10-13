@@ -100,7 +100,7 @@ public partial class InfoPanel
         }
         var buttons = new List<Button>();
         foreach (var group in new[] { "全部", "武艺", "术法", "百工" })
-        { var button = CharacterButton(group, 18, _proficiencyGroup == group, 6); button.CustomMinimumSize = new Vector2(64, 36); heading.AddChild(button); buttons.Add(button); button.Pressed += () => { _proficiencyGroup = group; foreach (var sibling in buttons) sibling.AddThemeStyleboxOverride("normal", CharacterStyle(sibling == button, 6)); Refresh(); }; }
+        { var button = CharacterButton(group, 18, _proficiencyGroup == group, 6); button.CustomMinimumSize = new Vector2(64, 36); heading.AddChild(button); buttons.Add(button); button.Pressed += () => { _proficiencyGroup = group; foreach (var sibling in buttons) sibling.AddThemeStyleboxOverride("normal", CharacterButtonStyle(sibling == button, 6)); Refresh(); }; }
         var spacer = new Control { SizeFlagsHorizontal = SizeFlags.ExpandFill }; heading.AddChild(spacer);
         var search = CharacterSearch("搜索造诣"); search.SizeFlagsHorizontal = SizeFlags.ShrinkEnd; search.CustomMinimumSize = new Vector2(260, 38); heading.AddChild(search); search.Text = _proficiencyQuery;
         search.TextChanged += value => { _proficiencyQuery = value; Refresh(); }; CharacterScroll(prof).AddChild(rows); Refresh();

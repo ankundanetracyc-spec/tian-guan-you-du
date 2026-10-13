@@ -45,7 +45,10 @@ public static class NpcPersonalityRules
     {
         Ensure(npc);
         if (npc.player_relationship < 0 || npc.player_social_memory.GetValueOrDefault("relationship", "").AsString() == "enemy") return false;
-        return NpcSocialRules.KnowsName(npc) || publiclyKnown || !Is(npc, "sociability", "内敛");
+        return NpcSocialRules.KnowsName(npc) || publiclyKnown || !Is(npc, "sociability", "内敛") ||
+            NpcPlayerImpressionRules.WillingContact(npc) ||
+            (NpcPlayerImpressionRules.SparPartner(npc) && Values(npc, "修行")) ||
+            (NpcPlayerImpressionRules.HerbTradeContact(npc) && NpcPurchaseRules.Offer(npc) is not null);
     }
     public static bool HasVisitPriority(WorldNpcData npc, bool publiclyKnown) =>
         (publiclyKnown && (Values(npc, "声名") || Values(npc, "宗门"))) ||

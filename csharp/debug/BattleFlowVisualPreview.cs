@@ -43,25 +43,20 @@ public partial class BattleFlowVisualPreview : Node
         {
             var label=new Label{Text=value,Position=position};label.AddThemeFontSizeOverride("font_size",22);canvas.AddChild(label);
         }
-        Caption("原尺寸立绘等比缩小 / 96头像 / 192头像：脸型与五官位置应保持一致",new(24,8));
+        Caption("原尺寸立绘与近景头像：部件按素材原坐标拼接，头像只裁切整幅立绘",new(24,8));
         for(int i=0;i<3;i++)
         {
-            var data=new HumanData{gender=i==2?1:0,appearance_seed=1200+i,appearance_face_width=i==1?.9f:1f,appearance_face_height=i==1?1.1f:1f,appearance_eye_scale=i==1?1.15f:i==2?.9f:1,appearance_eye_offset_y=i==0?0:i==1?10:-10};
+            var data=new HumanData{gender=i==2?1:0,appearance_seed=1200+i};
             var context=catalog.get_context(data,data.gender==1?"female":"male",24,"","云息");
             var requested=catalog.get_requested_appearance(data);if(data.appearance_hair_back_style<0)requested["hair_back"]="";
             var y=52+i*292;
             var full=new PortraitRenderer{Size=new(1024,1536),Scale=Vector2.One*.16f,Position=new(36,y)};canvas.AddChild(full);full.configure(data,context,requested);
-            Caption($"眼偏移 {data.appearance_eye_offset_y} / 脸宽 {data.appearance_face_width} 高 {data.appearance_face_height}",new(250,y+220));
+            Caption($"{(data.gender==1?"女修":"男修")} · 部件固定拼接",new(250,y+220));
             foreach(var size in new[]{96,192})
             {
                 var crop=new PortraitRenderer{Size=new(size,size),Position=new(size==96?280:450,y)};crop.set_headshot_mode(true);canvas.AddChild(crop);crop.configure(data,context,requested);
                 var composition=crop.GetChildren().OfType<Control>().Single();
                 if(!Mathf.IsEqualApprox(composition.Scale.X,composition.Scale.Y))throw new Exception("头像组合发生非等比缩放");
-                var faceGroup=composition.GetNode<Control>("FaceComposition");
-                var expectedHead=data.gender==1?new Vector2(519,414):new Vector2(517,411);
-                var expectedEyes=data.gender==1?new Vector2(519,379):new Vector2(516.5f,374.5f);
-                if(!faceGroup.PivotOffset.IsEqualApprox(expectedHead))throw new Exception("面部锚点未读取实际骨架");
-                if(!faceGroup.GetNode<TextureRect>("Eye").PivotOffset.IsEqualApprox(expectedEyes))throw new Exception("双眼缩放中心不在原图双眼中点");
                 foreach(var layer in composition.FindChildren("*","TextureRect",true,false).OfType<TextureRect>())
                 {
                     var original=full.FindChildren("*","TextureRect",true,false).OfType<TextureRect>().Single(l=>l.Name==layer.Name);
@@ -71,8 +66,8 @@ public partial class BattleFlowVisualPreview : Node
         }
         for(int i=0;i<12;i++)await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);
         await ToSignal(RenderingServer.Singleton,RenderingServer.SignalName.FramePostDraw);
-        GetViewport().GetTexture().GetImage().SavePng("res://docs/美术规范/战斗流程概念_20261009/实机验收/头像比例检查_20261010.png");
-        // 实际生成器数据，不只验证默认脸型；先配置后由容器改变尺寸。
+        GetViewport().GetTexture().GetImage().SavePng("res://docs/美术规范/战斗流程概念_20261009/实机验收/头像拼接检查_20261013.png");
+        // 实际生成器数据；先配置，再由容器改变尺寸，检查整幅组合的等比适配。
         using var generator=new CharacterGenerator();
         for(int index=0;index<48;index++)
         {
@@ -82,15 +77,12 @@ public partial class BattleFlowVisualPreview : Node
             renderer.Size=index%2==0?new Vector2(80,112):new Vector2(330,500);
             var composition=renderer.GetNode<Control>("PortraitComposition");
             if(!Mathf.IsEqualApprox(composition.Scale.X,composition.Scale.Y))throw new Exception("容器布局造成非等比组合缩放");
-            var group=composition.GetNode<Control>("FaceComposition");
-            var eyes=group.GetNode<TextureRect>("Eye");
-            var expected=data.gender==1?new Vector2(519,379):new Vector2(516.5f,374.5f);
-            if(!eyes.PivotOffset.IsEqualApprox(expected))throw new Exception("随机角色眼睛锚点异常");
-            if(eyes.Scale!=Vector2.One*data.appearance_eye_scale)throw new Exception("眼睛被重复缩放");
+            foreach(var layer in composition.FindChildren("*","TextureRect",true,false).OfType<TextureRect>())
+                if(!layer.Scale.IsEqualApprox(Vector2.One)||layer.PivotOffset!=Vector2.Zero)throw new Exception("立绘部件出现单独缩放或枢轴变换");
             renderer.QueueFree();
         }
         await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);
-        GD.Print("PORTRAIT_CHECK_OK: native rig anchors + 48 generated characters + late container resize + uniform composition");
+        GD.Print("PORTRAIT_CHECK_OK: fixed-part compositing + 48 generated characters + late container resize + uniform composition");
     }
 
 }

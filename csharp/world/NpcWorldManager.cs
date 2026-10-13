@@ -177,6 +177,71 @@ public partial class NpcWorldManager : Node
     public EastWoodsNpcIncidentRecord? get_east_woods_incident(string incidentId)
         => _east_woods_npc_incidents.FirstOrDefault(incident => incident is not null && incident.incident_id == incidentId);
 
+    public Array<EastWoodsNpcIncidentRecord> get_all_east_woods_incidents()
+    {
+        var result = new Array<EastWoodsNpcIncidentRecord>();
+        foreach (var incident in _east_woods_npc_incidents)
+            if (incident is not null && incident.Duplicate(true) is EastWoodsNpcIncidentRecord copy)
+                result.Add(copy);
+        return result;
+    }
+
+    public bool try_assign_yuxu_case_task(string incidentId, string taskId, string dutyInstanceId)
+    {
+        var incident = get_east_woods_incident(incidentId);
+        var task = incident?.field_tasks?.FirstOrDefault(item => item is not null && item.task_id == taskId);
+        if (task is null || task.status != YuxuSectCaseTaskRecord.StatusAvailable ||
+            string.IsNullOrWhiteSpace(dutyInstanceId) ||
+            incident!.legal_status is not (YuxuSectDraftLawEvaluator.LegalStatusEnforcementPending or YuxuSectDraftLawEvaluator.LegalStatusAppealPending))
+            return false;
+        task.status = YuxuSectCaseTaskRecord.StatusAssigned;
+        task.duty_instance_id = dutyInstanceId;
+        task.updated_at = current_case_timestamp();
+        return true;
+    }
+
+    public bool release_yuxu_case_task(string incidentId, string taskId, string dutyInstanceId)
+    {
+        var incident = get_east_woods_incident(incidentId);
+        var task = incident?.field_tasks?.FirstOrDefault(item => item is not null && item.task_id == taskId);
+        if (task is null || task.status != YuxuSectCaseTaskRecord.StatusAssigned ||
+            task.duty_instance_id != dutyInstanceId)
+            return false;
+        task.status = YuxuSectCaseTaskRecord.StatusAvailable;
+        task.duty_instance_id = "";
+        task.updated_at = current_case_timestamp();
+        return true;
+    }
+
+    public bool mark_yuxu_case_task_objective_complete(string incidentId, string taskId, string dutyInstanceId)
+    {
+        var incident = get_east_woods_incident(incidentId);
+        var task = incident?.field_tasks?.FirstOrDefault(item => item is not null && item.task_id == taskId);
+        if (task is null || task.status != YuxuSectCaseTaskRecord.StatusAssigned ||
+            task.duty_instance_id != dutyInstanceId)
+            return false;
+        task.status = YuxuSectCaseTaskRecord.StatusObjectiveComplete;
+        task.updated_at = current_case_timestamp();
+        return true;
+    }
+
+    public bool complete_yuxu_case_task(string incidentId, string taskId, string dutyInstanceId)
+    {
+        var incident = get_east_woods_incident(incidentId);
+        if (incident is null) return false;
+        incident.field_tasks ??= [];
+        var task = incident.field_tasks.FirstOrDefault(item => item is not null && item.task_id == taskId);
+        if (task is null || task.status != YuxuSectCaseTaskRecord.StatusObjectiveComplete ||
+            task.duty_instance_id != dutyInstanceId)
+            return false;
+        task.status = YuxuSectCaseTaskRecord.StatusCompleted;
+        task.duty_instance_id = "";
+        task.updated_at = current_case_timestamp();
+        if (incident.field_tasks.All(item => item is null || item.status is YuxuSectCaseTaskRecord.StatusCompleted or YuxuSectCaseTaskRecord.StatusCanceled))
+            incident.legal_status = YuxuSectDraftLawEvaluator.LegalStatusClosed;
+        return true;
+    }
+
     public bool record_east_woods_npc_incident(EastWoodsNpcIncidentRecord incident)
     {
         if (incident is null || string.IsNullOrWhiteSpace(incident.incident_id) ||
@@ -186,10 +251,21 @@ public partial class NpcWorldManager : Node
         if (_east_woods_npc_incidents.Any(existing => existing is not null && existing.incident_id == incident.incident_id))
             return false;
         incident.item_transfers ??= [];
+        incident.evidence_source_refs ??= [];
+        incident.ruling_rule_ids ??= [];
+        incident.ruling_sanction_ids ??= [];
+        incident.appeal_records ??= [];
+        incident.field_tasks ??= [];
         if (incident.Duplicate(true) is not EastWoodsNpcIncidentRecord copy) return false;
         _east_woods_npc_incidents.Add(copy);
         EmitSignal(SignalName.world_npcs_changed);
         return true;
+    }
+
+    private string current_case_timestamp()
+    {
+        var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
+        return time is null ? "" : $"{time.year}年{time.month}月{time.day}日 {time.hour:D2}时";
     }
 
     public bool try_assign_east_woods_incident(string incidentId, string dutyInstanceId)
@@ -220,7 +296,264 @@ public partial class NpcWorldManager : Node
         incident.case_status = EastWoodsNpcIncidentRecord.StatusSubmittedPendingRuling;
         incident.assigned_duty_instance_id = "";
         incident.submitted_at = submittedAt;
+        incident.legal_status = YuxuSectDraftLawEvaluator.LegalStatusPending;
         return true;
+    }
+
+    public bool try_adjudicate_yuxu_case(string incidentId, YuxuSectLawDraftConfig config, out string resultText)
+    {
+        resultText = "";
+        var incident = get_east_woods_incident(incidentId);
+        if (incident is null || incident.case_status != EastWoodsNpcIncidentRecord.StatusSubmittedPendingRuling ||
+            incident.legal_status != YuxuSectDraftLawEvaluator.LegalStatusPending || config is null)
+            return false;
+
+        var decision = YuxuSectDraftLawEvaluator.Evaluate(incident, get_all_east_woods_incidents(), config);
+        incident.ruling_rule_ids = decision.RuleIds.Duplicate();
+        incident.ruling_sanction_ids = decision.SanctionIds.Duplicate();
+        incident.ruling_offender_npc_id = decision.OffenderNpcId;
+        incident.prior_final_offense_count = decision.PriorFinalFindings;
+        incident.ruling_at = current_case_timestamp();
+        incident.ruling_findings = decision.FindingText;
+        incident.capture_warrant_authorized = decision.CaptureWarrantAuthorized;
+        incident.capture_warrant_kill_authorized = decision.CaptureKillAuthorized;
+        incident.capture_warrant_target_npc_id = decision.CaptureWarrantAuthorized ? decision.OffenderNpcId : "";
+        incident.legal_status = YuxuSectDraftLawEvaluator.LegalStatusRuled;
+        resultText = decision.HasJurisdiction
+            ? $"案卷 {incident.incident_id} 已由执中峰依配置门规完成裁断：{decision.FindingText}"
+            : $"案卷 {incident.incident_id} 经审查不属本宗管辖或事实不足：{decision.FindingText}";
+        EmitSignal(SignalName.world_npcs_changed);
+        return true;
+    }
+
+    public bool try_file_yuxu_case_appeal(string incidentId, string appellantNpcId, string groundId, out string resultText)
+    {
+        resultText = "";
+        var incident = get_east_woods_incident(incidentId);
+        var config = YuxuSectDraftLawEvaluator.LoadConfig();
+        if (incident is null || string.IsNullOrWhiteSpace(appellantNpcId) || incident.sanctions_executed ||
+            incident.legal_status is not (YuxuSectDraftLawEvaluator.LegalStatusRuled or YuxuSectDraftLawEvaluator.LegalStatusAppealReviewed) ||
+            appellantNpcId != incident.attacker_npc_id && appellantNpcId != incident.target_npc_id)
+            return false;
+
+        incident.appeal_records ??= [];
+        if (incident.appeal_records.Count(record => record is not null && record.appellant_npc_id == appellantNpcId) >= Math.Max(1, config.appeals_per_party))
+        {
+            resultText = "此当事人已经用过本案申诉次数。";
+            return false;
+        }
+
+        var appeal = new YuxuSectCaseAppealRecord
+        {
+            appellant_npc_id = appellantNpcId,
+            ground_id = string.IsNullOrWhiteSpace(groundId) ? "request_record_review" : groundId,
+            filed_at = current_case_timestamp(),
+            status = YuxuSectCaseAppealRecord.StatusPending,
+        };
+        incident.appeal_records.Add(appeal);
+        incident.appeal_status = YuxuSectDraftLawEvaluator.AppealStatusPending;
+        incident.appellant_npc_id = appellantNpcId;
+        incident.appeal_ground_id = appeal.ground_id;
+        incident.appeal_filed_at = appeal.filed_at;
+        incident.legal_status = YuxuSectDraftLawEvaluator.LegalStatusAppealPending;
+
+        var appellant = get_npc(appellantNpcId);
+        resultText = $"{appellant?.npc_name ?? appellantNpcId} 已递交本案申诉；待复核期间，原裁断暂不执行。申诉人护送未发布事务，因为当前地图尚无跟随与同行状态。";
+        EmitSignal(SignalName.world_npcs_changed);
+        return true;
+    }
+
+    public bool try_review_yuxu_case_appeal(string incidentId, YuxuSectLawDraftConfig config, out string resultText)
+    {
+        resultText = "";
+        var incident = get_east_woods_incident(incidentId);
+        var pendingAppeal = incident?.appeal_records?.LastOrDefault(record => record is not null && record.status == YuxuSectCaseAppealRecord.StatusPending);
+        if (incident is null || pendingAppeal is null || incident.legal_status != YuxuSectDraftLawEvaluator.LegalStatusAppealPending ||
+            incident.sanctions_executed || config is null)
+            return false;
+
+        var originalRuleIds = incident.ruling_rule_ids?.ToArray() ?? [];
+        var originalSanctionIds = incident.ruling_sanction_ids?.ToArray() ?? [];
+        var originalOffender = incident.ruling_offender_npc_id;
+        var decision = YuxuSectDraftLawEvaluator.Evaluate(incident, get_all_east_woods_incidents(), config);
+        incident.ruling_rule_ids = decision.RuleIds.Duplicate();
+        incident.ruling_sanction_ids = decision.SanctionIds.Duplicate();
+        incident.ruling_offender_npc_id = decision.OffenderNpcId;
+        incident.prior_final_offense_count = decision.PriorFinalFindings;
+        incident.ruling_at = current_case_timestamp();
+        incident.ruling_findings = decision.FindingText;
+        incident.capture_warrant_authorized = decision.CaptureWarrantAuthorized;
+        incident.capture_warrant_kill_authorized = decision.CaptureKillAuthorized;
+        incident.capture_warrant_target_npc_id = decision.CaptureWarrantAuthorized ? decision.OffenderNpcId : "";
+
+        var changed = originalOffender != decision.OffenderNpcId || !originalRuleIds.SequenceEqual(decision.RuleIds) ||
+            !originalSanctionIds.SequenceEqual(decision.SanctionIds);
+        pendingAppeal.status = changed ? YuxuSectCaseAppealRecord.StatusChanged : YuxuSectCaseAppealRecord.StatusUpheld;
+        pendingAppeal.reviewed_at = current_case_timestamp();
+        pendingAppeal.outcome = changed
+            ? "复核发现现存结构化记录与原裁断不一致，已按复核结果更正；未改写来源事实。"
+            : "复核未发现足以改变条款适用的结构化事实；维持原裁断。";
+        incident.appeal_status = changed ? YuxuSectDraftLawEvaluator.AppealStatusChanged : YuxuSectDraftLawEvaluator.AppealStatusUpheld;
+        incident.appeal_reviewed_at = pendingAppeal.reviewed_at;
+        incident.appeal_outcome = pendingAppeal.outcome;
+        incident.legal_status = YuxuSectDraftLawEvaluator.LegalStatusAppealReviewed;
+        resultText = $"案卷 {incident.incident_id} 的申诉已由复核官完成审查：{pendingAppeal.outcome}";
+        EmitSignal(SignalName.world_npcs_changed);
+        return true;
+    }
+
+    public bool try_begin_yuxu_case_enforcement(string incidentId, YuxuSectLawDraftConfig config, out string resultText)
+    {
+        resultText = "";
+        var incident = get_east_woods_incident(incidentId);
+        if (incident is null || incident.sanctions_executed || config is null ||
+            incident.legal_status is not (YuxuSectDraftLawEvaluator.LegalStatusRuled or YuxuSectDraftLawEvaluator.LegalStatusAppealReviewed))
+            return false;
+
+        incident.ruling_sanction_ids ??= [];
+        incident.field_tasks ??= [];
+        var offender = get_npc(incident.ruling_offender_npc_id);
+        foreach (var sanctionId in incident.ruling_sanction_ids)
+        {
+            if (sanctionId == config.second_offense_sanction_id && offender is not null)
+                offender.sect_case_demerit_count = Math.Max(0, offender.sect_case_demerit_count) + 1;
+            else if (sanctionId == config.repeat_offense_sanction_id && offender is not null)
+            {
+                if (string.IsNullOrEmpty(offender.sect_case_former_faction_id))
+                    offender.sect_case_former_faction_id = offender.faction_id;
+                offender.sect_case_expelled_by_case_id = incident.incident_id;
+                offender.faction_id = "yuxu_expelled";
+                offender.formal_identity = "玉虚宗除名修士";
+                // The signed warrant is saved, but no capture task is published until
+                // the map has a non-lethal apprehension and escort event to verify it.
+            }
+            else if (sanctionId == config.first_offense_sanction_id)
+            {
+                // The reprimand is represented by the immutable ruling record; it does not alter hidden attitude values.
+            }
+        }
+
+        if (incident.ruling_sanction_ids.Contains(config.restitution_sanction_id))
+        {
+            for (var index = 0; index < incident.item_transfers.Count; index++)
+            {
+                var transfer = incident.item_transfers[index];
+                if (transfer is null || transfer.quantity <= 0 || transfer.to_npc_id != incident.ruling_offender_npc_id ||
+                    transfer.from_npc_id == incident.ruling_offender_npc_id) continue;
+                add_case_field_task(incident, new YuxuSectCaseTaskRecord
+                {
+                    task_id = $"restitution:{index}",
+                    task_type = "restitution",
+                    title = $"依案追还 · {transfer.item_path.Split('/').LastOrDefault() ?? "原物"}",
+                    target_npc_id = transfer.to_npc_id,
+                    target_npc_name = transfer.to_npc_name,
+                    source_transfer_index = index,
+                    goal = $"向{transfer.to_npc_name}（原持有人）追还案卷记录的原物 ×{transfer.quantity}。",
+                    completion_conditions = "与指定被处分人当面办理原物追还；数量以案卷流水为准，不增不减。",
+                    return_instruction = "回和光峰事务板回报。",
+                    contribution_reward = config.field_task_contribution_reward,
+                    kill_authorized = false,
+                });
+            }
+        }
+
+        incident.sanctions_executed = true;
+        incident.sanctions_executed_at = current_case_timestamp();
+        incident.legal_status = incident.field_tasks.Any(task => task is not null && task.is_open)
+            ? YuxuSectDraftLawEvaluator.LegalStatusEnforcementPending
+            : YuxuSectDraftLawEvaluator.LegalStatusClosed;
+        resultText = incident.ruling_sanction_ids.Count == 0
+            ? $"案卷 {incident.incident_id} 已执行“不予处分/证据不足”裁定。"
+            : $"案卷 {incident.incident_id} 的裁定已由宗门执行；所需外勤事项已刊入和光峰事务板。";
+        EmitSignal(SignalName.world_npcs_changed);
+        return true;
+    }
+
+    public Array<Dictionary> get_yuxu_case_task_summaries(string activeIncidentId = "", string activeTaskId = "")
+    {
+        var result = new Array<Dictionary>();
+        foreach (var incident in _east_woods_npc_incidents)
+        {
+            if (incident?.field_tasks is null) continue;
+            foreach (var task in incident.field_tasks)
+            {
+                if (task is null) continue;
+                var isActiveForPlayer = incident.incident_id == activeIncidentId && task.task_id == activeTaskId &&
+                    task.status is YuxuSectCaseTaskRecord.StatusAssigned or YuxuSectCaseTaskRecord.StatusObjectiveComplete;
+                if (task.status != YuxuSectCaseTaskRecord.StatusAvailable && !isActiveForPlayer) continue;
+                result.Add(new Dictionary
+                {
+                    ["incident_id"] = incident.incident_id,
+                    ["task_id"] = task.task_id,
+                    ["task_type"] = task.task_type,
+                    ["title"] = task.title,
+                    ["target_npc_id"] = task.target_npc_id,
+                    ["target_npc_name"] = task.target_npc_name,
+                    ["goal"] = task.goal,
+                    ["conditions"] = task.completion_conditions,
+                    ["return_instruction"] = task.return_instruction,
+                    ["reward"] = task.contribution_reward,
+                    ["kill_authorized"] = task.kill_authorized,
+                    ["status"] = task.status,
+                    ["legal_status"] = incident.legal_status,
+                });
+            }
+        }
+        return result;
+    }
+
+    public YuxuSectCaseTaskRecord? get_yuxu_case_task(string incidentId, string taskId)
+        => get_east_woods_incident(incidentId)?.field_tasks?.FirstOrDefault(task => task is not null && task.task_id == taskId);
+
+    public bool try_execute_yuxu_restitution_task(string incidentId, string taskId, string dutyInstanceId, string npcId, out string resultText)
+    {
+        resultText = "";
+        var incident = get_east_woods_incident(incidentId);
+        var task = get_yuxu_case_task(incidentId, taskId);
+        if (incident is not null) incident.item_transfers ??= [];
+        if (incident is null || task is null || task.task_type != "restitution" ||
+            task.status != YuxuSectCaseTaskRecord.StatusAssigned || task.duty_instance_id != dutyInstanceId ||
+            task.target_npc_id != npcId || task.source_transfer_index < 0 ||
+            task.source_transfer_index >= incident.item_transfers.Count)
+            return false;
+
+        var transfer = incident.item_transfers[task.source_transfer_index];
+        var looter = get_npc(transfer?.to_npc_id ?? "");
+        var originalHolder = get_npc(transfer?.from_npc_id ?? "");
+        if (transfer is null || looter is null || originalHolder is null || !looter.is_alive || !originalHolder.is_alive ||
+            string.IsNullOrWhiteSpace(transfer.item_path) || transfer.quantity <= 0)
+        {
+            resultText = "案卷指定当事人或原物记录已不适用；未改动任何物品。请交执中峰复核。";
+            return false;
+        }
+        if (looter.get_carried_item_count(transfer.item_path) < transfer.quantity)
+        {
+            resultText = "被处分人当前随身物品不足以完整追还本笔原物；未扣除或补造物品。请交执中峰复核。";
+            return false;
+        }
+
+        looter.change_carried_item(transfer.item_path, -transfer.quantity);
+        originalHolder.change_carried_item(transfer.item_path, transfer.quantity);
+        var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
+        var month = time is null ? 0 : month_index(time);
+        record(looter, month, "case_restitution", "依案追还原物", $"执中峰已生效裁断 {incidentId}。", $"实际转出 {transfer.item_path} ×{transfer.quantity} 给原持有人 {originalHolder.npc_name}。", -transfer.quantity, originalHolder.npc_id);
+        if (looter.action_history.Count > 0) looter.action_history[looter.action_history.Count - 1].dungeon_incident_id = incidentId;
+        record(originalHolder, month, "case_restitution_received", "收回案涉原物", $"执中峰已生效裁断 {incidentId}。", $"实际收回 {transfer.item_path} ×{transfer.quantity}，来源为 {looter.npc_name}。", transfer.quantity, looter.npc_id);
+        if (originalHolder.action_history.Count > 0) originalHolder.action_history[originalHolder.action_history.Count - 1].dungeon_incident_id = incidentId;
+        task.status = YuxuSectCaseTaskRecord.StatusObjectiveComplete;
+        task.updated_at = current_case_timestamp();
+        resultText = $"已按案卷流水，将 {transfer.item_path} ×{transfer.quantity} 从 {looter.npc_name} 实际转回原持有人 {originalHolder.npc_name}；请回和光峰报告。";
+        EmitSignal(SignalName.world_npcs_changed);
+        EmitSignal(SignalName.npc_action_recorded, looter.npc_id, looter.action_history[looter.action_history.Count - 1]);
+        EmitSignal(SignalName.npc_action_recorded, originalHolder.npc_id, originalHolder.action_history[originalHolder.action_history.Count - 1]);
+        return true;
+    }
+
+    private static void add_case_field_task(EastWoodsNpcIncidentRecord incident, YuxuSectCaseTaskRecord task)
+    {
+        incident.field_tasks ??= [];
+        if (!incident.field_tasks.Any(existing => existing is not null && existing.task_id == task.task_id))
+            incident.field_tasks.Add(task);
     }
 
     public bool reconcile_east_woods_submissions(System.Func<string, bool> hasContributionTransaction)
@@ -523,12 +856,12 @@ public partial class NpcWorldManager : Node
             if (should_npc_attack(first, second, actionStamp, out var firstChance))
             {
                 record_dungeon_action(first, "dungeon_attack", "突袭", $"与 {second.npc_name} 相遇；短测概率 {firstChance:P0}。", "沿途 NPC 冲突按既有战斗规则由双方 AI 在后台自动完成。", first.dungeon_node_id, second.npc_id);
-                return new Dictionary { ["attacker_npc_id"] = first.npc_id, ["target_npc_id"] = second.npc_id, ["target_player"] = false, ["route_node_id"] = first.dungeon_node_id };
+                return new Dictionary { ["attacker_npc_id"] = first.npc_id, ["target_npc_id"] = second.npc_id, ["target_player"] = false, ["route_node_id"] = first.dungeon_node_id, ["attack_trigger_id"] = "npc_opportunistic_attack" };
             }
             if (should_npc_attack(second, first, actionStamp, out var secondChance))
             {
                 record_dungeon_action(second, "dungeon_attack", "突袭", $"与 {first.npc_name} 相遇；短测概率 {secondChance:P0}。", "沿途 NPC 冲突按既有战斗规则由双方 AI 在后台自动完成。", second.dungeon_node_id, first.npc_id);
-                return new Dictionary { ["attacker_npc_id"] = second.npc_id, ["target_npc_id"] = first.npc_id, ["target_player"] = false, ["route_node_id"] = second.dungeon_node_id };
+                return new Dictionary { ["attacker_npc_id"] = second.npc_id, ["target_npc_id"] = first.npc_id, ["target_player"] = false, ["route_node_id"] = second.dungeon_node_id, ["attack_trigger_id"] = "npc_opportunistic_attack" };
             }
         }
         return [];
@@ -638,7 +971,6 @@ public partial class NpcWorldManager : Node
     {
         if (!simulation_enabled)
         {
-            _last_world_grid_hour = nowHour;
             yield break;
         }
         if (_last_world_grid_hour < 0 || _last_processed_month < 0)
@@ -666,10 +998,11 @@ public partial class NpcWorldManager : Node
             }
             foreach (var step in simulate_month_steps(month)) yield return step;
             _last_processed_month = month;
+            // 只把完成月结的时点作为下一段行旅起点。月内时间信号不推进
+            // NPC；下次跨月时一次性补齐从此边界（或读档锚点）到月界的行程。
+            cursorHour = Math.Max(cursorHour, monthBoundaryHour);
+            _last_world_grid_hour = cursorHour;
         }
-        if (nowHour > cursorHour)
-            foreach (var step in advance_world_grid_travel_steps(nowHour - cursorHour, cursorHour)) yield return step;
-        _last_world_grid_hour = nowHour;
     }
 
     private System.Collections.Generic.IEnumerable<int> advance_world_grid_travel_steps(int elapsedHours, int segmentStartHour)
@@ -840,26 +1173,10 @@ public partial class NpcWorldManager : Node
     public void simulate_until_month(int target_month)
     {
         if (!simulation_enabled || target_month < 0) return;
-        if (_last_processed_month < 0)
-        {
-            _last_processed_month = target_month;
-            return;
-        }
-        // 读档或测试重置时间时，新的月份不应沿用旧世界的进度。
-        if (target_month < _last_processed_month)
-        {
-            _last_processed_month = target_month;
-            return;
-        }
+        var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
+        var nowHour = time?.get_total_game_hours() ?? target_month * 30 * 24;
         begin_settlement_batch();
-        try
-        {
-            for (var month = _last_processed_month + 1; month <= target_month; month++)
-            {
-                foreach (var _ in simulate_month_steps(month)) { }
-                _last_processed_month = month;
-            }
-        }
+        try { foreach (var _ in settle_time_steps(nowHour, target_month)) { } }
         finally { end_settlement_batch(); }
     }
 
@@ -870,6 +1187,8 @@ public partial class NpcWorldManager : Node
         foreach (var npc in npcs)
         {
             if (!npc.is_alive) continue;
+            // 复用月度遍历；无新证据立即返回，不额外扫描人口或历史。
+            NpcPlayerImpressionRules.SettleMonth(npc, month);
             // 师承流程的候选角色是宗门常驻人物，不参与尚未配置其修行/行程规则的月度演算。
             if (npc.is_yuxu_lineage_staff) continue;
             update_age(npc, month);

@@ -171,7 +171,24 @@ public partial class FamilyResidencePanel : Control
         _detail.AddChild(new HSeparator());
         if (!retreating && member.is_breakthrough_ready())
         {
-            var start = new Button { Text = $"闭关突破（约 {member.get_breakthrough_retreat_hours(true) / 24f:0.0} 日）", CustomMinimumSize = new Vector2(0, 44) }; ApplyButtonStyle(start, true); start.Pressed += () => { member.start_breakthrough_retreat(true); Refresh(); }; _detail.AddChild(start);
+            if (member.requires_condensation_breakthrough())
+            {
+                _detail.AddChild(Label("此处无法代行凝核之局；需由本人完成凝核突破。", 15, new Color(.9f, .72f, .48f)));
+            }
+            else
+            {
+                var nextRealm = member.get_next_realm_progress().GetValueOrDefault("next_realm", "").AsString();
+                var pillHint = member.get_breakthrough_pill_hint(nextRealm);
+                if (!member.has_required_breakthrough_pill(nextRealm))
+                {
+                    _detail.AddChild(Label(pillHint, 15, new Color(.9f, .72f, .48f)));
+                }
+                else
+                {
+                    var start = new Button { Text = $"闭关突破（约 {member.get_breakthrough_retreat_hours(true) / 24f:0.0} 日）", CustomMinimumSize = new Vector2(0, 44) }; ApplyButtonStyle(start, true); start.Pressed += () => { member.start_breakthrough_retreat(true); Refresh(); }; _detail.AddChild(start);
+                    if (!string.IsNullOrEmpty(pillHint)) _detail.AddChild(Label(pillHint, 14, new Color(.78f, .84f, .7f)));
+                }
+            }
         }
         if (!retreating) { var leave = new Button { Text = "结束静室安排", CustomMinimumSize = new Vector2(0, 36) }; ApplyButtonStyle(leave); leave.Pressed += () => { member.leave_meditation_room(); Refresh(); }; _detail.AddChild(leave); }
     }

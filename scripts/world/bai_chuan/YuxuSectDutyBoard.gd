@@ -143,6 +143,8 @@ var _active_duty_stage := 0
 var _has_bone := false
 var _root_count := 0
 var _incident_summaries: Array = []
+var _case_task_summaries: Array = []
+var _active_case_task_id := ""
 var _selected_duty_id := ""
 var _hovered_duty_id := ""
 var _duty_by_id: Dictionary = {}
@@ -192,17 +194,19 @@ func open_board(active_duty_id: String) -> void:
 	show()
 	move_to_front()
 
-func set_active_duty(active_duty_id: String, ready: bool = false, stage: int = 0, has_bone: bool = false, root_count: int = 0, active_incident_id: String = "", incident_summaries: Array = []) -> void:
-	var previous_incident_ids := _incident_summary_ids(_incident_summaries)
-	var next_incident_ids := _incident_summary_ids(incident_summaries)
+func set_active_duty(active_duty_id: String, ready: bool = false, stage: int = 0, has_bone: bool = false, root_count: int = 0, active_incident_id: String = "", incident_summaries: Array = [], case_task_summaries: Array = [], active_case_task_id: String = "") -> void:
+	var previous_incident_ids := _board_summary_ids(_incident_summaries, _case_task_summaries)
+	var next_incident_ids := _board_summary_ids(incident_summaries, case_task_summaries)
 	_active_duty_id = active_duty_id
 	_active_incident_id = active_incident_id
-	_active_task_id = INCIDENT_DUTY_ID + ":" + active_incident_id if active_duty_id == INCIDENT_DUTY_ID and not active_incident_id.is_empty() else active_duty_id
+	_active_case_task_id = active_case_task_id
+	_active_task_id = INCIDENT_DUTY_ID + ":" + active_incident_id if active_duty_id == INCIDENT_DUTY_ID and not active_incident_id.is_empty() else "case_field:" + active_incident_id + "|" + active_case_task_id if active_duty_id == "yuxu_case_field_task" and not active_incident_id.is_empty() and not active_case_task_id.is_empty() else active_duty_id
 	_active_duty_ready = ready
 	_active_duty_stage = stage
 	_has_bone = has_bone
 	_root_count = maxi(0, root_count)
 	_incident_summaries = incident_summaries.duplicate(true)
+	_case_task_summaries = case_task_summaries.duplicate(true)
 	if previous_incident_ids != next_incident_ids:
 		_rebuild_task_index()
 		if is_visible_in_tree():
@@ -210,11 +214,14 @@ func set_active_duty(active_duty_id: String, ready: bool = false, stage: int = 0
 	if not _selected_duty_id.is_empty():
 		_refresh_detail()
 
-func _incident_summary_ids(summaries: Array) -> String:
+func _board_summary_ids(incidents: Array, case_tasks: Array) -> String:
 	var ids: Array[String] = []
-	for incident in summaries:
+	for incident in incidents:
 		if incident is Dictionary:
 			ids.append(str(incident.get("incident_id", "")))
+	for task in case_tasks:
+		if task is Dictionary:
+			ids.append(str(task.get("incident_id", "")) + "|" + str(task.get("task_id", "")) + "|" + str(task.get("status", "available")))
 	return "|".join(ids)
 
 func close_detail() -> bool:
@@ -260,6 +267,36 @@ func _rebuild_task_index() -> void:
 				"tasks": tasks
 			})
 		official_pages.append({"title": "东林地案件 · %d" % (page_index + 1), "rows": rows})
+	var case_tasks_per_page := INCIDENTS_PER_ROW * 3
+	var case_task_page_count := ceili(float(_case_task_summaries.size()) / float(case_tasks_per_page))
+	for page_index in range(case_task_page_count):
+		var rows: Array = []
+		for row_index in range(3):
+			var tasks: Array = []
+			var first_index := page_index * case_tasks_per_page + row_index * INCIDENTS_PER_ROW
+			var last_index := mini(first_index + INCIDENTS_PER_ROW, _case_task_summaries.size())
+			for task_index in range(first_index, last_index):
+				var task: Dictionary = _case_task_summaries[task_index]
+				var incident_id := str(task.get("incident_id", ""))
+				var source_task_id := str(task.get("task_id", ""))
+				if incident_id.is_empty() or source_task_id.is_empty():
+					continue
+				var id := "case_field:" + incident_id + "|" + source_task_id
+				var title := str(task.get("title", "案卷外勤"))
+				var target_name := str(task.get("target_npc_name", "指定当事人"))
+				var goal := str(task.get("goal", "按案卷执行外勤。"))
+				var conditions := str(task.get("conditions", "按任务记录核验完成条件。"))
+				var return_instruction := str(task.get("return_instruction", "回和光峰事务板报告。"))
+				var kill_authorized := bool(task.get("kill_authorized", false))
+				var requirement := "%s；%s；%s；目标：%s；击杀授权：%s" % [goal, conditions, return_instruction, target_name, "有" if kill_authorized else "无"]
+				tasks.append([id, str(task.get("task_type", "外勤")), title, "依案卷指定目标", "按任务记录前往目标处执行", requirement, int(task.get("reward", 0)), kill_authorized, str(task.get("status", "available"))])
+			rows.append({
+				"top": [0.66, 0.45, 0.24][row_index],
+				"edge": [0.585, 0.375, 0.165][row_index],
+				"realm": "执中峰案卷外勤；裁断与处分由官员负责",
+				"tasks": tasks
+			})
+		official_pages.append({"title": "案卷外勤 · %d" % (page_index + 1), "rows": rows})
 	_pages_by_source["official"] = official_pages
 	_pages_by_source["private"] = _make_empty_pages(official_pages)
 	_duty_by_id.clear()
@@ -294,7 +331,11 @@ func _task_from_row(raw_task: Array, realm_judgment: String) -> Dictionary:
 	var requirement := str(raw_task[5])
 	var reward := int(raw_task[6]) if raw_task.size() > 6 else 0
 	var incident_id := task_id.substr((INCIDENT_DUTY_ID + ":").length()) if task_id.begins_with(INCIDENT_DUTY_ID + ":") else ""
+	var case_field_key := task_id.substr("case_field:".length()) if task_id.begins_with("case_field:") else ""
+	var task_status := str(raw_task[8]) if raw_task.size() > 8 else "available"
 	var detail := "%s。前往[u]%s[/u]，%s；完成要求为[u]%s[/u]。" % [realm_judgment, place, action, requirement]
+	var kill_authorized := bool(raw_task[7]) if raw_task.size() > 7 else false
+	detail += "\n\n击杀授权：%s。" % ("本任务文书明确授权" if kill_authorized else "无；不得击杀目标")
 	if reward > 0:
 		detail += "事务核验通过后核发[u]%d点贡献[/u]。" % reward
 	return {
@@ -306,7 +347,9 @@ func _task_from_row(raw_task: Array, realm_judgment: String) -> Dictionary:
 		"preview": "%s · %s贡献" % [realm_judgment, reward] if reward > 0 else "%s · %s" % [realm_judgment, place],
 		"reward": reward,
 		"detail": detail,
-		"incident_id": incident_id
+		"incident_id": incident_id,
+		"case_field_key": case_field_key,
+		"task_status": task_status
 	}
 
 func _build_source_tabs() -> void:
@@ -702,6 +745,10 @@ func _refresh_detail() -> void:
 			_detail_body.text += "\n\n已接取。前往天问峰演法台完成一场林地凶狼演练并回传结果；不要求获胜，结果返回后核发 5 点贡献，不掉落物品。"
 			_accept_button.text = "已接取"
 			_accept_button.disabled = true
+		elif _selected_duty_id.begins_with("case_field:"):
+			_detail_body.text += "\n\n已接取案卷外勤。" + ("现场目标交互已完成，可回和光峰交差。" if _active_duty_ready else "请到指定目标处执行任务记录所列行动；目标互动成功后再回和光峰交差。")
+			_accept_button.text = "回报外勤" if _active_duty_ready else "待目标处置"
+			_accept_button.disabled = not _active_duty_ready
 		elif not str(task.get("incident_id", "")).is_empty():
 			_detail_body.text += "\n\n已接取案卷 %s。前往执中峰查看来源事实；核验并上呈后事务结束，状态为已上呈、待裁断。" % _active_incident_id
 			_accept_button.text = "前往执中峰核验"
@@ -716,6 +763,12 @@ func _refresh_detail() -> void:
 		_accept_button.disabled = true
 		_cancel_button.text = "取消"
 		_cancel_button.disabled = false
+	elif _selected_duty_id.begins_with("case_field:") and str(task.get("task_status", "available")) != "available":
+		_detail_body.text += "\n\n此任务已经由其他事务实例接取或正在执行。"
+		_accept_button.text = "已被接取"
+		_accept_button.disabled = true
+		_cancel_button.text = "返回"
+		_cancel_button.disabled = false
 	else:
 		_accept_button.text = "接取"
 		_accept_button.disabled = false
@@ -725,12 +778,22 @@ func _refresh_detail() -> void:
 func _on_accept_pressed() -> void:
 	if _selected_duty_id.is_empty():
 		return
+	if _active_duty_id == "yuxu_case_field_task" and _active_task_id == _selected_duty_id and _selected_duty_id.begins_with("case_field:"):
+		if _active_duty_ready:
+			duty_action_requested.emit("heguang_submit_case_field:" + str(_duty_by_id[_selected_duty_id].get("case_field_key", "")))
+		return
 	if _active_duty_id == _selected_duty_id and (_selected_duty_id in ["beast_bone_submission", "bitter_moss_root_submission"] or (_selected_duty_id == "east_woods_patrol" and _active_duty_ready)):
 		duty_action_requested.emit("heguang_submit_duty:" + _selected_duty_id)
 		return
 	if not _active_duty_id.is_empty():
 		return
-	if _selected_duty_id.begins_with(INCIDENT_DUTY_ID + ":"):
+	if _selected_duty_id.begins_with("case_field:"):
+		var field_key := str(_duty_by_id[_selected_duty_id].get("case_field_key", ""))
+		_active_duty_id = "yuxu_case_field_task"
+		_active_incident_id = field_key.split("|", false, 1)[0] if "|" in field_key else ""
+		_active_case_task_id = field_key.split("|", false, 1)[1] if "|" in field_key else ""
+		_active_task_id = _selected_duty_id
+	elif _selected_duty_id.begins_with(INCIDENT_DUTY_ID + ":"):
 		_active_duty_id = INCIDENT_DUTY_ID
 		_active_incident_id = _selected_duty_id.substr((INCIDENT_DUTY_ID + ":").length())
 		_active_task_id = _selected_duty_id
@@ -739,7 +802,10 @@ func _on_accept_pressed() -> void:
 		_active_incident_id = ""
 		_active_task_id = _selected_duty_id
 	_refresh_detail()
-	duty_action_requested.emit("heguang_accept_duty:" + _selected_duty_id)
+	if _selected_duty_id.begins_with("case_field:"):
+		duty_action_requested.emit("heguang_accept_case_field:" + str(_duty_by_id[_selected_duty_id].get("case_field_key", "")))
+	else:
+		duty_action_requested.emit("heguang_accept_duty:" + _selected_duty_id)
 
 func _on_cancel_pressed() -> void:
 	if not _selected_duty_id.is_empty() and _active_task_id == _selected_duty_id:
@@ -748,7 +814,10 @@ func _on_cancel_pressed() -> void:
 		_active_task_id = ""
 		_active_incident_id = ""
 		close_detail()
-		duty_action_requested.emit("heguang_cancel_duty:" + canceled_id)
+		if canceled_id.begins_with("case_field:"):
+			duty_action_requested.emit("heguang_cancel_case_field:" + str(_duty_by_id.get(canceled_id, {}).get("case_field_key", "")))
+		else:
+			duty_action_requested.emit("heguang_cancel_duty:" + canceled_id)
 		return
 	close_detail()
 

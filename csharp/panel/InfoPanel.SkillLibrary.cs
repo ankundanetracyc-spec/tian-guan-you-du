@@ -44,7 +44,7 @@ public partial class InfoPanel
         foreach (var (title, id) in new[] { ("全部", "all"), ("攻伐", "attack"), ("术诀", "technique"), ("守御", "defense") })
         {
             var button = CharacterButton(title, 19, _battleFilter == id); button.SizeFlagsHorizontal = SizeFlags.ExpandFill; categories.AddChild(button);
-            button.Pressed += () => { _battleFilter = id; foreach (var sibling in categories.GetChildren().OfType<Button>()) sibling.AddThemeStyleboxOverride("normal", CharacterStyle(sibling == button, 10)); refresh_character_battle(unit); };
+            button.Pressed += () => { _battleFilter = id; foreach (var sibling in categories.GetChildren().OfType<Button>()) sibling.AddThemeStyleboxOverride("normal", CharacterButtonStyle(sibling == button)); refresh_character_battle(unit); };
         }
         _characterSkillMatches = CharacterText("", 17, true); box.AddChild(_characterSkillMatches);
         _characterSkillList = CharacterBox(CharacterScroll(box)); _characterSkillList.AddThemeConstantOverride("separation", 6);
@@ -54,7 +54,7 @@ public partial class InfoPanel
         // 十个固定技能位直接分配两行空间，不再套滚动容器。
         _characterSkillSlots = new GridContainer { Columns = 5, SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ExpandFill };
         _characterSkillSlots.AddThemeConstantOverride("h_separation", 14); _characterSkillSlots.AddThemeConstantOverride("v_separation", 14); slotsBox.AddChild(_characterSkillSlots);
-        slotsBox.AddChild(CharacterText("悬停查看技能信息；拖动或使用箭头调整顺序。", 18, true));
+        slotsBox.AddChild(CharacterText("悬停查看技能信息 · 点击招式卸载 · 拖拽调整顺序", 18, true));
         refresh_character_battle(unit);
     }
 
@@ -80,7 +80,7 @@ public partial class InfoPanel
             if (human is not null) bind_character_skill_drag(button, human, skill.ResourcePath, -1);
             button.Pressed += () =>
             {
-                if (human is null) return;
+                if (human is null || button.GetMeta("character_skill_dragging", false).AsBool()) return;
                 if (_characterDropTarget >= 0 && !equipped && paths.Count < 10)
                 { var next = paths.ToList(); next.Insert(Math.Min(_characterDropTarget, next.Count), skill.ResourcePath); human.set_combat_skill_slot_paths(new Godot.Collections.Array<string>(next)); _characterDropTarget = -1; refresh_character_battle(unit); }
                 else toggle_battle_skill_slot(human, skill);
@@ -90,31 +90,31 @@ public partial class InfoPanel
         for (var i = 0; i < 10; i++)
         {
             var index = i; var skill = i < paths.Count ? catalog.FirstOrDefault(skill => skill.ResourcePath == paths[i]) : null;
-            var panel = new PanelContainer { CustomMinimumSize = new Vector2(174, 238), SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ExpandFill };
-            panel.AddThemeStyleboxOverride("panel", CharacterStyle(index == _characterDropTarget, 10)); _characterSkillSlots.AddChild(panel);
-            var slot = CharacterBox(panel); slot.AddThemeConstantOverride("separation", 6);
-            slot.AddChild(CharacterText((i + 1).ToString(), 18, true));
-            var select = CharacterButton("", 21); select.CustomMinimumSize = new Vector2(0, 106); select.SizeFlagsVertical = SizeFlags.ExpandFill; slot.AddChild(select);
-            foreach (var state in new[] { "normal", "hover", "pressed" }) select.AddThemeStyleboxOverride(state, new StyleBoxEmpty());
+            var select = CharacterButton("", 21, index == _characterDropTarget, 4);
+            select.CustomMinimumSize = new Vector2(174, 238); select.SizeFlagsHorizontal = select.SizeFlagsVertical = SizeFlags.ExpandFill;
+            select.ClipContents = true; _characterSkillSlots.AddChild(select);
             if (human is not null) bind_character_skill_drag(select, human, skill?.ResourcePath ?? "", index);
             if (skill is not null)
             {
-                var icon = CombatSkillBar.CreateSkillIconVisual(skill, new Vector2(102, 102)); select.AddChild(icon);
-                select.Resized += () => icon.Position = (select.Size - icon.Size) / 2;
-                var name = CharacterClippedText(skill.skill_name, 22); name.CustomMinimumSize = new Vector2(0, 28); name.HorizontalAlignment = HorizontalAlignment.Center; slot.AddChild(name);
+                var icon = new TextureRect { Texture = CharacterLoadIcon(skill.icon_path),
+                    ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize, StretchMode = TextureRect.StretchModeEnum.KeepAspectCovered,
+                    MouseFilter = MouseFilterEnum.Ignore };
+                select.AddChild(icon); icon.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+                icon.OffsetLeft = icon.OffsetTop = 4; icon.OffsetRight = -4; icon.OffsetBottom = -42;
+                var name = CharacterClippedText(skill.skill_name, 22); name.HorizontalAlignment = HorizontalAlignment.Center; select.AddChild(name);
+                name.SetAnchorsAndOffsetsPreset(LayoutPreset.BottomWide); name.OffsetLeft = 6; name.OffsetRight = -6; name.OffsetTop = -38; name.OffsetBottom = -5;
                 CharacterHover(select, skill.skill_name, character_skill_detail(human, skill), CharacterLoadIcon(skill.icon_path));
-                var actions = new HBoxContainer { Alignment = BoxContainer.AlignmentMode.Center }; slot.AddChild(actions);
-                foreach (var (text, delta) in new[] { ("↑", -1), ("↓", 1), ("×", 0) })
+                select.Pressed += () =>
                 {
-                    var action = CharacterButton(text, 20, padding: 4); action.CustomMinimumSize = new Vector2(40, 34); actions.AddChild(action);
-                    action.Disabled = human is null || delta < 0 && index == 0 || delta > 0 && index == paths.Count - 1;
-                    action.Pressed += () => { if (human is null) return; if (delta == 0) remove_battle_skill(human, index); else move_battle_skill(human, index, delta); };
-                }
+                    if (human is null || select.GetMeta("character_skill_dragging", false).AsBool()) return;
+                    _characterDropTarget = -1; remove_battle_skill(human, index);
+                };
             }
             else
             {
                 select.Text = "＋"; select.AddThemeFontSizeOverride("font_size", 42);
-                slot.AddChild(CharacterText(index == _characterDropTarget ? "选择左侧技能" : "空闲", 18, true));
+                var name = CharacterText(index == _characterDropTarget ? "选择左侧技能" : "空闲", 18, true); name.HorizontalAlignment = HorizontalAlignment.Center; select.AddChild(name);
+                name.SetAnchorsAndOffsetsPreset(LayoutPreset.BottomWide); name.OffsetLeft = 4; name.OffsetRight = -4; name.OffsetTop = -38; name.OffsetBottom = -5;
                 select.Pressed += () => { _characterDropTarget = index; refresh_character_battle(unit); };
             }
         }
@@ -122,11 +122,16 @@ public partial class InfoPanel
 
     private void bind_character_skill_drag(Button button, Character human, string sourcePath, int targetIndex)
     {
+        button.GuiInput += input =>
+        {
+            if (input is InputEventMouseButton { ButtonIndex: MouseButton.Left, Pressed: true })
+                button.SetMeta("character_skill_dragging", false);
+        };
         button.SetDragForwarding(
             Callable.From<Vector2, Variant>(position =>
             {
                 if (sourcePath.Length == 0) return default;
-                hide_tooltip();
+                hide_tooltip(); button.SetMeta("character_skill_dragging", true);
                 var preview = CharacterText(ResourceLoader.Load<ActiveSkillData>(sourcePath)?.skill_name ?? "技能", 24);
                 button.SetDragPreview(preview);
                 return new Godot.Collections.Dictionary { ["character_skill"] = sourcePath, ["owner"] = human.GetInstanceId() };

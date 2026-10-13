@@ -32,7 +32,7 @@ const PEAKS := {
 	"xuanlan": {
 		"title": "玄览峰",
 		"subtitle": "藏经、讲法与传承",
-		"body": "藏经、讲法、功法研习和传承考核集中于此。不同身份的弟子按权限进入对应经楼。",
+		"body": "可在此研读当前已有权限的典籍；真传首卷仍按师承流程回紫府峰静室研读并汇报。其他讲法与传承考核尚未开放。",
 		"background": "res://textures/sect_overview/peaks/yuxu_peak_xuanlan_v4.png"
 	},
 	"tianwen": {
@@ -77,6 +77,8 @@ var _sect_is_member := false
 var _sect_active_duty_id := ""
 var _sect_active_incident_id := ""
 var _sect_incident_summaries: Array = []
+var _sect_case_task_summaries: Array = []
+var _sect_active_case_task_id := ""
 var _sect_duty_ready := false
 var _sect_duty_stage := 0
 var _sect_has_bone := false
@@ -198,17 +200,19 @@ func set_life_context(is_member: bool, current_rank: String, monthly_allowance: 
 	else:
 		_refresh_content()
 
-func set_sect_duty_context(is_member: bool, active_duty_id: String, ready: bool = false, stage: int = 0, has_bone: bool = false, root_count: int = 0, active_incident_id: String = "", incident_summaries: Array = []) -> void:
+func set_sect_duty_context(is_member: bool, active_duty_id: String, ready: bool = false, stage: int = 0, has_bone: bool = false, root_count: int = 0, active_incident_id: String = "", incident_summaries: Array = [], case_task_summaries: Array = [], active_case_task_id: String = "") -> void:
 	_sect_is_member = is_member
 	_sect_active_duty_id = active_duty_id
 	_sect_active_incident_id = active_incident_id
 	_sect_incident_summaries = incident_summaries.duplicate(true)
+	_sect_case_task_summaries = case_task_summaries.duplicate(true)
+	_sect_active_case_task_id = active_case_task_id
 	_sect_duty_ready = ready
 	_sect_duty_stage = stage
 	_sect_has_bone = has_bone
 	_sect_root_count = root_count
 	if is_instance_valid(_duty_board):
-		_duty_board.call("set_active_duty", active_duty_id, ready, stage, has_bone, root_count, active_incident_id, _sect_incident_summaries)
+		_duty_board.call("set_active_duty", active_duty_id, ready, stage, has_bone, root_count, active_incident_id, _sect_incident_summaries, _sect_case_task_summaries, _sect_active_case_task_id)
 	if _duty_board_open and not is_member:
 		_close_duty_board()
 	elif _life_page_open:
@@ -274,25 +278,8 @@ func _refresh_content() -> void:
 		_refresh_main_actions()
 
 func _refresh_admission_button() -> void:
-	admission_button.visible = _current_peak_id == "guanfu" and not _life_page_open and not _duty_board_open
-	if not admission_button.visible:
-		_layout_actions()
-		return
-	if _admission_member:
-		admission_button.visible = false
-	elif _has_other_affiliation:
-		admission_button.text = "已有宗门归属"
-		admission_button.disabled = true
-		admission_button.tooltip_text = "当前不支持更换宗门。"
-	elif _admission_rank.is_empty():
-		admission_button.text = "无灵根 · 不予接收"
-		admission_button.disabled = true
-		admission_button.tooltip_text = "玉虚仙宗不接收无灵根者。"
-	else:
-		admission_button.text = "申请拜入 · " + _admission_rank
-		admission_button.disabled = false
-		admission_button.tooltip_text = "按当前灵根档位确定入门起始身份。"
-	_layout_actions()
+	# 入宗资格核验现由大世界玉虚节点的“山门迎真”承接，不再从观复峰重复申请。
+	admission_button.hide()
 
 func _build_life_actions() -> void:
 	var items := [
@@ -306,11 +293,14 @@ func _build_life_actions() -> void:
 		["yaopu_watch", "药园值守"],
 		["yaopu_cultivate", "培护灵植"],
 		["tianwen_practice", "演法台"],
+		["xuanlan_study", "研读典籍"],
 		["lineage_choose_teacher", "择师"],
 		["lineage_book_selection", "师门选书"],
 		["lineage_report", "首卷汇报"],
 		["tiangong_baigong", "百工"],
 		["zhizhong_case_review", "案件核验"],
+		["zhizhong_case_docket", "裁断与申诉复核"],
+		["zhizhong_case_enforce", "执行终局裁断"],
 	]
 	for item in items:
 		var action_id := str(item[0])
@@ -434,7 +424,7 @@ func _open_duty_board() -> void:
 	$ActionRope.hide()
 	admission_button.hide()
 	_duty_board.call("open_board", _sect_active_duty_id)
-	_duty_board.call("set_active_duty", _sect_active_duty_id, _sect_duty_ready, _sect_duty_stage, _sect_has_bone, _sect_root_count, _sect_active_incident_id, _sect_incident_summaries)
+	_duty_board.call("set_active_duty", _sect_active_duty_id, _sect_duty_ready, _sect_duty_stage, _sect_has_bone, _sect_root_count, _sect_active_incident_id, _sect_incident_summaries, _sect_case_task_summaries, _sect_active_case_task_id)
 
 func _open_exchange_board() -> void:
 	if _current_peak_id != "heguang" or not _sect_is_member or _exchange_board_open:
@@ -486,10 +476,14 @@ func _refresh_main_actions() -> void:
 		var baigong_button := _action_buttons.get("tiangong_baigong") as Button
 		if baigong_button != null:
 			baigong_button.show()
-	if _current_peak_id == "zhizhong" and _sect_is_member and _sect_active_duty_id == "east_woods_conflict_review" and not _sect_active_incident_id.is_empty():
+	if _current_peak_id == "zhizhong" and _sect_is_member:
 		var case_review_button := _action_buttons.get("zhizhong_case_review") as Button
-		if case_review_button != null:
+		if case_review_button != null and _sect_active_duty_id == "east_woods_conflict_review" and not _sect_active_incident_id.is_empty():
 			case_review_button.show()
+		for action_id in ["zhizhong_case_docket", "zhizhong_case_enforce"]:
+			var button := _action_buttons.get(action_id) as Button
+			if button != null:
+				button.show()
 	if _current_peak_id == "yaopu" and _sect_is_member:
 		for action_id in ["yaopu_watch", "yaopu_cultivate"]:
 			var button := _action_buttons.get(action_id) as Button
@@ -499,4 +493,8 @@ func _refresh_main_actions() -> void:
 		var lineage_button := _action_buttons.get("lineage_book_selection") as Button
 		if lineage_button != null:
 			lineage_button.show()
+	if _current_peak_id == "xuanlan" and _sect_is_member and (not _lineage_is_true_disciple or _lineage_reported_first_volume):
+		var study_button := _action_buttons.get("xuanlan_study") as Button
+		if study_button != null:
+			study_button.show()
 	_refresh_admission_button()

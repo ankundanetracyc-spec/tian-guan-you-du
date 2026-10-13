@@ -157,6 +157,8 @@ public partial class BattleManager : Node2D
                 // 气血是公共战斗资源；所有修士统一初始化，不依赖秘籍分类或历史存档字段。
                 creature.initialize_body_combat_state(unit is Character);
                 creature.apply_combat_tempering_stats();
+                if (snapshot.cultivation_inspiration_starting_shield > 0)
+                    creature.shield += snapshot.cultivation_inspiration_starting_shield;
             }
             // 战斗由角色身体区域的双击入口处理，避免世界实体单击就打开面板。
             unit.Set("input_pickable", false); unit.Set("visible", true);

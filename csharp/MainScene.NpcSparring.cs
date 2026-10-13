@@ -38,7 +38,7 @@ public partial class MainScene
             story_dialogue.show_social_result(npc, response, response.AgreesToSpar ? () => start_npc_spar(npc) : null);
         }
         story_dialogue.show_social_choices(player, npc,
-            proactive ? $"{npc.npc_name}想与你印证所学，邀你切磋一场。" : $"你准备邀{npc.npc_name}切磋，双方点到为止。",
+            proactive ? "对方想与你印证所学，邀你切磋一场。" : "你准备邀对方切磋，双方点到为止。",
             new (string, Action)[] {
                 ($"{(proactive ? "接受" : "发出邀约")} · 体力 {WorldStaminaRules.ConversationCost:0.#}", () => Answer(true)),
                 (proactive ? "婉拒" : "取消", () => Answer(false)) }, () => Answer(false), "同门切磋", proactive ? "Esc 婉拒" : "Esc 取消");

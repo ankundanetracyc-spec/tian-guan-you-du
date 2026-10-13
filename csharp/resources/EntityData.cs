@@ -26,10 +26,6 @@ public partial class EntityData : Resource
     [Export] public int appearance_clothes_style = -1;
     [Export] public int appearance_accessory_style = -1;
     [Export] public int appearance_beard_style = -1;
-    [Export(PropertyHint.Range, "0.9,1.1,0.01")] public float appearance_face_width = 1.0f;
-    [Export(PropertyHint.Range, "0.9,1.1,0.01")] public float appearance_face_height = 1.0f;
-    [Export(PropertyHint.Range, "0.9,1.15,0.01")] public float appearance_eye_scale = 1.0f;
-    [Export(PropertyHint.Range, "-10,10,1")] public float appearance_eye_offset_y;
     [Export] public string unique_id = "";
     [Export] public bool face_camera;
     [Export] public string faction_name = "";

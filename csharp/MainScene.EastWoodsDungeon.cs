@@ -7,6 +7,8 @@ public partial class MainScene
 {
     private EastWoodsDungeonPanel? _east_woods_dungeon;
     private Godot.Collections.Dictionary _east_woods_dungeon_state = [];
+    private long _eastWoodsTravelStartedHour = -1;
+    private int _eastWoodsTravelCompletedSteps;
 
     private EastWoodsDungeonPanel get_or_create_east_woods_dungeon()
     {
@@ -37,11 +39,13 @@ public partial class MainScene
         var dungeon = get_or_create_east_woods_dungeon();
         var state = _east_woods_dungeon_state.Duplicate(true);
         if (!state.GetValueOrDefault("inside", false).AsBool()) state["current"] = "forest_edge";
+        sync_east_woods_ecology_state(state, state.GetValueOrDefault("current", "forest_edge").AsString());
         dungeon.restore_route_state(state);
         dungeon.set_player_dun_speed(player?.dun_speed ?? EastWoodsDungeonRules.BaseDunSpeed);
         if (player?.entity_data is HumanData human)
             dungeon.set_active_duty_context(human.sect_active_yuxu_duty_id, human.sect_active_yuxu_duty_stage, human.sect_active_yuxu_duty_ready);
         dungeon.show_dungeon();
+        _east_woods_dungeon_state = dungeon.get_route_state();
         refresh_east_woods_route_roster(dungeon.get_current_route_node_id());
     }
 
@@ -65,6 +69,7 @@ public partial class MainScene
         }
 
         time.advance_time(elapsedHours, "east_woods_dungeon");
+        _eastWoodsTravelCompletedSteps++;
         var encounter = _npc_world?.advance_east_woods_route(_fromNodeId, toNodeId, elapsedHours, player?.entity_data as HumanData) ?? new Godot.Collections.Dictionary();
         mark_save_dirty();
         if (_east_woods_dungeon?.is_route_traveling() != true) refresh_east_woods_route_roster(toNodeId);
@@ -77,12 +82,22 @@ public partial class MainScene
 
     private void on_east_woods_route_travel_started()
     {
+        _eastWoodsTravelStartedHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+        _eastWoodsTravelCompletedSteps = 0;
         (GetTree().GetFirstNodeInGroup("cell_character_list") as CellCharacterList)?.suspend_world_npcs();
     }
 
     private void on_east_woods_route_travel_finished(string routeNodeId)
     {
+        synchronize_east_woods_ecology();
         refresh_east_woods_route_roster(routeNodeId);
+        if (_eastWoodsTravelCompletedSteps > 0)
+        {
+            var hour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+            award_player_renewable_inspiration($"travel:eastwoods:{_eastWoodsTravelStartedHour}:{routeNodeId}:{hour}:{_eastWoodsTravelCompletedSteps}", "journey.step");
+        }
+        _eastWoodsTravelStartedHour = -1;
+        _eastWoodsTravelCompletedSteps = 0;
     }
 
     public void finish_east_woods_spectator_battle()
@@ -139,6 +154,8 @@ public partial class MainScene
             ["attacker_node_id"] = attacker.dungeon_node_id,
             ["target_previous_node_id"] = defender?.dungeon_previous_node_id ?? "",
             ["target_node_id"] = defender?.dungeon_node_id ?? "",
+            ["attack_trigger_id"] = encounter.GetValueOrDefault("attack_trigger_id", "").AsString(),
+            ["attack_authorization_id"] = encounter.GetValueOrDefault("attack_authorization_id", "").AsString(),
             ["route_state"] = routeState.Duplicate(true),
         });
         var attackerScenes = new Godot.Collections.Array<PackedScene> { attackerScene };
@@ -225,6 +242,7 @@ public partial class MainScene
     public void handle_persistent_battle_return(Godot.Collections.Array attackers, Godot.Collections.Array defenders, Godot.Collections.Dictionary summary, Godot.Collections.Dictionary context)
     {
         apply_player_severe_injury(summary, context);
+        award_successful_combat_inspiration(summary, context);
         if (context.GetValueOrDefault("kind", "").AsString() == "east_woods_beast")
         {
             restore_east_woods_beast_result(summary, context);
@@ -387,16 +405,27 @@ public partial class MainScene
             target_node_id = context.GetValueOrDefault("target_node_id", target.dungeon_node_id).AsString(),
             attacker_npc_id = attacker.npc_id,
             attacker_npc_name = attacker.npc_name,
+            attacker_faction_id = attacker.faction_id,
             target_npc_id = target.npc_id,
             target_npc_name = target.npc_name,
+            target_faction_id = target.faction_id,
+            attack_trigger_id = context.GetValueOrDefault("attack_trigger_id", "").AsString(),
+            attack_authorization_id = context.GetValueOrDefault("attack_authorization_id", "").AsString(),
+            source_facts_complete = true,
             battle_result = result,
             attacker_died = !attacker.is_alive,
             target_died = !target.is_alive,
             case_status = EastWoodsNpcIncidentRecord.StatusAvailable,
         };
+        incident.evidence_source_refs.Add($"incident:{incidentId}:battle_result");
+        if (incident.attacker_died) incident.evidence_source_refs.Add($"incident:{incidentId}:death:{attacker.npc_id}");
+        if (incident.target_died) incident.evidence_source_refs.Add($"incident:{incidentId}:death:{target.npc_id}");
         foreach (var transfer in itemTransfers)
             if (transfer is not null && transfer.quantity > 0 && !string.IsNullOrWhiteSpace(transfer.item_path))
+            {
                 incident.item_transfers.Add(transfer.Duplicate(true) as EastWoodsNpcItemTransferRecord ?? transfer);
+                incident.evidence_source_refs.Add($"incident:{incidentId}:transfer:{incident.item_transfers.Count - 1}");
+            }
         _npc_world.record_east_woods_npc_incident(incident);
     }
 

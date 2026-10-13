@@ -55,7 +55,7 @@ left_branch_name = "修持"
 right_branch_name = "化法"
 combat_tempering_bonuses = {"max_health_percent": 15, "qi_blood_cap": 1}
 sub_deck_rewrites = Array[ExtResource("7_rewrite")]([SubResource("RewritePingxi")])
-heart_method_description = "效果：自身主动使气血层数降低时，本次不回复生命，改为获得血炉值 = 气血实际降低层数×当前气血回落回复率R；其他回落效果照常触发。赤阳化法以血炉强化本招伤害时，每点实际消耗使本招伤害倍率提高1%。\n主修额外效果：上述每点血炉提供的本招伤害倍率再提高0.5个百分点；不改血炉的公共效果。"
+heart_method_description = "效果：自身主动使气血层数降低时，本次气血回落不回复生命，改为获得血炉值：实际降低的气血层数×当前气血回落回复率R；其他气血回落效果照常触发。赤阳化法消耗血炉强化本招伤害时，每实际消耗1点血炉，本招伤害倍率提高1%。\n主修额外效果：赤阳化法每实际消耗1点血炉强化本招，本招伤害倍率再提高0.5个百分点；不改变血炉的公共效果。"
 
 
 learn_bonus_revision = "study-balance-20261012"
@@ -79,7 +79,7 @@ combat_tempering_bonuses = {"blood_furnace_cap": 20}
 sub_deck_rewrites = Array[ExtResource("7_rewrite")]([SubResource("RewriteXieli")])
 heart_method_upgrade_id = "chiyang_c2"
 heart_method_upgrade_description = "每次赤阳化法实际消耗至少1点血炉后，获得身法1层。"
-heart_method_description = "效果：自身主动使气血层数降低时，本次不回复生命，改为获得血炉值 = 气血实际降低层数×当前气血回落回复率R；其他回落效果照常触发。赤阳化法以血炉强化本招伤害时，每点实际消耗使本招伤害倍率提高1%。 每次赤阳化法实际消耗至少1点血炉后，获得身法1层。\n主修额外效果：上述每点血炉提供的本招伤害倍率再提高0.5个百分点；不改血炉的公共效果。"
+heart_method_description = "效果：自身主动使气血层数降低时，本次气血回落不回复生命，改为获得血炉值：实际降低的气血层数×当前气血回落回复率R；其他气血回落效果照常触发。赤阳化法消耗血炉强化本招伤害时，每实际消耗1点血炉，本招伤害倍率提高1%。每次赤阳化法实际消耗血炉后，获得身法1层。\n主修额外效果：赤阳化法每实际消耗1点血炉强化本招，本招伤害倍率再提高0.5个百分点；不改变血炉的公共效果。"
 
 
 learn_bonus_revision = "study-balance-20261012"
@@ -101,7 +101,7 @@ left_branch_name = "修持"
 right_branch_name = "化法"
 combat_tempering_bonuses = {"physical_damage_percent": 5, "blood_furnace_cap": 10}
 sub_deck_rewrites = Array[ExtResource("7_rewrite")]([SubResource("RewriteFajin")])
-heart_method_description = "效果：自身主动使气血层数降低时，本次不回复生命，改为获得血炉值 = 气血实际降低层数×当前气血回落回复率R；其他回落效果照常触发。赤阳化法以血炉强化本招伤害时，每点实际消耗使本招伤害倍率提高1%。 每次赤阳化法实际消耗至少1点血炉后，获得身法1层。\n主修额外效果：上述每点血炉提供的本招伤害倍率再提高0.5个百分点；不改血炉的公共效果。"
+heart_method_description = "效果：自身主动使气血层数降低时，本次气血回落不回复生命，改为获得血炉值：实际降低的气血层数×当前气血回落回复率R；其他气血回落效果照常触发。赤阳化法消耗血炉强化本招伤害时，每实际消耗1点血炉，本招伤害倍率提高1%。每次赤阳化法实际消耗血炉后，获得身法1层。\n主修额外效果：赤阳化法每实际消耗1点血炉强化本招，本招伤害倍率再提高0.5个百分点；不改变血炉的公共效果。"
 
 
 learn_bonus_revision = "study-balance-20261012"
@@ -125,7 +125,7 @@ sub_deck_rewrites = Array[ExtResource("7_rewrite")]([SubResource("RewriteHanshan
 learned_active_skills = Array[Resource]([ExtResource("7_zhuming")])
 heart_method_upgrade_id = "chiyang_c4"
 heart_method_upgrade_description = "每次赤阳化法实际消耗至少1点血炉后，再获得身法1层。"
-heart_method_description = "效果：自身主动使气血层数降低时，本次不回复生命，改为获得血炉值 = 气血实际降低层数×当前气血回落回复率R；其他回落效果照常触发。赤阳化法以血炉强化本招伤害时，每点实际消耗使本招伤害倍率提高1%。 每次赤阳化法实际消耗至少1点血炉后，获得身法2层。\n主修额外效果：上述每点血炉提供的本招伤害倍率再提高0.5个百分点；不改血炉的公共效果。"
+heart_method_description = "效果：自身主动使气血层数降低时，本次气血回落不回复生命，改为获得血炉值：实际降低的气血层数×当前气血回落回复率R；其他气血回落效果照常触发。赤阳化法消耗血炉强化本招伤害时，每实际消耗1点血炉，本招伤害倍率提高1%。每次赤阳化法实际消耗血炉后，获得身法2层。\n主修额外效果：赤阳化法每实际消耗1点血炉强化本招，本招伤害倍率再提高0.5个百分点；不改变血炉的公共效果。"
 
 
 learn_bonus_revision = "study-balance-20261012"

@@ -20,6 +20,9 @@ public static partial class EastWoodsDungeonRules
         LayoutSeed = "legacy";
     }
 
+    public static bool is_action_anchor(string nodeId)
+        => ActionAnchors.Any(position => nodeId == $"outer_{position.X:00}_{position.Y:00}");
+
     public static void generate_layout(string seed)
     {
         if (string.IsNullOrWhiteSpace(seed)) throw new ArgumentException("副本种子不能为空。", nameof(seed));

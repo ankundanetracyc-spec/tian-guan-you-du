@@ -37,8 +37,10 @@ public partial class MainScene
                 new[] { steps[0].Text, steps[1].Text })
                 { ActionName = "交易", StaminaSpent = WorldStaminaRules.InteractionCost, DecisionSteps = steps });
         }
+        var opening = NpcPlayerImpressionRules.HerbTradeContact(npc)
+            ? "对方说道：『前次与你做过药材买卖，这回想再问问。』\n" : "";
         story_dialogue.show_social_choices(player, npc,
-            $"{npc.npc_name}想补充随身药材，愿以灵石 {request.unit_price} 枚求购{name} ×{request.quantity}。",
+            opening + $"对方想补充随身药材，愿以灵石 {request.unit_price} 枚求购{name} ×{request.quantity}。",
             new (string, Action)[] {
                 ($"出售 · 获得灵石 {request.quantity * request.unit_price} · 体力 {WorldStaminaRules.InteractionCost:0.#}", () => Answer(true)),
                 (proactive ? "婉拒" : "取消", () => Answer(false)) }, () => Answer(false), "求购药材", proactive ? "Esc 婉拒" : "Esc 取消");

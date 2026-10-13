@@ -11,16 +11,21 @@ public partial class EastWoodsDungeonPanel
         var exitPath = find_shortest_path(_current, "forest_edge");
         var text = new StringBuilder("只显示四格视野内的现场情况；查看不推进时间。\n");
         text.Append(exitPath.Count > 0 || _current == "forest_edge" ? $"返回林缘约需 {format_hours(Math.Max(0, exitPath.Count - 1) * EastWoodsDungeonRules.player_edge_hours(_playerDunSpeed))}。\n" : "尚无完整的已知回程路线，须沿已走过的道路返回。\n");
-        var known = EastWoodsDungeonRules.get_nodes().Where(n => is_node_visible(n.Id) && EastWoodsActions.Content(n.Id) is not null)
+        var known = EastWoodsDungeonRules.get_nodes().Where(n =>
+                is_node_visible(n.Id) &&
+                EastWoodsActions.Content(n.Id) is not null &&
+                is_explored(n.Id))
             .OrderBy(n => n.Id == _current ? 0 : find_shortest_path(_current, n.Id).Count).ToArray();
         if (known.Length == 0) text.Append("\n视野内暂无可记录的资源或异状，可沿林径继续前行，无需探查。");
         foreach (var node in known.Take(6))
         {
-            var action = EastWoodsActions.Content(node.Id)!;
+            var availableBeast = available_actions(node.Id).FirstOrDefault(candidate => candidate.Battle);
+            var action = availableBeast ?? EastWoodsActions.Content(node.Id)!;
             var location = string.IsNullOrWhiteSpace(node.Title) ? $"林间（{node.GridPosition.X}, {node.GridPosition.Y}）" : node.Title;
             var remaining = action_remaining(node.Id, action);
             var content = action.ItemPath.Length > 0 ? $"{EastWoodsActions.Item(action.ItemPath)?.entity_name}，余 {remaining} 份"
-                : action.Battle ? (remaining > 0 ? "凶狼尚在，可绕行" : "凶狼已被击败") : (remaining > 0 ? action.Name + "待办" : action.Name + "已记");
+                : action.Battle ? (remaining > 0 ? (string.IsNullOrWhiteSpace(action.EncounterIdentity) ? "凶狼尚在，可绕行" : "凶狼再次活动，可绕行") : "凶狼已被击败")
+                : (remaining > 0 ? action.Name + "待办" : action.Name + "已记");
             text.Append($"\n{location}：{content}");
         }
         if (known.Length > 6) text.Append($"\n\n已记 {known.Length} 处要点，此页列离你最近的六处。");

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="YuxuSectLawDraftConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://csharp/system/YuxuSectLawDraftConfig.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+sect_faction_id = "yuxu_xianzong"
+automatic_attack_trigger_id = "npc_opportunistic_attack"
+unauthorized_attack_rule_id = "unauthorized_first_strike"
+unauthorized_attack_title = "无令先行斗法"
+first_offense_sanction_id = "admonition"
+second_offense_sanction_id = "recorded_demerit"
+repeat_offense_sanction_id = "expulsion"
+expulsion_after_final_findings = 3
+restitution_rule_id = "combat_loot_restitution"
+restitution_title = "斗法夺物，依案追还"
+restitution_sanction_id = "restitution"
+fatal_outcome_finding_id = "fatal_outcome_review"
+fatal_outcome_finding_text = "案卷记录有死亡结果；现有证据不证明杀意，须由长老另行复核，不据此直接定故意杀人。"
+appeals_per_party = 1
+appeals_close_when_enforcement_starts = true
+appeal_review_basis = "按已存结构化事实重新核对门规适用；没有新证据时不得改写原始事实。"
+expulsion_creates_capture_warrant = true
+capture_task_kill_authorized = false
+field_task_contribution_reward = 0

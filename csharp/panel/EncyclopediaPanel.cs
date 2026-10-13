@@ -525,6 +525,11 @@ public partial class EncyclopediaPanel : Control
 
         var material = item.craft_data as MaterialCraftData;
         var isManual = item.item_category == "秘籍" || item.gongfa is GongfaResource;
+        if (!string.IsNullOrWhiteSpace(item.description))
+        {
+            var description = AddItemSection(_itemDetailContent, "物品说明");
+            description.AddChild(MakeLabel(item.description, 20, MutedInk));
+        }
         if (isManual)
         {
             var section = AddItemSection(_itemDetailContent, "修习境界");

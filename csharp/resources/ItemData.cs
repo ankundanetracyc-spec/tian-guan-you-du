@@ -5,6 +5,7 @@ using Godot.Collections;
 public partial class ItemData : EntityData
 {
     [Export] public StringName definition_id = new StringName("");
+    [Export(PropertyHint.MultilineText)] public string description = "";
     [Export(PropertyHint.Enum, "材料,装备,秘籍,阵盘,器具,符箓,丹药,灵膳")] public string item_category = "材料";
     [Export] public string item_subcategory = "";
     [Export] public Array<string> tags = [];

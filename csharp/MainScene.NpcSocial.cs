@@ -26,15 +26,23 @@ public partial class MainScene
             return npc.current_subscene_id == _player_current_yuxu_peak_id;
         return string.IsNullOrWhiteSpace(npc.current_subscene_id);
     }
-    private void begin_npc_social_talk(WorldNpcData npc, bool proactive)
+    private void begin_npc_social_talk(WorldNpcData npc, bool proactive, bool testMode = false)
     {
         if (player?.entity_data is not HumanData human || story_dialogue is null || !can_contact_social_npc(npc)) return;
         info?.hide_panel(); npc_interactions?.close();
-        NpcSocialRules.HearSectReputation(npc, human, proactive);
+        var socialNpc = testMode ? npc.Duplicate(true) as WorldNpcData ?? npc : npc;
+        // 调试模拟只读取当前人物，不记录身份传闻，也不改 NPC 的六轴或交往记忆。
+        if (!testMode) NpcSocialRules.HearSectReputation(npc, human, proactive);
         var place = get_current_profile_location();
         void Answer(string choice)
         {
             if (!can_contact_social_npc(npc)) { story_dialogue.show_social_result(npc, new("对方已离开。", "还有些事，先走一步。", [])); return; }
+            if (testMode)
+            {
+                var simulation = NpcSocialPrototypeRules.Evaluate(socialNpc, human, proactive, choice != "leave");
+                story_dialogue.show_social_result(socialNpc, simulation);
+                return;
+            }
             if (choice != "leave" && !player.can_spend_world_stamina(WorldStaminaRules.ConversationCost))
             {
                 story_dialogue.show_social_result(npc, new("你有些疲惫，便先告辞了。", "那便改日再聊。", []));
@@ -43,16 +51,21 @@ public partial class MainScene
             var response = NpcSocialRules.Evaluate(npc, human, choice, proactive);
             if (choice != "leave") { player.try_spend_world_stamina(WorldStaminaRules.ConversationCost); response = response with { StaminaSpent = WorldStaminaRules.ConversationCost, ActionName = NpcSocialRules.KnowsName(npc) ? "闲谈" : "结识" }; }
             var month = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is { } time ? get_game_month_index(time) : 0;
+            // 在登记本次经历前选旧事，防止刚聊上便把本次说成“上回”。
+            response = NpcPersonalRecallRules.Attach(npc, response, month);
             NpcSocialRules.Remember(npc, human, choice, place, month, response);
             mark_save_dirty();
             story_dialogue.show_social_result(npc, response);
         }
         var cost = WorldStaminaRules.ConversationCost;
-        story_dialogue.show_social_choices(player, npc, NpcSocialRules.Opening(npc, human, place, proactive),
+        var opening = testMode
+            ? proactive ? "对方向你走来，停步问候。" : "你准备上前与对方搭话。"
+            : NpcSocialRules.Opening(socialNpc, human, place, proactive);
+        story_dialogue.show_social_choices(player, socialNpc, opening,
             new (string, Action)[] {
-                ($"接受 · 体力 {cost:0.#}", () => Answer("introduce")),
-                ("婉拒", () => Answer("leave"))
-            }, () => Answer("leave"));
+                (testMode ? proactive ? "听听来意" : "上前搭话" : $"接受 · 体力 {cost:0.#}", () => Answer("introduce")),
+                (testMode && !proactive ? "作罢" : "婉拒", () => Answer("leave"))
+            }, () => Answer("leave"), proactive ? "来访" : "结识", proactive ? "Esc 婉拒" : "Esc 作罢", testMode);
     }
     private void process_npc_social_visit(double delta)
     {
@@ -77,6 +90,7 @@ public partial class MainScene
             .ThenByDescending(n => NpcPersonalityRules.Is(n, "sociability", "外向"))
             .ThenByDescending(n => NpcSocialRules.KnowsName(n) && NpcPersonalityRules.Is(n, "attachment", "重情"))
             .ThenByDescending(n => NpcPersonalityRules.HasVisitPriority(n, human.sect_current_rank is "真传" or "真传弟子"))
+            .ThenByDescending(n => NpcPlayerImpressionRules.WillingContact(n))
             .ThenBy(n => n.npc_id, StringComparer.Ordinal).FirstOrDefault();
         if (candidate is null) return;
         _socialVisitMonth = month;

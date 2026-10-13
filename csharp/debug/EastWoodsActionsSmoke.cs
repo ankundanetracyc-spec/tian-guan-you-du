@@ -83,6 +83,15 @@ public partial class EastWoodsActionsSmoke : Node
             foreach(var node in EastWoodsDungeonRules.get_nodes())
                 if(EastWoodsActions.Content(node.Id) is {ItemPath.Length:>0} content)
                     Check(EastWoodsActions.Item(content.ItemPath) is {} item && ResourceLoader.Exists(item.icon_path),"扩图使用不存在物品或图标");
+            var slowPoint = EastWoodsActions.ResourcePoints().Single(point => point.Action.Recovery == EastWoodsActions.ResourceRecoveryGroup.SlowGrowth);
+            Check(!EastWoodsActions.ResourcePoints().Any(point => point.Action.Recovery == EastWoodsActions.ResourceRecoveryGroup.Mineral),
+                "没有专门矿脉位置时不得提供灵石采掘行动。");
+            before = time.get_precise_game_hours(); stamina = _player.current_world_stamina;
+            At(slowPoint.Node); Execute(slowPoint.Action.Id);
+            Check(_player.get_inventory_total_count(slowPoint.Action.ItemPath) == 1 &&
+                  time.get_precise_game_hours() == before + 1 && _player.current_world_stamina == stamina - 2 &&
+                  _panel.action_remaining(slowPoint.Node, slowPoint.Action) == 1,
+                "30日慢生点未按现有采集行动结算物品、时间、体力与储量。");
             var npcManager = GetNode<NpcWorldManager>("/root/NpcWorldManager"); npcManager.npcs.Clear();
             var npc = new WorldNpcData { npc_id="action_smoke", npc_name="测试同修", is_alive=true, dungeon_id=EastWoodsDungeonRules.DungeonId, dungeon_node_id="forest_edge", dun_speed=100 };
             npcManager.npcs.Add(npc); Field(_main,"_npc_world",npcManager);

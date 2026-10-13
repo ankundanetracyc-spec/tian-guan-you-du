@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Linq;
 
 public partial class EastWoodsDungeonPanel
 {
@@ -129,8 +130,11 @@ public partial class EastWoodsDungeonPanel
         var (_, terrainName) = terrain_kind(node.Id);
         _hoverTitle.Text = string.IsNullOrWhiteSpace(node.Title) ? terrainName : $"{node.Title} · {terrainName}";
         _hoverDescription.Text = node.Description;
-        if (EastWoodsActions.Content(node.Id) is { } action)
-            _hoverDescription.Text += action_remaining(node.Id, action) > 0 ? "\n" + action.Description : "\n此处行动已完成或资源已采尽。";
+        var availableAction = available_actions(node.Id).FirstOrDefault();
+        if (availableAction is not null)
+            _hoverDescription.Text += "\n" + availableAction.Description;
+        else if (EastWoodsActions.Content(node.Id) is not null)
+            _hoverDescription.Text += "\n此处行动已完成或资源已采尽。";
         if (_activeDutyId == "east_woods_patrol")
             _hoverDescription.Text += _activeDutyReady ? "\n巡查复核完成，沿出口离开后回和光峰回报。" : $"\n巡查：{Math.Min(_activeDutyStage, YuxuSectPrototypeBalance.EastWoodsPatrolRequiredNodeMoves)}/{YuxuSectPrototypeBalance.EastWoodsPatrolRequiredNodeMoves} 格；静冠洼地复核后回宗回报。";
         if (node.Id != _current)

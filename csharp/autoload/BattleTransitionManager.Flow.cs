@@ -76,6 +76,18 @@ public partial class BattleTransitionManager
             await _sceneTransition.Ink(1,.24);
             CloseFlow();GetTree().Paused=true;saved_entity_data.Clear();
             var world=GetTree().CurrentScene;
+            var worldPlayerUid = return_context.GetValueOrDefault("world_player_uid", "").AsString();
+            if (world is MainScene main && !string.IsNullOrWhiteSpace(worldPlayerUid))
+            {
+                var playerSnapshot = pending_attacker_data.Concat(pending_defender_data)
+                    .Select(value => value.AsGodotObject()).OfType<BattleEntityData>()
+                    .FirstOrDefault(snapshot => snapshot.uid == worldPlayerUid);
+                if (playerSnapshot is not null)
+                {
+                    var rank = main.consume_player_inspiration_for_action(CultivationInspirationTuning.CombatDomain);
+                    playerSnapshot.cultivation_inspiration_starting_shield = CultivationInspirationTuning.combat_starting_shield(rank);
+                }
+            }
             _worldProgressSnapshot = (world as MainScene)?.capture_battle_world_snapshot();
             saved_world=null;
             if(world is not null)

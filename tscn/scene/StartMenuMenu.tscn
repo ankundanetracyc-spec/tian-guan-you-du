@@ -344,3 +344,21 @@ text = "归元九息体验"
 tooltip_text = "十层周行、牵引与平衡；可比较普通体力中断和充足体力成息，不影响正式存档。"
 alignment = 1
 visible = false
+
+[node name="SocialInteractionTest" type="Button" parent="."]
+custom_minimum_size = Vector2(340, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.172549, 0.290196, 0.254902, 1)
+theme_override_fonts/font = ExtResource("2_regular")
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_hover_color = Color(0.12, 0.22, 0.18, 1)
+theme_override_colors/font_pressed_color = Color(0.12, 0.22, 0.18, 1)
+theme_override_colors/font_focus_color = Color(0.12, 0.22, 0.18, 1)
+theme_override_styles/focus = SubResource("StyleFocus")
+theme_override_styles/normal = SubResource("StyleNormal")
+theme_override_styles/hover = SubResource("StyleHover")
+theme_override_styles/pressed = SubResource("StylePressed")
+text = "人物交互测试"
+tooltip_text = "无需进入存档，直接试演玩家主动搭话与 NPC 来访；不影响正式存档。"
+alignment = 1
+visible = false

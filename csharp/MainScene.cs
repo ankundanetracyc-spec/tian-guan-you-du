@@ -68,22 +68,27 @@ public partial class MainScene : Node2D
         estate?.set_meditation_available(false);
         estate?.set_rest_available(false);
         spawn_or_restore_player();
+        if (player is not null) player.CultivationInspirationChanged += on_player_cultivation_inspiration_changed;
+        if (_loaded_game_save is null)
+            initialize_story_free_start();
         expire_player_world_statuses();
         if (player is not null) realm_panel?.bind_player(player);
         hud?.bind_player(player);
         configure_tile_world_map_bridge();
         storage?.bind_player(player);
         if(player is not null) { player.breakthrough_completed += on_player_breakthrough; player.MainGongfaChanged += (_, _) => refresh_qingxi_quest(); player.GongfaChapterCompleted += (_, _, _, _) => refresh_qingxi_quest(); player.GongfaChapterCompleted += on_yuxu_gongfa_chapter_completed; }
-        if(GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is { } time) { if(_loaded_game_save is null)_qingxi_arrival_hour=time.get_total_game_hours(); time.time_changed += on_action_time_changed; time.time_changed += update_yuxu_monthly_allowance; time.time_changed += mark_save_dirty; time.time_changed += on_world_status_time_changed; }
+        if(GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is { } time) { if(_loaded_game_save is null&&!_story_free_start)_qingxi_arrival_hour=time.get_total_game_hours(); time.time_changed += on_action_time_changed; time.time_changed += update_yuxu_monthly_allowance; time.time_changed += mark_save_dirty; time.time_changed += on_world_status_time_changed; }
         refresh_qingxi_quest();
-        set_prologue_skip_available(_loaded_game_save is null);
-        if (_loaded_game_save is null) CallDeferred(nameof(show_opening));
+        set_prologue_skip_available(_loaded_game_save is null && !_story_free_start);
+        if (_loaded_game_save is null && _story_free_start) CallDeferred(nameof(show_story_free_start));
+        else if (_loaded_game_save is null) CallDeferred(nameof(show_opening));
         else CallDeferred(nameof(show_loaded_game));
     }
     public override void _Process(double delta){update_persistent_chrome();process_save_autosave(delta);process_npc_social_visit(delta);}
     public override void _ExitTree()
     {
         save_progress_now(false);
+        if (player is not null) player.CultivationInspirationChanged -= on_player_cultivation_inspiration_changed;
         if (GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is { } time)
         {
             time.time_changed -= on_action_time_changed;
@@ -261,7 +266,7 @@ public partial class MainScene : Node2D
     private void begin_prologue_guide(){_suppress_persistent_chrome=false;if(family.Count<=4)return;prologue_guide?.begin(family[4]);hud?.set_guided_button("BtnCharacter");}
     private void open_territory(){estate?.Hide();territory_panel?.open();hud?.Show();hud?.MoveToFront();}
     private void open_ledger(string mode){territory_panel?.Hide();territory_ledger?.open(mode);hud?.Hide();}
-    private void open_location_map(){if(_qingxi_prologue==QingxiPrologueStep.Departed){open_world();return;}territory_panel?.Hide();estate?.Show();estate?.MoveToFront();hud?.Show();hud?.MoveToFront();}
+    private void open_location_map(){if(has_open_world_access()){open_world();return;}territory_panel?.Hide();estate?.Show();estate?.MoveToFront();hud?.Show();hud?.MoveToFront();}
     private void open_territory_section(string section){switch(section){case "residential":estate?.Hide();residence_panel?.open("meditation");break;case "village":estate?.Hide();territory_panel?.open("governance");break;case "farmland":estate?.Hide();farmland_panel?.open();break;case "storage":open_storage();break;case "gate":estate?.Hide();territory_panel?.open("defense");break;}}
     private Godot.Collections.Array family_array(){var result=new Godot.Collections.Array();foreach(var character in family)result.Add(character);return result;}
     private Godot.Collections.Array roster_array(){var result=family_array();foreach(var character in retainers)result.Add(character);return result;}
@@ -306,7 +311,21 @@ public partial class MainScene : Node2D
                 show_message("槐荫坪","村里人闲时常在老槐树下歇脚闲谈。周满仓也会带些日用物件来，想换东西可以找他商量。 ");
                 break;
             case "farmland":
-                if(!_qingxi_herbs_gathered) { if(!try_spend_player_world_stamina(WorldStaminaRules.InteractionCost,"采集"))break; _qingxi_herbs_gathered=true; player?.add_item_to_inventory("res://resources/entities/items/苦苔根.tres"); show_message("田陌","你从田埂边采下一截苦苔根，也看见兽蹄印绕开了有人烟的田地。兽患会是往后的事；这份根材可在行囊中查看。 "); }
+                if (!_qingxi_herbs_gathered)
+                {
+                    if (!try_spend_player_world_stamina(WorldStaminaRules.InteractionCost, "采集")) break;
+                    _qingxi_herbs_gathered = true;
+                    player?.add_item_to_inventory("res://resources/entities/items/苦苔根.tres");
+                    record_player_causal_event(
+                        "qingxi.herb_gathered",
+                        "foraging",
+                        "采得苦苔根",
+                        "home_village",
+                        "青溪里田陌",
+                        "在田埂边采集药根时，也留意到兽蹄印绕开了有人烟的田地。",
+                        "苦苔根收进行囊。 ");
+                    show_message("田陌","你从田埂边采下一截苦苔根，也看见兽蹄印绕开了有人烟的田地。兽患会是往后的事；这份根材可在行囊中查看。 ");
+                }
                 else show_message("田陌","农人仍照看着田地。这里可采集寻常药草、听农户闲谈，也会随时令出现新的小事。 ");
                 break;
             case "back_hill":
@@ -336,6 +355,12 @@ public partial class MainScene : Node2D
         };
         if (can_sect_spar(npc)) actions.Add(("切磋", () => request_npc_spar(npc)));
         if (can_npc_purchase(npc)) actions.Add(("求购", () => request_npc_purchase(npc)));
+        add_yuxu_case_npc_actions(npc, actions);
+        if (OS.IsDebugBuild())
+        {
+            actions.Add(("测试：我主动搭话", () => begin_npc_social_talk(npc, false, true)));
+            actions.Add(("测试：NPC来找我", () => begin_npc_social_talk(npc, true, true)));
+        }
         npc_interactions?.show_menu(name, actions);
     }
     private void start_resident_dialogue(string resident)
@@ -369,10 +394,16 @@ public partial class MainScene : Node2D
     }
     private void refresh_qingxi_quest()
     {
+        if (_story_free_start)
+        {
+            RefreshJournalTracker();
+            mark_save_dirty();
+            return;
+        }
         if(_qingxi_prologue==QingxiPrologueStep.Departed)
         {
             if(_active_quest is not null){_completed_quests.Add(_active_quest with { State = "已完成" });_active_quest=null;}
-            if(!_prologue_goal_recorded){_completed_quests.Add(new JournalPanel.Entry("初醒青溪","确认身处何地并踏入云息，取得离村资格。","阶段目标","青溪里","已完成"));_prologue_goal_recorded=true;}
+            if(!_story_free_start&&!_prologue_goal_recorded){_completed_quests.Add(new JournalPanel.Entry("初醒青溪","确认身处何地并踏入云息，取得离村资格。","阶段目标","青溪里","已完成"));_prologue_goal_recorded=true;}
         }
         else if(_qingxi_prologue==QingxiPrologueStep.Awakened) set_qingxi_task("初醒", "与李宅主人李守拙交谈，弄清自己身在何处。");
         else if(_qingxi_prologue==QingxiPrologueStep.BeastHuntResolved) set_qingxi_task("与李守拙道别", "兽患已平。回到李宅与李守拙道别，之后世界地图才会开放。");
@@ -404,7 +435,7 @@ public partial class MainScene : Node2D
         for (var i = 0; i < _completed_quests.Count; i++) _completed_quests[i] = IdentifyJournalTask(_completed_quests[i]);
         var entries = new List<JournalPanel.Entry> { get_phase_goal() };
         if (_active_quest is not null) entries.Add(_active_quest);
-        if (_qingxi_prologue == QingxiPrologueStep.Departed) entries.Add(get_cultivation_guidance_task());
+        if (has_open_world_access()) entries.Add(get_cultivation_guidance_task());
         entries.AddRange(get_yuxu_lineage_journal_tasks());
         if (get_active_yuxu_journal_task() is {} duty) entries.Add(duty);
         if (player?.entity_data is HumanData human)
@@ -436,7 +467,7 @@ public partial class MainScene : Node2D
         return new("继续精进", $"当前境界：{realm}。继续修行，在修炼界面查看当前开放的境界目标与突破条件。", "长期主线", "个人修行", "进行中");
     }
 
-    private JournalPanel.Entry get_phase_goal() => _qingxi_prologue == QingxiPrologueStep.Departed
+    private JournalPanel.Entry get_phase_goal() => has_open_world_access()
         ? new("行旅与积累", "在百川区域自由选择修炼、交易、旅行、探索、委托或接触势力，积累下一次境界突破所需的资源与条件。", "阶段目标", "百川区域", "进行中")
         : new("初醒青溪", "确认身处何地并踏入云息，取得离村资格。", "阶段目标", "青溪里", "进行中");
 
@@ -618,7 +649,26 @@ public partial class MainScene : Node2D
         }
         show_message(title,"这点山间见闻被你默默记下。");
     }
-    private void finish_back_hill_trial(){var first=!_back_hill_trial_complete;_back_hill_trial_complete=true;if(first)_journal_started_hour=GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours()??-1;refresh_qingxi_quest();show_message("后山初探",first?"你沿回村小径下山。后山外围的东西，比往年凶得多；而半山腰那道爪痕，更让人无法忽视。":"你再次沿回村小径下山，收好这一路的所得。");if(first)try_trigger_qingxi_beast_hunt();}
+    private void finish_back_hill_trial()
+    {
+        var first = !_back_hill_trial_complete;
+        _back_hill_trial_complete = true;
+        if (first)
+        {
+            _journal_started_hour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? -1;
+            record_player_causal_event(
+                "qingxi.back_hill_trial.completed",
+                "exploration",
+                "初探青溪里后山",
+                "home_village",
+                "青溪里后山",
+                "沿回村小径深入后山外围，见到半山腰留下的深重爪痕。",
+                "沿小径平安下山，将所见记在心中。 ");
+        }
+        refresh_qingxi_quest();
+        show_message("后山初探", first ? "你沿回村小径下山。后山外围的东西，比往年凶得多；而半山腰那道爪痕，更让人无法忽视。" : "你再次沿回村小径下山，收好这一路的所得。");
+        if (first) try_trigger_qingxi_beast_hunt();
+    }
     private void open_rumors()
     {
         if (journal is null) return;
@@ -696,7 +746,22 @@ public partial class MainScene : Node2D
         _beast_hunt_prompt_open=true;
         var dialog=new ConfirmationDialog{Title="青溪里兽患",DialogText="入村满一年后的冬夜，山魈率兽群冲下山来，直扑青溪里。李守拙正组织村民退守李宅，你必须迎战首领、护住村子。\n\n此战目前以事件结算呈现，后续再接入正式局内战斗。",OkButtonText="迎战",CancelButtonText="稍后"};
         AddChild(dialog); dialog.PopupCentered();
-        dialog.Confirmed+=()=>{_beast_hunt_prompt_open=false;_qingxi_prologue=QingxiPrologueStep.BeastHuntResolved;refresh_qingxi_quest();show_message("兽患已除","山魈伏诛，兽群退去。青溪里暂时平安。次日清晨，回李宅与李守拙道别后，才能启用世界地图。 ");dialog.QueueFree();};
+        dialog.Confirmed+=()=>
+        {
+            _beast_hunt_prompt_open = false;
+            _qingxi_prologue = QingxiPrologueStep.BeastHuntResolved;
+            record_player_causal_event(
+                "qingxi.beast_hunt.resolved",
+                "defense",
+                "平息青溪里兽患",
+                "home_village",
+                "青溪里",
+                "山魈率兽群冲下山来，村中人依李守拙安排退守。",
+                "山魈伏诛，兽群退去，青溪里暂时平安。 ");
+            refresh_qingxi_quest();
+            show_message("兽患已除","山魈伏诛，兽群退去。青溪里暂时平安。次日清晨，回李宅与李守拙道别后，才能启用世界地图。 ");
+            dialog.QueueFree();
+        };
         dialog.Canceled+=()=>{_beast_hunt_prompt_open=false;dialog.QueueFree();};
     }
     private void open_storage(){storage?.show_panel();storage?.MoveToFront();}
@@ -726,7 +791,7 @@ public partial class MainScene : Node2D
             _east_woods_dungeon.locate_exit();
             return;
         }
-        if(_qingxi_prologue!=QingxiPrologueStep.Departed) return;
+        if(!has_open_world_access()) return;
         enter_cloud_state_if_departed();
         var yuxuOverview = GetNodeOrNull<Control>("SceneLayer/YuxuXianzongOverview");
         if (yuxuOverview?.Visible == true)
@@ -745,17 +810,16 @@ public partial class MainScene : Node2D
         tile_world_map?.MoveToFront();
         hud?.Show();
         hud?.MoveToFront();
-        hud?.set_world_map_available(_qingxi_prologue==QingxiPrologueStep.Departed);
+        hud?.set_world_map_available(has_open_world_access());
         node_map?.set_player_location(_player_world_node_id);
         node_map?.set_player_node_count(_player_world_node_id, player is null ? 0 : 1);
     }
 
-    /// <summary>世界入口开启时主角落在青溪里记忆锚点；离开后该地仍不可重新进入。</summary>
+    /// <summary>开启自由世界状态时保留当前有效地点；正常序章离村仍沿用青溪里锚点。</summary>
     private void enter_cloud_state_if_departed()
     {
-        if (_qingxi_prologue != QingxiPrologueStep.Departed || _cloud_state_initialized) return;
+        if (!has_open_world_access() || _cloud_state_initialized) return;
         if (node_map?.map_data is not { } mapData) return;
-        _player_world_node_id = "home_village";
         var world = _npc_world ?? GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager");
         if (world is not null) CloudStateNpcCatalog.activate(world, mapData);
         node_map?.set_npc_world_manager(world);
@@ -763,7 +827,7 @@ public partial class MainScene : Node2D
     }
     private void skip_qingxi_prologue_for_testing()
     {
-        if (_qingxi_prologue == QingxiPrologueStep.Departed) return;
+        if (has_open_world_access()) return;
         var profile = GetNodeOrNull<GameStartProfile>("/root/GameStartProfile");
         var gongfa = ResourceLoader.Load<GongfaResource>(profile?.selected_initial_gongfa_path ?? "res://resources/gongfa/黄庭养形篇.tres");
         if (player is null || gongfa is null || !player.prepare_prologue_skip_state(gongfa))
@@ -784,7 +848,7 @@ public partial class MainScene : Node2D
     private void close_world_map()
     {
         // There is no location page behind the world after departure. Keep its camera and travel intact.
-        if (_qingxi_prologue == QingxiPrologueStep.Departed) return;
+        if (has_open_world_access()) return;
         tile_world_map?.Hide();
         node_map?.hide_world_roster();
         node_map?.Hide();
@@ -798,7 +862,7 @@ public partial class MainScene : Node2D
             return;
         if (node_id != _player_world_node_id || !node_map.is_node_unlocked(node_id) || !node.enterable)
             return;
-        if (_qingxi_prologue == QingxiPrologueStep.Departed && node_id == "home_village")
+        if (has_open_world_access() && node_id == "home_village")
         {
             show_message("旧地不可入", "青溪里已经留在身后。你只能沿着新的道路继续前行。");
             return;
@@ -810,7 +874,10 @@ public partial class MainScene : Node2D
         estate?.Hide();
         if (node_id == "yuxu_xianzong_core")
         {
-            open_faction_overview_if_available(node_id);
+            if (player?.entity_data is HumanData human && human.sect_affiliation_id == YuxuSectId)
+                open_faction_overview_if_available(node_id);
+            else
+                begin_yuxu_gate_welcome();
             return;
         }
         if (node_id == "east_woods")
@@ -886,38 +953,7 @@ public partial class MainScene : Node2D
 
     private void on_yuxu_admission_requested()
     {
-        if (player?.entity_data is not HumanData human || !string.IsNullOrEmpty(human.sect_affiliation_id)) return;
-        var rank = get_yuxu_entry_rank(get_player_spirit_root_count());
-        if (string.IsNullOrEmpty(rank))
-        {
-            refresh_yuxu_admission_context();
-            return;
-        }
-        var rootName = string.IsNullOrWhiteSpace(human.spirit_root_name) ? "未明灵根" : human.spirit_root_name;
-        var dialog = new ConfirmationDialog
-        {
-            Title = "观复峰·入门考核",
-            DialogText = $"观复峰已验明你的灵根：{rootName}。\n依玉虚仙宗现行规则，你将以「{rank}」身份入门。起始身份由灵根确定；入门后的身份晋升依据修行境界与宗门贡献。\n\n是否拜入玉虚仙宗？",
-            OkButtonText = "拜入玉虚仙宗",
-            CancelButtonText = "再考虑"
-        };
-        AddChild(dialog);
-        dialog.PopupCentered();
-        dialog.Confirmed += () =>
-        {
-            dialog.QueueFree();
-            var currentRank = get_yuxu_entry_rank(get_player_spirit_root_count());
-            if (string.IsNullOrEmpty(currentRank))
-            {
-                refresh_yuxu_admission_context();
-                return;
-            }
-            if (is_yuxu_true_disciple(currentRank))
-                open_yuxu_lineage_teacher_picker(teacher => complete_yuxu_admission(currentRank, teacher));
-            else
-                complete_yuxu_admission(currentRank);
-        };
-        dialog.Canceled += () => dialog.QueueFree();
+        begin_yuxu_gate_welcome();
     }
 
     private void begin_world_travel(string destination_node_id, Godot.Collections.Array<string> node_path)
@@ -941,7 +977,7 @@ public partial class MainScene : Node2D
             if (!string.IsNullOrEmpty(route.route_name)) route_names.Add(route.route_name);
         }
         days = Mathf.Max(1, days);
-        if (_qingxi_prologue == QingxiPrologueStep.Departed && destination_node_id == "home_village")
+        if (has_open_world_access() && destination_node_id == "home_village")
         {
             show_message("无名山", "你沿着记忆中的旧路望去，心里却没有回去的念头。那座山静静立在远处，仿佛从未有过一座名为青溪里的村子。");
             return;

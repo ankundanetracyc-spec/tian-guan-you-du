@@ -112,6 +112,69 @@ public static class CloudStateNpcCatalog
         }
     }
 
+    /// <summary>Creates the stable, procedurally named elder who receives new entrants at the Yuxu gate.</summary>
+    public static WorldNpcData? ensure_yuxu_admission_elder(NpcWorldManager manager, WorldNodeMapData mapData)
+    {
+        const string elderId = "yuxu_gate_elder";
+        if (manager is null || mapData is null || mapData.get_node("yuxu_xianzong_core") is not { } sectNode)
+            return null;
+        if (manager.get_npc(elderId) is { } existing)
+            return existing;
+
+        var rng = new RandomNumberGenerator();
+        rng.Randomize();
+        var usedNames = new System.Collections.Generic.HashSet<string>(
+            manager.get_active_npcs().Select(npc => npc.npc_name), StringComparer.Ordinal);
+        var elder = create_lineage_staff(
+            elderId,
+            sectNode,
+            "",
+            "金丹圆满",
+            "山门接引长老",
+            "玉虚仙宗山门接引长老，负责迎接初至山门的修士。",
+            rng,
+            usedNames,
+            isFemale: null);
+        elder.relation_tags.Remove("师承候选");
+        elder.relation_tags.Add("山门接引");
+        elder.long_term_goal = "守护山门秩序，甄别来访修士。";
+        elder.short_term_goal = "接待初至玉虚仙宗的修士。";
+        manager.register_npc(elder);
+        return elder;
+    }
+
+    /// <summary>Creates the stable, procedurally named disciple who escorts a new entrant through registration.</summary>
+    public static WorldNpcData? ensure_yuxu_admission_guide(NpcWorldManager manager, WorldNodeMapData mapData)
+    {
+        const string guideId = "yuxu_gate_guide";
+        if (manager is null || mapData is null || mapData.get_node("yuxu_xianzong_core") is not { } sectNode)
+            return null;
+        if (manager.get_npc(guideId) is { } existing)
+            return existing;
+
+        var rng = new RandomNumberGenerator();
+        rng.Randomize();
+        var usedNames = new System.Collections.Generic.HashSet<string>(
+            manager.get_active_npcs().Select(npc => npc.npc_name), StringComparer.Ordinal);
+        var guide = create_lineage_staff(
+            guideId,
+            sectNode,
+            "guanfu",
+            "云息八层",
+            "外门弟子",
+            "奉山门接引长老之命，负责带初入宗门的修士办理录籍。",
+            rng,
+            usedNames,
+            isFemale: null);
+        guide.relation_tags.Remove("师承候选");
+        guide.relation_tags.Add("山门接引弟子");
+        guide.long_term_goal = "在宗门中稳步修行。";
+        guide.short_term_goal = "协助接引长老办理新入门修士的录籍。";
+        guide.current_state = "师门常驻";
+        manager.register_npc(guide);
+        return guide;
+    }
+
     private static WorldNpcData create_lineage_staff(
         string id,
         WorldNodeData sectNode,

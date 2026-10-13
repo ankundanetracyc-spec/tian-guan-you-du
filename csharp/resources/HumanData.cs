@@ -35,6 +35,10 @@ public partial class HumanData : LivingData
     [Export] public string sect_entry_rank = "";
     /// <summary>当前宗门身份；后续晋升系统可变更此值而不覆盖起始身份。</summary>
     [Export] public string sect_current_rank = "";
+    /// <summary>玉虚入门时接引弟子的稳定人物 ID。</summary>
+    [Export] public string sect_admission_guide_npc_id = "";
+    /// <summary>玉虚正式录籍的绝对游戏时辰；未知或旧存档为 -1。</summary>
+    [Export] public long sect_entry_total_game_hours = -1;
     /// <summary>玉虚真传当前师父与带教师兄/师姐的稳定世界人物 ID。</summary>
     [Export] public string sect_teacher_npc_id = "";
     [Export] public string sect_guide_npc_id = "";
@@ -51,6 +55,8 @@ public partial class HumanData : LivingData
     [Export] public Array<FactionAttitudeRecord> faction_attitude_records = [];
     /// <summary>各区域公开事迹流水；只参与对应地区的区域声望计算。</summary>
     [Export] public Array<RegionalRenownRecord> regional_renown_records = [];
+    /// <summary>玩家在此世发生的可追溯经历事实；不由业力、声望或关系推导。</summary>
+    [Export] public Array<PlayerCausalEventRecord> player_causal_event_records = [];
     /// <summary>单一有符号业力值；不等同于区域声望或可消费资源。</summary>
     [Export] public int karma_value;
     /// <summary>新心境轴值（-50～+50）；与旧战斗字段 current_mind 分开保存。</summary>
@@ -315,4 +321,36 @@ public partial class HumanData : LivingData
                 return Math.Clamp(record.attitude_stage, 0, 6);
         return -1;
     }
+
+    /// <summary>Append a deep-copied causal event once, keyed only by its stable event ID.</summary>
+    public bool record_player_causal_event(PlayerCausalEventRecord? record)
+    {
+        if (record is null || string.IsNullOrWhiteSpace(record.event_id)) return false;
+        player_causal_event_records ??= [];
+        foreach (var existing in player_causal_event_records)
+            if (existing is not null && string.Equals(existing.event_id, record.event_id, StringComparison.Ordinal))
+                return false;
+        player_causal_event_records.Add(record.Duplicate(true) as PlayerCausalEventRecord ?? record);
+        return true;
+    }
+
+    /// <summary>Find a saved event by exact stable ID; returns null when absent.</summary>
+    public PlayerCausalEventRecord? find_player_causal_event(string? eventId)
+    {
+        if (string.IsNullOrWhiteSpace(eventId) || player_causal_event_records is null) return null;
+        foreach (var record in player_causal_event_records)
+            if (record is not null && string.Equals(record.event_id, eventId, StringComparison.Ordinal))
+                return record;
+        return null;
+    }
+
+    /// <summary>Evaluate recorded facts without consulting karma, renown, faction attitude, or relationships.</summary>
+    public PlayerCausalHistoryAssessment assess_player_causal_history(
+        IReadOnlyCollection<string>? verifiedExistingYuxuHardRuleIds = null)
+        => PlayerCausalHistoryEvaluator.evaluate(player_causal_event_records, verifiedExistingYuxuHardRuleIds);
+
+    /// <summary>Convenience API for the gate interaction to obtain factual, non-scoring judgment lines.</summary>
+    public Array<string> get_yuxu_gate_judgment_lines(
+        IReadOnlyCollection<string>? verifiedExistingYuxuHardRuleIds = null)
+        => assess_player_causal_history(verifiedExistingYuxuHardRuleIds).get_yuxu_gate_judgment_lines();
 }

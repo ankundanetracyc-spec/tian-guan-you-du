@@ -4,7 +4,6 @@ using Godot.Collections;
 public partial class PortraitRenderer : Control
 {
     private static readonly string[] LayerOrder=["hair_back","face","ear","clothes","eye","brow","nose","mouth","beard","makeup","hair_front"];
-    private static readonly string[] FacialLayers=["face","ear","eye","brow","nose","mouth","beard","makeup"];
     private static readonly Color[] SkinTones=[new("fff0df"),new("f4ddc8"),new("e5c4a7"),new("c99b79"),new("a77758")];
     private static readonly Color[] HairTones=[new("ffffff"),new("c8a77b"),new("8a6550"),new("89919a"),new("9b4b38")];
     private static readonly System.Collections.Generic.Dictionary<string,Dictionary> SelectionCache=[];
@@ -12,7 +11,6 @@ public partial class PortraitRenderer : Control
     private string _current_key="";
     private bool _headshotMode;
     private Control? _headshotComposition;
-    private Control _faceComposition=null!;
     private Vector2 CompositionSize=>_headshotComposition?.Size??new Vector2(1024,1536);
     private const float HeadshotZoom = 2.8f;
     private const float HeadshotFocusY = .268f;
@@ -64,7 +62,6 @@ public partial class PortraitRenderer : Control
         }
         if(_headshotComposition is not null && _layers["face"].Texture is { } faceTexture)
             _headshotComposition.Size=faceTexture.GetSize();
-        _faceComposition.Size=CompositionSize;
         foreach(var layer in _layers.Values)layer.Size=CompositionSize;
         apply_appearance(data,selected);
         apply_headshot_crop();
@@ -79,11 +76,10 @@ public partial class PortraitRenderer : Control
         _headshotComposition=new Control{Name="PortraitComposition",Size=new(1024,1536),MouseFilter=MouseFilterEnum.Ignore};
         AddChild(_headshotComposition);
         var composition=_headshotComposition;
-        _faceComposition=new Control{Name="FaceComposition",Size=composition.Size,MouseFilter=MouseFilterEnum.Ignore};composition.AddChild(_faceComposition);
         for(var i=0;i<LayerOrder.Length;i++)
         {
             var layer=new TextureRect{Name=LayerOrder[i].Capitalize(),ExpandMode=TextureRect.ExpandModeEnum.IgnoreSize,StretchMode=TextureRect.StretchModeEnum.KeepAspectCentered,MouseFilter=MouseFilterEnum.Ignore,ZIndex=i};
-            (FacialLayers.Contains(LayerOrder[i])?_faceComposition:composition).AddChild(layer);
+            composition.AddChild(layer);
             layer.Size=CompositionSize;_layers[LayerOrder[i]]=layer;
         }
     }
@@ -95,7 +91,7 @@ public partial class PortraitRenderer : Control
         if(cropSize.X<=0 || cropSize.Y<=0)return;
         var sourceSize=_headshotComposition.Size;
         if(sourceSize.X<=0 || sourceSize.Y<=0)return;
-        // 在原尺寸画布组合五官后，仅变换整幅立绘，保留各部件的枢轴、比例和像素偏移。
+        // 各部件按素材原坐标拼接；这里只按控件尺寸缩放或裁切整幅组合图。
         var scale=Mathf.Min(cropSize.X/sourceSize.X,cropSize.Y/sourceSize.Y)*(_headshotMode?HeadshotZoom:1f);
         var focus=new Vector2(sourceSize.X*.5f,sourceSize.Y*(_headshotMode?HeadshotFocusY:.5f));
         _headshotComposition.Scale=Vector2.One*scale;
@@ -103,25 +99,7 @@ public partial class PortraitRenderer : Control
     }
     private void apply_appearance(EntityData data,Dictionary selected)
     {
-        var faceScale=new Vector2(data.appearance_face_width,data.appearance_face_height);
         var faceEntry=selected.GetValueOrDefault("face",new Dictionary()).AsGodotDictionary();
-        var rigPivots=faceEntry.GetValueOrDefault("scale_pivots_normalized",new Dictionary()).AsGodotDictionary();
-        _faceComposition.Scale=Vector2.One;
-        var facePivot=read_pivot(rigPivots,"face_and_feature_scale",Vector2.Zero);
-        var eyePivot=read_pivot(rigPivots,"eye_variant_scale",Vector2.Zero);
-        // 没有真实锚点时保留素材原形，不再退回全幅中心而挤歪五官。
-        if(rigPivots.Count>0)
-        {
-            _faceComposition.PivotOffset=CompositionSize*facePivot;
-            _faceComposition.Scale=faceScale;
-            var eye=_layers["eye"];
-            if(eye.Texture is not null)
-            {
-                eye.PivotOffset=CompositionSize*eyePivot;
-                eye.Scale=Vector2.One*data.appearance_eye_scale;
-                eye.Position+=Vector2.Down*data.appearance_eye_offset_y;
-            }
-        }
         if(faceEntry.GetValueOrDefault("allow_skin_tone_tint",true).AsBool()&&data.appearance_skin_tone>=0&&data.appearance_skin_tone<SkinTones.Length&&_layers["face"].Texture is not null)
         {
             _layers["face"].Modulate=SkinTones[data.appearance_skin_tone];
@@ -133,12 +111,6 @@ public partial class PortraitRenderer : Control
             _layers["hair_back"].Modulate=HairTones[data.appearance_hair_color];
             _layers["hair_front"].Modulate=HairTones[data.appearance_hair_color];
         }
-    }
-    private static Vector2 read_pivot(Dictionary pivots,string key,Vector2 fallback)
-    {
-        var value=pivots.GetValueOrDefault(key,new Dictionary()).AsGodotDictionary();
-        if(value.Count==0)return fallback;
-        return new Vector2(value.GetValueOrDefault("x",fallback.X).AsSingle(),value.GetValueOrDefault("y",fallback.Y).AsSingle());
     }
     private static int stable_seed(string value)
     {

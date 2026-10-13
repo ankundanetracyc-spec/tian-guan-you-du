@@ -40,7 +40,7 @@ public partial class MainScene
         var phase = IdentifyJournalTask(get_phase_goal());
         var duty = get_active_yuxu_journal_task();
         var lineage = get_active_yuxu_lineage_journal_task();
-        var current = duty ?? lineage ?? IdentifyJournalTask(_qingxi_prologue == QingxiPrologueStep.Departed ? get_cultivation_guidance_task() : _active_quest ?? get_phase_goal());
+        var current = duty ?? lineage ?? IdentifyJournalTask(has_open_world_access() ? get_cultivation_guidance_task() : _active_quest ?? get_phase_goal());
         var ongoing = get_quest_entries().Where(e => e.State != "已完成").DistinctBy(e => e.Id).ToList();
         if (!_journalTrackingChosen || (!string.IsNullOrEmpty(_trackedJournalTask) && ongoing.All(e => e.Id != _trackedJournalTask)))
             _trackedJournalTask = current.Id;

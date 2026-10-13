@@ -18,6 +18,8 @@ public partial class NpcActionRecord : Resource
     [Export] public string dungeon_incident_id = "";
     [Export] public string reason = "";
     [Export] public string outcome = "";
+    /// <summary>本次实际聊成；旧记录默认 false，不从结果文本猜测或把邀请当作完成。</summary>
+    [Export] public bool player_contact_completed;
     [Export] public int resource_delta;
     [Export] public bool is_death_record;
 }

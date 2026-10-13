@@ -19,6 +19,93 @@ public partial class NpcSocialSmoke : Node
         await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
         GetViewport().GetTexture().GetImage().SavePng("res://tmp/npc_social_process_" + name + ".png");
     }
+    private static void CheckPresentationContext()
+    {
+        static NpcSocialRules.Response Sample(params (string Rule, bool Favorable)[] points) =>
+            new("交谈结束", "", points.Select(p => p.Rule).ToArray())
+            {
+                ActionName = "结识",
+                DecisionSteps = points.Select(p => new NpcSocialRules.DecisionStep(p.Rule, p.Rule) { Favorable = p.Favorable }).ToArray()
+            };
+        static NpcSocialPresentationText.Line[] Ordered(NpcSocialRules.Response response, params string[] order) =>
+            Enumerable.Range(0, 128).Select(seed => NpcSocialPresentationText.Create(response, seed).ToArray())
+                .First(lines => lines.Select(line => line.Rule).SequenceEqual(order));
+
+        var coldThenSect = Ordered(Sample(("npc_charisma", false), ("same_sect", true)), "npc_charisma", "same_sect");
+        Check(coldThenSect[1].Result.Contains("才") || coldThenSect[1].Result.Contains("少了") || coldThenSect[1].Result.Contains("不再"),
+            "冷淡后谈到同门应出现缓和过程，不能当作已经热络");
+        var warmThenCold = Ordered(Sample(("npc_social", true), ("npc_charisma", false)), "npc_social", "npc_charisma");
+        Check(warmThenCold[1].Favorable == false && (warmThenCold[1].Result.Contains("仍") || warmThenCold[1].Result.Contains("却")),
+            "前句顺畅后举止疏淡，应承接前句但保留负面方向");
+        var coldThenReply = Ordered(Sample(("npc_charisma", false), ("player_social", true)), "npc_charisma", "player_social");
+        Check(coldThenReply[1].Result.Contains("才") || coldThenReply[1].Result.Contains("渐渐") || coldThenReply[1].Result.Contains("少了"),
+            "接话得体应能衔接前句生涩，而非重复初次问候");
+        var topicReturn = Ordered(Sample(("same_sect", true), ("player_mood", false), ("sect_priority", true)),
+            "same_sect", "player_mood", "sect_priority");
+        Check(topicReturn[2].Pending.Contains("又") && topicReturn[2].Result.Contains("宗中") && !topicReturn[2].Result.Contains("得知"),
+            "话题隔行后返回应承接已知同门，不能重新发现身份");
+        var fixture = Sample(("npc_mood", true), ("player_charisma", true), ("npc_social", false));
+        foreach (var seed in Enumerable.Range(0, 48))
+        {
+            var lines = NpcSocialPresentationText.Create(fixture, seed);
+            Check(lines.All(line => !line.Result.Contains("未收") && !line.Result.Contains("没了下文") && !line.Result.Contains("没有再接话")),
+                "非终止判定不能提前结束交谈或假设此前已有笑意");
+            Check(lines.Skip(1).Where(line => line.Rule == "player_charisma").All(line => !line.Result.Contains("见礼") && !line.Result.Contains("相迎")),
+                "交谈中途不得重复开场见礼");
+            Check(lines.Count == fixture.Factors.Count && lines.All(line => line.Favorable == fixture.DecisionSteps.Single(step => step.Rule == line.Rule).Favorable),
+                "上下文改写不得改变判定数量与正负方向");
+            Check(lines.SequenceEqual(NpcSocialPresentationText.Create(fixture, seed)), "同次展示不能在播放中重新抽取文案");
+        }
+    }
+
+    private static void CheckPersonalRecall()
+    {
+        var human = new HumanData { entity_name = "试演主角", sect_affiliation_id = "yuxu_xianzong" };
+        var witness = new WorldNpcData { npc_id = "recall_witness", faction_id = human.sect_affiliation_id };
+        witness.social_personality["risk"] = "冒进";
+        var first = NpcSocialRules.Evaluate(witness, human, "introduce");
+        Check(NpcPersonalRecallRules.Attach(witness, first, 1).Recollection is null, "第一次接触不能回顾不存在的旧事");
+        NpcSocialRules.Remember(witness, human, "introduce", "观复峰", 1, first);
+        Check(witness.action_history.Last().player_contact_completed, "聊成记录未保存明确完成事实");
+        var next = NpcSocialRules.Evaluate(witness, human, "introduce");
+        var recalled = NpcPersonalRecallRules.Attach(witness, next, 2);
+        Check(recalled.Recollection is { } recall && NpcPersonalRecallRules.IsValid(witness, recall) && recall.Text.Contains("对方") &&
+            recalled.Factors.SequenceEqual(next.Factors) && recalled.DecisionSteps.SequenceEqual(next.DecisionSteps) &&
+            recalled.ExchangesName == next.ExchangesName && recalled.StaminaSpent == next.StaminaSpent && witness.player_relationship == 0,
+            "回顾缺少证据或被误当成新判断、费用或关系变化");
+        var stranger = new WorldNpcData { npc_id = "recall_stranger" };
+        Check(NpcPersonalRecallRules.Select(stranger, 2) is null && !NpcPersonalRecallRules.IsValid(stranger, recalled.Recollection!),
+            "另一 NPC 不应共享见证者记忆");
+        Check(NpcPersonalRecallRules.Attach(witness, next with { ExchangesName = false }, 2).Recollection is null,
+            "拒绝／取消后不能借回顾强行续谈");
+        var historyCount = witness.action_history.Count;
+        Check(NpcPersonalRecallRules.Select(witness, 0) is null, "不可引用当前月份之后的记录");
+        var ambiguous = new WorldNpcData { npc_id = "recall_legacy" };
+        ambiguous.action_history.Add(new NpcActionRecord { month_index = 0, action_id = "player_social_introduce", target_npc_id = "player", outcome = "你们聊得很好。" });
+        ambiguous.action_history.Add(new NpcActionRecord { month_index = 0, action_id = "player_social_spar_invitation", target_npc_id = "player" });
+        ambiguous.action_history.Add(new NpcActionRecord { month_index = 0, action_id = "purchase_need", target_npc_id = "player" });
+        ambiguous.action_history.Add(new NpcActionRecord { month_index = 0, action_id = "purchase_completed", target_npc_id = "another_npc" });
+        Check(NpcPersonalRecallRules.Select(ambiguous, 2) is null, "旧档模糊文本、邀约、需求或他人事件不能冒充完成经历");
+        foreach (var kind in new[] { "sect_spar_result", "purchase_completed" })
+        {
+            var evidence = new NpcActionRecord { month_index = 2, action_id = kind, target_npc_id = "player" };
+            witness.record(evidence);
+            var selected = NpcPersonalRecallRules.Select(witness, 2);
+            Check(selected?.Evidence == evidence && (kind == "sect_spar_result" ?
+                    new[] { "切磋", "交手", "对练" } : new[] { "药", "买卖" }).Any(word => selected.Text.Contains(word)),
+                "回顾没有选择最新且对应类别的亲历记录");
+            witness.action_history.Remove(evidence);
+            Check(!NpcPersonalRecallRules.IsValid(witness, selected!), "原始证据删除后仍然展示回顾");
+        }
+        const string recallPath = "res://tmp/npc_social_recall_save.tres";
+        Check(ResourceSaver.Save(witness, recallPath) == Error.Ok, "亲历证据资源保存失败");
+        var restored = ResourceLoader.Load<WorldNpcData>(recallPath, cacheMode: ResourceLoader.CacheMode.Ignore)!;
+        Check(NpcPersonalRecallRules.Select(restored, 2)?.Text == recalled.Recollection!.Text &&
+              restored.action_history.Last().player_contact_completed && witness.action_history.Count == historyCount,
+            "读档丢失完成事实或回顾读取改写了历史");
+        DirAccess.RemoveAbsolute(ProjectSettings.GlobalizePath(recallPath));
+    }
+
     public override async void _Ready()
     {
         try
@@ -86,6 +173,42 @@ public partial class NpcSocialSmoke : Node
             Check(NpcPersonalityRules.HasVisitPriority(motiveNpc, true) && proactiveMotive.DecisionSteps.Any(s => s.Rule == "renown_visit") &&
                 !NpcSocialRules.Evaluate(motiveNpc, famous, "introduce").DecisionSteps.Any(s => s.Rule == "renown_visit"),
                 "主动来访的所重因素不能伪用于玩家主动搭话");
+            var prototypeNpc = new WorldNpcData { npc_id = "prototype_direction", npc_name = "试算修士", faction_id = "yuxu_xianzong", mood_value = 18 };
+            prototypeNpc.social_personality["sociability"] = "外向";
+            prototypeNpc.social_personality["risk"] = "谨慎";
+            prototypeNpc.social_priorities.Add("宗门");
+            var prototypePlayer = new HumanData { entity_name = "沈照微", charisma = 72, social = 68, mood_value = 12, sect_affiliation_id = "yuxu_xianzong", sect_current_rank = "真传弟子" };
+            var temporaryStats = NpcSocialPrototypeRules.GetTemporaryStats(prototypeNpc);
+            var playerInitiates = NpcSocialPrototypeRules.Evaluate(prototypeNpc, prototypePlayer, npcInitiated: false, accepted: true);
+            var npcInitiates = NpcSocialPrototypeRules.Evaluate(prototypeNpc, prototypePlayer, npcInitiated: true, accepted: true);
+            var declinedPrototype = NpcSocialPrototypeRules.Evaluate(prototypeNpc, prototypePlayer, npcInitiated: false, accepted: false);
+            var wordsA = NpcSocialPresentationText.Create(playerInitiates, 1);
+            var wordsB = NpcSocialPresentationText.Create(playerInitiates, 2);
+            Check(wordsA.Count == playerInitiates.Factors.Count && wordsA.Zip(wordsB).Any(pair => pair.First != pair.Second) &&
+                wordsA.All(line => line.Pending.Length > 0 && line.Result.Length > 0 &&
+                    !line.Result.Contains("魅力") && !line.Result.Contains("交际") && !line.Result.Contains("加成")),
+                "交互文案必须对应实际分支、能更换措辞且不公开计算条件");
+            Check(Enumerable.Range(0, 24).Select(seed => string.Join("|", NpcSocialPresentationText.Create(playerInitiates, seed).Select(line => line.Result))).Distinct().Count() > 6,
+                "文案只在六份整篇模板之间循环，没有按分支分别组合");
+            Check(Enumerable.Range(0, 12).Select(seed => string.Join("|", NpcSocialPresentationText.Create(playerInitiates, seed).Select(line => line.Rule))).Distinct().Count() > 1 &&
+                wordsA.Select(line => line.Rule).OrderBy(rule => rule).SequenceEqual(playerInitiates.DecisionSteps.Where(step => step.Visible).Select(step => step.Rule).OrderBy(rule => rule)),
+                "独立判定展示顺序没有变化，或重排丢失/添加了判定点");
+            Check(NpcSocialPresentationText.Create(refusal, 3).Last().Rule == "caution_veto", "拒绝结识的收束步骤被打乱");
+            CheckPresentationContext();
+            CheckPersonalRecall();
+            NpcPlayerImpressionChecks.Run();
+            Check(temporaryStats == NpcSocialPrototypeRules.GetTemporaryStats(prototypeNpc) && temporaryStats.Charisma is >= 35 and <= 85 && temporaryStats.Social is >= 35 and <= 85,
+                "NPC 测试属性必须按人物 ID 稳定派生且保持在临时范围内");
+            Check(playerInitiates.DecisionSteps.Any(s => s.Rule == "player_charisma") && playerInitiates.DecisionSteps.Any(s => s.Rule == "player_social") &&
+                npcInitiates.DecisionSteps.Any(s => s.Rule == "visit_initiative") && !playerInitiates.DecisionSteps.Any(s => s.Rule == "visit_initiative") &&
+                playerInitiates.DecisionSteps.Any(s => s.Rule == "outgoing") &&
+                !playerInitiates.DecisionSteps.Select(s => s.Rule).SequenceEqual(npcInitiates.DecisionSteps.Select(s => s.Rule)),
+                "玩家主动与 NPC 来访必须走可区分的因素流程");
+            Check(playerInitiates.Factors.Count >= 7 && npcInitiates.Factors.Count >= 7,
+                "测试人物输入应覆盖多项真实生效因素，而非只有两行提示");
+            Check(playerInitiates.Factors.Count == playerInitiates.DecisionSteps.Count(s => s.Visible) && npcInitiates.Factors.Count == npcInitiates.DecisionSteps.Count(s => s.Visible) &&
+                declinedPrototype.StaminaSpent == 0 && prototypeNpc.player_social_memory.Count == 0 && prototypeNpc.social_personality.Count == 2 && prototypeNpc.social_priorities.Count == 1,
+                "原型提示必须对应判定，且试算不能写入 NPC 记忆或人物属性");
             NpcSocialRules.Remember(motiveNpc, famous, "introduce", "宗内", 1, proactiveMotive);
             var knownText = NpcPersonalityRules.InspectionText(motiveNpc, false);
             Check(knownText.Contains("姓名：") && knownText.Contains("曾主动") && !knownText.Contains("所重：") &&
@@ -136,6 +259,8 @@ public partial class NpcSocialSmoke : Node
             Choice(dialogue, openingChoice).EmitSignal(BaseButton.SignalName.Pressed);
             Check(NpcSocialRules.KnowsName(npc), "自报姓名未记忆");
             Check(player.current_world_stamina == 100 - WorldStaminaRules.ConversationCost && npc.player_relationship == 0, "费用或无依据关系加分错误");
+            Check(dialogue.FindChildren("SocialRecollection", "Label", true, false).Count == 0,
+                "首次正式交谈错误地把本次登记说成上回");
             Check(clock.get_total_game_hours() == hours && NpcSocialRules.Address(npc, 16) == "道友" && !npc.player_social_memory.ContainsKey("player_realm"), "交换姓名不应泄露境界或推进时间");
             Call(dialogue, "process_social_reveal", .7); await Frames(); await Capture("progress");
             dialogue.close(); Check(dialogue.Visible, "展开判定应保留对话");
@@ -151,7 +276,52 @@ public partial class NpcSocialSmoke : Node
             Check(restoredNpc.social_personality.Count == 6 && restoredNpc.social_priorities.Count > 0 &&
                 restoredNpc.player_known_npc_info.ContainsKey("name"), "实际读档丢失六轴、所重或交际所得");
             DirAccess.RemoveAbsolute(ProjectSettings.GlobalizePath(path));
-            main.open_world_npc_talk(npc); Check(Read<Label>(dialogue, "_body").Text.Contains("闲谈近况"), "熟人仍重复初识");
+            main.open_world_npc_talk(npc); Check(Read<Label>(dialogue, "_body").Text.Contains("认出你来"), "熟人仍重复初识");
+            var repeatedStamina = player.current_world_stamina;
+            Choice(dialogue, openingChoice).EmitSignal(BaseButton.SignalName.Pressed); await Frames(3);
+            Check(dialogue.FindChildren("SocialRecollection", "Label", true, false).Count == 1 &&
+                player.current_world_stamina == repeatedStamina - WorldStaminaRules.ConversationCost && npc.player_relationship == 0,
+                "正式二次交谈没有接入亲历回顾，或为回顾重复扣费／加关系");
+            dialogue.close(); dialogue.close(); await Frames(3);
+            main.open_world_npc_talk(npc);
+            Choice(dialogue, "婉拒").EmitSignal(BaseButton.SignalName.Pressed); dialogue.close(); dialogue.close();
+            var menu = Read<NpcInteractionPanel>(main, "npc_interactions");
+            var originalMemoryCount = npc.player_social_memory.Count;
+            var originalPersonalityCount = npc.social_personality.Count;
+            var originalPriorityCount = npc.social_priorities.Count;
+            var originalAppearanceSeed = npc.appearance_seed;
+            var originalRelationship = npc.player_relationship;
+            var originalStamina = player.current_world_stamina;
+            var originalHours = clock.get_total_game_hours();
+            main.open_world_npc_actions(npc); await Frames();
+            var activeTest = menu.FindChildren("*", "Button", true, false).OfType<Button>().FirstOrDefault(b => b.Text == "测试：我主动搭话");
+            var visitTest = menu.FindChildren("*", "Button", true, false).OfType<Button>().FirstOrDefault(b => b.Text == "测试：NPC来找我");
+            Check(activeTest is not null && visitTest is not null, "NPC 菜单缺少两种调试交互入口");
+            activeTest!.EmitSignal(BaseButton.SignalName.Pressed); await Frames();
+            var socialStage = dialogue.GetNode<Control>("SocialInteraction");
+            var playerPortraitCount = socialStage.FindChildren("PlayerSocialPortrait", "Control", true, false).Count;
+            var npcPortraitCount = socialStage.FindChildren("NpcSocialPortrait", "Control", true, false).Count;
+            var center = socialStage.FindChildren("InteractionProcess", "VBoxContainer", true, false).OfType<Control>().FirstOrDefault()
+                ?? throw new Exception("交互中央过程栏缺失");
+            var centerLabels = center.FindChildren("*", "Label", true, false).OfType<Label>().ToArray();
+            var npcNameLabel = socialStage.FindChildren("*", "Label", true, false).OfType<Label>().FirstOrDefault(l => l.Text == npc.npc_name);
+            var choiceButtons = center.FindChildren("*", "Button", true, false).OfType<Button>().Where(b => b.IsVisibleInTree()).OrderBy(b => b.GlobalPosition.Y).ToArray();
+            Check(playerPortraitCount == 1 && npcPortraitCount == 1 && !centerLabels.Any(l => l.Text.Contains("宗内遇见") || l.Text.Contains(npc.npc_name)) &&
+                choiceButtons.Length == 2 && choiceButtons[1].GlobalPosition.Y > choiceButtons[0].GlobalPosition.Y,
+                $"交互浮层结构异常：立绘={playerPortraitCount}/{npcPortraitCount}，中央文字={string.Join("|", centerLabels.Select(l => l.Text))}，选项={string.Join("|", choiceButtons.Select(b => $"{b.Text}@{b.GlobalPosition.Y}"))}");
+            if (NpcPersonalityRules.TestInspection)
+                Check(npcNameLabel?.TooltipText.Contains("仅测试试算") == true, "测试入口悬停未显示临时数值，或测试数据缺少不存档说明");
+            Choice(dialogue, "上前搭话").EmitSignal(BaseButton.SignalName.Pressed); await Frames();
+            dialogue.close(); dialogue.close();
+            main.open_world_npc_actions(npc); await Frames();
+            menu.FindChildren("*", "Button", true, false).OfType<Button>().First(b => b.Text == "测试：NPC来找我").EmitSignal(BaseButton.SignalName.Pressed); await Frames();
+            Choice(dialogue, "听听来意").EmitSignal(BaseButton.SignalName.Pressed); await Frames();
+            Check(player.current_world_stamina == originalStamina && clock.get_total_game_hours() == originalHours &&
+                npc.player_social_memory.Count == originalMemoryCount && npc.social_personality.Count == originalPersonalityCount &&
+                npc.social_priorities.Count == originalPriorityCount && npc.appearance_seed == originalAppearanceSeed && npc.player_relationship == originalRelationship,
+                "两种测试互动不得扣体力、推进时间或改动 NPC 正式数据");
+            dialogue.close(); dialogue.close();
+            main.open_world_npc_talk(npc);
             var stamina = player.current_world_stamina; dialogue.close(); dialogue.close(); dialogue.close();
             Check(!dialogue.Visible && player.current_world_stamina == stamina, "Esc告辞应免费且能正常关闭");
             dialogue.show_narration("剧情对白回归检查");
@@ -162,7 +332,130 @@ public partial class NpcSocialSmoke : Node
             Check(player.current_world_stamina == 0, "体力不足不应扣成负数"); dialogue.close();
             npc.player_social_memory["relationship"] = "enemy";
             Check(NpcSocialRules.Address(npc, 16) == "沈照微", "仇人应使用已知姓名");
-            GD.Print("NPC_SOCIAL PASS: actual month greeting, choices, judgement reveal, known-realm address, costs, repeat/remote guards, memory resource save/load, no relation farming, no save-slot writes");
+            var preview = GD.Load<PackedScene>("res://tscn/scene/NpcSocialPreviewScene.tscn").Instantiate<NpcSocialPreviewScene>();
+            var previewLayer = new CanvasLayer { Layer = 200 };
+            AddChild(previewLayer); previewLayer.AddChild(preview); await Frames(5);
+            Call(preview, "BeginInteraction", false); await Frames(3);
+            var previewDialogue = preview.GetNode<StoryDialoguePanel>("StoryDialoguePanel");
+            Check(previewDialogue.Visible && Choice(previewDialogue, "上前搭话") is not null, "首页人物交互试演未打开玩家主动交谈");
+            previewDialogue.SetProcess(false);
+            Choice(previewDialogue, "上前搭话").EmitSignal(BaseButton.SignalName.Pressed); await Frames(3);
+            Check(Read<Control?>(previewDialogue, "_socialContent")?.Visible == true, "首页玩家主动试演没有进入过程浮层");
+            Check(!Read<Control>(preview, "_setupRoot").Visible, "交互浮层下仍残留测试入口面板");
+            var animatedLines = Read<System.Collections.Generic.List<Label>>(previewDialogue, "_socialFactors");
+            var lineWords = Read<System.Collections.Generic.IReadOnlyList<NpcSocialPresentationText.Line>>(previewDialogue, "_socialLines");
+            Check(animatedLines[0].VisibleCharacters == 0 && animatedLines.Skip(1).All(line => line.Modulate.A == 0), "尚未轮到的过程行提前显示");
+            var firstTypingSlice = lineWords[0].Pending.Length * .025;
+            Call(previewDialogue, "process_social_reveal", firstTypingSlice);
+            Check(animatedLines[0].VisibleCharacters > 0 && animatedLines[0].VisibleCharacters < lineWords[0].Pending.Length, "等待语未从左向右逐字写出");
+            await Frames(3); await Capture("preview_typing");
+            var typingTime = lineWords[0].Pending.Length * .05;
+            Call(previewDialogue, "process_social_reveal", typingTime + .22 - firstTypingSlice);
+            Check(animatedLines[0].Text == lineWords[0].Pending + "……" && Read<int>(previewDialogue, "_socialRevealIndex") == 0, "试探阶段提前进入结果或下一行");
+            await Frames(3); await Capture("preview_hesitating");
+            Call(previewDialogue, "process_social_reveal", .88 + (lineWords[0].Pending.Length + 2) * .016 + .21 - .22);
+            Check(animatedLines[0].Text == lineWords[0].Result && animatedLines.Skip(1).All(line => line.Modulate.A == 0), "本行等待语未撤回并替换，或后续行提前出现");
+            Call(previewDialogue, "process_social_reveal", .30);
+            Check(Read<int>(previewDialogue, "_socialRevealIndex") == 1 && animatedLines[0].VisibleCharacters == -1, "结果完成后未保留旧行并进入下一行");
+            previewDialogue.close(); await Frames(3);
+            Check(animatedLines.Select((line, index) => line.Text == lineWords[index].Result && line.VisibleCharacters == -1).All(ok => ok), "略过后仍残留等待语或半行文字");
+            var done = Read<Button>(previewDialogue, "_socialDone");
+            Check(done.Size.X <= 300 && Read<Control>(previewDialogue, "_socialContent").FindChildren("*", "ProgressBar", true, false).Count == 0,
+                "交互确认按钮过宽或仍有横贯进度条");
+            await Capture("preview_result");
+            previewDialogue.SetProcess(true);
+            previewDialogue.close(); await Frames(3);
+            Check(Read<VBoxContainer>(preview, "_menu").Visible, "关闭试演后没有返回测试入口");
+            Call(preview, "BeginInteraction", true); await Frames(3);
+            Check(Choice(previewDialogue, "听听来意") is not null, "首页人物交互试演未打开 NPC 来访");
+            Choice(previewDialogue, "听听来意").EmitSignal(BaseButton.SignalName.Pressed); await Frames(3);
+            Check(Read<Control?>(previewDialogue, "_socialContent")?.Visible == true, "首页 NPC 来访试演没有进入过程浮层");
+            previewDialogue.close(); previewDialogue.close(); await Frames(3);
+            await Capture("preview_menu");
+            var template = Read<WorldNpcData>(preview, "_npcTemplate");
+            var previewPlayer = Read<Character>(preview, "_player");
+            var previewStamina = previewPlayer.current_world_stamina;
+            var originalScene = GetTree().CurrentScene;
+            var formalStamina = player.current_world_stamina;
+            foreach (var known in new[] { true, false })
+            {
+                Call(preview, "BeginSparring", known); await Frames(3);
+                var active = Read<WorldNpcData?>(preview, "_activeNpc")!;
+                Check(!ReferenceEquals(active, template) && NpcSocialRules.KnowsName(active) == known,
+                    "切磋试演没有隔离临时人物，或沿用了上一场姓名认知");
+                Check(previewDialogue.FindChildren("SocialActionIcon", "TextureRect", true, false).OfType<TextureRect>().Single().Texture.ResourcePath.Contains("spar_v1"),
+                    "切磋试演没有使用对应图标");
+                Choice(previewDialogue, "提出切磋").EmitSignal(BaseButton.SignalName.Pressed); await Frames(3);
+                var sparLines = Read<System.Collections.Generic.IReadOnlyList<NpcSocialPresentationText.Line>>(previewDialogue, "_socialLines");
+                Check(known ? sparLines.Any(line => line.Rule == "spar_terms") : sparLines.Count == 1 && sparLines[0].Rule == "spar_unknown",
+                    "切磋试演没有按真实相识／谨慎规则分别展示接受与推辞");
+                previewDialogue.close(); await Frames(3);
+                if (known) await Capture("preview_spar");
+                previewDialogue.close(); await Frames(3);
+            }
+            Call(preview, "BeginSparring", true); await Frames(3);
+            Choice(previewDialogue, "暂且作罢").EmitSignal(BaseButton.SignalName.Pressed); await Frames(3);
+            Check(Read<Label?>(previewDialogue, "_socialOutcome")!.Text.Contains("收起"), "切磋取消试演未生效");
+            previewDialogue.close(); await Frames(3);
+            Call(preview, "BeginPurchase"); await Frames(3);
+            Check(previewDialogue.FindChildren("SocialActionIcon", "TextureRect", true, false).OfType<TextureRect>().Single().Texture.ResourcePath.Contains("trade_v1"),
+                "交易试演没有使用对应图标");
+            Choice(previewDialogue, "同意出售").EmitSignal(BaseButton.SignalName.Pressed); await Frames(3);
+            var tradeLines = Read<System.Collections.Generic.IReadOnlyList<NpcSocialPresentationText.Line>>(previewDialogue, "_socialLines");
+            Check(tradeLines.Select(line => line.Rule).SequenceEqual(new[] { "purchase_supplied", "purchase_paid" }), "交易试演颠倒交货付款或补造额外判断");
+            previewDialogue.close(); await Frames(3); await Capture("preview_trade");
+            previewDialogue.close(); await Frames(3);
+            Call(preview, "BeginPurchase"); await Frames(3);
+            Choice(previewDialogue, "婉拒求购").EmitSignal(BaseButton.SignalName.Pressed); await Frames(3);
+            Check(Read<Label?>(previewDialogue, "_socialOutcome")!.Text.Contains("作罢"), "求购婉拒试演未生效");
+            previewDialogue.close(); await Frames(3);
+            Call(preview, "BeginPurchase"); await Frames(3);
+            previewDialogue.close(); await Frames(3); // Esc 选择阶段等价关闭，应落到婉拒结果。
+            Check(Read<Label?>(previewDialogue, "_socialOutcome")!.Text.Contains("作罢"), "交易试演 Esc 未按婉拒处理");
+            previewDialogue.close(); await Frames(3);
+            foreach (var choice in new[] { "曾经聊过天", "曾经交过手", "曾经做过药材买卖" })
+            {
+                Call(preview, "BeginRecollection"); await Frames(3);
+                Choice(previewDialogue, choice).EmitSignal(BaseButton.SignalName.Pressed); await Frames(3);
+                var recollections = previewDialogue.FindChildren("SocialRecollection", "Label", true, false).OfType<Label>().ToArray();
+                Check(recollections.Length == 1 && recollections[0].Text.Contains("对方") && recollections[0].Text.Contains("『") &&
+                    Read<WorldNpcData?>(preview, "_activeNpc")!.action_history.Count == 1,
+                    "亲历试演缺少可见回顾、把旧事当作内心或累积了其他试演记录");
+                var recallLines = Read<System.Collections.Generic.IReadOnlyList<NpcSocialPresentationText.Line>>(previewDialogue, "_socialLines");
+                Check(recallLines.All(line => !line.Rule.Contains("recall")) && Read<System.Collections.Generic.List<Label>>(previewDialogue, "_socialFactors").Count == recallLines.Count,
+                    "旧事回顾被当作额外判定点");
+                previewDialogue.close(); await Frames(3);
+                if (choice == "曾经聊过天") await Capture("preview_recall");
+                previewDialogue.close(); await Frames(3);
+            }
+            foreach (var kind in new[] { "contact", "spar", "trade" })
+            foreach (var settled in new[] { false, true })
+            {
+                Call(preview, "BeginImpressionComparison", kind); await Frames(3);
+                Choice(previewDialogue, settled ? "过月后" : "过月前").EmitSignal(BaseButton.SignalName.Pressed); await Frames(3);
+                var active = Read<WorldNpcData?>(preview, "_activeNpc")!;
+                var impression = NpcPlayerImpressionRules.Feedback(active);
+                Check(settled ? impression?.ImpressionKind == kind : impression is null, "过月前后印象试演未正确区分归纳阶段");
+                var quote = previewDialogue.FindChildren("SocialRecollection", "Label", true, false).OfType<Label>().Single();
+                Check(settled ? quote.Text == impression!.Text : quote.Text.Contains("上回") || quote.Text.Contains("前次") || quote.Text.Contains("前回"),
+                    "过月印象反馈未显示，或过月前把即时回顾伪装成印象归纳");
+                previewDialogue.close(); await Frames(3);
+                if (kind == "contact") await Capture(settled ? "impression_after" : "impression_before");
+                previewDialogue.close(); await Frames(3);
+            }
+            Check(GetTree().CurrentScene == originalScene && player.current_world_stamina == formalStamina &&
+                previewPlayer.current_world_stamina == previewStamina && template.player_social_memory.Count == 0 &&
+                template.carried_items.Count == 0 && template.resources.Count == 0 && template.action_history.Count == 0 && template.social_priorities.Count == 1 &&
+                template.social_priorities.Contains("宗门") && Read<Control>(preview, "_setupRoot").Visible,
+                "三类试演影响了正式场景、体力、模板资源／认知，或结束后未返回菜单");
+            previewLayer.QueueFree(); await Frames(3);
+            var home = GD.Load<PackedScene>("res://tscn/scene/StartMenu.tscn").Instantiate<StartMenu>();
+            AddChild(home); await Frames(5);
+            Call(home, "ToggleDemoEntries"); await Frames(2);
+            var homeEntry = home.FindChildren("*", "Button", true, false).OfType<Button>().FirstOrDefault(b => b.Text == "人物交互测试");
+            Check(homeEntry is not null && homeEntry.TooltipText.Contains("无需进入存档"), "首页‘试演与预览’列表没有人物交互测试入口");
+            home.QueueFree(); await Frames(3);
+            GD.Print("NPC_SOCIAL PASS: monthly flow and costs; two test-only initiators, temporary profiles, overlay portraits/layout, natural judgement reveal, and no persistent test side effects");
             GetTree().Quit();
         }
         catch (Exception e) { GD.PushError(e.ToString()); GetTree().Quit(1); }

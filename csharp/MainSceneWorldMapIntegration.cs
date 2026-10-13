@@ -16,6 +16,10 @@ public partial class MainScene
 
         if (tile_world_map.HasSignal("player_cell_changed"))
             tile_world_map.Connect("player_cell_changed", Callable.From<Vector2I>(on_tile_world_player_cell_changed));
+        if (tile_world_map.HasSignal("player_travel_started"))
+            tile_world_map.Connect("player_travel_started", Callable.From(on_tile_world_travel_started));
+        if (tile_world_map.HasSignal("player_travel_finished"))
+            tile_world_map.Connect("player_travel_finished", Callable.From<int>(on_tile_world_travel_finished));
         if (tile_world_map.HasSignal("world_state_changed"))
             tile_world_map.Connect("world_state_changed", Callable.From(on_tile_world_save_state_changed));
         if (tile_world_map.HasSignal("node_enter_requested"))

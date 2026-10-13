@@ -107,10 +107,6 @@ public partial class GameStartProfile : Node
     public void apply_player_appearance(HumanData target)
     {
         foreach (var field in PortraitFields) target.Set(field, player_appearance_data.Get(field));
-        target.appearance_face_width = 1.0f;
-        target.appearance_face_height = 1.0f;
-        target.appearance_eye_scale = 1.0f;
-        target.appearance_eye_offset_y = 0.0f;
         if (target.appearance_hair_back_style < 0 && target.appearance_hair_style >= 0
             && GetNodeOrNull<PortraitCatalog>("/root/PortraitCatalog") is { } portraitCatalog)
         {

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://btcjwxqu5s1ix"]
+
+[ext_resource type="Script" path="res://tools/WorldTerrainRenderDiagnostic.gd" id="1_script"]
+[ext_resource type="Script" path="res://tools/WorldTerrainRuntimeProbe.gd" id="2_gq1kc"]
+
+[node name="WorldTerrainRenderDiagnostic" type="Control" unique_id=1459782666]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="RuntimeTerrainDiagnostic" type="Control" parent="." unique_id=929430584]
+anchors_preset = 0
+script = ExtResource("1_script")
+
+[node name="RuntimeTerrainProbe" type="Node" parent="." unique_id=2104266520]
+script = ExtResource("2_gq1kc")

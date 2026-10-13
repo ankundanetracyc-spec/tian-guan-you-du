@@ -54,7 +54,7 @@ learn_permanent_bonuses = {"physique": 1.0, "body_proficiency": 0.5}
 learned_active_skills=Array[Resource]([ExtResource("4")])
 learned_world_spells=Array[Resource]([ExtResource("world_spell_neijing")])
 sub_deck_rewrites = Array[ExtResource("6_rewrite")]([SubResource("RewriteMissing6")])
-heart_method_description = "效果：每层当前内伤或外伤，使自身主动物理伤害倍率提高3%。\n主修额外效果：每层伤势提供的上述伤害倍率再提高1个百分点。"
+heart_method_description = "效果：每层当前内伤或外伤，使自身主动造成的物理伤害倍率提高3%。\n主修额外效果：每层当前伤势使自身主动造成的物理伤害倍率再提高1个百分点。"
 
 
 learn_bonus_revision = "study-balance-20261012"
@@ -75,7 +75,7 @@ required_realm="云息三层"
 required_attributes = {"physique": 7.0, "body_proficiency": 0.5}
 required_chapter_ids=Array[String](["neijing"])
 learn_permanent_bonuses = {"body_proficiency": 0.5}
-heart_method_description = "效果：每层当前内伤或外伤，使自身主动物理伤害倍率提高3%。 每回合首次受到实际生命伤害后，获得外伤1层。\n主修额外效果：每层伤势提供的上述伤害倍率再提高1个百分点。"
+heart_method_description = "效果：每层当前内伤或外伤，使自身主动造成的物理伤害倍率提高3%。每回合首次受到实际生命伤害后，获得外伤1层。\n主修额外效果：每层当前伤势使自身主动造成的物理伤害倍率再提高1个百分点。"
 
 
 learn_bonus_revision = "study-balance-20261012"
@@ -96,7 +96,7 @@ required_realm="云息六层"
 required_attributes = {"physique": 9.0, "body_proficiency": 1}
 required_chapter_ids=Array[String](["lubo"])
 learn_permanent_bonuses = {"physique": 0.5, "body_proficiency": 1}
-heart_method_description = "效果：每层当前内伤或外伤，使自身主动物理伤害倍率提高4%。 每回合首次受到实际生命伤害后，获得外伤1层。\n主修额外效果：每层伤势提供的上述伤害倍率再提高1个百分点。"
+heart_method_description = "效果：每层当前内伤或外伤，使自身主动造成的物理伤害倍率提高4%。每回合首次受到实际生命伤害后，获得外伤1层。\n主修额外效果：每层当前伤势使自身主动造成的物理伤害倍率再提高1个百分点。"
 
 
 learn_bonus_revision = "study-balance-20261012"
@@ -116,7 +116,7 @@ required_realm="云息九层"
 required_attributes = {"physique": 10.0, "body_proficiency": 2}
 required_chapter_ids=Array[String](["sunyi"])
 learn_permanent_bonuses = {"body_proficiency": 1}
-heart_method_description = "效果：每层当前内伤或外伤，使自身主动物理伤害倍率提高4%。 每回合首次受到实际生命伤害后，获得外伤1层。\n主修额外效果：每层伤势提供的上述伤害倍率再提高1个百分点。"
+heart_method_description = "效果：每层当前内伤或外伤，使自身主动造成的物理伤害倍率提高4%。每回合首次受到实际生命伤害后，获得外伤1层。\n主修额外效果：每层当前伤势使自身主动造成的物理伤害倍率再提高1个百分点。"
 
 
 learn_bonus_revision = "study-balance-20261012"

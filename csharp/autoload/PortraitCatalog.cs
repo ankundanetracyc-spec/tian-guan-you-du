@@ -93,7 +93,7 @@ public partial class PortraitCatalog : Node
     public string make_cache_key(EntityData? data, Dictionary context, Dictionary? requested = null)
     {
         requested ??= [];
-        string[] fields = [value(context, "gender", "male").AsString(), value(context, "age", 0).AsString(), value(context, "faction", "").AsString(), value(context, "realm", "").AsString(), (data?.appearance_seed ?? 0).ToString(), Json.Stringify(requested), $"{data?.appearance_face_width ?? 1.0f:F2}", $"{data?.appearance_face_height ?? 1.0f:F2}", $"{data?.appearance_eye_scale ?? 1.0f:F2}", $"{data?.appearance_eye_offset_y ?? 0.0f:F0}"];
+        string[] fields = [value(context, "gender", "male").AsString(), value(context, "age", 0).AsString(), value(context, "faction", "").AsString(), value(context, "realm", "").AsString(), (data?.appearance_seed ?? 0).ToString(), Json.Stringify(requested)];
         return string.Join("|", fields);
     }
 

@@ -85,6 +85,8 @@ public partial class BattleEntityData : Resource
     [Export] public int dodge;
     [Export] public int critical;
     [Export] public int crit_resist;
+    /// <summary>Temporary opening shield from a player-reserved cultivation inspiration.</summary>
+    [Export] public int cultivation_inspiration_starting_shield;
     [Export] public float crit_damage_mult = 1.5f;
     [Export] public float initiative_speed = 100.0f;
     [Export] public float learning_speed = 1.0f;

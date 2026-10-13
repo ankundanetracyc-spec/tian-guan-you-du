@@ -679,18 +679,20 @@ public partial class Character : Creature
     public Dictionary get_world_cultivation_preview_for_strands(int strands)
     {
         var wanted = Mathf.Clamp(strands, 0, get_strands_until_next_realm());
-        var rate = Mathf.Max(0.0001f, get_cultivation_rate());
-        var requestedHours = wanted <= 0 ? 0 : Mathf.CeilToInt(wanted / rate);
+        var continuousHours = get_cultivation_hours_for_strands(wanted);
+        var requestedHours = wanted <= 0 || double.IsInfinity(continuousHours) ? 0 : Mathf.CeilToInt((float)continuousHours);
         var hours = get_available_cultivation_hours(requestedHours);
-        var actual = Mathf.Min(wanted, Mathf.FloorToInt(rate * hours + 0.0001f));
+        var simulation = simulate_cultivation_hours(hours);
+        var actual = Mathf.Min(wanted, simulation.WholeStrands);
         if (actual <= 0) hours = 0;
-        return new Dictionary { ["strands"] = actual, ["requested_strands"] = wanted, ["hours"] = hours, ["days"] = hours / 24f, ["rate"] = rate, ["stamina_cost"] = hours * WorldStaminaRules.CultivationCostPerGameHour, ["stamina_limited"] = actual < wanted };
+        return new Dictionary { ["strands"] = actual, ["requested_strands"] = wanted, ["hours"] = hours, ["days"] = hours / 24f, ["rate"] = hours > 0 ? simulation.AverageRate : get_cultivation_rate_after_bottleneck(), ["stamina_cost"] = hours * WorldStaminaRules.CultivationCostPerGameHour, ["stamina_limited"] = actual < wanted };
     }
     public Dictionary get_world_cultivation_preview_for_hours(int requestedHours)
     {
         var hours = get_available_cultivation_hours(Mathf.Max(0, requestedHours));
-        var actual = Mathf.Min(get_strands_until_next_realm(), Mathf.FloorToInt(get_cultivation_rate() * hours));
-        return new Dictionary { ["strands"] = actual, ["requested_strands"] = get_strands_until_next_realm(), ["hours"] = hours, ["requested_hours"] = Mathf.Max(0, requestedHours), ["days"] = hours / 24f, ["rate"] = get_cultivation_rate(), ["stamina_cost"] = hours * WorldStaminaRules.CultivationCostPerGameHour, ["stamina_limited"] = hours < requestedHours };
+        var simulation = simulate_cultivation_hours(hours);
+        var actual = Mathf.Min(get_strands_until_next_realm(), simulation.WholeStrands);
+        return new Dictionary { ["strands"] = actual, ["requested_strands"] = get_strands_until_next_realm(), ["hours"] = hours, ["requested_hours"] = Mathf.Max(0, requestedHours), ["days"] = hours / 24f, ["rate"] = hours > 0 ? simulation.AverageRate : get_cultivation_rate_after_bottleneck(), ["stamina_cost"] = hours * WorldStaminaRules.CultivationCostPerGameHour, ["stamina_limited"] = hours < requestedHours };
     }
     public Dictionary cultivate_with_world_stamina_for_strands(int requestedStrands)
     {
@@ -698,7 +700,11 @@ public partial class Character : Creature
         var preview = get_world_cultivation_preview_for_strands(requestedStrands);
         var strands = preview["strands"].AsInt32(); var hours = preview["hours"].AsInt32(); var staminaCost = preview["stamina_cost"].AsSingle();
         if (strands <= 0 || hours <= 0 || !try_spend_world_stamina(staminaCost)) return new Dictionary { ["success"] = false, ["reason"] = "体力不足" };
-        human!.cultivation_progress = 0f; spirit_strands += strands;
+        var simulation = simulate_cultivation_hours(hours);
+        apply_cultivation_simulation(simulation);
+        var remainingProgress = simulation.TotalProgress - strands;
+        human!.cultivation_progress = (float)Math.Clamp(remainingProgress, 0d, .999999d);
+        spirit_strands += strands;
         GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.add_hours(hours);
         return new Dictionary { ["success"] = true, ["strands"] = strands, ["hours"] = hours, ["stamina_spent"] = staminaCost };
     }
@@ -708,7 +714,13 @@ public partial class Character : Creature
         var preview = get_world_cultivation_preview_for_hours(requestedHours);
         var strands = preview["strands"].AsInt32(); var hours = preview["hours"].AsInt32(); var staminaCost = preview["stamina_cost"].AsSingle();
         if (hours <= 0 || !try_spend_world_stamina(staminaCost)) return new Dictionary { ["success"] = false, ["reason"] = "体力不足" };
-        human!.cultivation_progress = 0f; if (strands > 0) spirit_strands += strands;
+        var simulation = simulate_cultivation_hours(hours);
+        apply_cultivation_simulation(simulation);
+        if (simulation.WholeStrands > strands)
+            human!.cultivation_progress = (float)simulation.FractionalProgress;
+        else
+            human!.cultivation_progress = (float)Math.Clamp(simulation.TotalProgress - strands, 0d, .999999d);
+        if (strands > 0) spirit_strands += strands;
         GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.add_hours(hours);
         return new Dictionary { ["success"] = true, ["strands"] = strands, ["hours"] = hours, ["stamina_spent"] = staminaCost };
     }
@@ -723,9 +735,19 @@ public partial class Character : Creature
         var staminaCost = hours * WorldStaminaRules.StudyCostPerGameHour;
         if (hours <= 0 || !try_spend_world_stamina(staminaCost)) return new Dictionary { ["success"] = false, ["reason"] = "体力不足", ["hours"] = 0 };
         var before = book.current_study_progress;
-        book.advance_study_hours(hours);
-        GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.add_hours(hours);
-        return new Dictionary { ["success"] = true, ["hours"] = hours, ["requested_hours"] = requestedHours, ["stamina_spent"] = staminaCost, ["progress_gained"] = Mathf.Max(0f, book.current_study_progress - before) };
+        var chapterId = book.studying_chapter_id;
+        var requiredProgress = book.get_required_study_progress();
+        var multiplier = consume_study_action_inspiration();
+        book.advance_study_hours(hours * multiplier);
+        var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
+        time?.add_hours(hours);
+        var completed = !book.is_studying_now;
+        var progressGained = completed
+            ? Mathf.Max(0f, requiredProgress - before)
+            : Mathf.Max(0f, book.current_study_progress - before);
+        if (progressGained > 0f)
+            award_study_action_inspiration(book, chapterId, time?.get_total_game_hours() ?? 0);
+        return new Dictionary { ["success"] = true, ["hours"] = hours, ["requested_hours"] = requestedHours, ["stamina_spent"] = staminaCost, ["progress_gained"] = progressGained, ["inspiration_multiplier"] = multiplier };
     }
     public bool manual_cultivate_with_world_stamina()
     {
@@ -750,8 +772,8 @@ public partial class Character : Creature
     }
     public bool is_exhausted_for_work()=>current_stamina<=0; public int spend_stamina(int amount,bool refresh_ui=true){var spent=Mathf.Min(Mathf.Max(amount,0),current_stamina);current_stamina-=spent;return spent;} public int spend_stamina_for_action(string action,float hours)=>spend_stamina(Mathf.CeilToInt(hours));
     public int get_strands_until_next_realm(){var progress=get_next_realm_progress();return Mathf.Max(0,progress.GetValueOrDefault("required",0).AsInt32()-progress.GetValueOrDefault("current",0).AsInt32());}
-    public Dictionary get_cultivation_preview_for_strands(int strands){var actual=Mathf.Clamp(strands,0,get_strands_until_next_realm());var rate=Mathf.Max(.0001f,get_cultivation_rate());var hours=actual<=0?0:Mathf.CeilToInt(actual/rate);return new Dictionary{{"strands",actual},{"hours",hours},{"days",hours/24f},{"rate",rate}};}
-    public Dictionary get_cultivation_preview_for_hours(int hours){var safeHours=Mathf.Max(0,hours);var actual=Mathf.Min(get_strands_until_next_realm(),Mathf.FloorToInt(get_cultivation_rate()*safeHours));return new Dictionary{{"strands",actual},{"hours",safeHours},{"days",safeHours/24f},{"rate",get_cultivation_rate()}};}
+    public Dictionary get_cultivation_preview_for_strands(int strands)=>get_world_cultivation_preview_for_strands(strands);
+    public Dictionary get_cultivation_preview_for_hours(int hours)=>get_world_cultivation_preview_for_hours(hours);
     public Dictionary cultivate_for_strands(int strands) => cultivate_with_world_stamina_for_strands(strands);
     public Dictionary cultivate_for_hours(int hours) => cultivate_with_world_stamina_for_hours(hours);
 
@@ -852,8 +874,12 @@ public partial class Character : Creature
         if(!book.is_studying_now&&!book.start_study(this))return new Dictionary{{"success",false}};
         var actualHours=get_available_study_hours(hours);var staminaCost=actualHours*WorldStaminaRules.StudyCostPerGameHour;
         if(actualHours<=0||!try_spend_world_stamina(staminaCost))return new Dictionary{{"success",false},{"reason","体力不足"},{"hours",0}};
-        var before=book.current_study_progress; book.advance_study_hours(actualHours); GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.add_hours(actualHours);
-        return new Dictionary{{"success",true},{"hours",actualHours},{"requested_hours",hours},{"stamina_spent",staminaCost},{"progress_gained",Mathf.Max(0,book.current_study_progress-before)}};
+        var before=book.current_study_progress; var chapterId=book.studying_chapter_id; var requiredProgress=book.get_required_study_progress();
+        var multiplier=consume_study_action_inspiration(); book.advance_study_hours(actualHours*multiplier);
+        var time=GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager"); time?.add_hours(actualHours);
+        var completed=!book.is_studying_now; var progressGained=completed?Mathf.Max(0,requiredProgress-before):Mathf.Max(0,book.current_study_progress-before);
+        if(progressGained>0)award_study_action_inspiration(book,chapterId,time?.get_total_game_hours()??0);
+        return new Dictionary{{"success",true},{"hours",actualHours},{"requested_hours",hours},{"stamina_spent",staminaCost},{"progress_gained",progressGained},{"inspiration_multiplier",multiplier}};
     }
     /// <summary>由秘籍完成时调用：把已读章节写回角色资料，再通知剧情系统。</summary>
     public void _complete_gongfa_chapter_study(GongfaResource gongfa, string chapter_id, SecretBook book)
@@ -1070,16 +1096,35 @@ public partial class Character : Creature
     }
     public bool start_breakthrough_retreat(bool useMeditationRoom=false)
     {
-        if(human is null||!is_breakthrough_ready()||requires_condensation_breakthrough())return false;
-        if(useMeditationRoom&&!can_use_meditation_room_for_retreat())return false;
-        if(useMeditationRoom&&meditation_room_index<0)
+        if (human is null || !is_breakthrough_ready() || requires_condensation_breakthrough()) return false;
+        var realms = GetNodeOrNull<RealmManager>("/root/RealmManager");
+        var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
+        if (realms is null || time is null) return false;
+        var next = realms.get_next_realm_name(cultivation_realm);
+        if (string.IsNullOrEmpty(next) || !has_required_breakthrough_pill(next)) return false;
+        if (useMeditationRoom && !can_use_meditation_room_for_retreat()) return false;
+        if (useMeditationRoom && meditation_room_index < 0)
         {
-            foreach(var node in GetTree().GetNodesInGroup("main_scene")) if(node is MainScene main && !main.assign_available_meditation_room(this)) return false;
+            var assigned = false;
+            foreach (var node in GetTree().GetNodesInGroup("main_scene"))
+                if (node is MainScene main)
+                {
+                    assigned = main.assign_available_meditation_room(this);
+                    break;
+                }
+            if (!assigned) return false;
         }
-        var realms=GetNodeOrNull<RealmManager>("/root/RealmManager"); var time=GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
-        if(realms is null||time is null)return false;
-        var next=realms.get_next_realm_name(cultivation_realm); if(string.IsNullOrEmpty(next))return false;
-        var range=get_breakthrough_retreat_hour_range(useMeditationRoom); var minHours=range.GetValueOrDefault("min_hours",12).AsInt32(); var maxHours=range.GetValueOrDefault("max_hours",minHours).AsInt32(); var retreatHours=new RandomNumberGenerator(); retreatHours.Randomize(); var actualHours=(int)retreatHours.RandiRange(minHours,maxHours); human.is_in_breakthrough_retreat=true; human.breakthrough_target_realm=next; human.breakthrough_started_hour=time.get_total_game_hours(); human.breakthrough_finish_hour=human.breakthrough_started_hour+actualHours; human.breakthrough_uses_meditation_room=useMeditationRoom;
+        var range = get_breakthrough_retreat_hour_range(useMeditationRoom);
+        var minHours = range.GetValueOrDefault("min_hours", 12).AsInt32();
+        var maxHours = range.GetValueOrDefault("max_hours", minHours).AsInt32();
+        var retreatHours = new RandomNumberGenerator();
+        retreatHours.Randomize();
+        var actualHours = (int)retreatHours.RandiRange(minHours, maxHours);
+        human.is_in_breakthrough_retreat = true;
+        human.breakthrough_target_realm = next;
+        human.breakthrough_started_hour = time.get_total_game_hours();
+        human.breakthrough_finish_hour = human.breakthrough_started_hour + actualHours;
+        human.breakthrough_uses_meditation_room = useMeditationRoom;
         EmitSignal(SignalName.breakthrough_started,this,next); time.add_hours(actualHours); return true;
     }
     public Dictionary get_breakthrough_retreat_summary()
@@ -1097,7 +1142,8 @@ public partial class Character : Creature
     private void finish_breakthrough_retreat()
     {
         if(human is null)return; var realms=GetNodeOrNull<RealmManager>("/root/RealmManager");
-        var next=human.breakthrough_target_realm; if(string.IsNullOrEmpty(next)||realms is null||next!=realms.get_next_realm_name(cultivation_realm)||!realms.can_breakthrough(this)){clear_breakthrough_retreat();return;}
+        var next=human.breakthrough_target_realm; if(string.IsNullOrEmpty(next)||realms is null||next!=realms.get_next_realm_name(cultivation_realm)||!realms.can_breakthrough(this)||!has_required_breakthrough_pill(next)){clear_breakthrough_retreat();return;}
+        if (!consume_breakthrough_pill_on_success(next)) { clear_breakthrough_retreat(); return; }
         cultivation_realm=next; clear_breakthrough_retreat(); recalculate_attributes(); refresh_shared_basic_skill_pool(); EmitSignal(SignalName.breakthrough_completed,this,next); BreakthroughCompleted?.Invoke(this,next);
     }
     private void clear_breakthrough_retreat(){if(human is null)return;human.is_in_breakthrough_retreat=false;human.breakthrough_target_realm="";human.breakthrough_started_hour=0;human.breakthrough_finish_hour=0;human.breakthrough_uses_meditation_room=false;}
@@ -1105,13 +1151,14 @@ public partial class Character : Creature
     private int advance_cultivation_hours(float hours)
     {
         if (human is null || hours <= 0 || !can_cultivate()) return 0;
-        human.cultivation_progress += get_cultivation_rate() * hours;
+        var simulation = simulate_cultivation_hours(hours);
+        apply_cultivation_simulation(simulation);
         add_body_nourish_progress(hours);
         add_visualization_nourish_progress(hours);
         consume_meditation_spirit_stones(hours);
-        var gained=Mathf.FloorToInt(human.cultivation_progress);
+        var gained=simulation.WholeStrands;
         if (gained <= 0) return 0;
-        human.cultivation_progress-=gained; spirit_strands+=gained;
+        spirit_strands+=gained;
         return gained;
     }
 

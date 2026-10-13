@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class EastWoodsDungeonPanel
 {
@@ -20,17 +21,35 @@ public partial class EastWoodsDungeonPanel
     public bool is_explored(string node) => _visited.Contains(node) || progress(node + ":explore") > 0;
     private int progress(string key) => _actionProgress.GetValueOrDefault(key, 0).AsInt32();
     public int action_remaining(string node, EastWoodsActions.ActionDef action) => action.Stock > 0 ? Math.Max(0, action.Stock - progress(node + ":" + action.Id)) : progress(node + ":" + action.Id) > 0 ? 0 : 1;
+    public EastWoodsActions.ActionDef? find_action(string node, string id) => EastWoodsEcology.FindAction(node, id, _actionProgress);
+    public List<EastWoodsActions.ActionDef> available_actions(string node)
+    {
+        var result = new List<EastWoodsActions.ActionDef>();
+        if (EastWoodsActions.Content(node) is { } fixedAction && action_remaining(node, fixedAction) > 0) result.Add(fixedAction);
+        result.AddRange(EastWoodsEcology.AvailableRegeneratedBeasts(node, _actionProgress));
+        return result;
+    }
+
     public bool can_execute_action(string node, string id)
     {
         if (node != _current || _actionBusy || _isTraveling || _npcEncounterBusy || _travelPawn is not null) return false;
-        var action = EastWoodsActions.Find(node, id);
+        var action = find_action(node, id);
         return action is not null && action_remaining(node, action) >= Math.Max(1, action.Quantity);
     }
-    public void complete_action(string node, string id)
+    public void complete_action(string node, string id) => complete_action(node, id, 0);
+
+    /// <summary>Settles a resource action with its final yield, including any selected harvest bonus.</summary>
+    public void complete_action(string node, string id, int quantityOverride)
     {
-        var action = EastWoodsActions.Find(node, id);
+        var action = find_action(node, id);
         if (action is null) return;
-        _actionProgress[node + ":" + id] = progress(node + ":" + id) + Math.Max(1, action.Quantity);
+        var quantity = quantityOverride > 0 ? quantityOverride : Math.Max(1, action.Quantity);
+        _actionProgress[node + ":" + id] = progress(node + ":" + id) + quantity;
+        if (!string.IsNullOrWhiteSpace(action.EncounterIdentity))
+        {
+            var hour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+            EastWoodsEcology.MarkEncounterDefeated(_actionProgress, action.EncounterIdentity, hour);
+        }
         refresh_action_bar();
     }
     public void interrupt_travel(bool stopNpcMotion = true)
@@ -145,8 +164,7 @@ public partial class EastWoodsDungeonPanel
             _actionBarStamp = "";
             return;
         }
-        var currentContent = EastWoodsActions.Content(_current);
-        var contentStamp = currentContent is null ? "" : $"{currentContent.Id}:{action_remaining(_current, currentContent)}";
+        var contentStamp = string.Join("|", available_actions(_current).Select(action => $"{action.Id}:{action_remaining(_current, action)}"));
         var stamp = $"{_current}:{_isTraveling}:{_travelPawn is not null}:{_pendingPath.Count < 2}:{_actionBusy}:{_npcEncounterBusy}:{_activeDutyId}:{_activeDutyStage}:{_activeDutyReady}:{contentStamp}";
         if (_actionBarStamp == stamp) return;
         _actionBarStamp = stamp;
@@ -173,8 +191,7 @@ public partial class EastWoodsDungeonPanel
             var leave = make_button("离开林地", 116, 32); leave.Name = "LeaveDungeon";
             leave.Pressed += offer_exit; row.AddChild(leave);
         }
-        var choices = new List<EastWoodsActions.ActionDef>();
-        if (EastWoodsActions.Content(_current) is { } content && action_remaining(_current, content) > 0) choices.Add(content);
+        var choices = available_actions(_current);
         foreach (var action in choices)
         {
             var button = make_button(action.Name, 100, 32); button.Name = "Action_" + action.Id;

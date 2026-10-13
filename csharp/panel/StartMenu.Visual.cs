@@ -133,7 +133,7 @@ public partial class StartMenu
         var center = new CenterContainer();
         center.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         _demoOverlay.AddChild(center);
-        var panel = new PanelContainer { CustomMinimumSize = new Vector2(640, 650) };
+        var panel = new PanelContainer { CustomMinimumSize = new Vector2(640, 700) };
         panel.AddThemeStyleboxOverride("panel", PaperStyle());
         center.AddChild(panel);
         var box = new VBoxContainer();
@@ -153,7 +153,7 @@ public partial class StartMenu
         list.AddThemeConstantOverride("separation", 12);
         scroll.AddChild(list);
         var menu = GetNode<VBoxContainer>("StartMenuMenu");
-        foreach (var name in new[] { "AppearanceTest", "AppearanceCreatorTest", "InkVfxTest", "BattleTest", "CondensationTest", "YuanxiPreview" })
+        foreach (var name in new[] { "AppearanceTest", "AppearanceCreatorTest", "InkVfxTest", "BattleTest", "CondensationTest", "YuanxiPreview", "SocialInteractionTest" })
         {
             var source = menu.GetNode<Button>(name);
             var button = SettingsButton(source.Text);

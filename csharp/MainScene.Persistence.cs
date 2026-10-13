@@ -112,7 +112,7 @@ public partial class MainScene
     {
         if (_loaded_game_save is null) return;
         refresh_qingxi_quest();
-        var departed = _qingxi_prologue == QingxiPrologueStep.Departed;
+        var departed = has_open_world_access();
         hud?.set_world_map_available(departed);
         set_prologue_skip_available(false);
 
@@ -250,6 +250,7 @@ public partial class MainScene
         return new Dictionary
         {
             ["qingxi_prologue"] = (int)_qingxi_prologue,
+            ["story_free_start"] = _story_free_start,
             ["player_unique_id"] = player?.unique_id ?? "",
             ["social_membership_month"] = _socialMembershipMonth,
             ["social_visit_month"] = _socialVisitMonth,
@@ -290,6 +291,7 @@ public partial class MainScene
         _qingxi_prologue = step is >= 0 and <= (int)QingxiPrologueStep.Departed
             ? (QingxiPrologueStep)step
             : QingxiPrologueStep.Awakened;
+        _story_free_start = read_bool(state, "story_free_start");
         _xuanjian_awakened = read_bool(state, "xuanjian_awakened");
         _rested_after_xuanjian = read_bool(state, "rested_after_xuanjian");
         _static_room_authorized = read_bool(state, "static_room_authorized");

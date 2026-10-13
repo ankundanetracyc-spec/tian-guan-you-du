@@ -59,7 +59,7 @@ left_branch_name = "修持"
 right_branch_name = "化法"
 sub_deck_rewrites = Array[ExtResource("8_rewrite")]([SubResource("RewriteMissing1")])
 combat_tempering_bonuses = {"max_health_percent": 15}
-heart_method_description = "效果：每回合首次自身主动使气血层数降低后，获得身法1层。\n主修额外效果：每回合首次主动使气血层数降低后，回复精力1点。"
+heart_method_description = "效果：每回合首次由自身主动使气血层数降低后，获得身法1层。\n主修额外效果：每回合首次由自身主动使气血层数降低后，回复精力1点。"
 
 
 learn_bonus_revision = "study-balance-20261012"
@@ -82,7 +82,7 @@ sub_deck_rewrites = Array[ExtResource("8_rewrite")]([SubResource("RewriteMissing
 combat_tempering_bonuses = {"qi_blood_cap": 1}
 heart_method_upgrade_id = "huangting_c2"
 heart_method_upgrade_description = "本回合前两次主动气血回落时，各额外获得身法1层。"
-heart_method_description = "效果：每回合首次自身主动使气血层数降低后，获得身法2层；第二次主动使气血层数降低后，获得身法1层。\n主修额外效果：每回合首次主动使气血层数降低后，回复精力1点。"
+heart_method_description = "效果：每回合首次由自身主动使气血层数降低后，获得身法2层；当回合第二次由自身主动使气血层数降低后，再获得身法1层。\n主修额外效果：每回合首次由自身主动使气血层数降低后，回复精力1点。"
 
 
 learn_bonus_revision = "study-balance-20261012"
@@ -104,7 +104,7 @@ left_branch_name = "修持"
 right_branch_name = "化法"
 sub_deck_rewrites = Array[ExtResource("8_rewrite")]([SubResource("RewriteMissing3")])
 combat_tempering_bonuses = {"fall_heal_rate_pp": 1, "physical_damage_percent": 4}
-heart_method_description = "效果：每回合首次自身主动使气血层数降低后，获得身法2层；第二次主动使气血层数降低后，获得身法1层。\n主修额外效果：每回合首次主动使气血层数降低后，回复精力1点。"
+heart_method_description = "效果：每回合首次由自身主动使气血层数降低后，获得身法2层；当回合第二次由自身主动使气血层数降低后，再获得身法1层。\n主修额外效果：每回合首次由自身主动使气血层数降低后，回复精力1点。"
 
 
 learn_bonus_revision = "study-balance-20261012"
@@ -128,7 +128,7 @@ combat_tempering_bonuses = {"max_health_percent": 10, "physical_damage_percent":
 sub_deck_rewrites = Array[ExtResource("8_rewrite")]([SubResource("RewriteCuiXue")])
 heart_method_upgrade_id = "huangting_c4"
 heart_method_upgrade_description = "每回合首次主动气血回落时，额外获得身法1层。"
-heart_method_description = "效果：每回合首次自身主动使气血层数降低后，获得身法3层；第二次主动使气血层数降低后，获得身法1层。\n主修额外效果：每回合首次主动使气血层数降低后，回复精力1点。"
+heart_method_description = "效果：每回合首次由自身主动使气血层数降低后，获得身法3层；当回合第二次由自身主动使气血层数降低后，再获得身法1层。\n主修额外效果：每回合首次由自身主动使气血层数降低后，回复精力1点。"
 
 
 learn_bonus_revision = "study-balance-20261012"

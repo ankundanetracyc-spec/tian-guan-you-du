@@ -3,6 +3,8 @@ extends Control
 signal return_requested
 signal cell_selected(cell: Vector2i)
 signal player_cell_changed(cell: Vector2i)
+signal player_travel_started
+signal player_travel_finished(completed_steps: int)
 signal node_enter_requested(node_id: String)
 signal world_state_changed
 
@@ -25,10 +27,18 @@ const PLAYER_MARKER_DISPLAY_HEIGHT := TILE_SIZE / 2.0
 const DESTINATION_MARKER_DISPLAY_HEIGHT := 100.0
 const DESTINATION_MARKER_POLE_X_RATIO := 0.5
 const DESTINATION_MARKER_MAX_CELL_RATIO := 0.42
+const WORLD_OVERLAY_Z := 10
+# Relative to WorldMapOverlay: terrain/decorations stay below fog; travel
+# markers stay above fog. Screen controls use z=130 in the same canvas.
+const FOG_OVERLAY_Z := 0
+const ANCHOR_MARKER_Z := 3
+const POPULATION_BADGE_Z := 4
+const ROUTE_OVERLAY_Z := 5
+const SELECTION_MARKER_Z := 6
+const PLAYER_MARKER_Z := 7
 const MIN_ZOOM := 0.02
 const MAX_ZOOM := 2.5
 const ZOOM_STEP := 1.2
-const MIDDLE_DRAG_PIXELS_PER_ZOOM_STEP := 120.0
 const PAN_DRAG_THRESHOLD := 6.0
 const MOVE_ANIMATION_SECONDS := 0.16
 const WATER_TRAVEL_COST := 2.0
@@ -65,10 +75,10 @@ var _user_zoom := 1.0
 var _map_pan := Vector2.ZERO
 var _pan_active := false
 var _pan_dragged := false
+var _pan_button := MOUSE_BUTTON_NONE
 var _pan_press_position := Vector2.ZERO
 var _last_pan_position := Vector2.ZERO
-var _middle_zoom_active := false
-var _middle_zoom_last_position := Vector2.ZERO
+var _world_overlay: Node2D
 var _selected_cell_marker: Sprite2D
 var _destination_marker_display_size := Vector2.ZERO
 var _route_footprints: Node2D
@@ -85,6 +95,7 @@ var _preview_path: Array[Vector2i] = []
 var _moving := false
 var _active_travel_path: Array[Vector2i] = []
 var _active_travel_next_index := 0
+var _travel_reveal_bonus_cells := 0
 var _pending_resume_path: Array[Vector2i] = []
 var _world_anchors: Array[Dictionary] = []
 var _anchors_by_cell: Dictionary = {}
@@ -98,12 +109,30 @@ func _ready() -> void:
 	var world_map_layer := get_parent() as CanvasLayer
 	if world_map_layer != null:
 		world_map_layer.layer = 15
+	# Keep the paper as a backing layer only. Control/Node2D draw ordering can
+	# otherwise make the full-screen paper cover the terrain in the live scene.
+	var paper_background := get_node_or_null("PaperBackground") as ColorRect
+	if paper_background != null:
+		paper_background.z_index = -100
+	_map_canvas.z_index = 0
+	# The terrain scene is reusable, but must never inherit weather/UI z-order.
+	_map_root.z_as_relative = true
+	_map_root.z_index = 0
+	_map_canvas.show()
+	_map_root.show()
+	_terrain.show()
+	for art_layer_name in ["GreenWashStamps", "NatureDecorations"]:
+		var art_layer := _map_root.get_node_or_null(art_layer_name)
+		if art_layer != null:
+			art_layer.show()
+	_create_world_overlay()
 	var sample_camera := _map_root.get_node_or_null("SampleCamera") as Camera2D
 	if sample_camera != null:
 		sample_camera.enabled = false
 	var sample_controls := _map_root.get_node_or_null("SampleControls") as CanvasLayer
 	if sample_controls != null:
 		sample_controls.visible = false
+	_map_root.set_process_unhandled_input(false)
 	_create_selection_marker()
 	_create_fog_layer()
 	_create_route_layer()
@@ -138,6 +167,33 @@ func _notification(what: int) -> void:
 	if what == NOTIFICATION_RESIZED and is_node_ready():
 		_layout_map()
 
+func _process(_delta: float) -> void:
+	if is_visible_in_tree() and _cell_info_panel.visible:
+		_position_destination_info()
+
+func _position_destination_info() -> void:
+	if not _is_cell_in_bounds(_selected_cell) or _selected_cell == _player_cell:
+		_cell_info_panel.hide()
+		return
+	var cell_center := _terrain.position + _terrain.map_to_local(_selected_cell)
+	var destination := get_global_transform_with_canvas().affine_inverse() * (_map_canvas.get_global_transform_with_canvas() * cell_center)
+	if not Rect2(Vector2.ZERO, size).has_point(destination):
+		# Keep the hint attached to its destination; do not pin it to a screen edge.
+		_cell_info_panel.modulate.a = 0.0
+		return
+	_cell_info_panel.modulate.a = 1.0
+	_cell_info_panel.size = Vector2(minf(360.0, maxf(120.0, size.x - 24.0)), 0.0)
+	var marker_height := _destination_marker_display_size.y
+	if _selected_cell_marker != null:
+		marker_height *= _selected_cell_marker.scale.y * _user_zoom
+	var anchor: Dictionary = _anchors_by_cell.get(_selected_cell, {})
+	var footprint: Array = anchor.get("footprint", [1, 1])
+	var clearance := maxf(marker_height, float(footprint[1]) * TILE_SIZE * _user_zoom * 0.5 if not anchor.is_empty() else 0.0)
+	var hint_position := destination - Vector2(_cell_info_panel.size.x * 0.5, clearance + _cell_info_panel.size.y + 10.0)
+	hint_position.x = clampf(hint_position.x, 12.0, maxf(12.0, size.x - _cell_info_panel.size.x - 12.0))
+	hint_position.y = maxf(12.0, hint_position.y)
+	_cell_info_panel.position = hint_position
+
 func _input(event: InputEvent) -> void:
 	if not visible or not is_node_ready() or not event is InputEventMouseButton:
 		return
@@ -170,28 +226,25 @@ func _gui_input(event: InputEvent) -> void:
 			if cell.x >= 0 and cell.x < GRID_COLUMNS and cell.y >= 0 and cell.y < GRID_ROWS:
 				_on_cell_clicked(cell)
 				accept_event()
-		elif event.button_index == MOUSE_BUTTON_RIGHT:
+		elif event.button_index == MOUSE_BUTTON_RIGHT or event.button_index == MOUSE_BUTTON_MIDDLE:
 			if event.pressed:
 				if _moving:
 					accept_event()
 					return
 				_pan_active = true
 				_pan_dragged = false
+				_pan_button = event.button_index
 				_pan_press_position = event.position
 				_last_pan_position = event.position
-			elif _pan_active:
+			elif _pan_active and _pan_button == event.button_index:
 				var should_center_on_player := not _pan_dragged
 				_pan_active = false
 				_pan_dragged = false
+				_pan_button = MOUSE_BUTTON_NONE
 				if should_center_on_player:
 					_center_on_player()
 			accept_event()
 			return
-		elif event.button_index == MOUSE_BUTTON_MIDDLE:
-			_middle_zoom_active = event.pressed
-			if _middle_zoom_active:
-				_middle_zoom_last_position = event.position
-			accept_event()
 	elif event is InputEventMouseMotion:
 		if _pan_active:
 			if not _pan_dragged and event.position.distance_to(_pan_press_position) < PAN_DRAG_THRESHOLD:
@@ -200,13 +253,6 @@ func _gui_input(event: InputEvent) -> void:
 			_map_pan += event.position - _last_pan_position
 			_last_pan_position = event.position
 			_layout_map()
-			accept_event()
-		elif _middle_zoom_active:
-			var vertical_drag: float = float(event.position.y - _middle_zoom_last_position.y)
-			_middle_zoom_last_position = event.position
-			if not is_zero_approx(vertical_drag):
-				var zoom_multiplier := pow(ZOOM_STEP, -vertical_drag / MIDDLE_DRAG_PIXELS_PER_ZOOM_STEP)
-				_zoom_about_view_center(_user_zoom * zoom_multiplier)
 			accept_event()
 
 func _unhandled_key_input(event: InputEvent) -> void:
@@ -253,6 +299,9 @@ func get_cell_center(cell: Vector2i) -> Vector2:
 
 func get_player_cell() -> Vector2i:
 	return _player_cell
+
+func set_travel_reveal_bonus_cells(value: int) -> void:
+	_travel_reveal_bonus_cells = clampi(value, 0, 3)
 
 func is_traveling() -> bool:
 	return _moving
@@ -445,7 +494,8 @@ func _minimum_zoom_for_view() -> float:
 
 func _refresh_cell_info() -> void:
 	_update_enter_node_button()
-	if not _is_cell_in_bounds(_selected_cell):
+	if not _is_cell_in_bounds(_selected_cell) or _selected_cell == _player_cell:
+		_cell_info_panel.hide()
 		return
 	if not _is_cell_explored(_selected_cell):
 		_cell_info_label.text = "未探索区域　｜　使用 WASD 逐格探路"
@@ -456,21 +506,15 @@ func _refresh_cell_info() -> void:
 	var terrain_name: String = terrain_names.get(terrain, "平原")
 	var passability := "可通行" if is_cell_traversable(_selected_cell) else "不可通行"
 	var anchor_name := _get_anchor_name(_selected_cell)
-	var anchor_text := "" if anchor_name.is_empty() else "　｜　" + anchor_name
-	var cell_summary := "第 %d 列 · 第 %d 行　｜　%s · %s%s" % [
-		_selected_cell.x + 1,
-		_selected_cell.y + 1,
-		terrain_name,
-		passability,
-		anchor_text
-	]
+	var cell_summary := "%s · %s" % [terrain_name if anchor_name.is_empty() else anchor_name, passability]
+	_cell_info_label.tooltip_text = "第 %d 列 · 第 %d 行 · %s" % [_selected_cell.x + 1, _selected_cell.y + 1, terrain_name]
 	if _selected_cell == _player_cell:
 		_cell_info_label.text = cell_summary + "\n当前位置"
 	elif not _preview_path.is_empty():
 		var hours := _path_travel_hours(_preview_path)
 		var route_cells := maxi(0, _preview_path.size() - 1)
 		var route_distance_km := float(route_cells) * APPROX_KILOMETERS_PER_CELL
-		_cell_info_label.text = cell_summary + "\n最短用时路线：%d 格 · 约 %s 公里 · 预计 %s\n再次点击目的格启程" % [
+		_cell_info_label.text = cell_summary + "\n%d 格 · 约 %s 公里 · 预计 %s\n再次点击启程" % [
 			route_cells,
 			_format_number(route_distance_km),
 			_format_travel_time(hours)
@@ -478,6 +522,7 @@ func _refresh_cell_info() -> void:
 	else:
 		_cell_info_label.text = cell_summary + "\n单击查看最短用时路线与预计时间"
 	_cell_info_panel.visible = true
+	_position_destination_info()
 
 func _is_cell_in_bounds(cell: Vector2i) -> bool:
 	return cell.x >= 0 and cell.x < GRID_COLUMNS and cell.y >= 0 and cell.y < GRID_ROWS
@@ -554,22 +599,29 @@ func _build_pathfinder() -> void:
 	_fog_image.fill(UNKNOWN_FOG_COLOR)
 	_fog_texture = ImageTexture.create_from_image(_fog_image)
 
+func _create_world_overlay() -> void:
+	_world_overlay = Node2D.new()
+	_world_overlay.name = "WorldMapOverlay"
+	_world_overlay.z_as_relative = false
+	_world_overlay.z_index = WORLD_OVERLAY_Z
+	_map_canvas.add_child(_world_overlay)
+
 func _create_fog_layer() -> void:
 	_fog_sprite = Sprite2D.new()
 	_fog_sprite.name = "ExplorationFog"
 	_fog_sprite.centered = false
 	_fog_sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-	_fog_sprite.z_index = 100
+	_fog_sprite.z_index = FOG_OVERLAY_Z
 	_fog_sprite.texture = _fog_texture
 	_fog_sprite.scale = Vector2(TILE_SIZE, TILE_SIZE)
 	_fog_sprite.position = _terrain.position + _terrain.map_to_local(Vector2i.ZERO) - Vector2.ONE * TILE_SIZE * 0.5
-	_map_canvas.add_child(_fog_sprite)
+	_world_overlay.add_child(_fog_sprite)
 
 func _create_route_layer() -> void:
 	_route_footprints = ROUTE_FOOTPRINT_LAYER_SCRIPT.new() as Node2D
 	_route_footprints.name = "RouteFootprints"
-	_route_footprints.z_index = 110
-	_map_canvas.add_child(_route_footprints)
+	_route_footprints.z_index = ROUTE_OVERLAY_Z
+	_world_overlay.add_child(_route_footprints)
 	_route_footprints.call("configure", _terrain, ROUTE_FOOTPRINT_TEXTURE)
 	_route_footprints.call("refresh_view")
 
@@ -588,9 +640,9 @@ func _create_selection_marker() -> void:
 	_selected_cell_marker.centered = false
 	_selected_cell_marker.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	_selected_cell_marker.texture = ImageTexture.create_from_image(marker_image)
-	_selected_cell_marker.z_index = 115
+	_selected_cell_marker.z_index = SELECTION_MARKER_Z
 	_selected_cell_marker.visible = false
-	_map_canvas.add_child(_selected_cell_marker)
+	_world_overlay.add_child(_selected_cell_marker)
 
 func _create_player_marker() -> void:
 	var marker_image := PLAYER_MARKER_TEXTURE.get_image()
@@ -606,12 +658,13 @@ func _create_player_marker() -> void:
 	_player_marker.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	_player_marker.texture = ImageTexture.create_from_image(marker_image)
 	_player_marker.offset = Vector2(0.0, -float(marker_height) * 0.5)
-	_player_marker.z_index = 120
+	_player_marker.z_index = PLAYER_MARKER_Z
 	_player_marker_map_position = _terrain.position + _terrain.map_to_local(_player_cell)
-	_map_canvas.add_child(_player_marker)
+	_world_overlay.add_child(_player_marker)
 	_update_player_marker_world_position()
 
 func _reveal_around_player() -> void:
+	var reveal_radius := clampi(vision_radius_cells + _travel_reveal_bonus_cells, 1, 20)
 	for index in _visible_cell_indices:
 		var old_cell := Vector2i(index % GRID_COLUMNS, index / GRID_COLUMNS)
 		# Every cell seen before remains known after it leaves the current view.
@@ -619,9 +672,9 @@ func _reveal_around_player() -> void:
 		if _pathfinder != null and is_cell_traversable(old_cell):
 			_pathfinder.set_point_solid(old_cell, false)
 	_visible_cell_indices.clear()
-	for dy in range(-vision_radius_cells, vision_radius_cells + 1):
-		for dx in range(-vision_radius_cells, vision_radius_cells + 1):
-			if dx * dx + dy * dy > vision_radius_cells * vision_radius_cells:
+	for dy in range(-reveal_radius, reveal_radius + 1):
+		for dx in range(-reveal_radius, reveal_radius + 1):
+			if dx * dx + dy * dy > reveal_radius * reveal_radius:
 				continue
 			var cell := _player_cell + Vector2i(dx, dy)
 			if not _is_cell_in_bounds(cell):
@@ -719,10 +772,13 @@ func _start_travel(path: Array[Vector2i]) -> void:
 	if _moving or path.size() < 2:
 		return
 	_moving = true
+	player_travel_started.emit()
 	_active_travel_path = path.duplicate()
 	_active_travel_next_index = 1
+	var completed_steps := 0
 	world_state_changed.emit()
 	_pan_active = false
+	_pan_button = MOUSE_BUTTON_NONE
 	_map_pan = Vector2.ZERO
 	_cell_info_label.text = "正在循已知路线行进……"
 	_cell_info_panel.visible = true
@@ -742,6 +798,7 @@ func _start_travel(path: Array[Vector2i]) -> void:
 		_player_marker_map_position = next_position
 		_active_travel_next_index = index + 1
 		await _advance_game_time(_base_hours_per_cell() * _terrain_travel_cost(next_cell))
+		completed_steps += 1
 		_reveal_around_player()
 		player_cell_changed.emit(_player_cell)
 		world_state_changed.emit()
@@ -758,6 +815,7 @@ func _start_travel(path: Array[Vector2i]) -> void:
 	_layout_map()
 	_active_travel_path.clear()
 	_active_travel_next_index = 0
+	player_travel_finished.emit(completed_steps)
 	_refresh_cell_info()
 	world_state_changed.emit()
 
@@ -859,7 +917,7 @@ func _create_grid_population_badge(cell: Vector2i) -> PanelContainer:
 	var badge := PanelContainer.new()
 	badge.name = "GridPopulationBadge_%d_%d" % [cell.x, cell.y]
 	badge.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	badge.z_index = 106
+	badge.z_index = POPULATION_BADGE_Z
 	badge.size = Vector2(28.0, 27.0)
 	var style := StyleBoxFlat.new()
 	style.bg_color = Color(0.18, 0.16, 0.13, 0.94)
@@ -877,7 +935,7 @@ func _create_grid_population_badge(cell: Vector2i) -> PanelContainer:
 	label.add_theme_color_override("font_color", Color("f5ead1"))
 	badge.add_child(label)
 	badge.position = _terrain.position + _terrain.map_to_local(cell) + Vector2(TILE_SIZE * 0.34, -TILE_SIZE * 0.34) - badge.size * 0.5
-	_map_canvas.add_child(badge)
+	_world_overlay.add_child(badge)
 	return badge
 
 func _get_anchor_name(cell: Vector2i) -> String:
@@ -932,7 +990,7 @@ func _create_anchor_markers() -> void:
 		var marker := Node2D.new()
 		marker.name = "WorldAnchor_%s" % str(anchor.get("id", "Node"))
 		marker.position = anchor.get("marker_position", _terrain.position + _terrain.map_to_local(cell))
-		marker.z_index = 105
+		marker.z_index = ANCHOR_MARKER_Z
 		var color := _anchor_color(str(anchor.get("faction_id", "")), level)
 		var placeholder := Sprite2D.new()
 		placeholder.name = "PlaceholderToken"
@@ -963,7 +1021,7 @@ func _create_anchor_markers() -> void:
 		label.add_theme_color_override("font_outline_color", Color(0.95, 0.93, 0.88, 0.95))
 		label.add_theme_constant_override("outline_size", 4)
 		marker.add_child(label)
-		_map_canvas.add_child(marker)
+		_world_overlay.add_child(marker)
 		_anchor_markers.append(marker)
 		marker.set_meta("world_location_node_id", str(anchor.get("location_node_id", "")))
 		_create_population_badge(marker, anchor)
@@ -1128,11 +1186,15 @@ func _apply_button_style(button: Button) -> void:
 	button.add_theme_stylebox_override("pressed", hover)
 
 func _apply_info_panel_style() -> void:
+	_cell_info_panel.set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
+	_cell_info_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_cell_info_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_cell_info_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	var panel_style := StyleBoxFlat.new()
 	panel_style.bg_color = Color(0.94, 0.92, 0.86, 0.96)
 	panel_style.border_color = Color(0.20, 0.21, 0.19, 0.55)
 	panel_style.set_border_width_all(1)
-	panel_style.set_corner_radius_all(5)
+	panel_style.set_corner_radius_all(2)
 	panel_style.content_margin_left = 14
 	panel_style.content_margin_right = 14
 	panel_style.content_margin_top = 7

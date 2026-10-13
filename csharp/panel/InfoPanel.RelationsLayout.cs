@@ -66,7 +66,7 @@ public partial class InfoPanel
         foreach (var filter in new[] { "全部", "亲缘", "往来" })
         {
             var button = CharacterButton(filter, selected: filter == _relationFilter); button.SizeFlagsHorizontal = SizeFlags.ExpandFill; filters.AddChild(button);
-            button.Pressed += () => { _relationFilter = filter; foreach (var sibling in filters.GetChildren().OfType<Button>()) sibling.AddThemeStyleboxOverride("normal", CharacterStyle(sibling == button, 10)); Refresh(); };
+            button.Pressed += () => { _relationFilter = filter; foreach (var sibling in filters.GetChildren().OfType<Button>()) sibling.AddThemeStyleboxOverride("normal", CharacterButtonStyle(sibling == button)); Refresh(); };
         }
         search.TextChanged += value => { _relationQuery = value; Refresh(); }; Refresh();
     }

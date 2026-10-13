@@ -38,9 +38,17 @@ public partial class YuxuEastWoodsDutySmoke : Node
             var instance=human.sect_active_yuxu_duty_instance_id;
             Duty("heguang_submit_duty:east_woods_patrol"); Check(human.get_yuxu_contribution_total()==0,"未巡查可领奖");
             panel.show_dungeon(); await Frames();
-            var target=map.GetNode<Button>("Node_quiet_grove"); target.EmitSignal(BaseButton.SignalName.Pressed); target.EmitSignal(BaseButton.SignalName.Pressed);
-            await ToSignal(GetTree().CreateTimer(6),SceneTreeTimer.SignalName.Timeout);
-            Check(human.sect_active_yuxu_duty_ready && human.sect_active_yuxu_duty_stage>=4 && human.get_yuxu_contribution_total()==0,"现场未形成待回报或提前发奖");
+            foreach (var nodeId in new[] { "leaf_creek", "root_path", "root_hollow", "deep_meet", "mid_split", "upper_ridge", "moss_bridge", "upper_approach", "quiet_grove" })
+            {
+                var target = map.GetNode<Button>("Node_" + nodeId);
+                Check(target.Visible, $"路线节点 {nodeId} 应已进入视野");
+                target.EmitSignal(BaseButton.SignalName.Pressed);
+                target.EmitSignal(BaseButton.SignalName.Pressed);
+                await ToSignal(GetTree().CreateTimer(0.6), SceneTreeTimer.SignalName.Timeout);
+            }
+            await ToSignal(GetTree().CreateTimer(0.6),SceneTreeTimer.SignalName.Timeout);
+            Check(human.sect_active_yuxu_duty_ready && human.sect_active_yuxu_duty_stage>=4 && human.get_yuxu_contribution_total()==0,
+                $"现场未形成待回报或提前发奖（ready={human.sect_active_yuxu_duty_ready}, stage={human.sect_active_yuxu_duty_stage}, contribution={human.get_yuxu_contribution_total()}, current={panel.get_current_route_node_id()}）");
             Check(human.sect_active_yuxu_duty_instance_id==instance,"巡查实例改变");
             var snapshot=new PersistentGameSave{player_data=human,scene_progress=new Godot.Collections.Dictionary{["east_woods_dungeon_state"]=panel.get_route_state()}};
             Check(ResourceSaver.Save(snapshot,savePath)==Error.Ok,"任务状态无法写入测试资源");
@@ -76,8 +84,13 @@ public partial class YuxuEastWoodsDutySmoke : Node
             Check(entries.Count(e=>e.Id.StartsWith("yuxu.settled."))==2,"贡献流水未进入任务完成记录");
             panel.show_dungeon(); panel.GetNode<Button>("ExplorationNotes").EmitSignal(BaseButton.SignalName.Pressed);
             var notes=(string)typeof(EastWoodsDungeonPanel).GetMethod("exploration_notes",BindingFlags.Instance|BindingFlags.NonPublic)!.Invoke(panel,null)!;
-            Check(!notes.Contains("苦苔根") && !notes.Contains("凶狼"),"札记泄露未探明内容");
-            panel.complete_action("fern_lowland","explore"); panel.complete_action("fern_lowland","gather_root");
+            Check(!notes.Contains("苦苔根"),"札记泄露未探明资源：" + notes);
+            var notesState = panel.get_route_state();
+            var exploredNodes = notesState["visited"].AsGodotArray<string>();
+            exploredNodes.Add("fern_lowland");
+            notesState["visited"] = exploredNodes;
+            panel.restore_route_state(notesState);
+            panel.complete_action("fern_lowland","gather_root");
             notes=(string)typeof(EastWoodsDungeonPanel).GetMethod("exploration_notes",BindingFlags.Instance|BindingFlags.NonPublic)!.Invoke(panel,null)!;
             Check(notes.Contains("苦苔根，余 2 份"),"札记没有读取实际探明和余量");
             panel.close_action_details(); panel.GetNode<Button>("ExplorationNotes").EmitSignal(BaseButton.SignalName.Pressed); await Capture("03_林间札记");

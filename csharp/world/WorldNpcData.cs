@@ -61,9 +61,15 @@ public partial class WorldNpcData : Resource
     [Export] public string short_term_goal = "";
     [Export] public Array<string> behavior_tags = [];
     [Export] public Array<string> relation_tags = [];
+    /// <summary>Official case outcome state; never used as evidence or inferred from relationships.</summary>
+    [Export] public int sect_case_demerit_count;
+    [Export] public string sect_case_expelled_by_case_id = "";
+    [Export] public string sect_case_former_faction_id = "";
     [Export] public int player_relationship;
     /// <summary>与主角实际交往的记忆；姓名、境界须经交流获知，不由好感分数推导。</summary>
     [Export] public Dictionary player_social_memory = [];
+    /// <summary>这个 NPC 过月归纳的个人观感；与关系和玩家认知分开保存。</summary>
+    [Export] public NpcPlayerImpressionData? player_impression;
     /// <summary>NPC 对其他稳定人物 ID 的个人关系分值；与玩家关系、势力态度、区域声望分开保存。</summary>
     [Export] public Dictionary personal_relationships = [];
     /// <summary>区域公开声望，按 region_id 分开；不与势力态度或私人关系合并。</summary>
@@ -124,6 +130,7 @@ public partial class WorldNpcData : Resource
     public void record(NpcActionRecord entry)
     {
         action_history.Add(entry);
+        NpcPlayerImpressionRules.OnRecorded(this, entry);
         if (_dungeonActionTargets is not null && entry.action_id.StartsWith("dungeon_", StringComparison.Ordinal))
             _dungeonActionTargets.Add(entry.target_npc_id);
     }

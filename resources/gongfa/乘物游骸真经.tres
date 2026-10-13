@@ -57,7 +57,7 @@ left_branch_name = "修持"
 right_branch_name = "化法"
 combat_tempering_bonuses = {"max_health_percent": 15}
 sub_deck_rewrites = Array[ExtResource("8_rewrite")]([SubResource("RewriteCuiXue")])
-heart_method_description = "效果：每回合首次由自身主动使气血层数降低后，获得游骸1层；同次效果至多触发一次。\n主修额外效果：每次实际消耗游骸，获得身法3层；抵挡、托身和化法消耗均计入。"
+heart_method_description = "效果：每回合首次由自身主动使气血层数降低后，获得游骸1层。\n主修额外效果：每次实际消耗游骸后，获得身法3层；抵挡、托身或化法消耗均触发。"
 
 
 learn_bonus_revision = "study-balance-20261012"
@@ -81,7 +81,7 @@ combat_tempering_bonuses = {"qi_blood_cap": 1, "dodge_percent": 4}
 sub_deck_rewrites = Array[ExtResource("8_rewrite")]([SubResource("RewriteHanShan")])
 heart_method_upgrade_id = "chengwu_c2"
 heart_method_upgrade_description = "每回合心法首次给予游骸时，额外获得身法1层。"
-heart_method_description = "效果：每回合首次由自身主动使气血层数降低后，获得游骸1层和身法1层；同次效果至多触发一次。\n主修额外效果：每次实际消耗游骸，获得身法3层；抵挡、托身和化法消耗均计入。"
+heart_method_description = "效果：每回合首次由自身主动使气血层数降低后，获得游骸1层和身法1层。\n主修额外效果：每次实际消耗游骸后，获得身法3层；抵挡、托身或化法消耗均触发。"
 
 
 learn_bonus_revision = "study-balance-20261012"
@@ -102,7 +102,7 @@ left_branch_name = "修持"
 right_branch_name = "化法"
 combat_tempering_bonuses = {"physical_damage_percent": 5}
 sub_deck_rewrites = Array[ExtResource("8_rewrite")]([SubResource("RewritePingXi")])
-heart_method_description = "效果：每回合首次由自身主动使气血层数降低后，获得游骸1层和身法1层；同次效果至多触发一次。\n主修额外效果：每次实际消耗游骸，获得身法3层；抵挡、托身和化法消耗均计入。"
+heart_method_description = "效果：每回合首次由自身主动使气血层数降低后，获得游骸1层和身法1层。\n主修额外效果：每次实际消耗游骸后，获得身法3层；抵挡、托身或化法消耗均触发。"
 
 
 learn_bonus_revision = "study-balance-20261012"
@@ -126,7 +126,7 @@ combat_tempering_bonuses = {"max_health_percent": 10, "dodge_percent": 6, "physi
 sub_deck_rewrites = Array[ExtResource("8_rewrite")]([SubResource("RewriteFaJin")])
 heart_method_upgrade_id = "chengwu_c4"
 heart_method_upgrade_description = "心法给予游骸时，再额外获得身法1层。"
-heart_method_description = "效果：每回合首次由自身主动使气血层数降低后，获得游骸1层和身法2层；同次效果至多触发一次。\n主修额外效果：每次实际消耗游骸，获得身法3层；抵挡、托身和化法消耗均计入。"
+heart_method_description = "效果：每回合首次由自身主动使气血层数降低后，获得游骸1层和身法2层。\n主修额外效果：每次实际消耗游骸后，获得身法3层；抵挡、托身或化法消耗均触发。"
 
 
 learn_bonus_revision = "study-balance-20261012"

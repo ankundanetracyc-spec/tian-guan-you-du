@@ -10,6 +10,7 @@ public partial class MainScene
     private const string YuxuYaopuCultivationDutyId = "yaopu_cultivate_mist_bell";
     private const string YuxuEastWoodsPatrolDutyId = "east_woods_patrol";
     private const string YuxuEastWoodsConflictReviewDutyId = "east_woods_conflict_review";
+    private const string YuxuCaseFieldTaskDutyId = "yuxu_case_field_task";
     private const string YuxuTianwenPracticeDutyId = "tianwen_practice";
     private const string YuxuBeastBoneSubmissionDutyId = "beast_bone_submission";
     private const string YuxuBitterMossRootDutyId = "bitter_moss_root_submission";
@@ -132,6 +133,8 @@ public partial class MainScene
         var peakInterior = GetNodeOrNull<Node>("SceneLayer/YuxuXianzongOverview/PeakInterior");
         var activeIncidentId = isMember && human.sect_active_yuxu_duty_id == YuxuEastWoodsConflictReviewDutyId
             ? human.sect_active_yuxu_duty_incident_id
+            : isMember && human.sect_active_yuxu_duty_id == YuxuCaseFieldTaskDutyId
+                ? human.sect_active_yuxu_duty_incident_id
             : "";
         peakInterior?.Call("set_sect_duty_context",
             isMember,
@@ -141,7 +144,9 @@ public partial class MainScene
             isMember && player.has_inventory_item(BeastBoneItemPath),
             isMember ? player.get_inventory_total_count(BitterMossRootItemPath) : 0,
             activeIncidentId,
-            isMember ? get_yuxu_conflict_case_summaries() : new Godot.Collections.Array<Godot.Collections.Dictionary>());
+            isMember ? get_yuxu_conflict_case_summaries() : new Godot.Collections.Array<Godot.Collections.Dictionary>(),
+            isMember ? get_yuxu_case_task_summaries() : new Godot.Collections.Array<Godot.Collections.Dictionary>(),
+            isMember && human.sect_active_yuxu_duty_id == YuxuCaseFieldTaskDutyId ? human.sect_active_yuxu_duty_task_id : "");
         var isTrueDisciple = isMember && is_yuxu_true_disciple(human.sect_current_rank);
         var npcManager = _npc_world ?? GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager");
         var teacher = isTrueDisciple ? npcManager?.get_npc(human.sect_teacher_npc_id) : null;
@@ -169,16 +174,18 @@ public partial class MainScene
     }
 
     private static bool is_supported_yuxu_duty(string dutyId)
-        => dutyId is YuxuStudyDutyId or YuxuYaopuWatchDutyId or YuxuYaopuCultivationDutyId or YuxuEastWoodsPatrolDutyId or YuxuEastWoodsConflictReviewDutyId or YuxuTianwenPracticeDutyId or YuxuBeastBoneSubmissionDutyId or YuxuBitterMossRootDutyId;
+        => dutyId is YuxuStudyDutyId or YuxuYaopuWatchDutyId or YuxuYaopuCultivationDutyId or YuxuEastWoodsPatrolDutyId or YuxuEastWoodsConflictReviewDutyId or YuxuCaseFieldTaskDutyId or YuxuTianwenPracticeDutyId or YuxuBeastBoneSubmissionDutyId or YuxuBitterMossRootDutyId;
 
     private static void clear_active_yuxu_duty(HumanData human)
     {
         human.sect_active_yuxu_duty_id = "";
         human.sect_active_yuxu_duty_instance_id = "";
         human.sect_active_yuxu_duty_incident_id = "";
+        human.sect_active_yuxu_duty_task_id = "";
         human.sect_active_yuxu_duty_started_hour = -1;
         human.sect_active_yuxu_duty_stage = 0;
         human.sect_active_yuxu_duty_ready = false;
+        human.sect_active_yuxu_inspiration_bonus = 0;
     }
 
     private void reconcile_yuxu_conflict_duty_state(HumanData human)
@@ -203,6 +210,25 @@ public partial class MainScene
             {
                 clear_active_yuxu_duty(human);
                 changed = true;
+            }
+        }
+        else if (human.sect_active_yuxu_duty_id == YuxuCaseFieldTaskDutyId)
+        {
+            var task = _npc_world.get_yuxu_case_task(human.sect_active_yuxu_duty_incident_id, human.sect_active_yuxu_duty_task_id);
+            if (task is null || task.status is not (YuxuSectCaseTaskRecord.StatusAssigned or YuxuSectCaseTaskRecord.StatusObjectiveComplete) ||
+                task.duty_instance_id != human.sect_active_yuxu_duty_instance_id)
+            {
+                clear_active_yuxu_duty(human);
+                changed = true;
+            }
+            else
+            {
+                var ready = task.status == YuxuSectCaseTaskRecord.StatusObjectiveComplete;
+                if (human.sect_active_yuxu_duty_ready != ready)
+                {
+                    human.sect_active_yuxu_duty_ready = ready;
+                    changed = true;
+                }
             }
         }
         else if (!string.IsNullOrWhiteSpace(human.sect_active_yuxu_duty_incident_id))
@@ -240,11 +266,8 @@ public partial class MainScene
         if (player is null) return;
         if (actionId == "yaopu_watch")
         {
-            if (human.sect_active_yuxu_duty_id != YuxuYaopuWatchDutyId)
-            {
-                show_message("药园值守", "先到和光峰事务值房接取药园值守，再来瑶圃峰当值。");
-                return;
-            }
+            var activeWatchDuty = human.sect_active_yuxu_duty_id == YuxuYaopuWatchDutyId;
+            var dutyInstanceId = activeWatchDuty ? human.sect_active_yuxu_duty_instance_id : "";
             var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
             var staminaCost = YuxuSectPrototypeBalance.YaopuWatchStaminaCost;
             if (time is null || !player.can_spend_world_stamina(staminaCost))
@@ -256,22 +279,32 @@ public partial class MainScene
             run_time_transition(
                 "药园值守",
                 $"在瑶圃峰药园完成 {YuxuSectPrototypeBalance.YaopuWatchHours} 个游戏时辰的值守；消耗体力 {staminaCost:0.#} 点。",
-                "当值结束。药架、灵土与苗圃均已巡看完毕，可向执事回报。",
+                activeWatchDuty
+                    ? "当值结束。药架、灵土与苗圃均已巡看完毕，可向执事回报。"
+                    : "当值结束。药架、灵土与苗圃均已巡看完毕。",
                 () =>
                 {
                     if (player is null || player.entity_data is not HumanData current ||
-                        current.sect_active_yuxu_duty_id != YuxuYaopuWatchDutyId ||
+                        (activeWatchDuty && (current.sect_active_yuxu_duty_id != YuxuYaopuWatchDutyId ||
+                            current.sect_active_yuxu_duty_instance_id != dutyInstanceId)) ||
                         !player.try_spend_world_stamina(staminaCost))
                     {
                         show_message("值守未完成", "事务状态或体力已变化，未推进历法，也未发放贡献。");
                         return;
                     }
                     time.add_hours(YuxuSectPrototypeBalance.YaopuWatchHours);
+                    if (!activeWatchDuty)
+                    {
+                        on_yuxu_daily_activity_completed($"sect:yaopu-watch:{time.get_total_game_hours()}");
+                        mark_save_dirty();
+                        show_message("当值结束", "本次瑶圃日常值守已完成；事务贡献仅在接取对应公事后结算。");
+                        return;
+                    }
                     settle_yuxu_official_duty(
                         current,
                         YuxuYaopuWatchDutyId,
                         "瑶圃药园值守",
-                        current.sect_active_yuxu_duty_instance_id,
+                        dutyInstanceId,
                         $"完成药园值守；消耗体力 {staminaCost:0.#} 点并当值四个游戏时辰。",
                         "药园值守已核验。",
                         null);
@@ -443,6 +476,7 @@ public partial class MainScene
             return false;
         }
         var reward = rewardOverride > 0 ? rewardOverride : YuxuSectPrototypeBalance.OfficialYaopuDutyReward;
+        reward += Math.Max(0, human.sect_active_yuxu_inspiration_bonus);
         var sourceTransactionId = $"yuxu:official:{dutyId}:{transactionSuffix}";
         var record = new YuxuSectContributionRecord
         {
@@ -486,6 +520,7 @@ public partial class MainScene
             show_message("事务未结算", "公事回执/贡献流水无法登记；公库账已回退，交付物已退回，未发放贡献。可检查事务状态后再试。");
             return false;
         }
+        on_yuxu_official_duty_settled(human, record.source_transaction_id, record.source_title);
         clear_active_yuxu_duty(human);
         mark_save_dirty();
         refresh_yuxu_life_context();
@@ -533,6 +568,28 @@ public partial class MainScene
             return;
         }
 
+        if (peakId == "xuanlan" && actionId == "xuanlan_study")
+        {
+            var overview = GetNodeOrNull<Control>("SceneLayer/YuxuXianzongOverview");
+            if (_player_current_yuxu_peak_id != "xuanlan" || overview?.Visible != true ||
+                overview.GetNodeOrNull<Control>("PeakInterior")?.Visible != true)
+                return;
+            if (human.sect_active_yuxu_duty_id == YuxuStudyDutyId)
+            {
+                show_message("静室研读事务", "这项公事须在身份对应的观复峰或紫府峰静室完成；玄览峰研习不会结算或替代该事务。");
+                return;
+            }
+            if (is_yuxu_true_disciple(human.sect_current_rank) &&
+                !string.IsNullOrWhiteSpace(human.sect_lineage_gongfa_path) &&
+                !human.sect_lineage_reported_first_volume)
+            {
+                show_message("师门首卷", "真传首卷仍按师承流程回紫府峰静室研读，并在完成后向带教师兄/师姐汇报。玄览峰可以选书；首卷汇报后可在此研习其他已开放典籍。");
+                return;
+            }
+            cultivation_ui?.show_teaching_for(player);
+            return;
+        }
+
         if (peakId == "zifu" && actionId == "lineage_choose_teacher")
         {
             request_yuxu_lineage_teacher_choice(human);
@@ -548,6 +605,12 @@ public partial class MainScene
         if (peakId == "zhizhong" && actionId == "zhizhong_case_review")
         {
             show_yuxu_conflict_review_dialog(human);
+            return;
+        }
+
+        if (peakId == "zhizhong" && actionId is "zhizhong_case_docket" or "zhizhong_case_enforce")
+        {
+            on_yuxu_case_docket_action(actionId, human);
             return;
         }
 
@@ -607,6 +670,7 @@ public partial class MainScene
 
     private void handle_yuxu_heguang_action(string actionId, HumanData human)
     {
+        if (handle_yuxu_case_task_heguang_action(actionId, human)) return;
         const string submitDutyPrefix = "heguang_submit_duty:";
         if (actionId.StartsWith(submitDutyPrefix, StringComparison.Ordinal))
         {
@@ -702,6 +766,7 @@ public partial class MainScene
             human.sect_active_yuxu_duty_started_hour = -1;
             human.sect_active_yuxu_duty_stage = 0;
             human.sect_active_yuxu_duty_ready = false;
+            on_yuxu_official_duty_started(human, dutyId, dutyInstanceId);
             mark_save_dirty();
             refresh_yuxu_life_context();
             show_message("接取事务", dutyId switch
@@ -1224,7 +1289,7 @@ public partial class MainScene
 
     private void restore_tianwen_practice_location()
     {
-        if (_qingxi_prologue != QingxiPrologueStep.Departed || _player_world_node_id != "yuxu_xianzong_core") return;
+        if (!has_open_world_access() || _player_world_node_id != "yuxu_xianzong_core") return;
         estate?.Hide(); tile_world_map?.Hide(); node_map?.Hide(); location_interior?.Hide();
         open_faction_overview_if_available(_player_world_node_id);
         GetNodeOrNull<Node>("SceneLayer/YuxuXianzongOverview")?.Call("_on_peak_pressed", "tianwen");

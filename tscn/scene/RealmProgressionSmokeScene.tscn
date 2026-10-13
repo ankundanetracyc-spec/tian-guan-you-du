@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene format=3 uid="uid://bo4hheonivw4v"]
 
-[ext_resource type="Script" path="res://csharp/scene/RealmProgressionSmokeScene.cs" id="1"]
+[ext_resource type="Script" uid="uid://bdlpu0wusqnei" path="res://csharp/scene/RealmProgressionSmokeScene.cs" id="1"]
+[ext_resource type="Script" path="res://scripts/GeneratedNode.gd" id="2_tcw1y"]
 
-[node name="RealmProgressionSmokeScene" type="Control"]
+[node name="RealmProgressionSmokeScene" type="Control" unique_id=1992857129]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,3 +11,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1")
+
+[node name="GeneratedNode" type="Node2D" parent="." unique_id=485219057]
+script = ExtResource("2_tcw1y")

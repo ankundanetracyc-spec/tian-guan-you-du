@@ -48,7 +48,7 @@ public partial class InfoPanel
 
     private static StyleBoxFlat CharacterStyle(bool selected = false, int padding = 16) => new()
     {
-        BgColor = selected ? new Color("c5d0b8", .62f) : new Color("efe4c7", .55f),
+        BgColor = new Color("efe4c7", .55f),
         BorderColor = selected ? new Color("5c8175") : new Color("ad9875", .8f),
         BorderWidthLeft = selected ? 2 : 1, BorderWidthRight = selected ? 2 : 1,
         BorderWidthTop = selected ? 2 : 1, BorderWidthBottom = selected ? 2 : 1,
@@ -56,15 +56,33 @@ public partial class InfoPanel
         ContentMarginTop = padding, ContentMarginBottom = padding
     };
 
+    // 按钮只勾亮边缘，底色透出原纸面／贴图，不用纯色块盖住素材。
+    private static StyleBoxFlat CharacterButtonStyle(bool selected = false, int padding = 8, bool highlight = false)
+    {
+        var style = CharacterStyle(selected, padding);
+        style.BgColor = Colors.Transparent;
+        style.DrawCenter = false;
+        if (highlight)
+        {
+            style.BorderColor = new Color("c5ad77");
+            style.BorderWidthLeft = style.BorderWidthRight = style.BorderWidthTop = style.BorderWidthBottom = 2;
+        }
+        return style;
+    }
+
     private static Button CharacterButton(string text, int size = 21, bool selected = false, int padding = 8)
     {
         var button = new Button { Text = text, CustomMinimumSize = new Vector2(0, 42) };
         WorldHudStyle.StyleSmallButton(button, size);
-        button.AddThemeStyleboxOverride("normal", CharacterStyle(selected, padding));
-        button.AddThemeStyleboxOverride("hover", CharacterStyle(true, padding));
-        button.AddThemeStyleboxOverride("pressed", CharacterStyle(true, padding));
-        button.AddThemeStyleboxOverride("disabled", CharacterStyle(false, padding));
+        button.AddThemeColorOverride("font_hover_pressed_color", WorldHudStyle.Ink);
+        button.AddThemeStyleboxOverride("normal", CharacterButtonStyle(selected, padding));
+        foreach (var state in new[] { "hover", "pressed", "hover_pressed" })
+            button.AddThemeStyleboxOverride(state, CharacterButtonStyle(selected, padding, true));
+        button.AddThemeStyleboxOverride("disabled", CharacterButtonStyle(false, padding));
+        button.AddThemeStyleboxOverride("focus", CharacterButtonStyle(selected, padding, true));
         button.AddThemeColorOverride("font_disabled_color", new Color("89806b"));
+        button.MouseEntered += () => { if (!button.Disabled) button.Modulate = new Color(1.07f, 1.05f, 1.01f); };
+        button.MouseExited += () => button.Modulate = Colors.White;
         return button;
     }
 
@@ -102,7 +120,9 @@ public partial class InfoPanel
         edit.AddThemeColorOverride("font_placeholder_color", new Color("89816c"));
         edit.AddThemeColorOverride("caret_color", WorldHudStyle.Ink);
         edit.AddThemeStyleboxOverride("normal", CharacterStyle(false, 7));
-        edit.AddThemeStyleboxOverride("focus", CharacterStyle(true, 7)); return edit;
+        var focus = CharacterStyle(false, 7); focus.BorderColor = new Color("c5ad77");
+        focus.BorderWidthLeft = focus.BorderWidthRight = focus.BorderWidthTop = focus.BorderWidthBottom = 2;
+        edit.AddThemeStyleboxOverride("focus", focus); return edit;
     }
 
     private static void CharacterClear(Node node)
@@ -127,7 +147,8 @@ public partial class InfoPanel
             MouseFilter = MouseFilterEnum.Ignore };
         _characterCanvas.AddChild(backdrop); CharacterRect(backdrop, 0, 0, 1672, 941);
         var back = CharacterButton("←", 30); _characterCanvas.AddChild(back); CharacterRect(back, 28, 18, 52, 48); back.Pressed += hide_panel;
-        back.AddThemeStyleboxOverride("normal", new StyleBoxTexture { Texture = GD.Load<Texture2D>("res://textures/ui/gongfa_back_button_v1.png") });
+        var backMaterial = new StyleBoxTexture { Texture = GD.Load<Texture2D>("res://textures/ui/gongfa_back_button_v1.png") };
+        foreach (var state in new[] { "normal", "hover", "pressed", "hover_pressed" }) back.AddThemeStyleboxOverride(state, backMaterial);
         _characterTitle = CharacterText("概览", 32); _characterCanvas.AddChild(_characterTitle); CharacterRect(_characterTitle, 92, 15, 300, 54);
         var inventory = CharacterButton("行囊 ↗", 24); _characterCanvas.AddChild(inventory); CharacterRect(inventory, 1505, 20, 140, 46);
         inventory.Pressed += () => { if (current_card is Character human && GetTree().GetFirstNodeInGroup("storage_panel") is StoragePanel storage) { storage.bind_player(human); hide_panel(); storage.show_panel(); storage.MoveToFront(); } };
@@ -142,6 +163,8 @@ public partial class InfoPanel
         {
             var page = i; var button = CharacterButton("     " + names[i], 30); _characterCanvas.AddChild(button);
             CharacterRect(button, 34, 229 + i * 77, 208, 62);
+            foreach (var state in new[] { "font_color", "font_hover_color", "font_pressed_color", "font_focus_color", "font_hover_pressed_color" })
+                button.AddThemeColorOverride(state, new Color("eee8d7"));
             if (regions[i] >= 0 && icons is not null)
             {
                 var icon = CharacterIcon(new AtlasTexture { Atlas = icons, Region = new Rect2(regions[i] % 3 * 512, regions[i] / 3 * 512, 512, 512) }, 38);
@@ -213,8 +236,10 @@ public partial class InfoPanel
         for (var i = 0; i < _characterTabs.Count; i++)
         {
             _characterTabs[i].Show();
-            _characterTabs[i].AddThemeStyleboxOverride("normal", i == page ? new StyleBoxTexture { Texture = _selectedTabPlaque } : new StyleBoxEmpty());
-            _characterTabs[i].AddThemeColorOverride("font_color", i == page ? WorldHudStyle.Ink : new Color("eee8d7"));
+            var material = i == page ? (StyleBox)new StyleBoxTexture { Texture = _selectedTabPlaque } : new StyleBoxEmpty();
+            foreach (var state in new[] { "normal", "hover", "pressed", "hover_pressed" }) _characterTabs[i].AddThemeStyleboxOverride(state, material);
+            foreach (var state in new[] { "font_color", "font_hover_color", "font_pressed_color", "font_focus_color", "font_hover_pressed_color" })
+                _characterTabs[i].AddThemeColorOverride(state, i == page ? WorldHudStyle.Ink : new Color("eee8d7"));
         }
         switch (page)
         {
@@ -236,17 +261,27 @@ public partial class InfoPanel
     private void build_character_reader()
     {
         _readerPanel = new PanelContainer { Name = "CharacterHover", ZIndex = 750, MouseFilter = MouseFilterEnum.Stop };
-        var readerStyle = CharacterStyle(false, 18); readerStyle.BgColor = new Color("efe4c7");
-        _readerPanel.AddThemeStyleboxOverride("panel", readerStyle); AddChild(_readerPanel);
-        var box = CharacterBox(_readerPanel); var heading = new HBoxContainer(); heading.AddThemeConstantOverride("separation", 16); box.AddChild(heading);
+        _readerPanel.AddThemeStyleboxOverride("panel", new StyleBoxEmpty()); AddChild(_readerPanel);
+        _readerPanel.AddChild(new InventoryPaperFrame { Dark = true });
+        var margin = new MarginContainer();
+        foreach (var side in new[] { "left", "right", "top", "bottom" }) margin.AddThemeConstantOverride("margin_" + side, 18);
+        _readerPanel.AddChild(margin);
+        var box = CharacterBox(margin); var heading = new HBoxContainer(); heading.AddThemeConstantOverride("separation", 16); box.AddChild(heading);
         _readerIcon = CharacterIcon(null, 72); heading.AddChild(_readerIcon);
         _readerTitle = CharacterParagraph("", 27); _readerTitle.SizeFlagsHorizontal = SizeFlags.ExpandFill; heading.AddChild(_readerTitle);
-        box.AddChild(new HSeparator()); _readerScroll = CharacterScroll(box);
+        _readerTitle.AddThemeColorOverride("font_color", new Color("f0ead7"));
+        var rule = new HSeparator(); rule.AddThemeStyleboxOverride("separator", new StyleBoxFlat { BgColor = new Color("9c967c"), ContentMarginTop = 1 });
+        box.AddChild(rule); _readerScroll = CharacterScroll(box);
+        var scrollbar = _readerScroll.GetVScrollBar(); scrollbar.CustomMinimumSize = new Vector2(8, 0);
+        scrollbar.AddThemeStyleboxOverride("scroll", new StyleBoxFlat { BgColor = new Color("262b23"), ContentMarginLeft = 3, ContentMarginRight = 3 });
+        foreach (var state in new[] { "grabber", "grabber_highlight", "grabber_pressed" })
+            scrollbar.AddThemeStyleboxOverride(state, new StyleBoxFlat { BgColor = new Color(state == "grabber" ? "8f9179" : "c5ad77"), CornerRadiusTopLeft = 2, CornerRadiusTopRight = 2, CornerRadiusBottomLeft = 2, CornerRadiusBottomRight = 2 });
         _readerText = new RichTextLabel { BbcodeEnabled = true, FitContent = true, ScrollActive = false,
             SizeFlagsHorizontal = SizeFlags.ExpandFill, MouseFilter = MouseFilterEnum.Ignore };
         _readerText.AddThemeFontOverride("normal_font", GD.Load<FontFile>(CharacterFont));
         _readerText.AddThemeFontOverride("bold_font", GD.Load<FontFile>(CharacterFont));
-        _readerText.AddThemeFontSizeOverride("normal_font_size", 19); _readerText.AddThemeColorOverride("default_color", WorldHudStyle.Ink);
+        _readerText.AddThemeFontSizeOverride("normal_font_size", 19); _readerText.AddThemeColorOverride("default_color", new Color("ded8c6"));
+        _readerText.AddThemeColorOverride("font_selected_color", new Color("fff4d8"));
         _readerText.AddThemeConstantOverride("line_separation", 5); _readerScroll.AddChild(_readerText);
         _readerPanel.MouseExited += async () => { var ticket = ++_readerTicket; await ToSignal(GetTree().CreateTimer(.18), SceneTreeTimer.SignalName.Timeout); if (ticket == _readerTicket && GodotObject.IsInstanceValid(this) && (_readerAnchor is null || !_readerAnchor.GetGlobalRect().HasPoint(GetGlobalMousePosition())) && !_readerPanel.GetGlobalRect().HasPoint(GetGlobalMousePosition())) _readerPanel.Hide(); };
         _readerPanel.MouseEntered += () => ++_readerTicket; _readerPanel.Hide();
@@ -272,7 +307,7 @@ public partial class InfoPanel
     {
         if (_readerPanel is null || _readerText is null || !IsVisibleInTree() || string.IsNullOrWhiteSpace(body)) return;
         _readerAnchor = anchor; _readerTitle!.Text = title; _readerIcon!.Texture = icon; _readerIcon.Visible = icon is not null;
-        _readerText.Text = body; _readerScroll!.ScrollVertical = 0;
+        _readerText.Text = body.Replace("[color=#2f6f3a]", "[color=#acc8a0]").Replace("[color=#9b3027]", "[color=#d4a08d]"); _readerScroll!.ScrollVertical = 0;
         var scale = Mathf.Clamp(Size.Y / 941f, .7f, 1.3f); _readerPanel.Scale = Vector2.One * scale;
         var width = Mathf.Min(460, (Size.X - 24) / scale);
         _readerText.CustomMinimumSize = new Vector2(width - 36, 0);
@@ -284,7 +319,9 @@ public partial class InfoPanel
     private void place_character_reader()
     {
         if (_readerPanel is null || !_readerPanel.Visible) return;
-        var scale = _readerPanel.Scale.X; var maxHeight = Mathf.Max(120, (Size.Y - 40) / scale - 115);
+        var scale = _readerPanel.Scale.X;
+        var chromeHeight = Mathf.Max(0, _readerPanel.GetCombinedMinimumSize().Y - _readerScroll!.GetCombinedMinimumSize().Y);
+        var maxHeight = Mathf.Max(40, (Size.Y - 24) / scale - chromeHeight);
         _readerScroll!.CustomMinimumSize = new Vector2(0, Mathf.Clamp(_readerText!.GetContentHeight() + 8, 40, maxHeight));
         _readerPanel.Size = new Vector2(_readerPanel.Size.X, 0);
         var bounds = _readerAnchor is not null && GodotObject.IsInstanceValid(_readerAnchor) ? _readerAnchor.GetGlobalRect() : new Rect2(GetGlobalMousePosition(), Vector2.Zero);
