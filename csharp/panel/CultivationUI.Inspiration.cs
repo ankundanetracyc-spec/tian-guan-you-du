@@ -15,10 +15,11 @@ public partial class CultivationUI
         var root = room_box(_inspirationPage);
         root.AddThemeConstantOverride("separation", 14);
 
+        var headingPaper = new PanelContainer(); headingPaper.AddThemeStyleboxOverride("panel", QuietRoomStyle.Paper(1, 14)); root.AddChild(headingPaper);
         var heading = new VBoxContainer();
         heading.AddThemeConstantOverride("separation", 4);
-        root.AddChild(heading);
-        heading.AddChild(QuietRoomStyle.Text("灵感与瓶颈", 32));
+        headingPaper.AddChild(heading);
+        heading.AddChild(QuietRoomStyle.Text("灵感与瓶颈", 28));
         var intro = QuietRoomStyle.Text("经历所生的灵感可在此查看；选中一份，可用于炼化当前云息瓶颈。", 17);
         intro.AutowrapMode = TextServer.AutowrapMode.WordSmart;
         heading.AddChild(intro);

@@ -1,10 +1,12 @@
 using Godot;
+using System.Threading.Tasks;
 
 public partial class EastWoodsDungeonPanel
 {
     private const double PawnStepSeconds = .42;
     private Control? _travelPawn;
     private Tween? _pawnTween;
+    private TaskCompletionSource<bool>? _pawnStepCompletion;
     private bool _playerFacingLeft;
     private readonly System.Collections.Generic.Dictionary<string, bool> _npcFacingLeft = new(System.StringComparer.Ordinal);
 
@@ -32,6 +34,7 @@ public partial class EastWoodsDungeonPanel
         destination.Hide();
         clear_hover();
         refresh_action_bar();
+        _pawnStepCompletion = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
         _pawnTween = CreateTween();
         _pawnTween.TweenMethod(Callable.From<float>(t =>
         {
@@ -46,6 +49,8 @@ public partial class EastWoodsDungeonPanel
     {
         _pawnTween?.Kill();
         _pawnTween = null;
+        var completion = _pawnStepCompletion;
+        _pawnStepCompletion = null;
         _travelCameraPosition = null;
         if (_travelPawn is not null)
         {
@@ -55,5 +60,6 @@ public partial class EastWoodsDungeonPanel
         }
         if (_pawnLayers.TryGetValue(_current, out var layer)) layer.GetNodeOrNull<Control>("PlayerPawn")?.Show();
         refresh_action_bar();
+        completion?.TrySetResult(true);
     }
 }

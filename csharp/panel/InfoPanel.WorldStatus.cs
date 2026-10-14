@@ -56,7 +56,7 @@ public partial class InfoPanel
         _staticOverviewPage.AddChild(_overviewWorldStatusSection);
     }
 
-    private void refresh_overview_world_status(HumanData? data, long currentGameHour)
+    private void refresh_overview_world_status(HumanData? data, Godot.Collections.Dictionary? bottleneckSummary, long currentGameHour)
     {
         if (_overviewWorldStatusSection is null || _overviewWorldStatusList is null) return;
         if (data is null)
@@ -73,7 +73,8 @@ public partial class InfoPanel
         }
 
         var statuses = WorldStatusRules.active_records(data.world_status_records, currentGameHour);
-        if (statuses.Count == 0)
+        var hasBottleneck = CharacterStatusPresentationRules.has_active_bottleneck(bottleneckSummary);
+        if (statuses.Count == 0 && !hasBottleneck)
         {
             var empty = new Label
             {
@@ -88,8 +89,34 @@ public partial class InfoPanel
             return;
         }
 
+        if (hasBottleneck)
+            _overviewWorldStatusList.AddChild(build_overview_bottleneck_row(bottleneckSummary!));
         foreach (var record in statuses)
             _overviewWorldStatusList.AddChild(build_overview_world_status_row(record, currentGameHour));
+    }
+
+    private static Control build_overview_bottleneck_row(Godot.Collections.Dictionary summary)
+    {
+        var row = new PanelContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, ClipContents = true, MouseFilter = MouseFilterEnum.Ignore };
+        row.AddThemeStyleboxOverride("panel", new StyleBoxFlat
+        {
+            BgColor = new Color("#f5eedc"),
+            BorderColor = new Color("#a99a7b", .56f),
+            BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1,
+            ContentMarginLeft = 12, ContentMarginRight = 12,
+            ContentMarginTop = 9, ContentMarginBottom = 9
+        });
+        var detail = new Label
+        {
+            Text = CharacterStatusPresentationRules.format_bottleneck_details(summary),
+            AutowrapMode = TextServer.AutowrapMode.WordSmart,
+            SizeFlagsHorizontal = SizeFlags.ExpandFill,
+            MouseFilter = MouseFilterEnum.Ignore
+        };
+        detail.AddThemeFontSizeOverride("font_size", 17);
+        detail.AddThemeColorOverride("font_color", new Color("#4c4436"));
+        row.AddChild(detail);
+        return row;
     }
 
     private static Control build_overview_world_status_row(WorldStatusRecord record, long currentGameHour)
@@ -153,6 +180,6 @@ public partial class InfoPanel
     public void refresh_player_world_status_details(Character player, long currentGameHour)
     {
         if (!ReferenceEquals(current_card, player) || _activeNewPage != 0 || !IsVisibleInTree()) return;
-        refresh_overview_world_status(player.entity_data as HumanData, currentGameHour);
+        refresh_overview_world_status(player.entity_data as HumanData, player.get_cultivation_bottleneck_summary(), currentGameHour);
     }
 }

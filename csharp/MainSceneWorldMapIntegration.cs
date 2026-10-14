@@ -91,6 +91,17 @@ public partial class MainScene
             }
         }
 
+        if (player?.entity_data is HumanData human && _npc_world?.get_active_yuxu_case_transport(human) is { } task &&
+            task.temporary_party_member_active && task.journey_status == YuxuSectCaseTaskRecord.JourneyInTransit)
+        {
+            var remainingPath = tile_world_map.Call("get_remaining_travel_path").AsGodotArray<Vector2I>();
+            var remainingHours = tile_world_map.Call("get_path_travel_hours", remainingPath).AsSingle();
+            _npc_world.update_yuxu_case_transport_position(
+                human.sect_active_yuxu_duty_incident_id, task.task_id, human.sect_active_yuxu_duty_instance_id,
+                cell, locationNodeId, "", remainingHours);
+            check_yuxu_case_transport_world_interception(cell);
+        }
+
         // 普通格也保留名单外框与明确空状态；每次逐格抵达都按该格刷新，不再留着上一个地点的人物。
         refresh_tile_world_character_list(cell, locationNodeId);
     }

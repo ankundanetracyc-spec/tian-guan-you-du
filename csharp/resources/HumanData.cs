@@ -53,6 +53,10 @@ public partial class HumanData : LivingData
     [Export] public string sect_reputation_summary = "";
     /// <summary>逐势力七阶态度记录；与百川区域声望及 NPC 个人关系分开。</summary>
     [Export] public Array<FactionAttitudeRecord> faction_attitude_records = [];
+    /// <summary>主角对其他人物的稀疏单向关系记录；不含其他人物对主角的内在感受。</summary>
+    [Export] public Dictionary directed_relationships = [];
+    /// <summary>主角关系证据已归纳至的月份；与 NPC 月结算游标分开。</summary>
+    [Export] public int relationship_last_processed_month = -1;
     /// <summary>各区域公开事迹流水；只参与对应地区的区域声望计算。</summary>
     [Export] public Array<RegionalRenownRecord> regional_renown_records = [];
     /// <summary>玩家在此世发生的可追溯经历事实；不由业力、声望或关系推导。</summary>

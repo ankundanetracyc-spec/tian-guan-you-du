@@ -313,9 +313,13 @@ public partial class MainScene
         }
 
         if (actionId != "yaopu_cultivate") return;
+        var overview = GetNodeOrNull<Control>("SceneLayer/YuxuXianzongOverview");
+        if (_player_current_yuxu_peak_id != "yaopu" || overview?.Visible != true ||
+            overview.GetNodeOrNull<Control>("PeakInterior")?.IsVisibleInTree() != true || _east_woods_dungeon?.Visible == true)
+            return;
         if (human.sect_active_yuxu_duty_id != YuxuYaopuCultivationDutyId)
         {
-            show_message("培护灵植", "先到和光峰事务值房接取雾铃花培育，再来瑶圃峰照料苗株。");
+            handle_yuxu_free_yaopu_cultivation(human);
             return;
         }
 
@@ -407,6 +411,73 @@ public partial class MainScene
                 treasuryItemPath: MistBellFlowerItemPath,
                 treasuryItemCount: deliveryCount))
             return;
+    }
+
+    private void handle_yuxu_free_yaopu_cultivation(HumanData human)
+    {
+        if (player is null) return;
+        var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
+        if (time is null)
+        {
+            show_message("培护未完成", "游戏历法尚未就绪。");
+            return;
+        }
+
+        var stage = human.sect_yaopu_free_cultivation_stage;
+        var startedHour = human.sect_yaopu_free_cultivation_started_hour;
+        if (stage == 1 && startedHour >= 0)
+        {
+            var elapsed = Math.Max(0, time.get_total_game_hours() - startedHour);
+            var required = YuxuSectPrototypeBalance.YaopuCultivationHours;
+            if (elapsed < required)
+            {
+                var remaining = required - elapsed;
+                show_message("雾铃花尚未成熟", $"苗株已生长 {elapsed} / {required} 个游戏时辰；还需 {remaining} 个游戏时辰。之后再回来采收。日常培护不需要另行接取公事。");
+                return;
+            }
+
+            var yieldCount = YuxuSectPrototypeBalance.YaopuCultivationYieldCount;
+            if (!player.add_item_to_inventory(MistBellFlowerItemPath, yieldCount))
+            {
+                show_message("行囊已满", $"雾铃花已成熟，但行囊无法容纳 {yieldCount} 株；整理行囊后再来采收，生长状态会保留。");
+                return;
+            }
+            human.sect_yaopu_free_cultivation_stage = 2;
+            mark_save_dirty();
+            refresh_yuxu_life_context();
+            show_message("采收雾铃花", $"雾铃花 ×{yieldCount} 已采收入行囊，归你所有。此次为峰内日常培护，不入宗门公库，也不结算贡献；再次培护须由你主动开始。");
+            return;
+        }
+
+        var careHours = YuxuSectPrototypeBalance.YaopuCultivationStartHours;
+        var staminaCost = YuxuSectPrototypeBalance.YaopuCultivationStartStaminaCost;
+        if (!player.can_spend_world_stamina(staminaCost))
+        {
+            show_message("体力不足", $"照料苗株需 {staminaCost:0.#} 点体力，当前体力不足；可休息后再来。");
+            return;
+        }
+
+        run_time_transition(
+            "照料雾铃花",
+            $"在瑶圃峰雾铃园培护一株幼苗，用时 {careHours} 个游戏时辰，消耗体力 {staminaCost:0.#} 点。成熟后再回来采收。",
+            "幼苗已妥善照料。待其生长满一个游戏昼夜，再来采收。",
+            () =>
+            {
+                if (player is null || player.entity_data is not HumanData current ||
+                    current.sect_active_yuxu_duty_id == YuxuYaopuCultivationDutyId ||
+                    current.sect_yaopu_free_cultivation_stage != stage ||
+                    !player.try_spend_world_stamina(staminaCost))
+                {
+                    show_message("照料未完成", "事务状态或体力已变化，未推进历法。");
+                    return;
+                }
+                time.add_hours(careHours);
+                current.sect_yaopu_free_cultivation_started_hour = time.get_total_game_hours();
+                current.sect_yaopu_free_cultivation_stage = 1;
+                mark_save_dirty();
+                refresh_yuxu_life_context();
+                show_message("幼苗已照料", "已用时并消耗体力完成培护。等待一个游戏昼夜后，可回来采收归自己的雾铃花。");
+            });
     }
 
     private void on_east_woods_route_node_entered(string nodeId)
@@ -608,7 +679,7 @@ public partial class MainScene
             return;
         }
 
-        if (peakId == "zhizhong" && actionId is "zhizhong_case_docket" or "zhizhong_case_enforce")
+        if (peakId == "zhizhong" && actionId is "zhizhong_case_docket" or "zhizhong_case_enforce" or "zhizhong_case_handoff")
         {
             on_yuxu_case_docket_action(actionId, human);
             return;
@@ -668,8 +739,93 @@ public partial class MainScene
         }
     }
 
+    private void handle_yuxu_heguang_peer_qa(HumanData human)
+    {
+        var overview = GetNodeOrNull<Control>("SceneLayer/YuxuXianzongOverview");
+        var peakInterior = overview?.GetNodeOrNull<Control>("PeakInterior");
+        var manager = _npc_world ?? GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager");
+        var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
+        if (player is null || story_dialogue is null || manager is null || time is null ||
+            human.sect_affiliation_id != YuxuSectId || !is_supported_yuxu_life_rank(human.sect_current_rank) ||
+            _player_current_yuxu_peak_id != "heguang" || overview?.Visible != true || peakInterior?.IsVisibleInTree() != true ||
+            _east_woods_dungeon?.Visible == true)
+            return;
+
+        var peer = manager.get_subscene_roster("yuxu_xianzong_core", "heguang")
+            .Where(npc => npc.faction_id == YuxuSectId && !npc.is_yuxu_lineage_staff &&
+                is_supported_yuxu_life_rank(npc.formal_identity))
+            .OrderBy(npc => npc.npc_id, StringComparer.Ordinal)
+            .FirstOrDefault();
+        if (peer is null)
+        {
+            show_message("同门答疑", "和光峰此刻没有在场的同门可供请教。稍后再来，不消耗体力。");
+            return;
+        }
+
+        info?.hide_panel();
+        npc_interactions?.close();
+        var cost = WorldStaminaRules.ConversationCost;
+        void Answer(bool ask)
+        {
+            if (!ask)
+            {
+                story_dialogue.show_social_result(peer, new("你决定改日再来请教。", "", []) { ActionName = "暂缓答疑" });
+                return;
+            }
+            if (player?.entity_data is not HumanData current || current.sect_affiliation_id != YuxuSectId ||
+                !is_supported_yuxu_life_rank(current.sect_current_rank) || _player_current_yuxu_peak_id != "heguang" ||
+                overview.Visible != true || peakInterior.IsVisibleInTree() != true || !can_contact_social_npc(peer) ||
+                manager.get_npc(peer.npc_id) != peer)
+            {
+                story_dialogue.show_social_result(peer, new("同门已不在和光峰，或你已离开此处；本次没有消耗体力，也未记下答疑。", "", []) { ActionName = "答疑未成" });
+                return;
+            }
+            if (!player.can_spend_world_stamina(cost) || !player.try_spend_world_stamina(cost))
+            {
+                story_dialogue.show_social_result(peer, new("你有些疲惫，便把请教留待改日。", "", []) { ActionName = "体力不足" });
+                return;
+            }
+
+            var monthIndex = get_game_month_index(time);
+            var dateLabel = $"{time.year}年{time.month}月{time.day}日 {time.hour:D2}时";
+            const string outcome = "你们就宗门日常与修行中的疑问作了交流；此次答疑不改变同门关系，也不结算灵感或贡献。";
+            peer.record(new NpcActionRecord
+            {
+                month_index = monthIndex,
+                date_label = dateLabel,
+                action_id = "heguang_peer_qa",
+                action_name = "同门答疑",
+                node_id = peer.current_node_id,
+                subscene_id = peer.current_subscene_id,
+                target_npc_id = "player",
+                reason = "玩家在和光峰主动请教同门，交流已实际完成。",
+                outcome = outcome,
+            });
+            mark_save_dirty();
+            story_dialogue.show_social_result(peer, new(outcome, "", ["你们围绕宗门日常与修行中的疑问交流了一番。"])
+            {
+                StaminaSpent = cost,
+                ActionName = "同门答疑",
+            });
+        }
+
+        story_dialogue.show_social_choices(player, peer,
+            $"你向{peer.npc_name}请教宗门日常。交流需消耗体力 {cost:0.#} 点。",
+            new (string, Action)[]
+            {
+                ($"请教宗门日常 · 体力 {cost:0.#}", () => Answer(true)),
+                ("改日再问", () => Answer(false)),
+            },
+            () => Answer(false), "同门答疑", "右键改日再问");
+    }
+
     private void handle_yuxu_heguang_action(string actionId, HumanData human)
     {
+        if (actionId == "heguang_peer_qa")
+        {
+            handle_yuxu_heguang_peer_qa(human);
+            return;
+        }
         if (handle_yuxu_case_task_heguang_action(actionId, human)) return;
         const string submitDutyPrefix = "heguang_submit_duty:";
         if (actionId.StartsWith(submitDutyPrefix, StringComparison.Ordinal))
@@ -739,6 +895,12 @@ public partial class MainScene
             {
                 refresh_yuxu_life_context();
                 show_message("暂不可接", "你目前没有符合条件、尚未研读的秘籍章节。取得或安排可研读的秘籍后，再来承接这项事务。");
+                return;
+            }
+            if (dutyId == YuxuYaopuCultivationDutyId && human.sect_yaopu_free_cultivation_stage == 1)
+            {
+                refresh_yuxu_life_context();
+                show_message("雾铃花仍在生长", "先回瑶圃峰采收当前这株自养幼苗，再接取宗门培育公事；峰内收获不能代替公事的独立照料与等待。");
                 return;
             }
             if (!string.IsNullOrWhiteSpace(human.sect_active_yuxu_duty_id) && human.sect_active_yuxu_duty_id != dutyId)
@@ -1178,7 +1340,7 @@ public partial class MainScene
         var dialog = new ConfirmationDialog
         {
             Title = "天问峰 · 演法台",
-            DialogText = $"以当前人物与技能配置，和按现有兽种资料生成的林地凶狼（凡兽）进行一场演练。战斗沿用正式战斗规则，战斗结果会照常回传。{dutyText}战斗中按 Esc 可结束并返回峰内。",
+            DialogText = $"以当前人物与技能配置，和按现有兽种资料生成的林地凶狼（凡兽）进行一场演练。战斗沿用正式战斗规则，战斗结果会照常回传。{dutyText}战斗中按 Esc 呼出暂歇菜单；选择“继续”可回到战局。",
             OkButtonText = "开始演练",
             CancelButtonText = "暂不前往"
         };

@@ -443,12 +443,42 @@ public partial class NpcSocialSmoke : Node
                 if (kind == "contact") await Capture(settled ? "impression_after" : "impression_before");
                 previewDialogue.close(); await Frames(3);
             }
+            foreach (var hasSect in new[] { true, false })
+            {
+                Call(preview, "BeginAdmission"); await Frames(3);
+                var admissionActor = Read<Character?>(preview, "_admissionPlayer")!;
+                var admissionHuman = (HumanData)admissionActor.entity_data!;
+                Check(string.IsNullOrEmpty(admissionHuman.sect_affiliation_id), "迎真试演混用了已入宗角色");
+                var skip = Read<Button>(previewDialogue, "_socialDone");
+                skip.EmitSignal(BaseButton.SignalName.Pressed); await Frames(3);
+                if (hasSect) await Capture("admission_review");
+                skip.EmitSignal(BaseButton.SignalName.Pressed); await Frames(3);
+                if (hasSect) await Capture("admission_question");
+                Choice(previewDialogue, hasSect ? "有" : "无").EmitSignal(BaseButton.SignalName.Pressed); await Frames(3);
+                var admissionDone = Read<Button>(previewDialogue, "_socialDone");
+                admissionDone.EmitSignal(BaseButton.SignalName.Pressed); await Frames(3);
+                if (!hasSect) await Capture("admission_result");
+                admissionDone.EmitSignal(BaseButton.SignalName.Pressed); await Frames(3);
+                Check(!previewDialogue.Visible && Read<Control>(preview, "_setupRoot").Visible &&
+                    string.IsNullOrEmpty(admissionHuman.sect_affiliation_id), "迎真试演实际办了入门或未返回菜单");
+            }
             Check(GetTree().CurrentScene == originalScene && player.current_world_stamina == formalStamina &&
                 previewPlayer.current_world_stamina == previewStamina && template.player_social_memory.Count == 0 &&
                 template.carried_items.Count == 0 && template.resources.Count == 0 && template.action_history.Count == 0 && template.social_priorities.Count == 1 &&
                 template.social_priorities.Contains("宗门") && Read<Control>(preview, "_setupRoot").Visible,
                 "三类试演影响了正式场景、体力、模板资源／认知，或结束后未返回菜单");
             previewLayer.QueueFree(); await Frames(3);
+            var entryAffiliation = ((HumanData)player.entity_data!).sect_affiliation_id;
+            Call(main, "begin_yuxu_gate_welcome"); await Frames(3);
+            Check(dialogue.Visible && dialogue.GetNodeOrNull("YuxuAdmissionInteraction") is not null &&
+                Read<Character?>(dialogue, "_socialPlayer") == player,
+                "正式山门入口仍使用旧面板，或未传入当前玩家立绘");
+            Read<Button>(dialogue, "_socialDone").EmitSignal(BaseButton.SignalName.Pressed); await Frames(3);
+            await Capture("admission_world_review");
+            dialogue.close(); await Frames(3);
+            Check(!dialogue.Visible && !Read<bool>(main, "_yuxuAdmissionInProgress") &&
+                ((HumanData)player.entity_data!).sect_affiliation_id == entryAffiliation,
+                "正式迎真取消未退出或意外改写所属宗门");
             var home = GD.Load<PackedScene>("res://tscn/scene/StartMenu.tscn").Instantiate<StartMenu>();
             AddChild(home); await Frames(5);
             Call(home, "ToggleDemoEntries"); await Frames(2);

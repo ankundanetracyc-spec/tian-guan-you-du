@@ -30,6 +30,18 @@ public partial class DungeonSeededLayoutSmoke : Node
                 Check(EastWoodsDungeonRules.get_nodes().Any(n=>n.Terrain==6),"竹林缺失");
                 Check(EastWoodsDungeonRules.get_nodes().Any(n=>n.Terrain==7),"阴岩地面缺失");
                 Check(EastWoodsDungeonRules.get_nodes().Count(n=>n.Feature=="spring")==1,"泉眼特征缺失或重复");
+                var resourcePoints=EastWoodsActions.ResourcePoints();
+                Check(resourcePoints.Count==8 &&
+                      resourcePoints.Count(p=>p.Action.Recovery==EastWoodsActions.ResourceRecoveryGroup.Common)==6 &&
+                      resourcePoints.Count(p=>p.Action.Recovery==EastWoodsActions.ResourceRecoveryGroup.SlowGrowth)==1 &&
+                      resourcePoints.Count(p=>p.Action.Recovery==EastWoodsActions.ResourceRecoveryGroup.Mineral)==1,
+                    "种子地图资源节点数量或恢复类别不符");
+                var slow=resourcePoints.Single(p=>p.Action.Recovery==EastWoodsActions.ResourceRecoveryGroup.SlowGrowth);
+                var mineral=resourcePoints.Single(p=>p.Action.Recovery==EastWoodsActions.ResourceRecoveryGroup.Mineral);
+                Check(EastWoodsDungeonRules.get_node(slow.Node) is {ResourceCategory:EastWoodsResourceCategory.Plant,ResourceNodeId:"mistbell_slow"} &&
+                      EastWoodsDungeonRules.get_node(mineral.Node) is {ResourceCategory:EastWoodsResourceCategory.Mineral,ResourceNodeId:"spirit_stone_vein"} &&
+                      EastWoodsDungeonRules.get_node(EastWoodsDungeonRules.get_nodes().Single(n=>n.Feature=="spring").Id) is {ResourceCategory:EastWoodsResourceCategory.None,ResourceNodeId:""},
+                    "种子地图的植物、矿脉或泉眼类别标注错误");
                 snapshots.Add(string.Join(";",EastWoodsDungeonRules.get_nodes().Select(n=>n.Id)));
             }
             Check(snapshots.Count==100,"不同种子的布局发生重复");
@@ -38,6 +50,15 @@ public partial class DungeonSeededLayoutSmoke : Node
             EastWoodsDungeonRules.validate_layout(layout);
             EastWoodsDungeonRules.validate_layout(new GDictionary());
             Check(Json.Stringify(EastWoodsDungeonRules.get_layout_state())==Json.Stringify(layout),"只读校验修改了当前地图");
+            var legacyLayout=layout.Duplicate(true);
+            legacyLayout["version"]=1;
+            EastWoodsDungeonRules.restore_layout(legacyLayout);
+            var migratedLayout=EastWoodsDungeonRules.get_layout_state();
+            Check(migratedLayout["version"].AsInt32()==2 &&
+                  EastWoodsActions.ResourcePoints().Count(p=>p.Action.Recovery==EastWoodsActions.ResourceRecoveryGroup.Mineral)==1 &&
+                  EastWoodsActions.ResourcePoints().Count(p=>p.Action.Recovery==EastWoodsActions.ResourceRecoveryGroup.SlowGrowth)==1,
+                "旧版地图快照没有迁移出类别明确的资源点");
+            EastWoodsDungeonRules.restore_layout(layout);
             var corrupted=layout.Duplicate(true);
             corrupted["edges"]=new Godot.Collections.Array();
             var rejected=false;
@@ -50,8 +71,25 @@ public partial class DungeonSeededLayoutSmoke : Node
             Check(EastWoodsDungeonRules.LayoutSeed!="legacy","新旅程未创建种子");
             EastWoodsDungeonRules.generate_layout("visual-check-20261011");
             var panel=new EastWoodsDungeonPanel(); AddChild(panel); panel.show_dungeon(); await Frames();
+            var slowPoint=EastWoodsActions.ResourcePoints().Single(p=>p.Action.Recovery==EastWoodsActions.ResourceRecoveryGroup.SlowGrowth);
+            var mineralPoint=EastWoodsActions.ResourcePoints().Single(p=>p.Action.Recovery==EastWoodsActions.ResourceRecoveryGroup.Mineral);
+            var slowKey=EastWoodsEcology.ActionProgressKey(slowPoint.Node,slowPoint.Action.Id);
+            var mineralKey=EastWoodsEcology.ActionProgressKey(mineralPoint.Node,mineralPoint.Action.Id);
             var state=panel.get_route_state(); state["current"]="outer_09_07";
-            state["actions"]=new GDictionary { ["smoke-marker"]=new GDictionary { ["remaining"]=1,["completed"]=true } };
+            state["actions"]=new GDictionary
+            {
+                ["smoke-marker"]=new GDictionary { ["remaining"]=1,["completed"]=true },
+                [slowKey]=1,
+                [mineralKey]=1,
+                ["__east_woods_ecology"]=new GDictionary
+                {
+                    ["resource_cursors"]=new GDictionary { [slowKey]=1234,[mineralKey]=5678 },
+                    ["ordinary_beast_cursor_hour"]=1234,
+                    ["next_beast_identity"]=1,
+                    ["ordinary_beast_encounters"]=new Godot.Collections.Array(),
+                    ["pending_beast_checks"]=new GDictionary(),
+                },
+            };
             panel.restore_route_state(state); panel.show_dungeon(); await Frames();
             var resource=new PersistentGameSave { scene_progress=new GDictionary { ["east_woods_dungeon_state"]=panel.get_route_state() } };
             tempPath="user://dungeon_seed_smoke_"+Guid.NewGuid().ToString("N")+".tres";
@@ -64,7 +102,15 @@ public partial class DungeonSeededLayoutSmoke : Node
             panel.restore_route_state(restored); panel.show_dungeon(); await Frames();
             Check(EastWoodsDungeonRules.LayoutSeed=="visual-check-20261011","正式存档未恢复种子");
             Check(panel.get_current_route_node_id()=="outer_09_07","当前位置丢失");
-            Check(panel.get_route_state()["actions"].AsGodotDictionary().ContainsKey("smoke-marker"),"资源事件进度丢失");
+            var restoredActions=panel.get_route_state()["actions"].AsGodotDictionary();
+            var restoredEcology=restoredActions["__east_woods_ecology"].AsGodotDictionary();
+            var restoredCursors=restoredEcology["resource_cursors"].AsGodotDictionary();
+            Check(restoredActions.ContainsKey("smoke-marker") && restoredActions[slowKey].AsInt32()==1 && restoredActions[mineralKey].AsInt32()==1 &&
+                  restoredCursors[slowKey].AsInt32()==1234 && restoredCursors[mineralKey].AsInt32()==5678,
+                "资源事件、储量进度或周期余时存档丢失");
+            Check(EastWoodsDungeonRules.get_node(slowPoint.Node)?.ResourceCategory==EastWoodsResourceCategory.Plant &&
+                  EastWoodsDungeonRules.get_node(mineralPoint.Node)?.ResourceCategory==EastWoodsResourceCategory.Mineral,
+                "正式Resource存档没有保留资源节点类别");
             Check(Json.Stringify(EastWoodsDungeonRules.get_layout_state())==Json.Stringify(layout),"正式存档地图改变");
             var map=panel.GetNode<Control>("MapViewport/OrthogonalNodeMap");
             Check(map.GetChildren().OfType<Button>().Count()==128,"界面未重建128格");
@@ -97,7 +143,7 @@ public partial class DungeonSeededLayoutSmoke : Node
             var legacy=new GDictionary { ["current"]="quiet_grove",["actions"]=state["actions"] };
             panel.restore_route_state(legacy); panel.show_dungeon(); await Frames();
             Check(panel.get_current_route_node_id()=="quiet_grove" && panel.get_route_state()["actions"].AsGodotDictionary().ContainsKey("smoke-marker"),"旧档进度丢失");
-            GD.Print("DUNGEON_SEEDED_LAYOUT_SMOKE_PASS: 100 seeds, graph, variants, new/legacy journeys, Resource save/load, UI and progress");
+            GD.Print("DUNGEON_SEEDED_LAYOUT_SMOKE_PASS: 100 seeds, categorized resource nodes, v1 migration, graph, variants, Resource save/load and UI");
             GetTree().Quit();
         }
         catch(Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }

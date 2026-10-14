@@ -28,9 +28,6 @@ public partial class EastWoodsDungeonPanel : Control
     private Control? _mapRoot;
     private Control? _connectionLayer;
     private Texture2D? _pawnTexture;
-    private PanelContainer? _hoverPanel;
-    private Label? _hoverTitle;
-    private Label? _hoverDescription;
     private Godot.Timer? _hoverTimer;
     private string _hoveredNode = "";
     private PanelContainer? _routePanel;
@@ -62,6 +59,7 @@ public partial class EastWoodsDungeonPanel : Control
 
     public override void _Ready()
     {
+        AddToGroup("east_woods_dungeon_panel");
         SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         MouseFilter = MouseFilterEnum.Stop;
         ZIndex = 210;
@@ -119,6 +117,29 @@ public partial class EastWoodsDungeonPanel : Control
 
     public string get_current_route_node_id() => _current;
     public bool is_route_traveling() => _isTraveling;
+
+    public bool begin_assigned_route(string destinationNodeId)
+    {
+        if (!Visible || _actionBusy || _npcEncounterBusy || _travelPawn is not null || _isTraveling ||
+            EastWoodsDungeonRules.get_node(destinationNodeId) is null)
+            return false;
+        if (_current == destinationNodeId) return true;
+        var path = find_shortest_path(_current, destinationNodeId);
+        if (path.Count < 2) return false;
+        _selected = destinationNodeId;
+        _pendingTarget = destinationNodeId;
+        _pendingPath = path;
+        start_pending_path();
+        return _isTraveling;
+    }
+
+    public int get_assigned_route_step_count(string destinationNodeId)
+    {
+        if (EastWoodsDungeonRules.get_node(destinationNodeId) is null) return -1;
+        if (_current == destinationNodeId) return 0;
+        var path = find_shortest_path(_current, destinationNodeId);
+        return path.Count < 2 ? -1 : path.Count - 1;
+    }
 
     public void set_npc_encounter_busy(bool busy)
     {
@@ -314,6 +335,9 @@ public partial class EastWoodsDungeonPanel : Control
                 button.AddChild(overlay);
             }
 
+            if (EastWoodsResourceNodes.ForNode(node) is { } resourceNode)
+                build_resource_node_marker(button, resourceNode);
+
             var title = WorldHudStyle.Text("", 14);
             title.HorizontalAlignment = HorizontalAlignment.Center;
             title.Position = new Vector2(4, 4);
@@ -326,6 +350,61 @@ public partial class EastWoodsDungeonPanel : Control
             _pawnLayers[node.Id] = pawns;
         }
 
+    }
+
+    private static void build_resource_node_marker(Button button, EastWoodsResourceNodes.Definition resourceNode)
+    {
+        var isPlant = resourceNode.Category == EastWoodsResourceCategory.Plant;
+        var item = EastWoodsActions.Item(resourceNode.Action.ItemPath);
+        var recoveryDays = EastWoodsEcology.RecoveryRate(resourceNode.Action.Recovery).PeriodHours / 24;
+        var marker = new PanelContainer
+        {
+            Name = "ResourceNodeMarker",
+            CustomMinimumSize = new Vector2(54, 30),
+            MouseFilter = MouseFilterEnum.Ignore,
+            TooltipText = $"资源点：{resourceNode.CategoryLabel} · {resourceNode.DisplayName}；每{recoveryDays}日恢复",
+        };
+        marker.SetAnchorsPreset(LayoutPreset.TopRight);
+        marker.OffsetLeft = -59;
+        marker.OffsetTop = 4;
+        marker.OffsetRight = -5;
+        marker.OffsetBottom = 34;
+        var panelStyle = new StyleBoxFlat
+        {
+            BgColor = isPlant ? new Color("405a3a") : new Color("72572f"),
+            BorderColor = isPlant ? new Color("c9d3a8") : new Color("e4c47b"),
+            BorderWidthLeft = 1,
+            BorderWidthTop = 1,
+            BorderWidthRight = 1,
+            BorderWidthBottom = 1,
+            CornerRadiusTopLeft = 7,
+            CornerRadiusTopRight = 7,
+            CornerRadiusBottomLeft = 7,
+            CornerRadiusBottomRight = 7,
+        };
+        marker.AddThemeStyleboxOverride("panel", panelStyle);
+        var row = new HBoxContainer { Alignment = BoxContainer.AlignmentMode.Center, MouseFilter = MouseFilterEnum.Ignore };
+        row.AddThemeConstantOverride("separation", 3);
+        marker.AddChild(row);
+        if (item is not null && ResourceLoader.Exists(item.icon_path))
+        {
+            row.AddChild(new TextureRect
+            {
+                Name = "ItemIcon",
+                Texture = ResourceLoader.Load<Texture2D>(item.icon_path),
+                CustomMinimumSize = new Vector2(18, 18),
+                ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
+                StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
+                MouseFilter = MouseFilterEnum.Ignore,
+            });
+        }
+        var category = WorldHudStyle.Text(isPlant ? "植" : "矿", 13);
+        category.Name = "Category";
+        category.HorizontalAlignment = HorizontalAlignment.Center;
+        category.VerticalAlignment = VerticalAlignment.Center;
+        category.CustomMinimumSize = new Vector2(18, 18);
+        row.AddChild(category);
+        button.AddChild(marker);
     }
 
     private void layout_map()
@@ -652,9 +731,14 @@ public partial class EastWoodsDungeonPanel : Control
         for (var index = 1; index < path.Length; index++)
         {
             if (generation != _travelGeneration || !GodotObject.IsInstanceValid(this) || !IsInsideTree() || !Visible) break;
-            move_one_node(path[index]);
+            if (!move_one_node(path[index])) break;
             if (generation != _travelGeneration || !GodotObject.IsInstanceValid(this) || !IsInsideTree() || !Visible) break;
-            await ToSignal(GetTree().CreateTimer(PawnStepSeconds), SceneTreeTimer.SignalName.Timeout);
+            // Advance only after the pawn animation really completes. A timer equal
+            // to the tween duration can resume first and make the next step collide
+            // with _travelPawn still being active.
+            var stepCompletion = _pawnStepCompletion?.Task;
+            if (stepCompletion is not null) await stepCompletion;
+            if (generation != _travelGeneration || !GodotObject.IsInstanceValid(this) || !IsInsideTree() || !Visible) break;
             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         }
         if (!GodotObject.IsInstanceValid(this) || !IsInsideTree() || generation != _travelGeneration) return;
@@ -664,10 +748,10 @@ public partial class EastWoodsDungeonPanel : Control
         RouteTravelFinished?.Invoke(_current);
     }
 
-    private void move_one_node(string nodeId)
+    private bool move_one_node(string nodeId)
     {
-        if (_npcEncounterBusy || _travelPawn is not null || _actionBusy || _actionModal?.Visible == true || CanMove?.Invoke() == false) return;
-        if (!EastWoodsDungeonRules.get_neighbors(_current).Contains(nodeId)) return;
+        if (_npcEncounterBusy || _travelPawn is not null || _actionBusy || _actionModal?.Visible == true || CanMove?.Invoke() == false) return false;
+        if (!EastWoodsDungeonRules.get_neighbors(_current).Contains(nodeId)) return false;
         if (!_isTraveling)
         {
             _pendingPath.Clear();
@@ -692,6 +776,7 @@ public partial class EastWoodsDungeonPanel : Control
         finally { _routeStepUpdating = false; }
         refresh();
         if (generation == _travelGeneration && Visible) animate_player_step(previous, sourcePosition);
+        return _current == nodeId;
     }
 
     private List<string> find_shortest_path(string from, string to)

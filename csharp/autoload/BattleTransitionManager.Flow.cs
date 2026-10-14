@@ -8,6 +8,8 @@ public partial class BattleTransitionManager
     private bool _flowTransitionActive;
     private BattleSceneTransition? _sceneTransition;
     public bool is_flow_transition_active()=>_flowTransitionActive;
+    public bool has_open_flow_view() => GodotObject.IsInstanceValid(_flowView);
+    public bool try_return_from_open_flow() => GodotObject.IsInstanceValid(_flowView) && _flowView!.try_return_to_previous_page();
     public async System.Threading.Tasks.Task HoldBattleOutro()
     {
         _flowTransitionActive=true;
@@ -28,6 +30,45 @@ public partial class BattleTransitionManager
     public GDictionary export_reward_ledger()=>_rewardLedger.Duplicate(true);
     public void restore_reward_ledger(GDictionary ledger)=>_rewardLedger=ledger.Duplicate(true);
     public void clear_reward_ledger(){CloseFlow();_rewardLedger.Clear();_lootReminder?.QueueFree();_lootReminder=null;_worldProgressSnapshot=null;}
+    public bool has_world_progress_snapshot() => _worldProgressSnapshot is not null;
+    public bool save_world_progress_snapshot()
+    {
+        if (_worldProgressSnapshot is null) return false;
+        var manager = GetNodeOrNull<GameSaveManager>("/root/GameSaveManager");
+        var copy = _worldProgressSnapshot.Duplicate(true) as PersistentGameSave ?? _worldProgressSnapshot;
+        return manager?.save_snapshot(copy) == true;
+    }
+
+    public void abandon_battle_for_title()
+    {
+        CloseFlow();
+        _sceneTransition?.QueueFree();
+        _sceneTransition = null;
+        _flowTransitionActive = false;
+        _awaitingSettlement = false;
+        pending_attackers = [];
+        pending_defenders = [];
+        pending_attacker_data = [];
+        pending_defender_data = [];
+        result_attackers = [];
+        result_defenders = [];
+        saved_world = null;
+        saved_entity_data.Clear();
+        _worldProgressSnapshot = null;
+        _beforeBattle.Clear();
+        _attackerOrder.Clear();
+        _defenderOrder.Clear();
+        _battleId = "";
+        _outcomeNote = "";
+        last_summary.Clear();
+        return_context.Clear();
+        has_results = false;
+        has_battle_return_data = false;
+        if (GodotObject.IsInstanceValid(_spectatorBattleScene)) _spectatorBattleScene!.QueueFree();
+        _spectatorBattleScene = null;
+        _spectatorBattleActive = false;
+        GetTree().Paused = false;
+    }
     private string _outcomeNote="";
     public void set_battle_outcome_note(string note)=>_outcomeNote=note;
     private bool Training=>return_context.GetValueOrDefault("is_training",false).AsBool() || return_context.GetValueOrDefault("kind","").AsString()=="yuxu_tianwen_practice";

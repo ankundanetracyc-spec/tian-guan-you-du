@@ -85,27 +85,9 @@ public partial class EastWoodsDungeonPanel
 
     private void build_hover()
     {
-        _hoverTimer = new Godot.Timer { WaitTime = .45, OneShot = true };
+        _hoverTimer = new Godot.Timer { WaitTime = .10, OneShot = true };
         AddChild(_hoverTimer);
         _hoverTimer.Timeout += show_hover;
-        _hoverPanel = new PanelContainer
-        {
-            Name = "TerrainHoverInfo", MouseFilter = MouseFilterEnum.Ignore,
-            CustomMinimumSize = new Vector2(310, 0), ZIndex = 1,
-        };
-        _hoverPanel.AddThemeStyleboxOverride("panel", WorldHudStyle.Paper());
-        AddChild(_hoverPanel);
-        var rows = new VBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
-        rows.AddThemeConstantOverride("separation", 8);
-        _hoverPanel.AddChild(rows);
-        _hoverTitle = WorldHudStyle.Text("", 22);
-        rows.AddChild(_hoverTitle);
-        rows.AddChild(WorldHudStyle.Rule());
-        _hoverDescription = WorldHudStyle.Text("", 17, true);
-        _hoverDescription.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-        _hoverDescription.CustomMinimumSize = new Vector2(280, 0);
-        rows.AddChild(_hoverDescription);
-        _hoverPanel.Hide();
     }
 
     private void begin_hover(string id)
@@ -118,52 +100,36 @@ public partial class EastWoodsDungeonPanel
 
     private void clear_hover()
     {
+        if (_nodeButtons.TryGetValue(_hoveredNode, out var button)) HoverInfoManager.HideFor(button);
         _hoveredNode = "";
         _hoverTimer?.Stop();
-        _hoverPanel?.Hide();
     }
 
     private void show_hover()
     {
         var node = EastWoodsDungeonRules.get_node(_hoveredNode);
-        if (!Visible || node is null || !is_node_visible(node.Id) || _hoverPanel is null || _hoverTitle is null || _hoverDescription is null) return;
+        if (!Visible || node is null || !is_node_visible(node.Id) || !_nodeButtons.TryGetValue(node.Id, out var anchor)) return;
         var (_, terrainName) = terrain_kind(node.Id);
-        _hoverTitle.Text = string.IsNullOrWhiteSpace(node.Title) ? terrainName : $"{node.Title} · {terrainName}";
-        _hoverDescription.Text = node.Description;
+        var title = string.IsNullOrWhiteSpace(node.Title) ? terrainName : $"{node.Title} · {terrainName}";
+        var description = node.Description;
         var availableAction = available_actions(node.Id).FirstOrDefault();
         if (availableAction is not null)
-            _hoverDescription.Text += "\n" + availableAction.Description;
+            description += "\n" + availableAction.Description;
         else if (EastWoodsActions.Content(node.Id) is not null)
-            _hoverDescription.Text += "\n此处行动已完成或资源已采尽。";
+            description += "\n此处行动已完成或资源已采尽。";
         if (_activeDutyId == "east_woods_patrol")
-            _hoverDescription.Text += _activeDutyReady ? "\n巡查复核完成，沿出口离开后回和光峰回报。" : $"\n巡查：{Math.Min(_activeDutyStage, YuxuSectPrototypeBalance.EastWoodsPatrolRequiredNodeMoves)}/{YuxuSectPrototypeBalance.EastWoodsPatrolRequiredNodeMoves} 格；静冠洼地复核后回宗回报。";
+            description += _activeDutyReady ? "\n巡查复核完成，沿出口离开后回和光峰回报。" : $"\n巡查：{Math.Min(_activeDutyStage, YuxuSectPrototypeBalance.EastWoodsPatrolRequiredNodeMoves)}/{YuxuSectPrototypeBalance.EastWoodsPatrolRequiredNodeMoves} 格；静冠洼地复核后回宗回报。";
         if (node.Id != _current)
         {
             var path = find_shortest_path(_current, node.Id);
             if (path.Count > 1)
-                _hoverDescription.Text += $"\n预计耗时：{format_hours((path.Count - 1) * EastWoodsDungeonRules.player_edge_hours(_playerDunSpeed))}";
+                description += $"\n预计耗时：{format_hours((path.Count - 1) * EastWoodsDungeonRules.player_edge_hours(_playerDunSpeed))}";
         }
-        _hoverPanel.Size = new Vector2(310, 0);
-        _hoverPanel.Show();
-        position_hover();
+        HoverInfoManager.SetInfo(anchor, new HoverInfoManager.HoverInfoContent(title, description), true);
     }
 
     public override void _Process(double delta)
     {
         if (Visible) update_map_camera();
-        if (Visible && _hoverPanel?.Visible == true) position_hover();
-    }
-
-    private void position_hover()
-    {
-        if (_hoverPanel is null) return;
-        var mouse = GetLocalMousePosition();
-        var panelSize = _hoverPanel.Size;
-        var x = mouse.X + 18;
-        if (x + panelSize.X > Size.X - 12) x = mouse.X - panelSize.X - 18;
-        var position = new Vector2(
-            Mathf.Clamp(x, 12, Mathf.Max(12, Size.X - panelSize.X - 12)),
-            Mathf.Clamp(mouse.Y + 18, 12, Mathf.Max(12, Size.Y - panelSize.Y - 12)));
-        if (!_hoverPanel.Position.IsEqualApprox(position)) _hoverPanel.Position = position;
     }
 }

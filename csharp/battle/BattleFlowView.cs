@@ -48,6 +48,16 @@ public partial class BattleFlowView : CanvasLayer
         await ToSignal(tween,Tween.SignalName.Finished);
     }
     public override void _Process(double delta)=>BattleUiArt.Fit(_canvas);
+    public bool try_return_to_previous_page()
+    {
+        for(var index=_buttons.GetChildCount()-1;index>=0;index--)
+            if(_buttons.GetChild(index) is Button back && back.Visible && !back.Disabled && back.Text=="返回")
+            {
+                back.EmitSignal(BaseButton.SignalName.Pressed);
+                return true;
+            }
+        return false;
+    }
     private static Panel Panel(Node parent,Vector2 position,Vector2 size)
     {
         var panel=new Panel{Position=position,Size=size,MouseFilter=Control.MouseFilterEnum.Pass};

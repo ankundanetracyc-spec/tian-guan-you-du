@@ -6,8 +6,10 @@ using System.Security.Cryptography;
 using System.Text;
 
 /// <summary>
-/// Deterministic pacing projection for the currently configured inspiration loops.
-/// It models the existing Yunxi rates/thresholds and bottle rules, not activity durations or random breakthrough rolls.
+/// Deterministic pacing projection for the configured inspiration loops.
+/// Runtime-derived cultivation rates and ordinary breakthrough durations are supplied by the smoke fixture.
+/// The activity schedule is a documented calendar estimate, not a runtime guarantee; six-to-seven is a
+/// successful condensation attempt with no added game-clock hours because the current flow defines no duration.
 /// </summary>
 public static class CultivationPacingAudit
 {
@@ -17,7 +19,6 @@ public static class CultivationPacingAudit
     private const double HoursPerOutdoorMonth = 15d * HoursPerDay;
 
     private static readonly int[] StrandThresholdByCurrentTier = [6, 18, 36, 60, 96, 144, 144, 198, 258, 324];
-    private static readonly int[] BaseBreakthroughDaysByTargetTier = [1, 2, 3, 5, 6, 8, 12, 10, 13, 18];
 
     public sealed class Result
     {
@@ -41,8 +42,14 @@ public static class CultivationPacingAudit
 
     /// <param name="generateInspiration">False models no insight awards; activities still occur.</param>
     /// <param name="actionUseShare">Fraction of awarded records the player reserves for a matching action.</param>
-    public static Result Simulate(bool generateInspiration, double actionUseShare)
+    /// <param name="baseRateForTier">Runtime-derived unbottlenecked cultivation rate for each current tier.</param>
+    /// <param name="transitionHoursForTargetTier">Runtime base duration for ordinary breakthroughs; condensation may return zero.</param>
+    public static Result Simulate(
+        bool generateInspiration, double actionUseShare,
+        Func<int, double> baseRateForTier, Func<int, double> transitionHoursForTargetTier)
     {
+        ArgumentNullException.ThrowIfNull(baseRateForTier);
+        ArgumentNullException.ThrowIfNull(transitionHoursForTargetTier);
         actionUseShare = Math.Clamp(actionUseShare, 0d, 1d);
         var result = new Result();
         var human = new HumanData();
@@ -84,15 +91,14 @@ public static class CultivationPacingAudit
             while (closedRemaining > 1e-8d && tier < 10)
             {
                 expire_records(elapsedHours, human);
-                enter_reached_tiers(ref tier, strands, ref elapsedHours, enteredTiers);
+                enter_reached_tiers(ref tier, strands, ref elapsedHours, enteredTiers, transitionHoursForTargetTier);
                 if (tier >= 10) break;
 
                 update_bottleneck_state(tier, bottleneckHours, ref bottleneckLevel, ref bottleneckRealmTier, ref penalty);
                 if (tier is >= 1 and <= 9 && bottleneckLevel > 0 && penalty > 0d)
                     refine_available_records(elapsedHours, tier, bottleneckLevel, ref penalty, human, refineAssigned, ref refinementUses);
 
-                var multiplier = tier == 0 ? 1d : Character.get_realm_cultivation_multiplier_for_tier(tier);
-                var rate = .005d * multiplier; // three roots, compatible generic main practice, cultivation environment factor 1.
+                var rate = baseRateForTier(tier);
                 if (tier is >= 1 and <= 9) rate *= 1d - penalty;
                 if (rate <= 0d) throw new InvalidOperationException("pacing projection has no positive cultivation rate");
 
@@ -110,7 +116,7 @@ public static class CultivationPacingAudit
                     segmentHours = Math.Min(segmentHours, strandsToNextTier / rate);
                 if (segmentHours <= 1e-8d)
                 {
-                    enter_reached_tiers(ref tier, strands, ref elapsedHours, enteredTiers);
+                    enter_reached_tiers(ref tier, strands, ref elapsedHours, enteredTiers, transitionHoursForTargetTier);
                     update_bottleneck_state(tier, bottleneckHours, ref bottleneckLevel, ref bottleneckRealmTier, ref penalty);
                     continue;
                 }
@@ -227,13 +233,15 @@ public static class CultivationPacingAudit
         return months;
     }
 
-    private static void enter_reached_tiers(ref int tier, double strands, ref double elapsedHours, HashSet<int> enteredTiers)
+    private static void enter_reached_tiers(
+        ref int tier, double strands, ref double elapsedHours, HashSet<int> enteredTiers,
+        Func<int, double> transitionHoursForTargetTier)
     {
         while (tier < 10 && strands + 1e-9d >= StrandThresholdByCurrentTier[tier])
         {
             tier++;
             if (enteredTiers.Add(tier))
-                elapsedHours += BaseBreakthroughDaysByTargetTier[tier - 1] * HoursPerDay;
+                elapsedHours += Math.Max(0d, transitionHoursForTargetTier(tier));
         }
     }
 

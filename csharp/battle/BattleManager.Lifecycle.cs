@@ -35,7 +35,6 @@ public partial class BattleManager : Node2D
                 GetViewport().SetInputAsHandled(); return;
             }
         }
-        if (@event is InputEventKey { Pressed: true, Echo: false, Keycode: Key.Escape }) { if (!UndoQueuePlanning() && battle_running) toggle_battle_pause(); GetViewport().SetInputAsHandled(); }
     }
     private bool CheckBattleOver()
     {

@@ -1,8 +1,18 @@
 using Godot;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public partial class InfoPanel
 {
     private string _relationQuery = "", _relationFilter = "全部", _relationSelected = "";
+
+    public void refresh_relationships()
+    {
+        if (!Visible || _characterCanvas is null || current_card is not Character character || character.entity_data is not HumanData)
+            return;
+        build_character_relations();
+    }
 
     private void build_character_relations()
     {
@@ -12,7 +22,10 @@ public partial class InfoPanel
         var filters = new HBoxContainer(); filters.AddThemeConstantOverride("separation", 10); list.AddChild(filters);
         var people = CharacterBox(CharacterScroll(list));
         var details = CharacterBox(CharacterPanel(page, 468, 0, 882, 795), "关系详情");
-        var all = GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager")?.npcs.Where(NpcSocialRules.KnowsName).ToList() ?? [];
+        var playerData = current_card is Character playerCharacter ? playerCharacter.entity_data as HumanData : null;
+        var knownIds = playerData?.directed_relationships.Keys.Select(key => key.AsString()).ToHashSet(StringComparer.Ordinal) ?? new HashSet<string>(StringComparer.Ordinal);
+        var all = GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager")?.npcs
+            .Where(npc => npc.player_known_npc_info.ContainsKey("name") || knownIds.Contains(npc.npc_id)).ToList() ?? [];
         void Select(WorldNpcData? npc)
         {
             foreach (var child in details.GetChildren().Skip(2).ToList()) { details.RemoveChild(child); child.QueueFree(); }
@@ -31,8 +44,27 @@ public partial class InfoPanel
             var profile = new HBoxContainer(); profile.AddThemeConstantOverride("separation", 24); details.AddChild(profile);
             var portrait = new PortraitRenderer { CustomMinimumSize = new Vector2(210, 270), MouseFilter = MouseFilterEnum.Ignore }; profile.AddChild(portrait); portrait.show_world_npc(npc);
             var facts = CharacterBox(profile); facts.AddChild(CharacterText(npc.npc_name, 30));
-            facts.AddChild(CharacterParagraph($"关系：{npc.player_relationship}\n状态：{(npc.is_alive ? "在世" : "已故")}\n{(npc.relation_tags.Count > 0 ? string.Join("、", npc.relation_tags) : "")}", 22));
-            facts.AddChild(CharacterText("仅展示已有交往记录。", 18, true));
+            var ownRelation = playerData is null ? null : CharacterRelationshipRules.Get(playerData, npc.npc_id);
+            facts.AddChild(CharacterParagraph($"你对其的私交\n亲近：{CharacterRelationshipRules.StageLabel(CharacterRelationshipRules.Closeness, ownRelation?.closeness ?? 0)}\n信任：{CharacterRelationshipRules.StageLabel(CharacterRelationshipRules.Trust, ownRelation?.trust ?? 0)}\n敬重：{CharacterRelationshipRules.StageLabel(CharacterRelationshipRules.Respect, ownRelation?.respect ?? 0)}\n怨结：{CharacterRelationshipRules.StageLabel(CharacterRelationshipRules.Resentment, ownRelation?.resentment ?? 0)}\n状态：{(npc.is_alive ? "在世" : "已故")}", 22));
+            facts.AddChild(CharacterParagraph("此处记录的是你的感受；对方的心意只能从其言行与交际中了解。", 18, true));
+            details.AddChild(new HSeparator()); details.AddChild(CharacterText("待月结记事", 24));
+            var pendingScroll = new ScrollContainer
+            {
+                CustomMinimumSize = new Vector2(0, 90), HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled,
+                VerticalScrollMode = ScrollContainer.ScrollMode.Auto
+            };
+            details.AddChild(pendingScroll);
+            var pendingList = CharacterBox(pendingScroll);
+            var pending = ownRelation?.pending_evidence.Where(evidence => evidence is not null)
+                .OrderByDescending(evidence => evidence.month_index).ThenByDescending(evidence => evidence.event_id, StringComparer.Ordinal).ToList() ?? [];
+            if (pending.Count == 0)
+                pendingList.AddChild(CharacterText("暂无待归纳记录", 19, true));
+            else
+                foreach (var evidence in pending)
+                {
+                    var when = evidence.month_index < 0 ? "待定日期" : $"{evidence.month_index / 12 + 1}年{evidence.month_index % 12 + 1}月";
+                    pendingList.AddChild(CharacterParagraph($"{when}　{CharacterRelationshipRules.DescribePendingEvidence(ownRelation!, evidence)}", 19, true));
+                }
             details.AddChild(new HSeparator()); details.AddChild(CharacterText("往来纪事", 26));
             var history = CharacterBox(CharacterScroll(details));
             var entries = npc.action_history.Where(record => record.target_npc_id == "player" || record.action_id.StartsWith("player_social_", StringComparison.Ordinal)).Reverse().ToList();
@@ -47,7 +79,7 @@ public partial class InfoPanel
         {
             CharacterClear(people);
             var shown = all.Where(npc => CharacterMatches(npc.npc_name, _relationQuery))
-                .Where(npc => _relationFilter != "亲缘" || npc.relation_tags.Contains("亲缘")).ToList();
+                .Where(npc => _relationFilter != "亲近" || (playerData is not null && CharacterRelationshipRules.Value(playerData, npc.npc_id, CharacterRelationshipRules.Closeness) >= 30)).ToList();
             foreach (var npc in shown)
             {
                 var button = CharacterButton(npc.npc_name + "   ›", selected: npc.npc_id == _relationSelected); button.CustomMinimumSize = new Vector2(0, 64); people.AddChild(button);
@@ -63,7 +95,7 @@ public partial class InfoPanel
             }
             Select(shown.FirstOrDefault(npc => npc.npc_id == _relationSelected) ?? shown.FirstOrDefault());
         }
-        foreach (var filter in new[] { "全部", "亲缘", "往来" })
+        foreach (var filter in new[] { "全部", "亲近" })
         {
             var button = CharacterButton(filter, selected: filter == _relationFilter); button.SizeFlagsHorizontal = SizeFlags.ExpandFill; filters.AddChild(button);
             button.Pressed += () => { _relationFilter = filter; foreach (var sibling in filters.GetChildren().OfType<Button>()) sibling.AddThemeStyleboxOverride("normal", CharacterButtonStyle(sibling == button)); Refresh(); };

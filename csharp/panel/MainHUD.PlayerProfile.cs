@@ -42,7 +42,7 @@ public partial class MainHUD
         set_profile_value("RealmValue", string.IsNullOrWhiteSpace(player.cultivation_realm) ? "未详" : player.cultivation_realm);
         set_profile_value("WorldStaminaValue", $"{player.current_world_stamina:0.#} / {player.max_world_stamina:0.#}");
         var currentGameHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
-        set_profile_value("WorldStatusValue", WorldStatusRules.format_details(data?.world_status_records, currentGameHour));
+        set_profile_value("WorldStatusValue", CharacterStatusPresentationRules.format_details(data?.world_status_records, player.get_cultivation_bottleneck_summary(), currentGameHour));
         set_profile_value("RootValue", string.IsNullOrWhiteSpace(data?.spirit_root_name) ? "未详" : data!.spirit_root_name);
         set_profile_value("LocationValue", string.IsNullOrWhiteSpace(currentLocation) ? "位置未详" : currentLocation);
         set_profile_value("AffiliationValue", get_affiliation_text(data));
@@ -64,7 +64,7 @@ public partial class MainHUD
     public void refresh_player_world_status_details(Character player, long currentGameHour)
     {
         if (!player_profile_visible || player.entity_data is not HumanData data) return;
-        set_profile_value("WorldStatusValue", WorldStatusRules.format_details(data.world_status_records, currentGameHour));
+        set_profile_value("WorldStatusValue", CharacterStatusPresentationRules.format_details(data.world_status_records, player.get_cultivation_bottleneck_summary(), currentGameHour));
     }
 
     public bool close_player_profile()
@@ -141,7 +141,7 @@ public partial class MainHUD
         layout.AddChild(grid);
         add_profile_card(grid, "境界", "RealmValue");
         add_profile_card(grid, "行旅体力（与战斗精力分开）", "WorldStaminaValue");
-        add_profile_card(grid, "大世界状态", "WorldStatusValue");
+        add_profile_card(grid, "修行与身体状态", "WorldStatusValue");
         add_profile_card(grid, "灵根", "RootValue");
         add_profile_card(grid, "当前位置", "LocationValue");
         add_profile_card(grid, "正式归属", "AffiliationValue");

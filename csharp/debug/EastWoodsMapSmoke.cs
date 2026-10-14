@@ -31,8 +31,7 @@ public partial class EastWoodsMapSmoke : Node
             var npcManager = GetNode<NpcWorldManager>("/root/NpcWorldManager");
             EastWoodsDungeonRules.use_legacy_layout();
             var slowPoint = EastWoodsActions.ResourcePoints().Single(point => point.Action.Recovery == EastWoodsActions.ResourceRecoveryGroup.SlowGrowth);
-            Check(!EastWoodsActions.ResourcePoints().Any(point => point.Action.Recovery == EastWoodsActions.ResourceRecoveryGroup.Mineral),
-                "普通岩格被错误暴露为矿脉资源点。");
+            var mineralPoint = EastWoodsActions.ResourcePoints().Single(point => point.Action.Recovery == EastWoodsActions.ResourceRecoveryGroup.Mineral);
             for (var i = 0; i < 12; i++)
                 npcManager.npcs.Add(new WorldNpcData
                 {
@@ -47,6 +46,34 @@ public partial class EastWoodsMapSmoke : Node
                   EastWoodsDungeonRules.get_node(slowPoint.Node) is { Terrain: 0 or 1 } &&
                   EastWoodsDungeonRules.get_neighbors(slowPoint.Node).Select(EastWoodsDungeonRules.get_node).Any(neighbor => neighbor?.Terrain == 5),
                 "30日慢生资源没有接入实际湿润林缘地格与采集入口。");
+            Check(_panel.find_action(mineralPoint.Node, mineralPoint.Action.Id) is { Recovery: EastWoodsActions.ResourceRecoveryGroup.Mineral } &&
+                  EastWoodsDungeonRules.get_node(mineralPoint.Node) is { Terrain: 2 or 7, ResourceCategory: EastWoodsResourceCategory.Mineral, ResourceNodeId: "spirit_stone_vein" } &&
+                  EastWoodsDungeonRules.get_node(mineralPoint.Node)?.Feature != "spring",
+                "90日矿产采集没有接入显式专用矿脉节点。");
+            Check(_panel.find_action(slowPoint.Node, mineralPoint.Action.Id) is null &&
+                  _panel.find_action(mineralPoint.Node, slowPoint.Action.Id) is null,
+                "错误资源类别仍可打开不匹配的采集行动。");
+            foreach (var point in EastWoodsActions.ResourcePoints())
+                Check(map.GetNodeOrNull<PanelContainer>($"Node_{point.Node}/ResourceNodeMarker") is not null,
+                    $"资源地格 {point.Node} 缺少可见类别标识。");
+            var slowMarker = map.GetNode<PanelContainer>($"Node_{slowPoint.Node}/ResourceNodeMarker");
+            var mineralMarker = map.GetNode<PanelContainer>($"Node_{mineralPoint.Node}/ResourceNodeMarker");
+            var slowCategory = slowMarker.FindChild("Category", true, false) as Label;
+            var mineralCategory = mineralMarker.FindChild("Category", true, false) as Label;
+            Check(slowCategory?.Text == "植" && slowMarker.TooltipText.Contains("植物") &&
+                  mineralCategory?.Text == "矿" && mineralMarker.TooltipText.Contains("矿产"),
+                "地图资源节点标识没有显示匹配类别。");
+            foreach (var node in EastWoodsDungeonRules.get_nodes().Where(node =>
+                         (node.Terrain is 2 or 7) && node.ResourceCategory != EastWoodsResourceCategory.Mineral))
+            {
+                var marker = map.GetNodeOrNull<PanelContainer>($"Node_{node.Id}/ResourceNodeMarker");
+                if (marker is not null)
+                {
+                    var markerCategory = marker.FindChild("Category", true, false) as Label;
+                    Check(markerCategory?.Text != "矿" && !marker.TooltipText.Contains("矿产"),
+                        "普通岩格显示了矿产资源点标识。");
+                }
+            }
             Check(_panel.is_node_visible("deep_meet") && !_panel.is_node_visible("mid_split"), "四格视野边界错误");
             Check(!map.GetNode<Button>("Node_quiet_grove").Visible, "未知地块泄漏");
             var fogState = _panel.get_route_state();

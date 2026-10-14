@@ -79,6 +79,7 @@ public static partial class EastWoodsDungeonRules
         // A location feature is visual only: no unapproved healing, resource or movement modifiers.
         var spring = Array.FindIndex(Nodes,n => n.Id.StartsWith("outer_",StringComparison.Ordinal) && n.Terrain == 5);
         if (spring >= 0) Nodes[spring] = Nodes[spring] with { Feature="spring", Description=Nodes[spring].Description+" 石缝间渗出一汪清泉。" };
+        Nodes = configure_resource_nodes(Nodes);
         NodesById = Nodes.ToDictionary(n => n.Id,StringComparer.Ordinal);
         Neighbors = build_neighbors();
         LayoutSeed = seed;
@@ -89,12 +90,13 @@ public static partial class EastWoodsDungeonRules
         var nodes = new Godot.Collections.Array();
         foreach (var n in Nodes)
             nodes.Add(new GDictionary { ["id"]=n.Id,["title"]=n.Title,["description"]=n.Description,
-                ["x"]=n.GridPosition.X,["y"]=n.GridPosition.Y,["show_title"]=n.ShowTitleOnMap,["terrain"]=n.Terrain,["feature"]=n.Feature });
+                ["x"]=n.GridPosition.X,["y"]=n.GridPosition.Y,["show_title"]=n.ShowTitleOnMap,["terrain"]=n.Terrain,["feature"]=n.Feature,
+                ["resource_node_id"]=n.ResourceNodeId,["resource_category"]=(int)n.ResourceCategory });
         var edges = new Godot.Collections.Array();
         foreach (var n in Nodes)
             foreach (var neighbor in get_neighbors(n.Id))
                 if (string.CompareOrdinal(n.Id,neighbor)<0) edges.Add(new Godot.Collections.Array { n.Id,neighbor });
-        return new GDictionary { ["version"]=1,["seed"]=LayoutSeed,["nodes"]=nodes,["edges"]=edges };
+        return new GDictionary { ["version"]=2,["seed"]=LayoutSeed,["nodes"]=nodes,["edges"]=edges };
     }
 
     public static void restore_layout(GDictionary state)
@@ -106,15 +108,22 @@ public static partial class EastWoodsDungeonRules
     private static void apply_layout(GDictionary state, bool activate)
     {
         if (state.Count == 0) { if (activate) use_legacy_layout(); return; }
-        if (state.GetValueOrDefault("version",0).AsInt32()!=1) throw new InvalidOperationException("无法读取此版本的副本地图，原存档未修改。");
+        var version = state.GetValueOrDefault("version",0).AsInt32();
+        if (version is not (1 or 2)) throw new InvalidOperationException("无法读取此版本的副本地图，原存档未修改。");
         var seed = state["seed"].AsString();
         if (string.IsNullOrWhiteSpace(seed)) throw new InvalidOperationException("副本种子缺失。");
         var nodes = state["nodes"].AsGodotArray().Select(v =>
         {
             var n=v.AsGodotDictionary();
+            var resourceCategoryValue = version >= 2 ? n.GetValueOrDefault("resource_category", 0).AsInt32() : 0;
+            if (!Enum.IsDefined(typeof(EastWoodsResourceCategory), resourceCategoryValue))
+                throw new InvalidOperationException("副本资源节点类别无效，原存档未修改。");
             return new NodeDefinition(n["id"].AsString(),n["title"].AsString(),n["description"].AsString(),
-                new Vector2I(n["x"].AsInt32(),n["y"].AsInt32()),n["show_title"].AsBool(),n["terrain"].AsInt32(),n.GetValueOrDefault("feature","").AsString());
+                new Vector2I(n["x"].AsInt32(),n["y"].AsInt32()),n["show_title"].AsBool(),n["terrain"].AsInt32(),n.GetValueOrDefault("feature","").AsString(),
+                version >= 2 ? n.GetValueOrDefault("resource_node_id", "").AsString() : "",
+                (EastWoodsResourceCategory)resourceCategoryValue);
         }).ToArray();
+        if (version == 1) nodes = configure_resource_nodes(nodes);
         if (nodes.Length!=128 || nodes.Select(n=>n.Id).Distinct().Count()!=128 || nodes.Select(n=>n.GridPosition).Distinct().Count()!=128)
             throw new InvalidOperationException("副本地图格数或唯一标识损坏，拒绝重抽地图。");
         var byId = nodes.ToDictionary(n=>n.Id,StringComparer.Ordinal);
@@ -126,6 +135,7 @@ public static partial class EastWoodsDungeonRules
                 throw new InvalidOperationException("副本原有行动节点不匹配。");
         if (nodes.Any(n=>n.GridPosition.X<0 || n.GridPosition.X>=16 || n.GridPosition.Y<0 || n.GridPosition.Y>=10 || n.Terrain<0 || n.Terrain>7 || n.Feature is not ("" or "spring")))
             throw new InvalidOperationException("副本地格配置损坏。");
+        validate_resource_nodes(nodes);
         var neighbors = nodes.ToDictionary(n=>n.Id,_=>new List<string>(),StringComparer.Ordinal);
         foreach (var value in state["edges"].AsGodotArray())
         {
@@ -144,5 +154,78 @@ public static partial class EastWoodsDungeonRules
         if(reached.Count!=128) throw new InvalidOperationException("副本存在无法返回出口的孤立地格。");
         // Commit only after validation; never silently reroll a damaged save.
         if (activate) { Nodes=nodes; NodesById=byId; Neighbors=neighbors; LayoutSeed=seed; }
+    }
+
+    private static NodeDefinition[] configure_resource_nodes(NodeDefinition[] source)
+    {
+        var nodes = source.Select(node => node with
+        {
+            ResourceNodeId = "",
+            ResourceCategory = EastWoodsResourceCategory.None,
+        }).ToArray();
+
+        void Set(string nodeId, string resourceNodeId, EastWoodsResourceCategory category)
+        {
+            var index = Array.FindIndex(nodes, node => node.Id == nodeId);
+            if (index < 0) throw new InvalidOperationException($"副本资源点缺少固定节点：{nodeId}");
+            nodes[index] = nodes[index] with { ResourceNodeId = resourceNodeId, ResourceCategory = category };
+        }
+
+        Set("fern_lowland", "common_herb", EastWoodsResourceCategory.Plant);
+        Set("outer_03_06", "common_herb", EastWoodsResourceCategory.Plant);
+        Set("outer_06_04", "common_herb", EastWoodsResourceCategory.Plant);
+        Set("dry_pool", "common_moss", EastWoodsResourceCategory.Plant);
+        Set("outer_09_07", "common_moss", EastWoodsResourceCategory.Plant);
+        Set("outer_12_03", "common_moss", EastWoodsResourceCategory.Plant);
+
+        var wetlandPositions = nodes.Where(node => node.Terrain == 5).Select(node => node.GridPosition).ToHashSet();
+        var slowGrowth = nodes
+            .Where(node => node.Id.StartsWith("outer_", StringComparison.Ordinal) && (node.Terrain is 0 or 1) &&
+                node.ResourceNodeId.Length == 0 && !is_action_anchor(node.Id) && node.Feature == "" &&
+                wetlandPositions.Any(position => Math.Abs(position.X - node.GridPosition.X) + Math.Abs(position.Y - node.GridPosition.Y) == 1))
+            .OrderBy(node => node.GridPosition.Y).ThenBy(node => node.GridPosition.X)
+            .FirstOrDefault();
+        if (slowGrowth is null) throw new InvalidOperationException("东林地地图没有可配置雾铃花的湿润林缘地格。");
+        Set(slowGrowth.Id, "mistbell_slow", EastWoodsResourceCategory.Plant);
+
+        var mineralVein = nodes
+            .Where(node => node.Id.StartsWith("outer_", StringComparison.Ordinal) && (node.Terrain is 2 or 7) &&
+                node.ResourceNodeId.Length == 0 && !is_action_anchor(node.Id) && node.Feature != "spring")
+            .OrderBy(node => node.Terrain == 2 ? 0 : 1)
+            .ThenBy(node => node.GridPosition.Y).ThenBy(node => node.GridPosition.X)
+            .FirstOrDefault();
+        if (mineralVein is null) throw new InvalidOperationException("东林地地图没有可配置专用矿脉的岩地节点。");
+        Set(mineralVein.Id, "spirit_stone_vein", EastWoodsResourceCategory.Mineral);
+        return nodes;
+    }
+
+    private static void validate_resource_nodes(NodeDefinition[] nodes)
+    {
+        foreach (var node in nodes)
+        {
+            if (node.ResourceNodeId.Length == 0 && node.ResourceCategory == EastWoodsResourceCategory.None) continue;
+            var definition = EastWoodsResourceNodes.Find(node.ResourceNodeId);
+            if (definition is null || definition.Category != node.ResourceCategory)
+                throw new InvalidOperationException($"副本资源节点类别与配置不匹配：{node.Id}");
+        }
+
+        foreach (var (resourceNodeId, expectedCount) in new[]
+        {
+            ("common_herb", 3), ("common_moss", 3), ("mistbell_slow", 1), ("spirit_stone_vein", 1),
+        })
+            if (nodes.Count(node => node.ResourceNodeId == resourceNodeId) != expectedCount)
+                throw new InvalidOperationException($"副本资源节点数量不匹配：{resourceNodeId}");
+
+        var plantPoint = nodes.Single(node => node.ResourceNodeId == "mistbell_slow");
+        var wetlandPositions = nodes.Where(node => node.Terrain == 5).Select(node => node.GridPosition).ToHashSet();
+        if (plantPoint.ResourceCategory != EastWoodsResourceCategory.Plant || plantPoint.Terrain is not (0 or 1) ||
+            !wetlandPositions.Any(position => Math.Abs(position.X - plantPoint.GridPosition.X) + Math.Abs(position.Y - plantPoint.GridPosition.Y) == 1) ||
+            is_action_anchor(plantPoint.Id))
+            throw new InvalidOperationException("雾铃花节点不在可用湿润林缘。");
+
+        var mineralPoint = nodes.Single(node => node.ResourceNodeId == "spirit_stone_vein");
+        if (mineralPoint.ResourceCategory != EastWoodsResourceCategory.Mineral || mineralPoint.Terrain is not (2 or 7) ||
+            mineralPoint.Feature == "spring" || is_action_anchor(mineralPoint.Id))
+            throw new InvalidOperationException("专用灵石脉节点不在合法岩地。");
     }
 }

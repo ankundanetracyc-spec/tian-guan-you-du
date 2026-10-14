@@ -5,7 +5,7 @@ using Godot.Collections;
 [GlobalClass]
 public partial class PersistentGameSave : Resource
 {
-    public const int CurrentFormatVersion = 5;
+    public const int CurrentFormatVersion = 7;
 
     [Export] public int format_version = CurrentFormatVersion;
     [Export] public string slot_id = "";
@@ -13,6 +13,7 @@ public partial class PersistentGameSave : Resource
     [Export] public long saved_at_unix;
 
     [Export] public HumanData? player_data;
+    [Export] public LetterMailbox letter_mailbox = new();
     [Export] public YuxuSectTreasuryLedger yuxu_sect_treasury = new();
     [Export] public Dictionary battle_reward_ledger = [];
     [Export] public int year = 1;
@@ -43,6 +44,7 @@ public partial class PersistentGameSave : Resource
     {
         if (format_version < 1 || format_version > CurrentFormatVersion) return false;
         yuxu_sect_treasury ??= new YuxuSectTreasuryLedger();
+        letter_mailbox ??= new LetterMailbox();
 
         while (format_version < CurrentFormatVersion)
         {
@@ -72,8 +74,58 @@ public partial class PersistentGameSave : Resource
                 format_version = 5;
                 continue;
             }
+            if (format_version == 5)
+            {
+                // 旧旅程从空信匣开始，不用旧 NPC 自由文案补造历史来信。
+                format_version = 6;
+                continue;
+            }
+            if (format_version == 6)
+            {
+                migrate_relationships_v6_to_v7();
+                format_version = 7;
+                continue;
+            }
             return false;
         }
         return true;
+    }
+
+    private void migrate_relationships_v6_to_v7()
+    {
+        var month = (Math.Max(1, year) - 1) * 12 + Math.Clamp(this.month, 1, 12) - 1;
+        world_npcs ??= [];
+        if (player_data is not null)
+        {
+            player_data.directed_relationships ??= [];
+            player_data.relationship_last_processed_month = month;
+            // v6 没有主角的独立关系轴；不从 NPC 单一分数或经历文案推算新数值。
+        }
+        foreach (var npc in world_npcs)
+        {
+            if (npc is null) continue;
+            npc.directed_relationships ??= [];
+            npc.player_social_memory ??= [];
+            npc.relation_tags ??= [];
+            npc.personal_relationships ??= [];
+            npc.relationship_last_processed_month = month;
+            var playerMarker = npc.player_social_memory.GetValueOrDefault("relationship", "").AsString();
+            if (playerMarker is "friend" or "enemy")
+                CharacterRelationshipRules.PreserveLegacyMarker(npc, CharacterRelationshipRules.PlayerCharacterId, playerMarker);
+            foreach (var tag in npc.relation_tags)
+            {
+                if (tag.StartsWith("仇敌:", StringComparison.Ordinal) && tag.Length > 3)
+                    CharacterRelationshipRules.PreserveLegacyMarker(npc, tag[3..], "enemy");
+                else if (tag.StartsWith("盟友:", StringComparison.Ordinal) && tag.Length > 3)
+                    CharacterRelationshipRules.PreserveLegacyMarker(npc, tag[3..], "friend");
+            }
+            foreach (var relation in npc.personal_relationships)
+            {
+                var marker = relation.Value.AsString();
+                if (marker is "friend" or "enemy")
+                    CharacterRelationshipRules.PreserveLegacyMarker(npc, relation.Key.AsString(), marker);
+            }
+            // action_history 留作可核验旧事，待新规则产生的新事件才影响四项关系。
+        }
     }
 }

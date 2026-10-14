@@ -38,12 +38,8 @@ public partial class CombatSkillBar : Control
     private Label? queueLabel;
     private PanelContainer? panel;
     private NinePatchRect? barArtwork;
-    private PanelContainer? skillHoverPanel;
-    private TextureRect? skillHoverIcon;
-    private Label? skillHoverName;
-    private Label? skillHoverMeta;
-    private RichTextLabel? skillHoverDetail;
     private ActiveSkillData? hoveredSkill;
+    private Control? hoveredSkillAnchor;
     private string lastSkillHoverText = "";
     private readonly System.Collections.Generic.Dictionary<ActiveSkillData, (int State, string Body, string Metadata)> hoverCache = [];
     private static readonly string[] HoverAttributes = CardRules.Attributes.Values.Concat(new[] { "qi_blood", "blood_furnace_value", "punch_frame", "current_health" }).Distinct().ToArray();
@@ -63,7 +59,6 @@ public partial class CombatSkillBar : Control
         barArtwork = GetNodeOrNull<NinePatchRect>("BarArtwork");
         CreateBar();
         CreateCompactResources();
-        CreateSkillHoverPanel();
         FitBarArtworkToBottom();
         Hide();
     }
@@ -220,8 +215,7 @@ public partial class CombatSkillBar : Control
         if (!Visible) return;
         var manager = GetTree().GetFirstNodeInGroup("battle_mgr") as BattleManager;
         if (manager is null || currentUnit is null || !GodotObject.IsInstanceValid(currentUnit)) { HideSkillHover(); return; }
-        // 跟随鼠标不重算文案；动态内容与技能栏最多每 100ms 检查一次。
-        PositionSkillHoverPanel();
+        // 战斗状态会改变技能说明；只更新内容，不追随鼠标重排浮层。
         hoverRefreshRemaining -= delta;
         if (hoverRefreshRemaining <= 0) { hoverRefreshRemaining = .1; RefreshSkillHover(manager); }
         uiRefreshRemaining -= delta;
@@ -275,7 +269,7 @@ public partial class CombatSkillBar : Control
                 usesLabel.Visible = !string.IsNullOrWhiteSpace(usesLabel.Text);
             }
             buttons[i].Disabled = !mayPlan || queueCount >= queueCapacity || !ready;
-            buttons[i].TooltipText = "";
+            HoverInfoManager.SetTooltip(buttons[i], "");
             var cooldownVisual = buttons[i].GetNodeOrNull<SkillCooldownVisual>("CooldownVisual");
             if (cooldownVisual is not null)
             {
@@ -303,9 +297,9 @@ public partial class CombatSkillBar : Control
         if (value.GetParent()?.GetParent() is Control chip)
         {
             chip.MouseFilter = MouseFilterEnum.Pass;
-            chip.TooltipText = planning
+            HoverInfoManager.SetTooltip(chip, planning
                 ? $"{resource}队列预算：{amount}（当前实际 {actual}）\n应对按触发费用预留，未触发则按普通分支付费，未配置则空放不扣费。\n已计入休整、吐纳与明确的无条件返还；负数表示预算缺口。\n实际执行时，费用不足的分支跳过且不扣费。"
-                : $"当前实际{resource}：{actual}";
+                : $"当前实际{resource}：{actual}");
         }
     }
 
@@ -403,95 +397,28 @@ public partial class CombatSkillBar : Control
         return button;
     }
 
-    private void CreateSkillHoverPanel()
-    {
-        skillHoverPanel = new PanelContainer
-        {
-            Name = "SkillHoverInfo",
-            Visible = false,
-            MouseFilter = MouseFilterEnum.Ignore,
-            ZIndex = 1000,
-            ClipContents = true
-        };
-        skillHoverPanel.AddThemeStyleboxOverride("panel", new StyleBoxFlat
-        {
-            BgColor = new Color("e5dcc7"),
-            BorderColor = new Color("74796b"),
-            BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1,
-            CornerRadiusTopLeft = 6, CornerRadiusTopRight = 6, CornerRadiusBottomLeft = 6, CornerRadiusBottomRight = 6
-        });
-        AddChild(skillHoverPanel);
-
-        var margin = new MarginContainer { MouseFilter = MouseFilterEnum.Ignore };
-        margin.AddThemeConstantOverride("margin_left", 12);
-        margin.AddThemeConstantOverride("margin_top", 10);
-        margin.AddThemeConstantOverride("margin_right", 12);
-        margin.AddThemeConstantOverride("margin_bottom", 10);
-        skillHoverPanel.AddChild(margin);
-
-        var column = new VBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
-        column.AddThemeConstantOverride("separation", 7);
-        margin.AddChild(column);
-
-        var header = new HBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
-        header.AddThemeConstantOverride("separation", 10);
-        column.AddChild(header);
-        skillHoverIcon = new TextureRect
-        {
-            CustomMinimumSize = new Vector2(58, 58),
-            ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
-            StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
-            MouseFilter = MouseFilterEnum.Ignore
-        };
-        header.AddChild(skillHoverIcon);
-        var heading = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, Alignment = BoxContainer.AlignmentMode.Center, MouseFilter = MouseFilterEnum.Ignore };
-        header.AddChild(heading);
-        skillHoverName = new Label { AutowrapMode = TextServer.AutowrapMode.WordSmart, MouseFilter = MouseFilterEnum.Ignore };
-        skillHoverName.AddThemeFontSizeOverride("font_size", 21);
-        skillHoverName.AddThemeColorOverride("font_color", PaperInk);
-        heading.AddChild(skillHoverName);
-        skillHoverMeta = new Label { AutowrapMode = TextServer.AutowrapMode.WordSmart, MouseFilter = MouseFilterEnum.Ignore };
-        skillHoverMeta.AddThemeFontSizeOverride("font_size", 14);
-        skillHoverMeta.AddThemeColorOverride("font_color", new Color("60695c"));
-        heading.AddChild(skillHoverMeta);
-
-        column.AddChild(new HSeparator { MouseFilter = MouseFilterEnum.Ignore });
-        var sectionTitle = new Label { Text = "技能详情", MouseFilter = MouseFilterEnum.Ignore };
-        sectionTitle.AddThemeFontSizeOverride("font_size", 15);
-        sectionTitle.AddThemeColorOverride("font_color", PaperInk);
-        column.AddChild(sectionTitle);
-        skillHoverDetail = new RichTextLabel
-        {
-            SizeFlagsHorizontal = SizeFlags.ExpandFill,
-            AutowrapMode = TextServer.AutowrapMode.WordSmart,
-            ScrollActive = true,
-            MouseFilter = MouseFilterEnum.Ignore
-        };
-        skillHoverDetail.AddThemeFontSizeOverride("normal_font_size", 15);
-        skillHoverDetail.AddThemeColorOverride("default_color", PaperInk);
-        column.AddChild(skillHoverDetail);
-    }
-
     private void ShowSkillHover(ActiveSkillData skill)
     {
         hoveredSkill = skill;
+        var index = skills.IndexOf(skill);
+        hoveredSkillAnchor = index >= 0 && index < buttons.Count ? buttons[index] : null;
         lastSkillHoverText = "";
-        if (skillHoverPanel is null || !_actionsVisible || !Visible) return;
-        skillHoverPanel.Show();
-        skillHoverPanel.MoveToFront();
+        if (hoveredSkillAnchor is null || !_actionsVisible || !Visible) return;
         RefreshSkillHover(GetTree().GetFirstNodeInGroup("battle_mgr") as BattleManager);
     }
 
     private void HideSkillHover()
     {
+        if (hoveredSkillAnchor is not null) HoverInfoManager.HideFor(hoveredSkillAnchor);
         hoveredSkill = null;
+        hoveredSkillAnchor = null;
         lastSkillHoverText = "";
-        skillHoverPanel?.Hide();
     }
 
     private void RefreshSkillHover(BattleManager? manager)
     {
-        if (skillHoverPanel?.Visible != true || hoveredSkill is null || currentUnit is null || !GodotObject.IsInstanceValid(currentUnit)) return;
+        if (!_actionsVisible || !Visible || hoveredSkillAnchor is null || !GodotObject.IsInstanceValid(hoveredSkillAnchor) ||
+            hoveredSkill is null || currentUnit is null || !GodotObject.IsInstanceValid(currentUnit)) return;
         var skill = hoveredSkill;
         var state = SkillHoverState(skill, manager);
         if (hoverCache.TryGetValue(skill, out var cached) && cached.State == state)
@@ -568,63 +495,17 @@ public partial class CombatSkillBar : Control
 
     private void ApplySkillHoverContent(ActiveSkillData skill, string body, string metadata)
     {
+        if (hoveredSkillAnchor is null || !GodotObject.IsInstanceValid(hoveredSkillAnchor)) return;
         var contentKey = $"{skill.GetInstanceId()}|{metadata}|{body}";
-
         if (contentKey != lastSkillHoverText)
         {
             lastSkillHoverText = contentKey;
-            if (skillHoverIcon is not null)
-                skillHoverIcon.Texture = string.IsNullOrWhiteSpace(skill.icon_path) || !ResourceLoader.Exists(skill.icon_path)
-                    ? null
-                    : ResourceLoader.Load<Texture2D>(skill.icon_path);
-            if (skillHoverName is not null) skillHoverName.Text = skill.skill_name;
-            if (skillHoverMeta is not null) skillHoverMeta.Text = metadata;
-            if (skillHoverDetail is not null) skillHoverDetail.Text = body;
-            SizeSkillHoverPanel(body, metadata);
+            var icon = string.IsNullOrWhiteSpace(skill.icon_path) || !ResourceLoader.Exists(skill.icon_path)
+                ? null
+                : ResourceLoader.Load<Texture2D>(skill.icon_path);
+            HoverInfoManager.SetInfo(hoveredSkillAnchor,
+                new HoverInfoManager.HoverInfoContent(skill.skill_name, body, icon, metadata));
         }
-        PositionSkillHoverPanel();
-    }
-
-    private void SizeSkillHoverPanel(string body, string metadata)
-    {
-        if (skillHoverPanel is null || skillHoverDetail is null) return;
-        var viewport = GetViewportRect().Size;
-        var width = Mathf.Max(1, Mathf.Min(500, viewport.X - 24));
-        var maxHeight = Mathf.Max(1, viewport.Y - 24);
-        var lineCount = EstimateTooltipLines(body, Mathf.Max(20, (int)((width - 44) / 14)));
-        lineCount += EstimateTooltipLines(metadata, Mathf.Max(18, (int)((width - 112) / 8)));
-        var maximumContentHeight = Mathf.Max(1, maxHeight - 140);
-        var contentHeight = Mathf.Clamp(lineCount * 23 + 12, Mathf.Min(115, maximumContentHeight), maximumContentHeight);
-        skillHoverDetail.CustomMinimumSize = new Vector2(0, contentHeight);
-        skillHoverDetail.Size = new Vector2(width - 34, contentHeight);
-        skillHoverPanel.CustomMinimumSize = new Vector2(width, Mathf.Min(maxHeight, contentHeight + 140));
-        skillHoverPanel.Size = skillHoverPanel.CustomMinimumSize;
-    }
-
-    private static int EstimateTooltipLines(string text, int charactersPerLine)
-    {
-        var count = 0;
-        foreach (var line in text.Split('\n'))
-        {
-            var width = 0f;
-            foreach (var character in line)
-                width += character <= 0x7f ? .55f : 1f;
-            count += Mathf.Max(1, Mathf.CeilToInt(width / charactersPerLine));
-        }
-        return count;
-    }
-
-    private void PositionSkillHoverPanel()
-    {
-        if (skillHoverPanel?.Visible != true) return;
-        var viewport = GetViewportRect().Size;
-        var mouse = GetViewport().GetMousePosition();
-        var position = mouse + new Vector2(16, 18);
-        if (position.X + skillHoverPanel.Size.X > viewport.X - 12) position.X = mouse.X - skillHoverPanel.Size.X - 16;
-        if (position.Y + skillHoverPanel.Size.Y > viewport.Y - 12) position.Y = mouse.Y - skillHoverPanel.Size.Y - 18;
-        skillHoverPanel.Position = new Vector2(
-            Mathf.Clamp(position.X, 12, Mathf.Max(12, viewport.X - skillHoverPanel.Size.X - 12)),
-            Mathf.Clamp(position.Y, 12, Mathf.Max(12, viewport.Y - skillHoverPanel.Size.Y - 12)));
     }
 
     /// <summary>

@@ -27,6 +27,7 @@ public partial class CultivationInspirationSmoke : Node
             check_save_and_json_round_trip();
             check_yuanxi_exemption();
             check_room_integration();
+            check_runtime_pacing_inputs();
             check_pacing_projection();
             GD.Print("CULTIVATION_INSPIRATION_SMOKE_OK");
             GetTree().Quit();
@@ -383,14 +384,27 @@ public partial class CultivationInspirationSmoke : Node
 
     private void check_pacing_projection()
     {
-        var noInspiration = CultivationPacingAudit.Simulate(false, 0d);
-        var quarterForActions = CultivationPacingAudit.Simulate(true, .25d);
-        var allForRefinement = CultivationPacingAudit.Simulate(true, 0d);
+        var character = create_runtime_pacing_character();
+        double runtimeRate(int tier)
+        {
+            character.cultivation_realm = tier == 0 ? "凡人" : cloud_realm_name(tier);
+            var pressure = character.get_realm_required_lingqi_pressure_for_ui();
+            return character.get_cultivation_rate_at_pressure(pressure);
+        }
+        double runtimeTransitionHours(int targetTier)
+        {
+            if (targetTier == 7) return 0d; // The current condensation flow has no configured game-clock duration.
+            character.cultivation_realm = targetTier == 1 ? "凡人" : cloud_realm_name(targetTier - 1);
+            return character.get_breakthrough_retreat_hour_range(false).GetValueOrDefault("base_hours", 0).AsDouble();
+        }
+        var noInspiration = CultivationPacingAudit.Simulate(false, 0d, runtimeRate, runtimeTransitionHours);
+        var quarterForActions = CultivationPacingAudit.Simulate(true, .25d, runtimeRate, runtimeTransitionHours);
+        var allForRefinement = CultivationPacingAudit.Simulate(true, 0d, runtimeRate, runtimeTransitionHours);
         Check(noInspiration.GrantedRecordCount == 0 && noInspiration.RefinementUses == 0 && noInspiration.ActionUses == 0,
-            "pacing baseline models the same activity schedule without insight rewards");
+            "runtime-rate calendar projection has a reproducible no-insight comparison");
         Check(quarterForActions.TotalYears is >= 12d and <= 15d &&
             quarterForActions.ActionUses > 0 && quarterForActions.RefinementUses > 0,
-            $"configured 25% matching-action use reaches Cloud Breath ten and Yuanxi nine within 12–15 game years (actual={quarterForActions.TotalYears:F4}y, cloud10={quarterForActions.ToCloudTenYears:F4}y, records={quarterForActions.GrantedRecordCount}, refine={quarterForActions.RefinementUses}, actions={quarterForActions.ActionUses})");
+            $"estimate only: runtime rates at environment factor 1; documented 15d cultivation/15d activity calendar; scheduled inspiration events use configured chances, same-source diminishing floors, and deterministic rolls; ordinary breakthroughs use configured midpoint durations; one successful condensation attempt adds no game-clock hours; Yuanxi takes 396 days (actual={quarterForActions.TotalYears:F4}y, cloud10={quarterForActions.ToCloudTenYears:F4}y, records={quarterForActions.GrantedRecordCount}, refine={quarterForActions.RefinementUses}, actions={quarterForActions.ActionUses})");
         Check(quarterForActions.GrantedByRank.Values.Sum() == quarterForActions.GrantedRecordCount &&
             quarterForActions.GrantedRecordCount == quarterForActions.RefinementUses + quarterForActions.ActionUses +
                 quarterForActions.ExpiredRecords + quarterForActions.EndingAvailableRecords,
@@ -400,10 +414,154 @@ public partial class CultivationInspirationSmoke : Node
             => string.Join(",", result.SourceEventCounts.Select(pair => $"{pair.Key}={pair.Value}"));
         static string rankCounts(CultivationPacingAudit.Result result)
             => string.Join(",", result.GrantedByRank.Select(pair => $"{pair.Key}:{pair.Value}"));
-        GD.Print($"CULTIVATION_PACING no-insight total={noInspiration.TotalYears:F4}y cloud10={noInspiration.ToCloudTenYears:F4}y cultivation={noInspiration.CultivationDays:F1}d bottle={noInspiration.CappedBottleneckDays:F1}d months={noInspiration.CompletedMonths} events=[{sourceCounts(noInspiration)}]");
-        GD.Print($"CULTIVATION_PACING action25 total={quarterForActions.TotalYears:F4}y cloud10={quarterForActions.ToCloudTenYears:F4}y cultivation={quarterForActions.CultivationDays:F1}d bottle={quarterForActions.CappedBottleneckDays:F1}d months={quarterForActions.CompletedMonths} records={quarterForActions.GrantedRecordCount} ranks=[{rankCounts(quarterForActions)}] refine={quarterForActions.RefinementUses} actions={quarterForActions.ActionUses} expired={quarterForActions.ExpiredRecords} available={quarterForActions.EndingAvailableRecords} endBottle={quarterForActions.EndingBottleneckLevel}/8 penalty={quarterForActions.EndingPenalty:P2} sources=[{string.Join(",", quarterForActions.GrantedBySource.Select(pair => $"{pair.Key}={pair.Value}"))}] events=[{sourceCounts(quarterForActions)}]");
-        GD.Print($"CULTIVATION_PACING refinement-only total={allForRefinement.TotalYears:F4}y cloud10={allForRefinement.ToCloudTenYears:F4}y cultivation={allForRefinement.CultivationDays:F1}d bottle={allForRefinement.CappedBottleneckDays:F1}d months={allForRefinement.CompletedMonths} records={allForRefinement.GrantedRecordCount} ranks=[{rankCounts(allForRefinement)}] refine={allForRefinement.RefinementUses} actions={allForRefinement.ActionUses} expired={allForRefinement.ExpiredRecords} available={allForRefinement.EndingAvailableRecords}");
+        GD.Print($"CULTIVATION_PACING runtime_no_insight total={noInspiration.TotalYears:F4}y cloud10={noInspiration.ToCloudTenYears:F4}y cultivation={noInspiration.CultivationDays:F1}d bottle={noInspiration.CappedBottleneckDays:F1}d months={noInspiration.CompletedMonths} events=[{sourceCounts(noInspiration)}]");
+        GD.Print($"CULTIVATION_PACING runtime_env1_action25 total={quarterForActions.TotalYears:F4}y cloud10={quarterForActions.ToCloudTenYears:F4}y cultivation={quarterForActions.CultivationDays:F1}d bottle={quarterForActions.CappedBottleneckDays:F1}d months={quarterForActions.CompletedMonths} records={quarterForActions.GrantedRecordCount} ranks=[{rankCounts(quarterForActions)}] refine={quarterForActions.RefinementUses} actions={quarterForActions.ActionUses} expired={quarterForActions.ExpiredRecords} available={quarterForActions.EndingAvailableRecords} endBottle={quarterForActions.EndingBottleneckLevel}/8 penalty={quarterForActions.EndingPenalty:P2} sources=[{string.Join(",", quarterForActions.GrantedBySource.Select(pair => $"{pair.Key}={pair.Value}"))}] events=[{sourceCounts(quarterForActions)}]");
+        GD.Print($"CULTIVATION_PACING runtime_env1_refinement_only total={allForRefinement.TotalYears:F4}y cloud10={allForRefinement.ToCloudTenYears:F4}y cultivation={allForRefinement.CultivationDays:F1}d bottle={allForRefinement.CappedBottleneckDays:F1}d months={allForRefinement.CompletedMonths} records={allForRefinement.GrantedRecordCount} ranks=[{rankCounts(allForRefinement)}] refine={allForRefinement.RefinementUses} actions={allForRefinement.ActionUses} expired={allForRefinement.ExpiredRecords} available={allForRefinement.EndingAvailableRecords}");
+        character.Free();
     }
+
+    private void check_runtime_pacing_inputs()
+    {
+        var character = create_runtime_pacing_character();
+        Check(character.main_gongfa is not null && character.get_cultivation_rate_at_pressure(100f) > 0f,
+            "runtime rate fixture loads an ordinary compatible three-root main practice");
+
+        var rates = new List<string>();
+        for (var tier = 1; tier <= 10; tier++)
+        {
+            character.cultivation_realm = cloud_realm_name(tier);
+            var requiredPressure = character.get_realm_required_lingqi_pressure_for_ui();
+            var actualEnvironment = character.get_cultivation_environment_factor(requiredPressure);
+            var actualRate = character.get_cultivation_rate_at_pressure(requiredPressure);
+            var rootAndBookRate = .005d * character.get_element_efficiency(character.main_gongfa) * actualEnvironment;
+            var runtimeRealmMultiplier = rootAndBookRate > 0d ? actualRate / rootAndBookRate : 0d;
+            var configuredTierMultiplier = Character.get_realm_cultivation_multiplier_for_tier(tier);
+            Check(actualRate > 0d && Math.Abs(actualEnvironment - 1f) < 1e-5f &&
+                Math.Abs(runtimeRealmMultiplier - configuredTierMultiplier) < 1e-5,
+                $"云息{tier}层三灵根实测速率读取该层现有倍率×{configuredTierMultiplier:F2}，环境效能为1");
+            rates.Add($"{tier}:req{requiredPressure:F0}/env{actualEnvironment:F3}/mult×{runtimeRealmMultiplier:F3}/rate{actualRate:F5}");
+        }
+        GD.Print($"PACING_RUNTIME env1 tier/required-pressure/environment/multiplier/rate[{string.Join(",", rates)}]");
+
+        character.cultivation_realm = "云息三层";
+        var human = (HumanData)character.entity_data!;
+        var firstStageBoundary = CultivationBottleneckRules.get_grace_hours(3) + CultivationBottleneckRules.get_stage_interval_hours();
+        human.cultivation_bottleneck_accumulated_hours = firstStageBoundary - 1d;
+        human.cultivation_bottleneck_level = 0;
+        human.cultivation_bottleneck_realm_tier = 3;
+        human.cultivation_bottleneck_current_penalty = 0d;
+        var unbottleneckedRate = character.get_cultivation_rate();
+        var preview = character.get_world_cultivation_preview_for_hours(2);
+        var previewRate = preview.GetValueOrDefault("rate", 0f).AsSingle();
+        Check(Math.Abs(previewRate - unbottleneckedRate * .99f) < 1e-6f &&
+            Math.Abs(human.cultivation_bottleneck_accumulated_hours - (firstStageBoundary - 1d)) < 1e-9,
+            "two-hour runtime preview crosses the first bottleneck boundary, applies half an hour-equivalent at 2% penalty, and does not advance time");
+        GD.Print($"PACING_RUNTIME bottleneck_boundary=grace+144h preview_2h_rate={previewRate:F6} unbottled={unbottleneckedRate:F6} clock_advance=0");
+
+        var targetBreakthroughDays = new[] { 1, 2, 3, 5, 6, 8, 12, 10, 13, 18 };
+        var minBreakthroughHours = 0;
+        var baseBreakthroughHours = 0;
+        var maxBreakthroughHours = 0;
+        for (var targetTier = 1; targetTier <= targetBreakthroughDays.Length; targetTier++)
+        {
+            if (targetTier == 7) continue; // Yunxi six to seven is condensation, not an ordinary retreat.
+            character.cultivation_realm = targetTier == 1 ? "凡人" : cloud_realm_name(targetTier - 1);
+            var range = character.get_breakthrough_retreat_hour_range(false);
+            var expectedBase = targetBreakthroughDays[targetTier - 1] * 24;
+            var minimum = range.GetValueOrDefault("min_hours", 0).AsInt32();
+            var basis = range.GetValueOrDefault("base_hours", 0).AsInt32();
+            var maximum = range.GetValueOrDefault("max_hours", 0).AsInt32();
+            Check(basis == expectedBase && minimum == Mathf.Max(12, Mathf.RoundToInt(basis * .8f)) &&
+                maximum == Mathf.Max(12, Mathf.RoundToInt(basis * 1.2f)),
+                $"runtime breakthrough {targetTier} range is the configured target-layer duration ±20%");
+            minBreakthroughHours += minimum;
+            baseBreakthroughHours += basis;
+            maxBreakthroughHours += maximum;
+        }
+        Check(minBreakthroughHours == 1268 && baseBreakthroughHours == 1584 && maxBreakthroughHours == 1900,
+            "runtime nine ordinary retreat ranges total 52.83–79.17 days with a 66-day mean; condensation is excluded");
+        GD.Print($"PACING_RUNTIME ordinary_breakthrough_retreat_total_days={minBreakthroughHours / 24d:F2}..{maxBreakthroughHours / 24d:F2} mean={baseBreakthroughHours / 24d:F2} (nine random integer draws; six-to-seven condensation excluded)");
+
+        character.cultivation_realm = "云息六层";
+        human.spirit_strands = 144;
+        var clock = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
+        var clockBefore = clock?.get_total_game_hours() ?? 0;
+        Check(character.is_breakthrough_ready() && character.requires_condensation_breakthrough() &&
+            !character.start_breakthrough_retreat() && character.cultivation_realm == "云息六层" &&
+            (clock?.get_total_game_hours() ?? 0) == clockBefore,
+            "ready six-to-seven transition requires condensation and cannot use the ordinary randomized retreat");
+
+        var gather = EastWoodsActions.Content("fern_lowland");
+        Check(gather is not null && Math.Abs(gather.Hours - 1f) < 1e-6f &&
+            Math.Abs(gather.Stamina - 2f) < 1e-6f && gather.Quantity == 2,
+            "runtime common gathering action costs 1 hour and 2 stamina and yields two materials");
+        Check(Math.Abs(EastWoodsDungeonRules.player_edge_hours(EastWoodsDungeonRules.BaseDunSpeed) - 1f) < 1e-6f &&
+            YuxuSectPrototypeBalance.YaopuWatchHours == 4 && Math.Abs(YuxuSectPrototypeBalance.YaopuWatchStaminaCost - 2f) < 1e-6f &&
+            Math.Abs(WorldStaminaRules.StudyCostPerGameHour - 1f) < 1e-6f &&
+            Math.Abs(WorldStaminaRules.RestRecoveryPerGameHour - 1f) < 1e-6f,
+            "runtime route, study, Yaopu, and rest costs match their configured activity implementations");
+
+        // TileWorldMapPresentation computes a plain cell as 2400 / speed hours.
+        // Avoid instantiating the full art-heavy map in this data-focused smoke.
+        const float mapTravelSpeed = 100f;
+        var worldCellHours = 2400d / mapTravelSpeed;
+        Check(Math.Abs(worldCellHours - 24d) < 1e-9,
+            "map's plain-cell travel-time formula at speed 100 gives 24 game hours");
+
+        const int annualWorldTrips = 12;
+        const int annualGatheringActions = 12;
+        const int annualStudyActions = 6;
+        const int annualYaopuWatches = 12;
+        var annualKnownActionHours = annualWorldTrips * worldCellHours +
+            annualGatheringActions * gather!.Hours + annualStudyActions * 24d +
+            annualYaopuWatches * YuxuSectPrototypeBalance.YaopuWatchHours;
+        var annualStamina = annualGatheringActions * gather.Stamina +
+            annualStudyActions * 24d * WorldStaminaRules.StudyCostPerGameHour +
+            annualYaopuWatches * YuxuSectPrototypeBalance.YaopuWatchStaminaCost;
+        var annualRestHours = annualStamina / WorldStaminaRules.RestRecoveryPerGameHour;
+        var modeledOutsideHours = 15d * 12d * 24d;
+        Check(annualKnownActionHours + annualRestHours < modeledOutsideHours,
+            "known 12-travel/12-gather/6-study/12-watch workload and full stamina recovery fits inside the model's annual 180-day outside window");
+        GD.Print($"PACING_RUNTIME known_annual_activity={annualKnownActionHours:F0}h+rest={annualRestHours:F0}h total={(annualKnownActionHours + annualRestHours) / 24d:F1}d/180d; excludes four unspecified duty settlements, route cells beyond one plain cell per trip, stock sourcing, failed outcomes and combat injury recovery");
+
+        double ambient100Rate(int tier)
+        {
+            character.cultivation_realm = tier == 0 ? "凡人" : cloud_realm_name(tier);
+            return character.get_cultivation_rate_at_pressure(100f);
+        }
+        double runtimeTransitionHours(int targetTier)
+        {
+            if (targetTier == 7) return 0d;
+            character.cultivation_realm = targetTier == 1 ? "凡人" : cloud_realm_name(targetTier - 1);
+            return character.get_breakthrough_retreat_hour_range(false).GetValueOrDefault("base_hours", 0).AsDouble();
+        }
+        var ambient100Projection = CultivationPacingAudit.Simulate(true, .25d, ambient100Rate, runtimeTransitionHours);
+        GD.Print($"CULTIVATION_PACING env100_sensitivity total={ambient100Projection.TotalYears:F4}y cloud10={ambient100Projection.ToCloudTenYears:F4}y; lower-than-required ambient pressure, documented activity calendar and source counts, configured inspiration chances and deterministic rolls, ordinary midpoint breakthroughs, one successful 0-game-hour condensation attempt, not an in-game acceptance");
+        character.Free();
+    }
+
+    private Character create_runtime_pacing_character()
+    {
+        var data = new HumanData
+        {
+            entity_name = "节奏运行时验收临时人物",
+            cultivation_realm = "云息一层",
+            spirit_root_type = (int)GongfaResource.Wuxing.METAL_WOOD_WATER,
+            spirit_root_name = "三灵根",
+            root_weights = [34, 33, 33, 0, 0],
+            main_gongfa_path = "res://resources/gongfa/黄庭养形篇.tres",
+            ambient_lingqi_pressure = 100f,
+            current_world_stamina = 100f,
+            max_world_stamina = 100f
+        };
+        var character = new Character { ProcessMode = ProcessModeEnum.Disabled };
+        AddChild(character);
+        character.load_from_data(data);
+        character.Hide();
+        return character;
+    }
+
+    private static string cloud_realm_name(int tier) => "云息" + new[] { "", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十" }[tier] + "层";
 
     private static HumanData create_stage_data(int level)
     {

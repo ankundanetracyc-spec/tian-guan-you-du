@@ -18,4 +18,9 @@ public partial class HumanData
     [Export] public int sect_active_yuxu_duty_stage;
     /// <summary>Patrol verified in the field; contribution awaits reporting at Heguang.</summary>
     [Export] public bool sect_active_yuxu_duty_ready;
+
+    /// <summary>Independent taskless Yaopu crop cycle; 1 is growing and 2 means harvested.</summary>
+    [Export] public int sect_yaopu_free_cultivation_stage;
+    /// <summary>Game hour when the taskless crop finished its initial care; -1 before care.</summary>
+    [Export] public int sect_yaopu_free_cultivation_started_hour = -1;
 }

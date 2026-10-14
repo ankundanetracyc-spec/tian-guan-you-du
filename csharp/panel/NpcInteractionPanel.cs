@@ -1,11 +1,21 @@
 using Godot;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 /// <summary>点选地点人物后的行动菜单，避免直接跳入人物台词。</summary>
 public partial class NpcInteractionPanel : Control
 {
     private Label? _name;
     private VBoxContainer? _actions;
+    private ScrollContainer? _actionScroll;
+    private Button? _leaveButton;
     private PanelContainer? _frame;
+    private Func<IEnumerable<NpcInteractionAction>>? _actionResolver;
+    private string _actionSignature = "";
+    private const float ViewportMargin = 8f;
+    private const float RosterGap = 12f;
+    private const float PreferredWidth = 235f;
 
     public override void _Ready()
     {
@@ -37,56 +47,163 @@ public partial class NpcInteractionPanel : Control
         var column = new VBoxContainer();
         column.AddThemeConstantOverride("separation", 8);
         margin.AddChild(column);
-        _name = new Label { HorizontalAlignment = HorizontalAlignment.Center };
+        _name = new Label
+        {
+            HorizontalAlignment = HorizontalAlignment.Center,
+            SizeFlagsHorizontal = SizeFlags.ExpandFill,
+            ClipText = true,
+            TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis,
+        };
         _name.AddThemeFontSizeOverride("font_size", 21);
         _name.AddThemeColorOverride("font_color", new Color("e6c77e"));
         column.AddChild(_name);
+        _actionScroll = new ScrollContainer
+        {
+            HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled,
+            VerticalScrollMode = ScrollContainer.ScrollMode.Auto,
+            SizeFlagsHorizontal = SizeFlags.ExpandFill,
+            SizeFlagsVertical = SizeFlags.ExpandFill,
+            ClipContents = true,
+        };
+        column.AddChild(_actionScroll);
         _actions = new VBoxContainer();
         _actions.AddThemeConstantOverride("separation", 6);
-        column.AddChild(_actions);
+        _actionScroll.AddChild(_actions);
+        _leaveButton = new Button { Text = "关闭", CustomMinimumSize = new Vector2(0, 30) };
+        _leaveButton.AddThemeFontSizeOverride("font_size", 16);
+        _leaveButton.AddThemeColorOverride("font_color", new Color("d8d1c2"));
+        _leaveButton.Pressed += close;
+        column.AddChild(_leaveButton);
+        GetViewport().SizeChanged += place_next_to_roster;
         Hide();
     }
 
     public void show_menu(string name, IEnumerable<(string label, Action action)> options)
     {
-        place_next_to_roster();
         _name!.Text = name;
-        foreach (var child in _actions!.GetChildren()) child.QueueFree();
-        foreach (var (label, action) in options)
-        {
-            var button = new Button { Text = label, CustomMinimumSize = new Vector2(0, 34) };
-            button.AddThemeFontSizeOverride("font_size", 17);
-            button.AddThemeColorOverride("font_color", Colors.White);
-            button.Pressed += () => { Hide(); action(); };
-            _actions.AddChild(button);
-        }
-        var leave = new Button { Text = "关闭", CustomMinimumSize = new Vector2(0, 30) };
-        leave.AddThemeFontSizeOverride("font_size", 16);
-        leave.AddThemeColorOverride("font_color", new Color("d8d1c2"));
-        leave.Pressed += Hide;
-        _actions.AddChild(leave);
+        _actionResolver = null;
+        var actions = options.Select((option, index) => new NpcInteractionAction($"fixed.{index}", option.label, option.action)).ToArray();
+        _actionSignature = signature(actions);
+        rebuild_actions(actions);
         Show();
         MoveToFront();
+        CallDeferred(nameof(place_next_to_roster));
+    }
+
+    public void show_dynamic_menu(string name, Func<IEnumerable<NpcInteractionAction>> resolver)
+    {
+        _name!.Text = name;
+        _actionResolver = resolver;
+        refresh_menu_actions(true);
+        Show();
+        MoveToFront();
+        CallDeferred(nameof(place_next_to_roster));
+    }
+
+    public void refresh_menu_actions(bool force = true)
+    {
+        if (_actionResolver is null) return;
+        var next = _actionResolver().Where(action => action is not null).ToArray();
+        var nextSignature = signature(next);
+        if (!force && nextSignature == _actionSignature) return;
+        _actionSignature = nextSignature;
+        rebuild_actions(next);
+        if (_actionScroll is not null) _actionScroll.ScrollVertical = 0;
+        CallDeferred(nameof(place_next_to_roster));
+    }
+
+    private void rebuild_actions(IEnumerable<NpcInteractionAction> options)
+    {
+        if (_actions is null) return;
+        foreach (var child in _actions.GetChildren())
+        {
+            _actions.RemoveChild(child);
+            child.QueueFree();
+        }
+        foreach (var option in options)
+        {
+            if (option is null) continue;
+            var button = new Button
+            {
+                Text = option.Label,
+                TooltipText = option.Label,
+                CustomMinimumSize = new Vector2(0, 34),
+                SizeFlagsHorizontal = SizeFlags.ExpandFill,
+                Disabled = !option.Enabled,
+                TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis,
+            };
+            button.AddThemeFontSizeOverride("font_size", 17);
+            button.AddThemeColorOverride("font_color", Colors.White);
+            button.Pressed += () =>
+            {
+                close();
+                option.Activate();
+            };
+            _actions.AddChild(button);
+        }
     }
 
     private void place_next_to_roster()
     {
-        if (_frame is null) return;
+        if (_frame is null || !IsInsideTree()) return;
         var roster = GetTree().GetFirstNodeInGroup("cell_character_list") as CellCharacterList;
-        if (roster is null) return;
-        var rect = roster.get_ui_rect();
         var viewport = GetViewportRect().Size;
-        const float width = 235f;
-        const float height = 160f;
-        var left = Mathf.Clamp(rect.End.X + 12f, 8f, Mathf.Max(8f, viewport.X - width - 8f));
-        var top = Mathf.Clamp(rect.Position.Y, 8f, Mathf.Max(8f, viewport.Y - height - 8f));
-        _frame.OffsetLeft = left;
-        _frame.OffsetTop = top;
-        _frame.OffsetRight = left + width;
-        _frame.OffsetBottom = top + height;
+        var maxWidth = Mathf.Max(1f, viewport.X - ViewportMargin * 2f);
+        var maxHeight = Mathf.Max(1f, viewport.Y - ViewportMargin * 2f);
+        var actionSize = _actions?.GetCombinedMinimumSize() ?? Vector2.Zero;
+        var nameSize = _name?.GetCombinedMinimumSize() ?? Vector2.Zero;
+        var leaveSize = _leaveButton?.GetCombinedMinimumSize() ?? new Vector2(0, 30);
+        const float horizontalMargins = 32f;
+        const float verticalMargins = 24f;
+        const float columnGaps = 16f;
+        var desiredWidth = Mathf.Max(PreferredWidth, Mathf.Max(actionSize.X, nameSize.X) + horizontalMargins);
+        var width = Mathf.Min(maxWidth, desiredWidth);
+        var fixedHeight = nameSize.Y + leaveSize.Y + verticalMargins + columnGaps;
+        var desiredHeight = fixedHeight + actionSize.Y;
+        var height = Mathf.Min(maxHeight, desiredHeight);
+        var visibleActionsHeight = Mathf.Max(0f, height - fixedHeight);
+        if (_actionScroll is not null)
+            _actionScroll.CustomMinimumSize = new Vector2(Mathf.Max(0f, width - horizontalMargins), visibleActionsHeight);
+        _frame.CustomMinimumSize = new Vector2(width, height);
+        _frame.Size = new Vector2(width, height);
+
+        var left = 318f;
+        var top = 136f;
+        var rosterRect = new Rect2();
+        if (roster is not null)
+        {
+            rosterRect = roster.get_ui_rect();
+            var rightCandidate = rosterRect.End.X + RosterGap;
+            var leftCandidate = rosterRect.Position.X - width - RosterGap;
+            if (rightCandidate + width <= viewport.X - ViewportMargin)
+                left = rightCandidate;
+            else if (leftCandidate >= ViewportMargin)
+                left = leftCandidate;
+            else
+            {
+                var rightSpace = viewport.X - ViewportMargin - rosterRect.End.X;
+                var leftSpace = rosterRect.Position.X - ViewportMargin;
+                left = rightSpace >= leftSpace
+                    ? Mathf.Max(ViewportMargin, rightCandidate)
+                    : Mathf.Max(ViewportMargin, rosterRect.Position.X - width - RosterGap);
+            }
+            top = rosterRect.Position.Y;
+        }
+        left = Mathf.Clamp(left, ViewportMargin, Mathf.Max(ViewportMargin, viewport.X - width - ViewportMargin));
+        top = Mathf.Clamp(top, ViewportMargin, Mathf.Max(ViewportMargin, viewport.Y - height - ViewportMargin));
+        _frame.Position = new Vector2(left, top);
     }
 
-    public void close() => Hide();
+    public void close()
+    {
+        _actionResolver = null;
+        _actionSignature = "";
+        Hide();
+    }
+
+    public override void _ExitTree() => GetViewport().SizeChanged -= place_next_to_roster;
+
+    private static string signature(IEnumerable<NpcInteractionAction> actions) => string.Join("\n", actions.Select(action => $"{action.Id}\u001f{action.Label}\u001f{action.Enabled}"));
 
     private static StyleBoxFlat make_frame_style()
     {

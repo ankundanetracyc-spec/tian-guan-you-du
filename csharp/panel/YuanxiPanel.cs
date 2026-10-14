@@ -27,8 +27,8 @@ public partial class YuanxiPanel : Control
         poem.AnchorLeft = .77f; poem.AnchorRight = .96f; poem.AnchorTop = .15f; poem.AnchorBottom = .72f; AddChild(poem);
         var left = new VBoxContainer { AnchorLeft = .035f, AnchorRight = .28f, AnchorTop = .10f, AnchorBottom = .92f };
         left.AddThemeConstantOverride("separation", 16); AddChild(left);
-        _title = Text("云息十层", 30); left.AddChild(_title);
-        left.AddChild(Text("归元九息", 24));
+        left.AddChild(Text("归元九息", 28));
+        _title = Text("云息十层", 20); left.AddChild(_title);
         _status = Text("", 20); left.AddChild(_status);
         _notice = Text("", 17); left.AddChild(_notice);
         _one = Button(left, "养成一息", () => Start(false));
@@ -44,14 +44,15 @@ public partial class YuanxiPanel : Control
         {
             // 归元息仍是静室吐纳内容：前景气机图与操作纸面，不另换环境。
             var diagramPaper = new PanelContainer { AnchorLeft = .02f, AnchorRight = .56f, AnchorTop = .08f, AnchorBottom = .9f, MouseFilter = MouseFilterEnum.Ignore };
-            diagramPaper.AddThemeStyleboxOverride("panel", QuietRoomStyle.Paper(.82f, 0)); AddChild(diagramPaper); MoveChild(diagramPaper, 1);
+            diagramPaper.AddThemeStyleboxOverride("panel", QuietRoomStyle.Paper(1, 0)); AddChild(diagramPaper); MoveChild(diagramPaper, 1);
             _qi.AnchorLeft = .04f; _qi.AnchorRight = .54f; _qi.AnchorTop = .12f; _qi.AnchorBottom = .86f;
             var paper = new PanelContainer { AnchorLeft = .59f, AnchorRight = 1, AnchorTop = 0, AnchorBottom = 1 };
-            paper.AddThemeStyleboxOverride("panel", QuietRoomStyle.Paper(.95f, 24)); AddChild(paper);
+            paper.AddThemeStyleboxOverride("panel", QuietRoomStyle.Paper(1, 24)); AddChild(paper);
             var scroll = new ScrollContainer { HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled }; paper.AddChild(scroll);
             left.Reparent(scroll); left.SetAnchorsAndOffsetsPreset(LayoutPreset.TopLeft); left.SizeFlagsHorizontal = SizeFlags.ExpandFill;
             foreach (var text in left.FindChildren("*", "Label", true, false).OfType<Label>()) text.AddThemeColorOverride("font_color", QuietRoomStyle.Ink);
             foreach (var button in new[] { _one, _continuous, _continue, _stop }) if (button is not null) QuietRoomStyle.Primary(button);
+            QuietRoomStyle.Frame(paper); QuietRoomStyle.Frame(diagramPaper);
         }
         Hide();
     }

@@ -34,9 +34,9 @@ const UNIMPLEMENTED_DUTY_DRAFTS := [
 				"realm": "云息后期可尝试，玄基境完成更从容",
 				"tasks": [
 					["mixed_channel_inspect", "勘验", "云渠石壁阵纹复核", "云渠西侧石壁", "沿石壁检查阵纹衔接与水痕变化", "可见断纹和新生水痕都作记录"],
-					["mixed_yaopu_delivery", "护送", "瑶圃峰文书送达", "瑶圃峰外院", "将封存文书交给当值执事", "封口完整并由对方确认收讫"],
 					["mixed_hillside_inquiry", "问询", "山腰巡道行旅问询", "山腰巡道", "向沿途行旅核实近来道路异状", "只记录可核实的时间、位置与现象"],
 					["mixed_archive_corridor", "巡查", "玄览峰外廊巡查", "玄览峰外藏经廊", "查看廊门、窗扇及封存标记", "发现异常时不擅自入内并及时回报"],
+					["mixed_yaopu_delivery", "护送", "瑶圃峰文书送达", "瑶圃峰外院", "将封存文书交给当值执事", "封口完整并由对方确认收讫"],
 					["mixed_courtyard_record", "登记", "弟子院舍损耗登记", "外院弟子院舍", "逐处记录公用设施的损坏与位置", "损耗描述明确且位置可复查"],
 					["mixed_peak_handover", "协调", "三峰事务交接核验", "和光峰传务廊", "核实观复峰、天工峰送来的交接记录", "记录双方经手人与交接时刻"]
 				]
@@ -79,7 +79,6 @@ const UNIMPLEMENTED_DUTY_DRAFTS := [
 				"tasks": [
 					["mid_crosspeak_review", "协查", "跨峰事务差异协查", "宗务册房", "沿事务记录追查一处未闭合的交接", "查明最后经手节点并附可复核凭据"],
 					["mid_array_review", "核验", "护山阵节点复核", "护山阵东侧节点", "检查节点灵光、刻纹和阵位响应", "按既定阵位记录异常，不擅自调阵"],
-					["mid_seal_escort", "护送", "封存卷宗跨峰护送", "执中峰外议事廊", "将封存卷宗护送至指定保管处", "全程交接留痕且封存完整"],
 					["mid_remote_patrol", "巡防", "外沿灵脉巡防复核", "灵脉西南巡线", "沿既定界标比对灵脉波动记录", "不离开标定巡线并标出波动位置"],
 					["mid_incident_review", "复查", "山道异象后续复查", "北侧山道转折处", "回访此前登记的异象位置与周边变化", "确认变化、未变或无法判断三类结果"],
 					["mid_dispatch_audit", "调度", "多峰值守轮次调度", "和光峰传务院", "核对各峰提交的值守轮次与空缺时段", "调整建议不冲突并回呈各峰确认"]
@@ -221,7 +220,7 @@ func _board_summary_ids(incidents: Array, case_tasks: Array) -> String:
 			ids.append(str(incident.get("incident_id", "")))
 	for task in case_tasks:
 		if task is Dictionary:
-			ids.append(str(task.get("incident_id", "")) + "|" + str(task.get("task_id", "")) + "|" + str(task.get("status", "available")))
+			ids.append(str(task.get("incident_id", "")) + "|" + str(task.get("task_id", "")) + "|" + str(task.get("status", "available")) + "|" + str(task.get("target_location", "")))
 	return "|".join(ids)
 
 func close_detail() -> bool:
@@ -281,15 +280,33 @@ func _rebuild_task_index() -> void:
 				var source_task_id := str(task.get("task_id", ""))
 				if incident_id.is_empty() or source_task_id.is_empty():
 					continue
+				var task_type := str(task.get("task_type", "外勤"))
 				var id := "case_field:" + incident_id + "|" + source_task_id
 				var title := str(task.get("title", "案卷外勤"))
 				var target_name := str(task.get("target_npc_name", "指定当事人"))
+				var target_location := str(task.get("target_location", "位置待核"))
 				var goal := str(task.get("goal", "按案卷执行外勤。"))
 				var conditions := str(task.get("conditions", "按任务记录核验完成条件。"))
 				var return_instruction := str(task.get("return_instruction", "回和光峰事务板报告。"))
 				var kill_authorized := bool(task.get("kill_authorized", false))
-				var requirement := "%s；%s；%s；目标：%s；击杀授权：%s" % [goal, conditions, return_instruction, target_name, "有" if kill_authorized else "无"]
-				tasks.append([id, str(task.get("task_type", "外勤")), title, "依案卷指定目标", "按任务记录前往目标处执行", requirement, int(task.get("reward", 0)), kill_authorized, str(task.get("status", "available"))])
+				var place := "依案卷指定目标"
+				var action := "按任务记录前往目标处执行"
+				var journey_text := ""
+				if task_type == "appeal_transport":
+					place = "案卷指定申诉当事人当前所在地：" + target_location
+					action = "前往该处与案卷指定申诉当事人会合并启程押送"
+					var journey_status := str(task.get("journey_status", "not_started"))
+					var remaining_hours := float(task.get("journey_remaining_hours", 0.0))
+					journey_text = "同行状态：%s" % {
+						"not_started": "待会合启程",
+						"exiting_dungeon": "押送队伍正沿林径前往出口",
+						"in_transit": "临时队伍成员同行 · 大世界自动行进 · 约 %s" % _format_case_hours(remaining_hours),
+						"intercepted": "途中遭拦截 · 等待战斗结算",
+						"arrived": "已抵达 · 等待执中峰官员接手",
+						"handed_off": "官员已接手 · 可回事务板回报",
+				}.get(journey_status, "行程状态待确认")
+				var requirement := "%s；%s；%s；%s；目标：%s；击杀授权：%s" % [goal, conditions, journey_text, return_instruction, target_name, "有" if kill_authorized else "无"]
+				tasks.append([id, task_type, title, place, action, requirement, int(task.get("reward", 0)), kill_authorized, str(task.get("status", "available"))])
 			rows.append({
 				"top": [0.66, 0.45, 0.24][row_index],
 				"edge": [0.585, 0.375, 0.165][row_index],
@@ -307,6 +324,12 @@ func _rebuild_task_index() -> void:
 					var task: Dictionary = _task_from_row(raw_task, str(row["realm"]))
 					task["source"] = str(source_id)
 					_duty_by_id[str(task["id"])] = task
+
+func _format_case_hours(hours: float) -> String:
+	var safe_hours := maxf(0.0, hours)
+	if safe_hours < 24.0:
+		return "%.1f 小时" % safe_hours
+	return "%.1f 天" % (safe_hours / 24.0)
 
 func _make_empty_pages(reference_pages: Array) -> Array:
 	var empty_pages: Array = []

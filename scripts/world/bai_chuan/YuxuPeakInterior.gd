@@ -289,6 +289,7 @@ func _build_life_actions() -> void:
 		["claim_allowance", "领取月例"],
 		["promotion", "申请晋升"],
 		["heguang_duties", "宗门事务"],
+		["heguang_peer_qa", "同门答疑"],
 		["sect_exchange", "善功堂"],
 		["yaopu_watch", "药园值守"],
 		["yaopu_cultivate", "培护灵植"],
@@ -301,6 +302,7 @@ func _build_life_actions() -> void:
 		["zhizhong_case_review", "案件核验"],
 		["zhizhong_case_docket", "裁断与申诉复核"],
 		["zhizhong_case_enforce", "执行终局裁断"],
+		["zhizhong_case_handoff", "案卷当事人交接"],
 	]
 	for item in items:
 		var action_id := str(item[0])
@@ -358,7 +360,7 @@ func _open_life_page() -> void:
 	_life_page_open = true
 	_duty_board_open = false
 	_duty_board.hide()
-	# 起居页是峰内当前场景，不是额外的弹层；返回按钮和 Esc 都直接回八峰总览。
+	# 起居页是峰内当前场景，不是额外的弹层；返回按钮和右键都直接回八峰总览。
 	back_button.text = "返回八峰总览"
 	info_card.custom_minimum_size = Vector2(760, 190)
 	info_card.offset_left = -380.0
@@ -464,7 +466,7 @@ func _refresh_main_actions() -> void:
 	for button in _life_action_buttons:
 		button.hide()
 	if _current_peak_id == "heguang" and _sect_is_member:
-		for action_id in ["heguang_duties", "sect_exchange"]:
+		for action_id in ["heguang_duties", "heguang_peer_qa", "sect_exchange"]:
 			var button := _action_buttons.get(action_id) as Button
 			if button != null:
 				button.show()
@@ -484,6 +486,9 @@ func _refresh_main_actions() -> void:
 			var button := _action_buttons.get(action_id) as Button
 			if button != null:
 				button.show()
+		var handoff_button := _action_buttons.get("zhizhong_case_handoff") as Button
+		if handoff_button != null and _has_arrived_case_transport():
+			handoff_button.show()
 	if _current_peak_id == "yaopu" and _sect_is_member:
 		for action_id in ["yaopu_watch", "yaopu_cultivate"]:
 			var button := _action_buttons.get(action_id) as Button
@@ -498,3 +503,15 @@ func _refresh_main_actions() -> void:
 		if study_button != null:
 			study_button.show()
 	_refresh_admission_button()
+
+func _has_arrived_case_transport() -> bool:
+	if _sect_active_case_task_id.is_empty():
+		return false
+	for task in _sect_case_task_summaries:
+		if str(task.get("task_id", "")) == _sect_active_case_task_id and \
+			str(task.get("task_type", "")) == "appeal_transport" and \
+			str(task.get("status", "")) == "assigned" and \
+			str(task.get("journey_status", "")) == "arrived" and \
+			bool(task.get("temporary_party_member_active", false)):
+			return true
+	return false

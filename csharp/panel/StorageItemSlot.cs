@@ -8,7 +8,7 @@ public partial class StorageItemSlot : Control
     [Signal] public delegate void clickedEventHandler(StorageItemSlot slot);
     [Signal] public delegate void slot_movedEventHandler(int fromIndex, int toIndex);
 
-    private const double InfoHoverDelay = 0.45;
+    private const double InfoHoverDelay = 0.10;
     private TextureRect? icon_rect;
     private Label? name_label;
     private Godot.Timer? hover_timer;
@@ -44,7 +44,7 @@ public partial class StorageItemSlot : Control
         GuiInput += on_gui_input;
     }
 
-    /// <summary>只用于行囊；交易面板继续使用原有128像素方格布局。</summary>
+    /// <summary>行囊与交易共用的纸纹物品格；具体尺寸由所在面板安排。</summary>
     public void configure_inventory_layout(float width, float height)
     {
         inventory_layout = true;

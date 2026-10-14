@@ -145,7 +145,7 @@ public partial class CondensationPanel : Control
         Closed?.Invoke();
     }
 
-    /// <summary>供 Escape 与外部页面栈优先关闭牌堆浏览层，不退出凝核牌局。</summary>
+    /// <summary>供外部页面栈优先关闭牌堆浏览层，不退出凝核牌局。</summary>
     public bool TryClosePileBrowser()
     {
         if (_pileBrowser?.Visible != true) return false;

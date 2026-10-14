@@ -17,6 +17,8 @@ public partial class MainScene : Node2D
     public override void _Ready()
     {
         AddToGroup("main_scene");
+        AddToGroup("gameplay_scene");
+        connect_world_npc_interaction_components();
         prepare_save_session();
         hud=GetNodeOrNull<MainHUD>("HUDLayer/MainHUD");
         time_ui=GetNodeOrNull<GameTimeUI>("HUDLayer/WorldInfo");
@@ -44,6 +46,9 @@ public partial class MainScene : Node2D
             }
         }
         _npc_world=GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager");
+        if (_npc_world is not null) _npc_world.Connect("world_npcs_changed", Callable.From(on_world_npcs_changed_for_interactions));
+        _interactionRoster = GetTree().GetFirstNodeInGroup("cell_character_list") as CellCharacterList;
+        if (_interactionRoster is not null) _interactionRoster.RosterClosed += on_interaction_roster_closed;
         restore_npc_save_state();
         restore_map_save_state();
         estate=GetNodeOrNull<EstateOverview>("SceneLayer/QingxiLocation");
@@ -58,8 +63,9 @@ public partial class MainScene : Node2D
         GetNode<CanvasLayer>("SceneLayer").AddChild(location_interior);
         trade_panel = new TradePanel { Name = "TradePanel" };
         GetNode<CanvasLayer>("CanvasLayer").AddChild(trade_panel);
-        if (trade_panel is not null) trade_panel.Closed += on_trade_closed;
+        if (trade_panel is not null) { trade_panel.Closed += on_trade_closed; trade_panel.TradeCompleted += mark_save_dirty; }
         connect_ui();
+        setup_letters();
         if (GetTree().GetFirstNodeInGroup("cell_character_list") is CellCharacterList character_list)
             character_list.configure_side_toggle();
         estate?.set_unlocked_slips(["li_residence", "village", "farmland", "back_hill"]);
@@ -68,6 +74,7 @@ public partial class MainScene : Node2D
         estate?.set_meditation_available(false);
         estate?.set_rest_available(false);
         spawn_or_restore_player();
+        _npc_world?.set_player_data(player?.entity_data as HumanData);
         if (player is not null) player.CultivationInspirationChanged += on_player_cultivation_inspiration_changed;
         if (_loaded_game_save is null)
             initialize_story_free_start();
@@ -84,10 +91,14 @@ public partial class MainScene : Node2D
         else if (_loaded_game_save is null) CallDeferred(nameof(show_opening));
         else CallDeferred(nameof(show_loaded_game));
     }
-    public override void _Process(double delta){update_persistent_chrome();process_save_autosave(delta);process_npc_social_visit(delta);}
+    public override void _Process(double delta){update_persistent_chrome();process_save_autosave(delta);process_relationship_month();process_npc_social_visit(delta);process_active_world_npc_interaction_refresh(delta);}
     public override void _ExitTree()
     {
-        save_progress_now(false);
+        if (!_skipExitSave) save_progress_now(false);
+        disconnect_world_npc_interaction_components();
+        if (_npc_world is not null && _npc_world.IsConnected("world_npcs_changed", Callable.From(on_world_npcs_changed_for_interactions)))
+            _npc_world.Disconnect("world_npcs_changed", Callable.From(on_world_npcs_changed_for_interactions));
+        if (_interactionRoster is not null) _interactionRoster.RosterClosed -= on_interaction_roster_closed;
         if (player is not null) player.CultivationInspirationChanged -= on_player_cultivation_inspiration_changed;
         if (GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is { } time)
         {
@@ -95,7 +106,9 @@ public partial class MainScene : Node2D
             time.time_changed -= update_yuxu_monthly_allowance;
             time.time_changed -= mark_save_dirty;
             time.time_changed -= on_world_status_time_changed;
+            time.TimeAdvanceStarting -= capture_letter_closure;
         }
+        _letterMailbox.Changed -= on_letters_changed;
     }
     public override void _UnhandledInput(InputEvent @event)
     {
@@ -106,16 +119,19 @@ public partial class MainScene : Node2D
             GetViewport().SetInputAsHandled();
             return;
         }
-        if (key.Keycode == Key.Escape && return_to_previous_page()) GetViewport().SetInputAsHandled();
     }
 
-    private bool return_to_previous_page()
+    public bool try_return_to_previous_page()
     {
         if (action_transition?.IsPlaying == true || GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.IsSmoothAdvanceBusy == true) return true;
+        if (try_close_topmost_popup_window()) return true;
+        if (GetNodeOrNull<BattleTransitionManager>("/root/BattleTransitionManager") is { } transition && transition.has_open_flow_view())
+            return transition.try_return_from_open_flow();
         if (hud?.close_player_profile() == true) return true;
         if (trade_panel?.Visible == true) { trade_panel.close(); return true; }
         if (story_dialogue?.Visible == true) { story_dialogue.close(); return true; }
         if (npc_interactions?.Visible == true) { npc_interactions.close(); return true; }
+        if (_interactionRoster?.try_collapse_for_navigation() == true) return true;
         if (_restPanel?.Visible == true) { _restPanel.Close(); return true; }
         if (cultivation_ui?.Visible == true) { cultivation_ui.close_panel(); return true; }
         if (condensation_panel?.TryClosePileBrowser() == true) return true;
@@ -123,6 +139,7 @@ public partial class MainScene : Node2D
         if (realm_panel?.Visible == true) { realm_panel.Hide(); return true; }
         if (info?.Visible == true) { if (info.dismiss_top_overlay()) return true; info.hide_panel(); return true; }
         if (storage?.Visible == true) { storage.hide_panel(); return true; }
+        if (_letters?.Visible == true) { _letters.Close(); return true; }
         if (journal?.Visible == true) { journal.hide_panel(); return true; }
         if (baigong?.Visible == true) { baigong.close(); return true; }
         // Shared overlays are above the current scene. Never return the scene underneath them.
@@ -135,11 +152,29 @@ public partial class MainScene : Node2D
             return true;
         }
         // After leaving the prologue, the world is the root page, not a Qingxi overlay.
-        if (tile_world_map?.Visible == true || node_map?.Visible == true) { close_world_map(); return true; }
+        if (tile_world_map?.Visible == true || node_map?.Visible == true) return false;
         return false;
     }
 
-    private void update_persistent_chrome(){var modal=(_restPanel?.Visible??false)||(storage?.Visible??false)||(info?.Visible??false)||(realm_panel?.Visible??false)||(cultivation_ui?.Visible??false)||(condensation_panel?.Visible??false)||(story_dialogue?.Visible??false)||(journal?.Visible??false)||(baigong?.Visible??false)||(trade_panel?.Visible??false)||(hud?.player_profile_visible??false);var visible=!modal&&!_suppress_persistent_chrome;hud?.set_estate_summary_visible(visible);if(GetNodeOrNull<Control>("HUDLayer/WorldInfo") is { } timePanel)timePanel.Visible=visible;if(_prologue_skip_button is not null)_prologue_skip_button.Visible=_prologue_skip_available&&visible;}
+    public bool try_close_topmost_popup_window()
+    {
+        var windows = GetTree().Root.FindChildren("*", "Window", true, false);
+        for (var index = windows.Count - 1; index >= 0; index--)
+        {
+            if (windows[index] is not Window popup) continue;
+            if (!popup.Visible) continue;
+            if (popup is ConfirmationDialog confirmation && confirmation.GetCancelButton() is { } cancel)
+            {
+                cancel.EmitSignal(BaseButton.SignalName.Pressed);
+                return true;
+            }
+            popup.Hide();
+            return true;
+        }
+        return false;
+    }
+
+    private void update_persistent_chrome(){var modal=(_restPanel?.Visible??false)||(storage?.Visible??false)||(info?.Visible??false)||(realm_panel?.Visible??false)||(cultivation_ui?.Visible??false)||(condensation_panel?.Visible??false)||(story_dialogue?.Visible??false)||(journal?.Visible??false)||(baigong?.Visible??false)||(trade_panel?.Visible??false)||(_letters?.Visible??false)||(hud?.player_profile_visible??false);var visible=!modal&&!_suppress_persistent_chrome;hud?.set_estate_summary_visible(visible);if(GetNodeOrNull<Control>("HUDLayer/WorldInfo") is { } timePanel)timePanel.Visible=visible;if(_prologue_skip_button is not null)_prologue_skip_button.Visible=_prologue_skip_available&&visible;}
     private void connect_ui()
     {
         if(hud is not null)
@@ -147,7 +182,7 @@ public partial class MainScene : Node2D
             hud.CharacterRequested+=open_player_profile;
             hud.PlayerStatusRequested+=open_player_status_profile;
             hud.RumorsRequested+=open_rumors;
-            hud.LettersRequested+=()=>show_message("信件","尚未收到信件。后续来信、传讯与委托回执会集中在此处。");
+            hud.LettersRequested+=open_letters;
             hud.CraftRequested+=()=> { if(player is not null) baigong?.show_for(player); };
             hud.InventoryRequested+=open_storage;
             hud.RealmRequested+=()=> { if(player is not null) realm_panel?.show_for(player); };
@@ -156,7 +191,15 @@ public partial class MainScene : Node2D
             hud.TaskRequested+=open_journal_task;
         }
         if (journal is not null) journal.TrackingRequested += OnJournalTrackingRequested;
-        if (info is not null) { info.NpcTradeRequested += open_world_npc_trade; info.NpcTalkRequested += open_world_npc_talk; }
+        if (info is not null)
+        {
+            info.NpcTradeRequested += open_world_npc_trade;
+            info.NpcTalkRequested += open_world_npc_talk;
+            info.NpcSparRequested += npc => request_npc_spar(npc);
+            info.NpcPurchaseRequested += npc => request_npc_purchase(npc);
+            info.NpcSparAvailable = can_sect_spar;
+            info.NpcPurchaseAvailable = can_npc_purchase;
+        }
         if(cultivation_ui is not null) { cultivation_ui.CondensationRequested+=open_condensation; cultivation_ui.CondensationTestRequested+=open_condensation_test; }
         if(condensation_panel is not null) { condensation_panel.Closed+=close_condensation; condensation_panel.CondensationFinished+=on_condensation_finished; }
         if(estate is not null) { estate.SlipOpened+=open_qingxi_location; estate.ResidentSelected+=open_qingxi_resident; estate.BackHillTrialRequested+=open_back_hill_trial; estate.MeditationRequested+=open_li_residence_meditation; estate.RestRequested+=rest_at_li_residence; estate.TaskRequested+=open_journal_task; }
@@ -348,20 +391,14 @@ public partial class MainScene : Node2D
     {
         if (!GodotObject.IsInstanceValid(npc)) return;
         var name = string.IsNullOrWhiteSpace(npc.npc_name) ? "无名修士" : npc.npc_name;
-        var actions = new List<(string, Action)>
+        _activeWorldNpcInteractionId = npc.npc_id;
+        npc_interactions?.show_dynamic_menu(name, () =>
         {
-            ("交谈", () => open_world_npc_talk(npc)),
-            ("交易", () => open_world_npc_trade(npc)),
-        };
-        if (can_sect_spar(npc)) actions.Add(("切磋", () => request_npc_spar(npc)));
-        if (can_npc_purchase(npc)) actions.Add(("求购", () => request_npc_purchase(npc)));
-        add_yuxu_case_npc_actions(npc, actions);
-        if (OS.IsDebugBuild())
-        {
-            actions.Add(("测试：我主动搭话", () => begin_npc_social_talk(npc, false, true)));
-            actions.Add(("测试：NPC来找我", () => begin_npc_social_talk(npc, true, true)));
-        }
-        npc_interactions?.show_menu(name, actions);
+            var current = _npc_world?.get_npc(_activeWorldNpcInteractionId);
+            return current is not null && GodotObject.IsInstanceValid(current)
+                ? collect_world_npc_interaction_actions(current).ToArray()
+                : System.Array.Empty<NpcInteractionAction>();
+        });
     }
     private void start_resident_dialogue(string resident)
     {
@@ -566,7 +603,11 @@ public partial class MainScene : Node2D
         if(!_static_room_authorized){show_message("静室", "未经李守拙应允，不宜擅入偏院旧屋。 ");return;}
         cultivation_ui?.show_entity(player);
     }
-    private void on_player_breakthrough(Character _, string __)=>refresh_qingxi_quest();
+    private void on_player_breakthrough(Character _, string __)
+    {
+        refresh_qingxi_quest();
+        refresh_player_world_status_ui();
+    }
     private void rest_at_li_residence()
     {
         if(player is null)return;

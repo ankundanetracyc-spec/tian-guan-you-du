@@ -50,7 +50,7 @@ public partial class EastWoodsDungeonPanel
             _mapZoom = Mathf.Clamp(_mapZoom * (button.ButtonIndex == MouseButton.WheelUp ? 1.12f : 1 / 1.12f), MinMapZoom, MaxMapZoom);
             clear_hover(); update_map_camera(); GetViewport().SetInputAsHandled();
         }
-        else if (button.ButtonIndex == MouseButton.Right && button.Pressed)
+        else if (button.ButtonIndex == MouseButton.Middle && button.Pressed)
         {
             _cameraDragging = true; _cameraMoved = false;
             _cameraLastMouse = _cameraPressMouse = GetGlobalMousePosition();
@@ -75,7 +75,7 @@ public partial class EastWoodsDungeonPanel
             _cameraLastMouse = motion.Position;
             GetViewport().SetInputAsHandled();
         }
-        else if (input is InputEventMouseButton { ButtonIndex: MouseButton.Right, Pressed: false })
+        else if (input is InputEventMouseButton { ButtonIndex: MouseButton.Middle, Pressed: false })
         {
             _cameraDragging = false;
             if (!_cameraMoved) { _followPlayer = true; update_map_camera(); }

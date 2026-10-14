@@ -26,6 +26,7 @@ public partial class CellCharacterList
     private void toggle_expanded_from_side()
     {
         _expanded = !_expanded;
+        if (!_expanded) RosterClosed?.Invoke();
         // 折叠把手占用列表外侧的独立 30px；不要让列表残留在把手下面。
         Size = new Vector2(_expanded ? PanelWidth + 30f : 30f, _expanded_height);
         if (_list_panel is not null)

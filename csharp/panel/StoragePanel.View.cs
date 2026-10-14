@@ -188,7 +188,8 @@ public partial class StoragePanel
         });
         titles.AddChild(category);
         _info_category = text("", 18, PaperText);
-        _info_category.AutowrapMode = TextServer.AutowrapMode.WordSmart;
+        // 标签按文字保留横向最小宽度，避免 ShrinkBegin 把它压成一字一行。
+        _info_category.AutowrapMode = TextServer.AutowrapMode.Off;
         category.AddChild(_info_category);
         column.AddChild(rule(true));
         _detail_scroll = new ScrollContainer

@@ -91,8 +91,11 @@ var _explored_cells := PackedByteArray()
 var _visible_cell_indices: Array[int] = []
 var _pathfinder: AStarGrid2D
 var _npc_pathfinder: AStarGrid2D
+var _assigned_pathfinder: AStarGrid2D
 var _preview_path: Array[Vector2i] = []
 var _moving := false
+var _assigned_route_destination_node_id := ""
+var _assigned_route_interrupted := false
 var _active_travel_path: Array[Vector2i] = []
 var _active_travel_next_index := 0
 var _travel_reveal_bonus_cells := 0
@@ -105,6 +108,7 @@ var _grid_population_badges: Dictionary = {}
 var _world_markers_prepared := false
 
 func _ready() -> void:
+	add_to_group("tile_world_map_presentation")
 	# The persistent world HUD must render above the opaque map paper layer.
 	var world_map_layer := get_parent() as CanvasLayer
 	if world_map_layer != null:
@@ -226,7 +230,7 @@ func _gui_input(event: InputEvent) -> void:
 			if cell.x >= 0 and cell.x < GRID_COLUMNS and cell.y >= 0 and cell.y < GRID_ROWS:
 				_on_cell_clicked(cell)
 				accept_event()
-		elif event.button_index == MOUSE_BUTTON_RIGHT or event.button_index == MOUSE_BUTTON_MIDDLE:
+		elif event.button_index == MOUSE_BUTTON_MIDDLE:
 			if event.pressed:
 				if _moving:
 					accept_event()
@@ -371,6 +375,35 @@ func resume_saved_travel() -> void:
 	if route[0] != _player_cell:
 		return
 	_start_travel(route)
+
+func get_assigned_route_to_node(node_id: String) -> Array[Vector2i]:
+	var destination := get_location_anchor_cell(node_id)
+	if _assigned_pathfinder == null or not _is_cell_in_bounds(destination) or not is_cell_traversable(destination):
+		return []
+	if not is_cell_traversable(_player_cell):
+		return []
+	return _assigned_pathfinder.get_id_path(_player_cell, destination)
+
+func get_path_travel_hours(path: Array[Vector2i]) -> float:
+	return _path_travel_hours(path)
+
+func start_assigned_route(path: Array[Vector2i], destination_node_id: String) -> bool:
+	if _moving or path.size() < 2 or path[0] != _player_cell or destination_node_id.is_empty():
+		return false
+	if get_location_node_id_at_cell(path[path.size() - 1]) != destination_node_id:
+		return false
+	_pending_resume_path.clear()
+	_assigned_route_destination_node_id = destination_node_id
+	_assigned_route_interrupted = false
+	_start_travel(path)
+	return _moving
+
+func set_assigned_route_destination(node_id: String) -> void:
+	_assigned_route_destination_node_id = node_id
+
+func interrupt_assigned_route() -> void:
+	if _moving and not _assigned_route_destination_node_id.is_empty():
+		_assigned_route_interrupted = true
 
 func set_dun_speed(value: float) -> void:
 	dun_speed = maxf(0.01, value)
@@ -586,6 +619,12 @@ func _build_pathfinder() -> void:
 	_npc_pathfinder.default_compute_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN
 	_npc_pathfinder.default_estimate_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN
 	_npc_pathfinder.update()
+	_assigned_pathfinder = AStarGrid2D.new()
+	_assigned_pathfinder.region = Rect2i(Vector2i.ZERO, Vector2i(GRID_COLUMNS, GRID_ROWS))
+	_assigned_pathfinder.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
+	_assigned_pathfinder.default_compute_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN
+	_assigned_pathfinder.default_estimate_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN
+	_assigned_pathfinder.update()
 	for y in range(GRID_ROWS):
 		for x in range(GRID_COLUMNS):
 			var cell := Vector2i(x, y)
@@ -595,6 +634,8 @@ func _build_pathfinder() -> void:
 			_pathfinder.set_point_weight_scale(cell, _terrain_travel_cost(cell))
 			_npc_pathfinder.set_point_solid(cell, not is_cell_traversable(cell))
 			_npc_pathfinder.set_point_weight_scale(cell, _npc_terrain_travel_cost(cell))
+			_assigned_pathfinder.set_point_solid(cell, not is_cell_traversable(cell))
+			_assigned_pathfinder.set_point_weight_scale(cell, _terrain_travel_cost(cell))
 	_fog_image = Image.create(GRID_COLUMNS, GRID_ROWS, false, Image.FORMAT_RGBA8)
 	_fog_image.fill(UNKNOWN_FOG_COLOR)
 	_fog_texture = ImageTexture.create_from_image(_fog_image)
@@ -719,12 +760,13 @@ func _npc_terrain_travel_cost(cell: Vector2i) -> float:
 		_: return 1.0
 
 func _refresh_pathfinder_weights() -> void:
-	if _pathfinder == null:
+	if _pathfinder == null or _assigned_pathfinder == null:
 		return
 	for y in range(GRID_ROWS):
 		for x in range(GRID_COLUMNS):
 			var cell := Vector2i(x, y)
 			_pathfinder.set_point_weight_scale(cell, _terrain_travel_cost(cell))
+			_assigned_pathfinder.set_point_weight_scale(cell, _terrain_travel_cost(cell))
 
 func _collect_slow_terrain_cells() -> void:
 	_forest_cells.clear()
@@ -804,6 +846,8 @@ func _start_travel(path: Array[Vector2i]) -> void:
 		world_state_changed.emit()
 		_map_pan = Vector2.ZERO
 		_layout_map()
+		if _assigned_route_interrupted or not _assigned_route_destination_node_id.is_empty() and get_location_node_id_at_cell(_player_cell) == _assigned_route_destination_node_id:
+			break
 		if index + 1 < path.size():
 			_preview_path = path.slice(index)
 			_update_route_points()
@@ -815,6 +859,7 @@ func _start_travel(path: Array[Vector2i]) -> void:
 	_layout_map()
 	_active_travel_path.clear()
 	_active_travel_next_index = 0
+	_assigned_route_interrupted = false
 	player_travel_finished.emit(completed_steps)
 	_refresh_cell_info()
 	world_state_changed.emit()

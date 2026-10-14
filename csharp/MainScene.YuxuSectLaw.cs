@@ -89,6 +89,15 @@ public partial class MainScene
         var config = YuxuSectDraftLawEvaluator.LoadConfig();
         var cases = manager.get_all_east_woods_incidents();
 
+        if (actionId == "zhizhong_case_handoff")
+        {
+            if (handoff_active_yuxu_case_transport(human, out var handoffText))
+                show_message("执中峰正式交接", handoffText + " 案卷外勤可回和光峰事务板回报；交接完成后官员方可复核申诉。");
+            else
+                show_message("交接暂未完成", "只有押送队伍抵达执中峰指定地点、且尚在临时队伍中的案卷当事人，才能由执中峰官员接手。");
+            return;
+        }
+
         if (actionId == "zhizhong_case_docket")
         {
             var waitingRuling = cases.FirstOrDefault(item => item.legal_status == YuxuSectDraftLawEvaluator.LegalStatusPending);
@@ -159,14 +168,22 @@ public partial class MainScene
     private void add_yuxu_case_npc_actions(WorldNpcData npc, List<(string, Action)> actions)
     {
         if (player?.entity_data is not HumanData human || human.sect_affiliation_id != YuxuSectId ||
-            npc is null || npc.current_node_id != _player_world_node_id || npc.is_traveling || _npc_world is null)
+            npc is null || npc.is_traveling || _npc_world is null)
             return;
+
+        var isAtCurrentDungeonNode = npc.dungeon_id == EastWoodsDungeonRules.DungeonId &&
+            _east_woods_dungeon?.Visible == true && npc.dungeon_node_id == _east_woods_dungeon.get_current_route_node_id();
+        if (!isAtCurrentDungeonNode && npc.current_node_id != _player_world_node_id) return;
 
         var activeTask = _npc_world.get_yuxu_case_task(human.sect_active_yuxu_duty_incident_id, human.sect_active_yuxu_duty_task_id);
         if (human.sect_active_yuxu_duty_id == YuxuCaseFieldTaskDutyId && activeTask is not null &&
             activeTask.status == YuxuSectCaseTaskRecord.StatusAssigned && activeTask.target_npc_id == npc.npc_id &&
             activeTask.task_type == "restitution")
             actions.Add(("执行案卷追还", () => try_execute_yuxu_case_task_at_npc(npc)));
+        else if (human.sect_active_yuxu_duty_id == YuxuCaseFieldTaskDutyId && activeTask is not null &&
+            activeTask.status == YuxuSectCaseTaskRecord.StatusAssigned && activeTask.target_npc_id == npc.npc_id &&
+            activeTask.task_type == "appeal_transport" && activeTask.journey_status == YuxuSectCaseTaskRecord.JourneyNotStarted)
+            actions.Add(("接纳当事人并启程押送", () => start_yuxu_case_transport(npc)));
 
         var config = YuxuSectDraftLawEvaluator.LoadConfig();
         var appealCase = _npc_world.get_all_east_woods_incidents().FirstOrDefault(incident =>

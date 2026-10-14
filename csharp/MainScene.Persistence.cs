@@ -18,6 +18,20 @@ public partial class MainScene
     private bool _save_is_dirty;
     private double _save_dirty_seconds;
     private bool _returning_from_battle;
+    private bool _skipExitSave;
+
+    public bool has_unsaved_progress => _save_is_dirty;
+
+    public bool save_from_gameplay_menu() => save_progress_now(false);
+
+    public bool prepare_return_to_title_from_menu(bool saveFirst)
+    {
+        if (saveFirst && !save_progress_now(false)) return false;
+        _skipExitSave = true;
+        return true;
+    }
+
+    public void cancel_return_to_title_from_menu() => _skipExitSave = false;
 
     private void prepare_save_session()
     {
@@ -25,6 +39,7 @@ public partial class MainScene
         _loaded_game_save = GetNodeOrNull<BattleTransitionManager>("/root/BattleTransitionManager")?.consume_world_progress_snapshot();
         _returning_from_battle = _loaded_game_save is not null;
         _loaded_game_save ??= _save_manager?.consume_pending_load();
+        _letterMailbox = _loaded_game_save?.letter_mailbox?.Duplicate(true) as LetterMailbox ?? new LetterMailbox();
         _yuxu_sect_treasury_ledger = new YuxuSectTreasuryLedger();
         if (_loaded_game_save is null)
         {
@@ -130,10 +145,28 @@ public partial class MainScene
                 open_east_woods_dungeon();
                 hud?.Show();
                 mark_save_dirty();
+                if (!_returning_from_battle)
+                    CallDeferred(nameof(resume_yuxu_case_transport_after_load));
                 return;
             }
             open_world();
-            if (_loaded_game_save.remaining_travel_path.Count > 1)
+            var transportTask = player?.entity_data is HumanData human ? _npc_world?.get_active_yuxu_case_transport(human) : null;
+            if (transportTask?.journey_status == YuxuSectCaseTaskRecord.JourneyIntercepted)
+            {
+                if (!_returning_from_battle)
+                    CallDeferred(nameof(resume_yuxu_case_transport_after_load));
+            }
+            else if (transportTask?.journey_status == YuxuSectCaseTaskRecord.JourneyInTransit)
+            {
+                tile_world_map?.Call("set_assigned_route_destination", transportTask.journey_destination_node_id);
+                if (_loaded_game_save.remaining_travel_path.Count > 1)
+                    tile_world_map?.CallDeferred("resume_saved_travel");
+                else
+                    CallDeferred(nameof(resume_yuxu_case_transport_after_load));
+            }
+            else if (transportTask?.journey_status == YuxuSectCaseTaskRecord.JourneyExitingDungeon)
+                CallDeferred(nameof(resume_yuxu_case_transport_after_load));
+            else if (_loaded_game_save.remaining_travel_path.Count > 1)
                 tile_world_map?.CallDeferred("resume_saved_travel");
         }
         else
@@ -197,6 +230,7 @@ public partial class MainScene
         var save = new PersistentGameSave
         {
             player_data = playerData.Duplicate(true) as HumanData ?? playerData,
+            letter_mailbox = _letterMailbox.Duplicate(true) as LetterMailbox ?? _letterMailbox,
             yuxu_sect_treasury = _yuxu_sect_treasury_ledger.Duplicate(true) as YuxuSectTreasuryLedger ?? new YuxuSectTreasuryLedger(),
             current_node_id = _player_world_node_id,
             world_cell = _player_world_grid_cell,

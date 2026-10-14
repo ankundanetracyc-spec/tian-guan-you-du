@@ -25,6 +25,8 @@ public partial class CellCharacterList : Control
     private string _worldRosterStamp = "";
     private bool _worldNpcRosterCached;
 
+    public event Action? RosterClosed;
+
     // Offscreen portraits are not composed. Limit visible portrait work to one per frame.
     public override void _Process(double delta)
     {
@@ -44,6 +46,7 @@ public partial class CellCharacterList : Control
     public override void _Ready()
     {
         AddToGroup("cell_character_list");
+        VisibilityChanged += on_roster_visibility_changed;
         MouseFilter = MouseFilterEnum.Pass;
         MouseForcePassScrollEvents = false;
         _list_panel = GetNodeOrNull<Control>("ListPanel");
@@ -83,6 +86,15 @@ public partial class CellCharacterList : Control
     }
 
     public Rect2 get_ui_rect() => GetNodeOrNull<Control>("ListPanel")?.GetGlobalRect() ?? GetGlobalRect();
+
+    public bool try_collapse_for_navigation()
+    {
+        if (!IsVisibleInTree() || !_expanded) return false;
+        _expanded = false;
+        RosterClosed?.Invoke();
+        apply_expanded_state(true);
+        return true;
+    }
 
     /// <summary>Map input runs before GUI dispatch; let the visible roster own its wheel area.</summary>
     public bool contains_roster_point(Vector2 viewport_position) => IsVisibleInTree() && _expanded &&
@@ -244,7 +256,9 @@ public partial class CellCharacterList : Control
     /// <summary>Route travel keeps the last roster cached, but delays portrait work until arrival.</summary>
     public void suspend_world_npcs()
     {
-        if (_world_mode) Hide();
+        if (!_world_mode) return;
+        RosterClosed?.Invoke();
+        Hide();
     }
 
     /// <summary>按世界节点与内部空间读取同一份运行时 NPC 名单。</summary>
@@ -300,6 +314,7 @@ public partial class CellCharacterList : Control
     public void hide_world_npcs()
     {
         if (!_world_mode) return;
+        RosterClosed?.Invoke();
         _world_mode = false;
         _roster_context = "";
         ZIndex = 0;
@@ -429,7 +444,13 @@ public partial class CellCharacterList : Control
     private void toggle_expanded()
     {
         _expanded = !_expanded;
+        if (!_expanded) RosterClosed?.Invoke();
         apply_expanded_state(true);
+    }
+
+    private void on_roster_visibility_changed()
+    {
+        if (!IsVisibleInTree()) RosterClosed?.Invoke();
     }
 
     private void apply_expanded_state(bool animate = false)
@@ -490,7 +511,11 @@ public partial class CellCharacterList : Control
         Position = new Vector2(0, (GetViewportRect().Size.Y - Size.Y) * .5f);
     }
 
-    public override void _ExitTree() => GetViewport().SizeChanged -= refresh_layout;
+    public override void _ExitTree()
+    {
+        GetViewport().SizeChanged -= refresh_layout;
+        VisibilityChanged -= on_roster_visibility_changed;
+    }
 
     private void clear_children()
     {
