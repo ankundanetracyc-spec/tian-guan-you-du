@@ -164,7 +164,7 @@ func _build_overlay() -> void:
 	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	overlay_layer.add_child(overlay)
 	title_label = _label("百川区域 · 行旅图", 24, Color("f1dfad"))
-		help_label = _label("滚轮缩放　中键拖动　单击选中后查看　双击沿路启程", 15, Color("e4d5b4"))
+	help_label = _label("滚轮缩放　中键拖动　单击选中后查看　双击沿路启程", 15, Color("e4d5b4"))
 	hover_label = _label("", 16, Color("f1dfad"))
 	hover_label.visible = false
 	legend_label = _label("百川区域行旅图　·　单击选中并查看　·　双击沿最短道路启程", 13, Color("cfc3a8"))
