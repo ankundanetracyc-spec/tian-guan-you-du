@@ -22,51 +22,43 @@ public partial class StoryDialoguePanel
     private Action? _yuxuAdmissionCancelled;
     private Action? _yuxuAdmissionCompleted;
     private readonly List<Button> _yuxuAdmissionChoiceButtons = [];
-    private int _yuxuAdmissionGeneration;
     private bool _yuxuAdmissionActive;
 
     /// <summary>
-    /// 展示长老头像、姓名与逐条淡入的可见判定依据。证据文案由调用方提供；
+    /// 使用共用双人暗幕与逐字试探。证据文案由调用方提供；
     /// 全部展示或点击“略过展示”后，按钮改为“继续”并调用 proceed。
     /// </summary>
-    public void show_yuxu_admission_review(WorldNpcData elder, IReadOnlyList<string> evidenceLines, Action proceed, Action? cancelled = null)
+    public void show_yuxu_admission_review(WorldNpcData elder, IReadOnlyList<string> evidenceLines, Action proceed, Action? cancelled = null,
+        Character? player = null, bool lastLineIsAptitude = false, bool testMode = false)
     {
         ArgumentNullException.ThrowIfNull(elder);
         ArgumentNullException.ThrowIfNull(proceed);
         var lines = normalize_yuxu_admission_lines(evidenceLines, nameof(evidenceLines));
 
-        var column = begin_yuxu_admission_stage(elder, YuxuAdmissionStage.Review, cancelled);
+        var column = begin_yuxu_admission_stage(elder, YuxuAdmissionStage.Review, cancelled, player: player, testMode: testMode);
         _yuxuAdmissionProceed = proceed;
-        foreach (var line in lines)
-        {
-            var label = social_label(line, 21, "68715d");
-            label.Modulate = new Color(1, 1, 1, 0);
-            column.AddChild(label);
-            _socialFactors.Add(label);
-        }
-
-        add_yuxu_admission_progress(column);
-        _socialDone = social_button("略过展示");
-        _socialDone.Pressed += continue_yuxu_admission_review;
-        column.AddChild(_socialDone);
-        start_yuxu_admission_reveal(lines.Length);
+        add_yuxu_admission_lines(column, lines, lastLineIsAptitude);
+        add_yuxu_admission_continue(column, continue_yuxu_admission_review);
+        start_yuxu_admission_reveal();
     }
 
     /// <summary>展示唯一问题“可有宗门？”及“有／无”两项；选择时以 true/false 回调。</summary>
-    public void show_yuxu_admission_question(WorldNpcData elder, Action<bool> answered, Action? cancelled = null)
+    public void show_yuxu_admission_question(WorldNpcData elder, Action<bool> answered, Action? cancelled = null,
+        Character? player = null, bool testMode = false)
     {
         ArgumentNullException.ThrowIfNull(elder);
         ArgumentNullException.ThrowIfNull(answered);
 
-        var column = begin_yuxu_admission_stage(elder, YuxuAdmissionStage.Question, cancelled);
+        var column = begin_yuxu_admission_stage(elder, YuxuAdmissionStage.Question, cancelled, player: player, testMode: testMode);
         _yuxuAdmissionAnswered = answered;
-        var question = social_label("可有宗门？", 24);
+        var question = social_label("小友，可有宗门？", 24);
         question.HorizontalAlignment = HorizontalAlignment.Center;
         column.AddChild(question);
 
-        var choices = new HBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
-        choices.AddThemeConstantOverride("separation", 16);
-        column.AddChild(choices);
+        var choiceCenter = new CenterContainer(); column.AddChild(choiceCenter);
+        var choices = new VBoxContainer { CustomMinimumSize = new Vector2(Mathf.Min(260, GetViewportRect().Size.X * .28f), 0) };
+        choices.AddThemeConstantOverride("separation", 10);
+        choiceCenter.AddChild(choices);
         add_yuxu_admission_choice(choices, "有", true);
         add_yuxu_admission_choice(choices, "无", false);
         _socialChoosing = true;
@@ -74,39 +66,30 @@ public partial class StoryDialoguePanel
     }
 
     /// <summary>
-    /// 展示调用方提供的分支收束文字，并在点击“继续”或按 Esc 结束后调用 completed。
+    /// 展示调用方提供的分支收束文字，并在点击“继续”或通过全局返回流程结束后调用 completed。
     /// 可用于“已有宗门”的礼貌结束，也可用于“尚无宗门”的引路反馈。
     /// </summary>
-    public void show_yuxu_admission_result(WorldNpcData elder, IReadOnlyList<string> resultLines, Action completed, string title = "山门迎真")
+    public void show_yuxu_admission_result(WorldNpcData elder, IReadOnlyList<string> resultLines, Action completed, string title = "山门迎真",
+        Character? player = null, bool testMode = false)
     {
         ArgumentNullException.ThrowIfNull(elder);
         ArgumentNullException.ThrowIfNull(completed);
         var lines = normalize_yuxu_admission_lines(resultLines, nameof(resultLines));
 
-        var column = begin_yuxu_admission_stage(elder, YuxuAdmissionStage.Result, title: title);
+        var column = begin_yuxu_admission_stage(elder, YuxuAdmissionStage.Result, title: title, player: player, testMode: testMode);
         _yuxuAdmissionCompleted = completed;
-        foreach (var line in lines)
-        {
-            var label = social_label(line, 22);
-            label.Modulate = new Color(1, 1, 1, 0);
-            column.AddChild(label);
-            _socialFactors.Add(label);
-        }
-
-        add_yuxu_admission_progress(column);
-        _socialDone = social_button("略过展示");
-        _socialDone.Pressed += continue_yuxu_admission_result;
-        column.AddChild(_socialDone);
-        start_yuxu_admission_reveal(lines.Length);
+        add_yuxu_admission_lines(column, lines);
+        add_yuxu_admission_continue(column, continue_yuxu_admission_result);
+        start_yuxu_admission_reveal();
     }
 
-    private VBoxContainer begin_yuxu_admission_stage(WorldNpcData elder, YuxuAdmissionStage stage, Action? cancelled = null, string title = "山门迎真")
+    private VBoxContainer begin_yuxu_admission_stage(WorldNpcData elder, YuxuAdmissionStage stage, Action? cancelled = null,
+        string title = "山门迎真", Character? player = null, bool testMode = false)
     {
         // 清掉共享社交动画及旧底栏回调，避免阶段切换后残留旧交互状态。
         reset_social_presentation();
         _on_closed = null;
         hide_speaker_portrait();
-        _yuxuAdmissionGeneration++;
         _yuxuAdmissionActive = true;
         _yuxuAdmissionStage = stage;
         _yuxuAdmissionElder = elder;
@@ -119,45 +102,10 @@ public partial class StoryDialoguePanel
         _dialogueFrame?.Hide();
         _continueHint?.Hide();
 
-        var overlay = new Control { Name = "YuxuAdmissionInteraction", MouseFilter = MouseFilterEnum.Stop };
-        _socialContent = overlay;
-        AddChild(overlay);
-        overlay.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-
-        var shade = new ColorRect { Color = new Color(.07f, .10f, .08f, .38f), MouseFilter = MouseFilterEnum.Ignore };
-        overlay.AddChild(shade);
-        shade.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-
-        var center = new CenterContainer { MouseFilter = MouseFilterEnum.Ignore };
-        overlay.AddChild(center);
-        center.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-
-        var paper = new PanelContainer
-        {
-            Name = "YuxuAdmissionPaper",
-            CustomMinimumSize = new Vector2(Mathf.Min(560, GetViewportRect().Size.X * .82f), 0),
-        };
-        center.AddChild(paper);
-        paper.AddThemeStyleboxOverride("panel", social_paper("e8dfc9"));
-
-        var column = new VBoxContainer();
-        column.AddThemeConstantOverride("separation", 14);
-        paper.AddChild(column);
-
-        var portraitRow = new CenterContainer();
-        column.AddChild(portraitRow);
-        var portrait = new PortraitRenderer { Name = "YuxuAdmissionHeadshot", CustomMinimumSize = new Vector2(112, 112) };
-        portrait.set_headshot_mode(true);
-        portraitRow.AddChild(portrait);
-        portrait.show_world_npc(elder);
-
-        var name = social_label(string.IsNullOrWhiteSpace(elder.npc_name) ? "接引长老" : elder.npc_name, 25);
-        name.HorizontalAlignment = HorizontalAlignment.Center;
-        column.AddChild(name);
-
-        var heading = social_label(string.IsNullOrWhiteSpace(title) ? "山门迎真" : title, 20, "737b65");
-        heading.HorizontalAlignment = HorizontalAlignment.Center;
-        column.AddChild(heading);
+        _socialPlayer = player;
+        _socialTestMode = testMode;
+        var column = build_social_stage(player, elder, title, testMode);
+        _socialContent!.Name = "YuxuAdmissionInteraction";
 
         Show();
         MoveToFront();
@@ -166,9 +114,9 @@ public partial class StoryDialoguePanel
         return column;
     }
 
-    private void add_yuxu_admission_choice(HBoxContainer parent, string text, bool hasSect)
+    private void add_yuxu_admission_choice(VBoxContainer parent, string text, bool hasSect)
     {
-        var button = social_button(text);
+        var button = social_interaction_button(text);
         button.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         button.Pressed += () => choose_yuxu_admission_answer(hasSect);
         parent.AddChild(button);
@@ -190,7 +138,7 @@ public partial class StoryDialoguePanel
         callback?.Invoke(hasSect);
 
         // 正常串联会在 answered 回调内调用 show_yuxu_admission_result。
-        // 若主流程稍后才决定如何展示，Esc 仍可安全结束当前问题页。
+        // 若主流程稍后才决定如何展示，全局返回流程仍可安全结束当前问题页。
         if (_yuxuAdmissionActive && _yuxuAdmissionStage == YuxuAdmissionStage.WaitingForResult)
         {
             _socialChoosing = true;
@@ -228,41 +176,57 @@ public partial class StoryDialoguePanel
         end_yuxu_admission(invokeCompleted: true);
     }
 
-    private void start_yuxu_admission_reveal(int lineCount)
+    private void add_yuxu_admission_lines(VBoxContainer column, IReadOnlyList<string> lines, bool lastLineIsAptitude = false)
+    {
+        var presentation = new List<NpcSocialPresentationText.Line>(lines.Count);
+        string[] reviewWaits = ["长老凝神看了片刻", "长老缓缓抬眼", "长老略作沉吟", "长老收敛目光"];
+        string[] resultWaits = ["对方缓缓开口", "对方略一颔首", "话声稍歇", "对方将话接过"];
+        for (var index = 0; index < lines.Count; index++)
+        {
+            var aptitude = lastLineIsAptitude && index == lines.Count - 1;
+            var pending = aptitude ? "长老细察你周身灵机" : _yuxuAdmissionStage == YuxuAdmissionStage.Review
+                ? reviewWaits[index % reviewWaits.Length] : resultWaits[index % resultWaits.Length];
+            // 不抽换证据结果、不重排因果；只有等待语属于展示前奏。
+            presentation.Add(new(pending, lines[index], aptitude ? "yuxu_aptitude" : "yuxu_evidence"));
+        }
+        _socialLines = presentation;
+        _socialScroll = new ScrollContainer {
+            Name = "YuxuAdmissionProcessScroll", HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled,
+            VerticalScrollMode = ScrollContainer.ScrollMode.Auto,
+            CustomMinimumSize = new Vector2(0, Mathf.Min(lines.Count * 70f, GetViewportRect().Size.Y * .43f)) };
+        column.AddChild(_socialScroll);
+        var list = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
+        list.AddThemeConstantOverride("separation", 12); _socialScroll.AddChild(list);
+        foreach (var line in presentation)
+        {
+            var label = social_label(line.Pending + "……", 21);
+            label.CustomMinimumSize = new Vector2(0, 29);
+            label.Modulate = new Color(1, 1, 1, 0); label.VisibleCharacters = 0;
+            list.AddChild(label); _socialFactors.Add(label);
+        }
+    }
+
+    private void add_yuxu_admission_continue(VBoxContainer column, Action action)
+    {
+        var center = new CenterContainer(); column.AddChild(center);
+        _socialDone = social_interaction_button("略过展示");
+        _socialDone.CustomMinimumSize = new Vector2(Mathf.Min(260, GetViewportRect().Size.X * .28f), 44);
+        _socialDone.Pressed += action;
+        center.AddChild(_socialDone);
+    }
+
+    private void start_yuxu_admission_reveal()
     {
         _socialRevealIndex = 0;
         _socialRevealElapsed = 0;
-        _socialRevealing = lineCount > 0;
-        if (lineCount == 0)
+        _socialRevealing = _socialLines.Count > 0;
+        if (!_socialRevealing)
         {
             if (_socialDone is not null) _socialDone.Text = "继续";
             return;
         }
 
-        var stage = _socialContent;
-        var generation = _yuxuAdmissionGeneration;
-        var delay = .65 * (lineCount + 1) + .12;
-        GetTree().CreateTimer(delay).Timeout += () =>
-        {
-            if (!GodotObject.IsInstanceValid(this) || generation != _yuxuAdmissionGeneration ||
-                !_yuxuAdmissionActive || _socialContent != stage || _socialRevealing || _socialDone is null)
-                return;
-            _socialDone.Text = "继续";
-        };
-    }
-
-    private void add_yuxu_admission_progress(VBoxContainer column)
-    {
-        _socialInk = new ProgressBar
-        {
-            ShowPercentage = false,
-            MaxValue = 1,
-            CustomMinimumSize = new Vector2(0, 5),
-            MouseFilter = MouseFilterEnum.Ignore,
-        };
-        _socialInk.AddThemeStyleboxOverride("background", new StyleBoxFlat { BgColor = new Color("d0cab6") });
-        _socialInk.AddThemeStyleboxOverride("fill", new StyleBoxFlat { BgColor = new Color("536956") });
-        column.AddChild(_socialInk);
+        begin_social_line();
     }
 
     private void cancel_yuxu_admission()
@@ -277,7 +241,6 @@ public partial class StoryDialoguePanel
     {
         var callback = invokeCompleted ? _yuxuAdmissionCompleted : null;
         var cancelCallback = invokeCancelled ? _yuxuAdmissionCancelled : null;
-        _yuxuAdmissionGeneration++;
         _yuxuAdmissionActive = false;
         _yuxuAdmissionStage = YuxuAdmissionStage.None;
         _yuxuAdmissionElder = null;

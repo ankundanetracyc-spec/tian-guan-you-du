@@ -44,7 +44,9 @@ public static class NpcPlayerImpressionChecks
         spar.player_social_memory["player_realm"] = "云息十层";
         Check(!NpcSparringRules.WantsToInvite(spar, human), "旧交手印象绕过已知修为差距");
         spar.player_relationship = -1;
-        Check(!NpcPersonalityRules.WillVisit(spar, false) && !NpcSparringRules.WantsToInvite(spar, human), "旧印象绕过敌对阻断");
+        Check(NpcPersonalityRules.WillVisit(spar, false) && NpcSparringRules.WantsToInvite(spar, human), "旧单一关系分错误继续参与敌意判定");
+        CharacterRelationshipRules.GetOrCreate(spar, CharacterRelationshipRules.PlayerCharacterId).resentment = 60;
+        Check(!NpcPersonalityRules.WillVisit(spar, false) && !NpcSparringRules.WantsToInvite(spar, human), "怨结未阻止来访与切磋邀约");
 
         var buyer = Person("impression_buyer");
         buyer.social_personality["sociability"] = "内敛";
@@ -109,5 +111,6 @@ public static class NpcPlayerImpressionChecks
         Check(inspected == 21 && population.Skip(7).All(person => person.player_impression is null) &&
             population.Take(7).All(NpcPlayerImpressionRules.WillingContact), "印象归纳扫描无经历人口或重复处理已完成证据");
         GD.Print($"NPC_IMPRESSION performance: 580 NPC x12, 7 changed, {inspected} queued checks, {timer.Elapsed.TotalMilliseconds:0.00}ms (data-only)");
+        CharacterRelationshipChecks.Run();
     }
 }

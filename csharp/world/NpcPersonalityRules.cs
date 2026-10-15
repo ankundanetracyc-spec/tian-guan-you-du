@@ -44,15 +44,17 @@ public static class NpcPersonalityRules
     public static bool WillVisit(WorldNpcData npc, bool publiclyKnown)
     {
         Ensure(npc);
-        if (npc.player_relationship < 0 || npc.player_social_memory.GetValueOrDefault("relationship", "").AsString() == "enemy") return false;
-        return NpcSocialRules.KnowsName(npc) || publiclyKnown || !Is(npc, "sociability", "内敛") ||
+        if (CharacterRelationshipRules.AvoidsContact(npc, CharacterRelationshipRules.PlayerCharacterId)) return false;
+        return CharacterRelationshipRules.Value(npc, CharacterRelationshipRules.PlayerCharacterId, CharacterRelationshipRules.Closeness) >= 30 ||
+            NpcSocialRules.KnowsName(npc) || publiclyKnown || !Is(npc, "sociability", "内敛") ||
             NpcPlayerImpressionRules.WillingContact(npc) ||
             (NpcPlayerImpressionRules.SparPartner(npc) && Values(npc, "修行")) ||
             (NpcPlayerImpressionRules.HerbTradeContact(npc) && NpcPurchaseRules.Offer(npc) is not null);
     }
     public static bool HasVisitPriority(WorldNpcData npc, bool publiclyKnown) =>
         (publiclyKnown && (Values(npc, "声名") || Values(npc, "宗门"))) ||
-        (npc.player_social_memory.GetValueOrDefault("relationship", "").AsString() == "friend" && Values(npc, "亲友"));
+        (CharacterRelationshipRules.LegacyMarker(npc, CharacterRelationshipRules.PlayerCharacterId) == "friend" && Values(npc, "亲友")) ||
+        CharacterRelationshipRules.Value(npc, CharacterRelationshipRules.PlayerCharacterId, CharacterRelationshipRules.Closeness) >= 55;
     public static bool TestInspection => ProjectSettings.GetSetting("gameplay/npc_test_inspection", true).AsBool();
     public static string InspectionText(WorldNpcData npc, bool testing)
     {

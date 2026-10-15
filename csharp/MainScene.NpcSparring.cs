@@ -12,15 +12,19 @@ public partial class MainScene
     {
         if (!can_sect_spar(npc) || player?.entity_data is not HumanData human || story_dialogue is null) return;
         info?.hide_panel(); npc_interactions?.close();
+        var invitationEventId = Guid.NewGuid().ToString("N");
+        var answered = false;
         void Answer(bool accept)
         {
+            if (answered) return;
+            answered = true;
             if (!can_sect_spar(npc)) { story_dialogue.show_social_result(npc, new("对方已不在此处，切磋暂且作罢。", "", [])); return; }
             if (!accept)
             {
                 var declined = new NpcSocialRules.Response("这次切磋暂且作罢。", "", [proactive ? "你示意改日再试，对方便不再相邀。" : "你暂且收起切磋之意，没有发出邀约。"]) { ActionName = "告辞" };
                 if (proactive)
                 {
-                    NpcSocialRules.Remember(npc, human, "spar_declined", get_current_profile_location(),
+                    declined = NpcSocialRules.Remember(npc, human, "spar_declined", get_current_profile_location(),
                         get_game_month_index(GetNode<GameTimeMgr>("/root/GameTimeManager")), declined);
                     mark_save_dirty();
                 }
@@ -28,12 +32,13 @@ public partial class MainScene
                 return;
             }
             if (!player.can_spend_world_stamina(WorldStaminaRules.ConversationCost))
-            { story_dialogue.show_social_result(npc, new("你有些疲惫，切磋留待改日。", "", [])); return; }
+            { story_dialogue.show_social_result(npc, new("你有些疲惫，切磋留待改日。", "", [])
+                { RelationshipFeedback = "敬重：切磋未开始，本次没有新增关系记事。" }); return; }
             var response = NpcSparringRules.Evaluate(npc, human);
             player.try_spend_world_stamina(WorldStaminaRules.ConversationCost);
             response = response with { StaminaSpent = WorldStaminaRules.ConversationCost };
             var month = GetNode<GameTimeMgr>("/root/GameTimeManager") is { } clock ? get_game_month_index(clock) : 0;
-            NpcSocialRules.Remember(npc, human, "spar_invitation", get_current_profile_location(), month, response);
+            response = NpcSocialRules.Remember(npc, human, "spar_invitation", get_current_profile_location(), month, response, invitationEventId);
             mark_save_dirty();
             story_dialogue.show_social_result(npc, response, response.AgreesToSpar ? () => start_npc_spar(npc) : null);
         }
@@ -41,7 +46,7 @@ public partial class MainScene
             proactive ? "对方想与你印证所学，邀你切磋一场。" : "你准备邀对方切磋，双方点到为止。",
             new (string, Action)[] {
                 ($"{(proactive ? "接受" : "发出邀约")} · 体力 {WorldStaminaRules.ConversationCost:0.#}", () => Answer(true)),
-                (proactive ? "婉拒" : "取消", () => Answer(false)) }, () => Answer(false), "同门切磋", proactive ? "Esc 婉拒" : "Esc 取消");
+                (proactive ? "婉拒" : "取消", () => Answer(false)) }, () => Answer(false), "同门切磋", proactive ? "右键婉拒" : "右键取消");
     }
     private void start_npc_spar(WorldNpcData npc)
     {
@@ -77,17 +82,32 @@ public partial class MainScene
             summary.GetValueOrDefault("player_victory", false).AsBool() ? "此次切磋，你略胜一筹。" :
             summary.GetValueOrDefault("player_defeated", false).AsBool() ? "此次切磋，对方更胜一筹。" : "此次切磋已结束，未分胜负。";
         var battleId = summary.GetValueOrDefault("battle_id", "").AsString();
+        var relationshipFeedback = summary.GetValueOrDefault("escaped", false).AsBool()
+            ? "敬重：切磋提前结束，本次没有增加敬重。"
+            : "敬重：本次未形成新的切磋记事。";
         if (battleId.Length > 0 && npc.player_social_memory.GetValueOrDefault("last_spar_battle", "").AsString() != battleId)
         {
             npc.player_social_memory["last_spar_battle"] = battleId;
             npc.player_social_memory["last_spar_outcome"] = outcome;
             var month = get_game_month_index(GetNode<GameTimeMgr>("/root/GameTimeManager"));
+            var time = GetNode<GameTimeMgr>("/root/GameTimeManager");
+            var date = $"{time.year}年{time.month}月{time.day}日 {time.hour:D2}时";
             NpcPersonalityRules.Observe(npc, "spar_experience", "交手经历：" + outcome, "宗内切磋", month);
-            npc.record(new NpcActionRecord { month_index = month, action_id = "sect_spar_result", action_name = "同门切磋",
-                node_id = _player_world_node_id, subscene_id = peak, target_npc_id = "player", outcome = outcome,
-                reason = "双方约定点到为止。" });
+            if (!summary.GetValueOrDefault("escaped", false).AsBool() && player?.entity_data is HumanData human && npc.is_alive)
+            {
+                var eventId = "sect-spar:" + battleId;
+                var recorded = CharacterRelationshipRules.RecordCompletedSpar(human, npc, eventId, month);
+                relationshipFeedback = recorded
+                    ? CharacterRelationshipRules.DescribePlayerEvidence(human, npc.npc_id, eventId,
+                        "敬重：本次切磋关系证据已处理。")
+                    : "敬重：本次切磋没有新增待月结记事。";
+            }
+            npc.record(new NpcActionRecord { month_index = month, date_label = date, action_id = "sect_spar_result", action_name = "同门切磋",
+                node_id = _player_world_node_id, subscene_id = peak, target_npc_id = "player",
+                outcome = outcome + "\n" + relationshipFeedback, reason = "双方约定点到为止。" });
             mark_save_dirty();
         }
-        story_dialogue.show_social_result(npc, new(outcome + "双方收手，未结算物品或贡献。", "", []) { ActionName = "结束切磋" });
+        story_dialogue.show_social_result(npc, new(outcome + "双方收手，未结算物品或贡献。", "", [])
+            { ActionName = "结束切磋", RelationshipFeedback = relationshipFeedback });
     }
 }

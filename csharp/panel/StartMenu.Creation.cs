@@ -48,7 +48,7 @@ public partial class StartMenu
 
         var backdrop = new TextureRect
         {
-            Texture = GD.Load<Texture2D>(NewGameBackdropPath),
+            Texture = GD.Load<Texture2D>("res://textures/ui/journey_creation_20261015/paper_landscape.png"),
             ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
             StretchMode = TextureRect.StretchModeEnum.KeepAspectCovered,
             MouseFilter = MouseFilterEnum.Ignore
@@ -56,16 +56,20 @@ public partial class StartMenu
         backdrop.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         overlay.AddChild(backdrop);
 
-        var veil = new ColorRect { Color = new Color(.025f, .04f, .035f, .64f), MouseFilter = MouseFilterEnum.Stop };
+        var veil = new ColorRect { Color = new Color(.96f, .95f, .91f, .08f), MouseFilter = MouseFilterEnum.Stop };
         veil.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         overlay.AddChild(veil);
 
         var layout = new VBoxContainer { Name = "CreationLayout", MouseFilter = MouseFilterEnum.Pass };
-        layout.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        layout.OffsetLeft = 34;
-        layout.OffsetRight = -34;
-        layout.OffsetTop = 20;
-        layout.OffsetBottom = -20;
+        void fit_creation()
+        {
+            var scale = Math.Min(overlay.Size.X / 1600f, overlay.Size.Y / 900f);
+            layout.Scale = Vector2.One * scale;
+            layout.Size = new Vector2(1504, 820);
+            layout.Position = (overlay.Size - new Vector2(1600, 900) * scale) * .5f + new Vector2(48, 40) * scale;
+        }
+        overlay.Resized += fit_creation;
+        Callable.From(fit_creation).CallDeferred();
         layout.AddThemeConstantOverride("separation", 12);
         overlay.AddChild(layout);
 
@@ -73,18 +77,18 @@ public partial class StartMenu
         header.AddThemeConstantOverride("separation", 10);
         layout.AddChild(header);
 
-        var heading = new Label { Text = "新建修行旅程", VerticalAlignment = VerticalAlignment.Center, SizeFlagsHorizontal = SizeFlags.ExpandFill };
+        var heading = new Label { Text = "落笔此生", VerticalAlignment = VerticalAlignment.Center, SizeFlagsHorizontal = SizeFlags.ExpandFill };
         heading.AddThemeFontSizeOverride("font_size", 26);
-        heading.AddThemeColorOverride("font_color", new Color("f3e6c7"));
+        heading.AddThemeColorOverride("font_color", WorldHudStyle.Ink);
         header.AddChild(heading);
 
-        var appearanceTab = PlainButton("一　立绘与姓名");
+        var appearanceTab = creation_button("一　形貌姓名");
         appearanceTab.CustomMinimumSize = new Vector2(190, 46);
         header.AddChild(appearanceTab);
-        var aptitudeTab = PlainButton("二　资质分配");
+        var aptitudeTab = creation_button("二　天资灵根");
         aptitudeTab.CustomMinimumSize = new Vector2(180, 46);
         header.AddChild(aptitudeTab);
-        var close = PlainButton("返回");
+        var close = creation_button("返回");
         close.CustomMinimumSize = new Vector2(90, 46);
         close.Pressed += overlay.Hide;
         header.AddChild(close);
@@ -102,9 +106,10 @@ public partial class StartMenu
         footer.AddThemeConstantOverride("separation", 12);
         layout.AddChild(footer);
         var pageHint = new Label { SizeFlagsHorizontal = SizeFlags.ExpandFill, VerticalAlignment = VerticalAlignment.Center, AutowrapMode = TextServer.AutowrapMode.WordSmart };
-        pageHint.AddThemeColorOverride("font_color", new Color("f3e6c7"));
+        pageHint.AddThemeColorOverride("font_color", WorldHudStyle.Ink);
         footer.AddChild(pageHint);
-        var next = PlainButton("下一页");
+        var next = creation_button("下一页");
+        style_creation_primary(next);
         next.CustomMinimumSize = new Vector2(190, 50);
         footer.AddChild(next);
 
@@ -116,7 +121,7 @@ public partial class StartMenu
             aptitudePage.Root.Visible = currentPage == 1;
             pageHint.Text = currentPage == 0
                 ? "选择姓名、性别与立绘部件；所有变化都会即时预览。"
-                : "分配剩余资质点并选择初始功法；灵根由开局随机判定。";
+                : "分配天资，定下灵根与第一卷功法。";
             next.Text = currentPage == 0 ? "下一页" : "入世";
             style_creation_tab(appearanceTab, currentPage == 0);
             style_creation_tab(aptitudeTab, currentPage == 1);
@@ -126,7 +131,7 @@ public partial class StartMenu
 
         appearanceTab.Pressed += () => show_page(0);
         aptitudeTab.Pressed += () => show_page(1);
-        next.Pressed += () =>
+        next.Pressed += async () =>
         {
             if (currentPage == 0)
             {
@@ -134,9 +139,13 @@ public partial class StartMenu
                 return;
             }
 
+            if (SceneLoadingScreen.IsChangingScene || JourneyCreationLoadingView.IsLoading) return;
+            next.Disabled = true;
             profile.player_name = string.IsNullOrWhiteSpace(profile.player_name) ? "苏醒者" : profile.player_name.Trim();
-            GetNodeOrNull<GameSaveManager>("/root/GameSaveManager")?.begin_new_game(profile.player_name);
-            GetTree().ChangeSceneToFile("res://tscn/scene/MainScene.tscn");
+            var error = await JourneyCreationLoadingView.EnterAsync(GetTree(), profile.player_name);
+            if (GodotObject.IsInstanceValid(next)) next.Disabled = false;
+            if (error != Error.Ok && error != Error.Busy && GodotObject.IsInstanceValid(this))
+                ShowNotice("入世未成", "场景暂时无法载入，请重试。");
         };
         show_page(0);
     }
@@ -147,8 +156,8 @@ public partial class StartMenu
         page.AddThemeConstantOverride("separation", 16);
         CreationPage result = new() { Root = page };
 
-        var identityCard = creation_card("人物信息", "立绘采用当前启用的正式素材；没有对应素材的部件不会显示。");
-        identityCard.Panel.CustomMinimumSize = new Vector2(430, 0);
+        var identityCard = creation_card("人物信息", "姓名与形貌，将随你踏入百川。");
+        identityCard.Panel.CustomMinimumSize = new Vector2(440, 0);
         identityCard.Panel.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         identityCard.Panel.SizeFlagsStretchRatio = 0.82f;
         page.AddChild(identityCard.Panel);
@@ -171,26 +180,31 @@ public partial class StartMenu
         genderLabel.CustomMinimumSize = new Vector2(56, 0);
         genderLabel.VerticalAlignment = VerticalAlignment.Center;
         genderRow.AddChild(genderLabel);
-        var genderChoice = new OptionButton { SizeFlagsHorizontal = SizeFlags.ExpandFill, CustomMinimumSize = new Vector2(0, 42) };
-        style_creation_option(genderChoice);
-        genderChoice.AddItem("男修");
-        genderChoice.AddItem("女修");
-        genderChoice.ItemSelected += index =>
+        var genderButtons = new[] { creation_button("男修"), creation_button("女修") };
+        var genderGroup = new ButtonGroup();
+        for (var gender = 0; gender < genderButtons.Length; gender++)
         {
-            profile.player_gender = (int)index;
-            reset_appearance_parts(profile.player_appearance_data, false);
-            result.Refresh();
-        };
-        genderRow.AddChild(genderChoice);
+            var selectedGender = gender;
+            var button = genderButtons[gender];
+            button.ToggleMode = true; button.ButtonGroup = genderGroup;
+            button.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+            button.Pressed += () =>
+            {
+                profile.player_gender = selectedGender;
+                reset_appearance_parts(profile.player_appearance_data, false);
+                result.Refresh();
+            };
+            genderRow.AddChild(button);
+        }
         identityCard.Body.AddChild(genderRow);
 
-        var portraitHeading = creation_label("半身立绘预览", 19);
+        var portraitHeading = creation_label("形貌", 19);
         portraitHeading.HorizontalAlignment = HorizontalAlignment.Center;
         identityCard.Body.AddChild(portraitHeading);
         var portrait = new PortraitRenderer
         {
             Name = "StartPortraitPreview",
-            CustomMinimumSize = new Vector2(300, 480),
+            CustomMinimumSize = new Vector2(300, 380),
             SizeFlagsHorizontal = SizeFlags.ExpandFill,
             SizeFlagsVertical = SizeFlags.ExpandFill
         };
@@ -199,7 +213,7 @@ public partial class StartMenu
         portraitNote.HorizontalAlignment = HorizontalAlignment.Center;
         identityCard.Body.AddChild(portraitNote);
 
-        var appearanceCard = creation_card("外观部件", "点选部件款式即可改变立绘；“随机”会按当前立绘种子稳定呈现。");
+        var appearanceCard = creation_card("外观部件", "挑选眉眼、发式与衣着。");
         appearanceCard.Panel.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         appearanceCard.Panel.SizeFlagsStretchRatio = 1.18f;
         page.AddChild(appearanceCard.Panel);
@@ -219,10 +233,10 @@ public partial class StartMenu
 
         var portraitButtons = new HBoxContainer();
         portraitButtons.AddThemeConstantOverride("separation", 10);
-        var randomAppearance = PlainButton("随机组合");
+        var randomAppearance = creation_button("随机组合");
         randomAppearance.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         portraitButtons.AddChild(randomAppearance);
-        var resetAppearance = PlainButton("恢复基准");
+        var resetAppearance = creation_button("恢复基准");
         resetAppearance.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         portraitButtons.AddChild(resetAppearance);
         appearanceCard.Body.AddChild(portraitButtons);
@@ -277,7 +291,7 @@ public partial class StartMenu
                 refresh_portrait();
             };
             componentChoices.Add(row);
-            cell.AddChild(selector);
+            cell.AddChild(creation_selector(selector));
             componentGrid.AddChild(cell);
         }
 
@@ -322,7 +336,8 @@ public partial class StartMenu
                 lastGender = profile.player_gender;
                 rebuild_component_choices();
             }
-            genderChoice.Select(Math.Clamp(profile.player_gender, 0, 1));
+            for (var gender = 0; gender < genderButtons.Length; gender++)
+                genderButtons[gender].SetPressedNoSignal(gender == profile.player_gender);
             if (nameInput.Text != profile.player_name) nameInput.Text = profile.player_name;
             foreach (var choice in componentChoices)
             {
@@ -358,7 +373,7 @@ public partial class StartMenu
         rootType.HorizontalAlignment = HorizontalAlignment.Right;
         rootType.VerticalAlignment = VerticalAlignment.Center;
         status.AddChild(rootType);
-        var reroll = PlainButton("重新抽取资质");
+        var reroll = creation_button("重新抽取资质");
         reroll.CustomMinimumSize = new Vector2(150, 42);
         reroll.TooltipText = "重新抽取灵根与九项初始属性，并重置剩余资质点。";
         status.AddChild(reroll);
@@ -371,11 +386,11 @@ public partial class StartMenu
         baseCard.Panel.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         baseCard.Panel.SizeFlagsStretchRatio = .82f;
         columns.AddChild(baseCard.Panel);
-        var temperamentCard = creation_card("心性与处世", "每次提升增加五点；每项上限一百点。");
+        var temperamentCard = creation_card("悟性与处世", "每次提升增加五点；每项上限一百点。");
         temperamentCard.Panel.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         temperamentCard.Panel.SizeFlagsStretchRatio = 1.04f;
         columns.AddChild(temperamentCard.Panel);
-        var rootCard = creation_card("灵根与五行权重", "五行权重仅供查看；可单独重新抽取灵根。");
+        var rootCard = creation_card("灵根与五行权重", "查看五行所长；重抽灵根不会重置属性。");
         rootCard.Panel.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         rootCard.Panel.SizeFlagsStretchRatio = 1.18f;
         columns.AddChild(rootCard.Panel);
@@ -390,7 +405,12 @@ public partial class StartMenu
             name.CustomMinimumSize = new Vector2(28, 0);
             name.VerticalAlignment = VerticalAlignment.Center;
             row.AddChild(name);
-            var bar = new ProgressBar { MinValue = 0, MaxValue = 100, ShowPercentage = false, SizeFlagsHorizontal = SizeFlags.ExpandFill, CustomMinimumSize = new Vector2(64, 16) };
+            var bar = WorldHudStyle.Bar(new Color[] { new("8c8270"), new("637d66"), new("66828b"), new("a36351"), new("aa936d") }[index]);
+            bar.AddThemeStyleboxOverride("background", new StyleBoxFlat { BgColor = new Color("dbdaca") });
+            bar.AddThemeStyleboxOverride("fill", new StyleBoxFlat
+            {
+                BgColor = new Color[] { new("8c8270"), new("637d66"), new("66828b"), new("a36351"), new("aa936d") }[index]
+            });
             row.AddChild(bar);
             var value = creation_label("0%", 15);
             value.CustomMinimumSize = new Vector2(48, 0);
@@ -402,7 +422,7 @@ public partial class StartMenu
         }
         var rootWeightTotal = creation_label("权重合计：—", 14);
         rootCard.Body.AddChild(rootWeightTotal);
-        var rerollRoot = PlainButton("重新抽取灵根");
+        var rerollRoot = creation_button("重新抽取灵根");
         rerollRoot.CustomMinimumSize = new Vector2(0, 38);
         rerollRoot.TooltipText = "只更新灵根类型与五行权重，保留属性分配、剩余点数和初始功法。";
         rootCard.Body.AddChild(rerollRoot);
@@ -421,9 +441,10 @@ public partial class StartMenu
             value.VerticalAlignment = VerticalAlignment.Center;
             value.CustomMinimumSize = new Vector2(56, 0);
             row.AddChild(value);
-            var button = PlainButton(increment == 1 ? "+1" : "+5");
-            button.CustomMinimumSize = new Vector2(68, 36);
-            button.TooltipText = "消耗一点资质点";
+            var button = creation_button("+");
+            style_creation_round(button);
+            button.CustomMinimumSize = new Vector2(36, 36);
+            button.TooltipText = $"消耗 1 点资质，提升 {increment:0} 点";
             button.Pressed += () =>
             {
                 if (profile.increase_base_attribute(key)) refresh();
@@ -448,7 +469,7 @@ public partial class StartMenu
         var configuration = new HBoxContainer { CustomMinimumSize = new Vector2(0, 172) };
         configuration.AddThemeConstantOverride("separation", 14);
         page.AddChild(configuration);
-        var techniqueCard = creation_card("初始功法", "选择将随开局传入心神的第一卷功法。");
+        var techniqueCard = creation_card("初始功法", "伴随此行的第一卷功法。");
         techniqueCard.Panel.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         configuration.AddChild(techniqueCard.Panel);
         var techniqueChoice = new OptionButton { SizeFlagsHorizontal = SizeFlags.ExpandFill, CustomMinimumSize = new Vector2(0, 40) };
@@ -473,13 +494,13 @@ public partial class StartMenu
         var presetName = new LineEdit { PlaceholderText = "方案名称", CustomMinimumSize = new Vector2(150, 38), SizeFlagsHorizontal = SizeFlags.ExpandFill };
         style_creation_input(presetName);
         presetControls.AddChild(presetName);
-        var savePreset = PlainButton("保存");
+        var savePreset = creation_button("保存");
         savePreset.CustomMinimumSize = new Vector2(76, 38);
         presetControls.AddChild(savePreset);
         var presetChoice = new OptionButton { CustomMinimumSize = new Vector2(180, 38), SizeFlagsHorizontal = SizeFlags.ExpandFill };
         style_creation_option(presetChoice);
         presetControls.AddChild(presetChoice);
-        var loadPreset = PlainButton("载入");
+        var loadPreset = creation_button("载入");
         loadPreset.CustomMinimumSize = new Vector2(76, 38);
         presetControls.AddChild(loadPreset);
         var presetHint = creation_label("保存后可复用姓名、外观、九项属性、灵根与功法。", 14);
@@ -529,7 +550,7 @@ public partial class StartMenu
             if (selectedTechnique < 0) selectedTechnique = 0;
             techniqueChoice.Select(selectedTechnique);
             var detail = InitialGongfas[selectedTechnique];
-            techniqueSummary.Text = $"《{detail.Name}》\n{detail.Summary}\n玄鉴会在夜里将所选功法第一卷传入心神。";
+            techniqueSummary.Text = $"《{detail.Name}》\n{detail.Summary}\n入世后可在修行界面查看与研习。";
         };
 
         reroll.Pressed += () => { profile.roll_fated_aptitude(); refresh(); };
@@ -563,10 +584,10 @@ public partial class StartMenu
         var panel = new PanelContainer { MouseFilter = MouseFilterEnum.Stop };
         panel.AddThemeStyleboxOverride("panel", new StyleBoxFlat
         {
-            BgColor = new Color(.88f, .83f, .71f, .96f),
-            BorderColor = new Color(.24f, .18f, .10f, .94f),
-            BorderWidthLeft = 2, BorderWidthTop = 2, BorderWidthRight = 2, BorderWidthBottom = 2,
-            CornerRadiusTopLeft = 8, CornerRadiusTopRight = 8, CornerRadiusBottomLeft = 8, CornerRadiusBottomRight = 8,
+            BgColor = new Color(.97f, .95f, .89f, .88f),
+            BorderColor = new Color("a49c88"),
+            BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1,
+            CornerRadiusTopLeft = 2, CornerRadiusTopRight = 2, CornerRadiusBottomLeft = 2, CornerRadiusBottomRight = 2,
             ContentMarginLeft = 16, ContentMarginRight = 16, ContentMarginTop = 14, ContentMarginBottom = 14
         });
         var body = new VBoxContainer { MouseFilter = MouseFilterEnum.Pass };
@@ -585,45 +606,10 @@ public partial class StartMenu
 
     private static Label creation_label(string text, int size)
     {
-        var label = new Label { Text = text, MouseFilter = MouseFilterEnum.Ignore };
+        var label = WorldHudStyle.Text(text, size);
         label.AddThemeFontSizeOverride("font_size", size);
         label.AddThemeColorOverride("font_color", Ink());
         return label;
-    }
-
-    private static void style_creation_input(LineEdit input)
-    {
-        input.AddThemeColorOverride("font_color", Ink());
-        input.AddThemeColorOverride("font_placeholder_color", new Color(.30f, .26f, .20f, .72f));
-        var style = new StyleBoxFlat { BgColor = new Color(.95f, .91f, .81f), BorderColor = new Color(.37f, .29f, .16f, .9f), BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1, CornerRadiusTopLeft = 4, CornerRadiusTopRight = 4, CornerRadiusBottomLeft = 4, CornerRadiusBottomRight = 4, ContentMarginLeft = 8, ContentMarginRight = 8 };
-        input.AddThemeStyleboxOverride("normal", style);
-        input.AddThemeStyleboxOverride("focus", style);
-    }
-
-    private static void style_creation_option(OptionButton option)
-    {
-        option.AddThemeColorOverride("font_color", Ink());
-        option.AddThemeColorOverride("font_hover_color", Ink());
-        option.AddThemeColorOverride("font_pressed_color", Ink());
-        var style = new StyleBoxFlat { BgColor = new Color(.95f, .91f, .81f), BorderColor = new Color(.37f, .29f, .16f, .9f), BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1, CornerRadiusTopLeft = 4, CornerRadiusTopRight = 4, CornerRadiusBottomLeft = 4, CornerRadiusBottomRight = 4, ContentMarginLeft = 8, ContentMarginRight = 8 };
-        option.AddThemeStyleboxOverride("normal", style);
-        option.AddThemeStyleboxOverride("hover", style);
-        option.AddThemeStyleboxOverride("pressed", style);
-    }
-
-    private static void style_creation_tab(Button button, bool active)
-    {
-        var style = new StyleBoxFlat
-        {
-            BgColor = active ? new Color(.86f, .77f, .55f, .98f) : new Color(.16f, .18f, .15f, .86f),
-            BorderColor = new Color(.69f, .56f, .30f, .96f),
-            BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1,
-            CornerRadiusTopLeft = 5, CornerRadiusTopRight = 5, CornerRadiusBottomLeft = 5, CornerRadiusBottomRight = 5
-        };
-        button.AddThemeStyleboxOverride("normal", style);
-        button.AddThemeStyleboxOverride("hover", style);
-        button.AddThemeColorOverride("font_color", active ? Ink() : new Color("f1e5c9"));
-        button.AddThemeColorOverride("font_hover_color", active ? Ink() : new Color("f1e5c9"));
     }
 
     private static void reset_appearance_parts(EntityData data, bool resetSeed)
@@ -684,3 +670,6 @@ public partial class StartMenu
     }
 
 }
+
+
+

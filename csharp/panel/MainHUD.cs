@@ -15,6 +15,7 @@ public partial class MainHUD : Control
     private ProgressBar? _healthBar;
     private Label? _worldStaminaLabel;
     private ProgressBar? _worldStaminaBar;
+    private Label? _cultivationStatusLabel;
     private Label? _worldStatusLabel;
     private HBoxContainer? _actionBar;
     private Button? _actionBarToggle;
@@ -61,6 +62,7 @@ public partial class MainHUD : Control
         {
             _player!.WorldStaminaChanged -= on_player_world_stamina_changed;
             _player.BreakthroughCompleted -= on_player_breakthrough_completed;
+            _player.CultivationInspirationChanged -= on_player_cultivation_inspiration_changed;
         }
 
         _player = player;
@@ -68,6 +70,7 @@ public partial class MainHUD : Control
         {
             _player!.WorldStaminaChanged += on_player_world_stamina_changed;
             _player.BreakthroughCompleted += on_player_breakthrough_completed;
+            _player.CultivationInspirationChanged += on_player_cultivation_inspiration_changed;
         }
         RefreshPlayerStatus();
     }
@@ -75,7 +78,17 @@ public partial class MainHUD : Control
     public void refresh_player_status() => RefreshPlayerStatus();
 
     private void on_player_world_stamina_changed(Character _) => RefreshPlayerStatus();
-    private void on_player_breakthrough_completed(Character _, string __) => RefreshPlayerStatus();
+    private void on_player_breakthrough_completed(Character character, string __)
+    {
+        RefreshPlayerStatus();
+        refresh_player_world_status_details(character, GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0);
+    }
+
+    private void on_player_cultivation_inspiration_changed(Character character)
+    {
+        RefreshPlayerStatus();
+        refresh_player_world_status_details(character, GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0);
+    }
 
     public void set_task_entries(IEnumerable<JournalPanel.Entry> entries, bool visible)
     {
@@ -189,6 +202,12 @@ public partial class MainHUD : Control
         _healthLabel = health.value; _healthBar = health.bar;
         var stamina = BuildStatusRow(box, "体力", WorldHudStyle.StaminaInk);
         _worldStaminaLabel = stamina.value; _worldStaminaBar = stamina.bar;
+        _cultivationStatusLabel = WorldHudStyle.Text("", 15, true);
+        _cultivationStatusLabel.CustomMinimumSize = new Vector2(0, 20);
+        _cultivationStatusLabel.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+        _cultivationStatusLabel.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
+        _cultivationStatusLabel.ClipText = true;
+        box.AddChild(_cultivationStatusLabel);
         _worldStatusLabel = WorldHudStyle.Text("", 15, true);
         _worldStatusLabel.CustomMinimumSize = new Vector2(0, 20);
         _worldStatusLabel.SizeFlagsHorizontal = SizeFlags.ExpandFill;
@@ -243,36 +262,46 @@ public partial class MainHUD : Control
             if (_playerNameLabel is not null) _playerNameLabel.Text = _player.entity_name;
             if (GetNodeOrNull<Button>("PlayerStatus") is { } status)
             {
-                var currentGameHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
-                var worldStatuses = WorldStatusRules.format_summary((_player.entity_data as HumanData)?.world_status_records, currentGameHour);
-                status.TooltipText = $"{_player.entity_name} · {realm}\n生命 {_player.current_health} / {_player.max_health}\n体力 {_player.current_world_stamina:0.#} / {_player.max_world_stamina:0.#}\n大世界状态：{worldStatuses}\n点击查看人物状态";
+                var tooltipGameHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+                var worldStatuses = WorldStatusRules.format_summary((_player.entity_data as HumanData)?.world_status_records, tooltipGameHour);
+                var cultivationStatus = CharacterStatusPresentationRules.format_bottleneck_hud_line(_player.get_cultivation_bottleneck_summary());
+                var cultivationTooltip = string.IsNullOrWhiteSpace(cultivationStatus) ? "" : $"\n{cultivationStatus.Trim()}";
+                HoverInfoManager.SetTooltip(status, $"{_player.entity_name} · {realm}\n生命 {_player.current_health} / {_player.max_health}\n体力 {_player.current_world_stamina:0.#} / {_player.max_world_stamina:0.#}\n大世界状态：{worldStatuses}{cultivationTooltip}\n点击查看人物状态");
             }
         }
         if (_healthLabel is not null) _healthLabel.Text = $"{_player!.current_health} / {_player.max_health}";
         if (_healthBar is not null) { _healthBar.MaxValue = Math.Max(1, _player!.max_health); _healthBar.Value = _player.current_health; }
         if (_worldStaminaLabel is not null) _worldStaminaLabel.Text = $"{_player!.current_world_stamina:0.#} / {_player.max_world_stamina:0.#}";
         if (_worldStaminaBar is not null) { _worldStaminaBar.MaxValue = Math.Max(1, _player!.max_world_stamina); _worldStaminaBar.Value = _player.current_world_stamina; }
+        var currentGameHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+        var statusLineCount = 0;
+        if (_cultivationStatusLabel is not null)
+        {
+            _cultivationStatusLabel.Text = CharacterStatusPresentationRules.format_bottleneck_hud_line(_player.get_cultivation_bottleneck_summary());
+            _cultivationStatusLabel.Visible = !string.IsNullOrWhiteSpace(_cultivationStatusLabel.Text);
+            if (_cultivationStatusLabel.Visible) statusLineCount++;
+        }
         if (_worldStatusLabel is not null)
         {
-            var currentGameHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
             _worldStatusLabel.Text = WorldStatusRules.format_hud_line((_player!.entity_data as HumanData)?.world_status_records, currentGameHour);
             _worldStatusLabel.Visible = !string.IsNullOrWhiteSpace(_worldStatusLabel.Text);
-            if (GetNodeOrNull<Control>("PlayerStatus") is { } statusPanel)
-                statusPanel.OffsetTop = _worldStatusLabel.Visible ? -204 : -172;
+            if (_worldStatusLabel.Visible) statusLineCount++;
         }
+        if (GetNodeOrNull<Control>("PlayerStatus") is { } statusPanel)
+            statusPanel.OffsetTop = -172 - 32 * statusLineCount;
         if (FindButton("BtnRealm") is { } realmButton)
         {
             var realms = GetNodeOrNull<RealmManager>("/root/RealmManager");
             var unlocked = realms?.is_realm_after_or_equal(_player!.cultivation_realm, "云息一层") == true;
             if (GetNodeOrNull<Control>("Hbox/V_Realm") is { } realmEntry) realmEntry.Visible = unlocked;
             realmButton.Disabled = !unlocked;
-            realmButton.TooltipText = unlocked ? "查看境界" : "";
+            HoverInfoManager.SetTooltip(realmButton, unlocked ? "查看境界" : "");
         }
         if (GetNodeOrNull<Control>("Hbox/V_Cultivation") is { } cultivationEntry)
         {
             cultivationEntry.Visible = true;
             if (FindButton("BtnCultivation") is { } cultivationButton)
-                cultivationButton.TooltipText = cultivationEntry.Visible ? "查看修命与修性进度" : "";
+                HoverInfoManager.SetTooltip(cultivationButton, cultivationEntry.Visible ? "查看修命与修性进度" : "");
         }
     }
 

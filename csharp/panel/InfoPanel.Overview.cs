@@ -9,7 +9,7 @@ public partial class InfoPanel
     private void bind_mood_disc(MoodDiscControl disc)
     {
         disc.HoverTextChanged += show_tooltip;
-        disc.HoverEnded += hide_tooltip;
+        disc.HoverEnded += () => HoverInfoManager.HideFor(disc);
     }
 
     private void open_mood_details()
@@ -92,18 +92,26 @@ public partial class InfoPanel
         _npc_page.AddChild(Text("基础属性",24));
         _npc_page.AddChild(Text($"体魄 {npc.physique:0.#}　灵慧 {npc.intelligence:0.#}　敏捷 {npc.agility:0.#}　神魂 {npc.soul:0.#}\n福缘 未详　悟性 未详　魅力 未详　交际 未详　治事 未详"));
         // 五项尚未存储的属性不能由界面临时随机生成。
-        _npc_page.AddChild(Text($"与主角关系：{npc.player_relationship}　当前状态：{npc.current_state}\n生存：{(npc.is_alive?"在世":"已故 · "+npc.death_cause)}"));
+        _npc_page.AddChild(Text($"当前状态：{npc.current_state}\n生存：{(npc.is_alive?"在世":"已故 · "+npc.death_cause)}"));
         if(npc.faction_reputations.TryGetValue(npc.faction_id,out var attitude))
             _npc_page.AddChild(Text($"所属势力态度：{attitude}"));
         else _npc_page.AddChild(Text("所属势力态度：未详"));
-        if(npc.relation_tags.Count>0) _npc_page.AddChild(Text("关系标签："+string.Join("、",npc.relation_tags)));
         if(npc.behavior_tags.Count>0) _npc_page.AddChild(Text("已知特征："+string.Join("、",npc.behavior_tags)));
         _npc_page.AddChild(Text("近期行迹",24));
         if(npc.action_history.Count==0) _npc_page.AddChild(Text("尚无可见记录。"));
         else foreach(var entry in npc.action_history.TakeLast(3))
             if(entry is not null) _npc_page.AddChild(Text($"{entry.date_label}　{entry.action_name}\n{entry.outcome}"));
-        var actions=new HBoxContainer(); actions.AddThemeConstantOverride("separation",20); _npc_page.AddChild(actions);
-        var talk=new Button { Text="交谈",CustomMinimumSize=new Vector2(180,46) }; actions.AddChild(talk); talk.Pressed+=()=>NpcTalkRequested?.Invoke(npc);
-        var trade=new Button { Text="交易",CustomMinimumSize=new Vector2(180,46) }; actions.AddChild(trade); trade.Pressed+=()=>NpcTradeRequested?.Invoke(npc);
+        _npc_page.AddChild(Text("可进行的交往",24));
+        var actions=new HBoxContainer(); actions.AddThemeConstantOverride("separation",14); _npc_page.AddChild(actions);
+        void AddAction(string label, Action action)
+        {
+            var button=new Button { Text=label,CustomMinimumSize=new Vector2(170,46),SizeFlagsHorizontal=SizeFlags.ShrinkBegin };
+            button.AddThemeFontSizeOverride("font_size",20);
+            actions.AddChild(button); button.Pressed+=action;
+        }
+        AddAction("交谈",()=>NpcTalkRequested?.Invoke(npc));
+        AddAction("交易",()=>NpcTradeRequested?.Invoke(npc));
+        if(NpcSparAvailable?.Invoke(npc)==true) AddAction("同门切磋",()=>NpcSparRequested?.Invoke(npc));
+        if(NpcPurchaseAvailable?.Invoke(npc)==true) AddAction("求购药材",()=>NpcPurchaseRequested?.Invoke(npc));
     }
 }

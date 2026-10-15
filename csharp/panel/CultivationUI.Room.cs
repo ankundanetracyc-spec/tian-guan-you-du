@@ -19,31 +19,49 @@ public partial class CultivationUI
         _room = new Control { Name = "QuietRoom", Theme = QuietRoomStyle.MakeTheme(), MouseFilter = MouseFilterEnum.Stop };
         AddChild(_room); _room.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         QuietRoomStyle.Background(_room, "quiet_room.png");
+        var canvas = QuietRoomStyle.Canvas(_room);
         var header = new HBoxContainer { AnchorLeft = .035f, AnchorRight = .965f, AnchorTop = .025f, AnchorBottom = .10f };
-        header.AddThemeConstantOverride("separation", 22); _room.AddChild(header);
-        header.AddChild(QuietRoomStyle.Text("静室", 40));
+        header.AddThemeConstantOverride("separation", 22); canvas.AddChild(header);
+        header.AddChild(QuietRoomStyle.Text("静室", 32));
         _name = QuietRoomStyle.Text("", 22); _name.SizeFlagsHorizontal = SizeFlags.ExpandFill; header.AddChild(_name);
         _roomTime = QuietRoomStyle.Text("", 23); header.AddChild(_roomTime);
         var close = new Button { Text = "离开静室", CustomMinimumSize = new Vector2(150, 48) }; close.Pressed += close_panel; header.AddChild(close);
         var status = new HBoxContainer { AnchorLeft = .035f, AnchorRight = .965f, AnchorTop = .115f, AnchorBottom = .165f };
-        status.AddThemeConstantOverride("separation", 32); _room.AddChild(status);
+        status.AddThemeConstantOverride("separation", 32); canvas.AddChild(status);
         _realm = QuietRoomStyle.Text("", 21); status.AddChild(_realm);
         _roomStamina = QuietRoomStyle.Text("", 21); status.AddChild(_roomStamina);
         _roomMain = QuietRoomStyle.Text("", 21); status.AddChild(_roomMain);
-        var nav = new VBoxContainer { AnchorLeft = .025f, AnchorRight = .165f, AnchorTop = .205f, AnchorBottom = .91f };
-        nav.AddThemeConstantOverride("separation", 18); _room.AddChild(nav);
+        var rail = new InventoryPaperFrame { Dark = true, AnchorLeft = .02f, AnchorRight = .17f, AnchorTop = .195f, AnchorBottom = .955f };
+        canvas.AddChild(rail);
+        var nav = new VBoxContainer { AnchorLeft = .03f, AnchorRight = .16f, AnchorTop = .22f, AnchorBottom = .925f };
+        nav.AddThemeConstantOverride("separation", 14); canvas.AddChild(nav);
         var titles = new[] { "吐纳修行", "功法研读", "闭关突破", "修命·淬体", "修性·观法", "灵感·瓶颈" };
         for (var i = 0; i < titles.Length; i++)
         {
-            var page = i; var tab = new Button { Name = "RoomTab" + i, Text = titles[i], ToggleMode = true, CustomMinimumSize = new Vector2(0, 72) };
+            var page = i; var tab = new Button { Name = "RoomTab" + i, Text = titles[i], ToggleMode = true, CustomMinimumSize = new Vector2(0, 66) };
+            style_room_navigation(tab);
             tab.Pressed += () => select_room_page(page); nav.AddChild(tab); _roomTabs.Add(tab);
         }
-        var overview = new Button { Text = "修行总览", CustomMinimumSize = new Vector2(0, 46) }; overview.Pressed += () => { if (_target is not null) show_cultivation_overview(_target); }; nav.AddChild(overview);
+        nav.AddChild(new Control { SizeFlagsVertical = SizeFlags.ExpandFill });
+        var overview = new Button { Text = "修行总览", CustomMinimumSize = new Vector2(0, 46) }; style_room_navigation(overview); overview.Pressed += () => { if (_target is not null) show_cultivation_overview(_target); }; nav.AddChild(overview);
         _roomContent = new Control { Name = "RoomPages", AnchorLeft = .185f, AnchorRight = .965f, AnchorTop = .195f, AnchorBottom = .955f };
-        _room.AddChild(_roomContent);
+        canvas.AddChild(_roomContent);
         _roomClock = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
         if (_roomClock is not null) _roomClock.time_changed += room_time_changed;
         _room.Hide();
+    }
+    private static void style_room_navigation(Button tab)
+    {
+        tab.AddThemeFontSizeOverride("font_size", 24);
+        tab.AddThemeColorOverride("font_color", new Color("eee6d3"));
+        tab.AddThemeColorOverride("font_hover_color", new Color("fff4d4"));
+        tab.AddThemeColorOverride("font_pressed_color", QuietRoomStyle.Ink);
+        tab.AddThemeColorOverride("font_hover_pressed_color", QuietRoomStyle.Ink);
+        tab.AddThemeStyleboxOverride("normal", new StyleBoxEmpty());
+        tab.AddThemeStyleboxOverride("hover", QuietRoomStyle.Edge(true));
+        var plaque = new StyleBoxTexture { Texture = GD.Load<Texture2D>("res://textures/ui/infopanel_nav_plaque_clean_v2.png"), TextureMarginLeft = 24, TextureMarginRight = 24, TextureMarginTop = 12, TextureMarginBottom = 12, ContentMarginTop = 8, ContentMarginBottom = 8 };
+        tab.AddThemeStyleboxOverride("pressed", plaque); tab.AddThemeStyleboxOverride("hover_pressed", plaque);
+        tab.MouseDefaultCursorShape = CursorShape.PointingHand;
     }
     public override void _ExitTree() { if (GodotObject.IsInstanceValid(_roomClock)) _roomClock!.time_changed -= room_time_changed; }
     private void room_time_changed() { if (Visible && _room.Visible) { refresh_room_header(); if (_panel?.Visible == true) refresh_plan(); if (_inspirationPage?.Visible == true) refresh_room_inspiration(); } }
@@ -54,15 +72,15 @@ public partial class CultivationUI
     }
     private static VBoxContainer room_box(PanelContainer parent)
     {
-        var box = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ExpandFill }; box.AddThemeConstantOverride("separation", 20); parent.AddChild(box); return box;
+        var box = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ExpandFill }; box.AddThemeConstantOverride("separation", 14); parent.AddChild(box); return box;
     }
     private void build_room_ui()
     {
         _panel = room_page("PracticePage");
         var columns = new HBoxContainer(); columns.AddThemeConstantOverride("separation", 30); _panel.AddChild(columns);
-        var scenery = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsStretchRatio = 1.4f }; columns.AddChild(scenery);
+        var scenery = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsStretchRatio = 1.15f }; columns.AddChild(scenery);
         var heading = new PanelContainer(); heading.AddThemeStyleboxOverride("panel", QuietRoomStyle.Paper(.94f, 14)); scenery.AddChild(heading);
-        var headingBox = room_box(heading); headingBox.AddThemeConstantOverride("separation", 6); headingBox.AddChild(QuietRoomStyle.Text("吐纳修行", 34)); headingBox.AddChild(QuietRoomStyle.Text("一呼一吸，积养灵力。", 22));
+        var headingBox = room_box(heading); headingBox.AddThemeConstantOverride("separation", 6); headingBox.AddChild(QuietRoomStyle.Text("吐纳修行", 28)); headingBox.AddChild(QuietRoomStyle.Text("一呼一吸，积养灵力。", 20));
         scenery.AddChild(new Control { SizeFlagsVertical = SizeFlags.ExpandFill, MouseFilter = MouseFilterEnum.Ignore });
         var summary = new PanelContainer(); summary.AddThemeStyleboxOverride("panel", QuietRoomStyle.Paper(.93f, 18)); scenery.AddChild(summary);
         var stats = room_box(summary); stats.AddChild(QuietRoomStyle.Text("当前灵力", 21)); _power = QuietRoomStyle.Text("", 26); stats.AddChild(_power);
@@ -70,13 +88,13 @@ public partial class CultivationUI
         _rate = QuietRoomStyle.Text("", 18); stats.AddChild(_rate);
         var actions = new PanelContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill }; actions.AddThemeStyleboxOverride("panel", QuietRoomStyle.Paper(.95f, 24)); columns.AddChild(actions);
         var actionScroll = new ScrollContainer { HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled }; actions.AddChild(actionScroll);
-        var practice = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ExpandFill }; practice.AddThemeConstantOverride("separation", 20); actionScroll.AddChild(practice); practice.AddChild(QuietRoomStyle.Text("本次修炼", 30));
+        var practice = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ExpandFill }; practice.AddThemeConstantOverride("separation", 14); actionScroll.AddChild(practice); practice.AddChild(QuietRoomStyle.Text("本次修炼", 28));
         _mode = new OptionButton { Name = "PracticeMode", Visible = false }; practice.AddChild(_mode);
         var grid = new GridContainer { Columns = 2 }; grid.AddThemeConstantOverride("h_separation", 12); grid.AddThemeConstantOverride("v_separation", 12); practice.AddChild(grid);
         var modes = new[] { "指定灵力", "指定天数", "指定日期", "下层所需" };
         for (var i = 0; i < modes.Length; i++)
         {
-            var mode = i; _mode.AddItem(modes[i]); var tab = new Button { Text = modes[i], ToggleMode = true, SizeFlagsHorizontal = SizeFlags.ExpandFill, CustomMinimumSize = new Vector2(0, 56) };
+            var mode = i; _mode.AddItem(modes[i]); var tab = new Button { Text = modes[i], ToggleMode = true, SizeFlagsHorizontal = SizeFlags.ExpandFill, CustomMinimumSize = new Vector2(0, 48) };
             tab.Pressed += () => { _mode.Select(mode); update_mode_visibility(); refresh_plan(); sync_mode_tabs(); }; grid.AddChild(tab); _modeTabs.Add(tab);
         }
         _mode.ItemSelected += _ => { update_mode_visibility(); refresh_plan(); sync_mode_tabs(); };
@@ -109,7 +127,10 @@ public partial class CultivationUI
     private void build_room_breakthrough()
     {
         _breakPage = room_page("BreakthroughPage"); var columns = new HBoxContainer(); columns.AddThemeConstantOverride("separation", 32); _breakPage.AddChild(columns);
-        var left = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsStretchRatio = 1.4f }; columns.AddChild(left); left.AddChild(QuietRoomStyle.Text("闭关突破", 34)); left.AddChild(QuietRoomStyle.Text("心神归一，静候功成。", 22));
+        var left = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsStretchRatio = 1.4f }; columns.AddChild(left);
+        var heading = new PanelContainer(); heading.AddThemeStyleboxOverride("panel", QuietRoomStyle.Paper(1, 14)); left.AddChild(heading);
+        var headingBox = room_box(heading); headingBox.AddThemeConstantOverride("separation", 6);
+        headingBox.AddChild(QuietRoomStyle.Text("闭关突破", 28)); headingBox.AddChild(QuietRoomStyle.Text("心神归一，静候功成。", 20));
         var paper = new PanelContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill }; paper.AddThemeStyleboxOverride("panel", QuietRoomStyle.Paper(.95f, 28)); columns.AddChild(paper);
         var box = room_box(paper); box.AddChild(QuietRoomStyle.Text("突破条件与安排", 28));
         _breakthroughHint = QuietRoomStyle.Text("", 23); _breakthroughHint.AutowrapMode = TextServer.AutowrapMode.WordSmart; box.AddChild(_breakthroughHint);
@@ -118,8 +139,8 @@ public partial class CultivationUI
     private ScrollContainer mount_room_panel(PanelContainer panel)
     {
         var scroll = new ScrollContainer { HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled }; _roomContent.AddChild(scroll); scroll.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        panel.Reparent(scroll); panel.SetAnchorsAndOffsetsPreset(LayoutPreset.TopLeft); panel.SizeFlagsHorizontal = SizeFlags.ExpandFill; panel.ZIndex = 0;
-        panel.AddThemeStyleboxOverride("panel", QuietRoomStyle.Paper(.94f, 24));
+        panel.Reparent(scroll); panel.SetAnchorsAndOffsetsPreset(LayoutPreset.TopLeft); panel.SizeFlagsHorizontal = SizeFlags.ExpandFill; panel.SizeFlagsVertical = SizeFlags.ExpandFill; panel.ZIndex = 0;
+        panel.AddThemeStyleboxOverride("panel", QuietRoomStyle.Paper(1, 16));
         foreach (var text in panel.FindChildren("*", "Label", true, false).OfType<Label>())
             if (text.Text.Length > 24) text.AutowrapMode = TextServer.AutowrapMode.WordSmart;
         foreach (var column in panel.FindChildren("*", "PanelContainer", true, false).OfType<PanelContainer>())
@@ -137,6 +158,8 @@ public partial class CultivationUI
     {
         _roomBodyScroll = mount_room_panel(_bodyPanel!); _roomNatureScroll = mount_room_panel(_visualPanel!);
         foreach (var button in new[] { _bodyStart, _visualPractice }) if (button is not null) QuietRoomStyle.Primary(button);
+        foreach (var paper in _room.FindChildren("*", "PanelContainer", true, false).OfType<PanelContainer>())
+            if (paper.GetThemeStylebox("panel") is StyleBoxTexture) QuietRoomStyle.Frame(paper);
     }
     private Texture2D? manual_icon(GongfaResource book)
     {
@@ -187,9 +210,9 @@ public partial class CultivationUI
         for (var i = 0; i < _studyCandidates.Count; i++)
         {
             var index = i; var book = _studyCandidates[i];
-            var button = new Button { Text = book.gongfa_name, ToggleMode = true, ButtonPressed = i == _studyBook!.Selected, CustomMinimumSize = new Vector2(250, 120), ExpandIcon = true, IconAlignment = HorizontalAlignment.Left, Alignment = HorizontalAlignment.Left, AutowrapMode = TextServer.AutowrapMode.WordSmart };
+            var button = new Button { Text = book.gongfa_name, ToggleMode = true, ButtonPressed = i == _studyBook!.Selected, CustomMinimumSize = new Vector2(250, 88), ExpandIcon = true, IconAlignment = HorizontalAlignment.Left, Alignment = HorizontalAlignment.Left, AutowrapMode = TextServer.AutowrapMode.WordSmart };
             button.Icon = manual_icon(book);
-            button.AddThemeConstantOverride("icon_max_width", 86); button.AddThemeFontSizeOverride("font_size", 19); button.Pressed += () => select_study_book(index); _studyList.AddChild(button);
+            button.AddThemeConstantOverride("icon_max_width", 58); button.AddThemeFontSizeOverride("font_size", 19); button.Pressed += () => select_study_book(index); _studyList.AddChild(button);
         }
         _studyTitle.Text = _studyCandidates.Count > 0 ? _studyCandidates[Math.Clamp(_studyBook!.Selected, 0, _studyCandidates.Count - 1)].gongfa_name : "尚无读本";
         var selected = selected_study_book();

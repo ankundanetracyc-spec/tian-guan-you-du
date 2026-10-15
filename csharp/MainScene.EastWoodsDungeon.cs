@@ -15,7 +15,11 @@ public partial class MainScene
         if (_east_woods_dungeon is not null) return _east_woods_dungeon;
         _east_woods_dungeon = new EastWoodsDungeonPanel { Name = "EastWoodsDungeonPanel" };
         GetNode<CanvasLayer>("SceneLayer").AddChild(_east_woods_dungeon);
-        _east_woods_dungeon.Closed += return_from_east_woods_dungeon;
+        _east_woods_dungeon.Closed += () =>
+        {
+            if (_east_woods_dungeon?.is_dynamic_instance == true) return_from_dynamic_dungeon();
+            else return_from_east_woods_dungeon();
+        };
         _east_woods_dungeon.RouteNodeEntered += on_east_woods_route_node_entered;
         _east_woods_dungeon.RouteStepped += on_east_woods_route_stepped;
         _east_woods_dungeon.RouteTravelStarted += on_east_woods_route_travel_started;
@@ -37,6 +41,7 @@ public partial class MainScene
         _npc_world?.enter_east_woods_route();
         mark_save_dirty();
         var dungeon = get_or_create_east_woods_dungeon();
+        dungeon.use_east_woods_instance();
         var state = _east_woods_dungeon_state.Duplicate(true);
         if (!state.GetValueOrDefault("inside", false).AsBool()) state["current"] = "forest_edge";
         sync_east_woods_ecology_state(state, state.GetValueOrDefault("current", "forest_edge").AsString());
@@ -59,6 +64,11 @@ public partial class MainScene
 
     private void on_east_woods_route_stepped(string _fromNodeId, string toNodeId)
     {
+        if (_east_woods_dungeon?.is_dynamic_instance == true)
+        {
+            on_dynamic_dungeon_route_stepped(toNodeId);
+            return;
+        }
         if (_east_woods_dungeon is not null) _east_woods_dungeon_state = _east_woods_dungeon.get_route_state();
         var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
         var elapsedHours = EastWoodsDungeonRules.player_edge_hours(player?.dun_speed ?? EastWoodsDungeonRules.BaseDunSpeed);
@@ -70,18 +80,34 @@ public partial class MainScene
 
         time.advance_time(elapsedHours, "east_woods_dungeon");
         _eastWoodsTravelCompletedSteps++;
+        update_yuxu_case_transport_dungeon_position(toNodeId, elapsedHours);
         var encounter = _npc_world?.advance_east_woods_route(_fromNodeId, toNodeId, elapsedHours, player?.entity_data as HumanData) ?? new Godot.Collections.Dictionary();
         mark_save_dirty();
         if (_east_woods_dungeon?.is_route_traveling() != true) refresh_east_woods_route_roster(toNodeId);
         if (encounter.Count > 0)
         {
-            _east_woods_dungeon?.interrupt_travel();
-            CallDeferred(nameof(start_east_woods_encounter), encounter);
+            var targetsPlayer = encounter.GetValueOrDefault("target_player", false).AsBool();
+            var attackerId = encounter.GetValueOrDefault("attacker_npc_id", "").AsString();
+            if (targetsPlayer && try_mark_yuxu_case_transport_dungeon_interception(attackerId))
+            {
+                _east_woods_dungeon?.interrupt_travel();
+                CallDeferred(nameof(start_yuxu_case_transport_interception_battle), attackerId, "east_woods_dungeon", _player_world_grid_cell);
+            }
+            else
+            {
+                _east_woods_dungeon?.interrupt_travel();
+                CallDeferred(nameof(start_east_woods_encounter), encounter);
+            }
         }
     }
 
     private void on_east_woods_route_travel_started()
     {
+        if (_east_woods_dungeon?.is_dynamic_instance == true)
+        {
+            on_dynamic_dungeon_travel_started();
+            return;
+        }
         _eastWoodsTravelStartedHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
         _eastWoodsTravelCompletedSteps = 0;
         (GetTree().GetFirstNodeInGroup("cell_character_list") as CellCharacterList)?.suspend_world_npcs();
@@ -89,12 +115,24 @@ public partial class MainScene
 
     private void on_east_woods_route_travel_finished(string routeNodeId)
     {
+        if (_east_woods_dungeon?.is_dynamic_instance == true)
+        {
+            on_dynamic_dungeon_travel_finished(routeNodeId);
+            return;
+        }
         synchronize_east_woods_ecology();
         refresh_east_woods_route_roster(routeNodeId);
         if (_eastWoodsTravelCompletedSteps > 0)
         {
             var hour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
             award_player_renewable_inspiration($"travel:eastwoods:{_eastWoodsTravelStartedHour}:{routeNodeId}:{hour}:{_eastWoodsTravelCompletedSteps}", "journey.step");
+        }
+        if (routeNodeId == "forest_edge" && player?.entity_data is HumanData human &&
+            _npc_world?.get_active_yuxu_case_transport(human) is { journey_status: YuxuSectCaseTaskRecord.JourneyExitingDungeon, temporary_party_member_active: true } &&
+            _east_woods_dungeon?.Visible == true)
+        {
+            _east_woods_dungeon.close();
+            CallDeferred(nameof(start_yuxu_case_transport_world_route));
         }
         _eastWoodsTravelStartedHour = -1;
         _eastWoodsTravelCompletedSteps = 0;
@@ -243,6 +281,12 @@ public partial class MainScene
     {
         apply_player_severe_injury(summary, context);
         award_successful_combat_inspiration(summary, context);
+        if (handle_yuxu_case_transport_battle_return(attackers, defenders, summary, context)) return;
+        if (context.GetValueOrDefault("kind", "").AsString() == "dynamic_dungeon_beast")
+        {
+            restore_dynamic_dungeon_beast_result(summary, context);
+            return;
+        }
         if (context.GetValueOrDefault("kind", "").AsString() == "east_woods_beast")
         {
             restore_east_woods_beast_result(summary, context);
@@ -261,6 +305,10 @@ public partial class MainScene
         var defenderWon = defendersAlive > 0 && attackersAlive <= 0;
         var lootSummary = "双方均未被击倒，未发生物品转移。";
         var incidentId = context.GetValueOrDefault("incident_id", "").AsString();
+        var battleId = summary.GetValueOrDefault("battle_id", "").AsString();
+        var harmEventId = "dungeon-harm:" + (string.IsNullOrWhiteSpace(incidentId) ? battleId : incidentId);
+        if (harmEventId == "dungeon-harm:") harmEventId += Guid.NewGuid().ToString("N");
+        var month = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is { } clock ? get_game_month_index(clock) : 0;
         var itemTransfers = new Godot.Collections.Array<EastWoodsNpcItemTransferRecord>();
 
         if (targetsPlayer && attackerNpc is not null)
@@ -274,12 +322,26 @@ public partial class MainScene
                     lootSummary = $"对方从你的行囊中夺走 {ResourceLoader.Load<ItemData>(itemPath)?.entity_name ?? "一件物品"} ×1。";
                 }
                 else lootSummary = "对方未能从你的行囊中夺得可掠夺物品。";
+                var relationshipFeedback = "";
+                if (player?.entity_data is HumanData victimData)
+                {
+                    var previousResentment = CharacterRelationshipRules.Value(victimData, attackerNpc.npc_id, CharacterRelationshipRules.Resentment);
+                    if (CharacterRelationshipRules.RecordImmediateGrievance(victimData, attackerNpc.npc_id,
+                        harmEventId + ":player", month, "在东林地遭遇战中落败并遭受掠夺。"))
+                    {
+                        var currentResentment = CharacterRelationshipRules.Value(victimData, attackerNpc.npc_id, CharacterRelationshipRules.Resentment);
+                        relationshipFeedback = "\n关系记事（即时）：你对" + attackerNpc.npc_name + "的" +
+                            CharacterRelationshipRules.DescribeValueChange(CharacterRelationshipRules.Resentment, previousResentment, currentResentment) + "。";
+                    }
+                }
+                lootSummary += relationshipFeedback;
                 _npc_world.record_dungeon_battle_outcome(attackerNpc, "player", "战胜玩家并完成一次随身物品掠夺", lootSummary);
                 show_message("东林地遇袭", $"战斗结束。主角依既有战败规则恢复至低生命状态；{lootSummary}");
             }
             else if (defenderWon)
             {
                 lootSummary = context.GetValueOrDefault("loot_handled_by_settlement",false).AsBool()?"战利品已由战后结算记录收取，未收部分保留待领。":transfer_npc_loot_to_player(attackerNpc, !attackerNpc.is_alive);
+                CharacterRelationshipRules.RecordImmediateGrievance(attackerNpc, "player", harmEventId + ":attacker", month, "在东林地遭遇战中被玩家击退。");
                 _npc_world.record_dungeon_battle_outcome(attackerNpc, "player", attackerNpc.is_alive ? "被玩家击退" : "被玩家击杀", lootSummary);
                 show_message("东林地遭遇", $"你赢下了这场战斗。{lootSummary}");
             }
@@ -290,12 +352,14 @@ public partial class MainScene
             if (attackerWon)
             {
                 lootSummary = transfer_npc_loot_to_npc(attackerNpc, defenderNpc, !defenderNpc.is_alive, out itemTransfers);
+                CharacterRelationshipRules.RecordImmediateGrievance(defenderNpc, attackerNpc.npc_id, harmEventId + ":defender", month, "在东林地遭遇战中败于对方并遭受掠夺。");
                 _npc_world.record_dungeon_battle_outcome(defenderNpc, attackerNpc.npc_id, defenderNpc.is_alive ? "败于沿途冲突" : "在沿途冲突中身亡", lootSummary, incidentId);
                 _npc_world.record_dungeon_battle_outcome(attackerNpc, defenderNpc.npc_id, "战胜同行", lootSummary, incidentId);
             }
             else if (defenderWon)
             {
                 lootSummary = transfer_npc_loot_to_npc(defenderNpc, attackerNpc, !attackerNpc.is_alive, out itemTransfers);
+                CharacterRelationshipRules.RecordImmediateGrievance(attackerNpc, defenderNpc.npc_id, harmEventId + ":attacker", month, "在东林地遭遇战中被对方击退。");
                 _npc_world.record_dungeon_battle_outcome(attackerNpc, defenderNpc.npc_id, attackerNpc.is_alive ? "败于沿途冲突" : "在沿途冲突中身亡", lootSummary, incidentId);
                 _npc_world.record_dungeon_battle_outcome(defenderNpc, attackerNpc.npc_id, "击退沿途袭击", lootSummary, incidentId);
             }

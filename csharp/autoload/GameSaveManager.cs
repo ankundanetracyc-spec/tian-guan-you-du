@@ -47,6 +47,8 @@ public partial class GameSaveManager : Node
 		{
 			var dungeon = pendingLoad.scene_progress.GetValueOrDefault("east_woods_dungeon_state",new Dictionary()).AsGodotDictionary();
 			EastWoodsDungeonRules.validate_layout(dungeon.GetValueOrDefault("layout",new Dictionary()).AsGodotDictionary());
+			if (!DynamicDungeonExpedition.ValidateState(pendingLoad.dynamic_dungeon_state))
+				throw new InvalidOperationException("动态副本实例表无效。");
 		}
 		catch (Exception error)
 		{

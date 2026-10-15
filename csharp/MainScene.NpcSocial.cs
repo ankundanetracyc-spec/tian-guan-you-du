@@ -34,8 +34,12 @@ public partial class MainScene
         // 调试模拟只读取当前人物，不记录身份传闻，也不改 NPC 的六轴或交往记忆。
         if (!testMode) NpcSocialRules.HearSectReputation(npc, human, proactive);
         var place = get_current_profile_location();
+        var eventId = Guid.NewGuid().ToString("N");
+        var answered = false;
         void Answer(string choice)
         {
+            if (answered) return;
+            answered = true;
             if (!can_contact_social_npc(npc)) { story_dialogue.show_social_result(npc, new("对方已离开。", "还有些事，先走一步。", [])); return; }
             if (testMode)
             {
@@ -45,7 +49,8 @@ public partial class MainScene
             }
             if (choice != "leave" && !player.can_spend_world_stamina(WorldStaminaRules.ConversationCost))
             {
-                story_dialogue.show_social_result(npc, new("你有些疲惫，便先告辞了。", "那便改日再聊。", []));
+                story_dialogue.show_social_result(npc, new("你有些疲惫，便先告辞了。", "那便改日再聊。", [])
+                    { RelationshipFeedback = "亲近：本次未能聊成，没有新增关系记事。" });
                 return;
             }
             var response = NpcSocialRules.Evaluate(npc, human, choice, proactive);
@@ -53,19 +58,22 @@ public partial class MainScene
             var month = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is { } time ? get_game_month_index(time) : 0;
             // 在登记本次经历前选旧事，防止刚聊上便把本次说成“上回”。
             response = NpcPersonalRecallRules.Attach(npc, response, month);
-            NpcSocialRules.Remember(npc, human, choice, place, month, response);
+            response = NpcSocialRules.Remember(npc, human, choice, place, month, response, eventId);
             mark_save_dirty();
             story_dialogue.show_social_result(npc, response);
         }
         var cost = WorldStaminaRules.ConversationCost;
+        // proactive describes an NPC-initiated visit, not the player's approach.
+        var knowsName = NpcSocialRules.KnowsName(socialNpc);
+        var confirm = proactive ? testMode ? "听听来意" : "接受" : knowsName && !testMode ? "聊聊近况" : "上前搭话";
         var opening = testMode
             ? proactive ? "对方向你走来，停步问候。" : "你准备上前与对方搭话。"
             : NpcSocialRules.Opening(socialNpc, human, place, proactive);
         story_dialogue.show_social_choices(player, socialNpc, opening,
             new (string, Action)[] {
-                (testMode ? proactive ? "听听来意" : "上前搭话" : $"接受 · 体力 {cost:0.#}", () => Answer("introduce")),
-                (testMode && !proactive ? "作罢" : "婉拒", () => Answer("leave"))
-            }, () => Answer("leave"), proactive ? "来访" : "结识", proactive ? "Esc 婉拒" : "Esc 作罢", testMode);
+                (testMode ? confirm : $"{confirm} · 体力 {cost:0.#}", () => Answer("introduce")),
+                (proactive ? "婉拒" : "作罢", () => Answer("leave"))
+            }, () => Answer("leave"), proactive ? "来访" : knowsName ? "闲谈" : "结识", proactive ? "右键婉拒" : "右键作罢", testMode);
     }
     private void process_npc_social_visit(double delta)
     {
@@ -73,25 +81,20 @@ public partial class MainScene
         if (_socialVisitPoll < .5) return;
         _socialVisitPoll = 0;
         if (player?.entity_data is not HumanData human || GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is not { } time) return;
+        if (_letterMailbox.closure_pending)
+        {
+            if (_npc_world?.HasPendingSettlement == true || time.IsSmoothAdvanceBusy || action_transition?.IsPlaying == true || GetTree().Paused) return;
+            process_closed_visit_letters(human, time);
+        }
         if (human.sect_affiliation_id != YuxuSectId) { if (_socialMembershipMonth >= 0) { _socialMembershipMonth = _socialVisitMonth = -1; mark_save_dirty(); } return; }
         var month = get_game_month_index(time);
         if (_socialMembershipMonth < 0) { _socialMembershipMonth = month; mark_save_dirty(); return; }
         if (month <= _socialMembershipMonth || _socialVisitMonth >= month || _npc_world is null) return;
         if (_npc_world.HasPendingSettlement || time.IsSmoothAdvanceBusy || action_transition?.IsPlaying == true || GetTree().Paused || _suppress_persistent_chrome) return;
-        if (story_dialogue?.Visible == true || info?.Visible == true || trade_panel?.Visible == true || cultivation_ui?.Visible == true || _restPanel?.Visible == true || journal?.Visible == true || realm_panel?.Visible == true || condensation_panel?.Visible == true || storage?.Visible == true || baigong?.Visible == true || npc_interactions?.Visible == true || hud?.player_profile_visible == true) return;
+        if (story_dialogue?.Visible == true || info?.Visible == true || trade_panel?.Visible == true || cultivation_ui?.Visible == true || _restPanel?.Visible == true || journal?.Visible == true || realm_panel?.Visible == true || condensation_panel?.Visible == true || storage?.Visible == true || baigong?.Visible == true || _letters?.Visible == true || npc_interactions?.Visible == true || hud?.player_profile_visible == true) return;
         if (_player_world_node_id != "yuxu_xianzong_core" || string.IsNullOrWhiteSpace(_player_current_yuxu_peak_id) ||
             GetNodeOrNull<Control>("SceneLayer/YuxuXianzongOverview/PeakInterior")?.IsVisibleInTree() != true) return;
-        var candidate = _npc_world.get_subscene_roster("yuxu_xianzong_core", _player_current_yuxu_peak_id)
-            .Where(n => n.faction_id == YuxuSectId && !n.is_yuxu_lineage_staff && is_supported_yuxu_life_rank(n.formal_identity) && n.player_relationship >= 0 &&
-                n.player_social_memory.GetValueOrDefault("last_month", -1).AsInt32() < month &&
-                n.player_social_memory.GetValueOrDefault("relationship", "").AsString() != "enemy" &&
-                NpcPersonalityRules.WillVisit(n, human.sect_current_rank is "真传" or "真传弟子"))
-            .OrderBy(n => n.player_social_memory.GetValueOrDefault("last_month", -1).AsInt32())
-            .ThenByDescending(n => NpcPersonalityRules.Is(n, "sociability", "外向"))
-            .ThenByDescending(n => NpcSocialRules.KnowsName(n) && NpcPersonalityRules.Is(n, "attachment", "重情"))
-            .ThenByDescending(n => NpcPersonalityRules.HasVisitPriority(n, human.sect_current_rank is "真传" or "真传弟子"))
-            .ThenByDescending(n => NpcPlayerImpressionRules.WillingContact(n))
-            .ThenBy(n => n.npc_id, StringComparer.Ordinal).FirstOrDefault();
+        var candidate = social_visit_candidate(human, month, _player_current_yuxu_peak_id);
         if (candidate is null) return;
         _socialVisitMonth = month;
         mark_save_dirty();
@@ -99,4 +102,16 @@ public partial class MainScene
         else if (can_sect_spar(candidate) && NpcSparringRules.WantsToInvite(candidate, human)) request_npc_spar(candidate, true);
         else begin_npc_social_talk(candidate, true);
     }
+    private WorldNpcData? social_visit_candidate(HumanData human, int month, string peakId) =>
+        _npc_world?.get_subscene_roster("yuxu_xianzong_core", peakId)
+            .Where(n => n.faction_id == YuxuSectId && !n.is_yuxu_lineage_staff && is_supported_yuxu_life_rank(n.formal_identity) &&
+                !CharacterRelationshipRules.AvoidsContact(n, CharacterRelationshipRules.PlayerCharacterId) &&
+                n.player_social_memory.GetValueOrDefault("last_month", -1).AsInt32() < month &&
+                NpcPersonalityRules.WillVisit(n, human.sect_current_rank is "真传" or "真传弟子"))
+            .OrderBy(n => n.player_social_memory.GetValueOrDefault("last_month", -1).AsInt32())
+            .ThenByDescending(n => NpcPersonalityRules.Is(n, "sociability", "外向"))
+            .ThenByDescending(n => NpcSocialRules.KnowsName(n) && NpcPersonalityRules.Is(n, "attachment", "重情"))
+            .ThenByDescending(n => NpcPersonalityRules.HasVisitPriority(n, human.sect_current_rank is "真传" or "真传弟子"))
+            .ThenByDescending(n => NpcPlayerImpressionRules.WillingContact(n))
+            .ThenBy(n => n.npc_id, StringComparer.Ordinal).FirstOrDefault();
 }

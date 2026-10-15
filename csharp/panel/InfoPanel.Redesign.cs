@@ -208,7 +208,6 @@ public partial class InfoPanel
             var page = new Control { Name = "CharacterPage" + i, ClipContents = true };
             _characterCanvas.AddChild(page); CharacterRect(page, 282, 105, 1350, 795); _characterPages[i] = page;
         }
-        build_character_reader();
         Resized += resize_character_design; resize_character_design();
     }
 
@@ -289,18 +288,7 @@ public partial class InfoPanel
 
     private void CharacterHover(Control anchor, string title, string body, Texture2D? icon = null)
     {
-        anchor.MouseEntered += async () =>
-        {
-            var ticket = ++_readerTicket; await ToSignal(GetTree().CreateTimer(.35), SceneTreeTimer.SignalName.Timeout);
-            if (!GodotObject.IsInstanceValid(this) || !GodotObject.IsInstanceValid(anchor) || ticket != _readerTicket || !anchor.IsVisibleInTree()) return;
-            _readerAnchor = anchor; show_character_reading(anchor, title, body, icon);
-        };
-        anchor.MouseExited += async () =>
-        {
-            var ticket = ++_readerTicket; await ToSignal(GetTree().CreateTimer(.18), SceneTreeTimer.SignalName.Timeout);
-            if (!GodotObject.IsInstanceValid(this) || ticket != _readerTicket) return;
-            if (_readerPanel is not null && !_readerPanel.GetGlobalRect().HasPoint(GetGlobalMousePosition())) _readerPanel.Hide();
-        };
+        HoverInfoManager.SetInfo(anchor, new HoverInfoManager.HoverInfoContent(title, body, icon));
     }
 
     private void show_character_reading(Control? anchor, string title, string body, Texture2D? icon = null)

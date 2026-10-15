@@ -8,6 +8,8 @@ public partial class BattleTransitionManager
     private bool _flowTransitionActive;
     private BattleSceneTransition? _sceneTransition;
     public bool is_flow_transition_active()=>_flowTransitionActive;
+    public bool has_open_flow_view() => GodotObject.IsInstanceValid(_flowView);
+    public bool try_return_from_open_flow() => GodotObject.IsInstanceValid(_flowView) && _flowView!.try_return_to_previous_page();
     public async System.Threading.Tasks.Task HoldBattleOutro()
     {
         _flowTransitionActive=true;
@@ -28,6 +30,45 @@ public partial class BattleTransitionManager
     public GDictionary export_reward_ledger()=>_rewardLedger.Duplicate(true);
     public void restore_reward_ledger(GDictionary ledger)=>_rewardLedger=ledger.Duplicate(true);
     public void clear_reward_ledger(){CloseFlow();_rewardLedger.Clear();_lootReminder?.QueueFree();_lootReminder=null;_worldProgressSnapshot=null;}
+    public bool has_world_progress_snapshot() => _worldProgressSnapshot is not null;
+    public bool save_world_progress_snapshot()
+    {
+        if (_worldProgressSnapshot is null) return false;
+        var manager = GetNodeOrNull<GameSaveManager>("/root/GameSaveManager");
+        var copy = _worldProgressSnapshot.Duplicate(true) as PersistentGameSave ?? _worldProgressSnapshot;
+        return manager?.save_snapshot(copy) == true;
+    }
+
+    public void abandon_battle_for_title()
+    {
+        CloseFlow();
+        _sceneTransition?.QueueFree();
+        _sceneTransition = null;
+        _flowTransitionActive = false;
+        _awaitingSettlement = false;
+        pending_attackers = [];
+        pending_defenders = [];
+        pending_attacker_data = [];
+        pending_defender_data = [];
+        result_attackers = [];
+        result_defenders = [];
+        saved_world = null;
+        saved_entity_data.Clear();
+        _worldProgressSnapshot = null;
+        _beforeBattle.Clear();
+        _attackerOrder.Clear();
+        _defenderOrder.Clear();
+        _battleId = "";
+        _outcomeNote = "";
+        last_summary.Clear();
+        return_context.Clear();
+        has_results = false;
+        has_battle_return_data = false;
+        if (GodotObject.IsInstanceValid(_spectatorBattleScene)) _spectatorBattleScene!.QueueFree();
+        _spectatorBattleScene = null;
+        _spectatorBattleActive = false;
+        GetTree().Paused = false;
+    }
     private string _outcomeNote="";
     public void set_battle_outcome_note(string note)=>_outcomeNote=note;
     private bool Training=>return_context.GetValueOrDefault("is_training",false).AsBool() || return_context.GetValueOrDefault("kind","").AsString()=="yuxu_tianwen_practice";
@@ -98,9 +139,12 @@ public partial class BattleTransitionManager
                 if (_worldProgressSnapshot is null || string.IsNullOrEmpty(world_scene_path))
                 { saved_world=new PackedScene();if(saved_world.Pack(world)!=Error.Ok)saved_world=null; }
             }
+            _sceneTransition.Report(.3, "正在读取战场…");
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             var error=GetTree().ChangeSceneToFile("res://tscn/battle/BattleScene.tscn");
             if(error!=Error.Ok){_worldProgressSnapshot=null;GD.PushError("BattleTransitionMgr: 无法加载战斗场景");GetTree().Paused=previousPause;ShowBattleBriefing();return;}
             await ToSignal(GetTree(),SceneTree.SignalName.SceneChanged);
+            _sceneTransition.Report(.85, "正在准备招式与阵容…");
             // 等待技能栏连接及首轮规划的延迟初始化，遮罩保持不透明。
             await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);
             await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);
@@ -193,8 +237,9 @@ public partial class BattleTransitionManager
     }
     public void end_team_battle_escaped(GArray attackers,GArray defenders)=>PrepareSettlement(attackers,defenders,true);
     public void end_spectator_team_battle(GArray attackers,GArray defenders)=>PrepareSettlement(attackers,defenders,false);
-    private void ReturnAfterSettlement()
+    private async void ReturnAfterSettlement()
     {
+        if (_flowTransitionActive || SceneLoadingScreen.IsChangingScene) return;
         CloseFlow();_awaitingSettlement=false;has_results=!Training;
         if(Training)
         {
@@ -205,8 +250,15 @@ public partial class BattleTransitionManager
             }
         }
         has_battle_return_data=true;
-        var error=saved_world is not null?GetTree().ChangeSceneToPacked(saved_world):Error.Failed;
-        if(error!=Error.Ok&&!string.IsNullOrEmpty(world_scene_path))GetTree().ChangeSceneToFile(world_scene_path);
+        _flowTransitionActive = true;
+        var previousPause = GetTree().Paused;
+        GetTree().Paused = true;
+        try
+        {
+            var error = await SceneLoadingScreen.ChangeSceneAsync(GetTree(), world_scene_path, "返回修行", packedScene: saved_world);
+            if (error != Error.Ok) GD.PushError($"战后场景恢复失败：{error}");
+        }
+        finally { GetTree().Paused = previousPause; _flowTransitionActive = false; }
     }
     private static void RollLoot(IEnumerable<Variant> definitions,string source,GArray rewards)
     {

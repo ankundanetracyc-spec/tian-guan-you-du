@@ -331,7 +331,6 @@ public static class CloudStateNpcCatalog
             personality = pick(Personalities, rng),
             long_term_goal = pick(LongTermGoals, rng),
             short_term_goal = pick(ShortTermGoals, rng),
-            player_relationship = 0,
             current_node_id = node.node_id,
             current_subscene_id = subscene_id,
             current_state = "空闲",

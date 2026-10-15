@@ -61,7 +61,7 @@ public static class NpcSocialPrototypeRules
             return Response(npcInitiated ? "你婉拒了这次来访，双方各自离去。" : "你暂未与对方交谈。", "");
         }
 
-        var hostile = npc.player_relationship < 0 || npc.player_social_memory.GetValueOrDefault("relationship", "").AsString() == "enemy";
+        var hostile = CharacterRelationshipRules.IsHostile(npc, CharacterRelationshipRules.PlayerCharacterId);
         if (hostile)
         {
             steps.Add(new NpcSocialRules.DecisionStep("test_hostile", "旧日过节横在中间，对方只略一拱手，便不再多言。"));
@@ -72,7 +72,8 @@ public static class NpcSocialPrototypeRules
         var sameFaction = !string.IsNullOrWhiteSpace(player.sect_affiliation_id) && player.sect_affiliation_id == npc.faction_id;
         var trueDisciple = sameFaction && player.sect_affiliation_id == "yuxu_xianzong" && (player.sect_current_rank is "真传" or "真传弟子");
         var knowsName = NpcSocialRules.KnowsName(npc);
-        var relationship = npc.player_social_memory.GetValueOrDefault("relationship", "").AsString();
+        var relationship = CharacterRelationshipRules.LegacyMarker(npc, CharacterRelationshipRules.PlayerCharacterId);
+        var close = CharacterRelationshipRules.Value(npc, CharacterRelationshipRules.PlayerCharacterId, CharacterRelationshipRules.Closeness) >= 30;
         var sociability = ReadAxis(npc, "sociability");
         var cautious = ReadAxis(npc, "risk") == "谨慎";
         var deedRenown = RegionalRenownSystem.get_bai_chuan_deed_renown(player);
@@ -96,7 +97,7 @@ public static class NpcSocialPrototypeRules
             if (trueDisciple) Add("recognized_identity", 7f, "宗内真传的身份已传到对方面前，他的态度郑重了些。", "");
             if (locallyKnownDeeds) Add("public_renown", 4f, "你在百川留下的公开事迹传到此处，对方多看了你一眼。", "");
             if (knowsName) Add("known_name", 9f, "对方认出是你，话头自然转到近况上。", "");
-            if (relationship == "friend") Add("friendship", 8f, "你们已有几次往来，对方不再把你当作生客。", "");
+            if (relationship == "friend" || close) Add("friendship", 8f, "你们已有几次往来，对方不再把你当作生客。", "");
             if (sociability == "外向") Add("outgoing", 4f, "对方主动接过话头，交谈没有僵住。", "");
             if (sociability == "内敛") Add("reserved", -4f, "对方话少而谨慎，几次回应后便停了下来。", "");
             if (cautious && !knowsName && !sameFaction && !trueDisciple)
@@ -125,7 +126,7 @@ public static class NpcSocialPrototypeRules
         if (trueDisciple) Add("recognized_identity", 7f, "对方听闻你是真传弟子，开场便向你问礼。", "");
         if (locallyKnownDeeds) Add("public_renown", 4f, "对方提起你在百川留下的公开事迹，问了其中一两件。", "");
         if (knowsName) Add("known_name", 8f, "对方认得你，交谈很快越过了初见的客套。", "");
-        if (relationship == "friend") Add("friendship", 8f, "你们已有交情，对方说起近况时自在许多。", "");
+        if (relationship == "friend" || close) Add("friendship", 8f, "你们已有交情，对方说起近况时自在许多。", "");
         if (sociability == "外向") Add("visit_initiative", 5f, "对方主动攀谈，几句话便把来意讲开。", "");
         if (sociability == "内敛") Add("visit_initiative", -5f, "对方虽主动来访，说完来意后仍显得拘谨。", "");
         if (sameFaction && HasPriority(npc, "宗门")) Add("sect_priority", 5f, "对方提起峰中事务，接着问了几句你的近况。", "");

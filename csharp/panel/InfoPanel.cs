@@ -8,6 +8,10 @@ public partial class InfoPanel : Control
 {
     public event Action<WorldNpcData>? NpcTradeRequested;
     public event Action<WorldNpcData>? NpcTalkRequested;
+    public event Action<WorldNpcData>? NpcSparRequested;
+    public event Action<WorldNpcData>? NpcPurchaseRequested;
+    public Func<WorldNpcData, bool>? NpcSparAvailable { get; set; }
+    public Func<WorldNpcData, bool>? NpcPurchaseAvailable { get; set; }
     public event Action? AppearanceChanged;
     public WorldEntity? current_card { get; private set; }
 
@@ -254,6 +258,7 @@ public partial class InfoPanel : Control
     {
         if (_moodDetailsOverlay?.Visible == true) { _moodDetailsOverlay.Hide(); return true; }
         if (_gongfaModal?.Visible == true) { _gongfaModal.Hide(); return true; }
+        if (HoverInfoManager.DismissVisible()) { hide_tooltip(); return true; }
         if (_readerPanel?.Visible == true) { hide_tooltip(); return true; }
         if (_tooltipPanel?.Visible == true) { _tooltipPanel.Hide(); return true; }
         return false;
@@ -424,7 +429,7 @@ public partial class InfoPanel : Control
         set_overview_mood(null);
         var data = human?.entity_data as HumanData;
         var currentGameHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
-        refresh_overview_world_status(data, currentGameHour);
+        refresh_overview_world_status(data, human?.get_cultivation_bottleneck_summary(), currentGameHour);
         if (human is null) { set_overview_value("identity", "无"); set_overview_value("faction", "无"); return; }
         var gender = !string.IsNullOrWhiteSpace(human.family_gender) ? human.family_gender : data is null ? "未详" : data.gender == 1 ? "女" : "男";
         var identity = !string.IsNullOrWhiteSpace(data?.sect_current_rank) ? data!.sect_current_rank
@@ -2084,12 +2089,15 @@ public partial class InfoPanel : Control
 
     private void bind_tooltip(Label label, string text)
     {
-        // TooltipText 会额外唤起 Godot 原生浮窗；属性页只使用自定义浮窗，避免一次悬停出现两个窗口。
         label.TooltipText = ""; label.SetMeta("info_tooltip", text); label.MouseFilter = MouseFilterEnum.Pass;
-        if (label.HasMeta("info_tooltip_bound")) return;
+        if (label.HasMeta("info_tooltip_bound"))
+        {
+            HoverInfoManager.SetInfo(label, new HoverInfoManager.HoverInfoContent("", text));
+            return;
+        }
         label.SetMeta("info_tooltip_bound", true);
-        label.MouseEntered += () => show_tooltip(label.GetMeta("info_tooltip").AsString());
-        label.MouseExited += hide_tooltip;
+        label.MouseEntered += () => HoverInfoManager.SetInfo(label, new HoverInfoManager.HoverInfoContent("", label.GetMeta("info_tooltip").AsString()));
+        label.MouseExited += () => HoverInfoManager.HideFor(label);
     }
 
     private void build_tooltip()
@@ -2104,16 +2112,11 @@ public partial class InfoPanel : Control
 
     private void show_tooltip(string text)
     {
-        if (_characterCanvas is not null) { show_character_reading(null, "说明", text); return; }
-        if (_tooltipPanel is null || _tooltipLabel is null || string.IsNullOrWhiteSpace(text) || !Visible) return;
-        _tooltipLabel.Text = text;
-        _tooltipPanel.Size = new Vector2(420, Mathf.Clamp(82 + text.Length / 24 * 18, 116, 280));
-        var viewport = GetViewportRect().Size; var pointer = GetViewport().GetMousePosition() + new Vector2(16, 18);
-        _tooltipPanel.Position = new Vector2(Mathf.Clamp(pointer.X, 12, viewport.X - _tooltipPanel.Size.X - 12), Mathf.Clamp(pointer.Y, 12, viewport.Y - _tooltipPanel.Size.Y - 12));
-        _tooltipPanel.Show(); _tooltipPanel.MoveToFront();
+        if (_overviewMoodScale is null || string.IsNullOrWhiteSpace(text) || !Visible) return;
+        HoverInfoManager.SetInfo(_overviewMoodScale, new HoverInfoManager.HoverInfoContent("心境", text));
     }
 
-    private void hide_tooltip() { ++_readerTicket; _tooltipPanel?.Hide(); _readerPanel?.Hide(); }
+    private void hide_tooltip() { ++_readerTicket; HoverInfoManager.HideAll(); _tooltipPanel?.Hide(); _readerPanel?.Hide(); }
 
 
     private void set_label(string name, string value)

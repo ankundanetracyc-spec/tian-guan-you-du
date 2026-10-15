@@ -670,8 +670,15 @@ public partial class Character : Creature
     {
         if (is_yuanxi_realm()) return 10;
         const string prefix="云息";
-        if(!cultivation_realm.StartsWith(prefix)||!cultivation_realm.EndsWith("层"))return 1;
-        return int.TryParse(cultivation_realm[prefix.Length..^1],out var tier)?Mathf.Clamp(tier,1,13):1;
+        if(!cultivation_realm.StartsWith(prefix,StringComparison.Ordinal)||!cultivation_realm.EndsWith("层",StringComparison.Ordinal))return 1;
+        var layer=cultivation_realm[prefix.Length..^1];
+        var tier=layer switch
+        {
+            "一"=>1,"二"=>2,"三"=>3,"四"=>4,"五"=>5,
+            "六"=>6,"七"=>7,"八"=>8,"九"=>9,"十"=>10,
+            _=>int.TryParse(layer,out var numericTier)?numericTier:1
+        };
+        return Mathf.Clamp(tier,1,13);
     }
     public bool can_cultivate()=>!is_yuanxi_realm()&&spirit_root_type!=0&&main_gongfa is not null&&main_gongfa.is_wuxing_compatible(spirit_root_type)&&!is_cultivation_blocked_by_breakthrough()&&!is_in_breakthrough_retreat();
     public int get_available_cultivation_hours(int requestedHours) => get_available_world_action_hours(WorldStaminaRules.CultivationCostPerGameHour, requestedHours);

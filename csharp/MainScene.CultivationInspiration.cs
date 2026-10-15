@@ -8,7 +8,9 @@ public partial class MainScene
 
     private void on_player_cultivation_inspiration_changed(Character character)
     {
-        if (character == player) mark_save_dirty();
+        if (character != player) return;
+        mark_save_dirty();
+        refresh_player_world_status_ui();
     }
 
     public int consume_player_inspiration_for_action(string actionDomainId)
@@ -28,7 +30,17 @@ public partial class MainScene
     private void on_tile_world_travel_started()
     {
         _worldMapTravelStartedHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
-        var rank = consume_player_inspiration_for_action(CultivationInspirationTuning.TravelDomain);
+        var consumeTravelInspiration = true;
+        if (player?.entity_data is HumanData human && _npc_world?.get_active_yuxu_case_transport(human) is { temporary_party_member_active: true } task)
+        {
+            if (task.journey_inspiration_consumed) consumeTravelInspiration = false;
+            else
+            {
+                task.journey_inspiration_consumed = true;
+                mark_save_dirty();
+            }
+        }
+        var rank = consumeTravelInspiration ? consume_player_inspiration_for_action(CultivationInspirationTuning.TravelDomain) : 0;
         _worldMapTravelRevealBonus = CultivationInspirationTuning.travel_reveal_bonus_cells(rank);
         tile_world_map?.Call("set_travel_reveal_bonus_cells", _worldMapTravelRevealBonus);
     }
@@ -45,6 +57,19 @@ public partial class MainScene
             award_player_renewable_inspiration($"travel:world:{_worldMapTravelStartedHour}:{cell.X},{cell.Y}:{hour}", "journey.step");
         }
         _worldMapTravelStartedHour = -1;
+
+        if (player?.entity_data is HumanData human && _npc_world?.get_active_yuxu_case_transport(human) is { } task &&
+            task.temporary_party_member_active && task.journey_status == YuxuSectCaseTaskRecord.JourneyInTransit &&
+            tile_world_map?.Call("get_location_node_id_at_cell", tile_world_map.Call("get_player_cell").AsVector2I()).AsString() == task.journey_destination_node_id)
+        {
+            _npc_world.mark_yuxu_case_transport_arrived(
+                human.sect_active_yuxu_duty_incident_id, task.task_id, human.sect_active_yuxu_duty_instance_id,
+                task.journey_destination_node_id);
+            tile_world_map.Call("set_assigned_route_destination", "");
+            mark_save_dirty();
+            refresh_yuxu_life_context();
+            show_message("案卷押送抵达", "队伍已抵达执中峰所在地点。请进入执中峰，并由指定官员完成交接；抵达本身不算交接。");
+        }
     }
 
     private void award_successful_combat_inspiration(Godot.Collections.Dictionary summary, Godot.Collections.Dictionary context)

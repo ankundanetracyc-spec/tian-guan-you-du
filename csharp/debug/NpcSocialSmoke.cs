@@ -136,6 +136,17 @@ public partial class NpcSocialSmoke : Node
                 "每条提示必须来自实际判定，谨慎拒绝必须有对应规则");
             wary.faction_id = famous.sect_affiliation_id;
             var sectAcceptance = NpcSocialRules.Evaluate(wary, famous, "introduce");
+            Check(sectAcceptance.DecisionSteps.Any(step => step.Rule == "player_initiated") &&
+                !sectAcceptance.DecisionSteps.Any(step => step.Rule == "player_accepted"), "玩家主动搭话被记成接受来访");
+            var cancelledApproach = NpcSocialRules.Evaluate(wary, famous, "leave", false);
+            Check(cancelledApproach.ActionName == "取消交谈" && cancelledApproach.Result.Contains("作罢") &&
+                cancelledApproach.DecisionSteps.Single().Rule == "player_cancelled" &&
+                !cancelledApproach.Result.Contains("来访"), "主动交谈取消被记成婉拒来访");
+            var acceptedVisit = NpcSocialRules.Evaluate(wary, famous, "introduce", true);
+            Check(acceptedVisit.DecisionSteps.Any(step => step.Rule == "player_accepted") &&
+                !acceptedVisit.DecisionSteps.Any(step => step.Rule == "player_initiated"), "NPC 来访丢失接受语义");
+            Check(Enumerable.Range(0, 12).All(seed => !NpcSocialPresentationText.Create(sectAcceptance, seed)
+                .Single(line => line.Rule == "player_initiated").Result.Contains("来意说全")), "主动交谈过程仍沿用接受来意文案");
             Check(sectAcceptance.ExchangesName && sectAcceptance.DecisionSteps.Any(s => s.Rule == "same_sect") &&
                 sectAcceptance.DecisionSteps.Any(s => s.Rule == "basis_overcomes_caution") && !sectAcceptance.DecisionSteps.Any(s => s.Rule == "caution_veto"),
                 "同门条件必须实际改变谨慎拒绝分支，而非仅修改提示");
@@ -255,6 +266,9 @@ public partial class NpcSocialSmoke : Node
             dialogue.close(); dialogue.close();
             Check(!NpcSocialRules.KnowsName(npc) && player.current_world_stamina == 100, "拒绝来访不应收费或自动认识");
             main.open_world_npc_talk(npc);
+            openingChoice = "上前搭话";
+            Check(!dialogue.FindChildren("*", "Button", true, false).OfType<Button>().Any(button => button.IsVisibleInTree() &&
+                (button.Text.StartsWith("接受") || button.Text == "婉拒")), "主动交谈按钮仍显示接受或婉拒");
             var hours = clock.get_total_game_hours();
             Choice(dialogue, openingChoice).EmitSignal(BaseButton.SignalName.Pressed);
             Check(NpcSocialRules.KnowsName(npc), "自报姓名未记忆");
@@ -277,6 +291,7 @@ public partial class NpcSocialSmoke : Node
                 restoredNpc.player_known_npc_info.ContainsKey("name"), "实际读档丢失六轴、所重或交际所得");
             DirAccess.RemoveAbsolute(ProjectSettings.GlobalizePath(path));
             main.open_world_npc_talk(npc); Check(Read<Label>(dialogue, "_body").Text.Contains("认出你来"), "熟人仍重复初识");
+            openingChoice = "聊聊近况";
             var repeatedStamina = player.current_world_stamina;
             Choice(dialogue, openingChoice).EmitSignal(BaseButton.SignalName.Pressed); await Frames(3);
             Check(dialogue.FindChildren("SocialRecollection", "Label", true, false).Count == 1 &&
@@ -284,7 +299,7 @@ public partial class NpcSocialSmoke : Node
                 "正式二次交谈没有接入亲历回顾，或为回顾重复扣费／加关系");
             dialogue.close(); dialogue.close(); await Frames(3);
             main.open_world_npc_talk(npc);
-            Choice(dialogue, "婉拒").EmitSignal(BaseButton.SignalName.Pressed); dialogue.close(); dialogue.close();
+            Choice(dialogue, "作罢").EmitSignal(BaseButton.SignalName.Pressed); dialogue.close(); dialogue.close();
             var menu = Read<NpcInteractionPanel>(main, "npc_interactions");
             var originalMemoryCount = npc.player_social_memory.Count;
             var originalPersonalityCount = npc.social_personality.Count;
@@ -296,8 +311,11 @@ public partial class NpcSocialSmoke : Node
             main.open_world_npc_actions(npc); await Frames();
             var activeTest = menu.FindChildren("*", "Button", true, false).OfType<Button>().FirstOrDefault(b => b.Text == "测试：我主动搭话");
             var visitTest = menu.FindChildren("*", "Button", true, false).OfType<Button>().FirstOrDefault(b => b.Text == "测试：NPC来找我");
-            Check(activeTest is not null && visitTest is not null, "NPC 菜单缺少两种调试交互入口");
-            activeTest!.EmitSignal(BaseButton.SignalName.Pressed); await Frames();
+            Check(activeTest is null && visitTest is null &&
+                menu.FindChildren("*", "Button", true, false).OfType<Button>().Any(button => button.Text == "交谈"),
+                "正式 NPC 菜单仍有测试入口，或正式交谈被移除");
+            menu.close();
+            Call(main, "begin_npc_social_talk", npc, false, true); await Frames();
             var socialStage = dialogue.GetNode<Control>("SocialInteraction");
             var playerPortraitCount = socialStage.FindChildren("PlayerSocialPortrait", "Control", true, false).Count;
             var npcPortraitCount = socialStage.FindChildren("NpcSocialPortrait", "Control", true, false).Count;
@@ -313,8 +331,7 @@ public partial class NpcSocialSmoke : Node
                 Check(npcNameLabel?.TooltipText.Contains("仅测试试算") == true, "测试入口悬停未显示临时数值，或测试数据缺少不存档说明");
             Choice(dialogue, "上前搭话").EmitSignal(BaseButton.SignalName.Pressed); await Frames();
             dialogue.close(); dialogue.close();
-            main.open_world_npc_actions(npc); await Frames();
-            menu.FindChildren("*", "Button", true, false).OfType<Button>().First(b => b.Text == "测试：NPC来找我").EmitSignal(BaseButton.SignalName.Pressed); await Frames();
+            Call(main, "begin_npc_social_talk", npc, true, true); await Frames();
             Choice(dialogue, "听听来意").EmitSignal(BaseButton.SignalName.Pressed); await Frames();
             Check(player.current_world_stamina == originalStamina && clock.get_total_game_hours() == originalHours &&
                 npc.player_social_memory.Count == originalMemoryCount && npc.social_personality.Count == originalPersonalityCount &&
@@ -328,7 +345,7 @@ public partial class NpcSocialSmoke : Node
             Check(Read<PanelContainer>(dialogue, "_dialogueFrame").Visible && Read<Control?>(dialogue, "_socialContent") is null, "普通剧情对白未恢复底栏"); dialogue.close();
             npc.current_subscene_id = "zifu"; main.open_world_npc_talk(npc); Check(!dialogue.Visible, "不在同峰的人不应远程交谈");
             npc.current_subscene_id = "guanfu"; player.current_world_stamina = 0;
-            main.open_world_npc_talk(npc); Choice(dialogue, "接受").EmitSignal(BaseButton.SignalName.Pressed);
+            main.open_world_npc_talk(npc); Choice(dialogue, "聊聊近况").EmitSignal(BaseButton.SignalName.Pressed);
             Check(player.current_world_stamina == 0, "体力不足不应扣成负数"); dialogue.close();
             npc.player_social_memory["relationship"] = "enemy";
             Check(NpcSocialRules.Address(npc, 16) == "沈照微", "仇人应使用已知姓名");
@@ -443,12 +460,42 @@ public partial class NpcSocialSmoke : Node
                 if (kind == "contact") await Capture(settled ? "impression_after" : "impression_before");
                 previewDialogue.close(); await Frames(3);
             }
+            foreach (var hasSect in new[] { true, false })
+            {
+                Call(preview, "BeginAdmission"); await Frames(3);
+                var admissionActor = Read<Character?>(preview, "_admissionPlayer")!;
+                var admissionHuman = (HumanData)admissionActor.entity_data!;
+                Check(string.IsNullOrEmpty(admissionHuman.sect_affiliation_id), "迎真试演混用了已入宗角色");
+                var skip = Read<Button>(previewDialogue, "_socialDone");
+                skip.EmitSignal(BaseButton.SignalName.Pressed); await Frames(3);
+                if (hasSect) await Capture("admission_review");
+                skip.EmitSignal(BaseButton.SignalName.Pressed); await Frames(3);
+                if (hasSect) await Capture("admission_question");
+                Choice(previewDialogue, hasSect ? "有" : "无").EmitSignal(BaseButton.SignalName.Pressed); await Frames(3);
+                var admissionDone = Read<Button>(previewDialogue, "_socialDone");
+                admissionDone.EmitSignal(BaseButton.SignalName.Pressed); await Frames(3);
+                if (!hasSect) await Capture("admission_result");
+                admissionDone.EmitSignal(BaseButton.SignalName.Pressed); await Frames(3);
+                Check(!previewDialogue.Visible && Read<Control>(preview, "_setupRoot").Visible &&
+                    string.IsNullOrEmpty(admissionHuman.sect_affiliation_id), "迎真试演实际办了入门或未返回菜单");
+            }
             Check(GetTree().CurrentScene == originalScene && player.current_world_stamina == formalStamina &&
                 previewPlayer.current_world_stamina == previewStamina && template.player_social_memory.Count == 0 &&
                 template.carried_items.Count == 0 && template.resources.Count == 0 && template.action_history.Count == 0 && template.social_priorities.Count == 1 &&
                 template.social_priorities.Contains("宗门") && Read<Control>(preview, "_setupRoot").Visible,
                 "三类试演影响了正式场景、体力、模板资源／认知，或结束后未返回菜单");
             previewLayer.QueueFree(); await Frames(3);
+            var entryAffiliation = ((HumanData)player.entity_data!).sect_affiliation_id;
+            Call(main, "begin_yuxu_gate_welcome"); await Frames(3);
+            Check(dialogue.Visible && dialogue.GetNodeOrNull("YuxuAdmissionInteraction") is not null &&
+                Read<Character?>(dialogue, "_socialPlayer") == player,
+                "正式山门入口仍使用旧面板，或未传入当前玩家立绘");
+            Read<Button>(dialogue, "_socialDone").EmitSignal(BaseButton.SignalName.Pressed); await Frames(3);
+            await Capture("admission_world_review");
+            dialogue.close(); await Frames(3);
+            Check(!dialogue.Visible && !Read<bool>(main, "_yuxuAdmissionInProgress") &&
+                ((HumanData)player.entity_data!).sect_affiliation_id == entryAffiliation,
+                "正式迎真取消未退出或意外改写所属宗门");
             var home = GD.Load<PackedScene>("res://tscn/scene/StartMenu.tscn").Instantiate<StartMenu>();
             AddChild(home); await Frames(5);
             Call(home, "ToggleDemoEntries"); await Frames(2);

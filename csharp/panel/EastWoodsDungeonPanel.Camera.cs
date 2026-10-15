@@ -33,7 +33,7 @@ public partial class EastWoodsDungeonPanel
         if (_mapRoot is null || _mapViewport is null) return;
         if (_followPlayer)
             // Follow the stable route centre, not a pawn's bobbing/rotating local slot.
-            _cameraFocus = _travelCameraPosition ?? node_center(EastWoodsDungeonRules.get_node(_current)!);
+            _cameraFocus = _travelCameraPosition ?? node_center(route_node(_current)!);
         var scale = Vector2.One * _mapZoom;
         var position = _mapViewport.Size * .5f - _cameraFocus * _mapZoom;
         if (!_mapRoot.Scale.IsEqualApprox(scale)) _mapRoot.Scale = scale;
@@ -50,7 +50,7 @@ public partial class EastWoodsDungeonPanel
             _mapZoom = Mathf.Clamp(_mapZoom * (button.ButtonIndex == MouseButton.WheelUp ? 1.12f : 1 / 1.12f), MinMapZoom, MaxMapZoom);
             clear_hover(); update_map_camera(); GetViewport().SetInputAsHandled();
         }
-        else if (button.ButtonIndex == MouseButton.Right && button.Pressed)
+        else if (button.ButtonIndex == MouseButton.Middle && button.Pressed)
         {
             _cameraDragging = true; _cameraMoved = false;
             _cameraLastMouse = _cameraPressMouse = GetGlobalMousePosition();
@@ -75,7 +75,7 @@ public partial class EastWoodsDungeonPanel
             _cameraLastMouse = motion.Position;
             GetViewport().SetInputAsHandled();
         }
-        else if (input is InputEventMouseButton { ButtonIndex: MouseButton.Right, Pressed: false })
+        else if (input is InputEventMouseButton { ButtonIndex: MouseButton.Middle, Pressed: false })
         {
             _cameraDragging = false;
             if (!_cameraMoved) { _followPlayer = true; update_map_camera(); }

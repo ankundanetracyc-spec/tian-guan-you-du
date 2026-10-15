@@ -1,0 +1,85 @@
+Godot Engine v4.7.2.stable.mono.custom_build.ed1daf0bf (2026-08-17 01:18:38 UTC) - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 596.36 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4060 Laptop GPU
+
+[male-sample] Engine=4.7.2-stable (custom_build) bones=70
+[male-sample] screenshot audit_idle_00.png
+[male-sample] screenshot audit_idle_25.png
+[male-sample] screenshot audit_idle_50.png
+[male-sample] screenshot audit_idle_75.png
+[male-sample] screenshot audit_idle_100.png
+[male-sample] screenshot audit_ready_cast_00.png
+[male-sample] screenshot audit_ready_cast_25.png
+[male-sample] screenshot audit_ready_cast_50.png
+[male-sample] screenshot audit_ready_cast_75.png
+[male-sample] screenshot audit_ready_cast_100.png
+[male-sample] screenshot audit_ready_sword_00.png
+[male-sample] screenshot audit_ready_sword_25.png
+[male-sample] screenshot audit_ready_sword_50.png
+[male-sample] screenshot audit_ready_sword_75.png
+[male-sample] screenshot audit_ready_sword_100.png
+[male-sample] screenshot audit_cast_00.png
+[male-sample] screenshot audit_cast_25.png
+[male-sample] screenshot audit_cast_50.png
+[male-sample] screenshot audit_cast_75.png
+[male-sample] screenshot audit_cast_100.png
+[male-sample] screenshot audit_attack_00.png
+[male-sample] screenshot audit_attack_25.png
+[male-sample] screenshot audit_attack_50.png
+[male-sample] screenshot audit_attack_75.png
+[male-sample] screenshot audit_attack_100.png
+[male-sample] screenshot audit_attack_rising_00.png
+[male-sample] screenshot audit_attack_rising_25.png
+[male-sample] screenshot audit_attack_rising_50.png
+[male-sample] screenshot audit_attack_rising_75.png
+[male-sample] screenshot audit_attack_rising_100.png
+[male-sample] screenshot audit_attack_leap_00.png
+[male-sample] screenshot audit_attack_leap_25.png
+[male-sample] screenshot audit_attack_leap_50.png
+[male-sample] screenshot audit_attack_leap_75.png
+[male-sample] screenshot audit_attack_leap_100.png
+[male-sample] screenshot audit_hurt_00.png
+[male-sample] screenshot audit_hurt_25.png
+[male-sample] screenshot audit_hurt_50.png
+[male-sample] screenshot audit_hurt_75.png
+[male-sample] screenshot audit_hurt_100.png
+[male-sample] screenshot audit_knockback_return_00.png
+[male-sample] screenshot audit_knockback_return_25.png
+[male-sample] screenshot audit_knockback_return_50.png
+[male-sample] screenshot audit_knockback_return_75.png
+[male-sample] screenshot audit_knockback_return_100.png
+[male-sample] screenshot audit_rest_00.png
+[male-sample] screenshot audit_rest_25.png
+[male-sample] screenshot audit_rest_50.png
+[male-sample] screenshot audit_rest_75.png
+[male-sample] screenshot audit_rest_100.png
+[male-sample] screenshot audit_breath_00.png
+[male-sample] screenshot audit_breath_25.png
+[male-sample] screenshot audit_breath_50.png
+[male-sample] screenshot audit_breath_75.png
+[male-sample] screenshot audit_breath_100.png
+[male-sample] screenshot audit_death_kneel_00.png
+[male-sample] screenshot audit_death_kneel_25.png
+[male-sample] screenshot audit_death_kneel_50.png
+[male-sample] screenshot audit_death_kneel_75.png
+[male-sample] screenshot audit_death_kneel_100.png
+[male-sample] screenshot collapse_020.png
+[male-sample] screenshot collapse_040.png
+[male-sample] screenshot collapse_060.png
+[male-sample] screenshot collapse_078.png
+[male-sample] screenshot collapse_081.png
+[male-sample] screenshot collapse_083.png
+[male-sample] screenshot runtime_dark.png
+[male-sample] screenshot runtime_bones.png
+[male-sample] Motion frames=174
+[male-sample] AUDIT pause_step=true death_hold=true
+ERROR: Texture with GL ID of 23: leaked 12280 bytes.
+   at: GLES3::Utilities::~Utilities (drivers\gles3\storage\utilities.cpp:82)
+ERROR: Texture with GL ID of 30: leaked 89478484 bytes.
+   at: GLES3::Utilities::~Utilities (drivers\gles3\storage\utilities.cpp:82)
+ERROR: Parameter "RenderingServer::get_singleton()" is null.
+   at: ImageTexture::~ImageTexture (scene\resources\image_texture.cpp:245)
+WARNING: 1 ObjectDB instance was leaked at exit (run with `--verbose` for details).
+   at: ObjectDB::cleanup (core\object\object.cpp:2536)
+ERROR: 1 resources still in use at exit (run with --verbose for details).
+   at: ResourceCache::clear (core\io\resource.cpp:822)
+ERROR: 2 RID allocations of type 'struct GLES3::Texture' were leaked at exit.

@@ -59,7 +59,7 @@ public partial class MainScene
             elder,
             lines,
             continue_yuxu_gate_after_review,
-            finish_yuxu_gate_and_return_to_world);
+            finish_yuxu_gate_and_return_to_world, player: player, lastLineIsAptitude: true);
     }
 
     private string get_yuxu_gate_aptitude_line(HumanData human)
@@ -68,10 +68,10 @@ public partial class MainScene
         var rank = get_yuxu_entry_rank(rootCount);
         var rootName = string.IsNullOrWhiteSpace(human.spirit_root_name) ? "灵根未明" : human.spirit_root_name.Trim();
         if (string.IsNullOrEmpty(rank))
-            return $"长老的神识在灵机间停了停，缓缓摇头：‘{rootName}，尚不合玉虚录籍之规。’";
+            return $"长老的灵识在灵机间停了停，缓缓摇头：‘{rootName}，尚不合玉虚录籍之规。’";
         if (rank == "真传弟子")
             return $"长老察看灵机，目光微凝，随即颔首：‘{rootName}。依宗门规制，入门即列真传。’";
-        return $"长老细察灵机后收回神识：‘{rootName}，依宗门规制，可列{rank}。’";
+        return $"长老细察灵机后收回灵识：‘{rootName}，依宗门规制，可列{rank}。’";
     }
 
     private void continue_yuxu_gate_after_review()
@@ -87,15 +87,15 @@ public partial class MainScene
         {
             story_dialogue?.show_yuxu_admission_result(
                 elder,
-                ["长老收回神识，语气仍然温和：‘小友资质尚未达到本宗录籍之规，今日便不办入门了。’"],
-                finish_yuxu_gate_and_return_to_world);
+                ["长老收回灵识，语气仍然温和：‘小友资质尚未达到本宗录籍之规，今日便不办入门了。’"],
+                finish_yuxu_gate_and_return_to_world, player: player);
             return;
         }
 
         story_dialogue?.show_yuxu_admission_question(
             elder,
             answerHasSect => resolve_yuxu_gate_sect_answer(human, elder, answerHasSect),
-            finish_yuxu_gate_and_return_to_world);
+            finish_yuxu_gate_and_return_to_world, player: player);
     }
 
     private void resolve_yuxu_gate_sect_answer(HumanData human, WorldNpcData elder, bool answeredHasSect)
@@ -111,7 +111,7 @@ public partial class MainScene
             story_dialogue?.show_yuxu_admission_result(
                 elder,
                 ["长老点了点头，没有再问宗门来历：‘既有所属，老夫便不相邀。小友请便。’"],
-                finish_yuxu_gate_and_return_to_world);
+                finish_yuxu_gate_and_return_to_world, player: player);
             return;
         }
 
@@ -121,7 +121,7 @@ public partial class MainScene
             story_dialogue?.show_yuxu_admission_result(
                 elder,
                 ["长老看过已有的宗门名录，未再追问，只道：‘既已有所归属，今日便不办入门。’"],
-                finish_yuxu_gate_and_return_to_world);
+                finish_yuxu_gate_and_return_to_world, player: player);
             return;
         }
 
@@ -135,7 +135,7 @@ public partial class MainScene
             story_dialogue?.show_yuxu_admission_result(
                 elder,
                 ["长老命人去传接引弟子，片刻后却未能等到回音；他暂且收起名册，示意改日再办。"],
-                finish_yuxu_gate_and_return_to_world);
+                finish_yuxu_gate_and_return_to_world, player: player);
             return;
         }
 
@@ -144,7 +144,7 @@ public partial class MainScene
         story_dialogue?.show_yuxu_admission_result(
             elder,
             [$"长老唤来{guide.npc_name}：‘既无宗门，便随这位弟子去吧，余下的入门之礼由他带你办妥。’"],
-            () => begin_yuxu_formal_entry(human, elder, guide));
+            () => begin_yuxu_formal_entry(human, elder, guide), player: player);
     }
 
     private void begin_yuxu_formal_entry(HumanData human, WorldNpcData elder, WorldNpcData admissionGuide)
@@ -162,7 +162,7 @@ public partial class MainScene
             story_dialogue?.show_yuxu_admission_result(
                 elder,
                 ["长老复核名录时发现灵根记录有缺，先将入门手续搁下，未作录籍。"],
-                finish_yuxu_gate_and_return_to_world);
+                finish_yuxu_gate_and_return_to_world, player: player);
             return;
         }
 
@@ -186,7 +186,7 @@ public partial class MainScene
                 "名册落定后，他陪你回到观复峰安置。静室与休息仍按弟子原有安排开放，不另发物品或贡献。"
             ],
             () => complete_yuxu_admission(rank, null, admissionGuide),
-            "入门录籍");
+            "入门录籍", player: player);
     }
 
     private void show_yuxu_formal_teacher_ceremony(HumanData human, string rank, WorldNpcData teacher)
@@ -213,7 +213,7 @@ public partial class MainScene
                 $"师父尚有峰务在身，命{guide.npc_name}先陪你熟悉紫府峰与玄览峰，日常修行由你自行安排。"
             ],
             () => complete_yuxu_admission(rank, teacher, _npc_world?.get_npc(human.sect_admission_guide_npc_id)),
-            "拜师礼");
+            "拜师礼", player: player);
     }
 
     private void finish_yuxu_gate_and_return_to_world()

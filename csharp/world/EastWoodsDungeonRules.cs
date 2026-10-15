@@ -5,7 +5,9 @@ using System.Collections.Generic;
 /// <summary>东林地路线与 NPC 遭遇的首轮短测规则；概率和节点基础耗时都不是最终平衡值。</summary>
 public static partial class EastWoodsDungeonRules
 {
-    public sealed record NodeDefinition(string Id, string Title, string Description, Vector2I GridPosition, bool ShowTitleOnMap = false, int Terrain = 0, string Feature = "");
+    public sealed record NodeDefinition(string Id, string Title, string Description, Vector2I GridPosition, bool ShowTitleOnMap = false,
+        int Terrain = 0, string Feature = "", string ResourceNodeId = "",
+        EastWoodsResourceCategory ResourceCategory = EastWoodsResourceCategory.None);
 
     public const string DungeonId = "east_woods_route";
     public const float BaseDunSpeed = 100.0f;
@@ -50,9 +52,16 @@ public static partial class EastWoodsDungeonRules
         ("mid_split", "shallow_gully"), ("shallow_gully", "dry_pool"), ("dry_pool", "lower_approach"), ("lower_approach", "quiet_grove"),
     ];
 
-    private static NodeDefinition[] Nodes = build_outer_map();
-    private static Dictionary<string, NodeDefinition> NodesById = Nodes.ToDictionary(node => node.Id, StringComparer.Ordinal);
-    private static Dictionary<string, List<string>> Neighbors = build_neighbors();
+    private static NodeDefinition[] Nodes = Array.Empty<NodeDefinition>();
+    private static Dictionary<string, NodeDefinition> NodesById = new(StringComparer.Ordinal);
+    private static Dictionary<string, List<string>> Neighbors = new(StringComparer.Ordinal);
+
+    static EastWoodsDungeonRules()
+    {
+        Nodes = build_outer_map();
+        NodesById = Nodes.ToDictionary(node => node.Id, StringComparer.Ordinal);
+        Neighbors = build_neighbors();
+    }
 
     public static IReadOnlyList<NodeDefinition> get_nodes() => Nodes;
 
@@ -112,7 +121,7 @@ public static partial class EastWoodsDungeonRules
             nodes.Add(new NodeDefinition($"outer_{x:00}_{y:00}", "", description, position, Terrain: terrain));
         }
         if (nodes.Count != 128) throw new InvalidOperationException("东林地外围模板必须有128格。");
-        return nodes.ToArray();
+        return configure_resource_nodes(nodes.ToArray());
     }
 
     /// <summary>东林地副本跨越一个相连节点的耗时；统一按遁速缩放，不为单条边写固定时长。</summary>
@@ -125,7 +134,7 @@ public static partial class EastWoodsDungeonRules
     public static float npc_edge_cost(float dunSpeed)
         => hours_per_node(dunSpeed);
 
-    /// <summary>将性格、行为、目标声望、势力态度、私人关系与境界差独立计入试运行概率。</summary>
+    /// <summary>将性格、行为、目标声望、势力态度、怨结敌意与境界差独立计入试运行概率。</summary>
     public static float attack_chance(
         WorldNpcData attacker,
         string targetFactionId,

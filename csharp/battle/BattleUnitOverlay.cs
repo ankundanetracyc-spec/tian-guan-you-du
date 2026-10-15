@@ -11,10 +11,11 @@ public partial class BattleUnitOverlay : CanvasLayer
     private readonly List<Control> activeTargetPreviews=[];
     private InfoPanel? info;
     private TargetFrameLayer? targetFrames;
-    private PanelContainer? statusInfoPanel;
-    private Label? statusInfoLabel;
     private StatusInstance? hoveredStatus;
-    private string? hoveredStatusFallbackText;
+    private Control? hoveredStatusBadge;
+    private string hoveredStatusId="",hoveredStatusName="",hoveredStatusTip="",lastStatusHoverText="";
+    private int hoveredStatusCount;
+    private string lastRetreatTooltip="";
     private Button? pauseButton;
     private Button? speedButton;
     private Button? retreatButton;
@@ -160,7 +161,7 @@ public partial class BattleUnitOverlay : CanvasLayer
     {
         RefreshHoveredStatusInfo();
         var scale=BattleUiArt.Scale(GetViewport());var origin=BattleUiArt.Origin(GetViewport());
-        if(retreatButton is not null){retreatButton.Scale=Vector2.One*scale;retreatButton.Position=origin+new Vector2(1506,18)*scale;retreatButton.Disabled=!manager.can_queue_retreat();retreatButton.TooltipText=manager.get_retreat_chance(out var chance)?$"加入撤退行动 · 当前成功率 {chance:P0} · 每轮最多尝试一次":"当前不可加入：须处于规划阶段、队列有空位且双方遁速已配置，本场允许撤退。";}
+        if(retreatButton is not null){retreatButton.Scale=Vector2.One*scale;retreatButton.Position=origin+new Vector2(1506,18)*scale;retreatButton.Disabled=!manager.can_queue_retreat();var tooltip=manager.get_retreat_chance(out var chance)?$"加入撤退行动 · 当前成功率 {chance:P0} · 每轮最多尝试一次":"当前不可加入：须处于规划阶段、队列有空位且双方遁速已配置，本场允许撤退。";if(tooltip!=lastRetreatTooltip){lastRetreatTooltip=tooltip;HoverInfoManager.SetTooltip(retreatButton,tooltip);}}
         if(retreatNotice is not null){retreatNotice.Scale=Vector2.One*scale;retreatNotice.Position=origin+new Vector2(606,110)*scale;retreatNotice.Text=manager.get_retreat_notice();}
         if(speedButton is not null){speedButton.Scale=Vector2.One*scale;speedButton.Position=origin+new Vector2(1190,18)*scale;}
         if(pauseButton is not null){pauseButton.Scale=Vector2.One*scale;pauseButton.Position=origin+new Vector2(1340,18)*scale;}
@@ -300,51 +301,60 @@ public partial class BattleUnitOverlay : CanvasLayer
         badge.AddThemeStyleboxOverride("panel",new StyleBoxFlat{BgColor=bad?new Color(.26f,.07f,.06f,.95f):new Color(.035f,.09f,.07f,.95f),BorderColor=bad?new Color(.94f,.35f,.28f):new Color(.52f,.80f,.58f),BorderWidthLeft=1,BorderWidthTop=1,BorderWidthRight=1,BorderWidthBottom=1,CornerRadiusTopLeft=9,CornerRadiusTopRight=9,CornerRadiusBottomLeft=9,CornerRadiusBottomRight=9});
         var icon=new TextureRect{Texture=GetStatusIcon(id,instance),ExpandMode=TextureRect.ExpandModeEnum.IgnoreSize,StretchMode=TextureRect.StretchModeEnum.KeepAspectCentered,MouseFilter=Control.MouseFilterEnum.Ignore};icon.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);badge.AddChild(icon);
         var stack=new Label{Text=count.ToString(),HorizontalAlignment=HorizontalAlignment.Center,VerticalAlignment=VerticalAlignment.Center,Position=new(17,16),Size=new(18,18),MouseFilter=Control.MouseFilterEnum.Ignore};stack.AddThemeFontSizeOverride("font_size",15);stack.AddThemeColorOverride("font_outline_color",Colors.Black);stack.AddThemeConstantOverride("outline_size",4);badge.AddChild(stack);
-        badge.MouseEntered+=()=>ShowStatusInfo(badge,instance,name,count,tip);
+        badge.MouseEntered+=()=>ShowStatusInfo(badge,id,instance,name,count,tip);
         badge.MouseExited+=HideStatusInfo;
         return badge;
     }
-    private void ShowStatusInfo(Control badge,StatusInstance? instance,string name,int count,string tip)
+    private void ShowStatusInfo(Control badge,string id,StatusInstance? instance,string name,int count,string tip)
     {
+        hoveredStatusBadge=badge;
         hoveredStatus=instance;
-        hoveredStatusFallbackText=instance is null?$"{name} ×{count}\n{tip}":null;
-        if(statusInfoPanel is null)
-        {
-            statusInfoPanel=new PanelContainer{ZIndex=260,MouseFilter=Control.MouseFilterEnum.Ignore,CustomMinimumSize=new Vector2(240,0)};
-            statusInfoPanel.AddThemeStyleboxOverride("panel",new StyleBoxFlat{BgColor=new Color(.025f,.04f,.035f,.96f),BorderColor=new Color(.72f,.78f,.62f,.95f),BorderWidthLeft=1,BorderWidthTop=1,BorderWidthRight=1,BorderWidthBottom=1,CornerRadiusTopLeft=7,CornerRadiusTopRight=7,CornerRadiusBottomLeft=7,CornerRadiusBottomRight=7,ContentMarginLeft=10,ContentMarginRight=10,ContentMarginTop=7,ContentMarginBottom=7});
-            statusInfoLabel=new Label{AutowrapMode=TextServer.AutowrapMode.WordSmart,MouseFilter=Control.MouseFilterEnum.Ignore};statusInfoLabel.AddThemeFontSizeOverride("font_size",15);statusInfoLabel.AddThemeColorOverride("font_color",new Color(.94f,.92f,.82f));statusInfoPanel.AddChild(statusInfoLabel);AddChild(statusInfoPanel);
-        }
-        statusInfoPanel.Show();RefreshHoveredStatusInfo();
-        var rect=badge.GetGlobalRect();var size=statusInfoPanel.GetCombinedMinimumSize();var viewport=GetViewport().GetVisibleRect().Size;
-        var x=rect.Position.X+rect.Size.X+8; if(x+size.X>viewport.X-8)x=rect.Position.X-size.X-8;
-        var y=Mathf.Clamp(rect.Position.Y,8,Mathf.Max(8,viewport.Y-size.Y-8));statusInfoPanel.Position=new Vector2(Mathf.Clamp(x,8,Mathf.Max(8,viewport.X-size.X-8)),y);
+        hoveredStatusId=id;
+        hoveredStatusName=name;
+        hoveredStatusTip=tip;
+        hoveredStatusCount=count;
+        lastStatusHoverText="";
+        RefreshHoveredStatusInfo();
     }
     private void HideStatusInfo()
     {
-        hoveredStatus=null;hoveredStatusFallbackText=null;statusInfoPanel?.Hide();
+        if(hoveredStatusBadge is not null)HoverInfoManager.HideFor(hoveredStatusBadge);
+        hoveredStatus=null;hoveredStatusBadge=null;hoveredStatusId=hoveredStatusName=hoveredStatusTip=lastStatusHoverText="";hoveredStatusCount=0;
     }
     private void RefreshHoveredStatusInfo()
     {
-        if(statusInfoLabel is null)return;
-        if(hoveredStatus is null)
+        if(hoveredStatusBadge is null||!GodotObject.IsInstanceValid(hoveredStatusBadge)||!hoveredStatusBadge.IsVisibleInTree())return;
+        string title,body,subtitle;
+        Texture2D? icon;
+        if(hoveredStatus is { } status)
         {
-            if(string.IsNullOrWhiteSpace(hoveredStatusFallbackText)){statusInfoPanel?.Hide();return;}
-            statusInfoLabel.Text=hoveredStatusFallbackText;
-            return;
+            if(!GodotObject.IsInstanceValid(status)||status.effect is null){HideStatusInfo();return;}
+            var effect=status.effect;
+            title=string.IsNullOrWhiteSpace(effect.name)?effect.effect_id:effect.name;
+            body=$"{effect.description}\n\n{status_duration_text(status,effect)}";
+            subtitle=$"战斗状态 · 层数 {status.stacks}";
+            icon=GetStatusIcon(hoveredStatusId,status);
         }
-        if(!GodotObject.IsInstanceValid(hoveredStatus)||hoveredStatus.effect is null)
-        {HideStatusInfo();return;}
-        var effect=hoveredStatus.effect;var name=string.IsNullOrWhiteSpace(effect.name)?effect.effect_id:effect.name;
-        var duration=effect.duration_type switch
+        else
         {
-            StatusEffect.DurationType.Frames when hoveredStatus.remaining_frames>0=>$"剩余 {Mathf.CeilToInt(hoveredStatus.remaining_frames)} 帧",
-            StatusEffect.DurationType.Hits=>$"剩余受击次数：{hoveredStatus.remaining_hits}",
-            StatusEffect.DurationType.Trigger=>hoveredStatus.source_id.StartsWith("power:")?"持续至本场战斗结束":"持续至触发条件满足或被移除",
-            StatusEffect.DurationType.Turns when hoveredStatus.remaining_duration>0=>$"剩余 {hoveredStatus.remaining_duration} 回合",
-            _=>"持续状态"
-        };
-        statusInfoLabel.Text=$"{name} ×{hoveredStatus.stacks}\n{effect.description}\n{duration}";
+            title=$"{hoveredStatusName} ×{hoveredStatusCount}";
+            body=hoveredStatusTip;
+            subtitle="战斗状态";
+            icon=GetStatusIcon(hoveredStatusId,null);
+        }
+        var key=$"{title}\n{subtitle}\n{body}";
+        if(key==lastStatusHoverText)return;
+        lastStatusHoverText=key;
+        HoverInfoManager.SetInfo(hoveredStatusBadge,new HoverInfoManager.HoverInfoContent(title,body,icon,subtitle));
     }
+    private static string status_duration_text(StatusInstance instance,StatusEffect effect)=>effect.duration_type switch
+    {
+        StatusEffect.DurationType.Frames when instance.remaining_frames>0=>$"剩余 {Mathf.CeilToInt(instance.remaining_frames)} 帧",
+        StatusEffect.DurationType.Hits=>$"剩余受击次数：{instance.remaining_hits}",
+        StatusEffect.DurationType.Trigger=>instance.source_id.StartsWith("power:")?"持续至本场战斗结束":"持续至触发条件满足或被移除",
+        StatusEffect.DurationType.Turns when instance.remaining_duration>0=>$"剩余 {instance.remaining_duration} 回合",
+        _=>"持续状态"
+    };
     private static bool IsInternalStatusBadge(string id)=>id is "化解" or "身法" or "借力";
     internal static Texture2D? GetStatusIcon(string id,StatusInstance? instance)
     {

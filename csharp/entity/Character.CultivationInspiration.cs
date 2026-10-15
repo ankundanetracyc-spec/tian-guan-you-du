@@ -185,6 +185,9 @@ public partial class Character
     private void apply_cultivation_simulation(CultivationSimulation simulation)
     {
         if (human is null) return;
+        var previousLevel = human.cultivation_bottleneck_level;
+        var previousRealmTier = human.cultivation_bottleneck_realm_tier;
+        var previousPenalty = human.cultivation_bottleneck_current_penalty;
         human.cultivation_progress = (float)simulation.FractionalProgress;
         if (simulation.BottleneckRealmTier <= 0) return;
         var state = new CultivationBottleneckSnapshot
@@ -196,6 +199,8 @@ public partial class Character
             PreviousRealmTier = simulation.BottleneckRealmTier
         };
         write_cultivation_bottleneck_snapshot(state);
+        if (previousLevel != state.Level || previousRealmTier != state.RealmTier || Math.Abs(previousPenalty - state.Penalty) > 1e-9d)
+            CultivationInspirationChanged?.Invoke(this);
     }
 
     public Dictionary get_cultivation_bottleneck_summary()

@@ -46,6 +46,13 @@ public partial class CameraController : Camera2D
 
     public override void _Process(double delta)
     {
+        if (is_world_map_active())
+        {
+            is_dragging = false;
+            target_position = Position;
+            target_zoom = Zoom;
+            return;
+        }
         var uiDelta = (float)delta / Mathf.Max((float)Engine.TimeScale, 0.001f);
         if (world_bounds.Size.X <= 0) refresh_world_bounds();
         clamp_to_bounds();
@@ -71,6 +78,11 @@ public partial class CameraController : Camera2D
 
     public override void _Input(InputEvent @event)
     {
+        if (is_world_map_active())
+        {
+            is_dragging = false;
+            return;
+        }
         if (@event is InputEventMouseButton { ButtonIndex: MouseButton.Middle } mouse)
         {
             is_dragging = mouse.Pressed;
@@ -86,12 +98,16 @@ public partial class CameraController : Camera2D
 
     public override void _UnhandledInput(InputEvent @event)
     {
-        if (!zoom_enabled || @event is not InputEventMouseButton mouse) return;
+        if (is_world_map_active() || !zoom_enabled || @event is not InputEventMouseButton mouse) return;
         if (mouse.ButtonIndex is not (MouseButton.WheelUp or MouseButton.WheelDown)) return;
         var factor = mouse.ButtonIndex == MouseButton.WheelUp ? 1.0f + zoom_step : 1.0f / (1.0f + zoom_step);
         var minimum = get_effective_min_zoom();
         target_zoom = (target_zoom * factor).Clamp(new Vector2(minimum, minimum), new Vector2(zoom_max, zoom_max));
     }
+
+    private bool is_world_map_active() =>
+        GetTree().GetFirstNodeInGroup("tile_world_map_presentation") is CanvasItem worldMap && worldMap.IsVisibleInTree() ||
+        GetTree().GetFirstNodeInGroup("east_woods_dungeon_panel") is CanvasItem dungeonMap && dungeonMap.IsVisibleInTree();
 
     private void refresh_world_bounds()
     {

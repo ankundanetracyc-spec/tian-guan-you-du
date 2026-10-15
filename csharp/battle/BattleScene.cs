@@ -7,7 +7,11 @@ public partial class BattleScene : Node2D
 
     // 场景的 Ready 传播期间，新加入部署层的角色尚未执行 Ready；
     // 此时写入生命值会因 LivingData 尚未创建而丢失。
-    public override void _Ready() => CallDeferred(nameof(InitializeBattle));
+    public override void _Ready()
+    {
+        AddToGroup("gameplay_scene");
+        CallDeferred(nameof(InitializeBattle));
+    }
 
     private void InitializeBattle()
     {

@@ -1,0 +1,31 @@
+{
+  "canvas": [
+    1024,
+    1536
+  ],
+  "legacy_bones_preserved": 64,
+  "bones": 70,
+  "slots": 23,
+  "attachments": 26,
+  "weighted_meshes": 6,
+  "animations": {
+    "idle": 2.4,
+    "ready_cast": 2.4,
+    "ready_sword": 2.4,
+    "cast": 1.25,
+    "attack": 0.95,
+    "attack_rising": 1.05,
+    "attack_leap": 1.2,
+    "hurt": 0.6,
+    "knockback_return": 1.25,
+    "rest": 1.2,
+    "breath": 1.2,
+    "death_kneel": 1.5
+  },
+  "alpha": "Original generated RGBA preserved. All same-origin layers have alpha=0 corners.",
+  "checks": {
+    "legacy_names": true,
+    "all_tracks_known": true,
+    "production_assets_written": false
+  }
+}

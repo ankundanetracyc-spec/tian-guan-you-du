@@ -15,9 +15,24 @@ public partial class MainScene
     private GameSaveManager? _save_manager;
     private PersistentGameSave? _loaded_game_save;
     private YuxuSectTreasuryLedger _yuxu_sect_treasury_ledger = new();
+    private Godot.Collections.Dictionary _dynamic_dungeon_state = [];
     private bool _save_is_dirty;
     private double _save_dirty_seconds;
     private bool _returning_from_battle;
+    private bool _skipExitSave;
+
+    public bool has_unsaved_progress => _save_is_dirty;
+
+    public bool save_from_gameplay_menu() => save_progress_now(false);
+
+    public bool prepare_return_to_title_from_menu(bool saveFirst)
+    {
+        if (saveFirst && !save_progress_now(false)) return false;
+        _skipExitSave = true;
+        return true;
+    }
+
+    public void cancel_return_to_title_from_menu() => _skipExitSave = false;
 
     private void prepare_save_session()
     {
@@ -25,12 +40,15 @@ public partial class MainScene
         _loaded_game_save = GetNodeOrNull<BattleTransitionManager>("/root/BattleTransitionManager")?.consume_world_progress_snapshot();
         _returning_from_battle = _loaded_game_save is not null;
         _loaded_game_save ??= _save_manager?.consume_pending_load();
+        _letterMailbox = _loaded_game_save?.letter_mailbox?.Duplicate(true) as LetterMailbox ?? new LetterMailbox();
         _yuxu_sect_treasury_ledger = new YuxuSectTreasuryLedger();
         if (_loaded_game_save is null)
         {
             GetNodeOrNull<WeatherMgr>("/root/WeatherManager")?.restore_persistent_state("", 0.0f, 0.0f, 0.0f);
             EastWoodsDungeonRules.generate_layout(System.Guid.NewGuid().ToString("N"));
             _east_woods_dungeon_state = new Dictionary { ["layout"] = EastWoodsDungeonRules.get_layout_state() };
+            _dynamic_dungeon_state = DynamicDungeonExpedition.CreateEmpty(
+                GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0);
             return;
         }
         _yuxu_sect_treasury_ledger = _loaded_game_save.yuxu_sect_treasury?.Duplicate(true) as YuxuSectTreasuryLedger ?? new YuxuSectTreasuryLedger();
@@ -62,6 +80,12 @@ public partial class MainScene
             _loaded_game_save.weather_intensity,
             _loaded_game_save.weather_wind_speed,
             _loaded_game_save.weather_duration_hours);
+
+        var currentGameHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+        _dynamic_dungeon_state = _loaded_game_save.dynamic_dungeon_state?.Duplicate(true) as Dictionary
+            ?? DynamicDungeonExpedition.CreateEmpty(currentGameHour);
+        if (_dynamic_dungeon_state.Count == 0)
+            _dynamic_dungeon_state = DynamicDungeonExpedition.CreateEmpty(currentGameHour);
 
         _player_world_grid_cell = _loaded_game_save.world_cell;
         _player_world_node_id = string.IsNullOrWhiteSpace(_loaded_game_save.current_node_id)
@@ -122,6 +146,16 @@ public partial class MainScene
                 mark_save_dirty();
             // A saved random roster is authoritative; never regenerate it on load.
             _cloud_state_initialized = true;
+            if (DynamicDungeonExpedition.FindInsideInstance(_dynamic_dungeon_state) is { } activeDynamic)
+            {
+                estate?.Hide();
+                tile_world_map?.Hide();
+                node_map?.Hide();
+                open_dynamic_dungeon(activeDynamic.GetValueOrDefault("instance_id", "").AsString());
+                hud?.Show();
+                mark_save_dirty();
+                return;
+            }
             if (_east_woods_dungeon_state.GetValueOrDefault("inside", false).AsBool())
             {
                 estate?.Hide();
@@ -130,10 +164,28 @@ public partial class MainScene
                 open_east_woods_dungeon();
                 hud?.Show();
                 mark_save_dirty();
+                if (!_returning_from_battle)
+                    CallDeferred(nameof(resume_yuxu_case_transport_after_load));
                 return;
             }
             open_world();
-            if (_loaded_game_save.remaining_travel_path.Count > 1)
+            var transportTask = player?.entity_data is HumanData human ? _npc_world?.get_active_yuxu_case_transport(human) : null;
+            if (transportTask?.journey_status == YuxuSectCaseTaskRecord.JourneyIntercepted)
+            {
+                if (!_returning_from_battle)
+                    CallDeferred(nameof(resume_yuxu_case_transport_after_load));
+            }
+            else if (transportTask?.journey_status == YuxuSectCaseTaskRecord.JourneyInTransit)
+            {
+                tile_world_map?.Call("set_assigned_route_destination", transportTask.journey_destination_node_id);
+                if (_loaded_game_save.remaining_travel_path.Count > 1)
+                    tile_world_map?.CallDeferred("resume_saved_travel");
+                else
+                    CallDeferred(nameof(resume_yuxu_case_transport_after_load));
+            }
+            else if (transportTask?.journey_status == YuxuSectCaseTaskRecord.JourneyExitingDungeon)
+                CallDeferred(nameof(resume_yuxu_case_transport_after_load));
+            else if (_loaded_game_save.remaining_travel_path.Count > 1)
                 tile_world_map?.CallDeferred("resume_saved_travel");
         }
         else
@@ -193,14 +245,17 @@ public partial class MainScene
     public PersistentGameSave? capture_battle_world_snapshot()
     {
         if (player?.entity_data is not HumanData playerData) return null;
+        store_active_dynamic_dungeon_route();
 
         var save = new PersistentGameSave
         {
             player_data = playerData.Duplicate(true) as HumanData ?? playerData,
+            letter_mailbox = _letterMailbox.Duplicate(true) as LetterMailbox ?? _letterMailbox,
             yuxu_sect_treasury = _yuxu_sect_treasury_ledger.Duplicate(true) as YuxuSectTreasuryLedger ?? new YuxuSectTreasuryLedger(),
             current_node_id = _player_world_node_id,
             world_cell = _player_world_grid_cell,
             scene_progress = capture_scene_progress(),
+            dynamic_dungeon_state = _dynamic_dungeon_state.Duplicate(true),
         };
 
         if (GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is { } time)

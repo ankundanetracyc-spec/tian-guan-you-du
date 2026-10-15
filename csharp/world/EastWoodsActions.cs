@@ -22,30 +22,28 @@ public static class EastWoodsActions
         int OrdinaryBeastCapacity = 0, string EncounterIdentity = "");
 
     public static string SlowGrowthPointNodeId()
-        => EastWoodsDungeonRules.get_nodes()
-            .Where(node => (node.Terrain is 0 or 1) && !EastWoodsDungeonRules.is_action_anchor(node.Id) &&
-                EastWoodsDungeonRules.get_neighbors(node.Id)
-                    .Select(EastWoodsDungeonRules.get_node).Any(neighbor => neighbor?.Terrain == 5))
-            .OrderBy(node => node.GridPosition.Y).ThenBy(node => node.GridPosition.X)
-            .Select(node => node.Id).FirstOrDefault() ?? "";
+        => ResourceNodeId("mistbell_slow");
+
+    public static string MineralPointNodeId()
+        => ResourceNodeId("spirit_stone_vein");
+
+    private static string ResourceNodeId(string profileId)
+        => EastWoodsDungeonRules.get_nodes().FirstOrDefault(node => node.ResourceNodeId == profileId)?.Id ?? "";
 
     public static ActionDef? Content(string node)
     {
-        if (node == SlowGrowthPointNodeId())
-            return new("gather_mistbell", "采集", "湿润林缘生着少量雾铃花。每次可采一份，余量有限；此点按慢生资源周期恢复。", 1, 2,
-                "你采下雾铃花 ×1。", "res://resources/entities/items/雾铃花.tres", 1, 2, Recovery: ResourceRecoveryGroup.SlowGrowth);
+        var mapNode = EastWoodsDungeonRules.get_node(node);
+        if (mapNode is not null)
+        {
+            if (EastWoodsResourceNodes.ForNode(mapNode) is { } resource) return resource.Action;
+            if (EastWoodsResourceNodes.HasResourceTag(mapNode)) return null;
+        }
 
         return node switch
         {
-        "outer_03_06" or "outer_06_04" => Content("fern_lowland"),
-        "outer_09_07" or "outer_12_03" => Content("dry_pool"),
         "outer_13_06" or "outer_08_08" => Content("root_hollow")! with { Description = "一头林地凶狼伏在林径旁，已有通智初期的修为。初入云息时不宜冒进；可以暂不应战，绕走其他通路。击败它可收取兽骨与兽皮各一份。", OrdinaryBeastSource = true, OrdinaryBeastCapacity = 1 },
         "outer_05_06" => Content("north_turn"),
         "outer_12_06" => Content("moss_bridge")! with { Description = "湿土上留着新鲜爪印，朝附近林间延伸。可以辨认痕迹，不必立即追赶。", Result = "附近林径有凶狼活动。留意视野内的动静，再决定应战或绕行。" },
-        "fern_lowland" => new("gather_root", "采集", "蕨叶下生着几丛苦苔根。每次可采两份，此处现有余量有限；资源会随时间缓慢恢复。", 1, 2,
-            "你收好苦苔根 ×2。", "res://resources/entities/items/苦苔根.tres", 2, 4, Recovery: ResourceRecoveryGroup.Common),
-        "dry_pool" => new("gather_moss", "采集", "浅洼背阴处附着月露苔。每次可采一份，此处现有余量有限；资源会随时间缓慢恢复。", 1, 2,
-            "你收好月露苔 ×1。", "res://resources/entities/items/月露苔.tres", 1, 2, Recovery: ResourceRecoveryGroup.Common),
         "north_turn" => new("old_trap", "调查", "腐叶盖着一处废弃陷坑。可以沿边查看并记下危险，不必跳入坑底。", .5f, 1,
             "你在坑沿留下醒目的枝条记号，确认这里已无人维护，也没有遗落宝物。"),
         "moss_bridge" => new("beast_tracks", "辨迹", "湿土上的爪印折向盘根深处。爪距与拖痕不像寻常野兽留下的。", .5f, 1,

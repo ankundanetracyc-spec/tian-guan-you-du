@@ -65,13 +65,18 @@ public partial class WorldNpcData : Resource
     [Export] public int sect_case_demerit_count;
     [Export] public string sect_case_expelled_by_case_id = "";
     [Export] public string sect_case_former_faction_id = "";
+    /// <summary>v6 单一关系分兼容字段；v7 后不参与关系、交往或交易判定。</summary>
     [Export] public int player_relationship;
     /// <summary>与主角实际交往的记忆；姓名、境界须经交流获知，不由好感分数推导。</summary>
     [Export] public Dictionary player_social_memory = [];
     /// <summary>这个 NPC 过月归纳的个人观感；与关系和玩家认知分开保存。</summary>
     [Export] public NpcPlayerImpressionData? player_impression;
-    /// <summary>NPC 对其他稳定人物 ID 的个人关系分值；与玩家关系、势力态度、区域声望分开保存。</summary>
+    /// <summary>v6 NPC 间单一关系分兼容字段；v7 后不拆分、不参与判定。</summary>
     [Export] public Dictionary personal_relationships = [];
+    /// <summary>NPC 对其他稳定人物 ID 的稀疏单向关系记录。</summary>
+    [Export] public Dictionary directed_relationships = [];
+    /// <summary>此 NPC 的关系证据已归纳至的月份。</summary>
+    [Export] public int relationship_last_processed_month = -1;
     /// <summary>区域公开声望，按 region_id 分开；不与势力态度或私人关系合并。</summary>
     [Export] public Dictionary regional_renown = [];
     [Export] public Dictionary faction_reputations = [];
@@ -94,6 +99,8 @@ public partial class WorldNpcData : Resource
     [Export] public float world_travel_cell_progress_hours;
     [Export] public bool is_alive = true;
     [Export] public string death_cause = "";
+    /// <summary>Non-empty while this saved NPC is temporarily travelling as a player's case-task party member.</summary>
+    [Export] public string temporary_party_task_id = "";
     /// <summary>副本内持久位置与行程；不覆盖大世界 node/subscene 位置。</summary>
     [Export] public string dungeon_id = "";
     [Export] public string dungeon_node_id = "";

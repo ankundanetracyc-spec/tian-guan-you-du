@@ -2,6 +2,8 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Threading.Tasks;
 
 /// <summary>山门迎真因果事实判读与硬门规保守匹配的轻量回归检查。</summary>
 public partial class YuxuAdmissionSmoke : Node
@@ -11,7 +13,11 @@ public partial class YuxuAdmissionSmoke : Node
         if (!condition) throw new InvalidOperationException(message);
     }
 
-    public override void _Ready()
+    private static T Read<T>(object value, string name) => (T)value.GetType().GetField(name, BindingFlags.NonPublic | BindingFlags.Instance)!.GetValue(value)!;
+    private static void Call(object value, string name, params object[] arguments) => value.GetType().GetMethod(name, BindingFlags.NonPublic | BindingFlags.Instance)!.Invoke(value, arguments);
+    private async Task Frames() { for (var index = 0; index < 3; index++) await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame); }
+
+    public override async void _Ready()
     {
         try
         {
@@ -27,6 +33,9 @@ public partial class YuxuAdmissionSmoke : Node
                 outcome = "村中暂时平安。"
             };
             var player = new HumanData { karma_value = 1000 };
+            var neutralLines = new HumanData().get_yuxu_gate_judgment_lines();
+            Check(neutralLines.Any(line => line.Contains("灵识")) && neutralLines.All(line => !line.Contains("神识")),
+                "金丹接引长老的中性迎真评述误用了神识");
             Check(player.record_player_causal_event(record), "首次经历应写入");
             Check(!player.record_player_causal_event(record), "同一稳定事件 ID 不应重复写入");
             var savedCopy = player.Duplicate(true) as HumanData;
@@ -80,6 +89,55 @@ public partial class YuxuAdmissionSmoke : Node
             dialogue.show_yuxu_admission_result(elder, ["迎真礼毕。"], () => resultCompleted = true);
             dialogue.close();
             Check(resultCompleted && !dialogue.Visible, "迎真结果按关闭/ESC 应完成并收起展示层");
+            var actor = new Character { entity_name = "试演小友", entity_data = new HumanData { entity_name = "试演小友", appearance_seed = 684201 } };
+            dialogue.SetProcess(false);
+            foreach (var hasSect in new[] { true, false })
+            {
+                var answerCount = 0; var completedCount = 0;
+                string[] facts = ["长老静静看了你片刻，收回灵识，神色如常。", "长老察看灵机，颔首确认天灵根资质。"];
+                dialogue.show_yuxu_admission_review(elder, facts, () =>
+                    dialogue.show_yuxu_admission_question(elder, answer => {
+                        Check(answer == hasSect, "宗门问答分支反转"); answerCount++;
+                        dialogue.show_yuxu_admission_result(elder, [answer ? "既有所属，小友请便。" : "小友随接引弟子去办入门之礼。"],
+                            () => completedCount++, player: actor);
+                    }, player: actor), player: actor, lastLineIsAptitude: true);
+                await Frames();
+                var stage = dialogue.GetNode<Control>("YuxuAdmissionInteraction");
+                Check(stage.FindChildren("YuxuAdmissionPaper", "*", true, false).Count == 0 &&
+                    stage.FindChildren("YuxuAdmissionHeadshot", "*", true, false).Count == 0 &&
+                    stage.FindChildren("*", "ProgressBar", true, false).Count == 0,
+                    "迎真仍有旧纸面、顶部头像或进度线");
+                Check(stage.FindChildren("PlayerSocialPortrait", "Control", true, false).Count == 1 &&
+                    stage.FindChildren("NpcSocialPortrait", "Control", true, false).Count == 1 &&
+                    Read<Character?>(dialogue, "_socialPlayer") == actor, "迎真没有使用玩家和长老各自立绘");
+                var rows = Read<List<Label>>(dialogue, "_socialFactors");
+                var words = Read<IReadOnlyList<NpcSocialPresentationText.Line>>(dialogue, "_socialLines");
+                Check(words.Select(line => line.Result).SequenceEqual(facts) && words.Last().Rule == "yuxu_aptitude", "迎真证据被改写、重排或与资质混同");
+                Call(dialogue, "process_social_reveal", .25);
+                Check(rows[0].VisibleCharacters > 0 && rows[0].VisibleCharacters < words[0].Pending.Length && rows[1].Modulate.A == 0,
+                    "迎真未逐字展示，或后续行提前出现");
+                var skip = Read<Button>(dialogue, "_socialDone");
+                skip.EmitSignal(BaseButton.SignalName.Pressed);
+                Check(skip.Text == "继续" && answerCount == 0 && rows.Select(row => row.Text).SequenceEqual(facts), "略过提前问答或未还原真实证据");
+                skip.EmitSignal(BaseButton.SignalName.Pressed); await Frames();
+                var choices = dialogue.FindChildren("*", "Button", true, false).OfType<Button>().Where(button => button.IsVisibleInTree()).ToArray();
+                Check(choices.Length == 2 && choices[0].Text == "有" && choices[1].Text == "无" &&
+                    choices[0].GlobalPosition.Y < choices[1].GlobalPosition.Y && choices.All(button => button.Size.X <= 300),
+                    "唯一宗门问答没有单列竖排或按钮过宽");
+                choices[hasSect ? 0 : 1].EmitSignal(BaseButton.SignalName.Pressed); await Frames();
+                Check(answerCount == 1 && completedCount == 0, "回答重复执行或未确认就完成分支");
+                Call(dialogue, "process_social_reveal", 100.0);
+                var done = Read<Button>(dialogue, "_socialDone");
+                Check(done.Text == "继续", "自然播放结束后未恢复继续按钮");
+                done.EmitSignal(BaseButton.SignalName.Pressed);
+                Check(completedCount == 1 && !dialogue.Visible, "迎真分支结果未单次完成并退出");
+                dialogue.close(); Check(completedCount == 1, "退出迎真后重复触发回调");
+                await Frames();
+            }
+            dialogue.show_narration("普通剧情回归检查");
+            Check(Read<PanelContainer>(dialogue, "_dialogueFrame").Visible && Read<Control?>(dialogue, "_socialContent") is null,
+                "迎真结束后普通剧情底栏未恢复");
+            dialogue.close(); actor.Free();
             dialogue.QueueFree();
 
             GD.Print("YuxuAdmissionSmoke: PASS");

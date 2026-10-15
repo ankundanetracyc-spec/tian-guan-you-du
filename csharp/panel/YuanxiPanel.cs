@@ -27,8 +27,8 @@ public partial class YuanxiPanel : Control
         poem.AnchorLeft = .77f; poem.AnchorRight = .96f; poem.AnchorTop = .15f; poem.AnchorBottom = .72f; AddChild(poem);
         var left = new VBoxContainer { AnchorLeft = .035f, AnchorRight = .28f, AnchorTop = .10f, AnchorBottom = .92f };
         left.AddThemeConstantOverride("separation", 16); AddChild(left);
-        _title = Text("云息十层", 30); left.AddChild(_title);
-        left.AddChild(Text("归元九息", 24));
+        left.AddChild(Text("归元九息", 28));
+        _title = Text("云息十层", 20); left.AddChild(_title);
         _status = Text("", 20); left.AddChild(_status);
         _notice = Text("", 17); left.AddChild(_notice);
         _one = Button(left, "养成一息", () => Start(false));
@@ -44,14 +44,15 @@ public partial class YuanxiPanel : Control
         {
             // 归元息仍是静室吐纳内容：前景气机图与操作纸面，不另换环境。
             var diagramPaper = new PanelContainer { AnchorLeft = .02f, AnchorRight = .56f, AnchorTop = .08f, AnchorBottom = .9f, MouseFilter = MouseFilterEnum.Ignore };
-            diagramPaper.AddThemeStyleboxOverride("panel", QuietRoomStyle.Paper(.82f, 0)); AddChild(diagramPaper); MoveChild(diagramPaper, 1);
+            diagramPaper.AddThemeStyleboxOverride("panel", QuietRoomStyle.Paper(1, 0)); AddChild(diagramPaper); MoveChild(diagramPaper, 1);
             _qi.AnchorLeft = .04f; _qi.AnchorRight = .54f; _qi.AnchorTop = .12f; _qi.AnchorBottom = .86f;
             var paper = new PanelContainer { AnchorLeft = .59f, AnchorRight = 1, AnchorTop = 0, AnchorBottom = 1 };
-            paper.AddThemeStyleboxOverride("panel", QuietRoomStyle.Paper(.95f, 24)); AddChild(paper);
+            paper.AddThemeStyleboxOverride("panel", QuietRoomStyle.Paper(1, 24)); AddChild(paper);
             var scroll = new ScrollContainer { HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled }; paper.AddChild(scroll);
             left.Reparent(scroll); left.SetAnchorsAndOffsetsPreset(LayoutPreset.TopLeft); left.SizeFlagsHorizontal = SizeFlags.ExpandFill;
             foreach (var text in left.FindChildren("*", "Label", true, false).OfType<Label>()) text.AddThemeColorOverride("font_color", QuietRoomStyle.Ink);
             foreach (var button in new[] { _one, _continuous, _continue, _stop }) if (button is not null) QuietRoomStyle.Primary(button);
+            QuietRoomStyle.Frame(paper); QuietRoomStyle.Frame(diagramPaper);
         }
         Hide();
     }
@@ -100,7 +101,7 @@ public partial class YuanxiPanel : Control
         else if (!_qi.IsTransitioning) { _qi.ShowPath(1); _qi.ShowBreaths(count); }
         _shownCount = count;
         var remaining = _character.get_yuanxi_remaining_hours();
-        _status!.Text = $"归元息　{count}／九息\n\n" + (count == 9 ? "九息俱全，可准备铸玄基。\n铸玄基后的修行内容暂未开放。" : $"{(active ? "正在" : "准备")}养成第{count + 1}息 · {_character.get_yuanxi_phase_name()}\n本息尚需 {(double.IsFinite(remaining) ? $"{remaining / 16:0.0}个修炼日（{remaining:0.0}小时）" : "有效主修功法与灵根")}\n\n修炼不消耗体力，按实际修炼时长推进时间。");
+        _status!.Text = $"归元息　{count}／九息\n\n" + (count == 9 ? "九息俱全，可准备铸玄基。\n铸玄基后的修行内容暂未开放。" : $"{(active ? "正在" : "准备")}养成第{count + 1}息 · {_character.get_yuanxi_phase_name()}\n本息尚需 {(double.IsFinite(remaining) ? GameTimeText.Duration((int)Math.Ceiling(remaining)) : "有效主修功法与灵根")}\n\n修炼不消耗体力，按实际修炼时长推进时间。");
         _notice!.Text = _character.get_yuanxi_notice() + "\n\n每息依次经历周行、牵引、平衡。收起界面会暂停演出并保留闭关，回来可继续；进行其他耗时行动视为出关。";
         _one!.Disabled = _continuous!.Disabled = active || count == 9 || _character.get_cultivation_rate() <= 0;
         _target!.MinValue = Math.Min(9, count + 1); _target.Editable = !active && count < 9;

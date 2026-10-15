@@ -23,6 +23,8 @@ public partial class GameTimeMgr : Node
     private int _lastSimulationTickHour;
     private bool _isEmittingTimeChanged;
     private bool _queuedTimeChanged;
+    private string _advanceReason = "";
+    public event Action<int, int, string>? TimeAdvanceStarting;
 
     [Signal] public delegate void time_changedEventHandler();
     [Signal] public delegate void pause_changedEventHandler(bool paused);
@@ -72,7 +74,9 @@ public partial class GameTimeMgr : Node
             return;
 
         _pendingHours -= wholeHours;
-        add_hours(wholeHours, reason != "auto");
+        var previousReason = _advanceReason; _advanceReason = reason;
+        try { add_hours(wholeHours, reason != "auto"); }
+        finally { _advanceReason = previousReason; }
     }
 
     public void add_hours(int count, bool force_simulation_tick = true)
@@ -80,6 +84,8 @@ public partial class GameTimeMgr : Node
         if (count <= 0)
             return;
 
+        var fromHour = get_total_game_hours();
+        TimeAdvanceStarting?.Invoke(fromHour, fromHour + count, _advanceReason);
         hour += count;
         while (hour >= 24)
         {

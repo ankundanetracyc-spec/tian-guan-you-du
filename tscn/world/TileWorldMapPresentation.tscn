@@ -93,7 +93,7 @@ offset_top = 76.0
 offset_right = 1050.0
 offset_bottom = 108.0
 mouse_filter = 2
-text = "WASD 逐格行走　·　单击预览路线，再次点击启程　·　滚轮缩放　·　中/右键拖动，单击回中"
+text = "WASD 逐格行走　·　单击预览路线，再次点击启程　·　滚轮缩放　·　中键拖动，单击中键回位"
 
 [node name="GridToggle" type="Button" parent="."]
 layout_mode = 1

@@ -5,28 +5,70 @@ public static class QuietRoomStyle
 {
     public const string Assets = "res://textures/ui/cultivation/quiet_room_20261010/";
     public static readonly Color Ink = new("303b38"), Teal = new("396965");
-    public static StyleBoxFlat Paper(float alpha = .94f, int padding = 20) => new()
+    public static StyleBoxTexture Paper(float alpha = .94f, int padding = 20)
     {
-        BgColor = new Color(.96f, .945f, .89f, alpha), BorderColor = new Color(.40f, .44f, .39f, .32f),
-        BorderWidthLeft = 1, BorderWidthRight = 1, BorderWidthTop = 1, BorderWidthBottom = 1,
-        ContentMarginLeft = padding, ContentMarginRight = padding, ContentMarginTop = padding, ContentMarginBottom = padding
+        var paper = new StyleBoxTexture
+        {
+            Texture = new AtlasTexture
+            {
+                Atlas = GD.Load<Texture2D>("res://textures/ui/inventory_20261012/approved_shell_v1.png"),
+                Region = new Rect2(340, 150, 1120, 580), FilterClip = true
+            },
+            TextureMarginLeft = 16, TextureMarginRight = 16, TextureMarginTop = 16, TextureMarginBottom = 16
+        };
+        paper.ModulateColor = new Color(1, 1, 1, alpha);
+        paper.ContentMarginLeft = paper.ContentMarginRight = padding;
+        paper.ContentMarginTop = paper.ContentMarginBottom = padding;
+        return paper;
+    }
+    public static StyleBoxFlat Edge(bool selected = false, int padding = 12) => new()
+    {
+        BgColor = Colors.Transparent, BorderColor = selected ? Teal : new Color("a39372"),
+        BorderWidthLeft = 1, BorderWidthRight = 1, BorderWidthTop = 1, BorderWidthBottom = selected ? 2 : 1,
+        ContentMarginLeft = padding, ContentMarginRight = padding,
+        ContentMarginTop = padding == 0 ? 0 : 8, ContentMarginBottom = padding == 0 ? 0 : 8
     };
+    // 固定设计坐标随窗口等比缩放，防止中文、日期和横向栏位在小窗口中互相挤压。
+    public static Control Canvas(Control parent)
+    {
+        var canvas = new Control { Name = "MaterialCanvas", MouseFilter = Control.MouseFilterEnum.Pass };
+        parent.AddChild(canvas);
+        void Fit()
+        {
+            var area = parent.Size;
+            var scale = Mathf.Min(area.X / 1672f, area.Y / 941f);
+            canvas.Size = new Vector2(1672, 941);
+            canvas.Scale = Vector2.One * scale;
+            canvas.Position = (area - canvas.Size * scale) / 2;
+        }
+        parent.Resized += Fit; Fit();
+        return canvas;
+    }
+    public static void Frame(Control parent, bool dark = false)
+    {
+        var frame = new InventoryPaperFrame { Dark = dark, FillPaper = false };
+        parent.AddChild(frame); parent.MoveChild(frame, 0);
+        frame.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
+    }
     public static Theme MakeTheme()
     {
         var theme = GD.Load<Theme>("res://resources/font/default_theme.tres").Duplicate() as Theme ?? new Theme();
         theme.DefaultFontSize = 20;
+        theme.DefaultFont = GD.Load<FontFile>("res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf");
         theme.SetColor("font_color", "Label", Ink);
         foreach (var type in new[] { "Button", "OptionButton" })
         {
             theme.SetFontSize("font_size", type, 20);
             theme.SetColor("font_color", type, Ink);
             theme.SetColor("font_hover_color", type, Ink);
-            theme.SetColor("font_pressed_color", type, new Color("f5f1e5"));
+            theme.SetColor("font_pressed_color", type, Teal);
+            theme.SetColor("font_focus_color", type, Ink);
             theme.SetColor("font_disabled_color", type, new Color("777c70"));
-            theme.SetStylebox("normal", type, Paper(.82f, 14));
-            var hover = Paper(.98f, 14); hover.BorderColor = Teal; theme.SetStylebox("hover", type, hover);
-            var selected = Paper(1, 14); selected.BgColor = Teal; theme.SetStylebox("pressed", type, selected);
-            theme.SetStylebox("disabled", type, Paper(.5f, 14));
+            theme.SetStylebox("normal", type, Edge());
+            theme.SetStylebox("hover", type, Edge(true));
+            theme.SetStylebox("pressed", type, Edge(true));
+            theme.SetStylebox("hover_pressed", type, Edge(true));
+            theme.SetStylebox("disabled", type, Edge());
             var focus = new StyleBoxFlat { BgColor = Colors.Transparent, BorderColor = Teal, BorderWidthBottom = 2 }; theme.SetStylebox("focus", type, focus);
         }
         theme.SetColor("font_color", "LineEdit", Ink);
@@ -35,9 +77,12 @@ public static class QuietRoomStyle
         theme.SetColor("font_color", "PopupMenu", Ink);
         theme.SetColor("font_hover_color", "PopupMenu", Ink);
         theme.SetStylebox("panel", "PopupMenu", Paper(1, 12));
-        theme.SetStylebox("hover", "PopupMenu", Paper(1, 12));
-        theme.SetStylebox("background", "ProgressBar", new StyleBoxFlat { BgColor = new Color(.42f, .47f, .42f, .2f), CornerRadiusTopLeft = 6, CornerRadiusTopRight = 6, CornerRadiusBottomLeft = 6, CornerRadiusBottomRight = 6 });
-        theme.SetStylebox("fill", "ProgressBar", new StyleBoxFlat { BgColor = Teal, CornerRadiusTopLeft = 6, CornerRadiusTopRight = 6, CornerRadiusBottomLeft = 6, CornerRadiusBottomRight = 6 });
+        theme.SetStylebox("hover", "PopupMenu", Edge(true));
+        theme.SetStylebox("background", "ProgressBar", new StyleBoxFlat { BgColor = new Color(.42f, .47f, .42f, .2f) });
+        theme.SetStylebox("fill", "ProgressBar", new StyleBoxFlat { BgColor = Teal });
+        theme.SetStylebox("panel", "TooltipPanel", new StyleBoxFlat { BgColor = new Color("20251e"), BorderColor = new Color("a39372"), BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1, ContentMarginLeft = 14, ContentMarginRight = 14, ContentMarginTop = 10, ContentMarginBottom = 10 });
+        theme.SetColor("font_color", "TooltipLabel", new Color("efe6cd"));
+        theme.SetStylebox("separator", "HSeparator", new StyleBoxFlat { BgColor = new Color("a3937277"), ContentMarginTop = 1, ContentMarginBottom = 1 });
         return theme;
     }
     public static Label Text(string text, int size = 20) { var label = new Label { Text = text, MouseFilter = Control.MouseFilterEnum.Ignore }; label.AddThemeFontSizeOverride("font_size", size); label.AddThemeColorOverride("font_color", Ink); return label; }
@@ -51,11 +96,20 @@ public static class QuietRoomStyle
     public static bool IsDay(GameTimeMgr time) => time.hour is >= 6 and < 18;
     public static void Primary(Button button)
     {
-        button.CustomMinimumSize = new Vector2(0, 58);
-        var normal = Paper(1, 16); normal.BgColor = Teal;
-        var hover = Paper(1, 16); hover.BgColor = new Color("477b75");
+        button.CustomMinimumSize = new Vector2(0, 50);
+        var normal = Paper(1, 16);
+        var hover = Paper(1, 16); hover.ModulateColor = new Color(1.07f, 1.05f, 1.01f);
+        normal.ContentMarginTop = normal.ContentMarginBottom = 8;
+        hover.ContentMarginTop = hover.ContentMarginBottom = 8;
         button.AddThemeStyleboxOverride("normal", normal); button.AddThemeStyleboxOverride("hover", hover);
-        button.AddThemeColorOverride("font_color", new Color("f5f1e5")); button.AddThemeColorOverride("font_hover_color", new Color("ffffff"));
-        button.AddThemeFontSizeOverride("font_size", 24);
+        button.AddThemeStyleboxOverride("pressed", normal);
+        button.AddThemeColorOverride("font_color", Ink); button.AddThemeColorOverride("font_hover_color", Teal);
+        button.AddThemeFontSizeOverride("font_size", 22);
+        button.MouseDefaultCursorShape = Control.CursorShape.PointingHand;
+        if (!button.HasNode("MaterialActionFrame"))
+        {
+            var frame = new InventoryPaperFrame { Name = "MaterialActionFrame", FillPaper = false };
+            button.AddChild(frame); frame.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
+        }
     }
 }

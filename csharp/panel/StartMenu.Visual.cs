@@ -163,6 +163,10 @@ public partial class StartMenu
             button.Pressed += () => { CloseDemoEntries(); source.EmitSignal(BaseButton.SignalName.Pressed); };
             list.AddChild(button);
         }
+        var letters = SettingsButton("信件界面预览");
+        letters.SizeFlagsHorizontal = SizeFlags.ExpandFill; letters.CustomMinimumSize = new Vector2(0, 58);
+        letters.Pressed += () => { CloseDemoEntries(); GetTree().ChangeSceneToFile("res://tscn/scene/LettersPreviewScene.tscn"); };
+        list.AddChild(letters);
         var close = SettingsButton("返回首页");
         close.Pressed += CloseDemoEntries;
         box.AddChild(close);
@@ -175,7 +179,7 @@ public partial class StartMenu
         GetNode<Button>("StartMenuMenu/DemoToggle").GrabFocus();
     }
 
-    private static StyleBoxFlat SettingsFocusStyle() => new()
+    public static StyleBoxFlat SettingsFocusStyle() => new()
     {
         BgColor = Colors.Transparent,
         BorderColor = new Color(.32f, .43f, .37f, .75f),
@@ -183,7 +187,7 @@ public partial class StartMenu
         CornerRadiusTopLeft = 4, CornerRadiusTopRight = 4, CornerRadiusBottomLeft = 4, CornerRadiusBottomRight = 4
     };
 
-    private static void StyleSettingsOption(OptionButton selector)
+    public static void StyleSettingsOption(OptionButton selector)
     {
         StyleSettingsText(selector, 17, new Color(.16f, .25f, .20f));
         selector.AddThemeColorOverride("font_hover_color", new Color(.12f, .21f, .17f));
@@ -206,7 +210,7 @@ public partial class StartMenu
         if (GD.Load<FontFile>(StartMenuFontPath) is { } font) popup.AddThemeFontOverride("font", font);
     }
 
-    private static void StyleSettingsSlider(HSlider slider)
+    public static void StyleSettingsSlider(HSlider slider)
     {
         slider.AddThemeStyleboxOverride("slider", new StyleBoxFlat
         {

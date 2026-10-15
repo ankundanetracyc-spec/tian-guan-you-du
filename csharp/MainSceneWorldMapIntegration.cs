@@ -24,6 +24,8 @@ public partial class MainScene
             tile_world_map.Connect("world_state_changed", Callable.From(on_tile_world_save_state_changed));
         if (tile_world_map.HasSignal("node_enter_requested"))
             tile_world_map.Connect("node_enter_requested", Callable.From<string>(on_tile_world_node_enter_requested));
+        if (tile_world_map.HasSignal("dynamic_dungeon_enter_requested"))
+            tile_world_map.Connect("dynamic_dungeon_enter_requested", Callable.From<string>(on_dynamic_dungeon_enter_requested));
         tile_world_map.Connect("visibility_changed", Callable.From(on_tile_world_map_visibility_changed));
         _npc_world?.set_tile_world_map(tile_world_map);
         _tile_world_map_bridge_configured = true;
@@ -48,6 +50,8 @@ public partial class MainScene
         tile_world_map.Call("set_can_fly", player?.can_fly_world_map ?? false);
         tile_world_map.Call("set_player_cell", _player_world_grid_cell);
         refresh_tile_world_population_counts();
+        if (tile_world_map.Visible)
+            synchronize_dynamic_dungeon_opportunities();
     }
 
     private void connect_tile_world_npc_population()
@@ -91,8 +95,20 @@ public partial class MainScene
             }
         }
 
+        if (player?.entity_data is HumanData human && _npc_world?.get_active_yuxu_case_transport(human) is { } task &&
+            task.temporary_party_member_active && task.journey_status == YuxuSectCaseTaskRecord.JourneyInTransit)
+        {
+            var remainingPath = tile_world_map.Call("get_remaining_travel_path").AsGodotArray<Vector2I>();
+            var remainingHours = tile_world_map.Call("get_path_travel_hours", remainingPath).AsSingle();
+            _npc_world.update_yuxu_case_transport_position(
+                human.sect_active_yuxu_duty_incident_id, task.task_id, human.sect_active_yuxu_duty_instance_id,
+                cell, locationNodeId, "", remainingHours);
+            check_yuxu_case_transport_world_interception(cell);
+        }
+
         // 普通格也保留名单外框与明确空状态；每次逐格抵达都按该格刷新，不再留着上一个地点的人物。
         refresh_tile_world_character_list(cell, locationNodeId);
+        synchronize_dynamic_dungeon_opportunities();
     }
 
     private void refresh_tile_world_character_list(Vector2I? knownCell = null, string? knownLocationNodeId = null)

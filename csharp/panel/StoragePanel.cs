@@ -14,6 +14,7 @@ public partial class StoragePanel : Control
 
     private Character? _player;
     private StorageItemSlot? _active_slot;
+    private StorageItemSlot? _layoutAnchorSlot;
     private ArtifactInstanceData? _active_artifact;
     private bool _pinned_selection, _pointer_over_detail, _inventory_mutation;
     private IInventoryItemUseHandler? _item_use_handler;
@@ -40,6 +41,7 @@ public partial class StoragePanel : Control
         _detail_hide_timer.Timeout += on_detail_hide_timeout;
         AddChild(_detail_hide_timer);
         Resized += fit_inventory_canvas;
+        GetViewport().SizeChanged += on_detail_viewport_resized;
         VisibilityChanged += on_visibility_changed;
         fit_inventory_canvas();
         filter_to_category("");
@@ -49,13 +51,13 @@ public partial class StoragePanel : Control
     public override void _ExitTree()
     {
         if (_player is not null) _player.InventoryChanged -= on_player_inventory_changed;
+        if (GetViewport() is { } viewport) viewport.SizeChanged -= on_detail_viewport_resized;
+        bind_detail_layout_anchor(null);
     }
 
     public override void _Process(double delta)
     {
-        if (!Visible || _detail_panel?.Visible != true) return;
-        if (GetViewport().GuiIsDragging()) { clear_active_info(); return; }
-        if (_active_slot is not null) layout_detail_popup(_active_slot);
+        if (Visible && GetViewport().GuiIsDragging()) clear_active_info();
     }
 
     public override void _Input(InputEvent @event)
@@ -85,7 +87,7 @@ public partial class StoragePanel : Control
         refresh_slots();
     }
     public void show_panel() { Show(); fit_inventory_canvas(); refresh_slots(); }
-    public void hide_panel() { clear_active_info(); Hide(); }
+    public void hide_panel() { HoverInfoManager.HideAll(); clear_active_info(); Hide(); }
     public void toggle_panel() { if (Visible) hide_panel(); else show_panel(); }
     private void on_visibility_changed() { if (!Visible) clear_active_info(); }
 
@@ -131,6 +133,7 @@ public partial class StoragePanel : Control
     public void refresh_slots()
     {
         if (_grid is null) return;
+        HoverInfoManager.HideAll();
         clear_active_info();
         foreach (var child in _grid.GetChildren()) { _grid.RemoveChild(child); child.QueueFree(); }
         var all = inventory_entries();
@@ -158,6 +161,9 @@ public partial class StoragePanel : Control
             slot.info_requested += on_slot_info_requested;
             slot.info_cleared += on_slot_info_cleared;
             slot.slot_moved += on_slot_moved;
+            slot.MouseEntered += on_inventory_slot_mouse_entered;
+            if (!slot.is_empty)
+                HoverInfoManager.SetInfo(slot, build_hover_content(slot));
         }
         if (_summary is not null) _summary.Text = entries.Count == all.Count
             ? $"已用 {all.Count} / {GridSlotCount} 格" : $"找到 {entries.Count} 项 · 已用 {all.Count} / {GridSlotCount} 格";
@@ -193,6 +199,10 @@ public partial class StoragePanel : Control
     {
         if (_player is not null && _player.move_inventory_slot(fromPosition, toPosition)) refresh_slots();
     }
+    private void on_inventory_slot_mouse_entered()
+    {
+        if (!_pinned_selection && _detail_panel?.Visible == true) clear_active_info(false);
+    }
     private void on_player_inventory_changed(Character _) { if (Visible && !_inventory_mutation) refresh_slots(); }
 
     private bool can_act_on(StorageItemSlot slot)
@@ -209,15 +219,23 @@ public partial class StoragePanel : Control
     private void on_slot_info_requested(StorageItemSlot slot, bool immediate)
     {
         if (slot.is_empty) { if (immediate) clear_active_info(); return; }
+        if (!immediate)
+        {
+            if (_pinned_selection) return;
+            clear_active_info(false);
+            return;
+        }
+
+        HoverInfoManager.HideAll();
         if (immediate)
         {
             if (_pinned_selection && _active_slot == slot) { clear_active_info(); return; }
             _pinned_selection = can_act_on(slot);
         }
-        else if (_pinned_selection) return;
         _detail_hide_timer?.Stop();
         _active_slot = slot;
         _active_artifact = slot.artifact_data;
+        bind_detail_layout_anchor(slot);
         update_slot_selection_visuals();
         if (slot.artifact_data is { } artifact) fill_artifact_info(artifact);
         else if (load_item_data(slot.item_path) is { } item) fill_info(item, slot.item_count);
@@ -225,7 +243,10 @@ public partial class StoragePanel : Control
         show_info_content(slot);
     }
 
-    private void on_slot_info_cleared(StorageItemSlot _) { if (!_pinned_selection) _detail_hide_timer?.Start(); }
+    private void on_slot_info_cleared(StorageItemSlot slot)
+    {
+        if (!_pinned_selection && _active_slot == slot) _detail_hide_timer?.Start();
+    }
     private void on_detail_mouse_entered() { _pointer_over_detail = true; _detail_hide_timer?.Stop(); }
     private void on_detail_mouse_exited() { _pointer_over_detail = false; if (!_pinned_selection && _detail_panel?.Visible == true) _detail_hide_timer?.Start(); }
     private void on_detail_hide_timeout()
@@ -240,10 +261,13 @@ public partial class StoragePanel : Control
         if (_grid is null) return;
         foreach (var slot in _grid.GetChildren().OfType<StorageItemSlot>()) slot.set_inventory_selected(slot == _active_slot);
     }
-    private void clear_active_info()
+    private void clear_active_info() => clear_active_info(true);
+    private void clear_active_info(bool hideHover)
     {
         _detail_hide_timer?.Stop();
+        if (hideHover) HoverInfoManager.HideAll();
         _pointer_over_detail = false;
+        bind_detail_layout_anchor(null);
         _active_slot = null; _active_artifact = null; _pinned_selection = false;
         _detail_panel?.Hide();
         update_slot_selection_visuals();
@@ -260,6 +284,64 @@ public partial class StoragePanel : Control
         if (_info_desc is not null) _info_desc.Visible = !string.IsNullOrWhiteSpace(_info_desc.Text);
         if (_action_row is not null) _action_row.Visible = _action_button?.Visible == true;
         layout_detail_popup(slot);
+    }
+
+    private HoverInfoManager.HoverInfoContent build_hover_content(StorageItemSlot slot)
+    {
+        if (slot.artifact_data is { } artifact)
+        {
+            var name = artifact_name(artifact);
+            var path = artifact.form?.icon_path ?? "";
+            var icon = string.IsNullOrWhiteSpace(path) || !ResourceLoader.Exists(path) ? null : ResourceLoader.Load<Texture2D>(path);
+            var subtitle = $"法宝 · {(string.IsNullOrWhiteSpace(artifact.ritual_mode) ? "未定祭法" : artifact.ritual_mode)} · {artifact.artifact_tier} · {(string.IsNullOrWhiteSpace(artifact.element) ? "五行未定" : artifact.element)}";
+            var durability = artifact.max_durability > 0
+                ? $"耐久 {Math.Max(0, artifact.current_durability)}/{artifact.max_durability}　灵识 {Math.Max(0, artifact.spirit_cost)}"
+                : "耐久未定　灵识 " + Math.Max(0, artifact.spirit_cost);
+            var utility = string.IsNullOrWhiteSpace(artifact.utility_id) ? "主功用：未定" : $"主功用：{artifact.utility_id}　品级：{Math.Max(0, artifact.utility_grade)}";
+            var binding = string.IsNullOrWhiteSpace(artifact.bound_basic_card_path) ? "" : $"\n绑定基础牌：{artifact.bound_basic_card_path}";
+            return new HoverInfoManager.HoverInfoContent(name,
+                $"{durability}\n{utility}\n实例 ID：{artifact.instance_id}{binding}", icon, subtitle);
+        }
+
+        var item = load_item_data(slot.item_path);
+        if (item is null) return new HoverInfoManager.HoverInfoContent("", "");
+        var category = category_of(item, slot.item_path);
+        if (!string.IsNullOrWhiteSpace(item.item_subcategory)) category = string.IsNullOrWhiteSpace(category) ? item.item_subcategory : $"{category} · {item.item_subcategory}";
+        var grade = item.craft_data is MaterialCraftData material
+            ? $"品阶：{material.material_grade_name()}（{material.material_score():0.##}）" : item.get_grade_string();
+        var subtitleText = string.Join(" · ", new[] { category, grade, $"数量　{slot.item_count}" }.Where(value => !string.IsNullOrWhiteSpace(value)));
+        var tags = build_tags(item.tags, item.craft_data as MaterialCraftData);
+        var effect = build_item_usage_effect(item);
+        var itemIcon = string.IsNullOrWhiteSpace(item.icon_path) || !ResourceLoader.Exists(item.icon_path) ? null : ResourceLoader.Load<Texture2D>(item.icon_path);
+        return new HoverInfoManager.HoverInfoContent(item.entity_name,
+            $"词缀与功用\n{tags}\n\n使用效果\n{effect}", itemIcon, subtitleText);
+    }
+
+    private void bind_detail_layout_anchor(StorageItemSlot? slot)
+    {
+        if (_layoutAnchorSlot == slot) return;
+        if (_layoutAnchorSlot is not null && GodotObject.IsInstanceValid(_layoutAnchorSlot))
+            _layoutAnchorSlot.ItemRectChanged -= on_detail_anchor_rect_changed;
+        _layoutAnchorSlot = slot;
+        if (_layoutAnchorSlot is not null)
+            _layoutAnchorSlot.ItemRectChanged += on_detail_anchor_rect_changed;
+    }
+
+    private void on_detail_anchor_rect_changed()
+    {
+        if (_detail_panel?.Visible == true && _active_slot is not null) layout_detail_popup(_active_slot);
+    }
+
+    private void on_detail_viewport_resized()
+    {
+        fit_inventory_canvas();
+        if (_active_slot is not null && _detail_panel?.Visible == true)
+            CallDeferred(MethodName.layout_active_detail_deferred);
+    }
+
+    private void layout_active_detail_deferred()
+    {
+        if (_active_slot is not null && _detail_panel?.Visible == true) layout_detail_popup(_active_slot);
     }
 
     private void fill_info(ItemData item, int count)
@@ -293,7 +375,7 @@ public partial class StoragePanel : Control
         _action_button!.Visible = _cancel_button!.Visible = _pinned_selection;
         _action_button.Text = _player?.is_artifact_equipped(artifact.instance_id) == true ? "卸下" : "使用";
         _action_button.Disabled = false;
-        _action_button.TooltipText = "装备此法宝";
+        HoverInfoManager.SetTooltip(_action_button, "装备此法宝");
     }
     private void configure_item_actions(ItemData item)
     {
@@ -302,7 +384,7 @@ public partial class StoragePanel : Control
         if (!can_act_on(_active_slot)) { _pinned_selection = false; return; }
         _action_button.Text = item is EquipmentData && _player.is_item_equipped(_active_slot.item_path) ? "卸下" : "使用";
         _action_button.Disabled = false;
-        _action_button.TooltipText = item is EquipmentData ? "穿戴或卸下此装备" : "";
+        HoverInfoManager.SetTooltip(_action_button, item is EquipmentData ? "穿戴或卸下此装备" : "");
         _action_button.Show(); _cancel_button.Show();
     }
     private void on_action_pressed()

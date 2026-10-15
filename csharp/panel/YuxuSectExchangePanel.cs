@@ -26,13 +26,8 @@ public partial class YuxuSectExchangePanel : Control
     private string _selectedCategory = "全部";
     private string _selectedLevel = "全部";
     private CatalogEntry? _selectedItem;
-    private CatalogEntry? _hoveredItem;
     private Label? _balanceLabel;
     private GridContainer? _itemGrid;
-    private PanelContainer? _hoverInfo;
-    private Label? _hoverTitle;
-    private Label? _hoverDescription;
-    private Label? _hoverCost;
     private ColorRect? _modalShade;
     private PanelContainer? _purchaseDialog;
     private Label? _purchaseTitle;
@@ -52,11 +47,13 @@ public partial class YuxuSectExchangePanel : Control
         _font = GD.Load<FontFile>(UiFontPath);
         load_catalog();
         build_panel();
+        VisibilityChanged += () => { if (!IsVisibleInTree()) HoverInfoManager.HideAll(); };
         Visible = false;
     }
 
     public void open_panel(long contributionBalance)
     {
+        HoverInfoManager.HideAll();
         set_contribution_balance(contributionBalance);
         _selectedCategory = "全部";
         _selectedLevel = "全部";
@@ -78,7 +75,7 @@ public partial class YuxuSectExchangePanel : Control
         refresh_purchase_button();
     }
 
-    /// <summary>先关闭购买确认；再次按 Esc 时由峰内流程关闭善功堂。</summary>
+    /// <summary>先关闭购买确认；再次返回时由峰内流程关闭善功堂。</summary>
     public bool handle_back()
     {
         if (_purchaseDialog?.Visible == true)
@@ -179,7 +176,6 @@ public partial class YuxuSectExchangePanel : Control
 
         build_filter_rail();
         build_catalog();
-        build_hover_info();
         build_purchase_dialog();
         refresh_filters();
         rebuild_item_grid();
@@ -241,36 +237,6 @@ public partial class YuxuSectExchangePanel : Control
         _itemGrid.AddThemeConstantOverride("h_separation", 8);
         _itemGrid.AddThemeConstantOverride("v_separation", 10);
         scroll.AddChild(_itemGrid);
-    }
-
-    private void build_hover_info()
-    {
-        _hoverInfo = new PanelContainer
-        {
-            Name = "TransientHoverInfo",
-            CustomMinimumSize = new Vector2(350, 142),
-            MouseFilter = MouseFilterEnum.Ignore,
-            ZIndex = 20,
-        };
-        _hoverInfo.AddThemeStyleboxOverride("panel", paper_style(0.97f, 0.78f));
-        var margin = new MarginContainer();
-        margin.AddThemeConstantOverride("margin_left", 15);
-        margin.AddThemeConstantOverride("margin_right", 15);
-        margin.AddThemeConstantOverride("margin_top", 11);
-        margin.AddThemeConstantOverride("margin_bottom", 11);
-        var content = new VBoxContainer();
-        content.AddThemeConstantOverride("separation", 7);
-        margin.AddChild(content);
-        _hoverTitle = make_label("", 19, new Color("302b22"));
-        _hoverDescription = make_label("", 15, new Color("514b3d"));
-        _hoverDescription.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-        _hoverCost = make_label("所需贡献：待定", 15, new Color("655437"));
-        content.AddChild(_hoverTitle);
-        content.AddChild(_hoverDescription);
-        content.AddChild(_hoverCost);
-        _hoverInfo.AddChild(margin);
-        AddChild(_hoverInfo);
-        _hoverInfo.Hide();
     }
 
     private void build_purchase_dialog()
@@ -464,15 +430,6 @@ public partial class YuxuSectExchangePanel : Control
         card.AddThemeStyleboxOverride("hover", card_style(true, false));
         card.AddThemeStyleboxOverride("pressed", card_style(true, true));
         card.Pressed += () => open_purchase_dialog(entry);
-        card.MouseEntered += () => show_hover_info(entry);
-        card.MouseExited += () =>
-        {
-            if (_hoveredItem == entry)
-            {
-                _hoveredItem = null;
-                _hoverInfo?.Hide();
-            }
-        };
 
         var iconCenter = new CenterContainer
         {
@@ -487,7 +444,10 @@ public partial class YuxuSectExchangePanel : Control
         iconCenter.OffsetBottom = -5;
 
         var iconPath = entry.Item.icon_path;
-        if (!string.IsNullOrWhiteSpace(iconPath) && ResourceLoader.Load<Texture2D>(iconPath) is { } icon)
+        var icon = !string.IsNullOrWhiteSpace(iconPath) && ResourceLoader.Exists(iconPath)
+            ? ResourceLoader.Load<Texture2D>(iconPath)
+            : null;
+        if (icon is not null)
         {
             var texture = new TextureRect
             {
@@ -499,6 +459,11 @@ public partial class YuxuSectExchangePanel : Control
             };
             iconCenter.AddChild(texture);
         }
+        HoverInfoManager.SetInfo(card, new HoverInfoManager.HoverInfoContent(
+            entry.Item.entity_name,
+            entry.Description,
+            icon,
+            format_exchange_cost(entry.ContributionCost)));
         card.AddChild(iconCenter);
 
         var name = make_label(entry.Item.entity_name, 15, new Color("302b22"));
@@ -511,31 +476,10 @@ public partial class YuxuSectExchangePanel : Control
         return cell;
     }
 
-    private void show_hover_info(CatalogEntry entry)
-    {
-        if (_purchaseDialog?.Visible == true || _hoverInfo is null)
-            return;
-
-        _hoveredItem = entry;
-        if (_hoverTitle is not null) _hoverTitle.Text = entry.Item.entity_name;
-        if (_hoverDescription is not null) _hoverDescription.Text = entry.Description;
-        if (_hoverCost is not null) _hoverCost.Text = format_exchange_cost(entry.ContributionCost);
-        _hoverInfo.Show();
-
-        var viewportSize = GetViewportRect().Size;
-        var point = GetViewport().GetMousePosition() + new Vector2(18, 18);
-        var boxSize = new Vector2(350, 142);
-        if (point.X + boxSize.X > viewportSize.X - 10) point.X = Math.Max(10, point.X - boxSize.X - 34);
-        if (point.Y + boxSize.Y > viewportSize.Y - 10) point.Y = Math.Max(10, point.Y - boxSize.Y - 34);
-        _hoverInfo.Position = point;
-        _hoverInfo.Size = boxSize;
-    }
-
     private void open_purchase_dialog(CatalogEntry entry)
     {
         _selectedItem = entry;
-        _hoverInfo?.Hide();
-        _hoveredItem = null;
+        HoverInfoManager.HideAll();
         if (_purchaseName is not null) _purchaseName.Text = entry.Item.entity_name;
         if (_purchaseTitle is not null) _purchaseTitle.Text = "确认兑换";
         if (_purchaseDescription is not null) _purchaseDescription.Text = entry.Description;

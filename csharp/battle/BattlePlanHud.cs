@@ -175,7 +175,6 @@ public partial class BattlePlanHud : Control
             else if(to==from)_manager.cancel_player_action(from);
             GetViewport().SetInputAsHandled();
         }
-        if(input is InputEventKey{Keycode:Key.Escape,Pressed:true}){CancelQueueDrag();GetViewport().SetInputAsHandled();}
     }
     private Vector2 PlanningSlotPosition(int index)=>new(index%_planningColumns*PlanningPitch,index/_planningColumns*(_planningCardSize.Y+PlanningGap));
     private int QueueDropIndex(Vector2 viewportPosition)

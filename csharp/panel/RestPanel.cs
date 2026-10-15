@@ -24,14 +24,16 @@ public partial class RestPanel : Control
         Theme = QuietRoomStyle.MakeTheme();
         _day = GD.Load<Texture2D>(QuietRoomStyle.Assets + "rest_day.png"); _night = GD.Load<Texture2D>(QuietRoomStyle.Assets + "rest_night.png");
         _background = QuietRoomStyle.Background(this, "rest_day.png");
-        var header = new HBoxContainer { AnchorLeft = .035f, AnchorRight = .965f, AnchorTop = .025f, AnchorBottom = .10f }; header.AddThemeConstantOverride("separation", 24); AddChild(header);
-        header.AddChild(QuietRoomStyle.Text("休息", 40)); _place = QuietRoomStyle.Text("", 21); _place.SizeFlagsHorizontal = SizeFlags.ExpandFill; header.AddChild(_place);
+        var canvas = QuietRoomStyle.Canvas(this);
+        var header = new HBoxContainer { AnchorLeft = .035f, AnchorRight = .965f, AnchorTop = .025f, AnchorBottom = .10f }; header.AddThemeConstantOverride("separation", 24); canvas.AddChild(header);
+        header.AddChild(QuietRoomStyle.Text("休息", 32)); _place = QuietRoomStyle.Text("", 21); _place.SizeFlagsHorizontal = SizeFlags.ExpandFill; header.AddChild(_place);
         _time = QuietRoomStyle.Text("", 23); header.AddChild(_time);
         var close = new Button { Text = "返回", CustomMinimumSize = new Vector2(120, 48) }; close.Pressed += Close; header.AddChild(close);
-        var paper = new PanelContainer { AnchorLeft = .615f, AnchorRight = .965f, AnchorTop = .165f, AnchorBottom = .955f }; paper.AddThemeStyleboxOverride("panel", QuietRoomStyle.Paper(.95f, 26)); AddChild(paper);
-        var scroll = new ScrollContainer { HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled }; paper.AddChild(scroll);
-        var box = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ExpandFill }; box.AddThemeConstantOverride("separation", 18); scroll.AddChild(box);
-        var title = QuietRoomStyle.Text("安心歇息", 34); title.HorizontalAlignment = HorizontalAlignment.Center; box.AddChild(title);
+        var paper = new PanelContainer { AnchorLeft = .60f, AnchorRight = .965f, AnchorTop = .165f, AnchorBottom = .955f }; paper.AddThemeStyleboxOverride("panel", QuietRoomStyle.Paper(.98f, 26)); canvas.AddChild(paper);
+        var layout = new VBoxContainer(); layout.AddThemeConstantOverride("separation", 14); paper.AddChild(layout);
+        var scroll = new ScrollContainer { HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled, SizeFlagsVertical = SizeFlags.ExpandFill }; layout.AddChild(scroll);
+        var box = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ExpandFill }; box.AddThemeConstantOverride("separation", 14); scroll.AddChild(box);
+        var title = QuietRoomStyle.Text("安心歇息", 28); box.AddChild(title); box.AddChild(new HSeparator());
         _stamina = QuietRoomStyle.Text("", 21); box.AddChild(_stamina);
         _before = new ProgressBar { ShowPercentage = false, CustomMinimumSize = new Vector2(0, 12) }; box.AddChild(_before);
         _modes = new HBoxContainer(); _modes.AddThemeConstantOverride("separation", 12); box.AddChild(_modes);
@@ -43,12 +45,13 @@ public partial class RestPanel : Control
         _year = Number(1, 9999, 1); _month = Number(1, 12, 1); _date = Number(1, 30, 1);
         foreach (var (number, label) in new[] { (_year, "年"), (_month, "月"), (_date, "日") }) { number.CustomMinimumSize = new Vector2(80, 44); date.AddChild(number); date.AddChild(QuietRoomStyle.Text(label, 18)); }
         foreach (var number in new[] { _hours, _year, _month, _date }) number.ValueChanged += _ => { if (_clock is not null) Refresh(); };
-        _preview = QuietRoomStyle.Text("", 23); _preview.AutowrapMode = TextServer.AutowrapMode.WordSmart; box.AddChild(_preview);
+        _preview = QuietRoomStyle.Text("", 21); _preview.AutowrapMode = TextServer.AutowrapMode.WordSmart; box.AddChild(_preview);
         _after = new ProgressBar { ShowPercentage = false, CustomMinimumSize = new Vector2(0, 16) }; box.AddChild(_after);
         _note = QuietRoomStyle.Text("", 18); _note.AutowrapMode = TextServer.AutowrapMode.WordSmart; box.AddChild(_note);
         box.AddChild(new Control { SizeFlagsVertical = SizeFlags.ExpandFill });
-        _start = new Button { Text = "开始休息" }; QuietRoomStyle.Primary(_start); _start.Pressed += Confirm; box.AddChild(_start);
-        var rule = QuietRoomStyle.Text($"每小时恢复 {WorldStaminaRules.RestRecoveryPerGameHour:0.#} 点体力 · 开始后推进时间", 16); rule.AutowrapMode = TextServer.AutowrapMode.WordSmart; box.AddChild(rule);
+        _start = new Button { Text = "开始休息" }; QuietRoomStyle.Primary(_start); _start.Pressed += Confirm; layout.AddChild(_start);
+        var rule = QuietRoomStyle.Text($"每小时恢复 {WorldStaminaRules.RestRecoveryPerGameHour:0.#} 点体力 · 开始后推进时间", 16); rule.AutowrapMode = TextServer.AutowrapMode.WordSmart; layout.AddChild(rule);
+        QuietRoomStyle.Frame(paper);
         Hide();
     }
     private static SpinBox Number(int min, int max, int value) => new() { MinValue = min, MaxValue = max, Step = 1, Value = value, Rounded = true, CustomMinimumSize = new Vector2(110, 44) };
