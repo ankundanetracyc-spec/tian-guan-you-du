@@ -482,6 +482,7 @@ public partial class MainScene
 
     private void on_east_woods_route_node_entered(string nodeId)
     {
+        if (_east_woods_dungeon?.is_dynamic_instance == true) return;
         if (player?.entity_data is not HumanData human || human.sect_affiliation_id != YuxuSectId ||
             human.sect_active_yuxu_duty_id != YuxuEastWoodsPatrolDutyId)
             return;

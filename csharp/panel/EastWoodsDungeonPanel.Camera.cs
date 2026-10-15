@@ -33,7 +33,7 @@ public partial class EastWoodsDungeonPanel
         if (_mapRoot is null || _mapViewport is null) return;
         if (_followPlayer)
             // Follow the stable route centre, not a pawn's bobbing/rotating local slot.
-            _cameraFocus = _travelCameraPosition ?? node_center(EastWoodsDungeonRules.get_node(_current)!);
+            _cameraFocus = _travelCameraPosition ?? node_center(route_node(_current)!);
         var scale = Vector2.One * _mapZoom;
         var position = _mapViewport.Size * .5f - _cameraFocus * _mapZoom;
         if (!_mapRoot.Scale.IsEqualApprox(scale)) _mapRoot.Scale = scale;

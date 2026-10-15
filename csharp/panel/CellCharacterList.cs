@@ -87,16 +87,7 @@ public partial class CellCharacterList : Control
 
     public Rect2 get_ui_rect() => GetNodeOrNull<Control>("ListPanel")?.GetGlobalRect() ?? GetGlobalRect();
 
-    public bool try_collapse_for_navigation()
-    {
-        if (!IsVisibleInTree() || !_expanded) return false;
-        _expanded = false;
-        RosterClosed?.Invoke();
-        apply_expanded_state(true);
-        return true;
-    }
-
-    /// <summary>Map input runs before GUI dispatch; let the visible roster own its wheel area.</summary>
+    /// <summary>Visible roster bounds expressed in viewport coordinates, including its canvas transform.</summary>
     public bool contains_roster_point(Vector2 viewport_position) => IsVisibleInTree() && _expanded &&
         _list_panel is not null && new Rect2(Vector2.Zero, _list_panel.Size).HasPoint(
             _list_panel.GetGlobalTransformWithCanvas().AffineInverse() * viewport_position);

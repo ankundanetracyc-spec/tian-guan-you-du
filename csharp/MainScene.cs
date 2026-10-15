@@ -14,8 +14,13 @@ public partial class MainScene : Node2D
     };
     private MainHUD? hud; private GameTimeUI? time_ui; private Button? _prologue_skip_button; private bool _prologue_skip_available; private StoragePanel? storage; private EstateResourceSystem? estate_resources; private InfoPanel? info; private CultivationUI? cultivation_ui; private CondensationPanel? condensation_panel; private RealmPanel? realm_panel; private StoryDialoguePanel? story_dialogue; private NpcInteractionPanel? npc_interactions; private TradePanel? trade_panel; private PrologueGuide? prologue_guide; private NodeWorldMap? node_map; private Control? tile_world_map; private WorldLocationInteriorPanel? location_interior; private EstateOverview? estate; private DungeonExploreUI? back_hill_trial; private QingxiTerritoryState? territory_state; private QingxiTerritoryPanel? territory_panel; private QingxiFarmlandPanel? farmland_panel; private FamilyResidencePanel? residence_panel; private TerritoryLedgerPanel? territory_ledger; private OpeningIntro? opening_intro; private JournalPanel? journal; private BaigongPanel? baigong; private ActionTransitionPanel? action_transition; private bool _suppress_persistent_chrome; private Character? player; private QingxiPrologueStep _qingxi_prologue = QingxiPrologueStep.Awakened; private bool _xuanjian_awakened, _rested_after_xuanjian, _static_room_authorized, _first_breakthrough_reported, _back_hill_departure_arranged, _rested_for_back_hill, _first_back_hill_battle_explained, _qingxi_herbs_gathered, _back_hill_nest_seen, _back_hill_trial_complete, _beast_hunt_prompt_open, _beast_hunt_trigger_queued; private int _qingxi_arrival_hour, _journal_started_hour=-1, _journal_rumor_stage, _journal_unread; private readonly List<JournalPanel.Entry> _earned_rumors=[]; private readonly List<JournalPanel.Entry> _completed_quests=[]; private JournalPanel.Entry? _active_quest; private bool _prologue_goal_recorded; private readonly List<Character> family=[]; private readonly List<Character> retainers=[];
     private string _player_world_node_id = "home_village"; private NpcWorldManager? _npc_world; private WorldNpcData? _qingxi_shopkeeper; private bool _cloud_state_initialized; private bool _world_travel_in_progress; private bool _world_open_in_progress; private bool _trade_hud_was_visible;
-    public override void _Ready()
+    public bool StartupComplete { get; private set; }
+    public Exception? StartupError { get; private set; }
+    public override async void _Ready()
     {
+        try
+        {
+        await JourneyCreationLoadingView.StageAsync(GetTree(), .78, "正在布置行旅界面…");
         AddToGroup("main_scene");
         AddToGroup("gameplay_scene");
         connect_world_npc_interaction_components();
@@ -33,6 +38,7 @@ public partial class MainScene : Node2D
         if (realm_panel is not null) realm_panel.PresentationStarted += () => cultivation_ui?.close_panel();
         story_dialogue=GetNodeOrNull<StoryDialoguePanel>("DialogueLayer/StoryDialoguePanel");
         npc_interactions=GetNodeOrNull<NpcInteractionPanel>("CanvasLayer/NpcInteractionPanel");
+        await JourneyCreationLoadingView.StageAsync(GetTree(), .81, "正在安放百川地貌…");
         node_map=GetNodeOrNull<NodeWorldMap>("MapLayer/NodeWorldMap");
         tile_world_map=GetNodeOrNull<Control>("MapLayer/TileWorldMapPresentation");
         if (tile_world_map is null && ResourceLoader.Load<PackedScene>("res://tscn/world/TileWorldMapPresentation.tscn") is { } tileMapScene)
@@ -49,6 +55,7 @@ public partial class MainScene : Node2D
         if (_npc_world is not null) _npc_world.Connect("world_npcs_changed", Callable.From(on_world_npcs_changed_for_interactions));
         _interactionRoster = GetTree().GetFirstNodeInGroup("cell_character_list") as CellCharacterList;
         if (_interactionRoster is not null) _interactionRoster.RosterClosed += on_interaction_roster_closed;
+        await JourneyCreationLoadingView.StageAsync(GetTree(), .85, "正在整理各地人物…");
         restore_npc_save_state();
         restore_map_save_state();
         estate=GetNodeOrNull<EstateOverview>("SceneLayer/QingxiLocation");
@@ -56,7 +63,9 @@ public partial class MainScene : Node2D
         journal = new JournalPanel { Name = "JournalPanel" };
         GetNode<CanvasLayer>("CanvasLayer").AddChild(journal);
         action_transition = new ActionTransitionPanel { Name = "ActionTransitionPanel" };
-        GetNode<CanvasLayer>("CanvasLayer").AddChild(action_transition);
+        var actionLoadingLayer = new CanvasLayer { Name = "ActionLoadingLayer", Layer = 240, ProcessMode = ProcessModeEnum.Always };
+        AddChild(actionLoadingLayer);
+        actionLoadingLayer.AddChild(action_transition);
         baigong = new BaigongPanel { Name = "BaigongPanel" };
         GetNode<CanvasLayer>("CanvasLayer").AddChild(baigong);
         location_interior = new WorldLocationInteriorPanel { Name = "WorldLocationInteriorPanel" };
@@ -73,9 +82,11 @@ public partial class MainScene : Node2D
         estate?.set_back_hill_trial_available(false);
         estate?.set_meditation_available(false);
         estate?.set_rest_available(false);
+        await JourneyCreationLoadingView.StageAsync(GetTree(), .89, "正在描摹你的形貌与天资…");
         spawn_or_restore_player();
         _npc_world?.set_player_data(player?.entity_data as HumanData);
         if (player is not null) player.CultivationInspirationChanged += on_player_cultivation_inspiration_changed;
+        await JourneyCreationLoadingView.StageAsync(GetTree(), .92, "正在落定入世之处…");
         if (_loaded_game_save is null)
             initialize_story_free_start();
         expire_player_world_statuses();
@@ -84,14 +95,28 @@ public partial class MainScene : Node2D
         configure_tile_world_map_bridge();
         storage?.bind_player(player);
         if(player is not null) { player.breakthrough_completed += on_player_breakthrough; player.MainGongfaChanged += (_, _) => refresh_qingxi_quest(); player.GongfaChapterCompleted += (_, _, _, _) => refresh_qingxi_quest(); player.GongfaChapterCompleted += on_yuxu_gongfa_chapter_completed; }
-        if(GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is { } time) { if(_loaded_game_save is null&&!_story_free_start)_qingxi_arrival_hour=time.get_total_game_hours(); time.time_changed += on_action_time_changed; time.time_changed += update_yuxu_monthly_allowance; time.time_changed += mark_save_dirty; time.time_changed += on_world_status_time_changed; }
+        if(GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is { } time) { if(_loaded_game_save is null&&!_story_free_start)_qingxi_arrival_hour=time.get_total_game_hours(); time.time_changed += on_action_time_changed; time.time_changed += update_yuxu_monthly_allowance; time.time_changed += mark_save_dirty; time.time_changed += on_world_status_time_changed; time.time_changed += on_dynamic_dungeon_time_changed; }
+        await JourneyCreationLoadingView.StageAsync(GetTree(), .95, "正在编排见闻与行囊…");
         refresh_qingxi_quest();
         set_prologue_skip_available(_loaded_game_save is null && !_story_free_start);
+        if (_loaded_game_save is null && _story_free_start && JourneyCreationLoadingView.IsLoading)
+        {
+            await JourneyCreationLoadingView.StageAsync(GetTree(), .97, "正在安排各地人物与行旅…");
+            enter_cloud_state_if_departed();
+        }
         if (_loaded_game_save is null && _story_free_start) CallDeferred(nameof(show_story_free_start));
         else if (_loaded_game_save is null) CallDeferred(nameof(show_opening));
         else CallDeferred(nameof(show_loaded_game));
+        }
+        catch (Exception ex)
+        {
+            StartupError = ex;
+            _skipExitSave = true;
+            GD.PushError($"旅程初始化失败：{ex}");
+        }
+        finally { StartupComplete = true; }
     }
-    public override void _Process(double delta){update_persistent_chrome();process_save_autosave(delta);process_relationship_month();process_npc_social_visit(delta);process_active_world_npc_interaction_refresh(delta);}
+    public override void _Process(double delta){if (!StartupComplete || StartupError is not null) return; update_persistent_chrome();process_save_autosave(delta);process_relationship_month();process_npc_social_visit(delta);process_active_world_npc_interaction_refresh(delta);}
     public override void _ExitTree()
     {
         if (!_skipExitSave) save_progress_now(false);
@@ -106,6 +131,7 @@ public partial class MainScene : Node2D
             time.time_changed -= update_yuxu_monthly_allowance;
             time.time_changed -= mark_save_dirty;
             time.time_changed -= on_world_status_time_changed;
+            time.time_changed -= on_dynamic_dungeon_time_changed;
             time.TimeAdvanceStarting -= capture_letter_closure;
         }
         _letterMailbox.Changed -= on_letters_changed;
@@ -131,7 +157,6 @@ public partial class MainScene : Node2D
         if (trade_panel?.Visible == true) { trade_panel.close(); return true; }
         if (story_dialogue?.Visible == true) { story_dialogue.close(); return true; }
         if (npc_interactions?.Visible == true) { npc_interactions.close(); return true; }
-        if (_interactionRoster?.try_collapse_for_navigation() == true) return true;
         if (_restPanel?.Visible == true) { _restPanel.Close(); return true; }
         if (cultivation_ui?.Visible == true) { cultivation_ui.close_panel(); return true; }
         if (condensation_panel?.TryClosePileBrowser() == true) return true;
@@ -616,7 +641,7 @@ public partial class MainScene : Node2D
         {
             var dawnHours=Math.Max(1,((time.get_total_game_hours()/24)+1)*24+6-time.get_total_game_hours());
             var restored = Mathf.Min(player.max_world_stamina-player.current_world_stamina,dawnHours*WorldStaminaRules.RestRecoveryPerGameHour);
-            open_rest_panel("李宅 · 偏房", _ => run_time_transition("休息至次日", $"夜色渐深。你将休息 {dawnHours / 24f:0.0} 日，恢复体力 {restored:0.#} 点，至次日清晨。", "晨光透过窗棂。你已休息至次日清晨。",
+            open_rest_panel("李宅 · 偏房", _ => run_time_transition("休息至次日", $"夜色渐深。你将休息 {GameTimeText.Duration(dawnHours)}，恢复体力 {restored:0.#} 点，至次日清晨。", "晨光透过窗棂。你已休息至次日清晨。",
                 () => { player.current_health=player.max_health; player.restore_world_stamina(dawnHours*WorldStaminaRules.RestRecoveryPerGameHour); advance_player_world_status_rest(dawnHours); time.add_hours(dawnHours); _rested_after_xuanjian=true; refresh_qingxi_quest(); },
                 () => show_message("醒来", "晨光透过窗棂。你已休息至次日清晨。")), dawnHours, "夜已深了，休息至次日清晨，明日再去问李守拙。"); return;
         }
@@ -624,7 +649,7 @@ public partial class MainScene : Node2D
         {
             var dawnHours=Math.Max(1,((time.get_total_game_hours()/24)+1)*24+6-time.get_total_game_hours());
             var restored = Mathf.Min(player.max_world_stamina-player.current_world_stamina,dawnHours*WorldStaminaRules.RestRecoveryPerGameHour);
-            open_rest_panel("李宅 · 偏房", _ => run_time_transition("休息至次日", $"你将在李宅歇息 {dawnHours / 24f:0.0} 日，恢复体力 {restored:0.#} 点，养足精神后赴约上山。", "李守拙已在宅门外等候。可以前往后山。",
+            open_rest_panel("李宅 · 偏房", _ => run_time_transition("休息至次日", $"你将在李宅歇息 {GameTimeText.Duration(dawnHours)}，恢复体力 {restored:0.#} 点，养足精神后赴约上山。", "李守拙已在宅门外等候。可以前往后山。",
                 () => { player.current_health=player.max_health; player.restore_world_stamina(dawnHours*WorldStaminaRules.RestRecoveryPerGameHour); advance_player_world_status_rest(dawnHours); time.add_hours(dawnHours); _rested_for_back_hill=true; estate?.set_back_hill_trial_available(true); refresh_qingxi_quest(); },
                 () => show_message("天明", "李守拙已在宅门外等候。可以前往后山。")), dawnHours, "李守拙约你明日一早上山。先休息至次日清晨。"); return;
         }
@@ -642,7 +667,7 @@ public partial class MainScene : Node2D
         {
             var end = time.get_total_game_hours() + count; var day = end / 24;
             var ending = $"{day / 360 + 1}年{day % 360 / 30 + 1}月{day % 30 + 1}日 {end % 24:00}时";
-            run_time_transition("休息", $"你将在{restPlace}休息 {count / 24f:0.0} 日，醒来时间：{ending}。",
+            run_time_transition("休息", $"你将在{restPlace}休息 {GameTimeText.Duration(count)}，醒来时间：{ending}。",
                 "休养过后，你的气血已复，行旅体力也得以恢复。",
                 () => { if (player is null) return; player.current_health = player.max_health; player.restore_world_stamina(count * WorldStaminaRules.RestRecoveryPerGameHour); advance_player_world_status_rest(count); time.add_hours(count); afterRest?.Invoke(); },
                 () => show_message("醒来", "休养过后，你的气血已复，行旅体力也得以恢复。"));
@@ -1031,7 +1056,7 @@ public partial class MainScene : Node2D
         node_map.set_target_node(destination_node_id);
         run_time_transition(
             "远行",
-            $"你沿{route_summary}前往{destination_node.node_name}，预计行进 {days} 日。",
+            $"你沿{route_summary}前往{destination_node.node_name}，预计行进 {GameTimeText.Duration(days * 24)}。",
             $"你抵达了{destination_node.node_name}。新的道路、人物与修炼机会正在百川区域展开。",
             () => GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.add_hours(days * 24),
             () =>

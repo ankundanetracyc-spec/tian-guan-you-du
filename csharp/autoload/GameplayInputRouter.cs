@@ -29,9 +29,21 @@ public partial class GameplayInputRouter : Node
 
     public override void _Input(InputEvent @event)
     {
+        if (SceneLoadingScreen.IsChangingScene || JourneyCreationLoadingView.IsLoading)
+        {
+            _rightPressActive = false;
+            GetViewport().SetInputAsHandled();
+            return;
+        }
         if (!is_gameplay_scene())
         {
             _rightPressActive = false;
+            return;
+        }
+        if (GetTree().GetFirstNodeInGroup("action_transition") is ActionTransitionPanel { IsPlaying: true })
+        {
+            _rightPressActive = false;
+            GetViewport().SetInputAsHandled();
             return;
         }
         if (GetNodeOrNull<BattleTransitionManager>("/root/BattleTransitionManager")?.is_flow_transition_active() == true)
@@ -245,8 +257,9 @@ public partial class GameplayInputRouter : Node
         else return_to_title(false);
     }
 
-    private void return_to_title(bool saveFirst)
+    private async void return_to_title(bool saveFirst)
     {
+        if (SceneLoadingScreen.IsChangingScene) return;
         if (GetTree().CurrentScene is MainScene main && !main.prepare_return_to_title_from_menu(saveFirst))
         {
             _subtitle!.Text = "保存失败；当前进度仍在本次修行中。";
@@ -265,10 +278,11 @@ public partial class GameplayInputRouter : Node
         }
         _pauseMenuOpen = false;
         _homeConfirmationOpen = false;
-        GetTree().Paused = false;
-        var error = GetTree().ChangeSceneToFile(StartMenuPath);
+        _root?.Hide();
+        var error = await SceneLoadingScreen.ChangeSceneAsync(GetTree(), StartMenuPath, "返回首页");
         if (error == Error.Ok)
         {
+            GetTree().Paused = false;
             GetNodeOrNull<BattleTransitionManager>("/root/BattleTransitionManager")?.abandon_battle_for_title();
             _root?.QueueFree();
             _layer?.QueueFree();
@@ -282,6 +296,7 @@ public partial class GameplayInputRouter : Node
         if (GetTree().CurrentScene is MainScene currentMain) currentMain.cancel_return_to_title_from_menu();
         _pauseMenuOpen = true;
         GetTree().Paused = true;
+        _root?.Show();
         _subtitle!.Text = $"暂时无法返回首页：{error}";
         build_pause_menu();
     }

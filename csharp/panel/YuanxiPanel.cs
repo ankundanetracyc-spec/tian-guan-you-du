@@ -101,7 +101,7 @@ public partial class YuanxiPanel : Control
         else if (!_qi.IsTransitioning) { _qi.ShowPath(1); _qi.ShowBreaths(count); }
         _shownCount = count;
         var remaining = _character.get_yuanxi_remaining_hours();
-        _status!.Text = $"归元息　{count}／九息\n\n" + (count == 9 ? "九息俱全，可准备铸玄基。\n铸玄基后的修行内容暂未开放。" : $"{(active ? "正在" : "准备")}养成第{count + 1}息 · {_character.get_yuanxi_phase_name()}\n本息尚需 {(double.IsFinite(remaining) ? $"{remaining / 16:0.0}个修炼日（{remaining:0.0}小时）" : "有效主修功法与灵根")}\n\n修炼不消耗体力，按实际修炼时长推进时间。");
+        _status!.Text = $"归元息　{count}／九息\n\n" + (count == 9 ? "九息俱全，可准备铸玄基。\n铸玄基后的修行内容暂未开放。" : $"{(active ? "正在" : "准备")}养成第{count + 1}息 · {_character.get_yuanxi_phase_name()}\n本息尚需 {(double.IsFinite(remaining) ? GameTimeText.Duration((int)Math.Ceiling(remaining)) : "有效主修功法与灵根")}\n\n修炼不消耗体力，按实际修炼时长推进时间。");
         _notice!.Text = _character.get_yuanxi_notice() + "\n\n每息依次经历周行、牵引、平衡。收起界面会暂停演出并保留闭关，回来可继续；进行其他耗时行动视为出关。";
         _one!.Disabled = _continuous!.Disabled = active || count == 9 || _character.get_cultivation_rate() <= 0;
         _target!.MinValue = Math.Min(9, count + 1); _target.Editable = !active && count < 9;

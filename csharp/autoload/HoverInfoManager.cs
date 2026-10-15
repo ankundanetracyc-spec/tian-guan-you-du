@@ -9,6 +9,7 @@ public partial class HoverInfoManager : CanvasLayer
     private const double HideGrace = 0.10;
     private const float ViewportMargin = 12f;
     private const float PreferredWidth = 460f;
+    private const int HoverScrollStep = 72;
     private const string BoundMeta = "shared_hover_info_bound";
     private static HoverInfoManager? _instance;
 
@@ -25,6 +26,7 @@ public partial class HoverInfoManager : CanvasLayer
     private Control? _activeAnchor;
     private HoverInfoContent? _visibleContent;
     private bool _pointerOverCard;
+    private Vector2 _pointerPosition;
     private int _layoutTicket;
 
     public readonly record struct HoverInfoContent(string Title, string Body, Texture2D? Icon = null, string Subtitle = "");
@@ -38,6 +40,7 @@ public partial class HoverInfoManager : CanvasLayer
 
     public override void _Ready()
     {
+        _pointerPosition = GetViewport().GetMousePosition();
         build_card();
         _showTimer = new Godot.Timer { OneShot = true, WaitTime = ShowDelay, ProcessMode = ProcessModeEnum.Always };
         _hideTimer = new Godot.Timer { OneShot = true, WaitTime = HideGrace, ProcessMode = ProcessModeEnum.Always };
@@ -68,6 +71,39 @@ public partial class HoverInfoManager : CanvasLayer
             set_tooltip(_activeAnchor, changed);
         }
         if (!_activeAnchor.IsVisibleInTree()) hide_all();
+
+        // The card is mouse-transparent so controls beneath it can receive hover. Track
+        // its rectangle instead of relying on MouseEntered/Exited from the overlay.
+        var overCard = pointer_over(_card);
+        var overAnchor = pointer_over(_activeAnchor);
+        if (overCard || overAnchor) _hideTimer?.Stop();
+        else if (_pointerOverCard) _hideTimer?.Start(HideGrace);
+        _pointerOverCard = overCard;
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        // GUI signals run after _Input. Use this event's viewport position immediately,
+        // rather than waiting for the platform's polled cursor position to catch up.
+        if (@event is InputEventMouse pointer) _pointerPosition = pointer.Position;
+        if (@event is not InputEventMouseButton mouse || !mouse.Pressed) return;
+        if (mouse.ButtonIndex == MouseButton.Middle) { hide_all(); return; }
+        if (_card?.Visible != true || _scroll is null || !pointer_over(_card, mouse.Position)) return;
+
+        var scrollDelta = mouse.ButtonIndex switch
+        {
+            MouseButton.WheelUp => -HoverScrollStep,
+            MouseButton.WheelDown => HoverScrollStep,
+            _ => 0,
+        };
+        if (scrollDelta == 0) return;
+
+        var scrollbar = _scroll.GetVScrollBar();
+        var maxScroll = Math.Max(scrollbar.MinValue, scrollbar.MaxValue - scrollbar.Page);
+        // A short, transparent hint must not swallow the underlying list's wheel.
+        if (maxScroll <= scrollbar.MinValue) return;
+        scrollbar.Value = Math.Clamp(scrollbar.Value + scrollDelta * (mouse.Factor > 0 ? mouse.Factor : 1), scrollbar.MinValue, maxScroll);
+        GetViewport().SetInputAsHandled();
     }
 
     public static void SetTooltip(Control? anchor, string? text)
@@ -107,7 +143,7 @@ public partial class HoverInfoManager : CanvasLayer
         {
             Name = "SharedHoverInfoCard",
             Visible = false,
-            MouseFilter = Control.MouseFilterEnum.Pass,
+            MouseFilter = Control.MouseFilterEnum.Ignore,
             ZIndex = 10,
         };
         _card.AddThemeStyleboxOverride("panel", new StyleBoxEmpty());
@@ -149,7 +185,7 @@ public partial class HoverInfoManager : CanvasLayer
             HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled,
             VerticalScrollMode = ScrollContainer.ScrollMode.Auto,
             SizeFlagsHorizontal = Control.SizeFlags.ExpandFill,
-            MouseFilter = Control.MouseFilterEnum.Stop,
+            MouseFilter = Control.MouseFilterEnum.Ignore,
         };
         column.AddChild(_scroll);
         _body = new RichTextLabel
@@ -168,8 +204,11 @@ public partial class HoverInfoManager : CanvasLayer
         _body.AddThemeConstantOverride("line_separation", 5);
         _scroll.AddChild(_body);
         AddChild(_card);
-        _card.MouseEntered += on_card_entered;
-        _card.MouseExited += on_card_exited;
+        // Every visual child must ignore GUI input too; setting only the outer card to
+        // Ignore still lets nested containers and scrollbars block the hovered item.
+        set_mouse_filter_recursive(_card, Control.MouseFilterEnum.Ignore);
+        if (_scroll.GetVScrollBar() is { } scrollbar)
+            scrollbar.MouseFilter = Control.MouseFilterEnum.Ignore;
     }
 
     private static Label make_label(int size, Color color)
@@ -234,7 +273,7 @@ public partial class HoverInfoManager : CanvasLayer
         }
         _entries[anchor] = content;
         if (_activeAnchor == anchor) display(anchor, content);
-        else if (anchor.IsVisibleInTree() && anchor.GetGlobalRect().HasPoint(GetViewport().GetMousePosition()))
+        else if (pointer_over(anchor))
         {
             _hideTimer?.Stop();
             if (immediate || _card?.Visible == true)
@@ -278,7 +317,7 @@ public partial class HoverInfoManager : CanvasLayer
             _pendingAnchor = null;
             _showTimer?.Stop();
         }
-        if (_activeAnchor == anchor && !_pointerOverCard) _hideTimer?.Start(HideGrace);
+        if (_activeAnchor == anchor && !pointer_over(_card)) _hideTimer?.Start(HideGrace);
     }
 
     private void on_anchor_tree_exiting(Control anchor)
@@ -298,6 +337,7 @@ public partial class HoverInfoManager : CanvasLayer
         var anchor = _pendingAnchor;
         _pendingAnchor = null;
         if (anchor is null || !GodotObject.IsInstanceValid(anchor) || !anchor.IsVisibleInTree()) return;
+        if (!pointer_over(anchor)) return;
         if (_entries.TryGetValue(anchor, out var content)) display(anchor, content);
     }
 
@@ -351,7 +391,7 @@ public partial class HoverInfoManager : CanvasLayer
     {
         if (_card is null || !_card.Visible || !GodotObject.IsInstanceValid(anchor)) return;
         var viewport = GetViewport().GetVisibleRect().Size;
-        var target = anchor.GetGlobalRect();
+        var target = _card.GetCanvasTransform().AffineInverse() * viewport_rect(anchor);
         var size = _card.Size;
         var right = target.End.X + 14f;
         var left = target.Position.X - size.X - 14f;
@@ -369,25 +409,9 @@ public partial class HoverInfoManager : CanvasLayer
             Mathf.Clamp(y, ViewportMargin, Mathf.Max(ViewportMargin, viewport.Y - size.Y - ViewportMargin)));
     }
 
-    private void on_card_entered()
-    {
-        _pointerOverCard = true;
-        _hideTimer?.Stop();
-    }
-
-    private void on_card_exited()
-    {
-        _pointerOverCard = false;
-        if (_activeAnchor is not null && GodotObject.IsInstanceValid(_activeAnchor) &&
-            !_activeAnchor.GetGlobalRect().HasPoint(GetViewport().GetMousePosition()))
-            _hideTimer?.Start(HideGrace);
-    }
-
     private void hide_if_pointer_left()
     {
-        if (_pointerOverCard) return;
-        if (_activeAnchor is not null && GodotObject.IsInstanceValid(_activeAnchor) &&
-            _activeAnchor.GetGlobalRect().HasPoint(GetViewport().GetMousePosition())) return;
+        if (pointer_over(_card) || pointer_over(_activeAnchor)) return;
         hide_all();
     }
 
@@ -407,6 +431,37 @@ public partial class HoverInfoManager : CanvasLayer
         _visibleContent = null;
         _pointerOverCard = false;
         _card?.Hide();
+    }
+
+    private bool pointer_over(Control? control, Vector2? viewportPosition = null)
+    {
+        if (control is null || !GodotObject.IsInstanceValid(control) || !control.IsVisibleInTree()) return false;
+        var point = viewportPosition ?? _pointerPosition;
+        for (Node? node = control; node is not null && node is not CanvasLayer && node is not Viewport; node = node.GetParent())
+        {
+            if (node is not Control region || (region != control && !region.ClipContents)) continue;
+            var transform = region.GetGlobalTransformWithCanvas();
+            if (Mathf.IsZeroApprox(transform.X.Cross(transform.Y)) ||
+                !new Rect2(Vector2.Zero, region.Size).HasPoint(transform.AffineInverse() * point)) return false;
+        }
+        return true;
+    }
+
+    private static Rect2 viewport_rect(Control control)
+    {
+        var transform = control.GetGlobalTransformWithCanvas();
+        var bounds = new Rect2(transform * Vector2.Zero, Vector2.Zero);
+        bounds = bounds.Expand(transform * new Vector2(control.Size.X, 0));
+        bounds = bounds.Expand(transform * new Vector2(0, control.Size.Y));
+        return bounds.Expand(transform * control.Size);
+    }
+
+    private static void set_mouse_filter_recursive(Control control, Control.MouseFilterEnum filter)
+    {
+        control.MouseFilter = filter;
+        foreach (var child in control.GetChildren())
+            if (child is Control childControl)
+                set_mouse_filter_recursive(childControl, filter);
     }
 
     private void on_viewport_resized()

@@ -5,15 +5,21 @@ using System.Linq;
 public partial class EastWoodsDungeonPanel
 {
     // Appearance only: movement times and graph adjacency still come from DungeonRules.
-    private static (int Index, string Name) terrain_kind(string id) => id switch
+    private (int Index, string Name) terrain_kind(string id) => !_dynamicMode ? id switch
     {
         "fern_lowland" or "forest_edge" => (1, "草地"),
         "creek_path" or "upper_ridge" or "moss_bridge" => (2, "岩地"),
         "shallow_gully" or "stream_canopy" => (3, "浅溪"),
         "leaf_creek" or "mid_split" => (4, "干溪"),
         "south_turn" or "lower_join" or "dry_pool" or "lower_approach" => (5, "湿地"),
-        _ => (EastWoodsDungeonRules.get_node(id)?.Terrain ?? 0, (EastWoodsDungeonRules.get_node(id)?.Terrain ?? 0) switch { 1 => "草地", 2 => "岩地", 3 => "浅溪", 5 => "湿地", 6 => "竹林", 7 => "阴岩地面", _ => "林地" }),
-    };
+        _ => terrain_from_definition(EastWoodsDungeonRules.get_node(id)),
+    } : terrain_from_definition(route_node(id));
+
+    private static (int Index, string Name) terrain_from_definition(EastWoodsDungeonRules.NodeDefinition? node)
+    {
+        var terrain = node?.Terrain ?? 0;
+        return (terrain, terrain switch { 1 => "草地", 2 => "岩地", 3 => "浅溪", 5 => "湿地", 6 => "竹林", 7 => "阴岩地面", _ => "林地" });
+    }
 
     private Texture2D load_terrain(string id)
     {
@@ -28,8 +34,9 @@ public partial class EastWoodsDungeonPanel
             7 => DungeonTerrainVisuals.Terrain.CaveFloor,
             _ => DungeonTerrainVisuals.Terrain.Grass,
         };
-        var seed = EastWoodsDungeonRules.LayoutSeed;
-        return DungeonTerrainVisuals.Get(terrain, seed == "legacy" ? EastWoodsDungeonRules.DungeonId : EastWoodsDungeonRules.DungeonId + "|" + seed, id);
+        var seed = route_layout_seed;
+        var dungeonId = _dynamicMode ? route_dungeon_id : seed == "legacy" ? EastWoodsDungeonRules.DungeonId : EastWoodsDungeonRules.DungeonId + "|" + seed;
+        return DungeonTerrainVisuals.Get(terrain, dungeonId + "|" + seed, id);
     }
 
     private Line2D? add_terrain_connection(EastWoodsDungeonRules.NodeDefinition from, EastWoodsDungeonRules.NodeDefinition to, bool isPath)
@@ -107,7 +114,7 @@ public partial class EastWoodsDungeonPanel
 
     private void show_hover()
     {
-        var node = EastWoodsDungeonRules.get_node(_hoveredNode);
+        var node = route_node(_hoveredNode);
         if (!Visible || node is null || !is_node_visible(node.Id) || !_nodeButtons.TryGetValue(node.Id, out var anchor)) return;
         var (_, terrainName) = terrain_kind(node.Id);
         var title = string.IsNullOrWhiteSpace(node.Title) ? terrainName : $"{node.Title} · {terrainName}";
@@ -115,9 +122,9 @@ public partial class EastWoodsDungeonPanel
         var availableAction = available_actions(node.Id).FirstOrDefault();
         if (availableAction is not null)
             description += "\n" + availableAction.Description;
-        else if (EastWoodsActions.Content(node.Id) is not null)
+        else if ((_dynamicMode ? node.ResourceNodeId.Length > 0 || node.Feature.Length > 0 || DynamicDungeonExpedition.AvailableActions(_dynamicInstanceState, node.Id, _actionProgress).Count > 0 : EastWoodsActions.Content(node.Id) is not null))
             description += "\n此处行动已完成或资源已采尽。";
-        if (_activeDutyId == "east_woods_patrol")
+        if (!_dynamicMode && _activeDutyId == "east_woods_patrol")
             description += _activeDutyReady ? "\n巡查复核完成，沿出口离开后回和光峰回报。" : $"\n巡查：{Math.Min(_activeDutyStage, YuxuSectPrototypeBalance.EastWoodsPatrolRequiredNodeMoves)}/{YuxuSectPrototypeBalance.EastWoodsPatrolRequiredNodeMoves} 格；静冠洼地复核后回宗回报。";
         if (node.Id != _current)
         {

@@ -15,7 +15,11 @@ public partial class MainScene
         if (_east_woods_dungeon is not null) return _east_woods_dungeon;
         _east_woods_dungeon = new EastWoodsDungeonPanel { Name = "EastWoodsDungeonPanel" };
         GetNode<CanvasLayer>("SceneLayer").AddChild(_east_woods_dungeon);
-        _east_woods_dungeon.Closed += return_from_east_woods_dungeon;
+        _east_woods_dungeon.Closed += () =>
+        {
+            if (_east_woods_dungeon?.is_dynamic_instance == true) return_from_dynamic_dungeon();
+            else return_from_east_woods_dungeon();
+        };
         _east_woods_dungeon.RouteNodeEntered += on_east_woods_route_node_entered;
         _east_woods_dungeon.RouteStepped += on_east_woods_route_stepped;
         _east_woods_dungeon.RouteTravelStarted += on_east_woods_route_travel_started;
@@ -37,6 +41,7 @@ public partial class MainScene
         _npc_world?.enter_east_woods_route();
         mark_save_dirty();
         var dungeon = get_or_create_east_woods_dungeon();
+        dungeon.use_east_woods_instance();
         var state = _east_woods_dungeon_state.Duplicate(true);
         if (!state.GetValueOrDefault("inside", false).AsBool()) state["current"] = "forest_edge";
         sync_east_woods_ecology_state(state, state.GetValueOrDefault("current", "forest_edge").AsString());
@@ -59,6 +64,11 @@ public partial class MainScene
 
     private void on_east_woods_route_stepped(string _fromNodeId, string toNodeId)
     {
+        if (_east_woods_dungeon?.is_dynamic_instance == true)
+        {
+            on_dynamic_dungeon_route_stepped(toNodeId);
+            return;
+        }
         if (_east_woods_dungeon is not null) _east_woods_dungeon_state = _east_woods_dungeon.get_route_state();
         var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
         var elapsedHours = EastWoodsDungeonRules.player_edge_hours(player?.dun_speed ?? EastWoodsDungeonRules.BaseDunSpeed);
@@ -93,6 +103,11 @@ public partial class MainScene
 
     private void on_east_woods_route_travel_started()
     {
+        if (_east_woods_dungeon?.is_dynamic_instance == true)
+        {
+            on_dynamic_dungeon_travel_started();
+            return;
+        }
         _eastWoodsTravelStartedHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
         _eastWoodsTravelCompletedSteps = 0;
         (GetTree().GetFirstNodeInGroup("cell_character_list") as CellCharacterList)?.suspend_world_npcs();
@@ -100,6 +115,11 @@ public partial class MainScene
 
     private void on_east_woods_route_travel_finished(string routeNodeId)
     {
+        if (_east_woods_dungeon?.is_dynamic_instance == true)
+        {
+            on_dynamic_dungeon_travel_finished(routeNodeId);
+            return;
+        }
         synchronize_east_woods_ecology();
         refresh_east_woods_route_roster(routeNodeId);
         if (_eastWoodsTravelCompletedSteps > 0)
@@ -262,6 +282,11 @@ public partial class MainScene
         apply_player_severe_injury(summary, context);
         award_successful_combat_inspiration(summary, context);
         if (handle_yuxu_case_transport_battle_return(attackers, defenders, summary, context)) return;
+        if (context.GetValueOrDefault("kind", "").AsString() == "dynamic_dungeon_beast")
+        {
+            restore_dynamic_dungeon_beast_result(summary, context);
+            return;
+        }
         if (context.GetValueOrDefault("kind", "").AsString() == "east_woods_beast")
         {
             restore_east_woods_beast_result(summary, context);

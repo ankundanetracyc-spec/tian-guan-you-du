@@ -63,14 +63,17 @@ public partial class MainScene
             story_dialogue.show_social_result(npc, response);
         }
         var cost = WorldStaminaRules.ConversationCost;
+        // proactive describes an NPC-initiated visit, not the player's approach.
+        var knowsName = NpcSocialRules.KnowsName(socialNpc);
+        var confirm = proactive ? testMode ? "听听来意" : "接受" : knowsName && !testMode ? "聊聊近况" : "上前搭话";
         var opening = testMode
             ? proactive ? "对方向你走来，停步问候。" : "你准备上前与对方搭话。"
             : NpcSocialRules.Opening(socialNpc, human, place, proactive);
         story_dialogue.show_social_choices(player, socialNpc, opening,
             new (string, Action)[] {
-                (testMode ? proactive ? "听听来意" : "上前搭话" : $"接受 · 体力 {cost:0.#}", () => Answer("introduce")),
-                (testMode && !proactive ? "作罢" : "婉拒", () => Answer("leave"))
-            }, () => Answer("leave"), proactive ? "来访" : "结识", proactive ? "右键婉拒" : "右键作罢", testMode);
+                (testMode ? confirm : $"{confirm} · 体力 {cost:0.#}", () => Answer("introduce")),
+                (proactive ? "婉拒" : "作罢", () => Answer("leave"))
+            }, () => Answer("leave"), proactive ? "来访" : knowsName ? "闲谈" : "结识", proactive ? "右键婉拒" : "右键作罢", testMode);
     }
     private void process_npc_social_visit(double delta)
     {

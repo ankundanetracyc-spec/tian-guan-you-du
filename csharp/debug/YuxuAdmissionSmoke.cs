@@ -33,6 +33,9 @@ public partial class YuxuAdmissionSmoke : Node
                 outcome = "村中暂时平安。"
             };
             var player = new HumanData { karma_value = 1000 };
+            var neutralLines = new HumanData().get_yuxu_gate_judgment_lines();
+            Check(neutralLines.Any(line => line.Contains("灵识")) && neutralLines.All(line => !line.Contains("神识")),
+                "金丹接引长老的中性迎真评述误用了神识");
             Check(player.record_player_causal_event(record), "首次经历应写入");
             Check(!player.record_player_causal_event(record), "同一稳定事件 ID 不应重复写入");
             var savedCopy = player.Duplicate(true) as HumanData;
@@ -91,7 +94,7 @@ public partial class YuxuAdmissionSmoke : Node
             foreach (var hasSect in new[] { true, false })
             {
                 var answerCount = 0; var completedCount = 0;
-                string[] facts = ["长老静静看了你片刻，收回神识，神色如常。", "长老察看灵机，颔首确认天灵根资质。"];
+                string[] facts = ["长老静静看了你片刻，收回灵识，神色如常。", "长老察看灵机，颔首确认天灵根资质。"];
                 dialogue.show_yuxu_admission_review(elder, facts, () =>
                     dialogue.show_yuxu_admission_question(elder, answer => {
                         Check(answer == hasSect, "宗门问答分支反转"); answerCount++;

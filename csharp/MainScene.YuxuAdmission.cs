@@ -68,10 +68,10 @@ public partial class MainScene
         var rank = get_yuxu_entry_rank(rootCount);
         var rootName = string.IsNullOrWhiteSpace(human.spirit_root_name) ? "灵根未明" : human.spirit_root_name.Trim();
         if (string.IsNullOrEmpty(rank))
-            return $"长老的神识在灵机间停了停，缓缓摇头：‘{rootName}，尚不合玉虚录籍之规。’";
+            return $"长老的灵识在灵机间停了停，缓缓摇头：‘{rootName}，尚不合玉虚录籍之规。’";
         if (rank == "真传弟子")
             return $"长老察看灵机，目光微凝，随即颔首：‘{rootName}。依宗门规制，入门即列真传。’";
-        return $"长老细察灵机后收回神识：‘{rootName}，依宗门规制，可列{rank}。’";
+        return $"长老细察灵机后收回灵识：‘{rootName}，依宗门规制，可列{rank}。’";
     }
 
     private void continue_yuxu_gate_after_review()
@@ -87,7 +87,7 @@ public partial class MainScene
         {
             story_dialogue?.show_yuxu_admission_result(
                 elder,
-                ["长老收回神识，语气仍然温和：‘小友资质尚未达到本宗录籍之规，今日便不办入门了。’"],
+                ["长老收回灵识，语气仍然温和：‘小友资质尚未达到本宗录籍之规，今日便不办入门了。’"],
                 finish_yuxu_gate_and_return_to_world, player: player);
             return;
         }

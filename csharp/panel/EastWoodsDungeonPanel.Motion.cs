@@ -22,8 +22,8 @@ public partial class EastWoodsDungeonPanel
         if (destination is null) return;
         var to = pawn_map_position(destination);
         var half = destination.Size * .5f;
-        var fromCentre = node_center(EastWoodsDungeonRules.get_node(previous)!) - half;
-        var toCentre = node_center(EastWoodsDungeonRules.get_node(_current)!) - half;
+        var fromCentre = node_center(route_node(previous)!) - half;
+        var toCentre = node_center(route_node(_current)!) - half;
         _travelPawn = create_pawn_token(true, null, destination.Size);
         face_pawn(_travelPawn, _playerFacingLeft);
         _travelPawn.Name = "TravelPawn";

@@ -1,0 +1,12 @@
+{
+  "canvas": [2048, 2048],
+  "format": "RGBA8",
+  "ground_origin": [1024, 1900],
+  "standard_idle_height": 1375,
+  "poses": {"male": ["male_idle.png", "male_chop.png"], "female": ["female_idle.png", "female_chop.png"]},
+  "preview_scene": "res://tscn/scene/SideInkChopPreview.tscn",
+  "in_game_entry": "res://tscn/scene/BattlePoseLibraryShowcase.tscn",
+  "controls": {"Space": "暂停/继续", "R": "重播循环", "M": "镜像人物与墨效", "B": "浅/深背景", "G": "画布/地面原点", "V": "自由/190/320像素", "F": "缺图回退", "Esc": "返回首页"},
+  "hand_orientation": "掌心朝镜头，拇指相对初稿换侧，四指并拢朝右下。",
+  "import": "Fixed authoring registration in export_manifest.json; runtime keeps one scale for all poses."
+}

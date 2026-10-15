@@ -139,9 +139,12 @@ public partial class BattleTransitionManager
                 if (_worldProgressSnapshot is null || string.IsNullOrEmpty(world_scene_path))
                 { saved_world=new PackedScene();if(saved_world.Pack(world)!=Error.Ok)saved_world=null; }
             }
+            _sceneTransition.Report(.3, "正在读取战场…");
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             var error=GetTree().ChangeSceneToFile("res://tscn/battle/BattleScene.tscn");
             if(error!=Error.Ok){_worldProgressSnapshot=null;GD.PushError("BattleTransitionMgr: 无法加载战斗场景");GetTree().Paused=previousPause;ShowBattleBriefing();return;}
             await ToSignal(GetTree(),SceneTree.SignalName.SceneChanged);
+            _sceneTransition.Report(.85, "正在准备招式与阵容…");
             // 等待技能栏连接及首轮规划的延迟初始化，遮罩保持不透明。
             await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);
             await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);
@@ -234,8 +237,9 @@ public partial class BattleTransitionManager
     }
     public void end_team_battle_escaped(GArray attackers,GArray defenders)=>PrepareSettlement(attackers,defenders,true);
     public void end_spectator_team_battle(GArray attackers,GArray defenders)=>PrepareSettlement(attackers,defenders,false);
-    private void ReturnAfterSettlement()
+    private async void ReturnAfterSettlement()
     {
+        if (_flowTransitionActive || SceneLoadingScreen.IsChangingScene) return;
         CloseFlow();_awaitingSettlement=false;has_results=!Training;
         if(Training)
         {
@@ -246,8 +250,15 @@ public partial class BattleTransitionManager
             }
         }
         has_battle_return_data=true;
-        var error=saved_world is not null?GetTree().ChangeSceneToPacked(saved_world):Error.Failed;
-        if(error!=Error.Ok&&!string.IsNullOrEmpty(world_scene_path))GetTree().ChangeSceneToFile(world_scene_path);
+        _flowTransitionActive = true;
+        var previousPause = GetTree().Paused;
+        GetTree().Paused = true;
+        try
+        {
+            var error = await SceneLoadingScreen.ChangeSceneAsync(GetTree(), world_scene_path, "返回修行", packedScene: saved_world);
+            if (error != Error.Ok) GD.PushError($"战后场景恢复失败：{error}");
+        }
+        finally { GetTree().Paused = previousPause; _flowTransitionActive = false; }
     }
     private static void RollLoot(IEnumerable<Variant> definitions,string source,GArray rewards)
     {

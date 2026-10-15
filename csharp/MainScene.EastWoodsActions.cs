@@ -5,6 +5,11 @@ public partial class MainScene
 {
     private void on_east_woods_action(string node, string id)
     {
+        if (_east_woods_dungeon?.is_dynamic_instance == true)
+        {
+            on_dynamic_dungeon_action(node, id);
+            return;
+        }
         var dungeon = _east_woods_dungeon;
         synchronize_east_woods_ecology();
         var action = dungeon?.find_action(node, id);

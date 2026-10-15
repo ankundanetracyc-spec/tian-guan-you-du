@@ -5,7 +5,7 @@ using Godot.Collections;
 [GlobalClass]
 public partial class PersistentGameSave : Resource
 {
-    public const int CurrentFormatVersion = 7;
+    public const int CurrentFormatVersion = 8;
 
     [Export] public int format_version = CurrentFormatVersion;
     [Export] public string slot_id = "";
@@ -39,6 +39,9 @@ public partial class PersistentGameSave : Resource
 
     /// <summary>Scene-specific milestone flags, journal entries, and quest presentation state.</summary>
     [Export] public Dictionary scene_progress = [];
+
+    /// <summary>Independent limited-time dungeon instances and their schedule cursor.</summary>
+    [Export] public Dictionary dynamic_dungeon_state = [];
 
     public bool migrate_to_current_format()
     {
@@ -84,6 +87,17 @@ public partial class PersistentGameSave : Resource
             {
                 migrate_relationships_v6_to_v7();
                 format_version = 7;
+                continue;
+            }
+            if (format_version == 7)
+            {
+                // Old saves start at their saved clock. The first world activation may attempt
+                // one new opportunity, but there is no historical schedule or recovery catch-up.
+                var currentHour = Math.Max(0, (Math.Max(1, year) - 1) * 360 * 24 +
+                    (Math.Clamp(month, 1, 12) - 1) * 30 * 24 +
+                    (Math.Clamp(day, 1, 30) - 1) * 24 + Math.Clamp(hour, 0, 23));
+                dynamic_dungeon_state = DynamicDungeonExpedition.CreateEmpty(currentHour);
+                format_version = 8;
                 continue;
             }
             return false;

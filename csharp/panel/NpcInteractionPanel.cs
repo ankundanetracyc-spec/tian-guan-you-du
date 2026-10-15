@@ -66,7 +66,11 @@ public partial class NpcInteractionPanel : Control
             ClipContents = true,
         };
         column.AddChild(_actionScroll);
-        _actions = new VBoxContainer();
+        _actions = new VBoxContainer
+        {
+            SizeFlagsHorizontal = SizeFlags.ExpandFill,
+            SizeFlagsVertical = SizeFlags.Fill,
+        };
         _actions.AddThemeConstantOverride("separation", 6);
         _actionScroll.AddChild(_actions);
         _leaveButton = new Button { Text = "关闭", CustomMinimumSize = new Vector2(0, 30) };
@@ -120,20 +124,43 @@ public partial class NpcInteractionPanel : Control
             _actions.RemoveChild(child);
             child.QueueFree();
         }
-        foreach (var option in options)
+        var availableActions = options.Where(option => option is not null).ToArray();
+        if (availableActions.Length == 0)
         {
-            if (option is null) continue;
+            var empty = new Label
+            {
+                Text = "当前没有可用交互",
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,
+                SizeFlagsHorizontal = SizeFlags.ExpandFill,
+                CustomMinimumSize = new Vector2(0, 38),
+            };
+            empty.AddThemeFontSizeOverride("font_size", 15);
+            empty.AddThemeColorOverride("font_color", new Color("b9b09a"));
+            _actions.AddChild(empty);
+            return;
+        }
+
+        foreach (var option in availableActions)
+        {
             var button = new Button
             {
                 Text = option.Label,
                 TooltipText = option.Label,
-                CustomMinimumSize = new Vector2(0, 34),
+                CustomMinimumSize = new Vector2(0, 38),
                 SizeFlagsHorizontal = SizeFlags.ExpandFill,
                 Disabled = !option.Enabled,
                 TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis,
             };
             button.AddThemeFontSizeOverride("font_size", 17);
-            button.AddThemeColorOverride("font_color", Colors.White);
+            button.AddThemeColorOverride("font_color", new Color("e8dfcb"));
+            button.AddThemeColorOverride("font_hover_color", new Color("fff0c6"));
+            button.AddThemeColorOverride("font_pressed_color", new Color("fff6dd"));
+            button.AddThemeColorOverride("font_disabled_color", new Color("8d887b"));
+            button.AddThemeStyleboxOverride("normal", make_action_button_style(new Color("25251f"), new Color("62563c")));
+            button.AddThemeStyleboxOverride("hover", make_action_button_style(new Color("39372c"), new Color("b79b5a")));
+            button.AddThemeStyleboxOverride("pressed", make_action_button_style(new Color("51452e"), new Color("d0b36c")));
+            button.AddThemeStyleboxOverride("disabled", make_action_button_style(new Color("1c1d19"), new Color("3d3a31")));
             button.Pressed += () =>
             {
                 close();
@@ -219,6 +246,23 @@ public partial class NpcInteractionPanel : Control
             CornerRadiusTopRight = 6,
             CornerRadiusBottomLeft = 6,
             CornerRadiusBottomRight = 6
+        };
+    }
+
+    private static StyleBoxFlat make_action_button_style(Color background, Color border)
+    {
+        return new StyleBoxFlat
+        {
+            BgColor = background,
+            BorderColor = border,
+            BorderWidthLeft = 1,
+            BorderWidthTop = 1,
+            BorderWidthRight = 1,
+            BorderWidthBottom = 1,
+            CornerRadiusTopLeft = 3,
+            CornerRadiusTopRight = 3,
+            CornerRadiusBottomLeft = 3,
+            CornerRadiusBottomRight = 3,
         };
     }
 }

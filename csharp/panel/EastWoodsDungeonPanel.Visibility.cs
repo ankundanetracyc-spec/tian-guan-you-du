@@ -16,9 +16,9 @@ public partial class EastWoodsDungeonPanel
     private void update_visibility()
     {
         _visibleNodes.Clear();
-        var center = EastWoodsDungeonRules.get_node(_current);
+        var center = route_node(_current);
         if (center is null) return;
-        foreach (var node in EastWoodsDungeonRules.get_nodes())
+        foreach (var node in route_nodes)
         {
             var delta = node.GridPosition - center.GridPosition;
             if (delta.X * delta.X + delta.Y * delta.Y > VisionRadius * VisionRadius) continue;
@@ -34,10 +34,10 @@ public partial class EastWoodsDungeonPanel
         var saved = state.GetValueOrDefault("discovered", new Godot.Collections.Array<string>());
         if (saved.VariantType == Variant.Type.Array)
             foreach (var value in saved.AsGodotArray())
-                if (EastWoodsDungeonRules.get_node(value.AsString()) is not null) _discoveredNodes.Add(value.AsString());
+                if (route_node(value.AsString()) is not null) _discoveredNodes.Add(value.AsString());
         // Migrate only knowledge the old save actually recorded, never reveal the whole map.
         foreach (var id in _visited) _discoveredNodes.Add(id);
-        foreach (var node in EastWoodsDungeonRules.get_nodes())
+        foreach (var node in route_nodes)
             if (progress(node.Id + ":explore") > 0) _discoveredNodes.Add(node.Id);
         update_visibility();
     }

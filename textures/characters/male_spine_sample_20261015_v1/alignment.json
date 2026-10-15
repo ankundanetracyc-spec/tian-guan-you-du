@@ -1,0 +1,1124 @@
+{
+  "canvas": [
+    1024,
+    1536
+  ],
+  "origin": [
+    512,
+    1450
+  ],
+  "anchors_px": {
+    "root": [
+      512,
+      1450
+    ],
+    "hips": [
+      515,
+      665
+    ],
+    "lower_abdomen": [
+      517,
+      615
+    ],
+    "waist": [
+      520,
+      565
+    ],
+    "spine_mid": [
+      522,
+      520
+    ],
+    "torso": [
+      525,
+      475
+    ],
+    "ribcage": [
+      526,
+      435
+    ],
+    "chest": [
+      527,
+      400
+    ],
+    "neck": [
+      530,
+      370
+    ],
+    "head": [
+      548,
+      275
+    ],
+    "scapula_near": [
+      505.6,
+      402
+    ],
+    "clavicle_near": [
+      468.15,
+      410
+    ],
+    "arm_near": [
+      420,
+      415
+    ],
+    "forearm_near": [
+      350,
+      565
+    ],
+    "hand_near": [
+      475,
+      580
+    ],
+    "palm_near": [
+      490,
+      580
+    ],
+    "upper_arm_deform_near": [
+      385,
+      490
+    ],
+    "forearm_deform_near": [
+      412.5,
+      572.5
+    ],
+    "thumb_near": [
+      495,
+      568
+    ],
+    "thumb_near_mid": [
+      507,
+      568
+    ],
+    "thumb_near_tip": [
+      519,
+      568
+    ],
+    "finger_near": [
+      495,
+      574
+    ],
+    "finger_near_mid": [
+      507,
+      574
+    ],
+    "finger_near_tip": [
+      519,
+      574
+    ],
+    "middle_near": [
+      495,
+      580
+    ],
+    "middle_near_mid": [
+      507,
+      580
+    ],
+    "middle_near_tip": [
+      519,
+      580
+    ],
+    "ring_near": [
+      495,
+      586
+    ],
+    "ring_near_mid": [
+      507,
+      586
+    ],
+    "ring_near_tip": [
+      519,
+      586
+    ],
+    "pinky_near": [
+      495,
+      592
+    ],
+    "pinky_near_mid": [
+      507,
+      592
+    ],
+    "pinky_near_tip": [
+      519,
+      592
+    ],
+    "thigh_near": [
+      470,
+      690
+    ],
+    "shin_near": [
+      400,
+      970
+    ],
+    "foot_near": [
+      340,
+      1230
+    ],
+    "toe_near": [
+      405,
+      1360
+    ],
+    "scapula_far": [
+      547.6,
+      402
+    ],
+    "clavicle_far": [
+      583.65,
+      410
+    ],
+    "arm_far": [
+      630,
+      425
+    ],
+    "forearm_far": [
+      710,
+      510
+    ],
+    "hand_far": [
+      770,
+      440
+    ],
+    "palm_far": [
+      785,
+      440
+    ],
+    "upper_arm_deform_far": [
+      670,
+      467.5
+    ],
+    "forearm_deform_far": [
+      740,
+      475
+    ],
+    "thumb_far": [
+      790,
+      428
+    ],
+    "thumb_far_mid": [
+      802,
+      428
+    ],
+    "thumb_far_tip": [
+      814,
+      428
+    ],
+    "finger_far": [
+      790,
+      434
+    ],
+    "finger_far_mid": [
+      802,
+      434
+    ],
+    "finger_far_tip": [
+      814,
+      434
+    ],
+    "middle_far": [
+      790,
+      440
+    ],
+    "middle_far_mid": [
+      802,
+      440
+    ],
+    "middle_far_tip": [
+      814,
+      440
+    ],
+    "ring_far": [
+      790,
+      446
+    ],
+    "ring_far_mid": [
+      802,
+      446
+    ],
+    "ring_far_tip": [
+      814,
+      446
+    ],
+    "pinky_far": [
+      790,
+      452
+    ],
+    "pinky_far_mid": [
+      802,
+      452
+    ],
+    "pinky_far_tip": [
+      814,
+      452
+    ],
+    "thigh_far": [
+      560,
+      690
+    ],
+    "shin_far": [
+      650,
+      955
+    ],
+    "foot_far": [
+      715,
+      1205
+    ],
+    "toe_far": [
+      780,
+      1335
+    ],
+    "hair_back": [
+      500,
+      250
+    ],
+    "hair_tip": [
+      395,
+      505
+    ],
+    "ribbon": [
+      495,
+      230
+    ],
+    "robe_near": [
+      460,
+      700
+    ],
+    "robe_far": [
+      565,
+      700
+    ],
+    "robe_center": [
+      515,
+      705
+    ]
+  },
+  "order": [
+    "hair_back",
+    "ribbon",
+    "upper_far",
+    "sleeve_far",
+    "hand_far_open",
+    "thigh_far",
+    "shin_far",
+    "boot_far",
+    "thigh_near",
+    "shin_near",
+    "boot_near",
+    "robe_rear",
+    "robe_far",
+    "robe_center",
+    "robe_near",
+    "torso",
+    "head",
+    "upper_near",
+    "sleeve_near",
+    "hand_near_open",
+    "belt",
+    "hair_front"
+  ],
+  "parts": [
+    {
+      "name": "hair_back",
+      "sheet": "correction",
+      "crop": [
+        630,
+        630,
+        590,
+        590
+      ],
+      "dest": [
+        305,
+        200,
+        345,
+        440
+      ],
+      "bone": "hair_back",
+      "weights": "hair",
+      "bounds": [
+        314,
+        205,
+        322,
+        430
+      ],
+      "alpha_pixels": 72407
+    },
+    {
+      "name": "ribbon",
+      "sheet": "body",
+      "crop": [
+        745,
+        1180,
+        310,
+        245
+      ],
+      "dest": [
+        300,
+        220,
+        220,
+        150
+      ],
+      "bone": "ribbon",
+      "weights": null,
+      "bounds": [
+        301,
+        226,
+        194,
+        134
+      ],
+      "alpha_pixels": 8668
+    },
+    {
+      "name": "upper_far",
+      "sheet": "correction",
+      "crop": [
+        195,
+        690,
+        260,
+        495
+      ],
+      "from": [
+        630,
+        425
+      ],
+      "to": [
+        710,
+        510
+      ],
+      "pivots": [
+        [
+          0.5,
+          0.12
+        ],
+        [
+          0.5,
+          0.82
+        ]
+      ],
+      "bone": "arm_far",
+      "thickness": 1,
+      "bounds": [
+        606,
+        407,
+        134,
+        130
+      ],
+      "alpha_pixels": 9406
+    },
+    {
+      "name": "sleeve_far",
+      "sheet": "limb",
+      "crop": [
+        466,
+        375,
+        250,
+        355
+      ],
+      "from": [
+        710,
+        510
+      ],
+      "to": [
+        770,
+        440
+      ],
+      "pivots": [
+        [
+          0.38,
+          0.1
+        ],
+        [
+          0.66,
+          0.68
+        ]
+      ],
+      "bone": "forearm_far",
+      "thickness": 1,
+      "bounds": [
+        701,
+        402,
+        124,
+        134
+      ],
+      "alpha_pixels": 8487
+    },
+    {
+      "name": "hand_far_open",
+      "sheet": "limb",
+      "crop": [
+        837,
+        1080,
+        175,
+        332
+      ],
+      "from": [
+        770,
+        440
+      ],
+      "to": [
+        800,
+        360
+      ],
+      "pivots": [
+        [
+          0.43,
+          0.15
+        ],
+        [
+          0.53,
+          0.85
+        ]
+      ],
+      "bone": "hand_far",
+      "thickness": 1,
+      "bounds": [
+        749,
+        344,
+        68,
+        115
+      ],
+      "alpha_pixels": 3753
+    },
+    {
+      "name": "thigh_far",
+      "sheet": "body",
+      "crop": [
+        510,
+        1115,
+        205,
+        330
+      ],
+      "from": [
+        560,
+        690
+      ],
+      "to": [
+        650,
+        955
+      ],
+      "pivots": [
+        [
+          0.5,
+          0.08
+        ],
+        [
+          0.5,
+          0.9
+        ]
+      ],
+      "bone": "thigh_far",
+      "thickness": 0.58,
+      "bounds": [
+        496,
+        677,
+        215,
+        310
+      ],
+      "alpha_pixels": 36228
+    },
+    {
+      "name": "shin_far",
+      "sheet": "limb",
+      "crop": [
+        486,
+        730,
+        215,
+        353
+      ],
+      "from": [
+        650,
+        955
+      ],
+      "to": [
+        715,
+        1205
+      ],
+      "pivots": [
+        [
+          0.5,
+          0.08
+        ],
+        [
+          0.5,
+          0.9
+        ]
+      ],
+      "bone": "shin_far",
+      "thickness": 0.58,
+      "bounds": [
+        590,
+        925,
+        179,
+        315
+      ],
+      "alpha_pixels": 33848
+    },
+    {
+      "name": "boot_far",
+      "sheet": "limb",
+      "crop": [
+        517,
+        1115,
+        225,
+        250
+      ],
+      "dest": [
+        668,
+        1180,
+        185,
+        205
+      ],
+      "bone": "foot_far",
+      "weights": null,
+      "bounds": [
+        672,
+        1184,
+        170,
+        189
+      ],
+      "alpha_pixels": 17114
+    },
+    {
+      "name": "thigh_near",
+      "sheet": "body",
+      "crop": [
+        100,
+        1110,
+        240,
+        335
+      ],
+      "from": [
+        470,
+        690
+      ],
+      "to": [
+        400,
+        970
+      ],
+      "pivots": [
+        [
+          0.5,
+          0.08
+        ],
+        [
+          0.5,
+          0.9
+        ]
+      ],
+      "bone": "thigh_near",
+      "thickness": 0.58,
+      "bounds": [
+        324,
+        648,
+        216,
+        357
+      ],
+      "alpha_pixels": 46317
+    },
+    {
+      "name": "shin_near",
+      "sheet": "limb",
+      "crop": [
+        115,
+        730,
+        245,
+        351
+      ],
+      "from": [
+        400,
+        970
+      ],
+      "to": [
+        340,
+        1230
+      ],
+      "pivots": [
+        [
+          0.5,
+          0.08
+        ],
+        [
+          0.5,
+          0.9
+        ]
+      ],
+      "bone": "shin_near",
+      "thickness": 0.58,
+      "bounds": [
+        274,
+        934,
+        195,
+        328
+      ],
+      "alpha_pixels": 41277
+    },
+    {
+      "name": "boot_near",
+      "sheet": "limb",
+      "crop": [
+        153,
+        1085,
+        280,
+        305
+      ],
+      "dest": [
+        280,
+        1195,
+        215,
+        235
+      ],
+      "bone": "foot_near",
+      "weights": null,
+      "bounds": [
+        289,
+        1195,
+        198,
+        224
+      ],
+      "alpha_pixels": 21922
+    },
+    {
+      "name": "robe_rear",
+      "sheet": "body",
+      "crop": [
+        710,
+        777,
+        375,
+        334
+      ],
+      "dest": [
+        333,
+        670,
+        410,
+        580
+      ],
+      "bone": "robe_center",
+      "weights": "skirt",
+      "bounds": [
+        334,
+        682,
+        402,
+        568
+      ],
+      "alpha_pixels": 144707
+    },
+    {
+      "name": "robe_far",
+      "sheet": "body",
+      "crop": [
+        435,
+        690,
+        280,
+        420
+      ],
+      "dest": [
+        505,
+        640,
+        305,
+        610
+      ],
+      "bone": "robe_far",
+      "weights": "skirt",
+      "bounds": [
+        517,
+        647,
+        293,
+        603
+      ],
+      "alpha_pixels": 93238
+    },
+    {
+      "name": "robe_center",
+      "sheet": "body",
+      "crop": [
+        704,
+        379,
+        382,
+        388
+      ],
+      "dest": [
+        330,
+        632,
+        400,
+        620
+      ],
+      "bone": "robe_center",
+      "weights": "skirt",
+      "bounds": [
+        330,
+        634,
+        387,
+        616
+      ],
+      "alpha_pixels": 142818
+    },
+    {
+      "name": "robe_near",
+      "sheet": "body",
+      "crop": [
+        5,
+        690,
+        395,
+        420
+      ],
+      "dest": [
+        210,
+        635,
+        375,
+        645
+      ],
+      "bone": "robe_near",
+      "weights": "skirt",
+      "bounds": [
+        219,
+        643,
+        359,
+        637
+      ],
+      "alpha_pixels": 130364
+    },
+    {
+      "name": "torso",
+      "sheet": "correction",
+      "crop": [
+        50,
+        55,
+        530,
+        535
+      ],
+      "dest": [
+        370,
+        350,
+        300,
+        350
+      ],
+      "bone": "torso",
+      "weights": "torso",
+      "bounds": [
+        380,
+        357,
+        281,
+        343
+      ],
+      "alpha_pixels": 67558
+    },
+    {
+      "name": "head",
+      "sheet": "body",
+      "crop": [
+        30,
+        0,
+        348,
+        366
+      ],
+      "dest": [
+        451,
+        148,
+        223,
+        240
+      ],
+      "bone": "head",
+      "weights": null,
+      "bounds": [
+        465,
+        157,
+        194,
+        231
+      ],
+      "alpha_pixels": 21602
+    },
+    {
+      "name": "upper_near",
+      "sheet": "correction",
+      "crop": [
+        810,
+        65,
+        310,
+        535
+      ],
+      "from": [
+        420,
+        415
+      ],
+      "to": [
+        350,
+        565
+      ],
+      "pivots": [
+        [
+          0.56,
+          0.12
+        ],
+        [
+          0.43,
+          0.82
+        ]
+      ],
+      "bone": "arm_near",
+      "thickness": 1,
+      "bounds": [
+        305,
+        390,
+        149,
+        218
+      ],
+      "alpha_pixels": 18542
+    },
+    {
+      "name": "sleeve_near",
+      "sheet": "limb",
+      "crop": [
+        450,
+        0,
+        282,
+        400
+      ],
+      "from": [
+        350,
+        565
+      ],
+      "to": [
+        475,
+        580
+      ],
+      "pivots": [
+        [
+          0.38,
+          0.1
+        ],
+        [
+          0.66,
+          0.68
+        ]
+      ],
+      "bone": "forearm_near",
+      "thickness": 1,
+      "bounds": [
+        325,
+        545,
+        220,
+        99
+      ],
+      "alpha_pixels": 15713
+    },
+    {
+      "name": "hand_near_open",
+      "sheet": "limb",
+      "crop": [
+        825,
+        0,
+        157,
+        375
+      ],
+      "from": [
+        475,
+        580
+      ],
+      "to": [
+        550,
+        563
+      ],
+      "pivots": [
+        [
+          0.45,
+          0.13
+        ],
+        [
+          0.5,
+          0.86
+        ]
+      ],
+      "bone": "hand_near",
+      "thickness": 1,
+      "bounds": [
+        463,
+        552,
+        101,
+        45
+      ],
+      "alpha_pixels": 2274
+    },
+    {
+      "name": "belt",
+      "sheet": "body",
+      "crop": [
+        425,
+        450,
+        270,
+        315
+      ],
+      "dest": [
+        370,
+        620,
+        350,
+        235
+      ],
+      "bone": "hips",
+      "weights": null,
+      "bounds": [
+        370,
+        624,
+        343,
+        231
+      ],
+      "alpha_pixels": 40780
+    },
+    {
+      "name": "hair_front",
+      "sheet": "body",
+      "crop": [
+        780,
+        15,
+        287,
+        395
+      ],
+      "dest": [
+        460,
+        184,
+        210,
+        292
+      ],
+      "bone": "head",
+      "weights": null,
+      "bounds": [
+        464,
+        196,
+        193,
+        271
+      ],
+      "alpha_pixels": 14617
+    },
+    {
+      "name": "hand_near_sword",
+      "sheet": "limb",
+      "crop": [
+        825,
+        400,
+        160,
+        330
+      ],
+      "from": [
+        475,
+        580
+      ],
+      "to": [
+        550,
+        563
+      ],
+      "pivots": [
+        [
+          0.45,
+          0.13
+        ],
+        [
+          0.5,
+          0.86
+        ]
+      ],
+      "bone": "hand_near",
+      "thickness": 1,
+      "bounds": [
+        461,
+        551,
+        103,
+        43
+      ],
+      "alpha_pixels": 2413
+    },
+    {
+      "name": "hand_near_fist",
+      "sheet": "limb",
+      "crop": [
+        835,
+        765,
+        165,
+        265
+      ],
+      "from": [
+        475,
+        580
+      ],
+      "to": [
+        525,
+        568
+      ],
+      "pivots": [
+        [
+          0.45,
+          0.13
+        ],
+        [
+          0.5,
+          0.85
+        ]
+      ],
+      "bone": "hand_near",
+      "thickness": 1,
+      "bounds": [
+        465,
+        553,
+        69,
+        41
+      ],
+      "alpha_pixels": 1758
+    },
+    {
+      "name": "hand_far_fist",
+      "sheet": "limb",
+      "crop": [
+        835,
+        765,
+        165,
+        265
+      ],
+      "from": [
+        770,
+        440
+      ],
+      "to": [
+        790,
+        390
+      ],
+      "pivots": [
+        [
+          0.45,
+          0.13
+        ],
+        [
+          0.5,
+          0.85
+        ]
+      ],
+      "bone": "hand_far",
+      "thickness": 1,
+      "bounds": [
+        759,
+        379,
+        50,
+        74
+      ],
+      "alpha_pixels": 1962
+    },
+    {
+      "name": "kneel",
+      "sheet": "kneel",
+      "crop": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "dest": [
+        215,
+        490,
+        680,
+        1020
+      ],
+      "bone": "root",
+      "weights": null,
+      "bounds": [
+        215,
+        612,
+        680,
+        799
+      ],
+      "alpha_pixels": 290536
+    }
+  ]
+}

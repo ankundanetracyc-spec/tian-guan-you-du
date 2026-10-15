@@ -6,6 +6,7 @@ signal player_cell_changed(cell: Vector2i)
 signal player_travel_started
 signal player_travel_finished(completed_steps: int)
 signal node_enter_requested(node_id: String)
+signal dynamic_dungeon_enter_requested(instance_id: String)
 signal world_state_changed
 
 const GRID_COLUMNS := 200
@@ -23,19 +24,20 @@ const ROUTE_FOOTPRINT_LAYER_SCRIPT := preload("res://gdscripts/world/WorldMapFoo
 const PLACEHOLDER_MARKER_TEXTURE := preload("res://textures/ui/world/world_marker_circle_ink.svg")
 const PRIMARY_MARKER_RING_TEXTURE := preload("res://textures/ui/world/world_marker_ring_ink.svg")
 const MEMORY_MARKER_TEXTURE := preload("res://textures/ui/world/world_marker_empty_ink.svg")
+const KNOWN_ILLUSTRATION_FOG_SHADER := preload("res://resources/shaders/world_known_illustration_fog.gdshader")
 const PLAYER_MARKER_DISPLAY_HEIGHT := TILE_SIZE / 2.0
 const DESTINATION_MARKER_DISPLAY_HEIGHT := 100.0
 const DESTINATION_MARKER_POLE_X_RATIO := 0.5
 const DESTINATION_MARKER_MAX_CELL_RATIO := 0.42
 const WORLD_OVERLAY_Z := 10
-# Relative to WorldMapOverlay: terrain/decorations stay below fog; travel
-# markers stay above fog. Screen controls use z=130 in the same canvas.
+# Scenery, buildings and the player share a ground-contact Y-sort below fog.
+# Strategic labels and travel markers stay in the separate overlay above fog.
+const WORLD_DEPTH_Z := 6
 const FOG_OVERLAY_Z := 0
 const ANCHOR_MARKER_Z := 3
 const POPULATION_BADGE_Z := 4
 const ROUTE_OVERLAY_Z := 5
 const SELECTION_MARKER_Z := 6
-const PLAYER_MARKER_Z := 7
 const MIN_ZOOM := 0.02
 const MAX_ZOOM := 2.5
 const ZOOM_STEP := 1.2
@@ -79,6 +81,9 @@ var _pan_button := MOUSE_BUTTON_NONE
 var _pan_press_position := Vector2.ZERO
 var _last_pan_position := Vector2.ZERO
 var _world_overlay: Node2D
+var _world_depth: Node2D
+var _known_illustration_fog_material: ShaderMaterial
+var _texture_used_bounds: Dictionary = {}
 var _selected_cell_marker: Sprite2D
 var _destination_marker_display_size := Vector2.ZERO
 var _route_footprints: Node2D
@@ -106,6 +111,8 @@ var _anchor_markers: Array[Node2D] = []
 var _population_counts: Dictionary = {}
 var _grid_population_badges: Dictionary = {}
 var _world_markers_prepared := false
+var _dynamic_dungeon_entries: Array[Dictionary] = []
+var _dynamic_entry_markers: Dictionary = {}
 
 func _ready() -> void:
 	add_to_group("tile_world_map_presentation")
@@ -143,6 +150,7 @@ func _ready() -> void:
 	_load_world_anchors()
 	_create_anchor_markers()
 	_collect_slow_terrain_cells()
+	_prepare_world_depth()
 	_create_player_marker()
 	_build_pathfinder()
 	_reveal_around_player()
@@ -198,29 +206,13 @@ func _position_destination_info() -> void:
 	hint_position.y = maxf(12.0, hint_position.y)
 	_cell_info_panel.position = hint_position
 
-func _input(event: InputEvent) -> void:
-	if not visible or not is_node_ready() or not event is InputEventMouseButton:
-		return
-	var mouse_event := event as InputEventMouseButton
-	var local_event_position: Vector2 = get_global_transform_with_canvas().affine_inverse() * mouse_event.position
-	if not mouse_event.pressed or not Rect2(Vector2.ZERO, size).has_point(local_event_position):
-		return
-	# _input precedes GUI scrolling: never steal the visible roster's wheel.
-	for roster in get_tree().get_nodes_in_group("cell_character_list"):
-		if roster.has_method("contains_roster_point") and roster.call("contains_roster_point", mouse_event.position):
-			return
-	match mouse_event.button_index:
-		MOUSE_BUTTON_WHEEL_UP:
-			_zoom_about_view_center(_user_zoom * ZOOM_STEP)
-		MOUSE_BUTTON_WHEEL_DOWN:
-			_zoom_about_view_center(_user_zoom / ZOOM_STEP)
-		_:
-			return
-	get_viewport().set_input_as_handled()
-
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		# GUI dispatch lets the topmost panel/list consume its wheel before the map.
+		if event.pressed and event.button_index in [MOUSE_BUTTON_WHEEL_UP, MOUSE_BUTTON_WHEEL_DOWN]:
+			_zoom_about_view_center(_user_zoom * ZOOM_STEP if event.button_index == MOUSE_BUTTON_WHEEL_UP else _user_zoom / ZOOM_STEP)
+			accept_event()
+		elif event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			if _moving:
 				accept_event()
 				return
@@ -457,6 +449,7 @@ func _layout_map() -> void:
 	_update_screen_sized_markers()
 	_update_route_points()
 	_update_enter_node_button()
+	_update_known_illustration_fog_transform()
 
 func _clamped_canvas_position(position_value: Vector2, focus_position: Vector2) -> Vector2:
 	var result := position_value
@@ -485,7 +478,7 @@ func _view_center_local() -> Vector2:
 func _update_player_marker_world_position() -> void:
 	if _player_marker == null or not is_instance_valid(_player_marker):
 		return
-	_player_marker.position = _player_marker_map_position
+	_player_marker.position = _world_depth.to_local(_map_canvas.to_global(_player_marker_map_position))
 
 func _set_player_marker_map_position(map_position: Vector2) -> void:
 	_player_marker_map_position = map_position
@@ -647,6 +640,60 @@ func _create_world_overlay() -> void:
 	_world_overlay.z_index = WORLD_OVERLAY_Z
 	_map_canvas.add_child(_world_overlay)
 
+func _prepare_world_depth() -> void:
+	_world_depth = _map_root.get_node_or_null("NatureDecorations") as Node2D
+	if _world_depth == null:
+		_world_depth = Node2D.new()
+		_world_depth.name = "NatureDecorations"
+		_map_root.add_child(_world_depth)
+	_prepare_depth_branch(_world_depth)
+	_world_depth.z_index = WORLD_DEPTH_Z
+	_known_illustration_fog_material = ShaderMaterial.new()
+	_known_illustration_fog_material.shader = KNOWN_ILLUSTRATION_FOG_SHADER
+	_known_illustration_fog_material.set_shader_parameter("world_fog", _fog_texture)
+	_known_illustration_fog_material.set_shader_parameter("map_size", Vector2(GRID_COLUMNS, GRID_ROWS) * TILE_SIZE)
+	_known_illustration_fog_material.set_shader_parameter("fog_origin", _fog_sprite.position)
+	_update_known_illustration_fog_transform()
+
+func _prepare_depth_branch(branch: Node2D) -> void:
+	branch.z_as_relative = true
+	branch.z_index = 0
+	if branch is Sprite2D:
+		var sprite := branch as Sprite2D
+		# Flat water details stay on the ground. Solid scenery uses its visible base,
+		# not the transparent image centre, without moving a single rendered pixel.
+		if str(sprite.get_meta("asset_family", "")) in ["stream", "lotus", "pond"]:
+			sprite.z_index = 2 - WORLD_DEPTH_Z
+		else:
+			sprite.set_meta("world_map_authored_position", _map_canvas.to_local(sprite.to_global(Vector2.ZERO)))
+			var base_offset := Vector2(0.0, _texture_base_y(sprite.texture, sprite.centered) + sprite.offset.y)
+			sprite.position = sprite.transform * base_offset
+			sprite.offset -= base_offset
+	else:
+		branch.y_sort_enabled = true
+	for child in branch.get_children():
+		if child is Node2D:
+			_prepare_depth_branch(child)
+
+func _texture_base_y(texture: Texture2D, centered: bool = true) -> float:
+	if texture == null:
+		return 0.0
+	var key := texture.get_instance_id()
+	if not _texture_used_bounds.has(key):
+		var image := texture.get_image()
+		if image != null and image.is_compressed():
+			image.decompress()
+		var bounds := image.get_used_rect() if image != null else Rect2i(Vector2i.ZERO, Vector2i(texture.get_size()))
+		_texture_used_bounds[key] = bounds
+	var used: Rect2i = _texture_used_bounds[key]
+	return float(used.end.y) - (float(texture.get_height()) * 0.5 if centered else 0.0)
+
+func _update_known_illustration_fog_transform() -> void:
+	if _known_illustration_fog_material == null:
+		return
+	_known_illustration_fog_material.set_shader_parameter("map_origin", _map_canvas.global_position)
+	_known_illustration_fog_material.set_shader_parameter("map_scale", _map_canvas.global_scale)
+
 func _create_fog_layer() -> void:
 	_fog_sprite = Sprite2D.new()
 	_fog_sprite.name = "ExplorationFog"
@@ -699,9 +746,9 @@ func _create_player_marker() -> void:
 	_player_marker.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	_player_marker.texture = ImageTexture.create_from_image(marker_image)
 	_player_marker.offset = Vector2(0.0, -float(marker_height) * 0.5)
-	_player_marker.z_index = PLAYER_MARKER_Z
+	_player_marker.z_index = 0
 	_player_marker_map_position = _terrain.position + _terrain.map_to_local(_player_cell)
-	_world_overlay.add_child(_player_marker)
+	_world_depth.add_child(_player_marker)
 	_update_player_marker_world_position()
 
 func _reveal_around_player() -> void:
@@ -727,9 +774,12 @@ func _reveal_around_player() -> void:
 			if _pathfinder != null:
 				_pathfinder.set_point_solid(cell, not is_cell_traversable(cell))
 	_fog_texture.update(_fog_image)
+	if _known_illustration_fog_material != null:
+		_known_illustration_fog_material.set_shader_parameter("world_fog", _fog_texture)
 	if _fog_sprite != null:
 		_fog_sprite.texture = _fog_texture
 	_refresh_anchor_visibility()
+	_refresh_dynamic_entry_visibility()
 
 func _find_shortest_path(from_cell: Vector2i, to_cell: Vector2i) -> Array[Vector2i]:
 	if not _is_cell_in_bounds(from_cell) or not _is_cell_in_bounds(to_cell) or not _is_cell_explored(to_cell):
@@ -785,7 +835,8 @@ func _collect_slow_terrain_cells() -> void:
 			if not mountain.has_meta("footprint_dimensions"):
 				continue
 			var footprint: Vector2i = mountain.get_meta("footprint_dimensions")
-			var center := _terrain.local_to_map(_terrain.to_local(mountain.to_global(Vector2.ZERO)))
+			var authored_position: Vector2 = mountain.get_meta("world_map_authored_position", _map_canvas.to_local(mountain.to_global(Vector2.ZERO)))
+			var center := _terrain.local_to_map(_terrain.to_local(_map_canvas.to_global(authored_position)))
 			var start := center - Vector2i(floori(float(footprint.x) * 0.5), floori(float(footprint.y) * 0.5))
 			for y in range(maxi(1, footprint.y)):
 				for x in range(maxi(1, footprint.x)):
@@ -908,6 +959,72 @@ func _update_screen_sized_markers() -> void:
 				if illustration != null:
 					label.position.y = float(marker.get_meta("world_marker_label_half_height", 0.0)) * _user_zoom + 8.0
 			_position_population_badge(marker)
+	for marker in _dynamic_entry_markers.values():
+		if is_instance_valid(marker):
+			marker.scale = Vector2.ONE / maxf(_user_zoom, 0.01)
+
+func set_dynamic_dungeon_entries(entries: Array) -> void:
+	_dynamic_dungeon_entries.clear()
+	for value in entries:
+		if value is Dictionary:
+			_dynamic_dungeon_entries.append((value as Dictionary).duplicate(true))
+	_rebuild_dynamic_entry_markers()
+
+func _rebuild_dynamic_entry_markers() -> void:
+	for marker in _dynamic_entry_markers.values():
+		if is_instance_valid(marker):
+			marker.queue_free()
+	_dynamic_entry_markers.clear()
+	if _world_overlay == null or _terrain == null:
+		return
+	for entry in _dynamic_dungeon_entries:
+		var instance_id := str(entry.get("instance_id", ""))
+		var cell: Vector2i = entry.get("cell", Vector2i(-1, -1))
+		if instance_id.is_empty() or not _is_cell_in_bounds(cell):
+			continue
+		var root := Node2D.new()
+		root.name = "DynamicDungeon_" + instance_id
+		root.position = _terrain.position + _terrain.map_to_local(cell)
+		root.z_index = ANCHOR_MARKER_Z
+		var icon := Sprite2D.new()
+		icon.name = "Marker"
+		icon.texture = PLACEHOLDER_MARKER_TEXTURE
+		icon.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+		icon.modulate = Color("c99e50")
+		icon.scale = Vector2.ONE * 0.68
+		root.add_child(icon)
+		var label := Label.new()
+		label.name = "Name"
+		label.text = str(entry.get("name", "雾隐幽谷"))
+		label.position = Vector2(-100, 44)
+		label.size = Vector2(200, 34)
+		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		label.add_theme_font_override("font", UI_FONT)
+		label.add_theme_font_size_override("font_size", 20)
+		label.add_theme_color_override("font_color", Color("f0dba9"))
+		label.add_theme_color_override("font_outline_color", Color("302b20"))
+		label.add_theme_constant_override("outline_size", 5)
+		label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		root.add_child(label)
+		_world_overlay.add_child(root)
+		_dynamic_entry_markers[instance_id] = root
+	_refresh_dynamic_entry_visibility()
+	_update_screen_sized_markers()
+	_update_enter_node_button()
+
+func _refresh_dynamic_entry_visibility() -> void:
+	for entry in _dynamic_dungeon_entries:
+		var instance_id := str(entry.get("instance_id", ""))
+		var cell: Vector2i = entry.get("cell", Vector2i(-1, -1))
+		var marker := _dynamic_entry_markers.get(instance_id) as Node2D
+		if marker != null and is_instance_valid(marker):
+			marker.visible = _is_cell_explored(cell)
+
+func _dynamic_entry_at_cell(cell: Vector2i) -> Dictionary:
+	for entry in _dynamic_dungeon_entries:
+		if entry.get("cell", Vector2i(-1, -1)) == cell:
+			return entry
+	return {}
 
 func prepare_world_markers() -> void:
 	if _world_markers_prepared:
@@ -1171,8 +1288,20 @@ func _ensure_anchor_illustration(index: int) -> void:
 	illustration.texture = texture
 	illustration.scale = Vector2.ONE * fit_scale * _user_zoom
 	illustration.set_meta("world_marker_base_scale", fit_scale)
+	# In clear terrain the depth-sorted copy participates in player occlusion. The
+	# overlay copy draws only fogged pixels, keeping known places readable at range.
+	illustration.material = _known_illustration_fog_material
 	marker.set_meta("world_marker_label_half_height", texture_pixels.y * fit_scale * 0.5)
 	marker.add_child(illustration)
+	var base_y := _texture_base_y(texture) * fit_scale
+	var depth_illustration := Sprite2D.new()
+	depth_illustration.name = marker.name + "_DepthIllustration"
+	depth_illustration.texture = texture
+	depth_illustration.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	depth_illustration.position = _world_depth.to_local(_map_canvas.to_global(marker.position + Vector2(0.0, base_y)))
+	depth_illustration.scale = Vector2.ONE * fit_scale
+	depth_illustration.offset = Vector2(0.0, -base_y / fit_scale)
+	_world_depth.add_child(depth_illustration)
 	for placeholder_name in ["PlaceholderToken", "PrimaryPlaceholderRing"]:
 		var placeholder := marker.get_node_or_null(placeholder_name)
 		if placeholder != null:
@@ -1185,6 +1314,10 @@ func _ensure_anchor_illustration(index: int) -> void:
 func _on_enter_node_pressed() -> void:
 	if _moving or _selected_cell != _player_cell:
 		return
+	var dynamic_entry := _dynamic_entry_at_cell(_player_cell)
+	if not dynamic_entry.is_empty() and _is_cell_explored(_player_cell):
+		dynamic_dungeon_enter_requested.emit(str(dynamic_entry.get("instance_id", "")))
+		return
 	var anchor: Dictionary = _anchors_by_cell.get(_player_cell, {})
 	if bool(anchor.get("enterable", false)):
 		var node_id := str(anchor.get("location_node_id", ""))
@@ -1193,6 +1326,17 @@ func _on_enter_node_pressed() -> void:
 
 func _update_enter_node_button() -> void:
 	if _enter_node_button == null:
+		return
+	var dynamic_entry := _dynamic_entry_at_cell(_player_cell)
+	var can_enter_dynamic := _selected_cell == _player_cell and not _moving and not dynamic_entry.is_empty() and _is_cell_explored(_player_cell)
+	if can_enter_dynamic:
+		_enter_node_button.visible = true
+		_enter_node_button.text = "进入 · " + str(dynamic_entry.get("name", "雾隐幽谷"))
+		_position_enter_node_button({
+			"cell": _player_cell,
+			"marker_position": _terrain.position + _terrain.map_to_local(_player_cell),
+			"footprint": [1, 1],
+		})
 		return
 	var anchor: Dictionary = _anchors_by_cell.get(_player_cell, {})
 	var can_enter := _selected_cell == _player_cell and not _moving and bool(anchor.get("enterable", false)) and not str(anchor.get("location_node_id", "")).is_empty()

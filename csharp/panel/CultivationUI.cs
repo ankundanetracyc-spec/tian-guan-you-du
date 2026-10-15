@@ -629,19 +629,7 @@ public partial class CultivationUI : Control
 		return $"{year}年{remainder / 30 + 1}月{remainder % 30 + 1}日 {hour:00}时";
 	}
 
-	private static string format_duration_hours(int hours)
-	{
-		var totalHours = Math.Max(0, hours);
-		var totalDays = totalHours / 24;
-		var years = totalDays / 360;
-		var days = totalDays % 360;
-		var remainingHours = totalHours % 24;
-		var parts = new List<string>(3);
-		if (years > 0) parts.Add($"{years}年");
-		if (days > 0) parts.Add($"{days}日");
-		if (remainingHours > 0 || parts.Count == 0) parts.Add($"{remainingHours}小时");
-		return string.Concat(parts);
-	}
+	private static string format_duration_hours(int hours) => GameTimeText.Duration(hours);
 
 	private static string format_duration_range(int minHours, int maxHours) => $"{format_duration_hours(minHours)}～{format_duration_hours(maxHours)}";
 
@@ -702,7 +690,8 @@ public partial class CultivationUI : Control
 		var preview = mode is 0 or 3 ? call("get_world_cultivation_preview_for_strands", wanted).AsGodotDictionary() : call("get_world_cultivation_preview_for_hours", selected_hours()).AsGodotDictionary();
 		var hours = preview.GetValueOrDefault("hours", 0).AsInt32(); var strands = preview.GetValueOrDefault("strands", 0).AsInt32();
 		var staminaCost = preview.GetValueOrDefault("stamina_cost", 0f).AsSingle();
-		play_transition("吐纳修行", $"灵力沿周天缓缓运转，预计耗时 {format_duration_hours(hours)}，消耗体力 {staminaCost:0.#} 点。", $"修炼结束，实得 {strands} 缕灵力。未满一缕的余数已散去。", () => { if (mode is 0 or 3) _target.Call("cultivate_with_world_stamina_for_strands", wanted); else _target.Call("cultivate_with_world_stamina_for_hours", selected_hours()); refresh(); });
+		var requestedHours = selected_hours();
+		play_transition("吐纳修行", $"灵力沿周天缓缓运转，预计耗时 {format_duration_hours(hours)}，消耗体力 {staminaCost:0.#} 点。", $"修炼结束，实得 {strands} 缕灵力。未满一缕的余数已散去。", () => { if (mode is 0 or 3) _target.Call("cultivate_with_world_stamina_for_strands", wanted); else _target.Call("cultivate_with_world_stamina_for_hours", requestedHours); refresh(); }, hours);
 	}
 
 	private void update_study()
@@ -815,10 +804,15 @@ public partial class CultivationUI : Control
 		close_panel(); CondensationTestRequested?.Invoke(testTarget);
 	}
 
-	private void play_transition(string title, string plan, string complete, Action settle)
+	private void play_transition(string title, string plan, string complete, Action settle, int cultivationHours = 0)
 	{
 		void finish() { settle(); refresh_room_header(); }
-		if (GetTree().GetFirstNodeInGroup("action_transition") is ActionTransitionPanel transition) { transition.play(title, plan, complete, finish); return; }
+		if (GetTree().GetFirstNodeInGroup("action_transition") is ActionTransitionPanel transition)
+		{
+			if (cultivationHours > 0) transition.play_cultivation(title, cultivationHours, complete, finish);
+			else transition.play(title, plan, complete, finish);
+			return;
+		}
 		finish();
 	}
 }

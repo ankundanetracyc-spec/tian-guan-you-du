@@ -141,6 +141,20 @@ public static partial class NpcSocialPresentationText
         new("你将话头收住", "对方见你要走，也拱手作别。"),
         new("你轻轻摇头", "对方没有再劝，客气地回了一礼。"),
         new("你示意改日再谈", "对方点了点头，将话留到了下次。") ];
+    private static readonly Phrase[] Approach = [
+        new("你走近对方", "你上前见礼，向对方问候。"),
+        new("你略整衣袖", "你拱手见礼，说明来意。"),
+        new("你停下脚步", "你主动开口，问候了几句。"),
+        new("你向对方见礼", "你先打了个招呼，提起交谈之意。"),
+        new("你斟酌称呼", "你先行问候，试着接起话头。"),
+        new("你稍稍走近", "你停步见礼，开口与对方搭话。") ];
+    private static readonly Phrase[] Cancelled = [
+        new("你稍作停顿", "你暂且收起了交谈的念头。"),
+        new("你停住脚步", "你没有上前，决定改日再谈。"),
+        new("你略一思量", "你暂未开口，打算稍后再谈。"),
+        new("你望了望对方", "你没有上前打扰，暂且作罢。"),
+        new("你收住步子", "你将问候留到下次，没有上前搭话。"),
+        new("你暂缓片刻", "你打消了此时交谈的念头。") ];
     private static readonly Phrase[] Accepted = [
         new("你应声回礼", "对方颔首，将方才的话续了下去。"),
         new("你示意继续", "对方停步相对，把来意说全。"),
@@ -227,6 +241,8 @@ public static partial class NpcSocialPresentationText
         "renown_priority" => action == "来访" ? EntryInterest : RenownInterest,
         "hostile_veto" or "test_hostile" => Hostile,
         "player_declined" => Decline,
+        "player_cancelled" => Cancelled,
+        "player_initiated" => Approach,
         "player_accepted" => Accepted,
         "spar_hostile" => Hostile,
         "spar_unknown" => SparStranger,

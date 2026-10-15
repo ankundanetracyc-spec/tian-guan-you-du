@@ -1,0 +1,31 @@
+{
+  "title": "水墨姿势样片：男女下劈",
+  "canvas": {
+    "width": 1024,
+    "height": 1536,
+    "format": "RGBA",
+    "background": "transparent"
+  },
+  "characters": [
+    {
+      "id": "male",
+      "display_name": "男修 · 碧岚云叶袍",
+      "idle": "male_idle.png",
+      "hand_down_chop": "male_chop.png"
+    },
+    {
+      "id": "female",
+      "display_name": "女修 · 墨绿云叶衣",
+      "idle": "female_idle.png",
+      "hand_down_chop": "female_chop.png"
+    }
+  ],
+  "preview_scene": "res://tscn/scene/SideInkChopPreview.tscn",
+  "layering": "完整角色静帧在前；墨迹轨迹与命中墨晕由独立预览层绘制。",
+  "controls": {
+    "space": "暂停或继续",
+    "r": "重播",
+    "b": "切换浅底、深底或左右对照",
+    "f": "模拟缺少下劈图，待机图保留并继续播放墨效"
+  }
+}

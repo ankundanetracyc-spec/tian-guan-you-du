@@ -10,8 +10,7 @@ public partial class MainScene
         new BasicNpcInteractionComponent(),
         new SparNpcInteractionComponent(),
         new PurchaseNpcInteractionComponent(),
-        new YuxuCaseNpcInteractionComponent(),
-        new DebugNpcInteractionComponent()
+        new YuxuCaseNpcInteractionComponent()
     ];
     private string _activeWorldNpcInteractionId = "";
     private CellCharacterList? _interactionRoster;
@@ -150,14 +149,4 @@ public partial class MainScene
         }
     }
 
-    private sealed class DebugNpcInteractionComponent : NpcInteractionActionComponent
-    {
-        public override string ComponentId => "npc.debug_social";
-        public override IEnumerable<NpcInteractionAction> GetActions(MainScene owner, WorldNpcData target)
-        {
-            if (!OS.IsDebugBuild()) yield break;
-            yield return new("debug.proactive_talk", "测试：我主动搭话", () => owner.begin_npc_social_talk(target, false, true));
-            yield return new("debug.npc_visit", "测试：NPC来找我", () => owner.begin_npc_social_talk(target, true, true));
-        }
-    }
 }

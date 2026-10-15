@@ -15,6 +15,7 @@ public partial class MainScene
     private GameSaveManager? _save_manager;
     private PersistentGameSave? _loaded_game_save;
     private YuxuSectTreasuryLedger _yuxu_sect_treasury_ledger = new();
+    private Godot.Collections.Dictionary _dynamic_dungeon_state = [];
     private bool _save_is_dirty;
     private double _save_dirty_seconds;
     private bool _returning_from_battle;
@@ -46,6 +47,8 @@ public partial class MainScene
             GetNodeOrNull<WeatherMgr>("/root/WeatherManager")?.restore_persistent_state("", 0.0f, 0.0f, 0.0f);
             EastWoodsDungeonRules.generate_layout(System.Guid.NewGuid().ToString("N"));
             _east_woods_dungeon_state = new Dictionary { ["layout"] = EastWoodsDungeonRules.get_layout_state() };
+            _dynamic_dungeon_state = DynamicDungeonExpedition.CreateEmpty(
+                GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0);
             return;
         }
         _yuxu_sect_treasury_ledger = _loaded_game_save.yuxu_sect_treasury?.Duplicate(true) as YuxuSectTreasuryLedger ?? new YuxuSectTreasuryLedger();
@@ -77,6 +80,12 @@ public partial class MainScene
             _loaded_game_save.weather_intensity,
             _loaded_game_save.weather_wind_speed,
             _loaded_game_save.weather_duration_hours);
+
+        var currentGameHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+        _dynamic_dungeon_state = _loaded_game_save.dynamic_dungeon_state?.Duplicate(true) as Dictionary
+            ?? DynamicDungeonExpedition.CreateEmpty(currentGameHour);
+        if (_dynamic_dungeon_state.Count == 0)
+            _dynamic_dungeon_state = DynamicDungeonExpedition.CreateEmpty(currentGameHour);
 
         _player_world_grid_cell = _loaded_game_save.world_cell;
         _player_world_node_id = string.IsNullOrWhiteSpace(_loaded_game_save.current_node_id)
@@ -137,6 +146,16 @@ public partial class MainScene
                 mark_save_dirty();
             // A saved random roster is authoritative; never regenerate it on load.
             _cloud_state_initialized = true;
+            if (DynamicDungeonExpedition.FindInsideInstance(_dynamic_dungeon_state) is { } activeDynamic)
+            {
+                estate?.Hide();
+                tile_world_map?.Hide();
+                node_map?.Hide();
+                open_dynamic_dungeon(activeDynamic.GetValueOrDefault("instance_id", "").AsString());
+                hud?.Show();
+                mark_save_dirty();
+                return;
+            }
             if (_east_woods_dungeon_state.GetValueOrDefault("inside", false).AsBool())
             {
                 estate?.Hide();
@@ -226,6 +245,7 @@ public partial class MainScene
     public PersistentGameSave? capture_battle_world_snapshot()
     {
         if (player?.entity_data is not HumanData playerData) return null;
+        store_active_dynamic_dungeon_route();
 
         var save = new PersistentGameSave
         {
@@ -235,6 +255,7 @@ public partial class MainScene
             current_node_id = _player_world_node_id,
             world_cell = _player_world_grid_cell,
             scene_progress = capture_scene_progress(),
+            dynamic_dungeon_state = _dynamic_dungeon_state.Duplicate(true),
         };
 
         if (GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is { } time)

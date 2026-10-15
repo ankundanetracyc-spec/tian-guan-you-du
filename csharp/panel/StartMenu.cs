@@ -129,7 +129,7 @@ public partial class StartMenu : Control
         AddMenuButton(menu.GetNode<Button>("Settings"), OpenStartMenuSettings);
         AddMenuButton(menu.GetNode<Button>("Quit"), () => GetTree().Quit());
         AddMenuButton(menu.GetNode<Button>("DemoToggle"), ToggleDemoEntries);
-        AddMenuButton(menu.GetNode<Button>("AppearanceTest"), () => GetTree().ChangeSceneToFile("res://tscn/scene/CharacterSequenceShowcase.tscn"));
+        AddMenuButton(menu.GetNode<Button>("AppearanceTest"), () => GetTree().ChangeSceneToFile("res://tscn/scene/BattlePoseLibraryShowcase.tscn"));
         AddMenuButton(menu.GetNode<Button>("AppearanceCreatorTest"), () => GetTree().ChangeSceneToFile("res://tscn/scene/CharacterAppearanceTest.tscn"));
         AddMenuButton(menu.GetNode<Button>("InkVfxTest"), () => GetTree().ChangeSceneToFile("res://tscn/scene/InkVfxShowcase.tscn"));
         AddMenuButton(menu.GetNode<Button>("BattleTest"), OpenBattleTestSetup);
@@ -191,11 +191,10 @@ public partial class StartMenu : Control
             var button = PlainButton($"{slot["name"].AsString()}　·　{slot["realm"].AsString()}\n{slot["time"].AsString()}");
             button.CustomMinimumSize = new Vector2(0, 76);
             button.SizeFlagsHorizontal = SizeFlags.ExpandFill;
-            button.Pressed += () =>
+            button.Pressed += async () =>
             {
-                if (manager?.load_slot(slotId) == true)
-                    GetTree().ChangeSceneToFile("res://tscn/scene/MainScene.tscn");
-                else
+                var error = await SceneLoadingScreen.ChangeSceneAsync(GetTree(), "res://tscn/scene/MainScene.tscn", "续接修行", () => manager?.load_slot(slotId) == true);
+                if (error != Error.Ok && error != Error.Busy && GodotObject.IsInstanceValid(this))
                     ShowNotice("载入失败", "这段存档无法读取，请检查文件后重试。");
             };
             list.AddChild(button);
