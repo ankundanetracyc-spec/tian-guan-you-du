@@ -1,0 +1,646 @@
+{
+	"animations": {
+		"dodge": 24,
+		"guard": 30,
+		"hurt": 24,
+		"restore": 48
+	},
+	"fps": 30,
+	"frame_size": [
+		768,
+		768
+	],
+	"frames": [
+		{
+			"animation": "hurt",
+			"file": "frames/hurt_00.png",
+			"frame": 0
+		},
+		{
+			"animation": "hurt",
+			"file": "frames/hurt_01.png",
+			"frame": 1
+		},
+		{
+			"animation": "hurt",
+			"file": "frames/hurt_02.png",
+			"frame": 2
+		},
+		{
+			"animation": "hurt",
+			"file": "frames/hurt_03.png",
+			"frame": 3
+		},
+		{
+			"animation": "hurt",
+			"file": "frames/hurt_04.png",
+			"frame": 4
+		},
+		{
+			"animation": "hurt",
+			"file": "frames/hurt_05.png",
+			"frame": 5
+		},
+		{
+			"animation": "hurt",
+			"file": "frames/hurt_06.png",
+			"frame": 6
+		},
+		{
+			"animation": "hurt",
+			"file": "frames/hurt_07.png",
+			"frame": 7
+		},
+		{
+			"animation": "hurt",
+			"file": "frames/hurt_08.png",
+			"frame": 8
+		},
+		{
+			"animation": "hurt",
+			"file": "frames/hurt_09.png",
+			"frame": 9
+		},
+		{
+			"animation": "hurt",
+			"file": "frames/hurt_10.png",
+			"frame": 10
+		},
+		{
+			"animation": "hurt",
+			"file": "frames/hurt_11.png",
+			"frame": 11
+		},
+		{
+			"animation": "hurt",
+			"file": "frames/hurt_12.png",
+			"frame": 12
+		},
+		{
+			"animation": "hurt",
+			"file": "frames/hurt_13.png",
+			"frame": 13
+		},
+		{
+			"animation": "hurt",
+			"file": "frames/hurt_14.png",
+			"frame": 14
+		},
+		{
+			"animation": "hurt",
+			"file": "frames/hurt_15.png",
+			"frame": 15
+		},
+		{
+			"animation": "hurt",
+			"file": "frames/hurt_16.png",
+			"frame": 16
+		},
+		{
+			"animation": "hurt",
+			"file": "frames/hurt_17.png",
+			"frame": 17
+		},
+		{
+			"animation": "hurt",
+			"file": "frames/hurt_18.png",
+			"frame": 18
+		},
+		{
+			"animation": "hurt",
+			"file": "frames/hurt_19.png",
+			"frame": 19
+		},
+		{
+			"animation": "hurt",
+			"file": "frames/hurt_20.png",
+			"frame": 20
+		},
+		{
+			"animation": "hurt",
+			"file": "frames/hurt_21.png",
+			"frame": 21
+		},
+		{
+			"animation": "hurt",
+			"file": "frames/hurt_22.png",
+			"frame": 22
+		},
+		{
+			"animation": "hurt",
+			"file": "frames/hurt_23.png",
+			"frame": 23
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_00.png",
+			"frame": 0
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_01.png",
+			"frame": 1
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_02.png",
+			"frame": 2
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_03.png",
+			"frame": 3
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_04.png",
+			"frame": 4
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_05.png",
+			"frame": 5
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_06.png",
+			"frame": 6
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_07.png",
+			"frame": 7
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_08.png",
+			"frame": 8
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_09.png",
+			"frame": 9
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_10.png",
+			"frame": 10
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_11.png",
+			"frame": 11
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_12.png",
+			"frame": 12
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_13.png",
+			"frame": 13
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_14.png",
+			"frame": 14
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_15.png",
+			"frame": 15
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_16.png",
+			"frame": 16
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_17.png",
+			"frame": 17
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_18.png",
+			"frame": 18
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_19.png",
+			"frame": 19
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_20.png",
+			"frame": 20
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_21.png",
+			"frame": 21
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_22.png",
+			"frame": 22
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_23.png",
+			"frame": 23
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_24.png",
+			"frame": 24
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_25.png",
+			"frame": 25
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_26.png",
+			"frame": 26
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_27.png",
+			"frame": 27
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_28.png",
+			"frame": 28
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_29.png",
+			"frame": 29
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_00.png",
+			"frame": 0
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_01.png",
+			"frame": 1
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_02.png",
+			"frame": 2
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_03.png",
+			"frame": 3
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_04.png",
+			"frame": 4
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_05.png",
+			"frame": 5
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_06.png",
+			"frame": 6
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_07.png",
+			"frame": 7
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_08.png",
+			"frame": 8
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_09.png",
+			"frame": 9
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_10.png",
+			"frame": 10
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_11.png",
+			"frame": 11
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_12.png",
+			"frame": 12
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_13.png",
+			"frame": 13
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_14.png",
+			"frame": 14
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_15.png",
+			"frame": 15
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_16.png",
+			"frame": 16
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_17.png",
+			"frame": 17
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_18.png",
+			"frame": 18
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_19.png",
+			"frame": 19
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_20.png",
+			"frame": 20
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_21.png",
+			"frame": 21
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_22.png",
+			"frame": 22
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_23.png",
+			"frame": 23
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_24.png",
+			"frame": 24
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_25.png",
+			"frame": 25
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_26.png",
+			"frame": 26
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_27.png",
+			"frame": 27
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_28.png",
+			"frame": 28
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_29.png",
+			"frame": 29
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_30.png",
+			"frame": 30
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_31.png",
+			"frame": 31
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_32.png",
+			"frame": 32
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_33.png",
+			"frame": 33
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_34.png",
+			"frame": 34
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_35.png",
+			"frame": 35
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_36.png",
+			"frame": 36
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_37.png",
+			"frame": 37
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_38.png",
+			"frame": 38
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_39.png",
+			"frame": 39
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_40.png",
+			"frame": 40
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_41.png",
+			"frame": 41
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_42.png",
+			"frame": 42
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_43.png",
+			"frame": 43
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_44.png",
+			"frame": 44
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_45.png",
+			"frame": 45
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_46.png",
+			"frame": 46
+		},
+		{
+			"animation": "restore",
+			"file": "frames/restore_47.png",
+			"frame": 47
+		},
+		{
+			"animation": "dodge",
+			"file": "frames/dodge_00.png",
+			"frame": 0
+		},
+		{
+			"animation": "dodge",
+			"file": "frames/dodge_01.png",
+			"frame": 1
+		},
+		{
+			"animation": "dodge",
+			"file": "frames/dodge_02.png",
+			"frame": 2
+		},
+		{
+			"animation": "dodge",
+			"file": "frames/dodge_03.png",
+			"frame": 3
+		},
+		{
+			"animation": "dodge",
+			"file": "frames/dodge_04.png",
+			"frame": 4
+		},
+		{
+			"animation": "dodge",
+			"file": "frames/dodge_05.png",
+			"frame": 5
+		},
+		{
+			"animation": "dodge",
+			"file": "frames/dodge_06.png",
+			"frame": 6
+		},
+		{
+			"animation": "dodge",
+			"file": "frames/dodge_07.png",
+			"frame": 7
+		},
+		{
+			"animation": "dodge",
+			"file": "frames/dodge_08.png",
+			"frame": 8
+		},
+		{
+			"animation": "dodge",
+			"file": "frames/dodge_09.png",
+			"frame": 9
+		},
+		{
+			"animation": "dodge",
+			"file": "frames/dodge_10.png",
+			"frame": 10
+		},
+		{
+			"animation": "dodge",
+			"file": "frames/dodge_11.png",
+			"frame": 11
+		},
+		{
+			"animation": "dodge",
+			"file": "frames/dodge_12.png",
+			"frame": 12
+		},
+		{
+			"animation": "dodge",
+			"file": "frames/dodge_13.png",
+			"frame": 13
+		},
+		{
+			"animation": "dodge",
+			"file": "frames/dodge_14.png",
+			"frame": 14
+		},
+		{
+			"animation": "dodge",
+			"file": "frames/dodge_15.png",
+			"frame": 15
+		},
+		{
+			"animation": "dodge",
+			"file": "frames/dodge_16.png",
+			"frame": 16
+		},
+		{
+			"animation": "dodge",
+			"file": "frames/dodge_17.png",
+			"frame": 17
+		},
+		{
+			"animation": "dodge",
+			"file": "frames/dodge_18.png",
+			"frame": 18
+		},
+		{
+			"animation": "dodge",
+			"file": "frames/dodge_19.png",
+			"frame": 19
+		},
+		{
+			"animation": "dodge",
+			"file": "frames/dodge_20.png",
+			"frame": 20
+		},
+		{
+			"animation": "dodge",
+			"file": "frames/dodge_21.png",
+			"frame": 21
+		},
+		{
+			"animation": "dodge",
+			"file": "frames/dodge_22.png",
+			"frame": 22
+		},
+		{
+			"animation": "dodge",
+			"file": "frames/dodge_23.png",
+			"frame": 23
+		}
+	],
+	"source": "Generated colored brush textures; deterministic Godot reveal/spread/dissolve bake."
+}

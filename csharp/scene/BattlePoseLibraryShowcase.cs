@@ -62,6 +62,7 @@ public partial class BattlePoseLibraryShowcase : Node2D
 
     public override void _Ready()
     {
+        if (!Engine.IsEditorHint()) { BattlePreviewScene.Mount(this); return; }
         ProcessMode = ProcessModeEnum.Always;
         QueueRedraw();
         BuildCharacter();

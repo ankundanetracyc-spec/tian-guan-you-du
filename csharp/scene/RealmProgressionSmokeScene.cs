@@ -98,7 +98,7 @@ public partial class RealmProgressionSmokeScene : Control
             DirAccess.RemoveAbsolute(ProjectSettings.GlobalizePath(path));
             var panel = new RealmPanel(); AddChild(panel); panel.bind_player(character);
             Check(!panel.Visible, "绑定既有进度不弹获得动画");
-            Check(character.start_yuanxi(9), "零体力仍可养息");
+            Check(character.start_yuanxi(9), "零精力仍可养息");
             data.yuanxi_phase = 2; data.yuanxi_phase_hours = character.get_yuanxi_phase_required(2) - 1;
             var clock = GetNode<GameTimeMgr>("/root/GameTimeManager");
             var before = clock.get_total_game_hours();

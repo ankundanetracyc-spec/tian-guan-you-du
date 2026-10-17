@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://csharp/resources/MaterialCraftData.cs" id="1"]
 [ext_resource type="Script" path="res://csharp/resources/MaterialUtilityGrade.cs" id="2"]
 
-[sub_resource type="Resource" id="通"]
+[sub_resource type="Resource" id="utility_tong"]
 script = ExtResource("2")
 utility_id = "通"
 grade = 2
 
-[sub_resource type="Resource" id="生"]
+[sub_resource type="Resource" id="utility_sheng"]
 script = ExtResource("2")
 utility_id = "生"
 grade = 3
@@ -18,4 +18,4 @@ script = ExtResource("1")
 element = "木"
 polarity = 0
 texture = "木"
-utilities = Array[ExtResource("2")]([SubResource("通"), SubResource("生")])
+utilities = Array[ExtResource("2")]([SubResource("utility_tong"), SubResource("utility_sheng")])

@@ -5,7 +5,8 @@ public partial class CultivationUI
     private Control _room = null!, _roomContent = null!;
     private PanelContainer _studyPage = null!, _breakPage = null!;
     private ScrollContainer _roomBodyScroll = null!, _roomNatureScroll = null!;
-    private Label _roomTime = null!, _roomStamina = null!, _roomMain = null!, _studyTitle = null!;
+    private Label _roomTime = null!, _roomStamina = null!, _roomMain = null!, _roomBottleneckStatus = null!, _roomWorldStatus = null!, _roomInspirationSummary = null!, _studyTitle = null!;
+    private Button _roomInspirationButton = null!;
     private VBoxContainer _studyList = null!;
     private ProgressBar _roomPowerBar = null!, _studyProgress = null!;
     private readonly List<Button> _roomTabs = [], _modeTabs = [];
@@ -25,6 +26,11 @@ public partial class CultivationUI
         header.AddChild(QuietRoomStyle.Text("静室", 32));
         _name = QuietRoomStyle.Text("", 22); _name.SizeFlagsHorizontal = SizeFlags.ExpandFill; header.AddChild(_name);
         _roomTime = QuietRoomStyle.Text("", 23); header.AddChild(_roomTime);
+        _roomInspirationButton = new Button { Name = "OpenInspirationLedger", Text = "灵感清册", CustomMinimumSize = new Vector2(144, 48) };
+        QuietRoomStyle.Primary(_roomInspirationButton);
+        _roomInspirationButton.TooltipText = "查看可用灵感；可炼化当前瓶颈，或预留给用途相符的行动。";
+        _roomInspirationButton.Pressed += () => select_room_page(5);
+        header.AddChild(_roomInspirationButton);
         var close = new Button { Text = "离开静室", CustomMinimumSize = new Vector2(150, 48) }; close.Pressed += close_panel; header.AddChild(close);
         var status = new HBoxContainer { AnchorLeft = .035f, AnchorRight = .965f, AnchorTop = .115f, AnchorBottom = .165f };
         status.AddThemeConstantOverride("separation", 32); canvas.AddChild(status);
@@ -86,6 +92,15 @@ public partial class CultivationUI
         var stats = room_box(summary); stats.AddChild(QuietRoomStyle.Text("当前灵力", 21)); _power = QuietRoomStyle.Text("", 26); stats.AddChild(_power);
         _roomPowerBar = new ProgressBar { ShowPercentage = false, CustomMinimumSize = new Vector2(0, 14) }; stats.AddChild(_roomPowerBar);
         _rate = QuietRoomStyle.Text("", 18); stats.AddChild(_rate);
+        _roomBottleneckStatus = QuietRoomStyle.Text("", 17);
+        _roomBottleneckStatus.AutowrapMode = TextServer.AutowrapMode.WordSmart;
+        stats.AddChild(_roomBottleneckStatus);
+        _roomWorldStatus = QuietRoomStyle.Text("", 16);
+        _roomWorldStatus.AutowrapMode = TextServer.AutowrapMode.WordSmart;
+        stats.AddChild(_roomWorldStatus);
+        _roomInspirationSummary = QuietRoomStyle.Text("", 16);
+        _roomInspirationSummary.AutowrapMode = TextServer.AutowrapMode.WordSmart;
+        stats.AddChild(_roomInspirationSummary);
         var actions = new PanelContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill }; actions.AddThemeStyleboxOverride("panel", QuietRoomStyle.Paper(.95f, 24)); columns.AddChild(actions);
         var actionScroll = new ScrollContainer { HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled }; actions.AddChild(actionScroll);
         var practice = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ExpandFill }; practice.AddThemeConstantOverride("separation", 14); actionScroll.AddChild(practice); practice.AddChild(QuietRoomStyle.Text("本次修炼", 28));
@@ -199,8 +214,89 @@ public partial class CultivationUI
     {
         if (_roomClock is not null) _roomTime.Text = QuietRoomStyle.Date(_roomClock);
         _name!.Text = value("entity_name", "").AsString(); _realm!.Text = value("cultivation_realm", "凡人").AsString();
-        _roomStamina.Text = $"体力  {value("current_world_stamina", 0f).AsSingle():0.#} / {value("max_world_stamina", 100f).AsSingle():0.#}";
+        _roomStamina.Text = $"精力  {value("current_world_stamina", 0f).AsSingle():0.#} / {value("max_world_stamina", 100f).AsSingle():0.#}";
         _roomMain.Text = value("main_gongfa").AsGodotObject() is GongfaResource book ? $"主修  {book.gongfa_name}" : "主修  尚未装配";
+        refresh_bottleneck_status();
+        refresh_world_status();
+        refresh_room_inspiration_access();
+    }
+    private void refresh_room_inspiration_access()
+    {
+        if (_roomInspirationButton is null || _roomInspirationSummary is null) return;
+        if (_target is not Character character)
+        {
+            _roomInspirationButton.Text = "灵感清册";
+            _roomInspirationSummary.Text = "灵感需由经历获得。";
+            return;
+        }
+
+        var available = character.get_cultivation_inspiration_records();
+        var counts = new int[4];
+        foreach (var record in available)
+        {
+            if (record.quality_rank >= 1 && record.quality_rank <= 3)
+                counts[record.quality_rank]++;
+        }
+        _roomInspirationButton.Text = available.Count > 0 ? $"灵感清册　{available.Count}" : "灵感清册";
+        if (_roomTabs.Count > 5)
+            _roomTabs[5].Text = "灵感·瓶颈";
+        _roomInspirationSummary.Text = available.Count > 0
+            ? $"可用灵感 {available.Count} 份：见几 {counts[1]} · 明辨 {counts[2]} · 通变 {counts[3]}\n可炼化瓶颈，或预留给用途相符的行动。"
+            : "暂无可用灵感。战斗、采集、旅途、研修与宗门活动的实际结果都可能再生灵感。点击上方“灵感清册”查看详情。";
+    }
+    private void refresh_bottleneck_status()
+    {
+        if (_roomBottleneckStatus is null) return;
+        if (_target is not Character character)
+        {
+            _roomBottleneckStatus.Text = "闭关瓶颈：当前境界不受此规则影响。";
+            return;
+        }
+
+        var summary = character.get_cultivation_bottleneck_summary();
+        if (!summary.GetValueOrDefault("applicable", false).AsBool())
+        {
+            _roomBottleneckStatus.Text = "闭关瓶颈：当前境界不受此规则影响；归元九息不受瓶颈减速。";
+            return;
+        }
+
+        var level = summary.GetValueOrDefault("level", 0).AsInt32();
+        var stages = summary.GetValueOrDefault("stages", CultivationBottleneckRules.Stages).AsInt32();
+        var penalty = summary.GetValueOrDefault("penalty", 0d).AsDouble();
+        var accumulated = summary.GetValueOrDefault("accumulated_cultivation_hours", 0d).AsDouble();
+        var grace = summary.GetValueOrDefault("grace_hours", 0d).AsDouble();
+        var untilNext = summary.GetValueOrDefault("hours_until_next_level", 0d).AsDouble();
+        var trainingRate = character.get_cultivation_rate_after_bottleneck();
+
+        if (level <= 0)
+        {
+            var untilFirstStage = grace + CultivationBottleneckRules.get_stage_interval_hours() - accumulated;
+            _roomBottleneckStatus.Text =
+                $"闭关瓶颈：尚未形成　·　首次减速还需 {format_training_days(untilFirstStage)} 修炼日\n" +
+                $"当前修炼速率 {trainingRate:0.####} 缕／时";
+            return;
+        }
+
+        var next = level >= stages ? "已达最高阶" : $"距下一阶 {format_training_days(untilNext)} 修炼日";
+        _roomBottleneckStatus.Text =
+            $"闭关瓶颈：{level}／{stages} 阶　·　减速 {penalty:P1}　·　效率 {1d - penalty:P1}\n" +
+            $"{next}　·　当前修炼速率 {trainingRate:0.####} 缕／时";
+    }
+    private static string format_training_days(double hours)
+        => $"{Math.Max(0d, hours) / CultivationBottleneckRules.HoursPerGameDay:0.#}";
+    private void refresh_world_status()
+    {
+        if (_roomWorldStatus is null) return;
+        if (_target is not Character character || character.entity_data is not HumanData human)
+        {
+            _roomWorldStatus.Hide();
+            return;
+        }
+
+        var now = _roomClock?.get_total_game_hours() ?? 0;
+        var summary = WorldStatusRules.format_summary(human.world_status_records, now);
+        _roomWorldStatus.Text = summary == "暂无特殊状态" ? "身体状态：暂无特殊状态" : $"身体状态：{summary}";
+        _roomWorldStatus.Visible = summary != "暂无特殊状态";
     }
     private void sync_mode_tabs() { for (var i = 0; i < _modeTabs.Count; i++) _modeTabs[i].ButtonPressed = i == _mode!.Selected; }
     private void refresh_room_study()

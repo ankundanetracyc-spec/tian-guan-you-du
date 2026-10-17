@@ -7,6 +7,9 @@ using Godot.Collections;
 /// </summary>
 public partial class BattleEntityData : Resource
 {
+    [Export] public Godot.Collections.Array<CombatSkillReference> combat_skill_references = [];
+    [Export] public Godot.Collections.Array<ArtifactInstanceData> equipped_artifacts = [];
+    [Export] public Godot.Collections.Array<ActiveSkillData> combat_resolved_skills = [];
     [Export] public string uid = "";
     [Export] public EntityData? portrait_data;
     [Export] public int battle_external_wounds, battle_internal_wounds;
@@ -130,6 +133,9 @@ public partial class BattleEntityData : Resource
         active_skill_paths = source.active_skill_paths.Duplicate();
         loaded_skill_paths = source.loaded_skill_paths.Duplicate();
         combat_skill_slot_paths = source.combat_skill_slot_paths.Duplicate();
+        combat_skill_references = source.combat_skill_references.Duplicate(true);
+        equipped_artifacts = source.equipped_artifacts.Duplicate(true);
+        combat_resolved_skills = source.combat_resolved_skills.Duplicate(true);
         combat_passive_paths = source.combat_passive_paths.Duplicate();
         combat_heart_method_upgrades = source.combat_heart_method_upgrades.Duplicate(true);
         combat_tempering_by_gongfa = source.combat_tempering_by_gongfa.Duplicate(true);

@@ -1,0 +1,10 @@
+{
+  "canvas":[2048,2048],
+  "ground_origin":[1024,1900],
+  "reference_visible_height":1375,
+  "registration":"Manually registered to the approved idle foot positions and standard head/body scale; fixed authoring transform, no runtime image-bounds fitting.",
+  "poses":[
+    {"source":"source/male_rest.png","output":"male_rest.png","source_origin":[650,1213],"authoring_scale":1.3560157791},
+    {"source":"source/female_rest.png","output":"female_rest.png","source_origin":[672,1213],"authoring_scale":1.2320788530}
+  ]
+}

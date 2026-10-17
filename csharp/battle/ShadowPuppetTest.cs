@@ -12,6 +12,7 @@ public partial class ShadowPuppetTest : Node2D
 
     public override void _Ready()
     {
+        if (!Engine.IsEditorHint()) { BattlePreviewScene.Mount(this); return; }
         var backdrop = new ColorRect { Color = new Color("161b1b") };
         backdrop.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
         var ui = new CanvasLayer { Layer = -1 }; ui.AddChild(backdrop); AddChild(ui);

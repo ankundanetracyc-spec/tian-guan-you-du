@@ -41,7 +41,7 @@ public partial class BattleManager
         }
     }
 
-    private Dictionary<GodotObject, float> CreateHealthForecast() => all_units
+    private Dictionary<GodotObject, float> CreateHealthForecast() => get_target_candidates()
         .Where(Alive)
         .ToDictionary(unit => unit, unit => (float)unit.Get("current_health").AsInt32());
 
@@ -66,6 +66,7 @@ public partial class BattleManager
             if (best is not null && best.Priority > 0)
             {
                 queue.Add(new BattleQueuedSkill(best.Skill, best.Target));
+                PreviewArtifactQueue(unit);
                 stamina = Math.Max(0, stamina - best.EnergyCost);
                 mana = Math.Max(0, mana - best.ManaCost);
                 repeatCounts[best.Skill] = repeatCounts.GetValueOrDefault(best.Skill, 0) + 1;
@@ -112,10 +113,20 @@ public partial class BattleManager
             if (skill.skill_type == ActiveSkillData.SkillType.CURSE || !gongfa_combat.CanPlay(unit, skill)) continue;
             if (IsOncePerSegmentBodySkill(skill) && plannedLimitedSkills.Contains(skill.skill_name)) continue;
             if (!is_skill_ready(unit, skill)) continue;
-            var energyCost = AiReservedEnergyCost(unit, skill);
-            var manaCost = AiReservedManaCost(unit, skill);
+            var executionSkill = get_next_action_skill(unit, skill);
+            var energyCost = AiReservedEnergyCost(unit, executionSkill);
+            var manaCost = AiReservedManaCost(unit, executionSkill);
             if (requireAffordable && (energyCost > stamina || manaCost > mana)) continue;
 
+            if (executionSkill.artifact_is_summon)
+            {
+                if (!can_plan_artifact_summon(unit, skill)) continue;
+                var futureTarget = AiTargets(unit, skill).FirstOrDefault();
+                var candidate = ScoreAiSkill(unit, skill, futureTarget, forecast, energyCost, manaCost, 0, plannedStatuses, teammate);
+                candidate.Target = unit; candidate.Damage = 0; candidate.Healing = 0;
+                if (candidate.Priority > 0 && (best is null || candidate.Priority > best.Priority || candidate.Priority == best.Priority && candidate.Score > best.Score)) best = candidate;
+                continue;
+            }
             foreach (var target in AiTargets(unit, skill))
             {
                 var candidate = ScoreAiSkill(unit, skill, target, forecast, energyCost, manaCost,
@@ -150,8 +161,9 @@ public partial class BattleManager
             if (skill.skill_type == ActiveSkillData.SkillType.CURSE || !gongfa_combat.CanPlay(unit, skill)) continue;
             if (IsOncePerSegmentBodySkill(skill) && plannedLimitedSkills.Contains(skill.skill_name)) continue;
             if (!is_skill_ready(unit, skill)) continue;
-            var energyCost = AiReservedEnergyCost(unit, skill);
-            var manaCost = AiReservedManaCost(unit, skill);
+            var executionSkill = get_next_action_skill(unit, skill);
+            var energyCost = AiReservedEnergyCost(unit, executionSkill);
+            var manaCost = AiReservedManaCost(unit, executionSkill);
             var energyGap = Math.Max(0, energyCost - stamina);
             var manaGap = Math.Max(0, manaCost - mana);
             if (energyGap == 0 && manaGap == 0) continue;
@@ -180,10 +192,16 @@ public partial class BattleManager
         return energyShare >= manaShare ? BattleQueuedSkill.ActionKind.Rest : BattleQueuedSkill.ActionKind.Breathe;
     }
 
-    private int AiReservedEnergyCost(GodotObject unit, ActiveSkillData skill) => Math.Max(get_skill_energy_cost(unit, skill),
-        CardRules.NormalCast(skill) is { } normal ? get_skill_energy_cost(unit, normal) : 0);
-    private int AiReservedManaCost(GodotObject unit, ActiveSkillData skill) => Math.Max(get_skill_mana_cost(unit, skill),
-        CardRules.NormalCast(skill) is { } normal ? get_skill_mana_cost(unit, normal) : 0);
+    private int AiReservedEnergyCost(GodotObject unit, ActiveSkillData skill)
+    {
+        skill = get_next_action_skill(unit, skill);
+        return Math.Max(get_skill_energy_cost(unit, skill), CardRules.NormalCast(skill) is { } normal ? get_skill_energy_cost(unit, normal) : 0);
+    }
+    private int AiReservedManaCost(GodotObject unit, ActiveSkillData skill)
+    {
+        skill = get_next_action_skill(unit, skill);
+        return Math.Max(get_skill_mana_cost(unit, skill), CardRules.NormalCast(skill) is { } normal ? get_skill_mana_cost(unit, normal) : 0);
+    }
 
     private AiCandidate ScoreAiSkill(
         GodotObject unit,
@@ -204,7 +222,7 @@ public partial class BattleManager
             var hit = skill.aoe_range > 0 ? 1f : GodotObject.IsInstanceValid(target) ? BattleActionResolver.preview_hit_chance(unit, target!) : 1f;
             result.Damage = damage;
             var targetHealth = GodotObject.IsInstanceValid(target) ? forecast.GetValueOrDefault(target!, target!.Get("current_health").AsSingle()) : 0;
-            var canFinish = targetHealth > 0 && damage >= targetHealth && hit >= .78f;
+            var canFinish = target is not ArtifactBody && targetHealth > 0 && damage >= targetHealth && hit >= .78f;
             result.Priority = canFinish ? 4 : 2;
             result.Score = damage * hit * 10f + (canFinish ? 1800f : 0f);
             if (targetHealth > 0) result.Score += (1f - Mathf.Clamp(targetHealth / Mathf.Max(1, target!.Get("max_health").AsSingle()), 0, 1)) * 90f;
@@ -256,7 +274,7 @@ public partial class BattleManager
             result.Score += 620;
         }
 
-        foreach (var effect in skill.status_effects)
+        foreach (var effect in skill.status_effects.Where(_ => target is not ArtifactBody))
         {
             var id = effect.GetValueOrDefault("status_id", "").AsString();
             var owner = selfTarget ? unit : target;
@@ -309,8 +327,9 @@ public partial class BattleManager
     {
         skill = CardRules.NormalCast(skill) ?? skill;
         if (skill.target_type == 0) { yield return unit; yield break; }
-        var candidates = all_units.Where(Alive).Where(target =>
+        var candidates = get_target_candidates().Where(Alive).Where(target =>
         {
+            if (target is ArtifactBody artifactBody) return ArtifactAcceptsSkill(artifactBody, unit, skill);
             var sameFaction = target.Get("faction").AsInt32() == unit.Get("faction").AsInt32();
             return skill.target_type switch
             {
@@ -331,7 +350,7 @@ public partial class BattleManager
         if (skill.aoe_range > 0)
         {
             var total = 0;
-            foreach (var victim in all_units.Where(Alive).Where(other => other.Get("faction").AsInt32() != unit.Get("faction").AsInt32()))
+            foreach (var victim in get_target_candidates().Where(Alive).Where(other => other.Get("faction").AsInt32() != unit.Get("faction").AsInt32()))
                 if (forecast.GetValueOrDefault(victim, victim.Get("current_health").AsSingle()) > 0)
                     total += Mathf.RoundToInt(EnemyExpectedDamage(skill, unit, victim) * BattleActionResolver.preview_hit_chance(unit, victim));
             return total;
@@ -344,7 +363,7 @@ public partial class BattleManager
     {
         if (candidate.Damage > 0 && candidate.Skill.aoe_range > 0)
         {
-            foreach (var victim in all_units.Where(Alive).Where(other => other.Get("faction").AsInt32() != actor.Get("faction").AsInt32()))
+            foreach (var victim in get_target_candidates().Where(Alive).Where(other => other.Get("faction").AsInt32() != actor.Get("faction").AsInt32()))
             {
                 var health = forecast.GetValueOrDefault(victim, victim.Get("current_health").AsSingle());
                 if (health <= 0) continue;
@@ -372,14 +391,14 @@ public partial class BattleManager
         foreach (var action in get_battle_unit(unit).skill_queue)
         {
             if (action.kind != BattleQueuedSkill.ActionKind.Skill) continue;
-            var skill = CardRules.NormalCast(action.skill);
+            var skill = CardRules.NormalCast(action.execution_skill);
             if (skill is null) continue;
             var target = GodotObject.IsInstanceValid(action.target) ? action.target : DefaultTarget(skill, unit);
             var damage = EstimateAiDamage(unit, skill, target, forecast);
             if (damage <= 0) continue;
             if (skill.aoe_range > 0)
             {
-                foreach (var victim in all_units.Where(Alive).Where(other => other.Get("faction").AsInt32() != unit.Get("faction").AsInt32()))
+                foreach (var victim in get_target_candidates().Where(Alive).Where(other => other.Get("faction").AsInt32() != unit.Get("faction").AsInt32()))
                 {
                     var current = forecast.GetValueOrDefault(victim, victim.Get("current_health").AsSingle());
                     if (current > 0) forecast[victim] = Math.Max(0, current - EnemyExpectedDamage(skill, unit, victim) * BattleActionResolver.preview_hit_chance(unit, victim));

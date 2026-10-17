@@ -196,7 +196,7 @@ public partial class MainScene
         var dialog = new ConfirmationDialog
         {
             Title = "玄览峰·师门首卷",
-            DialogText = $"{guide?.npc_name ?? "带教师兄/师姐"}陪你来到玄览峰。请选择一本当前可研读的云息秘籍；研读沿用秘籍原有的卷章条件、耗时与体力消耗。读完第一卷后，回紫府峰向同门汇报。",
+            DialogText = $"{guide?.npc_name ?? "带教师兄/师姐"}陪你来到玄览峰。请选择一本当前可研读的云息秘籍；研读沿用秘籍原有的卷章条件、耗时与精力消耗。读完第一卷后，回紫府峰向同门汇报。",
             OkButtonText = "选定此卷",
             CancelButtonText = "稍后再选"
         };

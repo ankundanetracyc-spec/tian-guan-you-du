@@ -1,0 +1,185 @@
+using Godot;
+using GArray = Godot.Collections.Array;
+
+public partial class BattleManager
+{
+    private readonly Dictionary<GodotObject, ArtifactBattleRuntime> _artifactRuntime = [];
+    private readonly Dictionary<GodotObject, List<ArtifactInstanceData>> _artifactItems = [];
+    private readonly List<ArtifactBody> _artifactBodies = [];
+
+    private void InitializeArtifacts(GodotObject owner, BattleEntityData snapshot)
+    {
+        var items = snapshot.equipped_artifacts.Where(item => item is not null && ArtifactSkillFactory.IsConfigured(item)).ToList();
+        _artifactItems[owner] = items;
+        _artifactRuntime[owner] = new(items.Where(item => item.ritual_mode == "外祭").Select(item => (item.instance_id, item.spirit_cost)));
+        owner.Set("used_spirit_perception", 0);
+    }
+
+    public IEnumerable<GodotObject> get_target_candidates() => all_units.Concat(_artifactBodies
+        .Where(body => GodotObject.IsInstanceValid(body) && body.current_health > 0 && body.DepartureReason.Length == 0)
+        .Cast<GodotObject>());
+
+    private GodotObject? ResolveActionTarget(GodotObject owner, BattleQueuedSkill action, ActiveSkillData skill)
+    {
+        if (skill.target_type == 0) return owner;
+        if (IsValidTarget(skill, owner, action.target)) return action.target;
+        var candidates = get_target_candidates().Where(target => IsValidTarget(skill, owner, target)).ToArray();
+        return candidates.Length == 0 ? null : candidates[(int)(GD.Randi() % candidates.Length)];
+    }
+
+    private void PreviewArtifactQueue(GodotObject owner)
+    {
+        if (!_artifactRuntime.TryGetValue(owner, out var runtime) || !battle_units.ContainsKey(owner)) return;
+        var queue = get_battle_unit(owner).skill_queue;
+        var intents = runtime.PreviewQueue(queue.Select(action => action.artifact_instance_id));
+        for (var i = 0; i < queue.Count; i++)
+        {
+            if (queue[i].artifact_intent != intents[i]) queue[i].target = null;
+            queue[i].artifact_intent = intents[i];
+        }
+    }
+
+    public ActiveSkillData get_next_action_skill(GodotObject owner, ActiveSkillData skill)
+    {
+        if (skill.artifact_instance_id.Length == 0 || skill.artifact_is_summon || !_artifactRuntime.TryGetValue(owner, out var runtime)) return skill;
+        var sources = battle_units.ContainsKey(owner) ? get_battle_unit(owner).skill_queue
+            .Where(action => !action.completed).Select(action => action.artifact_instance_id).ToList() : [];
+        sources.Add(skill.artifact_instance_id);
+        return runtime.PreviewQueue(sources)[^1] == ArtifactBattleRuntime.Intent.Summon ? skill.artifact_summon_skill! : skill;
+    }
+
+    private int QueuedUseCount(GodotObject owner, ActiveSkillData skill) => get_battle_unit(owner).skill_queue.Count(action =>
+        !action.completed && action.kind == BattleQueuedSkill.ActionKind.Skill && action.skill == skill
+        && action.artifact_intent != ArtifactBattleRuntime.Intent.Summon);
+
+    private bool CanResolveArtifactAction(GodotObject owner, BattleQueuedSkill action)
+    {
+        if (!_combatSkills.TryGetValue(owner, out var installed) || !installed.Contains(action.skill)
+            || !_artifactRuntime.TryGetValue(owner, out var runtime) || !runtime.CanExecute(action.artifact_instance_id, action.artifact_intent)) return false;
+        if (action.artifact_intent == ArtifactBattleRuntime.Intent.Summon
+            && !runtime.CanSummon(action.artifact_instance_id, owner.Get("max_spirit_perception").AsInt32(), OtherSpirit(owner))) return false;
+        var skill = action.execution_skill;
+        if (action.artifact_intent == ArtifactBattleRuntime.Intent.Use && (!HasAvailableSegmentSkillUses(owner, action.skill)
+            || action.skill.max_charges > 0 && _skillCharges.TryGetValue(owner, out var charges) && charges.GetValueOrDefault(action.skill, action.skill.max_charges) <= 0)) return false;
+        if (!gongfa_combat.CanPlay(owner, skill)) return false;
+        return owner.Get("current_stamina").AsInt32() >= get_skill_energy_cost(owner, skill)
+            && owner.Get("current_mana").AsInt32() >= get_skill_mana_cost(owner, skill);
+    }
+
+    public bool can_plan_artifact_summon(GodotObject owner, ActiveSkillData skill)
+    {
+        if (!_artifactRuntime.TryGetValue(owner, out var runtime) || !runtime.CanExecute(skill.artifact_instance_id, ArtifactBattleRuntime.Intent.Summon)) return false;
+        var item = _artifactItems[owner].FirstOrDefault(item => item.instance_id == skill.artifact_instance_id);
+        if (item is null) return false;
+        var pendingIds = get_battle_unit(owner).skill_queue.Where(action => !action.completed && action.artifact_intent == ArtifactBattleRuntime.Intent.Summon)
+            .Select(action => action.artifact_instance_id).ToHashSet(StringComparer.Ordinal);
+        var pending = _artifactItems[owner].Where(item => pendingIds.Contains(item.instance_id)).Sum(item => (long)item.spirit_cost);
+        return OtherSpirit(owner) + runtime.UsedSpirit + pending + item.spirit_cost <= owner.Get("max_spirit_perception").AsInt32();
+    }
+
+    private long OtherSpirit(GodotObject owner) => Math.Max(0, (long)owner.Get("used_spirit_perception").AsInt32()
+        - (_artifactRuntime.TryGetValue(owner, out var runtime) ? runtime.UsedSpirit : 0));
+
+    private void SyncArtifactSpirit(GodotObject owner, long other)
+    {
+        owner.Set("used_spirit_perception", (int)Math.Min(int.MaxValue, other + _artifactRuntime[owner].UsedSpirit));
+    }
+
+    private void ResolveArtifactSummon(GodotObject owner, BattleQueuedSkill action)
+    {
+        var item = _artifactItems[owner].First(item => item.instance_id == action.artifact_instance_id);
+        var other = OtherSpirit(owner);
+        if (!_artifactRuntime[owner].TryCommitSummon(item.instance_id, owner.Get("max_spirit_perception").AsInt32(), other))
+        { SkipSegmentAction(owner); _resolvingUnit = null; return; }
+        Pay(owner, action.execution_skill);
+        var index = _artifactBodies.Count(body => body.Caster == owner);
+        var body = new ArtifactBody
+        {
+            Name = "ArtifactBody", Caster = owner, InstanceId = item.instance_id, WasSummoned = true,
+            entity_name = item.artifact_name, faction = owner.Get("faction").AsInt32(),
+            current_health = item.outer_body, max_health = item.outer_body,
+            Position = (owner as Node2D)?.Position + new Vector2(105 + index * 150, -100) ?? Vector2.Zero,
+            Visible = !_spectatorBattle
+        };
+        // 显示位置不参与目标合法性；观战隐藏表现时仍须可被选作逻辑目标。
+        (DeployLayer ?? this).AddChild(body);
+        _artifactBodies.Add(body);
+        SyncArtifactSpirit(owner, other);
+        _executor?.show_action_name(owner, action.get_display_name());
+        _planHud?.PresentAction(owner);
+        CompleteSystemActionPresentation(owner);
+    }
+
+    public int damage_artifact_body(GodotObject attacker, ActiveSkillData skill, ArtifactBody body)
+    {
+        if (!get_target_candidates().Contains(body) || !ArtifactAcceptsSkill(body, attacker, skill)) return 0;
+        var damage = Math.Max(0, Mathf.RoundToInt(BattleActionResolver.preview_damage(attacker, skill)));
+        var actual = Math.Min(body.current_health, damage);
+        body.current_health -= actual;
+        body.Refresh();
+        _executor?.show_damage_number(body, actual, skill.damage_type, false);
+        if (body.current_health == 0) depart_artifact(body.Caster, body.InstanceId, "collapsed");
+        return actual;
+    }
+
+    public bool depart_artifact(GodotObject owner, string instanceId, string reason = "departed")
+    {
+        if (!_artifactRuntime.TryGetValue(owner, out var runtime)) return false;
+        var other = OtherSpirit(owner);
+        var collapsed = reason == "collapsed";
+        if (!(collapsed ? runtime.TryCollapse(instanceId) : runtime.TryDepart(instanceId))) return false;
+        var body = _artifactBodies.FirstOrDefault(body => body.Caster == owner && body.InstanceId == instanceId);
+        if (body is not null) { body.Collapsed = collapsed; body.DepartureReason = reason; body.Hide(); }
+        SyncArtifactSpirit(owner, other);
+        _skillBar?.refresh_slots();
+        return true;
+    }
+
+    private void LeaveDeadOwnerArtifacts()
+    {
+        foreach (var owner in _artifactRuntime.Keys.Where(owner => !Alive(owner)).ToArray())
+            foreach (var body in _artifactBodies.Where(body => body.Caster == owner && body.DepartureReason.Length == 0).ToArray())
+                depart_artifact(owner, body.InstanceId, "owner_defeated");
+    }
+
+    public static bool ArtifactAcceptsSkill(ArtifactBody body, GodotObject caster, ActiveSkillData skill) =>
+        body.current_health > 0 && body.DepartureReason.Length == 0 && skill.target_type is 2 or 3 && body.faction != caster.Get("faction").AsInt32()
+        && skill.damage_type is "physical" or "magic" or "magical"
+        && (skill.base_damage > 0 || skill.damage_bonuses.Count > 0 || !string.IsNullOrWhiteSpace(skill.damage_formula));
+
+    public Godot.Collections.Array<Godot.Collections.Dictionary> build_artifact_reports()
+    {
+        var reports = new Godot.Collections.Array<Godot.Collections.Dictionary>();
+        foreach (var (owner, items) in _artifactItems)
+        foreach (var item in items.Where(item => item.ritual_mode == "外祭"))
+        {
+            var body = _artifactBodies.FirstOrDefault(body => body.Caster == owner && body.InstanceId == item.instance_id);
+            reports.Add(new Godot.Collections.Dictionary
+            {
+                ["owner_id"] = owner.Get("unique_id").AsString(), ["instance_id"] = item.instance_id,
+                ["was_summoned"] = body is not null, ["max_body"] = item.outer_body,
+                ["remaining_body"] = body?.current_health ?? 0, ["collapsed"] = body?.Collapsed ?? false,
+                ["departure_reason"] = body?.DepartureReason ?? ""
+            });
+        }
+        return reports;
+    }
+
+    private void FinishArtifacts()
+    {
+        foreach (var owner in _artifactRuntime.Keys)
+        {
+            foreach (var body in _artifactBodies.Where(body => body.Caster == owner && body.DepartureReason.Length == 0).ToArray())
+                depart_artifact(owner, body.InstanceId, "battle_ended");
+            var other = OtherSpirit(owner);
+            _artifactRuntime[owner].FinishBattle();
+            SyncArtifactSpirit(owner, other);
+        }
+    }
+
+    private void ResetArtifacts()
+    {
+        foreach (var body in _artifactBodies) if (GodotObject.IsInstanceValid(body)) body.QueueFree();
+        _artifactBodies.Clear(); _artifactItems.Clear(); _artifactRuntime.Clear();
+    }
+}

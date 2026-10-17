@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/ItemData.cs" id="1"]
+[ext_resource type="Resource" path="res://resources/material_craft/沉云玉屑材性.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+definition_id = &"mat_sinking_cloud_jade_shard"
+entity_name = "沉云玉屑"
+description = "灰青玉石剥落的细屑，纹理沉静，带有淡淡云痕。"
+icon_path = "res://textures/items/item_sinking_cloud_jade_shard.png"
+item_category = "材料"
+item_subcategory = "矿材"
+tags = Array[String](["五行[土]", "质地[玉]", "功用[藏]", "相性[阴]"])
+grade_value = 4
+can_stack = true
+max_stack = 999
+craft_data = ExtResource("2")
+

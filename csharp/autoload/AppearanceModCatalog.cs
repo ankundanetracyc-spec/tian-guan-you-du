@@ -124,6 +124,13 @@ public partial class AppearanceModCatalog : Node
 					continue;
 				entry["resource_path"] = path.PathJoin(relativeFile);
 				entry["package_path"] = path;
+				Variant itemPaths = source.GetValueOrDefault("item_paths", new Godot.Collections.Array());
+				if (itemPaths.VariantType == Variant.Type.Array && variantIndex < itemPaths.AsGodotArray().Count)
+				{
+					string itemPath = itemPaths.AsGodotArray()[variantIndex].AsString();
+					if (ResourceLoader.Exists(itemPath)) entry["item_path"] = itemPath;
+					else GD.PushWarning("立绘衣物物品资源不存在：" + itemPath);
+				}
 				if (ResourceLoader.Exists(entry["resource_path"].AsString()))
 					_parts.Add(entry);
 				else

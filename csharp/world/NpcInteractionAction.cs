@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 
 /// <summary>A single interaction offered by an NPC interaction component.</summary>
-public sealed record NpcInteractionAction(string Id, string Label, Action Activate, bool Enabled = true);
+public sealed record NpcInteractionAction(string Id, string Label, Action Activate, bool Enabled = true, string UnavailableReason = "");
 
 /// <summary>
 /// Supplies actions for a world NPC. Components are registered on MainScene and queried

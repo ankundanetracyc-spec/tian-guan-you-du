@@ -20,11 +20,15 @@ public class BattleQueuedSkill
     public bool wound_timing_adjusted;
     public bool completed;
     public bool skipped;
+    public string artifact_instance_id = "";
+    public ArtifactBattleRuntime.Intent artifact_intent = ArtifactBattleRuntime.Intent.None;
+    public ActiveSkillData execution_skill => artifact_intent == ArtifactBattleRuntime.Intent.Summon ? skill.artifact_summon_skill ?? skill : skill;
 
     public BattleQueuedSkill(ActiveSkillData source, GodotObject? chosenTarget)
     {
         kind = ActionKind.Skill;
         skill = source;
+        artifact_instance_id = source.artifact_instance_id;
         target = chosenTarget;
         preparation_frames = Mathf.Max(1, source.preparation_frames);
         recovery_frames = Mathf.Max(0, source.recovery_frames);
@@ -46,7 +50,7 @@ public class BattleQueuedSkill
         ActionKind.Retreat => "撤退",
         ActionKind.Rest => "休整",
         ActionKind.Breathe => "吐纳",
-        _ => skill?.skill_name ?? "技能"
+        _ => (skill?.skill_name ?? "技能") + (artifact_instance_id.Length == 0 ? "" : artifact_intent == ArtifactBattleRuntime.Intent.Summon ? "〔召唤〕" : artifact_intent == ArtifactBattleRuntime.Intent.Use ? "〔御使〕" : "〔不可用〕")
     };
 
     public float progress() => phase switch

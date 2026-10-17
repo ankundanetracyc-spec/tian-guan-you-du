@@ -1,18 +1,22 @@
 extends SceneTree
 
 # Authoring-only registration. Runtime never fits individual pose bounds.
-const ROOT := "res://textures/characters/side_ink_chop_sample_20261015_v2/"
+const DEFAULT_ROOT := "res://textures/characters/side_ink_chop_sample_20261015_v2/"
 const CANVAS_SIZE := Vector2i(2048, 2048)
 const GROUND_ORIGIN := Vector2(1024.0, 1900.0)
 
 func _initialize() -> void:
-	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(ROOT + "export_manifest.json"))
+	var art_root := DEFAULT_ROOT
+	for argument in OS.get_cmdline_user_args():
+		if argument.begins_with("--art-root="):
+			art_root = argument.trim_prefix("--art-root=").trim_suffix("/") + "/"
+	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(art_root + "export_manifest.json"))
 	if not parsed is Dictionary:
 		push_error("Invalid side-ink export manifest")
 		quit(1)
 		return
 	for entry in parsed["poses"]:
-		var source := Image.load_from_file(ProjectSettings.globalize_path(ROOT + str(entry["source"])))
+		var source := Image.load_from_file(ProjectSettings.globalize_path(art_root + str(entry["source"])))
 		if source == null or source.is_empty():
 			push_error("Missing source: " + str(entry["source"]))
 			quit(1)
@@ -26,7 +30,7 @@ func _initialize() -> void:
 		var target := Image.create(CANVAS_SIZE.x, CANVAS_SIZE.y, false, Image.FORMAT_RGBA8)
 		target.fill(Color.TRANSPARENT)
 		target.blit_rect(source, Rect2i(Vector2i.ZERO, source.get_size()), offset)
-		var error := target.save_png(ROOT + str(entry["output"]))
+		var error := target.save_png(art_root + str(entry["output"]))
 		if error != OK:
 			push_error("Unable to export: " + str(entry["output"]))
 			quit(1)

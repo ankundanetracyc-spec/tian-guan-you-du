@@ -13,7 +13,7 @@ public partial class InkVfxShowcase : Control
     private const int MaskWidth = 512;
     private const int MaskHeight = 288;
 
-    private enum PreviewType { Shader, Shield, Death, Punch, SwordCleave, SwordImpact, Impact, CriticalImpact, SwordExchange, RealSkill }
+    private enum PreviewType { Shader, Shield, Death, Punch, SwordCleave, SwordImpact, Impact, CriticalImpact, SwordExchange, RealSkill, Hurt, Guard, Recovery, Dodge }
 
     private readonly record struct EffectDefinition(string Id, string Name, string Summary, Color Color, float Spread, float Distortion, float EdgeDarkness, float Duration, float Mode, PreviewType Preview, string SkillPath = "");
 
@@ -24,6 +24,11 @@ public partial class InkVfxShowcase : Control
         new("brush", "笔锋扫掠", "一笔横扫留下带方向性的湿墨拖尾。", new Color("1c2925"), 0.82f, 0.032f, 1.08f, 1.75f, 2f, PreviewType.Shader),
         new("burst", "碎墨爆散", "墨团向外炸开，边缘破碎并带有颗粒感。", new Color("222b28"), 1.28f, 0.070f, 0.70f, 1.55f, 3f, PreviewType.Shader),
         new("dry_edge", "干湿边缘", "主体淡化，只观察外圈、回渗和干燥边界。", new Color("29302c"), 1.04f, 0.045f, 1.20f, 2.2f, 4f, PreviewType.Shader),
+        new("battle_hand_chop", "战斗·通用出手", "默认衣装下劈姿势、淡彩轨迹与小范围命中墨花，接近后发力并回位。", new Color("748a7f"), 0f, 0f, 0f, 1.4f, 0f, PreviewType.RealSkill, "res://resources/activeskills/应敌.tres"),
+        new("battle_hurt", "战斗·受击", "受力姿势与淡彩受击序列帧，短暂停顿后余墨漂移消散。", new Color("748a7f"), 0f, 0f, 0f, 1.0f, 0f, PreviewType.Hurt),
+        new("battle_guard", "战斗·应对防御", "交锋局部取景，攻方轨迹与受方架挡同拍停顿，不追加防御墨效或受击动作。", new Color("748a7f"), 0f, 0f, 0f, 2.2f, 0f, PreviewType.Guard),
+        new("battle_dodge", "战斗·闪避", "撤身让开来袭轨迹，袖发拖影与淡彩余笔自然回收。", new Color("748a7f"), 0f, 0f, 0f, 2.2f, 0f, PreviewType.Dodge),
+        new("battle_restore", "战斗·休整回气", "轻收手臂、两笔气息向掌前回拢，余屑衔接回待机。", new Color("748a7f"), 0f, 0f, 0f, 1.8f, 0f, PreviewType.Recovery),
         new("battle_shield", "战斗·常驻护盾", "青灰湿墨形成护持边界；来袭一侧积墨受力，淡墨向外洇开。", new Color("316ca0"), 0f, 0f, 0f, 2.4f, 0f, PreviewType.Shield),
         new("battle_death", "战斗·死亡墨散", "深墨短暂沉积，再收束为不规则枯墨，湿边逐渐散淡。", new Color("18211f"), 0f, 0f, 0f, 0.9f, 0f, PreviewType.Death),
         new("battle_punch", "战斗·发劲", "暖灰劲痕加速推出，接触顿笔后向受力方向散开，干湿笔触逐层收淡。", new Color("a85c4d"), 0f, 0f, 0f, 0.65f, 0f, PreviewType.Punch),
@@ -68,7 +73,7 @@ public partial class InkVfxShowcase : Control
             if (skill is null || skill.skill_type == ActiveSkillData.SkillType.POWER || skill.skill_type == ActiveSkillData.SkillType.CURSE) continue;
             var suffix = string.IsNullOrEmpty(skill.source_gongfa_name) ? "" : " · " + skill.source_gongfa_name;
             definitions.Add(new EffectDefinition(path, skill.skill_name + suffix, BattleInkCombatVfx.Describe(skill), new Color("18211f"),
-                0f, 0f, 0f, 0.85f, 0f, PreviewType.RealSkill, path));
+                0f, 0f, 0f, BattleInkCombatVfx.Profile(skill) == BattleInkCombatVfx.Kind.Recovery ? 1.8f : 1.4f, 0f, PreviewType.RealSkill, path));
         }
         _effects = definitions.ToArray();
         _masks.Add(CreateMask(0));
@@ -330,13 +335,15 @@ public partial class InkVfxShowcase : Control
     private void Replay()
     {
         _previewGeneration++;
+        foreach (var effect in GetChildren().OfType<BattleInkCombatVfx>()) effect.QueueFree();
+        foreach (var focus in GetChildren().OfType<BattleContactFocus>()) focus.QueueFree();
+        PositionBattlePreview();
         _elapsed = 0f;
         _playing = true;
         _shieldPreviewImpactPlayed = false;
 
         if (_current.Preview != PreviewType.Shader)
         {
-            PositionBattlePreview();
             TriggerBattlePreview();
             if (_status is not null) _status.Text = _current.Preview == PreviewType.Shield ? "常驻显示" : "准备播放";
             return;
@@ -351,10 +358,12 @@ public partial class InkVfxShowcase : Control
     {
         _previewMotion?.Kill();
         if (_stage is null || _battleAttacker is null || _battleTarget is null || _shieldPreview is null) return;
-        _battleAttacker.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.hold_attack_contact(false);
-        _battleTarget.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.hold_attack_contact(false);
+        _battleAttacker.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.reset_presentation();
+        _battleTarget.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.reset_presentation();
         var size = _stage.Size;
         if (size.X < 300f || size.Y < 200f) size = new Vector2(700f, 430f);
+        _battleAttacker.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.SetDisplayHeight(Mathf.Min(320, size.Y * .62f));
+        _battleTarget.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.SetDisplayHeight(Mathf.Min(320, size.Y * .62f));
         var center = new Vector2(size.X * 0.5f, size.Y * 0.50f);
         _battleAttacker.Position = center + new Vector2(-165f, 112f);
         _battleTarget.Position = center + new Vector2(165f, 112f);
@@ -379,9 +388,25 @@ public partial class InkVfxShowcase : Control
 
         if (_current.Preview == PreviewType.Death)
         {
+            _battleTarget.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_death();
             BattleInkSlashEffect.PlayDeath(_battleTarget);
             return;
         }
+
+        var direction = (_battleTarget.GlobalPosition - _battleAttacker.GlobalPosition).Normalized();
+        if (_current.Preview == PreviewType.Hurt)
+        {
+            _battleTarget.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_hit(direction);
+            return;
+        }
+        if (_current.Preview is PreviewType.Guard or PreviewType.Dodge)
+        {
+            if (_current.Preview == PreviewType.Guard)
+                BattleInkCombatVfx.PlayUtility(_battleTarget, _battleTarget, GD.Load<ActiveSkillData>("res://resources/activeskills/架招.tres"));
+            PreviewAttackStaging(_battleAttacker, _battleTarget, GD.Load<ActiveSkillData>("res://resources/activeskills/应敌.tres"), _previewGeneration, _current.Preview == PreviewType.Dodge);
+            return;
+        }
+        if (_current.Preview == PreviewType.Recovery) { BattleInkCombatVfx.PlayRecovery(_battleAttacker); BattleInkCombatVfx.PlayRecovery(_battleTarget); return; }
 
         if (_current.Preview == PreviewType.RealSkill)
         {
@@ -396,14 +421,8 @@ public partial class InkVfxShowcase : Control
 
         if (_current.Preview == PreviewType.Punch)
         {
-            var skill = new ActiveSkillData { skill_name = "发劲", damage_type = "physical" };
-            BattleInkSlashEffect.PlayAttack(_battleAttacker, _battleTarget, skill);
-            var target = _battleTarget;
-            var generation = _previewGeneration;
-            GetTree().CreateTimer(0.16f).Timeout += () =>
-            {
-                if (generation == _previewGeneration && GodotObject.IsInstanceValid(target)) BattleInkSlashEffect.PlayImpactForSkill(target, skill, false);
-            };
+            var skill = GD.Load<ActiveSkillData>("res://resources/activeskills/发劲.tres");
+            if (skill is not null) PreviewAttackStaging(_battleAttacker, _battleTarget, skill, _previewGeneration);
             return;
         }
 
@@ -418,14 +437,17 @@ public partial class InkVfxShowcase : Control
             BattleInkSlashEffect.PlaySwordImpact(_battleTarget, _battleAttacker);
 
         if (_current.Preview is PreviewType.Impact or PreviewType.CriticalImpact)
-            BattleInkSlashEffect.PlayImpact(_battleTarget, _current.Preview == PreviewType.CriticalImpact);
+        {
+            BattleInkSlashEffect.PlayImpact(_battleTarget, _current.Preview == PreviewType.CriticalImpact, attacker: _battleAttacker);
+            _battleTarget.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_hit(direction, critical: _current.Preview == PreviewType.CriticalImpact);
+        }
 
         if (_current.Preview == PreviewType.SwordExchange)
         {
             var attacker = _battleAttacker;
             var target = _battleTarget;
             var generation = _previewGeneration;
-            attacker.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_attack(Vector2.Right);
+            attacker.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_attack(direction, false);
             BattleInkSlashEffect.PlaySwordCleave(attacker, target);
             GetTree().CreateTimer(0.15f).Timeout += () =>
             {
@@ -436,7 +458,7 @@ public partial class InkVfxShowcase : Control
         }
     }
 
-    private async void PreviewAttackStaging(Node2D attacker,Node2D target,ActiveSkillData skill,int generation)
+    private async void PreviewAttackStaging(Node2D attacker,Node2D target,ActiveSkillData skill,int generation,bool evaded=false)
     {
         bool Current() => IsInsideTree() && generation==_previewGeneration && IsInstanceValid(attacker) && IsInstanceValid(target);
         async System.Threading.Tasks.Task Wait(float seconds) =>
@@ -455,12 +477,12 @@ public partial class InkVfxShowcase : Control
         }
         var direction=(target.GlobalPosition-attacker.GlobalPosition).Normalized();
         var doll=attacker.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll");
-        doll?.play_attack(direction);
+        doll?.play_attack(direction, BattleInkCombatVfx.UsesHandChop(skill));
         BattleInkCombatVfx.PlayAttack(attacker,target,skill);
-        await Wait(BattleInkCombatVfx.ContactSeconds);
+        await Wait(BattleInkCombatVfx.AttackContactSeconds(attacker));
         if(!Current())return;
-        BattleInkCombatVfx.PlayImpact(target,skill,attacker);
-        target.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_hit(direction,BattleInkCombatVfx.HitWeight(skill));
+        BattleInkCombatVfx.PlayImpact(target,skill,attacker,evaded:evaded);
+        if (!evaded) target.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_hit(direction,BattleInkCombatVfx.HitWeight(skill));
         doll?.hold_attack_contact(true);
         await Wait(BattleInkCombatVfx.ContactHoldSeconds(BattleInkCombatVfx.HitWeight(skill))+.055f);
         if(!Current())return;
@@ -543,15 +565,9 @@ public partial class InkVfxShowcase : Control
     private static Node2D CreateBattleMarker(string text, Color color)
     {
         var marker = new Node2D { Name = text };
-        marker.AddChild(new Polygon2D
-        {
-            Polygon = [new Vector2(-42f, 4f), new Vector2(-26f, -3f), new Vector2(26f, -3f), new Vector2(42f, 4f), new Vector2(25f, 11f), new Vector2(-25f, 11f)],
-            Color = new Color(0.06f, 0.08f, 0.07f, 0.22f),
-            Position = new Vector2(0f, -20f)
-        });
         var doll = new BattlePaperDoll { Name = "BattlePaperDoll" };
         marker.AddChild(doll);
-        doll.Configure(new BattleEntityData { entity_name = text, gender = 0,
+        doll.Configure(new BattleEntityData { entity_name = text, gender = text == "目标" ? 1 : 0,
             faction = text == "目标" ? (int)WorldEntity.Faction.ENEMY : 1 });
         var label = MakeLabel(text, 13, new Color(0.19f, 0.16f, 0.11f, 0.90f));
         label.Position = new Vector2(-28f, 18f);

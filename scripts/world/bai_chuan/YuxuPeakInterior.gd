@@ -290,6 +290,7 @@ func _build_life_actions() -> void:
 		["promotion", "申请晋升"],
 		["heguang_duties", "宗门事务"],
 		["heguang_peer_qa", "同门答疑"],
+		["heguang_banquet", "举办宗门宴席"],
 		["sect_exchange", "善功堂"],
 		["yaopu_watch", "药园值守"],
 		["yaopu_cultivate", "培护灵植"],
@@ -466,7 +467,7 @@ func _refresh_main_actions() -> void:
 	for button in _life_action_buttons:
 		button.hide()
 	if _current_peak_id == "heguang" and _sect_is_member:
-		for action_id in ["heguang_duties", "heguang_peer_qa", "sect_exchange"]:
+		for action_id in ["heguang_duties", "heguang_peer_qa", "heguang_banquet", "sect_exchange"]:
 			var button := _action_buttons.get(action_id) as Button
 			if button != null:
 				button.show()

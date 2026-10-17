@@ -5,8 +5,21 @@ using System.Linq;
 
 public partial class MainScene
 {
+    private bool is_npc_in_seclusion_now(WorldNpcData npc)
+    {
+        var now = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+        return npc is not null && npc.is_in_seclusion_at_hour(now);
+    }
+
+    private void explain_npc_seclusion(WorldNpcData npc)
+    {
+        if (is_npc_in_seclusion_now(npc))
+            show_message("对方正在闭关", $"{npc.npc_name}正在静室修行，暂不接待交谈、交易或切磋。你可以留下结识拜帖。");
+    }
+
     private readonly List<INpcInteractionActionComponent> _worldNpcInteractionComponents =
     [
+        new AcquaintanceNoteNpcInteractionComponent(),
         new BasicNpcInteractionComponent(),
         new SparNpcInteractionComponent(),
         new PurchaseNpcInteractionComponent(),
@@ -57,8 +70,18 @@ public partial class MainScene
 
     private IEnumerable<NpcInteractionAction> collect_world_npc_interaction_actions(WorldNpcData npc)
     {
+        var contactFailure = social_contact_failure_reason(npc);
+        if (contactFailure.Length > 0)
+        {
+            yield return new("npc.unavailable", "当前暂不可交互", static () => { }, false, contactFailure);
+            yield break;
+        }
+        var now = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+        var secluded = npc.is_in_seclusion_at_hour(now);
         foreach (var component in _worldNpcInteractionComponents.ToArray())
         {
+            if (secluded && component.ComponentId != "npc.acquaintance_note") continue;
+            if (!secluded && component.ComponentId == "npc.acquaintance_note") continue;
             IEnumerable<NpcInteractionAction>? supplied;
             try { supplied = component.GetActions(this, npc); }
             catch (Exception error)
@@ -115,6 +138,41 @@ public partial class MainScene
             yield return new("talk", "交谈", () => owner.open_world_npc_talk(target));
             yield return new("trade", "交易", () => owner.open_world_npc_trade(target));
         }
+    }
+
+    private sealed class AcquaintanceNoteNpcInteractionComponent : NpcInteractionActionComponent
+    {
+        public override string ComponentId => "npc.acquaintance_note";
+        public override IEnumerable<NpcInteractionAction> GetActions(MainScene owner, WorldNpcData target)
+        {
+            var now = owner.GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+            if (target.is_in_seclusion_at_hour(now))
+                yield return new("leave_acquaintance_note", "留下结识拜帖", () => owner.leave_acquaintance_note(target));
+        }
+    }
+
+    /// <summary>在闭关人物门外留下结识拜帖；仅保存待处理事实，不即时建立关系、交换姓名或刷新窗口。</summary>
+    public bool leave_acquaintance_note(WorldNpcData npc)
+    {
+        var now = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+        if (npc is null || !GodotObject.IsInstanceValid(npc) || !npc.is_alive || !can_contact_social_npc(npc) || !npc.is_in_seclusion_at_hour(now)) return false;
+        npc.acquaintance_notes ??= [];
+        if (npc.acquaintance_notes.Any(note => note.GetValueOrDefault("status", "").AsString() == "pending"))
+        {
+            show_message(npc.npc_name, "先前留下的拜帖尚待对方出关后处理。 ");
+            return false;
+        }
+        npc.acquaintance_notes.Add(new Godot.Collections.Dictionary
+        {
+            ["note_id"] = Guid.NewGuid().ToString("N"),
+            ["received_hour"] = now,
+            ["status"] = "pending",
+            ["resolved_month"] = -1,
+        });
+        mark_save_dirty();
+        show_message(npc.npc_name, "你将结识拜帖留在静室门外。待对方出关后，才会决定是否回应。 ");
+        refresh_active_world_npc_interaction();
+        return true;
     }
 
     private sealed class SparNpcInteractionComponent : NpcInteractionActionComponent

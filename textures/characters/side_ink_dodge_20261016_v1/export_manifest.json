@@ -1,0 +1,10 @@
+{
+  "canvas":[2048,2048],
+  "ground_origin":[1024,1900],
+  "reference_visible_height":1375,
+  "registration":"Fixed authoring registration to the common ground and approved head/body scale; evasion silhouette can sit lower than idle. No runtime fitting.",
+  "poses":[
+    {"source":"source/male_dodge.png","output":"male_dodge.png","source_origin":[703,1149],"authoring_scale":1.45},
+    {"source":"source/female_dodge.png","output":"female_dodge.png","source_origin":[700,1165],"authoring_scale":1.50}
+  ]
+}

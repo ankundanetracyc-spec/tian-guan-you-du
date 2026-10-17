@@ -8,6 +8,7 @@ public partial class AppearanceLab : Control
 
     public override void _Ready()
     {
+        if (!Engine.IsEditorHint()) { BattlePreviewScene.Mount(this); return; }
         SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         MouseFilter = MouseFilterEnum.Stop;
 

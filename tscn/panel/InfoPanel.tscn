@@ -663,7 +663,7 @@ size_flags_horizontal = 3
 
 [node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/CombatSection/RowTwo/StaminaRow" unique_id=1946156976]
 layout_mode = 2
-text = "精力　—"
+text = "体力　—"
 
 [node name="ManaRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CombatSection/RowTwo" unique_id=1995333097]
 layout_mode = 2
@@ -759,7 +759,7 @@ size_flags_horizontal = 3
 
 [node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/CombatSection/RowSeven/StaminaRegenRow" unique_id=402201083]
 layout_mode = 2
-text = "精力回复　—"
+text = "体力回复　—"
 
 [node name="ManaRegenRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CombatSection/RowSeven" unique_id=402201084]
 layout_mode = 2

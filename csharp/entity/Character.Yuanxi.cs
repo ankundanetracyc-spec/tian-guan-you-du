@@ -42,7 +42,7 @@ public partial class Character
         human.yuanxi_target = Math.Clamp(target, yuanxi_count + 1, 9);
         human.yuanxi_phase = 0; human.yuanxi_phase_hours = 0;
         human.yuanxi_clock_hour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
-        human.yuanxi_notice = "闭关开始；修炼不消耗体力，主动出关将失去当前未成一息。";
+        human.yuanxi_notice = "闭关开始；修炼不消耗精力，主动出关将失去当前未成一息。";
         human.yuanxi_active = true;
         NotifyYuanxi();
         return true;

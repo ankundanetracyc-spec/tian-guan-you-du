@@ -132,12 +132,13 @@ public partial class BattleManager : Node2D
             // 隔离战斗资源，避免 PackedScene 共用数据污染世界角色或演练存档。
             if(unit is WorldEntity entity && entity.entity_data is not null)entity.entity_data=entity.entity_data.Duplicate(true) as EntityData;
             DeployLayer?.AddChild(unit);
-            unit.Set("initialized_from_data", true); unit.Call("apply_battle_data", snapshot);
+            unit.Set("initialized_from_data", true); unit.SetMeta("artifact_battle_clone", true); unit.Call("apply_battle_data", snapshot);
             unit.SetMeta("battle_dun_speed",snapshot.dun_speed);
             unit.SetMeta("basic_deck_path", snapshot.basic_deck_path);
             unit.SetMeta("active_skill_paths", snapshot.active_skill_paths);
             unit.SetMeta("loaded_skill_paths", snapshot.loaded_skill_paths);
             unit.SetMeta("combat_skill_slot_paths", snapshot.combat_skill_slot_paths);
+            unit.SetMeta("combat_resolved_skills", snapshot.combat_resolved_skills.Duplicate(true));
             unit.SetMeta("combat_skill_slots_configured", snapshot.combat_skill_slots_configured);
             unit.SetMeta("combat_passive_paths", snapshot.combat_passive_paths);
             unit.SetMeta("combat_heart_method_upgrades", snapshot.combat_heart_method_upgrades);
@@ -149,7 +150,7 @@ public partial class BattleManager : Node2D
                 CurrentMana = unit.Get("current_mana").AsInt32(),
                 MaxMana = unit.Get("max_mana").AsInt32()
             };
-            // 精力在战斗中使用独立的 6 点上限；法力上限沿用角色境界快照。
+            // 体力在战斗中使用独立的 6 点上限；法力上限沿用角色境界快照。
             unit.Set("max_stamina", BattleEnergyCap); unit.Set("current_stamina", 0);
             unit.Set("current_mana", 0);
             if (unit is Creature creature)
@@ -179,6 +180,7 @@ public partial class BattleManager : Node2D
             }
             battle_units[unit] = new BattleUnit(); ((BattleUnit)battle_units[unit].AsGodotObject()!).setup(unit, deck);
             initialize_formation_circuits(unit, snapshot);
+            InitializeArtifacts(unit, snapshot);
         }
     }
 }

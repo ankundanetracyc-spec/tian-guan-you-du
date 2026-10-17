@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="PortraitClothingData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/PortraitClothingData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+definition_id = &"portrait_clothing_yuxu_zayi"
+entity_name = "玉虚·杂役常服"
+description = "玉虚仙宗杂役弟子立绘衣着，男女款随角色性别呈现。持有后可换上；只改变立绘，不改变衣甲属性或战斗表现。"
+icon_path = "res://textures/items/clothing/portrait_clothing_yuxu_zayi.png"
+item_category = "装备"
+item_subcategory = "立绘衣着"
+can_stack = false
+max_stack = 1
+portrait_gender = "both"
+appearance_style_index = 3

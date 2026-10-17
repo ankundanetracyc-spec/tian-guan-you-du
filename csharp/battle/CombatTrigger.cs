@@ -43,6 +43,7 @@ public partial class CombatTrigger : Node
         var returnData = manager.Call("consume_battle_return_data").AsGodotDictionary();
         var context = returnData.GetValueOrDefault("context", new Dictionary()).AsGodotDictionary();
         var summary = returnData.GetValueOrDefault("summary", new Dictionary()).AsGodotDictionary();
+        if (results.Count > 3) summary["artifact_reports"] = results[3]; // 仅回传，首版不扣耐久。
         var currentScene = GetTree().CurrentScene;
         if (hasBattleResults)
         {

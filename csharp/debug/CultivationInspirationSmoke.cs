@@ -11,11 +11,35 @@ using System.Text;
 public partial class CultivationInspirationSmoke : Node
 {
     private const long HoursPerYear = 360L * 24L;
+    private static readonly List<GodotObject> RetainedTestObjects = [];
+
+    private static void retain_test_object(GodotObject instance)
+    {
+        // Keep short-lived test resources/nodes strongly referenced through the run. Releasing
+        // them mid-frame can race Godot's wrapper finalizer while this smoke creates many instances.
+        RetainedTestObjects.Add(instance);
+    }
+
+    private static void release_test_objects_before_exit()
+    {
+        foreach (var instance in RetainedTestObjects)
+        {
+            GC.SuppressFinalize(instance);
+            if (instance is not Node && GodotObject.IsInstanceValid(instance) && instance is IDisposable disposable)
+                disposable.Dispose();
+        }
+        RetainedTestObjects.Clear();
+    }
 
     public override void _Ready()
     {
         try
         {
+            // Character initialization repeatedly resolves this same cached clothing resource.
+            // Hold its wrapper for the lifetime of this smoke to avoid Mono finalizing a stale
+            // cached-resource handle between generated test characters.
+            if (ResourceLoader.Load<PortraitClothingData>("res://resources/entities/items/clothing/玉虚内门常服.tres") is { } clothing)
+                retain_test_object(clothing);
             check_relief_formula();
             check_repeated_refinement_and_clock();
             check_accumulation_cap_and_realm_transition();
@@ -29,11 +53,13 @@ public partial class CultivationInspirationSmoke : Node
             check_room_integration();
             check_runtime_pacing_inputs();
             check_pacing_projection();
+            release_test_objects_before_exit();
             GD.Print("CULTIVATION_INSPIRATION_SMOKE_OK");
             GetTree().Quit();
         }
         catch (Exception error)
         {
+            release_test_objects_before_exit();
             GD.PushError($"CULTIVATION_INSPIRATION_SMOKE_FAIL: {error}");
             GetTree().Quit(1);
         }
@@ -71,7 +97,7 @@ public partial class CultivationInspirationSmoke : Node
             Math.Abs(summary.GetValueOrDefault("penalty", 0d).AsDouble() - expectedPenalty) < 1e-12 &&
             human?.cultivation_inspiration_records[0].state_id == CultivationInspirationRecord.StateConsumed &&
             startHours == (clock?.get_total_game_hours() ?? 0);
-        character.Free();
+        retain_test_object(character);
         return ok;
     }
 
@@ -100,7 +126,7 @@ public partial class CultivationInspirationSmoke : Node
         Check((character.entity_data as HumanData)?.cultivation_bottleneck_accumulated_hours == data.cultivation_bottleneck_accumulated_hours,
             "refinement leaves accumulated cultivation hours unchanged");
         Check(!character.try_refine_cultivation_bottleneck("repeat-1", out _), "the consumed record cannot be used twice");
-        character.Free();
+        retain_test_object(character);
     }
 
     private void check_accumulation_cap_and_realm_transition()
@@ -117,7 +143,7 @@ public partial class CultivationInspirationSmoke : Node
         Check(capped.GetValueOrDefault("level", 0).AsInt32() == 8 &&
             Math.Abs(capped.GetValueOrDefault("accumulated_cultivation_hours", 0d).AsDouble() - maximum) < 1e-9,
             "eighth stage caps saved accumulation at grace plus 48 days");
-        cappedCharacter.Free();
+        retain_test_object(cappedCharacter);
 
         var data = create_stage_data(4);
         data.cultivation_inspiration_records.Add(make_record("realm-transition-relief", 2, clockNow));
@@ -132,12 +158,13 @@ public partial class CultivationInspirationSmoke : Node
         Check(afterRealmChange.GetValueOrDefault("level", 0).AsInt32() == 2 &&
             Math.Abs(afterRealmChange.GetValueOrDefault("penalty", 0d).AsDouble() - relievedPenalty) < 1e-12,
             "realm progression recalculates stage without silently erasing saved relief");
-        character.Free();
+        retain_test_object(character);
     }
 
     private void check_source_event_idempotency_and_diminishing_floor()
     {
         var human = new HumanData();
+        retain_test_object(human);
         var first = CultivationInspirationSystem.try_award_renewable(human, "stable-event", "repeatable-source", "测试来源", 2, "test-action",
             0, 1f, .5f, .05f, out var awarded, out var firstResult);
         var second = CultivationInspirationSystem.try_award_renewable(human, "stable-event", "repeatable-source", "测试来源", 2, "test-action",
@@ -159,6 +186,7 @@ public partial class CultivationInspirationSmoke : Node
     private void check_expiry_boundary()
     {
         var human = new HumanData();
+        retain_test_object(human);
         var record = make_record("expiry-edge", 1, 0);
         human.cultivation_inspiration_records.Add(record);
         Check(CultivationInspirationSystem.get_available_records(human, HoursPerYear - 1).Count == 1,
@@ -169,6 +197,7 @@ public partial class CultivationInspirationSmoke : Node
 
         var now = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
         var characterData = new HumanData { cultivation_realm = "云息三层" };
+        retain_test_object(characterData);
         var expiring = make_record("character-expiry", 1, now - HoursPerYear);
         expiring.expires_at_game_hour = now;
         characterData.cultivation_inspiration_records.Add(expiring);
@@ -182,7 +211,7 @@ public partial class CultivationInspirationSmoke : Node
         Check(remaining.Count == 0 && notifications == 1 &&
             (character.entity_data as HumanData)?.cultivation_inspiration_records[0].state_id == CultivationInspirationRecord.StateExpired,
             "expiring a saved record emits the persistence-change notification");
-        character.Free();
+        retain_test_object(character);
     }
 
     private void check_weighted_rank_selection()
@@ -190,6 +219,7 @@ public partial class CultivationInspirationSmoke : Node
         Check(CultivationInspirationTuning.try_get_source_rule("field.gathering", out var rule),
             "gathering inspiration source has prototype rank weights");
         var human = new HumanData();
+        retain_test_object(human);
         var counts = new System.Collections.Generic.Dictionary<int, int> { [1] = 0, [2] = 0, [3] = 0 };
         const int eventCount = 96;
         for (var index = 0; index < eventCount; index++)
@@ -257,7 +287,7 @@ public partial class CultivationInspirationSmoke : Node
         Check(storedOtherDomain!.armed_for_action &&
             storedOtherDomain.state_id == CultivationInspirationRecord.StateAvailable,
             "consuming one action domain leaves another domain reservation untouched");
-        character.Free();
+        retain_test_object(character);
     }
 
     private void check_cross_domain_use_mapping()
@@ -285,12 +315,14 @@ public partial class CultivationInspirationSmoke : Node
         record.use_domain_id = "route_observation";
         record.armed_for_action = true;
         human.cultivation_inspiration_records.Add(record);
-        human.cultivation_inspiration_source_events.Add(new CultivationInspirationSourceEventRecord
+        var sourceEvent = new CultivationInspirationSourceEventRecord
         {
             event_id = "saved-event", source_id = "journey-test", attempted_at_game_hour = 24,
             granted = true, granted_record_id = record.record_id, requested_quality_rank = 3,
             evaluated_chance = .4f, deterministic_roll = .2f
-        });
+        };
+        retain_test_object(sourceEvent);
+        human.cultivation_inspiration_source_events.Add(sourceEvent);
 
         var path = $"user://cultivation_inspiration_smoke_{Guid.NewGuid():N}.tres";
         Check(ResourceSaver.Save(human, path) == Error.Ok, "inspiration state writes to a resource save");
@@ -306,6 +338,7 @@ public partial class CultivationInspirationSmoke : Node
             restored.cultivation_inspiration_source_events.Count == 1 &&
             restored.cultivation_bottleneck_current_penalty == human.cultivation_bottleneck_current_penalty,
             "records, source ledger, expiry, and bottleneck survive save/load");
+        if (restored is not null) retain_test_object(restored);
         DirAccess.RemoveAbsolute(ProjectSettings.GlobalizePath(path));
 
         var json = Json.Stringify(new Dictionary
@@ -349,7 +382,7 @@ public partial class CultivationInspirationSmoke : Node
         Check(!character.try_refine_cultivation_bottleneck("yuanxi-record", out _) &&
             (character.entity_data as HumanData)?.cultivation_inspiration_records[0].state_id == CultivationInspirationRecord.StateAvailable,
             "Yuanxi does not consume an inspiration for bottleneck relief");
-        character.Free();
+        retain_test_object(character);
     }
 
     private void check_room_integration()
@@ -366,7 +399,8 @@ public partial class CultivationInspirationSmoke : Node
         AddChild(room);
         room.show_entity(character);
         FindButton(room, "灵感·瓶颈").EmitSignal(BaseButton.SignalName.Pressed);
-        Check(room.GetNode<Control>("QuietRoom/RoomPages/InspirationPage").IsVisibleInTree(), "静室灵感页签打开对应页面");
+        var inspirationPage = Nodes<Control>(room).FirstOrDefault(node => node.Name == "InspirationPage");
+        Check(inspirationPage?.IsVisibleInTree() == true, "静室灵感页签打开对应页面");
         var recordButton = Nodes<Button>(room).FirstOrDefault(button => button.Text.StartsWith("灵感·明辨", StringComparison.Ordinal));
         Check(recordButton is not null && recordButton.Text.Contains("来源：测试经历", StringComparison.Ordinal) &&
             recordButton.Text.Contains("用途方向：test-action", StringComparison.Ordinal) && recordButton.Text.Contains("有效至：", StringComparison.Ordinal),
@@ -378,8 +412,8 @@ public partial class CultivationInspirationSmoke : Node
             (character.entity_data as HumanData)?.cultivation_inspiration_records[0].state_id == CultivationInspirationRecord.StateConsumed,
             "静室按钮恰好消费选中记录并更新瓶颈减速");
         Check((clock?.get_total_game_hours() ?? 0) == startHours, "打开与使用灵感页不推进时间");
-        room.Free();
-        character.Free();
+        retain_test_object(room);
+        retain_test_object(character);
     }
 
     private void check_pacing_projection()
@@ -417,7 +451,7 @@ public partial class CultivationInspirationSmoke : Node
         GD.Print($"CULTIVATION_PACING runtime_no_insight total={noInspiration.TotalYears:F4}y cloud10={noInspiration.ToCloudTenYears:F4}y cultivation={noInspiration.CultivationDays:F1}d bottle={noInspiration.CappedBottleneckDays:F1}d months={noInspiration.CompletedMonths} events=[{sourceCounts(noInspiration)}]");
         GD.Print($"CULTIVATION_PACING runtime_env1_action25 total={quarterForActions.TotalYears:F4}y cloud10={quarterForActions.ToCloudTenYears:F4}y cultivation={quarterForActions.CultivationDays:F1}d bottle={quarterForActions.CappedBottleneckDays:F1}d months={quarterForActions.CompletedMonths} records={quarterForActions.GrantedRecordCount} ranks=[{rankCounts(quarterForActions)}] refine={quarterForActions.RefinementUses} actions={quarterForActions.ActionUses} expired={quarterForActions.ExpiredRecords} available={quarterForActions.EndingAvailableRecords} endBottle={quarterForActions.EndingBottleneckLevel}/8 penalty={quarterForActions.EndingPenalty:P2} sources=[{string.Join(",", quarterForActions.GrantedBySource.Select(pair => $"{pair.Key}={pair.Value}"))}] events=[{sourceCounts(quarterForActions)}]");
         GD.Print($"CULTIVATION_PACING runtime_env1_refinement_only total={allForRefinement.TotalYears:F4}y cloud10={allForRefinement.ToCloudTenYears:F4}y cultivation={allForRefinement.CultivationDays:F1}d bottle={allForRefinement.CappedBottleneckDays:F1}d months={allForRefinement.CompletedMonths} records={allForRefinement.GrantedRecordCount} ranks=[{rankCounts(allForRefinement)}] refine={allForRefinement.RefinementUses} actions={allForRefinement.ActionUses} expired={allForRefinement.ExpiredRecords} available={allForRefinement.EndingAvailableRecords}");
-        character.Free();
+        retain_test_object(character);
     }
 
     private void check_runtime_pacing_inputs()
@@ -537,7 +571,7 @@ public partial class CultivationInspirationSmoke : Node
         }
         var ambient100Projection = CultivationPacingAudit.Simulate(true, .25d, ambient100Rate, runtimeTransitionHours);
         GD.Print($"CULTIVATION_PACING env100_sensitivity total={ambient100Projection.TotalYears:F4}y cloud10={ambient100Projection.ToCloudTenYears:F4}y; lower-than-required ambient pressure, documented activity calendar and source counts, configured inspiration chances and deterministic rolls, ordinary midpoint breakthroughs, one successful 0-game-hour condensation attempt, not an in-game acceptance");
-        character.Free();
+        retain_test_object(character);
     }
 
     private Character create_runtime_pacing_character()
@@ -554,6 +588,7 @@ public partial class CultivationInspirationSmoke : Node
             current_world_stamina = 100f,
             max_world_stamina = 100f
         };
+        retain_test_object(data);
         var character = new Character { ProcessMode = ProcessModeEnum.Disabled };
         AddChild(character);
         character.load_from_data(data);
@@ -567,7 +602,7 @@ public partial class CultivationInspirationSmoke : Node
     {
         var tier = 3;
         var accumulated = CultivationBottleneckRules.get_grace_hours(tier) + level * CultivationBottleneckRules.get_stage_interval_hours();
-        return new HumanData
+        var data = new HumanData
         {
             entity_name = "灵感验收临时人物",
             cultivation_realm = "云息三层",
@@ -576,20 +611,27 @@ public partial class CultivationInspirationSmoke : Node
             cultivation_bottleneck_realm_tier = tier,
             cultivation_bottleneck_current_penalty = CultivationBottleneckRules.get_penalty_for_level(level)
         };
+        retain_test_object(data);
+        return data;
     }
 
-    private static CultivationInspirationRecord make_record(string id, int rank, long now) => new()
+    private static CultivationInspirationRecord make_record(string id, int rank, long now)
     {
-        record_id = id,
-        source_event_id = "event:" + id,
-        source_id = "source:" + id,
-        source_label = "测试经历",
-        use_domain_id = "test-action",
-        quality_rank = rank,
-        acquired_at_game_hour = now,
-        expires_at_game_hour = now + HoursPerYear * (rank == 3 ? 2 : 1),
-        state_id = CultivationInspirationRecord.StateAvailable
-    };
+        var record = new CultivationInspirationRecord
+        {
+            record_id = id,
+            source_event_id = "event:" + id,
+            source_id = "source:" + id,
+            source_label = "测试经历",
+            use_domain_id = "test-action",
+            quality_rank = rank,
+            acquired_at_game_hour = now,
+            expires_at_game_hour = now + HoursPerYear * (rank == 3 ? 2 : 1),
+            state_id = CultivationInspirationRecord.StateAvailable
+        };
+        retain_test_object(record);
+        return record;
+    }
 
     private static int expected_quality_rank(string sourceId, string eventId, float rank2Weight, float rank3Weight)
     {

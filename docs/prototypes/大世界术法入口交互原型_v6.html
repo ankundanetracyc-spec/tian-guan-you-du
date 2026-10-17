@@ -261,7 +261,7 @@
         <strong>主角状态</strong><br>
         <div class="status-meters">
           <div class="status-meter"><span>生命</span><span class="status-bar"></span></div>
-          <div class="status-meter"><span>大世界体力</span><span class="status-bar stamina"></span></div>
+          <div class="status-meter"><span>大世界精力</span><span class="status-bar stamina"></span></div>
         </div>
       </aside>
       <nav class="nav" aria-label="主界面底部导航">
@@ -301,8 +301,8 @@
           <div><div class="tooltip-title">游骸行遁</div><div class="tooltip-meta">遁行 · 持续施展<br>《乘物游骸真经》· 第一卷「游骸」</div></div>
         </div>
         <div class="tooltip-section">术法详情</div>
-        <div class="tooltip-body">行旅期间，有效遁速提高 50%；每跨入一个地图格消耗 1 点大世界体力。仍逐格结算迷雾、地点发现与行旅事件，不改变地形通行或战斗属性。</div>
-        <div class="tooltip-route" id="tooltip-route">路线终点未选。选定目的格后，这里显示普通行旅与行遁耗时、预计体力。</div>
+        <div class="tooltip-body">行旅期间，有效遁速提高 50%；每跨入一个地图格消耗 1 点大世界精力。仍逐格结算迷雾、地点发现与行旅事件，不改变地形通行或战斗属性。</div>
+        <div class="tooltip-route" id="tooltip-route">路线终点未选。选定目的格后，这里显示普通行旅与行遁耗时、预计精力。</div>
       </aside>
       <div class="toast" id="toast"></div>
     </section>
@@ -367,7 +367,7 @@
       selection.classList.add('visible');
       destinationChip.classList.add('visible');
       destinationSelected = true;
-      tooltipRoute.textContent = '路线终点已选。启用后按当前路径逐格行进；路线耗时和预计体力由实际地图数据计算。';
+      tooltipRoute.textContent = '路线终点已选。启用后按当前路径逐格行进；路线耗时和预计精力由实际地图数据计算。';
       showToast('路线终点已选；悬停术法可查看当前路线预估。');
     });
     card.addEventListener('click', () => {
@@ -381,7 +381,7 @@
       document.getElementById('enabled-indicator').classList.toggle('visible', traveling);
       tooltipRoute.textContent = traveling
         ? '行遁中。再次点击术法项，将在当前格结算后中止。'
-        : '路线终点已选。启用后按当前路径逐格行进；路线耗时和预计体力由实际地图数据计算。';
+        : '路线终点已选。启用后按当前路径逐格行进；路线耗时和预计精力由实际地图数据计算。';
       showToast(traveling ? '游骸行遁已开启。' : '游骸行遁已关闭。');
       setPanel(false);
     });

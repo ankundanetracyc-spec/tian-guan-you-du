@@ -84,6 +84,16 @@ public partial class WorldNpcData : Resource
     [Export] public string current_node_id = "";
     [Export] public string current_subscene_id = "";
     [Export] public string current_state = "空闲";
+    /// <summary>NPC 月度修行闭关区间；按世界月索引保存，到下一月结结算时结束。</summary>
+    [Export] public int seclusion_started_month = -1;
+    [Export] public int seclusion_until_month = -1;
+    /// <summary>闭关期间留下的结识拜帖及其唯一处理结果。字典字段：note_id、received_hour、status、resolved_month。</summary>
+    [Export] public Array<Dictionary> acquaintance_notes = [];
+    [Export] public int last_processed_acquaintance_month = -1;
+    /// <summary>此 NPC 本月已被抽为玩家来访候选；NPC Resource 随正式世界人物存档。</summary>
+    [Export] public int last_player_visit_month = -1;
+    /// <summary>个人问候信／接受结识拜帖开启的五年社交窗口截止小时；不累加，合格新信可刷新。</summary>
+    [Export] public int acquaintance_window_until_hour;
     [Export] public bool is_traveling;
     [Export] public string travel_origin_node_id = "";
     [Export] public string travel_destination_node_id = "";
@@ -110,6 +120,16 @@ public partial class WorldNpcData : Resource
     [Export] public int dungeon_placement_version;
     [Export] public Array<NpcActionRecord> action_history = [];
     private HashSet<string>? _dungeonActionTargets;
+
+    public bool is_in_seclusion_at_hour(int hour)
+    {
+        if (seclusion_started_month >= 0 && seclusion_until_month > seclusion_started_month)
+        {
+            var month = Math.Max(0, hour / (30 * 24));
+            return month >= seclusion_started_month && month < seclusion_until_month;
+        }
+        return current_state == "闭关修行";
+    }
 
     public int get_resource(string resource_id) => resources.TryGetValue(resource_id, out var value) ? value.AsInt32() : 0;
     public void change_resource(string resource_id, int delta) => resources[resource_id] = Mathf.Max(0, get_resource(resource_id) + delta);

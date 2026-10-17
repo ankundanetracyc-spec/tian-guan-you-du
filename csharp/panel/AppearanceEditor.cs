@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-/// <summary>Live editor for the player's modular portrait and its battle shadow-puppet preview.</summary>
+/// <summary>Live editor for the player's modular portrait and current ink battle preview.</summary>
 public partial class AppearanceEditor : Control
 {
     public event Action? AppearanceApplied;
@@ -63,8 +63,11 @@ public partial class AppearanceEditor : Control
                 entity_name = character.entity_name,
                 entity_type = (int)WorldEntity.EntityType.CHARACTER,
                 faction = character.faction,
+                gender = _gender == "female" ? 1 : 0,
+                portrait_data = _draftData,
                 battle_portrait_path = BattlePaperDoll.DefaultPortraitPath,
             });
+            _battlePreview.Show();
         }
         Show();
         _frame?.MoveToFront();
@@ -118,7 +121,7 @@ public partial class AppearanceEditor : Control
         var title = text("角色仪容", 30); title.SizeFlagsHorizontal = SizeFlags.ExpandFill; heading.AddChild(title);
         var close = new Button { Text = "×", CustomMinimumSize = new Vector2(48, 42) };
         close.Pressed += cancel_edit; heading.AddChild(close);
-        root.AddChild(text("可调整局外立绘的五官与外观；局内预览为无五官皮影。", 16));
+        root.AddChild(text("可调整局外立绘的五官与外观；局内形象采用留白面部与水墨衣装。", 16));
 
         var work = new HBoxContainer { SizeFlagsVertical = SizeFlags.ExpandFill };
         work.AddThemeConstantOverride("separation", 16); root.AddChild(work);
@@ -131,8 +134,8 @@ public partial class AppearanceEditor : Control
 
         var battleCard = card(); battleCard.CustomMinimumSize = new Vector2(270, 680); battleCard.SizeFlagsVertical = SizeFlags.ExpandFill; work.AddChild(battleCard);
         var battleBox = new VBoxContainer(); battleBox.AddThemeConstantOverride("separation", 8); battleCard.AddChild(battleBox);
-        var battleTitle = text("局内 · 皮影", 20); battleTitle.HorizontalAlignment = HorizontalAlignment.Center; battleBox.AddChild(battleTitle);
-        var stage = new Control { Name = "ShadowPuppetStage", CustomMinimumSize = new Vector2(250, 620), SizeFlagsVertical = SizeFlags.ExpandFill, ClipContents = true };
+        var battleTitle = text("局内 · 水墨", 20); battleTitle.HorizontalAlignment = HorizontalAlignment.Center; battleBox.AddChild(battleTitle);
+        var stage = new Control { Name = "InkBattleStage", CustomMinimumSize = new Vector2(250, 620), SizeFlagsVertical = SizeFlags.ExpandFill, ClipContents = true };
         var stageBackground = new ColorRect { Color = new Color("d4c8aa"), MouseFilter = MouseFilterEnum.Ignore };
         stageBackground.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         stage.AddChild(stageBackground);

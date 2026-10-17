@@ -65,7 +65,7 @@ public partial class EastWoodsActionsSmoke : Node
             At("north_turn"); Execute("old_trap"); await Capture("03_事件结果_" + (compact ? "720" : "1080"));
             _panel.close_action_details(); Check(!_panel.can_execute_action("north_turn","old_trap"), "事件可重复刷取");
             At("dry_pool"); _player.current_world_stamina = 0; before = time.get_precise_game_hours(); Execute("gather_moss");
-            Check(_panel.action_remaining("dry_pool", EastWoodsActions.Content("dry_pool")!) == 2 && time.get_precise_game_hours() == before, "体力不足仍完成");
+            Check(_panel.action_remaining("dry_pool", EastWoodsActions.Content("dry_pool")!) == 2 && time.get_precise_game_hours() == before, "精力不足仍完成");
             _player.current_world_stamina = 100; _panel.close_action_details();
             // Filling a real inventory tests the non-mutating capacity check.
             var human = (HumanData)_player.entity_data!;
@@ -95,13 +95,13 @@ public partial class EastWoodsActionsSmoke : Node
             Check(_player.get_inventory_total_count(slowPoint.Action.ItemPath) == 1 &&
                   time.get_precise_game_hours() == before + 1 && _player.current_world_stamina == stamina - 2 &&
                   _panel.action_remaining(slowPoint.Node, slowPoint.Action) == 1,
-                "30日慢生点未按现有采集行动结算物品、时间、体力与储量。");
+                "30日慢生点未按现有采集行动结算物品、时间、精力与储量。");
             before = time.get_precise_game_hours(); stamina = _player.current_world_stamina;
             At(mineralPoint.Node); Execute(mineralPoint.Action.Id);
             Check(_player.get_inventory_total_count(mineralPoint.Action.ItemPath) == 1 &&
                   time.get_precise_game_hours() == before + 1 && _player.current_world_stamina == stamina - 2 &&
                   _panel.action_remaining(mineralPoint.Node, mineralPoint.Action) == 1,
-                "90日矿产点未按现有采集行动结算物品、时间、体力与储量。");
+                "90日矿产点未按现有采集行动结算物品、时间、精力与储量。");
             var routeState = _panel.get_route_state();
             var savedHour = time.get_total_game_hours();
             EastWoodsEcology.Synchronize(routeState, savedHour, _panel.get_current_route_node_id());

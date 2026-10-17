@@ -25,10 +25,11 @@ public partial class BattleManager
     public float get_unit_display_height() => new[] { 320f, 280f, 240f, 210f, 190f }[Mathf.Clamp(Math.Max(player_units.Count, enemy_units.Count), 1, 5) - 1] * BattleUiArt.Scale(GetViewport());
     public Rect2 get_unit_screen_rect(Node2D unit)
     {
-        if (unit.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.static_screen_rect() is Rect2 visible) return visible;
+        if (unit is ArtifactBody) return BattleLocalFocusView.FrameUnitRect(unit, new Rect2(unit.GetGlobalTransformWithCanvas().Origin + new Vector2(-65, -52), new Vector2(130, 115)));
+        if (unit.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.static_screen_rect() is Rect2 visible) return BattleLocalFocusView.FrameUnitRect(unit, visible);
         var height = get_unit_display_height();
         var width = height * .72f;
-        return new Rect2(unit.GetGlobalTransformWithCanvas().Origin - new Vector2(width * .5f, height), new Vector2(width, height));
+        return BattleLocalFocusView.FrameUnitRect(unit, new Rect2(unit.GetGlobalTransformWithCanvas().Origin - new Vector2(width * .5f, height), new Vector2(width, height)));
     }
 
     private void FitBattleFormation(bool force = false)

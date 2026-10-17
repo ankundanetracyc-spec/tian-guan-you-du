@@ -1,4 +1,4 @@
-﻿using Godot;
+using Godot;
 using Godot.Collections;
 using GArray = Godot.Collections.Array;
 
@@ -12,6 +12,8 @@ public partial class BattleTransitionManager : Node
     private string world_scene_path = "";
     private GArray result_attackers = [];
     private GArray result_defenders = [];
+    private Godot.Collections.Array<Dictionary> _artifactReports = [];
+    public void set_artifact_reports(Godot.Collections.Array<Dictionary> reports) => _artifactReports = reports.Duplicate(true);
     private bool has_results;
     private bool has_battle_return_data;
     private Dictionary last_summary = [];
@@ -121,7 +123,8 @@ public partial class BattleTransitionManager : Node
     public bool has_pending_battle_return_data() => has_battle_return_data;
     public GArray consume_results()
     {
-        var result = new GArray { result_attackers, result_defenders, saved_entity_data };
+        var result = new GArray { result_attackers, result_defenders, saved_entity_data, _artifactReports };
+        _artifactReports = [];
         result_attackers = []; result_defenders = []; saved_entity_data = []; has_results = false; saved_world = null;
         return result;
     }

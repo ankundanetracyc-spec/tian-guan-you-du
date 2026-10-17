@@ -112,6 +112,7 @@ public partial class CharacterSequenceShowcase : Node2D
 
     public override void _Ready()
     {
+        if (!Engine.IsEditorHint()) { BattlePreviewScene.Mount(this); return; }
         _shade = GetNodeOrNull<Polygon2D>("Shade");
         if (_shade is not null)
         {

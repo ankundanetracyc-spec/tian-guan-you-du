@@ -32,13 +32,15 @@ public partial class YuxuSectExchangePanel : Control
     private PanelContainer? _purchaseDialog;
     private Label? _purchaseTitle;
     private Label? _purchaseName;
-    private Label? _purchaseDescription;
+    private Label? _purchaseMeta;
+    private TextureRect? _purchaseIcon;
     private Label? _purchaseCost;
     private Label? _purchaseBalance;
     private Label? _purchaseNote;
     private Button? _purchaseConfirm;
     private Button? _purchaseCancel;
     private bool _purchasePending;
+    private bool _purchaseCompleted;
 
     public override void _Ready()
     {
@@ -71,7 +73,7 @@ public partial class YuxuSectExchangePanel : Control
         if (_balanceLabel is not null)
             _balanceLabel.Text = $"贡献值：{_contributionBalance:N0}";
         if (_purchaseBalance is not null)
-            _purchaseBalance.Text = $"当前贡献值：{_contributionBalance:N0}";
+            refresh_purchase_summary();
         refresh_purchase_button();
     }
 
@@ -261,38 +263,97 @@ public partial class YuxuSectExchangePanel : Control
         _purchaseDialog = new PanelContainer
         {
             Name = "PurchaseConfirmation",
-            CustomMinimumSize = new Vector2(590, 390),
+            CustomMinimumSize = new Vector2(610, 360),
             AnchorLeft = 0.5f,
             AnchorTop = 0.5f,
             AnchorRight = 0.5f,
             AnchorBottom = 0.5f,
-            OffsetLeft = -295,
-            OffsetTop = -195,
-            OffsetRight = 295,
-            OffsetBottom = 195,
+            OffsetLeft = -305,
+            OffsetTop = -180,
+            OffsetRight = 305,
+            OffsetBottom = 180,
             MouseFilter = MouseFilterEnum.Stop,
             ZIndex = 41,
         };
         _purchaseDialog.AddThemeStyleboxOverride("panel", paper_style(0.99f, 0.94f));
 
         var dialogMargin = new MarginContainer();
-        dialogMargin.AddThemeConstantOverride("margin_left", 28);
-        dialogMargin.AddThemeConstantOverride("margin_right", 28);
-        dialogMargin.AddThemeConstantOverride("margin_top", 22);
-        dialogMargin.AddThemeConstantOverride("margin_bottom", 22);
+        dialogMargin.AddThemeConstantOverride("margin_left", 30);
+        dialogMargin.AddThemeConstantOverride("margin_right", 30);
+        dialogMargin.AddThemeConstantOverride("margin_top", 18);
+        dialogMargin.AddThemeConstantOverride("margin_bottom", 18);
         var dialogContent = new VBoxContainer();
-        dialogContent.AddThemeConstantOverride("separation", 13);
+        dialogContent.AddThemeConstantOverride("separation", 8);
         dialogMargin.AddChild(dialogContent);
-        _purchaseTitle = make_label("确认兑换", 28, new Color("302b22"));
+        _purchaseTitle = make_label("确认兑换", 26, new Color("302b22"));
         _purchaseTitle.HorizontalAlignment = HorizontalAlignment.Center;
-        _purchaseName = make_label("", 21, new Color("473e30"));
+        _purchaseTitle.CustomMinimumSize = new Vector2(0, 36);
+
+        var titleRule = new ColorRect
+        {
+            CustomMinimumSize = new Vector2(0, 1),
+            Color = new Color("887b61", 0.55f),
+            MouseFilter = MouseFilterEnum.Ignore,
+        };
+
+        var itemSummary = new HBoxContainer { Name = "PurchaseItemSummary" };
+        itemSummary.AddThemeConstantOverride("separation", 18);
+        itemSummary.CustomMinimumSize = new Vector2(0, 78);
+        _purchaseIcon = new TextureRect
+        {
+            Name = "SelectedItemIcon",
+            CustomMinimumSize = new Vector2(72, 78),
+            ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
+            StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
+            MouseFilter = MouseFilterEnum.Ignore,
+        };
+        var itemText = new VBoxContainer { SizeFlagsVertical = SizeFlags.ShrinkCenter };
+        itemText.AddThemeConstantOverride("separation", 5);
+        _purchaseName = make_label("", 23, new Color("302b22"));
         _purchaseName.Name = "SelectedItemName";
-        _purchaseDescription = make_label("", 16, new Color("514b3d"));
-        _purchaseDescription.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-        _purchaseCost = make_label("所需贡献：待定", 17, new Color("655437"));
-        _purchaseBalance = make_label("当前贡献值：0", 16, new Color("514b3d"));
-        _purchaseNote = make_label("兑换后物品将放入行囊；兑换不会减少累计公事履职记录。", 15, new Color("765f42"));
+        _purchaseName.HorizontalAlignment = HorizontalAlignment.Left;
+        _purchaseMeta = make_label("", 16, new Color("76674d"));
+        _purchaseMeta.HorizontalAlignment = HorizontalAlignment.Left;
+        itemText.AddChild(_purchaseName);
+        itemText.AddChild(_purchaseMeta);
+        itemSummary.AddChild(_purchaseIcon);
+        itemSummary.AddChild(itemText);
+
+        var summaryRule = new ColorRect
+        {
+            CustomMinimumSize = new Vector2(0, 1),
+            Color = new Color("887b61", 0.38f),
+            MouseFilter = MouseFilterEnum.Ignore,
+        };
+
+        var priceSummary = new PanelContainer { Name = "ContributionSummary", CustomMinimumSize = new Vector2(0, 52) };
+        priceSummary.AddThemeStyleboxOverride("panel", exchange_summary_style());
+        var priceMargin = new MarginContainer();
+        priceMargin.AddThemeConstantOverride("margin_left", 12);
+        priceMargin.AddThemeConstantOverride("margin_right", 12);
+        priceMargin.AddThemeConstantOverride("margin_top", 5);
+        priceMargin.AddThemeConstantOverride("margin_bottom", 5);
+        var priceRow = new HBoxContainer();
+        priceRow.AddThemeConstantOverride("separation", 12);
+        _purchaseCost = make_label("消耗 0 点贡献", 20, new Color("655437"));
+        _purchaseCost.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+        _purchaseBalance = make_label("兑换后剩余 0 点", 17, new Color("514b3d"));
+        _purchaseBalance.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+        priceRow.AddChild(_purchaseCost);
+        var priceDivider = new ColorRect
+        {
+            CustomMinimumSize = new Vector2(1, 28),
+            Color = new Color("887b61", 0.40f),
+            MouseFilter = MouseFilterEnum.Ignore,
+        };
+        priceRow.AddChild(priceDivider);
+        priceRow.AddChild(_purchaseBalance);
+        priceMargin.AddChild(priceRow);
+        priceSummary.AddChild(priceMargin);
+
+        _purchaseNote = make_label("兑换一件，成功后放入行囊；履职累计不变。", 15, new Color("76674d"));
         _purchaseNote.AutowrapMode = TextServer.AutowrapMode.WordSmart;
+        _purchaseNote.CustomMinimumSize = new Vector2(0, 26);
 
         var buttons = new HBoxContainer { Alignment = BoxContainer.AlignmentMode.Center };
         buttons.AddThemeConstantOverride("separation", 18);
@@ -306,10 +367,10 @@ public partial class YuxuSectExchangePanel : Control
         buttons.AddChild(_purchaseConfirm);
 
         dialogContent.AddChild(_purchaseTitle);
-        dialogContent.AddChild(_purchaseName);
-        dialogContent.AddChild(_purchaseDescription);
-        dialogContent.AddChild(_purchaseCost);
-        dialogContent.AddChild(_purchaseBalance);
+        dialogContent.AddChild(titleRule);
+        dialogContent.AddChild(itemSummary);
+        dialogContent.AddChild(summaryRule);
+        dialogContent.AddChild(priceSummary);
         dialogContent.AddChild(_purchaseNote);
         dialogContent.AddChild(buttons);
         _purchaseDialog.AddChild(dialogMargin);
@@ -421,7 +482,7 @@ public partial class YuxuSectExchangePanel : Control
         var card = new Button
         {
             Name = $"Item_{entry.Item.definition_id}",
-            CustomMinimumSize = new Vector2(144, 144),
+            CustomMinimumSize = new Vector2(144, 132),
             SizeFlagsHorizontal = SizeFlags.ExpandFill,
             MouseFilter = MouseFilterEnum.Stop,
             FocusMode = FocusModeEnum.None,
@@ -466,9 +527,9 @@ public partial class YuxuSectExchangePanel : Control
             format_exchange_cost(entry.ContributionCost)));
         card.AddChild(iconCenter);
 
-        var name = make_label(entry.Item.entity_name, 15, new Color("302b22"));
+        var name = make_label(entry.Item.entity_name, 19, new Color("302b22"));
         name.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-        name.CustomMinimumSize = new Vector2(0, 34);
+        name.CustomMinimumSize = new Vector2(0, 48);
         name.MouseFilter = MouseFilterEnum.Ignore;
 
         cell.AddChild(card);
@@ -479,12 +540,20 @@ public partial class YuxuSectExchangePanel : Control
     private void open_purchase_dialog(CatalogEntry entry)
     {
         _selectedItem = entry;
+        _purchaseCompleted = false;
         HoverInfoManager.HideAll();
         if (_purchaseName is not null) _purchaseName.Text = entry.Item.entity_name;
+        if (_purchaseMeta is not null)
+            _purchaseMeta.Text = string.IsNullOrWhiteSpace(entry.FilterLabel) ? entry.Category : $"{entry.Category} · {entry.FilterLabel}";
+        if (_purchaseIcon is not null)
+        {
+            var iconPath = entry.Item.icon_path;
+            _purchaseIcon.Texture = !string.IsNullOrWhiteSpace(iconPath) && ResourceLoader.Exists(iconPath)
+                ? ResourceLoader.Load<Texture2D>(iconPath)
+                : null;
+        }
         if (_purchaseTitle is not null) _purchaseTitle.Text = "确认兑换";
-        if (_purchaseDescription is not null) _purchaseDescription.Text = entry.Description;
-        if (_purchaseCost is not null) _purchaseCost.Text = format_exchange_cost(entry.ContributionCost);
-        if (_purchaseNote is not null) _purchaseNote.Text = "兑换后物品 ×1 将放入行囊；累计公事履职记录不受兑换影响。此为当前标准基础价，局势波动价格尚未接入。";
+        if (_purchaseNote is not null) _purchaseNote.Text = "兑换一件，成功后放入行囊；履职累计不变。";
         if (_purchaseCancel is not null) _purchaseCancel.Text = "取消";
         _purchasePending = false;
         set_contribution_balance(_contributionBalance);
@@ -511,10 +580,12 @@ public partial class YuxuSectExchangePanel : Control
         _purchasePending = false;
         if (success)
         {
+            _purchaseCompleted = true;
             if (_purchaseTitle is not null) _purchaseTitle.Text = "兑换完成";
             if (_purchaseNote is not null) _purchaseNote.Text = message;
             if (_purchaseCancel is not null) _purchaseCancel.Text = "完成";
             if (_purchaseConfirm is not null) _purchaseConfirm.Disabled = true;
+            refresh_purchase_summary();
             return;
         }
 
@@ -528,7 +599,33 @@ public partial class YuxuSectExchangePanel : Control
         _modalShade?.Hide();
         _selectedItem = null;
         _purchasePending = false;
+        _purchaseCompleted = false;
         if (_purchaseCancel is not null) _purchaseCancel.Text = "取消";
+    }
+
+    private void refresh_purchase_summary()
+    {
+        if (_selectedItem is null) return;
+        var cost = _selectedItem.ContributionCost;
+        if (_purchaseCost is not null)
+            _purchaseCost.Text = $"消耗 {cost:N0} 点贡献";
+
+        if (_purchaseBalance is null) return;
+        if (_purchaseCompleted)
+        {
+            _purchaseBalance.Text = $"兑换后剩余 {_contributionBalance:N0} 点";
+            _purchaseBalance.AddThemeColorOverride("font_color", new Color("514b3d"));
+        }
+        else if (_contributionBalance >= cost)
+        {
+            _purchaseBalance.Text = $"兑换后剩余 {(_contributionBalance - cost):N0} 点";
+            _purchaseBalance.AddThemeColorOverride("font_color", new Color("514b3d"));
+        }
+        else
+        {
+            _purchaseBalance.Text = $"贡献不足 · 尚差 {(cost - _contributionBalance):N0} 点";
+            _purchaseBalance.AddThemeColorOverride("font_color", new Color("8a4d3d"));
+        }
     }
 
     private static string format_exchange_cost(int cost)
@@ -536,6 +633,7 @@ public partial class YuxuSectExchangePanel : Control
 
     private void refresh_purchase_button()
     {
+        refresh_purchase_summary();
         if (_purchaseConfirm is null) return;
         var cost = _selectedItem?.ContributionCost ?? 0;
         _purchaseConfirm.Disabled = _purchasePending || cost <= 0 || _contributionBalance < cost;
@@ -654,6 +752,20 @@ public partial class YuxuSectExchangePanel : Control
         CornerRadiusTopRight = 5,
         CornerRadiusBottomLeft = 5,
         CornerRadiusBottomRight = 5,
+    };
+
+    private static StyleBoxFlat exchange_summary_style() => new()
+    {
+        BgColor = new Color(0.79f, 0.77f, 0.68f, 0.34f),
+        BorderColor = new Color(0.43f, 0.39f, 0.31f, 0.42f),
+        BorderWidthLeft = 1,
+        BorderWidthTop = 1,
+        BorderWidthRight = 1,
+        BorderWidthBottom = 1,
+        CornerRadiusTopLeft = 3,
+        CornerRadiusTopRight = 3,
+        CornerRadiusBottomLeft = 3,
+        CornerRadiusBottomRight = 3,
     };
 
     private static string get_realm_range(GongfaResource? gongfa)

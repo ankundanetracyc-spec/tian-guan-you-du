@@ -49,10 +49,10 @@ public static class CardPresentation
         if (CardRules.IsResponse(skill))
         {
             text = Regex.Replace(text, @"未触发时按正常行动时序结算基础效果(?:，不消耗血炉)?。", "");
-            text = text.Replace("未触发应对时空放，不消耗精力、法力或使用次数，不产生效果。", "").Trim();
+            text = text.Replace("未触发应对时空放，不消耗体力、法力或使用次数，不产生效果。", "").Trim();
             text += CardRules.NormalCast(skill) is { } normal
                 ? $"\n未触发应对：{CombatEffectText(normal, owner)}"
-                : "\n未触发应对：空放，仅消耗本槽行动时间，不消耗精力、法力或使用次数，不产生效果。";
+                : "\n未触发应对：空放，仅消耗本槽行动时间，不消耗体力、法力或使用次数，不产生效果。";
         }
         return text;
     }
@@ -185,7 +185,7 @@ public static class CardPresentation
             var label = effectId switch
             {
                 "shield" => "护持",
-                "restore_stamina" => "精力回复",
+                "restore_stamina" => "体力回复",
                 "restore_mana" => "法力回复",
                 _ => "效果数值"
             };

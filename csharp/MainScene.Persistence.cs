@@ -187,6 +187,7 @@ public partial class MainScene
                 CallDeferred(nameof(resume_yuxu_case_transport_after_load));
             else if (_loaded_game_save.remaining_travel_path.Count > 1)
                 tile_world_map?.CallDeferred("resume_saved_travel");
+            CallDeferred(nameof(resume_saved_banquet_if_any));
         }
         else
         {
@@ -256,6 +257,7 @@ public partial class MainScene
             world_cell = _player_world_grid_cell,
             scene_progress = capture_scene_progress(),
             dynamic_dungeon_state = _dynamic_dungeon_state.Duplicate(true),
+            banquet_events = duplicate_banquet_events(_banquetEvents),
         };
 
         if (GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is { } time)
@@ -309,6 +311,9 @@ public partial class MainScene
             ["player_unique_id"] = player?.unique_id ?? "",
             ["social_membership_month"] = _socialMembershipMonth,
             ["social_visit_month"] = _socialVisitMonth,
+            ["social_visit_processed_month"] = _socialProcessedVisitMonth,
+            ["social_visited_npc_ids"] = new Array<string>(_socialVisitedNpcIds.OrderBy(id => id, System.StringComparer.Ordinal)),
+            ["last_npc_banquet_quarter"] = _lastNpcBanquetQuarter,
             ["xuanjian_awakened"] = _xuanjian_awakened,
             ["rested_after_xuanjian"] = _rested_after_xuanjian,
             ["static_room_authorized"] = _static_room_authorized,
@@ -337,6 +342,11 @@ public partial class MainScene
     {
         _socialMembershipMonth = read_int(state, "social_membership_month", -1);
         _socialVisitMonth = read_int(state, "social_visit_month", -1);
+        _socialProcessedVisitMonth = read_int(state, "social_visit_processed_month", -1);
+        _socialVisitedNpcIds.Clear();
+        foreach (var npcId in state.GetValueOrDefault("social_visited_npc_ids", new Array<string>()).AsGodotArray<string>())
+            if (!string.IsNullOrWhiteSpace(npcId)) _socialVisitedNpcIds.Add(npcId);
+        _lastNpcBanquetQuarter = read_int(state, "last_npc_banquet_quarter", -1);
         RestoreJournalTracking(state);
         _east_woods_dungeon_state = state.GetValueOrDefault("east_woods_dungeon_state", new Dictionary()).AsGodotDictionary().Duplicate(true);
         EastWoodsDungeonRules.restore_layout(_east_woods_dungeon_state.GetValueOrDefault("layout", new Dictionary()).AsGodotDictionary());

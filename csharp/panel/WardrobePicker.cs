@@ -14,6 +14,8 @@ public partial class WardrobePicker : Control
     private OptionButton? _choices;
     private PortraitRenderer? _preview;
     private Label? _name;
+    private TextureRect? _itemIcon;
+    private string _selectedItemPath = "";
     private readonly Array<Dictionary> _entries = [];
 
     public override void _Ready()
@@ -33,7 +35,12 @@ public partial class WardrobePicker : Control
         title.AddThemeFontSizeOverride("font_size", 28); title.AddThemeColorOverride("font_color", new Color(.16f,.13f,.10f)); box.AddChild(title);
         _preview = new PortraitRenderer { Name = "WardrobePreview", CustomMinimumSize = new Vector2(360, 500), SizeFlagsHorizontal = SizeFlags.ShrinkCenter, MouseFilter = MouseFilterEnum.Ignore };
         box.AddChild(_preview);
-        _name = new Label { Name = "ClothingName", HorizontalAlignment = HorizontalAlignment.Center }; _name.AddThemeFontSizeOverride("font_size", 22); _name.AddThemeColorOverride("font_color", new Color(.16f,.13f,.10f)); box.AddChild(_name);
+        var clothingSummary = new HBoxContainer { Alignment = BoxContainer.AlignmentMode.Center };
+        clothingSummary.AddThemeConstantOverride("separation", 12); box.AddChild(clothingSummary);
+        _itemIcon = new TextureRect { Name = "ClothingIcon", CustomMinimumSize = new Vector2(52, 52), ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize, StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered, MouseFilter = MouseFilterEnum.Ignore };
+        clothingSummary.AddChild(_itemIcon);
+        _name = new Label { Name = "ClothingName", HorizontalAlignment = HorizontalAlignment.Left, VerticalAlignment = VerticalAlignment.Center };
+        _name.AddThemeFontSizeOverride("font_size", 22); _name.AddThemeColorOverride("font_color", new Color(.16f,.13f,.10f)); clothingSummary.AddChild(_name);
         _choices = new OptionButton { Name = "ClothingChoice", CustomMinimumSize = new Vector2(0, 44) };
         _choices.AddThemeFontSizeOverride("font_size", 19); _choices.ItemSelected += select_clothing; box.AddChild(_choices);
         var footer = new HBoxContainer { Alignment = BoxContainer.AlignmentMode.Center }; footer.AddThemeConstantOverride("separation", 24); box.AddChild(footer);
@@ -61,20 +68,35 @@ public partial class WardrobePicker : Control
     {
         _source = data; _draft = data.Duplicate(true) as HumanData ?? new HumanData();
         _gender = data.gender == 1 ? "female" : "male"; _age = age;
-        _entries.Clear(); _choices?.Clear();
+        _entries.Clear(); _choices?.Clear(); _selectedItemPath = "";
         var mods = GetNode<AppearanceModCatalog>("/root/AppearanceModCatalog");
         var catalog = GetNode<PortraitCatalog>("/root/PortraitCatalog");
         var context = catalog.get_context(data, _gender, age, data.faction_name, _realm);
         var current = catalog.choose_part(context, "clothes", data.appearance_clothes_style.ToString());
-        int selected = 0;
+        int selected = -1;
         foreach (Dictionary entry in mods.get_parts(_gender, "clothes"))
         {
             if (!mods.can_wear(entry, data)) continue;
             int index = entry["variant_index"].AsInt32();
-            if (current.Count > 0 && current["variant_index"].AsInt32() == index) selected = _entries.Count;
+            string itemPath = entry.GetValueOrDefault("item_path", "").AsString();
+            if (string.IsNullOrWhiteSpace(itemPath) ||
+                (!data.inventory_item_paths.Contains(itemPath) && data.portrait_clothing_item_path != itemPath)) continue;
+            var clothing = ResourceLoader.Load<PortraitClothingData>(itemPath);
+            if (clothing is null || !clothing.can_be_worn_by(data) || clothing.appearance_style_index != index) continue;
+            if (data.portrait_clothing_item_path == itemPath ||
+                (selected < 0 && current.Count > 0 && current["variant_index"].AsInt32() == index))
+                selected = _entries.Count;
             _entries.Add(entry); _choices?.AddItem(entry["display_name"].AsString(), index);
         }
-        if (_entries.Count == 0) return;
+        if (_entries.Count == 0)
+        {
+            _name!.Text = "当前未持有可更换的衣物"; _itemIcon!.Texture = null;
+            _choices?.AddItem("没有可试穿的持有衣物");
+            _choices?.SetItemDisabled(0, true);
+            Show(); MoveToFront();
+            return;
+        }
+        if (selected < 0) selected = 0;
         _choices?.Select(selected); select_clothing(selected);
         Show(); MoveToFront();
     }
@@ -83,8 +105,13 @@ public partial class WardrobePicker : Control
     {
         if (_draft is null || selected < 0 || selected >= _entries.Count) return;
         var entry = _entries[(int)selected];
-        _draft.appearance_clothes_style = entry["variant_index"].AsInt32();
+        _selectedItemPath = entry.GetValueOrDefault("item_path", "").AsString();
+        var clothing = ResourceLoader.Load<PortraitClothingData>(_selectedItemPath);
+        if (clothing is null) return;
+        _draft.appearance_clothes_style = clothing.appearance_style_index;
         _name!.Text = entry["display_name"].AsString();
+        _itemIcon!.Texture = string.IsNullOrWhiteSpace(clothing.icon_path) || !ResourceLoader.Exists(clothing.icon_path)
+            ? null : ResourceLoader.Load<Texture2D>(clothing.icon_path);
         refresh_preview();
     }
 
@@ -100,9 +127,14 @@ public partial class WardrobePicker : Control
 
     private void apply_clothing()
     {
-        if (_source is null || _draft is null || _choices is null || _choices.Selected < 0) return;
+        if (_source is null || _draft is null || _choices is null || _choices.Selected < 0 || _choices.Selected >= _entries.Count) return;
         if (!GetNode<AppearanceModCatalog>("/root/AppearanceModCatalog").can_wear(_entries[_choices.Selected], _source)) return;
-        _source.appearance_clothes_style = _draft.appearance_clothes_style;
+        if (string.IsNullOrWhiteSpace(_selectedItemPath) ||
+            (!_source.inventory_item_paths.Contains(_selectedItemPath) && _source.portrait_clothing_item_path != _selectedItemPath)) return;
+        var clothing = ResourceLoader.Load<PortraitClothingData>(_selectedItemPath);
+        if (clothing is null || !clothing.can_be_worn_by(_source)) return;
+        _source.appearance_clothes_style = clothing.appearance_style_index;
+        _source.portrait_clothing_item_path = _selectedItemPath;
         _source.EmitChanged(); ClothingApplied?.Invoke(); close_draft();
     }
 

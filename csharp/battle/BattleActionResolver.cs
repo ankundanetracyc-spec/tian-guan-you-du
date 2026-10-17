@@ -23,7 +23,7 @@ public static class BattleActionResolver
 
         var finalDamage = Mathf.Max(Mathf.RoundToInt(damage), 1);
         var blocked = damageType == "physical" ? Mathf.Min(Mathf.Max(block_stacks, 0), finalDamage) : 0;
-        finalDamage = apply_defense(finalDamage - blocked, damageType, defender);
+        finalDamage = apply_defense(finalDamage - blocked, damageType, defender, skill.physical_defense_ignore_ratio);
         return new(false, critical, finalDamage, blocked);
     }
 
@@ -58,6 +58,7 @@ public static class BattleActionResolver
 
     public static float preview_hit_chance(GodotObject attacker,GodotObject defender,float extraEvasion=0)
     {
+        if (defender is ArtifactBody) return 1f;
         var precision=Mathf.Max(GetNumber(attacker,"precision"),.01f);var dodge=Mathf.Max(GetNumber(defender,"dodge"),0);
         if(defender is Creature creature)
             dodge=Mathf.Floor(dodge*(1f+Mathf.Min(creature.get_status_stacks("身法"),20)*.01f));
@@ -67,6 +68,7 @@ public static class BattleActionResolver
     }
     public static float preview_crit_chance(GodotObject attacker,GodotObject defender,float extraChance=0)
     {
+        if (defender is ArtifactBody) return 0f;
         var critical=Mathf.Max(GetNumber(attacker,"critical"),.01f);var resist=Mathf.Max(GetNumber(defender,"crit_resist"),0);
         if(Engine.GetMainLoop() is SceneTree tree&&tree.GetFirstNodeInGroup("battle_mgr") is BattleManager manager)
             resist*=BattleWoundRules.get_crit_resist_multiplier(manager.get_realtime_wound_counts(defender));
@@ -76,13 +78,13 @@ public static class BattleActionResolver
     public static float calc_crit_multiplier(GodotObject attacker, GodotObject defender) =>
         Mathf.Max(GetNumber(attacker, "crit_damage_mult"), 1.5f) + GetNumber(attacker, "soul") / Mathf.Max(GetNumber(defender, "physique") + GetNumber(defender, "soul"), 1) * 2f;
 
-    public static int apply_defense(int damage, string damage_type, GodotObject defender)
+    public static int apply_defense(int damage, string damage_type, GodotObject defender, float ignoreRatio = 0)
     {
         if (damage_type is "soul" or "spiritual") return Mathf.Max(damage, 1);
         if (damage_type != "physical") return Mathf.Max(damage, 1);
         // 化解可以将一次物理伤害完全抵消；只有仍有正伤害时才继续计算物防与百分比减免。
         if (damage <= 0) return 0;
-        var afterDefense = Mathf.Max(damage - Mathf.RoundToInt(GetNumber(defender, "physical_defense")), Mathf.CeilToInt(damage * .01f));
+        var afterDefense = Mathf.Max(damage - Mathf.RoundToInt(GetNumber(defender, "physical_defense") * (1f - Mathf.Clamp(ignoreRatio, 0, 1))), Mathf.CeilToInt(damage * .01f));
         var baseReduction = Mathf.Clamp(GetNumber(defender, "physical_damage_reduction"), 0f, .90f);
         var woundReduction = 0f;
         if (defender is Creature creature && creature.get_status_stacks("心法:内景损益") > 0)

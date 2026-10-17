@@ -1595,6 +1595,7 @@ public partial class NpcWorldManager : Node
 
     private void resolve_month_action(WorldNpcData npc, int month)
     {
+        finish_seclusion_and_process_acquaintance_notes(npc, month);
         var rng = new RandomNumberGenerator { Seed = stable_seed(month, npc.npc_id, "action") };
         if (npc.is_traveling)
         {
@@ -1614,10 +1615,52 @@ public partial class NpcWorldManager : Node
     {
         var gain = npc.spirit_root_name == "无灵根" ? 0 : rng.RandiRange(1, 3);
         npc.spirit_strands += gain;
-        npc.current_state = gain > 0 ? "修行中" : "调息";
-        record(npc, month, "cultivate", npc.current_state,
-            gain > 0 ? "以自身灵根与已学功法修行。" : "无灵根，改为调养气血。",
+        npc.current_state = "闭关修行";
+        npc.seclusion_started_month = month;
+        npc.seclusion_until_month = month + 1;
+        record(npc, month, "cultivate", "闭关修行",
+            gain > 0 ? "以自身灵根与已学功法修行，本月闭关至下次月度结算。" : "无灵根，改为闭关调养气血至下次月度结算。",
             gain > 0 ? $"灵力增加 {gain} 缕。" : "本月未积累灵力。", gain);
+    }
+
+    private void finish_seclusion_and_process_acquaintance_notes(WorldNpcData npc, int month)
+    {
+        if (npc.seclusion_until_month < 0 || month < npc.seclusion_until_month) return;
+        npc.current_state = "空闲";
+        // Keep the end cursor if player data is temporarily unavailable so a saved note
+        // can still be resolved on a later monthly step instead of being stranded.
+        if (_playerData is null) return;
+        if (month <= npc.last_processed_acquaintance_month)
+        {
+            npc.seclusion_started_month = -1;
+            npc.seclusion_until_month = -1;
+            return;
+        }
+
+        npc.acquaintance_notes ??= [];
+        var boundaryHour = month * 30 * 24;
+        foreach (var note in npc.acquaintance_notes)
+        {
+            if (note is null || note.GetValueOrDefault("status", "").AsString() != "pending" ||
+                string.IsNullOrWhiteSpace(note.GetValueOrDefault("note_id", "").AsString()) ||
+                note.GetValueOrDefault("received_hour", int.MaxValue).AsInt32() >= boundaryHour) continue;
+
+            // Reuse the existing social acceptance rules as a pure decision. Do not call Remember:
+            // a note response alone neither exchanges names nor records relationship evidence.
+            var decision = NpcSocialRules.Evaluate(npc, _playerData, "introduce", proactive: true);
+            var accepted = decision.ExchangesName && !CharacterRelationshipRules.IsHostile(npc, CharacterRelationshipRules.PlayerCharacterId);
+            note["status"] = accepted ? "accepted" : "declined";
+            note["resolved_month"] = month;
+            if (accepted)
+                npc.acquaintance_window_until_hour = boundaryHour + 5 * 360 * 24;
+            record(npc, month, "acquaintance_note_decision", "结识拜帖处理",
+                "出关后依照当下交往情形处理门外拜帖。",
+                accepted ? "愿意日后与留帖者结识；尚未交换姓名，也未形成关系记事。" : "婉谢门外拜帖；不生怨结，也未交换姓名。",
+                0, CharacterRelationshipRules.PlayerCharacterId);
+        }
+        npc.last_processed_acquaintance_month = month;
+        npc.seclusion_started_month = -1;
+        npc.seclusion_until_month = -1;
     }
 
     private void work(WorldNpcData npc, int month, RandomNumberGenerator rng, string reason = "")
@@ -1659,7 +1702,7 @@ public partial class NpcWorldManager : Node
         }
         var gain = rng.RandiRange(0, 3);
         npc.change_resource("杂材", gain);
-        record(npc, month, "explore", "探索", "基于目标、所在地点与可用体力进行探索。", damage > 0 ? $"受伤 {damage} 点，获得杂材 {gain}。" : $"平安归来，获得杂材 {gain}。", gain - damage);
+        record(npc, month, "explore", "探索", "基于目标、所在地点与可用精力进行探索。", damage > 0 ? $"受伤 {damage} 点，获得杂材 {gain}。" : $"平安归来，获得杂材 {gain}。", gain - damage);
     }
 
     private void travel(WorldNpcData npc, int month, RandomNumberGenerator rng)

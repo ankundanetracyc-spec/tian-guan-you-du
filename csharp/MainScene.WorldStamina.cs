@@ -12,7 +12,7 @@ public partial class MainScene
     {
         if (player is null || !player.try_spend_world_stamina(amount))
         {
-            show_message("体力不足", $"体力不足，无法{actionName}。休息可以恢复体力。查看、取消和无效操作不消耗体力。");
+            show_message("精力不足", $"精力不足，无法{actionName}。休息可以恢复精力。查看、取消和无效操作不消耗精力。");
             return false;
         }
         mark_save_dirty();

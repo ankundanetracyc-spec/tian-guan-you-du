@@ -235,7 +235,7 @@ public partial class EastWoodsDungeonPanel
         var remaining = action.Stock > 0 ? $"　·　剩余 {action_remaining(_current, action)} 份" : "";
         var item = action.ItemPath.Length > 0 ? EastWoodsActions.Item(action.ItemPath) : null;
         open_action_card(item is null ? action.Name : action.Name + " · " + item.entity_name, action.Description,
-            $"耗时 {action.Hours:0.#} 小时　·　体力 {action.Stamina:0.#}{remaining}\n查看和取消不消耗；耗时行动期间其他修行者仍会行进。", action.Id);
+            $"耗时 {action.Hours:0.#} 小时　·　精力 {action.Stamina:0.#}{remaining}\n查看和取消不消耗；耗时行动期间其他修行者仍会行进。", action.Id);
         if (item is not null && ResourceLoader.Exists(item.icon_path)) { _actionIcon!.Texture = GD.Load<Texture2D>(item.icon_path); _actionIcon.Show(); }
     }
     private void open_action_card(string title, string body, string cost, string action)

@@ -1,4 +1,4 @@
-using Godot;
+﻿using Godot;
 
 public partial class StartMenu
 {
@@ -162,7 +162,12 @@ public partial class StartMenu
             button.TooltipText = source.TooltipText;
             button.Pressed += () => { CloseDemoEntries(); source.EmitSignal(BaseButton.SignalName.Pressed); };
             list.AddChild(button);
+            HoverInfoManager.CopyInfo(source, button);
         }
+        var alchemy = SettingsButton("炼丹试演（新版）");
+        alchemy.SizeFlagsHorizontal = SizeFlags.ExpandFill; alchemy.CustomMinimumSize = new Vector2(0, 58);
+        alchemy.Pressed += () => { CloseDemoEntries(); GetTree().ChangeSceneToFile("res://tscn/scene/AlchemyPreviewScene.tscn"); };
+        list.AddChild(alchemy);
         var letters = SettingsButton("信件界面预览");
         letters.SizeFlagsHorizontal = SizeFlags.ExpandFill; letters.CustomMinimumSize = new Vector2(0, 58);
         letters.Pressed += () => { CloseDemoEntries(); GetTree().ChangeSceneToFile("res://tscn/scene/LettersPreviewScene.tscn"); };

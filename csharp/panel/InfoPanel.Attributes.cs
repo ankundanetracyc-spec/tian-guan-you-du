@@ -62,7 +62,7 @@ public partial class InfoPanel
             Stat(grid, stat.Item1, stat.Item2.ToString("0.0"), stat.Item3, true);
         basic.AddChild(new HSeparator()); basic.AddChild(CharacterText("社交属性", 23));
         foreach (var stat in new[] { ("魅力", "charisma", "CharismaRow"), ("交际", "social", "SocialRow"), ("治事", "management", "ManagementRow") }) Stat(basic, stat.Item1, data_number(unit, stat.Item2).ToString("0.0"), stat.Item3);
-        foreach (var resource in new[] { ("生命", unit.current_health, unit.max_health, "HealthRow"), ("精力", unit.current_stamina, unit.max_stamina, "StaminaRow"), ("法力", unit.current_mana, unit.max_mana, "ManaRow") })
+        foreach (var resource in new[] { ("生命", unit.current_health, unit.max_health, "HealthRow"), ("体力", unit.current_stamina, unit.max_stamina, "StaminaRow"), ("法力", unit.current_mana, unit.max_mana, "ManaRow") })
         {
             var row = new HBoxContainer { CustomMinimumSize = new Vector2(0, 48) }; row.AddThemeConstantOverride("separation", 12); battle.AddChild(row);
             var name = CharacterText(resource.Item1, 22); name.CustomMinimumSize = new Vector2(62, 0); name.MouseFilter = MouseFilterEnum.Stop; row.AddChild(name);

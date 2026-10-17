@@ -68,7 +68,7 @@ public static class CardRules
         return result.AsSingle();
     }
     public static int Block(ActiveSkillData skill, GodotObject? owner, int fallback=1) =>
-        string.IsNullOrWhiteSpace(skill.stacks_formula)?Math.Max(1,fallback):Math.Max(1,Mathf.FloorToInt(Evaluate(skill.stacks_formula,owner)));
+        (string.IsNullOrWhiteSpace(skill.stacks_formula)?Math.Max(1,fallback):Math.Max(1,Mathf.FloorToInt(Evaluate(skill.stacks_formula,owner)))) + Math.Max(0, skill.artifact_block_bonus);
     public static bool IsResponse(ActiveSkillData skill)=>skill.keywords.Contains("应对");
     // 只缓存属性名称，数值和状态仍实时读取；弱引用避免离场角色被静态缓存留住。
     private static readonly System.Runtime.CompilerServices.ConditionalWeakTable<GodotObject, HashSet<string>> PropertyNames = new();

@@ -140,7 +140,7 @@ public partial class MainHUD
         grid.AddThemeConstantOverride("v_separation", 10);
         layout.AddChild(grid);
         add_profile_card(grid, "境界", "RealmValue");
-        add_profile_card(grid, "行旅体力（与战斗精力分开）", "WorldStaminaValue");
+        add_profile_card(grid, "行旅精力（与战斗体力分开）", "WorldStaminaValue");
         add_profile_card(grid, "修行与身体状态", "WorldStatusValue");
         add_profile_card(grid, "灵根", "RootValue");
         add_profile_card(grid, "当前位置", "LocationValue");

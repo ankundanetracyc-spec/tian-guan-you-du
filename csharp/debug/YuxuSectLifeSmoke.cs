@@ -123,7 +123,7 @@ public partial class YuxuSectLifeSmoke : Node
             Call(main, "on_yuxu_life_action_requested", "heguang_peer_qa", "heguang");
             ChooseSocialChoice(dialogue, 1);
             Check(player.current_world_stamina == beforeStamina && peer.action_history.Count == 0,
-                "取消答疑仍消耗体力或留下完成记录");
+                "取消答疑仍消耗精力或留下完成记录");
             await Frames();
             Call(main, "on_yuxu_life_action_requested", "heguang_peer_qa", "heguang");
             ChooseSocialChoice(dialogue);
@@ -131,7 +131,7 @@ public partial class YuxuSectLifeSmoke : Node
             Call(main, "on_yuxu_life_action_requested", "heguang_peer_qa", "heguang");
             ChooseSocialChoice(dialogue);
             Check(time.get_total_game_hours() == beforeHours, "同门答疑推进了游戏时间");
-            Check(player.current_world_stamina == beforeStamina - WorldStaminaRules.ConversationCost * 2, "同门答疑体力费用错误或没有允许同日重复");
+            Check(player.current_world_stamina == beforeStamina - WorldStaminaRules.ConversationCost * 2, "同门答疑精力费用错误或没有允许同日重复");
             Check(peer.action_history.Count(record => record.action_id == "heguang_peer_qa") == 2, "同日两次答疑没有各自留下活动记录");
             Check(peer.player_relationship == 0 && peer.player_social_memory.Count == beforeMemoryCount, "答疑改变了同门关系或交往记忆");
             Check(player.get_inventory_total_count(FlowerPath) == beforeFlowers && human.get_yuxu_contribution_total() == 0 &&
@@ -149,7 +149,7 @@ public partial class YuxuSectLifeSmoke : Node
             var waitHours = YuxuSectPrototypeBalance.YaopuCultivationHours;
             var yieldCount = YuxuSectPrototypeBalance.YaopuCultivationYieldCount;
             Check(time.get_total_game_hours() == startHour + careHours && player.current_world_stamina == staminaBeforeCare - careCost,
-                "无任务培护没有按现有公事原型值推进时间与扣除体力");
+                "无任务培护没有按现有公事原型值推进时间与扣除精力");
             Check(human.sect_yaopu_free_cultivation_stage == 1 && human.sect_yaopu_free_cultivation_started_hour == time.get_total_game_hours() &&
                 player.get_inventory_total_count(FlowerPath) == beforeFlowers, "照料阶段没有独立保存，或提前获得花株");
 

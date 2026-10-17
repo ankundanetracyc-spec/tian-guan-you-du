@@ -39,10 +39,12 @@ public partial class BattlePortraitView : Control
             }
         }
         var path=_data.battle_portrait_path;
+        if (_data.entity_type == (int)WorldEntity.EntityType.CHARACTER)
+            path = _data.gender == 1 ? BattlePaperDoll.FemaleStaticPortraitPath : BattlePaperDoll.DefaultPortraitPath;
         var wolf=_data.entity_type==(int)WorldEntity.EntityType.BEAST && (_data.entity_name.Contains("狼") || path==BattlePaperDoll.ForestWolfPortraitPath);
         if(wolf)path=BattlePaperDoll.ForestWolfPortraitPath;
         // 旧测试野猪引用人形皮影，不能把它当作真实兽类头像。
-        if(_data.entity_type==(int)WorldEntity.EntityType.BEAST && path==BattlePaperDoll.DefaultPortraitPath)path="";
+        if(_data.entity_type==(int)WorldEntity.EntityType.BEAST && BattlePaperDoll.IsHumanPlaceholderPath(path))path="";
         if(!string.IsNullOrEmpty(path)&&ResourceLoader.Exists(path))
         {
             var texture=GD.Load<Texture2D>(path);

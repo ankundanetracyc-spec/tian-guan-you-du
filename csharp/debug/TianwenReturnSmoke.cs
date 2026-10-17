@@ -61,7 +61,7 @@ public partial class TianwenReturnSmoke : Node
             var restoredPlayer=Read<Character>(restored,"player");
             Check(Read<object>(restored,"_qingxi_prologue").ToString()=="Departed","返回重置青溪里剧情");
             Check(Read<string>(restored,"_player_world_node_id")=="yuxu_xianzong_core","返回丢失所在势力");
-            Check(restoredPlayer.unique_id==uid && restoredPlayer.current_health==health && restoredPlayer.current_world_stamina==73,$"演练覆盖主角或伤势/体力：UID {uid}->{restoredPlayer.unique_id}, 生命 {health}->{restoredPlayer.current_health}, 体力 {restoredPlayer.current_world_stamina}");
+            Check(restoredPlayer.unique_id==uid && restoredPlayer.current_health==health && restoredPlayer.current_world_stamina==73,$"演练覆盖主角或伤势/精力：UID {uid}->{restoredPlayer.unique_id}, 生命 {health}->{restoredPlayer.current_health}, 精力 {restoredPlayer.current_world_stamina}");
             Check(clock.get_total_game_hours()==hours,"演练返回改变世界时间");
             Check(GetNode<NpcWorldManager>("/root/NpcWorldManager").get_npc("return_smoke_npc") is not null,"返回丢失NPC");
             Check(Read<string>(restored,"_player_current_yuxu_peak_id")=="tianwen" && restored.GetNode<Control>("SceneLayer/YuxuXianzongOverview/PeakInterior").IsVisibleInTree(),"未回到天问峰");

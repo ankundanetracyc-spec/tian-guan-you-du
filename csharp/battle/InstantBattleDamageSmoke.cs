@@ -171,10 +171,12 @@ public partial class InstantBattleDamageSmoke : Node
         if (overlay is not null)
             foreach (var row in overlay.FindChildren("Statuses", "HFlowContainer", true, false).OfType<HFlowContainer>())
             {
-                heartBadge = row.GetChildren().OfType<PanelContainer>().FirstOrDefault(b => b.TooltipText.StartsWith("内景损益 ×1"));
+                // 统一悬停已不使用 Godot TooltipText；按真实专属图标识别徽记。
+                heartBadge = row.GetChildren().OfType<PanelContainer>().FirstOrDefault(b =>
+                    (b.GetChild(0) as TextureRect)?.Texture?.ResourcePath == "res://textures/ui/combat/status_icons/心法_内景损益_v1.png");
                 if (heartBadge is not null) break;
             }
         var heartIcon = heartBadge?.GetChild(0) as TextureRect;
-        check(heartBadge is not null && heartIcon?.Texture is not null, "常驻内景心法实际进入 Buff 栏且显示专属图标");
+        check(defender.get_status_stacks("心法:内景损益") == 1 && heartBadge is not null && heartIcon?.Texture is not null, "常驻内景心法实际进入 Buff 栏且显示专属图标");
     }
 }

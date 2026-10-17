@@ -1,0 +1,46 @@
+Godot Engine v4.7.2.stable.mono.official.ed1daf0bf - https://godotengine.org
+D3D12 12_0 - Forward Mobile - Using Device #0: NVIDIA - NVIDIA GeForce RTX 4060 Laptop GPU
+
+WARNING: res://resources/battle/statuses/身法.tres:3 - ext_resource, invalid UID: uid://bmylv7x5xf25n - using text path instead: res://csharp/battle/StatusEffect.cs
+   at: load (scene/resources/resource_format_text.cpp:501)
+   C# backtrace (most recent call first):
+       [0] Godot.GodotObject Godot.NativeCalls.godot_icall_3_1268(nint, nint, string, string, int) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:11611)
+       [1] Godot.Resource Godot.ResourceLoader.Load(string, string, Godot.ResourceLoader+CacheMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/ResourceLoader.cs:120)
+       [2] T Godot.ResourceLoader.Load<T>(string, string, Godot.ResourceLoader+CacheMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Extensions/ResourceLoaderExtensions.cs:27)
+       [3] T Godot.GD.Load<T>(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:129)
+       [4] void BattleSandbox.start_sandbox()
+       [5] bool BattleSandbox.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&)
+       [6] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+STAGING PASSED: melee
+STAGING PASSED: ranged
+STAGING PASSED: reverse
+STAGING PASSED: thunder
+WARNING: res://resources/battle/statuses/化解.tres:3 - ext_resource, invalid UID: uid://bmylv7x5xf25n - using text path instead: res://csharp/battle/StatusEffect.cs
+   at: load (scene/resources/resource_format_text.cpp:501)
+   C# backtrace (most recent call first):
+       [0] Godot.GodotObject Godot.NativeCalls.godot_icall_3_1268(nint, nint, string, string, int) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:11611)
+       [1] Godot.Resource Godot.ResourceLoader.Load(string, string, Godot.ResourceLoader+CacheMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/ResourceLoader.cs:120)
+       [2] T Godot.ResourceLoader.Load<T>(string, string, Godot.ResourceLoader+CacheMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Extensions/ResourceLoaderExtensions.cs:27)
+       [3] T Godot.GD.Load<T>(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:129)
+       [4] void SkillExecutor.ApplyStatusEffects(ActiveSkillData, Godot.GodotObject, Godot.GodotObject)
+       [5] void SkillExecutor.execute_response(Godot.GodotObject, Godot.GodotObject, ActiveSkillData, bool)
+       [6] void SkillExecutor.execute_segment_response(Godot.GodotObject, Godot.GodotObject, ActiveSkillData)
+       [7] bool BattleManager.try_auto_response(Godot.GodotObject, Godot.GodotObject, string)
+       [8] void BattleManager+<PresentAutoResponse>d__139.MoveNext()
+       [9] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [10] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [11] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [12] void System.Threading.Tasks.Task.RunContinuations(object)
+       [13] bool System.Threading.Tasks.Task`1.TrySetResult(TResult)
+       [14] bool System.Threading.Tasks.TaskCompletionSource`1.TrySetResult(TResult)
+       [15] void BattleResponseFocus._Process(double)
+       [16] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2654)
+       [17] bool BattleResponseFocus.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&)
+       [18] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+STAGING PASSED: response
+STAGING PASSED: pause/resume
+STAGING PASSED: guard suppression/layer/zoom and dodge pause/recovery/cleanup
+STAGING PASSED: human to wolf
+STAGING PASSED: wolf to human
+STAGING PASSED: target removed during approach
+ATTACK STAGING: ALL CHECKS PASSED

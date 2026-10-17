@@ -5,7 +5,7 @@ using System.Linq;
 
 /// <summary>
 /// 云息六层至七层凝核面板。
-/// 这是一个独立的八回合牌局，不调用战斗牌组，也不消耗精力、法力或灵识。
+/// 这是一个独立的八回合牌局，不调用战斗牌组，也不消耗体力、法力或灵识。
 /// </summary>
 public partial class CondensationPanel : Control
 {

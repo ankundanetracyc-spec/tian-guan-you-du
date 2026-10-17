@@ -116,9 +116,19 @@ public partial class EastWoodsDungeonPanel
     {
         var node = route_node(_hoveredNode);
         if (!Visible || node is null || !is_node_visible(node.Id) || !_nodeButtons.TryGetValue(node.Id, out var anchor)) return;
+        HoverInfoManager.SetInfo(anchor, build_node_hover_content(node), true);
+    }
+
+    private HoverInfoManager.HoverInfoContent build_node_hover_content(EastWoodsDungeonRules.NodeDefinition node)
+    {
         var (_, terrainName) = terrain_kind(node.Id);
         var title = string.IsNullOrWhiteSpace(node.Title) ? terrainName : $"{node.Title} · {terrainName}";
         var description = node.Description;
+        var resourceNode = _dynamicMode
+            ? EastWoodsResourceNodes.Find(node.ResourceNodeId)
+            : EastWoodsResourceNodes.ForNode(node);
+        if (resourceNode is not null)
+            description += $"\n资源类别：{resourceNode.CategoryLabel}（{resourceNode.DisplayName}）";
         var availableAction = available_actions(node.Id).FirstOrDefault();
         if (availableAction is not null)
             description += "\n" + availableAction.Description;
@@ -132,7 +142,7 @@ public partial class EastWoodsDungeonPanel
             if (path.Count > 1)
                 description += $"\n预计耗时：{format_hours((path.Count - 1) * EastWoodsDungeonRules.player_edge_hours(_playerDunSpeed))}";
         }
-        HoverInfoManager.SetInfo(anchor, new HoverInfoManager.HoverInfoContent(title, description), true);
+        return new HoverInfoManager.HoverInfoContent(title, description);
     }
 
     public override void _Process(double delta)

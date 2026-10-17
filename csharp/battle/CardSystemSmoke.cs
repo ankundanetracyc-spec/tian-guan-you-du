@@ -15,9 +15,8 @@ public partial class CardSystemSmoke : Node
             var manager=new BattleManager();AddChild(manager);
             var basicPool=GD.Load<BasicDeckResource>("res://resources/basic_decks/公共基础技能池.tres") ?? throw new Exception("公共基础技能池资源");
             var basicPaths=basicPool.get_deck_skills();
-            Check(basicPaths.Count==8,"公共基础技能池八项名录");
+            Check(basicPaths.Count==3&&basicPaths.Contains("res://resources/activeskills/应敌.tres")&&basicPaths.Contains("res://resources/activeskills/架招.tres")&&basicPaths.Contains("res://resources/activeskills/痛击.tres"),"公共基础技能池仅含应敌、架招、痛击");
             Check(basicPaths.Distinct().Count()==basicPaths.Count,"公共基础技能不按卡牌数量重复");
-            Check(basicPaths.Contains("res://resources/activeskills/养息.tres"),"公共基础八项保留养息名录");
             var bodyTiming=new[]{
                 (Path:"res://resources/activeskills/发劲.tres",Name:"发劲",Energy:1,Preparation:144,Recovery:96,Cooldown:240,Target:2,Category:"active"),
                 (Path:"res://resources/activeskills/催血.tres",Name:"催血",Energy:1,Preparation:144,Recovery:96,Cooldown:360,Target:0,Category:"active"),
@@ -29,7 +28,7 @@ public partial class CardSystemSmoke : Node
             {
                 var skill=GD.Load<ActiveSkillData>(expected.Path) ?? throw new Exception(expected.Name+"资源");
                 Check(skill.skill_name==expected.Name,expected.Name+"显示名");
-                Check(skill.energy_cost==expected.Energy,expected.Name+"精力费用");
+                Check(skill.energy_cost==expected.Energy,expected.Name+"体力费用");
                 Check(skill.mana_cost==0&&skill.spirit_occupy==0,expected.Name+"法力与灵识费用");
                 Check(skill.preparation_frames==expected.Preparation&&skill.recovery_frames==expected.Recovery,expected.Name+"准备收招时长");
                 Check(skill.cooldown_frames==expected.Cooldown,expected.Name+"冷却时长");
@@ -45,7 +44,7 @@ public partial class CardSystemSmoke : Node
             Check(CardPresentation.Face(response,defender).Contains("7"),"牌面计算数值");
             Check(!CardPresentation.Face(response,defender).Contains("floor"),"牌面无公式");
             Check(CardPresentation.Details(response,defender).Contains("floor"),"右侧化解公式");
-            Check(!CardPresentation.Details(response,defender).Contains("精力："),"右侧无费用栏");
+            Check(!CardPresentation.Details(response,defender).Contains("体力："),"右侧无费用栏");
             var deck=new BattleDeckManager();AddChild(deck);
             var flags=BindingFlags.NonPublic|BindingFlags.Instance;
             // 回归场景只验证凝核/旧卡牌底座；即时战斗已由固定技能槽接管。
@@ -58,7 +57,7 @@ public partial class CardSystemSmoke : Node
             Check(manager.hand_cards(defender).Count==2,"结束回合整手保留");
             Check(deck.discard_pile.Count==0,"结束回合不弃牌");
             Check(manager.try_auto_response(defender,attacker),"手牌自动应对");
-            Check(defender.current_stamina==2,"应对支付精力");
+            Check(defender.current_stamina==2,"应对支付体力");
             Check(defender.get_status_stacks("化解")==7,"应对实际公式层数");
             Check(manager.hand_cards(defender).Count==1&&deck.discard_pile.Contains(response),"应对从手牌移到弃牌");
             deck.draw_pile.Add(response);

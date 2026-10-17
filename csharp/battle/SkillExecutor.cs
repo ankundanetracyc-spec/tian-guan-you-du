@@ -19,6 +19,22 @@ public partial class SkillExecutor : Node
     public async void execute_skill(GodotObject attacker, ActiveSkillData skill, GodotObject target, bool is_counter = false)
     {
         if (!GodotObject.IsInstanceValid(attacker) || !GodotObject.IsInstanceValid(target)) { Finish(attacker, is_counter, false); return; }
+        if (target is ArtifactBody artifactBody)
+        {
+            var artifactManager = GetManager() as BattleManager;
+            if (artifactManager is not null && BattleManager.ArtifactAcceptsSkill(artifactBody, attacker, skill))
+            {
+                artifactManager.gongfa_combat.PrepareAttack(attacker, skill);
+                artifactManager.gongfa_combat.PrepareRedSunAttack(attacker, skill);
+                var segmentsOnBody = artifactManager.gongfa_combat.Segments(attacker, skill);
+                for (var part = 0; part < segmentsOnBody && artifactBody.current_health > 0; part++)
+                    artifactManager.damage_artifact_body(attacker, artifactManager.gongfa_combat.ForDamageSegment(skill, part), artifactBody);
+                artifactManager.gongfa_combat.AfterAttack(attacker, skill);
+            }
+            await SettleAction(attacker, skill);
+            Finish(attacker, is_counter, false);
+            return;
+        }
         show_action_name(attacker, skill.skill_name);
         // 术诀和守御牌不走命中判定，避免无伤害牌被最低 1 点伤害规则误伤自身。
         if (!DealsDamage(skill))
@@ -71,14 +87,19 @@ public partial class SkillExecutor : Node
         if (!GodotObject.IsInstanceValid(attacker) || !GodotObject.IsInstanceValid(battle_map)) { Finish(attacker, is_counter, false); return; }
         show_action_name(attacker, skill.skill_name);
         var killed = false;
-        var cells = battle_map.Call("get_aoe_cells", target_cell, skill.aoe_range).AsGodotArray();
         var seen = new HashSet<ulong>();
-        var body=(GetManager() as BattleManager)?.gongfa_combat;
+        var manager = GetManager() as BattleManager;
+        var body=manager?.gongfa_combat;
         var attackPrepared=false;
-        foreach (var value in cells)
+        var targets = manager?.get_target_candidates().Where(target => target.Get("faction").AsInt32() != attacker.Get("faction").AsInt32()).ToArray() ?? [];
+        foreach (var target in targets)
         {
-            var target = battle_map.Call("get_unit_at_cell", value).AsGodotObject();
-            if (!GodotObject.IsInstanceValid(target) || target!.Get("current_health").AsInt32() <= 0 || target.Get("faction").AsInt32() == attacker.Get("faction").AsInt32() || !seen.Add(target.GetInstanceId())) continue;
+            if (!GodotObject.IsInstanceValid(target) || target.Get("current_health").AsInt32() <= 0 || !seen.Add(target.GetInstanceId())) continue;
+            if (target is ArtifactBody artifactBody)
+            {
+                manager?.damage_artifact_body(attacker, skill, artifactBody);
+                continue;
+            }
             if(!attackPrepared){body?.PrepareAttack(attacker,skill);attackPrepared=true;}
             await Lunge(attacker, target, skill);
             if(!GodotObject.IsInstanceValid(attacker)||!GodotObject.IsInstanceValid(target)){await SettleAction(attacker,skill);continue;}
@@ -148,9 +169,10 @@ public partial class SkillExecutor : Node
         ApplySelfSpecialEffects(skill, attacker);
         ApplyWounds(skill, target);
         if (!IsSpectatorBattle && damage > 0) BattleInkSlashEffect.PlayImpactForSkill(target, skill, result.Critical, attacker, segment);
+        if (!IsSpectatorBattle && damage <= 0 && (absorbed > 0 || result.BlockedDamage > 0)) BattleInkCombatVfx.PlayDefenseContact(target, attacker);
         var hitDirection = (GetPosition(target) - GetPosition(attacker)).Normalized();
         if (!IsSpectatorBattle && damage > 0 && target is Node targetNode) targetNode.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_hit(hitDirection, BattleInkCombatVfx.HitWeight(skill), result.Critical);
-        if (!IsSpectatorBattle && target.HasMethod("hit_flash")) target.Call("hit_flash", hitDirection);
+        if (!IsSpectatorBattle && damage > 0 && !(target is Node visualTarget && visualTarget.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.is_defense_presenting() == true) && target.HasMethod("hit_flash")) target.Call("hit_flash", hitDirection);
         show_damage_number(target, damage, skill.damage_type, result.Critical);
         if (target.Get("current_health").AsInt32() > 0) return false;
         if (!IsSpectatorBattle && target is Node deathNode && !deathNode.HasMeta("battle_death_ink_played"))
@@ -196,6 +218,11 @@ public partial class SkillExecutor : Node
             var count = Mathf.Max(1, effect.GetValueOrDefault("count", 1).AsInt32());
             switch (value.AsString())
             {
+                case "shield":
+                    var shieldGain = Math.Max(0, Mathf.RoundToInt(CardRules.Evaluate(effect.GetValueOrDefault("formula", "0").AsString(), caster)));
+                    caster.Set("shield", caster.Get("shield").AsInt32() + shieldGain);
+                    if (shieldGain > 0) show_status_gain(caster, "护盾", shieldGain);
+                    break;
                 case "gain_qi_blood" when caster.HasMethod("gain_qi_blood"):
                     caster.Call("gain_qi_blood", count);
                     break;
@@ -269,10 +296,10 @@ public partial class SkillExecutor : Node
             if(!GodotObject.IsInstanceValid(node)||!GodotObject.IsInstanceValid(targetNode))return;
         }
         var direction=(targetNode.GlobalPosition-node.GlobalPosition).Normalized();
-        node.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_attack(direction);
+        node.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_attack(direction, BattleInkCombatVfx.UsesHandChop(skill));
         var visual=BattleInkCombatVfx.PlayAttack(attacker,target,skill);
         if(visual is not null)_incomingAttackVisuals[node]=visual;
-        await PresentationWait(BattleInkCombatVfx.ContactSeconds-BattleAttackMotion.BeforeContactSeconds);
+        await PresentationWait(BattleInkCombatVfx.AttackContactSeconds(attacker)-BattleAttackMotion.BeforeContactSeconds);
     }
 
     private async System.Threading.Tasks.Task CompleteAttackContact(GodotObject attacker,GodotObject target,ActiveSkillData skill,bool isCounter)
@@ -352,6 +379,10 @@ public partial class SkillExecutor : Node
         (GetManager()?.GetParent() ?? GetTree().CurrentScene)?.AddChild(view);
         view.Scale = Vector2.One * BattleUiArt.Scale(GetViewport()) / Mathf.Max(.001f, GetViewport().GetCanvasTransform().Scale.Y);
         view.show_action_name(owner, name);
+    }
+    public void present_recovery(GodotObject caster)
+    {
+        if (!IsSpectatorBattle) BattleInkCombatVfx.PlayRecovery(caster);
     }
     public void show_recovery_number(GodotObject target, int amount, string resource = "生命")
     {

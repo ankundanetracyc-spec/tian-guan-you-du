@@ -27,20 +27,20 @@ public partial class MainScene
         { dungeon.show_action_result("储量不足", "当前剩余资源不足以完成已预留灵感强化的整次采集；灵感仍保留，可取消预留或等待资源恢复。"); return; }
         // Validate resources and inventory capacity before committing either time or stamina.
         if (action.ItemPath.Length > 0 && !valid_dungeon_item(action.ItemPath))
-        { dungeon.show_action_result("暂不可采集", "当前物品或专属图标无法加载，未消耗时间、体力或储量。"); return; }
+        { dungeon.show_action_result("暂不可采集", "当前物品或专属图标无法加载，未消耗时间、精力或储量。"); return; }
         if (!player.can_spend_world_stamina(action.Stamina))
-        { dungeon.show_action_result("体力不足", $"本次行动需要 {action.Stamina:0.#} 点体力。可以离开林地休息后再来；没有扣除费用。"); return; }
+        { dungeon.show_action_result("精力不足", $"本次行动需要 {action.Stamina:0.#} 点精力。可以离开林地休息后再来；没有扣除费用。"); return; }
         if (action.ItemPath.Length > 0 && !player.can_add_item_to_inventory(action.ItemPath, finalQuantity))
-        { dungeon.show_action_result("行囊已满", "无法收纳本次采集物，没有消耗时间、体力或储量。"); return; }
+        { dungeon.show_action_result("行囊已满", "无法收纳本次采集物，没有消耗时间、精力或储量。"); return; }
         if (!player.try_spend_world_stamina(action.Stamina))
-        { dungeon.show_action_result("体力不足", $"本次行动需要 {action.Stamina:0.#} 点体力。可以离开林地休息后再来；没有扣除费用。"); return; }
+        { dungeon.show_action_result("精力不足", $"本次行动需要 {action.Stamina:0.#} 点精力。可以离开林地休息后再来；没有扣除费用。"); return; }
         if (reservedGatheringInspiration is not null &&
             !player.try_consume_armed_cultivation_inspiration_for_action(CultivationInspirationTuning.GatheringDomain, out _))
         {
             // Expiry or a stale reservation can invalidate the selection after the UI was opened.
             // Roll back the just-paid stamina because this action has not begun yet.
             player.restore_world_stamina(action.Stamina);
-            dungeon.show_action_result("采集未开始", "预留灵感已不可用，未开始本次采集。体力与储量均未消耗。");
+            dungeon.show_action_result("采集未开始", "预留灵感已不可用，未开始本次采集。精力与储量均未消耗。");
             return;
         }
         var remaining = action.Hours;
@@ -59,7 +59,7 @@ public partial class MainScene
             return; // Interrupted: no harvest, investigation progress or stock depletion.
         }
         if (action.ItemPath.Length > 0 && !player.add_item_to_inventory(action.ItemPath, finalQuantity))
-        { dungeon.show_action_result("采集未完成", "行囊无法收纳，资源储量未扣除。已投入的时间和体力不退还。"); return; }
+        { dungeon.show_action_result("采集未完成", "行囊无法收纳，资源储量未扣除。已投入的时间和精力不退还。"); return; }
         dungeon.complete_action(node, id, finalQuantity);
         var completedAt = time.get_total_game_hours();
         if (action.ItemPath.Length > 0)

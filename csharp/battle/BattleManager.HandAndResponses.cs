@@ -92,7 +92,7 @@ public partial class BattleManager : Node2D
         BattleResponseFocus? focus = null;
         try
         {
-            focus = BattleResponseFocus.Begin(this, responder, queued.skill);
+            focus = BattleResponseFocus.Begin(this, responder, queued.skill, attacker as Node2D);
             await focus.IntroFinished;
             if (!IsInsideTree() || !battle_running || !Alive(defender) || !Alive(attacker)) return false;
             focus.ReleaseTimeStop();
@@ -135,7 +135,11 @@ public partial class BattleManager : Node2D
                 gongfa_combat.OnResponseTriggered(defender, queued.skill);
                 StartSkillCooldown(defender, queued.skill);
                 AdvanceSegmentSlot(defender);
-                if (gongfa_combat.Utility(defender, queued.skill)) _executor?.execute_counter_extras(defender, attacker, queued.skill);
+                if (gongfa_combat.Utility(defender, queued.skill))
+                {
+                    if (!_spectatorBattle) BattleInkCombatVfx.PlayUtility(defender, defender, queued.skill);
+                    _executor?.execute_counter_extras(defender, attacker, queued.skill);
+                }
                 else _executor?.execute_segment_response(defender, attacker, queued.skill);
 
                 _skillBar?.refresh_slots();

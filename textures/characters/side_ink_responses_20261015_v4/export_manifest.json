@@ -1,0 +1,12 @@
+{
+  "canvas": [2048,2048],
+  "ground_origin": [1024,1900],
+  "reference_visible_height": 1375,
+  "registration": "Manually registered foot midpoint and baseline; authoring scales account for generator framing and head size. Runtime shares unchanged reference scale and ground origin with approved V3 idle/chop.",
+  "poses": [
+    {"source":"source/male_hurt.png","output":"male_hurt.png","source_origin":[750,1192],"authoring_scale":1.30},
+    {"source":"source/male_guard.png","output":"male_guard.png","source_origin":[656,1201],"authoring_scale":1.22},
+    {"source":"source/female_hurt.png","output":"female_hurt.png","source_origin":[740,1185],"authoring_scale":1.29},
+    {"source":"source/female_guard.png","output":"female_guard.png","source_origin":[656,1205],"authoring_scale":1.28}
+  ]
+}

@@ -111,7 +111,7 @@ public partial class BattleUnitOverlay : CanvasLayer
                 lines.Add($"暴击  {crit*100f:0}%");
             }
         }
-        foreach(var effect in skill.status_effects)
+        foreach(var effect in skill.status_effects.Where(_ => target is not ArtifactBody))
         {
             var id=effect.GetValueOrDefault("status_id","").AsString();
             if(string.IsNullOrWhiteSpace(id))continue;

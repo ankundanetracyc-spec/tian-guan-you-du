@@ -44,12 +44,12 @@ public partial class InfoPanel
             var content = new VBoxContainer { Alignment = BoxContainer.AlignmentMode.Center, MouseFilter = MouseFilterEnum.Ignore }; content.AddThemeConstantOverride("separation", 6);
             button.AddChild(content); content.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect); content.OffsetLeft = 18; content.OffsetRight = -18; content.OffsetTop = 10; content.OffsetBottom = -10;
             content.AddChild(CharacterClippedText($"法宝位{chinese_volume_number(i + 1)}    {text}", 23));
-            content.AddChild(CharacterClippedText(artifact is null ? unlocked ? "＋ 选择法宝" : "随实际槽位开放" : $"{artifact.ritual_mode} · 灵识 {artifact.spirit_cost} · 耐久 {artifact.current_durability}/{artifact.max_durability}", 18, true));
+            content.AddChild(CharacterClippedText(artifact is null ? unlocked ? "＋ 选择法宝" : "随实际槽位开放" : $"{artifact.ritual_mode} · 灵识 {(artifact.ritual_mode == "内炼" ? 0 : artifact.spirit_cost)} · 耐久 {artifact.current_durability}/{artifact.max_durability}", 18, true));
             button.Disabled = !unlocked;
             if (artifact is not null) CharacterHover(button, artifact.artifact_name, character_artifact_detail(artifact), CharacterLoadIcon(artifact.form?.icon_path ?? ""));
             button.Pressed += () => { if (human is not null && unlocked) show_character_artifact_picker(human, artifact); };
         }
-        artifacts.AddChild(CharacterText("法宝装备后持续占用灵识。", 18, true));
+        artifacts.AddChild(CharacterText("内炼不占灵识；外祭召出后占用，离场释放。", 18, true));
         var supply = CharacterBox(CharacterPanel(page, 0, 638, 1350, 157), "战备");
         var supplies = new HBoxContainer(); supplies.AddThemeConstantOverride("separation", 48); supply.AddChild(supplies);
         foreach (var category in new[] { "丹药", "符箓" })
@@ -84,23 +84,43 @@ public partial class InfoPanel
     }
 
     private static string character_artifact_detail(ArtifactInstanceData item) =>
-        $"{item.artifact_tier} · {item.form?.form_name ?? "法宝"}\n构型：{item.ritual_mode}\n本行：{item.element}　阴阳：{item.polarity}\n功用：{item.utility_id} · {item.utility_grade} 品\n灵识占用：{item.spirit_cost}\n耐久：{item.current_durability}/{item.max_durability}\n器体：{item.outer_body}\n外祭耗费：精力 {item.deploy_energy_cost} · 法力 {item.deploy_mana_cost}\n\n铭文：{(item.inscriptions.Count == 0 ? "无" : string.Join("、", item.inscriptions.Select(value => value.display_name)))}";
+        $"{item.artifact_tier} · {item.form?.form_name ?? "法宝"}\n构型：{item.ritual_mode}\n本行：{item.element}　阴阳：{item.polarity}\n功用：{item.utility_id} · {item.utility_grade} 品\n灵识：{(item.ritual_mode == "内炼" ? "内炼不占用" : $"在场占用{item.spirit_cost}")}\n耐久：{item.current_durability}/{item.max_durability}\n器体：{item.outer_body}\n外祭耗费：体力 {item.deploy_energy_cost} · 法力 {item.deploy_mana_cost}\n\n铭文：{(item.inscriptions.Count == 0 ? "无" : string.Join("、", item.inscriptions.Select(value => value.display_name)))}";
 
     private void show_character_artifact_picker(Character human, ArtifactInstanceData? current)
     {
         var items = human.get_artifact_items().Where(item => !human.is_artifact_equipped(item.instance_id)).ToList();
         var names = items.Select(item => $"{item.artifact_name} · {item.ritual_mode} · 灵识{item.spirit_cost} · {item.instance_id[^Math.Min(4, item.instance_id.Length)..]}").ToList();
-        CharacterChoose("选择法宝", names.Prepend("卸下当前法宝"), value =>
+        IEnumerable<string> choices = names.Prepend("卸下当前法宝");
+        if (current?.ritual_mode == "内炼" && ArtifactSkillFactory.IsConfigured(current)) choices = choices.Prepend("调整化法目标");
+        CharacterChoose("选择法宝", choices, value =>
         {
+            if (value == "调整化法目标" && current is not null) { show_inner_artifact_binding(human, current); return; }
+            ArtifactInstanceData? bindingItem = null;
             if (value == "卸下当前法宝") { if (current is not null) human.unequip_artifact(current.instance_id); }
             else
             {
                 var index = names.IndexOf(value); if (index < 0) return;
                 if (current is not null) human.unequip_artifact(current.instance_id);
                 if (!human.equip_artifact(items[index].instance_id))
-                { if (current is not null) human.equip_artifact(current.instance_id); show_character_reading(null, "无法装配", "请检查法宝耐久、灵识容量与可用法宝位。"); }
+                { if (current is not null) human.equip_artifact(current.instance_id); show_character_reading(null, "无法装配", "请检查法器耐久、绑定冲突与可用法器位；战斗中不可换装。"); }
+                else if (items[index].ritual_mode == "内炼" && ArtifactSkillFactory.IsConfigured(items[index])) bindingItem = items[index];
             }
+            build_character_equipment(human);
+            if (bindingItem is not null) show_inner_artifact_binding(human, bindingItem);
+        });
+    }
+    private void show_inner_artifact_binding(Character human, ArtifactInstanceData item)
+    {
+        var paths = human.get_default_combat_skill_paths().Concat(human.get_available_battle_skills().Select(Character.combat_skill_key))
+            .Where(path => !path.StartsWith("artifact:") && human.is_valid_artifact_binding(item, path)).Distinct().ToList();
+        var names = paths.Select(path => human.resolve_combat_skill(path)?.skill_name ?? path).ToList();
+        CharacterChoose("选择" + item.artifact_name + "化法目标", names, value =>
+        {
+            var index = names.IndexOf(value);
+            if (index >= 0 && !human.bind_inner_artifact(item.instance_id, paths[index]))
+                show_character_reading(null, "无法绑定", "该技能已关联其他内炼法器，或来源已失效。");
             build_character_equipment(human);
         });
     }
+
 }

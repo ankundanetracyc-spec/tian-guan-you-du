@@ -1,42 +1,5 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://csharp/scene/CharacterSequenceShowcase.cs" id="1_showcase"]
-[ext_resource type="FontFile" path="res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf" id="3_font"]
+[ext_resource type="PackedScene" path="res://tscn/scene/SideInkChopPreview.tscn" id="1_preview"]
 
-[node name="CharacterSequenceShowcase" type="Node2D"]
-script = ExtResource("1_showcase")
-
-[node name="Shade" type="Polygon2D" parent="."]
-color = Color(0.125, 0.165, 0.17, 1)
-polygon = PackedVector2Array(0, 0, 1920, 0, 1920, 1080, 0, 1080)
-
-[node name="UILayer" type="CanvasLayer" parent="."]
-
-[node name="Title" type="Label" parent="UILayer"]
-offset_left = 38.0
-offset_top = 30.0
-offset_right = 560.0
-offset_bottom = 70.0
-theme_override_colors/font_color = Color(0.96, 0.91, 0.75, 1)
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 26
-text = "局内战斗骨架动作预览（无剑版）"
-
-[node name="FrameLabel" type="Label" parent="UILayer"]
-offset_left = 40.0
-offset_top = 78.0
-offset_right = 1080.0
-offset_bottom = 105.0
-theme_override_colors/font_color = Color(0.86, 0.89, 0.8, 1)
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 17
-
-[node name="Hint" type="Label" parent="UILayer"]
-offset_left = 40.0
-offset_top = 1010.0
-offset_right = 1860.0
-offset_bottom = 1070.0
-theme_override_colors/font_color = Color(0.86, 0.89, 0.8, 0.94)
-theme_override_fonts/font = ExtResource("3_font")
-theme_override_font_sizes/font_size = 16
-text = "1 防守待机　2 施法蓄势　3 剑指引剑；动作结束回到选中姿势。A 摆击　R 上挑　L 踢击　C 施法　S 休整　T 吐纳　H 受击　D 跪地；Space 暂停/继续　← → 逐帧；M 男修　F 女修；点击姿势可重新预览，Esc 返回。"
+[node name="CharacterSequenceShowcase" instance=ExtResource("1_preview")]

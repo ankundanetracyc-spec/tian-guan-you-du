@@ -43,6 +43,9 @@ public static class NpcPlayerImpressionChecks
         Check(NpcSparringRules.WantsToInvite(spar, human) && NpcPersonalityRules.WillVisit(spar, false), "过月交手经历没有参与再次相邀");
         spar.player_social_memory["player_realm"] = "云息十层";
         Check(!NpcSparringRules.WantsToInvite(spar, human), "旧交手印象绕过已知修为差距");
+        // The next assertion isolates the deprecated scalar relationship field from the
+        // separately remembered realm; otherwise the real rank-gap veto remains active.
+        spar.player_social_memory.Remove("player_realm");
         spar.player_relationship = -1;
         Check(NpcPersonalityRules.WillVisit(spar, false) && NpcSparringRules.WantsToInvite(spar, human), "旧单一关系分错误继续参与敌意判定");
         CharacterRelationshipRules.GetOrCreate(spar, CharacterRelationshipRules.PlayerCharacterId).resentment = 60;
@@ -100,6 +103,85 @@ public static class NpcPlayerImpressionChecks
         foreach (var _ in steps) { }
         Check(NpcPlayerImpressionRules.WillingContact(resident), "世界月度结算入口未接入印象归纳");
         manager.Free();
+
+        var banquetListener = Person("impression_banquet_listener");
+        var privateRelationship = CharacterRelationshipRules.GetOrCreate(banquetListener, CharacterRelationshipRules.PlayerCharacterId);
+        privateRelationship.closeness = 63;
+        banquetListener.record(new NpcActionRecord
+        {
+            month_index = 2,
+            action_id = "banquet_response",
+            action_name = "宗门宴席回应",
+            target_npc_id = "player",
+            dungeon_incident_id = "banquet-one:beat-one:impression_banquet_listener",
+            reason = "谦让",
+            outcome = "承蒙诸位抬爱。我还在门中踏实修习。",
+        });
+        var banquetView = NpcPlayerImpressionRules.DescribeForPlayer(banquetListener);
+        Check(banquetView.RecentSource == "宗门宴席" && banquetView.RecentClue.Contains("谦让") &&
+              banquetView.RecentClue.Contains("承蒙诸位") && !banquetView.Summary.Contains("63") &&
+              NpcPlayerImpressionRules.DescribeForPlayer(Person("impression_no_contact")).Summary == "尚未形成明确印象",
+            "关系页印象未使用实际听闻的宴席回应，或泄漏 NPC 私交值／推断无记录印象");
+
+        var guardedSpeaker = Person("banquet_dialogue_guarded_speaker");
+        var guardedListener = Person("banquet_dialogue_guarded_listener");
+        CharacterRelationshipRules.GetOrCreate(guardedSpeaker, guardedListener.npc_id).resentment = 35;
+        Check(Enumerable.Range(0, 16).All(index => BanquetDialogueLibrary
+                .SelectAmbientExchange(guardedSpeaker, guardedListener, "guarded:" + index).Id.StartsWith("guarded_", StringComparison.Ordinal)),
+            "有明确怨结的宴席闲谈未保持戒备语气");
+
+        var familiarSpeaker = Person("banquet_dialogue_familiar_speaker");
+        var familiarListener = Person("banquet_dialogue_familiar_listener");
+        familiarSpeaker.social_personality["sociability"] = "外向";
+        familiarListener.social_personality["forgiveness"] = "宽和";
+        CharacterRelationshipRules.GetOrCreate(familiarSpeaker, familiarListener.npc_id).closeness = 55;
+        CharacterRelationshipRules.GetOrCreate(familiarListener, familiarSpeaker.npc_id).closeness = 55;
+        Check(Enumerable.Range(0, 48).Select(index => BanquetDialogueLibrary
+                .SelectAmbientExchange(familiarSpeaker, familiarListener, "familiar:" + index).Id)
+                .Any(id => id.StartsWith("familiar_teasing", StringComparison.Ordinal)),
+            "轻微打趣没有受双方熟悉程度与性情条件控制");
+
+        var noteManager = new NpcWorldManager();
+        var notePlayer = new HumanData { entity_name = "留帖者", sect_affiliation_id = "yuxu_xianzong" };
+        noteManager.set_player_data(notePlayer);
+        var acceptedNoteNpc = Person("acquaintance_note_accept");
+        acceptedNoteNpc.faction_id = notePlayer.sect_affiliation_id;
+        acceptedNoteNpc.current_state = "闭关修行";
+        acceptedNoteNpc.seclusion_started_month = 0;
+        acceptedNoteNpc.seclusion_until_month = 1;
+        acceptedNoteNpc.acquaintance_notes.Add(new Godot.Collections.Dictionary
+        {
+            ["note_id"] = "note-accepted-once", ["received_hour"] = 20, ["status"] = "pending",
+        });
+        var processNote = typeof(NpcWorldManager).GetMethod("finish_seclusion_and_process_acquaintance_notes", BindingFlags.NonPublic | BindingFlags.Instance)!;
+        processNote.Invoke(noteManager, new object[] { acceptedNoteNpc, 1 });
+        var acceptedRecord = acceptedNoteNpc.acquaintance_notes[0];
+        var acceptedHistoryCount = acceptedNoteNpc.action_history.Count;
+        Check(acceptedRecord["status"].AsString() == "accepted" && acceptedRecord["resolved_month"].AsInt32() == 1 &&
+              acceptedNoteNpc.acquaintance_window_until_hour == 720 + 5 * 360 * 24 &&
+              CharacterRelationshipRules.Get(acceptedNoteNpc, CharacterRelationshipRules.PlayerCharacterId) is null &&
+              !NpcSocialRules.KnowsName(acceptedNoteNpc) && acceptedNoteNpc.current_state == "空闲",
+            "出关接受拜帖应开启五年窗口，但不建立关系或交换姓名");
+        processNote.Invoke(noteManager, new object[] { acceptedNoteNpc, 1 });
+        Check(acceptedNoteNpc.action_history.Count == acceptedHistoryCount && acceptedRecord["status"].AsString() == "accepted",
+            "重复月结再次处理已接受拜帖");
+
+        var declinedNoteNpc = Person("acquaintance_note_decline");
+        declinedNoteNpc.faction_id = "other_sect";
+        declinedNoteNpc.social_personality["risk"] = "谨慎";
+        declinedNoteNpc.current_state = "闭关修行";
+        declinedNoteNpc.seclusion_started_month = 0;
+        declinedNoteNpc.seclusion_until_month = 1;
+        declinedNoteNpc.acquaintance_notes.Add(new Godot.Collections.Dictionary
+        {
+            ["note_id"] = "note-declined-once", ["received_hour"] = 30, ["status"] = "pending",
+        });
+        processNote.Invoke(noteManager, new object[] { declinedNoteNpc, 1 });
+        Check(declinedNoteNpc.acquaintance_notes[0]["status"].AsString() == "declined" &&
+              declinedNoteNpc.acquaintance_window_until_hour == 0 &&
+              CharacterRelationshipRules.Get(declinedNoteNpc, CharacterRelationshipRules.PlayerCharacterId) is null,
+            "异宗谨慎人物拒绝拜帖后仍开启窗口或错误增加怨结");
+        noteManager.Free();
 
         var population = Enumerable.Range(0, 580).Select(index => Person("impression_perf_" + index)).ToArray();
         foreach (var active in population.Take(7)) { active.record(Chat(0)); active.record(Chat(1)); }

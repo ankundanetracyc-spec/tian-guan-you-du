@@ -47,7 +47,9 @@ public partial class BattleInkCombatVfx : Node2D
         };
     }
 
-    public static string Describe(ActiveSkillData skill) => Profile(skill) switch
+    public static string Describe(ActiveSkillData skill) => UsesHandChop(skill)
+        ? "侧向下劈姿势配合淡彩水墨序列帧，接触处短停、小范围墨花与自然漂散。"
+        : Profile(skill) switch
     {
         Kind.Strike => "短促顿笔沿出手方向推进，接触处积墨压缩，再向受力方向散开。",
         Kind.Release => "前窄后厚的劲墨推出，落点凝成浓墨，余劲拖出枯笔。",
@@ -63,8 +65,8 @@ public partial class BattleInkCombatVfx : Node2D
         Kind.Pounce => "扑势顺行进方向掠入，三道枯墨撕痕错开收锋。",
         Kind.Charge => "低伏宽墨沿冲撞方向压入，接触处形成厚重顿笔，余墨沉落。",
         Kind.Thrust => "细长直锋沿攻击方向刺入，接触处留下尖锐枯笔。",
-        Kind.Recovery => "淡墨缓缓向内回收，再沿身侧上浮，表现吐纳与回复。",
-        _ => "身侧两道湿墨收拢为护持笔势，受力方向短促积墨。"
+        Kind.Recovery => "轻收手臂调息，局部淡青气息回拢与细小叶屑衔接回待机。",
+        _ => "架挡姿势与淡彩弧形笔势，接触处短促积墨，余劲自然收淡。"
     };
 
     public static float HitWeight(ActiveSkillData skill) => Profile(skill) switch
@@ -75,7 +77,9 @@ public partial class BattleInkCombatVfx : Node2D
     };
 
     public static float ContactHoldSeconds(float weight, bool critical = false) =>
-        Mathf.Clamp(0.055f * weight, 0.045f, 0.09f) + (critical ? 0.025f : 0f);
+        Mathf.Clamp(0.12f * weight, 0.10f, 0.18f) + (critical ? 0.035f : 0f);
+
+    public static float AttackContactSeconds(GodotObject attacker) => attacker is Node2D node && SideDoll(node) is not null ? .30f : ContactSeconds;
 
     public static Vector2 Anchor(Node2D unit, bool head = false) => unit.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll") is { } doll
         ? doll.combat_anchor(head) : unit.GlobalPosition + new Vector2(0f, head ? -202f : -112f);
@@ -83,6 +87,7 @@ public partial class BattleInkCombatVfx : Node2D
     public static BattleInkCombatVfx? PlayAttack(GodotObject attacker, GodotObject target, ActiveSkillData skill)
     {
         if (attacker is not Node2D from || target is not Node2D to || !DealsDamage(skill)) return null;
+        if (SideDoll(from) is { } side && UsesHandChop(skill)) return PlayHandChop(side, skill);
         var kind = Profile(skill);
         var start = Anchor(from);
         var end = Anchor(to, kind is Kind.SoulNeedle or Kind.SoulDraw);
@@ -94,8 +99,9 @@ public partial class BattleInkCombatVfx : Node2D
         var effect = Spawn((start + end) * 0.5f, new Vector2(Mathf.Max(distance, 1f) + 100f, height), direction.Angle(), kind, 0, 0.44f, skill);
         if (effect is null) return null;
         effect._material!.SetShaderParameter("travel_span", distance / (distance + 100f));
-        effect._material.SetShaderParameter("contact_progress", ContactSeconds / effect._duration);
-        effect._holdAt = ContactSeconds;
+        var contact = AttackContactSeconds(attacker);
+        effect._material.SetShaderParameter("contact_progress", contact / effect._duration);
+        effect._holdAt = contact;
         effect._hold = 0.035f + ContactHoldSeconds(HitWeight(skill));
         return effect;
     }
@@ -103,7 +109,16 @@ public partial class BattleInkCombatVfx : Node2D
     public static void PlayImpact(GodotObject target, ActiveSkillData? skill = null, GodotObject? attacker = null, bool critical = false, bool evaded = false, int segment = 0)
     {
         if (target is not Node2D to) return;
+        if (evaded && SideDoll(to) is { } dodger) { PlayDodge(dodger); EmphasizeContact(attacker, to, .7f); return; }
+        if (SideDoll(to)?.is_defense_presenting() == true) { EmphasizeContact(attacker, to, .9f); return; }
+        EmphasizeContact(attacker, to, skill is null ? 1 : HitWeight(skill));
         var kind = skill is null ? Kind.Strike : Profile(skill);
+        if (!evaded && SideDoll(to) is { } side
+            && (skill is null || UsesHandChop(skill)))
+        {
+            PlayChopContact(side, skill, critical, segment);
+            return;
+        }
         var end = Anchor(to, kind is Kind.SoulNeedle or Kind.SoulDraw);
         var offset = attacker is Node2D from ? end - Anchor(from) : Facing(to);
         var direction = offset.LengthSquared() > 0.01f ? offset.Normalized() : Vector2.Right;
@@ -121,6 +136,12 @@ public partial class BattleInkCombatVfx : Node2D
     public static void PlayUtility(GodotObject caster, GodotObject target, ActiveSkillData skill)
     {
         if (caster is not Node2D from || DealsDamage(skill)) return;
+        if (SideDoll(from) is { } side)
+        {
+            if (Profile(skill) == Kind.Recovery) PlayRecovery(from);
+            else PlayGuard(side, CardRules.IsResponse(skill));
+            return;
+        }
         Spawn(Anchor(from), new Vector2(210f, 280f), 0f, Profile(skill), 2, 0.62f, skill);
     }
 
@@ -158,7 +179,7 @@ public partial class BattleInkCombatVfx : Node2D
             image.Dispose();
         }
         // Formation actors use depth 565–720; strokes must remain above them and below damage labels.
-        var effect = new BattleInkCombatVfx { Name = "CombatInk", _duration = duration, ProcessMode = ProcessModeEnum.Pausable, ZIndex = 900, ZAsRelative = false };
+        var effect = new BattleInkCombatVfx { Name = "CombatInk", _duration = duration, ProcessMode = ProcessModeEnum.Pausable, ZIndex = BattlePresentationLayers.Effects, ZAsRelative = false };
         tree.CurrentScene.AddChild(effect);
         effect.AddToGroup("battle_action_visuals");
         effect.GlobalPosition = position;
@@ -179,6 +200,7 @@ public partial class BattleInkCombatVfx : Node2D
 
     public override void _Process(double delta)
     {
+        if (_sequenceSprite is not null) { ProcessSequence((float)delta); return; }
         _elapsed += (float)delta;
         var local = Mathf.Max(0f, _elapsed - _delay);
         // 命中停顿只改变画面进度；管理器等待整个特效结束后再推进下一行动。

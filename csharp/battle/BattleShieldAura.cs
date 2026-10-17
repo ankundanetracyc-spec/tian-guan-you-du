@@ -48,7 +48,8 @@ public partial class BattleShieldAura : Node2D
     public override void _Ready()
     {
         ProcessMode = ProcessModeEnum.Pausable;
-        ZIndex = 72;
+        ZIndex = BattlePresentationLayers.Effects;
+        ZAsRelative = false;
         SetupVisual();
         SetVisualActive(_active);
     }

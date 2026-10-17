@@ -5,6 +5,10 @@ using Godot;
 public partial class LetterInvitationData : Resource
 {
     [Export] public string activity_key = "";
+    /// <summary>指向已保存的具体活动实例，不由通用信件框架推断。</summary>
+    [Export] public string activity_instance_id = "";
+    /// <summary>由 NPC 主持的活动使用，玩家主持时留空。</summary>
+    [Export] public string host_npc_id = "";
     [Export] public string activity_name = "";
     [Export] public string location_id = "";
     [Export] public string subscene_id = "";
@@ -18,7 +22,7 @@ public partial class LetterInvitationData : Resource
         && !string.IsNullOrWhiteSpace(activity_name) && !string.IsNullOrWhiteSpace(place_name)
         && reply_by_hour >= sentHour && starts_at_hour >= reply_by_hour && ends_at_hour > starts_at_hour;
     public bool CanReply(int now) => response == "pending" && now < reply_by_hour;
-    public bool CanAttend(int now) => response == "accepted" && now < ends_at_hour;
+    public bool CanAttend(int now) => response == "accepted" && now >= starts_at_hour && now < ends_at_hour;
     public string State(int now) => response switch
     {
         "completed" => "已赴约",

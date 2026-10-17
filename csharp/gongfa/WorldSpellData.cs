@@ -31,7 +31,7 @@ public partial class WorldSpellData : Resource
             $"[b]{spell_name}[/b]　{use_type} · {cast_mode}\n" +
             $"解锁：{unlock}\n" +
             $"场景与目标：{scene}；{target_rule}\n" +
-            $"大世界体力：{resource_cost}\n" +
+            $"大世界精力：{resource_cost}\n" +
             $"时间：{world_time}\n" +
             $"效果：{effect}\n" +
             $"次数：{usage_limit}\n" +

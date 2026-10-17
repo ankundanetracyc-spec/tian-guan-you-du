@@ -58,6 +58,8 @@ public partial class BattleManager : Node2D
     private Array<ActiveSkillData> LoadCombatSkills(GodotObject unit)
     {
         var result = new Array<ActiveSkillData>();
+        if (unit.HasMeta("combat_resolved_skills") && unit.GetMeta("combat_resolved_skills").AsGodotArray().Count > 0)
+            return new Array<ActiveSkillData>(unit.GetMeta("combat_resolved_skills").AsGodotArray().Select(value => (ActiveSkillData)value.AsGodotObject()!));
         var paths = new List<string>();
         void AddMetaPaths(string key)
         {
@@ -82,10 +84,17 @@ public partial class BattleManager : Node2D
             }
             paths = resolvedPaths;
         }
+        if (unit is Character artifactOwner)
+        {
+            var keys = artifactOwner.get_combat_skill_slot_paths();
+            foreach (var key in keys)
+                result.Add(artifactOwner.resolve_combat_skill(key) ?? ArtifactSkillFactory.EmptySlot());
+            return result;
+        }
         foreach (var path in paths)
         {
             var skill = ResourceLoader.Load<ActiveSkillData>(path)?.Duplicate() as ActiveSkillData;
-            if (skill is not null && Character.is_combat_skill_slot_eligible(skill) && !result.Any(existing => existing.skill_name == skill.skill_name)) result.Add(skill);
+            if (skill is not null && Character.is_combat_skill_slot_eligible(skill)) result.Add(skill);
             if (result.Count >= CombatSlotCapacity) break;
         }
         if (result.Count == 0 && !slotConfigExplicit)
@@ -173,7 +182,7 @@ public partial class BattleManager : Node2D
     }
     private static float RegenFactor(float attributes) => Creature.calculate_combat_regen_factor(attributes);
 
-    /// <summary>当前精力/法力距离下一点恢复的连续进度（0—1），供资源槽显示小数填充。</summary>
+    /// <summary>当前体力/法力距离下一点恢复的连续进度（0—1），供资源槽显示小数填充。</summary>
     public float get_energy_regen_progress(GodotObject unit) =>
         Mathf.Clamp(_energyRegen.GetValueOrDefault(unit, 0f) / EnergyBaseInterval, 0f, 1f);
     public float get_mana_regen_progress(GodotObject unit) =>

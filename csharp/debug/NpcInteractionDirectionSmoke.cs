@@ -42,7 +42,10 @@ public partial class NpcInteractionDirectionSmoke : Node
             var options = menu.FindChildren("*", "Button", true, false).OfType<Button>().Select(button => button.Text).ToArray();
             Check(options.Contains("交谈") && options.Contains("交易") && options.All(text => !text.StartsWith("测试：")), "正式菜单未撤下测试入口或误删正式交互");
 
-            main.open_world_npc_talk(npc);
+            var talkButton = menu.FindChildren("*", "Button", true, false).OfType<Button>().First(button => button.IsVisibleInTree() && button.Text == "交谈");
+            talkButton.EmitSignal(BaseButton.SignalName.Pressed);
+            await Frames();
+            Check(!menu.Visible && dialogue.Visible, "从角色菜单点击交谈后没有打开对话，交互按钮链路未生效");
             var firstChoice = Choice(dialogue, "上前搭话");
             Check(Choice(dialogue, "作罢") is not null, "主动搭话缺少作罢选项");
             firstChoice.EmitSignal(BaseButton.SignalName.Pressed);

@@ -50,7 +50,7 @@ public partial class RestPanel : Control
         _note = QuietRoomStyle.Text("", 18); _note.AutowrapMode = TextServer.AutowrapMode.WordSmart; box.AddChild(_note);
         box.AddChild(new Control { SizeFlagsVertical = SizeFlags.ExpandFill });
         _start = new Button { Text = "开始休息" }; QuietRoomStyle.Primary(_start); _start.Pressed += Confirm; layout.AddChild(_start);
-        var rule = QuietRoomStyle.Text($"每小时恢复 {WorldStaminaRules.RestRecoveryPerGameHour:0.#} 点体力 · 开始后推进时间", 16); rule.AutowrapMode = TextServer.AutowrapMode.WordSmart; layout.AddChild(rule);
+        var rule = QuietRoomStyle.Text($"每小时恢复 {WorldStaminaRules.RestRecoveryPerGameHour:0.#} 点精力 · 开始后推进时间", 16); rule.AutowrapMode = TextServer.AutowrapMode.WordSmart; layout.AddChild(rule);
         QuietRoomStyle.Frame(paper);
         Hide();
     }
@@ -73,7 +73,7 @@ public partial class RestPanel : Control
         if (_shownDay != isDay) { _background.Texture = isDay ? _day : _night; _shownDay = isDay; }
         _time.Text = QuietRoomStyle.Date(_clock) + (isDay ? " · 昼" : " · 夜");
         var current = _character.current_world_stamina; var max = _character.max_world_stamina;
-        _stamina.Text = $"当前体力  {current:0.#} / {max:0.#}";
+        _stamina.Text = $"当前精力  {current:0.#} / {max:0.#}";
         _before.MaxValue = _after.MaxValue = Math.Max(1, max); _before.Value = current;
         _modes.Visible = !_fixedHours.HasValue; _hoursRow.Visible = !_fixedHours.HasValue && !_dateMode; _dateRow.Visible = !_fixedHours.HasValue && _dateMode;
         _byHours.ButtonPressed = !_dateMode; _byDate.ButtonPressed = _dateMode;
@@ -81,7 +81,7 @@ public partial class RestPanel : Control
         if (hours <= 0) { _preview.Text = "请选择晚于当前日期的醒来日期。"; _after.Value = current; return; }
         var recovered = Math.Max(0, Math.Min(max - current, hours * WorldStaminaRules.RestRecoveryPerGameHour));
         var end = _clock.get_total_game_hours() + hours; var day = end / 24;
-        _preview.Text = $"醒来后\n体力  {current:0.#} → {current + recovered:0.#}\n恢复体力 {recovered:0.#} 点\n生命恢复至上限\n\n休息 {hours} 小时\n醒来：{day / 360 + 1}年{day % 360 / 30 + 1}月{day % 30 + 1}日 {end % 24:00}时";
+        _preview.Text = $"醒来后\n精力  {current:0.#} → {current + recovered:0.#}\n恢复精力 {recovered:0.#} 点\n生命恢复至上限\n\n休息 {hours} 小时\n醒来：{day / 360 + 1}年{day % 360 / 30 + 1}月{day % 30 + 1}日 {end % 24:00}时";
         _after.Value = current + recovered;
     }
     private void Confirm() { var count = Hours(); if (count <= 0) return; var confirm = _confirm; Close(); confirm?.Invoke(count); }

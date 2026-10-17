@@ -93,7 +93,7 @@ public partial class MainScene
         {
             tasks.Add(IdentifyJournalTask(new JournalPanel.Entry(
                 "静室研读首卷",
-                $"于紫府峰静室研读《{bookName}》首卷。研读门槛、所需时日与体力消耗均依此卷现行规制；读毕后，再向{guideName}陈报所得。",
+                $"于紫府峰静室研读《{bookName}》首卷。研读门槛、所需时日与精力消耗均依此卷现行规制；读毕后，再向{guideName}陈报所得。",
                 "玉虚仙宗·真传带教", "紫府峰·静室", "进行中", Id: "yuxu.lineage.study_first_volume")));
             return tasks;
         }

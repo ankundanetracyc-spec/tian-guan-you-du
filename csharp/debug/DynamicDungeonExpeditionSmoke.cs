@@ -128,7 +128,7 @@ public partial class DynamicDungeonExpeditionSmoke : Node
 
         var alternatives = DynamicDungeonExpedition.AvailableActions(instance, "valley_02_04", new GDictionary());
         Check(alternatives.Count == 2 && alternatives.All(action => action.Hours == 1 && action.Stamina == 1),
-            "竹影线索应提供两种有明确路线后果、使用统一时间和体力的选择。");
+            "竹影线索应提供两种有明确路线后果、使用统一时间和精力的选择。");
         var route = DynamicDungeonExpedition.GetRoute(instance);
         DynamicDungeonExpedition.ApplyCompletedAction(instance, "valley_02_04", "event_bamboo_north", route);
         DynamicDungeonExpedition.StoreRoute(instance, route);
@@ -210,25 +210,71 @@ public partial class DynamicDungeonExpeditionSmoke : Node
                 ["east_woods_dungeon_state"] = new GDictionary { ["inside"] = true, ["route"] = "kept" },
             },
         };
-        Check(legacy.migrate_to_current_format() && legacy.format_version == 8 &&
+        Check(legacy.migrate_to_current_format() && legacy.format_version == PersistentGameSave.CurrentFormatVersion &&
               legacy.dynamic_dungeon_state["last_schedule_hour"].AsInt32() == oldHour &&
-              legacy.dynamic_dungeon_state["instances"].AsGodotArray().Count == 0,
-            "v7→v8 迁移应以存档当前时刻建立空机遇游标，不补发历史实例。");
+              legacy.dynamic_dungeon_state["instances"].AsGodotArray().Count == 0 && legacy.banquet_events.Count == 0,
+            "v7→v9 迁移应以存档当前时刻建立空机遇游标，并初始化空宴席表，不补发历史实例。");
         Check(legacy.scene_progress["east_woods_dungeon_state"].AsGodotDictionary()["inside"].AsBool(),
             "版本迁移不得改写东林地原进度。");
+
+        var v8 = new PersistentGameSave
+        {
+            format_version = 8,
+            year = 5,
+            month = 2,
+            scene_progress = new GDictionary { ["east_woods_dungeon_state"] = new GDictionary { ["inside"] = true, ["route"] = "kept-v8" } },
+            dynamic_dungeon_state = DynamicDungeonExpedition.CreateEmpty(500_000),
+        };
+        v8.world_npcs.Add(new WorldNpcData { npc_id = "v8_social_state", acquaintance_window_until_hour = 540_000 });
+        Check(v8.migrate_to_current_format() && v8.format_version == PersistentGameSave.CurrentFormatVersion &&
+              v8.banquet_events.Count == 0 && v8.world_npcs[0].acquaintance_window_until_hour == 540_000 &&
+              v8.scene_progress["east_woods_dungeon_state"].AsGodotDictionary()["route"].AsString() == "kept-v8" &&
+              v8.dynamic_dungeon_state["last_schedule_hour"].AsInt32() == 500_000,
+            "v8→v9 应初始化空宴席表，并保留信社交字段、东林地与动态副本快照。");
 
         const int now = 100_000;
         var state = DynamicDungeonExpedition.CreateEmpty(now);
         DynamicDungeonExpedition.Synchronize(state, now, candidates);
-        var save = new PersistentGameSave { dynamic_dungeon_state = state.Duplicate(true) };
+        var banquet = new BanquetEventData
+        {
+            event_id = "banquet-roundtrip",
+            host_id = "npc-host",
+            host_name = "陈砚",
+            player_is_host = false,
+            source_letter_id = "letter-source",
+            venue_id = "waterside_pavilion",
+            starts_at_hour = now,
+            duration_hours = 4,
+            status = BanquetEventData.InProgress,
+            fee_settled = true,
+            time_settled = true,
+            next_beat_index = 1,
+            active_beat_id = "banquet-roundtrip:beat:1",
+        };
+        banquet.invited_npc_ids.Add("player"); banquet.invited_npc_ids.Add("guest");
+        banquet.attendee_npc_ids.Add("npc-host"); banquet.attendee_npc_ids.Add("guest");
+        banquet.beats.Add(new GDictionary { ["beat_id"] = "banquet-roundtrip:beat:1", ["speaker_id"] = "guest", ["text"] = "席间一语" });
+        banquet.responses.Add(new GDictionary
+        {
+            ["beat_id"] = "banquet-roundtrip:beat:0", ["choice_id"] = "humble", ["tone"] = "谦让",
+            ["heard_by"] = new Godot.Collections.Array<string> { "npc-host", "guest" }, ["timed_out"] = true,
+        });
+        var save = new PersistentGameSave
+        {
+            dynamic_dungeon_state = state.Duplicate(true),
+            banquet_events = new Godot.Collections.Array<BanquetEventData> { banquet },
+        };
         var path = "user://dynamic_dungeon_smoke_" + Guid.NewGuid().ToString("N") + ".tres";
         try
         {
             Check(ResourceSaver.Save(save, path) == Error.Ok, "动态副本 Resource 测试存档无法保存。");
             var restored = ResourceLoader.Load<PersistentGameSave>(path);
             Check(restored is not null && DynamicDungeonExpedition.ValidateState(restored.dynamic_dungeon_state) &&
-                  restored.dynamic_dungeon_state["instances"].AsGodotArray().Count == 1,
-                "正式存档读回后未恢复活动副本实例。");
+                  restored.dynamic_dungeon_state["instances"].AsGodotArray().Count == 1 && restored.banquet_events.Count == 1 &&
+                  restored.banquet_events[0].status == BanquetEventData.InProgress && restored.banquet_events[0].fee_settled &&
+                  restored.banquet_events[0].time_settled && restored.banquet_events[0].active_beat_id == banquet.active_beat_id &&
+                  restored.banquet_events[0].responses[0].GetValueOrDefault("timed_out", false).AsBool(),
+                "正式存档读回后未恢复活动副本实例或席间中断／回应状态。");
         }
         finally
         {

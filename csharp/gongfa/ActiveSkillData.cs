@@ -4,6 +4,14 @@ using Godot.Collections;
 /// <summary>Serializable skill definition shared by即时战斗技能槽、世界技能与凝核牌局。</summary>
 public partial class ActiveSkillData : Resource
 {
+    // 来源身份与法器运行时分支；不伪造 ResourcePath，不写入永久技能列表。
+    [Export] public string combat_source_key = "";
+    [Export] public string artifact_instance_id = "";
+    [Export] public ActiveSkillData? artifact_summon_skill;
+    [Export] public bool artifact_is_summon;
+    [Export] public bool combat_empty_slot;
+    [Export] public float physical_defense_ignore_ratio;
+    [Export] public int artifact_block_bonus;
     public enum SkillType { ATTACK, MOVEMENT, DRAW, BUFF, WAIT, SPECIAL, POWER, CURSE }
     public enum CardConditionType { NONE, MAIN_GONGFA, SUB_GONGFA, ANY_GONGFA }
 
@@ -17,7 +25,7 @@ public partial class ActiveSkillData : Resource
     [Export] public Dictionary required_attributes = [];
     [Export] public string required_realm = "";
     [ExportGroup("消耗条件")]
-    /// <summary>局内精力费用，范围为 0 至 3。</summary>
+    /// <summary>局内体力费用，范围为 0 至 3。</summary>
     [Export(PropertyHint.Range, "0,3,1")] public int energy_cost;
     [Export] public int mana_cost;
     /// <summary>仅祭出持续实体时使用；普通术法与神魂牌不得支付灵识。</summary>
@@ -92,7 +100,7 @@ public partial class ActiveSkillData : Resource
     }
 
     public int get_energy_cost() => energy_cost;
-    public string get_cost_description() => skill_type == SkillType.POWER ? "" : $"精力: {energy_cost}，法力: {mana_cost}";
+    public string get_cost_description() => skill_type == SkillType.POWER ? "" : $"体力: {energy_cost}，法力: {mana_cost}";
 
     /// <summary>所有卡牌共用的牌面短描述：只写目标、数值与关键机制，不使用叙事性长句。</summary>
     public string get_brief_description(GodotObject? owner = null)
@@ -132,8 +140,8 @@ public partial class ActiveSkillData : Resource
         return id switch
         {
             "shield" => $"获得 {baseValue:0.##} 点护持。",
-            "restore_stamina" => $"恢复 {baseValue:0.##} 点精力。",
-            "gain_energy" => $"获得 {count} 点精力。",
+            "restore_stamina" => $"恢复 {baseValue:0.##} 点体力。",
+            "gain_energy" => $"获得 {count} 点体力。",
             "restore_mana" => $"恢复 {baseValue:0.##} 点法力。",
             "draw" => $"抽取 {count} 张卡牌。",
             "counter_block" => $"获得 {CardRules.Block(this, owner, count)} 层化解。",

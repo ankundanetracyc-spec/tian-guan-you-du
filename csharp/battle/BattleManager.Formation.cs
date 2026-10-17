@@ -7,7 +7,7 @@ public partial class BattleManager : Node2D
     {
         foreach (var circuit in _formationCircuits.GetValueOrDefault(owner, [])) circuit.emit(eventId, sourceTag, amplitude);
     }
-    /// <summary>阵器最终只调用已有的战斗效果入口；不伪装成一张手牌，也不支付精力/法力。</summary>
+    /// <summary>阵器最终只调用已有的战斗效果入口；不伪装成一张手牌，也不支付体力/法力。</summary>
     public void resolve_formation_actuator(GodotObject owner, FormationNodeData actuator)
     {
         var value = Mathf.Max(0, actuator.effect_value);

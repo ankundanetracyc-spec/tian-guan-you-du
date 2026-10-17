@@ -159,7 +159,9 @@ public partial class StoryDialoguePanel
         var portraitCenter = new CenterContainer { MouseFilter = MouseFilterEnum.Ignore };
         var portrait = new PortraitRenderer { Name = isPlayer ? "PlayerSocialPortrait" : "NpcSocialPortrait", CustomMinimumSize = new Vector2(width, height) };
         portraitCenter.AddChild(portrait); column.AddChild(portraitCenter);
-        var nameLabel = social_label(name, 21, "e6d7b5"); nameLabel.SizeFlagsHorizontal = Control.SizeFlags.ExpandFill;
+        var nameLabel = social_label(name, 21, "e6d7b5");
+        nameLabel.Name = isPlayer ? "PlayerSocialName" : "NpcSocialName";
+        nameLabel.SizeFlagsHorizontal = Control.SizeFlags.ExpandFill;
         if (!isPlayer && NpcPersonalityRules.TestInspection)
         {
             nameLabel.TooltipText = NpcPersonalityRules.InspectionText(npc, testing: true);
@@ -228,7 +230,7 @@ public partial class StoryDialoguePanel
             lines.AddChild(label); _socialFactors.Add(label);
         }
         if (_socialLines.Count == 0) _socialScroll.Hide();
-        _socialOutcome = social_label(response.Result + (response.StaminaSpent > 0 ? $"\n体力 −{response.StaminaSpent:0.#}" : "") +
+        _socialOutcome = social_label(response.Result + (response.StaminaSpent > 0 ? $"\n精力 −{response.StaminaSpent:0.#}" : "") +
             (string.IsNullOrWhiteSpace(response.RelationshipFeedback) ? "" : $"\n关系记事：{response.RelationshipFeedback}"), 22, "e8dcbf");
         _socialOutcome.Modulate = new Color(1, 1, 1, 0); column.AddChild(_socialOutcome);
         var buttonCenter = new CenterContainer(); column.AddChild(buttonCenter);

@@ -12,6 +12,12 @@ public partial class InfoPanel
     private List<GongfaResource> character_manuals(Character human)
     {
         var books = human.get_known_gongfas().ToList();
+        // 无剧情开局的初始秘籍先以“待研读”路径保存，不属于已学秘籍；
+        // 角色功法页仍应让玩家看到它，并从此处进入研读，而不是把它误当成不存在。
+        if (human.get_pending_intro_gongfa() is { } pending && !books.Any(book => book.ResourcePath == pending.ResourcePath))
+            books.Add(pending);
+        if (human.get_current_study_gongfa() is { } studying && !books.Any(book => book.ResourcePath == studying.ResourcePath))
+            books.Add(studying);
         foreach (var path in human.pack_items)
             if (ResourceLoader.Exists(path) && ResourceLoader.Load<ItemData>(path)?.gongfa is GongfaResource book) books.Add(book);
         return books.GroupBy(book => book.ResourcePath).Select(group => group.First()).ToList();

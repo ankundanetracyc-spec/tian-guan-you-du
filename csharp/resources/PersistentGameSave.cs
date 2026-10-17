@@ -5,7 +5,7 @@ using Godot.Collections;
 [GlobalClass]
 public partial class PersistentGameSave : Resource
 {
-    public const int CurrentFormatVersion = 8;
+    public const int CurrentFormatVersion = 10;
 
     [Export] public int format_version = CurrentFormatVersion;
     [Export] public string slot_id = "";
@@ -42,6 +42,9 @@ public partial class PersistentGameSave : Resource
 
     /// <summary>Independent limited-time dungeon instances and their schedule cursor.</summary>
     [Export] public Dictionary dynamic_dungeon_state = [];
+
+    /// <summary>宗门宴席的邀请、排期、对话进度及单次回应记录。</summary>
+    [Export] public Array<BanquetEventData> banquet_events = [];
 
     public bool migrate_to_current_format()
     {
@@ -98,6 +101,26 @@ public partial class PersistentGameSave : Resource
                     (Math.Clamp(day, 1, 30) - 1) * 24 + Math.Clamp(hour, 0, 23));
                 dynamic_dungeon_state = DynamicDungeonExpedition.CreateEmpty(currentHour);
                 format_version = 8;
+                continue;
+            }
+            if (format_version == 8)
+            {
+                // v8 没有宴席实例；已存在的信件、NPC 和副本快照不作推断或改写。
+                banquet_events ??= [];
+                format_version = 9;
+                continue;
+            }
+            if (format_version == 9)
+            {
+                if (player_data is not null)
+                {
+                    player_data.combat_skill_references = new Array<CombatSkillReference>(player_data.combat_skill_slot_paths.Take(10).Select(CombatSkillReference.FromKey));
+                    // 未手动装配且没有旧路径的存档仍由角色默认技能池初始化。
+                    if (player_data.combat_skill_references.Count > 0 || player_data.combat_skill_slots_configured)
+                        while (player_data.combat_skill_references.Count < 10) player_data.combat_skill_references.Add(new());
+                    player_data.used_spirit_perception = 0;
+                }
+                format_version = 10;
                 continue;
             }
             return false;

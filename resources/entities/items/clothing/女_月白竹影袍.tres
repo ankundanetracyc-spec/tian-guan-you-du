@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="PortraitClothingData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/PortraitClothingData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+definition_id = &"portrait_clothing_female_yuebai_zhuying"
+entity_name = "月白竹影袍"
+description = "女修立绘衣着。持有后可通过人物档案的衣着入口换上；只改变立绘，不改变衣甲属性或战斗表现。"
+icon_path = "res://textures/items/clothing/portrait_clothing_female_yuebai_zhuying.png"
+item_category = "装备"
+item_subcategory = "立绘衣着"
+can_stack = false
+max_stack = 1
+portrait_gender = "female"
+appearance_style_index = 1

@@ -21,21 +21,38 @@ vec3 pigment(float i) {
 void fragment() {
     vec2 p = (UV-vec2(0.5))*2.0;
     float r = length(p);
-    float n = wash(p*7.0+vec2(13,27));
-    float grain = noise(UV*500.0);
+    float n = wash(p*3.5+vec2(13,27));
+    float grain = noise(UV*360.0);
     float a = mod(atan(p.y,p.x)+1.570796327+6.283185307,6.283185307);
-    float sector = a/0.785398163 + (n-0.5)*0.25;
-    float i = floor(sector);
-    vec3 color = mix(pigment(mod(i,8.0)),pigment(mod(i+1.0,8.0)),smoothstep(0.16,0.84,fract(sector)));
+    float mood = a*1.273239545;
+
+    // 八种心境颜色以周期余弦权重混合，形成连续的环绕色场。
+    // 权重在整圈连续，包括首尾相接处；不按扇区硬切颜色。
+    vec3 color = vec3(0.0);
+    float weight_sum = 0.0;
+    for (int i=0; i<8; i++) {
+        float mood_phase = (mood-float(i))*0.7853981634;
+        float weight = exp((cos(mood_phase)-1.0)*3.2);
+        color += pigment(float(i))*weight;
+        weight_sum += weight;
+    }
+    color /= max(weight_sum,0.0001);
+
     // 径向浓淡始终由距离主导；纹理不能推歪渐变、挖出一圈留白洞。
     // 从圆心连续增加至圆周，中心没有截断平台，外缘只留很窄的渗纸边。
-    float density = pow(clamp(r,0.0,1.0),1.65);
-    float edge = 1.0-smoothstep(0.97,1.0,r+(n-0.5)*0.015);
-    float mottled = 0.92+(n-0.5)*0.45+(grain-0.5)*0.08;
-    // 保留颜料沉积的轻微云纹；不再通过扭曲半径制造斑块。
-    color *= 0.94+n*0.10+grain*0.03;
-    float selected = 1.0-smoothstep(0.15,0.65,abs(mod(sector-hover_sector+4.0,8.0)-4.0));
+    float density = pow(clamp(r,0.0,1.0),1.55);
+    float edge = 1.0-smoothstep(0.975,1.0,r+(n-0.5)*0.008);
+    float mottled = 0.99+(n-0.5)*0.05+(grain-0.5)*0.012;
+    // 只留轻微颜料颗粒，避免大块水彩斑驳被看成色域拼缝。
+    color *= 0.985+(n-0.5)*0.04+(grain-0.5)*0.018;
+
+    // 悬停只给对应色域轻微加墨，跨越标签边界时也不会出现扇面硬边。
+    if (hover_sector >= 0.0) {
+        float hover_delta = abs(mod(mood-hover_sector+4.0,8.0)-4.0);
+        float hover_wash = exp(-(hover_delta*hover_delta)/0.34);
+        color = mix(color,color*1.06+vec3(0.012),hover_wash*0.10);
+        mottled *= 1.0+hover_wash*0.035;
+    }
     float alpha = edge*density*mottled*0.76;
-    if (hover_sector >= 0.0) alpha *= 1.0+selected*0.16;
     COLOR = vec4(color,alpha);
 }

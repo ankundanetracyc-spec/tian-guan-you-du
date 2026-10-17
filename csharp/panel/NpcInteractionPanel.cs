@@ -146,7 +146,7 @@ public partial class NpcInteractionPanel : Control
             var button = new Button
             {
                 Text = option.Label,
-                TooltipText = option.Label,
+                TooltipText = option.Enabled || string.IsNullOrWhiteSpace(option.UnavailableReason) ? option.Label : option.UnavailableReason,
                 CustomMinimumSize = new Vector2(0, 38),
                 SizeFlagsHorizontal = SizeFlags.ExpandFill,
                 Disabled = !option.Enabled,
@@ -167,6 +167,20 @@ public partial class NpcInteractionPanel : Control
                 option.Activate();
             };
             _actions.AddChild(button);
+            if (!option.Enabled && !string.IsNullOrWhiteSpace(option.UnavailableReason))
+            {
+                var reason = new Label
+                {
+                    Text = option.UnavailableReason,
+                    AutowrapMode = TextServer.AutowrapMode.WordSmart,
+                    SizeFlagsHorizontal = SizeFlags.ExpandFill,
+                    CustomMinimumSize = new Vector2(0, 34),
+                    MouseFilter = MouseFilterEnum.Ignore,
+                };
+                reason.AddThemeFontSizeOverride("font_size", 13);
+                reason.AddThemeColorOverride("font_color", new Color("b9b09a"));
+                _actions.AddChild(reason);
+            }
         }
     }
 
@@ -230,7 +244,7 @@ public partial class NpcInteractionPanel : Control
 
     public override void _ExitTree() => GetViewport().SizeChanged -= place_next_to_roster;
 
-    private static string signature(IEnumerable<NpcInteractionAction> actions) => string.Join("\n", actions.Select(action => $"{action.Id}\u001f{action.Label}\u001f{action.Enabled}"));
+    private static string signature(IEnumerable<NpcInteractionAction> actions) => string.Join("\n", actions.Select(action => $"{action.Id}\u001f{action.Label}\u001f{action.Enabled}\u001f{action.UnavailableReason}"));
 
     private static StyleBoxFlat make_frame_style()
     {

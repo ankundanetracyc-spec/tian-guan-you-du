@@ -192,7 +192,7 @@ public partial class NpcSocialPreviewScene : Control
             $"陆清和想补充随身药材，愿以灵石 {NpcPurchaseRules.TestUnitPrice} 枚求购苦苔根一份。",
             new (string, Action)[] {
                 ("同意出售", () => {
-                    // 只复现已定义的两步表现，不调用库存、付款、体力或月度结算接口。
+                    // 只复现已定义的两步表现，不调用库存、付款、精力或月度结算接口。
                     NpcSocialRules.DecisionStep[] steps = [
                         new("purchase_supplied", "你递过药材，对方验看后收好。"),
                         new("purchase_paid", "对方依约递来灵石，双方核对妥当。") ];

@@ -1,0 +1,67 @@
+{
+  "sequences": {
+    "ink_chop_sequence_20261016_v2/slash": {
+      "count": 16,
+      "rgba768": true,
+      "first_last_clear": true,
+      "outside_alpha_clear": true,
+      "distinct_frames": 15
+    },
+    "ink_chop_sequence_20261016_v2/impact": {
+      "count": 20,
+      "rgba768": true,
+      "first_last_clear": true,
+      "outside_alpha_clear": true,
+      "distinct_frames": 19
+    },
+    "ink_response_sequences_20261016_v2/hurt": {
+      "count": 24,
+      "rgba768": true,
+      "first_last_clear": true,
+      "outside_alpha_clear": true,
+      "distinct_frames": 22
+    },
+    "ink_response_sequences_20261016_v2/guard": {
+      "count": 30,
+      "rgba768": true,
+      "first_last_clear": true,
+      "outside_alpha_clear": true,
+      "distinct_frames": 27
+    },
+    "ink_response_sequences_20261016_v2/restore": {
+      "count": 48,
+      "rgba768": true,
+      "first_last_clear": true,
+      "outside_alpha_clear": true,
+      "distinct_frames": 42
+    }
+  },
+  "rest_characters": {
+    "female_rest.png": {
+      "size": [
+        2048,
+        2048
+      ],
+      "format": "RGBA",
+      "effective_alpha_bounds": [
+        456,
+        525,
+        1530,
+        1900
+      ]
+    },
+    "male_rest.png": {
+      "size": [
+        2048,
+        2048
+      ],
+      "format": "RGBA",
+      "effective_alpha_bounds": [
+        479,
+        522,
+        1523,
+        1900
+      ]
+    }
+  }
+}

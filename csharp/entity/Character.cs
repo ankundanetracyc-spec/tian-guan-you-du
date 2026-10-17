@@ -29,6 +29,8 @@ public partial class Character : Creature
     public Array<ArtifactInstanceData> artifact_inventory => human?.artifact_inventory ?? new Array<ArtifactInstanceData>();
     public int max_pack_slots { get => InventorySlotCapacity; set { } }
     private readonly Array<SecretBook> _study_books=[]; private float _session_hours; private int _last_schedule_hour; private readonly Dictionary _last_schedule_report=[];
+    private string _portraitClothingResourcePath = "";
+    private PortraitClothingData? _portraitClothingResource;
     private bool is_visualization_cloud_breath() => cultivation_realm.StartsWith("云息", StringComparison.Ordinal);
     public int spirit_root_type {get=>human?.spirit_root_type??0;set{if(human is not null)human.spirit_root_type=value;}} public string spirit_root_name{get=>human?.spirit_root_name??"无灵根";set{if(human is not null)human.spirit_root_name=value;}} public int core_count{get=>human?.core_count??0;set{if(human is not null)human.core_count=value;}}
     public bool has_spirit_core=>human?.has_spirit_core??false;
@@ -105,6 +107,7 @@ public partial class Character : Creature
                 human.inventory_item_paths.RemoveAt(i); human.inventory_item_counts.RemoveAt(i); human.inventory_item_positions.RemoveAt(i);
             }
         }
+        ensure_portrait_clothing_state();
         foreach (var path in new[] { human.weapon_path, human.headwear_path, human.clothes_path, human.ornament_1_path, human.footwear_path, human.ornament_2_path })
             if (!string.IsNullOrWhiteSpace(path) && ResourceLoader.Load<ItemData>(path) is not null && get_inventory_total_count(path) == 0)
             {
@@ -119,6 +122,69 @@ public partial class Character : Creature
         for (var i = human.equipped_artifact_ids.Count - 1; i >= 0; i--)
             if (find_artifact(human.equipped_artifact_ids[i]) is null) human.equipped_artifact_ids.RemoveAt(i);
         sync_artifact_spirit_perception();
+    }
+    private void ensure_portrait_clothing_state()
+    {
+        if (human is null || !IsInsideTree()) return;
+        var mods = GetNodeOrNull<AppearanceModCatalog>("/root/AppearanceModCatalog");
+        if (mods is null) return;
+        string gender = human.gender == 1 ? "female" : "male";
+        int style = human.appearance_clothes_style;
+        if (style < 0)
+        {
+            var catalog = GetNodeOrNull<PortraitCatalog>("/root/PortraitCatalog");
+            if (catalog is not null)
+            {
+                var context = catalog.get_context(human, gender, 18, human.faction_name, "");
+                var chosen = catalog.choose_part(context, "clothes");
+                if (chosen.Count > 0) style = chosen.GetValueOrDefault("variant_index", -1).AsInt32();
+            }
+            if (style < 0)
+                foreach (Dictionary entry in mods.get_parts(gender, "clothes"))
+                {
+                    style = entry.GetValueOrDefault("variant_index", -1).AsInt32();
+                    if (style >= 0) break;
+                }
+            if (style >= 0) human.appearance_clothes_style = style;
+        }
+
+        string itemPath = human.portrait_clothing_item_path;
+        var clothing = load_portrait_clothing_resource(itemPath);
+        if (clothing is null || !clothing.can_be_worn_by(human))
+        {
+            itemPath = "";
+            foreach (Dictionary entry in mods.get_parts(gender, "clothes"))
+                if (entry.GetValueOrDefault("variant_index", -1).AsInt32() == style)
+                {
+                    itemPath = entry.GetValueOrDefault("item_path", "").AsString();
+                    break;
+                }
+            clothing = load_portrait_clothing_resource(itemPath);
+        }
+        if (clothing is null || !clothing.can_be_worn_by(human)) return;
+
+        human.portrait_clothing_item_path = itemPath;
+        human.appearance_clothes_style = clothing.appearance_style_index;
+        if (!human.inventory_item_paths.Contains(itemPath))
+        {
+            human.inventory_item_paths.Add(itemPath);
+            human.inventory_item_counts.Add(1);
+            human.inventory_item_positions.Add(find_free_inventory_position());
+        }
+    }
+    private PortraitClothingData? load_portrait_clothing_resource(string path)
+    {
+        if (string.IsNullOrWhiteSpace(path) || !ResourceLoader.Exists(path))
+        {
+            _portraitClothingResourcePath = "";
+            _portraitClothingResource = null;
+            return null;
+        }
+        if (_portraitClothingResourcePath == path && _portraitClothingResource is { } cached && GodotObject.IsInstanceValid(cached))
+            return cached;
+        _portraitClothingResource = ResourceLoader.Load<PortraitClothingData>(path);
+        _portraitClothingResourcePath = _portraitClothingResource is null ? "" : path;
+        return _portraitClothingResource;
     }
     private ItemData? load_inventory_item(string path) => string.IsNullOrWhiteSpace(path) || !ResourceLoader.Exists(path) ? null : ResourceLoader.Load<ItemData>(path);
     private int get_inventory_index(string path, int start = 0)
@@ -263,13 +329,25 @@ public partial class Character : Creature
         if (human is null) return result;
         foreach (var path in new[] { human.weapon_path, human.headwear_path, human.clothes_path, human.ornament_1_path, human.footwear_path, human.ornament_2_path })
             if (!string.IsNullOrWhiteSpace(path) && !result.Contains(path)) result.Add(path);
+        if (!string.IsNullOrWhiteSpace(human.portrait_clothing_item_path) && !result.Contains(human.portrait_clothing_item_path))
+            result.Add(human.portrait_clothing_item_path);
         return result;
     }
-    private int get_equipped_item_count(string path) => human is null ? 0 : new[] { human.weapon_path, human.headwear_path, human.clothes_path, human.ornament_1_path, human.footwear_path, human.ornament_2_path }.Count(item => item == path);
+    private int get_equipped_item_count(string path) => human is null ? 0 : new[] { human.weapon_path, human.headwear_path, human.clothes_path, human.ornament_1_path, human.footwear_path, human.ornament_2_path }.Count(item => item == path) + (human.portrait_clothing_item_path == path ? 1 : 0);
     public bool is_item_equipped(string path) => get_equipped_item_count(path) > 0;
     public bool equip_inventory_item(string path, string slot = "")
     {
-        if (human is null || !has_inventory_item(path) || load_inventory_item(path) is not EquipmentData equipment) return false;
+        if (human is null || !has_inventory_item(path)) return false;
+        if (load_inventory_item(path) is PortraitClothingData portraitClothing)
+        {
+            if (!portraitClothing.can_be_worn_by(human)) return false;
+            human.portrait_clothing_item_path = path;
+            human.appearance_clothes_style = portraitClothing.appearance_style_index;
+            human.EmitChanged();
+            notify_inventory_changed();
+            return true;
+        }
+        if (load_inventory_item(path) is not EquipmentData equipment) return false;
         var target = slot.Trim().ToLowerInvariant();
         if (string.IsNullOrEmpty(target)) target = equipment.equip_type switch { 0 => "weapon", 1 => "clothes", 2 => string.IsNullOrEmpty(human.ornament_1_path) ? "ornament_1" : string.IsNullOrEmpty(human.ornament_2_path) ? "ornament_2" : "ornament_1", _ => "" };
         if (target is not ("weapon" or "headwear" or "clothes" or "ornament_1" or "footwear" or "ornament_2")) return false;
@@ -280,6 +358,7 @@ public partial class Character : Creature
     public bool unequip_inventory_item(string path)
     {
         if (human is null || !is_item_equipped(path)) return false;
+        if (human.portrait_clothing_item_path == path) return false;
         if (human.weapon_path == path) human.weapon_path = "";
         if (human.headwear_path == path) human.headwear_path = "";
         if (human.clothes_path == path) human.clothes_path = "";
@@ -314,18 +393,23 @@ public partial class Character : Creature
         if (index < 0) return false;
         human.artifact_inventory.RemoveAt(index); human.artifact_inventory_positions.RemoveAt(index); notify_inventory_changed(); return true;
     }
-    public int get_used_artifact_spirit() => human?.equipped_artifact_ids.Sum(id => find_artifact(id)?.spirit_cost ?? 0) ?? 0;
+    public int get_used_artifact_spirit() => HasMeta("artifact_battle_clone") ? used_spirit_perception : 0; // 局外没有在场外祭实体；内炼不占灵识。
     public bool equip_artifact(string instanceId)
     {
+        if (HasMeta("artifact_battle_clone")) return false;
         if (human is null || find_artifact(instanceId) is not { } artifact || is_artifact_equipped(instanceId)) return false;
         if (human.artifact_slot_count <= human.equipped_artifact_ids.Count) return false;
-        if (human.max_spirit_perception > 0 && get_used_artifact_spirit() + Math.Max(0, artifact.spirit_cost) > human.max_spirit_perception) return false;
+        if (artifact.ritual_mode == "内炼" && !string.IsNullOrEmpty(artifact.bound_basic_card_path)
+            && equipped_combat_artifacts().Any(other => other.ritual_mode == "内炼" &&
+                resolve_combat_skill_slot_path(other.bound_basic_card_path) == resolve_combat_skill_slot_path(artifact.bound_basic_card_path))) return false;
         if (artifact.max_durability > 0 && artifact.current_durability <= 0) return false;
         human.equipped_artifact_ids.Add(instanceId); notify_inventory_changed(); return true;
     }
     public bool unequip_artifact(string instanceId)
     {
+        if (HasMeta("artifact_battle_clone")) return false;
         if (human is null || !human.equipped_artifact_ids.Remove(instanceId)) return false;
+        revoke_artifact_skill(instanceId);
         notify_inventory_changed(); return true;
     }
     private void sync_artifact_spirit_perception() { if (human is not null) human.used_spirit_perception = get_used_artifact_spirit(); }
@@ -347,7 +431,7 @@ public partial class Character : Creature
         Array<ActiveSkillData> result = [];
         void Add(Resource? resource)
         {
-            if (resource is not ActiveSkillData skill || skill.skill_type == ActiveSkillData.SkillType.POWER || string.Equals(skill.slot_category, "passive", StringComparison.OrdinalIgnoreCase) || result.Any(card => card.ResourcePath == skill.ResourcePath)) return;
+            if (resource is not ActiveSkillData skill || skill.skill_type == ActiveSkillData.SkillType.POWER || string.Equals(skill.slot_category, "passive", StringComparison.OrdinalIgnoreCase) || result.Any(card => combat_skill_key(card) == combat_skill_key(skill))) return;
             result.Add(skill);
         }
         foreach (var skill in active_skills) Add(skill);
@@ -405,7 +489,7 @@ public partial class Character : Creature
         if (string.Equals(skill.slot_category, "passive", StringComparison.OrdinalIgnoreCase)) return false;
         if (skill.keywords.Any(keyword => keyword.Contains("固有", StringComparison.Ordinal))) return false;
         if (skill.special_effects.Any(effect => effect.GetValueOrDefault("effect", "").AsString() == "draw")) return false;
-        // 即时战斗的精力恢复由系统行动“休整”提供，旧基础库中的“养息”不再占用技能槽。
+        // 即时战斗的体力恢复由系统行动“休整”提供，旧基础库中的“养息”不再占用技能槽。
         if (skill.skill_name == "养息") return false;
         return true;
     }
@@ -512,47 +596,39 @@ public partial class Character : Creature
     public Array<string> get_combat_skill_slot_paths()
     {
         if (human is null) return [];
-        var result = new Array<string>();
-        foreach (var path in human.combat_skill_slot_paths)
+        if (human.combat_skill_references.Count == 0)
         {
-            if (string.IsNullOrWhiteSpace(path)) continue;
-            var resolvedPath = resolve_combat_skill_slot_path(path);
-            var skill = ResourceLoader.Load<ActiveSkillData>(resolvedPath);
-            if (!is_combat_skill_slot_eligible(skill) || result.Contains(resolvedPath)) continue;
-            result.Add(resolvedPath); if (result.Count >= 10) break;
+            var legacy = human.combat_skill_slot_paths.ToList();
+            if (legacy.Count == 0 && !human.combat_skill_slots_configured)
+                legacy = get_default_combat_skill_paths().Concat(human.loaded_skill_paths).Distinct().Take(10).ToList();
+            human.combat_skill_references = new Array<CombatSkillReference>(legacy.Take(10).Select(CombatSkillReference.FromKey));
         }
-        if (result.Count > 0) return result;
-        // 玩家已经确认过装配后，空数组就是主动清空，不再被默认技能库重新填回。
-        if (human.combat_skill_slots_configured) return result;
-        // 基础技能库迁移为固定技能槽的默认技能，再用角色已装配的功法技能补足剩余槽位。
-        foreach (var path in get_default_combat_skill_paths())
+        while (human.combat_skill_references.Count < 10) human.combat_skill_references.Add(new());
+        var result = new Array<string>(); var seen = new HashSet<string>();
+        for (var i = 0; i < 10; i++)
         {
-            if (string.IsNullOrWhiteSpace(path) || result.Contains(path)) continue;
-            result.Add(path); if (result.Count >= 10) break;
-        }
-        foreach (var path in human.loaded_skill_paths)
-        {
-            if (string.IsNullOrWhiteSpace(path)) continue;
-            var resolvedPath = resolve_combat_skill_slot_path(path);
-            var skill = ResourceLoader.Load<ActiveSkillData>(resolvedPath);
-            if (!is_combat_skill_slot_eligible(skill) || result.Contains(resolvedPath)) continue;
-            result.Add(resolvedPath); if (result.Count >= 10) break;
+            var key = human.combat_skill_references[i]?.Key ?? "";
+            if (key.Length > 0 && (!seen.Add(key) || resolve_combat_skill(key) is null))
+            { key = ""; human.combat_skill_references[i] = new(); }
+            result.Add(key);
         }
         return result;
     }
     public bool set_combat_skill_slot_paths(Array<string> paths)
     {
+        if (HasMeta("artifact_battle_clone")) return false;
         if (human is null) return false;
-        human.combat_skill_slots_configured = true;
-        human.combat_skill_slot_paths.Clear();
-        foreach (var path in paths)
+        var next = new Array<CombatSkillReference>(); var seen = new HashSet<string>();
+        foreach (var path in paths.Take(10))
         {
-            if (string.IsNullOrWhiteSpace(path)) continue;
-            var resolvedPath = resolve_combat_skill_slot_path(path);
-            var skill = ResourceLoader.Load<ActiveSkillData>(resolvedPath);
-            if (!is_combat_skill_slot_eligible(skill) || human.combat_skill_slot_paths.Contains(resolvedPath) || human.combat_skill_slot_paths.Count >= 10) continue;
-            human.combat_skill_slot_paths.Add(resolvedPath);
+            var key = path;
+            if (key.Length > 0 && (!seen.Add(key) || resolve_combat_skill(key) is null)) key = "";
+            next.Add(CombatSkillReference.FromKey(key));
         }
+        while (next.Count < 10) next.Add(new());
+        human.combat_skill_slots_configured = true;
+        human.combat_skill_references = next;
+        human.combat_skill_slot_paths = new Array<string>(next.Select(slot => slot.Key));
         return true;
     }
     public bool is_battle_skill_equipped(ActiveSkillData skill) => human is not null && (!human.battle_deck_configured || human.loaded_skill_paths.Any(path => resolve_combat_skill_slot_path(path) == skill.ResourcePath));
@@ -706,7 +782,7 @@ public partial class Character : Creature
         if (!can_cultivate()) return new Dictionary { ["success"] = false };
         var preview = get_world_cultivation_preview_for_strands(requestedStrands);
         var strands = preview["strands"].AsInt32(); var hours = preview["hours"].AsInt32(); var staminaCost = preview["stamina_cost"].AsSingle();
-        if (strands <= 0 || hours <= 0 || !try_spend_world_stamina(staminaCost)) return new Dictionary { ["success"] = false, ["reason"] = "体力不足" };
+        if (strands <= 0 || hours <= 0 || !try_spend_world_stamina(staminaCost)) return new Dictionary { ["success"] = false, ["reason"] = "精力不足" };
         var simulation = simulate_cultivation_hours(hours);
         apply_cultivation_simulation(simulation);
         var remainingProgress = simulation.TotalProgress - strands;
@@ -720,7 +796,7 @@ public partial class Character : Creature
         if (!can_cultivate()) return new Dictionary { ["success"] = false };
         var preview = get_world_cultivation_preview_for_hours(requestedHours);
         var strands = preview["strands"].AsInt32(); var hours = preview["hours"].AsInt32(); var staminaCost = preview["stamina_cost"].AsSingle();
-        if (hours <= 0 || !try_spend_world_stamina(staminaCost)) return new Dictionary { ["success"] = false, ["reason"] = "体力不足" };
+        if (hours <= 0 || !try_spend_world_stamina(staminaCost)) return new Dictionary { ["success"] = false, ["reason"] = "精力不足" };
         var simulation = simulate_cultivation_hours(hours);
         apply_cultivation_simulation(simulation);
         if (simulation.WholeStrands > strands)
@@ -735,12 +811,12 @@ public partial class Character : Creature
     {
         if (human is null || requestedHours <= 0) return new Dictionary { ["success"] = false };
         var hours = get_available_study_hours(requestedHours);
-        if (hours <= 0) return new Dictionary { ["success"] = false, ["reason"] = "体力不足", ["hours"] = 0 };
+        if (hours <= 0) return new Dictionary { ["success"] = false, ["reason"] = "精力不足", ["hours"] = 0 };
         if (_study_books.Count == 0 && !start_pending_intro_gongfa_study()) return new Dictionary { ["success"] = false };
         var book = _study_books.FirstOrDefault();
         if (book is null || (!book.is_studying_now && !book.start_study(this))) return new Dictionary { ["success"] = false };
         var staminaCost = hours * WorldStaminaRules.StudyCostPerGameHour;
-        if (hours <= 0 || !try_spend_world_stamina(staminaCost)) return new Dictionary { ["success"] = false, ["reason"] = "体力不足", ["hours"] = 0 };
+        if (hours <= 0 || !try_spend_world_stamina(staminaCost)) return new Dictionary { ["success"] = false, ["reason"] = "精力不足", ["hours"] = 0 };
         var before = book.current_study_progress;
         var chapterId = book.studying_chapter_id;
         var requiredProgress = book.get_required_study_progress();
@@ -880,7 +956,7 @@ public partial class Character : Creature
         var book=_study_books.FirstOrDefault(); if(book is null)return new Dictionary{{"success",false}};
         if(!book.is_studying_now&&!book.start_study(this))return new Dictionary{{"success",false}};
         var actualHours=get_available_study_hours(hours);var staminaCost=actualHours*WorldStaminaRules.StudyCostPerGameHour;
-        if(actualHours<=0||!try_spend_world_stamina(staminaCost))return new Dictionary{{"success",false},{"reason","体力不足"},{"hours",0}};
+        if(actualHours<=0||!try_spend_world_stamina(staminaCost))return new Dictionary{{"success",false},{"reason","精力不足"},{"hours",0}};
         var before=book.current_study_progress; var chapterId=book.studying_chapter_id; var requiredProgress=book.get_required_study_progress();
         var multiplier=consume_study_action_inspiration(); book.advance_study_hours(actualHours*multiplier);
         var time=GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager"); time?.add_hours(actualHours);
@@ -1562,6 +1638,12 @@ public partial class Character : Creature
         human.basic_deck_path=snapshot.basic_deck_path;
         ensure_basic_deck();
         human.combat_skill_slot_paths=snapshot.combat_skill_slot_paths.Duplicate();
+        human.combat_skill_references=snapshot.combat_skill_references.Duplicate(true);
+        if (HasMeta("artifact_battle_clone"))
+        {
+            human.artifact_inventory=snapshot.equipped_artifacts.Duplicate(true);
+            human.equipped_artifact_ids=new Array<string>(human.artifact_inventory.Select(item => item.instance_id));
+        }
         human.combat_skill_slots_configured=snapshot.combat_skill_slots_configured;
         human.combat_passive_paths=snapshot.combat_passive_paths.Duplicate();
         human.main_gongfa_path=snapshot.main_gongfa_path;
@@ -1584,6 +1666,9 @@ public partial class Character : Creature
         snapshot.basic_deck_path = human.basic_deck_path;
         snapshot.loaded_skill_paths = human.loaded_skill_paths.Duplicate();
         snapshot.combat_skill_slot_paths = get_combat_skill_slot_paths();
+        snapshot.combat_skill_references = human.combat_skill_references.Duplicate(true);
+        snapshot.combat_resolved_skills = new Array<ActiveSkillData>(snapshot.combat_skill_slot_paths.Select(key => resolve_combat_skill(key) ?? ArtifactSkillFactory.EmptySlot()));
+        snapshot.equipped_artifacts = new Array<ArtifactInstanceData>(equipped_combat_artifacts().Select(item => (ArtifactInstanceData)item.Duplicate(true)));
         snapshot.combat_skill_slots_configured = human.combat_skill_slots_configured;
         snapshot.combat_passive_paths = get_combat_passive_paths();
         snapshot.combat_heart_method_upgrades = get_combat_heart_method_upgrades();

@@ -22,7 +22,7 @@ public partial class ItemData : EntityData
 
     public string get_grade_string() => ItemAffixCatalog.grade_to_string(grade_value);
 
-    public Array<string> validate_definition()
+    public virtual Array<string> validate_definition()
     {
         Array<string> errors = [];
         if (definition_id.ToString().Length == 0)

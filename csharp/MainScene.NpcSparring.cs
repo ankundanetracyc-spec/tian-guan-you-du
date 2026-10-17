@@ -3,13 +3,14 @@ using System;
 
 public partial class MainScene
 {
-    private bool can_sect_spar(WorldNpcData npc) => player?.entity_data is HumanData human &&
+    private bool can_sect_spar(WorldNpcData npc) => player?.entity_data is HumanData human && !is_npc_in_seclusion_now(npc) &&
         player.current_health > 0 && npc.current_health > 0 && NpcSparringRules.Supports(npc, human) && can_contact_social_npc(npc) &&
         _player_world_node_id == "yuxu_xianzong_core" &&
         GetNodeOrNull<Control>("SceneLayer/YuxuXianzongOverview/PeakInterior")?.IsVisibleInTree() == true;
 
     private void request_npc_spar(WorldNpcData npc, bool proactive = false)
     {
+        if (is_npc_in_seclusion_now(npc)) { explain_npc_seclusion(npc); return; }
         if (!can_sect_spar(npc) || player?.entity_data is not HumanData human || story_dialogue is null) return;
         info?.hide_panel(); npc_interactions?.close();
         var invitationEventId = Guid.NewGuid().ToString("N");
@@ -45,7 +46,7 @@ public partial class MainScene
         story_dialogue.show_social_choices(player, npc,
             proactive ? "对方想与你印证所学，邀你切磋一场。" : "你准备邀对方切磋，双方点到为止。",
             new (string, Action)[] {
-                ($"{(proactive ? "接受" : "发出邀约")} · 体力 {WorldStaminaRules.ConversationCost:0.#}", () => Answer(true)),
+                ($"{(proactive ? "接受" : "发出邀约")} · 精力 {WorldStaminaRules.ConversationCost:0.#}", () => Answer(true)),
                 (proactive ? "婉拒" : "取消", () => Answer(false)) }, () => Answer(false), "同门切磋", proactive ? "右键婉拒" : "右键取消");
     }
     private void start_npc_spar(WorldNpcData npc)

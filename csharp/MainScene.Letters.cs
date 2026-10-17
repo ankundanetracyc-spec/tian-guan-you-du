@@ -24,9 +24,17 @@ public partial class MainScene
     public bool deliver_letter(LetterData letter)
     {
         var now = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
-        return letter.sent_at_hour <= now && _letterMailbox.Deliver(letter);
+        if (letter.sent_at_hour > now || !_letterMailbox.Deliver(letter)) return false;
+        if (letter.opens_acquaintance_window && !string.IsNullOrWhiteSpace(letter.sender_npc_id) &&
+            _npc_world?.get_npc(letter.sender_npc_id) is { } sender)
+        {
+            // 以实际收信时刻开启窗口；投递去重成功后才刷新，不读取信件或生成关系证据。
+            sender.acquaintance_window_until_hour = now + 5 * 360 * 24;
+            mark_save_dirty();
+        }
+        return true;
     }
-    public bool deliver_npc_letter(string npcId, string sourceEventId, string subject, string body, LetterInvitationData? invitation = null, int sentAtHour = -1)
+    public bool deliver_npc_letter(string npcId, string sourceEventId, string subject, string body, LetterInvitationData? invitation = null, int sentAtHour = -1, bool opensAcquaintanceWindow = false)
     {
         if (_npc_world?.get_npc(npcId) is not { } npc) return false;
         return deliver_letter(new LetterData
@@ -34,6 +42,7 @@ public partial class MainScene
             source_event_id = sourceEventId, sender_npc_id = npcId, sender_name = npc.npc_name,
             sender_was_known = NpcSocialRules.KnowsName(npc), subject = subject, body = body,
             sent_at_hour = sentAtHour >= 0 ? sentAtHour : GetNode<GameTimeMgr>("/root/GameTimeManager").get_total_game_hours(), invitation = invitation,
+            opens_acquaintance_window = opensAcquaintanceWindow,
             delivery_place = get_current_profile_location()
         });
     }
@@ -66,7 +75,7 @@ public partial class MainScene
         _letterMailbox.closure_pending = false; mark_save_dirty();
         var month = get_game_month_index(time);
         if (human.sect_affiliation_id != YuxuSectId || _socialMembershipMonth < 0 || month <= _socialMembershipMonth
-            || _socialVisitMonth >= month || _npc_world is null || month != _letterMailbox.closure_until_hour / 720
+            || _npc_world is null || social_visit_count(month) >= social_visit_limit(human) || month != _letterMailbox.closure_until_hour / 720
             || _letterMailbox.closure_node_id != "yuxu_xianzong_core" || string.IsNullOrWhiteSpace(_letterMailbox.closure_subscene_id)) return;
         var npc = social_visit_candidate(human, month, _letterMailbox.closure_subscene_id);
         if (npc is null) return;
@@ -76,12 +85,16 @@ public partial class MainScene
         {
             source_event_id = source, sender_npc_id = npc.npc_id, sender_name = npc.npc_name, sender_was_known = known,
             subject = known ? "静室门前留书" : "留笺见礼", sent_at_hour = _letterMailbox.closure_until_hour,
+            opens_acquaintance_window = true,
             delivery_place = get_yuxu_peak_name(_letterMailbox.closure_subscene_id) + " · 静室",
             body = known
                 ? $"道友：\n\n今日前来问候，见静室仍闭，便未叩扰。留此短笺，愿道友清修顺遂。\n\n待你出关，若有闲暇，我们再叙。\n\n{npc.npc_name} 留书"
                 : $"道友：\n\n我名{npc.npc_name}，与道友同在本宗修行。今日登门，见静室闭门，便留此笺，不扰清修。\n\n若出关后有意往来，日后宗内相逢，再当面见礼。\n\n{npc.npc_name} 敬上"
         };
         if (deliver_letter(letter) || _letterMailbox.letters.Any(existing => existing.source_event_id == source))
-        { NpcSocialRules.HearSectReputation(npc, human, true); _socialVisitMonth = month; mark_save_dirty(); }
+        {
+            NpcSocialRules.HearSectReputation(npc, human, true);
+            mark_social_visit_processed(npc, month);
+        }
     }
 }

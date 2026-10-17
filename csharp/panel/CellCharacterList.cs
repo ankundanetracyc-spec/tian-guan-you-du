@@ -199,7 +199,7 @@ public partial class CellCharacterList : Control
         {
             if (npc is null || !GodotObject.IsInstanceValid(npc)) continue;
             npc.ensure_appearance_identity();
-            rosterParts.Add($"{npc.GetInstanceId()}:{npc.npc_name}:{npc.formal_identity}:{npc.cultivation_realm}:{npc.appearance_seed}:{npc.current_age}:{npc.gender}:{npc.faction_id}");
+            rosterParts.Add($"{npc.GetInstanceId()}:{npc.npc_name}:{npc.formal_identity}:{npc.cultivation_realm}:{npc.current_state}:{npc.seclusion_started_month}:{npc.seclusion_until_month}:{npc.appearance_seed}:{npc.current_age}:{npc.gender}:{npc.faction_id}");
         }
         var validCount = rosterParts.Count;
         var stamp = string.Join(";", rosterParts);
@@ -317,7 +317,11 @@ public partial class CellCharacterList : Control
         var display = string.IsNullOrWhiteSpace(npc.npc_name) ? "无名" : npc.npc_name.Trim();
         var identity = string.IsNullOrWhiteSpace(npc.formal_identity) ? "身份未详" : npc.formal_identity.Trim();
         var realm = string.IsNullOrWhiteSpace(npc.cultivation_realm) ? "凡人" : npc.cultivation_realm.Trim();
-        return make_character_row(display, $"{identity}  ·  {realm}", portrait => portrait.CallDeferred("show_world_npc", npc), () => click(npc));
+        var nowHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+        var activity = npc.is_in_seclusion_at_hour(nowHour) ? "闭关中" : npc.current_state;
+        if (string.IsNullOrWhiteSpace(activity) || activity == "空闲") activity = "";
+        var subtitle = $"{identity}  ·  {realm}" + (activity.Length > 0 ? $"  ·  {activity}" : "");
+        return make_character_row(display, subtitle, portrait => portrait.CallDeferred("show_world_npc", npc), () => click(npc));
     }
 
     private Button make_character_row(string title, string subtitle, Action<PortraitRenderer> configure_portrait, Action on_pressed)

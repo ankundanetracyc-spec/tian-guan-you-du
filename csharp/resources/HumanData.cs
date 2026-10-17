@@ -4,6 +4,7 @@ using Godot.Collections;
 /// <summary>人类角色的持久化数据，供世界、生成器与战斗场景共同使用。</summary>
 public partial class HumanData : LivingData
 {
+    [Export] public Array<CombatSkillReference> combat_skill_references = [];
     /// <summary>局外阵盘中已启用的个人战斗阵图；其运行资源不会写回本字段。</summary>
     [Export] public Godot.Collections.Array<FormationCircuitData> formation_circuits = [];
     [Export] public Array<string> formation_manual_ids = [];
@@ -97,7 +98,7 @@ public partial class HumanData : LivingData
     [Export] public float travel_speed_cells_per_day = 1.0f;
     /// <summary>是否能以飞行方式行进大世界；未获得飞行能力时为 false。</summary>
     [Export] public bool can_fly_world_map;
-    /// <summary>大世界、地点与副本共用的持久体力；与即时战斗精力 current_stamina 分开保存。</summary>
+    /// <summary>大世界、地点与副本共用的持久精力；与即时战斗体力 current_stamina 分开保存。</summary>
     [Export] public float current_world_stamina = WorldStaminaRules.InitialCapacity;
     [Export] public float max_world_stamina = WorldStaminaRules.InitialCapacity;
     /// <summary>主角在大世界与地点活动时持续存在的状态；与即时战斗临时状态分开。</summary>
@@ -229,6 +230,8 @@ public partial class HumanData : LivingData
     // 武器已并入法宝体系；常规穿戴仅保留四个直观属性位。
     [Export] public string headwear_path = "";
     [Export] public string clothes_path = "";
+    /// <summary>Cosmetic portrait clothing owned and currently worn; independent from stat-bearing clothes_path.</summary>
+    [Export] public string portrait_clothing_item_path = "";
     [Export] public string ornament_1_path = "";
     [Export] public string footwear_path = "";
     [Export] public string ornament_2_path = ""; // 旧档兼容字段，后续迁移到饰品位。

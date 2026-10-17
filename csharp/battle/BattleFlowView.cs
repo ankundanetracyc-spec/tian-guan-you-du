@@ -148,7 +148,7 @@ public partial class BattleFlowView : CanvasLayer
         }
         Paragraph($"基础属性\n体魄 {unit.physique:0.#}　灵慧 {unit.intelligence:0.#}　敏捷 {unit.agility:0.#}　神魂 {unit.soul:0.#}");
         if(unit.entity_type==(int)WorldEntity.EntityType.CHARACTER)Paragraph($"福缘 {unit.fortune}　悟性 {unit.comprehension}　魅力 {unit.charisma:0.#}　交际 {unit.social:0.#}　治事 {unit.management:0.#}");
-        Paragraph($"战斗属性\n生命 {unit.current_health}/{unit.max_health}　精力 {unit.current_stamina}/{unit.max_stamina}　速度 {unit.initiative_speed:0.#}\n物理防御 {unit.physical_defense}　物理减伤 {unit.physical_damage_reduction*100:0.#}%\n精准 {unit.precision}　身法 {unit.dodge}　会心 {unit.critical}　护心 {unit.crit_resist}　会心伤害 {unit.crit_damage_mult*100:0.#}%");
+        Paragraph($"战斗属性\n生命 {unit.current_health}/{unit.max_health}　体力 {unit.current_stamina}/{unit.max_stamina}　速度 {unit.initiative_speed:0.#}\n物理防御 {unit.physical_defense}　物理减伤 {unit.physical_damage_reduction*100:0.#}%\n精准 {unit.precision}　身法 {unit.dodge}　会心 {unit.critical}　护心 {unit.crit_resist}　会心伤害 {unit.crit_damage_mult*100:0.#}%");
         if(unit.entity_type==(int)WorldEntity.EntityType.CHARACTER || unit.max_mana>0)Paragraph($"法力 {unit.current_mana}/{unit.max_mana}　灵识 {unit.used_spirit_perception}/{unit.max_spirit_perception}");
         Paragraph($"遁速 {(unit.dun_speed>0?unit.dun_speed.ToString("0.#"):"—")}\n速度影响行动积蓄；遁速影响行旅与撤退概率。");Button(_buttons,"返回",back);
     }

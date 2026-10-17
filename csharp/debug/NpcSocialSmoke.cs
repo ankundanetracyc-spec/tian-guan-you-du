@@ -12,10 +12,23 @@ public partial class NpcSocialSmoke : Node
     private static T Read<T>(object value, string name) => (T)value.GetType().GetField(name, BindingFlags.NonPublic | BindingFlags.Instance)!.GetValue(value)!;
     private static object? Call(object value, string name, params object[] args) => value.GetType().GetMethod(name, BindingFlags.NonPublic | BindingFlags.Instance)!.Invoke(value, args);
     private async Task Frames(int count = 4) { for (int i = 0; i < count; i++) await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame); }
+    private void quit_after_cleanup(int exitCode = 0)
+    {
+        var tree = GetTree();
+        var timer = tree.CreateTimer(.2, false);
+        timer.Timeout += () =>
+        {
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            tree.Quit(exitCode);
+        };
+    }
     private static Button Choice(StoryDialoguePanel panel, string prefix) => panel.FindChildren("*", "Button", true, false).OfType<Button>().First(b => b.IsVisibleInTree() && b.Text.StartsWith(prefix));
     private async Task Capture(string name)
     {
-        if (!OS.GetCmdlineUserArgs().Contains("--capture")) return;
+        var userArgs = OS.GetCmdlineUserArgs();
+        var captureOnlyBanquet = userArgs.Contains("--capture-banquet");
+        if (!userArgs.Contains("--capture") && !(captureOnlyBanquet && name.StartsWith("banquet", StringComparison.Ordinal))) return;
         await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
         GetViewport().GetTexture().GetImage().SavePng("res://tmp/npc_social_process_" + name + ".png");
     }
@@ -247,6 +260,20 @@ public partial class NpcSocialSmoke : Node
             var main = (MainScene)GetTree().CurrentScene;
             var world = GetNode<NpcWorldManager>("/root/NpcWorldManager"); var npc = world.get_npc("social_smoke")!;
             var player = Read<Character>(main, "player"); var dialogue = Read<StoryDialoguePanel>(main, "story_dialogue");
+            var clock = GetNode<GameTimeMgr>("/root/GameTimeManager");
+            var relationshipBeforeGreeting = CharacterRelationshipRules.Get((HumanData)player.entity_data!, npc.npc_id);
+            var greetingNow = clock.get_total_game_hours();
+            Check(main.deliver_npc_letter(npc.npc_id, "greeting-window-smoke", "愿日后结识", "若道友有暇，日后宗内相逢可再叙。", sentAtHour: greetingNow, opensAcquaintanceWindow: true),
+                "符合结识意图的问候信没有投递");
+            var openedUntil = greetingNow + 5 * 360 * 24;
+            Check(npc.acquaintance_window_until_hour == openedUntil && relationshipBeforeGreeting is null &&
+                  CharacterRelationshipRules.Get((HumanData)player.entity_data!, npc.npc_id) is null,
+                "投递问候信应开启五年窗口但不能直接增加关系");
+            npc.acquaintance_window_until_hour = greetingNow + 7;
+            Check(!main.deliver_npc_letter(npc.npc_id, "greeting-window-smoke", "愿日后结识", "重复来源不得刷新窗口。", sentAtHour: greetingNow, opensAcquaintanceWindow: true) &&
+                  npc.acquaintance_window_until_hour == greetingNow + 7,
+                "同一封问候信重复回调刷新了结识窗口");
+            npc.acquaintance_window_until_hour = 0;
             var trueDisciple = OS.GetCmdlineUserArgs().Contains("--true-disciple");
             if (trueDisciple) ((HumanData)player.entity_data!).sect_current_rank = "真传弟子";
             var openingChoice = "接受";
@@ -256,11 +283,11 @@ public partial class NpcSocialSmoke : Node
             Call(main, "sync_social_membership_month");
             Call(main, "process_npc_social_visit", .6);
             Check(!dialogue.Visible, "入宗当月不应立即主动结识");
-            var clock = GetNode<GameTimeMgr>("/root/GameTimeManager"); clock.restore_calendar(1, 2, 8, 9, 0);
+            clock.restore_calendar(1, 2, 8, 9, 0);
             Call(main, "process_npc_social_visit", .6);
             Check(dialogue.Visible && Choice(dialogue, openingChoice) is not null, "次月在场同门未主动搭话");
             Check(!Read<PanelContainer>(dialogue, "_dialogueFrame").Visible && dialogue.GetNodeOrNull("SocialInteraction") is not null, "交往不应显示底部剧情栏");
-            Check(!NpcSocialRules.KnowsName(npc) && player.current_world_stamina == 100, "打开选择不应交换姓名或扣体力");
+            Check(!NpcSocialRules.KnowsName(npc) && player.current_world_stamina == 100, "打开选择不应交换姓名或扣精力");
             await Frames(20); await Capture("choices");
             Choice(dialogue, "婉拒").EmitSignal(BaseButton.SignalName.Pressed);
             dialogue.close(); dialogue.close();
@@ -281,7 +308,11 @@ public partial class NpcSocialSmoke : Node
             await Frames(); await Capture("result"); dialogue.close();
             Call(main, "process_npc_social_visit", .6); Check(!dialogue.Visible, "同月反复弹出");
             var saved = main.capture_battle_world_snapshot()!;
-            Check(saved.scene_progress["social_visit_month"].AsInt32() == 1 && saved.world_npcs.First(n => n.npc_id == npc.npc_id).player_social_memory["player_name"].AsString() == "沈照微", "快照丢失交谈记忆或月游标");
+            Check(saved.scene_progress["social_visit_month"].AsInt32() == 1 &&
+                  saved.scene_progress["social_visit_processed_month"].AsInt32() == 1 &&
+                  saved.scene_progress["social_visited_npc_ids"].AsGodotArray<string>().Contains(npc.npc_id) &&
+                  saved.world_npcs.First(n => n.npc_id == npc.npc_id).player_social_memory["player_name"].AsString() == "沈照微",
+                "快照丢失交谈记忆、来访月度去重游标或已处理 NPC ID");
             var path = "res://tmp/npc_social_smoke_save.tres";
             Check(ResourceSaver.Save(saved, path) == Error.Ok, "资源存档失败");
             var reloaded = ResourceLoader.Load<PersistentGameSave>(path, cacheMode: ResourceLoader.CacheMode.Ignore)!;
@@ -316,19 +347,28 @@ public partial class NpcSocialSmoke : Node
                 "正式 NPC 菜单仍有测试入口，或正式交谈被移除");
             menu.close();
             Call(main, "begin_npc_social_talk", npc, false, true); await Frames();
-            var socialStage = dialogue.GetNode<Control>("SocialInteraction");
+            var socialStage = dialogue.FindChildren("*", "Control", true, false).OfType<Control>()
+                .LastOrDefault(control => control.Name.ToString().StartsWith("SocialInteraction", StringComparison.Ordinal) && control.IsVisibleInTree())
+                ?? throw new Exception("当前人物交互浮层缺失");
             var playerPortraitCount = socialStage.FindChildren("PlayerSocialPortrait", "Control", true, false).Count;
             var npcPortraitCount = socialStage.FindChildren("NpcSocialPortrait", "Control", true, false).Count;
             var center = socialStage.FindChildren("InteractionProcess", "VBoxContainer", true, false).OfType<Control>().FirstOrDefault()
                 ?? throw new Exception("交互中央过程栏缺失");
             var centerLabels = center.FindChildren("*", "Label", true, false).OfType<Label>().ToArray();
-            var npcNameLabel = socialStage.FindChildren("*", "Label", true, false).OfType<Label>().FirstOrDefault(l => l.Text == npc.npc_name);
+            var npcPortrait = socialStage.FindChildren("NpcSocialPortrait", "Control", true, false).OfType<Control>().FirstOrDefault()
+                ?? throw new Exception("当前人物交互 NPC 立绘缺失");
+            var npcNameLabel = socialStage.FindChildren("NpcSocialName", "Label", true, false).OfType<Label>().FirstOrDefault();
             var choiceButtons = center.FindChildren("*", "Button", true, false).OfType<Button>().Where(b => b.IsVisibleInTree()).OrderBy(b => b.GlobalPosition.Y).ToArray();
             Check(playerPortraitCount == 1 && npcPortraitCount == 1 && !centerLabels.Any(l => l.Text.Contains("宗内遇见") || l.Text.Contains(npc.npc_name)) &&
                 choiceButtons.Length == 2 && choiceButtons[1].GlobalPosition.Y > choiceButtons[0].GlobalPosition.Y,
                 $"交互浮层结构异常：立绘={playerPortraitCount}/{npcPortraitCount}，中央文字={string.Join("|", centerLabels.Select(l => l.Text))}，选项={string.Join("|", choiceButtons.Select(b => $"{b.Text}@{b.GlobalPosition.Y}"))}");
             if (NpcPersonalityRules.TestInspection)
-                Check(npcNameLabel?.TooltipText.Contains("仅测试试算") == true, "测试入口悬停未显示临时数值，或测试数据缺少不存档说明");
+            {
+                var hoverManager = GetNodeOrNull<HoverInfoManager>("/root/HoverInfoManager");
+                var hoverEntries = hoverManager is null ? null : Read<System.Collections.Generic.Dictionary<Control, HoverInfoManager.HoverInfoContent>>(hoverManager, "_entries");
+                Check(npcNameLabel is not null && hoverEntries is not null && hoverEntries.TryGetValue(npcNameLabel, out var tip) && tip.Body.Contains("仅测试试算"),
+                    $"测试入口悬停未显示临时数值，或测试数据缺少不存档说明：testMode={Read<bool>(dialogue, "_socialTestMode")}，tooltip={npcNameLabel?.TooltipText ?? "<空>"}");
+            }
             Choice(dialogue, "上前搭话").EmitSignal(BaseButton.SignalName.Pressed); await Frames();
             dialogue.close(); dialogue.close();
             Call(main, "begin_npc_social_talk", npc, true, true); await Frames();
@@ -336,18 +376,21 @@ public partial class NpcSocialSmoke : Node
             Check(player.current_world_stamina == originalStamina && clock.get_total_game_hours() == originalHours &&
                 npc.player_social_memory.Count == originalMemoryCount && npc.social_personality.Count == originalPersonalityCount &&
                 npc.social_priorities.Count == originalPriorityCount && npc.appearance_seed == originalAppearanceSeed && npc.player_relationship == originalRelationship,
-                "两种测试互动不得扣体力、推进时间或改动 NPC 正式数据");
+                "两种测试互动不得扣精力、推进时间或改动 NPC 正式数据");
             dialogue.close(); dialogue.close();
             main.open_world_npc_talk(npc);
             var stamina = player.current_world_stamina; dialogue.close(); dialogue.close(); dialogue.close();
             Check(!dialogue.Visible && player.current_world_stamina == stamina, "Esc告辞应免费且能正常关闭");
             dialogue.show_narration("剧情对白回归检查");
             Check(Read<PanelContainer>(dialogue, "_dialogueFrame").Visible && Read<Control?>(dialogue, "_socialContent") is null, "普通剧情对白未恢复底栏"); dialogue.close();
-            npc.current_subscene_id = "zifu"; main.open_world_npc_talk(npc); Check(!dialogue.Visible, "不在同峰的人不应远程交谈");
+            npc.current_subscene_id = "zifu"; main.open_world_npc_talk(npc);
+            Check(dialogue.Visible && Read<Label>(dialogue, "_body").Text.Contains("不在当前峰内区域"), "无法接触的 NPC 应说明原因，不能静默无反馈或允许远程交谈");
+            dialogue.close();
             npc.current_subscene_id = "guanfu"; player.current_world_stamina = 0;
             main.open_world_npc_talk(npc); Choice(dialogue, "聊聊近况").EmitSignal(BaseButton.SignalName.Pressed);
-            Check(player.current_world_stamina == 0, "体力不足不应扣成负数"); dialogue.close();
+            Check(player.current_world_stamina == 0, "精力不足不应扣成负数"); dialogue.close();
             npc.player_social_memory["relationship"] = "enemy";
+            CharacterRelationshipRules.PreserveLegacyMarker(npc, CharacterRelationshipRules.PlayerCharacterId, "enemy");
             Check(NpcSocialRules.Address(npc, 16) == "沈照微", "仇人应使用已知姓名");
             var preview = GD.Load<PackedScene>("res://tscn/scene/NpcSocialPreviewScene.tscn").Instantiate<NpcSocialPreviewScene>();
             var previewLayer = new CanvasLayer { Layer = 200 };
@@ -483,7 +526,7 @@ public partial class NpcSocialSmoke : Node
                 previewPlayer.current_world_stamina == previewStamina && template.player_social_memory.Count == 0 &&
                 template.carried_items.Count == 0 && template.resources.Count == 0 && template.action_history.Count == 0 && template.social_priorities.Count == 1 &&
                 template.social_priorities.Contains("宗门") && Read<Control>(preview, "_setupRoot").Visible,
-                "三类试演影响了正式场景、体力、模板资源／认知，或结束后未返回菜单");
+                "三类试演影响了正式场景、精力、模板资源／认知，或结束后未返回菜单");
             previewLayer.QueueFree(); await Frames(3);
             var entryAffiliation = ((HumanData)player.entity_data!).sect_affiliation_id;
             Call(main, "begin_yuxu_gate_welcome"); await Frames(3);
@@ -500,11 +543,184 @@ public partial class NpcSocialSmoke : Node
             AddChild(home); await Frames(5);
             Call(home, "ToggleDemoEntries"); await Frames(2);
             var homeEntry = home.FindChildren("*", "Button", true, false).OfType<Button>().FirstOrDefault(b => b.Text == "人物交互测试");
-            Check(homeEntry is not null && homeEntry.TooltipText.Contains("无需进入存档"), "首页‘试演与预览’列表没有人物交互测试入口");
+            var sharedHoverEntries = Read<System.Collections.Generic.Dictionary<Control, HoverInfoManager.HoverInfoContent>>(
+                GetNode<HoverInfoManager>("/root/HoverInfoManager"), "_entries");
+            Check(homeEntry is not null && sharedHoverEntries.TryGetValue(homeEntry, out var homeTip) && homeTip.Body.Contains("无需进入存档"),
+                "首页‘试演与预览’列表没有人物交互测试入口或对应悬停详情");
             home.QueueFree(); await Frames(3);
-            GD.Print("NPC_SOCIAL PASS: monthly flow and costs; two test-only initiators, temporary profiles, overlay portraits/layout, natural judgement reveal, and no persistent test side effects");
-            GetTree().Quit();
+            var banquet = new BanquetPanel { Name = "BanquetPanelSmoke" };
+            AddChild(banquet); await Frames(3);
+            var banquetBackground = banquet.GetChildren().OfType<TextureRect>().FirstOrDefault();
+            Check(banquetBackground?.Texture?.ResourcePath == "res://textures/ui/banquet/banquet_outside_window_v2.png",
+                "宴席没有使用窗外隔窗望入室内的虚化素材");
+            banquet.ShowSetup(
+                new BanquetRosterEntry { Id = "player", Name = "试验主持" },
+                Enumerable.Range(1, 5).Select(index => new BanquetRosterEntry { Id = $"guest-{index}", Name = $"宾客{index}" }).ToArray(),
+                [
+                    new BanquetVenueOption { Id = "gathering_hall", Name = "同门雅集堂", CostText = "5 点贡献", CapacityIncludingHost = 6 },
+                    new BanquetVenueOption { Id = "waterside_pavilion", Name = "临水水榭", CostText = "2 枚灵石", CapacityIncludingHost = 4 },
+                ],
+                [new BanquetTimeOption { Label = "此时", StartsAtHour = 120 }]);
+            var banquetChecks = Read<System.Collections.Generic.Dictionary<string, CheckBox>>(banquet, "_guestChecks");
+            var selectedBanquetGuests = Read<System.Collections.Generic.HashSet<string>>(banquet, "_selectedGuestIds");
+            foreach (var guestId in Enumerable.Range(1, 5).Select(index => $"guest-{index}"))
+            {
+                banquetChecks[guestId].SetPressedNoSignal(true);
+                Call(banquet, "on_guest_toggled", guestId, true);
+            }
+            Read<OptionButton>(banquet, "_venueSelector").Select(1);
+            Call(banquet, "update_venue_details");
+            BanquetSetupRequest? setupRequest = null;
+            banquet.SetupRequested += request => setupRequest = request;
+            Call(banquet, "submit_setup");
+            Check(selectedBanquetGuests.Count == 3 && setupRequest is { HostId: "player", VenueId: "waterside_pavilion", StartsAtHour: 120 } &&
+                  setupRequest.GuestIds.Count == 3,
+                "水榭席位切换后未按含主持者的四人上限裁减宾客，或安排请求字段错误");
+
+            var contributionHuman = new HumanData { entity_name = "试验主持", sect_affiliation_id = "yuxu_xianzong" };
+            Check(contributionHuman.record_yuxu_contribution(new YuxuSectContributionRecord
+            {
+                record_id = "banquet-smoke-credit", source_transaction_id = "banquet-smoke-credit",
+                transaction_kind = YuxuSectContributionRecord.KindOfficialDutyReward, source_title = "烟测预存贡献",
+                occurred_at = "烟测", contribution_delta = 5, cost_summary = "增加贡献。", result_summary = "已记录。",
+            }), "宴席费用烟测无法建立贡献余额");
+            var hallFeeEvent = new BanquetEventData { event_id = "banquet-smoke-hall-fee", player_is_host = true, venue_id = "gathering_hall" };
+            var paidHall = Call(main, "settle_banquet_fee", hallFeeEvent, contributionHuman, Array.Empty<WorldNpcData>()) is true;
+            var recordsAfterHallFee = contributionHuman.sect_contribution_records.Count;
+            var paidHallAgain = Call(main, "settle_banquet_fee", hallFeeEvent, contributionHuman, Array.Empty<WorldNpcData>()) is true;
+            Check(paidHall && paidHallAgain && contributionHuman.get_yuxu_contribution_total() == 0 && recordsAfterHallFee == 2 &&
+                  contributionHuman.sect_contribution_records.Count == recordsAfterHallFee,
+                "雅集堂未扣除恰好五点贡献，或重复结算再次扣费");
+            var poorHost = new HumanData { entity_name = "无贡献主持", sect_affiliation_id = "yuxu_xianzong" };
+            var unpaidHall = Call(main, "settle_banquet_fee", new BanquetEventData
+            {
+                event_id = "banquet-smoke-unfunded", player_is_host = true, venue_id = "gathering_hall",
+            }, poorHost, Array.Empty<WorldNpcData>()) is true;
+            Check(!unpaidHall && poorHost.sect_contribution_records.Count == 0,
+                "贡献不足时仍允许开席或留下收费记录");
+
+            var eventData = new BanquetEventData
+            {
+                event_id = "banquet-smoke-response", host_id = "player", host_name = "试验主持",
+                player_is_host = true, venue_id = "gathering_hall", status = BanquetEventData.InProgress,
+                fee_settled = true, time_settled = true,
+            };
+            var socialManager = Read<NpcWorldManager>(main, "_npc_world");
+            var humanPlayer = (HumanData)player.entity_data!;
+            var currentMonth = Math.Max(0, clock.get_total_game_hours() / (30 * 24));
+            var listenerNpc = socialManager.get_persistent_npcs()
+                .Select(candidate => socialManager.get_npc(candidate.npc_id))
+                .FirstOrDefault(candidate => candidate is not null && candidate.npc_id != npc.npc_id &&
+                    !has_conversation_this_month(CharacterRelationshipRules.Get(humanPlayer, candidate.npc_id), currentMonth) &&
+                    !has_conversation_this_month(CharacterRelationshipRules.Get(candidate, CharacterRelationshipRules.PlayerCharacterId), currentMonth))
+                ?? throw new Exception("宴席烟测没有可用的独立听者人物");
+            var unheardNpc = new WorldNpcData { npc_id = "banquet-smoke-unheard", npc_name = "未听见的宾客" };
+            socialManager.npcs.Add(unheardNpc);
+            eventData.attendee_npc_ids.Add(listenerNpc.npc_id);
+            eventData.attendee_npc_ids.Add(unheardNpc.npc_id);
+            var responseBeatId = eventData.event_id + ":beat:0";
+            var heardBy = new Godot.Collections.Array<string> { listenerNpc.npc_id };
+            eventData.beats.Add(new D
+            {
+                ["beat_id"] = responseBeatId,
+                ["speaker_id"] = listenerNpc.npc_id,
+                ["speaker_name"] = listenerNpc.npc_name,
+                ["text"] = "今日听闻道友新近入门，先贺一声。",
+                ["heard_by"] = heardBy,
+                ["choices"] = new Godot.Collections.Array<D>
+                {
+                    new D { ["id"] = "humble", ["tone"] = "谦让", ["text"] = "承蒙诸位抬爱。" },
+                },
+            });
+            eventData.beats.Add(new D
+            {
+                ["beat_id"] = eventData.event_id + ":beat:1",
+                ["speaker_id"] = unheardNpc.npc_id,
+                ["speaker_name"] = unheardNpc.npc_name,
+                ["text"] = "席间尚有后话。",
+                ["heard_by"] = new Godot.Collections.Array<string>(),
+                ["choices"] = new Godot.Collections.Array<D>(),
+            });
+            Read<Godot.Collections.Array<BanquetEventData>>(main, "_banquetEvents").Add(eventData);
+            var eventRecordId = $"banquet-response:{eventData.event_id}:{responseBeatId}:{listenerNpc.npc_id}";
+            var relation = CharacterRelationshipRules.Get(humanPlayer, listenerNpc.npc_id);
+            var pendingBefore = relation?.pending_evidence.Count ?? 0;
+            var callback = new BanquetResponseSelection { EventId = eventData.event_id, BeatId = responseBeatId, TimedOut = true };
+            Call(main, "on_banquet_response_chosen", callback);
+            Call(main, "on_banquet_response_chosen", callback);
+            var chosenResponse = eventData.responses.FirstOrDefault();
+            var eventActionCount = listenerNpc.action_history.Count(record => record.dungeon_incident_id == eventRecordId);
+            var unheardActionCount = unheardNpc.action_history.Count(record => record.dungeon_incident_id.Contains(eventData.event_id));
+            var pendingAfter = CharacterRelationshipRules.Get(humanPlayer, listenerNpc.npc_id)?.pending_evidence.Count ?? 0;
+            Check(eventData.responses.Count == 1 && chosenResponse is not null && chosenResponse["timed_out"].AsBool() &&
+                  chosenResponse["choice_id"].AsString() == "humble" &&
+                  eventActionCount == 1 && unheardActionCount == 0 && pendingAfter == pendingBefore + 1,
+                $"超时回应重复回调后重抽或重复记录关系／非听者印象：回应={eventData.responses.Count}，听者记录={eventActionCount}，非听者记录={unheardActionCount}，待归纳={pendingBefore}→{pendingAfter}，选项={chosenResponse?.GetValueOrDefault("choice_id", "").AsString()}，超时={chosenResponse?.GetValueOrDefault("timed_out", false).AsBool()}");
+            var priorResponseCount = eventData.responses.Count;
+            var leaveHour = clock.get_total_game_hours();
+            Call(main, "on_banquet_exit_requested");
+            Check(eventData.status == BanquetEventData.LeftEarly && eventData.responses.Count == priorResponseCount &&
+                  clock.get_total_game_hours() == leaveHour && eventData.fee_settled && eventData.time_settled,
+                $"提前离席丢失已经发生的回应，或退还席费／已结算时辰：状态={eventData.status}，回应={eventData.responses.Count}/{priorResponseCount}，时辰={clock.get_total_game_hours()}/{leaveHour}，席费／时辰={eventData.fee_settled}/{eventData.time_settled}");
+
+            var timeoutCount = 0;
+            BanquetResponseSelection? timedOutResponse = null;
+            banquet.ResponseChosen += response => { timeoutCount++; timedOutResponse = response; };
+            banquet.StartActivity(new BanquetActivityPresentation
+            {
+                EventId = "banquet-panel-smoke",
+                Title = "同门雅集",
+                HostName = "试验主持",
+                VenueName = "同门雅集堂",
+                Participants = new[] { new BanquetParticipantPresentation { Id = "player", Name = "试验主持" } },
+            });
+            banquet.ShowBeat(new BanquetBeatPresentation
+            {
+                EventId = "banquet-panel-smoke", BeatId = "banquet-panel-smoke:beat:0",
+                SpeakerName = "尹蓁", Text = "你方才说这段旧注读了三遍？",
+            });
+            banquet.ShowBeat(new BanquetBeatPresentation
+            {
+                EventId = "banquet-panel-smoke", BeatId = "banquet-panel-smoke:beat:1",
+                SpeakerName = "陆晚", Text = "前两遍只顾记字句，第三遍才看明白前后原是一层意思。",
+            });
+            banquet.ShowBeat(new BanquetBeatPresentation
+            {
+                EventId = "banquet-panel-smoke", BeatId = "banquet-panel-smoke:beat:2",
+                SpeakerName = "陆晚", Text = "沈照微道友，读法门时若遇到一处始终想不明白，你会先自己推敲，还是找人请益？",
+                Choices = new[]
+                {
+                    new BanquetChoicePresentation { Id = "ask", Tone = "请益", Text = "找一位走过相似阶段的同门，把各自体会对照一遍。" },
+                    new BanquetChoicePresentation { Id = "study", Tone = "细察", Text = "把前后几日逐处梳理，看看变化从哪一步开始。", RequirementText = "需悟性≥65（当前48）", IsAvailable = false },
+                    new BanquetChoicePresentation { Id = "honest", Tone = "坦率", Text = "我也未必一开始就想得明白，先记下疑处再慢慢推敲。" },
+                    new BanquetChoicePresentation { Id = "ask_all", Tone = "照顾同席", Text = "不妨请席间每位同门各说一件最有用的经验。", RequirementText = "需至少3位同门在席（当前2位）", IsAvailable = false },
+                },
+                ResponseSeconds = 12,
+            });
+            var recentBanquetBubbles = Read<System.Collections.Generic.IReadOnlyList<Control>>(banquet, "_recentBubbles");
+            var ambientBubbles = recentBanquetBubbles.Take(2).ToArray();
+            Check(ambientBubbles.Length == 2 && ambientBubbles.All(bubble =>
+                    bubble.FindChildren("*", "Label", true, false).OfType<Label>().All(label =>
+                        !label.Text.Contains("尹蓁", StringComparison.Ordinal) && !label.Text.Contains("陆晚", StringComparison.Ordinal))),
+                "非玩家闲谈气泡显示了发言姓名");
+            var bubbleLayer = Read<Control>(banquet, "_bubbleLayer");
+            Check(ambientBubbles.All(bubble => bubble.Position.X >= bubbleLayer.Size.X * .05f &&
+                    bubble.Position.X + bubble.Size.X <= bubbleLayer.Size.X * .95f && bubble.Position.Y >= bubbleLayer.Size.Y * .04f),
+                "宴席闲谈气泡贴近屏幕极端边缘或没有留出安全区");
+            await Frames(18);
+            await Capture("banquet_window_review_20261016");
+            banquet._Process(13);
+            banquet._Process(13);
+            Check(timeoutCount == 1 && timedOutResponse is { TimedOut: true, EventId: "banquet-panel-smoke" },
+                "宴席应答超时重复发出或没有报告超时事件");
+            banquet.QueueFree(); await Frames(3);
+            GD.Print("NPC_SOCIAL PASS: monthly flow and costs; two test-only initiators, temporary profiles, window-view banquet dialogue, natural judgement reveal, and no persistent test side effects");
+            quit_after_cleanup();
         }
-        catch (Exception e) { GD.PushError(e.ToString()); GetTree().Quit(1); }
+        catch (Exception e) { GD.PushError(e.ToString()); quit_after_cleanup(1); }
     }
+
+    private static bool has_conversation_this_month(CharacterRelationshipRecord? relation, int month) => relation is not null &&
+        (relation.settled_conversation_months.Contains(month) ||
+         relation.pending_evidence.Any(item => item is not null && item.event_kind == CharacterRelationshipRules.SuccessfulConversation && item.month_index == month));
 }

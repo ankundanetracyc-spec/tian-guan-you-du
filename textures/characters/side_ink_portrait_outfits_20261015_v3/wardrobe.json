@@ -1,0 +1,31 @@
+{
+  "scope": "Independent preview, two selected full-body costume sprites per gender; no modular parts or save changes.",
+  "portrait_package": "ink_three_variants_20261004",
+  "canvas": [2048, 2048],
+  "ground_origin": [1024, 1900],
+  "reference_visible_height": 1375,
+  "outfits": {
+    "male": {
+      "display_name": "碧岚云叶袍",
+      "appearance_clothes_style": 0,
+      "portrait_clothing_path": "res://mods/appearance/ink_three_variants_20261004/male/clothing/01.png",
+      "portrait_reference": "res://mods/appearance/ink_three_variants_20261004/preview/male_set_1.png",
+      "hair_front_name": "墨云中分",
+      "hair_back_name": "墨发长披",
+      "hair_front_style": 0,
+      "hair_back_style": 0,
+      "fx_hit": [685, -376]
+    },
+    "female": {
+      "display_name": "青瓷云梅袍",
+      "appearance_clothes_style": 0,
+      "portrait_clothing_path": "res://mods/appearance/ink_three_variants_20261004/female/clothing/01.png",
+      "portrait_reference": "res://mods/appearance/ink_three_variants_20261004/preview/female_set_1.png",
+      "hair_front_name": "流云中分",
+      "hair_back_name": "墨发长披",
+      "hair_front_style": 0,
+      "hair_back_style": 0,
+      "fx_hit": [751, -397]
+    }
+  }
+}

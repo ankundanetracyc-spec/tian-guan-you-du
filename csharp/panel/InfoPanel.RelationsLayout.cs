@@ -46,7 +46,14 @@ public partial class InfoPanel
             var facts = CharacterBox(profile); facts.AddChild(CharacterText(npc.npc_name, 30));
             var ownRelation = playerData is null ? null : CharacterRelationshipRules.Get(playerData, npc.npc_id);
             facts.AddChild(CharacterParagraph($"你对其的私交\n亲近：{CharacterRelationshipRules.StageLabel(CharacterRelationshipRules.Closeness, ownRelation?.closeness ?? 0)}\n信任：{CharacterRelationshipRules.StageLabel(CharacterRelationshipRules.Trust, ownRelation?.trust ?? 0)}\n敬重：{CharacterRelationshipRules.StageLabel(CharacterRelationshipRules.Respect, ownRelation?.respect ?? 0)}\n怨结：{CharacterRelationshipRules.StageLabel(CharacterRelationshipRules.Resentment, ownRelation?.resentment ?? 0)}\n状态：{(npc.is_alive ? "在世" : "已故")}", 22));
-            facts.AddChild(CharacterParagraph("此处记录的是你的感受；对方的心意只能从其言行与交际中了解。", 18, true));
+            facts.AddChild(CharacterParagraph("关系阶段记录你这一方的感受；下方仅列对方实际见闻留下的线索。", 18, true));
+            var impression = NpcPlayerImpressionRules.DescribeForPlayer(npc);
+            details.AddChild(new HSeparator()); details.AddChild(CharacterText("对方对你的大致印象", 24));
+            details.AddChild(CharacterParagraph($"目前倾向：{impression.Summary}", 20, true));
+            if (impression.Clues.Count > 0)
+                details.AddChild(CharacterParagraph(string.Join("\n", impression.Clues.Take(3).Select(clue => "· " + clue)), 18, true));
+            if (!string.IsNullOrWhiteSpace(impression.RecentSource))
+                details.AddChild(CharacterParagraph($"最近依据：{impression.RecentSource} · {impression.RecentDate}\n{impression.RecentClue}", 18, true));
             details.AddChild(new HSeparator()); details.AddChild(CharacterText("待月结记事", 24));
             var pendingScroll = new ScrollContainer
             {

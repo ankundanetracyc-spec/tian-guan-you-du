@@ -1,0 +1,13 @@
+{
+  "canvas":[2048,2048],
+  "ground_origin":[1024,1900],
+  "idle_chop_source":"res://textures/characters/side_ink_portrait_outfits_20261015_v3/",
+  "poses":{"male":["male_hurt.png","male_guard.png"],"female":["female_hurt.png","female_guard.png"]},
+  "outfits":{"male":"碧岚云叶袍","female":"青瓷云梅袍"},
+  "landmarks": {
+    "male":{"hurt":[-15,-925],"guard":[320,-1025]},
+    "female":{"hurt":[-50,-970],"guard":[335,-1050]}
+  },
+  "scope":"Independent preview only; rest uses approved idle. No skill/resource/save changes.",
+  "presentation_policy":"Hand-down-chop is a generic attack pose for actions without explicit body/weapon choreography. Does not assign damage type, rules or skill effects."
+}

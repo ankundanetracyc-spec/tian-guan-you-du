@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/ItemData.cs" id="1"]
+[ext_resource type="Resource" path="res://resources/material_craft/回泉珠材性.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+definition_id = &"mat_return_spring_pearl"
+entity_name = "回泉珠"
+description = "泉眼边凝成的水珠灵材，珠心可见细微回旋水纹。"
+icon_path = "res://textures/items/item_return_spring_pearl.png"
+item_category = "材料"
+item_subcategory = "灵液"
+tags = Array[String](["五行[水]", "质地[液]", "功用[聚]", "功用[化]", "相性[和]"])
+grade_value = 5
+can_stack = true
+max_stack = 999
+craft_data = ExtResource("2")
+

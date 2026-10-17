@@ -23,7 +23,8 @@ public partial class FloatingText : Node2D
         _label.AddThemeConstantOverride("shadow_offset_y",3);
         _label.MouseFilter=Control.MouseFilterEnum.Ignore;
         _label.AddThemeFontOverride("font", TextFont);
-        ZIndex = 1000;
+        ZIndex = BattlePresentationLayers.Numbers;
+        ZAsRelative = false;
     }
 
     public void show_text(string text, Color color, int fontSize = 52)

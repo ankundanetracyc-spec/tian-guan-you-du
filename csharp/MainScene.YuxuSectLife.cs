@@ -272,13 +272,13 @@ public partial class MainScene
             var staminaCost = YuxuSectPrototypeBalance.YaopuWatchStaminaCost;
             if (time is null || !player.can_spend_world_stamina(staminaCost))
             {
-                show_message("暂不能当值", time is null ? "游戏历法尚未就绪。" : $"本次值守需 {staminaCost:0.#} 点体力，当前体力不足；可休息后再来。");
+                show_message("暂不能当值", time is null ? "游戏历法尚未就绪。" : $"本次值守需 {staminaCost:0.#} 点精力，当前精力不足；可休息后再来。");
                 return;
             }
 
             run_time_transition(
                 "药园值守",
-                $"在瑶圃峰药园完成 {YuxuSectPrototypeBalance.YaopuWatchHours} 个游戏时辰的值守；消耗体力 {staminaCost:0.#} 点。",
+                $"在瑶圃峰药园完成 {YuxuSectPrototypeBalance.YaopuWatchHours} 个游戏时辰的值守；消耗精力 {staminaCost:0.#} 点。",
                 activeWatchDuty
                     ? "当值结束。药架、灵土与苗圃均已巡看完毕，可向执事回报。"
                     : "当值结束。药架、灵土与苗圃均已巡看完毕。",
@@ -289,7 +289,7 @@ public partial class MainScene
                             current.sect_active_yuxu_duty_instance_id != dutyInstanceId)) ||
                         !player.try_spend_world_stamina(staminaCost))
                     {
-                        show_message("值守未完成", "事务状态或体力已变化，未推进历法，也未发放贡献。");
+                        show_message("值守未完成", "事务状态或精力已变化，未推进历法，也未发放贡献。");
                         return;
                     }
                     time.add_hours(YuxuSectPrototypeBalance.YaopuWatchHours);
@@ -305,7 +305,7 @@ public partial class MainScene
                         YuxuYaopuWatchDutyId,
                         "瑶圃药园值守",
                         dutyInstanceId,
-                        $"完成药园值守；消耗体力 {staminaCost:0.#} 点并当值四个游戏时辰。",
+                        $"完成药园值守；消耗精力 {staminaCost:0.#} 点并当值四个游戏时辰。",
                         "药园值守已核验。",
                         null);
                 });
@@ -336,12 +336,12 @@ public partial class MainScene
             var startCost = YuxuSectPrototypeBalance.YaopuCultivationStartStaminaCost;
             if (!player.can_spend_world_stamina(startCost))
             {
-                show_message("体力不足", $"照料苗株需 {startCost:0.#} 点体力，当前体力不足；可休息后再来。");
+                show_message("精力不足", $"照料苗株需 {startCost:0.#} 点精力，当前精力不足；可休息后再来。");
                 return;
             }
             run_time_transition(
                 "照料雾铃花",
-                $"前往雾铃园培护一株幼苗，用时 {startHours} 个游戏时辰，消耗体力 {startCost:0.#} 点。成熟后再回来采收。",
+                $"前往雾铃园培护一株幼苗，用时 {startHours} 个游戏时辰，消耗精力 {startCost:0.#} 点。成熟后再回来采收。",
                 "幼苗已妥善照料。待其生长满一个游戏昼夜，再来采收。",
                 () =>
                 {
@@ -349,7 +349,7 @@ public partial class MainScene
                         current.sect_active_yuxu_duty_id != YuxuYaopuCultivationDutyId ||
                         !player.try_spend_world_stamina(startCost))
                     {
-                        show_message("照料未完成", "事务状态或体力已变化，未推进历法。");
+                        show_message("照料未完成", "事务状态或精力已变化，未推进历法。");
                         return;
                     }
                     cultivationTime.add_hours(startHours);
@@ -453,13 +453,13 @@ public partial class MainScene
         var staminaCost = YuxuSectPrototypeBalance.YaopuCultivationStartStaminaCost;
         if (!player.can_spend_world_stamina(staminaCost))
         {
-            show_message("体力不足", $"照料苗株需 {staminaCost:0.#} 点体力，当前体力不足；可休息后再来。");
+            show_message("精力不足", $"照料苗株需 {staminaCost:0.#} 点精力，当前精力不足；可休息后再来。");
             return;
         }
 
         run_time_transition(
             "照料雾铃花",
-            $"在瑶圃峰雾铃园培护一株幼苗，用时 {careHours} 个游戏时辰，消耗体力 {staminaCost:0.#} 点。成熟后再回来采收。",
+            $"在瑶圃峰雾铃园培护一株幼苗，用时 {careHours} 个游戏时辰，消耗精力 {staminaCost:0.#} 点。成熟后再回来采收。",
             "幼苗已妥善照料。待其生长满一个游戏昼夜，再来采收。",
             () =>
             {
@@ -468,7 +468,7 @@ public partial class MainScene
                     current.sect_yaopu_free_cultivation_stage != stage ||
                     !player.try_spend_world_stamina(staminaCost))
                 {
-                    show_message("照料未完成", "事务状态或体力已变化，未推进历法。");
+                    show_message("照料未完成", "事务状态或精力已变化，未推进历法。");
                     return;
                 }
                 time.add_hours(careHours);
@@ -476,7 +476,7 @@ public partial class MainScene
                 current.sect_yaopu_free_cultivation_stage = 1;
                 mark_save_dirty();
                 refresh_yuxu_life_context();
-                show_message("幼苗已照料", "已用时并消耗体力完成培护。等待一个游戏昼夜后，可回来采收归自己的雾铃花。");
+                show_message("幼苗已照料", "已用时并消耗精力完成培护。等待一个游戏昼夜后，可回来采收归自己的雾铃花。");
             });
     }
 
@@ -688,6 +688,11 @@ public partial class MainScene
 
         if (peakId == "heguang")
         {
+            if (actionId == "heguang_banquet")
+            {
+                open_banquet_setup();
+                return;
+            }
             handle_yuxu_heguang_action(actionId, human);
             return;
         }
@@ -759,7 +764,7 @@ public partial class MainScene
             .FirstOrDefault();
         if (peer is null)
         {
-            show_message("同门答疑", "和光峰此刻没有在场的同门可供请教。稍后再来，不消耗体力。");
+            show_message("同门答疑", "和光峰此刻没有在场的同门可供请教。稍后再来，不消耗精力。");
             return;
         }
 
@@ -778,12 +783,12 @@ public partial class MainScene
                 overview.Visible != true || peakInterior.IsVisibleInTree() != true || !can_contact_social_npc(peer) ||
                 manager.get_npc(peer.npc_id) != peer)
             {
-                story_dialogue.show_social_result(peer, new("同门已不在和光峰，或你已离开此处；本次没有消耗体力，也未记下答疑。", "", []) { ActionName = "答疑未成" });
+                story_dialogue.show_social_result(peer, new("同门已不在和光峰，或你已离开此处；本次没有消耗精力，也未记下答疑。", "", []) { ActionName = "答疑未成" });
                 return;
             }
             if (!player.can_spend_world_stamina(cost) || !player.try_spend_world_stamina(cost))
             {
-                story_dialogue.show_social_result(peer, new("你有些疲惫，便把请教留待改日。", "", []) { ActionName = "体力不足" });
+                story_dialogue.show_social_result(peer, new("你有些疲惫，便把请教留待改日。", "", []) { ActionName = "精力不足" });
                 return;
             }
 
@@ -811,10 +816,10 @@ public partial class MainScene
         }
 
         story_dialogue.show_social_choices(player, peer,
-            $"你向{peer.npc_name}请教宗门日常。交流需消耗体力 {cost:0.#} 点。",
+            $"你向{peer.npc_name}请教宗门日常。交流需消耗精力 {cost:0.#} 点。",
             new (string, Action)[]
             {
-                ($"请教宗门日常 · 体力 {cost:0.#}", () => Answer(true)),
+                ($"请教宗门日常 · 精力 {cost:0.#}", () => Answer(true)),
                 ("改日再问", () => Answer(false)),
             },
             () => Answer(false), "同门答疑", "右键改日再问");

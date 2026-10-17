@@ -480,6 +480,14 @@ public partial class InfoPanel : Control
         if (current_card is Character character) update_appearance_entry(character);
     }
 
+    public void refresh_after_clothing_item()
+    {
+        if (current_card is not Character) return;
+        refresh_profile_portrait();
+        AppearanceChanged?.Invoke();
+        render_new_page(_activeNewPage);
+    }
+
     private void set_overview_mood(Vector2? position, string reason = "")
     {
         if (_overviewMoodSummary is null || _overviewMoodScale is null) return;
@@ -677,7 +685,7 @@ public partial class InfoPanel : Control
                  ("敏捷", unit.agility.ToString("0.0"), 2), ("神魂", unit.soul.ToString("0.0"), 3),
                  ("福缘", unit.fortune.ToString("0.0"), 4), ("悟性", unit.comprehension.ToString("0.0"), 5), ("魅力", data_number(unit,"charisma").ToString("0.0"), -1), ("交际", data_number(unit,"social").ToString("0.0"), -1), ("治事", data_number(unit,"management").ToString("0.0"), -1)]);
             AttributeGrid("战斗属性",
-                [("生命", $"{unit.current_health}/{unit.max_health}", -1), ("精力", $"{unit.current_stamina}/{unit.max_stamina}", -1), ("法力", $"{unit.current_mana}/{unit.max_mana}", -1),
+                [("生命", $"{unit.current_health}/{unit.max_health}", -1), ("体力", $"{unit.current_stamina}/{unit.max_stamina}", -1), ("法力", $"{unit.current_mana}/{unit.max_mana}", -1),
                  ("速度", unit.initiative_speed.ToString("0.0"), -1), ("灵识容量", $"{unit.used_spirit_perception}/{unit.max_spirit_perception}", -1),
                  ("物理防御", unit.physical_defense.ToString(), -1), ("精准", unit.precision.ToString(), -1),
                  ("身法", unit.dodge.ToString(), -1),
@@ -757,7 +765,7 @@ public partial class InfoPanel : Control
         var maximumSpirit = Mathf.Max(1, human?.max_spirit_perception ?? 0);
         var meter = new ProgressBar { MinValue = 0, MaxValue = maximumSpirit, Value = Mathf.Clamp(human?.used_spirit_perception ?? 0, 0, maximumSpirit), ShowPercentage = false, CustomMinimumSize = new Vector2(0, 13) };
         meter.AddThemeStyleboxOverride("background", equipment_meter_style(false)); meter.AddThemeStyleboxOverride("fill", equipment_meter_style(true)); artifactBox.AddChild(meter);
-        artifactBox.AddChild(Text("法宝装备后持续占用灵识；内炼改写基础牌，外祭才会在战斗中生成器体。", 15));
+        artifactBox.AddChild(Text("内炼提供化法且不占灵识；外祭技能须占栏排队，召出后占用灵识。", 15));
         for (var i = 0; i < 3; i++)
         {
             var unlocked = i < (data?.artifact_slot_count ?? 0);
@@ -1106,7 +1114,7 @@ public partial class InfoPanel : Control
         var lines = new List<string> { $"化法：{operation}", $"类型：{resultSkill.get_card_category()}" };
         if (resultSkill.tags.Count > 0) lines.Add($"关键词：{string.Join("、", resultSkill.tags)}");
         if (resultSkill.skill_type != ActiveSkillData.SkillType.POWER)
-            lines.Add($"耗费：精力 {resultSkill.energy_cost}；法力 {resultSkill.mana_cost}");
+            lines.Add($"耗费：体力 {resultSkill.energy_cost}；法力 {resultSkill.mana_cost}");
         lines.Add($"目标：{gongfa_skill_target(resultSkill)}");
         if (resultSkill.damage_type != "physical" ||
             resultSkill.base_damage > 0 ||
@@ -1348,7 +1356,7 @@ public partial class InfoPanel : Control
             return;
         }
         _battleDetailTitle.Text = skill.skill_name;
-        _battleDetailMeta.Text = $"{category}　精力 {skill.energy_cost}　法力 {skill.mana_cost}";
+        _battleDetailMeta.Text = $"{category}　体力 {skill.energy_cost}　法力 {skill.mana_cost}";
         var source = string.IsNullOrWhiteSpace(skill.source_gongfa_name) ? "通用" : skill.source_gongfa_name;
         _battleDetailText.Text = $"[b]技能效果[/b]\n{skill.get_skill_description(current_card)}\n\n[b]来源[/b]\n{source}\n\n[b]装配操作[/b]\n左侧点击加入或移出；中间槽位下方可调整顺序或移除。";
     }
@@ -1436,12 +1444,11 @@ public partial class InfoPanel : Control
     private void toggle_battle_skill_slot(Character human, ActiveSkillData skill)
     {
         var paths = human.get_combat_skill_slot_paths().ToList();
-        var index = paths.IndexOf(skill.ResourcePath);
-        if (index >= 0) paths.RemoveAt(index);
-        else if (paths.Count < 10) paths.Add(skill.ResourcePath);
-        var normalized = new Godot.Collections.Array<string>();
-        foreach (var path in paths) normalized.Add(path);
-        human.set_combat_skill_slot_paths(normalized);
+        var key = Character.combat_skill_key(skill);
+        var index = paths.IndexOf(key);
+        if (index >= 0) paths[index] = "";
+        else { index = paths.FindIndex(path => path.Length == 0); if (index < 0) return; paths[index] = key; }
+        human.set_combat_skill_slot_paths(new Godot.Collections.Array<string>(paths));
         populate_static_battle_page(human);
     }
 
@@ -1499,7 +1506,7 @@ public partial class InfoPanel : Control
         button.AddThemeStyleboxOverride("pressed", BattleSlotStyle(true, true));
         var number = new Label { Text = index == 9 ? "0" : (index + 1).ToString(), Position = new Vector2(18f * BattleLoadoutScale, 38f * BattleLoadoutScale), Size = new Vector2(18f * BattleLoadoutScale, 16f * BattleLoadoutScale), MouseFilter = MouseFilterEnum.Ignore, ZIndex = 4 };
         number.AddThemeFontSizeOverride("font_size", 15); number.AddThemeColorOverride("font_color", new Color(.62f, .51f, .28f)); button.AddChild(number);
-        var cost = new Label { Text = $"精力{skill.energy_cost} · 法力{skill.mana_cost}", Position = new Vector2(6f * BattleLoadoutScale, 8f * BattleLoadoutScale), Size = new Vector2(BattleLoadoutSlotWidth - 12f * BattleLoadoutScale, 20f * BattleLoadoutScale), HorizontalAlignment = HorizontalAlignment.Center, ClipText = true, MouseFilter = MouseFilterEnum.Ignore, ZIndex = 4 };
+        var cost = new Label { Text = $"体力{skill.energy_cost} · 法力{skill.mana_cost}", Position = new Vector2(6f * BattleLoadoutScale, 8f * BattleLoadoutScale), Size = new Vector2(BattleLoadoutSlotWidth - 12f * BattleLoadoutScale, 20f * BattleLoadoutScale), HorizontalAlignment = HorizontalAlignment.Center, ClipText = true, MouseFilter = MouseFilterEnum.Ignore, ZIndex = 4 };
         cost.AddThemeFontSizeOverride("font_size", 15); cost.AddThemeColorOverride("font_color", new Color(.48f, .34f, .15f)); button.AddChild(cost);
         button.AddChild(create_battle_loadout_icon(skill));
         // 已装备槽与空槽使用同一份素材框；此前只有空槽绘制框线，导致技能图标像脱离槽位。
@@ -1583,7 +1590,7 @@ public partial class InfoPanel : Control
     {
         var paths = human.get_combat_skill_slot_paths().ToList();
         if (index < 0 || index >= paths.Count) return;
-        paths.RemoveAt(index); var normalized = new Godot.Collections.Array<string>(); foreach (var path in paths) normalized.Add(path);
+        paths[index] = ""; var normalized = new Godot.Collections.Array<string>(); foreach (var path in paths) normalized.Add(path);
         human.set_combat_skill_slot_paths(normalized); populate_static_battle_page(human);
     }
 
@@ -1786,7 +1793,7 @@ public partial class InfoPanel : Control
         Row("AgilityRow", "敏捷", unit.agility.ToString("0.0")); Row("SoulRow", "神魂", unit.soul.ToString("0.0"));
         Row("FortuneRow", "福缘", unit.fortune.ToString("0.0")); Row("ComprehensionRow", "悟性", unit.comprehension.ToString("0.0"));
         Row("CharismaRow", "魅力", data_number(unit,"charisma").ToString("0.0")); Row("SocialRow", "交际", data_number(unit,"social").ToString("0.0")); Row("ManagementRow", "治事", data_number(unit,"management").ToString("0.0"));
-        Row("HealthRow", "生命", $"{unit.current_health}/{unit.max_health}"); Row("StaminaRow", "精力", $"{unit.current_stamina}/{unit.max_stamina}"); Row("ManaRow", "法力", $"{unit.current_mana}/{unit.max_mana}");
+        Row("HealthRow", "生命", $"{unit.current_health}/{unit.max_health}"); Row("StaminaRow", "体力", $"{unit.current_stamina}/{unit.max_stamina}"); Row("ManaRow", "法力", $"{unit.current_mana}/{unit.max_mana}");
         Row("MindRow", "速度", unit.initiative_speed.ToString("0.0"));
         Row("SpiritPerceptionRow", "灵识", $"{unit.used_spirit_perception}/{unit.max_spirit_perception}");
         Row("PhysicalDefenseRow", "物理防御", unit.physical_defense.ToString()); Row("PrecisionRow", "精准", unit.precision.ToString()); Row("DodgeRow", "身法", unit.dodge.ToString());
@@ -1827,7 +1834,7 @@ public partial class InfoPanel : Control
         Base("SocialRow", "交际", "参与往来、交易与外务事件。", $"当前交际：{data_number(unit,"social"):0.0}");
         Base("ManagementRow", "治事", "参与事务调度与经营事件。", $"当前治事：{data_number(unit,"management"):0.0}");
         Base("HealthRow", "生命", "生命归零时角色无法继续行动。", $"当前生命：{unit.current_health}/{unit.max_health}\n生命上限由角色属性、功法、装备与状态共同决定。");
-        Base("StaminaRow", "精力", "用于施展招式；每轮补给3点，休整回复2点，均不超过上限。", $"战斗内上限：6\n当前/上限：{unit.current_stamina}/{unit.max_stamina}");
+        Base("StaminaRow", "体力", "用于施展招式；每轮补给3点，休整回复2点，均不超过上限。", $"战斗内上限：6\n当前/上限：{unit.current_stamina}/{unit.max_stamina}");
         Base("ManaRow", "法力", "用于术法等行动；每轮恢复到本轮容量，吐纳回复1点，不持续回复。", $"法力容量由境界及已有修正规则决定\n当前/上限：{unit.current_mana}/{unit.max_mana}");
         Base("MindRow", "速度", "每秒获得的行动进度，达到1000时执行队首。不是遁速或身法。", $"基础值及功法、状态、伤势共同影响战斗实际速度。\n常驻速度：{unit.initiative_speed:0.0}");
         Base("SpiritPerceptionRow", "灵识", "御使飞剑、法宝、傀儡、阵旗等持续实体的容量；不是普通术法的即时费用。", $"显示方式 = 已占用 / 容量\n收回、损毁或驱散持续实体后释放占用\n当前：{unit.used_spirit_perception}/{unit.max_spirit_perception}");
@@ -2051,7 +2058,7 @@ public partial class InfoPanel : Control
     {
         attribute("PhysiqueValue", "体魄是角色的肉身根基。\n参与生命、速度、精准、身法、会心与护心。", $"当前体魄 = 基础体魄 + 功法修正 + 装备修正 + 状态修正\n当前值：{unit.physique:0.0}");
         attribute("IntelligenceValue", "灵慧是思虑与感知的根基。\n参与生命、速度、精准、身法、会心与护心。", $"当前灵慧 = 基础灵慧 + 功法修正 + 装备修正 + 状态修正\n当前值：{unit.intelligence:0.0}");
-        attribute("AgilityValue", "敏捷是身躯反应与行动的根基。\n参与生命、速度、精准、身法、会心与护心；战斗精力上限固定为6。", $"当前敏捷 = 基础敏捷 + 功法修正 + 装备修正 + 状态修正\n当前值：{unit.agility:0.0}");
+        attribute("AgilityValue", "敏捷是身躯反应与行动的根基。\n参与生命、速度、精准、身法、会心与护心；战斗体力上限固定为6。", $"当前敏捷 = 基础敏捷 + 功法修正 + 装备修正 + 状态修正\n当前值：{unit.agility:0.0}");
         attribute("SoulValue", "神魂参与生命、速度、精准、身法、会心与护心。", $"当前神魂 = 基础神魂 + 功法修正 + 装备修正 + 状态修正\n当前值：{unit.soul:0.0}");
         attribute("FortuneValue", "福缘代表事件、探索与收获中的潜在机缘。\n贡献：进入事件与结算的福缘判定；当前尚无固定战斗派生值。", $"当前福缘 = 基础福缘 + 功法修正 + 事件修正\n当前值：{unit.fortune:0.0}");
         attribute("ComprehensionValue", "悟性代表理解法门与领会变化的能力。\n贡献：进入功法研读、修行与相关事件的悟性判定；当前尚无固定战斗派生值。", $"当前悟性 = 基础悟性 + 功法修正 + 事件修正\n当前值：{unit.comprehension:0.0}");

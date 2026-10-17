@@ -20,7 +20,7 @@ public partial class CultivationUI
         heading.AddThemeConstantOverride("separation", 4);
         headingPaper.AddChild(heading);
         heading.AddChild(QuietRoomStyle.Text("灵感与瓶颈", 28));
-        var intro = QuietRoomStyle.Text("经历所生的灵感可在此查看；选中一份，可用于炼化当前云息瓶颈。", 17);
+        var intro = QuietRoomStyle.Text("从经历中获得的灵感会记录在此。选中一份，可炼化当前瓶颈，或预留给用途相符的行动；两种用法互斥。", 17);
         intro.AutowrapMode = TextServer.AutowrapMode.WordSmart;
         heading.AddChild(intro);
 
@@ -75,6 +75,7 @@ public partial class CultivationUI
         }
 
         var available = character.get_cultivation_inspiration_records();
+        refresh_room_inspiration_access();
         if (!available.Any(record => record.record_id == _selectedInspirationId))
             _selectedInspirationId = available.FirstOrDefault()?.record_id ?? "";
 

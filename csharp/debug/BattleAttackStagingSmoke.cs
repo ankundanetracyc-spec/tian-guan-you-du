@@ -16,6 +16,13 @@ public partial class BattleAttackStagingSmoke : Node
     {
         try
         {
+            if (OS.GetCmdlineUserArgs().Contains("--offscreen"))
+            {
+                GetWindow().Mode = Window.ModeEnum.Windowed;
+                GetWindow().Position = new Vector2I(-4096, -4096);
+                GetWindow().GuiDisableInput = true;
+                GetNodeOrNull<Node>("/root/GameplayInputRouter")?.SetProcessInput(false);
+            }
             GetWindow().Size=new Vector2I(1280,720);
             await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);
             _scene=GD.Load<PackedScene>("res://tscn/battle/BattleSandbox.tscn").Instantiate<Node2D>();
@@ -23,6 +30,8 @@ public partial class BattleAttackStagingSmoke : Node
             await Wait(.8f);
             _manager=_scene.GetNode<BattleManager>("BattleMgr");
             _manager.SetProcess(false);
+            _manager.SetProcessInput(false);
+            _manager.SetProcessUnhandledInput(false);
             ((CanvasItem)typeof(BattleManager).GetField("_planHud",BindingFlags.Instance|BindingFlags.NonPublic)!.GetValue(_manager)!).Hide();
             _executor=_manager.GetChildren().OfType<SkillExecutor>().Single();
             DirAccess.MakeDirRecursiveAbsolute(ProjectSettings.GlobalizePath(CaptureFolder));
@@ -32,8 +41,9 @@ public partial class BattleAttackStagingSmoke : Node
             await Verify("thunder",3,0,"符箓/雷击符",false);
             await Verify("response",0,3,"撼山",true,response:true,capture:2);
             await VerifyPause();
+            await VerifyDefenseAndDodge();
             var beastDoll = ((Node2D)_manager.all_units[3]).GetNode<BattlePaperDoll>("BattlePaperDoll");
-            var displayHeight = beastDoll.Scale.Y * 304f;
+            var displayHeight = beastDoll.Scale.Y * (beastDoll.uses_side_ink() ? BattlePaperDoll.SideInkReferenceHeight : 304f);
             beastDoll.Configure(new BattleEntityData {
                 entity_name="林地凶狼", entity_type=(int)WorldEntity.EntityType.BEAST,
                 faction=((Node2D)_manager.all_units[3]).Get("faction").AsInt32(),
@@ -64,20 +74,21 @@ public partial class BattleAttackStagingSmoke : Node
             .SetValue(_manager,response?BattleManager.SegmentPhase.Executing:BattleManager.SegmentPhase.Planning);
         if(response)_manager.get_battle_unit(target).skill_queue.Add(new BattleQueuedSkill(GD.Load<ActiveSkillData>("res://resources/activeskills/架招.tres"),target));
         var home=attacker.GlobalPosition;var z=attacker.ZIndex;
+        var targetArtScale=target.GetNode<BattlePaperDoll>("BattlePaperDoll").Scale;
         var contact=BattleAttackMotion.ContactPosition(attacker,target,home);
         var cell=_scene.GetNode<Node>("BattleMap").Call("get_unit_cell",attacker);
-        bool attackSeen=false,damageSeen=false,focusSeen=false,returnArcSeen=false;
+        bool attackSeen=false,damageSeen=false,focusSeen=false,returnArcSeen=false,focusCaptured=false;
         float? responseProgress=null;
         _executor.execute_skill(attacker,skill,target,!response);
-        for(int frame=0;frame<60;frame++)
+        for(int frame=0;frame<120;frame++)
         {
             await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);
             var attack=_scene.GetChildren().OfType<BattleInkCombatVfx>()
-                .FirstOrDefault(v=>Mathf.IsEqualApprox(((ShaderMaterial)v.GetNode<Sprite2D>("InkSurface").Material).GetShaderParameter("phase").AsSingle(),0));
+                .FirstOrDefault(IsIncomingStroke);
             if(attack is not null && !attackSeen)
             {
                 Check(attacker.GlobalPosition.DistanceTo(close?contact:home)<1,"Attack began before reaching its staging point: "+label);
-                Check(!attack.ZAsRelative&&attack.ZIndex>Math.Max(attacker.ZIndex,target.ZIndex),"Attack stroke was hidden behind the actors");
+                Check(!attack.ZAsRelative&&attack.ZIndex>Math.Max(EffectiveZ(attacker.GetNode<BattlePaperDoll>("BattlePaperDoll")),EffectiveZ(target.GetNode<BattlePaperDoll>("BattlePaperDoll"))),"Attack stroke was hidden behind the actors");
                 attackSeen=true;
             }
             if(!close)Check(attacker.GlobalPosition.DistanceTo(home)<.01f,"Ranged caster moved: "+label);
@@ -85,20 +96,35 @@ public partial class BattleAttackStagingSmoke : Node
             if(focus is not null&&!focus.IsQueuedForDeletion())
             {
                 focusSeen=true;
+                Check(target.GetNode<BattlePaperDoll>("BattlePaperDoll").Scale==targetArtScale,"Response focus scaled the actor instead of reframing the battlefield");
                 Check(target.Get("current_health").AsInt32()==150,"Damage settled before response ended");
                 Check(attacker.GlobalPosition.DistanceTo(contact)<1,"Attacker left during response");
                 Check(attack is not null,"Incoming stroke disappeared during response");
-                var progress=((ShaderMaterial)attack!.GetNode<Sprite2D>("InkSurface").Material).GetShaderParameter("progress").AsSingle();
+                var progress=VisualProgress(attack!);
                 responseProgress??=progress;
                 Check(Mathf.IsEqualApprox(progress,responseProgress.Value),"Incoming stroke advanced through response");
+                if(!focusCaptured && focus.FrameZoom>1.2f && target.GetNode<BattlePaperDoll>("BattlePaperDoll").is_defense_presenting())
+                {
+                    await CaptureContact("response_closeup.png");
+                    focusCaptured=true;
+                }
             }
-            if(target.Get("current_health").AsInt32()<150)damageSeen=true;
+            if(target.Get("current_health").AsInt32()<150)
+            {
+                if(response && !damageSeen)
+                {
+                    Check(target.GetNode<BattlePaperDoll>("BattlePaperDoll").is_defense_presenting(),"Response was replaced by hurt pose");
+                    Check(!_scene.GetChildren().OfType<BattleInkCombatVfx>().Any(e=>e.GetNodeOrNull<AnimatedSprite2D>("SequenceFrames")?.Animation.ToString() is "hurt" or "impact"),"Guard contact spawned an extra hurt/impact sequence");
+                    await CaptureContact("guard_contact.png");
+                }
+                damageSeen=true;
+            }
             if(close&&damageSeen&&Mathf.Abs(home.X-contact.X)>1)
             {
                 var progress=(attacker.GlobalPosition.X-contact.X)/(home.X-contact.X);
                 if(progress>0&&progress<1&&attacker.GlobalPosition.Y<Mathf.Lerp(contact.Y,home.Y,progress)-2)returnArcSeen=true;
             }
-            if(capture>=0&&frame<48)
+            if(capture>=0&&frame<48&&!OS.GetCmdlineUserArgs().Contains("--no-capture"))
             {
                 await ToSignal(RenderingServer.Singleton,RenderingServer.SignalName.FramePostDraw);
                 GetViewport().GetTexture().GetImage().SavePng($"{CaptureFolder}/{capture:D2}_{frame:D2}.png");
@@ -131,6 +157,59 @@ public partial class BattleAttackStagingSmoke : Node
         await Wait(1.2f);
         Check(attacker.GlobalPosition.DistanceTo(home)<.01f,"Paused attack failed to return");
         GD.Print("STAGING PASSED: pause/resume");
+    }
+
+    private static bool IsIncomingStroke(BattleInkCombatVfx effect) => effect.GetNodeOrNull<AnimatedSprite2D>("SequenceFrames") is { } sequence
+        ? sequence.Animation == "slash"
+        : effect.GetNodeOrNull<Sprite2D>("InkSurface")?.Material is ShaderMaterial material && Mathf.IsZeroApprox(material.GetShaderParameter("phase").AsSingle());
+
+    private static float VisualProgress(BattleInkCombatVfx effect) => effect.GetNodeOrNull<AnimatedSprite2D>("SequenceFrames") is { } sequence
+        ? sequence.Frame : ((ShaderMaterial)effect.GetNode<Sprite2D>("InkSurface").Material).GetShaderParameter("progress").AsSingle();
+
+    private static int EffectiveZ(CanvasItem item) => item.ZIndex + (item.ZAsRelative && item.GetParent() is CanvasItem parent ? EffectiveZ(parent) : 0);
+
+    private async Task VerifyDefenseAndDodge()
+    {
+        await Wait(.65f);
+        var attacker=(Node2D)_manager.all_units[0]; var target=(Node2D)_manager.all_units[3];
+        var doll=target.GetNode<BattlePaperDoll>("BattlePaperDoll");
+        var skill=GD.Load<ActiveSkillData>("res://resources/activeskills/应敌.tres");
+        var home=target.GlobalPosition; var health=target.Get("current_health").AsInt32();
+        BattleInkCombatVfx.PlayUtility(target,target,GD.Load<ActiveSkillData>("res://resources/activeskills/架招.tres"));
+        await Wait(.38f);
+        BattleInkCombatVfx.PlayImpact(target,skill,attacker);
+        doll.play_hit(Vector2.Left);
+        await Wait(.05f);
+        Check(doll.is_defense_presenting(),"Guard contact changed into hurt");
+        Check(!_scene.GetChildren().OfType<BattleInkCombatVfx>().Any(e=>e.GetNodeOrNull<AnimatedSprite2D>("SequenceFrames")?.Animation=="guard"),"Removed guard sequence still spawned");
+        Check(doll.presentation_zoom()==1 && _scene.GetChildren().OfType<BattleContactFocus>().Single().FrameZoom>1.1f,"Guard battlefield framing missing or actor was scaled");
+        Check(!_scene.GetChildren().OfType<BattleInkCombatVfx>().Any(e=>e.GetNodeOrNull<AnimatedSprite2D>("SequenceFrames")?.Animation.ToString() is "hurt" or "impact"),"Guard contact added unwanted defender impact");
+        await Wait(1.6f);
+        BattleInkCombatVfx.PlayImpact(target,skill,attacker,evaded:true);
+        await Wait(.13f);
+        var effect=_scene.GetChildren().OfType<BattleInkCombatVfx>().Single(e=>e.GetNodeOrNull<AnimatedSprite2D>("SequenceFrames")?.Animation=="dodge");
+        Check(!effect.ZAsRelative && effect.ZIndex>EffectiveZ(doll),"Dodge effect hidden behind actor");
+        Check(doll.Position.Length()>50 && doll.presentation_zoom()==1 && _scene.GetChildren().OfType<BattleContactFocus>().Single().FrameZoom>1.1f,"Dodge withdraw/framing missing or actor was scaled");
+        await CaptureContact("dodge_closeup.png");
+        var held=doll.Transform; var zoom=doll.presentation_zoom(); var frame=VisualProgress(effect);
+        GetTree().Paused=true;
+        await ToSignal(GetTree().CreateTimer(.18,processAlways:true),SceneTreeTimer.SignalName.Timeout);
+        Check(doll.Transform==held && Mathf.IsEqualApprox(doll.presentation_zoom(),zoom) && VisualProgress(effect)==frame,"Dodge pause diverged");
+        GetTree().Paused=false;
+        await Wait(1.45f);
+        Check(doll.Position.IsEqualApprox(Vector2.Zero) && target.GlobalPosition.IsEqualApprox(home) && doll.presentation_zoom()==1,"Dodge did not return to its origin and scale");
+        Check(!IsInstanceValid(effect),"Dodge sequence failed to clean up");
+        Check(target.Get("current_health").AsInt32()==health,"Presentation changed health");
+        GD.Print("STAGING PASSED: guard suppression/layer/zoom and dodge pause/recovery/cleanup");
+    }
+
+    private async Task CaptureContact(string filename)
+    {
+        if(!OS.GetCmdlineUserArgs().Contains("--capture-contact"))return;
+        const string directory="res://docs/美术规范/局内水墨动作正式接入_20261016/演出修订/";
+        DirAccess.MakeDirRecursiveAbsolute(directory);
+        await ToSignal(RenderingServer.Singleton,RenderingServer.SignalName.FramePostDraw);
+        GetViewport().GetTexture().GetImage().SavePng(directory+filename);
     }
 
     private async Task VerifyTargetRemoved()

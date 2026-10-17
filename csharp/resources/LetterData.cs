@@ -10,6 +10,8 @@ public partial class LetterData : Resource
     [Export] public string sender_name = "";
     [Export] public bool sender_was_known;
     [Export] public string category = "visit";
+    /// <summary>仅明确表达希望相识的个人问候信可开启五年交往窗口；投递时生效，读信不结算关系。</summary>
+    [Export] public bool opens_acquaintance_window;
     [Export] public string subject = "";
     [Export] public string body = "";
     [Export] public string delivery_place = "";

@@ -73,24 +73,24 @@ public partial class QuietRoomSmoke : Node
             Check(!Button(rest, "按时长").IsVisibleInTree() && !Button(rest, "指定日期").IsVisibleInTree(), "剧情限定休息仍开放自定义"); rest.Close();
             time.month = 12; time.day = 30; time.hour = 22; rest.Open(character, time, "李宅", count => confirmed = count); Button(rest, "指定日期").EmitSignal(BaseButton.SignalName.Pressed); Button(rest, "开始休息").EmitSignal(BaseButton.SignalName.Pressed); Check(confirmed == 24, "年末指定日期计算错误");
             character.cultivation_realm = "云息十层"; room.show_entity(character); await Capture("09_十层归元九息"); Check(Nodes<YuanxiPanel>(room).Any(panel => panel.IsVisibleInTree()), "归元九息未嵌入静室"); room.close_panel();
-            // 覆盖实际行动结算，而非仅切换页面：低效率、零体力也须能修炼。
+            // 覆盖实际行动结算，而非仅切换页面：低效率、零精力也须能修炼。
             foreach (var mode in new[] { "指定灵力", "指定天数", "指定日期", "下层所需" })
             {
                 character.cultivation_realm = "云息三层"; character.spirit_strands = 36; character.current_world_stamina = 0;
                 room.show_entity(character); Button(room, mode).EmitSignal(BaseButton.SignalName.Pressed);
                 if (mode == "指定灵力") Nodes<SpinBox>(room.GetNode("QuietRoom/RoomPages/PracticePage")).First().Value = 12;
-                var start = Button(room, "开始修炼"); Check(!start.Disabled, mode + "在零体力下被禁用");
+                var start = Button(room, "开始修炼"); Check(!start.Disabled, mode + "在零精力下被禁用");
                 if (mode == "指定灵力") await Capture("10_零体力指定12缕");
                 var beforeTime = time.get_total_game_hours(); start.EmitSignal(BaseButton.SignalName.Pressed);
-                Check(time.get_total_game_hours() > beforeTime && character.current_world_stamina == 0, mode + "未推进时间或改变体力");
+                Check(time.get_total_game_hours() > beforeTime && character.current_world_stamina == 0, mode + "未推进时间或改变精力");
                 if (mode == "指定灵力") Check(character.spirit_strands == 48, "指定12缕没有实际获得12缕");
                 if (mode == "下层所需") Check(character.is_breakthrough_ready(), "下层所需未修炼至突破门槛");
                 room.close_panel();
             }
-            character.spirit_strands = 36; Check(character.manual_cultivate() && character.current_world_stamina == 0, "单次吐纳仍受体力限制");
-            Check(character.get_available_study_hours(24) == 0, "错误地取消了研读体力限制");
-            character.cultivation_realm = "云息十层"; Check(character.start_yuanxi(9), "零体力无法开始养息");
-            character.advance_yuanxi(100000); Check(character.yuanxi_count == 9 && !character.is_yuanxi_active() && character.current_world_stamina == 0, "零体力未完成九息或体力改变");
+            character.spirit_strands = 36; Check(character.manual_cultivate() && character.current_world_stamina == 0, "单次吐纳仍受精力限制");
+            Check(character.get_available_study_hours(24) == 0, "错误地取消了研读精力限制");
+            character.cultivation_realm = "云息十层"; Check(character.start_yuanxi(9), "零精力无法开始养息");
+            character.advance_yuanxi(100000); Check(character.yuanxi_count == 9 && !character.is_yuanxi_active() && character.current_world_stamina == 0, "零精力未完成九息或精力改变");
             GD.Print("CULTIVATION_NO_STAMINA_PASS: four real actions, 12 strands, hours/date, realm target, manual, nine breaths, study still costs stamina");
             GD.Print("QUIET_ROOM_SMOKE_PASS: five pages, four modes, shared texture, time, original icons, readonly, day/night, forced rest, year rollover, yuanxi");
             GetTree().Quit();

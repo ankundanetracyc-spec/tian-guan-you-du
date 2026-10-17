@@ -455,7 +455,7 @@ public partial class TradePanel : Control
         if (!_player.can_spend_world_stamina(WorldStaminaRules.InteractionCost))
         {
             if (_floating_hint_panel is not null) _floating_hint_panel.Show();
-            if (_floating_hint is not null) _floating_hint.Text = $"体力不足，完成交易需要 {WorldStaminaRules.InteractionCost:0.#} 点；当前 {_player.current_world_stamina:0.#}。";
+            if (_floating_hint is not null) _floating_hint.Text = $"精力不足，完成交易需要 {WorldStaminaRules.InteractionCost:0.#} 点；当前 {_player.current_world_stamina:0.#}。";
             return;
         }
 

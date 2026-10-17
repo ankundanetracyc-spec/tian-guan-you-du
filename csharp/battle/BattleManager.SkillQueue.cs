@@ -293,7 +293,7 @@ public partial class BattleManager : Node2D
     private GodotObject? ChooseEnemyTarget(GodotObject unit, ActiveSkillData skill)
     {
         if (skill.target_type is 0 or 1) return unit;
-        var valid = all_units.Where(Alive).Where(target => IsValidTarget(skill, unit, target)).ToList();
+        var valid = get_target_candidates().Where(Alive).Where(target => IsValidTarget(skill, unit, target)).ToList();
         if (skill.target_type == 3)
         {
             var hostile = valid.Where(target => target.Get("faction").AsInt32() != unit.Get("faction").AsInt32()).ToList();
@@ -409,7 +409,7 @@ public partial class BattleManager : Node2D
         // 这样每个候选目标旁边都能同时看到各自的命中、会心和状态成功率。
         if(GodotObject.IsInstanceValid(explicitTarget) && IsValidTarget(skill,caster,explicitTarget)) targets=[explicitTarget!];
         else if(skill.target_type is 0 or 1 || CardRules.IsResponse(skill)) targets=[caster];
-        else if(allTargeting || RequiresTargetSelection(skill)) targets=all_units.Where(Alive).Where(u=>IsValidTarget(skill,caster,u));
+        else if(allTargeting || RequiresTargetSelection(skill)) targets=get_target_candidates().Where(Alive).Where(u=>IsValidTarget(skill,caster,u));
         else targets=[];
         unitOverlay.ShowTargetFrames(targets,allTargeting?new Color(1f,.48f,.20f):new Color(.45f,1f,.62f),duration,skill,caster);
     }
@@ -418,7 +418,7 @@ public partial class BattleManager : Node2D
     {
         if(active_unit is null)return null;
         // 按屏幕上的角色身体选取，避免只能拖到脚底的六边形格子。
-        return all_units.OfType<Node2D>()
+        return get_target_candidates().OfType<Node2D>()
             .Where(unit=>IsValidTarget(skill,active_unit,unit))
             .Where(unit=>get_unit_screen_rect(unit).Grow(8).HasPoint(viewportPosition))
             .OrderBy(unit=>get_unit_screen_rect(unit).GetCenter().DistanceSquaredTo(viewportPosition)).FirstOrDefault();
@@ -541,7 +541,7 @@ public partial class BattleManager : Node2D
         foreach(var victim in targets){var damage=EnemyExpectedDamage(skill,unit,victim);totalDamage+=damage;if(damage>=victim.Get("current_health").AsInt32())kills++;}
         if(totalDamage>0){score+=totalDamage*12+kills*4200;if(skill.skill_type==ActiveSkillData.SkillType.ATTACK)score+=260;}
 
-        // 心法与增益只在尚未拥有对应状态时优先，不会反复浪费精力。
+        // 心法与增益只在尚未拥有对应状态时优先，不会反复浪费体力。
         if(skill.skill_type==ActiveSkillData.SkillType.POWER)
             score+=HasStatus(unit,"心法:"+skill.skill_name)||HasStatus(unit,skill.skill_name)?-8000:720;
         foreach(var effect in skill.status_effects)
@@ -570,7 +570,7 @@ public partial class BattleManager : Node2D
             if(skill.skill_type==ActiveSkillData.SkillType.ATTACK)score-=120;
         }
 
-        // 有后续可支付的伤害或控制牌时，保留能接出它的精力；必杀不会受此惩罚。
+        // 有后续可支付的伤害或控制牌时，保留能接出它的体力；必杀不会受此惩罚。
         var followup=candidates.Where(c=>c!=skill&&gongfa_combat.Cost(unit,c)<=remainingEnergy).ToList();
         if(followup.Count>0)score+=80;
         else if(kills==0&&remainingEnergy==0&&totalDamage<80)score-=90;
@@ -582,6 +582,7 @@ public partial class BattleManager : Node2D
     private static int EnemyExpectedDamage(ActiveSkillData skill,GodotObject attacker,GodotObject defender)
     {
         if(Mathf.IsZeroApprox(skill.base_damage)&&skill.damage_bonuses.Count==0&&string.IsNullOrWhiteSpace(skill.damage_formula))return 0;
+        if (defender is ArtifactBody) return skill.damage_type is "physical" or "magic" or "magical" ? Mathf.Max(0, Mathf.RoundToInt(BattleActionResolver.preview_damage(attacker, skill))) : 0;
         var segments=1;
         if(Engine.GetMainLoop() is SceneTree tree&&tree.GetFirstNodeInGroup("battle_mgr") is BattleManager manager)
             segments=Mathf.Max(1,manager.gongfa_combat.Segments(attacker,skill));
@@ -595,7 +596,7 @@ public partial class BattleManager : Node2D
             {
                 var blocked=Mathf.Min(blockRemaining,raw);
                 blockRemaining-=blocked;
-                raw=BattleActionResolver.apply_defense(raw-blocked,"physical",defender);
+                raw=BattleActionResolver.apply_defense(raw-blocked,"physical",defender, skill.physical_defense_ignore_ratio);
             }
             var absorbed=Mathf.Min(shield,raw);
             shield-=absorbed;

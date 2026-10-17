@@ -8,22 +8,29 @@ public partial class InfoPanel
     private Label? _characterSkillCount, _characterSkillMatches;
     private int _characterDropTarget = -1;
 
-    private List<ActiveSkillData> character_skill_catalog(Character? human) => human?.get_available_battle_skills()
-        .Where(Character.is_combat_skill_slot_eligible).Where(skill => !string.IsNullOrWhiteSpace(skill.ResourcePath))
-        .Concat(human.get_combat_skill_slot_paths().Where(path => ResourceLoader.Exists(path)).Select(path => GD.Load<ActiveSkillData>(path)).OfType<ActiveSkillData>())
-        .GroupBy(skill => skill.ResourcePath).Select(group => group.First()).ToList() ?? [];
+    private List<ActiveSkillData> character_skill_catalog(Character? human)
+    {
+        if (human is null) return [];
+
+        var keys = human.get_available_battle_skills().Select(Character.combat_skill_key)
+            .Concat(human.get_default_combat_skill_paths()).Concat(human.get_combat_skill_slot_paths())
+            .Concat(human.get_artifact_skills().Select(Character.combat_skill_key));
+        return keys.Where(key => key.Length > 0).Distinct().Select(human.resolve_combat_skill)
+            .OfType<ActiveSkillData>().Where(Character.is_combat_skill_slot_eligible).ToList();
+    }
 
     private string character_skill_source(Character? human, ActiveSkillData skill)
     {
+        if (skill.artifact_instance_id.Length > 0) return "法器";
         if (!string.IsNullOrWhiteSpace(skill.source_gongfa_name)) return skill.source_gongfa_name;
         if (human is not null)
             foreach (var book in character_manuals(human))
-                if (character_manual_skills(book).Any(candidate => candidate.ResourcePath == skill.ResourcePath)) return book.gongfa_name;
+                if (character_manual_skills(book).Any(candidate => Character.combat_skill_key(candidate) == Character.combat_skill_key(skill))) return book.gongfa_name;
         return "通用";
     }
 
     private string character_skill_detail(Character? human, ActiveSkillData skill) =>
-        $"{battle_skill_category(skill)}\n关键词：{(skill.tags.Count > 0 ? string.Join(" · ", skill.tags) : "无")}\n精力 {skill.energy_cost}　法力 {skill.mana_cost}\n目标：{gongfa_skill_target(skill)}\n使用次数：{CardPresentation.CombatUseLimitText(skill, current_card, null)}\n{CardPresentation.CombatCooldownText(skill, current_card, null)}\n\n{CardPresentation.Face(skill, current_card)}\n\n来源：{character_skill_source(human, skill)}\n\n{CardPresentation.Details(skill, current_card)}";
+        $"{battle_skill_category(skill)}\n关键词：{(skill.tags.Count > 0 ? string.Join(" · ", skill.tags) : "无")}\n体力 {skill.energy_cost}　法力 {skill.mana_cost}\n目标：{gongfa_skill_target(skill)}\n使用次数：{CardPresentation.CombatUseLimitText(skill, current_card, null)}\n{CardPresentation.CombatCooldownText(skill, current_card, null)}\n\n{CardPresentation.Face(skill, current_card)}\n\n来源：{character_skill_source(human, skill)}\n\n{CardPresentation.Details(skill, current_card)}";
 
     private void build_character_battle(Creature unit)
     {
@@ -67,33 +74,33 @@ public partial class InfoPanel
             .Where(skill => _skillSource.Length == 0 || character_skill_source(human, skill) == _skillSource)
             .Where(skill => _skillKeyword.Length == 0 || skill.tags.Contains(_skillKeyword))
             .Where(skill => CharacterMatches($"{skill.skill_name} {string.Join(" ", skill.tags)} {skill.get_skill_description(current_card)}", _skillQuery)).ToList();
-        _characterSkillMatches!.Text = $"匹配 {shown.Count} / {catalog.Count} 项"; _characterSkillCount!.Text = $"{paths.Count} / 10";
+        _characterSkillMatches!.Text = $"匹配 {shown.Count} / {catalog.Count} 项"; _characterSkillCount!.Text = $"{paths.Count(path => path.Length > 0)} / 10";
         foreach (var skill in shown)
         {
-            var equipped = paths.Contains(skill.ResourcePath); var button = CharacterButton("", selected: equipped);
-            button.Disabled = human is null || !equipped && paths.Count >= 10;
+            var equipped = paths.Contains(Character.combat_skill_key(skill)); var button = CharacterButton("", selected: equipped);
+            button.Disabled = human is null || !equipped && paths.All(path => path.Length > 0);
             button.CustomMinimumSize = new Vector2(0, 66); _characterSkillList.AddChild(button);
             button.AddChild(CombatSkillBar.CreateSkillIconVisual(skill, new Vector2(50, 50), new Vector2(8, 8)));
             var name = CharacterClippedText(skill.skill_name, 22); button.AddChild(name); CharacterRect(name, 70, 3, 230, 31);
             var tags = CharacterClippedText(skill.tags.Count > 0 ? string.Join(" · ", skill.tags) : battle_skill_category(skill), 16, true); button.AddChild(tags); CharacterRect(tags, 70, 34, 230, 26);
             CharacterHover(button, skill.skill_name, character_skill_detail(human, skill), CharacterLoadIcon(skill.icon_path));
-            if (human is not null) bind_character_skill_drag(button, human, skill.ResourcePath, -1);
+            if (human is not null) bind_character_skill_drag(button, human, Character.combat_skill_key(skill), -1);
             button.Pressed += () =>
             {
                 if (human is null || button.GetMeta("character_skill_dragging", false).AsBool()) return;
-                if (_characterDropTarget >= 0 && !equipped && paths.Count < 10)
-                { var next = paths.ToList(); next.Insert(Math.Min(_characterDropTarget, next.Count), skill.ResourcePath); human.set_combat_skill_slot_paths(new Godot.Collections.Array<string>(next)); _characterDropTarget = -1; refresh_character_battle(unit); }
+                if (_characterDropTarget >= 0 && !equipped && paths.Any(path => path.Length == 0))
+                { var next = paths.ToList(); next[_characterDropTarget] = Character.combat_skill_key(skill); human.set_combat_skill_slot_paths(new Godot.Collections.Array<string>(next)); _characterDropTarget = -1; refresh_character_battle(unit); }
                 else toggle_battle_skill_slot(human, skill);
             };
         }
         if (shown.Count == 0) _characterSkillList.AddChild(CharacterParagraph("没有符合条件的技能\n调整条件或点击重置。", 21, true));
         for (var i = 0; i < 10; i++)
         {
-            var index = i; var skill = i < paths.Count ? catalog.FirstOrDefault(skill => skill.ResourcePath == paths[i]) : null;
+            var index = i; var skill = i < paths.Count ? catalog.FirstOrDefault(skill => Character.combat_skill_key(skill) == paths[i]) : null;
             var select = CharacterButton("", 21, index == _characterDropTarget, 4);
             select.CustomMinimumSize = new Vector2(174, 238); select.SizeFlagsHorizontal = select.SizeFlagsVertical = SizeFlags.ExpandFill;
             select.ClipContents = true; _characterSkillSlots.AddChild(select);
-            if (human is not null) bind_character_skill_drag(select, human, skill?.ResourcePath ?? "", index);
+            if (human is not null) bind_character_skill_drag(select, human, skill is null ? "" : Character.combat_skill_key(skill), index);
             if (skill is not null)
             {
                 var icon = new TextureRect { Texture = CharacterLoadIcon(skill.icon_path),
@@ -132,7 +139,7 @@ public partial class InfoPanel
             {
                 if (sourcePath.Length == 0) return default;
                 hide_tooltip(); button.SetMeta("character_skill_dragging", true);
-                var preview = CharacterText(ResourceLoader.Load<ActiveSkillData>(sourcePath)?.skill_name ?? "技能", 24);
+                var preview = CharacterText(human.resolve_combat_skill(sourcePath)?.skill_name ?? "技能", 24);
                 button.SetDragPreview(preview);
                 return new Godot.Collections.Dictionary { ["character_skill"] = sourcePath, ["owner"] = human.GetInstanceId() };
             }),
@@ -143,10 +150,10 @@ public partial class InfoPanel
             {
                 var path = data.AsGodotDictionary()["character_skill"].AsString();
                 var paths = human.get_combat_skill_slot_paths().ToList(); var source = paths.IndexOf(path);
-                if (source < 0 && paths.Count >= 10) return;
-                if (source < 0 && !character_skill_catalog(human).Any(skill => skill.ResourcePath == path)) return;
-                if (source >= 0) paths.RemoveAt(source);
-                paths.Insert(Math.Min(targetIndex, paths.Count), path);
+                
+                if (source < 0 && !character_skill_catalog(human).Any(skill => Character.combat_skill_key(skill) == path)) return;
+                if (source >= 0) (paths[source], paths[targetIndex]) = (paths[targetIndex], paths[source]);
+                else paths[targetIndex] = path;
                 human.set_combat_skill_slot_paths(new Godot.Collections.Array<string>(paths));
                 _characterDropTarget = -1; refresh_character_battle(human);
             }));

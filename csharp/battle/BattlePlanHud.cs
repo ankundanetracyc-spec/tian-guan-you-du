@@ -45,7 +45,7 @@ public partial class BattlePlanHud : Control
         _heading=Label("行动队列",new(0,0),new(150,26),17);tab.AddChild(_heading);
         _planningSlots=new Control{Name="PlanningSlots",Position=new(20,32),Size=new(588,136),MouseFilter=MouseFilterEnum.Ignore};_planningPanel.AddChild(_planningSlots);
         var controls=new HBoxContainer{Size=new(444,40),Alignment=BoxContainer.AlignmentMode.Center,MouseFilter=MouseFilterEnum.Ignore};controls.AddThemeConstantOverride("separation",12);_planningControls=controls;
-        var rest=Button("休整 +2 精力",140);rest.Pressed+=()=>_manager.queue_system_action(0);controls.AddChild(rest);
+        var rest=Button("休整 +2 体力",140);rest.Pressed+=()=>_manager.queue_system_action(0);controls.AddChild(rest);
         var breathe=Button("吐纳 +1 法力",140);breathe.Pressed+=()=>_manager.queue_system_action(1);controls.AddChild(breathe);
         var confirm=Button("确认队列",140);confirm.Pressed+=_manager.confirm_player_queue;controls.AddChild(confirm);
         _planningToggle=Button("隐藏队列",140);_planningToggle.Name="PlanningToggle";_planningToggle.Pressed+=TogglePlanningQueue;AddChild(_planningToggle);AddChild(controls);controls.Name="PlanningControls";

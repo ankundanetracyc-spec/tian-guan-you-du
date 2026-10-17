@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/ItemData.cs" id="1"]
+[ext_resource type="Resource" path="res://resources/material_craft/山蚕长丝材性.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+definition_id = &"mat_mountain_silkworm_thread"
+entity_name = "山蚕长丝"
+description = "山蚕吐出的素白长丝，纤细匀整，韧性良好。"
+icon_path = "res://textures/items/item_mountain_silkworm_thread.png"
+item_category = "材料"
+item_subcategory = "虫材"
+tags = Array[String](["五行[木]", "质地[布]", "功用[固]", "功用[藏]", "相性[和]"])
+grade_value = 3
+can_stack = true
+max_stack = 999
+craft_data = ExtResource("2")
+

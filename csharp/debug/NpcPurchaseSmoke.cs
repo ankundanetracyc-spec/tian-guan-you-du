@@ -85,13 +85,13 @@ public partial class NpcPurchaseSmoke : Node
             dialogue.close(); await Frames(); buyer.current_subscene_id = "guanfu";
             player.current_world_stamina = 0;
             Check(!player.try_fulfil_npc_purchase(buyer, request.request_id, 1, out _) && request.state == "open" &&
-                player.get_inventory_total_count(herb) == 2, "体力不足仍交换资产");
+                player.get_inventory_total_count(herb) == 2, "精力不足仍交换资产");
             player.current_world_stamina = 100;
             Call(main, "request_npc_purchase", buyer, false);
             var savedBudget = buyer.get_resource("灵石"); buyer.resources["灵石"] = 0;
             Choice(dialogue, "出售").EmitSignal(BaseButton.SignalName.Pressed);
             Check(request.state == "open" && player.current_world_stamina == 100 && player.get_inventory_total_count(herb) == 2,
-                "报价后付款不足仍扣物/体力");
+                "报价后付款不足仍扣物/精力");
             dialogue.close(); await Frames(); buyer.resources["灵石"] = savedBudget;
             var initialStones = buyer.get_resource("灵石"); var initialPlayerStones = player.get_inventory_total_count(NpcPurchaseRules.StonePath);
             var notifications = 0; player.InventoryChanged += _ => notifications++;
@@ -104,7 +104,7 @@ public partial class NpcPurchaseSmoke : Node
                 player.get_inventory_total_count(herb) == 1 && player.get_inventory_total_count(NpcPurchaseRules.StonePath) == initialPlayerStones + 2,
                 "双方物品或灵石不守恒");
             Check(notifications == 1 && player.current_world_stamina == 99 && clock.get_total_game_hours() == hours && buyer.player_relationship == 0,
-                "重复刷新、体力、时间或关系变化错误");
+                "重复刷新、精力、时间或关系变化错误");
             Check(!player.try_fulfil_npc_purchase(buyer, request.request_id, 1, out _) && player.current_world_stamina == 99, "重复成交");
             dialogue.close(); await Frames();
             if (OS.GetCmdlineUserArgs().Contains("--capture")) {

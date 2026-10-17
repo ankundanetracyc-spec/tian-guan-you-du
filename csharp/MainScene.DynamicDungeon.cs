@@ -217,36 +217,36 @@ public partial class MainScene
         }
         if (action.ItemPath.Length > 0 && !valid_dungeon_item(action.ItemPath))
         {
-            dungeon.show_action_result("暂不可采集", "当前物品或图标无法加载，未消耗时间、体力或储量。");
+            dungeon.show_action_result("暂不可采集", "当前物品或图标无法加载，未消耗时间、精力或储量。");
             return;
         }
         if (!player.can_spend_world_stamina(action.Stamina))
         {
-            dungeon.show_action_result("体力不足", $"本次行动需要 {action.Stamina:0.#} 点体力；没有扣除费用。");
+            dungeon.show_action_result("精力不足", $"本次行动需要 {action.Stamina:0.#} 点精力；没有扣除费用。");
             return;
         }
         if (action.ItemPath.Length > 0 && !player.can_add_item_to_inventory(action.ItemPath, finalQuantity))
         {
-            dungeon.show_action_result("行囊已满", "无法收纳本次采集物，没有消耗时间、体力或储量。");
+            dungeon.show_action_result("行囊已满", "无法收纳本次采集物，没有消耗时间、精力或储量。");
             return;
         }
         if (!player.try_spend_world_stamina(action.Stamina))
         {
-            dungeon.show_action_result("体力不足", "本次行动尚未开始，没有消耗时间或储量。");
+            dungeon.show_action_result("精力不足", "本次行动尚未开始，没有消耗时间或储量。");
             return;
         }
         if (reservedInspiration is not null &&
             !player.try_consume_armed_cultivation_inspiration_for_action(CultivationInspirationTuning.GatheringDomain, out _))
         {
             player.restore_world_stamina(action.Stamina);
-            dungeon.show_action_result("行动未开始", "预留灵感已不可用，体力与储量均未消耗。");
+            dungeon.show_action_result("行动未开始", "预留灵感已不可用，精力与储量均未消耗。");
             return;
         }
 
         if (action.Hours > 0) time.advance_time(action.Hours, "dynamic_dungeon_action");
         if (action.ItemPath.Length > 0 && !player.add_item_to_inventory(action.ItemPath, finalQuantity))
         {
-            dungeon.show_action_result("行动未完成", "行囊无法收纳，资源储量未扣除；已投入的时间和体力不退还。");
+            dungeon.show_action_result("行动未完成", "行囊无法收纳，资源储量未扣除；已投入的时间和精力不退还。");
             return;
         }
         dungeon.complete_action(nodeId, actionId, finalQuantity);

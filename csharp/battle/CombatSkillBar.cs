@@ -86,7 +86,7 @@ public partial class CombatSkillBar : Control
         var header = new HBoxContainer { CustomMinimumSize = new Vector2(0, 50), MouseFilter = MouseFilterEnum.Ignore, SizeFlagsVertical = SizeFlags.ShrinkCenter };
         var resourceCluster = new VBoxContainer { CustomMinimumSize = new Vector2(300, 50), MouseFilter = MouseFilterEnum.Ignore };
         resourceCluster.AddThemeConstantOverride("separation", 2);
-        resourceCluster.AddChild(CreateResourceRow("精力", 6, new Color(.31f, .78f, .43f), out energyPips, out energyValue));
+        resourceCluster.AddChild(CreateResourceRow("体力", 6, new Color(.31f, .78f, .43f), out energyPips, out energyValue));
         resourceCluster.AddChild(CreateResourceRow("法力", 3, new Color(.30f, .57f, .94f), out manaPips, out manaValue));
         header.AddChild(resourceCluster);
         resourceCluster.Hide();
@@ -104,7 +104,7 @@ public partial class CombatSkillBar : Control
         var row = new HBoxContainer { CustomMinimumSize = new Vector2(292, 23), MouseFilter = MouseFilterEnum.Ignore };
         var label = new Label { Text = caption, CustomMinimumSize = new Vector2(44, 0), VerticalAlignment = VerticalAlignment.Center, MouseFilter = MouseFilterEnum.Ignore };
         label.AddThemeFontSizeOverride("font_size", 15); label.AddThemeColorOverride("font_color", new Color(.90f, .91f, .84f)); row.AddChild(label);
-        pips = new HBoxContainer { Name = caption == "精力" ? "EnergyPips" : "ManaPips", CustomMinimumSize = new Vector2(caption == "精力" ? 128 : 64, 18), MouseFilter = MouseFilterEnum.Ignore };
+        pips = new HBoxContainer { Name = caption == "体力" ? "EnergyPips" : "ManaPips", CustomMinimumSize = new Vector2(caption == "体力" ? 128 : 64, 18), MouseFilter = MouseFilterEnum.Ignore };
         pips.AddThemeConstantOverride("separation", 4);
         for (var i = 0; i < max; i++)
         {
@@ -157,7 +157,7 @@ public partial class CombatSkillBar : Control
         hoverCache.Clear();
         skills.Clear();
         foreach (var value in values)
-            if (value is not null && Character.is_combat_skill_slot_eligible(value) && !skills.Contains(value) && skills.Count < SlotCapacity) skills.Add(value);
+            if (value is not null && (value.combat_empty_slot || Character.is_combat_skill_slot_eligible(value)) && !skills.Contains(value) && skills.Count < SlotCapacity) skills.Add(value);
         RefreshSlots();
     }
 
@@ -234,7 +234,7 @@ public partial class CombatSkillBar : Control
             currentEnergy = budget.X;
             currentMana = budget.Y;
         }
-        UpdateResourcePreview(energyValue, planningBudget, currentEnergy, actualEnergy, "精力");
+        UpdateResourcePreview(energyValue, planningBudget, currentEnergy, actualEnergy, "体力");
         UpdateResourcePreview(manaValue, planningBudget, currentMana, actualMana, "法力");
         var energyProgress = 0f;
         var manaProgress = 0f;
@@ -352,7 +352,7 @@ public partial class CombatSkillBar : Control
 
     private Button CreateSlot(ActiveSkillData skill, int index)
     {
-        var button = new Button { Name = $"Skill{index}", CustomMinimumSize = new Vector2(SlotWidth, SlotHeight), SizeFlagsHorizontal = SizeFlags.ShrinkCenter, SizeFlagsVertical = SizeFlags.ShrinkCenter, Text = "", Flat = true, ClipText = true, ClipContents = true, MouseFilter = MouseFilterEnum.Stop, MouseDefaultCursorShape = Control.CursorShape.PointingHand };
+        var button = new Button { Disabled = skill.combat_empty_slot, Name = $"Skill{index}", CustomMinimumSize = new Vector2(SlotWidth, SlotHeight), SizeFlagsHorizontal = SizeFlags.ShrinkCenter, SizeFlagsVertical = SizeFlags.ShrinkCenter, Text = "", Flat = true, ClipText = true, ClipContents = true, MouseFilter = MouseFilterEnum.Stop, MouseDefaultCursorShape = Control.CursorShape.PointingHand };
         // 按钮只承担点击区域；视觉上的边框由第三张竖向水墨素材承担。
         button.AddThemeStyleboxOverride("normal", SlotStyle(Colors.Transparent, Colors.Transparent, 0));
         button.AddThemeStyleboxOverride("hover", SlotStyle(Colors.Transparent, Colors.Transparent, 0));
@@ -364,9 +364,13 @@ public partial class CombatSkillBar : Control
         button.AddChild(icon);
         var frame = CreateFrame(); frame.Modulate = new Color(1f, 1f, 1f, .78f); button.AddChild(frame); slotFrames.Add(frame);
         // 小型费用叠在图标左上角，名称位于框下方。
+        var costManager = GetTree().GetFirstNodeInGroup("battle_mgr") as BattleManager;
+        var displaySkill = currentUnit is not null ? costManager?.get_next_action_skill(currentUnit, skill) ?? skill : skill;
+        var displayEnergy = currentUnit is not null && costManager is not null ? costManager.get_skill_energy_cost(currentUnit, displaySkill) : displaySkill.energy_cost;
+        var displayMana = currentUnit is not null && costManager is not null ? costManager.get_skill_mana_cost(currentUnit, displaySkill) : displaySkill.mana_cost;
         var cost = new Control { Position = new Vector2((SlotWidth-FrameWidth)*.5f+4,FrameTop+3), Size = new Vector2(FrameWidth-8,20), MouseFilter = MouseFilterEnum.Ignore, ZIndex = 4 };
         var costX=0f;
-        foreach(var (symbol,amount) in new[]{("icon_energy",skill.energy_cost),("icon_mana",skill.mana_cost)})
+        foreach(var (symbol,amount) in new[]{("icon_energy",displayEnergy),("icon_mana",displayMana)})
         {
             if(amount<=0)continue;
             var costIcon=BattleUiArt.Icon(symbol,new(16,16));costIcon.Position=new(costX,1);cost.AddChild(costIcon);
@@ -427,19 +431,20 @@ public partial class CombatSkillBar : Control
             return;
         }
         var effect = CardPresentation.CombatEffectText(skill, currentUnit);
-        var target = CardPresentation.CombatTargetText(skill, effect);
-        var energyCost = manager is null ? skill.energy_cost : manager.get_skill_energy_cost(currentUnit, skill);
-        var manaCost = manager is null ? skill.mana_cost : manager.get_skill_mana_cost(currentUnit, skill);
+        var target = CardPresentation.CombatTargetText(manager?.get_next_action_skill(currentUnit, skill) ?? skill, effect);
+        var displaySkill = manager?.get_next_action_skill(currentUnit, skill) ?? skill;
+        var energyCost = manager is null ? displaySkill.energy_cost : manager.get_skill_energy_cost(currentUnit, displaySkill);
+        var manaCost = manager is null ? displaySkill.mana_cost : manager.get_skill_mana_cost(currentUnit, displaySkill);
         var cost = skill.skill_type == ActiveSkillData.SkillType.POWER
             ? ""
             : energyCost == 0 && manaCost == 0
                 ? "费用：无"
-                : $"费用：精力 {energyCost}；法力 {manaCost}";
+                : $"费用：体力 {energyCost}；法力 {manaCost}";
         if (CardRules.IsResponse(skill))
         {
             var normal = CardRules.NormalCast(skill);
-            cost = $"应对触发费用：精力 {energyCost}；法力 {manaCost}\n未应对费用：" + (normal is null ? "无（空放）"
-                : $"精力 {manager?.get_skill_energy_cost(currentUnit, normal) ?? normal.energy_cost}；法力 {manager?.get_skill_mana_cost(currentUnit, normal) ?? normal.mana_cost}");
+            cost = $"应对触发费用：体力 {energyCost}；法力 {manaCost}\n未应对费用：" + (normal is null ? "无（空放）"
+                : $"体力 {manager?.get_skill_energy_cost(currentUnit, normal) ?? normal.energy_cost}；法力 {manager?.get_skill_mana_cost(currentUnit, normal) ?? normal.mana_cost}");
         }
         var useLimit = CardPresentation.CombatUseLimitText(skill, currentUnit, manager);
         var detail = new System.Collections.Generic.List<string>();
@@ -470,6 +475,7 @@ public partial class CombatSkillBar : Control
         foreach (var key in HoverAttributes) hash.Add(CardRules.Number(currentUnit, key));
         foreach (var bonus in skill.damage_bonuses)
             if (bonus is not null) { hash.Add(bonus.attribute); hash.Add(bonus.multiplier); hash.Add(CardRules.Number(currentUnit, bonus.attribute)); }
+        hash.Add(manager?.get_next_action_skill(currentUnit, skill).artifact_is_summon);
         hash.Add(manager?.get_skill_energy_cost(currentUnit, skill));
         hash.Add(manager?.get_skill_mana_cost(currentUnit, skill));
         hash.Add(manager?.get_skill_uses_remaining(currentUnit, skill));
@@ -541,7 +547,7 @@ public partial class CombatSkillBar : Control
 
     private static string FormatCost(ActiveSkillData skill)
     {
-        return $"精力{skill.energy_cost} · 法力{skill.mana_cost}";
+        return $"体力{skill.energy_cost} · 法力{skill.mana_cost}";
     }
 
     private void FitBarArtworkToBottom()

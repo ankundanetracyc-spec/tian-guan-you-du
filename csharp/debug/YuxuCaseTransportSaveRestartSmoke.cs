@@ -105,6 +105,7 @@ public partial class YuxuCaseTransportSaveRestartSmoke : Node
             world_npcs = new Godot.Collections.Array<WorldNpcData> { npc },
             east_woods_npc_incidents = new Godot.Collections.Array<EastWoodsNpcIncidentRecord> { incident },
             scene_progress = new Godot.Collections.Dictionary { ["east_woods_dungeon_state"] = dungeonState },
+            dynamic_dungeon_state = DynamicDungeonExpedition.CreateEmpty(GetGameTime().get_total_game_hours()),
         };
         Check(saves.save_snapshot(save), "正式存档管理器没有写入押送进度");
         using var marker = Godot.FileAccess.Open(MarkerPath, Godot.FileAccess.ModeFlags.Write);
@@ -150,5 +151,10 @@ public partial class YuxuCaseTransportSaveRestartSmoke : Node
     private static GameSaveManager GetSaveManager()
         => Engine.GetMainLoop() is SceneTree tree
             ? tree.Root.GetNodeOrNull<GameSaveManager>("GameSaveManager") ?? throw new Exception("GameSaveManager autoload is unavailable")
+            : throw new Exception("SceneTree is unavailable");
+
+    private static GameTimeMgr GetGameTime()
+        => Engine.GetMainLoop() is SceneTree tree
+            ? tree.Root.GetNodeOrNull<GameTimeMgr>("GameTimeManager") ?? throw new Exception("GameTimeManager autoload is unavailable")
             : throw new Exception("SceneTree is unavailable");
 }

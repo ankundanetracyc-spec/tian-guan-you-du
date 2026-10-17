@@ -213,7 +213,7 @@ public partial class StoragePanel : Control
                 || (_player.entity_data is HumanData data && data.artifact_slot_count > data.equipped_artifact_ids.Count
                     && (artifact.max_durability <= 0 || artifact.current_durability > 0));
         return load_item_data(slot.item_path) is { } item
-            && (item is EquipmentData || _item_use_handler?.CanUse(_player, item, slot.item_count) == true);
+            && (item is EquipmentData or PortraitClothingData || _item_use_handler?.CanUse(_player, item, slot.item_count) == true);
     }
 
     private void on_slot_info_requested(StorageItemSlot slot, bool immediate)
@@ -295,8 +295,8 @@ public partial class StoragePanel : Control
             var icon = string.IsNullOrWhiteSpace(path) || !ResourceLoader.Exists(path) ? null : ResourceLoader.Load<Texture2D>(path);
             var subtitle = $"法宝 · {(string.IsNullOrWhiteSpace(artifact.ritual_mode) ? "未定祭法" : artifact.ritual_mode)} · {artifact.artifact_tier} · {(string.IsNullOrWhiteSpace(artifact.element) ? "五行未定" : artifact.element)}";
             var durability = artifact.max_durability > 0
-                ? $"耐久 {Math.Max(0, artifact.current_durability)}/{artifact.max_durability}　灵识 {Math.Max(0, artifact.spirit_cost)}"
-                : "耐久未定　灵识 " + Math.Max(0, artifact.spirit_cost);
+                ? $"耐久 {Math.Max(0, artifact.current_durability)}/{artifact.max_durability}　灵识（外祭在场）{(artifact.ritual_mode == "内炼" ? 0 : Math.Max(0, artifact.spirit_cost))}"
+                : "耐久未定　灵识 " + (artifact.ritual_mode == "内炼" ? 0 : Math.Max(0, artifact.spirit_cost));
             var utility = string.IsNullOrWhiteSpace(artifact.utility_id) ? "主功用：未定" : $"主功用：{artifact.utility_id}　品级：{Math.Max(0, artifact.utility_grade)}";
             var binding = string.IsNullOrWhiteSpace(artifact.bound_basic_card_path) ? "" : $"\n绑定基础牌：{artifact.bound_basic_card_path}";
             return new HoverInfoManager.HoverInfoContent(name,
@@ -367,8 +367,8 @@ public partial class StoragePanel : Control
         _info_category!.Text = $"法宝 · {(string.IsNullOrWhiteSpace(artifact.ritual_mode) ? "未定祭法" : artifact.ritual_mode)}";
         _info_grade!.Text = $"{artifact.artifact_tier} · {(string.IsNullOrWhiteSpace(artifact.element) ? "五行未定" : artifact.element)}";
         _info_count!.Text = artifact.max_durability > 0
-            ? $"耐久 {Math.Max(0, artifact.current_durability)}/{artifact.max_durability}　灵识 {Math.Max(0, artifact.spirit_cost)}"
-            : "耐久未定　灵识 " + Math.Max(0, artifact.spirit_cost);
+            ? $"耐久 {Math.Max(0, artifact.current_durability)}/{artifact.max_durability}　灵识（外祭在场）{(artifact.ritual_mode == "内炼" ? 0 : Math.Max(0, artifact.spirit_cost))}"
+            : "耐久未定　灵识 " + (artifact.ritual_mode == "内炼" ? 0 : Math.Max(0, artifact.spirit_cost));
         _info_tags!.Text = string.IsNullOrWhiteSpace(artifact.utility_id) ? "主功用：未定" : $"主功用：{artifact.utility_id}　品级：{Math.Max(0, artifact.utility_grade)}";
         _info_effect_title!.Text = "法宝信息";
         _info_desc!.Text = $"实例 ID：{artifact.instance_id}\n\n法宝属于玩家行囊中的唯一实例，不与普通物品堆叠。\n{(string.IsNullOrWhiteSpace(artifact.bound_basic_card_path) ? "" : "绑定基础牌：" + artifact.bound_basic_card_path)}";
@@ -382,25 +382,36 @@ public partial class StoragePanel : Control
         _action_button?.Hide(); _cancel_button?.Hide();
         if (!_pinned_selection || _player is null || _active_slot is null || _action_button is null || _cancel_button is null) return;
         if (!can_act_on(_active_slot)) { _pinned_selection = false; return; }
-        _action_button.Text = item is EquipmentData && _player.is_item_equipped(_active_slot.item_path) ? "卸下" : "使用";
-        _action_button.Disabled = false;
-        HoverInfoManager.SetTooltip(_action_button, item is EquipmentData ? "穿戴或卸下此装备" : "");
+        bool clothing = item is PortraitClothingData;
+        bool equipped = _player.is_item_equipped(_active_slot.item_path);
+        _action_button.Text = clothing ? equipped ? "已穿着" : "穿上" : item is EquipmentData && equipped ? "卸下" : "使用";
+        _action_button.Disabled = clothing && equipped;
+        HoverInfoManager.SetTooltip(_action_button, clothing ? "穿上后只改变人物立绘衣着，不影响衣甲属性。" : item is EquipmentData ? "穿戴或卸下此装备" : "");
         _action_button.Show(); _cancel_button.Show();
     }
     private void on_action_pressed()
     {
         if (_player is null) return;
+        string selectedPath = _active_slot?.item_path ?? "";
+        bool clothingAction = !string.IsNullOrWhiteSpace(selectedPath) && load_item_data(selectedPath) is PortraitClothingData;
         bool changed;
         if (_active_artifact is not null)
             changed = _player.is_artifact_equipped(_active_artifact.instance_id)
                 ? _player.unequip_artifact(_active_artifact.instance_id) : _player.equip_artifact(_active_artifact.instance_id);
+        else if (_active_slot is not null && load_item_data(_active_slot.item_path) is PortraitClothingData)
+            changed = _player.equip_inventory_item(_active_slot.item_path, "portrait_clothing");
         else if (_active_slot is not null && load_item_data(_active_slot.item_path) is EquipmentData)
             changed = _player.is_item_equipped(_active_slot.item_path)
                 ? _player.unequip_inventory_item(_active_slot.item_path) : _player.equip_inventory_item(_active_slot.item_path);
         else if (_active_slot is { } slot && load_item_data(slot.item_path) is { } item && _item_use_handler is { } handler && handler.CanUse(_player, item, slot.item_count))
             changed = handler.TryUse(_player, item, slot.item_count);
         else changed = false;
-        if (changed) refresh_slots();
+        if (changed)
+        {
+            if (clothingAction)
+                GetTree().CallGroup("human_info_panel", "refresh_after_clothing_item");
+            refresh_slots();
+        }
     }
     public void set_item_use_handler(IInventoryItemUseHandler? handler)
     {
@@ -431,6 +442,8 @@ public partial class StoragePanel : Control
     }
     internal static string build_item_usage_effect(ItemData item)
     {
+        if (item is PortraitClothingData clothing)
+            return $"立绘衣着 · {clothing.portrait_gender switch { "male" => "男修", "female" => "女修", _ => "男女通用" }}\n穿上后只更换人物立绘衣着，不增加属性，也不替换衣甲装备。";
         if(item is EquipmentData equipment)
         {
             var equipType=new[]{"武器","防具","饰品"}[Mathf.Clamp(equipment.equip_type,0,2)];

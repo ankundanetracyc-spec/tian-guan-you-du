@@ -118,6 +118,17 @@ public partial class HoverInfoManager : CanvasLayer
             manager.set_info(anchor, content, immediate);
     }
 
+    public static void CopyInfo(Control? source, Control? destination)
+    {
+        if (source is null || destination is null || !GodotObject.IsInstanceValid(source) || !GodotObject.IsInstanceValid(destination)) return;
+        if (_instance is { } manager && GodotObject.IsInstanceValid(manager) && manager._entries.TryGetValue(source, out var content))
+        {
+            manager.set_info(destination, content);
+            return;
+        }
+        destination.TooltipText = source.TooltipText;
+    }
+
     public static void HideFor(Control? anchor)
     {
         if (_instance is { } manager && GodotObject.IsInstanceValid(manager))

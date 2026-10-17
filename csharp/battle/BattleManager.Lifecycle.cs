@@ -46,6 +46,7 @@ public partial class BattleManager : Node2D
             GD.PushError($"BattleManager: 战斗队伍为空（我方 {player_units.Count}，敌方 {enemy_units.Count}）");
             return false;
         }
+        LeaveDeadOwnerArtifacts();
         if (player_units.All(unit => !Alive(unit)) || enemy_units.All(unit => !Alive(unit))) { finish_battle(); return true; }
         return false;
     }
@@ -64,6 +65,8 @@ public partial class BattleManager : Node2D
             var wounds=get_realtime_wound_counts(unit);
             return $"{unit.Get("entity_name").AsString()}：外伤 {wounds["external"].AsInt32()} 层，内伤 {wounds["internal"].AsInt32()} 层";
         })));
+        FinishArtifacts();
+        transition?.set_artifact_reports(build_artifact_reports());
         RestoreBattleResources();
         foreach(var unit in player_units)if(GodotObject.IsInstanceValid(unit))attackers.Add(unit.Call("get_snapshot_data"));
         foreach(var unit in enemy_units)if(GodotObject.IsInstanceValid(unit))defenders.Add(unit.Call("get_snapshot_data"));
@@ -73,14 +76,15 @@ public partial class BattleManager : Node2D
     }
     private GodotObject? FindTarget(GodotObject unit) => (unit.Get("faction").AsInt32() == 1 ? enemy_units : player_units).FirstOrDefault(Alive);
     private static bool RequiresTargetSelection(ActiveSkillData skill) => skill.target_type is 2 or 3 || skill.can_target_empty || skill.aoe_range > 0;
-    private GodotObject? DefaultTarget(ActiveSkillData skill, GodotObject caster) => skill.target_type == 0 || skill.target_type == 1 ? caster : FindTarget(caster);
+    private GodotObject? DefaultTarget(ActiveSkillData skill, GodotObject caster) => skill.target_type is 0 or 1 ? caster : get_target_candidates().FirstOrDefault(target => IsValidTarget(skill, caster, target));
     private static bool IsValidTarget(ActiveSkillData skill, GodotObject caster, GodotObject? target)
     {
         if (!GodotObject.IsInstanceValid(target) || !Alive(target)) return false;
+        if (target is ArtifactBody body) return ArtifactAcceptsSkill(body, caster, skill);
         var sameFaction = target!.Get("faction").AsInt32() == caster.Get("faction").AsInt32();
-        return skill.target_type switch { 2 => !sameFaction, 3 => true, 1 => sameFaction, _ => false };
+        return skill.target_type switch { 0 => target == caster, 2 => !sameFaction, 3 => true, 1 => sameFaction, _ => false };
     }
-    private static bool Alive(GodotObject? unit) => GodotObject.IsInstanceValid(unit) && unit!.Get("current_health").AsInt32() > 0;
+    private static bool Alive(GodotObject? unit) => GodotObject.IsInstanceValid(unit) && (unit is ArtifactBody body ? body.current_health > 0 && body.DepartureReason.Length == 0 : unit!.Get("current_health").AsInt32() > 0);
     /// <summary>战斗最终行动速度：常驻属性与状态先作固定加减，手中每张伤势再按比例减速（最多 30%）。</summary>
     private float Initiative(GodotObject unit)
     {
@@ -156,6 +160,7 @@ public partial class BattleManager : Node2D
         _segmentPhase=SegmentPhase.None; _planningElapsed=0; _playerQueueConfirmed=false; _mainPlayerUnit=null; _resolvingUnit=null; _segmentNumber=0;
         _selectingQueueTargets=false; _targetQueueIndex=-1; _targetSelectionHistory.Clear(); _layoutViewportSize=Vector2.Zero;
         RestoreBattleResources();
+        ResetArtifacts();
         gongfa_combat.Reset();
         _chengjiResponses.Clear();
         _queuedPlayerCards.Clear();
@@ -179,6 +184,8 @@ public partial class BattleManager : Node2D
         _hands.Clear();
         _firstHands.Clear();
         _statusPanel?.clear_all();
+        foreach (var unit in all_units.OfType<Node>().Where(unit => unit.HasMeta("artifact_battle_clone"))) unit.QueueFree();
+        _pendingActionCompletions.Clear();
         player_units.Clear();
         enemy_units.Clear();
         all_units.Clear();

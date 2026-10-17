@@ -200,7 +200,7 @@ public partial class MainHUD : Control
         box.AddChild(WorldHudStyle.Rule());
         var health = BuildStatusRow(box, "生命", WorldHudStyle.HealthInk);
         _healthLabel = health.value; _healthBar = health.bar;
-        var stamina = BuildStatusRow(box, "体力", WorldHudStyle.StaminaInk);
+        var stamina = BuildStatusRow(box, "精力", WorldHudStyle.StaminaInk);
         _worldStaminaLabel = stamina.value; _worldStaminaBar = stamina.bar;
         _cultivationStatusLabel = WorldHudStyle.Text("", 15, true);
         _cultivationStatusLabel.CustomMinimumSize = new Vector2(0, 20);
@@ -266,7 +266,7 @@ public partial class MainHUD : Control
                 var worldStatuses = WorldStatusRules.format_summary((_player.entity_data as HumanData)?.world_status_records, tooltipGameHour);
                 var cultivationStatus = CharacterStatusPresentationRules.format_bottleneck_hud_line(_player.get_cultivation_bottleneck_summary());
                 var cultivationTooltip = string.IsNullOrWhiteSpace(cultivationStatus) ? "" : $"\n{cultivationStatus.Trim()}";
-                HoverInfoManager.SetTooltip(status, $"{_player.entity_name} · {realm}\n生命 {_player.current_health} / {_player.max_health}\n体力 {_player.current_world_stamina:0.#} / {_player.max_world_stamina:0.#}\n大世界状态：{worldStatuses}{cultivationTooltip}\n点击查看人物状态");
+                HoverInfoManager.SetTooltip(status, $"{_player.entity_name} · {realm}\n生命 {_player.current_health} / {_player.max_health}\n精力 {_player.current_world_stamina:0.#} / {_player.max_world_stamina:0.#}\n大世界状态：{worldStatuses}{cultivationTooltip}\n点击查看人物状态");
             }
         }
         if (_healthLabel is not null) _healthLabel.Text = $"{_player!.current_health} / {_player.max_health}";

@@ -55,7 +55,7 @@ learn_permanent_bonuses = {"physique": 1.0, "body_proficiency": 0.5}
 learned_active_skills=Array[Resource]([ExtResource("4")])
 learned_world_spells=Array[Resource]([ExtResource("world_spell_buxu")])
 sub_deck_rewrites = Array[ExtResource("5_rewrite")]([SubResource("RewriteMissing4")])
-heart_method_description = "效果：自身主动将气血由1层降至0层后，强化下一次主动施展的催血：精力费用减1点（最低为0），并额外获得气血1层。强化待触发时不叠加；催血结算后清除。此后再次主动将气血由1层降至0层，可重新获得强化。\n主修额外效果：受本心法强化的催血结算后，额外获得身法2层。"
+heart_method_description = "效果：自身主动将气血由1层降至0层后，强化下一次主动施展的催血：体力费用减1点（最低为0），并额外获得气血1层。强化待触发时不叠加；催血结算后清除。此后再次主动将气血由1层降至0层，可重新获得强化。\n主修额外效果：受本心法强化的催血结算后，额外获得身法2层。"
 
 
 learn_bonus_revision = "study-balance-20261012"
@@ -74,7 +74,7 @@ required_realm="云息三层"
 required_attributes = {"physique": 6.0, "body_proficiency": 0.5}
 required_chapter_ids=Array[String](["buxu"])
 learn_permanent_bonuses = {"physique": 0.5, "body_proficiency": 0.5}
-heart_method_description = "效果：自身主动将气血由1层降至0层后，强化下一次主动施展的催血：精力费用减1点（最低为0），并额外获得气血1层。强化待触发时不叠加；催血结算后清除。此后再次主动将气血由1层降至0层，可重新获得强化。\n主修额外效果：受本心法强化的催血结算后，额外获得身法2层。"
+heart_method_description = "效果：自身主动将气血由1层降至0层后，强化下一次主动施展的催血：体力费用减1点（最低为0），并额外获得气血1层。强化待触发时不叠加；催血结算后清除。此后再次主动将气血由1层降至0层，可重新获得强化。\n主修额外效果：受本心法强化的催血结算后，额外获得身法2层。"
 
 
 learn_bonus_revision = "study-balance-20261012"
@@ -96,7 +96,7 @@ required_realm="云息六层"
 required_attributes = {"physique": 7.0, "body_proficiency": 1}
 required_chapter_ids=Array[String](["shouque"])
 learn_permanent_bonuses = {"body_proficiency": 1}
-heart_method_description = "效果：自身主动将气血由1层降至0层后，强化下一次主动施展的催血：精力费用减1点（最低为0），并额外获得气血1层。强化待触发时不叠加；催血结算后清除。此后再次主动将气血由1层降至0层，可重新获得强化。每次自身主动将气血由1层降至0层后，另获得身法1层。\n主修额外效果：受本心法强化的催血结算后，额外获得身法2层。"
+heart_method_description = "效果：自身主动将气血由1层降至0层后，强化下一次主动施展的催血：体力费用减1点（最低为0），并额外获得气血1层。强化待触发时不叠加；催血结算后清除。此后再次主动将气血由1层降至0层，可重新获得强化。每次自身主动将气血由1层降至0层后，另获得身法1层。\n主修额外效果：受本心法强化的催血结算后，额外获得身法2层。"
 
 
 learn_bonus_revision = "study-balance-20261012"
@@ -116,7 +116,7 @@ required_realm="云息九层"
 required_attributes = {"physique": 9.0, "body_proficiency": 2}
 required_chapter_ids=Array[String](["yuwen"])
 learn_permanent_bonuses = {"physique": 1.0, "body_proficiency": 1}
-heart_method_description = "效果：自身主动将气血由1层降至0层后，强化下一次主动施展的催血：精力费用减1点（最低为0），并额外获得气血1层。强化待触发时不叠加；催血结算后清除。此后再次主动将气血由1层降至0层，可重新获得强化。每次自身主动将气血由1层降至0层后，另获得身法1层。\n主修额外效果：受本心法强化的催血结算后，额外获得身法2层。"
+heart_method_description = "效果：自身主动将气血由1层降至0层后，强化下一次主动施展的催血：体力费用减1点（最低为0），并额外获得气血1层。强化待触发时不叠加；催血结算后清除。此后再次主动将气血由1层降至0层，可重新获得强化。每次自身主动将气血由1层降至0层后，另获得身法1层。\n主修额外效果：受本心法强化的催血结算后，额外获得身法2层。"
 
 
 learn_bonus_revision = "study-balance-20261012"

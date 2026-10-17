@@ -75,6 +75,7 @@ public partial class MainScene : Node2D
         if (trade_panel is not null) { trade_panel.Closed += on_trade_closed; trade_panel.TradeCompleted += mark_save_dirty; }
         connect_ui();
         setup_letters();
+        setup_banquets();
         if (GetTree().GetFirstNodeInGroup("cell_character_list") is CellCharacterList character_list)
             character_list.configure_side_toggle();
         estate?.set_unlocked_slips(["li_residence", "village", "farmland", "back_hill"]);
@@ -116,7 +117,7 @@ public partial class MainScene : Node2D
         }
         finally { StartupComplete = true; }
     }
-    public override void _Process(double delta){if (!StartupComplete || StartupError is not null) return; update_persistent_chrome();process_save_autosave(delta);process_relationship_month();process_npc_social_visit(delta);process_active_world_npc_interaction_refresh(delta);}
+    public override void _Process(double delta){if (!StartupComplete || StartupError is not null) return; update_persistent_chrome();process_save_autosave(delta);process_relationship_month();process_npc_social_visit(delta);process_banquet_activity(delta);process_active_world_npc_interaction_refresh(delta);}
     public override void _ExitTree()
     {
         if (!_skipExitSave) save_progress_now(false);
@@ -641,7 +642,7 @@ public partial class MainScene : Node2D
         {
             var dawnHours=Math.Max(1,((time.get_total_game_hours()/24)+1)*24+6-time.get_total_game_hours());
             var restored = Mathf.Min(player.max_world_stamina-player.current_world_stamina,dawnHours*WorldStaminaRules.RestRecoveryPerGameHour);
-            open_rest_panel("李宅 · 偏房", _ => run_time_transition("休息至次日", $"夜色渐深。你将休息 {GameTimeText.Duration(dawnHours)}，恢复体力 {restored:0.#} 点，至次日清晨。", "晨光透过窗棂。你已休息至次日清晨。",
+            open_rest_panel("李宅 · 偏房", _ => run_time_transition("休息至次日", $"夜色渐深。你将休息 {GameTimeText.Duration(dawnHours)}，恢复精力 {restored:0.#} 点，至次日清晨。", "晨光透过窗棂。你已休息至次日清晨。",
                 () => { player.current_health=player.max_health; player.restore_world_stamina(dawnHours*WorldStaminaRules.RestRecoveryPerGameHour); advance_player_world_status_rest(dawnHours); time.add_hours(dawnHours); _rested_after_xuanjian=true; refresh_qingxi_quest(); },
                 () => show_message("醒来", "晨光透过窗棂。你已休息至次日清晨。")), dawnHours, "夜已深了，休息至次日清晨，明日再去问李守拙。"); return;
         }
@@ -649,7 +650,7 @@ public partial class MainScene : Node2D
         {
             var dawnHours=Math.Max(1,((time.get_total_game_hours()/24)+1)*24+6-time.get_total_game_hours());
             var restored = Mathf.Min(player.max_world_stamina-player.current_world_stamina,dawnHours*WorldStaminaRules.RestRecoveryPerGameHour);
-            open_rest_panel("李宅 · 偏房", _ => run_time_transition("休息至次日", $"你将在李宅歇息 {GameTimeText.Duration(dawnHours)}，恢复体力 {restored:0.#} 点，养足精神后赴约上山。", "李守拙已在宅门外等候。可以前往后山。",
+            open_rest_panel("李宅 · 偏房", _ => run_time_transition("休息至次日", $"你将在李宅歇息 {GameTimeText.Duration(dawnHours)}，恢复精力 {restored:0.#} 点，养足精神后赴约上山。", "李守拙已在宅门外等候。可以前往后山。",
                 () => { player.current_health=player.max_health; player.restore_world_stamina(dawnHours*WorldStaminaRules.RestRecoveryPerGameHour); advance_player_world_status_rest(dawnHours); time.add_hours(dawnHours); _rested_for_back_hill=true; estate?.set_back_hill_trial_available(true); refresh_qingxi_quest(); },
                 () => show_message("天明", "李守拙已在宅门外等候。可以前往后山。")), dawnHours, "李守拙约你明日一早上山。先休息至次日清晨。"); return;
         }
@@ -668,9 +669,9 @@ public partial class MainScene : Node2D
             var end = time.get_total_game_hours() + count; var day = end / 24;
             var ending = $"{day / 360 + 1}年{day % 360 / 30 + 1}月{day % 30 + 1}日 {end % 24:00}时";
             run_time_transition("休息", $"你将在{restPlace}休息 {GameTimeText.Duration(count)}，醒来时间：{ending}。",
-                "休养过后，你的气血已复，行旅体力也得以恢复。",
+                "休养过后，你的气血已复，行旅精力也得以恢复。",
                 () => { if (player is null) return; player.current_health = player.max_health; player.restore_world_stamina(count * WorldStaminaRules.RestRecoveryPerGameHour); advance_player_world_status_rest(count); time.add_hours(count); afterRest?.Invoke(); },
-                () => show_message("醒来", "休养过后，你的气血已复，行旅体力也得以恢复。"));
+                () => show_message("醒来", "休养过后，你的气血已复，行旅精力也得以恢复。"));
         });
     }
     private void run_time_transition(string title,string plan,string complete,Action settle,Action? after=null)
@@ -684,7 +685,7 @@ public partial class MainScene : Node2D
         void open_battle_prompt(){var dialog=new ConfirmationDialog{Title=$"{name}拦路",DialogText=$"{name}挡在山路上。你可以应战，也可以暂避其锋后返回山路。",OkButtonText="应战",CancelButtonText="暂避"}; AddChild(dialog);dialog.PopupCentered();dialog.Confirmed+=()=>{grant_back_hill_beast_materials(enemyId,count,elite);back_hill_trial?.resolve_external_battle(true);dialog.QueueFree();};dialog.Canceled+=()=>{back_hill_trial?.resolve_external_battle(false);dialog.QueueFree();};}
         if(_first_back_hill_battle_explained){open_battle_prompt();return;}
         show_dialogue_sequence(()=>{_first_back_hill_battle_explained=true;open_battle_prompt();},
-            (DialogueBeatKind.NpcSpeech,"李守拙","先别急着出手。看清它手里的招式和剩下的精力；精力不够，它便打不出费力的招。"),
+            (DialogueBeatKind.NpcSpeech,"李守拙","先别急着出手。看清它手里的招式和剩下的体力；体力不够，它便打不出费力的招。"),
             (DialogueBeatKind.NpcSpeech,"李守拙","你手上的牌不只用来进攻。遇上重招，留一张化解或护身，比一味抢攻稳当。"),
             (DialogueBeatKind.NpcSpeech,"李守拙","看它怎么动，再决定这回合要不要出手。往后遇敌，就靠你自己判断了。"));
     }
@@ -833,7 +834,19 @@ public partial class MainScene : Node2D
     private void open_storage(){storage?.show_panel();storage?.MoveToFront();}
     public void open_world_npc_trade(WorldNpcData npc)
     {
-        if (player is null || trade_panel is null) return;
+        var contactFailure = social_contact_failure_reason(npc);
+        if (contactFailure.Length > 0)
+        {
+            npc_interactions?.close();
+            show_message(npc?.npc_name ?? "暂不能交易", contactFailure);
+            return;
+        }
+        if (is_npc_in_seclusion_now(npc)) { explain_npc_seclusion(npc); return; }
+        if (player is null || trade_panel is null)
+        {
+            show_message(npc.npc_name, player is null ? "当前没有可以进行交易的角色。" : "交易界面尚未准备就绪，请稍后再试。");
+            return;
+        }
         _trade_hud_was_visible = hud?.Visible == true;
         info?.hide_panel();
         npc_interactions?.close();

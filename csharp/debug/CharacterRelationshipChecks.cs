@@ -13,6 +13,9 @@ public static class CharacterRelationshipChecks
 
     public static void Run()
     {
+        var banquetInvitation = new LetterInvitationData { activity_key = "banquet", response = "accepted", starts_at_hour = 100, ends_at_hour = 200 };
+        Check(!banquetInvitation.CanAttend(99) && banquetInvitation.CanAttend(100) && banquetInvitation.CanAttend(199) && !banquetInvitation.CanAttend(200),
+            "宴席邀约必须只允许在活动开始至结束的半开时段内赴约");
         Check(CharacterRelationshipRules.StageIndex(0) == 0 && CharacterRelationshipRules.StageIndex(9) == 0 &&
             CharacterRelationshipRules.StageIndex(10) == 1 && CharacterRelationshipRules.StageIndex(29) == 1 &&
             CharacterRelationshipRules.StageIndex(30) == 2 && CharacterRelationshipRules.StageIndex(54) == 2 &&
@@ -81,6 +84,27 @@ public static class CharacterRelationshipChecks
             sparPlayerRelation.respect == 4 && sparNpcRelation.respect == 4 && sparPlayerRelation.resentment == 0,
             "完成切磋应积累敬重而非怨结，或重复结果重复结算");
 
+        var windowPlayer = new HumanData();
+        var greeting = Person("relation-greeting-window");
+        greeting.acquaintance_window_until_hour = int.MaxValue;
+        CharacterRelationshipRules.RecordConversation(windowPlayer, greeting, "window-chat", 4);
+        var greetingPlayerEvidence = CharacterRelationshipRules.Get(windowPlayer, greeting.npc_id)!.pending_evidence.Single();
+        var greetingNpcEvidence = CharacterRelationshipRules.Get(greeting, CharacterRelationshipRules.PlayerCharacterId)!.pending_evidence.Single();
+        Check(greetingPlayerEvidence.base_amount == CharacterRelationshipRules.ConversationBaseAmount + 1 &&
+              greetingNpcEvidence.base_amount == CharacterRelationshipRules.ConversationBaseAmount + 1,
+            "五年结识窗口内的真实交谈没有分别增加双方记事影响");
+        var greetingTrade = Person("relation-greeting-trade-window");
+        greetingTrade.acquaintance_window_until_hour = int.MaxValue;
+        CharacterRelationshipRules.RecordFairTrade(windowPlayer, greetingTrade, "window-trade", 4);
+        var tradeWindowEvidence = CharacterRelationshipRules.Get(windowPlayer, greetingTrade.npc_id)!.pending_evidence.Single();
+        var greetingSpar = Person("relation-greeting-spar-window");
+        greetingSpar.acquaintance_window_until_hour = int.MaxValue;
+        CharacterRelationshipRules.RecordCompletedSpar(windowPlayer, greetingSpar, "window-spar", 4);
+        var sparWindowEvidence = CharacterRelationshipRules.Get(windowPlayer, greetingSpar.npc_id)!.pending_evidence.Single();
+        Check(tradeWindowEvidence.base_amount == CharacterRelationshipRules.FairTradeBaseAmount + 1 &&
+              sparWindowEvidence.base_amount == CharacterRelationshipRules.SparBaseAmount + 1,
+            "五年结识窗口未增补公平成交与完成切磋的实际关系记事");
+
         var victim = Person("relation-victim");
         var aggressor = Person("relation-aggressor");
         Check(CharacterRelationshipRules.RecordImmediateGrievance(victim, aggressor.npc_id, "harm-1", 4) &&
@@ -120,7 +144,8 @@ public static class CharacterRelationshipChecks
         var oldSave = new PersistentGameSave { format_version = 6, year = 2, month = 3, player_data = new HumanData() };
         oldSave.world_npcs.Add(legacyNpc);
         oldSave.world_npcs.Add(nullFieldsNpc);
-        Check(oldSave.migrate_to_current_format() && oldSave.format_version == 7, "v6 到 v7 迁移失败");
+        Check(oldSave.migrate_to_current_format() && oldSave.format_version == PersistentGameSave.CurrentFormatVersion && oldSave.banquet_events.Count == 0,
+            "v6 旧存档未能迁移到当前格式并初始化空宴席表");
         var migratedNpc = oldSave.world_npcs[0];
         Check(CharacterRelationshipRules.LegacyMarker(migratedNpc, CharacterRelationshipRules.PlayerCharacterId) == "enemy" &&
             CharacterRelationshipRules.LegacyMarker(migratedNpc, "old-friend") == "friend" &&
@@ -135,7 +160,7 @@ public static class CharacterRelationshipChecks
             oldSave.world_npcs[1].relation_tags is not null && oldSave.world_npcs[1].personal_relationships is not null,
             "v6 迁移没有补齐缺失的 NPC 关系字段容器");
 
-        CharacterRelationshipRules.Get(player, "relation-deceased");
+        CharacterRelationshipRules.GetOrCreate(player, "relation-deceased");
         Check(CharacterRelationshipRules.RecordDeathFor(player, "relation-deceased", 6, "寿尽") &&
             !CharacterRelationshipRules.RecordDeathFor(player, "relation-deceased", 6, "寿尽") && player.mood_value == 7 &&
             CharacterRelationshipRules.Get(player, "relation-deceased")!.life_events.Count == 1,

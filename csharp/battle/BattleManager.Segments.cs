@@ -159,6 +159,7 @@ public partial class BattleManager
 
     private void QueueChanged()
     {
+        if (_mainPlayerUnit is not null) PreviewArtifactQueue(_mainPlayerUnit);
         PlanAllyTeam();
         _planHud?.RefreshAll();
         _skillBar?.refresh_slots();
@@ -211,8 +212,18 @@ public partial class BattleManager
 
     private bool HasAvailablePlannedSkillUses(GodotObject unit, ActiveSkillData skill)
     {
+        if (skill.combat_empty_slot || !_combatSkills.TryGetValue(unit, out var installed) || !installed.Contains(skill)) return false;
+        if (skill.artifact_instance_id.Length > 0)
+        {
+            if (!_artifactRuntime.TryGetValue(unit, out var artifactRuntime)) return false;
+            var next = get_next_action_skill(unit, skill);
+            if (next.artifact_is_summon) return artifactRuntime.CanExecute(skill.artifact_instance_id, ArtifactBattleRuntime.Intent.Summon);
+            var stateOk = artifactRuntime.TryGetPresence(skill.artifact_instance_id, out var presence)
+                && presence is ArtifactBattleRuntime.Presence.Unsummoned or ArtifactBattleRuntime.Presence.Summoned;
+            if (!stateOk) return false;
+        }
         if (!is_skill_ready_for_legacy_limits(unit, skill)) return false;
-        var queued = get_battle_unit(unit).skill_queue.Count(action => !action.completed && action.kind == BattleQueuedSkill.ActionKind.Skill && action.skill == skill);
+        var queued = QueuedUseCount(unit, skill);
         if (skill.cooldown_rounds > 0 && queued > 0) return false;
         if (skill.uses_per_round > 0 && _skillRoundCharges.TryGetValue(unit, out var round) && round.GetValueOrDefault(skill, skill.uses_per_round) <= queued) return false;
         if (skill.uses_per_battle > 0 && _skillBattleCharges.TryGetValue(unit, out var battle) && battle.GetValueOrDefault(skill, skill.uses_per_battle) <= queued) return false;
@@ -227,7 +238,7 @@ public partial class BattleManager
         if (skill.max_charges > 0 && _skillCharges.TryGetValue(unit, out var charges))
         {
             var remaining = charges.GetValueOrDefault(skill, skill.max_charges);
-            var queued = get_battle_unit(unit).skill_queue.Count(action => !action.completed && action.kind == BattleQueuedSkill.ActionKind.Skill && action.skill == skill);
+            var queued = QueuedUseCount(unit, skill);
             if (remaining <= queued) return false;
         }
         return true;
@@ -235,7 +246,7 @@ public partial class BattleManager
 
     public string get_skill_uses_remaining(GodotObject unit, ActiveSkillData skill)
     {
-        var queued = get_battle_unit(unit).skill_queue.Count(action => !action.completed && action.kind == BattleQueuedSkill.ActionKind.Skill && action.skill == skill);
+        var queued = QueuedUseCount(unit, skill);
         var parts = new List<string>();
         if (skill.uses_per_round > 0)
         {
@@ -384,6 +395,7 @@ public partial class BattleManager
         if (action.kind == BattleQueuedSkill.ActionKind.Rest)
         {
             _executor?.show_action_name(unit, "休整");
+            _executor?.present_recovery(unit);
             var staminaMax = Math.Max(0, unit.Get("max_stamina").AsInt32());
             unit.Set("current_stamina", Math.Min(staminaMax, unit.Get("current_stamina").AsInt32() + 2));
             _planHud?.PresentAction(unit);
@@ -393,6 +405,7 @@ public partial class BattleManager
         if (action.kind == BattleQueuedSkill.ActionKind.Breathe)
         {
             _executor?.show_action_name(unit, "吐纳");
+            _executor?.present_recovery(unit);
             var manaMax = get_effective_mana_capacity(unit);
             unit.Set("current_mana", Math.Min(manaMax, unit.Get("current_mana").AsInt32() + 1));
             _planHud?.PresentAction(unit);
@@ -401,7 +414,9 @@ public partial class BattleManager
         }
 
         if (action.kind == BattleQueuedSkill.ActionKind.Retreat) { _executor?.show_action_name(unit, "撤退"); ResolveRetreat(unit); return; }
-        var skill = CardRules.NormalCast(action.skill);
+        if (action.artifact_intent == ArtifactBattleRuntime.Intent.Summon)
+        { ResolveArtifactSummon(unit, action); return; }
+        var skill = CardRules.NormalCast(action.execution_skill);
         if (skill is null)
         {
             // 未应对空放只耗当前行动位；不支付、计次、触发心法或生成防御状态。
@@ -409,6 +424,9 @@ public partial class BattleManager
             CompleteSystemActionPresentation(unit);
             return;
         }
+        var resolvedTarget = ResolveActionTarget(unit, action, skill);
+        if (!GodotObject.IsInstanceValid(resolvedTarget)) { CompleteSegmentAction(unit); return; }
+        action.target = resolvedTarget;
         Pay(unit, skill);
         gongfa_combat.Before(unit, skill);
         StartSkillCooldown(unit, action.skill);
@@ -424,8 +442,8 @@ public partial class BattleManager
             CompleteSegmentAction(unit);
             return;
         }
-        if (skill.aoe_range > 0 && Map is not null)
-            _executor!.execute_aoe_skill(unit, skill, Map.Call("get_unit_cell", target).AsVector2I(), Map, false);
+        if (skill.aoe_range > 0 || skill.description.Contains("全体"))
+            _executor!.execute_aoe_skill(unit, skill, Vector2I.Zero, Map ?? this, false);
         else
             _executor!.execute_skill(unit, skill, target!, false);
     }
@@ -445,6 +463,7 @@ public partial class BattleManager
     private bool CanResolveSegmentAction(GodotObject unit, BattleQueuedSkill action, bool responseTriggered = false)
     {
         if (action.kind != BattleQueuedSkill.ActionKind.Skill) return true;
+        if (action.artifact_instance_id.Length > 0) return CanResolveArtifactAction(unit, action);
         var skill = responseTriggered ? action.skill : CardRules.NormalCast(action.skill);
         if (skill is null) return true;
         if (!gongfa_combat.CanPlay(unit, skill)) return false;
@@ -494,6 +513,7 @@ public partial class BattleManager
 
     private void PruneDeadQueues()
     {
+        LeaveDeadOwnerArtifacts();
         foreach (var unit in all_units.Where(unit => !Alive(unit)))
         {
             if (battle_units.ContainsKey(unit))

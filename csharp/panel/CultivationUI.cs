@@ -642,7 +642,11 @@ public partial class CultivationUI : Control
 		var required = progress.GetValueOrDefault("required", 0).AsInt32();
 		var current = progress.GetValueOrDefault("current", 0).AsInt32();
 		_power!.Text = required > 0 ? $"{(progress.GetValueOrDefault("is_current_layer", false).AsBool() ? "本层 " : "累计 ")}{current} / {required} 缕" : $"{value("spirit_strands", 0).AsInt32()} 缕";
-		_rate!.Text = $"{call("get_cultivation_rate").AsSingle():0.####} 缕 / 小时";
+		var cultivationRate = _target is Character practitioner
+			? practitioner.get_cultivation_rate_after_bottleneck()
+			: call("get_cultivation_rate").AsSingle();
+		_rate!.Text = $"实际修炼速率  {cultivationRate:0.####} 缕 / 小时";
+		refresh_bottleneck_status();
 		_strands.MaxValue = Math.Max(1, call("get_strands_until_next_realm").AsInt32());
 		if (_strands.Value > _strands.MaxValue) _strands.Value = _strands.MaxValue;
 		update_mode_visibility();
@@ -677,7 +681,7 @@ public partial class CultivationUI : Control
 		var staminaCost = preview.GetValueOrDefault("stamina_cost", 0f).AsSingle();
 		var staminaLimited = preview.GetValueOrDefault("stamina_limited", false).AsBool();
 		var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
-		_plan.Text = time is null ? "" : $"预计灵力　{strands} 缕\n耗时　{format_duration_hours(hours)}\n体力消耗　{staminaCost:0.#} 点\n结束　{format_date_after(time, hours)}\n\n未满一缕的灵力在结束时散去。{(staminaLimited ? "\n体力不足，已按可持续时长预估。" : "")}";
+		_plan.Text = time is null ? "" : $"预计灵力　{strands} 缕\n耗时　{format_duration_hours(hours)}\n精力消耗　{staminaCost:0.#} 点\n结束　{format_date_after(time, hours)}\n\n未满一缕的灵力在结束时散去。{(staminaLimited ? "\n精力不足，已按可持续时长预估。" : "")}";
 		if (mode is 1 or 2 && strands == 0) _plan.Text += "\n本次时长不足以获得一整缕，可增加修炼天数或改用指定灵力。";
 		_cultivate.Disabled = hours <= 0 || (_target is Character practitioner && !practitioner.can_cultivate());
 	}
@@ -691,7 +695,7 @@ public partial class CultivationUI : Control
 		var hours = preview.GetValueOrDefault("hours", 0).AsInt32(); var strands = preview.GetValueOrDefault("strands", 0).AsInt32();
 		var staminaCost = preview.GetValueOrDefault("stamina_cost", 0f).AsSingle();
 		var requestedHours = selected_hours();
-		play_transition("吐纳修行", $"灵力沿周天缓缓运转，预计耗时 {format_duration_hours(hours)}，消耗体力 {staminaCost:0.#} 点。", $"修炼结束，实得 {strands} 缕灵力。未满一缕的余数已散去。", () => { if (mode is 0 or 3) _target.Call("cultivate_with_world_stamina_for_strands", wanted); else _target.Call("cultivate_with_world_stamina_for_hours", requestedHours); refresh(); }, hours);
+		play_transition("吐纳修行", $"灵力沿周天缓缓运转，预计耗时 {format_duration_hours(hours)}，消耗精力 {staminaCost:0.#} 点。", $"修炼结束，实得 {strands} 缕灵力。未满一缕的余数已散去。", () => { if (mode is 0 or 3) _target.Call("cultivate_with_world_stamina_for_strands", wanted); else _target.Call("cultivate_with_world_stamina_for_hours", requestedHours); refresh(); }, hours);
 	}
 
 	private void update_study()
@@ -709,8 +713,8 @@ public partial class CultivationUI : Control
 			var progress = chapter is null ? 0 : student.get_gongfa_chapter_study_progress(book, chapter.get_id());
 			var required = chapter?.required_study_progress ?? book.required_study_progress;
 			_studyHint.Text = $"{chapter?.chapter_name ?? "当前卷"}\n研读进度  {progress:0.0} / {required:0.0}" +
-				(!eligible ? "\n尚未满足本卷研读条件" : $"\n耗时  {format_duration_hours(hours)}　体力  {hours * WorldStaminaRules.StudyCostPerGameHour:0.#}");
-			_study.Text = !eligible ? "条件未满足" : hours <= 0 ? "体力不足" : "开始研读";
+				(!eligible ? "\n尚未满足本卷研读条件" : $"\n耗时  {format_duration_hours(hours)}　精力  {hours * WorldStaminaRules.StudyCostPerGameHour:0.#}");
+			_study.Text = !eligible ? "条件未满足" : hours <= 0 ? "精力不足" : "开始研读";
 			_study.Disabled = !eligible || hours <= 0;
 			return;
 		}
@@ -739,7 +743,7 @@ public partial class CultivationUI : Control
 	}
 	private GongfaResource? selected_study_book() => _studyBook is not null && _studyBook.Selected >= 0 && _studyBook.Selected < _studyCandidates.Count ? _studyCandidates[_studyBook.Selected] : null;
 
-	private void study(){if(_target is not Character reader || selected_study_book() is not { } book)return;var hours=reader.get_available_study_hours(24);if(hours<=0 || !reader.select_gongfa_for_study(book)){refresh();return;}var staminaCost=hours*WorldStaminaRules.StudyCostPerGameHour;play_transition("研读功法",$"研读 {format_duration_hours(hours)}，消耗体力 {staminaCost:0.#} 点。","研读结束。",()=>{reader.study_for_world_hours(hours);refresh();});}
+	private void study(){if(_target is not Character reader || selected_study_book() is not { } book)return;var hours=reader.get_available_study_hours(24);if(hours<=0 || !reader.select_gongfa_for_study(book)){refresh();return;}var staminaCost=hours*WorldStaminaRules.StudyCostPerGameHour;play_transition("研读功法",$"研读 {format_duration_hours(hours)}，消耗精力 {staminaCost:0.#} 点。","研读结束。",()=>{reader.study_for_world_hours(hours);refresh();});}
 
     private void update_breakthrough()
 	{

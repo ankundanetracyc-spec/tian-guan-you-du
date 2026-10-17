@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram name="御·守锋剑">
+    <mxGraphModel dx="1000" dy="900" grid="1" gridSize="10" page="1" pageWidth="1000" pageHeight="900">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="技能名：御·守锋剑&#10;资源路径：运行时生成（ArtifactSkillFactory）&#10;类型：守御&#10;关键词：防御&#10;耗费：见召唤、御使分支或原技能说明&#10;目标：自身&#10;效果：&#10;召唤：体力2，法力0；器体18，在场占灵识3。&#10;御使：体力1，法力1；自身护盾增加6。&#10;首次成功召唤只入场，后续队列执行才御使。&#10;使用次数：测试样本不限&#10;回合冷却：0回合" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=20;fontSize=20;fillColor=#f4eddf;strokeColor=#54655a;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="880" height="570" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="仅开发测试样本，不是正式平衡数据。&#10;外祭技能占1个技能栏位；召唤与每次御使各占1个行动位。&#10;召唤失败后的御使不转成召唤；崩解及任意离场后本场禁用。&#10;法器化法在秘籍化法之后追加，同一技能最多关联1件内炼法器。" style="whiteSpace=wrap;html=0;align=left;fontSize=18;fillColor=#fff2cc;" vertex="1" parent="1">
+          <mxGeometry x="60" y="660" width="880" height="160" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

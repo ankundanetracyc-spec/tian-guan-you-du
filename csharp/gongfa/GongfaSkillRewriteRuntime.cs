@@ -206,6 +206,7 @@ public static class GongfaSkillRewriteRuntime
     private static ActiveSkillData CopyWithMergedEffects(ActiveSkillData replacement, ActiveSkillData? previous)
     {
         var copy = replacement.Duplicate() as ActiveSkillData ?? replacement;
+        copy.combat_source_key = replacement.ResourcePath;
         var effects = new Array<string>();
         if (previous is not null)
             foreach (var id in previous.gongfa_rewrite_effect_ids)

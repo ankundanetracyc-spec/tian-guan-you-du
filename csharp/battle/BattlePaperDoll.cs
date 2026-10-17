@@ -1,18 +1,18 @@
 using Godot;
 
 /// <summary>
-/// 战斗中的角色显示。人形使用无五官静态立绘，兽类保留独立素材与骨骼支持。
+/// 战斗中的角色显示。人形使用水墨关键姿势，兽类保留独立素材与骨骼支持。
 /// </summary>
 public partial class BattlePaperDoll : Node2D
 {
-    public const string DefaultPortraitPath = "res://textures/characters/c1_male_puppet_v2/preview/static.png";
+    public const string DefaultPortraitPath = SideInkArtRoot + "male_idle.png";
     public const string ForestWolfPortraitPath = "res://textures/characters/forest_wolf_spine_rig_v6/source/wolf_assembled_portrait.png";
     public const string ForestWolfSpineResourcePath = "res://textures/characters/forest_wolf_spine_rig_v6/runtime/forest_wolf_spine_rig_v6.spinejson";
     public const string CharacterSpineResourcePath = "res://textures/characters/c1_male_puppet_v2/runtime/c1_male_puppet_v2.spinejson";
     public const string FemaleSpineResourcePath = "res://textures/characters/c1_female_puppet_v2/runtime/c1_female_puppet_v2.spinejson";
-    public const string FemaleStaticPortraitPath = "res://textures/characters/c1_female_puppet_v2/preview/static.png";
-    public const string CombatMaleStaticPath = "res://textures/characters/combat_static_20261011/male_v2.png";
-    public const string CombatFemaleStaticPath = "res://textures/characters/combat_static_20261011/female_v2.png";
+    public const string FemaleStaticPortraitPath = SideInkArtRoot + "female_idle.png";
+    public const string CombatMaleStaticPath = DefaultPortraitPath;
+    public const string CombatFemaleStaticPath = FemaleStaticPortraitPath;
     private static readonly System.Collections.Generic.Dictionary<string, Rect2I> PortraitBounds = new();
     private Rect2 _portraitLocalBounds;
     private float _portraitCenterX;
@@ -41,6 +41,8 @@ public partial class BattlePaperDoll : Node2D
     public void Configure(BattleEntityData data)
     {
         EndContactPoseHold();
+        ResetSideInk();
+        if (data.entity_type == (int)WorldEntity.EntityType.CHARACTER && ConfigureSideInk(data)) return;
         var isForestWolf = data.entity_name.Contains("凶狼") || data.entity_name.Contains("林地狼") || data.entity_name.Contains("森林狼");
         var path = string.IsNullOrWhiteSpace(data.battle_portrait_path)
             ? (isForestWolf ? ForestWolfPortraitPath : DefaultPortraitPath)
@@ -117,7 +119,7 @@ public partial class BattlePaperDoll : Node2D
     private static Rect2I VisiblePortraitBounds(Texture2D texture)
     {
         if (PortraitBounds.TryGetValue(texture.ResourcePath, out var cached)) return cached;
-        var image = texture.GetImage();
+        using var image = texture.GetImage();
         image.Convert(Image.Format.Rgba8);
         var bytes = image.GetData();
         int width = image.GetWidth(), height = image.GetHeight(), left = width, top = height, right = -1, bottom = -1;
@@ -133,6 +135,13 @@ public partial class BattlePaperDoll : Node2D
     private void AlignPortraitCenter()
     {
         if (_portrait is null) return;
+        if (_usesSideInk)
+        {
+            _idleBasePosition = Vector2.Zero;
+            _portrait.Position = Vector2.Zero;
+            if (_sideIdle is not null) _sideIdle.FlipH = _portrait.FlipH;
+            return;
+        }
         _idleBasePosition.X = _portrait.FlipH ? _portraitCenterX : -_portraitCenterX;
         _portrait.Position = _idleBasePosition;
     }
@@ -170,6 +179,7 @@ public partial class BattlePaperDoll : Node2D
     {
         hold_attack_contact(false);
         EndContactPoseHold();
+        ResetSideInkPose();
         face_direction(facing);
         _actionTween?.Kill();
         Position = Vector2.Zero;
@@ -205,6 +215,7 @@ public partial class BattlePaperDoll : Node2D
 
     // 只等待非循环动作；待机与常驻护盾不会阻塞行动条。
     public bool is_action_animation_playing() => _contactPoseHeld
+        || (_usesSideInk && _sidePose != "idle" && !_sideDead)
         || (_actionTween?.IsValid()==true && _actionTween.IsRunning())
         || (_usesSpineCharacter && IsInstanceValid(_spineCharacter) && _spineAnimation!="idle"
             && _spineCharacter!.Call("is_playing",0).AsBool());
@@ -215,6 +226,7 @@ public partial class BattlePaperDoll : Node2D
         {
             // 受击／倒地已经替换攻击时，不暂停新动作。
             if(_usesSpineCharacter && _spineAnimation!="attack")return;
+            if (_usesSideInk && _sidePose != "chop") return;
             _attackContactHeld=true;
             _heldAttackTween=_actionTween;
             if(_heldAttackTween?.IsValid()==true)_heldAttackTween.Pause();
@@ -235,6 +247,7 @@ public partial class BattlePaperDoll : Node2D
     public override void _Process(double delta)
     {
         if (_responseTimeStopped) return;
+        if (_usesSideInk) { ProcessSideInkPose((float)delta); return; }
         if (!_contactPoseHeld) _idlePhase += (float)delta;
         var idleOffset = new Vector2(0, Mathf.Sin(_idlePhase * 1.8f) * 2.2f);
 
@@ -250,17 +263,18 @@ public partial class BattlePaperDoll : Node2D
             _portrait.Position = _idleBasePosition + idleOffset;
     }
 
-    public void play_attack(Vector2 direction)
+    public void play_attack(Vector2 direction, bool useHandChop = true)
     {
         EndContactPoseHold();
         face_direction(direction);
+        if (_usesSideInk) StartSideInkPose(useHandChop ? "chop" : "idle", .95f);
         if (_usesSpineCharacter) PlaySpineAnimation("attack", false);
         _actionTween?.Kill();
         Position = Vector2.Zero;
         Rotation = 0;
         _actionTween = CreateTween();
         _actionTween.SetParallel();
-        _actionTween.TweenProperty(this, "position", direction * 16f, .07f).SetTrans(Tween.TransitionType.Quad).SetEase(Tween.EaseType.Out);
+        _actionTween.TweenProperty(this, "position", direction * MotionUnits(16f), .07f).SetTrans(Tween.TransitionType.Quad).SetEase(Tween.EaseType.Out);
         _actionTween.TweenProperty(this, "rotation", direction.X * .06f, .07f);
         _actionTween.Chain().SetParallel();
         _actionTween.TweenProperty(this, "position", Vector2.Zero, .16f).SetTrans(Tween.TransitionType.Back).SetEase(Tween.EaseType.Out);
@@ -283,7 +297,14 @@ public partial class BattlePaperDoll : Node2D
 
     public void play_hit(Vector2 direction, float weight = 1f, bool critical = false)
     {
+        if (is_defense_presenting()) { emphasize_contact(weight); return; }
         EndContactPoseHold();
+        if (_usesSideInk)
+        {
+            StartSideInkPose("hurt", 1.12f);
+            emphasize_contact(weight);
+            BattleInkCombatVfx.PlayHurt(this, weight, critical);
+        }
         if (_usesSpineCharacter) PlaySpineAnimation("hurt", false);
         _actionTween?.Kill();
         Position = Vector2.Zero;
@@ -291,7 +312,7 @@ public partial class BattlePaperDoll : Node2D
         _actionTween = CreateTween();
         _actionTween.SetParallel();
         var force = Mathf.Clamp(weight, 0.6f, 1.6f);
-        _actionTween.TweenProperty(this, "position", direction * (10f * force), .035f);
+        _actionTween.TweenProperty(this, "position", direction * (MotionUnits(10f) * force), .035f);
         _actionTween.TweenProperty(this, "rotation", direction.X * 0.035f * force, .035f);
         _actionTween.TweenProperty(this, "modulate", new Color(.70f, .73f, .69f), .035f);
         _actionTween.Chain().TweenCallback(Callable.From(BeginContactPoseHold));
@@ -307,6 +328,7 @@ public partial class BattlePaperDoll : Node2D
     {
         EndContactPoseHold();
         _actionTween?.Kill();
+        if (_usesSideInk) { ResetSideInkPose(); _sideDead = true; }
         if (_usesSpineCharacter) PlaySpineAnimation(_portraitFacesLeft ? "death" : "death_kneel", false);
     }
 

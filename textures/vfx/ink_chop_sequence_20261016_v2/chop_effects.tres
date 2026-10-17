@@ -1,0 +1,229 @@
+[gd_resource type="SpriteFrames" load_steps=40 format=3]
+
+[ext_resource type="Texture2D" path="res://textures/vfx/ink_chop_sequence_20261016_v2/slash_atlas_0.png" id="slash0"]
+[ext_resource type="Texture2D" path="res://textures/vfx/ink_chop_sequence_20261016_v2/impact_atlas_0.png" id="impact0"]
+[ext_resource type="Texture2D" path="res://textures/vfx/ink_chop_sequence_20261016_v2/impact_atlas_1.png" id="impact1"]
+
+[sub_resource type="AtlasTexture" id="slash_0"]
+atlas = ExtResource("slash0")
+region = Rect2(0, 0, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="slash_1"]
+atlas = ExtResource("slash0")
+region = Rect2(768, 0, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="slash_2"]
+atlas = ExtResource("slash0")
+region = Rect2(1536, 0, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="slash_3"]
+atlas = ExtResource("slash0")
+region = Rect2(2304, 0, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="slash_4"]
+atlas = ExtResource("slash0")
+region = Rect2(0, 768, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="slash_5"]
+atlas = ExtResource("slash0")
+region = Rect2(768, 768, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="slash_6"]
+atlas = ExtResource("slash0")
+region = Rect2(1536, 768, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="slash_7"]
+atlas = ExtResource("slash0")
+region = Rect2(2304, 768, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="slash_8"]
+atlas = ExtResource("slash0")
+region = Rect2(0, 1536, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="slash_9"]
+atlas = ExtResource("slash0")
+region = Rect2(768, 1536, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="slash_10"]
+atlas = ExtResource("slash0")
+region = Rect2(1536, 1536, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="slash_11"]
+atlas = ExtResource("slash0")
+region = Rect2(2304, 1536, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="slash_12"]
+atlas = ExtResource("slash0")
+region = Rect2(0, 2304, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="slash_13"]
+atlas = ExtResource("slash0")
+region = Rect2(768, 2304, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="slash_14"]
+atlas = ExtResource("slash0")
+region = Rect2(1536, 2304, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="slash_15"]
+atlas = ExtResource("slash0")
+region = Rect2(2304, 2304, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_0"]
+atlas = ExtResource("impact0")
+region = Rect2(0, 0, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_1"]
+atlas = ExtResource("impact0")
+region = Rect2(768, 0, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_2"]
+atlas = ExtResource("impact0")
+region = Rect2(1536, 0, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_3"]
+atlas = ExtResource("impact0")
+region = Rect2(2304, 0, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_4"]
+atlas = ExtResource("impact0")
+region = Rect2(0, 768, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_5"]
+atlas = ExtResource("impact0")
+region = Rect2(768, 768, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_6"]
+atlas = ExtResource("impact0")
+region = Rect2(1536, 768, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_7"]
+atlas = ExtResource("impact0")
+region = Rect2(2304, 768, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_8"]
+atlas = ExtResource("impact0")
+region = Rect2(0, 1536, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_9"]
+atlas = ExtResource("impact0")
+region = Rect2(768, 1536, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_10"]
+atlas = ExtResource("impact0")
+region = Rect2(1536, 1536, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_11"]
+atlas = ExtResource("impact0")
+region = Rect2(2304, 1536, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_12"]
+atlas = ExtResource("impact0")
+region = Rect2(0, 2304, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_13"]
+atlas = ExtResource("impact0")
+region = Rect2(768, 2304, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_14"]
+atlas = ExtResource("impact0")
+region = Rect2(1536, 2304, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_15"]
+atlas = ExtResource("impact0")
+region = Rect2(2304, 2304, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_16"]
+atlas = ExtResource("impact1")
+region = Rect2(0, 0, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_17"]
+atlas = ExtResource("impact1")
+region = Rect2(768, 0, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_18"]
+atlas = ExtResource("impact1")
+region = Rect2(1536, 0, 768, 768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_19"]
+atlas = ExtResource("impact1")
+region = Rect2(2304, 0, 768, 768)
+filter_clip = true
+
+[resource]
+animations = [
+{"frames": [
+{"duration": 1.0, "texture": SubResource("slash_0")},
+{"duration": 1.0, "texture": SubResource("slash_1")},
+{"duration": 1.0, "texture": SubResource("slash_2")},
+{"duration": 1.0, "texture": SubResource("slash_3")},
+{"duration": 1.0, "texture": SubResource("slash_4")},
+{"duration": 1.0, "texture": SubResource("slash_5")},
+{"duration": 1.0, "texture": SubResource("slash_6")},
+{"duration": 1.0, "texture": SubResource("slash_7")},
+{"duration": 1.0, "texture": SubResource("slash_8")},
+{"duration": 1.0, "texture": SubResource("slash_9")},
+{"duration": 1.0, "texture": SubResource("slash_10")},
+{"duration": 1.0, "texture": SubResource("slash_11")},
+{"duration": 1.0, "texture": SubResource("slash_12")},
+{"duration": 1.0, "texture": SubResource("slash_13")},
+{"duration": 1.0, "texture": SubResource("slash_14")},
+{"duration": 1.0, "texture": SubResource("slash_15")},
+], "loop": false, "name": &"slash", "speed": 30.0},
+{"frames": [
+{"duration": 1.0, "texture": SubResource("impact_0")},
+{"duration": 1.0, "texture": SubResource("impact_1")},
+{"duration": 1.0, "texture": SubResource("impact_2")},
+{"duration": 1.0, "texture": SubResource("impact_3")},
+{"duration": 1.0, "texture": SubResource("impact_4")},
+{"duration": 1.0, "texture": SubResource("impact_5")},
+{"duration": 1.0, "texture": SubResource("impact_6")},
+{"duration": 1.0, "texture": SubResource("impact_7")},
+{"duration": 1.0, "texture": SubResource("impact_8")},
+{"duration": 1.0, "texture": SubResource("impact_9")},
+{"duration": 1.0, "texture": SubResource("impact_10")},
+{"duration": 1.0, "texture": SubResource("impact_11")},
+{"duration": 1.0, "texture": SubResource("impact_12")},
+{"duration": 1.0, "texture": SubResource("impact_13")},
+{"duration": 1.0, "texture": SubResource("impact_14")},
+{"duration": 1.0, "texture": SubResource("impact_15")},
+{"duration": 1.0, "texture": SubResource("impact_16")},
+{"duration": 1.0, "texture": SubResource("impact_17")},
+{"duration": 1.0, "texture": SubResource("impact_18")},
+{"duration": 1.0, "texture": SubResource("impact_19")},
+], "loop": false, "name": &"impact", "speed": 30.0},
+]

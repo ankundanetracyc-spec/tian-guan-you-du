@@ -183,8 +183,9 @@ public static class CharacterRelationshipRules
     public static bool RecordConversation(HumanData first, WorldNpcData second, string eventId, int month)
     {
         var id = normalize_event_id(eventId);
-        var changed = record_evidence(first, second.npc_id, id + ":player", SuccessfulConversation, Closeness, month, ConversationBaseAmount, "聊成并互通近况。", false);
-        changed |= record_evidence(second, PlayerCharacterId, id + ":npc", SuccessfulConversation, Closeness, month, ConversationBaseAmount, "与主角聊成并互通近况。", false);
+        var amount = player_social_amount(second, ConversationBaseAmount);
+        var changed = record_evidence(first, second.npc_id, id + ":player", SuccessfulConversation, Closeness, month, amount, "聊成并互通近况。", false);
+        changed |= record_evidence(second, PlayerCharacterId, id + ":npc", SuccessfulConversation, Closeness, month, amount, "与主角聊成并互通近况。", false);
         return changed;
     }
 
@@ -199,8 +200,9 @@ public static class CharacterRelationshipRules
     public static bool RecordFairTrade(HumanData player, WorldNpcData npc, string eventId, int month)
     {
         var id = normalize_event_id(eventId);
-        var changed = record_evidence(player, npc.npc_id, id + ":player", FairTrade, Trust, month, FairTradeBaseAmount, "双方按接近公允的价值完成交易。", false);
-        changed |= record_evidence(npc, PlayerCharacterId, id + ":npc", FairTrade, Trust, month, FairTradeBaseAmount, "与主角按接近公允的价值完成交易。", false);
+        var amount = player_social_amount(npc, FairTradeBaseAmount);
+        var changed = record_evidence(player, npc.npc_id, id + ":player", FairTrade, Trust, month, amount, "双方按接近公允的价值完成交易。", false);
+        changed |= record_evidence(npc, PlayerCharacterId, id + ":npc", FairTrade, Trust, month, amount, "与主角按接近公允的价值完成交易。", false);
         return changed;
     }
 
@@ -217,9 +219,19 @@ public static class CharacterRelationshipRules
     public static bool RecordCompletedSpar(HumanData player, WorldNpcData npc, string eventId, int month)
     {
         var id = normalize_event_id(eventId);
-        var changed = record_evidence(player, npc.npc_id, id + ":player", CompletedSpar, Respect, month, SparBaseAmount, "完成一次点到为止的切磋。", false);
-        changed |= record_evidence(npc, PlayerCharacterId, id + ":npc", CompletedSpar, Respect, month, SparBaseAmount, "与主角完成一次点到为止的切磋。", false);
+        var amount = player_social_amount(npc, SparBaseAmount);
+        var changed = record_evidence(player, npc.npc_id, id + ":player", CompletedSpar, Respect, month, amount, "完成一次点到为止的切磋。", false);
+        changed |= record_evidence(npc, PlayerCharacterId, id + ":npc", CompletedSpar, Respect, month, amount, "与主角完成一次点到为止的切磋。", false);
         return changed;
+    }
+
+    /// <summary>五年窗口只加在已经实际发生并登记的关系证据上；日常来信或留帖不调用此入口。</summary>
+    private static int player_social_amount(WorldNpcData npc, int baseAmount)
+    {
+        var now = Godot.Engine.GetMainLoop() is SceneTree tree
+            ? tree.Root.GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0
+            : 0;
+        return npc.acquaintance_window_until_hour > now ? baseAmount + 1 : baseAmount;
     }
 
     /// <summary>只更新实际受到明确伤害／背弃的一方对行为人的怨结。</summary>

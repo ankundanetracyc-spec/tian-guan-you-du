@@ -112,7 +112,7 @@ public partial class SkillCard : Control
     }
 
     private static string attribute_name(string id) => id switch { "physique" => "体魄", "agility" => "敏捷", "intelligence" => "灵慧", "soul" => "神魂", "comprehension" => "悟性", "body_proficiency" => "体道造诣", "magic_proficiency" => "术法造诣", "sword_proficiency" => "剑道造诣", _ => "相关属性" };
-    private static string effect_name(string id) => id switch { "shield" => "获得护持", "restore_stamina" => "恢复精力", "restore_mana" => "恢复法力", "draw" => "抽取卡牌", "move" => "移动", _ => "特殊效果" };
+    private static string effect_name(string id) => id switch { "shield" => "获得护持", "restore_stamina" => "恢复体力", "restore_mana" => "恢复法力", "draw" => "抽取卡牌", "move" => "移动", _ => "特殊效果" };
     private static string format_cost(int value)=>value>=1000?$"{value/1000f:0.#}千":value.ToString();
     private string skill_type()=>skill_data is null ? "术诀" : skill_data.get_card_category();
     private string target_type()=>skill_data?.target_type switch { 0=>"自身",1=>"自身",2=>"指定敌方",3=>"指定任意目标",_=>"自身"};
