@@ -69,7 +69,7 @@ public partial class MainScene
         if (!string.IsNullOrEmpty(_player_current_yuxu_peak_id) && overview?.Visible == true &&
             overview.GetNodeOrNull<Control>("PeakInterior")?.Visible == true)
             return "玉虚仙宗·" + get_yuxu_peak_name(_player_current_yuxu_peak_id);
-        var locationName = node_map?.map_data?.get_node(_player_world_node_id)?.node_name;
+        var locationName = _world_node_data?.get_node(_player_world_node_id)?.node_name;
         if (!string.IsNullOrWhiteSpace(locationName)) return locationName;
         return _player_world_node_id == "home_village" ? "青溪里" : "位置未详";
     }
@@ -405,7 +405,7 @@ public partial class MainScene
                 human.sect_active_yuxu_duty_instance_id,
                 $"培护并采收雾铃花 ×{yieldCount}；交宗门 ×{deliveryCount}，弟子自留 ×{keptCount}；等待二十四个游戏时辰。",
                 $"雾铃花 ×{deliveryCount} 已交宗门，×{keptCount} 留归弟子。",
-                rollback: () => player?.add_item_to_inventory(MistBellFlowerItemPath, deliveryCount) ?? false,
+                rollback: () => player?.add_item_to_inventory_silently(MistBellFlowerItemPath, deliveryCount) ?? false,
                 rewardOverride: YuxuSectPrototypeBalance.OfficialYaopuCultivationReward,
                 itemMessage: $"雾铃花 ×{keptCount} 已留入行囊。 ",
                 treasuryItemPath: MistBellFlowerItemPath,
@@ -624,8 +624,10 @@ public partial class MainScene
             human.sect_allowance_month_cursor = currentMonth;
         }
         if (previousMonthCursor != human.sect_allowance_month_cursor || previousBalance != human.sect_unclaimed_spirit_stones)
+        {
             mark_save_dirty();
-        refresh_yuxu_life_context();
+            refresh_yuxu_life_context();
+        }
     }
 
     private void on_yuxu_life_action_requested(string actionId, string peakId)
@@ -867,7 +869,7 @@ public partial class MainScene
                 human.sect_active_yuxu_duty_instance_id,
                 $"提交{itemName} ×{quantity}，由宗门登记。",
                 $"{itemName}已收讫并完成登记。",
-                rollback: () => player?.add_item_to_inventory(itemPath, quantity) ?? false,
+                rollback: () => player?.add_item_to_inventory_silently(itemPath, quantity) ?? false,
                 rewardOverride: isRoot ? YuxuSectPrototypeBalance.OfficialBitterMossRootSubmissionReward : YuxuSectPrototypeBalance.OfficialBeastDropSubmissionReward,
                 itemMessage: $"{itemName} ×{quantity} 已交宗门。 ",
                 treasuryItemPath: isRoot ? "" : itemPath,
@@ -1125,7 +1127,7 @@ public partial class MainScene
         return false;
     }
 
-    private void on_yuxu_gongfa_chapter_completed(Character character, string bookName, string chapterId, string chapterName)
+    private void on_yuxu_gongfa_chapter_completed(Character character, string bookName, string chapterId, string chapterName, Godot.Collections.Dictionary _)
     {
         if (character != player || player?.entity_data is not HumanData human || human.sect_affiliation_id != YuxuSectId)
             return;
@@ -1458,7 +1460,7 @@ public partial class MainScene
     private void restore_tianwen_practice_location()
     {
         if (!has_open_world_access() || _player_world_node_id != "yuxu_xianzong_core") return;
-        estate?.Hide(); tile_world_map?.Hide(); node_map?.Hide(); location_interior?.Hide();
+        estate?.Hide(); tile_world_map?.Hide();  location_interior?.Hide();
         open_faction_overview_if_available(_player_world_node_id);
         GetNodeOrNull<Node>("SceneLayer/YuxuXianzongOverview")?.Call("_on_peak_pressed", "tianwen");
         mark_save_dirty();

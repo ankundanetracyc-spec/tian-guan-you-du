@@ -7,12 +7,20 @@ public partial class CultivationUI
     private ScrollContainer _roomBodyScroll = null!, _roomNatureScroll = null!;
     private Label _roomTime = null!, _roomStamina = null!, _roomMain = null!, _roomBottleneckStatus = null!, _roomWorldStatus = null!, _roomInspirationSummary = null!, _studyTitle = null!;
     private Button _roomInspirationButton = null!;
+    private CheckBox _autoRefinementToggle = null!;
+    private OptionButton _autoRefinementInspiration = null!;
+    private InspirationQualityMark? _autoRefinementOrb;
+    private SpinBox _autoRefinementThreshold = null!;
+    private Label _autoRefinementHint = null!, _autoRefinementFeedback = null!;
     private VBoxContainer _studyList = null!;
+    private InspirationActionPicker? _studyInspirationPicker;
     private ProgressBar _roomPowerBar = null!, _studyProgress = null!;
     private readonly List<Button> _roomTabs = [], _modeTabs = [];
     private readonly Dictionary<string, Texture2D> _manualIcons = [];
     private GameTimeMgr? _roomClock;
     private bool _roomActions;
+    private bool _refreshingAutoRefinementUi;
+    private readonly List<string> _autoRefinementRecordIds = [];
     private int _roomPage;
 
     private void build_room_shell()
@@ -28,7 +36,6 @@ public partial class CultivationUI
         _roomTime = QuietRoomStyle.Text("", 23); header.AddChild(_roomTime);
         _roomInspirationButton = new Button { Name = "OpenInspirationLedger", Text = "灵感清册", CustomMinimumSize = new Vector2(144, 48) };
         QuietRoomStyle.Primary(_roomInspirationButton);
-        _roomInspirationButton.TooltipText = "查看可用灵感；可炼化当前瓶颈，或预留给用途相符的行动。";
         _roomInspirationButton.Pressed += () => select_room_page(5);
         header.AddChild(_roomInspirationButton);
         var close = new Button { Text = "离开静室", CustomMinimumSize = new Vector2(150, 48) }; close.Pressed += close_panel; header.AddChild(close);
@@ -41,7 +48,7 @@ public partial class CultivationUI
         canvas.AddChild(rail);
         var nav = new VBoxContainer { AnchorLeft = .03f, AnchorRight = .16f, AnchorTop = .22f, AnchorBottom = .925f };
         nav.AddThemeConstantOverride("separation", 14); canvas.AddChild(nav);
-        var titles = new[] { "吐纳修行", "功法研读", "闭关突破", "修命·淬体", "修性·观法", "灵感·瓶颈" };
+        var titles = new[] { "吐纳修行", "功法研读", "闭关突破", "修命·淬体", "修性·观法", "灵感清册" };
         for (var i = 0; i < titles.Length; i++)
         {
             var page = i; var tab = new Button { Name = "RoomTab" + i, Text = titles[i], ToggleMode = true, CustomMinimumSize = new Vector2(0, 66) };
@@ -115,10 +122,42 @@ public partial class CultivationUI
         _mode.ItemSelected += _ => { update_mode_visibility(); refresh_plan(); sync_mode_tabs(); };
         _strandRow = new VBoxContainer(); practice.AddChild(_strandRow); var strands = new HBoxContainer(); _strandRow.AddChild(strands); strands.AddChild(QuietRoomStyle.Text("目标灵力")); _strands = spin(1, 999, 1); strands.AddChild(_strands); strands.AddChild(QuietRoomStyle.Text("缕")); _strands.ValueChanged += _ => refresh_plan();
         _dayRow = new VBoxContainer(); practice.AddChild(_dayRow); var days = new HBoxContainer(); _dayRow.AddChild(days); days.AddChild(QuietRoomStyle.Text("修炼时长")); _days = spin(1, 999, 1); days.AddChild(_days); days.AddChild(QuietRoomStyle.Text("日")); _days.ValueChanged += _ => refresh_plan();
-        _dateRow = new VBoxContainer(); practice.AddChild(_dateRow); _dateRow.AddChild(QuietRoomStyle.Text("结束日期")); var date = new HBoxContainer(); _dateRow.AddChild(date);
-        _year = spin(1, 9999, 1); _month = spin(1, 12, 1); _date = spin(1, 30, 1);
-        foreach (var (field, text) in new[] { (_year, "年"), (_month, "月"), (_date, "日") }) { field.CustomMinimumSize = new Vector2(74, 44); date.AddChild(field); date.AddChild(QuietRoomStyle.Text(text, 18)); field.ValueChanged += _ => refresh_plan(); }
+		_dateRow = new VBoxContainer(); practice.AddChild(_dateRow); _dateRow.AddChild(QuietRoomStyle.Text("结束日期与时辰")); var date = new HBoxContainer(); _dateRow.AddChild(date);
+		_year = spin(1, 9999, 1); _month = spin(1, 12, 1); _date = spin(1, 30, 1); _hour = spin(0, 23, 0);
+		foreach (var (field, text) in new[] { (_year, "年"), (_month, "月"), (_date, "日"), (_hour, "时") }) { field.CustomMinimumSize = new Vector2(68, 44); date.AddChild(field); date.AddChild(QuietRoomStyle.Text(text, 18)); field.ValueChanged += _ => refresh_plan(); }
+		_inviteScheduleButton = new Button { Text = "按最近应邀时间修炼", CustomMinimumSize = new Vector2(0, 44) };
+		_inviteScheduleButton.Pressed += apply_next_invitation_schedule;
+		_dateRow.AddChild(_inviteScheduleButton);
+		_inviteScheduleHint = QuietRoomStyle.Text("", 15); _inviteScheduleHint.AutowrapMode = TextServer.AutowrapMode.WordSmart; _dateRow.AddChild(_inviteScheduleHint);
         _plan = QuietRoomStyle.Text("", 20); _plan.AutowrapMode = TextServer.AutowrapMode.WordSmart; practice.AddChild(_plan);
+        var autoRefinementCard = new PanelContainer(); autoRefinementCard.AddThemeStyleboxOverride("panel", QuietRoomStyle.Paper(.9f, 12)); practice.AddChild(autoRefinementCard);
+        var autoRefinementBox = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill }; autoRefinementBox.AddThemeConstantOverride("separation", 8); autoRefinementCard.AddChild(autoRefinementBox);
+        autoRefinementBox.AddChild(QuietRoomStyle.Text("自动炼化灵感", 21));
+        _autoRefinementToggle = new CheckBox { Text = "瓶颈减速达到所设百分比时，炼化一份灵感", CustomMinimumSize = new Vector2(0, 38) };
+        _autoRefinementToggle.AddThemeFontSizeOverride("font_size", 18); autoRefinementBox.AddChild(_autoRefinementToggle);
+        var autoInspirationRow = new HBoxContainer(); autoInspirationRow.AddThemeConstantOverride("separation", 12); autoRefinementBox.AddChild(autoInspirationRow);
+        autoInspirationRow.AddChild(QuietRoomStyle.Text("灵感", 17));
+        _autoRefinementInspiration = new OptionButton { SizeFlagsHorizontal = SizeFlags.ExpandFill, CustomMinimumSize = new Vector2(0, 38) };
+        _autoRefinementInspiration.AddThemeFontSizeOverride("font_size", 16); autoInspirationRow.AddChild(_autoRefinementInspiration);
+        _autoRefinementOrb = new InspirationQualityMark(1, CultivationInspirationTuning.StudyDomain)
+        {
+            CustomMinimumSize = new Vector2(48, 48),
+            SizeFlagsVertical = SizeFlags.ShrinkCenter
+        };
+        autoInspirationRow.AddChild(_autoRefinementOrb);
+        var autoThresholdRow = new HBoxContainer(); autoThresholdRow.AddThemeConstantOverride("separation", 12); autoRefinementBox.AddChild(autoThresholdRow);
+        autoThresholdRow.AddChild(QuietRoomStyle.Text("触发减速", 17));
+        _autoRefinementThreshold = new SpinBox { MinValue = 1, MaxValue = 90, Step = 1, Value = 10, SizeFlagsHorizontal = SizeFlags.ExpandFill, CustomMinimumSize = new Vector2(0, 38) };
+        _autoRefinementThreshold.AddThemeFontSizeOverride("font_size", 16); autoThresholdRow.AddChild(_autoRefinementThreshold);
+        autoThresholdRow.AddChild(QuietRoomStyle.Text("%", 17));
+        _autoRefinementHint = QuietRoomStyle.Text("达到所设减速百分比时至多炼化一份；未达到则不消耗。", 16);
+        _autoRefinementHint.AutowrapMode = TextServer.AutowrapMode.WordSmart; autoRefinementBox.AddChild(_autoRefinementHint);
+        _autoRefinementFeedback = QuietRoomStyle.Text("", 17);
+        _autoRefinementFeedback.AutowrapMode = TextServer.AutowrapMode.WordSmart; autoRefinementBox.AddChild(_autoRefinementFeedback);
+        _autoRefinementToggle.Toggled += _ => save_auto_refinement_settings();
+        _autoRefinementInspiration.ItemSelected += _ => save_auto_refinement_settings();
+        _autoRefinementThreshold.ValueChanged += _ => save_auto_refinement_settings();
+        build_manual_refinement_ui(practice);
         practice.AddChild(new Control { SizeFlagsVertical = SizeFlags.ExpandFill });
         _cultivate = new Button { Text = "开始修炼" }; QuietRoomStyle.Primary(_cultivate); _cultivate.Pressed += cultivate; practice.AddChild(_cultivate);
         var note = QuietRoomStyle.Text("开始后才推进游戏时间", 16); note.HorizontalAlignment = HorizontalAlignment.Center; practice.AddChild(note);
@@ -135,6 +174,8 @@ public partial class CultivationUI
         var box = room_box(details); box.AddChild(QuietRoomStyle.Text("功法研读", 32)); _studyTitle = QuietRoomStyle.Text("", 28); box.AddChild(_studyTitle);
         _studyBook = new OptionButton { Visible = false }; _studyBook.ItemSelected += select_study_book; box.AddChild(_studyBook);
         _studyHint = QuietRoomStyle.Text("", 22); _studyHint.AutowrapMode = TextServer.AutowrapMode.WordSmart; box.AddChild(_studyHint);
+        _studyInspirationPicker = new InspirationActionPicker { Name = "StudyInspirationPicker" };
+        box.AddChild(_studyInspirationPicker);
         _studyProgress = new ProgressBar { ShowPercentage = false, CustomMinimumSize = new Vector2(0, 16) }; box.AddChild(_studyProgress);
         box.AddChild(new Control { SizeFlagsVertical = SizeFlags.ExpandFill });
         _study = new Button { Text = "研读一日" }; QuietRoomStyle.Primary(_study); _study.Pressed += study; box.AddChild(_study);
@@ -232,18 +273,172 @@ public partial class CultivationUI
 
         var available = character.get_cultivation_inspiration_records();
         var counts = new int[4];
+        var actionSelected = 0;
         foreach (var record in available)
         {
             if (record.quality_rank >= 1 && record.quality_rank <= 3)
                 counts[record.quality_rank]++;
+            if (record.armed_for_action)
+                actionSelected++;
         }
         _roomInspirationButton.Text = available.Count > 0 ? $"灵感清册　{available.Count}" : "灵感清册";
         if (_roomTabs.Count > 5)
-            _roomTabs[5].Text = "灵感·瓶颈";
+            _roomTabs[5].Text = "灵感清册";
         _roomInspirationSummary.Text = available.Count > 0
-            ? $"可用灵感 {available.Count} 份：见几 {counts[1]} · 明辨 {counts[2]} · 通变 {counts[3]}\n可炼化瓶颈，或预留给用途相符的行动。"
-            : "暂无可用灵感。战斗、采集、旅途、研修与宗门活动的实际结果都可能再生灵感。点击上方“灵感清册”查看详情。";
+            ? $"可用灵感 {available.Count} 份：见几 {counts[1]} · 明辨 {counts[2]} · 通变 {counts[3]}\n行动页面已选择 {actionSelected} 份。灵感清册只展示记录；使用入口位于对应页面。"
+            : "暂无可用灵感。战斗、采集、旅途、研读与宗门活动的实际结果都可能产生记录。点击上方“灵感清册”查看。";
     }
+
+    private void refresh_auto_refinement_ui()
+    {
+        if (_autoRefinementToggle is null || _autoRefinementInspiration is null || _autoRefinementThreshold is null ||
+            _autoRefinementHint is null || _target is not Character character)
+            return;
+
+        _refreshingAutoRefinementUi = true;
+        try
+        {
+            var settings = character.get_cultivation_auto_refinement_settings();
+            var enabled = settings.GetValueOrDefault("enabled", false).AsBool();
+            var savedRecordId = settings.GetValueOrDefault("record_id", "").AsString();
+            var savedThreshold = settings.GetValueOrDefault("threshold_penalty", .02d).AsDouble();
+            var currentPenalty = settings.GetValueOrDefault("current_penalty", 0d).AsDouble();
+            var available = character.get_cultivation_inspiration_records()
+                .Where(record => !record.armed_for_action)
+                .ToList();
+
+            _autoRefinementRecordIds.Clear();
+            _autoRefinementInspiration.Clear();
+            var selectedRecordIndex = -1;
+            if (!string.IsNullOrWhiteSpace(savedRecordId) && !available.Any(record => record.record_id == savedRecordId) && enabled)
+            {
+                _autoRefinementInspiration.AddItem("已选灵感不可用，请重新选择");
+                _autoRefinementRecordIds.Add("");
+                selectedRecordIndex = 0;
+            }
+            foreach (var record in available)
+            {
+                var source = CultivationInspirationTuning.source_display_label(record.source_id, record.source_label);
+                _autoRefinementInspiration.AddItem($"{record.get_quality_name()} · {source} · 有效至 {format_inspiration_expiry(record.expires_at_game_hour)}");
+                _autoRefinementRecordIds.Add(record.record_id);
+                if (record.record_id == savedRecordId) selectedRecordIndex = _autoRefinementRecordIds.Count - 1;
+            }
+            if (_autoRefinementRecordIds.Count == 0)
+            {
+                _autoRefinementInspiration.AddItem("暂无可用于炼化的灵感");
+                _autoRefinementRecordIds.Add("");
+                selectedRecordIndex = 0;
+            }
+            else if (selectedRecordIndex < 0)
+            {
+                selectedRecordIndex = 0;
+            }
+            _autoRefinementInspiration.Select(selectedRecordIndex);
+            _autoRefinementInspiration.Disabled = available.Count == 0;
+            var selectedRecordId = selectedRecordIndex >= 0 && selectedRecordIndex < _autoRefinementRecordIds.Count
+                ? _autoRefinementRecordIds[selectedRecordIndex]
+                : "";
+            var selectedRecord = available.FirstOrDefault(record => record.record_id == selectedRecordId);
+            if (_autoRefinementOrb is not null)
+            {
+                _autoRefinementOrb.Visible = selectedRecord is not null;
+                if (selectedRecord is not null)
+                {
+                    _autoRefinementOrb.SetQualityRank(selectedRecord.quality_rank);
+                    _autoRefinementOrb.SetDomainId(selectedRecord.use_domain_id);
+                    _autoRefinementOrb.TooltipText = $"{selectedRecord.get_quality_name()} · {CultivationInspirationTuning.action_domain_label(selectedRecord.use_domain_id)}";
+                }
+            }
+
+            _autoRefinementThreshold.Value = Math.Clamp(savedThreshold * 100d, 1d, 90d);
+            _autoRefinementThreshold.Editable = true;
+            _autoRefinementToggle.ButtonPressed = enabled;
+
+            if (!enabled)
+            {
+                _autoRefinementHint.Text = $"开启后，本段修炼首次达到瓶颈减速 {savedThreshold:P0} 时炼化一份；未达到则不消耗。";
+            }
+            else if (!settings.GetValueOrDefault("eligible", false).AsBool())
+            {
+                _autoRefinementHint.Text = settings.GetValueOrDefault("reason", "当前设置暂不可用。").AsString();
+            }
+            else
+            {
+                var quality = settings.GetValueOrDefault("quality_name", "所选").AsString();
+                _autoRefinementHint.Text = currentPenalty >= savedThreshold
+                    ? $"当前瓶颈减速 {currentPenalty:P1} 已达到阈值；本段开始修炼时会立即消耗一份「{quality}」，只触发一次。"
+                    : $"当前减速 {currentPenalty:P1}；首次达到 {savedThreshold:P0} 时消耗一份「{quality}」，只触发一次。";
+            }
+        }
+        finally
+        {
+            _refreshingAutoRefinementUi = false;
+        }
+    }
+
+    private void save_auto_refinement_settings()
+    {
+        if (_refreshingAutoRefinementUi || _target is not Character character) return;
+        var settings = character.get_cultivation_auto_refinement_settings();
+        var enabled = _autoRefinementToggle.ButtonPressed;
+        var recordIndex = _autoRefinementInspiration.Selected;
+        var recordId = recordIndex >= 0 && recordIndex < _autoRefinementRecordIds.Count
+            ? _autoRefinementRecordIds[recordIndex]
+            : "";
+        var threshold = _autoRefinementThreshold.Value / 100d;
+
+        if (!character.set_cultivation_auto_refinement_settings(enabled, recordId, threshold, out var reason))
+        {
+            _autoRefinementHint.Text = reason;
+            if (enabled)
+            {
+                _autoRefinementToggle.ButtonPressed = false;
+                character.set_cultivation_auto_refinement_settings(false, "", threshold, out _);
+            }
+        }
+        else
+        {
+            _autoRefinementFeedback.Text = enabled ? "自动炼化设置已保存。" : "自动炼化已关闭；已选灵感不会被消耗。";
+        }
+
+        refresh_auto_refinement_ui();
+        refresh_plan();
+    }
+
+    private void show_auto_refinement_result(Character character)
+    {
+        if (_autoRefinementFeedback is null) return;
+        var result = character.get_last_cultivation_auto_refinement_result();
+        if (!result.GetValueOrDefault("configured", false).AsBool())
+        {
+            _autoRefinementFeedback.Text = "";
+            return;
+        }
+
+        var threshold = result.GetValueOrDefault("threshold_penalty", 0d).AsDouble();
+        if (result.GetValueOrDefault("consumed", false).AsBool())
+        {
+            var rank = result.GetValueOrDefault("quality_rank", 1).AsInt32();
+            var qualityName = rank switch { 1 => "见几", 2 => "明辨", 3 => "通变", _ => "" };
+            var oldPenalty = result.GetValueOrDefault("old_penalty", 0d).AsDouble();
+            var newPenalty = result.GetValueOrDefault("new_penalty", 0d).AsDouble();
+            _autoRefinementFeedback.Text =
+                $"瓶颈减速达到 {threshold:P0}，已消耗一份{qualityName}灵感；减速由 {oldPenalty:P1} 降至 {newPenalty:P1}。本段仅触发一次。";
+        }
+        else if (result.GetValueOrDefault("failed", false).AsBool())
+        {
+            _autoRefinementFeedback.Text = $"瓶颈减速达到 {threshold:P0}，但灵感在结算时已不可用；本段按未炼化结算。";
+        }
+        else if (result.GetValueOrDefault("expired_before_threshold", false).AsBool())
+        {
+            _autoRefinementFeedback.Text = $"本段未能在灵感有效期内达到瓶颈减速 {threshold:P0}；未消耗灵感。";
+        }
+        else
+        {
+            _autoRefinementFeedback.Text = $"本段未达到瓶颈减速 {threshold:P0}，未消耗灵感；自动设置仍保留。";
+        }
+    }
+
     private void refresh_bottleneck_status()
     {
         if (_roomBottleneckStatus is null) return;
@@ -260,27 +455,23 @@ public partial class CultivationUI
             return;
         }
 
-        var level = summary.GetValueOrDefault("level", 0).AsInt32();
-        var stages = summary.GetValueOrDefault("stages", CultivationBottleneckRules.Stages).AsInt32();
         var penalty = summary.GetValueOrDefault("penalty", 0d).AsDouble();
         var accumulated = summary.GetValueOrDefault("accumulated_cultivation_hours", 0d).AsDouble();
         var grace = summary.GetValueOrDefault("grace_hours", 0d).AsDouble();
-        var untilNext = summary.GetValueOrDefault("hours_until_next_level", 0d).AsDouble();
         var trainingRate = character.get_cultivation_rate_after_bottleneck();
 
-        if (level <= 0)
+        if (penalty <= 0d)
         {
             var untilFirstStage = grace + CultivationBottleneckRules.get_stage_interval_hours() - accumulated;
             _roomBottleneckStatus.Text =
-                $"闭关瓶颈：尚未形成　·　首次减速还需 {format_training_days(untilFirstStage)} 修炼日\n" +
-                $"当前修炼速率 {trainingRate:0.####} 缕／时";
+                $"当前瓶颈减速 {penalty:P1}　·　吐纳效率 {1d - penalty:P1}\n" +
+                $"累计闭关吐纳 {format_training_days(accumulated)} 日；预计约 {format_training_days(untilFirstStage)} 日后开始减速 · 当前修炼速率 {trainingRate:0.####} 缕／时";
             return;
         }
 
-        var next = level >= stages ? "已达最高阶" : $"距下一阶 {format_training_days(untilNext)} 修炼日";
         _roomBottleneckStatus.Text =
-            $"闭关瓶颈：{level}／{stages} 阶　·　减速 {penalty:P1}　·　效率 {1d - penalty:P1}\n" +
-            $"{next}　·　当前修炼速率 {trainingRate:0.####} 缕／时";
+            $"当前瓶颈减速 {penalty:P1}　·　吐纳效率 {1d - penalty:P1}\n" +
+            $"累计闭关吐纳 {format_training_days(accumulated)} 日　·　当前修炼速率 {trainingRate:0.####} 缕／时";
     }
     private static string format_training_days(double hours)
         => $"{Math.Max(0d, hours) / CultivationBottleneckRules.HoursPerGameDay:0.#}";
@@ -301,6 +492,7 @@ public partial class CultivationUI
     private void sync_mode_tabs() { for (var i = 0; i < _modeTabs.Count; i++) _modeTabs[i].ButtonPressed = i == _mode!.Selected; }
     private void refresh_room_study()
     {
+        _studyInspirationPicker?.Configure(_target as Character, CultivationInspirationTuning.StudyDomain, "功法研读");
         foreach (var node in _studyList.GetChildren()) { _studyList.RemoveChild(node); node.QueueFree(); }
         if (_studyCandidates.Count == 0) { var empty = QuietRoomStyle.Text("暂无可研读功法", 19); _studyList.AddChild(empty); }
         for (var i = 0; i < _studyCandidates.Count; i++)

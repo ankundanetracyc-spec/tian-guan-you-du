@@ -373,20 +373,21 @@ public partial class StoragePanel : Control
         _info_effect_title!.Text = "法宝信息";
         _info_desc!.Text = $"实例 ID：{artifact.instance_id}\n\n法宝属于玩家行囊中的唯一实例，不与普通物品堆叠。\n{(string.IsNullOrWhiteSpace(artifact.bound_basic_card_path) ? "" : "绑定基础牌：" + artifact.bound_basic_card_path)}";
         _action_button!.Visible = _cancel_button!.Visible = _pinned_selection;
-        _action_button.Text = _player?.is_artifact_equipped(artifact.instance_id) == true ? "卸下" : "使用";
+        var equipped = _player?.is_artifact_equipped(artifact.instance_id) == true;
+        _action_button.Text = equipped ? "卸下" : "使用";
         _action_button.Disabled = false;
-        HoverInfoManager.SetTooltip(_action_button, "装备此法宝");
+        HoverInfoManager.SetTooltip(_action_button, "");
     }
     private void configure_item_actions(ItemData item)
     {
         _action_button?.Hide(); _cancel_button?.Hide();
         if (!_pinned_selection || _player is null || _active_slot is null || _action_button is null || _cancel_button is null) return;
         if (!can_act_on(_active_slot)) { _pinned_selection = false; return; }
+        HoverInfoManager.SetTooltip(_action_button, "");
         bool clothing = item is PortraitClothingData;
         bool equipped = _player.is_item_equipped(_active_slot.item_path);
         _action_button.Text = clothing ? equipped ? "已穿着" : "穿上" : item is EquipmentData && equipped ? "卸下" : "使用";
         _action_button.Disabled = clothing && equipped;
-        HoverInfoManager.SetTooltip(_action_button, clothing ? "穿上后只改变人物立绘衣着，不影响衣甲属性。" : item is EquipmentData ? "穿戴或卸下此装备" : "");
         _action_button.Show(); _cancel_button.Show();
     }
     private void on_action_pressed()
@@ -428,7 +429,7 @@ public partial class StoragePanel : Control
         var lines=new List<string>();
         foreach(var dimension in new[]{"五行","质地","相性","功用"})
         {
-            var values=ItemAffixCatalog.get_tag_values(tags,dimension);
+            var values=get_display_tag_values(tags,dimension,material);
             if(dimension=="功用"&&material is not null)
             {
                 var utilityGrades=material.utilities.Where(utility=>utility is not null&&!string.IsNullOrWhiteSpace(utility.utility_id)).Select(utility=>$"{utility.utility_id}（{utility.grade_name()}）").ToList();
@@ -439,6 +440,12 @@ public partial class StoragePanel : Control
             if(values.Count>0)lines.Add($"{dimension}：{string.Join("、",values)}");
         }
         return lines.Count==0?"无词缀":string.Join("\n",lines);
+    }
+    internal static List<string> get_display_tag_values(Array<string> tags,string dimension,MaterialCraftData? material)
+    {
+        if(dimension=="质地"&&material is not null&&ItemAffixCatalog.is_material_texture(material.texture))
+            return [material.texture];
+        return ItemAffixCatalog.get_tag_values(tags,dimension).ToList();
     }
     internal static string build_item_usage_effect(ItemData item)
     {
@@ -461,8 +468,7 @@ public partial class StoragePanel : Control
             if(!ResourceLoader.Exists(item.battle_skill_path))return "战斗效果资源未找到。";
             var skill=ResourceLoader.Load<ActiveSkillData>(item.battle_skill_path);
             if(skill is null)return "战斗效果资源无法读取。";
-            if(!string.IsNullOrWhiteSpace(skill.description))return skill.description.Trim();
-            return skill.get_brief_description();
+            return CardPresentation.Underline(CardPresentation.Face(skill,null));
         }
         if(item.item_category=="材料"||item.craft_data is MaterialCraftData)
             return "用于材料匹配与制作；词缀描述材料性质，不直接触发成品效果。";

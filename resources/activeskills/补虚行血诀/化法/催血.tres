@@ -6,7 +6,7 @@
 script = ExtResource("1")
 tags = Array[String](["生命", "闪避"])
 skill_name = "催血"
-icon_path = "res://textures/ui/combat/skill_icons/基础技能_催血_v1.png"
+icon_path = "res://textures/ui/combat/skill_icons/基础技能_催血_v2.png"
 description = "基础效果为获得气血1层；若本场已触发补虚行血，本技能结算后获得身法1层。"
 skill_type = 3
 energy_cost = 1

@@ -43,6 +43,24 @@ public static class WorldHudStyle
         return label;
     }
 
+    public static RichTextLabel RichText(string bbcode, int size = 18, bool secondary = false)
+    {
+        var label = new RichTextLabel
+        {
+            Text = bbcode, BbcodeEnabled = true, FitContent = true, ScrollActive = false,
+            SizeFlagsHorizontal = Control.SizeFlags.ExpandFill,
+            AutowrapMode = TextServer.AutowrapMode.WordSmart,
+            MouseFilter = Control.MouseFilterEnum.Ignore
+        };
+        var font = GD.Load<FontFile>(FontPath);
+        label.AddThemeFontOverride("normal_font", font);
+        label.AddThemeFontOverride("bold_font", font);
+        label.AddThemeFontSizeOverride("normal_font_size", size);
+        label.AddThemeColorOverride("default_color", secondary ? SecondaryInk : Ink);
+        label.AddThemeConstantOverride("line_separation", 0);
+        return label;
+    }
+
     public static void StyleSmallButton(Button button, int fontSize = 18)
     {
         button.AddThemeFontOverride("font", GD.Load<FontFile>(FontPath));

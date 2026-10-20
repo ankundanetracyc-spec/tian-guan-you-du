@@ -1,0 +1,13 @@
+{
+  "canvas": [2048,2048],
+  "ground_origin": [1024,1900],
+  "reference_visible_height": 1375,
+  "registration": "Manual authoring registration of head height and foot midpoint; runtime uses one shared native scale, never pose bounds fitting.",
+  "poses": [
+    {"source":"source/male_throw_windup.png","output":"male_throw_windup.png","source_origin":[646,1191],"authoring_scale":1.2523},
+    {"source":"source/male_throw_release.png","output":"male_throw_release.png","source_origin":[621,1206],"authoring_scale":1.3480},
+    {"source":"source/female_throw_windup.png","output":"female_throw_windup.png","source_origin":[648,1209],"authoring_scale":1.2557},
+    {"source":"source/female_throw_release.png","output":"female_throw_release.png","source_origin":[616,1197],"authoring_scale":1.2911}
+  ],
+  "landmarks": {"male_release_palm_native":[697,-1132],"female_release_palm_native":[630,-1094]}
+}

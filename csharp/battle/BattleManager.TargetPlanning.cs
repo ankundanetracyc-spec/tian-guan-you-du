@@ -107,8 +107,6 @@ public partial class BattleManager
         {
             if (action.kind == BattleQueuedSkill.ActionKind.Rest)
                 energy = Math.Min(unit.Get("max_stamina").AsInt32(), energy + 2);
-            else if (action.kind == BattleQueuedSkill.ActionKind.Breathe)
-                mana = Math.Min(get_effective_mana_capacity(unit), mana + 1);
             else if (action.kind == BattleQueuedSkill.ActionKind.Skill)
             {
                 energy -= get_skill_energy_cost(unit, action.execution_skill);
@@ -138,7 +136,6 @@ public partial class BattleManager
         {
             var warning = "";
             if (action.kind == BattleQueuedSkill.ActionKind.Rest) energy = Math.Min(unit.Get("max_stamina").AsInt32(), energy + 2);
-            else if (action.kind == BattleQueuedSkill.ActionKind.Breathe) mana = Math.Min(get_effective_mana_capacity(unit), mana + 1);
             else if (action.kind == BattleQueuedSkill.ActionKind.Skill)
             {
                 var e = get_skill_energy_cost(unit, action.execution_skill); var m = get_skill_mana_cost(unit, action.execution_skill);

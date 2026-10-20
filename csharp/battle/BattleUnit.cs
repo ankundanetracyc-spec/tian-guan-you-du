@@ -48,6 +48,16 @@ public partial class BattleUnit : RefCounted
     }
 
     public int get_special_resource(string id) => special_resources.TryGetValue(id, out var value) ? value.AsInt32() : 0;
+    public int get_qi() => get_special_resource("炁");
+    public void set_qi(int value) => special_resources["炁"] = Mathf.Max(0, value);
+    public int get_skill_nian(string skillKey) => get_special_resource("念:" + skillKey);
+    public int add_skill_nian(string skillKey, int amount)
+    {
+        if (string.IsNullOrWhiteSpace(skillKey) || amount <= 0) return get_skill_nian(skillKey);
+        var next = get_skill_nian(skillKey) + amount;
+        special_resources["念:" + skillKey] = next;
+        return next;
+    }
     public int add_special_resource(string id, int amount, int maximum = -1)
     {
         var next = Mathf.Max(0, get_special_resource(id) + amount);

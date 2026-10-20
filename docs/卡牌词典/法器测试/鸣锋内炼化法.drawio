@@ -5,7 +5,7 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="2" value="技能名：鸣锋剑内炼化法&#10;资源路径：运行时生成（ArtifactSkillFactory）&#10;类型：攻伐&#10;关键词：增伤&#10;耗费：见召唤、御使分支或原技能说明&#10;目标：所绑定应敌、痛击或发劲的原目标&#10;效果：&#10;费用与原技能一致，不额外占栏、不占灵识。&#10;原技能效果（随所选目标）：&#10;应敌：物理伤害=round(7+体魄×0.25+敏捷×0.20)，体力1。&#10;痛击：物理伤害=round(11+体魄×0.45+敏捷×0.30)，体力2。&#10;发劲：对单个敌方造成物理伤害=round(8+体魄×0.4+体道造诣×0.2+敏捷×0.25)，体力1。只允许已拥有版本，不重新授予。&#10;化法追加：本次伤害计算忽略20%物防。&#10;使用次数：测试样本不限&#10;回合冷却：0回合" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=20;fontSize=20;fillColor=#f4eddf;strokeColor=#54655a;" vertex="1" parent="1">
+        <mxCell id="2" value="技能名：鸣锋剑内炼化法&#xa;资源路径：运行时生成（ArtifactSkillFactory）&#xa;类型：攻伐&#xa;关键词：增伤&#xa;耗费：见召唤、御使分支或原技能说明&#xa;目标：所绑定应敌、痛击或发劲的原目标&#xa;效果：&#xa;费用与原技能一致，不额外占栏、不占灵识。&#xa;原技能效果（随所选目标）：&#xa;应敌：物理伤害：A点。计算公式：A=round(7+体魄×0.45)。；体力1。&#xa;痛击：物理伤害：A点。计算公式：A=round(11+体魄×0.75)。；体力2。&#xa;发劲：对单个敌方造成物理伤害：A点。计算公式：A=round(8+体魄×0.65+体道造诣×0.2)。；体力1。只允许已拥有版本，不重新授予。&#xa;化法追加：本次伤害计算忽略20%物防。&#xa;使用次数：测试样本不限&#xa;冷却：0回合" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=20;fontSize=20;fillColor=#f4eddf;strokeColor=#54655a;" vertex="1" parent="1">
           <mxGeometry x="60" y="60" width="880" height="570" as="geometry" />
         </mxCell>
         <mxCell id="3" value="仅开发测试样本，不是正式平衡数据。&#10;外祭技能占1个技能栏位；召唤与每次御使各占1个行动位。&#10;召唤失败后的御使不转成召唤；崩解及任意离场后本场禁用。&#10;法器化法在秘籍化法之后追加，同一技能最多关联1件内炼法器。" style="whiteSpace=wrap;html=0;align=left;fontSize=18;fillColor=#fff2cc;" vertex="1" parent="1">

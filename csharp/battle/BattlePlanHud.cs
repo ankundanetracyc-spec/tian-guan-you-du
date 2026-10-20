@@ -44,9 +44,8 @@ public partial class BattlePlanHud : Control
         var tab=BattleUiArt.Icon("planning_title_tab",new(300,66));tab.Name="TitleTab";_planningPanel.AddChild(tab);
         _heading=Label("行动队列",new(0,0),new(150,26),17);tab.AddChild(_heading);
         _planningSlots=new Control{Name="PlanningSlots",Position=new(20,32),Size=new(588,136),MouseFilter=MouseFilterEnum.Ignore};_planningPanel.AddChild(_planningSlots);
-        var controls=new HBoxContainer{Size=new(444,40),Alignment=BoxContainer.AlignmentMode.Center,MouseFilter=MouseFilterEnum.Ignore};controls.AddThemeConstantOverride("separation",12);_planningControls=controls;
-        var rest=Button("休整 +2 体力",140);rest.Pressed+=()=>_manager.queue_system_action(0);controls.AddChild(rest);
-        var breathe=Button("吐纳 +1 法力",140);breathe.Pressed+=()=>_manager.queue_system_action(1);controls.AddChild(breathe);
+        var controls=new HBoxContainer{Size=new(292,40),Alignment=BoxContainer.AlignmentMode.Center,MouseFilter=MouseFilterEnum.Ignore};controls.AddThemeConstantOverride("separation",12);_planningControls=controls;
+        var rest=Button("休整 +2 体力",140);rest.Pressed+=()=>_manager.queue_rest_action();controls.AddChild(rest);
         var confirm=Button("确认队列",140);confirm.Pressed+=_manager.confirm_player_queue;controls.AddChild(confirm);
         _planningToggle=Button("隐藏队列",140);_planningToggle.Name="PlanningToggle";_planningToggle.Pressed+=TogglePlanningQueue;AddChild(_planningToggle);AddChild(controls);controls.Name="PlanningControls";
         _targetPanel=Panel("queue_panel",new(24,168),new(156,394));AddChild(_targetPanel);
@@ -79,7 +78,18 @@ public partial class BattlePlanHud : Control
     private string Signature()
     {
         var player=_manager.get_main_player_unit();
-        return $"{_manager.get_action_slot_capacity(player)}:{_manager.get_segment_phase()}:{_manager.is_selecting_queue_targets()}:{_manager.get_target_queue_index()}:{_manager.get_current_action_slot(player)}:{(GodotObject.IsInstanceValid(player)?player!.Get("current_stamina").AsInt32():0)}:{(GodotObject.IsInstanceValid(player)?player!.Get("current_mana").AsInt32():0)}:"+string.Join("|",Queue().Select(a=>$"{a.get_display_name()}:{a.target?.GetInstanceId()}:{a.completed}:{a.skipped}"));
+        return $"{_manager.get_action_slot_capacity(player)}:{_manager.get_segment_phase()}:{_manager.is_selecting_queue_targets()}:{_manager.get_target_queue_index()}:{_manager.get_current_action_slot(player)}:{(GodotObject.IsInstanceValid(player)?player!.Get("current_stamina").AsInt32():0)}:{(GodotObject.IsInstanceValid(player)?player!.Get("current_mana").AsInt32():0)}:"+string.Join("|",Queue().Select(a=>$"{a.get_display_name()}:{a.target?.GetInstanceId()}:{a.completed}:{a.skipped}:{PlayerNian(player,a)}"));
+    }
+    private int PlayerNian(GodotObject? player, BattleQueuedSkill? action)
+    {
+        if(!GodotObject.IsInstanceValid(player)||action is null||action.kind!=BattleQueuedSkill.ActionKind.Skill||action.artifact_instance_id.Length>0)return 0;
+        return _manager.get_skill_nian(player!,action.execution_skill);
+    }
+    private void AddNianBadge(Control card,BattleQueuedSkill? action,Vector2 size,GodotObject? player)
+    {
+        var stacks=PlayerNian(player,action);if(stacks<=0)return;
+        var badge=Panel("resource_chip",new(size.X-74,31),new(56,28));badge.ZIndex=5;card.AddChild(badge);
+        badge.AddChild(Label($"念 {stacks}",Vector2.Zero,new(56,28),size.X>=168?15:12));
     }
     private void RebuildQueues()
     {
@@ -93,7 +103,7 @@ public partial class BattlePlanHud : Control
         var slotsHeight=rows*_planningCardSize.Y+(rows-1)*PlanningGap;
         _planningPanel.Position=new((1672-width)/2,rows==2?108:150);_planningPanel.Size=new(width,32+slotsHeight+24);
         _planningPanel.GetNode<Control>("TitleTab").Position=new((width-300)/2,-33);_heading.Position=new(80,26);_heading.Size=new(140,26);_heading.Text=$"行动队列  {_manager.get_filled_action_slot_count(_manager.get_main_player_unit())}/{cap}";
-        _planningControls.Position=new((1672-596)/2,_planningPanel.Position.Y+_planningPanel.Size.Y+12);
+        _planningControls.Position=new((1672-444)/2,_planningPanel.Position.Y+_planningPanel.Size.Y+12);
         if(!_planningAnimating)_planningToggle.Position=PlanningTogglePosition();
         _planningSlots.Position=new(32,32);_planningSlots.Size=new(width-64,slotsHeight);
         _cardBeat?.Kill();BattleUiArt.ClearChildren(_planningSlots);BattleUiArt.ClearChildren(_actionSlots);BattleUiArt.ClearChildren(_targetRows);
@@ -103,7 +113,7 @@ public partial class BattlePlanHud : Control
         for(var i=0;i<cap;i++)
         {
             var action=i<queue.Count?queue[i]:null;var index=i;var warning=i<warnings.Count?warnings[i]:"";
-            var slot=Card(action,_planningCardSize);slot.Position=PlanningSlotPosition(i);_planningSlots.AddChild(slot);
+            var slot=Card(action,_planningCardSize);slot.Position=PlanningSlotPosition(i);AddNianBadge(slot,action,_planningCardSize,_manager.get_main_player_unit());_planningSlots.AddChild(slot);
             if(warning!="")
             {
                 var border=new Panel{Position=new(4,4),Size=_planningCardSize-new Vector2(8,8),MouseFilter=MouseFilterEnum.Ignore,ZIndex=3};
@@ -116,9 +126,6 @@ public partial class BattlePlanHud : Control
             if(action is not null && action.kind != BattleQueuedSkill.ActionKind.Empty)
             {
                 slot.MouseFilter=MouseFilterEnum.Stop;slot.MouseDefaultCursorShape=CursorShape.PointingHand;
-                slot.TooltipText=(warning!=""?(action.kind==BattleQueuedSkill.ActionKind.Skill && CardRules.IsResponse(action.skill)
-                    ? $"{warning}，无法应对；若匹配来袭时仍不足则跳过、不扣费。未触发应对时按普通分支结算，未配置则免费空放。\n"
-                    : $"{warning}，无法施展；实际执行时跳过且不扣费。\n"):"")+"拖至空槽移动 · 拖至招式互换 · 单击卸下";
                 slot.GuiInput+=input=>
                 {
                     if(input is InputEventMouseButton{ButtonIndex:MouseButton.Left,Pressed:true} press && _manager.can_player_plan())
@@ -128,15 +135,17 @@ public partial class BattlePlanHud : Control
                         _dragSource=slot;slot.AcceptEvent();
                     }
                 };
+                HoverInfoManager.SetInfo(slot, BuildQueueActionHover(action, i, _manager.get_main_player_unit(), warning, true));
             }
             var executionSize=CardSize(Mathf.Min(144,(_actionSlots.Size.X-(cap-1)*12)/cap));
             var executionWidth=cap*executionSize.X+(cap-1)*12;
-            var executed=Card(action,executionSize);
+            var executed=Card(action,executionSize);AddNianBadge(executed,action,executionSize,_manager.get_main_player_unit());
             executed.Position=new((_actionSlots.Size.X-executionWidth)*.5f+i*(executionSize.X+12),(_actionSlots.Size.Y-executionSize.Y)*.5f);
             executed.Name=$"ActionSlot{i+1}";
             if(action?.completed==true)executed.Modulate=new Color(.42f,.44f,.43f,.72f);
             executed.MouseFilter=MouseFilterEnum.Pass;
-            executed.TooltipText=$"第 {i+1} 位 · {action?.get_display_name()??"空位"}"+(action?.completed==true?(action.skipped?" · 已跳过":" · 已执行"):" · 待行动");
+            if(action is not null && action.kind != BattleQueuedSkill.ActionKind.Empty)
+                HoverInfoManager.SetInfo(executed, BuildQueueActionHover(action, i, _manager.get_main_player_unit(), warning, false));
             _actionSlots.AddChild(executed);
             if(i==_manager.get_current_action_slot(_manager.get_main_player_unit()))
                 _actionIndicator.Position=_actionSlots.Position+executed.Position+new Vector2((executionSize.X-30)*.5f,-22);
@@ -209,9 +218,44 @@ public partial class BattlePlanHud : Control
             opening.AddChild(CombatSkillBar.CreateSkillIconVisual(action.skill,opening.Size));
         }
         var frame=new NinePatchRect{Texture=BattleUiArt.Texture(action is null?"skill_slot_empty":"skill_card_frame"),Size=size,PatchMarginLeft=edge,PatchMarginRight=edge,PatchMarginTop=26,PatchMarginBottom=foot,MouseFilter=MouseFilterEnum.Ignore,ZIndex=2};card.AddChild(frame);
-        if(action is not null&&action.kind!=BattleQueuedSkill.ActionKind.Skill)card.AddChild(Label(action.kind==BattleQueuedSkill.ActionKind.Rest?"休":action.kind==BattleQueuedSkill.ActionKind.Retreat?"撤":"吐",opening.Position,opening.Size,Mathf.RoundToInt(size.X*.38f)));
+        if(action is not null&&action.kind!=BattleQueuedSkill.ActionKind.Skill)card.AddChild(Label(action.kind==BattleQueuedSkill.ActionKind.Rest?"休":"撤",opening.Position,opening.Size,Mathf.RoundToInt(size.X*.38f)));
         var name=Label(action?.get_display_name()??"空位",new(24,size.Y-62),new(size.X-48,48),size.X>=168?22:18);name.ZIndex=3;card.AddChild(name);
         return card;
+    }
+    private HoverInfoManager.HoverInfoContent BuildQueueActionHover(
+        BattleQueuedSkill action, int slotIndex, GodotObject? player, string warning, bool planning)
+    {
+        var status = action.completed ? action.skipped ? "已跳过" : "已执行" : "待行动";
+        var subtitle = $"第 {slotIndex + 1} 位 · {status}";
+        var details = new List<string>();
+        if (!string.IsNullOrWhiteSpace(warning))
+        {
+            var warningDetail = action.kind == BattleQueuedSkill.ActionKind.Skill && CardRules.IsResponse(action.skill)
+                ? $"队列检查：{warning}；若匹配来袭时仍不足则跳过且不扣费。未触发应对时按普通分支结算，未配置则免费空放。"
+                : $"队列检查：{warning}；实际执行时跳过且不扣费。";
+            details.Add(warningDetail);
+        }
+        if (action.kind == BattleQueuedSkill.ActionKind.Skill && player is WorldEntity unit)
+        {
+            var skillInfo = CombatSkillBar.BuildSkillHoverInfo(unit, action.skill, _manager, action.execution_skill);
+            var targetName = GodotObject.IsInstanceValid(action.target) ? action.target!.Get("entity_name").AsString() : "";
+            if (!string.IsNullOrWhiteSpace(targetName)) details.Add($"指定目标：{targetName}");
+            var nian = PlayerNian(player, action);
+            if (nian > 0) details.Add($"技能实例念：{nian}");
+            if (planning) details.Add("队列操作：拖至空槽移动，拖至招式互换，单击卸下。");
+            var body = skillInfo.Body;
+            if (details.Count > 0) body += "\n\n" + string.Join("\n\n", details);
+            return new HoverInfoManager.HoverInfoContent(action.get_display_name(), body, skillInfo.Icon, $"{skillInfo.Subtitle}　·　{subtitle}");
+        }
+
+        details.Insert(0, action.kind switch
+        {
+            BattleQueuedSkill.ActionKind.Rest => "效果：回复 2 点体力，不超过体力上限。",
+            BattleQueuedSkill.ActionKind.Retreat => "效果：按本场撤退规则尝试离开战斗。",
+            _ => "此行动槽尚未安排技能。"
+        });
+        if (planning) details.Add("队列操作：拖至空槽移动，拖至招式互换，单击卸下。");
+        return new HoverInfoManager.HoverInfoContent(action.get_display_name(), string.Join("\n\n", details), null, subtitle);
     }
     public void PresentAction(GodotObject unit)
     {
@@ -251,7 +295,7 @@ public partial class BattlePlanHud : Control
         _actionIndicator.Visible=_manager.get_segment_phase()==BattleManager.SegmentPhase.Executing&&cursor>=0&&cursor<Queue().Count;
         if(_progress is not null)_progress.Visible=!planning;
     }
-    private Vector2 PlanningTogglePosition()=>_planningQueueVisible?_planningControls.Position+new Vector2(456,0):new Vector2((1672-140)/2,_planningPanel.Position.Y-18);
+    private Vector2 PlanningTogglePosition()=>_planningQueueVisible?_planningControls.Position+new Vector2(304,0):new Vector2((1672-140)/2,_planningPanel.Position.Y-18);
     private void TogglePlanningQueue()
     {
         if(_planningAnimating)return;

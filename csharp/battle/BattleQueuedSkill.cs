@@ -3,7 +3,7 @@ using Godot;
 /// <summary>单名角色技能队列中的一条指令。所有时间均以战斗模拟帧计。</summary>
 public class BattleQueuedSkill
 {
-    public enum ActionKind { Skill, Rest, Breathe, Retreat, Empty }
+    public enum ActionKind { Skill, Rest, Retreat, Empty }
     public enum Phase { Waiting, Preparing, Resolving, Recovering, HoldingResponse }
 
     public ActionKind kind = ActionKind.Skill;
@@ -43,13 +43,11 @@ public class BattleQueuedSkill
     public static BattleQueuedSkill Retreat() => new(ActionKind.Retreat);
     public static BattleQueuedSkill Empty() => new(ActionKind.Empty);
     public static BattleQueuedSkill Rest() => new(ActionKind.Rest);
-    public static BattleQueuedSkill Breathe() => new(ActionKind.Breathe);
     public string get_display_name() => kind switch
     {
         ActionKind.Empty => "空位",
         ActionKind.Retreat => "撤退",
         ActionKind.Rest => "休整",
-        ActionKind.Breathe => "吐纳",
         _ => (skill?.skill_name ?? "技能") + (artifact_instance_id.Length == 0 ? "" : artifact_intent == ArtifactBattleRuntime.Intent.Summon ? "〔召唤〕" : artifact_intent == ArtifactBattleRuntime.Intent.Use ? "〔御使〕" : "〔不可用〕")
     };
 

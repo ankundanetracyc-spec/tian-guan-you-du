@@ -9,29 +9,24 @@
     "habitat": "栖于松林、旧祠与山道边缘",
     "habit": "栖于松林、旧祠与山道边缘，常以灵火标记猎物，再把目标引向同伴伏击圈。",
     "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
-    "talent": "青尾狐习性：偏向提高敏捷相关能力；首轮不附加新状态或额外行动。",
+    "talent": "青尾狐习性：偏向提升身心协调与反应能力；首轮不附加新状态或额外行动。",
     "technique": "狐火点名：对单个目标造成物理伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
     "portrait": "res://textures/bestiary/static/qing_tail_fox.png",
     "stats": {
       "physique": {
-        "min": 5,
-        "mean": 6,
-        "max": 7
+        "min": 10.0,
+        "mean": 11.5,
+        "max": 13.0
       },
       "intelligence": {
         "min": 6,
         "mean": 7,
         "max": 8
       },
-      "agility": {
-        "min": 10,
-        "mean": 11,
-        "max": 12
-      },
       "soul": {
-        "min": 7,
-        "mean": 8,
-        "max": 9
+        "min": 12.0,
+        "mean": 13.5,
+        "max": 15.0
       }
     },
     "physicalDefense": null,
@@ -47,29 +42,24 @@
     "habitat": "以小群活动",
     "habit": "以小群活动，沿兽径追踪受伤猎物；争夺猎场时会先试探，再集中扑击。",
     "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
-    "talent": "赤鬃狼习性：偏向提高敏捷相关能力；首轮不附加新状态或额外行动。",
+    "talent": "赤鬃狼习性：偏向提升身心协调与反应能力；首轮不附加新状态或额外行动。",
     "technique": "裂风扑击：对单个目标造成物理伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
     "portrait": "res://textures/bestiary/static/red_mane_wolf.png",
     "stats": {
       "physique": {
-        "min": 8,
-        "mean": 9,
-        "max": 10
+        "min": 12.5,
+        "mean": 14.0,
+        "max": 15.5
       },
       "intelligence": {
         "min": 3,
         "mean": 4,
         "max": 5
       },
-      "agility": {
-        "min": 9,
-        "mean": 10,
-        "max": 11
-      },
       "soul": {
-        "min": 4,
-        "mean": 5,
-        "max": 6
+        "min": 8.5,
+        "mean": 10.0,
+        "max": 11.5
       }
     },
     "physicalDefense": null,
@@ -90,24 +80,19 @@
     "portrait": "res://textures/bestiary/static/rock_back_badger.png",
     "stats": {
       "physique": {
-        "min": 9,
-        "mean": 10,
-        "max": 11
+        "min": 11.5,
+        "mean": 13.0,
+        "max": 14.5
       },
       "intelligence": {
         "min": 2,
         "mean": 3,
         "max": 4
       },
-      "agility": {
-        "min": 5,
-        "mean": 6,
-        "max": 7
-      },
       "soul": {
-        "min": 4,
-        "mean": 5,
-        "max": 6
+        "min": 6.5,
+        "mean": 8.0,
+        "max": 9.5
       }
     },
     "physicalDefense": 3,
@@ -140,29 +125,24 @@
     "habitat": "以群体迁徙穿越山脊",
     "habit": "以群体迁徙穿越山脊，遇到威胁时会整群朝同一方向冲锋。",
     "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
-    "talent": "铁蹄羚习性：偏向提高敏捷相关能力；首轮不附加新状态或额外行动。",
+    "talent": "铁蹄羚习性：偏向提升身心协调与反应能力；首轮不附加新状态或额外行动。",
     "technique": "碎岩冲锋：对单个目标造成物理伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
     "portrait": "res://textures/bestiary/static/iron_hoof_antelope.png",
     "stats": {
       "physique": {
-        "min": 8,
-        "mean": 9,
-        "max": 10
+        "min": 12.5,
+        "mean": 14.0,
+        "max": 15.5
       },
       "intelligence": {
         "min": 3,
         "mean": 4,
         "max": 5
       },
-      "agility": {
-        "min": 9,
-        "mean": 10,
-        "max": 11
-      },
       "soul": {
-        "min": 3,
-        "mean": 4,
-        "max": 5
+        "min": 7.5,
+        "mean": 9.0,
+        "max": 10.5
       }
     },
     "physicalDefense": null,
@@ -178,29 +158,24 @@
     "habitat": "潜伏在浅水和芦苇根间",
     "habit": "潜伏在浅水和芦苇根间，以水面气泡与拖行痕迹标示活动范围。",
     "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
-    "talent": "沼鳞蟒习性：偏向提高敏捷相关能力；首轮不附加新状态或额外行动。",
+    "talent": "沼鳞蟒习性：偏向提升身心协调与反应能力；首轮不附加新状态或额外行动。",
     "technique": "缠颈拖拽：对单个目标造成物理伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
     "portrait": "res://textures/bestiary/static/marsh_scale_python.png",
     "stats": {
       "physique": {
-        "min": 7,
-        "mean": 8,
-        "max": 9
+        "min": 11.0,
+        "mean": 12.5,
+        "max": 14.0
       },
       "intelligence": {
         "min": 5,
         "mean": 6,
         "max": 7
       },
-      "agility": {
-        "min": 8,
-        "mean": 9,
-        "max": 10
-      },
       "soul": {
-        "min": 6,
-        "mean": 7,
-        "max": 8
+        "min": 10.0,
+        "mean": 11.5,
+        "max": 13.0
       }
     },
     "physicalDefense": null,
@@ -255,24 +230,19 @@
     "portrait": "res://textures/bestiary/static/copper_back_turtle.png",
     "stats": {
       "physique": {
-        "min": 11,
-        "mean": 12,
-        "max": 13
+        "min": 12.0,
+        "mean": 13.5,
+        "max": 15.0
       },
       "intelligence": {
         "min": 3,
         "mean": 4,
         "max": 5
       },
-      "agility": {
-        "min": 2,
-        "mean": 3,
-        "max": 4
-      },
       "soul": {
-        "min": 6,
-        "mean": 7,
-        "max": 8
+        "min": 7.0,
+        "mean": 8.5,
+        "max": 10.0
       }
     },
     "physicalDefense": 5,
@@ -288,29 +258,24 @@
     "habitat": "出没于温泉与火山石缝",
     "habit": "出没于温泉与火山石缝，常叼走火种、松脂和营地食物。",
     "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
-    "talent": "烬尾貂习性：偏向提高敏捷相关能力；首轮不附加新状态或额外行动。",
+    "talent": "烬尾貂习性：偏向提升身心协调与反应能力；首轮不附加新状态或额外行动。",
     "technique": "火尾扫掠：对单个目标造成物理伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
     "portrait": "res://textures/bestiary/static/ember_tail_marten.png",
     "stats": {
       "physique": {
-        "min": 4,
-        "mean": 5,
-        "max": 6
+        "min": 9.5,
+        "mean": 11.0,
+        "max": 12.5
       },
       "intelligence": {
         "min": 5,
         "mean": 6,
         "max": 7
       },
-      "agility": {
-        "min": 11,
-        "mean": 12,
-        "max": 13
-      },
       "soul": {
-        "min": 5,
-        "mean": 6,
-        "max": 7
+        "min": 10.5,
+        "mean": 12.0,
+        "max": 13.5
       }
     },
     "physicalDefense": null,
@@ -331,24 +296,19 @@
     "portrait": "res://textures/bestiary/static/mist_horn_deer.png",
     "stats": {
       "physique": {
-        "min": 6,
-        "mean": 7,
-        "max": 8
+        "min": 10.0,
+        "mean": 11.5,
+        "max": 13.0
       },
       "intelligence": {
         "min": 6,
         "mean": 7,
         "max": 8
       },
-      "agility": {
-        "min": 8,
-        "mean": 9,
-        "max": 10
-      },
       "soul": {
-        "min": 7,
-        "mean": 8,
-        "max": 9
+        "min": 11.0,
+        "mean": 12.5,
+        "max": 14.0
       }
     },
     "physicalDefense": null,
@@ -369,24 +329,19 @@
     "portrait": "res://textures/bestiary/static/red_fang_boar.png",
     "stats": {
       "physique": {
-        "min": 11,
-        "mean": 12,
-        "max": 13
+        "min": 13.5,
+        "mean": 15.0,
+        "max": 16.5
       },
       "intelligence": {
         "min": 2,
         "mean": 3,
         "max": 4
       },
-      "agility": {
-        "min": 5,
-        "mean": 6,
-        "max": 7
-      },
       "soul": {
-        "min": 3,
-        "mean": 4,
-        "max": 5
+        "min": 5.5,
+        "mean": 7.0,
+        "max": 8.5
       }
     },
     "physicalDefense": 3,
@@ -424,24 +379,19 @@
     "portrait": "res://textures/bestiary/static/bamboo_node_spirit.png",
     "stats": {
       "physique": {
-        "min": 6,
-        "mean": 7,
-        "max": 8
+        "min": 9.0,
+        "mean": 10.5,
+        "max": 12.0
       },
       "intelligence": {
         "min": 6,
         "mean": 7,
         "max": 8
       },
-      "agility": {
-        "min": 6,
-        "mean": 7,
-        "max": 8
-      },
       "soul": {
-        "min": 6,
-        "mean": 7,
-        "max": 8
+        "min": 9.0,
+        "mean": 10.5,
+        "max": 12.0
       }
     },
     "physicalDefense": null,
@@ -462,24 +412,19 @@
     "portrait": "res://textures/bestiary/static/green_vine_spirit.png",
     "stats": {
       "physique": {
-        "min": 7,
-        "mean": 8,
-        "max": 9
+        "min": 8.5,
+        "mean": 10.0,
+        "max": 11.5
       },
       "intelligence": {
         "min": 5,
         "mean": 6,
         "max": 7
       },
-      "agility": {
-        "min": 3,
-        "mean": 4,
-        "max": 5
-      },
       "soul": {
-        "min": 7,
-        "mean": 8,
-        "max": 9
+        "min": 8.5,
+        "mean": 10.0,
+        "max": 11.5
       }
     },
     "physicalDefense": null,
@@ -517,24 +462,19 @@
     "portrait": "res://textures/bestiary/static/stream_spring_spirit.png",
     "stats": {
       "physique": {
-        "min": 4,
-        "mean": 5,
-        "max": 6
+        "min": 7.0,
+        "mean": 8.5,
+        "max": 10.0
       },
       "intelligence": {
         "min": 8,
         "mean": 9,
         "max": 10
       },
-      "agility": {
-        "min": 6,
-        "mean": 7,
-        "max": 8
-      },
       "soul": {
-        "min": 8,
-        "mean": 9,
-        "max": 10
+        "min": 11.0,
+        "mean": 12.5,
+        "max": 14.0
       }
     },
     "physicalDefense": null,
@@ -572,24 +512,19 @@
     "portrait": "res://textures/bestiary/static/frost_bell_spirit.png",
     "stats": {
       "physique": {
-        "min": 5,
-        "mean": 6,
-        "max": 7
+        "min": 8.0,
+        "mean": 9.5,
+        "max": 11.0
       },
       "intelligence": {
         "min": 7,
         "mean": 8,
         "max": 9
       },
-      "agility": {
-        "min": 6,
-        "mean": 7,
-        "max": 8
-      },
       "soul": {
-        "min": 7,
-        "mean": 8,
-        "max": 9
+        "min": 10.0,
+        "mean": 11.5,
+        "max": 13.0
       }
     },
     "physicalDefense": null,
@@ -610,24 +545,19 @@
     "portrait": "res://textures/bestiary/static/sand_crystal_spirit.png",
     "stats": {
       "physique": {
-        "min": 6,
-        "mean": 7,
-        "max": 8
+        "min": 9.0,
+        "mean": 10.5,
+        "max": 12.0
       },
       "intelligence": {
         "min": 5,
         "mean": 6,
         "max": 7
       },
-      "agility": {
-        "min": 6,
-        "mean": 7,
-        "max": 8
-      },
       "soul": {
-        "min": 7,
-        "mean": 8,
-        "max": 9
+        "min": 10.0,
+        "mean": 11.5,
+        "max": 13.0
       }
     },
     "physicalDefense": null,
@@ -665,24 +595,19 @@
     "portrait": "res://textures/bestiary/static/mushroom_umbrella_spirit.png",
     "stats": {
       "physique": {
-        "min": 6,
-        "mean": 7,
-        "max": 8
+        "min": 7.5,
+        "mean": 9.0,
+        "max": 10.5
       },
       "intelligence": {
         "min": 7,
         "mean": 8,
         "max": 9
       },
-      "agility": {
-        "min": 3,
-        "mean": 4,
-        "max": 5
-      },
       "soul": {
-        "min": 6,
-        "mean": 7,
-        "max": 8
+        "min": 7.5,
+        "mean": 9.0,
+        "max": 10.5
       }
     },
     "physicalDefense": null,
@@ -737,24 +662,19 @@
     "portrait": "res://textures/bestiary/static/gray_throat_demon_dog.png",
     "stats": {
       "physique": {
-        "min": 8,
-        "mean": 9,
-        "max": 10
+        "min": 11.5,
+        "mean": 13.0,
+        "max": 14.5
       },
       "intelligence": {
         "min": 4,
         "mean": 5,
         "max": 6
       },
-      "agility": {
-        "min": 7,
-        "mean": 8,
-        "max": 9
-      },
       "soul": {
-        "min": 5,
-        "mean": 6,
-        "max": 7
+        "min": 8.5,
+        "mean": 10.0,
+        "max": 11.5
       }
     },
     "physicalDefense": null,
@@ -775,24 +695,19 @@
     "portrait": "res://textures/bestiary/static/corrosion_spider_demon.png",
     "stats": {
       "physique": {
-        "min": 5,
-        "mean": 6,
-        "max": 7
+        "min": 8.0,
+        "mean": 9.5,
+        "max": 11.0
       },
       "intelligence": {
         "min": 7,
         "mean": 8,
         "max": 9
       },
-      "agility": {
-        "min": 6,
-        "mean": 7,
-        "max": 8
-      },
       "soul": {
-        "min": 7,
-        "mean": 8,
-        "max": 9
+        "min": 10.0,
+        "mean": 11.5,
+        "max": 13.0
       }
     },
     "physicalDefense": null,
@@ -813,24 +728,19 @@
     "portrait": "res://textures/bestiary/static/lamp_eater_demon.png",
     "stats": {
       "physique": {
-        "min": 5,
-        "mean": 6,
-        "max": 7
+        "min": 8.5,
+        "mean": 10.0,
+        "max": 11.5
       },
       "intelligence": {
         "min": 7,
         "mean": 8,
         "max": 9
       },
-      "agility": {
-        "min": 7,
-        "mean": 8,
-        "max": 9
-      },
       "soul": {
-        "min": 7,
-        "mean": 8,
-        "max": 9
+        "min": 10.5,
+        "mean": 12.0,
+        "max": 13.5
       }
     },
     "physicalDefense": null,
@@ -851,24 +761,19 @@
     "portrait": "res://textures/bestiary/static/crack_armor_demon_soldier.png",
     "stats": {
       "physique": {
-        "min": 11,
-        "mean": 12,
-        "max": 13
+        "min": 13.0,
+        "mean": 14.5,
+        "max": 16.0
       },
       "intelligence": {
         "min": 3,
         "mean": 4,
         "max": 5
       },
-      "agility": {
-        "min": 4,
-        "mean": 5,
-        "max": 6
-      },
       "soul": {
-        "min": 6,
-        "mean": 7,
-        "max": 8
+        "min": 8.0,
+        "mean": 9.5,
+        "max": 11.0
       }
     },
     "physicalDefense": 3,
@@ -901,29 +806,24 @@
     "habitat": "藏身崩塌矿道和沙尘地带",
     "habit": "藏身崩塌矿道和沙尘地带，甲壳与碎石颜色接近。",
     "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
-    "talent": "黑砂魔螳习性：偏向提高敏捷相关能力；首轮不附加新状态或额外行动。",
+    "talent": "黑砂魔螳习性：偏向提升身心协调与反应能力；首轮不附加新状态或额外行动。",
     "technique": "砂隐割喉：对单个目标造成物理伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
     "portrait": "res://textures/bestiary/static/black_sand_mantis.png",
     "stats": {
       "physique": {
-        "min": 6,
-        "mean": 7,
-        "max": 8
+        "min": 11.0,
+        "mean": 12.5,
+        "max": 14.0
       },
       "intelligence": {
         "min": 4,
         "mean": 5,
         "max": 6
       },
-      "agility": {
-        "min": 10,
-        "mean": 11,
-        "max": 12
-      },
       "soul": {
-        "min": 5,
-        "mean": 6,
-        "max": 7
+        "min": 10.0,
+        "mean": 11.5,
+        "max": 13.0
       }
     },
     "physicalDefense": null,
@@ -1046,24 +946,19 @@
     "portrait": "res://textures/bestiary/static/lantern_guiding_ghost.png",
     "stats": {
       "physique": {
-        "min": 3,
-        "mean": 4,
-        "max": 5
+        "min": 6.0,
+        "mean": 7.5,
+        "max": 9.0
       },
       "intelligence": {
         "min": 7,
         "mean": 8,
         "max": 9
       },
-      "agility": {
-        "min": 6,
-        "mean": 7,
-        "max": 8
-      },
       "soul": {
-        "min": 8,
-        "mean": 9,
-        "max": 10
+        "min": 11.0,
+        "mean": 12.5,
+        "max": 14.0
       }
     },
     "physicalDefense": null,
@@ -1084,24 +979,19 @@
     "portrait": "res://textures/bestiary/static/drowning_ghost.png",
     "stats": {
       "physique": {
-        "min": 7,
-        "mean": 8,
-        "max": 9
+        "min": 9.0,
+        "mean": 10.5,
+        "max": 12.0
       },
       "intelligence": {
         "min": 6,
         "mean": 7,
         "max": 8
       },
-      "agility": {
-        "min": 4,
-        "mean": 5,
-        "max": 6
-      },
       "soul": {
-        "min": 8,
-        "mean": 9,
-        "max": 10
+        "min": 10.0,
+        "mean": 11.5,
+        "max": 13.0
       }
     },
     "physicalDefense": null,
@@ -1122,24 +1012,19 @@
     "portrait": "res://textures/bestiary/static/paper_clothes_ghost.png",
     "stats": {
       "physique": {
-        "min": 2,
-        "mean": 3,
-        "max": 4
+        "min": 6.0,
+        "mean": 7.5,
+        "max": 9.0
       },
       "intelligence": {
         "min": 7,
         "mean": 8,
         "max": 9
       },
-      "agility": {
-        "min": 8,
-        "mean": 9,
-        "max": 10
-      },
       "soul": {
-        "min": 9,
-        "mean": 10,
-        "max": 11
+        "min": 13.0,
+        "mean": 14.5,
+        "max": 16.0
       }
     },
     "physicalDefense": null,
@@ -1177,24 +1062,19 @@
     "portrait": "res://textures/bestiary/static/well_bottom_ghost.png",
     "stats": {
       "physique": {
-        "min": 8,
-        "mean": 9,
-        "max": 10
+        "min": 9.5,
+        "mean": 11.0,
+        "max": 12.5
       },
       "intelligence": {
         "min": 6,
         "mean": 7,
         "max": 8
       },
-      "agility": {
-        "min": 3,
-        "mean": 4,
-        "max": 5
-      },
       "soul": {
-        "min": 8,
-        "mean": 9,
-        "max": 10
+        "min": 9.5,
+        "mean": 11.0,
+        "max": 12.5
       }
     },
     "physicalDefense": null,
@@ -1227,29 +1107,24 @@
     "habitat": "沿门缝、窗格和树影移动",
     "habit": "沿门缝、窗格和树影移动，白日时躲入狭窄阴影。",
     "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
-    "talent": "影缝鬼习性：偏向提高敏捷相关能力；首轮不附加新状态或额外行动。",
+    "talent": "影缝鬼习性：偏向提升身心协调与反应能力；首轮不附加新状态或额外行动。",
     "technique": "穿影缝袭：对单个目标造成神魂伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
     "portrait": "res://textures/bestiary/static/shadow_seam_ghost.png",
     "stats": {
       "physique": {
-        "min": 5,
-        "mean": 6,
-        "max": 7
+        "min": 10.5,
+        "mean": 12.0,
+        "max": 13.5
       },
       "intelligence": {
         "min": 6,
         "mean": 7,
         "max": 8
       },
-      "agility": {
-        "min": 11,
-        "mean": 12,
-        "max": 13
-      },
       "soul": {
-        "min": 7,
-        "mean": 8,
-        "max": 9
+        "min": 12.5,
+        "mean": 14.0,
+        "max": 15.5
       }
     },
     "physicalDefense": null,
@@ -1321,24 +1196,19 @@
     "portrait": "res://textures/bestiary/static/umbrella_ghost.png",
     "stats": {
       "physique": {
-        "min": 5,
-        "mean": 6,
-        "max": 7
+        "min": 7.0,
+        "mean": 8.5,
+        "max": 10.0
       },
       "intelligence": {
         "min": 7,
         "mean": 8,
         "max": 9
       },
-      "agility": {
-        "min": 4,
-        "mean": 5,
-        "max": 6
-      },
       "soul": {
-        "min": 9,
-        "mean": 10,
-        "max": 11
+        "min": 11.0,
+        "mean": 12.5,
+        "max": 14.0
       }
     },
     "physicalDefense": null,
@@ -1359,24 +1229,19 @@
     "portrait": "res://textures/bestiary/static/homeward_child_ghost.png",
     "stats": {
       "physique": {
-        "min": 3,
-        "mean": 4,
-        "max": 5
+        "min": 6.5,
+        "mean": 8.0,
+        "max": 9.5
       },
       "intelligence": {
         "min": 8,
         "mean": 9,
         "max": 10
       },
-      "agility": {
-        "min": 7,
-        "mean": 8,
-        "max": 9
-      },
       "soul": {
-        "min": 9,
-        "mean": 10,
-        "max": 11
+        "min": 12.5,
+        "mean": 14.0,
+        "max": 15.5
       }
     },
     "physicalDefense": null,
@@ -1397,24 +1262,19 @@
     "portrait": "res://textures/bestiary/static/gray_back_boar.png",
     "stats": {
       "physique": {
-        "min": 10,
-        "mean": 11,
-        "max": 12
+        "min": 12.5,
+        "mean": 14.0,
+        "max": 15.5
       },
       "intelligence": {
         "min": 3,
         "mean": 4,
         "max": 5
       },
-      "agility": {
-        "min": 5,
-        "mean": 6,
-        "max": 7
-      },
       "soul": {
-        "min": 3,
-        "mean": 4,
-        "max": 5
+        "min": 5.5,
+        "mean": 7.0,
+        "max": 8.5
       }
     },
     "physicalDefense": 3,
@@ -1435,24 +1295,19 @@
     "portrait": "res://textures/bestiary/static/giant_toad.png",
     "stats": {
       "physique": {
-        "min": 9,
-        "mean": 10,
-        "max": 11
+        "min": 11.0,
+        "mean": 12.5,
+        "max": 14.0
       },
       "intelligence": {
         "min": 5,
         "mean": 6,
         "max": 7
       },
-      "agility": {
-        "min": 4,
-        "mean": 5,
-        "max": 6
-      },
       "soul": {
-        "min": 5,
-        "mean": 6,
-        "max": 7
+        "min": 7.0,
+        "mean": 8.5,
+        "max": 10.0
       }
     },
     "physicalDefense": null,
@@ -1468,29 +1323,24 @@
     "habitat": "借环纹伪装",
     "habit": "借环纹伪装，受惊时迅速咬击。",
     "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
-    "talent": "赤环毒蛇习性：偏向提高敏捷相关能力；首轮不附加新状态或额外行动。",
+    "talent": "赤环毒蛇习性：偏向提升身心协调与反应能力；首轮不附加新状态或额外行动。",
     "technique": "赤环咬：对单个目标造成物理伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
     "portrait": "res://textures/bestiary/static/red_ring_snake.png",
     "stats": {
       "physique": {
-        "min": 5,
-        "mean": 6,
-        "max": 7
+        "min": 11.0,
+        "mean": 12.5,
+        "max": 14.0
       },
       "intelligence": {
         "min": 7,
         "mean": 8,
         "max": 9
       },
-      "agility": {
-        "min": 12,
-        "mean": 13,
-        "max": 14
-      },
       "soul": {
-        "min": 5,
-        "mean": 6,
-        "max": 7
+        "min": 11.0,
+        "mean": 12.5,
+        "max": 14.0
       }
     },
     "physicalDefense": null,
@@ -1521,31 +1371,26 @@
     "stage": "",
     "humanParity": "",
     "habitat": "山坡草丛、林缘与浅洞",
-    "habit": "警觉敏捷，受惊便迅速逃离。",
+    "habit": "行动警觉，受惊便迅速逃离。",
     "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外效果。",
     "talent": "",
     "technique": "",
     "portrait": "res://textures/bestiary/static/mountain_hare.png",
     "stats": {
       "physique": {
-        "min": 1,
-        "mean": 2,
-        "max": 3
+        "min": 3.5,
+        "mean": 5.0,
+        "max": 6.5
       },
       "intelligence": {
         "min": 0,
         "mean": 1,
         "max": 2
       },
-      "agility": {
-        "min": 5,
-        "mean": 6,
-        "max": 7
-      },
       "soul": {
-        "min": 0,
-        "mean": 1,
-        "max": 2
+        "min": 2.5,
+        "mean": 4.0,
+        "max": 5.5
       }
     },
     "physicalDefense": null,
@@ -1566,24 +1411,19 @@
     "portrait": "res://textures/bestiary/static/yellow_horn_deer.png",
     "stats": {
       "physique": {
-        "min": 4,
-        "mean": 5,
-        "max": 6
+        "min": 6.5,
+        "mean": 8.0,
+        "max": 9.5
       },
       "intelligence": {
         "min": 1,
         "mean": 2,
         "max": 3
       },
-      "agility": {
-        "min": 5,
-        "mean": 6,
-        "max": 7
-      },
       "soul": {
-        "min": 2,
-        "mean": 3,
-        "max": 4
+        "min": 4.5,
+        "mean": 6.0,
+        "max": 7.5
       }
     },
     "physicalDefense": null,
@@ -1604,24 +1444,19 @@
     "portrait": "res://textures/bestiary/static/forest_chicken.png",
     "stats": {
       "physique": {
-        "min": 1,
-        "mean": 2,
-        "max": 3
+        "min": 2.5,
+        "mean": 4.0,
+        "max": 5.5
       },
       "intelligence": {
         "min": 0,
         "mean": 1,
         "max": 2
       },
-      "agility": {
-        "min": 3,
-        "mean": 4,
-        "max": 5
-      },
       "soul": {
-        "min": 0,
-        "mean": 1,
-        "max": 2
+        "min": 1.5,
+        "mean": 3.0,
+        "max": 4.5
       }
     },
     "physicalDefense": null,
@@ -1642,24 +1477,19 @@
     "portrait": "res://textures/bestiary/static/squirrel.png",
     "stats": {
       "physique": {
-        "min": 1,
-        "mean": 2,
-        "max": 3
+        "min": 4.5,
+        "mean": 6.0,
+        "max": 7.5
       },
       "intelligence": {
         "min": 1,
         "mean": 2,
         "max": 3
       },
-      "agility": {
-        "min": 7,
-        "mean": 8,
-        "max": 9
-      },
       "soul": {
-        "min": 1,
-        "mean": 2,
-        "max": 3
+        "min": 4.5,
+        "mean": 6.0,
+        "max": 7.5
       }
     },
     "physicalDefense": null,
@@ -1680,24 +1510,19 @@
     "portrait": "res://textures/bestiary/static/wild_goat.png",
     "stats": {
       "physique": {
-        "min": 5,
-        "mean": 6,
-        "max": 7
+        "min": 7.0,
+        "mean": 8.5,
+        "max": 10.0
       },
       "intelligence": {
         "min": 1,
         "mean": 2,
         "max": 3
       },
-      "agility": {
-        "min": 4,
-        "mean": 5,
-        "max": 6
-      },
       "soul": {
-        "min": 2,
-        "mean": 3,
-        "max": 4
+        "min": 4.0,
+        "mean": 5.5,
+        "max": 7.0
       }
     },
     "physicalDefense": null,
@@ -1718,24 +1543,19 @@
     "portrait": "res://textures/bestiary/static/stream_otter.png",
     "stats": {
       "physique": {
-        "min": 3,
-        "mean": 4,
-        "max": 5
+        "min": 6.0,
+        "mean": 7.5,
+        "max": 9.0
       },
       "intelligence": {
         "min": 3,
         "mean": 4,
         "max": 5
       },
-      "agility": {
-        "min": 6,
-        "mean": 7,
-        "max": 8
-      },
       "soul": {
-        "min": 3,
-        "mean": 4,
-        "max": 5
+        "min": 6.0,
+        "mean": 7.5,
+        "max": 9.0
       }
     },
     "physicalDefense": null,

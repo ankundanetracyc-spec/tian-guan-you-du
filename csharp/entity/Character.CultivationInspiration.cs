@@ -14,7 +14,31 @@ public partial class Character
         public int BottleneckRealmTier;
         public double BottleneckPenalty;
         public double AverageRate;
+        public double RequestedHours;
+        public bool AutoRefinementConfigured;
+        public bool AutoRefinementTriggered;
+        public string AutoRefinementRecordId = "";
+        public double AutoRefinementThresholdPenalty;
+        public int AutoRefinementQualityRank;
+        public long AutoRefinementGameHour = -1;
+        public double AutoRefinementOldPenalty;
+        public double AutoRefinementNewPenalty;
+        public bool AutoRefinementExpiredBeforeThreshold;
     }
+
+    private sealed class CultivationAutoRefinementPlan
+    {
+        public string RecordId = "";
+        public double ThresholdPenalty;
+        public int QualityRank;
+        public long ExpiresAtGameHour;
+    }
+
+    private Dictionary _lastCultivationAutoRefinementResult = new()
+    {
+        ["attempted"] = false,
+        ["consumed"] = false
+    };
 
     private sealed class CultivationBottleneckSnapshot
     {
@@ -89,9 +113,164 @@ public partial class Character
         human.cultivation_bottleneck_current_penalty = Math.Clamp(snapshot.Penalty, 0d, .90d);
     }
 
-    private CultivationSimulation simulate_cultivation_hours(double requestedHours)
+    public Dictionary get_cultivation_auto_refinement_settings()
     {
-        var result = new CultivationSimulation();
+        if (human is null)
+            return new Dictionary { ["enabled"] = false, ["eligible"] = false, ["reason"] = "角色数据不可用。" };
+
+        var now = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+        var threshold = get_auto_refinement_threshold_penalty();
+        var state = get_cultivation_bottleneck_realm_tier() == 0 ? null : get_cultivation_bottleneck_snapshot();
+        var record = CultivationInspirationSystem.find_available_record(human, human.cultivation_auto_refinement_record_id, now);
+        var reason = "设置已保存；本次闭关会在瓶颈减速达到所选百分比时炼化。";
+        var eligible = human.cultivation_auto_refinement_enabled;
+        if (!eligible)
+            reason = "自动炼化已关闭。";
+        else if (state is null)
+        {
+            eligible = false;
+            reason = "当前境界没有可炼化的云息瓶颈。";
+        }
+        else if (threshold is < .01d or > .90d)
+        {
+            eligible = false;
+            reason = "瓶颈减速阈值需在 1% 到 90% 之间。";
+        }
+        else if (record is null)
+        {
+            eligible = false;
+            reason = "所选灵感已失效或已被消耗，请重新选择。";
+        }
+        else if (record.armed_for_action)
+        {
+            eligible = false;
+            reason = "所选灵感已预留给对应行动；请先取消预留或另选一份。";
+        }
+        else if (state is not null && state.Penalty >= threshold)
+        {
+            reason = $"当前瓶颈减速已达 {state.Penalty:P1}；本段开始修炼时会立即炼化。";
+        }
+
+        return new Dictionary
+        {
+            ["enabled"] = human.cultivation_auto_refinement_enabled,
+            ["eligible"] = eligible,
+            ["record_id"] = human.cultivation_auto_refinement_record_id,
+            ["threshold_penalty"] = threshold,
+            ["current_penalty"] = state?.Penalty ?? 0d,
+            ["quality_rank"] = record?.quality_rank ?? 0,
+            ["quality_name"] = record?.get_quality_name() ?? "",
+            ["expires_at_game_hour"] = record?.expires_at_game_hour ?? -1,
+            ["reason"] = reason
+        };
+    }
+
+    public bool set_cultivation_auto_refinement_settings(bool enabled, string recordId, double thresholdPenalty, out string reason)
+    {
+        reason = "";
+        if (human is null)
+        {
+            reason = "角色数据不可用。";
+            return false;
+        }
+
+        recordId = (recordId ?? "").Trim();
+        if (!double.IsFinite(thresholdPenalty) || thresholdPenalty < .01d || thresholdPenalty > .90d)
+        {
+            if (enabled)
+            {
+                reason = "瓶颈减速阈值需在 1% 到 90% 之间。";
+                return false;
+            }
+            thresholdPenalty = get_auto_refinement_threshold_penalty();
+        }
+        if (enabled)
+        {
+            var state = get_cultivation_bottleneck_realm_tier() == 0 ? null : get_cultivation_bottleneck_snapshot();
+            if (state is null)
+            {
+                reason = "当前境界没有可炼化的云息瓶颈。";
+                return false;
+            }
+            var now = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+            var record = CultivationInspirationSystem.find_available_record(human, recordId, now);
+            if (record is null)
+            {
+                reason = "所选灵感已失效或不可用。";
+                return false;
+            }
+            if (record.armed_for_action)
+            {
+                reason = "所选灵感已预留给对应行动，请先取消预留或另选一份。";
+                return false;
+            }
+        }
+
+        human.cultivation_auto_refinement_enabled = enabled;
+        human.cultivation_auto_refinement_record_id = recordId;
+        human.cultivation_auto_refinement_threshold_penalty = thresholdPenalty;
+        CultivationInspirationChanged?.Invoke(this);
+        return true;
+    }
+
+    public Dictionary get_last_cultivation_auto_refinement_result()
+    {
+        var result = new Dictionary();
+        foreach (Variant key in _lastCultivationAutoRefinementResult.Keys)
+            result[key] = _lastCultivationAutoRefinementResult[key];
+        return result;
+    }
+
+    public Dictionary get_cultivation_auto_refinement_preview(int requestedHours)
+    {
+        var simulation = simulate_cultivation_hours(Math.Max(0, requestedHours));
+        return new Dictionary
+        {
+            ["configured"] = simulation.AutoRefinementConfigured,
+            ["triggered"] = simulation.AutoRefinementTriggered,
+            ["threshold_penalty"] = simulation.AutoRefinementThresholdPenalty,
+            ["quality_rank"] = simulation.AutoRefinementQualityRank,
+            ["old_penalty"] = simulation.AutoRefinementOldPenalty,
+            ["new_penalty"] = simulation.AutoRefinementNewPenalty,
+            ["game_hour"] = simulation.AutoRefinementGameHour,
+            ["expired_before_threshold"] = simulation.AutoRefinementExpiredBeforeThreshold,
+            ["result_level"] = simulation.BottleneckLevel
+        };
+    }
+
+    private CultivationAutoRefinementPlan? get_cultivation_auto_refinement_plan(CultivationBottleneckSnapshot state)
+    {
+        if (human is null || !human.cultivation_auto_refinement_enabled) return null;
+        var threshold = get_auto_refinement_threshold_penalty();
+        if (threshold is < .01d or > .90d) return null;
+        var now = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+        var record = CultivationInspirationSystem.find_available_record(human, human.cultivation_auto_refinement_record_id, now);
+        if (record is null || record.armed_for_action) return null;
+        return new CultivationAutoRefinementPlan
+        {
+            RecordId = record.record_id,
+            ThresholdPenalty = threshold,
+            QualityRank = record.quality_rank,
+            ExpiresAtGameHour = record.expires_at_game_hour
+        };
+    }
+
+    private double get_auto_refinement_threshold_penalty()
+    {
+        if (human is null) return .10d;
+        if (!double.IsFinite(human.cultivation_auto_refinement_threshold_penalty))
+            human.cultivation_auto_refinement_threshold_penalty = -1d;
+        if (human.cultivation_auto_refinement_threshold_penalty < 0d)
+        {
+            var legacyLevel = Math.Clamp(human.cultivation_auto_refinement_threshold_level, 1, CultivationBottleneckRules.Stages);
+            human.cultivation_auto_refinement_threshold_penalty = CultivationBottleneckRules.get_penalty_for_level(legacyLevel);
+        }
+        return Math.Clamp(human.cultivation_auto_refinement_threshold_penalty, .01d, .90d);
+    }
+
+    private CultivationSimulation simulate_cultivation_hours(double requestedHours, bool includeAutoRefinement = true)
+    {
+        var result = new CultivationSimulation { RequestedHours = requestedHours };
         if (human is null || requestedHours <= 0d)
             return result;
 
@@ -108,13 +287,43 @@ public partial class Character
             return result;
         }
         var state = get_cultivation_bottleneck_snapshot();
+        var autoPlan = includeAutoRefinement ? get_cultivation_auto_refinement_plan(state) : null;
+        var startGameHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+        if (autoPlan is not null)
+        {
+            result.AutoRefinementConfigured = true;
+            result.AutoRefinementRecordId = autoPlan.RecordId;
+            result.AutoRefinementThresholdPenalty = autoPlan.ThresholdPenalty;
+            result.AutoRefinementQualityRank = autoPlan.QualityRank;
+        }
         var totalProgress = Math.Max(0d, human.cultivation_progress);
         var remaining = requestedHours;
+        var elapsed = 0d;
+        var autoRefinementResolved = false;
         double integratedGain = 0d;
 
         while (remaining > 1e-8d)
         {
             state.reconcile();
+            var previousPenalty = state.Penalty;
+            if (autoPlan is not null && !autoRefinementResolved && previousPenalty >= autoPlan.ThresholdPenalty)
+            {
+                autoRefinementResolved = true;
+                var triggerHour = startGameHour + (long)Math.Ceiling(elapsed - 1e-9d);
+                if (triggerHour < autoPlan.ExpiresAtGameHour)
+                {
+                    result.AutoRefinementTriggered = true;
+                    result.AutoRefinementGameHour = triggerHour;
+                    result.AutoRefinementOldPenalty = state.Penalty;
+                    result.AutoRefinementNewPenalty = CultivationBottleneckRules.relieve_penalty(
+                        state.Penalty, state.RealmTier, autoPlan.QualityRank);
+                    state.Penalty = result.AutoRefinementNewPenalty;
+                }
+                else
+                {
+                    result.AutoRefinementExpiredBeforeThreshold = true;
+                }
+            }
             var threshold = CultivationBottleneckRules.get_next_level_threshold_hours(state.Level, state.RealmTier);
             var untilNextLevel = threshold - state.AccumulatedHours;
             var segment = state.Level >= CultivationBottleneckRules.Stages || untilNextLevel <= 1e-8d
@@ -132,6 +341,26 @@ public partial class Character
             integratedGain += gained;
             totalProgress += gained;
             state.advance(segment);
+            elapsed += segment;
+            if (autoPlan is not null && !autoRefinementResolved && previousPenalty < autoPlan.ThresholdPenalty &&
+                state.Penalty >= autoPlan.ThresholdPenalty)
+            {
+                autoRefinementResolved = true;
+                var triggerHour = startGameHour + (long)Math.Ceiling(elapsed - 1e-9d);
+                if (triggerHour < autoPlan.ExpiresAtGameHour)
+                {
+                    result.AutoRefinementTriggered = true;
+                    result.AutoRefinementGameHour = triggerHour;
+                    result.AutoRefinementOldPenalty = state.Penalty;
+                    result.AutoRefinementNewPenalty = CultivationBottleneckRules.relieve_penalty(
+                        state.Penalty, state.RealmTier, autoPlan.QualityRank);
+                    state.Penalty = result.AutoRefinementNewPenalty;
+                }
+                else
+                {
+                    result.AutoRefinementExpiredBeforeThreshold = true;
+                }
+            }
             remaining -= segment;
         }
 
@@ -144,6 +373,9 @@ public partial class Character
         result.BottleneckRealmTier = state.RealmTier;
         result.BottleneckPenalty = state.Penalty;
         result.AverageRate = requestedHours > 0d ? integratedGain / requestedHours : baseRate;
+        if (autoPlan is not null && !result.AutoRefinementTriggered &&
+            startGameHour + (long)Math.Ceiling(requestedHours - 1e-9d) >= autoPlan.ExpiresAtGameHour)
+            result.AutoRefinementExpiredBeforeThreshold = true;
         return result;
     }
 
@@ -157,10 +389,21 @@ public partial class Character
         if (baseRate <= 0d) return double.PositiveInfinity;
         if (get_cultivation_bottleneck_realm_tier() == 0) return remainingProgress / baseRate;
         var state = get_cultivation_bottleneck_snapshot();
+        var autoPlan = get_cultivation_auto_refinement_plan(state);
+        var startGameHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
         var elapsed = 0d;
+        var autoRefinementResolved = false;
         while (remainingProgress > 1e-8d)
         {
             state.reconcile();
+            if (autoPlan is not null && !autoRefinementResolved && state.Penalty >= autoPlan.ThresholdPenalty)
+            {
+                autoRefinementResolved = true;
+                var triggerHour = startGameHour + (long)Math.Ceiling(elapsed - 1e-9d);
+                if (triggerHour < autoPlan.ExpiresAtGameHour)
+                    state.Penalty = CultivationBottleneckRules.relieve_penalty(
+                        state.Penalty, state.RealmTier, autoPlan.QualityRank);
+            }
             var rate = baseRate * (1d - Math.Clamp(state.Penalty, 0d, .90d));
             if (rate <= 0d) return double.PositiveInfinity;
             var needed = remainingProgress / rate;
@@ -176,8 +419,18 @@ public partial class Character
                 continue;
             }
             remainingProgress -= rate * segment;
+            var previousPenalty = state.Penalty;
             state.advance(segment);
             elapsed += segment;
+            if (autoPlan is not null && !autoRefinementResolved && previousPenalty < autoPlan.ThresholdPenalty &&
+                state.Penalty >= autoPlan.ThresholdPenalty)
+            {
+                autoRefinementResolved = true;
+                var triggerHour = startGameHour + (long)Math.Ceiling(elapsed - 1e-9d);
+                if (triggerHour < autoPlan.ExpiresAtGameHour)
+                    state.Penalty = CultivationBottleneckRules.relieve_penalty(
+                        state.Penalty, state.RealmTier, autoPlan.QualityRank);
+            }
         }
         return elapsed;
     }
@@ -185,6 +438,39 @@ public partial class Character
     private void apply_cultivation_simulation(CultivationSimulation simulation)
     {
         if (human is null) return;
+        _lastCultivationAutoRefinementResult = new Dictionary
+        {
+            ["configured"] = simulation.AutoRefinementConfigured,
+            ["triggered"] = simulation.AutoRefinementTriggered,
+            ["attempted"] = false,
+            ["consumed"] = false,
+            ["failed"] = false,
+            ["expired_before_threshold"] = simulation.AutoRefinementExpiredBeforeThreshold,
+            ["record_id"] = simulation.AutoRefinementRecordId,
+            ["threshold_penalty"] = simulation.AutoRefinementThresholdPenalty,
+            ["quality_rank"] = simulation.AutoRefinementQualityRank,
+            ["game_hour"] = simulation.AutoRefinementGameHour,
+            ["old_penalty"] = simulation.AutoRefinementOldPenalty,
+            ["new_penalty"] = simulation.AutoRefinementNewPenalty
+        };
+
+        var autoRefinementConsumed = false;
+        if (simulation.AutoRefinementTriggered)
+        {
+            _lastCultivationAutoRefinementResult["attempted"] = true;
+            autoRefinementConsumed = try_consume_auto_refinement_for_simulation(simulation);
+            if (!autoRefinementConsumed)
+            {
+                _lastCultivationAutoRefinementResult["failed"] = true;
+                simulation = simulate_cultivation_hours(simulation.RequestedHours, includeAutoRefinement: false);
+                _lastCultivationAutoRefinementResult["new_penalty"] = simulation.BottleneckPenalty;
+            }
+            else
+            {
+                _lastCultivationAutoRefinementResult["consumed"] = true;
+            }
+        }
+
         var previousLevel = human.cultivation_bottleneck_level;
         var previousRealmTier = human.cultivation_bottleneck_realm_tier;
         var previousPenalty = human.cultivation_bottleneck_current_penalty;
@@ -199,23 +485,46 @@ public partial class Character
             PreviousRealmTier = simulation.BottleneckRealmTier
         };
         write_cultivation_bottleneck_snapshot(state);
-        if (previousLevel != state.Level || previousRealmTier != state.RealmTier || Math.Abs(previousPenalty - state.Penalty) > 1e-9d)
+        if (previousLevel != state.Level || previousRealmTier != state.RealmTier || Math.Abs(previousPenalty - state.Penalty) > 1e-9d || autoRefinementConsumed)
             CultivationInspirationChanged?.Invoke(this);
+    }
+
+    private bool try_consume_auto_refinement_for_simulation(CultivationSimulation simulation)
+    {
+        if (human is null || !simulation.AutoRefinementConfigured || string.IsNullOrWhiteSpace(simulation.AutoRefinementRecordId) ||
+            simulation.AutoRefinementGameHour < 0 || !human.cultivation_auto_refinement_enabled ||
+            human.cultivation_auto_refinement_record_id != simulation.AutoRefinementRecordId ||
+            Math.Abs(get_auto_refinement_threshold_penalty() - simulation.AutoRefinementThresholdPenalty) > 1e-9d)
+            return false;
+
+        var record = CultivationInspirationSystem.find_available_record(
+            human, simulation.AutoRefinementRecordId, simulation.AutoRefinementGameHour);
+        if (record is null || record.armed_for_action ||
+            !CultivationInspirationSystem.try_consume_for_bottleneck(
+                human, simulation.AutoRefinementRecordId, simulation.AutoRefinementGameHour, out _))
+            return false;
+
+        human.cultivation_auto_refinement_enabled = false;
+        human.cultivation_auto_refinement_record_id = "";
+        return true;
     }
 
     public Dictionary get_cultivation_bottleneck_summary()
     {
         if (human is null || get_cultivation_bottleneck_realm_tier() == 0)
-            return new Dictionary { ["applicable"] = false, ["level"] = 0, ["stages"] = CultivationBottleneckRules.Stages, ["penalty"] = 0d, ["gain_multiplier"] = 1d };
+            return new Dictionary { ["applicable"] = false, ["level"] = 0, ["accumulated_level"] = 0, ["stages"] = CultivationBottleneckRules.Stages, ["penalty"] = 0d, ["current_penalty"] = 0d, ["gain_multiplier"] = 1d };
         var state = get_cultivation_bottleneck_snapshot();
         var nextThreshold = CultivationBottleneckRules.get_next_level_threshold_hours(state.Level, state.RealmTier);
         return new Dictionary
         {
             ["applicable"] = true,
             ["level"] = state.Level,
+            ["accumulated_level"] = state.Level,
             ["stages"] = CultivationBottleneckRules.Stages,
             ["penalty"] = state.Penalty,
+            ["current_penalty"] = state.Penalty,
             ["gain_multiplier"] = 1d - state.Penalty,
+            ["realm_tier"] = state.RealmTier,
             ["accumulated_cultivation_hours"] = state.AccumulatedHours,
             ["grace_hours"] = CultivationBottleneckRules.get_grace_hours(state.RealmTier),
             ["hours_until_next_level"] = double.IsInfinity(nextThreshold) ? 0d : Math.Max(0d, nextThreshold - state.AccumulatedHours)
@@ -334,7 +643,7 @@ public partial class Character
         return didConsume;
     }
 
-    /// <summary>Consumes one inspiration and partially lowers the current Yunxi cultivation penalty.</summary>
+    /// <summary>Consumes one inspiration and reduces the current bottleneck percentage according to realm and quality.</summary>
     public bool try_refine_cultivation_bottleneck(string recordId, out Dictionary result)
     {
         result = new Dictionary { ["success"] = false };
@@ -342,19 +651,25 @@ public partial class Character
         var now = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
         expire_cultivation_inspiration_records(now);
         var state = get_cultivation_bottleneck_snapshot();
-        if (state.Level is < 1 or > CultivationBottleneckRules.Stages || state.Penalty <= 0d) return false;
+        if (state.Penalty <= 0d) return false;
         var inspiration = CultivationInspirationSystem.find_available_record(human, recordId, now);
         if (inspiration is null || inspiration.armed_for_action) return false;
         var oldPenalty = state.Penalty;
-        var newPenalty = CultivationBottleneckRules.relieve_penalty(oldPenalty, state.Level, inspiration.quality_rank);
+        var newPenalty = CultivationBottleneckRules.relieve_penalty(oldPenalty, state.RealmTier, inspiration.quality_rank);
         if (!CultivationInspirationSystem.try_consume_for_bottleneck(human, recordId, now, out var consumed) || consumed is null)
             return false;
+        if (human.cultivation_auto_refinement_record_id == recordId)
+        {
+            human.cultivation_auto_refinement_enabled = false;
+            human.cultivation_auto_refinement_record_id = "";
+        }
         state.Penalty = newPenalty;
         write_cultivation_bottleneck_snapshot(state);
         result = new Dictionary
         {
             ["success"] = true,
             ["level"] = state.Level,
+            ["accumulated_level"] = state.Level,
             ["quality_rank"] = consumed.quality_rank,
             ["old_penalty"] = oldPenalty,
             ["new_penalty"] = newPenalty,

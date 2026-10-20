@@ -12,6 +12,7 @@ grade = 2
 script = ExtResource("1")
 element = "土"
 polarity = -1
-texture = "玉"
+texture = "颗粒"
+legacy_texture = "玉"
 utilities = Array[ExtResource("2")]([SubResource("utility_storage")])
 

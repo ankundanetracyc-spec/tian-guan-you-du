@@ -102,7 +102,7 @@ public partial class InstantBattleDamageSmoke : Node
 
         var attacker = new Creature
         {
-            entity_data = new HumanData { physique = 20, agility = 20, soul = 0, body_proficiency = 10, precision = 10000, critical = 0, crit_damage_mult = 1.5f, max_health = 1000, current_health = 1000 },
+            entity_data = new HumanData { physique = 30, soul = 10, body_proficiency = 10, precision = 10000, critical = 0, crit_damage_mult = 1.5f, max_health = 1000, current_health = 1000 },
             faction = (int)WorldEntity.Faction.PLAYER
         };
         AddChild(attacker);

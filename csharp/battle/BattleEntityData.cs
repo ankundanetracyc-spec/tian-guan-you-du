@@ -7,6 +7,9 @@ using Godot.Collections;
 /// </summary>
 public partial class BattleEntityData : Resource
 {
+    // 仅开始菜单演练配置使用；-1 沿用正式战斗规则，0 是有效测试上限。
+    [Export] public int test_stamina_cap_override = -1;
+    [Export] public int test_mana_cap_override = -1;
     [Export] public Godot.Collections.Array<CombatSkillReference> combat_skill_references = [];
     [Export] public Godot.Collections.Array<ArtifactInstanceData> equipped_artifacts = [];
     [Export] public Godot.Collections.Array<ActiveSkillData> combat_resolved_skills = [];
@@ -41,10 +44,9 @@ public partial class BattleEntityData : Resource
     [Export] public string cultivation_realm = "";
     [Export] public int spirit_root_type;
     [Export] public string spirit_root_name = "";
-    // 四维保留一位小数，确保妖兽的随机、变种与精英修正不会在战斗快照中丢失。
+    // 基础战斗属性保留一位小数，确保妖兽随机、变种与精英修正不会在快照中丢失。
     [Export] public float physique;
     [Export] public float intelligence;
-    [Export] public float agility;
     [Export] public float soul;
     [Export] public int fortune;
     [Export] public int comprehension;

@@ -94,6 +94,7 @@ var _fog_image: Image
 var _fog_texture: ImageTexture
 var _explored_cells := PackedByteArray()
 var _visible_cell_indices: Array[int] = []
+var _visible_cell_index_lookup: Dictionary = {}
 var _pathfinder: AStarGrid2D
 var _npc_pathfinder: AStarGrid2D
 var _assigned_pathfinder: AStarGrid2D
@@ -346,6 +347,11 @@ func restore_persistent_state(cell: Vector2i, explored_cells: PackedByteArray, r
 	else:
 		_explored_cells = PackedByteArray()
 		_explored_cells.resize(GRID_COLUMNS * GRID_ROWS)
+	if _fog_image != null:
+		for y in range(GRID_ROWS):
+			for x in range(GRID_COLUMNS):
+				var index := _cell_index(Vector2i(x, y))
+				_fog_image.set_pixel(x, y, EXPLORED_FOG_COLOR if _explored_cells[index] != 0 else UNKNOWN_FOG_COLOR)
 	_pending_resume_path.clear()
 	if remaining_path.size() > 1 and remaining_path[0] == cell:
 		_pending_resume_path = remaining_path.duplicate()
@@ -446,7 +452,10 @@ func _layout_map() -> void:
 	if not _moving:
 		_player_marker_map_position = focus_position
 	_update_player_marker_world_position()
-	_update_screen_sized_markers()
+	# Route movement only translates the map canvas. Marker sizing depends on zoom,
+	# so updating every world marker on every arrived tile adds visible travel hitches.
+	if not _moving:
+		_update_screen_sized_markers()
 	_update_route_points()
 	_update_enter_node_button()
 	_update_known_illustration_fog_transform()
@@ -599,6 +608,8 @@ func _on_cell_clicked(cell: Vector2i) -> void:
 	cell_selected.emit(cell)
 
 func _build_pathfinder() -> void:
+	_visible_cell_indices.clear()
+	_visible_cell_index_lookup.clear()
 	_explored_cells.resize(GRID_COLUMNS * GRID_ROWS)
 	_pathfinder = AStarGrid2D.new()
 	_pathfinder.region = Rect2i(Vector2i.ZERO, Vector2i(GRID_COLUMNS, GRID_ROWS))
@@ -753,13 +764,8 @@ func _create_player_marker() -> void:
 
 func _reveal_around_player() -> void:
 	var reveal_radius := clampi(vision_radius_cells + _travel_reveal_bonus_cells, 1, 20)
-	for index in _visible_cell_indices:
-		var old_cell := Vector2i(index % GRID_COLUMNS, index / GRID_COLUMNS)
-		# Every cell seen before remains known after it leaves the current view.
-		_fog_image.set_pixel(old_cell.x, old_cell.y, EXPLORED_FOG_COLOR)
-		if _pathfinder != null and is_cell_traversable(old_cell):
-			_pathfinder.set_point_solid(old_cell, false)
-	_visible_cell_indices.clear()
+	var next_visible_indices: Array[int] = []
+	var next_visible_lookup: Dictionary = {}
 	for dy in range(-reveal_radius, reveal_radius + 1):
 		for dx in range(-reveal_radius, reveal_radius + 1):
 			if dx * dx + dy * dy > reveal_radius * reveal_radius:
@@ -768,11 +774,25 @@ func _reveal_around_player() -> void:
 			if not _is_cell_in_bounds(cell):
 				continue
 			var index := _cell_index(cell)
+			next_visible_indices.append(index)
+			next_visible_lookup[index] = true
 			_explored_cells[index] = 1
-			_visible_cell_indices.append(index)
-			_fog_image.set_pixel(cell.x, cell.y, CLEAR_FOG_COLOR)
-			if _pathfinder != null:
-				_pathfinder.set_point_solid(cell, not is_cell_traversable(cell))
+
+	for index in _visible_cell_indices:
+		if next_visible_lookup.has(index):
+			continue
+		var old_cell := Vector2i(index % GRID_COLUMNS, index / GRID_COLUMNS)
+		# Every cell seen before remains known after it leaves the current view.
+		_fog_image.set_pixel(old_cell.x, old_cell.y, EXPLORED_FOG_COLOR)
+	for index in next_visible_indices:
+		if _visible_cell_index_lookup.has(index):
+			continue
+		var cell := Vector2i(index % GRID_COLUMNS, index / GRID_COLUMNS)
+		_fog_image.set_pixel(cell.x, cell.y, CLEAR_FOG_COLOR)
+		if _pathfinder != null:
+			_pathfinder.set_point_solid(cell, not is_cell_traversable(cell))
+	_visible_cell_indices = next_visible_indices
+	_visible_cell_index_lookup = next_visible_lookup
 	_fog_texture.update(_fog_image)
 	if _known_illustration_fog_material != null:
 		_known_illustration_fog_material.set_shader_parameter("world_fog", _fog_texture)
@@ -899,9 +919,6 @@ func _start_travel(path: Array[Vector2i]) -> void:
 		_layout_map()
 		if _assigned_route_interrupted or not _assigned_route_destination_node_id.is_empty() and get_location_node_id_at_cell(_player_cell) == _assigned_route_destination_node_id:
 			break
-		if index + 1 < path.size():
-			_preview_path = path.slice(index)
-			_update_route_points()
 	_selected_cell = _player_cell
 	_preview_path.clear()
 	_update_route_points()

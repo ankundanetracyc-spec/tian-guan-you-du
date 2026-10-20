@@ -1,4 +1,4 @@
-﻿using Godot;
+using Godot;
 using Godot.Collections;
 using System;
 using System.Linq;
@@ -35,8 +35,8 @@ public partial class MainScene
         location_interior?.hide_roster();
         location_interior?.Hide();
         tile_world_map?.Hide();
-        node_map?.hide_world_roster();
-        node_map?.Hide();
+        hide_world_character_list();
+
         refresh_yuxu_life_context();
         _npc_world?.enter_east_woods_route();
         mark_save_dirty();
@@ -110,6 +110,7 @@ public partial class MainScene
         }
         _eastWoodsTravelStartedHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
         _eastWoodsTravelCompletedSteps = 0;
+        _npc_world?.begin_east_woods_route_signal_batch();
         (GetTree().GetFirstNodeInGroup("cell_character_list") as CellCharacterList)?.suspend_world_npcs();
     }
 
@@ -120,7 +121,9 @@ public partial class MainScene
             on_dynamic_dungeon_travel_finished(routeNodeId);
             return;
         }
+        _npc_world?.end_east_woods_route_signal_batch();
         synchronize_east_woods_ecology();
+        synchronize_dynamic_dungeon_opportunities();
         refresh_east_woods_route_roster(routeNodeId);
         if (_eastWoodsTravelCompletedSteps > 0)
         {
@@ -231,11 +234,9 @@ public partial class MainScene
             max_age = npc.max_age,
             base_physique = npc.physique,
             base_intelligence = npc.intelligence,
-            base_agility = npc.agility,
             base_soul = npc.soul,
             physique = npc.physique,
             intelligence = npc.intelligence,
-            agility = npc.agility,
             soul = npc.soul,
             current_health = npc.current_health,
             max_health = npc.max_health,

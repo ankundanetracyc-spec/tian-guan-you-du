@@ -13,17 +13,15 @@ battle_base_attributes = {
 "initial_hand_size": 5,
 }
 realm_multiplier_bonuses = {
-"agility": 0.15,
 "fortune": 0.05,
 "intelligence": 0.15,
-"physique": 0.15,
-"soul": 0.15,
+"physique": 0.225,
+"soul": 0.225,
 }
 realm_fixed_bonuses = {
-"agility": 2,
 "intelligence": 2,
 "max_age": 15,
-"physique": 4,
-"soul": 2,
+"physique": 5,
+"soul": 3,
 "sub_slot_increase": 1,
 }

@@ -15,15 +15,20 @@ public partial class NpcWorldManager : Node
     [Export] public Array<WorldNpcData> npcs = [];
     public int population_version { get; set; }
     private Array<EastWoodsNpcIncidentRecord> _east_woods_npc_incidents = [];
+    internal Array<EastWoodsNpcIncidentRecord> PersistentIncidentView => _east_woods_npc_incidents;
     private HumanData? _playerData;
 
     private int _last_processed_month = -1;
     private WorldNodeMapData? _map_data;
     private Node? _tile_world_map;
     private int _last_world_grid_hour = -1;
+    private bool _worldGridRosterCacheDirty = true;
+    private readonly System.Collections.Generic.Dictionary<string, List<WorldNpcData>> _worldNodeRosterCache = new(StringComparer.Ordinal);
+    private readonly System.Collections.Generic.Dictionary<Vector2I, List<WorldNpcData>> _ordinaryCellRosterCache = new();
 
     public override void _Ready()
     {
+        world_npcs_changed += invalidate_world_grid_roster_cache;
         var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
         if (time is not null)
         {
@@ -33,11 +38,19 @@ public partial class NpcWorldManager : Node
         }
     }
 
+    public override void _ExitTree()
+    {
+        world_npcs_changed -= invalidate_world_grid_roster_cache;
+        if (GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is { } time)
+            time.time_changed -= on_time_changed;
+    }
+
     public void set_world_map(WorldNodeMapData map_data)
     {
         _map_data = map_data;
         foreach (var npc in npcs)
             normalize_npc_location(npc);
+        invalidate_world_grid_roster_cache();
     }
 
     public void set_tile_world_map(Node tileWorldMap)
@@ -1026,16 +1039,39 @@ public partial class NpcWorldManager : Node
     public Array<WorldNpcData> get_world_grid_roster(Vector2I cell, string locationNodeId = "")
     {
         var result = new Array<WorldNpcData>();
+        if (_worldGridRosterCacheDirty) rebuild_world_grid_roster_cache();
+        var cached = string.IsNullOrEmpty(locationNodeId)
+            ? _ordinaryCellRosterCache.GetValueOrDefault(cell)
+            : _worldNodeRosterCache.GetValueOrDefault(locationNodeId);
+        if (cached is null) return result;
+        foreach (var npc in cached)
+            result.Add(npc);
+        return result;
+    }
+
+    private void invalidate_world_grid_roster_cache()
+    {
+        _worldGridRosterCacheDirty = true;
+    }
+
+    private void rebuild_world_grid_roster_cache()
+    {
+        _worldNodeRosterCache.Clear();
+        _ordinaryCellRosterCache.Clear();
         foreach (var npc in npcs)
         {
             if (npc is null || !npc.is_alive || !npc.has_world_grid_position || !string.IsNullOrEmpty(npc.dungeon_id)) continue;
-            var isNodeResident = !npc.is_traveling && !string.IsNullOrEmpty(locationNodeId) && npc.current_node_id == locationNodeId;
-            var isTravelingInsideThisLocation = npc.is_traveling && !string.IsNullOrEmpty(locationNodeId) &&
-                get_location_node_id_at_cell(npc.current_grid_cell) == locationNodeId;
-            var isAtOrdinaryCell = string.IsNullOrEmpty(locationNodeId) && npc.current_grid_cell == cell;
-            if (isNodeResident || isTravelingInsideThisLocation || isAtOrdinaryCell) result.Add(npc);
+            if (!_ordinaryCellRosterCache.TryGetValue(npc.current_grid_cell, out var cellRoster))
+                _ordinaryCellRosterCache[npc.current_grid_cell] = cellRoster = [];
+            cellRoster.Add(npc);
+
+            var nodeId = !npc.is_traveling ? npc.current_node_id : get_location_node_id_at_cell(npc.current_grid_cell);
+            if (string.IsNullOrEmpty(nodeId)) continue;
+            if (!_worldNodeRosterCache.TryGetValue(nodeId, out var nodeRoster))
+                _worldNodeRosterCache[nodeId] = nodeRoster = [];
+            nodeRoster.Add(npc);
         }
-        return result;
+        _worldGridRosterCacheDirty = false;
     }
 
     /// <summary>返回地点下的空间划分，供地点人物名单按子场景分组。</summary>
@@ -1196,7 +1232,8 @@ public partial class NpcWorldManager : Node
             }
         }
 
-        EmitSignal(SignalName.world_npcs_changed);
+        if (local.Length > 0) notify_east_woods_route_changed();
+        if (moved.Count == 0) return [];
         if (playerData is not null)
         {
             foreach (var npc in local)
@@ -1214,23 +1251,54 @@ public partial class NpcWorldManager : Node
                 if (!EastWoodsDungeonRules.roll_attack($"{actionStamp}|{npc.npc_id}|player|{npc.dungeon_step_index}|{progressStamp}|{playerRouteNodeId}", chance)) continue;
                 npc.current_state = "向玩家出手";
                 record_dungeon_action(npc, "dungeon_attack", "突袭", $"性情、百川声望、势力态度、私人关系与境界共同影响出手判断；短测概率 {chance:P0}。", "在副本路线与玩家相遇后主动发起战斗。", npc.dungeon_node_id, "player");
-                EmitSignal(SignalName.world_npcs_changed);
+                notify_east_woods_route_changed();
                 return new Dictionary { ["attacker_npc_id"] = npc.npc_id, ["target_player"] = true, ["route_node_id"] = playerRouteNodeId };
             }
         }
 
-        for (var leftIndex = 0; leftIndex < local.Length; leftIndex++)
-        for (var rightIndex = leftIndex + 1; rightIndex < local.Length; rightIndex++)
+        // Candidate collisions are local to a route node or a pair of crossed edges.
+        // Group first so a sparse dungeon does not compare every resident with every other one.
+        var occupantsByNode = new System.Collections.Generic.Dictionary<string, List<int>>(StringComparer.Ordinal);
+        var moversByEdge = new System.Collections.Generic.Dictionary<(string From, string To), List<int>>();
+        for (var index = 0; index < local.Length; index++)
+        {
+            var npc = local[index];
+            if (!occupantsByNode.TryGetValue(npc.dungeon_node_id, out var occupants))
+                occupantsByNode[npc.dungeon_node_id] = occupants = [];
+            occupants.Add(index);
+            if (!moved.Contains(npc.npc_id) || !previousNodes.TryGetValue(npc.npc_id, out var previousNode)) continue;
+            var edge = (previousNode, npc.dungeon_node_id);
+            if (!moversByEdge.TryGetValue(edge, out var edgeMovers)) moversByEdge[edge] = edgeMovers = [];
+            edgeMovers.Add(index);
+        }
+
+        var collisionPairSet = new HashSet<(int Left, int Right)>();
+        foreach (var occupants in occupantsByNode.Values)
+        for (var left = 0; left < occupants.Count; left++)
+        for (var right = left + 1; right < occupants.Count; right++)
+        {
+            var leftIndex = occupants[left];
+            var rightIndex = occupants[right];
+            if (!moved.Contains(local[leftIndex].npc_id) && !moved.Contains(local[rightIndex].npc_id)) continue;
+            collisionPairSet.Add((leftIndex, rightIndex));
+        }
+        foreach (var (edge, edgeMovers) in moversByEdge)
+        {
+            if (string.CompareOrdinal(edge.From, edge.To) >= 0 ||
+                !moversByEdge.TryGetValue((edge.To, edge.From), out var reverseMovers)) continue;
+            foreach (var leftIndex in edgeMovers)
+            foreach (var rightIndex in reverseMovers)
+                collisionPairSet.Add(leftIndex < rightIndex ? (leftIndex, rightIndex) : (rightIndex, leftIndex));
+        }
+        var collisionPairs = collisionPairSet.ToList();
+        collisionPairs.Sort(static (left, right) => left.Left != right.Left
+            ? left.Left.CompareTo(right.Left)
+            : left.Right.CompareTo(right.Right));
+
+        foreach (var (leftIndex, rightIndex) in collisionPairs)
         {
             var first = local[leftIndex];
             var second = local[rightIndex];
-            var sharedNode = first.dungeon_node_id == second.dungeon_node_id &&
-                (moved.Contains(first.npc_id) || moved.Contains(second.npc_id));
-            var crossedPaths = previousNodes.TryGetValue(first.npc_id, out var firstPrevious) &&
-                previousNodes.TryGetValue(second.npc_id, out var secondPrevious) &&
-                firstPrevious == second.dungeon_node_id && secondPrevious == first.dungeon_node_id &&
-                moved.Contains(first.npc_id) && moved.Contains(second.npc_id);
-            if (!sharedNode && !crossedPaths) continue;
             if (should_npc_attack(first, second, actionStamp, out var firstChance))
             {
                 record_dungeon_action(first, "dungeon_attack", "突袭", $"与 {second.npc_name} 相遇；短测概率 {firstChance:P0}。", "沿途 NPC 冲突按既有战斗规则由双方 AI 在后台自动完成。", first.dungeon_node_id, second.npc_id);
@@ -1338,10 +1406,18 @@ public partial class NpcWorldManager : Node
     private void on_time_changed()
     {
         if (_deferSettlement || IsSettling) return;
+        if (!simulation_enabled) return;
         var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
         if (time is null) return;
+        var currentHour = time.get_total_game_hours();
+        var currentMonth = month_index(time);
+        // The world-grid design advances NPCs only at month boundaries. A normal
+        // player time step has no settlement work and should not open/clear a batch.
+        if (_last_world_grid_hour >= 0 && currentHour >= _last_world_grid_hour &&
+            _last_processed_month >= currentMonth)
+            return;
         begin_settlement_batch();
-        try { foreach (var _ in settle_time_steps(time.get_total_game_hours(), month_index(time))) { } }
+        try { foreach (var _ in settle_time_steps(currentHour, currentMonth)) { } }
         finally { end_settlement_batch(); }
     }
 

@@ -5,7 +5,7 @@ using Godot.Collections;
 [GlobalClass]
 public partial class PersistentGameSave : Resource
 {
-    public const int CurrentFormatVersion = 10;
+    public const int CurrentFormatVersion = 12;
 
     [Export] public int format_version = CurrentFormatVersion;
     [Export] public string slot_id = "";
@@ -123,9 +123,46 @@ public partial class PersistentGameSave : Resource
                 format_version = 10;
                 continue;
             }
+            if (format_version == 10)
+            {
+                migrate_removed_agility_v10_to_v11();
+                format_version = 11;
+                continue;
+            }
+            if (format_version == 11)
+            {
+                // v12 stores automatic inspiration refinement thresholds as bottleneck-penalty percentages.
+                // Existing tier thresholds remain available for lazy conversion by HumanData.
+                format_version = 12;
+                continue;
+            }
             return false;
         }
         return true;
+    }
+
+    private void migrate_removed_agility_v10_to_v11()
+    {
+        if (player_data is not null)
+        {
+            var coordinationShare = Math.Max(0f, player_data.base_agility) * .5f;
+            player_data.base_physique += coordinationShare;
+            player_data.base_soul += coordinationShare;
+            player_data.physique += coordinationShare;
+            player_data.soul += coordinationShare;
+            player_data.base_agility = 0;
+            player_data.agility = 0;
+        }
+
+        world_npcs ??= [];
+        foreach (var npc in world_npcs)
+        {
+            if (npc is null) continue;
+            var coordinationShare = Math.Max(0f, npc.agility) * .5f;
+            npc.physique += coordinationShare;
+            npc.soul += coordinationShare;
+            npc.agility = 0;
+        }
     }
 
     private void migrate_relationships_v6_to_v7()

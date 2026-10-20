@@ -8,16 +8,16 @@ script = ExtResource("2")
 attribute = "physique"
 multiplier = 0.45
 
-[sub_resource type="Resource" id="Agility"]
+[sub_resource type="Resource" id="ExtraPhysique"]
 script = ExtResource("2")
-attribute = "agility"
+attribute = "physique"
 multiplier = 0.30
 
 [resource]
 script = ExtResource("1")
 tags = Array[String](["伤势", "增伤"])
 skill_name = "痛击"
-icon_path = "res://textures/ui/combat/skill_icons/凡俗_痛击_v1.png"
+icon_path = "res://textures/ui/combat/skill_icons/凡俗_痛击_v5.png"
 description = "保留公共痛击原有效果。每层当前内伤或外伤，使本次伤害倍率额外提高2%，最多提高16%。"
 skill_type = 0
 energy_cost = 2
@@ -28,8 +28,8 @@ range_min = 1
 range_max = 1
 base_damage = 11.0
 damage_type = "physical"
-damage_bonuses = Array[ExtResource("2")]([SubResource("Physique"), SubResource("Agility")])
-damage_formula = "round(11 + 体魄×0.45 + 敏捷×0.30)"
+damage_bonuses = Array[ExtResource("2")]([SubResource("Physique"), SubResource("ExtraPhysique")])
+damage_formula = "round(11 + 体魄×0.75)"
 keywords = Array[String](["重击"])
 source_gongfa_name = "内景损益篇"
 gongfa_rewrite_effect_ids = Array[String](["neijing_c4_tongji"])

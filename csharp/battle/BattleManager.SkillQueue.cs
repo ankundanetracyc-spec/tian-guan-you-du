@@ -50,8 +50,8 @@ public partial class BattleManager : Node2D
 
     private static int IntentRevealDelay(GodotObject observer, GodotObject subject)
     {
-        var own = CardRules.Number(observer, "soul") + CardRules.Number(observer, "agility");
-        var foe = CardRules.Number(subject, "soul") + CardRules.Number(subject, "agility");
+        var own = CardRules.Number(observer, "soul");
+        var foe = CardRules.Number(subject, "soul");
         return Mathf.Clamp(Mathf.RoundToInt(IntentRevealFrames * Mathf.Sqrt((foe + 1f) / (own + 1f))), 24, 288);
     }
 
@@ -93,7 +93,7 @@ public partial class BattleManager : Node2D
 
     private bool CanStartPreparation(GodotObject unit, ActiveSkillData skill) => is_skill_ready(unit, skill) && CanPay(unit, skill)
         && unit.Get("current_stamina").AsInt32() >= get_skill_energy_cost(unit, skill)
-        && unit.Get("current_mana").AsInt32() >= get_skill_mana_cost(unit, skill);
+        && can_pay_skill_mana_cost(unit,skill);
 
     private void StartSkillCooldown(GodotObject unit, ActiveSkillData skill)
     {
@@ -123,7 +123,20 @@ public partial class BattleManager : Node2D
     private void PayPreparationMilestones(GodotObject unit, BattleQueuedSkill card, float before, float now)
     {
         PayMilestones(unit, card.skill, ref card.paid_energy, get_skill_energy_cost(unit, card.skill), card.preparation_frames, before, now, true);
-        PayMilestones(unit, card.skill, ref card.paid_mana, get_skill_mana_cost(unit, card.skill), card.preparation_frames, before, now, false);
+        PayManaMilestones(unit,card.skill,ref card.paid_mana,get_skill_mana_cost(unit,card.skill),card.preparation_frames,before,now);
+    }
+    private void PayManaMilestones(GodotObject unit,ActiveSkillData skill,ref int paid,int total,int length,float before,float now)
+    {
+        for(var step=paid+1;step<=total;step++)
+        {
+            var milestone=Mathf.CeilToInt(length*step/(float)total);
+            if(before>=milestone||now<milestone)continue;
+            var current=Math.Max(0,unit.Get("current_mana").AsInt32());
+            if(current>0)unit.Set("current_mana",current-1);
+            else if(spend_mana_capacity(unit,1))gongfa_combat.RecordManaCapacityPayment(unit,skill);
+            else break;
+            paid++;
+        }
     }
     private static void PayMilestones(GodotObject unit, ActiveSkillData _, ref int paid, int total, int length, float before, float now, bool energy)
     {
@@ -142,14 +155,15 @@ public partial class BattleManager : Node2D
         if (!_realtimeMode && unit.Get("faction").AsInt32() != (int)WorldEntity.Faction.PLAYER) unitOverlay?.ShowPlayedCard(unit, card.skill);
         var target = GodotObject.IsInstanceValid(card.target) && Alive(card.target) ? card.target : DefaultTarget(card.skill, unit);
         if (!GodotObject.IsInstanceValid(target)) { on_queued_skill_resolved(unit); return; }
-        if (card.skill.aoe_range > 0 && Map is not null) _executor!.execute_aoe_skill(unit, card.skill, Map.Call("get_unit_cell", target).AsVector2I(), Map, false);
-        else _executor!.execute_skill(unit, card.skill, target!, false);
+        if (card.skill.aoe_range > 0 && Map is not null) _executor!.execute_aoe_skill(unit, card.skill, Map.Call("get_unit_cell", target).AsVector2I(), Map, false,true);
+        else _executor!.execute_skill(unit, card.skill, target!, false,true);
     }
 
     public void on_queued_skill_resolved(GodotObject unit)
     {
         if (_segmentPhase == SegmentPhase.Executing)
         {
+            if(TryStartPendingZhouTianAutoCast(unit))return;
             if (_resolvingUnit == unit) CompleteSegmentAction(unit);
             return;
         }
@@ -221,6 +235,8 @@ public partial class BattleManager : Node2D
                 ["phase"] = phase,
                 ["progress"] = card.progress(),
                 ["intent_progress"] = IntentRevealProgress(unit, card),
+                ["nian"] = visible && card.kind == BattleQueuedSkill.ActionKind.Skill && card.artifact_instance_id.Length == 0
+                    ? get_skill_nian(unit, card.execution_skill) : 0,
                 ["front"] = i == 0,
                 ["visible"] = visible
             });
@@ -317,9 +333,10 @@ public partial class BattleManager : Node2D
         gongfa_combat.Begin(unit);
         active_unit = unit; turn_state = unit.Get("faction").AsInt32() == 1 ? TurnState.PLAYER_TURN : TurnState.ENEMY_TURN;
         RefreshStamina(unit);
-        RefreshMana(unit);
+        InitializeOrClampBattleMana(unit);
         foreach (var circuit in _formationCircuits.GetValueOrDefault(unit, [])) circuit.begin_owner_turn();
         if (unit.HasMethod("process_status_event")) unit.Call("process_status_event", "turn_start", new Dictionary { ["battle_manager"] = this, ["unit"] = unit });
+        InitializeOrClampBattleMana(unit);
         if(!Alive(unit)){_finish_current_action(unit);return;}
         if (turn_state == TurnState.PLAYER_TURN && !auto_battle) ShowPlayerHand(unit);
         else CallDeferred(nameof(RunAutoTurn));
@@ -477,7 +494,7 @@ public partial class BattleManager : Node2D
     {
         var queue = get_battle_unit(unit).skill_queue;
         var planningPlayer = _segmentPhase == SegmentPhase.None || _segmentPhase == SegmentPhase.Planning && unit == _mainPlayerUnit && can_player_plan();
-        if (!Alive(unit) || !planningPlayer || get_filled_action_slot_count(unit) >= get_action_slot_capacity(unit) || !is_skill_ready(unit, skill) || skill.skill_type == ActiveSkillData.SkillType.CURSE || !gongfa_combat.CanPlay(unit, skill)) return false;
+        if (!Alive(unit) || !planningPlayer || IsXuanShuSkillSlot10(unit,skill) || get_filled_action_slot_count(unit) >= get_action_slot_capacity(unit) || !is_skill_ready(unit, skill) || skill.skill_type == ActiveSkillData.SkillType.CURSE || !gongfa_combat.CanPlay(unit, skill)) return false;
         if (_segmentPhase == SegmentPhase.Planning && unit == _mainPlayerUnit)
             return PlacePlayerAction(new BattleQueuedSkill(skill, target));
         queue.Add(new BattleQueuedSkill(skill, target));

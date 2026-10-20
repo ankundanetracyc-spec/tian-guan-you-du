@@ -1,0 +1,558 @@
+{
+	"fps": 30,
+	"frames": [
+		{
+			"animation": "appear",
+			"file": "frames/appear_00.png",
+			"frame": 0
+		},
+		{
+			"animation": "appear",
+			"file": "frames/appear_01.png",
+			"frame": 1
+		},
+		{
+			"animation": "appear",
+			"file": "frames/appear_02.png",
+			"frame": 2
+		},
+		{
+			"animation": "appear",
+			"file": "frames/appear_03.png",
+			"frame": 3
+		},
+		{
+			"animation": "appear",
+			"file": "frames/appear_04.png",
+			"frame": 4
+		},
+		{
+			"animation": "appear",
+			"file": "frames/appear_05.png",
+			"frame": 5
+		},
+		{
+			"animation": "appear",
+			"file": "frames/appear_06.png",
+			"frame": 6
+		},
+		{
+			"animation": "appear",
+			"file": "frames/appear_07.png",
+			"frame": 7
+		},
+		{
+			"animation": "appear",
+			"file": "frames/appear_08.png",
+			"frame": 8
+		},
+		{
+			"animation": "appear",
+			"file": "frames/appear_09.png",
+			"frame": 9
+		},
+		{
+			"animation": "appear",
+			"file": "frames/appear_10.png",
+			"frame": 10
+		},
+		{
+			"animation": "appear",
+			"file": "frames/appear_11.png",
+			"frame": 11
+		},
+		{
+			"animation": "appear",
+			"file": "frames/appear_12.png",
+			"frame": 12
+		},
+		{
+			"animation": "appear",
+			"file": "frames/appear_13.png",
+			"frame": 13
+		},
+		{
+			"animation": "appear",
+			"file": "frames/appear_14.png",
+			"frame": 14
+		},
+		{
+			"animation": "appear",
+			"file": "frames/appear_15.png",
+			"frame": 15
+		},
+		{
+			"animation": "appear",
+			"file": "frames/appear_16.png",
+			"frame": 16
+		},
+		{
+			"animation": "appear",
+			"file": "frames/appear_17.png",
+			"frame": 17
+		},
+		{
+			"animation": "idle",
+			"file": "frames/idle_00.png",
+			"frame": 0
+		},
+		{
+			"animation": "idle",
+			"file": "frames/idle_01.png",
+			"frame": 1
+		},
+		{
+			"animation": "idle",
+			"file": "frames/idle_02.png",
+			"frame": 2
+		},
+		{
+			"animation": "idle",
+			"file": "frames/idle_03.png",
+			"frame": 3
+		},
+		{
+			"animation": "idle",
+			"file": "frames/idle_04.png",
+			"frame": 4
+		},
+		{
+			"animation": "idle",
+			"file": "frames/idle_05.png",
+			"frame": 5
+		},
+		{
+			"animation": "idle",
+			"file": "frames/idle_06.png",
+			"frame": 6
+		},
+		{
+			"animation": "idle",
+			"file": "frames/idle_07.png",
+			"frame": 7
+		},
+		{
+			"animation": "idle",
+			"file": "frames/idle_08.png",
+			"frame": 8
+		},
+		{
+			"animation": "idle",
+			"file": "frames/idle_09.png",
+			"frame": 9
+		},
+		{
+			"animation": "idle",
+			"file": "frames/idle_10.png",
+			"frame": 10
+		},
+		{
+			"animation": "idle",
+			"file": "frames/idle_11.png",
+			"frame": 11
+		},
+		{
+			"animation": "idle",
+			"file": "frames/idle_12.png",
+			"frame": 12
+		},
+		{
+			"animation": "idle",
+			"file": "frames/idle_13.png",
+			"frame": 13
+		},
+		{
+			"animation": "idle",
+			"file": "frames/idle_14.png",
+			"frame": 14
+		},
+		{
+			"animation": "idle",
+			"file": "frames/idle_15.png",
+			"frame": 15
+		},
+		{
+			"animation": "idle",
+			"file": "frames/idle_16.png",
+			"frame": 16
+		},
+		{
+			"animation": "idle",
+			"file": "frames/idle_17.png",
+			"frame": 17
+		},
+		{
+			"animation": "idle",
+			"file": "frames/idle_18.png",
+			"frame": 18
+		},
+		{
+			"animation": "idle",
+			"file": "frames/idle_19.png",
+			"frame": 19
+		},
+		{
+			"animation": "idle",
+			"file": "frames/idle_20.png",
+			"frame": 20
+		},
+		{
+			"animation": "idle",
+			"file": "frames/idle_21.png",
+			"frame": 21
+		},
+		{
+			"animation": "idle",
+			"file": "frames/idle_22.png",
+			"frame": 22
+		},
+		{
+			"animation": "idle",
+			"file": "frames/idle_23.png",
+			"frame": 23
+		},
+		{
+			"animation": "punch",
+			"file": "frames/punch_00.png",
+			"frame": 0
+		},
+		{
+			"animation": "punch",
+			"file": "frames/punch_01.png",
+			"frame": 1
+		},
+		{
+			"animation": "punch",
+			"file": "frames/punch_02.png",
+			"frame": 2
+		},
+		{
+			"animation": "punch",
+			"file": "frames/punch_03.png",
+			"frame": 3
+		},
+		{
+			"animation": "punch",
+			"file": "frames/punch_04.png",
+			"frame": 4
+		},
+		{
+			"animation": "punch",
+			"file": "frames/punch_05.png",
+			"frame": 5
+		},
+		{
+			"animation": "punch",
+			"file": "frames/punch_06.png",
+			"frame": 6
+		},
+		{
+			"animation": "punch",
+			"file": "frames/punch_07.png",
+			"frame": 7
+		},
+		{
+			"animation": "punch",
+			"file": "frames/punch_08.png",
+			"frame": 8
+		},
+		{
+			"animation": "punch",
+			"file": "frames/punch_09.png",
+			"frame": 9
+		},
+		{
+			"animation": "punch",
+			"file": "frames/punch_10.png",
+			"frame": 10
+		},
+		{
+			"animation": "punch",
+			"file": "frames/punch_11.png",
+			"frame": 11
+		},
+		{
+			"animation": "punch",
+			"file": "frames/punch_12.png",
+			"frame": 12
+		},
+		{
+			"animation": "punch",
+			"file": "frames/punch_13.png",
+			"frame": 13
+		},
+		{
+			"animation": "punch",
+			"file": "frames/punch_14.png",
+			"frame": 14
+		},
+		{
+			"animation": "punch",
+			"file": "frames/punch_15.png",
+			"frame": 15
+		},
+		{
+			"animation": "punch",
+			"file": "frames/punch_16.png",
+			"frame": 16
+		},
+		{
+			"animation": "punch",
+			"file": "frames/punch_17.png",
+			"frame": 17
+		},
+		{
+			"animation": "punch",
+			"file": "frames/punch_18.png",
+			"frame": 18
+		},
+		{
+			"animation": "punch",
+			"file": "frames/punch_19.png",
+			"frame": 19
+		},
+		{
+			"animation": "punch",
+			"file": "frames/punch_20.png",
+			"frame": 20
+		},
+		{
+			"animation": "punch",
+			"file": "frames/punch_21.png",
+			"frame": 21
+		},
+		{
+			"animation": "punch",
+			"file": "frames/punch_22.png",
+			"frame": 22
+		},
+		{
+			"animation": "punch",
+			"file": "frames/punch_23.png",
+			"frame": 23
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_00.png",
+			"frame": 0
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_01.png",
+			"frame": 1
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_02.png",
+			"frame": 2
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_03.png",
+			"frame": 3
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_04.png",
+			"frame": 4
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_05.png",
+			"frame": 5
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_06.png",
+			"frame": 6
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_07.png",
+			"frame": 7
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_08.png",
+			"frame": 8
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_09.png",
+			"frame": 9
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_10.png",
+			"frame": 10
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_11.png",
+			"frame": 11
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_12.png",
+			"frame": 12
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_13.png",
+			"frame": 13
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_14.png",
+			"frame": 14
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_15.png",
+			"frame": 15
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_16.png",
+			"frame": 16
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_17.png",
+			"frame": 17
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_18.png",
+			"frame": 18
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_19.png",
+			"frame": 19
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_20.png",
+			"frame": 20
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_21.png",
+			"frame": 21
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_22.png",
+			"frame": 22
+		},
+		{
+			"animation": "guard",
+			"file": "frames/guard_23.png",
+			"frame": 23
+		},
+		{
+			"animation": "fade",
+			"file": "frames/fade_00.png",
+			"frame": 0
+		},
+		{
+			"animation": "fade",
+			"file": "frames/fade_01.png",
+			"frame": 1
+		},
+		{
+			"animation": "fade",
+			"file": "frames/fade_02.png",
+			"frame": 2
+		},
+		{
+			"animation": "fade",
+			"file": "frames/fade_03.png",
+			"frame": 3
+		},
+		{
+			"animation": "fade",
+			"file": "frames/fade_04.png",
+			"frame": 4
+		},
+		{
+			"animation": "fade",
+			"file": "frames/fade_05.png",
+			"frame": 5
+		},
+		{
+			"animation": "fade",
+			"file": "frames/fade_06.png",
+			"frame": 6
+		},
+		{
+			"animation": "fade",
+			"file": "frames/fade_07.png",
+			"frame": 7
+		},
+		{
+			"animation": "fade",
+			"file": "frames/fade_08.png",
+			"frame": 8
+		},
+		{
+			"animation": "fade",
+			"file": "frames/fade_09.png",
+			"frame": 9
+		},
+		{
+			"animation": "fade",
+			"file": "frames/fade_10.png",
+			"frame": 10
+		},
+		{
+			"animation": "fade",
+			"file": "frames/fade_11.png",
+			"frame": 11
+		},
+		{
+			"animation": "fade",
+			"file": "frames/fade_12.png",
+			"frame": 12
+		},
+		{
+			"animation": "fade",
+			"file": "frames/fade_13.png",
+			"frame": 13
+		},
+		{
+			"animation": "fade",
+			"file": "frames/fade_14.png",
+			"frame": 14
+		},
+		{
+			"animation": "fade",
+			"file": "frames/fade_15.png",
+			"frame": 15
+		},
+		{
+			"animation": "fade",
+			"file": "frames/fade_16.png",
+			"frame": 16
+		},
+		{
+			"animation": "fade",
+			"file": "frames/fade_17.png",
+			"frame": 17
+		}
+	],
+	"native_canvas": [
+		2048,
+		2048
+	],
+	"native_root": [
+		1024,
+		1900
+	],
+	"provenance": "Three image_gen arm keys, manually registered and baked through native pigment-current and dissolve shader. No combat rules.",
+	"size": [
+		768,
+		768
+	]
+}

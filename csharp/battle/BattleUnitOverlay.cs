@@ -15,7 +15,6 @@ public partial class BattleUnitOverlay : CanvasLayer
     private Control? hoveredStatusBadge;
     private string hoveredStatusId="",hoveredStatusName="",hoveredStatusTip="",lastStatusHoverText="";
     private int hoveredStatusCount;
-    private string lastRetreatTooltip="";
     private Button? pauseButton;
     private Button? speedButton;
     private Button? retreatButton;
@@ -161,7 +160,7 @@ public partial class BattleUnitOverlay : CanvasLayer
     {
         RefreshHoveredStatusInfo();
         var scale=BattleUiArt.Scale(GetViewport());var origin=BattleUiArt.Origin(GetViewport());
-        if(retreatButton is not null){retreatButton.Scale=Vector2.One*scale;retreatButton.Position=origin+new Vector2(1506,18)*scale;retreatButton.Disabled=!manager.can_queue_retreat();var tooltip=manager.get_retreat_chance(out var chance)?$"加入撤退行动 · 当前成功率 {chance:P0} · 每轮最多尝试一次":"当前不可加入：须处于规划阶段、队列有空位且双方遁速已配置，本场允许撤退。";if(tooltip!=lastRetreatTooltip){lastRetreatTooltip=tooltip;HoverInfoManager.SetTooltip(retreatButton,tooltip);}}
+        if(retreatButton is not null){retreatButton.Scale=Vector2.One*scale;retreatButton.Position=origin+new Vector2(1506,18)*scale;retreatButton.Disabled=!manager.can_queue_retreat();}
         if(retreatNotice is not null){retreatNotice.Scale=Vector2.One*scale;retreatNotice.Position=origin+new Vector2(606,110)*scale;retreatNotice.Text=manager.get_retreat_notice();}
         if(speedButton is not null){speedButton.Scale=Vector2.One*scale;speedButton.Position=origin+new Vector2(1190,18)*scale;}
         if(pauseButton is not null){pauseButton.Scale=Vector2.One*scale;pauseButton.Position=origin+new Vector2(1340,18)*scale;}
@@ -194,12 +193,19 @@ public partial class BattleUnitOverlay : CanvasLayer
             var entries=unit.status_snapshot()
                 .Where(s=>s.effect is not null&&!IsInternalStatusBadge(s.effect.effect_id))
                 .Select(s=>(id:s.effect!.effect_id,name:s.effect.name.Length>0?s.effect.name:s.effect.effect_id,count:s.stacks,tip:s.effect.description,bad:s.effect.is_debuff,instance:s)).ToList();
-            if(unit.shield>0)entries.Add(("护盾","护盾",unit.shield,"优先抵扣伤害。",false,null!));
-            if(unit.qi_blood>0)entries.Add(("气血","气血",unit.qi_blood,"公共战斗气血层数。",false,null!));
+            if(unit.shield>0)entries.Add(("护盾","护盾",unit.shield,$"当前护盾：{unit.shield}。受击时按吸收的伤害扣除；此资源没有固定层数上限。",false,null!));
+            if(unit.qi_blood>0)entries.Add(("气血","气血",unit.qi_blood,$"气血层数：{unit.qi_blood}/{unit.max_qi_blood}（上限 {unit.max_qi_blood}）。每下降1层，按当前回落回复率恢复生命；基础回复率为最大生命的5%，可由明确效果调整。战斗结束清空。",false,null!));
+            var battleQi=manager.get_battle_qi(unit);
+            if(battleQi>0)
+            {
+                var manaCapacity=manager.get_effective_mana_capacity(unit);
+                var threshold=manaCapacity>0?$"周天触发阈值：{2*manaCapacity} 炁（当前法力上限 {manaCapacity}）。达到阈值立即完成周天并清空炁，超额不保留；这是触发阈值，不是可储存层数上限。":"当前法力上限为 0，不触发周天；炁没有固定层数上限。";
+                entries.Add(("炁","炁",battleQi,$"当前炁：{battleQi}。炁是战斗资源，不是法力费用；战斗结束时清空。{threshold}",false,null!));
+            }
             if(unit.blood_furnace_value>0)
             {
                 var bonus=unit.blood_furnace_value/2;
-                entries.Add(("血炉","血炉",unit.blood_furnace_value,$"战斗资源。每2点提高1%物理伤害，当前提供物理伤害 +{bonus}%；可被相关招式消耗；战斗结束时清空。",false,null!));
+                entries.Add(("血炉","血炉",unit.blood_furnace_value,$"血炉层数：{unit.blood_furnace_value}/{unit.blood_furnace_value_cap}（上限 {unit.blood_furnace_value_cap}）。每2点提高1%物理伤害，当前提供物理伤害 +{bonus}%；可被相关招式消耗；战斗结束时清空。",false,null!));
             }
             var sig=string.Join("|",entries.Select(e=>$"{e.id}:{e.name}:{e.count}:{e.bad}"));if(signatures.GetValueOrDefault(unit)==sig)continue;signatures[unit]=sig;
             var row=view.GetNode<HFlowContainer>("Statuses");foreach(var child in row.GetChildren()){row.RemoveChild(child);child.QueueFree();}
@@ -210,7 +216,7 @@ public partial class BattleUnitOverlay : CanvasLayer
     {
         var snapshot=manager.get_queue_snapshot_for_unit(unit);
         var queue=view.GetNode<Control>("Queue");queue.Visible=snapshot.Count>0;
-        var signature=string.Join("|",snapshot.Select(entry=>$"{entry.GetValueOrDefault("index",-1).AsInt32()}:{entry.GetValueOrDefault("text","").AsString()}:{entry.GetValueOrDefault("phase","").AsString()}:{entry.GetValueOrDefault("icon_path","").AsString()}:{entry.GetValueOrDefault("front",false).AsBool()}:{entry.GetValueOrDefault("visible",false).AsBool()}"));
+        var signature=string.Join("|",snapshot.Select(entry=>$"{entry.GetValueOrDefault("index",-1).AsInt32()}:{entry.GetValueOrDefault("text","").AsString()}:{entry.GetValueOrDefault("phase","").AsString()}:{entry.GetValueOrDefault("icon_path","").AsString()}:{entry.GetValueOrDefault("front",false).AsBool()}:{entry.GetValueOrDefault("visible",false).AsBool()}:{entry.GetValueOrDefault("nian",0).AsInt32()}"));
         var cards=view.GetNode<Control>("Queue/Cards");
         if(queueSignatures.GetValueOrDefault(unit)!=signature)
         {
@@ -259,6 +265,14 @@ public partial class BattleUnitOverlay : CanvasLayer
                     item.AddChild(icon);
                     var textLabel=new Label{Name="SkillName",Text=entry.GetValueOrDefault("text","技能").AsString(),HorizontalAlignment=HorizontalAlignment.Center,VerticalAlignment=VerticalAlignment.Center,MouseFilter=Control.MouseFilterEnum.Ignore,Position=front?new Vector2(4,115):new Vector2(2,70),Size=front?new Vector2(slotSize.X-8,18):new Vector2(slotSize.X-4,16)};
                     textLabel.AddThemeFontSizeOverride("font_size",front?15:12);textLabel.AddThemeColorOverride("font_color",new Color(.95f,.88f,.64f));item.AddChild(textLabel);
+                    var nian=entry.GetValueOrDefault("nian",0).AsInt32();
+                    if(nian>0)
+                    {
+                        var badge=new Panel{Position=front?new Vector2(72,5):new Vector2(43,3),Size=front?new Vector2(48,24):new Vector2(38,19),MouseFilter=Control.MouseFilterEnum.Ignore,ZIndex=4};
+                        badge.AddThemeStyleboxOverride("panel",new StyleBoxFlat{BgColor=new Color(.08f,.12f,.10f,.92f),BorderColor=new Color("bda36d",.8f),BorderWidthLeft=1,BorderWidthRight=1,BorderWidthTop=1,BorderWidthBottom=1,CornerRadiusTopLeft=6,CornerRadiusTopRight=6,CornerRadiusBottomLeft=6,CornerRadiusBottomRight=6});
+                        var count=new Label{Text=$"念 {nian}",Size=badge.Size,HorizontalAlignment=HorizontalAlignment.Center,VerticalAlignment=VerticalAlignment.Center,MouseFilter=Control.MouseFilterEnum.Ignore};
+                        count.AddThemeFontSizeOverride("font_size",front?12:10);count.AddThemeColorOverride("font_color",new Color("efe3bf"));badge.AddChild(count);item.AddChild(badge);
+                    }
                 }
                 const float step=86f, frontWidth=132f;
                 // 队首中心固定在角色正上方；我方从队首向左展开，敌方从队首向右展开。
@@ -300,7 +314,10 @@ public partial class BattleUnitOverlay : CanvasLayer
         var badge=new PanelContainer{CustomMinimumSize=new(36,36),MouseFilter=Control.MouseFilterEnum.Stop};
         badge.AddThemeStyleboxOverride("panel",new StyleBoxFlat{BgColor=bad?new Color(.26f,.07f,.06f,.95f):new Color(.035f,.09f,.07f,.95f),BorderColor=bad?new Color(.94f,.35f,.28f):new Color(.52f,.80f,.58f),BorderWidthLeft=1,BorderWidthTop=1,BorderWidthRight=1,BorderWidthBottom=1,CornerRadiusTopLeft=9,CornerRadiusTopRight=9,CornerRadiusBottomLeft=9,CornerRadiusBottomRight=9});
         var icon=new TextureRect{Texture=GetStatusIcon(id,instance),ExpandMode=TextureRect.ExpandModeEnum.IgnoreSize,StretchMode=TextureRect.StretchModeEnum.KeepAspectCentered,MouseFilter=Control.MouseFilterEnum.Ignore};icon.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);badge.AddChild(icon);
-        var stack=new Label{Text=count.ToString(),HorizontalAlignment=HorizontalAlignment.Center,VerticalAlignment=VerticalAlignment.Center,Position=new(17,16),Size=new(18,18),MouseFilter=Control.MouseFilterEnum.Ignore};stack.AddThemeFontSizeOverride("font_size",15);stack.AddThemeColorOverride("font_outline_color",Colors.Black);stack.AddThemeConstantOverride("outline_size",4);badge.AddChild(stack);
+        if(!id.StartsWith("心法:",StringComparison.Ordinal))
+        {
+            var stack=new Label{Text=count.ToString(),HorizontalAlignment=HorizontalAlignment.Center,VerticalAlignment=VerticalAlignment.Center,Position=new(17,16),Size=new(18,18),MouseFilter=Control.MouseFilterEnum.Ignore};stack.AddThemeFontSizeOverride("font_size",15);stack.AddThemeColorOverride("font_outline_color",Colors.Black);stack.AddThemeConstantOverride("outline_size",4);badge.AddChild(stack);
+        }
         badge.MouseEntered+=()=>ShowStatusInfo(badge,id,instance,name,count,tip);
         badge.MouseExited+=HideStatusInfo;
         return badge;
@@ -332,7 +349,9 @@ public partial class BattleUnitOverlay : CanvasLayer
             var effect=status.effect;
             title=string.IsNullOrWhiteSpace(effect.name)?effect.effect_id:effect.name;
             body=$"{effect.description}\n\n{status_duration_text(status,effect)}";
-            subtitle=$"战斗状态 · 层数 {status.stacks}";
+            subtitle=hoveredStatusId.StartsWith("心法:",StringComparison.Ordinal)
+                ?"心法效果"
+                :$"战斗状态 · 层数 {status.stacks}/{Math.Max(1,effect.max_stacks)}（上限 {Math.Max(1,effect.max_stacks)}）";
             icon=GetStatusIcon(hoveredStatusId,status);
         }
         else
@@ -342,6 +361,8 @@ public partial class BattleUnitOverlay : CanvasLayer
             subtitle="战斗状态";
             icon=GetStatusIcon(hoveredStatusId,null);
         }
+        title=CardPresentation.Underline(title);
+        body=CardPresentation.Underline(body);
         var key=$"{title}\n{subtitle}\n{body}";
         if(key==lastStatusHoverText)return;
         lastStatusHoverText=key;
@@ -368,16 +389,20 @@ public partial class BattleUnitOverlay : CanvasLayer
                 "补虚行血诀"=>"心法_补虚行血",
                 "赤阳参同经"=>"心法_赤阳参同",
                 "阴符应物经"=>"心法_阴符应物",
-                "黄庭养形篇"=>"心法_黄庭养形",
+                "玄枢含章经"=>"心法_玄枢含章",
+                "斫基损契玄经"=>"心法_斫基损契",
+                "胎息经"=>"心法_黄庭养形",
                 _=>null
             };
             return heartIcon is null?GetLegacyStatusIcon(5):LoadStatusIcon(heartIcon);
         }
         var iconName=id switch
         {
-            "护盾" or "护持"=>"护盾",
+            "护盾" or "护持" or "护盾生成" or "法力护罩"=>"法力护罩",
             "内伤"=>"内伤",
             "气血"=>"气血",
+            "炁"=>"炁",
+            "周天"=>"周天",
             "血炉"=>"血炉",
             "外伤"=>"外伤",
             "身法"=>"身法",

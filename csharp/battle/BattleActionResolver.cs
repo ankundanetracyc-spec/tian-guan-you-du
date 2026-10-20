@@ -8,12 +8,12 @@ public static class BattleActionResolver
 {
     public readonly record struct HitResult(bool Evaded, bool Critical, int DamageBeforeShield, int BlockedDamage);
 
-    public static HitResult resolve_hit(GodotObject attacker, GodotObject defender, ActiveSkillData skill, int block_stacks = 0, float extra_evasion = 0)
+    public static HitResult resolve_hit(GodotObject attacker, GodotObject defender, ActiveSkillData skill, int block_stacks = 0, float extra_evasion = 0, bool? evaded_override = null)
     {
         var damageType = skill.damage_type;
         // 神魂伤害直指神魂：不进入闪避与会心判定，仅由双方神魂差参与伤害结算。
         var isSoulDamage = damageType is "soul" or "spiritual";
-        if (!isSoulDamage && roll_evasion(attacker, defender, extra_evasion)) return new(true, false, 0, 0);
+        if (!isSoulDamage && (evaded_override ?? roll_evasion(attacker, defender, extra_evasion))) return new(true, false, 0, 0);
         var extraCrit=Engine.GetMainLoop() is SceneTree critTree && critTree.GetFirstNodeInGroup("battle_mgr") is BattleManager critManager?critManager.gongfa_combat.SettlingMomentum(attacker,skill):0;
         var critical = !isSoulDamage && roll_crit(attacker, defender,extraCrit);
         var damage = preview_damage(attacker,skill);

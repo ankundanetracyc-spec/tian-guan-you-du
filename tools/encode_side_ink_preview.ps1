@@ -1,6 +1,10 @@
 param(
     [string]$CaptureDirectory = 'E:/stacklands/tmp/ink_sequence_capture',
-    [string]$OutputPath = 'E:/stacklands/docs/美术规范/局内水墨序列帧_20261015/preview_motion.gif'
+    [string]$OutputPath = 'E:/stacklands/docs/美术规范/局内水墨序列帧_20261015/preview_motion.gif',
+    [int]$CropX = 0,
+    [int]$CropY = 0,
+    [int]$CropWidth = 0,
+    [int]$CropHeight = 0
 )
 $ErrorActionPreference = 'Stop'
 Add-Type -AssemblyName PresentationCore
@@ -13,13 +17,19 @@ foreach ($captureFile in $captureFiles) {
     $bitmap.BeginInit()
     $bitmap.CacheOption = [Windows.Media.Imaging.BitmapCacheOption]::OnLoad
     $bitmap.UriSource = [Uri]::new($captureFile.FullName)
-    $bitmap.DecodePixelWidth = 960
+    if ($CropWidth -le 0 -or $CropHeight -le 0) { $bitmap.DecodePixelWidth = 960 }
     $bitmap.EndInit()
     $bitmap.Freeze()
+    $encodedFrame = $bitmap
+    if ($CropWidth -gt 0 -and $CropHeight -gt 0) {
+        $region = [Windows.Media.Imaging.CroppedBitmap]::new($bitmap, [Windows.Int32Rect]::new($CropX,$CropY,$CropWidth,$CropHeight))
+        $region.Freeze()
+        $encodedFrame = $region
+    }
     $metadata = [Windows.Media.Imaging.BitmapMetadata]::new('gif')
     $metadata.SetQuery('/grctlext/Delay', [UInt16]$(if ($frameIndex % 3 -eq 2) { 4 } else { 3 }))
     $metadata.SetQuery('/grctlext/Disposal', [byte]2)
-    $encoder.Frames.Add([Windows.Media.Imaging.BitmapFrame]::Create($bitmap, $null, $metadata, $null))
+    $encoder.Frames.Add([Windows.Media.Imaging.BitmapFrame]::Create($encodedFrame, $null, $metadata, $null))
     $frameIndex++
 }
 $parentDirectory = [IO.Path]::GetDirectoryName([IO.Path]::GetFullPath($OutputPath))

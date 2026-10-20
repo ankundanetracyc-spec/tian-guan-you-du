@@ -5,6 +5,9 @@ public partial class MainScene
     private LetterMailbox _letterMailbox = new();
     private LetterPanel? _letters;
     private readonly Dictionary<string, Action<LetterData>> _letterActivities = [];
+    private string _letterInvitationTaskStamp = "";
+    private int _letterInvitationStampHour = -1;
+    private int _nextLetterInvitationBoundary = int.MaxValue;
 
     private void setup_letters()
     {
@@ -18,7 +21,104 @@ public partial class MainScene
     }
     private void open_letters() => _letters?.Open();
     private void on_letters_changed()
-    { hud?.set_letter_counts(_letterMailbox.letters.Count, _letterMailbox.UnreadCount); mark_save_dirty(); }
+    {
+        hud?.set_letter_counts(_letterMailbox.letters.Count, _letterMailbox.UnreadCount);
+        _letterInvitationTaskStamp = get_letter_invitation_task_stamp();
+        cultivation_ui?.refresh_invitation_schedule_action();
+        RefreshJournalTracker();
+        refresh_journal_entries();
+        mark_save_dirty();
+    }
+
+    private string get_letter_invitation_task_stamp()
+    {
+        var now = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+        _letterInvitationStampHour = now;
+        _nextLetterInvitationBoundary = int.MaxValue;
+        var entries = new List<string>();
+        foreach (var letter in _letterMailbox.letters)
+        {
+            if (letter?.invitation is not { } invite) continue;
+            if (invite.response == "accepted")
+            {
+                if (invite.starts_at_hour > now) _nextLetterInvitationBoundary = Math.Min(_nextLetterInvitationBoundary, invite.starts_at_hour);
+                if (invite.ends_at_hour > now) _nextLetterInvitationBoundary = Math.Min(_nextLetterInvitationBoundary, invite.ends_at_hour);
+            }
+            var state = invite.response switch
+            {
+                "completed" => "completed",
+                "accepted" when invite.starts_at_hour > now => "upcoming",
+                "accepted" when invite.ends_at_hour > now => "active",
+                "accepted" => "expired",
+                _ => "",
+            };
+            if (state.Length > 0) entries.Add($"{letter.letter_id}:{state}");
+        }
+        entries.Sort(StringComparer.Ordinal);
+        return string.Join("|", entries);
+    }
+
+    private void refresh_letter_invitation_tasks_if_changed()
+    {
+        var now = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+        // Mailbox mutations refresh immediately via Changed; time alone only changes
+        // invitation presentation when crossing the next start/end boundary.
+        if (now >= _letterInvitationStampHour && now < _nextLetterInvitationBoundary) return;
+        var stamp = get_letter_invitation_task_stamp();
+        if (stamp == _letterInvitationTaskStamp) return;
+        _letterInvitationTaskStamp = stamp;
+        cultivation_ui?.refresh_invitation_schedule_action();
+        RefreshJournalTracker();
+        refresh_journal_entries();
+    }
+
+    public Godot.Collections.Dictionary get_next_accepted_letter_invitation_schedule()
+    {
+        var now = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+        LetterData? next = null;
+        foreach (var letter in _letterMailbox.letters)
+        {
+            if (letter?.invitation is not { response: "accepted" } invitation ||
+                invitation.starts_at_hour <= now || invitation.ends_at_hour <= now)
+                continue;
+            if (next?.invitation is null || invitation.starts_at_hour < next.invitation.starts_at_hour)
+                next = letter;
+        }
+        if (next?.invitation is not { } upcoming) return new Godot.Collections.Dictionary { ["available"] = false };
+        return new Godot.Collections.Dictionary
+        {
+            ["available"] = true,
+            ["letter_id"] = next.letter_id,
+            ["activity_name"] = upcoming.activity_name,
+            ["place_name"] = upcoming.place_name,
+            ["hour"] = upcoming.starts_at_hour,
+        };
+    }
+
+    private List<JournalPanel.Entry> get_letter_invitation_tasks()
+    {
+        var now = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+        var tasks = new List<(int StartHour, JournalPanel.Entry Entry)>();
+        foreach (var letter in _letterMailbox.letters.OrderBy(item => item?.invitation?.starts_at_hour ?? int.MaxValue))
+        {
+            if (letter?.invitation is not { } invite) continue;
+            if (invite.response == "completed")
+            {
+                tasks.Add((invite.starts_at_hour, IdentifyJournalTask(new JournalPanel.Entry(
+                    invite.activity_name, $"已赴{invite.activity_name}之约。", "来信邀约", invite.place_name,
+                    "已完成", LetterMailbox.Date(invite.starts_at_hour), "letter.invitation." + letter.letter_id))));
+                continue;
+            }
+            if (invite.response != "accepted" || invite.ends_at_hour <= now) continue;
+            var detail = now < invite.starts_at_hour
+                ? $"你已接受邀约。请于{LetterMailbox.Date(invite.starts_at_hour)}前往{invite.place_name}；活动开始后可在信匣中赴约。静室修炼页可将这场邀约的开始时辰填入修炼计划，精力不足可能使修炼提前结束。"
+                : $"邀约时段已开始，将于{LetterMailbox.Date(invite.ends_at_hour)}结束。请前往{invite.place_name}并从信匣赴约。";
+            tasks.Add((invite.starts_at_hour, IdentifyJournalTask(new JournalPanel.Entry(
+                invite.activity_name, detail, "来信邀约", invite.place_name, "进行中",
+                LetterMailbox.Date(invite.starts_at_hour), "letter.invitation." + letter.letter_id))));
+        }
+        return tasks.OrderBy(task => task.StartHour).Select(task => task.Entry).ToList();
+    }
 
     /// <summary>真实事件使用稳定来源 ID 投递；不猜测活动、附件或奖励。</summary>
     public bool deliver_letter(LetterData letter)

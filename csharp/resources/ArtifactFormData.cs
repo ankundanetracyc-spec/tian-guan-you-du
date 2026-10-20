@@ -7,7 +7,8 @@ public partial class ArtifactFormData : Resource
     [Export] public string form_id = "";
     [Export] public string form_name = "";
     [Export] public string icon_path = "";
-    [Export] public Array<string> allowed_textures = [];
+    /// <summary>旧材类适配名单，与当前六种主导加工质地分开。</summary>
+    [Export] public Array<string> allowed_material_forms = [];
     [Export] public Array<string> accepted_utilities = [];
     [Export] public int inner_spirit_base;
     [Export] public int outer_spirit_base;

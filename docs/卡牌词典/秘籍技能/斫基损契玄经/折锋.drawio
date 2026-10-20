@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" agent="Codex" version="24.7.17">
+  <diagram id="zhuo-ji-折锋" name="折锋">
+    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="1090" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="card" value="&lt;div style=&quot;text-align:left;&quot;&gt;技能名：折锋&lt;br&gt;资源路径：res://resources/activeskills/斫基损契玄经/折锋.tres&lt;br&gt;类型：攻伐&lt;br&gt;关键词：应对&lt;br&gt;耗费：体力1、法力1&lt;br&gt;目标：指定1名敌方&lt;br&gt;伤害类型：物理&lt;br&gt;效果：造成A点物理伤害。若本次施展燃烧法力上限支付费用，目标不能以应对技能应对此次攻击。&lt;br&gt;计算公式：A=round(8 + 灵慧×0.65 + 术法造诣×0.2)。&lt;br&gt;使用次数：不限&lt;br&gt;冷却：无&lt;br&gt;&lt;br&gt;化法：第一卷·秉烛&lt;br&gt;资源路径：res://resources/activeskills/斫基损契玄经/化法/折锋.tres&lt;br&gt;关键词：应对、周天&lt;br&gt;原技能效果：造成A点物理伤害。若本次施展燃烧法力上限支付费用，目标不能以应对技能应对此次攻击。&lt;br&gt;化法追加：施展前法力为0时，命中后获得炁1；每回合限1次。&lt;br&gt;使用次数：不限&lt;br&gt;冷却：无&lt;br&gt;&lt;br&gt;化法：第四卷·长明&lt;br&gt;资源路径：res://resources/activeskills/斫基损契玄经/化法/折锋长明.tres&lt;br&gt;关键词：应对&lt;br&gt;原技能效果：造成A点物理伤害。若本次施展燃烧法力上限支付费用，目标不能以应对技能应对此次攻击。&lt;br&gt;化法追加：法力上限为1时，目标不能以应对技能应对此次攻击。&lt;br&gt;使用次数：不限&lt;br&gt;冷却：无&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e7eee4;strokeColor=#769078;fontSize=18;align=left;spacingLeft=18;spacingTop=16;" vertex="1" parent="1">
+          <mxGeometry x="220" y="80" width="1060" height="930" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -73,7 +73,7 @@ public partial class BattleQueueLayoutCheck : Node
         _manager.get_battle_unit(_player).segment_action_index=0;
         for(var i=0;i<count;i++)queue.Add((i%5) switch
         {
-            3=>BattleQueuedSkill.Rest(),4=>BattleQueuedSkill.Breathe(),
+            3=>BattleQueuedSkill.Rest(),4=>BattleQueuedSkill.Empty(),
             _=>new BattleQueuedSkill(_skills[i%5],null)
         });
         while(queue.Count<cap)queue.Add(BattleQueuedSkill.Empty());

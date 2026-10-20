@@ -1,0 +1,10 @@
+{
+  "canvas":[2048,2048],
+  "ground_origin":[1024,1900],
+  "reference_visible_height":1375,
+  "registration":"Authored upright casting pose, manually registered against approved idle head/body scale and common foot baseline. No runtime per-pose fitting.",
+  "poses":[
+    {"source":"source/male_cast.png","output":"male_cast.png","source_origin":[664,1207],"authoring_scale":1.337},
+    {"source":"source/female_cast.png","output":"female_cast.png","source_origin":[675,1210],"authoring_scale":1.315}
+  ]
+}

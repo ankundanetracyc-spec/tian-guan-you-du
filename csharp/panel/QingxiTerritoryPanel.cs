@@ -231,7 +231,7 @@ public partial class QingxiTerritoryPanel : Control
     private static Button MakeButton(string text, float width) { var button = new Button { Text = text, CustomMinimumSize = new Vector2(width, 38), AutowrapMode = TextServer.AutowrapMode.WordSmart }; button.AddThemeStyleboxOverride("normal", MakeStyle(new Color(.17f, .145f, .095f, .96f), new Color(.55f, .43f, .22f, .9f))); button.AddThemeStyleboxOverride("hover", MakeStyle(new Color(.25f, .2f, .12f, .98f), new Color(.84f, .66f, .31f, 1f))); return button; }
     private static Button MakeOrnateButton(string text)
     {
-        var button = new Button { CustomMinimumSize = new Vector2(240, 64), SizeFlagsHorizontal = SizeFlags.ShrinkCenter, TooltipText = text };
+        var button = new Button { CustomMinimumSize = new Vector2(240, 64), SizeFlagsHorizontal = SizeFlags.ShrinkCenter };
         var texture = GD.Load<Texture2D>("res://textures/ui/territory/territory_ornate_button_v1.png");
         foreach (var state in new[] { "normal", "hover", "pressed", "focus" }) button.AddThemeStyleboxOverride(state, new StyleBoxEmpty());
         var art = new TextureRect { Texture = new AtlasTexture { Atlas = texture, Region = new Rect2(0, 90, 2172, 530) }, ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize, StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered, MouseFilter = MouseFilterEnum.Ignore };

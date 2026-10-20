@@ -1,0 +1,10 @@
+{
+  "canvas":[2048,2048],
+  "ground_origin":[1024,1900],
+  "registration":"Root of an independent qi arm; this is a shoulder/ink pivot, not character feet. Authored keys share pivot and scale.",
+  "poses":[
+    {"source":"../source/idle.png","output":"idle.png","source_origin":[990,1100],"authoring_scale":0.8},
+    {"source":"../source/punch.png","output":"punch.png","source_origin":[990,1100],"authoring_scale":0.8},
+    {"source":"../source/guard.png","output":"guard.png","source_origin":[990,1100],"authoring_scale":0.8}
+  ]
+}

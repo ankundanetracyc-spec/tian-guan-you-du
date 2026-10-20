@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1")
 skill_name = "撕咬"
-description = "扑近撕咬。伤害 = round(7 + 体魄×0.7 + 敏捷×0.8)。"
+description = "扑近撕咬。伤害 = round(7 + 体魄×0.7 + 体魄×0.8)。"
 skill_type = 0
 energy_cost = 1
 mana_cost = 0
@@ -18,4 +18,4 @@ recovery_frames = 96
 cooldown_frames = 240
 slot_category = "active"
 damage_type = "physical"
-damage_formula = "round(7 + physique*0.7 + agility*0.8)"
+damage_formula = "round(7 + physique*0.7 + physique*0.8)"

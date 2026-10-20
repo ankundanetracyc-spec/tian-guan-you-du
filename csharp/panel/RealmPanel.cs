@@ -390,7 +390,7 @@ public partial class RealmPanel : Control
             foreach (Variant key in layer.realm_multiplier_bonuses.Keys) keys.Add(key.AsString());
         }
 
-        var basicAttributes = new[] { "physique", "intelligence", "agility", "soul", "fortune", "comprehension" };
+        var basicAttributes = new[] { "physique", "intelligence", "soul", "fortune", "comprehension" };
         (float growth, float flat) DisplayContribution(string key)
         {
             var current = _player?.get_realm_attribute_adjustment_for_realm(realm, key) ?? SumRealmBonuses(manager, realmIndex, key);
@@ -438,7 +438,7 @@ public partial class RealmPanel : Control
     private static string AttributeName(string key) => key switch
     {
         "current_age" => "当前年龄", "gender" => "性别", "physique" => "体魄", "intelligence" => "灵慧",
-        "agility" => "敏捷", "soul" => "神魂", "fortune" => "福缘", "comprehension" => "悟性",
+        "soul" => "神魂", "fortune" => "福缘", "comprehension" => "悟性",
         "charisma" => "魅力", "spirit_strands" => "灵力", "core_count" => "云息灵核",
         "max_health" => "生命上限", "max_mana" => "法力上限", "max_stamina" => "体力上限",
         "max_mind" => "心境上限", "physical_defense" => "物理防御", "precision" => "精准",

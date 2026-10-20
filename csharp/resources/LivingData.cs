@@ -6,7 +6,8 @@ public partial class LivingData : EntityData
 {
     [Export] public float base_physique = 5.0f;
     [Export] public float base_intelligence = 5.0f;
-    [Export] public float base_agility = 5.0f;
+    // v11 only: loaded once to migrate existing v10 saves; never used in gameplay.
+    [Export] public float base_agility;
     [Export] public float base_soul = 5.0f;
     [Export] public float base_fortune = 50.0f;
     [Export] public float base_comprehension = 50.0f;
@@ -15,7 +16,8 @@ public partial class LivingData : EntityData
     [Export] public float base_management = 50.0f;
     [Export] public float physique = 5.0f;
     [Export] public float intelligence = 5.0f;
-    [Export] public float agility = 5.0f;
+    // v11 only: loaded once to migrate existing v10 saves; never used in gameplay.
+    [Export] public float agility;
     [Export] public float soul = 5.0f;
     [Export] public float fortune = 50.0f;
     [Export] public float comprehension = 50.0f;

@@ -80,7 +80,6 @@ public partial class StartMenu
             {
                 Text = BackdropNames[index],
                 CustomMinimumSize = new Vector2(156, 40),
-                TooltipText = "切换画卷 · " + BackdropNames[index]
             };
             StyleSettingsText(button, 16, new Color(.17f, .26f, .22f));
             button.AddThemeColorOverride("font_hover_color", new Color(.12f, .22f, .18f));
@@ -159,12 +158,10 @@ public partial class StartMenu
             var button = SettingsButton(source.Text);
             button.SizeFlagsHorizontal = SizeFlags.ExpandFill;
             button.CustomMinimumSize = new Vector2(0, 58);
-            button.TooltipText = source.TooltipText;
             button.Pressed += () => { CloseDemoEntries(); source.EmitSignal(BaseButton.SignalName.Pressed); };
             list.AddChild(button);
-            HoverInfoManager.CopyInfo(source, button);
         }
-        var alchemy = SettingsButton("炼丹试演（新版）");
+        var alchemy = SettingsButton("炼丹配伍");
         alchemy.SizeFlagsHorizontal = SizeFlags.ExpandFill; alchemy.CustomMinimumSize = new Vector2(0, 58);
         alchemy.Pressed += () => { CloseDemoEntries(); GetTree().ChangeSceneToFile("res://tscn/scene/AlchemyPreviewScene.tscn"); };
         list.AddChild(alchemy);

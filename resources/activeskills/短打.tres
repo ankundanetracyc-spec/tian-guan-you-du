@@ -8,9 +8,9 @@ script = ExtResource("2")
 attribute = "physique"
 multiplier = 0.35
 
-[sub_resource type="Resource" id="Agility"]
+[sub_resource type="Resource" id="ExtraPhysique"]
 script = ExtResource("2")
-attribute = "agility"
+attribute = "physique"
 multiplier = 0.35
 
 [resource]
@@ -24,4 +24,4 @@ range_min = 1
 range_max = 1
 base_damage = 8.0
 damage_type = "physical"
-damage_bonuses = Array[ExtResource("2")]([SubResource("Physique"), SubResource("Agility")])
+damage_bonuses = Array[ExtResource("2")]([SubResource("Physique"), SubResource("ExtraPhysique")])

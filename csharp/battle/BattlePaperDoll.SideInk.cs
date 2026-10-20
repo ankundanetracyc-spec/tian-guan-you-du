@@ -6,6 +6,8 @@ public partial class BattlePaperDoll
     public const string SideInkResponseArtRoot = "res://textures/characters/side_ink_responses_20261015_v4/";
     public const string SideInkRestArtRoot = "res://textures/characters/side_ink_rest_20261016_v1/";
     public const string SideInkDodgeArtRoot = "res://textures/characters/side_ink_dodge_20261016_v1/";
+    public const string SideInkCastArtRoot = "res://textures/characters/side_ink_cast_20261020_v1/";
+    public const string SideInkThrowArtRoot = "res://textures/characters/side_ink_throw_20261020_v1/";
     public static readonly Vector2 SideInkGround = new(1024, 1900);
     public const float SideInkReferenceHeight = 1375f;
     private readonly Dictionary<string, Texture2D?> _sideTextures = [];
@@ -24,6 +26,7 @@ public partial class BattlePaperDoll
     public Vector2 side_ink_hand() => _sideFemale ? new(751, -397) : new(685, -376);
     public Vector2 side_ink_body() => _sideFemale ? new(-50, -970) : new(-15, -925);
     public Vector2 side_ink_guard() => _sideFemale ? new(335, -1050) : new(320, -1025);
+    public Vector2 side_ink_cast_finger() => _sideFemale ? new(366, -1423) : new(344, -1456);
     public bool is_defense_presenting() => _usesSideInk && !_sideDead && _sidePose == "guard";
     public float presentation_zoom() => _sidePresentation?.Scale.X ?? 1;
     public Transform2D side_ink_visual_transform() => _sidePresentation?.GlobalTransform ?? GlobalTransform;
@@ -98,9 +101,9 @@ public partial class BattlePaperDoll
         _portraitFacesLeft = false;
         _usesSideInk = true;
         _spineAnimation = "idle";
-        foreach (var pose in new[] { "idle", "chop", "hurt", "guard", "rest", "dodge" })
+        foreach (var pose in new[] { "idle", "chop", "hurt", "guard", "rest", "dodge", "cast", "throw_release" })
         {
-            var folder = pose == "dodge" ? SideInkDodgeArtRoot : pose == "rest" ? SideInkRestArtRoot : pose is "hurt" or "guard" ? SideInkResponseArtRoot : SideInkArtRoot;
+            var folder = pose.StartsWith("throw_") ? SideInkThrowArtRoot : pose == "cast" ? SideInkCastArtRoot : pose == "dodge" ? SideInkDodgeArtRoot : pose == "rest" ? SideInkRestArtRoot : pose is "hurt" or "guard" ? SideInkResponseArtRoot : SideInkArtRoot;
             var path = folder + sex + "_" + pose + ".png";
             _sideTextures[pose] = ResourceLoader.Exists(path) ? GD.Load<Texture2D>(path) : null;
         }
@@ -175,6 +178,7 @@ public partial class BattlePaperDoll
         if (_guardAwaitingContact) _sideElapsed = Mathf.Min(_sideElapsed, .33f);
         if (_sidePose != "idle" && _sideElapsed >= _sideDuration) ResetSideInkPose();
         var visiblePose = _sidePose == "chop" && _sideElapsed < .08f ? "idle" : _sidePose;
+        if (_sidePose == "throw") visiblePose = "throw_release";
         var texture = _sideTextures.GetValueOrDefault(visiblePose) ?? _sideTextures.GetValueOrDefault("idle");
         _portrait.Texture = texture;
         _portrait.Position = Vector2.Zero;
@@ -182,6 +186,12 @@ public partial class BattlePaperDoll
         if (_sidePose == "rest")
             blend = Mathf.SmoothStep(0, 1, Mathf.Clamp((_sideElapsed - .12f) / .16f, 0, 1))
                 * (1 - Mathf.SmoothStep(0, 1, Mathf.Clamp((_sideElapsed - 1.37f) / .27f, 0, 1)));
+        else if (_sidePose == "throw")
+            blend = Mathf.SmoothStep(0, 1, Mathf.Clamp((_sideElapsed - .015f) / .07f, 0, 1))
+                * (1 - Mathf.SmoothStep(0, 1, Mathf.Clamp((_sideElapsed - (_sideDuration - .22f)) / .22f, 0, 1)));
+        else if (_sidePose == "cast")
+            blend = Mathf.SmoothStep(0, 1, Mathf.Clamp((_sideElapsed - .035f) / .12f, 0, 1))
+                * (1 - Mathf.SmoothStep(0, 1, Mathf.Clamp((_sideElapsed - (_sideDuration - .18f)) / .18f, 0, 1)));
         else if (_sidePose != "idle") blend = 1 - Mathf.SmoothStep(0, 1, Mathf.Clamp((_sideElapsed - (_sideDuration - .14f)) / .14f, 0, 1));
         if (texture == _sideTextures.GetValueOrDefault("idle")) blend = 1;
         _portrait.Modulate = new Color(1, 1, 1, blend);
@@ -199,6 +209,17 @@ public partial class BattlePaperDoll
             _sidePresentation.Position = _contactAccent <= 0 ? Vector2.Zero
                 : new Vector2(Mathf.Sin(shakeAge * 155), Mathf.Cos(shakeAge * 187) * .45f) * (16 * _contactShake * Mathf.Pow(_contactAccent / .22f, 2));
         }
+    }
+
+    public void play_cast(Vector2 direction)
+    {
+        if (!_usesSideInk) { play_attack(direction, false); return; }
+        if (_sideDead) return;
+        EndContactPoseHold();
+        _actionTween?.Kill();
+        face_direction(direction);
+        Position = Vector2.Zero; Rotation = 0; Modulate = Colors.White;
+        StartSideInkPose("cast", 1.25f);
     }
 
     public void play_guard(bool awaitingContact = false)

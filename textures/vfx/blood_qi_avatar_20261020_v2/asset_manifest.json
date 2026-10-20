@@ -1,0 +1,76 @@
+{
+	"approval": "two_arms_v4.png",
+	"assets": [
+		{
+			"alpha": {
+				"opaque": 1654,
+				"partial": 510915,
+				"transparent": 3681735
+			},
+			"bounds": [
+				240,
+				309,
+				1535,
+				1468
+			],
+			"format": "RGBA8",
+			"name": "left_idle",
+			"registration_offset": [
+				240,
+				240
+			],
+			"registration_scale": 1.25,
+			"root": [
+				978,
+				1184
+			],
+			"size": [
+				2048,
+				2048
+			],
+			"world_root": [
+				-400.0,
+				-980.0
+			]
+		},
+		{
+			"alpha": {
+				"opaque": 1520,
+				"partial": 514038,
+				"transparent": 3678746
+			},
+			"bounds": [
+				240,
+				299,
+				1567,
+				1465
+			],
+			"format": "RGBA8",
+			"name": "right_idle",
+			"registration_offset": [
+				240,
+				240
+			],
+			"registration_scale": 1.25,
+			"root": [
+				1115,
+				1178
+			],
+			"size": [
+				2048,
+				2048
+			],
+			"world_root": [
+				260.0,
+				-960.0
+			]
+		}
+	],
+	"first_arm": "left_idle",
+	"reference_ground": [
+		1024,
+		1900
+	],
+	"reference_height": 1375,
+	"scope": "Authored resting sprites; not gameplay or action integration."
+}

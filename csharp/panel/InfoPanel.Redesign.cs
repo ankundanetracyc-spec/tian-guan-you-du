@@ -184,6 +184,8 @@ public partial class InfoPanel
             var overviewScroll = new ScrollContainer { HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled, ClipContents = true };
             _characterCanvas.AddChild(overviewScroll); CharacterRect(overviewScroll, 282, 105, 1350, 795);
             _staticOverviewPage.Reparent(overviewScroll, false); _characterPages[0] = overviewScroll;
+            if (_overviewWorldStatusSection is not null && _overviewWorldStatusSection.GetParent() == _staticOverviewPage)
+                _staticOverviewPage.MoveChild(_overviewWorldStatusSection, _staticOverviewPage.GetChildCount() - 1);
             _appearancePortraitFrame!.CustomMinimumSize = new Vector2(370, 550);
             _appearancePortraitFrame.SizeFlagsVertical = SizeFlags.ExpandFill;
             _appearanceEntry!.AddThemeStyleboxOverride("panel", CharacterStyle(false, 14));
@@ -226,7 +228,7 @@ public partial class InfoPanel
         _activeNewPage = page;
         var identity = unit.GetInstanceId().ToString();
         if (_characterIdentity != identity)
-        { _characterIdentity = identity; _viewedGongfa = null; _manualQuery = ""; _manualFilter = "全部"; _manualKeyword = ""; _skillQuery = ""; _skillSource = ""; _skillKeyword = ""; _battleFilter = "all"; _characterDropTarget = -1; }
+        { _characterIdentity = identity; _viewedGongfa = null; _manualQuery = ""; _manualFilter = "全部"; _manualKeyword = ""; _skillQuery = ""; _skillSource = ""; _skillKeyword = ""; _battleFilter = "all"; _showSkillNodeNetwork = false; _characterDropTarget = -1; }
         _characterTitle!.Text = new[] { "概览", "属性", "战斗", "功法", "装备", "关系" }[page];
         _characterName!.Text = unit.entity_data?.entity_name ?? "无名";
         _characterRealm!.Text = unit.cultivation_realm;

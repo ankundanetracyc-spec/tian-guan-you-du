@@ -9,8 +9,9 @@ public partial class CultivationUI : Control
 	private PanelContainer? _panel;
 	private Label? _name, _realm, _power, _rate, _plan, _studyHint, _breakthroughHint;
 	private OptionButton? _mode, _studyBook;
-	private SpinBox? _strands, _days, _year, _month, _date;
-	private Button? _cultivate, _study, _breakthrough;
+	private SpinBox? _strands, _days, _year, _month, _date, _hour;
+	private Button? _cultivate, _study, _breakthrough, _inviteScheduleButton;
+	private Label? _inviteScheduleHint;
 	private VBoxContainer? _strandRow, _dayRow, _dateRow;
 	private readonly List<GongfaResource> _studyCandidates = [];
 	private PanelContainer? _overviewPanel;
@@ -47,7 +48,7 @@ public partial class CultivationUI : Control
 		build_ui();
 		build_overview_ui();
 		build_body_ui();
-		
+
 		build_visualization_ui();
 		finish_room_shell();
 		Hide();
@@ -65,7 +66,7 @@ public partial class CultivationUI : Control
 		set_date_defaults();
 		refresh();
 		_overviewPanel?.Hide();
-		
+
 		_bodyPanel?.Hide();
 		_visualPanel?.Hide();
 		select_room_page(0);
@@ -595,7 +596,7 @@ public partial class CultivationUI : Control
 	{
 		var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
 		if (time is null || _year is null || _month is null || _date is null) return;
-		_year.Value = time.year; _month.Value = time.month; _date.Value = Math.Min(30, time.day + 1);
+		_year.Value = time.year; _month.Value = time.month; _date.Value = Math.Min(30, time.day + 1); if (_hour is not null) _hour.Value = time.hour;
 		if (time.day == 30) { _date.Value = 1; _month.Value = time.month == 12 ? 1 : time.month + 1; if (time.month == 12) _year.Value = time.year + 1; }
 	}
 
@@ -614,9 +615,47 @@ public partial class CultivationUI : Control
 		return (_mode?.Selected ?? 0) switch
 		{
 			1 => Mathf.Max(1, (int)_days!.Value * 24),
-			2 => Math.Max(1, total_hours((int)_year!.Value, (int)_month!.Value, (int)_date!.Value, time.hour) - time.get_total_game_hours()),
+			2 => Math.Max(0, total_hours((int)_year!.Value, (int)_month!.Value, (int)_date!.Value, (int)(_hour?.Value ?? time.hour)) - time.get_total_game_hours()),
 			_ => 0
 		};
+	}
+
+	private GDict next_accepted_invitation_schedule()
+	{
+		var main = GetTree().GetFirstNodeInGroup("main_scene");
+		return main is not null && main.HasMethod("get_next_accepted_letter_invitation_schedule")
+			? main.Call("get_next_accepted_letter_invitation_schedule").AsGodotDictionary()
+			: new GDict();
+	}
+
+	public void refresh_invitation_schedule_action()
+	{
+		if (_inviteScheduleButton is null || _inviteScheduleHint is null) return;
+		var invitation = next_accepted_invitation_schedule();
+		var available = invitation.GetValueOrDefault("available", false).AsBool();
+		_inviteScheduleButton.Visible = _inviteScheduleHint.Visible = available;
+		if (!available) return;
+		var activity = invitation.GetValueOrDefault("activity_name", "应邀活动").AsString();
+		var place = invitation.GetValueOrDefault("place_name", "相约地点").AsString();
+		var targetHour = invitation.GetValueOrDefault("hour", 0).AsInt32();
+		var now = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
+		var targetDate = now is null ? LetterMailbox.Date(targetHour) : format_date_after(now, targetHour - now.get_total_game_hours());
+		_inviteScheduleButton.Text = $"按「{activity}」时间修炼";
+		_inviteScheduleHint.Text = $"{place}　·　目标 {targetDate}。精力不足时，修炼会先结束，需留意赴约时段。";
+	}
+
+	private void apply_next_invitation_schedule()
+	{
+		var invitation = next_accepted_invitation_schedule();
+		if (!invitation.GetValueOrDefault("available", false).AsBool()) return;
+		var targetHour = invitation.GetValueOrDefault("hour", 0).AsInt32();
+		var day = targetHour / 24;
+		_year!.Value = day / 360 + 1;
+		_month!.Value = day % 360 / 30 + 1;
+		_date!.Value = day % 30 + 1;
+		_hour!.Value = targetHour % 24;
+		_mode!.Select(2);
+		update_mode_visibility(); sync_mode_tabs(); refresh_plan();
 	}
 
 	private static int total_hours(int year, int month, int day, int hour) => (((year - 1) * 12 + (month - 1)) * 30 + (day - 1)) * 24 + hour;
@@ -663,6 +702,8 @@ public partial class CultivationUI : Control
 	private void refresh_plan()
 	{
 		if (_target is null || _plan is null || _cultivate is null) return;
+		refresh_auto_refinement_ui();
+		refresh_manual_refinement_ui();
 		if (value("main_gongfa").AsGodotObject() is not GongfaResource)
 		{
 			_plan.Text = "尚未装配主修功法。请先前往角色页面，将已研读的功法设为主修后再吐纳修行。";
@@ -682,8 +723,37 @@ public partial class CultivationUI : Control
 		var staminaLimited = preview.GetValueOrDefault("stamina_limited", false).AsBool();
 		var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
 		_plan.Text = time is null ? "" : $"预计灵力　{strands} 缕\n耗时　{format_duration_hours(hours)}\n精力消耗　{staminaCost:0.#} 点\n结束　{format_date_after(time, hours)}\n\n未满一缕的灵力在结束时散去。{(staminaLimited ? "\n精力不足，已按可持续时长预估。" : "")}";
+		refresh_invitation_schedule_action();
 		if (mode is 1 or 2 && strands == 0) _plan.Text += "\n本次时长不足以获得一整缕，可增加修炼天数或改用指定灵力。";
-		_cultivate.Disabled = hours <= 0 || (_target is Character practitioner && !practitioner.can_cultivate());
+		var autoRefinementBlocked = false;
+		if (_target is Character practitioner)
+		{
+			var autoSettings = practitioner.get_cultivation_auto_refinement_settings();
+			if (autoSettings.GetValueOrDefault("enabled", false).AsBool())
+			{
+				if (!autoSettings.GetValueOrDefault("eligible", false).AsBool())
+				{
+					autoRefinementBlocked = true;
+					_plan.Text += $"\n自动炼化未就绪：{autoSettings.GetValueOrDefault("reason", "请重新检查设置。").AsString()}";
+				}
+				else
+				{
+					var autoPreview = practitioner.get_cultivation_auto_refinement_preview(hours);
+					var threshold = autoSettings.GetValueOrDefault("threshold_penalty", .02d).AsDouble();
+					if (autoPreview.GetValueOrDefault("triggered", false).AsBool())
+					{
+						var oldPenalty = autoPreview.GetValueOrDefault("old_penalty", 0d).AsDouble();
+						var newPenalty = autoPreview.GetValueOrDefault("new_penalty", 0d).AsDouble();
+						_plan.Text += $"\n预计瓶颈减速达到 {threshold:P0} 时自动炼化一次，减速 {oldPenalty:P1} → {newPenalty:P1}。";
+					}
+					else if (autoPreview.GetValueOrDefault("expired_before_threshold", false).AsBool())
+						_plan.Text += $"\n所选灵感将在瓶颈减速达到 {threshold:P0} 前失效；本段不会消耗。";
+					else
+						_plan.Text += $"\n本段预计不会达到瓶颈减速 {threshold:P0}；灵感不会消耗。";
+				}
+			}
+		}
+		_cultivate.Disabled = hours <= 0 || autoRefinementBlocked || (_target is Character cultivationCharacter && !cultivationCharacter.can_cultivate());
 	}
 
 	private void cultivate()
@@ -695,7 +765,18 @@ public partial class CultivationUI : Control
 		var hours = preview.GetValueOrDefault("hours", 0).AsInt32(); var strands = preview.GetValueOrDefault("strands", 0).AsInt32();
 		var staminaCost = preview.GetValueOrDefault("stamina_cost", 0f).AsSingle();
 		var requestedHours = selected_hours();
-		play_transition("吐纳修行", $"灵力沿周天缓缓运转，预计耗时 {format_duration_hours(hours)}，消耗精力 {staminaCost:0.#} 点。", $"修炼结束，实得 {strands} 缕灵力。未满一缕的余数已散去。", () => { if (mode is 0 or 3) _target.Call("cultivate_with_world_stamina_for_strands", wanted); else _target.Call("cultivate_with_world_stamina_for_hours", requestedHours); refresh(); }, hours);
+		_autoRefinementFeedback.Text = "";
+		play_transition("吐纳修行", $"灵力沿周天缓缓运转，预计耗时 {format_duration_hours(hours)}，消耗精力 {staminaCost:0.#} 点。", $"修炼结束，实得 {strands} 缕灵力。未满一缕的余数已散去。", () =>
+		{
+			var outcome = mode is 0 or 3
+				? _target.Call("cultivate_with_world_stamina_for_strands", wanted).AsGodotDictionary()
+				: _target.Call("cultivate_with_world_stamina_for_hours", requestedHours).AsGodotDictionary();
+			if (!outcome.GetValueOrDefault("success", false).AsBool())
+				_autoRefinementFeedback.Text = "修炼未能开始，自动炼化没有消耗灵感。";
+			else if (_target is Character practitioner)
+				show_auto_refinement_result(practitioner);
+			refresh();
+		}, hours);
 	}
 
 	private void update_study()
@@ -767,7 +848,17 @@ public partial class CultivationUI : Control
 			return;
 		}
 		var pillHint = _target is Character pillCharacter ? pillCharacter.get_breakthrough_pill_hint(next) : "";
-		if (!call("is_breakthrough_ready").AsBool()) { _breakthrough.Text = "闭关突破"; _breakthroughHint.Text = $"灵力圆满后，方可突破至 {next}。{(string.IsNullOrEmpty(pillHint) ? "" : $"\n{pillHint}")}"; _breakthrough.Disabled = true; return; }
+		if (!call("is_breakthrough_ready").AsBool())
+		{
+			var gongfaHint = realms.get_main_gongfa_breakthrough_hint(_target, next);
+			var requirementHint = string.IsNullOrEmpty(gongfaHint)
+				? $"灵力与属性达到要求后，方可突破至 {next}。"
+				: gongfaHint;
+			_breakthrough.Text = "闭关突破";
+			_breakthroughHint.Text = $"{requirementHint}{(string.IsNullOrEmpty(pillHint) ? "" : $"\n{pillHint}")}";
+			_breakthrough.Disabled = true;
+			return;
+		}
 		if (_target is Character condensationTarget && condensationTarget.requires_condensation_breakthrough())
 		{
 			_breakthroughHint.Text = "云息六层至七层改为八回合凝核牌局：每回合六张牌，必须对调两张，杂质达到 100 立即失败。";

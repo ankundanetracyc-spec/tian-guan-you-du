@@ -20,7 +20,8 @@ public partial class WorldNpcData : Resource
     [Export] public int spirit_strands;
     [Export] public float physique = 5f;
     [Export] public float intelligence = 5f;
-    [Export] public float agility = 5f;
+    // v11 only: loaded once to migrate existing v10 NPC snapshots; never used in gameplay.
+    [Export] public float agility;
     [Export] public float soul = 5f;
     [Export] public int current_health = 100;
     [Export] public int max_health = 100;

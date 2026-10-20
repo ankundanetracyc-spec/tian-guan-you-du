@@ -1,0 +1,100 @@
+[gd_scene load_steps=5 format=3]
+[ext_resource type="StyleBox" path="res://tscn/ui/alchemy/PaperPanel.tres" id="1"]
+[sub_resource type="StyleBoxFlat" id="Page"]
+bg_color = Color(0.94, 0.91, 0.83, 1)
+content_margin_left = 8.0
+content_margin_top = 18.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+[sub_resource type="StyleBoxFlat" id="Tab"]
+bg_color = Color(0.84, 0.83, 0.73, 0.5)
+content_margin_left = 14.0
+content_margin_right = 14.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+[sub_resource type="StyleBoxFlat" id="ChosenTab"]
+bg_color = Color(0.94, 0.91, 0.83, 1)
+border_width_top = 2
+border_color = Color(0.28, 0.42, 0.34, 1)
+content_margin_left = 14.0
+content_margin_right = 14.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+[node name="FurnaceSidebar" type="PanelContainer"]
+visible = false
+anchor_left = 1.0
+anchor_top = 0.10
+anchor_right = 1.0
+anchor_bottom = 0.81
+offset_left = -448.0
+offset_right = -22.0
+grow_horizontal = 0
+theme_override_styles/panel = ExtResource("1")
+[node name="Body" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 14
+[node name="Header" type="HBoxContainer" parent="Body"]
+layout_mode = 2
+[node name="Title" type="Label" parent="Body/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 26
+text = "炉 内"
+[node name="Close" type="Button" parent="Body/Header"]
+layout_mode = 2
+text = "收起 ›"
+flat = true
+[node name="Rule" type="HSeparator" parent="Body"]
+layout_mode = 2
+[node name="Tabs" type="TabContainer" parent="Body"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("Page")
+theme_override_styles/tab_selected = SubResource("ChosenTab")
+theme_override_styles/tab_unselected = SubResource("Tab")
+theme_override_styles/tab_hovered = SubResource("Tab")
+theme_override_colors/font_selected_color = Color(0.18, 0.27, 0.22, 1)
+theme_override_colors/font_unselected_color = Color(0.39, 0.43, 0.36, 1)
+theme_override_colors/font_hovered_color = Color(0.18, 0.27, 0.22, 1)
+
+[node name="炉况" type="ScrollContainer" parent="Body/Tabs"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+[node name="Content" type="VBoxContainer" parent="Body/Tabs/炉况"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="Heading" type="Label" parent="Body/Tabs/炉况/Content"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "本息预判"
+autowrap_mode = 3
+
+[node name="药材" type="ScrollContainer" parent="Body/Tabs"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+[node name="Content" type="VBoxContainer" parent="Body/Tabs/药材"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="Heading" type="Label" parent="Body/Tabs/药材/Content"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "按批查看材料、药性与功用"
+autowrap_mode = 3
+
+[node name="炉记" type="ScrollContainer" parent="Body/Tabs"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+[node name="Content" type="VBoxContainer" parent="Body/Tabs/炉记"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="Heading" type="Label" parent="Body/Tabs/炉记/Content"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "操作后的变化与成品结果"
+autowrap_mode = 3

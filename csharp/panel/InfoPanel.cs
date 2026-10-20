@@ -135,7 +135,7 @@ public partial class InfoPanel : Control
     {
         var content = GetNodeOrNull<Control>("ScrollBody/ContentPanel");
         if (content is null) return;
-        var close = new Button { Name = "RuntimeClose", Text = "×", TooltipText = "收起人物档案", MouseFilter = MouseFilterEnum.Stop, Flat = true };
+        var close = new Button { Name = "RuntimeClose", Text = "×", MouseFilter = MouseFilterEnum.Stop, Flat = true };
         close.SetAnchorsPreset(LayoutPreset.TopLeft);
         close.OffsetLeft = 26; close.OffsetTop = 20; close.OffsetRight = 76; close.OffsetBottom = 66;
         close.AddThemeFontSizeOverride("font_size", 28); close.AddThemeColorOverride("font_color", new Color(.25f, .25f, .25f));
@@ -682,11 +682,11 @@ public partial class InfoPanel : Control
         {
             AttributeGrid("基础属性",
                 [("体魄", unit.physique.ToString("0.0"), 0), ("灵慧", unit.intelligence.ToString("0.0"), 1),
-                 ("敏捷", unit.agility.ToString("0.0"), 2), ("神魂", unit.soul.ToString("0.0"), 3),
+                 ("神魂", unit.soul.ToString("0.0"), 2),
                  ("福缘", unit.fortune.ToString("0.0"), 4), ("悟性", unit.comprehension.ToString("0.0"), 5), ("魅力", data_number(unit,"charisma").ToString("0.0"), -1), ("交际", data_number(unit,"social").ToString("0.0"), -1), ("治事", data_number(unit,"management").ToString("0.0"), -1)]);
             AttributeGrid("战斗属性",
                 [("生命", $"{unit.current_health}/{unit.max_health}", -1), ("体力", $"{unit.current_stamina}/{unit.max_stamina}", -1), ("法力", $"{unit.current_mana}/{unit.max_mana}", -1),
-                 ("速度", unit.initiative_speed.ToString("0.0"), -1), ("灵识容量", $"{unit.used_spirit_perception}/{unit.max_spirit_perception}", -1),
+                 ("速度", unit.initiative_speed.ToString("0.0"), -1), ("身心协调值", unit.coordination.ToString("0.0"), -1), ("灵识容量", $"{unit.used_spirit_perception}/{unit.max_spirit_perception}", -1),
                  ("物理防御", unit.physical_defense.ToString(), -1), ("精准", unit.precision.ToString(), -1),
                  ("身法", unit.dodge.ToString(), -1),
                  ("会心", unit.critical.ToString(), -1), ("护心", unit.crit_resist.ToString(), -1),
@@ -780,7 +780,7 @@ public partial class InfoPanel : Control
         detailBox.AddChild(Text("法宝详情", 24));
         detailBox.AddChild(new HSeparator());
         var detail = Text("尚未选中法宝\n\n炼器完成后，此处会显示：\n本行与阴阳\n主功用及品级\n灵识占用、耐久\n内炼或外祭构型\n绑定基础牌与炼制记录", 17); detail.SizeFlagsVertical = SizeFlags.ExpandFill; detailBox.AddChild(detail);
-        var forge = new Button { Text = "查看炼器", CustomMinimumSize = new Vector2(0, 42) }; forge.Disabled = true; forge.TooltipText = "炼器与法宝实例将在法宝系统接入后开放"; forge.AddThemeColorOverride("font_color", ink); detailBox.AddChild(forge);
+        var forge = new Button { Text = "查看炼器", CustomMinimumSize = new Vector2(0, 42) }; forge.Disabled = true; forge.AddThemeColorOverride("font_color", ink); detailBox.AddChild(forge);
 
         var supply = new PanelContainer(); supply.AddThemeStyleboxOverride("panel", equipment_panel_style());
         supply.CustomMinimumSize = new Vector2(0, 126); supply.SizeFlagsVertical = SizeFlags.ShrinkEnd; _newBody.AddChild(supply);
@@ -815,7 +815,7 @@ public partial class InfoPanel : Control
 
     private static string equipment_bonus_text(EquipmentData equipment)
     {
-        var labels = new Dictionary<string, string> { ["physique"] = "体魄", ["intelligence"] = "灵慧", ["agility"] = "敏捷", ["soul"] = "神魂", ["max_health"] = "生命上限", ["physical_defense"] = "物理防御", ["critical"] = "会心", ["max_spirit_perception"] = "灵识上限", ["mana_regen_rate"] = "法力恢复" };
+        var labels = new Dictionary<string, string> { ["physique"] = "体魄", ["intelligence"] = "灵慧", ["soul"] = "神魂", ["max_health"] = "生命上限", ["physical_defense"] = "物理防御", ["critical"] = "会心", ["max_spirit_perception"] = "灵识上限", ["mana_regen_rate"] = "法力恢复" };
         var values = new List<string>();
         foreach (Variant key in equipment.fixed_bonuses.Keys) { var name = key.AsString(); var label = labels.GetValueOrDefault(name, name); var value = equipment.fixed_bonuses[key].AsSingle(); values.Add($"{label} {(value >= 0 ? "+" : "")}{value:0.#}"); }
         return values.Count == 0 ? "无直接属性加成" : string.Join("\n", values.Take(2));
@@ -1037,7 +1037,7 @@ public partial class InfoPanel : Control
         }
         foreach (Variant key in chapter.required_attributes.Keys)
         {
-            var name = key.AsString(); var need = chapter.required_attributes[key].AsSingle(); var value = human.Get(name); var actual = value.VariantType is Variant.Type.Int or Variant.Type.Float ? value.AsSingle() : 0;
+            var name = key.AsString(); var need = chapter.required_attributes[key].AsSingle(); var actual = CardRules.Number(human, name);
             yield return gongfa_requirement_label($"{battle_attribute_name(name)}：{actual:0.0} / {need:0.0}", actual >= need);
         }
         foreach (var id in chapter.required_chapter_ids) yield return gongfa_requirement_label($"{gongfa_chapter_name(book, id)}：{(human.is_gongfa_chapter_learned(book, id) ? "已研读" : "未研读")}", human.is_gongfa_chapter_learned(book, id));
@@ -1059,6 +1059,7 @@ public partial class InfoPanel : Control
     {
         "max_health_flat" => $"最大生命 +{value:0.#}",
         "max_health_percent" => $"最大生命 +{value:0.#}%",
+        "max_mana_yunxi" => $"云息境界起法力上限 +{value:0.#}",
         "qi_blood_cap" => $"气血上限 +{value:0.#}",
         "physical_damage_percent" => $"物理伤害 +{value:0.#}%",
         "dodge_percent" => $"身法 +{value:0.#}%",
@@ -1121,8 +1122,15 @@ public partial class InfoPanel : Control
             resultSkill.damage_bonuses.Count > 0 ||
             !string.IsNullOrWhiteSpace(resultSkill.damage_formula))
             lines.Add($"伤害类型：{resultSkill.damage_type switch { "physical" => "物理", "soul" => "神魂", "spell" => "法术", _ => resultSkill.damage_type }}");
-        var face = System.Text.RegularExpressions.Regex.Replace(CardPresentation.Face(resultSkill, owner), @"(?m)^使用次数：.*(?:\r?\n|$)", "").Trim();
-        lines.Add($"效果：{face}");
+        var face = CardPresentation.Underline(System.Text.RegularExpressions.Regex.Replace(CardPresentation.Face(resultSkill, owner), @"(?m)^使用次数：.*(?:\r?\n|$)", "").Trim());
+        var isXuanShuRewrite=resultSkill.gongfa_rewrite_effect_ids.Any(id=>id.StartsWith("xuan_shu_",StringComparison.Ordinal));
+        if(isXuanShuRewrite)
+        {
+            lines.Add(face);
+            var calculations=CardPresentation.CombatCalculationDetails(resultSkill,owner);
+            if(!string.IsNullOrWhiteSpace(calculations))lines.Add($"数值推演：\n{calculations}");
+        }
+        else lines.Add($"效果：{face}");
         var perBattle = resultSkill.uses_per_battle > 0 ? resultSkill.uses_per_battle : resultSkill.max_charges;
         var limits = new List<string>();
         if (resultSkill.uses_per_round > 0) limits.Add($"每轮{resultSkill.uses_per_round}次");
@@ -1166,7 +1174,7 @@ public partial class InfoPanel : Control
             var effect = GongfaSkillRewriteRuntime.GetEffectPreview(skill);
             if (string.IsNullOrWhiteSpace(effect))
                 effect = CardPresentation.Face(skill, owner).Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).FirstOrDefault() ?? skill.description;
-            if (!string.IsNullOrWhiteSpace(effect)) previews.Add(trim_gongfa_preview(effect));
+            if (!string.IsNullOrWhiteSpace(effect)) previews.Add(CardPresentation.Underline(trim_gongfa_preview(effect)));
         }
         return previews.Count > 0 ? previews : ["无"];
     }
@@ -1191,7 +1199,7 @@ public partial class InfoPanel : Control
             var learnedOrder = book.get_sorted_chapters()
                 .Where(chapter => human.is_gongfa_chapter_learned(book, chapter.get_id()))
                 .Select(chapter => chapter.order).DefaultIfEmpty(0).Max();
-            var description = book.get_heart_method_description(learnedOrder, isMain);
+            var description = CardPresentation.Underline(book.get_heart_method_description(learnedOrder, isMain));
             var keywords = skill.tags.Count > 0 ? $"关键词：{string.Join("、", skill.tags)}\n" : "";
             entries.Add($"[b]{(isMain ? "主修" : "辅修")}《{book.gongfa_name}》 · {skill.skill_name}[/b]\n{keywords}{description}");
         }
@@ -1270,7 +1278,7 @@ public partial class InfoPanel : Control
         return value is >= 1 and <= 10 ? numerals[value - 1].ToString() : value.ToString();
     }
 
-    /// <summary>战斗页管理即时战斗的固定技能槽，不再读写旧卡组。</summary>
+    /// <summary>战斗页管理即时战斗的技能槽，不再读写旧卡组。</summary>
     private void populate_static_battle_page(Creature unit)
     {
         if (_characterCanvas is not null) { refresh_character_battle(unit); return; }
@@ -1313,7 +1321,7 @@ public partial class InfoPanel : Control
         _battleSelectedPath = selected?.ResourcePath ?? "";
 
         var heading = _staticBattlePage.GetNodeOrNull<Label>("Workspace/Loadout/Box/HeadingRow/Heading");
-        if (heading is not null) heading.Text = "固定技能槽";
+        if (heading is not null) heading.Text = "技能槽";
         _battleSkillCounter = _staticBattlePage.GetNodeOrNull<Label>("Workspace/Loadout/Box/HeadingRow/Counter");
         if (_battleSkillCounter is not null) _battleSkillCounter.Text = $"{slotSkills.Count} / 10";
 
@@ -1343,7 +1351,7 @@ public partial class InfoPanel : Control
         {
             _battleDetailTitle.Text = "尚无可装配技能";
             _battleDetailMeta.Text = "等待角色学会可进入即时战斗的技能";
-            _battleDetailText.Text = "技能槽只承载可主动使用或可应对排队的技能。主修或辅修槽位中的秘籍自动提供心法被动，开战时随功法快照生效；不设独立心法槽。";
+            _battleDetailText.Text = "技能槽装配主动技能或应对技能；排入行动队列后占用行动槽。主修或辅修秘籍的心法被动自动生效，开战时显示于Buff栏，不设独立心法槽。";
             return;
         }
 
@@ -1352,13 +1360,14 @@ public partial class InfoPanel : Control
         {
             _battleDetailMeta.Text = "常驻被动　开战显示于Buff栏";
             var passiveSource = string.IsNullOrWhiteSpace(skill.source_gongfa_name) ? "秘籍" : skill.source_gongfa_name;
-            _battleDetailText.Text = $"[b]效果[/b]\n{skill.get_skill_description(current_card)}\n\n[b]来源[/b]\n{passiveSource}";
+            _battleDetailText.Text = $"[b]效果[/b]\n{CardPresentation.Underline(CardPresentation.Face(skill,current_card))}\n\n[b]来源[/b]\n{passiveSource}";
             return;
         }
         _battleDetailTitle.Text = skill.skill_name;
         _battleDetailMeta.Text = $"{category}　体力 {skill.energy_cost}　法力 {skill.mana_cost}";
         var source = string.IsNullOrWhiteSpace(skill.source_gongfa_name) ? "通用" : skill.source_gongfa_name;
-        _battleDetailText.Text = $"[b]技能效果[/b]\n{skill.get_skill_description(current_card)}\n\n[b]来源[/b]\n{source}\n\n[b]装配操作[/b]\n左侧点击加入或移出；中间槽位下方可调整顺序或移除。";
+        var skillDescription=CardPresentation.Underline(CardPresentation.Face(skill,current_card));
+        _battleDetailText.Text = $"[b]技能效果[/b]\n{skillDescription}\n\n[b]来源[/b]\n{source}\n\n[b]装配操作[/b]\n左侧点击加入或移出技能槽；中间可调整顺序或移除。";
     }
 
     private void bind_static_battle_controls()
@@ -1404,7 +1413,7 @@ public partial class InfoPanel : Control
             return;
         }
 
-        if (hint is not null) hint.Text = $"已学技能　{catalog.Count} 项\n点击加入或移出固定技能槽；心法随功法生效。";
+        if (hint is not null) hint.Text = $"已学技能　{catalog.Count} 项\n点击加入或移出技能槽；排入行动队列后占用行动槽。心法随功法生效。";
         var displayed = catalog.Where(skill => _battleFilter == "all" || battle_skill_category(skill) == (_battleFilter switch { "attack" => "攻伐", "technique" => "术诀", "defense" => "守御", _ => "" })).ToList();
         foreach (var skill in displayed)
         {
@@ -1424,7 +1433,7 @@ public partial class InfoPanel : Control
 
     private Button create_battle_skill_library_entry(ActiveSkillData skill, bool equipped, int slotIndex)
     {
-        var button = new Button { Name = "SkillEntry", Text = "", TooltipText = skill.get_skill_description(current_card), CustomMinimumSize = new Vector2(0, 66), ClipContents = true, MouseFilter = MouseFilterEnum.Stop };
+        var button = new Button { Name = "SkillEntry", Text = "", TooltipText = CardPresentation.Underline(skill.get_skill_description(current_card)), CustomMinimumSize = new Vector2(0, 66), ClipContents = true, MouseFilter = MouseFilterEnum.Stop };
         button.AddThemeStyleboxOverride("normal", BattleLibraryEntryStyle(equipped, false));
         button.AddThemeStyleboxOverride("hover", BattleLibraryEntryStyle(equipped, true));
         button.AddThemeStyleboxOverride("pressed", BattleLibraryEntryStyle(equipped, true));
@@ -1474,11 +1483,12 @@ public partial class InfoPanel : Control
         for (var index = 0; index < 10; index++)
         {
             var slotIndex = index;
+            var automaticSlot=index==9&&human?.has_xuanshu_heart_method_equipped()==true;
             var holder = new VBoxContainer { CustomMinimumSize = new Vector2(BattleLoadoutSlotWidth, BattleLoadoutSlotHeight + BattleLoadoutActionHeight), SizeFlagsHorizontal = SizeFlags.ShrinkCenter, MouseFilter = MouseFilterEnum.Ignore };
             var skill = index < slotSkills.Count ? slotSkills[index] : null;
             if (skill is null)
             {
-                var empty = create_battle_empty_slot(index);
+                var empty = create_battle_empty_slot(index,automaticSlot);
                 empty.AddThemeStyleboxOverride("disabled", BattleSlotStyle(false, false));
                 holder.AddChild(empty); holder.AddChild(new Control { CustomMinimumSize = new Vector2(0, BattleLoadoutActionHeight), MouseFilter = MouseFilterEnum.Ignore });
             }
@@ -1488,9 +1498,9 @@ public partial class InfoPanel : Control
                 slot.Pressed += () => { _battleSelectedPath = skill.ResourcePath; populate_static_battle_page(human!); };
                 holder.AddChild(slot);
                 var actions = new HBoxContainer { Alignment = BoxContainer.AlignmentMode.Center, CustomMinimumSize = new Vector2(BattleLoadoutSlotWidth, BattleLoadoutActionHeight), MouseFilter = MouseFilterEnum.Stop };
-                var up = create_battle_slot_action("↑", "上移", () => move_battle_skill(human!, slotIndex, -1));
-                var down = create_battle_slot_action("↓", "下移", () => move_battle_skill(human!, slotIndex, 1));
-                var remove = create_battle_slot_action("×", "移除", () => remove_battle_skill(human!, slotIndex));
+                var up = create_battle_slot_action("↑", () => move_battle_skill(human!, slotIndex, -1));
+                var down = create_battle_slot_action("↓", () => move_battle_skill(human!, slotIndex, 1));
+                var remove = create_battle_slot_action("×", () => remove_battle_skill(human!, slotIndex));
                 up.Disabled = slotIndex == 0; down.Disabled = slotIndex >= slotPaths.Count - 1;
                 actions.AddChild(up); actions.AddChild(down); actions.AddChild(remove); holder.AddChild(actions);
             }
@@ -1500,7 +1510,8 @@ public partial class InfoPanel : Control
 
     private Button create_battle_loadout_slot(ActiveSkillData skill, int index, bool selected)
     {
-        var button = new Button { Name = $"Slot{index + 1}", Text = "", TooltipText = skill.get_skill_description(current_card), CustomMinimumSize = new Vector2(BattleLoadoutSlotWidth, BattleLoadoutSlotHeight), ClipContents = true, MouseFilter = MouseFilterEnum.Stop };
+        var automaticSlot=index==9&&current_card is Character character&&character.has_xuanshu_heart_method_equipped();
+        var button = new Button { Name = $"Slot{index + 1}", Text = "", TooltipText = CardPresentation.Underline(CardPresentation.Face(skill,current_card)), CustomMinimumSize = new Vector2(BattleLoadoutSlotWidth, BattleLoadoutSlotHeight), ClipContents = true, MouseFilter = MouseFilterEnum.Stop };
         button.AddThemeStyleboxOverride("normal", BattleSlotStyle(true, selected));
         button.AddThemeStyleboxOverride("hover", BattleSlotStyle(true, true));
         button.AddThemeStyleboxOverride("pressed", BattleSlotStyle(true, true));
@@ -1511,6 +1522,9 @@ public partial class InfoPanel : Control
         button.AddChild(create_battle_loadout_icon(skill));
         // 已装备槽与空槽使用同一份素材框；此前只有空槽绘制框线，导致技能图标像脱离槽位。
         button.AddChild(create_battle_loadout_frame(skill, selected, true));
+        if(automaticSlot)add_skill_slot_lock_overlay(button,
+            new Vector2((BattleLoadoutSlotWidth-BattleLoadoutFrameWidth)*.5f,BattleLoadoutFrameTop),
+            new Vector2(BattleLoadoutFrameWidth,BattleLoadoutFrameHeight),3);
         var name = new Label { Text = skill.skill_name, Position = new Vector2(6f * BattleLoadoutScale, 160f * BattleLoadoutScale), Size = new Vector2(BattleLoadoutSlotWidth - 12f * BattleLoadoutScale, 18f * BattleLoadoutScale), HorizontalAlignment = HorizontalAlignment.Center, ClipText = true, MouseFilter = MouseFilterEnum.Ignore, ZIndex = 4 };
         name.AddThemeFontSizeOverride("font_size", 16); name.AddThemeColorOverride("font_color", new Color(.12f, .095f, .065f)); button.AddChild(name);
         return button;
@@ -1521,13 +1535,16 @@ public partial class InfoPanel : Control
         return CombatSkillBar.CreateSkillIcon(skill, BattleLoadoutScale);
     }
 
-    private static Button create_battle_empty_slot(int index)
+    private static Button create_battle_empty_slot(int index,bool automaticSlot)
     {
         var button = new Button { Name = $"Slot{index + 1}", Text = "", CustomMinimumSize = new Vector2(BattleLoadoutSlotWidth, BattleLoadoutSlotHeight), Disabled = true, ClipContents = true, MouseFilter = MouseFilterEnum.Ignore };
         button.AddThemeStyleboxOverride("disabled", BattleSlotStyle(false, false));
         var number = new Label { Text = index == 9 ? "0" : (index + 1).ToString(), Position = new Vector2(18f * BattleLoadoutScale, 38f * BattleLoadoutScale), Size = new Vector2(18f * BattleLoadoutScale, 16f * BattleLoadoutScale), MouseFilter = MouseFilterEnum.Ignore, ZIndex = 4 };
         number.AddThemeFontSizeOverride("font_size", 15); number.AddThemeColorOverride("font_color", new Color(.48f, .44f, .34f)); button.AddChild(number);
         button.AddChild(create_battle_loadout_frame(null, false, false));
+        if(automaticSlot)add_skill_slot_lock_overlay(button,
+            new Vector2((BattleLoadoutSlotWidth-BattleLoadoutFrameWidth)*.5f,BattleLoadoutFrameTop),
+            new Vector2(BattleLoadoutFrameWidth,BattleLoadoutFrameHeight),3);
         var empty = new Label { Text = "空槽", Position = new Vector2(6f * BattleLoadoutScale, 160f * BattleLoadoutScale), Size = new Vector2(BattleLoadoutSlotWidth - 12f * BattleLoadoutScale, 18f * BattleLoadoutScale), HorizontalAlignment = HorizontalAlignment.Center, MouseFilter = MouseFilterEnum.Ignore, ZIndex = 4 };
         empty.AddThemeFontSizeOverride("font_size", 16); empty.AddThemeColorOverride("font_color", new Color(.48f, .44f, .34f)); button.AddChild(empty);
         return button;
@@ -1568,9 +1585,9 @@ public partial class InfoPanel : Control
         return frame;
     }
 
-    private static Button create_battle_slot_action(string text, string tooltip, Action action)
+    private static Button create_battle_slot_action(string text, Action action)
     {
-        var button = new Button { Text = text, TooltipText = tooltip, CustomMinimumSize = new Vector2(34, BattleLoadoutActionHeight), Flat = true, MouseFilter = MouseFilterEnum.Stop };
+        var button = new Button { Text = text, CustomMinimumSize = new Vector2(34, BattleLoadoutActionHeight), Flat = true, MouseFilter = MouseFilterEnum.Stop };
         button.AddThemeFontSizeOverride("font_size", 18); button.AddThemeColorOverride("font_color", new Color(.30f, .24f, .15f)); button.AddThemeColorOverride("font_hover_color", new Color(.58f, .36f, .06f));
         var empty = new StyleBoxEmpty(); button.AddThemeStyleboxOverride("normal", empty); button.AddThemeStyleboxOverride("hover", empty); button.AddThemeStyleboxOverride("pressed", empty); button.AddThemeStyleboxOverride("disabled", empty);
         button.Pressed += action; return button;
@@ -1603,7 +1620,7 @@ public partial class InfoPanel : Control
         ContentMarginLeft = 3, ContentMarginRight = 3, ContentMarginTop = 3, ContentMarginBottom = 3
     };
 
-    private static string battle_attribute_name(string name) => name switch { "physique" => "体魄", "agility" => "敏捷", "intelligence" => "灵慧", "soul" => "神魂", "comprehension" => "悟性", "body_proficiency" => "体道造诣", "magic_proficiency" => "术法造诣", "sword_proficiency" => "剑道造诣", "talisman_proficiency" => "符道造诣", "cultivation_rate" => "修炼效率", "mind_regen_rate" => "神识恢复", "mana_regen_rate" => "法力恢复", "physical_damage" => "物理伤害", "max_health" => "生命上限", "max_qi_blood" => "气血上限", "blood_furnace_value_cap" => "血炉上限", "physical_defense" => "物理防御", "precision" => "精准", "dodge" => "身法", "critical" => "会心", "crit_resist" => "护心", "crit_damage_mult" => "会心伤害", "initiative_speed" => "速度", _ => name };
+    private static string battle_attribute_name(string name) => name switch { "physique" => "体魄", "coordination" => "身心协调值", "intelligence" => "灵慧", "soul" => "神魂", "comprehension" => "悟性", "body_proficiency" => "体道造诣", "magic_proficiency" => "术法造诣", "sword_proficiency" => "剑道造诣", "talisman_proficiency" => "符道造诣", "cultivation_rate" => "修炼效率", "mind_regen_rate" => "神识恢复", "mana_regen_rate" => "法力恢复", "physical_damage" => "物理伤害", "max_health" => "生命上限", "max_qi_blood" => "气血上限", "blood_furnace_value_cap" => "血炉上限", "physical_defense" => "物理防御", "precision" => "精准", "dodge" => "身法", "critical" => "会心", "crit_resist" => "护心", "crit_damage_mult" => "会心伤害", "initiative_speed" => "速度", _ => name };
 
     private static string gongfa_chapter_name(GongfaResource? book, string chapterId)
     {
@@ -1701,7 +1718,7 @@ public partial class InfoPanel : Control
             }
             foreach (Variant key in chapter.required_attributes.Keys)
             {
-                var attribute = key.AsString(); var need = chapter.required_attributes[key].AsSingle(); var value = human.Get(attribute); var actual = value.VariantType is Variant.Type.Int or Variant.Type.Float ? value.AsSingle() : 0f; var met = actual >= need;
+                var attribute = key.AsString(); var need = chapter.required_attributes[key].AsSingle(); var actual = CardRules.Number(human, attribute); var met = actual >= need;
                 requirements.Add($"[color={(met ? "#2f6f3a" : "#9b3027")}]{battle_attribute_name(attribute)}：{actual:0.0} / {need:0.0}{(met ? "　✓" : "　✕")}[/color]");
             }
             foreach (var prerequisite in chapter.required_chapter_ids)
@@ -1710,10 +1727,10 @@ public partial class InfoPanel : Control
                 requirements.Add($"[color={(met ? "#2f6f3a" : "#9b3027")}]{gongfa_chapter_name(_viewedGongfa, prerequisite)}：{(met ? "已研读 ✓" : "未研读 ✕")}[/color]");
             }
             if (requirements.Count == 0) requirements.Add("[color=#2f6f3a]无额外条件[/color]");
-            var learnedSkills = chapter.get_learned_skills(isMain).OfType<ActiveSkillData>().Select(skill => $"《{skill.skill_name}》 · {CardPresentation.Face(skill, human)}").ToList();
+            var learnedSkills = chapter.get_learned_skills(isMain).OfType<ActiveSkillData>().Select(skill => $"《{skill.skill_name}》 · {CardPresentation.Underline(CardPresentation.Face(skill, human))}").ToList();
             var permanent = chapter.learn_permanent_bonuses.Keys.Select(key => $"{battle_attribute_name(key.AsString())} +{chapter.learn_permanent_bonuses[key]}").ToList();
             var heartVersion = _viewedGongfa.get_heart_method_description(chapter.order, isMain);
-            var heartDetails = string.IsNullOrWhiteSpace(heartVersion) ? "" : $"\n\n[b]本卷心法[/b]\n{heartVersion}";
+            var heartDetails = string.IsNullOrWhiteSpace(heartVersion) ? "" : $"\n\n[b]本卷心法[/b]\n{CardPresentation.Underline(heartVersion)}";
             var worldSpellDetails = gongfa_chapter_world_spell_details(chapter, learned);
             text.Text = $"[b]解锁条件[/b]\n{string.Join("\n", requirements)}\n\n[b]学会永久属性[/b]\n{(permanent.Count > 0 ? string.Join("\n", permanent) : "无")}\n\n[b]本卷习得技能[/b]\n{(learnedSkills.Count > 0 ? string.Join("\n", learnedSkills) : "无新增技能")}" +
                 heartDetails + (worldSpellDetails.Length > 0 ? $"\n\n{worldSpellDetails}" : "") + $"\n\n{chapter.description}";
@@ -1790,7 +1807,7 @@ public partial class InfoPanel : Control
         var rootData = human?.entity_data as HumanData;
         int Root(int index) => rootData is null || rootData.root_weights.Count <= index ? 0 : rootData.root_weights[index].AsInt32();
         Row("PhysiqueRow", "体魄", unit.physique.ToString("0.0")); Row("IntelligenceRow", "灵慧", unit.intelligence.ToString("0.0"));
-        Row("AgilityRow", "敏捷", unit.agility.ToString("0.0")); Row("SoulRow", "神魂", unit.soul.ToString("0.0"));
+        Row("CoordinationRow", "身心协调值（派生）", unit.coordination.ToString("0.0")); Row("SoulRow", "神魂", unit.soul.ToString("0.0"));
         Row("FortuneRow", "福缘", unit.fortune.ToString("0.0")); Row("ComprehensionRow", "悟性", unit.comprehension.ToString("0.0"));
         Row("CharismaRow", "魅力", data_number(unit,"charisma").ToString("0.0")); Row("SocialRow", "交际", data_number(unit,"social").ToString("0.0")); Row("ManagementRow", "治事", data_number(unit,"management").ToString("0.0"));
         Row("HealthRow", "生命", $"{unit.current_health}/{unit.max_health}"); Row("StaminaRow", "体力", $"{unit.current_stamina}/{unit.max_stamina}"); Row("ManaRow", "法力", $"{unit.current_mana}/{unit.max_mana}");
@@ -1823,10 +1840,10 @@ public partial class InfoPanel : Control
         }
         void Base(string row, string name, string description, string formula) => Bind(row, $"{name}\n{description}", $"{name}\n{formula}");
 
-        Base("PhysiqueRow", "体魄", "主要参与生命、护心与会心计算。", $"当前体魄 = 基础体魄 + 功法 + 装备 + 状态修正\n生命贡献 = 6 × 最终体魄 + 2 × 基础体魄\n会心贡献 = 0.5 × 体魄；护心贡献 = 3 × 体魄\n当前值：{unit.physique:0.0}");
-        Base("IntelligenceRow", "灵慧", "参与生命、速度、精准、身法、会心与护心。", $"当前灵慧 = 基础灵慧 + 功法 + 装备 + 状态修正\n生命贡献 = 1.5 × 灵慧；速度贡献 = 0.75 × 灵慧\n精准贡献 = 4 × 灵慧；身法贡献 = 1 × 灵慧；会心贡献 = 0.3 × 灵慧；护心贡献 = 2 × 灵慧\n当前值：{unit.intelligence:0.0}");
-        Base("AgilityRow", "敏捷", "参与生命、精准、身法、会心与护心。", $"当前敏捷 = 基础敏捷 + 功法 + 装备 + 状态修正\n生命贡献 = 3 × 敏捷；精准贡献 = 3 × 敏捷；身法贡献 = 4 × 敏捷；会心贡献 = 0.8 × 敏捷；护心贡献 = 2 × 敏捷\n当前值：{unit.agility:0.0}");
-        Base("SoulRow", "神魂", "参与生命、速度、精准、身法、会心与护心。", $"当前神魂 = 基础神魂 + 功法 + 装备 + 状态修正\n生命贡献 = 3 × 神魂；速度贡献 = 0.75 × 神魂\n精准贡献 = 1 × 神魂；身法贡献 = 2 × 神魂；会心贡献 = 1.2 × 神魂；护心贡献 = 1.5 × 神魂\n当前值：{unit.soul:0.0}");
+        Base("PhysiqueRow", "体魄", "肉身根基，参与生命、行动、身法与物理伤害。", $"当前体魄 = 基础体魄 + 功法 + 装备 + 状态修正\n生命贡献 = 9 × 最终体魄 + 2 × 基础体魄\n行动速度贡献 = 0.5 × 体魄；精准贡献 = 0.5 × 体魄\n当前值：{unit.physique:0.0}");
+        Base("IntelligenceRow", "灵慧", "思虑与感知根基，参与行动速度、精准、身法、会心与护心。", $"当前灵慧 = 基础灵慧 + 功法 + 装备 + 状态修正\n生命贡献 = 1.5 × 灵慧；行动速度贡献 = 0.75 × 灵慧\n精准贡献 = 7 × 灵慧；身法贡献 = 1 × 灵慧；会心贡献 = 0.3 × 灵慧；护心贡献 = 2 × 灵慧\n当前值：{unit.intelligence:0.0}");
+        Base("CoordinationRow", "身心协调值（派生）", "体魄与神魂相互制约后的协调值，不独立成长或存档。", $"身心协调值 = min(体魄, 神魂) = {unit.coordination:0.0}\n参与行动速度、身法、护心与部分应对判定。");
+        Base("SoulRow", "神魂", "感知与反应根基，参与行动速度、精准、身法、会心与护心。", $"当前神魂 = 基础神魂 + 功法 + 装备 + 状态修正\n生命贡献 = 3 × 神魂；行动速度贡献 = 0.75 × 神魂\n精准贡献 = 1 × 神魂；身法贡献 = 2 × 神魂；会心贡献 = 2 × 神魂；护心贡献 = 1.5 × 神魂\n当前值：{unit.soul:0.0}");
         Base("FortuneRow", "福缘", "参与事件、探索与收获的福缘判定；当前不参与固定战斗派生属性计算。", $"当前福缘 = 基础福缘 + 功法/事件修正\n当前值：{unit.fortune:0.0}");
         Base("ComprehensionRow", "悟性", "参与功法研读、修行与相关事件的悟性判定；当前不参与固定战斗派生属性计算。", $"当前悟性 = 基础悟性 + 功法/事件修正\n当前值：{unit.comprehension:0.0}");
 
@@ -1835,14 +1852,14 @@ public partial class InfoPanel : Control
         Base("ManagementRow", "治事", "参与事务调度与经营事件。", $"当前治事：{data_number(unit,"management"):0.0}");
         Base("HealthRow", "生命", "生命归零时角色无法继续行动。", $"当前生命：{unit.current_health}/{unit.max_health}\n生命上限由角色属性、功法、装备与状态共同决定。");
         Base("StaminaRow", "体力", "用于施展招式；每轮补给3点，休整回复2点，均不超过上限。", $"战斗内上限：6\n当前/上限：{unit.current_stamina}/{unit.max_stamina}");
-        Base("ManaRow", "法力", "用于术法等行动；每轮恢复到本轮容量，吐纳回复1点，不持续回复。", $"法力容量由境界及已有修正规则决定\n当前/上限：{unit.current_mana}/{unit.max_mana}");
+        Base("ManaRow", "法力", "用于术法等行动；跨轮保留，不自动回复。只有明确写出的技能或效果可回复法力。", $"法力容量由境界及已有修正规则决定\n当前/上限：{unit.current_mana}/{unit.max_mana}");
         Base("MindRow", "速度", "每秒获得的行动进度，达到1000时执行队首。不是遁速或身法。", $"基础值及功法、状态、伤势共同影响战斗实际速度。\n常驻速度：{unit.initiative_speed:0.0}");
         Base("SpiritPerceptionRow", "灵识", "御使飞剑、法宝、傀儡、阵旗等持续实体的容量；不是普通术法的即时费用。", $"显示方式 = 已占用 / 容量\n收回、损毁或驱散持续实体后释放占用\n当前：{unit.used_spirit_perception}/{unit.max_spirit_perception}");
         Base("PhysicalDefenseRow", "物理防御", "减轻武器、拳脚等物理伤害。", $"当前物理防御 = 基础 + 装备 + 功法 + 状态修正\n当前值：{unit.physical_defense}");
-        Base("PrecisionRow", "精准", "决定攻击与技艺命中的基础能力。", $"精准 = 4 × 灵慧 + 3 × 敏捷 + 神魂 + 0.5 × 体魄\n当前值：{unit.precision}");
-        Base("DodgeRow", "身法", "决定规避的基础能力，不替代速度或遁速。", $"身法 = 4 × 敏捷 + 2 × 神魂 + 灵慧 + 0.5 × 体魄\n当前值：{unit.dodge}");
-        Base("CriticalRow", "会心", "影响造成关键效果的基础能力。", $"会心 = 0.5 × 体魄 + 0.8 × 敏捷 + 1.2 × 神魂 + 0.3 × 灵慧\n当前值：{unit.critical}");
-        Base("CritResistRow", "护心", "抵抗敌方会心与关键伤害的基础能力。", $"护心 = 3 × 体魄 + 2 × 灵慧 + 2 × 敏捷 + 1.5 × 神魂\n当前值：{unit.crit_resist}");
+        Base("PrecisionRow", "精准", "决定攻击与技艺命中的基础能力。", $"精准 = 7 × 灵慧 + 神魂 + 0.5 × 体魄\n当前值：{unit.precision}");
+        Base("DodgeRow", "身法", "决定规避的基础能力，不替代速度或遁速。", $"身法 = 4 × 身心协调值 + 2 × 神魂 + 灵慧 + 0.5 × 体魄\n当前值：{unit.dodge}");
+        Base("CriticalRow", "会心", "影响造成关键效果的基础能力。", $"会心 = 0.5 × 体魄 + 2 × 神魂 + 0.3 × 灵慧\n当前值：{unit.critical}");
+        Base("CritResistRow", "护心", "抵抗敌方会心与关键伤害的基础能力。", $"护心 = 3 × 体魄 + 2 × 灵慧 + 2 × 身心协调值 + 1.5 × 神魂\n当前值：{unit.crit_resist}");
         Base("CritDamageRow", "会心伤害", "会心触发时使用的伤害倍率。", $"会心伤害倍率 = 基础倍率 + 功法/装备/状态修正\n当前倍率：{unit.crit_damage_mult:0.00}");
         Base("StaminaRegenRow", "物理减伤", "按现行伤害规则减轻物理伤害。", $"当前：{unit.physical_damage_reduction*100:0.#}%");
         Base("ManaRegenRow", "遁速", "影响大世界移动与撤退成功概率，不影响战斗行动条。", $"当前：{human?.dun_speed.ToString("0.#") ?? "未配置"}");
@@ -1872,7 +1889,7 @@ public partial class InfoPanel : Control
         set_label("GenderValue", string.IsNullOrWhiteSpace(entity.family_gender) ? "未详" : entity.family_gender);
         set_label("RealmValue", unit.cultivation_realm); set_label("FactionValue", entity.get_faction_display_name());
         set_label("PhysiqueValue", unit.physique.ToString("0.0"));
-        set_label("IntelligenceValue", unit.intelligence.ToString("0.0")); set_label("AgilityValue", unit.agility.ToString("0.0"));
+        set_label("IntelligenceValue", unit.intelligence.ToString("0.0"));
         set_label("SoulValue", unit.soul.ToString("0.0")); set_label("FortuneValue", unit.fortune.ToString("0.0"));
         set_label("ComprehensionValue", unit.comprehension.ToString("0.0")); set_label("SpiritStrandsValue", $"{unit.spirit_strands} 缕");
         set_label("StatusSummaryValue", $"生命 {unit.current_health}/{unit.max_health}　法力 {unit.current_mana}/{unit.max_mana}");
@@ -2056,28 +2073,27 @@ public partial class InfoPanel : Control
 
     private void refresh_tooltips(Creature unit)
     {
-        attribute("PhysiqueValue", "体魄是角色的肉身根基。\n参与生命、速度、精准、身法、会心与护心。", $"当前体魄 = 基础体魄 + 功法修正 + 装备修正 + 状态修正\n当前值：{unit.physique:0.0}");
-        attribute("IntelligenceValue", "灵慧是思虑与感知的根基。\n参与生命、速度、精准、身法、会心与护心。", $"当前灵慧 = 基础灵慧 + 功法修正 + 装备修正 + 状态修正\n当前值：{unit.intelligence:0.0}");
-        attribute("AgilityValue", "敏捷是身躯反应与行动的根基。\n参与生命、速度、精准、身法、会心与护心；战斗体力上限固定为6。", $"当前敏捷 = 基础敏捷 + 功法修正 + 装备修正 + 状态修正\n当前值：{unit.agility:0.0}");
-        attribute("SoulValue", "神魂参与生命、速度、精准、身法、会心与护心。", $"当前神魂 = 基础神魂 + 功法修正 + 装备修正 + 状态修正\n当前值：{unit.soul:0.0}");
+        attribute("PhysiqueValue", "体魄是角色的肉身根基，影响行动、生命与物理攻击。", $"当前体魄 = 基础体魄 + 功法修正 + 装备修正 + 状态修正\n当前值：{unit.physique:0.0}");
+        attribute("IntelligenceValue", "灵慧是思虑与精准根基，影响行动、命中与防护。", $"当前灵慧 = 基础灵慧 + 功法修正 + 装备修正 + 状态修正\n当前值：{unit.intelligence:0.0}");
+        attribute("SoulValue", "神魂是感知与反应根基；与体魄较低的一方决定身心协调。", $"当前神魂 = 基础神魂 + 功法修正 + 装备修正 + 状态修正\n当前值：{unit.soul:0.0}");
         attribute("FortuneValue", "福缘代表事件、探索与收获中的潜在机缘。\n贡献：进入事件与结算的福缘判定；当前尚无固定战斗派生值。", $"当前福缘 = 基础福缘 + 功法修正 + 事件修正\n当前值：{unit.fortune:0.0}");
         attribute("ComprehensionValue", "悟性代表理解法门与领会变化的能力。\n贡献：进入功法研读、修行与相关事件的悟性判定；当前尚无固定战斗派生值。", $"当前悟性 = 基础悟性 + 功法修正 + 事件修正\n当前值：{unit.comprehension:0.0}");
         attribute("CharismaValue", "魅力影响交涉、招揽与人物事件。\n贡献：进入交涉、招揽与部分关系事件的魅力判定。", "当前魅力 = 基础魅力 + 性格初始修正 + 功法/物品/状态修正");
         attribute("SocialValue", "交际影响往来、交易与对外事务。\n贡献：进入交易、结交与外务事件的交际判定。", "当前交际 = 基础交际 + 性格初始修正 + 功法/物品/状态修正");
         attribute("ManagementValue", "治事影响辖地调度、账务与长期经营。\n贡献：进入民力调度、经营结算与相关事件的治事判定。", "当前治事 = 基础治事 + 性格初始修正 + 功法/物品/状态修正");
-        attribute("HealthValue", "生命归零时角色无法继续行动。", $"生命上限 = 60 + 6 × 体魄 + 2 × 基础体魄 + 3 × 敏捷 + 3 × 神魂 + 1.5 × 灵慧\n当前值由伤害、恢复与上限共同决定：{unit.current_health}/{unit.max_health}");
+        attribute("HealthValue", "生命归零时角色无法继续行动。", $"生命上限 = 60 + 9 × 体魄 + 2 × 基础体魄 + 3 × 神魂 + 1.5 × 灵慧\n当前值由伤害、恢复与上限共同决定：{unit.current_health}/{unit.max_health}");
         attribute("MindValue", "速度决定行动进度积蓄；达到1000执行队首。", $"当前速度：{unit.initiative_speed:0.0}");
-        attribute("EvasionValue", "精准决定攻击与技艺命中的基础能力。", $"精准 = 4 × 灵慧 + 3 × 敏捷 + 神魂 + 0.5 × 体魄\n当前精准：{unit.precision}");
-        attribute("DodgeValue", "身法决定规避的基础能力，不替代速度或遁速。", $"身法 = 灵慧 + 4 × 敏捷 + 2 × 神魂 + 0.5 × 体魄\n当前身法：{unit.dodge}");
-        attribute("CritRateValue", "会心影响造成关键效果的基础能力。", $"会心 = 0.5 × 体魄 + 0.8 × 敏捷 + 1.2 × 神魂 + 0.3 × 灵慧\n当前会心：{unit.critical}");
-        attribute("CritResValue", "护心抵消敌方会心与关键伤害的基础能力。", $"护心 = 3 × 体魄 + 2 × 灵慧 + 2 × 敏捷 + 1.5 × 神魂\n当前护心：{unit.crit_resist}");
+        attribute("EvasionValue", "精准决定攻击与技艺命中的基础能力。", $"精准 = 7 × 灵慧 + 神魂 + 0.5 × 体魄\n当前精准：{unit.precision}");
+        attribute("DodgeValue", "身法决定规避的基础能力；以体魄和神魂较低者计算协调贡献。", $"身法 = 4 × 身心协调值 + 2 × 神魂 + 灵慧 + 0.5 × 体魄\n身心协调值 = min(体魄, 神魂) = {unit.coordination:0.#}\n当前身法：{unit.dodge}");
+        attribute("CritRateValue", "会心影响造成关键效果的基础能力。", $"会心 = 0.5 × 体魄 + 2 × 神魂 + 0.3 × 灵慧\n当前会心：{unit.critical}");
+        attribute("CritResValue", "护心抵消敌方会心与关键伤害的基础能力。", $"护心 = 3 × 体魄 + 2 × 灵慧 + 2 × 身心协调值 + 1.5 × 神魂\n当前护心：{unit.crit_resist}");
         attribute("PhyDefValue", "物理防御减轻武器、拳脚等物理伤害。", "当前物理防御 = 基础防御 + 装备 + 功法 + 状态修正");
         attribute("SpiritStrandsValue", "灵力是修行积累的根基，达到要求后可尝试突破。", "当前灵力 = 已完成的修行积累；修炼日程与环境共同决定增长速度。");
         proficiency("SwordValue", "剑道"); proficiency("BladeValue", "刀道"); proficiency("SpearValue", "枪道"); proficiency("BodyValue", "体道"); proficiency("MagicValue", "术法");
         proficiency("ForgingValue", "器道"); proficiency("TalismanValue", "符道"); proficiency("FormationValue", "阵道"); proficiency("AlchemyValue", "丹道");
     }
 
-    private void proficiency(string valueName, string name) => attribute(valueName, $"{name}造诣影响相关技艺、配方与战斗手段的掌握。", $"当前{name}造诣 = 基础{name}造诣 + 功法/装备/技艺修正\n当前阶段仅有基础造诣，后续修行与实战会提供额外修正。");
+    private void proficiency(string valueName, string name) => attribute(valueName, $"{name}造诣影响相关技艺、配方与战斗手段的掌握。", $"当前{name}造诣包含人物基础值、已研读卷章的永久奖励，以及当前功法/装备/技艺修正。\n已研读卷章的造诣奖励写入人物基础值，不依赖装配该秘籍。");
 
     private void attribute(string valueName, string description, string formula)
     {

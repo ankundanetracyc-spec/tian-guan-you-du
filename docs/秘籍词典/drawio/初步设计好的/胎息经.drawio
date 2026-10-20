@@ -1,0 +1,118 @@
+<mxfile host="Electron" agent="Codex">
+  <diagram id="zhuanxi" name="胎息经">
+    <mxGraphModel dx="4161" dy="768" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2600" pageHeight="1868" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=20;" value="胎息经" vertex="1">
+          <mxGeometry height="74" width="560" x="740" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="overview" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=15;" value="&lt;div style=&quot;text-align:left;&quot;&gt;云息秘籍 / 可主修、可辅修&lt;br&gt;主修可修至：云息十层&lt;br&gt;自身主动降低气血后：仍有气血，获得身法1层；降至0层，获得借力1层。主修在零气血且拥有身法时，以借力发动物理攻击；攻击消耗借力后，再消耗身法1层并恢复气血1层。第一至三卷每回合限一次，第四卷不限&lt;br&gt;化法均保留基础技能原效果后追加本经效果&lt;br&gt;即时战斗适配：60 FPS队列；心法被动：战斗开始时显示在Buff栏，常驻至战斗结束；气血无自动降低，身法、伤势与整场限次按公共规则。&lt;br&gt;修持修正只作用于战斗内属性，并随本卷心法被动显示在Buff栏信息详情；战斗结束移除，不进入角色永久属性。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="185" width="560" x="740" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第一卷：守中&lt;br&gt;卷章ID：shou_zhong&lt;br&gt;顺序：1&lt;br&gt;&lt;br&gt;定位：回落后按剩余气血取得身法或借力，主修以身法换回气血&lt;br&gt;学成可修至：云息三层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：凡人境界及以上&lt;br&gt;研读属性：体魄≥5&lt;br&gt;&lt;br&gt;学会永久属性：体魄 +1；体道造诣 +0.5&lt;/div&gt;" vertex="1">
+          <mxGeometry height="380" width="340" x="850" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;最大生命 +15%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="260" x="360" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;技能：返照&lt;br&gt;类型：术诀&lt;br&gt;关键词：生命、回复&lt;br&gt;耗费：体力 1、法力 0&lt;br&gt;目标：自身&lt;br&gt;原技能效果：气血层数降低1层，触发气血层数降低时的回复效果。&lt;br&gt;化法追加：若本次主动气血回落后气血降至0层，额外获得身法1层。&lt;br&gt;使用次数：不限&lt;/div&gt;" vertex="1">
+          <mxGeometry height="260" width="280" x="1360" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：胎息&lt;br&gt;习得：返照&lt;br&gt;&lt;br&gt;胎息&lt;br&gt;类型：心法&lt;br&gt;关键词：生命、闪避、攻防联动&lt;br&gt;效果：自身主动降低气血后，若仍有气血，获得身法1层；若降至0层，获得借力1层。&lt;br&gt;主修额外效果：自身气血为0层且拥有身法时，本经给予的借力被自身物理伤害技能（《挟势》除外）消耗后，消耗身法1层并恢复气血1层。每回合限一次。&lt;br&gt;&lt;br&gt;返照&lt;br&gt;类型：术诀&lt;br&gt;关键词：生命、回复&lt;br&gt;耗费：体力 1、法力 0&lt;br&gt;目标：自身&lt;br&gt;效果：气血层数降低1层，触发气血层数降低时的回复效果。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="340" width="740" x="-400" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第二卷：抱一&lt;br&gt;卷章ID：bao_yi&lt;br&gt;顺序：2&lt;br&gt;&lt;br&gt;定位：第二次实际回落同时取得身法和借力，补足零气血回气所需的身法&lt;br&gt;学成可修至：云息六层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：云息三层及以上&lt;br&gt;前置：已学守中&lt;br&gt;研读属性：体魄≥6；体道造诣≥0.5&lt;br&gt;&lt;br&gt;学会永久属性：体魄 +0.5；体道造诣 +0.5&lt;/div&gt;" vertex="1">
+          <mxGeometry height="380" width="340" x="850" y="820" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;气血上限 +1&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="270" x="410" y="814" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;技能：平息&lt;br&gt;类型：术诀&lt;br&gt;关键词：生命、回复&lt;br&gt;耗费：体力 1、法力 0&lt;br&gt;目标：自身&lt;br&gt;原技能效果：气血层数降低1层，触发气血层数降低时的回复效果。&lt;br&gt;化法追加：本技能使气血下降后，额外获得身法1层。&lt;br&gt;使用次数：不限&lt;/div&gt;" vertex="1">
+          <mxGeometry height="260" width="290" x="1360" y="820" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：胎息&lt;br&gt;&lt;br&gt;胎息&lt;br&gt;类型：心法&lt;br&gt;关键词：生命、闪避、攻防联动&lt;br&gt;效果：自身主动降低气血后，若仍有气血，获得身法1层；若降至0层，获得借力1层。每回合第二次主动降低气血时，同时获得身法1层和借力1层。&lt;br&gt;主修额外效果：自身气血为0层且拥有身法时，本经给予的借力被自身物理伤害技能（《挟势》除外）消耗后，消耗身法1层并恢复气血1层。每回合限一次。&lt;br&gt;&lt;br&gt;习得：无新增主动技能&lt;/div&gt;" vertex="1">
+          <mxGeometry height="220" width="740" x="-400" y="820" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第三卷：周行&lt;br&gt;卷章ID：zhou_xing&lt;br&gt;顺序：3&lt;br&gt;&lt;br&gt;定位：习得《周行》，可先回气保留借力；也可留在零气血攻击回气&lt;br&gt;学成可修至：云息九层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：云息六层及以上&lt;br&gt;前置：已学抱一&lt;br&gt;研读属性：体魄≥8；体道造诣≥1&lt;br&gt;&lt;br&gt;学会永久属性：体魄 +0.5；体道造诣 +1&lt;/div&gt;" vertex="1">
+          <mxGeometry height="400" width="340" x="850" y="1270" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;气血回落回复率 +1 个百分点&lt;br&gt;物理伤害 +4%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="270" x="400" y="1270" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;技能：周行&lt;br&gt;类型：术诀&lt;br&gt;关键词：生命、闪避&lt;br&gt;耗费：体力 2、法力 0&lt;br&gt;目标：自身&lt;br&gt;原技能效果：获得气血1层。若施放前气血为0层，获得身法1层。&lt;br&gt;化法追加：本场主动降低气血至少2次时，本技能额外获得身法1层。&lt;br&gt;使用次数：不限&lt;/div&gt;" vertex="1">
+          <mxGeometry height="260" width="290" x="1360" y="1270" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：胎息&lt;br&gt;&lt;br&gt;胎息&lt;br&gt;类型：心法&lt;br&gt;关键词：生命、闪避、攻防联动&lt;br&gt;效果：自身主动降低气血后，若仍有气血，获得身法1层；若气血降至0层，获得借力1层。本回合第二次主动降低气血时，同时获得身法1层和借力1层。&lt;br&gt;主修额外效果：自身气血为0层且拥有身法时，本经给予的借力被自身物理伤害技能（《挟势》除外）消耗后，消耗身法1层并恢复气血1层。每回合限一次。&lt;br&gt;&lt;br&gt;习得：周行&lt;br&gt;&lt;br&gt;周行&lt;br&gt;类型：术诀&lt;br&gt;关键词：生命、闪避&lt;br&gt;耗费：体力 2、法力 0&lt;br&gt;目标：自身&lt;br&gt;效果：获得气血1层。若施放前气血为0层，获得身法1层。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="380" width="740" x="-400" y="1270" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第四卷：归藏&lt;br&gt;卷章ID：gui_cang&lt;br&gt;顺序：4&lt;br&gt;&lt;br&gt;定位：归藏备齐身法与借力，主修可重复零气血回气循环&lt;br&gt;学成可修至：云息十层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：云息九层及以上&lt;br&gt;前置：已学周行&lt;br&gt;研读属性：体魄≥10；体道造诣≥2&lt;br&gt;&lt;br&gt;学会永久属性：体魄 +1；体道造诣 +1&lt;/div&gt;" vertex="1">
+          <mxGeometry height="380" width="340" x="850" y="1740" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;最大生命 +10%&lt;br&gt;物理伤害 +6%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="270" x="370" y="1740" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;技能：催血&lt;br&gt;类型：术诀&lt;br&gt;关键词：生命、闪避&lt;br&gt;耗费：体力 1、法力 0&lt;br&gt;目标：自身&lt;br&gt;原技能效果：获得气血1层。&lt;br&gt;化法追加：若本场曾由自身主动使气血下降，本技能结算时获得身法1层。&lt;br&gt;使用次数：不限&lt;/div&gt;" vertex="1">
+          <mxGeometry height="240" width="290" x="1360" y="1740" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：胎息&lt;br&gt;&lt;br&gt;胎息&lt;br&gt;类型：心法&lt;br&gt;关键词：生命、闪避、攻防联动&lt;br&gt;效果：自身主动降低气血后，若仍有气血，获得身法1层；若降至0层，获得借力1层。每回合第二次主动降低气血时，同时获得身法1层和借力1层。&lt;br&gt;主修额外效果：自身气血为0层且拥有身法时，本经给予的借力被自身物理伤害技能（《挟势》除外）消耗后，消耗身法1层并恢复气血1层；不设每回合次数限制。&lt;br&gt;&lt;br&gt;习得：归藏&lt;br&gt;&lt;br&gt;归藏&lt;br&gt;类型：术诀&lt;br&gt;关键词：闪避、体力、攻防联动&lt;br&gt;耗费：体力 3、法力 0&lt;br&gt;目标：自身&lt;br&gt;效果：本场已主动降低气血至少2次时可用；获得身法3层和借力2层；接下来两次主动技能各少耗体力1点，最低为0。&lt;br&gt;使用次数：本场1次&lt;/div&gt;" vertex="1">
+          <mxGeometry height="380" width="740" x="-400" y="1740" as="geometry" />
+        </mxCell>
+        <mxCell id="summary" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" value="&lt;div style=&quot;text-align:left;&quot;&gt;主动降低气血时，未归零则得身法，归零则得借力。主修在零气血且有身法时，用本经借力打出物理攻击；借力消耗后再消耗身法1层，换回气血1层。第一至三卷每回合一次，第四卷不限次。先用《周行》可安全回气并保留借力，但会失去本次交换机会。《归藏》提供两种状态，并减免后续两次主动技能的体力消耗。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="420" x="1660" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="status_rules" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;术语与状态详解&lt;br&gt;&lt;br&gt;气血&lt;br&gt;公共战斗状态，基础上限8层；气血层数降低时按当前回落回复率回复最大生命的5%（受明确效果修正）；即时战斗无自动回落；仅由明确技能或状态效果触发气血下降；战斗结束重置。&lt;br&gt;&lt;br&gt;胎息&lt;br&gt;本经唯一心法Buff，持续至本场战斗结束；心法效果按已学卷章的对应版本生效，完整内容见各卷心法条目。&lt;br&gt;&lt;br&gt;判定边界&lt;br&gt;只读取由自身主动施放的技能造成的气血下降；即时战斗没有回合结束自动回落。&lt;/div&gt;&lt;br&gt;&lt;br&gt;身法&lt;br&gt;持续增益状态，最多20层，持续1回合；每层使自身基础身法（dodge）提高1%；获得新层时刷新为1回合；获得层的回合不扣时长，从下一完整回合结束时递减，受击不消耗；1回合时长归零或战斗结束时移除。&lt;br&gt;&lt;br&gt;修持&lt;br&gt;仅本场战斗生效，随本经心法Buff显示于图标信息栏；不进入角色永久属性。&lt;br&gt;&lt;br&gt;跨经联动&lt;br&gt;赤阳心法生效时，自身主动气血下降按赤阳公共规则转为血炉；胎息心法仍按实际主动气血下降事件结算。" vertex="1">
+          <mxGeometry height="581" width="430" x="1660" y="820" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" edge="1" parent="1" source="overview" style="endArrow=block;html=1;" target="c1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_a" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_b" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_c" edge="1" parent="1" source="c1" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c1_cards" value="本卷被动与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_a" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_b" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_c" edge="1" parent="1" source="c2" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c2_cards" value="习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_a" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_b" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_c" edge="1" parent="1" source="c3" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c3_cards" value="习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_a" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_b" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_c" edge="1" parent="1" source="c4" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c4_cards" value="习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

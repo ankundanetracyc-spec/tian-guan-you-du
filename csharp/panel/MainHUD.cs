@@ -22,6 +22,7 @@ public partial class MainHUD : Control
     private bool _actionBarExpanded = true;
     private Control? _taskTracker;
     private VBoxContainer? _taskList;
+    private GameNotificationFeed? _notificationFeed;
 
     public override void _Ready()
     {
@@ -42,6 +43,8 @@ public partial class MainHUD : Control
         ConfigureNavigation();
         BuildPlayerStatus();
         BuildTaskTracker();
+        _notificationFeed = new GameNotificationFeed { Name = "EventNotificationFeed" };
+        AddChild(_notificationFeed);
     }
 
     public override void _ExitTree()
@@ -77,6 +80,9 @@ public partial class MainHUD : Control
 
     public void refresh_player_status() => RefreshPlayerStatus();
 
+    public void show_event_notification(string title, string detail, string category = "见闻")
+        => _notificationFeed?.push(title, detail, category);
+
     private void on_player_world_stamina_changed(Character _) => RefreshPlayerStatus();
     private void on_player_breakthrough_completed(Character character, string __)
     {
@@ -99,24 +105,14 @@ public partial class MainHUD : Control
         {
             if (index > 0) _taskList.AddChild(WorldHudStyle.Rule());
             var button = new Button { Name = "TaskEntry" + index, Text = "", MouseFilter = MouseFilterEnum.Stop, ClipContents = true,
-                TooltipText = $"{entry.Title}\n{entry.Body}\n双击查看任务详情" };
+                TooltipText = "" };
             WorldHudStyle.StyleSmallButton(button);
             var margin = new MarginContainer { MouseFilter = MouseFilterEnum.Ignore };
             button.AddChild(margin); margin.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
             var box = new VBoxContainer { MouseFilter = MouseFilterEnum.Ignore }; box.AddThemeConstantOverride("separation", 5); margin.AddChild(box);
-            var heading = new HBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
-            var source = WorldHudStyle.Text(entry.Source, 14, true);
-            source.SizeFlagsHorizontal = SizeFlags.ExpandFill;
-            source.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
-            heading.AddChild(source);
-            heading.AddChild(WorldHudStyle.Text(entry.State, 13, true));
-            box.AddChild(heading);
-            var title = WorldHudStyle.Text(entry.Title, 20);
-            title.AutowrapMode = TextServer.AutowrapMode.WordSmart;
+            var title = WorldHudStyle.RichText(entry.Title, 20);
             box.AddChild(title);
-            var objective = WorldHudStyle.Text(entry.Body, 16, true);
-            objective.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-            objective.MaxLinesVisible = 2; objective.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
+            var objective = WorldHudStyle.RichText(entry.Body, 16, true);
             box.AddChild(objective);
             margin.MinimumSizeChanged += () => button.CustomMinimumSize = new Vector2(0, margin.GetCombinedMinimumSize().Y);
             button.GuiInput += e => {
@@ -161,7 +157,7 @@ public partial class MainHUD : Control
         var panel = new Button
         {
             Name = "PlayerStatus", Text = "", MouseFilter = MouseFilterEnum.Stop,
-            ZIndex = 100, FocusMode = FocusModeEnum.All, TooltipText = "查看人物状态", ClipContents = true
+            ZIndex = 100, FocusMode = FocusModeEnum.All, ClipContents = true
         };
         panel.SetAnchorsPreset(LayoutPreset.BottomLeft);
         panel.OffsetLeft = 22; panel.OffsetTop = -172; panel.OffsetRight = 402; panel.OffsetBottom = -22;
@@ -266,7 +262,7 @@ public partial class MainHUD : Control
                 var worldStatuses = WorldStatusRules.format_summary((_player.entity_data as HumanData)?.world_status_records, tooltipGameHour);
                 var cultivationStatus = CharacterStatusPresentationRules.format_bottleneck_hud_line(_player.get_cultivation_bottleneck_summary());
                 var cultivationTooltip = string.IsNullOrWhiteSpace(cultivationStatus) ? "" : $"\n{cultivationStatus.Trim()}";
-                HoverInfoManager.SetTooltip(status, $"{_player.entity_name} · {realm}\n生命 {_player.current_health} / {_player.max_health}\n精力 {_player.current_world_stamina:0.#} / {_player.max_world_stamina:0.#}\n大世界状态：{worldStatuses}{cultivationTooltip}\n点击查看人物状态");
+                HoverInfoManager.SetTooltip(status, $"{_player.entity_name} · {realm}\n生命 {_player.current_health} / {_player.max_health}\n精力 {_player.current_world_stamina:0.#} / {_player.max_world_stamina:0.#}\n大世界状态：{worldStatuses}{cultivationTooltip}");
             }
         }
         if (_healthLabel is not null) _healthLabel.Text = $"{_player!.current_health} / {_player.max_health}";
@@ -295,13 +291,10 @@ public partial class MainHUD : Control
             var unlocked = realms?.is_realm_after_or_equal(_player!.cultivation_realm, "云息一层") == true;
             if (GetNodeOrNull<Control>("Hbox/V_Realm") is { } realmEntry) realmEntry.Visible = unlocked;
             realmButton.Disabled = !unlocked;
-            HoverInfoManager.SetTooltip(realmButton, unlocked ? "查看境界" : "");
         }
         if (GetNodeOrNull<Control>("Hbox/V_Cultivation") is { } cultivationEntry)
         {
             cultivationEntry.Visible = true;
-            if (FindButton("BtnCultivation") is { } cultivationButton)
-                HoverInfoManager.SetTooltip(cultivationButton, cultivationEntry.Visible ? "查看修命与修性进度" : "");
         }
     }
 

@@ -102,6 +102,8 @@ public partial class ActionTransitionPanel : Control
     public void play(string title, string plan, string complete, Action settle, Action? after = null)
     {
         if (_playing) return;
+        _clock = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
+        _startHours = _clock?.get_total_game_hours() ?? 0;
         begin(title, false);
         _detail.Text = plan;
         _animation!.TweenMethod(Callable.From<double>(set_progress), 0d, 92d, 1.65)
@@ -166,9 +168,16 @@ public partial class ActionTransitionPanel : Control
                     if (!_cultivation) set_progress(92 + ratio * 8);
                     _state.Text = state;
                 });
-            _state.Text = "已完成"; _detail.Text = complete; set_progress(100);
-            if (_cultivation && _clock?.get_total_game_hours() == _startHours)
-            { _state.Text = "本次未推进时间"; _detail.Text = "请返回静室查看当前修炼条件。"; }
+            var elapsedHours = Math.Max(0, (_clock?.get_total_game_hours() ?? _startHours) - _startHours);
+            _state.Text = elapsedHours > 0
+                ? $"已完成 · 本次总用时 {GameTimeText.Duration(elapsedHours)}"
+                : "本次未推进游戏时间";
+            _detail.Text = complete;
+            set_progress(100);
+            if (_cultivation && elapsedHours > 0)
+                _elapsed.Text = $"本次总用时 {GameTimeText.Duration(elapsedHours)}";
+            if (_cultivation && elapsedHours == 0)
+                _detail.Text = "本次未推进时间，请返回静室查看当前修炼条件。";
             await ToSignal(GetTree().CreateTimer(_cultivation ? .9 : .35, processAlways: true), SceneTreeTimer.SignalName.Timeout);
             success = true;
         }

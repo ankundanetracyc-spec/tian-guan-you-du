@@ -10,8 +10,8 @@ level = 1
 max_durability = 5
 
 # 阵盘制作（词缀匹配）
-body_tag_requirements = ["五行[土]", "质地[石]", "功用[固本]"]
-ink_tag_requirements = ["质地[液]", "功用[通脉]"]
+body_tag_requirements = ["五行[土]", "质地[致密]", "功用[固本]"]
+ink_tag_requirements = ["质地[液体]", "功用[通脉]"]
 
 # 阵眼 CPU — 需承载灵力
 eye_tag_requirements = ["功用[蕴灵]"]
@@ -22,7 +22,7 @@ pivot_tag_requirements = ["功用[护体]"]
 pivot_bonus_tags = {}
 
 # 阵基 电源
-fuel_tag_requirements = ["功用[蕴灵]", "质地[晶]"]
+fuel_tag_requirements = ["功用[蕴灵]", "质地[致密]"]
 fuel_bonus_tags = {}
 fuel_rate = 0.0
 

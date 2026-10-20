@@ -54,7 +54,6 @@ public partial class BattleManager
         var stamina = unit.Get("current_stamina").AsInt32();
         var mana = unit.Get("current_mana").AsInt32();
         var staminaMax = unit.Get("max_stamina").AsInt32();
-        var manaMax = get_effective_mana_capacity(unit);
         var repeatCounts = new Dictionary<ActiveSkillData, int>();
         var plannedLimitedSkills = new HashSet<string>();
         var plannedStatuses = new HashSet<string>();
@@ -77,18 +76,12 @@ public partial class BattleManager
                 continue;
             }
 
-            var recovery = FindUsefulRecovery(unit, loadout, forecast, stamina, mana, staminaMax, manaMax,
+            var recovery = FindUsefulRecovery(unit, loadout, forecast, stamina, mana, staminaMax,
                 capacity - queue.Count, repeatCounts, plannedLimitedSkills, plannedStatuses, teammate);
             if (recovery == BattleQueuedSkill.ActionKind.Rest)
             {
                 queue.Add(BattleQueuedSkill.Rest());
                 stamina = Math.Min(staminaMax, stamina + 2);
-                continue;
-            }
-            if (recovery == BattleQueuedSkill.ActionKind.Breathe)
-            {
-                queue.Add(BattleQueuedSkill.Breathe());
-                mana = Math.Min(manaMax, mana + 1);
                 continue;
             }
             break;
@@ -110,7 +103,7 @@ public partial class BattleManager
         AiCandidate? best = null;
         foreach (var skill in loadout)
         {
-            if (skill.skill_type == ActiveSkillData.SkillType.CURSE || !gongfa_combat.CanPlay(unit, skill)) continue;
+            if (IsXuanShuSkillSlot10(unit,skill)||skill.skill_type == ActiveSkillData.SkillType.CURSE || !gongfa_combat.CanPlay(unit, skill)) continue;
             if (IsOncePerSegmentBodySkill(skill) && plannedLimitedSkills.Contains(skill.skill_name)) continue;
             if (!is_skill_ready(unit, skill)) continue;
             var executionSkill = get_next_action_skill(unit, skill);
@@ -147,7 +140,6 @@ public partial class BattleManager
         int stamina,
         int mana,
         int staminaMax,
-        int manaMax,
         int remainingSlots,
         Dictionary<ActiveSkillData, int> repeatCounts,
         HashSet<string> plannedLimitedSkills,
@@ -155,22 +147,20 @@ public partial class BattleManager
         bool teammate)
     {
         if (remainingSlots <= 1) return null;
-        var useful = new List<(int priority, float score, int energyGap, int manaGap)>();
+        var useful = new List<(int priority, float score, int energyGap)>();
         foreach (var skill in loadout)
         {
-            if (skill.skill_type == ActiveSkillData.SkillType.CURSE || !gongfa_combat.CanPlay(unit, skill)) continue;
+            if (IsXuanShuSkillSlot10(unit,skill) || skill.skill_type == ActiveSkillData.SkillType.CURSE || !gongfa_combat.CanPlay(unit, skill)) continue;
             if (IsOncePerSegmentBodySkill(skill) && plannedLimitedSkills.Contains(skill.skill_name)) continue;
             if (!is_skill_ready(unit, skill)) continue;
             var executionSkill = get_next_action_skill(unit, skill);
             var energyCost = AiReservedEnergyCost(unit, executionSkill);
             var manaCost = AiReservedManaCost(unit, executionSkill);
             var energyGap = Math.Max(0, energyCost - stamina);
-            var manaGap = Math.Max(0, manaCost - mana);
-            if (energyGap == 0 && manaGap == 0) continue;
-            var restCount = energyGap == 0 ? 0 : (energyGap + 1) / 2;
-            var breatheCount = manaGap;
-            if (restCount + breatheCount >= remainingSlots) continue;
-            if (staminaMax - stamina < Math.Min(energyGap, restCount * 2) || manaMax - mana < breatheCount) continue;
+            if (energyGap == 0 || manaCost > mana) continue;
+            var restCount = (energyGap + 1) / 2;
+            if (restCount >= remainingSlots) continue;
+            if (staminaMax - stamina < Math.Min(energyGap, restCount * 2)) continue;
             var bestTarget = AiTargets(unit, skill)
                 .Select(target => ScoreAiSkill(unit, skill, target, forecast, energyCost, manaCost,
                     repeatCounts.GetValueOrDefault(skill), plannedStatuses, teammate))
@@ -178,18 +168,12 @@ public partial class BattleManager
                 .ThenByDescending(candidate => candidate.Score)
                 .FirstOrDefault();
             if (bestTarget is null || bestTarget.Priority <= 0) continue;
-            useful.Add((bestTarget.Priority, bestTarget.Score - (restCount + breatheCount) * 100, energyGap, manaGap));
+            useful.Add((bestTarget.Priority, bestTarget.Score - restCount * 100, energyGap));
         }
         if (useful.Count == 0) return null;
 
         var targetPlan = useful.OrderByDescending(item => item.priority).ThenByDescending(item => item.score).First();
-        var canRest = targetPlan.energyGap > 0 && stamina < staminaMax;
-        var canBreathe = targetPlan.manaGap > 0 && mana < manaMax;
-        if (!canRest) return canBreathe ? BattleQueuedSkill.ActionKind.Breathe : null;
-        if (!canBreathe) return BattleQueuedSkill.ActionKind.Rest;
-        var energyShare = targetPlan.energyGap / (float)Math.Max(1, staminaMax - stamina);
-        var manaShare = targetPlan.manaGap / (float)Math.Max(1, manaMax - mana);
-        return energyShare >= manaShare ? BattleQueuedSkill.ActionKind.Rest : BattleQueuedSkill.ActionKind.Breathe;
+        return targetPlan.energyGap > 0 && stamina < staminaMax ? BattleQueuedSkill.ActionKind.Rest : null;
     }
 
     private int AiReservedEnergyCost(GodotObject unit, ActiveSkillData skill)

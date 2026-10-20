@@ -102,6 +102,16 @@ public partial class ActiveSkillData : Resource
     public int get_energy_cost() => energy_cost;
     public string get_cost_description() => skill_type == SkillType.POWER ? "" : $"体力: {energy_cost}，法力: {mana_cost}";
 
+    /// <summary>牌面展示关键词；应对机制同时作为可检索标签显示。</summary>
+    public Array<string> get_presentation_tags()
+    {
+        var result = new Array<string>();
+        foreach (var tag in tags)
+            if (!string.IsNullOrWhiteSpace(tag) && !result.Contains(tag)) result.Add(tag);
+        if (keywords.Contains("应对") && !result.Contains("应对")) result.Add("应对");
+        return result;
+    }
+
     /// <summary>所有卡牌共用的牌面短描述：只写目标、数值与关键机制，不使用叙事性长句。</summary>
     public string get_brief_description(GodotObject? owner = null)
     {
@@ -123,7 +133,7 @@ public partial class ActiveSkillData : Resource
         if (keywords.Contains("应对")) lines.Insert(0, "应对触发：当前槽遇到匹配来袭时立即触发。" + (CardRules.NormalCast(this) is null ? "未触发则空放，不消耗费用。" : "未触发则结算独立的普通打出效果与费用。"));
         return lines.Count == 0 ? (string.IsNullOrWhiteSpace(description)?"施展本技能效果。":description) : string.Join("\n", lines);
     }
-    public string get_skill_description(GodotObject? owner = null) => get_brief_description(owner) + get_counter_effect_description(owner);
+    public string get_skill_description(GodotObject? owner = null) => CardPresentation.Face(this, owner);
 
     public string get_card_category() => skill_type switch
     {
@@ -139,7 +149,7 @@ public partial class ActiveSkillData : Resource
         var baseValue = CardRules.Evaluate(effect.GetValueOrDefault("formula", "").AsString(), owner);
         return id switch
         {
-            "shield" => $"获得 {baseValue:0.##} 点护持。",
+            "shield" => $"获得 {baseValue:0.##} 点护盾。",
             "restore_stamina" => $"恢复 {baseValue:0.##} 点体力。",
             "gain_energy" => $"获得 {count} 点体力。",
             "restore_mana" => $"恢复 {baseValue:0.##} 点法力。",
@@ -147,6 +157,9 @@ public partial class ActiveSkillData : Resource
             "counter_block" => $"获得 {CardRules.Block(this, owner, count)} 层化解。",
             "gain_punch_frame" => $"获得 {count} 层拳架。",
             "gain_qi_blood" => $"获得 {count} 层气血。",
+            "gain_qi" => $"获得炁 {count}。",
+            "disperse_qi_blood" => $"打散目标 {count} 层气血。",
+            "assign_nian_to_next_skill" => $"为行动队列中下一项不同的主动技能实例赋念 {count} 层；若没有合宜后续招式，本招不结算。",
             "precision_if_guarding" => "自身有护持、化解或借力时提高精准。",
             "spend_qi_blood" => "消耗 1 层气血。",
             "evasion" => "本次受击提高闪避。",

@@ -49,7 +49,7 @@ result_skill = ExtResource("9_huafa_cuixue")
 script = ExtResource("2_chapter")
 chapter_id = "shou_zhong"
 chapter_name = "守中"
-description = "立黄庭之基，以主动气血回落触发身法与体力，再以催血续接循环。"
+description = "气血未尽时回落可积身法，气血归零时转得借力；主修在零气血时消耗身法与借力，以攻击换回气血。"
 order = 1
 required_study_progress = 24.0
 required_attributes = {"physique": 5.0}
@@ -59,7 +59,7 @@ left_branch_name = "修持"
 right_branch_name = "化法"
 sub_deck_rewrites = Array[ExtResource("8_rewrite")]([SubResource("RewriteMissing1")])
 combat_tempering_bonuses = {"max_health_percent": 15}
-heart_method_description = "效果：每回合首次由自身主动使气血层数降低后，获得身法1层。\n主修额外效果：每回合首次由自身主动使气血层数降低后，回复体力1点。"
+heart_method_description = "效果：自身主动使气血减少后，若仍有气血，获得身法1层；若气血降至0层，获得借力1层。\n主修额外效果：自身气血为0层且拥有身法时，本经给予的借力被自身物理伤害技能（《挟势》除外）消耗后，消耗身法1层并恢复气血1层。每回合限一次。"
 
 
 learn_bonus_revision = "study-balance-20261012"
@@ -69,7 +69,7 @@ previous_learn_permanent_bonuses = {"physique": 1.0}
 script = ExtResource("2_chapter")
 chapter_id = "bao_yi"
 chapter_name = "抱一"
-description = "回落之法渐次熟练，令心法在一轮内的前两次主动回落各增身法。"
+description = "本回合第二次主动降低气血时，同时获得身法与借力；可用身法和借力在零气血时发动回气攻击。"
 order = 2
 required_study_progress = 48.0
 required_realm = "云息三层"
@@ -80,9 +80,9 @@ left_branch_name = "修持"
 right_branch_name = "化法"
 sub_deck_rewrites = Array[ExtResource("8_rewrite")]([SubResource("RewriteMissing2")])
 combat_tempering_bonuses = {"qi_blood_cap": 1}
-heart_method_upgrade_id = "huangting_c2"
-heart_method_upgrade_description = "本回合前两次主动气血回落时，各额外获得身法1层。"
-heart_method_description = "效果：每回合首次由自身主动使气血层数降低后，获得身法2层；当回合第二次由自身主动使气血层数降低后，再获得身法1层。\n主修额外效果：每回合首次由自身主动使气血层数降低后，回复体力1点。"
+heart_method_upgrade_id = "zhuanxi_c2"
+heart_method_upgrade_description = "本回合第二次主动降低气血时，同时获得身法1层和借力1层。"
+heart_method_description = "效果：自身主动使气血减少后，若仍有气血，获得身法1层；若气血降至0层，获得借力1层。本回合第二次主动降低气血时，同时获得身法1层和借力1层。\n主修额外效果：自身气血为0层且拥有身法时，本经给予的借力被自身物理伤害技能（《挟势》除外）消耗后，消耗身法1层并恢复气血1层。每回合限一次。"
 
 
 learn_bonus_revision = "study-balance-20261012"
@@ -92,7 +92,7 @@ previous_learn_permanent_bonuses = {"physique": 0.5, "body_proficiency": 0.5}
 script = ExtResource("2_chapter")
 chapter_id = "zhou_xing"
 chapter_name = "周行"
-description = "让回落与再催血形成更高密度的周身循环。"
+description = "《周行》提供先回气、保留借力的安全路线；也可留在零气血，用借力攻击换回气血。"
 order = 3
 required_study_progress = 84.0
 required_realm = "云息六层"
@@ -104,7 +104,7 @@ left_branch_name = "修持"
 right_branch_name = "化法"
 sub_deck_rewrites = Array[ExtResource("8_rewrite")]([SubResource("RewriteMissing3")])
 combat_tempering_bonuses = {"fall_heal_rate_pp": 1, "physical_damage_percent": 4}
-heart_method_description = "效果：每回合首次由自身主动使气血层数降低后，获得身法2层；当回合第二次由自身主动使气血层数降低后，再获得身法1层。\n主修额外效果：每回合首次由自身主动使气血层数降低后，回复体力1点。"
+heart_method_description = "效果：自身主动使气血减少后，若仍有气血，获得身法1层；若气血降至0层，获得借力1层。本回合第二次主动降低气血时，同时获得身法1层和借力1层。\n主修额外效果：自身气血为0层且拥有身法时，本经给予的借力被自身物理伤害技能（《挟势》除外）消耗后，消耗身法1层并恢复气血1层。每回合限一次。"
 
 
 learn_bonus_revision = "study-balance-20261012"
@@ -114,7 +114,7 @@ previous_learn_permanent_bonuses = {"physique": 0.5, "body_proficiency": 0.5}
 script = ExtResource("2_chapter")
 chapter_id = "gui_cang"
 chapter_name = "归藏"
-description = "将基础催血纳入黄庭循环，收束云息期的气血构筑。"
+description = "以《归藏》备齐身法与借力；主修可反复在零气血发动回气攻击，周而复始。"
 order = 4
 required_study_progress = 128.0
 required_realm = "云息九层"
@@ -126,9 +126,9 @@ left_branch_name = "修持"
 right_branch_name = "化法"
 combat_tempering_bonuses = {"max_health_percent": 10, "physical_damage_percent": 6}
 sub_deck_rewrites = Array[ExtResource("8_rewrite")]([SubResource("RewriteCuiXue")])
-heart_method_upgrade_id = "huangting_c4"
-heart_method_upgrade_description = "每回合首次主动气血回落时，额外获得身法1层。"
-heart_method_description = "效果：每回合首次由自身主动使气血层数降低后，获得身法3层；当回合第二次由自身主动使气血层数降低后，再获得身法1层。\n主修额外效果：每回合首次由自身主动使气血层数降低后，回复体力1点。"
+heart_method_upgrade_id = "zhuanxi_c4"
+heart_method_upgrade_description = "主修零气血回气不再限每回合一次；每次仍须消耗身法，并由本经借力发动物理攻击。"
+heart_method_description = "效果：自身主动使气血减少后，若仍有气血，获得身法1层；若气血降至0层，获得借力1层。本回合第二次主动降低气血时，同时获得身法1层和借力1层。\n主修额外效果：自身气血为0层且拥有身法时，本经给予的借力被自身物理伤害技能（《挟势》除外）消耗后，消耗身法1层并恢复气血1层；不设每回合次数限制。"
 
 
 learn_bonus_revision = "study-balance-20261012"
@@ -136,8 +136,8 @@ previous_learn_permanent_bonuses = {"physique": 1.0}
 
 [resource]
 script = ExtResource("1_gongfa")
-gongfa_name = "黄庭养形篇"
-description = "以主动气血回落换取身法与体力，再催血续接循环。"
+gongfa_name = "胎息经"
+description = "气血未尽时回落可积身法，气血归零时转得借力；主修在零气血时消耗身法与借力，以攻击换回气血。"
 wuxing = 0
 can_be_main = true
 can_be_sub = true

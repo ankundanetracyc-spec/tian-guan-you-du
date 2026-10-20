@@ -68,7 +68,6 @@ public partial class CondensationCardGamePanel : Control
         _drawCount = Text(_draw, "", 23, new Rect2(-25, 157, 185, 36), Cream, true);
         _discardCount = Text(_discard, "", 23, new Rect2(-30, 151, 185, 36), Cream, true);
         var rest = InkButtonAt(_canvas, "调 息", new Rect2(94, 844, 164, 58), () => SelectAction("调息", -1, false));
-        rest.TooltipText = "调息占一次施展：降低紊乱2＋灵慧补正，本轮回弹减损1";
         _end = InkButtonAt(_canvas, "结束回合", new Rect2(1405, 844, 186, 58), ConfirmEnd);
         // 独立准备操作条留在提示与手牌之间，不遮旋涡；层级高于抬起的手牌。
         _swap = ButtonAt(_canvas, "换起手（选0—2张）", new Rect2(455, 584, 255, 42), DoSwap);
@@ -190,8 +189,6 @@ public partial class CondensationCardGamePanel : Control
         _track.SetState(g);
         _status.Text = g.Finished ? g.Disorder > 10 ? "紊乱失控 · 凝核失败" : $"最终凝核程度 {g.Score} · {(g.Failed ? "凝核未成" : "灵核已成")}" : g.SwapOpen ? "准备阶段：可选手牌换牌，再开始行功" : "选择手法，压聚灵气";
         _forecast.Text = g.Finished ? "本次试演结果不写入正式人物。" : $"灵根：压聚+{g.RootBonus}  ·  灵慧：理气额外降{g.InsightBonus}  ·  悟性换牌余{g.ExtraSwaps}" + (g.ChargeActive ? "  ·  蓄劲待发" : "") + (g.ReturnActive ? "  ·  本轮引回" : "");
-        _draw.TooltipText = $"抽牌堆 {g.Deck.Count}张（查看组成，不公开顺序）";
-        _discard.TooltipText = $"弃牌堆 {g.Discard.Count}张";
         _drawCount.Text = $"抽牌堆 {g.Deck.Count}"; _discardCount.Text = $"弃牌堆 {g.Discard.Count}";
         _swap.Visible = _start.Visible = g.SwapOpen && !g.Finished;
         _extra.Visible = g.SwapOpen && g.Round > 1 && !g.Finished;
@@ -210,7 +207,7 @@ public partial class CondensationCardGamePanel : Control
         var c = CondensationCardGame.Definition(name); var offset = index - (_game!.Hand.Count - 1) / 2f;
         var button = new Button { Size = new Vector2(200, 310), PivotOffset = new Vector2(100, 280), MouseFilter = MouseFilterEnum.Stop, ClipContents = true };
         ClearButton(button);
-        button.TooltipText = c.Description + (c.Kind == "压聚" ? $"\n本角色压聚额外凝核+{_game.RootBonus}" : "") + "\n点击查看并确认；准备阶段点击选作换牌。";
+        button.TooltipText = c.Description + (c.Kind == "压聚" ? $"\n本角色压聚额外凝核+{_game.RootBonus}" : "");
         _handLayer.AddChild(button);
         Art(button, CondensationUiArt.Card, new Rect2(0, 0, 200, 310));
         Text(button, name, 31, new Rect2(12, 13, 176, 48), Ink, true);

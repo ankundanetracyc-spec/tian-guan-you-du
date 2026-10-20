@@ -41,6 +41,8 @@ public partial class CultivationInspirationSmoke : Node
             if (ResourceLoader.Load<PortraitClothingData>("res://resources/entities/items/clothing/玉虚内门常服.tres") is { } clothing)
                 retain_test_object(clothing);
             check_relief_formula();
+            check_auto_refinement_percent_threshold();
+            check_legacy_auto_refinement_threshold_migration();
             check_repeated_refinement_and_clock();
             check_accumulation_cap_and_realm_transition();
             check_source_event_idempotency_and_diminishing_floor();
@@ -67,30 +69,36 @@ public partial class CultivationInspirationSmoke : Node
 
     private void check_relief_formula()
     {
+        var twelvePercentAfterRefinement = CultivationBottleneckRules.relieve_penalty(.12d, 3, 2);
+        Check(Math.Abs(twelvePercentAfterRefinement - .072d) < 1e-12 &&
+            Math.Abs((1d - twelvePercentAfterRefinement) - .928d) < 1e-12,
+            "12% bottleneck with Yunxi 3 and Mingbian quality becomes 7.2%, raising efficiency to 92.8%");
+
+        foreach (var realmTier in new[] { 1, 3, 9 })
         foreach (var level in new[] { 1, 4, 8 })
         foreach (var rank in new[] { 1, 2, 3 })
         {
             var penalty = CultivationBottleneckRules.get_penalty_for_level(level);
-            var expected = penalty * level / (level + (double)rank);
-            var actual = CultivationBottleneckRules.relieve_penalty(penalty, level, rank);
-            Check(Math.Abs(actual - expected) < 1e-12, $"P×B/(B+I) at B={level}, I={rank}");
-            Check(actual > 0d && actual < penalty, $"one use partially relieves, not clears, B={level}, I={rank}");
-            Check(refine_real_character(level, rank, expected), $"character refinement applies B={level}, I={rank}");
+            var expected = penalty * realmTier / (realmTier + (double)rank);
+            var actual = CultivationBottleneckRules.relieve_penalty(penalty, realmTier, rank);
+            Check(Math.Abs(actual - expected) < 1e-12, $"P×R/(R+I) at realm={realmTier}, I={rank}");
+            Check(actual > 0d && actual < penalty, $"one use partially relieves, not clears, at realm={realmTier}, I={rank}");
+            Check(refine_real_character(level, realmTier, rank, expected), $"character refinement applies realm={realmTier}, I={rank}");
         }
     }
 
-    private bool refine_real_character(int level, int rank, double expectedPenalty)
+    private bool refine_real_character(int level, int realmTier, int rank, double expectedPenalty)
     {
         var clock = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
         var now = clock?.get_total_game_hours() ?? 0;
-        var data = create_stage_data(level);
-        data.cultivation_inspiration_records.Add(make_record($"formula-{level}-{rank}", rank, now));
+        var data = create_stage_data(level, realmTier);
+        data.cultivation_inspiration_records.Add(make_record($"formula-{realmTier}-{level}-{rank}", rank, now));
         var character = new Character { ProcessMode = ProcessModeEnum.Disabled };
         AddChild(character);
         character.load_from_data(data);
         character.Hide();
         var startHours = clock?.get_total_game_hours() ?? 0;
-        var succeeded = character.try_refine_cultivation_bottleneck($"formula-{level}-{rank}", out var result);
+        var succeeded = character.try_refine_cultivation_bottleneck($"formula-{realmTier}-{level}-{rank}", out var result);
         var human = character.entity_data as HumanData;
         var summary = character.get_cultivation_bottleneck_summary();
         var ok = succeeded && result.GetValueOrDefault("success", false).AsBool() &&
@@ -99,6 +107,69 @@ public partial class CultivationInspirationSmoke : Node
             startHours == (clock?.get_total_game_hours() ?? 0);
         retain_test_object(character);
         return ok;
+    }
+
+    private void check_auto_refinement_percent_threshold()
+    {
+        var now = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+        var data = create_stage_data(2, 3);
+        data.spirit_root_type = (int)GongfaResource.Wuxing.METAL_WOOD_WATER;
+        data.spirit_root_name = "三灵根";
+        data.root_weights = [34, 33, 33, 0, 0];
+        data.main_gongfa_path = "res://resources/gongfa/黄庭养形篇.tres";
+        data.ambient_lingqi_pressure = 100f;
+        data.max_world_stamina = 100f;
+        data.current_world_stamina = 100f;
+        data.cultivation_inspiration_records.Add(make_record("auto-percent-threshold", 2, now));
+        var character = new Character { ProcessMode = ProcessModeEnum.Disabled };
+        AddChild(character);
+        character.load_from_data(data);
+        character.Hide();
+
+        Check(character.set_cultivation_auto_refinement_settings(true, "auto-percent-threshold", .10d, out _),
+            "automatic refinement accepts a percentage threshold");
+        var belowThreshold = character.get_cultivation_auto_refinement_preview(48);
+        Check(belowThreshold.GetValueOrDefault("configured", false).AsBool() &&
+            !belowThreshold.GetValueOrDefault("triggered", false).AsBool() &&
+            (character.entity_data as HumanData)?.cultivation_inspiration_records[0].state_id == CultivationInspirationRecord.StateAvailable,
+            "percentage threshold does not consume insight before the bottleneck reaches it");
+
+        var atThreshold = character.get_cultivation_auto_refinement_preview(144);
+        Check(atThreshold.GetValueOrDefault("triggered", false).AsBool() &&
+            Math.Abs(atThreshold.GetValueOrDefault("old_penalty", 0d).AsDouble() - .10d) < 1e-12 &&
+            Math.Abs(atThreshold.GetValueOrDefault("new_penalty", 0d).AsDouble() - .06d) < 1e-12 &&
+            (character.entity_data as HumanData)?.cultivation_inspiration_records[0].state_id == CultivationInspirationRecord.StateAvailable,
+            "automatic preview fires at the first reached penalty percentage and applies realm-quality relief");
+
+        var cultivation = character.cultivate_with_world_stamina_for_hours(144);
+        var human = (HumanData)character.entity_data!;
+        var afterCultivation = character.get_cultivation_bottleneck_summary();
+        var autoResult = character.get_last_cultivation_auto_refinement_result();
+        Check(cultivation.GetValueOrDefault("success", false).AsBool() &&
+            cultivation.GetValueOrDefault("hours", 0).AsInt32() == 144 &&
+            Math.Abs(afterCultivation.GetValueOrDefault("penalty", 0d).AsDouble() - .06d) < 1e-12 &&
+            human.cultivation_inspiration_records[0].state_id == CultivationInspirationRecord.StateConsumed &&
+            !human.cultivation_auto_refinement_enabled &&
+            autoResult.GetValueOrDefault("consumed", false).AsBool(),
+            "reaching the configured percent in real cultivation consumes one insight and saves the reduced penalty");
+        retain_test_object(character);
+    }
+
+    private void check_legacy_auto_refinement_threshold_migration()
+    {
+        var data = create_stage_data(0);
+        data.cultivation_auto_refinement_threshold_level = 5;
+        data.cultivation_auto_refinement_threshold_penalty = -1d;
+        var character = new Character { ProcessMode = ProcessModeEnum.Disabled };
+        AddChild(character);
+        character.load_from_data(data);
+        character.Hide();
+
+        var settings = character.get_cultivation_auto_refinement_settings();
+        Check(Math.Abs(settings.GetValueOrDefault("threshold_penalty", 0d).AsDouble() - .26d) < 1e-12 &&
+            Math.Abs(((HumanData)character.entity_data!).cultivation_auto_refinement_threshold_penalty - .26d) < 1e-12,
+            "legacy tier threshold converts to its matching percentage once and persists");
+        retain_test_object(character);
     }
 
     private void check_repeated_refinement_and_clock()
@@ -114,14 +185,14 @@ public partial class CultivationInspirationSmoke : Node
         character.Hide();
 
         var initialPenalty = CultivationBottleneckRules.get_penalty_for_level(4);
-        var afterFirst = initialPenalty * 4d / 5d;
-        var afterSecond = afterFirst * 4d / 7d;
+        var afterFirst = initialPenalty * 3d / 4d;
+        var afterSecond = afterFirst * 3d / 6d;
         Check(character.try_refine_cultivation_bottleneck("repeat-1", out _), "first sequential refinement succeeds");
         Check(Math.Abs(character.get_cultivation_bottleneck_summary().GetValueOrDefault("penalty", 0d).AsDouble() - afterFirst) < 1e-12,
-            "first use applies its rank to current penalty");
+            "first use applies current realm and its rank to current penalty");
         Check(character.try_refine_cultivation_bottleneck("repeat-3", out _), "second sequential refinement succeeds");
         Check(Math.Abs(character.get_cultivation_bottleneck_summary().GetValueOrDefault("penalty", 0d).AsDouble() - afterSecond) < 1e-12,
-            "second use compounds against remaining penalty");
+            "second use compounds by realm and rank against remaining penalty");
         Check((clock?.get_total_game_hours() ?? 0) == startHours, "refinement does not convert activity time or advance clock");
         Check((character.entity_data as HumanData)?.cultivation_bottleneck_accumulated_hours == data.cultivation_bottleneck_accumulated_hours,
             "refinement leaves accumulated cultivation hours unchanged");
@@ -315,6 +386,10 @@ public partial class CultivationInspirationSmoke : Node
         record.use_domain_id = "route_observation";
         record.armed_for_action = true;
         human.cultivation_inspiration_records.Add(record);
+        human.cultivation_auto_refinement_enabled = true;
+        human.cultivation_auto_refinement_record_id = "saved-auto-refinement";
+        human.cultivation_auto_refinement_threshold_penalty = .123d;
+        human.cultivation_inspiration_records.Add(make_record("saved-auto-refinement", 2, 24));
         var sourceEvent = new CultivationInspirationSourceEventRecord
         {
             event_id = "saved-event", source_id = "journey-test", attempted_at_game_hour = 24,
@@ -327,7 +402,7 @@ public partial class CultivationInspirationSmoke : Node
         var path = $"user://cultivation_inspiration_smoke_{Guid.NewGuid():N}.tres";
         Check(ResourceSaver.Save(human, path) == Error.Ok, "inspiration state writes to a resource save");
         var restored = ResourceLoader.Load<HumanData>(path, cacheMode: ResourceLoader.CacheMode.Ignore);
-        Check(restored is not null && restored.cultivation_inspiration_records.Count == 1 &&
+        Check(restored is not null && restored.cultivation_inspiration_records.Count == 2 &&
             restored.cultivation_inspiration_records[0].record_id == "saved-inspiration" &&
             restored.cultivation_inspiration_records[0].source_event_id == "saved-event" &&
             restored.cultivation_inspiration_records[0].source_label == "旅途中的观势" &&
@@ -335,9 +410,14 @@ public partial class CultivationInspirationSmoke : Node
             restored.cultivation_inspiration_records[0].state_id == CultivationInspirationRecord.StateAvailable &&
             restored.cultivation_inspiration_records[0].armed_for_action &&
             restored.cultivation_inspiration_records[0].expires_at_game_hour == record.expires_at_game_hour &&
+            restored.cultivation_inspiration_records[1].record_id == "saved-auto-refinement" &&
+            !restored.cultivation_inspiration_records[1].armed_for_action &&
             restored.cultivation_inspiration_source_events.Count == 1 &&
-            restored.cultivation_bottleneck_current_penalty == human.cultivation_bottleneck_current_penalty,
-            "records, source ledger, expiry, and bottleneck survive save/load");
+            restored.cultivation_bottleneck_current_penalty == human.cultivation_bottleneck_current_penalty &&
+            restored.cultivation_auto_refinement_enabled &&
+            restored.cultivation_auto_refinement_record_id == "saved-auto-refinement" &&
+            Math.Abs(restored.cultivation_auto_refinement_threshold_penalty - .123d) < 1e-12,
+            "records, source ledger, bottleneck, and percent-based auto-refinement preferences survive save/load");
         if (restored is not null) retain_test_object(restored);
         DirAccess.RemoveAbsolute(ProjectSettings.GlobalizePath(path));
 
@@ -398,15 +478,22 @@ public partial class CultivationInspirationSmoke : Node
         var room = new CultivationUI();
         AddChild(room);
         room.show_entity(character);
-        FindButton(room, "灵感·瓶颈").EmitSignal(BaseButton.SignalName.Pressed);
+        FindButton(room, "灵感清册").EmitSignal(BaseButton.SignalName.Pressed);
         var inspirationPage = Nodes<Control>(room).FirstOrDefault(node => node.Name == "InspirationPage");
         Check(inspirationPage?.IsVisibleInTree() == true, "静室灵感页签打开对应页面");
-        var recordButton = Nodes<Button>(room).FirstOrDefault(button => button.Text.StartsWith("灵感·明辨", StringComparison.Ordinal));
-        Check(recordButton is not null && recordButton.Text.Contains("来源：测试经历", StringComparison.Ordinal) &&
-            recordButton.Text.Contains("用途方向：test-action", StringComparison.Ordinal) && recordButton.Text.Contains("有效至：", StringComparison.Ordinal),
-            "记录行显示品级、来源、用途方向与期限");
+        var recordCard = Nodes<PanelContainer>(room).FirstOrDefault(card => card.Name == "InspirationRecord_room-refinement");
+        var cardLabels = recordCard is null ? [] : Nodes<Label>(recordCard).Select(label => label.Text).ToList();
+        Check(recordCard is not null && cardLabels.Contains("明辨") && cardLabels.Contains("其他用途") &&
+            cardLabels.Any(text => text.StartsWith("尚余", StringComparison.Ordinal)),
+            "灵感清册以格子显示品级、用途和剩余有效期");
+        Check(inspirationPage is not null && !Nodes<Button>(inspirationPage).Any(button =>
+                button.Text.Contains("预约", StringComparison.Ordinal) || button.Text.Contains("炼化", StringComparison.Ordinal)),
+            "灵感清册只展示记录，不提供预约或炼化操作");
         var beforePenalty = character.get_cultivation_bottleneck_summary().GetValueOrDefault("penalty", 0d).AsDouble();
-        FindButton(room, "炼化选中灵感").EmitSignal(BaseButton.SignalName.Pressed);
+        Check((character.entity_data as HumanData)?.cultivation_inspiration_records[0].state_id == CultivationInspirationRecord.StateAvailable,
+            "打开灵感清册不消耗记录");
+        FindButton(room, "吐纳修行").EmitSignal(BaseButton.SignalName.Pressed);
+        FindButton(room, "炼化所选灵感").EmitSignal(BaseButton.SignalName.Pressed);
         var afterPenalty = character.get_cultivation_bottleneck_summary().GetValueOrDefault("penalty", 0d).AsDouble();
         Check(afterPenalty < beforePenalty &&
             (character.entity_data as HumanData)?.cultivation_inspiration_records[0].state_id == CultivationInspirationRecord.StateConsumed,
@@ -598,14 +685,13 @@ public partial class CultivationInspirationSmoke : Node
 
     private static string cloud_realm_name(int tier) => "云息" + new[] { "", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十" }[tier] + "层";
 
-    private static HumanData create_stage_data(int level)
+    private static HumanData create_stage_data(int level, int tier = 3)
     {
-        var tier = 3;
         var accumulated = CultivationBottleneckRules.get_grace_hours(tier) + level * CultivationBottleneckRules.get_stage_interval_hours();
         var data = new HumanData
         {
             entity_name = "灵感验收临时人物",
-            cultivation_realm = "云息三层",
+            cultivation_realm = cloud_realm_name(tier),
             cultivation_bottleneck_accumulated_hours = accumulated,
             cultivation_bottleneck_level = level,
             cultivation_bottleneck_realm_tier = tier,

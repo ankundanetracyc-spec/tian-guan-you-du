@@ -5,7 +5,7 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="main" value="&lt;div style=&quot;text-align:center;&quot;&gt;卡牌名：拱撞&lt;/div&gt;&lt;div style=&quot;text-align:left;&quot;&gt;资源路径：res://resources/activeskills/妖兽/灰背野猪/拱撞.tres&lt;br&gt;类型：攻伐牌&lt;br&gt;关键词：无&lt;br&gt;耗费：体力 1、法力 0、灵识 0&lt;br&gt;目标：单体敌人&lt;br&gt;伤害类型：物理&lt;br&gt;伤害公式：round(15 + 体魄×1.2)&lt;br&gt;实时：准备 144 帧、收招 96 帧、冷却 240 帧&lt;/div&gt;&lt;br&gt;来源：灰背野猪基础技能库&lt;br&gt;描述：以獠牙猛力拱击指定敌人。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=15;align=left;verticalAlign=top;" vertex="1" parent="1">
+        <mxCell id="main" value="&lt;div style=&quot;text-align:center;&quot;&gt;卡牌名：拱撞&lt;br&gt;计算公式：A=round(15 + 体魄×1.2)。&lt;/div&gt;&lt;div style=&quot;text-align:left;&quot;&gt;资源路径：res://resources/activeskills/妖兽/灰背野猪/拱撞.tres&lt;br&gt;类型：攻伐牌&lt;br&gt;关键词：无&lt;br&gt;耗费：体力 1、法力 0、灵识 0&lt;br&gt;目标：单体敌人&lt;br&gt;伤害类型：物理&lt;br&gt;伤害：A点。&lt;br&gt;实时：准备 144 帧、收招 96 帧、冷却 240 帧&lt;/div&gt;&lt;br&gt;来源：灰背野猪基础技能库&lt;br&gt;描述：以獠牙猛力拱击指定敌人。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=15;align=left;verticalAlign=top;" vertex="1" parent="1">
           <mxGeometry x="510" y="120" width="760" height="300" as="geometry" />
         </mxCell>
         <mxCell id="left" value="来源/前置&#xA;来源分类：妖兽技能&#xA;来源兽种：灰背野猪&#xA;基础技能库：灰背野猪&#xA;前置：无" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;" vertex="1" parent="1">

@@ -8,8 +8,7 @@
 script = ExtResource("1_modifier")
 modifier_id = "greyback_boar_swift_trot"
 display_name = "迅蹄野猪"
-physique_multiplier = 0.9
-agility_multiplier = 1.4
-soul_multiplier = 1.1
+physique_multiplier = 1.26
+soul_multiplier = 1.54
 racial_talent_override = ExtResource("2_talent")
 deck_override = ExtResource("3_deck")

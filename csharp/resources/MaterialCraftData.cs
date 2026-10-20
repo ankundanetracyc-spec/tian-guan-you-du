@@ -6,7 +6,10 @@ public partial class MaterialCraftData : Resource
 {
     [Export] public string element = "";
     [Export(PropertyHint.Range, "-3,3,1")] public int polarity;
+    /// <summary>材料百科与通用词缀使用的主导加工类型。</summary>
     [Export] public string texture = "";
+    /// <summary>兼容旧材类筛选与炼丹测试参数索引；不显示为当前材料分类。</summary>
+    [Export] public string legacy_texture = "";
     [Export] public Array<MaterialUtilityGrade> utilities = [];
 
     public float material_score()

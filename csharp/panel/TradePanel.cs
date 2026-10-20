@@ -381,7 +381,6 @@ public partial class TradePanel : Control
             MaxValue = entry.count,
             Step = 1,
             Value = entry.selected_count,
-            TooltipText = "拖动选择本次交易的数量",
         };
         slider.AddThemeStyleboxOverride("grabber_area", panel_style(QuietRoomStyle.Teal, QuietRoomStyle.Teal, 0));
         slider.AddThemeStyleboxOverride("slider", panel_style(new Color("c2bea9"), new Color("a39372"), 0));
@@ -437,7 +436,6 @@ public partial class TradePanel : Control
         if (_trade_button is not null)
         {
             _trade_button.Disabled = !can_trade;
-            HoverInfoManager.SetTooltip(_trade_button, can_trade ? "" : (has_selection ? "对方不愿接受这笔交易" : "请选择双方物品"));
         }
         if (_floating_hint_panel is not null)
         {
@@ -465,7 +463,7 @@ public partial class TradePanel : Control
             if (_player.remove_item_from_inventory(entry.path, entry.selected_count)) removed.Add(entry);
             else
             {
-                foreach (var rollback in removed) _player.add_item_to_inventory(rollback.path, rollback.selected_count);
+                foreach (var rollback in removed) _player.add_item_to_inventory_silently(rollback.path, rollback.selected_count);
                 return;
             }
         }
@@ -473,11 +471,11 @@ public partial class TradePanel : Control
         var added = new List<TradeEntry>();
         foreach (var entry in incoming)
         {
-            if (_player.add_item_to_inventory(entry.path, entry.selected_count)) added.Add(entry);
+            if (_player.add_item_to_inventory_silently(entry.path, entry.selected_count)) added.Add(entry);
             else
             {
                 foreach (var rollback in added) _player.remove_item_from_inventory(rollback.path, rollback.selected_count);
-                foreach (var rollback in removed) _player.add_item_to_inventory(rollback.path, rollback.selected_count);
+                foreach (var rollback in removed) _player.add_item_to_inventory_silently(rollback.path, rollback.selected_count);
                 return;
             }
         }
@@ -485,7 +483,7 @@ public partial class TradePanel : Control
         if (!_player.try_spend_world_stamina(WorldStaminaRules.InteractionCost))
         {
             foreach (var rollback in added) _player.remove_item_from_inventory(rollback.path, rollback.selected_count);
-            foreach (var rollback in removed) _player.add_item_to_inventory(rollback.path, rollback.selected_count);
+            foreach (var rollback in removed) _player.add_item_to_inventory_silently(rollback.path, rollback.selected_count);
             return;
         }
         var outgoingValue = outgoing.Sum(item_value);
@@ -497,6 +495,7 @@ public partial class TradePanel : Control
             if (remaining <= 0) _npc.trade_inventory.Remove(entry.path);
             else _npc.trade_inventory[entry.path] = remaining;
         }
+        foreach (var entry in incoming) _player.publish_item_acquired_notice(entry.path, entry.selected_count);
         var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
         var month = time is null ? 0 : (time.year - 1) * 12 + time.month - 1;
         var eventId = "trade:" + Guid.NewGuid().ToString("N");

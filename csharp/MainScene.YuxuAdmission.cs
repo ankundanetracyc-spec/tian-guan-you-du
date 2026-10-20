@@ -10,7 +10,7 @@ public partial class MainScene
     private void begin_yuxu_gate_welcome()
     {
         if (_yuxuAdmissionInProgress) return;
-        if (player?.entity_data is not HumanData human || node_map?.map_data is not { } mapData)
+        if (player?.entity_data is not HumanData human || _world_node_data is not { } mapData)
         {
             open_world();
             return;
@@ -37,8 +37,8 @@ public partial class MainScene
         // Keep the current world as a dimmed backdrop for the interaction rather than exposing a black screen.
         open_world();
         GetNodeOrNull<Control>("SceneLayer/YuxuXianzongOverview")?.Hide();
-        node_map?.hide_world_roster();
-        node_map?.Hide();
+        hide_world_character_list();
+
         estate?.Hide();
         location_interior?.Hide();
 
@@ -126,7 +126,7 @@ public partial class MainScene
         }
 
         var manager = _npc_world ?? GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager");
-        var mapData = node_map?.map_data;
+        var mapData = _world_node_data;
         var guide = manager is not null && mapData is not null
             ? CloudStateNpcCatalog.ensure_yuxu_admission_guide(manager, mapData)
             : null;
@@ -247,8 +247,8 @@ public partial class MainScene
             return;
         }
 
-        node_map?.hide_world_roster();
-        node_map?.Hide();
+        hide_world_character_list();
+
         tile_world_map?.Hide();
         estate?.Hide();
         location_interior?.Hide();

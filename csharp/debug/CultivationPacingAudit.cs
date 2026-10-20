@@ -275,7 +275,7 @@ public static class CultivationPacingAudit
                     human, record.record_id, nowGameHour, out var consumed) || consumed is null)
                 break;
             refineAssigned.Remove(consumed.record_id);
-            penalty = CultivationBottleneckRules.relieve_penalty(penalty, level, consumed.quality_rank);
+            penalty = CultivationBottleneckRules.relieve_penalty(penalty, tier, consumed.quality_rank);
             refinementUses++;
         }
     }

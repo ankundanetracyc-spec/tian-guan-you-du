@@ -115,8 +115,8 @@ public partial class MainScene
         location_interior?.hide_roster();
         location_interior?.Hide();
         tile_world_map?.Hide();
-        node_map?.hide_world_roster();
-        node_map?.Hide();
+        hide_world_character_list();
+
         refresh_yuxu_life_context();
 
         var dungeon = get_or_create_east_woods_dungeon();
@@ -148,7 +148,14 @@ public partial class MainScene
     }
 
     private void on_dynamic_dungeon_time_changed()
-        => synchronize_dynamic_dungeon_opportunities();
+    {
+        // Continuous routes synchronize once when the player reaches the next
+        // world cell or finishes a dungeon route. Avoid cloning and walking every
+        // dynamic instance for each intermediate movement edge.
+        if (tile_world_map?.Visible == true && tile_world_map.Call("is_traveling").AsBool()) return;
+        if (_east_woods_dungeon?.is_route_traveling() == true) return;
+        synchronize_dynamic_dungeon_opportunities();
+    }
 
     private void on_dynamic_dungeon_route_stepped(string destinationNodeId)
     {

@@ -66,6 +66,36 @@ public static class CultivationInspirationTuning
         TravelDomain => "旅途",
         StudyDomain => "研修",
         SectDutyDomain => "宗门公事",
-        _ => domainId
+        _ => "其他用途"
     };
+
+    public static string source_label(string sourceId)
+    {
+        if (SourceRules.TryGetValue(sourceId, out var rule)) return rule.Label;
+        return "其他经历";
+    }
+
+    public static string source_display_label(string sourceId, string sourceLabel)
+    {
+        var label = sourceLabel?.Trim() ?? "";
+        var containsInternalEnglish = label.Any(character => character is >= 'A' and <= 'Z' or >= 'a' and <= 'z');
+        return string.IsNullOrWhiteSpace(label) || label == sourceId || SourceRules.ContainsKey(label) || containsInternalEnglish
+            ? source_label(sourceId)
+            : label;
+    }
+
+    /// <summary>Player-facing instructions for where the reserved inspiration takes effect.</summary>
+    public static string action_effect_text(string domainId, int rank)
+    {
+        var quality = rank switch { 1 => "见几", 2 => "明辨", 3 => "通变", _ => "灵感" };
+        return domainId switch
+        {
+            CombatDomain => $"去开始下一场战斗；入场时消耗，开场护盾 +{combat_starting_shield(rank)}。",
+            GatheringDomain => $"去东林地或副本开始采集；行动开始时消耗，额外获得 {gathering_extra_yield(rank)} 份资源。剩余储量与行囊容量都要足够。",
+            TravelDomain => $"回到大世界开始一段行旅；出发时消耗，额外揭示 {travel_reveal_bonus_cells(rank)} 格地图。",
+            StudyDomain => $"在静室开始功法研读；本次耗时不变，研读进度 ×{study_progress_multiplier(rank):0.00}。",
+            SectDutyDomain => $"开始一项可强化的玉虚宗门公事；结算贡献额外 +{sect_contribution_bonus(rank)}。执中峰纠纷复核不适用。",
+            _ => $"这份{quality}灵感会在对应活动开始时生效。"
+        };
+    }
 }

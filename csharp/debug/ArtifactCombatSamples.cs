@@ -9,7 +9,7 @@ public static class ArtifactCombatSamples
         {
             instance_id = id, artifact_name = guard ? "守锋剑" : "鸣锋剑",
             form = new ArtifactFormData { form_id = guard ? "shoufeng" : "mingfeng", form_name = guard ? "守锋剑" : "鸣锋剑",
-                icon_path = guard ? "res://textures/ui/combat/skill_icons/凡俗_架招_v1.png" : "res://textures/ui/combat/skill_icons/凡俗_痛击_v1.png" },
+                icon_path = guard ? "res://textures/ui/combat/skill_icons/凡俗_架招_v5.png" : "res://textures/ui/combat/skill_icons/凡俗_痛击_v5.png" },
             ritual_mode = inner ? "内炼" : "外祭", utility_id = guard ? "固" : "破", utility_grade = 1,
             bound_basic_card_path = inner ? guard ? "res://resources/activeskills/架招.tres" : "res://resources/activeskills/应敌.tres" : "",
             spirit_cost = inner ? 0 : guard ? 3 : 2, outer_body = guard ? 18 : 12,

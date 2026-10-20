@@ -132,7 +132,7 @@ public partial class InfoPanel
         var heart = book.get_heart_method_skill(isMain);
         var heartButton = CharacterButton("心法 · " + (heart?.skill_name ?? book.gongfa_name), 19, padding: 5); heartButton.CustomMinimumSize = new Vector2(0, 36); heartButton.SizeFlagsHorizontal = SizeFlags.ShrinkBegin; box.AddChild(heartButton);
         var state = !human.has_learned_gongfa(book) ? "未学 · 首卷预览" : isMain || isSub ? "已装配 · 当前版本" : "未装配 · 预览效果";
-        CharacterHover(heartButton, heart?.skill_name ?? "心法", $"{state}\n版本：{(order > 0 ? "第" + chinese_volume_number(order) + "卷" : "首卷")}\n\n{book.get_heart_method_description(Math.Max(1, order), true)}\n\n主修额外效果仅作为主修时生效。");
+        CharacterHover(heartButton, heart?.skill_name ?? "心法", $"{state}\n版本：{(order > 0 ? "第" + chinese_volume_number(order) + "卷" : "首卷")}\n\n{CardPresentation.Underline(book.get_heart_method_description(Math.Max(1, order), true))}\n\n主修额外效果仅作为主修时生效。");
         box.AddChild(new HSeparator()); var scroll = CharacterScroll(box); var rows = CharacterBox(scroll); rows.AddThemeConstantOverride("separation", 8);
         Control? matching = null;
         foreach (var chapter in chapters)
@@ -167,11 +167,11 @@ public partial class InfoPanel
     private static string character_chapter_learning(Character human, GongfaResource book, GongfaChapterConfig chapter)
     {
         var known = human.is_gongfa_chapter_learned(book, chapter.get_id());
-        var skills = chapter.learned_active_skills.OfType<ActiveSkillData>().Select(skill => $"[b]{skill.skill_name}[/b]\n{CardPresentation.Face(skill, human)}")
-            .Concat(chapter.main_learned_active_skills.OfType<ActiveSkillData>().Select(skill => $"[b]{skill.skill_name} · 主修限定[/b]\n{CardPresentation.Face(skill, human)}"));
+        var skills = chapter.learned_active_skills.OfType<ActiveSkillData>().Select(skill => $"[b]{skill.skill_name}[/b]\n{CardPresentation.Underline(CardPresentation.Face(skill, human))}")
+            .Concat(chapter.main_learned_active_skills.OfType<ActiveSkillData>().Select(skill => $"[b]{skill.skill_name} · 主修限定[/b]\n{CardPresentation.Underline(CardPresentation.Face(skill, human))}"));
         var permanent = chapter.learn_permanent_bonuses.Keys.Select(key => $"{battle_attribute_name(key.AsString())} +{chapter.learn_permanent_bonuses[key]}")
             .Concat(chapter.learn_permanent_multipliers.Keys.Select(key => $"{battle_attribute_name(key.AsString())} +{chapter.learn_permanent_multipliers[key].AsSingle() * 100:0.#}%"));
-        return $"{(known ? "已掌握" : "学习后可掌握")}\n\n[b]永久所得[/b]\n{(permanent.Any() ? string.Join("\n", permanent) : "无永久属性奖励")}\n\n[b]战斗技能[/b]\n{(skills.Any() ? string.Join("\n\n", skills) : "无新增主动技能")}\n\n{gongfa_chapter_world_spell_details(chapter, known)}\n\n[b]本卷心法版本[/b]\n{book.get_heart_method_description(chapter.order, true)}";
+        return $"{(known ? "已掌握" : "学习后可掌握")}\n\n[b]永久所得[/b]\n{(permanent.Any() ? string.Join("\n", permanent) : "无永久属性奖励")}\n\n[b]战斗技能[/b]\n{(skills.Any() ? string.Join("\n\n", skills) : "无新增主动技能")}\n\n{gongfa_chapter_world_spell_details(chapter, known)}\n\n[b]本卷心法版本[/b]\n{CardPresentation.Underline(book.get_heart_method_description(chapter.order, true))}";
     }
 
     private static string character_chapter_detail(Character human, GongfaResource book, GongfaChapterConfig chapter)

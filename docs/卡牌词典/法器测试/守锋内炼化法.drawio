@@ -5,7 +5,7 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="2" value="技能名：守锋剑内炼化法&#10;资源路径：运行时生成（ArtifactSkillFactory）&#10;类型：守御&#10;关键词：防御&#10;耗费：见召唤、御使分支或原技能说明&#10;目标：自身&#10;效果：&#10;实际应对时体力1，未应对免费空放；不额外占栏、不占灵识。&#10;原技能效果：队首遇敌方物理攻击时获得化解，层数=3+floor(体魄/4)+floor(敏捷/5)，每层抵消1点本次物理伤害，结算后消散。&#10;化法追加：实际架招的化解层数增加2；未触发应对时不追加。&#10;使用次数：测试样本不限&#10;回合冷却：0回合" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=20;fontSize=20;fillColor=#f4eddf;strokeColor=#54655a;" vertex="1" parent="1">
+        <mxCell id="2" value="技能名：守锋剑内炼化法&#10;资源路径：运行时生成（ArtifactSkillFactory）&#10;类型：守御&#10;关键词：防御&#10;耗费：见召唤、御使分支或原技能说明&#10;目标：自身&#10;效果：&#10;实际应对时体力1，未应对免费空放；不额外占栏、不占灵识。&#10;原技能效果：队首遇敌方物理攻击时获得化解，层数=3+floor(体魄/4)+floor(min(体魄×0.25,神魂×0.20))，每层抵消1点本次物理伤害，结算后消散。&#10;化法追加：实际架招的化解层数增加2；未触发应对时不追加。&#10;使用次数：测试样本不限&#10;冷却：0回合" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=20;fontSize=20;fillColor=#f4eddf;strokeColor=#54655a;" vertex="1" parent="1">
           <mxGeometry x="60" y="60" width="880" height="570" as="geometry" />
         </mxCell>
         <mxCell id="3" value="仅开发测试样本，不是正式平衡数据。&#10;外祭技能占1个技能栏位；召唤与每次御使各占1个行动位。&#10;召唤失败后的御使不转成召唤；崩解及任意离场后本场禁用。&#10;法器化法在秘籍化法之后追加，同一技能最多关联1件内炼法器。" style="whiteSpace=wrap;html=0;align=left;fontSize=18;fillColor=#fff2cc;" vertex="1" parent="1">

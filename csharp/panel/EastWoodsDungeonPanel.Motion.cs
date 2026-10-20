@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 public partial class EastWoodsDungeonPanel
 {
-    private const double PawnStepSeconds = .42;
+    private const double PawnStepSeconds = .30;
     private Control? _travelPawn;
     private Tween? _pawnTween;
     private TaskCompletionSource<bool>? _pawnStepCompletion;
@@ -33,7 +33,7 @@ public partial class EastWoodsDungeonPanel
         _mapRoot!.AddChild(_travelPawn);
         destination.Hide();
         clear_hover();
-        refresh_action_bar();
+        if (!_isTraveling) refresh_action_bar();
         _pawnStepCompletion = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
         _pawnTween = CreateTween();
         _pawnTween.TweenMethod(Callable.From<float>(t =>
@@ -59,7 +59,7 @@ public partial class EastWoodsDungeonPanel
             _travelPawn = null;
         }
         if (_pawnLayers.TryGetValue(_current, out var layer)) layer.GetNodeOrNull<Control>("PlayerPawn")?.Show();
-        refresh_action_bar();
+        if (!_isTraveling) refresh_action_bar();
         completion?.TrySetResult(true);
     }
 }

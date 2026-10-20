@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1")
 deck_name = "公共基础技能池"
-deck_description = "所有角色共用的基础技能池，仅含应敌、架招、痛击。技能按已学会的能力装配，不按路径切换，也不以卡牌数量复制；休整与吐纳是角色自带的队列行动，不在此池中。"
+deck_description = "所有角色共用的基础技能池，仅含应敌、架招、痛击。技能按已学会的能力装配，不按路径切换，也不以卡牌数量复制；休整是角色自带的队列行动，不在此池中；战斗没有通用法力回复行动。"
 skill_paths = Array[String](["res://resources/activeskills/应敌.tres", "res://resources/activeskills/架招.tres", "res://resources/activeskills/痛击.tres"])

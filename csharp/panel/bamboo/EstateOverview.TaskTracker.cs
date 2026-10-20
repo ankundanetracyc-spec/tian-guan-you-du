@@ -137,7 +137,6 @@ public partial class EstateOverview
         _compactQuestToggle.OffsetLeft = -40;
         _compactQuestToggle.Visible = _quest_panel.Visible;
         _compactQuestToggle.Text = _compactQuestExpanded ? "▶" : "◀";
-        _compactQuestToggle.TooltipText = _compactQuestExpanded ? "向右收起任务栏" : "展开任务栏";
     }
 
     private void toggle_compact_quest_tracker()
@@ -146,7 +145,6 @@ public partial class EstateOverview
         if (_compactQuestToggle is not null)
         {
             _compactQuestToggle.Text = _compactQuestExpanded ? "▶" : "◀";
-            _compactQuestToggle.TooltipText = _compactQuestExpanded ? "向右收起任务栏" : "展开任务栏";
         }
         apply_compact_task_tracker();
     }

@@ -1,8 +1,8 @@
 using Godot;
 
 /// <summary>
-/// Central tuning point for the Yunxi bottleneck. These defaults preserve the old eight-stage proposal as a starting
-/// baseline; grace, interval, and penalty values remain replaceable after pacing calibration.
+/// Central tuning point for the Yunxi bottleneck. The eight penalty anchors drive accumulation only;
+/// inspiration relief operates on the current percentage. These defaults remain replaceable after pacing calibration.
 /// </summary>
 public static class CultivationBottleneckRules
 {
@@ -40,11 +40,11 @@ public static class CultivationBottleneckRules
             ? double.PositiveInfinity
             : get_grace_hours(yunxiTier) + (currentLevel + 1) * get_stage_interval_hours();
 
-    /// <summary>Applies the approved P×B/(B+I) penalty relief; P is penalty magnitude, not remaining gain.</summary>
-    public static double relieve_penalty(double currentPenalty, int bottleneckLevel, int inspirationRank)
+    /// <summary>Applies realm-scaled inspiration relief to the current bottleneck percentage.</summary>
+    public static double relieve_penalty(double currentPenalty, int cultivationRealmTier, int inspirationRank)
     {
-        if (bottleneckLevel is < 1 or > Stages || inspirationRank is < 1 or > 3 || currentPenalty <= 0d)
+        if (cultivationRealmTier is < 1 or > 9 || inspirationRank is < 1 or > 3 || currentPenalty <= 0d)
             return Math.Max(0d, currentPenalty);
-        return currentPenalty * bottleneckLevel / (bottleneckLevel + (double)inspirationRank);
+        return currentPenalty * cultivationRealmTier / (cultivationRealmTier + (double)inspirationRank);
     }
 }

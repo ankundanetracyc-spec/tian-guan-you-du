@@ -13,9 +13,9 @@ script = ExtResource("2")
 attribute = "body_proficiency"
 multiplier = 0.2
 
-[sub_resource type="Resource" id="Agility"]
+[sub_resource type="Resource" id="ExtraPhysique"]
 script = ExtResource("2")
-attribute = "agility"
+attribute = "physique"
 multiplier = 0.25
 
 [resource]
@@ -23,7 +23,7 @@ script = ExtResource("1")
 tags = Array[String](["增伤"])
 skill_name = "发劲"
 icon_path = "res://textures/ui/combat/skill_icons/基础技能_发劲_v1.png"
-description = "对指定1名敌方造成物理伤害。若本场已消耗游骸不少于1层，对同一目标额外结算1段物理伤害；该段伤害 = round(4 + 体魄×0.20 + 敏捷×0.15 + 体道造诣×0.15)。"
+description = "对指定1名敌方造成物理伤害。若本场已消耗游骸不少于1层，对同一目标额外结算1段物理伤害；该段伤害 = round(4 + 体魄×0.35 + 体道造诣×0.15)。"
 skill_type = 0
 energy_cost = 1
 mana_cost = 0
@@ -34,8 +34,8 @@ range_min = 1
 range_max = 1
 base_damage = 8.0
 damage_type = "physical"
-damage_bonuses = Array[ExtResource("2")]([SubResource("Physique"), SubResource("BodyProficiency"), SubResource("Agility")])
-damage_formula = "round(8 + 体魄×0.40 + 体道造诣×0.20 + 敏捷×0.25)"
+damage_bonuses = Array[ExtResource("2")]([SubResource("Physique"), SubResource("BodyProficiency"), SubResource("ExtraPhysique")])
+damage_formula = "round(8 + 体魄×0.65 + 体道造诣×0.2)"
 keywords = Array[String]([])
 source_gongfa_name = "乘物游骸真经"
 gongfa_rewrite_effect_ids = Array[String](["chengwu_c4_fajin"])

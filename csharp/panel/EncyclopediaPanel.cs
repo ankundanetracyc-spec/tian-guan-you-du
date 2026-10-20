@@ -35,7 +35,6 @@ public partial class EncyclopediaPanel : Control
         public CreatureStats() { }
         public CreatureStat? Physique { get; set; }
         public CreatureStat? Intelligence { get; set; }
-        public CreatureStat? Agility { get; set; }
         public CreatureStat? Soul { get; set; }
     }
     private sealed class CreatureStat
@@ -563,7 +562,7 @@ public partial class EncyclopediaPanel : Control
         affixes.AddChild(affixGrid);
         foreach (var dimension in dimensions)
         {
-            var values = ItemAffixCatalog.get_tag_values(item.tags, dimension).ToList();
+            var values = StoragePanel.get_display_tag_values(item.tags, dimension, material);
             AddItemPropertyCard(affixGrid, dimension, values.Count == 0 ? "未标注" : string.Join("、", values));
         }
 
@@ -586,7 +585,7 @@ public partial class EncyclopediaPanel : Control
         if (!string.IsNullOrWhiteSpace(item.battle_skill_path) && ResourceLoader.Load<ActiveSkillData>(item.battle_skill_path) is { } battleSkill)
         {
             var effect = AddItemSection(_itemDetailContent, "战斗效果");
-            effect.AddChild(MakeLabel(string.IsNullOrWhiteSpace(battleSkill.description) ? "暂无详细说明。" : battleSkill.description, 19, MutedInk));
+            effect.AddChild(MakeLabel(string.IsNullOrWhiteSpace(battleSkill.description) ? "暂无详细说明。" : CardPresentation.Underline(CardPresentation.Face(battleSkill, null)), 19, MutedInk));
         }
     }
 
@@ -611,7 +610,7 @@ public partial class EncyclopediaPanel : Control
         foreach (var (name, value) in facts) AddItemPropertyCard(grid, name, value);
 
         var effect = AddItemSection(_statusDetailContent, "效果说明");
-        var description = MakeLabel(status.Effect, 19, MutedInk);
+        var description = MakeLabel(CardPresentation.Underline(status.Effect), 19, MutedInk);
         description.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         effect.AddChild(description);
     }
@@ -757,7 +756,7 @@ public partial class EncyclopediaPanel : Control
 
             var body = new StringBuilder();
             AppendSection(body, "境界", $"{template.cultivation_realm}{template.cultivation_stage} · 对标云息境界");
-            AppendSection(body, "常见四维", $"体魄 {FormatAttributeRange(template.physique_min, template.physique_mean, template.physique_max)}\n灵慧 {FormatAttributeRange(template.intelligence_min, template.intelligence_mean, template.intelligence_max)}\n敏捷 {FormatAttributeRange(template.agility_min, template.agility_mean, template.agility_max)}\n神魂 {FormatAttributeRange(template.soul_min, template.soul_mean, template.soul_max)}");
+            AppendSection(body, "常见三项战斗属性", $"体魄 {FormatAttributeRange(template.physique_min, template.physique_mean, template.physique_max)}\n灵慧 {FormatAttributeRange(template.intelligence_min, template.intelligence_mean, template.intelligence_max)}\n神魂 {FormatAttributeRange(template.soul_min, template.soul_mean, template.soul_max)}");
             AppendSection(body, "派生战斗属性", BuildDerivedBeastStats(template));
             AppendSection(body, "种族天赋", template.racial_talent is null
                 ? "尚未配置。"
@@ -770,7 +769,7 @@ public partial class EncyclopediaPanel : Control
                 : "尚未配置；不以行动速度代替。");
             AppendSection(body, "掉落", FormatBeastLoot(template));
 
-            var search = $"{template.display_name} 妖 通智 云息 林地 狼 群猎 属性 体魄 灵慧 敏捷 神魂 {body}";
+            var search = $"{template.display_name} 妖 通智 云息 林地 狼 群猎 属性 体魄 灵慧 神魂 身心协调值 {body}";
             result.Add(new Entry(
                 template.display_name,
                 $"妖 · {template.cultivation_realm}{template.cultivation_stage} · 林地",
@@ -824,8 +823,8 @@ public partial class EncyclopediaPanel : Control
         {
             var rows = new List<string>();
             AddRange(rows, "体魄", stats.Physique); AddRange(rows, "灵慧", stats.Intelligence);
-            AddRange(rows, "敏捷", stats.Agility); AddRange(rows, "神魂", stats.Soul);
-            if (rows.Count > 0) AppendSection(body, "基础四维范围（首轮估值）", string.Join("\n", rows));
+            AddRange(rows, "神魂", stats.Soul);
+            if (rows.Count > 0) AppendSection(body, "基础三项战斗属性范围（首轮估值）", string.Join("\n", rows));
         }
         else AppendSection(body, "基础四维", "境界高于云息；本轮只定境界和术法方向，数值范围待单独校准。");
         if (creature.PhysicalDefense is { } defense) AppendSection(body, "物理防御参考", defense.ToString("0.#"));
@@ -850,8 +849,8 @@ public partial class EncyclopediaPanel : Control
         {
             var rows = new List<StatRange>();
             AddStat(rows, "体魄", stats.Physique); AddStat(rows, "灵慧", stats.Intelligence);
-            AddStat(rows, "敏捷", stats.Agility); AddStat(rows, "神魂", stats.Soul);
-            if (rows.Count > 0) AddStatTable("基础四维范围", rows);
+            AddStat(rows, "神魂", stats.Soul);
+            if (rows.Count > 0) AddStatTable("基础三项战斗属性范围", rows);
         }
         else AddDossierSection("属性范围").AddChild(MakeLabel("高于云息境界，数值待后续校准。", 18, MutedInk));
         AddDossierSection("栖息与习性").AddChild(MakeLabel($"{creature.Habitat}\n{creature.Habit}", 18, MutedInk));
@@ -875,10 +874,9 @@ public partial class EncyclopediaPanel : Control
         foreach (var child in _beastDossier.GetChildren()) { _beastDossier.RemoveChild(child); child.QueueFree(); }
         if (_beastDossier.GetParent() is ScrollContainer scroll) scroll.ScrollVertical = 0;
 
-        AddStatTable("基础四维", [
+        AddStatTable("基础三项战斗属性", [
             AttributeStat("体魄", template.physique_min, template.physique_mean, template.physique_max),
             AttributeStat("灵慧", template.intelligence_min, template.intelligence_mean, template.intelligence_max),
-            AttributeStat("敏捷", template.agility_min, template.agility_mean, template.agility_max),
             AttributeStat("神魂", template.soul_min, template.soul_mean, template.soul_max)
         ]);
         AddStatTable("战斗属性", DerivedBeastStats(template));
@@ -944,23 +942,23 @@ public partial class EncyclopediaPanel : Control
         new(name, min.ToString("0.#"), mean.ToString("0.#"), max.ToString("0.#"));
 
     private static List<StatRange> DerivedBeastStats(BeastTemplate template) => [
-        IntegerStat("生命", template, (p, i, a, s) => 60 + p * 8 + a * 3 + s * 3 + i * 1.5f),
+        IntegerStat("生命", template, (p, i, s) => 60 + p * 11 + s * 3 + i * 1.5f),
         new StatRange("物理防御", "0", "0", "0"),
-        IntegerStat("精准", template, (p, i, a, s) => i * 4 + a * 3 + s + p * .5f),
-        IntegerStat("身法", template, (p, i, a, s) => a * 4 + s * 2 + i + p * .5f),
-        IntegerStat("会心", template, (p, i, a, s) => p * .5f + a * .8f + s * 1.2f + i * .3f),
-        IntegerStat("护心", template, (p, i, a, s) => p * 3 + i * 2 + a * 2 + s * 1.5f),
+        IntegerStat("精准", template, (p, i, s) => i * 7 + s + p * .5f),
+        IntegerStat("身法", template, (p, i, s) => Mathf.Min(p, s) * 4 + s * 2 + i + p * .5f),
+        IntegerStat("会心", template, (p, i, s) => p * .5f + s * 2f + i * .3f),
+        IntegerStat("护心", template, (p, i, s) => p * 3 + i * 2 + Mathf.Min(p, s) * 2 + s * 1.5f),
         AttributeStat("行动速度",
-            Creature.calculate_base_initiative_speed(template.physique_min, template.intelligence_min, template.agility_min, template.soul_min),
-            Creature.calculate_base_initiative_speed(template.physique_mean, template.intelligence_mean, template.agility_mean, template.soul_mean),
-            Creature.calculate_base_initiative_speed(template.physique_max, template.intelligence_max, template.agility_max, template.soul_max))
+            Creature.calculate_base_initiative_speed(template.physique_min, template.intelligence_min, template.soul_min),
+            Creature.calculate_base_initiative_speed(template.physique_mean, template.intelligence_mean, template.soul_mean),
+            Creature.calculate_base_initiative_speed(template.physique_max, template.intelligence_max, template.soul_max))
     ];
 
-    private static StatRange IntegerStat(string name, BeastTemplate template, Func<float, float, float, float, float> formula) =>
+    private static StatRange IntegerStat(string name, BeastTemplate template, Func<float, float, float, float> formula) =>
         new(name,
-            Mathf.RoundToInt(formula(template.physique_min, template.intelligence_min, template.agility_min, template.soul_min)).ToString(),
-            Mathf.RoundToInt(formula(template.physique_mean, template.intelligence_mean, template.agility_mean, template.soul_mean)).ToString(),
-            Mathf.RoundToInt(formula(template.physique_max, template.intelligence_max, template.agility_max, template.soul_max)).ToString());
+            Mathf.RoundToInt(formula(template.physique_min, template.intelligence_min, template.soul_min)).ToString(),
+            Mathf.RoundToInt(formula(template.physique_mean, template.intelligence_mean, template.soul_mean)).ToString(),
+            Mathf.RoundToInt(formula(template.physique_max, template.intelligence_max, template.soul_max)).ToString());
 
     private static string BuildDerivedBeastStats(BeastTemplate template)
     {
@@ -1190,16 +1188,19 @@ public partial class EncyclopediaPanel : Control
             var isPassive = skill.skill_type == ActiveSkillData.SkillType.POWER || skill.slot_category == "passive" || skill.keywords.Contains("固有");
             if (!isPassive) continue;
             var source = string.IsNullOrWhiteSpace(skill.source_gongfa_name) ? "角色固有" : skill.source_gongfa_name;
-            var effect = string.IsNullOrWhiteSpace(skill.description) ? "暂无详细说明。" : skill.description;
+            var effect = string.IsNullOrWhiteSpace(skill.description) ? "暂无详细说明。" : CardPresentation.Face(skill, null);
             var icon = BattleUnitOverlay.GetStatusIcon($"心法:{skill.skill_name}", new StatusInstance { source_name = source })
                 ?? LoadTexture("res://textures/ui/encyclopedia/buff_category_v1.svg");
             result.Add(new Entry(skill.skill_name, $"常驻心法 · {source}", "", $"{skill.skill_name} {source} {effect}", icon,
                 Status: new StatusDetail("常驻被动", null, source, effect)));
         }
 
-        AddStatusResourceEntry(result, "气血", "战斗资源", "每当自身主动使气血下降，触发公共气血回落，回复最大生命的3%；气血上限由角色修命淬体与明确的战斗效果决定，战斗结束时清空。", "回落 生命 回复");
+        AddStatusResourceEntry(result, "气血", "战斗资源", "基础上限8层，可由修命淬体与明确的战斗效果调整。每下降1层，按当前回落回复率恢复生命；基础回复率为最大生命的5%。战斗结束时清空。", "回落 生命 回复");
         AddStatusResourceEntry(result, "血炉", "战斗资源", "每2点提高1%物理伤害；可被相关招式消耗，战斗结束时清空。", "物理伤害 赤阳");
-        AddStatusResourceEntry(result, "护盾", "战斗资源", "优先吸收受到的伤害，并随实际吸收量减少。", "防御 吸收");
+        AddStatusResourceEntry(result, "炁", "战斗资源", "非费用资源，跨回合保留。炁达到当前法力上限的两倍时触发周天：清空炁并恢复法力，再结算周天效果；超额不保留，战斗结束清零。", "周天 法力");
+        AddStatusResourceEntry(result, "周天", "战斗机制", "公共自动触发机制，不是独立状态或资源。当前法力上限为 M 时，炁达到或超过 2×M 即完成一次周天：清除全部炁、将当前法力恢复至 M，再结算周天触发效果。超额炁不保留；单次炁获得事件最多完成一次；M 为 0 时不触发。法力上限改变后立即重算阈值；若已有炁达到新阈值，在该效果结算后立即完成一次。周天不需手动操作，也不会自行生成炁。", "炁 法力 恢复 阈值 自动触发");
+        AddStatusResourceEntry(result, "散血", "战斗机制", "按技能注明的触发条件，直接打散目标指定层数的气血。打散不视为气血层数降低，不触发气血层数降低带来的回复或其他效果；触发条件与层数以具体技能为准。", "打散 气血 层数降低 回复");
+        AddStatusResourceEntry(result, "护盾", "战斗资源", "由法力凝成并环绕自身的护罩，优先吸收受到的伤害，并随实际吸收量减少。", "防御 法力 吸收");
         return result.OrderBy(entry => entry.Title, StringComparer.Ordinal).ToList();
     }
 
@@ -1234,7 +1235,7 @@ public partial class EncyclopediaPanel : Control
             AppendSection(body, "堆叠", item.can_stack ? $"可堆叠，最多 {item.max_stack} 件" : "不可堆叠");
             AppendSection(body, "使用范围", item.usage_type switch { 1 => "仅限战斗", 2 => "大世界与战斗均可使用", _ => "大世界物品" });
             if (!string.IsNullOrWhiteSpace(item.battle_skill_path) && ResourceLoader.Load<ActiveSkillData>(item.battle_skill_path) is { } battleSkill)
-                AppendSection(body, "战斗效果", battleSkill.description);
+                AppendSection(body, "战斗效果", CardPresentation.Underline(CardPresentation.Face(battleSkill, null)));
 
             var qualitySearch = isManual
                 ? ManualRealmDescription(item)

@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1")
 skill_name = "调息"
-description = "调整呼吸，回转气力，按体魄、敏捷与体术造诣恢复体力。"
+description = "调整呼吸，回转气力，按体魄、体魄与体术造诣恢复体力。"
 skill_type = 5
 energy_cost = 1
 mana_cost = 0
@@ -13,5 +13,5 @@ target_type = 0
 range_min = 0
 range_max = 0
 keywords = Array[String](["消耗"])
-special_effects = [{"effect": "restore_stamina", "formula": "base:14;physique:0.2;agility:0.25;body_proficiency:0.15"}]
+special_effects = [{"effect": "restore_stamina", "formula": "base:14;physique:0.2;physique:0.25;body_proficiency:0.15"}]
 metadata/_custom_type_script = "uid://cjcf3nq1ne5ql"

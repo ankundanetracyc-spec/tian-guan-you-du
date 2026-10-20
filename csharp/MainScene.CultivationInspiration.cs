@@ -29,6 +29,8 @@ public partial class MainScene
 
     private void on_tile_world_travel_started()
     {
+        _tileWorldTravelInProgress = true;
+        (GetTree().GetFirstNodeInGroup("cell_character_list") as CellCharacterList)?.suspend_world_npcs();
         _worldMapTravelStartedHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
         var consumeTravelInspiration = true;
         if (player?.entity_data is HumanData human && _npc_world?.get_active_yuxu_case_transport(human) is { temporary_party_member_active: true } task)
@@ -47,6 +49,7 @@ public partial class MainScene
 
     private void on_tile_world_travel_finished(int completedSteps)
     {
+        _tileWorldTravelInProgress = false;
         tile_world_map?.Call("set_travel_reveal_bonus_cells", 0);
         _worldMapTravelRevealBonus = 0;
         if (completedSteps > 0)
@@ -57,6 +60,8 @@ public partial class MainScene
             award_player_renewable_inspiration($"travel:world:{_worldMapTravelStartedHour}:{cell.X},{cell.Y}:{hour}", "journey.step");
         }
         _worldMapTravelStartedHour = -1;
+        refresh_tile_world_population_counts();
+        synchronize_dynamic_dungeon_opportunities();
 
         if (player?.entity_data is HumanData human && _npc_world?.get_active_yuxu_case_transport(human) is { } task &&
             task.temporary_party_member_active && task.journey_status == YuxuSectCaseTaskRecord.JourneyInTransit &&

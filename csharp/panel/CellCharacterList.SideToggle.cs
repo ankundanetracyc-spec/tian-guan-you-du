@@ -37,7 +37,6 @@ public partial class CellCharacterList
         if (_toggle_button is not null)
         {
             _toggle_button.Text = _expanded ? "◀" : "▶";
-            _toggle_button.TooltipText = _expanded ? "收起角色列表" : "展开角色列表";
             _toggle_button.Size = new Vector2(30, Mathf.Max(60, _expanded_height * .5f));
         }
 

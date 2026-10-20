@@ -25,7 +25,8 @@ public partial class BattleResponseFocus : Node
             doll.set_response_time_stop(true);
             focus._frozenActors.Add(doll);
         }
-        foreach (var visual in manager.GetTree().GetNodesInGroup("battle_action_visuals"))
+        foreach (var visual in manager.GetTree().GetNodesInGroup("battle_action_visuals")
+            .Concat(manager.GetTree().GetNodesInGroup("battle_persistent_visuals")).Distinct())
         {
             focus._frozenVisuals.Add((visual, visual.ProcessMode));
             visual.ProcessMode = ProcessModeEnum.Disabled;

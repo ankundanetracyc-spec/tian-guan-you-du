@@ -19,6 +19,110 @@ public partial class BattleManager
         .Where(body => GodotObject.IsInstanceValid(body) && body.current_health > 0 && body.DepartureReason.Length == 0)
         .Cast<GodotObject>());
 
+    public bool IsXuanShuSkillSlot10(GodotObject owner,ActiveSkillData skill)=>gongfa_combat.HasPower(owner,"玄枢含章")&&_combatSkills.TryGetValue(owner,out var skills)&&skills.Count>9&&ReferenceEquals(skills[9],skill);
+
+    public GodotObject? get_random_legal_skill_target(GodotObject owner,ActiveSkillData skill)
+    {
+        GodotObject? chosen=null;
+        uint legalCount=0;
+        foreach(var candidate in get_target_candidates())
+        {
+            if(!IsValidTarget(skill,owner,candidate))continue;
+            legalCount++;
+            if(GD.Randi()%legalCount==0)chosen=candidate;
+        }
+        return chosen;
+    }
+
+    private bool HasLegalSkillTarget(GodotObject owner,ActiveSkillData skill) =>
+        get_target_candidates().Any(candidate=>IsValidTarget(skill,owner,candidate));
+
+    private bool CanBeginFumingReplay(GodotObject owner,ActiveSkillData fuming)
+    {
+        var copied=gongfa_combat.GetLastNonResponseSkill(owner);
+        if(copied is null||CardRules.IsResponse(copied)||copied.skill_name=="复命"||!is_skill_ready(owner,copied)||!HasLegalSkillTarget(owner,copied))return false;
+        var (firstEnergy,secondEnergy)=gongfa_combat.PreviewSequentialEnergyCosts(owner,fuming,copied);
+        if(copied.skill_type==ActiveSkillData.SkillType.MOVEMENT)
+            secondEnergy=Mathf.CeilToInt(secondEnergy*BattleWoundRules.get_energy_cost_multiplier(get_realtime_wound_counts(owner),copied));
+        var mana=get_skill_mana_cost(owner,fuming)+get_skill_mana_cost(owner,copied);
+        return owner.Get("current_stamina").AsInt32()>=firstEnergy+secondEnergy&&can_pay_mana_amount(owner,mana);
+    }
+
+    private bool CanPayFumingCopyAfterItsOwnCast(GodotObject owner,ActiveSkillData copied)
+    {
+        return !CardRules.IsResponse(copied)&&copied.skill_name!="复命"&&is_skill_ready(owner,copied)
+            &&owner.Get("current_stamina").AsInt32()>=get_skill_energy_cost(owner,copied)
+            &&can_pay_skill_mana_cost(owner,copied);
+    }
+
+    public bool BeginFumingReplay(GodotObject owner,ActiveSkillData fuming,bool finishAsAutomatic,bool isSlot10Automatic=false)
+    {
+        var copied=gongfa_combat.GetLastNonResponseSkill(owner);
+        if(copied is null||!CanPayFumingCopyAfterItsOwnCast(owner,copied))
+        {
+            if(finishAsAutomatic)on_automatic_skill_resolved(owner);else on_queued_skill_resolved(owner);
+            return false;
+        }
+        var target=get_random_legal_skill_target(owner,copied);
+        if(!GodotObject.IsInstanceValid(target))
+        {
+            if(finishAsAutomatic)on_automatic_skill_resolved(owner);else on_queued_skill_resolved(owner);
+            return false;
+        }
+        var replay=copied.Duplicate(true) as ActiveSkillData??copied;
+        if(fuming.gongfa_rewrite_effect_ids.Contains("xuan_shu_c4_fuming"))
+        {
+            if(!replay.gongfa_rewrite_effect_ids.Contains("xuan_shu_c4_fuming"))replay.gongfa_rewrite_effect_ids.Add("xuan_shu_c4_fuming");
+            if(!replay.tags.Contains("护盾"))replay.tags.Add("护盾");
+        }
+        Pay(owner,replay);
+        gongfa_combat.Before(owner,replay,recordAsLastCast:false);
+        StartSkillCooldown(owner,copied);
+        if(replay.aoe_range>0||replay.description.Contains("全体"))_executor?.execute_aoe_skill(owner,replay,Vector2I.Zero,Map??this,false,false,isSlot10Automatic,finishAsAutomatic);
+        else _executor?.execute_skill(owner,replay,target!,false,false,isSlot10Automatic,finishAsAutomatic);
+        return true;
+    }
+
+    private bool CanStartAutomaticSlotSkill(GodotObject owner,ActiveSkillData skill)
+    {
+        if(skill.combat_empty_slot||CardRules.IsResponse(skill)||!is_skill_ready(owner,skill)||!gongfa_combat.CanPlay(owner,skill))return false;
+        if(skill.skill_name=="复命")return CanBeginFumingReplay(owner,skill);
+        return owner.Get("current_stamina").AsInt32()>=get_skill_energy_cost(owner,skill)&&can_pay_skill_mana_cost(owner,skill);
+    }
+
+    private bool TryStartPendingZhouTianAutoCast(GodotObject owner)
+    {
+        if(_runningZhouTianAutoCasts.Contains(owner)||!_pendingZhouTianAutoCasts.TryGetValue(owner,out var pending)||pending<=0)return false;
+        while(pending>0)
+        {
+            pending--;
+            if(_combatSkills.TryGetValue(owner,out var skills)&&skills.Count>9&&skills[9] is { } skill&&CanStartAutomaticSlotSkill(owner,skill))
+            {
+                _pendingZhouTianAutoCasts[owner]=pending;
+                _runningZhouTianAutoCasts.Add(owner);
+                if(skill.skill_name=="复命"){Pay(owner,skill);gongfa_combat.Before(owner,skill);StartSkillCooldown(owner,skill);BeginFumingReplay(owner,skill,finishAsAutomatic:true,isSlot10Automatic:true);return true;}
+                var target=skill.target_type==0?owner:get_random_legal_skill_target(owner,skill);
+                if(GodotObject.IsInstanceValid(target))
+                {
+                    Pay(owner,skill);gongfa_combat.Before(owner,skill);StartSkillCooldown(owner,skill);
+                    if(skill.aoe_range>0||skill.description.Contains("全体"))_executor?.execute_aoe_skill(owner,skill,Vector2I.Zero,Map??this,false,false,true,true);
+                    else _executor?.execute_skill(owner,skill,target!,false,false,true,true);
+                    return true;
+                }
+                _runningZhouTianAutoCasts.Remove(owner);
+            }
+        }
+        _pendingZhouTianAutoCasts.Remove(owner);
+        return false;
+    }
+
+    public void on_automatic_skill_resolved(GodotObject owner)
+    {
+        if(!_runningZhouTianAutoCasts.Remove(owner))return;
+        if(TryStartPendingZhouTianAutoCast(owner))return;
+        if(_segmentPhase==SegmentPhase.Executing&&_resolvingUnit==owner)CompleteSegmentAction(owner);
+    }
+
     private GodotObject? ResolveActionTarget(GodotObject owner, BattleQueuedSkill action, ActiveSkillData skill)
     {
         if (skill.target_type == 0) return owner;
@@ -63,7 +167,7 @@ public partial class BattleManager
             || action.skill.max_charges > 0 && _skillCharges.TryGetValue(owner, out var charges) && charges.GetValueOrDefault(action.skill, action.skill.max_charges) <= 0)) return false;
         if (!gongfa_combat.CanPlay(owner, skill)) return false;
         return owner.Get("current_stamina").AsInt32() >= get_skill_energy_cost(owner, skill)
-            && owner.Get("current_mana").AsInt32() >= get_skill_mana_cost(owner, skill);
+            && can_pay_skill_mana_cost(owner,skill);
     }
 
     public bool can_plan_artifact_summon(GodotObject owner, ActiveSkillData skill)

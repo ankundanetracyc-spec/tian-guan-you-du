@@ -9,7 +9,7 @@ attribute = "physique"
 multiplier = 0.35
 [sub_resource type="Resource" id="a"]
 script = ExtResource("2")
-attribute = "agility"
+attribute = "physique"
 multiplier = 0.25
 [sub_resource type="Resource" id="b"]
 script = ExtResource("2")
@@ -24,7 +24,7 @@ script = ExtResource("1")
 tags = Array[String](["闪避","增伤"])
 skill_name = "解形"
 skill_type = 0
-description = "仅当自身拥有游骸时可用；消耗游骸1层并计入本场已消耗游骸；对指定1名敌方造成物理伤害：round(7 + 体魄×0.35 + 敏捷×0.25 + 体道造诣×0.25)。\n使用次数：本场1次"
+description = "仅当自身拥有游骸时可用；消耗游骸1层并计入本场已消耗游骸；对指定1名敌方造成物理伤害：round(7 + 体魄×0.35 + 体魄×0.25 + 体道造诣×0.25)。\n使用次数：本场1次"
 source_gongfa_name = "乘物游骸真经"
 energy_cost = 1
 target_type = 2
@@ -32,7 +32,7 @@ base_damage = 7.0
 damage_type = "physical"
 damage_bonuses = Array[ExtResource("2")]([SubResource("p"), SubResource("a"), SubResource("b")])
 keywords = Array[String]([])
-damage_formula = "round(7 + 体魄×0.35 + 敏捷×0.25 + 体道造诣×0.25)"
+damage_formula = "round(7 + 体魄×0.35 + 体魄×0.25 + 体道造诣×0.25)"
 preparation_frames = 0
 recovery_frames = 0
 cooldown_frames = 0

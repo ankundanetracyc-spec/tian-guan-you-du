@@ -23,6 +23,5 @@ public partial class MainHUD
     {
         if (_actionBarToggle is null) return;
         _actionBarToggle.Text = _actionBarExpanded ? "▶" : "◀";
-        _actionBarToggle.TooltipText = _actionBarExpanded ? "收起下方功能入口" : "展开下方功能入口";
     }
 }

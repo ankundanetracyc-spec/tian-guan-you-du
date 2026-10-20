@@ -99,6 +99,13 @@ public static partial class NpcSocialPresentationText
         new("对方斟酌片刻", "对方客气地应声，却没留下姓名。"),
         new("话头暂歇", "对方略拱了拱手，仍有所保留。"),
         new("对方轻抿嘴唇", "对方没有接下问询，回礼后便止住话头。") ];
+    private static readonly Phrase[] NoFamiliarBasis = [
+        new("彼此还不相熟", "你们此前没有往来，对方一时还不清楚你的来历。"),
+        new("话到姓名之前", "此前未曾相识，对方尚在掂量这番交谈从何说起。"),
+        new("对方略作打量", "初次照面缺少凭据，对方还不能把你与旧闻对上。"),
+        new("你们初次见面", "彼此素无交集，对方先听你说完来意。"),
+        new("话头稍稍放缓", "对方对你的来历还不熟悉，交谈仍停在客套上。"),
+        new("对方听你提起姓名", "对方尚未听过你的名号，只静静听着，没有贸然接话。") ];
     private static readonly Phrase[] Exchange = [
         new("话到彼此称呼", "对方报上姓名，向你拱了拱手。"),
         new("对方斟酌片刻", "对方随即报了名姓，还了一礼。"),
@@ -235,7 +242,8 @@ public static partial class NpcSocialPresentationText
         "known_name" or "known_overcomes_caution" => Familiar,
         "friendship" or "attached_visit" or "friend_visit" => Friend,
         "outgoing" or "outgoing_visit" or "reserved" or "visit_initiative" => Initiative,
-        "caution" or "caution_veto" or "no_familiar_basis" => Caution,
+        "caution" or "caution_veto" => Caution,
+        "no_familiar_basis" => NoFamiliarBasis,
         "basis_overcomes_caution" or "no_caution_veto" => Exchange,
         "sect_priority" or "sect_visit" => SectInterest,
         "renown_priority" => action == "来访" ? EntryInterest : RenownInterest,

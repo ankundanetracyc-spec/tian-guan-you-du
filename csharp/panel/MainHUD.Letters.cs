@@ -24,6 +24,5 @@ public partial class MainHUD
         // 沿用首次收信后可用的现行入口规则；禁用态也保留原素材。
         button.AddThemeStyleboxOverride("disabled", button.GetThemeStylebox("normal"));
         button.Disabled = total == 0;
-        button.TooltipText = unread > 0 ? $"{unread} 封未读来信 · 查看信件与邀约" : total > 0 ? $"收存 {total} 封信件" : "查看信匣 · 暂无来信";
     }
 }

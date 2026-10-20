@@ -15,7 +15,7 @@ public partial class MainScene
     private bool ensure_yuxu_lineage_staff()
     {
         var manager = _npc_world ?? GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager");
-        if (manager is null || node_map?.map_data is not { } mapData) return false;
+        if (manager is null || _world_node_data is not { } mapData) return false;
         _npc_world = manager;
         var changed = CloudStateNpcCatalog.ensure_yuxu_lineage_staff(manager, mapData);
         if (changed) mark_save_dirty();

@@ -10,6 +10,8 @@ public partial class BattleInkCombatVfx
     private BattlePaperDoll? _sequenceOwner;
     private float _sequenceFps = 30, _followUntil = float.PositiveInfinity;
     private bool _cancelOnDeath;
+    private Node2D? _worldSequenceOwner;
+    private Vector2 _worldSequenceScale;
 
     private static BattlePaperDoll? SideDoll(Node2D unit) => unit.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll") is { } doll && doll.uses_side_ink() ? doll : null;
 
@@ -19,11 +21,11 @@ public partial class BattleInkCombatVfx
         && !BattleInkSlashEffect.IsPunchSkill(skill)
         && !new[] { "拳", "踢", "腿", "剑", "刀", "枪", "刺" }.Any(skill.skill_name.Contains);
 
-    private static BattleInkCombatVfx? SpawnSequence(BattlePaperDoll doll, bool chop, string animation, Vector2 at, Vector2 dimensions, float fps = 30)
+    private static BattleInkCombatVfx? SpawnSequence(BattlePaperDoll doll, bool chop, string animation, Vector2 at, Vector2 dimensions, float fps = 30, SpriteFrames? alternateFrames = null, Vector2? nativeSize = null)
     {
         if (_active >= Capacity || !IsInstanceValid(doll) || !doll.IsInsideTree() || doll.side_ink_dead()
             || Engine.GetMainLoop() is not SceneTree tree || tree.CurrentScene is null) return null;
-        var frames = chop ? _chopFrames ??= GD.Load<SpriteFrames>(ChopSequencePath) : _responseFrames ??= GD.Load<SpriteFrames>(ResponseSequencePath);
+        var frames = alternateFrames ?? (chop ? _chopFrames ??= GD.Load<SpriteFrames>(ChopSequencePath) : _responseFrames ??= GD.Load<SpriteFrames>(ResponseSequencePath));
         if (frames is null || !frames.HasAnimation(animation) || frames.GetFrameCount(animation) == 0) return null;
         var effect = new BattleInkCombatVfx
         {
@@ -36,7 +38,7 @@ public partial class BattleInkCombatVfx
         effect._sequenceSprite = new AnimatedSprite2D
         {
             Name = "SequenceFrames", SpriteFrames = frames, Animation = animation,
-            Position = at, Scale = dimensions / 768f, TextureFilter = CanvasItem.TextureFilterEnum.Linear
+            Position = at, Scale = dimensions / (nativeSize ?? Vector2.One * 768f), TextureFilter = CanvasItem.TextureFilterEnum.Linear
         };
         effect.AddChild(effect._sequenceSprite);
         effect.UpdateSequenceTransform();
@@ -122,6 +124,12 @@ public partial class BattleInkCombatVfx
     private void UpdateSequenceTransform()
     {
         if (!IsInstanceValid(_sequenceOwner)) return;
+        if (IsInstanceValid(_worldSequenceOwner))
+        {
+            GlobalTransform = _worldSequenceOwner!.GlobalTransform * new Transform2D(new Vector2(_worldSequenceScale.X, 0), new Vector2(0, _worldSequenceScale.Y), Vector2.Zero);
+            ZIndex = BattlePresentationLayers.Effects;
+            return;
+        }
         var mirror = _sequenceOwner!.side_ink_faces_left() ? -1f : 1f;
         GlobalTransform = _sequenceOwner.side_ink_visual_transform() * new Transform2D(new Vector2(mirror, 0), Vector2.Down, Vector2.Zero);
         ZIndex = BattlePresentationLayers.Effects;
@@ -129,14 +137,14 @@ public partial class BattleInkCombatVfx
 
     private void ProcessSequence(float delta)
     {
-        if (!IsInstanceValid(_sequenceOwner) || !_sequenceOwner!.IsInsideTree() || _sequenceOwner.IsQueuedForDeletion() || !_sequenceOwner.uses_side_ink()
+        if (!IsInstanceValid(_sequenceOwner) || !_sequenceOwner!.IsInsideTree() || _sequenceOwner.IsQueuedForDeletion() || (!_sequenceOwner.uses_side_ink() && !IsInstanceValid(_worldSequenceOwner))
             || (_cancelOnDeath && _sequenceOwner.side_ink_dead())) { QueueFree(); return; }
         _elapsed += delta;
         if (_elapsed <= _followUntil) UpdateSequenceTransform();
         var local = Mathf.Max(0, _elapsed - _delay);
         var visual = local - Mathf.Clamp(local - _holdAt, 0, _hold);
         _sequenceSprite!.Visible = _elapsed >= _delay;
-        _sequenceSprite.Frame = Mathf.Clamp(Mathf.FloorToInt(visual * _sequenceFps), 0, _sequenceSprite.SpriteFrames.GetFrameCount(_sequenceSprite.Animation) - 1);
+        _sequenceSprite.Frame = Mathf.Clamp(Mathf.FloorToInt(visual * _sequenceFps + .0001f), 0, _sequenceSprite.SpriteFrames.GetFrameCount(_sequenceSprite.Animation) - 1);
         if (_elapsed >= _duration + _delay + _hold) QueueFree();
     }
 }

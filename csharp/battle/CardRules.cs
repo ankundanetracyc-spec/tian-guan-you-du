@@ -7,7 +7,7 @@ public static class CardRules
 {
     public static readonly System.Collections.Generic.Dictionary<string, string> Attributes = new()
     {
-        ["体魄"]="physique", ["敏捷"]="agility", ["灵慧"]="intelligence",
+        ["体魄"]="physique", ["身心协调值"]="coordination", ["身心协调"]="coordination", ["灵慧"]="intelligence",
         ["神魂"]="soul", ["体道造诣"]="body_proficiency", ["术法造诣"]="magic_proficiency",
         ["剑道造诣"]="sword_proficiency", ["最大生命"]="max_health", ["借力层数"]="borrowed_force",
         ["实际消耗血炉值"]="spent_furnace", ["本场实际消耗游骸层数"]="spent_youhai",
@@ -18,6 +18,7 @@ public static class CardRules
     public static float Number(GodotObject? owner, string key)
     {
         if (!GodotObject.IsInstanceValid(owner)) return 0;
+        if (key == "coordination") return Mathf.Min(Number(owner, "physique"), Number(owner, "soul"));
         if (key == "borrowed_force" && owner is Creature creature) return creature.get_status_stacks("借力");
         if (key == "spent_furnace") return Number(owner, "blood_furnace_value");
         if (owner!.HasMethod("get_status_stacks"))

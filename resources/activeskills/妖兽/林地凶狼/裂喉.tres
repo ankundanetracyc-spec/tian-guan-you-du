@@ -5,12 +5,12 @@
 [resource]
 script = ExtResource("1")
 skill_name = "裂喉"
-description = "血牙撕开要害。伤害 = round(8 + 体魄×0.9 + 敏捷×0.9)；命中后向目标弃牌堆加入1张外伤。"
+description = "血牙撕开要害。伤害 = round(8 + 体魄×0.9 + 体魄×0.9)；命中后向目标弃牌堆加入1张外伤。"
 skill_type = 0
 energy_cost = 1
 target_type = 2
 range_min = 1
 range_max = 1
 damage_type = "physical"
-damage_formula = "round(8 + physique*0.9 + agility*0.9)"
+damage_formula = "round(8 + physique*0.9 + physique*0.9)"
 special_effects = Array[Dictionary]([{"effect":"add_wound","wound":"外伤","count":1,"destination":"discard"}])

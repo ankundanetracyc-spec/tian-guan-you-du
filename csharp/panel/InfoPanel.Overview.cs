@@ -90,7 +90,7 @@ public partial class InfoPanel
         }
         _npc_page.AddChild(new HSeparator());
         _npc_page.AddChild(Text("基础属性",24));
-        _npc_page.AddChild(Text($"体魄 {npc.physique:0.#}　灵慧 {npc.intelligence:0.#}　敏捷 {npc.agility:0.#}　神魂 {npc.soul:0.#}\n福缘 未详　悟性 未详　魅力 未详　交际 未详　治事 未详"));
+        _npc_page.AddChild(Text($"体魄 {npc.physique:0.#}　灵慧 {npc.intelligence:0.#}　神魂 {npc.soul:0.#}\n福缘 未详　悟性 未详　魅力 未详　交际 未详　治事 未详"));
         // 五项尚未存储的属性不能由界面临时随机生成。
         _npc_page.AddChild(Text($"当前状态：{npc.current_state}\n生存：{(npc.is_alive?"在世":"已故 · "+npc.death_cause)}"));
         if(npc.faction_reputations.TryGetValue(npc.faction_id,out var attitude))

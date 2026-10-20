@@ -25,6 +25,13 @@ public partial class InfoPanelGongfaSkillDirectorySmoke : Node
         return method.Invoke(panel, args) ?? throw new InvalidOperationException("角色页方法未返回目录：" + name);
     }
 
+    private static void InvokeHiddenVoid(InfoPanel panel, string name, params object[] args)
+    {
+        var method = typeof(InfoPanel).GetMethod(name, HiddenInstance)
+            ?? throw new InvalidOperationException("缺少角色页方法：" + name);
+        method.Invoke(panel, args);
+    }
+
     private static T Field<T>(InfoPanel panel, string name) where T : class =>
         typeof(InfoPanel).GetField(name, HiddenInstance)?.GetValue(panel) as T
         ?? throw new InvalidOperationException("缺少角色页控件：" + name);
@@ -60,6 +67,11 @@ public partial class InfoPanelGongfaSkillDirectorySmoke : Node
                 spirit_root_type = (int)GongfaResource.Wuxing.METAL_WOOD_WATER,
                 spirit_root_name = "三灵根",
                 root_weights = [34, 33, 33, 0, 0],
+                base_physique = 8,
+                base_intelligence = 8,
+                base_soul = 8,
+                base_body_proficiency = 6,
+                base_magic_proficiency = 8,
                 current_world_stamina = 100
             });
 
@@ -111,6 +123,48 @@ public partial class InfoPanelGongfaSkillDirectorySmoke : Node
             SkillEntry(skillList, skill.skill_name).EmitSignal(BaseButton.SignalName.Pressed);
             Check(human.get_combat_skill_slot_paths().Contains(skillPath), "卸下后无法从目录重新装回技能");
 
+            var nodes = human.get_skill_node_configs().ToArray();
+            Check(nodes.Length == 3, "首批技能节点配置不是三条根脉");
+            Check(nodes.All(node => human.can_unlock_skill_node(node.node_id, out _)), "达到门槛的人物仍无法参悟首批根节点");
+            Check(!nodes.Any(node => human.get_available_battle_skills().Any(owned => Character.combat_skill_key(owned) == node.skill_path)),
+                "未参悟的个人技能已经进入人物可用技能库");
+
+            var lockedHuman = new Character();
+            AddChild(lockedHuman);
+            lockedHuman.load_from_data(new HumanData { entity_name = "未达门槛人物" });
+            Check(!lockedHuman.can_unlock_skill_node(nodes[0].node_id, out var lockedReason) && lockedReason.Contains("体魄"),
+                "未达门槛的人物没有被节点条件拦下或缺少明确说明");
+
+            typeof(InfoPanel).GetField("_showSkillNodeNetwork", HiddenInstance)!.SetValue(panel, true);
+            InvokeHiddenVoid(panel, "build_character_battle", human);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            Check(nodes.All(node => Descendants<Label>(panel).Any(label => label.Text == node.node_name)), "节点网没有显示全部根节点");
+            Check(Descendants<Button>(panel).Count(button => button.Text == "参悟此节点") == 3, "满足条件时没有显示三枚参悟按钮");
+
+            foreach (var node in nodes)
+            {
+                var learn = Descendants<Button>(panel).FirstOrDefault(button => button.Text == "参悟此节点")
+                    ?? throw new InvalidOperationException("节点网缺少参悟按钮：" + node.node_name);
+                learn.EmitSignal(BaseButton.SignalName.Pressed);
+                await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+                Check(human.has_unlocked_skill_node(node.node_id), "节点参悟后没有写入人物状态：" + node.node_name);
+                Check(human.get_available_battle_skills().Any(owned => Character.combat_skill_key(owned) == node.skill_path),
+                    "参悟技能没有进入人物技能库：" + node.node_name);
+                Check(!human.get_combat_skill_slot_paths().Contains(node.skill_path), "参悟技能被自动装配：" + node.node_name);
+                var nodeSkill = GD.Load<ActiveSkillData>(node.skill_path)!;
+                var sourceName = (string)InvokeHidden(panel, "character_skill_source", human, nodeSkill);
+                Check(sourceName == "技能节点 · " + node.node_name, "技能库没有标注个人节点来源：" + node.node_name);
+            }
+
+            var savedHumanData = typeof(Character).GetProperty("human", HiddenInstance)?.GetValue(human) as HumanData
+                ?? throw new InvalidOperationException("无法读取人物存档数据");
+            var reloadedHuman = new Character();
+            AddChild(reloadedHuman);
+            reloadedHuman.load_from_data(savedHumanData.Duplicate(true) as HumanData
+                ?? throw new InvalidOperationException("人物存档数据复制失败"));
+            Check(nodes.All(node => reloadedHuman.has_unlocked_skill_node(node.node_id)), "节点参悟记录未随人物数据读档恢复");
+
+            GD.Print("INFO_PANEL_SKILL_NODE_NETWORK_PASS: roots render, unlock gates work, skills stay unequipped, source labels and save data persist");
             GD.Print("INFO_PANEL_GONGFA_SKILL_DIRECTORY_PASS: pending/current intro book visible; public basic skill remains available and can be re-equipped after unload");
             GetTree().Quit();
         }

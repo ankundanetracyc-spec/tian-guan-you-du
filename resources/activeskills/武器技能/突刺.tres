@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://csharp/gongfa/ActiveSkillData.cs" id="1"]
 [ext_resource type="Script" path="res://csharp/gongfa/DamageBonus.cs" id="2_dmg"]
 
-[sub_resource type="Resource" id="Resource_agility"]
+[sub_resource type="Resource" id="Resource_extra_physique"]
 script = ExtResource("2_dmg")
-attribute = "agility"
+attribute = "physique"
 multiplier = 0.5
 metadata/_custom_type_script = "uid://corjswdok5c7"
 
@@ -26,8 +26,8 @@ range_min = 1
 range_max = 2
 base_damage = 3.0
 damage_type = "physical"
-damage_bonuses = Array[ExtResource("2_dmg")]([SubResource("Resource_agility"), SubResource("Resource_sword_prof")])
+damage_bonuses = Array[ExtResource("2_dmg")]([SubResource("Resource_extra_physique"), SubResource("Resource_sword_prof")])
 keywords = ["乘势"]
 momentum_condition_type = "after_attack"
-momentum_effect_params = "agility:0.03"
+momentum_effect_params = "soul:0.03"
 metadata/_custom_type_script = "uid://cjcf3nq1ne5ql"

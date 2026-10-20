@@ -91,7 +91,6 @@ public partial class GameTimeUI : Control
         _lastReadout = key;
         var year = _showZhaoming ? $"昭明历{_manager.get_zhaoming_year()}年" : $"入世第{_manager.year}年";
         _date.Text = $"{year}{_manager.month}月{_manager.day}日 · {_manager.hour:00}时";
-        _calendarToggle.TooltipText = _showZhaoming ? "当前：昭明历。点击切换入世年数。" : "当前：入世年数。点击切换昭明历。";
 
         var phase = _manager.hour switch { >= 6 and < 18 => "昼", _ => "夜" };
         var name = weather switch { "clear" => "晴", "cloudy" => "多云", "rain" => "雨", "snow" => "雪", "thunderstorm" => "雷雨", _ => weather };

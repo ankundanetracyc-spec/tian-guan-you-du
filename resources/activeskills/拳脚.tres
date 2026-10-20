@@ -15,9 +15,9 @@ attribute = "body_proficiency"
 multiplier = 0.2
 metadata/_custom_type_script = "uid://corjswdok5c7"
 
-[sub_resource type="Resource" id="Resource_agility"]
+[sub_resource type="Resource" id="Resource_extra_physique"]
 script = ExtResource("2_dmg")
-attribute = "agility"
+attribute = "physique"
 multiplier = 0.25
 metadata/_custom_type_script = "uid://corjswdok5c7"
 
@@ -25,7 +25,7 @@ metadata/_custom_type_script = "uid://corjswdok5c7"
 script = ExtResource("1")
 skill_name = "发劲"
 icon_path = "res://textures/cards/expressive_ink/fajin_ink_v4.png"
-description = "对指定1名敌方造成物理伤害。伤害 = round(8 + 体魄×0.4 + 体道造诣×0.2 + 敏捷×0.25)。"
+description = "对指定1名敌方造成物理伤害。伤害 = round(8 + 体魄×0.65 + 体道造诣×0.2)。"
 skill_type = 0
 energy_cost = 1
 mana_cost = 0
@@ -39,7 +39,7 @@ range_min = 1
 range_max = 1
 base_damage = 8.0
 damage_type = "physical"
-damage_bonuses = Array[ExtResource("2_dmg")]([SubResource("Resource_physique"), SubResource("Resource_body_proficiency"), SubResource("Resource_agility")])
+damage_bonuses = Array[ExtResource("2_dmg")]([SubResource("Resource_physique"), SubResource("Resource_body_proficiency"), SubResource("Resource_extra_physique")])
 metadata/_custom_type_script = "uid://cjcf3nq1ne5ql"
 keywords = Array[String]([])
-damage_formula = "round(8 + 体魄×0.4 + 体道造诣×0.2 + 敏捷×0.25)"
+damage_formula = "round(8 + 体魄×0.65 + 体道造诣×0.2)"

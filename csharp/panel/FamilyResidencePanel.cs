@@ -64,7 +64,7 @@ public partial class FamilyResidencePanel : Control
         var list = new VBoxContainer(); list.AddThemeConstantOverride("separation", 12); panel.AddChild(list); _iconSheet = GD.Load<Texture2D>("res://textures/ui/residence/residence_nav_icons.png");
         for (var i = 0; i < _tabs.Length; i++)
         {
-            var item = new Button { Text = _tabs[i], CustomMinimumSize = new Vector2(0, 88), TooltipText = _tabs[i] == "静室" ? "查看静室、修炼与闭关安排" : "此处内容将在后续开放", Disabled = _tabs[i] != "静室" };
+            var item = new Button { Text = _tabs[i], CustomMinimumSize = new Vector2(0, 88), Disabled = _tabs[i] != "静室" };
             ApplyButtonStyle(item, _tabs[i] == "静室"); item.AddThemeFontSizeOverride("font_size", 18); item.Icon = IconAt(i); item.ExpandIcon = true; list.AddChild(item);
         }
         return panel;
@@ -105,7 +105,7 @@ public partial class FamilyResidencePanel : Control
         var image = new TextureRect { Texture = GD.Load<Texture2D>(occupant is null ? "res://textures/ui/residence/room_empty.png" : "res://textures/ui/residence/room_occupied.png"), ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize, StretchMode = TextureRect.StretchModeEnum.KeepAspectCovered, MouseFilter = MouseFilterEnum.Ignore };
         image.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect); card.AddChild(image);
         var shade = new ColorRect { Color = new Color(.03f, .025f, .018f, active ? .08f : .28f), MouseFilter = MouseFilterEnum.Ignore }; shade.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect); card.AddChild(shade);
-        var button = new Button { Flat = true, TooltipText = "查看此间静室", MouseFilter = MouseFilterEnum.Stop };
+        var button = new Button { Flat = true, MouseFilter = MouseFilterEnum.Stop, MouseDefaultCursorShape = Control.CursorShape.PointingHand };
         button.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect); button.Pressed += () => { _selectedRoom = index; Refresh(); }; card.AddChild(button);
         var name = occupant?.entity_name ?? "空置";
         var status = occupant is null ? "可安排一名族人" : occupant.is_in_breakthrough_retreat() ? "闭关突破中 · 暂离诸务" : "日常修炼中 · 仍按日程行止";

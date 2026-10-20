@@ -42,15 +42,18 @@ public partial class BattleManager : Node2D
     private readonly Queue<QueuedPlayerCard> _queuedPlayerCards = new();
     private readonly System.Collections.Generic.Dictionary<GodotObject, List<FormationCircuitRuntime>> _formationCircuits = [];
     private const float SimulationFps = 60f;
-    private const float EnergyBaseInterval = 360f, ManaBaseInterval = 480f;
+    private const float EnergyBaseInterval = 360f;
     private const int HandLimit = 10, OpeningHand = 5, QueueCapacity = 3, IntentRevealFrames = 96, CombatSlotCapacity = 10;
-    private readonly System.Collections.Generic.Dictionary<GodotObject, float> _energyRegen = [], _manaRegen = [];
+    private readonly System.Collections.Generic.Dictionary<GodotObject, float> _energyRegen = [];
+    private readonly HashSet<GodotObject> _manaInitializedForBattle = [];
     private readonly System.Collections.Generic.Dictionary<GodotObject, float> _drawElapsedFrames = [];
     private readonly System.Collections.Generic.Dictionary<GodotObject, Array<ActiveSkillData>> _combatSkills = [];
     private readonly System.Collections.Generic.Dictionary<GodotObject, System.Collections.Generic.Dictionary<ActiveSkillData, float>> _skillCooldowns = [];
     private readonly System.Collections.Generic.Dictionary<GodotObject, System.Collections.Generic.Dictionary<ActiveSkillData, int>> _skillCharges = [];
     private readonly System.Collections.Generic.Dictionary<GodotObject, System.Collections.Generic.Dictionary<ActiveSkillData, int>> _skillRoundCharges = [];
     private readonly System.Collections.Generic.Dictionary<GodotObject, ActiveSkillData?> _pendingTargetSkills = [];
+    private readonly System.Collections.Generic.Dictionary<GodotObject, int> _pendingZhouTianAutoCasts = [];
+    private readonly HashSet<GodotObject> _runningZhouTianAutoCasts = [];
     private sealed class BattleResourceSnapshot
     {
         public int CurrentStamina, MaxStamina, CurrentMana, MaxMana;

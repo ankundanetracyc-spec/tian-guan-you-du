@@ -34,7 +34,7 @@ public partial class CardSystemSmoke : Node
                 Check(skill.cooldown_frames==expected.Cooldown,expected.Name+"冷却时长");
                 Check(skill.target_type==expected.Target&&skill.slot_category==expected.Category,expected.Name+"目标与槽位类型");
             }
-            var defender=new Creature{entity_data=new HumanData{physique=12,agility=8,body_proficiency=9,max_health=100,current_health=100,max_stamina=6,current_stamina=3},faction=1};AddChild(defender);
+            var defender=new Creature{entity_data=new HumanData{physique=16,soul=4,body_proficiency=9,max_health=100,current_health=100,max_stamina=6,current_stamina=3},faction=1};AddChild(defender);
             var attacker=new Creature{entity_data=new HumanData{physique=8,max_health=100,current_health=100,max_stamina=6,current_stamina=3},faction=2};AddChild(attacker);
             Check(CardRules.Number(defender,"body_proficiency")==9,"读取角色数据中的造诣");
             var response=GD.Load<ActiveSkillData>("res://resources/activeskills/架招.tres").Duplicate() as ActiveSkillData ?? throw new Exception("架招资源");
@@ -121,9 +121,9 @@ public partial class CardSystemSmoke : Node
                 Check(skill.preparation_frames==expected.Preparation&&skill.recovery_frames==expected.Recovery&&skill.cooldown_frames==expected.Cooldown,expected.Name+"实时三时序");
                 Check(skill.target_type==expected.Target&&skill.slot_category==expected.Category,expected.Name+"目标与槽位类型");
             }
-            var boar=new Beast{entity_data=new LivingData{physique=12,agility=5,intelligence=2,soul=2,max_health=100,current_health=100},faction=(int)WorldEntity.Faction.ENEMY,beast_deck=GD.Load<BasicDeckResource>("res://resources/beast_decks/灰背野猪.tres")};
-            var beastAttacker=new Creature{entity_data=new LivingData{physique=8,agility=8,intelligence=5,soul=5,max_health=100,current_health=100},faction=(int)WorldEntity.Faction.PLAYER};
-            AddChild(boar);AddChild(beastAttacker);boar.physique=12;boar.agility=5;boar.intelligence=2;boar.soul=2;boar.current_health=100;beastAttacker.current_health=100;
+            var boar=new Beast{entity_data=new LivingData{physique=14.5f,intelligence=2,soul=4.5f,max_health=100,current_health=100},faction=(int)WorldEntity.Faction.ENEMY,beast_deck=GD.Load<BasicDeckResource>("res://resources/beast_decks/灰背野猪.tres")};
+            var beastAttacker=new Creature{entity_data=new LivingData{physique=12,intelligence=5,soul=9,max_health=100,current_health=100},faction=(int)WorldEntity.Faction.PLAYER};
+            AddChild(boar);AddChild(beastAttacker);boar.physique=14.5f;boar.intelligence=2;boar.soul=4.5f;boar.current_health=100;beastAttacker.current_health=100;
             var beastLoadout=(Array<ActiveSkillData>)typeof(BattleManager).GetMethod("LoadCombatSkills",flags)!.Invoke(manager,[boar])!;
             Check(beastLoadout.Count==2&&beastLoadout.Any(skill=>skill.skill_name=="拱撞")&&beastLoadout.Any(skill=>skill.skill_name=="拱身架招"),"妖兽技能库接入固定技能槽");
             manager.player_units.Add(beastAttacker);manager.enemy_units.Add(boar);manager.all_units.Add(beastAttacker);manager.all_units.Add(boar);

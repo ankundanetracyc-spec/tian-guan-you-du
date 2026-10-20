@@ -301,10 +301,9 @@ public static class CloudStateNpcCatalog
         }
         var physique = rng.RandfRange(3.0f, 9.5f);
         var intelligence = rng.RandfRange(3.0f, 9.5f);
-        var agility = rng.RandfRange(3.0f, 9.5f);
         var soul = rng.RandfRange(3.0f, 9.5f);
         var age = rng.RandiRange(16, 68);
-        var max_health = Mathf.RoundToInt(72.0f + physique * 8.0f + agility * 3.0f + soul * 2.0f);
+        var max_health = Mathf.RoundToInt(72.0f + physique * 11.0f + soul * 2.0f);
         var npc = new WorldNpcData
         {
             npc_id = $"runtime_npc_{sequence:000}",
@@ -320,7 +319,6 @@ public static class CloudStateNpcCatalog
             spirit_strands = realm == "凡人" ? 0 : rng.RandiRange(1, 18),
             physique = physique,
             intelligence = intelligence,
-            agility = agility,
             soul = soul,
             current_health = max_health,
             max_health = max_health,

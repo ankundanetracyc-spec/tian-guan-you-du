@@ -637,8 +637,6 @@ public partial class YuxuSectExchangePanel : Control
         if (_purchaseConfirm is null) return;
         var cost = _selectedItem?.ContributionCost ?? 0;
         _purchaseConfirm.Disabled = _purchasePending || cost <= 0 || _contributionBalance < cost;
-        _purchaseConfirm.TooltipText = cost <= 0 ? "此物品尚未配置善功堂标准价" :
-            _contributionBalance < cost ? "当前贡献不足" : "按当前标准价兑换并放入行囊";
     }
 
     private void add_full_rect(Control control)

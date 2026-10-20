@@ -46,7 +46,6 @@ public partial class MainHUD : Control
         }
         _taskTrackerToggle.OffsetLeft = -14 - ToggleWidth; _taskTrackerToggle.OffsetRight = -14;
         _taskTrackerToggle.Text = _taskTrackerExpanded ? "▶" : "◀";
-        _taskTrackerToggle.TooltipText = _taskTrackerExpanded ? "收起" : "展开";
         _taskTrackerToggle.Visible = panel.Visible;
         CallDeferred(nameof(sync_task_tracker_toggle_vertical_bounds));
     }

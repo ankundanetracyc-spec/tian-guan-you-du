@@ -53,11 +53,12 @@ public partial class BattleManager
         var height = get_unit_display_height() / scale;
         var rowDepth = Mathf.Clamp(360f - height, 0f, 170f);
         var fit = 1f;
+        var centerY = Math.Max(player_units.Count, enemy_units.Count) == 1 ? 495f : 540f;
         foreach (var team in new[] { player_units, enemy_units })
         {
             if (team.Count == 0) continue;
             var positions = layouts[Mathf.Clamp(team.Count, 1, 5) - 1];
-            var center = new Vector2(BattleUiArt.Canvas.X * (team == enemy_units ? .75f : .25f), 540f);
+            var center = new Vector2(BattleUiArt.Canvas.X * (team == enemy_units ? .75f : .25f), centerY);
             Rect2? teamBounds = null;
             for (var i = 0; i < team.Count; i++)
             {
@@ -82,7 +83,7 @@ public partial class BattleManager
         if (fit < 1f)
             foreach (var team in new[] { player_units, enemy_units })
             {
-                var center = origin + new Vector2(BattleUiArt.Canvas.X * (team == enemy_units ? .75f : .25f), 540f) * scale;
+                var center = origin + new Vector2(BattleUiArt.Canvas.X * (team == enemy_units ? .75f : .25f), centerY) * scale;
                 foreach (var unit in team.OfType<Node2D>())
                 {
                     var screen = viewport.GetCanvasTransform() * unit.GlobalPosition;

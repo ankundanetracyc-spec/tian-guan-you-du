@@ -7,6 +7,6 @@ public partial class GreybackBoarSwiftTrotTalent : BeastRacialTalent
     public override void apply_derived_attributes(Beast beast)
     {
         beast.physical_defense=Mathf.RoundToInt(beast.physique*.30f);
-        beast.initiative_speed+=beast.agility*.5f;
+        beast.initiative_speed+=Mathf.Min(beast.physique*.5f,beast.soul*.5f);
     }
 }

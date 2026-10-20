@@ -74,8 +74,9 @@ public partial class BattleLocalFocusView : CanvasLayer
             if (parent is Control stage && stage.Name == "Stage")
             {
                 region = stage.GetGlobalRect();
-                region.Position += new Vector2(0, 108);
-                region.Size -= new Vector2(0, 238);
+                var top=stage.HasMeta("battle_focus_top")?stage.GetMeta("battle_focus_top").AsSingle():108f;
+                region.Position += new Vector2(0, top);
+                region.Size -= new Vector2(0, top+130);
                 break;
             }
         var to = target.GetGlobalTransformWithCanvas() * target.ToLocal(BattleInkCombatVfx.Anchor(target));

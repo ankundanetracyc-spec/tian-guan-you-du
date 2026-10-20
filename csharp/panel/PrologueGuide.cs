@@ -60,7 +60,7 @@ public partial class PrologueGuide : Control
         SetTask(PrologueText.StudyStartedTask(gongfa.gongfa_name));
     }
 
-    private void on_gongfa_chapter_completed(Character character, string gongfaName, string _, string chapterName)
+    private void on_gongfa_chapter_completed(Character character, string gongfaName, string _, string chapterName, Godot.Collections.Dictionary __)
     {
         if (_stage != 1 || character != _child) return;
         _stage = 2;

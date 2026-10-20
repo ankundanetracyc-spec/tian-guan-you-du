@@ -518,20 +518,20 @@ text = "灵慧　—"
 layout_mode = 2
 theme_override_constants/separation = 28
 
-[node name="AgilityRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/BasicSection/RowTwo" unique_id=1432524807]
+[node name="CoordinationRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/BasicSection/RowTwo" unique_id=1432524807]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Icon" type="TextureRect" parent="Content/Page/Body/AttributeLayout/BasicSection/RowTwo/AgilityRow" unique_id=392043834]
+[node name="Icon" type="TextureRect" parent="Content/Page/Body/AttributeLayout/BasicSection/RowTwo/CoordinationRow" unique_id=392043834]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 texture = SubResource("attr_icon_feather")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/BasicSection/RowTwo/AgilityRow" unique_id=495500398]
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/BasicSection/RowTwo/CoordinationRow" unique_id=495500398]
 layout_mode = 2
-text = "敏捷　—"
+text = "身心协调　—"
 
 [node name="SoulRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/BasicSection/RowTwo" unique_id=1904148106]
 layout_mode = 2

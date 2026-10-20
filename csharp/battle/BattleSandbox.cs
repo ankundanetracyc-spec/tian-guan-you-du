@@ -19,10 +19,10 @@ public partial class BattleSandbox : Node2D
         var units=manager.Get("all_units").AsGodotArray();
         var inner=GD.Load<StatusEffect>("res://resources/battle/statuses/内伤.tres");
         var outer=GD.Load<StatusEffect>("res://resources/battle/statuses/外伤.tres");
-        var agility=GD.Load<StatusEffect>("res://resources/battle/statuses/身法.tres");
+        var dodgeStatus=GD.Load<StatusEffect>("res://resources/battle/statuses/身法.tres");
         if(units.Count>0&&inner is not null)units[0].AsGodotObject()?.Call("add_status",inner,inner.duration_default,1,"sandbox",inner.max_stacks,"测试状态");
         if(units.Count>1&&outer is not null)units[1].AsGodotObject()?.Call("add_status",outer,outer.duration_default,2,"sandbox",outer.max_stacks,"测试状态");
-        if(units.Count>2&&agility is not null)units[2].AsGodotObject()?.Call("add_status",agility,-1,2,"sandbox",agility.max_stacks,"测试状态");
+        if(units.Count>2&&dodgeStatus is not null)units[2].AsGodotObject()?.Call("add_status",dodgeStatus,-1,2,"sandbox",dodgeStatus.max_stacks,"测试状态");
     }
     private PackedScene make_character_scene(){var prototype=new Character();var scene=new PackedScene();scene.Pack(prototype);prototype.QueueFree();return scene;}
     private BattleEntityData make_unit(string name,int faction,int seed)
@@ -31,7 +31,7 @@ public partial class BattleSandbox : Node2D
             uid = $"battle_sandbox_{seed}", entity_name = name, faction = faction,
             cultivation_realm = "云息三层", appearance_seed = 1100 + seed, gender = seed % 2,
             battle_portrait_path = BattlePaperDoll.DefaultPortraitPath,
-            physique = 12, intelligence = 13, agility = 16 + seed, soul = 10, comprehension = 12,
+            physique = 20 + seed, intelligence = 13, soul = 18, comprehension = 12,
             max_health = 150, current_health = 150, max_stamina = 100, current_stamina = 100,
             max_mana = 30, current_mana = 30, max_spirit_perception = 20, used_spirit_perception = 0,
             precision = 80, dodge = 8, critical = 10,

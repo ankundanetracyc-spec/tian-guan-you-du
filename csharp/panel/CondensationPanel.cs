@@ -439,7 +439,6 @@ public partial class CondensationPanel : Control
             select.AddThemeStyleboxOverride("hover", new StyleBoxEmpty());
             select.AddThemeStyleboxOverride("pressed", new StyleBoxEmpty());
             select.AddThemeStyleboxOverride("focus", new StyleBoxEmpty());
-            select.TooltipText = "拖动到另一张牌上，对调牌位并开始结算。";
             slot.AddChild(select); _seatButtons.Add(select);
         }
         return slot;
@@ -504,8 +503,8 @@ public partial class CondensationPanel : Control
             for (var i = 0; i < 2; i++) _deck.Add(RootCards(roots[_random.RandiRange(0, roots.Count - 1)])[0]);
         }
         var statCards = StatCards(target);
-        foreach (var stat in new[] { "physique", "intelligence", "agility", "soul" }) _deck.Add(statCards[stat][_random.RandiRange(0, statCards[stat].Count - 1)]);
-        for (var i = 0; i < 8; i++)
+        foreach (var stat in new[] { "physique", "intelligence", "soul" }) _deck.Add(statCards[stat][_random.RandiRange(0, statCards[stat].Count - 1)]);
+        for (var i = 0; i < 9; i++)
         {
             var stat = WeightedStat(target); _deck.Add(statCards[stat][_random.RandiRange(0, statCards[stat].Count - 1)]);
         }
@@ -781,7 +780,7 @@ public partial class CondensationPanel : Control
 
     private string WeightedStat(Character target)
     {
-        var stats = new[] { ("physique", target.physique), ("intelligence", target.intelligence), ("agility", target.agility), ("soul", target.soul) };
+        var stats = new[] { ("physique", target.physique), ("intelligence", target.intelligence), ("soul", target.soul) };
         var weights = stats.Select(item => Math.Max(1, Mathf.FloorToInt(item.Item2 / 2f))).ToArray(); var roll = _random.RandiRange(1, weights.Sum());
         for (var i = 0; i < weights.Length; i++) if ((roll -= weights[i]) <= 0) return stats[i].Item1; return stats[^1].Item1;
     }
@@ -802,8 +801,7 @@ public partial class CondensationPanel : Control
     {
         ["physique"] = [Card("持势", CondensationElement.None, "结算时保留至下一回合；体魄达到 8 时，下回合第一次关系效果翻倍。", new() { BodyHold = true }), Card("承浊", CondensationElement.None, "结算时令本轮下一次关系增加的杂质减少 1。", new())],
         ["intelligence"] = [Card("观源", CondensationElement.None, "结算时整理抽牌堆顶部的牌，为后续回合调整牌序。", new())],
-        ["agility"] = [Card("先引", CondensationElement.None, "本牌优先结算；将后续牌列的一张牌引入当前牌列第一位。", new() { FirstPriority = true }, CardTiming.Priority)],
-        ["soul"] = [Card("定观", CondensationElement.None, "结算时令本轮下一次云候造成的杂质增加改为 0。", new()), Card("叠映", CondensationElement.None, "若本轮此前已触发灵根关系，下一次灵根关系结算两次。", new() { SameEcho = true })]
+        ["soul"] = [Card("先引", CondensationElement.None, "本牌优先结算；将后续牌列的一张牌引入当前牌列第一位。", new() { FirstPriority = true }, CardTiming.Priority), Card("定观", CondensationElement.None, "结算时令本轮下一次云候造成的杂质增加改为 0。", new()), Card("叠映", CondensationElement.None, "若本轮此前已触发灵根关系，下一次灵根关系结算两次。", new() { SameEcho = true })]
     };
 
     private static List<CondensationCard> MethodCards() =>

@@ -87,7 +87,7 @@ public partial class RealmProgressionSmokeScene : Control
             data.cultivation_realm="云息六层";character.spirit_strands=144;
             Check(!character.start_breakthrough_retreat(),"六至七不能用普通闭关绕过凝核");
             data.cultivation_realm="云息十层";
-            Check(character.get_condensation_flat_bonus("physique") == 5 && character.get_condensation_flat_bonus("comprehension") == 0, "四项获定额而悟性不变");
+            Check(character.get_condensation_flat_bonus("physique") == 7.5f && character.get_condensation_flat_bonus("soul") == 7.5f && character.get_condensation_flat_bonus("intelligence") == 5 && character.get_condensation_flat_bonus("comprehension") == 0, "敏捷定额分入体魄与神魂，悟性不变");
             var attribute = character.calculate_realm_base_attribute("physique", 5);
             character.recalculate_attributes(); character.recalculate_attributes();
             Check(character.calculate_realm_base_attribute("physique", 5) == attribute, "反复重算不重复奖励");

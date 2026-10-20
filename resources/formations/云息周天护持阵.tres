@@ -16,9 +16,9 @@ source_peak_output = 2
 spirit_link_peak_output = 2
 board_peak_load = 2
 board_material_tags = Array[String](["五行[土]", "功用[固本]"])
-ink_material_tags = Array[String](["质地[液]", "功用[通脉]"])
+ink_material_tags = Array[String](["质地[液体]", "功用[通脉]"])
 eye_material_tags = Array[String](["功用[蕴灵]"])
-source_material_tags = Array[String](["质地[晶]", "功用[聚灵]"])
+source_material_tags = Array[String](["质地[致密]", "功用[聚灵]"])
 
 [sub_resource type="Resource" id="Input"]
 script = ExtResource("3_node")

@@ -6,7 +6,7 @@
 script = ExtResource("1")
 effect_id = "化解"
 name = "化解"
-description = "下次受到物理伤害时减少等同于层数的伤害值。受到任何伤害后消失。"
+description = "针对当前匹配的来袭行动形成抵消池，每层抵消1点物理伤害，按伤害段顺序消耗并覆盖该招全部物理伤害段。来袭结算组结束后移除剩余层数；在固定物防和百分比减伤前结算。"
 max_stacks = 99999
 duration_default = -1
 duration_type = 3

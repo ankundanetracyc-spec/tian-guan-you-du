@@ -391,8 +391,9 @@ public partial class HoverInfoManager : CanvasLayer
         _body.CustomMinimumSize = new Vector2(bodyWidth, 0);
         _scroll.CustomMinimumSize = new Vector2(0, 40);
         var maxHeight = Mathf.Max(80f, viewport.Y - ViewportMargin * 2);
+        var maxBodyHeight = Mathf.Min(280f, Mathf.Max(40f, maxHeight - 126f));
         var naturalBodyHeight = Mathf.Max(40f, _body.GetContentHeight() + 8f);
-        _scroll.CustomMinimumSize = new Vector2(0, Mathf.Min(naturalBodyHeight, Mathf.Max(40f, maxHeight - 126f)));
+        _scroll.CustomMinimumSize = new Vector2(0, Mathf.Min(naturalBodyHeight, maxBodyHeight));
         _card.CustomMinimumSize = new Vector2(width, 0);
         _card.Size = _card.GetCombinedMinimumSize();
         place_card(_activeAnchor);

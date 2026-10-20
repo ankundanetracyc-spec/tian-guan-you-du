@@ -10,9 +10,35 @@ public partial class NpcWorldManager
     public bool HasPendingSettlement => _deferSettlement || IsSettling;
     public double LastSettlementMaxSliceMilliseconds { get; private set; }
     private bool _deferSettlement, _settlementBatch, _settlementChanged;
+    private bool _eastWoodsRouteSignalBatch, _eastWoodsRouteSignalPending;
     private Dictionary<string, WorldNpcData[]>? _monthlyResidents;
     private readonly Dictionary<(Vector2I From, Vector2I To), Vector2I[]> _settlementPaths = new();
     private readonly Dictionary<(Vector2I Cell, float Speed), double> _settlementTravelHours = new();
+
+    public void begin_east_woods_route_signal_batch()
+    {
+        if (_eastWoodsRouteSignalBatch) return;
+        _eastWoodsRouteSignalBatch = true;
+        _eastWoodsRouteSignalPending = false;
+    }
+
+    public void end_east_woods_route_signal_batch()
+    {
+        if (!_eastWoodsRouteSignalBatch) return;
+        var changed = _eastWoodsRouteSignalPending;
+        _eastWoodsRouteSignalBatch = _eastWoodsRouteSignalPending = false;
+        if (changed) EmitSignal(SignalName.world_npcs_changed);
+    }
+
+    private void notify_east_woods_route_changed()
+    {
+        if (_eastWoodsRouteSignalBatch)
+        {
+            _eastWoodsRouteSignalPending = true;
+            return;
+        }
+        EmitSignal(SignalName.world_npcs_changed);
+    }
 
     private void begin_settlement_batch()
     {

@@ -3,9 +3,18 @@ using Godot;
 /// <summary>Bridges fixed-grid travel back to the established stable location IDs and interiors.</summary>
 public partial class MainScene
 {
+    private bool is_world_location_unlocked(string nodeId) =>
+        _world_node_data?.get_node(nodeId) is { } node && (!node.requires_unlock || node.unlocked);
+
+    private void hide_world_character_list() =>
+        (GetTree().GetFirstNodeInGroup("cell_character_list") as CellCharacterList)?.hide_world_npcs();
+
     private Vector2I _player_world_grid_cell = new(38, 166);
     private bool _tile_world_npc_signal_connected;
     private bool _tile_world_map_bridge_configured;
+    private bool _tileWorldTravelInProgress;
+    private bool _tileWorldRosterContextInitialized;
+    private string _lastTileWorldRosterContext = "";
 
     public void configure_tile_world_map_bridge()
     {
@@ -65,13 +74,13 @@ public partial class MainScene
 
     private void refresh_tile_world_population_counts()
     {
-        if (tile_world_map?.Visible != true)
+        if (tile_world_map?.Visible != true || _tileWorldTravelInProgress)
             return;
 
         tile_world_map.Call("set_population_counts", _npc_world?.get_world_location_population_counts() ?? new Godot.Collections.Dictionary());
         tile_world_map.Call("set_grid_population_counts", _npc_world?.get_ordinary_grid_population_counts() ?? new Godot.Collections.Dictionary());
 
-        refresh_tile_world_character_list();
+        refresh_tile_world_character_list(force: true);
     }
 
     private void on_tile_world_player_cell_changed(Vector2I cell)
@@ -82,18 +91,7 @@ public partial class MainScene
             return;
 
         var locationNodeId = tile_world_map.Call("get_location_node_id_at_cell", cell).AsString();
-        if (locationNodeId != _player_world_node_id)
-        {
-            if (!string.IsNullOrEmpty(_player_world_node_id))
-                node_map?.set_player_node_count(_player_world_node_id, 0);
-            _player_world_node_id = locationNodeId;
-
-            if (!string.IsNullOrEmpty(locationNodeId) && node_map?.map_data?.get_node(locationNodeId) is not null)
-            {
-                node_map.set_player_location(locationNodeId);
-                node_map.set_player_node_count(locationNodeId, player is null ? 0 : 1);
-            }
-        }
+        _player_world_node_id = locationNodeId;
 
         if (player?.entity_data is HumanData human && _npc_world?.get_active_yuxu_case_transport(human) is { } task &&
             task.temporary_party_member_active && task.journey_status == YuxuSectCaseTaskRecord.JourneyInTransit)
@@ -106,12 +104,15 @@ public partial class MainScene
             check_yuxu_case_transport_world_interception(cell);
         }
 
-        // 普通格也保留名单外框与明确空状态；每次逐格抵达都按该格刷新，不再留着上一个地点的人物。
-        refresh_tile_world_character_list(cell, locationNodeId);
-        synchronize_dynamic_dungeon_opportunities();
+        // 行进时暂存名单，抵达后一次刷新，避免每格重建人物行与肖像。
+        if (!_tileWorldTravelInProgress)
+            refresh_tile_world_character_list(cell, locationNodeId);
     }
 
-    private void refresh_tile_world_character_list(Vector2I? knownCell = null, string? knownLocationNodeId = null)
+    private void refresh_tile_world_character_list(
+        Vector2I? knownCell = null,
+        string? knownLocationNodeId = null,
+        bool force = false)
     {
         if (tile_world_map?.Visible != true)
             return;
@@ -121,14 +122,20 @@ public partial class MainScene
         var contextId = string.IsNullOrEmpty(locationNodeId)
             ? $"world-cell:{cell.X},{cell.Y}"
             : $"world:{locationNodeId}";
+        if (GetTree().GetFirstNodeInGroup("cell_character_list") is not CellCharacterList rosterPanel)
+            return;
+        if (!force && _tileWorldRosterContextInitialized && _lastTileWorldRosterContext == contextId)
+            return;
+        _tileWorldRosterContextInitialized = true;
+        _lastTileWorldRosterContext = contextId;
         var roster = _npc_world?.get_world_grid_roster(cell, locationNodeId) ?? new Godot.Collections.Array<WorldNpcData>();
-        (GetTree().GetFirstNodeInGroup("cell_character_list") as CellCharacterList)?.show_world_npcs(roster, contextId);
+        rosterPanel.show_world_npcs(roster, contextId);
     }
 
     private void on_tile_world_node_enter_requested(string nodeId)
     {
-        if (node_map?.map_data?.get_node(nodeId) is not { } node ||
-            nodeId != _player_world_node_id || !node_map.is_node_unlocked(nodeId) || !node.enterable)
+        if (_world_node_data?.get_node(nodeId) is not { } node ||
+            nodeId != _player_world_node_id || !is_world_location_unlocked(nodeId) || !node.enterable)
             return;
 
         on_node_enter_requested(nodeId);

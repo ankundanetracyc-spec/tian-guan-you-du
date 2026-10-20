@@ -146,7 +146,6 @@ public partial class NpcInteractionPanel : Control
             var button = new Button
             {
                 Text = option.Label,
-                TooltipText = option.Enabled || string.IsNullOrWhiteSpace(option.UnavailableReason) ? option.Label : option.UnavailableReason,
                 CustomMinimumSize = new Vector2(0, 38),
                 SizeFlagsHorizontal = SizeFlags.ExpandFill,
                 Disabled = !option.Enabled,

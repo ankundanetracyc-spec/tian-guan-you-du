@@ -1,43 +1,116 @@
-<mxfile host="app.diagrams.net" modified="2026-07-13T00:00:00.000Z" agent="Codex" version="24.7.17">
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" agent="Codex">
   <diagram id="gongfa-template" name="秘籍模板">
-    <mxGraphModel dx="1800" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1200" math="0" shadow="0">
+    <mxGraphModel dx="3641" dy="512" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2600" pageHeight="2100" math="0" shadow="0">
       <root>
-        <mxCell id="0" />
-        <mxCell id="1" parent="0" />
-        <mxCell id="title" value="秘籍词条模板&#xa;从上往下=卷章主链&#xa;左右延伸：修持 / 化法 / 习得 / 状态" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=18;" vertex="1" parent="1">
-          <mxGeometry x="650" y="20" width="420" height="90" as="geometry" />
+        <mxCell id="0" value="" />
+        <mxCell id="1" parent="0" value="" />
+        <mxCell id="title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=20;" value="秘籍名（模板）" vertex="1">
+          <mxGeometry height="74" width="560" x="740" y="20" as="geometry" />
         </mxCell>
-        <mxCell id="overview" value="秘籍总览&#xa;秘籍名：示例秘籍&#xa;五行：NONE&#xa;定位：&#xa;主修/辅修：true / true&#xa;需求境界：" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=16;" vertex="1" parent="1">
-          <mxGeometry x="670" y="140" width="380" height="150" as="geometry" />
+        <mxCell id="overview" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=15;" value="&lt;div style=&quot;text-align:left;&quot;&gt;秘籍总览&lt;br&gt;五行与灵根要求：填写&lt;br&gt;可主修／可辅修：填写&lt;br&gt;主修起止境界：填写&lt;br&gt;核心构筑：填写&lt;br&gt;实施状态：填写&lt;/div&gt;" vertex="1">
+          <mxGeometry height="190" width="560" x="740" y="140" as="geometry" />
         </mxCell>
-        <mxCell id="chapter1" value="&lt;div style=&quot;text-align:left;&quot;&gt;第一卷&lt;br&gt;卷章ID：chapter_1&lt;br&gt;顺序：1&lt;br&gt;&lt;br&gt;一句话定位：&lt;br&gt;&lt;br&gt;需求：&lt;/div&gt;" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="700" y="360" width="320" height="210" as="geometry" />
+        <mxCell id="c1" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第一卷：卷名&lt;br&gt;卷章ID：chapter_1&lt;br&gt;顺序：1&lt;br&gt;&lt;br&gt;定位：填写&lt;br&gt;研读值（累计）：填写&lt;br&gt;学成可修至：填写&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：填写&lt;br&gt;境界：填写&lt;br&gt;前置：无&lt;br&gt;研读属性：填写&lt;br&gt;&lt;br&gt;学会永久属性：填写&lt;br&gt;&lt;br&gt;习得：填写&lt;/div&gt;" vertex="1">
+          <mxGeometry height="470" width="340" x="850" y="370" as="geometry" />
         </mxCell>
-        <mxCell id="chapter2" value="&lt;div style=&quot;text-align:left;&quot;&gt;第二卷&lt;br&gt;卷章ID：chapter_2&lt;br&gt;顺序：2&lt;br&gt;&lt;br&gt;一句话定位：&lt;br&gt;&lt;br&gt;需求：&lt;/div&gt;" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="700" y="640" width="320" height="210" as="geometry" />
+        <mxCell id="c1_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：心法名&lt;br&gt;类型：心法&lt;br&gt;关键词：无&lt;br&gt;效果：填写首卷完整效果。&lt;br&gt;主修额外效果：填写首卷完整主修效果。&lt;br&gt;&lt;br&gt;习得：填写本卷技能，无新增时写无&lt;/div&gt;" vertex="1">
+          <mxGeometry height="520" width="740" x="-400" y="370" as="geometry" />
         </mxCell>
-        <mxCell id="naqi1" value="修持&#xa;固定加成：&#xa;习得：" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
-          <mxGeometry x="220" y="370" width="240" height="110" as="geometry" />
+        <mxCell id="c1_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;技能：具体技能名&lt;br&gt;类型：攻伐&lt;br&gt;关键词：无&lt;br&gt;耗费：体力 1&lt;br&gt;目标：指定1名敌方&lt;br&gt;伤害类型：物理&lt;br&gt;原技能效果：动态数值按顺序用A、B等字母表示，公式集中写在效果末尾。&lt;br&gt;&lt;br&gt;化法追加：填写本卷具体改动。&lt;br&gt;使用次数：填写&lt;br&gt;冷却：填写&lt;/div&gt;" vertex="1">
+          <mxGeometry height="380" width="280" x="1360" y="370" as="geometry" />
         </mxCell>
-        <mxCell id="huafa1" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;技能：具体技能名&lt;br&gt;类型：&lt;br&gt;关键词：&lt;br&gt;耗费：体力 数值、法力 数值&lt;br&gt;目标：&lt;br&gt;原技能效果：完整原效果与公式&lt;br&gt;化法追加：本卷具体改动&lt;br&gt;使用次数：不限或具体限制&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
-          <mxGeometry x="1260" y="370" width="240" height="260" as="geometry" />
+        <mxCell id="c2" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第二卷：卷名&lt;br&gt;卷章ID：chapter_2&lt;br&gt;顺序：2&lt;br&gt;&lt;br&gt;定位：填写&lt;br&gt;研读值（累计）：填写&lt;br&gt;学成可修至：填写&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：填写&lt;br&gt;境界：填写&lt;br&gt;前置：chapter_1&lt;br&gt;研读属性：填写&lt;br&gt;&lt;br&gt;学会永久属性：填写&lt;br&gt;&lt;br&gt;习得：填写&lt;/div&gt;" vertex="1">
+          <mxGeometry height="430" width="340" x="850" y="910" as="geometry" />
         </mxCell>
-        <mxCell id="learn1" value="习得&#xa;主动技能：&#xa;被动：注明由主修/辅修槽位自动提供的心法效果" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
-          <mxGeometry x="220" y="600" width="240" height="110" as="geometry" />
+        <mxCell id="c2_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：心法名（沿用第一卷，无新增效果）&lt;br&gt;&lt;br&gt;习得：填写本卷技能，无新增时写无&lt;/div&gt;" vertex="1">
+          <mxGeometry height="470" width="740" x="-400" y="910" as="geometry" />
         </mxCell>
-        <mxCell id="e0" value="起始卷" style="endArrow=block;html=1;" edge="1" parent="1" source="overview" target="chapter1">
+        <mxCell id="c2_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;技能：具体技能名&lt;br&gt;类型：攻伐&lt;br&gt;关键词：无&lt;br&gt;耗费：体力 1&lt;br&gt;目标：指定1名敌方&lt;br&gt;伤害类型：物理&lt;br&gt;原技能效果：动态数值按顺序用A、B等字母表示，公式集中写在效果末尾。&lt;br&gt;&lt;br&gt;化法追加：填写本卷具体改动。&lt;br&gt;使用次数：填写&lt;br&gt;冷却：填写&lt;/div&gt;" vertex="1">
+          <mxGeometry height="390" width="290" x="1360" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第三卷：卷名&lt;br&gt;卷章ID：chapter_3&lt;br&gt;顺序：3&lt;br&gt;&lt;br&gt;定位：填写&lt;br&gt;研读值（累计）：填写&lt;br&gt;学成可修至：填写&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：填写&lt;br&gt;境界：填写&lt;br&gt;前置：chapter_2&lt;br&gt;研读属性：填写&lt;br&gt;&lt;br&gt;学会永久属性：填写&lt;br&gt;&lt;br&gt;习得：填写&lt;/div&gt;" vertex="1">
+          <mxGeometry height="470" width="340" x="850" y="1450" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：心法名&lt;br&gt;类型：心法&lt;br&gt;关键词：无&lt;br&gt;效果：填写本卷完整效果，包含此前保留内容。&lt;br&gt;主修额外效果：填写本卷完整主修效果。&lt;br&gt;&lt;br&gt;习得：填写本卷技能，无新增时写无&lt;/div&gt;" vertex="1">
+          <mxGeometry height="260" width="740" x="-400" y="1450" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;技能：具体技能名&lt;br&gt;类型：攻伐&lt;br&gt;关键词：无&lt;br&gt;耗费：体力 1&lt;br&gt;目标：指定1名敌方&lt;br&gt;伤害类型：物理&lt;br&gt;原技能效果：动态数值按顺序用A、B等字母表示，公式集中写在效果末尾。&lt;br&gt;&lt;br&gt;化法追加：填写本卷具体改动。&lt;br&gt;使用次数：填写&lt;br&gt;冷却：填写&lt;/div&gt;" vertex="1">
+          <mxGeometry height="520" width="290" x="1360" y="1450" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第四卷：卷名&lt;br&gt;卷章ID：chapter_4&lt;br&gt;顺序：4&lt;br&gt;&lt;br&gt;定位：填写&lt;br&gt;研读值（累计）：填写&lt;br&gt;学成可修至：填写&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：填写&lt;br&gt;境界：填写&lt;br&gt;前置：chapter_3&lt;br&gt;研读属性：填写&lt;br&gt;&lt;br&gt;学会永久属性：填写&lt;br&gt;&lt;br&gt;习得：填写&lt;/div&gt;" vertex="1">
+          <mxGeometry height="430" width="340" x="850" y="1990" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：心法名（沿用第三卷，无新增效果）&lt;br&gt;&lt;br&gt;习得：填写本卷技能，无新增时写无&lt;/div&gt;" vertex="1">
+          <mxGeometry height="470" width="740" x="-400" y="1990" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;技能：具体技能名&lt;br&gt;类型：攻伐&lt;br&gt;关键词：无&lt;br&gt;耗费：体力 1&lt;br&gt;目标：指定1名敌方&lt;br&gt;伤害类型：物理&lt;br&gt;原技能效果：动态数值按顺序用A、B等字母表示，公式集中写在效果末尾。&lt;br&gt;&lt;br&gt;化法追加：填写本卷具体改动。&lt;br&gt;使用次数：填写&lt;br&gt;冷却：填写&lt;/div&gt;" vertex="1">
+          <mxGeometry height="520" width="290" x="1360" y="1990" as="geometry" />
+        </mxCell>
+        <mxCell id="summary" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" value="&lt;div style=&quot;text-align:left;&quot;&gt;模板心法示例：首卷完整、第三卷升级；第二卷沿用第一卷，第四卷沿用第三卷。&lt;br&gt;实际心法在哪卷变化，就在哪卷完整书写；其他卷引用最近一次完整版本。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="420" x="1660" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;填写本卷新增值&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="260" x="360" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;填写本卷新增值&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="270" x="390" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;填写本卷新增值&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="270" x="400" y="1450" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;填写本卷新增值&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="270" x="370" y="1990" as="geometry" />
+        </mxCell>
+        <mxCell id="status_rules" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;&lt;b&gt;固定格式&lt;/b&gt;&lt;br&gt;首卷及心法变化卷：完整写名称、类型、关键词、效果和主修额外效果。&lt;br&gt;未变化卷：只写“心法被动：心法名（沿用第X卷，无新增效果）”，不重复心法字段。&lt;br&gt;X引用最近一次完整版本，不能串联引用其他沿用卷。&lt;br&gt;&lt;br&gt;&lt;b&gt;判断变化&lt;/b&gt;&lt;br&gt;心法效果、主修额外效果或关键词发生变化时，写完整版本。&lt;br&gt;仅修持、化法或习得变化，不算心法变化。&lt;br&gt;&lt;br&gt;&lt;b&gt;习得与化法&lt;/b&gt;&lt;br&gt;心法之后空一行再写习得与技能正文；主动技能完整填写自身字段。&lt;br&gt;化法只写在化法框；完整原技能效果在前，化法追加另起一行。&lt;br&gt;&lt;br&gt;&lt;b&gt;运行时&lt;/b&gt;&lt;br&gt;图稿与文字稿可以引用沿用版本。运行时配置、心法详情仍保存和展示完整的已学版本。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="760" width="430" x="1660" y="864" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" edge="1" parent="1" source="overview" style="endArrow=block;html=1;" target="c1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e1" value="下一卷" style="endArrow=block;html=1;" edge="1" parent="1" source="chapter1" target="chapter2">
+        <mxCell id="e1" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c2">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e2" value="本卷修持" style="endArrow=block;html=1;" edge="1" parent="1" source="chapter1" target="naqi1">
+        <mxCell id="e2" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c3">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e3" value="本卷化法" style="endArrow=block;html=1;" edge="1" parent="1" source="chapter1" target="huafa1">
+        <mxCell id="e3" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c4">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="e5" value="习得" style="endArrow=block;html=1;" edge="1" parent="1" source="chapter2" target="learn1">
+        <mxCell id="e1_a" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_b" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_c" edge="1" parent="1" source="c1" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c1_cards" value="本卷心法与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_a" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_b" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_c" edge="1" parent="1" source="c2" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c2_cards" value="心法与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_a" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_b" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_c" edge="1" parent="1" source="c3" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c3_cards" value="心法与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_a" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_b" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_c" edge="1" parent="1" source="c4" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c4_cards" value="心法与习得">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>

@@ -4,7 +4,7 @@ public partial class AppearancePreview : Control
 {
     private Node2D? _portraitToken; private BattlePaperDoll? _battleToken; private PortraitRenderer? _renderer; private bool _battleForm, _hasPortrait;
     private static readonly PackedScene TokenScene = GD.Load<PackedScene>("res://tscn/entity/character/CharacterToken.tscn");
-    public override void _Ready() { MouseFilter=MouseFilterEnum.Stop; TooltipText="点击切换局外立绘 / 局内形象"; GuiInput+=OnGuiInput; Resized+=LayoutPreview; EnsureChildren(); }
+    public override void _Ready() { MouseFilter=MouseFilterEnum.Stop; GuiInput+=OnGuiInput; Resized+=LayoutPreview; EnsureChildren(); }
     public void show_character(GodotObject character)
     {
         if(!GodotObject.IsInstanceValid(character) || !GodotObject.IsInstanceValid(character.Get("entity_data").AsGodotObject())) { Hide(); return; }

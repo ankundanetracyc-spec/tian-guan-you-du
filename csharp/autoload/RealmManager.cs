@@ -15,7 +15,37 @@ public partial class RealmManager : Node
     public RealmConfig? get_realm_config(string realm_name)=>realm_configs.TryGetValue(realm_name,out var value)?value.AsGodotObject() as RealmConfig:null;
     public string get_next_realm_name(string current){if(current=="云息十层")return "";var index=realm_order.IndexOf(current);return index<0||index>=realm_order.Count-1?"":realm_order[index+1];}
     public string get_previous_realm_name(string current){var index=realm_order.IndexOf(current);return index<=0?"":realm_order[index-1];}
-    public bool can_breakthrough(GodotObject? entity){if(!GodotObject.IsInstanceValid(entity))return false;var next=get_next_realm_name(entity!.Get("cultivation_realm").AsString());var config=get_realm_config(next);if(config is null)return false;if(config.requires_main_gongfa&&entity.Get("main_gongfa").VariantType==Variant.Type.Nil)return false;var requirements=get_effective_required_attributes(entity,config);foreach(var key in requirements.Keys){var need=attribute(requirements,key.AsString());if(need<=0)continue;var current=entity.Get(key.AsString());if(current.VariantType==Variant.Type.Nil||current.AsDouble()<need)return false;}return true;}
+    public bool can_breakthrough(GodotObject? entity)
+    {
+        if (entity is not Character character || !GodotObject.IsInstanceValid(character)) return false;
+        var next = get_next_realm_name(character.cultivation_realm);
+        var config = get_realm_config(next);
+        if (config is null || !can_be_main_gongfa(character.main_gongfa, next)) return false;
+        var requirements = get_effective_required_attributes(character, config);
+        foreach (var key in requirements.Keys)
+        {
+            var need = attribute(requirements, key.AsString());
+            if (need <= 0) continue;
+            var current = character.Get(key.AsString());
+            if (current.VariantType == Variant.Type.Nil || current.AsDouble() < need) return false;
+        }
+        return true;
+    }
+    public string get_main_gongfa_breakthrough_hint(GodotObject? entity, string targetRealm)
+    {
+        if (entity is not Character character || !GodotObject.IsInstanceValid(character))
+            return $"需装配可作主修、且能支撑至{targetRealm}的功法。";
+        var book = character.main_gongfa;
+        if (!GodotObject.IsInstanceValid(book))
+            return $"尚未装配主修功法；需选择能支撑至{targetRealm}的功法。";
+        if (!book!.can_be_main)
+            return $"当前主修《{book.gongfa_name}》不能作为主修功法。";
+        if (!string.IsNullOrWhiteSpace(book.main_realm_start) && !is_realm_after_or_equal(targetRealm, book.main_realm_start))
+            return $"《{book.gongfa_name}》从{book.main_realm_start}起方可主修，不能支撑至{targetRealm}。";
+        if (!string.IsNullOrWhiteSpace(book.main_realm_end) && !is_realm_before_or_equal(targetRealm, book.main_realm_end))
+            return $"《{book.gongfa_name}》只能主修至{book.main_realm_end}，需更换可支撑至{targetRealm}的功法。";
+        return can_be_main_gongfa(book, targetRealm) ? "" : $"当前主修《{book.gongfa_name}》不能支撑至{targetRealm}，需更换功法。";
+    }
     // 灵力字段保留累计记账；凝核补正只作用于七层之后各次新增量，不重复乘此前144缕。
     public Dictionary get_effective_required_attributes(GodotObject? entity,RealmConfig config)
     {

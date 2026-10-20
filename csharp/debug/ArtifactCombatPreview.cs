@@ -20,8 +20,8 @@ public partial class ArtifactCombatPreview : Node2D
         {
             entity_name = "试器修士", unique_id = "artifact-preview-player", cultivation_realm = "云息三层",
             max_health = 200, current_health = 200, max_mana = 3, current_mana = 3,
-            max_spirit_perception = 5, artifact_slot_count = 4, physique = 10, agility = 10,
-            precision = 100, crit_resist = 20, soul = 10, initiative_speed = 150
+            max_spirit_perception = 5, artifact_slot_count = 4, physique = 20, soul = 10,
+            precision = 100, crit_resist = 20, initiative_speed = 150
         } };
         AddChild(_loadoutOwner); _loadoutOwner.Hide();
         foreach (var (guard, inner, id) in new[] { (false, false, "preview-ming-outer"), (true, false, "preview-shou-outer"),
@@ -52,7 +52,7 @@ public partial class ArtifactCombatPreview : Node2D
         {
             uid = "artifact-preview-enemy", entity_name = "试器陪练", faction = 2, cultivation_realm = "云息三层",
             max_health = 500, current_health = 500, max_stamina = 6, max_mana = 3, max_spirit_perception = 2,
-            physique = 8, agility = 8, precision = 100, dodge = 0, crit_resist = 20, physical_defense = 5,
+            physique = 12, soul = 4, precision = 100, dodge = 0, crit_resist = 20, physical_defense = 5,
             initiative_speed = 100, combat_skill_slots_configured = true,
             combat_skill_slot_paths = ["artifact:preview-enemy-outer"],
             equipped_artifacts = [ArtifactCombatSamples.Create(false, false, "preview-enemy-outer")]

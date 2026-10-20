@@ -95,9 +95,26 @@ public partial class GongfaResource : Resource
 
     public string get_heart_method_description(int chapterOrder, bool isMain)
     {
-        var description = get_sorted_chapters()
-            .Where(chapter => chapter.order <= chapterOrder && !string.IsNullOrWhiteSpace(chapter.heart_method_description))
-            .LastOrDefault()?.heart_method_description ?? get_heart_method_skill(isMain)?.description ?? "";
+        var sorted = get_sorted_chapters();
+        var chapter = sorted
+            .Where(item => item.order <= chapterOrder && !string.IsNullOrWhiteSpace(item.heart_method_description))
+            .LastOrDefault();
+        var description = "";
+        var visited = new HashSet<int>();
+        while (chapter is not null && visited.Add(chapter.order))
+        {
+            var candidate = chapter.heart_method_description.Trim();
+            var inheritedOrder = get_inherited_heart_method_order(candidate);
+            if (inheritedOrder <= 0)
+            {
+                description = candidate;
+                break;
+            }
+
+            // 秘籍图稿用“沿用第X卷”避免重复正文；运行时详情必须展开到被引用的完整版本。
+            chapter = sorted.LastOrDefault(item => item.order == inheritedOrder && !string.IsNullOrWhiteSpace(item.heart_method_description));
+        }
+        if (string.IsNullOrWhiteSpace(description)) description = get_heart_method_skill(isMain)?.description ?? "";
         const string marker = "主修额外效果：";
         description = description.Replace("主修额外追加：", marker);
         var mainIndex = description.IndexOf(marker, StringComparison.Ordinal);
@@ -105,6 +122,51 @@ public partial class GongfaResource : Resource
             description = isMain ? description[..mainIndex].Trim() + "\n" + description[mainIndex..].Trim()
                 : description[..mainIndex].Trim();
         return description.Trim();
+    }
+
+    private static int get_inherited_heart_method_order(string description)
+    {
+        const string marker = "沿用第";
+        var markerIndex = description.IndexOf(marker, StringComparison.Ordinal);
+        if (markerIndex < 0) return 0;
+        var orderStart = markerIndex + marker.Length;
+        var orderEnd = description.IndexOf('卷', orderStart);
+        if (orderEnd <= orderStart) return 0;
+        var token = description[orderStart..orderEnd].Trim();
+        if (int.TryParse(token, out var arabicOrder)) return arabicOrder;
+
+        var total = 0;
+        var current = 0;
+        foreach (var character in token)
+        {
+            var digit = character switch
+            {
+                '零' or '〇' => 0,
+                '一' => 1,
+                '二' or '两' => 2,
+                '三' => 3,
+                '四' => 4,
+                '五' => 5,
+                '六' => 6,
+                '七' => 7,
+                '八' => 8,
+                '九' => 9,
+                _ => -1
+            };
+            if (digit >= 0)
+            {
+                current = digit;
+                continue;
+            }
+            if (character == '十')
+            {
+                total += (current == 0 ? 1 : current) * 10;
+                current = 0;
+                continue;
+            }
+            return 0;
+        }
+        return total + current;
     }
 
     public bool is_wuxing_compatible(int spirit_root_type)

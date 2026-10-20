@@ -13,9 +13,9 @@ script = ExtResource("2")
 attribute = "body_proficiency"
 multiplier = 0.2
 
-[sub_resource type="Resource" id="Agility"]
+[sub_resource type="Resource" id="ExtraPhysique"]
 script = ExtResource("2")
-attribute = "agility"
+attribute = "physique"
 multiplier = 0.25
 
 [resource]
@@ -33,8 +33,8 @@ range_min = 1
 range_max = 1
 base_damage = 8.0
 damage_type = "physical"
-damage_bonuses = Array[ExtResource("2")]([SubResource("Physique"), SubResource("BodyProficiency"), SubResource("Agility")])
-damage_formula = "round(8 + 体魄×0.40 + 体道造诣×0.20 + 敏捷×0.25)"
+damage_bonuses = Array[ExtResource("2")]([SubResource("Physique"), SubResource("BodyProficiency"), SubResource("ExtraPhysique")])
+damage_formula = "round(8 + 体魄×0.65 + 体道造诣×0.2)"
 keywords = Array[String]([])
 source_gongfa_name = "乘物游骸真经"
 gongfa_rewrite_effect_ids = Array[String](["chengwu_c2_fajin"])

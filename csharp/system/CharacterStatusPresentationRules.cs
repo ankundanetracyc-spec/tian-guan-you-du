@@ -8,39 +8,30 @@ public static class CharacterStatusPresentationRules
     public static bool has_active_bottleneck(Dictionary? summary)
     {
         if (summary is null || !summary.GetValueOrDefault("applicable", false).AsBool()) return false;
-        var level = summary.GetValueOrDefault("level", 0).AsInt32();
         var penalty = summary.GetValueOrDefault("penalty", 0d).AsDouble();
-        return level > 0 || penalty > 1e-9d;
+        return penalty > 1e-9d;
     }
 
     public static string format_bottleneck_hud_line(Dictionary? summary)
     {
         if (!has_active_bottleneck(summary)) return "";
         var state = summary!;
-        var level = state.GetValueOrDefault("level", 0).AsInt32();
-        var stages = Math.Max(1, state.GetValueOrDefault("stages", CultivationBottleneckRules.Stages).AsInt32());
         var efficiency = format_percent(state.GetValueOrDefault("gain_multiplier", 1d).AsDouble());
-        return level > 0
-            ? $"修行状态　瓶颈 {level}/{stages} 阶 · 吐纳效率 {efficiency}%"
-            : $"修行状态　瓶颈缓解中 · 吐纳效率 {efficiency}%";
+        var penalty = format_percent(state.GetValueOrDefault("current_penalty", state.GetValueOrDefault("penalty", 0d)).AsDouble());
+        return $"修行状态　瓶颈减速 {penalty}% · 吐纳效率 {efficiency}%";
     }
 
     public static string format_bottleneck_details(Dictionary? summary)
     {
         if (!has_active_bottleneck(summary)) return "";
         var state = summary!;
-        var level = state.GetValueOrDefault("level", 0).AsInt32();
-        var stages = Math.Max(1, state.GetValueOrDefault("stages", CultivationBottleneckRules.Stages).AsInt32());
-        var penalty = format_percent(state.GetValueOrDefault("penalty", 0d).AsDouble());
+        var penalty = format_percent(state.GetValueOrDefault("current_penalty", state.GetValueOrDefault("penalty", 0d)).AsDouble());
         var efficiency = format_percent(state.GetValueOrDefault("gain_multiplier", 1d).AsDouble());
-        var heading = level > 0 ? $"闭关瓶颈 · 第 {level}/{stages} 阶" : "闭关瓶颈 · 缓解中";
         var lines = new System.Collections.Generic.List<string>
         {
-            heading,
-            $"当前吐纳效率 {efficiency}%（减速 {penalty}%）；仅影响云息吐纳，不影响归元九息。"
+            $"云息吐纳瓶颈：效率损失 {penalty}%，当前吐纳效率 {efficiency}%。",
+            "灵感炼化按当前境界和灵感品级降低瓶颈百分比；瓶颈随继续吐纳重新累积。归元九息不受影响。"
         };
-        if (level >= stages)
-            lines.Add("已至当前最高阶。");
         return string.Join("\n", lines);
     }
 

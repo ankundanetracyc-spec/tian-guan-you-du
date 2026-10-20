@@ -102,7 +102,7 @@ public partial class StoragePanel
             _grid_scroll!.ScrollVertical = 0;
             refresh_slots();
         };
-        var sort = new OptionButton { MouseDefaultCursorShape = CursorShape.PointingHand, TooltipText = "选择排序方式；按位置排列时可拖动物品调序" };
+        var sort = new OptionButton { MouseDefaultCursorShape = CursorShape.PointingHand };
         foreach (var option in new[] { "名称", "数量", "类别", "位置" }) sort.AddItem(option);
         style_button(sort, 20, true);
         var popup = sort.GetPopup();

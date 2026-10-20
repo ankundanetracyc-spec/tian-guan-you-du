@@ -81,6 +81,7 @@ var _world_map_font: Font
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_PASS
+	visibility_changed.connect(func() -> void: panning = false)
 	texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
 	map_root = $MapRoot
 	state_layers = $MapRoot/BaiChuanMapLayers
@@ -179,7 +180,6 @@ func _build_overlay() -> void:
 	enter_button = _button("进入", 15)
 	enter_button.pressed.connect(_on_enter_button_pressed)
 	enter_button.visible = false
-	enter_button.tooltip_text = "进入当前节点的地点内部"
 	view_button = _button("查看", 15)
 	view_button.pressed.connect(_on_view_button_pressed)
 	view_button.visible = false
@@ -884,7 +884,12 @@ func _on_location_unhovered(id: String) -> void:
 	if hover_label.text == "地点：" + str(location_nodes.get(id).node_data.node_name if location_nodes.get(id) != null else ""):
 		hover_label.visible = false
 
-func _input(event: InputEvent) -> void:
+func _gui_input(event: InputEvent) -> void:
+	# Hidden compatibility maps must not intercept another page's wheel.
+	# GUI dispatch also gives overlaid lists and panels priority over this map.
+	if not is_visible_in_tree():
+		panning = false
+		return
 	if event is InputEventMouseButton:
 		var mouse := event as InputEventMouseButton
 		if mouse.button_index == MOUSE_BUTTON_WHEEL_UP and mouse.pressed:
@@ -1141,7 +1146,7 @@ func refresh_map() -> void:
 	_rebuild_map()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is not InputEventMouseButton:
+	if not is_visible_in_tree() or event is not InputEventMouseButton:
 		return
 	var mouse := event as InputEventMouseButton
 	if mouse.button_index != MOUSE_BUTTON_LEFT or not mouse.pressed:

@@ -1,0 +1,15 @@
+<mxfile host="app.diagrams.net" agent="Codex" version="24.7.17">
+  <diagram id="node-cuixue" name="催血">
+    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="720" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/><mxCell id="1" parent="0"/>
+        <mxCell id="title" value="人物技能节点 · 催血根脉" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5efdf;strokeColor=#9a8967;fontSize=22;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="540" y="28" width="420" height="72" as="geometry"/></mxCell>
+        <mxCell id="source" value="本源枢纽&#xa;催血根脉&#xa;体魄 ≥ 8&#xa;体道造诣 ≥ 6" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8e0cd;strokeColor=#8a7553;fontSize=17;" vertex="1" parent="1"><mxGeometry x="72" y="228" width="260" height="180" as="geometry"/></mxCell>
+        <mxCell id="main" value="技能名：催血&#xa;资源路径：res://resources/activeskills/催血.tres&#xa;类型：守御&#xa;关键词：生命&#xa;耗费：体力 1、法力 0&#xa;目标：自身&#xa;效果：获得气血 2 层&#xa;来源：人物技能节点网·催血根脉&#xa;描述：聚息催血，稳固根本。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e7eee4;strokeColor=#769078;fontSize=18;align=left;spacingLeft=18;spacingTop=16;" vertex="1" parent="1"><mxGeometry x="430" y="165" width="640" height="300" as="geometry"/></mxCell>
+        <mxCell id="note" value="边界说明&#xa;本技能节点的基础效果为气血 2 层。各秘籍的同名化法仍按各自资源结算。&#xa;此项是人物个人解锁技能，不加入公共基础技能池，也不自动装配。" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#c4a95d;fontSize=16;align=left;verticalAlign=top;spacingLeft=14;spacingTop=12;" vertex="1" parent="1"><mxGeometry x="1120" y="198" width="310" height="228" as="geometry"/></mxCell>
+        <mxCell id="edge1" value="参悟后收入技能库" style="endArrow=block;html=1;strokeColor=#8a7553;fontSize=15;" edge="1" parent="1" source="source" target="main"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="edge2" value="机制" style="endArrow=block;html=1;strokeColor=#8a7553;fontSize=15;" edge="1" parent="1" source="main" target="note"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -263,7 +263,6 @@ theme_override_styles/normal = SubResource("StyleNormal")
 theme_override_styles/hover = SubResource("StyleHover")
 theme_override_styles/pressed = SubResource("StylePressed")
 text = "水墨立绘九部位测试"
-tooltip_text = "查看本轮男女立绘，逐件检查拼接；预览不会写入正式角色或存档。"
 alignment = 1
 visible = false
 
@@ -288,7 +287,6 @@ theme_override_styles/normal = SubResource("StyleNormal")
 theme_override_styles/hover = SubResource("StyleHover")
 theme_override_styles/pressed = SubResource("StylePressed")
 text = "水墨特效实验室"
-tooltip_text = "运行时查看墨晕扩散、笔锋、爆散与干湿边缘效果。"
 alignment = 1
 visible = false
 
@@ -323,7 +321,6 @@ theme_override_styles/normal = SubResource("StyleNormal")
 theme_override_styles/hover = SubResource("StyleHover")
 theme_override_styles/pressed = SubResource("StylePressed")
 text = "凝核测试"
-tooltip_text = "八回合凝核试演：调整36张牌组、携带两件道具并比较人物属性；不影响正式存档。"
 alignment = 1
 visible = false
 
@@ -341,7 +338,6 @@ theme_override_styles/normal = SubResource("StyleNormal")
 theme_override_styles/hover = SubResource("StyleHover")
 theme_override_styles/pressed = SubResource("StylePressed")
 text = "归元九息体验"
-tooltip_text = "十层周行、牵引与平衡；可比较普通精力中断和充足精力成息，不影响正式存档。"
 alignment = 1
 visible = false
 
@@ -359,6 +355,5 @@ theme_override_styles/normal = SubResource("StyleNormal")
 theme_override_styles/hover = SubResource("StyleHover")
 theme_override_styles/pressed = SubResource("StylePressed")
 text = "人物交互测试"
-tooltip_text = "无需进入存档，直接试演玩家主动搭话与 NPC 来访；不影响正式存档。"
 alignment = 1
 visible = false

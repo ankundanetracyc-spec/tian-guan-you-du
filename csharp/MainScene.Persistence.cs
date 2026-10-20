@@ -18,6 +18,11 @@ public partial class MainScene
     private Godot.Collections.Dictionary _dynamic_dungeon_state = [];
     private bool _save_is_dirty;
     private double _save_dirty_seconds;
+    private const int AutosaveIntervalHours = 3 * 30 * 24;
+    private int _lastProgressSaveHour;
+    private int _autosaveHour;
+    private ulong _saveRevision;
+    private ulong _autosaveRevision;
     private bool _returning_from_battle;
     private bool _skipExitSave;
 
@@ -40,6 +45,9 @@ public partial class MainScene
         _loaded_game_save = GetNodeOrNull<BattleTransitionManager>("/root/BattleTransitionManager")?.consume_world_progress_snapshot();
         _returning_from_battle = _loaded_game_save is not null;
         _loaded_game_save ??= _save_manager?.consume_pending_load();
+        _lastProgressSaveHour = _loaded_game_save is { } saved
+            ? (saved.year - 1) * 8640 + (saved.month - 1) * 720 + (saved.day - 1) * 24 + saved.hour
+            : GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
         _letterMailbox = _loaded_game_save?.letter_mailbox?.Duplicate(true) as LetterMailbox ?? new LetterMailbox();
         _yuxu_sect_treasury_ledger = new YuxuSectTreasuryLedger();
         if (_loaded_game_save is null)
@@ -142,7 +150,7 @@ public partial class MainScene
 
         if (departed)
         {
-            if (_npc_world is not null && node_map?.map_data is { } populationMap && CloudStateNpcCatalog.ensure_population(_npc_world, populationMap))
+            if (_npc_world is not null && _world_node_data is { } populationMap && CloudStateNpcCatalog.ensure_population(_npc_world, populationMap))
                 mark_save_dirty();
             // A saved random roster is authoritative; never regenerate it on load.
             _cloud_state_initialized = true;
@@ -150,7 +158,7 @@ public partial class MainScene
             {
                 estate?.Hide();
                 tile_world_map?.Hide();
-                node_map?.Hide();
+
                 open_dynamic_dungeon(activeDynamic.GetValueOrDefault("instance_id", "").AsString());
                 hud?.Show();
                 mark_save_dirty();
@@ -160,7 +168,7 @@ public partial class MainScene
             {
                 estate?.Hide();
                 tile_world_map?.Hide();
-                node_map?.Hide();
+
                 open_east_woods_dungeon();
                 hud?.Show();
                 mark_save_dirty();
@@ -205,16 +213,34 @@ public partial class MainScene
 
     private void process_save_autosave(double delta)
     {
+        if (_save_manager?.poll_background_save() is { } saved)
+        {
+            if (saved) _lastProgressSaveHour = _autosaveHour;
+            if (saved && _saveRevision == _autosaveRevision) _save_is_dirty = false;
+            _save_dirty_seconds = 0;
+        }
+        if (_save_manager?.IsBackgroundSaveBusy == true) return;
         if (_npc_world?.HasPendingSettlement == true || action_transition?.IsPlaying == true || GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.IsSmoothAdvanceBusy == true) return;
         if (!_save_is_dirty || _save_manager?.has_active_slot != true) return;
+        var now = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+        if (now - _lastProgressSaveHour < AutosaveIntervalHours) return;
         _save_dirty_seconds += delta;
         if (_save_dirty_seconds >= 1.5)
-            save_progress_now(false);
+        {
+            var save = capture_progress_snapshot(false);
+            if (save is not null && _save_manager.begin_background_save(save))
+            {
+                _autosaveRevision = _saveRevision;
+                _autosaveHour = now;
+            }
+            else _save_dirty_seconds = 0;
+        }
     }
 
     private void mark_save_dirty()
     {
         if (_save_manager?.has_active_slot != true) return;
+        _saveRevision++;
         if (!_save_is_dirty) _save_dirty_seconds = 0;
         _save_is_dirty = true;
     }
@@ -234,8 +260,9 @@ public partial class MainScene
         if (_save_manager?.has_active_slot != true || player?.entity_data is not HumanData playerData)
             return false;
 
-        var save = capture_battle_world_snapshot();
+        var save = capture_progress_snapshot(false);
         if (save is null || !_save_manager.save_snapshot(save)) return false;
+        _lastProgressSaveHour = (save.year - 1) * 8640 + (save.month - 1) * 720 + (save.day - 1) * 24 + save.hour;
         _save_is_dirty = false;
         _save_dirty_seconds = 0;
         if (showFeedback) show_message("存档完成", "当前修行进度已保存。");
@@ -243,21 +270,25 @@ public partial class MainScene
     }
 
     /// <summary>In-memory battle handoff, using exactly the same state as a formal progress save.</summary>
-    public PersistentGameSave? capture_battle_world_snapshot()
+    public PersistentGameSave? capture_battle_world_snapshot() => capture_progress_snapshot(true);
+
+    // The immediate save/capture consumer reads this view before returning to gameplay.
+    // Battle handoffs retain their own deep copy because they outlive the current scene.
+    private PersistentGameSave? capture_progress_snapshot(bool duplicateResources)
     {
         if (player?.entity_data is not HumanData playerData) return null;
         store_active_dynamic_dungeon_route();
 
         var save = new PersistentGameSave
         {
-            player_data = playerData.Duplicate(true) as HumanData ?? playerData,
-            letter_mailbox = _letterMailbox.Duplicate(true) as LetterMailbox ?? _letterMailbox,
-            yuxu_sect_treasury = _yuxu_sect_treasury_ledger.Duplicate(true) as YuxuSectTreasuryLedger ?? new YuxuSectTreasuryLedger(),
+            player_data = duplicateResources ? playerData.Duplicate(true) as HumanData ?? playerData : playerData,
+            letter_mailbox = duplicateResources ? _letterMailbox.Duplicate(true) as LetterMailbox ?? _letterMailbox : _letterMailbox,
+            yuxu_sect_treasury = duplicateResources ? _yuxu_sect_treasury_ledger.Duplicate(true) as YuxuSectTreasuryLedger ?? new YuxuSectTreasuryLedger() : _yuxu_sect_treasury_ledger,
             current_node_id = _player_world_node_id,
             world_cell = _player_world_grid_cell,
             scene_progress = capture_scene_progress(),
-            dynamic_dungeon_state = _dynamic_dungeon_state.Duplicate(true),
-            banquet_events = duplicate_banquet_events(_banquetEvents),
+            dynamic_dungeon_state = duplicateResources ? _dynamic_dungeon_state.Duplicate(true) : _dynamic_dungeon_state,
+            banquet_events = duplicateResources ? duplicate_banquet_events(_banquetEvents) : _banquetEvents,
         };
 
         if (GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is { } time)
@@ -292,8 +323,8 @@ public partial class MainScene
 
         if (_npc_world is not null)
         {
-            save.world_npcs = _npc_world.get_persistent_npcs();
-            save.east_woods_npc_incidents = _npc_world.get_persistent_east_woods_incidents();
+            save.world_npcs = duplicateResources ? _npc_world.get_persistent_npcs() : _npc_world.npcs;
+            save.east_woods_npc_incidents = duplicateResources ? _npc_world.get_persistent_east_woods_incidents() : _npc_world.PersistentIncidentView;
             save.npc_simulation_enabled = _npc_world.simulation_enabled;
             save.npc_last_processed_month = _npc_world.get_last_processed_month();
             save.npc_population_version = _npc_world.population_version;

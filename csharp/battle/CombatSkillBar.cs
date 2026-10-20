@@ -21,6 +21,7 @@ public partial class CombatSkillBar : Control
     // 槽位只保留一圈低饱和度的纯色细边，不再使用带山水纹样的装饰框。
     // 人物档案的技能装配页也复用这份局内技能框，避免两处视觉分叉。
     internal const string SlotFramePath = "res://textures/ui/combat/combat_skill_slot_frame_generated_v1.png";
+    private const string SkillSlotLockTexturePath = "res://textures/ui/skill_slot_lock_v1.svg";
 
     [Signal] public delegate void skill_selectedEventHandler(ActiveSkillData skill, int slot_index);
     [Signal] public delegate void skill_target_selectedEventHandler(ActiveSkillData skill, Vector2 viewport_position, int slot_index);
@@ -43,6 +44,7 @@ public partial class CombatSkillBar : Control
     private string lastSkillHoverText = "";
     private readonly System.Collections.Generic.Dictionary<ActiveSkillData, (int State, string Body, string Metadata)> hoverCache = [];
     private static readonly string[] HoverAttributes = CardRules.Attributes.Values.Concat(new[] { "qi_blood", "blood_furnace_value", "punch_frame", "current_health" }).Distinct().ToArray();
+    private static readonly string[] HoverDamageMultiplierMethods = ["get_blood_furnace_physical_damage_multiplier", "get_gongfa_physical_damage_multiplier", "get_species_physical_damage_multiplier"];
     private double uiRefreshRemaining;
     private double hoverRefreshRemaining;
     private Vector2 lastViewportSize = Vector2.Zero;
@@ -92,7 +94,7 @@ public partial class CombatSkillBar : Control
         resourceCluster.Hide();
         var spacer = new Control { SizeFlagsHorizontal = SizeFlags.ExpandFill, MouseFilter = MouseFilterEnum.Ignore };
         header.AddChild(spacer);
-        queueLabel = new Label { Text = "技能队列 0/3", HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Center, CustomMinimumSize = new Vector2(120, 0), MouseFilter = MouseFilterEnum.Ignore };
+        queueLabel = new Label { Text = "行动队列 0/3", HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Center, CustomMinimumSize = new Vector2(120, 0), MouseFilter = MouseFilterEnum.Ignore };
         queueLabel.AddThemeFontSizeOverride("font_size", 16); queueLabel.AddThemeColorOverride("font_color", new Color(.73f, .76f, .68f)); header.AddChild(queueLabel);
         header.Hide();
         slots = new HBoxContainer { Name = "Slots", Alignment = BoxContainer.AlignmentMode.Center, CustomMinimumSize = new Vector2(0, SlotHeight), SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ShrinkCenter, MouseFilter = MouseFilterEnum.Ignore, ClipContents = true };
@@ -268,8 +270,8 @@ public partial class CombatSkillBar : Control
                     usesLabel.Text = manager.get_skill_round_cooldown_text(currentUnit, skills[i]).Replace("冷却中，", "");
                 usesLabel.Visible = !string.IsNullOrWhiteSpace(usesLabel.Text);
             }
-            buttons[i].Disabled = !mayPlan || queueCount >= queueCapacity || !ready;
-            HoverInfoManager.SetTooltip(buttons[i], "");
+            var automaticSlot=i==9&&currentUnit is Character character&&character.has_xuanshu_heart_method_equipped();
+            buttons[i].Disabled = skills[i].combat_empty_slot || automaticSlot || !mayPlan || queueCount >= queueCapacity || !ready;
             var cooldownVisual = buttons[i].GetNodeOrNull<SkillCooldownVisual>("CooldownVisual");
             if (cooldownVisual is not null)
             {
@@ -298,7 +300,7 @@ public partial class CombatSkillBar : Control
         {
             chip.MouseFilter = MouseFilterEnum.Pass;
             HoverInfoManager.SetTooltip(chip, planning
-                ? $"{resource}队列预算：{amount}（当前实际 {actual}）\n应对按触发费用预留，未触发则按普通分支付费，未配置则空放不扣费。\n已计入休整、吐纳与明确的无条件返还；负数表示预算缺口。\n实际执行时，费用不足的分支跳过且不扣费。"
+                ? $"{resource}队列预算：{amount}（当前实际 {actual}）\n应对按触发费用预留，未触发则按普通分支付费，未配置则空放不扣费。\n体力预算计入休整和明确的无条件体力返还；法力预算不预支回复。负数表示预算缺口。\n实际执行时，费用不足的分支跳过且不扣费。"
                 : $"当前实际{resource}：{actual}");
         }
     }
@@ -314,6 +316,7 @@ public partial class CombatSkillBar : Control
         {
             var skill = skills[index];
             var button = CreateSlot(skill, index);
+            var automaticSlot = index == 9 && currentUnit is Character character && character.has_xuanshu_heart_method_equipped();
             buttons.Add(button); AddScaledSlot(button);
         }
         for (var index = skills.Count; index < SlotCapacity; index++)
@@ -363,6 +366,21 @@ public partial class CombatSkillBar : Control
         var icon = CreateSkillIcon(skill);
         button.AddChild(icon);
         var frame = CreateFrame(); frame.Modulate = new Color(1f, 1f, 1f, .78f); button.AddChild(frame); slotFrames.Add(frame);
+        if(index==9&&currentUnit is Character character&&character.has_xuanshu_heart_method_equipped())
+        {
+            var overlay=new TextureRect
+            {
+                Name="AutomaticSkillSlotLock",
+                Texture=GD.Load<Texture2D>(SkillSlotLockTexturePath),
+                Position=new Vector2((SlotWidth-FrameWidth)*.5f,FrameTop),
+                Size=new Vector2(FrameWidth,FrameHeight),
+                ExpandMode=TextureRect.ExpandModeEnum.IgnoreSize,
+                StretchMode=TextureRect.StretchModeEnum.KeepAspectCentered,
+                MouseFilter=MouseFilterEnum.Ignore,
+                ZIndex=3
+            };
+            button.AddChild(overlay);
+        }
         // 小型费用叠在图标左上角，名称位于框下方。
         var costManager = GetTree().GetFirstNodeInGroup("battle_mgr") as BattleManager;
         var displaySkill = currentUnit is not null ? costManager?.get_next_action_skill(currentUnit, skill) ?? skill : skill;
@@ -424,46 +442,76 @@ public partial class CombatSkillBar : Control
         if (!_actionsVisible || !Visible || hoveredSkillAnchor is null || !GodotObject.IsInstanceValid(hoveredSkillAnchor) ||
             hoveredSkill is null || currentUnit is null || !GodotObject.IsInstanceValid(currentUnit)) return;
         var skill = hoveredSkill;
-        var state = SkillHoverState(skill, manager);
+        var displaySkill = manager?.get_next_action_skill(currentUnit, skill) ?? skill;
+        var state = SkillHoverState(skill, displaySkill, manager);
         if (hoverCache.TryGetValue(skill, out var cached) && cached.State == state)
         {
             ApplySkillHoverContent(skill, cached.Body, cached.Metadata);
             return;
         }
-        var effect = CardPresentation.CombatEffectText(skill, currentUnit);
-        var target = CardPresentation.CombatTargetText(manager?.get_next_action_skill(currentUnit, skill) ?? skill, effect);
-        var displaySkill = manager?.get_next_action_skill(currentUnit, skill) ?? skill;
-        var energyCost = manager is null ? displaySkill.energy_cost : manager.get_skill_energy_cost(currentUnit, displaySkill);
-        var manaCost = manager is null ? displaySkill.mana_cost : manager.get_skill_mana_cost(currentUnit, displaySkill);
+        var content = BuildSkillHoverInfo(currentUnit, skill, manager, displaySkill);
+        hoverCache[skill] = (state, content.Body, content.Subtitle);
+        ApplySkillHoverContent(skill, content.Body, content.Subtitle);
+    }
+
+    internal static HoverInfoManager.HoverInfoContent BuildSkillHoverInfo(
+        WorldEntity unit, ActiveSkillData skill, BattleManager? manager, ActiveSkillData? resolvedSkill = null)
+    {
+        var displaySkill = resolvedSkill ?? manager?.get_next_action_skill(unit, skill) ?? skill;
+        var effect = CardPresentation.Underline(CardPresentation.CombatEffectText(skill, unit));
+        var target = CardPresentation.CombatTargetText(displaySkill, effect);
+        var energyCost = manager is null ? displaySkill.energy_cost : manager.get_skill_energy_cost(unit, displaySkill);
+        var manaCost = manager is null ? displaySkill.mana_cost : manager.get_skill_mana_cost(unit, displaySkill);
         var cost = skill.skill_type == ActiveSkillData.SkillType.POWER
             ? ""
             : energyCost == 0 && manaCost == 0
                 ? "费用：无"
                 : $"费用：体力 {energyCost}；法力 {manaCost}";
+        if(skill.skill_name=="复命")
+        {
+            var copied=manager?.gongfa_combat.GetLastNonResponseSkill(unit);
+            if(copied is not null&&!CardRules.IsResponse(copied)&&copied.skill_name!="复命"&&manager is not null)
+            {
+                var (fumingEnergy,copiedEnergy)=manager.gongfa_combat.PreviewSequentialEnergyCosts(unit,skill,copied);
+                if(copied.skill_type==ActiveSkillData.SkillType.MOVEMENT)
+                    copiedEnergy=Mathf.CeilToInt(copiedEnergy*BattleWoundRules.get_energy_cost_multiplier(manager.get_realtime_wound_counts(unit),copied));
+                var fumingMana=manager.get_skill_mana_cost(unit,skill);
+                var copiedMana=manager.get_skill_mana_cost(unit,copied);
+                cost=$"费用：复命体力 {fumingEnergy}、法力 {fumingMana}；复制《{copied.skill_name}》体力 {copiedEnergy}、法力 {copiedMana}；合计体力 {fumingEnergy+copiedEnergy}、法力 {fumingMana+copiedMana}";
+            }
+            else cost=$"费用：复命体力 {energyCost}、法力 {manaCost}；当前没有可复制的非应对技能";
+        }
         if (CardRules.IsResponse(skill))
         {
             var normal = CardRules.NormalCast(skill);
             cost = $"应对触发费用：体力 {energyCost}；法力 {manaCost}\n未应对费用：" + (normal is null ? "无（空放）"
-                : $"体力 {manager?.get_skill_energy_cost(currentUnit, normal) ?? normal.energy_cost}；法力 {manager?.get_skill_mana_cost(currentUnit, normal) ?? normal.mana_cost}");
+                : $"体力 {manager?.get_skill_energy_cost(unit, normal) ?? normal.energy_cost}；法力 {manager?.get_skill_mana_cost(unit, normal) ?? normal.mana_cost}");
         }
-        var useLimit = CardPresentation.CombatUseLimitText(skill, currentUnit, manager);
+        var useLimit = CardPresentation.CombatUseLimitText(skill, unit, manager);
         var detail = new System.Collections.Generic.List<string>();
         if (!string.IsNullOrWhiteSpace(cost)) detail.Add(cost);
         detail.Add($"目标：{target}");
         detail.Add($"使用次数：{useLimit}");
-        var roundCooldown = CardPresentation.CombatCooldownText(skill, currentUnit, manager);
+        var roundCooldown = CardPresentation.CombatCooldownText(skill, unit, manager);
         if (!string.IsNullOrWhiteSpace(roundCooldown)) detail.Add(roundCooldown);
+        if(skill.skill_name=="复命"&&manager?.gongfa_combat.GetLastNonResponseSkill(unit) is { } copiedSkill&&copiedSkill.skill_name!="复命"&&!CardRules.IsResponse(copiedSkill))
+        {
+            detail.Add($"复制技能使用次数：{CardPresentation.CombatUseLimitText(copiedSkill,unit,manager)}");
+            var copiedCooldown=CardPresentation.CombatCooldownText(copiedSkill,unit,manager);
+            if(!string.IsNullOrWhiteSpace(copiedCooldown))detail.Add($"复制技能{copiedCooldown}");
+        }
         detail.Add($"效果：\n{effect}");
-        var calculations = CardPresentation.CombatCalculationDetails(skill, currentUnit);
-        if (!string.IsNullOrWhiteSpace(calculations)) detail.Add($"\n数值推演：\n{calculations}");
         var body = string.Join("\n\n", detail);
-        var keywords = skill.tags.Count > 0 ? string.Join("、", skill.tags) : "无";
+        var displayTags = skill.get_presentation_tags();
+        var keywords = displayTags.Count > 0 ? string.Join("、", displayTags) : "无";
         var metadata = $"类型：{skill.get_card_category()}　关键词：{keywords}";
-        hoverCache[skill] = (state, body, metadata);
-        ApplySkillHoverContent(skill, body, metadata);
+        var icon = string.IsNullOrWhiteSpace(skill.icon_path) || !ResourceLoader.Exists(skill.icon_path)
+            ? null
+            : ResourceLoader.Load<Texture2D>(skill.icon_path);
+        return new HoverInfoManager.HoverInfoContent(skill.skill_name, body, icon, metadata);
     }
 
-    private int SkillHoverState(ActiveSkillData skill, BattleManager? manager)
+    private int SkillHoverState(ActiveSkillData skill, ActiveSkillData displaySkill, BattleManager? manager)
     {
         var hash = new HashCode();
         hash.Add(currentUnit!.GetInstanceId());
@@ -475,12 +523,12 @@ public partial class CombatSkillBar : Control
         foreach (var key in HoverAttributes) hash.Add(CardRules.Number(currentUnit, key));
         foreach (var bonus in skill.damage_bonuses)
             if (bonus is not null) { hash.Add(bonus.attribute); hash.Add(bonus.multiplier); hash.Add(CardRules.Number(currentUnit, bonus.attribute)); }
-        hash.Add(manager?.get_next_action_skill(currentUnit, skill).artifact_is_summon);
-        hash.Add(manager?.get_skill_energy_cost(currentUnit, skill));
-        hash.Add(manager?.get_skill_mana_cost(currentUnit, skill));
+        hash.Add(displaySkill.artifact_is_summon);
+        hash.Add(manager?.get_skill_energy_cost(currentUnit, displaySkill));
+        hash.Add(manager?.get_skill_mana_cost(currentUnit, displaySkill));
         hash.Add(manager?.get_skill_uses_remaining(currentUnit, skill));
         hash.Add(manager?.gongfa_combat.DamageMultiplier(currentUnit, skill));
-        foreach (var method in new[] { "get_blood_furnace_physical_damage_multiplier", "get_gongfa_physical_damage_multiplier", "get_species_physical_damage_multiplier" })
+        foreach (var method in HoverDamageMultiplierMethods)
             if (currentUnit.HasMethod(method)) hash.Add(currentUnit.Call(method).AsSingle());
         if (currentUnit is Creature creature)
         {
@@ -495,6 +543,15 @@ public partial class CombatSkillBar : Control
             hash.Add(manager?.get_skill_energy_cost(currentUnit, normal));
             hash.Add(manager?.get_skill_mana_cost(currentUnit, normal));
             hash.Add(manager?.gongfa_combat.DamageMultiplier(currentUnit, normal));
+        }
+        if(skill.skill_name=="复命"&&manager?.gongfa_combat.GetLastNonResponseSkill(currentUnit) is { } copied)
+        {
+            hash.Add(copied.GetInstanceId()); hash.Add(copied.description); hash.Add(copied.damage_formula);
+            hash.Add(copied.stacks_formula); hash.Add(copied.base_damage); hash.Add(copied.cooldown_rounds);
+            hash.Add(manager.get_skill_energy_cost(currentUnit,copied)); hash.Add(manager.get_skill_mana_cost(currentUnit,copied));
+            hash.Add(manager.get_skill_uses_remaining(currentUnit,copied));
+            hash.Add(manager.get_skill_round_cooldown_text(currentUnit,copied));
+            foreach(var effect in copied.special_effects)hash.Add(effect.ToString());
         }
         return hash.ToHashCode();
     }

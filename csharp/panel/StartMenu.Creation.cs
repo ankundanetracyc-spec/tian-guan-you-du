@@ -375,7 +375,6 @@ public partial class StartMenu
         status.AddChild(rootType);
         var reroll = creation_button("重新抽取资质");
         reroll.CustomMinimumSize = new Vector2(150, 42);
-        reroll.TooltipText = "重新抽取灵根与九项初始属性，并重置剩余资质点。";
         status.AddChild(reroll);
 
         var columns = new HBoxContainer { SizeFlagsVertical = SizeFlags.ExpandFill };
@@ -424,7 +423,6 @@ public partial class StartMenu
         rootCard.Body.AddChild(rootWeightTotal);
         var rerollRoot = creation_button("重新抽取灵根");
         rerollRoot.CustomMinimumSize = new Vector2(0, 38);
-        rerollRoot.TooltipText = "只更新灵根类型与五行权重，保留属性分配、剩余点数和初始功法。";
         rootCard.Body.AddChild(rerollRoot);
 
         var attributeRows = new List<AttributeChoiceControl>();
@@ -444,7 +442,6 @@ public partial class StartMenu
             var button = creation_button("+");
             style_creation_round(button);
             button.CustomMinimumSize = new Vector2(36, 36);
-            button.TooltipText = $"消耗 1 点资质，提升 {increment:0} 点";
             button.Pressed += () =>
             {
                 if (profile.increase_base_attribute(key)) refresh();
@@ -457,7 +454,7 @@ public partial class StartMenu
         foreach (var item in new[]
         {
             (Key: "physique", Title: "体魄"), (Key: "intelligence", Title: "灵慧"),
-            (Key: "agility", Title: "敏捷"), (Key: "soul", Title: "神魂")
+            (Key: "soul", Title: "神魂")
         }) add_attribute(baseCard.Body, item.Key, item.Title, 1);
         foreach (var item in new[]
         {

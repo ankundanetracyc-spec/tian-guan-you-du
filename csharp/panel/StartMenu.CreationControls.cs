@@ -71,7 +71,6 @@ public partial class StartMenu
             button.CustomMinimumSize = new Vector2(34, 34);
             button.SizeFlagsVertical = SizeFlags.ShrinkCenter;
         }
-        previous.TooltipText = "上一款"; next.TooltipText = "下一款";
         void step(int direction)
         {
             if (selector.ItemCount == 0) return;
@@ -83,7 +82,6 @@ public partial class StartMenu
         next.Pressed += () => step(1);
         row.AddChild(previous); row.AddChild(selector); row.AddChild(next);
         selector.Alignment = HorizontalAlignment.Center;
-        selector.TooltipText = "左右切换款式，或点击名称展开全部选款";
         return row;
     }
 

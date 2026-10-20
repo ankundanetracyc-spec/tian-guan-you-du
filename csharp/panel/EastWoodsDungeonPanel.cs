@@ -17,6 +17,7 @@ public partial class EastWoodsDungeonPanel : Control
     private readonly Dictionary<string, Label> _nodeTitles = new(StringComparer.Ordinal);
     private readonly Dictionary<string, Vector2> _pawnLayerSizeStamps = new(StringComparer.Ordinal);
     private readonly Dictionary<string, List<WorldNpcData>> _npcsByNode = new(StringComparer.Ordinal);
+    private readonly Dictionary<string, string> _actionBadgeCache = new(StringComparer.Ordinal);
     private readonly HashSet<string> _pathEdges = new(StringComparer.Ordinal);
     private readonly HashSet<string> _pathNodes = new(StringComparer.Ordinal);
     private sealed class ConnectionVisual
@@ -75,6 +76,7 @@ public partial class EastWoodsDungeonPanel : Control
     public void use_east_woods_instance()
     {
         _dynamicMode = false;
+        _actionBadgeCache.Clear();
         _dynamicEntryNodeId = _dynamicExitNodeId = "forest_edge";
         _dynamicInstanceState = [];
         if (_actionWorldLabel is not null) _actionWorldLabel.Text = "东林地";
@@ -83,6 +85,7 @@ public partial class EastWoodsDungeonPanel : Control
     public void configure_dynamic_instance(Godot.Collections.Dictionary instance)
     {
         _dynamicMode = true;
+        _actionBadgeCache.Clear();
         _dynamicInstanceState = instance.Duplicate(true);
         _dynamicEntryNodeId = DynamicDungeonExpedition.GetEntryNodeId(_dynamicInstanceState);
         _dynamicExitNodeId = DynamicDungeonExpedition.GetExitNodeId(_dynamicInstanceState);
@@ -593,8 +596,11 @@ public partial class EastWoodsDungeonPanel : Control
             }
             var dutyTarget = !_dynamicMode && _activeDutyId == "east_woods_patrol" && node.Id == (_activeDutyReady ? "forest_edge" : "quiet_grove");
             var title = dutyTarget ? (_activeDutyReady ? "出口 · 回宗回报" : "巡查 · 静冠洼地") : node.ShowTitleOnMap ? node.Title : "";
-            if (is_node_visible(node.Id) && available_actions(node.Id).FirstOrDefault() is { } content)
-                title += (title.Length > 0 ? " · " : "") + (content.Battle ? "兽踪" : content.ItemPath.Length > 0 ? "可采集" : "异状");
+            if (is_node_visible(node.Id))
+            {
+                var badge = get_action_badge(node.Id);
+                if (badge.Length > 0) title += (title.Length > 0 ? " · " : "") + badge;
+            }
             var titleLabel = _nodeTitles[node.Id];
             if (titleLabel.Text != title) titleLabel.Text = title;
             var titleVisible = !string.IsNullOrWhiteSpace(title);
@@ -624,6 +630,15 @@ public partial class EastWoodsDungeonPanel : Control
 
         update_details();
         refresh_action_bar();
+    }
+
+    private string get_action_badge(string nodeId)
+    {
+        if (_isTraveling && _actionBadgeCache.TryGetValue(nodeId, out var cached)) return cached;
+        var action = available_actions(nodeId).FirstOrDefault();
+        var badge = action is null ? "" : action.Battle ? "兽踪" : action.ItemPath.Length > 0 ? "可采集" : "异状";
+        _actionBadgeCache[nodeId] = badge;
+        return badge;
     }
 
     private bool pawn_occupants_match(string nodeId, Control layer, bool hasPlayer, List<WorldNpcData>? nodeNpcs)
@@ -829,7 +844,6 @@ public partial class EastWoodsDungeonPanel : Control
             var stepCompletion = _pawnStepCompletion?.Task;
             if (stepCompletion is not null) await stepCompletion;
             if (generation != _travelGeneration || !GodotObject.IsInstanceValid(this) || !IsInsideTree() || !Visible) break;
-            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         }
         if (!GodotObject.IsInstanceValid(this) || !IsInsideTree() || generation != _travelGeneration) return;
         _isTraveling = false;

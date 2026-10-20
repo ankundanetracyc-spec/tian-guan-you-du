@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 public static class CardPresentation
 {
     private static JsonDocument? _reference;
+    private static string[]? _encyclopediaResourceTerms;
     private static JsonElement Reference => (_reference ??= JsonDocument.Parse(Godot.FileAccess.GetFileAsString("res://resources/card_reference.json"))).RootElement;
     private static readonly System.Collections.Generic.Dictionary<string,string> Mechanics=new()
     {
@@ -17,34 +18,55 @@ public static class CardPresentation
         ["弃顶"]="弃置时置于弃牌堆顶。",
         ["乘势"]="满足该技能指定的上一项主动行动条件后，触发乘势效果。",
         ["重击"]="拥有拳架时，消耗一层拳架，使本次技能伤害提高50%。",
-        ["化解"]="每层抵消本次攻击1点物理伤害；该次攻击结算后全部消散。",
+        ["化解"]="详见修行百科的化解词条。",
         ["气血"]="层数降低时，按当前气血回落回复规则结算；回复率及替代效果由公共规则和当前生效效果共同决定。",
+        ["散血"]="详见修行百科的散血词条。",
+        ["打散"]="详见修行百科的散血词条。",
+        ["穿盾"]="本次攻击无视目标护盾。",
         ["借力"]="每层使下一项主动施放的物理伤害技能增伤5%；该技能结算后清空。挟势不清空，合劲每层总增伤8%。",
-        ["护持"]="优先抵扣受到的伤害，按吸收的伤害减少。"
+        ["护盾"]="受到伤害时优先抵扣；每次受击先于生命值结算。",
+        ["护持"]="优先抵扣受到的伤害，按吸收的伤害减少。",
+        ["周天"]="炁达到当前法力上限的两倍时完成周天，清空炁并使当前法力回满。"
     };
-    public static string Face(ActiveSkillData skill, GodotObject? owner)
+    public static string Face(ActiveSkillData skill, GodotObject? owner) => Face(skill, owner, null);
+
+    /// <summary>统一格式化技能说明；可传入已经按当前秘籍升级整理过的原文。</summary>
+    public static string Face(ActiveSkillData skill, GodotObject? owner, string? descriptionOverride)
     {
-        var text=skill.get_brief_description(owner);
-        var preferResourceDescription=!string.IsNullOrWhiteSpace(skill.description) &&
-            (skill.source_gongfa_name=="赤阳参同经" || (skill.skill_name is "架招" or "卸力"));
+        var text=descriptionOverride ?? skill.get_brief_description(owner);
+        var preferResourceDescription=descriptionOverride is null && !string.IsNullOrWhiteSpace(skill.description) &&
+            (skill.source_gongfa_name is "赤阳参同经" or "玄枢含章经" || (skill.skill_name is "架招" or "卸力"));
+        var hasXuanShuRewrite=skill.gongfa_rewrite_effect_ids.Any(id=>id.StartsWith("xuan_shu_",StringComparison.Ordinal));
         var referenceName=ReferenceName(skill);
-        if(preferResourceDescription)
+        if(descriptionOverride is not null)
+            text=descriptionOverride;
+        else if(preferResourceDescription)
             text=skill.description;
         else if(Reference.GetProperty("cards").TryGetProperty(referenceName,out var card) && skill.skill_name is not ("应敌" or "养息" or "痛击" or "静观"))
-            text=skill.skill_type==ActiveSkillData.SkillType.POWER?(string.IsNullOrWhiteSpace(skill.description)?text:skill.description):ResolveFormulas(card.GetProperty("text").GetString()??"",owner,skill);
+            text=skill.skill_type==ActiveSkillData.SkillType.POWER?(string.IsNullOrWhiteSpace(skill.description)?text:skill.description):(card.GetProperty("text").GetString()??"");
         foreach(var mechanic in skill.keywords.Where(k=>k!="固有"&&Mechanics.ContainsKey(k)))
-            if(!text.Contains(mechanic)) text += $"\n{mechanic}。";
+        {
+            if(hasXuanShuRewrite)continue;
+            if(!text.Contains(mechanic) && !(mechanic=="散血" && text.Contains("打散"))) text += $"\n{mechanic}。";
+        }
+        if(skill.get_presentation_tags().Contains("散血")&&!text.Contains("不经行动队列施展时"))
+            text += "\n本技能不经行动队列施展时，命中后打散目标1层气血。";
         var responseBaseOnly = false;
         if(skill.skill_name is "架招" or "卸力")
         {
             if(skill.source_gongfa_name!="赤阳参同经")
             {
-                text=$"应对触发：位于当前槽且遇到敌方物理攻击时立即触发，获得 {CardRules.Block(skill,owner)} 层化解；该次攻击结算后消散。";
+                text=$"应对触发：位于当前槽且遇到敌方物理攻击时立即触发，获得 {CardRules.Block(skill,owner)} 层化解。";
                 responseBaseOnly = true;
             }
         }
         var rewriteEffects = GongfaSkillRewriteRuntime.GetAdditionalEffectDescriptions(skill, excludePrimary: !responseBaseOnly).ToArray();
-        if(rewriteEffects.Length>0)text+="\n"+string.Join("\n",rewriteEffects);
+        if(hasXuanShuRewrite)
+        {
+            text=$"原技能效果：{text.Trim()}";
+            if(rewriteEffects.Length>0)text+="\n\n"+string.Join("\n",rewriteEffects);
+        }
+        else if(rewriteEffects.Length>0)text+="\n"+string.Join("\n",rewriteEffects);
         if(skill.keywords.Contains("乘势"))text=text.Replace("\n乘势。","")+$"\n乘势：上一张为攻击牌时，本次会心率提高 {Mathf.RoundToInt(CardRules.Evaluate(skill.momentum_effect_params,owner)*100)}%。";
         if (CardRules.IsResponse(skill))
         {
@@ -54,15 +76,17 @@ public static class CardPresentation
                 ? $"\n未触发应对：{CombatEffectText(normal, owner)}"
                 : "\n未触发应对：空放，仅消耗本槽行动时间，不消耗体力、法力或使用次数，不产生效果。";
         }
+        text=ResolveFormulas(text,owner,skill);
+        text=AppendStructuredFormulaDetails(text,skill,owner);
         return text;
     }
     private static string ReferenceName(ActiveSkillData skill) => (skill.source_gongfa_name, skill.skill_name) switch
     {
-        ("黄庭养形篇", "返照") => "返照（黄庭养形化法）",
-        ("黄庭养形篇", "平息") => "平息（黄庭养形化法）",
-        ("黄庭养形篇", "抱一") => "抱一（黄庭养形化法）",
-        ("黄庭养形篇", "周行") => "周行（黄庭养形化法）",
-        ("黄庭养形篇", "催血") => "催血（黄庭养形化法）",
+        ("胎息经", "返照") => "返照（胎息经化法）",
+        ("胎息经", "平息") => "平息（胎息经化法）",
+        ("胎息经", "抱一") => "抱一（胎息经化法）",
+        ("胎息经", "周行") => "周行（胎息经化法）",
+        ("胎息经", "催血") => "催血（胎息经化法）",
         ("补虚行血诀", "还阳") => "还阳（补虚行血化法）",
         ("补虚行血诀", "归元") => "归元（补虚行血化法）",
         ("补虚行血诀", "卸力") => "卸力（补虚行血化法）",
@@ -95,23 +119,133 @@ public static class CardPresentation
     };
     private static string ResolveFormulas(string text, GodotObject? owner, ActiveSkillData skill)
     {
-        // 技能词典中的公式只在详情中展示，技能说明替换为最终整数。
-        text=Regex.Replace(text,@"伤害段数\s*=\s*(?<formula>[^。；\r\n]+)",m=>
-            $"伤害段数为 {Mathf.Max(1,Mathf.RoundToInt(CardRules.Evaluate(m.Groups["formula"].Value,owner)))}");
-        for(var start=0;start<text.Length;)
+        var values=new System.Collections.Generic.Dictionary<string,float>(StringComparer.Ordinal);
+        var pattern=@"(?<label>(?<![A-Za-z0-9_])[A-Z](?![A-Za-z0-9_])|伤害段数|基础伤害|每段伤害|该段伤害|额外伤害|追加伤害|化解层数|伤害)(?:公式)?\s*(?:=|：|:)\s*(?<formula>[^。；，\r\n]+)[。；]?";
+        var matches=Regex.Matches(text,pattern);
+        if(matches.Count>0)
         {
-            var match=Regex.Match(text[start..],@"\b(?:round|max|floor)\(");
-            if(!match.Success) break;
-            var from=start+match.Index;var end=from+match.Length;var depth=1;
-            while(end<text.Length && depth>0){if(text[end]=='(')depth++;if(text[end]==')')depth--;end++;}
-            var formula=text[from..end];
-            if(formula.StartsWith("round(") && !string.IsNullOrEmpty(skill.damage_formula))formula=skill.damage_formula;
-            var value=Mathf.RoundToInt(formula==skill.damage_formula?BattleActionResolver.preview_damage(owner,skill):CardRules.Evaluate(formula,owner)).ToString();
-            text=text[..from]+value+text[end..];start=from+value.Length;
+            var builder=new System.Text.StringBuilder();var cursor=0;
+            foreach(Match match in matches)
+            {
+                builder.Append(text[cursor..match.Index]);
+                var label=match.Groups["label"].Value;var formula=match.Groups["formula"].Value.Trim();
+                var isLetter=label.Length==1&&char.IsAsciiLetterUpper(label[0]);
+                if(!TryEvaluateFormula(formula,owner,values,out var numericValue))
+                {
+                    if(isLetter&&label!="R")
+                    {
+                        var unresolved=builder.ToString();
+                        unresolved=Regex.Replace(unresolved,$@"(?<![A-Za-z0-9_]){Regex.Escape(label)}\s*点护盾","按本次受击结算确定的护盾");
+                        unresolved=Regex.Replace(unresolved,$@"(?<![A-Za-z0-9_]){Regex.Escape(label)}(?![A-Za-z0-9_])","本次结算值");
+                        builder.Clear();builder.Append(unresolved);
+                        builder.Append($"计算方式：{Readable(formula)}（数值在对应效果结算时确定）。");
+                    }
+                    else if(label=="R")
+                        builder.Append($"当前气血回落回复率：按本次生效修正结算。计算方式：{Readable(formula)}。");
+                    else
+                        builder.Append($"{label}：按本次效果结算确定。计算方式：{Readable(formula)}。");
+                    cursor=match.Index+match.Length;
+                    continue;
+                }
+
+                var value=FormatNumber(numericValue);
+                if(label=="R")
+                {
+                    var percent=FormatNumber(numericValue*100f)+"%";
+                    var prefix=builder.ToString();
+                    prefix=Regex.Replace(prefix,@"(?<![A-Za-z0-9_])R(?![A-Za-z0-9_])",percent);
+                    builder.Clear();builder.Append(prefix);
+                    values[label]=numericValue;
+                    builder.Append($"计算公式：{FormulaWithVariables(formula,owner,values,label)} = {percent}。");
+                }
+                else if(isLetter)
+                {
+                    var prefix=builder.ToString();
+                    prefix=Regex.Replace(prefix,$@"(?<![A-Za-z0-9_]){Regex.Escape(label)}(?![A-Za-z0-9_])",value);
+                    builder.Clear();builder.Append(prefix);
+                    values[label]=numericValue;
+                    builder.Append($"计算公式：{FormulaWithVariables(formula,owner,values,label)} = {value}。");
+                }
+                else
+                {
+                    var effectiveLabel=label=="伤害段数"?"伤害段数":label;
+                    var unit=label=="伤害段数"?" 段":label=="化解层数"?" 层":label.Contains("伤害",StringComparison.Ordinal)?" 点":"";
+                    if(label=="伤害段数")numericValue=Mathf.Max(1,Mathf.RoundToInt(numericValue));
+                    value=FormatNumber(numericValue);
+                    builder.Append($"{effectiveLabel}：{value}{unit}。计算公式：{FormulaWithVariables(formula,owner,values,label)} = {value}{unit}。");
+                }
+                cursor=match.Index+match.Length;
+            }
+            builder.Append(text[cursor..]);text=builder.ToString();
         }
-        text=Regex.Replace(text,@"最大生命×(\d+(?:\.\d+)?)%",m=>
-            $"{Mathf.RoundToInt(CardRules.Number(owner,"max_health")*float.Parse(m.Groups[1].Value,System.Globalization.CultureInfo.InvariantCulture)/100)}点生命");
-        return text.Replace("伤害 = ","伤害为 ").Replace("化解层数 = ","化解层数为 ");
+
+        text=Regex.Replace(text,@"最大生命\s*[×x*]\s*(?<rate>\d+(?:\.\d+)?)%",m=>
+        {
+            var rate=float.Parse(m.Groups["rate"].Value,System.Globalization.CultureInfo.InvariantCulture);
+            var maxHealth=CardRules.Number(owner,"max_health");
+            var result=Mathf.RoundToInt(maxHealth*rate/100f);
+            return $"{result} 点生命。计算公式：最大生命[{FormatNumber(maxHealth)}]×{FormatNumber(rate)}% = {result} 点生命";
+        });
+        return text.Replace("伤害 = ","伤害：").Replace("化解层数 = ","化解层数：");
+    }
+
+    private static bool TryEvaluateFormula(string formula,GodotObject? owner,System.Collections.Generic.Dictionary<string,float> variables,out float value)
+    {
+        if(!GodotObject.IsInstanceValid(owner))
+        {
+            var identifiers=Regex.Matches(formula,@"[A-Za-z_][A-Za-z_0-9]*").Select(match=>match.Value).Distinct();
+            if(identifiers.Any(identifier=>identifier is not ("round" or "floor" or "ceil" or "max" or "min" or "abs" or "base")))
+            {value=0;return false;}
+            if(Regex.IsMatch(formula,@"[\u4e00-\u9fff]")){value=0;return false;}
+        }
+        var expanded=formula;
+        foreach(var pair in variables.OrderByDescending(pair=>pair.Key.Length))
+            expanded=Regex.Replace(expanded,$@"(?<![A-Za-z0-9_]){Regex.Escape(pair.Key)}(?![A-Za-z0-9_])",pair.Value.ToString("0.########",System.Globalization.CultureInfo.InvariantCulture));
+        try { value=CardRules.Evaluate(expanded,owner);return float.IsFinite(value); }
+        catch(System.Exception) { value=0;return false; }
+    }
+
+    private static string FormulaWithVariables(string formula,GodotObject? owner,System.Collections.Generic.Dictionary<string,float> variables,string currentLabel)
+    {
+        var display=FormulaWithValues(formula,owner);
+        foreach(var pair in variables.Where(pair=>pair.Key!=currentLabel).OrderByDescending(pair=>pair.Key.Length))
+            display=Regex.Replace(display,$@"(?<![A-Za-z0-9_]){Regex.Escape(pair.Key)}(?![A-Za-z0-9_])",$"{pair.Key}[{FormatNumber(pair.Value)}]");
+        return display;
+    }
+
+    private static string AppendStructuredFormulaDetails(string text,ActiveSkillData skill,GodotObject? owner)
+    {
+        var lines=new List<string>();
+        void Add(string label,string formula,string unit,float? knownResult=null)
+        {
+            if(string.IsNullOrWhiteSpace(formula))return;
+            var values=new System.Collections.Generic.Dictionary<string,float>(StringComparer.Ordinal);
+            var evaluated=0f;
+            if(knownResult is null&&!TryEvaluateFormula(formula,owner,values,out evaluated))
+            {
+                if(!text.Contains($"{label}：",StringComparison.Ordinal))lines.Add($"{label}：按当前角色属性结算。计算公式：{FormulaWithValues(formula,owner)}。");
+                return;
+            }
+            var result=knownResult??evaluated;
+            var value=FormatNumber(result);
+            // 原文已紧跟同一结算值的公式时，不再重复列出。
+            if(Regex.IsMatch(text,$@"计算公式：[^。\r\n]*=\s*{Regex.Escape(value)}(?:\s*(?:点|层|段))?。"))return;
+            lines.Add($"{label}：{value}{unit}。计算公式：{FormulaWithValues(formula,owner)} = {value}{unit}。");
+        }
+        if(!string.IsNullOrWhiteSpace(skill.stacks_formula))
+            Add("状态层数",skill.stacks_formula," 层",GodotObject.IsInstanceValid(owner)?CardRules.Block(skill,owner):null);
+        if(!string.IsNullOrWhiteSpace(skill.damage_formula)||!Mathf.IsZeroApprox(skill.base_damage)||skill.damage_bonuses.Count>0)
+            Add("基础伤害",DamageFormula(skill)," 点",GodotObject.IsInstanceValid(owner)?Mathf.RoundToInt(skill.calculate_damage(owner)):null);
+        foreach(var effect in skill.special_effects)
+        {
+            var formula=effect.GetValueOrDefault("formula","").AsString();if(string.IsNullOrWhiteSpace(formula))continue;
+            var id=effect.GetValueOrDefault("effect","").AsString();
+            var label=id switch{"shield"=>"护盾", "restore_stamina"=>"体力回复", "restore_mana"=>"法力回复", _=>"效果数值"};
+            float? value=null;
+            if(TryEvaluateFormula(formula,owner,new System.Collections.Generic.Dictionary<string,float>(),out var evaluated))value=id is "shield" or "restore_stamina" or "restore_mana"?Mathf.RoundToInt(evaluated):evaluated;
+            Add(label,formula," 点",value);
+        }
+        return lines.Count==0?text:text.TrimEnd()+"\n"+string.Join("\n",lines);
     }
 
     /// <summary>即时战斗技能栏使用的简明效果文案：伤害目标与类型由运行时配置统一生成。</summary>
@@ -124,23 +258,35 @@ public static class CardPresentation
         // 避免旧牌面中目标、伤害类型和公式各写一遍。保留伤害增幅、状态和触发条件，
         // 再由技能数据生成唯一的目标与伤害句；具体公式见数值详情。
         var retained = new List<string>();
+        var skipFollowingFormula=false;
         foreach (var line in text.Split('\n'))
         {
             var clauses = Regex.Split(line, @"(?<=[。；])");
             foreach (var clause in clauses)
             {
-                if (string.IsNullOrWhiteSpace(clause) || IsDamageResultClause(clause)) continue;
+                if (string.IsNullOrWhiteSpace(clause)) continue;
+                if(IsDamageResultClause(clause)||Regex.IsMatch(clause,@"(?:伤害段数|每段伤害|基础伤害|该段伤害|额外伤害)\s*[：:]"))
+                {
+                    skipFollowingFormula=true;
+                    continue;
+                }
+                if(skipFollowingFormula&&clause.Contains("计算公式",StringComparison.Ordinal))
+                {
+                    skipFollowingFormula=false;
+                    continue;
+                }
+                skipFollowingFormula=false;
                 retained.Add(clause.Trim());
             }
         }
 
-        var summary = StandardDamageSentence(skill, text);
+        var summary = StandardDamageSentence(skill, text, owner);
         var extra = string.Join("", retained).Trim(' ', '。', '；', '\r', '\n');
         return string.IsNullOrWhiteSpace(extra) ? summary : $"{summary}\n{extra}";
     }
 
     /// <summary>返回悬浮信息栏中的精确公式、当前属性代入值及当前自身增伤预估。</summary>
-    public static string CombatCalculationDetails(ActiveSkillData skill, GodotObject? owner)
+    public static string CombatCalculationDetails(ActiveSkillData skill, GodotObject? owner, BattleManager? manager = null)
     {
         var entries = new List<string>();
         if (DealsDamage(skill))
@@ -153,13 +299,16 @@ public static class CardPresentation
             if (!string.IsNullOrWhiteSpace(segments.formula))
             {
                 segmentCount = Mathf.Max(1, Mathf.RoundToInt(CardRules.Evaluate(segments.formula, owner)));
-                entries.Add($"伤害段数：{segmentCount}（{FormulaWithValues(segments.formula, owner)}）");
+                entries.Add($"伤害段数：{segmentCount} 段。计算公式：{FormulaWithValues(segments.formula, owner)} = {segmentCount} 段。");
             }
 
             var perSegmentLabel = segmentCount > 1 ? "每段基础" : "基础";
-            entries.Add($"{perSegmentLabel}{damageName}伤害：{Mathf.RoundToInt(skill.calculate_damage(owner))} 点（{FormulaWithValues(formula, owner)}）");
+            var baseDamage=Mathf.RoundToInt(skill.calculate_damage(owner));
+            entries.Add($"{perSegmentLabel}{damageName}伤害：{baseDamage} 点。计算公式：{FormulaWithValues(formula, owner)} = {baseDamage} 点。");
             var estimatedLabel = segmentCount > 1 ? "每段当前自身增伤后预计伤害" : "当前自身增伤后预计伤害";
-            entries.Add($"{estimatedLabel}：{Mathf.RoundToInt(BattleActionResolver.preview_damage(owner, skill))} 点。{DamagePreviewNote(skill)}");
+            var preview=Mathf.Max(1,Mathf.RoundToInt(BattleActionResolver.preview_damage(owner,skill)));
+            var previewMultiplier=Mathf.IsZeroApprox(skill.calculate_damage(owner))?1f:BattleActionResolver.preview_damage(owner,skill)/skill.calculate_damage(owner);
+            entries.Add($"{estimatedLabel}：{preview} 点。计算公式：max(1, round(({FormulaWithValues(formula,owner)})×{FormatNumber(previewMultiplier)})) = {preview} 点。{DamagePreviewNote(skill)}");
 
             foreach (var entry in FindAssignedFormulas(RawSkillText(skill)))
             {
@@ -170,12 +319,12 @@ public static class CardPresentation
                 var primaryValue = skill.calculate_damage(owner);
                 var multiplier = Mathf.IsZeroApprox(primaryValue) ? 1f : BattleActionResolver.preview_damage(owner, skill) / primaryValue;
                 var value = Mathf.RoundToInt(baseValue);
-                entries.Add($"{entry.label}：{value} 点{damageName}伤害（{FormulaWithValues(entry.formula, owner)}）；当前自身增伤后预计 {Mathf.RoundToInt(baseValue * multiplier)} 点。");
+                entries.Add($"{entry.label}：{value} 点{damageName}伤害。计算公式：{FormulaWithValues(entry.formula, owner)} = {value} 点；当前自身增伤后预计 {Mathf.RoundToInt(baseValue * multiplier)} 点。");
             }
         }
 
         if (!string.IsNullOrWhiteSpace(skill.stacks_formula))
-            entries.Add($"状态层数：{CardRules.Block(skill, owner)} 层（{FormulaWithValues(skill.stacks_formula, owner)}）");
+            entries.Add($"状态层数：{CardRules.Block(skill, owner)} 层。计算公式：{FormulaWithValues(skill.stacks_formula, owner)} = {CardRules.Block(skill, owner)} 层。");
 
         foreach (var effect in skill.special_effects)
         {
@@ -189,20 +338,60 @@ public static class CardPresentation
                 "restore_mana" => "法力回复",
                 _ => "效果数值"
             };
-            entries.Add($"{label}：{CardRules.Evaluate(formula, owner):0.##} 点（{FormulaWithValues(formula, owner)}）");
+            var amount=effectId=="shield"?Math.Max(0,Mathf.RoundToInt(CardRules.Evaluate(formula,owner))):Mathf.RoundToInt(CardRules.Evaluate(formula,owner));
+            entries.Add($"{label}：{amount} 点。计算公式：{FormulaWithValues(formula, owner)} = {amount} 点。");
+            if (effectId=="shield"&&GongfaSkillRewriteRuntime.HasEffect(skill,"xuan_shu_c2_yunpei"))
+            {
+                var ownShield=Math.Max(0,Mathf.RoundToInt(CardRules.Evaluate(formula,owner)));
+                var sharedShield=Mathf.RoundToInt(ownShield*.5f);
+                entries.Add($"技能槽10自动施展时，队友护盾：{sharedShield} 点。计算公式：round(自身护盾值[{ownShield}]×0.50) = {sharedShield} 点。");
+            }
+        }
+
+        if (GongfaSkillRewriteRuntime.HasEffect(skill,"xuan_shu_c3_jiazhao")&&!string.IsNullOrWhiteSpace(skill.stacks_formula))
+        {
+            var maximumBlock=CardRules.Block(skill,owner);
+            entries.Add($"化法追加护盾：架招最多获得 {maximumBlock} 层化解。计算公式：{FormulaWithValues(skill.stacks_formula,owner)} = {maximumBlock} 层；本次来袭的全部伤害段结算后，按实际抵消的物理伤害总点数获得护盾。");
         }
 
         foreach (Match match in Regex.Matches(RawSkillText(skill), @"最大生命\s*[×x*]\s*(?<rate>\d+(?:\.\d+)?)%"))
         {
             var rate = float.Parse(match.Groups["rate"].Value, System.Globalization.CultureInfo.InvariantCulture);
             var value = Mathf.RoundToInt(CardRules.Number(owner, "max_health") * rate / 100f);
-            var line = $"生命回复：{value} 点（最大生命[{FormatNumber(CardRules.Number(owner, "max_health"))}]×{FormatNumber(rate)}%）";
+            var line = $"生命回复：{value} 点。计算公式：最大生命[{FormatNumber(CardRules.Number(owner, "max_health"))}]×{FormatNumber(rate)}% = {value} 点。";
             if (!entries.Contains(line)) entries.Add(line);
+        }
+
+        if (skill.skill_name=="复命"&&GodotObject.IsInstanceValid(owner)&&manager is not null)
+        {
+            var copied=manager.gongfa_combat.GetLastNonResponseSkill(owner!);
+            if(copied is not null&&!CardRules.IsResponse(copied)&&copied.skill_name!="复命")
+            {
+                entries.Add($"本次复制：{copied.skill_name}");
+                var copiedDetails=CombatCalculationDetails(copied,owner,manager);
+                if(!string.IsNullOrWhiteSpace(copiedDetails))entries.Add($"复制招式数值：\n{copiedDetails}");
+                if(GongfaSkillRewriteRuntime.HasEffect(skill,"xuan_shu_c4_fuming"))
+                {
+                    var shieldEffect=copied.special_effects.FirstOrDefault(effect=>effect.GetValueOrDefault("effect","").AsString()=="shield"&&!string.IsNullOrWhiteSpace(effect.GetValueOrDefault("formula","").AsString()));
+                    if(shieldEffect is not null)
+                    {
+                        var shield=Math.Max(0,Mathf.RoundToInt(CardRules.Evaluate(shieldEffect.GetValueOrDefault("formula","").AsString(),owner)));
+                        entries.Add($"复制技能化法追加护盾：{shield} 点（与被复制技能本次施加的护盾等量）。");
+                        if(manager.IsXuanShuSkillSlot10(owner!,skill)&&GongfaSkillRewriteRuntime.HasEffect(copied,"xuan_shu_c2_yunpei"))
+                        {
+                            var half=Mathf.RoundToInt(shield*.5f);
+                            entries.Add($"技能槽10复制云帔时，两项化法分别结算，队友护盾合计 {shield+half} 点（等量护盾 {shield} 点 + 一半护盾 {half} 点）；两次各自重新选择当前护盾值最低的队友，并列随机。");
+                        }
+                    }
+                    else entries.Add("复制技能化法追加护盾：被复制技能本次施加护盾时，为一名其他队友施加等量护盾。");
+                }
+            }
+            else entries.Add("本次复制：尚无可复制的非应对技能。");
         }
 
         if (CardRules.IsResponse(skill) && CardRules.NormalCast(skill) is { } normal)
         {
-            var normalDetails = CombatCalculationDetails(normal, owner);
+            var normalDetails = CombatCalculationDetails(normal, owner, manager);
             if (!string.IsNullOrWhiteSpace(normalDetails)) entries.Add($"未应对普通分支：\n{normalDetails}");
         }
         return string.Join("\n", entries.Distinct());
@@ -210,6 +399,7 @@ public static class CardPresentation
 
     public static string CombatTargetText(ActiveSkillData skill, string effectText)
     {
+        if(skill.skill_name=="复命")return "从最近一次施展的非应对技能的合法目标中随机选择";
         if (CardRules.IsResponse(skill)) return "应对：自身及匹配的来袭者；未应对：" + (CardRules.NormalCast(skill) is { } normal
             ? CombatTargetText(normal, normal.description) : "无目标（空放）");
         if (skill.aoe_range > 0)
@@ -246,7 +436,7 @@ public static class CardPresentation
     public static string CombatCooldownText(ActiveSkillData skill, GodotObject? owner, BattleManager? manager)
     {
         if (skill.cooldown_rounds <= 0) return "";
-        var text = $"回合冷却：{skill.cooldown_rounds}回合（使用当回合不可再用，之后跳过{skill.cooldown_rounds}个完整回合）";
+        var text = $"冷却：{skill.cooldown_rounds}回合（使用当回合不可再用，之后跳过{skill.cooldown_rounds}个完整回合）";
         if (GodotObject.IsInstanceValid(owner) && manager is not null)
             text += $"；{manager.get_skill_round_cooldown_text(owner!, skill)}";
         return text;
@@ -255,27 +445,42 @@ public static class CardPresentation
     private static bool DealsDamage(ActiveSkillData skill) =>
         !Mathf.IsZeroApprox(skill.base_damage) || skill.damage_bonuses.Count > 0 || !string.IsNullOrWhiteSpace(skill.damage_formula);
 
-    private static string StandardDamageSentence(ActiveSkillData skill, string existingText)
+    private static string StandardDamageSentence(ActiveSkillData skill, string existingText, GodotObject? owner)
     {
         var type = DamageTypeText(skill.damage_type);
-        var damageVerb = $"造成{type}伤害。";
-        if (CardRules.IsResponse(skill)) return $"对触发应对的来袭者{damageVerb}";
-        if (existingText.Contains("全体敌方") || existingText.Contains("所有敌方")) return $"对全体敌方各{damageVerb}";
-        if (skill.aoe_range > 0)
+        string targetPrefix;
+        if (CardRules.IsResponse(skill)) targetPrefix="对触发应对的来袭者";
+        else if (existingText.Contains("全体敌方") || existingText.Contains("所有敌方")) targetPrefix="对全体敌方各";
+        else if (skill.aoe_range > 0)
         {
             var isEnemyArea = skill.target_type == 2 || skill.target_type == 5 || skill.description.Contains("敌方") || skill.description.Contains("敌人");
             var faction = isEnemyArea ? "敌方单位" : "合法单位";
             var center = isEnemyArea ? "指定1名敌方" : "指定1名合法单位";
-            return $"对{center}及其周围 {skill.aoe_range} 格内的{faction}各{damageVerb}";
+            targetPrefix=$"对{center}及其周围 {skill.aoe_range} 格内的{faction}各";
         }
-        return skill.target_type switch
+        else targetPrefix=skill.target_type switch
         {
-            0 => $"对自身{damageVerb}",
-            1 => $"对自身{damageVerb}",
-            2 => $"对指定1名敌方{damageVerb}",
-            3 => $"对指定1名合法单位{damageVerb}",
-            _ => $"造成{type}伤害。"
+            0 => "对自身", 1 => "对自身", 2 => "对指定1名敌方", 3 => "对指定1名合法单位", _ => ""
         };
+
+        var baseValue=skill.calculate_damage(owner);
+        var previewValue=BattleActionResolver.preview_damage(owner,skill);
+        var previewDamage=Mathf.Max(1,Mathf.RoundToInt(previewValue));
+        var multiplier=Mathf.IsZeroApprox(baseValue)?1f:previewValue/baseValue;
+        var formula=$"max(1, round(({FormulaWithValues(DamageFormula(skill),owner)})×{FormatNumber(multiplier)}))";
+        var segmentFormula=FindAssignedFormulas(RawSkillText(skill)).FirstOrDefault(entry=>entry.label=="伤害段数");
+        var segmentCount=1;
+            if(!string.IsNullOrWhiteSpace(segmentFormula.formula)&&TryEvaluateFormula(segmentFormula.formula,owner,new System.Collections.Generic.Dictionary<string,float>(),out var parsedSegments))
+            segmentCount=Mathf.Max(1,Mathf.RoundToInt(parsedSegments));
+
+        var damageText=segmentCount>1
+            ? $"{targetPrefix}当前预估造成 {segmentCount} 段{type}伤害，每段 {previewDamage} 点。"
+            : $"{targetPrefix}当前预估造成 {previewDamage} 点{type}伤害。";
+        damageText+=$"计算公式：{formula} = {previewDamage} 点。";
+        if(segmentCount>1&&!string.IsNullOrWhiteSpace(segmentFormula.formula))
+            damageText+=$"\n伤害段数：{segmentCount} 段。计算公式：{FormulaWithValues(segmentFormula.formula,owner)} = {segmentCount} 段。";
+        damageText+=$"\n{DamagePreviewNote(skill)}";
+        return damageText;
     }
 
     private static bool IsDamageResultClause(string text) =>
@@ -333,6 +538,7 @@ public static class CardPresentation
     private static string FormulaWithValues(string formula, GodotObject? owner)
     {
         var display = DisplayFormula(formula).Replace("*", "×").Replace("/", "÷");
+        if(!GodotObject.IsInstanceValid(owner))return display;
         foreach (var pair in CardRules.Attributes.OrderByDescending(pair => pair.Key.Length))
         {
             if (!display.Contains(pair.Key)) continue;
@@ -367,15 +573,47 @@ public static class CardPresentation
     private static string[] Terms(string text)
     {
         var names=Mechanics.Keys.Concat(Reference.GetProperty("terms").EnumerateObject().Select(p=>p.Name))
+            .Concat(EncyclopediaResourceTerms())
             .Concat(Reference.GetProperty("cards").EnumerateObject().Where(p=>p.Value.GetProperty("text").GetString()!.Contains("唯一Buff")).Select(p=>p.Name))
-            .Concat(new[]{"物理伤害","法术伤害","神魂伤害"}).Distinct().Where(text.Contains).OrderByDescending(s=>s.Length).ToArray();
+            .Concat(new[]{"物理伤害","法术伤害","神魂伤害"}).Distinct().Where(text.Contains).OrderByDescending(s=>s.Length).ThenBy(s=>s,StringComparer.Ordinal).ToArray();
         return names;
+    }
+    private static string[] EncyclopediaResourceTerms()
+    {
+        if(_encyclopediaResourceTerms is not null)return _encyclopediaResourceTerms;
+        var terms=new HashSet<string>(StringComparer.Ordinal);
+        foreach(var path in FindResources("res://resources/battle/statuses"))
+            if(ResourceLoader.Load<StatusEffect>(path) is { } status&&!string.IsNullOrWhiteSpace(status.name))terms.Add(status.name);
+        foreach(var path in FindResources("res://resources/activeskills"))
+        {
+            var source=Godot.FileAccess.GetFileAsString(path);
+            if(!source.Contains("skill_type = 6",StringComparison.Ordinal)&&!source.Contains("slot_category = \"passive\"",StringComparison.Ordinal)&&!Regex.IsMatch(source,@"(?m)^keywords\s*=.*固有"))continue;
+            if(ResourceLoader.Load<ActiveSkillData>(path) is { } skill&&!string.IsNullOrWhiteSpace(skill.skill_name))terms.Add(skill.skill_name);
+        }
+        _encyclopediaResourceTerms=terms.ToArray();
+        return _encyclopediaResourceTerms;
+    }
+    private static IEnumerable<string> FindResources(string root)
+    {
+        var files=new List<string>();
+        CollectResources(root,files);
+        return files;
+    }
+    private static void CollectResources(string directory,List<string> files)
+    {
+        var access=DirAccess.Open(directory);
+        if(access is null)return;
+        foreach(var file in access.GetFiles())
+            if(file.EndsWith(".tres",StringComparison.OrdinalIgnoreCase))files.Add($"{directory}/{file}");
+        foreach(var child in access.GetDirectories())CollectResources($"{directory}/{child}",files);
     }
     private static string TermPattern(string text) => string.Join("|",Terms(text).Select(Regex.Escape).DefaultIfEmpty("(?!)"));
     public static string Details(ActiveSkillData skill, GodotObject? owner)
     {
         var face=Face(skill,owner);var entries=new List<string>();
-        foreach(var term in Regex.Matches(face,TermPattern(face)).Select(m=>m.Value).Distinct())
+        var terms=Regex.Matches(face,TermPattern(face)).Select(m=>m.Value)
+            .Concat(skill.get_presentation_tags()).Distinct();
+        foreach(var term in terms)
         {
             var explanation=Mechanics.GetValueOrDefault(term,"");
             if(string.IsNullOrEmpty(explanation) && Reference.GetProperty("terms").TryGetProperty(term,out var entry)) explanation=entry.GetString()??"";
@@ -385,11 +623,18 @@ public static class CardPresentation
                 var formula=string.IsNullOrWhiteSpace(skill.damage_formula)
                     ? skill.base_damage.ToString("0.##")+string.Concat(skill.damage_bonuses.Select(b=>$" + {CardRules.Attributes.FirstOrDefault(p=>p.Value==b.attribute).Key??b.attribute}×{b.multiplier:0.##}"))
                     : skill.damage_formula;
-                explanation=$"基础伤害 = {Readable(formula)} = {Mathf.RoundToInt(skill.calculate_damage(owner))}。\n计入当前自身增伤后 = {Mathf.RoundToInt(BattleActionResolver.preview_damage(owner,skill))}；命中、会心与目标防御在攻击时结算。";
+                var baseDamage=Mathf.RoundToInt(skill.calculate_damage(owner));
+                var finalDamage=Mathf.Max(1,Mathf.RoundToInt(BattleActionResolver.preview_damage(owner,skill)));
+                var multiplier=Mathf.IsZeroApprox(skill.calculate_damage(owner))?1f:BattleActionResolver.preview_damage(owner,skill)/skill.calculate_damage(owner);
+                explanation=$"基础伤害：{baseDamage} 点。计算公式：{FormulaWithValues(formula,owner)} = {baseDamage} 点。\n计入当前自身增伤后预计 {finalDamage} 点。计算公式：max(1, round(({FormulaWithValues(formula,owner)})×{FormatNumber(multiplier)})) = {finalDamage} 点；命中、会心与目标防御在攻击时结算。";
             }
             if(term=="化解" && !string.IsNullOrWhiteSpace(skill.stacks_formula))
-                explanation+=$"\n本次化解层数 = {Readable(skill.stacks_formula)} = {CardRules.Block(skill,owner)}。";
-            if(term=="乘势")explanation+=$"\n本次技能会心率加成 = {Readable(skill.momentum_effect_params)} = {Mathf.RoundToInt(CardRules.Evaluate(skill.momentum_effect_params,owner)*100)}%。";
+                explanation+=$"\n本次化解层数：{CardRules.Block(skill,owner)} 层。计算公式：{FormulaWithValues(skill.stacks_formula,owner)} = {CardRules.Block(skill,owner)} 层。";
+            if(term=="乘势")
+            {
+                var momentum=Mathf.RoundToInt(CardRules.Evaluate(skill.momentum_effect_params,owner)*100);
+                explanation+=$"\n本次技能会心率加成：{momentum}%。计算公式：{FormulaWithValues(skill.momentum_effect_params,owner)}×100% = {momentum}%。";
+            }
             if(!string.IsNullOrEmpty(explanation))entries.Add($"{term}\n{explanation}");
         }
         return string.Join("\n\n",entries);

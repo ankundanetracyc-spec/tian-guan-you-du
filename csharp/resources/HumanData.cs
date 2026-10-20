@@ -76,6 +76,8 @@ public partial class HumanData : LivingData
     [Export] public string family_guest_affiliation_id = "";
     [Export] public string basic_deck_path = "res://resources/basic_decks/公共基础技能池.tres";
     [Export] public Array<string> basic_deck_upgrade_ids = [];
+    /// <summary>角色已参悟的公共技能节点稳定 ID；旧存档默认为空。</summary>
+    [Export] public Array<string> unlocked_skill_node_ids = [];
     /// <summary>即时战斗固定技能槽；凝核牌局仍使用独立的牌局数据。</summary>
     [Export] public Array<string> combat_skill_slot_paths = [];
     /// <summary>是否已经手动确认过即时战斗技能槽；用于区分默认装配与玩家主动清空。</summary>

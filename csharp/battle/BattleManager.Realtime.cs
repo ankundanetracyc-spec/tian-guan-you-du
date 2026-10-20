@@ -26,6 +26,8 @@ public partial class BattleManager : Node2D
 
     private void InitializeRealtimeBattle()
     {
+        _pendingZhouTianAutoCasts.Clear();
+        _runningZhouTianAutoCasts.Clear();
         foreach (var unit in all_units)
         {
             gongfa_combat.Begin(unit);
@@ -35,7 +37,7 @@ public partial class BattleManager : Node2D
             _skillCooldowns[unit] = new System.Collections.Generic.Dictionary<ActiveSkillData, float>();
             _skillCharges[unit] = new System.Collections.Generic.Dictionary<ActiveSkillData, int>();
             foreach (var skill in loadout) if (skill.max_charges > 0) _skillCharges[unit][skill] = skill.max_charges;
-            _energyRegen[unit] = _manaRegen[unit] = 0;
+            _energyRegen[unit] = 0;
             _enemyPlanTimers[unit] = 0;
         }
         CallDeferred(nameof(BeginPlanningSegment));
@@ -173,21 +175,15 @@ public partial class BattleManager : Node2D
 
     private void RegenerateResources(GodotObject unit, float frames)
     {
-        var energyFactor = RegenFactor(CardRules.Number(unit, "physique") + CardRules.Number(unit, "agility"));
-        var manaFactor = RegenFactor(CardRules.Number(unit, "intelligence") + CardRules.Number(unit, "soul"));
+        var energyFactor = RegenFactor(CardRules.Number(unit, "physique") * 2f);
         _energyRegen[unit] = _energyRegen.GetValueOrDefault(unit, 0) + frames * energyFactor;
-        _manaRegen[unit] = _manaRegen.GetValueOrDefault(unit, 0) + frames * manaFactor;
         while (_energyRegen[unit] >= EnergyBaseInterval) { _energyRegen[unit] -= EnergyBaseInterval; unit.Set("current_stamina", Mathf.Min(unit.Get("max_stamina").AsInt32(), unit.Get("current_stamina").AsInt32() + 1)); }
-        while (_manaRegen[unit] >= ManaBaseInterval) { _manaRegen[unit] -= ManaBaseInterval; unit.Set("current_mana", Mathf.Min(get_effective_mana_capacity(unit), unit.Get("current_mana").AsInt32() + 1)); }
     }
     private static float RegenFactor(float attributes) => Creature.calculate_combat_regen_factor(attributes);
 
-    /// <summary>当前体力/法力距离下一点恢复的连续进度（0—1），供资源槽显示小数填充。</summary>
+    /// <summary>当前体力距离下一点恢复的连续进度（0—1），供资源槽显示小数填充。</summary>
     public float get_energy_regen_progress(GodotObject unit) =>
         Mathf.Clamp(_energyRegen.GetValueOrDefault(unit, 0f) / EnergyBaseInterval, 0f, 1f);
-    public float get_mana_regen_progress(GodotObject unit) =>
-        Mathf.Clamp(_manaRegen.GetValueOrDefault(unit, 0f) / ManaBaseInterval, 0f, 1f);
-
     private void UpdateShieldVisualClocks()
     {
         foreach (var unit in all_units)

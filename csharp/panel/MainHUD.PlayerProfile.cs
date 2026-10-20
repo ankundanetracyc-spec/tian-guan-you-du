@@ -13,7 +13,6 @@ public partial class MainHUD
     private void fix_clickable_status_layout()
     {
         if (GetNodeOrNull<Control>("PlayerStatus") is not { } status) return;
-        status.TooltipText = "点击查看角色信息";
         status.MouseDefaultCursorShape = Control.CursorShape.PointingHand;
         if (status.GetChildCount() > 0 && status.GetChild(0) is MarginContainer margin)
             margin.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);

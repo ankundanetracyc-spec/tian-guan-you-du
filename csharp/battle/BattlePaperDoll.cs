@@ -14,6 +14,7 @@ public partial class BattlePaperDoll : Node2D
     public const string CombatMaleStaticPath = DefaultPortraitPath;
     public const string CombatFemaleStaticPath = FemaleStaticPortraitPath;
     private static readonly System.Collections.Generic.Dictionary<string, Rect2I> PortraitBounds = new();
+    private static readonly System.Collections.Generic.Dictionary<string, Rect2> ShieldEnvelopes = new();
     private Rect2 _portraitLocalBounds;
     private float _portraitCenterX;
 
@@ -159,6 +160,50 @@ public partial class BattlePaperDoll : Node2D
         return rect.Expand(transform * new Vector2(local.Position.X, local.End.Y));
     }
 
+    // Keep the approved upright oval around the standing body, independent of action width.
+    public Rect2 shield_world_rect()
+    {
+        if (_portraitLocalBounds.Size != Vector2.Zero && !_usesSpineCharacter)
+        {
+            var local = _portraitLocalBounds;
+            var texture = _usesSideInk ? _sideTextures.GetValueOrDefault("idle") : _portrait?.Texture;
+            if (texture is not null)
+            {
+                if (!ShieldEnvelopes.TryGetValue(texture.ResourcePath, out var envelope))
+                {
+                    var visible = VisiblePortraitBounds(texture);
+                    var centre = (Vector2)visible.GetCenter() + Vector2.Down * visible.Size.Y * .035f;
+                    var ry = visible.Size.Y * .65f;
+                    var rx = visible.Size.X * .52f;
+                    using var image = texture.GetImage();
+                    image.Convert(Image.Format.Rgba8);
+                    var pixels = image.GetData();
+                    var imageWidth = image.GetWidth();
+                    for (var y = visible.Position.Y; y < visible.End.Y; y += 4)
+                        for (var x = visible.Position.X; x < visible.End.X; x += 4)
+                            if (pixels[(y * imageWidth + x) * 4 + 3] > 25)
+                            {
+                                var dy = (y - centre.Y) / ry;
+                                rx = Mathf.Max(rx, Mathf.Abs(x - centre.X) / Mathf.Sqrt(Mathf.Max(.01f, 1 - dy * dy)));
+                            }
+                    var radius = new Vector2(rx * 1.055f, ry);
+                    envelope = new Rect2(centre - radius - (Vector2)visible.Position + _portraitLocalBounds.Position, radius * 2);
+                    ShieldEnvelopes[texture.ResourcePath] = envelope;
+                }
+                local = envelope;
+            }
+            if (_portrait?.FlipH == true) local.Position = new Vector2(-local.End.X, local.Position.Y);
+            var transform = _usesSideInk ? side_ink_visual_transform() : GlobalTransform;
+            var rect = new Rect2(transform * local.Position, Vector2.Zero);
+            rect = rect.Expand(transform * new Vector2(local.End.X, local.Position.Y));
+            rect = rect.Expand(transform * local.End);
+            return rect.Expand(transform * new Vector2(local.Position.X, local.End.Y));
+        }
+        var height = _displayHeightReference * Mathf.Abs(GlobalScale.Y);
+        var width = height * (_isForestWolf ? 1.4f : .75f);
+        return new Rect2(GlobalPosition - new Vector2(width * .75f, height * 1.08f), new Vector2(width * 1.5f, height * 1.22f));
+    }
+
     public override void _Ready()
     {
         _portrait ??= CreatePortrait();
@@ -171,6 +216,7 @@ public partial class BattlePaperDoll : Node2D
     }
 
     public bool uses_spine_character() => _usesSpineCharacter;
+    public float body_display_height_local() => _displayHeightReference * Mathf.Abs(Scale.Y);
 
     // Include the sleeves and the forward attack pose, rather than just the torso.
     public float get_contact_radius() => _displayHeightReference * (_portraitFacesLeft ? 1.05f : .32f) * Mathf.Abs(GlobalScale.X);
@@ -226,7 +272,7 @@ public partial class BattlePaperDoll : Node2D
         {
             // 受击／倒地已经替换攻击时，不暂停新动作。
             if(_usesSpineCharacter && _spineAnimation!="attack")return;
-            if (_usesSideInk && _sidePose != "chop") return;
+            if (_usesSideInk && _sidePose is not ("chop" or "cast" or "throw")) return;
             _attackContactHeld=true;
             _heldAttackTween=_actionTween;
             if(_heldAttackTween?.IsValid()==true)_heldAttackTween.Pause();
@@ -295,7 +341,7 @@ public partial class BattlePaperDoll : Node2D
 
     public Vector2 combat_anchor(bool head = false) => ToGlobal(new Vector2(0f, head ? _combatHeadY : _combatChestY));
 
-    public void play_hit(Vector2 direction, float weight = 1f, bool critical = false)
+    public void play_hit(Vector2 direction, float weight = 1f, bool critical = false, bool playHurtFx = true)
     {
         if (is_defense_presenting()) { emphasize_contact(weight); return; }
         EndContactPoseHold();
@@ -303,7 +349,7 @@ public partial class BattlePaperDoll : Node2D
         {
             StartSideInkPose("hurt", 1.12f);
             emphasize_contact(weight);
-            BattleInkCombatVfx.PlayHurt(this, weight, critical);
+            if (playHurtFx) BattleInkCombatVfx.PlayHurt(this, weight, critical);
         }
         if (_usesSpineCharacter) PlaySpineAnimation("hurt", false);
         _actionTween?.Kill();

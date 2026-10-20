@@ -32,6 +32,21 @@ public partial class ItemData : EntityData
         if (grade_value < 0 || grade_value > 27)
             errors.Add("品阶值必须位于0至27");
         errors.AddRange(ItemAffixCatalog.validate_tags(tags, item_category == "材料"));
+        if (item_category == "材料")
+        {
+            if (craft_data is not MaterialCraftData material)
+                errors.Add("材料必须配置材性数据");
+            else
+            {
+                var textureValues = ItemAffixCatalog.get_tag_values(tags, "质地");
+                if (!ItemAffixCatalog.is_material_texture(material.texture))
+                    errors.Add($"材性数据缺少有效主导加工类型：{material.texture}");
+                if (textureValues.Count == 1 && textureValues[0] != material.texture)
+                    errors.Add($"质地词缀与材性主导加工类型不一致：{textureValues[0]} / {material.texture}");
+                if (!string.IsNullOrWhiteSpace(material.legacy_texture) && !ItemAffixCatalog.is_legacy_texture(material.legacy_texture))
+                    errors.Add($"材性数据含无效旧材类兼容值：{material.legacy_texture}");
+            }
+        }
         return errors;
     }
 }

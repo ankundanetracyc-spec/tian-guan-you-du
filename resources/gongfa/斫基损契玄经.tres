@@ -1,0 +1,127 @@
+[gd_resource type="Resource" script_class="GongfaResource" format=3]
+
+[ext_resource type="Script" path="res://csharp/gongfa/GongfaResource.cs" id="1"]
+[ext_resource type="Script" path="res://csharp/gongfa/GongfaChapterConfig.cs" id="2"]
+[ext_resource type="Script" path="res://csharp/gongfa/GongfaDeckRewriteConfig.cs" id="3"]
+[ext_resource type="Resource" path="res://resources/activeskills/斫基损契玄经/斫基损契.tres" id="4_heart"]
+[ext_resource type="Resource" path="res://resources/activeskills/斫基损契玄经/折锋.tres" id="5_zhefeng"]
+[ext_resource type="Resource" path="res://resources/activeskills/斫基损契玄经/焚元.tres" id="6_fenyuan"]
+[ext_resource type="Resource" path="res://resources/activeskills/斫基损契玄经/化法/折锋.tres" id="7_huafa_zhefeng"]
+[ext_resource type="Resource" path="res://resources/activeskills/斫基损契玄经/化法/焚元.tres" id="8_huafa_fenyuan"]
+[ext_resource type="Resource" path="res://resources/activeskills/斫基损契玄经/化法/架招.tres" id="9_huafa_jiazhao"]
+[ext_resource type="Resource" path="res://resources/activeskills/斫基损契玄经/化法/折锋长明.tres" id="10_huafa_zhefeng_changming"]
+[ext_resource type="Resource" path="res://resources/activeskills/架招.tres" id="11_jiazhao"]
+
+[sub_resource type="Resource" id="RewriteZheFengFirst"]
+script = ExtResource("3")
+mode = 1
+target_scope = 1
+source_skill_name = "折锋"
+result_skill = ExtResource("7_huafa_zhefeng")
+
+[sub_resource type="Resource" id="RewriteFenYuan"]
+script = ExtResource("3")
+mode = 1
+target_scope = 1
+source_skill_name = "焚元"
+result_skill = ExtResource("8_huafa_fenyuan")
+
+[sub_resource type="Resource" id="RewriteJiaZhao"]
+script = ExtResource("3")
+mode = 1
+target_scope = 0
+source_skill = ExtResource("11_jiazhao")
+source_skill_name = "架招"
+result_skill = ExtResource("9_huafa_jiazhao")
+
+[sub_resource type="Resource" id="RewriteZheFengFourth"]
+script = ExtResource("3")
+mode = 1
+target_scope = 1
+source_skill_name = "折锋"
+result_skill = ExtResource("10_huafa_zhefeng_changming")
+
+[sub_resource type="Resource" id="ChapterBingZhu"]
+script = ExtResource("2")
+chapter_id = "zhuo_ji_1"
+chapter_name = "秉烛"
+description = "以燃烧法力上限补足法力费用，开篇授予折锋。"
+order = 1
+required_study_progress = 24.0
+required_realm = "凡人"
+required_attributes = {"intelligence":5.0}
+learn_permanent_bonuses = {"intelligence":0.5, "magic_proficiency":0.5}
+left_branch_name = "修持"
+right_branch_name = "化法"
+learned_active_skills = Array[Resource]([ExtResource("5_zhefeng")])
+combat_tempering_bonuses = {"max_mana_yunxi":1.0}
+sub_deck_rewrites = Array[ExtResource("3")]([SubResource("RewriteZheFengFirst")])
+heart_method_description = "效果：法力不足的部分，可燃烧等量法力上限支付，至少保留1点法力上限；无法补足费用时，不可施展。\n主修额外效果：曾以燃烧法力上限支付过费用的技能，本场后续施展时，以等量体力替代法力费用。"
+
+[sub_resource type="Resource" id="ChapterJianDeng"]
+script = ExtResource("2")
+chapter_id = "zhuo_ji_2"
+chapter_name = "剪灯"
+description = "燃烧法力上限，积炁并改换后续费用。"
+order = 2
+required_study_progress = 48.0
+required_realm = "云息三层"
+required_attributes = {"intelligence":6.0, "magic_proficiency":0.5}
+required_chapter_ids = Array[String](["zhuo_ji_1"])
+learn_permanent_bonuses = {"magic_proficiency":0.5}
+left_branch_name = "修持"
+right_branch_name = "化法"
+learned_active_skills = Array[Resource]([ExtResource("6_fenyuan")])
+combat_tempering_bonuses = {"max_health_percent":10.0}
+sub_deck_rewrites = Array[ExtResource("3")]([SubResource("RewriteFenYuan")])
+heart_method_description = "心法被动：斫基损契（沿用第一卷，无新增效果）"
+[sub_resource type="Resource" id="ChapterXuZhao"]
+script = ExtResource("2")
+chapter_id = "zhuo_ji_3"
+chapter_name = "续照"
+description = "燃烧法力上限支付技能费用后，首次结算可积炁；架招化解亦能破盾。"
+order = 3
+required_study_progress = 84.0
+required_realm = "云息六层"
+required_attributes = {"intelligence":8.0, "magic_proficiency":1.0}
+required_chapter_ids = Array[String](["zhuo_ji_2"])
+learn_permanent_bonuses = {"intelligence":0.5, "magic_proficiency":1.0}
+left_branch_name = "修持"
+right_branch_name = "化法"
+combat_tempering_bonuses = {"physical_damage_percent":5.0}
+sub_deck_rewrites = Array[ExtResource("3")]([SubResource("RewriteJiaZhao")])
+heart_method_upgrade_id = "zhuo_ji_c3"
+heart_method_upgrade_description = "每回合首次以燃烧法力上限支付技能费用后，技能结算后获得炁1。"
+heart_method_description = "效果：法力不足的部分，可燃烧等量法力上限支付，至少保留1点法力上限；无法补足费用时，不可施展。每回合首次以燃烧法力上限支付技能费用后，技能结算后获得炁1。\n主修额外效果：曾以燃烧法力上限支付过费用的技能，本场后续施展时，法力费用改为等量体力费用。"
+
+[sub_resource type="Resource" id="ChapterChangMing"]
+script = ExtResource("2")
+chapter_id = "zhuo_ji_4"
+chapter_name = "长明"
+description = "法力上限为1时，折锋不可应对。"
+order = 4
+required_study_progress = 128.0
+required_realm = "云息九层"
+required_attributes = {"intelligence":10.0, "magic_proficiency":2.0}
+required_chapter_ids = Array[String](["zhuo_ji_3"])
+learn_permanent_bonuses = {"magic_proficiency":1.0}
+left_branch_name = "修持"
+right_branch_name = "化法"
+combat_tempering_bonuses = {"max_health_percent":10.0, "physical_damage_percent":5.0}
+sub_deck_rewrites = Array[ExtResource("3")]([SubResource("RewriteZheFengFourth")])
+heart_method_description = "心法被动：斫基损契（沿用第三卷，无新增效果）"
+
+[resource]
+script = ExtResource("1")
+gongfa_name = "斫基损契玄经"
+description = "燃烧法力上限补足费用，再以炁与体力接续攻势。"
+wuxing = 0
+can_be_main = true
+can_be_sub = true
+school_tags = Array[String](["cloud_breath"])
+required_study_progress = 24.0
+main_realm_start = "凡人"
+main_realm_end = "云息十层"
+heart_method_skill = ExtResource("4_heart")
+default_unlocked_chapter_count = 1
+chapters = Array[Resource]([SubResource("ChapterBingZhu"), SubResource("ChapterJianDeng"), SubResource("ChapterXuZhao"), SubResource("ChapterChangMing")])

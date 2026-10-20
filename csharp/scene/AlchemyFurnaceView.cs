@@ -7,18 +7,21 @@ public partial class AlchemyFurnaceView : Control
     private Texture2D[] _shells=[];
     private ShaderMaterial _fire=null!;
     private ColorRect _window=null!;
-    private TextureRect _rear=null!,_front=null!;
+    private TextureRect _rear=null!;
+    private MeshInstance2D _front=null!;
     private float _shownPower,_targetPower,_residual,_clock,_redraw;
     private int _appearance;
+    private int _layerPreview;
+    public void PreviewLayer(int layer){_layerPreview=Math.Clamp(layer,0,2);Arrange();}
     public int Appearance { get=>_appearance; set{_appearance=Math.Clamp(value,0,1);Arrange();QueueRedraw();} }
     public override void _Ready()
     {
         MouseFilter=MouseFilterEnum.Ignore;
-        _shells=[AlchemyPreviewScene.LoadRoomTexture("res://textures/ui/alchemy_room_20261017/furnace_front_shell_v8.png"),MakeShell(true)];
-        _rear=new TextureRect{Texture=AlchemyPreviewScene.LoadRoomTexture("res://textures/ui/alchemy_room_20261017/furnace_inner_back_v8.png"),ExpandMode=TextureRect.ExpandModeEnum.IgnoreSize,StretchMode=TextureRect.StretchModeEnum.Scale,MouseFilter=MouseFilterEnum.Ignore};AddChild(_rear);
+        _shells=[AlchemyPreviewScene.LoadRoomTexture("res://textures/ui/alchemy_room_20261017/furnace_front_half_soft_v13.png"),MakeShell(true)];
+        _rear=new TextureRect{Texture=AlchemyPreviewScene.LoadRoomTexture("res://textures/ui/alchemy_room_20261017/furnace_rear_half_soft_v13.png"),ExpandMode=TextureRect.ExpandModeEnum.IgnoreSize,StretchMode=TextureRect.StretchModeEnum.Scale,MouseFilter=MouseFilterEnum.Ignore};AddChild(_rear);
         _fire=new ShaderMaterial{Shader=GD.Load<Shader>("res://shaders/alchemy_furnace_fire.gdshader")};
         _window=new ColorRect{Color=Colors.White,Material=_fire,MouseFilter=MouseFilterEnum.Ignore};AddChild(_window);
-        _front=new TextureRect{Texture=_shells[0],ExpandMode=TextureRect.ExpandModeEnum.IgnoreSize,StretchMode=TextureRect.StretchModeEnum.Scale,MouseFilter=MouseFilterEnum.Ignore};AddChild(_front);
+        _front=new MeshInstance2D{Texture=_shells[0],Mesh=FrontSurface()};AddChild(_front);
         Resized+=()=>{Arrange();QueueRedraw();};Arrange();
     }
     public void SetState(double actualPower,double temperature)
@@ -26,20 +29,48 @@ public partial class AlchemyFurnaceView : Control
         _targetPower=(float)Math.Clamp(actualPower/4,0,1);_residual=(float)Math.Clamp((temperature-25)/85,0,1);
         SetProcess(true);
     }
+    public Vector2 MouthGlobalPosition => GlobalPosition+(_appearance==0&&_shells.Length>0
+        ? SpriteRect().Position+SpriteRect().Size*new Vector2(.5f,550f/1536f)
+        : Origin+new Vector2(300,194)*DrawingScale);
     private float DrawingScale=>Mathf.Min(Size.X/600,Size.Y/540);
     private Vector2 Origin=>(Size-new Vector2(600,540)*DrawingScale)/2;
     private void Arrange()
     {
         if(_window is null)return;
-        _rear.Visible=_front.Visible=_appearance==0;
-        if(_appearance==0&&_shells.Length>0){var r=SpriteRect();_front.Position=r.Position;_front.Size=r.Size;_rear.Position=r.Position+r.Size*new Vector2(.315f,.595f);_rear.Size=r.Size*new Vector2(.37f,.175f);_window.Position=_rear.Position;_window.Size=_rear.Size;return;}
+        _rear.Visible=_appearance==0&&_layerPreview!=2;_front.Visible=_appearance==0&&_layerPreview!=1;_window.Visible=_layerPreview==0;
+        if(_appearance==0&&_shells.Length>0)
+        {
+            var r=SpriteRect();_rear.Position=r.Position;_rear.Size=r.Size;
+            _front.Position=r.Position;_front.Scale=r.Size/new Vector2(1024,1536);
+            _window.Position=r.Position+r.Size*new Vector2(.31f,.59f);_window.Size=r.Size*new Vector2(.38f,.18f);return;
+        }
         _window.Position=Origin+new Vector2(220,247)*DrawingScale;_window.Size=new Vector2(160,160)*DrawingScale;
     }
-    private Rect2 SpriteRect(){var native=_shells[0].GetSize();float s=Mathf.Min(Size.X/native.X,Size.Y/(native.Y*.989f));var fitted=native*s;return new Rect2(new Vector2((Size.X-fitted.X)/2,Size.Y-fitted.Y*.989f),fitted);}
+    private static ArrayMesh FrontSurface()
+    {
+        // Source UV rows, destination rows and half-widths. The foreground's redundant lip
+        // is omitted; the approved rear rim remains the sole shared upper edge.
+        float[] sourceY=[576,590,610,630,650,680,700,750,800,850,900,950,1000,1050,1100,1150,1190,1205,1210,1235,1300,1400,1446];
+        float[] sourceLeft=[198,183,180,172,160,132,111,64,32,14,6,10,23,48,88,152,244,317,419,427,448,417,419];
+        float[] targetY=[550,576,604,630,652,680,700,750,800,850,900,950,1000,1050,1100,1161,1210,1229,1235,1260,1326,1428,1475];
+        float[] targetLeft=[175,173,170,155,132,139,112,63,32,15,7,9,20,40,71,140,244,317,401,427,448,417,419];
+        using var surface=new SurfaceTool();surface.Begin(Mesh.PrimitiveType.Triangles);
+        void Vertex(int row,int col)
+        {
+            float sourceX=col==0?sourceLeft[row]+2:col==1?512:1024-sourceLeft[row]-2;
+            float targetX=col==0?targetLeft[row]+1:col==1?512:1024-targetLeft[row]-1;
+            surface.SetUV(new Vector2(sourceX/1024,sourceY[row]/1536));surface.AddVertex(new Vector3(targetX,targetY[row],0));
+        }
+        for(int row=0;row<sourceY.Length-1;row++)for(int col=0;col<2;col++)
+        {Vertex(row,col);Vertex(row+1,col);Vertex(row,col+1);Vertex(row,col+1);Vertex(row+1,col);Vertex(row+1,col+1);}
+        return surface.Commit();
+    }
+    private Rect2 SpriteRect(){var native=_shells[0].GetSize();float footBaseline=1475f/1536f;float s=Mathf.Min(Size.X/native.X,Size.Y/(native.Y*footBaseline));var fitted=native*s;return new Rect2(new Vector2((Size.X-fitted.X)/2,Size.Y-fitted.Y*footBaseline),fitted);}
     public override void _Process(double delta)
     {
         _clock+=(float)delta;_redraw+=(float)delta;
         _shownPower=Mathf.Lerp(_shownPower,_targetPower,1-Mathf.Exp(-(float)delta*6));
+        _fire.SetShaderParameter("animation_time",_clock);_window.QueueRedraw();
         _fire.SetShaderParameter("power",_shownPower);_fire.SetShaderParameter("residual",_residual);
         if(_redraw>.033){_redraw=0;QueueRedraw();}
         if(_targetPower<.001&&_shownPower<.001&&_residual<.001)SetProcess(false);

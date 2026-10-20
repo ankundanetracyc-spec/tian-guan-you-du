@@ -16,5 +16,6 @@ grade = 1
 [resource]
 script = ExtResource("1")
 polarity = 1
-texture = "甲"
+texture = "纤维"
+legacy_texture = "甲"
 utilities = Array[ExtResource("2")]([SubResource("UtilitySolid"), SubResource("UtilityGuard")])

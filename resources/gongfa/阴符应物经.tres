@@ -50,7 +50,7 @@ chapter_name = "承机"
 description = "承敌之机，令化解成为借力入口。"
 order = 1
 required_study_progress = 24.0
-required_attributes = {"physique": 5.0, "agility": 5.0}
+required_attributes = {"physique": 5.0, "coordination": 5.0}
 learn_permanent_bonuses = {"physique": 0.5, "body_proficiency": 0.5}
 learned_active_skills = Array[Resource]([ExtResource("4_chengji")])
 left_branch_name = "修持"
@@ -71,9 +71,9 @@ description = "借势而不竭势，保留层数给后续收束。"
 order = 2
 required_study_progress = 48.0
 required_realm = "云息三层"
-required_attributes = {"physique": 6.0, "agility": 7.0, "body_proficiency": 0.5}
+required_attributes = {"physique": 6.0, "coordination": 7.0, "body_proficiency": 0.5}
 required_chapter_ids = Array[String](["cheng_ji"])
-learn_permanent_bonuses = {"agility": 0.5, "body_proficiency": 0.5}
+learn_permanent_bonuses = {"physique": 0.25, "soul": 0.25, "body_proficiency": 0.5}
 learned_active_skills = Array[Resource]([ExtResource("5_xieshi")])
 left_branch_name = "修持"
 right_branch_name = "化法"
@@ -83,7 +83,7 @@ heart_method_description = "效果：累计以化解实际抵消的敌方物理�
 
 
 learn_bonus_revision = "study-balance-20261012"
-previous_learn_permanent_bonuses = {"agility": 0.5, "body_proficiency": 0.5}
+previous_learn_permanent_bonuses = {"physique": 0.25, "soul": 0.25, "body_proficiency": 0.5}
 
 [sub_resource type="Resource" id="ChapterYingWu"]
 script = ExtResource("2_chapter")
@@ -95,7 +95,7 @@ heart_method_upgrade_description = "心法累计抵消伤害的借力转化门�
 order = 3
 required_study_progress = 84.0
 required_realm = "云息六层"
-required_attributes = {"physique": 8.0, "agility": 8.0, "body_proficiency": 1}
+required_attributes = {"physique": 8.0, "coordination": 8.0, "body_proficiency": 1}
 required_chapter_ids = Array[String](["xie_shi"])
 learn_permanent_bonuses = {"physique": 0.5, "body_proficiency": 1}
 left_branch_name = "修持"
@@ -116,7 +116,7 @@ description = "合众势为一击，完成借力体系的终结反制。"
 order = 4
 required_study_progress = 128.0
 required_realm = "云息九层"
-required_attributes = {"physique": 9.0, "agility": 10.0, "body_proficiency": 2}
+required_attributes = {"physique": 9.0, "coordination": 10.0, "body_proficiency": 2}
 required_chapter_ids = Array[String](["ying_wu"])
 learn_permanent_bonuses = {"body_proficiency": 1}
 learned_active_skills = Array[Resource]([ExtResource("6_hejin")])

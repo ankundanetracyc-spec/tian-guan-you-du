@@ -21,14 +21,21 @@ public partial class BattleInkCombatVfx : Node2D
     public static bool DealsDamage(ActiveSkillData skill) => !Mathf.IsZeroApprox(skill.base_damage)
         || skill.damage_bonuses.Count > 0 || !string.IsNullOrWhiteSpace(skill.damage_formula);
 
+    // Presentation only: self-directed buffs/utilities use the approved quiet recovery pose.
+    // Response cards retain their contact guard, even though they also target themselves.
+    private static bool IsSelfBuffPresentation(ActiveSkillData skill) => skill.target_type == 0
+        && !CardRules.IsResponse(skill)
+        && skill.skill_type is ActiveSkillData.SkillType.BUFF or ActiveSkillData.SkillType.SPECIAL or ActiveSkillData.SkillType.POWER;
+
     public static Kind Profile(ActiveSkillData skill)
     {
         var name = skill.skill_name;
-        if (!DealsDamage(skill)) return name is "回气" or "养息" or "调息" or "平息" or "去故" or "还阳" or "偃月" or "吐纳归元" or "聚息" or "回春丹"
+        if (!DealsDamage(skill)) return !CardRules.IsResponse(skill)
+            && (IsSelfBuffPresentation(skill) || name is "回气" or "养息" or "调息" or "平息" or "去故" or "还阳" or "偃月" or "吐纳归元" or "聚息" or "回春丹")
             ? Kind.Recovery : Kind.Guard;
         return name switch
         {
-            "雷击符" => Kind.Thunder,
+            "雷击符" or "惊蛰" => Kind.Thunder,
             "爆炎符" or "烈焰突刺" => Kind.Fire,
             "魂刺" => Kind.SoulNeedle,
             "摄魂" => Kind.SoulDraw,
@@ -47,7 +54,9 @@ public partial class BattleInkCombatVfx : Node2D
         };
     }
 
-    public static string Describe(ActiveSkillData skill) => UsesHandChop(skill)
+    public static string Describe(ActiveSkillData skill) => IsJingzhe(skill)
+        ? "原地提指引雷，冰白雷芯裹着灰蓝雷柱自上向下贯落，短停后分叉余电收散。"
+        : UsesHandChop(skill)
         ? "侧向下劈姿势配合淡彩水墨序列帧，接触处短停、小范围墨花与自然漂散。"
         : Profile(skill) switch
     {
@@ -87,9 +96,10 @@ public partial class BattleInkCombatVfx : Node2D
     public static BattleInkCombatVfx? PlayAttack(GodotObject attacker, GodotObject target, ActiveSkillData skill)
     {
         if (attacker is not Node2D from || target is not Node2D to || !DealsDamage(skill)) return null;
+        if (IsJingzhe(skill) && to.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll") is { } lightningTarget) return PlayJingzhe(from, to, lightningTarget);
         if (SideDoll(from) is { } side && UsesHandChop(skill)) return PlayHandChop(side, skill);
         var kind = Profile(skill);
-        var start = Anchor(from);
+        var start = UsesThrowCast(skill) && SideDoll(from) is { } thrower ? thrower.throw_cast_origin() : Anchor(from);
         var end = Anchor(to, kind is Kind.SoulNeedle or Kind.SoulDraw);
         if (kind == Kind.Thunder) start = end + Vector2.Up * 250f;
         var offset = end - start;
@@ -112,6 +122,11 @@ public partial class BattleInkCombatVfx : Node2D
         if (evaded && SideDoll(to) is { } dodger) { PlayDodge(dodger); EmphasizeContact(attacker, to, .7f); return; }
         if (SideDoll(to)?.is_defense_presenting() == true) { EmphasizeContact(attacker, to, .9f); return; }
         EmphasizeContact(attacker, to, skill is null ? 1 : HitWeight(skill));
+        if (skill is not null && IsJingzhe(skill) && to.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll") is { } lightningTarget)
+        {
+            PlayJingzheContact(to, lightningTarget);
+            return;
+        }
         var kind = skill is null ? Kind.Strike : Profile(skill);
         if (!evaded && SideDoll(to) is { } side
             && (skill is null || UsesHandChop(skill)))

@@ -217,7 +217,6 @@ public partial class GameplayInputRouter : Node
         var canSave = saveManager?.has_active_slot == true &&
             (!battle || GetNodeOrNull<BattleTransitionManager>("/root/BattleTransitionManager")?.has_world_progress_snapshot() == true);
         _saveButton.Disabled = !canSave;
-        _saveButton.TooltipText = canSave ? "保存当前进度" : battle ? "当前战斗没有可保存的战前进度" : "尚未建立可用存档";
         _settingsButton = add_menu_button("设置", open_settings);
         add_menu_button("返回首页", request_return_home);
         if (_root is not null) _root.Show();

@@ -55,7 +55,7 @@ public partial class BattleManager : Node2D
     {
         if(unit is Creature creature)creature.process_status_event("turn_end",new Dictionary{["battle_manager"]=this,["unit"]=unit});
         if(!_realtimeMode)gongfa_combat.Fall(unit,1,false);
-        unit.Set("current_mana", 0); action_gauges[unit] = 0f; active_unit = null; turn_state = TurnState.IDLE;
+        action_gauges[unit] = 0f; active_unit = null; turn_state = TurnState.IDLE;
     }
     private Array<ActiveSkillData> Hand(GodotObject unit) => _hands.TryGetValue(unit,out var value)
         ? new(value.AsGodotArray().Select(v=>v.AsGodotObject()).OfType<ActiveSkillData>()) : [];
@@ -70,17 +70,17 @@ public partial class BattleManager : Node2D
     public void mark_unit_damaged_this_turn(GodotObject unit) { }
     public void resolve_pending_counter_followups(GodotObject target, Dictionary context)
     {
-        gongfa_combat.ResponseResolved(target,context.GetValueOrDefault("blocked_damage",0).AsInt32(),context.GetValueOrDefault("damage",0).AsInt32(),_chengjiResponses.Remove(target.GetInstanceId()));
+        gongfa_combat.ResponseResolved(target,context.GetValueOrDefault("attacker").AsGodotObject(),context.GetValueOrDefault("blocked_damage",0).AsInt32(),context.GetValueOrDefault("damage",0).AsInt32(),_chengjiResponses.Remove(target.GetInstanceId()));
     }
     // 现行队列战斗的命中入口必须等待特写；同步入口保留给旧模式与规则调用。
-    public async System.Threading.Tasks.Task<bool> PresentAutoResponse(GodotObject defender, GodotObject attacker, string damageType)
+    public async System.Threading.Tasks.Task<bool> PresentAutoResponse(GodotObject defender, GodotObject attacker, string damageType,ActiveSkillData? incomingSkill=null)
     {
         // Preserve the queued response decision and payment, but skip its visible
         // freeze-frame focus during unattended NPC battles.
-        if (_spectatorBattle) return try_auto_response(defender, attacker, damageType);
+        if (_spectatorBattle) return try_auto_response(defender, attacker, damageType,incomingSkill);
         if (!_realtimeMode || _segmentPhase != SegmentPhase.Executing || !Alive(defender) || !Alive(attacker)
             || _queuedHandledTargets.Contains(defender.GetInstanceId()) || !battle_units.ContainsKey(defender))
-            return try_auto_response(defender, attacker, damageType);
+            return try_auto_response(defender, attacker, damageType,incomingSkill);
         var queued = get_battle_unit(defender).current_segment_action;
         if (queued is null || queued.kind != BattleQueuedSkill.ActionKind.Skill
             || !CardRules.ResponseMatches(queued.skill, damageType) || !CanResolveSegmentAction(defender, queued, responseTriggered: true)
@@ -108,8 +108,9 @@ public partial class BattleManager : Node2D
     }
 
     /// <summary>攻击命中判定前自动触发一张可用的“应对”牌。</summary>
-    public bool try_auto_response(GodotObject defender, GodotObject attacker, string damageType = "physical")
+    public bool try_auto_response(GodotObject defender, GodotObject attacker, string damageType = "physical",ActiveSkillData? incomingSkill=null)
     {
+        if(incomingSkill is not null&&gongfa_combat.PreventsResponse(attacker,incomingSkill))return false;
         if (_realtimeMode)
         {
             if (_segmentPhase == SegmentPhase.Executing)

@@ -151,7 +151,7 @@ public partial class BattleManager : Node2D
                 MaxMana = unit.Get("max_mana").AsInt32()
             };
             // 体力在战斗中使用独立的 6 点上限；法力上限沿用角色境界快照。
-            unit.Set("max_stamina", BattleEnergyCap); unit.Set("current_stamina", 0);
+            unit.Set("max_stamina", snapshot.test_stamina_cap_override >= 0 ? snapshot.test_stamina_cap_override : BattleEnergyCap); unit.Set("current_stamina", 0);
             unit.Set("current_mana", 0);
             if (unit is Creature creature)
             {
@@ -161,6 +161,9 @@ public partial class BattleManager : Node2D
                 if (snapshot.cultivation_inspiration_starting_shield > 0)
                     creature.shield += snapshot.cultivation_inspiration_starting_shield;
             }
+            // 测试专用上限在身体／淬体初始化之后覆盖，避免被原容量推导重写。
+            if(snapshot.test_stamina_cap_override>=0)unit.Set("max_stamina",snapshot.test_stamina_cap_override);
+            if(snapshot.test_mana_cap_override>=0)unit.Set("max_mana",snapshot.test_mana_cap_override);
             // 战斗由角色身体区域的双击入口处理，避免世界实体单击就打开面板。
             unit.Set("input_pickable", false); unit.Set("visible", true);
             if (!_spectatorBattle) AddPaperDoll(unit, snapshot);

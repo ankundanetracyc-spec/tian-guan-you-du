@@ -42,7 +42,7 @@ public partial class InfoPanel
             row.AddThemeConstantOverride("separation", 8); parent.AddChild(row);
             if (large)
             {
-                var index = Array.IndexOf(new[] { "PhysiqueRow", "IntelligenceRow", "AgilityRow", "SoulRow", "FortuneRow", "ComprehensionRow" }, rowName);
+                var index = Array.IndexOf(new[] { "PhysiqueRow", "IntelligenceRow", "SoulRow", "FortuneRow", "ComprehensionRow" }, rowName);
                 if (index >= 0)
                 {
                     var sheet = GD.Load<Texture2D>("res://textures/ui/infopanel_attribute_icons_ink_v2.png");
@@ -58,7 +58,7 @@ public partial class InfoPanel
             CharacterHover(title, name, Legacy(rowName, false)); CharacterHover(number, name + " · 来源", Legacy(rowName, true));
         }
         var grid = new GridContainer { Columns = 2, SizeFlagsHorizontal = SizeFlags.ExpandFill }; grid.AddThemeConstantOverride("h_separation", 24); basic.AddChild(grid);
-        foreach (var stat in new[] { ("体魄", unit.physique, "PhysiqueRow"), ("灵慧", unit.intelligence, "IntelligenceRow"), ("敏捷", unit.agility, "AgilityRow"), ("神魂", unit.soul, "SoulRow"), ("福缘", unit.fortune, "FortuneRow"), ("悟性", unit.comprehension, "ComprehensionRow") })
+        foreach (var stat in new[] { ("体魄", unit.physique, "PhysiqueRow"), ("灵慧", unit.intelligence, "IntelligenceRow"), ("神魂", unit.soul, "SoulRow"), ("福缘", unit.fortune, "FortuneRow"), ("悟性", unit.comprehension, "ComprehensionRow") })
             Stat(grid, stat.Item1, stat.Item2.ToString("0.0"), stat.Item3, true);
         basic.AddChild(new HSeparator()); basic.AddChild(CharacterText("社交属性", 23));
         foreach (var stat in new[] { ("魅力", "charisma", "CharismaRow"), ("交际", "social", "SocialRow"), ("治事", "management", "ManagementRow") }) Stat(basic, stat.Item1, data_number(unit, stat.Item2).ToString("0.0"), stat.Item3);

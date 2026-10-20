@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="app.diagrams.net" agent="Codex">
+  <diagram id="tai_he_gan_wu_yang_yuan" name="太和感物养元宝册">
+    <mxGraphModel dx="3641" dy="2700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2600" pageHeight="2700" math="0" shadow="0">
+      <root>
+        <mxCell id="0" value="" />
+        <mxCell id="1" parent="0" value="" />
+        <mxCell id="title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=20;" value="太和感物养元宝册" vertex="1">
+          <mxGeometry height="74" width="560" x="740" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="overview" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=15;" value="&lt;div style=&quot;text-align:left;&quot;&gt;云息秘籍 / 可主修、可辅修&lt;br&gt;灵根：任意；主修可修至：云息十层&lt;br&gt;核心：自身应对积累气血；《涵虚》以应对获得护盾；《叩山》在目标应对或首段无伤时追加攻击。第四卷提升每回合首次应对收益，并使后续追加攻击有概率施加僵直。&lt;br&gt;心法由主修或辅修自动生效；修持随已学卷章逐卷累积。&lt;br&gt;设计提案，尚未接入运行时。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="190" width="560" x="740" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第一卷：听息&lt;br&gt;卷章ID：ting_xi&lt;br&gt;顺序：1&lt;br&gt;&lt;br&gt;定位：以自身应对积累气血&lt;br&gt;研读值（累计）：24&lt;br&gt;学成可修至：云息三层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：凡人境及以上&lt;br&gt;前置：无&lt;br&gt;研读属性：体魄≥5&lt;br&gt;&lt;br&gt;学会永久属性：体魄 +1；体道造诣 +0.5&lt;br&gt;&lt;br&gt;习得：叩山&lt;/div&gt;" vertex="1">
+          <mxGeometry height="470" width="340" x="850" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：太和感物养元&lt;br&gt;类型：心法&lt;br&gt;关键词：气血、应对&lt;br&gt;效果：自身每次触发应对后，获得&lt;u&gt;气血&lt;/u&gt;1层；受&lt;u&gt;气血&lt;/u&gt;上限限制。&lt;br&gt;主修额外效果：无&lt;br&gt;&lt;br&gt;习得：叩山&lt;br&gt;&lt;br&gt;叩山：&lt;br&gt;类型：攻伐&lt;br&gt;关键词：应对&lt;br&gt;耗费：体力 1、法力 0&lt;br&gt;目标：指定1名敌方&lt;br&gt;伤害类型：物理&lt;br&gt;效果：造成A点物理伤害。目标以应对技能应对此次攻击时，触发一次应对并追加一段攻击，造成A点物理伤害；初始攻击段结算后未造成伤害时，再触发一次应对并追加一段攻击，造成A点物理伤害。两项条件分别判定，同时满足时各触发一次。计算公式：A=round(8 + 体魄×0.65 + 体道造诣×0.2)。&lt;br&gt;使用次数：不限&lt;br&gt;冷却：无&lt;/div&gt;" vertex="1">
+          <mxGeometry height="520" width="740" x="-400" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第二卷：回澜&lt;br&gt;卷章ID：hui_lan&lt;br&gt;顺序：2&lt;br&gt;&lt;br&gt;定位：以护盾承接敌方攻势&lt;br&gt;研读值（累计）：48&lt;br&gt;学成可修至：云息六层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：云息三层及以上&lt;br&gt;前置：ting_xi&lt;br&gt;研读属性：体魄≥6；体道造诣≥0.5&lt;br&gt;&lt;br&gt;学会永久属性：体魄 +0.5；体道造诣 +0.5&lt;br&gt;&lt;br&gt;习得：涵虚&lt;/div&gt;" vertex="1">
+          <mxGeometry height="430" width="340" x="850" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：太和感物养元（沿用第一卷，无新增效果）&lt;br&gt;&lt;br&gt;习得：涵虚&lt;br&gt;&lt;br&gt;涵虚：&lt;br&gt;类型：守御&lt;br&gt;关键词：护盾、应对&lt;br&gt;耗费：体力 1、法力 0&lt;br&gt;目标：自身；位于行动队列队首且受到敌方攻击时触发&lt;br&gt;效果：获得A点&lt;u&gt;护盾&lt;/u&gt;。计算公式：A=round(4 + 体魄×0.20 + min(体魄×0.20,神魂×0.20))。&lt;br&gt;使用次数：不限&lt;br&gt;冷却：无&lt;/div&gt;" vertex="1">
+          <mxGeometry height="470" width="740" x="-400" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第三卷：藏锋&lt;br&gt;卷章ID：cang_feng&lt;br&gt;顺序：3&lt;br&gt;&lt;br&gt;定位：以气血强化架招化解&lt;br&gt;研读值（累计）：84&lt;br&gt;学成可修至：云息九层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：云息六层及以上&lt;br&gt;前置：hui_lan&lt;br&gt;研读属性：体魄≥8；体道造诣≥1&lt;br&gt;&lt;br&gt;学会永久属性：体魄 +0.5；体道造诣 +1&lt;br&gt;&lt;br&gt;习得：无&lt;/div&gt;" vertex="1">
+          <mxGeometry height="470" width="340" x="850" y="1450" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：太和感物养元（沿用第一卷，无新增效果）&lt;br&gt;&lt;br&gt;习得：无&lt;/div&gt;" vertex="1">
+          <mxGeometry height="260" width="740" x="-400" y="1450" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;技能：架招&lt;br&gt;类型：守御&lt;br&gt;关键词：气血、化解、应对&lt;br&gt;耗费：体力 1、法力 0&lt;br&gt;目标：自身；位于行动队列队首且受到敌方物理攻击时触发&lt;br&gt;原技能效果：触发时获得A层&lt;u&gt;化解&lt;/u&gt;。&lt;br&gt;&lt;br&gt;化法追加：架招触发应对时，若自身至少有1层&lt;u&gt;气血&lt;/u&gt;，消耗1层，本次架招获得B层&lt;u&gt;化解&lt;/u&gt;；否则获得A层&lt;u&gt;化解&lt;/u&gt;。心法仍按应对次数结算&lt;u&gt;气血&lt;/u&gt;获得。计算公式：A=3 + floor(体魄÷4) + floor(min(体魄×0.25,神魂×0.20))；B=2×A。&lt;br&gt;使用次数：不限&lt;br&gt;冷却：无&lt;/div&gt;" vertex="1">
+          <mxGeometry height="430" width="290" x="1360" y="1450" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第四卷：返元&lt;br&gt;卷章ID：fan_yuan&lt;br&gt;顺序：4&lt;br&gt;&lt;br&gt;定位：提升每回合首次应对收益，以僵直延缓敌方攻势&lt;br&gt;研读值（累计）：128&lt;br&gt;学成可修至：云息十层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：云息九层及以上&lt;br&gt;前置：cang_feng&lt;br&gt;研读属性：体魄≥10；体道造诣≥2&lt;br&gt;&lt;br&gt;学会永久属性：体魄 +1；体道造诣 +1&lt;br&gt;&lt;br&gt;习得：无&lt;/div&gt;" vertex="1">
+          <mxGeometry height="430" width="340" x="850" y="1990" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：太和感物养元（第四卷升级：每个完整回合内首次触发应对后获得&lt;u&gt;气血&lt;/u&gt;2层；该回合内其余每次触发应对后获得&lt;u&gt;气血&lt;/u&gt;1层，均受&lt;u&gt;气血&lt;/u&gt;上限限制）&lt;br&gt;&lt;br&gt;习得：无&lt;/div&gt;" vertex="1">
+          <mxGeometry height="470" width="740" x="-400" y="1990" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;技能：叩山&lt;br&gt;类型：攻伐&lt;br&gt;关键词：应对、僵直&lt;br&gt;耗费：体力 1、法力 0&lt;br&gt;目标：指定1名敌方&lt;br&gt;伤害类型：物理&lt;br&gt;原技能效果：造成A点物理伤害。目标以应对技能应对此次攻击时，触发一次应对并追加一段攻击，造成A点物理伤害；初始攻击段结算后未造成伤害时，再触发一次应对并追加一段攻击，造成A点物理伤害。两项条件分别判定，同时满足时各触发一次。&lt;br&gt;&lt;br&gt;化法追加：每段由《叩山》追加的攻击命中后，独立判定B；成功时使目标进入僵直1秒。僵直期间目标行动条停止推进，已有进度保留。计算公式：A=round(8 + 体魄×0.65 + 体道造诣×0.2)；B=clamp(15% + 施加者体魄×1% − 目标体魄×0.75% + 卡牌境界修正 − 跨境界修正, 1%, 99%)。&lt;br&gt;使用次数：不限&lt;br&gt;冷却：无&lt;/div&gt;" vertex="1">
+          <mxGeometry height="520" width="290" x="1360" y="1990" as="geometry" />
+        </mxCell>
+        <mxCell id="summary" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" value="&lt;div style=&quot;text-align:left;&quot;&gt;构筑核心：自身应对积累气血；《涵虚》以应对获得护盾，《叩山》根据目标应对或首段是否造成伤害追加攻击；第四卷提升首次应对的气血收益，并使追加攻击有概率施加僵直。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="160" width="420" x="1660" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:left;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;最大生命 +15%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="260" x="360" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:left;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;气血上限 +1&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="270" x="390" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:left;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;物理伤害 +4%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="270" x="400" y="1450" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:left;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;最大生命 +10%&lt;br&gt;物理伤害 +6%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="270" x="370" y="1990" as="geometry" />
+        </mxCell>
+        <mxCell id="status_rules" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;结算规则&lt;br&gt;《叩山》目标应对此次攻击、初始攻击段未造成伤害，分别判定；同时满足时各触发一次应对并追加一段攻击，心法按两次应对分别结算。&lt;br&gt;同一技能已学卷章的化法追加累积生效；第二卷不再增加《叩山》化法，第三卷架招化法保留。&lt;br&gt;追加攻击不重复检查《叩山》的两项条件；第四卷化法对每段后续追加攻击分别判定僵直，初始攻击段不判定。僵直不叠层，重复施加刷新持续时间。&lt;br&gt;&lt;br&gt;僵直期间目标行动条停止推进，已有进度保留；持续时间按行动阶段有效时间计算，暂停和动作演出期间不递减。&lt;br&gt;每个完整回合指所有角色行动队列均结算、跳过或清除后完成的一次规划与行动循环。&lt;br&gt;&lt;br&gt;接入边界&lt;br&gt;战斗运行时暂未将目标应对结果回传施招者，《叩山》的目标应对联动尚待支持。僵直为待接入状态。&lt;br&gt;&lt;br&gt;设计状态&lt;br&gt;四卷修持与化法已补齐；本书授予《叩山》《涵虚》两项技能。图稿为设计提案，尚未接入运行时。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="680" width="430" x="1660" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" edge="1" parent="1" source="overview" style="endArrow=block;html=1;" target="c1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_a" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_c" edge="1" parent="1" source="c1" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c1_cards" value="本卷心法与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_a" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_c" edge="1" parent="1" source="c2" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c2_cards" value="心法与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_a" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_b" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_c" edge="1" parent="1" source="c3" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c3_cards" value="心法与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_a" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_b" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_c" edge="1" parent="1" source="c4" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c4_cards" value="心法与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

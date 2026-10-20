@@ -8,8 +8,8 @@
 script = ExtResource("1")
 modifier_id = "forest_wolf_shadowfoot"
 display_name = "影足凶狼"
-physique_multiplier = 0.9
+physique_multiplier = 1.08
 intelligence_multiplier = 1.1
-agility_multiplier = 1.2
+soul_multiplier = 1.2
 racial_talent_override = ExtResource("2")
 deck_override = ExtResource("3")

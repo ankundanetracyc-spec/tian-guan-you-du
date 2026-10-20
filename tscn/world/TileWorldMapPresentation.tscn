@@ -117,7 +117,6 @@ offset_left = -382.0
 offset_top = 22.0
 offset_right = -336.0
 offset_bottom = 68.0
-tooltip_text = "缩小（滚轮向下）"
 text = "−"
 
 [node name="ZoomReset" type="Button" parent="."]
@@ -130,7 +129,6 @@ offset_left = -328.0
 offset_top = 22.0
 offset_right = -234.0
 offset_bottom = 68.0
-tooltip_text = "恢复地图初始视野"
 text = "100%"
 
 [node name="ZoomIn" type="Button" parent="."]
@@ -143,7 +141,6 @@ offset_left = -226.0
 offset_top = 22.0
 offset_right = -180.0
 offset_bottom = 68.0
-tooltip_text = "放大（滚轮向上）"
 text = "+"
 
 [node name="SelectedCellInfo" type="PanelContainer" parent="."]

@@ -108,6 +108,7 @@ public partial class BattleFlowView : CanvasLayer
         _titleArt.Hide();_heading.Position=new(116,86);_heading.AddThemeFontSizeOverride("font_size",30);
         Divider(_body,new(696,8),new(1,550));
         _selected=units.FirstOrDefault(u=>u.uid==_selected?.uid)??units.FirstOrDefault(u=>u.faction==1)??units.FirstOrDefault();
+        _hint.Text=_selected is null?"选择角色以查看战斗属性":$"当前查看：{_selected.entity_name} · 点击其他角色可切换";
         for(var side=0;side<2;side++)
         {
             var faction=side==0?1:2;var members=units.Where(u=>u.faction==faction).ToList();
@@ -119,13 +120,13 @@ public partial class BattleFlowView : CanvasLayer
             {
                 var row=Panel(list,Vector2.Zero,new(660,94));row.CustomMinimumSize=new(660,94);
                 Portrait(row,unit,new(10,4),86);
-                var name=Text(row,$"{unit.entity_name} · {unit.cultivation_realm}",new(112,5),new(522,28),20);name.TooltipText=unit.entity_name;
+                Text(row,$"{unit.entity_name} · {unit.cultivation_realm}",new(112,5),new(522,28),20);
                 Text(row,"生命",new(112,29),new(48,26),17);
                 Health(row,unit,new(168,38),new(286,14));
                 Text(row,$"{unit.current_health}/{unit.max_health}",new(466,29),new(168,28),17);
                 var capacity=capacities?.GetValueOrDefault(unit.uid)??5;
                 Text(row,$"速度 {unit.initiative_speed:0.#}    遁速 {(unit.dun_speed>0?unit.dun_speed.ToString("0.#"):"—")}    行动位 {capacity}",new(112,57),new(522,26),17);
-                var hit=new Button{Flat=true,Position=Vector2.Zero,Size=new(660,94),TooltipText=unit.entity_name+" · 点击选择查看资料",FocusMode=Control.FocusModeEnum.None};
+                var hit=new Button{Flat=true,Position=Vector2.Zero,Size=new(660,94),FocusMode=Control.FocusModeEnum.None,MouseDefaultCursorShape=Control.CursorShape.PointingHand};
                 foreach(var state in new[]{"normal","hover","pressed","focus"})hit.AddThemeStyleboxOverride(state,new StyleBoxFlat{BgColor=state=="hover"?new Color(1,1,1,.04f):Colors.Transparent});
                 row.AddChild(hit);hit.Pressed+=()=>{_selected=unit;_hint.Text=$"当前查看：{unit.entity_name}";};
             }
@@ -146,7 +147,7 @@ public partial class BattleFlowView : CanvasLayer
         {
             var label=new Label{Text=value,AutowrapMode=TextServer.AutowrapMode.WordSmart,SizeFlagsHorizontal=Control.SizeFlags.ExpandFill};label.AddThemeFontSizeOverride("font_size",21);label.AddThemeColorOverride("font_color",BattleUiArt.Text);list.AddChild(label);
         }
-        Paragraph($"基础属性\n体魄 {unit.physique:0.#}　灵慧 {unit.intelligence:0.#}　敏捷 {unit.agility:0.#}　神魂 {unit.soul:0.#}");
+        Paragraph($"基础属性\n体魄 {unit.physique:0.#}　灵慧 {unit.intelligence:0.#}　神魂 {unit.soul:0.#}　身心协调值 {Mathf.Min(unit.physique,unit.soul):0.#}");
         if(unit.entity_type==(int)WorldEntity.EntityType.CHARACTER)Paragraph($"福缘 {unit.fortune}　悟性 {unit.comprehension}　魅力 {unit.charisma:0.#}　交际 {unit.social:0.#}　治事 {unit.management:0.#}");
         Paragraph($"战斗属性\n生命 {unit.current_health}/{unit.max_health}　体力 {unit.current_stamina}/{unit.max_stamina}　速度 {unit.initiative_speed:0.#}\n物理防御 {unit.physical_defense}　物理减伤 {unit.physical_damage_reduction*100:0.#}%\n精准 {unit.precision}　身法 {unit.dodge}　会心 {unit.critical}　护心 {unit.crit_resist}　会心伤害 {unit.crit_damage_mult*100:0.#}%");
         if(unit.entity_type==(int)WorldEntity.EntityType.CHARACTER || unit.max_mana>0)Paragraph($"法力 {unit.current_mana}/{unit.max_mana}　灵识 {unit.used_spirit_perception}/{unit.max_spirit_perception}");
@@ -168,7 +169,7 @@ public partial class BattleFlowView : CanvasLayer
             {
                 var row=Panel(list,Vector2.Zero,new(450,102));row.CustomMinimumSize=new(450,102);Portrait(row,unit,new(8,8),86);
                 var original=before.FirstOrDefault(u=>u.uid==unit.uid);
-                var name=Text(row,unit.entity_name,new(106,4),new(330,26),19);row.TooltipText=unit.entity_name;
+                Text(row,unit.entity_name,new(106,4),new(330,26),19);
                 Text(row,$"{original?.current_health??unit.current_health} → {unit.current_health}/{unit.max_health}",new(106,31),new(330,24),16);
                 Health(row,unit,new(106,59),new(326,8));
                 var status=unit.current_health<=0?"无法继续行动":$"外伤 {unit.battle_external_wounds} · 内伤 {unit.battle_internal_wounds}";
@@ -198,8 +199,8 @@ public partial class BattleFlowView : CanvasLayer
                 var font=name.GetThemeFont("font");
                 while(shortened.Length>0 && font.GetStringSize(shortened+(shortened==fullName?"":"…")+suffix,HorizontalAlignment.Left,-1,16).X>128)shortened=shortened[..^1];
                 name.Text=shortened+(shortened==fullName?"":"…")+suffix;
-                tile.TooltipText=$"{item?.entity_name??"物品"} ×{entry.Count}\n{item?.get_grade_string()??""}\n来源：\n{entry.Sources}";
-                var hit=new Button{Flat=true,Size=new(136,158),FocusMode=Control.FocusModeEnum.None,TooltipText=tile.TooltipText};
+                var tooltip=$"{item?.entity_name??"物品"} ×{entry.Count}\n{item?.get_grade_string()??""}\n来源：\n{entry.Sources}";
+                var hit=new Button{Flat=true,Size=new(136,158),FocusMode=Control.FocusModeEnum.None,TooltipText=tooltip};
                 foreach(var state in new[]{"normal","hover","pressed","focus"})hit.AddThemeStyleboxOverride(state,new StyleBoxEmpty());tile.AddChild(hit);
                 hit.Pressed+=()=>ShowDetail(item,entry);
             }

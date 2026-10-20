@@ -12,4 +12,4 @@ target_type = 0
 range_min = 0
 range_max = 0
 keywords = Array[String](["消耗"])
-special_effects = Array[Dictionary]([{"effect":"restore_stamina","formula":"base:14;physique:0.15;agility:0.15;intelligence:0.15;soul:0.15"}])
+special_effects = Array[Dictionary]([{"effect":"restore_stamina","formula":"base:14;physique:0.15;physique:0.15;intelligence:0.15;soul:0.15"}])

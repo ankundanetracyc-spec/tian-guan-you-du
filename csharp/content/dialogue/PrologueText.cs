@@ -7,7 +7,7 @@ public static class PrologueText
     // patch probe
     public static readonly (string path, string name, string direction)[] InitialChoices =
     [
-        ("res://resources/gongfa/黄庭养形篇.tres", "黄庭养形篇", "气血周天流转，固本培元，滋养肉身。"),
+        ("res://resources/gongfa/黄庭养形篇.tres", "胎息经", "气血未尽时回落可积身法，归零时得借力；主修可消耗身法，以零气血攻击换回气血。"),
         ("res://resources/gongfa/阴符应物经.tres", "阴符应物经", "顺势卸力，静观其变，后发而先制。"),
         ("res://resources/gongfa/赤阳参同经.tres", "赤阳参同经", "炼气凝炉，沉敛内息，蓄势待发。")
     ];

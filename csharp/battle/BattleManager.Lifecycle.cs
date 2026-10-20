@@ -106,19 +106,26 @@ public partial class BattleManager : Node2D
     public bool CanPay(GodotObject unit, ActiveSkillData skill)
     {
         // 即时队列允许资源尚不足的牌先排队；资源门槛在其真正开始准备时检查。
-        return gongfa_combat.CanPlay(unit,skill) && (_realtimeMode || (unit.Get("current_stamina").AsInt32() >= gongfa_combat.Cost(unit,skill) && unit.Get("current_mana").AsInt32() >= skill.mana_cost));
+        return gongfa_combat.CanPlay(unit,skill) && (_realtimeMode || (unit.Get("current_stamina").AsInt32() >= get_skill_energy_cost(unit,skill) && can_pay_skill_mana_cost(unit,skill)));
     }
     private void Pay(GodotObject unit, ActiveSkillData skill)
     {
-        unit.Set("current_stamina", Mathf.Max(0, unit.Get("current_stamina").AsInt32() - get_skill_energy_cost(unit,skill)));
-        unit.Set("current_mana", Mathf.Max(0, unit.Get("current_mana").AsInt32() - get_skill_mana_cost(unit,skill)));
+        var energy=get_skill_energy_cost(unit,skill);var mana=get_skill_mana_cost(unit,skill);
+        gongfa_combat.RememberManaBeforePayment(unit,skill);
+        unit.Set("current_stamina", Mathf.Max(0, unit.Get("current_stamina").AsInt32() - energy));
+        PaySkillManaCost(unit,skill,mana);
     }
     private static void RefreshStamina(GodotObject unit)
     {
         var maximum = Mathf.Max(0, unit.Get("max_stamina").AsInt32());
         unit.Set("current_stamina", Mathf.Min(maximum, unit.Get("current_stamina").AsInt32() + 1));
     }
-    private static void RefreshMana(GodotObject unit) => unit.Set("current_mana", Mathf.Max(0, unit.Get("max_mana").AsInt32()));
+    private void InitializeOrClampBattleMana(GodotObject unit)
+    {
+        var capacity = Mathf.Max(0, get_effective_mana_capacity(unit));
+        var current = unit.Get("current_mana").AsInt32();
+        unit.Set("current_mana", _manaInitializedForBattle.Add(unit) ? capacity : Mathf.Clamp(current, 0, capacity));
+    }
     private int FactionCount(int faction) => all_units.Count(unit => unit.Get("faction").AsInt32() == faction);
     private static void AddPaperDoll(Node unit, BattleEntityData snapshot)
     {
@@ -166,7 +173,7 @@ public partial class BattleManager : Node2D
         _queuedPlayerCards.Clear();
         _livingUnits.Clear();
         _energyRegen.Clear();
-        _manaRegen.Clear();
+        _manaInitializedForBattle.Clear();
         _drawElapsedFrames.Clear();
         _enemyPlanTimers.Clear();
         _enemyKnowledge.Clear();
@@ -175,6 +182,8 @@ public partial class BattleManager : Node2D
         _skillReadyRounds.Clear();
         _skillCharges.Clear();
         _pendingTargetSkills.Clear();
+        _pendingZhouTianAutoCasts.Clear();
+        _runningZhouTianAutoCasts.Clear();
         _returning_to_world = false;
         _skillBar?.Hide();
         _planHud?.Hide();
