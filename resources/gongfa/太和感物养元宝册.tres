@@ -1,0 +1,111 @@
+[gd_resource type="Resource" script_class="GongfaResource" format=3]
+
+[ext_resource type="Script" path="res://csharp/gongfa/GongfaResource.cs" id="1"]
+[ext_resource type="Script" path="res://csharp/gongfa/GongfaChapterConfig.cs" id="2"]
+[ext_resource type="Script" path="res://csharp/gongfa/GongfaDeckRewriteConfig.cs" id="3"]
+[ext_resource type="Resource" path="res://resources/activeskills/太和感物养元宝册/太和感物养元.tres" id="4_heart"]
+[ext_resource type="Resource" path="res://resources/activeskills/太和感物养元宝册/叩山.tres" id="5_koushan"]
+[ext_resource type="Resource" path="res://resources/activeskills/太和感物养元宝册/涵虚.tres" id="6_hanxu"]
+[ext_resource type="Resource" path="res://resources/activeskills/架招.tres" id="7_jiazhao"]
+[ext_resource type="Resource" path="res://resources/activeskills/太和感物养元宝册/化法/架招.tres" id="8_huafa_jiazhao"]
+[ext_resource type="Resource" path="res://resources/activeskills/太和感物养元宝册/化法/叩山.tres" id="9_huafa_koushan"]
+
+[sub_resource type="Resource" id="RewriteJiazhaoC3"]
+script = ExtResource("3")
+mode = 1
+target_scope = 0
+source_skill = ExtResource("7_jiazhao")
+source_skill_name = "架招"
+result_skill = ExtResource("8_huafa_jiazhao")
+
+[sub_resource type="Resource" id="RewriteKoushanC4"]
+script = ExtResource("3")
+mode = 1
+target_scope = 1
+source_skill_name = "叩山"
+result_skill = ExtResource("9_huafa_koushan")
+
+[sub_resource type="Resource" id="ChapterTingXi"]
+script = ExtResource("2")
+chapter_id = "ting_xi"
+chapter_name = "听息"
+description = "以自身应对积累气血。"
+order = 1
+required_study_progress = 24.0
+required_realm = "凡人"
+required_attributes = {"physique":5.0}
+left_branch_name = "修持"
+right_branch_name = "化法"
+learn_permanent_bonuses = {"physique":1.0, "body_proficiency":0.5}
+learned_active_skills = Array[Resource]([ExtResource("5_koushan")])
+combat_tempering_bonuses = {"max_health_percent":15.0}
+heart_method_description = "心法被动：太和感物养元\n效果：自身每次触发应对后，获得气血1层；受气血上限限制。"
+
+[sub_resource type="Resource" id="ChapterHuiLan"]
+script = ExtResource("2")
+chapter_id = "hui_lan"
+chapter_name = "回澜"
+description = "以护盾承接敌方攻势。"
+order = 2
+required_study_progress = 48.0
+required_realm = "云息三层"
+required_attributes = {"physique":6.0, "body_proficiency":0.5}
+required_chapter_ids = Array[String](["ting_xi"])
+left_branch_name = "修持"
+right_branch_name = "化法"
+learn_permanent_bonuses = {"physique":0.5, "body_proficiency":0.5}
+learned_active_skills = Array[Resource]([ExtResource("6_hanxu")])
+combat_tempering_bonuses = {"qi_blood_cap":1.0}
+heart_method_description = "心法被动：太和感物养元\n效果：沿用第一卷。"
+
+[sub_resource type="Resource" id="ChapterCangFeng"]
+script = ExtResource("2")
+chapter_id = "cang_feng"
+chapter_name = "藏锋"
+description = "以气血强化架招化解。"
+order = 3
+required_study_progress = 84.0
+required_realm = "云息六层"
+required_attributes = {"physique":8.0, "body_proficiency":1.0}
+required_chapter_ids = Array[String](["hui_lan"])
+left_branch_name = "修持"
+right_branch_name = "化法"
+learn_permanent_bonuses = {"physique":0.5, "body_proficiency":1.0}
+combat_tempering_bonuses = {"physical_damage_percent":4.0}
+sub_deck_rewrites = Array[ExtResource("3")]([SubResource("RewriteJiazhaoC3")])
+heart_method_description = "心法被动：太和感物养元\n效果：沿用第一卷。"
+
+[sub_resource type="Resource" id="ChapterFanYuan"]
+script = ExtResource("2")
+chapter_id = "fan_yuan"
+chapter_name = "返元"
+description = "提升每回合首次应对收益，以僵直延缓攻势。"
+order = 4
+required_study_progress = 128.0
+required_realm = "云息九层"
+required_attributes = {"physique":10.0, "body_proficiency":2.0}
+required_chapter_ids = Array[String](["cang_feng"])
+left_branch_name = "修持"
+right_branch_name = "化法"
+learn_permanent_bonuses = {"physique":1.0, "body_proficiency":1.0}
+heart_method_upgrade_id = "taihe_c4"
+heart_method_upgrade_description = "每回合首次触发应对后获得气血2层；本回合后续应对仍各获得气血1层。"
+heart_method_description = "心法被动：太和感物养元\n效果：自身每次触发应对后，获得气血1层；受气血上限限制。第四卷升级：每回合首次触发应对后获得气血2层；本回合后续应对仍各获得气血1层。"
+combat_tempering_bonuses = {"max_health_percent":10.0, "physical_damage_percent":6.0}
+sub_deck_rewrites = Array[ExtResource("3")]([SubResource("RewriteKoushanC4")])
+
+[resource]
+script = ExtResource("1")
+gongfa_name = "太和感物养元宝册"
+description = "以气血积养应对之势，以叩山追击、涵虚承攻。"
+gameplay_enabled = true
+wuxing = 0
+can_be_main = true
+can_be_sub = true
+school_tags = Array[String](["cloud_breath"])
+required_study_progress = 24.0
+main_realm_start = "凡人"
+main_realm_end = "云息十层"
+heart_method_skill = ExtResource("4_heart")
+default_unlocked_chapter_count = 1
+chapters = Array[Resource]([SubResource("ChapterTingXi"), SubResource("ChapterHuiLan"), SubResource("ChapterCangFeng"), SubResource("ChapterFanYuan")])

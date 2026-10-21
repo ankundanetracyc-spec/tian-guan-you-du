@@ -20,6 +20,7 @@ public partial class BattleBloodQiArms : Node2D
     }
     private static Shader? _shader;
     private readonly Arm[] _arms = [new(),new()];
+    private readonly Queue<(int Arm,Node2D? Target)> _pendingFollowUps=new();
     private Node2D _subject = null!;
     private BattlePaperDoll? _doll;
     private int _count;
@@ -29,6 +30,7 @@ public partial class BattleBloodQiArms : Node2D
     private bool _actionGrouped;
     private int _originalSubjectZ,_liftedSubjectZ;
     private bool _depthLifted;
+    private int _nextFollowUpArm=1;
     public int ArmCount => _qiLevel>=_onset?_count:0;
     public int QiLevel => _qiLevel;
     public int MaximumSizeLevel => _onset+16;
@@ -92,13 +94,20 @@ public partial class BattleBloodQiArms : Node2D
 
     public void SetArmCount(int count, bool immediate=false)
     {
-        RestoreActionDepth();
-        _count=Mathf.Clamp(count,0,2);
-        for(var i=0;i<2;i++)
+        var next=Mathf.Clamp(count,0,2);
+        if(!immediate&&next==_count)return;
+        _count=next;
+        if(immediate)
         {
-            _arms[i].Action="idle"; _arms[i].Clock=0;
-            if(immediate) _arms[i].Presence=i<ArmCount?1:0;
+            RestoreActionDepth();
+            _pendingFollowUps.Clear();
+            for(var i=0;i<2;i++)
+            {
+                _arms[i].Action="idle"; _arms[i].Clock=0;
+                _arms[i].Presence=i<ArmCount?1:0;
+            }
         }
+        if(ArmCount==0)_pendingFollowUps.Clear();
         UpdateWaitGroup();
     }
     public Vector2 FollowUpContactPoint()
@@ -116,6 +125,15 @@ public partial class BattleBloodQiArms : Node2D
         _arms[chosen].Action="punch"; _arms[chosen].Clock=0;
         PrepareActionDepth(target);
         UpdateWaitGroup();
+    }
+    public void QueueFollowUp(Node2D? target=null)
+    {
+        var count=ArmCount;
+        if(count<=0)return;
+        var chosen=count==1?0:_nextFollowUpArm;
+        if(count>1)_nextFollowUpArm=1-_nextFollowUpArm;
+        if(_arms[chosen].Action=="idle")StartFollowUp(chosen,target);
+        else _pendingFollowUps.Enqueue((chosen,target));
     }
     public bool PlayAutoGuard(Node2D? incoming=null)
     {
@@ -149,7 +167,6 @@ public partial class BattleBloodQiArms : Node2D
             var arm=_arms[i];
             arm.Clock+=dt;
             arm.Presence=Mathf.MoveToward(arm.Presence,i<ArmCount?1:0,dt/.55f);
-            if(i>=ArmCount) arm.Action="idle";
             if(arm.Clock>=.84f) arm.Action="idle";
             var active=arm.Action!="idle"&&arm.Clock>=0;
             var drive=active ? Mathf.SmoothStep(0,1,Mathf.Clamp(arm.Clock/.14f,0,1))
@@ -169,9 +186,39 @@ public partial class BattleBloodQiArms : Node2D
             if(arm.Presence>.001f) arm.Orbit.Advance(_clock+i*.62f,arm.Presence,drive);
             arm.Pivot.Visible=arm.Presence>.001f;
         }
+        StartQueuedFollowUps();
         SyncTransform();
         if(_arms.All(arm=>arm.Action=="idle")) RestoreActionDepth();
         UpdateWaitGroup();
+    }
+
+    private void StartFollowUp(int index,Node2D? target)
+    {
+        if(index<0||index>=ArmCount||_arms[index].Action!="idle")return;
+        _arms[index].Action="punch";_arms[index].Clock=0;
+        PrepareActionDepth(target);
+        UpdateWaitGroup();
+    }
+    private void StartQueuedFollowUps()
+    {
+        if(_pendingFollowUps.Count==0||ArmCount==0)return;
+        var attempts=_pendingFollowUps.Count;
+        while(attempts-->0&&_pendingFollowUps.TryDequeue(out var pending))
+        {
+            var index=pending.Arm;
+            if(index>=ArmCount)index=ArmCount-1;
+            if(_arms[index].Action!="idle")
+            {
+                var alternate=ArmCount>1?1-index:index;
+                if(alternate>=ArmCount||_arms[alternate].Action!="idle")
+                {
+                    _pendingFollowUps.Enqueue(pending);
+                    continue;
+                }
+                index=alternate;
+            }
+            StartFollowUp(index,pending.Target);
+        }
     }
 
     private static int EffectiveDepth(CanvasItem item)

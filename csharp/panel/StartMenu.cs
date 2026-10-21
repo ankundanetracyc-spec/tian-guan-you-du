@@ -21,13 +21,9 @@ public partial class StartMenu : Control
     private Control? _battleTestOverlay;
     private EncyclopediaPanel? _encyclopediaPanel;
     private sealed record TestSkillOption(string Name, string Path, bool IsResponse);
-    private sealed record TestLoadoutControls(ScrollContainer Scroll, VBoxContainer Content, OptionButton Deck, OptionButton MainBook, OptionButton SubBook, OptionButton[] Skills, CheckBox CustomResources, SpinBox StaminaCap, SpinBox ManaCap);
-    private static readonly (string Path, string Name, string Summary)[] InitialGongfas =
-    [
-        ("res://resources/gongfa/黄庭养形篇.tres", "胎息经", "品阶：凡阶上品\n适配：杂灵根 / 平和灵根\n气血未尽时回落可积身法，归零时得借力；主修可消耗身法，以零气血攻击换回气血。"),
-        ("res://resources/gongfa/阴符应物经.tres", "阴符应物经", "品阶：凡阶上品\n适配：金、水灵根\n借势化力，以守转攻。适合稳中求进的修行路数。"),
-        ("res://resources/gongfa/赤阳参同经.tres", "赤阳参同经", "品阶：凡阶上品\n适配：火、土灵根\n以气血为炉，淬炼真息。进境刚猛，需谨慎驾驭。 ")
-    ];
+    private sealed record TestLoadoutControls(ScrollContainer Scroll, VBoxContainer Content, OptionButton Deck, OptionButton MainBook, OptionButton SubBook, OptionButton[] Skills, CheckBox CustomResources, SpinBox StaminaCap, SpinBox ManaCap, Button AutomaticBuild);
+    private static (string Path, string Name, string Summary)[] InitialGongfas => GongfaAvailability.EnabledBooks()
+        .Select(book => (book.ResourcePath, book.gongfa_name, book.description)).ToArray();
 
     public override void _Ready()
     {
@@ -268,8 +264,34 @@ public partial class StartMenu : Control
         mainBook.ItemSelected+=_=>RefreshTestLoadoutChoices(mainBook,subBook,slots,books,skillOptions);
         subBook.ItemSelected+=_=>RefreshTestLoadoutChoices(mainBook,subBook,slots,books,skillOptions);
         RefreshTestLoadoutChoices(mainBook,subBook,slots,books,skillOptions);
+        var automatic = new Button { Text = "自动搭配技能与心法", SizeFlagsHorizontal = SizeFlags.ExpandFill };
+        box.AddChild(automatic);
+        var buildNote = new Label { Text = "选定秘籍后按其搭配；主辅修均为空时，从四本中推荐。结果可继续手动修改。", AutowrapMode = TextServer.AutowrapMode.WordSmart, Modulate = Ink() };
+        box.AddChild(buildNote);
+        automatic.Pressed += () =>
+        {
+            var mainPath = SelectedPath(mainBook, books); var subPath = SelectedPath(subBook, books);
+            var selected = new[] { mainPath, subPath }.Where(path => path.Length > 0).ToArray();
+            var available = GongfaAvailability.EnabledBooks().Where(book => selected.Length == 0 || selected.Contains(book.ResourcePath));
+            var data = NpcCombatBuildPlanner.TestLearning(available); data.max_sub_slots = 1;
+            if (customResources.ButtonPressed) { data.max_stamina = (int)staminaCap.Value; data.max_mana = (int)manaCap.Value; }
+            var actor = new Character(); AddChild(actor); actor.load_from_data(data);
+            if(customResources.ButtonPressed){actor.max_stamina=(int)staminaCap.Value;actor.max_mana=(int)manaCap.Value;}
+            var build = NpcCombatBuildPlanner.Equip(actor, selected.Length == 0 ? null : mainPath,
+                selected.Length == 0 ? null : new[] { subPath });
+            for (var i = 0; i < books.Length; i++) { if (books[i].path == build.Main) mainBook.Select(i); if (books[i].path == build.Subs.FirstOrDefault()) subBook.Select(i); }
+            if (build.Subs.Length == 0) subBook.Select(0);
+            for (var i = 0; i < slots.Length; i++)
+            {
+                var match = System.Array.FindIndex(skillOptions, option => option.Path == build.Skills[i]);
+                slots[i].Select(match + 1);
+            }
+            RefreshTestLoadoutChoices(mainBook, subBook, slots, books, skillOptions);
+            buildNote.Text = build.Explanation;
+            RemoveChild(actor); actor.Free();
+        };
         box.AddChild(new Label{Text="技能槽10装配《玄枢含章经》时仅限非应对技能。",AutowrapMode=TextServer.AutowrapMode.WordSmart,Modulate=new Color(.30f,.24f,.15f)});
-        return new TestLoadoutControls(scroll,box,deck,mainBook,subBook,slots,customResources,staminaCap,manaCap);
+        return new TestLoadoutControls(scroll,box,deck,mainBook,subBook,slots,customResources,staminaCap,manaCap,automatic);
     }
 
     private static SpinBox BuildTestResourceInput(VBoxContainer parent,string caption,int initial)
@@ -329,6 +351,7 @@ public partial class StartMenu : Control
     private static void SetTestLoadoutEnabled(TestLoadoutControls controls,bool enabled)
     {
         controls.Deck.Disabled=!enabled;controls.MainBook.Disabled=!enabled;controls.SubBook.Disabled=!enabled;
+        controls.AutomaticBuild.Disabled=!enabled;
         foreach(var slot in controls.Skills)slot.Disabled=!enabled;
     }
 
@@ -365,6 +388,7 @@ public partial class StartMenu : Control
 
     private static void ApplyTestLoadout(BattleEntityData unit,string deckPath,string mainBookPath,string subBookPath,string[] selectedSkillPaths)
     {
+        mainBookPath=GongfaAvailability.EnabledPath(mainBookPath);subBookPath=GongfaAvailability.EnabledPath(subBookPath);
         unit.basic_deck_path=deckPath;unit.main_gongfa_path=mainBookPath;
         unit.sub_gongfa_paths=[];
         if(!string.IsNullOrWhiteSpace(subBookPath)&&subBookPath!=mainBookPath)unit.sub_gongfa_paths.Add(subBookPath);
@@ -413,12 +437,13 @@ public partial class StartMenu : Control
         unit.combat_resolved_skills=new Godot.Collections.Array<ActiveSkillData>(configuredPaths.Select(path=>
             string.IsNullOrWhiteSpace(path)?ArtifactSkillFactory.EmptySlot():ResourceLoader.Load<ActiveSkillData>(path)?.Duplicate() as ActiveSkillData??ArtifactSkillFactory.EmptySlot()));
         unit.battle_deck_configured=true;
+        NpcCombatBuildPlanner.ResolveTestLoadout(unit);
     }
     private static (string name,string path)[] TestDeckOptions()=>[("公共基础技能池","res://resources/basic_decks/公共基础技能池.tres")];
     private static (string name,string path)[] TestBookOptions()
     {
         var list=new List<(string,string)>{("无","")};
-        foreach(var path in System.IO.Directory.EnumerateFiles(ProjectSettings.GlobalizePath("res://resources/gongfa"),"*.tres").OrderBy(path=>path,StringComparer.Ordinal))list.Add((System.IO.Path.GetFileNameWithoutExtension(path),ProjectSettings.LocalizePath(path)));
+        foreach(var book in GongfaAvailability.EnabledBooks())list.Add((book.gongfa_name,book.ResourcePath));
         return list.ToArray();
     }
     private static TestSkillOption[] TestSkillOptions()

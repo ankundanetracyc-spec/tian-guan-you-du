@@ -409,10 +409,13 @@ public partial class AlchemySlotBrewPreviewScene : Control
 
     private void BuildTutorialOverlay()
     {
+        // Keep modal layers inside the same fixed design canvas as the furnace UI.
+        // The root Control has not completed its layout pass yet during _Ready,
+        // which can leave a centered panel anchored around the origin.
         _tutorialOverlay = new Control { Name = "AlchemyTutorialOverlay", Visible = false, MouseFilter = MouseFilterEnum.Stop, ZIndex = 100 };
-        AddChild(_tutorialOverlay);
+        _canvas.AddChild(_tutorialOverlay);
         _tutorialOverlay.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        var shade = new ColorRect { Color = new Color(.08f, .10f, .09f, .66f), MouseFilter = MouseFilterEnum.Stop };
+        var shade = new ColorRect { Color = new Color(.08f, .10f, .09f, .48f), MouseFilter = MouseFilterEnum.Stop };
         _tutorialOverlay.AddChild(shade);
         shade.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
 
@@ -466,7 +469,7 @@ public partial class AlchemySlotBrewPreviewScene : Control
             MouseFilter = MouseFilterEnum.Stop,
             ZIndex = 200
         };
-        AddChild(_messageOverlay);
+        _canvas.AddChild(_messageOverlay);
         _messageOverlay.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         var shade = new ColorRect { Color = new Color(.08f, .10f, .09f, .70f), MouseFilter = MouseFilterEnum.Stop };
         _messageOverlay.AddChild(shade);
@@ -510,14 +513,20 @@ public partial class AlchemySlotBrewPreviewScene : Control
     private void PlaceCentered(Control parent, Control control, Vector2 requestedSize)
     {
         parent.AddChild(control);
-        var viewport = GetViewportRect().Size;
-        if (viewport.X <= 0 || viewport.Y <= 0) viewport = parent.Size;
+        // Modal parents are placed on _canvas, whose design size is assigned
+        // synchronously by QuietRoomStyle.Canvas. Use that local size so sizing
+        // and centering share the same coordinates as the page artwork.
+        var available = parent.Size;
+        if (available.X <= 0 || available.Y <= 0) available = GetViewportRect().Size;
         var size = new Vector2(
-            Math.Min(requestedSize.X, Math.Max(320, viewport.X - 32)),
-            Math.Min(requestedSize.Y, Math.Max(300, viewport.Y - 32)));
-        control.SetAnchorsAndOffsetsPreset(LayoutPreset.Center);
-        control.Position = -size / 2;
-        control.Size = size;
+            Math.Min(requestedSize.X, Math.Max(320, available.X - 48)),
+            Math.Min(requestedSize.Y, Math.Max(300, available.Y - 48)));
+        control.AnchorLeft = control.AnchorRight = 0.5f;
+        control.AnchorTop = control.AnchorBottom = 0.5f;
+        control.OffsetLeft = -size.X / 2;
+        control.OffsetRight = size.X / 2;
+        control.OffsetTop = -size.Y / 2;
+        control.OffsetBottom = size.Y / 2;
     }
 
     private static string AssistantRoleTitle(int index) => AssistantRoleShort(index);

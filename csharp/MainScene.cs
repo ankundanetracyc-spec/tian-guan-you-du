@@ -300,7 +300,7 @@ public partial class MainScene : Node2D
         estate_resources?.register_facility("meditation_room");
         territory_state?.recalculate_auto_labor(get_estate_resource_amount(EstateResourceSystem.Food), territory_state?.total_labor ?? 0);
     }
-    private void spawn_family(){if(family.Count>0)return;var generator=new CharacterGenerator();var names=new NameGenerator();var profile=GetNodeOrNull<GameStartProfile>("/root/GameStartProfile");string FamilyName(string given,int generation)=>profile?.compose_family_name(given,generation)??"李"+given;var fatherGiven=names.generate_single_given(0);var motherName=names.generate_single_full(1);while(motherName.StartsWith(profile?.surname??"李"))motherName=names.generate_single_full(1);var son1=names.generate_single_given(0);var son2=names.generate_single_given(0);while(son2==son1)son2=names.generate_single_given(0);var son3=names.generate_single_given(0);while(son3==son1||son3==son2)son3=names.generate_single_given(0);var daughter=names.generate_single_given(1);var memberNames=new[]{FamilyName(fatherGiven,1),motherName,FamilyName(son1,2),FamilyName(son2,2),FamilyName(son3,2),FamilyName(daughter,2)};var ages=new[]{38,37,18,16,14,12};for(var i=0;i<memberNames.Length;i++){var data=generator.generate(i==0?"云息":"凡人",(int)WorldEntity.Faction.PLAYER);if(i==0){data.main_gongfa_path="res://resources/gongfa/黄庭养形篇.tres";data.learned_gongfa_paths.Add(data.main_gongfa_path);}if(i==4)profile?.apply_to_youngest(data);data.entity_name=memberNames[i];data.gender=i is 1 or 5?1:0;data.current_age=ages[i];data.faction_name=profile?.family_name??"本家";if(i==0)data.spouse_name=motherName;else if(i==1)data.spouse_name=memberNames[0];var character=new Character();character.load_from_data(data);character.entity_type=WorldEntity.EntityType.CHARACTER;character.faction=(int)WorldEntity.Faction.PLAYER;character.is_family=true;character.family_gen=i<2?1:2;character.family_gender=i is 1 or 5?"女":"男";family.Add(character);AddChild(character);if(i==0)character.cultivation_realm="云息六层";}}
+    private void spawn_family(){if(family.Count>0)return;var generator=new CharacterGenerator();var names=new NameGenerator();var profile=GetNodeOrNull<GameStartProfile>("/root/GameStartProfile");string FamilyName(string given,int generation)=>profile?.compose_family_name(given,generation)??"李"+given;var fatherGiven=names.generate_single_given(0);var motherName=names.generate_single_full(1);while(motherName.StartsWith(profile?.surname??"李"))motherName=names.generate_single_full(1);var son1=names.generate_single_given(0);var son2=names.generate_single_given(0);while(son2==son1)son2=names.generate_single_given(0);var son3=names.generate_single_given(0);while(son3==son1||son3==son2)son3=names.generate_single_given(0);var daughter=names.generate_single_given(1);var memberNames=new[]{FamilyName(fatherGiven,1),motherName,FamilyName(son1,2),FamilyName(son2,2),FamilyName(son3,2),FamilyName(daughter,2)};var ages=new[]{38,37,18,16,14,12};for(var i=0;i<memberNames.Length;i++){var data=generator.generate(i==0?"云息":"凡人",(int)WorldEntity.Faction.PLAYER);if(i==0){data.main_gongfa_path=GongfaAvailability.DefaultBookPath;data.learned_gongfa_paths.Add(data.main_gongfa_path);}if(i==4)profile?.apply_to_youngest(data);data.entity_name=memberNames[i];data.gender=i is 1 or 5?1:0;data.current_age=ages[i];data.faction_name=profile?.family_name??"本家";if(i==0)data.spouse_name=motherName;else if(i==1)data.spouse_name=memberNames[0];var character=new Character();character.load_from_data(data);character.entity_type=WorldEntity.EntityType.CHARACTER;character.faction=(int)WorldEntity.Faction.PLAYER;character.is_family=true;character.family_gen=i<2?1:2;character.family_gender=i is 1 or 5?"女":"男";family.Add(character);AddChild(character);if(i==0)character.cultivation_realm="云息六层";}}
     private void seed_retainers()
     {
         // 外姓人将在“人事”页统一生成、招募和派任；这里保留初始班底的接入点。
@@ -588,7 +588,7 @@ public partial class MainScene : Node2D
         // 初次与里正交谈结束后，才有在李宅休息的入口。
         estate?.set_rest_available(true);
         var profile=GetNodeOrNull<GameStartProfile>("/root/GameStartProfile");
-        var gongfa=ResourceLoader.Load<GongfaResource>(profile?.selected_initial_gongfa_path??"res://resources/gongfa/黄庭养形篇.tres");
+        var gongfa=ResourceLoader.Load<GongfaResource>(profile?.selected_initial_gongfa_path??GongfaAvailability.DefaultBookPath);
         if(player is not null&&gongfa is not null&&player.get_pending_intro_gongfa() is null&&player.main_gongfa is null)player.grant_intro_gongfa(gongfa);
         var gongfa_name=gongfa?.gongfa_name??"入门功法";
         refresh_qingxi_quest();
@@ -929,7 +929,7 @@ public partial class MainScene : Node2D
     {
         if (has_open_world_access()) return;
         var profile = GetNodeOrNull<GameStartProfile>("/root/GameStartProfile");
-        var gongfa = ResourceLoader.Load<GongfaResource>(profile?.selected_initial_gongfa_path ?? "res://resources/gongfa/黄庭养形篇.tres");
+        var gongfa = ResourceLoader.Load<GongfaResource>(profile?.selected_initial_gongfa_path ?? GongfaAvailability.DefaultBookPath);
         if (player is null || gongfa is null || !player.prepare_prologue_skip_state(gongfa))
         {
             show_message("测试跳过", "无法准备测试角色的功法状态，请重新开始后再试。");

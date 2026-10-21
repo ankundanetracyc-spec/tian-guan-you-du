@@ -249,6 +249,7 @@ public partial class MainScene
             sect_current_rank = npc.formal_identity,
             dun_speed = npc.dun_speed,
         };
+        NpcCombatBuildPlanner.ImportLearning(npc, data);
         foreach (var key in npc.carried_items.Keys)
         {
             var itemPath = key.AsString();
@@ -270,6 +271,14 @@ public partial class MainScene
         actor.max_stamina = 6;
         actor.current_mana = data.current_mana;
         actor.max_mana = data.max_mana;
+        if (data.learned_gongfa_paths.Count > 0 || data.unlocked_skill_node_ids.Count > 0)
+        {
+            var build = NpcCombatBuildPlanner.Equip(actor);
+            npc.combat_main_gongfa_path = build.Main;
+            npc.combat_sub_gongfa_paths = new Godot.Collections.Array<string>(build.Subs);
+            npc.combat_chapter_routes = data.equipped_gongfa_chapter_routes.Duplicate(true);
+            npc.combat_skill_paths = new Godot.Collections.Array<string>(build.Skills);
+        }
         var scene = actor.pack_for_battle();
         var snapshot = actor.get_snapshot_data();
         RemoveChild(actor);

@@ -94,7 +94,7 @@ public partial class BattleUnitOverlay : CanvasLayer
         }
     }
 
-    private static Control? CreateTargetInfoBadge(ActiveSkillData skill,GodotObject caster,GodotObject target,Color tint)
+    private Control? CreateTargetInfoBadge(ActiveSkillData skill,GodotObject caster,GodotObject target,Color tint)
     {
         if(!GodotObject.IsInstanceValid(caster)||!GodotObject.IsInstanceValid(target))return null;
         var lines=new List<string>();
@@ -119,6 +119,13 @@ public partial class BattleUnitOverlay : CanvasLayer
             var status=GD.Load<StatusEffect>($"res://resources/battle/statuses/{id}.tres");
             var name=status is not null&&!string.IsNullOrWhiteSpace(status.name)?status.name:id;
             lines.Add($"{name}  {chance*100f:0}%");
+        }
+        if(skill.source_gongfa_name=="太和感物养元宝册"&&skill.skill_name=="叩山"
+            &&manager.gongfa_combat.PreviewTaiheStunChance(caster,target,skill) is { } stunChance
+            &&manager.gongfa_combat.PreviewTaiheStunFrames(caster,target,skill) is { } stunFrames)
+        {
+            var percent=stunChance>0&&stunChance<.0001f?"<0.01%":$"{stunChance*100f:0.##}%";
+            lines.Add($"追加段僵直  {percent} · {stunFrames}层（帧）");
         }
         if(lines.Count==0)return null;
         var targetName=target.Get("entity_name").AsString();
@@ -207,7 +214,20 @@ public partial class BattleUnitOverlay : CanvasLayer
                 var bonus=unit.blood_furnace_value/2;
                 entries.Add(("血炉","血炉",unit.blood_furnace_value,$"血炉层数：{unit.blood_furnace_value}/{unit.blood_furnace_value_cap}（上限 {unit.blood_furnace_value_cap}）。每2点提高1%物理伤害，当前提供物理伤害 +{bonus}%；可被相关招式消耗；战斗结束时清空。",false,null!));
             }
-            var sig=string.Join("|",entries.Select(e=>$"{e.id}:{e.name}:{e.count}:{e.bad}"));if(signatures.GetValueOrDefault(unit)==sig)continue;signatures[unit]=sig;
+            // 计时层数每战斗帧改变，只更新数字，避免重建图标及中断悬停。
+            var sig=string.Join("|",entries.Select(e=>$"{e.id}:{e.name}:{(e.instance?.effect?.frame_counted_layers==true?$"timer:{e.instance.GetInstanceId()}":e.count.ToString())}:{e.bad}"));
+            if(signatures.GetValueOrDefault(unit)==sig)
+            {
+                for(var i=0;i<entries.Count;i++)
+                    if(entries[i].instance?.effect?.frame_counted_layers==true&&i<statusRow.GetChildCount()
+                        &&statusRow.GetChild(i).GetNodeOrNull<Label>("StackCount") is { } counter)
+                    {
+                        var countText=entries[i].count.ToString();
+                        if(counter.Text!=countText)counter.Text=countText;
+                    }
+                continue;
+            }
+            signatures[unit]=sig;
             var row=view.GetNode<HFlowContainer>("Statuses");foreach(var child in row.GetChildren()){row.RemoveChild(child);child.QueueFree();}
             foreach(var e in entries) row.AddChild(CreateStatusBadge(e.id,e.name,e.count,e.tip,e.bad,e.instance));
         }
@@ -316,7 +336,7 @@ public partial class BattleUnitOverlay : CanvasLayer
         var icon=new TextureRect{Texture=GetStatusIcon(id,instance),ExpandMode=TextureRect.ExpandModeEnum.IgnoreSize,StretchMode=TextureRect.StretchModeEnum.KeepAspectCentered,MouseFilter=Control.MouseFilterEnum.Ignore};icon.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);badge.AddChild(icon);
         if(!id.StartsWith("心法:",StringComparison.Ordinal))
         {
-            var stack=new Label{Text=count.ToString(),HorizontalAlignment=HorizontalAlignment.Center,VerticalAlignment=VerticalAlignment.Center,Position=new(17,16),Size=new(18,18),MouseFilter=Control.MouseFilterEnum.Ignore};stack.AddThemeFontSizeOverride("font_size",15);stack.AddThemeColorOverride("font_outline_color",Colors.Black);stack.AddThemeConstantOverride("outline_size",4);badge.AddChild(stack);
+            var stack=new Label{Name="StackCount",Text=count.ToString(),HorizontalAlignment=HorizontalAlignment.Right,VerticalAlignment=VerticalAlignment.Center,Position=new(8,16),Size=new(28,18),MouseFilter=Control.MouseFilterEnum.Ignore};stack.AddThemeFontSizeOverride("font_size",15);stack.AddThemeColorOverride("font_outline_color",Colors.Black);stack.AddThemeConstantOverride("outline_size",4);badge.AddChild(stack);
         }
         badge.MouseEntered+=()=>ShowStatusInfo(badge,id,instance,name,count,tip);
         badge.MouseExited+=HideStatusInfo;
@@ -351,6 +371,8 @@ public partial class BattleUnitOverlay : CanvasLayer
             body=$"{effect.description}\n\n{status_duration_text(status,effect)}";
             subtitle=hoveredStatusId.StartsWith("心法:",StringComparison.Ordinal)
                 ?"心法效果"
+                :effect.frame_counted_layers
+                    ?$"战斗状态 · 剩余 {status.stacks} 层（{status.stacks} 帧）· 上限 {effect.max_stacks} 层"
                 :$"战斗状态 · 层数 {status.stacks}/{Math.Max(1,effect.max_stacks)}（上限 {Math.Max(1,effect.max_stacks)}）";
             icon=GetStatusIcon(hoveredStatusId,status);
         }
@@ -370,7 +392,9 @@ public partial class BattleUnitOverlay : CanvasLayer
     }
     private static string status_duration_text(StatusInstance instance,StatusEffect effect)=>effect.duration_type switch
     {
+        StatusEffect.DurationType.CombatTime when effect.frame_counted_layers=>$"剩余 {instance.stacks} 层＝{instance.stacks} 战斗帧；每推进1战斗帧减少1层。计时跟随战斗倍速，暂停与动作演出期间不减少。",
         StatusEffect.DurationType.Frames when instance.remaining_frames>0=>$"剩余 {Mathf.CeilToInt(instance.remaining_frames)} 帧",
+        StatusEffect.DurationType.CombatTime when instance.remaining_combat_seconds>0=>$"剩余 {Mathf.CeilToInt(instance.remaining_combat_seconds*10f)/10f:0.0} 秒",
         StatusEffect.DurationType.Hits=>$"剩余受击次数：{instance.remaining_hits}",
         StatusEffect.DurationType.Trigger=>instance.source_id.StartsWith("power:")?"持续至本场战斗结束":"持续至触发条件满足或被移除",
         StatusEffect.DurationType.Turns when instance.remaining_duration>0=>$"剩余 {instance.remaining_duration} 回合",
@@ -391,6 +415,7 @@ public partial class BattleUnitOverlay : CanvasLayer
                 "阴符应物经"=>"心法_阴符应物",
                 "玄枢含章经"=>"心法_玄枢含章",
                 "斫基损契玄经"=>"心法_斫基损契",
+                "太和感物养元宝册"=>"气血",
                 "胎息经"=>"心法_黄庭养形",
                 _=>null
             };
@@ -410,6 +435,7 @@ public partial class BattleUnitOverlay : CanvasLayer
             "借力"=>"借力",
             "游骸"=>"游骸",
             "逐猎"=>"逐猎",
+            "僵直"=>"僵直_v3",
             _=>null
         };
         if(iconName is not null)
@@ -426,9 +452,10 @@ public partial class BattleUnitOverlay : CanvasLayer
     }
     private static Texture2D? LoadStatusIcon(string name)
     {
-        var pngPath = $"res://textures/ui/combat/status_icons/{name}_v1.png";
+        var iconStem = name.Contains("_v") ? name : $"{name}_v1";
+        var pngPath = $"res://textures/ui/combat/status_icons/{iconStem}.png";
         if (ResourceLoader.Exists(pngPath)) return GD.Load<Texture2D>(pngPath);
-        var svgPath = $"res://textures/ui/combat/status_icons/{name}_v1.svg";
+        var svgPath = $"res://textures/ui/combat/status_icons/{iconStem}.svg";
         return ResourceLoader.Exists(svgPath) ? GD.Load<Texture2D>(svgPath) : null;
     }
     private static Texture2D? GetLegacyStatusIcon(int slot)

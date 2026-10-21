@@ -547,6 +547,7 @@ public partial class StartMenu
             if (selectedTechnique < 0) selectedTechnique = 0;
             techniqueChoice.Select(selectedTechnique);
             var detail = InitialGongfas[selectedTechnique];
+            profile.selected_initial_gongfa_path = detail.Path;
             techniqueSummary.Text = $"《{detail.Name}》\n{detail.Summary}\n入世后可在修行界面查看与研习。";
         };
 
@@ -667,6 +668,3 @@ public partial class StartMenu
     }
 
 }
-
-
-

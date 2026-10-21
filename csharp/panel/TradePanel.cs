@@ -530,7 +530,7 @@ public partial class TradePanel : Control
         for (var i = 0; i < 5; i++)
         {
             var path = DefaultNpcTradeItems[(int)((seed + (ulong)i * 7) % (ulong)DefaultNpcTradeItems.Length)];
-            if (!ResourceLoader.Exists(path)) continue;
+            if (load_item(path) is null) continue;
             _npc.trade_inventory[path] = 1 + (int)((seed + (ulong)i * 11) % 4);
         }
     }
@@ -539,6 +539,7 @@ public partial class TradePanel : Control
     {
         if (_item_cache.TryGetValue(path, out var item)) return item;
         item = string.IsNullOrWhiteSpace(path) || !ResourceLoader.Exists(path) ? null : ResourceLoader.Load<ItemData>(path);
+        if (!GongfaAvailability.IsItemEnabled(item)) item = null;
         _item_cache[path] = item;
         return item;
     }

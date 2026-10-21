@@ -17,7 +17,7 @@ public partial class MainScene
 
         var profile = GetNodeOrNull<GameStartProfile>("/root/GameStartProfile");
         var gongfaPath = string.IsNullOrWhiteSpace(profile?.selected_initial_gongfa_path)
-            ? "res://resources/gongfa/黄庭养形篇.tres"
+            ? GongfaAvailability.DefaultBookPath
             : profile.selected_initial_gongfa_path;
         if (player?.entity_data is HumanData human)
         {

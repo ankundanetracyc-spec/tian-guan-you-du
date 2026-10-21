@@ -7,7 +7,7 @@ script = ExtResource("1")
 skill_name = "折锋"
 skill_type = 0
 slot_category = "active"
-icon_path = "res://textures/ui/combat/skill_icons/斫基_折锋_v1.png"
+icon_path = "res://textures/ui/combat/skill_icons/斫基_折锋_v2.png"
 source_gongfa_name = "斫基损契玄经"
 tags = Array[String](["应对"])
 description = "造成 A 点物理伤害。若本次施展燃烧法力上限支付费用，或法力上限为1，目标不能以应对技能应对此次攻击。A = round(8 + 灵慧×0.65 + 术法造诣×0.2)。"
@@ -19,4 +19,5 @@ range_max = 1
 base_damage = 0.0
 damage_formula = "round(8 + intelligence×0.65 + magic_proficiency×0.2)"
 damage_type = "physical"
+attack_style = "melee"
 gongfa_rewrite_effect_ids = Array[String](["zhuo_ji_c4_zhaoye"])

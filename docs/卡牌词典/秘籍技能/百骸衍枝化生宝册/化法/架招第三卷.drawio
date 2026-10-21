@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" agent="Codex" version="24.7.17">
+  <diagram id="baihai-jiazhao-c3" name="架招第三卷">
+    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="720" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="card" value="&lt;div style=&quot;text-align:left;&quot;&gt;技能名：架招（百骸衍枝化生宝册第三卷化法）&lt;br&gt;资源路径：res://resources/activeskills/百骸衍枝化生宝册/化法/架招第三卷.tres&lt;br&gt;类型：守御&lt;br&gt;关键词：化解、应对、气血&lt;br&gt;耗费：体力1、法力0&lt;br&gt;目标：自身；位于队首且受到敌方物理攻击时触发&lt;br&gt;原技能效果：获得A层&lt;u&gt;化解&lt;/u&gt;；每层抵消本次来袭攻击1点物理伤害，剩余化解在攻击结算后消散。&lt;br&gt;化法追加：第二只手臂显化时，本次架招额外获得B层&lt;u&gt;化解&lt;/u&gt;。&lt;br&gt;计算公式：A=3 + floor(体魄÷4) + floor(min(体魄×0.25, 神魂×0.20))；B=min(round((3 + floor(体魄÷4) + floor(min(体魄×0.25, 神魂×0.20)))×0.20),20)。&lt;br&gt;使用次数：不限&lt;br&gt;冷却：无&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e7eee4;strokeColor=#769078;fontSize=18;align=left;spacingLeft=18;spacingTop=16;" vertex="1" parent="1">
+          <mxGeometry x="120" y="48" width="1260" height="600" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

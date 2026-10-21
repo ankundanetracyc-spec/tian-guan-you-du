@@ -24,6 +24,7 @@ target_type = 2
 keywords = Array[String]([])
 base_damage = 10.0
 damage_type = "physical"
+attack_style = "melee"
 damage_bonuses = Array[ExtResource("2")]([SubResource("p"), SubResource("b")])
 damage_formula = "round((10 + 体魄×0.55 + 体道造诣×0.35)×(1 + 借力层数×0.08))"
 preparation_frames = 0

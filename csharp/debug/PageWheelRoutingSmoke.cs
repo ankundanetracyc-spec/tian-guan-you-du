@@ -68,6 +68,8 @@ public partial class PageWheelRoutingSmoke : Node
 
     private async Task TestPage(string name, Control page)
     {
+        if (page is EncyclopediaPanel encyclopedia)
+            while (encyclopedia.IsCatalogLoading) await Frames(1);
         HoverInfoManager.HideAll(); await Frames(8);
         var tested = 0;
         foreach (var scroll in page.FindChildren("*", "ScrollContainer", true, false).OfType<ScrollContainer>().Where(s => s.IsVisibleInTree()).ToArray())

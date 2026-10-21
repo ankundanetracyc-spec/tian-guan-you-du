@@ -12,5 +12,6 @@ target_type = 2
 range_min = 1
 range_max = 1
 damage_type = "physical"
+attack_style = "melee"
 damage_formula = "round(8 + physique*0.9 + physique*0.9)"
 special_effects = Array[Dictionary]([{"effect":"add_wound","wound":"外伤","count":1,"destination":"discard"}])

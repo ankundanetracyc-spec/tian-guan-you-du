@@ -18,4 +18,5 @@ recovery_frames = 96
 cooldown_frames = 240
 slot_category = "active"
 damage_type = "physical"
+attack_style = "melee"
 damage_formula = "round(7 + physique*0.7 + physique*0.8)"

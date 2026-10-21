@@ -107,6 +107,30 @@ public partial class Creature : WorldEntity
     public void add_status(StatusEffect effect,int duration=-1,int stacks=1,string sourceId="",int stackCap=0,string sourceName="")
     {
         if(effect is null)return;
+        if(effect.frame_counted_layers)
+        {
+            add_status_combat_time(effect,stacks/StatusEffect.CombatFramesPerSecond,stacks,sourceId,stackCap,sourceName);
+            return;
+        }
+        add_status_internal(effect,duration,stacks,sourceId,stackCap,sourceName,-1f);
+    }
+    public void add_status_combat_time(StatusEffect effect,float durationSeconds,int stacks=1,string sourceId="",int stackCap=0,string sourceName="")
+    {
+        if(effect is null||effect.duration_type!=StatusEffect.DurationType.CombatTime||!float.IsFinite(durationSeconds)||durationSeconds<=0)return;
+        add_status_internal(effect,-1,stacks,sourceId,stackCap,sourceName,durationSeconds);
+    }
+    private void add_status_internal(StatusEffect effect,int duration,int stacks,string sourceId,int stackCap,string sourceName,float combatDurationSeconds)
+    {
+        if(effect is null)return;
+        var frameLayers=0;
+        if(effect.frame_counted_layers)
+        {
+            var requestedSeconds=combatDurationSeconds>0?combatDurationSeconds:duration<0?effect.duration_default:duration;
+            if(!float.IsFinite(requestedSeconds)||requestedSeconds<=0)return;
+            frameLayers=Mathf.FloorToInt(Mathf.Min(requestedSeconds,Mathf.Max(0,effect.max_stacks)/StatusEffect.CombatFramesPerSecond)*StatusEffect.CombatFramesPerSecond+0.0001f);
+            if(frameLayers<=0)return;
+            combatDurationSeconds=frameLayers/StatusEffect.CombatFramesPerSecond;
+        }
         if(effect.effect_id=="化解"&&stacks>0)stacks+=Mathf.RoundToInt(get_combat_tempering_total("defuse_gain_layers"));
         var existing=status_instances().FirstOrDefault(s=>s.effect?.effect_id==effect.effect_id&&(!effect.stack_by_source||s.source_id==sourceId));
         if(existing is null){existing=new StatusInstance{effect=effect,remaining_duration=duration<0?effect.duration_default:duration,stacks=0,source_id=sourceId,source_name=sourceName};statuses.Add(existing);}
@@ -120,6 +144,11 @@ public partial class Creature : WorldEntity
                 if(effectiveDuration>0)existing.remaining_frames=Mathf.Max(existing.remaining_frames,effectiveDuration);
                 else existing.remaining_frames=-1;
                 break;
+            case StatusEffect.DurationType.CombatTime:
+                var effectiveCombatSeconds=combatDurationSeconds>0?combatDurationSeconds:effectiveDuration;
+                if(effectiveCombatSeconds>0)existing.remaining_combat_seconds=effectiveCombatSeconds;
+                else existing.remaining_combat_seconds=-1;
+                break;
             case StatusEffect.DurationType.Hits:
                 existing.remaining_hits=Math.Max(existing.remaining_hits,effectiveDuration>0?effectiveDuration:1);
                 break;
@@ -128,12 +157,53 @@ public partial class Creature : WorldEntity
                 break;
         }
         var previousStacks = existing.stacks;
-        existing.stacks=Mathf.Min(existing.stacks+Mathf.Max(1,stacks),stackCap>0?stackCap:Mathf.Max(1,effect.max_stacks));
+        existing.stacks=effect.frame_counted_layers?frameLayers:Mathf.Min(existing.stacks+Mathf.Max(1,stacks),stackCap>0?stackCap:Mathf.Max(1,effect.max_stacks));
         ReportBattleStatusGain(string.IsNullOrWhiteSpace(effect.name) ? effect.effect_id : effect.name, existing.stacks - previousStacks, effect.is_debuff);
     }
     public int get_status_stacks(string id)=>status_instances().Where(s=>s.effect?.effect_id==id).Sum(s=>s.stacks);
     public int get_status_stacks_from_source(string id,string sourceId)=>status_instances().Where(s=>s.effect?.effect_id==id&&s.source_id==sourceId).Sum(s=>s.stacks);
-    public void consume_status_stacks(string id,int amount){for(var i=statuses.Count-1;i>=0&&amount>0;i--){if(statuses[i].AsGodotObject() is not StatusInstance s||s.effect?.effect_id!=id)continue;var used=Math.Min(amount,s.stacks);s.stacks-=used;amount-=used;if(s.stacks<=0)statuses.RemoveAt(i);}}
+    public float get_status_remaining_combat_seconds(string id)=>status_instances().Where(s=>s.effect?.effect_id==id).Select(s=>s.remaining_combat_seconds<0?float.PositiveInfinity:s.remaining_combat_seconds).DefaultIfEmpty(0).Max();
+    /// <summary>推进实时队列状态计时，并返回解除指定冻结状态后可推进的帧数。</summary>
+    public float advance_realtime_status_timers(float frames,float framesPerSecond,string freezeStatusId)
+    {
+        if(frames<=0||framesPerSecond<=0)return Math.Max(0,frames);
+        var seconds=frames/framesPerSecond;
+        var frozenSeconds=0f;
+        for(var i=statuses.Count-1;i>=0;i--)
+        {
+            if(statuses[i].AsGodotObject() is not StatusInstance instance)continue;
+            var effect=instance.effect;
+            if(effect is null)continue;
+            if(effect.duration_type==StatusEffect.DurationType.CombatTime&&effect.effect_id==freezeStatusId)
+                frozenSeconds=instance.remaining_combat_seconds<0?float.PositiveInfinity:Mathf.Max(frozenSeconds,instance.remaining_combat_seconds);
+            if(effect.duration_type==StatusEffect.DurationType.Frames&&instance.remaining_frames>0)
+            {
+                instance.remaining_frames-=frames;
+                if(instance.remaining_frames<=0)statuses.RemoveAt(i);
+            }
+            else if(effect.duration_type==StatusEffect.DurationType.CombatTime&&instance.remaining_combat_seconds>0)
+            {
+                instance.remaining_combat_seconds-=seconds;
+                instance.sync_combat_frame_layers();
+                if(instance.remaining_combat_seconds<=0)statuses.RemoveAt(i);
+            }
+        }
+        return float.IsPositiveInfinity(frozenSeconds)?0:Mathf.Max(0,frames-Mathf.Min(frames,frozenSeconds*framesPerSecond));
+    }
+    public void consume_status_stacks(string id,int amount)
+    {
+        for(var i=statuses.Count-1;i>=0&&amount>0;i--)
+        {
+            if(statuses[i].AsGodotObject() is not StatusInstance s||s.effect?.effect_id!=id)continue;
+            var used=Math.Min(amount,s.stacks);s.stacks-=used;amount-=used;
+            if(s.effect.frame_counted_layers)
+            {
+                s.remaining_combat_seconds=Mathf.Max(0,s.remaining_combat_seconds-used/StatusEffect.CombatFramesPerSecond);
+                s.sync_combat_frame_layers();
+            }
+            if(s.stacks<=0)statuses.RemoveAt(i);
+        }
+    }
     public Dictionary process_status_event(string eventName,Dictionary context)
     {
         if(eventName=="turn_end"){
@@ -162,6 +232,7 @@ public partial class Creature : WorldEntity
     public StatusInstance[] status_snapshot()=>status_instances().ToArray();
     public float status_bonus(string key)=>status_instances().Sum(s=>s.effect!.stat_modifiers.GetValueOrDefault(key,0).AsSingle()*s.stacks);
     public void tick_status_frames(float frames){if(frames<=0)return;foreach(var s in status_instances().ToArray())if(s.effect?.duration_type==StatusEffect.DurationType.Frames&&s.remaining_frames>0){s.remaining_frames-=frames;if(s.remaining_frames<=0)statuses.Remove(s);}}
+    public void tick_status_combat_time(float seconds){if(seconds<=0)return;foreach(var s in status_instances().ToArray())if(s.effect?.duration_type==StatusEffect.DurationType.CombatTime&&s.remaining_combat_seconds>0){s.remaining_combat_seconds-=seconds;s.sync_combat_frame_layers();if(s.remaining_combat_seconds<=0)statuses.Remove(s);}}
     private IEnumerable<StatusInstance> status_instances(){foreach(var value in statuses)if(value.AsGodotObject() is StatusInstance instance)yield return instance;}
     /// <summary>基础属性最终值 = 基础属性值 × 成长倍率 + 定额加成。云息各层增量按已达境界累计。</summary>
     public static float calculate_base_initiative_speed(float physique,float intelligence,float soul)=>InitiativeBase+physique*InitiativePhysiqueWeight+intelligence*InitiativeIntelligenceWeight+Mathf.Min(physique,soul)*InitiativeCoordinationWeight+soul*InitiativeSoulWeight;

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/ItemData.cs" id="1"]
+[ext_resource type="Resource" path="res://resources/material_craft/地脉焰炭材性.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+definition_id = &"mat_geovein_flame_coal"
+entity_name = "地脉焰炭"
+icon_path = "res://textures/items/item_geovein_flame_coal.png"
+item_category = "材料"
+item_subcategory = "炼器燃料"
+tags = Array[String](["五行[火]", "质地[致密]", "功用[聚]", "功用[通]", "相性[阳]"])
+grade_value = 5
+can_stack = true
+max_stack = 999
+craft_data = ExtResource("2")

@@ -123,6 +123,7 @@ previous_learn_permanent_bonuses = {"body_proficiency": 1.0}
 [resource]
 script=ExtResource("1")
 gongfa_name="灵枢经筋篇"
+gameplay_enabled = false
 description="消耗内外伤状态并转化为借力、回复与攻伐收益。"
 wuxing=0
 can_be_main=true

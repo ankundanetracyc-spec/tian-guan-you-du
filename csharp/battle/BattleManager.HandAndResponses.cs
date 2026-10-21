@@ -85,7 +85,7 @@ public partial class BattleManager : Node2D
         if (queued is null || queued.kind != BattleQueuedSkill.ActionKind.Skill
             || !CardRules.ResponseMatches(queued.skill, damageType) || !CanResolveSegmentAction(defender, queued, responseTriggered: true)
             || defender is not Node2D responder)
-            return try_auto_response(defender, attacker, damageType);
+            return try_auto_response(defender, attacker, damageType, incomingSkill);
 
         var incomingDoll = (attacker as Node)?.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll");
         incomingDoll?.hold_attack_contact(true);
@@ -96,7 +96,7 @@ public partial class BattleManager : Node2D
             await focus.IntroFinished;
             if (!IsInsideTree() || !battle_running || !Alive(defender) || !Alive(attacker)) return false;
             focus.ReleaseTimeStop();
-            var triggered = try_auto_response(defender, attacker, damageType);
+            var triggered = try_auto_response(defender, attacker, damageType, incomingSkill);
             await focus.FinishPresentation(triggered);
             return triggered;
         }

@@ -20,7 +20,7 @@ public partial class InfoPanel
             books.Add(studying);
         foreach (var path in human.pack_items)
             if (ResourceLoader.Exists(path) && ResourceLoader.Load<ItemData>(path)?.gongfa is GongfaResource book) books.Add(book);
-        return books.GroupBy(book => book.ResourcePath).Select(group => group.First()).ToList();
+        return books.Where(GongfaAvailability.IsEnabled).GroupBy(book => book.ResourcePath).Select(group => group.First()).ToList();
     }
 
     private Texture2D? character_manual_icon(Character human, GongfaResource book)

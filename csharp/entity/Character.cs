@@ -269,7 +269,7 @@ public partial class Character : Creature
         if (human is null || count <= 0) return false;
         ensure_inventory_state();
         var item = load_inventory_item(path);
-        if (item is null) return false;
+        if (item is null || !GongfaAvailability.IsItemEnabled(item)) return false;
         var remaining = count;
         var maxStack = item.can_stack ? Math.Max(1, item.max_stack) : 1;
         if (item.can_stack)
@@ -289,7 +289,7 @@ public partial class Character : Creature
         if (human is null || count <= 0) return false;
         ensure_inventory_state();
         var item = load_inventory_item(path);
-        if (item is null) return false;
+        if (item is null || !GongfaAvailability.IsItemEnabled(item)) return false;
         var remaining = count;
         var maxStack = item.can_stack ? Math.Max(1, item.max_stack) : 1;
         if (item.can_stack)
@@ -430,12 +430,12 @@ public partial class Character : Creature
     }
     private void sync_artifact_spirit_perception() { if (human is not null) human.used_spirit_perception = get_used_artifact_spirit(); }
     private void load_gongfa_data(){if(human is null)return;main_gongfa=load_gongfa(human.main_gongfa_path);sub_gongfa_list.Clear();foreach(var path in human.sub_gongfa_paths){var g=load_gongfa(path);if(g is not null)sub_gongfa_list.Add(g);}}
-    private static GongfaResource? load_gongfa(string path)=>string.IsNullOrEmpty(path)?null:ResourceLoader.Load<GongfaResource>(path);
-    public bool has_learned_gongfa(GongfaResource gongfa)=>human?.learned_gongfa_paths.Contains(gongfa.ResourcePath)==true;
+    private static GongfaResource? load_gongfa(string path)=>GongfaAvailability.EnabledPath(path) is { Length: > 0 } enabled?ResourceLoader.Load<GongfaResource>(enabled):null;
+    public bool has_learned_gongfa(GongfaResource gongfa)=>GongfaAvailability.IsEnabled(gongfa)&&human?.learned_gongfa_paths.Contains(gongfa.ResourcePath)==true;
     public Array<GongfaResource> get_known_gongfas()
     {
         Array<GongfaResource> result=[];
-        void Add(GongfaResource? value){if(value is not null&&!result.Any(item=>item.ResourcePath==value.ResourcePath))result.Add(value);}
+        void Add(GongfaResource? value){if(value is not null&&GongfaAvailability.IsEnabled(value)&&!result.Any(item=>item.ResourcePath==value.ResourcePath))result.Add(value);}
         Add(main_gongfa); foreach(var value in sub_gongfa_list)Add(value);
         if(human is not null)foreach(var path in human.learned_gongfa_paths)Add(load_gongfa(path));
         if(human is not null)Add(load_gongfa(human.sect_lineage_gongfa_path));
@@ -447,7 +447,7 @@ public partial class Character : Creature
         Array<ActiveSkillData> result = [];
         void Add(Resource? resource)
         {
-            if (resource is not ActiveSkillData skill || skill.skill_type == ActiveSkillData.SkillType.POWER || string.Equals(skill.slot_category, "passive", StringComparison.OrdinalIgnoreCase) || result.Any(card => combat_skill_key(card) == combat_skill_key(skill))) return;
+            if (resource is not ActiveSkillData skill || !GongfaAvailability.IsSkillEnabled(skill) || skill.skill_type == ActiveSkillData.SkillType.POWER || string.Equals(skill.slot_category, "passive", StringComparison.OrdinalIgnoreCase) || result.Any(card => combat_skill_key(card) == combat_skill_key(skill))) return;
             result.Add(skill);
         }
         foreach (var skill in active_skills) Add(skill);
@@ -464,7 +464,7 @@ public partial class Character : Creature
     /// <summary>卷章研读门槛的唯一判定入口，供自动续读与界面条件展示共用。</summary>
     public bool can_learn_gongfa_chapter(GongfaResource gongfa, GongfaChapterConfig chapter)
     {
-        if (human is null || gongfa is null || chapter is null) return false;
+        if (human is null || gongfa is null || !GongfaAvailability.IsEnabled(gongfa) || chapter is null) return false;
         // 玉虚师承首期只开放所选秘籍的第一卷；首卷之后的借阅权限尚未定案。
         if (human.sect_affiliation_id == "yuxu_xianzong" &&
             human.sect_lineage_gongfa_path == gongfa.ResourcePath &&
@@ -499,6 +499,7 @@ public partial class Character : Creature
     public static bool is_combat_skill_slot_eligible(ActiveSkillData? skill)
     {
         if (skill is null) return false;
+        if (!GongfaAvailability.IsSkillEnabled(skill)) return false;
         if (skill.skill_type is ActiveSkillData.SkillType.POWER or ActiveSkillData.SkillType.DRAW or ActiveSkillData.SkillType.CURSE) return false;
         if (string.Equals(skill.slot_category, "passive", StringComparison.OrdinalIgnoreCase)) return false;
         if (skill.keywords.Any(keyword => keyword.Contains("固有", StringComparison.Ordinal))) return false;
@@ -623,6 +624,10 @@ public partial class Character : Creature
         for (var i = 0; i < 10; i++)
         {
             var key = human.combat_skill_references[i]?.Key ?? "";
+            // 下架技能在显示与战斗快照中留空，原存档引用保留，恢复开放后可继续使用。
+            if (key.Length > 0 && !key.StartsWith("artifact:", StringComparison.Ordinal)
+                && ResourceLoader.Exists(key) && ResourceLoader.Load<ActiveSkillData>(key) is { } archived
+                && !GongfaAvailability.IsSkillEnabled(archived)) { result.Add(""); continue; }
             var skill = key.Length > 0 ? resolve_combat_skill(key) : null;
             if (key.Length > 0 && (!seen.Add(key) || skill is null || (i == 9 && has_xuanshu_heart_method_equipped() && CardRules.IsResponse(skill))))
             { key = ""; human.combat_skill_references[i] = new(); }
@@ -879,11 +884,11 @@ public partial class Character : Creature
 
     // 单人模式不再提供研读位；内部只保留当前读本，以兼容已有存档进度。
     public Array<Dictionary> get_study_slot_snapshot(){var result=new Array<Dictionary>();var book=_study_books.FirstOrDefault();var slot=new Dictionary{{"slot_index",0},{"occupied",book is not null}};if(book is not null)slot["book"]=book;result.Add(slot);return result;} public bool has_free_study_slot()=>_study_books.Count<1;
-    public GongfaResource? get_current_study_gongfa()=>_study_books.FirstOrDefault()?.gongfa;
+    public GongfaResource? get_current_study_gongfa()=>_study_books.FirstOrDefault()?.gongfa is { } book&&GongfaAvailability.IsEnabled(book)?book:null;
     /// <summary>单人模式只有一部当前读本。切换时暂停原书，并保留其已累计的卷章进度。</summary>
     public bool select_gongfa_for_study(GongfaResource gongfa)
     {
-        if (gongfa is null || human is null) return false;
+        if (gongfa is null || !GongfaAvailability.IsEnabled(gongfa) || human is null) return false;
         var current = get_current_study_gongfa();
         if (current?.ResourcePath == gongfa.ResourcePath) return true;
         // 先校验新读本能否开始，成功后再暂停原读本，避免一次无效切换丢失当前进度。
@@ -900,7 +905,7 @@ public partial class Character : Creature
     /// <summary>将已掌握秘籍设为当前读本；未满足下一卷条件时保留其进度。</summary>
     public bool arrange_gongfa_study(GongfaResource gongfa)
     {
-        if (human is null || gongfa is null || !has_free_study_slot() || _study_books.Any(book => book.gongfa == gongfa)) return false;
+        if (human is null || gongfa is null || !GongfaAvailability.IsEnabled(gongfa) || !has_free_study_slot() || _study_books.Any(book => book.gongfa == gongfa)) return false;
         var book = new SecretBook { gongfa = gongfa, required_study_progress = gongfa.required_study_progress, can_be_interrupted = false, Name = "Study_" + gongfa.gongfa_name };
         AddChild(book); _study_books.Add(book);
         book.start_study(this); // 条件未达标时保留当前读本，不丢失去向。
@@ -910,7 +915,7 @@ public partial class Character : Creature
     /// <summary>序章交付选定秘籍的首卷。</summary>
     public bool grant_intro_gongfa(GongfaResource gongfa)
     {
-        if (human is null || gongfa is null || !gongfa.can_be_main) return false;
+        if (human is null || gongfa is null || !GongfaAvailability.IsEnabled(gongfa) || !gongfa.can_be_main) return false;
         var first=gongfa.get_sorted_chapters().FirstOrDefault(); if(first is null)return false;
         human.intro_gongfa_path=gongfa.ResourcePath;
         // 玄镜已点明首卷大半；玩家仍须亲自在静室完成余下部分。

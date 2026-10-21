@@ -481,7 +481,7 @@ public partial class StoragePanel : Control
         };
     }
     private static string bonus_text(Godot.Collections.Dictionary bonuses,bool percent) { var lines=new List<string>();foreach(var key in bonuses.Keys){var v=bonuses[key].AsSingle();lines.Add($"{key.AsString()} {(v>=0?"+":"")}{(percent?(v*100).ToString("0")+"%":v.ToString("0"))}");}return lines.Count==0?"":string.Join("\n",lines)+"\n"; }
-    private ItemData? load_item_data(string path){if(string.IsNullOrWhiteSpace(path))return null;if(_cache.TryGetValue(path,out var item))return item;if(!ResourceLoader.Exists(path))return null;item=ResourceLoader.Load<ItemData>(path);if(item is not null)_cache[path]=item;return item;}
+    private ItemData? load_item_data(string path){if(string.IsNullOrWhiteSpace(path))return null;if(_cache.TryGetValue(path,out var item))return item;if(!ResourceLoader.Exists(path))return null;item=ResourceLoader.Load<ItemData>(path);if(!GongfaAvailability.IsItemEnabled(item))return null;if(item is not null)_cache[path]=item;return item;}
     internal static string category_of(ItemData item,string path){var c=normalize_category(item.item_category);if(c!="")return c;return item.item_subcategory is "矿石" or "草药" or "粮食" or "纤维" or "兽材" or "灵石"?"材料":"";}
     private static string normalize_category(string value)=>value.Trim() switch {"" or "全部"=>"","材料" or "粮食" or "灵石"=>"材料","装备"=>"装备","秘籍"=>"秘籍","阵盘"=>"阵盘","器具"=>"器具","符箓"=>"符箓","丹药"=>"丹药","灵膳"=>"灵膳",var other=>other};
     private static string wuxing_name(int value)=>value switch {0=>"无要求（无灵根可学）",1=>"金",2=>"木",3=>"水",4=>"火",5=>"土",31=>"金木水火土",32=>"通用（有灵根即可）",_=>"复合灵根"};

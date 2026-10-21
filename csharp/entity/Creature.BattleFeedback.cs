@@ -13,7 +13,14 @@ public partial class Creature
     public int qi_blood
     {
         get => _qiBloodValue;
-        set { var gain = value - _qiBloodValue; _qiBloodValue = value; ReportBattleStatusGain("气血", gain); }
+        set
+        {
+            var change=value-_qiBloodValue;
+            _qiBloodValue=value;
+            var manager=FeedbackManager();
+            if(change>0)manager?.show_status_gain(this,"气血",change);
+            if(change!=0&&manager?.is_realtime_battle()==true)manager.SyncBloodArmVisual(this);
+        }
     }
     public int blood_furnace_value
     {

@@ -137,6 +137,7 @@ previous_learn_permanent_bonuses = {"physique": 1.0}
 [resource]
 script = ExtResource("1_gongfa")
 gongfa_name = "胎息经"
+gameplay_enabled = false
 description = "气血未尽时回落可积身法，气血归零时转得借力；主修在零气血时消耗身法与借力，以攻击换回气血。"
 wuxing = 0
 can_be_main = true

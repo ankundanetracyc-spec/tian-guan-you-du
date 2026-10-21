@@ -17,6 +17,8 @@ public partial class GongfaResource : Resource
     public enum WuxingRequirementMode { OR, AND }
 
     [ExportGroup("基础信息")]
+    /// <summary>下架只关闭游戏入口与效果，原资源和存档研读记录保留。</summary>
+    [Export] public bool gameplay_enabled = true;
     [Export] public string gongfa_name = "未命名秘籍";
     [Export(PropertyHint.MultilineText)] public string description = "";
     [Export] public Wuxing wuxing;

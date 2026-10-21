@@ -343,6 +343,7 @@ public partial class BattleManager
         var indices = units.Select(unit => get_battle_unit(unit).segment_action_index).ToArray();
         var gauges = units.Select(unit => action_gauges.ContainsKey(unit) ? action_gauges[unit].AsSingle() : 0f).ToArray();
         var speeds = units.Select(unit => Mathf.Max(1, Initiative(unit))).ToArray();
+        var stunRemaining = units.Select(unit => unit is Creature creature ? creature.get_status_remaining_combat_seconds("僵直") : 0f).ToArray();
         string UnitName(int index)
         {
             var name = units[index].Get("entity_name").AsString();
@@ -368,10 +369,17 @@ public partial class BattleManager
                 .ToArray();
             if (pending.Length == 0) break;
 
-            var framesUntilAction = pending.Min(index => Mathf.Max(0f, ActionThreshold - gauges[index]) / speeds[index]);
-            if (framesUntilAction > 0f)
+            var secondsUntilAction = pending.Min(index => stunRemaining[index] + Mathf.Max(0f, ActionThreshold - gauges[index]) / speeds[index]);
+            if(float.IsPositiveInfinity(secondsUntilAction))break;
+            if (secondsUntilAction > 0f)
+            {
                 foreach (var index in pending)
-                    gauges[index] = Mathf.Min(ActionThreshold, gauges[index] + speeds[index] * framesUntilAction);
+                {
+                    var activeSeconds = Mathf.Max(0f, secondsUntilAction - stunRemaining[index]);
+                    stunRemaining[index] = Mathf.Max(0f, stunRemaining[index] - secondsUntilAction);
+                    gauges[index] = Mathf.Min(ActionThreshold, gauges[index] + speeds[index] * activeSeconds);
+                }
+            }
 
             var dueIndex = -1;
             foreach (var index in pending)
@@ -443,8 +451,10 @@ public partial class BattleManager
 
     private float TimeUntilAction(GodotObject unit)
     {
+        // 僵直只冻结行动进度；剩余进度保留在 action_gauges，状态消退后继续推进。
+        var frozenSeconds=unit is Creature creature?creature.get_status_remaining_combat_seconds("僵直"):0f;
         var gauge = action_gauges.ContainsKey(unit) ? action_gauges[unit].AsSingle() : 0f;
-        return Mathf.Max(0, ActionThreshold - gauge) / Mathf.Max(1, Initiative(unit));
+        return frozenSeconds+Mathf.Max(0, ActionThreshold - gauge) / Mathf.Max(1, Initiative(unit));
     }
 
     private void AdvanceCombatTime(float frames)
@@ -455,13 +465,16 @@ public partial class BattleManager
         foreach (var unit in all_units)
         {
             if (!Alive(unit)) continue;
-            if (unit is Creature creature && GodotObject.IsInstanceValid(creature)) creature.tick_status_frames(frames);
+            var actionFrames = frames;
+            if (unit is Creature creature && GodotObject.IsInstanceValid(creature))
+                actionFrames = creature.advance_realtime_status_timers(frames,SimulationFps,"僵直");
             if (!battle_units.ContainsKey(unit) || !get_battle_unit(unit).has_pending_segment_action) continue;
+            if (actionFrames <= 0) continue;
             var currentGauge = action_gauges.ContainsKey(unit) ? action_gauges[unit].AsSingle() : 0f;
-            action_gauges[unit] = Mathf.Min(ActionThreshold, currentGauge + Initiative(unit) * frames / SimulationFps);
+            action_gauges[unit] = Mathf.Min(ActionThreshold, currentGauge + Initiative(unit) * actionFrames / SimulationFps);
             if (unit.Get("faction").AsInt32() == (int)WorldEntity.Faction.PLAYER) continue;
             var head = get_battle_unit(unit).current_segment_action!;
-            head.intent_elapsed += frames;
+            head.intent_elapsed += actionFrames;
             head.intent_revealed = head.intent_elapsed >= IntentRevealDelay(unit);
         }
         _statusPanel?.refresh_all();

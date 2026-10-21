@@ -38,7 +38,16 @@ public partial class BaigongPanel : Control
         _page = page;
         foreach (var (name, tab) in _tabs) { tab.Disabled = name == page; tab.Modulate = name == page ? new Color("f1d77a") : new Color("d8d0b8"); }
         if (_body is null) return; clear(_body);
-        if (page == "阵法") build_formation(); else build_placeholder(page);
+        if (page == "阵法") build_formation(); else if (page == "法宝") build_forging(); else build_placeholder(page);
+    }
+
+    private void build_forging()
+    {
+        _body!.AddChild(title("炼器 · 剑类工坊", 27, new Color("f4f0df")));
+        _body.AddChild(muted("细身剑、阔刃剑、厚脊剑：按部件投料，配置功用与方法。当前开放独立试炼，候选参数不进入正式装备。"));
+        var open = new Button { Text = "进入炼器工坊 · 试炼", CustomMinimumSize = new Vector2(360, 58) };
+        open.Pressed += () => { var scene = GD.Load<PackedScene>("res://tscn/scene/SwordCraftingScene.tscn").Instantiate<Control>(); scene.ZIndex = 100; AddChild(scene); };
+        _body.AddChild(open);
     }
 
     private void build_placeholder(string page)

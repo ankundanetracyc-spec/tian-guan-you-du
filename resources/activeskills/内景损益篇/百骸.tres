@@ -18,6 +18,7 @@ range_min = 1
 range_max = 1
 base_damage = 6.0
 damage_type = "physical"
+attack_style = "melee"
 damage_formula = "round(6 + 体魄×0.35 + 体道造诣×0.25)"
 keywords = Array[String]([])
 preparation_frames = 0

@@ -39,6 +39,7 @@ range_min = 1
 range_max = 1
 base_damage = 8.0
 damage_type = "physical"
+attack_style = "melee"
 damage_bonuses = Array[ExtResource("2_dmg")]([SubResource("Resource_physique"), SubResource("Resource_body_proficiency"), SubResource("Resource_extra_physique")])
 metadata/_custom_type_script = "uid://cjcf3nq1ne5ql"
 keywords = Array[String]([])

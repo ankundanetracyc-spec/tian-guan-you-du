@@ -81,6 +81,7 @@ public static class YuxuSectPrototypeBalance
     /// <summary>守住目录边界：只兑换有有效图标的现行材料/秘籍，不恢复已废弃占位物。</summary>
     public static bool is_exchangeable_item(ItemData? item)
     {
+        if (!GongfaAvailability.IsItemEnabled(item)) return false;
         if (item is null || item.item_category is not ("材料" or "秘籍")) return false;
         if (string.IsNullOrWhiteSpace(item.entity_name) || string.IsNullOrWhiteSpace(item.definition_id.ToString())) return false;
         if (item.entity_name.Trim() is "木材" or "爆炎符" or "豆麦" or "黄粟" or "回春丹" or "魂玉" or "雷击符" or "灵米粥" or "肉干" or "山麻" or "山薯" or "石材" or "铁矿石" or "妖丹" or "野菜" or "阵台" or "止血草" or "凝血草") return false;

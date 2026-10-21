@@ -135,6 +135,7 @@ previous_learn_permanent_bonuses = {"physique": 0.25, "soul": 0.25, "body_profic
 [resource]
 script = ExtResource("1")
 gongfa_name = "乘物游骸真经"
+gameplay_enabled = false
 description = "气血、游骸与身法并行的云息秘籍：以自身根基压住敌方，游骸整张避伤，再把已耗游骸化为反击。"
 wuxing = 0
 can_be_main = true

@@ -36,6 +36,7 @@ range_max = 1
 slot_category = "active"
 base_damage = 8.0
 damage_type = "physical"
+attack_style = "melee"
 damage_bonuses = Array[ExtResource("2")]([SubResource("Physique"), SubResource("BodyProficiency"), SubResource("ExtraPhysique")])
 damage_formula = "round(8 + 体魄×0.65 + 体道造诣×0.2)"
 gongfa_rewrite_effect_ids = Array[String](["chiyang_c3_fajin"])

@@ -51,7 +51,7 @@ public partial class BattleManager : Node2D
         foreach (var item in value.AsGodotArray())
         {
             var skill = ResourceLoader.Load<ActiveSkillData>(item.AsString());
-            if (skill is null || skill.skill_type != ActiveSkillData.SkillType.POWER || string.IsNullOrWhiteSpace(skill.source_gongfa_name)) continue;
+            if (skill is null || !GongfaAvailability.IsSkillEnabled(skill) || skill.skill_type != ActiveSkillData.SkillType.POWER || string.IsNullOrWhiteSpace(skill.source_gongfa_name)) continue;
             // 主修/辅修秘籍快照自动提供心法被动；心法不经过技能队列，也不支付资源。
             gongfa_combat.Utility(unit, skill);
         }
@@ -61,7 +61,8 @@ public partial class BattleManager : Node2D
     {
         var result = new Array<ActiveSkillData>();
         if (unit.HasMeta("combat_resolved_skills") && unit.GetMeta("combat_resolved_skills").AsGodotArray().Count > 0)
-            return new Array<ActiveSkillData>(unit.GetMeta("combat_resolved_skills").AsGodotArray().Select(value => (ActiveSkillData)value.AsGodotObject()!));
+            return new Array<ActiveSkillData>(unit.GetMeta("combat_resolved_skills").AsGodotArray().Select(value =>
+                value.AsGodotObject() is ActiveSkillData skill && Character.is_combat_skill_slot_eligible(skill) ? skill : ArtifactSkillFactory.EmptySlot()));
         var paths = new List<string>();
         void AddMetaPaths(string key)
         {

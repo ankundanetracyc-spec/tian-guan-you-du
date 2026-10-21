@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="app.diagrams.net" agent="Codex">
+  <diagram id="baibai_yanzhi_huasheng" name="百骸衍枝化生宝册">
+    <mxGraphModel dx="3641" dy="512" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2300" pageHeight="3900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" value="" />
+        <mxCell id="1" parent="0" value="" />
+        <mxCell id="title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=20;" value="&lt;div style=&quot;text-align:center;&quot;&gt;&lt;b&gt;《百骸衍枝化生宝册》&lt;/b&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="74" width="560" x="740" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="overview" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=15;" value="&lt;div style=&quot;text-align:left;&quot;&gt;&lt;b&gt;秘籍总览&lt;/b&gt;&lt;br&gt;五行与灵根要求：无灵根要求&lt;br&gt;可主修／可辅修：是／是&lt;br&gt;主修起止境界：云息一层至云息十层&lt;br&gt;核心构筑：积累气血显化手臂；近身攻击追加物理伤害；双臂时自动应对并消耗气血。&lt;br&gt;实施状态：已接入游戏与战斗测试&lt;/div&gt;" vertex="1">
+          <mxGeometry height="190" width="560" x="740" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;&lt;b&gt;第一卷：养络&lt;/b&gt;&lt;br&gt;卷章ID：yang_luo&lt;br&gt;顺序：1&lt;br&gt;&lt;br&gt;定位：引气血入络，显化第一只手臂&lt;br&gt;研读值（累计）：24&lt;br&gt;学成可修至：云息三层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：无要求&lt;br&gt;境界：凡人&lt;br&gt;前置：无&lt;br&gt;研读属性：体魄≥5；体道造诣≥0&lt;br&gt;&lt;br&gt;学会永久属性：体道造诣 +0.5&lt;br&gt;&lt;br&gt;习得：无新增技能&lt;/div&gt;" vertex="1">
+          <mxGeometry height="430" width="340" x="850" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;&lt;b&gt;心法被动：百骸衍枝化生&lt;/b&gt;&lt;br&gt;类型：心法&lt;br&gt;关键词：气血&lt;br&gt;效果：自身&lt;u&gt;气血&lt;/u&gt;层数达到5层时显化1只手臂，最多显化1只。每次近身攻击结算时，显化的手臂追加一段A点物理伤害；&lt;u&gt;气血&lt;/u&gt;层数变化后立即重新判定显化状态。&lt;br&gt;主修额外效果：手臂追加攻击伤害提高20%。&lt;br&gt;计算公式：A=round(1 + 气血层数&#215;0.15 + 体魄&#215;0.10 + 体道造诣&#215;0.15)。&lt;br&gt;&lt;br&gt;&lt;b&gt;习得：无新增技能&lt;/b&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="740" width="740" x="-400" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;&lt;b&gt;化法&lt;/b&gt;&lt;br&gt;技能：催血&lt;br&gt;类型：守御&lt;br&gt;关键词：生命、气血&lt;br&gt;耗费：体力 1、法力 0&lt;br&gt;目标：自身&lt;br&gt;原技能效果：获得&lt;u&gt;气血&lt;/u&gt;2层。&lt;br&gt;化法追加：施展前自身&lt;u&gt;气血&lt;/u&gt;层数不高于3层时，额外获得&lt;u&gt;气血&lt;/u&gt;1层。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="500" width="290" x="1360" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;&lt;b&gt;第二卷：生枝&lt;/b&gt;&lt;br&gt;卷章ID：sheng_zhi&lt;br&gt;顺序：2&lt;br&gt;&lt;br&gt;定位：降低显化门槛，以单臂强化近身攻势&lt;br&gt;研读值（累计）：48&lt;br&gt;学成可修至：云息六层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：无要求&lt;br&gt;境界：云息三层及以上&lt;br&gt;前置：yang_luo&lt;br&gt;研读属性：体魄≥6；体道造诣≥0.5&lt;br&gt;&lt;br&gt;学会永久属性：体道造诣 +0.5&lt;br&gt;&lt;br&gt;习得：摧山&lt;/div&gt;" vertex="1">
+          <mxGeometry height="430" width="340" x="850" y="1150" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;&lt;b&gt;心法被动：百骸衍枝化生&lt;/b&gt;&lt;br&gt;类型：心法&lt;br&gt;关键词：气血&lt;br&gt;效果：自身&lt;u&gt;气血&lt;/u&gt;层数达到4层时显化1只手臂，最多显化1只。每次近身攻击结算时，显化的手臂追加一段A点物理伤害；&lt;u&gt;气血&lt;/u&gt;层数变化后立即重新判定显化状态。&lt;br&gt;主修额外效果：手臂追加攻击伤害提高20%。&lt;br&gt;计算公式：A=round(1 + 气血层数&#215;0.15 + 体魄&#215;0.10 + 体道造诣&#215;0.15)。&lt;br&gt;&lt;br&gt;&lt;b&gt;习得：摧山&lt;/b&gt;&lt;br&gt;类型：攻伐&lt;br&gt;关键词：气血&lt;br&gt;耗费：体力 2、法力 0&lt;br&gt;目标与射程：指定1名敌方&lt;br&gt;出手方式：近身&lt;br&gt;灵识占用：0&lt;br&gt;伤害类型：物理&lt;br&gt;效果：造成A点物理伤害。&lt;br&gt;计算公式：A=round(7 + 体魄&#215;0.55 + 体道造诣&#215;0.25)。&lt;br&gt;使用次数：不限&lt;br&gt;冷却：无&lt;/div&gt;" vertex="1">
+          <mxGeometry height="740" width="740" x="-400" y="1150" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;&lt;b&gt;化法&lt;/b&gt;&lt;br&gt;技能：摧山&lt;br&gt;类型：攻伐&lt;br&gt;关键词：气血&lt;br&gt;耗费：体力 2、法力 0&lt;br&gt;目标：指定1名敌方&lt;br&gt;出手方式：近身&lt;br&gt;伤害类型：物理&lt;br&gt;原技能效果：造成A点物理伤害。&lt;br&gt;化法追加：至少一只手臂显化时，本技能额外追加一段A点物理伤害。&lt;br&gt;计算公式：A=round(7 + 体魄&#215;0.55 + 体道造诣&#215;0.25)。&lt;br&gt;使用次数：不限&lt;br&gt;冷却：无&lt;/div&gt;" vertex="1">
+          <mxGeometry height="540" width="290" x="1360" y="1150" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;&lt;b&gt;第三卷：双擎&lt;/b&gt;&lt;br&gt;卷章ID：shuang_qing&lt;br&gt;顺序：3&lt;br&gt;&lt;br&gt;定位：显化双臂，以自动应对化解近身来袭&lt;br&gt;研读值（累计）：84&lt;br&gt;学成可修至：云息九层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：无要求&lt;br&gt;境界：云息六层及以上&lt;br&gt;前置：sheng_zhi&lt;br&gt;研读属性：体魄≥8；体道造诣≥1&lt;br&gt;&lt;br&gt;学会永久属性：体道造诣 +1&lt;br&gt;&lt;br&gt;习得：无新增技能&lt;/div&gt;" vertex="1">
+          <mxGeometry height="470" width="340" x="850" y="1940" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;&lt;b&gt;心法被动：百骸衍枝化生&lt;/b&gt;&lt;br&gt;类型：心法&lt;br&gt;关键词：气血、应对、化解&lt;br&gt;效果：自身&lt;u&gt;气血&lt;/u&gt;层数达到4层时显化第1只手臂，达到8层时显化第2只，最多显化2只。每次近身攻击结算时，每只显化手臂各追加一段A点物理伤害；&lt;u&gt;气血&lt;/u&gt;层数变化后立即重新判定显化状态。&lt;br&gt;双臂显化时，受到近身物理攻击并进入伤害结算前，每个来袭技能至多判定一次：以B概率自动&lt;u&gt;应对&lt;/u&gt;，获得C层&lt;u&gt;化解&lt;/u&gt;；触发后，本次来袭攻击结算完毕时&lt;u&gt;气血&lt;/u&gt;层数降低1层，并触发气血层数降低时的回复效果。&lt;br&gt;主修额外效果：每段手臂追加攻击伤害提高20%。&lt;br&gt;计算公式：A=round(1 + 气血层数&#215;0.20 + 体魄&#215;0.12 + 体道造诣&#215;0.20)；B=clamp(30% + 4%&#215;(自身气血层数−攻击者气血层数) + 0.5%&#215;自身体魄 + 1%&#215;体道造诣 − 0.5%&#215;攻击者体魄, 5%, 80%)；C=round(1 + 气血层数&#215;0.20 + 体魄&#215;0.10 + 体道造诣&#215;0.20)。&lt;br&gt;&lt;br&gt;&lt;b&gt;习得：无新增技能&lt;/b&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="900" width="740" x="-400" y="1940" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;&lt;b&gt;化法&lt;/b&gt;&lt;br&gt;技能：架招&lt;br&gt;类型：守御&lt;br&gt;关键词：化解、应对、气血&lt;br&gt;耗费：体力 1、法力 0&lt;br&gt;目标：自身；位于队首且受到敌方物理攻击时触发&lt;br&gt;原技能效果：获得A层&lt;u&gt;化解&lt;/u&gt;；每层抵消本次来袭攻击1点物理伤害，剩余化解在攻击结算后消散。&lt;br&gt;化法追加：第二只手臂显化时，本次架招额外获得B层&lt;u&gt;化解&lt;/u&gt;。&lt;br&gt;计算公式：A=3 + floor(体魄&#247;4) + floor(min(体魄&#215;0.25, 神魂&#215;0.20))；B=min(round(A&#215;0.20),20)。&lt;br&gt;使用次数：不限&lt;br&gt;冷却：无&lt;/div&gt;" vertex="1">
+          <mxGeometry height="760" width="290" x="1360" y="1940" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;&lt;b&gt;第四卷：化生&lt;/b&gt;&lt;br&gt;卷章ID：hua_sheng&lt;br&gt;顺序：4&lt;br&gt;&lt;br&gt;定位：进一步降低双臂显化门槛，完善攻守循环&lt;br&gt;研读值（累计）：128&lt;br&gt;学成可修至：云息十层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：无要求&lt;br&gt;境界：云息九层及以上&lt;br&gt;前置：shuang_qing&lt;br&gt;研读属性：体魄≥10；体道造诣≥2&lt;br&gt;&lt;br&gt;学会永久属性：体道造诣 +1&lt;br&gt;&lt;br&gt;习得：无新增技能&lt;/div&gt;" vertex="1">
+          <mxGeometry height="460" width="340" x="850" y="2890" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;&lt;b&gt;心法被动：百骸衍枝化生&lt;/b&gt;&lt;br&gt;类型：心法&lt;br&gt;关键词：气血、应对、化解&lt;br&gt;效果：自身&lt;u&gt;气血&lt;/u&gt;层数达到3层时显化第1只手臂，达到7层时显化第2只，最多显化2只。每次近身攻击结算时，每只显化手臂各追加一段A点物理伤害；&lt;u&gt;气血&lt;/u&gt;层数变化后立即重新判定显化状态。&lt;br&gt;双臂显化时，受到近身物理攻击并进入伤害结算前，每个来袭技能至多判定一次：以B概率自动&lt;u&gt;应对&lt;/u&gt;，获得C层&lt;u&gt;化解&lt;/u&gt;；触发后，本次来袭攻击结算完毕时&lt;u&gt;气血&lt;/u&gt;层数降低1层，并触发气血层数降低时的回复效果。&lt;br&gt;主修额外效果：每段手臂追加攻击伤害提高20%。&lt;br&gt;计算公式：A=round(1 + 气血层数&#215;0.20 + 体魄&#215;0.12 + 体道造诣&#215;0.20)；B=clamp(30% + 4%&#215;(自身气血层数−攻击者气血层数) + 0.5%&#215;自身体魄 + 1%&#215;体道造诣 − 0.5%&#215;攻击者体魄, 5%, 80%)；C=round(1 + 气血层数&#215;0.20 + 体魄&#215;0.10 + 体道造诣&#215;0.20)。&lt;br&gt;&lt;br&gt;&lt;b&gt;习得：无新增技能&lt;/b&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="860" width="740" x="-400" y="2890" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;&lt;b&gt;化法&lt;/b&gt;&lt;br&gt;技能：架招&lt;br&gt;类型：守御&lt;br&gt;关键词：化解、应对、气血&lt;br&gt;耗费：体力 1、法力 0&lt;br&gt;目标：自身；位于队首且受到敌方物理攻击时触发&lt;br&gt;原技能效果：获得A层&lt;u&gt;化解&lt;/u&gt;；每层抵消本次来袭攻击1点物理伤害，剩余化解在攻击结算后消散。&lt;br&gt;化法追加：显化至少一只手臂时，本次架招额外获得&lt;u&gt;化解&lt;/u&gt;1层；第二只手臂显化时，额外获得B层&lt;u&gt;化解&lt;/u&gt;；本次架招实际抵消至少1点物理伤害后，若自身&lt;u&gt;气血&lt;/u&gt;未满，获得&lt;u&gt;气血&lt;/u&gt;1层。&lt;br&gt;计算公式：A=3 + floor(体魄&#247;4) + floor(min(体魄&#215;0.25, 神魂&#215;0.20))；B=min(round(A&#215;0.20),20)。&lt;br&gt;使用次数：不限&lt;br&gt;冷却：无&lt;/div&gt;" vertex="1">
+          <mxGeometry height="760" width="290" x="1360" y="2890" as="geometry" />
+        </mxCell>
+        <mxCell id="summary" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" value="&lt;div style=&quot;text-align:left;&quot;&gt;构筑循环：气血显化手臂，近身攻击追加物理伤害；低气血时以《催血》补足显化层数，双臂时强化《架招》并概率自动应对。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="420" x="1660" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;最大生命 +5%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="260" x="360" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;物理伤害 +3%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="270" x="390" y="1150" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;最大生命 +5%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="270" x="400" y="1940" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;物理伤害 +4%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="270" x="370" y="2890" as="geometry" />
+        </mxCell>
+        <mxCell id="status_rules" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;&lt;b&gt;显化与气血&lt;/b&gt;&lt;br&gt;显化手臂数量只由当前气血层数判定，不另设状态。气血层数变化后立即重算；低于对应门槛时，手臂随即消隐。气血基础上限为8层，气血下降触发的回复沿用公共规则。&lt;br&gt;&lt;br&gt;&lt;b&gt;近身攻击判定&lt;/b&gt;&lt;br&gt;由技能数据 attack_style = melee 明确标记；该字段只判定招式联动，不代表空间距离，也不读取动画或位移。每次技能行动按显化手臂数量追加伤害段，不按原技能段数重复触发；追加段依现行伤害流程逐段结算。&lt;br&gt;&lt;br&gt;&lt;b&gt;自动应对结算&lt;/b&gt;&lt;br&gt;这是心法被动触发的应对效果，不施放架招或其他技能，不占技能槽、不进入行动队列。仅当至少一段物理伤害通过命中／整招规避判定后、伤害段结算前进行概率判定；每个来袭技能至多一次。化解按本次来袭的固定抵消池规则结算；B与C按来袭判定时读取的双方属性计算，C在扣除气血前结算。剩余层数在攻击结算组结束时移除；气血降低在攻击结算后处理。&lt;br&gt;&lt;br&gt;&lt;b&gt;实施状态&lt;/b&gt;&lt;br&gt;心法、四卷化法、摧山与血臂追加段已接入运行时；战斗测试可选择本书。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="930" width="430" x="1660" y="830" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" edge="1" parent="1" source="overview" style="endArrow=block;html=1;" target="c1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_a" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_b" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_c" edge="1" parent="1" source="c1" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c1_cards" value="本卷心法与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_a" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_b" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_c" edge="1" parent="1" source="c2" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c2_cards" value="心法与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_a" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_b" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_c" edge="1" parent="1" source="c3" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c3_cards" value="心法与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_a" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_b" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_c" edge="1" parent="1" source="c4" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c4_cards" value="心法与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

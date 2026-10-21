@@ -10,7 +10,7 @@ public partial class GameStartProfile : Node
     public int player_gender;
     public HumanData player_appearance_data = new();
     public string surname = "李", family_name = "本家";
-    public string selected_initial_gongfa_path = "res://resources/gongfa/黄庭养形篇.tres";
+    public string selected_initial_gongfa_path = GongfaAvailability.DefaultBookPath;
     public Array<string> generation_characters = ["守", "承", "远", "宁"];
     public int fated_youngest_root_type = 22, fated_youngest_element = 2, fated_remaining_points;
     public bool has_fated_roll;

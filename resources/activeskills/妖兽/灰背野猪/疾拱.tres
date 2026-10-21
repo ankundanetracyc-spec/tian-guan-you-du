@@ -12,4 +12,5 @@ target_type = 2
 range_min = 1
 range_max = 1
 damage_type = "physical"
+attack_style = "melee"
 damage_formula = "round(10 + physique*0.8 + physique*1.6)"

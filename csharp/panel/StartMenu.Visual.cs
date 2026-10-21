@@ -165,6 +165,10 @@ public partial class StartMenu
         alchemy.SizeFlagsHorizontal = SizeFlags.ExpandFill; alchemy.CustomMinimumSize = new Vector2(0, 58);
         alchemy.Pressed += () => { CloseDemoEntries(); GetTree().ChangeSceneToFile("res://tscn/scene/AlchemyPreviewScene.tscn"); };
         list.AddChild(alchemy);
+        var forging = SettingsButton("炼器工坊 · 剑类试炼");
+        forging.SizeFlagsHorizontal = SizeFlags.ExpandFill; forging.CustomMinimumSize = new Vector2(0, 58);
+        forging.Pressed += () => { CloseDemoEntries(); GetTree().ChangeSceneToFile("res://tscn/scene/SwordCraftingScene.tscn"); };
+        list.AddChild(forging);
         var letters = SettingsButton("信件界面预览");
         letters.SizeFlagsHorizontal = SizeFlags.ExpandFill; letters.CustomMinimumSize = new Vector2(0, 58);
         letters.Pressed += () => { CloseDemoEntries(); GetTree().ChangeSceneToFile("res://tscn/scene/LettersPreviewScene.tscn"); };

@@ -133,6 +133,7 @@ previous_learn_permanent_bonuses = {"body_proficiency": 1.0}
 [resource]
 script = ExtResource("1_gongfa")
 gongfa_name = "阴符应物经"
+gameplay_enabled = false
 description = "以应对技能抵消当前物理伤害，将敌势转为借力后收束反制。"
 wuxing = 0
 can_be_main = true

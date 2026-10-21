@@ -30,6 +30,7 @@ range_max = 1
 slot_category = "active"
 base_damage = 15.0
 damage_type = "physical"
+attack_style = "melee"
 damage_bonuses = Array[ExtResource("2")]([SubResource("Physique"), SubResource("BodyProficiency")])
 damage_formula = "round(15 + 体魄×0.85 + 体道造诣×0.55)"
 uses_per_round = 1

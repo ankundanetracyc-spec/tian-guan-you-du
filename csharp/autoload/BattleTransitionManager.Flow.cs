@@ -273,7 +273,7 @@ public partial class BattleTransitionManager
     }
     private static void AddLoot(string path,int count,string source,GArray rewards,string npcId="")
     {
-        if(count<=0||string.IsNullOrEmpty(path)||!ResourceLoader.Exists(path)||GD.Load<ItemData>(path) is null)return;
+        if(count<=0||string.IsNullOrEmpty(path)||!ResourceLoader.Exists(path)||!GongfaAvailability.IsItemEnabled(GD.Load<ItemData>(path)))return;
         rewards.Add(new GDictionary{{"item_path",path},{"count",count},{"source",source},{"npc_id",npcId}});
     }
     private CanvasLayer? _lootReminder;

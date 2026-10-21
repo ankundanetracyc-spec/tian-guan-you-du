@@ -76,6 +76,9 @@ public partial class EncyclopediaPanel : Control
     private Section _current = Section.Statuses;
     private bool _closing;
     private bool _suppressSearchChanged;
+    private Entry? _selectedEntry;
+    private readonly Dictionary<Section, Entry> _selectedEntries = [];
+    private Tween? _presentationTween;
 
     private static readonly Color Ink = new("2a251f");
     private static readonly Color MutedInk = new("665d4c");
@@ -87,6 +90,7 @@ public partial class EncyclopediaPanel : Control
         Visible = false;
         ZIndex = 250;
         Build();
+        VisibilityChanged += () => { if (!IsVisibleInTree()) CancelCatalogRequest(); };
     }
 
     public override void _UnhandledInput(InputEvent @event)
@@ -106,31 +110,56 @@ public partial class EncyclopediaPanel : Control
         ShowSection(Section.Beasts);
     }
 
-    private void ShowSection(Section section)
+    private async void ShowSection(Section section, bool resetSearch = true, bool animate = true)
     {
+        if (!resetSearch && _current == section && IsCatalogLoading && Visible && !_closing) return;
+        var request = ++_catalogRequest;
+        _presentationTween?.Kill();
         _current = section;
         _closing = false;
-        if (_search is not null && !string.IsNullOrEmpty(_search.Text))
+        if (resetSearch && _search is not null && !string.IsNullOrEmpty(_search.Text))
         {
             _suppressSearchChanged = true;
             _search.Clear();
             _suppressSearchChanged = false;
         }
-        EnsureCatalogLoaded(section);
         Visible = true;
         MoveToFront();
-        Populate();
-        if (_background is null || _pageContent is null) return;
-        _background.Modulate = new Color(1, 1, 1, 0);
-        _pageContent.Modulate = new Color(1, 1, 1, 0);
-        CallDeferred(nameof(play_open_animation));
+        if (animate && _background is not null && _pageContent is not null)
+        {
+            _background.Modulate = new Color(1, 1, 1, 0);
+            _pageContent.Modulate = new Color(1, 1, 1, 0);
+            CallDeferred(nameof(play_open_animation));
+        }
+        else
+        {
+            if (_background is not null) _background.Modulate = Colors.White;
+            if (_pageContent is not null) _pageContent.Modulate = Colors.White;
+        }
+        try
+        {
+            await EnsureCatalogLoadedAsync(section, request);
+            if (!IsCatalogRequestCurrent(request)) return;
+            Populate();
+            if (_selectedEntry is not null) SetBeastPreview(_selectedEntry, _detailIcon?.Texture);
+        }
+        catch (Exception exception)
+        {
+            if (!IsCatalogRequestCurrent(request)) return;
+            GD.PushError($"百科目录载入失败：{exception}");
+            if (_detailTitle is not null) _detailTitle.Text = "目录暂时未能载入";
+            if (_detailMeta is not null) _detailMeta.Text = "可切换分类后重试。";
+        }
+        finally { if (request == _catalogRequest) IsCatalogLoading = false; }
     }
 
     public void hide_panel()
     {
         if (!Visible || _closing || _background is null || _pageContent is null) return;
+        CancelCatalogRequest();
         _closing = true;
-        var tween = CreateTween().SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.In);
+        _presentationTween?.Kill();
+        var tween = _presentationTween = CreateTween().SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.In);
         tween.SetParallel();
         tween.TweenProperty(_background, "modulate:a", 0f, .16f);
         tween.TweenProperty(_pageContent, "modulate:a", 0f, .12f);
@@ -314,12 +343,7 @@ public partial class EncyclopediaPanel : Control
     {
         var button = new Button { Name = $"Tab{section}", Text = text, CustomMinimumSize = new Vector2(200, 56), FocusMode = FocusModeEnum.None };
         StyleCategoryTab(button, false);
-        button.Pressed += () =>
-        {
-            _current = section;
-            EnsureCatalogLoaded(section);
-            Populate();
-        };
+        button.Pressed += () => ShowSection(section, resetSearch: false, animate: false);
         _tabs[section] = button;
         parent.AddChild(button);
     }
@@ -407,8 +431,6 @@ public partial class EncyclopediaPanel : Control
     private void Populate()
     {
         if (_entryList is null || _detailTitle is null || _detailMeta is null || _detailBody is null) return;
-        foreach (var child in _entryList.GetChildren()) { _entryList.RemoveChild(child); child.QueueFree(); }
-        _entryButtons.Clear();
         foreach (var pair in _tabs) StyleCategoryTab(pair.Value, pair.Key == _current);
         var title = SectionTitle(_current);
         var allEntries = _entries.GetValueOrDefault(_current, []);
@@ -416,9 +438,13 @@ public partial class EncyclopediaPanel : Control
         var visibleEntries = string.IsNullOrEmpty(query)
             ? allEntries
             : allEntries.Where(entry => entry.SearchText.Contains(query, StringComparison.OrdinalIgnoreCase)).ToList();
+        var matchingEntries = visibleEntries.ToHashSet();
+        foreach (var (entry, button) in _entryButtons) button.Visible = matchingEntries.Contains(entry);
         if (_entryCount is not null) _entryCount.Text = $"收录 {visibleEntries.Count} 条";
         if (visibleEntries.Count == 0)
         {
+            if (_selectedEntry is { } previous && _entryButtons.TryGetValue(previous, out var previousButton)) StyleEntry(previousButton);
+            _selectedEntry = null;
             SetBeastPreview(null);
             if (_beastDetail is not null) _beastDetail.Visible = false;
             if (_detailScroll is not null) _detailScroll.Visible = true;
@@ -435,55 +461,66 @@ public partial class EncyclopediaPanel : Control
         }
         foreach (var entry in visibleEntries)
         {
-            var button = new Button
-            {
-                Text = "",
-                CustomMinimumSize = new Vector2(0, 96),
-                TooltipText = ""
-            };
-            StyleEntry(button);
-            var padding = new MarginContainer { MouseFilter = MouseFilterEnum.Ignore };
-            padding.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-            padding.AddThemeConstantOverride("margin_left", 11); padding.AddThemeConstantOverride("margin_right", 9);
-            padding.AddThemeConstantOverride("margin_top", 8); padding.AddThemeConstantOverride("margin_bottom", 8);
-            button.AddChild(padding);
-            padding.MinimumSizeChanged += () => button.CustomMinimumSize = new Vector2(0, Mathf.Max(96, padding.GetCombinedMinimumSize().Y));
-            var row = new HBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
-            row.AddThemeConstantOverride("separation", 14);
-            padding.AddChild(row);
-            var icon = new TextureRect
-            {
-                Texture = entry.Icon ?? LoadTexture("res://textures/ui/encyclopedia/item_placeholder_v1.svg"),
-                CustomMinimumSize = new Vector2(56, 56),
-                ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
-                StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
-                MouseFilter = MouseFilterEnum.Ignore
-            };
-            row.AddChild(icon);
-            var labels = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ShrinkCenter, MouseFilter = MouseFilterEnum.Ignore };
-            labels.AddThemeConstantOverride("separation", 3);
-            row.AddChild(labels);
-            var titleLabel = MakeLabel(entry.Title, 19, Ink);
-            titleLabel.MouseFilter = MouseFilterEnum.Ignore;
-            labels.AddChild(titleLabel);
-            var metaLabel = MakeLabel(entry.Meta, 15, MutedInk);
-            metaLabel.MouseFilter = MouseFilterEnum.Ignore;
-            labels.AddChild(metaLabel);
-            button.Pressed += () => ShowEntry(entry);
-            _entryButtons[entry] = button;
-            _entryList.AddChild(button);
+            if (_entryButtons.ContainsKey(entry)) continue;
+            CreateEntryButton(entry);
         }
-        ShowEntry(visibleEntries[0]);
+        ShowEntry(_selectedEntries.TryGetValue(_current, out var selection) && matchingEntries.Contains(selection) ? selection : visibleEntries[0]);
+    }
+
+    private void CreateEntryButton(Entry entry)
+    {
+        if (_entryList is null) return;
+        var button = new Button
+        {
+            Text = "",
+            CustomMinimumSize = new Vector2(0, 96),
+            TooltipText = ""
+        };
+        StyleEntry(button);
+        var padding = new MarginContainer { MouseFilter = MouseFilterEnum.Ignore };
+        padding.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        padding.AddThemeConstantOverride("margin_left", 11); padding.AddThemeConstantOverride("margin_right", 9);
+        padding.AddThemeConstantOverride("margin_top", 8); padding.AddThemeConstantOverride("margin_bottom", 8);
+        button.AddChild(padding);
+        padding.MinimumSizeChanged += () => button.CustomMinimumSize = new Vector2(0, Mathf.Max(96, padding.GetCombinedMinimumSize().Y));
+        var row = new HBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
+        row.AddThemeConstantOverride("separation", 14);
+        padding.AddChild(row);
+        var icon = new TextureRect
+        {
+            Texture = entry.Icon ?? LoadTexture("res://textures/ui/encyclopedia/item_placeholder_v1.svg"),
+            CustomMinimumSize = new Vector2(56, 56),
+            ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
+            StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
+            MouseFilter = MouseFilterEnum.Ignore
+        };
+        row.AddChild(icon);
+        var labels = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ShrinkCenter, MouseFilter = MouseFilterEnum.Ignore };
+        labels.AddThemeConstantOverride("separation", 3);
+        row.AddChild(labels);
+        var titleLabel = MakeLabel(entry.Title, 19, Ink);
+        titleLabel.MouseFilter = MouseFilterEnum.Ignore;
+        labels.AddChild(titleLabel);
+        var metaLabel = MakeLabel(entry.Meta, 15, MutedInk);
+        metaLabel.MouseFilter = MouseFilterEnum.Ignore;
+        labels.AddChild(metaLabel);
+        button.Pressed += () => ShowEntry(entry);
+        _entryButtons[entry] = button;
+        _entryList.AddChild(button);
     }
 
     private void OnSearchChanged(string _)
     {
-        if (!_suppressSearchChanged) Populate();
+        if (!_suppressSearchChanged && !IsCatalogLoading) Populate();
     }
 
     private void ShowEntry(Entry entry)
     {
         if (_detailTitle is null || _detailMeta is null || _detailBody is null || _detailIcon is null || _detailIconPlate is null) return;
+        if (ReferenceEquals(_selectedEntry, entry)) return;
+        if (_selectedEntry is { } previous && _entryButtons.TryGetValue(previous, out var previousButton)) StyleEntry(previousButton);
+        _selectedEntry = entry;
+        _selectedEntries[_current] = entry;
         _detailTitle.Text = entry.Title;
         _detailMeta.Text = entry.Meta;
         var portrait = entry.PortraitPath is { } portraitPath ? LoadTexture(portraitPath) ?? entry.Icon : entry.Icon;
@@ -508,7 +545,7 @@ public partial class EncyclopediaPanel : Control
         if (_beastDetail is not null) _beastDetail.Visible = isBeast;
         if (entry.Beast is { } template) BuildBeastDossier(template);
         else if (entry.Creature is { } creature) BuildCreatureDossier(creature);
-        foreach (var (catalogEntry, button) in _entryButtons) StyleEntry(button, catalogEntry == entry);
+        if (_entryButtons.TryGetValue(entry, out var selectedButton)) StyleEntry(selectedButton, true);
         StyleIconPlate(_detailIconPlate, entry.IsNegative);
         SetBeastPreview(entry, portrait);
     }
@@ -731,23 +768,11 @@ public partial class EncyclopediaPanel : Control
         parent.AddChild(panel);
     }
 
-    private void EnsureCatalogLoaded(Section section)
+    private static IEnumerable<int> LoadBeastEntriesSteps(List<Entry> result)
     {
-        if (_entries.ContainsKey(section)) return;
-        _entries[section] = section switch
-        {
-            Section.Statuses => LoadStatusEntries(),
-            Section.Items => LoadItemEntries(),
-            Section.Beasts => LoadBeastEntries(),
-            _ => []
-        };
-    }
-
-    private static List<Entry> LoadBeastEntries()
-    {
-        var result = new List<Entry>();
         foreach (var path in FindResources("res://resources/beast_templates"))
         {
+            yield return 0;
             var template = ResourceLoader.Load<BeastTemplate>(path);
             if (template is null || template.species_id != "forest_wolf" || string.IsNullOrWhiteSpace(template.display_name)) continue;
             var portraitPath = BattlePaperDoll.ForestWolfPortraitPath;
@@ -780,38 +805,40 @@ public partial class EncyclopediaPanel : Control
                 PortraitPath: portraitPath));
         }
 
-        const string catalogPath = "res://resources/bestiary/creatures.json";
-        if (Godot.FileAccess.FileExists(catalogPath))
+        foreach (var creature in ReadCreatureRecords())
         {
-            try
-            {
-                var json = Godot.FileAccess.GetFileAsString(catalogPath);
-                var creatures = JsonSerializer.Deserialize<List<CreatureRecord>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) ?? [];
-                foreach (var creature in creatures)
-                {
-                    if (string.IsNullOrWhiteSpace(creature.Name) || string.IsNullOrWhiteSpace(creature.Portrait)) continue;
-                    var portrait = LoadPortraitThumbnail(creature.Portrait);
-                    if (portrait is null) continue;
-                    var body = CreatureBody(creature);
-                    var realm = string.IsNullOrWhiteSpace(creature.Stage) ? creature.Realm : $"{creature.Realm}{creature.Stage}";
-                    var meta = creature.Realm == "凡兽"
-                        ? "凡兽 · 普通动物"
-                        : string.IsNullOrWhiteSpace(creature.HumanParity)
-                            ? $"{creature.Category} · {realm}"
-                            : $"{creature.Category} · {realm} · 对标{creature.HumanParity}";
-                    result.Add(new Entry(creature.Name, meta, body,
-                        $"{creature.Name} {creature.Category} {creature.Realm} {creature.Stage} {creature.HumanParity} {creature.Habitat} {creature.Habit} {body}",
-                        portrait, Creature: creature, PortraitPath: creature.Portrait));
-                }
-            }
-            catch (Exception exception)
-            {
-                GD.PushError($"百科生灵目录读取失败：{exception.Message}");
-            }
+            yield return 0;
+            if (string.IsNullOrWhiteSpace(creature.Name) || string.IsNullOrWhiteSpace(creature.Portrait)) continue;
+            var portrait = LoadPortraitThumbnail(creature.Portrait);
+            if (portrait is null) continue;
+            var body = CreatureBody(creature);
+            var realm = string.IsNullOrWhiteSpace(creature.Stage) ? creature.Realm : $"{creature.Realm}{creature.Stage}";
+            var meta = creature.Realm == "凡兽"
+                ? "凡兽 · 普通动物"
+                : string.IsNullOrWhiteSpace(creature.HumanParity)
+                    ? $"{creature.Category} · {realm}"
+                    : $"{creature.Category} · {realm} · 对标{creature.HumanParity}";
+            result.Add(new Entry(creature.Name, meta, body,
+                $"{creature.Name} {creature.Category} {creature.Realm} {creature.Stage} {creature.HumanParity} {creature.Habitat} {creature.Habit} {body}",
+                portrait, Creature: creature, PortraitPath: creature.Portrait));
         }
-        return result.OrderBy(entry => entry.Title, StringComparer.Ordinal).ToList();
     }
 
+    private static List<CreatureRecord> ReadCreatureRecords()
+    {
+        const string catalogPath = "res://resources/bestiary/creatures.json";
+        if (!Godot.FileAccess.FileExists(catalogPath)) return [];
+        try
+        {
+            return JsonSerializer.Deserialize<List<CreatureRecord>>(Godot.FileAccess.GetFileAsString(catalogPath),
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) ?? [];
+        }
+        catch (Exception exception)
+        {
+            GD.PushError($"百科生灵目录读取失败：{exception.Message}");
+            return [];
+        }
+    }
     private static string CreatureBody(CreatureRecord creature)
     {
         var body = new StringBuilder();
@@ -1167,11 +1194,11 @@ public partial class EncyclopediaPanel : Control
             PlayBeastPreviewAnimation("idle");
     }
 
-    private static List<Entry> LoadStatusEntries()
+    private static IEnumerable<int> LoadStatusEntriesSteps(List<Entry> result)
     {
-        var result = new List<Entry>();
         foreach (var path in FindResources("res://resources/battle/statuses"))
         {
+            yield return 0;
             var status = ResourceLoader.Load<StatusEffect>(path);
             if (status is null || string.IsNullOrWhiteSpace(status.name)) continue;
             var kind = status.is_debuff ? "负面状态" : "增益状态";
@@ -1183,8 +1210,9 @@ public partial class EncyclopediaPanel : Control
 
         foreach (var path in FindResources("res://resources/activeskills"))
         {
+            yield return 0;
             var skill = ResourceLoader.Load<ActiveSkillData>(path);
-            if (skill is null || string.IsNullOrWhiteSpace(skill.skill_name)) continue;
+            if (skill is null || !GongfaAvailability.IsSkillEnabled(skill) || string.IsNullOrWhiteSpace(skill.skill_name)) continue;
             var isPassive = skill.skill_type == ActiveSkillData.SkillType.POWER || skill.slot_category == "passive" || skill.keywords.Contains("固有");
             if (!isPassive) continue;
             var source = string.IsNullOrWhiteSpace(skill.source_gongfa_name) ? "角色固有" : skill.source_gongfa_name;
@@ -1201,7 +1229,6 @@ public partial class EncyclopediaPanel : Control
         AddStatusResourceEntry(result, "周天", "战斗机制", "公共自动触发机制，不是独立状态或资源。当前法力上限为 M 时，炁达到或超过 2×M 即完成一次周天：清除全部炁、将当前法力恢复至 M，再结算周天触发效果。超额炁不保留；单次炁获得事件最多完成一次；M 为 0 时不触发。法力上限改变后立即重算阈值；若已有炁达到新阈值，在该效果结算后立即完成一次。周天不需手动操作，也不会自行生成炁。", "炁 法力 恢复 阈值 自动触发");
         AddStatusResourceEntry(result, "散血", "战斗机制", "按技能注明的触发条件，直接打散目标指定层数的气血。打散不视为气血层数降低，不触发气血层数降低带来的回复或其他效果；触发条件与层数以具体技能为准。", "打散 气血 层数降低 回复");
         AddStatusResourceEntry(result, "护盾", "战斗资源", "由法力凝成并环绕自身的护罩，优先吸收受到的伤害，并随实际吸收量减少。", "防御 法力 吸收");
-        return result.OrderBy(entry => entry.Title, StringComparer.Ordinal).ToList();
     }
 
     private static void AddStatusResourceEntry(List<Entry> result, string title, string kind, string description, string search)
@@ -1211,13 +1238,13 @@ public partial class EncyclopediaPanel : Control
             Status: new StatusDetail(kind, null, null, description)));
     }
 
-    private static List<Entry> LoadItemEntries()
+    private static IEnumerable<int> LoadItemEntriesSteps(List<Entry> result)
     {
-        var result = new List<Entry>();
         foreach (var path in FindResources("res://resources/entities/items"))
         {
+            yield return 0;
             var item = ResourceLoader.Load<ItemData>(path);
-            if (item is null || string.IsNullOrWhiteSpace(item.entity_name)) continue;
+            if (item is null || !GongfaAvailability.IsItemEnabled(item) || string.IsNullOrWhiteSpace(item.entity_name)) continue;
             var icon = LoadTexture(item.icon_path);
             if (icon is null) continue;
             var category = string.IsNullOrWhiteSpace(item.item_subcategory) ? item.item_category : $"{item.item_category} · {item.item_subcategory}";
@@ -1245,7 +1272,6 @@ public partial class EncyclopediaPanel : Control
             var searchable = $"{item.entity_name} {category} {qualitySearch} {tags} {body}";
             result.Add(new Entry(item.entity_name, category, EmptyBody(body), searchable, icon, Item: item));
         }
-        return result.OrderBy(entry => entry.Title, StringComparer.Ordinal).ToList();
     }
 
     private static string ManualRealmDescription(ItemData item)
@@ -1267,10 +1293,12 @@ public partial class EncyclopediaPanel : Control
 
     private static Texture2D? LoadPortraitThumbnail(string path)
     {
+        if (string.IsNullOrWhiteSpace(path) || !ResourceLoader.Exists(path)) return null;
+        var thumbnail = LoadBakedPortraitThumbnail(path);
+        if (thumbnail is not null) return thumbnail;
         // Keep only small directory thumbnails resident; the full portrait is loaded for the selected entry.
         var source = LoadTexture(path);
         if (source is null) return null;
-        using (source)
         using (var image = source.GetImage())
         {
             if (image.IsEmpty()) return null;
@@ -1316,7 +1344,7 @@ public partial class EncyclopediaPanel : Control
     private void play_open_animation()
     {
         if (_background is null || _pageContent is null || !Visible || _closing) return;
-        var tween = CreateTween().SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.Out);
+        var tween = _presentationTween = CreateTween().SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.Out);
         tween.SetParallel();
         tween.TweenProperty(_background, "modulate:a", 1f, .18f);
         tween.TweenProperty(_pageContent, "modulate:a", 1f, .16f);

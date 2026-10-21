@@ -5,12 +5,7 @@ using System.Linq;
 
 public partial class MainScene
 {
-    private static readonly string[] YuxuLineageGongfaCandidates =
-    [
-        "res://resources/gongfa/黄庭养形篇.tres",
-        "res://resources/gongfa/乘物游骸真经.tres",
-        "res://resources/gongfa/阴符应物经.tres",
-    ];
+    private static string[] YuxuLineageGongfaCandidates => GongfaAvailability.EnabledBooks().Select(book => book.ResourcePath).ToArray();
 
     private bool ensure_yuxu_lineage_staff()
     {
@@ -179,7 +174,7 @@ public partial class MainScene
             show_message("师承尚未登记", "请先回紫府峰选择师父并登记带教师兄/师姐。 ");
             return;
         }
-        if (!string.IsNullOrWhiteSpace(human.sect_lineage_gongfa_path))
+        if (GongfaAvailability.EnabledPath(human.sect_lineage_gongfa_path).Length > 0)
         {
             show_message("首卷传承", "你已选定师门首卷。回紫府峰静室，在研读界面选择这本秘籍继续修习。 ");
             return;

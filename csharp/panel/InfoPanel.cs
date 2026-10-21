@@ -1200,7 +1200,10 @@ public partial class InfoPanel : Control
                 .Where(chapter => human.is_gongfa_chapter_learned(book, chapter.get_id()))
                 .Select(chapter => chapter.order).DefaultIfEmpty(0).Max();
             var description = CardPresentation.Underline(book.get_heart_method_description(learnedOrder, isMain));
-            var keywords = skill.tags.Count > 0 ? $"关键词：{string.Join("、", skill.tags)}\n" : "";
+            var currentTags = skill.get_presentation_tags().ToList();
+            if(book.gongfa_name=="百骸衍枝化生宝册"&&learnedOrder>=3)
+                foreach(var tag in new[]{"应对","化解"})if(!currentTags.Contains(tag))currentTags.Add(tag);
+            var keywords = currentTags.Count > 0 ? $"关键词：{string.Join("、", currentTags)}\n" : "";
             entries.Add($"[b]{(isMain ? "主修" : "辅修")}《{book.gongfa_name}》 · {skill.skill_name}[/b]\n{keywords}{description}");
         }
         Add(main, true);

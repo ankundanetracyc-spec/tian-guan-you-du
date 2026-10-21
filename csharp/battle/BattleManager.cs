@@ -41,7 +41,7 @@ public partial class BattleManager : Node2D
     private sealed class QueuedPlayerCard { public ActiveSkillData Skill = null!; public GodotObject? Target; }
     private readonly Queue<QueuedPlayerCard> _queuedPlayerCards = new();
     private readonly System.Collections.Generic.Dictionary<GodotObject, List<FormationCircuitRuntime>> _formationCircuits = [];
-    private const float SimulationFps = 60f;
+    private const float SimulationFps = StatusEffect.CombatFramesPerSecond;
     private const float EnergyBaseInterval = 360f;
     private const int HandLimit = 10, OpeningHand = 5, QueueCapacity = 3, IntentRevealFrames = 96, CombatSlotCapacity = 10;
     private readonly System.Collections.Generic.Dictionary<GodotObject, float> _energyRegen = [];

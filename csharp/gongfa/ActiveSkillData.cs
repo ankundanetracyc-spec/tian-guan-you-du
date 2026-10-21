@@ -41,6 +41,14 @@ public partial class ActiveSkillData : Resource
     [Export] public int aoe_range;
     [Export] public bool can_target_empty;
     [Export] public int move_distance;
+    /// <summary>显式出手方式分类：melee 为近身，ranged 为远程；只用于招式联动，不代表战斗距离或射程。</summary>
+    [Export] public string attack_style = "";
+    /// <summary>运行时派生的补充伤害段，不重复触发原技能的附加效果。</summary>
+    [Export] public bool combat_is_gongfa_bonus_damage_segment;
+    /// <summary>运行时派生的血臂追击段；主修增幅只作用于该段。</summary>
+    [Export] public bool combat_is_blood_arm_segment;
+    /// <summary>运行时派生的血臂演出段；化法复制段也可由血臂执行演出。</summary>
+    [Export] public bool combat_is_blood_arm_visual_segment;
     [ExportGroup("即时战斗时序")]
     /// <summary>旧战斗流程兼容字段；即时队列战斗不使用准备时长。</summary>
     [Export(PropertyHint.Range, "0,1440,1")] public int preparation_frames;

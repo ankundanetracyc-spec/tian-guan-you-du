@@ -41,6 +41,13 @@ public partial class WorldNpcData : Resource
     [Export] public string sect_assigned_guide_npc_id = "";
     [Export] public string sect_teacher_npc_id = "";
     [Export] public Array<string> learned_gongfa_ids = [];
+    /// <summary>明确习得的卷章；仅有书名不自动补卷章。</summary>
+    [Export] public Dictionary learned_gongfa_chapters = [];
+    [Export] public Array<string> unlocked_skill_node_ids = [];
+    [Export] public string combat_main_gongfa_path = "";
+    [Export] public Array<string> combat_sub_gongfa_paths = [];
+    [Export] public Dictionary combat_chapter_routes = [];
+    [Export] public Array<string> combat_skill_paths = [];
     [Export] public Array<string> equipment_ids = [];
     [Export] public Dictionary resources = [];
     /// <summary>当前原型的可交易物品库存；键为 ItemData 资源路径，值为数量。</summary>

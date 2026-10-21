@@ -26,6 +26,7 @@ public static class CardPresentation
         ["借力"]="每层使下一项主动施放的物理伤害技能增伤5%；该技能结算后清空。挟势不清空，合劲每层总增伤8%。",
         ["护盾"]="受到伤害时优先抵扣；每次受击先于生命值结算。",
         ["护持"]="优先抵扣受到的伤害，按吸收的伤害减少。",
+        ["僵直"]="每层对应1战斗帧，推进1战斗帧减少1层，随战斗倍速推进；暂停与动作演出不计时。层数大于0时行动条停止推进并保留进度；再次施加刷新层数，不累加。",
         ["周天"]="炁达到当前法力上限的两倍时完成周天，清空炁并使当前法力回满。"
     };
     public static string Face(ActiveSkillData skill, GodotObject? owner) => Face(skill, owner, null);
@@ -35,7 +36,7 @@ public static class CardPresentation
     {
         var text=descriptionOverride ?? skill.get_brief_description(owner);
         var preferResourceDescription=descriptionOverride is null && !string.IsNullOrWhiteSpace(skill.description) &&
-            (skill.source_gongfa_name is "赤阳参同经" or "玄枢含章经" || (skill.skill_name is "架招" or "卸力"));
+            (skill.source_gongfa_name is "赤阳参同经" or "玄枢含章经" or "百骸衍枝化生宝册" or "太和感物养元宝册" || (skill.skill_name is "架招" or "卸力"));
         var hasXuanShuRewrite=skill.gongfa_rewrite_effect_ids.Any(id=>id.StartsWith("xuan_shu_",StringComparison.Ordinal));
         var referenceName=ReferenceName(skill);
         if(descriptionOverride is not null)
@@ -130,6 +131,39 @@ public static class CardPresentation
                 builder.Append(text[cursor..match.Index]);
                 var label=match.Groups["label"].Value;var formula=match.Groups["formula"].Value.Trim();
                 var isLetter=label.Length==1&&char.IsAsciiLetterUpper(label[0]);
+                if(formula.Contains("攻击者",StringComparison.Ordinal))
+                {
+                    if(isLetter)
+                    {
+                        var unresolved=builder.ToString();
+                        unresolved=Regex.Replace(unresolved,$@"(?<![A-Za-z0-9_]){Regex.Escape(label)}(?![A-Za-z0-9_])","本次结算值");
+                        builder.Clear();builder.Append(unresolved);
+                        builder.Append($"计算方式：{formula}（概率在来袭结算时确定）。");
+                    }
+                    else builder.Append($"{label}：按来袭结算确定。计算方式：{formula}。");
+                    cursor=match.Index+match.Length;
+                    continue;
+                }
+                if(isLetter&&(formula.Contains("施加者",StringComparison.Ordinal)||formula.Contains("目标",StringComparison.Ordinal)))
+                {
+                    var unresolved=builder.ToString();
+                    if(label=="C")
+                    {
+                        unresolved=Regex.Replace(unresolved,$@"获得\s*{Regex.Escape(label)}层僵直","获得僵直（层数按双方属性结算）");
+                        unresolved=Regex.Replace(unresolved,$@"(?<![A-Za-z0-9_]){Regex.Escape(label)}(?![A-Za-z0-9_])","本次结算值");
+                        builder.Clear();builder.Append(unresolved);
+                        builder.Append($"僵直层数公式：{Readable(formula)}（1层对应1战斗帧）。");
+                    }
+                    else
+                    {
+                        var replacement=label=="B"?"僵直概率":"本次结算值";
+                        unresolved=Regex.Replace(unresolved,$@"(?<![A-Za-z0-9_]){Regex.Escape(label)}(?![A-Za-z0-9_])",replacement);
+                        builder.Clear();builder.Append(unresolved);
+                        builder.Append($"僵直概率公式：{Readable(formula)}（按施加者与目标属性结算）。");
+                    }
+                    cursor=match.Index+match.Length;
+                    continue;
+                }
                 if(!TryEvaluateFormula(formula,owner,values,out var numericValue))
                 {
                     if(isLetter&&label!="R")

@@ -125,6 +125,7 @@ previous_learn_permanent_bonuses = {"physique": 1.0}
 [resource]
 script=ExtResource("1")
 gongfa_name="补虚行血诀"
+gameplay_enabled = false
 description="以气血归零为发动点的行血法。"
 wuxing=0
 can_be_main=true
