@@ -85,7 +85,8 @@ public static class BattleActionResolver
         if (damage_type != "physical") return Mathf.Max(damage, 1);
         // 化解可以将一次物理伤害完全抵消；只有仍有正伤害时才继续计算物防与百分比减免。
         if (damage <= 0) return 0;
-        var defense = Mathf.Max(0, GetNumber(defender, "physical_defense") - Math.Max(0, ignoreFlat));
+        var defense = GetNumber(defender, "physical_defense");
+        if (ignoreFlat > 0) defense = Mathf.Max(0, defense - ignoreFlat);
         var afterDefense = Mathf.Max(damage - Mathf.RoundToInt(defense * (1f - Mathf.Clamp(ignoreRatio, 0, 1))), Mathf.CeilToInt(damage * .01f));
         var baseReduction = Mathf.Clamp(GetNumber(defender, "physical_damage_reduction"), 0f, .90f);
         var woundReduction = 0f;

@@ -21,6 +21,8 @@ public partial class BattleManager : Node2D
     public GodotObject? active_unit;
     public bool battle_running, auto_battle;
     private bool _spectatorBattle;
+    /// <summary>独立试器禁止调用世界战后回传，胜负和撤退只结束本地对练。</summary>
+    [Export] public bool isolated_trial_battle;
     public TurnState turn_state = TurnState.IDLE;
     private readonly Dictionary _decks = [];
     private readonly Dictionary _firstHands = [], _hands = [];

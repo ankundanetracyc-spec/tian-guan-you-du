@@ -138,11 +138,29 @@ public partial class InfoPanelGongfaSkillDirectorySmoke : Node
             typeof(InfoPanel).GetField("_showSkillNodeNetwork", HiddenInstance)!.SetValue(panel, true);
             InvokeHiddenVoid(panel, "build_character_battle", human);
             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
-            Check(nodes.All(node => Descendants<Label>(panel).Any(label => label.Text == node.node_name)), "节点网没有显示全部根节点");
-            Check(Descendants<Button>(panel).Count(button => button.Text == "参悟此节点") == 3, "满足条件时没有显示三枚参悟按钮");
+            var faces = human.get_skill_node_face_configs().ToArray();
+            Check(faces.Length == 4 && faces.Any(face => face.face_name == "剑修"), "首批脉面配置不完整");
+            Check(Descendants<Button>(panel).Count(button => faces.Any(face => button.Text == face.face_name)) == faces.Length,
+                "脉面选择区没有显示全部脉面");
+
+            var swordFace = faces.First(face => face.face_name == "剑修");
+            var swordButton = Descendants<Button>(panel).First(button => button.Text == swordFace.face_name);
+            swordButton.EmitSignal(BaseButton.SignalName.Pressed);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            Check(Descendants<Label>(panel).Any(label => label.Text.Contains("此脉面尚无参悟节点")), "空脉面没有显示待扩展说明");
 
             foreach (var node in nodes)
             {
+                var face = faces.FirstOrDefault(candidate => candidate.face_id == node.face_id)
+                    ?? throw new InvalidOperationException("节点没有归属脉面：" + node.node_name);
+                var faceButton = Descendants<Button>(panel).FirstOrDefault(button => button.Text == face.face_name)
+                    ?? throw new InvalidOperationException("脉面选择区缺少入口：" + face.face_name);
+                faceButton.EmitSignal(BaseButton.SignalName.Pressed);
+                await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+                Check(Descendants<Label>(panel).Any(label => label.Text == node.node_name), "选中脉面后没有显示对应根节点：" + node.node_name);
+                Check(Descendants<Button>(panel).Count(button => button.Text == "参悟此节点") == 1,
+                    "单个脉面显示的参悟入口数量不正确");
+
                 var learn = Descendants<Button>(panel).FirstOrDefault(button => button.Text == "参悟此节点")
                     ?? throw new InvalidOperationException("节点网缺少参悟按钮：" + node.node_name);
                 learn.EmitSignal(BaseButton.SignalName.Pressed);
@@ -164,7 +182,7 @@ public partial class InfoPanelGongfaSkillDirectorySmoke : Node
                 ?? throw new InvalidOperationException("人物存档数据复制失败"));
             Check(nodes.All(node => reloadedHuman.has_unlocked_skill_node(node.node_id)), "节点参悟记录未随人物数据读档恢复");
 
-            GD.Print("INFO_PANEL_SKILL_NODE_NETWORK_PASS: roots render, unlock gates work, skills stay unequipped, source labels and save data persist");
+            GD.Print("INFO_PANEL_SKILL_NODE_NETWORK_PASS: facets render and switch, roots retain unlock gates, skills stay unequipped, source labels and save data persist");
             GD.Print("INFO_PANEL_GONGFA_SKILL_DIRECTORY_PASS: pending/current intro book visible; public basic skill remains available and can be re-equipped after unload");
             GetTree().Quit();
         }

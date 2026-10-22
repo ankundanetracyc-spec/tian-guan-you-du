@@ -18,7 +18,7 @@ public partial class ArtifactCombatIntegrationSmoke : Node
             if (OS.GetCmdlineUserArgs().Contains("--read-artifact-save"))
             {
                 var restored = ResourceLoader.Load<PersistentGameSave>("user://artifact_combat_restart.tres", cacheMode: ResourceLoader.CacheMode.Ignore)!;
-                Check(restored.format_version == 10 && restored.player_data!.artifact_inventory.Count == 4, "新进程读回法器实例");
+                Check(restored.format_version == PersistentGameSave.CurrentFormatVersion && restored.player_data!.artifact_inventory.Count == 4, "新进程读回法器实例");
                 Check(restored.player_data!.combat_skill_references[2].artifact_instance_id == "sample-outer-a", "新进程读回来源引用");
                 Check(restored.player_data.artifact_inventory[0].form!.form_id == "mingfeng" && restored.player_data.artifact_inventory[0].combat_profile!.use_base_damage == 10, "新进程读回构型及效果配置");
                 DirAccess.RemoveAbsolute(ProjectSettings.GlobalizePath("user://artifact_combat_restart.tres"));
@@ -47,18 +47,18 @@ public partial class ArtifactCombatIntegrationSmoke : Node
             Check(Mathf.IsEqualApprox(innerSkill.physical_defense_ignore_ratio, .2f), "内炼追加穿防");
             Check(ResourceLoader.Load<ActiveSkillData>(keys[0]).physical_defense_ignore_ratio == 0, "原资源不污染");
             Check(owner.resolve_combat_skill("res://resources/activeskills/架招.tres")!.artifact_block_bonus == 2, "守锋内炼追加化解");
-            var book = ResourceLoader.Load<GongfaResource>("res://resources/gongfa/内景损益篇.tres");
+            var book = ResourceLoader.Load<GongfaResource>("res://resources/gongfa/玄枢含章经.tres");
             var ownerData = (HumanData)owner.entity_data!;
             ownerData.learned_gongfa_paths.Add(book.ResourcePath);
             ownerData.learned_gongfa_chapters[book.ResourcePath] = new Array<string>(book.get_sorted_chapters().Select(chapter => chapter.get_id()));
             owner.main_gongfa = book; ownerData.main_gongfa_path = book.ResourcePath;
-            Check(owner.bind_inner_artifact(inner.instance_id, "res://resources/activeskills/痛击.tres"), "可绑定已有痛击");
-            var merged = owner.resolve_combat_skill("res://resources/activeskills/痛击.tres")!;
-            Check(merged.gongfa_rewrite_effect_ids.Contains("neijing_c4_tongji") && merged.physical_defense_ignore_ratio == .2f, "秘籍化法与法器化法共存");
-            owner.unequip_artifact(inner.instance_id);
-            var withoutArtifact = owner.resolve_combat_skill("res://resources/activeskills/痛击.tres")!;
-            Check(withoutArtifact.gongfa_rewrite_effect_ids.Contains("neijing_c4_tongji") && withoutArtifact.physical_defense_ignore_ratio == 0, "卸下后保留秘籍化法");
-            owner.equip_artifact(inner.instance_id);
+            Check(owner.bind_inner_artifact(innerGuard.instance_id, "res://resources/activeskills/架招.tres"), "可绑定当前开放秘籍化法后的架招");
+            var merged = owner.resolve_combat_skill("res://resources/activeskills/架招.tres")!;
+            Check(merged.gongfa_rewrite_effect_ids.Contains("xuan_shu_c3_jiazhao") && merged.artifact_block_bonus == 2, "秘籍化法与法器化法共存");
+            owner.unequip_artifact(innerGuard.instance_id);
+            var withoutArtifact = owner.resolve_combat_skill("res://resources/activeskills/架招.tres")!;
+            Check(withoutArtifact.gongfa_rewrite_effect_ids.Contains("xuan_shu_c3_jiazhao") && withoutArtifact.artifact_block_bonus == 0, "卸下后保留秘籍化法");
+            owner.equip_artifact(innerGuard.instance_id);
             var sameName = ArtifactCombatSamples.Create(false, false, "sample-same-name");
             owner.unequip_artifact(inner.instance_id); owner.remove_artifact_from_inventory(inner.instance_id);
             owner.add_artifact_to_inventory(sameName); owner.equip_artifact(sameName.instance_id);
@@ -71,7 +71,7 @@ public partial class ArtifactCombatIntegrationSmoke : Node
             owner.set_combat_skill_slot_paths(keys);
             var oldSave = new PersistentGameSave { format_version = 9, player_data = new HumanData { combat_skill_slots_configured = true,
                 combat_skill_slot_paths = [keys[0], "", "res://resources/activeskills/架招.tres"] } };
-            Check(oldSave.migrate_to_current_format() && oldSave.format_version == 10, "v9迁移v10");
+            Check(oldSave.migrate_to_current_format() && oldSave.format_version == PersistentGameSave.CurrentFormatVersion, "v9沿迁移链迁到当前版本");
             Check(oldSave.player_data!.combat_skill_references.Count == 10 && oldSave.player_data.combat_skill_references[1].Key == "", "迁移保留空位");
             var savePath = "user://artifact_v10_smoke.tres";
             Check(ResourceSaver.Save(oldSave, savePath) == Error.Ok, "v10写盘");

@@ -48,12 +48,13 @@ public sealed class ForgedEquipmentLoadout
     {
         if (unequippedBaseline.trial_forged_equipment_json.Length > 0 || unequippedBaseline.equipped_artifacts.Count > 0)
             throw new InvalidOperationException("单器试用必须从未装备基线生成，不能叠加第二件器");
-        var result = (BattleEntityData)unequippedBaseline.Duplicate(true);
+        var result = new BattleEntityData();
+        CopyStoredProperties(unequippedBaseline, result);
         result.trial_forged_equipment_json = JsonSerializer.Serialize(_item);
-        result.combat_resolved_skills.Clear();
+        result.combat_resolved_skills = [];
         foreach (var source in unequippedBaseline.combat_resolved_skills)
         {
-            var skill = (ActiveSkillData)source.Duplicate(true); string key = ArtifactSkillFactory.Key(source);
+            var skill = CopySkill(source); string key = ArtifactSkillFactory.Key(source);
             skill.combat_source_key = key;
             if (_swordSkills.Contains(key) && IsPhysicalAttack(skill))
             {
@@ -70,6 +71,26 @@ public sealed class ForgedEquipmentLoadout
             result.combat_resolved_skills.Add(skill);
         }
         return result;
+    }
+    private static void CopyStoredProperties(Resource source, Resource target)
+    {
+        foreach (var info in source.GetPropertyList())
+        {
+            string name = info["name"].AsString();
+            if ((info["usage"].AsInt32() & (int)PropertyUsageFlags.Storage) == 0 || name is "script" or "resource_path" or "resource_name") continue;
+            target.Set(name, source.Get(name));
+        }
+    }
+    public static ActiveSkillData CopySkill(ActiveSkillData source)
+    {
+        var copy = new ActiveSkillData(); CopyStoredProperties(source, copy);
+        copy.combat_source_key = ArtifactSkillFactory.Key(source);
+        copy.tags = source.tags.Duplicate(); copy.keywords = source.keywords.Duplicate();
+        copy.gongfa_rewrite_effect_ids = source.gongfa_rewrite_effect_ids.Duplicate();
+        copy.damage_bonuses = source.damage_bonuses.Duplicate();
+        copy.special_effects = source.special_effects.Duplicate(true); copy.status_effects = source.status_effects.Duplicate(true);
+        copy.non_response_skill = source.non_response_skill is { } normal && normal != source ? CopySkill(normal) : null;
+        return copy;
     }
     public static void ApplyBattleBonuses(GodotObject owner, string json)
     {

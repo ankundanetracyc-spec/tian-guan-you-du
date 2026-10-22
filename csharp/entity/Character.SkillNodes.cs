@@ -9,6 +9,9 @@ public partial class Character
     public Array<SkillNodeConfig> get_skill_node_configs() =>
         new(skill_node_network?.get_nodes() ?? Enumerable.Empty<SkillNodeConfig>());
 
+    public Array<SkillNodeFaceConfig> get_skill_node_face_configs() =>
+        new(skill_node_network?.get_faces() ?? Enumerable.Empty<SkillNodeFaceConfig>());
+
     public bool has_unlocked_skill_node(string nodeId) =>
         human?.unlocked_skill_node_ids.Contains(nodeId) == true;
 

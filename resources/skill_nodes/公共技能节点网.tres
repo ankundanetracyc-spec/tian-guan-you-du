@@ -1,7 +1,32 @@
-[gd_resource type="Resource" script_class="SkillNodeNetworkConfig" load_steps=5 format=3]
+[gd_resource type="Resource" script_class="SkillNodeNetworkConfig" load_steps=11 format=3]
 
 [ext_resource type="Script" path="res://csharp/gongfa/SkillNodeNetworkConfig.cs" id="1_network"]
 [ext_resource type="Script" path="res://csharp/gongfa/SkillNodeConfig.cs" id="2_node"]
+[ext_resource type="Script" path="res://csharp/gongfa/SkillNodeFaceConfig.cs" id="3_face"]
+
+[sub_resource type="Resource" id="BloodFace"]
+script = ExtResource("3_face")
+face_id = "qi_blood"
+face_name = "气血"
+sort_order = 0
+
+[sub_resource type="Resource" id="QiFace"]
+script = ExtResource("3_face")
+face_id = "gather_qi"
+face_name = "纳炁"
+sort_order = 1
+
+[sub_resource type="Resource" id="NianFace"]
+script = ExtResource("3_face")
+face_id = "entrust_nian"
+face_name = "神魂"
+sort_order = 2
+
+[sub_resource type="Resource" id="SwordFace"]
+script = ExtResource("3_face")
+face_id = "sword"
+face_name = "剑修"
+sort_order = 3
 
 [sub_resource type="Resource" id="BloodNode"]
 script = ExtResource("2_node")
@@ -9,6 +34,7 @@ node_id = "qi_blood_root"
 node_name = "丹霞养元"
 description = "体魄与体道造诣相合，以自身气血稳住根基。获得气血2层。"
 skill_path = "res://resources/activeskills/催血.tres"
+face_id = "qi_blood"
 required_attributes = { "physique": 8.0, "body_proficiency": 6.0 }
 graph_position = Vector2(250.814, 465)
 
@@ -18,6 +44,7 @@ node_id = "gather_qi_root"
 node_name = "太虚纳炁"
 description = "凝聚炁2。炁达到当前法力上限的两倍时，完成周天。"
 skill_path = "res://resources/activeskills/聚炁.tres"
+face_id = "gather_qi"
 required_attributes = { "intelligence": 8.0, "magic_proficiency": 6.0 }
 graph_position = Vector2(450, 120)
 
@@ -27,9 +54,11 @@ node_id = "entrust_nian_root"
 node_name = "灵台观照"
 description = "为队列中下一项不同的主动技能实例赋念1层；没有合宜后续招式时，本招不结算。"
 skill_path = "res://resources/activeskills/寄念.tres"
+face_id = "entrust_nian"
 required_attributes = { "soul": 8.0, "magic_proficiency": 8.0 }
 graph_position = Vector2(649.186, 465)
 
 [resource]
 script = ExtResource("1_network")
+faces = Array[Resource]([SubResource("BloodFace"), SubResource("QiFace"), SubResource("NianFace"), SubResource("SwordFace")])
 nodes = Array[Resource]([SubResource("BloodNode"), SubResource("QiNode"), SubResource("NianNode")])

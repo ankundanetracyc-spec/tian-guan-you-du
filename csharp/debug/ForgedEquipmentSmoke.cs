@@ -58,9 +58,9 @@ public partial class ForgedEquipmentSmoke : Node
             Check(player.physical_defense == 5 + defenseBonus, "重复初始化不重复叠加");
             var sword = snapshot.combat_resolved_skills[0]; var punch = snapshot.combat_resolved_skills[1];
             Check(ForgedEquipmentLoadout.WeaponIgnore(player, sword) == artifact.Sharpness && ForgedEquipmentLoadout.WeaponIgnore(player, punch) == 0, "锋锐仅匹配已装备实例与明确用剑动作");
-            var wrongSource = (ActiveSkillData)sword.Duplicate(true); wrongSource.forged_weapon_instance_id = "other-instance"; Check(ForgedEquipmentLoadout.WeaponIgnore(player, wrongSource) == 0, "失去来源引用不生效");
-            foreach (string type in new[] { "magic", "soul" }) { var skill = (ActiveSkillData)sword.Duplicate(true); skill.damage_type = type; Check(ForgedEquipmentLoadout.WeaponIgnore(player, skill) == 0, "非物理伤害不读锋锐"); }
-            var arm = (ActiveSkillData)sword.Duplicate(true); arm.combat_is_blood_arm_segment = true; Check(ForgedEquipmentLoadout.WeaponIgnore(player, arm) == 0, "血臂衍生段不借剑锋锐");
+            var wrongSource = ForgedEquipmentLoadout.CopySkill(sword); wrongSource.forged_weapon_instance_id = "other-instance"; Check(ForgedEquipmentLoadout.WeaponIgnore(player, wrongSource) == 0, "失去来源引用不生效");
+            foreach (string type in new[] { "magic", "soul" }) { var skill = ForgedEquipmentLoadout.CopySkill(sword); skill.damage_type = type; Check(ForgedEquipmentLoadout.WeaponIgnore(player, skill) == 0, "非物理伤害不读锋锐"); }
+            var arm = ForgedEquipmentLoadout.CopySkill(sword); arm.combat_is_blood_arm_segment = true; Check(ForgedEquipmentLoadout.WeaponIgnore(player, arm) == 0, "血臂衍生段不借剑锋锐");
             enemy.physical_defense = 10; enemy.physical_damage_reduction = 0;
             Check(BattleActionResolver.apply_defense(20, "physical", enemy, 0, 5) == 15, "五锋锐恰好忽略五物防");
             Check(BattleActionResolver.apply_defense(20, "physical", enemy, .2f, 5) == 16 && enemy.physical_defense == 10, "先固定再比例且不永久减防");
@@ -88,13 +88,56 @@ public partial class ForgedEquipmentSmoke : Node
             while (!state.skill_queue[0].completed && Time.GetTicksMsec() < completionDeadline) await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             Check(state.skill_queue[0].completed && player.current_stamina == 6 - sword.energy_cost, $"真实行动完成且原费用仅支付一次：完成{state.skill_queue[0].completed}，体力{player.current_stamina}");
             Check(enemy.current_health == healthBefore - Math.Max(0, hit.DamageBeforeShield - 4), "实际伤害与预演一致且护盾正常吸收");
+            var emptyGuard = new BattleQueuedSkill(snapshot.combat_resolved_skills[3], player);
+            state.skill_queue.Clear(); state.skill_queue.Add(emptyGuard); state.segment_action_index = 0; player.current_stamina = 6;
+            Invoke(manager, "ResolveSegmentAction", player, emptyGuard);
+            completionDeadline = Time.GetTicksMsec() + 6000;
+            while (!emptyGuard.completed && Time.GetTicksMsec() < completionDeadline) await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            Check(emptyGuard.completed && player.current_stamina == 6 && player.get_status_stacks("化解") == 0, "真实架招空放不支付费用也不领取化法追加");
+            state.skill_queue.Clear(); state.segment_action_index = 0; var triggeredGuard = new BattleQueuedSkill(snapshot.combat_resolved_skills[3], player); state.skill_queue.Add(triggeredGuard);
+            Check(manager.try_auto_response(player, enemy, "physical", ForgedEquipmentPreview.Baseline().combat_resolved_skills[0]), "真实来袭接口触发队首应对");
+            Check(triggeredGuard.completed && player.current_stamina == 6 - guard.energy_cost && player.get_status_stacks("化解") == CardRules.Block(snapshot.combat_resolved_skills[3], player), "实际应对支付原费用并得到包含器物追加的化解");
+            var controls = preview.GetNode<CanvasLayer>("UILayer");
+            var swordToggle = (CheckBox)controls.FindChild("SwordUse0", true, false)!; swordToggle.ButtonPressed = true;
+            foreach (string atom in new[] { "defuse_flat", "physical_defense_ignore_ratio" })
+            {
+                var pick = (OptionButton)controls.FindChild("Binding_" + atom, true, false)!; pick.Select(1); pick.EmitSignal(OptionButton.SignalName.ItemSelected, 1L);
+            }
+            manager.set_spectator_battle(false);
+            var apply = (Button)controls.FindChild("ApplyEquipment", true, false)!; apply.EmitSignal(Button.SignalName.Pressed);
+            GD.Print("FORGED_UI_APPLIED");
+            for (int f = 0; f < 4; f++) await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            manager.SetProcess(false); var equippedPlayer = manager.player_units[0];
+            var currentSkills = (Godot.Collections.Array<ActiveSkillData>)Invoke(manager, "LoadCombatSkills", equippedPlayer)!;
+            Check(ForgedEquipmentLoadout.WeaponIgnore(equippedPlayer, currentSkills[0]) == artifact.Sharpness && currentSkills[3].artifact_block_bonus > 0 && currentSkills[2].physical_defense_ignore_ratio > 0, "界面勾选及绑定按钮生成真实战斗装配");
+            GD.Print("FORGED_UI_VERIFIED");
+            controls.FindChildren("*", "Button", true, false).OfType<Button>().FirstOrDefault(b => b.Text == "隐藏队列")?.EmitSignal(Button.SignalName.Pressed);
             await Capture("01_单器对练.png");
+            var openSetup = (Button)controls.FindChild("OpenEquipmentSetup", true, false)!; openSetup.EmitSignal(Button.SignalName.Pressed); await Capture("02_试器装配.png"); openSetup.EmitSignal(Button.SignalName.Pressed);
+            var equipToggle = (CheckBox)controls.FindChild("EquipSingle", true, false)!; equipToggle.ButtonPressed = false; apply.EmitSignal(Button.SignalName.Pressed);
+            Check(CardRules.Number(manager.player_units[0], "physical_defense") == 5 && CardRules.Number(manager.player_units[0], "forged_physical_bonus") == 0, "界面卸下重开撤销收益");
+            equipToggle.ButtonPressed = true; apply.EmitSignal(Button.SignalName.Pressed);
+            Check(CardRules.Number(manager.player_units[0], "physical_defense") == 5 + defenseBonus, "界面反复重开不重复加物防");
+            Invoke(manager, "finish_battle", false); Check(manager.GetMeta("isolated_trial_finished", false).AsBool() && !manager.battle_running, "对练结束只结算本地，不调用世界回传");
             preview.Close(); for (int f = 0; f < 3; f++) await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            var workshop = GD.Load<PackedScene>("res://tscn/scene/ProcessForgingScene.tscn").Instantiate<ProcessForgingScene>(); GetTree().Root.AddChild(workshop);
+            typeof(ProcessForgingScene).GetMethod("LoadExample", BindingFlags.NonPublic | BindingFlags.Instance)!.Invoke(workshop, [1]);
+            typeof(ProcessForgingScene).GetMethod("Craft", BindingFlags.NonPublic | BindingFlags.Instance)!.Invoke(workshop, null);
+            var workshopSession = (ProcessForgingTrial.Session)typeof(ProcessForgingScene).GetField("_session", BindingFlags.Instance | BindingFlags.NonPublic)!.GetValue(workshop)!;
+            int workshopStock = workshopSession.Stock.Values.Sum();
+            Check(!workshop.FindChildren("*", "Button", true, false).Cast<Button>().Any(b => b.Text.Contains("进入独立对练")), "工坊只显示物品，试器保留开发测试入口");
+            Check(workshop.Visible && workshopSession.Stock.Values.Sum() == workshopStock && workshopSession.Artifacts.Count == 1, "成器展示不重复炼制或扣库存");
+            workshop.QueueFree(); for (int f = 0; f < 3; f++) await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             Calibrate(model);
             using (var file = Godot.FileAccess.Open(Evidence + "装备验收.md", Godot.FileAccess.ModeFlags.Write)) file.StoreString($"# 单器装备验收\n\n{_checks}项断言通过；真实成器、单器装配、运行时副本、秘籍合并、物防与物伤、来源匹配锋锐、固定/比例穿防、非物理/衍生段排除、护盾、原费用及真实队列结算。\n\n未接正式装备/存档、关键词常驻、触发、直施和御器。\n");
-            GD.Print($"FORGED_EQUIPMENT_SMOKE_OK {_checks}"); Input.SetCustomMouseCursor(null); GetTree().Quit();
+            GD.Print($"FORGED_EQUIPMENT_SMOKE_OK {_checks}"); CallDeferred(nameof(Finish));
         }
         catch (Exception e) { GD.PushError(e.ToString()); Input.SetCustomMouseCursor(null); GetTree().Quit(1); }
+    }
+    private void Finish()
+    {
+        GC.Collect(); GC.WaitForPendingFinalizers(); GC.Collect();
+        Input.SetCustomMouseCursor(null); GetTree().Quit();
     }
     private void Calibrate(ProcessForgingTrial model)
     {
@@ -118,3 +161,4 @@ public partial class ForgedEquipmentSmoke : Node
         using var screenshot = GetViewport().GetTexture().GetImage(); Check(screenshot.SavePng(Evidence + name) == Error.Ok, "对练截图保存");
     }
 }
+

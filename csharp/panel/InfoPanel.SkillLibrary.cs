@@ -4,7 +4,7 @@ public partial class InfoPanel
 {
     private string _skillQuery = "", _skillSource = "", _skillKeyword = "";
     private bool _showSkillNodeNetwork;
-    private string _selectedSkillNodeId = "";
+    private string _selectedSkillNodeId = "", _selectedSkillNodeFaceId = "";
     private float _skillNodeZoom = 1f;
     private Control? _skillNodeZoomViewport, _skillNodeZoomCanvas;
     private Label? _skillNodeZoomLabel;
@@ -134,6 +134,10 @@ public partial class InfoPanel
         }
 
         var nodes = human.get_skill_node_configs().ToArray();
+        var faces = skill_node_faces(human, nodes);
+        if (faces.Count > 0 && !faces.Any(face => face.face_id == _selectedSkillNodeFaceId))
+            _selectedSkillNodeFaceId = faces[0].face_id;
+        build_skill_node_face_switcher(graph, human, faces, nodes);
         if (nodes.Length == 0)
         {
             var empty = CharacterParagraph("造诣图谱尚无可参悟内容。", 24, true);
@@ -142,14 +146,29 @@ public partial class InfoPanel
             return;
         }
 
-        if (!nodes.Any(node => node.node_id == _selectedSkillNodeId)) _selectedSkillNodeId = nodes[0].node_id;
-        var positions = nodes.ToDictionary(node => node.node_id, node => node.graph_position);
+        var nodesById = nodes.ToDictionary(node => node.node_id);
+        var involvedFacesByNode = nodes.ToDictionary(node => node.node_id,
+            node => skill_node_involved_face_ids(node, nodesById));
+        var seamNodes = nodes.Where(node => involvedFacesByNode[node.node_id].Count > 1
+            && involvedFacesByNode[node.node_id].Contains(_selectedSkillNodeFaceId)).ToArray();
+        var seamNodeIds = seamNodes.Select(node => node.node_id).ToHashSet(StringComparer.Ordinal);
+        var visibleNodeIds = nodes.Where(node => node.face_id == _selectedSkillNodeFaceId
+                || seamNodeIds.Contains(node.node_id))
+            .Select(node => node.node_id).ToHashSet(StringComparer.Ordinal);
+        foreach (var seam in seamNodes)
+            foreach (var parentId in seam.prerequisite_node_ids)
+                if (nodesById.ContainsKey(parentId)) visibleNodeIds.Add(parentId);
+        var visibleNodes = nodes.Where(node => visibleNodeIds.Contains(node.node_id)).ToArray();
+        if (!visibleNodes.Any(node => node.node_id == _selectedSkillNodeId))
+            _selectedSkillNodeId = visibleNodes.FirstOrDefault()?.node_id ?? "";
+
+        var positions = visibleNodes.ToDictionary(node => node.node_id, node => node.graph_position);
         var hubCenter = new Vector2(450, 350);
-        foreach (var node in nodes)
+        foreach (var node in visibleNodes)
         {
-            var parents = node.prerequisite_node_ids.Where(positions.ContainsKey).Select(id => positions[id]).ToArray();
-            if (parents.Length == 0) add_skill_node_connection(graphCanvas, hubCenter, node.graph_position, false);
-            else foreach (var parent in parents) add_skill_node_connection(graphCanvas, parent, node.graph_position, parents.Length > 1);
+            var parents = node.prerequisite_node_ids.Where(visibleNodeIds.Contains).ToArray();
+            if (node.prerequisite_node_ids.Count == 0) add_skill_node_connection(graphCanvas, hubCenter, node.graph_position, false);
+            else foreach (var parentId in parents) add_skill_node_connection(graphCanvas, positions[parentId], node.graph_position, parents.Length > 1);
         }
 
         var hubFrame = new TextureRect
@@ -161,9 +180,18 @@ public partial class InfoPanel
             MouseFilter = MouseFilterEnum.Ignore
         };
         const float hubSize = 230f;
-        graphCanvas.AddChild(hubFrame); CharacterRect(hubFrame, hubCenter.X - hubSize * .5f, hubCenter.Y - hubSize * .5f, hubSize, hubSize);
+        if (visibleNodes.Length > 0)
+        {
+            graphCanvas.AddChild(hubFrame);
+            CharacterRect(hubFrame, hubCenter.X - hubSize * .5f, hubCenter.Y - hubSize * .5f, hubSize, hubSize);
+        }
+        else
+        {
+            var empty = CharacterParagraph("此脉面尚无参悟节点。", 24, true);
+            graphCanvas.AddChild(empty); CharacterRect(empty, 140, 310, 620, 60);
+        }
 
-        foreach (var node in nodes)
+        foreach (var node in visibleNodes)
         {
             var skill = ResourceLoader.Load<ActiveSkillData>(node.skill_path);
             var unlocked = human.has_unlocked_skill_node(node.node_id);
@@ -171,6 +199,7 @@ public partial class InfoPanel
             var major = node.prerequisite_node_ids.Count > 1;
             var size = major ? new Vector2(214, 214) : new Vector2(190, 190);
             var selected = node.node_id == _selectedSkillNodeId;
+            var seam = involvedFacesByNode[node.node_id].Count > 1;
             var markerTexture = GD.Load<Texture2D>(major ? MultiSkillNodeTexturePath : SmallSkillNodeTexturePath);
             var marker = new TextureButton
             {
@@ -183,7 +212,8 @@ public partial class InfoPanel
                 CustomMinimumSize = size,
                 Size = size,
                 Position = node.graph_position - size * .5f,
-                SelfModulate = skill_node_marker_tint(unlocked, canUnlock, selected),
+                SelfModulate = skill_node_marker_tint(unlocked, canUnlock, selected)
+                    * (node.face_id == _selectedSkillNodeFaceId || seam ? Colors.White : new Color(1, 1, 1, .58f)),
                 MouseDefaultCursorShape = CursorShape.PointingHand
             };
             marker.AddThemeStyleboxOverride("normal", new StyleBoxEmpty());
@@ -209,12 +239,102 @@ public partial class InfoPanel
             state.HorizontalAlignment = HorizontalAlignment.Center; state.VerticalAlignment = VerticalAlignment.Center; state.MouseFilter = MouseFilterEnum.Ignore;
             marker.AddChild(state); CharacterRect(state, 12, size.Y * .66f, size.X - 24, size.Y * .11f);
             marker.Pressed += () => { _selectedSkillNodeId = node.node_id; build_character_battle(human); };
-            marker.MouseEntered += () => marker.SelfModulate = skill_node_marker_tint(unlocked, canUnlock, selected, true);
-            marker.MouseExited += () => marker.SelfModulate = skill_node_marker_tint(unlocked, canUnlock, selected);
+            var contextualTint = node.face_id == _selectedSkillNodeFaceId || seam ? Colors.White : new Color(1, 1, 1, .58f);
+            marker.MouseEntered += () => marker.SelfModulate = skill_node_marker_tint(unlocked, canUnlock, selected, true) * contextualTint;
+            marker.MouseExited += () => marker.SelfModulate = skill_node_marker_tint(unlocked, canUnlock, selected) * contextualTint;
         }
 
         build_skill_node_zoom_controls(graph, viewport, graphCanvas);
-        build_skill_node_details(graph, human, nodes.First(node => node.node_id == _selectedSkillNodeId));
+        if (_selectedSkillNodeId.Length > 0)
+            build_skill_node_details(graph, human, nodes.First(node => node.node_id == _selectedSkillNodeId));
+        else
+            build_skill_node_empty_details(graph, _selectedSkillNodeFaceId, faces);
+    }
+
+    private static List<SkillNodeFaceConfig> skill_node_faces(Character human, SkillNodeConfig[] nodes)
+    {
+        var faces = human.get_skill_node_face_configs().ToList();
+        var knownIds = faces.Select(face => face.face_id).ToHashSet(StringComparer.Ordinal);
+        foreach (var node in nodes.Where(node => node.face_id.Length > 0 && !knownIds.Contains(node.face_id)))
+        {
+            faces.Add(new SkillNodeFaceConfig { face_id = node.face_id, face_name = node.node_name, sort_order = faces.Count });
+            knownIds.Add(node.face_id);
+        }
+        return faces.OrderBy(face => face.sort_order).ThenBy(face => face.face_name, StringComparer.Ordinal).ToList();
+    }
+
+    private void build_skill_node_face_switcher(Control graph, Character human, IReadOnlyList<SkillNodeFaceConfig> faces, SkillNodeConfig[] nodes)
+    {
+        var caption = CharacterText("脉面", 17, true);
+        graph.AddChild(caption); CharacterRect(caption, 932, 16, 48, 28);
+        var scroll = new ScrollContainer
+        {
+            Name = "SkillNodeFaceScroll",
+            HorizontalScrollMode = ScrollContainer.ScrollMode.Auto,
+            VerticalScrollMode = ScrollContainer.ScrollMode.Disabled,
+            ClipContents = true
+        };
+        graph.AddChild(scroll); CharacterRect(scroll, 982, 5, 350, 52);
+        var row = new HBoxContainer { Name = "SkillNodeFaces", SizeFlagsHorizontal = SizeFlags.ExpandFill };
+        row.AddThemeConstantOverride("separation", 0);
+        scroll.AddChild(row);
+        for (var i = 0; i < faces.Count; i++)
+        {
+            var face = faces[i];
+            var faceNodeCount = nodes.Count(node => node.face_id == face.face_id);
+            var width = Mathf.Clamp(100f + faceNodeCount * 12f, 112f, 160f);
+            var tile = new Control { CustomMinimumSize = new Vector2(width, 48), MouseFilter = MouseFilterEnum.Ignore };
+            row.AddChild(tile);
+            var points = i % 2 == 0
+                ? new[] { new Vector2(0, 5), new Vector2(width - 20, 0), new Vector2(width, 11), new Vector2(width - 9, 48), new Vector2(12, 45), new Vector2(0, 34) }
+                : new[] { new Vector2(0, 11), new Vector2(14, 0), new Vector2(width, 5), new Vector2(width, 37), new Vector2(width - 14, 48), new Vector2(0, 42) };
+            var active = face.face_id == _selectedSkillNodeFaceId;
+            tile.AddChild(new Polygon2D
+            {
+                Name = "FacetFill",
+                Polygon = points,
+                Color = active ? new Color("b29a67", .30f) : new Color("57534b", .09f)
+            });
+            var outline = new Line2D { Name = "FacetInk", Width = active ? 2.2f : 1.2f, DefaultColor = new Color("514d45", active ? .85f : .43f), Antialiased = true };
+            foreach (var point in points) outline.AddPoint(point);
+            outline.AddPoint(points[0]); tile.AddChild(outline);
+            var button = CharacterButton(face.face_name, 17, active, 0);
+            button.AddThemeStyleboxOverride("normal", new StyleBoxEmpty());
+            button.AddThemeStyleboxOverride("hover", new StyleBoxEmpty());
+            button.AddThemeStyleboxOverride("pressed", new StyleBoxEmpty());
+            button.AddThemeStyleboxOverride("hover_pressed", new StyleBoxEmpty());
+            button.AddThemeStyleboxOverride("focus", new StyleBoxEmpty());
+            button.AddThemeStyleboxOverride("disabled", new StyleBoxEmpty());
+            button.AddThemeColorOverride("font_color", new Color("3d392f"));
+            button.AddThemeColorOverride("font_hover_color", new Color("795f34"));
+            tile.AddChild(button); button.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+            button.Pressed += () =>
+            {
+                _selectedSkillNodeFaceId = face.face_id;
+                _selectedSkillNodeId = nodes.FirstOrDefault(node => node.face_id == face.face_id)?.node_id ?? "";
+                build_character_battle(human);
+            };
+        }
+    }
+
+    private static HashSet<string> skill_node_involved_face_ids(SkillNodeConfig node, IReadOnlyDictionary<string, SkillNodeConfig> nodesById)
+    {
+        var result = new HashSet<string>(StringComparer.Ordinal);
+        if (node.face_id.Length > 0) result.Add(node.face_id);
+        foreach (var parentId in node.prerequisite_node_ids)
+            if (nodesById.TryGetValue(parentId, out var parent) && parent.face_id.Length > 0)
+                result.Add(parent.face_id);
+        return result;
+    }
+
+    private void build_skill_node_empty_details(Control graph, string faceId, IReadOnlyList<SkillNodeFaceConfig> faces)
+    {
+        var faceName = faces.FirstOrDefault(face => face.face_id == faceId)?.face_name ?? "当前脉面";
+        var frame = CharacterPanel(graph, 924, 58, 410, 647, 16);
+        var column = CharacterBox(frame); column.AddThemeConstantOverride("separation", 8);
+        column.AddChild(CharacterText(faceName, 25));
+        column.AddChild(new HSeparator());
+        column.AddChild(CharacterParagraph("此脉面尚无参悟节点。加入节点后，会沿所属脉面展开；与其他脉面相连的节点会显示在交界处。", 18, true));
     }
 
     private void build_skill_node_zoom_controls(Control graph, Control viewport, Control canvas)
@@ -321,7 +441,17 @@ public partial class InfoPanel
         var unlocked = human.has_unlocked_skill_node(node.node_id);
         var canUnlock = human.can_unlock_skill_node(node.node_id, out var reason);
         var major = node.prerequisite_node_ids.Count > 1;
-        var frame = CharacterPanel(graph, 924, 0, 410, 705, 16);
+        var nodesById = human.get_skill_node_configs().ToDictionary(candidate => candidate.node_id);
+        var facesById = skill_node_faces(human, nodesById.Values.ToArray()).ToDictionary(face => face.face_id);
+        var involvedFaceIds = skill_node_involved_face_ids(node, nodesById)
+            .OrderBy(id => facesById.TryGetValue(id, out var face) ? face.sort_order : int.MaxValue)
+            .ThenBy(id => id, StringComparer.Ordinal).ToArray();
+        var faceNames = involvedFaceIds.Select(id => facesById.TryGetValue(id, out var face) ? face.face_name : id).ToArray();
+        var faceSummary = faceNames.Length > 1
+            ? "交界节点 · " + string.Join(" × ", faceNames)
+            : (major ? "多前置节点" : node.prerequisite_node_ids.Count == 0 ? "初始根节点" : "单前置节点")
+                + (faceNames.Length == 1 ? " · " + faceNames[0] : "");
+        var frame = CharacterPanel(graph, 924, 58, 410, 647, 16);
         var column = CharacterBox(frame); column.AddThemeConstantOverride("separation", 8);
         column.AddChild(CharacterText("参悟详情", 25));
         column.AddChild(new HSeparator());
@@ -350,7 +480,7 @@ public partial class InfoPanel
         var identity = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, MouseFilter = MouseFilterEnum.Ignore };
         identity.AddThemeConstantOverride("separation", 3); heading.AddChild(identity);
         identity.AddChild(CharacterText(node.node_name, 28));
-        identity.AddChild(CharacterText(major ? "多前置交汇节点" : node.prerequisite_node_ids.Count == 0 ? "初始根节点" : "单前置节点", 17, true));
+        identity.AddChild(CharacterClippedText(faceSummary, 17, true));
 
         if (skill is not null) column.AddChild(CharacterText(skill.skill_name, 21, true));
         var description = CharacterParagraph(node.description, 18, true);
@@ -360,14 +490,25 @@ public partial class InfoPanel
         var scroll = CharacterScroll(column);
         var content = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.Fill };
         content.AddThemeConstantOverride("separation", 6); scroll.AddChild(content);
+        content.AddChild(CharacterText("关联脉面", 20));
+        if (involvedFaceIds.Length == 0) content.AddChild(CharacterText("未指定脉面", 17, true));
+        else
+        {
+            foreach (var faceId in involvedFaceIds)
+            {
+                var faceName = facesById.TryGetValue(faceId, out var face) ? face.face_name : faceId;
+                var relation = faceId == node.face_id ? "节点所属" : "前置来源";
+                content.AddChild(CharacterParagraph($"· {faceName}　{relation}", 17, true));
+            }
+        }
+
         content.AddChild(CharacterText("前置节点", 20));
         if (node.prerequisite_node_ids.Count == 0) content.AddChild(CharacterText("无 · 可由此脉络直接参悟", 17, true));
         else
         {
-            var configs = human.get_skill_node_configs().ToDictionary(candidate => candidate.node_id);
             foreach (var parentId in node.prerequisite_node_ids)
             {
-                var parentName = configs.TryGetValue(parentId, out var parent) ? parent.node_name : parentId;
+                var parentName = nodesById.TryGetValue(parentId, out var parent) ? parent.node_name : parentId;
                 var parentState = human.has_unlocked_skill_node(parentId) ? "已参悟" : "尚未参悟";
                 content.AddChild(CharacterParagraph($"· {parentName}  {parentState}", 17, true));
             }

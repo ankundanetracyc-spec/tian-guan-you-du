@@ -9,7 +9,6 @@ public partial class HoverInfoManager : CanvasLayer
     private const double HideGrace = 0.10;
     private const float ViewportMargin = 12f;
     private const float PreferredWidth = 460f;
-    private const int HoverScrollStep = 72;
     private const string BoundMeta = "shared_hover_info_bound";
     private static HoverInfoManager? _instance;
 
@@ -29,7 +28,7 @@ public partial class HoverInfoManager : CanvasLayer
     private Vector2 _pointerPosition;
     private int _layoutTicket;
 
-    public readonly record struct HoverInfoContent(string Title, string Body, Texture2D? Icon = null, string Subtitle = "", bool ExpandFully = false);
+    public readonly record struct HoverInfoContent(string Title, string Body, Texture2D? Icon = null, string Subtitle = "");
 
     public override void _EnterTree()
     {
@@ -86,25 +85,7 @@ public partial class HoverInfoManager : CanvasLayer
         // GUI signals run after _Input. Use this event's viewport position immediately,
         // rather than waiting for the platform's polled cursor position to catch up.
         if (@event is InputEventMouse pointer) _pointerPosition = pointer.Position;
-        if (@event is not InputEventMouseButton mouse || !mouse.Pressed) return;
-        if (mouse.ButtonIndex == MouseButton.Middle) { hide_all(); return; }
-        if (_card?.Visible != true || _scroll is null || !pointer_over(_card, mouse.Position)) return;
-        if(_visibleContent?.ExpandFully==true)return;
-
-        var scrollDelta = mouse.ButtonIndex switch
-        {
-            MouseButton.WheelUp => -HoverScrollStep,
-            MouseButton.WheelDown => HoverScrollStep,
-            _ => 0,
-        };
-        if (scrollDelta == 0) return;
-
-        var scrollbar = _scroll.GetVScrollBar();
-        var maxScroll = Math.Max(scrollbar.MinValue, scrollbar.MaxValue - scrollbar.Page);
-        // A short, transparent hint must not swallow the underlying list's wheel.
-        if (maxScroll <= scrollbar.MinValue) return;
-        scrollbar.Value = Math.Clamp(scrollbar.Value + scrollDelta * (mouse.Factor > 0 ? mouse.Factor : 1), scrollbar.MinValue, maxScroll);
-        GetViewport().SetInputAsHandled();
+        if (@event is InputEventMouseButton { Pressed: true, ButtonIndex: MouseButton.Middle }) hide_all();
     }
 
     public static void SetTooltip(Control? anchor, string? text)
@@ -195,7 +176,7 @@ public partial class HoverInfoManager : CanvasLayer
         _scroll = new ScrollContainer
         {
             HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled,
-            VerticalScrollMode = ScrollContainer.ScrollMode.Auto,
+            VerticalScrollMode = ScrollContainer.ScrollMode.Disabled,
             SizeFlagsHorizontal = Control.SizeFlags.ExpandFill,
             MouseFilter = Control.MouseFilterEnum.Ignore,
         };
@@ -371,7 +352,7 @@ public partial class HoverInfoManager : CanvasLayer
         _subtitle.Text = content.Subtitle;
         _subtitle.Visible = !string.IsNullOrWhiteSpace(content.Subtitle);
         _body.Text = content.Body;
-        _scroll.VerticalScrollMode=content.ExpandFully?ScrollContainer.ScrollMode.Disabled:ScrollContainer.ScrollMode.Auto;
+        _scroll.VerticalScrollMode = ScrollContainer.ScrollMode.Disabled;
         _scroll.ScrollVertical = 0;
         _card.Show();
         _card.MoveToFront();
@@ -395,31 +376,23 @@ public partial class HoverInfoManager : CanvasLayer
         _body.Size=new Vector2(bodyWidth,0);
         _scroll.CustomMinimumSize = new Vector2(0, 40);
         var maxHeight = Mathf.Max(80f, viewport.Y - ViewportMargin * 2);
-        var maxBodyHeight = Mathf.Min(280f, Mathf.Max(40f, maxHeight - 126f));
+        var maxBodyHeight = Mathf.Max(40f, maxHeight - 150f);
         var naturalBodyHeight = Mathf.Max(40f, _body.GetContentHeight() + 8f);
-        if(_visibleContent?.ExpandFully==true)
+        var maxWidth = Mathf.Max(100f, viewport.X - ViewportMargin * 2);
+        while(naturalBodyHeight > maxBodyHeight && width < maxWidth)
         {
-            var limit=Mathf.Max(100f,Mathf.Min(1000f,viewport.X-ViewportMargin*2));
-            while(naturalBodyHeight>maxHeight-150f&&width<limit)
-            {
-                width=Mathf.Min(limit,width+120f);bodyWidth=Mathf.Max(48f,width-44f);
-                _body.CustomMinimumSize=new Vector2(bodyWidth,0);_body.Size=new Vector2(bodyWidth,0);
-                naturalBodyHeight=Mathf.Max(40f,_body.GetContentHeight()+8f);
-            }
-            if(naturalBodyHeight>maxHeight-150f)
-            {
-                width=Mathf.Max(100f,viewport.X-ViewportMargin*2);bodyWidth=Mathf.Max(48f,width-44f);
-                _body.CustomMinimumSize=new Vector2(bodyWidth,0);_body.Size=new Vector2(bodyWidth,0);
-                naturalBodyHeight=Mathf.Max(40f,_body.GetContentHeight()+8f);
-            }
-            for(var fontSize=17;naturalBodyHeight>maxHeight-150f&&fontSize>=14;fontSize--)
-            {
-                _body.AddThemeFontSizeOverride("normal_font_size",fontSize);
-                naturalBodyHeight=Mathf.Max(40f,_body.GetContentHeight()+8f);
-            }
-            _scroll.CustomMinimumSize=new Vector2(0,naturalBodyHeight);
+            width = Mathf.Min(maxWidth, width + 120f);
+            bodyWidth = Mathf.Max(48f, width - 44f);
+            _body.CustomMinimumSize = new Vector2(bodyWidth, 0);
+            _body.Size = new Vector2(bodyWidth, 0);
+            naturalBodyHeight = Mathf.Max(40f, _body.GetContentHeight() + 8f);
         }
-        else _scroll.CustomMinimumSize = new Vector2(0, Mathf.Min(naturalBodyHeight, maxBodyHeight));
+        for (var fontSize = 17; naturalBodyHeight > maxBodyHeight && fontSize >= 12; fontSize--)
+        {
+            _body.AddThemeFontSizeOverride("normal_font_size", fontSize);
+            naturalBodyHeight = Mathf.Max(40f, _body.GetContentHeight() + 8f);
+        }
+        _scroll.CustomMinimumSize = new Vector2(0, naturalBodyHeight);
         _card.CustomMinimumSize = new Vector2(width, 0);
         _card.ResetSize();
         _card.Size = _card.GetCombinedMinimumSize();

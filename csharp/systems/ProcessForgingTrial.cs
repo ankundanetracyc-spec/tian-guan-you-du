@@ -174,7 +174,7 @@ public sealed partial class ProcessForgingTrial
         public List<SourceRecord> Sources { get; set; } = [];
         public CalculationRecord Calculation { get; set; } = new();
         public string ParameterSnapshot { get; set; } = "";
-        public string Lifecycle { get; set; } = "独立试炼；未接入装备、正式存档与战斗";
+        public string Lifecycle { get; set; } = "独立试炼；仅展示物品信息，不接正式装备或存档";
     }
     /// <summary>可展示的客观准备信息，无成器预测、评阶或补料建议。</summary>
     public class Preparation

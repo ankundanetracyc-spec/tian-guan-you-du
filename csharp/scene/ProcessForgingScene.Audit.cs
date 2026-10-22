@@ -190,7 +190,37 @@ public partial class ProcessForgingScene
             Check(labels.Any(x => x.StartsWith("材料五行来源：")) && !labels.Any(x => x.StartsWith("器性：") || x.Contains("供热") || x.Contains("燃料")), "五行只标为材料来源，记录无燃料");
             ShowArtifact(artifact, 0); labels.Clear(); ReadText(_overlay!);
             Check(!labels.Any(x => x.StartsWith("器性：") || x.Contains("95%") || x.Contains("5%")), "器物本体页不显示五行占比");
-            int sceneStock = _session.Stock.Values.Sum(); CloseOverlay(); Gallery(); CloseOverlay(); ShowArtifact(artifact, 0); CloseOverlay();
+            Check(_overlay!.FindChild("ForgedArtifactIcon", true, false) is TextureRect { Texture: not null }, "成器详情显示实际器物图标");
+            Check(!_overlay.FindChildren("*", "Button", true, false).Cast<Button>().Any(x => x.Text.Contains("装备") || x.Text.Contains("对练")), "成器页不提前开放器物槽或试器");
+            foreach (var item in _session.Artifacts)
+            {
+                Check(ForgedArtifactPresentation.Icon(item) is not null, "凡器与法器都有物品图标");
+                var info = ForgedArtifactPresentation.Hover(item);
+                Check(info.Title == item.Name && info.Subtitle.Contains(item.Tier) && info.Icon is not null && info.Body.Contains("锋锐 " + item.Sharpness), "信息栏读取本实例名称品阶锋锐图标");
+                Check(ForgedArtifactPresentation.Sections(item).All(x => info.Body.Contains(x.Body)), "详情与悬停共用属性来源");
+            }
+            await Capture("09_器物详情.png");
+            int sceneStock = _session.Stock.Values.Sum(); CloseOverlay(); Gallery(); await Capture("10_器物册.png");
+            var itemButtons = _overlay!.FindChildren("*", "Button", true, false).Cast<Button>().Where(x => x.Name.ToString().Contains("ForgedArtifactItem")).ToArray();
+            Check(itemButtons.Length == 2 && itemButtons.All(x => x.Icon is not null), "器物册各实例有独立图标条目");
+            foreach (var itemButton in itemButtons)
+            {
+                var mouse = itemButton.GetGlobalTransformWithCanvas() * (itemButton.Size / 2);
+                // 直接投递视口坐标，避免系统光标回报与缓冲事件覆盖本次目标。
+                Input.FlushBufferedEvents();
+                Input.ParseInputEvent(new InputEventMouseMotion { Position = mouse, GlobalPosition = mouse });
+                Input.FlushBufferedEvents();
+                itemButton.EmitSignal(Control.SignalName.MouseEntered);
+                await ToSignal(GetTree().CreateTimer(.25), SceneTreeTimer.SignalName.Timeout);
+                var card = GetTree().Root.FindChild("SharedHoverInfoCard", true, false) as Control;
+                Check(card?.Visible == true, "器物悬停调用统一信息栏");
+                labels.Clear(); ReadText(card!);
+                Check(labels.Any(x => itemButton.Text.StartsWith(x) && !string.IsNullOrWhiteSpace(x)), "切换条目更新悬停实例名称");
+            }
+            await Capture("11_器物悬停.png", true);
+            CloseOverlay();
+            Check(!(GetTree().Root.FindChild("SharedHoverInfoCard", true, false) as Control)!.Visible, "关闭器物册清除悬停");
+            ShowArtifact(artifact, 0); CloseOverlay();
             Check(_session.Stock.Values.Sum() == sceneStock && _session.Artifacts.Count == 2, "重看不二次结算");
             _buttons["craft"].EmitSignal(Button.SignalName.Pressed); Check(_session.Stock.Values.Sum() == sceneStock, "界面重复点击不扣料"); CloseOverlay();
             LoadExample(2); _draft.Inputs.RemoveAll(x => x.Role == "主体"); Edit(); sceneStock = _session.Stock.Values.Sum(); _buttons["craft"].EmitSignal(Button.SignalName.Pressed); await Capture("07_非法投料.png"); Check(_session.Artifacts.Count == 2 && _session.Stock.Values.Sum() == sceneStock && _overlay is not null, "缺主体拒绝开炼且不扣材料");
@@ -201,11 +231,12 @@ public partial class ProcessForgingScene
         }
         catch (Exception e) { GD.PushError(e.ToString()); Input.SetCustomMouseCursor(null); GetTree().Quit(1); }
     }
-    private async System.Threading.Tasks.Task Capture(string name)
+    private async System.Threading.Tasks.Task Capture(string name, bool preserveHover = false)
     {
         DirAccess.MakeDirRecursiveAbsolute(ProjectSettings.GlobalizePath(Evidence));
-        Input.WarpMouse(new Vector2(1660, 940)); HoverInfoManager.HideAll();
-        await ToSignal(GetTree().CreateTimer(.3), SceneTreeTimer.SignalName.Timeout); HoverInfoManager.HideAll();
+        if (!preserveHover) { Input.WarpMouse(new Vector2(1660, 940)); HoverInfoManager.HideAll(); }
+        await ToSignal(GetTree().CreateTimer(.3), SceneTreeTimer.SignalName.Timeout);
+        if (!preserveHover) HoverInfoManager.HideAll();
         await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
         using var image = GetViewport().GetTexture().GetImage();
         if (image.SavePng(Evidence + name) != Error.Ok) throw new InvalidOperationException("截图保存失败：" + name);

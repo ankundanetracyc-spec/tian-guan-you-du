@@ -16,7 +16,7 @@ public partial class ProcessForgingScene : Control
     private long _revision;
     private string _notice = "先配材料，再开炼揭晓；样方仅填入材料，不指定成品。";
     private readonly Dictionary<string, Button> _buttons = [];
-    private const string Evidence = "res://docs/美术规范/无燃料炼器试炼_20261022/";
+    private const string Evidence = "res://docs/美术规范/炼器物品展示_20261022/";
     public override void _Ready()
     {
         SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect); MouseFilter = MouseFilterEnum.Stop;
@@ -199,7 +199,10 @@ public partial class ProcessForgingScene : Control
         foreach (var artifact in _session.Artifacts)
         {
             var b = Btn(artifact.Name + " · " + artifact.Tier + "\n锋锐 " + artifact.Sharpness + " · " + ProcessForgingTrial.PolarityLabel(artifact.Polarity), () => ShowArtifact(artifact, 0));
+            b.Name = "ForgedArtifactItem_" + artifact.InstanceId;
+            b.Icon = ForgedArtifactPresentation.Icon(artifact); b.ExpandIcon = true; b.AddThemeConstantOverride("icon_max_width", 160);
             b.CustomMinimumSize = new Vector2(0, 85); b.SizeFlagsHorizontal = SizeFlags.ExpandFill; list.AddChild(b);
+            HoverInfoManager.SetInfo(b, ForgedArtifactPresentation.Hover(artifact));
         }
         list.AddChild(Text("试炼记录 · 含失败投入", 24));
         foreach (var attempt in _session.Attempts.Reverse())
@@ -223,32 +226,33 @@ public partial class ProcessForgingScene : Control
         void Add(string text, int size = 22) => list.AddChild(Wrap(text, size));
         if (tab == 0)
         {
-            var tryButton = Btn("装备此器 · 进入独立对练", () => OpenEquipmentTrial(artifact)); tryButton.CustomMinimumSize = new(0, 45); list.AddChild(tryButton);
-            Add("本体属性", 27);
-            Add($"锋锐 {artifact.Sharpness}  ·  剑参与的合法物理攻伐忽略{artifact.Sharpness}点物防");
-            Add($"形态：{artifact.Shape}    阴阳：{ProcessForgingTrial.PolarityLabel(artifact.Polarity)}");
-            Add("基础加成", 27);
-            Add(string.Join("\n", artifact.Effects.Where(x => !x.Special).Select(x => "· " + x.Description).DefaultIfEmpty("没有额外基础加成")));
-            if (artifact.Tier == "凡器") Add("凡器保留本体性能与基础加成。", 18);
-            else
+            var header = new HBoxContainer { CustomMinimumSize = new(0, 98) }; header.AddThemeConstantOverride("separation", 24); list.AddChild(header);
+            var icon = new TextureRect { Name = "ForgedArtifactIcon", Texture = ForgedArtifactPresentation.Icon(artifact),
+                CustomMinimumSize = new(240, 90), ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
+                StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered, MouseFilter = MouseFilterEnum.Stop };
+            header.AddChild(icon); HoverInfoManager.SetInfo(icon, ForgedArtifactPresentation.Hover(artifact));
+            var identity = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill }; header.AddChild(identity);
+            var name = Wrap(artifact.Name, 28); identity.AddChild(name);
+            identity.AddChild(Wrap(ForgedArtifactPresentation.Subtitle(artifact), 21));
+            foreach (var section in ForgedArtifactPresentation.Sections(artifact))
             {
-                Add("其他能力", 27);
-                Add(string.Join("\n", artifact.Effects.Where(x => x.Special).Select(x => "【" + x.Route + "】" + x.Description).DefaultIfEmpty("本次未形成其他能力")));
-                Add("器蕴：本次未配置套系贡献。", 18);
+                Add(section.Title, 26); Add(section.Body, 21);
             }
-            Add(artifact.BodyMaximum > 0 ? $"具备御器表达：器体上限 {artifact.BodyMaximum}，在场灵识 {artifact.SpiritRequired}。召出/御使战斗模板尚未装配。" : "本器没有可用御器表达，不生成器体或在场灵识需求。");
-            Add("可在独立对练中试用基础加成、锋锐及合格化法；不改变正式人物或存档。", 17);
+            Add("试炼成器 · 仅供查看，装备功能暂未开放。", 17);
         }
         else if (tab == 1)
         {
             Add("实际能力", 26);
             if (artifact.Effects.Count == 0) Add("本器只有剑的本体性能。");
-            foreach (var effect in artifact.Effects)
+            foreach (var effect in artifact.Effects.Where(x => !x.Special))
             {
-                Add($"【{effect.Route}】{effect.Description}", 24);
-                Add("范围：" + effect.Scope + "\n时点：" + effect.Event + "\n" + effect.Condition, 18);
+                Add(ForgedArtifactPresentation.EffectDetails(effect), 21);
             }
-            Add("基础常驻、锋锐和符合条件的化法可在单器对练中试用；关键词常驻、触发、直施和御器能力尚未接入本次试器。", 19);
+            foreach (var section in ForgedArtifactPresentation.AbilitySections(artifact))
+            {
+                Add(section.Title, 25); Add(section.Body, 21);
+            }
+            Add("这里展示本器已形成的能力，装备与战斗使用暂未开放。", 19);
         }
         else
         {
@@ -260,13 +264,6 @@ public partial class ProcessForgingScene : Control
             Add("各岗位按实际材性共同参与本体、收益和工艺。内部评阶与分配记录随器物快照保存。", 18);
             Add("规则版本：" + artifact.RulesVersion + "\n实例：" + artifact.InstanceId, 16);
         }
-    }
-    private void OpenEquipmentTrial(ProcessForgingTrial.Artifact artifact)
-    {
-        var preview = GD.Load<PackedScene>("res://tools/ForgedEquipmentPreview.tscn").Instantiate<ForgedEquipmentPreview>();
-        preview.Configure(artifact); CloseOverlay(); Hide();
-        preview.Closed = () => { Show(); Refresh(); };
-        GetTree().Root.AddChild(preview);
     }
     private void Help() => Message("炼器原理与试炼说明", "选择剑大类，配置材料及整份投料，开炼后查看结果。\n\n身材主要形成剑的本体与锋锐；质材主要建立灵性基础；性材主要提供角色收益；和材主要处理配伍与通路。各岗位不是独占来源。\n\n材料五行用于炼制配伍，影响潜力保留与稳定性。同属性不凭空增益，相克可用真实和材通关。材料来源不代表伤害属性或伤害占比，单纯连接或通关不会使其他效果附带五行伤害。\n\n凡器具备本体性能和基础加成。器身能够稳定承载、维持并传导灵性效力时，可达到法器水准；是否有主动技能不是评阶依据。阴阳偏极也能正常成器。\n\n材料品阶和功用品级参与统一计算，不按材料名字匹配配方，不要求某品原料才能评某档。造诣改善加工保留，不能凭空创造材料能力。\n\n造诣20开放第二和材，32开放第二性材及辅体，50开放第三和材；位置解锁不等于器物等级。质材、性材及和材可按需选用。\n\n本页每种材料30份。非法提交不扣料；合法尝试消耗本页投入。所有数值仅供试炼，正式行囊、历法、存档和战斗不受影响。炼前不显示成品预测或补料建议。" );
     private Control Overlay(string title, float width, float height)

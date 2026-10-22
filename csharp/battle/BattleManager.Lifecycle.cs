@@ -54,6 +54,11 @@ public partial class BattleManager : Node2D
     private async void finish_battle(bool escaped=false)
     {
         if (_returning_to_world)return; SetBattlePaused(false); _returning_to_world=true; battle_running=false; _segmentPhase=SegmentPhase.None; _skillBar?.clear_targeting();
+        if (isolated_trial_battle)
+        {
+            FinishArtifacts(); _skillBar?.Hide(); _planHud?.Hide();
+            SetMeta("isolated_trial_finished", true); return;
+        }
         var transition=GetTree().Root.GetNodeOrNull<BattleTransitionManager>("BattleTransitionManager");
         if(!_spectatorBattle&&transition is not null)await transition.HoldBattleOutro();
         if(!_spectatorBattle)await FadeBattleControls();

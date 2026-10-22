@@ -1,0 +1,80 @@
+Godot Engine v4.7.2.stable.mono.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 596.36 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4060 Laptop GPU
+
+WARNING: res://resources/activeskills/补虚行血诀/化法/卸力.tres:4 - ext_resource, invalid UID: uid://corjswdok5c7 - using text path instead: res://csharp/gongfa/DamageBonus.cs
+   at: load (scene/resources/resource_format_text.cpp:501)
+   C# backtrace (most recent call first):
+       [0] Godot.GodotObject Godot.NativeCalls.godot_icall_3_1268(nint, nint, string, string, int) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:11611)
+       [1] Godot.Resource Godot.ResourceLoader.Load(string, string, Godot.ResourceLoader+CacheMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/ResourceLoader.cs:120)
+       [2] T Godot.ResourceLoader.Load<T>(string, string, Godot.ResourceLoader+CacheMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Extensions/ResourceLoaderExtensions.cs:27)
+       [3] void GongfaAvailability.EnsureCatalog()
+       [4] bool GongfaAvailability.IsSkillEnabled(ActiveSkillData)
+       [5] void Character.<get_available_battle_skills>g__Add|207_0(Godot.Resource, Character+<>c__DisplayClass207_0&)
+       [6] Godot.Collections.Array`1[ActiveSkillData] Character.get_available_battle_skills()
+       [7] ActiveSkillData Character.resolve_combat_skill(string)
+       [8] void ForgedEquipmentSmoke+<Run>d__7.MoveNext()
+       [9] void System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start<TStateMachine>(TStateMachine&)
+       [10] void ForgedEquipmentSmoke.Run()
+       [11] bool ForgedEquipmentSmoke.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&)
+       [12] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+FORGED_UI_APPLIED
+FORGED_UI_VERIFIED
+FORGED_EQUIPMENT_SMOKE_OK 41
+ERROR: 25 RID allocations of type 'N5GLES37TextureE' were leaked at exit.
+ERROR: 2 RID allocations of type 'PN18TextServerAdvanced12FontAdvancedE' were leaked at exit.
+WARNING: 21 RIDs of type "CanvasItem" were leaked.
+   at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2735)
+ERROR: Texture with GL ID of 54: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 71: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 82: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 83: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 87: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 88: leaked 174762 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 89: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 90: leaked 174762 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 91: leaked 174762 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 92: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 95: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 101: leaked 174762 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 102: leaked 174762 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 114: leaked 174762 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 115: leaked 699050 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 116: leaked 174762 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 117: leaked 174762 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 118: leaked 174762 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 119: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 120: leaked 174762 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 121: leaked 174762 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 122: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 123: leaked 174762 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 124: leaked 174762 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 125: leaked 174762 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+WARNING: 116 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+   at: cleanup (core/object/object.cpp:2536)
+ERROR: 1 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:822)

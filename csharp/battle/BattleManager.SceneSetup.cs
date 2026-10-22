@@ -18,7 +18,7 @@ public partial class BattleManager : Node2D
     {
         if (_sceneUiConnected) return;
         var transition = GetTree().Root.GetNodeOrNull<BattleTransitionManager>("BattleTransitionManager");
-        if (transition?.is_spectator_battle_active() == true)
+        if (!isolated_trial_battle && transition?.is_spectator_battle_active() == true)
         {
             _spectatorBattle = true;
             _sceneUiConnected = true;

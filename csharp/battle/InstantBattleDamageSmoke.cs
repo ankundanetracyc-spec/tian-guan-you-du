@@ -97,6 +97,7 @@ public partial class InstantBattleDamageSmoke : Node
 
     private async System.Threading.Tasks.Task verify_skill_executor_and_buff_display()
     {
+        var ui = new CanvasLayer { Name = "UILayer" }; AddChild(ui);
         var manager = new BattleManager { Name = "BattleMgr" };
         AddChild(manager);
 
@@ -150,13 +151,18 @@ public partial class InstantBattleDamageSmoke : Node
         skill.damage_bonuses.Clear();
         var action = new BattleQueuedSkill(skill, defender);
         attackerState.skill_queue.Add(action);
+        manager.SetProcess(false); manager.battle_running = true;
+        var flags = System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance;
+        typeof(BattleManager).GetField("_resolvingUnit", flags)!.SetValue(manager, attacker);
+        typeof(BattleManager).GetField("_segmentPhase", flags)!.SetValue(manager, BattleManager.SegmentPhase.Executing);
 
         GD.Seed(no_critical_seed());
         manager.GetChildren().OfType<SkillExecutor>().Single().execute_skill(attacker, skill, defender);
         var settled = false;
-        for (var frame = 0; frame < 90; frame++)
+        var deadline = Time.GetTicksMsec() + 6000;
+        while (Time.GetTicksMsec() < deadline)
         {
-            if (action.phase == BattleQueuedSkill.Phase.Recovering) { settled = true; break; }
+            if (action.completed) { settled = true; break; }
             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         }
         check(settled, "SkillExecutor 完整结算后返回实时队列");

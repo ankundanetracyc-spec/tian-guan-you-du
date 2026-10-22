@@ -245,7 +245,7 @@ public partial class BattlePlanHud : Control
             if (planning) details.Add("队列操作：拖至空槽移动，拖至招式互换，单击卸下。");
             var body = skillInfo.Body;
             if (details.Count > 0) body += "\n\n" + string.Join("\n\n", details);
-            return new HoverInfoManager.HoverInfoContent(action.get_display_name(), body, skillInfo.Icon, $"{skillInfo.Subtitle}　·　{subtitle}",ExpandFully:true);
+            return new HoverInfoManager.HoverInfoContent(action.get_display_name(), body, skillInfo.Icon, $"{skillInfo.Subtitle}　·　{subtitle}");
         }
 
         details.Insert(0, action.kind switch

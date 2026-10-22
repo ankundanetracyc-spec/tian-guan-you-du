@@ -508,7 +508,7 @@ public partial class CombatSkillBar : Control
         var icon = string.IsNullOrWhiteSpace(skill.icon_path) || !ResourceLoader.Exists(skill.icon_path)
             ? null
             : ResourceLoader.Load<Texture2D>(skill.icon_path);
-        return new HoverInfoManager.HoverInfoContent(skill.skill_name, body, icon, metadata,ExpandFully:true);
+        return new HoverInfoManager.HoverInfoContent(skill.skill_name, body, icon, metadata);
     }
 
     private int SkillHoverState(ActiveSkillData skill, ActiveSkillData displaySkill, BattleManager? manager)
@@ -569,7 +569,7 @@ public partial class CombatSkillBar : Control
                 ? null
                 : ResourceLoader.Load<Texture2D>(skill.icon_path);
             HoverInfoManager.SetInfo(hoveredSkillAnchor,
-                new HoverInfoManager.HoverInfoContent(skill.skill_name, body, icon, metadata,ExpandFully:true));
+                new HoverInfoManager.HoverInfoContent(skill.skill_name, body, icon, metadata));
         }
     }
 
