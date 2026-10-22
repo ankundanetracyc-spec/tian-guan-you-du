@@ -160,7 +160,7 @@ public partial class AlchemyPreviewScene
         }
         _lessonStep++;Refresh();
         string details=$"本步实际推进{_model.Breath-before}息 · 法力剩余{_model.Mana}。";
-        if(_model.Done)details+="\n"+_model.Result+"\n"+string.Join("\n",_model.Pills.Select(p=>$"{p.Index}号 {p.Score}分 · {p.EffectText}"));
+        if(_model.Done)details+="\n"+_model.Result+"\n"+string.Join("\n",_model.Pills.Select(p=>$"{p.Index}号 {p.Score}分 · {p.QualityText}"));
         RefreshLesson(details);
     }
     private void StartAdvancedLesson(int lesson)

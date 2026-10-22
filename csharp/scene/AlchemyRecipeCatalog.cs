@@ -13,7 +13,6 @@ public static class AlchemyRecipeCatalog
         public Ingredient Main => Ingredients.Single(i => i.HerbName == MainHerb);
         public IEnumerable<Ingredient> Assistants => Ingredients.Where(i => i.HerbName != MainHerb);
     }
-    public sealed record EffectPoint(int Score, double Value);
     /// <param name="AssistantSlot">-1 Jun; 0 Chen; 1/2/4 Zuo; 3/5/6 Shi. Expansion slots require attainment.</param>
     public sealed record SampleIngredient(string HerbName, int Dose, int AssistantSlot);
     public sealed record SampleRoute(string Name, string Direction, SampleIngredient[] Ingredients);
@@ -32,23 +31,8 @@ public static class AlchemyRecipeCatalog
     public sealed record PillType(string Id, string Name, int Rank, string CoreUtility,
         string[] MainCandidates, double PolarityTarget, double PolarityToleranceAt20, double PolarityToleranceAt100,
         string Purpose, string[] ExplorationDirections, SampleRoute[] SampleRoutes,
-        string EffectName, string EffectUnit, EffectPoint[] EffectCurve, Formula[] Formulas)
+        Formula[] Formulas)
     {
-        public double Effect(int score)
-        {
-            if (score < 20) return 0;
-            for (int i = 1; i < EffectCurve.Length; i++)
-            {
-                var right = EffectCurve[i];
-                if (score <= right.Score)
-                {
-                    var left = EffectCurve[i - 1];
-                    return left.Value + (right.Value - left.Value) * (score - left.Score) / (right.Score - left.Score);
-                }
-            }
-            return EffectCurve[^1].Value;
-        }
-
         public double PolarityTolerance(int score)
         {
             double t = Math.Clamp((score - 20) / 80d, 0, 1);
@@ -57,8 +41,6 @@ public static class AlchemyRecipeCatalog
     }
 
     private static Ingredient I(string name, string timing, int recommended = 1) => new(name, recommended, timing);
-    private static EffectPoint[] Curve(params (int score, double value)[] points) =>
-        points.Select(p => new EffectPoint(p.score, p.value)).ToArray();
     private static SampleIngredient S(string herb, int dose, int assistantSlot) => new(herb, dose, assistantSlot);
 
     public static readonly PillType[] Pills =
@@ -69,10 +51,10 @@ public static class AlchemyRecipeCatalog
             [
                 new("赤核平衡方", "采用高品核心，配液质转化与藏性稳形，阴阳和五行共同调和。", [S("赤瓤木核", 1, -1), S("伏地兽筋", 3, 3), S("凝霜叶", 2, 1), S("灵泉露", 1, 2), S("雾铃花", 1, 0)]),
                 new("藤心通路方", "青岚藤心作君，溪纹藻丝由使位通路，佐位稳形与识残。", [S("青岚藤心", 3, -1), S("清音玉片", 1, 1), S("溪纹藻丝", 2, 3), S("山蚕长丝", 1, 2), S("朱阳花籽", 1, 0)]),
-                new("青芽多味方", "青髓芽作君，臣位固形、佐位化残、使位通藏，尝试以分工和材料互补搭配。", [S("青髓芽", 2, -1), S("灵石", 2, 3), S("回泉珠", 2, 1), S("凝露松脂", 1, 0)])
+                new("青芽多味方", "青髓芽作君，臣位固形、佐位化残、使位通藏，尝试以分工和材料互补搭配。", [S("青髓芽", 2, -1), S("灵石", 2, 3), S("回泉珠", 2, 1), S("凝露松脂", 1, 0)]),
+                new("青木清露方", "木性君药与水性辅药配伍，佐化转残、使通相合。", [S("青木芯", 2, -1), S("山蚕长丝", 1, 0), S("灵泉露", 2, 1), S("溪纹藻丝", 2, 3)]),
+                new("青芽明净方", "青芽作君，以佐明降低夹带，保留四味分工。", [S("青髓芽", 2, -1), S("山蚕长丝", 1, 0), S("清音玉片", 2, 1), S("溪纹藻丝", 2, 3)])
             ],
-            "生命恢复", "点",
-            Curve((20,12),(50,18),(75,29),(90,43),(100,62)),
             [
                 new("qingmu_standard", "青木回春常方", "青木芯", "青木芯的生机足，通可建立药性联系；阴阳相对的辅材有助于把药团拉回平和。",
                     ["青木芯","灵泉露","凝露松脂","苦苔根"],
@@ -89,10 +71,10 @@ public static class AlchemyRecipeCatalog
             [
                 new("藻丝多味方", "溪纹藻丝作君，臣佐使各尽其位，兼顾通路、稳形与阴阳。", [S("溪纹藻丝", 3, -1), S("荒藤结节", 1, 0), S("风络藤丝", 2, 3), S("清音玉片", 1, 1)]),
                 new("兽筋木水方", "用兽筋作君，配合木性辅药与使位通路，观察多味材料如何互补。", [S("伏地兽筋", 1, -1), S("兽皮", 1, 0), S("回泉珠", 2, 1), S("青木芯", 3, 3), S("瘴泥珠", 1, 2)]),
-                new("石英清润方", "风纹石英提供通脉核心，佐位的化与固分别处理残余和稳形，使位通性改善送达。", [S("风纹石英", 4, -1), S("清音玉片", 1, 3), S("灵泉露", 2, 1), S("石蜂蜡", 1, 2)])
+                new("石英清润方", "风纹石英提供通脉核心，佐位的化与固分别处理残余和稳形，使位通性改善送达。", [S("风纹石英", 4, -1), S("清音玉片", 1, 3), S("灵泉露", 2, 1), S("石蜂蜡", 1, 2)]),
+                new("石英泉珠方", "石英作君，佐化转残，使通连合，比较金水配伍。", [S("风纹石英", 3, -1), S("凝露松脂", 1, 0), S("回泉珠", 2, 1), S("溪纹藻丝", 2, 3)]),
+                new("藻丝清露方", "藻丝作君，臣固稳形，佐化与使通各尽其位。", [S("溪纹藻丝", 3, -1), S("山蚕长丝", 1, 0), S("灵泉露", 2, 1), S("风络藤丝", 2, 3)])
             ],
-            "经脉通畅", "点",
-            Curve((20,8),(50,14),(75,24),(90,38),(100,56)),
             [
                 new("qingmu_channels", "青木石英通脉方", "青木芯", "两种通性来源可以各自提供联系；晶材炼化较慢，耐热的安排比固定堆料更重要。",
                     ["灵泉露","青木芯","风纹石英","雾铃花"],
@@ -109,10 +91,10 @@ public static class AlchemyRecipeCatalog
             [
                 new("瘴泥偏阴方", "瘴泥珠作君，材料天然偏阴；佐位明／藏处理纯度与稳形，五行材料互补。", [S("瘴泥珠", 2, -1), S("风纹石英", 3, 3), S("灵泉藻", 1, 0), S("清音玉片", 1, 1), S("凝霜叶", 1, 2)]),
                 new("泥脉木水方", "君臣佐使各一味：泥脉石团作君，山蚕长丝在臣位固形，回泉珠在佐位化合，青木芯在使位相合。", [S("泥脉石团", 3, -1), S("山蚕长丝", 2, 0), S("青木芯", 1, 3), S("回泉珠", 2, 1)]),
-                new("菌核阴衡方", "雾心菌核作君，以佐位化残、藏性稳形和使位通路配伍，调整剂量可改走不同偏性。", [S("雾心菌核", 1, -1), S("灵泉露", 3, 1), S("风络藤丝", 1, 3), S("沉云玉屑", 2, 2), S("玄甲薄片", 1, 0)])
+                new("菌核阴衡方", "雾心菌核作君，以佐位化残、藏性稳形和使位通路配伍，调整剂量可改走不同偏性。", [S("雾心菌核", 1, -1), S("灵泉露", 3, 1), S("风络藤丝", 1, 3), S("沉云玉屑", 2, 2), S("玄甲薄片", 1, 0)]),
+                new("瘴泥清音方", "偏阴君药搭配和性辅药，佐明提纯，使通相合。", [S("瘴泥珠", 2, -1), S("山蚕长丝", 1, 0), S("清音玉片", 2, 1), S("溪纹藻丝", 2, 3)]),
+                new("泥脉月露方", "阴性石材与菌汁配伍，以佐化处理残余。", [S("泥脉石团", 2, -1), S("山蚕长丝", 1, 0), S("月露菌汁", 2, 1), S("风纹石英", 2, 3)])
             ],
-            "心神安定", "点",
-            Curve((20,10),(50,17),(75,28),(90,43),(100,61)),
             [
                 new("mistheart_calm", "雾心菌核静心方", "雾心菌核", "利用少量阳性辅材主动形成轻微阴阳接触；先建联系、再让镇处理真实躁动，是本方的精细操作。",
                     ["月露菌汁","雾心菌核","凝霜叶","凝露松脂","清音玉片"],

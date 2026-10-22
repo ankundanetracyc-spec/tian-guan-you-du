@@ -70,13 +70,10 @@ public static class AlchemySlotSimulation
         double YinDeviation,
         double CarryRate,
         double StorageMultiplier,
-        double Effect,
         string YieldRange,
         string Outcome,
         IReadOnlyList<string> Details,
         string ProductName,
-        string EffectName,
-        string EffectUnit,
         string CoreUtility);
 
     private sealed class Portion(Input input, double available, double residual)
@@ -151,7 +148,6 @@ public static class AlchemySlotSimulation
             .OrderByDescending(result => result.CanSimulate)
             .ThenByDescending(result => result.OutputCount > 0)
             .ThenByDescending(result => result.Quality)
-            .ThenByDescending(result => result.Effect)
             .First();
         var details = new List<string>
         {
@@ -188,7 +184,6 @@ public static class AlchemySlotSimulation
         bool exploded = metrics.Risk >= 90;
         bool ordinaryFailure = !exploded && quality < 20;
         int outputCount = exploded || ordinaryFailure ? 0 : metrics.CandidateCount;
-        double effect = outputCount > 0 ? pill.Effect(quality) : 0;
         string qualityName = QualityName(quality);
         string outcome = exploded
             ? "炸炉，未能成丹。"
@@ -210,7 +205,7 @@ public static class AlchemySlotSimulation
         };
         if (outputCount > 0)
         {
-            details.Add($"每枚预估{pill.EffectName} {Math.Floor(effect + .5):0}{pill.EffectUnit}；「藏」留存倍率 {metrics.StorageMultiplier:0.00} 倍（基础时长未配置，暂不换算实际时长）。");
+            details.Add($"「藏」留存倍率 {metrics.StorageMultiplier:0.00} 倍（基础时长未配置，暂不换算实际时长）。");
             details.Add("本丹品阶为九品试演，尚未接入正式行囊、丹药效果、首炼造诣奖励或丹炉耐久。");
         }
         else if (exploded)
@@ -230,8 +225,8 @@ public static class AlchemySlotSimulation
             metrics.Core, metrics.Polarity, metrics.Connection, metrics.Stability, metrics.Purity,
             metrics.ZInitial, metrics.ZAfter, metrics.Risk, metrics.ConnectionRate, metrics.MixingRate, metrics.DeliveryRate,
             metrics.FiveElementRate, metrics.YinValue, metrics.YinDeviation, metrics.CarryRate, metrics.StorageMultiplier,
-            effect, YieldText(metrics.MinimumCount, metrics.MaximumCount, metrics.CandidateCount), outcome, details,
-            pill.Name, pill.EffectName, pill.EffectUnit, pill.CoreUtility);
+            YieldText(metrics.MinimumCount, metrics.MaximumCount, metrics.CandidateCount), outcome, details,
+            pill.Name, pill.CoreUtility);
     }
 
     private static Result SimulateUnrecognized(IReadOnlyList<Input> inputs, double attainment)
@@ -285,8 +280,7 @@ public static class AlchemySlotSimulation
                 "灵识并行负担超限，尚未开炼。") with
             {
                 ProductName = "未识别丹种",
-                EffectName = "药效",
-                EffectUnit = "点",
+
                 CoreUtility = "未匹配"
             };
         if (energy > EnergyCapacity)
@@ -294,8 +288,7 @@ public static class AlchemySlotSimulation
                 "精力不足，尚未开炼。") with
             {
                 ProductName = "未识别丹种",
-                EffectName = "药效",
-                EffectUnit = "点",
+
                 CoreUtility = "未匹配"
             };
 
@@ -313,8 +306,8 @@ public static class AlchemySlotSimulation
         };
         return new Result(true, "", exploded, !exploded, 0, 0, 0, "未成丹", spirit, energy, count,
             0, 0, 100 * connectionRate, 0, 0, zInitial, zAfter, risk, connectionRate, mixRate, deliveryRate,
-            1, 0, 0, 0, 1, 0, "颗数范围　未识别", outcome, details,
-            "未识别丹种", "药效", "点", "未匹配");
+            1, 0, 0, 0, 1, "颗数范围　未识别", outcome, details,
+            "未识别丹种", "未匹配");
     }
 
     private static Result Blocked(AlchemyRecipeCatalog.PillType pill, string reason, int spirit, int energy, string outcome) =>
@@ -346,13 +339,10 @@ public static class AlchemySlotSimulation
             YinDeviation: 0,
             CarryRate: 0,
             StorageMultiplier: 1,
-            Effect: 0,
             YieldRange: "颗数范围　—",
             Outcome: outcome,
             Details: [reason],
             ProductName: pill.Name,
-            EffectName: pill.EffectName,
-            EffectUnit: pill.EffectUnit,
             CoreUtility: pill.CoreUtility);
 
     private static Metrics CalculateMetrics(AlchemyRecipeCatalog.PillType pill, IReadOnlyList<Input> inputs, double attainment)
@@ -442,7 +432,7 @@ public static class AlchemySlotSimulation
         string overcoming = ElementThatOvercomes(anchor);
         double generatingShare = elementVector.GetValueOrDefault(producing);
         double overcomingShare = elementVector.GetValueOrDefault(overcoming);
-        double fiveElementRate = Math.Clamp(1 + .20 * (.50 - distance) + .10 * (generatingShare - overcomingShare), .80, 1.20);
+        double fiveElementRate = Math.Clamp(1 + .25 * (.50 - distance) + .125 * (generatingShare - overcomingShare), .75, 1.25);
 
         double yinValue = deliveredPerPill <= 0 ? 0 : portions.Sum(portion => Math.Sign(portion.Input.Craft.polarity) * portion.Delivered) / deliveredPerPill;
         double yinDeviation = Math.Abs(yinValue - pill.PolarityTarget);
@@ -515,7 +505,7 @@ public static class AlchemySlotSimulation
         return Math.Min(massScore, powerScore);
     }
 
-    private static bool CanFunctionAct(SlotRole role, string utility) => role switch
+    internal static bool CanFunctionAct(SlotRole role, string utility) => role switch
     {
         SlotRole.Chen => ChenUtilities.Contains(utility, StringComparer.Ordinal),
         SlotRole.Zuo => ZuoUtilities.Contains(utility, StringComparer.Ordinal),

@@ -79,7 +79,7 @@ public sealed partial class AlchemyPreviewModel
     {
         public int Index,Score,MainQuality,BlendQuality,BodyQuality;public double Form;public string Reason="",NextGap="";
         public readonly List<Part> Parts=[];
-        public string PillTypeId="huichun",FormulaId="qingmu_standard",MainHerbName="青木芯",CoreUtilityId="生",EffectName="生命恢复",EffectUnit="点";
+        public string PillTypeId="huichun",FormulaId="qingmu_standard",MainHerbName="青木芯",CoreUtilityId="生";
         public double CoreReferencePower=1,PolarityTarget,PolarityToleranceAt20=.72,PolarityToleranceAt100=.20;
         public double Amount=>Parts.Sum(p=>p.Amount);
         public double SlagAmount=>Parts.Sum(p=>p.Slag);
@@ -90,9 +90,8 @@ public sealed partial class AlchemyPreviewModel
         public double Polarity=>Amount<1e-9?0:Parts.Sum(p=>p.Amount*Math.Sign(p.Source.Herb.Craft.polarity))/Amount;
         public double Damage=>Amount<1e-9?0:Parts.Sum(p=>p.Amount*p.Damage)/Amount;
         public double PolarityTolerance(int q)=>PolarityToleranceAt20+(PolarityToleranceAt100-PolarityToleranceAt20)*Math.Clamp((q-20)/80d,0,1);
-        public double Effect=>AlchemyRecipeCatalog.GetPill(PillTypeId).Effect(Score);
         public string DefinitionKey=>$"trial_{PillTypeId}_{MainHerbName}_q{Score:D3}";
-        public string EffectText=>$"{EffectName} {Effect:F1}{EffectUnit}";
+        public string QualityText=>$"丹效{Score}分 · {Tier(Score)}";
     }
     public readonly List<Herb> Herbs=[]; public readonly List<Dose> Pending=[],InFurnace=[];
     public readonly List<string> Log=[],Changes=[];public readonly Dictionary<string,string> Contributions=[];

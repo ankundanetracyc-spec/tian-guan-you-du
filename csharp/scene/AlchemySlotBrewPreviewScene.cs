@@ -56,6 +56,15 @@ public partial class AlchemySlotBrewPreviewScene : Control
     private LineEdit _pickerSearch = null!;
     private GridContainer _pickerGrid = null!;
     private int _pickerTarget = -1;
+    private SpinBox _attainmentInput = null!;
+    private OptionButton _elementFilter = null!;
+    private OptionButton _polarityFilter = null!;
+    private CheckBox _effectiveOnly = null!;
+    private readonly HashSet<string> _utilityFilters = new(StringComparer.Ordinal);
+    private readonly List<Button> _utilityFilterButtons = [];
+    private static readonly string[] FilterUtilities = ["破", "化", "通", "行", "引", "聚", "固", "镇", "护", "生", "明", "藏"];
+    private Label _pickerCount = null!;
+    private Label _pickerHint = null!;
     private Control _messageOverlay = null!;
     private Label _messageTitle = null!;
     private Label _messageBody = null!;
@@ -72,6 +81,13 @@ public partial class AlchemySlotBrewPreviewScene : Control
         BuildPage();
         RefreshPage();
         _tutorialOverlay.Show();
+        if (OS.GetCmdlineUserArgs().Contains("--alchemy-notebook-restart-write") ||
+            OS.GetCmdlineUserArgs().Contains("--alchemy-notebook-restart-read"))
+            RunNotebookRestartCheck();
+        if (OS.GetCmdlineUserArgs().Contains("--alchemy-notebook-check"))
+            _ = RunNotebookChecks();
+        if (OS.GetCmdlineUserArgs().Contains("--alchemy-slot-ui-check"))
+            _ = RunSlotUiChecks();
     }
 
     private void LoadMaterials()
@@ -138,12 +154,43 @@ public partial class AlchemySlotBrewPreviewScene : Control
         Place(_canvas, stats, new Vector2(650, 24), new Vector2(720, 48));
         stats.AddChild(StatChip("灵识", AlchemySlotSimulation.SpiritCapacity.ToString()));
         stats.AddChild(StatChip("精力", AlchemySlotSimulation.EnergyCapacity.ToString()));
-        stats.AddChild(StatChip("炼丹造诣", Attainment.ToString("0")));
+        var attainmentLabel = QuietRoomStyle.Text("试演造诣", 18);
+        attainmentLabel.AddThemeColorOverride("font_color", new Color("e4decd"));
+        stats.AddChild(attainmentLabel);
+        _attainmentInput = new SpinBox
+        {
+            Name = "AttainmentInput", MinValue = 0, MaxValue = 1196,
+            AllowGreater = true, Step = .1, Value = Attainment,
+            CustomMinimumSize = new Vector2(150, 44)
+        };
+        stats.AddChild(_attainmentInput);
+        _attainmentInput.ValueChanged += SetTrialAttainment;
         var tutorial = MakeButton("教程", () => _tutorialOverlay.Show(), 17);
         ClearButtonBorder(tutorial);
         tutorial.AddThemeColorOverride("font_color", new Color("f0ead8"));
         tutorial.AddThemeColorOverride("font_hover_color", Colors.White);
         Place(_canvas, tutorial, new Vector2(1577, 26), new Vector2(76, 44));
+    }
+
+    private void SetTrialAttainment(double value)
+    {
+        if (!double.IsFinite(value)) return;
+        Attainment = Math.Max(0, value);
+        HideHover();
+        int cleared = 0;
+        for (var i = 0; i < _assistants.Length; i++)
+            if (!SlotUnlocked(i) && _assistants[i] is not null)
+            {
+                _assistants[i] = null;
+                _assistantDoses[i] = 1;
+                cleared++;
+            }
+        _inspectedMaterial = null;
+        _inspectedSlot = -1;
+        _messageOverlay.Hide();
+        RefreshPage();
+        if (cleared > 0)
+            ShowMessage("试演造诣已调整", $"已清空{cleared}个尚未解锁药位的投料；其余药材保留。");
     }
 
     private Control StatChip(string name, string value)
@@ -161,22 +208,22 @@ public partial class AlchemySlotBrewPreviewScene : Control
 
     private void BuildRecipeColumn()
     {
-        var recipe = MakeButton("", () => _recipeOverlay.Show(), 22);
+        var recipe = MakeButton("", OpenRecipeBook, 20);
         recipe.Name = "FormulaBookButton";
-        recipe.AddThemeStyleboxOverride("normal", new StyleBoxEmpty());
-        recipe.AddThemeStyleboxOverride("hover", new StyleBoxEmpty());
-        recipe.AddThemeStyleboxOverride("pressed", new StyleBoxEmpty());
-        Place(_canvas, recipe, new Vector2(20, 756), new Vector2(166, 154));
-        var icon = IconRect(1);
-        icon.Texture = LoadUiTexture("formula_scroll_v2.png");
-        recipe.AddChild(icon);
-        icon.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        var label = QuietRoomStyle.Text("丹方", 25);
-        label.HorizontalAlignment = HorizontalAlignment.Center;
-        label.VerticalAlignment = VerticalAlignment.Bottom;
-        recipe.AddChild(label);
-        label.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        SetHover(recipe, "查看已知丹方，或载入后自行改配");
+        Place(_canvas, recipe, new Vector2(20, 794), new Vector2(186, 100));
+        var row = new HBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
+        row.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        row.OffsetLeft = 8; row.OffsetRight = -8;
+        row.Alignment = BoxContainer.AlignmentMode.Center;
+        recipe.AddChild(row);
+        var icon = IconRect(70);
+        icon.Texture = LoadUiTexture("formula_notebook_v1.png");
+        row.AddChild(icon);
+        var titles = new VBoxContainer { Alignment = BoxContainer.AlignmentMode.Center, MouseFilter = MouseFilterEnum.Ignore };
+        titles.AddChild(QuietRoomStyle.Text("丹方册", 22));
+        titles.AddChild(QuietRoomStyle.Text("样方 · 自拟", 13));
+        row.AddChild(titles);
+        SetHover(recipe, "查看样方，或把当前配伍保存为本地丹方");
     }
 
     private static AlchemySlotSimulation.SlotRole RoleFor(int slot) => slot switch
@@ -330,75 +377,6 @@ public partial class AlchemySlotBrewPreviewScene : Control
         _brewButton.CustomMinimumSize = new Vector2(0, 62); ApplyInkBrushButtonStyle(_brewButton); body.AddChild(_brewButton);
     }
 
-    private void BuildRecipeOverlay()
-    {
-        _recipeOverlay = new Control { Name = "KnownFormulaOverlay", Visible = false, MouseFilter = MouseFilterEnum.Stop, ZIndex = 120 };
-        _recipeOverlay.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        _canvas.AddChild(_recipeOverlay);
-        var veil = new ColorRect { Color = new Color(.10f, .13f, .11f, .58f), MouseFilter = MouseFilterEnum.Stop };
-        veil.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        _recipeOverlay.AddChild(veil);
-
-        var panel = MakePaperPanel(.98f, 22);
-        PlaceCentered(_recipeOverlay, panel, new Vector2(1000, 760));
-        var body = new VBoxContainer();
-        body.AddThemeConstantOverride("separation", 10);
-        panel.AddChild(body);
-        var header = new HBoxContainer();
-        body.AddChild(header);
-        var title = QuietRoomStyle.Text("丹方笺", 25);
-        title.SizeFlagsHorizontal = SizeFlags.ExpandFill;
-        title.AddThemeColorOverride("font_color", new Color("365b50"));
-        header.AddChild(title);
-        header.AddChild(MakeButton("关闭", () => _recipeOverlay.Hide(), 16));
-        var hint = QuietRoomStyle.Text("载入一套已知配伍；材料、剂量与君臣佐使位置都可再改。", 15);
-        hint.AddThemeColorOverride("font_color", new Color("71796e"));
-        body.AddChild(hint);
-
-        var routeScroll = new ScrollContainer
-        {
-            SizeFlagsVertical = SizeFlags.ExpandFill,
-            HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled
-        };
-        body.AddChild(routeScroll);
-        var routeList = new GridContainer { Columns = 2, SizeFlagsHorizontal = SizeFlags.ExpandFill };
-        routeList.AddThemeConstantOverride("h_separation", 12);
-        routeList.AddThemeConstantOverride("v_separation", 8);
-        routeScroll.AddChild(routeList);
-        foreach (var pill in AlchemyRecipeCatalog.Pills)
-        foreach (var route in pill.SampleRoutes)
-        {
-            var currentRoute = route;
-            var button = MakeButton($"{pill.Name}　·　{route.Name}", () =>
-            {
-                ApplySampleRoute(currentRoute);
-                _recipeOverlay.Hide();
-            }, 16);
-            button.Name = $"KnownFormula_{pill.Id}_{route.Name}";
-            button.CustomMinimumSize = new Vector2(0, 62);
-            button.SizeFlagsHorizontal = SizeFlags.ExpandFill;
-            button.Alignment = HorizontalAlignment.Left;
-            SetHover(button, route.Direction);
-            var required = route.Ingredients.Where(ingredient => ingredient.AssistantSlot >= 0)
-                .Select(ingredient => UnlockAt(ingredient.AssistantSlot)).DefaultIfEmpty(8).Max();
-            if (Attainment < required)
-            {
-                button.Disabled = true;
-                button.Text += $" · 造诣{required}";
-                SetHover(button, route.Direction + $"\n此方扩展药位须造诣{required}。");
-            }
-            ApplyPaperButtonStyle(button);
-            routeList.AddChild(button);
-        }
-        var footer = new HBoxContainer();
-        body.AddChild(footer);
-        var clear = MakeButton("清空投料", () => { ClearSelections(); _recipeOverlay.Hide(); }, 15);
-        footer.AddChild(clear);
-        var blank = new Control { SizeFlagsHorizontal = SizeFlags.ExpandFill, MouseFilter = MouseFilterEnum.Ignore };
-        footer.AddChild(blank);
-        footer.AddChild(MakeButton("自由配伍，不载入丹方", () => _recipeOverlay.Hide(), 15));
-    }
-
     private static Label JournalLine(string text)
     {
         var label = QuietRoomStyle.Text(text, 15);
@@ -453,7 +431,7 @@ public partial class AlchemySlotBrewPreviewScene : Control
             AlchemyRecipeCatalog.GetPill("huichun").SampleRoutes[2], true), 16);
         example.CustomMinimumSize = new Vector2(280, 46);
         footer.AddChild(example);
-        var note = QuietRoomStyle.Text("左下角【丹方】可载入九套样例，只自动填料，不指定成品；替换药材、角色位或整数份数后可重新炼丹。", 14);
+        var note = QuietRoomStyle.Text("左下角【丹方】可载入十五套样例，只自动填料，不指定成品；替换药材、角色位或整数份数后可重新炼丹。", 14);
         note.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         note.AutowrapMode = TextServer.AutowrapMode.WordSmart;
         note.AddThemeColorOverride("font_color", new Color("727b70"));
@@ -631,9 +609,65 @@ public partial class AlchemySlotBrewPreviewScene : Control
         _pickerSearch.TextChanged += _ => RefreshPickerGrid();
         header.AddChild(_pickerSearch);
         header.AddChild(MakeButton("关闭", () => _pickerOverlay.Hide(), 16));
-        var hint = QuietRoomStyle.Text("君位可选任意材料；炼后根据君药功用识别丹种。", 15);
-        hint.AddThemeColorOverride("font_color", new Color("71796e"));
-        body.AddChild(hint);
+        var filters = new HBoxContainer();
+        filters.AddThemeConstantOverride("separation", 14);
+        body.AddChild(filters);
+        filters.AddChild(QuietRoomStyle.Text("五行", 16));
+        _elementFilter = new OptionButton { Name = "ElementFilter", CustomMinimumSize = new Vector2(136, 36) };
+        foreach (var text in new[] { "全部五行", "金", "木", "水", "火", "土" }) _elementFilter.AddItem(text);
+        filters.AddChild(_elementFilter);
+        filters.AddChild(QuietRoomStyle.Text("阴阳", 16));
+        _polarityFilter = new OptionButton { Name = "PolarityFilter", CustomMinimumSize = new Vector2(136, 36) };
+        foreach (var text in new[] { "全部阴阳", "阴", "和", "阳" }) _polarityFilter.AddItem(text);
+        filters.AddChild(_polarityFilter);
+        _effectiveOnly = new CheckBox { Name = "EffectiveOnlyFilter", Text = "仅显示本位功用有效" };
+        filters.AddChild(_effectiveOnly);
+        var resetFilters = MakeButton("重置筛选", () =>
+        {
+            _elementFilter.Select(0);
+            _polarityFilter.Select(0);
+            _effectiveOnly.ButtonPressed = false;
+            _utilityFilters.Clear();
+            foreach (var button in _utilityFilterButtons)
+            {
+                button.SetPressedNoSignal(false);
+                button.AddThemeStyleboxOverride("normal", QuietRoomStyle.Edge(false, 8));
+            }
+            _pickerSearch.Clear();
+            RefreshPickerGrid();
+        }, 15);
+        resetFilters.Name = "ResetPickerFilters";
+        filters.AddChild(resetFilters);
+        _elementFilter.ItemSelected += _ => RefreshPickerGrid();
+        _polarityFilter.ItemSelected += _ => RefreshPickerGrid();
+        _effectiveOnly.Toggled += _ => RefreshPickerGrid();
+        var utilities = new HBoxContainer();
+        utilities.AddThemeConstantOverride("separation", 8);
+        body.AddChild(utilities);
+        utilities.AddChild(QuietRoomStyle.Text("功用", 16));
+        foreach (var utility in FilterUtilities)
+        {
+            var selectedUtility = utility;
+            var button = MakeButton(utility, () => { }, 16);
+            button.Name = $"UtilityFilter_{utility}";
+            button.ToggleMode = true;
+            button.CustomMinimumSize = new Vector2(44, 36);
+            button.Toggled += pressed =>
+            {
+                if (pressed) _utilityFilters.Add(selectedUtility);
+                else _utilityFilters.Remove(selectedUtility);
+                button.AddThemeStyleboxOverride("normal", QuietRoomStyle.Edge(pressed, 8));
+                RefreshPickerGrid();
+            };
+            _utilityFilterButtons.Add(button);
+            utilities.AddChild(button);
+        }
+        utilities.AddChild(QuietRoomStyle.Text("多选 · 任一匹配", 13));
+        _pickerHint = QuietRoomStyle.Text("", 15);
+        _pickerHint.AddThemeColorOverride("font_color", new Color("71796e"));
+        body.AddChild(_pickerHint);
+        _pickerCount = QuietRoomStyle.Text("", 15);
+        body.AddChild(_pickerCount);
         var scroll = new ScrollContainer { SizeFlagsVertical = SizeFlags.ExpandFill, HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled };
         body.AddChild(scroll);
         _pickerGrid = new GridContainer { Name = "MaterialChoiceGrid", Columns = 4, SizeFlagsHorizontal = SizeFlags.ExpandFill };
@@ -659,9 +693,21 @@ public partial class AlchemySlotBrewPreviewScene : Control
             _pickerGrid.RemoveChild(child);
             child.QueueFree();
         }
+        HideHover();
         var query = _pickerSearch.Text.Trim();
-        var choices = _materials.Where(material => IsAvailableInSlot(material, _pickerTarget))
-            .Where(material => query.Length == 0 || PickerText(material).Contains(query, StringComparison.OrdinalIgnoreCase));
+        var element = _elementFilter.Selected == 0 ? "" : _elementFilter.GetItemText(_elementFilter.Selected);
+        var polarity = _polarityFilter.Selected == 0 ? "" : _polarityFilter.GetItemText(_polarityFilter.Selected);
+        var available = _materials.Where(material => IsAvailableInSlot(material, _pickerTarget)).ToArray();
+        var choices = available
+            .Where(material => query.Length == 0 || PickerText(material).Contains(query, StringComparison.OrdinalIgnoreCase))
+            .Where(material => element.Length == 0 || material.Craft.element == element)
+            .Where(material => polarity.Length == 0 || PolarityName(material.Craft.polarity) == polarity)
+            .Where(material => _utilityFilters.Count == 0 || material.Craft.utilities.Any(
+                utility => utility is not null && _utilityFilters.Contains(utility.utility_id)))
+            .Where(material => !_effectiveOnly.ButtonPressed || material.Craft.utilities.Any(
+                utility => utility is not null && FunctionActsInSlot(_pickerTarget, utility.utility_id))).ToArray();
+        _pickerCount.Text = choices.Length == 0 ? "没有符合筛选条件的材料，可放宽筛选或重置。" : $"显示 {choices.Length} / {available.Length} 种可选材料";
+        _pickerHint.Text = $"当前药位：{(_pickerTarget < 0 ? "君" : AssistantRoleShort(_pickerTarget))}。本位有效指至少一项功用可在此位发挥，不代表保证成丹。";
         foreach (var material in choices)
         {
             var choice = material;
@@ -864,7 +910,7 @@ public partial class AlchemySlotBrewPreviewScene : Control
         }
         var result = $"{simulation.ProductName}\n{simulation.Outcome}\n\n本炉耗时　{AlchemySlotSimulation.DurationHours(GetSimulationInputs()):0.##}时辰";
         if (simulation.OutputCount > 0)
-            result += $"\n\n实际成丹　{simulation.OutputCount}枚\n成色　{simulation.QualityName} · 丹效 {simulation.Quality}分\n药效　每枚约 {Math.Floor(simulation.Effect + .5):0}{simulation.EffectUnit}";
+            result += $"\n\n实际成丹　{simulation.OutputCount}枚\n成色　{simulation.QualityName} · 丹效 {simulation.Quality}分";
         ShowMessage("炼丹结果", result);
     }
 
@@ -1022,12 +1068,16 @@ public partial class AlchemySlotBrewPreviewScene : Control
         var panel = new PanelContainer(); panel.AddThemeStyleboxOverride("panel", style); return panel;
     }
 
+    private static bool FunctionActsInSlot(int slot, string utility) =>
+        slot < 0
+            ? AlchemyRecipeCatalog.Pills.Any(pill => pill.CoreUtility == utility)
+            : AlchemySlotSimulation.CanFunctionAct(RoleFor(slot), utility);
+
     private static string MaterialTooltip(MaterialChoice material, int slot)
     {
-        var allowed = slot < 0 ? string.Join("、", AlchemyRecipeCatalog.Pills.Select(pill => pill.CoreUtility).Distinct()) : AssistantRoleHint(slot);
-        var active = material.Craft.utilities.Where(u => u is not null && allowed.Contains(u.utility_id, StringComparison.Ordinal))
+        var active = material.Craft.utilities.Where(u => u is not null && FunctionActsInSlot(slot, u.utility_id))
             .Select(u => u.utility_id).Distinct().ToArray();
-        var inactive = material.Craft.utilities.Where(u => u is not null && !allowed.Contains(u.utility_id, StringComparison.Ordinal))
+        var inactive = material.Craft.utilities.Where(u => u is not null && !FunctionActsInSlot(slot, u.utility_id))
             .Select(u => u.utility_id).Distinct().ToArray();
         return $"{material.Name} · {material.Craft.material_grade_name()}\n五行　{material.Craft.element}　阴阳　{PolarityName(material.Craft.polarity)}\n材性　{material.Craft.texture}\n功用　{material.UtilityText}\n\n本位发挥　{(active.Length == 0 ? "无对应功用" : string.Join("、", active))}"
             + (inactive.Length == 0 ? "" : $"\n本位不发挥　{string.Join("、", inactive)}");
