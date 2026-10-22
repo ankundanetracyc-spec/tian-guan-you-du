@@ -280,15 +280,17 @@ public partial class BattleManager
                 var raw=AiRawDamage(unit,skill);
                 var segments=new List<float>{raw};
                 var arms=skill.attack_style=="melee"&&skill.damage_type=="physical"?gongfa_combat.PreviewBloodArmCount(unit,draft.Blood):0;
-                if(arms>0&&skill.skill_name=="摧山"&&GongfaSkillRewriteRuntime.HasEffect(skill,"baihai_c2_cuishan"))segments.Add(raw);
+                if(arms>0&&skill.skill_name=="血臂撼岳"&&GongfaSkillRewriteRuntime.HasEffect(skill,"baihai_c2_cuishan"))segments.Add(raw);
+                var weaponSegments=segments.Count;
                 for(var arm=0;arm<arms;arm++)segments.Add(gongfa_combat.PreviewBloodArmDamage(unit,draft.Blood));
                 var shield=draft.Shields.GetValueOrDefault(victim);float damage=0;
                 var block=skill.damage_type=="physical"?GetStatus(victim,"化解"):0;
                 var ignoresShield=GongfaSkillRewriteRuntime.HasEffect(skill,"xuan_shu_c1_jingzhe");
-                foreach(var segment in segments)
+                for(var segmentIndex=0;segmentIndex<segments.Count;segmentIndex++)
                 {
+                    var segment=segments[segmentIndex];
                     var amount=Math.Max(0,Mathf.RoundToInt(segment));var blocked=Math.Min(block,amount);block-=blocked;amount-=blocked;
-                    amount=BattleActionResolver.apply_defense(amount,skill.damage_type,victim,skill.physical_defense_ignore_ratio);
+                    amount=BattleActionResolver.apply_defense(amount,skill.damage_type,victim,skill.physical_defense_ignore_ratio,segmentIndex<weaponSegments?ForgedEquipmentLoadout.WeaponIgnore(unit,skill):0);
                     var absorbed=ignoresShield?0:Math.Min(shield,amount);shield-=absorbed;damage+=amount-absorbed;
                 }
                 var hit=BattleActionResolver.preview_hit_chance(unit,victim);

@@ -2,6 +2,8 @@
 
 public partial class BattleManager
 {
+    // 有限状态目录的定义保持强引用；搜索草案不能反复加载同一 C# Resource。
+    private static readonly Dictionary<string,StatusEffect?> AiStatusDefinitions = [];
     private sealed class AiCandidate
     {
         public ActiveSkillData Skill = null!;
@@ -125,7 +127,8 @@ public partial class BattleManager
             var owner = selfTarget ? unit : target;
             if (string.IsNullOrWhiteSpace(id) || !GodotObject.IsInstanceValid(owner) || HasStatus(owner!, id) ||
                 plannedStatuses.Contains(StatusForecastKey(owner!, id))) continue;
-            var status = ResourceLoader.Load<StatusEffect>($"res://resources/battle/statuses/{id}.tres");
+            if(!AiStatusDefinitions.TryGetValue(id,out var status))
+                AiStatusDefinitions[id]=status=ResourceLoader.Load<StatusEffect>($"res://resources/battle/statuses/{id}.tres");
             result.AppliedStatus = id;
             result.StatusTarget = owner;
             if (status?.is_debuff == true && owner!.Get("faction").AsInt32() != unit.Get("faction").AsInt32())

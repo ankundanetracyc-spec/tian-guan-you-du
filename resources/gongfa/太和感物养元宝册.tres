@@ -22,7 +22,7 @@ result_skill = ExtResource("8_huafa_jiazhao")
 script = ExtResource("3")
 mode = 1
 target_scope = 1
-source_skill_name = "叩山"
+source_skill_name = "乘势再攻"
 result_skill = ExtResource("9_huafa_koushan")
 
 [sub_resource type="Resource" id="ChapterTingXi"]
@@ -97,7 +97,7 @@ sub_deck_rewrites = Array[ExtResource("3")]([SubResource("RewriteKoushanC4")])
 [resource]
 script = ExtResource("1")
 gongfa_name = "太和感物养元宝册"
-description = "以气血积养应对之势，以叩山追击、涵虚承攻。"
+description = "以气血积养应对之势，以乘势再攻追击、虚怀纳劲承攻。"
 gameplay_enabled = true
 wuxing = 0
 can_be_main = true

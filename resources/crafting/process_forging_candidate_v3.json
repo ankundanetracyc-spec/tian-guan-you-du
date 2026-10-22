@@ -1,0 +1,538 @@
+{
+  "Version": "sword-process-trial-3",
+  "MaxUnits": 32,
+  "ExtraSourceProficiency": 32,
+  "ExtraAuxiliaryProficiency": 20,
+  "AdvancedAuxiliaryProficiency": 50,
+  "QuantityScale": 3.0,
+  "GradeBase": 1.6,
+  "SupplyScale": 8.0,
+  "Profiles": {
+    "玄铁": {
+      "Roles": [
+        "主体",
+        "复合身材",
+        "质材",
+        "性材"
+      ],
+      "Difficulty": 8,
+      "Retention": 0.8,
+      "Volume": 4,
+      "Extension": 14,
+      "Thickness": 0.18,
+      "Edge": 1.4,
+      "Strength": 1.3,
+      "Connection": 0.0
+    },
+    "铜髓矿": {
+      "Roles": [
+        "主体",
+        "复合身材",
+        "质材",
+        "性材"
+      ],
+      "Difficulty": 8,
+      "Retention": 0.85,
+      "Volume": 3,
+      "Extension": 10,
+      "Thickness": 0.12,
+      "Edge": 0.9,
+      "Strength": 1.0,
+      "Connection": 0.0
+    },
+    "兽骨": {
+      "Roles": [
+        "复合身材",
+        "性材"
+      ],
+      "Difficulty": 8,
+      "Retention": 0.8,
+      "Volume": 2,
+      "Extension": 9,
+      "Thickness": 0.24,
+      "Edge": 0.6,
+      "Strength": 0.8,
+      "Connection": 0.0
+    },
+    "青木芯": {
+      "Roles": [
+        "承接",
+        "质材",
+        "性材",
+        "和材"
+      ],
+      "Difficulty": 8,
+      "Retention": 0.85,
+      "Edge": 0.0,
+      "Strength": 0.8,
+      "Connection": 8.0
+    },
+    "裂甲石": {
+      "Roles": [
+        "性材"
+      ],
+      "Difficulty": 8,
+      "Retention": 0.85,
+      "Edge": 0.0,
+      "Strength": 0.0,
+      "Connection": 0.0
+    },
+    "灵石": {
+      "Roles": [
+        "质材",
+        "和材"
+      ],
+      "Difficulty": 8,
+      "Retention": 0.9,
+      "Edge": 0.0,
+      "Strength": 0.0,
+      "Connection": 0.0
+    },
+    "风纹石英": {
+      "Roles": [
+        "和材"
+      ],
+      "Difficulty": 8,
+      "Retention": 0.9,
+      "Edge": 0.0,
+      "Strength": 0.0,
+      "Connection": 0.0
+    },
+    "紫砂灵土": {
+      "Roles": [
+        "和材"
+      ],
+      "Difficulty": 8,
+      "Retention": 0.85,
+      "Edge": 0.0,
+      "Strength": 0.0,
+      "Connection": 0.0
+    },
+    "褐铜砂": {
+      "Roles": [
+        "和材"
+      ],
+      "Difficulty": 8,
+      "Retention": 0.85,
+      "Edge": 0.0,
+      "Strength": 0.0,
+      "Connection": 0.0
+    },
+    "赤纹燧石": {
+      "Roles": [
+        "和材",
+        "性材"
+      ],
+      "Difficulty": 8,
+      "Retention": 0.8,
+      "Edge": 0.0,
+      "Strength": 0.0,
+      "Connection": 0.0
+    },
+    "灵泉露": {
+      "Roles": [
+        "和材"
+      ],
+      "Difficulty": 8,
+      "Retention": 0.8,
+      "Edge": 0.0,
+      "Strength": 0.0,
+      "Connection": 0.0
+    }
+  },
+  "RoleWeights": {
+    "和材": [
+      0.1,
+      0.1,
+      0.8
+    ],
+    "质材": [
+      0.3,
+      0.2,
+      0.5
+    ],
+    "身材": [
+      0.75,
+      0.1,
+      0.15
+    ],
+    "性材": [
+      0.1,
+      0.75,
+      0.15
+    ]
+  },
+  "Scalars": {
+    "CapacityScale": 1.5,
+    "IndirectSharpnessScale": 0.03,
+    "SpiritBodyScale": 0.15,
+    "StabilityThreshold": 0.8,
+    "SharpnessScale": 4.0,
+    "SpiritThreshold": 10.0,
+    "TransmissionScale": 1.6,
+    "GradeBodyGrowth": 0.12,
+    "ConnectionPerVolume": 0.25,
+    "MinimumEffect": 1.5,
+    "ConnectionLoss": 1.0,
+    "CapacityPerVolume": 6.0,
+    "MaintenanceScale": 1.0,
+    "MinimumSummonVolume": 7.0,
+    "SpiritEffectScale": 0.1,
+    "PolarityTolerance": 3.0,
+    "BodyScale": 2.0,
+    "WeightScale": 10.0,
+    "ProcessingLoss": 0.02,
+    "ConflictLoss": 0.5,
+    "PolarityDecay": 0.2,
+    "BodyMaintenance": 0.05,
+    "ProficiencySpan": 40,
+    "SharpnessReferenceThickness": 0.15,
+    "SharpnessShapeMaximum": 1.25,
+    "BodyStability": 0.3,
+    "SharpnessShapeMinimum": 0.75,
+    "RetentionFloor": 0.8
+  },
+  "Metrics": {
+    "Capacity": {
+      "*": 0.6,
+      "固": 0.3,
+      "护": 0.2
+    },
+    "Sharpness": {
+      "破": 0.5,
+      "固": 0.2
+    },
+    "Transmission": {
+      "*": 0.1,
+      "通": 1.0
+    },
+    "Stability": {
+      "*": 0.6,
+      "藏": 0.8,
+      "固": 0.6,
+      "护": 0.8
+    },
+    "Maintenance": {
+      "*": 0.2,
+      "藏": 1.0,
+      "固": 0.45,
+      "生": 0.2
+    }
+  },
+  "Atoms": [
+    {
+      "Kind": "percent",
+      "Coefficient": 0.5,
+      "Maximum": 0.0,
+      "Sources": {
+        "破": 1.0
+      },
+      "Id": "physical_damage_percent",
+      "Label": "物理伤害"
+    },
+    {
+      "Kind": "integer",
+      "Coefficient": 0.5,
+      "Maximum": 0.0,
+      "Sources": {
+        "固": 1.0
+      },
+      "Id": "physical_defense",
+      "Label": "物理防御"
+    },
+    {
+      "Kind": "ratio",
+      "Coefficient": 0.01,
+      "Maximum": 0.35,
+      "Sources": {
+        "破": 1.0
+      },
+      "Id": "physical_defense_ignore_ratio",
+      "Label": "本次物理防御忽略"
+    },
+    {
+      "Kind": "integer",
+      "Coefficient": 0.5,
+      "Maximum": 0.0,
+      "Sources": {
+        "固": 1.0
+      },
+      "Id": "defuse_flat",
+      "Label": "实际应对追加化解"
+    },
+    {
+      "Kind": "integer",
+      "Coefficient": 1.2,
+      "Maximum": 0.0,
+      "Sources": {
+        "破": 1.0
+      },
+      "Id": "physical_damage_base",
+      "Label": "基础物理伤害"
+    },
+    {
+      "Kind": "integer",
+      "Coefficient": 1.2,
+      "Maximum": 0.0,
+      "Sources": {
+        "固": 1.0
+      },
+      "Id": "shield_flat",
+      "Label": "自身护盾"
+    }
+  ],
+  "Carriers": [
+    {
+      "Event": "装备期间",
+      "Id": "base",
+      "Condition": "装备后提供基础战斗属性",
+      "Atoms": [
+        "physical_damage_percent",
+        "physical_defense"
+      ],
+      "Costs": {},
+      "Weight": 1.0,
+      "Special": false,
+      "Scope": "角色",
+      "Label": "基础加成",
+      "Resource": ""
+    },
+    {
+      "Event": "伤害结算",
+      "Id": "keyword",
+      "Condition": "自动作用于所有合格技能，无需绑定",
+      "Atoms": [
+        "physical_damage_percent"
+      ],
+      "Costs": {
+        "通": 0.5,
+        "藏": 0.1
+      },
+      "Weight": 0.8,
+      "Special": true,
+      "Scope": "剑关键词技能中的物理伤害",
+      "Label": "常驻效果",
+      "Resource": "通"
+    },
+    {
+      "Event": "随绑定技能结算",
+      "Id": "binding",
+      "Condition": "选择一个类别、关键词与实际效果均符合要求的技能绑定",
+      "Atoms": [
+        "physical_defense_ignore_ratio",
+        "defuse_flat"
+      ],
+      "Costs": {
+        "通": 0.35
+      },
+      "Weight": 0.7,
+      "Special": true,
+      "Scope": "玩家选定的合格技能",
+      "Label": "化法",
+      "Resource": "通"
+    },
+    {
+      "Event": "每次技能执行首次对生灵造成物理伤害后",
+      "Id": "trigger",
+      "Condition": "生成自身护盾；同次多段/群攻只计一次，衍生段不再次触发。仅为候选说明",
+      "Atoms": [
+        "shield_flat"
+      ],
+      "Costs": {
+        "通": 0.3,
+        "聚": 0.3
+      },
+      "Weight": 0.4,
+      "Special": true,
+      "Scope": "剑关键词技能的原始攻击",
+      "Label": "触发效果",
+      "Resource": "聚"
+    },
+    {
+      "Event": "技能执行",
+      "Id": "direct",
+      "Condition": "技能费用与目标模板未装配，当前不可排入战斗",
+      "Atoms": [
+        "physical_damage_base",
+        "shield_flat"
+      ],
+      "Costs": {
+        "聚": 0.4
+      },
+      "Weight": 0.4,
+      "Special": true,
+      "Scope": "主动能力",
+      "Label": "直施",
+      "Resource": "聚"
+    },
+    {
+      "Event": "御使执行",
+      "Id": "summon",
+      "Condition": "召出/御使模板未装配，当前不可排入战斗",
+      "Atoms": [
+        "physical_damage_base",
+        "shield_flat"
+      ],
+      "Costs": {
+        "通": 0.2,
+        "藏": 0.25
+      },
+      "Weight": 0.4,
+      "Special": true,
+      "Scope": "召出后御使",
+      "Label": "御器",
+      "Resource": "藏"
+    }
+  ],
+  "Examples": [
+    {
+      "Name": "基础投料",
+      "Proficiency": 12,
+      "Inputs": [
+        {
+          "Role": "主体",
+          "Material": "铜髓矿",
+          "Quantity": 3
+        },
+        {
+          "Role": "承接",
+          "Material": "青木芯",
+          "Quantity": 1
+        },
+        {
+          "Role": "质材",
+          "Material": "铜髓矿",
+          "Quantity": 3
+        },
+        {
+          "Role": "性材",
+          "Material": "裂甲石",
+          "Quantity": 3
+        }
+      ]
+    },
+    {
+      "Name": "复合投料",
+      "Proficiency": 40,
+      "Inputs": [
+        {
+          "Role": "主体",
+          "Material": "玄铁",
+          "Quantity": 3
+        },
+        {
+          "Role": "承接",
+          "Material": "青木芯",
+          "Quantity": 1
+        },
+        {
+          "Role": "复合身材",
+          "Material": "铜髓矿",
+          "Quantity": 2
+        },
+        {
+          "Role": "质材",
+          "Material": "铜髓矿",
+          "Quantity": 4
+        },
+        {
+          "Role": "性材",
+          "Material": "裂甲石",
+          "Quantity": 4
+        },
+        {
+          "Role": "性材",
+          "Material": "玄铁",
+          "Quantity": 3
+        },
+        {
+          "Role": "和材",
+          "Material": "灵石",
+          "Quantity": 6
+        },
+        {
+          "Role": "和材",
+          "Material": "风纹石英",
+          "Quantity": 1
+        }
+      ]
+    },
+    {
+      "Name": "单性材投料",
+      "Proficiency": 12,
+      "Inputs": [
+        {
+          "Role": "主体",
+          "Material": "玄铁",
+          "Quantity": 3
+        },
+        {
+          "Role": "承接",
+          "Material": "青木芯",
+          "Quantity": 1
+        },
+        {
+          "Role": "质材",
+          "Material": "铜髓矿",
+          "Quantity": 3
+        },
+        {
+          "Role": "性材",
+          "Material": "裂甲石",
+          "Quantity": 3
+        }
+      ]
+    },
+    {
+      "Name": "多材投料",
+      "Proficiency": 60,
+      "Inputs": [
+        {
+          "Role": "主体",
+          "Material": "玄铁",
+          "Quantity": 3
+        },
+        {
+          "Role": "承接",
+          "Material": "青木芯",
+          "Quantity": 1
+        },
+        {
+          "Role": "复合身材",
+          "Material": "铜髓矿",
+          "Quantity": 2
+        },
+        {
+          "Role": "质材",
+          "Material": "铜髓矿",
+          "Quantity": 4
+        },
+        {
+          "Role": "性材",
+          "Material": "裂甲石",
+          "Quantity": 4
+        },
+        {
+          "Role": "性材",
+          "Material": "玄铁",
+          "Quantity": 3
+        },
+        {
+          "Role": "和材",
+          "Material": "风纹石英",
+          "Quantity": 2
+        },
+        {
+          "Role": "和材",
+          "Material": "褐铜砂",
+          "Quantity": 2
+        },
+        {
+          "Role": "和材",
+          "Material": "灵石",
+          "Quantity": 6
+        }
+      ]
+    }
+  ]
+}

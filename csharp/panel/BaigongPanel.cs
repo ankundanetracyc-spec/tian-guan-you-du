@@ -44,9 +44,9 @@ public partial class BaigongPanel : Control
     private void build_forging()
     {
         _body!.AddChild(title("炼器 · 剑类工坊", 27, new Color("f4f0df")));
-        _body.AddChild(muted("细身剑、阔刃剑、厚脊剑：按部件投料，配置功用与方法。当前开放独立试炼，候选参数不进入正式装备。"));
+        _body.AddChild(muted("只选剑大类，由材料与过程形成器型、功用及属性。独立试炼已开放，成器可重看，候选参数不进入正式装备。"));
         var open = new Button { Text = "进入炼器工坊 · 试炼", CustomMinimumSize = new Vector2(360, 58) };
-        open.Pressed += () => { var scene = GD.Load<PackedScene>("res://tscn/scene/SwordCraftingScene.tscn").Instantiate<Control>(); scene.ZIndex = 100; AddChild(scene); };
+        open.Pressed += () => { var scene = GD.Load<PackedScene>("res://tscn/scene/ProcessForgingScene.tscn").Instantiate<Control>(); scene.ZIndex = 100; AddChild(scene); };
         _body.AddChild(open);
     }
 

@@ -44,7 +44,7 @@ public partial class BattleInkCombatVfx : Node2D
             "撕咬" or "裂喉" => Kind.Bite,
             "掠影扑杀" => Kind.Pounce,
             "拱撞" or "疾拱" => Kind.Charge,
-            "痛击" or "蓄势重击" or "摧山" or "撼山" or "合劲" or "引筋" => Kind.Heavy,
+            "痛击" or "蓄势重击" or "血臂撼岳" or "撼山" or "合劲" or "引筋" => Kind.Heavy,
             "发劲" or "挟势" => Kind.Release,
             "解形" or "冯虚" or "百骸" => Kind.Flow,
             "突刺" => Kind.Thrust,

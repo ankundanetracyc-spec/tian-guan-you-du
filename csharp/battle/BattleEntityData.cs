@@ -10,6 +10,8 @@ public partial class BattleEntityData : Resource
     // 仅开始菜单演练配置使用；-1 沿用正式战斗规则，0 是有效测试上限。
     [Export] public int test_stamina_cap_override = -1;
     [Export] public int test_mana_cap_override = -1;
+    /// <summary>独立炼器试器的单器快照；正式入口不填，不写角色存档。</summary>
+    [Export] public string trial_forged_equipment_json = "";
     [Export] public Godot.Collections.Array<CombatSkillReference> combat_skill_references = [];
     [Export] public Godot.Collections.Array<ArtifactInstanceData> equipped_artifacts = [];
     [Export] public Godot.Collections.Array<ActiveSkillData> combat_resolved_skills = [];

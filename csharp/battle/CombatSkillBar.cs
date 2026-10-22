@@ -508,13 +508,15 @@ public partial class CombatSkillBar : Control
         var icon = string.IsNullOrWhiteSpace(skill.icon_path) || !ResourceLoader.Exists(skill.icon_path)
             ? null
             : ResourceLoader.Load<Texture2D>(skill.icon_path);
-        return new HoverInfoManager.HoverInfoContent(skill.skill_name, body, icon, metadata);
+        return new HoverInfoManager.HoverInfoContent(skill.skill_name, body, icon, metadata,ExpandFully:true);
     }
 
     private int SkillHoverState(ActiveSkillData skill, ActiveSkillData displaySkill, BattleManager? manager)
     {
         var hash = new HashCode();
         hash.Add(currentUnit!.GetInstanceId());
+        hash.Add(CardRules.Number(currentUnit,"forged_physical_bonus"));
+        hash.Add(skill.forged_equipment_description);
         hash.Add(GetViewportRect().Size);
         hash.Add(skill.description);
         hash.Add(skill.energy_cost); hash.Add(skill.mana_cost); hash.Add(skill.damage_formula); hash.Add(skill.stacks_formula); hash.Add(skill.base_damage);
@@ -567,7 +569,7 @@ public partial class CombatSkillBar : Control
                 ? null
                 : ResourceLoader.Load<Texture2D>(skill.icon_path);
             HoverInfoManager.SetInfo(hoveredSkillAnchor,
-                new HoverInfoManager.HoverInfoContent(skill.skill_name, body, icon, metadata));
+                new HoverInfoManager.HoverInfoContent(skill.skill_name, body, icon, metadata,ExpandFully:true));
         }
     }
 

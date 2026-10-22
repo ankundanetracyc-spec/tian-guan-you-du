@@ -32,7 +32,8 @@ public partial class SwordCraftingScene : Control
         AddChild(bg); bg.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         _canvas = QuietRoomStyle.Canvas(this);
         Refresh();
-        if (OS.GetCmdlineUserArgs().Contains("--audit-forging")) CallDeferred(nameof(Audit));
+        if (OS.GetCmdlineUserArgs().Contains("--demo-forging-example")) CallDeferred(nameof(RunCompleteExample));
+        else if (OS.GetCmdlineUserArgs().Contains("--audit-forging")) CallDeferred(nameof(Audit));
     }
     private void Refresh()
     {
@@ -42,7 +43,8 @@ public partial class SwordCraftingScene : Control
         var header = Paper(_content, 24, 18, 1624, 76, .97f);
         Put(header, Button("〈 返回", () => { if (GetParent() is BaigongPanel) QueueFree(); else GetTree().ChangeSceneToFile("res://tscn/scene/StartMenu.tscn"); }), 15, 12, 110, 48);
         Put(header, Text("炼 器", 34), 156, 13, 180, 50);
-        Put(header, Text("剑类工坊  /  独立试炼", 19), 350, 27, 320, 32);
+        Put(header, Text("剑类旧模型 / 新案待接入", 19), 350, 27, 340, 32);
+        Put(header, Button("旧模型样例", LoadCompleteExample), 700, 17, 220, 42);
         Put(header, Text("炼器造诣", 19), 988, 28, 110, 32);
         var proficiency = new SpinBox { MinValue = 0, MaxValue = 100, Step = 1, Value = Draft.Proficiency, TooltipText = "调整本页试炼造诣，不影响人物" };
         proficiency.ValueChanged += value => { foreach (var d in _drafts.Values) d.Proficiency = value; Refresh(); };

@@ -184,6 +184,7 @@ public partial class BattleManager : Node2D
             battle_units[unit] = new BattleUnit(); ((BattleUnit)battle_units[unit].AsGodotObject()!).setup(unit, deck);
             initialize_formation_circuits(unit, snapshot);
             InitializeArtifacts(unit, snapshot);
+            ForgedEquipmentLoadout.ApplyBattleBonuses(unit, snapshot.trial_forged_equipment_json);
         }
     }
 }

@@ -79,6 +79,7 @@ public static class CardPresentation
         }
         text=ResolveFormulas(text,owner,skill);
         text=AppendStructuredFormulaDetails(text,skill,owner);
+        if(!string.IsNullOrWhiteSpace(skill.forged_equipment_description))text += "\n" + skill.forged_equipment_description.Trim();
         return text;
     }
     private static string ReferenceName(ActiveSkillData skill) => (skill.source_gongfa_name, skill.skill_name) switch

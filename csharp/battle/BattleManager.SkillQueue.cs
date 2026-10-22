@@ -613,7 +613,7 @@ public partial class BattleManager : Node2D
             {
                 var blocked=Mathf.Min(blockRemaining,raw);
                 blockRemaining-=blocked;
-                raw=BattleActionResolver.apply_defense(raw-blocked,"physical",defender, skill.physical_defense_ignore_ratio);
+                raw=BattleActionResolver.apply_defense(raw-blocked,"physical",defender, skill.physical_defense_ignore_ratio, ForgedEquipmentLoadout.WeaponIgnore(attacker, skill));
             }
             var absorbed=Mathf.Min(shield,raw);
             shield-=absorbed;

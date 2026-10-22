@@ -9,6 +9,8 @@ public partial class SkillExecutor : Node
     private readonly PackedScene? _floatingText = GD.Load<PackedScene>("res://tscn/battle/FloatingText.tscn");
     private readonly System.Collections.Generic.Dictionary<Node2D,(Vector2 Position,int ZIndex)> _attackHomes=[];
     private readonly System.Collections.Generic.Dictionary<Node2D,BattleInkCombatVfx> _incomingAttackVisuals=[];
+    private readonly System.Collections.Generic.Dictionary<Node2D,BattleInkCombatVfx> _primaryAttackVisuals=[];
+    private readonly System.Collections.Generic.Dictionary<Node2D,List<BattleInkCombatVfx>> _followUpVisuals=[];
     private bool IsSpectatorBattle => GetManager() is BattleManager manager && manager.is_spectator_battle();
     private async System.Threading.Tasks.Task PresentationWait(float seconds)
     {
@@ -96,15 +98,20 @@ public partial class SkillExecutor : Node
                         bloodArmResponseTriggered=true;
                     }
                 }
-                if(body?.IsBloodArmVisualSegment(attacker,skill,i)==true)(manager as BattleManager)?.PlayBloodArmFollowUp(attacker,target);
+                var bloodFollowUp=body?.IsBloodArmVisualSegment(attacker,skill,i)==true;
+                if(i>0)await PresentFollowUpContact(attacker,target,skill,bloodFollowUp);
+                if(!GodotObject.IsInstanceValid(attacker)||!GodotObject.IsInstanceValid(target))break;
                 killed=ApplyToTarget(attacker,skill,target,is_counter,ref blockRemaining,out var hit,i,is_queued_skill,is_slot10_automatic,evadedOverride);
                 hitAtLeastOnce|=hit;
+                if(bloodFollowUp)await WaitForBloodArmAction(attacker);
                 if(i==0)initialSegmentCausedNoHealthDamage=target.Get("current_health").AsInt32()>=initialHealth;
             }
             var taiheFollowUps=body?.TaiheFollowUpCount(attacker,skill,targetResponded,initialSegmentCausedNoHealthDamage)??0;
             for(var i=0;i<taiheFollowUps&&!killed;i++)
             {
                 var followUp=body?.CreateTaiheFollowUpSegment(skill)??skill;
+                await PresentFollowUpContact(attacker,target,followUp,false);
+                if(!GodotObject.IsInstanceValid(attacker)||!GodotObject.IsInstanceValid(target))break;
                 var followUpEvaded=CanBeEvaded(skill)&&BattleActionResolver.roll_evasion(attacker,target);
                 killed=ApplyToTarget(attacker,skill,target,is_counter,ref blockRemaining,out var hit,segments+i,is_queued_skill,is_slot10_automatic,followUpEvaded,followUp);
                 hitAtLeastOnce|=hit;
@@ -179,9 +186,12 @@ public partial class SkillExecutor : Node
                         bloodArmResponseTriggered=true;
                     }
                 }
-                if(body?.IsBloodArmVisualSegment(attacker,skill,segment)==true)manager?.PlayBloodArmFollowUp(attacker,target);
+                var bloodFollowUp=body?.IsBloodArmVisualSegment(attacker,skill,segment)==true;
+                if(segment>0)await PresentFollowUpContact(attacker,target,skill,bloodFollowUp);
+                if(!GodotObject.IsInstanceValid(attacker)||!GodotObject.IsInstanceValid(target))break;
                 killed |= ApplyToTarget(attacker,skill,target,is_counter,ref blockRemaining,out var hit,segment,is_queued_skill,is_slot10_automatic,evadedOverride);
                 targetHit|=hit;
+                if(bloodFollowUp)await WaitForBloodArmAction(attacker);
             }
             if(targetHit&&!dispersed&&!is_queued_skill){ApplyDisperseQiBlood(skill,target);dispersed=true;}
             if(targetHit&&blockRemaining>0)ConsumeStatus(target!,"化解",blockRemaining);
@@ -406,7 +416,7 @@ public partial class SkillExecutor : Node
         var direction=(targetNode.GlobalPosition-node.GlobalPosition).Normalized();
         BattleInkCombatVfx.PresentAttackPose(node, direction, skill);
         var visual=BattleInkCombatVfx.PlayAttack(attacker,target,skill);
-        if(visual is not null)_incomingAttackVisuals[node]=visual;
+        if(visual is not null){_incomingAttackVisuals[node]=visual;_primaryAttackVisuals[node]=visual;}
         await PresentationWait(BattleInkCombatVfx.AttackContactSeconds(attacker)-BattleAttackMotion.BeforeContactSeconds);
     }
 
@@ -436,19 +446,81 @@ public partial class SkillExecutor : Node
         return responseTriggered;
     }
     private static bool CanBeEvaded(ActiveSkillData skill)=>skill.damage_type is not ("soul" or "spiritual");
+    private async System.Threading.Tasks.Task WaitForBloodArmAction(GodotObject attacker)
+    {
+        if(IsSpectatorBattle||attacker is not Node node)return;
+        var arms=node.GetNodeOrNull<BattleBloodQiArms>("BloodQiArms");
+        while(IsInsideTree()&&GodotObject.IsInstanceValid(attacker)&&GodotObject.IsInstanceValid(arms)&&arms!.IsActionPlaying)
+            await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);
+    }
+    private async System.Threading.Tasks.Task PresentFollowUpContact(GodotObject attacker,GodotObject target,ActiveSkillData skill,bool bloodArm)
+    {
+        if(IsSpectatorBattle||attacker is not Node2D actor||target is not Node2D victim)return;
+        await WaitForBloodArmAction(attacker);
+        await WaitForFollowUpVisuals(attacker);
+        if(!GodotObject.IsInstanceValid(actor)||!GodotObject.IsInstanceValid(victim))return;
+        if(bloodArm)
+        {
+            // 百骸追击由显化血手独立执行：先让本人的原攻击完整收势，随后保持待机。
+            await FinishCasterStrikeForBloodArms(actor);
+            if(!GodotObject.IsInstanceValid(actor)||!GodotObject.IsInstanceValid(victim))return;
+            (GetManager() as BattleManager)?.PlayBloodArmFollowUp(attacker,target);
+            await PresentationWait(BattleBloodQiArms.FollowUpContactSeconds);
+        }
+        else
+        {
+            // 追加招式沿用当前接触位置，不重新记录站位，整招结束后才统一退回。
+            BattleInkCombatVfx.PresentAttackPose(actor,(victim.GlobalPosition-actor.GlobalPosition).Normalized(),skill);
+            var visual=BattleInkCombatVfx.PlayAttack(attacker,target,skill);
+            if(visual is not null)
+            {
+                if(!_followUpVisuals.TryGetValue(actor,out var pending))_followUpVisuals[actor]=pending=[];
+                pending.Add(visual);
+            }
+            await PresentationWait(BattleInkCombatVfx.AttackContactSeconds(attacker));
+        }
+    }
+    private async System.Threading.Tasks.Task FinishCasterStrikeForBloodArms(Node2D actor)
+    {
+        var doll=actor.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll");
+        doll?.hold_attack_contact(false);
+        if(_primaryAttackVisuals.Remove(actor,out var primary))
+            while(IsInsideTree()&&GodotObject.IsInstanceValid(actor)&&GodotObject.IsInstanceValid(primary)
+                &&primary.IsInsideTree()&&!primary.IsQueuedForDeletion())
+                await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);
+        while(IsInsideTree()&&GodotObject.IsInstanceValid(actor)&&GodotObject.IsInstanceValid(doll)
+            &&doll!.is_action_animation_playing())
+            await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);
+        if(GodotObject.IsInstanceValid(doll))doll!.return_to_blood_arm_idle();
+    }
+    private async System.Threading.Tasks.Task WaitForFollowUpVisuals(GodotObject attacker)
+    {
+        if(IsSpectatorBattle||attacker is not Node2D actor||!_followUpVisuals.TryGetValue(actor,out var pending))return;
+        while(IsInsideTree()&&GodotObject.IsInstanceValid(attacker))
+        {
+            pending.RemoveAll(visual=>!GodotObject.IsInstanceValid(visual)||!visual.IsInsideTree()||visual.IsQueuedForDeletion());
+            if(pending.Count==0)break;
+            await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);
+        }
+        _followUpVisuals.Remove(actor);
+    }
     private async System.Threading.Tasks.Task SettleAction(GodotObject attacker,ActiveSkillData skill)
     {
         if (IsSpectatorBattle)
         {
-            if (attacker is Node2D spectatorActor) { _attackHomes.Remove(spectatorActor); _incomingAttackVisuals.Remove(spectatorActor); }
+            if (attacker is Node2D spectatorActor) { _attackHomes.Remove(spectatorActor); _incomingAttackVisuals.Remove(spectatorActor); _primaryAttackVisuals.Remove(spectatorActor); }
             return;
         }
         if(!GodotObject.IsInstanceValid(attacker))
         {
-            if(attacker is Node2D gone){_attackHomes.Remove(gone);_incomingAttackVisuals.Remove(gone);}
+            if(attacker is Node2D gone){_attackHomes.Remove(gone);_incomingAttackVisuals.Remove(gone);_primaryAttackVisuals.Remove(gone);}
             return;
         }
-        if(attacker is Node2D actor)_incomingAttackVisuals.Remove(actor);
+        if(attacker is Node2D actor){_incomingAttackVisuals.Remove(actor);_primaryAttackVisuals.Remove(actor);}
+        // 追加队列和最后一拳的收势都完成后，才允许开始人物回位。
+        await WaitForBloodArmAction(attacker);
+        await WaitForFollowUpVisuals(attacker);
+        if(!GodotObject.IsInstanceValid(attacker))return;
         // 命中／护持效果先留住一个短拍，再退回站位；下一行动不会抢掉这一落点。
         var doll=(attacker as Node)?.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll");
         if(DealsDamage(skill)&&GodotObject.IsInstanceValid(doll))doll!.hold_attack_contact(true);

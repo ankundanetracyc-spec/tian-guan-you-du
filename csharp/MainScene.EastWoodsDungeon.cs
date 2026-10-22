@@ -276,7 +276,7 @@ public partial class MainScene
             var build = NpcCombatBuildPlanner.Equip(actor);
             npc.combat_main_gongfa_path = build.Main;
             npc.combat_sub_gongfa_paths = new Godot.Collections.Array<string>(build.Subs);
-            npc.combat_chapter_routes = data.equipped_gongfa_chapter_routes.Duplicate(true);
+            npc.combat_chapter_routes = actor.entity_data is HumanData equipped ? equipped.equipped_gongfa_chapter_routes.Duplicate(true) : [];
             npc.combat_skill_paths = new Godot.Collections.Array<string>(build.Skills);
         }
         var scene = actor.pack_for_battle();

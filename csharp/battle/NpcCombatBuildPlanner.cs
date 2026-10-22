@@ -53,13 +53,29 @@ public static class NpcCombatBuildPlanner
             data.equipped_gongfa_chapter_routes[book.ResourcePath+":"+chapter.get_id()]=
                 chapter.get_deck_rewrites(false).Any(rewrite=>rewrite.enabled)?"right":"left";
         var actor=new Character();actor.load_from_data(data);
-        actor.set_combat_skill_slot_paths(unit.combat_skill_slot_paths);
-        var snapshot=actor.get_snapshot_data();
+        // 同一次装配只构造一次技能池，持有资源至复制完成。
+        // 逐槽调用角色完整快照会反复重建/回收整套 C# Resource，触发原生句柄回收竞态。
+        var basic=Character.PublicBasicDeckResource;
+        var skills=GongfaSkillRewriteRuntime.ApplyBasicSkillRewriteSkills(actor,basic.get_deck_skills())
+            .Concat(actor.get_available_battle_skills()).ToArray();
+        var resolved=new Godot.Collections.Array<ActiveSkillData>();
+        foreach(var path in unit.combat_skill_slot_paths)
+        {
+            if(string.IsNullOrWhiteSpace(path)){resolved.Add(ArtifactSkillFactory.EmptySlot());continue;}
+            var original=ResourceLoader.Load<ActiveSkillData>(path);
+            var source=skills.FirstOrDefault(skill=>skill.skill_name==original?.skill_name)??original;
+            if(!Character.is_combat_skill_slot_eligible(source)){resolved.Add(ArtifactSkillFactory.EmptySlot());continue;}
+            var copy=(ActiveSkillData)source!.Duplicate(true);
+            copy.combat_source_key=Character.combat_skill_key(source);
+            resolved.Add(copy);
+        }
         // 存档/测试选项仍保存原引用；只有运行时副本应用化法。
-        unit.combat_resolved_skills=snapshot.combat_resolved_skills;
-        unit.combat_passive_paths=snapshot.combat_passive_paths;
-        unit.combat_heart_method_upgrades=snapshot.combat_heart_method_upgrades;
-        unit.combat_tempering_by_gongfa=snapshot.combat_tempering_by_gongfa;
+        unit.combat_resolved_skills=resolved;
+        unit.combat_passive_paths=actor.get_combat_passive_paths();
+        unit.combat_heart_method_upgrades=actor.get_combat_heart_method_upgrades();
+        unit.combat_tempering_by_gongfa=actor.get_active_combat_tempering_by_gongfa();
+        GC.KeepAlive(skills);
+        GC.KeepAlive(basic);
         actor.Free();
     }
 
@@ -87,8 +103,9 @@ public static class NpcCombatBuildPlanner
         actor.max_health=resources.max_health;actor.current_health=resources.current_health;
         actor.max_stamina=resources.max_stamina;actor.current_stamina=resources.current_stamina;
         actor.max_mana=resources.max_mana;actor.current_mana=resources.current_mana;
-        var pool = actor.get_default_combat_skill_paths().Concat(actor.get_available_battle_skills().Select(Character.combat_skill_key))
-            .Select(actor.resolve_combat_skill).OfType<ActiveSkillData>().Where(Character.is_combat_skill_slot_eligible)
+        var basic=Character.PublicBasicDeckResource;
+        var pool = GongfaSkillRewriteRuntime.ApplyBasicSkillRewriteSkills(actor,basic.get_deck_skills())
+            .Concat(actor.get_available_battle_skills()).Where(Character.is_combat_skill_slot_eligible)
             .GroupBy(skill => skill.skill_name, StringComparer.Ordinal).Select(group => group.First())
             .OrderByDescending(skill => SkillValue(actor, skill)).ToList();
         var keys = Enumerable.Repeat("", 10).ToArray();
@@ -102,10 +119,16 @@ public static class NpcCombatBuildPlanner
             if (automatic is not null) { keys[9] = Character.combat_skill_key(automatic); pool.Remove(automatic); }
         }
         for (var i = 0; i < Math.Min(xuan ? 9 : 10, pool.Count); i++) keys[i] = Character.combat_skill_key(pool[i]);
-        actor.set_combat_skill_slot_paths(new GArray(keys));
+        if(actor.entity_data is HumanData current)
+        {
+            current.combat_skill_slots_configured=true;
+            current.combat_skill_slot_paths=new GArray(keys);
+            current.combat_skill_references=new Godot.Collections.Array<CombatSkillReference>(keys.Select(CombatSkillReference.FromKey));
+        }
         var subPaths = actor.sub_gongfa_list.Select(book => book.ResourcePath).ToArray();
         var names = actor.sub_gongfa_list.Select(book => book.gongfa_name);
-        return new(main?.ResourcePath ?? "", subPaths, actor.get_combat_skill_slot_paths().ToArray(),
+        GC.KeepAlive(basic);
+        return new(main?.ResourcePath ?? "", subPaths, keys,
             $"主修：{main?.gongfa_name ?? "无"}；辅修：{string.Join("、", names.DefaultIfEmpty("无"))}。" +
             (known.Any(book => book.gongfa_name == "百骸衍枝化生宝册") ? "气血铺垫后接近身攻击。" : "按现有资源安排攻守。") +
             (xuan ? "第10槽留给周天自动施展。" : ""));
@@ -132,8 +155,8 @@ public static class NpcCombatBuildPlanner
     private static float SkillValue(Character actor, ActiveSkillData skill) => skill.skill_name switch
     {
         "催血" => 100, "聚炁" => actor.main_gongfa?.gongfa_name=="玄枢含章经"||actor.sub_gongfa_list.Any(book=>book.gongfa_name=="玄枢含章经")?98:45,
-        "摧山" => 95, "叩山" => 90, "焚元" => actor.max_mana > 1 ? 85 : 5,
-        "折锋" => 82, "惊蛰" => 80, "涵虚" => 75, "架招" => 70, "应敌" => 65, "云帔" => 60,
+        "血臂撼岳" => 95, "乘势再攻" => 90, "焚元" => actor.max_mana > 1 ? 85 : 5,
+        "折锋" => 82, "惊蛰" => 80, "虚怀纳劲" => 75, "架招" => 70, "应敌" => 65, "云帔" => 60,
         "痛击" => 55, "复命" => 50, _ => 40 + skill.calculate_damage(actor)
     };
 }

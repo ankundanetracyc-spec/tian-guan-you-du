@@ -23,7 +23,7 @@ public static class BattleActionResolver
 
         var finalDamage = Mathf.Max(Mathf.RoundToInt(damage), 1);
         var blocked = damageType == "physical" ? Mathf.Min(Mathf.Max(block_stacks, 0), finalDamage) : 0;
-        finalDamage = apply_defense(finalDamage - blocked, damageType, defender, skill.physical_defense_ignore_ratio);
+        finalDamage = apply_defense(finalDamage - blocked, damageType, defender, skill.physical_defense_ignore_ratio, ForgedEquipmentLoadout.WeaponIgnore(attacker, skill));
         return new(false, critical, finalDamage, blocked);
     }
 
@@ -42,6 +42,7 @@ public static class BattleActionResolver
             damage *= 1.0f + creature.get_combat_tempering_physical_damage_multiplier();
         if (damageType == "physical" && attacker.HasMethod("get_species_physical_damage_multiplier"))
             damage *= 1.0f + attacker.Call("get_species_physical_damage_multiplier").AsSingle();
+        if (damageType == "physical") damage *= 1f + CardRules.Number(attacker, "forged_physical_bonus");
         if(skill.keywords.Contains("重击")&&CardRules.Number(attacker,"punch_frame")>0)damage*=1.5f;
         return damage;
     }
@@ -78,13 +79,14 @@ public static class BattleActionResolver
     public static float calc_crit_multiplier(GodotObject attacker, GodotObject defender) =>
         Mathf.Max(GetNumber(attacker, "crit_damage_mult"), 1.5f) + GetNumber(attacker, "soul") / Mathf.Max(GetNumber(defender, "physique") + GetNumber(defender, "soul"), 1) * 2f;
 
-    public static int apply_defense(int damage, string damage_type, GodotObject defender, float ignoreRatio = 0)
+    public static int apply_defense(int damage, string damage_type, GodotObject defender, float ignoreRatio = 0, int ignoreFlat = 0)
     {
         if (damage_type is "soul" or "spiritual") return Mathf.Max(damage, 1);
         if (damage_type != "physical") return Mathf.Max(damage, 1);
         // 化解可以将一次物理伤害完全抵消；只有仍有正伤害时才继续计算物防与百分比减免。
         if (damage <= 0) return 0;
-        var afterDefense = Mathf.Max(damage - Mathf.RoundToInt(GetNumber(defender, "physical_defense") * (1f - Mathf.Clamp(ignoreRatio, 0, 1))), Mathf.CeilToInt(damage * .01f));
+        var defense = Mathf.Max(0, GetNumber(defender, "physical_defense") - Math.Max(0, ignoreFlat));
+        var afterDefense = Mathf.Max(damage - Mathf.RoundToInt(defense * (1f - Mathf.Clamp(ignoreRatio, 0, 1))), Mathf.CeilToInt(damage * .01f));
         var baseReduction = Mathf.Clamp(GetNumber(defender, "physical_damage_reduction"), 0f, .90f);
         var woundReduction = 0f;
         if (defender is Creature creature && creature.get_status_stacks("心法:内景损益") > 0)

@@ -34,6 +34,9 @@ public partial class BattleBloodQiArms : Node2D
     public int ArmCount => _qiLevel>=_onset?_count:0;
     public int QiLevel => _qiLevel;
     public int MaximumSizeLevel => _onset+16;
+    /// <summary>常驻待机不计入；包含尚未开始的追加出拳。</summary>
+    public bool IsActionPlaying => _pendingFollowUps.Count>0 || _arms.Any(arm=>arm.Action!="idle");
+    public const float FollowUpContactSeconds = .14f;
 
     public static BattleBloodQiArms ForSubject(Node2D subject)
     {

@@ -62,6 +62,7 @@ public partial class BattlePaperDoll
 
     private void ResetSideInk()
     {
+        clear_sword_idle();
         _actionTween?.Kill();
         _heldAttackTween = null;
         _attackContactHeld = false;
@@ -162,8 +163,9 @@ public partial class BattlePaperDoll
         _sidePose = "idle";
         _guardAwaitingContact = false;
         _sideElapsed = 0;
-        if (_portrait is not null) { _portrait.Texture = _sideTextures.GetValueOrDefault("idle"); _portrait.Modulate = Colors.White; }
+        if (_portrait is not null) { _portrait.Texture = SideIdleTexture(); _portrait.Modulate = Colors.White; }
         if (_sideIdle is not null) _sideIdle.Visible = false;
+        UpdateHeldSword();
     }
 
     private void ProcessSideInkPose(float delta)
@@ -179,7 +181,8 @@ public partial class BattlePaperDoll
         if (_sidePose != "idle" && _sideElapsed >= _sideDuration) ResetSideInkPose();
         var visiblePose = _sidePose == "chop" && _sideElapsed < .08f ? "idle" : _sidePose;
         if (_sidePose == "throw") visiblePose = "throw_release";
-        var texture = _sideTextures.GetValueOrDefault(visiblePose) ?? _sideTextures.GetValueOrDefault("idle");
+        var idleTexture=SideIdleTexture();
+        var texture = visiblePose=="idle"?idleTexture:_sideTextures.GetValueOrDefault(visiblePose) ?? idleTexture;
         _portrait.Texture = texture;
         _portrait.Position = Vector2.Zero;
         var blend = 1f;
@@ -193,7 +196,7 @@ public partial class BattlePaperDoll
             blend = Mathf.SmoothStep(0, 1, Mathf.Clamp((_sideElapsed - .035f) / .12f, 0, 1))
                 * (1 - Mathf.SmoothStep(0, 1, Mathf.Clamp((_sideElapsed - (_sideDuration - .18f)) / .18f, 0, 1)));
         else if (_sidePose != "idle") blend = 1 - Mathf.SmoothStep(0, 1, Mathf.Clamp((_sideElapsed - (_sideDuration - .14f)) / .14f, 0, 1));
-        if (texture == _sideTextures.GetValueOrDefault("idle")) blend = 1;
+        if (texture == idleTexture) blend = 1;
         _portrait.Modulate = new Color(1, 1, 1, blend);
         if (_sideIdle is not null)
         {
@@ -209,6 +212,7 @@ public partial class BattlePaperDoll
             _sidePresentation.Position = _contactAccent <= 0 ? Vector2.Zero
                 : new Vector2(Mathf.Sin(shakeAge * 155), Mathf.Cos(shakeAge * 187) * .45f) * (16 * _contactShake * Mathf.Pow(_contactAccent / .22f, 2));
         }
+        UpdateHeldSword();
     }
 
     public void play_cast(Vector2 direction)

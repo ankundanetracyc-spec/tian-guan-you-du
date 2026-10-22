@@ -12,6 +12,9 @@ public partial class ActiveSkillData : Resource
     [Export] public bool combat_empty_slot;
     [Export] public float physical_defense_ignore_ratio;
     [Export] public int artifact_block_bonus;
+    // 独立炼器试器：明确本次物理攻伐使用的唯一剑实例，不作为构筑关键词。
+    [Export] public string forged_weapon_instance_id = "";
+    [Export] public string forged_equipment_description = "";
     public enum SkillType { ATTACK, MOVEMENT, DRAW, BUFF, WAIT, SPECIAL, POWER, CURSE }
     public enum CardConditionType { NONE, MAIN_GONGFA, SUB_GONGFA, ANY_GONGFA }
 

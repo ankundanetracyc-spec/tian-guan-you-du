@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1")
-skill_name = "涵虚"
+skill_name = "虚怀纳劲"
 icon_path = "res://textures/ui/combat/skill_icons/玄枢_云帔_v2.png"
 description = "应对：受到敌方攻击时获得A点护盾。A=round(4 + 体魄×0.20 + min(体魄×0.20,神魂×0.20))。"
 skill_type = 3

@@ -13,7 +13,7 @@ public partial class InkVfxShowcase : Control
     private const int MaskWidth = 512;
     private const int MaskHeight = 288;
 
-    private enum PreviewType { Shader, Shield, Death, Punch, SwordCleave, SwordImpact, Impact, CriticalImpact, SwordExchange, RealSkill, Hurt, Guard, Recovery, Dodge, ShieldAttack, ThrowPose, BloodOne, BloodTwo, BloodFollow, BloodGuard, BloodFade }
+    private enum PreviewType { Shader, Shield, Death, Punch, SwordCleave, SwordImpact, Impact, CriticalImpact, SwordExchange, RealSkill, Hurt, Guard, Recovery, Dodge, ShieldAttack, ThrowPose, BloodOne, BloodTwo, BloodFollow, BloodGuard, BloodFade, SwordIdle }
 
     private readonly record struct EffectDefinition(string Id, string Name, string Summary, Color Color, float Spread, float Distortion, float EdgeDarkness, float Duration, float Mode, PreviewType Preview, string SkillPath = "");
 
@@ -24,6 +24,7 @@ public partial class InkVfxShowcase : Control
         new("brush", "笔锋扫掠", "一笔横扫留下带方向性的湿墨拖尾。", new Color("1c2925"), 0.82f, 0.032f, 1.08f, 1.75f, 2f, PreviewType.Shader),
         new("burst", "碎墨爆散", "墨团向外炸开，边缘破碎并带有颗粒感。", new Color("222b28"), 1.28f, 0.070f, 0.70f, 1.55f, 3f, PreviewType.Shader),
         new("dry_edge", "干湿边缘", "主体淡化，只观察外圈、回渗和干燥边界。", new Color("29302c"), 1.04f, 0.045f, 1.20f, 2.2f, 4f, PreviewType.Shader),
+        new("sword_idle", "动作·持剑待机", "男修前手握剑，剑尖斜上；切换细剑、阔剑与脊剑，保持同一握姿和站位。", new Color("748a7f"), 0f, 0f, 0f, 4f, 0f, PreviewType.SwordIdle),
         new("battle_hand_chop", "战斗·通用出手", "默认衣装下劈姿势、淡彩轨迹与小范围命中墨花，接近后发力并回位。", new Color("748a7f"), 0f, 0f, 0f, 1.4f, 0f, PreviewType.RealSkill, "res://resources/activeskills/应敌.tres"),
         new("battle_jingzhe", "战斗·惊蛰落雷", "原地提指引雷，蓝白雷柱自上向下贯落，白芯短停后分叉余电收散。", new Color("869dbd"), 0f, 0f, 0f, 1.85f, 0f, PreviewType.RealSkill, "res://resources/activeskills/玄枢含章经/惊蛰.tres"),
         new("throw_pose", "动作·挥手抛术", "原地直接挥袖向前释放，再回待机；单独观察动作。", new Color("748a7f"), 0f, 0f, 0f, 1.40f, 0f, PreviewType.ThrowPose),
@@ -136,6 +137,7 @@ public partial class InkVfxShowcase : Control
 
         if (_current.Preview != PreviewType.Shader)
         {
+            if(IsSwordIdle) return;
             if (_status is not null)
             {
                 var label = _current.Preview == PreviewType.Shield || IsBloodPersistent ? "常驻显示" : "播放中";
@@ -309,10 +311,11 @@ public partial class InkVfxShowcase : Control
         replay.Pressed += Replay;
         var facing = MakeButton("切换交手方向", 160, 36);
         facing.Position = new Vector2(154f, 76f);
-        facing.Pressed += () => { _previewDirection = (_previewDirection + 1) % 4; Replay(); };
+        facing.Pressed += () => { _previewDirection = IsSwordIdle?(_previewDirection==1?0:1):(_previewDirection + 1) % 4; Replay(); };
         stage.AddChild(facing);
         stage.AddChild(replay);
         var caster = MakeButton("切换男女角色", 160, 36);
+        _casterButton=caster;
         caster.Position = new Vector2(330f, 76f);
         caster.Pressed += () => SetPreviewCaster(!_femaleCaster);
         stage.AddChild(caster);
@@ -321,6 +324,7 @@ public partial class InkVfxShowcase : Control
         _bloodCountButton.Pressed+=()=> { _bloodPreviewCount=_bloodPreviewCount==2?1:2; Replay(); };
         stage.AddChild(_bloodCountButton);
         BuildBloodGrowthControls(stage);
+        BuildSwordIdleControls(stage);
 
         var info = new VBoxContainer { Name = "Info", Position = new Vector2(22, 0), SizeFlagsHorizontal = SizeFlags.ExpandFill, MouseFilter = MouseFilterEnum.Ignore };
         info.SetAnchorsPreset(LayoutPreset.BottomWide);
@@ -342,6 +346,8 @@ public partial class InkVfxShowcase : Control
         if (index < 0 || index >= _effects.Length || _inkLayer is null) return;
         _currentIndex = index;
         _current = _effects[index];
+        if(_swordControls is not null) _swordControls.Visible=IsSwordIdle;
+        if(_casterButton is not null) _casterButton.Visible=!IsSwordIdle;
         var isBattlePreview = _current.Preview != PreviewType.Shader;
         _inkLayer.Visible = !isBattlePreview;
         if (_battleLayer is not null) _battleLayer.Visible = isBattlePreview;
@@ -373,6 +379,7 @@ public partial class InkVfxShowcase : Control
     private void Replay()
     {
         _previewGeneration++;
+        _battleAttacker?.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.clear_sword_idle();
         ResetBloodPreview();
         foreach (var effect in GetChildren().OfType<BattleInkCombatVfx>()) effect.QueueFree();
         foreach (var focus in GetChildren().OfType<BattleContactFocus>()) focus.QueueFree();
@@ -384,7 +391,7 @@ public partial class InkVfxShowcase : Control
         if (_current.Preview != PreviewType.Shader)
         {
             TriggerBattlePreview();
-            if (_status is not null) _status.Text = _current.Preview == PreviewType.Shield ? "常驻显示" : "准备播放";
+            if (_status is not null&&!IsSwordIdle) _status.Text = _current.Preview == PreviewType.Shield ? "常驻显示" : "准备播放";
             return;
         }
 
@@ -427,6 +434,7 @@ public partial class InkVfxShowcase : Control
         _shieldPreview.Visible = _current.Preview is PreviewType.Shield or PreviewType.ShieldAttack;
         _shieldPreview.set_preview_shield(8);
         _shieldPreview.SetPreviewSubject(_current.Preview==PreviewType.ShieldAttack?_battleAttacker:_battleTarget);
+        if(IsSwordIdle) {StartSwordIdlePreview();return;}
         if (_current.Preview == PreviewType.Shield) return;
         if (IsBloodPreview) { StartBloodPreview(); return; }
 

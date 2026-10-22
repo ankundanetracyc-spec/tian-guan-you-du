@@ -308,7 +308,7 @@ public sealed class GongfaCombatRuntime
     {
         var total=BaseSegments(u,card);
         var arms=IsMeleePhysicalAttack(card)?BloodArmCount(u):0;
-        if(arms>0&&card.skill_name=="摧山"&&HasEffect(card,"baihai_c2_cuishan"))total++;
+        if(arms>0&&card.skill_name=="血臂撼岳"&&HasEffect(card,"baihai_c2_cuishan"))total++;
         return total+arms;
     }
     private int BaseSegments(GodotObject u,ActiveSkillData card)
@@ -333,7 +333,7 @@ public sealed class GongfaCombatRuntime
 
         var offset=segment-baseSegments;
         var arms=BloodArmCount(u);
-        if(arms>0&&card.skill_name=="摧山"&&HasEffect(card,"baihai_c2_cuishan"))
+        if(arms>0&&card.skill_name=="血臂撼岳"&&HasEffect(card,"baihai_c2_cuishan"))
         {
             if(offset==0)
             {
@@ -356,7 +356,7 @@ public sealed class GongfaCombatRuntime
         if(segment<baseSegments)return false;
         var offset=segment-baseSegments;
         var arms=BloodArmCount(u);
-        if(arms>0&&card.skill_name=="摧山"&&HasEffect(card,"baihai_c2_cuishan"))
+        if(arms>0&&card.skill_name=="血臂撼岳"&&HasEffect(card,"baihai_c2_cuishan"))
         {
             if(offset==0)return true;
             offset--;
@@ -418,7 +418,7 @@ public sealed class GongfaCombatRuntime
     {
         if(!IsMeleePhysicalAttack(card))return 0;
         var arms=BloodArmCount(u);
-        return arms+(arms>0&&card.skill_name=="摧山"&&HasEffect(card,"baihai_c2_cuishan")?1:0);
+        return arms+(arms>0&&card.skill_name=="血臂撼岳"&&HasEffect(card,"baihai_c2_cuishan")?1:0);
     }
     public float DamageMultiplier(GodotObject u,ActiveSkillData c)
     {
@@ -503,7 +503,7 @@ public sealed class GongfaCombatRuntime
     }
     public int TaiheFollowUpCount(GodotObject attacker,ActiveSkillData skill,bool targetResponded,bool initialSegmentCausedNoHealthDamage)
     {
-        if(skill.skill_name!="叩山"||skill.source_gongfa_name!=TaiheBook)return 0;
+        if(skill.skill_name!="乘势再攻"||skill.source_gongfa_name!=TaiheBook)return 0;
         return (targetResponded?1:0)+(initialSegmentCausedNoHealthDamage?1:0);
     }
     public ActiveSkillData CreateTaiheFollowUpSegment(ActiveSkillData skill)

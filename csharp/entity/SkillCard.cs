@@ -44,7 +44,7 @@ public partial class SkillCard : Control
             // 图标内缩到圆框以内，不依赖 Shader，避免出现背景露角或图标消失。
             icon.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
             icon.OffsetLeft=7;icon.OffsetTop=7;icon.OffsetRight=-7;icon.OffsetBottom=-7;
-            icon.StretchMode = TextureRect.StretchModeEnum.KeepAspectCovered;
+            icon.StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered;
             icon.Material=null;
         }
     }

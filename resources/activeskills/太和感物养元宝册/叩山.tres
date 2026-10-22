@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1")
-skill_name = "叩山"
+skill_name = "乘势再攻"
 icon_path = "res://textures/ui/combat/skill_icons/基础技能_撼山_v1.png"
 description = "造成A点物理伤害。目标以应对技能应对此次攻击时，追加一段攻击；初始攻击段未造成伤害时，再追加一段攻击。两项条件分别判定，同时满足时各追加一段。A=round(8 + 体魄×0.65 + 体道造诣×0.2)。"
 skill_type = 0

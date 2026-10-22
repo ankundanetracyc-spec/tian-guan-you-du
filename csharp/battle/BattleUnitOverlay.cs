@@ -120,7 +120,7 @@ public partial class BattleUnitOverlay : CanvasLayer
             var name=status is not null&&!string.IsNullOrWhiteSpace(status.name)?status.name:id;
             lines.Add($"{name}  {chance*100f:0}%");
         }
-        if(skill.source_gongfa_name=="太和感物养元宝册"&&skill.skill_name=="叩山"
+        if(skill.source_gongfa_name=="太和感物养元宝册"&&skill.skill_name=="乘势再攻"
             &&manager.gongfa_combat.PreviewTaiheStunChance(caster,target,skill) is { } stunChance
             &&manager.gongfa_combat.PreviewTaiheStunFrames(caster,target,skill) is { } stunFrames)
         {
@@ -415,7 +415,8 @@ public partial class BattleUnitOverlay : CanvasLayer
                 "阴符应物经"=>"心法_阴符应物",
                 "玄枢含章经"=>"心法_玄枢含章",
                 "斫基损契玄经"=>"心法_斫基损契",
-                "太和感物养元宝册"=>"气血",
+                "百骸衍枝化生宝册"=>"心法_百骸衍枝化生_v3",
+                "太和感物养元宝册"=>"心法_太和感物养元",
                 "胎息经"=>"心法_黄庭养形",
                 _=>null
             };

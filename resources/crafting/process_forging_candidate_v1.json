@@ -1,0 +1,64 @@
+{
+  "Version": "sword-process-trial-1",
+  "GradeWeights": [0, 1, 1.6, 2.5, 4, 6.4, 10.2, 16.3, 26.1, 41.8],
+  "QuantityFactors": [0, 1, 1.8, 2.4, 2.9, 3.3, 3.6, 3.8, 4],
+  "MinimumProficiency": 8,
+  "ExtraSourceProficiency": 32,
+  "ExtraAuxiliaryProficiency": 20,
+  "AdvancedAuxiliaryProficiency": 50,
+  "MaxUnits": 32,
+  "SupplyScale": 8,
+  "UtilityMinimum": 3,
+  "RouteMinimum": 1.5,
+  "HeatPerUnit": 1,
+  "CapacityPerVolume": 6,
+  "SummonMinimumVolume": 7,
+  "Routes": {
+    "常驻": { "Coefficient": 0.5 },
+    "化法": { "Coefficient": 0.01 },
+    "直施": { "Coefficient": 1.2 },
+    "御器": { "Coefficient": 1 }
+  },
+  "Profiles": {
+    "玄铁": { "Roles": ["主体", "复合身材", "质材", "性材"], "Difficulty": 8, "Heat": 2, "Retention": 0.8, "Volume": 4, "Extension": 14, "Thickness": 0.18, "Root": 7, "Supply": 1 },
+    "铜髓矿": { "Roles": ["主体", "复合身材", "质材", "性材"], "Difficulty": 8, "Heat": 1, "Retention": 0.85, "Volume": 3, "Extension": 10, "Thickness": 0.12, "Root": 12, "Supply": 1 },
+    "兽骨": { "Roles": ["复合身材", "性材"], "Difficulty": 8, "Heat": 1, "Retention": 0.8, "Volume": 2, "Extension": 9, "Thickness": 0.24, "Supply": 1 },
+    "青木芯": { "Roles": ["承接", "质材", "性材", "和材"], "Difficulty": 8, "Heat": 1, "Retention": 0.85, "Root": 6, "Supply": 1 },
+    "裂甲石": { "Roles": ["性材"], "Difficulty": 8, "Heat": 1, "Retention": 0.85, "Supply": 1 },
+    "灵石": { "Roles": ["质材", "和材"], "Difficulty": 8, "Heat": 1, "Retention": 0.9, "Root": 7, "Supply": 1 },
+    "风纹石英": { "Roles": ["和材"], "Difficulty": 8, "Heat": 1, "Retention": 0.9, "Supply": 1 },
+    "紫砂灵土": { "Roles": ["和材"], "Difficulty": 8, "Heat": 1, "Retention": 0.85, "Supply": 1 },
+    "褐铜砂": { "Roles": ["和材"], "Difficulty": 8, "Heat": 1, "Retention": 0.85, "Supply": 1 },
+    "赤纹燧石": { "Roles": ["和材", "性材"], "Difficulty": 8, "Heat": 1, "Retention": 0.8, "Supply": 1 },
+    "灵泉露": { "Roles": ["和材"], "Difficulty": 8, "Heat": 1, "Retention": 0.8, "Supply": 1 },
+    "松心炭": { "Roles": ["燃料"], "Difficulty": 8, "Heat": 0, "Retention": 1, "FuelHeat": 7 },
+    "地脉焰炭": { "Roles": ["燃料"], "Difficulty": 20, "Heat": 0, "Retention": 1, "FuelHeat": 12 }
+  },
+  "Examples": [
+    { "Name": "基础成材", "Proficiency": 12, "Inputs": [
+      { "Role": "主体", "Material": "铜髓矿", "Quantity": 3 },
+      { "Role": "承接", "Material": "青木芯", "Quantity": 1 },
+      { "Role": "质材", "Material": "铜髓矿", "Quantity": 3 },
+      { "Role": "性材", "Material": "裂甲石", "Quantity": 3 },
+      { "Role": "燃料", "Material": "松心炭", "Quantity": 3 }
+    ] },
+    { "Name": "复合配伍", "Proficiency": 40, "Inputs": [
+      { "Role": "主体", "Material": "玄铁", "Quantity": 3 },
+      { "Role": "承接", "Material": "青木芯", "Quantity": 1 },
+      { "Role": "复合身材", "Material": "铜髓矿", "Quantity": 2 },
+      { "Role": "质材", "Material": "铜髓矿", "Quantity": 4 },
+      { "Role": "性材", "Material": "裂甲石", "Quantity": 4 },
+      { "Role": "性材", "Material": "玄铁", "Quantity": 3 },
+      { "Role": "和材", "Material": "灵石", "Quantity": 6 },
+      { "Role": "和材", "Material": "风纹石英", "Quantity": 1 },
+      { "Role": "燃料", "Material": "地脉焰炭", "Quantity": 5 }
+    ] },
+    { "Name": "尝试不足供热", "Proficiency": 12, "Inputs": [
+      { "Role": "主体", "Material": "玄铁", "Quantity": 3 },
+      { "Role": "承接", "Material": "青木芯", "Quantity": 1 },
+      { "Role": "质材", "Material": "铜髓矿", "Quantity": 3 },
+      { "Role": "性材", "Material": "裂甲石", "Quantity": 3 },
+      { "Role": "燃料", "Material": "松心炭", "Quantity": 1 }
+    ] }
+  ]
+}

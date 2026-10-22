@@ -451,7 +451,7 @@ public partial class InfoPanel
             if (skill is not null)
             {
                 var icon = new TextureRect { Texture = CharacterLoadIcon(skill.icon_path),
-                    ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize, StretchMode = TextureRect.StretchModeEnum.KeepAspectCovered,
+                    ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize, StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
                     MouseFilter = MouseFilterEnum.Ignore };
                 select.AddChild(icon); icon.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
                 icon.OffsetLeft = icon.OffsetTop = 4; icon.OffsetRight = -4; icon.OffsetBottom = -42;

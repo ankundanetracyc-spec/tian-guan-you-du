@@ -167,7 +167,7 @@ public partial class StartMenu
         list.AddChild(alchemy);
         var forging = SettingsButton("炼器工坊 · 剑类试炼");
         forging.SizeFlagsHorizontal = SizeFlags.ExpandFill; forging.CustomMinimumSize = new Vector2(0, 58);
-        forging.Pressed += () => { CloseDemoEntries(); GetTree().ChangeSceneToFile("res://tscn/scene/SwordCraftingScene.tscn"); };
+        forging.Pressed += () => { CloseDemoEntries(); GetTree().ChangeSceneToFile("res://tscn/scene/ProcessForgingScene.tscn"); };
         list.AddChild(forging);
         var letters = SettingsButton("信件界面预览");
         letters.SizeFlagsHorizontal = SizeFlags.ExpandFill; letters.CustomMinimumSize = new Vector2(0, 58);

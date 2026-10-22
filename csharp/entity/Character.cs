@@ -524,10 +524,14 @@ public partial class Character : Creature
         }
         return result;
     }
+    private static BasicDeckResource? _publicBasicDeckResource;
+    public static BasicDeckResource PublicBasicDeckResource => _publicBasicDeckResource ??=
+        ResourceLoader.Load<BasicDeckResource>(PublicBasicSkillPoolPath);
     private Array<string> get_basic_deck_skill_paths_before_gongfa()
     {
         if (human is null || human.basic_deck_path != PublicBasicSkillPoolPath) return [];
-        var deck = ResourceLoader.Load<BasicDeckResource>(human.basic_deck_path);
+        // ResourceLoader 的原生缓存不是 C# 包装器的强引用；公共定义需贯穿多次快照与 GC。
+        var deck = PublicBasicDeckResource;
         if (deck is null) return [];
         return deck.get_deck_skills();
     }

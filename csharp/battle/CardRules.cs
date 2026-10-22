@@ -18,6 +18,20 @@ public static class CardRules
     public static float Number(GodotObject? owner, string key)
     {
         if (!GodotObject.IsInstanceValid(owner)) return 0;
+        // 战斗资源是 Creature 的 C# 属性，不属于资源数据或 Godot 导出的属性列表。
+        // 气血的当前值及公式中的层数别名必须读同一存储，不能转查同名状态实例。
+        if(owner is Creature combatant)
+        {
+            switch(key)
+            {
+                case "qi_blood": case "qi_blood_stacks": return combatant.qi_blood;
+                case "max_qi_blood": return combatant.max_qi_blood;
+                case "shield": return combatant.shield;
+                case "blood_furnace_value": return combatant.blood_furnace_value;
+                case "blood_furnace_value_cap": return combatant.blood_furnace_value_cap;
+                case "punch_frame": return combatant.punch_frame;
+            }
+        }
         if (key == "coordination") return Mathf.Min(Number(owner, "physique"), Number(owner, "soul"));
         if (key == "borrowed_force" && owner is Creature creature) return creature.get_status_stacks("借力");
         if (key == "spent_furnace") return Number(owner, "blood_furnace_value");
