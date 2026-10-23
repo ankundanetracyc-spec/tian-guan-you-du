@@ -164,7 +164,7 @@ public partial class AlchemyPreviewScene : Control
         Clear(_changes);
         foreach(string line in _model.Changes.Distinct().TakeLast(6))_changes.AddChild(Text(line,18,Ink,true));
         if(_model.Changes.Count==0)_changes.AddChild(Text("每息后显示实际变化；详细炉记可看所有功用来源。",18,Dim,true));
-        _result.Text=_model.Result+(!_model.Done?"":"\n"+string.Join("\n",_model.Pills.Select(p=>$"{p.Index}号：{p.Score} · {AlchemyPreviewModel.Tier(p.Score)} · 试验效果：{p.EffectText}\n{p.NextGap}")));
+        _result.Text=_model.Result+(!_model.Done?"":"\n"+string.Join("\n",_model.Pills.Select(p=>$"{p.Index}号：{p.Score} · {AlchemyPreviewModel.Tier(p.Score)} · 成品丹效：{p.QualityText}\n{p.NextGap}")));
         foreach(var pair in _hands){pair.Value.Disabled=_demonstrating||_model.Done||!_model.CanUse(pair.Key);pair.Value.Modulate=Colors.White;pair.Value.AddThemeColorOverride("font_disabled_color",pair.Key==_model.Action?Gold:Dim);}
         _operator.Disabled=_demonstrating||!_model.CanPrepare;_recover.Disabled=_demonstrating||!_model.CanPrepare;_potion.Disabled=_demonstrating||!_model.CanPrepare||_model.Potions==0;
         _runButton.Text=_model.Done?"重新开炉":_model.AutoRunActive?$"自动运行中 · 第{_model.AutomaticBreathsElapsed}息":"开炉炼丹";

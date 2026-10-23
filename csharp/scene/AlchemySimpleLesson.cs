@@ -45,7 +45,7 @@ public sealed class AlchemySimpleLesson
     {
         0 => "药材与通路已放在节点网上。灵识决定同时工作的线路数；法力供自动火候。现在只需点一次【开炉炼丹】。",
         1 => "自动跑炉中：主药优先按适宜火候炼化，通路把可用药性送往丹炉口，最后自动凝丹并安全收炉。可观察线路状态和资源变化。",
-        _ => $"本炉完成：{Model.Result}\n\n{string.Join("\n", Model.Pills.Select(p => $"{p.Score}分 · {AlchemyPreviewModel.Tier(p.Score)} · {p.EffectText}"))}\n\n质量来自实际药性、配伍、阴阳与丹体稳定；加辅药和调整功用线可以继续提高或改变结果。"
+        _ => $"本炉完成：{Model.Result}\n\n{string.Join("\n", Model.Pills.Select(p => $"{p.Score}分 · {AlchemyPreviewModel.Tier(p.Score)} · {p.QualityText}"))}\n\n质量来自实际药性、配伍、阴阳与丹体稳定；加辅药和调整功用线可以继续提高或改变结果。"
     };
 
     public string ActionLabel => Stage switch

@@ -464,7 +464,7 @@ public partial class AlchemyFurnaceRelationGraph : Control
         if(id==0&&_model.Pills.Count>0)return [
             $"丹团 {_model.Pills.Count}颗 · 稳形 {_model.Shape:P0}",
             $"当前丹效 {_model.Pills.Average(p=>_model.Done?p.Score:_model.ProjectedQuality(p)):F0}分",
-            _model.Done?string.Join("、",_model.Pills.Select(p=>p.EffectText)):"尚未出炉，可继续稳形。"];
+            _model.Done?string.Join("、",_model.Pills.Select(p=>p.QualityText)):"尚未出炉，可继续稳形。"];
         var dose=_model.InFurnace.FirstOrDefault(d=>d.Id==id);
         var packets=_model.Inventory.Where(p=>p.Location==id&&p.Amount>0).ToArray();
         double available=packets.Sum(p=>p.Amount);

@@ -26,7 +26,7 @@ public sealed partial class AlchemyPreviewModel
             for(int i=0;i<Wanted;i++)Pills.Add(new(){Index=i+1,PillTypeId=def.Id,FormulaId=CurrentFormula.Id,
                 MainHerbName=MainName,CoreUtilityId=def.CoreUtility,CoreReferencePower=AlchemyProcessConfig.Strength[Math.Clamp(10-def.Rank,1,9)],
                 PolarityTarget=def.PolarityTarget,PolarityToleranceAt20=def.PolarityToleranceAt20,PolarityToleranceAt100=def.PolarityToleranceAt100,
-                EffectName=def.EffectName,EffectUnit=def.EffectUnit,Form=HubStability});
+                Form=HubStability});
         }
         double baseBudget=_automaticRunActive?double.PositiveInfinity:8*control;
         var residueParts=Pills.Select(p=>p.Parts.Where(x=>x.Amount==0).GroupBy(x=>x.Source).ToDictionary(g=>g.Key,g=>g.First())).ToArray();
@@ -116,7 +116,7 @@ public sealed partial class AlchemyPreviewModel
             }
             var next=new System.Collections.Generic.List<string>();if(p.MainQuality==p.Score)next.AddRange(Gaps(p,p.Score+1).Main);if(p.BlendQuality==p.Score)next.AddRange(Gaps(p,p.Score+1).Blend);if(p.BodyQuality==p.Score)next.AddRange(Gaps(p,p.Score+1).Body);
             p.NextGap=p.Score==100?"已达到本丹种九品上限":"下一分先补："+string.Join("；",next);
-            p.Reason=$"{CurrentPill.Name} · 主材{p.MainHerbName} · 参考丹方：{CurrentFormula.Name}\n主药发挥 {p.MainQuality} · 配伍协调 {p.BlendQuality} · 丹体稳定 {p.BodyQuality}\n丹效取三项最低：{p.Score}。{p.NextGap}\n阴阳{p.Polarity:+0.000;-0.000;0}（目标{p.PolarityTarget:+0.00;-0.00;0.00}，容许偏差{p.PolarityTolerance(p.Score):F2}）· 试验效果：{p.EffectText}；定义键{p.DefinitionKey}";
+            p.Reason=$"{CurrentPill.Name} · 主材{p.MainHerbName} · 参考丹方：{CurrentFormula.Name}\n主药发挥 {p.MainQuality} · 配伍协调 {p.BlendQuality} · 丹体稳定 {p.BodyQuality}\n丹效取三项最低：{p.Score}。{p.NextGap}\n阴阳{p.Polarity:+0.000;-0.000;0}（目标{p.PolarityTarget:+0.00;-0.00;0.00}，容许偏差{p.PolarityTolerance(p.Score):F2}）· 成品丹效：{p.QualityText}；定义键{p.DefinitionKey}";
         }
         int success=Pills.Count(p=>p.Score>=20);Result=Pills.Count==0?"未形成药团，出炉无成品。":$"成丹{success}颗，失败{Pills.Count-success}颗；丹效由各颗实际成品判定，未追加随机分数。";Note(Result);
         Note($"留炉药渣{Slag:F2}不自动扣成品丹效；未用药性{InFurnace.Sum(d=>d.Available+d.Bound):F2}列为本炉余留，不返还原材。");
@@ -135,12 +135,12 @@ public sealed partial class AlchemyPreviewModel
     {
         var formula=CurrentFormula;var definition=CurrentPill;
         string materials=string.Join("\n",formula.Ingredients.Select(i=>$"{(i.HerbName==formula.MainHerb?"本方主材":"建议辅材")} · {i.HerbName}：建议{i.Recommended}份"));
-        string curve=string.Join("，",definition.EffectCurve.Select(p=>$"{p.Score}分→{p.Value:0.#}{definition.EffectUnit}"));
+
         var mainHerb=Herbs.First(h=>h.Name==SelectedMainHerbName);
         double coreScale=mainHerb.Power(definition.CoreUtility)/AlchemyProcessConfig.CoreReferencePower;
         double currentPolarity=Available<.001?0:Polarity;
         double tolerance=definition.PolarityToleranceAt20+(definition.PolarityToleranceAt100-definition.PolarityToleranceAt20)*(60/80d);
         string recipeDelta=SelectedMainHerbName==formula.MainHerb?"主材符合所选参考丹方":"主材已偏离所选参考丹方，当前属于改方试炼";
-        return $"{definition.Name} · 成丹要求\n丹种作用：{definition.Purpose}\n主材必须从以下候选中选一味：{string.Join("、",definition.MainCandidates)}。当前选择：{SelectedMainHerbName}；该主材须有材料原表中的{definition.CoreUtility}功用，实际品级影响可炼出的能力与精度要求。主药每100份理论最多4颗。\n辅材：可从材料架自由选择、替换和增减；不要求凑齐任何一张丹方的材料清单。炼出的实际药性仍按材料原表、质地、阴阳和炉内操作计算。\n阴阳要求：目标偏向{definition.PolarityTarget:+0.00;-0.00;0.00}；丹效20时容许偏差±{definition.PolarityToleranceAt20:F2}，丹效100时收紧至±{definition.PolarityToleranceAt100:F2}。当前炉内偏向{currentPolarity:+0.00;-0.00;0.00}。\n其余成品要求：丹效至少20；主药量和核心功用、实际混匀、成形、夹渣及损伤按丹效逐级收紧。丹效三项分别判分后取最低值，缺陷不能互相补。当前检查见下方具体判定。\n\n参考丹方：{formula.Name}（{recipeDelta}）\n路线特点：{formula.Comparison}\n建议搭配（可删、可换、可增减；以下不是必需材料或限制范围）：\n{materials}\n\n建议投料次序（需按炉温、可用药性和阴阳实时调整，不是固定阶段）：\n{string.Join("\n",formula.FeedOrder.Select((name,index)=>$"{index+1}　{name}：{formula.Ingredients.First(i=>i.HerbName==name).Timing}"))}\n\n参考操作手法：\n{string.Join("\n",formula.Operations.Select(note=>"• "+note))}\n\n丹效只作评级：20–50薄效 · 51–75良效 · 76–90优效 · 91–100极效；实际药效另按曲线：{curve}。参考方不改变丹药成丹条件。\n\n本炉计划{Wanted}颗，实际药团{Pills.Count}颗，主药可用药性{MainAmount:F2}；当前控制精度{Preview().Precision:F1}；所选主材核心功用标准倍率{coreScale:P0}。\n"+string.Join("\n",Pills.Select(p=>$"{p.Index}号：{p.Score}分 {Tier(p.Score)} · {p.EffectText}\n{p.Reason}"));
+        return $"{definition.Name} · 成丹要求\n丹种作用：{definition.Purpose}\n主材必须从以下候选中选一味：{string.Join("、",definition.MainCandidates)}。当前选择：{SelectedMainHerbName}；该主材须有材料原表中的{definition.CoreUtility}功用，实际品级影响可炼出的能力与精度要求。主药每100份理论最多4颗。\n辅材：可从材料架自由选择、替换和增减；不要求凑齐任何一张丹方的材料清单。炼出的实际药性仍按材料原表、质地、阴阳和炉内操作计算。\n阴阳要求：目标偏向{definition.PolarityTarget:+0.00;-0.00;0.00}；丹效20时容许偏差±{definition.PolarityToleranceAt20:F2}，丹效100时收紧至±{definition.PolarityToleranceAt100:F2}。当前炉内偏向{currentPolarity:+0.00;-0.00;0.00}。\n其余成品要求：丹效至少20；主药量和核心功用、实际混匀、成形、夹渣及损伤按丹效逐级收紧。丹效三项分别判分后取最低值，缺陷不能互相补。当前检查见下方具体判定。\n\n参考丹方：{formula.Name}（{recipeDelta}）\n路线特点：{formula.Comparison}\n建议搭配（可删、可换、可增减；以下不是必需材料或限制范围）：\n{materials}\n\n建议投料次序（需按炉温、可用药性和阴阳实时调整，不是固定阶段）：\n{string.Join("\n",formula.FeedOrder.Select((name,index)=>$"{index+1}　{name}：{formula.Ingredients.First(i=>i.HerbName==name).Timing}"))}\n\n参考操作手法：\n{string.Join("\n",formula.Operations.Select(note=>"• "+note))}\n\n丹效分档：20–50薄效 · 51–75良效 · 76–90优效 · 91–100极效；同丹效档使用固定效果，具体效果尚未配置。参考方不改变丹药成丹条件。\n\n本炉计划{Wanted}颗，实际药团{Pills.Count}颗，主药可用药性{MainAmount:F2}；当前控制精度{Preview().Precision:F1}；所选主材核心功用标准倍率{coreScale:P0}。\n"+string.Join("\n",Pills.Select(p=>$"{p.Index}号：{p.Score}分 {Tier(p.Score)} · {p.QualityText}\n{p.Reason}"));
     }
 }

@@ -59,3 +59,49 @@
 丹方卷：`ONE standalone 2D handpainted Chinese ink-wash game UI icon: a small partly unrolled ivory xuan-paper scroll seen from the front, short dark wooden rollers, muted jade-gray binding, a few sparse gray ink mountain strokes on paper. Warm paper fiber, watercolor edges, delicate aged but clean. No text, NO Chinese characters (engine will add label), no letters, no border, no glow, no pedestal, no realistic perspective or 3D. Compact horizontal silhouette about 4:3 aspect, completely visible with generous transparent padding, truly transparent background. Match antique ink-and-watercolor cultivation game.`
 
 横向拣药纸：`Production game UI asset: ONE EMPTY ivory handmade Chinese xuan-paper slip on a truly transparent background, front-facing 2D flat watercolor. Wide horizontal 3:2 sheet, subtle gently deckled edges, pale warm fiber texture, sparse soft gray-green ink wash only at corners. Clean light center for readable Chinese UI text added by engine. Restrained subtle natural soft edge shadow. Absolutely NO text, no letters, no symbols, no gold border, no drawn frame, no plants, no objects, no perspective. Sheet fills 94 percent of canvas with narrow equal transparent margins. Match muted Chinese ink-wash cultivation game, elegant matte watercolor.`
+
+## 2026-10-22 试演控制与筛选补充
+
+顶栏造诣支持输入和加减（默认36、最小0、步进0.1，可超过1196）；调低后清空锁定位投料并提示。选材新增五行、阴阳及仅本位功用有效组合筛选，支持与搜索叠加、重置、计数及空结果说明。岗位规则与悬停说明复用模拟器判断。编译0警告0错误；62项无窗口场景检查通过，详见[主案](../../plans/炼丹槽位式自动配伍新案_20261019.md)。本轮未新增实机截图，不把旧截图视为新版界面验收。
+
+
+## 2026-10-22 丹方册与本地保存
+
+入口改为横向浅纸按钮，卷轴图标与两级文字并排；内部沿用静室／行囊共用纸面、细边框及墨绿文字。左目录、右配伍详情，内置与自拟分签；材料图标等比、长名称截省并悬停显示，详情标题允许换行。保存名称区与载入、删除按钮分开，显示保存／覆盖／删除反馈。保存位置为`user://alchemy/recipes_v1.json`，独立于角色存档。
+
+本轮OpenGL渲染并人工查看以下截图：
+- [自拟丹方详情](../../../outputs/alchemy_notebook_20261022.png)
+- [内置样方目录与详情](../../../outputs/alchemy_notebook_builtin_20261022.png)
+- [丹方册入口](../../../outputs/alchemy_notebook_entry_20261022.png)
+
+构建0警告0错误；98项原有回归、10项本地丹方检查和跨进程写入／读取通过：
+- [丹方与画面检查](../../../outputs/alchemy_notebook_capture_20261022.log)
+- [原有功能回归](../../../outputs/alchemy_notebook_regression_20261022.log)
+- [跨进程写入](../../../outputs/alchemy_notebook_restart_write_20261022.log)
+- [跨进程读取](../../../outputs/alchemy_notebook_restart_read_20261022.log)
+
+渲染退出仍有既有纹理释放提示和旧技能UID回退；未据此宣称完全无运行异常，亦未进行真实鼠标输入验收。
+
+
+### 2026-10-22 自绘丹方药册图标与二次排版（当前）
+
+按用户要求，用内置image_gen生成独立透明底线装药册图标，替换此前卷轴入口：宣纸、灰绿药草、墨色装订和朱印，不含文字。素材原样保留RGBA透明通道，1254×1254，alpha范围0—255；入口与标题栏使用KeepAspectCentered完整等比显示。
+
+- 当前素材：`textures/ui/alchemy_20261019/formula_notebook_v1.png`。
+- 完整生成提示词及工具说明：`textures/ui/alchemy_20261019/formula_notebook_v1.prompt.txt`。
+- 原`formula_scroll_v2.png`保留为历史素材，不再由丹方入口或内页引用。
+- 目录收窄至320设计像素，每项分名称与味数／份数／造诣两级，选中项用统一墨绿细边框。
+- 标题图标为76设计像素；右侧君臣佐使标签固定宽度，对齐药材图标、名称与份数。
+- 底部“保存当前配伍”名称框、保存新方、覆盖同名独立成行，沿用QuietRoomStyle纸底与边框，不烘焙界面文字到素材。
+- 本页上方三张截图已更新为本轮图标与排版的实际渲染版本。已逐图查看，未见图标拉伸、文字或按钮越界。98项回归、10项丹方检查再次通过，构建0警告0错误。渲染退出的既有纹理释放提示仍在；本轮未做真实鼠标操作验收。
+
+
+### 2026-10-23 功用多选与结果清理
+
+选药界面新增独立功用行，十二项使用现有墨绿细框按钮，多选任一匹配；可叠加五行、阴阳、本位有效和搜索，未选不限功用。重置清除选择及高亮。结果页移除废案“每枚约X点”，模拟器和目录的旧曲线也删除。
+
+- [功用多选实际渲染](../../../outputs/alchemy_utility_filter_20261023.png)
+- [结果页实际渲染](../../../outputs/alchemy_result_clean_20261023.png)
+- [116项检查日志](../../../outputs/alchemy_cleanup_filter_20261023.log)
+
+已查看画面，无可见裁切；构建0警告0错误。退出仍有既有纹理释放提示，真实鼠标未验。

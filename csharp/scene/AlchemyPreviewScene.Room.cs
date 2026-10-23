@@ -210,7 +210,7 @@ public partial class AlchemyPreviewScene
     {
         var pill=_model.CurrentPill;var formula=_model.CurrentFormula;
         string current=_model.Done
-            ?"\n\n本炉结果："+_model.Result+"\n"+string.Join("\n",_model.Pills.Select(p=>$"{p.Index}号 · {p.Score}分 · {AlchemyPreviewModel.Tier(p.Score)} · 试验效果：{p.EffectText}"))
+            ?"\n\n本炉结果："+_model.Result+"\n"+string.Join("\n",_model.Pills.Select(p=>$"{p.Index}号 · {p.Score}分 · {AlchemyPreviewModel.Tier(p.Score)} · 成品丹效：{p.QualityText}"))
             :$"\n\n本炉计划：{_model.Wanted}颗；丹效低于20不成丹。";
         var components=string.Join("\n",formula.Ingredients.Select(i=>
         {
@@ -227,10 +227,10 @@ public partial class AlchemyPreviewScene
         double currentPolarity=_model.Available<.001?0:_model.Polarity;
         double currentTolerance=pill.PolarityTolerance(60);
         string mainMatch=_model.SelectedMainHerbName==formula.MainHerb?"本炉主材与参考方一致":"本炉主材与参考方不同：当前是自由改方试炼";
-        string curve=string.Join("　",pill.EffectCurve.Select(p=>$"{p.Score}分 {p.Value:0.#}{pill.EffectUnit}"));
+
         string lockText=_model.CanChangeRecipe?"尚未投料，可调整丹种、主材和参考方。":"本炉已有实际操作，丹种、主材和参考方已锁定；重新开炉后可另选。";
         string operations=string.Join("\n",formula.Operations.Select(note=>"· "+note));
-        return $"{pill.Name} · 丹阶{pill.Rank}品\n丹药用途：{pill.Purpose}\n\n【成丹要求】\n主材从候选中选一味：{mainSummary}；当前选择{_model.SelectedMainHerbName}。主材须含材料原表中的{pill.CoreUtility}功用，并实际炼出足够药性。主药每100份理论最多4颗。\n辅材不限于某张丹方；从材料架自由选择、替换、增减。材料的功用、质地、五行和阴阳按原表参与炉内过程。\n阴阳目标：{pill.PolarityTarget:+0.00;-0.00;0.00}，丹效20时容许偏差±{pill.PolarityToleranceAt20:F2}，丹效100时收紧至±{pill.PolarityToleranceAt100:F2}；当前炉内{currentPolarity:+0.00;-0.00;0.00}，丹效60时允许偏差±{currentTolerance:F2}。实际混匀、主药发挥、成形、药渣和损伤也须满足随丹效提高而收紧的条件。\n\n【参考丹方：{formula.Name}】\n{formula.Comparison}\n{mainMatch}\n建议搭配（仅作起点，不是成丹门槛；每份为100炉内质量单位）：\n{components}\n\n建议投料次序（可自由调整，不是固定阶段）：\n{order}\n\n操作手法参考：\n{operations}\n\n所有炼法使用同一成丹要求；实际组合能否成丹，只看本炉主材、药性发挥、炉况和最终成品，不检查是否凑齐参考方。丹效只负责评级：20–50薄效 · 51–75良效 · 76–90优效 · 91–100极效；实际药效另按曲线：{curve}\n\n{lockText}"+current;
+        return $"{pill.Name} · 丹阶{pill.Rank}品\n丹药用途：{pill.Purpose}\n\n【成丹要求】\n主材从候选中选一味：{mainSummary}；当前选择{_model.SelectedMainHerbName}。主材须含材料原表中的{pill.CoreUtility}功用，并实际炼出足够药性。主药每100份理论最多4颗。\n辅材不限于某张丹方；从材料架自由选择、替换、增减。材料的功用、质地、五行和阴阳按原表参与炉内过程。\n阴阳目标：{pill.PolarityTarget:+0.00;-0.00;0.00}，丹效20时容许偏差±{pill.PolarityToleranceAt20:F2}，丹效100时收紧至±{pill.PolarityToleranceAt100:F2}；当前炉内{currentPolarity:+0.00;-0.00;0.00}，丹效60时允许偏差±{currentTolerance:F2}。实际混匀、主药发挥、成形、药渣和损伤也须满足随丹效提高而收紧的条件。\n\n【参考丹方：{formula.Name}】\n{formula.Comparison}\n{mainMatch}\n建议搭配（仅作起点，不是成丹门槛；每份为100炉内质量单位）：\n{components}\n\n建议投料次序（可自由调整，不是固定阶段）：\n{order}\n\n操作手法参考：\n{operations}\n\n所有炼法使用同一成丹要求；实际组合能否成丹，只看本炉主材、药性发挥、炉况和最终成品，不检查是否凑齐参考方。丹效分档：20–50薄效 · 51–75良效 · 76–90优效 · 91–100极效；同丹效档使用固定效果，具体效果尚未配置\n\n{lockText}"+current;
     }
     public async void CaptureRoomLayout()
     {
