@@ -121,6 +121,17 @@ public partial class AlchemySlotBrewPreviewScene
             ApplySampleRoute(optimalRoute);
             var cleanResult = AlchemySlotSimulation.Simulate(GetSimulationInputs(), Attainment);
             Verify(cleanResult.Quality == 99 && cleanResult.OutputCount == 4, "清理药效曲线不改变成丹评分");
+            Verify(AlchemySlotSimulation.QualityName(90) == "优效" &&
+                AlchemySlotSimulation.QualityName(91) == "极效" &&
+                cleanResult.QualityName == "极效" &&
+                AlchemySlotSimulation.QualityName(100) == "无暇", "丹效91至99极效、100无暇边界");
+            Verify(_ingredientLedgerRows.GetChildCount() == 5 && _ingredientLedgerCount.Text == "5味 · 8份", "投料信息栏列出五味");
+            SetDose(-1, 1);
+            Verify(_ingredientLedgerRows.GetChild<Control>(0).GetChild<Label>(0).Text.EndsWith("×1"), "调量同步信息栏");
+            ClearAssistant(1);
+            Verify(_ingredientLedgerRows.GetChildCount() == 4, "移除药材同步信息栏");
+            ApplySampleRoute(optimalRoute);
+            Verify(_ingredientLedgerRows.GetChild<Control>(0).GetChild<Label>(2).Text.Contains("镇九品"), "本位生效功用与品级");
             ShowBrewSimulation();
             Verify(!_messageBody.Text.Contains("每枚约") && !cleanResult.Details.Any(d => d.Contains("每枚预估")),
                 "结果和详情无废弃药效值");
@@ -139,6 +150,18 @@ public partial class AlchemySlotBrewPreviewScene
                 await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
                 GetViewport().GetTexture().GetImage().SavePng("res://outputs/alchemy_utility_filter_20261023.png");
             }
+            var leftTab = _canvas.GetNode<Button>("ToggleIngredientLedger");
+            var rightTab = _canvas.GetNode<Button>("ToggleBatchRequirements");
+            leftTab.EmitSignal(Button.SignalName.Pressed);
+            rightTab.EmitSignal(Button.SignalName.Pressed);
+            Verify(!_canvas.GetNode<Control>("IngredientLedger").Visible &&
+                !_canvas.GetNode<Control>("BatchRequirements").Visible, "双侧栏独立收起");
+            Verify(_compactBrewButton!.Visible && _compactBrewButton.Disabled == _brewButton.Disabled,
+                "收起后炼丹入口保留");
+            leftTab.EmitSignal(Button.SignalName.Pressed);
+            Verify(_canvas.GetNode<Control>("IngredientLedger").Visible &&
+                !_canvas.GetNode<Control>("BatchRequirements").Visible, "单侧展开不影响另一侧");
+            rightTab.EmitSignal(Button.SignalName.Pressed);
             GD.Print($"ALCHEMY_SLOT_UI_PASS {checks}");
             GetTree().Quit();
         }

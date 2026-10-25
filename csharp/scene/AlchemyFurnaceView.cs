@@ -4,6 +4,8 @@ using System;
 /// <summary>丹炉外观与炉内实火视图。只读炉况，不推进游戏时间或改变炼制规则。</summary>
 public partial class AlchemyFurnaceView : Control
 {
+    public bool UseTexturedFire { get; set; }
+    public float FireAnimationTime => _clock;
     private Texture2D[] _shells=[];
     private ShaderMaterial _fire=null!;
     private ColorRect _window=null!;
@@ -19,13 +21,24 @@ public partial class AlchemyFurnaceView : Control
         MouseFilter=MouseFilterEnum.Ignore;
         _shells=[AlchemyPreviewScene.LoadRoomTexture("res://textures/ui/alchemy_room_20261017/furnace_front_half_soft_v13.png"),MakeShell(true)];
         _rear=new TextureRect{Texture=AlchemyPreviewScene.LoadRoomTexture("res://textures/ui/alchemy_room_20261017/furnace_rear_half_soft_v13.png"),ExpandMode=TextureRect.ExpandModeEnum.IgnoreSize,StretchMode=TextureRect.StretchModeEnum.Scale,MouseFilter=MouseFilterEnum.Ignore};AddChild(_rear);
-        _fire=new ShaderMaterial{Shader=GD.Load<Shader>("res://shaders/alchemy_furnace_fire.gdshader")};
+        _fire=new ShaderMaterial{Shader=GD.Load<Shader>(UseTexturedFire
+            ? "res://shaders/alchemy_furnace_texture_fire.gdshader"
+            : "res://shaders/alchemy_furnace_fire.gdshader")};
+        if(UseTexturedFire)
+            _fire.SetShaderParameter("flame_texture",GD.Load<Texture2D>("res://textures/ui/alchemy_20261019/furnace_flame_static_v2.png"));
         _window=new ColorRect{Color=Colors.White,Material=_fire,MouseFilter=MouseFilterEnum.Ignore};AddChild(_window);
         _front=new MeshInstance2D{Texture=_shells[0],Mesh=FrontSurface()};AddChild(_front);
         Resized+=()=>{Arrange();QueueRedraw();};Arrange();
+        if(UseTexturedFire)SetProcess(false);
     }
     public void SetState(double actualPower,double temperature)
     {
+        if(UseTexturedFire)
+        {
+            _window.Visible=_layerPreview==0 && actualPower>0;
+            SetProcess(false);
+            return;
+        }
         _targetPower=(float)Math.Clamp(actualPower/4,0,1);_residual=(float)Math.Clamp((temperature-25)/85,0,1);
         SetProcess(true);
     }
@@ -42,7 +55,8 @@ public partial class AlchemyFurnaceView : Control
         {
             var r=SpriteRect();_rear.Position=r.Position;_rear.Size=r.Size;
             _front.Position=r.Position;_front.Scale=r.Size/new Vector2(1024,1536);
-            _window.Position=r.Position+r.Size*new Vector2(.31f,.59f);_window.Size=r.Size*new Vector2(.38f,.18f);return;
+            _window.Position=r.Position+r.Size*(UseTexturedFire?new Vector2(.30f,.53f):new Vector2(.31f,.59f));
+            _window.Size=r.Size*(UseTexturedFire?new Vector2(.40f,.23f):new Vector2(.38f,.18f));return;
         }
         _window.Position=Origin+new Vector2(220,247)*DrawingScale;_window.Size=new Vector2(160,160)*DrawingScale;
     }
@@ -68,6 +82,7 @@ public partial class AlchemyFurnaceView : Control
     private Rect2 SpriteRect(){var native=_shells[0].GetSize();float footBaseline=1475f/1536f;float s=Mathf.Min(Size.X/native.X,Size.Y/(native.Y*footBaseline));var fitted=native*s;return new Rect2(new Vector2((Size.X-fitted.X)/2,Size.Y-fitted.Y*footBaseline),fitted);}
     public override void _Process(double delta)
     {
+        if(UseTexturedFire){SetProcess(false);return;}
         _clock+=(float)delta;_redraw+=(float)delta;
         _shownPower=Mathf.Lerp(_shownPower,_targetPower,1-Mathf.Exp(-(float)delta*6));
         _fire.SetShaderParameter("animation_time",_clock);_window.QueueRedraw();

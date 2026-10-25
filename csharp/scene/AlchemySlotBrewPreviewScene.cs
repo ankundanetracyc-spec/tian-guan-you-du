@@ -81,13 +81,21 @@ public partial class AlchemySlotBrewPreviewScene : Control
         BuildPage();
         RefreshPage();
         _tutorialOverlay.Show();
+        if (OS.GetCmdlineUserArgs().Contains("--alchemy-fire-check"))
+            _ = RunFireChecks();
         if (OS.GetCmdlineUserArgs().Contains("--alchemy-notebook-restart-write") ||
             OS.GetCmdlineUserArgs().Contains("--alchemy-notebook-restart-read"))
             RunNotebookRestartCheck();
         if (OS.GetCmdlineUserArgs().Contains("--alchemy-notebook-check"))
             _ = RunNotebookChecks();
+        if (OS.GetCmdlineUserArgs().Contains("--alchemy-pill-check"))
+            _ = RunPillDescriptionChecks();
         if (OS.GetCmdlineUserArgs().Contains("--alchemy-slot-ui-check"))
             _ = RunSlotUiChecks();
+        if (OS.GetCmdlineUserArgs().Contains("--alchemy-appraisal-baseline"))
+            WriteAppraisalBaseline();
+        if (OS.GetCmdlineUserArgs().Contains("--alchemy-appraisal-check"))
+            _ = RunAppraisalChecks();
     }
 
     private void LoadMaterials()
@@ -125,6 +133,7 @@ public partial class AlchemySlotBrewPreviewScene : Control
         BuildHeader();
         BuildRecipeColumn();
         BuildSlotColumn();
+        BuildIngredientLedger();
         BuildPreviewColumn();
         BuildPicker();
         BuildRecipeOverlay();
@@ -136,9 +145,9 @@ public partial class AlchemySlotBrewPreviewScene : Control
     private void BuildFurnaceWatermark()
     {
         // Use the same approved 2D front/rear renderer as the original alchemy room.
-        var furnace = new AlchemyFurnaceView { Name = "ApprovedTwoLayerFurnace", MouseFilter = MouseFilterEnum.Ignore };
-        Place(_canvas, furnace, new Vector2(490, 72), new Vector2(608, 869));
-        furnace.SetState(0, 25);
+        var furnace = new AlchemyFurnaceView { Name = "ApprovedTwoLayerFurnace", UseTexturedFire = true, MouseFilter = MouseFilterEnum.Ignore };
+        Place(_canvas, furnace, new Vector2(540, 122), new Vector2(540, 772));
+        furnace.SetState(3, 65); // Decorative hearth only; not a simulation input.
     }
 
     private void BuildHeader()
@@ -151,7 +160,7 @@ public partial class AlchemySlotBrewPreviewScene : Control
 
         var stats = new HBoxContainer { Alignment = BoxContainer.AlignmentMode.Center };
         stats.AddThemeConstantOverride("separation", 24);
-        Place(_canvas, stats, new Vector2(650, 24), new Vector2(720, 48));
+        Place(_canvas, stats, new Vector2(630, 24), new Vector2(740, 48));
         stats.AddChild(StatChip("灵识", AlchemySlotSimulation.SpiritCapacity.ToString()));
         stats.AddChild(StatChip("精力", AlchemySlotSimulation.EnergyCapacity.ToString()));
         var attainmentLabel = QuietRoomStyle.Text("试演造诣", 18);
@@ -210,20 +219,14 @@ public partial class AlchemySlotBrewPreviewScene : Control
     {
         var recipe = MakeButton("", OpenRecipeBook, 20);
         recipe.Name = "FormulaBookButton";
-        Place(_canvas, recipe, new Vector2(20, 794), new Vector2(186, 100));
-        var row = new HBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
-        row.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        row.OffsetLeft = 8; row.OffsetRight = -8;
-        row.Alignment = BoxContainer.AlignmentMode.Center;
-        recipe.AddChild(row);
-        var icon = IconRect(70);
-        icon.Texture = LoadUiTexture("formula_notebook_v1.png");
-        row.AddChild(icon);
-        var titles = new VBoxContainer { Alignment = BoxContainer.AlignmentMode.Center, MouseFilter = MouseFilterEnum.Ignore };
-        titles.AddChild(QuietRoomStyle.Text("丹方册", 22));
-        titles.AddChild(QuietRoomStyle.Text("样方 · 自拟", 13));
-        row.AddChild(titles);
-        SetHover(recipe, "查看样方，或把当前配伍保存为本地丹方");
+        ClearButtonBorder(recipe);
+        recipe.AddThemeStyleboxOverride("focus", new StyleBoxEmpty());
+        Place(_canvas, recipe, new Vector2(8, 780), new Vector2(140, 153));
+        var icon = IconRect(1);
+        icon.Texture = LoadUiTexture("formula_notebook_labeled_v2.png");
+        recipe.AddChild(icon);
+        icon.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        SetHover(recipe, "打开丹方册，查看样方和本地自拟丹方");
     }
 
     private static AlchemySlotSimulation.SlotRole RoleFor(int slot) => slot switch
@@ -239,10 +242,10 @@ public partial class AlchemySlotBrewPreviewScene : Control
 
     private void BuildSlotColumn()
     {
-        BuildMainSlot(new Vector2(274, 160), new Vector2(226, 270));
-        BuildAssistantSlot(0, new Vector2(274, 494), new Vector2(226, 270));
-        BuildRoleGroup("佐药", [1, 2, 4], new Vector2(1094, 154));
-        BuildRoleGroup("使药", [3, 5, 6], new Vector2(1094, 496));
+        BuildMainSlot(new Vector2(270, 194), new Vector2(212, 254));
+        BuildAssistantSlot(0, new Vector2(270, 526), new Vector2(212, 254));
+        BuildRoleGroup("佐药", [1, 2, 4], new Vector2(1120, 184));
+        BuildRoleGroup("使药", [3, 5, 6], new Vector2(1120, 516));
         _canvas.AddChild(_mainDoseBox); _mainDoseBox.Hide();
         foreach (var doseBox in _assistantDoseBoxes) { _canvas.AddChild(doseBox); doseBox.Hide(); }
     }
@@ -297,7 +300,7 @@ public partial class AlchemySlotBrewPreviewScene : Control
     private void BuildRoleGroup(string title, int[] slots, Vector2 position)
     {
         var card = MakeInkSlip(); card.Name = title == "佐药" ? "ZuoHerbGroup" : "ShiHerbGroup";
-        Place(_canvas, card, position, new Vector2(284, 304));
+        Place(_canvas, card, position, new Vector2(270, 304));
         var body = new VBoxContainer(); body.AddThemeConstantOverride("separation", 5); card.AddChild(body);
         body.AddChild(QuietRoomStyle.Text(title, 26));
         for (int ordinal = 0; ordinal < slots.Length; ordinal++)
@@ -365,7 +368,8 @@ public partial class AlchemySlotBrewPreviewScene : Control
     private void BuildPreviewColumn()
     {
         var panel = MakeInkSlip(vertical: true); panel.Name = "BatchRequirements";
-        Place(_canvas, panel, new Vector2(1454, 132), new Vector2(202, 684));
+        Place(_canvas, panel, new Vector2(1450, 184), new Vector2(196, 636));
+        AddSidebarToggle(panel, false);
         var body = new VBoxContainer(); body.AddThemeConstantOverride("separation", 18); panel.AddChild(body);
         var heading = QuietRoomStyle.Text("本炉用度", 25); heading.HorizontalAlignment = HorizontalAlignment.Center; body.AddChild(heading);
         body.AddChild(HSeparatorLine());
@@ -475,6 +479,20 @@ public partial class AlchemySlotBrewPreviewScene : Control
         _messageBody.AddThemeColorOverride("font_color", new Color("303933"));
         scroll.AddChild(_messageBody);
 
+        _messageScroll = scroll;
+        var appraisalActions = new HBoxContainer { Alignment = BoxContainer.AlignmentMode.Center };
+        layout.AddChild(appraisalActions);
+        _appraisalButton = MakeButton("炼后鉴定", ShowAppraisalSnapshot, 18);
+        _appraisalButton.Name = "PostBrewAppraisal";
+        _appraisalButton.CustomMinimumSize = new Vector2(180, 44);
+        appraisalActions.AddChild(_appraisalButton);
+        _appraisalBackButton = MakeButton("返回本炉结果", ShowBrewSnapshot, 18);
+        _appraisalBackButton.Name = "BackToBrewResult";
+        _appraisalBackButton.CustomMinimumSize = new Vector2(180, 44);
+        appraisalActions.AddChild(_appraisalBackButton);
+        _appraisalButton.Hide();
+        _appraisalBackButton.Hide();
+
         var close = MakeButton("明白", () => _messageOverlay.Hide(), 16);
         close.CustomMinimumSize = new Vector2(120, 42);
         close.SizeFlagsHorizontal = SizeFlags.ShrinkCenter;
@@ -483,8 +501,11 @@ public partial class AlchemySlotBrewPreviewScene : Control
 
     private void ShowMessage(string title, string body)
     {
+        _appraisalButton.Hide();
+        _appraisalBackButton.Hide();
         _messageTitle.Text = title;
         _messageBody.Text = body;
+        _messageScroll.ScrollVertical = 0;
         _messageOverlay.Show();
     }
 
@@ -818,6 +839,12 @@ public partial class AlchemySlotBrewPreviewScene : Control
         _resourceSummary.Text = $"药材种类　{count}味\n投料总量　{totalDose}份\n\n灵识占用\n{simulation.SpiritNeed}\n\n精力消耗\n{simulation.EnergyNeed}\n\n炼制耗时\n{(count == 0 ? "—" : $"{hours:0.##}时辰")}";
         _brewCondition.Text = simulation.CanSimulate ? "" : simulation.BlockingReason;
         _brewButton.Disabled = !simulation.CanSimulate;
+        RefreshIngredientLedger();
+        if (_compactBrewButton is not null)
+        {
+            _compactBrewButton.Disabled = _brewButton.Disabled;
+            SetHover(_compactBrewButton, simulation.CanSimulate ? "按当前投料炼丹" : simulation.BlockingReason);
+        }
     }
 
     private List<AlchemySlotSimulation.Input> GetSimulationInputs()
@@ -902,16 +929,21 @@ public partial class AlchemySlotBrewPreviewScene : Control
 
     private void ShowBrewSimulation()
     {
-        var simulation = AlchemySlotSimulation.Simulate(GetSimulationInputs(), Attainment);
+        var inputs = GetSimulationInputs();
+        var simulation = AlchemySlotSimulation.Simulate(inputs, Attainment);
         if (!simulation.CanSimulate)
         {
+            _lastBrew = null;
             ShowMessage("暂不能开炉", simulation.BlockingReason);
             return;
         }
-        var result = $"{simulation.ProductName}\n{simulation.Outcome}\n\n本炉耗时　{AlchemySlotSimulation.DurationHours(GetSimulationInputs()):0.##}时辰";
+        var result = $"{simulation.ProductName}\n{simulation.Outcome}\n\n本炉耗时　{AlchemySlotSimulation.DurationHours(inputs):0.##}时辰";
         if (simulation.OutputCount > 0)
             result += $"\n\n实际成丹　{simulation.OutputCount}枚\n成色　{simulation.QualityName} · 丹效 {simulation.Quality}分";
-        ShowMessage("炼丹结果", result);
+        _lastBrew = new BrewSnapshot(++_brewSequence, Attainment,
+            simulation with { Details = Array.AsReadOnly(simulation.Details.ToArray()) }, result,
+            AlchemySlotSimulation.BuildAppraisalReport(simulation));
+        ShowBrewSnapshot();
     }
 
     private void ClearSelections()

@@ -18,6 +18,13 @@ public partial class AlchemySlotBrewPreviewScene
     private Button _builtinTab = null!;
     private Button _savedTab = null!;
     private bool _showSaved;
+    private bool _showPills;
+    private Button _pillTab = null!;
+    private HBoxContainer _notebookActions = null!;
+    private HBoxContainer _notebookSaveRow = null!;
+    private ScrollContainer _notebookDetailScroll = null!;
+    private Label _pillRule = null!;
+    private string _selectedPillId = "";
     private string _pendingDelete = "";
     private AlchemyRecipeCatalog.SampleRoute? _selectedRoute;
     private AlchemyRecipeStore.Recipe? _selectedSaved;
@@ -49,7 +56,7 @@ public partial class AlchemySlotBrewPreviewScene
         var header = new HBoxContainer();
         header.AddThemeConstantOverride("separation", 16);
         body.AddChild(header);
-        var icon = IconRect(76); icon.Texture = LoadUiTexture("formula_notebook_v1.png"); header.AddChild(icon);
+        var icon = IconRect(76); icon.Texture = LoadUiTexture("formula_notebook_labeled_v2.png"); header.AddChild(icon);
         var title = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
         title.AddChild(QuietRoomStyle.Text("丹方册", 28));
         title.AddChild(QuietRoomStyle.Text("记下配伍，留待下次开炉", 15));
@@ -59,9 +66,11 @@ public partial class AlchemySlotBrewPreviewScene
         var tabs = new HBoxContainer();
         tabs.AddThemeConstantOverride("separation", 10);
         body.AddChild(tabs);
-        _builtinTab = MakeButton("内置样方", () => { _showSaved = false; RefreshNotebookList(); }, 17);
-        _savedTab = MakeButton("我的丹方", () => { _showSaved = true; RefreshNotebookList(); }, 17);
+        _builtinTab = MakeButton("内置样方", () => SetNotebookTab(false, false), 17);
+        _savedTab = MakeButton("我的丹方", () => SetNotebookTab(true, false), 17);
+        _pillTab = MakeButton("丹药说明", () => SetNotebookTab(false, true), 17);
         tabs.AddChild(_builtinTab); tabs.AddChild(_savedTab);
+        tabs.AddChild(_pillTab);
         var content = new HBoxContainer { SizeFlagsVertical = SizeFlags.ExpandFill };
         content.AddThemeConstantOverride("separation", 20);
         body.AddChild(content);
@@ -72,12 +81,14 @@ public partial class AlchemySlotBrewPreviewScene
         listScroll.AddChild(_notebookList);
         content.AddChild(new VSeparator());
         var detailScroll = new ScrollContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled };
+        _notebookDetailScroll = detailScroll;
         content.AddChild(detailScroll);
         _notebookDetail = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
         _notebookDetail.AddThemeConstantOverride("separation", 12);
         detailScroll.AddChild(_notebookDetail);
         body.AddChild(new HSeparator());
         var actions = new HBoxContainer();
+        _notebookActions = actions;
         actions.AddThemeConstantOverride("separation", 12);
         body.AddChild(actions);
         _recipeLoad = MakeButton("载入此方", LoadNotebookSelection, 18);
@@ -88,6 +99,7 @@ public partial class AlchemySlotBrewPreviewScene
         note.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         actions.AddChild(note);
         var saveRow = new HBoxContainer();
+        _notebookSaveRow = saveRow;
         saveRow.AddThemeConstantOverride("separation", 10);
         body.AddChild(saveRow);
         saveRow.AddChild(QuietRoomStyle.Text("保存当前配伍", 17));
@@ -101,6 +113,16 @@ public partial class AlchemySlotBrewPreviewScene
         _notebookStatus = QuietRoomStyle.Text("", 14);
         _notebookStatus.AutowrapMode = TextServer.AutowrapMode.WordSmart;
         body.AddChild(_notebookStatus);
+        _pillRule = QuietRoomStyle.Text("丹方所记为投料配伍，成丹种类仍由君药药性与实际炼制推定。", 15);
+        _pillRule.AutowrapMode = TextServer.AutowrapMode.WordSmart;
+        body.AddChild(_pillRule);
+        RefreshNotebookList();
+    }
+
+    private void SetNotebookTab(bool saved, bool pills)
+    {
+        _showSaved = saved && !pills;
+        _showPills = pills;
         RefreshNotebookList();
     }
 
@@ -112,10 +134,32 @@ public partial class AlchemySlotBrewPreviewScene
     private void RefreshNotebookList()
     {
         ClearNotebookChildren(_notebookList);
-        _builtinTab.AddThemeStyleboxOverride("normal", QuietRoomStyle.Edge(!_showSaved, 10));
+        _builtinTab.AddThemeStyleboxOverride("normal", QuietRoomStyle.Edge(!_showSaved && !_showPills, 10));
         _savedTab.AddThemeStyleboxOverride("normal", QuietRoomStyle.Edge(_showSaved, 10));
+        _pillTab.AddThemeStyleboxOverride("normal", QuietRoomStyle.Edge(_showPills, 10));
+        _notebookActions.Visible = !_showPills;
+        _notebookSaveRow.Visible = !_showPills;
+        _notebookStatus.Visible = !_showPills;
+        _pillRule.Visible = _showPills;
+        _notebookStatus.Text = _notebookError;
+        _notebookDetailScroll.ScrollVertical = 0;
         _savedTab.Text = $"我的丹方 · {_savedRecipes.Count}";
         _selectedRoute = null; _selectedSaved = null; _pendingDelete = "";
+        if (_showPills)
+        {
+            foreach (var pill in AlchemyRecipeCatalog.Pills)
+            {
+                var current = pill;
+                var button = NotebookListButton(AlchemyPillDescriptions.DisplayName(pill), "丹药说明", () => ShowPillDescription(current));
+                button.Name = "PillDescription_" + pill.Id;
+                _notebookList.AddChild(button);
+            }
+            var selected = AlchemyRecipeCatalog.Pills.FirstOrDefault(p => p.Id == _selectedPillId)
+                ?? AlchemyRecipeCatalog.Pills.FirstOrDefault();
+            if (selected is not null) ShowPillDescription(selected);
+            else { ClearNotebookChildren(_notebookDetail); _notebookDetail.AddChild(QuietRoomStyle.Text("尚无丹药记载", 24)); }
+            return;
+        }
         if (_showSaved)
         {
             foreach (var recipe in _savedRecipes)
@@ -252,6 +296,7 @@ public partial class AlchemySlotBrewPreviewScene
 
     private void LoadNotebookSelection()
     {
+        if (_showPills) return;
         if (_selectedRoute is null) return;
         ApplySampleRoute(_selectedRoute);
         _recipeOverlay.Hide();
@@ -259,6 +304,7 @@ public partial class AlchemySlotBrewPreviewScene
 
     private void SaveCurrentRecipe(bool overwrite)
     {
+        if (_showPills) return;
         if (_notebookError.Length > 0) { _notebookStatus.Text = _notebookError; return; }
         var name = _recipeName.Text.Trim();
         if (name.Length == 0) { _notebookStatus.Text = "请先填写丹方名称。"; return; }
@@ -282,6 +328,7 @@ public partial class AlchemySlotBrewPreviewScene
 
     private void DeleteNotebookSelection()
     {
+        if (_showPills) return;
         if (_selectedSaved is null || _notebookError.Length > 0) return;
         if (_pendingDelete != _selectedSaved.Id)
         {

@@ -1,0 +1,49 @@
+Godot Engine v4.7.2.stable.mono.official.ed1daf0bf - https://godotengine.org
+
+FORMATION_DATA_CHECK_OK 示范阵 Resource 可加载
+FORMATION_DATA_CHECK_OK 三候示范资源存档门槛为 30
+FORMATION_DATA_CHECK_OK 示范阵恰有三类元件和两段串联脉纹
+FORMATION_DATA_CHECK_OK 示范阵节点均保存编辑器位置
+FORMATION_DATA_CHECK_OK 默认草稿与模板/硬件 Resource 独立
+FORMATION_DATA_CHECK_OK 默认草稿数组独立
+FORMATION_DATA_CHECK_OK 默认草稿节点及节点数组独立
+FORMATION_DATA_CHECK_OK 默认草稿脉纹 Resource 独立
+FORMATION_DATA_CHECK_OK 修改草稿不污染模板节点、硬件或脉纹
+FORMATION_DATA_CHECK_OK 目录重复创建同一元件仍返回独立 Resource
+FORMATION_DATA_CHECK_OK 三候链路在阵录齐全且造诣 30 时通过
+FORMATION_DATA_CHECK_OK 三候链路格位和复杂度实测为 4/4
+FORMATION_DATA_CHECK_OK 门槛从实际三候元件推导而非读取伪造声明字段
+FORMATION_DATA_CHECK_OK 容量、补能、阵源峰值、灵络峰值和阵盘负荷读取有效硬件值
+FORMATION_DATA_CHECK_OK 64 次目录/端口资格校验跨越强制 GC 保持稳定
+FORMATION_DATA_CHECK_OK 造诣 29 不能使用三候枢
+FORMATION_DATA_CHECK_OK 非有限造诣不能绕过资格检查
+FORMATION_DATA_CHECK_OK 缺少护元阵录会拒绝完整阵图
+FORMATION_DATA_CHECK_OK 真实输入阵录端口语义错误会拒绝单元件资格
+FORMATION_DATA_CHECK_OK 单元件入口认可真实输入端口及造诣 5
+FORMATION_DATA_CHECK_OK 单元件入口与整阵入口共享候枢 29/30 资格规则
+FORMATION_DATA_CHECK_OK 感应→护持直连按实际两件元件在造诣 5 通过
+FORMATION_DATA_CHECK_OK 空节点/空脉纹输入安全拒绝且不抛异常
+FORMATION_DATA_CHECK_OK 缺边链路被判为断连
+FORMATION_DATA_CHECK_OK 回接脉纹被判为环路
+FORMATION_DATA_CHECK_OK 三节点链增加感应→护持旁路会被拒绝
+FORMATION_DATA_CHECK_OK 带脉纹的阵盘至少需要一层脉纹承载
+FORMATION_DATA_CHECK_OK 三候链路超出阵盘格位会被拒绝
+FORMATION_DATA_CHECK_OK 三候链路超出阵眼复杂度会被拒绝
+FORMATION_DATA_CHECK_OK 阵能/供能峰值不足保留为运行时启动失败，不伪装为结构错误
+FORMATION_DATA_CHECK_OK 外部篡改阵器效果数值会被固定模板语义拒绝
+FORMATION_DATA_CHECK_OK 重复应用材料标签保持幂等，原始硬件字段不被双加
+FORMATION_DATA_CHECK_OK 通过完整校验后原子装配示范阵
+FORMATION_DATA_CHECK_OK 重复同 ID 阵图被替换为唯一记录
+FORMATION_DATA_CHECK_OK 其他阵图记录保持原样
+FORMATION_DATA_CHECK_OK 装配元数据由真实节点和真实资格重建
+FORMATION_DATA_CHECK_OK 装配配置与编辑草稿深复制隔离
+FORMATION_DATA_CHECK_OK 资格失败时不替换或污染已装配列表
+FORMATION_DATA_CHECK_OK 阵图清单深复制包含嵌套硬件 Resource
+FORMATION_DATA_CHECK_OK BattleEntityData.copy_from 深复制阵图子资源
+FORMATION_DATA_CHECK_OK Character.apply_battle_data 深复制阵图子资源
+FORMATION_DATA_CHECK_OK Character.get_snapshot_data 深复制阵图子资源
+FORMATION_DATA_CHECK_OK 隔离 user:// 写入正式 v8 Resource
+FORMATION_DATA_CHECK_OK v8 PersistentGameSave 读回阵图且不触发版本迁移
+FORMATION_DATA_CHECK_OK v8 往返保留阵图门槛、节点布局与脉纹
+FORMATION_DATA_CHECK_OK 旧 v8 节点缺少位置字段时使用默认位置并标记为未布局
+FORMATION_DATA_SMOKE_OK

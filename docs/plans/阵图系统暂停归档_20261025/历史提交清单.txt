@@ -1,0 +1,35 @@
+228000a039e05cff318480349beee01e6d52a48f docs: preserve project startup planning drafts
+2ed38422d8f0b6d31671df12c872f45cf6d65d08 docs: freeze formation v1 scope and parallel contracts
+8fe641718a90d7d59232da9ceee91ea8e4f84053 docs: align formation design with approved v1 scope
+eb2e75117f5fed215a7bf0c55ce4e4ac2b7716c4 docs: share node access validation contract and execution status
+a1da5d1987eb25b9b943686e9fa6ca732e336d30 Add formation data validation base
+18982f50015bc7d0ebc2d742604f0b9f1b4e9756 merge: integrate formation validation public base
+834f1cc57619d716023eedd75f40aa00e9860bea test: independently audit formation graph topology and atomic apply
+7b627e27f77f110cb5309d64e62e19f6a1e87e1b Expose formation node eligibility validation
+9d427434b6811bae9bd2797c6a0d3e1f5c268a4c merge: share node eligibility validation
+034c6e5ff7858aaafb32c5143b6eccc68f085229 Merge commit '7b627e27f77f110cb5309d64e62e19f6a1e87e1b' into HEAD
+4a234c45c7febebc2f726e12be93cf9012a4a103 Verify formation data persistence and clones
+bc796007f916bb77a2c664992543b5fff7242f4f merge: finish formation data snapshots and persistence tests
+f45bbc45a78bc7111aef0a4d8a38213d4522f79b Merge commit 'bc796007f916bb77a2c664992543b5fff7242f4f' into HEAD
+f5d1e850bc20a09e234eff714b958230ae462123 docs: track independent journey acceptance and content gap
+9467dd44cb9cb7a2341b7d80f64dfaa8e92579a6 Cache formation validation resources safely
+09c2078362139c8976bf62067b7e052579a1e583 merge: stabilize formation resource lifetimes
+444f6ad0102990c9c974b4b83abc3bd0065ab22c Connect formation triggers to battle queue
+dadc1d3a70091272118cd6c4dba3af7787ca7f70 test: add isolated two-process formation journey acceptance harness
+648a461af6beb5cf9c7bed94214fa3ecfc425e11 Merge commit '9467dd44cb9cb7a2341b7d80f64dfaa8e92579a6' into codex/formation-runtime-c
+1c3201750bb8023a0e82fea8618604dd5d04a329 Merge commit '9467dd44cb9cb7a2341b7d80f64dfaa8e92579a6' into HEAD
+94d67b52531a8516012df3c4a0e995d87be34de2 test: feed journey drag input through Godot global input state
+9a20b34af72434007cc3c39339729749aad6129b Validate formation access from battle snapshots
+1db8eb7a84bcee0d55ff07ab78acee8dc4fce3a3 EDITOR_BASE_READY: build formation editor base
+b946bc9f9cdb429f6eac03d80bb49db03c8a973e merge: integrate formation editor base for journey verification
+3eedd1869278a1de6100716d71e976d00cb702e3 merge: integrate formal queue formation triggers and access checks
+c4a04ff1e5738e4a18b2191a9f372643f54880a8 Merge commit '1db8eb7' into codex/formation-runtime-c
+1aaf75cd2583d1b8469b4e183a358cc7bafceeda Bridge formation editor saves and shortcut
+ade4bb751cfcba5471f9078ced1a5c17863becd2 merge: connect formation editor saves to main scene
+ec223f1ddde43c872b022100e0fd5d04b6e7ca65 fix: use readable manual names and complete journey input checks
+55e5d677d480c826dc737a3fe3d1a132bb985e98 fix: route formation saves before GraphEdit consumes input
+93de311a20fad7a6793b4ce169bbb09be508744b chore: register formation acceptance scripts with Godot
+8df165a8d4c1bfe084085fab6293b48a5bd757fc Complete formation editor UI acceptance
+9195f9d8889e80206e48b87d06e4ee30d70d5930 merge: finalize formation editor interactions and compact layout
+2f23a651e1c12a23161f86fdffe93bd34887755e fix: dismiss formation leave dialog after saving a page switch
+4e0b4b1980bca5848006846efe71ded2671eb91c docs: finalize formation v1 acceptance

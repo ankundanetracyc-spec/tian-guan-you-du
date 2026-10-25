@@ -1,0 +1,79 @@
+Godot Engine v4.7.2.stable.mono.official.ed1daf0bf - https://godotengine.org
+D3D12 12_0 - Forward Mobile - Using Device #0: NVIDIA - NVIDIA GeForce RTX 4060 Laptop GPU
+
+FORMATION_EDITOR_CHECK_OK 初始草稿显示三类固定元件各一份
+FORMATION_EDITOR_CHECK_OK 默认输入至三候脉纹已加载
+FORMATION_EDITOR_CHECK_OK 默认三候至护持脉纹已加载
+FORMATION_EDITOR_CHECK_OK 截图写入 D:/tian-guan-you-du/tmp/formation_editor/1920x1080/01_三栏初始.png
+FORMATION_EDITOR_CHECK_OK @Button@69 可见且可点 visible=True rect=(469, 154), (34, 36)
+FORMATION_EDITOR_CHECK_OK 缩小按钮通过实际输入缩小画布
+FORMATION_EDITOR_CHECK_OK @Button@70 可见且可点 visible=True rect=(509, 154), (36, 36)
+FORMATION_EDITOR_CHECK_OK 放大按钮通过实际输入放大画布
+FORMATION_EDITOR_CHECK_OK GraphEdit 滚轮输入缩小画布
+FORMATION_EDITOR_CHECK_OK GraphEdit 滚轮输入放大画布
+FORMATION_EDITOR_CHECK_OK GraphEdit Ctrl+滚轮输入平移画布
+FORMATION_EDITOR_CHECK_OK 目录条目经真实拖放移动画布元件
+FORMATION_EDITOR_CHECK_OK 缩放和平移后拖放的元件位置贴近释放点
+FORMATION_EDITOR_CHECK_OK GraphEdit 视口点击选中了真实脉纹
+FORMATION_EDITOR_CHECK_OK @Button@73 可见且可点 visible=True rect=(1356, 154), (116, 36)
+FORMATION_EDITOR_CHECK_OK 真实控件操作断开脉纹
+FORMATION_EDITOR_CHECK_OK 断开后实时校验阻止不完整草稿装配
+FORMATION_EDITOR_CHECK_OK GraphEdit 视口端口拖动重新连接脉纹
+FORMATION_EDITOR_CHECK_OK 多余控制脉纹由公共校验拒绝装配
+FORMATION_EDITOR_CHECK_OK Ctrl+S 失败仍被编辑器消费且未装配
+FORMATION_EDITOR_CHECK_OK 结构化 FromNodeId/ToNodeId 将校验失败定位到脉纹
+FORMATION_EDITOR_CHECK_OK @Button@73 可见且可点 visible=True rect=(1356, 154), (116, 36)
+FORMATION_EDITOR_CHECK_OK 移除被定位的无效脉纹后校验恢复
+FORMATION_EDITOR_CHECK_OK 真实点击选中护持元件
+FORMATION_EDITOR_CHECK_OK Delete 键通过 GraphEdit 请求删除选中元件
+FORMATION_EDITOR_CHECK_OK 删除元件后非法草稿不能装配
+FORMATION_EDITOR_CHECK_OK 目录拖放重新放置缺失的护持元件
+FORMATION_EDITOR_CHECK_OK GraphEdit 端口输入连接到护持阵器
+FORMATION_EDITOR_CHECK_OK 完整合法结构恢复装配资格
+FORMATION_EDITOR_CHECK_OK @Button@120 可见且可点 visible=True rect=(1630, 885), (236, 36)
+FORMATION_EDITOR_CHECK_OK 恢复示范按钮重建默认草稿结构
+FORMATION_EDITOR_CHECK_OK 恢复示范只改草稿，没有立即装配
+FORMATION_EDITOR_CHECK_OK 恢复的合法示范仍需点击保存才装配
+FORMATION_EDITOR_CHECK_OK @Button@71 可见且可点 visible=True rect=(551, 154), (52, 36)
+FORMATION_EDITOR_CHECK_OK 归中按钮按节点范围适配视野且三枚元件完整可见
+FORMATION_EDITOR_CHECK_OK 截图写入 D:/tian-guan-you-du/tmp/formation_editor/1920x1080/02_归中完成.png
+FORMATION_EDITOR_CHECK_OK 截图写入 D:/tian-guan-you-du/tmp/formation_editor/1920x1080/02_真实交互后.png
+FORMATION_EDITOR_CHECK_OK @Button@122 可见且可点 visible=True rect=(1630, 969), (236, 44)
+FORMATION_EDITOR_CHECK_OK 成功装配恰发一次 FormationChanged
+FORMATION_EDITOR_CHECK_OK 保存将目标阵图装配到隔离角色且没有重复项
+FORMATION_EDITOR_CHECK_OK 装配后的布局修改仍留在独立草稿
+FORMATION_EDITOR_CHECK_OK @Button@121 可见且可点 visible=True rect=(1630, 907), (236, 36)
+FORMATION_EDITOR_CHECK_OK 取消编辑恢复当前装配阵图且不发装配事件
+FORMATION_EDITOR_CHECK_OK 取消编辑后草稿与已装配配置一致
+FORMATION_EDITOR_CHECK_OK 重新编辑仍保留未装配状态
+FORMATION_EDITOR_CHECK_OK @Button@24 可见且可点 visible=True rect=(42, 156), (126, 46)
+FORMATION_EDITOR_CHECK_OK 未保存时点击其他页签先弹出离开确认
+FORMATION_EDITOR_CHECK_OK @Button@187 可见且可点 visible=True rect=(206, 169), (72, 28)
+FORMATION_EDITOR_CHECK_OK 切页确认中继续编辑会留在阵法页
+FORMATION_EDITOR_CHECK_OK @Button@24 可见且可点 visible=True rect=(42, 156), (126, 46)
+FORMATION_EDITOR_CHECK_OK @Button@185 可见且可点 visible=True rect=(69, 169), (72, 28)
+FORMATION_EDITOR_CHECK_OK 切页确认中丢弃草稿后进入目标说明页
+FORMATION_EDITOR_CHECK_OK 切页丢弃不污染已装配配置或重复发送事件
+FORMATION_EDITOR_CHECK_OK @Button@26 可见且可点 visible=True rect=(42, 266), (126, 46)
+FORMATION_EDITOR_CHECK_OK 丢弃草稿后重建阵法编辑器并恢复已装配配置
+FORMATION_EDITOR_CHECK_OK @Button@28 可见且可点 visible=True rect=(42, 1004), (126, 42)
+FORMATION_EDITOR_CHECK_OK 关闭草稿会显示离开确认
+FORMATION_EDITOR_CHECK_OK 截图写入 D:/tian-guan-you-du/tmp/formation_editor/1920x1080/03_离开确认.png
+FORMATION_EDITOR_CHECK_OK @Button@189 可见且可点 visible=True rect=(343, 169), (88, 28)
+FORMATION_EDITOR_CHECK_OK 保存并离开先成功装配、通知一次并关闭
+FORMATION_EDITOR_CHECK_OK 重开分散布局后归中自适应缩小画布 zoom=0.6150748
+FORMATION_EDITOR_CHECK_OK 重开分散布局后所有元件适配在画布内 spell_input:(497, 537.9131), (109.483315, 63.96778); third_spell_counter:(669.22095, 537.9131), (109.483315, 63.96778); ward_actuator:(1456.5167, 587.1191), (109.483315, 63.96778)
+FORMATION_EDITOR_CHECK_OK 重开后护持元件标题点位于画布内
+FORMATION_EDITOR_CHECK_OK 重新打开后从画布内标题相对拖动护持元件会更新位置
+FORMATION_EDITOR_CHECK_OK @Button@28 可见且可点 visible=True rect=(42, 1004), (126, 42)
+FORMATION_EDITOR_CHECK_OK 未保存草稿关闭时真实弹出三选项确认
+FORMATION_EDITOR_CHECK_OK @Button@185 可见且可点 visible=True rect=(69, 169), (72, 28)
+FORMATION_EDITOR_CHECK_OK 确认丢弃后关闭且不发装配事件
+FORMATION_EDITOR_CHECK_OK 保存切页前真实拖动三候元件产生草稿修改
+FORMATION_EDITOR_CHECK_OK @Button@24 可见且可点 visible=True rect=(42, 156), (126, 46)
+FORMATION_EDITOR_CHECK_OK 保存切页前真实显示离开确认
+FORMATION_EDITOR_CHECK_OK @Button@189 可见且可点 visible=True rect=(343, 169), (88, 28)
+FORMATION_EDITOR_CHECK_OK 保存并切页后关闭确认窗并显示目标页
+FORMATION_EDITOR_CHECK_OK 保存切页恰通知一次且实际写入元件位置
+FORMATION_EDITOR_SMOKE_OK (1920, 1080)
+ERROR: 1 RID allocations of type 'N10RendererRD14TextureStorage7TextureE' were leaked at exit.

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 /// <summary>槽位式炼丹的确定性试演结算；只读当前材料，不写入行囊或角色资源。</summary>
-public static class AlchemySlotSimulation
+public static partial class AlchemySlotSimulation
 {
     public const double TrialAttainment = 36;
     public const int SpiritCapacity = 24;
@@ -74,7 +74,10 @@ public static class AlchemySlotSimulation
         string Outcome,
         IReadOnlyList<string> Details,
         string ProductName,
-        string CoreUtility);
+        string CoreUtility)
+    {
+        public AppraisalSnapshot? Appraisal { get; init; }
+    }
 
     private sealed class Portion(Input input, double available, double residual)
     {
@@ -82,6 +85,9 @@ public static class AlchemySlotSimulation
         public double Available { get; set; } = available;
         public double Residual { get; set; } = residual;
         public double Delivered { get; set; }
+        public double BaseExtracted { get; } = available;
+        public double BreakExtracted { get; set; }
+        public double ConvertExtracted { get; set; }
         public double Yield => BaseYield(Input.Craft);
     }
 
@@ -111,7 +117,10 @@ public static class AlchemySlotSimulation
         double TotalDelivered,
         IReadOnlyDictionary<string, double> UtilityPower,
         IReadOnlyDictionary<string, double> SourceDelivered,
-        double[] QualityAxes);
+        double[] QualityAxes)
+    {
+        public AppraisalSnapshot Appraisal { get; init; } = null!;
+    }
 
     /// <summary>
     /// 由投料推导成品。君药携带的核心功用用于识别可能丹种；样方只负责自动填入材料，
@@ -226,7 +235,10 @@ public static class AlchemySlotSimulation
             metrics.ZInitial, metrics.ZAfter, metrics.Risk, metrics.ConnectionRate, metrics.MixingRate, metrics.DeliveryRate,
             metrics.FiveElementRate, metrics.YinValue, metrics.YinDeviation, metrics.CarryRate, metrics.StorageMultiplier,
             YieldText(metrics.MinimumCount, metrics.MaximumCount, metrics.CandidateCount), outcome, details,
-            pill.Name, pill.CoreUtility);
+            pill.Name, pill.CoreUtility)
+        {
+            Appraisal = metrics.Appraisal with { MaterialCap = materialCap }
+        };
     }
 
     private static Result SimulateUnrecognized(IReadOnlyList<Input> inputs, double attainment)
@@ -307,7 +319,15 @@ public static class AlchemySlotSimulation
         return new Result(true, "", exploded, !exploded, 0, 0, 0, "未成丹", spirit, energy, count,
             0, 0, 100 * connectionRate, 0, 0, zInitial, zAfter, risk, connectionRate, mixRate, deliveryRate,
             1, 0, 0, 0, 1, "颗数范围　未识别", outcome, details,
-            "未识别丹种", "未匹配");
+            "未识别丹种", "未匹配")
+        {
+            Appraisal = new AppraisalSnapshot(null, null, null, null, null, false,
+                Array.AsReadOnly(portions.Select(p => SnapshotMaterial(p.Input, null, p.Available, 0, 0,
+                    p.Available, p.Residual, mixRate, deliveryRate, null)).ToArray()))
+            {
+                OverallPolarity = availableTotal <= 0 ? 0 : (yang - yin) / availableTotal
+            }
+        };
     }
 
     private static Result Blocked(AlchemyRecipeCatalog.PillType pill, string reason, int spirit, int energy, string outcome) =>
@@ -380,10 +400,13 @@ public static class AlchemySlotSimulation
         double denseResidual = dense.Sum(portion => portion.Residual);
         double breakAmount = Math.Min(denseResidual, Math.Min(.10 * denseRaw, .05 * Power(utilityPower, "破") * denseRaw));
         TransferResidual(dense, breakAmount);
+        foreach (var portion in portions) portion.BreakExtracted = portion.Available - portion.BaseExtracted;
         double residualAfterBreak = portions.Sum(portion => portion.Residual);
         double convertAmount = Math.Min(residualAfterBreak,
             Math.Min(.15 * rawTotal, .05 * Power(utilityPower, "化") * rawTotal));
         TransferResidual(portions, convertAmount);
+        foreach (var portion in portions)
+            portion.ConvertExtracted = portion.Available - portion.BaseExtracted - portion.BreakExtracted;
 
         double availableTotal = portions.Sum(portion => portion.Available);
         double residualTotal = portions.Sum(portion => portion.Residual);
@@ -478,7 +501,19 @@ public static class AlchemySlotSimulation
             core, polarityScore, connectionQuality, stability, purity,
             polarityBase, zAfter, danger, connectionRate, mixRate, deliveryRate, fiveElementRate,
             yinValue, yinDeviation, carryRate, storageMultiplier, totalDelivered,
-            utilityPower, sourceDelivered, [core, polarityScore, connectionQuality, stability]);
+            utilityPower, sourceDelivered, [core, polarityScore, connectionQuality, stability])
+        {
+            Appraisal = new AppraisalSnapshot(solidQuality, null, contamination, Power(utilityPower, "镇"),
+                Power(utilityPower, "护"), true,
+                Array.AsReadOnly(portions.Select(p => SnapshotMaterial(p.Input, pill.CoreUtility, p.BaseExtracted,
+                    p.BreakExtracted, p.ConvertExtracted, p.Available, p.Residual, mixRate, deliveryRate, carryRate)).ToArray()))
+            {
+                OverallPolarity = yinValue,
+                ClarifiedMass = residualTotal * .15 - carryMass,
+                SolidPower = structurePower - .65 * sealPower,
+                SealPower = sealPower
+            }
+        };
     }
 
     private static int CountEffectiveMaterials(AlchemyRecipeCatalog.PillType pill, IReadOnlyList<Input> inputs, Metrics full, double attainment)
@@ -586,8 +621,8 @@ public static class AlchemySlotSimulation
     private static string YieldText(int minimum, int maximum, int candidate) =>
         minimum < 1 ? "君药范围　不足一颗" : $"君药范围　{minimum}—{maximum} 颗\n本方拟成　约 {candidate} 颗";
 
-    private static string QualityName(int score) => score switch
+    internal static string QualityName(int score) => score switch
     {
-        < 20 => "未成丹", <= 50 => "薄效", <= 75 => "良效", <= 90 => "优效", _ => "极效"
+        < 20 => "未成丹", <= 50 => "薄效", <= 75 => "良效", <= 90 => "优效", <= 99 => "极效", _ => "无暇"
     };
 }
