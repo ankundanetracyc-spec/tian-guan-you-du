@@ -51,7 +51,7 @@ public partial class BattleManager : Node2D
     }
     public bool can_pay_skill_mana_cost(GodotObject unit,ActiveSkillData skill)
     {
-        return can_pay_mana_amount(unit,get_skill_mana_cost(unit,skill));
+        return CanReserveForgedSpirit(unit, skill) && can_pay_mana_amount(unit,get_skill_mana_cost(unit,skill));
     }
     public bool can_pay_mana_amount(GodotObject unit,int amount)
     {

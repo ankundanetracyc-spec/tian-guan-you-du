@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="Electron" agent="Codex" modified="2026-10-25T00:00:00Z">
+  <diagram id="yusui_20261025" name="玉髓回澜养真宝册">
+    <mxGraphModel dx="3641" dy="512" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2900" pageHeight="2440" math="0" shadow="0">
+      <root>
+        <mxCell id="0" value="" />
+        <mxCell id="1" parent="0" value="" />
+        <mxCell id="title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=20;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;玉髓回澜养真宝册&lt;/div&gt;" vertex="1">
+          <mxGeometry height="74" width="560" x="740" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="overview" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;云息秘籍／可主修、可辅修&lt;br&gt;灵根：任意；主修可修至：云息十层&lt;br&gt;定位：将气血回落回复的溢出部分转为护盾，在显臂、回复和护盾之间取舍。&lt;br&gt;设计提案，待审；游戏入口已关闭&lt;/div&gt;" vertex="1">
+          <mxGeometry height="190" width="560" x="740" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第一卷：涤络&lt;br&gt;卷章ID：yusui_c1&lt;br&gt;顺序：1&lt;br&gt;&lt;br&gt;研读值（累计）：24&lt;br&gt;学成可修至：云息三层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：凡人境及以上&lt;br&gt;前置：无&lt;br&gt;研读属性：体魄≥5；体道造诣≥0&lt;br&gt;&lt;br&gt;学会永久属性：体魄 +0.5；体道造诣 +0.5&lt;br&gt;&lt;br&gt;习得：涤髓&lt;/div&gt;" vertex="1">
+          <mxGeometry height="430" width="340" x="850" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：玉髓回澜&lt;br&gt;关键词：气血、护盾&lt;br&gt;效果：气血层数降低产生回复时，超出生命缺口的回复量的50%转为A点护盾。&lt;br&gt;主修额外效果：自身护盾被敌方攻击耗尽后，获得气血1层；每回合限一次。&lt;br&gt;计算公式：A=floor(max(0,本次气血回落应回复量−本次实际回复量)×0.50)。&lt;br&gt;&lt;br&gt;涤髓&lt;br&gt;关键词：气血&lt;br&gt;耗费：体力 1&lt;br&gt;目标：自身&lt;br&gt;效果：气血层数降低1层，触发气血层数降低时的回复效果；至少有1层气血时可施展。&lt;br&gt;冷却：无&lt;/div&gt;" vertex="1">
+          <mxGeometry height="272" width="740" x="-400" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：涤髓&lt;br&gt;&lt;br&gt;化法追加：气血实际降低后，若自身已有护盾，额外获得A点护盾。A=round(2 + 体魄×0.10 + 体道造诣×0.15)。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="440" x="1360" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第二卷：鸣泉&lt;br&gt;卷章ID：yusui_c2&lt;br&gt;顺序：2&lt;br&gt;&lt;br&gt;研读值（累计）：48&lt;br&gt;学成可修至：云息六层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：云息三层及以上&lt;br&gt;前置：yusui_c1&lt;br&gt;研读属性：体魄≥6；体道造诣≥0.5&lt;br&gt;&lt;br&gt;学会永久属性：体道造诣 +0.5&lt;br&gt;&lt;br&gt;习得：鸣泉&lt;/div&gt;" vertex="1">
+          <mxGeometry height="430" width="340" x="850" y="870" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：玉髓回澜（沿用第一卷，无新增效果）&lt;br&gt;&lt;br&gt;鸣泉&lt;br&gt;关键词：气血、护盾&lt;br&gt;耗费：体力 2&lt;br&gt;目标：指定1名敌方&lt;br&gt;出手方式：近身&lt;br&gt;效果：造成A点物理伤害。施展前自身具有护盾时，命中后获得气血1层。&lt;br&gt;计算公式：A=round(8 + 体魄×0.55 + 体道造诣×0.25)。&lt;br&gt;使用次数：每回合1次&lt;br&gt;冷却：无&lt;/div&gt;" vertex="1">
+          <mxGeometry height="272" width="740" x="-400" y="870" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：鸣泉&lt;br&gt;&lt;br&gt;化法追加：施展前自身具有护盾时，本次原始攻击伤害提高20%。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="440" x="1360" y="870" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第三卷：玉振&lt;br&gt;卷章ID：yusui_c3&lt;br&gt;顺序：3&lt;br&gt;&lt;br&gt;研读值（累计）：84&lt;br&gt;学成可修至：云息九层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：云息六层及以上&lt;br&gt;前置：yusui_c2&lt;br&gt;研读属性：体魄≥8；体道造诣≥1&lt;br&gt;&lt;br&gt;学会永久属性：体魄 +0.5；体道造诣 +1&lt;br&gt;&lt;br&gt;习得：无&lt;/div&gt;" vertex="1">
+          <mxGeometry height="430" width="340" x="850" y="1370" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：玉髓回澜（沿用第一卷，无新增效果）&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="740" x="-400" y="1370" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：架招&lt;br&gt;&lt;br&gt;化法追加：本次来袭结算后，获得A点护盾。A=floor(本次架招实际抵消的物理伤害总点数×0.50)。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="440" x="1360" y="1370" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第四卷：回澜&lt;br&gt;卷章ID：yusui_c4&lt;br&gt;顺序：4&lt;br&gt;&lt;br&gt;研读值（累计）：128&lt;br&gt;学成可修至：云息十层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：云息九层及以上&lt;br&gt;前置：yusui_c3&lt;br&gt;研读属性：体魄≥10；体道造诣≥2&lt;br&gt;&lt;br&gt;学会永久属性：体道造诣 +1&lt;br&gt;&lt;br&gt;习得：无&lt;/div&gt;" vertex="1">
+          <mxGeometry height="430" width="340" x="850" y="1870" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：玉髓回澜（沿用第一卷，无新增效果）&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="740" x="-400" y="1870" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：涤髓&lt;br&gt;&lt;br&gt;化法追加：本次气血回落回复的溢出护盾转化比例改为100%；替代心法对此次回复的50%转化，不叠加。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="440" x="1360" y="1870" as="geometry" />
+        </mxCell>
+        <mxCell id="summary" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;搭配百骸：保留高气血维持显臂，或回落换取护盾；搭配太和：强化架招先回落、再因应对补血。鸣泉读取行动开始前是否具有护盾，不按伤害段重复补血。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="550" x="1850" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;最大生命 +10%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="260" x="360" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;气血上限 +1&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="270" x="390" y="870" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;物理伤害 +4%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="270" x="400" y="1370" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;最大生命 +10%&lt;br&gt;物理伤害 +6%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="270" x="370" y="1870" as="geometry" />
+        </mxCell>
+        <mxCell id="status_rules" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;结算边界&lt;br&gt;护盾转化只读取气血回落回复，不读取其他治疗或散血。应回复量计入现行受疗修正，实际回复量按生命缺口截断。护盾被穿过、主动消耗或削减不触发主修回气血；敌方攻击实际吸收护盾并使其耗尽后，在该次来袭结算结束时检查。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="550" x="1850" y="950" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" edge="1" parent="1" source="overview" style="endArrow=block;html=1;" target="c1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_a" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_b" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_c" edge="1" parent="1" source="c1" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c1_cards" value="本卷心法与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_a" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_b" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_c" edge="1" parent="1" source="c2" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c2_cards" value="心法与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_a" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_b" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_c" edge="1" parent="1" source="c3" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c3_cards" value="心法与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_a" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_b" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_c" edge="1" parent="1" source="c4" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c4_cards" value="心法与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

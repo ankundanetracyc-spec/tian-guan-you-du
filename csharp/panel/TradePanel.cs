@@ -282,15 +282,7 @@ public partial class TradePanel : Control
                 var item_name = slot.GetNodeOrNull<Label>("ItemName");
                 item_name?.AddThemeColorOverride("font_color", QuietRoomStyle.Ink);
                 if (item_name is not null) item_name.Text = $"{item.entity_name} * {entry.count}";
-                var category = StoragePanel.category_of(item, entry.path);
-                if (!string.IsNullOrWhiteSpace(item.item_subcategory)) category = string.IsNullOrWhiteSpace(category) ? item.item_subcategory : $"{category} / {item.item_subcategory}";
-                var grade = item.craft_data is MaterialCraftData material ? $"品阶：{material.material_grade_name()}（{material.material_score():0.##}）" : item.get_grade_string();
-                var metadata = string.Join(" · ", new[] { category, grade, $"数量 x{entry.count}" }.Where(value => !string.IsNullOrWhiteSpace(value)));
-                var tags = StoragePanel.build_tags(item.tags, item.craft_data as MaterialCraftData);
-                var effect = StoragePanel.build_item_usage_effect(item);
-                var icon = string.IsNullOrWhiteSpace(item.icon_path) || !ResourceLoader.Exists(item.icon_path) ? null : ResourceLoader.Load<Texture2D>(item.icon_path);
-                HoverInfoManager.SetInfo(slot, new HoverInfoManager.HoverInfoContent(item.entity_name,
-                    $"词缀与功用\n{tags}\n\n使用效果\n{effect}", icon, metadata));
+                HoverInfoManager.SetInfo(slot, StoragePanel.ItemHover(item, entry.count, entry.path));
             }
             var frame = make_selection_frame();
             slot.AddChild(frame);

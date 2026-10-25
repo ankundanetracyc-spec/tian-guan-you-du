@@ -34,17 +34,14 @@ public partial class ForgedEquipmentPreview : Node2D
         list.AddChild(new Label { Text = "单器试用 · 修改后点击下方按钮重开对练" });
         var equipment = new CheckBox { Name = "EquipSingle", Text = "装备：" + _loadout.Item.Name + " · " + _loadout.Item.Tier, ButtonPressed = true }; list.AddChild(equipment);
         equipment.Toggled += enabled => _equipped = enabled;
-        foreach (var skill in _skills.Where(ForgedEquipmentLoadout.IsPhysicalAttack))
+        var bindings = _loadout.Item.Effects.Where(x => x.CarrierId == "binding").ToList();
+        if (bindings.Count > 0)
         {
-            var toggle = new CheckBox { Name = "SwordUse" + _skills.IndexOf(skill), Text = "用这把剑施展：" + skill.skill_name }; list.AddChild(toggle);
-            toggle.Toggled += enabled => _loadout.SetSwordUse(skill, enabled);
-        }
-        foreach (var effect in _loadout.Item.Effects.Where(x => x.CarrierId == "binding"))
-        {
-            var row = new HBoxContainer(); list.AddChild(row); row.AddChild(new Label { Text = "化法 · " + effect.Description });
-            var options = _skills.Where(s => _loadout.CanBind(effect, s)).ToList(); var pick = new OptionButton { Name = "Binding_" + effect.AtomId }; pick.AddItem("不绑定");
-            foreach (var skill in options) pick.AddItem(skill.skill_name); row.AddChild(pick);
-            pick.ItemSelected += index => { if (index == 0) _loadout.Bind(effect.EffectId, null); else if (!_loadout.Bind(effect.EffectId, options[(int)index - 1])) { pick.Select(0); _status.Text = "该技能已有其他器物化法，请先解除原绑定。"; } };
+            list.AddChild(new Label { Text = "化法" });
+            var options = _skills.Where(s => bindings.Any(effect => _loadout.CanBind(effect, s))).ToList();
+            var pick = new OptionButton { Name = "SingleArtifactBinding" }; pick.AddItem("不绑定");
+            foreach (var skill in options) pick.AddItem(skill.skill_name); list.AddChild(pick);
+            pick.ItemSelected += index => _loadout.BindSingle(index == 0 ? null : options[(int)index - 1]);
         }
         var restart = new Button { Name = "ApplyEquipment", Text = "按当前装配重开对练" }; ForgingInkStyle.Button(restart, true); list.AddChild(restart); restart.Pressed += () => { StartBattle(); paper.Hide(); };
         _status = new Label { Position = new(450, 112), Size = new(1410, 57), Theme = QuietRoomStyle.MakeTheme(), AutowrapMode = TextServer.AutowrapMode.WordSmart }; _status.AddThemeFontSizeOverride("font_size", 17); ui.AddChild(_status);
@@ -68,6 +65,16 @@ public partial class ForgedEquipmentPreview : Node2D
     {
         if (_loadout is null) return;
         var baseline = Baseline(); var player = _equipped ? _loadout.BuildSnapshot(baseline) : baseline;
+        if (_equipped)
+        {
+            var item = ForgedSwordBattleAdapter.Prepare(ForgedArtifactInventory.Create(_loadout.Item));
+            player.equipped_artifacts.Add(item);
+            foreach (var skill in ForgedSwordBattleAdapter.Skills(item))
+            {
+                var empty = player.combat_resolved_skills.ToList().FindIndex(entry => entry.combat_empty_slot);
+                if (empty >= 0) player.combat_resolved_skills[empty] = skill;
+            }
+        }
         KeepSnapshot(baseline);
         var enemy = new BattleEntityData { uid = "forged-single-enemy", entity_name = "试器陪练", faction = 2, cultivation_realm = "云息三层",
             max_health = 800, current_health = 800, max_stamina = 6, physique = 12, soul = 4, physical_defense = 10,
@@ -76,7 +83,7 @@ public partial class ForgedEquipmentPreview : Node2D
         KeepSnapshot(player); KeepSnapshot(enemy);
         var manager = GetNode<BattleManager>("BattleMgr"); manager.SetMeta("isolated_trial_finished", false); manager.setup_team_battle([_characterScene!], [_characterScene!], [player], [enemy]);
         var owner = manager.player_units[0];
-        _status.Text = (_equipped ? "已装备一件器" : "未装备器物") + $" · 当前物防 {CardRules.Number(owner, "physical_defense"):0} · 物理增伤 {CardRules.Number(owner, "forged_physical_bonus") * 100:0.##}%\n锋锐只用于已勾选的用剑攻击。关键词常驻、触发和主动获授能力暂未接入。";
+        _status.Text = (_equipped ? "已装备一件器" : "未装备器物") + $" · 当前物防 {CardRules.Number(owner, "physical_defense"):0} · 旧公式物理增伤 {CardRules.Number(owner, "forged_physical_bonus") * 100:0.##}%\n已接本器实际形成的御用/直施技能及在场与施法灵识；器蕴未接。";
     }
     private void KeepSnapshot(BattleEntityData snapshot)
     {

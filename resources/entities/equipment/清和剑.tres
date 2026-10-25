@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SectArtifactOfferData" format=3]
+[ext_resource type="Script" path="res://csharp/resources/SectArtifactOfferData.cs" id="1"]
+[resource]
+script = ExtResource("1")
+definition_id = &"sect_artifact_qinghe"
+entity_name = "清和剑"
+item_category = "器具"
+item_subcategory = "法器·剑"
+icon_path = "res://textures/ui/forged_swords_icons_20261025_v1/slender_sword.png"
+description = "兑换后收入行囊，可装备到武器槽。器物技能需手动装入技能槽，具体效能与器蕴请查看器物详情。"
+can_stack = false
+max_stack = 1
+example_index = 1

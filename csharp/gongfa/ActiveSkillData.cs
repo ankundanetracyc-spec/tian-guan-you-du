@@ -7,6 +7,9 @@ public partial class ActiveSkillData : Resource
     // 来源身份与法器运行时分支；不伪造 ResourcePath，不写入永久技能列表。
     [Export] public string combat_source_key = "";
     [Export] public string artifact_instance_id = "";
+    [Export] public string forged_source_instance_id = "";
+    [Export] public int forged_spirit_cost;
+    [Export] public int forged_flat_ignore;
     [Export] public ActiveSkillData? artifact_summon_skill;
     [Export] public bool artifact_is_summon;
     [Export] public bool combat_empty_slot;
@@ -48,6 +51,8 @@ public partial class ActiveSkillData : Resource
     [Export] public string attack_style = "";
     /// <summary>运行时派生的补充伤害段，不重复触发原技能的附加效果。</summary>
     [Export] public bool combat_is_gongfa_bonus_damage_segment;
+    /// <summary>流云剑势追加段，沿用本次行动快照。</summary>
+    [Export] public bool combat_is_cloud_segment;
     /// <summary>运行时派生的血臂追击段；主修增幅只作用于该段。</summary>
     [Export] public bool combat_is_blood_arm_segment;
     /// <summary>运行时派生的血臂演出段；化法复制段也可由血臂执行演出。</summary>
@@ -141,7 +146,11 @@ public partial class ActiveSkillData : Resource
             if(status=="化解")count=CardRules.Block(this,owner,count);
             if (!string.IsNullOrEmpty(status)) lines.Add($"获得 {count} 层{status}。");
         }
-        if (keywords.Contains("应对")) lines.Insert(0, "应对触发：当前槽遇到匹配来袭时立即触发。" + (CardRules.NormalCast(this) is null ? "未触发则空放，不消耗费用。" : "未触发则结算独立的普通打出效果与费用。"));
+        if (keywords.Contains("应对"))
+        {
+            var trigger = counter_condition == "on_physical_attacked" ? "当前槽受到敌方物理攻击时立即触发。" : "当前槽遇到匹配来袭时立即触发。";
+            lines.Insert(0, "应对触发：" + trigger + (CardRules.NormalCast(this) is null ? "未触发则空放，不消耗费用。" : "未触发则结算独立的普通打出效果与费用。"));
+        }
         return lines.Count == 0 ? (string.IsNullOrWhiteSpace(description)?"施展本技能效果。":description) : string.Join("\n", lines);
     }
     public string get_skill_description(GodotObject? owner = null) => CardPresentation.Face(this, owner);
@@ -160,6 +169,7 @@ public partial class ActiveSkillData : Resource
         var baseValue = CardRules.Evaluate(effect.GetValueOrDefault("formula", "").AsString(), owner);
         return id switch
         {
+            "forest_bei_pack_call" => "使全体存活的友方林地凶狼各获得1层逐猎，最多3层。",
             "shield" => $"获得 {baseValue:0.##} 点护盾。",
             "restore_stamina" => $"恢复 {baseValue:0.##} 点体力。",
             "gain_energy" => $"获得 {count} 点体力。",
@@ -169,6 +179,8 @@ public partial class ActiveSkillData : Resource
             "gain_punch_frame" => $"获得 {count} 层拳架。",
             "gain_qi_blood" => $"获得 {count} 层气血。",
             "gain_qi" => $"获得炁 {count}。",
+            "gain_sword_intent" => $"获得剑意 {count} 层。",
+            "consume_sword_intent" => "命中后消耗全部剑意。",
             "disperse_qi_blood" => $"打散目标 {count} 层气血。",
             "assign_nian_to_next_skill" => $"为行动队列中下一项不同的主动技能实例赋念 {count} 层；若没有合宜后续招式，本招不结算。",
             "precision_if_guarding" => "自身有护持、化解或借力时提高精准。",

@@ -3,7 +3,7 @@ using Godot;
 /// <summary>单名角色技能队列中的一条指令。所有时间均以战斗模拟帧计。</summary>
 public class BattleQueuedSkill
 {
-    public enum ActionKind { Skill, Rest, Retreat, Empty }
+    public enum ActionKind { Skill, Rest, Retreat, Empty, Pill }
     public enum Phase { Waiting, Preparing, Resolving, Recovering, HoldingResponse }
 
     public ActionKind kind = ActionKind.Skill;
@@ -20,6 +20,8 @@ public class BattleQueuedSkill
     public bool wound_timing_adjusted;
     public bool completed;
     public bool skipped;
+    public int supply_slot = -1;
+    public string supply_path = "";
     public string artifact_instance_id = "";
     public ArtifactBattleRuntime.Intent artifact_intent = ArtifactBattleRuntime.Intent.None;
     public ActiveSkillData execution_skill => artifact_intent == ArtifactBattleRuntime.Intent.Summon ? skill.artifact_summon_skill ?? skill : skill;
@@ -43,11 +45,15 @@ public class BattleQueuedSkill
     public static BattleQueuedSkill Retreat() => new(ActionKind.Retreat);
     public static BattleQueuedSkill Empty() => new(ActionKind.Empty);
     public static BattleQueuedSkill Rest() => new(ActionKind.Rest);
+    public static BattleQueuedSkill Pill(int slot, string path, GodotObject owner) =>
+        new(ActionKind.Pill) { supply_slot = slot, supply_path = path, target = owner };
     public string get_display_name() => kind switch
     {
         ActionKind.Empty => "空位",
         ActionKind.Retreat => "撤退",
         ActionKind.Rest => "休整",
+        ActionKind.Pill => BattleSupplyRules.Load(supply_path) is { } pill
+            ? $"服用·{BattleSupplyRules.Name(pill)}〔{BattleSupplyRules.QualityNames[pill.efficacy_tier]}〕" : "服丹",
         _ => (skill?.skill_name ?? "技能") + (artifact_instance_id.Length == 0 ? "" : artifact_intent == ArtifactBattleRuntime.Intent.Summon ? "〔召唤〕" : artifact_intent == ArtifactBattleRuntime.Intent.Use ? "〔御使〕" : "〔不可用〕")
     };
 

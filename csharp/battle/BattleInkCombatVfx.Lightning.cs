@@ -9,6 +9,8 @@ public partial class BattleInkCombatVfx
     public static void PresentAttackPose(Node2D actor, Vector2 direction, ActiveSkillData skill)
     {
         if (actor.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll") is not { } doll) return;
+        var swordPose=BattleSwordArt.PoseKey(skill);
+        if(swordPose is "cut" or "finish"&&doll.play_sword_action(swordPose,direction))return;
         if (IsJingzhe(skill)) doll.play_cast(direction);
         else if (UsesThrowCast(skill)) doll.play_throw(direction);
         else doll.play_attack(direction, UsesHandChop(skill));

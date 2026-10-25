@@ -82,6 +82,16 @@ public partial class BattleManager
             var kind = effect.GetValueOrDefault("effect", "").AsString();
             switch (kind)
             {
+                case "forest_bei_pack_call":
+                {
+                    var recipients = PackWolves(unit).Count(wolf => wolf.get_status_stacks("逐猎") + repeatCount < 3);
+                    if (recipients > 0)
+                    {
+                        result.Priority = Math.Max(result.Priority, 2);
+                        result.Score += recipients * 240f;
+                    }
+                    break;
+                }
                 case "restore_health_percent":
                 {
                     var amount = Math.Max(1, Mathf.RoundToInt(maxHealth * effect.GetValueOrDefault("percent", .03f).AsSingle()));

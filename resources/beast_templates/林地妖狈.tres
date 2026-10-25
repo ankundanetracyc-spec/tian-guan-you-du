@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="BeastTemplate" load_steps=4 format=3]
+[ext_resource type="Script" path="res://csharp/resources/BeastTemplate.cs" id="1"]
+[ext_resource type="Resource" path="res://resources/beast_talents/林地妖狈·狈首.tres" id="2"]
+[ext_resource type="Resource" path="res://resources/beast_decks/林地妖狈.tres" id="3"]
+[resource]
+script = ExtResource("1")
+species_id = "forest_bei"
+display_name = "林地妖狈"
+cultivation_realm = "通智"
+cultivation_stage = "初期"
+battle_portrait_path = "res://textures/bestiary/static/forest_bei_v1.png"
+physique_min = 6.0
+physique_mean = 7.0
+physique_max = 8.0
+intelligence_min = 7.0
+intelligence_mean = 8.0
+intelligence_max = 9.0
+soul_min = 8.0
+soul_mean = 9.0
+soul_max = 10.0
+racial_talent = ExtResource("2")
+deck = ExtResource("3")
+initial_hand_size = 5
+cards_per_turn = 3

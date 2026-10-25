@@ -42,7 +42,7 @@ public partial class EastWoodsDungeonPanel
             apply_pawn_gait(_travelPawn, from, fromCentre, toCentre, to, t);
             _travelCameraPosition = (fromCentre + half).Lerp(toCentre + half, t);
         }), 0f, 1f, PawnStepSeconds);
-        _pawnTween.TweenCallback(Callable.From(finish_pawn_step));
+        _pawnTween.TweenCallback(Callable.From(finish_player_arrival));
     }
 
     private void finish_pawn_step()

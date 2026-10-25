@@ -99,9 +99,18 @@ public partial class MainHUD : Control
     public void set_task_entries(IEnumerable<JournalPanel.Entry> entries, bool visible)
     {
         if (_taskTracker is null || _taskList is null) return;
+        var displayed = entries.Take(2).ToArray();
+        var presentation = displayed.Select(entry => (entry.Id, entry.Title, entry.Body)).ToArray();
+        if (_taskTrackerPresentation.SequenceEqual(presentation))
+        {
+            _taskTracker.Visible = visible && displayed.Length > 0;
+            if (_taskTrackerToggle is not null) _taskTrackerToggle.Visible = _taskTracker.Visible;
+            return;
+        }
+        _taskTrackerPresentation = presentation;
         foreach (var child in _taskList.GetChildren()) { _taskList.RemoveChild(child); child.QueueFree(); }
         var index = 0;
-        foreach (var entry in entries.Take(2))
+        foreach (var entry in displayed)
         {
             if (index > 0) _taskList.AddChild(WorldHudStyle.Rule());
             var button = new Button { Name = "TaskEntry" + index, Text = "", MouseFilter = MouseFilterEnum.Stop, ClipContents = true,
@@ -259,7 +268,7 @@ public partial class MainHUD : Control
             if (GetNodeOrNull<Button>("PlayerStatus") is { } status)
             {
                 var tooltipGameHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
-                var worldStatuses = WorldStatusRules.format_summary((_player.entity_data as HumanData)?.world_status_records, tooltipGameHour);
+                var worldStatuses = WorldStatusRules.format_summary(PillToxicityRules.WithStatus(_player.entity_data as HumanData, tooltipGameHour), tooltipGameHour);
                 var cultivationStatus = CharacterStatusPresentationRules.format_bottleneck_hud_line(_player.get_cultivation_bottleneck_summary());
                 var cultivationTooltip = string.IsNullOrWhiteSpace(cultivationStatus) ? "" : $"\n{cultivationStatus.Trim()}";
                 HoverInfoManager.SetTooltip(status, $"{_player.entity_name} · {realm}\n生命 {_player.current_health} / {_player.max_health}\n精力 {_player.current_world_stamina:0.#} / {_player.max_world_stamina:0.#}\n大世界状态：{worldStatuses}{cultivationTooltip}");
@@ -279,7 +288,7 @@ public partial class MainHUD : Control
         }
         if (_worldStatusLabel is not null)
         {
-            _worldStatusLabel.Text = WorldStatusRules.format_hud_line((_player!.entity_data as HumanData)?.world_status_records, currentGameHour);
+            _worldStatusLabel.Text = WorldStatusRules.format_hud_line(PillToxicityRules.WithStatus(_player!.entity_data as HumanData, currentGameHour), currentGameHour);
             _worldStatusLabel.Visible = !string.IsNullOrWhiteSpace(_worldStatusLabel.Text);
             if (_worldStatusLabel.Visible) statusLineCount++;
         }

@@ -20,7 +20,7 @@ public partial class ItemData : EntityData
     [Export] public Resource? craft_data;
     [Export] public float required_study_progress;
 
-    public string get_grade_string() => ItemAffixCatalog.grade_to_string(grade_value);
+    public virtual string get_grade_string() => ItemAffixCatalog.grade_to_string(grade_value);
 
     public virtual Array<string> validate_definition()
     {

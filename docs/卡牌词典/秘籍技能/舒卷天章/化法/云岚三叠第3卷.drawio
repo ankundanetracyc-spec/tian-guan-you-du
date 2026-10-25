@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram name="云岚三叠化法">
+    <mxGraphModel grid="1" page="1" pageWidth="1400" pageHeight="1500">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="main" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：云岚三叠&lt;br&gt;&lt;br&gt;化法追加：首次追加攻击概率提高10个百分点，上限80%。&lt;br&gt;计算公式：C=min(80%,50% + 本次行动开始时剑意层数×5% + 剑道造诣×0.5%)；D=max(0%,C−20个百分点)；E=max(0%,C−40个百分点)&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="100" y="100" width="850" height="140" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

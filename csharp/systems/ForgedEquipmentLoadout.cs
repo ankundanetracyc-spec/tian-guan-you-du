@@ -21,6 +21,12 @@ public sealed class ForgedEquipmentLoadout
     }
     public static bool IsPhysicalAttack(ActiveSkillData skill) => !skill.combat_empty_slot && skill.skill_type == ActiveSkillData.SkillType.ATTACK
         && skill.damage_type == "physical" && (skill.base_damage > 0 || skill.damage_formula.Length > 0 || skill.damage_bonuses.Count > 0);
+    public static string BindingScope(ProcessForgingTrial.Effect effect) => effect.AtomId switch
+    {
+        "defuse_flat" => "能实际应对并施加化解的技能",
+        "physical_defense_ignore_ratio" => "带气血关键词且造成单体物理伤害的技能",
+        _ => effect.Scope
+    };
     public bool SetSwordUse(ActiveSkillData skill, bool enabled)
     {
         string key = ArtifactSkillFactory.Key(skill);
@@ -43,6 +49,14 @@ public sealed class ForgedEquipmentLoadout
         var effect = _item.Effects.FirstOrDefault(x => x.EffectId == effectId); string key = ArtifactSkillFactory.Key(skill);
         if (effect is null || key.Length == 0 || !CanBind(effect, skill) || _bindings.Any(x => x.Key != effectId && x.Value == key)) return false;
         _bindings[effectId] = key; return true;
+    }
+    /// <summary>现行试用入口：整器只选择一个对象，不满足该技能条件的修正不生效。</summary>
+    public void BindSingle(ActiveSkillData? skill)
+    {
+        _bindings.Clear();
+        if (skill is null) return;
+        foreach (var effect in _item.Effects.Where(effect => CanBind(effect, skill)))
+            _bindings[effect.EffectId] = ArtifactSkillFactory.Key(skill);
     }
     public BattleEntityData BuildSnapshot(BattleEntityData unequippedBaseline)
     {

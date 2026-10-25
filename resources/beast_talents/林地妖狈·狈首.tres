@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="BeastRacialTalent" format=3]
+[ext_resource type="Script" path="res://csharp/resources/BeastRacialTalent.cs" id="1"]
+[resource]
+script = ExtResource("1")
+talent_id = "forest_bei_pack_chief"
+talent_name = "狈首"
+description = "自身存活时，同阵营林地凶狼触发群猎本能，也使发动者自身获得1层逐猎，最多3层。多个狈首不重复生效；自身倒下后停止后续补给，已有逐猎保留至战斗结束。"

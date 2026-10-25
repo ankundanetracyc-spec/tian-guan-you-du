@@ -1,0 +1,66 @@
+{
+  "idle": {
+    "source_image": "idle_no_sword.png",
+    "already_swordless": true,
+    "source_scale": 1.229,
+    "grip": [
+      574,
+      663
+    ],
+    "tip": [
+      1100,
+      1026
+    ],
+    "ground": [
+      667,
+      1234
+    ],
+    "guard_distance": 55,
+    "hand_rect": [
+      530,
+      603,
+      91,
+      99
+    ],
+    "front": [
+      [
+        533,
+        650
+      ],
+      [
+        552,
+        646
+      ],
+      [
+        577,
+        658
+      ],
+      [
+        596,
+        655
+      ],
+      [
+        603,
+        630
+      ],
+      [
+        619,
+        645
+      ],
+      [
+        620,
+        675
+      ],
+      [
+        598,
+        704
+      ],
+      [
+        531,
+        681
+      ]
+    ],
+    "weapon_hand": "right",
+    "free_hand": "left"
+  }
+}

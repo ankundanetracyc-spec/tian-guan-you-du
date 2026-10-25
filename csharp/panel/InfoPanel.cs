@@ -176,6 +176,7 @@ public partial class InfoPanel : Control
 
     public void hide_panel()
     {
+        clear_skill_rewrite_drag_state();
         _readerPanel?.Hide(); _gongfaModal?.Hide();
         _tooltipPanel?.Hide();
         _moodDetailsOverlay?.Hide();
@@ -1096,7 +1097,8 @@ public partial class InfoPanel : Control
         return value[..Math.Max(1, maxLength - 1)] + "…";
     }
 
-    private static string gongfa_skill_target(ActiveSkillData skill) => CardRules.IsResponse(skill)
+    private static string gongfa_skill_target(ActiveSkillData skill) => BattleInkCombatVfx.IsForestBeiPackCall(skill)
+        ? "全体存活的友方林地凶狼（含同物种变种）" : CardRules.IsResponse(skill)
         ? "自身（敌方攻击自身时应对）"
         : skill.target_type switch { 2 => "指定敌方", 3 => "指定任意目标", _ => "自身" };
 

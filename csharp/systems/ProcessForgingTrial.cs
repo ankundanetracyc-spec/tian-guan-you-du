@@ -67,6 +67,7 @@ public sealed partial class ProcessForgingTrial
     public sealed class Config
     {
         public string Version { get; set; } = "";
+        public Dictionary<string, double> BondParameters { get; set; } = [];
         public int ExtraSourceProficiency { get; set; }
         public int ExtraAuxiliaryProficiency { get; set; }
         public int AdvancedAuxiliaryProficiency { get; set; }
@@ -241,7 +242,7 @@ public sealed partial class ProcessForgingTrial
     private void Validate()
     {
         var p = _parameters;
-        if (p.Version != "sword-process-trial-3" || p.MaxUnits <= 0 || !Positive(p.QuantityScale) || !Positive(p.SupplyScale) || !Positive(p.GradeBase) || p.GradeBase <= 1) throw new InvalidOperationException("炼器公式参数缺项");
+        if (p.Version is not ("sword-process-trial-3" or "sword-process-trial-3-bonds-1" or "sword-process-trial-3-spirit-1") || p.MaxUnits < 0 || !Positive(p.QuantityScale) || !Positive(p.SupplyScale) || !Positive(p.GradeBase) || p.GradeBase <= 1) throw new InvalidOperationException("炼器公式参数缺项");
         string[] names = ["CapacityPerVolume", "ConnectionPerVolume", "ConnectionLoss", "ConflictLoss", "ProcessingLoss", "PolarityTolerance", "PolarityDecay", "CapacityScale", "MaintenanceScale", "TransmissionScale", "GradeBodyGrowth", "SharpnessScale", "IndirectSharpnessScale", "SpiritThreshold", "StabilityThreshold", "BodyScale", "SpiritBodyScale", "SpiritEffectScale", "MinimumSummonVolume", "WeightScale", "MinimumEffect", "BodyStability", "BodyMaintenance", "SharpnessReferenceThickness", "SharpnessShapeMinimum", "SharpnessShapeMaximum", "RetentionFloor", "ProficiencySpan"];
         foreach (string name in names) if (!p.Scalars.TryGetValue(name, out double x) || !Positive(x)) throw new InvalidOperationException("公式刻度缺项：" + name);
         if (N("StabilityThreshold") > 1) throw new InvalidOperationException("稳定标尺超过1");
@@ -267,23 +268,25 @@ public sealed partial class ProcessForgingTrial
     public static List<Input> Normalize(IEnumerable<Input> inputs) => inputs.Where(x => !string.IsNullOrWhiteSpace(x.Material)).GroupBy(x => (x.Role, x.Material)).Select(x => new Input { Role = x.Key.Role, Material = x.Key.Material, Quantity = x.Sum(v => v.Quantity) }).OrderBy(x => x.Role, StringComparer.Ordinal).ThenBy(x => x.Material, StringComparer.Ordinal).ToList();
     public string Fingerprint(Draft draft) => Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(JsonSerializer.Serialize(new { draft.Category, draft.Proficiency, Inputs = Normalize(draft.Inputs), Parameters = _parameterText, Materials = Normalize(draft.Inputs).Where(x => _facts.ContainsKey(x.Material)).Select(x => Snapshot(x.Material)).ToArray() })))).ToLowerInvariant();
     public static Evaluation Replay(Artifact a) => new ProcessForgingTrial(a).Evaluate(new Draft { Category = a.Category, Proficiency = a.Proficiency, Inputs = a.Sources.Select(x => Clone(x.Input)).ToList() });
-    public Preparation Inspect(Draft draft, IReadOnlyDictionary<string, int>? stock = null)
+    public Preparation Inspect(Draft draft, IReadOnlyDictionary<string, int>? stock = null, int? spiritCapacity = null, int otherUsedSpirit = 0)
     {
         var r = new Preparation(); var p = _parameters;
         if (draft.Category != "剑") r.Errors.Add("当前仅开放剑类加工");
-        if (draft.Proficiency < 0 || draft.Proficiency > 100) r.Errors.Add("试炼造诣须在0—100之间");
-        if (draft.Inputs.Any(x => x.Quantity < 1 || x.Quantity > 8)) r.Errors.Add("每行份数须为1—8整份");
+        if (draft.Proficiency < 0 || draft.Proficiency > 100) r.Errors.Add("炼器造诣须在0—100之间");
+        if (draft.Inputs.Any(x => x.Quantity < 1 || x.Quantity > 8)) r.Errors.Add("每个位置的同种材料须投入1—8整份");
         List<Input> inputs; try { inputs = Normalize(draft.Inputs); } catch (OverflowException) { r.Errors.Add("投料合计超出范围"); return r; }
         foreach (var i in inputs)
         {
-            if (i.Quantity > 8) r.Errors.Add(i.Material + "同岗合计不能超过8份");
-            if (!_facts.ContainsKey(i.Material) || !p.Profiles.TryGetValue(i.Material, out var v) || !v.Roles.Contains(i.Role)) { r.Errors.Add(i.Material + "没有该岗位的加工数据"); continue; }
+            if (i.Quantity > 8) r.Errors.Add(i.Material + "在同一位置合计不能超过8份");
+            if (!_facts.ContainsKey(i.Material) || !p.Profiles.TryGetValue(i.Material, out var v) || !v.Roles.Contains(i.Role)) { r.Errors.Add(i.Material + "不能用于该材料位置"); continue; }
             r.Required[i.Material] = r.Required.GetValueOrDefault(i.Material) + i.Quantity;
         }
-        foreach (string role in RoleOrder) if (inputs.Count(x => x.Role == role) > Slots(role, draft.Proficiency)) r.Errors.Add(role + "超过当前开放位置");
+        foreach (string role in RoleOrder) if (inputs.Count(x => x.Role == role) > Slots(role, draft.Proficiency)) r.Errors.Add(role.Replace("复合身材", "辅体") + "超过当前可用位置");
         foreach (string role in new[] { "主体", "承接" }) if (!inputs.Any(x => x.Role == role)) r.Errors.Add("缺少" + role);
-        r.Units = inputs.Sum(x => x.Quantity); if (r.Units > p.MaxUnits) r.Errors.Add("全炉最多" + p.MaxUnits + "份");
-        if (stock is not null) foreach (var (name, q) in r.Required) if (!stock.TryGetValue(name, out int count) || count < q) r.Errors.Add(name + "试炼库存不足");
+        r.Units = inputs.Sum(x => x.Quantity); if (p.MaxUnits > 0 && r.Units > p.MaxUnits) r.Errors.Add("全炉最多" + p.MaxUnits + "份");
+        if (spiritCapacity.HasValue && SpiritDemand(draft) > Math.Max(0, spiritCapacity.Value - Math.Max(0, otherUsedSpirit)))
+            r.Errors.Add($"本次需灵识{SpiritDemand(draft)}，当前可支配{Math.Max(0, spiritCapacity.Value - Math.Max(0, otherUsedSpirit))}；请减量或调整材料。");
+        if (stock is not null) foreach (var (name, q) in r.Required) if (!stock.TryGetValue(name, out int count) || count < q) r.Errors.Add(name + "数量不足");
         var known = inputs.Where(x => x.Quantity > 0 && p.Profiles.ContainsKey(x.Material) && _facts.ContainsKey(x.Material)).ToArray();
         r.Hours = (int)Math.Ceiling(known.Sum(x => x.Quantity) / 3.0); r.Energy = r.Hours * 2;
         double weight = known.Sum(x => Q(x.Quantity) * Retention(p.Profiles[x.Material], draft.Proficiency));
@@ -311,12 +314,21 @@ public sealed partial class ProcessForgingTrial
         public int Hours { get; private set; }
         public int Energy { get; private set; }
         public Session(IEnumerable<string> materials) { foreach (string name in materials) Stock[name] = 30; }
-        public bool IsSubmitted(ProcessForgingTrial model, Draft draft, long revision) => _submitted.Contains(revision + ":" + model.Fingerprint(draft));
-        public Evaluation Submit(ProcessForgingTrial model, Draft draft, long revision)
+        // 正式人物事务已扣费；这里只保存本次页面的查看记录，不重复扣料。
+        public void Record(Evaluation result, Draft draft)
         {
-            var preparation = model.Inspect(draft, Stock); if (!preparation.CanSubmit) return ClonePreparation(preparation);
+            if (!result.CanSubmit) return;
+            Hours += result.Hours; Energy += result.Energy;
+            _attempts.Add(new Attempt { Number = _attempts.Count + 1, Inputs = Normalize(draft.Inputs),
+                Success = result.Success, ArtifactId = result.Product?.InstanceId ?? "",
+                Failures = [.. result.Failures], Hours = result.Hours, Energy = result.Energy });
+        }
+        public bool IsSubmitted(ProcessForgingTrial model, Draft draft, long revision) => _submitted.Contains(revision + ":" + model.Fingerprint(draft));
+        public Evaluation Submit(ProcessForgingTrial model, Draft draft, long revision, int? spiritCapacity = null, int otherUsedSpirit = 0)
+        {
+            var preparation = model.Inspect(draft, Stock, spiritCapacity, otherUsedSpirit); if (!preparation.CanSubmit) return ClonePreparation(preparation);
             string token = revision + ":" + model.Fingerprint(draft);
-            if (_submitted.Contains(token)) { var denied = ClonePreparation(preparation); denied.Errors.Add("本次草稿已结算；改料或重新载入后再试"); return denied; }
+            if (_submitted.Contains(token)) { var denied = ClonePreparation(preparation); denied.Errors.Add("本次投料已炼制；调整投料后可再次开炼"); return denied; }
             var result = model.Evaluate(Clone(draft), Stock); if (!result.CanSubmit) return result;
             _submitted.Add(token); foreach (var (name, q) in result.Required) Stock[name] -= q;
             Hours += result.Hours; Energy += result.Energy;

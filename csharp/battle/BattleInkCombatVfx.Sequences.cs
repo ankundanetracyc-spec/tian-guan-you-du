@@ -99,6 +99,7 @@ public partial class BattleInkCombatVfx
     {
         if (target is Node2D unit && SideDoll(unit) is { } doll)
         {
+            PlaySwordGuardContact(doll);
             PlayGuard(doll);
             EmphasizeContact(attacker, unit, .9f);
         }

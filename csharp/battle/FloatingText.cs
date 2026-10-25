@@ -8,12 +8,20 @@ public partial class FloatingText : Node2D
     private Node2D? _actionOwner;
     private BattleManager? _actionManager;
     private float _actionRise;
+    private Node2D? _screenVisual;
+    private Vector2 _avoidance;
+    private BattleUnitOverlay? _unitOverlay;
 
     public override void _Ready()
     {
         AddToGroup("battle_action_visuals");
         _label = GetNodeOrNull<Label>("Label") ?? new Label();
-        if (_label.GetParent() is null) AddChild(_label);
+        _screenVisual=new Node2D{Name="FloatingFeedback",ZIndex=BattlePresentationLayers.Numbers,Visible=false};
+        BattlePresentationLayers.FeedbackLayer(this).AddChild(_screenVisual);
+        if(_label.GetParent() is null)_screenVisual.AddChild(_label);
+        else _label.Reparent(_screenVisual,false);
+        _actionManager=GetTree().GetFirstNodeInGroup("battle_mgr") as BattleManager;
+        _unitOverlay=GetTree().GetNodesInGroup("battle_unit_overlays").OfType<BattleUnitOverlay>().FirstOrDefault();
         // 战斗数字需要在角色和场景背景之上仍能一眼读清。
         _label.AddThemeFontSizeOverride("font_size", 52);
         _label.AddThemeColorOverride("font_outline_color", Colors.Black);
@@ -31,6 +39,7 @@ public partial class FloatingText : Node2D
     {
         if (_label is null) return;
         ConfigureLabel(text, color, fontSize);
+        UpdateScreenVisual(0,true);
         // 倍速只推进技能队列；伤害飘字仍按同一可读时长演出。
         float duration(float value) => value;
         var tween = CreateTween().SetPauseMode(Tween.TweenPauseMode.Stop);
@@ -49,6 +58,7 @@ public partial class FloatingText : Node2D
         // 长招式名适当缩字，保持在本人的头顶区域内。
         if (_label.Size.X > 240) ConfigureLabel(text, BattleUiArt.Text, Math.Max(20, Mathf.FloorToInt(32 * 240 / _label.Size.X)));
         FollowActionOwner();
+        UpdateScreenVisual(0,true);
         var tween = CreateTween().SetPauseMode(Tween.TweenPauseMode.Stop);
         tween.TweenMethod(Callable.From<float>(rise => _actionRise = rise), 0f, 10f, 1.2f);
         tween.Parallel().TweenProperty(_label, "modulate:a", 0f, .3f).SetDelay(.9f);
@@ -57,9 +67,40 @@ public partial class FloatingText : Node2D
 
     public override void _Process(double delta)
     {
-        if (_actionOwner is null) return;
-        if (!IsInstanceValid(_actionOwner) || !_actionOwner.IsInsideTree()) { QueueFree(); return; }
-        FollowActionOwner();
+        if(_actionOwner is not null)
+        {
+            if (!IsInstanceValid(_actionOwner) || !_actionOwner.IsInsideTree()) { QueueFree(); return; }
+            FollowActionOwner();
+        }
+        UpdateScreenVisual((float)delta);
+    }
+
+    public override void _ExitTree()
+    {
+        if(IsInstanceValid(_screenVisual)&&!_screenVisual!.IsQueuedForDeletion())_screenVisual.QueueFree();
+    }
+
+    private void UpdateScreenVisual(float delta,bool immediate=false)
+    {
+        if(!IsInstanceValid(_screenVisual)||_label is null)return;
+        var transform=GetGlobalTransformWithCanvas();
+        var point=BattleLocalFocusView.FrameUnitRect(this,new Rect2(transform.Origin,Vector2.Zero)).Position;
+        var scale=transform.Scale.Abs();
+        var half=_label.Size*scale*.5f;
+        var safe=point;
+        if(IsInstanceValid(_unitOverlay))
+            foreach(var rect in _unitOverlay!.FeedbackObstacles())
+                if(rect.Grow(6).Intersects(new Rect2(safe-half,half*2)))safe.Y=Mathf.Min(safe.Y,rect.Position.Y-half.Y-10);
+        var target=new Vector2(0,Mathf.Min(0,safe.Y-point.Y));
+        _avoidance=immediate?target:_avoidance.Lerp(target,1-Mathf.Exp(-delta*14));
+        point+=_avoidance;
+        var viewport=GetViewport().GetVisibleRect().Size;
+        var uiScale=BattleUiArt.Scale(GetViewport());var origin=BattleUiArt.Origin(GetViewport());
+        point.X=Mathf.Clamp(point.X,half.X+8,Mathf.Max(half.X+8,viewport.X-half.X-8));
+        var top=origin.Y+96*uiScale+half.Y;
+        var bottom=Mathf.Max(top,origin.Y+828*uiScale-half.Y);
+        point.Y=Mathf.Clamp(point.Y,top,bottom);
+        _screenVisual!.Position=point;_screenVisual.Scale=scale;_screenVisual.Visible=true;
     }
 
     private void FollowActionOwner()

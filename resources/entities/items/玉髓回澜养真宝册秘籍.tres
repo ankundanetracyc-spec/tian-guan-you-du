@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/ItemData.cs" id="1"]
+[ext_resource type="Resource" path="res://resources/gongfa/玉髓回澜养真宝册.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+definition_id = &"manual_yusui"
+entity_name = "玉髓回澜养真宝册"
+icon_path = "res://textures/items/item_secret_manual_ink_v1.png"
+can_stack = false
+max_stack = 1
+item_category = "秘籍"
+item_subcategory = "云息境"
+gongfa = ExtResource("2")

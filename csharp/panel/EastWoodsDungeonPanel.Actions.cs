@@ -6,7 +6,10 @@ using System.Linq;
 public partial class EastWoodsDungeonPanel
 {
     public event Action<string, string>? ActionRequested;
+    public event Action? CompactRouteRequested;
     private Godot.Collections.Dictionary _actionProgress = new();
+    private Dictionary<string, List<EastWoodsActions.ActionDef>>? _refreshBeastActions;
+    private bool _refreshingMapActions;
     private PanelContainer? _actionBar, _actionCard;
     private VBoxContainer? _actionRows;
     private Control? _actionModal;
@@ -30,7 +33,12 @@ public partial class EastWoodsDungeonPanel
         if (_dynamicMode) return DynamicDungeonExpedition.AvailableActions(_dynamicInstanceState, node, _actionProgress);
         var result = new List<EastWoodsActions.ActionDef>();
         if (EastWoodsActions.Content(node) is { } fixedAction && action_remaining(node, fixedAction) > 0) result.Add(fixedAction);
-        result.AddRange(EastWoodsEcology.AvailableRegeneratedBeasts(node, _actionProgress));
+        if (_refreshingMapActions)
+        {
+            _refreshBeastActions ??= EastWoodsEcology.IndexAvailableRegeneratedBeasts(_actionProgress);
+            if (_refreshBeastActions.TryGetValue(node, out var beasts)) result.AddRange(beasts);
+        }
+        else result.AddRange(EastWoodsEcology.AvailableRegeneratedBeasts(node, _actionProgress));
         return result;
     }
 
@@ -94,13 +102,13 @@ public partial class EastWoodsDungeonPanel
         if (_actionModal?.Visible != true) return false;
         _actionModal.Hide(); _offeredAction = ""; return true;
     }
-    public bool can_leave() => Visible && _current == route_exit_node_id && !_isTraveling && !_actionBusy && !_npcEncounterBusy && _travelPawn is null;
+    public bool can_leave() => Visible && is_route_exit(_current) && !_isTraveling && !_actionBusy && !_npcEncounterBusy && _travelPawn is null;
 
     public void return_one_level()
     {
         if (close_action_details()) return;
         interrupt_travel();
-        open_action_card("暂歇", _dynamicMode ? "你仍在雾隐幽谷内。查看界面不推进游戏时间；须返回入口出口才能离开。" : "你仍在东林地内。查看界面不推进游戏时间；离开须沿林径返回林缘出口。", "", "");
+        open_action_card("暂歇", _dynamicMode ? $"你仍在{route_display_name}内。查看界面不推进游戏时间；须沿路线走到出口才能离开。" : "你仍在东林地内。查看界面不推进游戏时间；离开须沿林径返回林缘出口。", "", "");
     }
 
     public void locate_exit()
@@ -108,7 +116,7 @@ public partial class EastWoodsDungeonPanel
         if (_actionBusy || _npcEncounterBusy) return;
         close_action_details();
         interrupt_travel();
-        if (_current == route_exit_node_id)
+        if (is_route_exit(_current))
         {
             offer_exit();
             return;
@@ -119,18 +127,18 @@ public partial class EastWoodsDungeonPanel
     private void offer_exit()
     {
         if (!can_leave()) return;
-        var dynamicText = _dynamicMode;
-        open_action_card(dynamicText ? "离开雾隐幽谷" : "离开林地",
-            dynamicText ? "沿入口出口离开雾隐幽谷。已探明路线、资源、事件与遭遇状态会保留。若入口已到期，离开后不能再次进入。" : "沿林缘出口离开东林地。已取得物品与探明、采集、事件进度将保留，再次进入不会重置。",
+        open_action_card(_dynamicMode ? $"离开{route_display_name}" : "离开林地",
+            _dynamicMode ? $"沿实体出口离开{route_display_name}。已探明路线、资源、事件与遭遇状态会保留。" + (is_compact_route ? "再次进入不会重置采集和遭遇。" : "若入口已到期，离开后不能再次进入。") : "沿林缘出口离开东林地。已取得物品与探明、采集、事件进度将保留，再次进入不会重置。",
             "出口已抵达；取消不离场。", "__leave");
-        _actionConfirm!.Text = dynamicText ? "离开幽谷" : "离开林地";
+        _actionConfirm!.Text = _dynamicMode ? $"离开{route_display_name}" : "离开林地";
     }
 
     private void build_actions()
     {
-        _actionBar = new PanelContainer { Name = "CurrentNodeActions", AnchorLeft = .32f, AnchorRight = .68f, AnchorTop = .74f, AnchorBottom = .74f };
+        _actionBar = new PanelContainer { Name = "CurrentNodeActions", MouseFilter = MouseFilterEnum.Stop };
         _actionBar.AddThemeStyleboxOverride("panel", WorldHudStyle.Paper());
         AddChild(_actionBar);
+        _actionBar.MinimumSizeChanged += () => CallDeferred(nameof(position_current_node_actions));
         _actionRows = new VBoxContainer(); _actionRows.AddThemeConstantOverride("separation", 6); _actionBar.AddChild(_actionRows);
         _actionModal = new Control { Name = "NodeActionDetails", MouseFilter = MouseFilterEnum.Stop, Visible = false };
         _actionModal.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect); AddChild(_actionModal);
@@ -169,12 +177,8 @@ public partial class EastWoodsDungeonPanel
                 if (can_leave()) close();
                 return;
             }
-            if (!can_execute_action(node, id)) return;
             close_action_details();
-            // Synchronous settlement: no second click can enter while callbacks run.
-            _actionBusy = true;
-            try { ActionRequested?.Invoke(node, id); }
-            finally { _actionBusy = false; refresh_action_bar(); }
+            execute_named_action(node, id);
         };
         buttons.AddChild(_actionConfirm);
     }
@@ -196,9 +200,9 @@ public partial class EastWoodsDungeonPanel
         _actionBarStamp = stamp;
 
         foreach (var child in _actionRows.GetChildren()) { _actionRows.RemoveChild(child); child.QueueFree(); }
-        _actionBar.Visible = !_isTraveling && _travelPawn is null && _pendingPath.Count < 2;
+        _actionBar.Visible = !_isTraveling && _travelPawn is null && _pendingPath.Count < 2 && _actionModal?.Visible != true;
         var node = route_node(_current);
-        var heading = WorldHudStyle.Text(node?.ShowTitleOnMap == true ? node.Title : _dynamicMode ? "谷中驻足" : "林间驻足", 16);
+        var heading = WorldHudStyle.Text(node?.ShowTitleOnMap == true ? node.Title : _dynamicMode ? route_display_name : "林间驻足", 16);
         heading.HorizontalAlignment = HorizontalAlignment.Center; _actionRows.AddChild(heading);
         if (!_dynamicMode && _activeDutyId == "east_woods_patrol")
         {
@@ -206,29 +210,49 @@ public partial class EastWoodsDungeonPanel
             duty.Name = "DutyProgress"; duty.AutowrapMode = TextServer.AutowrapMode.WordSmart;
             duty.HorizontalAlignment = HorizontalAlignment.Center; _actionRows.AddChild(duty);
         }
-        var row = new HBoxContainer { Alignment = BoxContainer.AlignmentMode.Center }; row.AddThemeConstantOverride("separation", 16); _actionRows.AddChild(row);
+        var row = new HFlowContainer(); row.AddThemeConstantOverride("h_separation", 12); row.AddThemeConstantOverride("v_separation", 6); _actionRows.AddChild(row);
         if (!_dynamicMode && _activeDutyId == "east_woods_patrol")
         {
             var target = make_button("查看目标", 100, 32); target.Name = "PreviewDutyTarget";
             target.Pressed += preview_duty_target; row.AddChild(target);
         }
-        if (_current == route_exit_node_id)
+        if (!_dynamicMode && _current == route_entry_node_id)
         {
-            var leave = make_button(_dynamicMode ? "离开幽谷" : "离开林地", 116, 32); leave.Name = "LeaveDungeon";
+            var compact = make_button("蕨林采径", 116, 32); compact.Name = "EnterCompactRoute";
+            compact.Disabled = _actionBusy || _npcEncounterBusy;
+            compact.Pressed += () => { if (!_actionBusy && !_npcEncounterBusy) CompactRouteRequested?.Invoke(); };
+            row.AddChild(compact);
+        }
+        if (is_route_exit(_current))
+        {
+            var leave = make_button(_dynamicMode ? "离开" + route_display_name : "离开林地", 116, 32); leave.Name = "LeaveDungeon";
             leave.Pressed += offer_exit; row.AddChild(leave);
         }
         var choices = available_actions(_current);
         foreach (var action in choices)
         {
-            var button = make_button(action.Name, 100, 32); button.Name = "Action_" + action.Id;
+            var actionRow = new HBoxContainer(); actionRow.AddThemeConstantOverride("separation", 10); _actionRows.AddChild(actionRow);
+            var button = make_button(local_action_name(action), 0, 36); button.Name = "Action_" + action.Id;
+            button.SizeFlagsHorizontal = SizeFlags.ExpandFill;
             button.Disabled = _actionBusy || _npcEncounterBusy;
-            button.Pressed += () => offer_action(action); row.AddChild(button);
+            button.Pressed += () =>
+            {
+                if (action.ItemPath.Length > 0 || action.Battle) execute_named_action(_current, action.Id);
+                else offer_action(action);
+            };
+            actionRow.AddChild(button);
+            var detail = make_button("详情", 54, 36); detail.Name = "Detail_" + action.Id;
+            detail.Pressed += () => offer_action(action); actionRow.AddChild(detail);
+            var summary = WorldHudStyle.Text(local_action_summary(action), 14, true);
+            summary.AutowrapMode = TextServer.AutowrapMode.WordSmart; _actionRows.AddChild(summary);
         }
         var inspect = make_button("此地见闻", 116, 32); inspect.Pressed += () => show_action_result("此地见闻", node?.Description ?? ""); row.AddChild(inspect);
         if (choices.Count == 0)
         {
             var done = WorldHudStyle.Text("此地暂无待办，可继续行进。", 16, true); done.HorizontalAlignment = HorizontalAlignment.Center; _actionRows.AddChild(done);
         }
+        _actionBar.ResetSize();
+        CallDeferred(nameof(position_current_node_actions));
     }
     private void offer_action(EastWoodsActions.ActionDef action)
     {

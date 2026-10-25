@@ -27,4 +27,8 @@ public static class BattleAttackMotion
     public static Vector2 ReturnPosition(Vector2 contact, Vector2 home, float progress) =>
         contact.Lerp(home, progress) + Vector2.Up * Mathf.Sin(progress * Mathf.Pi)
         * Mathf.Min(32f, contact.DistanceTo(home) * .08f);
+
+    public static Vector2 ReturnPosition(Node2D actor, Vector2 contact, Vector2 home, float progress) =>
+        actor.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.uses_static_beast_poses() == true
+            ? contact.Lerp(home, progress) : ReturnPosition(contact, home, progress);
 }

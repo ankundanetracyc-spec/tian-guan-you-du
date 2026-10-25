@@ -1,0 +1,54 @@
+{
+  "finish": {
+    "source_image": "finish_right_grip_final.png",
+    "already_swordless": true,
+    "grip": [
+      867,
+      544
+    ],
+    "tip": [
+      1250,
+      544
+    ],
+    "ground": [
+      627,
+      1115
+    ],
+    "guard_distance": 55,
+    "hand_rect": [
+      824,
+      502,
+      92,
+      79
+    ],
+    "front": [
+      [
+        827,
+        529
+      ],
+      [
+        862,
+        525
+      ],
+      [
+        887,
+        518
+      ],
+      [
+        909,
+        533
+      ],
+      [
+        909,
+        573
+      ],
+      [
+        825,
+        573
+      ]
+    ],
+    "weapon_hand": "right",
+    "free_hand": "left, behind torso",
+    "revision": "2026-10-24 finish grip chirality: preserve the near right arm; reverse only the mistaken left-hand grip anatomy about the horizontal handle, with four fingers above and the opposing thumb below toward the guard. Retain two character layers."
+  }
+}

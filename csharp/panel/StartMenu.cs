@@ -220,9 +220,14 @@ public partial class StartMenu : Control
         var decks=TestDeckOptions();var books=TestBookOptions();var skillOptions=TestSkillOptions();
         var player=BuildTestLoadoutColumn("我方",decks,books,skillOptions);columns.AddChild(player.Scroll);
         var enemyControls=BuildTestLoadoutColumn("敌方",decks,books,skillOptions);columns.AddChild(enemyControls.Scroll);
-        enemyControls.Content.AddChild(new Label{Text="敌方单位"});var enemyKind=new OptionButton{SizeFlagsHorizontal=SizeFlags.ExpandFill};foreach(var name in new[]{"试炼盗匪","灰背野猪","精英·灰背野猪","迅蹄野猪","精英·迅蹄野猪","铁鬃野猪","精英·铁鬃野猪","林地凶狼","精英·林地凶狼","血牙凶狼","精英·血牙凶狼","影足凶狼","精英·影足凶狼"})enemyKind.AddItem(name);enemyControls.Content.AddChild(enemyKind);
+        enemyControls.Content.AddChild(new Label{Text="敌方单位"});var enemyKind=new OptionButton{SizeFlagsHorizontal=SizeFlags.ExpandFill};foreach(var name in new[]{"试炼盗匪","灰背野猪","精英·灰背野猪","迅蹄野猪","精英·迅蹄野猪","铁鬃野猪","精英·铁鬃野猪","林地凶狼","精英·林地凶狼","血牙凶狼","精英·血牙凶狼","影足凶狼","精英·影足凶狼","林地妖狈","狼狈组合（1狈＋狼）"})enemyKind.AddItem(name);enemyControls.Content.AddChild(enemyKind);
         enemyControls.Content.AddChild(new Label{Text="敌方数量"});var enemyCount=new OptionButton{SizeFlagsHorizontal=SizeFlags.ExpandFill};enemyCount.AddItem("1");enemyCount.AddItem("2");enemyCount.AddItem("3");enemyControls.Content.AddChild(enemyCount);
-        enemyKind.ItemSelected+=selected=>SetTestLoadoutEnabled(enemyControls,selected==0);
+        enemyKind.ItemSelected+=selected=>
+        {
+            SetTestLoadoutEnabled(enemyControls,selected==0);
+            if (selected == 14 && enemyCount.Selected == 0) enemyCount.Select(1);
+        };
+        enemyCount.ItemSelected+=selected=>{if(enemyKind.Selected==14&&selected==0)enemyCount.Select(1);};
         SetTestLoadoutEnabled(enemyControls,true);
         AddBattleTestPresets(root,player,enemyControls,enemyKind,enemyCount,books,skillOptions);
         var footer=new HBoxContainer();footer.AddThemeConstantOverride("separation",12);root.AddChild(footer);
@@ -325,6 +330,7 @@ public partial class StartMenu : Control
     {
         var transition = GetNodeOrNull<BattleTransitionManager>("/root/BattleTransitionManager");
         if (transition is null) { GD.PushError("StartMenu: 找不到战斗切换服务"); return; }
+        if (enemyKind == 14) enemyCount = Math.Max(2, enemyCount);
         var useBeast=enemyKind>0;var isWolf=enemyKind>=7;var elite=enemyKind is 2 or 4 or 6 or 8 or 10 or 12;
         BeastModifier? modifier=enemyKind is 3 or 4?ResourceLoader.Load<BeastModifier>("res://resources/beast_modifiers/迅蹄野猪.tres"):enemyKind is 5 or 6?ResourceLoader.Load<BeastModifier>("res://resources/beast_modifiers/铁鬃野猪.tres"):enemyKind is 9 or 10?ResourceLoader.Load<BeastModifier>("res://resources/beast_modifiers/血牙凶狼.tres"):enemyKind is 11 or 12?ResourceLoader.Load<BeastModifier>("res://resources/beast_modifiers/影足凶狼.tres"):null;
         var player = CreateTestUnit("试炼修士", (int)WorldEntity.Faction.PLAYER, 0);
@@ -333,10 +339,11 @@ public partial class StartMenu : Control
         var enemyScenes=new Godot.Collections.Array<PackedScene>();var enemies=new Godot.Collections.Array();
         for(var index=0;index<enemyCount;index++)
         {
-            var enemy=useBeast?(isWolf?CreateForestWolfTestUnit(modifier,elite,index):CreateGreybackBoarTestUnit(modifier,elite,index)):CreateTestUnit("试炼盗匪",(int)WorldEntity.Faction.ENEMY,index+1);
+            var isBei = enemyKind == 13 || (enemyKind == 14 && index == 0);
+            var enemy=isBei?CreateForestBeiTestUnit(index):useBeast?(isWolf?CreateForestWolfTestUnit(modifier,elite,index):CreateGreybackBoarTestUnit(modifier,elite,index)):CreateTestUnit("试炼盗匪",(int)WorldEntity.Faction.ENEMY,index+1);
             if(!useBeast)ApplyTestLoadout(enemy,SelectedPath(enemyControls.Deck,TestDeckOptions()),SelectedPath(enemyControls.MainBook,TestBookOptions()),SelectedPath(enemyControls.SubBook,TestBookOptions()),SelectedSkillPaths(enemyControls.Skills));
             ApplyTestResourceCaps(enemy,enemyControls);
-            enemies.Add(enemy);enemyScenes.Add(useBeast?(isWolf?CreateForestWolfScene(modifier,elite):CreateGreybackBoarScene(modifier,elite)):ResourceLoader.Load<PackedScene>(BattleTestCharacterScenePath)!);
+            enemies.Add(enemy);enemyScenes.Add(isBei?CreateForestBeiScene():useBeast?(isWolf?CreateForestWolfScene(modifier,elite):CreateGreybackBoarScene(modifier,elite)):ResourceLoader.Load<PackedScene>(BattleTestCharacterScenePath)!);
         }
         var characterScene = ResourceLoader.Load<PackedScene>(BattleTestCharacterScenePath);
         if (characterScene is null) { GD.PushError("StartMenu: 找不到战斗测试角色场景"); return; }
@@ -451,14 +458,22 @@ public partial class StartMenu : Control
         var result=new List<TestSkillOption>();
         foreach(var file in System.IO.Directory.EnumerateFiles(ProjectSettings.GlobalizePath("res://resources/activeskills"),"*.tres",System.IO.SearchOption.AllDirectories).OrderBy(path=>path,StringComparer.Ordinal))
         {
-            var path=ProjectSettings.LocalizePath(file);var skill=ResourceLoader.Load<ActiveSkillData>(path);
-            if(!Character.is_combat_skill_slot_eligible(skill))continue;
+            var path=ProjectSettings.LocalizePath(file);
+            if(!GongfaAvailability.IsSkillPathEnabled(path))continue;
+            if(!TestSkillDefinitions.TryGetValue(path,out var skill))
+            {
+                skill=ResourceLoader.Load<ActiveSkillData>(path);
+                if(skill is not null)TestSkillDefinitions[path]=skill;
+            }
+            if(skill is null||!Character.is_combat_skill_slot_eligible(skill))continue;
             var variant=path.Contains("/化法/",StringComparison.Ordinal)?" · 化法":"";
-            var source=string.IsNullOrWhiteSpace(skill!.source_gongfa_name)?"公共技能":skill.source_gongfa_name;
+            var source=path.Contains("/妖兽/林地妖狈/",StringComparison.Ordinal)?"林地妖狈":string.IsNullOrWhiteSpace(skill!.source_gongfa_name)?"公共技能":skill.source_gongfa_name;
             result.Add(new TestSkillOption($"{source} · {skill.skill_name}{variant}",path,CardRules.IsResponse(skill)));
         }
         return result.ToArray();
     }
+    // 测试目录贯穿多次配置刷新；Godot 原生缓存不替代 C# 资源包装器的强引用。
+    private static readonly Dictionary<string,ActiveSkillData> TestSkillDefinitions = new(StringComparer.Ordinal);
 
     /// <summary>测试双方先生成完整角色数据，再从角色快照进入战斗。</summary>
     private static BattleEntityData CreateTestUnit(string name, int faction, int seed)

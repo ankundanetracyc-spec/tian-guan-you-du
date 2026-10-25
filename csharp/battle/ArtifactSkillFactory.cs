@@ -5,6 +5,7 @@ public static class ArtifactSkillFactory
     public static string Key(ActiveSkillData skill) => string.IsNullOrEmpty(skill.combat_source_key) ? skill.ResourcePath : skill.combat_source_key;
     public static bool IsConfigured(ArtifactInstanceData item)
     {
+        if (ForgedArtifactInventory.IsForged(item)) return ForgedSwordBattleAdapter.IsSword(item);
         var p = item.combat_profile;
         if (p is null || item.form is null || p.physical_defense_ignore_ratio < 0 || p.physical_defense_ignore_ratio > 1
             || p.inner_block_bonus < 0 || p.uses_per_round < 0 || p.uses_per_battle < 0 || p.cooldown_rounds < 0) return false;

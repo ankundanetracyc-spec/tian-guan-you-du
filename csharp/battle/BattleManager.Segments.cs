@@ -24,9 +24,9 @@ public partial class BattleManager
         completedZhouTian = false;
         if (!GodotObject.IsInstanceValid(unit) || !battle_units.ContainsKey(unit) || amount < 0) return false;
         var state = get_battle_unit(unit);
-        var next = state.get_qi() + amount;
+        var next = (int)Math.Min(int.MaxValue,(long)Math.Max(0,state.get_qi())+amount);
         var manaCapacity = get_effective_mana_capacity(unit);
-        if (manaCapacity > 0 && next >= 2 * manaCapacity)
+        if (manaCapacity > 0 && next >= 2L * manaCapacity)
         {
             state.set_qi(0);
             unit.Set("current_mana", manaCapacity);
@@ -501,6 +501,7 @@ public partial class BattleManager
             CompleteSystemActionPresentation(unit);
             return;
         }
+        if (action.kind == BattleQueuedSkill.ActionKind.Pill) { ResolvePillAction(unit, action); return; }
         if (action.kind == BattleQueuedSkill.ActionKind.Retreat) { _executor?.show_action_name(unit, "撤退"); ResolveRetreat(unit); return; }
         if (action.artifact_intent == ArtifactBattleRuntime.Intent.Summon)
         { ResolveArtifactSummon(unit, action); return; }
@@ -550,6 +551,10 @@ public partial class BattleManager
 
     private bool CanResolveSegmentAction(GodotObject unit, BattleQueuedSkill action, bool responseTriggered = false)
     {
+        if (action.kind == BattleQueuedSkill.ActionKind.Pill)
+            return unit is Character owner && action.supply_slot >= 0 && action.supply_slot < owner.battle_supplies.Count &&
+                owner.battle_supplies[action.supply_slot].item_path == action.supply_path &&
+                owner.CanUseBattlePill(action.supply_slot, get_effective_mana_capacity(unit));
         if (action.kind != BattleQueuedSkill.ActionKind.Skill) return true;
         if (action.artifact_instance_id.Length > 0) return CanResolveArtifactAction(unit, action);
         var skill = responseTriggered ? action.skill : CardRules.NormalCast(action.skill);
@@ -581,6 +586,7 @@ public partial class BattleManager
     private async void CompleteSegmentAction(GodotObject unit)
     {
         if(!_pendingActionCompletions.Add(unit))return;
+        ReleaseForgedSpirit(unit);
         try
         {
             // 至少跨过一帧，让本次命中产生的受击、飘字与死亡节点全部注册。

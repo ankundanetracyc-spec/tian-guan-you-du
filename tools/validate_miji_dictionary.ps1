@@ -70,7 +70,8 @@ $buildKeywords = @(
 )
 $combatMechanicKeywords = @(
     (Text @(0x6C14,0x8840)), (Text @(0x62A4,0x76FE)), (Text @(0x5316,0x89E3)), (Text @(0x5468,0x5929)),
-    (Text @(0x6563,0x8840)), (Text @(0x7A7F,0x76FE))
+    (Text @(0x6563,0x8840)), (Text @(0x7A7F,0x76FE)), (Text @(0x5FF5)), (Text @(0x5FC3,0x9699)),
+    (Text @(0x5251)), (Text @(0x5251,0x610F))
 )
 $allowedKeywords += $buildKeywords + $combatMechanicKeywords
 
@@ -141,7 +142,7 @@ if ($FocusPaths.Count -eq 0 -and (Test-Path -LiteralPath $cardDictionaryRoot)) {
     $allDrawioFiles += Get-ChildItem -LiteralPath $cardDictionaryRoot -Recurse -File -Filter '*.drawio'
 }
 $allDrawioFiles = $allDrawioFiles | Sort-Object FullName -Unique
-$resourceCostPattern = '(?:' + (Text @(0x4F53,0x529B)) + '|' + (Text @(0x6CD5,0x529B)) + ')\s*\d+'
+$resourceCostPattern = '(?:' + (Text @(0x89E6,0x53D1,0x65F6)) + '\s*)?(?:' + (Text @(0x4F53,0x529B)) + '|' + (Text @(0x6CD5,0x529B)) + ')\s*\d+'
 $costHeaderPattern = '^' + [regex]::Escape($costLabel) + '\s*' + $resourceCostPattern + '(?:\s*[、，,]\s*' + $resourceCostPattern + ')?\s*$'
 $costHeaderLegacyPattern = '^' + [regex]::Escape($costLabel) + (Text @(0x4F53,0x529B)) + '\s*\d+.*' + (Text @(0x6CD5,0x529B)) + '\s*\d+.*' + (Text @(0x8C03,0x5EA6,0x6CD5,0x529B)) + '\s*\d+.*' + (Text @(0x7075,0x8BC6)) + '\s*\d+$'
 $targetRangeLabel = (Text @(0x76EE,0x6807,0x4E0E,0x5C04,0x7A0B,0xFF1A))

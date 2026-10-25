@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 /// <summary>Independent local recipe notebook; no inventory or character state.</summary>
 public static class AlchemyRecipeStore
 {
     public sealed record Entry(string MaterialId, int Dose, int Slot);
-    public sealed record Recipe(string Id, string Name, Entry[] Ingredients);
+    public sealed record Recipe(string Id, string Name, Entry[] Ingredients, [property: JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)] int PillCount = 0);
     public sealed record Notebook(int Version, List<Recipe> Recipes);
     public static List<Recipe> Load(string path)
     {
@@ -18,7 +19,7 @@ public static class AlchemyRecipeStore
         if (book.Version != 1 || book.Recipes is null)
             throw new InvalidDataException("不支持的丹方文件版本。");
         Validate(book.Recipes);
-        return book.Recipes;
+        return book.Recipes.Select(r => r with { PillCount = 0 }).ToList();
     }
     public static void Save(string path, List<Recipe> recipes)
     {
@@ -27,7 +28,7 @@ public static class AlchemyRecipeStore
         var temporary = path + ".tmp";
         try
         {
-            File.WriteAllText(temporary, JsonSerializer.Serialize(new Notebook(1, recipes),
+            File.WriteAllText(temporary, JsonSerializer.Serialize(new Notebook(1, recipes.Select(r => r with { PillCount = 0 }).ToList()),
                 new JsonSerializerOptions { WriteIndented = true }));
             File.Move(temporary, path, true);
         }
@@ -48,8 +49,8 @@ public static class AlchemyRecipeStore
         {
             var inputs = r.Ingredients;
             if (inputs.Length is < 1 or > 8 || inputs.Any(i => i is null ||
-                string.IsNullOrWhiteSpace(i.MaterialId) || i.Dose is < 1 or > 4 || i.Slot is < -1 or > 6) ||
-                inputs.Sum(i => i.Dose) > 8 || inputs.Count(i => i.Slot == -1) != 1 ||
+                string.IsNullOrWhiteSpace(i.MaterialId) || i.Dose < 1 || i.Slot is < -1 or > 6) ||
+                inputs.Count(i => i.Slot == -1) != 1 ||
                 inputs.Select(i => i.MaterialId).Distinct().Count() != inputs.Length ||
                 inputs.Select(i => i.Slot).Distinct().Count() != inputs.Length)
                 throw new InvalidDataException("丹方材料、药位或份数无效。");

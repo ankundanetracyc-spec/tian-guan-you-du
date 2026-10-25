@@ -228,7 +228,12 @@ public partial class InfoPanel
         _activeNewPage = page;
         var identity = unit.GetInstanceId().ToString();
         if (_characterIdentity != identity)
-        { _characterIdentity = identity; _viewedGongfa = null; _manualQuery = ""; _manualFilter = "全部"; _manualKeyword = ""; _skillQuery = ""; _skillSource = ""; _skillKeyword = ""; _battleFilter = "all"; _showSkillNodeNetwork = false; _characterDropTarget = -1; }
+        {
+            clear_skill_rewrite_drag_state();
+            _characterIdentity = identity; _viewedGongfa = null; _manualQuery = ""; _manualFilter = "全部"; _manualKeyword = ""; _skillQuery = ""; _skillSource = ""; _skillKeyword = ""; _battleFilter = "all"; _showSkillNodeNetwork = false;
+            _selectedSkillRewriteId = _pendingSkillRewriteId = _activeSkillRewriteId = _skillRewriteFeedback = "";
+            _characterDropTarget = -1;
+        }
         _characterTitle!.Text = new[] { "概览", "属性", "战斗", "功法", "装备", "关系" }[page];
         _characterName!.Text = unit.entity_data?.entity_name ?? "无名";
         _characterRealm!.Text = unit.cultivation_realm;

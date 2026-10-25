@@ -121,20 +121,20 @@ public partial class YuxuSectExchangePanel : Control
 
                 var category = item.item_category == "秘籍"
                     ? YuxuSectPrototypeBalance.manual_category(item)
-                    : item.item_category;
+                    : item is EquipmentData or SectArtifactOfferData ? "器物" : item.item_category;
                 var material = item.craft_data as MaterialCraftData;
                 var gongfa = item.gongfa as GongfaResource;
                 var filterKey = item.item_category == "秘籍"
                     ? get_realm_range(gongfa)
-                    : (material?.material_grade_value() ?? item.grade_value).ToString();
+                    : item is SectArtifactOfferData ? "法器" : item is EquipmentData ? "凡器" : (material?.material_grade_value() ?? item.grade_value).ToString();
                 var filterLabel = item.item_category == "秘籍"
                     ? filterKey
-                    : material?.material_grade_name() ?? item.get_grade_string();
+                    : item is SectArtifactOfferData ? "法器" : item is EquipmentData ? "凡器" : material?.material_grade_name() ?? item.get_grade_string();
                 var description = item.item_category == "秘籍"
                     ? build_manual_description(gongfa)
-                    : build_material_description(item, material);
+                    : item is SectArtifactOfferData ? item.description : item is EquipmentData equipment ? build_equipment_description(equipment) : build_material_description(item, material);
                 var cost = YuxuSectPrototypeBalance.exchange_base_cost(item);
-                if (cost <= 0)
+                if (cost < 0 || cost == 0 && !YuxuSectPrototypeBalance.is_free_equipment_offer(item))
                     continue;
 
                 _catalog.Add(new CatalogEntry(item, category, filterKey, filterLabel, description, cost));
@@ -200,7 +200,7 @@ public partial class YuxuSectExchangePanel : Control
 
         var categories = _catalog.Select(entry => entry.Category).Distinct(StringComparer.Ordinal).ToHashSet(StringComparer.Ordinal);
         add_filter_button(rail, _categoryButtons, "全部", "全部", isLevelFilter: false);
-        foreach (var category in new[] { "材料", "凡俗武学", "剑修", "云息秘籍", "其他" })
+        foreach (var category in new[] { "器物", "材料", "凡俗武学", "剑修", "云息秘籍", "其他" })
             if (categories.Contains(category))
                 add_filter_button(rail, _categoryButtons, category, category, isLevelFilter: false);
 
@@ -416,6 +416,7 @@ public partial class YuxuSectExchangePanel : Control
             _levelFilterHeader.Text = _selectedCategory switch
             {
                 "材料" => "材料品阶",
+                "器物" => "器阶",
                 "全部" => "品阶 / 修习范围",
                 _ => "修习范围"
             };
@@ -513,7 +514,7 @@ public partial class YuxuSectExchangePanel : Control
             var texture = new TextureRect
             {
                 Texture = icon,
-                CustomMinimumSize = new Vector2(58, 70),
+                CustomMinimumSize = entry.Item is EquipmentData or SectArtifactOfferData ? new Vector2(112, 112) : new Vector2(58, 70),
                 ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
                 StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
                 MouseFilter = MouseFilterEnum.Ignore,
@@ -564,7 +565,8 @@ public partial class YuxuSectExchangePanel : Control
 
     private void request_purchase()
     {
-        if (_purchasePending || _selectedItem is null || _selectedItem.ContributionCost <= 0 ||
+        if (_purchasePending || _selectedItem is null || _selectedItem.ContributionCost < 0 ||
+            _selectedItem.ContributionCost == 0 && !YuxuSectPrototypeBalance.is_free_equipment_offer(_selectedItem.Item) ||
             _contributionBalance < _selectedItem.ContributionCost)
             return;
 
@@ -608,7 +610,7 @@ public partial class YuxuSectExchangePanel : Control
         if (_selectedItem is null) return;
         var cost = _selectedItem.ContributionCost;
         if (_purchaseCost is not null)
-            _purchaseCost.Text = $"消耗 {cost:N0} 点贡献";
+            _purchaseCost.Text = cost == 0 ? "无需贡献" : $"消耗 {cost:N0} 点贡献";
 
         if (_purchaseBalance is null) return;
         if (_purchaseCompleted)
@@ -629,14 +631,14 @@ public partial class YuxuSectExchangePanel : Control
     }
 
     private static string format_exchange_cost(int cost)
-        => cost > 0 ? $"所需贡献：{cost}（标准价）" : "所需贡献：暂未定";
+        => cost >= 0 ? $"所需贡献：{cost}" : "所需贡献：暂未定";
 
     private void refresh_purchase_button()
     {
         refresh_purchase_summary();
         if (_purchaseConfirm is null) return;
         var cost = _selectedItem?.ContributionCost ?? 0;
-        _purchaseConfirm.Disabled = _purchasePending || cost <= 0 || _contributionBalance < cost;
+        _purchaseConfirm.Disabled = _purchasePending || cost < 0 || _contributionBalance < cost;
     }
 
     private void add_full_rect(Control control)
@@ -778,6 +780,9 @@ public partial class YuxuSectExchangePanel : Control
         var description = string.IsNullOrWhiteSpace(gongfa?.description) ? "尚无简介。" : gongfa.description.Trim();
         return $"修习范围：{get_realm_range(gongfa)}\n{description}";
     }
+
+    private static string build_equipment_description(EquipmentData item) =>
+        "凡器 · 剑 · 武器槽\n" + item.description + "\n装备不占灵识。无化法、主动技能或器蕴。";
 
     private static string build_material_description(ItemData item, MaterialCraftData? material)
     {

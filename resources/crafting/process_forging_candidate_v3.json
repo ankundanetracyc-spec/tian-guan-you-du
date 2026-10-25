@@ -1,6 +1,7 @@
 {
-  "Version": "sword-process-trial-3",
-  "MaxUnits": 32,
+  "Version": "sword-process-trial-3-spirit-1",
+  "BondParameters": { "SourceShare": 0.2, "SourcePerPoint": 1.0, "RootPerPoint": 0.25, "ConnectionPerPoint": 0.25 },
+  "MaxUnits": 0,
   "ExtraSourceProficiency": 32,
   "ExtraAuxiliaryProficiency": 20,
   "AdvancedAuxiliaryProficiency": 50,

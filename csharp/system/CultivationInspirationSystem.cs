@@ -4,9 +4,11 @@ using System.Buffers.Binary;
 using Godot;
 using Godot.Collections;
 
-/// <summary>Persistent inspiration generation, expiry, idempotency, and one-use consumption.</summary>
+/// <summary>Legacy inspiration persistence and activity hooks; all gameplay operations are currently suspended.</summary>
 public static class CultivationInspirationSystem
 {
+    /// <summary>暂时撤下灵感玩法；旧记录及来源流水只作存档兼容。</summary>
+    public static bool Enabled => false;
     public const string AnyBottleneckUse = "cultivation_bottleneck";
 
     /// <summary>
@@ -66,6 +68,7 @@ public static class CultivationInspirationSystem
     {
         awarded = null;
         result = "invalid_configuration";
+        if (!Enabled) { result = "disabled"; return false; }
         if (human is null || string.IsNullOrWhiteSpace(stableEventId) || string.IsNullOrWhiteSpace(sourceId) ||
             string.IsNullOrWhiteSpace(useDomainId) || (fixedQualityRank is < 0 or > 3) || nowGameHour < 0 ||
             baseChance <= 0f || baseChance > 1f || minimumChance <= 0f || minimumChance > baseChance ||
@@ -139,6 +142,7 @@ public static class CultivationInspirationSystem
 
     public static int expire_available_records(HumanData? human, long nowGameHour)
     {
+        if (!Enabled) return 0;
         if (human is null) return 0;
         ensure_storage(human);
         var expired = 0;
@@ -151,6 +155,7 @@ public static class CultivationInspirationSystem
     public static Array<CultivationInspirationRecord> get_available_records(HumanData? human, long nowGameHour)
     {
         var result = new Array<CultivationInspirationRecord>();
+        if (!Enabled) return result;
         if (human is null) return result;
         expire_available_records(human, nowGameHour);
         foreach (var record in human.cultivation_inspiration_records)
@@ -161,6 +166,7 @@ public static class CultivationInspirationSystem
 
     public static CultivationInspirationRecord? find_available_record(HumanData? human, string recordId, long nowGameHour)
     {
+        if (!Enabled) return null;
         if (human is null || string.IsNullOrWhiteSpace(recordId)) return null;
         expire_available_records(human, nowGameHour);
         foreach (var record in human.cultivation_inspiration_records)
@@ -186,6 +192,11 @@ public static class CultivationInspirationSystem
     public static bool try_consume_for_bottleneck(HumanData? human, string recordId, long nowGameHour,
         out CultivationInspirationRecord? consumed)
     {
+        if (!Enabled || !CultivationBottleneckRules.Enabled)
+        {
+            consumed = null;
+            return false;
+        }
         consumed = find_available_record(human, recordId, nowGameHour);
         if (consumed is null || !consumed.mark_consumed(AnyBottleneckUse, nowGameHour))
         {

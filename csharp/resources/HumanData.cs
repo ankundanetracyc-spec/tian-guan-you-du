@@ -5,6 +5,8 @@ using Godot.Collections;
 public partial class HumanData : LivingData
 {
     [Export] public Array<CombatSkillReference> combat_skill_references = [];
+    /// <summary>化法稳定来源 ID → 玩家明确选择的原始技能标识；不绑定槽位序号。</summary>
+    [Export] public Godot.Collections.Dictionary<string, string> skill_rewrite_bindings = new();
     /// <summary>局外阵盘中已启用的个人战斗阵图；其运行资源不会写回本字段。</summary>
     [Export] public Godot.Collections.Array<FormationCircuitData> formation_circuits = [];
     [Export] public Array<string> formation_manual_ids = [];
@@ -105,6 +107,9 @@ public partial class HumanData : LivingData
     [Export] public float max_world_stamina = WorldStaminaRules.InitialCapacity;
     /// <summary>主角在大世界与地点活动时持续存在的状态；与即时战斗临时状态分开。</summary>
     [Export] public Godot.Collections.Array<WorldStatusRecord> world_status_records = [];
+    /// <summary>服丹后持续积累，跨战斗保存；旧档缺字段默认为无丹毒。</summary>
+    [Export] public double pill_toxicity;
+    [Export] public double pill_toxicity_last_game_hour = -1;
 
     // 单人模式不再读取这些旧日程字段；保留它们仅用于兼容既有存档。
     [Export] public bool daily_schedule_enabled = false;
@@ -128,7 +133,7 @@ public partial class HumanData : LivingData
     [Export] public bool meditation_spirit_stone_supply;
     [Export] public float meditation_spirit_stone_debt;
     [Export] public string spouse_name = "";
-    [Export] public float pill_toxicity;
+    /// <summary>旧资源兼容字段，现行丹毒不按此值封顶。</summary>
     [Export] public float max_pill_toxicity = 100.0f;
 
     [Export] public float base_sword_proficiency = 5.0f;
@@ -221,6 +226,7 @@ public partial class HumanData : LivingData
 
     /// <summary>玩家唯一行囊。所有普通物品按定义路径和数量保存，材料、成品、秘籍与装备不再进入共享仓库。</summary>
     [Export] public Array<string> inventory_item_paths = [];
+    [Export] public Array<BattleSupplySlotData> battle_supplies = [];
     [Export] public Array<int> inventory_item_counts = [];
     /// <summary>唯一法宝实例也归属于角色行囊，但保留独立实例数组，避免与普通物品堆叠。</summary>
     [Export] public Array<int> inventory_item_positions = [];

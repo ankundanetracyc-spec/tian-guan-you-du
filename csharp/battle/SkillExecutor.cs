@@ -61,6 +61,7 @@ public partial class SkillExecutor : Node
         if (!GodotObject.IsInstanceValid(attacker) || !GodotObject.IsInstanceValid(target)) { await SettleAction(attacker,skill);Finish(attacker, is_counter, false,finish_as_automatic); return; }
         var killed=false;
         var hitAtLeastOnce=false;
+        var firstHit=false;
         var manager=GetManager();
         var body=(manager as BattleManager)?.gongfa_combat;
         var segments=body?.Segments(attacker,skill)??1;
@@ -103,6 +104,7 @@ public partial class SkillExecutor : Node
                 if(!GodotObject.IsInstanceValid(attacker)||!GodotObject.IsInstanceValid(target))break;
                 killed=ApplyToTarget(attacker,skill,target,is_counter,ref blockRemaining,out var hit,i,is_queued_skill,is_slot10_automatic,evadedOverride);
                 hitAtLeastOnce|=hit;
+                if(i==0)firstHit=hit;
                 if(bloodFollowUp)await WaitForBloodArmAction(attacker);
                 if(i==0)initialSegmentCausedNoHealthDamage=target.Get("current_health").AsInt32()>=initialHealth;
             }
@@ -118,6 +120,19 @@ public partial class SkillExecutor : Node
                 if(hit&&target.Get("current_health").AsInt32()>0&&GetManager() is BattleManager taiheManager
                     &&taiheManager.is_realtime_battle()&&body is not null&&body.RollTaiheStun(attacker,target,skill,out var stunFrames))
                     AddStatus(target,"僵直",stunFrames,attacker,stunFrames/StatusEffect.CombatFramesPerSecond);
+            }
+            var cloudLimit=body?.CloudFollowUpLimit(attacker,skill,firstHit)??0;
+            var cloudSegment=cloudLimit>0?body!.CreateCloudFollowUp(attacker,skill):null;
+            for(var i=0;i<cloudLimit&&!killed;i++)
+            {
+                var chance=body!.CloudFollowUpChance(attacker,skill,i);
+                if(chance<=0 || chance<1 && GD.Randf()>=chance)break;
+                await PresentFollowUpContact(attacker,target,cloudSegment!,false);
+                if(!GodotObject.IsInstanceValid(attacker)||!GodotObject.IsInstanceValid(target))break;
+                var missed=CanBeEvaded(skill)&&BattleActionResolver.roll_evasion(attacker,target);
+                killed=ApplyToTarget(attacker,skill,target,is_counter,ref blockRemaining,out var hit,segments+taiheFollowUps+i,is_queued_skill,is_slot10_automatic,missed,cloudSegment);
+                hitAtLeastOnce|=hit;
+                if(!hit)break;
             }
             if(hitAtLeastOnce&&!is_queued_skill)ApplyDisperseQiBlood(skill,target);
             if(hitAtLeastOnce&&blockRemaining>0)ConsumeStatus(target,"化解",blockRemaining);
@@ -232,12 +247,12 @@ public partial class SkillExecutor : Node
         var ignoreShield=GongfaSkillRewriteRuntime.HasEffect(skill,"xuan_shu_c1_jingzhe");
         var absorbed = ignoreShield?0:Mathf.Min(shield, damage);
         target.Set("shield", shield - absorbed);
+        body?.RecordShieldAbsorbed(target,attacker,shield,absorbed);
         // 仅显示本次攻击实际吸收的护盾，清场或其他数值重置不产生扣盾提示。
         if (absorbed > 0) FloatingText(target, $"护盾−{absorbed}", new Color(.49f,.77f,.91f), true);
         damage -= absorbed;
         target.Set("current_health", Mathf.Max(0, target.Get("current_health").AsInt32() - damage));
         body?.OnHealthDamageReceived(target, damage);
-        if (damage > 0 && attacker.Get("faction").AsInt32() != target.Get("faction").AsInt32() && GetManager() is BattleManager woundManager && woundManager.is_realtime_battle()) woundManager.add_wound_card(target, "外伤", 1);
         if (!IsSpectatorBattle && absorbed > 0 && target is Node shieldNode)
             shieldNode.GetNodeOrNull<BattleShieldAura>("BattleShieldAura")?.PlayImpact((GetPosition(target) - GetPosition(attacker)).Normalized());
         if (!IsSpectatorBattle && target.HasMethod("update_ui")) target.Call("update_ui");
@@ -245,6 +260,7 @@ public partial class SkillExecutor : Node
         context["damage"] = damage; context["blocked_damage"] = result.BlockedDamage;
         context = ProcessStatus(target, "after_damage", context);
         ProcessStatus(attacker, "after_damage", context);
+        ForgedSwordBattleAdapter.AfterHit(attacker, target, segmentSkill, damage);
         ResolveCounter(target, attacker, skill, damage, result.BlockedDamage, isCounter);
         if (result.BlockedDamage > 0)
             FloatingText(target, $"化解 {result.BlockedDamage}", new Color(.73f, .81f, .76f));
@@ -258,7 +274,8 @@ public partial class SkillExecutor : Node
         if (!IsSpectatorBattle && damage > 0) BattleInkSlashEffect.PlayImpactForSkill(target, skill, result.Critical, attacker, segment);
         if (!IsSpectatorBattle && damage <= 0 && (absorbed > 0 || result.BlockedDamage > 0)) BattleInkCombatVfx.PlayDefenseContact(target, attacker);
         var hitDirection = (GetPosition(target) - GetPosition(attacker)).Normalized();
-        if (!IsSpectatorBattle && damage > 0 && target is Node targetNode) targetNode.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_hit(hitDirection, BattleInkCombatVfx.HitWeight(skill), result.Critical, !BattleInkCombatVfx.IsJingzhe(skill));
+        if (!IsSpectatorBattle && damage > 0 && target is Node targetNode) targetNode.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_hit(hitDirection, BattleInkCombatVfx.HitWeight(skill), result.Critical,
+            !BattleInkCombatVfx.IsJingzhe(skill) && !BattleInkCombatVfx.UsesForestWolfEffects(attacker, skill)&&!BattleInkCombatVfx.UsesSwordEffects(attacker,skill)&&!BattleInkCombatVfx.UsesForestBeiCry(attacker,skill));
         if (!IsSpectatorBattle && damage > 0 && !(target is Node visualTarget && visualTarget.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.is_defense_presenting() == true) && target.HasMethod("hit_flash")) target.Call("hit_flash", hitDirection);
         show_damage_number(target, damage, skill.damage_type, result.Critical);
         if (target.Get("current_health").AsInt32() > 0) return false;
@@ -308,6 +325,9 @@ public partial class SkillExecutor : Node
             var count = Mathf.Max(1, effect.GetValueOrDefault("count", 1).AsInt32());
             switch (value.AsString())
             {
+                case "forest_bei_pack_call":
+                    if (GetManager() is BattleManager packManager) packManager.grant_pack_hunt_to_wolves(caster);
+                    break;
                 case "shield":
                     var shieldGain = Math.Max(0, Mathf.RoundToInt(CardRules.Evaluate(effect.GetValueOrDefault("formula", "0").AsString(), caster)));
                     caster.Set("shield", caster.Get("shield").AsInt32() + shieldGain);
@@ -332,6 +352,26 @@ public partial class SkillExecutor : Node
                 case "gain_qi" when GetManager() is BattleManager qiManager:
                     if (qiManager.gain_battle_qi(caster, count, out var completedZhouTian))
                         FloatingText(caster, completedZhouTian ? "周天" : $"炁 +{count}", new Color(.58f, .82f, .80f));
+                    break;
+                case "gain_sword_intent":
+                    var swordIntentBefore = GetStatusStacks(caster, "剑意");
+                    AddStatus(caster, "剑意", count, caster);
+                    var gainedSwordIntent = GetStatusStacks(caster, "剑意") - swordIntentBefore;
+                    (GetManager() as BattleManager)?.gongfa_combat.AfterSwordIntentGain(caster,skill,swordIntentBefore);
+                    if (gainedSwordIntent > 0)
+                    {
+                        if (caster.HasMethod("update_ui")) caster.Call("update_ui");
+                        FloatingText(caster, $"剑意 +{gainedSwordIntent}", new Color(.78f, .77f, .65f));
+                    }
+                    break;
+                case "consume_sword_intent":
+                    var swordIntent = GetStatusStacks(caster, "剑意");
+                    if (swordIntent > 0)
+                    {
+                        ConsumeStatus(caster, "剑意", swordIntent);
+                        if (caster.HasMethod("update_ui")) caster.Call("update_ui");
+                        FloatingText(caster, $"剑意 −{swordIntent}", new Color(.78f, .77f, .65f));
+                    }
                     break;
                 case "burn_mana_capacity" when GetManager() is BattleManager manaManager:
                     if(manaManager.spend_mana_capacity(caster,count))FloatingText(caster,$"法力上限−{count}",new Color(.58f,.72f,.82f),true);
@@ -533,7 +573,7 @@ public partial class SkillExecutor : Node
             var tween=node.CreateTween().SetPauseMode(Tween.TweenPauseMode.Stop);
             tween.TweenMethod(Callable.From<float>(progress=>
             {
-                if(GodotObject.IsInstanceValid(node))node.GlobalPosition=BattleAttackMotion.ReturnPosition(contact,home.Position,progress);
+                if(GodotObject.IsInstanceValid(node))node.GlobalPosition=BattleAttackMotion.ReturnPosition(node,contact,home.Position,progress);
             }),0f,1f,BattleAttackMotion.ReturnSeconds).SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.Out);
             await ToSignal(tween,Tween.SignalName.Finished);
             if(GodotObject.IsInstanceValid(node)){node.GlobalPosition=home.Position;node.ZIndex=home.ZIndex;}
@@ -601,7 +641,7 @@ public partial class SkillExecutor : Node
             if(scattered<=0)continue;
             creature.qi_blood=before-scattered;
             creature.update_ui();
-            FloatingText(target,$"散血 -{scattered}",new Color(.80f,.48f,.42f));
+            FloatingText(target,$"气血−{scattered}",new Color(.80f,.48f,.42f));
         }
     }
 

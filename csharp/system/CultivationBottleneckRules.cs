@@ -6,6 +6,9 @@ using Godot;
 /// </summary>
 public static class CultivationBottleneckRules
 {
+    // 暂停闭关瓶颈；旧公式和存档字段仅保留兼容，不参与正式修炼。
+    public static bool Enabled => false;
+
     public const int Stages = 8;
     public const double HoursPerGameDay = 24d;
     public const double HoursPerGameYear = 360d * HoursPerGameDay;

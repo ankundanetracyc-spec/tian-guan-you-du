@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="PillItemData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/PillItemData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+definition_id = &"alchemy_jingxin_9_2"
+entity_name = "静心丹·优效"
+description = "九品静心丹，丹效优效。丹药按颗计数；瓷瓶仅作外观，同类丹药在行囊合并为一格。"
+icon_path = "res://textures/items/alchemy_20261024/porcelain_bottle_closed.png"
+item_category = "丹药"
+item_subcategory = "九品丹药"
+grade_value = 1
+can_stack = true
+max_stack = 999
+pill_id = "jingxin"
+pill_rank = 9
+efficacy_tier = 2
+container_material_id = "porcelain"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ActiveSkillData" format=3]
+[ext_resource type="Script" path="res://csharp/gongfa/ActiveSkillData.cs" id="1"]
+[resource]
+script = ExtResource("1")
+skill_name = "唤猎"
+description = "使全体存活的友方林地凶狼各获得1层逐猎，最多3层；包含同物种变种，不作用于其他兽种。"
+skill_type = 3
+energy_cost = 1
+mana_cost = 0
+target_type = 0
+range_min = 0
+range_max = 0
+slot_category = "active"
+tags = Array[String](["逐猎"])
+special_effects = Array[Dictionary]([{"effect":"forest_bei_pack_call","count":1}])

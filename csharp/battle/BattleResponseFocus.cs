@@ -15,6 +15,7 @@ public partial class BattleResponseFocus : Node
     private bool _returning, _released, _triggered;
     public Task IntroFinished => _intro.Task;
     public float FrameZoom => _view.FrameZoom;
+    public IEnumerable<Node2D> EmphasizedUnits => new[]{_responder,_attacker}.OfType<Node2D>().Where(GodotObject.IsInstanceValid);
 
     public static BattleResponseFocus Begin(BattleManager manager, Node2D responder, ActiveSkillData skill, Node2D? attacker = null)
     {
@@ -33,6 +34,7 @@ public partial class BattleResponseFocus : Node
         }
         manager.GetTree().CurrentScene.AddChild(focus);
         focus.AddToGroup("battle_action_visuals");
+        focus.AddToGroup("battle_response_focus");
         return focus;
     }
 

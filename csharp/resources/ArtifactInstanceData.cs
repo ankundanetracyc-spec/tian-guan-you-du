@@ -25,6 +25,8 @@ public partial class ArtifactInstanceData : Resource
     [Export] public Array<ArtifactInscriptionData> inscriptions = [];
     [Export] public ArtifactRecipeRecord recipe = new();
     [Export] public ArtifactCombatProfile? combat_profile;
+    /// <summary>新炼器的固定快照。为空时沿用旧版实例；不将新效果塞进内炼/外祭等旧字段。</summary>
+    [Export] public string forged_snapshot_json = "";
 
     public string ensure_instance_id()
     {

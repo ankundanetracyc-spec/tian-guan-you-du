@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" agent="Codex" modified="2026-10-24T13:42:32Z">
+  <diagram id="shu_juan_tian_zhang_20261024" name="舒卷天章">
+    <mxGraphModel dx="2000" dy="1800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2600" pageHeight="2850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="&lt;div&gt;舒卷天章&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="740" y="20" width="560" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="overview" value="&lt;div&gt;云息秘籍／可主修、可辅修&lt;br&gt;灵根：任意；主修可修至：云息十层&lt;br&gt;定位：以高层剑意催动流云剑势，使剑招连缀追加攻击。&lt;br&gt;核心：养锋与格剑积蓄剑意；第三卷《云岚三叠》按递减概率追加至多3段攻击。&lt;br&gt;心法由主修或辅修自动生效；修持随已学卷章逐卷累积。&lt;br&gt;设计提案，待审；尚未接入运行时。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="740" y="140" width="560" height="205" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" value="&lt;div&gt;第一卷：云舒&lt;br&gt;卷章ID：yun_shu&lt;br&gt;顺序：1&lt;br&gt;&lt;br&gt;定位：以六层剑意开启流云剑势，建立剑招追加攻击&lt;br&gt;研读值（累计）：24&lt;br&gt;学成可修至：云息三层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：凡人境及以上&lt;br&gt;前置：无&lt;br&gt;研读属性：体魄≥6&lt;br&gt;&lt;br&gt;学会永久属性：体魄 +0.5；剑道造诣 +0.5&lt;br&gt;&lt;br&gt;习得：无&lt;/div&gt;" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="850" y="370" width="340" height="470" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" value="&lt;div&gt;第二卷：回岚&lt;br&gt;卷章ID：hui_lan&lt;br&gt;顺序：2&lt;br&gt;&lt;br&gt;定位：让剑意层数进一步强化追加攻击&lt;br&gt;研读值（累计）：48&lt;br&gt;学成可修至：云息六层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：云息三层及以上&lt;br&gt;前置：yun_shu&lt;br&gt;研读属性：体魄≥7；剑道造诣≥0.5&lt;br&gt;&lt;br&gt;学会永久属性：剑道造诣 +0.5&lt;br&gt;&lt;br&gt;习得：无&lt;/div&gt;" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="850" y="910" width="340" height="430" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" value="&lt;div&gt;第三卷：逐影&lt;br&gt;卷章ID：zhu_ying&lt;br&gt;顺序：3&lt;br&gt;&lt;br&gt;定位：习得逐段递减概率的多段攻击招式&lt;br&gt;研读值（累计）：84&lt;br&gt;学成可修至：云息九层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：云息六层及以上&lt;br&gt;前置：hui_lan&lt;br&gt;研读属性：体魄≥8；剑道造诣≥1&lt;br&gt;&lt;br&gt;学会永久属性：剑道造诣 +1&lt;br&gt;&lt;br&gt;习得：云岚三叠&lt;/div&gt;" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="850" y="1450" width="340" height="470" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" value="&lt;div&gt;第四卷：天章&lt;br&gt;卷章ID：tian_zhang&lt;br&gt;顺序：4&lt;br&gt;&lt;br&gt;定位：剑意圆满时再添一段固定攻击&lt;br&gt;研读值（累计）：128&lt;br&gt;学成可修至：云息十层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：云息九层及以上&lt;br&gt;前置：zhu_ying&lt;br&gt;研读属性：体魄≥10；剑道造诣≥2&lt;br&gt;&lt;br&gt;学会永久属性：体魄 +0.5；剑道造诣 +1&lt;br&gt;&lt;br&gt;习得：无&lt;/div&gt;" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="850" y="2100" width="340" height="470" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_cards" value="&lt;div&gt;心法被动：流云剑势&lt;br&gt;类型：心法&lt;br&gt;关键词：剑、剑意&lt;br&gt;效果：&lt;u&gt;剑意&lt;/u&gt;达到6层时，&lt;u&gt;流云剑势&lt;/u&gt;生效。带剑关键词的攻伐技能首段命中后，在原技能攻击段结算完毕时追加1段攻击，沿用原目标，造成A点物理伤害。&lt;br&gt;主修额外效果：触发所需剑意层数减少1层。&lt;br&gt;计算公式：A=round(2 + 体魄×0.20 + 剑道造诣×0.30)&lt;/div&gt;" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-400" y="370" width="740" height="410" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_cards" value="&lt;div&gt;心法被动：流云剑势&lt;br&gt;类型：心法&lt;br&gt;关键词：剑、剑意&lt;br&gt;效果：&lt;u&gt;剑意&lt;/u&gt;达到6层时，&lt;u&gt;流云剑势&lt;/u&gt;生效。带剑关键词的攻伐技能首段命中后，在原技能攻击段结算完毕时追加1段攻击，沿用原目标，造成A点物理伤害；剑意层数超过6时，每多1层使追加攻击伤害提高1点。&lt;br&gt;主修额外效果：触发所需剑意层数减少1层。&lt;br&gt;计算公式：A=round(2 + 体魄×0.20 + 剑道造诣×0.30 + max(本次行动开始时剑意层数−6,0))&lt;/div&gt;" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-400" y="910" width="740" height="410" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_cards" value="&lt;div&gt;习得：云岚三叠&lt;br&gt;&lt;br&gt;云岚三叠&lt;br&gt;类型：攻伐&lt;br&gt;关键词：剑、剑意&lt;br&gt;耗费：体力 2、法力 0&lt;br&gt;目标：指定1名敌方&lt;br&gt;出手分类：近身&lt;br&gt;灵识占用：0&lt;br&gt;伤害类型：物理&lt;br&gt;效果：造成A点物理伤害。首段命中后，以C概率追加攻击；追加攻击命中后，依次以D、E概率继续追加，最多追加3段。任一概率判定失败、攻击未命中或目标离场，后续攻击停止。每段追加攻击均攻击原目标，造成B点物理伤害。&lt;br&gt;计算公式：A=round(5 + 体魄×0.40 + 剑道造诣×0.50)；B=round(2 + 体魄×0.20 + 剑道造诣×0.30 + max(本次行动开始时剑意层数−6,0))；C=clamp(40% + 本次行动开始时剑意层数×5% + 剑道造诣×0.5%,40%,80%)；D=max(0%,C−20个百分点)；E=max(0%,C−40个百分点)&lt;br&gt;使用次数：不限&lt;br&gt;冷却：无&lt;/div&gt;" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-400" y="1450" width="740" height="520" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_cards" value="&lt;div&gt;心法被动：流云剑势&lt;br&gt;类型：心法&lt;br&gt;关键词：剑、剑意&lt;br&gt;效果：&lt;u&gt;剑意&lt;/u&gt;达到6层时，&lt;u&gt;流云剑势&lt;/u&gt;生效。带剑关键词的攻伐技能首段命中后，在原技能攻击段结算完毕时追加攻击，沿用原目标；本次行动开始时剑意达到10层，追加2段，其余满足条件时追加1段。每段造成A点物理伤害。《云岚三叠》按自身攻击段数结算，不另加心法攻击段。&lt;br&gt;主修额外效果：触发所需剑意层数减少1层。&lt;br&gt;计算公式：A=round(2 + 体魄×0.20 + 剑道造诣×0.30 + max(本次行动开始时剑意层数−6,0))&lt;/div&gt;" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-400" y="2100" width="740" height="470" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_left" value="&lt;div&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;最大生命 +10%&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="360" y="370" width="260" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_left" value="&lt;div&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;精准 +8%&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="390" y="910" width="270" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_left" value="&lt;div&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;物理伤害 +5%&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="400" y="1450" width="270" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_left" value="&lt;div&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;最大生命 +10%&lt;br&gt;物理伤害 +7%&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="370" y="2100" width="270" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_right" value="&lt;div&gt;化法&lt;br&gt;适用范围：养锋&lt;br&gt;&lt;br&gt;化法追加：施放前剑意不高于5层时，额外获得剑意1层；每回合最多触发1次，仍受剑意上限限制。&lt;/div&gt;" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="370" width="440" height="520" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_right" value="&lt;div&gt;化法&lt;br&gt;适用范围：格剑&lt;br&gt;&lt;br&gt;化法追加：格剑触发并结算后，若剑意达到6层，额外获得剑意1层；每回合最多触发1次，仍受剑意上限限制。&lt;/div&gt;" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="910" width="440" height="530" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_right" value="&lt;div&gt;化法&lt;br&gt;适用范围：云岚三叠&lt;br&gt;&lt;br&gt;化法追加：首次追加攻击概率提高10个百分点，上限80%。&lt;br&gt;计算公式：C=min(80%,50% + 本次行动开始时剑意层数×5% + 剑道造诣×0.5%)；D=max(0%,C−20个百分点)；E=max(0%,C−40个百分点)&lt;/div&gt;" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="1450" width="440" height="620" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_right" value="&lt;div&gt;化法&lt;br&gt;适用范围：尽锋&lt;br&gt;&lt;br&gt;化法追加：若本次行动开始时剑意已达到心法要求，且尽锋首段命中，心法追加的每段攻击伤害提高20%。尽锋命中后消耗剑意，不取消本次行动已触发的追加攻击。&lt;/div&gt;" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="2100" width="440" height="690" as="geometry" />
+        </mxCell>
+        <mxCell id="summary" value="&lt;div&gt;构筑主轴：养锋与格剑积累剑意，达到6层后启用流云剑势；第三卷《云岚三叠》以逐段递减的概率追加攻击，最多3段。&lt;br&gt;心法与追加攻击不消耗剑意；尽锋原有的命中后消耗剑意规则保留。&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="1850" y="650" width="500" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="status_rules" value="&lt;div&gt;结算边界&lt;br&gt;剑意全局上限10层，战斗结束清除。&lt;br&gt;心法按技能行动开始时的剑意层数判定；整次行动沿用该层数。&lt;br&gt;《云岚三叠》追加攻击按自身C、D、E概率结算，最多3段，不再叠加心法的固定追加攻击。&lt;br&gt;多段攻击按现行规则处理应对；追加攻击沿用原目标，目标离场、概率未通过或攻击未命中即停止，不转火。&lt;br&gt;追加攻击不另付费用，也不另计使用次数；原技能费用与限制照常结算。&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="1850" y="830" width="550" height="650" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" style="endArrow=block;html=1;" edge="1" parent="1" source="overview" target="c1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" style="endArrow=block;html=1;" edge="1" parent="1" source="c1" target="c2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" style="endArrow=block;html=1;" edge="1" parent="1" source="c2" target="c3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" style="endArrow=block;html=1;" edge="1" parent="1" source="c3" target="c4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_a" style="endArrow=block;html=1;" edge="1" parent="1" source="c1" target="c1_left">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_b" style="endArrow=block;html=1;" edge="1" parent="1" source="c1" target="c1_right">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_c" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" edge="1" parent="1" source="c1" target="c1_cards">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_a" style="endArrow=block;html=1;" edge="1" parent="1" source="c2" target="c2_left">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_b" style="endArrow=block;html=1;" edge="1" parent="1" source="c2" target="c2_right">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_c" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" edge="1" parent="1" source="c2" target="c2_cards">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_a" style="endArrow=block;html=1;" edge="1" parent="1" source="c3" target="c3_left">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_b" style="endArrow=block;html=1;" edge="1" parent="1" source="c3" target="c3_right">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_c" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" edge="1" parent="1" source="c3" target="c3_cards">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_a" style="endArrow=block;html=1;" edge="1" parent="1" source="c4" target="c4_left">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_b" style="endArrow=block;html=1;" edge="1" parent="1" source="c4" target="c4_right">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_c" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" edge="1" parent="1" source="c4" target="c4_cards">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

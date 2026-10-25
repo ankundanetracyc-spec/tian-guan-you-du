@@ -33,7 +33,7 @@ public partial class MainScene
         (GetTree().GetFirstNodeInGroup("cell_character_list") as CellCharacterList)?.suspend_world_npcs();
         _worldMapTravelStartedHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
         var consumeTravelInspiration = true;
-        if (player?.entity_data is HumanData human && _npc_world?.get_active_yuxu_case_transport(human) is { temporary_party_member_active: true } task)
+        if (CultivationInspirationSystem.Enabled && player?.entity_data is HumanData human && _npc_world?.get_active_yuxu_case_transport(human) is { temporary_party_member_active: true } task)
         {
             if (task.journey_inspiration_consumed) consumeTravelInspiration = false;
             else

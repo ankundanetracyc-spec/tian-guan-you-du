@@ -27,7 +27,7 @@ public partial class BattlePaperDoll
     public Vector2 side_ink_body() => _sideFemale ? new(-50, -970) : new(-15, -925);
     public Vector2 side_ink_guard() => _sideFemale ? new(335, -1050) : new(320, -1025);
     public Vector2 side_ink_cast_finger() => _sideFemale ? new(366, -1423) : new(344, -1456);
-    public bool is_defense_presenting() => _usesSideInk && !_sideDead && _sidePose == "guard";
+    public bool is_defense_presenting() => _usesSideInk && !_sideDead && _sidePose is "guard" or "sword_parry";
     public float presentation_zoom() => _sidePresentation?.Scale.X ?? 1;
     public Transform2D side_ink_visual_transform() => _sidePresentation?.GlobalTransform ?? GlobalTransform;
     public void release_guard_contact() { _guardAwaitingContact = false; }
@@ -63,6 +63,7 @@ public partial class BattlePaperDoll
     private void ResetSideInk()
     {
         clear_sword_idle();
+        _battleSword=null;
         _actionTween?.Kill();
         _heldAttackTween = null;
         _attackContactHeld = false;
@@ -142,6 +143,7 @@ public partial class BattlePaperDoll
         // The legacy shadow is in display units; register it to the new native art units.
         if (GetNodeOrNull<Polygon2D>("InkShadow") is { } shadow) shadow.Scale = Vector2.One * SideInkReferenceHeight / 348f;
         Name = "BattlePaperDoll";
+        ConfigureSwordCombatPresentation(data);
         return true;
     }
 
@@ -155,6 +157,15 @@ public partial class BattlePaperDoll
         _sideElapsed = 0;
         _sideDuration = duration;
         ProcessSideInkPose(0);
+    }
+
+    /// <summary>Art laboratory only: the caller owns the pose clock and recoil, with no impact FX or combat events.</summary>
+    public void show_art_review_pose(string pose)
+    {
+        if(!_usesSideInk||_sideDead||pose is not ("chop" or "hurt" or "idle"))return;
+        _actionTween?.Kill();EndContactPoseHold();
+        Position=Vector2.Zero;Rotation=0;Modulate=Colors.White;
+        if(pose!="hurt"||!StartSwordHurt())StartSideInkPose(pose,pose=="hurt"?1.12f:.95f);
     }
 
     private void ResetSideInkPose()
@@ -171,6 +182,7 @@ public partial class BattlePaperDoll
     private void ProcessSideInkPose(float delta)
     {
         if (_portrait is null) return;
+        UpdateSwordIdleClock(delta);
         if (_guardAwaitingContact)
         {
             _guardWaitClock += delta;
@@ -195,7 +207,7 @@ public partial class BattlePaperDoll
         else if (_sidePose == "cast")
             blend = Mathf.SmoothStep(0, 1, Mathf.Clamp((_sideElapsed - .035f) / .12f, 0, 1))
                 * (1 - Mathf.SmoothStep(0, 1, Mathf.Clamp((_sideElapsed - (_sideDuration - .18f)) / .18f, 0, 1)));
-        else if (_sidePose != "idle") blend = 1 - Mathf.SmoothStep(0, 1, Mathf.Clamp((_sideElapsed - (_sideDuration - .14f)) / .14f, 0, 1));
+        else if (_sidePose != "idle"&&!_sidePose.StartsWith("sword_",StringComparison.Ordinal)) blend = 1 - Mathf.SmoothStep(0, 1, Mathf.Clamp((_sideElapsed - (_sideDuration - .14f)) / .14f, 0, 1));
         if (texture == idleTexture) blend = 1;
         _portrait.Modulate = new Color(1, 1, 1, blend);
         if (_sideIdle is not null)

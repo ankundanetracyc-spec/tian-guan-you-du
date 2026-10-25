@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1")
 skill_name = "乘势再攻"
-icon_path = "res://textures/ui/combat/skill_icons/基础技能_撼山_v1.png"
+icon_path = "res://textures/ui/combat/skill_icons/太和_乘势再攻_v1.png"
 description = "每段由《乘势再攻》追加的攻击命中后，独立判定B；判定通过时使目标获得C层僵直。A=round(8 + 体魄×0.65 + 体道造诣×0.2)；B=clamp(15% + 施加者体魄×1% − 目标体魄×0.75% + 卡牌境界修正 + 高境界修正, 0%, 99%)×跨境界削减倍率；C=floor(clamp(60 + (施加者体魄−目标体魄)×3, 0, 120)×跨境界削减倍率)。"
 skill_type = 0
 source_gongfa_name = "太和感物养元宝册"

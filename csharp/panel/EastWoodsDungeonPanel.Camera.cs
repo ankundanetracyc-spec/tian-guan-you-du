@@ -38,6 +38,7 @@ public partial class EastWoodsDungeonPanel
         var position = _mapViewport.Size * .5f - _cameraFocus * _mapZoom;
         if (!_mapRoot.Scale.IsEqualApprox(scale)) _mapRoot.Scale = scale;
         if (!_mapRoot.Position.IsEqualApprox(position)) _mapRoot.Position = position;
+        position_current_node_actions();
     }
 
     private void handle_map_camera_input(InputEvent input)

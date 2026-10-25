@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="Electron" agent="Codex" modified="2026-10-25T00:00:00Z">
+  <diagram id="guizang_20261025" name="敛锋归藏剑典">
+    <mxGraphModel dx="3641" dy="512" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2900" pageHeight="2440" math="0" shadow="0">
+      <root>
+        <mxCell id="0" value="" />
+        <mxCell id="1" parent="0" value="" />
+        <mxCell id="title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=20;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;敛锋归藏剑典&lt;/div&gt;" vertex="1">
+          <mxGeometry height="74" width="560" x="740" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="overview" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;云息秘籍／可主修、可辅修&lt;br&gt;灵根：任意；主修可修至：云息十层&lt;br&gt;定位：以消耗剑意结束剑势，将放锋所得护盾再转为下一轮蓄势。&lt;br&gt;待审设计，未实装&lt;/div&gt;" vertex="1">
+          <mxGeometry height="190" width="560" x="740" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第一卷：敛锋&lt;br&gt;卷章ID：guizang_c1&lt;br&gt;顺序：1&lt;br&gt;&lt;br&gt;研读值（累计）：24&lt;br&gt;学成可修至：云息三层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：凡人境及以上&lt;br&gt;前置：无&lt;br&gt;研读属性：体魄≥5；剑道造诣≥0&lt;br&gt;&lt;br&gt;学会永久属性：体魄 +0.5；剑道造诣 +0.5&lt;br&gt;&lt;br&gt;习得：启匣&lt;/div&gt;" vertex="1">
+          <mxGeometry height="430" width="340" x="850" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：归藏剑势&lt;br&gt;关键词：剑、剑意、护盾&lt;br&gt;效果：技能开始时剑意达到6层，归藏剑势生效。本次剑招实际消耗剑意后，获得A点护盾。&lt;br&gt;主修额外效果：每回合首次在剑势生效时消耗剑意后，获得剑意1层。&lt;br&gt;计算公式：A=round(本次实际消耗剑意层数×(1 + 体魄×0.05 + 剑道造诣×0.10))。&lt;br&gt;&lt;br&gt;启匣&lt;br&gt;关键词：剑、剑意、护盾&lt;br&gt;耗费：体力 1&lt;br&gt;目标：自身&lt;br&gt;效果：消耗护盾4点，获得剑意2层；护盾至少4点时可施展。&lt;br&gt;使用次数：每回合1次&lt;br&gt;冷却：无&lt;/div&gt;" vertex="1">
+          <mxGeometry height="292" width="740" x="-400" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：启匣&lt;br&gt;&lt;br&gt;化法追加：护盾消耗由4点改为3点。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="440" x="1360" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第二卷：抱刃&lt;br&gt;卷章ID：guizang_c2&lt;br&gt;顺序：2&lt;br&gt;&lt;br&gt;研读值（累计）：48&lt;br&gt;学成可修至：云息六层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：云息三层及以上&lt;br&gt;前置：guizang_c1&lt;br&gt;研读属性：体魄≥6；剑道造诣≥0.5&lt;br&gt;&lt;br&gt;学会永久属性：剑道造诣 +0.5&lt;br&gt;&lt;br&gt;习得：无&lt;/div&gt;" vertex="1">
+          <mxGeometry height="430" width="340" x="850" y="870" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：归藏剑势（沿用第一卷，无新增效果）&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="740" x="-400" y="870" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：架招&lt;br&gt;&lt;br&gt;化法追加：实际抵消物理伤害后，获得剑意1层；每回合限一次。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="440" x="1360" y="870" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第三卷：垂光&lt;br&gt;卷章ID：guizang_c3&lt;br&gt;顺序：3&lt;br&gt;&lt;br&gt;研读值（累计）：84&lt;br&gt;学成可修至：云息九层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：云息六层及以上&lt;br&gt;前置：guizang_c2&lt;br&gt;研读属性：体魄≥8；剑道造诣≥1&lt;br&gt;&lt;br&gt;学会永久属性：剑道造诣 +1&lt;br&gt;&lt;br&gt;习得：垂锋&lt;/div&gt;" vertex="1">
+          <mxGeometry height="430" width="340" x="850" y="1370" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：归藏剑势（沿用第一卷，无新增效果）&lt;br&gt;&lt;br&gt;垂锋&lt;br&gt;关键词：剑、剑意、化解、应对&lt;br&gt;耗费：体力 1&lt;br&gt;目标：自身&lt;br&gt;效果：应对敌方物理攻击时，消耗剑意2层，获得A层化解；剑意至少2层时可触发。计算公式：A=round(4 + 体魄×0.25 + 剑道造诣×0.40)。&lt;br&gt;冷却：无&lt;/div&gt;" vertex="1">
+          <mxGeometry height="212" width="740" x="-400" y="1370" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：垂锋&lt;br&gt;&lt;br&gt;化法追加：本次化解层数提高25%。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="440" x="1360" y="1370" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第四卷：归藏&lt;br&gt;卷章ID：guizang_c4&lt;br&gt;顺序：4&lt;br&gt;&lt;br&gt;研读值（累计）：128&lt;br&gt;学成可修至：云息十层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：云息九层及以上&lt;br&gt;前置：guizang_c3&lt;br&gt;研读属性：体魄≥10；剑道造诣≥2&lt;br&gt;&lt;br&gt;学会永久属性：体魄 +0.5；剑道造诣 +1&lt;br&gt;&lt;br&gt;习得：无&lt;/div&gt;" vertex="1">
+          <mxGeometry height="430" width="340" x="850" y="1870" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：归藏剑势（沿用第一卷，无新增效果）&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="740" x="-400" y="1870" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：启匣&lt;br&gt;&lt;br&gt;化法追加：施展前剑意为0时，改为获得剑意3层。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="440" x="1360" y="1870" as="geometry" />
+        </mxCell>
+        <mxCell id="summary" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;养锋、格剑积蓄剑意；尽锋消耗剑意换取护盾；启匣再将一部分护盾换回剑意。与舒卷天章搭配时，需要选择继续保留高剑意追加攻击，还是放锋转入护持。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="550" x="1850" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;最大生命 +10%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="260" x="360" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;精准 +8%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="270" x="390" y="870" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;物理伤害 +5%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="270" x="400" y="1370" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;最大生命 +10%&lt;br&gt;物理伤害 +7%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="270" x="370" y="1870" as="geometry" />
+        </mxCell>
+        <mxCell id="status_rules" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;结算边界&lt;br&gt;设计提案，未实装。剑意沿用全局10层上限。剑势门槛按费用支付前的剑意读取；本次消耗后获得护盾，再结算主修返还，不让返还量反复计作消耗。尽锋原有命中条件与费用保留。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="550" x="1850" y="950" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" edge="1" parent="1" source="overview" style="endArrow=block;html=1;" target="c1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_a" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_b" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_c" edge="1" parent="1" source="c1" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c1_cards" value="本卷心法与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_a" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_b" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_c" edge="1" parent="1" source="c2" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c2_cards" value="心法与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_a" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_b" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_c" edge="1" parent="1" source="c3" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c3_cards" value="心法与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_a" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_b" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_c" edge="1" parent="1" source="c4" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c4_cards" value="心法与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

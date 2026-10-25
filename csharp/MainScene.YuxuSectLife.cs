@@ -548,7 +548,7 @@ public partial class MainScene
             return false;
         }
         var reward = rewardOverride > 0 ? rewardOverride : YuxuSectPrototypeBalance.OfficialYaopuDutyReward;
-        reward += Math.Max(0, human.sect_active_yuxu_inspiration_bonus);
+        if (CultivationInspirationSystem.Enabled) reward += Math.Max(0, human.sect_active_yuxu_inspiration_bonus);
         var sourceTransactionId = $"yuxu:official:{dutyId}:{transactionSuffix}";
         var record = new YuxuSectContributionRecord
         {
@@ -796,7 +796,7 @@ public partial class MainScene
 
             var monthIndex = get_game_month_index(time);
             var dateLabel = $"{time.year}年{time.month}月{time.day}日 {time.hour:D2}时";
-            const string outcome = "你们就宗门日常与修行中的疑问作了交流；此次答疑不改变同门关系，也不结算灵感或贡献。";
+            const string outcome = "你们就宗门日常与修行中的疑问作了交流；此次答疑不改变同门关系，也不结算贡献。";
             peer.record(new NpcActionRecord
             {
                 month_index = monthIndex,
@@ -1285,7 +1285,7 @@ public partial class MainScene
         }
 
         var expectedCost = YuxuSectPrototypeBalance.exchange_base_cost(item);
-        if (expectedCost <= 0 || requestedCost != expectedCost)
+        if (expectedCost < 0 || expectedCost == 0 && !YuxuSectPrototypeBalance.is_free_equipment_offer(item) || requestedCost != expectedCost)
         {
             resolve_yuxu_exchange_purchase(false, Math.Max(0L, human.get_yuxu_contribution_total()), "物品标准价已变化，请重新打开善功堂确认，贡献未扣除。");
             return;
@@ -1298,9 +1298,22 @@ public partial class MainScene
             return;
         }
 
-        if (player is null || !player.add_item_to_inventory(itemPath))
+        ArtifactInstanceData? redeemedArtifact = null;
+        if (item is SectArtifactOfferData artifactOffer)
+        {
+            try { redeemedArtifact = artifactOffer.CreateArtifact(); }
+            catch (Exception error) { resolve_yuxu_exchange_purchase(false, Math.Max(0L, balance), error.Message); return; }
+        }
+        if (player is null || !(redeemedArtifact is not null ? player.add_artifact_to_inventory(redeemedArtifact) : player.add_item_to_inventory(itemPath)))
         {
             resolve_yuxu_exchange_purchase(false, Math.Max(0L, balance), "行囊空间不足，物品未兑换，贡献未扣除。");
+            return;
+        }
+
+        if (expectedCost == 0)
+        {
+            mark_save_dirty(); refresh_yuxu_life_context();
+            resolve_yuxu_exchange_purchase(true, Math.Max(0L, balance), $"{item.entity_name} ×1 已放入行囊。本次测试兑换为0贡献，不产生贡献收支流水。");
             return;
         }
 

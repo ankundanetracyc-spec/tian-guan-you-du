@@ -88,8 +88,9 @@ public partial class MainScene
 
     private void advance_player_world_status_rest(int restHours)
     {
-        if (player?.entity_data is not HumanData data ||
-            WorldStatusRules.advance_rest_hours(data.world_status_records, restHours) == 0) return;
+        if (player?.entity_data is not HumanData data) return;
+        var changed = player.RestPillToxicity(restHours);
+        if (WorldStatusRules.advance_rest_hours(data.world_status_records, restHours) == 0 && !changed) return;
         mark_save_dirty();
         refresh_player_world_status_ui();
     }
@@ -114,7 +115,8 @@ public partial class MainScene
     private void on_world_status_time_changed()
     {
         if (player?.entity_data is not HumanData data) return;
-        if (WorldStatusRules.expire_due(data.world_status_records, current_world_status_hour()) == 0) return;
+        var changed = player.SettlePillToxicity();
+        if (WorldStatusRules.expire_due(data.world_status_records, current_world_status_hour()) == 0 && !changed) return;
         mark_save_dirty();
         refresh_player_world_status_ui();
     }
@@ -122,10 +124,17 @@ public partial class MainScene
     private void expire_player_world_statuses()
     {
         if (player?.entity_data is not HumanData data) return;
-        if (WorldStatusRules.expire_due(data.world_status_records, current_world_status_hour()) > 0)
+        var changed = player.SettlePillToxicity();
+        if (WorldStatusRules.expire_due(data.world_status_records, current_world_status_hour()) > 0 || changed)
         {
             mark_save_dirty();
             refresh_player_world_status_ui();
         }
+    }
+
+    public void notify_pill_toxicity_changed(Character character)
+    {
+        mark_save_dirty();
+        if (character == player) refresh_player_world_status_ui();
     }
 }

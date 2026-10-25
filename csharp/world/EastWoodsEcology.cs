@@ -147,6 +147,29 @@ public static class EastWoodsEcology
         return result;
     }
 
+    // A map refresh queries many nodes. Read the persistent history only once,
+    // keeping resolved encounters in the save while indexing current actions.
+    internal static System.Collections.Generic.Dictionary<string, List<EastWoodsActions.ActionDef>> IndexAvailableRegeneratedBeasts(Dictionary actions)
+    {
+        var result = new System.Collections.Generic.Dictionary<string, List<EastWoodsActions.ActionDef>>(StringComparer.Ordinal);
+        var ecology = actions.GetValueOrDefault(StateKey, new Dictionary()).AsGodotDictionary();
+        var records = ecology.GetValueOrDefault(BeastRecordsKey, new Godot.Collections.Array()).AsGodotArray();
+        foreach (var value in records)
+        {
+            if (value.VariantType != Variant.Type.Dictionary) continue;
+            var record = value.AsGodotDictionary();
+            if (record.GetValueOrDefault("status", "active").AsString() != "active") continue;
+            var node = record.GetValueOrDefault("node", "").AsString();
+            var actionId = record.GetValueOrDefault("action_id", "").AsString();
+            var identity = record.GetValueOrDefault("encounter_id", "").AsString();
+            if (actionId.Length == 0 || identity.Length == 0 || actions.GetValueOrDefault(ActionProgressKey(node, actionId), 0).AsInt32() > 0) continue;
+            if (EastWoodsActions.RegeneratedBeast(node, actionId, identity) is not { } action) continue;
+            if (!result.TryGetValue(node, out var list)) result[node] = list = [];
+            list.Add(action);
+        }
+        return result;
+    }
+
     public static EastWoodsActions.ActionDef? FindAction(string node, string actionId, Dictionary actions)
     {
         if (EastWoodsActions.Find(node, actionId) is { } fixedAction) return fixedAction;

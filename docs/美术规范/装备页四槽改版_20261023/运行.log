@@ -1,0 +1,15 @@
+Godot Engine v4.7.2.stable.mono.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 596.36 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4060 Laptop GPU
+
+PASS 主界面四个装备槽
+PASS 撤下旧分栏与战备占位
+PASS 截图 01_空槽
+PASS 测试武器正常入包及装备
+PASS 详情读取真实固定加成
+PASS 截图 02_武器详情
+PASS 点击槽位切换详情
+PASS 空候选操作不修改已装备武器
+PASS 截图 03_小窗口
+PASS 旧存档额外装备有管理入口
+PASS 页面重建不迁移或清除存档字段
+EQUIPMENT_PAGE_PREVIEW_OK

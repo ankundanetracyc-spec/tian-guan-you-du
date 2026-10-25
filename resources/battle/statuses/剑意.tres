@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="StatusEffect" format=3]
+
+[ext_resource type="Script" path="res://csharp/battle/StatusEffect.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+effect_id = "剑意"
+name = "剑意"
+description = "上限10层。养锋获得剑意，格剑触发时获得剑意；尽锋命中后消耗全部剑意，每层提高本次伤害。战斗结束时清除。"
+max_stacks = 10
+duration_default = -1
+duration_type = 3

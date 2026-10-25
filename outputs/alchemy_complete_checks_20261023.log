@@ -1,0 +1,234 @@
+Godot Engine v4.7.2.stable.mono.official.ed1daf0bf - https://godotengine.org
+
+WARNING: res://resources/activeskills/补虚行血诀/化法/卸力.tres:4 - ext_resource, invalid UID: uid://corjswdok5c7 - using text path instead: res://csharp/gongfa/DamageBonus.cs
+   at: load (scene/resources/resource_format_text.cpp:501)
+   C# backtrace (most recent call first):
+       [0] Godot.GodotObject Godot.NativeCalls.godot_icall_3_1268(nint, nint, string, string, int) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:11611)
+       [1] Godot.Resource Godot.ResourceLoader.Load(string, string, Godot.ResourceLoader+CacheMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/ResourceLoader.cs:120)
+       [2] T Godot.ResourceLoader.Load<T>(string, string, Godot.ResourceLoader+CacheMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Extensions/ResourceLoaderExtensions.cs:27)
+       [3] T Godot.GD.Load<T>(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:129)
+       [4] void AlchemySlotBrewPreviewScene.LoadMaterials()
+       [5] void AlchemySlotBrewPreviewScene._Ready()
+       [6] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2660)
+       [7] bool Godot.CanvasItem.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/CanvasItem.cs:1845)
+       [8] bool Godot.Control.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Control.cs:4029)
+       [9] bool AlchemySlotBrewPreviewScene.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&)
+       [10] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ALCHEMY_SLOT_UI_OK 相同固药臣位占用高于佐位
+ALCHEMY_SLOT_UI_OK 增量提高占用但不按两味翻倍
+ALCHEMY_SLOT_UI_OK 高品功用与材料占用上升
+ALCHEMY_SLOT_UI_OK 本位功用越多负担越高
+ALCHEMY_SLOT_UI_OK 非本位功用不收功用负担但高材阶保留基础负担
+ALCHEMY_SLOT_UI_OK 空炉零占用且无君药仍计辅药
+ALCHEMY_SLOT_UI_OK 其他占用扣除且可支配上限不为负
+ALCHEMY_SLOT_UI_OK 五味各有贡献且评分全满时可达满效
+ALCHEMY_SLOT_UI_OK 可支配灵识等于需求可炼少一点则阻塞
+ALCHEMY_SLOT_UI_OK 其他持续占用影响本炉准入
+ALCHEMY_SLOT_UI_OK 开炼与缺君药的读数共用占用算法
+ALCHEMY_SLOT_UI_OK 未知丹种共用占用算法
+ALCHEMY_SLOT_UI_OK 空炉顶部显示全部可支配右侧占用零
+ALCHEMY_SLOT_UI_OK 配伍只改变右侧需求不提前扣除顶部可支配
+ALCHEMY_SLOT_UI_OK 总灵识100其他事务占70顶部显示30比100
+ALCHEMY_SLOT_UI_OK 本炉需求等于剩余额度可炼
+ALCHEMY_SLOT_UI_OK 本炉需求大于剩余额度时禁止开炼而非比较人物总值
+ALCHEMY_SLOT_UI_OK 本炉需求超限不改变顶部余额右侧保留真实需求并禁止开炼
+ALCHEMY_SLOT_UI_OK 青木清露方整数投料
+RECIPE_DIAG 青木清露方 A=8 Q=50 count=1 成丹 1 枚 · 薄效×1。 成品由投料推导：君药核心「生」对应九品回春丹；其余药材共同改变成丹、品质与药效。 | 君药药力支持 1—1 枚；本方选定分为 1 枚。 | 丹效短板：君药核心 99.7 · 阴阳偏性 100.0 · 通路 69.8 · 稳形与纯度 50.0。 | 实际贡献材料 3 味（仅供诊断，不按味数封顶）；各丹按关键短板连续判分。 | 五行发挥倍率 114%；阴阳偏差 0%（当前偏性 0.00）。 | 阴阳相激 0.0 → 镇后 0.0；危险值 0.0，混合效率 78%。
+ALCHEMY_SLOT_UI_OK 青木清露方造诣8成丹
+ALCHEMY_SLOT_UI_OK 青木清露方造诣8载入
+RECIPE_RESULT 青木清露方 A=8 九品回春丹 Q=50 count=1 L=15 E=27 blocked=
+ALCHEMY_SLOT_UI_OK 青木清露方整数投料
+RECIPE_DIAG 青木清露方 A=36 Q=86 count=4 成丹 4 枚 · 优效×4。 成品由投料推导：君药核心「生」对应九品回春丹；其余药材共同改变成丹、品质与药效。 | 君药药力支持 1—4 枚；本方选定分为 4 枚。 | 丹效短板：君药核心 81.1 · 阴阳偏性 100.0 · 通路 84.3 · 稳形与纯度 87.9。 | 实际贡献材料 4 味（仅供诊断，不按味数封顶）；各丹按关键短板连续判分。 | 五行发挥倍率 114%；阴阳偏差 0%（当前偏性 0.00）。 | 阴阳相激 0.0 → 镇后 0.0；危险值 0.0，混合效率 100%。
+ALCHEMY_SLOT_UI_OK 青木清露方造诣36成丹
+ALCHEMY_SLOT_UI_OK 青木清露方造诣36载入
+RECIPE_RESULT 青木清露方 A=36 九品回春丹 Q=86 count=4 L=15 E=31 blocked=
+ALCHEMY_SLOT_UI_OK 青芽明净方整数投料
+RECIPE_DIAG 青芽明净方 A=8 Q=62 count=4 成丹 4 枚 · 良效×4。 成品由投料推导：君药核心「生」对应九品回春丹；其余药材共同改变成丹、品质与药效。 | 君药药力支持 1—4 枚；本方选定分为 4 枚。 | 丹效短板：君药核心 56.3 · 阴阳偏性 100.0 · 通路 69.8 · 稳形与纯度 71.5。 | 实际贡献材料 4 味（仅供诊断，不按味数封顶）；各丹按关键短板连续判分。 | 五行发挥倍率 114%；阴阳偏差 0%（当前偏性 0.00）。 | 阴阳相激 0.0 → 镇后 0.0；危险值 0.0，混合效率 78%。
+ALCHEMY_SLOT_UI_OK 青芽明净方造诣8成丹
+ALCHEMY_SLOT_UI_OK 青芽明净方造诣8载入
+RECIPE_RESULT 青芽明净方 A=8 九品回春丹 Q=62 count=4 L=10 E=31 blocked=
+ALCHEMY_SLOT_UI_OK 青芽明净方整数投料
+RECIPE_DIAG 青芽明净方 A=36 Q=75 count=4 成丹 4 枚 · 良效×4。 成品由投料推导：君药核心「生」对应九品回春丹；其余药材共同改变成丹、品质与药效。 | 君药药力支持 1—4 枚；本方选定分为 4 枚。 | 丹效短板：君药核心 72.2 · 阴阳偏性 100.0 · 通路 84.3 · 稳形与纯度 78.5。 | 实际贡献材料 4 味（仅供诊断，不按味数封顶）；各丹按关键短板连续判分。 | 五行发挥倍率 114%；阴阳偏差 0%（当前偏性 0.00）。 | 阴阳相激 0.0 → 镇后 0.0；危险值 0.0，混合效率 100%。
+ALCHEMY_SLOT_UI_OK 青芽明净方造诣36成丹
+ALCHEMY_SLOT_UI_OK 青芽明净方造诣36载入
+RECIPE_RESULT 青芽明净方 A=36 九品回春丹 Q=75 count=4 L=10 E=31 blocked=
+ALCHEMY_SLOT_UI_OK 石英泉珠方整数投料
+RECIPE_DIAG 石英泉珠方 A=8 Q=75 count=3 成丹 3 枚 · 良效×3。 成品由投料推导：君药核心「通」对应九品通脉丹；其余药材共同改变成丹、品质与药效。 | 君药药力支持 1—3 枚；本方选定分为 3 枚。 | 丹效短板：君药核心 83.4 · 阴阳偏性 100.0 · 通路 69.8 · 稳形与纯度 77.2。 | 实际贡献材料 4 味（仅供诊断，不按味数封顶）；各丹按关键短板连续判分。 | 五行发挥倍率 108%；阴阳偏差 12%（当前偏性 +0.12）。 | 阴阳相激 0.0 → 镇后 0.0；危险值 0.0，混合效率 78%。
+ALCHEMY_SLOT_UI_OK 石英泉珠方造诣8成丹
+ALCHEMY_SLOT_UI_OK 石英泉珠方造诣8载入
+RECIPE_RESULT 石英泉珠方 A=8 九品通脉丹 Q=75 count=3 L=11 E=30 blocked=
+ALCHEMY_SLOT_UI_OK 石英泉珠方整数投料
+RECIPE_DIAG 石英泉珠方 A=36 Q=89 count=4 成丹 4 枚 · 优效×4。 成品由投料推导：君药核心「通」对应九品通脉丹；其余药材共同改变成丹、品质与药效。 | 君药药力支持 1—4 枚；本方选定分为 4 枚。 | 丹效短板：君药核心 97.3 · 阴阳偏性 100.0 · 通路 84.3 · 稳形与纯度 83.0。 | 实际贡献材料 4 味（仅供诊断，不按味数封顶）；各丹按关键短板连续判分。 | 五行发挥倍率 108%；阴阳偏差 12%（当前偏性 +0.12）。 | 阴阳相激 0.0 → 镇后 0.0；危险值 0.0，混合效率 100%。
+ALCHEMY_SLOT_UI_OK 石英泉珠方造诣36成丹
+ALCHEMY_SLOT_UI_OK 石英泉珠方造诣36载入
+RECIPE_RESULT 石英泉珠方 A=36 九品通脉丹 Q=89 count=4 L=11 E=31 blocked=
+ALCHEMY_SLOT_UI_OK 藻丝清露方整数投料
+RECIPE_DIAG 藻丝清露方 A=8 Q=75 count=3 成丹 3 枚 · 良效×3。 成品由投料推导：君药核心「通」对应九品通脉丹；其余药材共同改变成丹、品质与药效。 | 君药药力支持 1—3 枚；本方选定分为 3 枚。 | 丹效短板：君药核心 85.9 · 阴阳偏性 100.0 · 通路 76.7 · 稳形与纯度 68.4。 | 实际贡献材料 4 味（仅供诊断，不按味数封顶）；各丹按关键短板连续判分。 | 五行发挥倍率 105%；阴阳偏差 0%（当前偏性 0.00）。 | 阴阳相激 0.0 → 镇后 0.0；危险值 0.0，混合效率 90%。
+ALCHEMY_SLOT_UI_OK 藻丝清露方造诣8成丹
+ALCHEMY_SLOT_UI_OK 藻丝清露方造诣8载入
+RECIPE_RESULT 藻丝清露方 A=8 九品通脉丹 Q=75 count=3 L=12 E=30 blocked=
+ALCHEMY_SLOT_UI_OK 藻丝清露方整数投料
+RECIPE_DIAG 藻丝清露方 A=36 Q=77 count=4 成丹 4 枚 · 优效×4。 成品由投料推导：君药核心「通」对应九品通脉丹；其余药材共同改变成丹、品质与药效。 | 君药药力支持 1—4 枚；本方选定分为 4 枚。 | 丹效短板：君药核心 92.1 · 阴阳偏性 100.0 · 通路 76.7 · 稳形与纯度 87.0。 | 实际贡献材料 4 味（仅供诊断，不按味数封顶）；各丹按关键短板连续判分。 | 五行发挥倍率 105%；阴阳偏差 0%（当前偏性 0.00）。 | 阴阳相激 0.0 → 镇后 0.0；危险值 0.0，混合效率 90%。
+ALCHEMY_SLOT_UI_OK 藻丝清露方造诣36成丹
+ALCHEMY_SLOT_UI_OK 藻丝清露方造诣36载入
+RECIPE_RESULT 藻丝清露方 A=36 九品通脉丹 Q=77 count=4 L=12 E=31 blocked=
+ALCHEMY_SLOT_UI_OK 瘴泥清音方整数投料
+RECIPE_DIAG 瘴泥清音方 A=8 Q=50 count=4 成丹 4 枚 · 薄效×4。 成品由投料推导：君药核心「镇」对应九品静心丹；其余药材共同改变成丹、品质与药效。 | 君药药力支持 1—4 枚；本方选定分为 4 枚。 | 丹效短板：君药核心 48.8 · 阴阳偏性 89.3 · 通路 69.8 · 稳形与纯度 64.1。 | 实际贡献材料 4 味（仅供诊断，不按味数封顶）；各丹按关键短板连续判分。 | 五行发挥倍率 103%；阴阳偏差 23%（当前偏性 -0.27）。 | 阴阳相激 0.0 → 镇后 0.0；危险值 0.0，混合效率 78%。
+ALCHEMY_SLOT_UI_OK 瘴泥清音方造诣8成丹
+ALCHEMY_SLOT_UI_OK 瘴泥清音方造诣8载入
+RECIPE_RESULT 瘴泥清音方 A=8 九品静心丹 Q=50 count=4 L=10 E=31 blocked=
+ALCHEMY_SLOT_UI_OK 瘴泥清音方整数投料
+RECIPE_DIAG 瘴泥清音方 A=36 Q=75 count=4 成丹 4 枚 · 良效×4。 成品由投料推导：君药核心「镇」对应九品静心丹；其余药材共同改变成丹、品质与药效。 | 君药药力支持 1—4 枚；本方选定分为 4 枚。 | 丹效短板：君药核心 65.5 · 阴阳偏性 89.3 · 通路 84.3 · 稳形与纯度 73.4。 | 实际贡献材料 4 味（仅供诊断，不按味数封顶）；各丹按关键短板连续判分。 | 五行发挥倍率 103%；阴阳偏差 23%（当前偏性 -0.27）。 | 阴阳相激 0.0 → 镇后 0.0；危险值 0.0，混合效率 100%。
+ALCHEMY_SLOT_UI_OK 瘴泥清音方造诣36成丹
+ALCHEMY_SLOT_UI_OK 瘴泥清音方造诣36载入
+RECIPE_RESULT 瘴泥清音方 A=36 九品静心丹 Q=75 count=4 L=10 E=31 blocked=
+ALCHEMY_SLOT_UI_OK 泥脉月露方整数投料
+RECIPE_DIAG 泥脉月露方 A=8 Q=73 count=4 成丹 4 枚 · 良效×4。 成品由投料推导：君药核心「镇」对应九品静心丹；其余药材共同改变成丹、品质与药效。 | 君药药力支持 1—4 枚；本方选定分为 4 枚。 | 丹效短板：君药核心 67.7 · 阴阳偏性 100.0 · 通路 69.8 · 稳形与纯度 60.9。 | 实际贡献材料 4 味（仅供诊断，不按味数封顶）；各丹按关键短板连续判分。 | 五行发挥倍率 105%；阴阳偏差 10%（当前偏性 -0.60）。 | 阴阳相激 0.0 → 镇后 0.0；危险值 0.0，混合效率 78%。
+ALCHEMY_SLOT_UI_OK 泥脉月露方造诣8成丹
+ALCHEMY_SLOT_UI_OK 泥脉月露方造诣8载入
+RECIPE_RESULT 泥脉月露方 A=8 九品静心丹 Q=73 count=4 L=10 E=31 blocked=
+ALCHEMY_SLOT_UI_OK 泥脉月露方整数投料
+RECIPE_DIAG 泥脉月露方 A=36 Q=75 count=4 成丹 4 枚 · 良效×4。 成品由投料推导：君药核心「镇」对应九品静心丹；其余药材共同改变成丹、品质与药效。 | 君药药力支持 1—4 枚；本方选定分为 4 枚。 | 丹效短板：君药核心 81.1 · 阴阳偏性 100.0 · 通路 84.3 · 稳形与纯度 74.0。 | 实际贡献材料 4 味（仅供诊断，不按味数封顶）；各丹按关键短板连续判分。 | 五行发挥倍率 105%；阴阳偏差 10%（当前偏性 -0.60）。 | 阴阳相激 0.0 → 镇后 0.0；危险值 0.0，混合效率 100%。
+ALCHEMY_SLOT_UI_OK 泥脉月露方造诣36成丹
+ALCHEMY_SLOT_UI_OK 泥脉月露方造诣36载入
+RECIPE_RESULT 泥脉月露方 A=36 九品静心丹 Q=75 count=4 L=10 E=31 blocked=
+ALCHEMY_SLOT_UI_OK 造诣控件开放八味
+ALCHEMY_SLOT_UI_OK 药位-1有效功用筛选
+ALCHEMY_SLOT_UI_OK 药位-1组合筛选金阴固
+ALCHEMY_SLOT_UI_OK 药位-1组合筛选木阴固
+ALCHEMY_SLOT_UI_OK 药位-1组合筛选水阴固
+ALCHEMY_SLOT_UI_OK 药位-1组合筛选火阴固
+ALCHEMY_SLOT_UI_OK 药位-1组合筛选土阴固
+ALCHEMY_SLOT_UI_OK 药位0有效功用筛选
+ALCHEMY_SLOT_UI_OK 药位0组合筛选金阴固
+ALCHEMY_SLOT_UI_OK 药位0组合筛选木阴固
+ALCHEMY_SLOT_UI_OK 药位0组合筛选水阴固
+ALCHEMY_SLOT_UI_OK 药位0组合筛选火阴固
+ALCHEMY_SLOT_UI_OK 药位0组合筛选土阴固
+ALCHEMY_SLOT_UI_OK 药位1有效功用筛选
+ALCHEMY_SLOT_UI_OK 药位1组合筛选金阴固
+ALCHEMY_SLOT_UI_OK 药位1组合筛选木阴固
+ALCHEMY_SLOT_UI_OK 药位1组合筛选水阴固
+ALCHEMY_SLOT_UI_OK 药位1组合筛选火阴固
+ALCHEMY_SLOT_UI_OK 药位1组合筛选土阴固
+ALCHEMY_SLOT_UI_OK 药位2有效功用筛选
+ALCHEMY_SLOT_UI_OK 药位2组合筛选金阴固
+ALCHEMY_SLOT_UI_OK 药位2组合筛选木阴固
+ALCHEMY_SLOT_UI_OK 药位2组合筛选水阴固
+ALCHEMY_SLOT_UI_OK 药位2组合筛选火阴固
+ALCHEMY_SLOT_UI_OK 药位2组合筛选土阴固
+ALCHEMY_SLOT_UI_OK 药位3有效功用筛选
+ALCHEMY_SLOT_UI_OK 药位3组合筛选金阴固
+ALCHEMY_SLOT_UI_OK 药位3组合筛选木阴固
+ALCHEMY_SLOT_UI_OK 药位3组合筛选水阴固
+ALCHEMY_SLOT_UI_OK 药位3组合筛选火阴固
+ALCHEMY_SLOT_UI_OK 药位3组合筛选土阴固
+ALCHEMY_SLOT_UI_OK 药位4有效功用筛选
+ALCHEMY_SLOT_UI_OK 药位4组合筛选金阴固
+ALCHEMY_SLOT_UI_OK 药位4组合筛选木阴固
+ALCHEMY_SLOT_UI_OK 药位4组合筛选水阴固
+ALCHEMY_SLOT_UI_OK 药位4组合筛选火阴固
+ALCHEMY_SLOT_UI_OK 药位4组合筛选土阴固
+ALCHEMY_SLOT_UI_OK 药位5有效功用筛选
+ALCHEMY_SLOT_UI_OK 药位5组合筛选金阴固
+ALCHEMY_SLOT_UI_OK 药位5组合筛选木阴固
+ALCHEMY_SLOT_UI_OK 药位5组合筛选水阴固
+ALCHEMY_SLOT_UI_OK 药位5组合筛选火阴固
+ALCHEMY_SLOT_UI_OK 药位5组合筛选土阴固
+ALCHEMY_SLOT_UI_OK 药位6有效功用筛选
+ALCHEMY_SLOT_UI_OK 药位6组合筛选金阴固
+ALCHEMY_SLOT_UI_OK 药位6组合筛选木阴固
+ALCHEMY_SLOT_UI_OK 药位6组合筛选水阴固
+ALCHEMY_SLOT_UI_OK 药位6组合筛选火阴固
+ALCHEMY_SLOT_UI_OK 药位6组合筛选土阴固
+ALCHEMY_SLOT_UI_OK 空结果反馈
+ALCHEMY_SLOT_UI_OK 重置后恢复全部材料
+ALCHEMY_SLOT_UI_OK 降造诣清除锁定位且刷新布局
+ALCHEMY_SLOT_UI_OK 降造诣清料提示
+ALCHEMY_SLOT_UI_OK 动态药位门槛31
+ALCHEMY_SLOT_UI_OK 动态药位门槛32
+ALCHEMY_SLOT_UI_OK 动态药位门槛67
+ALCHEMY_SLOT_UI_OK 动态药位门槛68
+ALCHEMY_SLOT_UI_OK 动态药位门槛202
+ALCHEMY_SLOT_UI_OK 动态药位门槛203
+ALCHEMY_SLOT_UI_OK 动态药位门槛507
+ALCHEMY_SLOT_UI_OK 动态药位门槛508
+ALCHEMY_SLOT_UI_OK 造诣保留小数
+ALCHEMY_SLOT_UI_OK 单功用筛选破
+ALCHEMY_SLOT_UI_OK 单功用筛选化
+ALCHEMY_SLOT_UI_OK 单功用筛选通
+ALCHEMY_SLOT_UI_OK 单功用筛选行
+ALCHEMY_SLOT_UI_OK 单功用筛选引
+ALCHEMY_SLOT_UI_OK 单功用筛选聚
+ALCHEMY_SLOT_UI_OK 单功用筛选固
+ALCHEMY_SLOT_UI_OK 单功用筛选镇
+ALCHEMY_SLOT_UI_OK 单功用筛选护
+ALCHEMY_SLOT_UI_OK 单功用筛选生
+ALCHEMY_SLOT_UI_OK 单功用筛选明
+ALCHEMY_SLOT_UI_OK 单功用筛选藏
+ALCHEMY_SLOT_UI_OK 多功用按或匹配
+ALCHEMY_SLOT_UI_OK 功用与五行阴阳本位组合
+ALCHEMY_SLOT_UI_OK 实际重置按钮清除全部功用
+ALCHEMY_SLOT_UI_OK 双化旧样方仍按新版实际指标成丹
+ALCHEMY_SLOT_UI_OK 结果和详情无废弃药效值
+ALCHEMY_SLOT_UI_OK 曲线及结果旧字段已删除
+ALCHEMY_SLOT_UI_OK 可选择一至四颗并按所选颗数分配
+ALCHEMY_SLOT_UI_OK 减产集中真实药性并降低分丹精力
+ALCHEMY_SLOT_UI_OK 逐颗有效质量合计等于整炉送达质量
+ALCHEMY_SLOT_UI_OK 逐颗残余夹带质量守恒
+ALCHEMY_SLOT_UI_OK 每颗丹效均在零至一百内
+ALCHEMY_SLOT_UI_OK 逐颗有效质量合计等于整炉送达质量
+ALCHEMY_SLOT_UI_OK 逐颗残余夹带质量守恒
+ALCHEMY_SLOT_UI_OK 每颗丹效均在零至一百内
+ALCHEMY_SLOT_UI_OK 相同配伍不因输入枚举顺序改变分配或结果
+ALCHEMY_SLOT_UI_OK 同炉药性分配有可复现的小幅差异
+ADJACENT_RECIPE 青木清露方 A=18 K=2 成丹 2 枚 · 优效×1、良效×1。 scores=76,75
+ALCHEMY_SLOT_UI_OK 真实样方存在同炉相邻档成品而非整炉同分
+ALCHEMY_SLOT_UI_OK 改颗数不能借另一弱核心悄悄换丹种绕过上限
+ALCHEMY_SLOT_UI_OK 三味高阶真实满足全部轴时不再按味数锁在优效
+ALCHEMY_SLOT_UI_OK 跨档锚点与五档整数边界一致
+ALCHEMY_SLOT_UI_OK 跨档连续且临界未成丹不直接归零
+ALCHEMY_SLOT_UI_OK 引提高首颗主药份额并真实扣减其余颗且总量守恒
+ALCHEMY_SLOT_UI_OK 成品没有额外藏性时长分档
+ALCHEMY_SLOT_UI_OK huichun档位0正式定义堆叠与行囊效果说明一致
+ALCHEMY_SLOT_UI_OK huichun档位1正式定义堆叠与行囊效果说明一致
+ALCHEMY_SLOT_UI_OK huichun档位2正式定义堆叠与行囊效果说明一致
+ALCHEMY_SLOT_UI_OK huichun档位3正式定义堆叠与行囊效果说明一致
+ALCHEMY_SLOT_UI_OK huichun档位4正式定义堆叠与行囊效果说明一致
+ALCHEMY_SLOT_UI_OK tongmai档位0正式定义堆叠与行囊效果说明一致
+ALCHEMY_SLOT_UI_OK tongmai档位1正式定义堆叠与行囊效果说明一致
+ALCHEMY_SLOT_UI_OK tongmai档位2正式定义堆叠与行囊效果说明一致
+ALCHEMY_SLOT_UI_OK tongmai档位3正式定义堆叠与行囊效果说明一致
+ALCHEMY_SLOT_UI_OK tongmai档位4正式定义堆叠与行囊效果说明一致
+ALCHEMY_SLOT_UI_OK jingxin档位0正式定义堆叠与行囊效果说明一致
+ALCHEMY_SLOT_UI_OK jingxin档位1正式定义堆叠与行囊效果说明一致
+ALCHEMY_SLOT_UI_OK jingxin档位2正式定义堆叠与行囊效果说明一致
+ALCHEMY_SLOT_UI_OK jingxin档位3正式定义堆叠与行囊效果说明一致
+ALCHEMY_SLOT_UI_OK jingxin档位4正式定义堆叠与行囊效果说明一致
+ALCHEMY_SLOT_UI_OK 正式炼丹用真实库存与人物灵识结算
+ALCHEMY_SLOT_UI_OK 整炉一次扣料扣精力且保留其他事务灵识占用
+ALCHEMY_SLOT_UI_OK 成品按丹种丹阶丹效档进入唯一行囊
+ALCHEMY_SLOT_UI_OK 使用丹药效果与消耗同时生效且不清空其他占用
+ALCHEMY_SLOT_UI_OK 开炼重检已变化的灵识不足且零扣除
+ALCHEMY_SLOT_UI_OK 精力不足不扣料
+ALCHEMY_SLOT_UI_OK 材料余额变化后开炼失败不扣精力
+ALCHEMY_SLOT_UI_OK 满包预先检查并完整保留资源
+ALCHEMY_SLOT_UI_OK 普通失败真实消耗且不生成丹药
+ALCHEMY_SLOT_UI_OK 同档跨炉产物堆叠
+ALCHEMY_SLOT_UI_OK 查看行囊及普通入包不清零其他事务灵识占用
+ALCHEMY_SLOT_UI_OK 生命已满不浪费回春丹
+ALCHEMY_SLOT_UI_OK 通脉丹按本档固定百分比恢复法力
+ALCHEMY_SLOT_UI_OK 静心丹最多安定至零且不可刷正心境
+ALCHEMY_SLOT_UI_OK 丹药与材料通过既有人物资源保存
+ALCHEMY_SLOT_UI_OK 人物读回保留档位物品数量与精力
+ALCHEMY_SLOT_UI_OK 正式结算拒绝不合法颗数
+ALCHEMY_SLOT_UI_OK 正式人物炼制按时辰推进唯一历法
+ALCHEMY_SLOT_UI_OK 正式炉次结束不遗留本炉灵识占用
+ALCHEMY_SLOT_UI_OK 正式页面读取人物真实灵识精力造诣
+ALCHEMY_SLOT_UI_OK 正式页面不能通过试演控件改造诣
+ALCHEMY_SLOT_UI_OK 百工丹药真实按钮打开绑定人物的正式炼丹房
+ALCHEMY_SLOT_UI_OK 正式炼丹返回只关闭页面不重置旅程
+ALCHEMY_SLOT_UI_OK 炸炉消耗投料精力且不生成丹药或残渣
+ALCHEMY_SLOT_UI_OK 自拟丹方保存读回本炉颗数
+ALCHEMY_SLOT_UI_OK 旧丹方缺颗数字段按一颗兼容
+ALCHEMY_SLOT_UI_PASS 192

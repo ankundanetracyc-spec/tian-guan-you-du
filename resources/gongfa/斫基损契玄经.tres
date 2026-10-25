@@ -112,6 +112,7 @@ sub_deck_rewrites = Array[ExtResource("3")]([SubResource("RewriteZheFengFourth")
 heart_method_description = "心法被动：斫基损契（沿用第三卷，无新增效果）"
 
 [resource]
+gameplay_enabled = true
 script = ExtResource("1")
 gongfa_name = "斫基损契玄经"
 description = "燃烧法力上限补足费用，再以炁与体力接续攻势。"

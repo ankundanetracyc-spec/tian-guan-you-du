@@ -7,7 +7,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
-/// <summary>Focused checks for inspiration expiry, deduplication, persistence, and bottle relief.</summary>
+/// <summary>Checks inspiration lifecycle and suspended-bottleneck save compatibility; legacy relief checks run only when enabled.</summary>
 public partial class CultivationInspirationSmoke : Node
 {
     private const long HoursPerYear = 360L * 24L;
@@ -31,7 +31,7 @@ public partial class CultivationInspirationSmoke : Node
         RetainedTestObjects.Clear();
     }
 
-    public override void _Ready()
+    public override async void _Ready()
     {
         try
         {
@@ -40,21 +40,32 @@ public partial class CultivationInspirationSmoke : Node
             // cached-resource handle between generated test characters.
             if (ResourceLoader.Load<PortraitClothingData>("res://resources/entities/items/clothing/玉虚内门常服.tres") is { } clothing)
                 retain_test_object(clothing);
-            check_relief_formula();
-            check_auto_refinement_percent_threshold();
-            check_legacy_auto_refinement_threshold_migration();
-            check_repeated_refinement_and_clock();
-            check_accumulation_cap_and_realm_transition();
-            check_source_event_idempotency_and_diminishing_floor();
-            check_weighted_rank_selection();
-            check_cross_domain_use_mapping();
-            check_explicit_action_reservation();
-            check_expiry_boundary();
+            if (CultivationBottleneckRules.Enabled)
+            {
+                check_relief_formula();
+                check_auto_refinement_percent_threshold();
+                check_legacy_auto_refinement_threshold_migration();
+                check_repeated_refinement_and_clock();
+                check_accumulation_cap_and_realm_transition();
+                check_room_integration();
+                check_runtime_pacing_inputs();
+                check_pacing_projection();
+            }
+            else check_suspended_bottleneck();
+            if (CultivationInspirationSystem.Enabled)
+            {
+                check_source_event_idempotency_and_diminishing_floor();
+                check_weighted_rank_selection();
+                check_cross_domain_use_mapping();
+                check_explicit_action_reservation();
+                check_expiry_boundary();
+            }
+            else check_suspended_inspiration();
             check_save_and_json_round_trip();
             check_yuanxi_exemption();
-            check_room_integration();
-            check_runtime_pacing_inputs();
-            check_pacing_projection();
+            // 本轮静室与选择器检查会延迟释放控件，先让场景完成退出再关闭渲染服务。
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             release_test_objects_before_exit();
             GD.Print("CULTIVATION_INSPIRATION_SMOKE_OK");
             GetTree().Quit();
@@ -65,6 +76,92 @@ public partial class CultivationInspirationSmoke : Node
             GD.PushError($"CULTIVATION_INSPIRATION_SMOKE_FAIL: {error}");
             GetTree().Quit(1);
         }
+    }
+
+    private void check_suspended_bottleneck()
+    {
+        var character = create_runtime_pacing_character();
+        var human = (HumanData)character.entity_data!;
+        var now = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+        human.main_gongfa_path = GongfaAvailability.DefaultBookPath;
+        human.cultivation_bottleneck_level = 8;
+        human.cultivation_bottleneck_current_penalty = .9d;
+        human.cultivation_bottleneck_accumulated_hours = 1440d;
+        human.cultivation_bottleneck_realm_tier = 1;
+        human.cultivation_auto_refinement_enabled = true;
+        human.cultivation_auto_refinement_record_id = "suspended-legacy-insight";
+        human.cultivation_auto_refinement_threshold_penalty = .1d;
+        human.cultivation_inspiration_records.Add(make_record("suspended-legacy-insight", 3, now));
+        var path = $"user://suspended_bottleneck_{Guid.NewGuid():N}.tres";
+        Check(ResourceSaver.Save(human, path) == Error.Ok, "legacy bottleneck and auto-refinement fixture saves");
+        var restored = ResourceLoader.Load<HumanData>(path, cacheMode: ResourceLoader.CacheMode.Ignore)!;
+        retain_test_object(restored);
+        character.load_from_data(restored);
+        DirAccess.RemoveAbsolute(ProjectSettings.GlobalizePath(path));
+        human = (HumanData)character.entity_data!;
+        var rate = character.get_cultivation_rate();
+        Check(rate > 0 && character.can_cultivate(), "restored character can cultivate normally");
+        foreach (var hours in new[] { 24, 360 * 24 })
+        {
+            var preview = character.get_world_cultivation_preview_for_hours(hours);
+            Check(Math.Abs(preview["rate"].AsDouble() - rate) < 1e-6,
+                $"{hours}h cultivation preview ignores saved 90% penalty and never accumulates a new penalty");
+        }
+        Check(!character.get_cultivation_bottleneck_summary()["applicable"].AsBool() &&
+            !character.get_cultivation_auto_refinement_settings()["enabled"].AsBool(),
+            "legacy bottleneck and automatic refinement are inactive after reload");
+        Check(!character.try_refine_cultivation_bottleneck("suspended-legacy-insight", out _) &&
+            !CultivationInspirationSystem.try_consume_for_bottleneck(human, "suspended-legacy-insight", now, out _),
+            "both manual and low-level bottleneck consumption reject without spending inspiration");
+        var outcome = character.cultivate_with_world_stamina_for_hours(24);
+        Check(outcome.GetValueOrDefault("success", false).AsBool(), "actual cultivation completes with stale automatic settings");
+        Check(human.cultivation_inspiration_records[0].state_id == CultivationInspirationRecord.StateAvailable &&
+            human.cultivation_bottleneck_accumulated_hours == 1440d &&
+            Math.Abs(character.get_cultivation_rate_after_bottleneck() - rate) < 1e-6,
+            "actual cultivation neither consumes legacy selected insight nor grows bottleneck history");
+    }
+
+    private void check_suspended_inspiration()
+    {
+        var character = create_runtime_pacing_character();
+        var human = (HumanData)character.entity_data!;
+        var now = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+        var record = make_record("suspended-action", 3, now);
+        record.use_domain_id = CultivationInspirationTuning.GatheringDomain;
+        record.armed_for_action = true;
+        human.cultivation_inspiration_records.Add(record);
+        Check(!character.try_grant_renewable_cultivation_inspiration("disabled-activity", "field.gathering", out _, out var result) &&
+            result == "disabled" && human.cultivation_inspiration_records.Count == 1 && human.cultivation_inspiration_source_events.Count == 0,
+            "disabled activity neither grants inspiration nor appends a source ledger event");
+        Check(!CultivationInspirationSystem.try_award_renewable(human, "disabled-low-level", "test", "test", 1,
+            "test-action", now, 1f, .8f, .1f, out _, out var direct) && direct == "disabled",
+            "low-level reward calls cannot bypass suspension");
+        Check(character.get_cultivation_inspiration_records().Count == 0 &&
+            character.get_armed_cultivation_inspiration_for_action(CultivationInspirationTuning.GatheringDomain) is null &&
+            !character.set_cultivation_inspiration_action_reservation(record.record_id, true),
+            "old reservations are invisible and cannot be used or changed through gameplay");
+        Check(!character.try_consume_armed_cultivation_inspiration_for_action(CultivationInspirationTuning.GatheringDomain, out _) &&
+            !CultivationInspirationSystem.try_consume_for_action_at_start(human, record.record_id, record.use_domain_id, now, out _),
+            "both normal and low-level action consumption reject old inspiration");
+        Check(CultivationInspirationSystem.expire_available_records(human, now + HoursPerYear * 3) == 0 &&
+            record.state_id == CultivationInspirationRecord.StateAvailable && record.armed_for_action,
+            "suspension preserves raw historical records without consumption or expiry mutation");
+        Check(CultivationInspirationTuning.combat_starting_shield(3) == 0 &&
+            CultivationInspirationTuning.gathering_extra_yield(3) == 0 &&
+            CultivationInspirationTuning.travel_reveal_bonus_cells(3) == 0 &&
+            CultivationInspirationTuning.study_progress_multiplier(3) == 1f &&
+            CultivationInspirationTuning.sect_contribution_bonus(3) == 0,
+            "all five action bonuses return neutral results even for cached high-quality ranks");
+        var picker = new InspirationActionPicker(); AddChild(picker);
+        picker.Configure(character, CultivationInspirationTuning.GatheringDomain, "采集");
+        Check(!picker.Visible, "shared inspiration picker stays hidden");
+        var room = new CultivationUI(); AddChild(room); room.show_entity(character);
+        Check(!Nodes<Button>(room).Any(b => b.Text.Contains("灵感") && b.IsVisibleInTree()) &&
+            !Nodes<Label>(room).Any(l => l.Text.Contains("灵感") && l.IsVisibleInTree()),
+            "quiet room contains no visible inspiration entries, summaries, or selectors");
+        Check(!Nodes<Control>(room).Any(n => n.Name == "RoomTab5" || n.Name == "InspirationPage"),
+            "ledger navigation and ledger page are absent from quiet-room layout");
+        room.QueueFree(); picker.QueueFree();
     }
 
     private void check_relief_formula()

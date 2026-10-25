@@ -304,7 +304,7 @@ public partial class MainScene
             ["node"] = nodeId,
             ["action"] = action.Id,
             ["route_state"] = route.Duplicate(true),
-            ["title"] = "雾隐幽谷 · 林地凶狼",
+            ["title"] = DynamicDungeonExpedition.GetDisplayName(instance) + " · 林地凶狼",
             ["allow_prebattle_cancel"] = true,
             ["loot_rewards"] = new Godot.Collections.Array
             {

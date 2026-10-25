@@ -28,25 +28,35 @@ public partial class Character
             paths.RemoveAt(i); counts.RemoveAt(i); positions.RemoveAt(i);
         }
         if (remaining > 0) return false;
-        var stones = request.quantity * request.unit_price;
-        remaining = stones;
+        var stonesLong = (long)request.quantity * request.unit_price;
+        if (stonesLong > int.MaxValue) { failure = "灵石数量超出当前存档可记录范围，双方暂未交换物品。"; return false; }
+        var stones = (int)stonesLong;
         var stoneItem = NpcPurchaseRules.Item(NpcPurchaseRules.StonePath)!;
-        var stack = stoneItem.can_stack ? Math.Max(1, stoneItem.max_stack) : 1;
         if (stoneItem.can_stack)
-            for (var i = 0; i < paths.Count && remaining > 0; i++)
+        {
+            var stoneIndex = paths.IndexOf(NpcPurchaseRules.StonePath);
+            if (stoneIndex >= 0)
             {
-                if (paths[i] != NpcPurchaseRules.StonePath) continue;
-                var added = Math.Min(Math.Max(0, stack - counts[i]), remaining);
-                remaining -= added; counts[i] += added;
+                if (counts[stoneIndex] > int.MaxValue - stones)
+                { failure = "灵石数量超出当前存档可记录范围，双方暂未交换物品。"; return false; }
+                counts[stoneIndex] += stones;
             }
-        while (remaining > 0)
+            else if (stones > 0)
+            {
+                if (paths.Count + human.artifact_inventory.Count >= InventorySlotCapacity)
+                { failure = "行囊装不下灵石，双方暂未交换物品。"; return false; }
+                var slot = 0;
+                while (positions.Contains(slot) || human.artifact_inventory_positions.Contains(slot)) slot++;
+                paths.Add(NpcPurchaseRules.StonePath); counts.Add(stones); positions.Add(slot);
+            }
+        }
+        else for (var i = 0; i < stones; i++)
         {
             if (paths.Count + human.artifact_inventory.Count >= InventorySlotCapacity)
             { failure = "行囊装不下灵石，双方暂未交换物品。"; return false; }
             var slot = 0;
             while (positions.Contains(slot) || human.artifact_inventory_positions.Contains(slot)) slot++;
-            var added = Math.Min(stack, remaining);
-            paths.Add(NpcPurchaseRules.StonePath); counts.Add(added); positions.Add(slot); remaining -= added;
+            paths.Add(NpcPurchaseRules.StonePath); counts.Add(1); positions.Add(slot);
         }
         _npcPurchaseCommitting = true;
         try

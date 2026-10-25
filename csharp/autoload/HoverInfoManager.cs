@@ -28,7 +28,31 @@ public partial class HoverInfoManager : CanvasLayer
     private Vector2 _pointerPosition;
     private int _layoutTicket;
 
-    public readonly record struct HoverInfoContent(string Title, string Body, Texture2D? Icon = null, string Subtitle = "");
+    public readonly record struct HoverInfoSection(string Title, string Body);
+
+    public readonly record struct HoverInfoContent(string Title, string Body, Texture2D? Icon = null, string Subtitle = "",
+        IReadOnlyList<HoverInfoSection>? Sections = null);
+
+    /// <summary>Keep plain text available to callers while giving the shared reader explicit sections.</summary>
+    public static HoverInfoContent Structured(string title, Texture2D? icon, string subtitle, params HoverInfoSection[] sections)
+    {
+        var populated = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Where(sections, section => !string.IsNullOrWhiteSpace(section.Body)));
+        return new(title, string.Join("\n\n", System.Linq.Enumerable.Select(populated,
+            section => string.IsNullOrWhiteSpace(section.Title) ? section.Body : section.Title + "\n" + section.Body)), icon, subtitle, populated);
+    }
+
+    private readonly HashSet<Control> _suspended = new();
+
+    public static void SuspendFor(Control? anchor, bool suspended)
+    {
+        if (anchor is null || _instance is not { } manager) return;
+        if (suspended)
+        {
+            manager._suspended.Add(anchor);
+            if (manager._activeAnchor == anchor || manager._pendingAnchor == anchor) manager.hide_all();
+        }
+        else manager._suspended.Remove(anchor);
+    }
 
     public override void _EnterTree()
     {
@@ -265,6 +289,7 @@ public partial class HoverInfoManager : CanvasLayer
             return;
         }
         _entries[anchor] = content;
+        if (_suspended.Contains(anchor)) return;
         if (_activeAnchor == anchor) display(anchor, content);
         else if (pointer_over(anchor))
         {
@@ -286,7 +311,7 @@ public partial class HoverInfoManager : CanvasLayer
 
     private void on_anchor_entered(Control anchor)
     {
-        if (!GodotObject.IsInstanceValid(anchor) || !anchor.IsVisibleInTree()) return;
+        if (!GodotObject.IsInstanceValid(anchor) || !anchor.IsVisibleInTree() || _suspended.Contains(anchor)) return;
         // Capture later state updates that still use Godot's TooltipText property.
         if (!string.IsNullOrWhiteSpace(anchor.TooltipText)) set_tooltip(anchor, anchor.TooltipText);
         if (!_entries.TryGetValue(anchor, out var content)) return;
@@ -315,6 +340,7 @@ public partial class HoverInfoManager : CanvasLayer
 
     private void on_anchor_tree_exiting(Control anchor)
     {
+        _suspended.Remove(anchor);
         _entries.Remove(anchor);
         if (_pendingAnchor == anchor) { _pendingAnchor = null; _showTimer?.Stop(); }
         if (_activeAnchor == anchor) hide_all();
@@ -336,6 +362,7 @@ public partial class HoverInfoManager : CanvasLayer
 
     private void display(Control anchor, HoverInfoContent content)
     {
+        if (_suspended.Contains(anchor)) return;
         if (_card is null || _title is null || _subtitle is null || _icon is null || _scroll is null || _body is null) return;
         if (_activeAnchor == anchor && _visibleContent == content) return;
         if (_activeAnchor != anchor)
@@ -351,9 +378,13 @@ public partial class HoverInfoManager : CanvasLayer
         _icon.Visible = content.Icon is not null;
         _subtitle.Text = content.Subtitle;
         _subtitle.Visible = !string.IsNullOrWhiteSpace(content.Subtitle);
-        _body.Text = content.Body;
+        _body.Text = content.Sections is { Count: > 0 } sections
+            ? string.Join("\n\n", System.Linq.Enumerable.Select(sections, section =>
+                string.IsNullOrWhiteSpace(section.Title) ? section.Body : $"[color=#d7c8a0][b]{section.Title}[/b][/color]\n{section.Body}"))
+            : content.Body;
         _scroll.VerticalScrollMode = ScrollContainer.ScrollMode.Disabled;
         _scroll.ScrollVertical = 0;
+        _card.Modulate = new Color(1, 1, 1, 0);
         _card.Show();
         _card.MoveToFront();
         schedule_layout();
@@ -365,7 +396,7 @@ public partial class HoverInfoManager : CanvasLayer
         CallDeferred(MethodName.layout_card, ticket);
     }
 
-    private void layout_card(int ticket)
+    private async void layout_card(int ticket)
     {
         if (ticket != _layoutTicket || _activeAnchor is null || !GodotObject.IsInstanceValid(_activeAnchor) || _card is null || _body is null || _scroll is null) return;
         var viewport = GetViewport().GetVisibleRect().Size;
@@ -377,6 +408,12 @@ public partial class HoverInfoManager : CanvasLayer
         _scroll.CustomMinimumSize = new Vector2(0, 40);
         var maxHeight = Mathf.Max(80f, viewport.Y - ViewportMargin * 2);
         var maxBodyHeight = Mathf.Max(40f, maxHeight - 150f);
+        // Give the RichTextLabel and parent containers a layout pass at the final width.
+        // First-hover text otherwise measures at the old/zero width and pins a huge minimum.
+        _card.CustomMinimumSize = new Vector2(width, 0);
+        _card.Size = new Vector2(width, 0);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        if (ticket != _layoutTicket || _activeAnchor is null || !GodotObject.IsInstanceValid(_activeAnchor) || !_card.Visible) return;
         var naturalBodyHeight = Mathf.Max(40f, _body.GetContentHeight() + 8f);
         var maxWidth = Mathf.Max(100f, viewport.X - ViewportMargin * 2);
         while(naturalBodyHeight > maxBodyHeight && width < maxWidth)
@@ -396,7 +433,12 @@ public partial class HoverInfoManager : CanvasLayer
         _card.CustomMinimumSize = new Vector2(width, 0);
         _card.ResetSize();
         _card.Size = _card.GetCombinedMinimumSize();
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        if (ticket != _layoutTicket || _activeAnchor is null || !GodotObject.IsInstanceValid(_activeAnchor) || !_card.Visible) return;
+        _card.ResetSize();
+        _card.Size = _card.GetCombinedMinimumSize();
         place_card(_activeAnchor);
+        _card.Modulate = Colors.White;
     }
 
     private void place_card(Control anchor)

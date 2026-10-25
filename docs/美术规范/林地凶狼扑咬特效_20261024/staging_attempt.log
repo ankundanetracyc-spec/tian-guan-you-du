@@ -1,0 +1,29 @@
+Godot Engine v4.7.2.stable.mono.official.ed1daf0bf - https://godotengine.org
+D3D12 12_0 - Forward Mobile - Using Device #0: NVIDIA - NVIDIA GeForce RTX 4060 Laptop GPU
+
+WARNING: res://resources/activeskills/补虚行血诀/化法/卸力.tres:4 - ext_resource, invalid UID: uid://corjswdok5c7 - using text path instead: res://csharp/gongfa/DamageBonus.cs
+   at: load (scene/resources/resource_format_text.cpp:501)
+   C# backtrace (most recent call first):
+       [0] Godot.GodotObject Godot.NativeCalls.godot_icall_3_1268(nint, nint, string, string, int) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:11611)
+       [1] Godot.Resource Godot.ResourceLoader.Load(string, string, Godot.ResourceLoader+CacheMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/ResourceLoader.cs:120)
+       [2] T Godot.ResourceLoader.Load<T>(string, string, Godot.ResourceLoader+CacheMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Extensions/ResourceLoaderExtensions.cs:27)
+       [3] void GongfaAvailability.EnsureCatalog()
+       [4] System.Collections.Generic.IEnumerable`1[GongfaResource] GongfaAvailability.EnabledBooks()
+       [5] string Character.get_base_combat_skill_path(string)
+       [6] string Character.resolve_combat_skill_slot_path(string)
+       [7] Godot.Collections.Array`1[ActiveSkillData] BattleManager.LoadCombatSkills(Godot.GodotObject)
+       [8] void BattleManager.InitializeRealtimeBattle()
+       [9] void BattleManager.setup_team_battle(Godot.Collections.Array, Godot.Collections.Array, Godot.Collections.Array, Godot.Collections.Array)
+       [10] bool BattleManager.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&)
+       [11] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+       [12] Godot.NativeInterop.godot_variant Godot.NativeInterop.NativeFuncs.godotsharp_method_bind_call(nint, nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Godot.SourceGenerators.Internal/Godot.SourceGenerators.Internal.UnmanagedCallbacksGenerator/Godot.NativeInterop.NativeFuncs.generated.cs:388)
+       [13] Godot.Variant Godot.NativeCalls.godot_icall_2_923(nint, nint, Godot.NativeInterop.godot_string_name, System.ReadOnlySpan`1[Godot.Variant], Godot.NativeInterop.godot_string_name) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:8222)
+       [14] Godot.Variant Godot.GodotObject.Call(Godot.StringName, Godot.Variant[]) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/GodotObject.cs:749)
+       [15] void BattleSandbox.start_sandbox()
+       [16] bool BattleSandbox.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&)
+       [17] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: FATAL: Condition "gchandle.is_released()" is true.
+   at: mono_object_disposed_baseref (modules/mono/csharp_script.cpp:1788)
+   C# backtrace (most recent call first):
+       [0] void Godot.GodotObject.Dispose(bool) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GodotObject.base.cs:137)
+       [1] void Godot.GodotObject.Finalize() (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GodotObject.base.cs:100)

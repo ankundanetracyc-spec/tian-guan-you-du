@@ -67,6 +67,9 @@ public partial class EastWoodsDungeonPanel : Control
     public string dynamic_instance_id => _dynamicMode ? _dynamicInstanceState.GetValueOrDefault("instance_id", "").AsString() : "";
     private string route_entry_node_id => _dynamicMode ? _dynamicEntryNodeId : "forest_edge";
     private string route_exit_node_id => _dynamicMode ? _dynamicExitNodeId : "forest_edge";
+    private string route_display_name => _dynamicMode ? DynamicDungeonExpedition.GetDisplayName(_dynamicInstanceState) : "东林地";
+    private bool is_compact_route => _dynamicMode && DynamicDungeonExpedition.IsCompactInstance(_dynamicInstanceState);
+    private bool is_route_exit(string nodeId) => _dynamicMode ? DynamicDungeonExpedition.IsExitNode(_dynamicInstanceState, nodeId) : nodeId == route_exit_node_id;
     private string route_dungeon_id => _dynamicMode ? DynamicDungeonExpedition.GetDungeonId(_dynamicInstanceState) : EastWoodsDungeonRules.DungeonId;
     private string route_layout_seed => _dynamicMode ? DynamicDungeonExpedition.GetLayoutSeed(_dynamicInstanceState) : EastWoodsDungeonRules.LayoutSeed;
     private IReadOnlyList<EastWoodsDungeonRules.NodeDefinition> route_nodes => _dynamicMode ? DynamicDungeonExpedition.GetNodes(_dynamicInstanceState) : EastWoodsDungeonRules.get_nodes();
@@ -89,7 +92,7 @@ public partial class EastWoodsDungeonPanel : Control
         _dynamicInstanceState = instance.Duplicate(true);
         _dynamicEntryNodeId = DynamicDungeonExpedition.GetEntryNodeId(_dynamicInstanceState);
         _dynamicExitNodeId = DynamicDungeonExpedition.GetExitNodeId(_dynamicInstanceState);
-        if (_actionWorldLabel is not null) _actionWorldLabel.Text = DynamicDungeonExpedition.DisplayName;
+        if (_actionWorldLabel is not null) _actionWorldLabel.Text = route_display_name;
         _cachedLayoutState = null;
         _cachedLayoutSeed = "";
         if (IsNodeReady()) rebuild_map_nodes();
@@ -253,7 +256,9 @@ public partial class EastWoodsDungeonPanel : Control
 
     public override void _UnhandledKeyInput(InputEvent @event)
     {
-        if (!Visible || _isTraveling || _npcEncounterBusy || _travelPawn is not null || _actionBusy || _actionModal?.Visible == true || @event is not InputEventKey key || !key.Pressed || key.Echo) return;
+        // Keyboard repeat continues walking after the previous step settles.
+        // Active animation/action/encounter guards still reject overlapping steps.
+        if (!Visible || _isTraveling || _npcEncounterBusy || _travelPawn is not null || _actionBusy || _actionModal?.Visible == true || @event is not InputEventKey key || !key.Pressed) return;
         var direction = key.Keycode switch
         {
             Key.W or Key.Up => new Vector2I(0, -1),
@@ -347,6 +352,7 @@ public partial class EastWoodsDungeonPanel : Control
         clear_hover();
         foreach (var button in _nodeButtons.Values) { _mapRoot.RemoveChild(button); button.QueueFree(); }
         _nodeButtons.Clear(); _pawnLayers.Clear(); _nodeTitles.Clear(); _nodeStyleStamps.Clear(); _pawnLayerSizeStamps.Clear();
+        _beastEncounterMarkers.Clear();
         clear_connections(); _actionBarStamp = "";
         build_map_nodes();
         CallDeferred(nameof(layout_map));
@@ -542,6 +548,11 @@ public partial class EastWoodsDungeonPanel : Control
         // The caller refreshes once after all route callbacks have settled.
         if (_routeStepUpdating) return;
         if (_mapRoot is null || _connectionLayer is null) return;
+        // This index lives for this synchronous refresh only: no stale ecology
+        // after a resource recovery, completed encounter, or restored snapshot.
+        _refreshingMapActions = !_dynamicMode;
+        try
+        {
         update_visibility();
         var visibleNodes = route_nodes;
         _pathEdges.Clear();
@@ -630,6 +641,9 @@ public partial class EastWoodsDungeonPanel : Control
 
         update_details();
         refresh_action_bar();
+        refresh_beast_markers();
+        }
+        finally { _refreshBeastActions = null; _refreshingMapActions = false; }
     }
 
     private string get_action_badge(string nodeId)

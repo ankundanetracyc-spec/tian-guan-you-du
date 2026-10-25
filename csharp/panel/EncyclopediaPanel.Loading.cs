@@ -40,6 +40,7 @@ public partial class EncyclopediaPanel
                 Section.Statuses => LoadStatusEntriesSteps(entries),
                 Section.Items => LoadItemEntriesSteps(entries),
                 Section.Beasts => LoadBeastEntriesSteps(entries),
+                Section.Terms => LoadTermEntriesSteps(entries),
                 _ => Array.Empty<int>()
             };
             foreach (var _ in steps)

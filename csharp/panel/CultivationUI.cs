@@ -785,11 +785,13 @@ public partial class CultivationUI : Control
 		{
 			var book = selected_study_book();
 			var chapter = book?.get_sorted_chapters().FirstOrDefault(c => !student.is_gongfa_chapter_learned(book, c.get_id()));
-			if (book is null) { _studyHint.Text = "暂无可研读功法"; _study.Text = "开始研读"; _study.Disabled = true; return; }
+			if (book is null) { _studyHint.Text = "暂无可研读功法"; _study.Text = "开始研读"; _study.Disabled = true; refresh_room_study_requirements(null, null, null); return; }
 			if (chapter is null && (book.chapters.Count > 0 || student.has_learned_gongfa(book)))
-			{ _studyHint.Text = "全卷已研读"; _study.Text = "已读完"; _study.Disabled = true; return; }
+			{ _studyHint.Text = "全卷已研读"; _study.Text = "已读完"; _study.Disabled = true; refresh_room_study_requirements(null, null, null); return; }
 			// Match SecretBook's existing first-volume access; later volumes use chapter requirements.
-			var eligible = !student.has_learned_gongfa(book) || chapter is null || student.can_learn_gongfa_chapter(book, chapter);
+			var firstVolumeAccess = !student.has_learned_gongfa(book);
+			var eligible = firstVolumeAccess || chapter is null || student.can_learn_gongfa_chapter(book, chapter);
+			refresh_room_study_requirements(student, book, chapter, firstVolumeAccess);
 			var hours = student.get_available_study_hours(24);
 			var progress = chapter is null ? 0 : student.get_gongfa_chapter_study_progress(book, chapter.get_id());
 			var required = chapter?.required_study_progress ?? book.required_study_progress;

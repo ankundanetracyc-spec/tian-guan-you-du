@@ -42,6 +42,31 @@ public static class DynamicDungeonExpedition
             ["instances"] = new GArray(),
         };
 
+    public static bool IsCompactInstance(GDictionary instance)
+        => instance.GetValueOrDefault("template_id", "").AsString() == CompactDungeonExpedition.TemplateId;
+
+    public static string GetDisplayName(GDictionary instance)
+        => IsCompactInstance(instance) ? CompactDungeonExpedition.DisplayName : DisplayName;
+
+    public static bool IsExitNode(GDictionary instance, string nodeId)
+        => nodeId == GetExitNodeId(instance) || IsCompactInstance(instance) && nodeId == GetEntryNodeId(instance);
+
+    public static GDictionary EnsureCompactInstance(GDictionary state, Vector2I worldCell, int currentGameHour)
+    {
+        EnsureState(state, currentGameHour);
+        var existing = FindInstance(state, CompactDungeonExpedition.InstanceId);
+        if (existing is not null)
+        {
+            if (!IsCompactInstance(existing)) throw new InvalidOperationException("蕨林采径的实例标识被其他模板占用。");
+            ValidateLayout(existing["map_snapshot"].AsGodotDictionary());
+            SynchronizeInstanceEcology(existing, currentGameHour);
+            return existing;
+        }
+        var instance = CreateInstance(CompactDungeonExpedition.InstanceId, CompactDungeonExpedition.TemplateId + "|v1", worldCell, Math.Max(0, currentGameHour), true);
+        state["instances"].AsGodotArray().Add(instance);
+        return instance;
+    }
+
     /// <summary>
     /// Runs an immediate first attempt, then one attempt at each scheduled 180-day boundary.
     /// Failed attempts are consumed by advancing the cursor; they never become spawn debt.
@@ -105,6 +130,11 @@ public static class DynamicDungeonExpedition
         {
             if (value.VariantType != Variant.Type.Dictionary) continue;
             var instance = value.AsGodotDictionary();
+            if (IsCompactInstance(instance))
+            {
+                changed |= SynchronizeEcology(instance, hour);
+                continue;
+            }
             var expiry = instance.GetValueOrDefault("expires_hour", hour).AsInt32();
             changed |= SynchronizeEcology(instance, Math.Min(hour, expiry));
             if (instance.GetValueOrDefault("entry_open", false).AsBool() && hour >= expiry)
@@ -124,7 +154,7 @@ public static class DynamicDungeonExpedition
             if (value.VariantType == Variant.Type.Dictionary)
             {
                 var instance = value.AsGodotDictionary();
-                if (instance.GetValueOrDefault("entry_open", false).AsBool())
+                if (!IsCompactInstance(instance) && instance.GetValueOrDefault("entry_open", false).AsBool())
                     occupied.Add(instance.GetValueOrDefault("world_cell", Vector2I.Zero).AsVector2I());
             }
         var uniqueCandidates = candidates.Distinct().Where(cell => !occupied.Contains(cell)).OrderBy(cell => cell.Y).ThenBy(cell => cell.X).ToArray();
@@ -140,17 +170,18 @@ public static class DynamicDungeonExpedition
         return true;
     }
 
-    private static GDictionary CreateInstance(string id, string seed, Vector2I worldCell, int generatedHour)
+    private static GDictionary CreateInstance(string id, string seed, Vector2I worldCell, int generatedHour, bool compact = false)
     {
-        var layout = GenerateLayout(seed);
+        var layout = compact ? CompactDungeonExpedition.GenerateLayout(seed) : GenerateLayout(seed);
+        var entry = compact ? CompactDungeonExpedition.EntryNodeId : EntryNodeId;
         var instance = new GDictionary
         {
             ["instance_id"] = id,
-            ["template_id"] = TemplateId,
+            ["template_id"] = compact ? CompactDungeonExpedition.TemplateId : TemplateId,
             ["seed"] = seed,
             ["world_cell"] = worldCell,
             ["generated_hour"] = generatedHour,
-            ["expires_hour"] = generatedHour + OpenDurationHours,
+            ["expires_hour"] = compact ? int.MaxValue : generatedHour + OpenDurationHours,
             ["entry_open"] = true,
             ["inside"] = false,
             ["map_snapshot"] = layout,
@@ -161,9 +192,9 @@ public static class DynamicDungeonExpedition
             ["event_results"] = new GDictionary(),
             ["route"] = new GDictionary
             {
-                ["current"] = EntryNodeId,
-                ["visited"] = new GArray { EntryNodeId },
-                ["discovered"] = new GArray { EntryNodeId },
+                ["current"] = entry,
+                ["visited"] = new GArray { entry },
+                ["discovered"] = new GArray { entry },
                 ["actions"] = new GDictionary(),
                 ["inside"] = false,
             },
@@ -332,6 +363,9 @@ public static class DynamicDungeonExpedition
 
         var beastCursor = Math.Max(generatedHour, instance.GetValueOrDefault("beast_cursor_hour", generatedHour).AsInt32());
         var beasts = instance.GetValueOrDefault("beasts", new GArray()).AsGodotArray();
+        var pendingBeasts = instance.GetValueOrDefault("pending_beast_nodes", new GDictionary()).AsGodotDictionary();
+        var occupiedNode = IsCompactInstance(instance) && route.GetValueOrDefault("inside", false).AsBool()
+            ? route.GetValueOrDefault("current", "").AsString() : "";
         foreach (var recordValue in beasts)
         {
             if (recordValue.VariantType != Variant.Type.Dictionary) continue;
@@ -356,9 +390,34 @@ public static class DynamicDungeonExpedition
                     value.AsGodotDictionary().GetValueOrDefault("status", "active").AsString() == "active" &&
                     actions.GetValueOrDefault(node.Id + ":" + value.AsGodotDictionary().GetValueOrDefault("action_id", "").AsString(), 0).AsInt32() <= 0);
                 if (active) continue;
+                if (IsCompactInstance(instance) && node.Id == occupiedNode)
+                {
+                    pendingBeasts[node.Id] = true;
+                    changed = true;
+                    continue;
+                }
                 beasts.Add(NewBeastRecord(instance, node.Id, source, beastCursor));
+                pendingBeasts.Remove(node.Id);
                 changed = true;
             }
+        }
+        if (IsCompactInstance(instance))
+        {
+            foreach (var key in pendingBeasts.Keys.ToArray())
+            {
+                var nodeId = key.AsString();
+                if (nodeId == occupiedNode) continue;
+                var node = GetNode(instance, nodeId);
+                var source = node is null ? null : GetBeastSource(node);
+                var active = beasts.Any(value => value.VariantType == Variant.Type.Dictionary &&
+                    value.AsGodotDictionary().GetValueOrDefault("node", "").AsString() == nodeId &&
+                    value.AsGodotDictionary().GetValueOrDefault("status", "active").AsString() == "active" &&
+                    actions.GetValueOrDefault(nodeId + ":" + value.AsGodotDictionary().GetValueOrDefault("action_id", "").AsString(), 0).AsInt32() <= 0);
+                if (source is not null && !active) beasts.Add(NewBeastRecord(instance, nodeId, source, limit));
+                pendingBeasts.Remove(key);
+                changed = true;
+            }
+            instance["pending_beast_nodes"] = pendingBeasts;
         }
         if (beastCursor != instance.GetValueOrDefault("beast_cursor_hour", generatedHour).AsInt32())
         {
@@ -425,7 +484,7 @@ public static class DynamicDungeonExpedition
     };
 
     private static EastWoodsActions.ActionDef? GetBeastSource(EastWoodsDungeonRules.NodeDefinition node)
-        => node.Id is "valley_11_01" or "valley_12_06" or "valley_14_03"
+        => (node.Id is "valley_11_01" or "valley_12_06" or "valley_14_03") || CompactDungeonExpedition.IsWolfNode(node.Id)
             ? new("wolf", "应战", "一头林地凶狼在岩隙间活动。你可以应战，也可以沿其他路线绕行；胜负使用现有战斗与战利品结算。", 0, 0,
                 "此处妖兽已被击败。", Battle: true, OrdinaryBeastSource: true, OrdinaryBeastCapacity: 1)
             : null;
@@ -502,10 +561,10 @@ public static class DynamicDungeonExpedition
     };
 
     public static bool IsEntryOpen(GDictionary instance, int currentHour)
-        => instance.GetValueOrDefault("entry_open", false).AsBool() && currentHour < instance.GetValueOrDefault("expires_hour", 0).AsInt32();
+        => instance.GetValueOrDefault("entry_open", false).AsBool() && (IsCompactInstance(instance) || currentHour < instance.GetValueOrDefault("expires_hour", 0).AsInt32());
 
     public static int OpenInstanceCount(GDictionary state, int currentHour)
-        => state.GetValueOrDefault("instances", new GArray()).AsGodotArray().Count(value => value.VariantType == Variant.Type.Dictionary && IsEntryOpen(value.AsGodotDictionary(), currentHour));
+        => state.GetValueOrDefault("instances", new GArray()).AsGodotArray().Count(value => value.VariantType == Variant.Type.Dictionary && !IsCompactInstance(value.AsGodotDictionary()) && IsEntryOpen(value.AsGodotDictionary(), currentHour));
 
     public static GDictionary? FindInstance(GDictionary state, string instanceId)
     {
@@ -534,7 +593,7 @@ public static class DynamicDungeonExpedition
         {
             if (value.VariantType != Variant.Type.Dictionary) continue;
             var instance = value.AsGodotDictionary();
-            if (!IsEntryOpen(instance, currentHour)) continue;
+            if (IsCompactInstance(instance) || !IsEntryOpen(instance, currentHour)) continue;
             result.Add(new GDictionary
             {
                 ["instance_id"] = instance.GetValueOrDefault("instance_id", "").AsString(),
@@ -555,9 +614,9 @@ public static class DynamicDungeonExpedition
     public static IReadOnlyList<string> GetNeighbors(GDictionary instance, string nodeId)
         => GetLayout(instance).Neighbors.TryGetValue(nodeId, out var neighbors) ? neighbors : System.Array.Empty<string>();
 
-    public static string GetEntryNodeId(GDictionary instance) => EntryNodeId;
+    public static string GetEntryNodeId(GDictionary instance) => IsCompactInstance(instance) ? CompactDungeonExpedition.EntryNodeId : EntryNodeId;
     public static string GetExitNodeId(GDictionary instance) => instance.GetValueOrDefault("map_snapshot", new GDictionary()).AsGodotDictionary().GetValueOrDefault("exit_node_id", EntryNodeId).AsString();
-    public static string GetDungeonId(GDictionary instance) => DungeonIdPrefix + instance.GetValueOrDefault("instance_id", "unknown").AsString();
+    public static string GetDungeonId(GDictionary instance) => (IsCompactInstance(instance) ? CompactDungeonExpedition.TemplateId + ":" : DungeonIdPrefix) + instance.GetValueOrDefault("instance_id", "unknown").AsString();
     public static string GetLayoutSeed(GDictionary instance) => instance.GetValueOrDefault("seed", "missing").AsString();
 
     public static ulong StableSeed(string value)
@@ -580,8 +639,9 @@ public static class DynamicDungeonExpedition
             if (value.VariantType != Variant.Type.Dictionary) return false;
             var instance = value.AsGodotDictionary();
             var id = instance.GetValueOrDefault("instance_id", "").AsString();
-            if (string.IsNullOrWhiteSpace(id) || !ids.Add(id) || instance.GetValueOrDefault("template_id", "").AsString() != TemplateId ||
+            if (string.IsNullOrWhiteSpace(id) || !ids.Add(id) || (!IsCompactInstance(instance) && instance.GetValueOrDefault("template_id", "").AsString() != TemplateId) ||
                 instance.GetValueOrDefault("map_snapshot", new GDictionary()).VariantType != Variant.Type.Dictionary) return false;
+            if (instance["map_snapshot"].AsGodotDictionary().GetValueOrDefault("template_id", "").AsString() != instance.GetValueOrDefault("template_id", "").AsString()) return false;
             ValidateLayout(instance["map_snapshot"].AsGodotDictionary());
             if (instance.GetValueOrDefault("route", new GDictionary()).VariantType != Variant.Type.Dictionary) return false;
         }
@@ -630,6 +690,11 @@ public static class DynamicDungeonExpedition
 
     private static void ValidateLayout(GDictionary snapshot)
     {
+        if (snapshot.GetValueOrDefault("template_id", "").AsString() == CompactDungeonExpedition.TemplateId)
+        {
+            CompactDungeonExpedition.ValidateLayout(snapshot);
+            return;
+        }
         var nodes = snapshot.GetValueOrDefault("nodes", new GArray()).AsGodotArray();
         var edges = snapshot.GetValueOrDefault("edges", new GArray()).AsGodotArray();
         if (snapshot.GetValueOrDefault("template_id", "").AsString() != TemplateId ||

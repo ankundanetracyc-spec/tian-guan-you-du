@@ -109,6 +109,13 @@ public partial class BattleTransitionManager
     private async void BeginConfirmedBattle()
     {
         if(_flowTransitionActive)return;
+        foreach (var snapshot in Data(pending_attacker_data).Concat(Data(pending_defender_data)))
+        {
+            var prepared = _beforeBattle.FirstOrDefault(unit => unit.uid == snapshot.uid);
+            if (prepared is null) continue;
+            BattleSupplyRules.Normalize(prepared.battle_supplies, prepared.pack_item_paths, prepared.pack_item_counts);
+            snapshot.battle_supplies = prepared.battle_supplies.Duplicate(true);
+        }
         _flowTransitionActive=true;_sceneTransition=new BattleSceneTransition();AddChild(_sceneTransition);
         var previousPause=_flowPreviousPause;
         try
@@ -290,26 +297,38 @@ public partial class BattleTransitionManager
     {
         _lootReminder?.QueueFree();_lootReminder=null;
         if(GetTree().CurrentScene is not MainScene main || main.get_player_character() is not { } player)return;
+        if(main.has_active_item_claim())return;
         foreach(var key in _rewardLedger.Keys.ToArray())
         {
             var record=_rewardLedger[key].AsGodotDictionary();if(record.GetValueOrDefault("claimed",false).AsBool())continue;
             if(record.GetValueOrDefault("player_uid","").AsString()!=player.unique_id)continue;
-            main.notify_battle_rewards_changed();
             var entries=record["entries"].AsGodotArray();
-            foreach(var value in entries)
+            var remaining=new GArray(entries.Where(v=>v.VariantType==Variant.Type.Dictionary&&v.AsGodotDictionary().GetValueOrDefault("count",0).AsInt32()>0));
+            if(remaining.Count==0){record["claimed"]=true;continue;}
+            void settle(GArray resolved,bool wasClaimed)
             {
-                var entry=value.AsGodotDictionary();var count=entry["count"].AsInt32();if(count<=0)continue;
-                if(!player.add_item_to_inventory(entry["item_path"].AsString(),count))continue;
-                var npc=GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager")?.get_npc(entry.GetValueOrDefault("npc_id","").AsString());npc?.change_carried_item(entry["item_path"].AsString(),-count);
-                entry["count"]=0;
+                foreach(var value in resolved)
+                {
+                    if(value.VariantType!=Variant.Type.Dictionary)continue;
+                    var entry=value.AsGodotDictionary();var count=entry.GetValueOrDefault("count",0).AsInt32();if(count<=0)continue;
+                    if(wasClaimed)
+                    {
+                        var npc=GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager")?.get_npc(entry.GetValueOrDefault("npc_id","").AsString());
+                        npc?.change_carried_item(entry.GetValueOrDefault("item_path","").AsString(),-count);
+                    }
+                    entry["count"]=0;
+                }
+                var pending=entries.Count(v=>v.VariantType==Variant.Type.Dictionary&&v.AsGodotDictionary().GetValueOrDefault("count",0).AsInt32()>0);
+                record["claimed"]=pending==0;
                 main.notify_battle_rewards_changed();
             }
-            var remaining=new GArray(entries.Where(v=>v.AsGodotDictionary()["count"].AsInt32()>0));record["claimed"]=remaining.Count==0;
-            if(remaining.Count>0)
+            if(!main.present_item_claim("获得物品",remaining,
+                claimed=>settle(claimed,true),
+                abandoned=>settle(abandoned,false)))
             {
-                OpenFlow().Results("战利品待领取",[],[player.get_snapshot_data()],remaining,false,()=>{CloseFlow();resume_pending_loot();},"行囊空间不足，未收取物品保留，不会重抽或重复发放。请先整理行囊。",()=>{CloseFlow();ShowPendingLootReminder();});
-                return;
+                if(!main.has_active_item_claim())ShowPendingLootReminder();
             }
+            return;
         }
     }
 }

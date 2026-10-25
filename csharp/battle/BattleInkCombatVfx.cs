@@ -96,9 +96,12 @@ public partial class BattleInkCombatVfx : Node2D
     public static BattleInkCombatVfx? PlayAttack(GodotObject attacker, GodotObject target, ActiveSkillData skill)
     {
         if (attacker is not Node2D from || target is not Node2D to || !DealsDamage(skill)) return null;
+        if (UsesForestBeiCry(from, skill)) return PlayForestBeiCry(from, to, skill);
+        if(UsesSwordEffects(attacker,skill))return PlaySwordAttack(from,skill);
         if (IsJingzhe(skill) && to.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll") is { } lightningTarget) return PlayJingzhe(from, to, lightningTarget);
         if (SideDoll(from) is { } side && UsesHandChop(skill)) return PlayHandChop(side, skill);
         var kind = Profile(skill);
+        if (IsForestWolfAttack(from, kind)) return PlayForestWolfAttack(from, to, skill, kind);
         var start = UsesThrowCast(skill) && SideDoll(from) is { } thrower ? thrower.throw_cast_origin() : Anchor(from);
         var end = Anchor(to, kind is Kind.SoulNeedle or Kind.SoulDraw);
         if (kind == Kind.Thunder) start = end + Vector2.Up * 250f;
@@ -120,14 +123,23 @@ public partial class BattleInkCombatVfx : Node2D
     {
         if (target is not Node2D to) return;
         if (evaded && SideDoll(to) is { } dodger) { PlayDodge(dodger); EmphasizeContact(attacker, to, .7f); return; }
-        if (SideDoll(to)?.is_defense_presenting() == true) { EmphasizeContact(attacker, to, .9f); return; }
+        if (SideDoll(to) is { } guarding&&guarding.is_defense_presenting()) { PlaySwordGuardContact(guarding);EmphasizeContact(attacker, to, .9f); return; }
         EmphasizeContact(attacker, to, skill is null ? 1 : HitWeight(skill));
+        if (!evaded && skill is not null && attacker is Node2D bei && UsesForestBeiCry(bei, skill))
+        { PlayForestBeiContact(bei, to, skill, critical); return; }
+        if(skill is not null&&attacker is Node2D swordActor&&UsesSwordEffects(attacker,skill))
+        {PlaySwordContact(swordActor,to,skill,critical,segment);return;}
         if (skill is not null && IsJingzhe(skill) && to.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll") is { } lightningTarget)
         {
             PlayJingzheContact(to, lightningTarget);
             return;
         }
         var kind = skill is null ? Kind.Strike : Profile(skill);
+        if (!evaded && skill is not null && attacker is Node2D wolf && IsForestWolfAttack(wolf, kind))
+        {
+            PlayForestWolfContact(wolf, to, skill, kind, critical, segment);
+            return;
+        }
         if (!evaded && SideDoll(to) is { } side
             && (skill is null || UsesHandChop(skill)))
         {
@@ -151,6 +163,9 @@ public partial class BattleInkCombatVfx : Node2D
     public static void PlayUtility(GodotObject caster, GodotObject target, ActiveSkillData skill)
     {
         if (caster is not Node2D from || DealsDamage(skill)) return;
+        if (IsForestBeiPackCall(skill) && from.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.uses_forest_bei_portrait() == true)
+        { PlayForestBeiCall(from); return; }
+        if(PlaySwordUtility(from,skill))return;
         if (SideDoll(from) is { } side)
         {
             if (Profile(skill) == Kind.Recovery) PlayRecovery(from);
@@ -181,7 +196,7 @@ public partial class BattleInkCombatVfx : Node2D
 
     private static Vector2 Facing(Node2D unit) => unit is Creature creature && creature.faction == (int)WorldEntity.Faction.ENEMY ? Vector2.Left : Vector2.Right;
 
-    private static BattleInkCombatVfx? Spawn(Vector2 position, Vector2 size, float rotation, Kind kind, int phase, float duration, ActiveSkillData? skill = null, bool critical = false)
+    private static BattleInkCombatVfx? Spawn(Vector2 position, Vector2 size, float rotation, Kind kind, int phase, float duration, ActiveSkillData? skill = null, bool critical = false, Shader? presentationShader = null)
     {
         if (_active >= Capacity || Engine.GetMainLoop() is not SceneTree tree || tree.CurrentScene is null) return null;
         _shader ??= GD.Load<Shader>("res://shaders/battle_ink_action.gdshader");
@@ -201,7 +216,7 @@ public partial class BattleInkCombatVfx : Node2D
         effect.GlobalRotation = rotation;
         _active++; effect._registered = true;
         _sequence++;
-        effect._material = new ShaderMaterial { Shader = _shader };
+        effect._material = new ShaderMaterial { Shader = presentationShader ?? _shader };
         effect._material.SetShaderParameter("ink_noise", BattleInkRibbon.SharedNoise);
         effect._material.SetShaderParameter("ink_color", phase == 3 ? new Color(0.08f, 0.09f, 0.08f, 0.92f) : Ink(kind, skill));
         effect._material.SetShaderParameter("kind", (float)kind);
@@ -209,7 +224,10 @@ public partial class BattleInkCombatVfx : Node2D
         effect._material.SetShaderParameter("critical", critical ? 1f : 0f);
         effect._material.SetShaderParameter("seed_value", (_sequence * 137u % 997u) * 0.007f);
         effect._material.SetShaderParameter("progress", 0f);
-        effect.AddChild(new Sprite2D { Name = "InkSurface", Texture = _carrier, Scale = size / 8f, Material = effect._material });
+        if (presentationShader is not null)
+            effect.AddChild(new ColorRect { Name = "InkSurface", Position = -size * .5f, Size = size, Material = effect._material, MouseFilter = Control.MouseFilterEnum.Ignore });
+        else
+            effect.AddChild(new Sprite2D { Name = "InkSurface", Texture = _carrier, Scale = size / 8f, Material = effect._material });
         return effect;
     }
 

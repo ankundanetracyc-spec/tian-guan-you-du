@@ -42,10 +42,10 @@ public partial class JournalUiSmoke : Control
             _hud.TaskRequested += id => { requested = id; _journal.show_panel(JournalPanel.Section.Tasks, id); };
             _hud.set_task_entries(tasks, true); _hud.set_task_tracker_horizontal_layout(); await Capture("01_两项任务栏");
             var tracker = _hud.GetNode<Control>("TaskTracker");
-            Check(Math.Abs(tracker.Size.X - 300) < 2 && tracker.Size.Y <= 220, "任务栏宽300加20收起签，高度不超过220");
+            Check(Math.Abs(tracker.Size.X - 336) < 2 && tracker.Size.Y <= 220, "任务栏正文宽336，高度不超过220");
             Check(Math.Abs(tracker.Position.Y - GetViewportRect().Size.Y * .25f) < 2, "任务栏25%顶锚");
             Check(Nodes<Button>(tracker).Count() == 2, "任务栏恰好两项");
-            var firstLabels = Nodes<Label>(tracker.FindChild("TaskEntry0", true, false)).ToList();
+            var firstLabels = Nodes<RichTextLabel>(tracker.FindChild("TaskEntry0", true, false)).ToList();
             Check(firstLabels[0].GetGlobalRect().End.Y <= firstLabels[1].GetGlobalRect().Position.Y, "标题与目标不重叠");
             Check(!Nodes<Label>(tracker).Any(l => l.Text.Contains("当前追踪") || l.Text.Contains("最近接到") || l.Text.Contains("全部任务")), "无冗余任务栏标签");
             var toggle = _hud.GetNode<Button>("TaskTrackerToggle"); toggle.EmitSignal(BaseButton.SignalName.Pressed); await Settle();
@@ -82,7 +82,9 @@ public partial class JournalUiSmoke : Control
             Nodes<Button>(_journal).First(b => b.Text == "地志").EmitSignal(BaseButton.SignalName.Pressed); await Settle();
             Check(Nodes<Label>(_journal).Any(l => l.IsVisibleInTree() && l.Text == "地志 · 待续"), "预留入口保留");
             var longTask = tasks[0] with { Title = "这是用于验证任务名称较长时独立换行且不会挤入目标文字的测试标题", Body = string.Concat(Enumerable.Repeat("长正文应当在自己的区域滚动，不挤占标题与返回入口。", 80)) };
-            _journal.set_entries(JournalPanel.Section.Tasks, [longTask]); _journal.show_panel(JournalPanel.Section.Tasks); await Capture("04_长文字");
+            _journal.set_entries(JournalPanel.Section.Tasks, [longTask]); _journal.show_panel(JournalPanel.Section.Tasks);
+            Nodes<Button>(_journal).First(b => b.Text == "进行中").EmitSignal(BaseButton.SignalName.Pressed);
+            await Capture("04_长文字");
             var scrolls = Nodes<ScrollContainer>(_journal).ToList();
             Check(scrolls.Any(s => s.GetVScrollBar().MaxValue > s.Size.Y + 100), "长正文可滚动");
             Check(Nodes<Button>(_journal).First(b => b.Text == "返回").GetGlobalRect().End.X <= GetViewportRect().Size.X, "返回入口保持可达");

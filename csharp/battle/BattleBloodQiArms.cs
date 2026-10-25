@@ -22,6 +22,7 @@ public partial class BattleBloodQiArms : Node2D
     private readonly Arm[] _arms = [new(),new()];
     private readonly Queue<(int Arm,Node2D? Target)> _pendingFollowUps=new();
     private Node2D _subject = null!;
+    private Node2D? _actionTarget;
     private BattlePaperDoll? _doll;
     private int _count;
     private float _clock, _hold;
@@ -37,6 +38,8 @@ public partial class BattleBloodQiArms : Node2D
     /// <summary>常驻待机不计入；包含尚未开始的追加出拳。</summary>
     public bool IsActionPlaying => _pendingFollowUps.Count>0 || _arms.Any(arm=>arm.Action!="idle");
     public const float FollowUpContactSeconds = .14f;
+    public IEnumerable<Node2D> EmphasizedUnits => IsActionPlaying
+        ?new[]{_subject,_actionTarget}.OfType<Node2D>().Where(GodotObject.IsInstanceValid):Enumerable.Empty<Node2D>();
 
     public static BattleBloodQiArms ForSubject(Node2D subject)
     {
@@ -50,6 +53,7 @@ public partial class BattleBloodQiArms : Node2D
     {
         ProcessMode=ProcessModeEnum.Pausable;
         AddToGroup("battle_persistent_visuals");
+        AddToGroup("battle_blood_arm_views");
         _doll=_subject.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll");
         _shader ??= GD.Load<Shader>("res://shaders/battle_blood_qi_body.gdshader");
         for(var i=0;i<2;i++)
@@ -235,6 +239,7 @@ public partial class BattleBloodQiArms : Node2D
     {
         RestoreActionDepth();
         if(!IsInstanceValid(other)||!IsInstanceValid(_subject)) return;
+        _actionTarget=other;
         // Target < manifested arms < their owner. Lift the complete owner group,
         // keeping the blood arms behind its clothing while covering the opponent.
         var lift=Mathf.Max(0,EffectiveDepth(other!)+8-EffectiveDepth(_subject));
@@ -246,6 +251,7 @@ public partial class BattleBloodQiArms : Node2D
     }
     private void RestoreActionDepth()
     {
+        _actionTarget=null;
         if(!_depthLifted) return;
         if(IsInstanceValid(_subject)&&_subject.ZIndex==_liftedSubjectZ) _subject.ZIndex=_originalSubjectZ;
         _depthLifted=false;

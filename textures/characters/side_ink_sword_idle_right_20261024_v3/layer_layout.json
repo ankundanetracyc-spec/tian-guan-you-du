@@ -1,0 +1,93 @@
+{
+  "canvas": [
+    2048,
+    2048
+  ],
+  "grip_to_tip": 780,
+  "ground": [
+    1024,
+    1900
+  ],
+  "poses": {
+    "idle": {
+      "already_swordless": true,
+      "canvas_translation": [
+        204.257019042969,
+        383.4140625
+      ],
+      "free_hand": "left",
+      "front": [
+        [
+          533.0,
+          650.0
+        ],
+        [
+          552.0,
+          646.0
+        ],
+        [
+          577.0,
+          658.0
+        ],
+        [
+          596.0,
+          655.0
+        ],
+        [
+          603.0,
+          630.0
+        ],
+        [
+          619.0,
+          645.0
+        ],
+        [
+          620.0,
+          675.0
+        ],
+        [
+          598.0,
+          704.0
+        ],
+        [
+          531.0,
+          681.0
+        ]
+      ],
+      "grip": [
+        574.0,
+        663.0
+      ],
+      "grip_canvas": [
+        909.703002929688,
+        1198.24096679688
+      ],
+      "ground": [
+        667.0,
+        1234.0
+      ],
+      "guard_distance": 55.0,
+      "hand_rect": [
+        530.0,
+        603.0,
+        91.0,
+        99.0
+      ],
+      "source_image": "idle_no_sword.png",
+      "source_scale": 1.229,
+      "sword_angle_degrees": 34.6101053170179,
+      "tip": [
+        1100.0,
+        1026.0
+      ],
+      "weapon_hand": "right"
+    }
+  },
+  "reference_height": 1375,
+  "render_order": [
+    "body_back",
+    "independent sword",
+    "hand_front"
+  ],
+  "source_scale": 1.229
+}

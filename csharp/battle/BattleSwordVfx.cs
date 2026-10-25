@@ -5,13 +5,15 @@ public static class BattleSwordVfx
 {
     public static void PlayAttack(GodotObject attacker, GodotObject target, ActiveSkillData skill)
     {
-        if (IsSwordSkill(skill)) BattleInkSlashEffect.PlaySwordCleave(attacker, target);
+        if(BattleInkCombatVfx.UsesSwordEffects(attacker,skill))BattleInkCombatVfx.PlayAttack(attacker,target,skill);
+        else if (IsSwordSkill(skill)) BattleInkSlashEffect.PlaySwordCleave(attacker, target);
         else BattleInkSlashEffect.PlayAttack(attacker, target, skill);
     }
 
     public static void PlayImpact(GodotObject target, ActiveSkillData skill, bool critical, GodotObject? attacker = null)
     {
-        if (IsSwordSkill(skill)) BattleInkSlashEffect.PlaySwordImpact(target, attacker, critical);
+        if(BattleInkCombatVfx.UsesSwordEffects(attacker,skill))BattleInkCombatVfx.PlayImpact(target,skill,attacker,critical);
+        else if (IsSwordSkill(skill)) BattleInkSlashEffect.PlaySwordImpact(target, attacker, critical);
         else BattleInkSlashEffect.PlayImpactForSkill(target, skill, critical);
     }
 

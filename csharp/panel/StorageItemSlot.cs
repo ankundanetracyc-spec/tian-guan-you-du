@@ -89,11 +89,17 @@ public partial class StorageItemSlot : Control
         if (name_label is not null)
         {
             var item_name = item_data.Get("entity_name").AsString();
-            name_label.Text = is_trade_slot
-                ? $"{item_name} x{count}"
+            name_label.Text = item_data is PillItemData
+                ? $"{item_name} × {count}"
+                : is_trade_slot ? $"{item_name} x{count}"
                 : count > 1 ? $"{item_name} * {count}" : item_name;
         }
-        if (icon_rect is not null) icon_rect.Texture = load_icon(item_data);
+        if (icon_rect is not null)
+        {
+            icon_rect.Texture = load_icon(item_data);
+            icon_rect.Material = null;
+            if (item_data is PillItemData pill) AlchemyPillVisual.Apply(icon_rect, pill.efficacy_tier, pill.pill_id);
+        }
         update_slot_tint();
     }
 
@@ -110,7 +116,8 @@ public partial class StorageItemSlot : Control
         if (name_label is not null) name_label.Text = string.IsNullOrWhiteSpace(artifact.artifact_name) ? artifact.form?.form_name ?? "未命名法宝" : artifact.artifact_name;
         if (icon_rect is not null)
         {
-            var path = artifact.form?.icon_path ?? "";
+            icon_rect.Material = null;
+            var path = ForgedArtifactInventory.IconPath(artifact);
             icon_rect.Texture = string.IsNullOrWhiteSpace(path) || !ResourceLoader.Exists(path) ? null : ResourceLoader.Load<Texture2D>(path);
         }
         update_slot_tint();
@@ -125,7 +132,7 @@ public partial class StorageItemSlot : Control
         is_artifact = false;
         is_empty = true;
         artifact_data = null;
-        if (icon_rect is not null) icon_rect.Texture = null;
+        if (icon_rect is not null) { icon_rect.Texture = null; icon_rect.Material = null; }
         if (name_label is not null) name_label.Text = "";
         is_pointer_inside = false;
         update_slot_tint();

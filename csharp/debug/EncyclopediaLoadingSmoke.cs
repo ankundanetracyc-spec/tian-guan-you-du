@@ -93,6 +93,17 @@ public partial class EncyclopediaLoadingSmoke : Node
             var beastCount = Entries(panel, "Beasts").Count;
             GD.Print($"ENCYCLOPEDIA_COUNTS statuses={statusCount} items={itemCount} beasts={beastCount} baseline=23/69/59");
             Check(statusCount > 0 && beastCount > 0, "Catalog unexpectedly empty");
+            var statusEntries = Entries(panel, "Statuses");
+            Check(!statusEntries.Any(entry => (string)Read(entry, "Title")! == "散血"), "Mechanic-only 散血 must not appear in the encyclopedia");
+            foreach (var (title, expectedIcon) in new[] { ("疲倦", "疲倦_v1.png"), ("剑意", "剑意_v1.png") })
+            {
+                var statusEntry = statusEntries.SingleOrDefault(entry => (string)Read(entry, "Title")! == title);
+                Check(statusEntry is not null, "Missing encyclopedia status: " + title);
+                var icon = Read(statusEntry!, "Icon") as Texture2D;
+                Check(icon is not null && icon.ResourcePath.EndsWith(expectedIcon, StringComparison.Ordinal), "Wrong status icon: " + title);
+                Check(icon!.GetWidth() == 1254 && icon.GetHeight() == 1254, "Unexpected status icon dimensions: " + title);
+            }
+            GD.Print("ENCYCLOPEDIA_STATUS fatigue/sword_intent_icons and scattered_blood_excluded PASS");
 
             var eligibleItems = new HashSet<string>(StringComparer.Ordinal);
             var excluded = 0;

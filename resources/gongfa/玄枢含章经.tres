@@ -111,6 +111,7 @@ sub_deck_rewrites = Array[ExtResource("3")]([SubResource("RewriteFuming")])
 heart_method_description = "效果：技能槽10限装非应对技能，且不可排入行动队列。周天完成后自动施展；需要目标时随机选择合法目标。无合法目标则落空，不支付费用、不计次数或冷却。自动施展期间再次周天仍清炁、回满法力，但不再次触发自动施展。"
 
 [resource]
+gameplay_enabled = true
 script = ExtResource("1")
 gongfa_name = "玄枢含章经"
 description = "以周天为枢机，使技能槽10中的技能自动施展。"

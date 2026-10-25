@@ -7,6 +7,8 @@ public partial class BattleManager : Node2D
     {
         if(_spectatorBattle)return;
         if(FlowTransitionActive){GetViewport().SetInputAsHandled();return;}
+        if (@event.IsActionPressed("ui_cancel") && _supplyHud?.Dismiss() == true)
+        { GetViewport().SetInputAsHandled(); return; }
         if(@event is InputEventKey{Pressed:true,Echo:false,Keycode:Key.Space}&&_realtimeMode&&battle_running)
         {
             toggle_battle_pause();
@@ -18,6 +20,8 @@ public partial class BattleManager : Node2D
     {
         if(_spectatorBattle)return;
         if(FlowTransitionActive){GetViewport().SetInputAsHandled();return;}
+        if (@event.IsActionPressed("ui_cancel") && UndoQueuePlanning())
+        { GetViewport().SetInputAsHandled(); return; }
         if (_realtimeMode && @event is InputEventMouseButton { Pressed: true, ButtonIndex: MouseButton.Left } mouse && _pendingInstantSkill is not null && GodotObject.IsInstanceValid(active_unit))
         {
             var skill = _pendingInstantSkill;
@@ -107,6 +111,8 @@ public partial class BattleManager : Node2D
         var status=GD.Load<StatusEffect>("res://resources/battle/statuses/逐猎.tres");if(status is null)return;
         foreach(var ally in all_units.Where(Alive).Where(unit=>unit!=attacker&&unit.Get("faction").AsInt32()==attacker.Get("faction").AsInt32()).OfType<Beast>().Where(wolf=>wolf.species_id=="forest_wolf"))
             ally.add_status(status,-1,1,attacker.GetInstanceId().ToString(),3,attacker.Get("entity_name").AsString());
+        if (Alive(attacker) && HasForestBeiChief(attacker))
+            ((Beast)attacker).add_status(status,-1,1,attacker.GetInstanceId().ToString(),status.max_stacks,"狈首");
     }
     public bool CanPay(GodotObject unit, ActiveSkillData skill)
     {
@@ -115,6 +121,8 @@ public partial class BattleManager : Node2D
     }
     private void Pay(GodotObject unit, ActiveSkillData skill)
     {
+        ReserveForgedSpirit(unit, skill);
+        unit.SetMeta("forged_triggered", false);
         var energy=get_skill_energy_cost(unit,skill);var mana=get_skill_mana_cost(unit,skill);
         gongfa_combat.RememberManaBeforePayment(unit,skill);
         unit.Set("current_stamina", Mathf.Max(0, unit.Get("current_stamina").AsInt32() - energy));

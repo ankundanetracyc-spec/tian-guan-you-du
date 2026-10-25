@@ -1,6 +1,6 @@
 extends SceneTree
 
-const OUTPUT := "res://docs/美术规范/可换剑图持剑待机_20261022/"
+const OUTPUT := "res://docs/美术规范/炼器剑图标重绘_20261023/"
 var scene: Node
 
 func _initialize() -> void:

@@ -7,6 +7,7 @@ using Godot.Collections;
 /// </summary>
 public partial class BattleEntityData : Resource
 {
+    [Export] public bool artifact_bond_defense_applied;
     // 仅开始菜单演练配置使用；-1 沿用正式战斗规则，0 是有效测试上限。
     [Export] public int test_stamina_cap_override = -1;
     [Export] public int test_mana_cap_override = -1;
@@ -116,6 +117,9 @@ public partial class BattleEntityData : Resource
     [Export] public Dictionary combat_tempering_by_gongfa = [];
     [Export] public bool battle_deck_configured;
     [Export] public Array<string> pack_item_paths = [];
+    [Export] public bool pack_state_included;
+    [Export] public Array<int> pack_item_positions = [];
+    [Export] public Array<BattleSupplySlotData> battle_supplies = [];
     [Export] public Array<int> pack_item_counts = [];
     /// <summary>角色在局外已布置并通过校验的个人战斗阵图；进入战斗时复制为运行时状态。</summary>
     [Export] public Array<FormationCircuitData> formation_circuits = [];
@@ -145,6 +149,8 @@ public partial class BattleEntityData : Resource
         combat_tempering_by_gongfa = source.combat_tempering_by_gongfa.Duplicate(true);
         pack_item_paths = source.pack_item_paths.Duplicate();
         pack_item_counts = source.pack_item_counts.Duplicate();
+        pack_item_positions = source.pack_item_positions.Duplicate();
+        battle_supplies = source.battle_supplies.Duplicate(true);
         formation_circuits = source.formation_circuits.Duplicate();
         formation_manual_ids = source.formation_manual_ids.Duplicate();
     }

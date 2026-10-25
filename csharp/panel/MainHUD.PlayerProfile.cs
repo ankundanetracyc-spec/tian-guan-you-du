@@ -41,7 +41,7 @@ public partial class MainHUD
         set_profile_value("RealmValue", string.IsNullOrWhiteSpace(player.cultivation_realm) ? "未详" : player.cultivation_realm);
         set_profile_value("WorldStaminaValue", $"{player.current_world_stamina:0.#} / {player.max_world_stamina:0.#}");
         var currentGameHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
-        set_profile_value("WorldStatusValue", CharacterStatusPresentationRules.format_details(data?.world_status_records, player.get_cultivation_bottleneck_summary(), currentGameHour));
+        set_profile_value("WorldStatusValue", CharacterStatusPresentationRules.format_details(PillToxicityRules.WithStatus(data, currentGameHour), player.get_cultivation_bottleneck_summary(), currentGameHour));
         set_profile_value("RootValue", string.IsNullOrWhiteSpace(data?.spirit_root_name) ? "未详" : data!.spirit_root_name);
         set_profile_value("LocationValue", string.IsNullOrWhiteSpace(currentLocation) ? "位置未详" : currentLocation);
         set_profile_value("AffiliationValue", get_affiliation_text(data));
@@ -63,7 +63,7 @@ public partial class MainHUD
     public void refresh_player_world_status_details(Character player, long currentGameHour)
     {
         if (!player_profile_visible || player.entity_data is not HumanData data) return;
-        set_profile_value("WorldStatusValue", CharacterStatusPresentationRules.format_details(data.world_status_records, player.get_cultivation_bottleneck_summary(), currentGameHour));
+        set_profile_value("WorldStatusValue", CharacterStatusPresentationRules.format_details(PillToxicityRules.WithStatus(data, currentGameHour), player.get_cultivation_bottleneck_summary(), currentGameHour));
     }
 
     public bool close_player_profile()

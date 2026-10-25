@@ -6,7 +6,12 @@ using Godot;
 public partial class BattlePaperDoll : Node2D
 {
     public const string DefaultPortraitPath = SideInkArtRoot + "male_idle.png";
-    public const string ForestWolfPortraitPath = "res://textures/characters/forest_wolf_spine_rig_v6/source/wolf_assembled_portrait.png";
+    public const string ForestWolfPortraitPath = "res://textures/bestiary/static/forest_wolf.png";
+    public const string ForestWolfAttackPortraitPath = "res://textures/bestiary/static/forest_wolf_pounce.png";
+    public const string ForestWolfHurtPortraitPath = "res://textures/bestiary/static/forest_wolf_hurt.png";
+    public const string ForestBeiPortraitPath = "res://textures/bestiary/static/forest_bei_v1.png";
+    public const string ForestBeiAttackPortraitPath = "res://textures/bestiary/static/forest_bei_attack_v1.png";
+    public const string ForestBeiHurtPortraitPath = "res://textures/bestiary/static/forest_bei_hurt_v1.png";
     public const string ForestWolfSpineResourcePath = "res://textures/characters/forest_wolf_spine_rig_v6/runtime/forest_wolf_spine_rig_v6.spinejson";
     public const string CharacterSpineResourcePath = "res://textures/characters/c1_male_puppet_v2/runtime/c1_male_puppet_v2.spinejson";
     public const string FemaleSpineResourcePath = "res://textures/characters/c1_female_puppet_v2/runtime/c1_female_puppet_v2.spinejson";
@@ -33,6 +38,16 @@ public partial class BattlePaperDoll : Node2D
     private bool _usesSpineCharacter;
     private bool _portraitFacesLeft;
     private bool _isForestWolf;
+    private bool _isForestBei;
+    private bool UsesStaticBeastPoses => _isForestWolf || _isForestBei;
+    private enum ForestWolfPose { Idle, Attack, Hurt }
+    private ForestWolfPose _forestWolfPose = ForestWolfPose.Idle;
+    private Texture2D? _forestWolfIdlePortrait;
+    private Texture2D? _forestWolfAttackPortrait;
+    private Texture2D? _forestWolfHurtPortrait;
+    private Rect2 _forestWolfIdleLocalBounds;
+    private Vector2 _forestWolfBasePortraitScale = Vector2.One;
+    private float _forestWolfIdleDisplayHeightReference = 89f;
     private float _combatChestY = -236f;
     private float _combatHeadY = -348f;
     private float _displayHeightReference = 348f;
@@ -43,10 +58,17 @@ public partial class BattlePaperDoll : Node2D
     {
         EndContactPoseHold();
         ResetSideInk();
+        _isForestWolf = false;
+        _isForestBei = false;
+        _forestWolfPose = ForestWolfPose.Idle;
+        _forestWolfIdlePortrait = null;
+        _forestWolfAttackPortrait = null;
+        _forestWolfHurtPortrait = null;
         if (data.entity_type == (int)WorldEntity.EntityType.CHARACTER && ConfigureSideInk(data)) return;
         var isForestWolf = data.entity_name.Contains("凶狼") || data.entity_name.Contains("林地狼") || data.entity_name.Contains("森林狼");
+        var isForestBei = data.entity_name.Contains("妖狈") || data.battle_portrait_path == ForestBeiPortraitPath;
         var path = string.IsNullOrWhiteSpace(data.battle_portrait_path)
-            ? (isForestWolf ? ForestWolfPortraitPath : DefaultPortraitPath)
+            ? (isForestBei ? ForestBeiPortraitPath : isForestWolf ? ForestWolfPortraitPath : DefaultPortraitPath)
             : data.battle_portrait_path;
         var hasStaticHumanPortrait = data.entity_type == (int)WorldEntity.EntityType.CHARACTER;
         if (hasStaticHumanPortrait) path = data.gender == 1 ? CombatFemaleStaticPath : CombatMaleStaticPath;
@@ -59,8 +81,10 @@ public partial class BattlePaperDoll : Node2D
         if (_portrait is not null) _portrait.Visible = false;
 
         // 局内人形统一使用新静态图；兽类仍使用自身的资源。
-        var isWolf = isForestWolf;
-        _isForestWolf = isWolf;
+        // Both canids share pose registration and ground anchors, but keep distinct VFX identities.
+        var isWolf = isForestWolf || isForestBei;
+        _isForestWolf = isForestWolf;
+        _isForestBei = isForestBei;
         var hasStaticBeastPortrait = data.entity_type == (int)WorldEntity.EntityType.BEAST && !string.IsNullOrWhiteSpace(path) && path != DefaultPortraitPath;
         _portraitFacesLeft = isWolf || hasStaticBeastPortrait;
         var isFemale = !isWolf && data.gender == 1;
@@ -87,7 +111,7 @@ public partial class BattlePaperDoll : Node2D
         _portrait ??= CreatePortrait();
         _portrait.Visible = true;
         var fallbackPath = hasStaticHumanPortrait ? path : isWolf
-            ? ForestWolfPortraitPath
+            ? (isForestBei ? ForestBeiPortraitPath : ForestWolfPortraitPath)
             : isFemale && ResourceLoader.Exists(FemaleStaticPortraitPath) ? FemaleStaticPortraitPath : path;
         _portrait.Texture = ResourceLoader.Load<Texture2D>(fallbackPath);
         _portrait.Hframes = 1;
@@ -95,6 +119,14 @@ public partial class BattlePaperDoll : Node2D
         _portrait.Frame = 0;
         _portrait.Modulate = Colors.White;
         _portrait.Scale = isWolf ? new Vector2(0.09f, 0.09f) : hasStaticBeastPortrait ? new Vector2(0.30f, 0.30f) : isFemale ? new Vector2(0.174f, 0.174f) : new Vector2(0.192f, 0.192f);
+        if (isWolf && _portrait.Texture is not null)
+        {
+            _forestWolfIdlePortrait = _portrait.Texture;
+            var attackPath = isForestBei ? ForestBeiAttackPortraitPath : ForestWolfAttackPortraitPath;
+            var hurtPath = isForestBei ? ForestBeiHurtPortraitPath : ForestWolfHurtPortraitPath;
+            _forestWolfAttackPortrait = ResourceLoader.Exists(attackPath) ? ResourceLoader.Load<Texture2D>(attackPath) : null;
+            _forestWolfHurtPortrait = ResourceLoader.Exists(hurtPath) ? ResourceLoader.Load<Texture2D>(hurtPath) : null;
+        }
         // Spine's wolf root is on the paw line; the centered static fallback needs its image center lifted to that line.
         _idleBasePosition = isWolf ? new Vector2(0, -43.6f) : isFemale ? new Vector2(0, -105) : new Vector2(0, -120);
         _portraitCenterX = 0f;
@@ -105,9 +137,16 @@ public partial class BattlePaperDoll : Node2D
             _portraitLocalBounds.Position -= _portrait.Texture.GetSize() * .5f;
             _portraitCenterX = (bounds.Position.X + bounds.Size.X * .5f - _portrait.Texture.GetWidth() * .5f) * _portrait.Scale.X;
             _idleBasePosition.Y = -(bounds.End.Y - _portrait.Texture.GetHeight() * .5f) * _portrait.Scale.Y;
+            if (_isForestBei) _idleBasePosition.Y = -_portrait.Texture.GetHeight() * .36f * _portrait.Scale.Y;
             _combatHeadY = -bounds.Size.Y * _portrait.Scale.Y;
             _combatChestY = _combatHeadY * .62f;
             _displayHeightReference = Mathf.Abs(_combatHeadY);
+        }
+        if (isWolf && _portrait.Texture is not null)
+        {
+            _forestWolfIdleLocalBounds = _portraitLocalBounds;
+            _forestWolfBasePortraitScale = _portrait.Scale;
+            _forestWolfIdleDisplayHeightReference = _displayHeightReference;
         }
 
         // 人形素材面朝右、狼素材面朝左；交战双方始终朝向对手。
@@ -147,6 +186,32 @@ public partial class BattlePaperDoll : Node2D
         _portrait.Position = _idleBasePosition;
     }
 
+    private void SetForestWolfPortraitPose(ForestWolfPose pose)
+    {
+        if (!UsesStaticBeastPoses || _portrait is null || _forestWolfIdlePortrait is null) return;
+        var texture = pose switch
+        {
+            ForestWolfPose.Attack => _forestWolfAttackPortrait ?? _forestWolfIdlePortrait,
+            ForestWolfPose.Hurt => _forestWolfHurtPortrait ?? _forestWolfIdlePortrait,
+            _ => _forestWolfIdlePortrait
+        };
+        _forestWolfPose = pose;
+        _portrait.Texture = texture;
+        _portrait.Scale = _forestWolfBasePortraitScale;
+        var bounds = VisiblePortraitBounds(texture);
+        _portraitLocalBounds = new Rect2(bounds.Position, bounds.Size);
+        _portraitLocalBounds.Position -= texture.GetSize() * .5f;
+        _portraitCenterX = (bounds.Position.X + bounds.Size.X * .5f - texture.GetWidth() * .5f) * _portrait.Scale.X;
+        _idleBasePosition.Y = -(bounds.End.Y - texture.GetHeight() * .5f) * _portrait.Scale.Y;
+        if (_isForestBei) _idleBasePosition.Y = -texture.GetHeight() * .36f * _portrait.Scale.Y;
+        _combatHeadY = -bounds.Size.Y * _portrait.Scale.Y;
+        _combatChestY = _combatHeadY * .62f;
+        _displayHeightReference = _forestWolfIdleDisplayHeightReference;
+        AlignPortraitCenter();
+    }
+
+    private void ResetForestWolfPortraitPose() => SetForestWolfPortraitPose(ForestWolfPose.Idle);
+
     public Rect2? static_screen_rect()
     {
         if (_usesSpineCharacter || _portrait?.Texture is null || _portraitLocalBounds.Size == Vector2.Zero) return null;
@@ -165,8 +230,9 @@ public partial class BattlePaperDoll : Node2D
     {
         if (_portraitLocalBounds.Size != Vector2.Zero && !_usesSpineCharacter)
         {
-            var local = _portraitLocalBounds;
-            var texture = _usesSideInk ? _sideTextures.GetValueOrDefault("idle") : _portrait?.Texture;
+            var portraitBounds = UsesStaticBeastPoses ? _forestWolfIdleLocalBounds : _portraitLocalBounds;
+            var local = portraitBounds;
+            var texture = UsesStaticBeastPoses ? _forestWolfIdlePortrait : _usesSideInk ? _sideTextures.GetValueOrDefault("idle") : _portrait?.Texture;
             if (texture is not null)
             {
                 if (!ShieldEnvelopes.TryGetValue(texture.ResourcePath, out var envelope))
@@ -187,7 +253,7 @@ public partial class BattlePaperDoll : Node2D
                                 rx = Mathf.Max(rx, Mathf.Abs(x - centre.X) / Mathf.Sqrt(Mathf.Max(.01f, 1 - dy * dy)));
                             }
                     var radius = new Vector2(rx * 1.055f, ry);
-                    envelope = new Rect2(centre - radius - (Vector2)visible.Position + _portraitLocalBounds.Position, radius * 2);
+                    envelope = new Rect2(centre - radius - (Vector2)visible.Position + portraitBounds.Position, radius * 2);
                     ShieldEnvelopes[texture.ResourcePath] = envelope;
                 }
                 local = envelope;
@@ -211,11 +277,33 @@ public partial class BattlePaperDoll : Node2D
 
     public void SetDisplayHeight(float height)
     {
-        var targetHeight = _isForestWolf ? height * 0.65f : height;
+        var targetHeight = UsesStaticBeastPoses ? height * 0.65f : height;
         Scale = Vector2.One * targetHeight / Mathf.Max(1, _displayHeightReference);
     }
 
     public bool uses_spine_character() => _usesSpineCharacter;
+    public bool uses_forest_wolf_portrait() => _isForestWolf && !_usesSpineCharacter;
+    public bool uses_forest_bei_portrait() => _isForestBei && !_usesSpineCharacter;
+    public bool uses_static_beast_poses() => UsesStaticBeastPoses && !_usesSpineCharacter;
+    public void play_beast_command(Vector2 direction)
+    {
+        if (!uses_static_beast_poses()) return;
+        play_attack(direction);
+        _actionTween?.TweenCallback(Callable.From(ResetForestWolfPortraitPose));
+    }
+    public Vector2 forest_wolf_mouth_anchor()
+    {
+        if (_portrait?.Texture is null) return combat_anchor();
+        var point = _portrait.Texture.GetSize() * new Vector2(-.42f, 0);
+        if (_portrait.FlipH) point.X = -point.X;
+        return _portrait.ToGlobal(point);
+    }
+    public Vector2 beast_voice_anchor()
+    {
+        if (_portrait?.Texture is null) return combat_anchor(true);
+        var point = _portrait.Texture.GetSize() * new Vector2(_portrait.FlipH ? .40f : -.40f, -.15f);
+        return _portrait.ToGlobal(point);
+    }
     public float body_display_height_local() => _displayHeightReference * Mathf.Abs(Scale.Y);
 
     // Include the sleeves and the forward attack pose, rather than just the torso.
@@ -224,13 +312,14 @@ public partial class BattlePaperDoll : Node2D
     public void play_retreat(Vector2 facing)
     {
         hold_attack_contact(false);
+        ResetForestWolfPortraitPose();
         EndContactPoseHold();
         ResetSideInkPose();
         face_direction(facing);
         _actionTween?.Kill();
         Position = Vector2.Zero;
         // Face the opponent while the root flies backwards along its return arc.
-        Rotation = -Mathf.Sign(facing.X) * .075f;
+        Rotation = UsesStaticBeastPoses ? 0 : -Mathf.Sign(facing.X) * .075f;
         _actionTween = CreateTween();
         _actionTween.TweenProperty(this, "rotation", 0f, BattleAttackMotion.ReturnSeconds)
             .SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.Out);
@@ -271,22 +360,27 @@ public partial class BattlePaperDoll : Node2D
         if(held)
         {
             // 受击／倒地已经替换攻击时，不暂停新动作。
+            if(UsesStaticBeastPoses && _forestWolfPose!=ForestWolfPose.Attack)return;
             if(_usesSpineCharacter && _spineAnimation!="attack")return;
-            if (_usesSideInk && _sidePose is not ("chop" or "cast" or "throw")) return;
+            if (_usesSideInk && _sidePose is not ("chop" or "cast" or "throw" or "sword_cut" or "sword_finish")) return;
             _attackContactHeld=true;
             _heldAttackTween=_actionTween;
             if(_heldAttackTween?.IsValid()==true)_heldAttackTween.Pause();
             BeginContactPoseHold();
         }
-        else if(_attackContactHeld)
+        else
         {
-            if(_heldAttackTween==_actionTween)
+            if(_attackContactHeld)
             {
-                if(_heldAttackTween?.IsValid()==true)_heldAttackTween.Play();
-                EndContactPoseHold();
+                if(_heldAttackTween==_actionTween)
+                {
+                    if(_heldAttackTween?.IsValid()==true)_heldAttackTween.Play();
+                    EndContactPoseHold();
+                }
+                _heldAttackTween=null;
+                _attackContactHeld=false;
             }
-            _heldAttackTween=null;
-            _attackContactHeld=false;
+            if(UsesStaticBeastPoses && _forestWolfPose==ForestWolfPose.Attack)ResetForestWolfPortraitPose();
         }
     }
 
@@ -306,13 +400,27 @@ public partial class BattlePaperDoll : Node2D
         }
 
         if (_portrait is not null)
-            _portrait.Position = _idleBasePosition + idleOffset;
+            _portrait.Position = _idleBasePosition;
     }
 
     public void play_attack(Vector2 direction, bool useHandChop = true)
     {
         EndContactPoseHold();
+        if (uses_static_beast_poses())
+        {
+            _actionTween?.Kill();
+            Position = Vector2.Zero;
+            Rotation = 0;
+            face_direction(direction);
+            SetForestWolfPortraitPose(ForestWolfPose.Attack);
+            _actionTween = CreateTween();
+            // One attack image, held through contact; force comes from FX and hit stop.
+            _actionTween.TweenInterval(.23f);
+            return;
+        }
+        ResetForestWolfPortraitPose();
         face_direction(direction);
+        if (UsesStaticBeastPoses) SetForestWolfPortraitPose(ForestWolfPose.Attack);
         if (_usesSideInk) StartSideInkPose(useHandChop ? "chop" : "idle", .95f);
         if (_usesSpineCharacter) PlaySpineAnimation("attack", false);
         _actionTween?.Kill();
@@ -345,9 +453,10 @@ public partial class BattlePaperDoll : Node2D
     {
         if (is_defense_presenting()) { emphasize_contact(weight); return; }
         EndContactPoseHold();
+        if (UsesStaticBeastPoses) SetForestWolfPortraitPose(ForestWolfPose.Hurt);
         if (_usesSideInk)
         {
-            StartSideInkPose("hurt", 1.12f);
+            if(!StartSwordHurt())StartSideInkPose("hurt", 1.12f);
             emphasize_contact(weight);
             if (playHurtFx) BattleInkCombatVfx.PlayHurt(this, weight, critical);
         }
@@ -368,11 +477,13 @@ public partial class BattlePaperDoll : Node2D
         _actionTween.TweenProperty(this, "position", Vector2.Zero, .16f).SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.Out);
         _actionTween.TweenProperty(this, "rotation", 0f, .16f);
         _actionTween.TweenProperty(this, "modulate", Colors.White, .14f);
+        if (UsesStaticBeastPoses) _actionTween.Chain().TweenCallback(Callable.From(ResetForestWolfPortraitPose));
     }
 
     public void play_death()
     {
         EndContactPoseHold();
+        ResetForestWolfPortraitPose();
         _actionTween?.Kill();
         if (_usesSideInk) { ResetSideInkPose(); _sideDead = true; }
         if (_usesSpineCharacter) PlaySpineAnimation(_portraitFacesLeft ? "death" : "death_kneel", false);

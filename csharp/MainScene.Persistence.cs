@@ -71,7 +71,6 @@ public partial class MainScene
         if (!_returning_from_battle)
         {
             battleTransition?.restore_reward_ledger(_loaded_game_save.battle_reward_ledger);
-            battleTransition?.CallDeferred("resume_pending_loot");
         }
 
         var npcManager = GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager");
@@ -361,7 +360,7 @@ public partial class MainScene
             ["journal_unread"] = _journal_unread,
             ["prologue_goal_recorded"] = _prologue_goal_recorded,
             ["cloud_state_initialized"] = _cloud_state_initialized,
-            ["east_woods_dungeon_state"] = _east_woods_dungeon?.get_route_state() ?? _east_woods_dungeon_state.Duplicate(true),
+            ["east_woods_dungeon_state"] = _east_woods_dungeon is { is_dynamic_instance: false } ? _east_woods_dungeon.get_route_state() : _east_woods_dungeon_state.Duplicate(true),
             ["journal_tracking"] = PackJournalTracking(),
             ["active_quest"] = pack_entry(_active_quest),
             ["completed_quests"] = pack_entries(_completed_quests),

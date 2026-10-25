@@ -20,9 +20,10 @@ public static class CardPresentation
         ["重击"]="拥有拳架时，消耗一层拳架，使本次技能伤害提高50%。",
         ["化解"]="详见修行百科的化解词条。",
         ["气血"]="层数降低时，按当前气血回落回复规则结算；回复率及替代效果由公共规则和当前生效效果共同决定。",
-        ["散血"]="详见修行百科的散血词条。",
-        ["打散"]="详见修行百科的散血词条。",
+        ["散血"]="按技能注明的触发条件，直接打散目标指定层数的气血；不视为气血层数降低。",
+        ["打散"]="按技能注明的触发条件，打散目标指定层数的气血；不视为气血层数降低。",
         ["穿盾"]="本次攻击无视目标护盾。",
+        ["剑意"]="上限10层。由养锋与格剑获得；尽锋命中后消耗全部剑意，每层提高该次伤害。战斗结束时清除。",
         ["借力"]="每层使下一项主动施放的物理伤害技能增伤5%；该技能结算后清空。挟势不清空，合劲每层总增伤8%。",
         ["护盾"]="受到伤害时优先抵扣；每次受击先于生命值结算。",
         ["护持"]="优先抵扣受到的伤害，按吸收的伤害减少。",
@@ -36,7 +37,7 @@ public static class CardPresentation
     {
         var text=descriptionOverride ?? skill.get_brief_description(owner);
         var preferResourceDescription=descriptionOverride is null && !string.IsNullOrWhiteSpace(skill.description) &&
-            (skill.source_gongfa_name is "赤阳参同经" or "玄枢含章经" or "百骸衍枝化生宝册" or "太和感物养元宝册" || (skill.skill_name is "架招" or "卸力"));
+            (skill.source_gongfa_name is "赤阳参同经" or "玄枢含章经" or "百骸衍枝化生宝册" or "太和感物养元宝册" or "舒卷天章" or "玉髓回澜养真宝册" or "抱虚养晦通玄录" || (skill.skill_name is "架招" or "卸力"));
         var hasXuanShuRewrite=skill.gongfa_rewrite_effect_ids.Any(id=>id.StartsWith("xuan_shu_",StringComparison.Ordinal));
         var referenceName=ReferenceName(skill);
         if(descriptionOverride is not null)
@@ -165,6 +166,15 @@ public static class CardPresentation
                     cursor=match.Index+match.Length;
                     continue;
                 }
+                if(isLetter&&formula.Contains("本次气血回落",StringComparison.Ordinal))
+                {
+                    var pending=Regex.Replace(builder.ToString(),$@"(?<![A-Za-z0-9_]){Regex.Escape(label)}\s*点护盾","护盾（数值在本次气血回落结算后确定）");
+                    pending=Regex.Replace(pending,$@"(?<![A-Za-z0-9_]){Regex.Escape(label)}(?![A-Za-z0-9_])","本次回落结算值");
+                    builder.Clear();builder.Append(pending);
+                    builder.Append($"计算方式：{Readable(formula)}（本次气血回落结算后确定）。");
+                    cursor=match.Index+match.Length;
+                    continue;
+                }
                 if(!TryEvaluateFormula(formula,owner,values,out var numericValue))
                 {
                     if(isLetter&&label!="R")
@@ -183,7 +193,7 @@ public static class CardPresentation
                     continue;
                 }
 
-                var value=FormatNumber(numericValue);
+                var value=formula.Contains('%')||formula.Contains("个百分点",StringComparison.Ordinal)?FormatNumber(numericValue*100f)+"%":FormatNumber(numericValue);
                 if(label=="R")
                 {
                     var percent=FormatNumber(numericValue*100f)+"%";
@@ -236,6 +246,10 @@ public static class CardPresentation
         var expanded=formula;
         foreach(var pair in variables.OrderByDescending(pair=>pair.Key.Length))
             expanded=Regex.Replace(expanded,$@"(?<![A-Za-z0-9_]){Regex.Escape(pair.Key)}(?![A-Za-z0-9_])",pair.Value.ToString("0.########",System.Globalization.CultureInfo.InvariantCulture));
+        var unresolved=expanded.Replace("个百分点", "");
+        foreach(var pair in CardRules.Attributes.OrderByDescending(pair=>pair.Key.Length))unresolved=unresolved.Replace(pair.Key,pair.Value);
+        // 未来结算值不是角色属性，不能送进 Expression 当作 self 属性执行。
+        if(Regex.IsMatch(unresolved,@"[\u4e00-\u9fff]")){value=0;return false;}
         try { value=CardRules.Evaluate(expanded,owner);return float.IsFinite(value); }
         catch(System.Exception) { value=0;return false; }
     }
@@ -434,6 +448,8 @@ public static class CardPresentation
 
     public static string CombatTargetText(ActiveSkillData skill, string effectText)
     {
+        if(skill.special_effects.Any(effect=>effect.GetValueOrDefault("effect","").AsString()=="forest_bei_pack_call"))
+            return "全体存活的友方林地凶狼（含同物种变种）";
         if(skill.skill_name=="复命")return "从最近一次施展的非应对技能的合法目标中随机选择";
         if (CardRules.IsResponse(skill)) return "应对：自身及匹配的来袭者；未应对：" + (CardRules.NormalCast(skill) is { } normal
             ? CombatTargetText(normal, normal.description) : "无目标（空放）");
@@ -604,7 +620,8 @@ public static class CardPresentation
     private static string NormalizeFormula(string formula) => Regex.Replace(Readable(formula), @"\s+", "");
     private static string FormatNumber(float value) => value.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture);
 
-    public static string Underline(string text) => Regex.Replace(text,TermPattern(text), m=>string.Concat(m.Value.Select(c=>$"{c}\u0332")));
+    // 游戏内不再用下划线标出百科术语；保留入口兼容既有调用，直接展示原文。
+    public static string Underline(string text) => text;
     private static string[] Terms(string text)
     {
         var names=Mechanics.Keys.Concat(Reference.GetProperty("terms").EnumerateObject().Select(p=>p.Name))

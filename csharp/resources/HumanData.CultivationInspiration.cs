@@ -3,7 +3,7 @@ using Godot.Collections;
 
 public partial class HumanData
 {
-    /// <summary>New inspiration inventory. Legacy qi_inspirations remains compatibility-only.</summary>
+    /// <summary>停用灵感系统的历史库存，仅兼容存档；旧 qi_inspirations 同样不参与玩法。</summary>
     [Export] public Array<CultivationInspirationRecord> cultivation_inspiration_records = [];
     /// <summary>Stable event IDs prevent repeated callbacks and save reloads from awarding twice.</summary>
     [Export] public Array<CultivationInspirationSourceEventRecord> cultivation_inspiration_source_events = [];

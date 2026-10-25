@@ -29,9 +29,9 @@ public partial class AlchemyFurnaceView : Control
         _targetPower=(float)Math.Clamp(actualPower/4,0,1);_residual=(float)Math.Clamp((temperature-25)/85,0,1);
         SetProcess(true);
     }
-    public Vector2 MouthGlobalPosition => GlobalPosition+(_appearance==0&&_shells.Length>0
-        ? SpriteRect().Position+SpriteRect().Size*new Vector2(.5f,550f/1536f)
-        : Origin+new Vector2(300,194)*DrawingScale);
+    public Vector2 MouthGlobalPosition => GetGlobalTransform()*(_appearance==0&&_shells.Length>0
+        ? SpriteRect().Position+SpriteRect().Size*new Vector2(.5f,.68f)
+        : Origin+new Vector2(300,327)*DrawingScale);
     private float DrawingScale=>Mathf.Min(Size.X/600,Size.Y/540);
     private Vector2 Origin=>(Size-new Vector2(600,540)*DrawingScale)/2;
     private void Arrange()

@@ -142,6 +142,9 @@ public static class NpcCombatBuildPlanner
         if (book.gongfa_name == "斫基损契玄经") value += actor.intelligence * 2 + (actor.max_mana > 1 ? 15 : -100);
         if (book.gongfa_name == "玄枢含章经") value += actor.intelligence + actor.soul + (known.Any(item => item.gongfa_name == "斫基损契玄经") ? 12 : 0);
         if (book.gongfa_name == "太和感物养元宝册") value += actor.physique;
+        if (book.gongfa_name == "舒卷天章") value += actor.physique+CardRules.Number(actor,"sword_proficiency")*2+(actor.has_unlocked_skill_node("sword_cut_root")?20:0);
+        if (book.gongfa_name == "玉髓回澜养真宝册") value += actor.physique*1.5f+(known.Any(item=>item.gongfa_name is "百骸衍枝化生宝册" or "太和感物养元宝册")?18:0);
+        if (book.gongfa_name == "抱虚养晦通玄录") value += actor.intelligence*1.5f+(known.Any(item=>item.gongfa_name is "玄枢含章经" or "斫基损契玄经")?18:0);
         return value;
     }
 
@@ -150,13 +153,21 @@ public static class NpcCombatBuildPlanner
         ((main?.gongfa_name == "百骸衍枝化生宝册" && book.gongfa_name == "太和感物养元宝册") ||
          (main?.gongfa_name == "太和感物养元宝册" && book.gongfa_name == "百骸衍枝化生宝册") ? 60 : 0) +
         ((main?.gongfa_name == "玄枢含章经" && book.gongfa_name == "斫基损契玄经") ||
-         (main?.gongfa_name == "斫基损契玄经" && book.gongfa_name == "玄枢含章经") ? 50 : 0);
+         (main?.gongfa_name == "斫基损契玄经" && book.gongfa_name == "玄枢含章经") ? 50 : 0) +
+        ((main?.gongfa_name == "玉髓回澜养真宝册" && book.gongfa_name is "百骸衍枝化生宝册" or "太和感物养元宝册") ||
+         (book.gongfa_name == "玉髓回澜养真宝册" && main?.gongfa_name is "百骸衍枝化生宝册" or "太和感物养元宝册") ? 55 : 0) +
+        ((main?.gongfa_name == "抱虚养晦通玄录" && book.gongfa_name is "玄枢含章经" or "斫基损契玄经") ||
+         (book.gongfa_name == "抱虚养晦通玄录" && main?.gongfa_name is "玄枢含章经" or "斫基损契玄经") ? 55 : 0) +
+        ((main?.gongfa_name == "舒卷天章" && book.gongfa_name == "百骸衍枝化生宝册") ||
+         (book.gongfa_name == "舒卷天章" && main?.gongfa_name == "百骸衍枝化生宝册") ? 35 : 0);
 
     private static float SkillValue(Character actor, ActiveSkillData skill) => skill.skill_name switch
     {
         "催血" => 100, "聚炁" => actor.main_gongfa?.gongfa_name=="玄枢含章经"||actor.sub_gongfa_list.Any(book=>book.gongfa_name=="玄枢含章经")?98:45,
         "血臂撼岳" => 95, "乘势再攻" => 90, "焚元" => actor.max_mana > 1 ? 85 : 5,
         "折锋" => 82, "惊蛰" => 80, "虚怀纳劲" => 75, "架招" => 70, "应敌" => 65, "云帔" => 60,
+        "涤髓" => 70, "鸣泉" => 88, "散照" => 78, "守寂" => 75, "云岚三叠" => 95,
+        "养锋" => 90, "格剑" => 80, "尽锋" => 86, "斩剑" => 78,
         "痛击" => 55, "复命" => 50, _ => 40 + skill.calculate_damage(actor)
     };
 }

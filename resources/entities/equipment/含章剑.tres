@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="EquipmentData" format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/EquipmentData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+definition_id = &"sect_sword_hanzhang"
+entity_name = "含章剑"
+description = "宗门制式凡器。物理防御 +3。"
+icon_path = "res://textures/ui/forged_swords_icons_20261025_v1/spined_sword.png"
+item_category = "装备"
+item_subcategory = "凡器·剑"
+can_stack = false
+max_stack = 1
+equip_type = 0
+weapon_type = 1
+fixed_bonuses = {
+"physical_defense": 3
+}

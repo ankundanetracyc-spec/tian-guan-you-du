@@ -74,6 +74,7 @@ public partial class Character
 
     private int get_cultivation_bottleneck_realm_tier()
     {
+        if (!CultivationBottleneckRules.Enabled) return 0;
         if (is_yuanxi_realm()) return 0;
         return cultivation_realm switch
         {
@@ -115,6 +116,8 @@ public partial class Character
 
     public Dictionary get_cultivation_auto_refinement_settings()
     {
+        if (!CultivationBottleneckRules.Enabled)
+            return new Dictionary { ["enabled"] = false, ["eligible"] = false, ["reason"] = "闭关瓶颈已暂停，无需炼化灵感。" };
         if (human is null)
             return new Dictionary { ["enabled"] = false, ["eligible"] = false, ["reason"] = "角色数据不可用。" };
 
@@ -168,6 +171,11 @@ public partial class Character
     public bool set_cultivation_auto_refinement_settings(bool enabled, string recordId, double thresholdPenalty, out string reason)
     {
         reason = "";
+        if (!CultivationBottleneckRules.Enabled)
+        {
+            reason = "闭关瓶颈已暂停，无需设置自动炼化。";
+            return !enabled;
+        }
         if (human is null)
         {
             reason = "角色数据不可用。";
@@ -275,15 +283,16 @@ public partial class Character
             return result;
 
         var baseRate = Math.Max(0d, get_cultivation_rate());
+        var startingToxicity = PillToxicity;
         var activeTier = get_cultivation_bottleneck_realm_tier();
         if (activeTier == 0)
         {
-            var unpenalizedProgress = Math.Max(0d, human.cultivation_progress) + baseRate * requestedHours;
+            var unpenalizedProgress = Math.Max(0d, human.cultivation_progress) + baseRate * PillToxicityRules.EffectiveHours(startingToxicity, 0, requestedHours);
             var unpenalizedWhole = (int)Math.Floor(unpenalizedProgress + 1e-8d);
             result.WholeStrands = Math.Max(0, unpenalizedWhole);
             result.FractionalProgress = Math.Clamp(unpenalizedProgress - unpenalizedWhole, 0d, .999999999d);
             result.TotalProgress = unpenalizedProgress;
-            result.AverageRate = baseRate;
+            result.AverageRate = requestedHours > 0 ? (unpenalizedProgress - Math.Max(0d, human.cultivation_progress)) / requestedHours : baseRate;
             return result;
         }
         var state = get_cultivation_bottleneck_snapshot();
@@ -337,7 +346,7 @@ public partial class Character
             }
 
             var effectiveRate = baseRate * (1d - Math.Clamp(state.Penalty, 0d, .90d));
-            var gained = effectiveRate * segment;
+            var gained = effectiveRate * PillToxicityRules.EffectiveHours(startingToxicity, elapsed, segment);
             integratedGain += gained;
             totalProgress += gained;
             state.advance(segment);
@@ -381,58 +390,25 @@ public partial class Character
 
     private double get_cultivation_hours_for_strands(int requestedStrands)
     {
-        if (human is null || requestedStrands <= 0) return 0d;
-        var remainingProgress = Math.Max(0d, requestedStrands - human.cultivation_progress);
-        if (remainingProgress <= 1e-8d) return 0d;
-
-        var baseRate = Math.Max(0d, get_cultivation_rate());
-        if (baseRate <= 0d) return double.PositiveInfinity;
-        if (get_cultivation_bottleneck_realm_tier() == 0) return remainingProgress / baseRate;
-        var state = get_cultivation_bottleneck_snapshot();
-        var autoPlan = get_cultivation_auto_refinement_plan(state);
-        var startGameHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
-        var elapsed = 0d;
-        var autoRefinementResolved = false;
-        while (remainingProgress > 1e-8d)
+        if (human is null || requestedStrands <= 0) return 0;
+        var remaining = Math.Max(0, requestedStrands - human.cultivation_progress);
+        if (remaining <= 1e-8) return 0;
+        var rate = Math.Max(0, get_cultivation_rate());
+        if (rate <= 0) return double.PositiveInfinity;
+        // 与正式预演共用分段积分，兼容瓶颈、灵感触发及丹毒自然消退。
+        double low = 0, high = Math.Max(1, remaining / rate * 20);
+        while (simulate_cultivation_hours(high).TotalProgress + 1e-9 < requestedStrands)
         {
-            state.reconcile();
-            if (autoPlan is not null && !autoRefinementResolved && state.Penalty >= autoPlan.ThresholdPenalty)
-            {
-                autoRefinementResolved = true;
-                var triggerHour = startGameHour + (long)Math.Ceiling(elapsed - 1e-9d);
-                if (triggerHour < autoPlan.ExpiresAtGameHour)
-                    state.Penalty = CultivationBottleneckRules.relieve_penalty(
-                        state.Penalty, state.RealmTier, autoPlan.QualityRank);
-            }
-            var rate = baseRate * (1d - Math.Clamp(state.Penalty, 0d, .90d));
-            if (rate <= 0d) return double.PositiveInfinity;
-            var needed = remainingProgress / rate;
-            var threshold = CultivationBottleneckRules.get_next_level_threshold_hours(state.Level, state.RealmTier);
-            var untilNextLevel = threshold - state.AccumulatedHours;
-            var segment = state.Level >= CultivationBottleneckRules.Stages || untilNextLevel <= 1e-8d
-                ? needed
-                : Math.Min(needed, untilNextLevel);
-            if (segment <= 1e-8d)
-            {
-                state.advance(1e-7d);
-                elapsed += 1e-7d;
-                continue;
-            }
-            remainingProgress -= rate * segment;
-            var previousPenalty = state.Penalty;
-            state.advance(segment);
-            elapsed += segment;
-            if (autoPlan is not null && !autoRefinementResolved && previousPenalty < autoPlan.ThresholdPenalty &&
-                state.Penalty >= autoPlan.ThresholdPenalty)
-            {
-                autoRefinementResolved = true;
-                var triggerHour = startGameHour + (long)Math.Ceiling(elapsed - 1e-9d);
-                if (triggerHour < autoPlan.ExpiresAtGameHour)
-                    state.Penalty = CultivationBottleneckRules.relieve_penalty(
-                        state.Penalty, state.RealmTier, autoPlan.QualityRank);
-            }
+            high *= 2;
+            if (!double.IsFinite(high)) return double.PositiveInfinity;
         }
-        return elapsed;
+        for (int i = 0; i < 60; i++)
+        {
+            var mid = (low + high) * .5;
+            if (simulate_cultivation_hours(mid).TotalProgress >= requestedStrands) high = mid;
+            else low = mid;
+        }
+        return high;
     }
 
     private void apply_cultivation_simulation(CultivationSimulation simulation)
@@ -533,9 +509,9 @@ public partial class Character
 
     public float get_cultivation_rate_after_bottleneck()
     {
-        if (get_cultivation_bottleneck_realm_tier() == 0) return get_cultivation_rate();
+        if (get_cultivation_bottleneck_realm_tier() == 0) return (float)(get_cultivation_rate() * PillAbsorption);
         var state = get_cultivation_bottleneck_snapshot();
-        return (float)(Math.Max(0d, get_cultivation_rate()) * (1d - Math.Clamp(state.Penalty, 0d, .90d)));
+        return (float)(Math.Max(0d, get_cultivation_rate()) * PillAbsorption * (1d - Math.Clamp(state.Penalty, 0d, .90d)));
     }
 
     public Array<CultivationInspirationRecord> get_cultivation_inspiration_records()
@@ -577,6 +553,7 @@ public partial class Character
     /// <summary>Player explicitly reserves this record for its matching action domain.</summary>
     public bool set_cultivation_inspiration_action_reservation(string recordId, bool armed)
     {
+        if (!CultivationInspirationSystem.Enabled) return false;
         var now = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
         expire_cultivation_inspiration_records(now);
         var record = CultivationInspirationSystem.find_available_record(human, recordId, now);
@@ -594,6 +571,7 @@ public partial class Character
 
     public CultivationInspirationRecord? get_armed_cultivation_inspiration_for_action(string actionDomainId)
     {
+        if (!CultivationInspirationSystem.Enabled) return null;
         var now = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
         expire_cultivation_inspiration_records(now);
         if (human is null || string.IsNullOrWhiteSpace(actionDomainId)) return null;

@@ -133,7 +133,9 @@ public partial class BattleAttackStagingSmoke : Node
         Check(attackSeen&&damageSeen,"No visible attack or damage: "+label);
         Check(attacker.GlobalPosition.DistanceTo(home)<.01f&&attacker.ZIndex==z,"Attacker did not return exactly: "+label);
         Check(_scene.GetNode<Node>("BattleMap").Call("get_unit_cell",attacker).Equals(cell),"Staging changed the logical cell");
-        if(close)Check(returnArcSeen,"No backward return arc: "+label);
+        if(close && attacker.GetNode<BattlePaperDoll>("BattlePaperDoll").uses_forest_wolf_portrait())
+            Check(!returnArcSeen,"Wolf return should stay grounded: "+label);
+        else if(close)Check(returnArcSeen,"No backward return arc: "+label);
         if(response)
         {
             Check(focusSeen,"Response insert did not trigger");
@@ -161,10 +163,10 @@ public partial class BattleAttackStagingSmoke : Node
 
     private static bool IsIncomingStroke(BattleInkCombatVfx effect) => effect.GetNodeOrNull<AnimatedSprite2D>("SequenceFrames") is { } sequence
         ? sequence.Animation == "slash"
-        : effect.GetNodeOrNull<Sprite2D>("InkSurface")?.Material is ShaderMaterial material && Mathf.IsZeroApprox(material.GetShaderParameter("phase").AsSingle());
+        : effect.GetNodeOrNull<CanvasItem>("InkSurface")?.Material is ShaderMaterial material && Mathf.IsZeroApprox(material.GetShaderParameter("phase").AsSingle());
 
     private static float VisualProgress(BattleInkCombatVfx effect) => effect.GetNodeOrNull<AnimatedSprite2D>("SequenceFrames") is { } sequence
-        ? sequence.Frame : ((ShaderMaterial)effect.GetNode<Sprite2D>("InkSurface").Material).GetShaderParameter("progress").AsSingle();
+        ? sequence.Frame : ((ShaderMaterial)effect.GetNode<CanvasItem>("InkSurface").Material).GetShaderParameter("progress").AsSingle();
 
     private static int EffectiveZ(CanvasItem item) => item.ZIndex + (item.ZAsRelative && item.GetParent() is CanvasItem parent ? EffectiveZ(parent) : 0);
 

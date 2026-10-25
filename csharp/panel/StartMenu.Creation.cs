@@ -88,6 +88,9 @@ public partial class StartMenu
         var aptitudeTab = creation_button("二　天资灵根");
         aptitudeTab.CustomMinimumSize = new Vector2(180, 46);
         header.AddChild(aptitudeTab);
+        var proficiencyTab = creation_button("三　初始造诣");
+        proficiencyTab.CustomMinimumSize = new Vector2(180, 46);
+        header.AddChild(proficiencyTab);
         var close = creation_button("返回");
         close.CustomMinimumSize = new Vector2(90, 46);
         close.Pressed += overlay.Hide;
@@ -95,12 +98,15 @@ public partial class StartMenu
 
         var appearancePage = build_appearance_page(profile);
         var aptitudePage = build_aptitude_page(profile, appearancePage.Refresh);
+        var proficiencyPage = build_proficiency_page(profile);
         var content = new Control { Name = "CreationPageHost", SizeFlagsVertical = SizeFlags.ExpandFill, SizeFlagsHorizontal = SizeFlags.ExpandFill };
         layout.AddChild(content);
         appearancePage.Root.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         aptitudePage.Root.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        proficiencyPage.Root.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         content.AddChild(appearancePage.Root);
         content.AddChild(aptitudePage.Root);
+        content.AddChild(proficiencyPage.Root);
 
         var footer = new HBoxContainer { CustomMinimumSize = new Vector2(0, 54) };
         footer.AddThemeConstantOverride("separation", 12);
@@ -116,26 +122,33 @@ public partial class StartMenu
         var currentPage = 0;
         void show_page(int page)
         {
-            currentPage = Mathf.Clamp(page, 0, 1);
+            currentPage = Mathf.Clamp(page, 0, 2);
             appearancePage.Root.Visible = currentPage == 0;
             aptitudePage.Root.Visible = currentPage == 1;
-            pageHint.Text = currentPage == 0
-                ? "选择姓名、性别与立绘部件；所有变化都会即时预览。"
-                : "分配天资，定下灵根与第一卷功法。";
-            next.Text = currentPage == 0 ? "下一页" : "入世";
+            proficiencyPage.Root.Visible = currentPage == 2;
+            pageHint.Text = currentPage switch
+            {
+                0 => "选择姓名、性别与立绘部件；所有变化都会即时预览。",
+                1 => "分配天资，定下灵根与第一卷功法。",
+                _ => "九项造诣可自由调整，不消耗资质点；入世后作为角色的初始造诣。"
+            };
+            next.Text = currentPage < 2 ? "下一页" : "入世";
             style_creation_tab(appearanceTab, currentPage == 0);
             style_creation_tab(aptitudeTab, currentPage == 1);
+            style_creation_tab(proficiencyTab, currentPage == 2);
             if (currentPage == 0) appearancePage.Refresh();
-            else aptitudePage.Refresh();
+            else if (currentPage == 1) aptitudePage.Refresh();
+            else proficiencyPage.Refresh();
         }
 
         appearanceTab.Pressed += () => show_page(0);
         aptitudeTab.Pressed += () => show_page(1);
+        proficiencyTab.Pressed += () => show_page(2);
         next.Pressed += async () =>
         {
-            if (currentPage == 0)
+            if (currentPage < 2)
             {
-                show_page(1);
+                show_page(currentPage + 1);
                 return;
             }
 
@@ -500,7 +513,7 @@ public partial class StartMenu
         var loadPreset = creation_button("载入");
         loadPreset.CustomMinimumSize = new Vector2(76, 38);
         presetControls.AddChild(loadPreset);
-        var presetHint = creation_label("保存后可复用姓名、外观、九项属性、灵根与功法。", 14);
+        var presetHint = creation_label("保存后可复用姓名、外观、属性、灵根、功法与九项初始造诣。", 14);
         presetHint.AutowrapMode = TextServer.AutowrapMode.WordSmart;
         presetCard.Body.AddChild(presetHint);
 

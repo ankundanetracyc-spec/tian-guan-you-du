@@ -115,7 +115,12 @@ public partial class MainScene : Node2D
             _skipExitSave = true;
             GD.PushError($"旅程初始化失败：{ex}");
         }
-        finally { StartupComplete = true; }
+        finally
+        {
+            StartupComplete = true;
+            if (StartupError is null)
+                GetNodeOrNull<BattleTransitionManager>("/root/BattleTransitionManager")?.CallDeferred("resume_pending_loot");
+        }
     }
     public override void _Process(double delta){if (!StartupComplete || StartupError is not null) return; update_persistent_chrome();process_save_autosave(delta);process_relationship_month();process_npc_social_visit(delta);process_banquet_activity(delta);process_active_world_npc_interaction_refresh(delta);}
     public override void _ExitTree()

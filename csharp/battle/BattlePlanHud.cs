@@ -205,7 +205,7 @@ public partial class BattlePlanHud : Control
         _dragIndex=-1;_dragging=false;_dragSource=null;_dragPreview=null;_dropMarker=null;
     }
     private static Vector2 CardSize(float width)=>new(width,width*1.5f);
-    private static Control Card(BattleQueuedSkill? action,Vector2 size)
+    private Control Card(BattleQueuedSkill? action,Vector2 size)
     {
         if(action?.kind==BattleQueuedSkill.ActionKind.Empty)action=null;
         var card=new Control{Size=size,MouseFilter=MouseFilterEnum.Ignore};
@@ -217,9 +217,20 @@ public partial class BattlePlanHud : Control
             opening.AddChild(new ColorRect{Size=opening.Size,Color=new Color("ded5c3"),MouseFilter=MouseFilterEnum.Ignore});
             opening.AddChild(CombatSkillBar.CreateSkillIconVisual(action.skill,opening.Size));
         }
+        if (action?.kind == BattleQueuedSkill.ActionKind.Pill && BattleSupplyRules.Load(action.supply_path) is { } pill)
+        {
+            var icon = new TextureRect { Size = opening.Size, Texture = GD.Load<Texture2D>(pill.icon_path),
+                ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize, StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
+                MouseFilter = MouseFilterEnum.Ignore };
+            opening.AddChild(icon); AlchemyPillVisual.Apply(icon, pill.efficacy_tier, pill.pill_id);
+            if (_manager.get_main_player_unit() is Character owner && action.supply_slot >= 0 && action.supply_slot < owner.battle_supplies.Count)
+                opening.AddChild(Label($"×{owner.battle_supplies[action.supply_slot].count}", new(opening.Size.X - 44, 0), new(44, 24), 16));
+        }
         var frame=new NinePatchRect{Texture=BattleUiArt.Texture(action is null?"skill_slot_empty":"skill_card_frame"),Size=size,PatchMarginLeft=edge,PatchMarginRight=edge,PatchMarginTop=26,PatchMarginBottom=foot,MouseFilter=MouseFilterEnum.Ignore,ZIndex=2};card.AddChild(frame);
-        if(action is not null&&action.kind!=BattleQueuedSkill.ActionKind.Skill)card.AddChild(Label(action.kind==BattleQueuedSkill.ActionKind.Rest?"休":"撤",opening.Position,opening.Size,Mathf.RoundToInt(size.X*.38f)));
+        if(action is not null&&action.kind is BattleQueuedSkill.ActionKind.Rest or BattleQueuedSkill.ActionKind.Retreat)card.AddChild(Label(action.kind==BattleQueuedSkill.ActionKind.Rest?"休":"撤",opening.Position,opening.Size,Mathf.RoundToInt(size.X*.38f)));
         var name=Label(action?.get_display_name()??"空位",new(24,size.Y-62),new(size.X-48,48),size.X>=168?22:18);name.ZIndex=3;card.AddChild(name);
+        if (action?.kind == BattleQueuedSkill.ActionKind.Pill && BattleSupplyRules.Load(action.supply_path) is { } drug)
+        { name.Text = $"服用·{BattleSupplyRules.Name(drug)}\n{BattleSupplyRules.QualityNames[drug.efficacy_tier]}"; name.AddThemeFontSizeOverride("font_size", size.X >= 168 ? 18 : 15); }
         return card;
     }
     private HoverInfoManager.HoverInfoContent BuildQueueActionHover(
@@ -228,6 +239,11 @@ public partial class BattlePlanHud : Control
         var status = action.completed ? action.skipped ? "已跳过" : "已执行" : "待行动";
         var subtitle = $"第 {slotIndex + 1} 位 · {status}";
         var details = new List<string>();
+        if (action.kind == BattleQueuedSkill.ActionKind.Pill && player is Character owner)
+        {
+            var info = _manager.SupplyHover(owner, action.supply_slot, action.supply_path);
+            return new(action.get_display_name(), info.Body + (planning ? "\n\n拖拽调整顺序，单击卸下；卸下不扣药。" : ""), info.Icon, $"{info.Subtitle} · {subtitle}");
+        }
         if (!string.IsNullOrWhiteSpace(warning))
         {
             var warningDetail = action.kind == BattleQueuedSkill.ActionKind.Skill && CardRules.IsResponse(action.skill)
@@ -243,9 +259,9 @@ public partial class BattlePlanHud : Control
             var nian = PlayerNian(player, action);
             if (nian > 0) details.Add($"技能实例念：{nian}");
             if (planning) details.Add("队列操作：拖至空槽移动，拖至招式互换，单击卸下。");
-            var body = skillInfo.Body;
-            if (details.Count > 0) body += "\n\n" + string.Join("\n\n", details);
-            return new HoverInfoManager.HoverInfoContent(action.get_display_name(), body, skillInfo.Icon, $"{skillInfo.Subtitle}　·　{subtitle}");
+            var sections = (skillInfo.Sections ?? new[] { new HoverInfoManager.HoverInfoSection("", skillInfo.Body) }).ToList();
+            if (details.Count > 0) sections.Add(new("队列信息", string.Join("\n", details)));
+            return HoverInfoManager.Structured(action.get_display_name(), skillInfo.Icon, $"{skillInfo.Subtitle}　·　{subtitle}", sections.ToArray());
         }
 
         details.Insert(0, action.kind switch

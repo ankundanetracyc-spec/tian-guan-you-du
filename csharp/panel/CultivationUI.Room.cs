@@ -13,6 +13,8 @@ public partial class CultivationUI
     private SpinBox _autoRefinementThreshold = null!;
     private Label _autoRefinementHint = null!, _autoRefinementFeedback = null!;
     private VBoxContainer _studyList = null!;
+    private VBoxContainer? _studyRequirementList;
+    private Label? _studyRequirementTitle;
     private InspirationActionPicker? _studyInspirationPicker;
     private ProgressBar _roomPowerBar = null!, _studyProgress = null!;
     private readonly List<Button> _roomTabs = [], _modeTabs = [];
@@ -34,7 +36,7 @@ public partial class CultivationUI
         header.AddChild(QuietRoomStyle.Text("静室", 32));
         _name = QuietRoomStyle.Text("", 22); _name.SizeFlagsHorizontal = SizeFlags.ExpandFill; header.AddChild(_name);
         _roomTime = QuietRoomStyle.Text("", 23); header.AddChild(_roomTime);
-        _roomInspirationButton = new Button { Name = "OpenInspirationLedger", Text = "灵感清册", CustomMinimumSize = new Vector2(144, 48) };
+        _roomInspirationButton = new Button { Name = "OpenInspirationLedger", Text = "灵感清册", Visible = CultivationInspirationSystem.Enabled, CustomMinimumSize = new Vector2(144, 48) };
         QuietRoomStyle.Primary(_roomInspirationButton);
         _roomInspirationButton.Pressed += () => select_room_page(5);
         header.AddChild(_roomInspirationButton);
@@ -51,6 +53,7 @@ public partial class CultivationUI
         var titles = new[] { "吐纳修行", "功法研读", "闭关突破", "修命·淬体", "修性·观法", "灵感清册" };
         for (var i = 0; i < titles.Length; i++)
         {
+            if (i == 5 && !CultivationInspirationSystem.Enabled) continue;
             var page = i; var tab = new Button { Name = "RoomTab" + i, Text = titles[i], ToggleMode = true, CustomMinimumSize = new Vector2(0, 66) };
             style_room_navigation(tab);
             tab.Pressed += () => select_room_page(page); nav.AddChild(tab); _roomTabs.Add(tab);
@@ -130,7 +133,7 @@ public partial class CultivationUI
 		_dateRow.AddChild(_inviteScheduleButton);
 		_inviteScheduleHint = QuietRoomStyle.Text("", 15); _inviteScheduleHint.AutowrapMode = TextServer.AutowrapMode.WordSmart; _dateRow.AddChild(_inviteScheduleHint);
         _plan = QuietRoomStyle.Text("", 20); _plan.AutowrapMode = TextServer.AutowrapMode.WordSmart; practice.AddChild(_plan);
-        var autoRefinementCard = new PanelContainer(); autoRefinementCard.AddThemeStyleboxOverride("panel", QuietRoomStyle.Paper(.9f, 12)); practice.AddChild(autoRefinementCard);
+        var autoRefinementCard = new PanelContainer { Visible = CultivationBottleneckRules.Enabled }; autoRefinementCard.AddThemeStyleboxOverride("panel", QuietRoomStyle.Paper(.9f, 12)); practice.AddChild(autoRefinementCard);
         var autoRefinementBox = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill }; autoRefinementBox.AddThemeConstantOverride("separation", 8); autoRefinementCard.AddChild(autoRefinementBox);
         autoRefinementBox.AddChild(QuietRoomStyle.Text("自动炼化灵感", 21));
         _autoRefinementToggle = new CheckBox { Text = "瓶颈减速达到所设百分比时，炼化一份灵感", CustomMinimumSize = new Vector2(0, 38) };
@@ -174,6 +177,9 @@ public partial class CultivationUI
         var box = room_box(details); box.AddChild(QuietRoomStyle.Text("功法研读", 32)); _studyTitle = QuietRoomStyle.Text("", 28); box.AddChild(_studyTitle);
         _studyBook = new OptionButton { Visible = false }; _studyBook.ItemSelected += select_study_book; box.AddChild(_studyBook);
         _studyHint = QuietRoomStyle.Text("", 22); _studyHint.AutowrapMode = TextServer.AutowrapMode.WordSmart; box.AddChild(_studyHint);
+        _studyRequirementTitle = QuietRoomStyle.Text("本卷研读条件", 19); _studyRequirementTitle.Visible = false; box.AddChild(_studyRequirementTitle);
+        _studyRequirementList = new VBoxContainer { Visible = false };
+        _studyRequirementList.AddThemeConstantOverride("separation", 4); box.AddChild(_studyRequirementList);
         _studyInspirationPicker = new InspirationActionPicker { Name = "StudyInspirationPicker" };
         box.AddChild(_studyInspirationPicker);
         _studyProgress = new ProgressBar { ShowPercentage = false, CustomMinimumSize = new Vector2(0, 16) }; box.AddChild(_studyProgress);
@@ -230,6 +236,7 @@ public partial class CultivationUI
     }
     private void select_room_page(int page)
     {
+        if (page == 5 && !CultivationInspirationSystem.Enabled) page = 0;
         if (!_roomActions && page != _roomPage) return;
         _roomPage = page; _room.Show();
         _overviewPanel?.Hide();
@@ -264,6 +271,8 @@ public partial class CultivationUI
     private void refresh_room_inspiration_access()
     {
         if (_roomInspirationButton is null || _roomInspirationSummary is null) return;
+        _roomInspirationButton.Visible = _roomInspirationSummary.Visible = CultivationInspirationSystem.Enabled;
+        if (!CultivationInspirationSystem.Enabled) return;
         if (_target is not Character character)
         {
             _roomInspirationButton.Text = "灵感清册";
@@ -291,6 +300,7 @@ public partial class CultivationUI
 
     private void refresh_auto_refinement_ui()
     {
+        if (!CultivationBottleneckRules.Enabled) return;
         if (_autoRefinementToggle is null || _autoRefinementInspiration is null || _autoRefinementThreshold is null ||
             _autoRefinementHint is null || _target is not Character character)
             return;
@@ -442,6 +452,8 @@ public partial class CultivationUI
     private void refresh_bottleneck_status()
     {
         if (_roomBottleneckStatus is null) return;
+        _roomBottleneckStatus.Visible = CultivationBottleneckRules.Enabled;
+        if (!CultivationBottleneckRules.Enabled) return;
         if (_target is not Character character)
         {
             _roomBottleneckStatus.Text = "闭关瓶颈：当前境界不受此规则影响。";
@@ -485,7 +497,7 @@ public partial class CultivationUI
         }
 
         var now = _roomClock?.get_total_game_hours() ?? 0;
-        var summary = WorldStatusRules.format_summary(human.world_status_records, now);
+        var summary = WorldStatusRules.format_summary(PillToxicityRules.WithStatus(human, now), now);
         _roomWorldStatus.Text = summary == "暂无特殊状态" ? "身体状态：暂无特殊状态" : $"身体状态：{summary}";
         _roomWorldStatus.Visible = summary != "暂无特殊状态";
     }
@@ -508,4 +520,92 @@ public partial class CultivationUI
         _studyProgress.MaxValue = Math.Max(1f, chapter?.required_study_progress ?? selected?.required_study_progress ?? 1f);
         _studyProgress.Value = chapter is not null && _target is Character student ? student.get_gongfa_chapter_study_progress(selected!,chapter.get_id()) : 0;
     }
+
+    private void refresh_room_study_requirements(Character? student, GongfaResource? book, GongfaChapterConfig? chapter, bool firstVolumeAccess = false)
+    {
+        if (_studyRequirementList is null || _studyRequirementTitle is null) return;
+        foreach (var node in _studyRequirementList.GetChildren()) { _studyRequirementList.RemoveChild(node); node.QueueFree(); }
+        if (student is null || book is null || chapter is null)
+        {
+            _studyRequirementTitle.Hide(); _studyRequirementList.Hide(); return;
+        }
+
+        var requirements = new List<(string Text, bool Met)>();
+        if (firstVolumeAccess)
+        {
+            // 首卷访问按静室现行规则直接开放；这里显示实际入口规则，避免列出不会阻止首卷的后续卷门槛。
+            requirements.Add(("首卷可直接研读", true));
+        }
+        else
+        {
+            if (is_lineage_first_volume_restricted(student, book, chapter))
+                requirements.Add(("师承权限：仅开放所选秘籍第一卷", false));
+
+            if (book.wuxing != GongfaResource.Wuxing.NONE)
+            {
+                var root = (GongfaResource.Wuxing)student.spirit_root_type;
+                var required = book.wuxing == GongfaResource.Wuxing.ALL
+                    ? "有灵根"
+                    : wuxing_names(book.wuxing) + (book.wuxing_requirement_mode == GongfaResource.WuxingRequirementMode.AND ? "（需兼具）" : "（任一匹配）");
+                requirements.Add(($"灵根相性：当前{wuxing_name(root)}，要求{required}", book.is_wuxing_compatible(student.spirit_root_type)));
+            }
+
+            if (!string.IsNullOrWhiteSpace(chapter.required_realm))
+            {
+                var realms = student.GetNodeOrNull<RealmManager>("/root/RealmManager");
+                var met = realms?.is_realm_after_or_equal(student.cultivation_realm, chapter.required_realm)
+                    ?? student.cultivation_realm == chapter.required_realm;
+                requirements.Add(($"境界：当前{student.cultivation_realm} / 要求{chapter.required_realm}", met));
+            }
+            foreach (Variant key in chapter.required_attributes.Keys)
+            {
+                var name = key.AsString(); var need = chapter.required_attributes[key].AsSingle(); var actual = CardRules.Number(student, name);
+                requirements.Add(($"{study_attribute_name(name)}：{actual:0.0} / {need:0.#}", actual >= need));
+            }
+            foreach (var id in chapter.required_chapter_ids)
+            {
+                var met = student.is_gongfa_chapter_learned(book, id);
+                var requiredChapter = book.get_chapter_by_id(id);
+                requirements.Add(($"前置卷：{requiredChapter?.chapter_name ?? id}（{(met ? "已研读" : "未研读")}）", met));
+            }
+            if (requirements.Count == 0) requirements.Add(("当前卷无额外研读条件", true));
+        }
+
+        _studyRequirementTitle.Show(); _studyRequirementList.Show();
+        foreach (var requirement in requirements)
+        {
+            var label = QuietRoomStyle.Text($"{(requirement.Met ? "✓" : "✕")} {requirement.Text}", 18);
+            label.AutowrapMode = TextServer.AutowrapMode.WordSmart;
+            label.AddThemeColorOverride("font_color", requirement.Met ? new Color(.18f, .42f, .24f) : new Color(.64f, .19f, .14f));
+            _studyRequirementList.AddChild(label);
+        }
+    }
+
+    private static bool is_lineage_first_volume_restricted(Character student, GongfaResource book, GongfaChapterConfig chapter)
+    {
+        if (student.entity_data is not HumanData human || human.sect_affiliation_id != "yuxu_xianzong" ||
+            human.sect_lineage_gongfa_path != book.ResourcePath ||
+            !human.sect_lineage_first_volume_only_access ||
+            human.sect_current_rank is not ("真传" or "真传弟子")) return false;
+        var firstChapter = book.get_sorted_chapters().FirstOrDefault();
+        return firstChapter is not null && firstChapter.get_id() != chapter.get_id() &&
+            student.is_gongfa_chapter_learned(book, firstChapter.get_id());
+    }
+
+    private static string wuxing_names(GongfaResource.Wuxing value) => string.Join("、", value.ToString().Split('_').Select(part => part switch
+    {
+        "METAL" => "金", "WOOD" => "木", "WATER" => "水", "FIRE" => "火", "EARTH" => "土", _ => part
+    }));
+
+    private static string wuxing_name(GongfaResource.Wuxing value) => value switch
+    {
+        GongfaResource.Wuxing.NONE => "无灵根", GongfaResource.Wuxing.ALL => "五行灵根", _ => wuxing_names(value) + "灵根"
+    };
+
+    private static string study_attribute_name(string name) => name switch
+    {
+        "physique" => "体魄", "intelligence" => "灵慧", "soul" => "神魂", "fortune" => "机缘",
+        "comprehension" => "悟性", "charisma" => "魅力", "social" => "交际", "management" => "治事",
+        "body_proficiency" => "体道造诣", "sword_proficiency" => "剑道造诣", _ => name
+    };
 }

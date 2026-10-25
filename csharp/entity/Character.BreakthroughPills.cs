@@ -25,8 +25,9 @@ public partial class Character
         if (string.IsNullOrEmpty(path)) return "";
         var item = ResourceLoader.Exists(path) ? ResourceLoader.Load<ItemData>(path) : null;
         var name = item?.entity_name ?? "对应丹药";
+        var toxicity = targetRealm == "云息四层" ? PillToxicityRules.BaseLoads["dingmai"] : PillToxicityRules.BaseLoads["guiyuan_dingxi"];
         return has_inventory_item(path, 1)
-            ? $"所需丹药：{name}；成功晋层时消耗。"
+            ? $"所需丹药：{name}；成功晋层时消耗，丹毒＋{toxicity}。"
             : $"突破至{targetRealm}需要持有{name}（行囊中尚缺）。";
     }
 
@@ -42,6 +43,9 @@ public partial class Character
     public bool consume_breakthrough_pill_on_success(string targetRealm)
     {
         var path = get_required_breakthrough_pill_path(targetRealm);
-        return string.IsNullOrEmpty(path) || remove_item_from_inventory(path, 1);
+        if (string.IsNullOrEmpty(path)) return true;
+        if (!remove_item_from_inventory(path, 1)) return false;
+        AddPillToxicity(targetRealm == "云息四层" ? "dingmai" : "guiyuan_dingxi");
+        return true;
     }
 }

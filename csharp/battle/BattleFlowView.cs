@@ -136,6 +136,10 @@ public partial class BattleFlowView : CanvasLayer
         Text(summary,retreatDescription,new(464,8),new(906,28),18);
         Text(summary,training?"演练 · 不改变正式角色与行囊":"各角色独立规划行动队列",new(16,40),new(1356,26),16);
         Button(_buttons,"开始战斗",begin).CustomMinimumSize=new(274,60);
+        Button(_buttons,"配置战备",()=> {
+            if (_selected?.faction == 1) Supplies(_selected, () => Briefing(title,units,training,retreatDescription,begin,cancel,capacities));
+            else _hint.Text = "请选择我方角色，从该角色本人的行囊配置战备。";
+        });
         if(_selected is not null)Button(_buttons,"查看属性",()=>Attributes(_selected!,()=>Briefing(title,units,training,retreatDescription,begin,cancel,capacities)));
         if(cancel is not null)Button(_buttons,"返回",cancel);
     }
@@ -204,7 +208,7 @@ public partial class BattleFlowView : CanvasLayer
                 foreach(var state in new[]{"normal","hover","pressed","focus"})hit.AddThemeStyleboxOverride(state,new StyleBoxEmpty());tile.AddChild(hit);
                 hit.Pressed+=()=>ShowDetail(item,entry);
             }
-            _hint.Text=training?"演练不发放正式战利品":"滚动查看全部战利品 · 行囊放不下的物品将保留待领";
+            _hint.Text=training?"演练不发放正式战利品":"返回后开启通用领取页 · 领取前可整理行囊";
         }
         else
         {
@@ -213,7 +217,7 @@ public partial class BattleFlowView : CanvasLayer
         }
         var details=Button(_buttons,"查看详情",()=>ShowNote(note));
         // 主操作固定在底部首位，滚动不会移动或遮挡按钮。
-        var primary=Button(_buttons,entries.Count>0&&!training?"收取并返回":"返回",confirm);primary.CustomMinimumSize=new(274,60);_buttons.MoveChild(primary,0);
+        var primary=Button(_buttons,entries.Count>0&&!training?"返回并领取":"返回",confirm);primary.CustomMinimumSize=new(274,60);_buttons.MoveChild(primary,0);
         if(later is not null)Button(_buttons,"稍后收取",later);
     }
     private sealed record LootDisplay(string Path,int Count,string Sources);

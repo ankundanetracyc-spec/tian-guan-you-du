@@ -8,7 +8,7 @@ using System.Text.Json;
 /// <summary>修行百科：展示战斗状态、物品与生灵资料，可在未载入存档时查阅。</summary>
 public partial class EncyclopediaPanel : Control
 {
-    private enum Section { Statuses, Items, Beasts }
+    private enum Section { Statuses, Items, Beasts, Terms }
     private sealed record Entry(string Title, string Meta, string Body, string SearchText, Texture2D? Icon = null, bool IsNegative = false, string? PreviewSpinePath = null, BeastTemplate? Beast = null, ItemData? Item = null, StatusDetail? Status = null, CreatureRecord? Creature = null, string? PortraitPath = null);
     private sealed record StatRange(string Name, string Minimum, string Mean, string Maximum);
     private sealed record StatusDetail(string Category, string? StackLimit, string? Source, string Effect);
@@ -197,7 +197,7 @@ public partial class EncyclopediaPanel : Control
 
         var categoryArea = new CenterContainer { Name = "Categories" };
         categoryArea.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        categoryArea.AnchorLeft = .31f; categoryArea.AnchorTop = .03f; categoryArea.AnchorRight = .69f; categoryArea.AnchorBottom = .10f;
+        categoryArea.AnchorLeft = .25f; categoryArea.AnchorTop = .03f; categoryArea.AnchorRight = .75f; categoryArea.AnchorBottom = .10f;
         page.AddChild(categoryArea);
         var categoryRow = new HBoxContainer { SizeFlagsHorizontal = SizeFlags.ShrinkCenter };
         categoryRow.AddThemeConstantOverride("separation", 8);
@@ -205,6 +205,7 @@ public partial class EncyclopediaPanel : Control
         AddTab(categoryRow, "状态", Section.Statuses);
         AddTab(categoryRow, "物品", Section.Items);
         AddTab(categoryRow, "生灵", Section.Beasts);
+        AddTab(categoryRow, "术语介绍", Section.Terms);
 
         var topRight = new HBoxContainer();
         topRight.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
@@ -341,7 +342,7 @@ public partial class EncyclopediaPanel : Control
 
     private void AddTab(Container parent, string text, Section section)
     {
-        var button = new Button { Name = $"Tab{section}", Text = text, CustomMinimumSize = new Vector2(200, 56), FocusMode = FocusModeEnum.None };
+        var button = new Button { Name = $"Tab{section}", Text = text, CustomMinimumSize = new Vector2(180, 56), FocusMode = FocusModeEnum.None };
         StyleCategoryTab(button, false);
         button.Pressed += () => ShowSection(section, resetSearch: false, animate: false);
         _tabs[section] = button;
@@ -494,6 +495,7 @@ public partial class EncyclopediaPanel : Control
             StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
             MouseFilter = MouseFilterEnum.Ignore
         };
+        icon.Visible=entry.Meta!="战斗机制 · 术语";
         row.AddChild(icon);
         var labels = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ShrinkCenter, MouseFilter = MouseFilterEnum.Ignore };
         labels.AddThemeConstantOverride("separation", 3);
@@ -540,7 +542,7 @@ public partial class EncyclopediaPanel : Control
             _statusDetailContent.Visible = isStatus;
             if (entry.Status is { } status) BuildStatusDetails(status);
         }
-        _detailIconPlate.Visible = !isBeast;
+        _detailIconPlate.Visible = !isBeast && _current != Section.Terms;
         if (_detailScroll is not null) { _detailScroll.Visible = !isBeast; _detailScroll.ScrollVertical = 0; }
         if (_beastDetail is not null) _beastDetail.Visible = isBeast;
         if (entry.Beast is { } template) BuildBeastDossier(template);
@@ -611,7 +613,7 @@ public partial class EncyclopediaPanel : Control
         usageGrid.AddThemeConstantOverride("h_separation", 12);
         usageGrid.AddThemeConstantOverride("v_separation", 12);
         usage.AddChild(usageGrid);
-        AddItemPropertyCard(usageGrid, "堆叠", item.can_stack ? $"可堆叠 · 最多 {item.max_stack} 件" : "不可堆叠");
+        AddItemPropertyCard(usageGrid, "堆叠", item.can_stack ? "可堆叠 · 不限单格数量" : "不可堆叠 · 每件占一格");
         AddItemPropertyCard(usageGrid, "使用范围", item.usage_type switch
         {
             1 => "仅限战斗",
@@ -774,8 +776,8 @@ public partial class EncyclopediaPanel : Control
         {
             yield return 0;
             var template = ResourceLoader.Load<BeastTemplate>(path);
-            if (template is null || template.species_id != "forest_wolf" || string.IsNullOrWhiteSpace(template.display_name)) continue;
-            var portraitPath = BattlePaperDoll.ForestWolfPortraitPath;
+            if (template is null || template.species_id is not ("forest_wolf" or "forest_bei") || string.IsNullOrWhiteSpace(template.display_name)) continue;
+            var portraitPath = template.species_id == "forest_bei" ? BattlePaperDoll.ForestBeiPortraitPath : BattlePaperDoll.ForestWolfPortraitPath;
             var portrait = LoadPortraitThumbnail(portraitPath);
             if (portrait is null) continue;
 
@@ -1226,8 +1228,6 @@ public partial class EncyclopediaPanel : Control
         AddStatusResourceEntry(result, "气血", "战斗资源", "基础上限8层，可由修命淬体与明确的战斗效果调整。每下降1层，按当前回落回复率恢复生命；基础回复率为最大生命的5%。战斗结束时清空。", "回落 生命 回复");
         AddStatusResourceEntry(result, "血炉", "战斗资源", "每2点提高1%物理伤害；可被相关招式消耗，战斗结束时清空。", "物理伤害 赤阳");
         AddStatusResourceEntry(result, "炁", "战斗资源", "非费用资源，跨回合保留。炁达到当前法力上限的两倍时触发周天：清空炁并恢复法力，再结算周天效果；超额不保留，战斗结束清零。", "周天 法力");
-        AddStatusResourceEntry(result, "周天", "战斗机制", "公共自动触发机制，不是独立状态或资源。当前法力上限为 M 时，炁达到或超过 2×M 即完成一次周天：清除全部炁、将当前法力恢复至 M，再结算周天触发效果。超额炁不保留；单次炁获得事件最多完成一次；M 为 0 时不触发。法力上限改变后立即重算阈值；若已有炁达到新阈值，在该效果结算后立即完成一次。周天不需手动操作，也不会自行生成炁。", "炁 法力 恢复 阈值 自动触发");
-        AddStatusResourceEntry(result, "散血", "战斗机制", "按技能注明的触发条件，直接打散目标指定层数的气血。打散不视为气血层数降低，不触发气血层数降低带来的回复或其他效果；触发条件与层数以具体技能为准。", "打散 气血 层数降低 回复");
         AddStatusResourceEntry(result, "护盾", "战斗资源", "由法力凝成并环绕自身的护罩，优先吸收受到的伤害，并随实际吸收量减少。", "防御 法力 吸收");
     }
 
@@ -1259,7 +1259,7 @@ public partial class EncyclopediaPanel : Control
                 AppendSection(body, "品阶", item.get_grade_string());
             var tags = StoragePanel.build_tags(item.tags, material);
             if (tags != "无词缀") AppendSection(body, "物品词缀", tags);
-            AppendSection(body, "堆叠", item.can_stack ? $"可堆叠，最多 {item.max_stack} 件" : "不可堆叠");
+            AppendSection(body, "堆叠", item.can_stack ? "可堆叠，不限单格数量" : "不可堆叠，每件占一格");
             AppendSection(body, "使用范围", item.usage_type switch { 1 => "仅限战斗", 2 => "大世界与战斗均可使用", _ => "大世界物品" });
             if (!string.IsNullOrWhiteSpace(item.battle_skill_path) && ResourceLoader.Load<ActiveSkillData>(item.battle_skill_path) is { } battleSkill)
                 AppendSection(body, "战斗效果", CardPresentation.Underline(CardPresentation.Face(battleSkill, null)));
@@ -1338,7 +1338,7 @@ public partial class EncyclopediaPanel : Control
 
     private static string SectionTitle(Section section) => section switch
     {
-        Section.Statuses => "状态", Section.Items => "物品", _ => "生灵"
+        Section.Statuses => "状态", Section.Items => "物品", Section.Beasts => "生灵", Section.Terms => "术语介绍", _ => "资料"
     };
 
     private void play_open_animation()

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="app.diagrams.net" agent="Codex" version="24.7.17"><diagram id="forest-bei-call" name="唤猎"><mxGraphModel grid="1" gridSize="10" page="1" pageWidth="1700" pageHeight="760"><root>
+<mxCell id="0"/><mxCell id="1" parent="0"/>
+<mxCell id="main" value="卡牌名：唤猎&lt;br&gt;费用：体力1&lt;br&gt;目标：全体存活的友方林地凶狼（含同物种变种）&lt;br&gt;关键词：逐猎&lt;br&gt;效果：上述每只狼各获得1层逐猎，最多3层。&lt;br&gt;不作用于狈、敌方狼或其他兽种。&lt;br&gt;无需点选单体，不造成伤害。&lt;br&gt;资源：res://resources/activeskills/妖兽/林地妖狈/唤猎.tres" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=18;align=left;verticalAlign=top;spacing=18;" vertex="1" parent="1"><mxGeometry x="450" y="150" width="800" height="400" as="geometry"/></mxCell>
+<mxCell id="source" value="来源／前置&#xa;林地妖狈技能库&#xa;无装备要求" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=17;" vertex="1" parent="1"><mxGeometry x="100" y="220" width="270" height="150" as="geometry"/></mxCell>
+<mxCell id="limits" value="状态与联动&#xa;逐猎沿用现有上限与持续时间&#xa;唤猎不触发群猎或狈首&#xa;不返费，不提供额外行动&#xa;无额外次数或回合冷却" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=17;" vertex="1" parent="1"><mxGeometry x="1330" y="200" width="300" height="220" as="geometry"/></mxCell>
+<mxCell id="e" edge="1" source="source" target="main" parent="1" style="endArrow=block;"><mxGeometry relative="1" as="geometry"/></mxCell>
+</root></mxGraphModel></diagram></mxfile>

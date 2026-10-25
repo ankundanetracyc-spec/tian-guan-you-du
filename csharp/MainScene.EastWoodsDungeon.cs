@@ -25,6 +25,7 @@ public partial class MainScene
         _east_woods_dungeon.RouteTravelStarted += on_east_woods_route_travel_started;
         _east_woods_dungeon.RouteTravelFinished += on_east_woods_route_travel_finished;
         _east_woods_dungeon.ActionRequested += on_east_woods_action;
+        _east_woods_dungeon.CompactRouteRequested += open_compact_fern_path;
         _east_woods_dungeon.CanMove = () => GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is not null;
         return _east_woods_dungeon;
     }

@@ -229,7 +229,7 @@ public partial class AlchemySlotBrewPreviewScene
         direction.AutowrapMode = TextServer.AutowrapMode.WordSmart;
         _notebookDetail.AddChild(direction);
         var required = route.Ingredients.Select(i => i.AssistantSlot < 0 ? 8 : UnlockAt(i.AssistantSlot)).Max();
-        _notebookDetail.AddChild(QuietRoomStyle.Text($"{route.Ingredients.Length}味 · {route.Ingredients.Sum(i => i.Dose)}份 · 药位需造诣{required}", 15));
+        _notebookDetail.AddChild(QuietRoomStyle.Text($"{route.Ingredients.Length}味 · {route.Ingredients.Sum(i => i.Dose)}份 · 产量随配伍结算 · 药位需造诣{required}", 15));
         _recipeLoad.Disabled = Attainment < required;
         foreach (var ingredient in route.Ingredients.OrderBy(i => (int)RoleFor(i.AssistantSlot)).ThenBy(i => i.AssistantSlot))
         {
@@ -268,7 +268,7 @@ public partial class AlchemySlotBrewPreviewScene
         var entries = new List<AlchemyRecipeStore.Entry> { new(_main.Item.definition_id.ToString(), _mainDose, -1) };
         for (int i = 0; i < _assistants.Length; i++)
             if (_assistants[i] is { } material) entries.Add(new(material.Item.definition_id.ToString(), _assistantDoses[i], i));
-        var recipe = new AlchemyRecipeStore.Recipe(existing?.Id ?? Guid.NewGuid().ToString("N"), name, entries.ToArray());
+        var recipe = new AlchemyRecipeStore.Recipe(existing?.Id ?? Guid.NewGuid().ToString("N"), name, entries.ToArray(), 0);
         var next = _savedRecipes.Where(r => r.Id != recipe.Id).Append(recipe).ToList();
         try
         {

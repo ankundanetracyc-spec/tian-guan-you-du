@@ -15,7 +15,7 @@ public static class AlchemyRecipeCatalog
     }
     /// <param name="AssistantSlot">-1 Jun; 0 Chen; 1/2/4 Zuo; 3/5/6 Shi. Expansion slots require attainment.</param>
     public sealed record SampleIngredient(string HerbName, int Dose, int AssistantSlot);
-    public sealed record SampleRoute(string Name, string Direction, SampleIngredient[] Ingredients);
+    public sealed record SampleRoute(string Name, string Direction, SampleIngredient[] Ingredients, int PillCount = 1);
     // Legacy quality requirements; AlchemySlotSimulation does not read these as recipe gates.
     public sealed record SupportingRequirement(string Utility,int StartsAbove,double At100,string Purpose)
     {

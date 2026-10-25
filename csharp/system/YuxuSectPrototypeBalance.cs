@@ -73,6 +73,7 @@ public static class YuxuSectPrototypeBalance
     /// <summary>当前目录商品的标准基础价；未来的局势波动只应调整该基础价的现价报价。</summary>
     public static int exchange_base_cost(ItemData? item) => item?.item_category switch
     {
+        "装备" => 0,
         "秘籍" => manual_exchange_cost(item),
         "材料" => material_exchange_cost(item),
         _ => 0
@@ -82,7 +83,7 @@ public static class YuxuSectPrototypeBalance
     public static bool is_exchangeable_item(ItemData? item)
     {
         if (!GongfaAvailability.IsItemEnabled(item)) return false;
-        if (item is null || item.item_category is not ("材料" or "秘籍")) return false;
+        if (item is null || item.item_category is not ("材料" or "秘籍" or "装备" or "器具")) return false;
         if (string.IsNullOrWhiteSpace(item.entity_name) || string.IsNullOrWhiteSpace(item.definition_id.ToString())) return false;
         if (item.entity_name.Trim() is "木材" or "爆炎符" or "豆麦" or "黄粟" or "回春丹" or "魂玉" or "雷击符" or "灵米粥" or "肉干" or "山麻" or "山薯" or "石材" or "铁矿石" or "妖丹" or "野菜" or "阵台" or "止血草" or "凝血草") return false;
         if (item.definition_id.ToString() is "mat_wood" or "talisman_flame_burst" or "food_doumai" or "crop_huangsu" or "pill_rejuvenation" or "mat_soul_jade" or "talisman_lightning_strike" or "meal_spirit_rice_porridge" or "food_jerky" or "mat_hemp" or "food_shanyu" or "mat_stone" or "mat_iron_ore" or "mat_demon_core" or "food_wild_vegetable" or "tool_array_platform" or "herb_zhixuecao") return false;
@@ -90,9 +91,11 @@ public static class YuxuSectPrototypeBalance
         if (item.item_category == "秘籍" && item.gongfa is not GongfaResource) return false;
         if (string.IsNullOrWhiteSpace(item.icon_path) || !ResourceLoader.Exists(item.icon_path) || GD.Load<Texture2D>(item.icon_path) is null)
             return false;
-        if (item.validate_definition().Count > 0 || exchange_base_cost(item) <= 0) return false;
+        if (item.validate_definition().Count > 0 || exchange_base_cost(item) <= 0 && !is_free_equipment_offer(item)) return false;
         return true;
     }
+    public static bool is_free_equipment_offer(ItemData? item) => item is EquipmentData && item.definition_id.ToString() is "sect_sword_suxing" or "sect_sword_chenglu" or "sect_sword_hanzhang"
+        || item is SectArtifactOfferData && item.definition_id.ToString() == "sect_artifact_qinghe";
 
     public static PromotionRule? promotion_rule(string rank) => rank switch
     {

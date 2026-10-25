@@ -5,7 +5,7 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="card" value="&lt;div style=&quot;text-align:left;&quot;&gt;技能名：架招（斫基损契玄经化法）&lt;br&gt;资源路径：res://resources/activeskills/斫基损契玄经/化法/架招.tres&lt;br&gt;类型：守御&lt;br&gt;关键词：化解、护盾、应对&lt;br&gt;耗费：体力1、法力0&lt;br&gt;目标：自身；位于队首且受到敌方物理攻击时触发&lt;br&gt;效果：获得A层化解；每层抵消本次攻击1点物理伤害，攻击结算后消散。本次架招抵消至少1点物理伤害后，攻击者失去B点护盾。&lt;br&gt;计算公式：A=3 + floor(体魄÷4) + floor(min(体魄×0.25,神魂×0.20))；B=min(攻击者当前护盾值, 本次架招实际抵消的物理伤害总点数)。&lt;br&gt;使用次数：不限&lt;br&gt;冷却：无&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e7eee4;strokeColor=#769078;fontSize=18;align=left;spacingLeft=18;spacingTop=16;" vertex="1" parent="1">
+        <mxCell id="card" value="&lt;div style=&quot;text-align:left;&quot;&gt;技能名：架招（斫基损契玄经化法）&lt;br&gt;资源路径：res://resources/activeskills/斫基损契玄经/化法/架招.tres&lt;br&gt;关键词：化解、护盾、应对&lt;br&gt;耗费：体力1、法力0&lt;br&gt;目标：自身；位于队首且受到敌方物理攻击时触发&lt;br&gt;效果：获得A层化解；每层抵消本次攻击1点物理伤害，攻击结算后消散。本次架招抵消至少1点物理伤害后，攻击者失去B点护盾。&lt;br&gt;计算公式：A=3 + floor(体魄÷4) + floor(min(体魄×0.25,神魂×0.20))；B=min(攻击者当前护盾值, 本次架招实际抵消的物理伤害总点数)。&lt;br&gt;使用次数：不限&lt;br&gt;冷却：无&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e7eee4;strokeColor=#769078;fontSize=18;align=left;spacingLeft=18;spacingTop=16;" vertex="1" parent="1">
           <mxGeometry x="220" y="80" width="1060" height="480" as="geometry" />
         </mxCell>
       </root>

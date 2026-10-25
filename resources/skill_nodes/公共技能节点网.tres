@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SkillNodeNetworkConfig" load_steps=11 format=3]
+[gd_resource type="Resource" script_class="SkillNodeNetworkConfig" load_steps=12 format=3]
 
 [ext_resource type="Script" path="res://csharp/gongfa/SkillNodeNetworkConfig.cs" id="1_network"]
 [ext_resource type="Script" path="res://csharp/gongfa/SkillNodeConfig.cs" id="2_node"]
@@ -58,7 +58,18 @@ face_id = "entrust_nian"
 required_attributes = { "soul": 8.0, "magic_proficiency": 8.0 }
 graph_position = Vector2(649.186, 465)
 
+[sub_resource type="Resource" id="SwordCutNode"]
+script = ExtResource("2_node")
+node_id = "sword_cut_root"
+node_name = "剑式初传"
+description = "参悟后习得斩剑、养锋、格剑与尽锋。"
+skill_path = "res://resources/activeskills/剑修基础/斩剑.tres"
+additional_skill_paths = Array[String](["res://resources/activeskills/剑修基础/养锋.tres", "res://resources/activeskills/剑修基础/格剑.tres", "res://resources/activeskills/剑修基础/尽锋.tres"])
+face_id = "sword"
+required_attributes = { "physique": 6.0, "sword_proficiency": 6.0 }
+graph_position = Vector2(450, 630)
+
 [resource]
 script = ExtResource("1_network")
 faces = Array[Resource]([SubResource("BloodFace"), SubResource("QiFace"), SubResource("NianFace"), SubResource("SwordFace")])
-nodes = Array[Resource]([SubResource("BloodNode"), SubResource("QiNode"), SubResource("NianNode")])
+nodes = Array[Resource]([SubResource("BloodNode"), SubResource("QiNode"), SubResource("NianNode"), SubResource("SwordCutNode")])

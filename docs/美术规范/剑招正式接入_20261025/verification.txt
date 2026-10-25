@@ -1,0 +1,48 @@
+Build: 0 warnings, 0 errors.
+Original cut PNGs and registration restored byte-for-byte / field-for-field.
+
+PASS 正式快照进入右手持剑待机
+PASS 缺图保留本衣装待机
+PASS 暂停同时冻结动作与PNG序列
+PASS 正式执行播放姿势与序列：斩剑
+PASS 正式执行结束清理演出：斩剑
+PASS 原站位和层级准确恢复：斩剑
+PASS 行动后回到持剑待机：斩剑
+PASS 命中接触序列接入：斩剑
+PASS 正式执行播放姿势与序列：养锋
+PASS 正式执行结束清理演出：养锋
+PASS 原站位和层级准确恢复：养锋
+PASS 行动后回到持剑待机：养锋
+PASS 养锋仍按原规则获得剑意
+PASS 正式执行播放姿势与序列：尽锋
+PASS 正式执行结束清理演出：尽锋
+PASS 原站位和层级准确恢复：尽锋
+PASS 行动后回到持剑待机：尽锋
+PASS 命中接触序列接入：尽锋
+PASS 尽锋命中仍消耗剑意
+PASS 正式执行播放姿势与序列：斩剑
+PASS 正式执行结束清理演出：斩剑
+PASS 原站位和层级准确恢复：斩剑
+PASS 行动后回到持剑待机：斩剑
+PASS 命中接触序列接入：斩剑
+PASS 实际应对插入使用格剑姿势
+PASS 格剑应对仍获得一次剑意
+PASS 格剑原体力费用只扣一次
+PASS 实际装备快照选择剑图并保留握柄遮挡：slender / res://textures/ui/forged_swords_20261023_v1/slender_sword.png
+PASS 实际装备快照选择剑图并保留握柄遮挡：broad / res://textures/ui/forged_swords_20261023_v1/broad_sword.png
+PASS 实际装备快照选择剑图并保留握柄遮挡：spined / res://textures/ui/forged_swords_20261023_v1/spined_sword.png
+PASS 女性缺少剑姿势时保留女性外观
+PASS 出手角色移除后清理剑招特效
+SWORD FORMAL PRESENTATION: 32 CHECKS PASSED
+
+STAGING PASSED: melee
+STAGING PASSED: ranged
+STAGING PASSED: reverse
+STAGING PASSED: thunder
+STAGING PASSED: response
+STAGING PASSED: pause/resume
+STAGING PASSED: guard suppression/layer/zoom and dodge pause/recovery/cleanup
+STAGING PASSED: human to wolf
+STAGING PASSED: wolf to human
+STAGING PASSED: target removed during approach
+ATTACK STAGING: ALL CHECKS PASSED

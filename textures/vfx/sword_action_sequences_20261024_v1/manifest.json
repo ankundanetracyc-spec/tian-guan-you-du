@@ -1,0 +1,52 @@
+{
+	"animations": [
+		{
+			"fps": 30,
+			"frame_size": [
+				768,
+				768
+			],
+			"frames": 24,
+			"name": "cut"
+		},
+		{
+			"fps": 30,
+			"frame_size": [
+				768,
+				768
+			],
+			"frames": 18,
+			"name": "parry"
+		},
+		{
+			"fps": 30,
+			"frame_size": [
+				768,
+				768
+			],
+			"frames": 36,
+			"name": "nurture"
+		},
+		{
+			"fps": 30,
+			"frame_size": [
+				768,
+				768
+			],
+			"frames": 24,
+			"name": "finish"
+		},
+		{
+			"fps": 30,
+			"frame_size": [
+				768,
+				768
+			],
+			"frames": 18,
+			"name": "contact"
+		}
+	],
+	"blend": "straight alpha; no additive glow",
+	"palette": "celadon / ivory / restrained ochre",
+	"tool": "Godot native shader bake; all motion and staggered dissolution stored in PNG sequence"
+}

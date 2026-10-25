@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 /// <summary>槽位式炼丹的确定性试演结算；只读当前材料，不写入行囊或角色资源。</summary>
-public static class AlchemySlotSimulation
+public static partial class AlchemySlotSimulation
 {
     public const double TrialAttainment = 36;
     public const int SpiritCapacity = 24;
@@ -74,7 +74,13 @@ public static class AlchemySlotSimulation
         string Outcome,
         IReadOnlyList<string> Details,
         string ProductName,
-        string CoreUtility);
+        string CoreUtility)
+    {
+        public string ProductId { get; init; } = "";
+        public IReadOnlyList<PillResult> Pills { get; init; } = [];
+        public double DeliveredMass { get; init; }
+        public double CarryMass { get; init; }
+    }
 
     private sealed class Portion(Input input, double available, double residual)
     {
@@ -111,16 +117,19 @@ public static class AlchemySlotSimulation
         double TotalDelivered,
         IReadOnlyDictionary<string, double> UtilityPower,
         IReadOnlyDictionary<string, double> SourceDelivered,
-        double[] QualityAxes);
+        double[] QualityAxes, double CarryMass);
 
     /// <summary>
     /// 由投料推导成品。君药携带的核心功用用于识别可能丹种；样方只负责自动填入材料，
     /// 不会把用户锁定到某个结果。
     /// </summary>
-    public static Result Simulate(IReadOnlyList<Input> inputs, double attainment = TrialAttainment)
+    public static Result Simulate(IReadOnlyList<Input> inputs, double attainment = TrialAttainment,
+        int totalSpirit = SpiritCapacity, int otherSpiritOccupation = 0, int requestedCount = 0)
     {
-        if (inputs.Any(input => input.Dose < 1 || input.Dose > 4))
-            return Blocked(AlchemyRecipeCatalog.Pills[0], "每味药材只能投入1—4整份。", 0, 0, "投料份数不合法。");
+        if (!double.IsFinite(attainment) || attainment < 0 || requestedCount is < 0 or > 4)
+            return Blocked(AlchemyRecipeCatalog.Pills[0], "造诣或本炉颗数不合法。", 0, 0, "炼制配置无效。");
+        if (inputs.Any(input => input.Dose < 1))
+            return Blocked(AlchemyRecipeCatalog.Pills[0], "每味药材至少投入1整份。", 0, 0, "投料份数不合法。");
         if (inputs.Select(input => input.Path).Distinct(StringComparer.Ordinal).Count() != inputs.Count)
             return Blocked(AlchemyRecipeCatalog.Pills[0], "同一种材料不能重复占药位。", 0, 0, "存在重复材料。");
         foreach (var group in inputs.GroupBy(input => input.Role))
@@ -128,24 +137,22 @@ public static class AlchemySlotSimulation
                 return Blocked(AlchemyRecipeCatalog.Pills[0], "当前造诣尚未开放所需的扩展药位。", 0, 0, "药位数量超过当前造诣许可。");
         var main = inputs.FirstOrDefault(input => input.IsMain);
         if (main is null)
-            return Blocked(AlchemyRecipeCatalog.Pills[0], "先放入一味君药。", 0, 0, "尚未选君药，无法开始炼制。");
+            return Blocked(AlchemyRecipeCatalog.Pills[0], "先放入一味君药。", SpiritOccupation(inputs), 0, "尚未选君药，无法开始炼制。");
 
-        double totalDose = inputs.Sum(input => input.Dose);
-        if (totalDose > 8.0001)
-            return Blocked(AlchemyRecipeCatalog.Pills[0], "总投料超过 8 份上限；请减少剂量。", 0, 0, "总投料超过试演上限。");
-
+        double totalDose = inputs.Sum(input => (double)input.Dose);
         var candidates = AlchemyRecipeCatalog.Pills
             .Where(pill => Grade(main.Craft, pill.CoreUtility) > 0)
-            .Select(pill => SimulateForPill(pill, inputs, attainment))
+            .Select(pill => SimulateForPill(pill, inputs, attainment, AvailableSpirit(totalSpirit, otherSpiritOccupation), requestedCount))
             .ToArray();
 
         if (candidates.Length == 0)
-            return SimulateUnrecognized(inputs, attainment);
+            return SimulateUnrecognized(inputs, attainment, AvailableSpirit(totalSpirit, otherSpiritOccupation));
 
-        // 若同一核心功用对应多个已知丹种，取本次实际成形质量最高者。
+        // 若同一核心功用对应多个已知丹种，优先君药较高品级核心，再比较实际成形结果。
         // 目前三种试演丹的核心功用互不重复，因此常规情况只有一个候选。
         var chosen = candidates
-            .OrderByDescending(result => result.CanSimulate)
+            .OrderByDescending(result => Grade(main.Craft, result.CoreUtility))
+            .ThenByDescending(result => result.CanSimulate)
             .ThenByDescending(result => result.OutputCount > 0)
             .ThenByDescending(result => result.Quality)
             .First();
@@ -157,7 +164,7 @@ public static class AlchemySlotSimulation
         return chosen with { Details = details };
     }
 
-    private static Result SimulateForPill(AlchemyRecipeCatalog.PillType pill, IReadOnlyList<Input> inputs, double attainment)
+    private static Result SimulateForPill(AlchemyRecipeCatalog.PillType pill, IReadOnlyList<Input> inputs, double attainment, int spiritCapacity, int requestedCount)
     {
         var main = inputs.FirstOrDefault(input => input.IsMain);
         var mainGrade = main is null ? 0 : Grade(main.Craft, pill.CoreUtility);
@@ -170,43 +177,51 @@ public static class AlchemySlotSimulation
             return Blocked(pill, $"君药必须带有丹方核心功用「{pill.CoreUtility}」。", 0, 0, "君药缺少丹方要求的核心功用。");
         if (attainment < requiredAttainment)
             return Blocked(pill, $"当前试演造诣不足；{pill.Rank}品丹要求造诣 {requiredAttainment}。", 0, 0, "造诣未达到丹方门槛。");
-        var metrics = CalculateMetrics(pill, inputs, attainment);
-        if (metrics.SpiritNeed > SpiritCapacity)
-            return Blocked(pill, $"灵识需求 {metrics.SpiritNeed}，超过试演上限 {SpiritCapacity}。", metrics.SpiritNeed, metrics.EnergyNeed,
+        if (requestedCount < 0 || requestedCount > 4)
+            return Blocked(pill, "本炉颗数必须为1—4颗。", SpiritOccupation(inputs), 0, "颗数配置不合法。");
+        var supported = CalculateMetrics(pill, inputs, attainment);
+        if (requestedCount > 0 && supported.MaximumCount > 0 && requestedCount > supported.MaximumCount)
+            return Blocked(pill, "当前君药和聚性不足以支持所选颗数，请减产或调整配伍。", supported.SpiritNeed, supported.EnergyNeed, "颗数超出实际支持能力。");
+        var metrics = requestedCount == 0 ? supported : CalculateMetrics(pill, inputs, attainment, requestedCount);
+        if (metrics.SpiritNeed > spiritCapacity)
+            return Blocked(pill, $"本炉需灵识 {metrics.SpiritNeed}，可支配 {spiritCapacity}；请换药、减量或调整药位。", metrics.SpiritNeed, metrics.EnergyNeed,
                 "灵识并行负担超限，尚未开炼。");
         if (metrics.EnergyNeed > EnergyCapacity)
             return Blocked(pill, $"精力需求 {metrics.EnergyNeed}，超过试演上限 {EnergyCapacity}。", metrics.SpiritNeed, metrics.EnergyNeed,
                 "精力不足，尚未开炼。");
 
         var effectiveMaterials = CountEffectiveMaterials(pill, inputs, metrics, attainment);
-        int materialCap = effectiveMaterials switch { 1 => 50, 2 => 75, 3 => 90, 4 => 99, _ => 100 };
-        int quality = (int)Math.Floor(Math.Min(materialCap, metrics.QualityAxes.Min()));
         bool exploded = metrics.Risk >= 90;
-        bool ordinaryFailure = !exploded && quality < 20;
-        int outputCount = exploded || ordinaryFailure ? 0 : metrics.CandidateCount;
+        var distributed = Distribute(pill, inputs, metrics, attainment);
+        var pills = exploded ? Array.Empty<PillResult>() : distributed.ToArray();
+        var successful = pills.Where(result => result.Quality >= 20).ToArray();
+        bool ordinaryFailure = !exploded && successful.Length == 0;
+        int outputCount = successful.Length;
+        int quality = exploded ? 0 : successful.Length == 0 ? distributed.Select(result => result.Quality).DefaultIfEmpty(0).Max()
+            : successful.Max(result => result.Quality);
         string qualityName = QualityName(quality);
-        string outcome = exploded
-            ? "炸炉，未能成丹。"
-            : ordinaryFailure
-                ? "普通失败，药性未能凝成丹体。"
-                : $"成丹 {outputCount} 枚 · {qualityName} · 丹效 {quality}。";
+        string breakdown = string.Join("、", successful.GroupBy(result => result.QualityName)
+            .OrderByDescending(group => group.Max(result => result.Quality)).Select(group => $"{group.Key}×{group.Count()}"));
+        string outcome = exploded ? "炸炉，未能成丹。" : ordinaryFailure ? "普通失败，药性未能凝成丹体。"
+            : $"成丹 {outputCount} 枚 · {breakdown}。";
 
         var details = new List<string>
         {
             metrics.MaximumCount > 0
-                ? $"君药药力支持 {metrics.MinimumCount}—{metrics.MaximumCount} 枚；本方由「聚」计算为 {metrics.CandidateCount} 枚。"
+                ? $"本炉配伍自动形成 {metrics.CandidateCount} 枚候选丹胚，再逐颗判定是否成丹。"
                 : "君药核心药力不足以凝成一枚丹胚，本次仍按实际配伍结算为普通失败。",
             $"丹效短板：君药核心 {metrics.Core:0.0} · 阴阳偏性 {metrics.Polarity:0.0} · 通路 {metrics.Connection:0.0} · 稳形与纯度 {metrics.Stability:0.0}。",
-            $"有效材料 {effectiveMaterials} 味，材料互补上限 {materialCap} 分；最终取各项最低值并向下取整。",
+            $"实际贡献材料 {effectiveMaterials} 味（仅供诊断，不按味数封顶）；各丹按关键短板连续判分。",
             $"五行发挥倍率 {metrics.FiveElementRate:P0}；阴阳偏差 {metrics.YinDeviation:P0}（当前偏性 {metrics.YinValue:+0.00;-0.00;0.00}）。",
             $"阴阳相激 {metrics.ZInitial:0.0} → 镇后 {metrics.ZAfter:0.0}；危险值 {metrics.Risk:0.0}，混合效率 {metrics.MixingRate:P0}。",
             $"通路效率 {metrics.ConnectionRate:P0}；药性送达率 {metrics.DeliveryRate:P0}；残余夹带率 {metrics.CarryRate:P1}，纯度分 {metrics.Purity:0.0}。",
-            $"资源试算：灵识 {metrics.SpiritNeed}/{SpiritCapacity}，精力 {metrics.EnergyNeed}/{EnergyCapacity}；本页模拟不实际扣除。"
+            $"资源试算：灵识 {metrics.SpiritNeed}/{spiritCapacity}，精力 {metrics.EnergyNeed}/{EnergyCapacity}；正式扣除由人物事务完成，独立试演免扣。"
         };
         if (outputCount > 0)
         {
-            details.Add($"「藏」留存倍率 {metrics.StorageMultiplier:0.00} 倍（基础时长未配置，暂不换算实际时长）。");
-            details.Add("本丹品阶为九品试演，尚未接入正式行囊、丹药效果、首炼造诣奖励或丹炉耐久。");
+            details.Add("「藏」减少本炉已炼出药性散失，不改变同档成品药效或时长；「引」在丹胚间搬运主药药性，整炉守恒。");
+            details.AddRange(pills.Select(result => $"第{result.Index}颗：{result.QualityName} · {result.Quality}分；君药质量{result.MainMass:0.00}，阴阳{result.YinValue:+0.00;-0.00;0.00}，夹带{result.Contamination:P1}。"));
+            details.Add("本丹按九品及对应丹效档生成；同档效果固定。丹炉耐久与额外造诣奖励不在本轮结算中。");
         }
         else if (exploded)
         {
@@ -214,7 +229,7 @@ public static class AlchemySlotSimulation
         }
         else
         {
-            details.Add("普通失败不会生成丹药或药渣；试演只展示结果，不消耗材料或精力。");
+            details.Add("普通失败不生成丹药或药渣；正式事务仍扣材料与精力，独立试演免扣。");
         }
 
         details.Add("成品模板只读取君药核心用于识别丹种；臣、佐、使不指定固定药材或固定辅功，实际触发的功用按所在角色进入不同结算通道。");
@@ -226,19 +241,20 @@ public static class AlchemySlotSimulation
             metrics.ZInitial, metrics.ZAfter, metrics.Risk, metrics.ConnectionRate, metrics.MixingRate, metrics.DeliveryRate,
             metrics.FiveElementRate, metrics.YinValue, metrics.YinDeviation, metrics.CarryRate, metrics.StorageMultiplier,
             YieldText(metrics.MinimumCount, metrics.MaximumCount, metrics.CandidateCount), outcome, details,
-            pill.Name, pill.CoreUtility);
+            pill.Name, pill.CoreUtility) { ProductId = pill.Id, Pills = pills,
+                DeliveredMass = metrics.TotalDelivered, CarryMass = metrics.CarryMass };
     }
 
-    private static Result SimulateUnrecognized(IReadOnlyList<Input> inputs, double attainment)
+    private static Result SimulateUnrecognized(IReadOnlyList<Input> inputs, double attainment, int spiritCapacity)
     {
         int count = inputs.Select(input => input.Path).Distinct(StringComparer.Ordinal).Count();
-        double totalDose = inputs.Sum(input => input.Dose);
+        double totalDose = inputs.Sum(input => (double)input.Dose);
         int functionPairs = inputs.Sum(input => input.Craft.utilities
             .Where(entry => entry is not null && !string.IsNullOrWhiteSpace(entry.utility_id))
             .Select(entry => entry.utility_id)
             .Distinct(StringComparer.Ordinal)
             .Count(utility => input.IsMain || CanFunctionAct(input.Role, utility)));
-        int spirit = count + 2 * functionPairs + (int)Math.Floor(Math.Max(0, totalDose - count) / 3d);
+        int spirit = SpiritOccupation(inputs);
         int energy = (int)Math.Ceiling(20 + Math.Max(0, count - 1) + .5 * Math.Max(0, functionPairs - 1) + .25 * totalDose);
 
         var portions = inputs.Select(input =>
@@ -275,8 +291,8 @@ public static class AlchemySlotSimulation
             return grade == 0 ? 0 : part.Input.Dose * Strength(grade) / Strength(1) * Mastery(grade, attainment);
         }));
 
-        if (spirit > SpiritCapacity)
-            return Blocked(AlchemyRecipeCatalog.Pills[0], $"灵识需求 {spirit}，超过试演上限 {SpiritCapacity}。", spirit, energy,
+        if (spirit > spiritCapacity)
+            return Blocked(AlchemyRecipeCatalog.Pills[0], $"本炉需灵识 {spirit}，可支配 {spiritCapacity}；请换药、减量或调整药位。", spirit, energy,
                 "灵识并行负担超限，尚未开炼。") with
             {
                 ProductName = "未识别丹种",
@@ -301,7 +317,7 @@ public static class AlchemySlotSimulation
             "成品由投料推导：君药药性尚未对应已知丹种。当前试演允许开炼并结算资源与冲突；失败时不生成丹药。",
             $"阴阳相激 {zInitial:0.0} → 镇后 {zAfter:0.0}；危险值 {risk:0.0}，混合效率 {mixRate:P0}。",
             $"通路效率 {connectionRate:P0}；药性送达率 {deliveryRate:P0}。",
-            $"资源试算：灵识 {spirit}/{SpiritCapacity}，精力 {energy}/{EnergyCapacity}；本页模拟不实际扣除。",
+            $"资源试算：灵识 {spirit}/{spiritCapacity}，精力 {energy}/{EnergyCapacity}；正式扣除由人物事务完成，独立试演免扣。",
             "可以更换君药，或研习并载入已知丹方后调整药材；丹方样例不会限制自由配伍。"
         };
         return new Result(true, "", exploded, !exploded, 0, 0, 0, "未成丹", spirit, energy, count,
@@ -309,6 +325,36 @@ public static class AlchemySlotSimulation
             1, 0, 0, 0, 1, "颗数范围　未识别", outcome, details,
             "未识别丹种", "未匹配");
     }
+
+    // 首轮可调占用参数；独立于药力 Strength，避免把高阶材料的药力指数再用作费用指数。
+    private static readonly double[] SpiritFunctionCosts = [0, .75, 1, 1.4, 2, 3, 4.5, 7, 11, 17];
+    public sealed record SpiritLoad(Input Material, double BaseLoad, double FunctionLoad,
+        double RoleMultiplier, double DoseMultiplier, double Occupation, string Functions);
+
+    public static IReadOnlyList<SpiritLoad> SpiritLoads(IReadOnlyList<Input> inputs) => inputs.Select(input =>
+    {
+        var functions = input.Craft.utilities
+            .Where(entry => entry is not null && !string.IsNullOrWhiteSpace(entry.utility_id))
+            .Select(entry => entry.utility_id).Distinct(StringComparer.Ordinal).ToArray();
+        var coreFunctions = functions.Where(utility => AlchemyRecipeCatalog.Pills.Any(pill => pill.CoreUtility == utility)).ToArray();
+        var active = functions.Where(utility => input.IsMain
+            ? coreFunctions.Length == 0 || coreFunctions.Contains(utility, StringComparer.Ordinal)
+            : CanFunctionAct(input.Role, utility)).ToArray();
+        int materialGrade = Math.Clamp(input.Craft.material_grade_value(), 0, 27);
+        double baseLoad = 1.0 + .13 * materialGrade + .0065 * materialGrade * materialGrade;
+        double functionLoad = active.Sum(utility => SpiritFunctionCosts[Grade(input.Craft, utility)]);
+        double roleMultiplier = input.Role switch { SlotRole.Jun => 1.4, SlotRole.Chen => 1.2, SlotRole.Zuo => 1, _ => .9 };
+        double doseMultiplier = 1 + .40 * Math.Max(0d, input.Dose - 1) + .04 * Math.Pow(Math.Max(0d, input.Dose - 1), 2);
+        return new SpiritLoad(input, baseLoad, functionLoad, roleMultiplier, doseMultiplier,
+            (baseLoad + functionLoad) * roleMultiplier * doseMultiplier,
+            string.Join("、", active.Select(utility => $"{utility}{MaterialCraftData.utility_grade_name(Grade(input.Craft, utility))}")));
+    }).ToArray();
+
+    // 各味保留小数，只在整炉合计后向上取整，防止拆味逐项取整形成额外负担。
+    public static int SpiritOccupation(IReadOnlyList<Input> inputs) =>
+        (int)Math.Min(int.MaxValue, Math.Ceiling(Math.Round(SpiritLoads(inputs).Sum(line => line.Occupation), 8)));
+
+    public static int AvailableSpirit(int total, int otherOccupation) => Math.Max(0, total - Math.Max(0, otherOccupation));
 
     private static Result Blocked(AlchemyRecipeCatalog.PillType pill, string reason, int spirit, int energy, string outcome) =>
         new(
@@ -345,7 +391,7 @@ public static class AlchemySlotSimulation
             ProductName: pill.Name,
             CoreUtility: pill.CoreUtility);
 
-    private static Metrics CalculateMetrics(AlchemyRecipeCatalog.PillType pill, IReadOnlyList<Input> inputs, double attainment)
+    private static Metrics CalculateMetrics(AlchemyRecipeCatalog.PillType pill, IReadOnlyList<Input> inputs, double attainment, int requestedCount = 0)
     {
         int pillGrade = Math.Clamp(10 - pill.Rank, 1, 9);
         double pillPower = Strength(pillGrade);
@@ -355,8 +401,8 @@ public static class AlchemySlotSimulation
             (input.IsMain && Grade(input.Craft, pill.CoreUtility) > 0 ? 1 : 0)
             + CommonUtilities.Count(utility => CanFunctionAct(input.Role, utility) && Grade(input.Craft, utility) > 0));
         var count = inputs.Select(input => input.Path).Distinct(StringComparer.Ordinal).Count();
-        var totalDose = inputs.Sum(input => input.Dose);
-        int spirit = count == 0 ? 0 : count + 2 * functionPairs + (int)Math.Floor(Math.Max(0, totalDose - count) / 3d);
+        var totalDose = inputs.Sum(input => (double)input.Dose);
+        int spirit = SpiritOccupation(inputs);
 
         var utilityPower = new Dictionary<string, double>(StringComparer.Ordinal);
         foreach (var utility in usedUtilities)
@@ -382,7 +428,7 @@ public static class AlchemySlotSimulation
         TransferResidual(dense, breakAmount);
         double residualAfterBreak = portions.Sum(portion => portion.Residual);
         double convertAmount = Math.Min(residualAfterBreak,
-            Math.Min(.15 * rawTotal, .05 * Power(utilityPower, "化") * rawTotal));
+            Math.Min(Math.Max(0, .20 * rawTotal - breakAmount), Math.Min(.15 * rawTotal, .05 * Power(utilityPower, "化") * rawTotal)));
         TransferResidual(portions, convertAmount);
 
         double availableTotal = portions.Sum(portion => portion.Available);
@@ -390,9 +436,11 @@ public static class AlchemySlotSimulation
         double mainAvailable = main is null ? 0 : portions.FirstOrDefault(portion => portion.Input.Path == main.Path)?.Available ?? 0;
         double mainGrade = main is null ? 0 : Grade(main.Craft, pill.CoreUtility);
         double mainSupport = main is null || mainGrade <= 0 ? 0 : mainAvailable * Strength((int)mainGrade) * Mastery((int)mainGrade, attainment) / (25 * pillPower);
-        int minCount = mainSupport < 1 ? 0 : Math.Max(1, Math.Min(4, (int)Math.Floor(.75 * mainSupport)));
+        int minCount = mainSupport < 1 ? 0 : 1;
         int maxCount = mainSupport < 1 ? 0 : Math.Min(4, (int)Math.Floor(mainSupport));
         int candidateCount = mainSupport < 1 ? 0 : Math.Clamp((int)Math.Floor(mainSupport * Math.Min(1, .75 + .05 * Power(utilityPower, "聚"))), 1, 4);
+        maxCount = candidateCount;
+        if (requestedCount > 0 && mainSupport >= 1) candidateCount = requestedCount;
 
         double connectionRate = count >= 2 ? Math.Min(1, .70 + .10 * Power(utilityPower, "通")) : 1;
         double yinMass = portions.Where(portion => portion.Input.Craft.polarity < 0).Sum(portion => portion.Available);
@@ -403,16 +451,17 @@ public static class AlchemySlotSimulation
         double polarityMixRate = 1 - .20 * zAfter / 100;
         double mixRate = connectionRate * polarityMixRate;
         double deliveryRate = Math.Min(1, .60 + .10 * Power(utilityPower, "行"));
-        double totalDelivered = availableTotal * mixRate * deliveryRate;
-        double carryRate = Math.Max(0, .15 - .10 * Power(utilityPower, "明"));
+        double preservation = 1 - .03 * Math.Max(0, 1 - .20 * Power(utilityPower, "藏"));
+        double totalDelivered = availableTotal * mixRate * deliveryRate * preservation;
+        double carryRate = .15 / (1 + Power(utilityPower, "明"));
         double carryMass = residualTotal * carryRate;
         double contamination = totalDelivered + carryMass <= 0 ? 1 : carryMass / (totalDelivered + carryMass);
-        double purity = contamination > .06 ? 0 : 20 + 80 * Math.Clamp((.06 - contamination) / .057, 0, 1);
+        double purity = AlchemyQualityRules.Purity(contamination);
 
         var sourceDelivered = new Dictionary<string, double>(StringComparer.Ordinal);
         foreach (var portion in portions)
         {
-            portion.Delivered = candidateCount == 0 ? 0 : portion.Available * mixRate * deliveryRate / candidateCount;
+            portion.Delivered = candidateCount == 0 ? 0 : portion.Available * mixRate * deliveryRate * preservation / candidateCount;
             sourceDelivered[portion.Input.Path] = portion.Delivered;
         }
 
@@ -436,14 +485,10 @@ public static class AlchemySlotSimulation
 
         double yinValue = deliveredPerPill <= 0 ? 0 : portions.Sum(portion => Math.Sign(portion.Input.Craft.polarity) * portion.Delivered) / deliveredPerPill;
         double yinDeviation = Math.Abs(yinValue - pill.PolarityTarget);
-        double polarityScore = yinDeviation <= pill.PolarityToleranceAt100
-            ? 100
-            : yinDeviation > pill.PolarityToleranceAt20
-                ? 0
-                : 20 + 80 * (pill.PolarityToleranceAt20 - yinDeviation) / (pill.PolarityToleranceAt20 - pill.PolarityToleranceAt100);
+        double polarityScore = AlchemyQualityRules.Polarity(yinDeviation, pill.PolarityToleranceAt20, pill.PolarityToleranceAt100);
 
         double mainPillMass = main is null ? 0 : sourceDelivered.GetValueOrDefault(main.Path);
-        double leadRate = Math.Min(1.25, 1 + .05 * Power(utilityPower, "引"));
+        double leadRate = 1; // 引在逐丹分配阶段转移药性，不复制全炉药力。
         double corePower = mainGrade <= 0 ? 0 : mainPillMass * Strength((int)mainGrade) * Mastery((int)mainGrade, attainment) * fiveElementRate * leadRate;
         double core = CoreQuality(mainPillMass, corePower, pillPower);
 
@@ -452,33 +497,21 @@ public static class AlchemySlotSimulation
             int grade = CanFunctionAct(portion.Input.Role, utility) ? Grade(portion.Input.Craft, utility) : 0;
             return grade == 0 ? 0 : portion.Delivered * Strength(grade) * Mastery(grade, attainment) * fiveElementRate;
         });
-        double sealPower = portions.Where(portion => portion.Input.Role == SlotRole.Zuo)
-            .Sum(portion =>
-            {
-                int grade = Grade(portion.Input.Craft, "藏");
-                return grade == 0 ? 0 : portion.Delivered * Strength(grade) * Mastery(grade, attainment) * fiveElementRate;
-            });
-        double structurePower = UtilityDelivered("固") + .65 * sealPower;
-        double solidQuality = 45 + 55 * Math.Pow(Math.Min(1, structurePower / (3 * pillPower)), 1 / 1.15);
+        double structurePower = UtilityDelivered("固") + portions.Sum(portion => portion.Delivered * TextureBinding(portion.Input.Craft.texture));
+        double solidQuality = Math.Max(45, AlchemyQualityRules.RawForDemand(structurePower / (8 * pillPower)));
         double stability = Math.Min(solidQuality, purity);
-        double connectionQuality = 100 * connectionRate;
+        double connectionQuality = count < 2 ? 100 : 65 + 35 * Math.Min(1, Power(utilityPower, "通") / 6);
         double danger = Math.Max(0, zAfter - 5 * Power(utilityPower, "护"));
-        double shiStoragePower = inputs.Where(input => input.Role == SlotRole.Shi)
-            .Sum(input =>
-            {
-                int grade = Grade(input.Craft, "藏");
-                return grade == 0 ? 0 : input.Dose * Strength(grade) / pillPower * Mastery(grade, attainment);
-            });
-        double storageMultiplier = Math.Min(2, 1 + .10 * shiStoragePower);
+        double storageMultiplier = 1; // 兼容旧结果字段，成品不附加独立时长。
         int energy = (int)Math.Ceiling(20 + RankBonus[Math.Clamp(9 - pill.Rank, 0, RankBonus.Length - 1)]
-            + 1.5 * Math.Max(0, candidateCount - 1) + Math.Max(0, count - 1)
+            + 1.5 * Math.Max(0, (requestedCount > 0 ? requestedCount : candidateCount) - 1) + Math.Max(0, count - 1)
             + .5 * Math.Max(0, functionPairs - 1) + .25 * totalDose);
 
         return new Metrics(candidateCount, minCount, maxCount, spirit, energy, mainSupport,
             core, polarityScore, connectionQuality, stability, purity,
             polarityBase, zAfter, danger, connectionRate, mixRate, deliveryRate, fiveElementRate,
             yinValue, yinDeviation, carryRate, storageMultiplier, totalDelivered,
-            utilityPower, sourceDelivered, [core, polarityScore, connectionQuality, stability]);
+            utilityPower, sourceDelivered, [core, polarityScore, connectionQuality, stability], carryMass);
     }
 
     private static int CountEffectiveMaterials(AlchemyRecipeCatalog.PillType pill, IReadOnlyList<Input> inputs, Metrics full, double attainment)
@@ -490,20 +523,16 @@ public static class AlchemySlotSimulation
             if (full.TotalDelivered <= 0 || sourceMass * full.CandidateCount / full.TotalDelivered < .05) continue;
             var without = inputs.Where(input => input.Path != assistant.Path).ToArray();
             var reduced = CalculateMetrics(pill, without, attainment);
-            bool lowersAnUncappedAxis = full.QualityAxes.Zip(reduced.QualityAxes)
-                .Any(pair => pair.First < 99.999 && pair.First - pair.Second >= 1);
-            if (lowersAnUncappedAxis) count++;
+            bool lowersAnAxis = full.QualityAxes.Zip(reduced.QualityAxes)
+                .Any(pair => pair.First - pair.Second >= 1 - 1e-8);
+            if (lowersAnAxis) count++;
         }
         return count;
     }
 
-    private static double CoreQuality(double mass, double power, double pillPower)
-    {
-        if (mass < 12 || power < 8 * pillPower) return 0;
-        double massScore = 20 + 80 * Math.Clamp(Math.Pow((mass - 12) / 10, 1 / 1.15), 0, 1);
-        double powerScore = 20 + 80 * Math.Clamp(Math.Pow((power / pillPower - 8) / 10, 1 / 1.2), 0, 1);
-        return Math.Min(massScore, powerScore);
-    }
+    private static double CoreQuality(double mass, double power, double pillPower) =>
+        Math.Min(AlchemyQualityRules.RawForDemand(mass / 12),
+            AlchemyQualityRules.RawForDemand(power / (8 * pillPower)));
 
     internal static bool CanFunctionAct(SlotRole role, string utility) => role switch
     {
@@ -542,7 +571,8 @@ public static class AlchemySlotSimulation
 
     private static void TransferResidual(IEnumerable<Portion> eligible, double amount)
     {
-        foreach (var portion in eligible.OrderBy(portion => portion.Yield).ThenBy(portion => portion.Input.IsMain ? 0 : 1))
+        foreach (var portion in eligible.OrderBy(portion => portion.Yield).ThenBy(portion => portion.Input.IsMain ? 0 : 1)
+            .ThenBy(portion => (int)portion.Input.Role).ThenBy(portion => portion.Input.Path, StringComparer.Ordinal))
         {
             if (amount <= 0) break;
             double transferred = Math.Min(portion.Residual, amount);
@@ -586,8 +616,5 @@ public static class AlchemySlotSimulation
     private static string YieldText(int minimum, int maximum, int candidate) =>
         minimum < 1 ? "君药范围　不足一颗" : $"君药范围　{minimum}—{maximum} 颗\n本方拟成　约 {candidate} 颗";
 
-    private static string QualityName(int score) => score switch
-    {
-        < 20 => "未成丹", <= 50 => "薄效", <= 75 => "良效", <= 90 => "优效", _ => "极效"
-    };
+    private static string QualityName(int score) => AlchemyQualityRules.Name(score);
 }

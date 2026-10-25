@@ -30,7 +30,7 @@ public partial class BattleManager : Node2D
         if (scene is null) return;
         var uiLayer = scene.GetNodeOrNull<CanvasLayer>("UILayer");
         if (uiLayer is null) return;
-        uiLayer.Layer = 10;
+        uiLayer.Layer = BattlePresentationLayers.HudCanvas;
         ApplyBattleArtwork(scene);
 
         _skillBar = scene.GetNodeOrNull<CombatSkillBar>("UILayer/CombatSkillBar");
@@ -52,6 +52,9 @@ public partial class BattleManager : Node2D
         _planHud.Hide();
         uiLayer.AddChild(_planHud);
         _planHud.Setup(this);
+        _supplyHud = new BattleSupplyHud();
+        scene.AddChild(_supplyHud);
+        _supplyHud.Setup(this);
         if (_skillBar is not null)
         {
             _skillBar.skill_selected += on_skill_selected;
@@ -158,7 +161,7 @@ public partial class BattleManager : Node2D
                 // 气血是公共战斗资源；所有修士统一初始化，不依赖秘籍分类或历史存档字段。
                 creature.initialize_body_combat_state(unit is Character);
                 creature.apply_combat_tempering_stats();
-                if (snapshot.cultivation_inspiration_starting_shield > 0)
+                if (CultivationInspirationSystem.Enabled && snapshot.cultivation_inspiration_starting_shield > 0)
                     creature.shield += snapshot.cultivation_inspiration_starting_shield;
             }
             // 测试专用上限在身体／淬体初始化之后覆盖，避免被原容量推导重写。

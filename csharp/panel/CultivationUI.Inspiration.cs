@@ -29,6 +29,7 @@ public partial class CultivationUI
 
     private void build_room_inspiration()
     {
+        if (!CultivationInspirationSystem.Enabled) return;
         _inspirationPage = room_page("InspirationPage");
         var root = room_box(_inspirationPage);
         root.AddThemeConstantOverride("separation", 9);
@@ -105,6 +106,7 @@ public partial class CultivationUI
 
     private void build_manual_refinement_ui(VBoxContainer parent)
     {
+        if (!CultivationBottleneckRules.Enabled) return;
         var card = new PanelContainer();
         card.AddThemeStyleboxOverride("panel", QuietRoomStyle.Paper(.92f, 12));
         parent.AddChild(card);

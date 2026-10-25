@@ -12,9 +12,11 @@ public partial class BattleManager
     // 有限束搜索比较整段草案。预测全为独立值，不调用支付、加状态、随机或技能执行。
     private sealed class AiDraft
     {
-        public int Stamina, Mana, Capacity, Qi, Blood, Shield;
+        public int Stamina, Mana, Capacity, Qi, Blood, Shield, SwordIntent, EmptyManaTriggers;
+        public bool EmptyGuardQiUsed, CloudIntentExtraUsed;
         public bool ConversionReady, CapQiUsed;
         public float Value;
+        public double PillToxicity;
         public ActiveSkillData? Last;
         public List<BattleQueuedSkill> Actions = [];
         public Dictionary<GodotObject, float> Health = [];
@@ -24,7 +26,8 @@ public partial class BattleManager
         public HashSet<string> Summoned = [];
         public HashSet<string> Statuses = [];
         public AiDraft Copy() => new() { Stamina=Stamina,Mana=Mana,Capacity=Capacity,Qi=Qi,Blood=Blood,Shield=Shield,
-            ConversionReady=ConversionReady,CapQiUsed=CapQiUsed,Value=Value,Last=Last,
+            SwordIntent=SwordIntent,EmptyManaTriggers=EmptyManaTriggers,EmptyGuardQiUsed=EmptyGuardQiUsed,CloudIntentExtraUsed=CloudIntentExtraUsed,
+            ConversionReady=ConversionReady,CapQiUsed=CapQiUsed,Value=Value,Last=Last,PillToxicity=PillToxicity,
             Actions=new(Actions),Health=new(Health),Shields=new(Shields),Uses=new(Uses),Converted=new(Converted),Summoned=new(Summoned),Statuses=new(Statuses) };
     }
 
@@ -37,7 +40,8 @@ public partial class BattleManager
         var initial=new AiDraft { Stamina=unit.Get("current_stamina").AsInt32(), Mana=unit.Get("current_mana").AsInt32(),
             Capacity=get_effective_mana_capacity(unit), Qi=get_battle_qi(unit),Blood=Mathf.RoundToInt(CardRules.Number(unit,"qi_blood")),
             Shield=unit.Get("shield").AsInt32(),Health=new(forecast),ConversionReady=flags.ConversionReady,CapQiUsed=flags.CapQiUsed,
-            Last=gongfa_combat.GetLastNonResponseSkill(unit) };
+            SwordIntent=GetStatus(unit,"剑意"),
+            Last=gongfa_combat.GetLastNonResponseSkill(unit), PillToxicity = unit is Character owner ? owner.PillToxicity : 0 };
         foreach(var target in get_target_candidates().Where(Alive)) initial.Shields[target]=Math.Max(0,target.Get("shield").AsInt32());
         foreach(var skill in loadout.Where(skill=>gongfa_combat.IsPermanentlyManaConverted(unit,skill)))initial.Converted.Add(skill);
         var beam=new List<AiDraft>{initial};
@@ -67,6 +71,7 @@ public partial class BattleManager
                     next.Add(branch);
                 }
                 // 休整也参与方案比较；必须至少还有一个位置，且能支撑后续实际可用的技能。
+                AddAiSupplyBranches(unit, draft, next, loadout, teammate, slots - index);
                 if(urgent.Count==0&&index+1<slots&&draft.Stamina<unit.Get("max_stamina").AsInt32())
                 {
                     var recovered=draft.Copy(); recovered.Stamina=Math.Min(unit.Get("max_stamina").AsInt32(),draft.Stamina+2);
@@ -81,7 +86,7 @@ public partial class BattleManager
             beam=ordered.Take(6).ToList();
             // 保留铺垫与休整分支，避免即时伤害在前几步淘汰尚未兑现的连招。
             foreach(var setup in ordered.Where(draft=>draft.Actions.LastOrDefault() is { } last &&
-                (last.kind==BattleQueuedSkill.ActionKind.Rest || last.kind==BattleQueuedSkill.ActionKind.Skill &&
+                (last.kind is BattleQueuedSkill.ActionKind.Rest or BattleQueuedSkill.ActionKind.Pill || last.kind==BattleQueuedSkill.ActionKind.Skill &&
                     last.skill.skill_name is "催血" or "焚元" or "聚炁")).Take(2))
                 if(!beam.Contains(setup))beam.Add(setup);
         }
@@ -100,6 +105,7 @@ public partial class BattleManager
             if(skill.combat_empty_slot||IsXuanShuSkillSlot10(unit,skill)||skill.skill_type==ActiveSkillData.SkillType.CURSE
                 ||!AiDraftReady(unit,skill,draft)||!gongfa_combat.CanPlay(unit,skill))continue;
             if(skill.skill_name=="焚元"&&draft.Capacity<2)continue;
+            if(skill.skill_name=="涤髓"&&draft.Blood<1)continue;
             var execution=AiDraftExecution(unit,skill,draft);
             if(execution.artifact_is_summon&&!can_plan_artifact_summon(unit,skill))continue;
             var costs=AiDraftCosts(unit,execution,draft);
@@ -185,6 +191,7 @@ public partial class BattleManager
                     if(ordinary is null){candidate.Priority=value>0?2:0;candidate.Score=value-40-draft.Uses.GetValueOrDefault(skill)*100;}
                     else candidate.Score+=value;
                 }
+                ScoreSevenBookSetup(unit,skill,draft,candidate,remaining);
                 if(candidate.Priority>0)yield return candidate;
             }
         }
@@ -227,6 +234,7 @@ public partial class BattleManager
     private bool AiAdvanceDraft(GodotObject unit,AiDraft draft,ActiveSkillData skill,GodotObject? target,bool automatic)
     {
         if(skill.skill_name=="焚元"&&draft.Capacity<2)return false;
+        if(skill.skill_name=="涤髓"&&draft.Blood<1)return false;
         var execution=AiDraftExecution(unit,skill,draft);
         var costs=AiDraftCosts(unit,execution,draft);
         if(!AiCanPay(unit,draft,costs.Energy,costs.Mana)||!AiDraftReady(unit,skill,draft))return false;
@@ -253,6 +261,7 @@ public partial class BattleManager
         }
         var burned=Math.Max(0,costs.Mana-draft.Mana);
         draft.Mana=Math.Max(0,draft.Mana-costs.Mana);draft.Capacity-=burned;
+        var emptyAfterPayment=draft.Mana==0;
         if(costs.Mana==0&&skill.mana_cost>0&&draft.ConversionReady&&!draft.Converted.Contains(skill))draft.ConversionReady=false;
         draft.Uses[skill]=draft.Uses.GetValueOrDefault(skill)+1;
         if(burned>0&&unit is Character character&&character.main_gongfa?.gongfa_name=="斫基损契玄经")draft.Converted.Add(skill);
@@ -266,12 +275,14 @@ public partial class BattleManager
         if(GongfaSkillRewriteRuntime.HasEffect(skill,"zhuo_ji_c2_jianzhu"))draft.ConversionReady=true;
         if(burned>0&&!draft.CapQiUsed&&AiHeartUpgrade(unit,"斫基损契玄经|zhuo_ji_c3"))
         {draft.CapQiUsed=true;draft.Qi++;AiCheckZhouTian(unit,draft,automatic);}
+        AiSevenBookAfterSkill(unit,draft,skill,emptyAfterPayment,automatic);
         return true;
     }
 
     private void AiDraftEffects(GodotObject unit,AiDraft draft,ActiveSkillData skill,GodotObject? target,bool automatic)
     {
         var bloodBefore=draft.Blood;
+        AiSevenBookUtility(unit,draft,skill,automatic);
         if(target is not null&&AiRawDamage(unit,skill)>0)
         {
             var victims=skill.aoe_range>0?get_target_candidates().Where(Alive).Where(victim=>victim.Get("faction").AsInt32()!=unit.Get("faction").AsInt32()):new[]{target};
@@ -310,6 +321,12 @@ public partial class BattleManager
                 case "burn_mana_capacity":draft.Capacity=Math.Max(1,draft.Capacity-count);draft.Mana=Math.Min(draft.Mana,draft.Capacity);AiCheckZhouTian(unit,draft,automatic);break;
                 case "gain_qi":draft.Qi+=count;AiCheckZhouTian(unit,draft,automatic);break;
                 case "gain_qi_blood":draft.Blood=Math.Min(Mathf.RoundToInt(CardRules.Number(unit,"max_qi_blood")),draft.Blood+count);break;
+                case "gain_sword_intent":
+                    var extra=GongfaSkillRewriteRuntime.HasEffect(skill,"shujuan_c1")&&draft.SwordIntent<=5&&!draft.CloudIntentExtraUsed;
+                    draft.SwordIntent=Math.Min(10,draft.SwordIntent+count+(extra?1:0));
+                    if(extra)draft.CloudIntentExtraUsed=true;
+                    break;
+                case "consume_sword_intent":draft.SwordIntent=0;break;
                 case "restore_health_percent":draft.Health[unit]=Math.Min(unit.Get("max_health").AsInt32(),draft.Health[unit]+unit.Get("max_health").AsInt32()*effect.GetValueOrDefault("percent",.03f).AsSingle());break;
             }
         }

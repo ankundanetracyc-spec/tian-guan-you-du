@@ -53,11 +53,11 @@ public static class CultivationInspirationTuning
     }
 
     // Prototype values: kept here so pacing and action effects can be adjusted without changing activity logic.
-    public static int combat_starting_shield(int rank) => rank switch { 1 => 2, 2 => 3, 3 => 4, _ => 0 };
-    public static int gathering_extra_yield(int rank) => rank switch { 1 => 1, 2 => 2, 3 => 3, _ => 0 };
-    public static int travel_reveal_bonus_cells(int rank) => rank switch { 1 => 1, 2 => 2, 3 => 3, _ => 0 };
-    public static float study_progress_multiplier(int rank) => rank switch { 1 => 1.10f, 2 => 1.20f, 3 => 1.35f, _ => 1f };
-    public static int sect_contribution_bonus(int rank) => rank switch { 1 => 1, 2 => 2, 3 => 3, _ => 0 };
+    public static int combat_starting_shield(int rank) => !CultivationInspirationSystem.Enabled ? 0 : rank switch { 1 => 2, 2 => 3, 3 => 4, _ => 0 };
+    public static int gathering_extra_yield(int rank) => !CultivationInspirationSystem.Enabled ? 0 : rank switch { 1 => 1, 2 => 2, 3 => 3, _ => 0 };
+    public static int travel_reveal_bonus_cells(int rank) => !CultivationInspirationSystem.Enabled ? 0 : rank switch { 1 => 1, 2 => 2, 3 => 3, _ => 0 };
+    public static float study_progress_multiplier(int rank) => !CultivationInspirationSystem.Enabled ? 1f : rank switch { 1 => 1.10f, 2 => 1.20f, 3 => 1.35f, _ => 1f };
+    public static int sect_contribution_bonus(int rank) => !CultivationInspirationSystem.Enabled ? 0 : rank switch { 1 => 1, 2 => 2, 3 => 3, _ => 0 };
 
     public static string action_domain_label(string domainId) => domainId switch
     {

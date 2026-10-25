@@ -42,7 +42,7 @@ public partial class CombatSkillBar : Control
     private ActiveSkillData? hoveredSkill;
     private Control? hoveredSkillAnchor;
     private string lastSkillHoverText = "";
-    private readonly System.Collections.Generic.Dictionary<ActiveSkillData, (int State, string Body, string Metadata)> hoverCache = [];
+    private readonly System.Collections.Generic.Dictionary<ActiveSkillData, (int State, HoverInfoManager.HoverInfoContent Content)> hoverCache = [];
     private static readonly string[] HoverAttributes = CardRules.Attributes.Values.Concat(new[] { "qi_blood", "blood_furnace_value", "punch_frame", "current_health" }).Distinct().ToArray();
     private static readonly string[] HoverDamageMultiplierMethods = ["get_blood_furnace_physical_damage_multiplier", "get_gongfa_physical_damage_multiplier", "get_species_physical_damage_multiplier"];
     private double uiRefreshRemaining;
@@ -446,12 +446,12 @@ public partial class CombatSkillBar : Control
         var state = SkillHoverState(skill, displaySkill, manager);
         if (hoverCache.TryGetValue(skill, out var cached) && cached.State == state)
         {
-            ApplySkillHoverContent(skill, cached.Body, cached.Metadata);
+            ApplySkillHoverContent(skill, cached.Content);
             return;
         }
         var content = BuildSkillHoverInfo(currentUnit, skill, manager, displaySkill);
-        hoverCache[skill] = (state, content.Body, content.Subtitle);
-        ApplySkillHoverContent(skill, content.Body, content.Subtitle);
+        hoverCache[skill] = (state, content);
+        ApplySkillHoverContent(skill, content);
     }
 
     internal static HoverInfoManager.HoverInfoContent BuildSkillHoverInfo(
@@ -500,15 +500,17 @@ public partial class CombatSkillBar : Control
             var copiedCooldown=CardPresentation.CombatCooldownText(copiedSkill,unit,manager);
             if(!string.IsNullOrWhiteSpace(copiedCooldown))detail.Add($"复制技能{copiedCooldown}");
         }
-        detail.Add($"效果：\n{effect}");
-        var body = string.Join("\n\n", detail);
+        // Short fields stay together; effects and restrictions have explicit reading groups.
+        var basic = string.Join("\n", detail.Take(string.IsNullOrWhiteSpace(cost) ? 1 : 2));
+        var limits = string.Join("\n", detail.Skip(string.IsNullOrWhiteSpace(cost) ? 1 : 2));
         var displayTags = skill.get_presentation_tags();
         var keywords = displayTags.Count > 0 ? string.Join("、", displayTags) : "无";
-        var metadata = $"类型：{skill.get_card_category()}　关键词：{keywords}";
+        var metadata = $"关键词：{keywords}";
         var icon = string.IsNullOrWhiteSpace(skill.icon_path) || !ResourceLoader.Exists(skill.icon_path)
             ? null
             : ResourceLoader.Load<Texture2D>(skill.icon_path);
-        return new HoverInfoManager.HoverInfoContent(skill.skill_name, body, icon, metadata);
+        return HoverInfoManager.Structured(skill.skill_name, icon, metadata,
+            new("", basic), new("效果", effect), new("使用限制", limits));
     }
 
     private int SkillHoverState(ActiveSkillData skill, ActiveSkillData displaySkill, BattleManager? manager)
@@ -558,18 +560,14 @@ public partial class CombatSkillBar : Control
         return hash.ToHashCode();
     }
 
-    private void ApplySkillHoverContent(ActiveSkillData skill, string body, string metadata)
+    private void ApplySkillHoverContent(ActiveSkillData skill, HoverInfoManager.HoverInfoContent content)
     {
         if (hoveredSkillAnchor is null || !GodotObject.IsInstanceValid(hoveredSkillAnchor)) return;
-        var contentKey = $"{skill.GetInstanceId()}|{metadata}|{body}";
+        var contentKey = $"{skill.GetInstanceId()}|{content.Subtitle}|{content.Body}";
         if (contentKey != lastSkillHoverText)
         {
             lastSkillHoverText = contentKey;
-            var icon = string.IsNullOrWhiteSpace(skill.icon_path) || !ResourceLoader.Exists(skill.icon_path)
-                ? null
-                : ResourceLoader.Load<Texture2D>(skill.icon_path);
-            HoverInfoManager.SetInfo(hoveredSkillAnchor,
-                new HoverInfoManager.HoverInfoContent(skill.skill_name, body, icon, metadata));
+            HoverInfoManager.SetInfo(hoveredSkillAnchor, content);
         }
     }
 

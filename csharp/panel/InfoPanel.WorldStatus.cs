@@ -72,7 +72,7 @@ public partial class InfoPanel
             child.QueueFree();
         }
 
-        var statuses = WorldStatusRules.active_records(data.world_status_records, currentGameHour);
+        var statuses = WorldStatusRules.active_records(PillToxicityRules.WithStatus(data, currentGameHour), currentGameHour);
         var hasBottleneck = CharacterStatusPresentationRules.has_active_bottleneck(bottleneckSummary);
         if (statuses.Count == 0 && !hasBottleneck)
         {

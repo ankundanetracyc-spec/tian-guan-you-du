@@ -67,6 +67,7 @@ public partial class GameStartProfile : Node
     {
         data.entity_name=string.IsNullOrWhiteSpace(player_name)?"苏醒者":player_name.Trim();
         data.gender=player_gender;
+        apply_starting_proficiencies(data);
         apply_player_appearance(data);
         data.base_physique=fated_base_physique; data.base_intelligence=fated_base_intelligence; data.base_soul=fated_base_soul;
         data.physique=data.base_physique; data.intelligence=data.base_intelligence; data.soul=data.base_soul;
@@ -122,6 +123,7 @@ public partial class GameStartProfile : Node
         cfg.SetValue(key,"attribute_schema",2); cfg.SetValue(key,"name",player_name); cfg.SetValue(key,"gender",player_gender); cfg.SetValue(key,"gongfa",selected_initial_gongfa_path); cfg.SetValue(key,"root_type",fated_youngest_root_type); cfg.SetValue(key,"root_name",fated_youngest_root_name); cfg.SetValue(key,"root_element",fated_youngest_element); cfg.SetValue(key,"weights",fated_youngest_root_weights); cfg.SetValue(key,"remaining_points",fated_remaining_points); cfg.SetValue(key,"physique",fated_base_physique); cfg.SetValue(key,"intelligence",fated_base_intelligence); cfg.SetValue(key,"soul",fated_base_soul);
         cfg.SetValue(key,"fortune",fated_base_fortune); cfg.SetValue(key,"comprehension",fated_base_comprehension); cfg.SetValue(key,"charisma",fated_base_charisma); cfg.SetValue(key,"social",fated_base_social); cfg.SetValue(key,"management",fated_base_management);
         foreach (var field in PortraitFields) cfg.SetValue(key, "portrait_" + field, player_appearance_data.Get(field));
+        save_starting_proficiencies(cfg, key);
         cfg.Save(PresetFile);
     }
     public Array<string> get_preset_names(){var cfg=new ConfigFile();if(cfg.Load(PresetFile)!=Error.Ok)return [];return new Array<string>(cfg.GetSections());}
@@ -145,6 +147,7 @@ public partial class GameStartProfile : Node
         }
         fated_base_fortune=cfg.GetValue(name,"fortune",fated_base_fortune).AsSingle(); fated_base_comprehension=cfg.GetValue(name,"comprehension",fated_base_comprehension).AsSingle(); fated_base_charisma=cfg.GetValue(name,"charisma",fated_base_charisma).AsSingle(); fated_base_social=cfg.GetValue(name,"social",fated_base_social).AsSingle(); fated_base_management=cfg.GetValue(name,"management",fated_base_management).AsSingle(); fated_remaining_points=cfg.GetValue(name,"remaining_points",fated_remaining_points).AsInt32(); has_fated_roll=true;
         foreach (var field in PortraitFields) player_appearance_data.Set(field, cfg.GetValue(name, "portrait_" + field, player_appearance_data.Get(field)));
+        load_starting_proficiencies(cfg, name);
         return true;
     }
     private void restore_legacy_root_identity_from_weights()

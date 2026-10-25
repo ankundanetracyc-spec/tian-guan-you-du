@@ -11,7 +11,6 @@ public partial class InfoPanel
     private bool _skillNodeMiddleZooming;
     private const string SmallSkillNodeTexturePath = "res://textures/ui/skill_nodes/skill_node_small_ink_circle_v1.png";
     private const string MultiSkillNodeTexturePath = "res://textures/ui/skill_nodes/skill_node_multi_ink_circle_v1.png";
-    private const string OriginSkillNodeTexturePath = "res://textures/ui/skill_nodes/skill_node_origin_ink_medallion_v1.png";
     private const string SkillSlotLockTexturePath = "res://textures/ui/skill_slot_lock_v1.svg";
     private const float SkillNodeMinZoom = .65f, SkillNodeMaxZoom = 1.8f, SkillNodeZoomStep = .12f;
     private VBoxContainer? _characterSkillList;
@@ -32,7 +31,7 @@ public partial class InfoPanel
 
     private string character_skill_source(Character? human, ActiveSkillData skill)
     {
-        if (skill.artifact_instance_id.Length > 0) return "法器";
+        if (skill.artifact_instance_id.Length > 0 || skill.forged_source_instance_id.Length > 0) return "法器";
         if (!string.IsNullOrWhiteSpace(skill.source_gongfa_name)) return skill.source_gongfa_name;
         if (human is not null)
         {
@@ -40,19 +39,20 @@ public partial class InfoPanel
                 if (character_manual_skills(book).Any(candidate => Character.combat_skill_key(candidate) == Character.combat_skill_key(skill))) return book.gongfa_name;
             foreach (var node in human.get_skill_node_configs())
                 if (human.has_unlocked_skill_node(node.node_id)
-                    && (node.skill_path == skill.ResourcePath || node.skill_path == Character.combat_skill_key(skill)))
+                    && node.get_skill_paths().Any(path => path == skill.ResourcePath || path == Character.combat_skill_key(skill)))
                     return "技能节点 · " + node.node_name;
         }
         return "通用";
     }
 
     private string character_skill_detail(Character? human, ActiveSkillData skill) =>
-        $"{battle_skill_category(skill)}\n关键词：{(skill.tags.Count > 0 ? string.Join(" · ", skill.tags) : "无")}\n体力 {skill.energy_cost}　法力 {skill.mana_cost}\n目标：{gongfa_skill_target(skill)}\n使用次数：{CardPresentation.CombatUseLimitText(skill, current_card, null)}\n{CardPresentation.CombatCooldownText(skill, current_card, null)}\n\n{CardPresentation.Underline(CardPresentation.Face(skill, current_card))}\n\n来源：{character_skill_source(human, skill)}\n\n{CardPresentation.Underline(CardPresentation.Details(skill, current_card))}";
+        $"{battle_skill_category(skill)}\n关键词：{(skill.get_presentation_tags().Count > 0 ? string.Join(" · ", skill.get_presentation_tags()) : "无")}\n体力 {skill.energy_cost}　法力 {skill.mana_cost}\n目标：{gongfa_skill_target(skill)}\n使用次数：{CardPresentation.CombatUseLimitText(skill, current_card, null)}\n{CardPresentation.CombatCooldownText(skill, current_card, null)}\n\n{CardPresentation.Underline(CardPresentation.Face(skill, current_card))}{skill_rewrite_assignment_detail(human, skill)}\n\n来源：{character_skill_source(human, skill)}\n\n{CardPresentation.Underline(CardPresentation.Details(skill, current_card))}";
 
     private void build_character_battle(Creature unit)
     {
         var page = _characterPages[2]; CharacterClear(page); var human = unit as Character;
         build_skill_library_mode_tabs(page, unit);
+        _characterSkillRewritePanel = null;
         if (_showSkillNodeNetwork)
         {
             build_character_skill_node_network(page, human);
@@ -70,7 +70,7 @@ public partial class InfoPanel
         keyword.Pressed += () => CharacterChoose("检索技能关键词", character_skill_catalog(human).SelectMany(skill => skill.tags).Distinct().Prepend("全部"), value => { _skillKeyword = value == "全部" ? "" : value; keyword.Text = "关键词：" + value + " ▾"; refresh_character_battle(unit); });
         var reset = CharacterButton("重置", 20); reset.CustomMinimumSize = new Vector2(100, 44); filters.AddChild(reset);
         reset.Pressed += () => { _skillQuery = _skillSource = _skillKeyword = ""; _battleFilter = "all"; build_character_battle(unit); };
-        var library = CharacterPanel(page, 0, 142, 354, 653); var box = CharacterBox(library, "已学技能");
+        var library = CharacterPanel(page, 0, 142, 296, 653); var box = CharacterBox(library, "已学技能");
         var categories = new HBoxContainer(); categories.AddThemeConstantOverride("separation", 4); box.AddChild(categories);
         foreach (var (title, id) in new[] { ("全部", "all"), ("攻伐", "attack"), ("术诀", "technique"), ("守御", "defense") })
         {
@@ -79,13 +79,14 @@ public partial class InfoPanel
         }
         _characterSkillMatches = CharacterText("", 17, true); box.AddChild(_characterSkillMatches);
         _characterSkillList = CharacterBox(CharacterScroll(box)); _characterSkillList.AddThemeConstantOverride("separation", 6);
-        var loadout = CharacterPanel(page, 372, 142, 978, 653); var slotsBox = CharacterBox(loadout);
+        var loadout = CharacterPanel(page, 312, 142, 728, 653); var slotsBox = CharacterBox(loadout);
         var heading = new HBoxContainer(); slotsBox.AddChild(heading); var titleLabel = CharacterText("技能槽", 28); titleLabel.SizeFlagsHorizontal = SizeFlags.ExpandFill; heading.AddChild(titleLabel);
         _characterSkillCount = CharacterText("", 23); _characterSkillCount.CustomMinimumSize = new Vector2(100, 0); _characterSkillCount.HorizontalAlignment = HorizontalAlignment.Right; heading.AddChild(_characterSkillCount); slotsBox.AddChild(new HSeparator());
         // 十个固定技能位直接分配两行空间，不再套滚动容器。
         _characterSkillSlots = new GridContainer { Columns = 5, SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ExpandFill };
-        _characterSkillSlots.AddThemeConstantOverride("h_separation", 14); _characterSkillSlots.AddThemeConstantOverride("v_separation", 14); slotsBox.AddChild(_characterSkillSlots);
-        slotsBox.AddChild(CharacterText("技能槽1–10：悬停查看详情 · 点击卸下 · 拖拽调整顺序\n装配玄枢含章经后，技能槽10只可装配非应对技能，并在周天完成后自动施展。", 17, true));
+        _characterSkillSlots.AddThemeConstantOverride("h_separation", 12); _characterSkillSlots.AddThemeConstantOverride("v_separation", 14); slotsBox.AddChild(_characterSkillSlots);
+        slotsBox.AddChild(CharacterText("术法槽1–10：悬停查看详情 · 点击卸下 · 拖拽调整顺序\n装配玄枢含章经后，术法槽10只可装配非应对技能，并在周天完成后自动施展。", 17, true));
+        build_character_skill_rewrites(page, human);
         refresh_character_battle(unit);
     }
 
@@ -97,15 +98,16 @@ public partial class InfoPanel
         var row = CharacterBox(panel);
         row.AddChild(tabs);
         CharacterRect(tabs, 0, 0, 1320, 42);
-        foreach (var (title, nodeView) in new[] { ("技能库", false), ("造诣图谱", true) })
+        foreach (var (title, mode) in new[] { ("技能库", 0), ("造诣图谱", 1) })
         {
-            var button = CharacterButton(title, 21, _showSkillNodeNetwork == nodeView, 7);
+            var selected = mode == (_showSkillNodeNetwork ? 1 : 0);
+            var button = CharacterButton(title, 21, selected, 7);
             button.CustomMinimumSize = new Vector2(150, 40);
             tabs.AddChild(button);
             button.Pressed += () =>
             {
-                if (_showSkillNodeNetwork == nodeView) return;
-                _showSkillNodeNetwork = nodeView;
+                if (selected) return;
+                _showSkillNodeNetwork = mode == 1;
                 build_character_battle(unit);
             };
         }
@@ -163,29 +165,14 @@ public partial class InfoPanel
             _selectedSkillNodeId = visibleNodes.FirstOrDefault()?.node_id ?? "";
 
         var positions = visibleNodes.ToDictionary(node => node.node_id, node => node.graph_position);
-        var hubCenter = new Vector2(450, 350);
         foreach (var node in visibleNodes)
         {
             var parents = node.prerequisite_node_ids.Where(visibleNodeIds.Contains).ToArray();
-            if (node.prerequisite_node_ids.Count == 0) add_skill_node_connection(graphCanvas, hubCenter, node.graph_position, false);
-            else foreach (var parentId in parents) add_skill_node_connection(graphCanvas, positions[parentId], node.graph_position, parents.Length > 1);
+            foreach (var parentId in parents)
+                add_skill_node_connection(graphCanvas, positions[parentId], node.graph_position, parents.Length > 1);
         }
 
-        var hubFrame = new TextureRect
-        {
-            Name = "SkillNodeOrigin",
-            Texture = GD.Load<Texture2D>(OriginSkillNodeTexturePath),
-            ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
-            StretchMode = TextureRect.StretchModeEnum.Scale,
-            MouseFilter = MouseFilterEnum.Ignore
-        };
-        const float hubSize = 230f;
-        if (visibleNodes.Length > 0)
-        {
-            graphCanvas.AddChild(hubFrame);
-            CharacterRect(hubFrame, hubCenter.X - hubSize * .5f, hubCenter.Y - hubSize * .5f, hubSize, hubSize);
-        }
-        else
+        if (visibleNodes.Length == 0)
         {
             var empty = CharacterParagraph("此脉面尚无参悟节点。", 24, true);
             graphCanvas.AddChild(empty); CharacterRect(empty, 140, 310, 620, 60);
@@ -193,11 +180,10 @@ public partial class InfoPanel
 
         foreach (var node in visibleNodes)
         {
-            var skill = ResourceLoader.Load<ActiveSkillData>(node.skill_path);
             var unlocked = human.has_unlocked_skill_node(node.node_id);
             var canUnlock = human.can_unlock_skill_node(node.node_id, out var reason);
             var major = node.prerequisite_node_ids.Count > 1;
-            var size = major ? new Vector2(214, 214) : new Vector2(190, 190);
+            var size = major ? new Vector2(204, 204) : new Vector2(190, 190);
             var selected = node.node_id == _selectedSkillNodeId;
             var seam = involvedFacesByNode[node.node_id].Count > 1;
             var markerTexture = GD.Load<Texture2D>(major ? MultiSkillNodeTexturePath : SmallSkillNodeTexturePath);
@@ -221,23 +207,13 @@ public partial class InfoPanel
             marker.AddThemeStyleboxOverride("pressed", new StyleBoxEmpty());
             marker.AddThemeStyleboxOverride("focus", new StyleBoxEmpty());
             graphCanvas.AddChild(marker);
-            var skillIconSize = size.Y * .21f;
-            var icon = new TextureRect
-            {
-                Texture = skill is null ? null : CharacterLoadIcon(skill.icon_path),
-                ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
-                StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
-                MouseFilter = MouseFilterEnum.Ignore
-            };
-            marker.AddChild(icon);
-            CharacterRect(icon, (size.X - skillIconSize) * .5f, size.Y * .23f, skillIconSize, skillIconSize);
             var name = CharacterText(node.node_name, 23);
             name.HorizontalAlignment = HorizontalAlignment.Center; name.VerticalAlignment = VerticalAlignment.Center; name.MouseFilter = MouseFilterEnum.Ignore;
-            marker.AddChild(name); CharacterRect(name, 12, size.Y * .49f, size.X - 24, size.Y * .16f);
+            marker.AddChild(name); CharacterRect(name, 12, size.Y * .40f, size.X - 24, size.Y * .20f);
             var statusText = unlocked ? "已参悟" : canUnlock ? "可参悟" : "待契合";
             var state = CharacterText(statusText, 17, true);
             state.HorizontalAlignment = HorizontalAlignment.Center; state.VerticalAlignment = VerticalAlignment.Center; state.MouseFilter = MouseFilterEnum.Ignore;
-            marker.AddChild(state); CharacterRect(state, 12, size.Y * .66f, size.X - 24, size.Y * .11f);
+            marker.AddChild(state); CharacterRect(state, 12, size.Y * .62f, size.X - 24, size.Y * .11f);
             marker.Pressed += () => { _selectedSkillNodeId = node.node_id; build_character_battle(human); };
             var contextualTint = node.face_id == _selectedSkillNodeFaceId || seam ? Colors.White : new Color(1, 1, 1, .58f);
             marker.MouseEntered += () => marker.SelfModulate = skill_node_marker_tint(unlocked, canUnlock, selected, true) * contextualTint;
@@ -282,7 +258,11 @@ public partial class InfoPanel
         {
             var face = faces[i];
             var faceNodeCount = nodes.Count(node => node.face_id == face.face_id);
-            var width = Mathf.Clamp(100f + faceNodeCount * 12f, 112f, 160f);
+            // Keep the four current face labels visible together; once the graph grows
+            // beyond four faces, the existing horizontal scroll handles the overflow.
+            var width = faces.Count <= 4
+                ? Mathf.Min(118f, 350f / Mathf.Max(1, faces.Count))
+                : Mathf.Clamp(76f + faceNodeCount * 3f, 88f, 118f);
             var tile = new Control { CustomMinimumSize = new Vector2(width, 48), MouseFilter = MouseFilterEnum.Ignore };
             row.AddChild(tile);
             var points = i % 2 == 0
@@ -360,6 +340,7 @@ public partial class InfoPanel
 
     public override void _Input(InputEvent @event)
     {
+        handle_skill_rewrite_pointer_input(@event);
         var viewport = _skillNodeZoomViewport;
         var canvas = _skillNodeZoomCanvas;
         var label = _skillNodeZoomLabel;
@@ -437,7 +418,9 @@ public partial class InfoPanel
 
     private void build_skill_node_details(Control graph, Character human, SkillNodeConfig node)
     {
-        var skill = ResourceLoader.Load<ActiveSkillData>(node.skill_path);
+        var grantedSkills = node.get_skill_paths()
+            .Select(path => ResourceLoader.Load<ActiveSkillData>(path))
+            .OfType<ActiveSkillData>().ToArray();
         var unlocked = human.has_unlocked_skill_node(node.node_id);
         var canUnlock = human.can_unlock_skill_node(node.node_id, out var reason);
         var major = node.prerequisite_node_ids.Count > 1;
@@ -466,23 +449,12 @@ public partial class InfoPanel
             StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered, MouseFilter = MouseFilterEnum.Ignore
         };
         markerPreview.AddChild(markerPreviewFrame); markerPreviewFrame.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        if (skill is not null)
-        {
-            var markerPreviewIcon = new TextureRect
-            {
-                Texture = CharacterLoadIcon(skill.icon_path), ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
-                StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered, MouseFilter = MouseFilterEnum.Ignore
-            };
-            markerPreview.AddChild(markerPreviewIcon);
-            CharacterRect(markerPreviewIcon, 24, 24, 36, 36);
-        }
         heading.AddChild(markerPreview);
         var identity = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, MouseFilter = MouseFilterEnum.Ignore };
         identity.AddThemeConstantOverride("separation", 3); heading.AddChild(identity);
         identity.AddChild(CharacterText(node.node_name, 28));
         identity.AddChild(CharacterClippedText(faceSummary, 17, true));
 
-        if (skill is not null) column.AddChild(CharacterText(skill.skill_name, 21, true));
         var description = CharacterParagraph(node.description, 18, true);
         description.CustomMinimumSize = new Vector2(0, 54); column.AddChild(description);
         column.AddChild(new HSeparator());
@@ -490,6 +462,11 @@ public partial class InfoPanel
         var scroll = CharacterScroll(column);
         var content = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.Fill };
         content.AddThemeConstantOverride("separation", 6); scroll.AddChild(content);
+        content.AddChild(CharacterText("解锁技能", 20));
+        if (grantedSkills.Length == 0) content.AddChild(CharacterText("未配置技能", 17, true));
+        else foreach (var grantedSkill in grantedSkills)
+            content.AddChild(CharacterParagraph("· " + grantedSkill.skill_name, 17, true));
+
         content.AddChild(CharacterText("关联脉面", 20));
         if (involvedFaceIds.Length == 0) content.AddChild(CharacterText("未指定脉面", 17, true));
         else
@@ -529,13 +506,12 @@ public partial class InfoPanel
         }
 
         content.AddChild(CharacterText("当前状态", 20));
-        content.AddChild(CharacterParagraph(unlocked ? "已参悟。此技能已收入技能库，仍需自行装配。"
+        content.AddChild(CharacterParagraph(unlocked ? "已参悟。授予技能已收入技能库，仍需自行装配。"
             : canUnlock ? "条件已齐，可以直接参悟；不消耗修习点。" : reason, 17, true));
 
         var learn = CharacterButton(unlocked ? "已参悟" : "参悟此节点", 19, unlocked, 7);
         learn.CustomMinimumSize = new Vector2(0, 42); learn.Disabled = unlocked || !canUnlock; column.AddChild(learn);
         learn.Pressed += () => { if (human.unlock_skill_node(node.node_id)) build_character_battle(human); };
-        if (skill is not null) CharacterHover(learn, skill.skill_name, character_skill_detail(human, skill), CharacterLoadIcon(skill.icon_path));
     }
 
     private static string skill_node_attribute_name(string id) => id switch
@@ -545,13 +521,14 @@ public partial class InfoPanel
         "soul" => "神魂",
         "body_proficiency" => "体道造诣",
         "magic_proficiency" => "术法造诣",
+        "sword_proficiency" => "剑道造诣",
         _ => id
     };
 
     private void refresh_character_battle(Creature unit)
     {
         if (_characterSkillList is null || _characterSkillSlots is null) return;
-        hide_tooltip(); var human = unit as Character; CharacterClear(_characterSkillList); CharacterClear(_characterSkillSlots);
+        hide_tooltip(); var human = unit as Character; prepare_skill_rewrite_ui_state(human); CharacterClear(_characterSkillList); CharacterClear(_characterSkillSlots);
         var catalog = character_skill_catalog(human); var paths = human?.get_combat_skill_slot_paths().ToList() ?? [];
         var shown = catalog.Where(skill => _battleFilter == "all" || battle_skill_category(skill) == (_battleFilter switch { "attack" => "攻伐", "technique" => "术诀", _ => "守御" }))
             .Where(skill => _skillSource.Length == 0 || character_skill_source(human, skill) == _skillSource)
@@ -569,8 +546,14 @@ public partial class InfoPanel
             button.Disabled = human is null || !equipped && (!hasOpenSlot||wouldEnterAutomaticSlot);
             button.CustomMinimumSize = new Vector2(0, 66); _characterSkillList.AddChild(button);
             button.AddChild(CombatSkillBar.CreateSkillIconVisual(skill, new Vector2(50, 50), new Vector2(8, 8)));
-            var name = CharacterClippedText(skill.skill_name, 22); button.AddChild(name); CharacterRect(name, 70, 3, 230, 31);
-            var tags = CharacterClippedText(skill.tags.Count > 0 ? string.Join(" · ", skill.tags) : battle_skill_category(skill), 16, true); button.AddChild(tags); CharacterRect(tags, 70, 34, 230, 26);
+            var name = CharacterClippedText(skill.skill_name, 21); button.AddChild(name); CharacterRect(name, 64, 3, 140, 31);
+            var tags = CharacterClippedText(skill.tags.Count > 0 ? string.Join(" · ", skill.tags) : battle_skill_category(skill), 16, true); button.AddChild(tags); CharacterRect(tags, 64, 34, 190, 26);
+            var badgeText = skill_rewrite_badge_text(human, skill);
+            if (badgeText.Length > 0)
+            {
+                var badge = create_skill_rewrite_badge(badgeText, skill_rewrite_badge_active(human, skill));
+                button.AddChild(badge); CharacterRect(badge, 207, 5, 48, 24);
+            }
             CharacterHover(button, skill.skill_name, character_skill_detail(human, skill), CharacterLoadIcon(skill.icon_path));
             if (human is not null) bind_character_skill_drag(button, human, Character.combat_skill_key(skill), -1);
             button.Pressed += () =>
@@ -586,9 +569,11 @@ public partial class InfoPanel
         {
             var index = i; var skill = i < paths.Count ? catalog.FirstOrDefault(skill => Character.combat_skill_key(skill) == paths[i]) : null;
             var select = CharacterButton("", 21, index == _characterDropTarget, 4);
-            select.CustomMinimumSize = new Vector2(174, 238); select.SizeFlagsHorizontal = select.SizeFlagsVertical = SizeFlags.ExpandFill;
+            select.CustomMinimumSize = new Vector2(128, 210); select.SizeFlagsHorizontal = select.SizeFlagsVertical = SizeFlags.ExpandFill;
             select.ClipContents = true; _characterSkillSlots.AddChild(select);
             if (human is not null) bind_character_skill_drag(select, human, skill is null ? "" : Character.combat_skill_key(skill), index);
+            select.MouseEntered += apply_skill_rewrite_drag_slot_tints;
+            select.MouseExited += apply_skill_rewrite_drag_slot_tints;
             if (skill is not null)
             {
                 var icon = new TextureRect { Texture = CharacterLoadIcon(skill.icon_path),
@@ -596,12 +581,18 @@ public partial class InfoPanel
                     MouseFilter = MouseFilterEnum.Ignore };
                 select.AddChild(icon); icon.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
                 icon.OffsetLeft = icon.OffsetTop = 4; icon.OffsetRight = -4; icon.OffsetBottom = -42;
-                var name = CharacterClippedText(index==9&&human?.has_xuanshu_heart_method_equipped()==true?$"{skill.skill_name} · 周天自动":skill.skill_name, 22); name.HorizontalAlignment = HorizontalAlignment.Center; select.AddChild(name);
+                var badgeText = skill_rewrite_badge_text(human, skill);
+                if (badgeText.Length > 0)
+                {
+                    var badge = create_skill_rewrite_badge(badgeText, skill_rewrite_badge_active(human, skill));
+                    select.AddChild(badge); CharacterRect(badge, 76, 5, 46, 24);
+                }
+                var name = CharacterClippedText(index==9&&human?.has_xuanshu_heart_method_equipped()==true?$"{skill.skill_name} · 周天自动":skill.skill_name, 19); name.HorizontalAlignment = HorizontalAlignment.Center; select.AddChild(name);
                 name.SetAnchorsAndOffsetsPreset(LayoutPreset.BottomWide); name.OffsetLeft = 6; name.OffsetRight = -6; name.OffsetTop = -38; name.OffsetBottom = -5;
                 var slotPrefix=index==9&&human?.has_xuanshu_heart_method_equipped()==true
-                    ?"技能槽10 · 周天自动施展，不进入行动队列；只可装配非应对技能。\n\n":$"技能槽{index+1}\n\n";
+                    ?"术法槽10 · 周天自动施展，不进入行动队列；只可装配非应对技能。\n\n":$"术法槽{index+1}\n\n";
                 if(index==9&&human?.has_xuanshu_heart_method_equipped()==true)
-                    add_skill_slot_lock_overlay(select,new Vector2(4,4),new Vector2(166,192));
+                    add_skill_slot_lock_overlay(select,new Vector2(4,4),new Vector2(120,164));
                 CharacterHover(select, skill.skill_name, slotPrefix+character_skill_detail(human, skill), CharacterLoadIcon(skill.icon_path));
                 select.Pressed += () =>
                 {
@@ -614,14 +605,15 @@ public partial class InfoPanel
                 select.Text = "＋"; select.AddThemeFontSizeOverride("font_size", 42);
                 if(index==9&&human?.has_xuanshu_heart_method_equipped()==true)
                 {
-                    add_skill_slot_lock_overlay(select,new Vector2(4,4),new Vector2(166,192));
-                    CharacterHover(select,"技能槽10 · 周天自动","周天完成后自动施展槽内技能；需要目标时随机选择合法目标。",null);
+                    add_skill_slot_lock_overlay(select,new Vector2(4,4),new Vector2(120,164));
+                    CharacterHover(select,"术法槽10 · 周天自动","周天完成后自动施展槽内技能；需要目标时随机选择合法目标。",null);
                 }
                 var name = CharacterText(index == _characterDropTarget ? "选择左侧技能" : "空闲", 18, true); name.HorizontalAlignment = HorizontalAlignment.Center; select.AddChild(name);
                 name.SetAnchorsAndOffsetsPreset(LayoutPreset.BottomWide); name.OffsetLeft = 4; name.OffsetRight = -4; name.OffsetTop = -38; name.OffsetBottom = -5;
                 select.Pressed += () => { _characterDropTarget = index; refresh_character_battle(unit); };
             }
         }
+        refresh_character_skill_rewrites(human);
     }
 
     private static void add_skill_slot_lock_overlay(Control slot, Vector2 position, Vector2 size, int zIndex = 10)
@@ -658,13 +650,19 @@ public partial class InfoPanel
             }),
             Callable.From<Vector2, Variant, bool>((position, data) =>
             {
-                if(data.VariantType!=Variant.Type.Dictionary||!data.AsGodotDictionary().ContainsKey("character_skill")
-                    ||data.AsGodotDictionary().GetValueOrDefault("owner",0).AsUInt64()!=human.GetInstanceId()||targetIndex<0)return false;
-                var skill=human.resolve_combat_skill(data.AsGodotDictionary()["character_skill"].AsString());
+                if (can_drop_skill_rewrite_on_slot(targetIndex, data, human)) return true;
+                if (data.VariantType != Variant.Type.Dictionary || !data.AsGodotDictionary().ContainsKey("character_skill")
+                    || data.AsGodotDictionary().GetValueOrDefault("owner", 0).AsUInt64() != human.GetInstanceId() || targetIndex < 0) return false;
+                var skill = human.resolve_combat_skill(data.AsGodotDictionary()["character_skill"].AsString());
                 return !(targetIndex==9&&human.has_xuanshu_heart_method_equipped()&&skill is not null&&CardRules.IsResponse(skill));
             }),
             Callable.From<Vector2, Variant>((position, data) =>
             {
+                if (data.VariantType == Variant.Type.Dictionary && data.AsGodotDictionary().ContainsKey("skill_rewrite_id"))
+                {
+                    drop_skill_rewrite_on_slot(targetIndex, data, human);
+                    return;
+                }
                 var path = data.AsGodotDictionary()["character_skill"].AsString();
                 var paths = human.get_combat_skill_slot_paths().ToList(); var source = paths.IndexOf(path);
                 

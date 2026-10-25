@@ -1,7 +1,7 @@
 using Godot;
 using Godot.Collections;
 
-/// <summary>百工总入口。四个工艺页共用外置页签；首期仅阵法页可操作，其他页不提前固化其制作规则。</summary>
+/// <summary>百工总入口：阵法、炼器及炼丹共用人物上下文；未定工艺仍保留说明页。</summary>
 public partial class BaigongPanel : Control
 {
     private Character? _owner;
@@ -15,7 +15,16 @@ public partial class BaigongPanel : Control
     }
 
     public void show_for(Character owner) { _owner = owner; Show(); select_page("阵法"); }
-    public void close() => Hide();
+    public void close()
+    {
+        foreach (var child in GetChildren())
+        {
+            if (child.IsQueuedForDeletion()) continue;
+            if (child is AlchemySlotBrewPreviewScene alchemy) { alchemy.ReturnToBaigong(); return; }
+            if (child is ProcessForgingScene forging) { forging.ReturnToBaigong(); return; }
+        }
+        Hide();
+    }
 
     private void build()
     {
@@ -38,15 +47,31 @@ public partial class BaigongPanel : Control
         _page = page;
         foreach (var (name, tab) in _tabs) { tab.Disabled = name == page; tab.Modulate = name == page ? new Color("f1d77a") : new Color("d8d0b8"); }
         if (_body is null) return; clear(_body);
-        if (page == "阵法") build_formation(); else if (page == "法宝") build_forging(); else build_placeholder(page);
+        if (page == "阵法") build_formation(); else if (page == "法宝") build_forging(); else if (page == "丹药") build_alchemy(); else build_placeholder(page);
+    }
+
+    private void build_alchemy()
+    {
+        _body!.AddChild(title("炼丹", 27, new Color("f4f0df")));
+        _body.AddChild(muted("配置药位与整数剂量，一次炼制，产量由配伍决定。使用人物行囊材料与精力，完成后确认领取丹药；灵识不足不能开炼。"));
+        var open = new Button { Text = "进入炼丹房", Disabled = _owner is null, CustomMinimumSize = new Vector2(360, 58) };
+        open.Pressed += () =>
+        {
+            if (_owner is null) return;
+            var scene = GD.Load<PackedScene>("res://tscn/scene/AlchemyPreviewScene.tscn").Instantiate<AlchemySlotBrewPreviewScene>();
+            scene.OwnerCharacter = _owner;
+            scene.ZIndex = 100;
+            AddChild(scene);
+        };
+        _body.AddChild(open);
     }
 
     private void build_forging()
     {
         _body!.AddChild(title("炼器 · 剑类工坊", 27, new Color("f4f0df")));
-        _body.AddChild(muted("只选剑大类，由材料与过程形成器型、功用及属性。独立试炼已开放，成器可重看，候选参数不进入正式装备。"));
-        var open = new Button { Text = "进入炼器工坊 · 试炼", CustomMinimumSize = new Vector2(360, 58) };
-        open.Pressed += () => { var scene = GD.Load<PackedScene>("res://tscn/scene/ProcessForgingScene.tscn").Instantiate<Control>(); scene.ZIndex = 100; AddChild(scene); };
+        _body.AddChild(muted("配置身材、质材、性材与和材，使用行囊材料和人物精力炼制剑器，成器收入行囊。开炼会消耗投料并推进时间；材料与份数影响灵识需求。"));
+        var open = new Button { Text = "进入炼器工坊", Disabled = _owner is null, CustomMinimumSize = new Vector2(360, 58) };
+        open.Pressed += () => { var scene = GD.Load<PackedScene>("res://tscn/scene/ProcessForgingScene.tscn").Instantiate<ProcessForgingScene>(); if (_owner is not null) scene.BindOwner(_owner); scene.ZIndex = 100; AddChild(scene); };
         _body.AddChild(open);
     }
 

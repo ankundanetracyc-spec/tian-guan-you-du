@@ -19,23 +19,27 @@ public partial class BattleUnitOverlay : CanvasLayer
     private Button? speedButton;
     private Button? retreatButton;
     private Label? retreatNotice;
+    private ulong _feedbackObstacleFrame=ulong.MaxValue;
+    private Rect2[] _feedbackObstacles=[];
     public void Setup(BattleManager owner){manager=owner;}
     public override void _Ready()
     {
-        Layer=5;
+        Layer=BattlePresentationLayers.UnitBarsCanvas;
+        AddToGroup("battle_unit_overlays");
+        var controls=new CanvasLayer{Name="BattleControlsCanvas",Layer=BattlePresentationLayers.HudCanvas};AddChild(controls);
         targetFrames=new TargetFrameLayer();AddChild(targetFrames);
         var speed=new Button{Text="倍速 ×1",Size=new(140,40)};
         speedButton=speed;BattleUiArt.Skin(speed);speed.Icon=BattleUiArt.Texture("icon_speed");speed.ExpandIcon=true;speed.AddThemeConstantOverride("icon_max_width",22);
-        speed.AddThemeFontSizeOverride("font_size",20);AddChild(speed);
+        speed.AddThemeFontSizeOverride("font_size",20);controls.AddChild(speed);
         speed.Pressed+=()=>{manager.set_battle_speed(manager.get_battle_speed_scale()==1?2:manager.get_battle_speed_scale()==2?3:1);speed.Text=$"倍速 ×{manager.get_battle_speed_scale()}";};
         pauseButton=new Button{Text="暂停",Size=new(156,40)};
         BattleUiArt.Skin(pauseButton);pauseButton.Icon=BattleUiArt.Texture("icon_pause");pauseButton.ExpandIcon=true;pauseButton.AddThemeConstantOverride("icon_max_width",20);
-        pauseButton.AddThemeFontSizeOverride("font_size",18);AddChild(pauseButton);
+        pauseButton.AddThemeFontSizeOverride("font_size",18);controls.AddChild(pauseButton);
         pauseButton.Pressed+=manager.toggle_battle_pause;
-        retreatButton=new Button{Text="撤退",Size=new(140,40)};BattleUiArt.Skin(retreatButton);AddChild(retreatButton);
+        retreatButton=new Button{Text="撤退",Size=new(140,40)};BattleUiArt.Skin(retreatButton);controls.AddChild(retreatButton);
         retreatButton.Pressed+=manager.queue_player_retreat;
         retreatNotice=new Label{HorizontalAlignment=HorizontalAlignment.Center,Size=new(460,32),MouseFilter=Control.MouseFilterEnum.Ignore};
-        retreatNotice.AddThemeFontSizeOverride("font_size",21);retreatNotice.AddThemeColorOverride("font_color",new Color("d6a28b"));AddChild(retreatNotice);
+        retreatNotice.AddThemeFontSizeOverride("font_size",21);retreatNotice.AddThemeColorOverride("font_color",new Color("d6a28b"));controls.AddChild(retreatNotice);
         refresh_pause_button();
         CallDeferred(nameof(PrepareInfo));
     }
@@ -161,12 +165,16 @@ public partial class BattleUnitOverlay : CanvasLayer
     {
         info=GetTree().CurrentScene?.GetNodeOrNull<InfoPanel>("UILayer/InfoPanel");
         if(info is null)return;
-        var layer=new CanvasLayer{Layer=90,Name="BattleCharacterPanel"};AddChild(layer);info.Reparent(layer);
+        var layer=new CanvasLayer{Layer=BattlePresentationLayers.CharacterDetailsCanvas,Name="BattleCharacterPanel"};AddChild(layer);info.Reparent(layer);
     }
     public override void _Process(double delta)
     {
         RefreshHoveredStatusInfo();
         var scale=BattleUiArt.Scale(GetViewport());var origin=BattleUiArt.Origin(GetViewport());
+        var emphasized=GetTree().GetNodesInGroup("battle_response_focus").OfType<BattleResponseFocus>()
+            .Where(focus=>!focus.IsQueuedForDeletion()).SelectMany(focus=>focus.EmphasizedUnits)
+            .Concat(GetTree().GetNodesInGroup("battle_blood_arm_views").OfType<BattleBloodQiArms>()
+                .Where(arms=>!arms.IsQueuedForDeletion()).SelectMany(arms=>arms.EmphasizedUnits)).ToHashSet();
         if(retreatButton is not null){retreatButton.Scale=Vector2.One*scale;retreatButton.Position=origin+new Vector2(1506,18)*scale;retreatButton.Disabled=!manager.can_queue_retreat();}
         if(retreatNotice is not null){retreatNotice.Scale=Vector2.One*scale;retreatNotice.Position=origin+new Vector2(606,110)*scale;retreatNotice.Text=manager.get_retreat_notice();}
         if(speedButton is not null){speedButton.Scale=Vector2.One*scale;speedButton.Position=origin+new Vector2(1190,18)*scale;}
@@ -189,7 +197,11 @@ public partial class BattleUnitOverlay : CanvasLayer
             view.Scale=Vector2.One*scale;
             var team=unit.faction==(int)WorldEntity.Faction.PLAYER?manager.player_units:manager.enemy_units;
             var stagger=team.Count==5 && team.IndexOf(unit)==1?30f:0f;
-            view.Position=unit.GetGlobalTransformWithCanvas().Origin-new Vector2(116*scale,manager.get_unit_display_height()+(64+stagger)*scale);
+            var head=unit.GetGlobalTransformWithCanvas().Origin-new Vector2(0,manager.get_unit_display_height()+(64+stagger)*scale);
+            head=BattleLocalFocusView.FrameUnitRect(unit,new Rect2(head,Vector2.Zero)).Position;
+            view.Position=head-new Vector2(116*scale,0);
+            var alpha=Mathf.MoveToward(view.Modulate.A,emphasized.Contains(unit) ? .16f : 1f,manager.is_battle_paused()?0f:(float)delta*7f);
+            view.Modulate=new Color(1,1,1,alpha);
             view.GetNode<BattleHealthBar>("Health").MaxValue=Math.Max(1,unit.max_health);view.GetNode<BattleHealthBar>("Health").Value=unit.current_health;view.GetNode<BattleHealthBar>("Health").QueueRedraw();
             view.GetNode<Label>("Name").Text=unit.entity_name;
             view.GetNode<Label>("Value").Text=$"{unit.current_health}/{unit.max_health}";
@@ -434,6 +446,8 @@ public partial class BattleUnitOverlay : CanvasLayer
             "身法"=>"身法",
             "化解"=>"化解",
             "借力"=>"借力",
+            "疲倦" or "exhausted"=>"疲倦",
+            "剑意"=>"剑意",
             "游骸"=>"游骸",
             "逐猎"=>"逐猎",
             "僵直"=>"僵直_v3",
@@ -488,9 +502,31 @@ public partial class BattleUnitOverlay : CanvasLayer
     {
         var panel=new PanelContainer{Size=new(170,48),ZIndex=80,MouseFilter=Control.MouseFilterEnum.Ignore};
         panel.AddThemeStyleboxOverride("panel",new StyleBoxFlat{BgColor=new Color(.05f,.07f,.06f,.94f),BorderColor=new Color(.72f,.78f,.70f,.94f),BorderWidthLeft=2,BorderWidthTop=2,BorderWidthRight=2,BorderWidthBottom=2,CornerRadiusTopLeft=8,CornerRadiusTopRight=8,CornerRadiusBottomLeft=8,CornerRadiusBottomRight=8});
-        var label=new Label{Text=$"{prefix} · {skill.skill_name}",HorizontalAlignment=HorizontalAlignment.Center,VerticalAlignment=VerticalAlignment.Center};label.AddThemeFontSizeOverride("font_size",16);label.AddThemeColorOverride("font_color",new Color(.88f,.91f,.82f));panel.AddChild(label);AddChild(panel);
-        panel.Position=node.GetGlobalTransformWithCanvas().Origin-new Vector2(85,480);
+        var label=new Label{Text=$"{prefix} · {skill.skill_name}",HorizontalAlignment=HorizontalAlignment.Center,VerticalAlignment=VerticalAlignment.Center};label.AddThemeFontSizeOverride("font_size",16);label.AddThemeColorOverride("font_color",new Color(.88f,.91f,.82f));panel.AddChild(label);BattlePresentationLayers.FeedbackLayer(this).AddChild(panel);
+        var scale=BattleUiArt.Scale(GetViewport());panel.Scale=Vector2.One*scale;
+        var bounds=manager.get_unit_screen_rect(node);
+        var viewport=GetViewport().GetVisibleRect().Size;
+        var x=bounds.GetCenter().X>viewport.X*.5f?bounds.Position.X-182*scale:bounds.End.X+12*scale;
+        panel.Position=new Vector2(Mathf.Clamp(x,8,Mathf.Max(8,viewport.X-178*scale)),Mathf.Max(104*scale,bounds.Position.Y+32*scale));
         var tween=panel.CreateTween();tween.TweenProperty(panel,"position:y",panel.Position.Y-22,.18).SetTrans(Tween.TransitionType.Sine);tween.TweenInterval(.82);tween.TweenProperty(panel,"modulate:a",0f,.28);tween.TweenCallback(Callable.From(panel.QueueFree));
+    }
+
+    public IReadOnlyList<Rect2> FeedbackObstacles()
+    {
+        var frame=Engine.GetProcessFrames();
+        if(frame==_feedbackObstacleFrame)return _feedbackObstacles;
+        _feedbackObstacleFrame=frame;
+        var result=new List<Rect2>();
+        foreach(var view in views.Values)
+        {
+            if(!GodotObject.IsInstanceValid(view)||!view.IsVisibleInTree()||view.Modulate.A<.3f)continue;
+            var status=view.GetNodeOrNull<Control>("Statuses");
+            var top=status is not null?Mathf.Max(0,-status.Position.Y)*view.Scale.Y:0;
+            var rect=view.GetGlobalRect();rect.Position-=new Vector2(0,top);rect.Size+=new Vector2(0,top);
+            result.Add(rect);
+        }
+        _feedbackObstacles=result.OrderByDescending(rect=>rect.Position.Y).ToArray();
+        return _feedbackObstacles;
     }
 }
 

@@ -17,6 +17,7 @@ public partial class InspirationActionPicker : PanelContainer
 
     public void Configure(Character? character, string domainId, string actionLabel, bool darkStyle = false)
     {
+        if (!CultivationInspirationSystem.Enabled) { Hide(); return; }
         if (_character is not null)
             _character.CultivationInspirationChanged -= on_inspiration_changed;
         _character = character;
@@ -34,6 +35,7 @@ public partial class InspirationActionPicker : PanelContainer
 
     public override void _Ready()
     {
+        if (!CultivationInspirationSystem.Enabled) { Hide(); return; }
         build();
         apply_style();
         refresh();

@@ -3,7 +3,7 @@ extends SceneTree
 ## Run with --headless --path <project> --script res://tools/BakeEncyclopediaThumbnails.gd.
 
 const CATALOGUE := "res://resources/bestiary/creatures.json"
-const WOLF_PORTRAIT := "res://textures/characters/forest_wolf_spine_rig_v6/source/wolf_assembled_portrait.png"
+const WOLF_PORTRAIT := "res://textures/bestiary/static/forest_wolf.png"
 const OUTPUT_DIR := "res://textures/ui/encyclopedia/portraits/"
 const MANIFEST_PATH := OUTPUT_DIR + "manifest.json"
 const MAX_WIDTH := 144

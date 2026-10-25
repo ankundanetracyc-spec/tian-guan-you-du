@@ -47,6 +47,8 @@ public partial class Creature : WorldEntity
         if(!Mathf.IsZeroApprox(dodgePercent))dodge=Mathf.Max(0,Mathf.RoundToInt(dodge*(1f+dodgePercent/100f)));
         var criticalPercent=get_combat_tempering_total("critical_percent");
         if(!Mathf.IsZeroApprox(criticalPercent))critical=Mathf.Max(0,Mathf.RoundToInt(critical*(1f+criticalPercent/100f)));
+        var precisionPercent=get_combat_tempering_total("precision_percent");
+        if(!Mathf.IsZeroApprox(precisionPercent))precision=Mathf.Max(0,Mathf.RoundToInt(precision*(1f+precisionPercent/100f)));
     }
     public Godot.Collections.Dictionary get_combat_tempering_for_gongfa(string gongfaName)
     {
@@ -69,7 +71,7 @@ public partial class Creature : WorldEntity
         var values=get_combat_tempering_for_gongfa(gongfaName);
         if(values.Count==0)return "";
         var lines=new List<string>();
-        foreach(var key in new[]{"max_health_flat","max_health_percent","max_mana_yunxi","qi_blood_cap","physical_damage_percent","critical_percent","dodge_percent","blood_furnace_cap","fall_heal_rate_pp","wound_physical_reduction_pp_per_stack","wound_consume_heal_percent_per_stack","defuse_gain_layers","borrowed_force_damage_pp_per_stack"})
+        foreach(var key in new[]{"max_health_flat","max_health_percent","max_mana_yunxi","qi_blood_cap","physical_damage_percent","critical_percent","precision_percent","dodge_percent","blood_furnace_cap","fall_heal_rate_pp","wound_physical_reduction_pp_per_stack","wound_consume_heal_percent_per_stack","defuse_gain_layers","borrowed_force_damage_pp_per_stack"})
         {
             var value=values.GetValueOrDefault(key,0f).AsSingle();if(Mathf.IsZeroApprox(value))continue;
             var line=key switch
@@ -80,6 +82,7 @@ public partial class Creature : WorldEntity
                 "qi_blood_cap"=>$"气血上限 +{value:0.#}",
                 "physical_damage_percent"=>$"物理伤害 +{value:0.#}%",
                 "critical_percent"=>$"会心 +{value:0.#}%",
+                "precision_percent"=>$"精准 +{value:0.#}%",
                 "dodge_percent"=>$"身法 +{value:0.#}%",
                 "blood_furnace_cap"=>$"血炉上限 +{value:0.#}",
                 "fall_heal_rate_pp"=>$"气血回落回复率 +{value:0.#}个百分点",

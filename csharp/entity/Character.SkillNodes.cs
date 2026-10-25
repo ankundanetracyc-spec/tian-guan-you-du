@@ -59,8 +59,9 @@ public partial class Character
         var result = new Array<string>();
         if (human is null || skill_node_network is null) return result;
         foreach (var node in skill_node_network.get_nodes())
-            if (has_unlocked_skill_node(node.node_id) && !string.IsNullOrWhiteSpace(node.skill_path) && !result.Contains(node.skill_path))
-                result.Add(node.skill_path);
+            if (has_unlocked_skill_node(node.node_id))
+                foreach (var path in node.get_skill_paths())
+                    if (!result.Contains(path)) result.Add(path);
         return result;
     }
 
@@ -71,6 +72,7 @@ public partial class Character
         "soul" => "神魂",
         "body_proficiency" => "体道造诣",
         "magic_proficiency" => "术法造诣",
+        "sword_proficiency" => "剑道造诣",
         _ => id
     };
 }

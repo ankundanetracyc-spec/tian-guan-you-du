@@ -231,7 +231,8 @@ public partial class BattleManager : Node2D
                 ["slot_index"] = start + i,
                 ["text"] = visible ? card.get_display_name() : "?",
                 ["skill_name"] = visible ? card.get_display_name() : "",
-                ["icon_path"] = visible && card.kind == BattleQueuedSkill.ActionKind.Skill ? card.skill.icon_path : "",
+                ["icon_path"] = !visible ? "" : card.kind == BattleQueuedSkill.ActionKind.Skill ? card.skill.icon_path :
+                    card.kind == BattleQueuedSkill.ActionKind.Pill ? BattleSupplyRules.Load(card.supply_path)?.icon_path ?? "" : "",
                 ["phase"] = phase,
                 ["progress"] = card.progress(),
                 ["intent_progress"] = IntentRevealProgress(unit, card),

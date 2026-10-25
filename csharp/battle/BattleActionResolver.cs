@@ -23,7 +23,7 @@ public static class BattleActionResolver
 
         var finalDamage = Mathf.Max(Mathf.RoundToInt(damage), 1);
         var blocked = damageType == "physical" ? Mathf.Min(Mathf.Max(block_stacks, 0), finalDamage) : 0;
-        finalDamage = apply_defense(finalDamage - blocked, damageType, defender, skill.physical_defense_ignore_ratio, ForgedEquipmentLoadout.WeaponIgnore(attacker, skill));
+        finalDamage = apply_defense(finalDamage - blocked, damageType, defender, skill.physical_defense_ignore_ratio, ForgedEquipmentLoadout.WeaponIgnore(attacker, skill) + Math.Max(0, skill.forged_flat_ignore));
         return new(false, critical, finalDamage, blocked);
     }
 
@@ -42,7 +42,12 @@ public static class BattleActionResolver
             damage *= 1.0f + creature.get_combat_tempering_physical_damage_multiplier();
         if (damageType == "physical" && attacker.HasMethod("get_species_physical_damage_multiplier"))
             damage *= 1.0f + attacker.Call("get_species_physical_damage_multiplier").AsSingle();
-        if (damageType == "physical") damage *= 1f + CardRules.Number(attacker, "forged_physical_bonus");
+        if (damageType == "physical")
+        {
+            var bonds = attacker is Character character ? character.get_artifact_bonds().SwordDamageBonus : CardRules.Number(attacker, "artifact_bond_sword_bonus");
+            damage *= 1f + CardRules.Number(attacker, "forged_physical_bonus") + ForgedSwordBattleAdapter.KeywordMultiplier(attacker, skill) - 1f
+                + (skill.get_presentation_tags().Contains("剑") ? bonds : 0);
+        }
         if(skill.keywords.Contains("重击")&&CardRules.Number(attacker,"punch_frame")>0)damage*=1.5f;
         return damage;
     }

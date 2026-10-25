@@ -12,13 +12,13 @@ public partial class GongfaAvailabilitySmoke : Node
         const string savePath = "user://gongfa_availability_smoke.tres";
         try
         {
-            var expected = new HashSet<string> { "玄枢含章经", "斫基损契玄经", "百骸衍枝化生宝册", "太和感物养元宝册" };
+            var expected = new HashSet<string> { "玄枢含章经", "斫基损契玄经", "百骸衍枝化生宝册", "太和感物养元宝册", "舒卷天章" };
             var books = GongfaAvailability.EnabledBooks().ToArray();
-            Check(expected.SetEquals(books.Select(book => book.gongfa_name)), "游戏开放目录恰为四本已指定秘籍");
+            Check(expected.SetEquals(books.Select(book => book.gongfa_name)), "游戏开放目录恰为五本已确认秘籍");
             Check(expected.SetEquals(PrologueText.InitialChoices.Select(choice => choice.name)), "开局选书共用开放目录");
             var choices = ((string name, string path)[])typeof(StartMenu)
                 .GetMethod("TestBookOptions", BindingFlags.Static | BindingFlags.NonPublic)!.Invoke(null, null)!;
-            Check(expected.SetEquals(choices.Where(choice => choice.path.Length > 0).Select(choice => choice.name)), "战斗测试只列四本秘籍");
+            Check(expected.SetEquals(choices.Where(choice => choice.path.Length > 0).Select(choice => choice.name)), "战斗测试只列五本秘籍");
 
             foreach (var file in DirAccess.GetFilesAt("res://resources/gongfa").Where(file => file.EndsWith(".tres")))
             {

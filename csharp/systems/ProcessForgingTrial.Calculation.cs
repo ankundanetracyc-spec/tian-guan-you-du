@@ -126,7 +126,7 @@ public sealed partial class ProcessForgingTrial
         var budgets = new Dictionary<string, double>(StringComparer.Ordinal) { ["structure"] = a.StructureCapacity, ["root"] = maintenance, ["通"] = process.GetValueOrDefault("通"), ["聚"] = process.GetValueOrDefault("聚"), ["藏"] = process.GetValueOrDefault("藏") };
         foreach (var pair in character) budgets["source/" + pair.Key] = pair.Value;
         a.Calculation.Resources = budgets;
-        BuildEffects(a, budgets);
+        BuildEffectsAndBonds(a, budgets);
         if (a.Effects.Any(x => x.CarrierId == "summon"))
         {
             a.BodyMaximum = (int)Math.Floor(N("BodyScale") * a.StructureCapacity / N("CapacityPerVolume"));

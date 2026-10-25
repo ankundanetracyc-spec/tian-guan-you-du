@@ -4,6 +4,8 @@ public partial class MainHUD : Control
 {
     private Button? _taskTrackerToggle;
     private bool _taskTrackerExpanded = true, _taskTrackerResizeSyncConnected;
+    private (string Id, string Title, string Body)[] _taskTrackerPresentation = [];
+    private bool _taskTrackerHeightSyncQueued;
     private const int TrackerWidth = 336, ToggleWidth = 30, TrackerRight = 52;
     public void set_task_tracker_horizontal_layout() => CallDeferred(nameof(apply_task_tracker_horizontal_layout));
     private void apply_task_tracker_horizontal_layout()
@@ -54,14 +56,27 @@ public partial class MainHUD : Control
         if (_taskTracker is null || _taskTrackerToggle is null) return;
         var rect = _taskTracker.GetRect();
         _taskTrackerToggle.AnchorTop = _taskTrackerToggle.AnchorBottom = 0;
-        var centerY = rect.Position.Y + rect.Size.Y / 2;
-        _taskTrackerToggle.OffsetTop = centerY - 22; _taskTrackerToggle.OffsetBottom = centerY + 22;
+        _taskTrackerToggle.OffsetTop = rect.Position.Y;
+        _taskTrackerToggle.OffsetBottom = rect.End.Y;
     }
-    private void queue_task_tracker_height_sync() => CallDeferred(nameof(resize_task_tracker_to_content));
+    private void queue_task_tracker_height_sync()
+    {
+        if (_taskTrackerHeightSyncQueued) return;
+        _taskTrackerHeightSyncQueued = true;
+        CallDeferred(nameof(resize_task_tracker_to_content));
+    }
     private void resize_task_tracker_to_content()
     {
+        _taskTrackerHeightSyncQueued = false;
         if (_taskTracker is null) return;
-        _taskTracker.OffsetBottom = Math.Max(1, _taskTracker.GetCombinedMinimumSize().Y);
+        var height = Math.Max(1, _taskTracker.GetCombinedMinimumSize().Y);
+        // Text layout may temporarily clamp the actual size above the requested
+        // offsets. When its minimum shrinks, unchanged offsets do not resize it.
+        // Explicitly restore the actual size as well as the anchored bounds.
+        _taskTracker.OffsetTop = 0;
+        if (Math.Abs(_taskTracker.OffsetBottom - height) > .5f) _taskTracker.OffsetBottom = height;
+        if (Math.Abs(_taskTracker.Size.Y - height) > .5f)
+            _taskTracker.Size = new Vector2(_taskTracker.Size.X, height);
         sync_task_tracker_toggle_vertical_bounds();
     }
 }
