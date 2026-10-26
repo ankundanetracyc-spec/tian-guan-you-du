@@ -91,7 +91,7 @@ public static class QuietRoomStyle
         var bg = new TextureRect { Name = "SharedBackground", Texture = GD.Load<Texture2D>(Assets + asset), ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize, StretchMode = TextureRect.StretchModeEnum.KeepAspectCovered, MouseFilter = Control.MouseFilterEnum.Ignore };
         parent.AddChild(bg); bg.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect); return bg;
     }
-    public static string Date(GameTimeMgr time) => $"{time.year}年{time.month}月{time.day}日 · {time.hour:00}时";
+    public static string Date(GameTimeMgr time) => $"{time.year}年{time.month}月{time.day}日";
     // 与常驻 GameTimeUI 已有昼夜读数一致。
     public static bool IsDay(GameTimeMgr time) => time.hour is >= 6 and < 18;
     public static void Primary(Button button)

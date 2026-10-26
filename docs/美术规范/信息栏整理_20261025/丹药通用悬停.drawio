@@ -1,0 +1,9 @@
+<mxfile host="app.diagrams.net"><diagram id="pill-hover" name="丹药通用悬停（详细版）"><mxGraphModel grid="1" page="1" pageWidth="1000" pageHeight="800"><root>
+<mxCell id="0"/><mxCell id="1" parent="0"/>
+<mxCell id="frame" value="" style="fillColor=#20231c;strokeColor=#c4b58d;" vertex="1" parent="1"><mxGeometry x="60" y="60" width="340" height="490" as="geometry"/></mxCell>
+<mxCell id="icon" value="丹药图标" style="fillColor=none;strokeColor=#c4b58d;fontColor=#eee4cc;fontSize=16;" vertex="1" parent="1"><mxGeometry x="80" y="80" width="96" height="96" as="geometry"/></mxCell>
+<mxCell id="name" value="回春丹" style="text;align=left;fontSize=26;fontStyle=1;fontColor=#eee4cc;" vertex="1" parent="1"><mxGeometry x="190" y="105" width="180" height="45" as="geometry"/></mxCell>
+<mxCell id="fields" value="丹阶：九品&#xa;丹效：良效&#xa;药效：恢复18点生命值&#xa;丹毒：＋10（向上取整(8×1.2)＝10）" style="text;whiteSpace=wrap;align=left;verticalAlign=top;fontSize=18;fontColor=#eee4cc;spacingTop=8;" vertex="1" parent="1"><mxGeometry x="80" y="200" width="300" height="210" as="geometry"/></mxCell>
+<mxCell id="description" value="简介：" style="text;align=left;verticalAlign=top;fontSize=18;fontColor=#eee4cc;" vertex="1" parent="1"><mxGeometry x="80" y="445" width="300" height="70" as="geometry"/></mxCell>
+<mxCell id="spec" value="2026-10-26 用户确认&#xa;&#xa;每项一行，长内容自然换行。&#xa;名称不重复丹效档位。&#xa;简介始终保留，少数必要条件写入简介。&#xa;不单列使用条件；无数量、价格、贡献、评分、容器说明或规则详解。&#xa;&#xa;图稿固定详细版；游戏简略版隐藏括号公式。&#xa;人物丹毒影响时保留基础与当前吸收值；战斗药效读取真实上下文。&#xa;&#xa;旧突破丹不虚构丹效档；资源未标丹阶则显示未标注，原用途、丹毒和成功晋层消费规则保留。&#xa;&#xa;不改材料定稿、药效数值或服用规则。" style="text;whiteSpace=wrap;align=left;verticalAlign=top;fontSize=18;" vertex="1" parent="1"><mxGeometry x="450" y="80" width="470" height="550" as="geometry"/></mxCell>
+</root></mxGraphModel></diagram></mxfile>

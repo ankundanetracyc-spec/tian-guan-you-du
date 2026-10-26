@@ -109,7 +109,7 @@ public partial class YuxuSectExchangePanel : Control
             {
                 var path = $"{itemDirectory}/{file}";
                 var item = GD.Load<ItemData>(path);
-                if (!YuxuSectPrototypeBalance.is_exchangeable_item(item) || item is null)
+                if (!YuxuSectPrototypeBalance.is_exchangeable_item(item) || !AlchemyProductCatalog.IsItemEnabled(item) || item is null)
                     continue;
 
                 var itemId = item.definition_id.ToString();
@@ -521,7 +521,8 @@ public partial class YuxuSectExchangePanel : Control
             };
             iconCenter.AddChild(texture);
         }
-        HoverInfoManager.SetInfo(card, new HoverInfoManager.HoverInfoContent(
+        HoverInfoManager.SetInfo(card, MaterialItemPresentation.IsMaterial(entry.Item) || AlchemyPillVisual.IsPill(entry.Item) || ManualItemPresentation.IsManual(entry.Item)
+            ? StoragePanel.ItemHover(entry.Item) : new HoverInfoManager.HoverInfoContent(
             entry.Item.entity_name,
             entry.Description,
             icon,
@@ -786,16 +787,7 @@ public partial class YuxuSectExchangePanel : Control
 
     private static string build_material_description(ItemData item, MaterialCraftData? material)
     {
-        var gradeName = material?.material_grade_name() ?? item.get_grade_string();
-        var tags = item.tags.Select(format_tag).ToArray();
-        var utilities = material is null
-            ? "未标注"
-            : string.Join("、", material.utilities
-                .Where(utility => utility is not null && !string.IsNullOrWhiteSpace(utility.utility_id))
-                .Select(utility => $"{utility.utility_id}{utility.grade_name()}"));
-        if (string.IsNullOrWhiteSpace(utilities)) utilities = "未标注";
-        var subcategory = string.IsNullOrWhiteSpace(item.item_subcategory) ? "材料" : item.item_subcategory;
-        return $"材料分类：{subcategory}\n品阶：{gradeName}\n材性：{string.Join(" · ", tags)}\n功用强度：{utilities}";
+        return MaterialItemPresentation.Hover(item).Body;
     }
 
     private static string format_tag(string tag)

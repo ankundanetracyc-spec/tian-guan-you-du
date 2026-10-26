@@ -7,6 +7,10 @@ public static class AlchemyProductCatalog
     public static readonly int[] ManaPercent = [5, 8, 13, 20, 28];
     public static readonly int[] Calm = [1, 2, 4, 6, 8];
     public static bool Has(string id) => id is "huichun" or "tongmai" or "jingxin";
+    /// <summary>已登记定义保留供旧存档读取；当前仅开放回春丹。</summary>
+    public static bool IsEnabled(string id) => id == "huichun";
+    public static bool IsItemEnabled(ItemData? item) => item is not null &&
+        (item is not PillItemData pill || IsEnabled(pill.pill_id));
     public static string Path(string id, int tier, string containerMaterialId = PillContainerCatalog.Porcelain) =>
         containerMaterialId == PillContainerCatalog.Porcelain
             ? $"res://resources/entities/items/alchemy/{id}_{tier}.tres"

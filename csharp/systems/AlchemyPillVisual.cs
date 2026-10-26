@@ -1,5 +1,7 @@
 using Godot;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 /// <summary>成丹展示与行囊共用的瓷瓶品阶刻点与物品说明；不生成独立评分物品。</summary>
 public static class AlchemyPillVisual
@@ -20,29 +22,74 @@ public static class AlchemyPillVisual
         icon.Material = material;
     }
     public static HoverInfoManager.HoverInfoContent Hover(PillItemData item, int? score = null,
-        int? contentsCount = null, IReadOnlyList<int>? scores = null, bool singleBottle = false, Character? user = null)
+        int? contentsCount = null, IReadOnlyList<int>? scores = null, bool singleBottle = false, Character? user = null,
+        string? effectOverride = null)
     {
         int tier = System.Math.Clamp(item.efficacy_tier, 0, 4);
         string quality = Tiers[tier];
-        var countText = contentsCount is > 0 ? $" · 数量 {contentsCount.Value}颗" : "";
-        var scoreText = scores is { Count: > 0 }
-            ? "\n本炉装入丹药的丹效分：" + string.Join("、", scores) + "。"
-            : "";
-        var effect = item.EffectText;
+        var effect = item.pill_id switch
+        {
+            "huichun" => $"恢复{AlchemyProductCatalog.Healing[tier]}点生命值",
+            "tongmai" => $"恢复最大法力的{AlchemyProductCatalog.ManaPercent[tier]}%",
+            "jingxin" => $"恢复{AlchemyProductCatalog.Calm[tier]}点心境",
+            _ => item.EffectText
+        };
+        var introduction = CleanIntroduction(item.description);
+        if (!AlchemyProductCatalog.IsEnabled(item.pill_id)) introduction = "暂未开放使用。" + introduction;
+        var condition = item.pill_id switch
+        {
+            "jingxin" => "心境低于0时可用，最高恢复至0，不能获得正向心境。",
+            "tongmai" => "不超过法力上限，不恢复大世界精力。",
+            _ => ""
+        };
+        if (condition.Length > 0) introduction = condition + introduction;
         if (user is not null && user.PillAbsorption < 1)
         {
             int actual = user.AlchemyPillAmount(item.pill_id, tier);
+            string absorption = $"{user.PillAbsorption * 100:0.##}%";
             effect = item.pill_id switch
             {
-                "huichun" => $"恢复{actual}点生命值（受丹毒影响，基础{AlchemyProductCatalog.Healing[tier]}）。",
-                "tongmai" => $"恢复{actual}点法力（受丹毒影响，基础为最大法力的{AlchemyProductCatalog.ManaPercent[tier]}%）。",
-                "jingxin" => $"恢复{actual}点负心境，最高至0（受丹毒影响）。",
+                "huichun" => $"恢复{actual}点生命值，基础{AlchemyProductCatalog.Healing[tier]}点 计算公式：取较大值(1,向下取整({AlchemyProductCatalog.Healing[tier]}×{absorption}))＝{actual}",
+                "tongmai" => $"恢复{actual}点法力，基础为最大法力的{AlchemyProductCatalog.ManaPercent[tier]}% 计算公式：最大法力[{user.max_mana}]×{AlchemyProductCatalog.ManaPercent[tier]}%×{absorption}，向下取整且基础恢复大于0时至少1点＝{actual}",
+                "jingxin" => $"恢复{actual}点心境，基础{AlchemyProductCatalog.Calm[tier]}点 计算公式：取较大值(1,向下取整({AlchemyProductCatalog.Calm[tier]}×{absorption}))＝{actual}",
                 _ => effect
             };
         }
+        else if (item.pill_id == "tongmai") effect += " 计算公式：向下取整(最大法力×" + AlchemyProductCatalog.ManaPercent[tier] + "%)";
+        if (effectOverride is not null) effect = effectOverride;
         var toxicity = PillToxicityRules.Load(item.pill_id, item.efficacy_tier);
-        return HoverInfoManager.Structured(item.entity_name, GD.Load<Texture2D>(item.icon_path),
-            $"{item.pill_rank}品丹药 · {quality}" + (score.HasValue ? $" · 丹效 {score.Value}/100" : "") + countText,
-            new("使用效果", effect), new("服用代价", $"丹毒＋{toxicity}。"), new("本炉丹效", scoreText.Trim()));
+        var factor = new[] { 1.5, 1.2, .9, .6, .3 }[tier];
+        var toxicityText = $"＋{toxicity}";
+        if (PillToxicityRules.BaseLoads.TryGetValue(item.pill_id, out var basis))
+            toxicityText += $" 计算公式：向上取整({basis:0.##}×{factor:0.##})＝{toxicity}";
+        var name = Regex.Replace(item.entity_name, "[·・]" + quality + "$", "");
+        return Build(item, name, $"丹阶：{RankName(item.pill_rank)}\n丹效：{quality}\n药效：{effect}\n丹毒：{toxicityText}", introduction);
+    }
+
+    public static bool IsPill(ItemData item) => item is PillItemData || item.item_category == "丹药";
+
+    public static HoverInfoManager.HoverInfoContent Hover(ItemData item, Character? user = null)
+    {
+        if (item is PillItemData pill) return Hover(pill, user: user);
+        var id = item.definition_id.ToString();
+        var toxicityId = id == "pill_yunxi_meridian_stabilizing" ? "dingmai" : id == "pill_yunxi_return_origin" ? "guiyuan_dingxi" : "";
+        var effect = toxicityId == "dingmai" ? "用于云息三层晋升四层" : toxicityId == "guiyuan_dingxi" ? "用于云息九层晋升十层" : "见简介";
+        var grade = item.grade_value > 0 ? item.get_grade_string() : "未标注";
+        var fields = $"丹阶：{grade}\n药效：{effect}";
+        if (PillToxicityRules.BaseLoads.TryGetValue(toxicityId, out var load)) fields += $"\n丹毒：＋{load:0.##}";
+        return Build(item, item.entity_name, fields, CleanIntroduction(item.description));
+    }
+
+    private static string RankName(int rank) => rank is >= 1 and <= 9 ? "一二三四五六七八九"[rank - 1] + "品" : rank + "品";
+
+    private static string CleanIntroduction(string description) => string.Join("。", description.Split('。')
+        .Select(s => s.Trim()).Where(s => s.Length > 0 && !Regex.IsMatch(s, @"^九品.+丹，丹效") &&
+            !s.Contains("丹药按颗计数") && !s.Contains("瓷瓶仅作") && !s.Contains("同类丹药在行囊合并")));
+
+    private static HoverInfoManager.HoverInfoContent Build(ItemData item, string name, string fields, string introduction)
+    {
+        var icon = !string.IsNullOrWhiteSpace(item.icon_path) && ResourceLoader.Exists(item.icon_path) ? GD.Load<Texture2D>(item.icon_path) : null;
+        return HoverInfoManager.Structured(name, icon, "", new("", fields), new("", "简介：" + introduction))
+            with { CardWidth = 340f, IconSize = 96f, ShowRules = false };
     }
 }

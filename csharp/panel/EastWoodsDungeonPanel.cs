@@ -179,7 +179,7 @@ public partial class EastWoodsDungeonPanel : Control
 
     public bool begin_assigned_route(string destinationNodeId)
     {
-        if (!Visible || _actionBusy || _npcEncounterBusy || _travelPawn is not null || _isTraveling ||
+        if (!Visible || _actionBusy || _npcEncounterBusy || _travelPawn is not null || _isTraveling || _actionModal?.Visible == true ||
             route_node(destinationNodeId) is null)
             return false;
         if (_current == destinationNodeId) return true;
@@ -383,6 +383,8 @@ public partial class EastWoodsDungeonPanel : Control
             {
                 ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
                 Name = "Terrain", Texture = load_terrain(node.Id),
+                SelfModulate = !_dynamicMode && EastWoodsDungeonRules.forest_region(node.Id) == "深林"
+                    ? new Color(.70f, .79f, .78f) : Colors.White,
                 StretchMode = TextureRect.StretchModeEnum.Scale,
                 MouseFilter = MouseFilterEnum.Ignore,
                 Material = new ShaderMaterial { Shader = GD.Load<Shader>("res://resources/shaders/dungeon_terrain_round.gdshader") },
@@ -402,9 +404,7 @@ public partial class EastWoodsDungeonPanel : Control
                 button.AddChild(overlay);
             }
 
-            if (!_dynamicMode && EastWoodsResourceNodes.ForNode(node) is { } resourceNode)
-                build_resource_node_marker(button, resourceNode);
-            else if (_dynamicMode && node.ResourceCategory != EastWoodsResourceCategory.None)
+            if (_dynamicMode && node.ResourceCategory != EastWoodsResourceCategory.None)
                 build_dynamic_resource_node_marker(button, node);
 
             var title = WorldHudStyle.Text("", 14);
@@ -515,7 +515,7 @@ public partial class EastWoodsDungeonPanel : Control
         _minGridY = nodes.Min(node => node.GridPosition.Y);
         var columns = nodes.Max(node => node.GridPosition.X) - _minGridX + 1;
         var rows = nodes.Max(node => node.GridPosition.Y) - _minGridY + 1;
-        var gapRatio = 0.27f;
+        var gapRatio = _dynamicMode ? 0.27f : 0.60f;
         _cellSize = Mathf.Clamp(view.Y * .14f, 90, 170);
         _cellGap = _cellSize * gapRatio;
         var totalWidth = columns * _cellSize + Mathf.Max(0, columns - 1) * _cellGap;
@@ -648,6 +648,7 @@ public partial class EastWoodsDungeonPanel : Control
 
     private string get_action_badge(string nodeId)
     {
+        if (!_dynamicMode) return "";
         if (_isTraveling && _actionBadgeCache.TryGetValue(nodeId, out var cached)) return cached;
         var action = available_actions(nodeId).FirstOrDefault();
         var badge = action is null ? "" : action.Battle ? "兽踪" : action.ItemPath.Length > 0 ? "可采集" : "异状";

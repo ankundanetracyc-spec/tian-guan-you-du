@@ -15,7 +15,7 @@ public partial class MainScene
             return;
 
         var changes = CharacterRelationshipRules.SettleMonthWithChanges(human, month, out var settledEvidenceCount);
-        var date = $"{time.year}年{time.month}月{time.day}日 {time.hour:D2}时";
+        var date = $"{time.year}年{time.month}月{time.day}日";
         foreach (var group in changes.GroupBy(change => (change.TargetCharacterId, change.Axis)))
         {
             var npc = _npc_world?.get_npc(group.Key.TargetCharacterId);

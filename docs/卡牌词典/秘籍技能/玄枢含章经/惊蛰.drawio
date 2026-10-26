@@ -2,8 +2,25 @@
   <diagram id="xuanshu-jingzhe" name="惊蛰">
     <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="720" math="0" shadow="0">
       <root>
-        <mxCell id="0"/><mxCell id="1" parent="0"/>
-        <mxCell id="jingzhe_cards" value="技能名：惊蛰&lt;br&gt;资源路径：res://resources/activeskills/玄枢含章经/惊蛰.tres&lt;br&gt;关键词：散血&lt;br&gt;耗费：体力 0、法力 1&lt;br&gt;目标：指定1名敌方&lt;br&gt;出手方式：远程&lt;br&gt;效果：造成A点物理伤害。本技能不经行动队列施展时，命中后&lt;u&gt;打散&lt;/u&gt;目标1层&lt;u&gt;气血&lt;/u&gt;。&lt;br&gt;计算公式：A=round(8 + 灵慧×0.65 + 术法造诣×0.20)。&lt;br&gt;&lt;br&gt;技能名：惊蛰（化法）&lt;br&gt;资源路径：res://resources/activeskills/玄枢含章经/化法/惊蛰.tres&lt;br&gt;关键词：散血、穿盾&lt;br&gt;耗费：体力 0、法力 1&lt;br&gt;目标：指定1名敌方&lt;br&gt;出手方式：远程&lt;br&gt;效果：造成A点物理伤害。本技能不经行动队列施展时，命中后&lt;u&gt;打散&lt;/u&gt;目标1层&lt;u&gt;气血&lt;/u&gt;。穿盾，本次攻击无视目标&lt;u&gt;护盾&lt;/u&gt;。&lt;br&gt;计算公式：A=round(8 + 灵慧×0.65 + 术法造诣×0.20)。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e7eee4;strokeColor=#769078;fontSize=18;align=left;spacingLeft=18;spacingTop=16;" vertex="1" parent="1"><mxGeometry x="300" y="80" width="900" height="470" as="geometry"/></mxCell>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="jingzhe_cards" value="技能名：惊蛰&#10;关键词：散血&#10;耗费：体力 0、法力 1&#10;目标：指定1名敌方&#10;出手方式：远程&#10;效果：造成A点（A=round(8 + 灵慧×0.65 + 术法造诣×0.20)）物理伤害。本技能不经行动队列施展时，命中后打散目标1层气血。&#10;。&#10;&#10;技能名：惊蛰（化法）&#10;关键词：散血、穿盾&#10;耗费：体力 0、法力 1&#10;目标：指定1名敌方&#10;出手方式：远程&#10;效果：造成A点（A=round(8 + 灵慧×0.65 + 术法造诣×0.20)）物理伤害。本技能不经行动队列施展时，命中后打散目标1层气血。穿盾，本次攻击无视目标护盾。&#10;。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e7eee4;strokeColor=#769078;fontSize=18;align=left;spacingLeft=18;spacingTop=16;" vertex="1" parent="1">
+          <mxGeometry x="300" y="80" width="900" height="470" as="geometry" />
+        </mxCell>
+        <mxCell id="player-rules-entry" value="本图为详细版：效果后以括号列出公式；游戏内可设置简略／详细。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eee8d8;strokeColor=#9a8967;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="582" width="1000" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="xuanshu-jingzhe-rules" name="惊蛰 · 规则详解">
+    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="720" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="jingzhe_cards" value="技能名：惊蛰&lt;br&gt;资源路径：res://resources/activeskills/玄枢含章经/惊蛰.tres&lt;br&gt;关键词：散血&lt;br&gt;耗费：体力 0、法力 1&lt;br&gt;目标：指定1名敌方&lt;br&gt;出手方式：远程&lt;br&gt;效果：造成A点物理伤害。本技能不经行动队列施展时，命中后&lt;u&gt;打散&lt;/u&gt;目标1层&lt;u&gt;气血&lt;/u&gt;。&lt;br&gt;计算公式：A=round(8 + 灵慧×0.65 + 术法造诣×0.20)。&lt;br&gt;&lt;br&gt;技能名：惊蛰（化法）&lt;br&gt;资源路径：res://resources/activeskills/玄枢含章经/化法/惊蛰.tres&lt;br&gt;关键词：散血、穿盾&lt;br&gt;耗费：体力 0、法力 1&lt;br&gt;目标：指定1名敌方&lt;br&gt;出手方式：远程&lt;br&gt;效果：造成A点物理伤害。本技能不经行动队列施展时，命中后&lt;u&gt;打散&lt;/u&gt;目标1层&lt;u&gt;气血&lt;/u&gt;。穿盾，本次攻击无视目标&lt;u&gt;护盾&lt;/u&gt;。&lt;br&gt;计算公式：A=round(8 + 灵慧×0.65 + 术法造诣×0.20)。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e7eee4;strokeColor=#769078;fontSize=18;align=left;spacingLeft=18;spacingTop=16;" vertex="1" parent="1">
+          <mxGeometry x="300" y="80" width="900" height="470" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>

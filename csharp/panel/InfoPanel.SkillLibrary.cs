@@ -46,7 +46,7 @@ public partial class InfoPanel
     }
 
     private string character_skill_detail(Character? human, ActiveSkillData skill) =>
-        $"{battle_skill_category(skill)}\n关键词：{(skill.get_presentation_tags().Count > 0 ? string.Join(" · ", skill.get_presentation_tags()) : "无")}\n体力 {skill.energy_cost}　法力 {skill.mana_cost}\n目标：{gongfa_skill_target(skill)}\n使用次数：{CardPresentation.CombatUseLimitText(skill, current_card, null)}\n{CardPresentation.CombatCooldownText(skill, current_card, null)}\n\n{CardPresentation.Underline(CardPresentation.Face(skill, current_card))}{skill_rewrite_assignment_detail(human, skill)}\n\n来源：{character_skill_source(human, skill)}\n\n{CardPresentation.Underline(CardPresentation.Details(skill, current_card))}";
+        $"{battle_skill_category(skill)}\n关键词：{(skill.get_presentation_tags().Count > 0 ? string.Join(" · ", skill.get_presentation_tags()) : "无")}\n体力 {skill.energy_cost}　法力 {skill.mana_cost}\n目标：{gongfa_skill_target(skill)}\n使用次数：{CardPresentation.CombatUseLimitText(skill, current_card, null)}\n{CardPresentation.CombatCooldownText(skill, current_card, null)}\n\n{CardPresentation.Underline(CardPresentation.Face(skill, current_card))}{skill_rewrite_assignment_detail(human, skill)}\n\n来源：{character_skill_source(human, skill)}\n\n规则详解\n{CardPresentation.Underline(CardPresentation.Details(skill, current_card))}";
 
     private void build_character_battle(Creature unit)
     {
@@ -551,8 +551,11 @@ public partial class InfoPanel
             var badgeText = skill_rewrite_badge_text(human, skill);
             if (badgeText.Length > 0)
             {
-                var badge = create_skill_rewrite_badge(badgeText, skill_rewrite_badge_active(human, skill));
-                button.AddChild(badge); CharacterRect(badge, 207, 5, 48, 24);
+                var badgeActive = skill_rewrite_badge_active(human, skill);
+                var badge = create_skill_rewrite_badge(badgeText, badgeActive);
+                button.AddChild(badge);
+                var badgeWidth = badgeText == "化" ? 25 : 48;
+                CharacterRect(badge, 255 - badgeWidth, 4, badgeWidth, 25);
             }
             CharacterHover(button, skill.skill_name, character_skill_detail(human, skill), CharacterLoadIcon(skill.icon_path));
             if (human is not null) bind_character_skill_drag(button, human, Character.combat_skill_key(skill), -1);
@@ -584,8 +587,11 @@ public partial class InfoPanel
                 var badgeText = skill_rewrite_badge_text(human, skill);
                 if (badgeText.Length > 0)
                 {
-                    var badge = create_skill_rewrite_badge(badgeText, skill_rewrite_badge_active(human, skill));
-                    select.AddChild(badge); CharacterRect(badge, 76, 5, 46, 24);
+                    var badgeActive = skill_rewrite_badge_active(human, skill);
+                    var badge = create_skill_rewrite_badge(badgeText, badgeActive);
+                    select.AddChild(badge);
+                    var badgeWidth = badgeText == "化" ? 25 : 46;
+                    CharacterRect(badge, 122 - badgeWidth, 4, badgeWidth, 25);
                 }
                 var name = CharacterClippedText(index==9&&human?.has_xuanshu_heart_method_equipped()==true?$"{skill.skill_name} · 周天自动":skill.skill_name, 19); name.HorizontalAlignment = HorizontalAlignment.Center; select.AddChild(name);
                 name.SetAnchorsAndOffsetsPreset(LayoutPreset.BottomWide); name.OffsetLeft = 6; name.OffsetRight = -6; name.OffsetTop = -38; name.OffsetBottom = -5;

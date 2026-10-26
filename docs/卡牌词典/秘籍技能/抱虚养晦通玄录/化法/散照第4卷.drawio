@@ -1,6 +1,19 @@
-<?xml version='1.0' encoding='utf-8'?>
 <mxfile host="app.diagrams.net">
   <diagram name="散照化法">
+    <mxGraphModel grid="1" page="1" pageWidth="1400" pageHeight="1500">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="main" value="化法&#10;适用范围：散照&#10;&#10;化法追加：支付费用后法力为0且命中时，获得B点（B=round(3 + 灵慧×0.15 + 术法造诣×0.20)）护盾；每回合限一次。。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="100" y="100" width="850" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="player-rules-entry" value="本图为详细版：效果后以括号列出公式；游戏内可设置简略／详细。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eee8d8;strokeColor=#9a8967;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="272" width="1000" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="散照化法 · 规则详解" id="page-rules">
     <mxGraphModel grid="1" page="1" pageWidth="1400" pageHeight="1500">
       <root>
         <mxCell id="0" />

@@ -68,6 +68,8 @@ public partial class MainScene : Node2D
         actionLoadingLayer.AddChild(action_transition);
         baigong = new BaigongPanel { Name = "BaigongPanel" };
         GetNode<CanvasLayer>("CanvasLayer").AddChild(baigong);
+        _locationCrafting = new LocationCraftingPanel { Name = "LocationCraftingPanel" };
+        GetNode<CanvasLayer>("CanvasLayer").AddChild(_locationCrafting);
         location_interior = new WorldLocationInteriorPanel { Name = "WorldLocationInteriorPanel" };
         GetNode<CanvasLayer>("SceneLayer").AddChild(location_interior);
         trade_panel = new TradePanel { Name = "TradePanel" };
@@ -159,6 +161,7 @@ public partial class MainScene : Node2D
     {
         if (action_transition?.IsPlaying == true || GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.IsSmoothAdvanceBusy == true) return true;
         if (try_close_topmost_popup_window()) return true;
+        if (_locationCrafting?.Visible == true) { _locationCrafting.ReturnToLocation(); return true; }
         if (GetNodeOrNull<BattleTransitionManager>("/root/BattleTransitionManager") is { } transition && transition.has_open_flow_view())
             return transition.try_return_from_open_flow();
         if (hud?.close_player_profile() == true) return true;
@@ -207,7 +210,7 @@ public partial class MainScene : Node2D
         return false;
     }
 
-    private void update_persistent_chrome(){var modal=(_restPanel?.Visible??false)||(storage?.Visible??false)||(info?.Visible??false)||(realm_panel?.Visible??false)||(cultivation_ui?.Visible??false)||(condensation_panel?.Visible??false)||(story_dialogue?.Visible??false)||(journal?.Visible??false)||(baigong?.Visible??false)||(trade_panel?.Visible??false)||(_letters?.Visible??false)||(hud?.player_profile_visible??false);var visible=!modal&&!_suppress_persistent_chrome;hud?.set_estate_summary_visible(visible);if(GetNodeOrNull<Control>("HUDLayer/WorldInfo") is { } timePanel)timePanel.Visible=visible;if(_prologue_skip_button is not null)_prologue_skip_button.Visible=_prologue_skip_available&&visible;}
+    private void update_persistent_chrome(){var modal=(_locationCrafting?.Visible??false)||(_restPanel?.Visible??false)||(storage?.Visible??false)||(info?.Visible??false)||(realm_panel?.Visible??false)||(cultivation_ui?.Visible??false)||(condensation_panel?.Visible??false)||(story_dialogue?.Visible??false)||(journal?.Visible??false)||(baigong?.Visible??false)||(trade_panel?.Visible??false)||(_letters?.Visible??false)||(hud?.player_profile_visible??false);var visible=!modal&&!_suppress_persistent_chrome;hud?.set_estate_summary_visible(visible);if(GetNodeOrNull<Control>("HUDLayer/WorldInfo") is { } timePanel)timePanel.Visible=visible;if(_prologue_skip_button is not null)_prologue_skip_button.Visible=_prologue_skip_available&&visible;}
     private void connect_ui()
     {
         if(hud is not null)
@@ -498,6 +501,7 @@ public partial class MainScene : Node2D
         if (_active_quest is not null) entries.Add(_active_quest);
         if (has_open_world_access()) entries.Add(get_cultivation_guidance_task());
         entries.AddRange(get_yuxu_lineage_journal_tasks());
+        if (get_active_yuxu_true_disciple_lecture_journal_task() is { } lecture) entries.Add(lecture);
         if (get_active_yuxu_journal_task() is {} duty) entries.Add(duty);
         entries.AddRange(get_letter_invitation_tasks());
         if (player?.entity_data is HumanData human)
@@ -695,8 +699,8 @@ public partial class MainScene : Node2D
         open_rest_panel(restPlace, count =>
         {
             var end = time.get_total_game_hours() + count; var day = end / 24;
-            var ending = $"{day / 360 + 1}年{day % 360 / 30 + 1}月{day % 30 + 1}日 {end % 24:00}时";
-            run_time_transition("休息", $"你将在{restPlace}休息 {GameTimeText.Duration(count)}，醒来时间：{ending}。",
+            var ending = $"{day / 360 + 1}年{day % 360 / 30 + 1}月{day % 30 + 1}日";
+            run_time_transition("休息", $"你将在{restPlace}休息 {GameTimeText.Duration(count)}，醒来日期：{ending}。",
                 "休养过后，你的气血已复，行旅精力也得以恢复。",
                 () => { if (player is null) return; player.current_health = player.max_health; player.restore_world_stamina(count * WorldStaminaRules.RestRecoveryPerGameHour); advance_player_world_status_rest(count); time.add_hours(count); afterRest?.Invoke(); },
                 () => show_message("醒来", "休养过后，你的气血已复，行旅精力也得以恢复。"));
@@ -813,6 +817,11 @@ public partial class MainScene : Node2D
     // 见闻只由玩家主动消耗时间的行动触发；没有自然流逝，也不会用弹窗打断结算。
     private void on_action_time_changed()
     {
+        if (player?.entity_data is HumanData human && human.sect_affiliation_id == YuxuSectId)
+        {
+            sync_yuxu_true_disciple_lecture_schedule(human);
+            refresh_yuxu_true_disciple_lecture_context(human, is_yuxu_true_disciple(human.sect_current_rank));
+        }
         refresh_letter_invitation_tasks_if_changed();
         try_trigger_qingxi_beast_hunt();
         if(_journal_started_hour<0 || _journal_rumor_stage>=3) return;

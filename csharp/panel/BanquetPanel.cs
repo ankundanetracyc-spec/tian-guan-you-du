@@ -72,7 +72,7 @@ public partial class BanquetPanel : Control
         _mode = PanelMode.Hidden;
     }
 
-    /// <summary>Opens the player-host setup page. Time options are absolute in-game hours.</summary>
+    /// <summary>Opens the player-host setup page. The selected dates map to absolute in-game hours internally.</summary>
     public void ShowSetup(
         BanquetRosterEntry host,
         IReadOnlyList<BanquetRosterEntry> roster,
@@ -320,7 +320,7 @@ public partial class BanquetPanel : Control
         _guestScroll.AddChild(_guestList);
 
         var timeRow = new HBoxContainer();
-        timeRow.AddChild(make_label("举办时辰", 18, Ink));
+        timeRow.AddChild(make_label("举办日期", 18, Ink));
         _timeSelector = new OptionButton { SizeFlagsHorizontal = SizeFlags.ExpandFill, CustomMinimumSize = new Vector2(0, 42) };
         timeRow.AddChild(_timeSelector);
         content.AddChild(timeRow);
@@ -441,7 +441,7 @@ public partial class BanquetPanel : Control
         _timeSelector.Clear();
         foreach (var time in _times) _timeSelector.AddItem(time.Label);
         if (_times.Count > 0) _timeSelector.Select(0);
-        else _timeSelector.AddItem("暂无可选时辰");
+        else _timeSelector.AddItem("暂无可选日期");
         update_venue_details();
         update_guest_capacity();
     }

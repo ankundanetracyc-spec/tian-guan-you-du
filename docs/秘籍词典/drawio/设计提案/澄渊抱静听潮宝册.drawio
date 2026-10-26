@@ -1,0 +1,237 @@
+<mxfile host="Electron" agent="Codex">
+  <diagram id="chengyuan-tingchao-review" name="澄渊抱静听潮宝册">
+    <mxGraphModel dx="1249" dy="614" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2600" pageHeight="2630" math="0" shadow="0">
+      <root>
+        <mxCell id="0" value="" />
+        <mxCell id="1" parent="0" value="" />
+        <mxCell id="title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=20;" value="澄渊抱静听潮宝册" vertex="1">
+          <mxGeometry height="74" width="560" x="1160" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="overview" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=15;" value="&lt;div style=&quot;text-align:left;&quot;&gt;澄渊抱静听潮宝册&lt;br&gt;五行：水（按水灵根匹配）&lt;br&gt;可主修／可辅修&lt;br&gt;主修可修至：云息十层&lt;br&gt;构筑：静中积潮，攻击退潮；以护盾与定澜护持。&lt;br&gt;状态：待审图稿，未开放、未接入运行时。&lt;br&gt;待定：累计研读值、各卷灵慧门槛、基础属性永久收益、潮上限具体值。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="190" width="560" x="1160" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第一卷：澄心&lt;br&gt;卷章ID：chengyuan_tingchao_c1&lt;br&gt;顺序：1&lt;br&gt;&lt;br&gt;定位：静中积潮，低潮起护&lt;br&gt;研读值（累计）：待定&lt;br&gt;学成可修至：云息三层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：水&lt;br&gt;境界：凡人境及以上&lt;br&gt;前置：无&lt;br&gt;研读属性：灵慧门槛待定；术法造诣无前置门槛&lt;br&gt;&lt;br&gt;学会永久属性：术法造诣 +0.5；基础属性收益待定&lt;br&gt;&lt;br&gt;习得：无新增&lt;/div&gt;" vertex="1">
+          <mxGeometry height="470" width="340" x="1270" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：澄渊听潮&lt;br&gt;类型：心法&lt;br&gt;关键词：潮&lt;br&gt;效果：每连续完成2次未发动攻击的自身行动，潮上涨4层并重新计数。自身攻击行动结束后，潮下降3层并清除计数。潮节点抵达或经过：8层时，自身获得A点护盾。&lt;br&gt;主修额外效果：每回合首次由本心法涨潮时，额外上涨2层。&lt;br&gt;&lt;br&gt;习得：无新增&lt;/div&gt;" vertex="1">
+          <mxGeometry height="520" width="740" x="20" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：云帔&lt;br&gt;&lt;br&gt;化法追加：施展前潮为0时，额外上涨2层。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="380" width="280" x="1780" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第二卷：听澜&lt;br&gt;卷章ID：chengyuan_tingchao_c2&lt;br&gt;顺序：2&lt;br&gt;&lt;br&gt;定位：延续静中积潮，强化法力构筑&lt;br&gt;研读值（累计）：待定&lt;br&gt;学成可修至：云息六层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：水&lt;br&gt;境界：云息三层及以上&lt;br&gt;前置：chengyuan_tingchao_c1&lt;br&gt;研读属性：灵慧门槛待定；术法造诣 ≥ 0.5&lt;br&gt;&lt;br&gt;学会永久属性：术法造诣 +0.5；基础属性收益待定&lt;br&gt;&lt;br&gt;习得：无新增&lt;/div&gt;" vertex="1">
+          <mxGeometry height="430" width="340" x="1270" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：澄渊听潮（沿用第一卷，无新增效果）&lt;br&gt;&lt;br&gt;习得：无新增&lt;/div&gt;" vertex="1">
+          <mxGeometry height="470" width="740" x="20" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：灵击&lt;br&gt;&lt;br&gt;化法追加：施展前自身潮不少于12层时，本次伤害提高25%。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="390" width="290" x="1780" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第三卷：涵生&lt;br&gt;卷章ID：chengyuan_tingchao_c3&lt;br&gt;顺序：3&lt;br&gt;&lt;br&gt;定位：提升积潮速度并解锁涵生节点&lt;br&gt;研读值（累计）：待定&lt;br&gt;学成可修至：云息九层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：水&lt;br&gt;境界：云息六层及以上&lt;br&gt;前置：chengyuan_tingchao_c2&lt;br&gt;研读属性：灵慧门槛待定；术法造诣 ≥ 1&lt;br&gt;&lt;br&gt;学会永久属性：术法造诣 +1；基础属性收益待定&lt;br&gt;&lt;br&gt;习得：无新增&lt;/div&gt;" vertex="1">
+          <mxGeometry height="470" width="340" x="1270" y="1450" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：澄渊听潮&lt;br&gt;类型：心法&lt;br&gt;关键词：潮&lt;br&gt;效果：每连续完成2次未发动攻击的自身行动，潮上涨5层并重新计数。自身攻击行动结束后，潮下降3层并清除计数。潮节点抵达或经过：8层时，自身获得A点护盾；16层时，自身获得定澜（下次实际命中自身的敌方技能，其所有伤害段额外减伤25%；第四卷35%）。&lt;br&gt;主修额外效果：每回合首次由本心法涨潮时，额外上涨2层。&lt;br&gt;&lt;br&gt;习得：无新增&lt;/div&gt;" vertex="1">
+          <mxGeometry height="260" width="740" x="20" y="1450" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：架招&lt;br&gt;&lt;br&gt;化法追加：实际抵消至少1点物理伤害后，潮上涨2层；每回合限一次。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="520" width="290" x="1780" y="1450" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第四卷：澄渊&lt;br&gt;卷章ID：chengyuan_tingchao_c4&lt;br&gt;顺序：4&lt;br&gt;&lt;br&gt;定位：强化潮节点收益与护盾联动&lt;br&gt;研读值（累计）：待定&lt;br&gt;学成可修至：云息十层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：水&lt;br&gt;境界：云息九层及以上&lt;br&gt;前置：chengyuan_tingchao_c3&lt;br&gt;研读属性：灵慧门槛待定；术法造诣 ≥ 2&lt;br&gt;&lt;br&gt;学会永久属性：术法造诣 +1；基础属性收益待定&lt;br&gt;&lt;br&gt;习得：无新增&lt;/div&gt;" vertex="1">
+          <mxGeometry height="430" width="340" x="1270" y="1990" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：澄渊听潮（沿用第三卷，强化节点收益）&lt;br&gt;类型：心法&lt;br&gt;关键词：潮&lt;br&gt;潮节点抵达或经过：8层时，自身获得A点护盾；16层时，自身获得定澜（下次实际命中自身的敌方技能，其所有伤害段额外减伤35%）。&lt;br&gt;&lt;br&gt;习得：无新增&lt;/div&gt;" vertex="1">
+          <mxGeometry height="470" width="740" x="20" y="1990" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：云帔&lt;br&gt;&lt;br&gt;化法追加：额外为生命比例最低的一名其他存活队友施加本技能等量护盾；并列时随机选择。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="520" width="290" x="1780" y="1990" as="geometry" />
+        </mxCell>
+        <mxCell id="summary" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" value="澄渊听潮·潮节点&#10;8层·清波（第一卷）：自身获得A（A=round(8 + 灵慧×0.45 + 术法造诣×0.60)）点（A=round(6 + 灵慧×0.35 + 术法造诣×0.45)）护盾。&#10;16层·涵生（第三卷）：自身获得定澜。&#10;定澜：下一次实际命中自身的敌方技能，其所有伤害段额外减伤25%；该技能结算后移除，战斗结束清除；不叠加。第四卷提高至35%。&#10;第一至三卷：。&#10;第四卷：。" vertex="1">
+          <mxGeometry height="210" width="420" x="2080" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;最大生命 +8%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="260" x="780" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;法力上限 +1&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="270" x="810" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;精准 +5%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="270" x="820" y="1450" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;最大生命 +10%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="270" x="790" y="1990" as="geometry" />
+        </mxCell>
+        <mxCell id="status_rules" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;&lt;b&gt;公共潮位规则&lt;/b&gt;&lt;br&gt;潮为角色身上的公共战斗状态，各合法来源共用；不自然衰减，战斗结束清零。上限须显著高于18层，具体值待定。&lt;br&gt;&lt;br&gt;潮从S变为T：若T&amp;gt;S，按低到高触发S&amp;lt;N≤T的节点；若T&amp;lt;S，按高到低触发T≤N&amp;lt;S的节点。到达与经过均触发；离开节点不触发。例如15→16与17→16均触发16层节点，16→17不触发。&lt;br&gt;&lt;br&gt;潮位不变不触发；到上限后继续上涨或到0后继续下降均不改变潮位，不触发节点，不存在满潮清空。跨过多个节点按经过顺序各触发一次。&lt;br&gt;&lt;br&gt;同一行动同时产生涨潮和退潮时，先结算退潮，再结算涨潮，分别触发节点；同方向来源按主修、辅修顺序处理。节点效果不改变潮位，不计入心法的自身行动或攻击计数；节点攻击不触发其他角色的潮心法。无合法敌方时伤害节点落空，但已发生的潮位变化保留。定澜不叠加，战斗结束清除。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="920" width="430" x="2080" y="864" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" edge="1" parent="1" source="overview" style="endArrow=block;html=1;" target="c1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_a" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_b" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_c" edge="1" parent="1" source="c1" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c1_cards" value="本卷心法与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_a" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_b" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_c" edge="1" parent="1" source="c2" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c2_cards" value="心法与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_a" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_b" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_c" edge="1" parent="1" source="c3" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c3_cards" value="心法与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_a" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_b" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_c" edge="1" parent="1" source="c4" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c4_cards" value="心法与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="player-rules-entry" value="本图为详细版：效果后以括号列出公式；游戏内可设置简略／详细。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eee8d8;strokeColor=#9a8967;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="2542" width="1000" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="chengyuan-tingchao-review-rules" name="澄渊抱静听潮宝册 · 规则详解">
+    <mxGraphModel dx="1249" dy="614" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2600" pageHeight="2600" math="0" shadow="0">
+      <root>
+        <mxCell id="0" value="" />
+        <mxCell id="1" parent="0" value="" />
+        <mxCell id="title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=20;" value="澄渊抱静听潮宝册" vertex="1">
+          <mxGeometry height="74" width="560" x="1160" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="overview" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=15;" value="&lt;div style=&quot;text-align:left;&quot;&gt;澄渊抱静听潮宝册&lt;br&gt;五行：水（按水灵根匹配）&lt;br&gt;可主修／可辅修&lt;br&gt;主修可修至：云息十层&lt;br&gt;构筑：静中积潮，攻击退潮；以护盾与定澜护持。&lt;br&gt;状态：待审图稿，未开放、未接入运行时。&lt;br&gt;待定：累计研读值、各卷灵慧门槛、基础属性永久收益、潮上限具体值。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="190" width="560" x="1160" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第一卷：澄心&lt;br&gt;卷章ID：chengyuan_tingchao_c1&lt;br&gt;顺序：1&lt;br&gt;&lt;br&gt;定位：静中积潮，低潮起护&lt;br&gt;研读值（累计）：待定&lt;br&gt;学成可修至：云息三层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：水&lt;br&gt;境界：凡人境及以上&lt;br&gt;前置：无&lt;br&gt;研读属性：灵慧门槛待定；术法造诣无前置门槛&lt;br&gt;&lt;br&gt;学会永久属性：术法造诣 +0.5；基础属性收益待定&lt;br&gt;&lt;br&gt;习得：无新增&lt;/div&gt;" vertex="1">
+          <mxGeometry height="470" width="340" x="1270" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：澄渊听潮&lt;br&gt;类型：心法&lt;br&gt;关键词：潮&lt;br&gt;效果：每连续完成2次未发动攻击的自身行动，潮上涨4层并重新计数。自身攻击行动结束后，潮下降3层并清除计数。潮节点抵达或经过：8层时，自身获得A点护盾。&lt;br&gt;主修额外效果：每回合首次由本心法涨潮时，额外上涨2层。&lt;br&gt;&lt;br&gt;习得：无新增&lt;/div&gt;" vertex="1">
+          <mxGeometry height="520" width="740" x="20" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：云帔&lt;br&gt;&lt;br&gt;化法追加：施展前潮为0时，额外上涨2层。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="380" width="280" x="1780" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第二卷：听澜&lt;br&gt;卷章ID：chengyuan_tingchao_c2&lt;br&gt;顺序：2&lt;br&gt;&lt;br&gt;定位：延续静中积潮，强化法力构筑&lt;br&gt;研读值（累计）：待定&lt;br&gt;学成可修至：云息六层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：水&lt;br&gt;境界：云息三层及以上&lt;br&gt;前置：chengyuan_tingchao_c1&lt;br&gt;研读属性：灵慧门槛待定；术法造诣 ≥ 0.5&lt;br&gt;&lt;br&gt;学会永久属性：术法造诣 +0.5；基础属性收益待定&lt;br&gt;&lt;br&gt;习得：无新增&lt;/div&gt;" vertex="1">
+          <mxGeometry height="430" width="340" x="1270" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：澄渊听潮（沿用第一卷，无新增效果）&lt;br&gt;&lt;br&gt;习得：无新增&lt;/div&gt;" vertex="1">
+          <mxGeometry height="470" width="740" x="20" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：灵击&lt;br&gt;&lt;br&gt;化法追加：施展前自身潮不少于12层时，本次伤害提高25%。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="390" width="290" x="1780" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第三卷：涵生&lt;br&gt;卷章ID：chengyuan_tingchao_c3&lt;br&gt;顺序：3&lt;br&gt;&lt;br&gt;定位：提升积潮速度并解锁涵生节点&lt;br&gt;研读值（累计）：待定&lt;br&gt;学成可修至：云息九层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：水&lt;br&gt;境界：云息六层及以上&lt;br&gt;前置：chengyuan_tingchao_c2&lt;br&gt;研读属性：灵慧门槛待定；术法造诣 ≥ 1&lt;br&gt;&lt;br&gt;学会永久属性：术法造诣 +1；基础属性收益待定&lt;br&gt;&lt;br&gt;习得：无新增&lt;/div&gt;" vertex="1">
+          <mxGeometry height="470" width="340" x="1270" y="1450" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：澄渊听潮&lt;br&gt;类型：心法&lt;br&gt;关键词：潮&lt;br&gt;效果：每连续完成2次未发动攻击的自身行动，潮上涨5层并重新计数。自身攻击行动结束后，潮下降3层并清除计数。潮节点抵达或经过：8层时，自身获得A点护盾；16层时，自身获得定澜（下次实际命中自身的敌方技能，其所有伤害段额外减伤25%；第四卷35%）。&lt;br&gt;主修额外效果：每回合首次由本心法涨潮时，额外上涨2层。&lt;br&gt;&lt;br&gt;习得：无新增&lt;/div&gt;" vertex="1">
+          <mxGeometry height="260" width="740" x="20" y="1450" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：架招&lt;br&gt;&lt;br&gt;化法追加：实际抵消至少1点物理伤害后，潮上涨2层；每回合限一次。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="520" width="290" x="1780" y="1450" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第四卷：澄渊&lt;br&gt;卷章ID：chengyuan_tingchao_c4&lt;br&gt;顺序：4&lt;br&gt;&lt;br&gt;定位：强化潮节点收益与护盾联动&lt;br&gt;研读值（累计）：待定&lt;br&gt;学成可修至：云息十层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：水&lt;br&gt;境界：云息九层及以上&lt;br&gt;前置：chengyuan_tingchao_c3&lt;br&gt;研读属性：灵慧门槛待定；术法造诣 ≥ 2&lt;br&gt;&lt;br&gt;学会永久属性：术法造诣 +1；基础属性收益待定&lt;br&gt;&lt;br&gt;习得：无新增&lt;/div&gt;" vertex="1">
+          <mxGeometry height="430" width="340" x="1270" y="1990" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：澄渊听潮（沿用第三卷，强化节点收益）&lt;br&gt;类型：心法&lt;br&gt;关键词：潮&lt;br&gt;潮节点抵达或经过：8层时，自身获得A点护盾；16层时，自身获得定澜（下次实际命中自身的敌方技能，其所有伤害段额外减伤35%）。&lt;br&gt;&lt;br&gt;习得：无新增&lt;/div&gt;" vertex="1">
+          <mxGeometry height="470" width="740" x="20" y="1990" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：云帔&lt;br&gt;&lt;br&gt;化法追加：额外为生命比例最低的一名其他存活队友施加本技能等量护盾；并列时随机选择。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="520" width="290" x="1780" y="1990" as="geometry" />
+        </mxCell>
+        <mxCell id="summary" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" value="&lt;div style=&quot;text-align:left;&quot;&gt;&lt;b&gt;澄渊听潮·潮节点&lt;/b&gt;&lt;br&gt;8层·清波（第一卷）：自身获得A点护盾。&lt;br&gt;16层·涵生（第三卷）：自身获得定澜。&lt;br&gt;定澜：下一次实际命中自身的敌方技能，其所有伤害段额外减伤25%；该技能结算后移除，战斗结束清除；不叠加。第四卷提高至35%。&lt;br&gt;第一至三卷：A=round(6 + 灵慧×0.35 + 术法造诣×0.45)。&lt;br&gt;第四卷：A=round(8 + 灵慧×0.45 + 术法造诣×0.60)。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="210" width="420" x="2080" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;最大生命 +8%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="260" x="780" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;法力上限 +1&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="270" x="810" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;精准 +5%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="270" x="820" y="1450" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;最大生命 +10%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="270" x="790" y="1990" as="geometry" />
+        </mxCell>
+        <mxCell id="status_rules" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;&lt;b&gt;公共潮位规则&lt;/b&gt;&lt;br&gt;潮为角色身上的公共战斗状态，各合法来源共用；不自然衰减，战斗结束清零。上限须显著高于18层，具体值待定。&lt;br&gt;&lt;br&gt;潮从S变为T：若T&amp;gt;S，按低到高触发S&amp;lt;N≤T的节点；若T&amp;lt;S，按高到低触发T≤N&amp;lt;S的节点。到达与经过均触发；离开节点不触发。例如15→16与17→16均触发16层节点，16→17不触发。&lt;br&gt;&lt;br&gt;潮位不变不触发；到上限后继续上涨或到0后继续下降均不改变潮位，不触发节点，不存在满潮清空。跨过多个节点按经过顺序各触发一次。&lt;br&gt;&lt;br&gt;同一行动同时产生涨潮和退潮时，先结算退潮，再结算涨潮，分别触发节点；同方向来源按主修、辅修顺序处理。节点效果不改变潮位，不计入心法的自身行动或攻击计数；节点攻击不触发其他角色的潮心法。无合法敌方时伤害节点落空，但已发生的潮位变化保留。定澜不叠加，战斗结束清除。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="920" width="430" x="2080" y="864" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" edge="1" parent="1" source="overview" style="endArrow=block;html=1;" target="c1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_a" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_b" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_c" edge="1" parent="1" source="c1" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c1_cards" value="本卷心法与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_a" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_b" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_c" edge="1" parent="1" source="c2" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c2_cards" value="心法与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_a" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_b" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_c" edge="1" parent="1" source="c3" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c3_cards" value="心法与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_a" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_b" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_c" edge="1" parent="1" source="c4" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c4_cards" value="心法与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

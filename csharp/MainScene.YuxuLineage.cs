@@ -141,6 +141,14 @@ public partial class MainScene
         human.sect_current_rank = currentRank;
         human.sect_admission_guide_npc_id = admissionGuide.npc_id;
         human.sect_entry_total_game_hours = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? -1;
+        human.sect_true_disciple_lecture_next_due_hour = is_yuxu_true_disciple(currentRank) && human.sect_entry_total_game_hours >= 0
+            ? human.sect_entry_total_game_hours + YuxuTrueDiscipleLectureInitialDelayHours
+            : -1;
+        human.sect_true_disciple_lecture_last_attended_hour = -1;
+        human.sect_true_disciple_lecture_consecutive_leave_count = 0;
+        human.sect_true_disciple_lecture_last_leave_hour = -1;
+        human.sect_true_disciple_lecture_missed_count = 0;
+        human.sect_true_disciple_lecture_last_missed_hour = -1;
         human.sect_lineage_gongfa_path = "";
         human.sect_lineage_first_volume_only_access = false;
         human.sect_lineage_reported_first_volume = false;

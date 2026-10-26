@@ -13,7 +13,16 @@ public partial class EastWoodsDungeonPanel
     {
         finish_pawn_step();
         if (!IsInsideTree() || !IsVisibleInTree() || _actionBusy || _npcEncounterBusy ||
-            _actionModal?.Visible == true || GetTree().Paused || ActionRequested is null) return;
+            _actionModal?.Visible == true || GetTree().Paused) return;
+        if (!_dynamicMode)
+        {
+            var content = available_actions(_current).OrderByDescending(action => action.Battle).FirstOrDefault();
+            if (content is null) return;
+            interrupt_travel();
+            offer_arrival_narration(content);
+            return;
+        }
+        if (ActionRequested is null) return;
         var encounter = available_actions(_current).FirstOrDefault(action => action.Battle);
         if (encounter is null) return;
         var node = _current;
@@ -29,7 +38,7 @@ public partial class EastWoodsDungeonPanel
         {
             // The action badge was resolved during this refresh. Reuse it rather
             // than scanning encounter history a second time for each map cell.
-            var active = is_node_visible(node.Id) &&
+            var active = _dynamicMode && is_node_visible(node.Id) &&
                 _actionBadgeCache.TryGetValue(node.Id, out var badge) && badge == "兽踪";
             if (!_beastEncounterMarkers.TryGetValue(node.Id, out var marker) || !IsInstanceValid(marker))
             {

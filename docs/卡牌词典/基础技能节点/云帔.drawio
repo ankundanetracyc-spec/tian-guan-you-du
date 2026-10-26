@@ -1,0 +1,27 @@
+<mxfile host="app.diagrams.net" agent="Codex" version="24.7.17">
+  <diagram id="yunpei-personal-node" name="云帔">
+    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="780" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="yunpei_cards" value="技能名：云帔&#10;来源：个人造诣图谱（当前提案归入纳炁面）&#10;节点ID、前置、参悟门槛、图谱位置：待定&#10;关键词：护盾&#10;耗费：体力 0、法力 1&#10;目标：自身&#10;效果：自身获得A点（A=round(6 + 灵慧×0.20 + 神魂×0.20 + 术法造诣×0.25)）护盾。&#10;。&#10;使用次数：不限。持续法力成本足以限制使用，不增加次数或冷却限制。&#10;&#10;玄枢含章经第二卷不再授予基础云帔，但保留其化法。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e7eee4;strokeColor=#769078;fontSize=18;align=left;spacingLeft=18;spacingTop=16;" vertex="1" parent="1">
+          <mxGeometry x="260" y="100" width="980" height="560" as="geometry" />
+        </mxCell>
+        <mxCell id="player-rules-entry" value="本图为详细版：效果后以括号列出公式；游戏内可设置简略／详细。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eee8d8;strokeColor=#9a8967;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="692" width="1000" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="yunpei-personal-node-rules" name="云帔 · 规则详解">
+    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="720" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="yunpei_cards" value="技能名：云帔&lt;br&gt;来源：个人造诣图谱（当前提案归入纳炁面）&lt;br&gt;节点ID、前置、参悟门槛、图谱位置：待定&lt;br&gt;资源路径（当前运行时；迁移待接入）：res://resources/activeskills/玄枢含章经/云帔.tres&lt;br&gt;关键词：护盾&lt;br&gt;耗费：体力 0、法力 1&lt;br&gt;目标：自身&lt;br&gt;效果：自身获得A点&lt;u&gt;护盾&lt;/u&gt;。&lt;br&gt;计算公式：A=round(6 + 灵慧×0.20 + 神魂×0.20 + 术法造诣×0.25)。&lt;br&gt;使用次数：不限。持续法力成本足以限制使用，不增加次数或冷却限制。&lt;br&gt;&lt;br&gt;玄枢含章经第二卷不再授予基础云帔，但保留其化法。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e7eee4;strokeColor=#769078;fontSize=18;align=left;spacingLeft=18;spacingTop=16;" vertex="1" parent="1">
+          <mxGeometry x="260" y="100" width="980" height="560" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

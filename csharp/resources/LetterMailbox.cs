@@ -45,10 +45,14 @@ public partial class LetterMailbox : Resource
         if (Find(id)?.invitation is not { response: "accepted" } invite) return false;
         invite.response = "completed"; EmitChanged(); return true;
     }
-    public static string Date(int hour, bool includeTime = true)
+    public bool FailInvitation(string id)
+    {
+        if (Find(id)?.invitation is not { response: "accepted" } invite) return false;
+        invite.response = "failed"; EmitChanged(); return true;
+    }
+    public static string Date(int hour)
     {
         hour = Math.Max(0, hour); var day = hour / 24;
-        var date = $"昭明 {GameTimeMgr.ZhaomingStartYear + day / 360}年{day / 30 % 12 + 1}月{day % 30 + 1}日";
-        return includeTime ? $"{date} · {hour % 24:00}时" : date;
+        return $"昭明 {GameTimeMgr.ZhaomingStartYear + day / 360}年{day / 30 % 12 + 1}月{day % 30 + 1}日";
     }
 }

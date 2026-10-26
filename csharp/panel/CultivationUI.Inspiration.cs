@@ -409,7 +409,6 @@ public partial class CultivationUI
         var dayIndex = totalHours / 24;
         var year = dayIndex / 360 + 1;
         var dayOfYear = dayIndex % 360;
-        var hour = totalHours % 24;
-        return $"{year}年{dayOfYear / 30 + 1}月{dayOfYear % 30 + 1}日 {hour:00}时";
+        return $"{year}年{dayOfYear / 30 + 1}月{dayOfYear % 30 + 1}日";
     }
 }

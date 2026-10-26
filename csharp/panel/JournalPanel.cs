@@ -34,7 +34,7 @@ public partial class JournalPanel : Control
     {
         if (!Visible) return;
         if (GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is { } time)
-            _time.Text = $"{time.year}年{time.month}月{time.day}日 · {time.hour:00}时";
+            _time.Text = $"{time.year}年{time.month}月{time.day}日";
     }
     public override void _UnhandledKeyInput(InputEvent @event)
     {

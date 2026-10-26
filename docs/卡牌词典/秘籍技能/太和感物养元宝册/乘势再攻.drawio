@@ -1,6 +1,19 @@
-<?xml version='1.0' encoding='utf-8'?>
 <mxfile host="app.diagrams.net" agent="Codex" version="24.7.17">
   <diagram id="taihe-koushan" name="乘势再攻">
+    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="720" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="card" value="技能名：乘势再攻&#10;关键词：应对&#10;耗费：体力1、法力0&#10;目标：指定1名敌方&#10;出手方式：近身&#10;效果：造成A点（A=round(8 + 体魄×0.65 + 体道造诣×0.2)）物理伤害。目标以应对技能应对此次攻击时，追加一段攻击；初始攻击段未造成伤害时，再追加一段攻击。两项条件分别判定，同时满足时各追加一段。&#10;。&#10;使用次数：不限&#10;冷却：无" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e7eee4;strokeColor=#769078;fontSize=18;align=left;spacingLeft=18;spacingTop=16;" vertex="1" parent="1">
+          <mxGeometry x="120" y="48" width="1260" height="430" as="geometry" />
+        </mxCell>
+        <mxCell id="player-rules-entry" value="本图为详细版：效果后以括号列出公式；游戏内可设置简略／详细。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eee8d8;strokeColor=#9a8967;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="510" width="1000" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="taihe-koushan-rules" name="乘势再攻 · 规则详解">
     <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="720" math="0" shadow="0">
       <root>
         <mxCell id="0" />

@@ -32,9 +32,12 @@ public partial class BattleManager
         if (pill is null) return new("未编入", "请在战前确认页从本人的行囊配置战备。每人3位，每位最多5件同一物品。");
         var amount = BattleSupplyRules.Amount(pill, get_effective_mana_capacity(owner), owner.PillToxicity);
         if (pill.pill_id == "huichun" && amount > 0) amount = Mathf.Max(1, Mathf.RoundToInt(amount * (1 + Mathf.Max(0, owner.healing_received_bonus))));
-        var effect = pill.pill_id == "huichun" ? $"恢复自身{amount}点生命值，不超过生命上限。" : $"恢复自身{amount}点法力，不超过当前有效法力上限。";
-        return new(BattleSupplyRules.Name(pill), $"目标：自身\n\n{effect}\n\n占1个行动位；不额外消耗体力、法力或灵识。\n实际生效才扣1颗；无收益则跳过并保留丹药。\n服用后丹毒＋{PillToxicityRules.Load(pill.pill_id, pill.efficacy_tier)}。\n\n剩余{slot?.count ?? 0}颗 · 已排{get_planned_pill_count(owner, index)}次\n点击排入第一个空行动位。",
-            GD.Load<Texture2D>(pill.icon_path), $"九品丹药 · {BattleSupplyRules.QualityNames[pill.efficacy_tier]}");
+        var tier = pill.efficacy_tier;
+        var absorption = owner.PillAbsorption * 100;
+        var effect = pill.pill_id == "huichun"
+            ? $"恢复自身{amount}点生命值，基础{AlchemyProductCatalog.Healing[tier]}点 计算公式：四舍五入(取较大值(1,向下取整({AlchemyProductCatalog.Healing[tier]}×{absorption:0.##}%))×{1 + Mathf.Max(0, owner.healing_received_bonus):0.####})＝{amount}"
+            : $"恢复自身{amount}点法力，基础为有效法力上限的{AlchemyProductCatalog.ManaPercent[tier]}% 计算公式：有效法力上限[{get_effective_mana_capacity(owner)}]×{AlchemyProductCatalog.ManaPercent[tier]}%×{absorption:0.##}%，向下取整且基础恢复大于0时至少1点＝{amount}";
+        return AlchemyPillVisual.Hover(pill, user: owner, effectOverride: effect);
     }
 
     private void ResolvePillAction(GodotObject unit, BattleQueuedSkill action)

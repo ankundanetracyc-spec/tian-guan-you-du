@@ -16,6 +16,6 @@ public static class GameTimeText
     {
         var total = Math.Max(0, hours);
         var days = total / 24;
-        return $"{days / 360 + 1}年{days % 360 / 30 + 1}月{days % 30 + 1}日 {total % 24:00}时";
+        return $"{days / 360 + 1}年{days % 360 / 30 + 1}月{days % 30 + 1}日";
     }
 }

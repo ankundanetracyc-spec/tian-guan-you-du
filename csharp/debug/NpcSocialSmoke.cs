@@ -557,10 +557,10 @@ public partial class NpcSocialSmoke : Node
                 new BanquetRosterEntry { Id = "player", Name = "试验主持" },
                 Enumerable.Range(1, 5).Select(index => new BanquetRosterEntry { Id = $"guest-{index}", Name = $"宾客{index}" }).ToArray(),
                 [
-                    new BanquetVenueOption { Id = "gathering_hall", Name = "同门雅集堂", CostText = "5 点贡献", CapacityIncludingHost = 6 },
-                    new BanquetVenueOption { Id = "waterside_pavilion", Name = "临水水榭", CostText = "2 枚灵石", CapacityIncludingHost = 4 },
+                    new BanquetVenueOption { Id = "gathering_hall", Name = "同门雅集堂", CostText = "5 点贡献", CapacityIncludingHost = 12 },
+                    new BanquetVenueOption { Id = "waterside_pavilion", Name = "临水水榭", CostText = "2 枚灵石", CapacityIncludingHost = 6 },
                 ],
-                [new BanquetTimeOption { Label = "此时", StartsAtHour = 120 }]);
+                [new BanquetTimeOption { Label = "当日", StartsAtHour = 120 }]);
             var banquetChecks = Read<System.Collections.Generic.Dictionary<string, CheckBox>>(banquet, "_guestChecks");
             var selectedBanquetGuests = Read<System.Collections.Generic.HashSet<string>>(banquet, "_selectedGuestIds");
             foreach (var guestId in Enumerable.Range(1, 5).Select(index => $"guest-{index}"))

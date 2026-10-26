@@ -66,6 +66,9 @@ public partial class Character
             human.inventory_item_positions = new(positions);
             human.current_world_stamina = Math.Max(0, human.current_world_stamina - result.Energy);
             if (product is not null) { human.artifact_inventory.Add(product); human.artifact_inventory_positions.Add(free); }
+            human.forging_records.Add(crafting_record_date() + (result.Success ? $"炼成{result.Product!.Name}" : "未成器") +
+                $" · {result.Hours}时辰 · 精力{result.Energy}\n" + string.Join("、", draft.Inputs.Select(i =>
+                    $"{i.Role.Replace("复合身材", "辅体")}：{i.Material}×{i.Quantity}")));
             notify_inventory_changed();
             WorldStaminaChanged?.Invoke(this);
             if (IsInsideTree())

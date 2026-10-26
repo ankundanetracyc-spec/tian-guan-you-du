@@ -20,7 +20,7 @@ const PEAKS := {
 	"guanfu": {
 		"title": "观复峰",
 		"subtitle": "外门、内门与日常修持",
-		"body": "这里是杂役、外门与内门弟子的日常居所，静室与休息处按身份供弟子使用；月例在此按月发放。其余峰内活动随具体玩法逐步开放。",
+		"body": "这里是杂役、外门与内门弟子的日常居所、修习与授业活动之处；静室与休息处按身份供弟子使用，月例在此按月发放。真传入宗满一年后，每半年一期的答疑讲席也在此开设，面向外门与内门弟子。",
 		"background": "res://textures/sect_overview/peaks/yuxu_peak_guanfu_v4.png"
 	},
 	"zifu": {
@@ -31,8 +31,8 @@ const PEAKS := {
 	},
 	"xuanlan": {
 		"title": "玄览峰",
-		"subtitle": "藏经、讲法与传承",
-		"body": "可在此研读当前已有权限的典籍；真传首卷仍按师承流程回紫府峰静室研读并汇报。其他讲法与传承考核尚未开放。",
+		"subtitle": "藏经、研读与传承",
+		"body": "可在此研读当前已有权限的典籍；真传首卷仍按师承流程回紫府峰静室研读并汇报。",
 		"background": "res://textures/sect_overview/peaks/yuxu_peak_xuanlan_v4.png"
 	},
 	"tianwen": {
@@ -89,6 +89,8 @@ var _lineage_guide_name := ""
 var _lineage_book_name := ""
 var _lineage_first_volume_complete := false
 var _lineage_reported_first_volume := false
+var _lineage_lecture_available := false
+var _lineage_lecture_status := ""
 var _duty_board_open := false
 var _duty_board: Control
 var _exchange_board_open := false
@@ -232,6 +234,14 @@ func set_lineage_context(is_true_disciple: bool, teacher_name: String, guide_nam
 	elif is_visible_in_tree():
 		_refresh_main_actions()
 
+func set_lineage_lecture_context(is_available: bool, status: String) -> void:
+	_lineage_lecture_available = is_available
+	_lineage_lecture_status = status
+	if _life_page_open:
+		_refresh_life_page()
+	elif is_visible_in_tree():
+		_refresh_main_actions()
+
 func set_contribution_balance(value: int) -> void:
 	_sect_contribution_balance = maxi(0, value)
 	if is_instance_valid(_exchange_board):
@@ -299,7 +309,11 @@ func _build_life_actions() -> void:
 		["lineage_choose_teacher", "择师"],
 		["lineage_book_selection", "师门选书"],
 		["lineage_report", "首卷汇报"],
+		["lineage_lecture_checkin", "开设讲席"],
+		["lineage_lecture_leave_request", "讲席请假"],
 		["tiangong_baigong", "百工"],
+		["tiangong_alchemy", "丹房 · 炼丹"],
+		["tiangong_forging", "器作 · 炼器"],
 		["zhizhong_case_review", "案件核验"],
 		["zhizhong_case_docket", "裁断与申诉复核"],
 		["zhizhong_case_enforce", "执行终局裁断"],
@@ -391,6 +405,9 @@ func _refresh_life_page() -> void:
 	admission_button.hide()
 	var life_actions := ["meditation", "rest", "claim_allowance"]
 	if _is_true_disciple():
+		life_actions.append("lineage_lecture_leave_request")
+		if not _lineage_lecture_status.is_empty():
+			body_label.text += "\n真传讲席：%s。" % _lineage_lecture_status
 		if _lineage_teacher_name.is_empty():
 			life_actions.insert(0, "lineage_choose_teacher")
 			body_label.text += "\n师承尚未登记；先选择一位宗内师父。"
@@ -466,6 +483,10 @@ func _close_duty_board() -> void:
 func _refresh_main_actions() -> void:
 	for button in _life_action_buttons:
 		button.hide()
+	if not _current_peak_id.is_empty() and PEAKS.has(_current_peak_id):
+		subtitle_label.text = str(PEAKS[_current_peak_id]["subtitle"])
+		if _current_peak_id == "guanfu" and _lineage_is_true_disciple and not _lineage_lecture_status.is_empty():
+			subtitle_label.text += " · " + _lineage_lecture_status
 	if _current_peak_id == "heguang" and _sect_is_member:
 		for action_id in ["heguang_duties", "heguang_peer_qa", "heguang_banquet", "sect_exchange"]:
 			var button := _action_buttons.get(action_id) as Button
@@ -476,9 +497,10 @@ func _refresh_main_actions() -> void:
 		if practice_button != null:
 			practice_button.show()
 	if _current_peak_id == "tiangong" and _sect_is_member:
-		var baigong_button := _action_buttons.get("tiangong_baigong") as Button
-		if baigong_button != null:
-			baigong_button.show()
+		for action_id in ["tiangong_baigong", "tiangong_alchemy", "tiangong_forging"]:
+			var workshop_button := _action_buttons.get(action_id) as Button
+			if workshop_button != null:
+				workshop_button.show()
 	if _current_peak_id == "zhizhong" and _sect_is_member:
 		var case_review_button := _action_buttons.get("zhizhong_case_review") as Button
 		if case_review_button != null and _sect_active_duty_id == "east_woods_conflict_review" and not _sect_active_incident_id.is_empty():
@@ -499,6 +521,10 @@ func _refresh_main_actions() -> void:
 		var lineage_button := _action_buttons.get("lineage_book_selection") as Button
 		if lineage_button != null:
 			lineage_button.show()
+	if _current_peak_id == "guanfu" and _sect_is_member and _lineage_is_true_disciple and _lineage_lecture_available:
+		var lecture_button := _action_buttons.get("lineage_lecture_checkin") as Button
+		if lecture_button != null:
+			lecture_button.show()
 	if _current_peak_id == "xuanlan" and _sect_is_member and (not _lineage_is_true_disciple or _lineage_reported_first_volume):
 		var study_button := _action_buttons.get("xuanlan_study") as Button
 		if study_button != null:

@@ -1,8 +1,45 @@
-<?xml version="1.0" encoding="utf-8"?>
-<mxfile host="app.diagrams.net" agent="Codex" version="24.7.17"><diagram id="forest-bei-cry" name="狈啸"><mxGraphModel grid="1" gridSize="10" page="1" pageWidth="1700" pageHeight="760"><root>
-<mxCell id="0"/><mxCell id="1" parent="0"/>
-<mxCell id="main" value="卡牌名：狈啸&lt;br&gt;费用：体力1&lt;br&gt;目标：指定1名敌方&lt;br&gt;出手方式：远程&lt;br&gt;伤害类型：神魂&lt;br&gt;关键词：无&lt;br&gt;效果：对指定1名敌方造成A点神魂伤害。&lt;br&gt;A=round(4＋灵慧×0.6＋神魂×0.8)。&lt;br&gt;资源：res://resources/activeskills/妖兽/林地妖狈/狈啸.tres" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=18;align=left;verticalAlign=top;spacing=18;" vertex="1" parent="1"><mxGeometry x="450" y="150" width="800" height="400" as="geometry"/></mxCell>
-<mxCell id="source" value="来源／前置&#xa;林地妖狈技能库&#xa;无装备要求" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=17;" vertex="1" parent="1"><mxGeometry x="100" y="220" width="270" height="150" as="geometry"/></mxCell>
-<mxCell id="limits" value="结算边界&#xa;正常行动槽，1体力&#xa;无返费、额外行动或附加状态&#xa;神魂对抗与伤害沿用现有规则&#xa;无额外次数或回合冷却" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=17;" vertex="1" parent="1"><mxGeometry x="1330" y="200" width="300" height="220" as="geometry"/></mxCell>
-<mxCell id="e" edge="1" source="source" target="main" parent="1" style="endArrow=block;"><mxGeometry relative="1" as="geometry"/></mxCell>
-</root></mxGraphModel></diagram></mxfile>
+<mxfile host="app.diagrams.net" agent="Codex" version="24.7.17">
+  <diagram id="forest-bei-cry" name="狈啸">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageWidth="1700" pageHeight="760">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="main" value="卡牌名：狈啸&#10;费用：体力1&#10;目标：指定1名敌方&#10;出手方式：远程&#10;伤害类型：神魂&#10;关键词：无&#10;效果：对指定1名敌方造成A点（A=round(4＋灵慧×0.6＋神魂×0.8)）神魂伤害。&#10;。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=18;align=left;verticalAlign=top;spacing=18;" vertex="1" parent="1">
+          <mxGeometry x="450" y="150" width="800" height="400" as="geometry" />
+        </mxCell>
+        <mxCell id="source" value="来源／前置&#10;林地妖狈技能库&#10;无装备要求" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="100" y="220" width="270" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="limits" value="结算边界&#10;正常行动槽，1体力&#10;无返费、额外行动或附加状态&#10;神魂对抗与伤害沿用现有规则&#10;无额外次数或回合冷却" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="1330" y="200" width="300" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="e" edge="1" source="source" target="main" parent="1" style="endArrow=block;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="player-rules-entry" value="本图为详细版：效果后以括号列出公式；游戏内可设置简略／详细。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eee8d8;strokeColor=#9a8967;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="582" width="1000" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="forest-bei-cry-rules" name="狈啸 · 规则详解">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageWidth="1700" pageHeight="760">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="main" value="卡牌名：狈啸&lt;br&gt;费用：体力1&lt;br&gt;目标：指定1名敌方&lt;br&gt;出手方式：远程&lt;br&gt;伤害类型：神魂&lt;br&gt;关键词：无&lt;br&gt;效果：对指定1名敌方造成A点神魂伤害。&lt;br&gt;A=round(4＋灵慧×0.6＋神魂×0.8)。&lt;br&gt;资源：res://resources/activeskills/妖兽/林地妖狈/狈啸.tres" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=18;align=left;verticalAlign=top;spacing=18;" vertex="1" parent="1">
+          <mxGeometry x="450" y="150" width="800" height="400" as="geometry" />
+        </mxCell>
+        <mxCell id="source" value="来源／前置&#10;林地妖狈技能库&#10;无装备要求" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="100" y="220" width="270" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="limits" value="结算边界&#10;正常行动槽，1体力&#10;无返费、额外行动或附加状态&#10;神魂对抗与伤害沿用现有规则&#10;无额外次数或回合冷却" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="1330" y="200" width="300" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="e" edge="1" source="source" target="main" parent="1" style="endArrow=block;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

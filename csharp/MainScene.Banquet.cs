@@ -33,6 +33,7 @@ public partial class MainScene
         foreach (var item in _loaded_game_save?.banquet_events ?? [])
             if (item is not null && item.Duplicate(true) is BanquetEventData copy)
                 _banquetEvents.Add(copy);
+        normalize_npc_banquet_invitation_windows();
 
         _banquetPanel = new BanquetPanel { Name = "BanquetPanel" };
         GetNode<CanvasLayer>("CanvasLayer").AddChild(_banquetPanel);
@@ -41,6 +42,29 @@ public partial class MainScene
         _banquetPanel.AmbientBeatFinished += on_banquet_ambient_finished;
         _banquetPanel.ActivityExitRequested += on_banquet_exit_requested;
         register_letter_activity("banquet", attend_npc_banquet_invitation);
+    }
+
+    private void normalize_npc_banquet_invitation_windows()
+    {
+        var changed = false;
+        foreach (var eventData in _banquetEvents.Where(item => !item.player_is_host && item.status == BanquetEventData.Scheduled))
+        {
+            var dayStart = Math.Max(0, eventData.starts_at_hour) / 24 * 24;
+            var letter = !string.IsNullOrWhiteSpace(eventData.source_letter_id)
+                ? _letterMailbox.Find(eventData.source_letter_id)
+                : _letterMailbox.letters.FirstOrDefault(item => item.invitation?.activity_instance_id == eventData.event_id);
+            if (letter?.invitation is not { activity_key: "banquet" } invitation) continue;
+            if (eventData.starts_at_hour != dayStart) { eventData.starts_at_hour = dayStart; changed = true; }
+            if (invitation.starts_at_hour != dayStart) { invitation.starts_at_hour = dayStart; changed = true; }
+            if (invitation.ends_at_hour != dayStart + 24) { invitation.ends_at_hour = dayStart + 24; changed = true; }
+            var replyDateEnd = Math.Min(dayStart, Math.Max(0, invitation.reply_by_hour) / 24 * 24 + 24);
+            if (invitation.reply_by_hour != replyDateEnd) { invitation.reply_by_hour = replyDateEnd; changed = true; }
+            if (string.IsNullOrWhiteSpace(eventData.source_letter_id) && !string.IsNullOrWhiteSpace(letter.letter_id))
+            { eventData.source_letter_id = letter.letter_id; changed = true; }
+        }
+        if (!changed) return;
+        mark_save_dirty();
+        _letterMailbox.EmitChanged();
     }
 
     private bool is_at_heguang_banquet_venue()
@@ -55,9 +79,9 @@ public partial class MainScene
     {
         if (_banquetPanel is null || player is null || player.entity_data is not HumanData human ||
             human.sect_affiliation_id != YuxuSectId || !is_at_heguang_banquet_venue()) return;
-        if (_banquetEvents.Any(item => item.status is BanquetEventData.Scheduled or BanquetEventData.InProgress))
+        if (_banquetEvents.Any(item => item.status == BanquetEventData.InProgress))
         {
-            show_message("同门雅集", "已有一场宴席正在安排或进行；请先完成这一场，再筹办下一席。");
+            show_message("同门雅集", "你正在参加另一场雅集，结束后再筹办新席。");
             return;
         }
 
@@ -74,13 +98,13 @@ public partial class MainScene
             new BanquetRosterEntry { Id = BanquetPlayerId, Name = human.entity_name, Subtitle = human.sect_current_rank, PlayerCharacter = player },
             roster,
             [
-                new BanquetVenueOption { Id = BanquetVenueHall, Name = "同门雅集堂", CostText = "5 点贡献", CapacityIncludingHost = 6, Description = "雅集堂可容纳六人，布置清简，适合稍多几位同门相聚。费用在开席时扣除。" },
-                new BanquetVenueOption { Id = BanquetVenuePavilion, Name = "临水水榭", CostText = "2 枚灵石", CapacityIncludingHost = 4, Description = "临水水榭最多四人，席面较静，适合小范围交谈。费用在开席时扣除。" },
+                new BanquetVenueOption { Id = BanquetVenueHall, Name = "同门雅集堂", CostText = "5 点贡献", CapacityIncludingHost = 12, Description = "雅集堂可容纳十二人，适合多位同门相聚。费用在开席时扣除。" },
+                new BanquetVenueOption { Id = BanquetVenuePavilion, Name = "临水水榭", CostText = "2 枚灵石", CapacityIncludingHost = 6, Description = "临水水榭最多六人，适合小范围交谈。费用在开席时扣除。" },
             ],
             [
                 new BanquetTimeOption { Label = "现在开席", StartsAtHour = now },
-                new BanquetTimeOption { Label = $"明日 · {LetterMailbox.Date(now + 24, false)}", StartsAtHour = now + 24 },
-                new BanquetTimeOption { Label = $"三日后 · {LetterMailbox.Date(now + 72, false)}", StartsAtHour = now + 72 },
+                new BanquetTimeOption { Label = $"明日 · {LetterMailbox.Date(now + 24)}", StartsAtHour = now + 24 },
+                new BanquetTimeOption { Label = $"三日后 · {LetterMailbox.Date(now + 72)}", StartsAtHour = now + 72 },
             ]);
     }
 
@@ -115,7 +139,15 @@ public partial class MainScene
             request.StartsAtHour > time.get_total_game_hours() + 72)
         {
             _banquetPanel.Close();
-            show_message("宴席未安排", "宴席时辰或场地已失效，请重新安排。没有扣除费用或时间。");
+            show_message("宴席未安排", "宴席日期或场地安排已失效，请重新安排。没有扣除费用或时间。");
+            return;
+        }
+        if (_banquetEvents.Any(item => item.player_is_host && item.status == BanquetEventData.Scheduled &&
+                request.StartsAtHour < item.starts_at_hour + Math.Max(1, item.duration_hours) &&
+                request.StartsAtHour + BanquetDurationHours > item.starts_at_hour))
+        {
+            _banquetPanel.Close();
+            show_message("宴席未安排", "你在这段时间已有一场待办雅集，请另选日期。没有扣除费用或时间。");
             return;
         }
 
@@ -153,8 +185,8 @@ public partial class MainScene
 
     private static BanquetVenueOption? venue_for(string venueId) => venueId switch
     {
-        BanquetVenueHall => new BanquetVenueOption { Id = BanquetVenueHall, Name = "同门雅集堂", CostText = "5 点贡献", CapacityIncludingHost = 6 },
-        BanquetVenuePavilion => new BanquetVenueOption { Id = BanquetVenuePavilion, Name = "临水水榭", CostText = "2 枚灵石", CapacityIncludingHost = 4 },
+        BanquetVenueHall => new BanquetVenueOption { Id = BanquetVenueHall, Name = "同门雅集堂", CostText = "5 点贡献", CapacityIncludingHost = 12 },
+        BanquetVenuePavilion => new BanquetVenueOption { Id = BanquetVenuePavilion, Name = "临水水榭", CostText = "2 枚灵石", CapacityIncludingHost = 6 },
         _ => null,
     };
 
@@ -163,6 +195,8 @@ public partial class MainScene
         _banquetSchedulePoll += delta;
         if (_banquetSchedulePoll < .5) return;
         _banquetSchedulePoll = 0;
+        var now = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+        expire_missed_npc_banquets(now);
         process_npc_banquet_invitation_schedule();
 
         if (_banquetEvents.FirstOrDefault(item => item.status == BanquetEventData.InProgress) is { } active)
@@ -170,7 +204,6 @@ public partial class MainScene
             if (_banquetPanel?.Visible != true) resume_banquet_event(active);
             return;
         }
-        var now = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
         var due = _banquetEvents.FirstOrDefault(item => item.status == BanquetEventData.Scheduled && item.player_is_host && item.starts_at_hour <= now);
         if (due is null) return;
         if (!is_at_heguang_banquet_venue())
@@ -198,7 +231,7 @@ public partial class MainScene
         if (quarter <= _lastNpcBanquetQuarter) return;
         _lastNpcBanquetQuarter = quarter;
         mark_save_dirty(); // A missed quarter does not accumulate a later duplicate invitation.
-        if (_npc_world is null || _banquetEvents.Any(item => item.status is BanquetEventData.Scheduled or BanquetEventData.InProgress)) return;
+        if (_npc_world is null) return;
 
         var roster = _npc_world.get_subscene_roster("yuxu_xianzong_core", "heguang")
             .Where(npc => is_banquet_guest_available(npc) && npc.get_resource("灵石") >= 2 &&
@@ -209,12 +242,13 @@ public partial class MainScene
         if (roster.Count == 0) return;
 
         var host = roster[0];
-        var invitees = roster.Skip(1).Take(2).Select(npc => npc.npc_id).ToArray();
+        var invitees = roster.Skip(1).Take(4).Select(npc => npc.npc_id).ToArray();
         var now = time.get_total_game_hours();
         var eventId = $"npc-banquet:{quarter}:{host.npc_id}";
         if (_banquetEvents.Any(item => item.event_id == eventId) ||
             _letterMailbox.letters.Any(letter => letter.source_event_id == "banquet_invitation:" + eventId)) return;
 
+        var banquetStartHour = now / 24 * 24 + 72;
         var banquet = new BanquetEventData
         {
             event_id = eventId,
@@ -222,7 +256,7 @@ public partial class MainScene
             host_name = host.npc_name,
             player_is_host = false,
             venue_id = BanquetVenuePavilion,
-            starts_at_hour = now + 72,
+            starts_at_hour = banquetStartHour,
             duration_hours = BanquetDurationHours,
             status = BanquetEventData.Scheduled,
             invited_npc_ids = new Array<string>(new[] { BanquetPlayerId }.Concat(invitees)),
@@ -237,12 +271,12 @@ public partial class MainScene
             location_id = "yuxu_xianzong_core",
             subscene_id = "heguang",
             place_name = "玉虚仙宗·和光峰临水水榭",
-            reply_by_hour = now + 48,
+            reply_by_hour = Math.Min(banquet.starts_at_hour, (now + 48) / 24 * 24 + 24),
             starts_at_hour = banquet.starts_at_hour,
-            ends_at_hour = banquet.starts_at_hour + banquet.duration_hours,
+            ends_at_hour = banquet.starts_at_hour + 24,
         };
         var delivered = deliver_npc_letter(host.npc_id, "banquet_invitation:" + eventId, "邀你赴同门雅集",
-            $"道友：\n\n我在和光峰临水水榭略备清茶，邀几位同门小聚。若得闲，请于 {LetterMailbox.Date(banquet.starts_at_hour)} 前来。\n\n席间只叙近况，不谈公事。\n\n{host.npc_name} 敬邀", invite, now);
+            $"道友：\n\n我在和光峰临水水榭略备清茶，邀几位同门小聚。若得闲，欢迎于 {invite.StartsAtDisplay} 当日前来。\n\n席间只叙近况，不谈公事。\n\n{host.npc_name} 敬邀", invite, now);
         if (!delivered) return;
         banquet.source_letter_id = _letterMailbox.letters.FirstOrDefault(letter => letter.source_event_id == "banquet_invitation:" + eventId)?.letter_id ?? "";
         _banquetEvents.Add(banquet);
@@ -269,10 +303,28 @@ public partial class MainScene
         begin_banquet_event(eventData, true);
     }
 
+    private void expire_missed_npc_banquets(int now)
+    {
+        var changed = false;
+        foreach (var eventData in _banquetEvents.Where(item => !item.player_is_host &&
+                     item.status == BanquetEventData.Scheduled && now >= item.starts_at_hour + 24))
+        {
+            eventData.status = BanquetEventData.Expired;
+            eventData.finished_at_hour = now;
+            changed = true;
+        }
+        if (changed) mark_save_dirty();
+    }
+
     private bool begin_banquet_event(BanquetEventData eventData, bool playerAcceptedInvitation)
     {
         if (_banquetPanel is null || eventData.status != BanquetEventData.Scheduled ||
             player?.entity_data is not HumanData human || GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is not { } time) return false;
+        if (_banquetEvents.Any(item => item.event_id != eventData.event_id && item.status == BanquetEventData.InProgress))
+        {
+            show_message("同门雅集", "你正在参加另一场雅集，结束后再赴约。");
+            return false;
+        }
 
         var allNpcIds = banquet_npc_ids(eventData).Distinct(StringComparer.Ordinal).ToList();
         if (eventData.player_is_host)
@@ -283,14 +335,23 @@ public partial class MainScene
         var attendees = allNpcIds.Select(id => _npc_world?.get_npc(id)).Where(npc => npc is not null && is_banquet_guest_available(npc) &&
                 npc.current_node_id == "yuxu_xianzong_core" && npc.current_subscene_id == "heguang")
             .Cast<WorldNpcData>().DistinctBy(npc => npc.npc_id).ToList();
-        if (attendees.Count == 0 || eventData.player_is_host && !is_at_heguang_banquet_venue())
+        var hostPresent = eventData.player_is_host || attendees.Any(npc => npc.npc_id == eventData.host_id);
+        if (attendees.Count == 0 || !hostPresent || eventData.player_is_host && !is_at_heguang_banquet_venue())
         {
             if (eventData.player_is_host)
             {
                 eventData.status = BanquetEventData.Expired;
                 eventData.finished_at_hour = time.get_total_game_hours();
                 mark_save_dirty();
-                show_message("宴席未能开席", "预定时辰到时，受邀同门已不在和光峰；此次未扣费或耗时。");
+                show_message("宴席未能开席", "预定日期到时，受邀同门已不在和光峰；此次未扣费或耗时。");
+            }
+            else if (!hostPresent)
+            {
+                eventData.status = BanquetEventData.Expired;
+                eventData.finished_at_hour = time.get_total_game_hours();
+                if (!string.IsNullOrWhiteSpace(eventData.source_letter_id)) _letterMailbox.FailInvitation(eventData.source_letter_id);
+                mark_save_dirty();
+                show_message("同门雅集", "主持者已不在和光峰，这场雅集未能成行。");
             }
             return false;
         }
@@ -609,7 +670,7 @@ public partial class MainScene
             var actionId = $"banquet-response:{eventData.event_id}:{beatId}:{npcId}";
             if (npc.action_history.Any(record => record is not null && record.dungeon_incident_id == actionId)) continue;
             var date = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is { } currentTime
-                ? LetterMailbox.Date(currentTime.get_total_game_hours(), false)
+                ? LetterMailbox.Date(currentTime.get_total_game_hours())
                 : "席间";
             npc.record(new NpcActionRecord
             {

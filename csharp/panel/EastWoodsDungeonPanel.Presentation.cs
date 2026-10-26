@@ -123,16 +123,18 @@ public partial class EastWoodsDungeonPanel
     {
         var (_, terrainName) = terrain_kind(node.Id);
         var title = string.IsNullOrWhiteSpace(node.Title) ? terrainName : $"{node.Title} · {terrainName}";
-        var description = node.Description;
+        if (!_dynamicMode) title = EastWoodsDungeonRules.forest_region(node.Id) + " · " + title;
+        var showContents = _dynamicMode || node.Id == _current;
+        var description = showContents ? node.Description : forest_ambience(node.Id);
         var resourceNode = _dynamicMode
             ? EastWoodsResourceNodes.Find(node.ResourceNodeId)
             : EastWoodsResourceNodes.ForNode(node);
-        if (resourceNode is not null)
+        if (showContents && resourceNode is not null)
             description += $"\n资源类别：{resourceNode.CategoryLabel}（{resourceNode.DisplayName}）";
-        var availableAction = available_actions(node.Id).FirstOrDefault();
+        var availableAction = showContents ? available_actions(node.Id).FirstOrDefault() : null;
         if (availableAction is not null)
             description += "\n" + availableAction.Description;
-        else if ((_dynamicMode ? node.ResourceNodeId.Length > 0 || node.Feature.Length > 0 || DynamicDungeonExpedition.AvailableActions(_dynamicInstanceState, node.Id, _actionProgress).Count > 0 : EastWoodsActions.Content(node.Id) is not null))
+        else if (showContents && (_dynamicMode ? node.ResourceNodeId.Length > 0 || node.Feature.Length > 0 || DynamicDungeonExpedition.AvailableActions(_dynamicInstanceState, node.Id, _actionProgress).Count > 0 : EastWoodsActions.Content(node.Id) is not null))
             description += "\n此处行动已完成或资源已采尽。";
         if (!_dynamicMode && _activeDutyId == "east_woods_patrol")
             description += _activeDutyReady ? "\n巡查复核完成，沿出口离开后回和光峰回报。" : $"\n巡查：{Math.Min(_activeDutyStage, YuxuSectPrototypeBalance.EastWoodsPatrolRequiredNodeMoves)}/{YuxuSectPrototypeBalance.EastWoodsPatrolRequiredNodeMoves} 格；静冠洼地复核后回宗回报。";

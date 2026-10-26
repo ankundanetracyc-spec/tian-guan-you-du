@@ -368,11 +368,11 @@ public partial class InfoPanel
 
     private static PanelContainer create_skill_rewrite_badge(string text, bool active)
     {
-        var badge = new PanelContainer { Name = "SkillRewriteBadge", MouseFilter = MouseFilterEnum.Ignore };
+        var badge = new PanelContainer { Name = "SkillRewriteBadge", MouseFilter = MouseFilterEnum.Ignore, ZIndex = 3 };
         var style = new StyleBoxFlat
         {
-            BgColor = active ? new Color("d6bd82", .94f) : new Color("c2b9a5", .82f),
-            BorderColor = active ? new Color("90702f", .92f) : new Color("8b806d", .72f),
+            BgColor = active ? new Color("7b3c32", .97f) : new Color("a39a88", .90f),
+            BorderColor = active ? new Color("d2b775", .98f) : new Color("c4baa7", .82f),
             BorderWidthLeft = 1,
             BorderWidthRight = 1,
             BorderWidthTop = 1,
@@ -381,16 +381,17 @@ public partial class InfoPanel
             CornerRadiusTopRight = 5,
             CornerRadiusBottomLeft = 5,
             CornerRadiusBottomRight = 5,
-            ContentMarginLeft = 3,
-            ContentMarginRight = 3,
+            ContentMarginLeft = 1,
+            ContentMarginRight = 1,
             ContentMarginTop = 0,
             ContentMarginBottom = 0
         };
         badge.AddThemeStyleboxOverride("panel", style);
-        var label = CharacterText(text, 13);
+        var label = CharacterText(text, text == "化" ? 15 : 10);
         label.HorizontalAlignment = HorizontalAlignment.Center;
         label.VerticalAlignment = VerticalAlignment.Center;
-        label.AddThemeColorOverride("font_color", active ? new Color("342b1d") : new Color("655e51"));
+        label.ClipText = true;
+        label.AddThemeColorOverride("font_color", active ? new Color("f3e4c5") : new Color("e7e0d2"));
         badge.AddChild(label);
         return badge;
     }

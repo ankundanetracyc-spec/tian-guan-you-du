@@ -106,7 +106,7 @@ public partial class ItemClaimPanel : CanvasLayer
             var path = entry.GetValueOrDefault("item_path", "").AsString();
             var count = entry.GetValueOrDefault("count", 0).AsInt32();
             if (string.IsNullOrWhiteSpace(path) || count <= 0 ||
-                ResourceLoader.Load<ItemData>(path) is not { } item || !GongfaAvailability.IsItemEnabled(item)) continue;
+                ResourceLoader.Load<ItemData>(path) is not { } item || (!GongfaAvailability.IsItemEnabled(item) || !AlchemyProductCatalog.IsItemEnabled(item))) continue;
 
             if (!byPath.TryGetValue(path, out var grouped))
             {
@@ -626,6 +626,7 @@ public partial class ItemClaimPanel : CanvasLayer
     private HoverInfoManager.HoverInfoContent item_hover(ItemData item, int count, IEnumerable<GDictionary>? entries = null)
     {
         var content = StoragePanel.ItemHover(item, count, item.ResourcePath, _recipient);
+        if (MaterialItemPresentation.IsMaterial(item) || AlchemyPillVisual.IsPill(item) || ManualItemPresentation.IsManual(item)) return content;
         var sourceNames = entries?.Select(value => value.GetValueOrDefault("source", "").AsString())
             .Where(value => !string.IsNullOrWhiteSpace(value)).Distinct().ToList() ?? [];
         if (sourceNames.Count == 0) return content;

@@ -1,13 +1,14 @@
 using Godot;
 using Godot.Collections;
 
-/// <summary>百工总入口：阵法、炼器及炼丹共用人物上下文；未定工艺仍保留说明页。</summary>
+/// <summary>个人百工资料：查阅丹方与炼制记录，实际炼制由地点设施承接。</summary>
 public partial class BaigongPanel : Control
 {
     private Character? _owner;
     private VBoxContainer? _body;
     private string _page = "阵法";
     private readonly System.Collections.Generic.Dictionary<string, Button> _tabs = [];
+    private readonly System.Collections.Generic.Dictionary<string, string> _materialNames = [];
 
     public override void _Ready()
     {
@@ -15,16 +16,7 @@ public partial class BaigongPanel : Control
     }
 
     public void show_for(Character owner) { _owner = owner; Show(); select_page("阵法"); }
-    public void close()
-    {
-        foreach (var child in GetChildren())
-        {
-            if (child.IsQueuedForDeletion()) continue;
-            if (child is AlchemySlotBrewPreviewScene alchemy) { alchemy.ReturnToBaigong(); return; }
-            if (child is ProcessForgingScene forging) { forging.ReturnToBaigong(); return; }
-        }
-        Hide();
-    }
+    public void close() => Hide();
 
     private void build()
     {
@@ -52,27 +44,70 @@ public partial class BaigongPanel : Control
 
     private void build_alchemy()
     {
-        _body!.AddChild(title("炼丹", 27, new Color("f4f0df")));
-        _body.AddChild(muted("配置药位与整数剂量，一次炼制，产量由配伍决定。使用人物行囊材料与精力，完成后确认领取丹药；灵识不足不能开炼。"));
-        var open = new Button { Text = "进入炼丹房", Disabled = _owner is null, CustomMinimumSize = new Vector2(360, 58) };
-        open.Pressed += () =>
+        _body!.AddChild(title("丹方与炼丹记录", 27, new Color("f4f0df")));
+        _body.AddChild(muted("此处查阅配伍与过往炼制。前往玉虚仙宗·天工峰的丹房可开炉炼丹。"));
+        var list = archive_list();
+        foreach (var pill in AlchemyRecipeCatalog.Pills)
+        foreach (var route in pill.SampleRoutes)
+            list.AddChild(muted($"{route.Name} · {pill.Name}\n" + string.Join("、", route.Ingredients.Select(i => $"{recipe_role(i.AssistantSlot)}：{i.HerbName}×{i.Dose}"))));
+        list.AddChild(title("我的丹方", 20, new Color("f4f0df")));
+        try
         {
-            if (_owner is null) return;
-            var scene = GD.Load<PackedScene>("res://tscn/scene/AlchemyPreviewScene.tscn").Instantiate<AlchemySlotBrewPreviewScene>();
-            scene.OwnerCharacter = _owner;
-            scene.ZIndex = 100;
-            AddChild(scene);
-        };
-        _body.AddChild(open);
+            var saved = AlchemyRecipeStore.Load(ProjectSettings.GlobalizePath("user://alchemy/recipes_v1.json"));
+            foreach (var recipe in saved)
+                list.AddChild(muted(recipe.Name + "\n" + string.Join("、", recipe.Ingredients.Select(i =>
+                    $"{recipe_role(i.Slot)}：{material_name(i.MaterialId)}×{i.Dose}"))));
+            if (saved.Count == 0) list.AddChild(muted("尚未记录自己的丹方。"));
+        }
+        catch (System.Exception) { list.AddChild(muted("我的丹方暂时无法读取，原有文件已保留。")); }
+        list.AddChild(title("炼丹记录", 20, new Color("f4f0df")));
+        add_records(list, (_owner?.entity_data as HumanData)?.alchemy_records);
     }
 
     private void build_forging()
     {
-        _body!.AddChild(title("炼器 · 剑类工坊", 27, new Color("f4f0df")));
-        _body.AddChild(muted("配置身材、质材、性材与和材，使用行囊材料和人物精力炼制剑器，成器收入行囊。开炼会消耗投料并推进时间；材料与份数影响灵识需求。"));
-        var open = new Button { Text = "进入炼器工坊", Disabled = _owner is null, CustomMinimumSize = new Vector2(360, 58) };
-        open.Pressed += () => { var scene = GD.Load<PackedScene>("res://tscn/scene/ProcessForgingScene.tscn").Instantiate<ProcessForgingScene>(); if (_owner is not null) scene.BindOwner(_owner); scene.ZIndex = 100; AddChild(scene); };
-        _body.AddChild(open);
+        _body!.AddChild(title("炼器记录", 27, new Color("f4f0df")));
+        _body.AddChild(muted("此处查阅过往炼制。前往玉虚仙宗·天工峰的器作可开炉炼器。"));
+        var list = archive_list();
+        add_records(list, (_owner?.entity_data as HumanData)?.forging_records);
+        list.AddChild(title("持有器物的炼制存录", 20, new Color("f4f0df")));
+        var found = false;
+        if (_owner is not null) foreach (var item in _owner.get_artifact_items())
+        {
+            if (!ForgedArtifactInventory.TryRead(item, out var snapshot)) continue;
+            found = true;
+            list.AddChild(muted($"{snapshot.Name} · {snapshot.Tier} · 造诣{snapshot.Proficiency}\n" +
+                string.Join("、", snapshot.Sources.Select(s => $"{s.Input.Role.Replace("复合身材", "辅体")}：{s.Input.Material}×{s.Input.Quantity}"))));
+        }
+        if (!found) list.AddChild(muted("尚无持有器物的炼制存录。"));
+    }
+
+    private VBoxContainer archive_list()
+    {
+        var scroll = new ScrollContainer { CustomMinimumSize = new Vector2(820, 440), SizeFlagsVertical = SizeFlags.ExpandFill,
+            HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled };
+        _body!.AddChild(scroll);
+        var list = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill }; list.AddThemeConstantOverride("separation", 14);
+        scroll.AddChild(list); return list;
+    }
+    private static string recipe_role(int slot) => slot < 0 ? "君" : slot == 0 ? "臣" : slot is 1 or 2 or 4 ? "佐" : "使";
+    private string material_name(string id)
+    {
+        if (_materialNames.Count == 0)
+        {
+            using var dir = DirAccess.Open("res://resources/entities/items");
+            if (dir is not null) foreach (var file in dir.GetFiles().Where(f => f.EndsWith(".tres")))
+            {
+                var item = GD.Load<ItemData>("res://resources/entities/items/" + file);
+                if (item is not null) _materialNames[item.definition_id.ToString()] = item.entity_name;
+            }
+        }
+        return _materialNames.GetValueOrDefault(id, "未识别药材");
+    }
+    private static void add_records(VBoxContainer list, Array<string>? records)
+    {
+        if (records is null || records.Count == 0) { list.AddChild(muted("尚无炼制记录。")); return; }
+        foreach (var record in records.AsEnumerable().Reverse()) list.AddChild(muted(record));
     }
 
     private void build_placeholder(string page)
@@ -128,7 +163,7 @@ public partial class BaigongPanel : Control
     private static Label flow(string text) => new() { Text = text, HorizontalAlignment = HorizontalAlignment.Center, Modulate = new Color("f1d77a") };
     private static Label title(string text, int size, Color color) { var label = new Label { Text = text }; label.AddThemeFontSizeOverride("font_size", size); label.AddThemeColorOverride("font_color", color); return label; }
     private static Label muted(string text) { var label = new Label { Text = text, AutowrapMode = TextServer.AutowrapMode.WordSmart }; label.AddThemeColorOverride("font_color", new Color("c9d8d2")); label.AddThemeFontSizeOverride("font_size", 14); return label; }
-    private static void clear(Node node) { foreach (var child in node.GetChildren()) child.QueueFree(); }
+    private static void clear(Node node) { foreach (var child in node.GetChildren()) { node.RemoveChild(child); child.QueueFree(); } }
     private static StyleBoxFlat panel_style() => new() { BgColor = new Color(.055f, .07f, .065f, .98f), BorderColor = new Color(.68f, .56f, .32f, .9f), BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1, CornerRadiusTopLeft = 10, CornerRadiusTopRight = 10, CornerRadiusBottomLeft = 10, CornerRadiusBottomRight = 10, ContentMarginLeft = 18, ContentMarginRight = 18, ContentMarginTop = 16, ContentMarginBottom = 16 };
     private static StyleBoxFlat card_style() => new() { BgColor = new Color(.10f, .13f, .12f, .86f), BorderColor = new Color(.42f, .55f, .49f, .7f), BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1, CornerRadiusTopLeft = 6, CornerRadiusTopRight = 6, CornerRadiusBottomLeft = 6, CornerRadiusBottomRight = 6, ContentMarginLeft = 12, ContentMarginRight = 12, ContentMarginTop = 10, ContentMarginBottom = 10 };
 }

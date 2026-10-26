@@ -11,9 +11,9 @@ public static class BattleSupplyRules
     public static PillItemData? Load(string path)
     {
         if (string.IsNullOrWhiteSpace(path)) return null;
-        if (Pills.TryGetValue(path, out var cached)) return cached;
+        if (Pills.TryGetValue(path, out var cached)) return AlchemyProductCatalog.IsEnabled(cached.pill_id) ? cached : null;
         if (!ResourceLoader.Exists(path) || GD.Load<Resource>(path) is not PillItemData pill ||
-            pill.pill_id is not ("huichun" or "tongmai") || pill.pill_rank != 9 || pill.efficacy_tier is < 0 or > 4) return null;
+            !AlchemyProductCatalog.IsEnabled(pill.pill_id) || pill.pill_rank != 9 || pill.efficacy_tier is < 0 or > 4) return null;
         return Pills[path] = pill;
     }
 

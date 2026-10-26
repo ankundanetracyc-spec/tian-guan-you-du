@@ -21,6 +21,7 @@ public partial class InfoPanel
     private static Label CharacterText(string text, int size = 22, bool secondary = false)
     {
         var label = WorldHudStyle.Text(text, size, secondary);
+        PlayerInfoText.Bind(label, text);
         // 单行字段保留文字的最小宽度，避免被同排的伸展控件挤成竖排。
         label.AutowrapMode = TextServer.AutowrapMode.Off;
         return label;
@@ -302,7 +303,8 @@ public partial class InfoPanel
     {
         if (_readerPanel is null || _readerText is null || !IsVisibleInTree() || string.IsNullOrWhiteSpace(body)) return;
         _readerAnchor = anchor; _readerTitle!.Text = title; _readerIcon!.Texture = icon; _readerIcon.Visible = icon is not null;
-        _readerText.Text = body.Replace("[color=#2f6f3a]", "[color=#acc8a0]").Replace("[color=#9b3027]", "[color=#d4a08d]"); _readerScroll!.ScrollVertical = 0;
+        PlayerInfoText.Bind(_readerText, body.Replace("[color=#2f6f3a]", "[color=#acc8a0]").Replace("[color=#9b3027]", "[color=#d4a08d]")); _readerScroll!.ScrollVertical = 0;
+        HoverInfoManager.SetInfo(_readerText, new HoverInfoManager.HoverInfoContent(title, body, icon));
         var scale = Mathf.Clamp(Size.Y / 941f, .7f, 1.3f); _readerPanel.Scale = Vector2.One * scale;
         var width = Mathf.Min(460, (Size.X - 24) / scale);
         _readerText.CustomMinimumSize = new Vector2(width - 36, 0);

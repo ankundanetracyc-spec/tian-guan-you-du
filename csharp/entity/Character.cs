@@ -128,7 +128,7 @@ public partial class Character : Creature
         }
         ensure_portrait_clothing_state();
         foreach (var path in new[] { human.weapon_path, human.headwear_path, human.clothes_path, human.ornament_1_path, human.footwear_path, human.ornament_2_path })
-            if (!string.IsNullOrWhiteSpace(path) && ResourceLoader.Load<ItemData>(path) is not null && get_inventory_total_count(path) == 0)
+            if (!HasMeta("artifact_battle_clone") && !string.IsNullOrWhiteSpace(path) && ResourceLoader.Load<ItemData>(path) is not null && get_inventory_total_count(path) == 0)
             {
                 human.inventory_item_paths.Add(path); human.inventory_item_counts.Add(1); human.inventory_item_positions.Add(find_free_inventory_position());
             }
@@ -184,7 +184,7 @@ public partial class Character : Creature
 
         human.portrait_clothing_item_path = itemPath;
         human.appearance_clothes_style = clothing.appearance_style_index;
-        if (!human.inventory_item_paths.Contains(itemPath))
+        if (!HasMeta("artifact_battle_clone") && !human.inventory_item_paths.Contains(itemPath))
         {
             human.inventory_item_paths.Add(itemPath);
             human.inventory_item_counts.Add(1);

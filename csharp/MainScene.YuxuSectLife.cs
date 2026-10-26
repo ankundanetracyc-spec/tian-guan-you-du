@@ -19,9 +19,17 @@ public partial class MainScene
     private const string BeastBoneItemPath = "res://resources/entities/items/兽骨.tres";
     private const int YuxuStudyDutyContributionReward = YuxuSectPrototypeBalance.OfficialStudyDutyReward;
     private const int YuxuTianwenPracticeDutyReward = 5;
+    private const long YuxuTrueDiscipleLectureInitialDelayHours = 360L * 24L;
+    private const long YuxuTrueDiscipleLecturePeriodHours = 180L * 24L;
 
     private string _player_current_yuxu_peak_id = "";
     private bool _yuxu_tianwen_practice_confirm_open;
+    private long _yuxu_lecture_context_due_hour = long.MinValue;
+    private bool _yuxu_lecture_context_is_due;
+    private int _yuxu_lecture_context_missed_count = -1;
+    private int _yuxu_lecture_context_consecutive_leave_count = -1;
+    private long _yuxu_lecture_context_last_attended_hour = long.MinValue;
+    private TrueDiscipleLecturePanel? _yuxu_true_disciple_lecture_panel;
     private readonly List<JournalPanel.Entry> _discovered_yuxu_peak_entries = [];
 
     private static string get_yuxu_peak_name(string peakId) => peakId switch
@@ -109,7 +117,10 @@ public partial class MainScene
         if (player?.entity_data is HumanData dutyHuman)
         {
             if (dutyHuman.sect_affiliation_id == YuxuSectId)
+            {
+                sync_yuxu_true_disciple_lecture_schedule(dutyHuman);
                 reconcile_yuxu_conflict_duty_state(dutyHuman);
+            }
             if (_east_woods_dungeon is not null)
                 _east_woods_dungeon.set_active_duty_context(dutyHuman.sect_affiliation_id == YuxuSectId ? dutyHuman.sect_active_yuxu_duty_id : "", dutyHuman.sect_active_yuxu_duty_stage, dutyHuman.sect_active_yuxu_duty_ready);
         }
@@ -164,6 +175,7 @@ public partial class MainScene
             lineageBook?.gongfa_name ?? "",
             lineageFirstComplete,
             isTrueDisciple && human.sect_lineage_reported_first_volume);
+        refresh_yuxu_true_disciple_lecture_context(human, isTrueDisciple);
         peakInterior?.Call("set_contribution_balance",
             isMember ? human.get_yuxu_contribution_total() : 0L);
         if (_east_woods_dungeon is not null)
@@ -171,6 +183,194 @@ public partial class MainScene
                 isMember ? human.sect_active_yuxu_duty_id : "",
                 isMember ? human.sect_active_yuxu_duty_stage : 0,
                 isMember && human.sect_active_yuxu_duty_ready);
+    }
+
+    private void sync_yuxu_true_disciple_lecture_schedule(HumanData human)
+    {
+        if (human.sect_affiliation_id != YuxuSectId || !is_yuxu_true_disciple(human.sect_current_rank)) return;
+        var now = (long)(GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0);
+        var changed = false;
+        if (human.sect_true_disciple_lecture_next_due_hour < 0)
+        {
+            var firstDue = human.sect_entry_total_game_hours >= 0
+                ? human.sect_entry_total_game_hours + YuxuTrueDiscipleLectureInitialDelayHours
+                : now + YuxuTrueDiscipleLectureInitialDelayHours;
+            if (now > firstDue)
+                firstDue += ((now - firstDue) / YuxuTrueDiscipleLecturePeriodHours) * YuxuTrueDiscipleLecturePeriodHours;
+            human.sect_true_disciple_lecture_next_due_hour = firstDue;
+            changed = true;
+        }
+
+        var overduePeriods = (now - human.sect_true_disciple_lecture_next_due_hour) / YuxuTrueDiscipleLecturePeriodHours;
+        if (overduePeriods > 0)
+        {
+            var currentMissedCount = Math.Max(0, human.sect_true_disciple_lecture_missed_count);
+            var addedMisses = (int)Math.Min(overduePeriods, int.MaxValue - (long)currentMissedCount);
+            human.sect_true_disciple_lecture_missed_count = currentMissedCount + addedMisses;
+            human.sect_true_disciple_lecture_consecutive_leave_count = 0;
+            human.sect_true_disciple_lecture_last_missed_hour = human.sect_true_disciple_lecture_next_due_hour + overduePeriods * YuxuTrueDiscipleLecturePeriodHours;
+            human.sect_true_disciple_lecture_next_due_hour += overduePeriods * YuxuTrueDiscipleLecturePeriodHours;
+            changed = true;
+        }
+        if (changed) mark_save_dirty();
+    }
+
+    private void refresh_yuxu_true_disciple_lecture_context(HumanData human, bool isTrueDisciple)
+    {
+        var peakInterior = GetNodeOrNull<Node>("SceneLayer/YuxuXianzongOverview/PeakInterior");
+        var available = false;
+        var status = "";
+        long dueHour = -1;
+        long lastAttendedHour = -1;
+        var missedCount = 0;
+        if (isTrueDisciple && human.sect_affiliation_id == YuxuSectId)
+        {
+            var now = (long)(GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0);
+            dueHour = human.sect_true_disciple_lecture_next_due_hour;
+            lastAttendedHour = human.sect_true_disciple_lecture_last_attended_hour;
+            missedCount = Math.Max(0, human.sect_true_disciple_lecture_missed_count);
+            var consecutiveLeaveCount = Math.Clamp(human.sect_true_disciple_lecture_consecutive_leave_count, 0, 2);
+            available = dueHour >= 0 && now >= dueHour;
+            var missedText = missedCount == 0 ? "暂无缺席记档" : $"缺席记档 {missedCount} 期";
+            missedText += $" · 连续请假 {consecutiveLeaveCount}/2";
+            if (available)
+                status = $"本期讲席待开 · {missedText}";
+            else if (dueHour >= 0 && lastAttendedHour >= dueHour - YuxuTrueDiscipleLecturePeriodHours && lastAttendedHour < dueHour)
+                status = $"上期已到场 · 下期于{format_yuxu_lecture_date(dueHour)}开放 · {missedText}";
+            else
+                status = $"下期讲席于{format_yuxu_lecture_date(dueHour)}开放 · {missedText}";
+        }
+
+        peakInterior?.Call("set_lineage_lecture_context", available, status);
+        if (dueHour == _yuxu_lecture_context_due_hour && available == _yuxu_lecture_context_is_due &&
+            missedCount == _yuxu_lecture_context_missed_count &&
+            human.sect_true_disciple_lecture_consecutive_leave_count == _yuxu_lecture_context_consecutive_leave_count &&
+            lastAttendedHour == _yuxu_lecture_context_last_attended_hour)
+            return;
+        _yuxu_lecture_context_due_hour = dueHour;
+        _yuxu_lecture_context_is_due = available;
+        _yuxu_lecture_context_missed_count = missedCount;
+        _yuxu_lecture_context_consecutive_leave_count = human.sect_true_disciple_lecture_consecutive_leave_count;
+        _yuxu_lecture_context_last_attended_hour = lastAttendedHour;
+        RefreshJournalTracker();
+        refresh_journal_entries();
+    }
+
+    private static string format_yuxu_lecture_date(long totalHours)
+    {
+        if (totalHours < 0) return "日期未定";
+        var totalDays = totalHours / 24;
+        var year = totalDays / 360 + 1;
+        var month = totalDays % 360 / 30 + 1;
+        var day = totalDays % 30 + 1;
+        return $"第{year}年{month}月{day}日";
+    }
+
+    private void open_yuxu_true_disciple_lecture(HumanData human)
+    {
+        if (_yuxu_true_disciple_lecture_panel?.IsOpen == true || player?.entity_data != human) return;
+        var canvas = GetNodeOrNull<CanvasLayer>("CanvasLayer");
+        if (canvas is null) return;
+        _yuxu_true_disciple_lecture_panel ??= new TrueDiscipleLecturePanel { Name = "TrueDiscipleLecturePanel" };
+        if (_yuxu_true_disciple_lecture_panel.GetParent() is null)
+            canvas.AddChild(_yuxu_true_disciple_lecture_panel);
+
+        sync_yuxu_true_disciple_lecture_schedule(human);
+        var periodDueHour = human.sect_true_disciple_lecture_next_due_hour;
+        if (!record_yuxu_true_disciple_lecture_attendance(human)) return;
+        var promptVariant = (int)Math.Max(0L,
+            (periodDueHour - YuxuTrueDiscipleLectureInitialDelayHours) / YuxuTrueDiscipleLecturePeriodHours % TrueDiscipleLecturePanel.PromptVariantCount);
+        _yuxu_true_disciple_lecture_panel.ShowLecture(format_yuxu_lecture_date(periodDueHour), promptVariant);
+    }
+
+    private bool record_yuxu_true_disciple_lecture_attendance(HumanData human)
+    {
+        var overview = GetNodeOrNull<Control>("SceneLayer/YuxuXianzongOverview");
+        if (player?.entity_data != human || human.sect_affiliation_id != YuxuSectId || !is_yuxu_true_disciple(human.sect_current_rank) ||
+            _player_current_yuxu_peak_id != "guanfu" || overview?.Visible != true ||
+            overview.GetNodeOrNull<Control>("PeakInterior")?.IsVisibleInTree() != true || _east_woods_dungeon?.Visible == true)
+            return false;
+        var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
+        if (time is null)
+        {
+            show_message("讲席未记", "游戏历法尚未就绪，本次到场未能登记。 ");
+            return false;
+        }
+        sync_yuxu_true_disciple_lecture_schedule(human);
+        var now = (long)time.get_total_game_hours();
+        if (human.sect_true_disciple_lecture_next_due_hour < 0 || now < human.sect_true_disciple_lecture_next_due_hour)
+        {
+            show_message("尚未到讲席期", $"下期讲席将于{format_yuxu_lecture_date(human.sect_true_disciple_lecture_next_due_hour)}开放。 ");
+            refresh_yuxu_true_disciple_lecture_context(human, true);
+            return false;
+        }
+
+        human.sect_true_disciple_lecture_last_attended_hour = now;
+        human.sect_true_disciple_lecture_next_due_hour += YuxuTrueDiscipleLecturePeriodHours;
+        human.sect_true_disciple_lecture_consecutive_leave_count = 0;
+        mark_save_dirty();
+        refresh_yuxu_true_disciple_lecture_context(human, true);
+        return true;
+    }
+
+    private void request_yuxu_true_disciple_lecture_leave(HumanData human)
+    {
+        var overview = GetNodeOrNull<Control>("SceneLayer/YuxuXianzongOverview");
+        if (player is null || human.sect_affiliation_id != YuxuSectId || !is_yuxu_true_disciple(human.sect_current_rank) ||
+            _player_current_yuxu_peak_id != "zifu" || overview?.Visible != true ||
+            overview.GetNodeOrNull<Control>("PeakInterior")?.IsVisibleInTree() != true || _east_woods_dungeon?.Visible == true)
+            return;
+        sync_yuxu_true_disciple_lecture_schedule(human);
+        if (human.sect_true_disciple_lecture_consecutive_leave_count >= 2)
+        {
+            show_message("暂不能续请", "连续两期请假已用尽；需先亲赴一期观复峰讲席，之后才能再次申请。 ");
+            refresh_yuxu_true_disciple_lecture_context(human, true);
+            return;
+        }
+        var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
+        if (time is null || human.sect_true_disciple_lecture_next_due_hour < 0)
+        {
+            show_message("请假未受理", "游戏历法尚未就绪，暂不能登记讲席请假。 ");
+            return;
+        }
+
+        var scheduledPeriod = human.sect_true_disciple_lecture_next_due_hour;
+        var dialog = new ConfirmationDialog
+        {
+            Title = "真传讲席请假",
+            DialogText = $"为当前或下一期观复峰讲席申请一次免赴，可用于长时间闭关或外出。此申请不消耗时间与资源，获准后本期不记缺席；最多连续请假两期。\n\n拟免赴期：{format_yuxu_lecture_date(scheduledPeriod)}开放的一期。",
+            OkButtonText = "递交请假",
+            CancelButtonText = "再考虑"
+        };
+        AddChild(dialog);
+        dialog.PopupCentered();
+        dialog.Confirmed += () =>
+        {
+            dialog.QueueFree();
+            if (player?.entity_data is not HumanData current || current != human || current.sect_affiliation_id != YuxuSectId ||
+                !is_yuxu_true_disciple(current.sect_current_rank) || _player_current_yuxu_peak_id != "zifu" ||
+                overview?.Visible != true || overview.GetNodeOrNull<Control>("PeakInterior")?.IsVisibleInTree() != true)
+                return;
+            sync_yuxu_true_disciple_lecture_schedule(current);
+            if (current.sect_true_disciple_lecture_next_due_hour != scheduledPeriod)
+            {
+                show_message("请假未受理", "讲席期次已变化，请查看最新安排后重新申请。 ");
+                refresh_yuxu_true_disciple_lecture_context(current, true);
+                return;
+            }
+            if (current.sect_true_disciple_lecture_consecutive_leave_count >= 2)
+            {
+                show_message("暂不能续请", "连续两期请假已用尽；需先亲赴一期观复峰讲席，之后才能再次申请。 ");
+                return;
+            }
+            current.sect_true_disciple_lecture_last_leave_hour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? -1;
+            current.sect_true_disciple_lecture_consecutive_leave_count++;
+            current.sect_true_disciple_lecture_next_due_hour += YuxuTrueDiscipleLecturePeriodHours;
+            mark_save_dirty();
+            refresh_yuxu_true_disciple_lecture_context(current, true);
+            show_message("讲席请假已登记", "本期免赴，不记缺席；后续仍须按期履职，连续请假不得超过两期。 ");
+        };
+        dialog.Canceled += () => dialog.QueueFree();
     }
 
     private static bool is_supported_yuxu_duty(string dutyId)
@@ -642,6 +842,12 @@ public partial class MainScene
             return;
         }
 
+        if (peakId == "guanfu" && actionId == "lineage_lecture_checkin")
+        {
+            open_yuxu_true_disciple_lecture(human);
+            return;
+        }
+
         if (peakId == "xuanlan" && actionId == "xuanlan_study")
         {
             var overview = GetNodeOrNull<Control>("SceneLayer/YuxuXianzongOverview");
@@ -673,6 +879,12 @@ public partial class MainScene
         if (peakId == "zifu" && actionId == "lineage_report")
         {
             report_yuxu_lineage_first_volume(human);
+            return;
+        }
+
+        if (peakId == "zifu" && actionId == "lineage_lecture_leave_request")
+        {
+            request_yuxu_true_disciple_lecture_leave(human);
             return;
         }
 
@@ -708,6 +920,12 @@ public partial class MainScene
         if (peakId == "tianwen" && actionId == "tianwen_practice")
         {
             request_yuxu_tianwen_practice();
+            return;
+        }
+
+        if (peakId == "tiangong" && actionId is "tiangong_alchemy" or "tiangong_forging")
+        {
+            open_yuxu_crafting(actionId);
             return;
         }
 
@@ -795,7 +1013,7 @@ public partial class MainScene
             }
 
             var monthIndex = get_game_month_index(time);
-            var dateLabel = $"{time.year}年{time.month}月{time.day}日 {time.hour:D2}时";
+            var dateLabel = $"{time.year}年{time.month}月{time.day}日";
             const string outcome = "你们就宗门日常与修行中的疑问作了交流；此次答疑不改变同门关系，也不结算贡献。";
             peer.record(new NpcActionRecord
             {
@@ -1030,7 +1248,7 @@ public partial class MainScene
         var lines = new System.Collections.Generic.List<string>
         {
             $"案卷 ID：{incident.incident_id}",
-            $"发生时间：{incident.occurred_at}（游戏时辰序 {incident.occurred_game_hour}）",
+            $"发生日期：{incident.occurred_at}",
             $"地点：{incident.location_name} · 路线节点 {incident.route_node_id}",
             $"发起方：{incident.attacker_npc_name}（NPC ID：{incident.attacker_npc_id}；路线 {attackerPath}）",
             $"被袭方：{incident.target_npc_name}（NPC ID：{incident.target_npc_id}；路线 {targetPath}）",
@@ -1184,7 +1402,7 @@ public partial class MainScene
     private static string get_yuxu_contribution_timestamp()
     {
         if (Engine.GetMainLoop() is SceneTree tree && tree.Root.GetNodeOrNull<GameTimeMgr>("GameTimeManager") is { } time)
-            return $"{time.year}年{time.month}月{time.day}日 {time.hour:D2}时";
+            return $"{time.year}年{time.month}月{time.day}日";
         return "游戏时间未载";
     }
 

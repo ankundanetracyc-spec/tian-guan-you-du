@@ -43,7 +43,7 @@ public static class AlchemyRecipeCatalog
     private static Ingredient I(string name, string timing, int recommended = 1) => new(name, recommended, timing);
     private static SampleIngredient S(string herb, int dose, int assistantSlot) => new(herb, dose, assistantSlot);
 
-    public static readonly PillType[] Pills =
+    private static readonly PillType[] Definitions =
     [
         new("huichun", "九品回春丹", 9, "生", ["青木芯", "青髓芽"], 0, .72, .20,
             "以生机药性修复可恢复的伤损；成丹偏向以阴阳相对平和为宜。",
@@ -107,8 +107,9 @@ public static class AlchemyRecipeCatalog
             ])
     ];
 
+    public static PillType[] Pills => Definitions.Where(p => AlchemyProductCatalog.IsEnabled(p.Id)).ToArray();
     public static IEnumerable<string> MaterialNames => Pills.SelectMany(p => p.MainCandidates.Concat(p.Formulas.SelectMany(f => f.Ingredients.Select(i => i.HerbName)))).Distinct();
-    public static PillType GetPill(string id) => Pills.First(p => p.Id == id);
+    public static PillType GetPill(string id) => Definitions.First(p => p.Id == id);
     public static Formula GetFormula(string pillId, string formulaId) =>
         GetPill(pillId).Formulas.First(f => f.Id == formulaId);
 }

@@ -155,7 +155,6 @@ public partial class StoragePanel : Control
             else if (entry?.Item is { } item) slot.set_item(entry.Position, entry.Path, item, entry.Count);
             else slot.set_empty(physicalOrder ? index : -1);
             slot.info_requested += on_slot_info_requested;
-            slot.info_cleared += on_slot_info_cleared;
             slot.slot_moved += on_slot_moved;
             slot.MouseEntered += on_inventory_slot_mouse_entered;
             if (!slot.is_empty)
@@ -237,8 +236,6 @@ public partial class StoragePanel : Control
         show_info_content(slot);
     }
 
-    private void on_slot_info_cleared(StorageItemSlot slot) { }
-
     private void update_slot_selection_visuals()
     {
         if (_grid is null) return;
@@ -287,7 +284,9 @@ public partial class StoragePanel : Control
 
     internal static HoverInfoManager.HoverInfoContent ItemHover(ItemData item, int? count = null, string path = "", Character? user = null)
     {
-        if (item is PillItemData pill) return AlchemyPillVisual.Hover(pill, contentsCount: count, user: user);
+        if (AlchemyPillVisual.IsPill(item)) return AlchemyPillVisual.Hover(item, user);
+        if (MaterialItemPresentation.IsMaterial(item)) return MaterialItemPresentation.Hover(item);
+        if (ManualItemPresentation.IsManual(item)) return ManualItemPresentation.Hover(item);
         var category = category_of(item, path);
         if (!string.IsNullOrWhiteSpace(item.item_subcategory)) category = string.IsNullOrWhiteSpace(category) ? item.item_subcategory : $"{category} · {item.item_subcategory}";
         var grade = item.craft_data is MaterialCraftData material
@@ -443,7 +442,7 @@ public partial class StoragePanel : Control
             return CardPresentation.Underline(CardPresentation.Face(skill,null));
         }
         if(item.item_category=="材料"||item.craft_data is MaterialCraftData)
-            return "用于材料匹配与制作；词缀描述材料性质，不直接触发成品效果。";
+            return "用于制作。";
         return item.usage_type switch
         {
             0=>"世界内使用；具体效果尚未配置说明。",

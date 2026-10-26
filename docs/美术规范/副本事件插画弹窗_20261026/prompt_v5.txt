@@ -1,0 +1,15 @@
+Use case: ui-mockup. Fifth revision of the provided Chinese ink-wash xianxia game event popup.
+Preserve the established left-illustration / right-narrative arrangement, same single gray-black wolf scene, warm xuan paper, original forest grid map backdrop, restrained ink and sage hover treatment. The user now wants REAL IN-WORLD REACTIONS rather than utility-menu options. Remove the redundant location line and slightly enlarge the popup to help readability.
+Make the overall window about 8–10% wider and only 3–5% taller than the input, still a moderate centered popup with plenty of visible map on all four sides, approximately 64–66% of a full 16:9 screen width and 62–64% of height. Do not make the window full-screen and do not grow the illustration into a huge poster. Give most of the extra width to the RIGHT TEXT COLUMN; left illustration around 42–44% of interior, right around 56–58%.
+LEFT: beautifully composed Chinese ink and restrained watercolor scene of one lean wolf emerging from gnarled roots, ferns and pale forest mist, coherent body and alert eyes, soft ink edges dissolving into paper. Keep wolf scene faithful to reference, no added people or wolves.
+RIGHT: start directly with modest elegant title “林中遭遇”. REMOVE the entire “东林地 · 浅林” location line. Do not reserve an empty row where it was. A small close X at upper right. Thin restrained ink underline, no huge title.
+Under the title, readable regular Chinese book typography, two comfortably spaced narrative paragraphs:
+“枝叶忽然一晃，一头凶狼从近处的树影中现出身形。”
+“它伏低身子，目光紧盯着你。你停下脚步，与它隔着林径相持。”
+Choices follow the prose with a sensible breathing gap, not a giant empty block. Replace all four former utility options with EXACTLY THREE distinct in-world response choices, in this order:
+“拔剑迎战”
+“屏息观察”
+“缓缓退开”
+DO NOT display “查看战前情报”, “查看此地见闻”, “查看自身状态”, any location label, or any other choices. Do not add explanatory secondary text, costs, probability, reward, or stats under choices.
+Style the three choices as compact selectable narrative rows, LEFT aligned to same edge as body text, about 40–44px tall at a 1920x1080 screen equivalent, comfortable horizontal area, small ink chevron at left, a fine ink separator under each row. Only first row has a very pale sage hover/focus wash; others plain paper. No red filled buttons, no oversized rectangles, no bottom-wide button bar. Keep rows compact even though there are three choices: do NOT expand row heights to fill the vacated fourth row.
+Balance total window height with natural reading margins and scene composition. It should feel like a practical story encounter with meaningful responses, not an information menu. Readable text, clear hierarchy, spacious right column, slightly wider frame. No annotation arrows, no designer notes, no watermarks, no extra interface or invented game rules. Deliver only the polished in-game screenshot concept.

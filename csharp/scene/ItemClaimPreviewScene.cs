@@ -154,7 +154,7 @@ public partial class ItemClaimPreviewScene : Control
         var result = new List<string>();
         collect_item_paths("res://resources/entities/items", result);
         collect_item_paths("res://resources/entities/equipment", result);
-        return result.Where(path => ResourceLoader.Load<ItemData>(path) is { } item && GongfaAvailability.IsItemEnabled(item))
+        return result.Where(path => ResourceLoader.Load<ItemData>(path) is { } item && GongfaAvailability.IsItemEnabled(item) && AlchemyProductCatalog.IsItemEnabled(item))
             .Distinct(StringComparer.Ordinal).OrderBy(path => path, StringComparer.Ordinal).ToList();
     }
 

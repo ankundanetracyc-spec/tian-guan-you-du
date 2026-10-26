@@ -18,6 +18,20 @@ public partial class LetterInvitationData : Resource
     [Export] public int ends_at_hour;
     [Export] public string response = "pending";
 
+    /// <summary>邀约在界面按日期展示；底层仍以绝对游戏小时判断应答与赴约。</summary>
+    public bool UsesDateOnlySchedule => activity_key == "banquet";
+    public string StartsAtDisplay => LetterMailbox.Date(starts_at_hour);
+    public string ReplyByDisplay => LetterMailbox.Date(Math.Max(0, reply_by_hour - 1));
+    public string ScheduleDisplay
+    {
+        get
+        {
+            var firstDay = LetterMailbox.Date(starts_at_hour);
+            var lastDay = LetterMailbox.Date(Math.Max(starts_at_hour, ends_at_hour - 1));
+            return firstDay == lastDay ? firstDay : $"{firstDay} 至 {lastDay}";
+        }
+    }
+
     public bool IsValid(int sentHour) => !string.IsNullOrWhiteSpace(activity_key)
         && !string.IsNullOrWhiteSpace(activity_name) && !string.IsNullOrWhiteSpace(place_name)
         && reply_by_hour >= sentHour && starts_at_hour >= reply_by_hour && ends_at_hour > starts_at_hour;
@@ -28,7 +42,8 @@ public partial class LetterInvitationData : Resource
         "completed" => "已赴约",
         "declined" => "已婉拒",
         "accepted" when now >= ends_at_hour => "邀约已结束",
-        "accepted" when now >= starts_at_hour => "已应邀 · 活动时段内",
+        "accepted" when now >= starts_at_hour => "已应邀 · 举办日内",
+        "failed" => "邀约未能成行",
         "accepted" => "已应邀 · 待赴约",
         _ when now >= reply_by_hour => "已错过邀约",
         _ => "待应答"

@@ -125,10 +125,10 @@ public partial class CultivationUI
         _mode.ItemSelected += _ => { update_mode_visibility(); refresh_plan(); sync_mode_tabs(); };
         _strandRow = new VBoxContainer(); practice.AddChild(_strandRow); var strands = new HBoxContainer(); _strandRow.AddChild(strands); strands.AddChild(QuietRoomStyle.Text("目标灵力")); _strands = spin(1, 999, 1); strands.AddChild(_strands); strands.AddChild(QuietRoomStyle.Text("缕")); _strands.ValueChanged += _ => refresh_plan();
         _dayRow = new VBoxContainer(); practice.AddChild(_dayRow); var days = new HBoxContainer(); _dayRow.AddChild(days); days.AddChild(QuietRoomStyle.Text("修炼时长")); _days = spin(1, 999, 1); days.AddChild(_days); days.AddChild(QuietRoomStyle.Text("日")); _days.ValueChanged += _ => refresh_plan();
-		_dateRow = new VBoxContainer(); practice.AddChild(_dateRow); _dateRow.AddChild(QuietRoomStyle.Text("结束日期与时辰")); var date = new HBoxContainer(); _dateRow.AddChild(date);
-		_year = spin(1, 9999, 1); _month = spin(1, 12, 1); _date = spin(1, 30, 1); _hour = spin(0, 23, 0);
-		foreach (var (field, text) in new[] { (_year, "年"), (_month, "月"), (_date, "日"), (_hour, "时") }) { field.CustomMinimumSize = new Vector2(68, 44); date.AddChild(field); date.AddChild(QuietRoomStyle.Text(text, 18)); field.ValueChanged += _ => refresh_plan(); }
-		_inviteScheduleButton = new Button { Text = "按最近应邀时间修炼", CustomMinimumSize = new Vector2(0, 44) };
+		_dateRow = new VBoxContainer(); practice.AddChild(_dateRow); _dateRow.AddChild(QuietRoomStyle.Text("结束日期")); var date = new HBoxContainer(); _dateRow.AddChild(date);
+		_year = spin(1, 9999, 1); _month = spin(1, 12, 1); _date = spin(1, 30, 1);
+		foreach (var (field, text) in new[] { (_year, "年"), (_month, "月"), (_date, "日") }) { field.CustomMinimumSize = new Vector2(68, 44); date.AddChild(field); date.AddChild(QuietRoomStyle.Text(text, 18)); field.ValueChanged += _ => refresh_plan(); }
+		_inviteScheduleButton = new Button { Text = "按最近应邀日期修炼", CustomMinimumSize = new Vector2(0, 44) };
 		_inviteScheduleButton.Pressed += apply_next_invitation_schedule;
 		_dateRow.AddChild(_inviteScheduleButton);
 		_inviteScheduleHint = QuietRoomStyle.Text("", 15); _inviteScheduleHint.AutowrapMode = TextServer.AutowrapMode.WordSmart; _dateRow.AddChild(_inviteScheduleHint);

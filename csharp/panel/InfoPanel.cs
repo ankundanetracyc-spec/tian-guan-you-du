@@ -1365,14 +1365,14 @@ public partial class InfoPanel : Control
         {
             _battleDetailMeta.Text = "常驻被动　开战显示于Buff栏";
             var passiveSource = string.IsNullOrWhiteSpace(skill.source_gongfa_name) ? "秘籍" : skill.source_gongfa_name;
-            _battleDetailText.Text = $"[b]效果[/b]\n{CardPresentation.Underline(CardPresentation.Face(skill,current_card))}\n\n[b]来源[/b]\n{passiveSource}";
+            PlayerInfoText.Bind(_battleDetailText, $"[b]效果[/b]\n{CardPresentation.Underline(CardPresentation.Face(skill,current_card))}\n\n[b]来源[/b]\n{passiveSource}");
             return;
         }
         _battleDetailTitle.Text = skill.skill_name;
         _battleDetailMeta.Text = $"{category}　体力 {skill.energy_cost}　法力 {skill.mana_cost}";
         var source = string.IsNullOrWhiteSpace(skill.source_gongfa_name) ? "通用" : skill.source_gongfa_name;
         var skillDescription=CardPresentation.Underline(CardPresentation.Face(skill,current_card));
-        _battleDetailText.Text = $"[b]技能效果[/b]\n{skillDescription}\n\n[b]来源[/b]\n{source}\n\n[b]装配操作[/b]\n左侧点击加入或移出技能槽；中间可调整顺序或移除。";
+        PlayerInfoText.Bind(_battleDetailText, $"[b]技能效果[/b]\n{skillDescription}\n\n[b]来源[/b]\n{source}");
     }
 
     private void bind_static_battle_controls()
@@ -1843,11 +1843,11 @@ public partial class InfoPanel : Control
             if (row.GetNodeOrNull<Label>("Name") is { } nameLabel) bind_tooltip(nameLabel, description);
             if (row.GetNodeOrNull<Label>("Value") is { } valueLabel) bind_tooltip(valueLabel, formula);
         }
-        void Base(string row, string name, string description, string formula) => Bind(row, $"{name}\n{description}", $"{name}\n{formula}");
+        void Base(string row, string name, string description, string formula) => Bind(row, $"{name}\n{description}\n{formula}", $"{name}\n{description}\n{formula}");
 
         Base("PhysiqueRow", "体魄", "肉身根基，参与生命、行动、身法与物理伤害。", $"当前体魄 = 基础体魄 + 功法 + 装备 + 状态修正\n生命贡献 = 9 × 最终体魄 + 2 × 基础体魄\n行动速度贡献 = 0.5 × 体魄；精准贡献 = 0.5 × 体魄\n当前值：{unit.physique:0.0}");
         Base("IntelligenceRow", "灵慧", "思虑与感知根基，参与行动速度、精准、身法、会心与护心。", $"当前灵慧 = 基础灵慧 + 功法 + 装备 + 状态修正\n生命贡献 = 1.5 × 灵慧；行动速度贡献 = 0.75 × 灵慧\n精准贡献 = 7 × 灵慧；身法贡献 = 1 × 灵慧；会心贡献 = 0.3 × 灵慧；护心贡献 = 2 × 灵慧\n当前值：{unit.intelligence:0.0}");
-        Base("CoordinationRow", "身心协调值（派生）", "体魄与神魂相互制约后的协调值，不独立成长或存档。", $"身心协调值 = min(体魄, 神魂) = {unit.coordination:0.0}\n参与行动速度、身法、护心与部分应对判定。");
+        Base("CoordinationRow", "身心协调值（派生）", "体魄与神魂共同形成的协调能力。", $"身心协调值 = min(体魄, 神魂) = {unit.coordination:0.0}\n参与行动速度、身法、护心与部分应对判定。");
         Base("SoulRow", "神魂", "感知与反应根基，参与行动速度、精准、身法、会心与护心。", $"当前神魂 = 基础神魂 + 功法 + 装备 + 状态修正\n生命贡献 = 3 × 神魂；行动速度贡献 = 0.75 × 神魂\n精准贡献 = 1 × 神魂；身法贡献 = 2 × 神魂；会心贡献 = 2 × 神魂；护心贡献 = 1.5 × 神魂\n当前值：{unit.soul:0.0}");
         Base("FortuneRow", "福缘", "参与事件、探索与收获的福缘判定；当前不参与固定战斗派生属性计算。", $"当前福缘 = 基础福缘 + 功法/事件修正\n当前值：{unit.fortune:0.0}");
         Base("ComprehensionRow", "悟性", "参与功法研读、修行与相关事件的悟性判定；当前不参与固定战斗派生属性计算。", $"当前悟性 = 基础悟性 + 功法/事件修正\n当前值：{unit.comprehension:0.0}");
@@ -1858,7 +1858,7 @@ public partial class InfoPanel : Control
         Base("HealthRow", "生命", "生命归零时角色无法继续行动。", $"当前生命：{unit.current_health}/{unit.max_health}\n生命上限由角色属性、功法、装备与状态共同决定。");
         Base("StaminaRow", "体力", "用于施展招式；每轮补给3点，休整回复2点，均不超过上限。", $"战斗内上限：6\n当前/上限：{unit.current_stamina}/{unit.max_stamina}");
         Base("ManaRow", "法力", "用于术法等行动；跨轮保留，不自动回复。只有明确写出的技能或效果可回复法力。", $"法力容量由境界及已有修正规则决定\n当前/上限：{unit.current_mana}/{unit.max_mana}");
-        Base("MindRow", "速度", "每秒获得的行动进度，达到1000时执行队首。不是遁速或身法。", $"基础值及功法、状态、伤势共同影响战斗实际速度。\n常驻速度：{unit.initiative_speed:0.0}");
+        Base("MindRow", "速度", "影响战斗中的出手频率。", $"基础值及功法、状态、伤势共同影响战斗实际速度。\n常驻速度：{unit.initiative_speed:0.0}");
         Base("SpiritPerceptionRow", "灵识", "御使飞剑、法宝、傀儡、阵旗等持续实体的容量；不是普通术法的即时费用。", $"显示方式 = 已占用 / 容量\n收回、损毁或驱散持续实体后释放占用\n当前：{unit.used_spirit_perception}/{unit.max_spirit_perception}");
         Base("PhysicalDefenseRow", "物理防御", "减轻武器、拳脚等物理伤害。", $"当前物理防御 = 基础 + 装备 + 功法 + 状态修正\n当前值：{unit.physical_defense}");
         Base("PrecisionRow", "精准", "决定攻击与技艺命中的基础能力。", $"精准 = 7 × 灵慧 + 神魂 + 0.5 × 体魄\n当前值：{unit.precision}");

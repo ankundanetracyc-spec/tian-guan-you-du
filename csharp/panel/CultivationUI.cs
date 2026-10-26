@@ -9,7 +9,8 @@ public partial class CultivationUI : Control
 	private PanelContainer? _panel;
 	private Label? _name, _realm, _power, _rate, _plan, _studyHint, _breakthroughHint;
 	private OptionButton? _mode, _studyBook;
-	private SpinBox? _strands, _days, _year, _month, _date, _hour;
+	private SpinBox? _strands, _days, _year, _month, _date;
+	private int _dateModeHour;
 	private Button? _cultivate, _study, _breakthrough, _inviteScheduleButton;
 	private Label? _inviteScheduleHint;
 	private VBoxContainer? _strandRow, _dayRow, _dateRow;
@@ -596,7 +597,8 @@ public partial class CultivationUI : Control
 	{
 		var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
 		if (time is null || _year is null || _month is null || _date is null) return;
-		_year.Value = time.year; _month.Value = time.month; _date.Value = Math.Min(30, time.day + 1); if (_hour is not null) _hour.Value = time.hour;
+		_dateModeHour = time.hour;
+		_year.Value = time.year; _month.Value = time.month; _date.Value = Math.Min(30, time.day + 1);
 		if (time.day == 30) { _date.Value = 1; _month.Value = time.month == 12 ? 1 : time.month + 1; if (time.month == 12) _year.Value = time.year + 1; }
 	}
 
@@ -615,7 +617,7 @@ public partial class CultivationUI : Control
 		return (_mode?.Selected ?? 0) switch
 		{
 			1 => Mathf.Max(1, (int)_days!.Value * 24),
-			2 => Math.Max(0, total_hours((int)_year!.Value, (int)_month!.Value, (int)_date!.Value, (int)(_hour?.Value ?? time.hour)) - time.get_total_game_hours()),
+			2 => Math.Max(0, total_hours((int)_year!.Value, (int)_month!.Value, (int)_date!.Value, _dateModeHour) - time.get_total_game_hours()),
 			_ => 0
 		};
 	}
@@ -638,10 +640,9 @@ public partial class CultivationUI : Control
 		var activity = invitation.GetValueOrDefault("activity_name", "应邀活动").AsString();
 		var place = invitation.GetValueOrDefault("place_name", "相约地点").AsString();
 		var targetHour = invitation.GetValueOrDefault("hour", 0).AsInt32();
-		var now = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
-		var targetDate = now is null ? LetterMailbox.Date(targetHour) : format_date_after(now, targetHour - now.get_total_game_hours());
-		_inviteScheduleButton.Text = $"按「{activity}」时间修炼";
-		_inviteScheduleHint.Text = $"{place}　·　目标 {targetDate}。精力不足时，修炼会先结束，需留意赴约时段。";
+		var targetDate = LetterMailbox.Date(targetHour);
+		_inviteScheduleButton.Text = $"按「{activity}」日期修炼";
+		_inviteScheduleHint.Text = $"{place}　·　目标 {targetDate}。精力不足时，修炼会先结束，需留意赴约日期。";
 	}
 
 	private void apply_next_invitation_schedule()
@@ -653,7 +654,7 @@ public partial class CultivationUI : Control
 		_year!.Value = day / 360 + 1;
 		_month!.Value = day % 360 / 30 + 1;
 		_date!.Value = day % 30 + 1;
-		_hour!.Value = targetHour % 24;
+		_dateModeHour = targetHour % 24;
 		_mode!.Select(2);
 		update_mode_visibility(); sync_mode_tabs(); refresh_plan();
 	}
@@ -663,9 +664,9 @@ public partial class CultivationUI : Control
 	private static string format_date_after(GameTimeMgr time, int hours)
 	{
 		var total = time.get_total_game_hours() + Math.Max(0, hours);
-		var dayIndex = total / 24; var hour = total % 24;
+		var dayIndex = total / 24;
 		var year = dayIndex / 360 + 1; var remainder = dayIndex % 360;
-		return $"{year}年{remainder / 30 + 1}月{remainder % 30 + 1}日 {hour:00}时";
+		return $"{year}年{remainder / 30 + 1}月{remainder % 30 + 1}日";
 	}
 
 	private static string format_duration_hours(int hours) => GameTimeText.Duration(hours);

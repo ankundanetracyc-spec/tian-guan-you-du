@@ -2,13 +2,55 @@
   <diagram id="node-sword-finisher" name="尽锋">
     <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="720" math="0" shadow="0">
       <root>
-        <mxCell id="0"/><mxCell id="1" parent="0"/>
-        <mxCell id="title" value="人物技能卡 · 剑式初传授予" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5efdf;strokeColor=#9a8967;fontSize=22;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="540" y="28" width="520" height="72" as="geometry"/></mxCell>
-        <mxCell id="source" value="剑式初传节点&#xa;体魄 ≥ 6&#xa;剑道造诣 ≥ 6&#xa;一次解锁四招" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8e0cd;strokeColor=#8a7553;fontSize=17;" vertex="1" parent="1"><mxGeometry x="55" y="255" width="245" height="190" as="geometry"/></mxCell>
-        <mxCell id="main" value="技能名：尽锋&#xa;资源路径：res://resources/activeskills/剑修基础/尽锋.tres&#xa;类型：攻伐&#xa;关键词：剑、&lt;u&gt;剑意&lt;/u&gt;&#xa;耗费：体力 2、法力 1&#xa;目标：相邻1名敌人&#xa;出手分类：近身&#xa;效果：造成 A 点物理伤害；命中后消耗全部&lt;u&gt;剑意&lt;/u&gt;，每层剑意提高本次伤害。A=round(7 + 灵慧×0.30 + 术法造诣×0.35 + 剑道造诣×0.50 + 剑意层数×2)&#xa;来源：剑式初传节点（四招同时解锁）&#xa;描述：借炁尽催锋芒，以剑意行最后一击。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e7eee4;strokeColor=#769078;fontSize=18;align=left;spacingLeft=18;spacingTop=16;" vertex="1" parent="1"><mxGeometry x="370" y="145" width="650" height="390" as="geometry"/></mxCell>
-        <mxCell id="note" value="参悟后收入技能库&#xa;需由玩家手动装配。&#xa;&#xa;剑意上限10层；未命中时不消耗。" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#c4a95d;fontSize=16;align=left;verticalAlign=top;spacingLeft=14;spacingTop=12;" vertex="1" parent="1"><mxGeometry x="1080" y="185" width="340" height="250" as="geometry"/></mxCell>
-        <mxCell id="edge1" value="统一节点授予" style="endArrow=block;html=1;strokeColor=#8a7553;fontSize=15;" edge="1" parent="1" source="source" target="main"><mxGeometry relative="1" as="geometry"/></mxCell>
-        <mxCell id="edge2" value="剑意消耗" style="endArrow=block;html=1;strokeColor=#8a7553;fontSize=15;" edge="1" parent="1" source="main" target="note"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="人物技能卡 · 剑式初传授予" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5efdf;strokeColor=#9a8967;fontSize=22;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="540" y="28" width="520" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="source" value="剑式初传节点&#10;体魄 ≥ 6&#10;剑道造诣 ≥ 6&#10;一次解锁四招" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8e0cd;strokeColor=#8a7553;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="55" y="255" width="245" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="main" value="技能名：尽锋&#10;关键词：剑、剑意&#10;耗费：体力 2、法力 1&#10;目标：相邻1名敌人&#10;出手分类：近身&#10;效果：造成 A 点（A=round(7 + 灵慧×0.30 + 术法造诣×0.35 + 剑道造诣×0.50 + 剑意层数×2)）物理伤害；命中后消耗全部剑意，每层剑意提高本次伤害。&#10;来源：剑式初传节点（四招同时解锁）&#10;描述：借炁尽催锋芒，以剑意行最后一击。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e7eee4;strokeColor=#769078;fontSize=18;align=left;spacingLeft=18;spacingTop=16;" vertex="1" parent="1">
+          <mxGeometry x="370" y="145" width="650" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="参悟后收入技能库&#10;需由玩家手动装配。&#10;&#10;剑意上限10层；未命中时不消耗。" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#c4a95d;fontSize=16;align=left;verticalAlign=top;spacingLeft=14;spacingTop=12;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="185" width="340" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="edge1" value="统一节点授予" style="endArrow=block;html=1;strokeColor=#8a7553;fontSize=15;" edge="1" parent="1" source="source" target="main">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2" value="剑意消耗" style="endArrow=block;html=1;strokeColor=#8a7553;fontSize=15;" edge="1" parent="1" source="main" target="note">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="player-rules-entry" value="本图为详细版：效果后以括号列出公式；游戏内可设置简略／详细。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eee8d8;strokeColor=#9a8967;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="567" width="1000" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="node-sword-finisher-rules" name="尽锋 · 规则详解">
+    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="720" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="人物技能卡 · 剑式初传授予" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5efdf;strokeColor=#9a8967;fontSize=22;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="540" y="28" width="520" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="source" value="剑式初传节点&#10;体魄 ≥ 6&#10;剑道造诣 ≥ 6&#10;一次解锁四招" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8e0cd;strokeColor=#8a7553;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="55" y="255" width="245" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="main" value="技能名：尽锋&#10;资源路径：res://resources/activeskills/剑修基础/尽锋.tres&#10;类型：攻伐&#10;关键词：剑、&lt;u&gt;剑意&lt;/u&gt;&#10;耗费：体力 2、法力 1&#10;目标：相邻1名敌人&#10;出手分类：近身&#10;效果：造成 A 点物理伤害；命中后消耗全部&lt;u&gt;剑意&lt;/u&gt;，每层剑意提高本次伤害。A=round(7 + 灵慧×0.30 + 术法造诣×0.35 + 剑道造诣×0.50 + 剑意层数×2)&#10;来源：剑式初传节点（四招同时解锁）&#10;描述：借炁尽催锋芒，以剑意行最后一击。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e7eee4;strokeColor=#769078;fontSize=18;align=left;spacingLeft=18;spacingTop=16;" vertex="1" parent="1">
+          <mxGeometry x="370" y="145" width="650" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="参悟后收入技能库&#10;需由玩家手动装配。&#10;&#10;剑意上限10层；未命中时不消耗。" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#c4a95d;fontSize=16;align=left;verticalAlign=top;spacingLeft=14;spacingTop=12;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="185" width="340" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="edge1" value="统一节点授予" style="endArrow=block;html=1;strokeColor=#8a7553;fontSize=15;" edge="1" parent="1" source="source" target="main">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2" value="剑意消耗" style="endArrow=block;html=1;strokeColor=#8a7553;fontSize=15;" edge="1" parent="1" source="main" target="note">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>

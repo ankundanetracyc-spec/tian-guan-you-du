@@ -203,7 +203,15 @@ public partial class EastWoodsDungeonPanel
         _actionBar.Visible = !_isTraveling && _travelPawn is null && _pendingPath.Count < 2 && _actionModal?.Visible != true;
         var node = route_node(_current);
         var heading = WorldHudStyle.Text(node?.ShowTitleOnMap == true ? node.Title : _dynamicMode ? route_display_name : "林间驻足", 16);
+        if (!_dynamicMode) heading.Text = "东林地 · " + EastWoodsDungeonRules.forest_region(_current);
         heading.HorizontalAlignment = HorizontalAlignment.Center; _actionRows.AddChild(heading);
+        if (!_dynamicMode)
+        {
+            var ambience = WorldHudStyle.Text(forest_ambience(_current), 16, true);
+            ambience.Name = "ForestAmbience";
+            ambience.AutowrapMode = TextServer.AutowrapMode.WordSmart;
+            _actionRows.AddChild(ambience);
+        }
         if (!_dynamicMode && _activeDutyId == "east_woods_patrol")
         {
             var duty = WorldHudStyle.Text(_activeDutyReady ? "巡查已复核 · 从林缘离开后回和光峰回报" : $"巡查 {Math.Min(_activeDutyStage, YuxuSectPrototypeBalance.EastWoodsPatrolRequiredNodeMoves)}/{YuxuSectPrototypeBalance.EastWoodsPatrolRequiredNodeMoves} · 前往静冠洼地复核", 16, true);

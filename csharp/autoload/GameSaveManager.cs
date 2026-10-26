@@ -96,7 +96,7 @@ public partial class GameSaveManager : Node
 				var slotId = fileName[..^5];
 				if (is_safe_slot_id(slotId) && ResourceLoader.Load<PersistentGameSave>($"{SaveDirectory}/{fileName}", cacheMode: ResourceLoader.CacheMode.IgnoreDeep) is { } save)
 				{
-					var time = $"{save.year}年{save.month}月{save.day}日 {save.hour:00}时";
+					var time = $"{save.year}年{save.month}月{save.day}日";
 					var realm = save.player_data?.cultivation_realm ?? "境界未明";
 					result.Add(new Dictionary
 					{

@@ -67,7 +67,7 @@ public partial class ProcessForgingScene : Control
         _buttons.Clear();
         _page = new Control { Size = new Vector2(1672, 941), MouseFilter = MouseFilterEnum.Pass }; _canvas.AddChild(_page);
         var header = Paper(_page, 24, 18, 1624, 76);
-        Put(header, Btn("〈 返回", () => { if (GetParent() is BaigongPanel) QueueFree(); else GetTree().ChangeSceneToFile("res://tscn/scene/StartMenu.tscn"); }), 15, 13, 106, 48);
+        Put(header, Btn("〈 返回", () => { if (_forgingOwner is not null) ReturnToBaigong(); else GetTree().ChangeSceneToFile("res://tscn/scene/StartMenu.tscn"); }), 15, 13, 106, 48);
         Put(header, Text("炼 器", 34), 150, 12, 150, 50);
         Put(header, Text("剑类 · 材料成器", 21), 312, 25, 325, 34);
         Put(header, Btn("参考投料", Examples), 665, 15, 165, 46);

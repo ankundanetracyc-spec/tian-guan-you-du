@@ -28,6 +28,7 @@ public partial class DungeonMovementLockSmoke : Control
             var second = EastWoodsDungeonRules.get_neighbors(first).FirstOrDefault(id => id != initial) ?? first;
             Check(panel.begin_assigned_route(second), "Could not start real route"); await Settle(panel);
             Check(panel.get_current_route_node_id() == second, "Continuous route stopped early");
+            panel.close_action_details(); // Arrival at a content point now waits for the player's choice.
             Check(panel.begin_assigned_route(initial), "Could not route back"); await Settle(panel);
             var target = EastWoodsDungeonRules.get_neighbors(initial)[0];
             var direction = EastWoodsDungeonRules.get_node(target)!.GridPosition - EastWoodsDungeonRules.get_node(initial)!.GridPosition;

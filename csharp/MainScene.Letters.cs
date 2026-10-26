@@ -92,6 +92,7 @@ public partial class MainScene
             ["activity_name"] = upcoming.activity_name,
             ["place_name"] = upcoming.place_name,
             ["hour"] = upcoming.starts_at_hour,
+            ["date_only"] = upcoming.UsesDateOnlySchedule,
         };
     }
 
@@ -106,16 +107,18 @@ public partial class MainScene
             {
                 tasks.Add((invite.starts_at_hour, IdentifyJournalTask(new JournalPanel.Entry(
                     invite.activity_name, $"已赴{invite.activity_name}之约。", "来信邀约", invite.place_name,
-                    "已完成", LetterMailbox.Date(invite.starts_at_hour), "letter.invitation." + letter.letter_id))));
+                    "已完成", invite.StartsAtDisplay, "letter.invitation." + letter.letter_id))));
                 continue;
             }
             if (invite.response != "accepted" || invite.ends_at_hour <= now) continue;
             var detail = now < invite.starts_at_hour
-                ? $"你已接受邀约。请于{LetterMailbox.Date(invite.starts_at_hour)}前往{invite.place_name}；活动开始后可在信匣中赴约。静室修炼页可将这场邀约的开始时辰填入修炼计划，精力不足可能使修炼提前结束。"
-                : $"邀约时段已开始，将于{LetterMailbox.Date(invite.ends_at_hour)}结束。请前往{invite.place_name}并从信匣赴约。";
+                ? $"你已接受邀约。请于{invite.StartsAtDisplay}前往{invite.place_name}；活动开放后可在信匣中赴约。静室修炼页可按邀约日期排入修炼计划，精力不足可能使修炼提前结束。"
+                : invite.UsesDateOnlySchedule
+                    ? "邀约活动已开始。请前往相约地点并从信匣赴约。"
+                    : $"邀约日期已开始，将于{LetterMailbox.Date(invite.ends_at_hour)}结束。请前往{invite.place_name}并从信匣赴约。";
             tasks.Add((invite.starts_at_hour, IdentifyJournalTask(new JournalPanel.Entry(
                 invite.activity_name, detail, "来信邀约", invite.place_name, "进行中",
-                LetterMailbox.Date(invite.starts_at_hour), "letter.invitation." + letter.letter_id))));
+                invite.StartsAtDisplay, "letter.invitation." + letter.letter_id))));
         }
         return tasks.OrderBy(task => task.StartHour).Select(task => task.Entry).ToList();
     }

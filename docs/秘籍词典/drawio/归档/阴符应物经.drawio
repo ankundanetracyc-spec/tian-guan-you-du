@@ -1,5 +1,124 @@
-<?xml version="1.0" encoding="utf-8"?><mxfile host="Electron" agent="Codex">
+<mxfile host="Electron" agent="Codex">
   <diagram id="yinfu-yingwu" name="阴符应物经">
+    <mxGraphModel dx="3614" dy="610" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2600" pageHeight="2340" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=20;" value="阴符应物经" vertex="1">
+          <mxGeometry height="74" width="560" x="740" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="overview" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=15;" value="云息秘籍 / 可主修、可辅修&lt;br&gt;主修可修至：云息十层&lt;br&gt;主化解与借力；以应对技能抵消当前攻击，将敌势转成借力，再以挟势保势或合劲终结&lt;br&gt;化解不是护盾，仅抵消本次攻击的物理伤害&lt;br&gt;即时战斗适配：60 FPS队列；心法被动：战斗开始时显示在Buff栏，常驻至战斗结束；气血无自动回落，身法、伤势与整场限次按公共规则。&lt;br&gt;修持修正只作用于战斗内属性，并随本卷心法被动显示在Buff栏信息详情；战斗结束移除，不进入角色永久属性。" vertex="1">
+          <mxGeometry height="185" width="560" x="740" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第一卷：承机&lt;br&gt;卷章ID：cheng_ji&lt;br&gt;顺序：1&lt;br&gt;&lt;br&gt;定位：承敌之机，令化解成为借力入口&lt;br&gt;学成可修至：云息三层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：凡人境界及以上&lt;br&gt;研读属性：体魄≥5；身心协调值≥5&lt;br&gt;&lt;br&gt;学会永久属性：体魄 +0.5；体道造诣 +0.5&lt;/div&gt;" vertex="1">
+          <mxGeometry height="380" width="340" x="850" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;最大生命 +15%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="260" x="360" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：承机&lt;br&gt;&lt;br&gt;化法追加：触发时现有借力每满2层，使本次化解额外增加1层，最多增加2层。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="320" width="280" x="1360" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="心法被动：阴符应物&#10;习得：承机&#10;&#10;阴符应物：&#10;类型：心法&#10;关键词：防御、攻防联动&#10;效果：累计以化解实际抵消的敌方物理伤害；每累计抵消4点，获得借力1层，不足4点的余量保留至本场后续应对。&#10;主修额外效果：每获得1层借力所需的累计抵消伤害减少1点。&#10;&#10;承机：&#10;关键词：防御、攻防联动&#10;耗费：体力 1、法力 0&#10;目标：自身（应对敌方攻击）&#10;效果：敌方攻击自身时获得化解；化解层数：A层（A=round(6 + 体魄×0.30 + 体道造诣×0.25)）。每层抵消本次物理伤害1点。若本次应对未造成实际生命损失，获得借力1层。&#10;。&#10;使用次数：不限" vertex="1">
+          <mxGeometry height="380" width="740" x="-400" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第二卷：挟势&lt;br&gt;卷章ID：xie_shi&lt;br&gt;顺序：2&lt;br&gt;&lt;br&gt;定位：借势而不竭势，保留层数给后续收束&lt;br&gt;学成可修至：云息六层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：云息三层及以上&lt;br&gt;前置：已学承机&lt;br&gt;研读属性：体魄≥6；身心协调值≥7；体道造诣≥0.5&lt;br&gt;&lt;br&gt;学会永久属性：体魄 +0.25、神魂 +0.25；体道造诣 +0.5&lt;/div&gt;" vertex="1">
+          <mxGeometry height="430" width="340" x="850" y="820" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;化解获得层数 +1&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="270" x="390" y="820" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：挟势&lt;br&gt;&lt;br&gt;化法追加：每层借力在原有增伤之外，再使本次伤害倍率提高2%。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="320" width="290" x="1360" y="820" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="习得：挟势&#10;&#10;挟势：&#10;关键词：增伤、攻防联动&#10;耗费：体力 2、法力 0&#10;目标：指定1名敌方&#10;出手方式：近身&#10;&#10;伤害类型：物理&#10;效果：对目标造成物理伤害；伤害：A点（A=round(6 + 体魄×0.45 + 体道造诣×0.30)）。再享受借力公共加成。本技能结算后不移除借力。&#10;。" vertex="1">
+          <mxGeometry height="260" width="740" x="-400" y="820" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第三卷：应物&lt;br&gt;卷章ID：ying_wu&lt;br&gt;顺序：3&lt;br&gt;&lt;br&gt;定位：使基础卸力也承接敌势，稳定积蓄借力&lt;br&gt;学成可修至：云息九层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：云息六层及以上&lt;br&gt;前置：已学挟势&lt;br&gt;研读属性：体魄≥8；身心协调值≥8；体道造诣≥1&lt;br&gt;&lt;br&gt;学会永久属性：体魄 +0.5；体道造诣 +1&lt;/div&gt;" vertex="1">
+          <mxGeometry height="430" width="340" x="850" y="1320" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;最大生命 +10%&lt;br&gt;物理伤害 +4%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="270" x="400" y="1320" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：卸力&lt;br&gt;&lt;br&gt;化法追加：若本次化解实际抵消至少1点物理伤害，获得借力1层。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="320" width="290" x="1360" y="1320" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：阴符应物&lt;br&gt;&lt;br&gt;阴符应物：&lt;br&gt;类型：心法&lt;br&gt;关键词：防御、攻防联动&lt;br&gt;效果：累计以化解实际抵消的敌方物理伤害；每累计抵消3点，获得借力1层，不足3点的余量保留至本场后续应对。&lt;br&gt;主修额外效果：每获得1层借力所需的累计抵消伤害减少1点。&lt;br&gt;&lt;br&gt;习得：无新增主动技能&lt;/div&gt;" vertex="1">
+          <mxGeometry height="220" width="740" x="-400" y="1320" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第四卷：合劲&lt;br&gt;卷章ID：he_jin&lt;br&gt;顺序：4&lt;br&gt;&lt;br&gt;定位：合众势为一击，完成借力体系的终结反制&lt;br&gt;学成可修至：云息十层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：云息九层及以上&lt;br&gt;前置：已学应物&lt;br&gt;研读属性：体魄≥9；身心协调值≥10；体道造诣≥2&lt;br&gt;&lt;br&gt;学会永久属性：体道造诣 +1&lt;/div&gt;" vertex="1">
+          <mxGeometry height="400" width="340" x="850" y="1820" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;借力每层物理伤害加成 +1 个百分点&lt;br&gt;物理伤害 +6%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="270" x="370" y="1820" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：合劲&lt;br&gt;&lt;br&gt;化法追加：施放时若借力不少于3层，本次伤害倍率额外提高10%。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="340" width="290" x="1360" y="1820" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="习得：合劲&#10;&#10;合劲：&#10;关键词：增伤、攻防联动&#10;耗费：体力 3、法力 0&#10;目标：指定1名敌方&#10;出手方式：近身&#10;&#10;伤害类型：物理&#10;效果：借力每层总增伤8%（公共5% + 本技能额外3%）；消耗全部借力，对目标造成物理伤害；伤害：A点（A=round((10 + 体魄×0.55 + 体道造诣×0.35)×(1 + 借力层数×0.08))）。&#10;。&#10;使用次数：本场1次" vertex="1">
+          <mxGeometry height="280" width="740" x="-400" y="1820" as="geometry" />
+        </mxCell>
+        <mxCell id="summary" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" value="&lt;div style=&quot;text-align:left;&quot;&gt;现行技能：承机、挟势、合劲；第三卷不授主动技能，各卷化法改写承机、挟势、卸力、合劲。心法将实际抵消的物理伤害转为借力，第三卷提高换算效率，主修再提高。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="420" x="1660" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="status_rules" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;术语与状态详解&lt;br&gt;&lt;br&gt;化解&lt;br&gt;仅在敌方攻击自身时由应对技能获得；每层抵消该次攻击1点物理伤害；该次攻击结算后全部消散。不是护盾，不是常驻减伤。&lt;br&gt;&lt;br&gt;借力&lt;br&gt;每层使下一次自身主动施放的物理伤害技能伤害提高5%，该技能结算后移除全部借力。&lt;br&gt;&lt;br&gt;挟势例外&lt;br&gt;挟势享受借力伤害加成，但结算后不移除借力；合劲则读取每层总增伤8%并移除全部借力。&lt;/div&gt;&lt;br&gt;&lt;br&gt;身法&lt;br&gt;持续增益状态，最多20层，持续1回合；每层使自身基础身法（dodge）提高1%；获得新层时刷新为1回合；获得层的回合不扣时长，从下一完整回合结束时递减，受击不消耗；1回合时长归零或战斗结束时移除。&lt;br&gt;&lt;br&gt;修持&lt;br&gt;仅本场战斗生效，随本经心法Buff显示于图标信息栏；不进入角色永久属性。" vertex="1">
+          <mxGeometry height="483" width="430" x="1660" y="820" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" edge="1" parent="1" source="overview" style="endArrow=block;html=1;" target="c1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_a" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_b" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_c" edge="1" parent="1" source="c1" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c1_cards" value="本卷被动与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_a" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_b" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_c" edge="1" parent="1" source="c2" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c2_cards" value="习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_a" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_b" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_c" edge="1" parent="1" source="c3" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c3_cards" value="习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_a" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_b" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_c" edge="1" parent="1" source="c4" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c4_cards" value="习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="player-rules-entry" value="本图为详细版：效果后以括号列出公式；游戏内可设置简略／详细。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eee8d8;strokeColor=#9a8967;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="2252" width="1000" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="yinfu-yingwu-rules" name="阴符应物经 · 规则详解">
     <mxGraphModel dx="3614" dy="610" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2600" pageHeight="1868" math="0" shadow="0">
       <root>
         <mxCell id="0" />

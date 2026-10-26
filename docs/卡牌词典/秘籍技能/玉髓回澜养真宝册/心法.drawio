@@ -1,6 +1,19 @@
-<?xml version='1.0' encoding='utf-8'?>
 <mxfile host="app.diagrams.net">
   <diagram name="玉髓回澜">
+    <mxGraphModel grid="1" page="1" pageWidth="1400" pageHeight="1500">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="main" value="第一卷&#10;心法被动：玉髓回澜&#10;关键词：气血、护盾&#10;效果：气血层数降低产生回复时，超出生命缺口的回复量的50%转为A点（A=floor(max(0,本次气血回落应回复量−本次实际回复量)×0.50)）护盾。&#10;主修额外效果：自身护盾被敌方攻击耗尽后，获得气血1层；每回合限一次。&#10;。&#10;&#10;第二卷&#10;心法被动：玉髓回澜（沿用第一卷，无新增效果）&#10;&#10;第三卷&#10;心法被动：玉髓回澜（沿用第一卷，无新增效果）&#10;&#10;第四卷&#10;心法被动：玉髓回澜（沿用第一卷，无新增效果）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="100" y="100" width="850" height="332" as="geometry" />
+        </mxCell>
+        <mxCell id="player-rules-entry" value="本图为详细版：效果后以括号列出公式；游戏内可设置简略／详细。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eee8d8;strokeColor=#9a8967;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="464" width="1000" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="玉髓回澜 · 规则详解" id="page-rules">
     <mxGraphModel grid="1" page="1" pageWidth="1400" pageHeight="1500">
       <root>
         <mxCell id="0" />

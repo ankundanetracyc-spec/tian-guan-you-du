@@ -34,6 +34,7 @@ public partial class BattleSuppliesSmoke : Node
         var human = (HumanData)actor.entity_data!;
         human.inventory_item_paths = [Heal, Mana]; human.inventory_item_counts = [8, 3]; human.inventory_item_positions = [4, 9];
         human.battle_supplies = [];
+        actor.get_inventory_snapshot(); // 完成世界角色的服装库存初始化，再记录战前行囊。
         actor.max_health = 100; actor.current_health = 40; actor.max_mana = 40; actor.current_mana = 0;
         return actor;
     }
@@ -45,7 +46,9 @@ public partial class BattleSuppliesSmoke : Node
             await Frames();
             var original = CreateOwner();
             var snapshot = original.get_snapshot_data();
-            Check(snapshot.pack_state_included && snapshot.pack_item_positions.SequenceEqual(new[] { 4, 9 }), "快照携带真实库存及原格位");
+            Check(snapshot.pack_state_included && snapshot.pack_item_positions.Take(2).SequenceEqual(new[] { 4, 9 }), "快照携带真实库存及原格位");
+            var initialPaths = snapshot.pack_item_paths.ToArray();
+            var initialPositions = snapshot.pack_item_positions.ToArray();
             Check(BattleSupplyRules.Set(snapshot, 0, Heal, 99) && snapshot.battle_supplies[0].count == 5, "单战备位最多5颗");
             Check(BattleSupplyRules.Set(snapshot, 1, Heal, 5) && snapshot.battle_supplies[1].count == 3, "重复丹药位不能超额预留本人库存");
             Check(!BattleSupplyRules.Set(snapshot, 2, Heal, 5), "库存全部被预留后不能凭空再装一堆");
@@ -59,7 +62,10 @@ public partial class BattleSuppliesSmoke : Node
             var enemy = new BattleEntityData { uid = "supply-smoke-enemy", entity_name = "战备试炼对手", faction = 2,
                 current_health = 1000, max_health = 1000, physique = 10, intelligence = 10, soul = 10,
                 cultivation_realm = "云息三层", initiative_speed = 1, test_mana_cap_override = 40,
-                pack_state_included = true, combat_skill_slots_configured = true };
+                pack_state_included = true, combat_skill_slots_configured = true,
+                pack_item_paths = [Heal], pack_item_counts = [1], pack_item_positions = [7],
+                battle_supplies = [new() { item_path = Heal, count = 1 }] };
+            enemy.current_health = 10;
             var world = new Node2D { Name = "SupplySmokeWorld" }; GetTree().Root.AddChild(world); GetTree().CurrentScene = world;
             var transition = GetTree().Root.GetNode<BattleTransitionManager>("BattleTransitionManager");
             transition.set_battle_return_context(new Godot.Collections.Dictionary { ["is_training"] = true, ["title"] = "战备专项演练", ["allow_prebattle_cancel"] = true });
@@ -82,6 +88,10 @@ public partial class BattleSuppliesSmoke : Node
             player.current_health = 40; player.max_health = 100; player.current_mana = 0; player.max_mana = 40;
             Check(player.battle_supplies.Count == 3 && player.battle_supplies.Select(s => s.count).SequenceEqual(new[] { 5, 3, 3 }), "战前UI配置完整进入本人战斗快照");
             Check(player.get_inventory_total_count(Heal) == 8 && original.get_inventory_total_count(Heal) == 8, "战前配置与入场均未扣除丹药");
+            var aiOwner = (Character)battle.enemy_units[0];
+            var aiPills = battle.get_battle_unit(aiOwner).skill_queue.Where(action => action.kind == BattleQueuedSkill.ActionKind.Pill).ToArray();
+            Check(aiPills.Length == 1 && aiPills[0].target == aiOwner && aiOwner.get_inventory_total_count(Heal) == 1,
+                "AI依据自身伤势编排本人丹药且不超库存、不预先消耗");
             Named("BattleSuppliesToggle").EmitSignal(Button.SignalName.Pressed); await Frames();
             Check(Named("BattleSupplySlot1").IsVisibleInTree(), "点击正式战备入口向上展开");
             var bar = GetTree().CurrentScene.GetNode<Control>("UILayer/CombatSkillBar/BarArtwork");
@@ -119,13 +129,21 @@ public partial class BattleSuppliesSmoke : Node
             await Capture("实装_执行后");
             var result = player.get_snapshot_data(); original.apply_battle_data(result);
             Check(original.get_inventory_total_count(Heal) == 6 && original.get_inventory_total_count(Mana) == 2, "战末库存可回传真实角色");
-            Check(((HumanData)original.entity_data!).inventory_item_positions.SequenceEqual(new[] { 4, 9 }), "结算保留行囊原格位");
+            var returnedBag = (HumanData)original.entity_data!;
+            Check(returnedBag.inventory_item_paths.SequenceEqual(initialPaths) && returnedBag.inventory_item_positions.SequenceEqual(initialPositions), "结算保留完整行囊原格位且不补入替身服装");
             Check(Math.Abs(original.PillToxicity - 35) < .001, "丹毒随战末角色状态回传");
             var resourcePath = "user://battle_supply_smoke_" + Guid.NewGuid().ToString("N") + ".tres";
             Check(ResourceSaver.Save(original.entity_data, resourcePath) == Error.Ok, "战备与库存可保存");
             var loaded = GD.Load<HumanData>(resourcePath)!;
             Check(loaded.battle_supplies[0].count == 3 && loaded.inventory_item_counts[0] == 6, "保存后数量仍一致");
             DirAccess.RemoveAbsolute(ProjectSettings.GlobalizePath(resourcePath));
+            player.current_health = 99;
+            player.healing_received_bonus = .5f;
+            Check(player.TryUseBattlePill(0, 40, out var partialHeal) && partialHeal == 1 && player.current_health == 100,
+                "部分缺口与受治疗加成沿公共治疗入口截断");
+            Check(!player.TryUseBattlePill(2, 0, out _), "无有效法力上限不消耗通脉丹");
+            Check(aiOwner.TryUseBattlePill(0, 40, out _) && aiOwner.get_inventory_total_count(Heal) == 0 &&
+                !aiOwner.TryUseBattlePill(0, 40, out _), "非主控角色仅能服用本人实际备药，耗尽不能再用");
             GD.Print($"BATTLE_SUPPLIES_OK: {_checks} checks"); GetTree().Quit();
         }
         catch (Exception error) { GD.PushError("BATTLE_SUPPLIES_FAILED: " + error); GetTree().Quit(1); }

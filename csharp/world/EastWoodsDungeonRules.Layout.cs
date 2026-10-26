@@ -8,6 +8,10 @@ public static partial class EastWoodsDungeonRules
 {
     // One active East Woods graph per journey. Other templates must have their own instance state.
     public static string LayoutSeed { get; private set; } = "legacy";
+    public static int LayoutVersion { get; private set; } = 2;
+    public const int SparseNodeCount = 64;
+    public static string forest_region(string nodeId)
+        => get_node(nodeId)?.GridPosition.X >= 8 ? "深林" : "浅林";
     private static readonly Vector2I[] Directions = [Vector2I.Right, Vector2I.Down, Vector2I.Left, Vector2I.Up];
     private static readonly Vector2I[] ActionAnchors =
     [new(3,6), new(6,4), new(9,7), new(12,3), new(5,6), new(12,6), new(13,6), new(8,8)];
@@ -18,6 +22,7 @@ public static partial class EastWoodsDungeonRules
         NodesById = Nodes.ToDictionary(n => n.Id, StringComparer.Ordinal);
         Neighbors = build_neighbors();
         LayoutSeed = "legacy";
+        LayoutVersion = 2;
     }
 
     public static bool is_action_anchor(string nodeId)
@@ -28,24 +33,41 @@ public static partial class EastWoodsDungeonRules
         if (string.IsNullOrWhiteSpace(seed)) throw new ArgumentException("副本种子不能为空。", nameof(seed));
         var rng = new RandomNumberGenerator { Seed = stable_seed(seed) };
         var cells = OriginalNodes.Select(n => n.GridPosition).ToHashSet();
+        var authoredEdges = OriginalEdges.ToList();
+        var gate = new Vector2I(8, 2);
+        cells.Add(gate);
+        authoredEdges.Add(("quiet_grove", "outer_08_02"));
+        string Id(Vector2I p) => OriginalNodes.FirstOrDefault(n => n.GridPosition == p)?.Id ?? $"outer_{p.X:00}_{p.Y:00}";
         // Connect each existing action anchor to the original task circuit before growing the outskirts.
-        foreach (var target in ActionAnchors)
+        // Smaller layouts still reserve legitimate habitat for the existing
+        // slow-growth plant, mineral vein and visual spring (not extra resources).
+        foreach (var target in ActionAnchors.Concat(new Vector2I[] { new(10, 7), new(13, 3), new(10, 6) }))
         {
-            var cursor = cells.OrderBy(p => Math.Abs(p.X-target.X)+Math.Abs(p.Y-target.Y)).ThenBy(p => p.Y).ThenBy(p => p.X).First();
+            var cursor = cells.Where(p => (p.X >= 8) == (target.X >= 8))
+                .OrderBy(p => Math.Abs(p.X-target.X)+Math.Abs(p.Y-target.Y)).ThenBy(p => p.Y).ThenBy(p => p.X).First();
             while (cursor != target)
             {
                 var horizontal = cursor.X != target.X && (cursor.Y == target.Y || rng.Randf() < .5f);
+                var previous = cursor;
                 cursor += horizontal ? new Vector2I(Math.Sign(target.X-cursor.X),0) : new Vector2I(0,Math.Sign(target.Y-cursor.Y));
-                cells.Add(cursor);
+                if (cells.Add(cursor)) authoredEdges.Add((Id(previous), Id(cursor)));
             }
         }
-        while (cells.Count < 128)
+        while (cells.Count < SparseNodeCount)
         {
             var frontier = cells.SelectMany(p => Directions.Select(d => p+d))
-                .Where(p => p.X > 0 && p.X < 16 && p.Y >= 0 && p.Y < 10 && !cells.Contains(p))
+                .Where(p => p.X > 0 && p.X < 16 && p.Y >= 0 && p.Y < 10 && !cells.Contains(p) &&
+                    Directions.Any(d => cells.Contains(p+d) && ((p+d).X >= 8) == (p.X >= 8)))
                 .Distinct().OrderBy(p => p.Y).ThenBy(p => p.X).ToArray();
             if (frontier.Length == 0) throw new InvalidOperationException("副本生成没有可用边界。");
-            cells.Add(frontier[(int)rng.RandiRange(0,frontier.Length-1)]);
+            // Prefer separated fingers of woodland, rather than filling every hole.
+            var leastCrowded = frontier.Min(p => Directions.Count(d => cells.Contains(p+d)));
+            frontier = frontier.Where(p => Directions.Count(d => cells.Contains(p+d)) == leastCrowded).ToArray();
+            var next = frontier[(int)rng.RandiRange(0,frontier.Length-1)];
+            var parents = Directions.Select(d => next+d).Where(p => cells.Contains(p) && (p.X >= 8) == (next.X >= 8))
+                .OrderBy(p => authoredEdges.Count(e => e.From == Id(p) || e.To == Id(p))).ThenBy(p => p.Y).ThenBy(p => p.X).ToArray();
+            authoredEdges.Add((Id(parents[0]), Id(next)));
+            cells.Add(next);
         }
         var original = OriginalNodes.ToDictionary(n => n.GridPosition);
         var patches = new (Vector2I Center, int Terrain)[]
@@ -56,7 +78,8 @@ public static partial class EastWoodsDungeonRules
         };
         Nodes = cells.OrderBy(p => p.Y).ThenBy(p => p.X).Select(p =>
         {
-            if (original.TryGetValue(p,out var fixedNode)) return fixedNode;
+            if (original.TryGetValue(p,out var fixedNode))
+                return fixedNode.Id == "deep_meet" ? fixedNode with { Title = "林径会合" } : fixedNode;
             var terrain = rng.Randf() < .18f ? 1 : 0;
             foreach (var patch in patches)
                 if (Math.Abs(p.X-patch.Center.X)+Math.Abs(p.Y-patch.Center.Y) <= 3) terrain = patch.Terrain;
@@ -65,6 +88,10 @@ public static partial class EastWoodsDungeonRules
             if (p == new Vector2I(3,6) || p == new Vector2I(6,4)) terrain = terrain == 6 ? 6 : 0;
             if (p == new Vector2I(9,7)) terrain = 5;
             if (p == new Vector2I(12,3)) terrain = 7;
+            if (p == new Vector2I(10,7)) terrain = 1;
+            if (p == new Vector2I(13,3)) terrain = 7;
+            if (p == new Vector2I(10,6)) terrain = 5;
+            if (p == gate) terrain = 0;
             var description = terrain switch
             {
                 1 => "疏林间的草地，可留意足迹与根材。",
@@ -74,15 +101,18 @@ public static partial class EastWoodsDungeonRules
                 7 => "背阴岩隙露出平缓石面，细碎裂纹间留有水痕。",
                 _ => "林径在树影间延伸，可留意附近兽迹。",
             };
-            return new NodeDefinition($"outer_{p.X:00}_{p.Y:00}","",description,p,Terrain:terrain);
+            return new NodeDefinition($"outer_{p.X:00}_{p.Y:00}", p == gate ? "深林口" : "",description,p,
+                ShowTitleOnMap: p == gate, Terrain:terrain);
         }).ToArray();
         // A location feature is visual only: no unapproved healing, resource or movement modifiers.
         var spring = Array.FindIndex(Nodes,n => n.Id.StartsWith("outer_",StringComparison.Ordinal) && n.Terrain == 5);
         if (spring >= 0) Nodes[spring] = Nodes[spring] with { Feature="spring", Description=Nodes[spring].Description+" 石缝间渗出一汪清泉。" };
         Nodes = configure_resource_nodes(Nodes);
         NodesById = Nodes.ToDictionary(n => n.Id,StringComparer.Ordinal);
-        Neighbors = build_neighbors();
+        Neighbors = Nodes.ToDictionary(n => n.Id, _ => new List<string>(), StringComparer.Ordinal);
+        foreach (var (from, to) in authoredEdges) { Neighbors[from].Add(to); Neighbors[to].Add(from); }
         LayoutSeed = seed;
+        LayoutVersion = 3;
     }
 
     public static GDictionary get_layout_state()
@@ -96,7 +126,7 @@ public static partial class EastWoodsDungeonRules
         foreach (var n in Nodes)
             foreach (var neighbor in get_neighbors(n.Id))
                 if (string.CompareOrdinal(n.Id,neighbor)<0) edges.Add(new Godot.Collections.Array { n.Id,neighbor });
-        return new GDictionary { ["version"]=2,["seed"]=LayoutSeed,["nodes"]=nodes,["edges"]=edges };
+        return new GDictionary { ["version"]=LayoutVersion,["seed"]=LayoutSeed,["nodes"]=nodes,["edges"]=edges };
     }
 
     public static void restore_layout(GDictionary state)
@@ -109,7 +139,7 @@ public static partial class EastWoodsDungeonRules
     {
         if (state.Count == 0) { if (activate) use_legacy_layout(); return; }
         var version = state.GetValueOrDefault("version",0).AsInt32();
-        if (version is not (1 or 2)) throw new InvalidOperationException("无法读取此版本的副本地图，原存档未修改。");
+        if (version is not (1 or 2 or 3)) throw new InvalidOperationException("无法读取此版本的副本地图，原存档未修改。");
         var seed = state["seed"].AsString();
         if (string.IsNullOrWhiteSpace(seed)) throw new InvalidOperationException("副本种子缺失。");
         var nodes = state["nodes"].AsGodotArray().Select(v =>
@@ -124,7 +154,8 @@ public static partial class EastWoodsDungeonRules
                 (EastWoodsResourceCategory)resourceCategoryValue);
         }).ToArray();
         if (version == 1) nodes = configure_resource_nodes(nodes);
-        if (nodes.Length!=128 || nodes.Select(n=>n.Id).Distinct().Count()!=128 || nodes.Select(n=>n.GridPosition).Distinct().Count()!=128)
+        var expectedCount = version == 3 ? SparseNodeCount : 128;
+        if (nodes.Length!=expectedCount || nodes.Select(n=>n.Id).Distinct().Count()!=expectedCount || nodes.Select(n=>n.GridPosition).Distinct().Count()!=expectedCount)
             throw new InvalidOperationException("副本地图格数或唯一标识损坏，拒绝重抽地图。");
         var byId = nodes.ToDictionary(n=>n.Id,StringComparer.Ordinal);
         foreach (var anchor in OriginalNodes)
@@ -149,11 +180,20 @@ public static partial class EastWoodsDungeonRules
         }
         foreach (var (a,b) in OriginalEdges)
             if (!neighbors[a].Contains(b)) throw new InvalidOperationException("副本原有巡查路线缺失。");
+        if (version == 3)
+        {
+            var crossings = neighbors.SelectMany(pair => pair.Value.Where(id => string.CompareOrdinal(pair.Key, id) < 0)
+                .Select(id => (From: pair.Key, To: id)))
+                .Where(e => (byId[e.From].GridPosition.X >= 8) != (byId[e.To].GridPosition.X >= 8)).ToArray();
+            if (crossings.Length != 1 || !neighbors["quiet_grove"].Contains("outer_08_02") ||
+                neighbors.Sum(pair => pair.Value.Count) / 2 != OriginalEdges.Length + expectedCount - OriginalNodes.Length)
+                throw new InvalidOperationException("副本浅深林口或稀疏通路损坏。");
+        }
         var reached = new HashSet<string> { "forest_edge" }; var queue = new Queue<string>(); queue.Enqueue("forest_edge");
         while(queue.TryDequeue(out var id)) foreach(var next in neighbors[id]) if(reached.Add(next)) queue.Enqueue(next);
-        if(reached.Count!=128) throw new InvalidOperationException("副本存在无法返回出口的孤立地格。");
+        if(reached.Count!=expectedCount) throw new InvalidOperationException("副本存在无法返回出口的孤立地格。");
         // Commit only after validation; never silently reroll a damaged save.
-        if (activate) { Nodes=nodes; NodesById=byId; Neighbors=neighbors; LayoutSeed=seed; }
+        if (activate) { Nodes=nodes; NodesById=byId; Neighbors=neighbors; LayoutSeed=seed; LayoutVersion=Math.Max(2, version); }
     }
 
     private static NodeDefinition[] configure_resource_nodes(NodeDefinition[] source)

@@ -186,7 +186,6 @@ public static class PlayerCausalHistoryEvaluator
         var year = totalDays / (12 * 30) + 1;
         var month = totalDays / 30 % 12 + 1;
         var day = totalDays % 30 + 1;
-        var hour = totalHours % 24;
-        return $"第{year}年{month}月{day}日 {hour:00}时";
+        return $"第{year}年{month}月{day}日";
     }
 }

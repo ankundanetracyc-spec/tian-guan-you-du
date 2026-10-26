@@ -5,6 +5,18 @@ public partial class Character
 {
     public Array<BattleSupplySlotData> battle_supplies => human?.battle_supplies ?? [];
 
+    public bool set_battle_supply(int index, string path, int count)
+    {
+        if (human is null || HasMeta("artifact_battle_clone")) return false;
+        ensure_inventory_state();
+        var prepared = new BattleEntityData { pack_item_paths = pack_items.Duplicate(), pack_item_counts = pack_counts.Duplicate(),
+            battle_supplies = human.battle_supplies.Duplicate(true) };
+        if (!BattleSupplyRules.Set(prepared, index, path, count)) return false;
+        human.battle_supplies = prepared.battle_supplies;
+        human.EmitChanged();
+        return true;
+    }
+
     private void ApplyBattleSupplySnapshot(BattleEntityData snapshot)
     {
         // 兼容没有行囊快照的历史／属性测试数据，不能以空数组清掉真实行囊。

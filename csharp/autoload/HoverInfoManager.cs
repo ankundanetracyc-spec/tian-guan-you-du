@@ -27,11 +27,16 @@ public partial class HoverInfoManager : CanvasLayer
     private bool _pointerOverCard;
     private Vector2 _pointerPosition;
     private int _layoutTicket;
+    private Button? _rulesButton;
+    private Control? _rulesOverlay;
+    private RichTextLabel? _rulesText;
+    private Control? _rulesOwner;
 
     public readonly record struct HoverInfoSection(string Title, string Body);
 
     public readonly record struct HoverInfoContent(string Title, string Body, Texture2D? Icon = null, string Subtitle = "",
-        IReadOnlyList<HoverInfoSection>? Sections = null);
+        IReadOnlyList<HoverInfoSection>? Sections = null, float CardWidth = PreferredWidth, float IconSize = 64f,
+        bool ShowRules = true);
 
     /// <summary>Keep plain text available to callers while giving the shared reader explicit sections.</summary>
     public static HoverInfoContent Structured(string title, Texture2D? icon, string subtitle, params HoverInfoSection[] sections)
@@ -63,6 +68,7 @@ public partial class HoverInfoManager : CanvasLayer
 
     public override void _Ready()
     {
+        PlayerInfoText.ModeChanged += on_information_mode_changed;
         _pointerPosition = GetViewport().GetMousePosition();
         build_card();
         _showTimer = new Godot.Timer { OneShot = true, WaitTime = ShowDelay, ProcessMode = ProcessModeEnum.Always };
@@ -78,6 +84,7 @@ public partial class HoverInfoManager : CanvasLayer
 
     public override void _ExitTree()
     {
+        PlayerInfoText.ModeChanged -= on_information_mode_changed;
         if (GetTree() is { } tree) tree.NodeAdded -= on_node_added;
         if (GetViewport() is { } viewport) viewport.SizeChanged -= on_viewport_resized;
         if (_instance == this) _instance = null;
@@ -85,6 +92,8 @@ public partial class HoverInfoManager : CanvasLayer
 
     public override void _Process(double delta)
     {
+        if (_rulesOverlay?.Visible == true && (_rulesOwner is null || !GodotObject.IsInstanceValid(_rulesOwner) || !_rulesOwner.IsVisibleInTree()))
+            _rulesOverlay.Hide();
         // Some existing controls refresh TooltipText as their state changes. Capture only
         // the currently displayed control, rather than polling or laying out the whole UI.
         if (_activeAnchor is null || !GodotObject.IsInstanceValid(_activeAnchor)) return;
@@ -106,6 +115,10 @@ public partial class HoverInfoManager : CanvasLayer
 
     public override void _Input(InputEvent @event)
     {
+        if (@event is InputEventKey { Pressed: true, Echo: false, Keycode: Key.F1 } && _card?.Visible == true && _rulesButton?.Visible == true)
+        { show_rules(); GetViewport().SetInputAsHandled(); return; }
+        if (_rulesOverlay?.Visible == true && @event is InputEventKey { Pressed: true, Echo: false, Keycode: Key.Escape })
+        { _rulesOverlay.Hide(); GetViewport().SetInputAsHandled(); return; }
         // GUI signals run after _Input. Use this event's viewport position immediately,
         // rather than waiting for the platform's polled cursor position to catch up.
         if (@event is InputEventMouse pointer) _pointerPosition = pointer.Position;
@@ -149,6 +162,7 @@ public partial class HoverInfoManager : CanvasLayer
 
     public static bool DismissVisible()
     {
+        if (_instance is { } reader && reader._rulesOverlay?.Visible == true) { reader._rulesOverlay.Hide(); return true; }
         if (_instance is not { } manager || !GodotObject.IsInstanceValid(manager) || manager._card?.Visible != true) return false;
         manager.hide_all();
         return true;
@@ -226,6 +240,50 @@ public partial class HoverInfoManager : CanvasLayer
         set_mouse_filter_recursive(_card, Control.MouseFilterEnum.Ignore);
         if (_scroll.GetVScrollBar() is { } scrollbar)
             scrollbar.MouseFilter = Control.MouseFilterEnum.Ignore;
+        _rulesButton = new Button { Text = "规则详解  [F1]", MouseFilter = Control.MouseFilterEnum.Stop,
+            SizeFlagsHorizontal = Control.SizeFlags.ShrinkEnd, Flat = true };
+        _rulesButton.AddThemeFontOverride("font", GD.Load<FontFile>("res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf"));
+        _rulesButton.AddThemeFontSizeOverride("font_size", 16);
+        _rulesButton.AddThemeColorOverride("font_color", new Color("d7c8a0"));
+        _rulesButton.Pressed += show_rules;
+        column.AddChild(_rulesButton);
+        build_rules_reader();
+    }
+
+    private void build_rules_reader()
+    {
+        _rulesOverlay = new Control { Name = "RulesReader", Visible = false, MouseFilter = Control.MouseFilterEnum.Stop };
+        AddChild(_rulesOverlay);
+        _rulesOverlay.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
+        var shade = new ColorRect { Color = new Color(0, 0, 0, .65f) };
+        _rulesOverlay.AddChild(shade); shade.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
+        var panel = new PanelContainer(); _rulesOverlay.AddChild(panel);
+        panel.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
+        panel.AnchorLeft = .12f; panel.AnchorRight = .88f; panel.AnchorTop = .1f; panel.AnchorBottom = .9f;
+        var style = new StyleBoxFlat { BgColor = new Color("20241c"), ContentMarginLeft = 24, ContentMarginRight = 24,
+            ContentMarginTop = 20, ContentMarginBottom = 20 };
+        panel.AddThemeStyleboxOverride("panel", style);
+        var column = new VBoxContainer(); column.AddThemeConstantOverride("separation", 16); panel.AddChild(column);
+        var close = PaperButton.Create("关闭规则详解", 20, false);
+        close.CustomMinimumSize = new Vector2(180, 42);
+        close.SizeFlagsHorizontal = Control.SizeFlags.ShrinkEnd;
+        close.Pressed += () => _rulesOverlay.Hide(); column.AddChild(close);
+        var scroll = new ScrollContainer { SizeFlagsVertical = Control.SizeFlags.ExpandFill, HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled };
+        column.AddChild(scroll);
+        _rulesText = new RichTextLabel { BbcodeEnabled = true, FitContent = true, ScrollActive = false,
+            SizeFlagsHorizontal = Control.SizeFlags.ExpandFill, AutowrapMode = TextServer.AutowrapMode.WordSmart };
+        _rulesText.AddThemeFontOverride("normal_font", GD.Load<FontFile>("res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf"));
+        _rulesText.AddThemeFontSizeOverride("normal_font_size", 20);
+        _rulesText.AddThemeColorOverride("default_color", new Color("ded8c6"));
+        scroll.AddChild(_rulesText);
+    }
+
+    private void show_rules()
+    {
+        if (_visibleContent is not { } content || !content.ShowRules || _rulesOverlay is null || _rulesText is null) return;
+        _rulesOwner = _activeAnchor;
+        _rulesText.Text = content.Title + "\n\n" + content.Body;
+        _rulesOverlay.Show(); _rulesOverlay.MoveToFront(); hide_all();
     }
 
     private static Label make_label(int size, Color color)
@@ -254,6 +312,16 @@ public partial class HoverInfoManager : CanvasLayer
     {
         if (!GodotObject.IsInstanceValid(anchor) || anchor.HasMeta(BoundMeta)) return;
         anchor.SetMeta(BoundMeta, true);
+        // Cover legacy object detail controls as they enter the tree, including pages
+        // that still construct labels directly instead of using the shared factories.
+        if (!anchor.HasMeta("player_information_source_bound") && anchor is Label label && PlayerInfoText.HasDetails(label.Text))
+        {
+            PlayerInfoText.Bind(label, label.Text);
+        }
+        else if (!anchor.HasMeta("player_information_source_bound") && anchor is RichTextLabel rich && PlayerInfoText.HasDetails(rich.Text))
+        {
+            PlayerInfoText.Bind(rich, rich.Text);
+        }
         anchor.MouseEntered += () => on_anchor_entered(anchor);
         anchor.MouseExited += () => on_anchor_exited(anchor);
         anchor.ItemRectChanged += () => on_anchor_rect_changed(anchor);
@@ -375,19 +443,29 @@ public partial class HoverInfoManager : CanvasLayer
         _title.Text = content.Title;
         _title.Visible = !string.IsNullOrWhiteSpace(content.Title);
         _icon.Texture = content.Icon;
+        _icon.CustomMinimumSize = new Vector2(content.IconSize, content.IconSize);
         _icon.Visible = content.Icon is not null;
         _subtitle.Text = content.Subtitle;
         _subtitle.Visible = !string.IsNullOrWhiteSpace(content.Subtitle);
         _body.Text = content.Sections is { Count: > 0 } sections
             ? string.Join("\n\n", System.Linq.Enumerable.Select(sections, section =>
-                string.IsNullOrWhiteSpace(section.Title) ? section.Body : $"[color=#d7c8a0][b]{section.Title}[/b][/color]\n{section.Body}"))
-            : content.Body;
+                string.IsNullOrWhiteSpace(PlayerInfoText.Display(section.Body)) ? "" :
+                string.IsNullOrWhiteSpace(section.Title) ? PlayerInfoText.Display(section.Body) : $"[color=#d7c8a0][b]{section.Title}[/b][/color]\n{PlayerInfoText.Display(section.Body)}"))
+            : PlayerInfoText.Display(content.Body);
+        if (_rulesButton is not null) _rulesButton.Visible = content.ShowRules && PlayerInfoText.HasDetails(content.Body);
         _scroll.VerticalScrollMode = ScrollContainer.ScrollMode.Disabled;
         _scroll.ScrollVertical = 0;
         _card.Modulate = new Color(1, 1, 1, 0);
         _card.Show();
         _card.MoveToFront();
         schedule_layout();
+    }
+
+    private void on_information_mode_changed()
+    {
+        if (_activeAnchor is not { } anchor || _visibleContent is not { } content || _card?.Visible != true) return;
+        _visibleContent = null;
+        display(anchor, content);
     }
 
     private void schedule_layout()
@@ -400,7 +478,7 @@ public partial class HoverInfoManager : CanvasLayer
     {
         if (ticket != _layoutTicket || _activeAnchor is null || !GodotObject.IsInstanceValid(_activeAnchor) || _card is null || _body is null || _scroll is null) return;
         var viewport = GetViewport().GetVisibleRect().Size;
-        var width = Mathf.Max(100f, Mathf.Min(PreferredWidth, viewport.X - ViewportMargin * 2));
+        var width = Mathf.Max(100f, Mathf.Min(_visibleContent?.CardWidth ?? PreferredWidth, viewport.X - ViewportMargin * 2));
         var bodyWidth = Mathf.Max(48f, width - 44f);
         _body.AddThemeFontSizeOverride("normal_font_size",18);
         _body.CustomMinimumSize = new Vector2(bodyWidth, 0);

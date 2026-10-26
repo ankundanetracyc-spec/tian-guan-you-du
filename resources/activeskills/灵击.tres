@@ -9,12 +9,6 @@ attribute = "intelligence"
 multiplier = 0.5
 metadata/_custom_type_script = "res://csharp/gongfa/DamageBonus.cs"
 
-[sub_resource type="Resource" id="Damage_soul"]
-script = ExtResource("2_dmg")
-attribute = "soul"
-multiplier = 0.35
-metadata/_custom_type_script = "res://csharp/gongfa/DamageBonus.cs"
-
 [sub_resource type="Resource" id="Damage_magic"]
 script = ExtResource("2_dmg")
 attribute = "magic_proficiency"
@@ -24,14 +18,15 @@ metadata/_custom_type_script = "res://csharp/gongfa/DamageBonus.cs"
 [resource]
 script = ExtResource("1")
 skill_name = "灵击"
-description = "牵引一缕灵息凝成短促冲击，对目标造成法术伤害。"
+description = "凝聚灵息冲击指定1名敌方，造成物理伤害。"
 skill_type = 0
 energy_cost = 2
 mana_cost = 0
 target_type = 2
+attack_style = "ranged"
 range_min = 1
 range_max = 3
 base_damage = 4.0
-damage_type = "spiritual"
-damage_bonuses = Array[ExtResource("2_dmg")]([SubResource("Damage_intelligence"), SubResource("Damage_soul"), SubResource("Damage_magic")])
+damage_type = "physical"
+damage_bonuses = Array[ExtResource("2_dmg")]([SubResource("Damage_intelligence"), SubResource("Damage_magic")])
 metadata/_custom_type_script = "res://csharp/gongfa/ActiveSkillData.cs"

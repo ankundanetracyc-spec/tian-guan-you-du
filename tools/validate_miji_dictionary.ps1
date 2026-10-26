@@ -52,7 +52,20 @@ if ($FocusPaths.Count -gt 0) {
         $resolvedPath = if ([System.IO.Path]::IsPathRooted($focusPath)) { $focusPath } else { Join-Path $ProjectRoot $focusPath }
         [void]$focusSet.Add([System.IO.Path]::GetFullPath($resolvedPath))
     }
-    $documentFiles = @($documentFiles | Where-Object { $focusSet.Contains([System.IO.Path]::GetFullPath($_.FullName)) })
+    # Explicit focus paths may belong to the card dictionary as well as the
+    # manual dictionary. Do not silently turn that request into an empty scan.
+    $documentFiles = @(
+        foreach ($resolvedFocusPath in $focusSet) {
+            if (-not (Test-Path -LiteralPath $resolvedFocusPath -PathType Leaf)) {
+                throw "Validation focus file not found: $resolvedFocusPath"
+            }
+            $focusFile = Get-Item -LiteralPath $resolvedFocusPath
+            if ($focusFile.Extension -notin '.md', '.drawio') {
+                throw "Unsupported validation focus file: $resolvedFocusPath"
+            }
+            $focusFile
+        }
+    )
 }
 $cardDictionaryRoot = Join-Path $ProjectRoot ((Text @(0x0064,0x006F,0x0063,0x0073)) + '\' + (Text @(0x5361,0x724C,0x8BCD,0x5178)))
 $allowedKeywords = @(
@@ -71,7 +84,7 @@ $buildKeywords = @(
 $combatMechanicKeywords = @(
     (Text @(0x6C14,0x8840)), (Text @(0x62A4,0x76FE)), (Text @(0x5316,0x89E3)), (Text @(0x5468,0x5929)),
     (Text @(0x6563,0x8840)), (Text @(0x7A7F,0x76FE)), (Text @(0x5FF5)), (Text @(0x5FC3,0x9699)),
-    (Text @(0x5251)), (Text @(0x5251,0x610F))
+    (Text @(0x5251)), (Text @(0x5251,0x610F)), (Text @(0x6F6E)), (Text @(0x7081))
 )
 $allowedKeywords += $buildKeywords + $combatMechanicKeywords
 

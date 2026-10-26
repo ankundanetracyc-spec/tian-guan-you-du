@@ -45,7 +45,11 @@ public partial class EastWoodsDungeonPanel
         var inverse = GetGlobalTransform().AffineInverse();
         var start = inverse * rect.Position;
         var end = inverse * rect.End;
-        var height = Mathf.Max(_actionBar.Size.Y, _actionBar.GetCombinedMinimumSize().Y);
+        // Wrapped labels settle after the first container layout. Shrink back
+        // to their actual height instead of retaining the initial narrow-wrap height.
+        var height = _actionBar.GetCombinedMinimumSize().Y;
+        var fittedSize = new Vector2(width, height);
+        if (!_actionBar.Size.IsEqualApprox(fittedSize)) _actionBar.Size = fittedSize;
         // Prefer the left of the current cell, away from the right-hand quest HUD.
         var x = start.X - width - 12;
         if (x < 16) x = end.X + 12;

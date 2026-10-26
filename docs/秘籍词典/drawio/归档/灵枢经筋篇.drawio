@@ -1,5 +1,124 @@
-<?xml version="1.0" encoding="utf-8"?><mxfile host="Electron" agent="Codex">
+<mxfile host="Electron" agent="Codex">
   <diagram id="lingshu-jingjin" name="灵枢经筋篇">
+    <mxGraphModel dx="3614" dy="610" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2600" pageHeight="2340" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=20;" value="灵枢经筋篇" vertex="1">
+          <mxGeometry height="74" width="560" x="740" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="overview" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=15;" value="云息秘籍 / 可主修、可辅修&lt;br&gt;主修可修至：云息十层&lt;br&gt;主伤势兑现；主动消耗内外伤状态层数，转为借力、生命回复或中段物理爆发&lt;br&gt;不自行施加内伤，最适合映照内景损益篇&lt;br&gt;即时战斗适配：60 FPS队列；心法被动：战斗开始时显示在Buff栏，常驻至战斗结束；气血无自动回落，身法、伤势与整场限次按公共规则。&lt;br&gt;修持修正只作用于战斗内属性，并随本卷心法被动显示在Buff栏信息详情；战斗结束移除，不进入角色永久属性。" vertex="1">
+          <mxGeometry height="185" width="560" x="740" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第一卷：去故&lt;br&gt;卷章ID：qu_gu&lt;br&gt;顺序：1&lt;br&gt;&lt;br&gt;定位：以去故纳新之法，令内外伤转为借力&lt;br&gt;学成可修至：云息三层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：凡人境界及以上&lt;br&gt;研读属性：体魄≥6；身心协调值≥5&lt;br&gt;&lt;br&gt;学会永久属性：体魄 +0.5；体道造诣 +0.5&lt;/div&gt;" vertex="1">
+          <mxGeometry height="400" width="340" x="850" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;最大生命 +15%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="260" x="360" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：去故&lt;br&gt;&lt;br&gt;化法追加：本次消耗至少2层伤势时，额外获得身法1层。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="280" width="280" x="1360" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：灵枢经筋&lt;br&gt;习得：去故&lt;br&gt;&lt;br&gt;灵枢经筋：&lt;br&gt;类型：心法&lt;br&gt;关键词：生命、伤势、攻防联动&lt;br&gt;效果：每次主动效果成功消耗内伤或外伤至少1层，获得借力1层。&lt;br&gt;主修额外效果：每次主动效果成功消耗内伤或外伤至少1层时，另获得借力1层。&lt;br&gt;&lt;br&gt;去故：&lt;br&gt;类型：术诀&lt;br&gt;关键词：伤势、攻防联动&lt;br&gt;耗费：体力 0、法力 0&lt;br&gt;目标：自身&lt;br&gt;效果：至少有2层内伤或外伤时可用；消耗至多3层（优先内伤），每层转为借力1层。&lt;br&gt;使用次数：本场1次&lt;/div&gt;" vertex="1">
+          <mxGeometry height="360" width="740" x="-400" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第二卷：调枢&lt;br&gt;卷章ID：tiao_shu&lt;br&gt;顺序：2&lt;br&gt;&lt;br&gt;定位：调经筋之枢，以少量伤势换取续航&lt;br&gt;学成可修至：云息六层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：云息三层及以上&lt;br&gt;前置：已学去故&lt;br&gt;研读属性：体魄≥7；身心协调值≥6；体道造诣≥0.5&lt;br&gt;&lt;br&gt;学会永久属性：体道造诣 +0.5&lt;/div&gt;" vertex="1">
+          <mxGeometry height="380" width="340" x="850" y="840" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;气血上限 +1&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="270" x="390" y="840" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：催血&lt;br&gt;&lt;br&gt;化法追加：施放前若自身有伤势，自动消耗1层（优先内伤）；成功消耗时回复最大生命×3%。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="260" width="290" x="1360" y="840" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：灵枢经筋&lt;br&gt;&lt;br&gt;灵枢经筋：&lt;br&gt;类型：心法&lt;br&gt;关键词：生命、伤势、攻防联动&lt;br&gt;效果：每次主动效果成功消耗内伤或外伤至少1层，获得借力1层；同一次主动效果消耗内伤、外伤合计至少2层时，另获得身法1层。&lt;br&gt;主修额外效果：每次主动效果成功消耗内伤或外伤至少1层时，另获得借力1层。&lt;br&gt;&lt;br&gt;习得：无新增主动技能&lt;/div&gt;" vertex="1">
+          <mxGeometry height="220" width="740" x="-400" y="840" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第三卷：平息&lt;br&gt;卷章ID：ping_xi&lt;br&gt;顺序：3&lt;br&gt;&lt;br&gt;定位：使基础回落之术也能成为烧伤借势的节点&lt;br&gt;学成可修至：云息九层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：云息六层及以上&lt;br&gt;前置：已学调枢&lt;br&gt;研读属性：体魄≥8；身心协调值≥8；体道造诣≥1&lt;br&gt;&lt;br&gt;学会永久属性：体魄 +0.5；体道造诣 +1&lt;/div&gt;" vertex="1">
+          <mxGeometry height="430" width="340" x="850" y="1290" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;每主动消耗1层内伤或外伤，回复最大生命 +1%&lt;br&gt;物理伤害 +4%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="150" width="270" x="400" y="1290" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：平息&lt;br&gt;&lt;br&gt;化法追加：可额外消耗内伤或外伤1层（优先内伤）；若如此做，获得借力1层。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="260" width="290" x="1360" y="1290" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;习得：无新增主动技能&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="740" x="-400" y="1290" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第四卷：引筋&lt;br&gt;卷章ID：yin_jin&lt;br&gt;顺序：4&lt;br&gt;&lt;br&gt;定位：以损为引，炼成中段的单点爆发&lt;br&gt;学成可修至：云息十层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：云息九层及以上&lt;br&gt;前置：已学平息&lt;br&gt;研读属性：体魄≥10；身心协调值≥9；体道造诣≥2&lt;br&gt;&lt;br&gt;学会永久属性：体道造诣 +1&lt;/div&gt;" vertex="1">
+          <mxGeometry height="400" width="340" x="850" y="1790" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;最大生命 +10%&lt;br&gt;物理伤害 +6%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="270" x="370" y="1790" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：引筋&lt;br&gt;&lt;br&gt;化法追加：本次伤害倍率提高20%。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="300" width="290" x="1360" y="1790" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="心法被动：灵枢经筋&#10;&#10;灵枢经筋：&#10;类型：心法&#10;关键词：生命、伤势、攻防联动&#10;效果：每次主动效果成功消耗内伤或外伤至少1层，获得借力1层；同一次主动效果消耗内伤、外伤合计至少2层时，另获得身法1层；合计至少3层时，另获得气血1层。&#10;主修额外效果：每次主动效果成功消耗内伤或外伤至少1层时，另获得借力1层。&#10;&#10;习得：引筋&#10;&#10;引筋：&#10;关键词：伤势、增伤&#10;耗费：体力 2、法力 0&#10;目标：指定1名敌方&#10;出手方式：近身&#10;伤害类型：物理&#10;效果：仅当自身有伤势时可用；施放前消耗1层伤势（优先内伤）；伤害：A点（A=round((8 + 体魄×0.45 + 体道造诣×0.30)×1.35)）。&#10;。&#10;使用次数：不限" vertex="1">
+          <mxGeometry height="430" width="740" x="-400" y="1790" as="geometry" />
+        </mxCell>
+        <mxCell id="summary" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" value="&lt;div style=&quot;text-align:left;&quot;&gt;现行技能：去故、引筋；第二、三卷不授主动招式，各卷化法改写去故、催血、平息、引筋。主动消耗伤势时换取借力，主修收益翻增；高层消耗还可获得身法或气血。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="420" x="1660" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="status_rules" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;术语与状态详解&lt;br&gt;&lt;br&gt;灵枢经筋&lt;br&gt;本经唯一心法Buff，持续至本场战斗结束；心法效果按已学卷章的对应版本生效，完整内容见各卷心法条目。&lt;br&gt;&lt;br&gt;内外伤&lt;br&gt;被主动消耗后立即移除该状态层，不再计入伤势层数；不触发旧版抽取伤势或最大生命惩罚。&lt;br&gt;&lt;br&gt;借力&lt;br&gt;每层使下一次自身主动施放的物理伤害技能伤害提高5%；该技能结算后移除全部借力。挟势是例外：享受加成但不移除借力。&lt;/div&gt;&lt;br&gt;&lt;br&gt;身法&lt;br&gt;持续增益状态，最多20层，持续1回合；每层使自身基础身法（dodge）提高1%；获得新层时刷新为1回合；获得层的回合不扣时长，从下一完整回合结束时递减，受击不消耗；1回合时长归零或战斗结束时移除。&lt;br&gt;&lt;br&gt;修持&lt;br&gt;仅本场战斗生效，随本经心法Buff显示于图标信息栏；不进入角色永久属性。" vertex="1">
+          <mxGeometry height="483" width="430" x="1660" y="820" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" edge="1" parent="1" source="overview" style="endArrow=block;html=1;" target="c1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_a" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_b" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_c" edge="1" parent="1" source="c1" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c1_cards" value="本卷被动与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_a" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_b" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_c" edge="1" parent="1" source="c2" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c2_cards" value="习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_a" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_b" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_c" edge="1" parent="1" source="c3" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c3_cards" value="习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_a" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_b" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_c" edge="1" parent="1" source="c4" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c4_cards" value="习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="player-rules-entry" value="本图为详细版：效果后以括号列出公式；游戏内可设置简略／详细。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eee8d8;strokeColor=#9a8967;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="2252" width="1000" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="lingshu-jingjin-rules" name="灵枢经筋篇 · 规则详解">
     <mxGraphModel dx="3614" dy="610" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2600" pageHeight="1868" math="0" shadow="0">
       <root>
         <mxCell id="0" />

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 /// <summary>Shared settings overlay used by both the title screen and the in-game pause menu.</summary>
 public partial class GameSettingsPanel : Control
 {
-    private const string SettingsPath = "user://start_menu_settings.cfg";
+    internal static string SettingsPath { get; set; } = "user://start_menu_settings.cfg";
     private static readonly Vector2I[] WindowedResolutions =
     [
         new(1280, 720), new(1600, 900), new(1920, 1080), new(2560, 1440)
@@ -14,6 +14,7 @@ public partial class GameSettingsPanel : Control
     private readonly ConfigFile _settings = new();
     private OptionButton? _displayModeSelector;
     private OptionButton? _resolutionSelector;
+    private OptionButton? _informationSelector;
     private HSlider? _masterVolumeSlider;
     private Label? _masterVolumeValue;
     private Vector2I[] _availableWindowedResolutions = [];
@@ -84,7 +85,7 @@ public partial class GameSettingsPanel : Control
         var title = new Label { Text = "设　置", HorizontalAlignment = HorizontalAlignment.Center };
         StartMenu.StyleSettingsText(title, 36, new Color(0.12f, 0.20f, 0.17f));
         content.AddChild(title);
-        var subtitle = new Label { Text = "画面与声音　·　改动会即时生效并自动保存", HorizontalAlignment = HorizontalAlignment.Center };
+        var subtitle = new Label { Text = "画面、声音与信息显示　·　改动会即时生效并自动保存", HorizontalAlignment = HorizontalAlignment.Center };
         StartMenu.StyleSettingsText(subtitle, 16, new Color(0.34f, 0.36f, 0.29f));
         content.AddChild(subtitle);
         content.AddChild(StartMenu.SettingsRule());
@@ -129,6 +130,15 @@ public partial class GameSettingsPanel : Control
         volumeRow.AddChild(_masterVolumeValue);
         content.AddChild(volumeRow);
 
+        var informationRow = StartMenu.SettingsRow("信息显示", "简略只显示结果；详细在结果后附上括号公式。");
+        _informationSelector = StartMenu.CreateSettingsOption("简略", "详细");
+        _informationSelector.Name = "InformationModeSelector";
+        StartMenu.StyleSettingsOption(_informationSelector);
+        _informationSelector.Select((int)PlayerInfoText.Mode);
+        informationRow.AddChild(_informationSelector);
+        content.AddChild(informationRow);
+        _informationSelector.ItemSelected += index => PlayerInfoText.SetMode(index == 0 ? PlayerInfoText.InformationMode.Simple : PlayerInfoText.InformationMode.Detailed);
+
         var footerNote = new Label { Text = "窗口模式下可选择常用的 16:9 分辨率。", HorizontalAlignment = HorizontalAlignment.Center };
         StartMenu.StyleSettingsText(footerNote, 14, new Color(0.40f, 0.39f, 0.32f));
         content.AddChild(footerNote);
@@ -167,6 +177,8 @@ public partial class GameSettingsPanel : Control
 
     private void reset_settings()
     {
+        PlayerInfoText.SetMode(PlayerInfoText.InformationMode.Detailed);
+        _informationSelector?.Select(1);
         _windowedResolution = new Vector2I(1600, 900);
         apply_window_mode(true);
         ApplyMasterVolume(100f);
@@ -225,6 +237,7 @@ public partial class GameSettingsPanel : Control
 
     private void save_settings()
     {
+        _settings.SetValue("interface", "information_detail", (int)PlayerInfoText.Mode);
         _settings.SetValue("video", "fullscreen", IsFullscreen());
         _settings.SetValue("video", "windowed_width", _windowedResolution.X);
         _settings.SetValue("video", "windowed_height", _windowedResolution.Y);

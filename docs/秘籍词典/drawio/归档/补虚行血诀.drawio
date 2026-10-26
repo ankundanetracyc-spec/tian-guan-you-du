@@ -1,5 +1,124 @@
-<?xml version="1.0" encoding="utf-8"?><mxfile host="Electron" agent="Codex">
+<mxfile host="Electron" agent="Codex">
   <diagram id="buxu-xingxue" name="补虚行血诀">
+    <mxGraphModel dx="3614" dy="610" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2600" pageHeight="2450" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=20;" value="补虚行血诀" vertex="1">
+          <mxGeometry height="74" width="560" x="740" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="overview" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=15;" value="云息秘籍 / 可主修、可辅修&lt;br&gt;主修可修至：云息十层&lt;br&gt;主气血见底后的复起；主动将气血落至零层，换取下一次催血的高效回补与体力续航&lt;br&gt;可与乘物游骸真经混修：先借游骸闪避，再让气血落底并快速复起&lt;br&gt;即时战斗适配：60 FPS队列；心法被动：战斗开始时显示在Buff栏，常驻至战斗结束；气血无自动回落，身法、伤势与整场限次按公共规则。&lt;br&gt;修持修正只作用于战斗内属性，并随本卷心法被动显示在Buff栏信息详情；战斗结束移除，不进入角色永久属性。" vertex="1">
+          <mxGeometry height="185" width="560" x="740" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第一卷：补虚&lt;br&gt;卷章ID：bu_xu&lt;br&gt;顺序：1&lt;br&gt;&lt;br&gt;定位：立虚中行血之法，将气血见底改作复起入口&lt;br&gt;学成可修至：云息三层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：凡人境界及以上&lt;br&gt;研读属性：体魄≥5&lt;br&gt;&lt;br&gt;学会永久属性：体魄 +1；体道造诣 +0.5&lt;/div&gt;" vertex="1">
+          <mxGeometry height="380" width="340" x="850" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;最大生命 +15%&lt;br&gt;气血上限 +1&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="260" x="360" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：还阳&lt;br&gt;&lt;br&gt;化法追加：施放前气血为0层时，获得气血后额外回复最大生命×3%。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="260" width="280" x="1360" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="心法被动：补虚行血&#10;习得：还阳&#10;&#10;补虚行血：&#10;类型：心法&#10;关键词：生命、闪避、体力&#10;效果：自身主动将气血由1层降至0层后，强化下一次主动施展的催血：体力费用减1点（最低为0），并额外获得气血1层。强化待触发时不叠加；催血结算后清除。此后再次主动将气血由1层降至0层，可重新获得强化。&#10;主修额外效果：受本心法强化的催血结算后，额外获得身法2层。&#10;&#10;还阳：&#10;关键词：生命&#10;耗费：体力 2、法力 0&#10;目标：自身&#10;效果：气血为0层时获得气血2层；否则获得气血1层。&#10;&#10;大世界术法：温脉归元&#10;类型：护持&#10;施展方式：一次施展&#10;习得条件：学会本卷后永久解锁；无需装配来源秘籍。&#10;使用场景：世界地图静止时；行旅、战斗、事件及地点副本中不可用&#10;目标：自身；当前生命低于上限&#10;耗费：4点大世界精力&#10;时间：施术后推进2小时，NPC与全局世界时间按统一时钟推进&#10;效果：回复生命 min(缺失生命, max(1, round(最大生命 × 10%))) 点。&#10;使用次数：每连续24游戏小时至多1次&#10;中止与失败：生命已满、场景不合法、精力不足或距上次施术未满24小时，均不扣费、不推进时间。成功时先完成回复，再推进世界时间。&#10;实施状态：候选术法；地图施放尚未接入。" vertex="1">
+          <mxGeometry height="620" width="740" x="-400" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第二卷：守缺&lt;br&gt;卷章ID：shou_que&lt;br&gt;顺序：2&lt;br&gt;&lt;br&gt;定位：在气血见底时保持身法与应对能力&lt;br&gt;学成可修至：云息六层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：云息三层及以上&lt;br&gt;前置：已学补虚&lt;br&gt;研读属性：体魄≥6；体道造诣≥0.5&lt;br&gt;&lt;br&gt;学会永久属性：体魄 +0.5；体道造诣 +0.5&lt;/div&gt;" vertex="1">
+          <mxGeometry height="380" width="340" x="850" y="1060" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;气血回落回复率 +1 个百分点&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="270" x="390" y="1060" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：卸力&lt;br&gt;&lt;br&gt;化法追加：自身气血为0层时，卸力实际触发后，本次化解额外增加1层。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="320" width="290" x="1360" y="1060" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;习得：无新增主动技能&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="740" x="-400" y="1060" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第三卷：余温&lt;br&gt;卷章ID：yu_wen&lt;br&gt;顺序：3&lt;br&gt;&lt;br&gt;定位：以余温主动落底，换取更厚的当次回复与复起机会&lt;br&gt;学成可修至：云息九层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：云息六层及以上&lt;br&gt;前置：已学守缺&lt;br&gt;研读属性：体魄≥7；体道造诣≥1&lt;br&gt;&lt;br&gt;学会永久属性：体道造诣 +1&lt;/div&gt;" vertex="1">
+          <mxGeometry height="380" width="340" x="850" y="1510" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;最大生命 +10%&lt;br&gt;气血回落回复率 +1 个百分点&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="270" x="400" y="1510" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：平息&lt;br&gt;&lt;br&gt;化法追加：若本技能使气血由1层降至0层，获得身法1层。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="260" width="290" x="1360" y="1510" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：补虚行血&lt;br&gt;&lt;br&gt;补虚行血：&lt;br&gt;类型：心法&lt;br&gt;关键词：生命、闪避、体力&lt;br&gt;效果：自身主动将气血由1层降至0层后，强化下一次主动施展的催血：体力费用减1点（最低为0），并额外获得气血1层。强化待触发时不叠加；催血结算后清除。此后再次主动将气血由1层降至0层，可重新获得强化。每次自身主动将气血由1层降至0层后，另获得身法1层。&lt;br&gt;主修额外效果：受本心法强化的催血结算后，额外获得身法2层。&lt;br&gt;&lt;br&gt;习得：余温&lt;br&gt;&lt;br&gt;余温：&lt;br&gt;类型：术诀&lt;br&gt;关键词：生命、闪避、回复&lt;br&gt;耗费：体力 1、法力 0&lt;br&gt;目标：自身&lt;br&gt;效果：气血大于0层时，气血-1并获得身法1层；气血为0层时，获得气血1层与身法2层。&lt;br&gt;使用次数：每轮1次&lt;/div&gt;" vertex="1">
+          <mxGeometry height="390" width="740" x="-400" y="1510" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第四卷：归元&lt;br&gt;卷章ID：gui_yuan&lt;br&gt;顺序：4&lt;br&gt;&lt;br&gt;定位：以低位回转收束云息期的气血续航&lt;br&gt;学成可修至：云息十层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：云息九层及以上&lt;br&gt;前置：已学余温&lt;br&gt;研读属性：体魄≥9；体道造诣≥2&lt;br&gt;&lt;br&gt;学会永久属性：体魄 +1；体道造诣 +1&lt;/div&gt;" vertex="1">
+          <mxGeometry height="360" width="340" x="850" y="1970" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;气血上限 +1&lt;br&gt;物理伤害 +8%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="270" x="370" y="1970" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：归元&lt;br&gt;&lt;br&gt;化法追加：本技能由气血0层起身后，额外获得身法1层。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="260" width="290" x="1360" y="1970" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;习得：归元&lt;br&gt;&lt;br&gt;归元：&lt;br&gt;类型：术诀&lt;br&gt;关键词：生命、闪避&lt;br&gt;耗费：体力 3、法力 0&lt;br&gt;目标：自身&lt;br&gt;效果：仅当气血为0层时可用；获得气血3层和身法2层。&lt;br&gt;使用次数：本场1次&lt;/div&gt;" vertex="1">
+          <mxGeometry height="220" width="740" x="-400" y="1970" as="geometry" />
+        </mxCell>
+        <mxCell id="summary" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" value="&lt;div style=&quot;text-align:left;&quot;&gt;现行技能：还阳、余温、归元；各卷化法分别改写还阳、卸力、平息、归元。心法在主动气血降至0后为下一次催血准备减费和额外气血，可由后续新的临界回落再次准备；主修强化受益催血。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="420" x="1660" y="702.0" as="geometry" />
+        </mxCell>
+        <mxCell id="status_rules" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;术语与状态详解&lt;br&gt;&lt;br&gt;气血&lt;br&gt;公共战斗状态，基础上限8层；气血层数降低时按当前回落回复率回复最大生命的5%（受明确效果修正）；即时战斗无自动回落；仅由明确技能或状态效果触发气血下降；战斗结束重置。&lt;br&gt;&lt;br&gt;补虚行血&lt;br&gt;本诀唯一心法Buff；每次主动使气血由1层降至0层，强化下一次催血：少耗体力1点并额外获得气血1层，强化不叠加。主修时，该次催血额外获得身法2层；第三卷起，触发强化时额外获得身法1层。&lt;br&gt;&lt;br&gt;判定边界&lt;br&gt;只在气血恰由1层降至0层时触发；从2层以上直接降至0层不触发。即时战斗没有回合结束自动回落。&lt;/div&gt;&lt;br&gt;&lt;br&gt;身法&lt;br&gt;持续增益状态，最多20层，持续1回合；每层使自身基础身法（dodge）提高1%；获得新层时刷新为1回合；获得层的回合不扣时长，从下一完整回合结束时递减，受击不消耗；1回合时长归零或战斗结束时移除。&lt;br&gt;&lt;br&gt;修持&lt;br&gt;仅本场战斗生效，随本经心法Buff显示于图标信息栏；不进入角色永久属性。" vertex="1">
+          <mxGeometry height="542" width="430" x="1660" y="872.0" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" edge="1" parent="1" source="overview" style="endArrow=block;html=1;" target="c1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_a" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_b" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_c" edge="1" parent="1" source="c1" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c1_cards" value="本卷被动与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_a" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_b" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_c" edge="1" parent="1" source="c2" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c2_cards" value="习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_a" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_b" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_c" edge="1" parent="1" source="c3" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c3_cards" value="习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_a" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_b" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_c" edge="1" parent="1" source="c4" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c4_cards" value="习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="player-rules-entry" value="本图为详细版：效果后以括号列出公式；游戏内可设置简略／详细。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eee8d8;strokeColor=#9a8967;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="2362" width="1000" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="buxu-xingxue-rules" name="补虚行血诀 · 规则详解">
     <mxGraphModel dx="3614" dy="610" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2600" pageHeight="1868" math="0" shadow="0">
       <root>
         <mxCell id="0" />

@@ -224,7 +224,10 @@ public partial class BattlePlanHud : Control
                 MouseFilter = MouseFilterEnum.Ignore };
             opening.AddChild(icon); AlchemyPillVisual.Apply(icon, pill.efficacy_tier, pill.pill_id);
             if (_manager.get_main_player_unit() is Character owner && action.supply_slot >= 0 && action.supply_slot < owner.battle_supplies.Count)
-                opening.AddChild(Label($"×{owner.battle_supplies[action.supply_slot].count}", new(opening.Size.X - 44, 0), new(44, 24), 16));
+            {
+                var count = Label($"×{owner.battle_supplies[action.supply_slot].count}", new(opening.Size.X - 44, 24), new(44, 24), 16);
+                count.ZIndex = 3; opening.AddChild(count);
+            }
         }
         var frame=new NinePatchRect{Texture=BattleUiArt.Texture(action is null?"skill_slot_empty":"skill_card_frame"),Size=size,PatchMarginLeft=edge,PatchMarginRight=edge,PatchMarginTop=26,PatchMarginBottom=foot,MouseFilter=MouseFilterEnum.Ignore,ZIndex=2};card.AddChild(frame);
         if(action is not null&&action.kind is BattleQueuedSkill.ActionKind.Rest or BattleQueuedSkill.ActionKind.Retreat)card.AddChild(Label(action.kind==BattleQueuedSkill.ActionKind.Rest?"休":"撤",opening.Position,opening.Size,Mathf.RoundToInt(size.X*.38f)));

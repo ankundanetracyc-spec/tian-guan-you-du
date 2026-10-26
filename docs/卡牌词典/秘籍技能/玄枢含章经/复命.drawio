@@ -2,8 +2,25 @@
   <diagram id="xuanshu-fuming" name="复命">
     <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="720" math="0" shadow="0">
       <root>
-        <mxCell id="0"/><mxCell id="1" parent="0"/>
-        <mxCell id="fuming_cards" value="技能名：复命&#10;资源路径：res://resources/activeskills/玄枢含章经/复命.tres&#10;关键词：无&#10;耗费：体力 0、法力 1，另支付被复制技能的费用&#10;目标：从被复制技能的合法目标中随机选择&#10;效果：复制最近施展的非应对技能。复制技能消耗其自身使用次数，并受其冷却影响。&#10;使用次数：不限&#10;冷却：2回合&#10;&#10;技能名：复命（化法）&#10;资源路径：res://resources/activeskills/玄枢含章经/化法/复命.tres&#10;关键词：护盾&#10;耗费：体力 0、法力 1，另支付被复制技能的费用&#10;目标：从被复制技能的合法目标中随机选择&#10;效果：复制最近施展的非应对技能。复制技能消耗其自身使用次数，并受其冷却影响。复制技能施加&lt;u&gt;护盾&lt;/u&gt;后，为当前&lt;u&gt;护盾&lt;/u&gt;值最低的其他存活队友施加等量&lt;u&gt;护盾&lt;/u&gt;；并列时随机选择，没有其他存活队友或本次没有获得&lt;u&gt;护盾&lt;/u&gt;时不追加。&#10;使用次数：不限&#10;冷却：2回合" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e7eee4;strokeColor=#769078;fontSize=18;align=left;spacingLeft=18;spacingTop=16;" vertex="1" parent="1"><mxGeometry x="220" y="80" width="1060" height="500" as="geometry"/></mxCell>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="fuming_cards" value="技能名：复命&#10;关键词：无&#10;耗费：体力 0、法力 1，另支付被复制技能的费用&#10;目标：从被复制技能的合法目标中随机选择&#10;效果：复制最近施展的非应对技能。复制技能消耗其自身使用次数，并受其冷却影响。&#10;使用次数：不限&#10;冷却：2回合&#10;&#10;技能名：复命（化法）&#10;关键词：护盾&#10;耗费：体力 0、法力 1，另支付被复制技能的费用&#10;目标：从被复制技能的合法目标中随机选择&#10;效果：复制最近施展的非应对技能。复制技能消耗其自身使用次数，并受其冷却影响。复制技能施加护盾后，为当前护盾值最低的其他存活队友施加等量护盾；并列时随机选择，没有其他存活队友或本次没有获得护盾时不追加。&#10;使用次数：不限&#10;冷却：2回合" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e7eee4;strokeColor=#769078;fontSize=18;align=left;spacingLeft=18;spacingTop=16;" vertex="1" parent="1">
+          <mxGeometry x="220" y="80" width="1060" height="500" as="geometry" />
+        </mxCell>
+        <mxCell id="player-rules-entry" value="本图为详细版：效果后以括号列出公式；游戏内可设置简略／详细。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eee8d8;strokeColor=#9a8967;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="612" width="1000" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="xuanshu-fuming-rules" name="复命 · 规则详解">
+    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="720" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="fuming_cards" value="技能名：复命&#10;资源路径：res://resources/activeskills/玄枢含章经/复命.tres&#10;关键词：无&#10;耗费：体力 0、法力 1，另支付被复制技能的费用&#10;目标：从被复制技能的合法目标中随机选择&#10;效果：复制最近施展的非应对技能。复制技能消耗其自身使用次数，并受其冷却影响。&#10;使用次数：不限&#10;冷却：2回合&#10;&#10;技能名：复命（化法）&#10;资源路径：res://resources/activeskills/玄枢含章经/化法/复命.tres&#10;关键词：护盾&#10;耗费：体力 0、法力 1，另支付被复制技能的费用&#10;目标：从被复制技能的合法目标中随机选择&#10;效果：复制最近施展的非应对技能。复制技能消耗其自身使用次数，并受其冷却影响。复制技能施加&lt;u&gt;护盾&lt;/u&gt;后，为当前&lt;u&gt;护盾&lt;/u&gt;值最低的其他存活队友施加等量&lt;u&gt;护盾&lt;/u&gt;；并列时随机选择，没有其他存活队友或本次没有获得&lt;u&gt;护盾&lt;/u&gt;时不追加。&#10;使用次数：不限&#10;冷却：2回合" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e7eee4;strokeColor=#769078;fontSize=18;align=left;spacingLeft=18;spacingTop=16;" vertex="1" parent="1">
+          <mxGeometry x="220" y="80" width="1060" height="500" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>

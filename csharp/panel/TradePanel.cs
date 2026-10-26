@@ -499,7 +499,7 @@ public partial class TradePanel : Control
             relationshipFeedback = CharacterRelationshipRules.DescribePlayerEvidence(playerData, _npc.npc_id, eventId,
                 "信任：本次交易已记录，关系证据已处理。");
         }
-        var date = time is null ? $"{month / 12 + 1}年{month % 12 + 1}月" : $"{time.year}年{time.month}月{time.day}日 {time.hour:D2}时";
+        var date = time is null ? $"{month / 12 + 1}年{month % 12 + 1}月" : $"{time.year}年{time.month}月{time.day}日";
         var outgoingItems = string.Join("、", outgoing.Select(entry => $"{load_item(entry.path)?.entity_name ?? "物品"} ×{entry.selected_count}"));
         var incomingItems = string.Join("、", incoming.Select(entry => $"{load_item(entry.path)?.entity_name ?? "物品"} ×{entry.selected_count}"));
         _npc.record(new NpcActionRecord
@@ -531,7 +531,7 @@ public partial class TradePanel : Control
     {
         if (_item_cache.TryGetValue(path, out var item)) return item;
         item = string.IsNullOrWhiteSpace(path) || !ResourceLoader.Exists(path) ? null : ResourceLoader.Load<ItemData>(path);
-        if (!GongfaAvailability.IsItemEnabled(item)) item = null;
+        if ((!GongfaAvailability.IsItemEnabled(item) || !AlchemyProductCatalog.IsItemEnabled(item))) item = null;
         _item_cache[path] = item;
         return item;
     }

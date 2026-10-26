@@ -90,10 +90,10 @@ public partial class GameTimeUI : Control
         if (key == _lastReadout) return;
         _lastReadout = key;
         var year = _showZhaoming ? $"昭明历{_manager.get_zhaoming_year()}年" : $"入世第{_manager.year}年";
-        _date.Text = $"{year}{_manager.month}月{_manager.day}日 · {_manager.hour:00}时";
+        _date.Text = $"{year}{_manager.month}月{_manager.day}日";
 
         var phase = _manager.hour switch { >= 6 and < 18 => "昼", _ => "夜" };
         var name = weather switch { "clear" => "晴", "cloudy" => "多云", "rain" => "雨", "snow" => "雪", "thunderstorm" => "雷雨", _ => weather };
-        _conditions.Text = $"{_manager.get_time_branch()}时 · {_manager.get_season()} · {phase}　{name} {temperature}".Trim();
+        _conditions.Text = $"{_manager.get_season()} · {phase}　{name} {temperature}".Trim();
     }
 }

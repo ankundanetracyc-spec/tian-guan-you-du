@@ -2,13 +2,55 @@
   <diagram id="node-sword-parry" name="格剑">
     <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="720" math="0" shadow="0">
       <root>
-        <mxCell id="0"/><mxCell id="1" parent="0"/>
-        <mxCell id="title" value="人物技能卡 · 剑式初传授予" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5efdf;strokeColor=#9a8967;fontSize=22;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="540" y="28" width="520" height="72" as="geometry"/></mxCell>
-        <mxCell id="source" value="剑式初传节点&#xa;体魄 ≥ 6&#xa;剑道造诣 ≥ 6&#xa;一次解锁四招" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8e0cd;strokeColor=#8a7553;fontSize=17;" vertex="1" parent="1"><mxGeometry x="55" y="255" width="245" height="190" as="geometry"/></mxCell>
-        <mxCell id="main" value="技能名：格剑&#xa;资源路径：res://resources/activeskills/剑修基础/格剑.tres&#xa;类型：守御 · 应对&#xa;关键词：剑、&lt;u&gt;化解&lt;/u&gt;、&lt;u&gt;剑意&lt;/u&gt;、&lt;u&gt;应对&lt;/u&gt;&#xa;耗费：触发时体力 1、法力 0&#xa;目标：自身；应对敌方物理攻击&#xa;效果：获得 A 层&lt;u&gt;化解&lt;/u&gt;；触发后获得1层&lt;u&gt;剑意&lt;/u&gt;。A=2 + floor(体魄/5) + floor(神魂/8) + floor(剑道造诣/5)&#xa;未触发：空放，不消耗资源。&#xa;来源：剑式初传节点（四招同时解锁）&#xa;描述：以剑格开来势，神魂守中，剑意随势而生。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e7eee4;strokeColor=#769078;fontSize=18;align=left;spacingLeft=18;spacingTop=16;" vertex="1" parent="1"><mxGeometry x="370" y="145" width="650" height="390" as="geometry"/></mxCell>
-        <mxCell id="note" value="参悟后收入技能库&#xa;需由玩家手动装配。&#xa;&#xa;应对只匹配敌方物理攻击。化解按当前招式与角色属性结算。" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#c4a95d;fontSize=16;align=left;verticalAlign=top;spacingLeft=14;spacingTop=12;" vertex="1" parent="1"><mxGeometry x="1080" y="185" width="340" height="250" as="geometry"/></mxCell>
-        <mxCell id="edge1" value="统一节点授予" style="endArrow=block;html=1;strokeColor=#8a7553;fontSize=15;" edge="1" parent="1" source="source" target="main"><mxGeometry relative="1" as="geometry"/></mxCell>
-        <mxCell id="edge2" value="应对条件" style="endArrow=block;html=1;strokeColor=#8a7553;fontSize=15;" edge="1" parent="1" source="main" target="note"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="人物技能卡 · 剑式初传授予" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5efdf;strokeColor=#9a8967;fontSize=22;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="540" y="28" width="520" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="source" value="剑式初传节点&#10;体魄 ≥ 6&#10;剑道造诣 ≥ 6&#10;一次解锁四招" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8e0cd;strokeColor=#8a7553;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="55" y="255" width="245" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="main" value="技能名：格剑&#10;关键词：剑、化解、剑意、应对&#10;耗费：触发时体力 1、法力 0&#10;目标：自身；应对敌方物理攻击&#10;效果：获得 A 层（A=2 + floor(体魄/5) + floor(神魂/8) + floor(剑道造诣/5)）化解；触发后获得1层剑意。&#10;未触发：空放，不消耗资源。&#10;来源：剑式初传节点（四招同时解锁）&#10;描述：以剑格开来势，神魂守中，剑意随势而生。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e7eee4;strokeColor=#769078;fontSize=18;align=left;spacingLeft=18;spacingTop=16;" vertex="1" parent="1">
+          <mxGeometry x="370" y="145" width="650" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="参悟后收入技能库&#10;需由玩家手动装配。&#10;&#10;应对只匹配敌方物理攻击。化解按当前招式与角色属性结算。" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#c4a95d;fontSize=16;align=left;verticalAlign=top;spacingLeft=14;spacingTop=12;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="185" width="340" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="edge1" value="统一节点授予" style="endArrow=block;html=1;strokeColor=#8a7553;fontSize=15;" edge="1" parent="1" source="source" target="main">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2" value="应对条件" style="endArrow=block;html=1;strokeColor=#8a7553;fontSize=15;" edge="1" parent="1" source="main" target="note">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="player-rules-entry" value="本图为详细版：效果后以括号列出公式；游戏内可设置简略／详细。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eee8d8;strokeColor=#9a8967;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="567" width="1000" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="node-sword-parry-rules" name="格剑 · 规则详解">
+    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="720" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="人物技能卡 · 剑式初传授予" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5efdf;strokeColor=#9a8967;fontSize=22;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="540" y="28" width="520" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="source" value="剑式初传节点&#10;体魄 ≥ 6&#10;剑道造诣 ≥ 6&#10;一次解锁四招" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8e0cd;strokeColor=#8a7553;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="55" y="255" width="245" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="main" value="技能名：格剑&#10;资源路径：res://resources/activeskills/剑修基础/格剑.tres&#10;类型：守御 · 应对&#10;关键词：剑、&lt;u&gt;化解&lt;/u&gt;、&lt;u&gt;剑意&lt;/u&gt;、&lt;u&gt;应对&lt;/u&gt;&#10;耗费：触发时体力 1、法力 0&#10;目标：自身；应对敌方物理攻击&#10;效果：获得 A 层&lt;u&gt;化解&lt;/u&gt;；触发后获得1层&lt;u&gt;剑意&lt;/u&gt;。A=2 + floor(体魄/5) + floor(神魂/8) + floor(剑道造诣/5)&#10;未触发：空放，不消耗资源。&#10;来源：剑式初传节点（四招同时解锁）&#10;描述：以剑格开来势，神魂守中，剑意随势而生。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e7eee4;strokeColor=#769078;fontSize=18;align=left;spacingLeft=18;spacingTop=16;" vertex="1" parent="1">
+          <mxGeometry x="370" y="145" width="650" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="参悟后收入技能库&#10;需由玩家手动装配。&#10;&#10;应对只匹配敌方物理攻击。化解按当前招式与角色属性结算。" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#c4a95d;fontSize=16;align=left;verticalAlign=top;spacingLeft=14;spacingTop=12;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="185" width="340" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="edge1" value="统一节点授予" style="endArrow=block;html=1;strokeColor=#8a7553;fontSize=15;" edge="1" parent="1" source="source" target="main">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2" value="应对条件" style="endArrow=block;html=1;strokeColor=#8a7553;fontSize=15;" edge="1" parent="1" source="main" target="note">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>

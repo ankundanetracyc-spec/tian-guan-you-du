@@ -268,8 +268,8 @@ public partial class LetterPanel : Control
         _inviteTitle.Text = invitation.activity_name; _inviteState.Text = invitation.State(Now);
         _inviteState.AddThemeColorOverride("font_color", invitation.response == "pending" && !invitation.CanReply(Now) ? Red : Accent);
         _invitePlace.Text = "相约地点　" + invitation.place_name;
-        _inviteReply.Text = "应答截止　" + LetterMailbox.Date(invitation.reply_by_hour);
-        _inviteTime.Text = "举办时段　" + LetterMailbox.Date(invitation.starts_at_hour) + " 至 " + LetterMailbox.Date(invitation.ends_at_hour);
+        _inviteReply.Text = "应答截止　" + invitation.ReplyByDisplay;
+        _inviteTime.Text = "举办日期　" + invitation.ScheduleDisplay;
         _accept.Visible = _decline.Visible = invitation.CanReply(Now);
         var available = ActivityAvailable?.Invoke(invitation.activity_key) == true;
         _attend.Text = available ? "赴约" : "赴约 · 待开放";

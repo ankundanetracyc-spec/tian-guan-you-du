@@ -296,7 +296,7 @@ public partial class NpcWorldManager : Node
     private string current_case_timestamp()
     {
         var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
-        return time is null ? "" : $"{time.year}年{time.month}月{time.day}日 {time.hour:D2}时";
+        return time is null ? "" : $"{time.year}年{time.month}月{time.day}日";
     }
 
     public bool try_assign_east_woods_incident(string incidentId, string dutyInstanceId)
@@ -1993,7 +1993,7 @@ public partial class NpcWorldManager : Node
     {
         var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
         var month = time is null ? 0 : month_index(time);
-        var date = time is null ? format_month(month) : $"{time.year}年{time.month}月{time.day}日 {time.hour:D2}时";
+        var date = time is null ? format_month(month) : $"{time.year}年{time.month}月{time.day}日";
         var entry = new NpcActionRecord
         {
             month_index = month,

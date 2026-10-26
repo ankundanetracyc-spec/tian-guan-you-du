@@ -1,6 +1,124 @@
-<?xml version='1.0' encoding='utf-8'?>
 <mxfile host="Electron" agent="Codex">
   <diagram id="zhuo-ji-sun-qi" name="斫基损契玄经">
+    <mxGraphModel dx="3641" dy="512" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2600" pageHeight="2630" math="0" shadow="0">
+      <root>
+        <mxCell id="0" value="" />
+        <mxCell id="1" parent="0" value="" />
+        <mxCell id="title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=20;" value="&lt;div style=&quot;text-align:left;&quot;&gt;斫基损契玄经&lt;/div&gt;" vertex="1">
+          <mxGeometry height="74" width="560" x="740" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="overview" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=15;" value="&lt;div style=&quot;text-align:left;&quot;&gt;云息秘籍 / 可主修、可辅修&lt;br&gt;五行：NONE（无灵根要求）；主修可修至：云息十层&lt;br&gt;核心：燃烧法力上限补足费用；主修后，同一技能可将法力费用改为体力费用。&lt;br&gt;专属技能：折锋、焚元。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="190" width="560" x="740" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第一卷：秉烛&lt;br&gt;卷章ID：zhuo_ji_1&lt;br&gt;顺序：1&lt;br&gt;研读值（累计）：24&lt;br&gt;学成可修至：云息三层&lt;br&gt;学习条件：灵根任意；凡人境及以上；灵慧≥5&lt;br&gt;前置：无&lt;br&gt;学会永久属性：灵慧 +0.5；术法造诣 +0.5&lt;br&gt;习得：折锋&lt;/div&gt;" vertex="1">
+          <mxGeometry height="470" width="340" x="850" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="心法被动：斫基损契&#10;关键词：无&#10;效果：法力不足的部分可燃烧等量法力上限支付，至少保留1点；无法补足时不能施展。&#10;主修额外效果：曾以燃烧法力上限支付过费用的技能，本场后续施展时，以等量体力替代法力费用。&#10;&#10;习得：折锋&#10;&#10;折锋：&#10;关键词：应对&#10;耗费：体力 1、法力 1&#10;目标：指定1名敌方&#10;出手方式：近身&#10;效果：造成A点（A=round(8 + 灵慧×0.65 + 术法造诣×0.2)）物理伤害。若本次施展燃烧法力上限支付费用，目标不能以应对技能应对此次攻击。&#10;。&#10;使用次数：不限&#10;冷却：无" vertex="1">
+          <mxGeometry height="520" width="740" x="-400" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：折锋&lt;br&gt;&lt;br&gt;化法追加：施展前法力为0时，命中后获得炁1；每回合限1次。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="380" width="280" x="1360" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第二卷：剪灯&lt;br&gt;卷章ID：zhuo_ji_2&lt;br&gt;顺序：2&lt;br&gt;研读值（累计）：48&lt;br&gt;学成可修至：云息六层&lt;br&gt;学习条件：灵根任意；云息三层及以上；灵慧≥6；术法造诣≥0.5&lt;br&gt;前置：zhuo_ji_1&lt;br&gt;学会永久属性：术法造诣 +0.5&lt;br&gt;习得：焚元&lt;/div&gt;" vertex="1">
+          <mxGeometry height="430" width="340" x="850" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：斫基损契（沿用第一卷，无新增效果）&lt;br&gt;&lt;br&gt;习得：焚元&lt;br&gt;&lt;br&gt;焚元：&lt;br&gt;关键词：周天&lt;br&gt;耗费：体力 1&lt;br&gt;目标：自身&lt;br&gt;效果：燃烧1点法力上限，获得炁2；法力上限至少为2点时可施展。&lt;br&gt;使用次数：每回合1次&lt;br&gt;冷却：无&lt;/div&gt;" vertex="1">
+          <mxGeometry height="470" width="740" x="-400" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：焚元&lt;br&gt;&lt;br&gt;化法追加：本回合下一项仍需支付法力的技能，以等量体力替代法力费用。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="390" width="290" x="1360" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第三卷：续照&lt;br&gt;卷章ID：zhuo_ji_3&lt;br&gt;顺序：3&lt;br&gt;研读值（累计）：84&lt;br&gt;学成可修至：云息九层&lt;br&gt;学习条件：灵根任意；云息六层及以上；灵慧≥8；术法造诣≥1&lt;br&gt;前置：zhuo_ji_2&lt;br&gt;学会永久属性：灵慧 +0.5；术法造诣 +1&lt;br&gt;习得：无&lt;/div&gt;" vertex="1">
+          <mxGeometry height="470" width="340" x="850" y="1450" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：斫基损契&lt;br&gt;关键词：周天&lt;br&gt;效果：法力不足的部分可燃烧等量法力上限支付，至少保留1点；无法补足时不能施展。每回合首次以燃烧法力上限支付技能费用后，该技能结算后获得炁1。&lt;br&gt;主修额外效果：曾以燃烧法力上限支付过费用的技能，本场后续施展时，以等量体力替代法力费用。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="260" width="740" x="-400" y="1450" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="化法&#10;适用范围：架招&#10;&#10;化法追加：本次架招抵消至少1点物理伤害后，攻击者失去B点（B=min(攻击者当前护盾值，本次架招实际抵消的物理伤害总点数)）护盾。" vertex="1">
+          <mxGeometry height="520" width="290" x="1360" y="1450" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第四卷：长明&lt;br&gt;卷章ID：zhuo_ji_4&lt;br&gt;顺序：4&lt;br&gt;研读值（累计）：128&lt;br&gt;学成可修至：云息十层&lt;br&gt;学习条件：灵根任意；云息九层及以上；灵慧≥10；术法造诣≥2&lt;br&gt;前置：zhuo_ji_3&lt;br&gt;学会永久属性：术法造诣 +1&lt;br&gt;习得：无&lt;/div&gt;" vertex="1">
+          <mxGeometry height="430" width="340" x="850" y="1990" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：斫基损契（沿用第三卷，无新增效果）&lt;/div&gt;" vertex="1">
+          <mxGeometry height="470" width="740" x="-400" y="1990" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：折锋&lt;br&gt;&lt;br&gt;化法追加：法力上限为1时，目标不能以应对技能应对此次攻击。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="520" width="290" x="1360" y="1990" as="geometry" />
+        </mxCell>
+        <mxCell id="summary" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" value="&lt;div style=&quot;text-align:left;&quot;&gt;构筑要点：燃烧法力上限换取技能费用；主修可把同一技能后续的法力费用转为体力。保留1点法力上限可维持周天。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="420" x="1660" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;法力上限 +1（云息境界起生效）&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="260" x="360" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;最大生命 +10%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="270" x="390" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;物理伤害 +5%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="270" x="400" y="1450" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;div style=&quot;text-align:center;&quot;&gt;修持（仅战斗内）&lt;br&gt;战斗属性：&lt;br&gt;最大生命 +10%&lt;br&gt;物理伤害 +5%&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="270" x="370" y="1990" as="geometry" />
+        </mxCell>
+        <mxCell id="status_rules" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;align=left;verticalAlign=top;" value="&lt;div style=&quot;text-align:left;&quot;&gt;燃烧与结算&lt;br&gt;法力不足时先支付当前法力，再燃烧等量法力上限；法力上限至少保留1点。&lt;br&gt;每次法力上限变化或获得炁后检查周天。&lt;br&gt;每回合首次以燃烧法力上限支付技能费用后，第三卷心法在该技能结算后给予炁1；《焚元》主动燃烧不触发此效果。&lt;br&gt;主修费用改写按技能记录，本场持续；技能次数和冷却仍照常结算。&lt;br&gt;第二卷化法仅影响本回合下一项仍需支付法力的技能；第四卷化法在法力上限为1时使《折锋》不能被应对。&lt;br&gt;《架招》化法按本次攻击实际抵消的物理伤害削减攻击者护盾。&lt;/div&gt;" vertex="1">
+          <mxGeometry height="1010" width="430" x="1660" y="864" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" edge="1" parent="1" source="overview" style="endArrow=block;html=1;" target="c1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_a" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_b" edge="1" parent="1" source="c1" style="endArrow=block;html=1;" target="c1_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_c" edge="1" parent="1" source="c1" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c1_cards" value="本卷心法与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_a" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_b" edge="1" parent="1" source="c2" style="endArrow=block;html=1;" target="c2_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_c" edge="1" parent="1" source="c2" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c2_cards" value="心法与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_a" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_b" edge="1" parent="1" source="c3" style="endArrow=block;html=1;" target="c3_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_c" edge="1" parent="1" source="c3" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c3_cards" value="心法与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_a" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_left" value="修持">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_b" edge="1" parent="1" source="c4" style="endArrow=block;html=1;" target="c4_right" value="化法">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_c" edge="1" parent="1" source="c4" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.8;entryX=1;entryY=0.8;" target="c4_cards" value="心法与习得">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="player-rules-entry" value="本图为详细版：效果后以括号列出公式；游戏内可设置简略／详细。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eee8d8;strokeColor=#9a8967;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="2542" width="1000" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="zhuo-ji-sun-qi-rules" name="斫基损契玄经 · 规则详解">
     <mxGraphModel dx="3641" dy="512" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2600" pageHeight="2100" math="0" shadow="0">
       <root>
         <mxCell id="0" value="" />

@@ -50,7 +50,7 @@ public partial class BattleFlowView
             HoverInfoManager.SetInfo(item, new(BattleSupplyRules.Name(pill), pill.EffectText + "\n\n只从本人真实行囊配置，每位最多5颗同种同档丹药。",
                 GD.Load<Texture2D>(pill.icon_path), $"九品丹药 · {BattleSupplyRules.QualityNames[pill.efficacy_tier]}"));
         }
-        if (candidates.Count == 0) Text(list, "本人的行囊中没有可用的战斗丹药。首批支持回春丹、通脉丹。", Vector2.Zero, new(1300, 64), 20);
+        if (candidates.Count == 0) Text(list, "本人的行囊中没有可用的战斗丹药。当前支持回春丹。", Vector2.Zero, new(1300, 64), 20);
         Button(_buttons, "完成战备配置", back);
     }
 }

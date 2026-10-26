@@ -41,7 +41,7 @@ public partial class RestPanel : Control
         _byDate = new Button { Text = "指定日期", ToggleMode = true, SizeFlagsHorizontal = SizeFlags.ExpandFill }; _byDate.Pressed += () => { _dateMode = true; Refresh(); }; _modes.AddChild(_byDate);
         _hoursRow = new HBoxContainer(); _hoursRow.AddThemeConstantOverride("separation", 14); box.AddChild(_hoursRow); _hoursRow.AddChild(QuietRoomStyle.Text("休息时长"));
         _hours = Number(1, 720, 8); _hoursRow.AddChild(_hours); _hoursRow.AddChild(QuietRoomStyle.Text("小时"));
-        _dateRow = new VBoxContainer(); box.AddChild(_dateRow); _dateRow.AddChild(QuietRoomStyle.Text("醒来日期（保持当前小时）", 18)); var date = new HBoxContainer(); _dateRow.AddChild(date);
+        _dateRow = new VBoxContainer(); box.AddChild(_dateRow); _dateRow.AddChild(QuietRoomStyle.Text("醒来日期", 18)); var date = new HBoxContainer(); _dateRow.AddChild(date);
         _year = Number(1, 9999, 1); _month = Number(1, 12, 1); _date = Number(1, 30, 1);
         foreach (var (number, label) in new[] { (_year, "年"), (_month, "月"), (_date, "日") }) { number.CustomMinimumSize = new Vector2(80, 44); date.AddChild(number); date.AddChild(QuietRoomStyle.Text(label, 18)); }
         foreach (var number in new[] { _hours, _year, _month, _date }) number.ValueChanged += _ => { if (_clock is not null) Refresh(); };
@@ -81,7 +81,7 @@ public partial class RestPanel : Control
         if (hours <= 0) { _preview.Text = "请选择晚于当前日期的醒来日期。"; _after.Value = current; return; }
         var recovered = Math.Max(0, Math.Min(max - current, hours * WorldStaminaRules.RestRecoveryPerGameHour));
         var end = _clock.get_total_game_hours() + hours; var day = end / 24;
-        _preview.Text = $"醒来后\n精力  {current:0.#} → {current + recovered:0.#}\n恢复精力 {recovered:0.#} 点\n生命恢复至上限\n\n休息 {hours} 小时\n醒来：{day / 360 + 1}年{day % 360 / 30 + 1}月{day % 30 + 1}日 {end % 24:00}时";
+        _preview.Text = $"醒来后\n精力  {current:0.#} → {current + recovered:0.#}\n恢复精力 {recovered:0.#} 点\n生命恢复至上限\n\n休息 {hours} 小时\n醒来日期：{day / 360 + 1}年{day % 360 / 30 + 1}月{day % 30 + 1}日";
         _after.Value = current + recovered;
     }
     private void Confirm() { var count = Hours(); if (count <= 0) return; var confirm = _confirm; Close(); confirm?.Invoke(count); }

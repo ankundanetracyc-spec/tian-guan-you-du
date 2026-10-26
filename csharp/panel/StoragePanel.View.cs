@@ -12,7 +12,7 @@ public partial class StoragePanel
     private ScrollContainer? _grid_scroll;
     private Label? _empty, _summary;
     private PanelContainer? _detail_panel;
-    private HBoxContainer? _action_row;
+    private VBoxContainer? _action_row;
     private Button? _action_button, _cancel_button;
     private InventoryPaperFrame? _popup_frame;
 
@@ -160,11 +160,11 @@ public partial class StoragePanel
         var column = new VBoxContainer();
         column.AddThemeConstantOverride("separation", 12);
         margin.AddChild(column);
-        _action_row = new HBoxContainer();
-        _action_row.AddThemeConstantOverride("separation", 14);
+        _action_row = new VBoxContainer { Name = "ItemActions" };
+        _action_row.AddThemeConstantOverride("separation", 10);
         column.AddChild(_action_row);
         _action_button = paper_button("使用", 27, true);
-        _cancel_button = paper_button("取消", 27, false);
+        _cancel_button = paper_button("取消", 27, true);
         _action_button.CustomMinimumSize = _cancel_button.CustomMinimumSize = new Vector2(0, 52);
         _action_button.SizeFlagsHorizontal = _cancel_button.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         _action_row.AddChild(_action_button); _action_row.AddChild(_cancel_button);
@@ -243,33 +243,8 @@ public partial class StoragePanel
         label.AddThemeConstantOverride("line_separation", 5);
         return label;
     }
-    private Button paper_button(string value, int size, bool light)
-    {
-        var button = new Button { Text = value, MouseDefaultCursorShape = CursorShape.PointingHand };
-        style_button(button, size, light);
-        return button;
-    }
-    private void style_button(Button button, int size, bool light)
-    {
-        button.AddThemeFontOverride("font", _inventory_font);
-        button.AddThemeFontSizeOverride("font_size", size);
-        foreach (var state in new[] { "font_color", "font_hover_color", "font_pressed_color", "font_focus_color", "font_hover_pressed_color" })
-            button.AddThemeColorOverride(state, light ? Ink : PaperText);
-        foreach (var state in new[] { "normal", "hover", "pressed", "hover_pressed" })
-        {
-            if (light) button.AddThemeStyleboxOverride(state, WorldHudStyle.Paper());
-            else button.AddThemeStyleboxOverride(state, new StyleBoxFlat
-            {
-                BgColor = new Color(.08f, .09f, .07f, .84f),
-                BorderColor = new Color(state is "hover" or "hover_pressed" ? "d4bc87" : "b6aa8a"), BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1,
-                ContentMarginLeft = 12, ContentMarginRight = 12, CornerRadiusTopLeft = 4, CornerRadiusTopRight = 4,
-                CornerRadiusBottomLeft = 4, CornerRadiusBottomRight = 4
-            });
-        }
-        button.MouseEntered += () => { if (!button.Disabled) button.Modulate = new Color(1.07f, 1.05f, 1.01f); };
-        button.MouseExited += () => button.Modulate = Colors.White;
-        button.AddThemeStyleboxOverride("focus", focus_style());
-    }
+    private Button paper_button(string value, int size, bool light) => PaperButton.Create(value, size, light);
+    private void style_button(Button button, int size, bool light) => PaperButton.ApplyStyle(button, size, light);
     private void style_input(LineEdit input)
     {
         input.AddThemeFontOverride("font", _inventory_font);

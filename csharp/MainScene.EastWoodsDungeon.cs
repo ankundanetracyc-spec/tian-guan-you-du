@@ -469,7 +469,7 @@ public partial class MainScene
         var incident = new EastWoodsNpcIncidentRecord
         {
             incident_id = incidentId,
-            occurred_at = time is null ? get_yuxu_contribution_timestamp() : $"{time.year}年{time.month}月{time.day}日 {time.hour:D2}时",
+            occurred_at = time is null ? get_yuxu_contribution_timestamp() : $"{time.year}年{time.month}月{time.day}日",
             occurred_game_hour = time?.get_total_game_hours() ?? 0,
             location_id = EastWoodsDungeonRules.DungeonId,
             location_name = "东林地·深入林地",

@@ -9,15 +9,16 @@ public partial class EastWoodsDungeonPanel
     private string exploration_notes()
     {
         var exitPath = find_shortest_path(_current, route_exit_node_id);
-        var text = new StringBuilder("只显示四格视野内的现场情况；查看不推进时间。\n");
+        var text = new StringBuilder(_dynamicMode ? "只显示四格视野内的现场情况；查看不推进时间。\n" : "沿林径亲自抵达，才能得知当地情形。查看札记不推进时间。\n");
+        if (!_dynamicMode) text.Append($"此刻位于{EastWoodsDungeonRules.forest_region(_current)}。\n");
         var exitName = _dynamicMode ? "幽谷入口" : "林缘";
         text.Append(exitPath.Count > 0 || _current == route_exit_node_id ? $"返回{exitName}约需 {format_hours(Math.Max(0, exitPath.Count - 1) * EastWoodsDungeonRules.player_edge_hours(_playerDunSpeed))}。\n" : "尚无完整的已知回程路线，须沿已走过的道路返回。\n");
         var known = route_nodes.Where(n =>
-                is_node_visible(n.Id) &&
+                is_node_visible(n.Id) && (_dynamicMode || n.Id == _current) &&
                 (_dynamicMode ? available_actions(n.Id).Count > 0 : EastWoodsActions.Content(n.Id) is not null) &&
                 is_explored(n.Id))
             .OrderBy(n => n.Id == _current ? 0 : find_shortest_path(_current, n.Id).Count).ToArray();
-        if (known.Length == 0) text.Append("\n视野内暂无可记录的资源或异状，可沿林径继续前行，无需探查。");
+        if (known.Length == 0) text.Append(_dynamicMode ? "\n视野内暂无可记录的资源或异状，可沿林径继续前行，无需探查。" : "\n旧径通向林间，沿已见道路继续前行，抵达后再看现场。");
         foreach (var node in known.Take(6))
         {
             var availableBeast = available_actions(node.Id).FirstOrDefault(candidate => candidate.Battle);

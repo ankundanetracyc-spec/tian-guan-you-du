@@ -166,7 +166,7 @@ public partial class GameTimeMgr : Node
         };
     }
 
-    public string get_time_display() => $"{hour}时（{get_time_branch(hour)}）";
+    public string get_time_display() => $"{year}年{month}月{day}日";
 
     public void slumber(int days)
     {

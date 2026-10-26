@@ -41,10 +41,7 @@ public static class ForgedArtifactInventory
     {
         if (!TryRead(item, out var snapshot))
             return new(item.artifact_name, "器物信息暂时无法读取。", Subtitle: "器物");
-        var content = ForgedArtifactPresentation.Hover(snapshot);
-        // 快照可能来自不同生产入口，行囊不将所有物品误称为独立试炼产物。
-        return content with { Body = string.Join("\n\n", System.Linq.Enumerable.Select(
-            ForgedArtifactPresentation.Sections(snapshot), section => section.Title + "\n" + section.Body)) };
+        return ForgedArtifactPresentation.Hover(snapshot);
     }
 
     private static void Validate(ProcessForgingTrial.Artifact snapshot)

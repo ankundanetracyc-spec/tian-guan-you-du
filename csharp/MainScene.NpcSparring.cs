@@ -92,7 +92,7 @@ public partial class MainScene
             npc.player_social_memory["last_spar_outcome"] = outcome;
             var month = get_game_month_index(GetNode<GameTimeMgr>("/root/GameTimeManager"));
             var time = GetNode<GameTimeMgr>("/root/GameTimeManager");
-            var date = $"{time.year}年{time.month}月{time.day}日 {time.hour:D2}时";
+            var date = $"{time.year}年{time.month}月{time.day}日";
             NpcPersonalityRules.Observe(npc, "spar_experience", "交手经历：" + outcome, "宗内切磋", month);
             if (!summary.GetValueOrDefault("escaped", false).AsBool() && player?.entity_data is HumanData human && npc.is_alive)
             {

@@ -531,7 +531,7 @@ public partial class EncyclopediaPanel : Control
         var isItem = entry.Item is not null;
         var isStatus = entry.Status is not null;
         _detailBody.Visible = !isItem && !isStatus;
-        _detailBody.Text = isItem || isStatus ? "" : entry.Body;
+        PlayerInfoText.Bind(_detailBody, isItem || isStatus ? "" : entry.Body);
         if (_itemDetailContent is not null)
         {
             _itemDetailContent.Visible = isItem;
@@ -1362,6 +1362,7 @@ public partial class EncyclopediaPanel : Control
     private static Label MakeLabel(string text, int size, Color color)
     {
         var label = new Label { Text = text, AutowrapMode = TextServer.AutowrapMode.WordSmart, MouseFilter = MouseFilterEnum.Ignore };
+        PlayerInfoText.Bind(label, text);
         label.AddThemeFontSizeOverride("font_size", size);
         label.AddThemeColorOverride("font_color", color);
         return label;

@@ -66,6 +66,9 @@ public partial class Character
             human.inventory_item_counts = new(amounts);
             human.inventory_item_positions = new(positions);
             human.current_world_stamina = Math.Max(0, human.current_world_stamina - simulation.EnergyNeed);
+            human.alchemy_records.Add(crafting_record_date() + simulation.Outcome +
+                $" · {AlchemySlotSimulation.DurationHours(inputs):0.##}时辰 · 精力{simulation.EnergyNeed}\n" +
+                string.Join("、", inputs.Select(i => $"{i.Name}×{i.Dose}")));
             // 炼制一次完成；不登记长期灵识占用。历法推进会处理正常世界事件。
             EmitSignal(SignalName.inventory_changed);
             InventoryChanged?.Invoke(this);
@@ -85,7 +88,7 @@ public partial class Character
     public bool CanUseAlchemyPill(PillItemData item)
     {
         if (HasMeta("artifact_battle_clone")) return false;
-        if (human is null || !has_inventory_item(item.ResourcePath) || item.efficacy_tier is < 0 or > 4) return false;
+        if (human is null || !AlchemyProductCatalog.IsEnabled(item.pill_id) || !has_inventory_item(item.ResourcePath) || item.efficacy_tier is < 0 or > 4) return false;
         bool effectAvailable = item.pill_id switch
         {
             "huichun" => current_health > 0 && current_health < max_health,

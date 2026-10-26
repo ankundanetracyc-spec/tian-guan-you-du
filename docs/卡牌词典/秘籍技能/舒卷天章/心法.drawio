@@ -1,6 +1,19 @@
-<?xml version='1.0' encoding='utf-8'?>
 <mxfile host="app.diagrams.net">
   <diagram name="流云剑势">
+    <mxGraphModel grid="1" page="1" pageWidth="1400" pageHeight="1500">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="main" value="第一卷&#10;心法被动：流云剑势&#10;关键词：剑、剑意&#10;效果：剑意达到6层时，流云剑势生效。带剑关键词的攻伐技能首段命中后，在原技能攻击段结算完毕时追加1段攻击，沿用原目标，造成A点（A=round(2 + 体魄×0.20 + 剑道造诣×0.30)）物理伤害。&#10;主修额外效果：触发所需剑意层数减少1层。&#10;&#10;第二卷&#10;心法被动：流云剑势&#10;关键词：剑、剑意&#10;效果：剑意达到6层时，流云剑势生效。带剑关键词的攻伐技能首段命中后，在原技能攻击段结算完毕时追加1段攻击，沿用原目标，造成A点（A=round(2 + 体魄×0.20 + 剑道造诣×0.30 + max(本次行动开始时剑意层数−6,0))）物理伤害；剑意层数超过6时，每多1层使追加攻击伤害提高1点。&#10;主修额外效果：触发所需剑意层数减少1层。&#10;&#10;第三卷&#10;心法被动：流云剑势（沿用第二卷，无新增效果）&#10;&#10;第四卷&#10;心法被动：流云剑势&#10;关键词：剑、剑意&#10;效果：剑意达到6层时，流云剑势生效。带剑关键词的攻伐技能首段命中后，在原技能攻击段结算完毕时追加攻击，沿用原目标；本次行动开始时剑意达到10层，追加2段，其余满足条件时追加1段。每段造成A点（A=round(2 + 体魄×0.20 + 剑道造诣×0.30 + max(本次行动开始时剑意层数−6,0))）物理伤害。《云岚三叠》按自身攻击段数结算，不另加心法攻击段。&#10;主修额外效果：触发所需剑意层数减少1层。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;spacing=16;" vertex="1" parent="1">
+          <mxGeometry x="100" y="100" width="850" height="612" as="geometry" />
+        </mxCell>
+        <mxCell id="player-rules-entry" value="本图为详细版：效果后以括号列出公式；游戏内可设置简略／详细。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eee8d8;strokeColor=#9a8967;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="744" width="1000" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="流云剑势 · 规则详解" id="page-rules">
     <mxGraphModel grid="1" page="1" pageWidth="1400" pageHeight="1500">
       <root>
         <mxCell id="0" />

@@ -50,7 +50,8 @@ public partial class DungeonSeededLayoutSmoke : Node
             EastWoodsDungeonRules.validate_layout(layout);
             EastWoodsDungeonRules.validate_layout(new GDictionary());
             Check(Json.Stringify(EastWoodsDungeonRules.get_layout_state())==Json.Stringify(layout),"只读校验修改了当前地图");
-            var legacyLayout=layout.Duplicate(true);
+            EastWoodsDungeonRules.use_legacy_layout();
+            var legacyLayout=EastWoodsDungeonRules.get_layout_state();
             legacyLayout["version"]=1;
             EastWoodsDungeonRules.restore_layout(legacyLayout);
             var migratedLayout=EastWoodsDungeonRules.get_layout_state();
@@ -113,7 +114,7 @@ public partial class DungeonSeededLayoutSmoke : Node
                 "正式Resource存档没有保留资源节点类别");
             Check(Json.Stringify(EastWoodsDungeonRules.get_layout_state())==Json.Stringify(layout),"正式存档地图改变");
             var map=panel.GetNode<Control>("MapViewport/OrthogonalNodeMap");
-            Check(map.GetChildren().OfType<Button>().Count()==128,"界面未重建128格");
+            Check(map.GetChildren().OfType<Button>().Count()==EastWoodsDungeonRules.SparseNodeCount,"界面未重建稀疏64格");
             foreach(var terrain in Enum.GetValues<DungeonTerrainVisuals.Terrain>())
             {
                 var count=DungeonTerrainVisuals.CountFor(terrain);

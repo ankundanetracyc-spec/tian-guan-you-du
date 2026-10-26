@@ -39,9 +39,10 @@ public partial class MainScene
     {
         var phase = IdentifyJournalTask(get_phase_goal());
         var duty = get_active_yuxu_journal_task();
+        var lecture = get_active_yuxu_true_disciple_lecture_journal_task();
         var lineage = get_active_yuxu_lineage_journal_task();
         var invitation = get_letter_invitation_tasks().FirstOrDefault(entry => entry.State != "已完成");
-        var current = duty ?? lineage ?? invitation ?? IdentifyJournalTask(has_open_world_access() ? get_cultivation_guidance_task() : _active_quest ?? get_phase_goal());
+        var current = duty ?? lecture ?? lineage ?? invitation ?? IdentifyJournalTask(has_open_world_access() ? get_cultivation_guidance_task() : _active_quest ?? get_phase_goal());
         var ongoing = get_quest_entries().Where(e => e.State != "已完成").DistinctBy(e => e.Id).ToList();
         if (!_journalTrackingChosen || (!string.IsNullOrEmpty(_trackedJournalTask) && ongoing.All(e => e.Id != _trackedJournalTask)))
             _trackedJournalTask = current.Id;
@@ -115,6 +116,8 @@ public partial class MainScene
 
     private static string GetJournalTaskTrackerObjective(JournalPanel.Entry entry)
     {
+        if (entry.Id.StartsWith("yuxu.true_disciple.lecture.", StringComparison.Ordinal))
+            return "前往观复峰开设本期真传讲席";
         if (entry.Id.StartsWith("letter.invitation.", StringComparison.Ordinal))
             return $"前往{entry.Place}赴约";
 
@@ -192,6 +195,24 @@ public partial class MainScene
 
     private JournalPanel.Entry? get_active_yuxu_lineage_journal_task()
         => get_yuxu_lineage_journal_tasks().FirstOrDefault(entry => entry.State != "已完成");
+
+    private JournalPanel.Entry? get_active_yuxu_true_disciple_lecture_journal_task()
+    {
+        if (player?.entity_data is not HumanData human || human.sect_affiliation_id != YuxuSectId ||
+            !is_yuxu_true_disciple(human.sect_current_rank))
+            return null;
+        var dueHour = human.sect_true_disciple_lecture_next_due_hour;
+        var now = (long)(GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0);
+        if (dueHour < 0 || now < dueHour || now >= dueHour + YuxuTrueDiscipleLecturePeriodHours)
+            return null;
+        var missedText = human.sect_true_disciple_lecture_missed_count > 0
+            ? $"累计缺席记档：{human.sect_true_disciple_lecture_missed_count} 期。"
+            : "尚无缺席记档。";
+        return IdentifyJournalTask(new JournalPanel.Entry(
+            "宗内事务·真传讲席",
+            $"本期讲席已开放。前往观复峰开设答疑讲席，面向外门与内门弟子作指点；本项只登记履职到场，不设问答考核。下一期开始前未完成，将记入真传师门履职声誉。{missedText}",
+            "玉虚仙宗·宗内事务", "观复峰", "进行中", Id: $"yuxu.true_disciple.lecture.{dueHour}"));
+    }
 
     private List<JournalPanel.Entry> get_yuxu_lineage_journal_tasks()
     {

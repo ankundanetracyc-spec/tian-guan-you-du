@@ -2,97 +2,45 @@ using Godot;
 
 public partial class InfoPanel
 {
-    private int _equipmentSelection;
-
     private void build_character_equipment(Character? human)
     {
         var page = _characterPages[4]; CharacterClear(page); var data = human?.entity_data as HumanData;
         var forgedSword = human?.get_equipped_forged_sword();
         var attire = CharacterPanel(page, 0, 0, 770, 795); var canvas = new Control(); attire.AddChild(canvas);
-        var portrait = new PortraitRenderer { MouseFilter = MouseFilterEnum.Ignore }; canvas.AddChild(portrait); CharacterRect(portrait, 176, 82, 386, 536);
+        var portrait = new PortraitRenderer { MouseFilter = MouseFilterEnum.Ignore }; canvas.AddChild(portrait); CharacterRect(portrait, 176, 8, 386, 740);
         if (human is not null) portrait.show_character(human);
-        var title = CharacterText("随身装备", 28); canvas.AddChild(title); CharacterRect(title, 8, 0, 250, 42);
-        var subtitle = CharacterText("武器一件 · 护具一件 · 器物两件", 18, true); canvas.AddChild(subtitle); CharacterRect(subtitle, 8, 46, 680, 30);
         var slots = new[]
         {
-            (name: "武器", path: data?.weapon_path ?? "", slot: "weapon", hint: "剑 · 刀 · 枪等", mark: "兵", x: 8f, y: 152f),
-            (name: "护具", path: data?.clothes_path ?? "", slot: "clothes", hint: "衣 · 甲 · 袍等", mark: "甲", x: 8f, y: 358f),
-            (name: "器物一", path: data?.ornament_1_path ?? "", slot: "ornament_1", hint: "珠 · 镜 · 印 · 铃等", mark: "器", x: 576f, y: 152f),
-            (name: "器物二", path: data?.ornament_2_path ?? "", slot: "ornament_2", hint: "珠 · 镜 · 印 · 铃等", mark: "器", x: 576f, y: 358f)
+            (name: "武器", path: data?.weapon_path ?? "", slot: "weapon", mark: "兵", x: 8f, y: 110f),
+            (name: "护具", path: data?.clothes_path ?? "", slot: "clothes", mark: "甲", x: 8f, y: 320f),
+            (name: "器物一", path: data?.ornament_1_path ?? "", slot: "ornament_1", mark: "器", x: 576f, y: 110f),
+            (name: "器物二", path: data?.ornament_2_path ?? "", slot: "ornament_2", mark: "器", x: 576f, y: 320f)
         };
-        _equipmentSelection = Math.Clamp(_equipmentSelection, 0, slots.Length - 1);
         for (var i = 0; i < slots.Length; i++)
         {
-            var index = i; var entry = slots[i];
+            var entry = slots[i];
             var item = !string.IsNullOrWhiteSpace(entry.path) && ResourceLoader.Exists(entry.path) ? GD.Load<EquipmentData>(entry.path) : null;
             if (i == 0 && forgedSword is not null) item = new EquipmentData { entity_name = forgedSword.artifact_name, icon_path = ForgedArtifactInventory.IconPath(forgedSword) };
-            var button = CharacterButton("", selected: _equipmentSelection == i); button.Name = "EquipmentSlot" + i; canvas.AddChild(button); CharacterRect(button, entry.x, entry.y, 154, 176);
+            var button = CharacterButton(""); button.Name = "EquipmentSlot" + i; canvas.AddChild(button); CharacterRect(button, entry.x, entry.y, 154, 176);
             var box = new VBoxContainer { MouseFilter = MouseFilterEnum.Ignore, Alignment = BoxContainer.AlignmentMode.Center }; box.AddThemeConstantOverride("separation", 4); button.AddChild(box); box.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect); box.OffsetLeft = 8; box.OffsetRight = -8; box.OffsetTop = 6; box.OffsetBottom = -6;
             if (item is not null && CharacterLoadIcon(item.icon_path) is { } icon) box.AddChild(CharacterIcon(icon, 56));
             else { var mark = CharacterText(entry.mark, 38, true); mark.HorizontalAlignment = HorizontalAlignment.Center; mark.Modulate = new Color(1, 1, 1, .45f); box.AddChild(mark); }
             var name = CharacterText(entry.name, 21); name.HorizontalAlignment = HorizontalAlignment.Center; box.AddChild(name);
-            var state = CharacterClippedText(item?.entity_name ?? "空位 · 点击查看", 17, true); state.HorizontalAlignment = HorizontalAlignment.Center; box.AddChild(state);
-            if (item is not null) CharacterHover(button, item.entity_name, $"装备 · {entry.name}\n\n[b]属性加成[/b]\n{character_equipment_bonuses(item)}\n\n[b]穿戴位置[/b]\n{entry.name}", CharacterLoadIcon(item.icon_path));
+            var state = CharacterClippedText(item?.entity_name ?? "空位", 17, true); state.HorizontalAlignment = HorizontalAlignment.Center; box.AddChild(state);
+            if (item is not null) CharacterHover(button, item.entity_name, $"装备 · {entry.name}\n\n[b]属性加成[/b]\n{character_equipment_bonuses(item)}", CharacterLoadIcon(item.icon_path));
             if (i == 0 && forgedSword is not null) HoverInfoManager.SetInfo(button, ForgedArtifactInventory.Hover(forgedSword));
-            button.Pressed += () => { _equipmentSelection = index; hide_tooltip(); build_character_equipment(human); };
+            button.Disabled = human is null;
+            button.Pressed += () => { hide_tooltip(); if (human is not null) show_character_equipment_picker(human, entry.slot, entry.path); };
         }
-        var wardrobe = CharacterButton("更换衣着  ›", 21); canvas.AddChild(wardrobe); CharacterRect(wardrobe, 234, 630, 270, 46);
+        var clothing = !string.IsNullOrWhiteSpace(data?.portrait_clothing_item_path) && ResourceLoader.Exists(data.portrait_clothing_item_path)
+            ? GD.Load<PortraitClothingData>(data.portrait_clothing_item_path) : null;
+        var wardrobe = CharacterButton(""); wardrobe.Name = "EquipmentClothingSlot"; canvas.AddChild(wardrobe); CharacterRect(wardrobe, 8, 530, 154, 154);
+        EquipmentTileContent(wardrobe, clothing?.icon_path ?? "", "衣着", clothing?.entity_name ?? "空位", 58);
+        if (clothing is not null) CharacterHover(wardrobe, clothing.entity_name, "衣着", CharacterLoadIcon(clothing.icon_path));
         wardrobe.Pressed += () => { hide_tooltip(); if (human is not null) _wardrobe?.open_for(human); }; wardrobe.Disabled = human is null;
-        var attireNote = CharacterText("衣着仅调整外观，装备在两侧配置", 18, true); attireNote.HorizontalAlignment = HorizontalAlignment.Center;
-        canvas.AddChild(attireNote); CharacterRect(attireNote, 122, 690, 494, 32);
-
-        var selected = slots[_equipmentSelection];
-        var selectedItem = !string.IsNullOrWhiteSpace(selected.path) && ResourceLoader.Exists(selected.path) ? GD.Load<EquipmentData>(selected.path) : null;
-        var details = CharacterBox(CharacterPanel(page, 788, 0, 562, 465), "装备详情");
-        details.AddChild(CharacterText(selected.name + "槽", 20, true));
-        var detailBody = CharacterBox(CharacterScroll(details));
-        if (_equipmentSelection == 0 && forgedSword is not null)
-        {
-            var content = ForgedArtifactInventory.Hover(forgedSword);
-            detailBody.AddChild(CharacterIcon(content.Icon, 100));
-            detailBody.AddChild(CharacterParagraph(content.Title, 29));
-            detailBody.AddChild(CharacterParagraph(content.Body, 20));
-        }
-        else if (selectedItem is not null)
-        {
-            var identity = new HBoxContainer(); identity.AddThemeConstantOverride("separation", 18); detailBody.AddChild(identity);
-            if (CharacterLoadIcon(selectedItem.icon_path) is { } icon) identity.AddChild(CharacterIcon(icon, 72));
-            var itemName = CharacterParagraph(selectedItem.entity_name, 29); itemName.SizeFlagsHorizontal = SizeFlags.ExpandFill; identity.AddChild(itemName);
-            detailBody.AddChild(CharacterText("基础加成", 22));
-            detailBody.AddChild(CharacterParagraph(character_equipment_bonuses(selectedItem), 21));
-        }
-        else
-        {
-            detailBody.AddChild(CharacterText("尚未装备", 30, true));
-            detailBody.AddChild(CharacterParagraph(selected.hint, 22));
-            detailBody.AddChild(CharacterParagraph("从行囊中选择一件装备，查看它的属性与能力。", 20, true));
-        }
-        var change = CharacterButton(selectedItem is null && !(_equipmentSelection == 0 && forgedSword is not null) ? "选择装备  ›" : "更换装备  ›", 22); change.Name = "EquipmentChange"; details.AddChild(change); change.Disabled = human is null;
-        change.Pressed += () => { if (human is not null) show_character_equipment_picker(human, selected.slot, selected.path); };
-
-        var overview = CharacterBox(CharacterPanel(page, 788, 483, 562, 312), "灵识与器蕴");
-        overview.AddChild(CharacterText($"当前占用    {human?.used_spirit_perception ?? 0} / {human?.max_spirit_perception ?? 0}", 24));
-        var bar = WorldHudStyle.Bar(WorldHudStyle.StaminaInk); bar.MaxValue = Math.Max(1, human?.max_spirit_perception ?? 0); bar.Value = human?.used_spirit_perception ?? 0; overview.AddChild(bar);
-        var rows = CharacterBox(CharacterScroll(overview));
-        CharacterHover(bar, "灵识", "装备与化法不额外占用灵识。器体在场持续占用；主动施法另需临时占用，结束后释放。");
-        rows.AddChild(CharacterParagraph(human?.get_artifact_bonds().Description ?? "暂无器蕴贡献。", 18, true));
-        var legacy = data is not null && (!string.IsNullOrEmpty(data.headwear_path) || !string.IsNullOrEmpty(data.footwear_path) || human!.get_artifact_items().Any(item => !ForgedArtifactInventory.IsForged(item) && human.is_artifact_equipped(item.instance_id)));
-        if (legacy && human is not null)
-        {
-            var previous = CharacterButton("查看旧版装备  ›", 18); rows.AddChild(previous);
-            previous.Pressed += () => show_character_legacy_equipment(human);
-        }
-    }
-
-    private void show_character_legacy_equipment(Character human)
-    {
-        if (human.entity_data is not HumanData data) return;
-        var entries = new List<(string Name, Action Open)>();
-        foreach (var entry in new[] { (Name: "头冠", Path: data.headwear_path, Slot: "headwear"), (Name: "足履", Path: data.footwear_path, Slot: "footwear") })
-            if (!string.IsNullOrEmpty(entry.Path)) entries.Add((entry.Name, () => show_character_equipment_picker(human, entry.Slot, entry.Path)));
-        foreach (var artifact in human.get_artifact_items().Where(item => !ForgedArtifactInventory.IsForged(item) && human.is_artifact_equipped(item.instance_id)))
-            entries.Add((artifact.artifact_name + " · " + artifact.instance_id, () => show_character_artifact_picker(human, artifact)));
-        CharacterChoose("旧版装备", entries.Select(entry => entry.Name), value => entries.First(entry => entry.Name == value).Open());
+        build_equipment_totals(page, human);
+        build_equipment_bonds(page, human);
+        build_equipment_supplies(page, human);
     }
 
     private void show_character_equipment_picker(Character human, string slot, string current)

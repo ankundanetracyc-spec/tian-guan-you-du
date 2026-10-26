@@ -4,6 +4,8 @@ using Godot.Collections;
 /// <summary>人类角色的持久化数据，供世界、生成器与战斗场景共同使用。</summary>
 public partial class HumanData : LivingData
 {
+    [Export] public Array<string> alchemy_records = [];
+    [Export] public Array<string> forging_records = [];
     [Export] public Array<CombatSkillReference> combat_skill_references = [];
     /// <summary>化法稳定来源 ID → 玩家明确选择的原始技能标识；不绑定槽位序号。</summary>
     [Export] public Godot.Collections.Dictionary<string, string> skill_rewrite_bindings = new();
@@ -42,6 +44,18 @@ public partial class HumanData : LivingData
     [Export] public string sect_admission_guide_npc_id = "";
     /// <summary>玉虚正式录籍的绝对游戏时辰；未知或旧存档为 -1。</summary>
     [Export] public long sect_entry_total_game_hours = -1;
+    /// <summary>真传讲席下次开放时辰；旧档首次接入时对齐到当前周期，不追溯记缺。</summary>
+    [Export] public long sect_true_disciple_lecture_next_due_hour = -1;
+    /// <summary>真传最近一次讲席到场时辰；-1 表示尚未到场。</summary>
+    [Export] public long sect_true_disciple_lecture_last_attended_hour = -1;
+    /// <summary>连续申请并获准免赴的真传讲席期数；到场或缺席后归零，最多允许连续两期。</summary>
+    [Export] public int sect_true_disciple_lecture_consecutive_leave_count;
+    /// <summary>最近一次真传讲席请假申请时辰。</summary>
+    [Export] public long sect_true_disciple_lecture_last_leave_hour = -1;
+    /// <summary>真传未在本期结束前开设讲席的累计缺席记档；作为师门履职声誉记录，不折算为百川区域声望。</summary>
+    [Export] public int sect_true_disciple_lecture_missed_count;
+    /// <summary>最近一次真传讲席缺席记档对应的期末时辰。</summary>
+    [Export] public long sect_true_disciple_lecture_last_missed_hour = -1;
     /// <summary>玉虚真传当前师父与带教师兄/师姐的稳定世界人物 ID。</summary>
     [Export] public string sect_teacher_npc_id = "";
     [Export] public string sect_guide_npc_id = "";

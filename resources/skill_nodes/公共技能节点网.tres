@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SkillNodeNetworkConfig" load_steps=12 format=3]
+[gd_resource type="Resource" script_class="SkillNodeNetworkConfig" load_steps=13 format=3]
 
 [ext_resource type="Script" path="res://csharp/gongfa/SkillNodeNetworkConfig.cs" id="1_network"]
 [ext_resource type="Script" path="res://csharp/gongfa/SkillNodeConfig.cs" id="2_node"]
@@ -69,7 +69,17 @@ face_id = "sword"
 required_attributes = { "physique": 6.0, "sword_proficiency": 6.0 }
 graph_position = Vector2(450, 630)
 
+[sub_resource type="Resource" id="SpiritStrikeNode"]
+script = ExtResource("2_node")
+node_id = "spirit_strike_root"
+node_name = "灵息成击"
+description = "凝聚灵息，以灵慧与术法造诣驱动远程物理冲击。参悟后习得灵击。"
+skill_path = "res://resources/activeskills/灵击.tres"
+face_id = "gather_qi"
+required_attributes = { "intelligence": 8.0, "magic_proficiency": 6.0 }
+graph_position = Vector2(450, 430)
+
 [resource]
 script = ExtResource("1_network")
 faces = Array[Resource]([SubResource("BloodFace"), SubResource("QiFace"), SubResource("NianFace"), SubResource("SwordFace")])
-nodes = Array[Resource]([SubResource("BloodNode"), SubResource("QiNode"), SubResource("NianNode"), SubResource("SwordCutNode")])
+nodes = Array[Resource]([SubResource("BloodNode"), SubResource("QiNode"), SubResource("NianNode"), SubResource("SwordCutNode"), SubResource("SpiritStrikeNode")])
