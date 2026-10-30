@@ -801,7 +801,7 @@ public partial class Character : Creature
         return encoded.Split('_').Where(value=>value is "METAL" or "WOOD" or "WATER" or "FIRE" or "EARTH").ToArray();
     }
     private float get_root_quality_multiplier()=>get_effective_root_elements().Length switch{1=>2.55f,2=>1.38f,3=>1f,4=>.58f,5=>.35f,_=>0f};
-    private float get_realm_cultivation_multiplier()=>get_realm_cultivation_multiplier_for_tier(get_realm_tier());
+    public float get_realm_cultivation_multiplier()=>get_realm_cultivation_multiplier_for_tier(get_realm_tier());
     public static float get_realm_cultivation_multiplier_for_tier(int tier)=>tier switch{1=>1f,2=>1.04f,3=>1.08f,4=>1.13f,5=>1.18f,6=>1.24f,7=>1.31f,8=>1.38f,9=>1.46f,10=>1.55f,11=>1.65f,12=>1.76f,13=>1.88f,_=>1f};
     private float get_realm_required_lingqi_pressure()=>get_realm_tier() switch{1=>100f,2=>108f,3=>116f,4=>124f,5=>132f,6=>140f,7=>150f,8=>160f,9=>170f,10=>180f,11=>188f,12=>195f,13=>200f,_=>100f};
     public float get_realm_required_lingqi_pressure_for_ui()=>get_realm_required_lingqi_pressure();
@@ -1147,13 +1147,15 @@ public partial class Character : Creature
         human.sword_proficiency = human.base_sword_proficiency; human.blade_proficiency = human.base_blade_proficiency; human.spear_proficiency = human.base_spear_proficiency;
         human.body_proficiency = human.base_body_proficiency; human.magic_proficiency = human.base_magic_proficiency; human.forging_proficiency = human.base_forging_proficiency;
         human.talisman_proficiency = human.base_talisman_proficiency; human.formation_proficiency = human.base_formation_proficiency; human.alchemy_proficiency = human.base_alchemy_proficiency;
+        ResetAttributeCalculations();
         foreach (var book in new[] { main_gongfa }.Concat(sub_gongfa_list))
         {
             if (book is null) continue; var isMain = book == main_gongfa;
             foreach (var chapter in book.get_sorted_chapters())
             {
                 if (!is_gongfa_chapter_learned(book, chapter.get_id())) continue;
-                foreach (Variant key in chapter.get_naqi_bonuses(isMain).Keys) apply_runtime_gongfa_bonus(key.AsString(), chapter.get_naqi_bonuses(isMain)[key].AsSingle());
+                using (TraceAttributeSource($"{book.gongfa_name}·{chapter.chapter_name}"))
+                    foreach (Variant key in chapter.get_naqi_bonuses(isMain).Keys) apply_runtime_gongfa_bonus(key.AsString(), chapter.get_naqi_bonuses(isMain)[key].AsSingle());
             }
         }
         human.mana_regen_rate = human.base_mana_regen_rate * get_gongfa_naqi_multiplier("mana_regen_rate");
@@ -1164,9 +1166,10 @@ public partial class Character : Creature
         foreach (var path in new[] { human.weapon_path })
             if (!string.IsNullOrWhiteSpace(path))
             if (ResourceLoader.Load<EquipmentData>(path) is { } equipment && equipment.definition_id.ToString().StartsWith("sect_sword_", StringComparison.Ordinal))
+                using (TraceAttributeSource(equipment.entity_name))
                 foreach (Variant key in equipment.fixed_bonuses.Keys)
                     apply_runtime_gongfa_bonus(key.AsString(), equipment.fixed_bonuses[key].AsSingle());
-        apply_artifact_bond_defense();
+        TraceArtifactBondDefense(apply_artifact_bond_defense);
     }
 
     private void apply_body_refinement_rewards()
@@ -1174,6 +1177,7 @@ public partial class Character : Creature
         if (human is null) return;
         foreach (var part in BodyRefinementRules.Parts)
         {
+            using var attributeSource = TraceAttributeSource("炼体·" + BodyRefinementRules.GetName(part));
             var progress = human.body_refinement_progress.GetValueOrDefault(part, 0f).AsSingle();
             var reward = BodyRefinementRules.GetReward(part, BodyRefinementRules.GetLevel(part, progress));
             physical_defense += reward.PhysicalDefense;

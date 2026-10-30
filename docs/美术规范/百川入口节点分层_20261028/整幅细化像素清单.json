@@ -1,0 +1,495 @@
+{
+  "method": "single_composition_integrated_scene_refinement",
+  "worldPixels": [
+    6144,
+    6144
+  ],
+  "sourceCompositionPixels": [
+    1254,
+    1254
+  ],
+  "sourceMaster": "开阔舆图母图_无桥_v4_增岭来河.png",
+  "nativeRegions": [
+    {
+      "id": "r1c1",
+      "nativeRefinement": true,
+      "sourcePixels": [
+        1254,
+        1254
+      ],
+      "framePixels": [
+        1254,
+        1254
+      ],
+      "coreRect": [
+        0,
+        0,
+        1229,
+        1229
+      ],
+      "source": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v3\\refined\\r1c1.png"
+    },
+    {
+      "id": "r1c2",
+      "nativeRefinement": true,
+      "sourcePixels": [
+        1254,
+        1254
+      ],
+      "framePixels": [
+        1254,
+        1254
+      ],
+      "coreRect": [
+        1229,
+        0,
+        1229,
+        1229
+      ],
+      "source": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v3\\refined\\r1c2.png"
+    },
+    {
+      "id": "r1c3",
+      "nativeRefinement": true,
+      "sourcePixels": [
+        1254,
+        1254
+      ],
+      "framePixels": [
+        1254,
+        1254
+      ],
+      "coreRect": [
+        2458,
+        0,
+        1228,
+        1229
+      ],
+      "source": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v3\\refined\\r1c3.png"
+    },
+    {
+      "id": "r1c4",
+      "nativeRefinement": true,
+      "sourcePixels": [
+        1254,
+        1254
+      ],
+      "framePixels": [
+        1254,
+        1254
+      ],
+      "coreRect": [
+        3686,
+        0,
+        1229,
+        1229
+      ],
+      "source": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v3\\refined\\r1c4.png"
+    },
+    {
+      "id": "r1c5",
+      "nativeRefinement": true,
+      "sourcePixels": [
+        1254,
+        1254
+      ],
+      "framePixels": [
+        1254,
+        1254
+      ],
+      "coreRect": [
+        4915,
+        0,
+        1229,
+        1229
+      ],
+      "source": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v3\\refined\\r1c5.png"
+    },
+    {
+      "id": "r2c1",
+      "nativeRefinement": true,
+      "sourcePixels": [
+        1254,
+        1254
+      ],
+      "framePixels": [
+        1254,
+        1254
+      ],
+      "coreRect": [
+        0,
+        1229,
+        1229,
+        1229
+      ],
+      "source": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v3\\refined\\r2c1.png"
+    },
+    {
+      "id": "r2c2",
+      "nativeRefinement": true,
+      "sourcePixels": [
+        1254,
+        1254
+      ],
+      "framePixels": [
+        1254,
+        1254
+      ],
+      "coreRect": [
+        1229,
+        1229,
+        1229,
+        1229
+      ],
+      "source": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v3\\refined\\r2c2.png"
+    },
+    {
+      "id": "r2c3",
+      "nativeRefinement": true,
+      "sourcePixels": [
+        1254,
+        1254
+      ],
+      "framePixels": [
+        1254,
+        1254
+      ],
+      "coreRect": [
+        2458,
+        1229,
+        1228,
+        1229
+      ],
+      "source": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v3\\refined\\r2c3.png"
+    },
+    {
+      "id": "r2c4",
+      "nativeRefinement": true,
+      "sourcePixels": [
+        1254,
+        1254
+      ],
+      "framePixels": [
+        1254,
+        1254
+      ],
+      "coreRect": [
+        3686,
+        1229,
+        1229,
+        1229
+      ],
+      "source": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v3\\refined\\r2c4.png"
+    },
+    {
+      "id": "r2c5",
+      "nativeRefinement": true,
+      "sourcePixels": [
+        1254,
+        1254
+      ],
+      "framePixels": [
+        1254,
+        1254
+      ],
+      "coreRect": [
+        4915,
+        1229,
+        1229,
+        1229
+      ],
+      "source": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v3\\refined\\r2c5.png"
+    },
+    {
+      "id": "r3c1",
+      "nativeRefinement": true,
+      "sourcePixels": [
+        1254,
+        1254
+      ],
+      "framePixels": [
+        1254,
+        1254
+      ],
+      "coreRect": [
+        0,
+        2458,
+        1229,
+        1228
+      ],
+      "source": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v3\\refined\\r3c1.png"
+    },
+    {
+      "id": "r3c2",
+      "nativeRefinement": true,
+      "sourcePixels": [
+        1254,
+        1254
+      ],
+      "framePixels": [
+        1254,
+        1254
+      ],
+      "coreRect": [
+        1229,
+        2458,
+        1229,
+        1228
+      ],
+      "source": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v3\\refined\\r3c2.png"
+    },
+    {
+      "id": "r3c3",
+      "nativeRefinement": true,
+      "sourcePixels": [
+        1254,
+        1254
+      ],
+      "framePixels": [
+        1254,
+        1254
+      ],
+      "coreRect": [
+        2458,
+        2458,
+        1228,
+        1228
+      ],
+      "source": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v3\\refined\\r3c3.png"
+    },
+    {
+      "id": "r3c4",
+      "nativeRefinement": true,
+      "sourcePixels": [
+        1254,
+        1254
+      ],
+      "framePixels": [
+        1254,
+        1254
+      ],
+      "coreRect": [
+        3686,
+        2458,
+        1229,
+        1228
+      ],
+      "source": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v3\\refined\\r3c4.png"
+    },
+    {
+      "id": "r3c5",
+      "nativeRefinement": true,
+      "sourcePixels": [
+        1254,
+        1254
+      ],
+      "framePixels": [
+        1254,
+        1254
+      ],
+      "coreRect": [
+        4915,
+        2458,
+        1229,
+        1228
+      ],
+      "source": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v3\\refined\\r3c5.png"
+    },
+    {
+      "id": "r4c1",
+      "nativeRefinement": true,
+      "sourcePixels": [
+        1254,
+        1254
+      ],
+      "framePixels": [
+        1254,
+        1254
+      ],
+      "coreRect": [
+        0,
+        3686,
+        1229,
+        1229
+      ],
+      "source": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v3\\refined\\r4c1.png"
+    },
+    {
+      "id": "r4c2",
+      "nativeRefinement": true,
+      "sourcePixels": [
+        1254,
+        1254
+      ],
+      "framePixels": [
+        1254,
+        1254
+      ],
+      "coreRect": [
+        1229,
+        3686,
+        1229,
+        1229
+      ],
+      "source": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v3\\refined\\r4c2.png"
+    },
+    {
+      "id": "r4c3",
+      "nativeRefinement": true,
+      "sourcePixels": [
+        1254,
+        1254
+      ],
+      "framePixels": [
+        1254,
+        1254
+      ],
+      "coreRect": [
+        2458,
+        3686,
+        1228,
+        1229
+      ],
+      "source": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v3\\refined\\r4c3.png"
+    },
+    {
+      "id": "r4c4",
+      "nativeRefinement": true,
+      "sourcePixels": [
+        1254,
+        1254
+      ],
+      "framePixels": [
+        1254,
+        1254
+      ],
+      "coreRect": [
+        3686,
+        3686,
+        1229,
+        1229
+      ],
+      "source": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v3\\refined\\r4c4.png"
+    },
+    {
+      "id": "r4c5",
+      "nativeRefinement": true,
+      "sourcePixels": [
+        1254,
+        1254
+      ],
+      "framePixels": [
+        1254,
+        1254
+      ],
+      "coreRect": [
+        4915,
+        3686,
+        1229,
+        1229
+      ],
+      "source": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v3\\refined\\r4c5.png"
+    },
+    {
+      "id": "r5c1",
+      "nativeRefinement": true,
+      "sourcePixels": [
+        1254,
+        1254
+      ],
+      "framePixels": [
+        1254,
+        1254
+      ],
+      "coreRect": [
+        0,
+        4915,
+        1229,
+        1229
+      ],
+      "source": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v3\\refined\\r5c1.png"
+    },
+    {
+      "id": "r5c2",
+      "nativeRefinement": true,
+      "sourcePixels": [
+        1254,
+        1254
+      ],
+      "framePixels": [
+        1254,
+        1254
+      ],
+      "coreRect": [
+        1229,
+        4915,
+        1229,
+        1229
+      ],
+      "source": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v3\\refined\\r5c2.png"
+    },
+    {
+      "id": "r5c3",
+      "nativeRefinement": true,
+      "sourcePixels": [
+        1254,
+        1254
+      ],
+      "framePixels": [
+        1254,
+        1254
+      ],
+      "coreRect": [
+        2458,
+        4915,
+        1228,
+        1229
+      ],
+      "source": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v3\\refined\\r5c3.png"
+    },
+    {
+      "id": "r5c4",
+      "nativeRefinement": true,
+      "sourcePixels": [
+        1254,
+        1254
+      ],
+      "framePixels": [
+        1254,
+        1254
+      ],
+      "coreRect": [
+        3686,
+        4915,
+        1229,
+        1229
+      ],
+      "source": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v3\\refined\\r5c4.png"
+    },
+    {
+      "id": "r5c5",
+      "nativeRefinement": true,
+      "sourcePixels": [
+        1254,
+        1254
+      ],
+      "framePixels": [
+        1254,
+        1254
+      ],
+      "coreRect": [
+        4915,
+        4915,
+        1229,
+        1229
+      ],
+      "source": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v3\\refined\\r5c5.png"
+    }
+  ],
+  "productionTiles": [
+    2048,
+    2048,
+    9
+  ],
+  "standaloneTerrainSprites": 0
+}

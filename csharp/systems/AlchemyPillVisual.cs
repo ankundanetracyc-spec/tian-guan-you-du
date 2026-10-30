@@ -90,6 +90,6 @@ public static class AlchemyPillVisual
     {
         var icon = !string.IsNullOrWhiteSpace(item.icon_path) && ResourceLoader.Exists(item.icon_path) ? GD.Load<Texture2D>(item.icon_path) : null;
         return HoverInfoManager.Structured(name, icon, "", new("", fields), new("", "简介：" + introduction))
-            with { CardWidth = 340f, IconSize = 96f, ShowRules = false };
+            with { CardWidth = 340f, IconSize = 96f, ShowRules = false, Footprint = item.get_inventory_size() };
     }
 }

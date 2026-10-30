@@ -232,12 +232,12 @@ public partial class YuxuSectExchangePanel : Control
         _itemGrid = new GridContainer
         {
             Name = "ItemGrid",
-            Columns = 8,
+            Columns = 1,
             SizeFlagsHorizontal = SizeFlags.ExpandFill,
             MouseFilter = MouseFilterEnum.Pass,
         };
         _itemGrid.AddThemeConstantOverride("h_separation", 8);
-        _itemGrid.AddThemeConstantOverride("v_separation", 10);
+        _itemGrid.AddThemeConstantOverride("v_separation", 6);
         scroll.AddChild(_itemGrid);
     }
 
@@ -471,19 +471,10 @@ public partial class YuxuSectExchangePanel : Control
 
     private Control create_item_card(CatalogEntry entry)
     {
-        var cell = new VBoxContainer
-        {
-            Name = $"ItemCell_{entry.Item.definition_id}",
-            CustomMinimumSize = new Vector2(144, 0),
-            SizeFlagsHorizontal = SizeFlags.ExpandFill,
-            MouseFilter = MouseFilterEnum.Ignore,
-        };
-        cell.AddThemeConstantOverride("separation", 4);
-
         var card = new Button
         {
             Name = $"Item_{entry.Item.definition_id}",
-            CustomMinimumSize = new Vector2(144, 132),
+            CustomMinimumSize = new Vector2(0, 88),
             SizeFlagsHorizontal = SizeFlags.ExpandFill,
             MouseFilter = MouseFilterEnum.Stop,
             FocusMode = FocusModeEnum.None,
@@ -493,50 +484,80 @@ public partial class YuxuSectExchangePanel : Control
         card.AddThemeStyleboxOverride("pressed", card_style(true, true));
         card.Pressed += () => open_purchase_dialog(entry);
 
-        var iconCenter = new CenterContainer
+        var row = new HBoxContainer
         {
+            Name = "ExchangeItemRow",
             SizeFlagsHorizontal = SizeFlags.ExpandFill,
-            SizeFlagsVertical = SizeFlags.ExpandFill,
             MouseFilter = MouseFilterEnum.Ignore,
         };
-        iconCenter.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
-        iconCenter.OffsetLeft = 5;
-        iconCenter.OffsetTop = 5;
-        iconCenter.OffsetRight = -5;
-        iconCenter.OffsetBottom = -5;
+        row.AddThemeConstantOverride("separation", 18);
+        card.AddChild(row);
+        row.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        row.OffsetLeft = 16;
+        row.OffsetTop = 8;
+        row.OffsetRight = -16;
+        row.OffsetBottom = -8;
 
         var iconPath = entry.Item.icon_path;
         var icon = !string.IsNullOrWhiteSpace(iconPath) && ResourceLoader.Exists(iconPath)
             ? ResourceLoader.Load<Texture2D>(iconPath)
             : null;
-        if (icon is not null)
+        var iconView = new TextureRect
         {
-            var texture = new TextureRect
-            {
-                Texture = icon,
-                CustomMinimumSize = entry.Item is EquipmentData or SectArtifactOfferData ? new Vector2(112, 112) : new Vector2(58, 70),
-                ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
-                StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
-                MouseFilter = MouseFilterEnum.Ignore,
-            };
-            iconCenter.AddChild(texture);
-        }
-        HoverInfoManager.SetInfo(card, MaterialItemPresentation.IsMaterial(entry.Item) || AlchemyPillVisual.IsPill(entry.Item) || ManualItemPresentation.IsManual(entry.Item)
-            ? StoragePanel.ItemHover(entry.Item) : new HoverInfoManager.HoverInfoContent(
-            entry.Item.entity_name,
-            entry.Description,
-            icon,
-            format_exchange_cost(entry.ContributionCost)));
-        card.AddChild(iconCenter);
+            Name = "ItemIcon",
+            ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
+            StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
+            Texture = icon,
+            CustomMinimumSize = new Vector2(64, 64),
+            SizeFlagsVertical = SizeFlags.ShrinkCenter,
+            MouseFilter = MouseFilterEnum.Ignore,
+        };
+        row.AddChild(iconView);
 
-        var name = make_label(entry.Item.entity_name, 19, new Color("302b22"));
-        name.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-        name.CustomMinimumSize = new Vector2(0, 48);
-        name.MouseFilter = MouseFilterEnum.Ignore;
+        var identity = new VBoxContainer
+        {
+            Name = "ItemIdentity",
+            SizeFlagsHorizontal = SizeFlags.ExpandFill,
+            SizeFlagsVertical = SizeFlags.ShrinkCenter,
+            MouseFilter = MouseFilterEnum.Ignore,
+        };
+        identity.AddThemeConstantOverride("separation", 4);
+        var name = make_label(entry.Item.entity_name, 22, new Color("302b22"));
+        name.Name = "ItemName";
+        name.HorizontalAlignment = HorizontalAlignment.Left;
+        name.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+        name.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
+        name.ClipText = true;
+        var meta = make_label(string.IsNullOrWhiteSpace(entry.FilterLabel)
+            ? entry.Category : $"{entry.Category} · {entry.FilterLabel}", 16, new Color("697267"));
+        meta.Name = "ItemCategoryAndGrade";
+        meta.HorizontalAlignment = HorizontalAlignment.Left;
+        meta.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
+        meta.ClipText = true;
+        identity.AddChild(name);
+        identity.AddChild(meta);
+        row.AddChild(identity);
 
-        cell.AddChild(card);
-        cell.AddChild(name);
-        return cell;
+        var price = make_label(entry.ContributionCost == 0 ? "无需贡献" : $"{entry.ContributionCost:N0} 贡献", 21,
+            entry.ContributionCost == 0 ? new Color("46685e") : new Color("655437"));
+        price.Name = "ContributionPrice";
+        price.CustomMinimumSize = new Vector2(170, 0);
+        price.HorizontalAlignment = HorizontalAlignment.Right;
+        row.AddChild(price);
+
+        var action = new PanelContainer
+        {
+            Name = "ExchangeAction",
+            CustomMinimumSize = new Vector2(92, 40),
+            SizeFlagsVertical = SizeFlags.ShrinkCenter,
+            MouseFilter = MouseFilterEnum.Ignore,
+        };
+        action.AddThemeStyleboxOverride("panel", filter_style(false));
+        action.AddChild(make_label("兑换", 19, new Color("342f25")));
+        row.AddChild(action);
+
+        HoverInfoManager.SetInfo(card, StoragePanel.ItemHover(entry.Item));
+        return card;
     }
 
     private void open_purchase_dialog(CatalogEntry entry)

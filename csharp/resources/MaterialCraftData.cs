@@ -11,6 +11,8 @@ public partial class MaterialCraftData : Resource
     /// <summary>兼容旧材类筛选与炼丹测试参数索引；不显示为当前材料分类。</summary>
     [Export] public string legacy_texture = "";
     [Export] public Array<MaterialUtilityGrade> utilities = [];
+    /// <summary>可选的炼器加工档案；缺省不具备已定义的炼器用途。</summary>
+    [Export] public MaterialForgingData? forging;
 
     public float material_score()
     {

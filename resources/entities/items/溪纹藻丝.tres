@@ -8,7 +8,7 @@ script = ExtResource("1")
 definition_id = &"mat_streampattern_algae_fiber"
 entity_name = "溪纹藻丝"
 description = "溪底水藻抽成的青色长丝，丝面留有细密水纹。"
-icon_path = "res://textures/items/item_streampattern_algae_fiber.png"
+icon_path = "res://textures/items/inventory_density_20261029/mat_streampattern_algae_fiber.png"
 item_category = "材料"
 item_subcategory = "灵植"
 tags = Array[String](["五行[水]", "质地[纤维]", "功用[通]", "相性[和]"])
@@ -17,3 +17,6 @@ can_stack = true
 max_stack = 999
 craft_data = ExtResource("2")
 
+inventory_width = 2
+inventory_height = 4
+inventory_can_rotate = true

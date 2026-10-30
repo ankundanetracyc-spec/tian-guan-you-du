@@ -98,7 +98,6 @@ public partial class StorageItemSlot : Control
         {
             icon_rect.Texture = load_icon(item_data);
             icon_rect.Material = null;
-            if (item_data is PillItemData pill) AlchemyPillVisual.Apply(icon_rect, pill.efficacy_tier, pill.pill_id);
         }
         update_slot_tint();
     }

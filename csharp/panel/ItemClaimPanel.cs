@@ -197,14 +197,23 @@ public partial class ItemClaimPanel : CanvasLayer
         var scrollPosition = _claimScroll?.ScrollVertical ?? _restoreClaimScroll;
         _restoreClaimScroll = 0;
         clear_page();
-        var rows = Math.Clamp((_items.Count + 5) / 6, 1, 3);
+        var rows = Math.Clamp(_items.Count, 1, 6);
         var selected = _items.Where(item => item.Selected).ToList();
         var hasStatus = selected.Count == 0 || required_new_slots(selected) > (_recipient?.get_inventory_free_slot_count() ?? 0);
-        set_page_layout(new Vector2(1000, 176 + rows * 158 + (hasStatus ? 32 : 0)), false);
+        set_page_layout(new Vector2(1000, 176 + rows * 96 + (hasStatus ? 32 : 0)), false);
 
         var heading = text(_items.Count == 0 ? title : "获得物品", 34, Ink);
         heading.HorizontalAlignment = HorizontalAlignment.Center;
         place(heading, _page, 180, 23, 640, 46);
+
+        var allSelected = _items.All(item => item.Selected);
+        var selectAll = make_action_button(_page, allSelected ? "取消全选" : "全选", new(30, 28), new(122, 38), false, () =>
+        {
+            foreach (var item in _items) item.Selected = !allSelected;
+            build_claim_page("获得物品");
+        });
+        selectAll.Name = "ClaimSelectAll";
+        selectAll.AddThemeFontSizeOverride("font_size", 18);
 
         var totalKinds = text($"共 {_items.Count} 种", 18, SecondaryInk);
         totalKinds.HorizontalAlignment = HorizontalAlignment.Right;
@@ -219,28 +228,29 @@ public partial class ItemClaimPanel : CanvasLayer
             ClipContents = true,
             MouseFilter = Control.MouseFilterEnum.Stop
         };
-        place(scroll, _page, 30, 90, 940, rows * 158 - 10);
+        place(scroll, _page, 30, 90, 940, rows * 96 - 8);
         _claimScroll = scroll;
         style_scrollbar(scroll.GetVScrollBar());
         var grid = new GridContainer
         {
             Name = "ClaimItemGrid",
-            Columns = 6,
+            Columns = 1,
             CustomMinimumSize = new Vector2(918, 0),
             SizeFlagsHorizontal = Control.SizeFlags.ShrinkBegin
         };
-        grid.AddThemeConstantOverride("h_separation", 6);
-        grid.AddThemeConstantOverride("v_separation", 10);
+        grid.AddThemeConstantOverride("v_separation", 8);
         scroll.AddChild(grid);
 
         foreach (var item in _items)
         {
-            var card = build_item_card(item.Data, item.Count, item.Selected,
-                148, 148, () =>
+            var sources = item.Entries.Select(entry => entry.GetValueOrDefault("source", "").AsString())
+                .Where(source => !string.IsNullOrWhiteSpace(source)).Distinct().ToArray();
+            var card = build_item_card(item.Data.entity_name, load_icon(item.Data.icon_path), item.Count, item.Selected,
+                918, 88, item.Data, () =>
                 {
                     item.Selected = !item.Selected;
                     build_claim_page("获得物品");
-                });
+                }, sources.Length == 0 ? "" : "来源：" + string.Join("、", sources));
             grid.AddChild(card);
             set_card_hover(card, item_hover(item.Data, item.Count, item.Entries));
         }
@@ -344,13 +354,12 @@ public partial class ItemClaimPanel : CanvasLayer
         var leftScroll = create_scroll("PackDiscardSourceScroll");
         place(leftScroll, _page, 52, 180, 654, 714);
         style_scrollbar(leftScroll.GetVScrollBar());
-        var leftGrid = new GridContainer { Columns = 5, CustomMinimumSize = new Vector2(630, 0), SizeFlagsHorizontal = Control.SizeFlags.ExpandFill };
-        leftGrid.AddThemeConstantOverride("h_separation", 10);
-        leftGrid.AddThemeConstantOverride("v_separation", 10);
+        var leftGrid = new GridContainer { Name = "PackSourceList", Columns = 1, CustomMinimumSize = new Vector2(630, 0), SizeFlagsHorizontal = Control.SizeFlags.ShrinkBegin };
+        leftGrid.AddThemeConstantOverride("v_separation", 8);
         leftScroll.AddChild(leftGrid);
         foreach (var entry in _packEntries.ToArray())
         {
-            var card = build_item_card(entry.Name, entry.Icon, entry.Count, false, 118, 148, entry.Item, () =>
+            var card = build_item_card(entry.Name, entry.Icon, entry.Count, false, 630, 88, entry.Item, () =>
             {
                 _packEntries.Remove(entry);
                 _discardEntries.Add(entry);
@@ -363,13 +372,12 @@ public partial class ItemClaimPanel : CanvasLayer
         var rightScroll = create_scroll("PendingDiscardItemsScroll");
         place(rightScroll, _page, 966, 180, 654, 714);
         style_scrollbar(rightScroll.GetVScrollBar());
-        var rightGrid = new GridContainer { Columns = 5, CustomMinimumSize = new Vector2(630, 0), SizeFlagsHorizontal = Control.SizeFlags.ExpandFill };
-        rightGrid.AddThemeConstantOverride("h_separation", 10);
-        rightGrid.AddThemeConstantOverride("v_separation", 10);
+        var rightGrid = new GridContainer { Name = "PendingDiscardList", Columns = 1, CustomMinimumSize = new Vector2(630, 0), SizeFlagsHorizontal = Control.SizeFlags.ShrinkBegin };
+        rightGrid.AddThemeConstantOverride("v_separation", 8);
         rightScroll.AddChild(rightGrid);
         foreach (var entry in _discardEntries.ToArray())
         {
-            var card = build_item_card(entry.Name, entry.Icon, entry.Count, true, 118, 148, entry.Item, () =>
+            var card = build_item_card(entry.Name, entry.Icon, entry.Count, true, 630, 88, entry.Item, () =>
             {
                 _discardEntries.Remove(entry);
                 _packEntries.Add(entry);
@@ -389,6 +397,7 @@ public partial class ItemClaimPanel : CanvasLayer
         direction.HorizontalAlignment = HorizontalAlignment.Center;
         place(direction, _page, 746, 230, 180, 70);
         var confirm = make_action_button(_page, "确认丢弃", new(744, 470), new(184, 54), true, discard_and_return_to_claim);
+        confirm.Name = "ClaimDiscardConfirm";
         confirm.Disabled = _discardEntries.Count == 0;
     }
 
@@ -530,66 +539,79 @@ public partial class ItemClaimPanel : CanvasLayer
         return build_item_card(item.entity_name, load_icon(item.icon_path), count, selected, width, height, item, clicked);
     }
 
-    private Control build_item_card(string name, Texture2D? icon, int count, bool selected, float width, float height, ItemData? item, Action clicked)
+    private Control build_item_card(string name, Texture2D? icon, int count, bool selected, float width, float height, ItemData? item, Action clicked, string context = "")
     {
         var card = new Control
         {
             Name = "ItemCard",
             CustomMinimumSize = new Vector2(width, height),
+            Size = new Vector2(width, height),
             MouseFilter = Control.MouseFilterEnum.Pass
         };
         var frame = new InventoryPaperFrame { FillPaper = true };
         frame.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
         card.AddChild(frame);
 
-        var iconWidth = Math.Min(width - 24, 132);
         var iconRect = new TextureRect
         {
-            // 行囊格宽约156，扣除左右12边距后图标区域约132；领取卡保持这份
-            // 图标宽度，纵向按紧凑卡片可用空间收缩，绘制模式也与行囊相同。
-            Position = new Vector2((width - iconWidth) * 0.5f, 10),
-            Size = new Vector2(iconWidth, Math.Max(1, height - 72)),
-            Texture = icon,
+            Name = "ItemIcon",
             ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
             StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
-            MouseFilter = Control.MouseFilterEnum.Ignore
+            MouseFilter = Control.MouseFilterEnum.Ignore,
+            Texture = icon,
+            Position = new Vector2(10, 8),
+            Size = new Vector2(72, 72)
         };
-        iconRect.Material = null;
-        if (item is PillItemData pill) AlchemyPillVisual.Apply(iconRect, pill.efficacy_tier, pill.pill_id);
         card.AddChild(iconRect);
-        var quantityText = !_organizing ? "" : item is PillItemData
-            ? $" × {Math.Max(1, count)}"
-            : count > 1 ? $" * {count}" : "";
-        var displayName = text("", 20, Ink);
+
+        var titleWidth = Math.Max(80, width - 338);
+        var displayName = text(name, 22, Ink);
         displayName.Name = "ItemCaption";
-        var captionFont = displayName.GetThemeFont("font");
-        var captionSize = 20;
-        var availableWidth = width - 14;
-        var twoLines = quantityText.Length > 0 &&
-            captionFont.GetStringSize(name + quantityText, HorizontalAlignment.Left, -1, captionSize).X > availableWidth;
-        if (twoLines) captionSize = 18;
-        // 放不下时数量换至名称下一行并完整保留，只有名称本身允许省略。
-        while (captionSize > 12 && captionFont.GetStringSize(quantityText, HorizontalAlignment.Left, -1, captionSize).X > availableWidth)
-            captionSize--;
-        var shortenedName = name;
-        while (shortenedName.Length > 0 &&
-            captionFont.GetStringSize(shortenedName + (shortenedName == name ? "" : "…") + (twoLines ? "" : quantityText),
-                HorizontalAlignment.Left, -1, captionSize).X > availableWidth)
-        {
-            var elements = System.Globalization.StringInfo.ParseCombiningCharacters(shortenedName);
-            shortenedName = shortenedName[..elements[^1]];
-        }
-        displayName.Text = shortenedName + (shortenedName == name ? "" : "…") +
-            (twoLines ? "\n" + quantityText.TrimStart() : quantityText);
-        displayName.AddThemeFontSizeOverride("font_size", captionSize);
-        displayName.Position = new Vector2(5, height - 59);
-        displayName.Size = new Vector2(width - 10, 52);
-        displayName.HorizontalAlignment = HorizontalAlignment.Center;
-        displayName.AutowrapMode = TextServer.AutowrapMode.Off;
-        displayName.MaxLinesVisible = 2;
+        displayName.Position = new Vector2(96, 11);
+        displayName.Size = new Vector2(titleWidth, 32);
         card.AddChild(displayName);
 
-        // 选中状态复用行囊的玉色描边；不在原物品图上压复选标记。
+        var metadata = item_row_metadata(item);
+        if (!string.IsNullOrWhiteSpace(context)) metadata = string.IsNullOrWhiteSpace(metadata) ? context : metadata + " · " + context;
+        var identity = text(metadata, 17, SecondaryInk);
+        identity.Name = "ItemIdentity";
+        identity.Position = new Vector2(96, 46);
+        identity.Size = new Vector2(titleWidth, 26);
+        card.AddChild(identity);
+
+        var quantity = text($"× {Math.Max(1, count):N0}", 20, Ink);
+        quantity.Name = "ItemQuantity";
+        quantity.HorizontalAlignment = HorizontalAlignment.Right;
+        quantity.Position = new Vector2(width - 226, 12);
+        quantity.Size = new Vector2(140, 64);
+        card.AddChild(quantity);
+
+        if (_organizing)
+        {
+            var direction = text(selected ? "移回" : "移出", 19, Jade);
+            direction.Name = "ItemRowAction";
+            direction.HorizontalAlignment = HorizontalAlignment.Center;
+            direction.Position = new Vector2(width - 78, 12);
+            direction.Size = new Vector2(64, 64);
+            card.AddChild(direction);
+        }
+        else
+        {
+            var selection = new InventoryPaperFrame
+            {
+                Name = "ItemSelectionBox", FillPaper = false, Selected = selected,
+                Position = new Vector2(width - 49, 30), Size = new Vector2(28, 28)
+            };
+            card.AddChild(selection);
+            var check = text(selected ? "✓" : "", 21, Jade);
+            check.Name = "ItemSelectionMark";
+            check.HorizontalAlignment = HorizontalAlignment.Center;
+            check.Position = selection.Position;
+            check.Size = selection.Size;
+            card.AddChild(check);
+        }
+
+        // 选中描边与右侧勾选独立，不盖住物品图。
         frame.Selected = selected;
         frame.QueueRedraw();
 
@@ -601,6 +623,17 @@ public partial class ItemClaimPanel : CanvasLayer
         hit.Pressed += clicked;
         card.AddChild(hit);
         return card;
+    }
+
+    private static string item_row_metadata(ItemData? item)
+    {
+        if (item is null) return "器物";
+        if (item is PortraitClothingData clothing)
+            return "衣着 · " + (clothing.portrait_gender switch { "male" => "男修", "female" => "女修", "both" => "通用", _ => "未标注" });
+        var category = StoragePanel.category_of(item, item.ResourcePath);
+        var grade = item.craft_data is MaterialCraftData material ? material.material_grade_name()
+            : ManualItemPresentation.IsManual(item) ? "" : item.get_grade_string();
+        return string.Join(" · ", new[] { category, grade }.Where(value => !string.IsNullOrWhiteSpace(value)));
     }
 
     private static void set_card_hover(Control card, HoverInfoManager.HoverInfoContent content)
@@ -617,22 +650,19 @@ public partial class ItemClaimPanel : CanvasLayer
             return;
         }
         if (entry.Artifact is not { } artifact) return;
-        var subtitle = $"法宝 · {artifact.artifact_tier} · {(string.IsNullOrWhiteSpace(artifact.element) ? "五行未定" : artifact.element)}";
-        set_card_hover(card, new HoverInfoManager.HoverInfoContent(entry.Name,
-            $"耐久 {Math.Max(0, artifact.current_durability)}/{Math.Max(0, artifact.max_durability)}\n灵识 {Math.Max(0, artifact.spirit_cost)}",
-            entry.Icon, subtitle));
+        set_card_hover(card, EquipmentItemPresentation.Hover(artifact));
     }
 
     private HoverInfoManager.HoverInfoContent item_hover(ItemData item, int count, IEnumerable<GDictionary>? entries = null)
     {
         var content = StoragePanel.ItemHover(item, count, item.ResourcePath, _recipient);
-        if (MaterialItemPresentation.IsMaterial(item) || AlchemyPillVisual.IsPill(item) || ManualItemPresentation.IsManual(item)) return content;
+        if (item is PortraitClothingData || MaterialItemPresentation.IsMaterial(item) || AlchemyPillVisual.IsPill(item) || ManualItemPresentation.IsManual(item) || EquipmentItemPresentation.IsEquipment(item)) return content;
         var sourceNames = entries?.Select(value => value.GetValueOrDefault("source", "").AsString())
             .Where(value => !string.IsNullOrWhiteSpace(value)).Distinct().ToList() ?? [];
         if (sourceNames.Count == 0) return content;
         var sections = (content.Sections ?? new[] { new HoverInfoManager.HoverInfoSection("", content.Body) }).ToList();
         sections.Add(new("来源", string.Join("、", sourceNames)));
-        return HoverInfoManager.Structured(content.Title, content.Icon, content.Subtitle, sections.ToArray());
+        return content with { Sections = sections.ToArray(), Body = string.Join("\n\n", sections.Select(section => string.IsNullOrWhiteSpace(section.Title) ? section.Body : section.Title + "\n" + section.Body)) };
     }
 
     private static ScrollContainer create_scroll(string name) => new()

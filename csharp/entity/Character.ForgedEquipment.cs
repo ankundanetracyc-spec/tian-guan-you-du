@@ -30,6 +30,7 @@ public partial class Character
     private void apply_forged_equipment_base_bonuses()
     {
         if (get_equipped_forged_sword() is not { } item || !ForgedArtifactInventory.TryRead(item, out var snapshot)) return;
+        using var attributeSource = TraceAttributeSource(item.artifact_name);
         foreach (var effect in snapshot.Effects.Where(effect => effect.CarrierId == "base" && effect.AtomId == "physical_defense"))
             apply_runtime_gongfa_bonus("physical_defense", (float)effect.Value);
     }

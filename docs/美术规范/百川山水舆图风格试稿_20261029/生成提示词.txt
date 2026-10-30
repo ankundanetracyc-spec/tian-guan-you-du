@@ -1,0 +1,26 @@
+Use case: style-transfer.
+Asset type: ONE square hand-painted xianxia world-map STYLE STUDY, intended later to form a continuous 3-by-3 map. This is a single complete composition, NOT a nine-panel contact sheet. Output one 2048x2048 square image if possible.
+
+INPUTS:
+Image 1 is the PRIMARY PAINTING STYLE reference: the traditional landscape-map treatment visible in Phantom Blade Zero. Study the fine subdued ink outlines, irregular rock contours, gentle cun brush texture, restrained gray-green mineral washes, weathered silk/rice-paper ground, overlapping landforms, and buildings integrated into terrain. Discard its UI, text, icons, flames, smoke, narrative content and exact layout.
+Image 2 is the map to RESTYLE. Use ONLY its broad geographic arrangement: a long eastern seacoast, a river entering from the western edge around the middle, another entering from the southwest/western edge, connected inland river valleys and small lakes. Completely replace its repetitive pointed hill symbols, dark uniform conifer stamps, chunky outlines and isolated building-icon appearance with the landscape painting language of Image 1.
+
+PRIMARY REQUEST:
+Transform the entire map into a coherent Chinese shanshui atlas painting: fine-line ink and pale mineral color on softly aged warm gray-buff paper, in the same overall visual family as Image 1. It should feel like a hand-painted navigable landscape scroll seen from an elevated oblique / scattered perspective, rather than a flat arrangement of map stickers. A moderately loose concept study is enough: broad confident landform drawing and light brush washes, modest detail, coherent material texture. Not a highly polished scene or photoreal painting.
+
+COMPOSITION:
+Cover the square with a continuous world of branching asymmetric mountain masses, sloping foothills, saddles, winding broad valleys and connected level plains. Arrange varied low-to-medium ridges and a few more prominent rock masses into organic landscape systems that continue across the future nine regions. Let pale slopes taper and dissolve naturally into the plain. The middle must stay spacious enough for towns and readable travel. Do not build a continuous enclosing mountain wall along the north or west, and do not crowd the whole map into steep mountains. Avoid both giant featureless rectangles and identical isolated triangular hills. Quiet paper-colored valleys and passages between mountain groups provide breathing space.
+The long eastern coast and pale muted blue-gray/gray-green sea extend down most of the right side. Water is drawn as delicate banks and subtle flowing wash with just a few fine water lines, never a bright opaque blue ribbon. Both western rivers visibly continue beyond the left frame. Keep rivers and banks continuous through the composition.
+No sky or horizon: this is a full-bleed map surface, all areas belonging to the same map scale, not a cinematic landscape vista.
+
+PAINTING / TEXTURE:
+Very fine warm gray-brown ink, varied light line weight, elegant irregular rock contours and sparing cun strokes, with pale ochre, muted sage and gray-green washes. Depth comes from overlapping slopes and fading ink, not thick black borders or glossy shading. Paper is softly aged and unified across the WHOLE image: subtle fine fibers or silk grain, subdued buff rather than saturated yellow, no heavy mottling, grunge stains, cracked leather, visible tile exposure changes or vignetting.
+Small pine and mixed woodland groups are individually drawn with thin trunks and light varied foliage, flowing with the foothills and valley margins. Different clusters have different size, shape and density. Do not repeat identical triangular conifer symbols or form black forest walls. Ground remains quiet and clean, without scattered grass ticks and scratchy filler.
+Mountains, trees, water and architecture share the same ink density, granularity and subdued contrast. No object has the crisp digital outline or saturated detail of an independent game icon.
+
+SMALL ENTRANCES IN THE PAINTING:
+Include only a modest handful of representative sites for style evaluation, not all production nodes. A few simple roofed sect mountain GATES are genuinely supported by a continuous mountain shoulder or saddle, with mountain terrain visibly continuing beneath them. A few small CITY GATES and modest timber town entrances stand on broad connected LEVEL PLAIN, well away from tree crowns and trunks. Gates are naturally embedded in the painting at a small consistent map scale. Show entrances only, not complete monasteries, cities, courtyards, panoramas or giant buildings. Keep their drawing understated; landscape and architecture form one illustration.
+
+EXCLUSIONS:
+No visible 3x3 grid lines, panel borders, seams, parchment frame, calligraphy, Chinese labels, caption, legend, UI, markers, waypoint icons, path network, dashed routes, drawn mountain paths, stone stairs, steps, bridges, people, battles, fire or smoke. No copied composition or identifiable settlement from Image 1. No independent terrain sprites, sticker-like buildings, uniform yellow ground, repetitive mountain stamps, heavy black contours, cel shading or 3D rendering.
+Deliver ONLY the finished square landscape-map study.

@@ -8,7 +8,7 @@ script = ExtResource("1")
 definition_id = &"mat_mistheart_mushroom_core"
 entity_name = "雾心菌核"
 description = "菌丛深处结成的紧实菌核，外层潮润，内里层层致密。"
-icon_path = "res://textures/items/item_mistheart_mushroom_core.png"
+icon_path = "res://textures/items/inventory_density_20261029/mat_mistheart_mushroom_core.png"
 item_category = "材料"
 item_subcategory = "菌材"
 tags = Array[String](["五行[木]", "质地[致密]", "功用[藏]", "功用[镇]", "相性[阴]"])
@@ -17,3 +17,6 @@ can_stack = true
 max_stack = 999
 craft_data = ExtResource("2")
 
+inventory_width = 2
+inventory_height = 2
+inventory_can_rotate = true

@@ -7,7 +7,7 @@
 script = ExtResource("1")
 definition_id = &"mat_clay_vein_lump"
 entity_name = "泥脉石团"
-icon_path = "res://textures/items/item_clay_vein_lump.png"
+icon_path = "res://textures/items/inventory_density_20261029/mat_clay_vein_lump.png"
 item_category = "材料"
 item_subcategory = "矿材"
 tags = Array[String](["五行[土]", "质地[致密]", "功用[镇]", "相性[阴]"])
@@ -15,3 +15,6 @@ grade_value = 2
 can_stack = true
 max_stack = 999
 craft_data = ExtResource("2")
+inventory_width = 3
+inventory_height = 3
+inventory_can_rotate = true

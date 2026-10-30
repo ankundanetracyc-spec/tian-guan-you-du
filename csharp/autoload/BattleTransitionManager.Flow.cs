@@ -4,6 +4,7 @@ using GDictionary=Godot.Collections.Dictionary;
 
 public partial class BattleTransitionManager
 {
+    public event Action<GDictionary>? BriefingCancelled;
     private BattleFlowView? _flowView;
     private bool _flowTransitionActive;
     private BattleSceneTransition? _sceneTransition;
@@ -97,7 +98,7 @@ public partial class BattleTransitionManager
         _beforeBattle=Data(pending_attacker_data).Concat(Data(pending_defender_data)).Select(d=>(BattleEntityData)d.Duplicate(true)).ToList();
         _attackerOrder=Data(pending_attacker_data).Select(d=>d.uid).ToList();_defenderOrder=Data(pending_defender_data).Select(d=>d.uid).ToList();
         _battleId=Guid.NewGuid().ToString("N");_outcomeNote="";
-        Action? cancel=return_context.GetValueOrDefault("allow_prebattle_cancel",false).AsBool()?()=>{CloseFlow();pending_attackers=[];pending_defenders=[];pending_attacker_data=[];pending_defender_data=[];return_context.Clear();}:null;
+        Action? cancel=return_context.GetValueOrDefault("allow_prebattle_cancel",false).AsBool()?()=>{var context=return_context.Duplicate(true);CloseFlow();pending_attackers=[];pending_defenders=[];pending_attacker_data=[];pending_defender_data=[];return_context.Clear();BriefingCancelled?.Invoke(context);}:null;
         var capacities=new System.Collections.Generic.Dictionary<string,int>();
         var preview=GD.Load<PackedScene>("res://tscn/battle/BattleScene.tscn").Instantiate();
         var config=preview.GetNode<BattleManager>("BattleMgr");

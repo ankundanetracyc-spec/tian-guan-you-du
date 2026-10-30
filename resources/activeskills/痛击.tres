@@ -29,5 +29,5 @@ range_max = 1
 base_damage = 11.0
 damage_type = "physical"
 attack_style = "melee"
-keywords = Array[String](["重击"])
+keywords = Array[String]([])
 damage_bonuses = Array[ExtResource("2")]([SubResource("Physique"), SubResource("ExtraPhysique")])

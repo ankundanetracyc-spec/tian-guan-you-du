@@ -128,6 +128,11 @@ public partial class StoragePanel : Control
 
     public void refresh_slots()
     {
+        if (_spatialPreviewFilter is not null)
+        {
+            _spatialPreviewFilter(_category_filter, _search_text);
+            return;
+        }
         if (_grid is null) return;
         HoverInfoManager.HideAll();
         clear_active_info();
@@ -171,6 +176,7 @@ public partial class StoragePanel : Control
 
     private void organize_inventory()
     {
+        if (_spatialPreviewOrganize is not null) { _spatialPreviewOrganize(); return; }
         if (_player is null) return;
         var ordered = ordered_entries(inventory_entries());
         var positions = ordered.Select(entry => entry.Position).ToArray();
@@ -263,19 +269,7 @@ public partial class StoragePanel : Control
 
     private HoverInfoManager.HoverInfoContent build_hover_content(StorageItemSlot slot)
     {
-        if (slot.artifact_data is { } artifact)
-        {
-            if (ForgedArtifactInventory.IsForged(artifact)) return ForgedArtifactInventory.Hover(artifact);
-            var name = artifact_name(artifact);
-            var path = ForgedArtifactInventory.IconPath(artifact);
-            var icon = string.IsNullOrWhiteSpace(path) || !ResourceLoader.Exists(path) ? null : ResourceLoader.Load<Texture2D>(path);
-            var subtitle = $"法宝 · {(string.IsNullOrWhiteSpace(artifact.ritual_mode) ? "未定祭法" : artifact.ritual_mode)} · {artifact.artifact_tier} · {(string.IsNullOrWhiteSpace(artifact.element) ? "五行未定" : artifact.element)}";
-            var durability = artifact.max_durability > 0
-                ? $"耐久 {Math.Max(0, artifact.current_durability)}/{artifact.max_durability}　灵识（外祭在场）{(artifact.ritual_mode == "内炼" ? 0 : Math.Max(0, artifact.spirit_cost))}"
-                : "耐久未定　灵识 " + (artifact.ritual_mode == "内炼" ? 0 : Math.Max(0, artifact.spirit_cost));
-            var utility = string.IsNullOrWhiteSpace(artifact.utility_id) ? "主功用：未定" : $"主功用：{artifact.utility_id}　品级：{Math.Max(0, artifact.utility_grade)}";
-            return HoverInfoManager.Structured(name, icon, subtitle, new HoverInfoManager.HoverInfoSection("器物属性", $"{durability}\n{utility}"));
-        }
+        if (slot.artifact_data is { } artifactItem) return EquipmentItemPresentation.Hover(artifactItem);
 
         var item = load_item_data(slot.item_path);
         if (item is null) return new HoverInfoManager.HoverInfoContent("", "");
@@ -284,9 +278,11 @@ public partial class StoragePanel : Control
 
     internal static HoverInfoManager.HoverInfoContent ItemHover(ItemData item, int? count = null, string path = "", Character? user = null)
     {
+        if (item is PortraitClothingData clothingItem) return ClothingItemPresentation.Hover(clothingItem);
         if (AlchemyPillVisual.IsPill(item)) return AlchemyPillVisual.Hover(item, user);
         if (MaterialItemPresentation.IsMaterial(item)) return MaterialItemPresentation.Hover(item);
         if (ManualItemPresentation.IsManual(item)) return ManualItemPresentation.Hover(item);
+        if (EquipmentItemPresentation.IsEquipment(item)) return EquipmentItemPresentation.Hover(item);
         var category = category_of(item, path);
         if (!string.IsNullOrWhiteSpace(item.item_subcategory)) category = string.IsNullOrWhiteSpace(category) ? item.item_subcategory : $"{category} · {item.item_subcategory}";
         var grade = item.craft_data is MaterialCraftData material
@@ -303,7 +299,8 @@ public partial class StoragePanel : Control
         var materialItem = item.craft_data is MaterialCraftData || item.item_category == "材料";
         var effectTitle = materialItem ? "用途" : item is EquipmentData ? "装备收益" : item is PortraitClothingData ? "衣着说明" : item.gongfa is not null ? "功法与研读" : "使用效果";
         return HoverInfoManager.Structured(item.entity_name, itemIcon, subtitleText,
-            new(materialItem ? "材性与功用" : "词缀", tags == "无词缀" ? "" : tags), new(effectTitle, effect));
+            new(materialItem ? "材性与功用" : "词缀", tags == "无词缀" ? "" : tags), new(effectTitle, effect))
+            with { Footprint = item.get_inventory_size() };
     }
 
     private void bind_detail_layout_anchor(StorageItemSlot? slot)

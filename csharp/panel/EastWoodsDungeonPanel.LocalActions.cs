@@ -5,6 +5,7 @@ public partial class EastWoodsDungeonPanel
 {
     private string local_action_name(EastWoodsActions.ActionDef action)
     {
+        if (is_authored_forest_encounter(action)) return "林中遭遇";
         if (action.Battle) return "挑战林地凶狼";
         var item = action.ItemPath.Length > 0 ? EastWoodsActions.Item(action.ItemPath) : null;
         return item is null ? action.Name : action.Name + " " + item.entity_name;
@@ -12,6 +13,7 @@ public partial class EastWoodsDungeonPanel
 
     private string local_action_summary(EastWoodsActions.ActionDef action)
     {
+        if (is_authored_forest_encounter(action)) return "处理眼前的遭遇";
         if (action.Battle) return "查看真实战前信息，再决定是否开战";
         var quantity = action.ItemPath.Length > 0 ? $" · 基础产量 {action.Quantity}份" : "";
         var remaining = action.Stock > 0 ? $" · 余量 {action_remaining(_current, action)}份" : "";

@@ -15,6 +15,7 @@ public partial class HoverInfoManager : CanvasLayer
     private readonly Dictionary<Control, HoverInfoContent> _entries = new();
     private PanelContainer? _card;
     private TextureRect? _icon;
+    private InventoryFootprintView? _footprint;
     private Label? _title;
     private Label? _subtitle;
     private ScrollContainer? _scroll;
@@ -36,7 +37,7 @@ public partial class HoverInfoManager : CanvasLayer
 
     public readonly record struct HoverInfoContent(string Title, string Body, Texture2D? Icon = null, string Subtitle = "",
         IReadOnlyList<HoverInfoSection>? Sections = null, float CardWidth = PreferredWidth, float IconSize = 64f,
-        bool ShowRules = true);
+        bool ShowRules = true, bool LiveUpdate = false, Vector2I? Footprint = null);
 
     /// <summary>Keep plain text available to callers while giving the shared reader explicit sections.</summary>
     public static HoverInfoContent Structured(string title, Texture2D? icon, string subtitle, params HoverInfoSection[] sections)
@@ -205,6 +206,8 @@ public partial class HoverInfoManager : CanvasLayer
         _title.SizeFlagsHorizontal = Control.SizeFlags.ExpandFill;
         _title.AutowrapMode = TextServer.AutowrapMode.WordSmart;
         header.AddChild(_title);
+        _footprint = new InventoryFootprintView();
+        header.AddChild(_footprint);
         _subtitle = make_label(17, new Color("d7c8a0"));
         _subtitle.AutowrapMode = TextServer.AutowrapMode.WordSmart;
         column.AddChild(_subtitle);
@@ -433,6 +436,7 @@ public partial class HoverInfoManager : CanvasLayer
         if (_suspended.Contains(anchor)) return;
         if (_card is null || _title is null || _subtitle is null || _icon is null || _scroll is null || _body is null) return;
         if (_activeAnchor == anchor && _visibleContent == content) return;
+        var liveRefresh = content.LiveUpdate && _activeAnchor == anchor && _visibleContent is { LiveUpdate: true };
         if (_activeAnchor != anchor)
         {
             _hideTimer?.Stop();
@@ -445,6 +449,7 @@ public partial class HoverInfoManager : CanvasLayer
         _icon.Texture = content.Icon;
         _icon.CustomMinimumSize = new Vector2(content.IconSize, content.IconSize);
         _icon.Visible = content.Icon is not null;
+        _footprint?.SetFootprint(content.Footprint);
         _subtitle.Text = content.Subtitle;
         _subtitle.Visible = !string.IsNullOrWhiteSpace(content.Subtitle);
         _body.Text = content.Sections is { Count: > 0 } sections
@@ -453,6 +458,7 @@ public partial class HoverInfoManager : CanvasLayer
                 string.IsNullOrWhiteSpace(section.Title) ? PlayerInfoText.Display(section.Body) : $"[color=#d7c8a0][b]{section.Title}[/b][/color]\n{PlayerInfoText.Display(section.Body)}"))
             : PlayerInfoText.Display(content.Body);
         if (_rulesButton is not null) _rulesButton.Visible = content.ShowRules && PlayerInfoText.HasDetails(content.Body);
+        if (liveRefresh) return;
         _scroll.VerticalScrollMode = ScrollContainer.ScrollMode.Disabled;
         _scroll.ScrollVertical = 0;
         _card.Modulate = new Color(1, 1, 1, 0);

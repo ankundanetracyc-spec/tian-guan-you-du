@@ -258,6 +258,27 @@ public partial class CombatSkillBar : Control
         queueLabel!.Text = "";queueLabel.Hide();
         for (var i = 0; i < skills.Count && i < buttons.Count; i++)
         {
+            var presentation = FumingPresentation.Resolve(currentUnit, skills[i], manager);
+            var presentationName = buttons[i].GetNodeOrNull<Label>("SkillName");
+            if (presentationName is not null)
+            {
+                presentationName.Text = FumingPresentation.Name(currentUnit, skills[i], manager);
+                if (skills[i].skill_name == "复命")
+                {
+                    var longName = presentationName.GetThemeFont("font").GetStringSize(presentationName.Text, fontSize: 16).X > SlotWidth - 8;
+                    presentationName.Position = new Vector2(4, 160);
+                    presentationName.Size = new Vector2(SlotWidth - 8, longName ? 30 : 18);
+                    presentationName.AutowrapMode = longName ? TextServer.AutowrapMode.Arbitrary : TextServer.AutowrapMode.Off;
+                    presentationName.AddThemeFontSizeOverride("font_size", longName ? 12 : 16);
+                }
+            }
+            var presentationIcon = buttons[i].GetNodeOrNull<SkillIconVisual>("Icon");
+            if (presentationIcon is not null && presentationIcon.GetMeta("presentation_path", "").AsString() != presentation.icon_path)
+            {
+                presentationIcon.Texture = string.IsNullOrWhiteSpace(presentation.icon_path) ? null : GD.Load<Texture2D>(presentation.icon_path);
+                presentationIcon.SetMeta("presentation_path", presentation.icon_path);
+                presentationIcon.QueueRedraw();
+            }
             var queuedCount = manager.get_battle_unit(currentUnit).skill_queue.Count(entry => !entry.completed && entry.kind == BattleQueuedSkill.ActionKind.Skill && entry.skill == skills[i]);
             var queued = queuedCount > 0;
             var cooldown = manager.get_skill_cooldown(currentUnit, skills[i]);
@@ -398,7 +419,7 @@ public partial class CombatSkillBar : Control
         button.AddChild(cost);
         var uses = new Label { Name = "ChargeText", Text = "", Position = new Vector2(28, 139), Size = new Vector2(SlotWidth - 56, 16), HorizontalAlignment = HorizontalAlignment.Center, MouseFilter = MouseFilterEnum.Ignore, ZIndex = 4, ClipText = true };
         uses.AddThemeFontSizeOverride("font_size", 11); uses.AddThemeColorOverride("font_color", PaperInk); button.AddChild(uses);
-        var name = new Label { Text = skill.skill_name, Position = new Vector2(4, 160), Size = new Vector2(SlotWidth - 8, 18), HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center, MouseFilter = MouseFilterEnum.Ignore, ZIndex = 4, ClipText = true };
+        var name = new Label { Name = "SkillName", Text = skill.skill_name, Position = new Vector2(4, 160), Size = new Vector2(SlotWidth - 8, 18), HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center, MouseFilter = MouseFilterEnum.Ignore, ZIndex = 4, ClipText = true };
         name.AddThemeFontSizeOverride("font_size", 16); name.AddThemeColorOverride("font_color", PaperInk); button.AddChild(name);
         // CD 不再在技能名称下占用文字行；改为覆盖图标的纵向亮度进度。
         var cooldownVisual = new SkillCooldownVisual
@@ -477,15 +498,15 @@ public partial class CombatSkillBar : Control
                     copiedEnergy=Mathf.CeilToInt(copiedEnergy*BattleWoundRules.get_energy_cost_multiplier(manager.get_realtime_wound_counts(unit),copied));
                 var fumingMana=manager.get_skill_mana_cost(unit,skill);
                 var copiedMana=manager.get_skill_mana_cost(unit,copied);
-                cost=$"费用：复命体力 {fumingEnergy}、法力 {fumingMana}；复制《{copied.skill_name}》体力 {copiedEnergy}、法力 {copiedMana}；合计体力 {fumingEnergy+copiedEnergy}、法力 {fumingMana+copiedMana}";
+                cost=$"复命消耗：体力 {fumingEnergy}、法力 {fumingMana}\n复制《{copied.skill_name}》消耗：体力 {copiedEnergy}、法力 {copiedMana}\n合计消耗：体力 {fumingEnergy+copiedEnergy}、法力 {fumingMana+copiedMana}";
             }
-            else cost=$"费用：复命体力 {energyCost}、法力 {manaCost}；当前没有可复制的非应对技能";
+            else cost=$"复命消耗：体力 {energyCost}、法力 {manaCost}\n当前没有可复制的非应对技能";
         }
         if (CardRules.IsResponse(skill))
         {
             var normal = CardRules.NormalCast(skill);
-            cost = $"应对触发费用：体力 {energyCost}；法力 {manaCost}\n未应对费用：" + (normal is null ? "无（空放）"
-                : $"体力 {manager?.get_skill_energy_cost(unit, normal) ?? normal.energy_cost}；法力 {manager?.get_skill_mana_cost(unit, normal) ?? normal.mana_cost}");
+            cost = $"触发应对时，消耗体力 {energyCost}、法力 {manaCost}\n未触发应对时，" + (normal is null ? "无消耗（空放）"
+                : $"消耗体力 {manager?.get_skill_energy_cost(unit, normal) ?? normal.energy_cost}、法力 {manager?.get_skill_mana_cost(unit, normal) ?? normal.mana_cost}");
         }
         var useLimit = CardPresentation.CombatUseLimitText(skill, unit, manager);
         var detail = new System.Collections.Generic.List<string>();
@@ -503,13 +524,14 @@ public partial class CombatSkillBar : Control
         // Short fields stay together; effects and restrictions have explicit reading groups.
         var basic = string.Join("\n", detail.Take(string.IsNullOrWhiteSpace(cost) ? 1 : 2));
         var limits = string.Join("\n", detail.Skip(string.IsNullOrWhiteSpace(cost) ? 1 : 2));
-        var displayTags = skill.get_presentation_tags();
+        var identity = FumingPresentation.Resolve(unit, skill, manager);
+        var displayTags = identity.get_presentation_tags();
         var keywords = displayTags.Count > 0 ? string.Join("、", displayTags) : "无";
         var metadata = $"关键词：{keywords}";
-        var icon = string.IsNullOrWhiteSpace(skill.icon_path) || !ResourceLoader.Exists(skill.icon_path)
+        var icon = string.IsNullOrWhiteSpace(identity.icon_path) || !ResourceLoader.Exists(identity.icon_path)
             ? null
-            : ResourceLoader.Load<Texture2D>(skill.icon_path);
-        return HoverInfoManager.Structured(skill.skill_name, icon, metadata,
+            : ResourceLoader.Load<Texture2D>(identity.icon_path);
+        return HoverInfoManager.Structured(FumingPresentation.Name(unit, skill, manager), icon, metadata,
             new("", basic), new("效果", effect), new("使用限制", limits));
     }
 
@@ -551,6 +573,8 @@ public partial class CombatSkillBar : Control
         if(skill.skill_name=="复命"&&manager?.gongfa_combat.GetLastNonResponseSkill(currentUnit) is { } copied)
         {
             hash.Add(copied.GetInstanceId()); hash.Add(copied.description); hash.Add(copied.damage_formula);
+            hash.Add(copied.skill_name); hash.Add(copied.icon_path);
+            foreach (var tag in copied.get_presentation_tags()) hash.Add(tag);
             hash.Add(copied.stacks_formula); hash.Add(copied.base_damage); hash.Add(copied.cooldown_rounds);
             hash.Add(manager.get_skill_energy_cost(currentUnit,copied)); hash.Add(manager.get_skill_mana_cost(currentUnit,copied));
             hash.Add(manager.get_skill_uses_remaining(currentUnit,copied));
@@ -563,7 +587,7 @@ public partial class CombatSkillBar : Control
     private void ApplySkillHoverContent(ActiveSkillData skill, HoverInfoManager.HoverInfoContent content)
     {
         if (hoveredSkillAnchor is null || !GodotObject.IsInstanceValid(hoveredSkillAnchor)) return;
-        var contentKey = $"{skill.GetInstanceId()}|{content.Subtitle}|{content.Body}";
+        var contentKey = $"{skill.GetInstanceId()}|{content.Title}|{content.Icon?.GetInstanceId()}|{content.Subtitle}|{content.Body}";
         if (contentKey != lastSkillHoverText)
         {
             lastSkillHoverText = contentKey;

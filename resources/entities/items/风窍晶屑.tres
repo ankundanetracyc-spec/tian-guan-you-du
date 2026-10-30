@@ -8,7 +8,7 @@ script = ExtResource("1")
 definition_id = &"mat_windaperture_crystal_shard"
 entity_name = "风窍晶屑"
 description = "风蚀晶石留下的薄片，边缘轻薄，内部有细长孔隙。"
-icon_path = "res://textures/items/item_windaperture_crystal_shard.png"
+icon_path = "res://textures/items/inventory_density_20261029/mat_windaperture_crystal_shard.png"
 item_category = "材料"
 item_subcategory = "晶石"
 tags = Array[String](["五行[金]", "质地[颗粒]", "功用[行]", "相性[阳]"])
@@ -17,3 +17,6 @@ can_stack = true
 max_stack = 999
 craft_data = ExtResource("2")
 
+inventory_width = 2
+inventory_height = 2
+inventory_can_rotate = true

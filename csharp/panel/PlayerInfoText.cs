@@ -84,9 +84,15 @@ public static class PlayerInfoText
         for (int i = 0; i < formulas.Count; i++) result = result.Replace("§" + i + "§", formulas[i]);
         return result;
     }
-    private static string ReadableFormula(string formula) => Regex.Replace(formula.Trim(),
-        @"\b(max|min|round|floor|ceil|clamp|abs)\s*\(", match => (match.Groups[1].Value switch
-        { "max" => "取较大值", "min" => "取较小值", "round" => "四舍五入", "floor" => "向下取整", "ceil" => "向上取整", "clamp" => "限定范围", _ => "绝对值" }) + "(");
+    private static string ReadableFormula(string formula)
+    {
+        var readable = Regex.Replace(formula.Trim(),
+            @"\b(max|min|round|floor|ceil|clamp|abs)\s*\(", match => (match.Groups[1].Value switch
+            { "max" => "取较大值", "min" => "取较小值", "round" or "floor" or "ceil" => "", "clamp" => "限定范围", _ => "绝对值" }) + "(");
+        // Keep arithmetic grouping and the actual result; rounding is an internal
+        // calculation rule rather than another explanation in the hover formula.
+        return Regex.Replace(readable, @"(?:四舍五入|向下取整|向上取整)\s*(?=[(（])", "");
+    }
     public static bool HasDetails(string original) =>
         Regex.Replace(Summary(original), @"\s+", "") != Regex.Replace(original, @"\s+", "");
     public static void Bind(Label label, string original)

@@ -201,13 +201,17 @@ public sealed partial class ProcessForgingTrial
     private readonly string _parameterText;
     public ProcessForgingTrial()
     {
-        _parameterText = Godot.FileAccess.GetFileAsString(ConfigPath);
-        _parameters = JsonSerializer.Deserialize<Config>(_parameterText) ?? throw new InvalidOperationException("炼器参数为空"); Validate();
-        using var dir = DirAccess.Open("res://resources/material_craft") ?? throw new InvalidOperationException("材性目录缺失");
-        foreach (var file in dir.GetFiles().Where(x => x.EndsWith("材性.tres")).OrderBy(x => x, StringComparer.Ordinal))
+        _parameters = JsonSerializer.Deserialize<Config>(Godot.FileAccess.GetFileAsString(ConfigPath)) ?? throw new InvalidOperationException("炼器参数为空");
+        // 当前生产参数只定义公共规则；Profiles 仍保留给旧成器快照和隔离复算。
+        _parameters.Profiles.Clear();
+        foreach (var path in MaterialPaths("res://resources/entities/items"))
         {
-            string path = "res://resources/entities/items/" + file.Replace("材性.tres", ".tres");
-            if (ResourceLoader.Exists(path) && GD.Load<ItemData>(path) is { craft_data: MaterialCraftData } item) Materials[item.entity_name] = item;
+            if (ResourceLoader.Load(path) is not ItemData { craft_data: MaterialCraftData { forging: { } forging } } item) continue;
+            if (string.IsNullOrWhiteSpace(item.entity_name) || string.IsNullOrWhiteSpace(item.definition_id.ToString()))
+                throw new InvalidOperationException("炼器材料缺少名称或定义身份：" + path);
+            if (!Materials.TryAdd(item.entity_name, item))
+                throw new InvalidOperationException("炼器材料重名：" + item.entity_name);
+            _parameters.Profiles.Add(item.entity_name, forging.Snapshot());
         }
         foreach (var (name, item) in Materials)
         {
@@ -216,8 +220,29 @@ public sealed partial class ProcessForgingTrial
             _facts[name] = new MaterialSnapshot { Name = name, DefinitionId = item.definition_id.ToString(), Element = data.element, Texture = data.texture, Polarity = polarity,
                 Utilities = data.utilities.Where(x => !string.IsNullOrWhiteSpace(x.utility_id)).GroupBy(x => x.utility_id).ToDictionary(x => x.Key, x => x.Max(v => v.grade), StringComparer.Ordinal) };
         }
-        foreach (string name in _parameters.Profiles.Keys) if (!_facts.ContainsKey(name)) throw new InvalidOperationException("加工材料缺失：" + name);
-        ValidateFacts();
+        Validate(); ValidateFacts();
+        // 固化本次使用的加工档案，资源日后改动不影响成器重演。
+        _parameterText = JsonSerializer.Serialize(_parameters);
+    }
+    private static IEnumerable<string> MaterialPaths(string directory)
+    {
+        // 导出后使用原资源路径；开发时也读取尚未进入导入索引的新文件。
+        var entries = new HashSet<string>(ResourceLoader.ListDirectory(directory), StringComparer.Ordinal);
+        using var dir = DirAccess.Open(directory);
+        if (dir is not null)
+        {
+            entries.UnionWith(dir.GetFiles());
+            entries.UnionWith(dir.GetDirectories().Select(name => name + "/"));
+        }
+        foreach (var file in entries.OrderBy(x => x, StringComparer.Ordinal))
+        {
+            string path = directory + "/" + file.TrimEnd('/');
+            if (file.EndsWith('/'))
+            {
+                foreach (var nested in MaterialPaths(path)) yield return nested;
+            }
+            else if (file.EndsWith(".tres", StringComparison.Ordinal) || file.EndsWith(".res", StringComparison.Ordinal)) yield return path;
+        }
     }
     private ProcessForgingTrial(Config config, IEnumerable<MaterialSnapshot> facts)
     {

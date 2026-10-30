@@ -9,10 +9,15 @@ public static class ForgedArtifactPresentation
 
     public static string IconPath(ProcessForgingTrial.Artifact artifact)
     {
-        return $"res://textures/ui/forged_swords_icons_20261025_v1/{SpriteName(artifact)}_sword.png";
+        var name = SpriteName(artifact);
+        return InventoryIconDensityPack.Root + name + "_sword_" + (name == "slender" ? "2x6.png" : "3x6.png");
     }
 
-    // 战斗道具保留原有横图与握点；物品图标使用独立斜放构图。
+    public static Vector2I InventorySize(ProcessForgingTrial.Artifact artifact) => new(SpriteName(artifact) == "slender" ? 2 : 3, 6);
+    public static bool InventoryCanRotate(ProcessForgingTrial.Artifact artifact) => true;
+    public static string InventoryFootprintShape(ProcessForgingTrial.Artifact artifact) => "rectangle";
+
+    // 战斗道具保留原有横图与握点；物品图标独立于战斗构图。
     public static string BodySpritePath(ProcessForgingTrial.Artifact artifact) =>
         $"res://textures/ui/forged_swords_20261023_v1/{SpriteName(artifact)}_sword.png";
 
@@ -38,12 +43,22 @@ public static class ForgedArtifactPresentation
         {
             if (group.Key == "binding")
             {
-                sections.Add(new("化法", string.Join("\n\n", group.Select(x =>
-                    $"适用范围：{ForgedEquipmentLoadout.BindingScope(x)}\n化法追加：{x.Description}"))));
+                sections.Add(new("化法", BindingDetails(group)));
             }
             else sections.Add(new(group.First().Route, string.Join("\n\n", group.Select(EffectDetails))));
         }
         return sections;
+    }
+
+    public static string BindingDetails(IEnumerable<ProcessForgingTrial.Effect> source)
+    {
+        var effects = source.ToArray();
+        if (effects.Length == 0) return "";
+        var scopes = effects.Select(ForgedEquipmentLoadout.BindingScope).Distinct().ToArray();
+        var scope = scopes.Length == 1 ? scopes[0] : "同时满足以下条件（" + string.Join("；", scopes) + "）";
+        if (effects.Length == 2 && effects.Any(x => x.AtomId == "defuse_flat") && effects.Any(x => x.AtomId == "physical_defense_ignore_ratio"))
+            scope = "能应对并施加化解，且带“气血”关键词的单体物理伤害技能";
+        return "适用范围：" + scope + "\n追加效果：\n" + string.Join("\n", effects.Select(x => "· " + x.Description));
     }
 
     public static IReadOnlyList<Section> Sections(ProcessForgingTrial.Artifact artifact)
@@ -65,6 +80,5 @@ public static class ForgedArtifactPresentation
     }
 
     public static HoverInfoManager.HoverInfoContent Hover(ProcessForgingTrial.Artifact artifact) =>
-        HoverInfoManager.Structured(artifact.Name, Icon(artifact), Subtitle(artifact),
-            Sections(artifact).Select(x => new HoverInfoManager.HoverInfoSection(x.Title, x.Body)).ToArray());
+        EquipmentItemPresentation.Hover(artifact);
 }

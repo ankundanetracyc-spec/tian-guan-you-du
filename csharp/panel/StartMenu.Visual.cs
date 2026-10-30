@@ -152,6 +152,24 @@ public partial class StartMenu
         list.AddThemeConstantOverride("separation", 12);
         scroll.AddChild(list);
         var menu = GetNode<VBoxContainer>("StartMenuMenu");
+        var inventoryLayout = SettingsButton("行囊 · 细网格布局试阅");
+        inventoryLayout.Name = "InventorySpatialLayoutPreview";
+        inventoryLayout.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+        inventoryLayout.CustomMinimumSize = new Vector2(0, 58);
+        inventoryLayout.Pressed += () => { CloseDemoEntries(); GetTree().ChangeSceneToFile("res://tools/InventorySpatialLayoutPreview.tscn"); };
+        list.AddChild(inventoryLayout);
+        var inventoryIcons = SettingsButton("行囊 · 全物品图标审阅");
+        inventoryIcons.Name = "InventoryIconCatalogPreview";
+        inventoryIcons.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+        inventoryIcons.CustomMinimumSize = new Vector2(0, 58);
+        inventoryIcons.Pressed += () => { CloseDemoEntries(); GetTree().ChangeSceneToFile("res://tools/InventoryIconCatalogPreview.tscn"); };
+        list.AddChild(inventoryIcons);
+        var baiChuan = SettingsButton("百川九图 · 地图测试（固定倍率）");
+        baiChuan.Name = "BaiChuanNineMapTest";
+        baiChuan.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+        baiChuan.CustomMinimumSize = new Vector2(0, 58);
+        baiChuan.Pressed += () => { CloseDemoEntries(); GetTree().ChangeSceneToFile("res://tscn/world/bai_chuan/BaiChuanNineTileTest.tscn"); };
+        list.AddChild(baiChuan);
         foreach (var name in new[] { "AppearanceTest", "AppearanceCreatorTest", "InkVfxTest", "BattleTest", "CondensationTest", "YuanxiPreview", "SocialInteractionTest" })
         {
             var source = menu.GetNode<Button>(name);

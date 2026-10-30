@@ -6,7 +6,7 @@
 script = ExtResource("1")
 skill_name = "架招"
 icon_path = "res://textures/ui/combat/skill_icons/凡俗_架招_v5.png"
-description = "应对触发：获得A层化解。若自身至少有1层气血，消耗1层并额外获得A层化解。A=3 + floor(体魄÷4) + floor(min(体魄×0.25,神魂×0.20))。"
+description = "触发应对时，获得A层化解。若自身至少有1层气血，消耗1层并额外获得A层化解。A=3 + floor(体魄÷4) + floor(min(体魄×0.25,神魂×0.20))。"
 skill_type = 3
 slot_category = "response"
 source_gongfa_name = "太和感物养元宝册"

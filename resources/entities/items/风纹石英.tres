@@ -7,7 +7,7 @@
 script = ExtResource("1")
 definition_id = &"mat_fengwen_quartz"
 entity_name = "风纹石英"
-icon_path = "res://textures/items/item_fengwen_quartz.png"
+icon_path = "res://textures/items/inventory_density_20261029/mat_fengwen_quartz.png"
 item_category = "材料"
 item_subcategory = "晶石"
 tags = Array[String](["五行[金]", "质地[致密]", "功用[通]", "相性[和]"])
@@ -15,3 +15,6 @@ grade_value = 4
 can_stack = true
 max_stack = 999
 craft_data = ExtResource("2")
+inventory_width = 3
+inventory_height = 3
+inventory_can_rotate = true

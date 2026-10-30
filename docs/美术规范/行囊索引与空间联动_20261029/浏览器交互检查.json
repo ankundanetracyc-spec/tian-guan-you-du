@@ -1,0 +1,160 @@
+{
+  "date": "2026-10-29",
+  "environment": "Playwright CLI / Edge, isolated in-memory page; public art and font embedded, no network listener",
+  "scope": "Independent example snapshot; not connected to game inventory or save files",
+  "checks": [
+    {
+      "name": "default_snapshot",
+      "result": {
+        "index_rows": 19,
+        "grid_items": 19,
+        "occupied": 65,
+        "capacity": 120
+      }
+    },
+    {
+      "name": "uniform_cell_sizes",
+      "result": {
+        "chest": [
+          6,
+          4,
+          42,
+          42
+        ],
+        "left_sleeve": [
+          3,
+          4,
+          42,
+          42
+        ],
+        "right_sleeve": [
+          3,
+          4,
+          42,
+          42
+        ],
+        "waist": [
+          6,
+          4,
+          42,
+          42
+        ],
+        "back": [
+          6,
+          8,
+          42,
+          42
+        ]
+      }
+    },
+    {
+      "name": "single_click_selects_without_locating",
+      "result": {
+        "selected": "manual:01",
+        "located": null
+      }
+    },
+    {
+      "name": "double_click_second_same_name_manual",
+      "result": {
+        "located": "manual:02",
+        "highlights": [
+          "manual:02"
+        ]
+      }
+    },
+    {
+      "name": "double_click_second_same_name_pill",
+      "result": {
+        "located": "pill:02",
+        "highlights": [
+          "pill:02"
+        ]
+      }
+    },
+    {
+      "name": "hover_real_footprint",
+      "result": {
+        "target": "manual:02",
+        "aria_hidden": "false",
+        "columns": 2,
+        "rows": 3,
+        "cells": 6
+      }
+    },
+    {
+      "name": "search_keeps_actual_occupancy",
+      "result": {
+        "query": "回春",
+        "index_rows": 2,
+        "grid_items": 19,
+        "occupied": 65
+      }
+    },
+    {
+      "name": "category_keeps_actual_occupancy",
+      "result": {
+        "category": "秘籍",
+        "index_rows": 2,
+        "grid_items": 19,
+        "occupied": 65
+      }
+    },
+    {
+      "name": "cross_container_fixture_does_not_duplicate",
+      "result": {
+        "total_instances": 19,
+        "unique_instances": 19,
+        "containers": 2,
+        "bag_occupied": 59
+      }
+    },
+    {
+      "name": "double_click_opens_target_container",
+      "result": {
+        "container": "fixture:external",
+        "located": "manual:02",
+        "query": "胎息",
+        "index_rows": 2,
+        "rendered": [
+          "manual:02"
+        ],
+        "invented_grids": 0
+      }
+    },
+    {
+      "name": "return_preserves_query",
+      "result": {
+        "container": "bag:player",
+        "located": null,
+        "query": "胎息",
+        "grid_items": 18
+      }
+    },
+    {
+      "name": "locate_keeps_all_item_data_unchanged",
+      "result": {
+        "unchanged": true
+      }
+    },
+    {
+      "name": "browser_assets_and_fonts",
+      "result": {
+        "images_loaded": true,
+        "font_loaded": true
+      }
+    },
+    {
+      "name": "console",
+      "result": {
+        "errors": 0,
+        "warnings": 0
+      }
+    }
+  ],
+  "screenshots": {
+    "1920x1080": 4,
+    "1280x720": 1
+  },
+  "ring_boundary": "Only a hidden isolated container fixture; no ring item, size, capacity or nesting rule implemented"
+}

@@ -1,0 +1,37 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="status-hover" name="战斗状态悬停预览（待审阅）">
+    <mxGraphModel grid="1" page="1" pageWidth="1250" pageHeight="800">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="frame" value="" style="fillColor=#20231c;strokeColor=#c4b58d;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="340" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="icon" value="状态图标96×96" style="fillColor=none;strokeColor=#c4b58d;fontColor=#eee4cc;" vertex="1" parent="1">
+          <mxGeometry x="80" y="80" width="96" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="name" value="外伤" style="text;align=left;fontSize=26;fontColor=#eee4cc;" vertex="1" parent="1">
+          <mxGeometry x="190" y="105" width="185" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="fields" value="当前层数：2/4&#xA;持续时间：剩余1回合&#xA;&#xA;效果：每层使行动速度降低5%、闪避降低8%。新增层数会刷新持续时间。" style="text;whiteSpace=wrap;align=left;verticalAlign=top;fontSize=18;fontColor=#eee4cc;" vertex="1" parent="1">
+          <mxGeometry x="80" y="200" width="300" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="spec" value="2026-10-27 用户统一规则&#xA;&#xA;有固定上限：当前层数：2/4。&#xA;无固定上限：当前层数：24。&#xA;护盾也使用同一格式，不加层或点等单位。&#xA;撤下所有来源、简介及其占位。&#xA;心法不显示持续时间；不可叠层心法只展示效果，真正可叠层心法遵循计数格式。&#xA;僵直持续时间仍用战斗帧。&#xA;普通状态与三种正式第一卷主修心法使用真实Buff创建流程预览，不改战斗机制。" style="text;whiteSpace=wrap;align=left;verticalAlign=top;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="820" y="85" width="360" height="500" as="geometry" />
+        </mxCell>
+        <mxCell id="heart-frame" value="" style="fillColor=#20231c;strokeColor=#c4b58d;" vertex="1" parent="1">
+          <mxGeometry x="440" y="60" width="340" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="heart-icon" value="心法图标96×96" style="fillColor=none;strokeColor=#c4b58d;fontColor=#eee4cc;" vertex="1" parent="1">
+          <mxGeometry x="460" y="80" width="96" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="heart-name" value="太和感物养元" style="text;align=left;fontSize=24;fontColor=#eee4cc;" vertex="1" parent="1">
+          <mxGeometry x="565" y="110" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="heart-body" value="效果：自身每次触发应对后，获得气血1层；受气血上限限制。" style="text;whiteSpace=wrap;align=left;verticalAlign=top;fontSize=18;fontColor=#eee4cc;" vertex="1" parent="1">
+          <mxGeometry x="460" y="200" width="300" height="140" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

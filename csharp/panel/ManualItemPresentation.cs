@@ -54,7 +54,7 @@ public static class ManualItemPresentation
         var icon = !string.IsNullOrWhiteSpace(item.icon_path) && ResourceLoader.Exists(item.icon_path) ? GD.Load<Texture2D>(item.icon_path) : null;
         return HoverInfoManager.Structured(item.entity_name, icon, "",
             new("", $"修习境界：{realm}\n修习要求：{(requirements.Count > 0 ? string.Join("、", requirements.Distinct()) : "无")}\n关键词：{keywordText}"),
-            new("", "简介：" + introduction)) with { CardWidth = 340f, IconSize = 96f, ShowRules = false };
+            new("", "简介：" + introduction)) with { CardWidth = 340f, IconSize = 96f, ShowRules = false, Footprint = item.get_inventory_size() };
     }
 
     private static string AttributeName(string name) => name switch

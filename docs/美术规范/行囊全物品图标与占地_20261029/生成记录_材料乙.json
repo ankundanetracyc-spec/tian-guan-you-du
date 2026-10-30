@@ -1,0 +1,504 @@
+{
+  "method": "built-in imagegen",
+  "jobs": [
+    {
+      "key": "mat_salt_gypsum",
+      "file": "mat_salt_gypsum.png",
+      "name": "盐纹石膏",
+      "cells": [
+        3,
+        3
+      ],
+      "ref": "E:\\stacklands\\textures\\items\\item_salt_gypsum.png",
+      "style_reference": "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png",
+      "prompt": "One complete standalone inventory object for a Chinese cultivation RPG. Image 1 is the USER APPROVED PORCELAIN BOTTLE STYLE REFERENCE, not the subject to copy unless the subject is a bottle. Match its hand-painted watercolor texture and believable painted volume, while keeping this object's own material and local colors. Chinese ink and restrained watercolor, thin varied grey-brown contours, low-saturation pigments, subtle directional brushwork following the form. Quiet matte surfaces under broad diffuse illumination. Solid volume through gently separated light, middle and shadow planes of the LOCAL COLOR. Lighter strokes are muted pigment on the object, never reflected light spots. Clear silhouette and few readable material features for small inventory display. No self-emission, bloom, aura, halo, rim lighting, white edge streaks, specular hotspots, sparkles, glossy reflections, glassy droplets, plastic or frosted 3D rendering. No flat vector shapes, thick cartoon outline, photographic noise or dense tiny scratches. TRUE ALPHA TRANSPARENCY outside the physical silhouette; no backdrop, floor, cast shadow, frame, lettering or interface. Exactly ONE complete object, fully inside canvas with about 6 percent even safe margin. Never reproduce the brown/black preview background of the reference. Subject: One compact off-white gypsum mineral chunk, with stacked pale chalky layers and subtle grey-beige salt-bearing bands. Compose upright within a 3:3 canvas. Final inventory footprint 3x3, packed dimensions 384x384. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "output_source_directory": "textures/items/inventory_density_20261029/raw_unified_final/",
+      "references": [
+        "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png"
+      ],
+      "subject_en": "One compact off-white gypsum mineral chunk, with stacked pale chalky layers and subtle grey-beige salt-bearing bands.",
+      "semantic_notes": "矿材石膏，保留白色层理；不画盐袋、药粉罐或建筑石膏像。",
+      "status": "generated",
+      "generated_source": "E:\\tmp\\CodexData\\generated_images\\01a18742-7445-7a70-989f-f7cbf53b7175\\exec-0dcf3b25-0a20-4ed1-88a3-ef1916ee6d25.png",
+      "saved": "E:/stacklands/textures/items/inventory_density_20261029/raw_unified_final/mat_salt_gypsum.png",
+      "review_status": "passed_semantics_style_alpha_and_small_scale",
+      "raw_size": [
+        1254,
+        1254
+      ],
+      "alpha_bounds_threshold_2": [
+        62,
+        92,
+        1191,
+        1183
+      ]
+    },
+    {
+      "key": "mat_stone_bee_wax",
+      "file": "mat_stone_bee_wax.png",
+      "name": "石蜂蜡",
+      "cells": [
+        2,
+        2
+      ],
+      "ref": "E:\\stacklands\\textures\\items\\item_stone_bee_wax.png",
+      "style_reference": "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png",
+      "prompt": "One complete standalone inventory object for a Chinese cultivation RPG. Image 1 is the USER APPROVED PORCELAIN BOTTLE STYLE REFERENCE, not the subject to copy unless the subject is a bottle. Match its hand-painted watercolor texture and believable painted volume, while keeping this object's own material and local colors. Chinese ink and restrained watercolor, thin varied grey-brown contours, low-saturation pigments, subtle directional brushwork following the form. Quiet matte surfaces under broad diffuse illumination. Solid volume through gently separated light, middle and shadow planes of the LOCAL COLOR. Lighter strokes are muted pigment on the object, never reflected light spots. Clear silhouette and few readable material features for small inventory display. No self-emission, bloom, aura, halo, rim lighting, white edge streaks, specular hotspots, sparkles, glossy reflections, glassy droplets, plastic or frosted 3D rendering. No flat vector shapes, thick cartoon outline, photographic noise or dense tiny scratches. TRUE ALPHA TRANSPARENCY outside the physical silhouette; no backdrop, floor, cast shadow, frame, lettering or interface. Exactly ONE complete object, fully inside canvas with about 6 percent even safe margin. Never reproduce the brown/black preview background of the reference. Subject: A small irregular honey-yellow beeswax piece with a few broken natural honeycomb cells and softly rounded waxy edges. Compose upright within a 2:2 canvas. Final inventory footprint 2x2, packed dimensions 256x256. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "output_source_directory": "textures/items/inventory_density_20261029/raw_unified_final/",
+      "references": [
+        "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png"
+      ],
+      "subject_en": "A small irregular honey-yellow beeswax piece with a few broken natural honeycomb cells and softly rounded waxy edges.",
+      "semantic_notes": "石蜂蜡核心是蜂蜡，不画石头、蜂群、蜂蜜罐或完整蜂巢场景。",
+      "status": "generated",
+      "generated_source": "E:\\tmp\\CodexData\\generated_images\\01a18742-7445-7a70-989f-f7cbf53b7175\\exec-5b786a1f-0a4a-4a7f-bafd-d6efbb49285a.png",
+      "saved": "E:/stacklands/textures/items/inventory_density_20261029/raw_unified_final/mat_stone_bee_wax.png",
+      "review_status": "passed_semantics_style_alpha_and_small_scale",
+      "raw_size": [
+        1254,
+        1254
+      ],
+      "alpha_bounds_threshold_2": [
+        77,
+        109,
+        1179,
+        1177
+      ]
+    },
+    {
+      "key": "mat_sandvein_stone_fragment",
+      "file": "mat_sandvein_stone_fragment.png",
+      "name": "砂脉石片",
+      "cells": [
+        2,
+        3
+      ],
+      "ref": "E:\\stacklands\\textures\\items\\item_sandvein_stone_fragment.png",
+      "style_reference": "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png",
+      "prompt": "One complete standalone inventory object for a Chinese cultivation RPG. Image 1 is the USER APPROVED PORCELAIN BOTTLE STYLE REFERENCE, not the subject to copy unless the subject is a bottle. Match its hand-painted watercolor texture and believable painted volume, while keeping this object's own material and local colors. Chinese ink and restrained watercolor, thin varied grey-brown contours, low-saturation pigments, subtle directional brushwork following the form. Quiet matte surfaces under broad diffuse illumination. Solid volume through gently separated light, middle and shadow planes of the LOCAL COLOR. Lighter strokes are muted pigment on the object, never reflected light spots. Clear silhouette and few readable material features for small inventory display. No self-emission, bloom, aura, halo, rim lighting, white edge streaks, specular hotspots, sparkles, glossy reflections, glassy droplets, plastic or frosted 3D rendering. No flat vector shapes, thick cartoon outline, photographic noise or dense tiny scratches. TRUE ALPHA TRANSPARENCY outside the physical silhouette; no backdrop, floor, cast shadow, frame, lettering or interface. Exactly ONE complete object, fully inside canvas with about 6 percent even safe margin. Never reproduce the brown/black preview background of the reference. Subject: One thin compact sandstone flake, pale sandy-beige, with a single shallow light-brown mineral vein crossing the dense layered stone. Compose upright within a 2:3 canvas. Final inventory footprint 2x3, packed dimensions 256x384. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "output_source_directory": "textures/items/inventory_density_20261029/raw_unified_final/",
+      "references": [
+        "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png"
+      ],
+      "subject_en": "One thin compact sandstone flake, pale sandy-beige, with a single shallow light-brown mineral vein crossing the dense layered stone.",
+      "semantic_notes": "按原文薄片砂岩与浅褐矿纹；不画木纹板或完整山岩。",
+      "status": "generated",
+      "generated_source": "E:\\tmp\\CodexData\\generated_images\\01a18742-7445-7a70-989f-f7cbf53b7175\\exec-cca5c8f9-d245-4856-b20b-ce88d1079a5a.png",
+      "saved": "E:/stacklands/textures/items/inventory_density_20261029/raw_unified_final/mat_sandvein_stone_fragment.png",
+      "review_status": "passed_semantics_style_alpha_and_small_scale",
+      "raw_size": [
+        1024,
+        1536
+      ],
+      "alpha_bounds_threshold_2": [
+        121,
+        97,
+        939,
+        1455
+      ]
+    },
+    {
+      "key": "mat_gravel_mushroom",
+      "file": "mat_gravel_mushroom.png",
+      "name": "砾地菌伞",
+      "cells": [
+        3,
+        3
+      ],
+      "ref": "E:\\stacklands\\textures\\items\\item_gravel_mushroom.png",
+      "style_reference": "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png",
+      "prompt": "One complete standalone inventory object for a Chinese cultivation RPG. Image 1 is the USER APPROVED PORCELAIN BOTTLE STYLE REFERENCE, not the subject to copy unless the subject is a bottle. Match its hand-painted watercolor texture and believable painted volume, while keeping this object's own material and local colors. Chinese ink and restrained watercolor, thin varied grey-brown contours, low-saturation pigments, subtle directional brushwork following the form. Quiet matte surfaces under broad diffuse illumination. Solid volume through gently separated light, middle and shadow planes of the LOCAL COLOR. Lighter strokes are muted pigment on the object, never reflected light spots. Clear silhouette and few readable material features for small inventory display. No self-emission, bloom, aura, halo, rim lighting, white edge streaks, specular hotspots, sparkles, glossy reflections, glassy droplets, plastic or frosted 3D rendering. No flat vector shapes, thick cartoon outline, photographic noise or dense tiny scratches. TRUE ALPHA TRANSPARENCY outside the physical silhouette; no backdrop, floor, cast shadow, frame, lettering or interface. Exactly ONE complete object, fully inside canvas with about 6 percent even safe margin. Never reproduce the brown/black preview background of the reference. Subject: One stout beige-grey mushroom, a broad low cap with subtle earthy speckling above a thick short stem, with natural gills partly visible beneath the rim. Compose upright within a 3:3 canvas. Final inventory footprint 3x3, packed dimensions 384x384. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "output_source_directory": "textures/items/inventory_density_20261029/raw_unified_final/",
+      "references": [
+        "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png"
+      ],
+      "subject_en": "One stout beige-grey mushroom, a broad low cap with subtle earthy speckling above a thick short stem, with natural gills partly visible beneath the rim.",
+      "semantic_notes": "砾地菌伞是菌材；不是石头伞、岩台或盆栽；与云雾菌的小簇形区别。",
+      "status": "generated",
+      "generated_source": "E:\\tmp\\CodexData\\generated_images\\01a18742-7445-7a70-989f-f7cbf53b7175\\exec-1493d95d-efff-4756-a545-92b03f49d2c3.png",
+      "saved": "E:/stacklands/textures/items/inventory_density_20261029/raw_unified_final/mat_gravel_mushroom.png",
+      "review_status": "passed_semantics_style_alpha_and_small_scale",
+      "raw_size": [
+        1254,
+        1254
+      ],
+      "alpha_bounds_threshold_2": [
+        63,
+        100,
+        1192,
+        1177
+      ]
+    },
+    {
+      "key": "mat_zisha_spirit_soil",
+      "file": "mat_zisha_spirit_soil.png",
+      "name": "紫砂灵土",
+      "cells": [
+        2,
+        2
+      ],
+      "ref": "E:\\stacklands\\textures\\items\\item_zisha_spirit_soil.png",
+      "style_reference": "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png",
+      "prompt": "One complete standalone inventory object for a Chinese cultivation RPG. Image 1 is the USER APPROVED PORCELAIN BOTTLE STYLE REFERENCE, not the subject to copy unless the subject is a bottle. Match its hand-painted watercolor texture and believable painted volume, while keeping this object's own material and local colors. Chinese ink and restrained watercolor, thin varied grey-brown contours, low-saturation pigments, subtle directional brushwork following the form. Quiet matte surfaces under broad diffuse illumination. Solid volume through gently separated light, middle and shadow planes of the LOCAL COLOR. Lighter strokes are muted pigment on the object, never reflected light spots. Clear silhouette and few readable material features for small inventory display. No self-emission, bloom, aura, halo, rim lighting, white edge streaks, specular hotspots, sparkles, glossy reflections, glassy droplets, plastic or frosted 3D rendering. No flat vector shapes, thick cartoon outline, photographic noise or dense tiny scratches. TRUE ALPHA TRANSPARENCY outside the physical silhouette; no backdrop, floor, cast shadow, frame, lettering or interface. Exactly ONE complete object, fully inside canvas with about 6 percent even safe margin. Never reproduce the brown/black preview background of the reference. Subject: A compact small mound of muted purple-brown granular earth, a few loose coarse clods resting together as one gathered material portion. Compose upright within a 2:2 canvas. Final inventory footprint 2x2, packed dimensions 256x256. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "output_source_directory": "textures/items/inventory_density_20261029/raw_unified_final/",
+      "references": [
+        "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png"
+      ],
+      "subject_en": "A compact small mound of muted purple-brown granular earth, a few loose coarse clods resting together as one gathered material portion.",
+      "semantic_notes": "紫砂灵土应显土粒/松散土团，不硬画成紫晶矿、花盆或陶器；不定义装量。",
+      "status": "generated",
+      "generated_source": "E:\\tmp\\CodexData\\generated_images\\01a18742-7445-7a70-989f-f7cbf53b7175\\exec-ff985288-8fbf-48d2-8beb-245c9ef08576.png",
+      "saved": "E:/stacklands/textures/items/inventory_density_20261029/raw_unified_final/mat_zisha_spirit_soil.png",
+      "review_status": "passed_semantics_style_alpha_and_small_scale",
+      "raw_size": [
+        1254,
+        1254
+      ],
+      "alpha_bounds_threshold_2": [
+        54,
+        248,
+        1204,
+        1076
+      ]
+    },
+    {
+      "key": "mat_bitter_moss_root",
+      "file": "bitter_moss_root_2x4.png",
+      "name": "苦苔根",
+      "cells": [
+        2,
+        4
+      ],
+      "ref": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\bitter_moss_root_2x4.png",
+      "style_reference": "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png",
+      "prompt": "One complete standalone inventory object for a Chinese cultivation RPG. Image 1 is the USER APPROVED PORCELAIN BOTTLE STYLE REFERENCE, not the subject to copy unless the subject is a bottle. Match its hand-painted watercolor texture and believable painted volume, while keeping this object's own material and local colors. Chinese ink and restrained watercolor, thin varied grey-brown contours, low-saturation pigments, subtle directional brushwork following the form. Quiet matte surfaces under broad diffuse illumination. Solid volume through gently separated light, middle and shadow planes of the LOCAL COLOR. Lighter strokes are muted pigment on the object, never reflected light spots. Clear silhouette and few readable material features for small inventory display. No self-emission, bloom, aura, halo, rim lighting, white edge streaks, specular hotspots, sparkles, glossy reflections, glassy droplets, plastic or frosted 3D rendering. No flat vector shapes, thick cartoon outline, photographic noise or dense tiny scratches. TRUE ALPHA TRANSPARENCY outside the physical silhouette; no backdrop, floor, cast shadow, frame, lettering or interface. Exactly ONE complete object, fully inside canvas with about 6 percent even safe margin. Never reproduce the brown/black preview background of the reference. Subject: One small harvested bitter-moss root specimen: a compact crown of a few grouped muted grey-green moss fronds above 3 to 5 main branching brown roots and a few subordinate root fibers. Upright, intact, compact silhouette. Compose upright within a 2:4 canvas. Final inventory footprint 2x4, packed dimensions 256x512. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props. ART DIRECTION: visibly hand-painted watercolor pigment blocks as in Image1 porcelain; simplify the moss crown into broad grouped leaf shapes and a few wide strokes. Restrained grey-green and umber. No photographic foliage, no sharp microleaf texture, no fine hair covering the root, no bright yellow-green leaves. The roots are modeled with a small number of broad quiet painted planes. Keep the whole physical root within the canvas.",
+      "output_source_directory": "textures/items/inventory_density_20261029/raw_unified_final/",
+      "references": [
+        "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png"
+      ],
+      "subject_en": "One small harvested bitter-moss root specimen, a compact mossy crown above elongated branching brown root fibers, composed upright with the roots contained.",
+      "semantic_notes": "根材突出根系；不附花盆、土块或地面，不画成整株大树。",
+      "status": "generated",
+      "generated_source": "E:\\tmp\\CodexData\\generated_images\\01a18742-7445-7a70-989f-f7cbf53b7175\\exec-e49400ab-8f58-441e-8a57-43a8a0dd6759.png",
+      "saved": "E:/stacklands/textures/items/inventory_density_20261029/raw_unified_final/bitter_moss_root_2x4.png",
+      "review_status": "passed_semantics_style_alpha_and_small_scale",
+      "raw_size": [
+        887,
+        1774
+      ],
+      "alpha_bounds_threshold_2": [
+        58,
+        57,
+        852,
+        1716
+      ],
+      "previous_candidate": "textures/items/inventory_density_20261029/raw_unified_final/rejected/bitter_moss_root_2x4_before_simplification.png",
+      "review_note": "Regenerated with simpler grouped moss and broad painted root planes to match porcelain reference."
+    },
+    {
+      "key": "mat_withered_vine_knot",
+      "file": "mat_withered_vine_knot.png",
+      "name": "荒藤结节",
+      "cells": [
+        2,
+        3
+      ],
+      "ref": "E:\\stacklands\\textures\\items\\item_withered_vine_knot.png",
+      "style_reference": "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png",
+      "prompt": "One complete standalone inventory object for a Chinese cultivation RPG. Image 1 is the USER APPROVED PORCELAIN BOTTLE STYLE REFERENCE, not the subject to copy unless the subject is a bottle. Match its hand-painted watercolor texture and believable painted volume, while keeping this object's own material and local colors. Chinese ink and restrained watercolor, thin varied grey-brown contours, low-saturation pigments, subtle directional brushwork following the form. Quiet matte surfaces under broad diffuse illumination. Solid volume through gently separated light, middle and shadow planes of the LOCAL COLOR. Lighter strokes are muted pigment on the object, never reflected light spots. Clear silhouette and few readable material features for small inventory display. No self-emission, bloom, aura, halo, rim lighting, white edge streaks, specular hotspots, sparkles, glossy reflections, glassy droplets, plastic or frosted 3D rendering. No flat vector shapes, thick cartoon outline, photographic noise or dense tiny scratches. TRUE ALPHA TRANSPARENCY outside the physical silhouette; no backdrop, floor, cast shadow, frame, lettering or interface. Exactly ONE complete object, fully inside canvas with about 6 percent even safe margin. Never reproduce the brown/black preview background of the reference. Subject: A compact naturally knotted piece of dry brown vine, thick woody curved fibers interlocked around a tight irregular central node. Compose upright within a 2:3 canvas. Final inventory footprint 2x3, packed dimensions 256x384. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "output_source_directory": "textures/items/inventory_density_20261029/raw_unified_final/",
+      "references": [
+        "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png"
+      ],
+      "subject_en": "A compact naturally knotted piece of dry brown vine, thick woody curved fibers interlocked around a tight irregular central node.",
+      "semantic_notes": "荒藤结节是天然藤节；不画人工绳结、饰品、法器或发芽活藤。",
+      "status": "generated",
+      "generated_source": "E:\\tmp\\CodexData\\generated_images\\01a18742-7445-7a70-989f-f7cbf53b7175\\exec-1d4230a3-3934-4603-92d5-7d550ef753ba.png",
+      "saved": "E:/stacklands/textures/items/inventory_density_20261029/raw_unified_final/mat_withered_vine_knot.png",
+      "review_status": "passed_semantics_style_alpha_and_small_scale",
+      "raw_size": [
+        1024,
+        1536
+      ],
+      "alpha_bounds_threshold_2": [
+        82,
+        64,
+        958,
+        1473
+      ]
+    },
+    {
+      "key": "mat_cracked_armor_stone",
+      "file": "mat_cracked_armor_stone.png",
+      "name": "裂甲石",
+      "cells": [
+        3,
+        3
+      ],
+      "ref": "E:\\stacklands\\textures\\items\\item_cracked_armor_stone.png",
+      "style_reference": "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png",
+      "prompt": "One complete standalone inventory object for a Chinese cultivation RPG. Image 1 is the USER APPROVED PORCELAIN BOTTLE STYLE REFERENCE, not the subject to copy unless the subject is a bottle. Match its hand-painted watercolor texture and believable painted volume, while keeping this object's own material and local colors. Chinese ink and restrained watercolor, thin varied grey-brown contours, low-saturation pigments, subtle directional brushwork following the form. Quiet matte surfaces under broad diffuse illumination. Solid volume through gently separated light, middle and shadow planes of the LOCAL COLOR. Lighter strokes are muted pigment on the object, never reflected light spots. Clear silhouette and few readable material features for small inventory display. No self-emission, bloom, aura, halo, rim lighting, white edge streaks, specular hotspots, sparkles, glossy reflections, glassy droplets, plastic or frosted 3D rendering. No flat vector shapes, thick cartoon outline, photographic noise or dense tiny scratches. TRUE ALPHA TRANSPARENCY outside the physical silhouette; no backdrop, floor, cast shadow, frame, lettering or interface. Exactly ONE complete object, fully inside canvas with about 6 percent even safe margin. Never reproduce the brown/black preview background of the reference. Subject: One dense angular grey stone fragment, broad rugged planes split by a few deep natural fractures and muted brown mineral edges. Compose upright within a 3:3 canvas. Final inventory footprint 3x3, packed dimensions 384x384. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "output_source_directory": "textures/items/inventory_density_20261029/raw_unified_final/",
+      "references": [
+        "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png"
+      ],
+      "subject_en": "One dense angular grey stone fragment, broad rugged planes split by a few deep natural fractures and muted brown mineral edges.",
+      "semantic_notes": "裂甲石是石材，不画盔甲、盾牌、刀刃或夸张爆裂效果。",
+      "status": "generated",
+      "generated_source": "E:\\tmp\\CodexData\\generated_images\\01a18742-7445-7a70-989f-f7cbf53b7175\\exec-913ae524-0e26-4704-9521-2c830247f47d.png",
+      "saved": "E:/stacklands/textures/items/inventory_density_20261029/raw_unified_final/mat_cracked_armor_stone.png",
+      "review_status": "passed_semantics_style_alpha_and_small_scale",
+      "raw_size": [
+        1254,
+        1254
+      ],
+      "alpha_bounds_threshold_2": [
+        169,
+        106,
+        1127,
+        1199
+      ]
+    },
+    {
+      "key": "mat_brown_copper_sand",
+      "file": "mat_brown_copper_sand.png",
+      "name": "褐铜砂",
+      "cells": [
+        2,
+        2
+      ],
+      "ref": "E:\\stacklands\\textures\\items\\item_brown_copper_sand.png",
+      "style_reference": "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png",
+      "prompt": "One complete standalone inventory object for a Chinese cultivation RPG. Image 1 is the USER APPROVED PORCELAIN BOTTLE STYLE REFERENCE, not the subject to copy unless the subject is a bottle. Match its hand-painted watercolor texture and believable painted volume, while keeping this object's own material and local colors. Chinese ink and restrained watercolor, thin varied grey-brown contours, low-saturation pigments, subtle directional brushwork following the form. Quiet matte surfaces under broad diffuse illumination. Solid volume through gently separated light, middle and shadow planes of the LOCAL COLOR. Lighter strokes are muted pigment on the object, never reflected light spots. Clear silhouette and few readable material features for small inventory display. No self-emission, bloom, aura, halo, rim lighting, white edge streaks, specular hotspots, sparkles, glossy reflections, glassy droplets, plastic or frosted 3D rendering. No flat vector shapes, thick cartoon outline, photographic noise or dense tiny scratches. TRUE ALPHA TRANSPARENCY outside the physical silhouette; no backdrop, floor, cast shadow, frame, lettering or interface. Exactly ONE complete object, fully inside canvas with about 6 percent even safe margin. Never reproduce the brown/black preview background of the reference. Subject: A small cohesive mound of brown copper-bearing mineral sand, coarse reddish-brown grains with a few slightly larger natural granules. Compose upright within a 2:2 canvas. Final inventory footprint 2x2, packed dimensions 256x256. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "output_source_directory": "textures/items/inventory_density_20261029/raw_unified_final/",
+      "references": [
+        "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png"
+      ],
+      "subject_en": "A small cohesive mound of brown copper-bearing mineral sand, coarse reddish-brown grains with a few slightly larger natural granules.",
+      "semantic_notes": "砂粒材料，不画整铜矿或整块金属；不装大袋，不定义颗粒数与份数。",
+      "status": "generated",
+      "generated_source": "E:\\tmp\\CodexData\\generated_images\\01a18742-7445-7a70-989f-f7cbf53b7175\\exec-0968a0c6-7009-48b2-b6fd-2a830cfd57f7.png",
+      "saved": "E:/stacklands/textures/items/inventory_density_20261029/raw_unified_final/mat_brown_copper_sand.png",
+      "review_status": "passed_semantics_style_alpha_and_small_scale",
+      "raw_size": [
+        1254,
+        1254
+      ],
+      "alpha_bounds_threshold_2": [
+        13,
+        237,
+        1245,
+        1063
+      ]
+    },
+    {
+      "key": "mat_redwood_seed_core",
+      "file": "mat_redwood_seed_core.png",
+      "name": "赤瓤木核",
+      "cells": [
+        2,
+        3
+      ],
+      "ref": "E:\\stacklands\\textures\\items\\item_redwood_seed_core.png",
+      "style_reference": "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png",
+      "prompt": "One complete standalone inventory object for a Chinese cultivation RPG. Image 1 is the USER APPROVED PORCELAIN BOTTLE STYLE REFERENCE, not the subject to copy unless the subject is a bottle. Match its hand-painted watercolor texture and believable painted volume, while keeping this object's own material and local colors. Chinese ink and restrained watercolor, thin varied grey-brown contours, low-saturation pigments, subtle directional brushwork following the form. Quiet matte surfaces under broad diffuse illumination. Solid volume through gently separated light, middle and shadow planes of the LOCAL COLOR. Lighter strokes are muted pigment on the object, never reflected light spots. Clear silhouette and few readable material features for small inventory display. No self-emission, bloom, aura, halo, rim lighting, white edge streaks, specular hotspots, sparkles, glossy reflections, glassy droplets, plastic or frosted 3D rendering. No flat vector shapes, thick cartoon outline, photographic noise or dense tiny scratches. TRUE ALPHA TRANSPARENCY outside the physical silhouette; no backdrop, floor, cast shadow, frame, lettering or interface. Exactly ONE complete object, fully inside canvas with about 6 percent even safe margin. Never reproduce the brown/black preview background of the reference. Subject: One compact red heartwood core section, showing deep brick-red concentric wood grain inside a thin rough brown woody outer edge. Compose upright within a 2:3 canvas. Final inventory footprint 2x3, packed dimensions 256x384. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "output_source_directory": "textures/items/inventory_density_20261029/raw_unified_final/",
+      "references": [
+        "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png"
+      ],
+      "subject_en": "One compact red heartwood core section, showing deep brick-red concentric wood grain inside a thin rough brown woody outer edge.",
+      "semantic_notes": "中文是赤瓤木核，主案收集木核；不是水果、果核或英文id暗示的种子。",
+      "status": "generated",
+      "generated_source": "E:\\tmp\\CodexData\\generated_images\\01a18742-7445-7a70-989f-f7cbf53b7175\\exec-42cc6565-0d09-4af7-a06c-27f7c6f4e138.png",
+      "saved": "E:/stacklands/textures/items/inventory_density_20261029/raw_unified_final/mat_redwood_seed_core.png",
+      "review_status": "passed_semantics_style_alpha_and_small_scale",
+      "raw_size": [
+        1024,
+        1536
+      ],
+      "alpha_bounds_threshold_2": [
+        43,
+        119,
+        990,
+        1438
+      ]
+    },
+    {
+      "key": "mat_chiwen_suilishi",
+      "file": "mat_chiwen_suilishi.png",
+      "name": "赤纹燧石",
+      "cells": [
+        3,
+        3
+      ],
+      "ref": "E:\\stacklands\\textures\\items\\item_chiwen_suilishi.png",
+      "style_reference": "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png",
+      "prompt": "One complete standalone inventory object for a Chinese cultivation RPG. Image 1 is the USER APPROVED PORCELAIN BOTTLE STYLE REFERENCE, not the subject to copy unless the subject is a bottle. Match its hand-painted watercolor texture and believable painted volume, while keeping this object's own material and local colors. Chinese ink and restrained watercolor, thin varied grey-brown contours, low-saturation pigments, subtle directional brushwork following the form. Quiet matte surfaces under broad diffuse illumination. Solid volume through gently separated light, middle and shadow planes of the LOCAL COLOR. Lighter strokes are muted pigment on the object, never reflected light spots. Clear silhouette and few readable material features for small inventory display. No self-emission, bloom, aura, halo, rim lighting, white edge streaks, specular hotspots, sparkles, glossy reflections, glassy droplets, plastic or frosted 3D rendering. No flat vector shapes, thick cartoon outline, photographic noise or dense tiny scratches. TRUE ALPHA TRANSPARENCY outside the physical silhouette; no backdrop, floor, cast shadow, frame, lettering or interface. Exactly ONE complete object, fully inside canvas with about 6 percent even safe margin. Never reproduce the brown/black preview background of the reference. Subject: One compact charcoal-grey flint stone chunk, angular chipped fracture planes crossed by a few natural dull reddish-brown mineral seams. Compose upright within a 3:3 canvas. Final inventory footprint 3x3, packed dimensions 384x384. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "output_source_directory": "textures/items/inventory_density_20261029/raw_unified_final/",
+      "references": [
+        "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png"
+      ],
+      "subject_en": "One compact charcoal-grey flint stone chunk, angular chipped fracture planes crossed by a few natural dull reddish-brown mineral seams.",
+      "semantic_notes": "赤纹燧石而非正在燃烧的火石；不画火焰、岩浆、符文或赤红光。",
+      "status": "generated",
+      "generated_source": "E:\\tmp\\CodexData\\generated_images\\01a18742-7445-7a70-989f-f7cbf53b7175\\exec-57e1f807-2381-427c-b5f6-8cba0f82b9f0.png",
+      "saved": "E:/stacklands/textures/items/inventory_density_20261029/raw_unified_final/mat_chiwen_suilishi.png",
+      "review_status": "passed_semantics_style_alpha_and_small_scale",
+      "raw_size": [
+        1254,
+        1254
+      ],
+      "alpha_bounds_threshold_2": [
+        113,
+        111,
+        1156,
+        1169
+      ]
+    },
+    {
+      "key": "mat_red_scale_shed",
+      "file": "mat_red_scale_shed.png",
+      "name": "赤鳞蜕",
+      "cells": [
+        2,
+        3
+      ],
+      "ref": "E:\\stacklands\\textures\\items\\item_red_scale_shed.png",
+      "style_reference": "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png",
+      "prompt": "One complete standalone inventory object for a Chinese cultivation RPG. Image 1 is the USER APPROVED PORCELAIN BOTTLE STYLE REFERENCE, not the subject to copy unless the subject is a bottle. Match its hand-painted watercolor texture and believable painted volume, while keeping this object's own material and local colors. Chinese ink and restrained watercolor, thin varied grey-brown contours, low-saturation pigments, subtle directional brushwork following the form. Quiet matte surfaces under broad diffuse illumination. Solid volume through gently separated light, middle and shadow planes of the LOCAL COLOR. Lighter strokes are muted pigment on the object, never reflected light spots. Clear silhouette and few readable material features for small inventory display. No self-emission, bloom, aura, halo, rim lighting, white edge streaks, specular hotspots, sparkles, glossy reflections, glassy droplets, plastic or frosted 3D rendering. No flat vector shapes, thick cartoon outline, photographic noise or dense tiny scratches. TRUE ALPHA TRANSPARENCY outside the physical silhouette; no backdrop, floor, cast shadow, frame, lettering or interface. Exactly ONE complete object, fully inside canvas with about 6 percent even safe margin. Never reproduce the brown/black preview background of the reference. Subject: One small flexible fragment of shed red-scaled skin, with overlapping russet-red scales following a gently curved thin sheet. Compose upright within a 2:3 canvas. Final inventory footprint 2x3, packed dimensions 256x384. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "output_source_directory": "textures/items/inventory_density_20261029/raw_unified_final/",
+      "references": [
+        "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png"
+      ],
+      "subject_en": "One small flexible fragment of shed red-scaled skin, with overlapping russet-red scales following a gently curved thin sheet.",
+      "semantic_notes": "蜕皮鳞片材料；不画火焰、叶片、整兽或金属鳞甲；兽种关联未定义，不自行指定龙。",
+      "status": "generated",
+      "generated_source": "E:\\tmp\\CodexData\\generated_images\\01a18742-7445-7a70-989f-f7cbf53b7175\\exec-0dbc495f-7d86-4931-84ff-0cf0d1c74005.png",
+      "saved": "E:/stacklands/textures/items/inventory_density_20261029/raw_unified_final/mat_red_scale_shed.png",
+      "review_status": "passed_semantics_style_alpha_and_small_scale",
+      "raw_size": [
+        1024,
+        1536
+      ],
+      "alpha_bounds_threshold_2": [
+        51,
+        88,
+        990,
+        1472
+      ]
+    },
+    {
+      "key": "mat_tong_sui_ore",
+      "file": "mat_tong_sui_ore.png",
+      "name": "铜髓矿",
+      "cells": [
+        3,
+        3
+      ],
+      "ref": "E:\\stacklands\\textures\\items\\item_tong_sui_ore.png",
+      "style_reference": "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png",
+      "prompt": "One complete standalone inventory object for a Chinese cultivation RPG. Image 1 is the USER APPROVED PORCELAIN BOTTLE STYLE REFERENCE, not the subject to copy unless the subject is a bottle. Match its hand-painted watercolor texture and believable painted volume, while keeping this object's own material and local colors. Chinese ink and restrained watercolor, thin varied grey-brown contours, low-saturation pigments, subtle directional brushwork following the form. Quiet matte surfaces under broad diffuse illumination. Solid volume through gently separated light, middle and shadow planes of the LOCAL COLOR. Lighter strokes are muted pigment on the object, never reflected light spots. Clear silhouette and few readable material features for small inventory display. No self-emission, bloom, aura, halo, rim lighting, white edge streaks, specular hotspots, sparkles, glossy reflections, glassy droplets, plastic or frosted 3D rendering. No flat vector shapes, thick cartoon outline, photographic noise or dense tiny scratches. TRUE ALPHA TRANSPARENCY outside the physical silhouette; no backdrop, floor, cast shadow, frame, lettering or interface. Exactly ONE complete object, fully inside canvas with about 6 percent even safe margin. Never reproduce the brown/black preview background of the reference. Subject: One rough compact copper-bearing ore lump, rusty copper-orange mineral masses embedded in a darker brown rocky matrix with a few muted green mineral traces. Compose upright within a 3:3 canvas. Final inventory footprint 3x3, packed dimensions 384x384. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "output_source_directory": "textures/items/inventory_density_20261029/raw_unified_final/",
+      "references": [
+        "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png"
+      ],
+      "subject_en": "One rough compact copper-bearing ore lump, rusty copper-orange mineral masses embedded in a darker brown rocky matrix with a few muted green mineral traces.",
+      "semantic_notes": "铜髓矿是原矿，不画精炼铜锭或铜器；铜色矿脉与底岩清楚。",
+      "status": "generated",
+      "generated_source": "E:\\tmp\\CodexData\\generated_images\\01a18742-7445-7a70-989f-f7cbf53b7175\\exec-d3312cad-76b3-4212-892d-49516875b185.png",
+      "saved": "E:/stacklands/textures/items/inventory_density_20261029/raw_unified_final/mat_tong_sui_ore.png",
+      "review_status": "passed_semantics_style_alpha_and_small_scale",
+      "raw_size": [
+        1254,
+        1254
+      ],
+      "alpha_bounds_threshold_2": [
+        108,
+        95,
+        1178,
+        1196
+      ]
+    },
+    {
+      "key": "mat_mistheart_mushroom_core",
+      "file": "mat_mistheart_mushroom_core.png",
+      "name": "雾心菌核",
+      "cells": [
+        2,
+        2
+      ],
+      "ref": "E:\\stacklands\\textures\\items\\item_mistheart_mushroom_core.png",
+      "style_reference": "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png",
+      "prompt": "One complete standalone inventory object for a Chinese cultivation RPG. Image 1 is the USER APPROVED PORCELAIN BOTTLE STYLE REFERENCE, not the subject to copy unless the subject is a bottle. Match its hand-painted watercolor texture and believable painted volume, while keeping this object's own material and local colors. Chinese ink and restrained watercolor, thin varied grey-brown contours, low-saturation pigments, subtle directional brushwork following the form. Quiet matte surfaces under broad diffuse illumination. Solid volume through gently separated light, middle and shadow planes of the LOCAL COLOR. Lighter strokes are muted pigment on the object, never reflected light spots. Clear silhouette and few readable material features for small inventory display. No self-emission, bloom, aura, halo, rim lighting, white edge streaks, specular hotspots, sparkles, glossy reflections, glassy droplets, plastic or frosted 3D rendering. No flat vector shapes, thick cartoon outline, photographic noise or dense tiny scratches. TRUE ALPHA TRANSPARENCY outside the physical silhouette; no backdrop, floor, cast shadow, frame, lettering or interface. Exactly ONE complete object, fully inside canvas with about 6 percent even safe margin. Never reproduce the brown/black preview background of the reference. Subject: One compact firm fungal sclerotium, rounded and irregular with a damp brown outer rind; a small natural broken face reveals tightly packed layered fungal tissue. The interior is dense and solid. Compose upright within a 2:2 canvas. Final inventory footprint 2x2, packed dimensions 256x256. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "output_source_directory": "textures/items/inventory_density_20261029/raw_unified_final/",
+      "references": [
+        "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png"
+      ],
+      "subject_en": "One compact firm fungal sclerotium, rounded and irregular with a damp brown outer rind; a small natural broken face reveals tightly packed layered fungal tissue. The interior is dense and solid.",
+      "semantic_notes": "原文潮润外层、层层致密；禁止空心洞窟、树洞、蜂窝或地质空腔，非带伞柄蘑菇。",
+      "status": "generated",
+      "generated_source": "E:\\tmp\\CodexData\\generated_images\\01a18742-7445-7a70-989f-f7cbf53b7175\\exec-e1f4dbf2-b998-4bd0-bce3-07d46469f03e.png",
+      "saved": "E:/stacklands/textures/items/inventory_density_20261029/raw_unified_final/mat_mistheart_mushroom_core.png",
+      "review_status": "passed_semantics_style_alpha_and_small_scale",
+      "raw_size": [
+        1254,
+        1254
+      ],
+      "alpha_bounds_threshold_2": [
+        76,
+        132,
+        1188,
+        1161
+      ]
+    },
+    {
+      "key": "mat_mist_bell_flower",
+      "file": "mat_mist_bell_flower.png",
+      "name": "雾铃花",
+      "cells": [
+        2,
+        4
+      ],
+      "ref": "E:\\stacklands\\textures\\items\\item_mist_bell_flower.png",
+      "style_reference": "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png",
+      "prompt": "One complete standalone inventory object for a Chinese cultivation RPG. Image 1 is the USER APPROVED PORCELAIN BOTTLE STYLE REFERENCE, not the subject to copy unless the subject is a bottle. Match its hand-painted watercolor texture and believable painted volume, while keeping this object's own material and local colors. Chinese ink and restrained watercolor, thin varied grey-brown contours, low-saturation pigments, subtle directional brushwork following the form. Quiet matte surfaces under broad diffuse illumination. Solid volume through gently separated light, middle and shadow planes of the LOCAL COLOR. Lighter strokes are muted pigment on the object, never reflected light spots. Clear silhouette and few readable material features for small inventory display. No self-emission, bloom, aura, halo, rim lighting, white edge streaks, specular hotspots, sparkles, glossy reflections, glassy droplets, plastic or frosted 3D rendering. No flat vector shapes, thick cartoon outline, photographic noise or dense tiny scratches. TRUE ALPHA TRANSPARENCY outside the physical silhouette; no backdrop, floor, cast shadow, frame, lettering or interface. Exactly ONE complete object, fully inside canvas with about 6 percent even safe margin. Never reproduce the brown/black preview background of the reference. Subject: One slender harvested flower stalk, a few small drooping ivory bell-shaped blossoms above modest muted green leaves, composed upright. Compose upright within a 2:4 canvas. Final inventory footprint 2x4, packed dimensions 256x512. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "output_source_directory": "textures/items/inventory_density_20261029/raw_unified_final/",
+      "references": [
+        "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png"
+      ],
+      "subject_en": "One slender harvested flower stalk, a few small drooping ivory bell-shaped blossoms above modest muted green leaves, composed upright.",
+      "semantic_notes": "雾铃花的铃形自然花朵；不加雾气、铜铃、盆器或铺底地面。",
+      "status": "generated",
+      "generated_source": "E:\\tmp\\CodexData\\generated_images\\01a18742-7445-7a70-989f-f7cbf53b7175\\exec-4d54333a-0133-4ad1-9083-50fa6358b991.png",
+      "saved": "E:/stacklands/textures/items/inventory_density_20261029/raw_unified_final/mat_mist_bell_flower.png",
+      "review_status": "passed_semantics_style_alpha_and_small_scale",
+      "raw_size": [
+        887,
+        1774
+      ],
+      "alpha_bounds_threshold_2": [
+        70,
+        60,
+        824,
+        1731
+      ]
+    }
+  ],
+  "date": "2026-10-29",
+  "delegated_files": [
+    "mat_frostleaf_twig.png",
+    "mat_qinglan_vine_core.png",
+    "mat_qingmu_core.png",
+    "mat_bluegreen_feather.png",
+    "mat_qingmarrow_sprout.png",
+    "mat_windaperture_crystal_shard.png",
+    "mat_fengwen_quartz.png",
+    "mat_windvein_vine_fiber.png"
+  ],
+  "review_contact_sheets": [
+    "tmp/material_b_batch_0_1_2_3.png",
+    "tmp/material_b_batch_4_5_6_7.png",
+    "tmp/material_b_batch_8_9_10_11.png",
+    "tmp/material_b_batch_12_13_14_5.png"
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "backgroundNativeSize": [
+    1536,
+    1024
+  ],
+  "atlasNativeSize": [
+    2172,
+    724
+  ],
+  "templates": [
+    {
+      "type": "宗门",
+      "file": "宗门通用模板_v01.png",
+      "nativeSize": [
+        564,
+        353
+      ],
+      "displaySize": [
+        140,
+        88
+      ],
+      "position": [
+        329,
+        547
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sha256": "c4ad3dec0fa440ef65f982d8bf3ef8f7be2d19df000e7eca79c15ba52f8e3499"
+    },
+    {
+      "type": "城池",
+      "file": "城池通用模板_v01.png",
+      "nativeSize": [
+        635,
+        374
+      ],
+      "displaySize": [
+        128,
+        75
+      ],
+      "position": [
+        704,
+        560
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sha256": "9d3489b3650486961060341f6ccbe3e0657119aac1be85187d98f88ea54f27d7"
+    },
+    {
+      "type": "镇集",
+      "file": "镇集通用模板_v01.png",
+      "nativeSize": [
+        484,
+        304
+      ],
+      "displaySize": [
+        100,
+        63
+      ],
+      "position": [
+        1071,
+        572
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "sha256": "8ca753d51707e790ea98c803f0e5657c04ac20ac6c9ffcae85166a30a0f2dca5"
+    }
+  ],
+  "processing": "Native AI images; atlas cropping preserves alpha; preview only downsizes cutouts and composites them onto generated terrain. No new painted detail."
+}

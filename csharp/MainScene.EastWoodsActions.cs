@@ -102,18 +102,23 @@ public partial class MainScene
         var scene = beast.pack_for_battle(); var snapshot = beast.get_snapshot_data();
         RemoveChild(beast); beast.Free();
         if (scene is null || snapshot is null) return;
+        var forestRecord = !_east_woods_dungeon!.is_dynamic_instance && ForestWolfEvent.Supports(node) ? ensure_forest_wolf_record(action, node) : null;
+        if (forestRecord is not null) snapshot = (BattleEntityData)ForestWolfEvent.Wolf(forestRecord)!.Duplicate(true);
         snapshot.dun_speed = 100; // This encounter's short-test value; not a global species default.
+        if (forestRecord is not null) _east_woods_dungeon!.close_action_details();
         _east_woods_dungeon!.interrupt_travel();
         _east_woods_dungeon_state = _east_woods_dungeon.get_route_state();
         mark_save_dirty();
-        transition.set_battle_return_context(new Godot.Collections.Dictionary {
+        var context = new Godot.Collections.Dictionary {
             ["kind"] = "east_woods_beast", ["node"] = node, ["action"] = action.Id,
             ["route_state"] = _east_woods_dungeon_state.Duplicate(true), ["title"] = node == "root_hollow" ? "盘根深处 · 林地凶狼" : "林间兽踪 · 林地凶狼", ["allow_prebattle_cancel"] = true,
             ["loot_rewards"] = new Godot.Collections.Array {
                 new Godot.Collections.Dictionary { ["item_path"] = "res://resources/entities/items/兽骨.tres", ["count"] = 1, ["chance"] = 1f },
                 new Godot.Collections.Dictionary { ["item_path"] = "res://resources/entities/items/兽皮.tres", ["count"] = 1, ["chance"] = 1f }
             }
-        });
+        };
+        if (forestRecord is not null) context["forest_event_key"] = forestRecord["key"];
+        transition.set_battle_return_context(context);
         transition.start_team_battle(new Godot.Collections.Array<PackedScene> { playerScene },
             new Godot.Collections.Array<PackedScene> { scene }, new Godot.Collections.Array { player!.get_snapshot_data() },
             new Godot.Collections.Array { snapshot }, GetTree().CurrentScene.SceneFilePath);
@@ -121,6 +126,7 @@ public partial class MainScene
 
     private void restore_east_woods_beast_result(Godot.Collections.Dictionary summary, Godot.Collections.Dictionary context)
     {
+        if (restore_forest_wolf_battle_result(summary, context)) return;
         var dungeon = get_or_create_east_woods_dungeon();
         dungeon.restore_route_state(context.GetValueOrDefault("route_state", new Godot.Collections.Dictionary()).AsGodotDictionary());
         var victory = summary.GetValueOrDefault("player_victory", false).AsBool();

@@ -7,7 +7,7 @@ script = ExtResource("1")
 definition_id = &"sect_sword_chenglu"
 entity_name = "承露剑"
 description = "宗门制式凡器。物理防御 +2。"
-icon_path = "res://textures/ui/forged_swords_icons_20261025_v1/broad_sword.png"
+icon_path = "res://textures/items/inventory_density_20261029/broad_sword_3x6.png"
 item_category = "装备"
 item_subcategory = "凡器·剑"
 can_stack = false
@@ -17,3 +17,6 @@ weapon_type = 1
 fixed_bonuses = {
 "physical_defense": 2
 }
+inventory_width = 3
+inventory_height = 6
+inventory_can_rotate = true

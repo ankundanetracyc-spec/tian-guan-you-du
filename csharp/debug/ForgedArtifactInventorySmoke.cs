@@ -66,7 +66,7 @@ public partial class ForgedArtifactInventorySmoke : Node
             await ToSignal(GetTree().CreateTimer(.3), SceneTreeTimer.SignalName.Timeout);
             var slot = storage.FindChildren("*", "Control", true, false).OfType<StorageItemSlot>().First(x => x.artifact_data?.instance_id == first.instance_id);
             var content = (HoverInfoManager.HoverInfoContent)Invoke(storage, "build_hover_content", slot)!;
-            Check(content.Title == originalName && content.Icon is not null && content.Body.Contains("锋锐 " + archived.Sharpness), "真实行囊读取新实例详情");
+            Check(content.Title == originalName && content.Icon is not null && content.Body.Contains("\n锋锐：" + archived.Sharpness), "真实行囊读取新实例详情");
             var mouse = slot.GetGlobalTransformWithCanvas() * (slot.Size / 2);
             Input.FlushBufferedEvents(); Input.ParseInputEvent(new InputEventMouseMotion { Position = mouse, GlobalPosition = mouse }); Input.FlushBufferedEvents();
             Invoke(storage, "on_slot_info_requested", slot, false);

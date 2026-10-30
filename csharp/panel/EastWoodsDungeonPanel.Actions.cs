@@ -23,7 +23,9 @@ public partial class EastWoodsDungeonPanel
     // Compatibility query for old saves/tests; no paid exploration action remains.
     public bool is_explored(string node) => _visited.Contains(node) || progress(node + ":explore") > 0;
     private int progress(string key) => _actionProgress.GetValueOrDefault(key, 0).AsInt32();
-    public int action_remaining(string node, EastWoodsActions.ActionDef action) => action.Stock > 0 ? Math.Max(0, action.Stock - progress(node + ":" + action.Id)) : progress(node + ":" + action.Id) > 0 ? 0 : 1;
+    public int action_remaining(string node, EastWoodsActions.ActionDef action)
+        => !_dynamicMode && action.Battle && EastWoodsEcology.IsDispersed(_actionProgress, node, action.Id) ? 0
+            : action.Stock > 0 ? Math.Max(0, action.Stock - progress(node + ":" + action.Id)) : progress(node + ":" + action.Id) > 0 ? 0 : 1;
     public EastWoodsActions.ActionDef? find_action(string node, string id)
         => _dynamicMode
             ? DynamicDungeonExpedition.AvailableActions(_dynamicInstanceState, node, _actionProgress).FirstOrDefault(action => action.Id == id)
@@ -100,6 +102,7 @@ public partial class EastWoodsDungeonPanel
     public bool close_action_details()
     {
         if (_actionModal?.Visible != true) return false;
+        hide_forest_event();
         _actionModal.Hide(); _offeredAction = ""; return true;
     }
     public bool can_leave() => Visible && is_route_exit(_current) && !_isTraveling && !_actionBusy && !_npcEncounterBusy && _travelPawn is null;
@@ -245,7 +248,8 @@ public partial class EastWoodsDungeonPanel
             button.Disabled = _actionBusy || _npcEncounterBusy;
             button.Pressed += () =>
             {
-                if (action.ItemPath.Length > 0 || action.Battle) execute_named_action(_current, action.Id);
+                if (is_authored_forest_encounter(action)) request_forest_choice("open");
+                else if (action.ItemPath.Length > 0 || action.Battle) execute_named_action(_current, action.Id);
                 else offer_action(action);
             };
             actionRow.AddChild(button);
@@ -264,6 +268,7 @@ public partial class EastWoodsDungeonPanel
     }
     private void offer_action(EastWoodsActions.ActionDef action)
     {
+        if (is_authored_forest_encounter(action)) { request_forest_choice("open"); return; }
         var remaining = action.Stock > 0 ? $"　·　剩余 {action_remaining(_current, action)} 份" : "";
         var item = action.ItemPath.Length > 0 ? EastWoodsActions.Item(action.ItemPath) : null;
         open_action_card(item is null ? action.Name : action.Name + " · " + item.entity_name, action.Description,
@@ -272,6 +277,8 @@ public partial class EastWoodsDungeonPanel
     }
     private void open_action_card(string title, string body, string cost, string action)
     {
+        hide_forest_event();
+        ((Control)_actionCard!.GetParent()).Show();
         clear_hover();
         _offeredAction = action;
         _actionIcon!.Hide();

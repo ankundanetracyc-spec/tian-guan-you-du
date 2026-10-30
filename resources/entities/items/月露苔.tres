@@ -7,7 +7,7 @@
 script = ExtResource("1")
 definition_id = &"mat_moon_dew_moss"
 entity_name = "月露苔"
-icon_path = "res://textures/items/item_moon_dew_moss.png"
+icon_path = "res://textures/items/inventory_density_20261029/mat_moon_dew_moss.png"
 item_category = "材料"
 item_subcategory = "灵植"
 tags = Array[String](["五行[木]", "质地[纤维]", "功用[藏]", "相性[阴]"])
@@ -15,3 +15,6 @@ grade_value = 2
 can_stack = true
 max_stack = 999
 craft_data = ExtResource("2")
+inventory_width = 2
+inventory_height = 2
+inventory_can_rotate = true

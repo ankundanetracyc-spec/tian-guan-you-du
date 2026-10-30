@@ -7,7 +7,7 @@
 script = ExtResource("1")
 definition_id = &"mat_spirit_spring_dew"
 entity_name = "灵泉露"
-icon_path = "res://textures/items/item_spirit_spring_dew.png"
+icon_path = "res://textures/items/inventory_density_20261029/mat_spirit_spring_dew.png"
 item_category = "材料"
 item_subcategory = "灵液"
 tags = Array[String](["五行[水]", "质地[液体]", "功用[聚]", "功用[化]", "相性[和]"])
@@ -15,3 +15,6 @@ grade_value = 0
 can_stack = true
 max_stack = 999
 craft_data = ExtResource("2")
+inventory_width = 2
+inventory_height = 3
+inventory_can_rotate = true

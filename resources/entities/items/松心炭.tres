@@ -7,7 +7,7 @@
 script = ExtResource("1")
 definition_id = &"mat_pineheart_charcoal"
 entity_name = "松心炭"
-icon_path = "res://textures/items/item_pineheart_charcoal.png"
+icon_path = "res://textures/items/inventory_density_20261029/mat_pineheart_charcoal.png"
 item_category = "材料"
 item_subcategory = "炼器燃料"
 tags = Array[String](["五行[火]", "质地[颗粒]", "功用[固]", "相性[和]"])
@@ -15,3 +15,6 @@ grade_value = 2
 can_stack = true
 max_stack = 999
 craft_data = ExtResource("2")
+inventory_width = 2
+inventory_height = 3
+inventory_can_rotate = true

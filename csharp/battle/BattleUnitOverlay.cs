@@ -373,34 +373,23 @@ public partial class BattleUnitOverlay : CanvasLayer
     private void RefreshHoveredStatusInfo()
     {
         if(hoveredStatusBadge is null||!GodotObject.IsInstanceValid(hoveredStatusBadge)||!hoveredStatusBadge.IsVisibleInTree())return;
-        string title,body,subtitle;
-        Texture2D? icon;
+        HoverInfoManager.HoverInfoContent content;
         if(hoveredStatus is { } status)
         {
             if(!GodotObject.IsInstanceValid(status)||status.effect is null){HideStatusInfo();return;}
-            var effect=status.effect;
-            title=string.IsNullOrWhiteSpace(effect.name)?effect.effect_id:effect.name;
-            body=$"{effect.description}\n\n{status_duration_text(status,effect)}";
-            subtitle=hoveredStatusId.StartsWith("心法:",StringComparison.Ordinal)
-                ?"心法效果"
-                :effect.frame_counted_layers
-                    ?$"战斗状态 · 剩余 {status.stacks} 层（{status.stacks} 帧）· 上限 {effect.max_stacks} 层"
-                :$"战斗状态 · 层数 {status.stacks}/{Math.Max(1,effect.max_stacks)}（上限 {Math.Max(1,effect.max_stacks)}）";
-            icon=GetStatusIcon(hoveredStatusId,status);
+            content=BattleStatusPresentation.Instance(status,hoveredStatusId);
         }
         else
         {
-            title=$"{hoveredStatusName} ×{hoveredStatusCount}";
-            body=hoveredStatusTip;
-            subtitle="战斗状态";
-            icon=GetStatusIcon(hoveredStatusId,null);
+            var unit=views.FirstOrDefault(pair=>pair.Value.IsAncestorOf(hoveredStatusBadge)).Key;
+            if(unit is null){HideStatusInfo();return;}
+            var count=hoveredStatusId switch { "护盾"=>unit.shield,"气血"=>unit.qi_blood,"血炉"=>unit.blood_furnace_value,"炁"=>manager.get_battle_qi(unit),_=>hoveredStatusCount };
+            content=BattleStatusPresentation.Resource(unit,hoveredStatusId,count,manager.get_effective_mana_capacity(unit),hoveredStatusTip);
         }
-        title=CardPresentation.Underline(title);
-        body=CardPresentation.Underline(body);
-        var key=$"{title}\n{subtitle}\n{body}";
+        var key=$"{content.Title}\n{content.Body}";
         if(key==lastStatusHoverText)return;
         lastStatusHoverText=key;
-        HoverInfoManager.SetInfo(hoveredStatusBadge,new HoverInfoManager.HoverInfoContent(title,body,icon,subtitle));
+        HoverInfoManager.SetInfo(hoveredStatusBadge,content);
     }
     private static string status_duration_text(StatusInstance instance,StatusEffect effect)=>effect.duration_type switch
     {

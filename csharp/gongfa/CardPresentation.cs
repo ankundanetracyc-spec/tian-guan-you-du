@@ -17,7 +17,6 @@ public static class CardPresentation
         ["虚无"]="仅用于凝核牌局；即时队列战斗没有弃牌堆。",
         ["弃顶"]="弃置时置于弃牌堆顶。",
         ["乘势"]="满足该技能指定的上一项主动行动条件后，触发乘势效果。",
-        ["重击"]="拥有拳架时，消耗一层拳架，使本次技能伤害提高50%。",
         ["化解"]="详见修行百科的化解词条。",
         ["气血"]="层数降低时，按当前气血回落回复规则结算；回复率及替代效果由公共规则和当前生效效果共同决定。",
         ["散血"]="按技能注明的触发条件，直接打散目标指定层数的气血；不视为气血层数降低。",
@@ -58,7 +57,7 @@ public static class CardPresentation
         {
             if(skill.source_gongfa_name!="赤阳参同经")
             {
-                text=$"应对触发：位于当前槽且遇到敌方物理攻击时立即触发，获得 {CardRules.Block(skill,owner)} 层化解。";
+                text=$"位于当前槽且遇到敌方物理攻击时，可触发应对。触发应对时，获得 {CardRules.Block(skill,owner)} 层化解。";
                 responseBaseOnly = true;
             }
         }
@@ -75,8 +74,8 @@ public static class CardPresentation
             text = Regex.Replace(text, @"未触发时按正常行动时序结算基础效果(?:，不消耗血炉)?。", "");
             text = text.Replace("未触发应对时空放，不消耗体力、法力或使用次数，不产生效果。", "").Trim();
             text += CardRules.NormalCast(skill) is { } normal
-                ? $"\n未触发应对：{CombatEffectText(normal, owner)}"
-                : "\n未触发应对：空放，仅消耗本槽行动时间，不消耗体力、法力或使用次数，不产生效果。";
+                ? $"\n未触发应对时，{CombatEffectText(normal, owner)}"
+                : "\n未触发应对时，空放，仅消耗本槽行动时间，不消耗体力、法力或使用次数，不产生效果。";
         }
         text=ResolveFormulas(text,owner,skill);
         text=AppendStructuredFormulaDetails(text,skill,owner);
@@ -451,7 +450,7 @@ public static class CardPresentation
         if(skill.special_effects.Any(effect=>effect.GetValueOrDefault("effect","").AsString()=="forest_bei_pack_call"))
             return "全体存活的友方林地凶狼（含同物种变种）";
         if(skill.skill_name=="复命")return "从最近一次施展的非应对技能的合法目标中随机选择";
-        if (CardRules.IsResponse(skill)) return "应对：自身及匹配的来袭者；未应对：" + (CardRules.NormalCast(skill) is { } normal
+        if (CardRules.IsResponse(skill)) return "触发应对时，自身及匹配的来袭者；未触发应对时，" + (CardRules.NormalCast(skill) is { } normal
             ? CombatTargetText(normal, normal.description) : "无目标（空放）");
         if (skill.aoe_range > 0)
         {

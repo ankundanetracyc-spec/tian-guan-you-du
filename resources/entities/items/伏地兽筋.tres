@@ -8,7 +8,7 @@ script = ExtResource("1")
 definition_id = &"mat_earthbeast_sinew"
 entity_name = "伏地兽筋"
 description = "韧性十足的浅褐筋束，表面留有天然纤维走向。"
-icon_path = "res://textures/items/item_earthbeast_sinew.png"
+icon_path = "res://textures/items/inventory_density_20261029/mat_earthbeast_sinew.png"
 item_category = "材料"
 item_subcategory = "兽材"
 tags = Array[String](["五行[木]", "质地[纤维]", "功用[通]", "功用[生]", "相性[和]"])
@@ -17,3 +17,6 @@ can_stack = true
 max_stack = 999
 craft_data = ExtResource("2")
 
+inventory_width = 2
+inventory_height = 4
+inventory_can_rotate = true

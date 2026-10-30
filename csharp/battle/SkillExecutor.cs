@@ -239,10 +239,6 @@ public partial class SkillExecutor : Node
         context = ProcessStatus(attacker, "before_damage", context);
         context = ProcessStatus(target, "before_damage", context);
         var damage = Mathf.Max(context["damage"].AsInt32(), 0);
-        if (skill.keywords.Contains("重击") && attacker.Get("punch_frame").AsInt32() > 0)
-        {
-            attacker.Set("punch_frame", attacker.Get("punch_frame").AsInt32() - 1);
-        }
         var shield = target.Get("shield").AsInt32();
         var ignoreShield=GongfaSkillRewriteRuntime.HasEffect(skill,"xuan_shu_c1_jingzhe");
         var absorbed = ignoreShield?0:Mathf.Min(shield, damage);

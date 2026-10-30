@@ -110,6 +110,8 @@ public partial class WardrobePicker : Control
         if (clothing is null) return;
         _draft.appearance_clothes_style = clothing.appearance_style_index;
         _name!.Text = entry["display_name"].AsString();
+        _itemIcon!.MouseFilter = MouseFilterEnum.Pass;
+        HoverInfoManager.SetInfo(_itemIcon, ClothingItemPresentation.Hover(clothing));
         _itemIcon!.Texture = string.IsNullOrWhiteSpace(clothing.icon_path) || !ResourceLoader.Exists(clothing.icon_path)
             ? null : ResourceLoader.Load<Texture2D>(clothing.icon_path);
         refresh_preview();

@@ -7,7 +7,7 @@
 script = ExtResource("1")
 definition_id = &"mat_spirit_stone"
 entity_name = "灵石"
-icon_path = "res://textures/items/item_spirit_stone.png"
+icon_path = "res://textures/items/inventory_density_20261029/spirit_stone_1x1.png"
 item_category = "材料"
 item_subcategory = "灵石"
 tags = Array[String](["五行[土]", "质地[致密]", "功用[聚]", "功用[藏]", "功用[通]", "相性[和]"])
@@ -15,3 +15,6 @@ grade_value = 0
 can_stack = true
 max_stack = 999
 craft_data = ExtResource("2")
+inventory_width = 1
+inventory_height = 1
+inventory_can_rotate = true

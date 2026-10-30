@@ -1,0 +1,145 @@
+{
+  "source": "E:\\SteamLibrary\\steamapps\\common\\觅长生\\觅长生_Data\\level9",
+  "scope": "本机安装AllMaps行走场景；不等同UIMapPanel的宁州总览／传送界面",
+  "backgrounds": [
+    {
+      "object": "bigmap2020-5-11-0_01",
+      "position": {
+        "x": -10.09000015258789,
+        "y": 6.050000190734863,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "sprite": "bigmap-0_01",
+      "rect": {
+        "width": 2374.0,
+        "height": 1400.0
+      },
+      "pixelsPerUnit": 100.0,
+      "sortingOrder": -5
+    },
+    {
+      "object": "bigmap2020-5-11-0_04",
+      "position": {
+        "x": 13.649999618530273,
+        "y": -7.940000057220459,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "sprite": "bigmap-0_04",
+      "rect": {
+        "width": 2374.0,
+        "height": 1400.0
+      },
+      "pixelsPerUnit": 100.0,
+      "sortingOrder": -5
+    },
+    {
+      "object": "bigmap2020-5-11-0_02",
+      "position": {
+        "x": 13.649999618530273,
+        "y": 6.050000190734863,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "sprite": "bigmap-0_02",
+      "rect": {
+        "width": 2374.0,
+        "height": 1400.0
+      },
+      "pixelsPerUnit": 100.0,
+      "sortingOrder": -5
+    },
+    {
+      "object": "bigmap2020-5-11-0_03",
+      "position": {
+        "x": -10.09000015258789,
+        "y": -7.949999809265137,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+      },
+      "sprite": "bigmap-0_03",
+      "rect": {
+        "width": 2374.0,
+        "height": 1400.0
+      },
+      "pixelsPerUnit": 100.0,
+      "sortingOrder": -5
+    }
+  ],
+  "roots": [
+    {
+      "name": "BackgroundMusic",
+      "children": 0
+    },
+    {
+      "name": "MapLuXian",
+      "children": 54
+    },
+    {
+      "name": "Main Camera",
+      "children": 1
+    },
+    {
+      "name": "dian2",
+      "children": 0
+    },
+    {
+      "name": "dian1",
+      "children": 0
+    },
+    {
+      "name": "_FungusState",
+      "children": 0
+    },
+    {
+      "name": "MapMoveNode",
+      "children": 161
+    },
+    {
+      "name": "PlayTutorialCircle",
+      "children": 2
+    },
+    {
+      "name": "EventSystem",
+      "children": 0
+    },
+    {
+      "name": "AllMap",
+      "children": 34
+    },
+    {
+      "name": "TaskFlag",
+      "children": 0
+    },
+    {
+      "name": "Talk5009",
+      "children": 7
+    }
+  ],
+  "components": {
+    "MapMoveNode": 442,
+    "AllMapsLuXian": 54,
+    "AllMapManage": 1,
+    "AllMapShowLine": 1,
+    "MapNodeManager": 1,
+    "MapComponent": 169,
+    "AllMapNodeClick": 169
+  }
+}

@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="MaterialCraftData" load_steps=5 format=3]
+[gd_resource type="Resource" script_class="MaterialCraftData" load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://csharp/resources/MaterialCraftData.cs" id="1"]
 [ext_resource type="Script" path="res://csharp/resources/MaterialUtilityGrade.cs" id="2"]
+
+[ext_resource type="Script" path="res://csharp/resources/MaterialForgingData.cs" id="forging_script"]
 
 [sub_resource type="Resource" id="UtilitySolid"]
 script = ExtResource("2")
@@ -13,6 +15,18 @@ script = ExtResource("2")
 utility_id = "生"
 grade = 1
 
+[sub_resource type="Resource" id="forging_data"]
+script = ExtResource("forging_script")
+roles = PackedStringArray("复合身材", "性材")
+difficulty = 8
+retention = 0.8
+volume = 2
+extension = 9
+thickness = 0.24
+edge = 0.6
+strength = 0.8
+connection = 0.0
+
 [resource]
 script = ExtResource("1")
 element = "土"
@@ -20,3 +34,4 @@ polarity = 1
 texture = "致密"
 legacy_texture = "骨"
 utilities = Array[ExtResource("2")]([SubResource("UtilitySolid"), SubResource("UtilityVital")])
+forging = SubResource("forging_data")

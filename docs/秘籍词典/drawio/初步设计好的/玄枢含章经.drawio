@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Codex">
   <diagram id="xuan-shu-han-zhang" name="玄枢含章经">
-    <mxGraphModel dx="3641" dy="512" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2600" pageHeight="2630" math="0" shadow="0">
+    <mxGraphModel dx="3641" dy="512" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2600" pageHeight="2802" math="0" shadow="0">
       <root>
         <mxCell id="0" value="" />
         <mxCell id="1" parent="0" value="" />
@@ -13,7 +13,7 @@
         <mxCell id="c1" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第一卷：蛰雷&lt;br&gt;卷章ID：shou_shu_1&lt;br&gt;顺序：1&lt;br&gt;&lt;br&gt;定位：周天完成后自动施展术法槽10中的术法&lt;br&gt;研读值（累计）：24&lt;br&gt;学成可修至：云息三层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：凡人境及以上&lt;br&gt;前置：无&lt;br&gt;研读属性：灵慧≥5&lt;br&gt;&lt;br&gt;学会永久属性：灵慧 +0.5；术法造诣 +0.5&lt;br&gt;&lt;br&gt;习得：惊蛰&lt;/div&gt;" vertex="1">
           <mxGeometry height="470" width="340" x="1270" y="370" as="geometry" />
         </mxCell>
-        <mxCell id="c1_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="心法被动：玄枢含章&#10;习得：惊蛰&#10;&#10;关键词：周天&#10;效果：术法槽10限装非应对术法，且不可排入行动队列。周天完成后自动施展；需要目标时随机选择合法目标。无合法目标则落空，不支付费用、不计次数或冷却。自动施展期间再次周天仍清炁、回满法力，但不再次触发自动施展。&#10;&#10;惊蛰：&#10;关键词：散血&#10;耗费：体力 0、法力 1&#10;目标：指定1名敌方&#10;出手方式：远程&#10;效果：造成A点（A=round(8 + 灵慧×0.65 + 术法造诣×0.20)）物理伤害。本技能不经行动队列施展时，命中后打散目标1层气血。。&#10;使用次数：不限" vertex="1">
+        <mxCell id="c1_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="心法被动：玄枢含章&#xA;习得：惊蛰&#xA;&#xA;关键词：周天&#xA;效果：术法槽10限装非应对术法，且不可排入行动队列。周天完成后自动施展；需要目标时随机选择合法目标。无合法目标则落空，不支付费用、不计次数或冷却。自动施展期间再次周天仍清炁、回满法力，但不再次触发自动施展。&#xA;&#xA;惊蛰：&#xA;关键词：散血&#xA;耗费：体力 0、法力 1&#xA;目标：指定1名敌方&#xA;出手方式：远程&#xA;效果：造成A点（A=round(8 + 灵慧×0.65 + 术法造诣×0.20)）物理伤害。本技能不经行动队列施展时，命中后打散目标1层气血。。&#xA;使用次数：不限" vertex="1">
           <mxGeometry height="520" width="740" x="20" y="370" as="geometry" />
         </mxCell>
         <mxCell id="c1_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;化法&lt;br&gt;适用范围：惊蛰&lt;br&gt;&lt;br&gt;化法追加：本次攻击无视目标&lt;u&gt;护盾&lt;/u&gt;。&lt;/div&gt;" vertex="1">
@@ -25,7 +25,7 @@
         <mxCell id="c2_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：玄枢含章（沿用第一卷，无新增效果）&lt;br&gt;关键词：周天&lt;br&gt;习得：无新增技能&lt;br&gt;云帔基础技能由个人造诣图谱独立参悟；玄枢不重复授予&lt;/div&gt;" vertex="1">
           <mxGeometry height="470" width="740" x="20" y="910" as="geometry" />
         </mxCell>
-        <mxCell id="c2_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="化法&#10;适用范围：云帔&#10;&#10;化法追加：术法槽10自动施展时，为当前护盾值最低的一名其他存活队友施加B点（B=round(云帔本次基础护盾值×0.50)）护盾；并列时随机选择，没有其他存活队友时不追加。" vertex="1">
+        <mxCell id="c2_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;align=left;verticalAlign=top;whiteSpace=wrap;html=1;" value="化法&#xA;适用范围：云帔&#xA;&#xA;化法追加：术法槽10自动施展时，为当前护盾值最低的一名其他存活队友施加B点（B=round(云帔本次基础护盾值×0.50)）护盾；并列时随机选择，没有其他存活队友时不追加。" vertex="1">
           <mxGeometry height="390" width="290" x="1780" y="910" as="geometry" />
         </mxCell>
         <mxCell id="c3" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=16;align=left;verticalAlign=top;spacing=12;spacingTop=12;whiteSpace=wrap;html=1;" value="&lt;div style=&quot;text-align:left;&quot;&gt;第三卷：折冲&lt;br&gt;卷章ID：jia_zhao_3&lt;br&gt;顺序：3&lt;br&gt;&lt;br&gt;定位：按本次来袭实际抵消的物理伤害获得&lt;u&gt;护盾&lt;/u&gt;&lt;br&gt;研读值（累计）：84&lt;br&gt;学成可修至：云息九层&lt;br&gt;&lt;br&gt;学习条件：&lt;br&gt;灵根：任意&lt;br&gt;境界：云息六层及以上&lt;br&gt;前置：yun_pei_2&lt;br&gt;研读属性：灵慧≥8；术法造诣≥1&lt;br&gt;&lt;br&gt;学会永久属性：灵慧 +0.5；术法造诣 +1&lt;br&gt;&lt;br&gt;习得：无&lt;/div&gt;" vertex="1">
@@ -114,6 +114,9 @@
         </mxCell>
         <mxCell id="player-rules-entry" value="本图为详细版：效果后以括号列出公式；游戏内可设置简略／详细。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eee8d8;strokeColor=#9a8967;fontSize=16;" vertex="1" parent="1">
           <mxGeometry x="40" y="2542" width="1000" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fuming-display-20261029" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#f4f0e4;strokeColor=#a89d7d;align=left;verticalAlign=middle;spacing=12;fontSize=18;" value="2026-10-29 复命动态显示（不改变结算）&#xA;有复制对象：使用其图标和展示关键词，名称为“技能名（复命）”，如惊蛰（复命）。&#xA;无复制对象：保留复命自身名称、图标；技能槽、悬停和队列自动同步。&#xA;费用分三行：复命消耗／复制技能消耗／合计消耗。合法目标随机选择规则保持。">
+          <mxGeometry x="40" y="2626" width="1300" height="150" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

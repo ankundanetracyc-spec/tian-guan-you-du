@@ -19,6 +19,7 @@ public partial class BattlePlanHud : Control
     private bool _planningQueueVisible=true, _lastPlanning;
     private Tween? _planningTween;
     private bool _planningAnimating;
+    private string ActionName(BattleQueuedSkill? action) => FumingPresentation.QueueName(_manager.get_main_player_unit(), action, _manager);
     private int _dragIndex=-1;
     private Vector2 _dragOrigin;
     private bool _dragging;
@@ -78,7 +79,7 @@ public partial class BattlePlanHud : Control
     private string Signature()
     {
         var player=_manager.get_main_player_unit();
-        return $"{_manager.get_action_slot_capacity(player)}:{_manager.get_segment_phase()}:{_manager.is_selecting_queue_targets()}:{_manager.get_target_queue_index()}:{_manager.get_current_action_slot(player)}:{(GodotObject.IsInstanceValid(player)?player!.Get("current_stamina").AsInt32():0)}:{(GodotObject.IsInstanceValid(player)?player!.Get("current_mana").AsInt32():0)}:"+string.Join("|",Queue().Select(a=>$"{a.get_display_name()}:{a.target?.GetInstanceId()}:{a.completed}:{a.skipped}:{PlayerNian(player,a)}"));
+        return $"{_manager.get_action_slot_capacity(player)}:{_manager.get_segment_phase()}:{_manager.is_selecting_queue_targets()}:{_manager.get_target_queue_index()}:{_manager.get_current_action_slot(player)}:{(GodotObject.IsInstanceValid(player)?player!.Get("current_stamina").AsInt32():0)}:{(GodotObject.IsInstanceValid(player)?player!.Get("current_mana").AsInt32():0)}:"+string.Join("|",Queue().Select(a=>$"{ActionName(a)}:{(a.kind == BattleQueuedSkill.ActionKind.Skill ? FumingPresentation.Resolve(player, a.skill, _manager).icon_path : "")}:{a.target?.GetInstanceId()}:{a.completed}:{a.skipped}:{PlayerNian(player,a)}"));
     }
     private int PlayerNian(GodotObject? player, BattleQueuedSkill? action)
     {
@@ -151,7 +152,7 @@ public partial class BattlePlanHud : Control
                 _actionIndicator.Position=_actionSlots.Position+executed.Position+new Vector2((executionSize.X-30)*.5f,-22);
             var current=i==_manager.get_target_queue_index();var row=Panel(warning!=""?"queue_row_warning":current?"queue_row_active":"queue_row",new(0,i*(rowHeight+gap)),new(132,rowHeight));_targetRows.AddChild(row);
             if(current){var arrow=BattleUiArt.Icon("icon_queue_current",new(20,20));arrow.Position=new(2,12);row.AddChild(arrow);}
-            row.AddChild(Label($"{i+1}  {action?.get_display_name()??"空位"}",new(22,6),new(106,24),16));
+            row.AddChild(Label($"{i+1}  {ActionName(action)}",new(22,6),new(106,24),16));
             var detail=warning!=""?warning:current?"请选择目标":action?.kind==BattleQueuedSkill.ActionKind.Empty?"等待一次行动":action?.target?.Get("entity_name").AsString()??"";
             var secondary=Label(detail,new(8,rowHeight>52?34:29),new(116,rowHeight>52?18:15),12);if(warning!="")secondary.AddThemeColorOverride("font_color",BattleUiArt.Warning);row.AddChild(secondary);
         }
@@ -215,7 +216,7 @@ public partial class BattlePlanHud : Control
         if(action is not null&&action.kind==BattleQueuedSkill.ActionKind.Skill)
         {
             opening.AddChild(new ColorRect{Size=opening.Size,Color=new Color("ded5c3"),MouseFilter=MouseFilterEnum.Ignore});
-            opening.AddChild(CombatSkillBar.CreateSkillIconVisual(action.skill,opening.Size));
+            opening.AddChild(CombatSkillBar.CreateSkillIconVisual(FumingPresentation.Resolve(_manager.get_main_player_unit(), action.skill, _manager),opening.Size));
         }
         if (action?.kind == BattleQueuedSkill.ActionKind.Pill && BattleSupplyRules.Load(action.supply_path) is { } pill)
         {
@@ -231,7 +232,7 @@ public partial class BattlePlanHud : Control
         }
         var frame=new NinePatchRect{Texture=BattleUiArt.Texture(action is null?"skill_slot_empty":"skill_card_frame"),Size=size,PatchMarginLeft=edge,PatchMarginRight=edge,PatchMarginTop=26,PatchMarginBottom=foot,MouseFilter=MouseFilterEnum.Ignore,ZIndex=2};card.AddChild(frame);
         if(action is not null&&action.kind is BattleQueuedSkill.ActionKind.Rest or BattleQueuedSkill.ActionKind.Retreat)card.AddChild(Label(action.kind==BattleQueuedSkill.ActionKind.Rest?"休":"撤",opening.Position,opening.Size,Mathf.RoundToInt(size.X*.38f)));
-        var name=Label(action?.get_display_name()??"空位",new(24,size.Y-62),new(size.X-48,48),size.X>=168?22:18);name.ZIndex=3;card.AddChild(name);
+        var name=Label(ActionName(action),new(24,size.Y-62),new(size.X-48,48),size.X>=168?22:18);name.ZIndex=3;card.AddChild(name);
         if (action?.kind == BattleQueuedSkill.ActionKind.Pill && BattleSupplyRules.Load(action.supply_path) is { } drug)
         { name.Text = $"服用·{BattleSupplyRules.Name(drug)}\n{BattleSupplyRules.QualityNames[drug.efficacy_tier]}"; name.AddThemeFontSizeOverride("font_size", size.X >= 168 ? 18 : 15); }
         return card;
@@ -264,7 +265,7 @@ public partial class BattlePlanHud : Control
             if (planning) details.Add("队列操作：拖至空槽移动，拖至招式互换，单击卸下。");
             var sections = (skillInfo.Sections ?? new[] { new HoverInfoManager.HoverInfoSection("", skillInfo.Body) }).ToList();
             if (details.Count > 0) sections.Add(new("队列信息", string.Join("\n", details)));
-            return HoverInfoManager.Structured(action.get_display_name(), skillInfo.Icon, $"{skillInfo.Subtitle}　·　{subtitle}", sections.ToArray());
+            return HoverInfoManager.Structured(ActionName(action), skillInfo.Icon, $"{skillInfo.Subtitle}　·　{subtitle}", sections.ToArray());
         }
 
         details.Insert(0, action.kind switch

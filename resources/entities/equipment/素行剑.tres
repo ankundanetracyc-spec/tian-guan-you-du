@@ -7,7 +7,7 @@ script = ExtResource("1")
 definition_id = &"sect_sword_suxing"
 entity_name = "素行剑"
 description = "宗门制式凡器。精准 +2。"
-icon_path = "res://textures/ui/forged_swords_icons_20261025_v1/slender_sword.png"
+icon_path = "res://textures/items/inventory_density_20261029/slender_sword_2x6.png"
 item_category = "装备"
 item_subcategory = "凡器·剑"
 can_stack = false
@@ -17,3 +17,6 @@ weapon_type = 1
 fixed_bonuses = {
 "precision": 2
 }
+inventory_width = 2
+inventory_height = 6
+inventory_can_rotate = true

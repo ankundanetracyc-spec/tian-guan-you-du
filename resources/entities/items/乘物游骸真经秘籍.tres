@@ -5,9 +5,12 @@
 script = ExtResource("1")
 definition_id = &"manual_chengwu_youhai"
 entity_name = "乘物游骸真经"
-icon_path = "res://textures/items/item_secret_manual_ink_v1.png"
+icon_path = "res://textures/items/inventory_density_20261029/manual_generic_2x3.png"
 can_stack = false
 max_stack = 1
 item_category = "秘籍"
 item_subcategory = "云息境"
 gongfa = ExtResource("2")
+inventory_width = 2
+inventory_height = 3
+inventory_can_rotate = true

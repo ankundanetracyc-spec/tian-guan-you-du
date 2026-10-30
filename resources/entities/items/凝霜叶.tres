@@ -8,7 +8,7 @@ script = ExtResource("1")
 definition_id = &"mat_frostdew_leaf"
 entity_name = "凝霜叶"
 description = "叶缘凝着细霜，叶脉收敛细密，入手清凉。"
-icon_path = "res://textures/items/item_frostdew_leaf.png"
+icon_path = "res://textures/items/inventory_density_20261029/mat_frostdew_leaf.png"
 item_category = "材料"
 item_subcategory = "灵植"
 tags = Array[String](["五行[木]", "质地[纤维]", "功用[藏]", "相性[阴]"])
@@ -17,3 +17,6 @@ can_stack = true
 max_stack = 999
 craft_data = ExtResource("2")
 
+inventory_width = 2
+inventory_height = 3
+inventory_can_rotate = true

@@ -26,6 +26,7 @@ public partial class MainScene
         _east_woods_dungeon.RouteTravelFinished += on_east_woods_route_travel_finished;
         _east_woods_dungeon.ActionRequested += on_east_woods_action;
         _east_woods_dungeon.CompactRouteRequested += open_compact_fern_path;
+        bind_forest_wolf_event(_east_woods_dungeon);
         _east_woods_dungeon.CanMove = () => GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is not null;
         return _east_woods_dungeon;
     }
@@ -50,7 +51,9 @@ public partial class MainScene
         dungeon.set_player_dun_speed(player?.dun_speed ?? EastWoodsDungeonRules.BaseDunSpeed);
         if (player?.entity_data is HumanData human)
             dungeon.set_active_duty_context(human.sect_active_yuxu_duty_id, human.sect_active_yuxu_duty_stage, human.sect_active_yuxu_duty_ready);
+        var forestWindow = dungeon.open_forest_record();
         dungeon.show_dungeon();
+        if (forestWindow.Count > 0 && player is not null) dungeon.show_forest_event(forestWindow, player.get_snapshot_data());
         _east_woods_dungeon_state = dungeon.get_route_state();
         refresh_east_woods_route_roster(dungeon.get_current_route_node_id());
     }
@@ -300,6 +303,14 @@ public partial class MainScene
         }
         if (context.GetValueOrDefault("kind", "").AsString() == "east_woods_beast")
         {
+            if (context.ContainsKey("forest_event_key"))
+            {
+                var key = context["forest_event_key"].AsString();
+                var wolf = ForestWolfEvent.Wolf(get_or_create_east_woods_dungeon().forest_record(key));
+                foreach (var value in defenders)
+                    if (value.AsGodotObject() is BattleEntityData result && wolf is not null && result.uid == wolf.uid)
+                        context["forest_wolf_result"] = result;
+            }
             restore_east_woods_beast_result(summary, context);
             return;
         }

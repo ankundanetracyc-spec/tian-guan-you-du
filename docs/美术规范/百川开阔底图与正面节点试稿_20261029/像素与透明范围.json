@@ -1,0 +1,44 @@
+[
+  {
+    "id": "terrain",
+    "width": 1254,
+    "height": 1254,
+    "hasAlpha": false,
+    "clear": 0,
+    "opaque": 1572516,
+    "bbox": [
+      0,
+      0,
+      1254,
+      1254
+    ]
+  },
+  {
+    "id": "gate",
+    "width": 1254,
+    "height": 1254,
+    "hasAlpha": true,
+    "clear": 1026038,
+    "opaque": 520808,
+    "bbox": [
+      11,
+      318,
+      1232,
+      698
+    ]
+  },
+  {
+    "id": "transit",
+    "width": 1254,
+    "height": 1254,
+    "hasAlpha": true,
+    "clear": 1520866,
+    "opaque": 46346,
+    "bbox": [
+      516,
+      429,
+      256,
+      441
+    ]
+  }
+]

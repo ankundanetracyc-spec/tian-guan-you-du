@@ -138,7 +138,7 @@ public partial class InformationPanelSmoke : Node
                 var info = CombatSkillBar.BuildSkillHoverInfo(owner, skill, null);
                 Check(info.Sections is { Count: > 0 } && info.Body.Contains(expected), name + "完整保留效果及公式");
                 Check(!info.Subtitle.Contains("类型：") && info.Body.Contains("目标：") && info.Body.Contains("使用次数："), name + "保留必要字段并撤下旧分类");
-                if (name == "架招") Check(info.Body.Contains("应对触发费用") && info.Body.Contains("未应对费用") && info.Body.Contains("未触发应对"), "应对双分支保留");
+                if (name == "架招") Check(info.Body.Contains("触发应对时，消耗") && info.Body.Contains("未触发应对时，") && info.Body.Contains("未触发应对"), "应对双分支保留");
                 Move(Center(anchor)); HoverInfoManager.SetInfo(anchor, info, true); await Settle(); Fits(hover);
                 var visibleBody = hover.FindChildren("*", "RichTextLabel", true, false).OfType<RichTextLabel>().Single();
                 Check(!System.Text.RegularExpressions.Regex.IsMatch(visibleBody.Text, @"计算公式|计算方式|\b(?:max|min|round|floor)\s*\("), name + "主栏无公式");

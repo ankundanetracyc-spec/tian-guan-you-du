@@ -1,0 +1,848 @@
+{
+  "worldSize": 6144,
+  "grid": [
+    5,
+    5
+  ],
+  "patchFrame": 1254,
+  "sourceMaster": "开阔舆图母图_无桥_v4_增岭来河.png",
+  "sourceCompositionPixels": [
+    1254,
+    1254
+  ],
+  "productionReady": false,
+  "patches": [
+    {
+      "id": "r1c1",
+      "row": 0,
+      "col": 0,
+      "worldOrigin": [
+        -12,
+        -12
+      ],
+      "coreRect": [
+        0,
+        0,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/whole_paint_v3/reference/r1c1_scene.png",
+      "places": [],
+      "bridges": [],
+      "prompt": "Refine IMAGE 1, a SINGLE LOCAL CROP of our existing full world map. Output EXACTLY this local area at the same crop, scale and orientation, square 1254 pixels or larger, not a new complete map. IMAGE 2 is the full world master ONLY to explain context and coordinate continuity. IMAGE 3 is the approved fine small-conifer stroke reference ONLY. Do not copy a different composition from any reference. This local region is r1c1, row 1 column 1 of a 5x5 refinement layout; the final game map will be a single continuous whole.\nKeep ALL hill groups, riverbanks, lakes, shorelines and woodland footprints in their present places. Rebuild their enlarged soft marks into clean native fine gray-brown ink contours and delicate restrained gray-green washes. Keep existing density of separated low hills and usable valley/plain gaps. Do not add mountains to open ground or recompose existing groups. Low horizontally spread shoulders and shallow saddles, no tall pyramid peaks, no wall of edge mountains or dense engraving. Thin 1-2 pixel gray-brown lines at native scale.\nWarm muted earth-yellow parchment, around the current reference palette. Very faint uniform paper grain, otherwise CLEAN QUIET EMPTY GROUND between landforms. NO grass strokes, soil blotches, smudges, squiggles, dot stippling, ground cracks, coarse fibers, dirt, paper stains or scratchy filler. Plains must not look dirty. Forests stay as small compact irregular groups of tiny individually hinted slender conifers, around 6-15 pixels tall in this local frame, mixed heights and open gaps, varied natural clumps. Only on flats and low valleys, NEVER on mountain slopes or ridges. No broadleaf crowns, tall trees, repeated stamps or continuous forest border.\nWhen water is present: retain exact shape and connectivity, muted gray-green water, subtly irregular banks and only few thin current hints. No pure blue, heavy dark double outlines, flooding a new area or inventing branches. A river crossing an image edge MUST remain open through that same edge; no tapering it to an inland source. East sea when present must continue along the original long coast. If no water in the crop, do not add any.\nDry terrain accommodations in this frame: No special building clearings are required here.. Make each a natural tiny shoulder or level lowland, NOT a circle, a geometric platform, visible reserve box, white hole or a building. Leave the exact coordinate dry and feasible for an independent entrance icon. Do NOT draw those entrance icons. Do not fill these openings with water, trees or sharp rock lines. Sect mountains can have a very subtle nearby low shoulder at that coordinate if needed, preserving the surrounding map structure. NO mountain stairway, NO steps, NO architectural retaining walls and NO roads leading to it.\nEDGE MATCHING IS CRITICAL: preserve the outermost 60-pixel band's existing geometry, bank positions, broad color and feature scale very closely so this region can meet its neighbors. No frame, fade-out, vignette, empty border, changed lighting or edge mountain addition. Refine clarity in place, not a separate decorative landscape.\nABSOLUTELY NO BRIDGES, stairs, steps, mountain paths, roads, buildings, courtyard, gates, walls, icons, labels, text, map markers, UI, compass, grid, border or guide marks. Terrain, forests and water are integrated in one painting. Not a sprite sheet, not a collage. Deliver only this same local map region redrawn cleanly."
+    },
+    {
+      "id": "r1c2",
+      "row": 0,
+      "col": 1,
+      "worldOrigin": [
+        1217,
+        -12
+      ],
+      "coreRect": [
+        1229,
+        0,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/whole_paint_v3/reference/r1c2_scene.png",
+      "places": [
+        {
+          "name": "金阙城",
+          "type": "city",
+          "x": 872,
+          "y": 626
+        }
+      ],
+      "bridges": [],
+      "prompt": "Refine IMAGE 1, a SINGLE LOCAL CROP of our existing full world map. Output EXACTLY this local area at the same crop, scale and orientation, square 1254 pixels or larger, not a new complete map. IMAGE 2 is the full world master ONLY to explain context and coordinate continuity. IMAGE 3 is the approved fine small-conifer stroke reference ONLY. Do not copy a different composition from any reference. This local region is r1c2, row 1 column 2 of a 5x5 refinement layout; the final game map will be a single continuous whole.\nKeep ALL hill groups, riverbanks, lakes, shorelines and woodland footprints in their present places. Rebuild their enlarged soft marks into clean native fine gray-brown ink contours and delicate restrained gray-green washes. Keep existing density of separated low hills and usable valley/plain gaps. Do not add mountains to open ground or recompose existing groups. Low horizontally spread shoulders and shallow saddles, no tall pyramid peaks, no wall of edge mountains or dense engraving. Thin 1-2 pixel gray-brown lines at native scale.\nWarm muted earth-yellow parchment, around the current reference palette. Very faint uniform paper grain, otherwise CLEAN QUIET EMPTY GROUND between landforms. NO grass strokes, soil blotches, smudges, squiggles, dot stippling, ground cracks, coarse fibers, dirt, paper stains or scratchy filler. Plains must not look dirty. Forests stay as small compact irregular groups of tiny individually hinted slender conifers, around 6-15 pixels tall in this local frame, mixed heights and open gaps, varied natural clumps. Only on flats and low valleys, NEVER on mountain slopes or ridges. No broadleaf crowns, tall trees, repeated stamps or continuous forest border.\nWhen water is present: retain exact shape and connectivity, muted gray-green water, subtly irregular banks and only few thin current hints. No pure blue, heavy dark double outlines, flooding a new area or inventing branches. A river crossing an image edge MUST remain open through that same edge; no tapering it to an inland source. East sea when present must continue along the original long coast. If no water in the crop, do not add any.\nDry terrain accommodations in this frame: (872,626) flat dry land for a separate small city entrance. Make each a natural tiny shoulder or level lowland, NOT a circle, a geometric platform, visible reserve box, white hole or a building. Leave the exact coordinate dry and feasible for an independent entrance icon. Do NOT draw those entrance icons. Do not fill these openings with water, trees or sharp rock lines. Sect mountains can have a very subtle nearby low shoulder at that coordinate if needed, preserving the surrounding map structure. NO mountain stairway, NO steps, NO architectural retaining walls and NO roads leading to it.\nEDGE MATCHING IS CRITICAL: preserve the outermost 60-pixel band's existing geometry, bank positions, broad color and feature scale very closely so this region can meet its neighbors. No frame, fade-out, vignette, empty border, changed lighting or edge mountain addition. Refine clarity in place, not a separate decorative landscape.\nABSOLUTELY NO BRIDGES, stairs, steps, mountain paths, roads, buildings, courtyard, gates, walls, icons, labels, text, map markers, UI, compass, grid, border or guide marks. Terrain, forests and water are integrated in one painting. Not a sprite sheet, not a collage. Deliver only this same local map region redrawn cleanly."
+    },
+    {
+      "id": "r1c3",
+      "row": 0,
+      "col": 2,
+      "worldOrigin": [
+        2445,
+        -12
+      ],
+      "coreRect": [
+        2458,
+        0,
+        1228,
+        1229
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/whole_paint_v3/reference/r1c3_scene.png",
+      "places": [
+        {
+          "name": "玄都天府",
+          "type": "sect",
+          "x": 197,
+          "y": 1179
+        },
+        {
+          "name": "绛阙城",
+          "type": "city",
+          "x": 873,
+          "y": 1179
+        },
+        {
+          "name": "流丹坊",
+          "type": "market",
+          "x": 1180,
+          "y": 1241
+        },
+        {
+          "name": "含光镇",
+          "type": "town",
+          "x": 197,
+          "y": 565
+        },
+        {
+          "name": "琼华坊",
+          "type": "market",
+          "x": 443,
+          "y": 872
+        }
+      ],
+      "bridges": [],
+      "prompt": "Refine IMAGE 1, a SINGLE LOCAL CROP of our existing full world map. Output EXACTLY this local area at the same crop, scale and orientation, square 1254 pixels or larger, not a new complete map. IMAGE 2 is the full world master ONLY to explain context and coordinate continuity. IMAGE 3 is the approved fine small-conifer stroke reference ONLY. Do not copy a different composition from any reference. This local region is r1c3, row 1 column 3 of a 5x5 refinement layout; the final game map will be a single continuous whole.\nKeep ALL hill groups, riverbanks, lakes, shorelines and woodland footprints in their present places. Rebuild their enlarged soft marks into clean native fine gray-brown ink contours and delicate restrained gray-green washes. Keep existing density of separated low hills and usable valley/plain gaps. Do not add mountains to open ground or recompose existing groups. Low horizontally spread shoulders and shallow saddles, no tall pyramid peaks, no wall of edge mountains or dense engraving. Thin 1-2 pixel gray-brown lines at native scale.\nWarm muted earth-yellow parchment, around the current reference palette. Very faint uniform paper grain, otherwise CLEAN QUIET EMPTY GROUND between landforms. NO grass strokes, soil blotches, smudges, squiggles, dot stippling, ground cracks, coarse fibers, dirt, paper stains or scratchy filler. Plains must not look dirty. Forests stay as small compact irregular groups of tiny individually hinted slender conifers, around 6-15 pixels tall in this local frame, mixed heights and open gaps, varied natural clumps. Only on flats and low valleys, NEVER on mountain slopes or ridges. No broadleaf crowns, tall trees, repeated stamps or continuous forest border.\nWhen water is present: retain exact shape and connectivity, muted gray-green water, subtly irregular banks and only few thin current hints. No pure blue, heavy dark double outlines, flooding a new area or inventing branches. A river crossing an image edge MUST remain open through that same edge; no tapering it to an inland source. East sea when present must continue along the original long coast. If no water in the crop, do not add any.\nDry terrain accommodations in this frame: (197,1179) a quiet dry low mountain shoulder or shallow hillside saddle supporting a separate tiny mountain-gate icon; (873,1179) flat dry land for a separate small city entrance; (1180,1241) flat dry land for a separate small market entrance; (197,565) flat dry land for a separate small town entrance; (443,872) flat dry land for a separate small market entrance. Make each a natural tiny shoulder or level lowland, NOT a circle, a geometric platform, visible reserve box, white hole or a building. Leave the exact coordinate dry and feasible for an independent entrance icon. Do NOT draw those entrance icons. Do not fill these openings with water, trees or sharp rock lines. Sect mountains can have a very subtle nearby low shoulder at that coordinate if needed, preserving the surrounding map structure. NO mountain stairway, NO steps, NO architectural retaining walls and NO roads leading to it.\nEDGE MATCHING IS CRITICAL: preserve the outermost 60-pixel band's existing geometry, bank positions, broad color and feature scale very closely so this region can meet its neighbors. No frame, fade-out, vignette, empty border, changed lighting or edge mountain addition. Refine clarity in place, not a separate decorative landscape.\nABSOLUTELY NO BRIDGES, stairs, steps, mountain paths, roads, buildings, courtyard, gates, walls, icons, labels, text, map markers, UI, compass, grid, border or guide marks. Terrain, forests and water are integrated in one painting. Not a sprite sheet, not a collage. Deliver only this same local map region redrawn cleanly."
+    },
+    {
+      "id": "r1c4",
+      "row": 0,
+      "col": 3,
+      "worldOrigin": [
+        3674,
+        -12
+      ],
+      "coreRect": [
+        3686,
+        0,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/whole_paint_v3/reference/r1c4_scene.png",
+      "places": [
+        {
+          "name": "丹鼎宗",
+          "type": "sect",
+          "x": 74,
+          "y": 504
+        },
+        {
+          "name": "沧溟水府",
+          "type": "sect",
+          "x": 750,
+          "y": 1056
+        },
+        {
+          "name": "听风镇",
+          "type": "town",
+          "x": 1180,
+          "y": 626
+        }
+      ],
+      "bridges": [],
+      "prompt": "Refine IMAGE 1, a SINGLE LOCAL CROP of our existing full world map. Output EXACTLY this local area at the same crop, scale and orientation, square 1254 pixels or larger, not a new complete map. IMAGE 2 is the full world master ONLY to explain context and coordinate continuity. IMAGE 3 is the approved fine small-conifer stroke reference ONLY. Do not copy a different composition from any reference. This local region is r1c4, row 1 column 4 of a 5x5 refinement layout; the final game map will be a single continuous whole.\nKeep ALL hill groups, riverbanks, lakes, shorelines and woodland footprints in their present places. Rebuild their enlarged soft marks into clean native fine gray-brown ink contours and delicate restrained gray-green washes. Keep existing density of separated low hills and usable valley/plain gaps. Do not add mountains to open ground or recompose existing groups. Low horizontally spread shoulders and shallow saddles, no tall pyramid peaks, no wall of edge mountains or dense engraving. Thin 1-2 pixel gray-brown lines at native scale.\nWarm muted earth-yellow parchment, around the current reference palette. Very faint uniform paper grain, otherwise CLEAN QUIET EMPTY GROUND between landforms. NO grass strokes, soil blotches, smudges, squiggles, dot stippling, ground cracks, coarse fibers, dirt, paper stains or scratchy filler. Plains must not look dirty. Forests stay as small compact irregular groups of tiny individually hinted slender conifers, around 6-15 pixels tall in this local frame, mixed heights and open gaps, varied natural clumps. Only on flats and low valleys, NEVER on mountain slopes or ridges. No broadleaf crowns, tall trees, repeated stamps or continuous forest border.\nWhen water is present: retain exact shape and connectivity, muted gray-green water, subtly irregular banks and only few thin current hints. No pure blue, heavy dark double outlines, flooding a new area or inventing branches. A river crossing an image edge MUST remain open through that same edge; no tapering it to an inland source. East sea when present must continue along the original long coast. If no water in the crop, do not add any.\nDry terrain accommodations in this frame: (74,504) a quiet dry low mountain shoulder or shallow hillside saddle supporting a separate tiny mountain-gate icon; (750,1056) a quiet dry low mountain shoulder or shallow hillside saddle supporting a separate tiny mountain-gate icon; (1180,626) flat dry land for a separate small town entrance. Make each a natural tiny shoulder or level lowland, NOT a circle, a geometric platform, visible reserve box, white hole or a building. Leave the exact coordinate dry and feasible for an independent entrance icon. Do NOT draw those entrance icons. Do not fill these openings with water, trees or sharp rock lines. Sect mountains can have a very subtle nearby low shoulder at that coordinate if needed, preserving the surrounding map structure. NO mountain stairway, NO steps, NO architectural retaining walls and NO roads leading to it.\nEDGE MATCHING IS CRITICAL: preserve the outermost 60-pixel band's existing geometry, bank positions, broad color and feature scale very closely so this region can meet its neighbors. No frame, fade-out, vignette, empty border, changed lighting or edge mountain addition. Refine clarity in place, not a separate decorative landscape.\nABSOLUTELY NO BRIDGES, stairs, steps, mountain paths, roads, buildings, courtyard, gates, walls, icons, labels, text, map markers, UI, compass, grid, border or guide marks. Terrain, forests and water are integrated in one painting. Not a sprite sheet, not a collage. Deliver only this same local map region redrawn cleanly."
+    },
+    {
+      "id": "r1c5",
+      "row": 0,
+      "col": 4,
+      "worldOrigin": [
+        4903,
+        -12
+      ],
+      "coreRect": [
+        4915,
+        0,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/whole_paint_v3/reference/r1c5_scene.png",
+      "places": [
+        {
+          "name": "镇海城",
+          "type": "city",
+          "x": 504,
+          "y": 749
+        },
+        {
+          "name": "澜浦渡",
+          "type": "dock",
+          "x": 934,
+          "y": 1118
+        }
+      ],
+      "bridges": [],
+      "prompt": "Refine IMAGE 1, a SINGLE LOCAL CROP of our existing full world map. Output EXACTLY this local area at the same crop, scale and orientation, square 1254 pixels or larger, not a new complete map. IMAGE 2 is the full world master ONLY to explain context and coordinate continuity. IMAGE 3 is the approved fine small-conifer stroke reference ONLY. Do not copy a different composition from any reference. This local region is r1c5, row 1 column 5 of a 5x5 refinement layout; the final game map will be a single continuous whole.\nKeep ALL hill groups, riverbanks, lakes, shorelines and woodland footprints in their present places. Rebuild their enlarged soft marks into clean native fine gray-brown ink contours and delicate restrained gray-green washes. Keep existing density of separated low hills and usable valley/plain gaps. Do not add mountains to open ground or recompose existing groups. Low horizontally spread shoulders and shallow saddles, no tall pyramid peaks, no wall of edge mountains or dense engraving. Thin 1-2 pixel gray-brown lines at native scale.\nWarm muted earth-yellow parchment, around the current reference palette. Very faint uniform paper grain, otherwise CLEAN QUIET EMPTY GROUND between landforms. NO grass strokes, soil blotches, smudges, squiggles, dot stippling, ground cracks, coarse fibers, dirt, paper stains or scratchy filler. Plains must not look dirty. Forests stay as small compact irregular groups of tiny individually hinted slender conifers, around 6-15 pixels tall in this local frame, mixed heights and open gaps, varied natural clumps. Only on flats and low valleys, NEVER on mountain slopes or ridges. No broadleaf crowns, tall trees, repeated stamps or continuous forest border.\nWhen water is present: retain exact shape and connectivity, muted gray-green water, subtly irregular banks and only few thin current hints. No pure blue, heavy dark double outlines, flooding a new area or inventing branches. A river crossing an image edge MUST remain open through that same edge; no tapering it to an inland source. East sea when present must continue along the original long coast. If no water in the crop, do not add any.\nDry terrain accommodations in this frame: (504,749) flat dry land for a separate small city entrance; (934,1118) flat dry land for a separate small dock entrance. Make each a natural tiny shoulder or level lowland, NOT a circle, a geometric platform, visible reserve box, white hole or a building. Leave the exact coordinate dry and feasible for an independent entrance icon. Do NOT draw those entrance icons. Do not fill these openings with water, trees or sharp rock lines. Sect mountains can have a very subtle nearby low shoulder at that coordinate if needed, preserving the surrounding map structure. NO mountain stairway, NO steps, NO architectural retaining walls and NO roads leading to it.\nEDGE MATCHING IS CRITICAL: preserve the outermost 60-pixel band's existing geometry, bank positions, broad color and feature scale very closely so this region can meet its neighbors. No frame, fade-out, vignette, empty border, changed lighting or edge mountain addition. Refine clarity in place, not a separate decorative landscape.\nABSOLUTELY NO BRIDGES, stairs, steps, mountain paths, roads, buildings, courtyard, gates, walls, icons, labels, text, map markers, UI, compass, grid, border or guide marks. Terrain, forests and water are integrated in one painting. Not a sprite sheet, not a collage. Deliver only this same local map region redrawn cleanly."
+    },
+    {
+      "id": "r2c1",
+      "row": 1,
+      "col": 0,
+      "worldOrigin": [
+        -12,
+        1217
+      ],
+      "coreRect": [
+        0,
+        1229,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/whole_paint_v3/reference/r2c1_scene.png",
+      "places": [
+        {
+          "name": "望岫城",
+          "type": "city",
+          "x": 1241,
+          "y": 565
+        },
+        {
+          "name": "松风镇",
+          "type": "town",
+          "x": 872,
+          "y": 626
+        }
+      ],
+      "bridges": [],
+      "prompt": "Refine IMAGE 1, a SINGLE LOCAL CROP of our existing full world map. Output EXACTLY this local area at the same crop, scale and orientation, square 1254 pixels or larger, not a new complete map. IMAGE 2 is the full world master ONLY to explain context and coordinate continuity. IMAGE 3 is the approved fine small-conifer stroke reference ONLY. Do not copy a different composition from any reference. This local region is r2c1, row 2 column 1 of a 5x5 refinement layout; the final game map will be a single continuous whole.\nKeep ALL hill groups, riverbanks, lakes, shorelines and woodland footprints in their present places. Rebuild their enlarged soft marks into clean native fine gray-brown ink contours and delicate restrained gray-green washes. Keep existing density of separated low hills and usable valley/plain gaps. Do not add mountains to open ground or recompose existing groups. Low horizontally spread shoulders and shallow saddles, no tall pyramid peaks, no wall of edge mountains or dense engraving. Thin 1-2 pixel gray-brown lines at native scale.\nWarm muted earth-yellow parchment, around the current reference palette. Very faint uniform paper grain, otherwise CLEAN QUIET EMPTY GROUND between landforms. NO grass strokes, soil blotches, smudges, squiggles, dot stippling, ground cracks, coarse fibers, dirt, paper stains or scratchy filler. Plains must not look dirty. Forests stay as small compact irregular groups of tiny individually hinted slender conifers, around 6-15 pixels tall in this local frame, mixed heights and open gaps, varied natural clumps. Only on flats and low valleys, NEVER on mountain slopes or ridges. No broadleaf crowns, tall trees, repeated stamps or continuous forest border.\nWhen water is present: retain exact shape and connectivity, muted gray-green water, subtly irregular banks and only few thin current hints. No pure blue, heavy dark double outlines, flooding a new area or inventing branches. A river crossing an image edge MUST remain open through that same edge; no tapering it to an inland source. East sea when present must continue along the original long coast. If no water in the crop, do not add any.\nDry terrain accommodations in this frame: (1241,565) flat dry land for a separate small city entrance; (872,626) flat dry land for a separate small town entrance. Make each a natural tiny shoulder or level lowland, NOT a circle, a geometric platform, visible reserve box, white hole or a building. Leave the exact coordinate dry and feasible for an independent entrance icon. Do NOT draw those entrance icons. Do not fill these openings with water, trees or sharp rock lines. Sect mountains can have a very subtle nearby low shoulder at that coordinate if needed, preserving the surrounding map structure. NO mountain stairway, NO steps, NO architectural retaining walls and NO roads leading to it.\nEDGE MATCHING IS CRITICAL: preserve the outermost 60-pixel band's existing geometry, bank positions, broad color and feature scale very closely so this region can meet its neighbors. No frame, fade-out, vignette, empty border, changed lighting or edge mountain addition. Refine clarity in place, not a separate decorative landscape.\nABSOLUTELY NO BRIDGES, stairs, steps, mountain paths, roads, buildings, courtyard, gates, walls, icons, labels, text, map markers, UI, compass, grid, border or guide marks. Terrain, forests and water are integrated in one painting. Not a sprite sheet, not a collage. Deliver only this same local map region redrawn cleanly."
+    },
+    {
+      "id": "r2c2",
+      "row": 1,
+      "col": 1,
+      "worldOrigin": [
+        1217,
+        1217
+      ],
+      "coreRect": [
+        1229,
+        1229,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/whole_paint_v3/reference/r2c2_scene.png",
+      "places": [
+        {
+          "name": "玉泉镇",
+          "type": "town",
+          "x": 1241,
+          "y": 1241
+        }
+      ],
+      "bridges": [],
+      "prompt": "Refine IMAGE 1, a SINGLE LOCAL CROP of our existing full world map. Output EXACTLY this local area at the same crop, scale and orientation, square 1254 pixels or larger, not a new complete map. IMAGE 2 is the full world master ONLY to explain context and coordinate continuity. IMAGE 3 is the approved fine small-conifer stroke reference ONLY. Do not copy a different composition from any reference. This local region is r2c2, row 2 column 2 of a 5x5 refinement layout; the final game map will be a single continuous whole.\nKeep ALL hill groups, riverbanks, lakes, shorelines and woodland footprints in their present places. Rebuild their enlarged soft marks into clean native fine gray-brown ink contours and delicate restrained gray-green washes. Keep existing density of separated low hills and usable valley/plain gaps. Do not add mountains to open ground or recompose existing groups. Low horizontally spread shoulders and shallow saddles, no tall pyramid peaks, no wall of edge mountains or dense engraving. Thin 1-2 pixel gray-brown lines at native scale.\nWarm muted earth-yellow parchment, around the current reference palette. Very faint uniform paper grain, otherwise CLEAN QUIET EMPTY GROUND between landforms. NO grass strokes, soil blotches, smudges, squiggles, dot stippling, ground cracks, coarse fibers, dirt, paper stains or scratchy filler. Plains must not look dirty. Forests stay as small compact irregular groups of tiny individually hinted slender conifers, around 6-15 pixels tall in this local frame, mixed heights and open gaps, varied natural clumps. Only on flats and low valleys, NEVER on mountain slopes or ridges. No broadleaf crowns, tall trees, repeated stamps or continuous forest border.\nWhen water is present: retain exact shape and connectivity, muted gray-green water, subtly irregular banks and only few thin current hints. No pure blue, heavy dark double outlines, flooding a new area or inventing branches. A river crossing an image edge MUST remain open through that same edge; no tapering it to an inland source. East sea when present must continue along the original long coast. If no water in the crop, do not add any.\nDry terrain accommodations in this frame: (1241,1241) flat dry land for a separate small town entrance. Make each a natural tiny shoulder or level lowland, NOT a circle, a geometric platform, visible reserve box, white hole or a building. Leave the exact coordinate dry and feasible for an independent entrance icon. Do NOT draw those entrance icons. Do not fill these openings with water, trees or sharp rock lines. Sect mountains can have a very subtle nearby low shoulder at that coordinate if needed, preserving the surrounding map structure. NO mountain stairway, NO steps, NO architectural retaining walls and NO roads leading to it.\nEDGE MATCHING IS CRITICAL: preserve the outermost 60-pixel band's existing geometry, bank positions, broad color and feature scale very closely so this region can meet its neighbors. No frame, fade-out, vignette, empty border, changed lighting or edge mountain addition. Refine clarity in place, not a separate decorative landscape.\nABSOLUTELY NO BRIDGES, stairs, steps, mountain paths, roads, buildings, courtyard, gates, walls, icons, labels, text, map markers, UI, compass, grid, border or guide marks. Terrain, forests and water are integrated in one painting. Not a sprite sheet, not a collage. Deliver only this same local map region redrawn cleanly."
+    },
+    {
+      "id": "r2c3",
+      "row": 1,
+      "col": 2,
+      "worldOrigin": [
+        2445,
+        1217
+      ],
+      "coreRect": [
+        2458,
+        1229,
+        1228,
+        1229
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/whole_paint_v3/reference/r2c3_scene.png",
+      "places": [
+        {
+          "name": "承天城",
+          "type": "city",
+          "x": 197,
+          "y": 1056
+        },
+        {
+          "name": "玉泉镇",
+          "type": "town",
+          "x": 13,
+          "y": 1241
+        }
+      ],
+      "bridges": [],
+      "prompt": "Refine IMAGE 1, a SINGLE LOCAL CROP of our existing full world map. Output EXACTLY this local area at the same crop, scale and orientation, square 1254 pixels or larger, not a new complete map. IMAGE 2 is the full world master ONLY to explain context and coordinate continuity. IMAGE 3 is the approved fine small-conifer stroke reference ONLY. Do not copy a different composition from any reference. This local region is r2c3, row 2 column 3 of a 5x5 refinement layout; the final game map will be a single continuous whole.\nKeep ALL hill groups, riverbanks, lakes, shorelines and woodland footprints in their present places. Rebuild their enlarged soft marks into clean native fine gray-brown ink contours and delicate restrained gray-green washes. Keep existing density of separated low hills and usable valley/plain gaps. Do not add mountains to open ground or recompose existing groups. Low horizontally spread shoulders and shallow saddles, no tall pyramid peaks, no wall of edge mountains or dense engraving. Thin 1-2 pixel gray-brown lines at native scale.\nWarm muted earth-yellow parchment, around the current reference palette. Very faint uniform paper grain, otherwise CLEAN QUIET EMPTY GROUND between landforms. NO grass strokes, soil blotches, smudges, squiggles, dot stippling, ground cracks, coarse fibers, dirt, paper stains or scratchy filler. Plains must not look dirty. Forests stay as small compact irregular groups of tiny individually hinted slender conifers, around 6-15 pixels tall in this local frame, mixed heights and open gaps, varied natural clumps. Only on flats and low valleys, NEVER on mountain slopes or ridges. No broadleaf crowns, tall trees, repeated stamps or continuous forest border.\nWhen water is present: retain exact shape and connectivity, muted gray-green water, subtly irregular banks and only few thin current hints. No pure blue, heavy dark double outlines, flooding a new area or inventing branches. A river crossing an image edge MUST remain open through that same edge; no tapering it to an inland source. East sea when present must continue along the original long coast. If no water in the crop, do not add any.\nDry terrain accommodations in this frame: (197,1056) flat dry land for a separate small city entrance; (13,1241) flat dry land for a separate small town entrance. Make each a natural tiny shoulder or level lowland, NOT a circle, a geometric platform, visible reserve box, white hole or a building. Leave the exact coordinate dry and feasible for an independent entrance icon. Do NOT draw those entrance icons. Do not fill these openings with water, trees or sharp rock lines. Sect mountains can have a very subtle nearby low shoulder at that coordinate if needed, preserving the surrounding map structure. NO mountain stairway, NO steps, NO architectural retaining walls and NO roads leading to it.\nEDGE MATCHING IS CRITICAL: preserve the outermost 60-pixel band's existing geometry, bank positions, broad color and feature scale very closely so this region can meet its neighbors. No frame, fade-out, vignette, empty border, changed lighting or edge mountain addition. Refine clarity in place, not a separate decorative landscape.\nABSOLUTELY NO BRIDGES, stairs, steps, mountain paths, roads, buildings, courtyard, gates, walls, icons, labels, text, map markers, UI, compass, grid, border or guide marks. Terrain, forests and water are integrated in one painting. Not a sprite sheet, not a collage. Deliver only this same local map region redrawn cleanly."
+    },
+    {
+      "id": "r2c4",
+      "row": 1,
+      "col": 3,
+      "worldOrigin": [
+        3674,
+        1217
+      ],
+      "coreRect": [
+        3686,
+        1229,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/whole_paint_v3/reference/r2c4_scene.png",
+      "places": [
+        {
+          "name": "归藏书院",
+          "type": "sect",
+          "x": 135,
+          "y": 1056
+        },
+        {
+          "name": "临渊城",
+          "type": "city",
+          "x": 627,
+          "y": 380
+        }
+      ],
+      "bridges": [],
+      "prompt": "Refine IMAGE 1, a SINGLE LOCAL CROP of our existing full world map. Output EXACTLY this local area at the same crop, scale and orientation, square 1254 pixels or larger, not a new complete map. IMAGE 2 is the full world master ONLY to explain context and coordinate continuity. IMAGE 3 is the approved fine small-conifer stroke reference ONLY. Do not copy a different composition from any reference. This local region is r2c4, row 2 column 4 of a 5x5 refinement layout; the final game map will be a single continuous whole.\nKeep ALL hill groups, riverbanks, lakes, shorelines and woodland footprints in their present places. Rebuild their enlarged soft marks into clean native fine gray-brown ink contours and delicate restrained gray-green washes. Keep existing density of separated low hills and usable valley/plain gaps. Do not add mountains to open ground or recompose existing groups. Low horizontally spread shoulders and shallow saddles, no tall pyramid peaks, no wall of edge mountains or dense engraving. Thin 1-2 pixel gray-brown lines at native scale.\nWarm muted earth-yellow parchment, around the current reference palette. Very faint uniform paper grain, otherwise CLEAN QUIET EMPTY GROUND between landforms. NO grass strokes, soil blotches, smudges, squiggles, dot stippling, ground cracks, coarse fibers, dirt, paper stains or scratchy filler. Plains must not look dirty. Forests stay as small compact irregular groups of tiny individually hinted slender conifers, around 6-15 pixels tall in this local frame, mixed heights and open gaps, varied natural clumps. Only on flats and low valleys, NEVER on mountain slopes or ridges. No broadleaf crowns, tall trees, repeated stamps or continuous forest border.\nWhen water is present: retain exact shape and connectivity, muted gray-green water, subtly irregular banks and only few thin current hints. No pure blue, heavy dark double outlines, flooding a new area or inventing branches. A river crossing an image edge MUST remain open through that same edge; no tapering it to an inland source. East sea when present must continue along the original long coast. If no water in the crop, do not add any.\nDry terrain accommodations in this frame: (135,1056) a quiet dry low mountain shoulder or shallow hillside saddle supporting a separate tiny mountain-gate icon; (627,380) flat dry land for a separate small city entrance. Make each a natural tiny shoulder or level lowland, NOT a circle, a geometric platform, visible reserve box, white hole or a building. Leave the exact coordinate dry and feasible for an independent entrance icon. Do NOT draw those entrance icons. Do not fill these openings with water, trees or sharp rock lines. Sect mountains can have a very subtle nearby low shoulder at that coordinate if needed, preserving the surrounding map structure. NO mountain stairway, NO steps, NO architectural retaining walls and NO roads leading to it.\nEDGE MATCHING IS CRITICAL: preserve the outermost 60-pixel band's existing geometry, bank positions, broad color and feature scale very closely so this region can meet its neighbors. No frame, fade-out, vignette, empty border, changed lighting or edge mountain addition. Refine clarity in place, not a separate decorative landscape.\nABSOLUTELY NO BRIDGES, stairs, steps, mountain paths, roads, buildings, courtyard, gates, walls, icons, labels, text, map markers, UI, compass, grid, border or guide marks. Terrain, forests and water are integrated in one painting. Not a sprite sheet, not a collage. Deliver only this same local map region redrawn cleanly."
+    },
+    {
+      "id": "r2c5",
+      "row": 1,
+      "col": 4,
+      "worldOrigin": [
+        4903,
+        1217
+      ],
+      "coreRect": [
+        4915,
+        1229,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/whole_paint_v3/reference/r2c5_scene.png",
+      "places": [
+        {
+          "name": "枯骨寺",
+          "type": "sect",
+          "x": 197,
+          "y": 995
+        },
+        {
+          "name": "白蘋里",
+          "type": "village",
+          "x": 688,
+          "y": 258
+        }
+      ],
+      "bridges": [],
+      "prompt": "Refine IMAGE 1, a SINGLE LOCAL CROP of our existing full world map. Output EXACTLY this local area at the same crop, scale and orientation, square 1254 pixels or larger, not a new complete map. IMAGE 2 is the full world master ONLY to explain context and coordinate continuity. IMAGE 3 is the approved fine small-conifer stroke reference ONLY. Do not copy a different composition from any reference. This local region is r2c5, row 2 column 5 of a 5x5 refinement layout; the final game map will be a single continuous whole.\nKeep ALL hill groups, riverbanks, lakes, shorelines and woodland footprints in their present places. Rebuild their enlarged soft marks into clean native fine gray-brown ink contours and delicate restrained gray-green washes. Keep existing density of separated low hills and usable valley/plain gaps. Do not add mountains to open ground or recompose existing groups. Low horizontally spread shoulders and shallow saddles, no tall pyramid peaks, no wall of edge mountains or dense engraving. Thin 1-2 pixel gray-brown lines at native scale.\nWarm muted earth-yellow parchment, around the current reference palette. Very faint uniform paper grain, otherwise CLEAN QUIET EMPTY GROUND between landforms. NO grass strokes, soil blotches, smudges, squiggles, dot stippling, ground cracks, coarse fibers, dirt, paper stains or scratchy filler. Plains must not look dirty. Forests stay as small compact irregular groups of tiny individually hinted slender conifers, around 6-15 pixels tall in this local frame, mixed heights and open gaps, varied natural clumps. Only on flats and low valleys, NEVER on mountain slopes or ridges. No broadleaf crowns, tall trees, repeated stamps or continuous forest border.\nWhen water is present: retain exact shape and connectivity, muted gray-green water, subtly irregular banks and only few thin current hints. No pure blue, heavy dark double outlines, flooding a new area or inventing branches. A river crossing an image edge MUST remain open through that same edge; no tapering it to an inland source. East sea when present must continue along the original long coast. If no water in the crop, do not add any.\nDry terrain accommodations in this frame: (197,995) a quiet dry low mountain shoulder or shallow hillside saddle supporting a separate tiny mountain-gate icon; (688,258) flat dry land for a separate small village entrance. Make each a natural tiny shoulder or level lowland, NOT a circle, a geometric platform, visible reserve box, white hole or a building. Leave the exact coordinate dry and feasible for an independent entrance icon. Do NOT draw those entrance icons. Do not fill these openings with water, trees or sharp rock lines. Sect mountains can have a very subtle nearby low shoulder at that coordinate if needed, preserving the surrounding map structure. NO mountain stairway, NO steps, NO architectural retaining walls and NO roads leading to it.\nEDGE MATCHING IS CRITICAL: preserve the outermost 60-pixel band's existing geometry, bank positions, broad color and feature scale very closely so this region can meet its neighbors. No frame, fade-out, vignette, empty border, changed lighting or edge mountain addition. Refine clarity in place, not a separate decorative landscape.\nABSOLUTELY NO BRIDGES, stairs, steps, mountain paths, roads, buildings, courtyard, gates, walls, icons, labels, text, map markers, UI, compass, grid, border or guide marks. Terrain, forests and water are integrated in one painting. Not a sprite sheet, not a collage. Deliver only this same local map region redrawn cleanly."
+    },
+    {
+      "id": "r3c1",
+      "row": 2,
+      "col": 0,
+      "worldOrigin": [
+        -12,
+        2445
+      ],
+      "coreRect": [
+        0,
+        2458,
+        1229,
+        1228
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/whole_paint_v3/reference/r3c1_scene.png",
+      "places": [
+        {
+          "name": "镇岳观",
+          "type": "sect",
+          "x": 749,
+          "y": 443
+        },
+        {
+          "name": "岚溪镇",
+          "type": "town",
+          "x": 1179,
+          "y": 1057
+        }
+      ],
+      "bridges": [],
+      "prompt": "Refine IMAGE 1, a SINGLE LOCAL CROP of our existing full world map. Output EXACTLY this local area at the same crop, scale and orientation, square 1254 pixels or larger, not a new complete map. IMAGE 2 is the full world master ONLY to explain context and coordinate continuity. IMAGE 3 is the approved fine small-conifer stroke reference ONLY. Do not copy a different composition from any reference. This local region is r3c1, row 3 column 1 of a 5x5 refinement layout; the final game map will be a single continuous whole.\nKeep ALL hill groups, riverbanks, lakes, shorelines and woodland footprints in their present places. Rebuild their enlarged soft marks into clean native fine gray-brown ink contours and delicate restrained gray-green washes. Keep existing density of separated low hills and usable valley/plain gaps. Do not add mountains to open ground or recompose existing groups. Low horizontally spread shoulders and shallow saddles, no tall pyramid peaks, no wall of edge mountains or dense engraving. Thin 1-2 pixel gray-brown lines at native scale.\nWarm muted earth-yellow parchment, around the current reference palette. Very faint uniform paper grain, otherwise CLEAN QUIET EMPTY GROUND between landforms. NO grass strokes, soil blotches, smudges, squiggles, dot stippling, ground cracks, coarse fibers, dirt, paper stains or scratchy filler. Plains must not look dirty. Forests stay as small compact irregular groups of tiny individually hinted slender conifers, around 6-15 pixels tall in this local frame, mixed heights and open gaps, varied natural clumps. Only on flats and low valleys, NEVER on mountain slopes or ridges. No broadleaf crowns, tall trees, repeated stamps or continuous forest border.\nWhen water is present: retain exact shape and connectivity, muted gray-green water, subtly irregular banks and only few thin current hints. No pure blue, heavy dark double outlines, flooding a new area or inventing branches. A river crossing an image edge MUST remain open through that same edge; no tapering it to an inland source. East sea when present must continue along the original long coast. If no water in the crop, do not add any.\nDry terrain accommodations in this frame: (749,443) a quiet dry low mountain shoulder or shallow hillside saddle supporting a separate tiny mountain-gate icon; (1179,1057) flat dry land for a separate small town entrance. Make each a natural tiny shoulder or level lowland, NOT a circle, a geometric platform, visible reserve box, white hole or a building. Leave the exact coordinate dry and feasible for an independent entrance icon. Do NOT draw those entrance icons. Do not fill these openings with water, trees or sharp rock lines. Sect mountains can have a very subtle nearby low shoulder at that coordinate if needed, preserving the surrounding map structure. NO mountain stairway, NO steps, NO architectural retaining walls and NO roads leading to it.\nEDGE MATCHING IS CRITICAL: preserve the outermost 60-pixel band's existing geometry, bank positions, broad color and feature scale very closely so this region can meet its neighbors. No frame, fade-out, vignette, empty border, changed lighting or edge mountain addition. Refine clarity in place, not a separate decorative landscape.\nABSOLUTELY NO BRIDGES, stairs, steps, mountain paths, roads, buildings, courtyard, gates, walls, icons, labels, text, map markers, UI, compass, grid, border or guide marks. Terrain, forests and water are integrated in one painting. Not a sprite sheet, not a collage. Deliver only this same local map region redrawn cleanly."
+    },
+    {
+      "id": "r3c2",
+      "row": 2,
+      "col": 1,
+      "worldOrigin": [
+        1217,
+        2445
+      ],
+      "coreRect": [
+        1229,
+        2458,
+        1229,
+        1228
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/whole_paint_v3/reference/r3c2_scene.png",
+      "places": [
+        {
+          "name": "太微道宫",
+          "type": "sect",
+          "x": 933,
+          "y": 627
+        },
+        {
+          "name": "赤水城",
+          "type": "city",
+          "x": 319,
+          "y": 504
+        },
+        {
+          "name": "玉泉镇",
+          "type": "town",
+          "x": 1241,
+          "y": 13
+        },
+        {
+          "name": "临皋镇",
+          "type": "town",
+          "x": 135,
+          "y": 811
+        }
+      ],
+      "bridges": [],
+      "prompt": "Refine IMAGE 1, a SINGLE LOCAL CROP of our existing full world map. Output EXACTLY this local area at the same crop, scale and orientation, square 1254 pixels or larger, not a new complete map. IMAGE 2 is the full world master ONLY to explain context and coordinate continuity. IMAGE 3 is the approved fine small-conifer stroke reference ONLY. Do not copy a different composition from any reference. This local region is r3c2, row 3 column 2 of a 5x5 refinement layout; the final game map will be a single continuous whole.\nKeep ALL hill groups, riverbanks, lakes, shorelines and woodland footprints in their present places. Rebuild their enlarged soft marks into clean native fine gray-brown ink contours and delicate restrained gray-green washes. Keep existing density of separated low hills and usable valley/plain gaps. Do not add mountains to open ground or recompose existing groups. Low horizontally spread shoulders and shallow saddles, no tall pyramid peaks, no wall of edge mountains or dense engraving. Thin 1-2 pixel gray-brown lines at native scale.\nWarm muted earth-yellow parchment, around the current reference palette. Very faint uniform paper grain, otherwise CLEAN QUIET EMPTY GROUND between landforms. NO grass strokes, soil blotches, smudges, squiggles, dot stippling, ground cracks, coarse fibers, dirt, paper stains or scratchy filler. Plains must not look dirty. Forests stay as small compact irregular groups of tiny individually hinted slender conifers, around 6-15 pixels tall in this local frame, mixed heights and open gaps, varied natural clumps. Only on flats and low valleys, NEVER on mountain slopes or ridges. No broadleaf crowns, tall trees, repeated stamps or continuous forest border.\nWhen water is present: retain exact shape and connectivity, muted gray-green water, subtly irregular banks and only few thin current hints. No pure blue, heavy dark double outlines, flooding a new area or inventing branches. A river crossing an image edge MUST remain open through that same edge; no tapering it to an inland source. East sea when present must continue along the original long coast. If no water in the crop, do not add any.\nDry terrain accommodations in this frame: (933,627) a quiet dry low mountain shoulder or shallow hillside saddle supporting a separate tiny mountain-gate icon; (319,504) flat dry land for a separate small city entrance; (1241,13) flat dry land for a separate small town entrance; (135,811) flat dry land for a separate small town entrance. Make each a natural tiny shoulder or level lowland, NOT a circle, a geometric platform, visible reserve box, white hole or a building. Leave the exact coordinate dry and feasible for an independent entrance icon. Do NOT draw those entrance icons. Do not fill these openings with water, trees or sharp rock lines. Sect mountains can have a very subtle nearby low shoulder at that coordinate if needed, preserving the surrounding map structure. NO mountain stairway, NO steps, NO architectural retaining walls and NO roads leading to it.\nEDGE MATCHING IS CRITICAL: preserve the outermost 60-pixel band's existing geometry, bank positions, broad color and feature scale very closely so this region can meet its neighbors. No frame, fade-out, vignette, empty border, changed lighting or edge mountain addition. Refine clarity in place, not a separate decorative landscape.\nABSOLUTELY NO BRIDGES, stairs, steps, mountain paths, roads, buildings, courtyard, gates, walls, icons, labels, text, map markers, UI, compass, grid, border or guide marks. Terrain, forests and water are integrated in one painting. Not a sprite sheet, not a collage. Deliver only this same local map region redrawn cleanly."
+    },
+    {
+      "id": "r3c3",
+      "row": 2,
+      "col": 2,
+      "worldOrigin": [
+        2445,
+        2445
+      ],
+      "coreRect": [
+        2458,
+        2458,
+        1228,
+        1228
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/whole_paint_v3/reference/r3c3_scene.png",
+      "places": [
+        {
+          "name": "春水府",
+          "type": "city",
+          "x": 566,
+          "y": 934
+        },
+        {
+          "name": "玉泉镇",
+          "type": "town",
+          "x": 13,
+          "y": 13
+        },
+        {
+          "name": "烟柳镇",
+          "type": "town",
+          "x": 811,
+          "y": 1180
+        },
+        {
+          "name": "桑落镇",
+          "type": "town",
+          "x": 197,
+          "y": 873
+        },
+        {
+          "name": "荷汀镇",
+          "type": "town",
+          "x": 996,
+          "y": 566
+        }
+      ],
+      "bridges": [],
+      "prompt": "Refine IMAGE 1, a SINGLE LOCAL CROP of our existing full world map. Output EXACTLY this local area at the same crop, scale and orientation, square 1254 pixels or larger, not a new complete map. IMAGE 2 is the full world master ONLY to explain context and coordinate continuity. IMAGE 3 is the approved fine small-conifer stroke reference ONLY. Do not copy a different composition from any reference. This local region is r3c3, row 3 column 3 of a 5x5 refinement layout; the final game map will be a single continuous whole.\nKeep ALL hill groups, riverbanks, lakes, shorelines and woodland footprints in their present places. Rebuild their enlarged soft marks into clean native fine gray-brown ink contours and delicate restrained gray-green washes. Keep existing density of separated low hills and usable valley/plain gaps. Do not add mountains to open ground or recompose existing groups. Low horizontally spread shoulders and shallow saddles, no tall pyramid peaks, no wall of edge mountains or dense engraving. Thin 1-2 pixel gray-brown lines at native scale.\nWarm muted earth-yellow parchment, around the current reference palette. Very faint uniform paper grain, otherwise CLEAN QUIET EMPTY GROUND between landforms. NO grass strokes, soil blotches, smudges, squiggles, dot stippling, ground cracks, coarse fibers, dirt, paper stains or scratchy filler. Plains must not look dirty. Forests stay as small compact irregular groups of tiny individually hinted slender conifers, around 6-15 pixels tall in this local frame, mixed heights and open gaps, varied natural clumps. Only on flats and low valleys, NEVER on mountain slopes or ridges. No broadleaf crowns, tall trees, repeated stamps or continuous forest border.\nWhen water is present: retain exact shape and connectivity, muted gray-green water, subtly irregular banks and only few thin current hints. No pure blue, heavy dark double outlines, flooding a new area or inventing branches. A river crossing an image edge MUST remain open through that same edge; no tapering it to an inland source. East sea when present must continue along the original long coast. If no water in the crop, do not add any.\nDry terrain accommodations in this frame: (566,934) flat dry land for a separate small city entrance; (13,13) flat dry land for a separate small town entrance; (811,1180) flat dry land for a separate small town entrance; (197,873) flat dry land for a separate small town entrance; (996,566) flat dry land for a separate small town entrance. Make each a natural tiny shoulder or level lowland, NOT a circle, a geometric platform, visible reserve box, white hole or a building. Leave the exact coordinate dry and feasible for an independent entrance icon. Do NOT draw those entrance icons. Do not fill these openings with water, trees or sharp rock lines. Sect mountains can have a very subtle nearby low shoulder at that coordinate if needed, preserving the surrounding map structure. NO mountain stairway, NO steps, NO architectural retaining walls and NO roads leading to it.\nEDGE MATCHING IS CRITICAL: preserve the outermost 60-pixel band's existing geometry, bank positions, broad color and feature scale very closely so this region can meet its neighbors. No frame, fade-out, vignette, empty border, changed lighting or edge mountain addition. Refine clarity in place, not a separate decorative landscape.\nABSOLUTELY NO BRIDGES, stairs, steps, mountain paths, roads, buildings, courtyard, gates, walls, icons, labels, text, map markers, UI, compass, grid, border or guide marks. Terrain, forests and water are integrated in one painting. Not a sprite sheet, not a collage. Deliver only this same local map region redrawn cleanly."
+    },
+    {
+      "id": "r3c4",
+      "row": 2,
+      "col": 3,
+      "worldOrigin": [
+        3674,
+        2445
+      ],
+      "coreRect": [
+        3686,
+        2458,
+        1229,
+        1228
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/whole_paint_v3/reference/r3c4_scene.png",
+      "places": [
+        {
+          "name": "通济城",
+          "type": "city",
+          "x": 320,
+          "y": 688
+        },
+        {
+          "name": "问津渡",
+          "type": "dock",
+          "x": 442,
+          "y": 934
+        }
+      ],
+      "bridges": [],
+      "prompt": "Refine IMAGE 1, a SINGLE LOCAL CROP of our existing full world map. Output EXACTLY this local area at the same crop, scale and orientation, square 1254 pixels or larger, not a new complete map. IMAGE 2 is the full world master ONLY to explain context and coordinate continuity. IMAGE 3 is the approved fine small-conifer stroke reference ONLY. Do not copy a different composition from any reference. This local region is r3c4, row 3 column 4 of a 5x5 refinement layout; the final game map will be a single continuous whole.\nKeep ALL hill groups, riverbanks, lakes, shorelines and woodland footprints in their present places. Rebuild their enlarged soft marks into clean native fine gray-brown ink contours and delicate restrained gray-green washes. Keep existing density of separated low hills and usable valley/plain gaps. Do not add mountains to open ground or recompose existing groups. Low horizontally spread shoulders and shallow saddles, no tall pyramid peaks, no wall of edge mountains or dense engraving. Thin 1-2 pixel gray-brown lines at native scale.\nWarm muted earth-yellow parchment, around the current reference palette. Very faint uniform paper grain, otherwise CLEAN QUIET EMPTY GROUND between landforms. NO grass strokes, soil blotches, smudges, squiggles, dot stippling, ground cracks, coarse fibers, dirt, paper stains or scratchy filler. Plains must not look dirty. Forests stay as small compact irregular groups of tiny individually hinted slender conifers, around 6-15 pixels tall in this local frame, mixed heights and open gaps, varied natural clumps. Only on flats and low valleys, NEVER on mountain slopes or ridges. No broadleaf crowns, tall trees, repeated stamps or continuous forest border.\nWhen water is present: retain exact shape and connectivity, muted gray-green water, subtly irregular banks and only few thin current hints. No pure blue, heavy dark double outlines, flooding a new area or inventing branches. A river crossing an image edge MUST remain open through that same edge; no tapering it to an inland source. East sea when present must continue along the original long coast. If no water in the crop, do not add any.\nDry terrain accommodations in this frame: (320,688) flat dry land for a separate small city entrance; (442,934) flat dry land for a separate small dock entrance. Make each a natural tiny shoulder or level lowland, NOT a circle, a geometric platform, visible reserve box, white hole or a building. Leave the exact coordinate dry and feasible for an independent entrance icon. Do NOT draw those entrance icons. Do not fill these openings with water, trees or sharp rock lines. Sect mountains can have a very subtle nearby low shoulder at that coordinate if needed, preserving the surrounding map structure. NO mountain stairway, NO steps, NO architectural retaining walls and NO roads leading to it.\nEDGE MATCHING IS CRITICAL: preserve the outermost 60-pixel band's existing geometry, bank positions, broad color and feature scale very closely so this region can meet its neighbors. No frame, fade-out, vignette, empty border, changed lighting or edge mountain addition. Refine clarity in place, not a separate decorative landscape.\nABSOLUTELY NO BRIDGES, stairs, steps, mountain paths, roads, buildings, courtyard, gates, walls, icons, labels, text, map markers, UI, compass, grid, border or guide marks. Terrain, forests and water are integrated in one painting. Not a sprite sheet, not a collage. Deliver only this same local map region redrawn cleanly."
+    },
+    {
+      "id": "r3c5",
+      "row": 2,
+      "col": 4,
+      "worldOrigin": [
+        4903,
+        2445
+      ],
+      "coreRect": [
+        4915,
+        2458,
+        1229,
+        1228
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/whole_paint_v3/reference/r3c5_scene.png",
+      "places": [
+        {
+          "name": "归寂城",
+          "type": "city",
+          "x": 381,
+          "y": 74
+        },
+        {
+          "name": "夜泊坊",
+          "type": "market",
+          "x": 74,
+          "y": 934
+        }
+      ],
+      "bridges": [],
+      "prompt": "Refine IMAGE 1, a SINGLE LOCAL CROP of our existing full world map. Output EXACTLY this local area at the same crop, scale and orientation, square 1254 pixels or larger, not a new complete map. IMAGE 2 is the full world master ONLY to explain context and coordinate continuity. IMAGE 3 is the approved fine small-conifer stroke reference ONLY. Do not copy a different composition from any reference. This local region is r3c5, row 3 column 5 of a 5x5 refinement layout; the final game map will be a single continuous whole.\nKeep ALL hill groups, riverbanks, lakes, shorelines and woodland footprints in their present places. Rebuild their enlarged soft marks into clean native fine gray-brown ink contours and delicate restrained gray-green washes. Keep existing density of separated low hills and usable valley/plain gaps. Do not add mountains to open ground or recompose existing groups. Low horizontally spread shoulders and shallow saddles, no tall pyramid peaks, no wall of edge mountains or dense engraving. Thin 1-2 pixel gray-brown lines at native scale.\nWarm muted earth-yellow parchment, around the current reference palette. Very faint uniform paper grain, otherwise CLEAN QUIET EMPTY GROUND between landforms. NO grass strokes, soil blotches, smudges, squiggles, dot stippling, ground cracks, coarse fibers, dirt, paper stains or scratchy filler. Plains must not look dirty. Forests stay as small compact irregular groups of tiny individually hinted slender conifers, around 6-15 pixels tall in this local frame, mixed heights and open gaps, varied natural clumps. Only on flats and low valleys, NEVER on mountain slopes or ridges. No broadleaf crowns, tall trees, repeated stamps or continuous forest border.\nWhen water is present: retain exact shape and connectivity, muted gray-green water, subtly irregular banks and only few thin current hints. No pure blue, heavy dark double outlines, flooding a new area or inventing branches. A river crossing an image edge MUST remain open through that same edge; no tapering it to an inland source. East sea when present must continue along the original long coast. If no water in the crop, do not add any.\nDry terrain accommodations in this frame: (381,74) flat dry land for a separate small city entrance; (74,934) flat dry land for a separate small market entrance. Make each a natural tiny shoulder or level lowland, NOT a circle, a geometric platform, visible reserve box, white hole or a building. Leave the exact coordinate dry and feasible for an independent entrance icon. Do NOT draw those entrance icons. Do not fill these openings with water, trees or sharp rock lines. Sect mountains can have a very subtle nearby low shoulder at that coordinate if needed, preserving the surrounding map structure. NO mountain stairway, NO steps, NO architectural retaining walls and NO roads leading to it.\nEDGE MATCHING IS CRITICAL: preserve the outermost 60-pixel band's existing geometry, bank positions, broad color and feature scale very closely so this region can meet its neighbors. No frame, fade-out, vignette, empty border, changed lighting or edge mountain addition. Refine clarity in place, not a separate decorative landscape.\nABSOLUTELY NO BRIDGES, stairs, steps, mountain paths, roads, buildings, courtyard, gates, walls, icons, labels, text, map markers, UI, compass, grid, border or guide marks. Terrain, forests and water are integrated in one painting. Not a sprite sheet, not a collage. Deliver only this same local map region redrawn cleanly."
+    },
+    {
+      "id": "r4c1",
+      "row": 3,
+      "col": 0,
+      "worldOrigin": [
+        -12,
+        3674
+      ],
+      "coreRect": [
+        0,
+        3686,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/whole_paint_v3/reference/r4c1_scene.png",
+      "places": [
+        {
+          "name": "太和城",
+          "type": "city",
+          "x": 688,
+          "y": 504
+        },
+        {
+          "name": "洗心镇",
+          "type": "town",
+          "x": 872,
+          "y": 1118
+        },
+        {
+          "name": "松月坊",
+          "type": "market",
+          "x": 1179,
+          "y": 627
+        }
+      ],
+      "bridges": [],
+      "prompt": "Refine IMAGE 1, a SINGLE LOCAL CROP of our existing full world map. Output EXACTLY this local area at the same crop, scale and orientation, square 1254 pixels or larger, not a new complete map. IMAGE 2 is the full world master ONLY to explain context and coordinate continuity. IMAGE 3 is the approved fine small-conifer stroke reference ONLY. Do not copy a different composition from any reference. This local region is r4c1, row 4 column 1 of a 5x5 refinement layout; the final game map will be a single continuous whole.\nKeep ALL hill groups, riverbanks, lakes, shorelines and woodland footprints in their present places. Rebuild their enlarged soft marks into clean native fine gray-brown ink contours and delicate restrained gray-green washes. Keep existing density of separated low hills and usable valley/plain gaps. Do not add mountains to open ground or recompose existing groups. Low horizontally spread shoulders and shallow saddles, no tall pyramid peaks, no wall of edge mountains or dense engraving. Thin 1-2 pixel gray-brown lines at native scale.\nWarm muted earth-yellow parchment, around the current reference palette. Very faint uniform paper grain, otherwise CLEAN QUIET EMPTY GROUND between landforms. NO grass strokes, soil blotches, smudges, squiggles, dot stippling, ground cracks, coarse fibers, dirt, paper stains or scratchy filler. Plains must not look dirty. Forests stay as small compact irregular groups of tiny individually hinted slender conifers, around 6-15 pixels tall in this local frame, mixed heights and open gaps, varied natural clumps. Only on flats and low valleys, NEVER on mountain slopes or ridges. No broadleaf crowns, tall trees, repeated stamps or continuous forest border.\nWhen water is present: retain exact shape and connectivity, muted gray-green water, subtly irregular banks and only few thin current hints. No pure blue, heavy dark double outlines, flooding a new area or inventing branches. A river crossing an image edge MUST remain open through that same edge; no tapering it to an inland source. East sea when present must continue along the original long coast. If no water in the crop, do not add any.\nDry terrain accommodations in this frame: (688,504) flat dry land for a separate small city entrance; (872,1118) flat dry land for a separate small town entrance; (1179,627) flat dry land for a separate small market entrance. Make each a natural tiny shoulder or level lowland, NOT a circle, a geometric platform, visible reserve box, white hole or a building. Leave the exact coordinate dry and feasible for an independent entrance icon. Do NOT draw those entrance icons. Do not fill these openings with water, trees or sharp rock lines. Sect mountains can have a very subtle nearby low shoulder at that coordinate if needed, preserving the surrounding map structure. NO mountain stairway, NO steps, NO architectural retaining walls and NO roads leading to it.\nEDGE MATCHING IS CRITICAL: preserve the outermost 60-pixel band's existing geometry, bank positions, broad color and feature scale very closely so this region can meet its neighbors. No frame, fade-out, vignette, empty border, changed lighting or edge mountain addition. Refine clarity in place, not a separate decorative landscape.\nABSOLUTELY NO BRIDGES, stairs, steps, mountain paths, roads, buildings, courtyard, gates, walls, icons, labels, text, map markers, UI, compass, grid, border or guide marks. Terrain, forests and water are integrated in one painting. Not a sprite sheet, not a collage. Deliver only this same local map region redrawn cleanly."
+    },
+    {
+      "id": "r4c2",
+      "row": 3,
+      "col": 1,
+      "worldOrigin": [
+        1217,
+        3674
+      ],
+      "coreRect": [
+        1229,
+        3686,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/whole_paint_v3/reference/r4c2_scene.png",
+      "places": [
+        {
+          "name": "玉虚仙宗",
+          "type": "sect",
+          "x": 135,
+          "y": 873
+        },
+        {
+          "name": "白石城",
+          "type": "city",
+          "x": 503,
+          "y": 320
+        }
+      ],
+      "bridges": [],
+      "prompt": "Refine IMAGE 1, a SINGLE LOCAL CROP of our existing full world map. Output EXACTLY this local area at the same crop, scale and orientation, square 1254 pixels or larger, not a new complete map. IMAGE 2 is the full world master ONLY to explain context and coordinate continuity. IMAGE 3 is the approved fine small-conifer stroke reference ONLY. Do not copy a different composition from any reference. This local region is r4c2, row 4 column 2 of a 5x5 refinement layout; the final game map will be a single continuous whole.\nKeep ALL hill groups, riverbanks, lakes, shorelines and woodland footprints in their present places. Rebuild their enlarged soft marks into clean native fine gray-brown ink contours and delicate restrained gray-green washes. Keep existing density of separated low hills and usable valley/plain gaps. Do not add mountains to open ground or recompose existing groups. Low horizontally spread shoulders and shallow saddles, no tall pyramid peaks, no wall of edge mountains or dense engraving. Thin 1-2 pixel gray-brown lines at native scale.\nWarm muted earth-yellow parchment, around the current reference palette. Very faint uniform paper grain, otherwise CLEAN QUIET EMPTY GROUND between landforms. NO grass strokes, soil blotches, smudges, squiggles, dot stippling, ground cracks, coarse fibers, dirt, paper stains or scratchy filler. Plains must not look dirty. Forests stay as small compact irregular groups of tiny individually hinted slender conifers, around 6-15 pixels tall in this local frame, mixed heights and open gaps, varied natural clumps. Only on flats and low valleys, NEVER on mountain slopes or ridges. No broadleaf crowns, tall trees, repeated stamps or continuous forest border.\nWhen water is present: retain exact shape and connectivity, muted gray-green water, subtly irregular banks and only few thin current hints. No pure blue, heavy dark double outlines, flooding a new area or inventing branches. A river crossing an image edge MUST remain open through that same edge; no tapering it to an inland source. East sea when present must continue along the original long coast. If no water in the crop, do not add any.\nDry terrain accommodations in this frame: (135,873) a quiet dry low mountain shoulder or shallow hillside saddle supporting a separate tiny mountain-gate icon; (503,320) flat dry land for a separate small city entrance. Make each a natural tiny shoulder or level lowland, NOT a circle, a geometric platform, visible reserve box, white hole or a building. Leave the exact coordinate dry and feasible for an independent entrance icon. Do NOT draw those entrance icons. Do not fill these openings with water, trees or sharp rock lines. Sect mountains can have a very subtle nearby low shoulder at that coordinate if needed, preserving the surrounding map structure. NO mountain stairway, NO steps, NO architectural retaining walls and NO roads leading to it.\nEDGE MATCHING IS CRITICAL: preserve the outermost 60-pixel band's existing geometry, bank positions, broad color and feature scale very closely so this region can meet its neighbors. No frame, fade-out, vignette, empty border, changed lighting or edge mountain addition. Refine clarity in place, not a separate decorative landscape.\nABSOLUTELY NO BRIDGES, stairs, steps, mountain paths, roads, buildings, courtyard, gates, walls, icons, labels, text, map markers, UI, compass, grid, border or guide marks. Terrain, forests and water are integrated in one painting. Not a sprite sheet, not a collage. Deliver only this same local map region redrawn cleanly."
+    },
+    {
+      "id": "r4c3",
+      "row": 3,
+      "col": 2,
+      "worldOrigin": [
+        2445,
+        3674
+      ],
+      "coreRect": [
+        2458,
+        3686,
+        1228,
+        1229
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/whole_paint_v3/reference/r4c3_scene.png",
+      "places": [
+        {
+          "name": "抱朴山",
+          "type": "sect",
+          "x": 197,
+          "y": 320
+        },
+        {
+          "name": "溪云城",
+          "type": "city",
+          "x": 566,
+          "y": 873
+        },
+        {
+          "name": "望岚镇",
+          "type": "town",
+          "x": 197,
+          "y": 995
+        },
+        {
+          "name": "桑榆里",
+          "type": "village",
+          "x": 381,
+          "y": 688
+        }
+      ],
+      "bridges": [],
+      "prompt": "Refine IMAGE 1, a SINGLE LOCAL CROP of our existing full world map. Output EXACTLY this local area at the same crop, scale and orientation, square 1254 pixels or larger, not a new complete map. IMAGE 2 is the full world master ONLY to explain context and coordinate continuity. IMAGE 3 is the approved fine small-conifer stroke reference ONLY. Do not copy a different composition from any reference. This local region is r4c3, row 4 column 3 of a 5x5 refinement layout; the final game map will be a single continuous whole.\nKeep ALL hill groups, riverbanks, lakes, shorelines and woodland footprints in their present places. Rebuild their enlarged soft marks into clean native fine gray-brown ink contours and delicate restrained gray-green washes. Keep existing density of separated low hills and usable valley/plain gaps. Do not add mountains to open ground or recompose existing groups. Low horizontally spread shoulders and shallow saddles, no tall pyramid peaks, no wall of edge mountains or dense engraving. Thin 1-2 pixel gray-brown lines at native scale.\nWarm muted earth-yellow parchment, around the current reference palette. Very faint uniform paper grain, otherwise CLEAN QUIET EMPTY GROUND between landforms. NO grass strokes, soil blotches, smudges, squiggles, dot stippling, ground cracks, coarse fibers, dirt, paper stains or scratchy filler. Plains must not look dirty. Forests stay as small compact irregular groups of tiny individually hinted slender conifers, around 6-15 pixels tall in this local frame, mixed heights and open gaps, varied natural clumps. Only on flats and low valleys, NEVER on mountain slopes or ridges. No broadleaf crowns, tall trees, repeated stamps or continuous forest border.\nWhen water is present: retain exact shape and connectivity, muted gray-green water, subtly irregular banks and only few thin current hints. No pure blue, heavy dark double outlines, flooding a new area or inventing branches. A river crossing an image edge MUST remain open through that same edge; no tapering it to an inland source. East sea when present must continue along the original long coast. If no water in the crop, do not add any.\nDry terrain accommodations in this frame: (197,320) a quiet dry low mountain shoulder or shallow hillside saddle supporting a separate tiny mountain-gate icon; (566,873) flat dry land for a separate small city entrance; (197,995) flat dry land for a separate small town entrance; (381,688) flat dry land for a separate small village entrance. Make each a natural tiny shoulder or level lowland, NOT a circle, a geometric platform, visible reserve box, white hole or a building. Leave the exact coordinate dry and feasible for an independent entrance icon. Do NOT draw those entrance icons. Do not fill these openings with water, trees or sharp rock lines. Sect mountains can have a very subtle nearby low shoulder at that coordinate if needed, preserving the surrounding map structure. NO mountain stairway, NO steps, NO architectural retaining walls and NO roads leading to it.\nEDGE MATCHING IS CRITICAL: preserve the outermost 60-pixel band's existing geometry, bank positions, broad color and feature scale very closely so this region can meet its neighbors. No frame, fade-out, vignette, empty border, changed lighting or edge mountain addition. Refine clarity in place, not a separate decorative landscape.\nABSOLUTELY NO BRIDGES, stairs, steps, mountain paths, roads, buildings, courtyard, gates, walls, icons, labels, text, map markers, UI, compass, grid, border or guide marks. Terrain, forests and water are integrated in one painting. Not a sprite sheet, not a collage. Deliver only this same local map region redrawn cleanly."
+    },
+    {
+      "id": "r4c4",
+      "row": 3,
+      "col": 3,
+      "worldOrigin": [
+        3674,
+        3674
+      ],
+      "coreRect": [
+        3686,
+        3686,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/whole_paint_v3/reference/r4c4_scene.png",
+      "places": [],
+      "bridges": [],
+      "prompt": "Refine IMAGE 1, a SINGLE LOCAL CROP of our existing full world map. Output EXACTLY this local area at the same crop, scale and orientation, square 1254 pixels or larger, not a new complete map. IMAGE 2 is the full world master ONLY to explain context and coordinate continuity. IMAGE 3 is the approved fine small-conifer stroke reference ONLY. Do not copy a different composition from any reference. This local region is r4c4, row 4 column 4 of a 5x5 refinement layout; the final game map will be a single continuous whole.\nKeep ALL hill groups, riverbanks, lakes, shorelines and woodland footprints in their present places. Rebuild their enlarged soft marks into clean native fine gray-brown ink contours and delicate restrained gray-green washes. Keep existing density of separated low hills and usable valley/plain gaps. Do not add mountains to open ground or recompose existing groups. Low horizontally spread shoulders and shallow saddles, no tall pyramid peaks, no wall of edge mountains or dense engraving. Thin 1-2 pixel gray-brown lines at native scale.\nWarm muted earth-yellow parchment, around the current reference palette. Very faint uniform paper grain, otherwise CLEAN QUIET EMPTY GROUND between landforms. NO grass strokes, soil blotches, smudges, squiggles, dot stippling, ground cracks, coarse fibers, dirt, paper stains or scratchy filler. Plains must not look dirty. Forests stay as small compact irregular groups of tiny individually hinted slender conifers, around 6-15 pixels tall in this local frame, mixed heights and open gaps, varied natural clumps. Only on flats and low valleys, NEVER on mountain slopes or ridges. No broadleaf crowns, tall trees, repeated stamps or continuous forest border.\nWhen water is present: retain exact shape and connectivity, muted gray-green water, subtly irregular banks and only few thin current hints. No pure blue, heavy dark double outlines, flooding a new area or inventing branches. A river crossing an image edge MUST remain open through that same edge; no tapering it to an inland source. East sea when present must continue along the original long coast. If no water in the crop, do not add any.\nDry terrain accommodations in this frame: No special building clearings are required here.. Make each a natural tiny shoulder or level lowland, NOT a circle, a geometric platform, visible reserve box, white hole or a building. Leave the exact coordinate dry and feasible for an independent entrance icon. Do NOT draw those entrance icons. Do not fill these openings with water, trees or sharp rock lines. Sect mountains can have a very subtle nearby low shoulder at that coordinate if needed, preserving the surrounding map structure. NO mountain stairway, NO steps, NO architectural retaining walls and NO roads leading to it.\nEDGE MATCHING IS CRITICAL: preserve the outermost 60-pixel band's existing geometry, bank positions, broad color and feature scale very closely so this region can meet its neighbors. No frame, fade-out, vignette, empty border, changed lighting or edge mountain addition. Refine clarity in place, not a separate decorative landscape.\nABSOLUTELY NO BRIDGES, stairs, steps, mountain paths, roads, buildings, courtyard, gates, walls, icons, labels, text, map markers, UI, compass, grid, border or guide marks. Terrain, forests and water are integrated in one painting. Not a sprite sheet, not a collage. Deliver only this same local map region redrawn cleanly."
+    },
+    {
+      "id": "r4c5",
+      "row": 3,
+      "col": 4,
+      "worldOrigin": [
+        4903,
+        3674
+      ],
+      "coreRect": [
+        4915,
+        3686,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/whole_paint_v3/reference/r4c5_scene.png",
+      "places": [
+        {
+          "name": "无相圣宗",
+          "type": "sect",
+          "x": 197,
+          "y": 74
+        },
+        {
+          "name": "槐安镇",
+          "type": "town",
+          "x": 442,
+          "y": 995
+        },
+        {
+          "name": "永夜关",
+          "type": "city",
+          "x": 688,
+          "y": 197
+        },
+        {
+          "name": "听澜镇",
+          "type": "town",
+          "x": 442,
+          "y": 565
+        }
+      ],
+      "bridges": [],
+      "prompt": "Refine IMAGE 1, a SINGLE LOCAL CROP of our existing full world map. Output EXACTLY this local area at the same crop, scale and orientation, square 1254 pixels or larger, not a new complete map. IMAGE 2 is the full world master ONLY to explain context and coordinate continuity. IMAGE 3 is the approved fine small-conifer stroke reference ONLY. Do not copy a different composition from any reference. This local region is r4c5, row 4 column 5 of a 5x5 refinement layout; the final game map will be a single continuous whole.\nKeep ALL hill groups, riverbanks, lakes, shorelines and woodland footprints in their present places. Rebuild their enlarged soft marks into clean native fine gray-brown ink contours and delicate restrained gray-green washes. Keep existing density of separated low hills and usable valley/plain gaps. Do not add mountains to open ground or recompose existing groups. Low horizontally spread shoulders and shallow saddles, no tall pyramid peaks, no wall of edge mountains or dense engraving. Thin 1-2 pixel gray-brown lines at native scale.\nWarm muted earth-yellow parchment, around the current reference palette. Very faint uniform paper grain, otherwise CLEAN QUIET EMPTY GROUND between landforms. NO grass strokes, soil blotches, smudges, squiggles, dot stippling, ground cracks, coarse fibers, dirt, paper stains or scratchy filler. Plains must not look dirty. Forests stay as small compact irregular groups of tiny individually hinted slender conifers, around 6-15 pixels tall in this local frame, mixed heights and open gaps, varied natural clumps. Only on flats and low valleys, NEVER on mountain slopes or ridges. No broadleaf crowns, tall trees, repeated stamps or continuous forest border.\nWhen water is present: retain exact shape and connectivity, muted gray-green water, subtly irregular banks and only few thin current hints. No pure blue, heavy dark double outlines, flooding a new area or inventing branches. A river crossing an image edge MUST remain open through that same edge; no tapering it to an inland source. East sea when present must continue along the original long coast. If no water in the crop, do not add any.\nDry terrain accommodations in this frame: (197,74) a quiet dry low mountain shoulder or shallow hillside saddle supporting a separate tiny mountain-gate icon; (442,995) flat dry land for a separate small town entrance; (688,197) flat dry land for a separate small city entrance; (442,565) flat dry land for a separate small town entrance. Make each a natural tiny shoulder or level lowland, NOT a circle, a geometric platform, visible reserve box, white hole or a building. Leave the exact coordinate dry and feasible for an independent entrance icon. Do NOT draw those entrance icons. Do not fill these openings with water, trees or sharp rock lines. Sect mountains can have a very subtle nearby low shoulder at that coordinate if needed, preserving the surrounding map structure. NO mountain stairway, NO steps, NO architectural retaining walls and NO roads leading to it.\nEDGE MATCHING IS CRITICAL: preserve the outermost 60-pixel band's existing geometry, bank positions, broad color and feature scale very closely so this region can meet its neighbors. No frame, fade-out, vignette, empty border, changed lighting or edge mountain addition. Refine clarity in place, not a separate decorative landscape.\nABSOLUTELY NO BRIDGES, stairs, steps, mountain paths, roads, buildings, courtyard, gates, walls, icons, labels, text, map markers, UI, compass, grid, border or guide marks. Terrain, forests and water are integrated in one painting. Not a sprite sheet, not a collage. Deliver only this same local map region redrawn cleanly."
+    },
+    {
+      "id": "r5c1",
+      "row": 4,
+      "col": 0,
+      "worldOrigin": [
+        -12,
+        4903
+      ],
+      "coreRect": [
+        0,
+        4915,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/whole_paint_v3/reference/r5c1_scene.png",
+      "places": [],
+      "bridges": [],
+      "prompt": "Refine IMAGE 1, a SINGLE LOCAL CROP of our existing full world map. Output EXACTLY this local area at the same crop, scale and orientation, square 1254 pixels or larger, not a new complete map. IMAGE 2 is the full world master ONLY to explain context and coordinate continuity. IMAGE 3 is the approved fine small-conifer stroke reference ONLY. Do not copy a different composition from any reference. This local region is r5c1, row 5 column 1 of a 5x5 refinement layout; the final game map will be a single continuous whole.\nKeep ALL hill groups, riverbanks, lakes, shorelines and woodland footprints in their present places. Rebuild their enlarged soft marks into clean native fine gray-brown ink contours and delicate restrained gray-green washes. Keep existing density of separated low hills and usable valley/plain gaps. Do not add mountains to open ground or recompose existing groups. Low horizontally spread shoulders and shallow saddles, no tall pyramid peaks, no wall of edge mountains or dense engraving. Thin 1-2 pixel gray-brown lines at native scale.\nWarm muted earth-yellow parchment, around the current reference palette. Very faint uniform paper grain, otherwise CLEAN QUIET EMPTY GROUND between landforms. NO grass strokes, soil blotches, smudges, squiggles, dot stippling, ground cracks, coarse fibers, dirt, paper stains or scratchy filler. Plains must not look dirty. Forests stay as small compact irregular groups of tiny individually hinted slender conifers, around 6-15 pixels tall in this local frame, mixed heights and open gaps, varied natural clumps. Only on flats and low valleys, NEVER on mountain slopes or ridges. No broadleaf crowns, tall trees, repeated stamps or continuous forest border.\nWhen water is present: retain exact shape and connectivity, muted gray-green water, subtly irregular banks and only few thin current hints. No pure blue, heavy dark double outlines, flooding a new area or inventing branches. A river crossing an image edge MUST remain open through that same edge; no tapering it to an inland source. East sea when present must continue along the original long coast. If no water in the crop, do not add any.\nDry terrain accommodations in this frame: No special building clearings are required here.. Make each a natural tiny shoulder or level lowland, NOT a circle, a geometric platform, visible reserve box, white hole or a building. Leave the exact coordinate dry and feasible for an independent entrance icon. Do NOT draw those entrance icons. Do not fill these openings with water, trees or sharp rock lines. Sect mountains can have a very subtle nearby low shoulder at that coordinate if needed, preserving the surrounding map structure. NO mountain stairway, NO steps, NO architectural retaining walls and NO roads leading to it.\nEDGE MATCHING IS CRITICAL: preserve the outermost 60-pixel band's existing geometry, bank positions, broad color and feature scale very closely so this region can meet its neighbors. No frame, fade-out, vignette, empty border, changed lighting or edge mountain addition. Refine clarity in place, not a separate decorative landscape.\nABSOLUTELY NO BRIDGES, stairs, steps, mountain paths, roads, buildings, courtyard, gates, walls, icons, labels, text, map markers, UI, compass, grid, border or guide marks. Terrain, forests and water are integrated in one painting. Not a sprite sheet, not a collage. Deliver only this same local map region redrawn cleanly."
+    },
+    {
+      "id": "r5c2",
+      "row": 4,
+      "col": 1,
+      "worldOrigin": [
+        1217,
+        4903
+      ],
+      "coreRect": [
+        1229,
+        4915,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/whole_paint_v3/reference/r5c2_scene.png",
+      "places": [
+        {
+          "name": "百药谷",
+          "type": "sect",
+          "x": 995,
+          "y": 688
+        },
+        {
+          "name": "青萝城",
+          "type": "city",
+          "x": 626,
+          "y": 442
+        },
+        {
+          "name": "采薇里",
+          "type": "village",
+          "x": 380,
+          "y": 627
+        }
+      ],
+      "bridges": [],
+      "prompt": "Refine IMAGE 1, a SINGLE LOCAL CROP of our existing full world map. Output EXACTLY this local area at the same crop, scale and orientation, square 1254 pixels or larger, not a new complete map. IMAGE 2 is the full world master ONLY to explain context and coordinate continuity. IMAGE 3 is the approved fine small-conifer stroke reference ONLY. Do not copy a different composition from any reference. This local region is r5c2, row 5 column 2 of a 5x5 refinement layout; the final game map will be a single continuous whole.\nKeep ALL hill groups, riverbanks, lakes, shorelines and woodland footprints in their present places. Rebuild their enlarged soft marks into clean native fine gray-brown ink contours and delicate restrained gray-green washes. Keep existing density of separated low hills and usable valley/plain gaps. Do not add mountains to open ground or recompose existing groups. Low horizontally spread shoulders and shallow saddles, no tall pyramid peaks, no wall of edge mountains or dense engraving. Thin 1-2 pixel gray-brown lines at native scale.\nWarm muted earth-yellow parchment, around the current reference palette. Very faint uniform paper grain, otherwise CLEAN QUIET EMPTY GROUND between landforms. NO grass strokes, soil blotches, smudges, squiggles, dot stippling, ground cracks, coarse fibers, dirt, paper stains or scratchy filler. Plains must not look dirty. Forests stay as small compact irregular groups of tiny individually hinted slender conifers, around 6-15 pixels tall in this local frame, mixed heights and open gaps, varied natural clumps. Only on flats and low valleys, NEVER on mountain slopes or ridges. No broadleaf crowns, tall trees, repeated stamps or continuous forest border.\nWhen water is present: retain exact shape and connectivity, muted gray-green water, subtly irregular banks and only few thin current hints. No pure blue, heavy dark double outlines, flooding a new area or inventing branches. A river crossing an image edge MUST remain open through that same edge; no tapering it to an inland source. East sea when present must continue along the original long coast. If no water in the crop, do not add any.\nDry terrain accommodations in this frame: (995,688) a quiet dry low mountain shoulder or shallow hillside saddle supporting a separate tiny mountain-gate icon; (626,442) flat dry land for a separate small city entrance; (380,627) flat dry land for a separate small village entrance. Make each a natural tiny shoulder or level lowland, NOT a circle, a geometric platform, visible reserve box, white hole or a building. Leave the exact coordinate dry and feasible for an independent entrance icon. Do NOT draw those entrance icons. Do not fill these openings with water, trees or sharp rock lines. Sect mountains can have a very subtle nearby low shoulder at that coordinate if needed, preserving the surrounding map structure. NO mountain stairway, NO steps, NO architectural retaining walls and NO roads leading to it.\nEDGE MATCHING IS CRITICAL: preserve the outermost 60-pixel band's existing geometry, bank positions, broad color and feature scale very closely so this region can meet its neighbors. No frame, fade-out, vignette, empty border, changed lighting or edge mountain addition. Refine clarity in place, not a separate decorative landscape.\nABSOLUTELY NO BRIDGES, stairs, steps, mountain paths, roads, buildings, courtyard, gates, walls, icons, labels, text, map markers, UI, compass, grid, border or guide marks. Terrain, forests and water are integrated in one painting. Not a sprite sheet, not a collage. Deliver only this same local map region redrawn cleanly."
+    },
+    {
+      "id": "r5c3",
+      "row": 4,
+      "col": 2,
+      "worldOrigin": [
+        2445,
+        4903
+      ],
+      "coreRect": [
+        2458,
+        4915,
+        1228,
+        1229
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/whole_paint_v3/reference/r5c3_scene.png",
+      "places": [],
+      "bridges": [],
+      "prompt": "Refine IMAGE 1, a SINGLE LOCAL CROP of our existing full world map. Output EXACTLY this local area at the same crop, scale and orientation, square 1254 pixels or larger, not a new complete map. IMAGE 2 is the full world master ONLY to explain context and coordinate continuity. IMAGE 3 is the approved fine small-conifer stroke reference ONLY. Do not copy a different composition from any reference. This local region is r5c3, row 5 column 3 of a 5x5 refinement layout; the final game map will be a single continuous whole.\nKeep ALL hill groups, riverbanks, lakes, shorelines and woodland footprints in their present places. Rebuild their enlarged soft marks into clean native fine gray-brown ink contours and delicate restrained gray-green washes. Keep existing density of separated low hills and usable valley/plain gaps. Do not add mountains to open ground or recompose existing groups. Low horizontally spread shoulders and shallow saddles, no tall pyramid peaks, no wall of edge mountains or dense engraving. Thin 1-2 pixel gray-brown lines at native scale.\nWarm muted earth-yellow parchment, around the current reference palette. Very faint uniform paper grain, otherwise CLEAN QUIET EMPTY GROUND between landforms. NO grass strokes, soil blotches, smudges, squiggles, dot stippling, ground cracks, coarse fibers, dirt, paper stains or scratchy filler. Plains must not look dirty. Forests stay as small compact irregular groups of tiny individually hinted slender conifers, around 6-15 pixels tall in this local frame, mixed heights and open gaps, varied natural clumps. Only on flats and low valleys, NEVER on mountain slopes or ridges. No broadleaf crowns, tall trees, repeated stamps or continuous forest border.\nWhen water is present: retain exact shape and connectivity, muted gray-green water, subtly irregular banks and only few thin current hints. No pure blue, heavy dark double outlines, flooding a new area or inventing branches. A river crossing an image edge MUST remain open through that same edge; no tapering it to an inland source. East sea when present must continue along the original long coast. If no water in the crop, do not add any.\nDry terrain accommodations in this frame: No special building clearings are required here.. Make each a natural tiny shoulder or level lowland, NOT a circle, a geometric platform, visible reserve box, white hole or a building. Leave the exact coordinate dry and feasible for an independent entrance icon. Do NOT draw those entrance icons. Do not fill these openings with water, trees or sharp rock lines. Sect mountains can have a very subtle nearby low shoulder at that coordinate if needed, preserving the surrounding map structure. NO mountain stairway, NO steps, NO architectural retaining walls and NO roads leading to it.\nEDGE MATCHING IS CRITICAL: preserve the outermost 60-pixel band's existing geometry, bank positions, broad color and feature scale very closely so this region can meet its neighbors. No frame, fade-out, vignette, empty border, changed lighting or edge mountain addition. Refine clarity in place, not a separate decorative landscape.\nABSOLUTELY NO BRIDGES, stairs, steps, mountain paths, roads, buildings, courtyard, gates, walls, icons, labels, text, map markers, UI, compass, grid, border or guide marks. Terrain, forests and water are integrated in one painting. Not a sprite sheet, not a collage. Deliver only this same local map region redrawn cleanly."
+    },
+    {
+      "id": "r5c4",
+      "row": 4,
+      "col": 3,
+      "worldOrigin": [
+        3674,
+        4903
+      ],
+      "coreRect": [
+        3686,
+        4915,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/whole_paint_v3/reference/r5c4_scene.png",
+      "places": [
+        {
+          "name": "血河教",
+          "type": "sect",
+          "x": 320,
+          "y": 135
+        },
+        {
+          "name": "暮烟城",
+          "type": "city",
+          "x": 750,
+          "y": 197
+        },
+        {
+          "name": "雁回镇",
+          "type": "town",
+          "x": 1118,
+          "y": 74
+        },
+        {
+          "name": "忘机坊",
+          "type": "market",
+          "x": 627,
+          "y": 504
+        }
+      ],
+      "bridges": [],
+      "prompt": "Refine IMAGE 1, a SINGLE LOCAL CROP of our existing full world map. Output EXACTLY this local area at the same crop, scale and orientation, square 1254 pixels or larger, not a new complete map. IMAGE 2 is the full world master ONLY to explain context and coordinate continuity. IMAGE 3 is the approved fine small-conifer stroke reference ONLY. Do not copy a different composition from any reference. This local region is r5c4, row 5 column 4 of a 5x5 refinement layout; the final game map will be a single continuous whole.\nKeep ALL hill groups, riverbanks, lakes, shorelines and woodland footprints in their present places. Rebuild their enlarged soft marks into clean native fine gray-brown ink contours and delicate restrained gray-green washes. Keep existing density of separated low hills and usable valley/plain gaps. Do not add mountains to open ground or recompose existing groups. Low horizontally spread shoulders and shallow saddles, no tall pyramid peaks, no wall of edge mountains or dense engraving. Thin 1-2 pixel gray-brown lines at native scale.\nWarm muted earth-yellow parchment, around the current reference palette. Very faint uniform paper grain, otherwise CLEAN QUIET EMPTY GROUND between landforms. NO grass strokes, soil blotches, smudges, squiggles, dot stippling, ground cracks, coarse fibers, dirt, paper stains or scratchy filler. Plains must not look dirty. Forests stay as small compact irregular groups of tiny individually hinted slender conifers, around 6-15 pixels tall in this local frame, mixed heights and open gaps, varied natural clumps. Only on flats and low valleys, NEVER on mountain slopes or ridges. No broadleaf crowns, tall trees, repeated stamps or continuous forest border.\nWhen water is present: retain exact shape and connectivity, muted gray-green water, subtly irregular banks and only few thin current hints. No pure blue, heavy dark double outlines, flooding a new area or inventing branches. A river crossing an image edge MUST remain open through that same edge; no tapering it to an inland source. East sea when present must continue along the original long coast. If no water in the crop, do not add any.\nDry terrain accommodations in this frame: (320,135) a quiet dry low mountain shoulder or shallow hillside saddle supporting a separate tiny mountain-gate icon; (750,197) flat dry land for a separate small city entrance; (1118,74) flat dry land for a separate small town entrance; (627,504) flat dry land for a separate small market entrance. Make each a natural tiny shoulder or level lowland, NOT a circle, a geometric platform, visible reserve box, white hole or a building. Leave the exact coordinate dry and feasible for an independent entrance icon. Do NOT draw those entrance icons. Do not fill these openings with water, trees or sharp rock lines. Sect mountains can have a very subtle nearby low shoulder at that coordinate if needed, preserving the surrounding map structure. NO mountain stairway, NO steps, NO architectural retaining walls and NO roads leading to it.\nEDGE MATCHING IS CRITICAL: preserve the outermost 60-pixel band's existing geometry, bank positions, broad color and feature scale very closely so this region can meet its neighbors. No frame, fade-out, vignette, empty border, changed lighting or edge mountain addition. Refine clarity in place, not a separate decorative landscape.\nABSOLUTELY NO BRIDGES, stairs, steps, mountain paths, roads, buildings, courtyard, gates, walls, icons, labels, text, map markers, UI, compass, grid, border or guide marks. Terrain, forests and water are integrated in one painting. Not a sprite sheet, not a collage. Deliver only this same local map region redrawn cleanly."
+    },
+    {
+      "id": "r5c5",
+      "row": 4,
+      "col": 4,
+      "worldOrigin": [
+        4903,
+        4903
+      ],
+      "coreRect": [
+        4915,
+        4915,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/whole_paint_v3/reference/r5c5_scene.png",
+      "places": [
+        {
+          "name": "蚀日宫",
+          "type": "sect",
+          "x": 504,
+          "y": 504
+        }
+      ],
+      "bridges": [],
+      "prompt": "Refine IMAGE 1, a SINGLE LOCAL CROP of our existing full world map. Output EXACTLY this local area at the same crop, scale and orientation, square 1254 pixels or larger, not a new complete map. IMAGE 2 is the full world master ONLY to explain context and coordinate continuity. IMAGE 3 is the approved fine small-conifer stroke reference ONLY. Do not copy a different composition from any reference. This local region is r5c5, row 5 column 5 of a 5x5 refinement layout; the final game map will be a single continuous whole.\nKeep ALL hill groups, riverbanks, lakes, shorelines and woodland footprints in their present places. Rebuild their enlarged soft marks into clean native fine gray-brown ink contours and delicate restrained gray-green washes. Keep existing density of separated low hills and usable valley/plain gaps. Do not add mountains to open ground or recompose existing groups. Low horizontally spread shoulders and shallow saddles, no tall pyramid peaks, no wall of edge mountains or dense engraving. Thin 1-2 pixel gray-brown lines at native scale.\nWarm muted earth-yellow parchment, around the current reference palette. Very faint uniform paper grain, otherwise CLEAN QUIET EMPTY GROUND between landforms. NO grass strokes, soil blotches, smudges, squiggles, dot stippling, ground cracks, coarse fibers, dirt, paper stains or scratchy filler. Plains must not look dirty. Forests stay as small compact irregular groups of tiny individually hinted slender conifers, around 6-15 pixels tall in this local frame, mixed heights and open gaps, varied natural clumps. Only on flats and low valleys, NEVER on mountain slopes or ridges. No broadleaf crowns, tall trees, repeated stamps or continuous forest border.\nWhen water is present: retain exact shape and connectivity, muted gray-green water, subtly irregular banks and only few thin current hints. No pure blue, heavy dark double outlines, flooding a new area or inventing branches. A river crossing an image edge MUST remain open through that same edge; no tapering it to an inland source. East sea when present must continue along the original long coast. If no water in the crop, do not add any.\nDry terrain accommodations in this frame: (504,504) a quiet dry low mountain shoulder or shallow hillside saddle supporting a separate tiny mountain-gate icon. Make each a natural tiny shoulder or level lowland, NOT a circle, a geometric platform, visible reserve box, white hole or a building. Leave the exact coordinate dry and feasible for an independent entrance icon. Do NOT draw those entrance icons. Do not fill these openings with water, trees or sharp rock lines. Sect mountains can have a very subtle nearby low shoulder at that coordinate if needed, preserving the surrounding map structure. NO mountain stairway, NO steps, NO architectural retaining walls and NO roads leading to it.\nEDGE MATCHING IS CRITICAL: preserve the outermost 60-pixel band's existing geometry, bank positions, broad color and feature scale very closely so this region can meet its neighbors. No frame, fade-out, vignette, empty border, changed lighting or edge mountain addition. Refine clarity in place, not a separate decorative landscape.\nABSOLUTELY NO BRIDGES, stairs, steps, mountain paths, roads, buildings, courtyard, gates, walls, icons, labels, text, map markers, UI, compass, grid, border or guide marks. Terrain, forests and water are integrated in one painting. Not a sprite sheet, not a collage. Deliver only this same local map region redrawn cleanly."
+    }
+  ]
+}

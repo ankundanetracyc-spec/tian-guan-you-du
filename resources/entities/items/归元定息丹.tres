@@ -7,9 +7,12 @@ script = ExtResource("1")
 definition_id = &"pill_yunxi_return_origin"
 entity_name = "归元定息丹"
 description = "云息九层进阶十层的关口丹药。丹意收而不滞，取凝息归元之意；突破仍按既有修炼条件与闭关流程判定，成功晋层时消耗。"
-icon_path = "res://textures/items/alchemy_20261024/porcelain_bottle_closed.png"
+icon_path = "res://textures/items/inventory_density_20261029/pill_container_empty_porcelain.png"
 item_category = "丹药"
 item_subcategory = "云息突破"
 can_stack = false
 max_stack = 1
 
+inventory_width = 2
+inventory_height = 3
+inventory_can_rotate = true

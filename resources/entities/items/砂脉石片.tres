@@ -8,7 +8,7 @@ script = ExtResource("1")
 definition_id = &"mat_sandvein_stone_fragment"
 entity_name = "砂脉石片"
 description = "薄片状砂岩中夹有一道浅褐矿纹，质地紧实。"
-icon_path = "res://textures/items/item_sandvein_stone_fragment.png"
+icon_path = "res://textures/items/inventory_density_20261029/mat_sandvein_stone_fragment.png"
 item_category = "材料"
 item_subcategory = "矿材"
 tags = Array[String](["五行[土]", "质地[致密]", "功用[固]", "相性[和]"])
@@ -17,3 +17,6 @@ can_stack = true
 max_stack = 999
 craft_data = ExtResource("2")
 
+inventory_width = 2
+inventory_height = 3
+inventory_can_rotate = true

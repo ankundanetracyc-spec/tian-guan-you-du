@@ -23,6 +23,7 @@ public partial class EastWoodsDungeonPanel
 
     private void offer_arrival_narration(EastWoodsActions.ActionDef action)
     {
+        if (is_authored_forest_encounter(action)) { request_forest_choice("open"); return; }
         var region = EastWoodsDungeonRules.forest_region(_current);
         var item = action.ItemPath.Length > 0 ? EastWoodsActions.Item(action.ItemPath) : null;
         var opening = action.Battle ? "枝叶忽然一晃，一头凶狼从近处的树影中现出身形。"

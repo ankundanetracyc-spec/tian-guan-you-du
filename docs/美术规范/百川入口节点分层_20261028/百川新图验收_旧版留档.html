@@ -1,0 +1,20 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:,"><title>百川 · 新底图与入口节点</title><style>
+*{box-sizing:border-box}body{margin:0;background:#eee5d1;color:#493f32;font:16px/1.7 system-ui,"Microsoft YaHei",sans-serif}main{max-width:1440px;margin:auto;padding:24px}h1{font-size:28px;margin:0 0 8px}h2{font-size:21px;margin:26px 0 10px}p{margin:8px 0 16px}button,a{font:inherit;color:#645037}button{border:1px solid #ad9974;background:#faf2df;border-radius:4px;padding:6px 14px;cursor:pointer}nav{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.viewport{max-height:80vh;overflow:auto;border:1px solid #b9a681;background:#dfc48d}.world{display:block;width:100%;height:auto;max-width:none}.native .world{width:6144px}#shot{display:block;width:100%;height:auto}.note{color:#7b6d58;font-size:14px}.assets{display:flex;gap:28px;align-items:end;flex-wrap:wrap;background:#dfc48d;border:1px solid #b9a681;padding:28px}.asset{text-align:center;cursor:pointer}.asset img{display:block;margin:auto;transition:filter .12s}.asset:hover img{filter:brightness(1.18) sepia(.08)}.asset:hover{color:#9b5e2e}figcaption{font-size:14px;margin-top:6px}a{overflow-wrap:anywhere}
+</style><main>
+<h1>百川 · 新底图与入口节点</h1>
+<p style="padding:12px 16px;border-left:4px solid #a16a39;background:#faf1de">本版的入口清晰度、遮树及宗门／城镇地貌落位存在问题，已进入同画重制；此页保留作旧版对照。<a href="../百川同画节点与悬停蒙版_20261029/同画与悬停验证.html">查看玉虚山地与绛阙平原的同画、悬停验证</a>。</p>
+<p>山林水岸在整幅底图中绘制；山门、城门与小型地点入口独立显示。无桥、无山路与台阶，节点沿用原有分级。</p>
+<h2>整幅新底图</h2><nav><button id="fit">查看全图</button><button id="native">按原像素检查</button><a href="../../../textures/world/bai_chuan/whole_paint_v3/master_6144.png">打开6144原图</a></nav>
+<div class="viewport" id="viewport"><img class="world" alt="百川重新生成的完整底图" src="../../../textures/world/bai_chuan/whole_paint_v3/master_6144.png"></div>
+<p class="note">25处原生细化区域统一拼接后裁成九张2048。此页可放大检查素材；游戏测试入口仍固定1∶1。全图预览为完整地形，不含交互建筑和名称。</p>
+<h2>入口尺寸与分级</h2><div class="assets" id="assets"></div>
+<p class="note">鼠标移到入口上可看提亮效果。游戏中按透明图案判定命中，名称也可点击；底图不参与节点提亮。</p>
+<h2>游戏内实际画面</h2><nav id="shots"></nav><img id="shot" alt="游戏内新底图与入口节点截图">
+<p>首页 → 试演与预览 → 百川九图 · 地图测试。</p>
+<p><a href="README.md">制作与检查记录</a> · <a href="底图验收.json">底图及落位检查</a> · <a href="交互验收.json">交互验证</a> · <a href="素材分级清单.json">透明素材清单</a></p>
+</main><script>
+const viewport=document.querySelector('#viewport');document.querySelector('#fit').onclick=()=>viewport.classList.remove('native');document.querySelector('#native').onclick=()=>viewport.classList.add('native');
+for(const [file,label] of [['sect_main_164','一级宗门 · 164'],['sect_local_118','地方宗门 · 118'],['sect_austere_118','寺观山门 · 118'],['city_gate_142','城门 · 142'],['town_gate_100','镇口 · 100'],['market_gate_94','坊市 · 94']]){const fig=document.createElement('figure');fig.className='asset';fig.style.margin='0';const img=document.createElement('img');img.src='../../../textures/world/bai_chuan/entrance_v1/icons/'+file+'.png';img.alt=label;const cap=document.createElement('figcaption');cap.textContent=label;fig.append(img,cap);document.querySelector('#assets').append(fig)}
+function shot(name){document.querySelector('#shot').src='../../../output/bai_chuan_entrances/'+name+'.png';document.querySelector('#shot').alt=name+'游戏内新图';}
+for(const name of ['玉虚仙宗','玄都天府','无相圣宗','承天城','松风镇']){const b=document.createElement('button');b.textContent=name;b.onclick=()=>shot(name);document.querySelector('#shots').append(b)}shot('玉虚仙宗');
+</script></html>

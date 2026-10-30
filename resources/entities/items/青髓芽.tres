@@ -8,7 +8,7 @@ script = ExtResource("1")
 definition_id = &"mat_qingmarrow_sprout"
 entity_name = "青髓芽"
 description = "初生的青绿药芽，根茎饱含清润生机。"
-icon_path = "res://textures/items/item_qingmarrow_sprout.png"
+icon_path = "res://textures/items/inventory_density_20261029/mat_qingmarrow_sprout.png"
 item_category = "材料"
 item_subcategory = "灵植"
 tags = Array[String](["五行[木]", "质地[纤维]", "功用[生]", "功用[聚]", "相性[和]"])
@@ -17,3 +17,6 @@ can_stack = true
 max_stack = 999
 craft_data = ExtResource("2")
 
+inventory_width = 2
+inventory_height = 3
+inventory_can_rotate = true

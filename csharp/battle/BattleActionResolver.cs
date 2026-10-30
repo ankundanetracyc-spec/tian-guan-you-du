@@ -48,7 +48,6 @@ public static class BattleActionResolver
             damage *= 1f + CardRules.Number(attacker, "forged_physical_bonus") + ForgedSwordBattleAdapter.KeywordMultiplier(attacker, skill) - 1f
                 + (skill.get_presentation_tags().Contains("剑") ? bonds : 0);
         }
-        if(skill.keywords.Contains("重击")&&CardRules.Number(attacker,"punch_frame")>0)damage*=1.5f;
         return damage;
     }
 

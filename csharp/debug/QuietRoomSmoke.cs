@@ -43,7 +43,7 @@ public partial class QuietRoomSmoke : Node
             Button(room, "吐纳修行").EmitSignal(BaseButton.SignalName.Pressed);
             foreach (var mode in new[] { "指定灵力", "指定天数", "指定日期", "下层所需" }) { Button(room, mode).EmitSignal(BaseButton.SignalName.Pressed); await Capture("模式_" + mode); }
             room.show_teaching_for(character); Check(room.GetNode<Control>("QuietRoom/RoomPages/StudyPage").IsVisibleInTree(), "授业没有直达研读页");
-            Check(Nodes<Button>(room).Any(button => button.IsVisibleInTree() && button.Icon?.ResourcePath == "res://textures/items/item_secret_manual_ink_v1.png"), "秘籍未使用项目原图");
+            Check(Nodes<Button>(room).Any(button => button.IsVisibleInTree() && button.Icon?.ResourcePath == "res://textures/items/inventory_density_20261029/manual_generic_2x3.png"), "秘籍未使用通用朴素书册图");
             var studyReader = new Character(); AddChild(studyReader);
             studyReader.load_from_data(new HumanData {entity_name="首卷研读验收", cultivation_realm="云息三层", spirit_root_type=(int)GongfaResource.Wuxing.METAL_WOOD_WATER, current_world_stamina=100});
             studyReader.grant_intro_gongfa(GD.Load<GongfaResource>("res://resources/gongfa/黄庭养形篇.tres"));

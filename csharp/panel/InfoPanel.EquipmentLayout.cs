@@ -36,7 +36,7 @@ public partial class InfoPanel
             ? GD.Load<PortraitClothingData>(data.portrait_clothing_item_path) : null;
         var wardrobe = CharacterButton(""); wardrobe.Name = "EquipmentClothingSlot"; canvas.AddChild(wardrobe); CharacterRect(wardrobe, 8, 530, 154, 154);
         EquipmentTileContent(wardrobe, clothing?.icon_path ?? "", "衣着", clothing?.entity_name ?? "空位", 58);
-        if (clothing is not null) CharacterHover(wardrobe, clothing.entity_name, "衣着", CharacterLoadIcon(clothing.icon_path));
+        if (clothing is not null) HoverInfoManager.SetInfo(wardrobe, ClothingItemPresentation.Hover(clothing));
         wardrobe.Pressed += () => { hide_tooltip(); if (human is not null) _wardrobe?.open_for(human); }; wardrobe.Disabled = human is null;
         build_equipment_totals(page, human);
         build_equipment_bonds(page, human);

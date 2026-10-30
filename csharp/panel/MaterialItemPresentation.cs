@@ -31,6 +31,6 @@ public static class MaterialItemPresentation
             ? ResourceLoader.Load<Texture2D>(item.icon_path) : null;
         return HoverInfoManager.Structured(item.entity_name, icon, "",
             new("", $"品阶：{grade}\n五行：{element}\n质地：{Values("质地")}\n相性：{Values("相性")}\n功用：{utilities}"),
-            new("", $"简介：{item.description?.Trim()}")) with { CardWidth = 340f, IconSize = 96f, ShowRules = false };
+            new("", $"简介：{item.description?.Trim()}")) with { CardWidth = 340f, IconSize = 96f, ShowRules = false, Footprint = item.get_inventory_size() };
     }
 }

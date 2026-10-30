@@ -7,7 +7,7 @@
 script = ExtResource("1")
 definition_id = &"mat_frostleaf_twig"
 entity_name = "霜叶枝"
-icon_path = "res://textures/items/item_frostleaf_twig.png"
+icon_path = "res://textures/items/inventory_density_20261029/mat_frostleaf_twig.png"
 item_category = "材料"
 item_subcategory = "木材"
 tags = Array[String](["五行[木]", "质地[纤维]", "功用[护]", "相性[阴]"])
@@ -15,3 +15,6 @@ grade_value = 2
 can_stack = true
 max_stack = 999
 craft_data = ExtResource("2")
+inventory_width = 2
+inventory_height = 5
+inventory_can_rotate = true

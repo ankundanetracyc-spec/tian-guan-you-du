@@ -30,7 +30,7 @@ public partial class ForgedSwordIconPreview : Control
                     ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize, StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered };
                 canvas.AddChild(view); view.Position = new(x, y); view.Size = new(size, size);
             }
-            TextAt("剑器 · 斜放图标", 90, 60, 36);
+            TextAt("剑器 · 物品图标", 90, 60, 36);
             string[] shapes = ["修长薄脊剑", "宽展剑", "厚脊剑"];
             for (var i = 0; i < shapes.Length; i++)
             {
@@ -38,9 +38,12 @@ public partial class ForgedSwordIconPreview : Control
                 var path = ForgedArtifactPresentation.IconPath(artifact);
                 var texture = ForgedArtifactPresentation.Icon(artifact);
                 var body = ForgedArtifactPresentation.BodySpritePath(artifact);
-                if (texture is null || texture.GetWidth() != texture.GetHeight() || !body.Contains("20261023_v1")) throw new System.Exception("图标与战斗道具未正确分离");
+                if (texture is null || !body.Contains("20261023_v1")) throw new System.Exception("图标与战斗道具未正确分离");
+                var cells = ForgedArtifactPresentation.InventorySize(artifact);
+                if (texture.GetWidth() != cells.X * 128 || texture.GetHeight() != cells.Y * 128) throw new System.Exception("剑器未按128像素每格打包");
                 var stored = ForgedArtifactInventory.Create(artifact); stored.form!.icon_path = body;
                 if (ForgedArtifactInventory.IconPath(stored) != path) throw new System.Exception("旧存档图标没有更新");
+                if (!ForgedArtifactInventory.TryGetInventorySize(stored, out var storedSize) || storedSize != cells) throw new System.Exception("实例占地不一致");
                 var x = 90 + i * 520;
                 var paper = new Panel { Position = new(x, 150), Size = new(470, 650) };
                 paper.AddThemeStyleboxOverride("panel", ForgingInkStyle.Paper(padding: 0, plain: true)); canvas.AddChild(paper);
@@ -51,11 +54,11 @@ public partial class ForgedSwordIconPreview : Control
                 canvas.AddChild(slot); slot.Position = new(x + 305, 625); slot.Size = new(120, 140); slot.set_artifact(stored);
                 TextAt("物品格", x + 305, 600, 19);
             }
-            TextAt("左下握柄 · 右上剑尖", 90, 840, 22);
+            TextAt("三种剑型共用竖直多格图 · 战斗横图与握点保持", 90, 840, 22);
             for (var i = 0; i < 8; i++) await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
             using var image = GetViewport().GetTexture().GetImage();
-            if (image.SavePng("res://docs/美术规范/器物斜放图标_20261025/01_图标实机对照.png") != Error.Ok) throw new System.Exception("截图失败");
+            if (image.SavePng("res://docs/美术规范/行囊全物品图标与占地_20261029/剑器共用入口.png") != Error.Ok) throw new System.Exception("截图失败");
             GD.Print("FORGED_SWORD_ICONS_OK"); Input.SetCustomMouseCursor(null); GetTree().Quit();
         }
         catch (System.Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }

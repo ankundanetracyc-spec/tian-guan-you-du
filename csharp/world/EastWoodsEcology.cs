@@ -21,6 +21,23 @@ public static class EastWoodsEcology
     private const int OrdinaryBeastCheckDays = 14;
 
     public static string ActionProgressKey(string node, string actionId) => node + ":" + actionId;
+    private const string DispersedKey = "__dispersed_sources";
+    public static bool IsDispersed(Dictionary actions, string node, string actionId)
+        => actions.GetValueOrDefault(DispersedKey, new Dictionary()).AsGodotDictionary().ContainsKey(ActionProgressKey(node, actionId));
+    public static void MarkEncounterDrivenOff(Dictionary actions, string node, string actionId, string identity, int hour)
+    {
+        var dispersed = actions.GetValueOrDefault(DispersedKey, new Dictionary()).AsGodotDictionary();
+        dispersed[ActionProgressKey(node, actionId)] = hour;
+        actions[DispersedKey] = dispersed;
+        var ecology = actions.GetValueOrDefault(StateKey, new Dictionary()).AsGodotDictionary();
+        foreach (var value in ecology.GetValueOrDefault(BeastRecordsKey, new Godot.Collections.Array()).AsGodotArray())
+        {
+            var record = value.AsGodotDictionary();
+            if (identity.Length == 0 || record.GetValueOrDefault("encounter_id", "").AsString() != identity) continue;
+            record["status"] = "driven_off"; record["resolved_hour"] = hour;
+        }
+        if (ecology.Count > 0) actions[StateKey] = ecology;
+    }
 
     /// <summary>
     /// Applies due recovery to a route snapshot. A missing ecology record is an old
@@ -204,7 +221,7 @@ public static class EastWoodsEcology
         {
             // Static initial encounters remain one-time actions. They are never
             // reset; replenished encounters get their own persistent action ID.
-            if (actions.GetValueOrDefault(ActionProgressKey(node, source.Id), 0).AsInt32() <= 0) continue;
+            if (actions.GetValueOrDefault(ActionProgressKey(node, source.Id), 0).AsInt32() <= 0 && !IsDispersed(actions, node, source.Id)) continue;
             var capacity = Math.Max(1, source.OrdinaryBeastCapacity);
             var active = count_active_beasts(actions, records, node);
             if (active >= capacity) continue;
@@ -244,7 +261,7 @@ public static class EastWoodsEcology
             var deferredChecks = Math.Max(0, pending.GetValueOrDefault(node, 0).AsInt32());
             var source = EastWoodsActions.OrdinaryBeastPoints().FirstOrDefault(point => point.Node == node);
             if (deferredChecks == 0 || source.Action is null ||
-                actions.GetValueOrDefault(ActionProgressKey(node, source.Action.Id), 0).AsInt32() <= 0)
+                actions.GetValueOrDefault(ActionProgressKey(node, source.Action.Id), 0).AsInt32() <= 0 && !IsDispersed(actions, node, source.Action.Id))
             {
                 pending.Remove(node);
                 changed = true;

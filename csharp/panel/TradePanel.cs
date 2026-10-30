@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System;
 using Godot;
 using GDict = Godot.Collections.Dictionary;
 
@@ -27,11 +26,7 @@ public partial class TradePanel : Control
         public Label? quantity_label;
     }
 
-    private const int VisibleSlotCount = 30;
-    private const int MinimumDisplaySlotCount = 15;
-    private const float TradeSlotWidth = 110f;
-    private const float TradeSlotIconSize = 92f;
-    private const float TradeSlotBaseHeight = 148f;
+    private const float TradeRowHeight = 88f;
     private const string SlotScenePath = "res://tscn/panel/StorageItemSlot.tscn";
     private static readonly string[] DefaultNpcTradeItems =
     [
@@ -118,7 +113,7 @@ public partial class TradePanel : Control
         title.SizeFlagsHorizontal = SizeFlags.ExpandFill; header.AddChild(title);
         var close_button = make_button("返回", 22, new Vector2(120, 46));
         close_button.Pressed += close; header.AddChild(close_button);
-        var instruction = make_label("点击选取物品 · 拖动数量条选择数量 · 悬停查看详情", 18, WorldHudStyle.SecondaryInk);
+        var instruction = make_label("点击物品行选取 · 调整右侧数量 · 悬停查看详情与占格", 18, WorldHudStyle.SecondaryInk);
         root.AddChild(instruction);
 
         var body = new HBoxContainer { SizeFlagsVertical = SizeFlags.ExpandFill };
@@ -167,11 +162,12 @@ public partial class TradePanel : Control
         column.AddChild(scroll);
         var grid = new GridContainer
         {
-            Columns = 5,
+            Name = player_side ? "PlayerTradeList" : "NpcTradeList",
+            Columns = 1,
             SizeFlagsHorizontal = SizeFlags.ExpandFill,
         };
         grid.AddThemeConstantOverride("h_separation", 10);
-        grid.AddThemeConstantOverride("v_separation", 10);
+        grid.AddThemeConstantOverride("v_separation", 7);
         scroll.AddChild(grid);
         if (player_side) _player_grid = grid;
         else _npc_grid = grid;
@@ -271,7 +267,7 @@ public partial class TradePanel : Control
     {
         if (_slot_scene is null) return;
         var slot_index = 0;
-        foreach (var entry in entries.Take(VisibleSlotCount))
+        foreach (var entry in entries)
         {
             if (_slot_scene.Instantiate() is not StorageItemSlot slot) continue;
             grid.AddChild(slot);
@@ -281,7 +277,15 @@ public partial class TradePanel : Control
                 slot.set_item(slot_index, entry.path, item, entry.count);
                 var item_name = slot.GetNodeOrNull<Label>("ItemName");
                 item_name?.AddThemeColorOverride("font_color", QuietRoomStyle.Ink);
-                if (item_name is not null) item_name.Text = $"{item.entity_name} * {entry.count}";
+                if (item_name is not null) item_name.Text = item.entity_name;
+                var identity = make_label(trade_item_identity(item), 16, WorldHudStyle.SecondaryInk);
+                identity.Name = "TradeItemIdentity";
+                identity.MouseFilter = MouseFilterEnum.Ignore;
+                identity.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
+                slot.AddChild(identity);
+                identity.SetAnchorsAndOffsetsPreset(LayoutPreset.TopWide);
+                identity.OffsetLeft = 90; identity.OffsetRight = -172;
+                identity.OffsetTop = 47; identity.OffsetBottom = 73;
                 HoverInfoManager.SetInfo(slot, StoragePanel.ItemHover(item, entry.count, entry.path));
             }
             var frame = make_selection_frame();
@@ -292,14 +296,14 @@ public partial class TradePanel : Control
             entry.checkmark = mark;
             entry.selection_frame = frame;
             slot.clicked += _ => toggle_entry(entry);
+            update_quantity_picker(entry);
             slot_index++;
         }
-        while (slot_index < MinimumDisplaySlotCount)
+        if (slot_index == 0)
         {
-            if (_slot_scene.Instantiate() is not StorageItemSlot empty) break;
+            var empty = make_label("暂无可交易物品", 20, WorldHudStyle.SecondaryInk);
+            empty.CustomMinimumSize = new Vector2(0, TradeRowHeight);
             grid.AddChild(empty);
-            configure_trade_slot(empty);
-            empty.set_empty(slot_index++);
         }
     }
 
@@ -317,55 +321,54 @@ public partial class TradePanel : Control
     {
         if (!slot.HasMeta("trade_material_layout"))
         {
-            slot.configure_inventory_layout(TradeSlotWidth, TradeSlotBaseHeight);
+            slot.configure_inventory_layout(0, TradeRowHeight);
             slot.SetMeta("trade_material_layout", true);
         }
-        slot.CustomMinimumSize = new Vector2(TradeSlotWidth, TradeSlotBaseHeight);
+        slot.CustomMinimumSize = new Vector2(0, TradeRowHeight);
+        slot.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         if (slot.GetNodeOrNull<TextureRect>("Frame/ItemIcon") is { } icon)
         {
-            icon.SetAnchorsAndOffsetsPreset(LayoutPreset.TopWide);
-            icon.OffsetLeft = 12; icon.OffsetRight = -12; icon.OffsetTop = 10; icon.OffsetBottom = TradeSlotIconSize;
+            icon.ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize;
+            icon.StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered;
+            icon.SetAnchorsAndOffsetsPreset(LayoutPreset.TopLeft);
+            icon.OffsetLeft = 14; icon.OffsetRight = 78; icon.OffsetTop = 12; icon.OffsetBottom = 76;
         }
         if (slot.GetNodeOrNull<Label>("ItemName") is { } name)
         {
             name.SetAnchorsAndOffsetsPreset(LayoutPreset.TopWide);
-            name.OffsetLeft = 5; name.OffsetRight = -5;
-            name.OffsetTop = TradeSlotIconSize + 4;
-            name.OffsetBottom = TradeSlotBaseHeight;
-            name.AddThemeFontSizeOverride("font_size", 18);
+            name.OffsetLeft = 90; name.OffsetRight = -172;
+            name.OffsetTop = 10; name.OffsetBottom = 43;
+            name.HorizontalAlignment = HorizontalAlignment.Left;
+            name.AutowrapMode = TextServer.AutowrapMode.Off;
+            name.MaxLinesVisible = 1;
+            name.AddThemeFontSizeOverride("font_size", 21);
         }
     }
 
     private void update_quantity_picker(TradeEntry entry)
     {
         if (entry.slot is null) return;
-        var show_picker = entry.selected && entry.count > 1;
-        if (!show_picker)
+        if (entry.quantity_label is null)
         {
-            entry.quantity_slider?.QueueFree();
-            entry.quantity_label?.QueueFree();
-            entry.quantity_slider = null;
-            entry.quantity_label = null;
-            configure_trade_slot(entry.slot);
-            return;
+            var amount = make_label("", 17, new Color("6b5429"));
+            amount.Name = "TradeQuantity";
+            amount.HorizontalAlignment = HorizontalAlignment.Center;
+            amount.MouseFilter = MouseFilterEnum.Ignore;
+            entry.slot.AddChild(amount);
+            amount.SetAnchorsAndOffsetsPreset(LayoutPreset.TopRight);
+            amount.OffsetLeft = -166; amount.OffsetRight = -30;
+            amount.OffsetTop = 16; amount.OffsetBottom = 44;
+            entry.quantity_label = amount;
         }
-
-        entry.slot.CustomMinimumSize = new Vector2(TradeSlotWidth, 196);
+        entry.quantity_label.Text = entry.selected ? $"已选 {entry.selected_count} / {entry.count}" : $"持有 {entry.count}";
+        var show_picker = entry.selected && entry.count > 1;
         if (entry.quantity_slider is not null)
         {
-            entry.quantity_slider.MaxValue = entry.count;
-            entry.quantity_slider.Value = entry.selected_count;
-            if (entry.quantity_label is not null) entry.quantity_label.Text = $"数量 {entry.selected_count}/{entry.count}";
+            entry.quantity_slider.Visible = show_picker;
+            entry.quantity_slider.SetValueNoSignal(Math.Max(1, entry.selected_count));
             return;
         }
-
-        var amount = make_label($"数量 {entry.selected_count}/{entry.count}", 14, new Color("6b5429"));
-        amount.HorizontalAlignment = HorizontalAlignment.Center;
-        amount.MouseFilter = MouseFilterEnum.Ignore;
-        amount.SetAnchorsAndOffsetsPreset(LayoutPreset.TopWide);
-        amount.OffsetTop = 148; amount.OffsetBottom = 168;
-        entry.slot.AddChild(amount);
-        entry.quantity_label = amount;
+        if (!show_picker) return;
 
         var slider = new HSlider
         {
@@ -376,16 +379,25 @@ public partial class TradePanel : Control
         };
         slider.AddThemeStyleboxOverride("grabber_area", panel_style(QuietRoomStyle.Teal, QuietRoomStyle.Teal, 0));
         slider.AddThemeStyleboxOverride("slider", panel_style(new Color("c2bea9"), new Color("a39372"), 0));
-        slider.SetAnchorsAndOffsetsPreset(LayoutPreset.TopWide);
-        slider.OffsetLeft = 9; slider.OffsetTop = 172; slider.OffsetRight = -9; slider.OffsetBottom = 191;
+        slider.Name = "TradeQuantitySlider";
+        entry.slot.AddChild(slider);
+        slider.SetAnchorsAndOffsetsPreset(LayoutPreset.TopRight);
+        slider.OffsetLeft = -162; slider.OffsetTop = 51; slider.OffsetRight = -32; slider.OffsetBottom = 74;
         slider.ValueChanged += value =>
         {
             entry.selected_count = (int)Math.Round(value);
-            if (entry.quantity_label is not null) entry.quantity_label.Text = $"数量 {entry.selected_count}/{entry.count}";
+            if (entry.quantity_label is not null) entry.quantity_label.Text = $"已选 {entry.selected_count} / {entry.count}";
             update_attitude();
         };
-        entry.slot.AddChild(slider);
         entry.quantity_slider = slider;
+    }
+
+    private static string trade_item_identity(ItemData item)
+    {
+        var category = StoragePanel.category_of(item, item.ResourcePath);
+        var grade = item.craft_data is MaterialCraftData material ? material.material_grade_name()
+            : item is PortraitClothingData ? "" : item.get_grade_string();
+        return string.Join(" · ", new[] { category, grade }.Where(value => !string.IsNullOrWhiteSpace(value)));
     }
 
     private void update_attitude()

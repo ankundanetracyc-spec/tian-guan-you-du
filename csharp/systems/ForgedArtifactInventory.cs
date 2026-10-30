@@ -11,6 +11,14 @@ public static class ForgedArtifactInventory
     public static string IconPath(ArtifactInstanceData item) => TryRead(item, out var snapshot)
         ? ForgedArtifactPresentation.IconPath(snapshot) : item.form?.icon_path ?? "";
 
+    public static bool TryGetInventorySize(ArtifactInstanceData item, out Vector2I size)
+    {
+        size = Vector2I.Zero;
+        if (!TryRead(item, out var snapshot)) return false;
+        size = ForgedArtifactPresentation.InventorySize(snapshot);
+        return true;
+    }
+
     public static ArtifactInstanceData Create(ProcessForgingTrial.Artifact snapshot)
     {
         Validate(snapshot);

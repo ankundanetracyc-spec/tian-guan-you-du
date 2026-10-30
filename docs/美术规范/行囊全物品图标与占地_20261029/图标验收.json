@@ -1,0 +1,952 @@
+{
+  "date": "2026-10-29",
+  "method": "built-in imagegen",
+  "inventory_icons": 65,
+  "animation_only_icons": 1,
+  "formal_item_definitions": 96,
+  "source_pixels_per_cell": 128,
+  "usable_canvas_fraction": 0.88,
+  "bounds_alpha_threshold": 2,
+  "scope": "icon_path, inventory_width, inventory_height, inventory_can_rotate; no item values, recipes, stacking, save format or battle body sprites changed",
+  "checks": {
+    "compile": "passed; 0 warnings, 0 errors",
+    "formal_bindings": "INVENTORY_ICON_BINDINGS_OK: 96",
+    "density": "INVENTORY_ICON_DENSITY_OK: 65 + 1",
+    "native_gallery": "65 icons, 9 pages, 48 design units per cell scaled with UI",
+    "spatial_preview": "120 cells, 19 samples, 65 occupied cells, five names, no size captions, no body outline",
+    "sword_entry": "FORGED_SWORD_ICONS_OK",
+    "native_captures": "11 images at 1920x1080",
+    "pixels": "all proportionally downsampled; no upscaling"
+  },
+  "known_existing_warning": "An existing DamageBonus.cs UID in 卸力.tres falls back successfully to the resource text path. No battle-card file changed.",
+  "not_migrated": [
+    "formal spatial inventory transactions and save migration",
+    "storage ring internal inventory"
+  ],
+  "artifacts": [
+    {
+      "file": "spined_sword_3x6.png",
+      "cells": [
+        3,
+        6
+      ],
+      "pixels": [
+        384,
+        768
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\spined_sword_3x6.png",
+      "source_sha256": "ab4a0e2eb286313bd9b63f7fb96d77c33313d59b3f779206f2760b8889ba7ade",
+      "packed_sha256": "ff5b03979a9a70079dd37a17e4144d20339b2b7ca67b05e17ad1be05b15f456f"
+    },
+    {
+      "file": "broad_sword_3x6.png",
+      "cells": [
+        3,
+        6
+      ],
+      "pixels": [
+        384,
+        768
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\broad_sword_3x6.png",
+      "source_sha256": "7d3eb6e8f852856232d00f6d403cdf180d987df438531a6ec202607050274a69",
+      "packed_sha256": "8d9ab3c895093a91a3b3cfc73d87d4547acf4bc5cf78d060b57c35cda701f544"
+    },
+    {
+      "file": "slender_sword_2x6.png",
+      "cells": [
+        2,
+        6
+      ],
+      "pixels": [
+        256,
+        768
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\slender_sword_2x6.png",
+      "source_sha256": "4837295303e9f37801d59ab03c2dedb2d91361f025c60391178bc9edb759d31d",
+      "packed_sha256": "ca22e5f0da662a627c8fa65b41519b96c0a4963b1bed6f8006912131c0d65ef8"
+    },
+    {
+      "file": "pill_container_empty_porcelain.png",
+      "cells": [
+        2,
+        3
+      ],
+      "pixels": [
+        256,
+        384
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\pill_container_empty_porcelain.png",
+      "source_sha256": "2e764927c3c2d6bb40479e1aa989792148976cbdc8c32bf3c6b5a082f807926c",
+      "packed_sha256": "6bc3c8754aa0bdfbd4827cef6938bcbb65e0ec76f8f90cd074e6a1e99f5f660c"
+    },
+    {
+      "file": "portrait_clothing_female_yuebai_zhuying.png",
+      "cells": [
+        3,
+        4
+      ],
+      "pixels": [
+        384,
+        512
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\portrait_clothing_female_yuebai_zhuying.png",
+      "source_sha256": "126869ca2eb260905ca6a1b6c6b83b79ee9ed202788d3f12f798a46a3ac9df0c",
+      "packed_sha256": "a393df88632380fac96a21f22cba02294d1fbd1211bfddce6089204385e02333"
+    },
+    {
+      "file": "portrait_clothing_female_ouhe_huayun.png",
+      "cells": [
+        3,
+        4
+      ],
+      "pixels": [
+        384,
+        512
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\portrait_clothing_female_ouhe_huayun.png",
+      "source_sha256": "e8e855c130a76f7e613a69a926dbe76313a0f2222e291749bddddc5ad0baf9b6",
+      "packed_sha256": "7dfe94597a86819c930806f5d3be5e024e4a18177ac085515b17e52df6168636"
+    },
+    {
+      "file": "portrait_clothing_female_qingci_yunmei.png",
+      "cells": [
+        3,
+        4
+      ],
+      "pixels": [
+        384,
+        512
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\portrait_clothing_female_qingci_yunmei.png",
+      "source_sha256": "90cfdc4a916eb86d3ab724d76dfe585235db4041c820aaf5091f2c862a78ac5e",
+      "packed_sha256": "6da7875648553402c3b639bd4b1b5db458af3234ec29bdac1ad046a0866b6d2f"
+    },
+    {
+      "file": "portrait_clothing_yuxu_neimen.png",
+      "cells": [
+        3,
+        4
+      ],
+      "pixels": [
+        384,
+        512
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\portrait_clothing_yuxu_neimen.png",
+      "source_sha256": "8899c1800ab636e33c2b69a3cdceddbc9b14b3e60390db549678c73b98ef493d",
+      "packed_sha256": "34f86d78b40052750376fbfe64ade37adaea1dfa8ade81623f2edd86759ffae8"
+    },
+    {
+      "file": "portrait_clothing_yuxu_waimen.png",
+      "cells": [
+        3,
+        4
+      ],
+      "pixels": [
+        384,
+        512
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\portrait_clothing_yuxu_waimen.png",
+      "source_sha256": "f71fb6bac20d3a5f76ae407dcccea5bbfa654fe1a61e40538d9f0cdae998de49",
+      "packed_sha256": "d5563083396e3637b502ac198322ae825c1225689e8ef71552129467165adc87"
+    },
+    {
+      "file": "portrait_clothing_yuxu_zayi.png",
+      "cells": [
+        3,
+        4
+      ],
+      "pixels": [
+        384,
+        512
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\portrait_clothing_yuxu_zayi.png",
+      "source_sha256": "974252a6cd0b3eb186146325cf05e915820d679e7da20719796bd7cdb4ac868f",
+      "packed_sha256": "9bcd879076c54611924b0f4b9594782c4878d5269ff2d6cac69c4841ae8f0000"
+    },
+    {
+      "file": "portrait_clothing_yuxu_zhenchuan.png",
+      "cells": [
+        3,
+        4
+      ],
+      "pixels": [
+        384,
+        512
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\portrait_clothing_yuxu_zhenchuan.png",
+      "source_sha256": "55eee73ea6250a1f15a968eed12aa44560ede96e3abf6650f2cefa22f0a5e75b",
+      "packed_sha256": "55ad87cdc37ed278b558596fa4bf8f94600a1f051e0f60f556542e377d62c6df"
+    },
+    {
+      "file": "portrait_clothing_male_xuanqing_yunzhu.png",
+      "cells": [
+        3,
+        4
+      ],
+      "pixels": [
+        384,
+        512
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\portrait_clothing_male_xuanqing_yunzhu.png",
+      "source_sha256": "75e3cbb646da828ec4806224d15c76c27dedce4d1bdf96647abe8c6f1a68d467",
+      "packed_sha256": "01e08716024130ea3f92c189ef9f5ce9b6ea0bedaab5bd76c61ba7d3a2b15cf0"
+    },
+    {
+      "file": "portrait_clothing_male_bilan_yunye.png",
+      "cells": [
+        3,
+        4
+      ],
+      "pixels": [
+        384,
+        512
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\portrait_clothing_male_bilan_yunye.png",
+      "source_sha256": "1501467a01611a88dc1a7afa1fe31b0d30c201d2c8e35c9e18b7eadb7c3a4f72",
+      "packed_sha256": "a00f40309c5ac24385eccbdbf0d513dcd40dd1303d6c2c4be531e0898caf7a32"
+    },
+    {
+      "file": "portrait_clothing_male_jiangxia_liuyun.png",
+      "cells": [
+        3,
+        4
+      ],
+      "pixels": [
+        384,
+        512
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\portrait_clothing_male_jiangxia_liuyun.png",
+      "source_sha256": "0a4e76b89d1793f92e60a06644ababdbcae46eff664ec40102f86305e13b5615",
+      "packed_sha256": "a4592814b78daed249ef3857733c7f0b56ba83a361286c28e582fa50dfa3c093"
+    },
+    {
+      "file": "mat_dark_feather.png",
+      "cells": [
+        2,
+        3
+      ],
+      "pixels": [
+        256,
+        384
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_dark_feather.png",
+      "source_sha256": "0fac952015be8a409d8128f77853f258e19a3c589f2cb8886aac8ad8f337b2ff",
+      "packed_sha256": "c75bf9f44a07627559ad705f6e9a336301710640acc961c4138dfdcc260f6565"
+    },
+    {
+      "file": "manual_generic_2x3.png",
+      "cells": [
+        2,
+        3
+      ],
+      "pixels": [
+        256,
+        384
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\manual_generic_2x3.png",
+      "source_sha256": "729fec747cfabf3c5d8b3c23cdc36249ea941de8767bd65c183a7672e833b64e",
+      "packed_sha256": "d8af26cacf456a036b816ee5e62405f99e6a7eb6bd2ba57fc317416e098e046e"
+    },
+    {
+      "file": "mat_cloud_mist_mushroom.png",
+      "cells": [
+        3,
+        3
+      ],
+      "pixels": [
+        384,
+        384
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_cloud_mist_mushroom.png",
+      "source_sha256": "8d21b78f479278bcfdcc22e18495053a5ca334b605aa3f2d967c1107c5e30ec4",
+      "packed_sha256": "9dd3e8ca57f4f6f9ac0aeaaa7b91117652d8f87922f1ee2bbdad98ae2a86dadb"
+    },
+    {
+      "file": "mat_earthbeast_sinew.png",
+      "cells": [
+        2,
+        4
+      ],
+      "pixels": [
+        256,
+        512
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_earthbeast_sinew.png",
+      "source_sha256": "1d11f75ecac21ce6395c0157256c753201954e8e08c8233c5d1faa1b946e2588",
+      "packed_sha256": "84125ecded011f69b7f9d5a1fbbbee79624cb040f4fc7530575806e25a07a659"
+    },
+    {
+      "file": "mat_beast_hide.png",
+      "cells": [
+        3,
+        4
+      ],
+      "pixels": [
+        384,
+        512
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_beast_hide.png",
+      "source_sha256": "aa2d85dae800f2e446f072fcc4a2dc5e88ebcb61282735ae47dafc7d42c70570",
+      "packed_sha256": "35cb044b805fc9e89dae49a188a16a89c53705c8e38b07d21f3b554359f36c2a"
+    },
+    {
+      "file": "mat_beast_bone.png",
+      "cells": [
+        2,
+        5
+      ],
+      "pixels": [
+        256,
+        640
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_beast_bone.png",
+      "source_sha256": "33b191a743a0c4ccf929cdcfda4d417d7523abc8f545ce652dccd3b0f634c79c",
+      "packed_sha256": "9c38667d277a12934cbd64ea1bd12343b0b4ec202667f421fbd390853560530b"
+    },
+    {
+      "file": "mat_frostdew_leaf.png",
+      "cells": [
+        2,
+        3
+      ],
+      "pixels": [
+        256,
+        384
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_frostdew_leaf.png",
+      "source_sha256": "62a705db81ae3753d9c72bf463e19bf8c3f90a12a3d06b3832fa6476bfec6608",
+      "packed_sha256": "5f64eb22aea9fe042ad551b8c3a3cbefe01fdba02ed6a9da6d4588ab5f0889a5"
+    },
+    {
+      "file": "mat_dew_pine_resin.png",
+      "cells": [
+        2,
+        2
+      ],
+      "pixels": [
+        256,
+        256
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_dew_pine_resin.png",
+      "source_sha256": "71a4b4ec29e2f6e5efe702e0b68d9812d2c51492286e4f42af68544376550a56",
+      "packed_sha256": "d95baaaf53737a15e5996076d8c29f835101cafd54d13b9a036fbdb56a07e9dc"
+    },
+    {
+      "file": "mat_return_spring_pearl.png",
+      "cells": [
+        2,
+        2
+      ],
+      "pixels": [
+        256,
+        256
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_return_spring_pearl.png",
+      "source_sha256": "8fb1c9fb4e7f4599afb29f4049e9f78a2f5ef43b061f3352a18e2d5b4dd817e6",
+      "packed_sha256": "b6b2663169c58cae9d51a13292c2c6a565d8c96fb17145ca5f2c3c85cc3839ee"
+    },
+    {
+      "file": "mat_geovein_flame_coal.png",
+      "cells": [
+        3,
+        3
+      ],
+      "pixels": [
+        384,
+        384
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_geovein_flame_coal.png",
+      "source_sha256": "b5865a892346f815dc231d7b493ba6ffacef3e0474c2bf8fae2c40a8ec628fff",
+      "packed_sha256": "053b0024b570630da0256fd62fc5e9b4e33cf91ee20967c45477b70a83ae7a5d"
+    },
+    {
+      "file": "mat_mountain_silkworm_thread.png",
+      "cells": [
+        2,
+        2
+      ],
+      "pixels": [
+        256,
+        256
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_mountain_silkworm_thread.png",
+      "source_sha256": "8c46be5eac41c5cb85f98de1127a7344702a5f6a75b110324d696a7e1ba44346",
+      "packed_sha256": "8c66b9cea219c4824c2107615b14615c65370a7e84125396df37d26f250510f2"
+    },
+    {
+      "file": "mat_cicada_shell.png",
+      "cells": [
+        2,
+        3
+      ],
+      "pixels": [
+        256,
+        384
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_cicada_shell.png",
+      "source_sha256": "f6b20de4f312478924eef78becd72ba887f378ef5bd36b5c627fd4f546513d5b",
+      "packed_sha256": "9edc0784f0ffffafa9ed0a5ddb71e3726683b5835b1cf9554b0f2e714c1ae09a"
+    },
+    {
+      "file": "mat_mottled_beetle_shell.png",
+      "cells": [
+        3,
+        3
+      ],
+      "pixels": [
+        384,
+        384
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_mottled_beetle_shell.png",
+      "source_sha256": "17a31f8ca1113619952e19a10311f3f442631d620e9fa4fdd3257fdcdcd4aad8",
+      "packed_sha256": "914f6ab7f3b8d97ccdf92fa483c7a537955796ec4b07ad2d8781d6eeabab5e2d"
+    },
+    {
+      "file": "mat_broken_horn_bone.png",
+      "cells": [
+        2,
+        3
+      ],
+      "pixels": [
+        256,
+        384
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_broken_horn_bone.png",
+      "source_sha256": "8e7f5832282c409c1bee46503ca18c92a1221fcdaa2327b62eec0671446a0a24",
+      "packed_sha256": "884dfffccb962205179baab401568758ae664db3f1d89d1d13cb3c823e70672f"
+    },
+    {
+      "file": "mat_moon_dew_moss.png",
+      "cells": [
+        2,
+        2
+      ],
+      "pixels": [
+        256,
+        256
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_moon_dew_moss.png",
+      "source_sha256": "56c9c1dba777f11bd1fc2a80ad9264763b328ead6de9bbcb6820eb564d8e606f",
+      "packed_sha256": "957a18d8940ce73f2b4fcf3bae9dff86c68f50929e9bdd2b52677f5f94359355"
+    },
+    {
+      "file": "mat_moonmist_mushroom_juice.png",
+      "cells": [
+        2,
+        3
+      ],
+      "pixels": [
+        256,
+        384
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_moonmist_mushroom_juice.png",
+      "source_sha256": "ae20db37514ee5092397301c8fdcececd64d9db35bf9a390baadc482a8de1c09",
+      "packed_sha256": "8336d77368af8cdfd1187a9024a70981fff790d8e86a4621ef9632d10960997c"
+    },
+    {
+      "file": "mat_redsun_flower_seed.png",
+      "cells": [
+        2,
+        2
+      ],
+      "pixels": [
+        256,
+        256
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_redsun_flower_seed.png",
+      "source_sha256": "026c16ac23ea73f2b8e0adebc0276e63f531af6bfc35746fde906e788ae312fc",
+      "packed_sha256": "1a8c1cfc73036cb2e7f2eaaf74ad66dd6f4db2bd2a10ba5a8fa90f8de64d849a"
+    },
+    {
+      "file": "mat_pineheart_charcoal.png",
+      "cells": [
+        2,
+        3
+      ],
+      "pixels": [
+        256,
+        384
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_pineheart_charcoal.png",
+      "source_sha256": "84c556ee31a6a21c19d27118b9f84e9c4e6278c3739033551c9ce801bda72130",
+      "packed_sha256": "79b5e3a7e8a93f6112e7df0e29f03221f33cf4381af23dcdc6377b8a9e2b4e1e"
+    },
+    {
+      "file": "mat_sinking_cloud_jade_shard.png",
+      "cells": [
+        2,
+        2
+      ],
+      "pixels": [
+        256,
+        256
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_sinking_cloud_jade_shard.png",
+      "source_sha256": "352a5ba9c8caeaeac666628af6ebf4d455b499f326d690f0e75352e1332127d2",
+      "packed_sha256": "92736a30b5845ccd36c232439a7b35124829f220459ac9390058a25ae3440bd7"
+    },
+    {
+      "file": "mat_clay_vein_lump.png",
+      "cells": [
+        3,
+        3
+      ],
+      "pixels": [
+        384,
+        384
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_clay_vein_lump.png",
+      "source_sha256": "6732c92e00d3ebf10fff87179dcb9e991d08dbf10d1748481c254a48640557ba",
+      "packed_sha256": "21ab4bbe3ba5007c6f8e61cf61db5309f4b70c4ebb3fe97d34f4f47307e7dcbf"
+    },
+    {
+      "file": "mat_clear_chime_jade_shard.png",
+      "cells": [
+        2,
+        3
+      ],
+      "pixels": [
+        256,
+        384
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_clear_chime_jade_shard.png",
+      "source_sha256": "4ec4bf8ffbe3afef28cdb03301dcf4a59f5adcb347de9b42d64d6db724ec54b4",
+      "packed_sha256": "b57b3979e5c824bc8739d38049fdc9c01f06b6818e146c229c01229b48a70e45"
+    },
+    {
+      "file": "mat_streampattern_algae_fiber.png",
+      "cells": [
+        2,
+        4
+      ],
+      "pixels": [
+        256,
+        512
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_streampattern_algae_fiber.png",
+      "source_sha256": "0192827ffcd71349e830397fc901410b4dbb18c8e9e5e21321a1fb24c9787086",
+      "packed_sha256": "75b3eee525de7ec9d5cf2cde5a28b5d9ca244e19ac43d3134a25ab5eadb72cdf"
+    },
+    {
+      "file": "mat_spirit_spring_algae.png",
+      "cells": [
+        2,
+        3
+      ],
+      "pixels": [
+        256,
+        384
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_spirit_spring_algae.png",
+      "source_sha256": "9c58ce3929680e627c60c3982b76de6379e579e74be6c1fcea44ce45b898d64e",
+      "packed_sha256": "371f86313a1683991dea01b04179a20affae54399e728a666eac53d3f5bd300a"
+    },
+    {
+      "file": "mat_spirit_spring_dew.png",
+      "cells": [
+        2,
+        3
+      ],
+      "pixels": [
+        256,
+        384
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_spirit_spring_dew.png",
+      "source_sha256": "602b6a349996e5aef55d70387adf0eec9966c3cb738d8ec2b9d87c281121b692",
+      "packed_sha256": "0acb8a830a9af37bfa3fa272b2d758b39eb2bf5e28d720654faccd8da39db73d"
+    },
+    {
+      "file": "spirit_stone_1x1.png",
+      "cells": [
+        1,
+        1
+      ],
+      "pixels": [
+        128,
+        128
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\spirit_stone_1x1.png",
+      "source_sha256": "ef1c2127f2f5a8b4a3dbd7e354d1062328278c37b67d7a1b3ff57cc7075a6c00",
+      "packed_sha256": "4cd806cc2e65cb57c04c0950969d653e392eb4227e74adcba0e17b4457cd973c"
+    },
+    {
+      "file": "mat_darkscale_thin_plate.png",
+      "cells": [
+        2,
+        3
+      ],
+      "pixels": [
+        256,
+        384
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_darkscale_thin_plate.png",
+      "source_sha256": "62319c1d0c1790325696dd1657caa05101f44d4d5ba87ec900078a3695df9c2d",
+      "packed_sha256": "f5cb4d29b6076ea284fa4821e36c9be7353d0237281bc3c6932c59c56c20dcd4"
+    },
+    {
+      "file": "xuantie_3x3.png",
+      "cells": [
+        3,
+        3
+      ],
+      "pixels": [
+        384,
+        384
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\xuantie_3x3.png",
+      "source_sha256": "c7ccc0796fcd6b03def1be1189c68bfb959a07d123b50d997f29302f22c65bec",
+      "packed_sha256": "2f99343257d4409efe2bf236e03eef4119adab0c28c692fd627827eece8612c7"
+    },
+    {
+      "file": "mat_miasma_clay_pearl.png",
+      "cells": [
+        2,
+        2
+      ],
+      "pixels": [
+        256,
+        256
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_miasma_clay_pearl.png",
+      "source_sha256": "388d56f3bd130676f29af9087c992140813b54ba00eb7570a9655501486f6165",
+      "packed_sha256": "4b0302c60bdb6f986b3dbc42c9477b6dda1429453cb1159aa1d2cb814d607573"
+    },
+    {
+      "file": "mat_salt_gypsum.png",
+      "cells": [
+        3,
+        3
+      ],
+      "pixels": [
+        384,
+        384
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_salt_gypsum.png",
+      "source_sha256": "373b938fad5e6325856d3ca63f2bdf7445a0c12246511fbfa636bb0a4bd3bd3b",
+      "packed_sha256": "baff57ff04f070a3ec9776ee89963259e38decf88390e36aff6cb457c8f217d2"
+    },
+    {
+      "file": "mat_stone_bee_wax.png",
+      "cells": [
+        2,
+        2
+      ],
+      "pixels": [
+        256,
+        256
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_stone_bee_wax.png",
+      "source_sha256": "283df9f972fd636051ff61370a4748ceee137ffb7d54be091836e2149d627e86",
+      "packed_sha256": "c0d9828b66e4657876c829e22b5cb7804c651211c8ae4758b064928f1e3c93b9"
+    },
+    {
+      "file": "mat_sandvein_stone_fragment.png",
+      "cells": [
+        2,
+        3
+      ],
+      "pixels": [
+        256,
+        384
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_sandvein_stone_fragment.png",
+      "source_sha256": "b110f7d90d71f652964a6035fde91b2e0101d7aeca397537f24933d39a8c90c8",
+      "packed_sha256": "6cbfda60fe22fc16bf37654af5c2c50c3e46f5408cf5932c7954ba290621c22e"
+    },
+    {
+      "file": "mat_gravel_mushroom.png",
+      "cells": [
+        3,
+        3
+      ],
+      "pixels": [
+        384,
+        384
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_gravel_mushroom.png",
+      "source_sha256": "e0731421d17d5757614af82f9f5d48044a67c50fab0f9ac38779d952efe8a8e9",
+      "packed_sha256": "b4d7d0884cda25f677f323298cb799608ba8c6605db55a21714d7f16a776c0b7"
+    },
+    {
+      "file": "mat_zisha_spirit_soil.png",
+      "cells": [
+        2,
+        2
+      ],
+      "pixels": [
+        256,
+        256
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_zisha_spirit_soil.png",
+      "source_sha256": "6e4c008bb01a1abf9455a2552d4edaf62d1e2255462831954b95ad55d771f7de",
+      "packed_sha256": "0298f15730d66cbcfbbe2249226d02a57c1860f1d7a125b69b751219c5f3d6c4"
+    },
+    {
+      "file": "bitter_moss_root_2x4.png",
+      "cells": [
+        2,
+        4
+      ],
+      "pixels": [
+        256,
+        512
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\bitter_moss_root_2x4.png",
+      "source_sha256": "f3c7245f9979d84e5c4edc3e32a35377f9232bddca794ff146c66f9fda0c6641",
+      "packed_sha256": "2f211260affebf775d42b966ab24d1368107c246160ff60566d3f65c09dd7b4d"
+    },
+    {
+      "file": "mat_withered_vine_knot.png",
+      "cells": [
+        2,
+        3
+      ],
+      "pixels": [
+        256,
+        384
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_withered_vine_knot.png",
+      "source_sha256": "20a4ed28e3483708523445b1bf799d6bbcb149d2e27697c35e3a591d9dc61e6d",
+      "packed_sha256": "00acb7ec6b22b5f6808ce4e8934d80f69df50596503ac8f10c1dff61a465db4e"
+    },
+    {
+      "file": "mat_cracked_armor_stone.png",
+      "cells": [
+        3,
+        3
+      ],
+      "pixels": [
+        384,
+        384
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_cracked_armor_stone.png",
+      "source_sha256": "4ee51f08c5c123aa277f0f8b8dff504ea546e4f8cbec07f3cab7605031b031f3",
+      "packed_sha256": "43a127c5274e48c9755f2589fde2a6e3de23c392b79fc3ad8671688fef10c6b7"
+    },
+    {
+      "file": "mat_brown_copper_sand.png",
+      "cells": [
+        2,
+        2
+      ],
+      "pixels": [
+        256,
+        256
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_brown_copper_sand.png",
+      "source_sha256": "dd4e087679efdada986ba132720a99c9c02643399a4b94191aac08ad645c5e3a",
+      "packed_sha256": "1d3d7f03484d1f2dd90d8a367c81315687bdf407e277a912965ea825b1c2ffb9"
+    },
+    {
+      "file": "mat_redwood_seed_core.png",
+      "cells": [
+        2,
+        3
+      ],
+      "pixels": [
+        256,
+        384
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_redwood_seed_core.png",
+      "source_sha256": "885b53044b33ce6e2323bc2066023ad7adc1a16827fa01a8af7d5d6946a6bd48",
+      "packed_sha256": "fdaef5227171b947bf75f92c3d2fa0fc5135b3ca21b2179b4f935b4a3deabd9f"
+    },
+    {
+      "file": "mat_chiwen_suilishi.png",
+      "cells": [
+        3,
+        3
+      ],
+      "pixels": [
+        384,
+        384
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_chiwen_suilishi.png",
+      "source_sha256": "a3a887908ab665efaeea779500ce893a8660a35a01dbb59420723b8ae99a289f",
+      "packed_sha256": "a372340ec18f9c1497792c690a7bc96714fe6f819a93a92f37d106a3f913c9f7"
+    },
+    {
+      "file": "mat_red_scale_shed.png",
+      "cells": [
+        2,
+        3
+      ],
+      "pixels": [
+        256,
+        384
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_red_scale_shed.png",
+      "source_sha256": "c33838ec446effecc2e89fcced09df6d1e323ef320fdb91d51709b7209849079",
+      "packed_sha256": "6671dd2ed502b345712da947fc785b60d4f53bbecab80e26952977312faf7377"
+    },
+    {
+      "file": "mat_tong_sui_ore.png",
+      "cells": [
+        3,
+        3
+      ],
+      "pixels": [
+        384,
+        384
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_tong_sui_ore.png",
+      "source_sha256": "d8253b6b10a5ca1581cafd90a80af192c8209f44ea5d0cb5054bc87fed55a611",
+      "packed_sha256": "bbf1d833536c58405fd5810b9fc129db8a1cab444bc5206e680d50cc968fc12e"
+    },
+    {
+      "file": "mat_mistheart_mushroom_core.png",
+      "cells": [
+        2,
+        2
+      ],
+      "pixels": [
+        256,
+        256
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_mistheart_mushroom_core.png",
+      "source_sha256": "9a891541a19a83b880e7dcc3dd9f090c7dfd770588c4741185864833326345a1",
+      "packed_sha256": "288a632a17e757d2d285d2f1395b0a88ab6a1c943bd1da6a7b6077db5f20bab8"
+    },
+    {
+      "file": "mat_mist_bell_flower.png",
+      "cells": [
+        2,
+        4
+      ],
+      "pixels": [
+        256,
+        512
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_mist_bell_flower.png",
+      "source_sha256": "3ffd94c6434d73d73e8eab02bb13e6b16580808b3606bea04aead53a7d731caa",
+      "packed_sha256": "6db66747e82159552484c0986afb4897a6067eec99cb77aaa628c01e78ba02b0"
+    },
+    {
+      "file": "mat_frostleaf_twig.png",
+      "cells": [
+        2,
+        5
+      ],
+      "pixels": [
+        256,
+        640
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_frostleaf_twig.png",
+      "source_sha256": "62b978a0c0828e963d15bcab8888489669a7154224974e009d7eeaef9d04b101",
+      "packed_sha256": "b8acd62a738f05a84f4276d6c121d8d1e22d30e0be10874c299b02e911bb6e72"
+    },
+    {
+      "file": "mat_qinglan_vine_core.png",
+      "cells": [
+        2,
+        5
+      ],
+      "pixels": [
+        256,
+        640
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_qinglan_vine_core.png",
+      "source_sha256": "3bed9b980a66f6ebce1bdc886c07567b3db6ba0a6b64be38136d7d41bdd2da03",
+      "packed_sha256": "0b98516a2d724747d5893b6c079a9733b55603e1029583056617caae62de0c21"
+    },
+    {
+      "file": "mat_qingmu_core.png",
+      "cells": [
+        2,
+        5
+      ],
+      "pixels": [
+        256,
+        640
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_qingmu_core.png",
+      "source_sha256": "34bc3975795a4f38ce88694f632af23f379ec3166977660c21a4ed86d312bcc3",
+      "packed_sha256": "551305d8c045e80a8f1ba3ae5531930a9538e05d4c53ce7e3d96d253ebb5a4d4"
+    },
+    {
+      "file": "mat_bluegreen_feather.png",
+      "cells": [
+        2,
+        4
+      ],
+      "pixels": [
+        256,
+        512
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_bluegreen_feather.png",
+      "source_sha256": "873dee8f98f75eccc0c802ce856ba8a3c951ccc9ed4ccd7745390de6457d28c5",
+      "packed_sha256": "6c4f31f06ce85ff369293335e9143110a71a6188090f572f9cd4c7377667a2fd"
+    },
+    {
+      "file": "mat_qingmarrow_sprout.png",
+      "cells": [
+        2,
+        3
+      ],
+      "pixels": [
+        256,
+        384
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_qingmarrow_sprout.png",
+      "source_sha256": "99a1c762c396a3f1d46100369eb483cb8754fc18d10c1e98d674fe971707765f",
+      "packed_sha256": "872e9709dd4ecc9d54687dcf2b3440fe8093ba380389b09a6f03f4db7e15c4e3"
+    },
+    {
+      "file": "mat_windaperture_crystal_shard.png",
+      "cells": [
+        2,
+        2
+      ],
+      "pixels": [
+        256,
+        256
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_windaperture_crystal_shard.png",
+      "source_sha256": "cf6c62232ea378c27b469e87871ab84612aef4033c0d52fb555e0b95e8ac99b6",
+      "packed_sha256": "1228316442cb1d6df004e9791713b99d1123c123931939381ab83bc391f02d3a"
+    },
+    {
+      "file": "mat_fengwen_quartz.png",
+      "cells": [
+        3,
+        3
+      ],
+      "pixels": [
+        384,
+        384
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_fengwen_quartz.png",
+      "source_sha256": "459c334f4b6ba8af8467fc6dfc09b2d92d5b0fd61afd3fee1b61f1d1f92f2290",
+      "packed_sha256": "1dfcafc8b5915816d28f8cad5fc92e90df4ccb8f49a22d37f8f96beac0b2d865"
+    },
+    {
+      "file": "mat_windvein_vine_fiber.png",
+      "cells": [
+        2,
+        4
+      ],
+      "pixels": [
+        256,
+        512
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\mat_windvein_vine_fiber.png",
+      "source_sha256": "ff9cc4d797ca4aae018d7b42a8ce11909356fcd3f4d90cbe5abccdee7e300d5d",
+      "packed_sha256": "b598ca1af477bba9f01e71e7de8ee44f2e7d505541a7fd66efd4c9fc179532d2"
+    },
+    {
+      "file": "pill_2x2.png",
+      "cells": [
+        2,
+        2
+      ],
+      "pixels": [
+        256,
+        256
+      ],
+      "source": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\raw_unified_final\\pill_2x2.png",
+      "source_sha256": "ce3b42a1fd44818799b3c54dfb864fd85faa6117ad84065ab377d77a67eab03c",
+      "packed_sha256": "380699caf870adf5d0c7148a20f43a4e4a97dd2808d58f80f23e0ba4d08d2b6b"
+    }
+  ]
+}

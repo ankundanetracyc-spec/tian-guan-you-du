@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 public partial class AlchemySlotBrewPreviewScene
 {
-    private const string AnimationPillTexturePath = "res://textures/items/alchemy_20261024/alchemy_pill_animation_round.png";
+    private const string AnimationPillTexturePath = InventoryIconDensityPack.AnimationPillPath;
     private Control? _brewStage;
     private bool _skipPresentation;
     private readonly System.Collections.Generic.List<Tween> _presentationTweens = [];

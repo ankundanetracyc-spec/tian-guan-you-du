@@ -192,8 +192,8 @@ public partial class BattleManager : Node2D
             var enemy = unit.Get("faction").AsInt32() != (int)WorldEntity.Faction.PLAYER;
             var visible = !enemy || card.intent_revealed || card.phase is BattleQueuedSkill.Phase.Recovering or BattleQueuedSkill.Phase.HoldingResponse;
             var phase = card.phase switch { BattleQueuedSkill.Phase.Waiting => "待行动", BattleQueuedSkill.Phase.Preparing => "准备", BattleQueuedSkill.Phase.Recovering => "收招", BattleQueuedSkill.Phase.HoldingResponse => "待应", _ => "结算" };
-            var name = card.get_display_name();
-            var icon = card.kind == BattleQueuedSkill.ActionKind.Skill ? card.skill.icon_path : "";
+            var name = FumingPresentation.QueueName(unit, card, this);
+            var icon = card.kind == BattleQueuedSkill.ActionKind.Skill ? FumingPresentation.Resolve(unit, card.skill, this).icon_path : "";
             result.Add(new Dictionary { ["unit"] = unit, ["text"] = visible ? $"{name} · {phase}" : "?", ["skill_name"] = visible ? name : "", ["icon_path"] = visible ? icon : "", ["progress"] = card.progress(), ["intent_progress"] = IntentRevealProgress(unit, card), ["queue_count"] = queue.Count - (_segmentPhase != SegmentPhase.None ? state.segment_action_index : 0) });
         }
         return result;
@@ -229,9 +229,9 @@ public partial class BattleManager : Node2D
             {
                 ["index"] = i,
                 ["slot_index"] = start + i,
-                ["text"] = visible ? card.get_display_name() : "?",
-                ["skill_name"] = visible ? card.get_display_name() : "",
-                ["icon_path"] = !visible ? "" : card.kind == BattleQueuedSkill.ActionKind.Skill ? card.skill.icon_path :
+                ["text"] = visible ? FumingPresentation.QueueName(unit, card, this) : "?",
+                ["skill_name"] = visible ? FumingPresentation.QueueName(unit, card, this) : "",
+                ["icon_path"] = !visible ? "" : card.kind == BattleQueuedSkill.ActionKind.Skill ? FumingPresentation.Resolve(unit, card.skill, this).icon_path :
                     card.kind == BattleQueuedSkill.ActionKind.Pill ? BattleSupplyRules.Load(card.supply_path)?.icon_path ?? "" : "",
                 ["phase"] = phase,
                 ["progress"] = card.progress(),

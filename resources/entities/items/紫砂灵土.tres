@@ -7,7 +7,7 @@
 script = ExtResource("1")
 definition_id = &"mat_zisha_spirit_soil"
 entity_name = "紫砂灵土"
-icon_path = "res://textures/items/item_zisha_spirit_soil.png"
+icon_path = "res://textures/items/inventory_density_20261029/mat_zisha_spirit_soil.png"
 item_category = "材料"
 item_subcategory = "矿材"
 tags = Array[String](["五行[土]", "质地[颗粒]", "功用[藏]", "相性[阴]"])
@@ -15,3 +15,6 @@ grade_value = 2
 can_stack = true
 max_stack = 999
 craft_data = ExtResource("2")
+inventory_width = 2
+inventory_height = 2
+inventory_can_rotate = true

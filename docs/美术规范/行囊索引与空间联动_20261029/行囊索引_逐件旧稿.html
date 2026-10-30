@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>行囊 · 索引与空间联动</title>
+<style>
+@font-face{font-family:InkUI;src:url('../../../resources/font/LXGWZhenKaiSlabGB-Regular.ttf')}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}body{background:#ded4bb;font-family:InkUI,'Microsoft YaHei',serif;color:#303d38}button,input{font:inherit;color:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid #456f60;outline-offset:3px}button:disabled{cursor:default}.stage{width:1920px;height:1080px;position:absolute;transform-origin:top left;background:radial-gradient(ellipse at 75% 105%,#b8bca42b,transparent 45%),radial-gradient(ellipse at 12% -10%,#aaac9538,transparent 38%),#eee5ce}.stage:before{content:'';position:absolute;inset:0;pointer-events:none;border:18px solid #b1a58b55;outline:1px solid #b0a07e;outline-offset:-29px;background-image:url('../../../textures/ui/inventory_20261012/approved_shell_v1.png');background-size:1920px 1080px;opacity:.12}.topbar{position:absolute;left:42px;right:42px;top:24px;height:76px;display:flex;align-items:center;border-bottom:1px solid #a89e82;gap:24px}.topbar h1{font-size:40px;font-weight:400;letter-spacing:8px;margin:0}.topbar .sub{font-size:21px;color:#727965}.topbar .sample{margin-left:auto;font-size:17px;color:#827964}.panel{position:absolute;top:124px;bottom:52px;border:1px solid #b6a78a;background:#f3ecd9cf}.panel:before,.panel:after{content:'';position:absolute;width:12px;height:12px;border-color:#a59879;border-style:solid;pointer-events:none}.panel:before{left:4px;top:4px;border-width:1px 0 0 1px}.panel:after{right:4px;bottom:4px;border-width:0 1px 1px 0}.index-panel{left:42px;width:620px;padding:24px}.index-heading{display:flex;gap:16px;align-items:baseline;margin:0 0 18px}.index-heading h2{margin:0;font-weight:400;font-size:29px}.index-heading span{margin-left:auto;color:#7e7d69;font-size:18px}.search{height:49px;display:flex;align-items:center;border-bottom:1px solid #a49e83;background:#f8f2e3b8;padding:0 10px;gap:12px}.search span{font-size:22px;color:#768271}.search input{width:100%;border:0;outline:none;background:none;font-size:21px;padding:8px 0}.search input::placeholder{color:#8a8a76}.categories{display:flex;gap:7px;margin:18px 0 12px;border-bottom:1px solid #c9bea3;padding-bottom:12px}.category{border:0;background:transparent;font-size:21px;padding:6px 13px;color:#697463}.category.active{background:#a5b5a34d;color:#345c4b;border-bottom:2px solid #55745f}.index-columns{display:grid;grid-template-columns:minmax(0,1fr)52px 230px;gap:12px;color:#8b826e;font-size:17px;padding:0 27px 10px 11px}.index-columns span:nth-child(2){text-align:center}.index-columns span:last-child{text-align:left;padding-left:14px}.index-scroll{height:calc(100% - 228px);overflow:auto;padding-right:8px;scrollbar-width:thin;scrollbar-color:#a9ad96 transparent}.index-row{position:relative;display:grid;grid-template-columns:minmax(0,1fr)52px 230px;align-items:center;width:100%;height:55px;padding:9px 11px;border:0;border-bottom:1px solid #c7bea562;background:transparent;text-align:left;gap:12px}.index-row:hover,.index-row.is-linked{background:#ccd5bd40}.index-row.is-selected{background:#b6c8b653;box-shadow:inset 3px 0 #5a7d66}.row-art{width:52px;height:58px;object-fit:contain;flex-shrink:0}.row-text{flex:1;min-width:0}.row-name{display:block;font-size:23px;line-height:30px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.row-location{display:block;font-size:17px;color:#7b806f;line-height:24px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.row-count{width:42px;text-align:center;font-size:22px;color:#526553}.empty-index{font-size:23px;color:#8e8c77;margin:60px 0;text-align:center}.index-hint{position:absolute;bottom:18px;left:24px;right:24px;font-size:18px;color:#7d806b;border-top:1px solid #c5baa0;padding-top:12px}.space-panel{left:686px;right:42px;padding:24px}.space-header{display:flex;align-items:center;min-height:40px;gap:13px}.crumb{font-size:28px;padding:0;border:0;background:none}.crumb:hover{text-decoration:underline;text-underline-offset:6px}.crumb-separator{color:#a29b82;font-size:23px}.space-header .state{margin-left:auto;font-size:19px;color:#6c806b}.location-status{height:36px;line-height:36px;font-size:19px;color:#49715a}.workspace-scroll{height:calc(100% - 130px);overflow:auto;scrollbar-width:thin;scrollbar-color:#a9ad96 transparent}.body-board{height:672px;width:1140px;position:relative;--cell:42px}.region{position:absolute}.region h3{font-size:25px;font-weight:400;letter-spacing:4px;margin:0 0 12px;height:30px;line-height:30px}.region.is-located h3{color:#3c6d50}.region-grid{position:relative;border:1px solid #939b7f;background-color:#dfdfc32b;background-image:linear-gradient(to right,#9aa58c73 1px,transparent 1px),linear-gradient(to bottom,#9aa58c73 1px,transparent 1px);background-size:42px 42px}.bag-item{position:absolute;display:block;padding:0;border:1px solid transparent;background:transparent;overflow:visible}.bag-item img{width:100%;height:100%;object-fit:contain;pointer-events:none;display:block}.bag-item:hover,.bag-item.is-linked{background:#b6c3a843;border-color:#88a58c}.bag-item.is-selected{border:2px solid #748f72;background:#bac7aa35}.bag-item.is-located{border:2px solid #3e6e52;outline:4px solid #7a9c746e;outline-offset:3px;background:#aabf9833}.bag-item.is-located:after{content:'已定位';position:absolute;left:0;bottom:-25px;white-space:nowrap;font-size:15px;color:#345b43;background:#e4e8d6;border:1px solid #8da081;padding:1px 5px;z-index:3}.bag-item.is-filtered{opacity:.22}.bag-item.is-located.is-filtered{opacity:1}.space-footer{position:absolute;left:24px;right:24px;bottom:16px;border-top:1px solid #c6bda4;padding-top:12px;display:flex;align-items:center;color:#7b826d;font-size:19px}.space-footer span:last-child{margin-left:auto}.external-board{height:672px;width:1140px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px}.external-mode{font-size:19px;color:#88816e}.external-target{border:1px solid #aab79b;background:#e9ead6;padding:24px 50px;display:flex;align-items:center;gap:30px;max-width:680px}.external-target.is-located{border:2px solid #4d7357;outline:4px solid #a6bc9880;outline-offset:4px}.external-target img{height:210px;width:140px;object-fit:contain}.external-target h3{font-size:29px;font-weight:400;margin:0 0 16px}.external-target p{font-size:20px;color:#6f7f69}.external-return{border:1px solid #b0aa8e;background:#f4eedc;padding:9px 22px;font-size:20px}.footnote{position:absolute;left:48px;bottom:18px;color:#8b8674;font-size:15px;letter-spacing:1px}.tooltip{display:none;position:fixed;z-index:10;width:400px;pointer-events:none;background:#242c27f7;border:1px solid #b8ad8b;color:#ece4cf;padding:19px;font-family:InkUI,'Microsoft YaHei',serif;box-shadow:0 2px 4px #252c2330}.tooltip.show{display:block}.tooltip-head{display:grid;grid-template-columns:92px 1fr 96px;align-items:start;gap:12px}.tooltip-icon{width:92px;height:104px;object-fit:contain}.tooltip-title{font-size:23px;line-height:30px;padding-top:3px;overflow-wrap:anywhere}.tooltip-sub{font-size:16px;color:#c9cbb9;margin-top:10px}.tooltip-footprint{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:16px;color:#c7c8ae}.mini-grid{display:grid;border-left:1px solid #adad8e;border-top:1px solid #adad8e}.mini-grid i{display:block;width:16px;height:16px;background:#a5b29377;border-right:1px solid #adad8e;border-bottom:1px solid #adad8e}.tooltip-description{margin-top:16px;padding-top:12px;border-top:1px solid #b9b18c55;font-size:19px;line-height:1.55;white-space:pre-wrap;color:#e7dfc7}.tooltip-description:empty{display:none}@media(prefers-reduced-motion:no-preference){.bag-item,.index-row{transition:background-color .12s,border-color .12s,opacity .12s}}
+</style>
+<main class="stage" id="stage">
+ <header class="topbar"><h1>行囊</h1><span class="sub">随身物资</span><span class="sample">交互样板</span></header>
+ <section class="panel index-panel" aria-label="物品索引">
+  <div class="index-heading"><h2>物品索引</h2><span id="index-count"></span></div>
+  <label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜索物品名称" aria-label="搜索物品名称"></label>
+  <nav class="categories" id="categories" aria-label="物品分类"></nav>
+  <div class="index-columns"><span>名称</span><span>数量</span><span>所在位置</span></div>
+  <div class="index-scroll" id="index-list" aria-label="库存物品索引"></div>
+  <div class="index-hint">双击物品，定位到右侧对应位置</div>
+ </section>
+ <section class="panel space-panel" aria-label="行囊空间">
+  <header class="space-header" id="breadcrumbs"></header>
+  <div class="location-status" id="location-status" aria-live="polite"></div>
+  <div class="workspace-scroll" id="workspace-scroll"><div id="workspace"></div></div>
+  <footer class="space-footer"><span id="space-container-note">悬停查看物品详情与占格</span><span id="space-count"></span></footer>
+ </section>
+ <div class="footnote">索引与空间展示同一份库存</div>
+</main>
+<aside class="tooltip" id="tooltip" role="tooltip" aria-hidden="true"></aside>
+<script>
+'use strict';
+const DATA={"stone": {"definitionId": "mat_spirit_stone", "name": "灵石", "category": "材料", "file": "spirit_stone_1x1.png", "width": 1, "height": 1, "resourcePath": "resources/entities/items/灵石.tres", "hoverIdentity": "", "hoverBody": "品阶：9品上\n五行：土\n质地：致密\n相性：和\n功用：聚·九品、藏·九品、通·九品\n简介："}, "manual": {"definitionId": "manual_huangting_yangxing", "name": "胎息经", "category": "秘籍", "file": "manual_generic_2x3.png", "width": 2, "height": 3, "resourcePath": "resources/entities/items/黄庭养形篇秘籍.tres", "hoverIdentity": "", "hoverBody": "修习境界：凡人至云息十层\n修习要求：—\n关键词：—\n简介：气血未尽时回落可积身法，气血归零时转得借力；主修在零气血时消耗身法与借力，以攻击换回气血。"}, "pill": {"definitionId": "alchemy_huichun_9_1", "name": "回春丹·良效", "category": "丹药", "file": "pill_container_empty_porcelain.png", "width": 2, "height": 3, "resourcePath": "resources/entities/items/alchemy/huichun_1.tres", "hoverIdentity": "", "hoverBody": "丹阶：九品\n丹效：良效\n药效：—\n丹毒：—\n简介："}, "root": {"definitionId": "mat_bitter_moss_root", "name": "苦苔根", "category": "材料", "file": "bitter_moss_root_2x4.png", "width": 2, "height": 4, "resourcePath": "resources/entities/items/苦苔根.tres", "hoverIdentity": "", "hoverBody": "品阶：9品中\n五行：木\n质地：纤维\n相性：阴\n功用：藏·九品\n简介："}, "iron": {"definitionId": "mat_xuantie", "name": "玄铁", "category": "材料", "file": "xuantie_3x3.png", "width": 3, "height": 3, "resourcePath": "resources/entities/items/玄铁.tres", "hoverIdentity": "", "hoverBody": "品阶：8品下\n五行：金\n质地：致密\n相性：阳\n功用：固·八品\n简介："}, "sword": {"definitionId": "sect_sword_suxing", "name": "素行剑", "category": "器物", "file": "slender_sword_2x6.png", "width": 2, "height": 6, "resourcePath": "resources/entities/equipment/素行剑.tres", "hoverIdentity": "", "hoverBody": "品阶：无品\n器类：剑\n器蕴：—\n锋锐：—\n装备效果：—\n化法：—\n技能：—\n简介：宗门制式凡器。精准 +2。"}};
+const ICON_ROOT='../../../textures/items/inventory_density_20261029/';
+const BAG_ID='bag:player';
+const REGIONS=[
+ {id:'chest',name:'胸前',width:6,height:4,left:334,top:22},
+ {id:'sleeve-left',name:'左袖',width:3,height:4,left:78,top:218},
+ {id:'sleeve-right',name:'右袖',width:3,height:4,left:684,top:218},
+ {id:'waist',name:'腰间',width:6,height:4,left:334,top:410},
+ {id:'back',name:'背囊',width:6,height:8,left:884,top:122}
+];
+const CATEGORY_NAMES=['全部','材料','秘籍','丹药','器物'];
+let items=[],containers=new Map(),currentContainerId=BAG_ID,selectedId=null,locatedId=null,hoveredId=null,category='全部',query='',lastHoverAnchor=null;
+const $=id=>document.getElementById(id);
+const originalItems=()=>{
+ const a=[];
+ const add=(instanceId,definitionId,regionId,cellX,cellY)=>a.push({instanceId,definitionId,containerId:BAG_ID,regionId,cellX,cellY,width:DATA[definitionId].width,height:DATA[definitionId].height});
+ add('sword:01','sword','back',0,0);add('manual:01','manual','back',2,0);add('manual:02','manual','back',4,0);
+ add('root:01','root','chest',4,0);add('iron:01','iron','waist',0,0);
+ add('pill:01','pill','sleeve-left',0,0);add('pill:02','pill','sleeve-right',0,0);
+ let n=0;
+ for(let x=0;x<4;x++)add('stone:'+String(++n).padStart(2,'0'),'stone','chest',x,0);
+ for(const region of ['sleeve-left','sleeve-right'])for(let y=0;y<4;y++)add('stone:'+String(++n).padStart(2,'0'),'stone',region,2,y);
+ return a;
+};
+function find(id){return items.find(i=>i.instanceId===id)}
+function definition(item){return DATA[item.definitionId]}
+function region(item){return REGIONS.find(r=>r.id===item.regionId)}
+function itemPath(item){const c=containers.get(item.containerId);return [...c.path, ...(item.containerId===BAG_ID?[region(item).name]:[])].join(' / ')}
+function positionText(item){return item.containerId===BAG_ID?`${region(item).name} · 第${item.cellX+1}列第${item.cellY+1}行`:itemPath(item)}
+function matches(item){const d=definition(item);return(category==='全部'||d.category===category)&&(!query||d.name.includes(query)||itemPath(item).includes(query))}
+function scale(){const factor=Math.min(innerWidth/1920,innerHeight/1080);$('stage').style.transform=`scale(${factor})`;$('stage').style.left=`${(innerWidth-1920*factor)/2}px`;$('stage').style.top=`${(innerHeight-1080*factor)/2}px`;hideTooltip()}
+function element(tag,className,text){const e=document.createElement(tag);if(className)e.className=className;if(text!==undefined)e.textContent=text;return e}
+function icon(item,className){const image=element('img',className);image.src=ICON_ROOT+definition(item).file;image.alt='';image.draggable=false;return image}
+function bindHover(anchor,item){
+ anchor.addEventListener('mouseenter',()=>showTooltip(anchor,item));
+ anchor.addEventListener('mouseleave',()=>{if(lastHoverAnchor===anchor)hideTooltip()});
+ anchor.addEventListener('focus',()=>showTooltip(anchor,item));
+ anchor.addEventListener('blur',()=>{if(lastHoverAnchor===anchor)hideTooltip()});
+}
+function renderIndex(){
+ const list=$('index-list');const oldScroll=list.scrollTop;list.replaceChildren();
+ const visible=items.filter(matches);
+ $('index-count').textContent=`${visible.length} / ${items.length} 件`;
+ for(const item of visible){
+  const d=definition(item);const row=element('button','index-row');row.type='button';row.id='index-'+item.instanceId.replaceAll(':','-');row.dataset.instanceId=item.instanceId;row.setAttribute('aria-label',`${d.name}，${positionText(item)}，1件`);
+  row.append(element('span','row-name',d.name),element('span','row-count','1'),element('span','row-location',positionText(item)));
+  row.addEventListener('click',()=>select(item.instanceId));
+  row.addEventListener('dblclick',()=>locate(item.instanceId));
+  row.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();locate(item.instanceId)}});
+  bindHover(row,item);list.append(row);
+ }
+ if(!visible.length)list.append(element('p','empty-index','没有找到对应物品'));
+ list.scrollTop=oldScroll;updateClasses();
+}
+function renderBreadcrumb(){
+ const box=$('breadcrumbs');box.replaceChildren();
+ const bag=element('button','crumb','行囊');bag.type='button';bag.addEventListener('click',()=>openContainer(BAG_ID));box.append(bag);
+ if(currentContainerId!==BAG_ID){box.append(element('span','crumb-separator','/'));box.append(element('span','crumb',containers.get(currentContainerId).name))}
+ const state=element('span','state',currentContainerId===BAG_ID?'完整随身空间':'跨容器定位演示');box.append(state);
+}
+function renderWorkspace(){
+ hideTooltip();renderBreadcrumb();const workspace=$('workspace');workspace.replaceChildren();
+ if(currentContainerId===BAG_ID){
+  const board=element('div','body-board');board.dataset.containerId=BAG_ID;
+  for(const r of REGIONS){
+   const box=element('section','region');box.id='region-'+r.id;box.dataset.regionId=r.id;box.style.left=r.left+'px';box.style.top=r.top+'px';box.append(element('h3','',r.name));
+   const grid=element('div','region-grid');grid.style.width=r.width*42+'px';grid.style.height=r.height*42+'px';grid.dataset.columns=r.width;grid.dataset.rows=r.height;
+   for(const item of items.filter(i=>i.containerId===BAG_ID&&i.regionId===r.id)){
+    const button=element('button','bag-item');button.type='button';button.dataset.instanceId=item.instanceId;button.setAttribute('aria-label',`${definition(item).name}，${positionText(item)}`);
+    button.style.left=item.cellX*42+'px';button.style.top=item.cellY*42+'px';button.style.width=item.width*42+'px';button.style.height=item.height*42+'px';button.append(icon(item,''));
+    button.addEventListener('click',()=>{select(item.instanceId);revealIndex(item.instanceId)});bindHover(button,item);grid.append(button);
+   }
+   box.append(grid);board.append(box);
+  }
+  workspace.append(board);
+  const local=items.filter(i=>i.containerId===BAG_ID);const used=local.reduce((sum,i)=>sum+i.width*i.height,0);
+  $('space-count').textContent=`占用 ${used} / 120 格`;$('space-container-note').textContent='悬停查看物品详情与占格';
+ }else{
+  const board=element('div','external-board');board.dataset.containerId=currentContainerId;board.append(element('div','external-mode','跨容器定位演示'));
+  for(const item of items.filter(i=>i.containerId===currentContainerId)){
+   const target=element('button','external-target');target.type='button';target.dataset.instanceId=item.instanceId;target.append(icon(item,''));
+   const copy=element('div','');copy.append(element('h3','',definition(item).name),element('p','',itemPath(item)));target.append(copy);target.addEventListener('click',()=>select(item.instanceId));bindHover(target,item);board.append(target);
+  }
+  const back=element('button','external-return','返回行囊');back.type='button';back.addEventListener('click',()=>openContainer(BAG_ID));board.append(back);workspace.append(board);
+  $('space-count').textContent='';$('space-container-note').textContent='仅展示容器定位接口，不设置容器容量';
+ }
+ updateClasses();
+}
+function updateClasses(){
+ document.querySelectorAll('[data-instance-id]').forEach(node=>{
+  const id=node.dataset.instanceId,item=find(id);node.classList.toggle('is-selected',id===selectedId);node.classList.toggle('is-located',id===locatedId);node.classList.toggle('is-linked',id===hoveredId);
+  if(node.classList.contains('bag-item'))node.classList.toggle('is-filtered',!matches(item));
+  if(node.classList.contains('index-row'))node.setAttribute('aria-selected',String(id===selectedId));
+ });
+ document.querySelectorAll('.region').forEach(node=>node.classList.toggle('is-located',locatedId&&find(locatedId)?.regionId===node.dataset.regionId&&currentContainerId===BAG_ID));
+}
+function select(id){if(!find(id))return false;selectedId=id;locatedId=null;const item=find(id);$('location-status').textContent=`已选：${definition(item).name}`;updateClasses();return true}
+function revealIndex(id){const row=document.querySelector(`.index-row[data-instance-id="${CSS.escape(id)}"]`);row?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'})}
+function locate(id){
+ const item=find(id);if(!item)return false;
+ hideTooltip();selectedId=id;locatedId=null;
+ if(currentContainerId!==item.containerId){currentContainerId=item.containerId;renderWorkspace()}
+ locatedId=id;updateClasses();$('location-status').textContent=`已定位：${definition(item).name} · ${positionText(item)}`;
+ const target=document.querySelector(`#workspace [data-instance-id="${CSS.escape(id)}"]`);
+ target?.scrollIntoView({block:'center',inline:'center',behavior:'instant'});target?.focus({preventScroll:true});hideTooltip();
+ revealIndex(id);
+ return true;
+}
+function openContainer(id){if(!containers.has(id))return false;currentContainerId=id;locatedId=null;$('location-status').textContent='';renderWorkspace();return true}
+function showTooltip(anchor,item){
+ if(!find(item.instanceId))return;hoveredId=item.instanceId;lastHoverAnchor=anchor;updateClasses();
+ const d=definition(item),tip=$('tooltip');tip.replaceChildren();
+ const head=element('div','tooltip-head');head.append(icon(item,'tooltip-icon'));
+ const names=element('div','');names.append(element('div','tooltip-title',d.name),element('div','tooltip-sub',d.hoverIdentity||''));head.append(names);
+ const footprint=element('div','tooltip-footprint');footprint.append(element('span','','占格'));
+ const grid=element('div','mini-grid');grid.dataset.columns=item.width;grid.dataset.rows=item.height;grid.style.gridTemplateColumns=`repeat(${item.width},16px)`;
+ for(let n=0;n<item.width*item.height;n++)grid.append(element('i',''));footprint.append(grid,element('span','',`${item.width*item.height}格`));head.append(footprint);tip.append(head);
+ const description=element('div','tooltip-description',d.hoverBody||'简介：');tip.append(description);
+ tip.dataset.hoverInstanceId=item.instanceId;tip.classList.add('show');tip.setAttribute('aria-hidden','false');
+ const bounds=anchor.getBoundingClientRect(),w=tip.offsetWidth,h=tip.offsetHeight;let x=bounds.right+12;
+ if(x+w>innerWidth-16)x=bounds.left-w-12;if(x<16)x=Math.max(16,innerWidth-w-16);
+ const y=Math.max(16,Math.min(bounds.top,innerHeight-h-16));tip.style.left=x+'px';tip.style.top=y+'px';
+}
+function hideTooltip(){hoveredId=null;lastHoverAnchor=null;const tip=$('tooltip');tip.classList.remove('show');tip.setAttribute('aria-hidden','true');delete tip.dataset.hoverInstanceId;updateClasses()}
+function setFilter(next={}){if('query'in next){query=String(next.query).trim();$('search').value=query}if('category'in next&&CATEGORY_NAMES.includes(next.category))category=next.category;hideTooltip();renderCategories();renderIndex();updateClasses();return snapshot()}
+function renderCategories(){const nav=$('categories');nav.replaceChildren();for(const name of CATEGORY_NAMES){const b=element('button','category'+(category===name?' active':''),name);b.type='button';b.setAttribute('aria-pressed',String(category===name));b.addEventListener('click',()=>setFilter({category:name}));nav.append(b)}}
+function reset(){items=originalItems();containers=new Map([[BAG_ID,{id:BAG_ID,name:'行囊',path:['行囊'],kind:'body',regions:REGIONS}]]);currentContainerId=BAG_ID;selectedId=locatedId=hoveredId=null;query='';category='全部';$('search').value='';$('location-status').textContent='';renderCategories();renderIndex();renderWorkspace();$('index-list').scrollTop=0;$('workspace-scroll').scrollTop=0;return snapshot()}
+function snapshot(){return JSON.parse(JSON.stringify({currentContainerId,selectedId,locatedId,hoveredId,query,category,visibleIds:items.filter(matches).map(i=>i.instanceId),items:items.map(i=>({...i,name:definition(i).name,file:definition(i).file,path:itemPath(i)})),containers:[...containers.values()],regionCount:REGIONS.length,totalBagCells:REGIONS.reduce((s,r)=>s+r.width*r.height,0),bagOccupiedCells:items.filter(i=>i.containerId===BAG_ID).reduce((s,i)=>s+i.width*i.height,0)}))}
+// Isolated fixtures are opt-in through this developer API only. No ring object,
+// dimensions, storage capacity or nesting rule is added to the default inventory.
+function enableCrossContainerFixture(){
+ if(!containers.has('fixture:external'))containers.set('fixture:external',{id:'fixture:external',name:'定位演示容器',path:['行囊','定位演示容器'],kind:'fixture',regions:null});
+ const item=find('manual:02');item.containerId='fixture:external';item.regionId='fixture-content';item.cellX=0;item.cellY=0;
+ renderIndex();renderWorkspace();return snapshot();
+}
+window.inventoryPrototype=Object.freeze({getSnapshot:snapshot,locate,openContainer,setFilter,reset,enableCrossContainerFixture});
+$('search').addEventListener('input',e=>setFilter({query:e.target.value}));$('index-list').addEventListener('scroll',hideTooltip);$('workspace-scroll').addEventListener('scroll',hideTooltip);window.addEventListener('resize',scale);document.addEventListener('keydown',e=>{if(e.key==='Escape')hideTooltip()});
+reset();scale();
+</script>
+</html>

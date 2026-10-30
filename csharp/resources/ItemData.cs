@@ -11,6 +11,22 @@ public partial class ItemData : EntityData
     [Export] public Array<string> tags = [];
     [Export(PropertyHint.Range, "0,27,1")] public int grade_value;
 
+    [ExportGroup("行囊占地")]
+    [Export] public int inventory_width = 2;
+    [Export] public int inventory_height = 2;
+    [Export] public bool inventory_can_rotate = true;
+    public Vector2I get_inventory_size(bool rotated = false) => rotated && inventory_can_rotate
+        ? new Vector2I(inventory_height, inventory_width) : new Vector2I(inventory_width, inventory_height);
+    public string get_inventory_footprint_shape() => "rectangle";
+    public int get_inventory_cell_count() => inventory_width * inventory_height;
+    public Array<Vector2I> get_inventory_footprint_cells()
+    {
+        Array<Vector2I> cells = [];
+        for (var y = 0; y < inventory_height; y++)
+            for (var x = 0; x < inventory_width; x++) cells.Add(new Vector2I(x, y));
+        return cells;
+    }
+
     // 0=仅世界，1=仅战斗，2=两者；保持 int 以兼容既有 .tres 和 GDScript 调用方。
     [Export] public int usage_type;
     [Export] public string battle_skill_path = "";
@@ -31,6 +47,8 @@ public partial class ItemData : EntityData
             errors.Add("缺少物品名称");
         if (grade_value < 0 || grade_value > 27)
             errors.Add("品阶值必须位于0至27");
+        if (inventory_width < 1 || inventory_height < 1)
+            errors.Add("行囊占地宽高必须为正整数");
         errors.AddRange(ItemAffixCatalog.validate_tags(tags, item_category == "材料"));
         if (item_category == "材料")
         {
