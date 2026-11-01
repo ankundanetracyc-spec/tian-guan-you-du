@@ -46,6 +46,7 @@ public partial class StoragePanel : Control
 
     public override void _ExitTree()
     {
+        if (GetWindow() is { } window) window.FocusExited -= cancel_native_drag;
         if (_player is not null) _player.InventoryChanged -= on_player_inventory_changed;
         if (GetViewport() is { } viewport) viewport.SizeChanged -= on_detail_viewport_resized;
         bind_detail_layout_anchor(null);
@@ -59,6 +60,8 @@ public partial class StoragePanel : Control
     public override void _Input(InputEvent @event)
     {
         if (!Visible) return;
+        if (handle_native_category_input(@event)) return;
+        if (handle_native_input(@event)) return;
         if (@event is InputEventKey { Pressed: true, Echo: false, Keycode: Key.Escape })
         {
             if (_pinned_selection) clear_active_info();
@@ -83,7 +86,7 @@ public partial class StoragePanel : Control
         refresh_slots();
     }
     public void show_panel() { Show(); fit_inventory_canvas(); refresh_slots(); }
-    public void hide_panel() { HoverInfoManager.HideAll(); clear_active_info(); Hide(); }
+    public void hide_panel() { cancel_native_drag(); HoverInfoManager.HideAll(); clear_active_info(); Hide(); }
     public void toggle_panel() { if (Visible) hide_panel(); else show_panel(); }
     private void on_visibility_changed() { if (!Visible) clear_active_info(); }
 
@@ -95,6 +98,11 @@ public partial class StoragePanel : Control
             var selected = pair.Key == _category_filter;
             pair.Value.ButtonPressed = selected;
             style_category_text(pair.Value, selected);
+            if (_nativeIndex is not null)
+            {
+                foreach (var state in new[] { "font_color", "font_hover_color", "font_pressed_color" }) pair.Value.AddThemeColorOverride(state, Ink);
+                pair.Value.AddThemeStyleboxOverride("normal", native_paper(selected ? "index_row_selected.png" : "index_row_normal.png", 42));
+            }
             if (_category_frames.TryGetValue(pair.Key, out var frame)) frame.Visible = selected;
         }
         if (_grid_scroll is not null) _grid_scroll.ScrollVertical = 0;
@@ -133,6 +141,7 @@ public partial class StoragePanel : Control
             _spatialPreviewFilter(_category_filter, _search_text);
             return;
         }
+        if (_nativeIndex is not null) { refresh_native_inventory(); return; }
         if (_grid is null) return;
         HoverInfoManager.HideAll();
         clear_active_info();
@@ -244,6 +253,7 @@ public partial class StoragePanel : Control
 
     private void update_slot_selection_visuals()
     {
+        _nativeSurface?.QueueRedraw();
         if (_grid is null) return;
         foreach (var slot in _grid.GetChildren().OfType<StorageItemSlot>()) slot.set_inventory_selected(slot == _active_slot);
     }
@@ -416,7 +426,7 @@ public partial class StoragePanel : Control
         if (item is PillContainerItemData container)
             return "瓷瓶外观定义；炼丹无需准备或消耗瓷瓶。";
         if (item is PillItemData pill)
-            return $"丹阶{pill.pill_rank}品 · 丹效{AlchemyQualityRules.Name(new[] { 20, 51, 76, 91, 100 }[Math.Clamp(pill.efficacy_tier, 0, 4)])}\n{pill.EffectText}\n瓷瓶仅作图标与演出外观；行囊中的同类丹药合并为一格，数量按颗显示且无单格上限。炼丹无需准备或消耗空瓷瓶。\n效果无收益时不可使用。";
+            return $"丹阶{pill.pill_rank}品 · 丹效{AlchemyQualityRules.Name(new[] { 20, 51, 76, 91, 100 }[Math.Clamp(pill.efficacy_tier, 0, 4)])}\n{pill.EffectText}\n瓷瓶仅作图标与演出外观；行囊中的丹药逐件占格，同类丹药只在左侧清册合并显示数量。炼丹无需准备或消耗空瓷瓶。\n效果无收益时不可使用。";
         if (item is PortraitClothingData clothing)
             return $"立绘衣着 · {clothing.portrait_gender switch { "male" => "男修", "female" => "女修", _ => "男女通用" }}\n穿上后只更换人物立绘衣着，不增加属性，也不替换衣甲装备。";
         if(item is EquipmentData equipment)

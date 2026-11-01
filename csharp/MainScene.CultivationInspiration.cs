@@ -44,33 +44,34 @@ public partial class MainScene
         }
         var rank = consumeTravelInspiration ? consume_player_inspiration_for_action(CultivationInspirationTuning.TravelDomain) : 0;
         _worldMapTravelRevealBonus = CultivationInspirationTuning.travel_reveal_bonus_cells(rank);
-        tile_world_map?.Call("set_travel_reveal_bonus_cells", _worldMapTravelRevealBonus);
+        if (_nodeWorldMap?.HasMethod("set_travel_reveal_bonus_cells") == true)
+            _nodeWorldMap.Call("set_travel_reveal_bonus_cells", _worldMapTravelRevealBonus);
     }
 
     private void on_tile_world_travel_finished(int completedSteps)
     {
         _tileWorldTravelInProgress = false;
-        tile_world_map?.Call("set_travel_reveal_bonus_cells", 0);
+        if (_nodeWorldMap?.HasMethod("set_travel_reveal_bonus_cells") == true)
+            _nodeWorldMap.Call("set_travel_reveal_bonus_cells", 0);
         _worldMapTravelRevealBonus = 0;
         if (completedSteps > 0)
         {
             var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
             var hour = time?.get_total_game_hours() ?? 0;
-            var cell = tile_world_map?.Call("get_player_cell").AsVector2I() ?? _player_world_grid_cell;
-            award_player_renewable_inspiration($"travel:world:{_worldMapTravelStartedHour}:{cell.X},{cell.Y}:{hour}", "journey.step");
+            var node = _nodeWorldMap?.Call("get_current_node").AsString() ?? "";
+            award_player_renewable_inspiration($"travel:world:{_worldMapTravelStartedHour}:{node}:{hour}", "journey.step");
         }
         _worldMapTravelStartedHour = -1;
-        refresh_tile_world_population_counts();
+        refresh_node_world_character_list(force: true);
         synchronize_dynamic_dungeon_opportunities();
 
         if (player?.entity_data is HumanData human && _npc_world?.get_active_yuxu_case_transport(human) is { } task &&
             task.temporary_party_member_active && task.journey_status == YuxuSectCaseTaskRecord.JourneyInTransit &&
-            tile_world_map?.Call("get_location_node_id_at_cell", tile_world_map.Call("get_player_cell").AsVector2I()).AsString() == task.journey_destination_node_id)
+            _player_world_node_id == task.journey_destination_node_id)
         {
             _npc_world.mark_yuxu_case_transport_arrived(
                 human.sect_active_yuxu_duty_incident_id, task.task_id, human.sect_active_yuxu_duty_instance_id,
                 task.journey_destination_node_id);
-            tile_world_map.Call("set_assigned_route_destination", "");
             mark_save_dirty();
             refresh_yuxu_life_context();
             show_message("案卷押送抵达", "队伍已抵达执中峰所在地点。请进入执中峰，并由指定官员完成交接；抵达本身不算交接。");

@@ -1,0 +1,24 @@
+{
+  "checks": 13,
+  "results": [
+    "pavilion_background_restored",
+    "extra_header_and_category_strip_hidden",
+    "four_columns_fit_original_frame",
+    "nine_categories_kept",
+    "independent_vertical_scroll",
+    "right_arrow_reveals_more_categories",
+    "pills_visible_after_search",
+    "footer_preserved_selection_quantity_cost",
+    "hover_footprint_kept",
+    "drag_header_moves_directory",
+    "small_window_keeps_four_columns",
+    "return_restores_trade_page",
+    "trade_stays_text_only"
+  ],
+  "date": "2026-10-30",
+  "scope": "Four-column independent HTML fixture only, no game business changes",
+  "console": {
+    "errors": 0,
+    "warnings": 0
+  }
+}

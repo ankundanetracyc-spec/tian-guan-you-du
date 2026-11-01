@@ -25,6 +25,25 @@ public partial class StorageItemSlot : Control
     public bool is_empty;
     public ArtifactInstanceData? artifact_data;
     public bool inventory_reorder_enabled;
+    public bool spatial_drag_enabled;
+
+    public void configure_spatial_layout(Vector2 footprint, Vector2 original, int rotation)
+    {
+        spatial_drag_enabled = true;
+        Size = footprint; CustomMinimumSize = Vector2.Zero;
+        if (GetNodeOrNull<Panel>("Frame") is { } frame)
+        { frame.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect); frame.AddThemeStyleboxOverride("panel", new StyleBoxEmpty()); frame.MouseFilter = MouseFilterEnum.Ignore; }
+        name_label?.Hide();
+        if (icon_rect is not null)
+        {
+            icon_rect.SetAnchorsPreset(LayoutPreset.TopLeft);
+            icon_rect.Size = original; icon_rect.Position = (footprint - original) * .5f;
+            icon_rect.PivotOffset = original * .5f; icon_rect.RotationDegrees = rotation * 90;
+            icon_rect.MouseFilter = MouseFilterEnum.Ignore;
+            icon_rect.StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered;
+        }
+        Modulate = Colors.White;
+    }
 
     public override void _Ready()
     {
@@ -167,6 +186,7 @@ public partial class StorageItemSlot : Control
 
     private void update_slot_tint()
     {
+        if (spatial_drag_enabled) { Modulate = Colors.White; return; }
         if (inventory_layout && inventory_frame is not null)
         {
             Modulate = Colors.White;
@@ -182,6 +202,7 @@ public partial class StorageItemSlot : Control
 
     private void on_gui_input(InputEvent @event)
     {
+        if (spatial_drag_enabled) return;
         if (@event is not InputEventMouseButton { ButtonIndex: MouseButton.Left, Pressed: true }) return;
         hover_timer?.Stop();
         EmitSignal(SignalName.clicked, this);

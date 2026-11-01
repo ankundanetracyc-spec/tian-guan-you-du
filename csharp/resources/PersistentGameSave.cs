@@ -30,6 +30,7 @@ public partial class PersistentGameSave : Resource
     [Export] public string current_node_id = "home_village";
     [Export] public byte[] explored_map_cells = [];
     [Export] public Array<Vector2I> remaining_travel_path = [];
+    [Export] public Dictionary node_world_state = [];
 
     [Export] public Array<WorldNpcData> world_npcs = [];
     [Export] public Array<EastWoodsNpcIncidentRecord> east_woods_npc_incidents = [];

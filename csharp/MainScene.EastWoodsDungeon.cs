@@ -36,7 +36,7 @@ public partial class MainScene
         estate?.Hide();
         location_interior?.hide_roster();
         location_interior?.Hide();
-        tile_world_map?.Hide();
+        _nodeWorldMap?.Hide();
         hide_world_character_list();
 
         refresh_yuxu_life_context();
@@ -295,6 +295,7 @@ public partial class MainScene
     {
         apply_player_severe_injury(summary, context);
         award_successful_combat_inspiration(summary, context);
+        if (handle_world_encounter_battle_return(summary, context)) return;
         if (handle_yuxu_case_transport_battle_return(attackers, defenders, summary, context)) return;
         if (context.GetValueOrDefault("kind", "").AsString() == "dynamic_dungeon_beast")
         {

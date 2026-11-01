@@ -1,7 +1,7 @@
 extends Control
 ## Isolated art/placement preview. No travel, calendar or save transactions.
 
-const TILE_SIZE := 2048.0
+const TILE_SIZE := 1254.0
 const WORLD_SIZE := TILE_SIZE * 3.0
 const ART_DIR := "res://textures/world/bai_chuan/acceptance_v1/tiles/"
 const PRESENTATION_PATH := "res://textures/world/bai_chuan/acceptance_v1/presentation.json"
@@ -22,6 +22,10 @@ var place_views: Dictionary = {}
 var icon_cache: Dictionary = {}
 var camera_pos := Vector2.ZERO
 var dragging := false
+var _map_press_active := false
+var _map_press_origin := Vector2.ZERO
+var _map_press_target: BaseButton
+var formal_info_box: VBoxContainer
 var title_label: Label
 var detail_label: Label
 var mini: Control
@@ -35,6 +39,8 @@ var _whole_mode := false
 var _art_base := "res://textures/world/bai_chuan/acceptance_v1/"
 var hover_id := ""
 var hit_mask_cache: Dictionary = {}
+var _nameplate_texture: Texture2D
+var display_layout: Dictionary = {}
 
 class EntranceHitButton extends Button:
 	var silhouette: BitMap
@@ -52,6 +58,8 @@ class NaturalSiteMark extends Node2D:
 		draw_arc(Vector2.ZERO,4.0,0,TAU,20,Color("61583f"),1.1,true)
 
 class WorldInk extends Node2D:
+	const MAIN_INK := Color(0.12,0.105,0.085,0.94)
+	const BRANCH_INK := Color(0.17,0.145,0.115,0.90)
 	var lines: Array[PackedVector2Array] = []
 	var spurs: Array[bool] = []
 	var marks: Array[Vector2] = []
@@ -152,19 +160,17 @@ class WorldInk extends Node2D:
 
 	func _draw() -> void:
 		if paths_visible:
-			if not main_dashes.is_empty(): draw_multiline(main_dashes,Color(0.36,0.30,0.22,0.77),1.8,true)
-			if not spur_dashes.is_empty(): draw_multiline(spur_dashes,Color(0.40,0.34,0.25,0.65),1.3,true)
+			if not main_dashes.is_empty(): draw_multiline(main_dashes,MAIN_INK,1.8,true)
+			if not spur_dashes.is_empty(): draw_multiline(spur_dashes,BRANCH_INK,1.3,true)
 		if marks_visible:
 			for i in marks.size():
 				draw_circle(marks[i], 3.0 if junctions[i] else 2.5, Color(0.91, 0.86, 0.76, 0.85))
 				draw_arc(marks[i], 3.0 if junctions[i] else 2.5, 0, TAU, 16, Color(0.40, 0.33, 0.24, 0.82), 1.0, true)
 
 func _ready() -> void:
-	_whole_mode = FileAccess.file_exists(WHOLE_ART_BASE+"READY.json") or OS.get_cmdline_user_args().has("--bai-chuan-whole-v2")
-	if _whole_mode: _art_base = WHOLE_ART_BASE
-	if FileAccess.file_exists(JOINT_ART_BASE+"READY.json") or OS.get_cmdline_user_args().has("--bai-chuan-joint-v4"):
-		_art_base = JOINT_ART_BASE
-		_whole_mode = true
+	# Only the isolated preview scene adopts the pending art.
+	_art_base = "res://textures/world/bai_chuan/acceptance_20261030/"
+	_whole_mode = true
 	var win := get_window()
 	_old_mode = win.content_scale_mode
 	_old_size = win.content_scale_size
@@ -177,13 +183,23 @@ func _ready() -> void:
 	texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	data = JSON.parse_string(FileAccess.get_file_as_string(DATA_PATH)) as Dictionary
 	presentation = JSON.parse_string(FileAccess.get_file_as_string(_art_base+"presentation.json")) as Dictionary
-	_apply_entrance_art()
+	_nameplate_texture = _image_texture(_art_base+"nameplates/blank_48x152.png")
+	_adapt_acceptance_presentation()
+	_apply_display_layout()
 	if data.is_empty():
 		push_error("百川地图测试：规划数据未能读取")
 		_return_to_menu.call_deferred()
 		return
 	world.name = "FixedScaleWorld"
 	add_child(world)
+	if is_in_group("node_world_map_presentation"):
+		var border := ColorRect.new()
+		border.name = "MapMargin"
+		border.position = Vector2.ONE * -2500.0
+		border.size = Vector2.ONE * (WORLD_SIZE + 5000.0)
+		border.color = Color("b9ad82")
+		border.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		world.add_child(border)
 	for i in TILE_FILES.size():
 		var texture := _image_texture(_art_base+"tiles/"+TILE_FILES[i])
 		if texture == null:
@@ -195,6 +211,7 @@ func _ready() -> void:
 		tile.texture = texture
 		tile.position = Vector2(i % 3, floori(i / 3.0)) * TILE_SIZE
 		world.add_child(tile)
+	_layout_nameplates()
 	ink = WorldInk.new()
 	ink.name = "RoutesAndTransit"
 	world.add_child(ink)
@@ -206,6 +223,88 @@ func _ready() -> void:
 	_build_hud()
 	get_viewport().size_changed.connect(_update_camera)
 	_focus_place("玉虚仙宗")
+
+func _adapt_acceptance_presentation() -> void:
+	# Browser rectangles are left/top/right/bottom; this scene uses x/y/width/height.
+	var source: Dictionary = presentation
+	presentation = {"nodesIntegrated": true, "catalog": {}, "placements": []}
+	for asset: Dictionary in source.assets:
+		presentation.catalog[asset.id] = {"file": "res://textures/world/bai_chuan/node_sprites_20261030/icons/" + str(asset.id) + ".png"}
+	for node: Dictionary in source.nodes:
+		var row: Dictionary = node.duplicate(true)
+		row.drawIcon = node.get("asset") != null
+		row.asset = str(node.asset) if row.drawIcon else ""
+		row.labelSize = 17 if node.get("level") == 1 else 14
+		var label: Array = node.labelRect
+		row.labelRect = [label[0], label[1], label[2]-label[0], label[3]-label[1]]
+		if row.drawIcon:
+			var box: Array = node.rect
+			row.rect = [box[0], box[1], box[2]-box[0], box[3]-box[1]]
+		else:
+			row.rect = [node.drawPos[0]-7, node.drawPos[1]-7, 14, 14]
+		presentation.placements.append(row)
+
+func _apply_display_layout() -> void:
+	display_layout = JSON.parse_string(FileAccess.get_file_as_string(_art_base+"display_layout_v3.json")) as Dictionary
+	presentation.displayEdges = display_layout.displayEdges
+	for row: Dictionary in presentation.placements:
+		var placement: Dictionary = display_layout.locations[row.id]
+		row.drawPos = placement.drawPos
+		row.artOffset = placement.displayOffsetFromLogical
+		if row.drawIcon:
+			var rect: Array = placement.rect
+			row.rect = [rect[0],rect[1],rect[2]-rect[0],rect[3]-rect[1]]
+		else:
+			row.rect = [row.drawPos[0]-7,row.drawPos[1]-7,14,14]
+
+func _layout_nameplates() -> void:
+	var occupied: Array[Rect2] = []
+	for row: Dictionary in presentation.placements:
+		occupied.append(Rect2(row.rect[0],row.rect[1],row.rect[2],row.rect[3]).grow(4))
+	for point: Array in display_layout.transitPositions.values():
+		occupied.append(Rect2(float(point[0])-6,float(point[1])-6,12,12))
+	var ground: Array[Image] = []
+	for texture in _textures: ground.append(texture.get_image())
+	for row: Dictionary in presentation.placements:
+		row.labelSize = 18 if row.get("level") == 1 else (16 if row.drawIcon else 14)
+		var dimensions := Vector2(row.labelSize+16,str(row.name).length()*(row.labelSize+4)+16)
+		var icon := Rect2(row.rect[0],row.rect[1],row.rect[2],row.rect[3])
+		var best := Rect2()
+		var best_score := INF
+		for side in [1,-1]:
+			for distance in [8,24,48,76,108]:
+				for vertical in [0,-28,28,-60,60,-100,100]:
+					var x: float = icon.end.x+distance if side == 1 else icon.position.x-distance-dimensions.x
+					var candidate := Rect2(Vector2(x,icon.end.y-dimensions.y+vertical),dimensions)
+					if not Rect2(Vector2.ONE*4,Vector2.ONE*(WORLD_SIZE-8)).encloses(candidate): continue
+					var score := float(distance)+absf(vertical)*0.7+(0 if side == 1 else 12)
+					for obstacle in occupied:
+						if candidate.grow(3).intersects(obstacle): score += 100000+candidate.intersection(obstacle).get_area()
+					for sy in [0.15,0.5,0.85]:
+						for sx in [0.2,0.8]:
+							var point := candidate.position+candidate.size*Vector2(sx,sy)
+							var tile_index := floori(point.y/TILE_SIZE)*3+floori(point.x/TILE_SIZE)
+							var color := ground[tile_index].get_pixel(int(point.x)%int(TILE_SIZE),int(point.y)%int(TILE_SIZE))
+							if color.b > color.r*1.15 and color.b > color.g*1.04: score += 3000
+					if score < best_score:
+						best_score = score
+						best = candidate
+		row.labelRect = [best.position.x,best.position.y,best.size.x,best.size.y]
+		occupied.append(best)
+
+func _nameplate_style(fill: String, _border: String) -> StyleBoxTexture:
+	var style := StyleBoxTexture.new()
+	style.texture = _nameplate_texture
+	style.texture_margin_left = 7
+	style.texture_margin_right = 7
+	style.texture_margin_top = 10
+	style.texture_margin_bottom = 10
+	style.modulate_color = Color.WHITE if fill == "ead3a3" else Color(1.04,1.01,0.94)
+	style.content_margin_left = 5
+	style.content_margin_right = 5
+	style.content_margin_top = 6
+	style.content_margin_bottom = 6
+	return style
 
 func _image_texture(path: String) -> Texture2D:
 	# Read original PNG bytes without import timing dependencies or resampling.
@@ -253,7 +352,11 @@ func _build_routes() -> void:
 		if route.get("isResourceSpur", false):
 			for segment: Dictionary in route.get("movementSegments", []):
 				spur_edges[segment.edge] = true
-	var edges: Dictionary = data.get("roadCurveGeometry", {}).get("edges", {})
+	var edges: Dictionary = display_layout.get("displayGraph",{}).get("edges",data.get("roadCurveGeometry", {}).get("edges", {}))
+	var degree := {}
+	for edge: Dictionary in edges.values():
+		degree[edge.from] = int(degree.get(edge.from,0))+1
+		degree[edge.to] = int(degree.get(edge.to,0))+1
 	var displayed: Dictionary = presentation.get("displayEdges",{})
 	for key: String in edges:
 		var points := PackedVector2Array()
@@ -264,10 +367,14 @@ func _build_routes() -> void:
 				points.append(_point(p))
 		if points.size() >= 2:
 			ink.lines.append(points)
-			ink.spurs.append(spur_edges.has(key))
+			var is_spur := spur_edges.has(key)
+			for source: String in edges[key].get("sourceEdges",[]):
+				if spur_edges.has(source): is_spur = true
+			ink.spurs.append(is_spur)
 	for node: Dictionary in data.get("transitNodes", []):
-		ink.marks.append(_point(node.pos))
-		ink.junctions.append(node.get("isJunction", false))
+		var position: Array = display_layout.transitPositions[node.id]
+		ink.marks.append(Vector2(position[0],position[1]))
+		ink.junctions.append(int(degree.get(node.id,0)) >= 3)
 	ink.queue_redraw()
 
 func _build_places() -> void:
@@ -296,6 +403,7 @@ func _build_places() -> void:
 		if not draw_icon:
 			var natural_mark := NaturalSiteMark.new()
 			natural_mark.name = "NaturalSiteMark"
+			natural_mark.position = Vector2(row.drawPos[0],row.drawPos[1])-marker.position
 			marker.add_child(natural_mark)
 		var hit := EntranceHitButton.new()
 		hit.name = "SelectIcon"
@@ -320,8 +428,10 @@ func _build_places() -> void:
 		marker.add_child(hit)
 		var button := Button.new()
 		button.name = "SelectPlace"
-		button.text = str(node.name)
-		button.flat = true
+		var characters := PackedStringArray()
+		for character in str(node.name): characters.append(character)
+		button.text = "\n".join(characters)
+		button.flat = false
 		button.position = Vector2(row.labelRect[0],row.labelRect[1])-marker.position
 		button.size = Vector2(row.labelRect[2],row.labelRect[3])
 		button.focus_mode = Control.FOCUS_NONE
@@ -330,10 +440,12 @@ func _build_places() -> void:
 		button.mouse_exited.connect(_defer_hover_clear.bind(str(node.id)))
 		button.add_theme_font_override("font",load("res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf"))
 		button.add_theme_font_size_override("font_size", int(row.labelSize))
-		button.add_theme_color_override("font_color", Color("594d3d"))
-		button.add_theme_color_override("font_hover_color", Color("8c5637"))
-		button.add_theme_color_override("font_outline_color", Color("d9c59e"))
-		button.add_theme_constant_override("outline_size", 2)
+		button.add_theme_color_override("font_color", Color("292217"))
+		button.add_theme_color_override("font_hover_color", Color("6f3d1e"))
+		button.add_theme_constant_override("outline_size", 0)
+		button.add_theme_stylebox_override("normal",_nameplate_style("ead3a3","876d45"))
+		button.add_theme_stylebox_override("hover",_nameplate_style("f4dfb2","a57036"))
+		button.add_theme_stylebox_override("pressed",_nameplate_style("dcc18e","765633"))
 		button.pressed.connect(_select_place.bind(node))
 		marker.add_child(button)
 		place_views[node.id] = marker
@@ -373,7 +485,7 @@ func _clear_hover() -> void:
 		marker.get_node("NativeIcon").modulate = Color.WHITE
 		if bool(marker.get_node("NativeIcon").get_meta("hover_only",false)):
 			marker.get_node("NativeIcon").hide()
-		marker.get_node("SelectPlace").add_theme_color_override("font_color", Color("594d3d"))
+		marker.get_node("SelectPlace").add_theme_color_override("font_color", Color("292217"))
 		var natural := marker.get_node_or_null("NaturalSiteMark")
 		if natural != null:
 			natural.modulate = Color.WHITE
@@ -385,7 +497,7 @@ func _rebuild_path_art() -> void:
 		var rect: Array = row.rect
 		var label: Array = row.labelRect
 		# Co-painted buildings remain in the background when information is hidden.
-		if places.visible or bool(row.get("hoverOnly",false)):
+		if (places.visible and bool(row.get("drawIcon",false))) or bool(row.get("hoverOnly",false)):
 			masks.append(Rect2(rect[0],rect[1],rect[2],rect[3]).grow(6.0))
 		if places.visible:
 			masks.append(Rect2(label[0],label[1],label[2],label[3]).grow(3.0))
@@ -432,13 +544,16 @@ func _button(parent: Node, text: String, action: Callable) -> Button:
 	return button
 
 func _build_hud() -> void:
+	if is_in_group("node_world_map_presentation"):
+		_build_formal_hud()
+		return
 	var top := _panel(self)
 	top.position = Vector2(18, 18)
 	var box := VBoxContainer.new()
 	box.add_theme_constant_override("separation", 8)
 	top.add_child(box)
 	var heading := Label.new()
-	heading.text = "百川舆图 · 地图试览" if _whole_mode else "百川舆图 · 九图测试"
+	heading.text = "百川舆图 · 新版验收测试"
 	heading.add_theme_font_size_override("font_size", 26)
 	box.add_child(heading)
 	var nav := HBoxContainer.new()
@@ -501,7 +616,7 @@ func _build_hud() -> void:
 	mini.gui_input.connect(_mini_input)
 	mini_panel.add_child(mini)
 	var atlas_view := TextureRect.new()
-	atlas_view.texture = _image_texture(_art_base+"overview.png")
+	atlas_view.texture = _image_texture(_art_base+"master_3762.png")
 	atlas_view.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	atlas_view.size = Vector2(180, 180)
 	atlas_view.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -512,6 +627,33 @@ func _build_hud() -> void:
 	mini_frame.border_width = 2
 	mini_frame.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	mini.add_child(mini_frame)
+
+func _build_formal_hud() -> void:
+	# The game's own clock, health and navigation already surround the map.
+	# Keep the map-specific information in a single compact card.
+	var details := _panel(self)
+	details.name = "WorldMapDetails"
+	details.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT)
+	details.offset_left = -270
+	details.offset_top = 18
+	details.offset_right = -18
+	details.offset_bottom = 205
+	formal_info_box = VBoxContainer.new()
+	formal_info_box.add_theme_constant_override("separation", 8)
+	details.add_child(formal_info_box)
+	var heading := Label.new()
+	heading.text = "百川舆图"
+	heading.add_theme_font_size_override("font_size", 17)
+	formal_info_box.add_child(heading)
+	title_label = Label.new()
+	title_label.text = "选择地点"
+	title_label.add_theme_font_size_override("font_size", 21)
+	formal_info_box.add_child(title_label)
+	detail_label = Label.new()
+	detail_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	detail_label.custom_minimum_size.x = 215
+	detail_label.add_theme_font_size_override("font_size", 15)
+	formal_info_box.add_child(detail_label)
 
 func _toggle_layer(on: bool, layer: String) -> void:
 	if layer == "places":
@@ -541,8 +683,8 @@ func _focus_place(place_name: String) -> void:
 			var center := _point(node.pos)
 			if bool(presentation.get("nodesIntegrated",false)):
 				for row: Dictionary in presentation.placements:
-					if row.id == node.id and bool(row.get("hoverOnly",false)):
-						center = Vector2(row.rect[0]+row.rect[2]*0.5,row.rect[1]+row.rect[3]*0.5)
+					if row.id == node.id:
+						center = Vector2(row.drawPos[0],row.drawPos[1])
 						break
 			camera_pos = center - get_viewport_rect().size * 0.5
 			_update_camera()
@@ -551,8 +693,10 @@ func _focus_place(place_name: String) -> void:
 
 func _update_camera() -> void:
 	var viewport_size := get_viewport_rect().size
-	var limits := (Vector2.ONE * WORLD_SIZE - viewport_size).max(Vector2.ZERO)
-	camera_pos = camera_pos.clamp(Vector2.ZERO, limits).round()
+	var margin := viewport_size * 0.5 if is_in_group("node_world_map_presentation") else Vector2.ZERO
+	var lower := -margin
+	var limits := (Vector2.ONE * WORLD_SIZE + margin - viewport_size).max(lower)
+	camera_pos = camera_pos.clamp(lower, limits).round()
 	world.position = -camera_pos
 	world.scale = Vector2.ONE
 	if is_instance_valid(mini_frame):
@@ -566,6 +710,8 @@ func _mini_input(event: InputEvent) -> void:
 		mini.accept_event()
 
 func _input(event: InputEvent) -> void:
+	if is_in_group("node_world_map_presentation") and _formal_map_pointer_input(event):
+		return
 	if event is InputEventMagnifyGesture or event is InputEventPanGesture:
 		get_viewport().set_input_as_handled()
 	elif event is InputEventMouseButton and event.button_index in [MOUSE_BUTTON_WHEEL_UP, MOUSE_BUTTON_WHEEL_DOWN, MOUSE_BUTTON_WHEEL_LEFT, MOUSE_BUTTON_WHEEL_RIGHT]:
@@ -577,6 +723,8 @@ func _input(event: InputEvent) -> void:
 		dragging = false
 
 func _unhandled_input(event: InputEvent) -> void:
+	if is_in_group("node_world_map_presentation"):
+		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		dragging = event.pressed
 		get_viewport().set_input_as_handled()
@@ -584,6 +732,37 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera_pos -= event.relative
 		_update_camera()
 		get_viewport().set_input_as_handled()
+
+func _formal_map_pointer_input(event: InputEvent) -> bool:
+	if not is_visible_in_tree(): return false
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed:
+			var hovered := get_viewport().gui_get_hovered_control()
+			if hovered != null and hovered != self and not world.is_ancestor_of(hovered): return false
+			_map_press_active = true
+			_map_press_origin = event.position
+			dragging = false
+			_map_press_target = hovered as BaseButton if hovered != null and world.is_ancestor_of(hovered) else null
+		else:
+			if not _map_press_active: return false
+			var target := _map_press_target
+			var clicked := not dragging and is_instance_valid(target) and target.is_visible_in_tree() and target.get_global_rect().has_point(event.position)
+			_map_press_active = false
+			_map_press_target = null
+			dragging = false
+			if clicked and not target.disabled:
+				target.emit_signal("pressed")
+		get_viewport().set_input_as_handled()
+		return true
+	if event is InputEventMouseMotion and _map_press_active:
+		if not dragging and event.position.distance_to(_map_press_origin) >= 6.0:
+			dragging = true
+		if dragging:
+			camera_pos -= event.relative
+			_update_camera()
+		get_viewport().set_input_as_handled()
+		return true
+	return false
 
 func _process(delta: float) -> void:
 	# Input has no zoom command; also guard against accidental transform changes.
@@ -601,3 +780,4 @@ func _exit_tree() -> void:
 		get_window().content_scale_mode = _old_mode
 		get_window().content_scale_size = _old_size
 		get_window().content_scale_factor = _old_factor
+

@@ -65,10 +65,9 @@ public partial class InfoPanel
         set_overview_value("spirit_root",npc.spirit_root_name);
         set_overview_value("identity",string.IsNullOrWhiteSpace(npc.formal_identity)?"无":npc.formal_identity);
         set_overview_value("faction",string.IsNullOrWhiteSpace(npc.faction_id)?"无":npc_faction_name(npc.faction_id));
-        var map=GD.Load<WorldNodeMapData>("res://resources/world/yunqu_state_nodes.tres");
+        var map=GD.Load<WorldNodeMapData>("res://resources/world/bai_chuan/bai_chuan_locations_20261101.tres");
         string Place(string id)=>map?.get_node(id)?.node_name ?? "未详地点";
         string location=npc.is_traveling ? $"途中 · 前往{Place(npc.travel_destination_node_id)}" : Place(npc.current_node_id);
-        if(npc.has_world_grid_position) location+=$" · 格位（{npc.current_grid_cell.X}，{npc.current_grid_cell.Y}）";
         set_overview_value("location",location);
         var weights=new Godot.Collections.Array(); foreach(int value in npc.root_weights) weights.Add(value);
         if(_overviewValueLabels.TryGetValue("spirit_root",out var root)) bind_tooltip(root,format_root_weight_tooltip(weights));

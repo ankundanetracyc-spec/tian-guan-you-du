@@ -1,0 +1,44 @@
+/* Preserve the supplied pavilion composition. Only the central directory moves. */
+body.shop-active{background:#d4d8d3;overflow:hidden}
+body.shop-active::before,body.shop-active>header{display:none}
+body.shop-active #shop-page{position:fixed;left:50%;top:50%;width:1664px;height:936px;min-height:0;margin:0;display:block;transform:translate(-50%,-50%) scale(var(--shop-scale,1));background:url('../交易列表与物品占格悬停_20261029/善功堂_分类分列文字目录_v2.png') center/100% 100% no-repeat;color:#292f2a}
+#shop-page .category-links{display:none}
+#shop-page .shop-toolbar{position:absolute;left:112px;top:194px;width:1438px;height:48px;display:flex;gap:10px;padding:0 16px;background:#f5eddd;border:1px solid #bbaa85;font-size:23px}
+#shop-page .shop-toolbar>span{flex:1}
+#shop-page .search{order:2;margin:0;height:38px;width:245px;padding:4px 10px;background:transparent;border:1px solid #c8b898;font-size:21px}
+#shop-page .scroll-arrow{order:1;height:36px;width:32px;font-size:30px}
+#shop-page .shop-return{order:3;height:38px;width:90px;padding:4px 10px;border-left:1px solid #bba77f;font-size:22px}
+#shop-page .shop-rail{position:absolute;left:110px;top:246px;width:1440px;height:584px;display:flex;gap:0;overflow-x:auto;overflow-y:hidden;padding-bottom:9px;scrollbar-color:#aa946b #eee5d1;scrollbar-width:thin;background:#f3ecdb}
+#shop-page .shop-column{flex:0 0 480px;width:480px;min-width:480px;max-width:480px;border:1px solid #bca980;border-image:none;padding:0 16px;background:#f3ecdc url('../../../textures/ui/inventory_index_20261029/index_panel_paper.png') center/100% 100%;scroll-snap-align:start;min-height:0}
+#shop-page .shop-column h2{display:flex;justify-content:center;font-size:40px;line-height:1;letter-spacing:5px;height:71px;flex:0 0 71px;margin:0 -16px;border-bottom:1px solid #bda880;background:linear-gradient(130deg,#bcc9ce45,transparent 35%,#c0ced133);font-weight:400}
+#shop-page .shop-column h2 small{display:none}
+#shop-page .columns{flex:0 0 44px;min-height:44px;font-size:23px;color:#424638;padding:5px 15px;border-bottom:1px solid #cbbd9b}
+#shop-page .row{min-height:43px;padding:6px 15px;font-size:23px;line-height:30px;border-bottom-color:#c9b99577;color:#29362f}
+#shop-page .shop-column .row,#shop-page .shop-column .columns{grid-template-columns:minmax(0,1fr) 66px 70px;gap:10px}
+#shop-page .list{scrollbar-width:thin;scrollbar-color:#a69168 #e6dcc6}
+#shop-page .shop-column .row.selected{background:#c4d1b866;box-shadow:inset 3px 0 #688d73}
+#shop-page .empty{font-size:21px;padding-top:34px}
+#shop-page .footer{position:absolute;left:397px;top:842px;width:1096px;height:61px;min-height:0;border:1px solid #b9a477;border-image:none;padding:8px 20px;background:#f5edda;gap:12px;display:flex;font-size:23px}
+#shop-page .footer .summary{font-size:23px;color:#30382f}
+#shop-page .footer .action{flex:0 0 155px;font-size:26px;line-height:35px;padding:2px 20px;background:#f3e7ce;border:1px solid #ad966b;color:#394135}
+#shop-page .footer .action:disabled{opacity:.6}
+#shop-page .shop-column{background-size:110% 110%;background-position:center}
+/* Four categories in the original window; restore the illustrated paper instead of flattening it. */
+#shop-page .shop-column{flex-basis:360px;width:360px;min-width:360px;max-width:360px;border:0;padding:0 14px 9px;background:transparent url('../../../textures/ui/shangong_columns_20261030/column_mountain_paper_v1.png') center/100% 100% no-repeat}
+#shop-page .shop-column h2{margin:0 -14px;height:71px;flex-basis:71px;font-size:35px;letter-spacing:4px;background:none;border:0}
+#shop-page .columns{font-size:19px;padding:5px 8px;border-bottom-color:#c7b59388}
+#shop-page .row{font-size:19px;line-height:27px;min-height:42px;padding:7px 8px;border-bottom-color:#cdbd9b66}
+#shop-page .shop-column .row,#shop-page .shop-column .columns{grid-template-columns:minmax(0,1fr) 42px 48px;gap:8px}
+#shop-page .shop-toolbar{background:none;border:0;padding:0;display:block}
+#shop-page .shop-toolbar>span{position:absolute;left:16px;top:9px;width:360px;height:29px;background:#f5eddf;font-size:22px}
+#shop-page .scroll-arrow{position:absolute;top:5px;width:30px;height:36px}
+#shop-page #prev{left:1044px}#shop-page #next{left:1076px}
+#shop-page .search{position:absolute;left:1130px;top:8px;width:194px;height:31px;border:0;background:#f5eddf;font-size:19px;padding:2px 4px}
+#shop-page .shop-return{position:absolute;left:1332px;top:8px;width:88px;height:31px;padding:1px 4px;background:#f5eddf;border:0;font-size:22px}
+#shop-page .footer{background:none;border:0;padding:0;display:block}
+#shop-page .footer .summary{position:absolute;left:15px;top:6px;width:842px;height:44px;padding:8px 10px;background:#f5eddd url('../../../textures/ui/inventory_index_20261029/index_panel_paper.png') center/115% 130%;font-size:21px;white-space:nowrap}
+#shop-page .footer .action{position:absolute;right:10px;top:8px;width:154px;height:43px;padding:3px 12px;background:#f3e7ce;border:0;font-size:26px;line-height:35px}
+.shop-active .tip{background:#242e28;border:3px double #bfa975;box-shadow:0 2px 5px #292d2644}
+#shop-page .footer .action:disabled{opacity:1;color:#8d917e}
+#shop-page .shop-toolbar>span{background:none;color:transparent}
+#shop-page .list{margin-bottom:26px}

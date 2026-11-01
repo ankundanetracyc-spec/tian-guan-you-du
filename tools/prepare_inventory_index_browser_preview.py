@@ -37,6 +37,7 @@ for relative, mime in [
     ('textures/ui/inventory_index_20261029/index_row_normal.png', 'image/png'),
     ('textures/ui/inventory_index_20261029/index_row_selected.png', 'image/png'),
     ('textures/ui/forging_20261021/jade_button_v3.png', 'image/png'),
+    ('textures/ui/gongfa_back_button_v1.png', 'image/png'),
 ]:
     html = html.replace('../../../' + relative, data_url(ROOT / relative, mime))
 

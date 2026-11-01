@@ -32,6 +32,7 @@ public partial class ItemClaimPanel : CanvasLayer
     private bool _presented;
     private bool _organizing;
     private int _restoreClaimScroll;
+    private bool _claimCommitting;
 
     public event Action? Closed;
 
@@ -199,7 +200,7 @@ public partial class ItemClaimPanel : CanvasLayer
         clear_page();
         var rows = Math.Clamp(_items.Count, 1, 6);
         var selected = _items.Where(item => item.Selected).ToList();
-        var hasStatus = selected.Count == 0 || required_new_slots(selected) > (_recipient?.get_inventory_free_slot_count() ?? 0);
+        var hasStatus = selected.Count == 0 || !can_claim(selected);
         set_page_layout(new Vector2(1000, 176 + rows * 96 + (hasStatus ? 32 : 0)), false);
 
         var heading = text(_items.Count == 0 ? title : "获得物品", 34, Ink);
@@ -279,13 +280,13 @@ public partial class ItemClaimPanel : CanvasLayer
         status.MaxLinesVisible = 2;
         status.HorizontalAlignment = HorizontalAlignment.Center;
         place(status, _page, 32, _layoutSize.Y - 105, 936, 28);
-        var required = required_new_slots(selected);
+        var required = required_cells(selected);
         var free = _recipient?.get_inventory_free_slot_count() ?? 0;
-        var overflow = selected.Count > 0 && required > free;
+        var overflow = selected.Count > 0 && !can_claim(selected);
         if (selected.Count == 0)
             status.Text = "请点选要领取的物品";
         else if (overflow)
-            status.Text = $"行囊空间不足 · 还需腾出 {required - free} 格";
+            status.Text = required > free ? $"行囊空间不足 · 至少还需腾出 {required - free} 格" : "现有空位无法放下所选物品，请先整理行囊";
 
         var primary = make_action_button(_page, "领取", new(308, _layoutSize.Y - 65), new(180, 46), true,
             overflow ? open_organizer : claim_selected_items);
@@ -344,9 +345,9 @@ public partial class ItemClaimPanel : CanvasLayer
         var rightFrame = new InventoryPaperFrame();
         place(rightFrame, _page, 948, 104, 690, 811);
 
-        var leftTitle = text($"我的行囊　{_recipient.get_inventory_slot_count()}/{_recipient.max_pack_slots}", 24, Ink);
+        var leftTitle = text($"我的行囊　{_recipient.get_inventory_occupied_cell_count()}/120 格", 24, Ink);
         place(leftTitle, _page, 52, 118, 650, 38);
-        var rightTitle = text($"待丢弃物品　{_discardEntries.Count} 格", 24, Ink);
+        var rightTitle = text($"待丢弃物品　{_discardEntries.Sum(pack_cells)} 格", 24, Ink);
         place(rightTitle, _page, 966, 118, 650, 38);
         place(rule(), _page, 52, 166, 654, 1);
         place(rule(), _page, 966, 166, 654, 1);
@@ -387,9 +388,13 @@ public partial class ItemClaimPanel : CanvasLayer
             attach_pack_hover(card, entry);
         }
 
-        var freeAfterDiscard = (_recipient.get_inventory_free_slot_count() + _discardEntries.Count);
-        var remaining = Math.Max(0, required_new_slots(_items.Where(item => item.Selected).ToList()) - freeAfterDiscard);
-        var status = text(remaining > 0 ? $"整理后仍需腾出 {remaining} 格" : "点击左侧物品移入待丢弃，点击右侧物品可移回", 17, SecondaryInk);
+        var selected = _items.Where(item => item.Selected).ToList();
+        var freeAfterDiscard = _recipient.get_inventory_free_slot_count() + _discardEntries.Sum(pack_cells);
+        var remaining = Math.Max(0, required_cells(selected) - freeAfterDiscard);
+        var fitsAfterDiscard = can_claim_after_discard(selected);
+        var status = text(!fitsAfterDiscard
+            ? remaining > 0 ? $"整理后至少还需腾出 {remaining} 格" : "整理后空位形状仍无法放下所选物品"
+            : "点击左侧物品移入待丢弃，点击右侧物品可移回", 17, SecondaryInk);
         status.AutowrapMode = TextServer.AutowrapMode.WordSmart;
         status.HorizontalAlignment = HorizontalAlignment.Center;
         place(status, _page, 746, 330, 180, 120);
@@ -428,58 +433,68 @@ public partial class ItemClaimPanel : CanvasLayer
 
     private void claim_selected_items()
     {
-        if (_recipient is null) return;
+        if (_recipient is null || !_presented || _claimCommitting) return;
         var selected = _items.Where(item => item.Selected).ToList();
         if (selected.Count == 0) return;
 
-        var required = required_new_slots(selected);
-        if (required > _recipient.get_inventory_free_slot_count())
+        if (!can_claim(selected))
         {
             build_claim_page("获得物品");
             return;
         }
 
-        var added = new List<ClaimItem>();
-        foreach (var item in selected)
+        _claimCommitting = true;
+        try
         {
-            if (!_recipient.add_item_to_inventory_silently(item.Path, item.Count))
+            // The queue is consumed only after one atomic spatial transaction succeeds.
+            // Recheck inside the transaction: inventory may have changed since the last selection.
+            if (!_recipient.try_exchange_inventory(new System.Collections.Generic.Dictionary<string, int>(), claim_batch(selected)))
             {
-                // 预检使用与行囊相同的堆叠规则；遇到运行态数据变动时保留队列供玩家重试。
-                GD.PushError($"领取物品失败，奖励仍保留在领取界面：{item.Path} ×{item.Count}");
                 build_claim_page("获得物品");
                 return;
             }
-            added.Add(item);
-        }
-        foreach (var item in added) _recipient.publish_item_acquired_notice(item.Path, item.Count);
+            foreach (var item in selected) _recipient.publish_item_acquired_notice(item.Path, item.Count);
 
-        var claimedEntries = collect_entries(selected);
-        var abandonedEntries = collect_entries(_items.Where(item => !item.Selected));
-        try { _claimedCallback?.Invoke(claimedEntries); }
-        catch (Exception error) { GD.PushError($"领取后处理失败：{error}"); }
-        try { _abandonedCallback?.Invoke(abandonedEntries); }
-        catch (Exception error) { GD.PushError($"放弃未选物品处理失败：{error}"); }
-        close_panel();
+            var claimedEntries = collect_entries(selected);
+            var abandonedEntries = collect_entries(_items.Where(item => !item.Selected));
+            try { _claimedCallback?.Invoke(claimedEntries); }
+            catch (Exception error) { GD.PushError($"领取后处理失败：{error}"); }
+            try { _abandonedCallback?.Invoke(abandonedEntries); }
+            catch (Exception error) { GD.PushError($"放弃未选物品处理失败：{error}"); }
+            close_panel();
+        }
+        finally { _claimCommitting = false; }
     }
 
-    private int required_new_slots(IReadOnlyCollection<ClaimItem> selected)
+    private static System.Collections.Generic.Dictionary<string, int> claim_batch(IReadOnlyCollection<ClaimItem> selected)
     {
-        if (_recipient is null || selected.Count == 0) return 0;
-        var inventory = _recipient.get_inventory_snapshot();
-        var required = 0;
+        var batch = new System.Collections.Generic.Dictionary<string, int>(StringComparer.Ordinal);
         foreach (var group in selected.GroupBy(item => item.Path, StringComparer.Ordinal))
+            batch[group.Key] = checked(group.Sum(item => item.Count));
+        return batch;
+    }
+
+    private bool can_claim(IReadOnlyCollection<ClaimItem> selected) => _recipient?.can_add_inventory_batch(claim_batch(selected)) == true;
+    private static int required_cells(IReadOnlyCollection<ClaimItem> selected) =>
+        (int)Math.Min(int.MaxValue, selected.Sum(item => (long)item.Count * item.Data.get_inventory_cell_count()));
+    private static int pack_cells(PackEntry entry)
+    {
+        if (entry.Item is not null) return (int)Math.Min(int.MaxValue, (long)entry.Count * entry.Item.get_inventory_cell_count());
+        if (entry.Artifact is not null && ForgedArtifactInventory.TryRead(entry.Artifact, out var forged))
+        { var size = ForgedArtifactPresentation.InventorySize(forged); return size.X * size.Y; }
+        return 0;
+    }
+    private bool can_claim_after_discard(IReadOnlyCollection<ClaimItem> selected)
+    {
+        if (_recipient?.entity_data is not HumanData human) return false;
+        var hypothetical = new Character { entity_data = human.Duplicate(true) as HumanData };
+        try
         {
-            var item = group.First().Data;
-            var count = group.Sum(value => value.Count);
-            if (!item.can_stack)
-            {
-                required += count;
-                continue;
-            }
-            var existingRows = inventory.Where(value => value.GetValueOrDefault("item_path", "").AsString() == group.Key).ToList();
-            if (existingRows.Count == 0) required++;
+            foreach (var entry in _discardEntries)
+                if (!(entry.IsArtifact ? hypothetical.remove_artifact_from_inventory(entry.InstanceId) : hypothetical.remove_item_from_inventory(entry.Path, entry.Count))) return false;
+            return hypothetical.can_add_inventory_batch(claim_batch(selected));
         }
-        return required;
+        finally { hypothetical.Free(); }
     }
 
     private static GArray collect_entries(IEnumerable<ClaimItem> items)

@@ -94,7 +94,7 @@ public partial class MainScene
         if (_dynamic_dungeon_state.Count == 0)
             _dynamic_dungeon_state = DynamicDungeonExpedition.CreateEmpty(currentGameHour);
 
-        _player_world_grid_cell = _loaded_game_save.world_cell;
+        _nodeWorldState = _loaded_game_save.node_world_state?.Duplicate(true) as Dictionary ?? [];
         _player_world_node_id = string.IsNullOrWhiteSpace(_loaded_game_save.current_node_id)
             ? "home_village"
             : _loaded_game_save.current_node_id;
@@ -113,14 +113,11 @@ public partial class MainScene
             _loaded_game_save.npc_population_version);
     }
 
-    private void restore_map_save_state()
+    private void restore_node_world_position()
     {
-        if (_loaded_game_save is null || tile_world_map is null) return;
-        tile_world_map.Call(
-            "restore_persistent_state",
-            _loaded_game_save.world_cell,
-            _loaded_game_save.explored_map_cells,
-            _loaded_game_save.remaining_travel_path);
+        var id = _nodeWorldState.GetValueOrDefault("current_node", "").AsString();
+        if (!string.IsNullOrEmpty(id))
+            _player_world_grid_cell = _npc_world?.node_world_cell_for_node_id(id) ?? new Vector2I(-1, -1);
     }
 
     private void spawn_or_restore_player()
@@ -156,7 +153,7 @@ public partial class MainScene
             if (DynamicDungeonExpedition.FindInsideInstance(_dynamic_dungeon_state) is { } activeDynamic)
             {
                 estate?.Hide();
-                tile_world_map?.Hide();
+                _nodeWorldMap?.Hide();
 
                 open_dynamic_dungeon(activeDynamic.GetValueOrDefault("instance_id", "").AsString());
                 hud?.Show();
@@ -166,7 +163,7 @@ public partial class MainScene
             if (_east_woods_dungeon_state.GetValueOrDefault("inside", false).AsBool())
             {
                 estate?.Hide();
-                tile_world_map?.Hide();
+                _nodeWorldMap?.Hide();
 
                 open_east_woods_dungeon();
                 hud?.Show();
@@ -184,16 +181,12 @@ public partial class MainScene
             }
             else if (transportTask?.journey_status == YuxuSectCaseTaskRecord.JourneyInTransit)
             {
-                tile_world_map?.Call("set_assigned_route_destination", transportTask.journey_destination_node_id);
-                if (_loaded_game_save.remaining_travel_path.Count > 1)
-                    tile_world_map?.CallDeferred("resume_saved_travel");
-                else
+                var remaining = _nodeWorldState.GetValueOrDefault("remaining_route", new Godot.Collections.Array()).AsGodotArray();
+                if (remaining.Count <= 1)
                     CallDeferred(nameof(resume_yuxu_case_transport_after_load));
             }
             else if (transportTask?.journey_status == YuxuSectCaseTaskRecord.JourneyExitingDungeon)
                 CallDeferred(nameof(resume_yuxu_case_transport_after_load));
-            else if (_loaded_game_save.remaining_travel_path.Count > 1)
-                tile_world_map?.CallDeferred("resume_saved_travel");
             CallDeferred(nameof(resume_saved_banquet_if_any));
         }
         else
@@ -235,6 +228,8 @@ public partial class MainScene
             else _save_dirty_seconds = 0;
         }
     }
+
+    private void on_player_inventory_save_changed(Character _) => mark_save_dirty();
 
     private void mark_save_dirty()
     {
@@ -284,7 +279,6 @@ public partial class MainScene
             letter_mailbox = duplicateResources ? _letterMailbox.Duplicate(true) as LetterMailbox ?? _letterMailbox : _letterMailbox,
             yuxu_sect_treasury = duplicateResources ? _yuxu_sect_treasury_ledger.Duplicate(true) as YuxuSectTreasuryLedger ?? new YuxuSectTreasuryLedger() : _yuxu_sect_treasury_ledger,
             current_node_id = _player_world_node_id,
-            world_cell = _player_world_grid_cell,
             scene_progress = capture_scene_progress(),
             dynamic_dungeon_state = duplicateResources ? _dynamic_dungeon_state.Duplicate(true) : _dynamic_dungeon_state,
             banquet_events = duplicateResources ? duplicate_banquet_events(_banquetEvents) : _banquetEvents,
@@ -307,18 +301,9 @@ public partial class MainScene
             save.weather_duration_hours = weather.weather_duration_hours;
         }
 
-        if (tile_world_map is not null)
-        {
-            var state = tile_world_map.Call("get_persistent_state").AsGodotDictionary();
-            if (state.ContainsKey("player_cell")) save.world_cell = state["player_cell"].AsVector2I();
-            if (state.ContainsKey("explored_cells")) save.explored_map_cells = state["explored_cells"].AsByteArray();
-            if (state.ContainsKey("remaining_travel_path"))
-            {
-                save.remaining_travel_path.Clear();
-                foreach (var cell in state["remaining_travel_path"].AsGodotArray())
-                    save.remaining_travel_path.Add(cell.AsVector2I());
-            }
-        }
+        if (_nodeWorldMap is not null && GodotObject.IsInstanceValid(_nodeWorldMap))
+            _nodeWorldState = _nodeWorldMap.Call("get_node_state").AsGodotDictionary();
+        save.node_world_state = _nodeWorldState.Duplicate(true) as Dictionary ?? [];
 
         if (_npc_world is not null)
         {
@@ -338,6 +323,7 @@ public partial class MainScene
         {
             ["qingxi_prologue"] = (int)_qingxi_prologue,
             ["story_free_start"] = _story_free_start,
+            ["world_road_encounter"] = _worldEncounterState.Duplicate(true),
             ["player_unique_id"] = player?.unique_id ?? "",
             ["social_membership_month"] = _socialMembershipMonth,
             ["social_visit_month"] = _socialVisitMonth,
@@ -370,6 +356,7 @@ public partial class MainScene
 
     private void restore_scene_progress(Dictionary state)
     {
+        _worldEncounterState = state.GetValueOrDefault("world_road_encounter", new Dictionary()).AsGodotDictionary().Duplicate(true);
         _socialMembershipMonth = read_int(state, "social_membership_month", -1);
         _socialVisitMonth = read_int(state, "social_visit_month", -1);
         _socialProcessedVisitMonth = read_int(state, "social_visit_processed_month", -1);

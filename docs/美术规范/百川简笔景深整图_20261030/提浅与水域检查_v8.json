@@ -1,0 +1,31 @@
+{
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "mean_rgb_luminance_before": 142.78512057534974,
+  "mean_rgb_luminance_after": 195.71148910408542,
+  "water_components": [
+    {
+      "bounds": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "pixels": 186734,
+      "touches_left": true
+    },
+    {
+      "bounds": [
+        0,
+        928,
+        768,
+        326
+      ],
+      "pixels": 8031,
+      "touches_left": true
+    }
+  ],
+  "limitation": "Color-mask connectivity is an undirected visual check, not hydrological flow verification."
+}

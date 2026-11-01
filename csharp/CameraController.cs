@@ -107,6 +107,7 @@ public partial class CameraController : Camera2D
 
     private bool is_world_map_active() =>
         GetTree().GetFirstNodeInGroup("tile_world_map_presentation") is CanvasItem worldMap && worldMap.IsVisibleInTree() ||
+        GetTree().GetFirstNodeInGroup("node_world_map_presentation") is CanvasItem nodeMap && nodeMap.IsVisibleInTree() ||
         GetTree().GetFirstNodeInGroup("east_woods_dungeon_panel") is CanvasItem dungeonMap && dungeonMap.IsVisibleInTree();
 
     private void refresh_world_bounds()

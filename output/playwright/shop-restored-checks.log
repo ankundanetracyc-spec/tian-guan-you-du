@@ -1,0 +1,26 @@
+### Result
+{"checks":13,"results":["pavilion_background_restored","extra_header_and_category_strip_hidden","three_columns_fit_original_frame","nine_categories_kept","independent_vertical_scroll","right_arrow_reveals_more_categories","pills_visible_after_search","footer_preserved_selection_quantity_cost","hover_footprint_kept","drag_header_moves_directory","small_window_keeps_three_columns","return_restores_trade_page","trade_stays_text_only"]}
+### Ran Playwright code
+```js
+await (async page=>{
+ const checks=[];const check=(name,ok)=>{if(!ok)throw Error(name);checks.push(name)};
+ await page.setViewportSize({width:1920,height:1080});await page.locator('#shop-tab').click();await page.waitForTimeout(100);
+ check('pavilion_background_restored',await page.locator('#shop-page').evaluate(n=>getComputedStyle(n).backgroundImage.startsWith('url("data:image/png')));
+ check('extra_header_and_category_strip_hidden',!(await page.locator('body>header').isVisible())&&!(await page.locator('#category-links').isVisible()));
+ const rail=page.locator('#shop-rail');check('three_columns_fit_original_frame',await rail.evaluate(n=>n.clientWidth===1440&&n.children[0].offsetWidth===480));
+ check('nine_categories_kept',await page.locator('.shop-column').count()===9);
+ await page.screenshot({path:'output/playwright/shop-restored-default.png'});
+ const list=page.locator('[data-category="材料"] .list');await list.hover();await page.mouse.wheel(0,400);await page.waitForTimeout(100);check('independent_vertical_scroll',await list.evaluate(n=>n.scrollTop)>0&&await rail.evaluate(n=>n.scrollLeft)===0);
+ await page.locator('#next').click();await page.waitForTimeout(500);check('right_arrow_reveals_more_categories',await rail.evaluate(n=>n.scrollLeft)>0);
+ await page.screenshot({path:'output/playwright/shop-restored-pills.png'});
+ await page.locator('#shop-search').fill('回春丹');check('pills_visible_after_search',await page.locator('[data-category="丹药"] .row').count()===5);
+ await page.locator('[data-category="丹药"] .row').first().click();check('footer_preserved_selection_quantity_cost',(await page.locator('#shop-summary').textContent()).includes('数量 1'));
+ await page.locator('[data-category="丹药"] .row').first().hover();check('hover_footprint_kept',await page.locator('#tip.visible .footprint i').count()===6);
+ await page.locator('#shop-search').fill('');await page.locator('#prev').click();await page.waitForTimeout(500);if(await page.locator('#prev').isEnabled()){await page.locator('#prev').click();await page.waitForTimeout(500)}
+ const heading=page.locator('[data-category="材料"] h2');const r=await heading.boundingBox();await page.mouse.move(r.x+r.width*.8,r.y+r.height/2);await page.mouse.down();await page.mouse.move(r.x+10,r.y+r.height/2,{steps:10});await page.mouse.up();await page.waitForTimeout(150);check('drag_header_moves_directory',await rail.evaluate(n=>n.scrollLeft)>0);
+ await page.setViewportSize({width:1280,height:720});await page.waitForTimeout(150);check('small_window_keeps_three_columns',await rail.evaluate(n=>Math.abs(n.getBoundingClientRect().width-1440*1280/1664)<2));await page.screenshot({path:'output/playwright/shop-restored-1280.png'});
+ await page.locator('.shop-return').click();check('return_restores_trade_page',await page.locator('#trade-page').isVisible()&&await page.locator('body>header').isVisible());check('trade_stays_text_only',await page.locator('#trade-page .row img').count()===0);
+ return {checks:checks.length,results:checks};
+}
+)(page);
+```

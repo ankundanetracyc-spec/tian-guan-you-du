@@ -247,6 +247,7 @@ public partial class HumanData : LivingData
     [Export] public Array<ArtifactInstanceData> artifact_inventory = [];
     [Export] public Array<string> equipped_artifact_ids = [];
     [Export] public Array<int> artifact_inventory_positions = [];
+    [Export] public Array<InventoryPlacementData> inventory_placements = [];
 
     [Export] public string weapon_path = "";
     // 武器已并入法宝体系；常规穿戴仅保留四个直观属性位。

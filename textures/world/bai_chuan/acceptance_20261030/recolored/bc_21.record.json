@@ -1,0 +1,14 @@
+{
+  "id": "bc_21",
+  "prompt": "Use case: lighting-weather. Precise COLOR-ONLY EDIT. IMAGE1 is the exact regional map texture to edit (bc_21, middle row of a seamless 3x3 atlas). IMAGE2 is ONLY the user's approved full-map PALETTE reference, NEVER a geography reference.\nRestore the gray-green / warm muted olive-buff land, softly shaded gray-sage mountain faces, restrained ochre-gray foothills and muted olive groves of IMAGE2. IMAGE1 is currently too pale creamy/ivory; bring it closer to IMAGE2's modestly deeper warm-gray-green land. Do not make it strongly brown, dark mustard, navy or saturated green. Preserve light ink material and gentle ground depth. Keep water clear muted blue like reference.\nABSOLUTELY LOCK IMAGE1 GEOMETRY AND ALL EDGE CROSSINGS: every mountain peak, low ridge, forest shape, river path, lake boundary, river mouth and coastline (if any) stays at exactly the SAME location, shape and scale as IMAGE1. Do not redraw, move, add or delete any landforms or water. The reference image may contain broken rivers: IGNORE ALL reference geography; do not import any of its river fragments or mountain arrangement. Only copy its palette. All four texture edges and river/shore edge-crossings must stay pixel-aligned to IMAGE1 for neighboring tiles.\nNo new ink hatching, scratches, ground detail, vignette or dramatic shadow. Maintain the existing clean 2D map rendering, soft local ground planes, small layered mountains, and front-dark/back-light depth. No labels, buildings, icons, roads, bridges, UI, borders, grid or watermark. Output ONLY the same square map region recolored, native 1254x1254 or equivalent without changing crop.",
+  "path": "E:\\tmp\\CodexData\\generated_images\\01a18c6d-2a6e-7dc3-88cb-301ac16e5a47\\exec-a1937081-b34d-4436-a2fc-6efb98c21468.png",
+  "native_size": [
+    1254,
+    1254
+  ],
+  "input": "E:/stacklands/textures/world/bai_chuan/pale_nine_20261030/generated/bc_21.png",
+  "palette_reference": "E:/stacklands/textures/world/bai_chuan/acceptance_20261030/palette_reference.png",
+  "output": "E:\\stacklands\\textures\\world\\bai_chuan\\acceptance_20261030\\recolored\\bc_21.png",
+  "mode": "built-in image_gen, color-only edit",
+  "visual_review": "Composition broadly retained; geometry not guaranteed pixel-identical; requires shared edge and hydrology checks in assembly."
+}

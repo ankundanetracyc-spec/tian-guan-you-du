@@ -4,6 +4,10 @@
 .topbar{left:48px;right:48px;top:22px;height:80px;border-bottom-color:#9f987b}
 .topbar h1{font-size:44px;letter-spacing:8px;color:#293e34}
 .topbar .sub{color:#6d785f;letter-spacing:3px}
+.inventory-back{display:flex;flex:0 0 54px;width:54px;height:54px;align-items:center;justify-content:center;background:url('../../../textures/ui/gongfa_back_button_v1.png') center/contain no-repeat;color:#293e34;text-decoration:none;font-size:40px;line-height:1;padding-bottom:3px;cursor:pointer}
+.inventory-back:hover{color:#527347;filter:brightness(1.05)}
+.inventory-back:active{transform:translateY(1px)}
+.inventory-back:focus-visible{outline:2px solid #456f60;outline-offset:3px;border-radius:50%}
 .panel{top:124px;bottom:50px;border:12px solid transparent;border-image-source:url('../../../textures/ui/inventory_index_20261029/index_panel_paper.png');border-image-slice:44 fill;border-image-width:18px;background:none}
 .panel:before,.panel:after{display:none}
 .index-panel{left:42px;width:392px;padding:20px 18px}

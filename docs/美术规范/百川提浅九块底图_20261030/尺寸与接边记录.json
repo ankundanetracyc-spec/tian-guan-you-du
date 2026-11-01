@@ -1,0 +1,174 @@
+{
+  "grid": [
+    3,
+    3
+  ],
+  "native_tile_pixels": [
+    1254,
+    1254
+  ],
+  "master_pixels": [
+    3762,
+    3762
+  ],
+  "generated_assets": 9,
+  "upscaled_native_assets": 0,
+  "production_2048_ready": false,
+  "method": "Nine native AI refinements; 6px common composition edge plus 42px smooth transition; native interiors retained.",
+  "reference_edge_detail": "Shared edge bands derive from the 1254 whole-map reference; they do not add native detail.",
+  "checks": [
+    {
+      "axis": 0,
+      "boundary": 1254,
+      "mean_adjacent_rgb_difference": 1.656742867269183
+    },
+    {
+      "axis": 0,
+      "boundary": 2508,
+      "mean_adjacent_rgb_difference": 1.857699805068226
+    },
+    {
+      "axis": 1,
+      "boundary": 1254,
+      "mean_adjacent_rgb_difference": 1.793372319688109
+    },
+    {
+      "axis": 1,
+      "boundary": 2508,
+      "mean_adjacent_rgb_difference": 1.430267588162325
+    }
+  ],
+  "tiles": [
+    {
+      "id": "bc_11",
+      "row": 0,
+      "col": 0,
+      "native_pixels": [
+        1254,
+        1254
+      ],
+      "tile": "tiles/bc_11.png",
+      "generated": "generated/bc_11.png",
+      "shared_reference_edge_pixels": 6,
+      "edge_transition_pixels": 42,
+      "mean_reference_weight": 0.043322590512435144
+    },
+    {
+      "id": "bc_12",
+      "row": 0,
+      "col": 1,
+      "native_pixels": [
+        1254,
+        1254
+      ],
+      "tile": "tiles/bc_12.png",
+      "generated": "generated/bc_12.png",
+      "shared_reference_edge_pixels": 6,
+      "edge_transition_pixels": 42,
+      "mean_reference_weight": 0.06471535646346677
+    },
+    {
+      "id": "bc_13",
+      "row": 0,
+      "col": 2,
+      "native_pixels": [
+        1254,
+        1254
+      ],
+      "tile": "tiles/bc_13.png",
+      "generated": "generated/bc_13.png",
+      "shared_reference_edge_pixels": 6,
+      "edge_transition_pixels": 42,
+      "mean_reference_weight": 0.043322590512435144
+    },
+    {
+      "id": "bc_21",
+      "row": 1,
+      "col": 0,
+      "native_pixels": [
+        1254,
+        1254
+      ],
+      "tile": "tiles/bc_21.png",
+      "generated": "generated/bc_21.png",
+      "shared_reference_edge_pixels": 6,
+      "edge_transition_pixels": 42,
+      "mean_reference_weight": 0.06471535646346677
+    },
+    {
+      "id": "bc_22",
+      "row": 1,
+      "col": 1,
+      "native_pixels": [
+        1254,
+        1254
+      ],
+      "tile": "tiles/bc_22.png",
+      "generated": "generated/bc_22.png",
+      "shared_reference_edge_pixels": 6,
+      "edge_transition_pixels": 42,
+      "mean_reference_weight": 0.0855710638041265
+    },
+    {
+      "id": "bc_23",
+      "row": 1,
+      "col": 2,
+      "native_pixels": [
+        1254,
+        1254
+      ],
+      "tile": "tiles/bc_23.png",
+      "generated": "generated/bc_23.png",
+      "shared_reference_edge_pixels": 6,
+      "edge_transition_pixels": 42,
+      "mean_reference_weight": 0.06471535646346677
+    },
+    {
+      "id": "bc_31",
+      "row": 2,
+      "col": 0,
+      "native_pixels": [
+        1254,
+        1254
+      ],
+      "tile": "tiles/bc_31.png",
+      "generated": "generated/bc_31.png",
+      "shared_reference_edge_pixels": 6,
+      "edge_transition_pixels": 42,
+      "mean_reference_weight": 0.04332259051243514
+    },
+    {
+      "id": "bc_32",
+      "row": 2,
+      "col": 1,
+      "native_pixels": [
+        1254,
+        1254
+      ],
+      "tile": "tiles/bc_32.png",
+      "generated": "generated/bc_32.png",
+      "shared_reference_edge_pixels": 6,
+      "edge_transition_pixels": 42,
+      "mean_reference_weight": 0.06471535646346677
+    },
+    {
+      "id": "bc_33",
+      "row": 2,
+      "col": 2,
+      "native_pixels": [
+        1254,
+        1254
+      ],
+      "tile": "tiles/bc_33.png",
+      "generated": "generated/bc_33.png",
+      "shared_reference_edge_pixels": 6,
+      "edge_transition_pixels": 42,
+      "mean_reference_weight": 0.043322590512435144
+    }
+  ],
+  "limits": [
+    "Native size below requested 2048.",
+    "Seam metrics do not prove visual approval.",
+    "No formal node placement or runtime integration."
+  ]
+}

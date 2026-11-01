@@ -1,0 +1,1452 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Script" path="res://csharp/world/WorldNodeData.cs" id="1_prh2e"]
+[ext_resource type="Script" path="res://csharp/world/WorldSubsceneData.cs" id="2_eesvk"]
+[ext_resource type="Script" path="res://csharp/world/WorldRouteData.cs" id="3_3dsc6"]
+[ext_resource type="Script" path="res://csharp/world/WorldNodeMapData.cs" id="4_px33t"]
+[ext_resource type="Script" path="res://csharp/world/WorldTerritoryData.cs" id="5_22bgi"]
+
+[sub_resource type="Resource" id="Resource_o702y"]
+script = ExtResource("2_eesvk")
+subscene_id = "heguang"
+subscene_name = "和光峰"
+description = "庶务、杂役与宗门供给汇集之处。"
+
+[sub_resource type="Resource" id="Resource_ol4ln"]
+script = ExtResource("2_eesvk")
+subscene_id = "guanfu"
+subscene_name = "观复峰"
+description = "外门、内门弟子日常修持与居住之处。"
+
+[sub_resource type="Resource" id="Resource_w7m2x"]
+script = ExtResource("2_eesvk")
+subscene_id = "zifu"
+subscene_name = "紫府峰"
+description = "真传、长老与宗门中枢议事之地。"
+
+[sub_resource type="Resource" id="Resource_yhqpy"]
+script = ExtResource("2_eesvk")
+subscene_id = "xuanlan"
+subscene_name = "玄览峰"
+description = "藏经、讲法与传承考核所在。"
+
+[sub_resource type="Resource" id="Resource_mem2x"]
+script = ExtResource("2_eesvk")
+subscene_id = "tianwen"
+subscene_name = "天问峰"
+description = "演法、试炼与宗门比试所在。"
+
+[sub_resource type="Resource" id="Resource_ue1iy"]
+script = ExtResource("2_eesvk")
+subscene_id = "tiangong"
+subscene_name = "天工峰"
+description = "丹、器、符、阵诸般技艺的合峰传承之处。"
+
+[sub_resource type="Resource" id="Resource_fy4r3"]
+script = ExtResource("2_eesvk")
+subscene_id = "zhizhong"
+subscene_name = "执中峰"
+description = "戒律、执法与宗内裁断所在。"
+
+[sub_resource type="Resource" id="Resource_13hgu"]
+script = ExtResource("2_eesvk")
+subscene_id = "yaopu"
+subscene_name = "瑶圃峰"
+description = "灵植、灵兽与灵材培育所在。"
+
+[sub_resource type="Resource" id="Resource_tccco"]
+script = ExtResource("1_prh2e")
+node_id = "yuxu_xianzong_core"
+node_name = "玉虚仙宗"
+node_type = 1
+display_level = 1
+territory_id = "yunqu_state"
+map_position = Vector2(828, 2784)
+marker_size = 76.0
+terrain = "玉虚群峰"
+spirit_pressure = 7
+danger_level = 5
+faction_id = "yuxu_xianzong"
+description = "百川中部偏西的仙宗本峰，山道与云台相接，是玉虚仙宗对外通行的总节点。"
+subscenes = Array[ExtResource("2_eesvk")]([SubResource("Resource_o702y"), SubResource("Resource_ol4ln"), SubResource("Resource_w7m2x"), SubResource("Resource_yhqpy"), SubResource("Resource_mem2x"), SubResource("Resource_ue1iy"), SubResource("Resource_fy4r3"), SubResource("Resource_13hgu")])
+
+[sub_resource type="Resource" id="Resource_ajwwg"]
+script = ExtResource("1_prh2e")
+node_id = "xuandu_tianfu_core"
+node_name = "玄都天府"
+node_type = 1
+display_level = 1
+territory_id = "yunqu_state"
+map_position = Vector2(1570, 703)
+marker_size = 76.0
+terrain = "玄都山府"
+spirit_pressure = 7
+danger_level = 5
+faction_id = "xuandu_tianfu"
+description = "百川西北的天府本部，守着关山府通向腹地的旧驿路。"
+
+[sub_resource type="Resource" id="Resource_sqkiv"]
+script = ExtResource("1_prh2e")
+node_id = "wuxiang_shengzong_core"
+node_name = "无相圣宗"
+node_type = 1
+display_level = 1
+territory_id = "yunqu_state"
+map_position = Vector2(3014, 2475)
+marker_size = 76.0
+terrain = "无相水脉"
+spirit_pressure = 8
+danger_level = 6
+faction_id = "wuxiang_shengzong"
+description = "百川东南的圣宗本部，隐在河网与海雾之间，只以幽泉教一线对外通行。"
+
+[sub_resource type="Resource" id="Resource_1hf3r"]
+script = ExtResource("1_prh2e")
+node_id = "taiwei_daogong_core"
+node_name = "太微道宫"
+node_type = 1
+display_level = 2
+territory_id = "yunqu_state"
+map_position = Vector2(1182, 1780)
+marker_size = 76.0
+terrain = "太微台地"
+spirit_pressure = 7
+danger_level = 5
+faction_id = "taiwei_daogong"
+description = "百川东北的道宫本部，沿高地古道与长风护道会相通。"
+
+[sub_resource type="Resource" id="Resource_e516i"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_005"
+node_name = "镇岳观"
+node_type = 1
+display_level = 2
+map_position = Vector2(394, 1652)
+terrain = "镇岳西岭"
+spirit_pressure = 0
+danger_level = 0
+
+[sub_resource type="Resource" id="Resource_nghuj"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_006"
+node_name = "抱朴山"
+node_type = 1
+display_level = 2
+map_position = Vector2(1626, 2388)
+terrain = "片区间过渡地带"
+spirit_pressure = 0
+danger_level = 0
+
+[sub_resource type="Resource" id="Resource_rvfui"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_007"
+node_name = "百药谷"
+node_type = 1
+display_level = 2
+map_position = Vector2(1350, 3656)
+terrain = "百药南林"
+spirit_pressure = 0
+danger_level = 0
+
+[sub_resource type="Resource" id="Resource_ekik6"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_008"
+node_name = "丹鼎宗"
+node_type = 1
+display_level = 2
+map_position = Vector2(2346, 252)
+terrain = "玄都台原"
+spirit_pressure = 0
+danger_level = 0
+
+[sub_resource type="Resource" id="Resource_7k2dt"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_009"
+node_name = "归藏书院"
+node_type = 1
+display_level = 2
+map_position = Vector2(2098, 1468)
+terrain = "归藏盆地"
+spirit_pressure = 0
+danger_level = 0
+
+[sub_resource type="Resource" id="Resource_vhhen"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_010"
+node_name = "沧溟水府"
+node_type = 1
+display_level = 2
+map_position = Vector2(2710, 432)
+terrain = "沧溟河港"
+spirit_pressure = 0
+danger_level = 0
+
+[sub_resource type="Resource" id="Resource_hn64r"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_011"
+node_name = "血河教"
+node_type = 1
+display_level = 2
+map_position = Vector2(2258, 3328)
+terrain = "幽泉深谷"
+spirit_pressure = 0
+danger_level = 0
+
+[sub_resource type="Resource" id="Resource_fyrit"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_012"
+node_name = "蚀日宫"
+node_type = 1
+display_level = 2
+map_position = Vector2(3226, 3432)
+terrain = "幽泉深谷"
+spirit_pressure = 0
+danger_level = 0
+
+[sub_resource type="Resource" id="Resource_6i14r"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_013"
+node_name = "枯骨寺"
+node_type = 1
+display_level = 2
+map_position = Vector2(3274, 1260)
+terrain = "古寺东陵"
+spirit_pressure = 0
+danger_level = 0
+
+[sub_resource type="Resource" id="Resource_y0a21"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_014"
+node_name = "望岫城"
+node_type = 0
+map_position = Vector2(742, 1192)
+terrain = "镇岳西岭"
+spirit_pressure = 0
+danger_level = 0
+description = "山前与盆地之间的城市"
+
+[sub_resource type="Resource" id="Resource_5g41t"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_015"
+node_name = "绛阙城"
+node_type = 0
+map_position = Vector2(2002, 704)
+terrain = "玄都台原"
+spirit_pressure = 0
+danger_level = 0
+description = "丹霞山域外的修士与工坊城市"
+
+[sub_resource type="Resource" id="Resource_00c6n"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_016"
+node_name = "承天城"
+node_type = 0
+map_position = Vector2(1546, 1220)
+terrain = "归藏盆地"
+spirit_pressure = 0
+danger_level = 0
+description = "盆地生活与交易枢纽"
+
+[sub_resource type="Resource" id="Resource_enbiw"]
+script = ExtResource("1_prh2e")
+node_id = "chishui_city"
+node_name = "赤水城"
+node_type = 0
+territory_id = "yunqu_state"
+map_position = Vector2(874, 1976)
+marker_size = 60.0
+terrain = "内陆盆地"
+spirit_pressure = 2
+danger_level = 2
+faction_id = "xuandu_chishui_city"
+description = "玄都天府辖下的内陆城邦，连接矿带、农产和西部古驿。"
+
+[sub_resource type="Resource" id="Resource_4agw7"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_018"
+node_name = "镇海城"
+node_type = 0
+map_position = Vector2(3450, 268)
+terrain = "沧溟河港"
+spirit_pressure = 0
+danger_level = 0
+description = "河港与近海陆岸主要城市"
+
+[sub_resource type="Resource" id="Resource_6dbff"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_019"
+node_name = "临渊城"
+node_type = 0
+map_position = Vector2(2622, 1072)
+terrain = "片区间过渡地带"
+spirit_pressure = 0
+danger_level = 0
+description = "河港向内陆过渡的水岸城市"
+
+[sub_resource type="Resource" id="Resource_afjxs"]
+script = ExtResource("1_prh2e")
+node_id = "chunshui_prefecture"
+node_name = "春水府"
+node_type = 0
+territory_id = "yunqu_state"
+map_position = Vector2(1886, 2004)
+marker_size = 58.0
+terrain = "湖泽与灌渠"
+spirit_pressure = 3
+danger_level = 2
+faction_id = "taiwei_chunshui_prefecture"
+description = "太微道宫辖下的水府，掌水网、灌渠和中部河谷的水患调度。"
+
+[sub_resource type="Resource" id="Resource_376p3"]
+script = ExtResource("2_eesvk")
+subscene_id = "market"
+subscene_name = "坊市"
+description = "商货与散修消息汇集之处。"
+
+[sub_resource type="Resource" id="Resource_ckunq"]
+script = ExtResource("2_eesvk")
+subscene_id = "notice_hall"
+subscene_name = "告示所"
+description = "镇中路况与委托信息的汇集处。"
+
+[sub_resource type="Resource" id="Resource_mrx5b"]
+script = ExtResource("2_eesvk")
+subscene_id = "bookshop"
+subscene_name = "书坊"
+description = "天机阁外围书坊的暂驻处。"
+
+[sub_resource type="Resource" id="Resource_bhri5"]
+script = ExtResource("2_eesvk")
+subscene_id = "inn"
+subscene_name = "客栈"
+description = "行人与散修的歇脚处。"
+
+[sub_resource type="Resource" id="Resource_aav2t"]
+script = ExtResource("1_prh2e")
+node_id = "white_stone_town"
+node_name = "白石城"
+node_type = 0
+territory_id = "yunqu_state"
+map_position = Vector2(986, 2452)
+marker_size = 62.0
+terrain = "河谷平原"
+spirit_pressure = 2
+danger_level = 2
+population = 500
+description = "百川东南近域的商路枢纽。坊市、客栈与告示所收拢了南来北往的行人消息。"
+subscenes = Array[ExtResource("2_eesvk")]([SubResource("Resource_376p3"), SubResource("Resource_ckunq"), SubResource("Resource_mrx5b"), SubResource("Resource_bhri5")])
+
+[sub_resource type="Resource" id="Resource_daktt"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_022"
+node_name = "溪云城"
+node_type = 0
+map_position = Vector2(1938, 2844)
+terrain = "片区间过渡地带"
+spirit_pressure = 0
+danger_level = 0
+description = "另一段河谷的城市与行旅联系"
+
+[sub_resource type="Resource" id="Resource_vxk3y"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_023"
+node_name = "青萝城"
+node_type = 0
+map_position = Vector2(1126, 3320)
+terrain = "百药南林"
+spirit_pressure = 0
+danger_level = 0
+description = "林谷外缘的修士与居民城市"
+
+[sub_resource type="Resource" id="Resource_g8web"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_024"
+node_name = "暮烟城"
+node_type = 0
+map_position = Vector2(2630, 3196)
+terrain = "幽泉深谷"
+spirit_pressure = 0
+danger_level = 0
+description = "下游跨片区城市"
+
+[sub_resource type="Resource" id="Resource_0war4"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_025"
+node_name = "归寂城"
+node_type = 0
+map_position = Vector2(3282, 1528)
+terrain = "古寺东陵"
+spirit_pressure = 0
+danger_level = 0
+description = "古寺与城外遗迹之间的正常居民城市"
+
+[sub_resource type="Resource" id="Resource_jwvwv"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_026"
+node_name = "通济城"
+node_type = 0
+map_position = Vector2(2594, 1760)
+terrain = "涵虚水乡"
+spirit_pressure = 0
+danger_level = 0
+description = "中央河谷开放城市，不属于仙盟领地"
+
+[sub_resource type="Resource" id="Resource_hbu0p"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_027"
+node_name = "松风镇"
+map_position = Vector2(418, 1008)
+terrain = "镇岳西岭"
+spirit_pressure = 0
+danger_level = 0
+description = "山前镇，沿用望岫城城约"
+
+[sub_resource type="Resource" id="Resource_j6spt"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_028"
+node_name = "玉泉镇"
+map_position = Vector2(1434, 1500)
+terrain = "归藏盆地"
+spirit_pressure = 0
+danger_level = 0
+description = "盆地泉水镇"
+
+[sub_resource type="Resource" id="Resource_8kjpm"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_029"
+node_name = "临皋镇"
+map_position = Vector2(542, 1884)
+terrain = "片区间过渡地带"
+spirit_pressure = 0
+danger_level = 0
+description = "古道与河谷往来镇"
+
+[sub_resource type="Resource" id="Resource_8spub"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_030"
+node_name = "听风镇"
+map_position = Vector2(3002, 156)
+terrain = "沧溟河港"
+spirit_pressure = 0
+danger_level = 0
+description = "高地行旅镇，驻镇人员常驻，不随山门位置移动"
+
+[sub_resource type="Resource" id="Resource_6h5xl"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_031"
+node_name = "烟柳镇"
+map_position = Vector2(1966, 2312)
+terrain = "涵虚水乡"
+spirit_pressure = 0
+danger_level = 0
+description = "湖岸镇"
+
+[sub_resource type="Resource" id="Resource_k6vul"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_032"
+node_name = "桑落镇"
+map_position = Vector2(1530, 2104)
+terrain = "涵虚水乡"
+spirit_pressure = 0
+danger_level = 0
+description = "湖盆农业与居民镇"
+
+[sub_resource type="Resource" id="Resource_scsvq"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_033"
+node_name = "荷汀镇"
+map_position = Vector2(2134, 1808)
+terrain = "涵虚水乡"
+spirit_pressure = 0
+danger_level = 0
+description = "湿地边缘镇"
+
+[sub_resource type="Resource" id="Resource_drso8"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_034"
+node_name = "岚溪镇"
+map_position = Vector2(618, 2228)
+terrain = "镇岳西岭"
+spirit_pressure = 0
+danger_level = 0
+description = "山麓镇，镇岳观可护持当地道场但不替代城镇治理"
+
+[sub_resource type="Resource" id="Resource_ff0u8"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_035"
+node_name = "望岚镇"
+map_position = Vector2(1602, 2984)
+terrain = "百药南林"
+spirit_pressure = 0
+danger_level = 0
+description = "河谷外围镇"
+
+[sub_resource type="Resource" id="Resource_1qtok"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_036"
+node_name = "雁回镇"
+map_position = Vector2(3058, 3180)
+terrain = "幽泉深谷"
+spirit_pressure = 0
+danger_level = 0
+description = "旧盐地外缘镇"
+
+[sub_resource type="Resource" id="Resource_dvdjv"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_037"
+node_name = "槐安镇"
+map_position = Vector2(3310, 2844)
+terrain = "幽泉深谷"
+spirit_pressure = 0
+danger_level = 0
+description = "下游居民镇"
+
+[sub_resource type="Resource" id="Resource_236ta"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_038"
+node_name = "流丹坊"
+map_position = Vector2(2302, 660)
+terrain = "玄都台原"
+spirit_pressure = 0
+danger_level = 0
+description = "丹鼎宗护持，坊内执事办理日常交易"
+
+[sub_resource type="Resource" id="Resource_7r3d7"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_039"
+node_name = "忘机坊"
+map_position = Vector2(2650, 3604)
+terrain = "幽泉深谷"
+spirit_pressure = 0
+danger_level = 0
+description = "血河教护持的修士坊市，不是独立二级宗门"
+
+[sub_resource type="Resource" id="Resource_pi3d7"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_040"
+node_name = "白蘋里"
+map_position = Vector2(3562, 912)
+terrain = "沧溟河港"
+spirit_pressure = 0
+danger_level = 0
+description = "村落，居民日常事务归本地人员"
+
+[sub_resource type="Resource" id="Resource_tset7"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_041"
+node_name = "桑榆里"
+map_position = Vector2(1434, 2732)
+terrain = "片区间过渡地带"
+spirit_pressure = 0
+danger_level = 0
+description = "村落，居民日常事务归本地人员"
+
+[sub_resource type="Resource" id="Resource_vw1ds"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_042"
+node_name = "采薇里"
+map_position = Vector2(874, 3572)
+terrain = "百药南林"
+spirit_pressure = 0
+danger_level = 0
+description = "村落，保留药谷见闻与地方关系"
+
+[sub_resource type="Resource" id="Resource_5t281"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_043"
+node_name = "澜浦渡"
+map_position = Vector2(3590, 548)
+terrain = "沧溟河港"
+spirit_pressure = 0
+danger_level = 0
+description = "港务随镇海城城约，资源产权不随轮值自动变化"
+
+[sub_resource type="Resource" id="Resource_6vvke"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_044"
+node_name = "问津渡"
+map_position = Vector2(2586, 2048)
+terrain = "涵虚水乡"
+spirit_pressure = 0
+danger_level = 0
+description = "自治城市的渡口，保留独立物理地点"
+
+[sub_resource type="Resource" id="Resource_kdxd2"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_045"
+node_name = "朔雪岭"
+node_type = 7
+map_position = Vector2(182, 716)
+terrain = "镇岳西岭"
+spirit_pressure = 0
+danger_level = 0
+description = "雪线山口与边地探索"
+
+[sub_resource type="Resource" id="Resource_3u73w"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_046"
+node_name = "天门峡"
+node_type = 7
+map_position = Vector2(814, 1488)
+terrain = "归藏盆地"
+spirit_pressure = 0
+danger_level = 0
+description = "峡谷与山口两侧探索"
+
+[sub_resource type="Resource" id="Resource_arcje"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_047"
+node_name = "望辰台"
+node_type = 7
+map_position = Vector2(90, 1416)
+terrain = "镇岳西岭"
+spirit_pressure = 0
+danger_level = 0
+description = "山巅古台与残存的观象建筑"
+
+[sub_resource type="Resource" id="Resource_e6uli"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_048"
+node_name = "眠龙岗"
+node_type = 7
+map_position = Vector2(962, 784)
+terrain = "归藏盆地"
+spirit_pressure = 0
+danger_level = 0
+description = "形如卧龙的连绵山岗与山野踪迹；名称不预设真龙内容"
+
+[sub_resource type="Resource" id="Resource_4hr1v"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_049"
+node_name = "朱明谷"
+node_type = 7
+map_position = Vector2(1380, 210)
+terrain = "玄都台原"
+spirit_pressure = 0
+danger_level = 0
+description = "红岩谷地与矿区外围"
+
+[sub_resource type="Resource" id="Resource_ppl8g"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_050"
+node_name = "地火窟"
+node_type = 7
+map_position = Vector2(1970, 320)
+terrain = "玄都台原"
+spirit_pressure = 0
+danger_level = 0
+description = "废弃矿窟与旧炉遗址"
+
+[sub_resource type="Resource" id="Resource_6y2m5"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_051"
+node_name = "赤霄石林"
+node_type = 7
+map_position = Vector2(1378, 912)
+terrain = "玄都台原"
+spirit_pressure = 0
+danger_level = 0
+description = "炉场外围石林与遗留痕迹"
+
+[sub_resource type="Resource" id="Resource_41r4f"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_052"
+node_name = "石雾原"
+node_type = 7
+map_position = Vector2(1714, 1444)
+terrain = "涵虚水乡"
+spirit_pressure = 0
+danger_level = 0
+description = "盆地边缘的开阔荒野"
+
+[sub_resource type="Resource" id="Resource_w8ec5"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_053"
+node_name = "潜龙原"
+node_type = 7
+map_position = Vector2(1798, 1192)
+terrain = "归藏盆地"
+spirit_pressure = 0
+danger_level = 0
+description = "低洼盆地与荒村旧址"
+
+[sub_resource type="Resource" id="Resource_q6lt1"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_054"
+node_name = "潮生泽"
+node_type = 7
+map_position = Vector2(3254, 100)
+terrain = "沧溟河港"
+spirit_pressure = 0
+danger_level = 0
+description = "潮湿泽地与岸边探索"
+
+[sub_resource type="Resource" id="Resource_ayaiw"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_055"
+node_name = "沧溟滩"
+node_type = 7
+map_position = Vector2(3430, 688)
+terrain = "沧溟河港"
+spirit_pressure = 0
+danger_level = 0
+description = "近海陆岸与河口地貌"
+
+[sub_resource type="Resource" id="Resource_ga0lf"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_056"
+node_name = "沉舟湾"
+node_type = 7
+map_position = Vector2(3134, 996)
+terrain = "沧溟河港"
+spirit_pressure = 0
+danger_level = 0
+description = "废弃港作与仓栈遗址"
+
+[sub_resource type="Resource" id="Resource_j2imo"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_057"
+node_name = "镇星台"
+node_type = 7
+map_position = Vector2(2050, 100)
+terrain = "玄都台原"
+spirit_pressure = 0
+danger_level = 0
+description = "寒山石台与高地探索"
+
+[sub_resource type="Resource" id="Resource_tgcy6"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_058"
+node_name = "回风峡"
+node_type = 7
+map_position = Vector2(2778, 656)
+terrain = "沧溟河港"
+spirit_pressure = 0
+danger_level = 0
+description = "岩峡与行旅险地"
+
+[sub_resource type="Resource" id="Resource_7bh7p"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_059"
+node_name = "绝仙谷"
+node_type = 7
+map_position = Vector2(2554, 268)
+terrain = "玄都台原"
+spirit_pressure = 0
+danger_level = 0
+description = "幽深支谷与旧迹探索"
+
+[sub_resource type="Resource" id="Resource_xqsid"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_060"
+node_name = "凌霄故墟"
+node_type = 7
+map_position = Vector2(2722, 100)
+terrain = "沧溟河港"
+spirit_pressure = 0
+danger_level = 0
+description = "高地古老道场的废墟"
+
+[sub_resource type="Resource" id="Resource_3kf7k"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_061"
+node_name = "回澜滩"
+node_type = 7
+map_position = Vector2(1518, 1700)
+terrain = "涵虚水乡"
+spirit_pressure = 0
+danger_level = 0
+description = "河弯滩地与岸边探索"
+
+[sub_resource type="Resource" id="Resource_6luxk"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_062"
+node_name = "涵虚泽"
+node_type = 7
+map_position = Vector2(1798, 1764)
+terrain = "涵虚水乡"
+spirit_pressure = 0
+danger_level = 0
+description = "云雾湖泽与岸边探索，渡水方式另议"
+
+[sub_resource type="Resource" id="Resource_544by"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_063"
+node_name = "蒹葭浦"
+node_type = 7
+map_position = Vector2(2162, 2172)
+terrain = "涵虚水乡"
+spirit_pressure = 0
+danger_level = 0
+description = "芦泽边缘与分汊水岸"
+
+[sub_resource type="Resource" id="Resource_tl5io"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_064"
+node_name = "浮翠岭"
+node_type = 7
+map_position = Vector2(90, 1696)
+terrain = "镇岳西岭"
+spirit_pressure = 0
+danger_level = 0
+description = "山麓缓坡与林间探索"
+
+[sub_resource type="Resource" id="Resource_132l4"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_065"
+node_name = "千仞沟"
+node_type = 7
+map_position = Vector2(134, 2196)
+terrain = "镇岳西岭"
+spirit_pressure = 0
+danger_level = 0
+description = "松林支谷与修行旧迹"
+
+[sub_resource type="Resource" id="Resource_xu804"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_066"
+node_name = "问道崖"
+node_type = 7
+map_position = Vector2(90, 2452)
+terrain = "镇岳西岭"
+spirit_pressure = 0
+danger_level = 0
+description = "残碑与山崖遗迹"
+
+[sub_resource type="Resource" id="Resource_b55gf"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_067"
+node_name = "芙蓉原"
+node_type = 7
+map_position = Vector2(1126, 2648)
+terrain = "玉虚叠嶂"
+spirit_pressure = 0
+danger_level = 0
+description = "生活圈外缘的开阔原野"
+
+[sub_resource type="Resource" id="Resource_eoaa7"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_068"
+node_name = "浣纱涧"
+node_type = 7
+map_position = Vector2(1826, 3064)
+terrain = "片区间过渡地带"
+spirit_pressure = 0
+danger_level = 0
+description = "溪流两侧的近域野外"
+
+[sub_resource type="Resource" id="Resource_gcbuq"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_069"
+node_name = "藏真洞天"
+node_type = 7
+map_position = Vector2(1378, 3096)
+terrain = "百药南林"
+spirit_pressure = 0
+danger_level = 0
+description = "山麓古窟与遗迹探索"
+
+[sub_resource type="Resource" id="Resource_ft06h"]
+script = ExtResource("2_eesvk")
+subscene_id = "forest_edge"
+subscene_name = "林缘"
+description = "东林地最常有人活动的边缘。"
+
+[sub_resource type="Resource" id="Resource_4jaku"]
+script = ExtResource("1_prh2e")
+node_id = "east_woods"
+node_name = "东林地"
+node_type = 7
+territory_id = "yunqu_state"
+map_position = Vector2(2302, 1976)
+marker_size = 48.0
+terrain = "林地"
+spirit_pressure = 4
+danger_level = 4
+faction_id = "eastwood_hunters"
+description = "广阔林地的入口。镇妖会、采药修士与巡山弟子共守林缘，深入之后妖气渐重，风险会逐渐上升。"
+subscenes = Array[ExtResource("2_eesvk")]([SubResource("Resource_ft06h")])
+
+[sub_resource type="Resource" id="Resource_2cvb5"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_071"
+node_name = "灵草谷"
+node_type = 7
+map_position = Vector2(2162, 2788)
+terrain = "片区间过渡地带"
+spirit_pressure = 0
+danger_level = 0
+description = "已有药谷；拟纳入林谷联系带，辖属待审"
+
+[sub_resource type="Resource" id="Resource_2viff"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_072"
+node_name = "鹿鸣林"
+node_type = 7
+map_position = Vector2(1518, 3488)
+terrain = "百药南林"
+spirit_pressure = 0
+danger_level = 0
+description = "疏林与兽踪探索"
+
+[sub_resource type="Resource" id="Resource_siva4"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_073"
+node_name = "雷泽"
+node_type = 7
+map_position = Vector2(2806, 1640)
+terrain = "古寺东陵"
+spirit_pressure = 0
+danger_level = 0
+description = "深林低地与湿地探索"
+
+[sub_resource type="Resource" id="Resource_q0cof"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_074"
+node_name = "落星墟"
+node_type = 7
+map_position = Vector2(2498, 2760)
+terrain = "幽泉深谷"
+spirit_pressure = 0
+danger_level = 0
+description = "林中旧建筑遗址"
+
+[sub_resource type="Resource" id="Resource_otac3"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_075"
+node_name = "黑水泽"
+node_type = 7
+map_position = Vector2(2210, 3672)
+terrain = "幽泉深谷"
+spirit_pressure = 0
+danger_level = 0
+description = "支流水泽与岸边野外"
+
+[sub_resource type="Resource" id="Resource_86duq"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_076"
+node_name = "九幽涧"
+node_type = 7
+map_position = Vector2(2880, 3640)
+terrain = "幽泉深谷"
+spirit_pressure = 0
+danger_level = 0
+description = "地下水脉与洞窟区域"
+
+[sub_resource type="Resource" id="Resource_071y0"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_077"
+node_name = "沉璧渊"
+node_type = 7
+map_position = Vector2(2498, 3448)
+terrain = "幽泉深谷"
+spirit_pressure = 0
+danger_level = 0
+description = "清水深潭与两岸石壁；水下行动另议"
+
+[sub_resource type="Resource" id="Resource_uj31b"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_078"
+node_name = "无生谷"
+node_type = 7
+map_position = Vector2(2750, 2956)
+terrain = "幽泉深谷"
+spirit_pressure = 0
+danger_level = 0
+description = "干涸泉脉与谷地遗存"
+
+[sub_resource type="Resource" id="Resource_sbmdc"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_079"
+node_name = "蚀月原"
+node_type = 7
+map_position = Vector2(3170, 2256)
+terrain = "片区间过渡地带"
+spirit_pressure = 0
+danger_level = 0
+description = "旧盐泽边缘的荒地"
+
+[sub_resource type="Resource" id="Resource_ae71h"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_080"
+node_name = "疏影潭"
+node_type = 7
+map_position = Vector2(3130, 2792)
+terrain = "片区间过渡地带"
+spirit_pressure = 0
+danger_level = 0
+description = "隐蔽河湾与旧渡遗存"
+
+[sub_resource type="Resource" id="Resource_d65l8"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_081"
+node_name = "埋骨原"
+node_type = 7
+map_position = Vector2(3506, 1752)
+terrain = "古寺东陵"
+spirit_pressure = 0
+danger_level = 0
+description = "旧战场外围的荒原"
+
+[sub_resource type="Resource" id="Resource_tg2cw"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_082"
+node_name = "玄荒战墟"
+node_type = 7
+map_position = Vector2(3310, 1892)
+terrain = "古寺东陵"
+spirit_pressure = 0
+danger_level = 0
+description = "有明确历史身份的战场遗址"
+
+[sub_resource type="Resource" id="Resource_swmb8"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_083"
+node_name = "寂照林"
+node_type = 7
+map_position = Vector2(3562, 1332)
+terrain = "古寺东陵"
+spirit_pressure = 0
+danger_level = 0
+description = "丘陵林地与林间旧迹"
+
+[sub_resource type="Resource" id="Resource_2b0a1"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_084"
+node_name = "无名陵"
+node_type = 7
+map_position = Vector2(3086, 1668)
+terrain = "古寺东陵"
+spirit_pressure = 0
+danger_level = 0
+description = "残陵与碑谷遗址"
+
+[sub_resource type="Resource" id="Resource_mf75i"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_085"
+node_name = "天碑原"
+node_type = 7
+map_position = Vector2(2498, 1444)
+terrain = "涵虚水乡"
+spirit_pressure = 0
+danger_level = 0
+description = "碑群与历史线索"
+
+[sub_resource type="Resource" id="Resource_203nr"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_086"
+node_name = "镜月泽"
+node_type = 7
+map_position = Vector2(2790, 2164)
+terrain = "涵虚水乡"
+spirit_pressure = 0
+danger_level = 0
+description = "湖泽与月影地貌"
+
+[sub_resource type="Resource" id="Resource_xh665"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_087"
+node_name = "碎星滩"
+node_type = 7
+map_position = Vector2(2158, 2428)
+terrain = "涵虚水乡"
+spirit_pressure = 0
+danger_level = 0
+description = "河谷滩地"
+
+[sub_resource type="Resource" id="Resource_fmnya"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_088"
+node_name = "沉锋谷"
+node_type = 7
+map_position = Vector2(874, 324)
+terrain = "玄都台原"
+spirit_pressure = 0
+danger_level = 0
+description = "知名产地候选；归属、成员便利和宗门供给见资源主案，非自动领奖点。"
+
+[sub_resource type="Resource" id="Resource_2ne2k"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_089"
+node_name = "丹穴山"
+node_type = 7
+map_position = Vector2(2078, 912)
+terrain = "玄都台原"
+spirit_pressure = 0
+danger_level = 0
+description = "知名产地候选；归属、成员便利和宗门供给见资源主案，非自动领奖点。"
+
+[sub_resource type="Resource" id="Resource_soet6"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_090"
+node_name = "天籁长峡"
+node_type = 7
+map_position = Vector2(1062, 1252)
+terrain = "归藏盆地"
+spirit_pressure = 0
+danger_level = 0
+description = "知名产地候选；归属、成员便利和宗门供给见资源主案，非自动领奖点。"
+
+[sub_resource type="Resource" id="Resource_s48mh"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_091"
+node_name = "砺青崖"
+node_type = 7
+map_position = Vector2(2266, 1016)
+terrain = "归藏盆地"
+spirit_pressure = 0
+danger_level = 0
+description = "知名产地候选；归属、成员便利和宗门供给见资源主案，非自动领奖点。"
+
+[sub_resource type="Resource" id="Resource_1wxp8"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_092"
+node_name = "含章窟"
+node_type = 7
+map_position = Vector2(2066, 1156)
+terrain = "归藏盆地"
+spirit_pressure = 0
+danger_level = 0
+description = "知名产地候选；归属、成员便利和宗门供给见资源主案，非自动领奖点。"
+
+[sub_resource type="Resource" id="Resource_egnj0"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_093"
+node_name = "蕴辉岩"
+node_type = 7
+map_position = Vector2(2838, 3452)
+terrain = "幽泉深谷"
+spirit_pressure = 0
+danger_level = 0
+description = "知名产地候选；归属、成员便利和宗门供给见资源主案，非自动领奖点。"
+
+[sub_resource type="Resource" id="Resource_jioyk"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_094"
+node_name = "长生坞"
+node_type = 7
+map_position = Vector2(1210, 2396)
+terrain = "玉虚叠嶂"
+spirit_pressure = 0
+danger_level = 0
+description = "知名产地候选；归属、成员便利和宗门供给见资源主案，非自动领奖点。"
+
+[sub_resource type="Resource" id="Resource_5nkq8"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_095"
+node_name = "万毒谷"
+node_type = 7
+map_position = Vector2(1098, 3656)
+terrain = "百药南林"
+spirit_pressure = 0
+danger_level = 0
+description = "知名产地候选；归属、成员便利和宗门供给见资源主案，非自动领奖点。"
+
+[sub_resource type="Resource" id="Resource_611dv"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_096"
+node_name = "采露坪"
+node_type = 7
+map_position = Vector2(150, 1956)
+terrain = "镇岳西岭"
+spirit_pressure = 0
+danger_level = 0
+description = "知名产地候选；归属、成员便利和宗门供给见资源主案，非自动领奖点。"
+
+[sub_resource type="Resource" id="Resource_6bgb5"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_097"
+node_name = "玄霜坞"
+node_type = 7
+map_position = Vector2(902, 1724)
+terrain = "涵虚水乡"
+spirit_pressure = 0
+danger_level = 0
+description = "知名产地候选；归属、成员便利和宗门供给见资源主案，非自动领奖点。"
+
+[sub_resource type="Resource" id="Resource_i4bwe"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_098"
+node_name = "盘龙涧"
+node_type = 7
+map_position = Vector2(1694, 3616)
+terrain = "百药南林"
+spirit_pressure = 0
+danger_level = 0
+description = "知名产地候选；归属、成员便利和宗门供给见资源主案，非自动领奖点。"
+
+[sub_resource type="Resource" id="Resource_tuuwx"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_099"
+node_name = "不老林"
+node_type = 7
+map_position = Vector2(1938, 3600)
+terrain = "百药南林"
+spirit_pressure = 0
+danger_level = 0
+description = "知名产地候选；归属、成员便利和宗门供给见资源主案，非自动领奖点。"
+
+[sub_resource type="Resource" id="Resource_ctxoq"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_100"
+node_name = "松露台"
+node_type = 7
+map_position = Vector2(90, 1080)
+terrain = "镇岳西岭"
+spirit_pressure = 0
+danger_level = 0
+description = "知名产地候选；归属、成员便利和宗门供给见资源主案，非自动领奖点。"
+
+[sub_resource type="Resource" id="Resource_04otg"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_101"
+node_name = "濯缨泉"
+node_type = 7
+map_position = Vector2(1770, 2620)
+terrain = "片区间过渡地带"
+spirit_pressure = 0
+danger_level = 0
+description = "知名产地候选；归属、成员便利和宗门供给见资源主案，非自动领奖点。"
+
+[sub_resource type="Resource" id="Resource_m5ebm"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_102"
+node_name = "鸣玉溪"
+node_type = 7
+map_position = Vector2(2814, 972)
+terrain = "片区间过渡地带"
+spirit_pressure = 0
+danger_level = 0
+description = "知名产地候选；归属、成员便利和宗门供给见资源主案，非自动领奖点。"
+
+[sub_resource type="Resource" id="Resource_7d7fh"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_103"
+node_name = "紫泥湾"
+node_type = 7
+map_position = Vector2(466, 3544)
+terrain = "百药南林"
+spirit_pressure = 0
+danger_level = 0
+description = "知名产地候选；归属、成员便利和宗门供给见资源主案，非自动领奖点。"
+
+[sub_resource type="Resource" id="Resource_50ndi"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_104"
+node_name = "凝素泽"
+node_type = 7
+map_position = Vector2(3450, 3292)
+terrain = "幽泉深谷"
+spirit_pressure = 0
+danger_level = 0
+description = "知名产地候选；归属、成员便利和宗门供给见资源主案，非自动领奖点。"
+
+[sub_resource type="Resource" id="Resource_fkris"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_105"
+node_name = "藏蜕林"
+node_type = 7
+map_position = Vector2(3394, 1080)
+terrain = "古寺东陵"
+spirit_pressure = 0
+danger_level = 0
+description = "知名产地候选；归属、成员便利和宗门供给见资源主案，非自动领奖点。"
+
+[sub_resource type="Resource" id="Resource_h5cqv"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_106"
+node_name = "太和城"
+node_type = 0
+map_position = Vector2(230, 2708)
+terrain = "玉虚叠嶂"
+spirit_pressure = 0
+danger_level = 0
+description = "玉虚仙宗山门外的独立城市，承接来客、居民、交易与地方生活"
+
+[sub_resource type="Resource" id="Resource_pqu0a"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_107"
+node_name = "洗心镇"
+map_position = Vector2(366, 3072)
+terrain = "玉虚叠嶂"
+spirit_pressure = 0
+danger_level = 0
+description = "山门近域镇，沿太和城城约，日常人员常驻"
+
+[sub_resource type="Resource" id="Resource_w7pcv"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_108"
+node_name = "松月坊"
+map_position = Vector2(566, 2600)
+terrain = "玉虚叠嶂"
+spirit_pressure = 0
+danger_level = 0
+description = "城约下的修士坊市，玉虚仙宗护持，不另算宗门"
+
+[sub_resource type="Resource" id="Resource_saiew"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_109"
+node_name = "坐忘谷"
+node_type = 7
+map_position = Vector2(90, 3656)
+terrain = "玉虚叠嶂"
+spirit_pressure = 0
+danger_level = 0
+description = "山麓静谷与修行旧迹"
+
+[sub_resource type="Resource" id="Resource_78la1"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_110"
+node_name = "清籁涧"
+node_type = 7
+map_position = Vector2(682, 3172)
+terrain = "玉虚叠嶂"
+spirit_pressure = 0
+danger_level = 0
+description = "溪涧、浅林与近域探索"
+
+[sub_resource type="Resource" id="Resource_3hxxc"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_111"
+node_name = "太素原"
+node_type = 7
+map_position = Vector2(146, 2984)
+terrain = "玉虚叠嶂"
+spirit_pressure = 0
+danger_level = 0
+description = "知名产地候选；归属、成员便利和宗门供给见资源主案，非自动领奖点。"
+
+[sub_resource type="Resource" id="Resource_rnvvj"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_112"
+node_name = "金阙城"
+node_type = 0
+map_position = Vector2(1210, 280)
+terrain = "玄都台原"
+spirit_pressure = 0
+danger_level = 0
+description = "玄都天府山门外的独立城市，承接来客、居民、交易与地方生活"
+
+[sub_resource type="Resource" id="Resource_bersj"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_113"
+node_name = "含光镇"
+map_position = Vector2(1546, 156)
+terrain = "玄都台原"
+spirit_pressure = 0
+danger_level = 0
+description = "山门近域镇，沿金阙城城约，日常人员常驻"
+
+[sub_resource type="Resource" id="Resource_t4rrk"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_114"
+node_name = "琼华坊"
+map_position = Vector2(1714, 408)
+terrain = "玄都台原"
+spirit_pressure = 0
+danger_level = 0
+description = "城约下的修士坊市，玄都天府护持，不另算宗门"
+
+[sub_resource type="Resource" id="Resource_txpg1"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_115"
+node_name = "丹丘原"
+node_type = 7
+map_position = Vector2(678, 184)
+terrain = "玄都台原"
+spirit_pressure = 0
+danger_level = 0
+description = "山前台地与古老聚落遗迹"
+
+[sub_resource type="Resource" id="Resource_g2ikq"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_116"
+node_name = "垂虹岭"
+node_type = 7
+map_position = Vector2(1294, 628)
+terrain = "玄都台原"
+spirit_pressure = 0
+danger_level = 0
+description = "山脊、石林与山前往来"
+
+[sub_resource type="Resource" id="Resource_qa346"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_117"
+node_name = "断岳山"
+node_type = 7
+map_position = Vector2(1794, 192)
+terrain = "玄都台原"
+spirit_pressure = 0
+danger_level = 0
+description = "知名产地候选；归属、成员便利和宗门供给见资源主案，非自动领奖点。"
+
+[sub_resource type="Resource" id="Resource_5wxm0"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_118"
+node_name = "永夜关"
+node_type = 0
+map_position = Vector2(3366, 2116)
+terrain = "片区间过渡地带"
+spirit_pressure = 0
+danger_level = 0
+description = "无相圣宗山门外的独立城市，承接来客、居民、交易与地方生活"
+
+[sub_resource type="Resource" id="Resource_liy4w"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_119"
+node_name = "听澜镇"
+map_position = Vector2(3394, 2452)
+terrain = "片区间过渡地带"
+spirit_pressure = 0
+danger_level = 0
+description = "山门近域镇，沿永夜关城约，日常人员常驻"
+
+[sub_resource type="Resource" id="Resource_fcosq"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_120"
+node_name = "夜泊坊"
+map_position = Vector2(3086, 2004)
+terrain = "片区间过渡地带"
+spirit_pressure = 0
+danger_level = 0
+description = "城约下的修士坊市，无相圣宗护持，不另算宗门"
+
+[sub_resource type="Resource" id="Resource_piwty"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_121"
+node_name = "葬日谷"
+node_type = 7
+map_position = Vector2(3280, 2610)
+terrain = "片区间过渡地带"
+spirit_pressure = 0
+danger_level = 0
+description = "幽谷与古老道场遗迹"
+
+[sub_resource type="Resource" id="Resource_vfay5"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_122"
+node_name = "晦明原"
+node_type = 7
+map_position = Vector2(3338, 3096)
+terrain = "幽泉深谷"
+spirit_pressure = 0
+danger_level = 0
+description = "台地与下游湿地相接的野外"
+
+[sub_resource type="Resource" id="Resource_a8tqk"]
+script = ExtResource("1_prh2e")
+node_id = "bc_place_123"
+node_name = "黑瘴大泽"
+node_type = 7
+map_position = Vector2(2778, 2564)
+terrain = "片区间过渡地带"
+spirit_pressure = 0
+danger_level = 0
+description = "知名产地候选；归属、成员便利和宗门供给见资源主案，非自动领奖点。"
+
+[resource]
+script = ExtResource("4_px33t")
+map_name = "百川"
+map_size = Vector2(3762, 3762)
+nodes = Array[ExtResource("1_prh2e")]([SubResource("Resource_tccco"), SubResource("Resource_ajwwg"), SubResource("Resource_sqkiv"), SubResource("Resource_1hf3r"), SubResource("Resource_e516i"), SubResource("Resource_nghuj"), SubResource("Resource_rvfui"), SubResource("Resource_ekik6"), SubResource("Resource_7k2dt"), SubResource("Resource_vhhen"), SubResource("Resource_hn64r"), SubResource("Resource_fyrit"), SubResource("Resource_6i14r"), SubResource("Resource_y0a21"), SubResource("Resource_5g41t"), SubResource("Resource_00c6n"), SubResource("Resource_enbiw"), SubResource("Resource_4agw7"), SubResource("Resource_6dbff"), SubResource("Resource_afjxs"), SubResource("Resource_aav2t"), SubResource("Resource_daktt"), SubResource("Resource_vxk3y"), SubResource("Resource_g8web"), SubResource("Resource_0war4"), SubResource("Resource_jwvwv"), SubResource("Resource_hbu0p"), SubResource("Resource_j6spt"), SubResource("Resource_8kjpm"), SubResource("Resource_8spub"), SubResource("Resource_6h5xl"), SubResource("Resource_k6vul"), SubResource("Resource_scsvq"), SubResource("Resource_drso8"), SubResource("Resource_ff0u8"), SubResource("Resource_1qtok"), SubResource("Resource_dvdjv"), SubResource("Resource_236ta"), SubResource("Resource_7r3d7"), SubResource("Resource_pi3d7"), SubResource("Resource_tset7"), SubResource("Resource_vw1ds"), SubResource("Resource_5t281"), SubResource("Resource_6vvke"), SubResource("Resource_kdxd2"), SubResource("Resource_3u73w"), SubResource("Resource_arcje"), SubResource("Resource_e6uli"), SubResource("Resource_4hr1v"), SubResource("Resource_ppl8g"), SubResource("Resource_6y2m5"), SubResource("Resource_41r4f"), SubResource("Resource_w8ec5"), SubResource("Resource_q6lt1"), SubResource("Resource_ayaiw"), SubResource("Resource_ga0lf"), SubResource("Resource_j2imo"), SubResource("Resource_tgcy6"), SubResource("Resource_7bh7p"), SubResource("Resource_xqsid"), SubResource("Resource_3kf7k"), SubResource("Resource_6luxk"), SubResource("Resource_544by"), SubResource("Resource_tl5io"), SubResource("Resource_132l4"), SubResource("Resource_xu804"), SubResource("Resource_b55gf"), SubResource("Resource_eoaa7"), SubResource("Resource_gcbuq"), SubResource("Resource_4jaku"), SubResource("Resource_2cvb5"), SubResource("Resource_2viff"), SubResource("Resource_siva4"), SubResource("Resource_q0cof"), SubResource("Resource_otac3"), SubResource("Resource_86duq"), SubResource("Resource_071y0"), SubResource("Resource_uj31b"), SubResource("Resource_sbmdc"), SubResource("Resource_ae71h"), SubResource("Resource_d65l8"), SubResource("Resource_tg2cw"), SubResource("Resource_swmb8"), SubResource("Resource_2b0a1"), SubResource("Resource_mf75i"), SubResource("Resource_203nr"), SubResource("Resource_xh665"), SubResource("Resource_fmnya"), SubResource("Resource_2ne2k"), SubResource("Resource_soet6"), SubResource("Resource_s48mh"), SubResource("Resource_1wxp8"), SubResource("Resource_egnj0"), SubResource("Resource_jioyk"), SubResource("Resource_5nkq8"), SubResource("Resource_611dv"), SubResource("Resource_6bgb5"), SubResource("Resource_i4bwe"), SubResource("Resource_tuuwx"), SubResource("Resource_ctxoq"), SubResource("Resource_04otg"), SubResource("Resource_m5ebm"), SubResource("Resource_7d7fh"), SubResource("Resource_50ndi"), SubResource("Resource_fkris"), SubResource("Resource_h5cqv"), SubResource("Resource_pqu0a"), SubResource("Resource_w7pcv"), SubResource("Resource_saiew"), SubResource("Resource_78la1"), SubResource("Resource_3hxxc"), SubResource("Resource_rnvvj"), SubResource("Resource_bersj"), SubResource("Resource_t4rrk"), SubResource("Resource_txpg1"), SubResource("Resource_g2ikq"), SubResource("Resource_qa346"), SubResource("Resource_5wxm0"), SubResource("Resource_liy4w"), SubResource("Resource_fcosq"), SubResource("Resource_piwty"), SubResource("Resource_vfay5"), SubResource("Resource_a8tqk")])
+use_catalog = false

@@ -225,18 +225,6 @@ public static class CloudStateNpcCatalog
     public static bool ensure_population(NpcWorldManager manager, WorldNodeMapData mapData)
     {
         if (manager.population_version >= PopulationVersion) return false;
-        var levels = new System.Collections.Generic.Dictionary<string, int>(StringComparer.Ordinal);
-        using (var file = Godot.FileAccess.Open("res://resources/world/bai_chuan/bai_chuan_grid_anchors.json", Godot.FileAccess.ModeFlags.Read))
-        {
-            if (file is null) return false;
-            var json = Json.ParseString(file.GetAsText()).AsGodotDictionary();
-            foreach (var value in json["anchors"].AsGodotArray())
-            {
-                var anchor = value.AsGodotDictionary();
-                var id = anchor["location_node_id"].AsString();
-                if (id.Length > 0) levels[id] = anchor["level"].AsInt32();
-            }
-        }
         var rng = new RandomNumberGenerator();
         rng.Randomize();
         var usedNames = new System.Collections.Generic.HashSet<string>(manager.npcs.Select(n => n.npc_name), StringComparer.Ordinal);
@@ -246,13 +234,12 @@ public static class CloudStateNpcCatalog
         foreach (var node in mapData.get_all_nodes())
         {
             if (node is null || node.node_id == "home_village" || !node.enterable) continue;
-            // Only create world-map population at authored fixed-grid locations.
-            // Generic/legacy wilderness placeholders stay data-only until they receive a real anchor.
-            if (!levels.ContainsKey(node.node_id) || !manager.has_world_grid_anchor(node.node_id)) continue;
+            // Only authored locations in the current node graph can host world population.
+            if (!manager.has_world_grid_anchor(node.node_id)) continue;
             // Include dead and traveling originals: migration never replaces a lost or absent person.
             var existing = manager.npcs.Count(n => !n.is_yuxu_lineage_staff &&
                 (n.origin_node_id == node.node_id || string.IsNullOrWhiteSpace(n.origin_node_id) && n.current_node_id == node.node_id));
-            var amount = Math.Max(0, population_for(node, levels[node.node_id]) - existing);
+            var amount = Math.Max(0, population_for(node, (int)node.display_level) - existing);
             var subscene_ids = unlocked_subscene_ids(node);
             for (var index = 0; index < amount; index++)
             {

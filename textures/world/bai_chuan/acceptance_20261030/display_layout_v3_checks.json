@@ -1,0 +1,24 @@
+{
+  "version": "display_layout_v3_20261031",
+  "counts": {
+    "named": 123,
+    "built": 53,
+    "wild": 70,
+    "transit": 321,
+    "nodes": 444,
+    "displayEdges": 575,
+    "originalEdgeWalks": 498
+  },
+  "connectedComponents": 1,
+  "cycleRank": 132,
+  "forbiddenContactCount": 0,
+  "visualClosePairCount": 0,
+  "unrelatedNodePassCount": 0,
+  "nearNodeMidpassCount": 0,
+  "allSourceEdgeWalksValid": true,
+  "transitPointWaterOverlapCount": 0,
+  "maxTransitShiftPixels": 93.771,
+  "formalPlanSha256": "28fd79f81c136c9e488842add2a69f8fac5a6e59271d1125371fd6553452e6a7",
+  "strictPass": true,
+  "limits": "Display preview graph changed at real existing nodes; formal travel graph, permissions and time costs unchanged. Colour terrain costs are not height or bridge validation."
+}

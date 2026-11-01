@@ -87,7 +87,7 @@ public partial class MainScene
         if (!ReferenceEquals(entity, player)) return "位置未详";
         var location = get_current_profile_location();
         if (string.IsNullOrWhiteSpace(location) || location == "位置未详") location = "百川";
-        return $"{location} · 格位（{_player_world_grid_cell.X}, {_player_world_grid_cell.Y}）";
+        return location;
     }
 
     private static bool is_yuxu_true_disciple(string rank)
@@ -1489,77 +1489,13 @@ public partial class MainScene
 
     private void on_yuxu_exchange_purchase_requested(string itemPath, int requestedCost)
     {
-        if (player?.entity_data is not HumanData human || human.sect_affiliation_id != YuxuSectId)
+        var result = YuxuExchangePurchase.Purchase(player, itemPath, requestedCost, get_yuxu_contribution_timestamp());
+        if (result.Success)
         {
-            resolve_yuxu_exchange_purchase(false, 0, "只有玉虚仙宗成员可以使用善功堂。");
-            return;
+            mark_save_dirty();
+            refresh_yuxu_life_context();
         }
-
-        var item = GD.Load<ItemData>(itemPath);
-        if (item is null || !YuxuSectPrototypeBalance.is_exchangeable_item(item))
-        {
-            resolve_yuxu_exchange_purchase(false, Math.Max(0L, human.get_yuxu_contribution_total()), "这件物品不在善功堂现行目录中，贡献未扣除。");
-            return;
-        }
-
-        var expectedCost = YuxuSectPrototypeBalance.exchange_base_cost(item);
-        if (expectedCost < 0 || expectedCost == 0 && !YuxuSectPrototypeBalance.is_free_equipment_offer(item) || requestedCost != expectedCost)
-        {
-            resolve_yuxu_exchange_purchase(false, Math.Max(0L, human.get_yuxu_contribution_total()), "物品标准价已变化，请重新打开善功堂确认，贡献未扣除。");
-            return;
-        }
-
-        var balance = human.get_yuxu_contribution_total();
-        if (balance < expectedCost)
-        {
-            resolve_yuxu_exchange_purchase(false, Math.Max(0L, balance), $"贡献不足；需要 {expectedCost} 点，当前为 {Math.Max(0L, balance)} 点。");
-            return;
-        }
-
-        ArtifactInstanceData? redeemedArtifact = null;
-        if (item is SectArtifactOfferData artifactOffer)
-        {
-            try { redeemedArtifact = artifactOffer.CreateArtifact(); }
-            catch (Exception error) { resolve_yuxu_exchange_purchase(false, Math.Max(0L, balance), error.Message); return; }
-        }
-        if (player is null || !(redeemedArtifact is not null ? player.add_artifact_to_inventory(redeemedArtifact) : player.add_item_to_inventory(itemPath)))
-        {
-            resolve_yuxu_exchange_purchase(false, Math.Max(0L, balance), "行囊空间不足，物品未兑换，贡献未扣除。");
-            return;
-        }
-
-        if (expectedCost == 0)
-        {
-            mark_save_dirty(); refresh_yuxu_life_context();
-            resolve_yuxu_exchange_purchase(true, Math.Max(0L, balance), $"{item.entity_name} ×1 已放入行囊。本次测试兑换为0贡献，不产生贡献收支流水。");
-            return;
-        }
-
-        var transactionId = $"yuxu:exchange:{Guid.NewGuid():N}";
-        var record = new YuxuSectContributionRecord
-        {
-            record_id = Guid.NewGuid().ToString("N"),
-            source_transaction_id = transactionId,
-            transaction_kind = YuxuSectContributionRecord.KindExchangeSpend,
-            source_title = $"善功堂兑换·{item.entity_name}",
-            occurred_at = get_yuxu_contribution_timestamp(),
-            contribution_delta = -expectedCost,
-            cost_summary = $"支出 {expectedCost} 点贡献；未消耗灵石。",
-            result_summary = $"{item.entity_name} ×1 已放入行囊；累计公事履职贡献不变。"
-        };
-
-        if (!human.record_yuxu_contribution(record))
-        {
-            player.remove_item_from_inventory(itemPath);
-            resolve_yuxu_exchange_purchase(false, Math.Max(0L, balance), "贡献流水未能登记，兑换已撤回且未扣除贡献。");
-            return;
-        }
-
-        mark_save_dirty();
-        refresh_yuxu_life_context();
-        var updatedBalance = Math.Max(0L, human.get_yuxu_contribution_total());
-        var displayName = item.item_category == "秘籍" ? $"《{item.entity_name}》" : item.entity_name;
-        resolve_yuxu_exchange_purchase(true, updatedBalance, $"{displayName} ×1 已放入行囊，扣除 {expectedCost} 点贡献。累计公事履职记录不变。");
+        resolve_yuxu_exchange_purchase(result.Success, result.Balance, result.Message);
     }
 
     private void resolve_yuxu_exchange_purchase(bool success, long balance, string message)
@@ -1691,7 +1627,7 @@ public partial class MainScene
     private void restore_tianwen_practice_location()
     {
         if (!has_open_world_access() || _player_world_node_id != "yuxu_xianzong_core") return;
-        estate?.Hide(); tile_world_map?.Hide();  location_interior?.Hide();
+        estate?.Hide(); _nodeWorldMap?.Hide();  location_interior?.Hide();
         open_faction_overview_if_available(_player_world_node_id);
         GetNodeOrNull<Node>("SceneLayer/YuxuXianzongOverview")?.Call("_on_peak_pressed", "tianwen");
         mark_save_dirty();

@@ -445,7 +445,9 @@ public partial class WorldLocationInteriorPanel : Control
             WorldNodeData.NodeType.Wilderness => "野外",
             _ => "村落",
         };
-        _meta.Text = $"{type_name}　·　地貌：{(string.IsNullOrWhiteSpace(_node.terrain) ? "未详" : _node.terrain)}　·　灵压 {_node.spirit_pressure}　·　危险 {_node.danger_level}";
+        var pressure = _node.spirit_pressure > 0 ? _node.spirit_pressure.ToString() : "未详";
+        var danger = _node.danger_level > 0 ? _node.danger_level.ToString() : "未详";
+        _meta.Text = $"{type_name}　·　地貌：{(string.IsNullOrWhiteSpace(_node.terrain) ? "未详" : _node.terrain)}　·　灵压 {pressure}　·　危险 {danger}";
         _description.Text = string.IsNullOrWhiteSpace(_node.description)
             ? "这里暂时没有更多记载。沿着地点内部的分区行动，可能触发人物、事件或新的线索。"
             : _node.description;

@@ -6,7 +6,7 @@
 script = ExtResource("1")
 definition_id = &"alchemy_tongmai_9_3"
 entity_name = "通脉丹·极效"
-description = "九品通脉丹，丹效极效。丹药按颗计数；瓷瓶仅作外观，同类丹药在行囊合并为一格。"
+description = "九品通脉丹，丹效极效。丹药按颗计数；瓷瓶仅作外观，丹药在行囊逐件占格，同类仅在清册汇总数量。"
 icon_path = "res://textures/items/inventory_density_20261029/pill_container_empty_porcelain.png"
 item_category = "丹药"
 item_subcategory = "九品丹药"

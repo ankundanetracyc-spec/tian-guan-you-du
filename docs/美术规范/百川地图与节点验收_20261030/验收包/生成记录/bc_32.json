@@ -1,0 +1,14 @@
+{
+  "id": "bc_32",
+  "tool": "built-in image_gen",
+  "prompt": "Use case: lighting-weather / color-grade edit.\nIMAGE1 is the EXACT EDIT TARGET, one native 1254-square regional tile of an existing continuous 3x3 game world map. IMAGE2 is ONLY a palette reference, NOT a layout or terrain reference.\nChange ONLY the color grade of IMAGE1 to match IMAGE2's muted warm gray-olive/buff ground, soft sage-gray mountain faces, quiet dark gray-green woods, and subdued blue water. The approved target palette is warmer and deeper than the current pale ivory IMAGE1, but restrained: not saturated yellow, navy or dark brown. Keep the fine illustrated ink texture and local ground-depth washes readable.\nABSOLUTELY LOCK GEOMETRY AND DETAIL: every mountain contour and footprint, tree cluster, river branch, shoreline, lake, island, water endpoint and all four edge crossings must remain at exactly the same positions, shapes and widths as IMAGE1. Do not redraw, add/remove or relocate ANY feature. Do not borrow any geography from IMAGE2; it contains obsolete disconnected waterways that MUST NOT return. Preserve IMAGE1's repaired river continuity. Do not reintroduce flat-topped mesas, buildings, nodes, text, bridges, roads, framing or UI. No zooming, no recropping, no new textures, no contrast exaggeration.\nMost importantly retain the exact border pixels' geographic pattern so this tile can stitch into adjoining tiles. Output the same square map crop with only the requested muted gray-green warm-earth color treatment. No transparency.\nTile identifier bc_32; color-only revision.",
+  "source_generation_path": "E:\\tmp\\CodexData\\generated_images\\01a18c6f-0929-7311-a7bb-70876603f8bf\\exec-57c7fdb6-37b6-4066-83ee-720602946bc4.png",
+  "edit_target": "E:/stacklands/textures/world/bai_chuan/pale_nine_20261030/generated/bc_32.png",
+  "palette_reference": "E:/stacklands/textures/world/bai_chuan/acceptance_20261030/palette_reference.png",
+  "output": "E:\\stacklands\\textures\\world\\bai_chuan\\acceptance_20261030\\recolored\\bc_32.png",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "visual_review": "Color restored to muted warm gray-olive/buff with deeper sage/slate mountains; major terrain, watercourses and coastline appear aligned. Pixel identity and adjoining seams are not guaranteed by image generation; parent should check seams."
+}

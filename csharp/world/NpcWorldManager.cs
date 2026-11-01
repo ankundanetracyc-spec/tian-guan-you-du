@@ -66,6 +66,32 @@ public partial class NpcWorldManager : Node
         EmitSignal(SignalName.world_npcs_changed);
     }
 
+    /// <summary>Attach the reviewed node graph without instantiating a tile map.</summary>
+    public void initialize_node_world_graph()
+    {
+        if (_tile_world_map is not null && GodotObject.IsInstanceValid(_tile_world_map) &&
+            _tile_world_map.HasMethod("get_npc_edge_travel_hours")) return;
+        var script = GD.Load<GDScript>("res://gdscripts/world/BaiChuanNpcNodeGraph.gd");
+        var graph = script?.New().AsGodotObject() as Node;
+        if (graph is null || !graph.Call("initialize").AsBool())
+        {
+            graph?.Free();
+            GD.PushError("无法加载 NPC 百川节点路网");
+            return;
+        }
+        graph.Name = "BaiChuanNpcNodeGraph";
+        AddChild(graph);
+        set_tile_world_map(graph);
+    }
+
+    public Vector2I node_world_cell_for_node_id(string nodeId) =>
+        _tile_world_map?.HasMethod("node_id_to_cell") == true
+            ? _tile_world_map.Call("node_id_to_cell", nodeId).AsVector2I() : new Vector2I(-1, -1);
+
+    public string node_world_node_id_for_cell(Vector2I cell) =>
+        _tile_world_map?.HasMethod("cell_to_node_id") == true
+            ? _tile_world_map.Call("cell_to_node_id", cell).AsString() : "";
+
     public void set_player_data(HumanData? playerData) => _playerData = playerData;
 
     public bool has_world_grid_anchor(string nodeId)
@@ -848,7 +874,7 @@ public partial class NpcWorldManager : Node
                             : !string.IsNullOrWhiteSpace(targetNpc.current_node_id)
                                 ? get_node_name(targetNpc.current_node_id)
                                 : targetNpc.has_world_grid_position
-                                    ? $"世界格（{targetNpc.current_grid_cell.X + 1}，{targetNpc.current_grid_cell.Y + 1}）"
+                                    ? "世界行旅节点"
                                     : "目标位置待核";
                 var isActiveForPlayer = incident.incident_id == activeIncidentId && task.task_id == activeTaskId &&
                     task.status is YuxuSectCaseTaskRecord.StatusAssigned or YuxuSectCaseTaskRecord.StatusObjectiveComplete;
@@ -1016,6 +1042,29 @@ public partial class NpcWorldManager : Node
             var nodeId = npc.is_traveling ? get_location_node_id_at_cell(npc.current_grid_cell) : npc.current_node_id;
             if (string.IsNullOrEmpty(nodeId)) continue;
             counts[nodeId] = counts.ContainsKey(nodeId) ? counts[nodeId].AsInt32() + 1 : 1;
+        }
+        return counts;
+    }
+
+    /// <summary>Counts the same living world NPCs shown by the node roster, keyed by graph node ID.</summary>
+    public Godot.Collections.Dictionary get_node_world_population_counts()
+    {
+        var counts = new Godot.Collections.Dictionary();
+        if (_tile_world_map?.HasMethod("cell_to_node_id") != true) return counts;
+        var locationGraphIds = new System.Collections.Generic.Dictionary<string, string>(StringComparer.Ordinal);
+        foreach (var npc in npcs)
+        {
+            if (npc is null || !npc.is_alive || !npc.has_world_grid_position || !string.IsNullOrEmpty(npc.dungeon_id)) continue;
+            string id;
+            if (npc.is_traveling || string.IsNullOrEmpty(npc.current_node_id))
+                id = node_world_node_id_for_cell(npc.current_grid_cell);
+            else if (!locationGraphIds.TryGetValue(npc.current_node_id, out id!))
+            {
+                id = node_world_node_id_for_cell(get_location_anchor_cell(npc.current_node_id));
+                locationGraphIds[npc.current_node_id] = id;
+            }
+            if (string.IsNullOrEmpty(id)) continue;
+            counts[id] = counts.ContainsKey(id) ? counts[id].AsInt32() + 1 : 1;
         }
         return counts;
     }
@@ -1473,7 +1522,7 @@ public partial class NpcWorldManager : Node
             while (remainingHours > 0.0001 && npc.world_travel_next_cell_index < npc.world_travel_path.Count && guard++ < 40000)
             {
                 var nextCell = npc.world_travel_path[npc.world_travel_next_cell_index];
-                var edgeHours = get_npc_cell_travel_hours(nextCell, npc.dun_speed);
+                var edgeHours = get_npc_cell_travel_hours(npc.current_grid_cell, nextCell, npc.dun_speed);
                 if (!double.IsFinite(edgeHours) || edgeHours <= 0.0) break;
                 var neededHours = Math.Max(0.0, edgeHours - npc.world_travel_cell_progress_hours);
                 if (remainingHours + 0.0001 < neededHours)
@@ -1529,7 +1578,7 @@ public partial class NpcWorldManager : Node
         var subsceneNote = string.IsNullOrWhiteSpace(npc.current_subscene_id)
             ? ""
             : $"，进入 {get_subscene_name(destination, npc.current_subscene_id)}";
-        record(npc, month, "arrive", "抵达", "按遁速沿固定格网完成逐格行旅。", $"抵达 {destination}{subsceneNote}。", 0, "", false, origin, destination, totalDays, 0);
+        record(npc, month, "arrive", "抵达", "按遁速沿节点路线完成行旅。", $"抵达 {destination}{subsceneNote}。", 0, "", false, origin, destination, totalDays, 0);
     }
 
     private double get_remaining_world_travel_hours(WorldNpcData npc)
@@ -1537,7 +1586,7 @@ public partial class NpcWorldManager : Node
         if (_tile_world_map is null || npc.world_travel_path.Count == 0) return 0.0;
         var totalHours = 0.0;
         for (var index = npc.world_travel_next_cell_index; index < npc.world_travel_path.Count; index++)
-            totalHours += get_npc_cell_travel_hours(npc.world_travel_path[index], npc.dun_speed);
+            totalHours += get_npc_cell_travel_hours(index == npc.world_travel_next_cell_index ? npc.current_grid_cell : npc.world_travel_path[index - 1], npc.world_travel_path[index], npc.dun_speed);
         return Math.Max(0.0, totalHours - npc.world_travel_cell_progress_hours);
     }
 
@@ -1609,9 +1658,11 @@ public partial class NpcWorldManager : Node
         return result;
     }
 
-    private double get_npc_cell_travel_hours(Vector2I cell, float dunSpeed)
+    private double get_npc_cell_travel_hours(Vector2I from, Vector2I cell, float dunSpeed)
     {
         if (_tile_world_map is null) return 2400.0 / Math.Max(0.01, dunSpeed);
+        if (_tile_world_map.HasMethod("get_npc_edge_travel_hours"))
+            return _tile_world_map.Call("get_npc_edge_travel_hours", from, cell, dunSpeed).AsDouble();
         if (!_settlementBatch) return _tile_world_map.Call("get_npc_cell_travel_hours", cell, dunSpeed).AsDouble();
         // Cache the exact cell/speed pair so floating-point behavior matches the old bridge.
         if (_settlementTravelHours.TryGetValue((cell, dunSpeed), out var hours)) return hours;
@@ -1800,7 +1851,7 @@ public partial class NpcWorldManager : Node
             var path = get_npc_grid_path(npc.current_grid_cell, destinationCell);
             if (!is_valid_world_grid_cell(npc.current_grid_cell) || path.Count < 2)
             {
-                work(npc, month, rng, "相邻地点在当前固定格网中没有可通行路径，本月改为营生。");
+                work(npc, month, rng, "相邻地点在当前节点路网中没有可通行路径，本月改为营生。");
                 return;
             }
             npc.world_travel_path.Clear();
@@ -1910,11 +1961,14 @@ public partial class NpcWorldManager : Node
         var result = new Array<string>();
         if (_map_data is null) return result;
         if (_tile_world_map is not null && !has_world_grid_anchor(node_id)) return result;
-        foreach (var neighbor_id in _map_data.get_neighbors(node_id))
+        var neighbors = _tile_world_map?.HasMethod("get_npc_location_neighbors") == true
+            ? _tile_world_map.Call("get_npc_location_neighbors", node_id).AsGodotArray<string>()
+            : _map_data.get_neighbors(node_id);
+        foreach (var neighbor_id in neighbors)
         {
             var neighbor = _map_data.get_node(neighbor_id);
             var route = _map_data.get_route_between(node_id, neighbor_id);
-            if (neighbor is null || route is null || !route.unlocked) continue;
+            if (neighbor is null || (_tile_world_map?.HasMethod("get_npc_location_neighbors") != true && (route is null || !route.unlocked))) continue;
             if (neighbor.requires_unlock && !neighbor.unlocked) continue;
             if (_tile_world_map is not null && !has_world_grid_anchor(neighbor_id)) continue;
             if (!result.Contains(neighbor_id)) result.Add(neighbor_id);

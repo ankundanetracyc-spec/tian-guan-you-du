@@ -1,0 +1,128 @@
+{
+  "grid": [
+    3,
+    3
+  ],
+  "tiles": [
+    {
+      "id": "bc_11",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "file": "tiles/bc_11.png",
+      "shared_reference_edge": 6,
+      "transition": 42
+    },
+    {
+      "id": "bc_12",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "file": "tiles/bc_12.png",
+      "shared_reference_edge": 6,
+      "transition": 42
+    },
+    {
+      "id": "bc_13",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "file": "tiles/bc_13.png",
+      "shared_reference_edge": 6,
+      "transition": 42
+    },
+    {
+      "id": "bc_21",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "file": "tiles/bc_21.png",
+      "shared_reference_edge": 6,
+      "transition": 42
+    },
+    {
+      "id": "bc_22",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "file": "tiles/bc_22.png",
+      "shared_reference_edge": 6,
+      "transition": 42
+    },
+    {
+      "id": "bc_23",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "file": "tiles/bc_23.png",
+      "shared_reference_edge": 6,
+      "transition": 42
+    },
+    {
+      "id": "bc_31",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "file": "tiles/bc_31.png",
+      "shared_reference_edge": 6,
+      "transition": 42
+    },
+    {
+      "id": "bc_32",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "file": "tiles/bc_32.png",
+      "shared_reference_edge": 6,
+      "transition": 42
+    },
+    {
+      "id": "bc_33",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "file": "tiles/bc_33.png",
+      "shared_reference_edge": 6,
+      "transition": 42
+    }
+  ],
+  "world_size": [
+    3762,
+    3762
+  ],
+  "native_2048": false,
+  "palette_method": "Built-in AI recolor of all nine regions, then global Lab land/water luminance quantile and chroma calibration to user reference; no spatial deformation.",
+  "reference_edge": "6px shared original geometric reference with42px transition; reference limited to original1254 whole-map detail.",
+  "water_components": [
+    {
+      "bounds": [
+        0,
+        0,
+        3762,
+        3762
+      ],
+      "area": 1763042,
+      "left": true
+    },
+    {
+      "bounds": [
+        0,
+        2782,
+        2307,
+        980
+      ],
+      "area": 78412,
+      "left": true
+    }
+  ],
+  "all_significant_components_left": true
+}

@@ -3,7 +3,7 @@ using Godot;
 /// <summary>按1672×941理想图坐标组织原生行囊控件；文字与物品均由真实数据填充。</summary>
 public partial class StoragePanel
 {
-    private static readonly Vector2 DesignSize = new(1672, 941);
+    private static readonly Vector2 DesignSize = new(1920, 1080);
     private static readonly Color Ink = new("252920"), PaperText = new("f0ead7"), MutedPaper = new("d2ceba");
     private Control? _canvas;
     private FontFile? _inventory_font;
@@ -16,7 +16,7 @@ public partial class StoragePanel
     private Button? _action_button, _cancel_button;
     private InventoryPaperFrame? _popup_frame;
 
-    private void build_inventory_view()
+    private void build_inventory_view_legacy()
     {
         _inventory_font = GD.Load<FontFile>("res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf");
         _navigation_atlas = GD.Load<Texture2D>("res://textures/ui/inventory_20261012/category_icons_v1.png");

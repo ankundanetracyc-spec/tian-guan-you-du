@@ -1,0 +1,37 @@
+Godot Engine v4.7.2.stable.mono.custom_build.ed1daf0bf (2026-08-17 01:18:38 UTC) - https://godotengine.org
+
+WARNING: res://resources/activeskills/补虚行血诀/化法/卸力.tres:4 - ext_resource, invalid UID: uid://corjswdok5c7 - using text path instead: res://csharp/gongfa/DamageBonus.cs
+   at: ResourceLoaderText::load (scene\resources\resource_format_text.cpp:501)
+   GDScript backtrace (most recent call first):
+       [0] _ready (res://scripts/world/bai_chuan/YuxuPeakInterior.gd:127)
+   C# backtrace (most recent call first):
+       [0] Godot.GodotObject Godot.NativeCalls.godot_icall_3_1268(nint, nint, string, string, int) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\NativeCalls.cs:11632)
+       [1] Godot.Resource Godot.ResourceLoader.Load(string, string, Godot.ResourceLoader+CacheMode) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\ResourceLoader.cs:120)
+       [2] T Godot.ResourceLoader.Load<T>(string, string, Godot.ResourceLoader+CacheMode) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\Extensions\ResourceLoaderExtensions.cs:27)
+       [3] T Godot.GD.Load<T>(string) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\GD.cs:129)
+       [4] void YuxuExchangeCatalog.Collect(string, System.Collections.Generic.List`1[ItemData], System.Collections.Generic.HashSet`1[System.String])
+       [5] System.Collections.Generic.List`1[ItemData] YuxuExchangeCatalog.LoadItems()
+       [6] void YuxuSectExchangePanel._Ready()
+       [7] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\Node.cs:2660)
+       [8] bool Godot.CanvasItem.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\CanvasItem.cs:1845)
+       [9] bool Godot.Control.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\Control.cs:4029)
+       [10] bool YuxuSectExchangePanel.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&)
+       [11] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\Bridge\CSharpInstanceBridge.cs:24)
+       [12] void Godot.NativeInterop.NativeFuncs.godotsharp_method_bind_ptrcall(nint, nint, System.Void**, System.Void*) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\obj\Debug\Godot.SourceGenerators.Internal\Godot.SourceGenerators.Internal.UnmanagedCallbacksGenerator\Godot.NativeInterop.NativeFuncs.generated.cs:380)
+       [13] void Godot.NativeCalls.godot_icall_3_912(nint, nint, nint, Godot.NativeInterop.godot_bool, int) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\NativeCalls.cs:8082)
+       [14] void Godot.Node.AddChild(Godot.Node, bool, Godot.Node+InternalMode) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\Node.cs:848)
+       [15] void WorldRoadBattlePackageSmoke+<Run>d__3.MoveNext()
+       [16] void System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start<TStateMachine>(TStateMachine&)
+       [17] void WorldRoadBattlePackageSmoke.Run()
+       [18] bool WorldRoadBattlePackageSmoke.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&)
+       [19] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\Bridge\CSharpInstanceBridge.cs:24)
+WORLD_ROAD_BATTLE_PACKAGE_OK
+WARNING: 6 RIDs of type "CanvasItem" were leaked.
+   at: RendererCanvasCull::_free_rids (servers\rendering\renderer_canvas_cull.cpp:2735)
+WARNING: 119 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+   at: ObjectDB::cleanup (core\object\object.cpp:2536)
+ERROR: 1 resources still in use at exit (run with --verbose for details).
+   at: ResourceCache::clear (core\io\resource.cpp:822)
+ERROR: 29 RID allocations of type 'struct RendererDummy::TextureStorage::DummyTexture * __ptr64' were leaked at exit.
+ERROR: 11 RID allocations of type 'struct TextServerAdvanced::ShapedTextDataAdvanced * __ptr64' were leaked at exit.
+ERROR: 2 RID allocations of type 'struct TextServerAdvanced::FontAdvanced * __ptr64' were leaked at exit.

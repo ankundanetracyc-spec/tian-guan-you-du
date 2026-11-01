@@ -4,7 +4,6 @@ using Godot;
 public partial class MainScene
 {
     private const string FreeCultivationStartNodeId = "white_stone_town";
-    private static readonly Vector2I FreeCultivationStartCell = new(17, 142);
     private bool _story_free_start;
 
     private void initialize_story_free_start()
@@ -29,15 +28,7 @@ public partial class MainScene
         if (player is not null && !player.grant_new_journey_yunxi_breakthrough_pills())
             GD.PushError("新旅程未能发放云息突破丹药；请检查行囊容量与丹药物品定义。");
 
-        var startCell = FreeCultivationStartCell;
-        if (tile_world_map is not null)
-            startCell = tile_world_map.Call("get_location_anchor_cell", FreeCultivationStartNodeId).AsVector2I();
-        if (startCell.X < 0 || startCell.Y < 0)
-        {
-            GD.PushError("白石镇未配置有效的世界地图锚点；暂沿用其固定地图坐标。");
-            startCell = FreeCultivationStartCell;
-        }
-        _player_world_grid_cell = startCell;
+        // World position is resolved from the reviewed node graph when the map opens.
         hud?.set_world_map_available(true);
         set_prologue_skip_available(false);
         mark_save_dirty();

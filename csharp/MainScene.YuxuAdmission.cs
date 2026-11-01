@@ -249,7 +249,7 @@ public partial class MainScene
 
         hide_world_character_list();
 
-        tile_world_map?.Hide();
+        _nodeWorldMap?.Hide();
         estate?.Hide();
         location_interior?.Hide();
         refresh_yuxu_admission_context(overview);

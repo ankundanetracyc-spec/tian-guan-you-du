@@ -1,0 +1,38 @@
+{
+  "method": "B-R>60,G-R>40; 8-connected; area>150",
+  "components": [
+    {
+      "rect": [
+        0,
+        0,
+        3762,
+        3762
+      ],
+      "pixels": 1729021,
+      "left": true
+    },
+    {
+      "rect": [
+        1808,
+        986,
+        104,
+        28
+      ],
+      "pixels": 240,
+      "left": false
+    },
+    {
+      "rect": [
+        0,
+        2782,
+        2307,
+        980
+      ],
+      "pixels": 77555,
+      "left": true
+    }
+  ],
+  "all_touch_left": false,
+  "visual_review": "The isolated 240px threshold component at x1808,y986 lies within a lake. The review crop shows water highlight pattern dividing the color mask, not an isolated geographic river. Both principal water components reach the left edge.",
+  "limits": "Image-mask connectivity, not directed flow or terrain elevation."
+}

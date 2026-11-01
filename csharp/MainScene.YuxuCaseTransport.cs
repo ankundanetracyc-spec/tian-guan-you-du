@@ -50,19 +50,19 @@ public partial class MainScene
         }
         else
         {
-            if (tile_world_map is null)
+            if (_nodeWorldMap?.Visible != true) open_world();
+            if (_nodeWorldMap is null)
             {
                 show_message("押送路线不可用", "大世界地图尚未就绪；当事人尚未加入队伍，事务保持未启程。");
                 return;
             }
-            if (!tile_world_map.Visible) open_world();
             route = get_yuxu_case_transport_route(YuxuCaseTransportDestinationNodeId);
             if (route.Count == 0)
             {
                 show_message("押送路线不可达", "当前地图无法为执中峰官员的交接地点指派连续路线；当事人尚未加入队伍，事务保持未启程。");
                 return;
             }
-            remainingHours = tile_world_map.Call("get_path_travel_hours", route).AsSingle();
+            remainingHours = get_node_route_hours(route);
         }
 
         if (!_npc_world.join_yuxu_case_task_party(
@@ -117,7 +117,7 @@ public partial class MainScene
                 show_message("押送路线未启动", "自动路线未能开始；同行状态已撤销，案卷事务仍未启程。");
                 return;
             }
-            else show_message("案卷押送启程", $"{npc.npc_name} 已作为临时队伍成员同行。系统已指派至执中峰的路线，按现有遁速逐格推进游戏时间；途中如遭拦截将进入现有战斗，战后继续行程。抵达后须向官员交接。未授权击杀，也不以战败或死亡作为拘押。");
+            else show_message("案卷押送启程", $"{npc.npc_name} 已作为临时队伍成员同行。系统已指派至执中峰的路线，按遁速沿节点路线推进游戏时间；途中如遭拦截将进入现有战斗，战后继续行程。抵达后须向官员交接。未授权击杀，也不以战败或死亡作为拘押。");
         }
         mark_save_dirty();
         refresh_yuxu_life_context();
@@ -125,22 +125,48 @@ public partial class MainScene
 
     private Godot.Collections.Array<Vector2I> get_yuxu_case_transport_route(string destinationNodeId)
     {
-        if (tile_world_map is null) return [];
-        var route = tile_world_map.Call("get_assigned_route_to_node", destinationNodeId).AsGodotArray<Vector2I>();
-        return route.Duplicate();
+        var route = new Godot.Collections.Array<Vector2I>();
+        if (_nodeWorldMap is null || _npc_world is null) return route;
+        foreach (var id in _nodeWorldMap.Call("get_assigned_route_to_node", destinationNodeId).AsGodotArray<string>())
+        {
+            var cell = _npc_world.node_world_cell_for_node_id(id);
+            if (cell.X < 0 || cell.Y < 0) return [];
+            route.Add(cell);
+        }
+        return route;
     }
+
+    private Godot.Collections.Array<string> decode_node_route(Godot.Collections.Array<Vector2I> route)
+    {
+        var result = new Godot.Collections.Array<string>();
+        if (_npc_world is null) return result;
+        foreach (var cell in route)
+        {
+            var id = _npc_world.node_world_node_id_for_cell(cell);
+            if (string.IsNullOrEmpty(id)) return [];
+            result.Add(id);
+        }
+        return result;
+    }
+
+    private float get_node_route_hours(Godot.Collections.Array<Vector2I> route)
+        => _nodeWorldMap is null ? 0f : _nodeWorldMap.Call("get_path_travel_hours", decode_node_route(route)).AsSingle();
+
+    private bool start_node_assigned_route(Godot.Collections.Array<Vector2I> route, string destinationNodeId)
+        => _nodeWorldMap?.Call("start_assigned_route", decode_node_route(route), destinationNodeId).AsBool() == true;
 
     private bool start_yuxu_case_transport_world_route()
     {
-        if (player?.entity_data is not HumanData human || _npc_world is null || tile_world_map is null) return false;
+        if (player?.entity_data is not HumanData human || _npc_world is null) return false;
         var task = _npc_world.get_active_yuxu_case_transport(human);
         if (task is null || !task.temporary_party_member_active ||
             task.journey_status is not (YuxuSectCaseTaskRecord.JourneyExitingDungeon or YuxuSectCaseTaskRecord.JourneyInTransit))
             return false;
-        if (!tile_world_map.Visible) open_world();
+        if (_nodeWorldMap?.Visible != true) open_world();
+        if (_nodeWorldMap is null) return false;
         var route = get_yuxu_case_transport_route(task.journey_destination_node_id);
         if (route.Count == 0) return false;
-        var hours = tile_world_map.Call("get_path_travel_hours", route).AsSingle();
+        var hours = get_node_route_hours(route);
         if (!_npc_world.set_yuxu_case_transport_world_route(
                 human.sect_active_yuxu_duty_incident_id, task.task_id, human.sect_active_yuxu_duty_instance_id,
                 _player_world_grid_cell, _player_world_node_id, route, hours))
@@ -155,8 +181,7 @@ public partial class MainScene
             show_message("案卷押送已抵达", "队伍已抵达执中峰所在地点；请进入执中峰并向指定官员交接。");
             return true;
         }
-        tile_world_map.Call("set_assigned_route_destination", task.journey_destination_node_id);
-        if (tile_world_map.Call("start_assigned_route", route, task.journey_destination_node_id).AsBool())
+        if (start_node_assigned_route(route, task.journey_destination_node_id))
         {
             mark_save_dirty();
             refresh_yuxu_life_context();
@@ -179,7 +204,7 @@ public partial class MainScene
 
     private void check_yuxu_case_transport_world_interception(Vector2I cell)
     {
-        if (tile_world_map?.Call("is_traveling").AsBool() != true || player?.entity_data is not HumanData human || _npc_world is null)
+        if (_nodeWorldMap?.Call("is_traveling").AsBool() != true || player?.entity_data is not HumanData human || _npc_world is null)
             return;
         var task = _npc_world.get_active_yuxu_case_transport(human);
         if (task is null || task.journey_status != YuxuSectCaseTaskRecord.JourneyInTransit) return;
@@ -191,9 +216,25 @@ public partial class MainScene
                 human.sect_active_yuxu_duty_incident_id, task.task_id, human.sect_active_yuxu_duty_instance_id,
                 attackerId, "world_map", cell))
             return;
-        tile_world_map.Call("interrupt_assigned_route");
+        _nodeWorldMap.Call("interrupt_assigned_route");
         mark_save_dirty();
         CallDeferred(nameof(start_yuxu_case_transport_interception_battle), attackerId, "world_map", cell);
+    }
+
+    // Called after the map commits a real node and settles the corresponding travel time.
+    private void on_node_world_transport_step(string nodeId)
+    {
+        if (_nodeWorldMap is null || _npc_world is null || player?.entity_data is not HumanData human) return;
+        var task = _npc_world.get_active_yuxu_case_transport(human);
+        if (task is null || !task.temporary_party_member_active || task.journey_status != YuxuSectCaseTaskRecord.JourneyInTransit) return;
+        var cell = _npc_world.node_world_cell_for_node_id(nodeId);
+        if (cell.X < 0 || cell.Y < 0) return;
+        var remaining = _nodeWorldMap.Call("get_remaining_travel_path").AsGodotArray<string>();
+        var hours = _nodeWorldMap.Call("get_path_travel_hours", remaining).AsSingle();
+        _npc_world.update_yuxu_case_transport_position(
+            human.sect_active_yuxu_duty_incident_id, task.task_id, human.sect_active_yuxu_duty_instance_id,
+            cell, _nodeWorldMap.Call("get_runtime_id", nodeId).AsString(), "", hours);
+        check_yuxu_case_transport_world_interception(cell);
     }
 
     private bool try_mark_yuxu_case_transport_dungeon_interception(string attackerNpcId)
@@ -325,8 +366,8 @@ public partial class MainScene
                 return;
             }
             var remaining = get_remaining_yuxu_case_transport_route(task);
-            if (remaining.Count < 2 || tile_world_map is null ||
-                !tile_world_map.Call("start_assigned_route", remaining, task.journey_destination_node_id).AsBool())
+            if (remaining.Count < 2 || _nodeWorldMap is null ||
+                !start_node_assigned_route(remaining, task.journey_destination_node_id))
                 show_message("押送暂停", "大世界路线暂不可用；同行状态与路线进度已保留，未登记到达或交接。");
         }
     }
@@ -373,7 +414,6 @@ public partial class MainScene
         }
         if (task.journey_status == YuxuSectCaseTaskRecord.JourneyInTransit)
         {
-            tile_world_map?.Call("set_assigned_route_destination", task.journey_destination_node_id);
             if (_player_world_node_id == task.journey_destination_node_id)
             {
                 _npc_world.mark_yuxu_case_transport_arrived(
@@ -383,8 +423,8 @@ public partial class MainScene
             }
             var remaining = get_remaining_yuxu_case_transport_route(task);
             if (remaining.Count < 2) remaining = get_yuxu_case_transport_route(task.journey_destination_node_id);
-            if (tile_world_map?.Visible != true) open_world();
-            if (remaining.Count > 1 && tile_world_map?.Call("start_assigned_route", remaining, task.journey_destination_node_id).AsBool() == true)
+            if (_nodeWorldMap?.Visible != true) open_world();
+            if (remaining.Count > 1 && start_node_assigned_route(remaining, task.journey_destination_node_id))
                 return;
             show_message("押送暂停", "读档后自动路线未能恢复；当事人仍作为临时队伍成员保存，案卷未登记到达。");
         }

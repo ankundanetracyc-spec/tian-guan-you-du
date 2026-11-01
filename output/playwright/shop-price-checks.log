@@ -1,0 +1,17 @@
+### Result
+{"count":81,"allNumeric":true,"pills":[["回春丹·薄效",5],["回春丹·良效",8],["回春丹·优效",12],["回春丹·极效",18],["回春丹·满效",25]],"sourcePrices":{"iron":15,"manual":15,"sword":0},"visibleCells":true,"footerPriceBinding":true}
+### Ran Playwright code
+```js
+await (async page=>{
+ await page.setViewportSize({width:1920,height:1080});await page.locator('#shop-tab').click();
+ const result=await page.evaluate(()=>({count:PREVIEW_DATA.length,allNumeric:PREVIEW_DATA.every(i=>Number.isInteger(i.contribution)&&i.contribution>=0),pills:PREVIEW_DATA.filter(i=>i.category==='丹药').map(i=>[i.name,i.contribution]),sourcePrices:{iron:PREVIEW_DATA.find(i=>i.id==='mat_xuantie').contribution,manual:PREVIEW_DATA.find(i=>i.id==='manual_huangting_yangxing').contribution,sword:PREVIEW_DATA.find(i=>i.id==='sect_sword_suxing').contribution},visibleCells:[...document.querySelectorAll('.shop-column .row')].every(row=>/^\d+$/.test(row.lastElementChild.textContent))}));
+ if(!result.allNumeric||!result.visibleCells||result.sourcePrices.iron!==15||result.sourcePrices.manual!==15||result.sourcePrices.sword!==0)throw Error(JSON.stringify(result));
+ await page.locator('[data-category="丹药"] .row').filter({hasText:'良效'}).click();if(!(await page.locator('#shop-summary').textContent()).includes('所需贡献 8'))throw Error('pill footer price mismatch');
+ await page.locator('[data-category="秘籍"] .row').filter({hasText:'玄枢含章经'}).click();if(!(await page.locator('#shop-summary').textContent()).includes('所需贡献 15'))throw Error('manual footer price mismatch');
+ await page.mouse.move(100,100);await page.screenshot({path:'output/playwright/shop-priced.png'});return {...result,footerPriceBinding:true};
+}
+)(page);
+```
+### Page
+- Page URL: about:blank#shop
+- Page Title: 交易与善功堂 · 文字目录样板

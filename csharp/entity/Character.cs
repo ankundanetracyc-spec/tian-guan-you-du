@@ -4,7 +4,7 @@ using Godot.Collections;
 /// <summary>人类角色：统一承载成长、功法、装备与秘籍研读的运行时状态。</summary>
 public partial class Character : Creature
 {
-    public const int InventorySlotCapacity = 30;
+    public const int InventorySlotCapacity = 120;
     private const string PublicBasicSkillPoolPath = "res://resources/basic_decks/公共基础技能池.tres";
     // 早期灵石的可用储灵量：三灵根在密度 180、每日修炼十二时的条件下约可持续十日。
     // 灵石只提供环境，实际消耗仍随角色在该环境中的纳气速率变化。
@@ -108,24 +108,6 @@ public partial class Character : Creature
                 human.inventory_item_paths.RemoveAt(i); human.inventory_item_counts.RemoveAt(i); human.inventory_item_positions.RemoveAt(i);
             }
         }
-        // Migrate legacy split stacks (including old 999-item rows) to one row per stackable item definition.
-        // Keep each non-stackable copy in its own slot and preserve the first row's slot position.
-        for (var i = 0; i < human.inventory_item_paths.Count; i++)
-        {
-            var path = human.inventory_item_paths[i];
-            if (load_inventory_item(path) is not { can_stack: true }) continue;
-            for (var j = human.inventory_item_paths.Count - 1; j > i; j--)
-            {
-                if (human.inventory_item_paths[j] != path) continue;
-                var combined = (long)human.inventory_item_counts[i] + human.inventory_item_counts[j];
-                // Counts are persisted as int; retain a legacy row if the total cannot be represented safely.
-                if (combined > int.MaxValue) continue;
-                human.inventory_item_counts[i] = (int)combined;
-                human.inventory_item_paths.RemoveAt(j);
-                human.inventory_item_counts.RemoveAt(j);
-                human.inventory_item_positions.RemoveAt(j);
-            }
-        }
         ensure_portrait_clothing_state();
         foreach (var path in new[] { human.weapon_path, human.headwear_path, human.clothes_path, human.ornament_1_path, human.footwear_path, human.ornament_2_path })
             if (!HasMeta("artifact_battle_clone") && !string.IsNullOrWhiteSpace(path) && ResourceLoader.Load<ItemData>(path) is not null && get_inventory_total_count(path) == 0)
@@ -140,6 +122,7 @@ public partial class Character : Creature
         }
         for (var i = human.equipped_artifact_ids.Count - 1; i >= 0; i--)
             if (find_artifact(human.equipped_artifact_ids[i]) is null) human.equipped_artifact_ids.RemoveAt(i);
+        ensure_spatial_inventory_state();
         sync_artifact_spirit_perception();
     }
     private void ensure_portrait_clothing_state()
@@ -205,7 +188,14 @@ public partial class Character : Creature
         _portraitClothingResourcePath = _portraitClothingResource is null ? "" : path;
         return _portraitClothingResource;
     }
-    private ItemData? load_inventory_item(string path) => string.IsNullOrWhiteSpace(path) || !ResourceLoader.Exists(path) ? null : ResourceLoader.Load<ItemData>(path);
+    private ItemData? load_inventory_item(string path)
+    {
+        if (string.IsNullOrWhiteSpace(path)) return null;
+        if (_spatialItemCache.TryGetValue(path, out var cached) && cached is not null && GodotObject.IsInstanceValid(cached)) return cached;
+        var item = ResourceLoader.Exists(path) ? ResourceLoader.Load<ItemData>(path) : null;
+        if (item is not null) _spatialItemCache[path] = item;
+        return item;
+    }
     private int get_inventory_index(string path, int start = 0)
     {
         if (human is null) return -1;
@@ -222,6 +212,7 @@ public partial class Character : Creature
     }
     private void notify_inventory_changed()
     {
+        ensure_spatial_inventory_state();
         sync_artifact_spirit_perception();
         EmitSignal(SignalName.inventory_changed);
         InventoryChanged?.Invoke(this);
@@ -235,11 +226,13 @@ public partial class Character : Creature
         {
             var path = human.inventory_item_paths[i];
             var item = load_inventory_item(path);
+            var placement = human.inventory_placements.FirstOrDefault(p => p.row_slot == human.inventory_item_positions[i]);
             result.Add(new Dictionary
             {
                 ["slot_index"] = human.inventory_item_positions[i], ["item_path"] = path, ["count"] = human.inventory_item_counts[i],
                 ["item_name"] = item?.entity_name ?? path, ["category"] = item?.item_category ?? "",
-                ["equipped"] = is_item_equipped(path)
+                ["equipped"] = is_item_equipped(path), ["instance_id"] = placement?.instance_id ?? "",
+                ["region_id"] = placement?.region_id ?? "", ["cell_x"] = placement?.cell_x ?? -1, ["cell_y"] = placement?.cell_y ?? -1, ["rotation"] = placement?.rotation ?? 0
             });
         }
         return result;
@@ -256,7 +249,7 @@ public partial class Character : Creature
         ensure_inventory_state();
         return human is null ? 0 : human.inventory_item_paths.Count + human.artifact_inventory.Count;
     }
-    public int get_inventory_free_slot_count() => Math.Max(0, max_pack_slots - get_inventory_slot_count());
+    public int get_inventory_free_slot_count() => Math.Max(0, InventorySlotCapacity - get_inventory_occupied_cell_count());
     public bool has_inventory_item(string path, int count = 1) => count <= 0 || get_inventory_total_count(path) >= count;
     public int get_artifact_inventory_slot_index(string instanceId)
     {
@@ -285,18 +278,7 @@ public partial class Character : Creature
     public bool can_add_item_to_inventory(string path, int count = 1)
     {
         if (human is null || count <= 0) return false;
-        ensure_inventory_state();
-        var item = load_inventory_item(path);
-        if (item is null || !GongfaAvailability.IsItemEnabled(item)) return false;
-        if (item.can_stack)
-        {
-            long existing = 0;
-            for (var i = 0; i < human.inventory_item_paths.Count; i++)
-                if (human.inventory_item_paths[i] == path) existing += Math.Max(0, human.inventory_item_counts[i]);
-            if (existing > int.MaxValue - (long)count) return false;
-            return existing > 0 || get_inventory_free_slot_count() > 0;
-        }
-        return count <= get_inventory_free_slot_count();
+        return can_add_inventory_batch(new System.Collections.Generic.Dictionary<string, int> { [path] = count });
     }
     public bool add_item_to_inventory(string path, int count = 1)
         => add_item_to_inventory_core(path, count, announceAcquisition: true);
@@ -308,36 +290,8 @@ public partial class Character : Creature
     private bool add_item_to_inventory_core(string path, int count, bool announceAcquisition)
     {
         if (human is null || count <= 0) return false;
-        ensure_inventory_state();
-        var item = load_inventory_item(path);
-        if (item is null || !GongfaAvailability.IsItemEnabled(item)) return false;
-        if (!can_add_item_to_inventory(path, count)) return false;
-        if (item.can_stack)
-        {
-            var existingIndex = get_inventory_index(path);
-            if (existingIndex >= 0)
-            {
-                human.inventory_item_counts[existingIndex] += count;
-            }
-            else
-            {
-                human.inventory_item_paths.Add(path);
-                human.inventory_item_counts.Add(count);
-                human.inventory_item_positions.Add(find_free_inventory_position());
-            }
-        }
-        else
-        {
-            for (var i = 0; i < count; i++)
-            {
-                human.inventory_item_paths.Add(path);
-                human.inventory_item_counts.Add(1);
-                human.inventory_item_positions.Add(find_free_inventory_position());
-            }
-        }
-        notify_inventory_changed();
-        if (announceAcquisition) publish_item_acquired_notice(path, count);
-        return true;
+        return try_exchange_inventory(new System.Collections.Generic.Dictionary<string, int>(),
+            new System.Collections.Generic.Dictionary<string, int> { [path] = count }, announceAcquisition);
     }
 
     public void publish_item_acquired_notice(string path, int count = 1)
@@ -348,18 +302,9 @@ public partial class Character : Creature
     }
     public bool remove_item_from_inventory(string path, int count = 1)
     {
-        if (human is null || count <= 0 || get_inventory_total_count(path) - get_equipped_item_count(path) < count) return false;
-        var remaining = count;
-        for (var i = human.inventory_item_paths.Count - 1; i >= 0 && remaining > 0; i--)
-        {
-            if (human.inventory_item_paths[i] != path) continue;
-            var moved = Math.Min(Math.Max(0, human.inventory_item_counts[i]), remaining);
-            human.inventory_item_counts[i] -= moved; remaining -= moved;
-            if (human.inventory_item_counts[i] <= 0) { human.inventory_item_paths.RemoveAt(i); human.inventory_item_counts.RemoveAt(i); human.inventory_item_positions.RemoveAt(i); }
-        }
-        if (remaining > 0) return false;
-        notify_inventory_changed();
-        return true;
+        if (human is null || count <= 0) return false;
+        return try_exchange_inventory(new System.Collections.Generic.Dictionary<string, int> { [path] = count },
+            new System.Collections.Generic.Dictionary<string, int>());
     }
     public Array<string> get_equipped_item_paths()
     {
@@ -419,18 +364,10 @@ public partial class Character : Creature
     }
     public bool is_artifact_equipped(string instanceId) => human?.equipped_artifact_ids.Contains(instanceId) == true;
     public bool add_artifact_to_inventory(ArtifactInstanceData artifact)
-    {
-        if (human is null || artifact is null) return false;
-        if (ForgedArtifactInventory.IsForged(artifact) && !ForgedArtifactInventory.TryRead(artifact, out _)) return false;
-        ensure_inventory_state(); artifact.ensure_instance_id();
-        if (find_artifact(artifact.instance_id) is not null) return false;
-        if (get_inventory_slot_count() >= max_pack_slots) return false;
-        if (artifact.current_durability <= 0 && artifact.max_durability > 0) artifact.current_durability = artifact.max_durability;
-        human.artifact_inventory.Add(artifact); human.artifact_inventory_positions.Add(find_free_inventory_position()); notify_inventory_changed(); return true;
-    }
+        => try_add_artifact_to_inventory(artifact);
     public bool remove_artifact_from_inventory(string instanceId)
     {
-        if (human is null || is_artifact_equipped(instanceId)) return false;
+        if (human is null || _spatialCommitting || is_artifact_equipped(instanceId)) return false;
         var index = -1;
         for (var i = 0; i < human.artifact_inventory.Count; i++) if (human.artifact_inventory[i]?.instance_id == instanceId) { index = i; break; }
         if (index < 0) return false;

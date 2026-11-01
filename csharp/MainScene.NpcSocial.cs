@@ -31,10 +31,10 @@ public partial class MainScene
                 ? ""
                 : "对方不在你所在的副本区域。";
         if (!string.IsNullOrWhiteSpace(npc.dungeon_id)) return "对方正在其他历练之中。";
-        if (tile_world_map?.Visible == true)
+        if (_nodeWorldMap?.Visible == true)
             return (_npc_world?.get_world_grid_roster(_player_world_grid_cell, _player_world_node_id).Any(n => n.npc_id == npc.npc_id)).GetValueOrDefault()
                 ? ""
-                : "对方已离开当前地图格。";
+                : "对方已离开当前世界节点。";
         if (npc.current_node_id != _player_world_node_id) return "对方不在当前地点。";
         if (location_interior?.Visible == true)
             return location_interior.is_npc_in_current_space(npc) ? "" : "对方不在当前室内空间。";

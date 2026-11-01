@@ -1,0 +1,541 @@
+{
+  "browser": "Microsoft Edge",
+  "viewport": {
+    "width": 1920,
+    "height": 1080
+  },
+  "checks": [
+    {
+      "name": "image_loading",
+      "pass": true,
+      "detail": {
+        "nodes": 123,
+        "built": 53,
+        "assets": 9,
+        "scale": 0.25412014885699097,
+        "loaded": 0
+      }
+    },
+    {
+      "name": "counts",
+      "pass": true,
+      "detail": {
+        "nodes": 123,
+        "built": 53,
+        "assets": 9,
+        "siteButtons": 123,
+        "images": 63,
+        "assetGroups": {
+          "main": [
+            "yuxu",
+            "xuandu",
+            "wuxiang"
+          ],
+          "local": [
+            "local_dao",
+            "local_dao",
+            "local_dao",
+            "local_dao",
+            "local_dao",
+            "local_dao",
+            "local_dao",
+            "local_dao",
+            "local_dao",
+            "local_dao"
+          ],
+          "city": [
+            "city",
+            "city",
+            "city",
+            "city",
+            "city",
+            "city",
+            "city",
+            "city",
+            "city",
+            "city",
+            "city",
+            "city",
+            "city",
+            "city",
+            "city",
+            "city"
+          ],
+          "town": [
+            "town",
+            "town",
+            "town",
+            "town",
+            "town",
+            "town",
+            "town",
+            "town",
+            "town",
+            "town",
+            "town",
+            "town",
+            "town",
+            "town"
+          ],
+          "market": [
+            "market",
+            "market",
+            "market",
+            "market",
+            "market"
+          ],
+          "village": [
+            "village",
+            "village",
+            "village"
+          ],
+          "dock": [
+            "dock",
+            "dock"
+          ]
+        }
+      }
+    },
+    {
+      "name": "template_reuse",
+      "pass": true,
+      "detail": {
+        "main": [
+          "yuxu",
+          "xuandu",
+          "wuxiang"
+        ],
+        "local": [
+          "local_dao"
+        ],
+        "city": [
+          "city"
+        ],
+        "town": [
+          "town"
+        ],
+        "market": [
+          "market"
+        ],
+        "village": [
+          "village"
+        ],
+        "dock": [
+          "dock"
+        ]
+      }
+    },
+    {
+      "name": "main_focus_玉虚",
+      "pass": true,
+      "detail": {
+        "state": {
+          "nodes": 123,
+          "built": 53,
+          "assets": 9,
+          "scale": 1,
+          "selected": "bc_place_001",
+          "loaded": 0
+        },
+        "info": "玉虚仙宗一级势力 · 独立山门贴图 100 × 65 像素"
+      }
+    },
+    {
+      "name": "main_focus_玄都",
+      "pass": true,
+      "detail": {
+        "state": {
+          "nodes": 123,
+          "built": 53,
+          "assets": 9,
+          "scale": 1,
+          "selected": "bc_place_002",
+          "loaded": 0
+        },
+        "info": "玄都天府一级势力 · 独立山门贴图 100 × 71 像素"
+      }
+    },
+    {
+      "name": "main_focus_无相",
+      "pass": true,
+      "detail": {
+        "state": {
+          "nodes": 123,
+          "built": 53,
+          "assets": 9,
+          "scale": 1,
+          "selected": "bc_place_003",
+          "loaded": 0
+        },
+        "info": "无相圣宗一级势力 · 独立山门贴图 100 × 75 像素"
+      }
+    },
+    {
+      "name": "search",
+      "pass": true,
+      "detail": [
+        "玉虚仙宗宗门"
+      ]
+    },
+    {
+      "name": "category_main",
+      "pass": true,
+      "detail": {
+        "expected": 3,
+        "actual": 3
+      }
+    },
+    {
+      "name": "category_sect",
+      "pass": true,
+      "detail": {
+        "expected": 13,
+        "actual": 13
+      }
+    },
+    {
+      "name": "category_city",
+      "pass": true,
+      "detail": {
+        "expected": 16,
+        "actual": 16
+      }
+    },
+    {
+      "name": "category_town",
+      "pass": true,
+      "detail": {
+        "expected": 14,
+        "actual": 14
+      }
+    },
+    {
+      "name": "category_market",
+      "pass": true,
+      "detail": {
+        "expected": 5,
+        "actual": 5
+      }
+    },
+    {
+      "name": "category_village",
+      "pass": true,
+      "detail": {
+        "expected": 3,
+        "actual": 3
+      }
+    },
+    {
+      "name": "category_dock",
+      "pass": true,
+      "detail": {
+        "expected": 2,
+        "actual": 2
+      }
+    },
+    {
+      "name": "category_wild",
+      "pass": true,
+      "detail": {
+        "expected": 70,
+        "actual": 70
+      }
+    },
+    {
+      "name": "category_all",
+      "pass": true,
+      "detail": {
+        "expected": 123,
+        "actual": 123
+      }
+    },
+    {
+      "name": "hide_names",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "hide_nodes",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "natural_toggle",
+      "pass": true,
+      "detail": {
+        "before": 0,
+        "after": 70
+      }
+    },
+    {
+      "name": "grid_toggle",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "drag_pan",
+      "pass": true,
+      "detail": {
+        "before": "translate(356px, 0px) scale(0.25412)",
+        "after": "translate(476px, 60px) scale(0.25412)"
+      }
+    },
+    {
+      "name": "wheel_zoom_locked",
+      "pass": true,
+      "detail": {
+        "before": 0.25412014885699097,
+        "after": 0.25412014885699097
+      }
+    },
+    {
+      "name": "actual_scale",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "assets_page",
+      "pass": true,
+      "detail": {
+        "cards": 9
+      }
+    },
+    {
+      "name": "asset_actual_sizes",
+      "pass": true,
+      "detail": [
+        {
+          "width": 100,
+          "height": 65,
+          "naturalWidth": 100,
+          "naturalHeight": 65,
+          "complete": true
+        },
+        {
+          "width": 100,
+          "height": 71,
+          "naturalWidth": 100,
+          "naturalHeight": 71,
+          "complete": true
+        },
+        {
+          "width": 100,
+          "height": 75,
+          "naturalWidth": 100,
+          "naturalHeight": 75,
+          "complete": true
+        },
+        {
+          "width": 72,
+          "height": 55,
+          "naturalWidth": 72,
+          "naturalHeight": 55,
+          "complete": true
+        },
+        {
+          "width": 87,
+          "height": 59,
+          "naturalWidth": 87,
+          "naturalHeight": 59,
+          "complete": true
+        },
+        {
+          "width": 61,
+          "height": 31,
+          "naturalWidth": 61,
+          "naturalHeight": 31,
+          "complete": true
+        },
+        {
+          "width": 58,
+          "height": 24,
+          "naturalWidth": 58,
+          "naturalHeight": 24,
+          "complete": true
+        },
+        {
+          "width": 44,
+          "height": 25,
+          "naturalWidth": 44,
+          "naturalHeight": 25,
+          "complete": true
+        },
+        {
+          "width": 47,
+          "height": 36,
+          "naturalWidth": 47,
+          "naturalHeight": 36,
+          "complete": true
+        }
+      ]
+    },
+    {
+      "name": "site_hover_click",
+      "pass": true,
+      "detail": {
+        "filter": "brightness(1.17) drop-shadow(rgb(248, 238, 185) 0px 0px 3px) drop-shadow(rgb(75, 84, 47) 0px 0px 2px)",
+        "selected": "bc_place_001"
+      }
+    },
+    {
+      "name": "asset_page_sidebar_returns_map",
+      "pass": true,
+      "detail": {
+        "nodes": 123,
+        "built": 53,
+        "assets": 9,
+        "scale": 1,
+        "selected": "bc_place_001",
+        "loaded": 0
+      }
+    },
+    {
+      "name": "natural_site_click",
+      "pass": true,
+      "detail": {
+        "selected": "bc_place_045",
+        "expected": "bc_place_045"
+      }
+    },
+    {
+      "name": "all_123_list_selection",
+      "pass": true,
+      "detail": {
+        "tested": 123,
+        "failures": []
+      }
+    },
+    {
+      "name": "main_button_clears_incompatible_filter",
+      "pass": true,
+      "detail": {
+        "category": "all",
+        "scale": 1
+      }
+    },
+    {
+      "name": "natural_list_auto_enables_layer",
+      "pass": true,
+      "detail": {
+        "id": "bc_place_045",
+        "selected": "bc_place_045"
+      }
+    },
+    {
+      "name": "portable_counts_and_images",
+      "pass": true,
+      "detail": {
+        "nodes": 123,
+        "built": 53,
+        "assets": 9,
+        "scale": 0.25412014885699097,
+        "loaded": 0
+      }
+    },
+    {
+      "name": "portable_actual_scale",
+      "pass": true,
+      "detail": {
+        "nodes": 123,
+        "built": 53,
+        "assets": 9,
+        "scale": 1,
+        "selected": "bc_place_001",
+        "loaded": 0
+      }
+    },
+    {
+      "name": "portable_assets_page",
+      "pass": true,
+      "detail": {
+        "cards": 9
+      }
+    },
+    {
+      "name": "portable_no_external_asset_dependencies",
+      "pass": true,
+      "detail": {
+        "prefix": "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/",
+        "resources": [
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%83%8C%E6%99%AF/master.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/yuxu.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/xuandu.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/wuxiang.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/local_dao.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/local_dao.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/local_dao.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/local_dao.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/local_dao.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/local_dao.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/local_dao.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/local_dao.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/local_dao.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/local_dao.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/city.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/city.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/city.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/city.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/city.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/city.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/city.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/city.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/city.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/city.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/city.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/city.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/city.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/town.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/town.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/town.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/town.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/town.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/town.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/town.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/town.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/town.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/town.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/town.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/market.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/market.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/village.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/village.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/village.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/dock.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/dock.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/city.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/town.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/market.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/city.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/town.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/market.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/city.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/town.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/market.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/yuxu.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/xuandu.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/wuxiang.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/local_dao.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/city.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/town.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/market.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/village.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/%E8%8A%82%E7%82%B9/dock.png",
+          "http://127.0.0.1:8773/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E7%99%BE%E5%B7%9D%E5%9C%B0%E5%9B%BE%E4%B8%8E%E8%8A%82%E7%82%B9%E9%AA%8C%E6%94%B6_20261030/%E9%AA%8C%E6%94%B6%E5%8C%85/presentation.js"
+        ],
+        "outside": []
+      }
+    }
+  ],
+  "failed": [],
+  "total": 35,
+  "finalState": {
+    "nodes": 123,
+    "built": 53,
+    "assets": 9,
+    "scale": 1,
+    "selected": "bc_place_001",
+    "loaded": 0
+  },
+  "console_note": "Final reload uses data favicon; document images all loaded.",
+  "portable_url": "http://127.0.0.1:8773/docs/美术规范/百川地图与节点验收_20261030/验收包/index.html"
+}

@@ -6,10 +6,8 @@ using System.Linq;
 /// <summary>Lifecycle and play-loop integration for limited-time world dungeon opportunities.</summary>
 public partial class MainScene
 {
-    private static readonly Vector2I[] DynamicWorldDirections = [Vector2I.Right, Vector2I.Down, Vector2I.Left, Vector2I.Up];
     private long _dynamicDungeonTravelStartedHour = -1;
     private int _dynamicDungeonTravelCompletedSteps;
-    private bool _dynamicDungeonMarkersInitialized;
 
     private int current_game_hour() => GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
 
@@ -22,19 +20,14 @@ public partial class MainScene
             store_active_dynamic_dungeon_route();
 
         var activated = _dynamic_dungeon_state.GetValueOrDefault("activated", false).AsBool();
-        var canInitialize = tile_world_map is not null && tile_world_map.IsNodeReady() && has_open_world_access();
-        if (!activated && !canInitialize) return;
+        // The old grid entry rule has no agreed node-world equivalent yet.
+        // Do not activate or spawn until that placement rule is designed.
+        if (!activated) return;
 
         var changed = DynamicDungeonExpedition.Synchronize(
             _dynamic_dungeon_state,
             current_game_hour(),
-            canInitialize ? find_dynamic_dungeon_world_candidates : static () => Array.Empty<Vector2I>());
-
-        if (tile_world_map is not null && tile_world_map.IsNodeReady() && (changed || !_dynamicDungeonMarkersInitialized))
-        {
-            tile_world_map.Call("set_dynamic_dungeon_entries", DynamicDungeonExpedition.OpenEntries(_dynamic_dungeon_state, current_game_hour()));
-            _dynamicDungeonMarkersInitialized = true;
-        }
+            static () => Array.Empty<Vector2I>());
 
         if (_east_woods_dungeon?.Visible == true && _east_woods_dungeon.is_dynamic_instance &&
             DynamicDungeonExpedition.FindInstance(_dynamic_dungeon_state, _east_woods_dungeon.dynamic_instance_id) is { } current)
@@ -43,66 +36,9 @@ public partial class MainScene
         if (changed) mark_save_dirty();
     }
 
-    private IReadOnlyList<Vector2I> find_dynamic_dungeon_world_candidates()
-    {
-        if (tile_world_map is null || !tile_world_map.IsNodeReady()) return Array.Empty<Vector2I>();
-        var start = tile_world_map.Call("get_location_anchor_cell", "yuxu_xianzong_core").AsVector2I();
-        if (start.X < 0 || start.Y < 0 || !tile_world_map.Call("is_cell_traversable", start).AsBool())
-            return Array.Empty<Vector2I>();
-
-        var occupied = _npc_world?.get_ordinary_grid_population_counts() ?? new Godot.Collections.Dictionary();
-        var existing = new HashSet<Vector2I>();
-        foreach (var value in _dynamic_dungeon_state.GetValueOrDefault("instances", new Godot.Collections.Array()).AsGodotArray())
-            if (value.VariantType == Variant.Type.Dictionary)
-            {
-                var instance = value.AsGodotDictionary();
-                if (instance.GetValueOrDefault("entry_open", false).AsBool())
-                    existing.Add(instance.GetValueOrDefault("world_cell", Vector2I.Zero).AsVector2I());
-            }
-
-        var distances = new Dictionary<Vector2I, int> { [start] = 0 };
-        var queue = new Queue<Vector2I>();
-        queue.Enqueue(start);
-        var candidates = new List<Vector2I>();
-        while (queue.Count > 0)
-        {
-            var cell = queue.Dequeue();
-            var distance = distances[cell];
-            if (distance > 0 && distance <= 10 &&
-                tile_world_map.Call("is_cell_traversable", cell).AsBool() &&
-                (tile_world_map.Call("get_cell_terrain", cell).AsString() is "forest" or "mountain") &&
-                string.IsNullOrWhiteSpace(tile_world_map.Call("get_location_node_id_at_cell", cell).AsString()) &&
-                !occupied.ContainsKey(cell) && !existing.Contains(cell) && cell != _player_world_grid_cell)
-                candidates.Add(cell);
-
-            if (distance >= 10) continue;
-            foreach (var direction in DynamicWorldDirections)
-            {
-                var next = cell + direction;
-                if (distances.ContainsKey(next) || !tile_world_map.Call("is_cell_traversable", next).AsBool()) continue;
-                distances[next] = distance + 1;
-                queue.Enqueue(next);
-            }
-        }
-        return candidates.OrderBy(cell => cell.Y).ThenBy(cell => cell.X).ToArray();
-    }
-
     private void on_dynamic_dungeon_enter_requested(string instanceId)
     {
-        if (tile_world_map?.Visible != true || tile_world_map.Call("is_traveling").AsBool() ||
-            DynamicDungeonExpedition.FindInstance(_dynamic_dungeon_state, instanceId) is not { } instance ||
-            !DynamicDungeonExpedition.IsEntryOpen(instance, current_game_hour()) ||
-            instance.GetValueOrDefault("world_cell", Vector2I.Zero).AsVector2I() != _player_world_grid_cell ||
-            tile_world_map.Call("get_player_cell").AsVector2I() != _player_world_grid_cell)
-            return;
-
-        var route = DynamicDungeonExpedition.GetRoute(instance);
-        route["inside"] = true;
-        DynamicDungeonExpedition.StoreRoute(instance, route);
-        _npc_world?.set_simulation_enabled(false);
-        (GetTree().GetFirstNodeInGroup("cell_character_list") as CellCharacterList)?.hide_world_npcs();
-        open_dynamic_dungeon(instanceId);
-        mark_save_dirty();
+        // Intentionally unavailable until node-world placement has been specified.
     }
 
     private void open_dynamic_dungeon(string instanceId)
@@ -114,7 +50,7 @@ public partial class MainScene
         estate?.Hide();
         location_interior?.hide_roster();
         location_interior?.Hide();
-        tile_world_map?.Hide();
+        _nodeWorldMap?.Hide();
         hide_world_character_list();
 
         refresh_yuxu_life_context();
@@ -152,7 +88,7 @@ public partial class MainScene
         // Continuous routes synchronize once when the player reaches the next
         // world cell or finishes a dungeon route. Avoid cloning and walking every
         // dynamic instance for each intermediate movement edge.
-        if (tile_world_map?.Visible == true && tile_world_map.Call("is_traveling").AsBool()) return;
+        if (_nodeWorldMap?.Visible == true && _nodeWorldMap.Call("is_traveling").AsBool()) return;
         if (_east_woods_dungeon?.is_route_traveling() == true) return;
         synchronize_dynamic_dungeon_opportunities();
     }

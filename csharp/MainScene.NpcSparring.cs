@@ -73,7 +73,7 @@ public partial class MainScene
         var peak = context.GetValueOrDefault("origin_peak", "").AsString();
         Callable.From(() => {
             if (_player_world_node_id != "yuxu_xianzong_core" || string.IsNullOrWhiteSpace(peak)) return;
-            estate?.Hide(); tile_world_map?.Hide();  location_interior?.Hide();
+            estate?.Hide(); _nodeWorldMap?.Hide();  location_interior?.Hide();
             open_faction_overview_if_available(_player_world_node_id);
             GetNodeOrNull<Node>("SceneLayer/YuxuXianzongOverview")?.Call("_on_peak_pressed", peak);
         }).CallDeferred();

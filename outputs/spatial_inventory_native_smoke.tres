@@ -1,0 +1,51 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/ArtifactInstanceData.cs" id="1_lvggb"]
+[ext_resource type="Script" path="res://csharp/resources/BattleSupplySlotData.cs" id="2_5fqgs"]
+[ext_resource type="Script" path="res://csharp/resources/CombatSkillReference.cs" id="3_tfnk3"]
+[ext_resource type="Script" path="res://csharp/resources/CultivationInspirationRecord.cs" id="4_f1tuy"]
+[ext_resource type="Script" path="res://csharp/resources/CultivationInspirationSourceEventRecord.cs" id="5_rhtbg"]
+[ext_resource type="Script" path="res://csharp/resources/FactionAttitudeRecord.cs" id="6_o65wg"]
+[ext_resource type="Script" path="res://csharp/formation/FormationCircuitData.cs" id="7_f4or6"]
+[ext_resource type="Script" path="res://csharp/resources/InventoryPlacementData.cs" id="8_q4wcx"]
+[ext_resource type="Script" path="res://csharp/resources/PlayerCausalEventRecord.cs" id="9_acne3"]
+[ext_resource type="Script" path="res://csharp/resources/RegionalRenownRecord.cs" id="10_l1i4k"]
+[ext_resource type="Script" path="res://csharp/resources/HumanData.cs" id="11_26iw0"]
+[ext_resource type="Script" path="res://csharp/resources/YuxuSectContributionRecord.cs" id="12_yhbkt"]
+[ext_resource type="Script" path="res://csharp/resources/WorldStatusRecord.cs" id="13_ceojv"]
+
+[sub_resource type="Resource" id="Resource_kcje3"]
+script = ExtResource("8_q4wcx")
+instance_id = "22d9735f145542709a01cbe7d633e8ab"
+row_slot = 0
+item_path = "res://resources/entities/items/玄枢含章经秘籍.tres"
+region_id = "back"
+cell_x = 2
+cell_y = 0
+rotation = 3
+
+[sub_resource type="Resource" id="Resource_2jqsj"]
+script = ExtResource("8_q4wcx")
+instance_id = "d6330a7bb9a943e88236cda025a7f32e"
+row_slot = 1
+item_path = "res://resources/entities/items/玄枢含章经秘籍.tres"
+region_id = "chest"
+cell_x = 2
+cell_y = 0
+
+[sub_resource type="Resource" id="Resource_iyeea"]
+script = ExtResource("8_q4wcx")
+instance_id = "b2b4dc473e8f467d89c271e5a7c3bc51"
+row_slot = 2
+item_path = "res://resources/entities/equipment/素行剑.tres"
+region_id = "back"
+cell_x = 0
+cell_y = 0
+
+[resource]
+script = ExtResource("11_26iw0")
+inventory_item_paths = Array[String](["res://resources/entities/items/玄枢含章经秘籍.tres", "res://resources/entities/items/玄枢含章经秘籍.tres", "res://resources/entities/equipment/素行剑.tres"])
+inventory_item_counts = Array[int]([1, 1, 1])
+inventory_item_positions = Array[int]([0, 1, 2])
+inventory_placements = Array[ExtResource("8_q4wcx")]([SubResource("Resource_kcje3"), SubResource("Resource_2jqsj"), SubResource("Resource_iyeea")])
+entity_name = "空间库存验证"

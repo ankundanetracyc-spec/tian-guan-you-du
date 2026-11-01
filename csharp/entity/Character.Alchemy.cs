@@ -17,6 +17,7 @@ public partial class Character
         result = null; reason = "";
         if (count is < 0 or > 4) { reason = "内部试算颗数无效。"; return false; }
         if (human is null || current_health <= 0 || _alchemyCommitting) { reason = "人物暂不能炼丹。"; return false; }
+        ensure_inventory_state();
         var inputs = new List<AlchemySlotSimulation.Input>();
         foreach (var input in supplied)
         {
@@ -31,6 +32,7 @@ public partial class Character
         if (!simulation.CanSimulate) { reason = simulation.BlockingReason; return false; }
         if (!can_spend_world_stamina(simulation.EnergyNeed)) { reason = "当前精力不足。"; return false; }
         // 在副本数组中完成扣料，全部通过才一次性发布，避免信号重入导致半炉结算。
+        ensure_inventory_state();
         var paths = human.inventory_item_paths.ToList();
         var amounts = human.inventory_item_counts.ToList();
         var positions = human.inventory_item_positions.ToList();
@@ -70,6 +72,7 @@ public partial class Character
                 $" · {AlchemySlotSimulation.DurationHours(inputs):0.##}时辰 · 精力{simulation.EnergyNeed}\n" +
                 string.Join("、", inputs.Select(i => $"{i.Name}×{i.Dose}")));
             // 炼制一次完成；不登记长期灵识占用。历法推进会处理正常世界事件。
+            ensure_spatial_inventory_state();
             EmitSignal(SignalName.inventory_changed);
             InventoryChanged?.Invoke(this);
             WorldStaminaChanged?.Invoke(this);
@@ -104,6 +107,7 @@ public partial class Character
     public bool TryUseAlchemyPill(PillItemData item)
     {
         if (human is null || !CanUseAlchemyPill(item)) return false;
+        ensure_inventory_state();
         var paths = human.inventory_item_paths.ToList();
         var amounts = human.inventory_item_counts.ToList();
         var positions = human.inventory_item_positions.ToList();
@@ -128,7 +132,8 @@ public partial class Character
             case "jingxin": human.mood_value = Math.Min(0, human.mood_value + amount); break;
         }
         AddPillToxicity(item.pill_id, tier);
-        EmitSignal(SignalName.inventory_changed);
+        ensure_spatial_inventory_state();
+            EmitSignal(SignalName.inventory_changed);
         InventoryChanged?.Invoke(this);
         if (IsInsideTree()) GetTree().CallGroup("main_scene", "notify_world_stamina_changed", this);
         return true;

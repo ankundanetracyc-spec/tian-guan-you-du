@@ -1,0 +1,30 @@
+### Result
+{"checks":13,"results":["trade_rows_have_no_images","both_offer_lists_show_names_and_quantity","review_lists_both_sides","offer_removal_updates_total","nine_categories_include_pills","right_arrow_pans_categories","category_index_reaches_pills","category_list_scrolls_vertically","vertical_scroll_keeps_horizontal_position","shop_rows_have_no_images","search_reduces_candidates","hover_keeps_icon_and_shape","small_window_has_horizontal_overflow"]}
+### Ran Playwright code
+```js
+await (async page=>{
+ const checks=[];const check=(name,ok)=>{if(!ok)throw Error(name);checks.push(name)};
+ await page.setViewportSize({width:1920,height:1080});
+ check('trade_rows_have_no_images',await page.locator('#trade-page .row img').count()===0);
+ const own=page.locator('#mine .row').filter({hasText:'灵石'});await own.click();await page.locator('#theirs .row').filter({hasText:'胎息经'}).click();
+ check('both_offer_lists_show_names_and_quantity',(await page.locator('#give').textContent()).includes('灵石')&&(await page.locator('#receive').textContent()).includes('胎息经'));
+ await page.locator('#review').click();check('review_lists_both_sides',await page.locator('#review-content').textContent().then(t=>t.includes('灵石 ×1')&&t.includes('胎息经 ×1')));await page.locator('#close-modal').click();
+ await page.screenshot({path:'output/playwright/trade-text-catalog.png'});
+ await page.locator('#give .row').click();check('offer_removal_updates_total',(await page.locator('#trade-summary').textContent()).includes('交出 0 件'));
+ await page.locator('#shop-tab').click();check('nine_categories_include_pills',await page.locator('.shop-column').count()===9&&await page.locator('[data-category="丹药"]').count()===1);
+ await page.screenshot({path:'output/playwright/shop-text-categories.png'});
+ const rail=page.locator('#shop-rail');await page.locator('#next').click();await page.waitForTimeout(500);check('right_arrow_pans_categories',await rail.evaluate(n=>n.scrollLeft)>500);
+ await page.locator('#category-links button').filter({hasText:'丹药'}).click();await page.waitForTimeout(500);check('category_index_reaches_pills',await page.locator('[data-category="丹药"]').evaluate(n=>{const r=n.getBoundingClientRect();return r.left>=20&&r.left<innerWidth/2}));
+ await page.screenshot({path:'output/playwright/shop-pills-scrolled.png'});
+ await page.locator('#category-links button').filter({hasText:'材料'}).click();await page.waitForTimeout(500);const list=page.locator('[data-category="材料"] .list');await list.hover();const horizontalBefore=await rail.evaluate(n=>n.scrollLeft);await page.mouse.wheel(0,450);await page.waitForTimeout(150);check('category_list_scrolls_vertically',await list.evaluate(n=>n.scrollTop)>0);check('vertical_scroll_keeps_horizontal_position',Math.abs((await rail.evaluate(n=>n.scrollLeft))-horizontalBefore)<2);await page.locator('#category-links button').filter({hasText:'丹药'}).click();await page.waitForTimeout(500);
+ check('shop_rows_have_no_images',await page.locator('#shop-page .row img').count()===0);
+ await page.locator('#shop-search').fill('回春丹');check('search_reduces_candidates',await page.locator('[data-category="丹药"] .row').count()>=1&&await page.locator('[data-category="材料"] .row').count()===0);
+ await page.locator('[data-category="丹药"] .row').first().hover();check('hover_keeps_icon_and_shape',await page.locator('#tip.visible img').count()===1&&await page.locator('#tip.visible .footprint i').count()===6);
+ await page.locator('#shop-search').fill('');await page.setViewportSize({width:1280,height:720});await page.waitForTimeout(150);await page.locator('#category-links button').filter({hasText:'丹药'}).click();await page.waitForTimeout(500);check('small_window_has_horizontal_overflow',await rail.evaluate(n=>n.scrollWidth>n.clientWidth));await page.screenshot({path:'output/playwright/shop-text-1280.png'});
+ return {checks:checks.length,results:checks};
+}
+)(page);
+```
+### Page
+- Page URL: about:blank#shop
+- Page Title: 交易与善功堂 · 文字目录样板

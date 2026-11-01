@@ -51,13 +51,17 @@ public partial class Character
         var free = -1;
         if (result.Success)
         {
-            var occupied = positions.Concat(human.artifact_inventory_positions).ToHashSet();
-            free = Enumerable.Range(0, max_pack_slots).FirstOrDefault(i => !occupied.Contains(i), -1);
-            if (free < 0) { result.Errors.Add("行囊已满，请先整理行囊再开炼。"); return false; }
+            free = human.inventory_item_positions.Concat(human.artifact_inventory_positions).DefaultIfEmpty(-1).Max() + 1;
             result.Product!.InstanceId = "forged-" + Guid.NewGuid().ToString("N");
             result.Product.Lifecycle = "人物炼制，固定快照保存";
             product = ForgedArtifactInventory.Create(result.Product);
         }
+        var stagedArtifacts = human.artifact_inventory.ToList();
+        var stagedArtifactSlots = human.artifact_inventory_positions.ToList();
+        if (product is not null) { stagedArtifacts.Add(product); stagedArtifactSlots.Add(free); }
+        if (!plan_spatial_inventory(spatial_candidates(paths, positions, stagedArtifacts, stagedArtifactSlots), human.inventory_placements,
+            out var stagedPlacements, preserveUnplaced: product is null))
+        { result.Errors.Add("行囊空间装不下成品，请先整理再开炼。"); return false; }
         _forgingCommitting = true;
         try
         {
@@ -65,7 +69,8 @@ public partial class Character
             human.inventory_item_counts = new(counts);
             human.inventory_item_positions = new(positions);
             human.current_world_stamina = Math.Max(0, human.current_world_stamina - result.Energy);
-            if (product is not null) { human.artifact_inventory.Add(product); human.artifact_inventory_positions.Add(free); }
+            human.artifact_inventory = new(stagedArtifacts); human.artifact_inventory_positions = new(stagedArtifactSlots);
+            human.inventory_placements = stagedPlacements;
             human.forging_records.Add(crafting_record_date() + (result.Success ? $"炼成{result.Product!.Name}" : "未成器") +
                 $" · {result.Hours}时辰 · 精力{result.Energy}\n" + string.Join("、", draft.Inputs.Select(i =>
                     $"{i.Role.Replace("复合身材", "辅体")}：{i.Material}×{i.Quantity}")));
