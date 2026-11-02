@@ -227,6 +227,14 @@ public partial class HumanData : LivingData
     [Export] public int breakthrough_started_hour;
     [Export] public int breakthrough_finish_hour;
     [Export] public bool breakthrough_uses_meditation_room;
+    /// <summary>本次普通突破预选并暂留的关口丹；只在成功晋层后扣除。</summary>
+    [Export] public string breakthrough_pill_path = "";
+    [Export] public string breakthrough_pill_id = "";
+    [Export] public int breakthrough_pill_tier = -1;
+    [Export] public string breakthrough_pill_effect_snapshot = "";
+    [Export] public int breakthrough_pill_effect_value_snapshot;
+    /// <summary>归元定息丹在九息闭关开始前按丹毒折算后锁定的总时长缩减比例。</summary>
+    [Export] public double yuanxi_duration_reduction;
     [Export] public Array<string> sub_gongfa_paths = [];
     [Export] public Array<string> learned_gongfa_paths = [];
     [Export] public Dictionary learned_gongfa_chapters = [];

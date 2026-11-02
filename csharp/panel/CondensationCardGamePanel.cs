@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-/// <summary>启动菜单八回合凝核试演。原纸面/题字、旋涡和弹性扇形手牌。</summary>
+/// <summary>云息六至七层正式凝核与独立试演共用的八回合牌局。</summary>
 public partial class CondensationCardGamePanel : Control
 {
     private readonly Dictionary<string, int> _counts = CondensationCardGame.Pool.ToDictionary(c => c.Name, c => c.Count);
@@ -11,21 +11,25 @@ public partial class CondensationCardGamePanel : Control
     private readonly List<int> _swapSelection = [];
     private readonly List<HandVisual> _cards = [];
     private Control _canvas = null!, _handLayer = null!, _modal = null!;
-    private Label _score = null!, _disorder = null!, _actions = null!, _status = null!, _forecast = null!;
+    private Label _score = null!, _disorder = null!, _actions = null!, _status = null!, _forecast = null!, _itemHint = null!;
     private CondensationTurnTrack _track = null!;
     private Button _draw = null!, _discard = null!, _swap = null!, _extra = null!, _start = null!, _end = null!;
+    private Button _itemButton = null!, _returnButton = null!, _restartButton = null!;
     private Label _drawCount = null!, _discardCount = null!;
     private RealmQiVisual _qi = null!;
     private CondensationCardGame? _game;
+    private Character? _target;
     private int _hover = -1;
     private int _comprehension = 50, _intelligence = 15, _rootWeight = 40;
     private bool _animating;
+    private bool _testMode = true, _resultReported, _successAnimationPlayed;
     private string _selectionName = "";
     private int _selectionIndex = -1;
     private bool _selectionItem;
     private readonly List<int> _targets = [];
     private int _shift = -1;
     public event Action? Closed;
+    public event Action<Character, bool, int>? CondensationFinished;
     private static readonly Color Ink = new("28251e"), Cream = new("e5d6b5");
     private sealed class HandVisual
     {
@@ -61,8 +65,8 @@ public partial class CondensationCardGamePanel : Control
         _actions = Text(_canvas, "", 21, new Rect2(32, 448, 270, 68), Cream);
         _status = Text(_canvas, "", 21, new Rect2(450, 475, 740, 50), Cream, true);
         _forecast = Text(_canvas, "", 17, new Rect2(450, 527, 740, 42), new Color("c1b497"), true);
-        InkButtonAt(_canvas, "道具", new Rect2(32, 532, 150, 48), ShowItems);
-        Text(_canvas, "使用不占施展次数", 16, new Rect2(32, 584, 250, 28), Cream);
+        _itemButton = InkButtonAt(_canvas, "道具", new Rect2(32, 532, 150, 48), ShowItems);
+        _itemHint = Text(_canvas, "使用不占施展次数", 16, new Rect2(32, 584, 250, 28), Cream);
         _draw = Pile(new Rect2(110, 650, 132, 152), CondensationUiArt.DrawPile, () => ShowPile(false));
         _discard = Pile(new Rect2(1440, 655, 116, 146), CondensationUiArt.DiscardPile, () => ShowPile(true));
         _drawCount = Text(_draw, "", 23, new Rect2(-25, 157, 185, 36), Cream, true);
@@ -77,20 +81,24 @@ public partial class CondensationCardGamePanel : Control
         _handLayer = new Control { Size = _canvas.Size, MouseFilter = MouseFilterEnum.Ignore };
         _canvas.AddChild(_handLayer);
         ButtonAt(_canvas, "玩法", new Rect2(1300, 25, 85, 38), ShowHelp);
-        ButtonAt(_canvas, "重开", new Rect2(1395, 25, 85, 38), ConfirmRestart);
-        ButtonAt(_canvas, "返回", new Rect2(1490, 25, 85, 38), () => Closed?.Invoke());
+        _restartButton = ButtonAt(_canvas, "重开", new Rect2(1395, 25, 85, 38), ConfirmRestart);
+        _returnButton = ButtonAt(_canvas, "返回", new Rect2(1490, 25, 85, 38), RequestClose);
         _modal = new Control { Size = _canvas.Size, Visible = false, MouseFilter = MouseFilterEnum.Stop, ZIndex = 100 };
         _canvas.AddChild(_modal);
         var theme = new Theme();
         theme.DefaultFont = GD.Load<Font>("res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf");
         _canvas.Theme = theme;
         Resized += LayoutCanvas; LayoutCanvas();
-        ShowSetup();
+        Hide();
     }
 
     public void ShowFor(Character target, bool testMode = true)
     {
-        // 目前仅开放试演，不消耗人物资源或写入存档。
+        _target = target;
+        _testMode = testMode;
+        _game = null;
+        _resultReported = false;
+        _successAnimationPlayed = false;
         _comprehension = Mathf.RoundToInt(target.comprehension);
         _intelligence = Mathf.RoundToInt(target.intelligence);
         var method = target.main_gongfa;
@@ -101,6 +109,8 @@ public partial class CondensationCardGamePanel : Control
             _rootWeight = required.Length == 0 ? 0 : Mathf.RoundToInt(100 * (method.wuxing_requirement_mode == GongfaResource.WuxingRequirementMode.AND ? required.Average() : required.Max()));
         }
         else _rootWeight = weights.Length == 0 ? 0 : Mathf.RoundToInt(weights.Max() * 100);
+        if (!_testMode) _items.Clear();
+        else if (_items.Count == 0) _items.AddRange(["定息丹", "清息丹"]);
         Show(); ShowSetup();
     }
 
@@ -139,12 +149,15 @@ public partial class CondensationCardGamePanel : Control
     private void BeginGame()
     {
         _game = new CondensationCardGame(_comprehension, _intelligence, _rootWeight, _counts, _items);
-        _animating = false; _swapSelection.Clear(); _qi.ShowCloud(1); HideModal(); Refresh(); ShowHelp();
+        _animating = false; _successAnimationPlayed = false; _swapSelection.Clear(); _qi.ShowCloud(1); UpdateModeVisibility(); HideModal(); Refresh(); ShowHelp();
     }
     private void ShowSetup()
     {
-        var box = Modal("凝核试演 · 入局准备", 1290, 825);
-        Text(box, "八回合 · 成核需100 · 同名最多四张 · 牌组须满36张\n当前为独立测试，不消耗灵力、道具，不改变正式存档。", 22, new Rect2(25, 65, 1230, 65), Cream);
+        var box = Modal(_testMode ? "凝核试演 · 入局准备" : "云息六层凝核 · 入局准备", 1290, 825);
+        var intro = _testMode
+            ? "八回合 · 成核需100 · 同名最多四张 · 牌组须满36张\n独立测试：可调属性与选择虚拟道具，不消耗正式资源或写入角色。"
+            : "八回合 · 成核需100 · 同名最多四张 · 牌组须满36张\n正式突破：人物属性固定，不开放道具；失败不扣灵力，重伤休养后可重试。";
+        Text(box, intro, 22, new Rect2(25, 65, 1230, 65), Cream);
         var summary = Text(box, "", 22, new Rect2(25, 145, 420, 40), Cream);
         void UpdateSummary() => summary.Text = $"牌组：{_counts.Values.Sum()} / 36 张";
         UpdateSummary();
@@ -156,27 +169,50 @@ public partial class CondensationCardGamePanel : Control
             ButtonAt(box, "−", new Rect2(x + 115, y, 44, 40), () => { _counts[card.Name] = Math.Max(0, _counts[card.Name] - 1); count.Text = _counts[card.Name].ToString(); UpdateSummary(); });
             ButtonAt(box, "+", new Rect2(x + 215, y, 44, 40), () => { _counts[card.Name] = Math.Min(4, _counts[card.Name] + 1); count.Text = _counts[card.Name].ToString(); UpdateSummary(); });
         }
-        Text(box, "试演属性（入局后固定）", 22, new Rect2(25, 605, 350, 35), Cream);
-        Number(box, "悟性", _comprehension, 0, 200, new Vector2(25, 650), v => _comprehension = v);
-        Number(box, "灵慧", _intelligence, 0, 100, new Vector2(425, 650), v => _intelligence = v);
-        Number(box, "匹配权重%", _rootWeight, 1, 100, new Vector2(825, 650), v => _rootWeight = v);
-        var itemsLabel = Text(box, "", 19, new Rect2(25, 700, 1230, 35), Cream);
-        void UpdateItems() => itemsLabel.Text = "携带道具（选两件，同名一件）：" + string.Join("、", _items);
-        UpdateItems();
-        for (var i = 0; i < CondensationCardGame.Items.Length; i++)
+        Text(box, _testMode ? "试演属性（入局后固定）" : "人物属性（按角色当前值锁定）", 22, new Rect2(25, 605, 450, 35), Cream);
+        Number(box, "悟性", _comprehension, 0, 200, new Vector2(25, 650), v => _comprehension = v, _testMode);
+        Number(box, "灵慧", _intelligence, 0, 100, new Vector2(425, 650), v => _intelligence = v, _testMode);
+        Number(box, "匹配权重%", _rootWeight, 1, 100, new Vector2(825, 650), v => _rootWeight = v, _testMode);
+        if (_testMode)
         {
-            var item = CondensationCardGame.Items[i];
-            ButtonAt(box, item, new Rect2(25 + i * 185, 745, 165, 43), () =>
-            { if (_items.Contains(item)) _items.Remove(item); else if (_items.Count < 2) _items.Add(item); UpdateItems(); }).TooltipText = CondensationCardGame.ItemText(item);
+            var itemsLabel = Text(box, "", 19, new Rect2(25, 700, 1230, 35), Cream);
+            void UpdateItems() => itemsLabel.Text = "携带道具（选两件，同名一件）：" + string.Join("、", _items);
+            UpdateItems();
+            for (var i = 0; i < CondensationCardGame.Items.Length; i++)
+            {
+                var item = CondensationCardGame.Items[i];
+                ButtonAt(box, item, new Rect2(25 + i * 185, 745, 165, 43), () =>
+                { if (_items.Contains(item)) _items.Remove(item); else if (_items.Count < 2) _items.Add(item); UpdateItems(); }).TooltipText = CondensationCardGame.ItemText(item);
+            }
         }
+        else Text(box, "正式局不开放道具。", 20, new Rect2(25, 710, 500, 40), Cream);
+        if (!_testMode) ButtonAt(box, "返回修炼", new Rect2(755, 745, 220, 43), RequestClose);
         ButtonAt(box, "开始凝核", new Rect2(1010, 745, 235, 43), () =>
         { if (_counts.Values.Sum() != 36) { summary.Text = "请将牌组调整为36张。"; return; } BeginGame(); });
+        UpdateModeVisibility();
     }
-    private static void Number(Control parent, string label, int initial, int min, int max, Vector2 pos, Action<int> changed)
+    private static void Number(Control parent, string label, int initial, int min, int max, Vector2 pos, Action<int> changed, bool editable)
     {
         Text(parent, label, 21, new Rect2(pos, new Vector2(150, 40)), Cream);
-        var spin = new SpinBox { Position = pos + new Vector2(150, 0), Size = new Vector2(135, 40), MinValue = min, MaxValue = max, Step = 1, Value = initial };
-        parent.AddChild(spin); spin.ValueChanged += v => changed((int)v);
+        var spin = new SpinBox { Position = pos + new Vector2(150, 0), Size = new Vector2(135, 40), MinValue = min, MaxValue = max, Step = 1, Value = initial, Editable = editable };
+        parent.AddChild(spin);
+        spin.ValueChanged += v =>
+        {
+            if (editable) changed((int)v);
+            else spin.Value = initial;
+        };
+    }
+
+    private void UpdateModeVisibility()
+    {
+        if (_itemButton is not null) _itemButton.Visible = _testMode;
+        if (_itemHint is not null) _itemHint.Visible = _testMode;
+        if (_restartButton is not null) _restartButton.Visible = _testMode;
+        if (_returnButton is not null)
+        {
+            _returnButton.Text = _testMode ? "返回" : "返回修炼";
+            _returnButton.Visible = _testMode || _game is null || _game.Finished;
+        }
     }
 
     private void Refresh()
@@ -188,7 +224,8 @@ public partial class CondensationCardGamePanel : Control
         _actions.Text = "本回合可施展\n" + new string('◆', g.Actions) + new string('◇', 3 - g.Actions);
         _track.SetState(g);
         _status.Text = g.Finished ? g.Disorder > 10 ? "紊乱失控 · 凝核失败" : $"最终凝核程度 {g.Score} · {(g.Failed ? "凝核未成" : "灵核已成")}" : g.SwapOpen ? "准备阶段：可选手牌换牌，再开始行功" : "选择手法，压聚灵气";
-        _forecast.Text = g.Finished ? "本次试演结果不写入正式人物。" : $"灵根：压聚+{g.RootBonus}  ·  灵慧：理气额外降{g.InsightBonus}  ·  悟性换牌余{g.ExtraSwaps}" + (g.ChargeActive ? "  ·  蓄劲待发" : "") + (g.ReturnActive ? "  ·  本轮引回" : "");
+        _forecast.Text = g.Finished ? (_testMode ? "本次试演结果不写入正式人物。" : "正式凝核已结算。") : $"灵根：压聚+{g.RootBonus}  ·  灵慧：理气额外降{g.InsightBonus}  ·  悟性换牌余{g.ExtraSwaps}" + (g.ChargeActive ? "  ·  蓄劲待发" : "") + (g.ReturnActive ? "  ·  本轮引回" : "");
+        UpdateModeVisibility();
         _drawCount.Text = $"抽牌堆 {g.Deck.Count}"; _discardCount.Text = $"弃牌堆 {g.Discard.Count}";
         _swap.Visible = _start.Visible = g.SwapOpen && !g.Finished;
         _extra.Visible = g.SwapOpen && g.Round > 1 && !g.Finished;
@@ -201,6 +238,16 @@ public partial class CondensationCardGamePanel : Control
         _cards.Clear();
         for (var i = 0; i < g.Hand.Count; i++) BuildHandCard(i, g.Hand[i]);
         if (!_animating && !g.Finished) _qi.ShowCompression(g.Score);
+        if (g.Finished)
+        {
+            if (!g.Failed && !_successAnimationPlayed)
+            {
+                _successAnimationPlayed = true;
+                _animating = true; _end.Disabled = true;
+                _qi.PlayCondensation(text => _status.Text = text, () => { _animating = false; Refresh(); });
+            }
+            else ShowResult();
+        }
     }
     private void BuildHandCard(int index, string name)
     {
@@ -323,24 +370,30 @@ public partial class CondensationCardGamePanel : Control
         ButtonAt(box, "确认结算", new Rect2(650, 440, 245, 48), () =>
         {
             g.EndRound(); HideModal(); Refresh();
-            if (g.Finished && !g.Failed)
-            {
-                _animating = true; _end.Disabled = true;
-                _qi.PlayCondensation(text => _status.Text = text, () => { _animating = false; Refresh(); ShowResult(); });
-            }
-            else if (g.Finished) ShowResult();
         });
     }
     private void ShowResult()
     {
-        var g = _game!; var box = Modal(g.Failed ? "凝核未成" : "灵核已成", 1000, 680);
-        Text(box, g.Disorder > 10 ? $"紊乱{g.Disorder}，超过10，立即失败。" : $"全部结算后的凝核程度：{g.Score}\n成核标准：100，上不封顶。", 32, new Rect2(40, 85, 920, 100), Cream);
+        var g = _game!;
+        if (!g.Finished) return;
+        if (!_testMode && !_resultReported && _target is not null)
+        {
+            _resultReported = true;
+            CondensationFinished?.Invoke(_target, !g.Failed, g.Failed ? 0 : g.Score);
+        }
+        UpdateModeVisibility();
+        var box = Modal(g.Failed ? "凝核未成" : "灵核已成", 1000, 680);
+        var outcome = g.Failed
+            ? g.Disorder > 10 ? $"紊乱升至 {g.Disorder}，超过10，凝核失败。" : $"最终凝核程度 {g.Score}，未达到100。"
+            : $"全部结算后的凝核程度：{g.Score}\n成核标准：100，上不封顶。";
+        Text(box, outcome, 32, new Rect2(40, 85, 920, 100), Cream);
         Text(box, string.Join("\n", g.Log.TakeLast(6)), 21, new Rect2(40, 205, 920, 220), Cream);
-        Text(box, CondensationOutcomeRules.Describe(g.Failed ? 0 : g.Score), 21, new Rect2(40, 440, 920, 85), Cream);
-        Text(box, "试演仅展示收益，不写入正式人物或存档；云气在铸玄基时转化。", 19, new Rect2(40, 535, 920, 50), Cream);
-        ButtonAt(box, "重新构筑", new Rect2(40, 600, 240, 45), ShowSetup);
-        ButtonAt(box, "查看完整记录", new Rect2(340, 600, 280, 45), ShowLog);
-        ButtonAt(box, "收起", new Rect2(710, 600, 240, 45), HideModal);
+        if (!g.Failed) Text(box, CondensationOutcomeRules.Describe(g.Score), 21, new Rect2(40, 440, 920, 85), Cream);
+        else Text(box, _testMode ? "试演失败不会影响角色。" : "本次不扣灵力；主角已受重伤，正式战斗生命上限暂降15%，实际休息行动累计120小时后可重新凝核。", 19, new Rect2(40, 440, 920, 70), Cream);
+        Text(box, _testMode ? "试演只展示收益，不写入正式人物或存档；云气在铸玄基时转化。" : "凝核成功已写入正式人物；后续云气在铸玄基时转化。", 19, new Rect2(40, 535, 920, 50), Cream);
+        if (_testMode) ButtonAt(box, "重新构筑", new Rect2(40, 600, 240, 45), ShowSetup);
+        ButtonAt(box, "查看完整记录", new Rect2(_testMode ? 340 : 210, 600, 280, 45), ShowLog);
+        ButtonAt(box, _testMode ? "收起" : "返回修炼", new Rect2(_testMode ? 710 : 690, 600, 240, 45), _testMode ? HideModal : RequestClose);
     }
     private void ShowItems()
     {
@@ -408,19 +461,24 @@ public partial class CondensationCardGamePanel : Control
     private void ShowHelp()
     {
         var box = Modal("初次凝核 · 如何游玩", 1120, 790);
+        var itemHelp = _testMode
+            ? "② 行功：点开始行功，再点手牌，查看效果并确认。每轮三次施展，\n调息也占一次。道具每轮最多一件，本局各一次，不占施展。\n\n"
+            : "② 行功：正式局不开放道具。点开始行功，再点手牌查看效果并确认；\n每轮三次施展，调息也占一次。\n\n";
         Text(box,
             "目标：八回合全部结算后，凝核程度达到100。分数上不封顶。\n\n" +
             "① 准备：起手六张，可统一换零至两张；之后每回合补足六张，\n可弃一抽一。未打的牌保留，牌库不会回洗。\n\n" +
-            "② 行功：点开始行功，再点手牌，查看效果并确认。每轮三次施展，\n调息也占一次。道具每轮最多一件，本局各一次，不占施展。\n\n" +
+            itemHelp +
             "③ 回弹：压聚立刻增加凝核，却会留下延迟回弹。到达时用引回\n转为凝核收益；没接住就扣分。调度牌可改变到达时间。\n\n" +
             "④ 紊乱：连续压聚会增紊乱；理气、调息可降低。凝核在同回合\n涨—降—涨或降—涨—降，额外紊乱+1。超过10立即失败！\n\n" +
             "⑤ 结算：紊乱0—10分别扣0/0/1/2/4/6/9/12/16/20/25，\n再自然下降1。最后一轮还会扣掉全部未结回弹，之后才判成核。\n\n" +
-            "人物：悟性追加换牌；灵慧提高理气效率；匹配灵根权重增加\n压聚收益。牌面与确认页会列出补正。可随时点右上玩法重看。",
+            (_testMode ? "人物：试演可调悟性、灵慧和匹配权重；" : "人物属性：正式局锁定当前人物的悟性、灵慧和匹配权重；") +
+            "悟性追加换牌；灵慧提高理气效率；匹配灵根权重增加\n压聚收益。牌面与确认页会列出补正。可随时点右上玩法重看。",
             23, new Rect2(35, 85, 1050, 610), Cream);
         ButtonAt(box, "开始尝试", new Rect2(835, 715, 235, 48), HideModal);
     }
     private void ConfirmRestart()
     {
+        if (!_testMode) return;
         var box = Modal("重新试演", 700, 300);
         Text(box, "结束当前试演，返回牌组与属性准备？", 25, new Rect2(35, 90, 630, 65), Cream);
         ButtonAt(box, "继续当前", new Rect2(35, 215, 240, 45), HideModal);
@@ -450,9 +508,27 @@ public partial class CondensationCardGamePanel : Control
     public override void _UnhandledKeyInput(InputEvent @event)
     {
         if (@event is not InputEventKey { Pressed: true, Echo: false, Keycode: Key.Escape }) return;
-        if (_game?.Busy == true || _game is null) return;
-        if (_modal.Visible) HideModal(); else ConfirmRestart();
+        if (_game?.Busy == true) return;
+        if (_modal.Visible) HideModal();
+        else if (_testMode && _game is not null) ConfirmRestart();
+        else if (!_testMode) { GetViewport().SetInputAsHandled(); return; }
+        else return;
         GetViewport().SetInputAsHandled();
+    }
+
+    public bool TryCloseTopModal()
+    {
+        if (!_modal.Visible || _game?.Busy == true) return false;
+        HideModal();
+        return true;
+    }
+
+    private void RequestClose()
+    {
+        if (!_testMode && _game is { Finished: false }) return;
+        _qi.StopTransition();
+        Hide();
+        Closed?.Invoke();
     }
     private Button Pile(Rect2 rect, Texture2D texture, Action click)
     {

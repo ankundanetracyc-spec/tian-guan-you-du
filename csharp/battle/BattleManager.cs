@@ -81,6 +81,11 @@ public partial class BattleManager : Node2D
     private int _segmentNumber;
     private readonly List<GodotObject> _livingUnits = new();
     public float get_battle_speed_scale()=>battleSpeed;
+    public float cycle_battle_speed()
+    {
+        set_battle_speed(battleSpeed switch { 1f => 2f, 2f => 4f, 4f => 8f, _ => 1f });
+        return battleSpeed;
+    }
     public void set_spectator_battle(bool spectator) => _spectatorBattle = spectator;
     public bool is_spectator_battle() => _spectatorBattle;
     public bool is_realtime_battle()=>_realtimeMode;
@@ -90,7 +95,11 @@ public partial class BattleManager : Node2D
     public bool can_player_plan()=>_segmentPhase==SegmentPhase.Planning&&!_selectingQueueTargets&&!_playerQueueConfirmed&&GodotObject.IsInstanceValid(_mainPlayerUnit);
     public int get_action_slot_capacity()=>Mathf.Clamp(action_slots_per_segment,5,10);
     public bool is_waiting_for_skill_target()=>_pendingInstantSkill is not null;
-    public void set_battle_speed(float value)=>battleSpeed=value>=3?3:value>=2?2:1;
+    public void set_battle_speed(float value)
+    {
+        battleSpeed=value>=8?8:value>=4?4:value>=2?2:1;
+        unitOverlay?.refresh_speed_button();
+    }
     public void toggle_battle_pause()
     {
         if(!_realtimeMode||!battle_running)return;

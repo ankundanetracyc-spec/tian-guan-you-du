@@ -60,6 +60,7 @@ public partial class InfoPanel
         if(_overviewName is not null) _overviewName.Text=npc.npc_name;
         set_overview_value("gender",npc.gender==1?"女":"男");
         set_overview_value("age",$"{npc.current_age} 岁");
+        _lastShownNpcAge=npc.current_age;
         set_overview_value("species",npc.species);
         set_overview_value("realm",npc.cultivation_realm);
         set_overview_value("spirit_root",npc.spirit_root_name);

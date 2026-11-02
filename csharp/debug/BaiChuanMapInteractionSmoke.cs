@@ -30,17 +30,19 @@ public partial class BaiChuanMapInteractionSmoke : Node
                 await Frames(8);
                 var image = GetViewport().GetTexture().GetImage();
                 Check(image is not null && !image.IsEmpty(), "screen capture failed");
-                image.SavePng($"res://output/bai_chuan_formal_ui_{size.X}x{size.Y}.png");
+                image!.SavePng($"res://output/bai_chuan_formal_ui_{size.X}x{size.Y}.png");
             }
             var worldSize = 3762f;
+            var mapZoom = (float)map.Get("world_zoom").AsDouble();
+            var halfViewportWorld = GetViewport().GetVisibleRect().Size * 0.5f / mapZoom;
             map.Set("camera_pos", new Vector2(-10000, -10000));
             map.Call("_update_camera");
             var min = map.Get("camera_pos").AsVector2();
-            Check(min.X <= -GetViewport().GetVisibleRect().Size.X / 2 + 1 && min.Y <= -GetViewport().GetVisibleRect().Size.Y / 2 + 1, "left/top limits");
+            Check(min.X <= -halfViewportWorld.X + 1 && min.Y <= -halfViewportWorld.Y + 1, "left/top limits");
             map.Set("camera_pos", new Vector2(10000, 10000));
             map.Call("_update_camera");
             var max = map.Get("camera_pos").AsVector2();
-            Check(max.X >= worldSize - GetViewport().GetVisibleRect().Size.X / 2 - 1 && max.Y >= worldSize - GetViewport().GetVisibleRect().Size.Y / 2 - 1, "right/bottom limits");
+            Check(max.X >= worldSize - halfViewportWorld.X - 1 && max.Y >= worldSize - halfViewportWorld.Y - 1, "right/bottom limits");
             GD.Print("BAICHUAN_MAP_INTERACTION_SMOKE_OK");
             main.QueueFree();
             GetTree().Quit();

@@ -5,6 +5,7 @@ using Godot.Collections;
 public partial class Character : Creature
 {
     public const int InventorySlotCapacity = 120;
+    private const long GameHoursPerAgeYear = 360L * 24L;
     private const string PublicBasicSkillPoolPath = "res://resources/basic_decks/公共基础技能池.tres";
     // 早期灵石的可用储灵量：三灵根在密度 180、每日修炼十二时的条件下约可持续十日。
     // 灵石只提供环境，实际消耗仍随角色在该环境中的纳气速率变化。
@@ -53,7 +54,34 @@ public partial class Character : Creature
     public float ambient_lingqi_pressure{get=>human?.ambient_lingqi_pressure??100;set{if(human is not null)human.ambient_lingqi_pressure=value;}} public string basic_deck_path{get=>human?.basic_deck_path??"";set{if(human is not null)human.basic_deck_path=value;}} public int max_sub_slots{get=>Math.Max(0,(human?.max_sub_slots??2)+Mathf.RoundToInt(get_realm_attribute_adjustment("sub_slot_increase").fixedBonus));set{if(human is not null)human.max_sub_slots=value;}} public float mana_regen_rate{get=>human?.mana_regen_rate??.04f;set{if(human is not null)human.mana_regen_rate=value;}}
     public int meditation_room_index{get=>human?.meditation_room_index??-1;}
     public bool meditation_spirit_stone_supply{get=>human?.meditation_spirit_stone_supply??false;}
-    public override void _Ready(){entity_data ??=new HumanData();if(entity_data is not HumanData)entity_data=new HumanData{entity_name=entity_data.entity_name};ensure_basic_deck();ensure_spirit_core_state();ensure_body_refinement_state();ensure_visualization_state();ensure_inventory_state();load_gongfa_data();apply_missing_gongfa_permanent_bonuses();base._Ready();refresh_gongfa_effects();var time=GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");if(time is not null){_last_schedule_hour=time.get_total_game_hours();time.time_changed+=process_breakthrough_retreat;time.time_changed+=process_body_refinement;time.time_changed+=process_yuanxi_external_time;}}
+    public override void _Ready()
+    {
+        entity_data ??=new HumanData();
+        if(entity_data is not HumanData)entity_data=new HumanData{entity_name=entity_data.entity_name};
+        ensure_basic_deck();ensure_spirit_core_state();ensure_body_refinement_state();ensure_visualization_state();ensure_inventory_state();
+        load_gongfa_data();apply_missing_gongfa_permanent_bonuses();base._Ready();refresh_gongfa_effects();
+        var time=GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
+        if(time is not null)
+        {
+            _last_schedule_hour=time.get_total_game_hours();
+            if(human is not null && human.age_last_updated_game_hour < 0) human.age_last_updated_game_hour=time.get_total_game_hours();
+            time.TimeAdvanceStarting+=process_age_advance;
+            time.time_changed+=process_breakthrough_retreat;
+            time.time_changed+=process_body_refinement;
+            time.time_changed+=process_yuanxi_external_time;
+        }
+    }
+    private void process_age_advance(int fromHour,int toHour,string _reason)
+    {
+        if(human is null || toHour<=fromHour) return;
+        var last=human.age_last_updated_game_hour;
+        if(last<0 || last>fromHour) last=fromHour;
+        var elapsed=(long)toHour-last;
+        if(elapsed<GameHoursPerAgeYear) { human.age_last_updated_game_hour=last; return; }
+        var years=elapsed/GameHoursPerAgeYear;
+        current_age=checked(current_age+(int)years);
+        human.age_last_updated_game_hour=last+years*GameHoursPerAgeYear;
+    }
     public override void load_from_data(EntityData source){var data=source as HumanData??new HumanData{entity_name=source.entity_name};entity_data=data.Duplicate(true) as HumanData;ensure_basic_deck();ensure_spirit_core_state();ensure_body_refinement_state();ensure_visualization_state();ensure_inventory_state();load_gongfa_data();apply_missing_gongfa_permanent_bonuses();base.load_from_data(entity_data!);refresh_gongfa_effects();}
     private void ensure_basic_deck(){if(human is null)return;human.basic_deck_path=PublicBasicSkillPoolPath;if(Mathf.IsEqualApprox(human.dun_speed,100.0f)){var legacy_speed=!Mathf.IsEqualApprox(human.dun_speed_cells_per_day,1.0f)?human.dun_speed_cells_per_day:human.travel_speed_cells_per_day;if(!Mathf.IsEqualApprox(legacy_speed,1.0f))human.dun_speed=legacy_speed*100.0f;}human.dun_speed=Mathf.Max(0.01f,human.dun_speed);human.dun_speed_cells_per_day=1.0f;human.travel_speed_cells_per_day=1.0f;}
     private void ensure_spirit_core_state()
@@ -1165,10 +1193,37 @@ public partial class Character : Creature
         var realms=GetNodeOrNull<RealmManager>("/root/RealmManager");
         return cultivation_realm=="云息六层"&&realms?.get_next_realm_name(cultivation_realm)=="云息七层";
     }
-    /// <summary>凝核牌局成功后的唯一写回点。不会改变既有道承。</summary>
+    public bool has_active_severe_injury()
+    {
+        if(human is null)return false;
+        var hour=GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours()??0;
+        return WorldStatusRules.active_records(human.world_status_records,hour).Any(record=>record.status_id==WorldStatusRules.SevereInjuryId);
+    }
+    public int get_active_severe_injury_remaining_rest_hours()
+    {
+        if (human is null) return 0;
+        var hour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+        var injury = WorldStatusRules.active_records(human.world_status_records, hour)
+            .FirstOrDefault(record => record.status_id == WorldStatusRules.SevereInjuryId);
+        return injury is null ? 0 : Math.Max(0, injury.recovery_hours_required - injury.recovery_hours_progress);
+    }
+    public bool can_attempt_condensation_breakthrough()=>requires_condensation_breakthrough()&&is_breakthrough_ready()&&!has_active_severe_injury();
+    /// <summary>正式八回合凝核成功后的唯一写回点。</summary>
+    public bool complete_condensation(int finalScore)
+    {
+        if(finalScore<CondensationOutcomeRules.SuccessScore)return false;
+        return commit_condensation(finalScore,CondensationCoreState.MinimumVolume,CondensationCoreState.MinimumDensity,0f,"八回合凝核");
+    }
+    /// <summary>旧凝核验收夹具兼容入口；成功结果按最低成核线记账。</summary>
     public bool complete_condensation(float volume,float density,float impurity,string quality)
     {
-        if(human is null||!requires_condensation_breakthrough()||!is_breakthrough_ready()||impurity>=CondensationCoreState.FailureImpurity)return false;
+        if(impurity>=CondensationCoreState.FailureImpurity)return false;
+        return commit_condensation(CondensationOutcomeRules.SuccessScore,volume,density,impurity,quality);
+    }
+    private bool commit_condensation(int finalScore,float volume,float density,float impurity,string quality)
+    {
+        if(human is null||!can_attempt_condensation_breakthrough()||impurity>=CondensationCoreState.FailureImpurity)return false;
+        human.condensation_final_score=finalScore;
         human.has_spirit_core=true;
         human.core_count=1;
         human.spirit_core_volume=Mathf.Max(CondensationCoreState.MinimumVolume,volume);
@@ -1211,14 +1266,31 @@ public partial class Character : Creature
         foreach(var node in GetTree().GetNodesInGroup("main_scene")) if(node is MainScene main) return main.has_available_meditation_room(this);
         return false;
     }
-    public bool start_breakthrough_retreat(bool useMeditationRoom=false)
+    public bool start_breakthrough_retreat(bool useMeditationRoom=false, string selectedPillPath="")
     {
         if (human is null || !is_breakthrough_ready() || requires_condensation_breakthrough()) return false;
         var realms = GetNodeOrNull<RealmManager>("/root/RealmManager");
         var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
         if (realms is null || time is null) return false;
         var next = realms.get_next_realm_name(cultivation_realm);
-        if (string.IsNullOrEmpty(next) || !has_required_breakthrough_pill(next)) return false;
+        if (string.IsNullOrEmpty(next)) return false;
+        Dictionary? selectedPill = null;
+        if (!string.IsNullOrEmpty(get_required_breakthrough_pill_path(next)))
+        {
+            var choices = get_breakthrough_pill_choices(next);
+            foreach (var choice in choices)
+            {
+                var candidatePath = choice.GetValueOrDefault("path", "").AsString();
+                if ((string.IsNullOrEmpty(selectedPillPath) && selectedPill is null) || candidatePath == selectedPillPath)
+                {
+                    selectedPill = choice;
+                    if (!string.IsNullOrEmpty(selectedPillPath)) break;
+                }
+            }
+            if (selectedPill is null) return false;
+            selectedPillPath = selectedPill.GetValueOrDefault("path", "").AsString();
+        }
+        else selectedPillPath = "";
         if (useMeditationRoom && !can_use_meditation_room_for_retreat()) return false;
         if (useMeditationRoom && meditation_room_index < 0)
         {
@@ -1242,13 +1314,18 @@ public partial class Character : Creature
         human.breakthrough_started_hour = time.get_total_game_hours();
         human.breakthrough_finish_hour = human.breakthrough_started_hour + actualHours;
         human.breakthrough_uses_meditation_room = useMeditationRoom;
+        human.breakthrough_pill_path = selectedPillPath;
+        human.breakthrough_pill_id = selectedPill?.GetValueOrDefault("pill_id", "").AsString() ?? "";
+        human.breakthrough_pill_tier = selectedPill?.GetValueOrDefault("tier", -1).AsInt32() ?? -1;
+        human.breakthrough_pill_effect_snapshot = selectedPill?.GetValueOrDefault("effect", "").AsString() ?? "";
+        human.breakthrough_pill_effect_value_snapshot = selectedPill?.GetValueOrDefault("effect_value", 0).AsInt32() ?? 0;
         EmitSignal(SignalName.breakthrough_started,this,next); time.add_hours(actualHours); return true;
     }
     public Dictionary get_breakthrough_retreat_summary()
     {
         if(human is null||!human.is_in_breakthrough_retreat)return new Dictionary{{"active",false}};
         var time=GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager"); var remaining=Mathf.Max(0,human.breakthrough_finish_hour-(time?.get_total_game_hours()??human.breakthrough_started_hour));
-        return new Dictionary{{"active",true},{"target",human.breakthrough_target_realm},{"remaining_hours",remaining},{"total_hours",Mathf.Max(0,human.breakthrough_finish_hour-human.breakthrough_started_hour)},{"uses_meditation_room",human.breakthrough_uses_meditation_room}};
+        return new Dictionary{{"active",true},{"target",human.breakthrough_target_realm},{"remaining_hours",remaining},{"total_hours",Mathf.Max(0,human.breakthrough_finish_hour-human.breakthrough_started_hour)},{"uses_meditation_room",human.breakthrough_uses_meditation_room},{"pill_path",human.breakthrough_pill_path},{"pill_effect",human.breakthrough_pill_effect_snapshot}};
     }
     private void process_breakthrough_retreat()
     {
@@ -1259,11 +1336,33 @@ public partial class Character : Creature
     private void finish_breakthrough_retreat()
     {
         if(human is null)return; var realms=GetNodeOrNull<RealmManager>("/root/RealmManager");
-        var next=human.breakthrough_target_realm; if(string.IsNullOrEmpty(next)||realms is null||next!=realms.get_next_realm_name(cultivation_realm)||!realms.can_breakthrough(this)||!has_required_breakthrough_pill(next)){clear_breakthrough_retreat();return;}
-        if (!consume_breakthrough_pill_on_success(next)) { clear_breakthrough_retreat(); return; }
-        cultivation_realm=next; clear_breakthrough_retreat(); recalculate_attributes(); refresh_shared_basic_skill_pool(); EmitSignal(SignalName.breakthrough_completed,this,next); BreakthroughCompleted?.Invoke(this,next);
+        var next=human.breakthrough_target_realm;
+        if(string.IsNullOrEmpty(next)||realms is null||next!=realms.get_next_realm_name(cultivation_realm)||!realms.can_breakthrough(this)) { clear_breakthrough_retreat(); return; }
+        var selectedPillPath = human.breakthrough_pill_path;
+        var selectedPillId = human.breakthrough_pill_id;
+        var selectedTier = human.breakthrough_pill_tier;
+        var selectedEffectValue = human.breakthrough_pill_effect_value_snapshot;
+        double toxicityBefore = 0;
+        var legacyRequiredPath = get_required_breakthrough_pill_path(next);
+        var consumed = string.IsNullOrEmpty(selectedPillPath)
+            ? (string.IsNullOrEmpty(legacyRequiredPath) || has_inventory_item(legacyRequiredPath)) && consume_breakthrough_pill_on_success(next)
+            : consume_selected_breakthrough_pill_on_success(next, selectedPillPath, selectedPillId, selectedTier, out toxicityBefore);
+        if (!consumed) { clear_breakthrough_retreat(); return; }
+
+        cultivation_realm=next;
+        if (!string.IsNullOrEmpty(selectedPillPath))
+        {
+            if (selectedPillId == "dingmai")
+                spirit_strands += PillToxicityRules.Absorb(selectedEffectValue, toxicityBefore);
+            else if (selectedPillId == "guiyuan_dingxi")
+            {
+                human.yuanxi_duration_reduction = Math.Clamp(selectedEffectValue / 100d * PillToxicityRules.Efficiency(toxicityBefore), 0, .10);
+                NotifyYuanxi();
+            }
+        }
+        clear_breakthrough_retreat(); recalculate_attributes(); refresh_shared_basic_skill_pool(); EmitSignal(SignalName.breakthrough_completed,this,next); BreakthroughCompleted?.Invoke(this,next);
     }
-    private void clear_breakthrough_retreat(){if(human is null)return;human.is_in_breakthrough_retreat=false;human.breakthrough_target_realm="";human.breakthrough_started_hour=0;human.breakthrough_finish_hour=0;human.breakthrough_uses_meditation_room=false;}
+    private void clear_breakthrough_retreat(){if(human is null)return;human.is_in_breakthrough_retreat=false;human.breakthrough_target_realm="";human.breakthrough_started_hour=0;human.breakthrough_finish_hour=0;human.breakthrough_uses_meditation_room=false;human.breakthrough_pill_path="";human.breakthrough_pill_id="";human.breakthrough_pill_tier=-1;human.breakthrough_pill_effect_snapshot="";human.breakthrough_pill_effect_value_snapshot=0;}
     /// <summary>按实际投入小时累计灵力；速率单位为“缕/小时”，小数部分进入存档而非被截断。</summary>
     private int advance_cultivation_hours(float hours)
     {

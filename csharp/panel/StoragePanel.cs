@@ -426,7 +426,15 @@ public partial class StoragePanel : Control
         if (item is PillContainerItemData container)
             return "瓷瓶外观定义；炼丹无需准备或消耗瓷瓶。";
         if (item is PillItemData pill)
-            return $"丹阶{pill.pill_rank}品 · 丹效{AlchemyQualityRules.Name(new[] { 20, 51, 76, 91, 100 }[Math.Clamp(pill.efficacy_tier, 0, 4)])}\n{pill.EffectText}\n瓷瓶仅作图标与演出外观；行囊中的丹药逐件占格，同类丹药只在左侧清册合并显示数量。炼丹无需准备或消耗空瓷瓶。\n效果无收益时不可使用。";
+        {
+            var useRule = pill.pill_id switch
+            {
+                "dingmai" => "只在云息三层晋升四层的闭关突破中选用，成功后消耗。",
+                "guiyuan_dingxi" => "只在云息九层晋升十层的闭关突破中选用，成功后消耗。",
+                _ => "瓷瓶仅作图标与演出外观；行囊中的丹药逐件占格，同类丹药只在左侧清册合并显示数量。炼丹无需准备或消耗空瓷瓶。"
+            };
+            return $"丹阶{pill.pill_rank}品 · 丹效{AlchemyQualityRules.Name(new[] { 20, 51, 76, 91, 100 }[Math.Clamp(pill.efficacy_tier, 0, 4)])}\n{pill.EffectText}\n{useRule}";
+        }
         if (item is PortraitClothingData clothing)
             return $"立绘衣着 · {clothing.portrait_gender switch { "male" => "男修", "female" => "女修", _ => "男女通用" }}\n穿上后只更换人物立绘衣着，不增加属性，也不替换衣甲装备。";
         if(item is EquipmentData equipment)

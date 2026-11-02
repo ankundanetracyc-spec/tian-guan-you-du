@@ -196,6 +196,11 @@ public partial class CultivationUI
         var paper = new PanelContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill }; paper.AddThemeStyleboxOverride("panel", QuietRoomStyle.Paper(.95f, 28)); columns.AddChild(paper);
         var box = room_box(paper); box.AddChild(QuietRoomStyle.Text("突破条件与安排", 28));
         _breakthroughHint = QuietRoomStyle.Text("", 23); _breakthroughHint.AutowrapMode = TextServer.AutowrapMode.WordSmart; box.AddChild(_breakthroughHint);
+        _breakthroughPillPicker = new OptionButton { Visible = false, CustomMinimumSize = new Vector2(0, 46), SizeFlagsHorizontal = SizeFlags.ExpandFill };
+        _breakthroughPillPicker.AddThemeFontSizeOverride("font_size", 20);
+        _breakthroughPillPicker.ItemSelected += on_breakthrough_pill_selected;
+        box.AddChild(_breakthroughPillPicker);
+        _breakthroughPillEffect = QuietRoomStyle.Text("", 19); _breakthroughPillEffect.AutowrapMode = TextServer.AutowrapMode.WordSmart; _breakthroughPillEffect.Visible = false; box.AddChild(_breakthroughPillEffect);
         box.AddChild(new Control { SizeFlagsVertical = SizeFlags.ExpandFill }); _breakthrough = new Button { Text = "闭关突破" }; QuietRoomStyle.Primary(_breakthrough); _breakthrough.Pressed += breakthrough; box.AddChild(_breakthrough);
     }
     private ScrollContainer mount_room_panel(PanelContainer panel)

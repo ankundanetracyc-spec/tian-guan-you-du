@@ -16,6 +16,8 @@ public static class AlchemyPillVisual
             "huichun" => new Color("82916d"),
             "tongmai" => new Color("71869a"),
             "jingxin" => new Color("9b91a2"),
+            "dingmai" => new Color("9a7a55"),
+            "guiyuan_dingxi" => new Color("7b7799"),
             _ => new Color("71869a")
         };
         material.SetShaderParameter("band_tint", band);
@@ -35,7 +37,9 @@ public static class AlchemyPillVisual
             _ => item.EffectText
         };
         var introduction = CleanIntroduction(item.description);
-        if (!AlchemyProductCatalog.IsEnabled(item.pill_id)) introduction = "暂未开放使用。" + introduction;
+        if (item.pill_id == "dingmai") introduction = "只用于云息三层晋升四层的闭关突破，不可直接服用或编入战备。" + introduction;
+        else if (item.pill_id == "guiyuan_dingxi") introduction = "只用于云息九层晋升十层的闭关突破，不可直接服用或编入战备。" + introduction;
+        else if (!AlchemyProductCatalog.IsEnabled(item.pill_id)) introduction = "暂未开放使用。" + introduction;
         var condition = item.pill_id switch
         {
             "jingxin" => "心境低于0时可用，最高恢复至0，不能获得正向心境。",

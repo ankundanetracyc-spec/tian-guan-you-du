@@ -12,18 +12,27 @@ public partial class Character
     public override void _ExitTree()
     {
         var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
-        if (time is not null) time.time_changed -= process_yuanxi_external_time;
+        if (time is not null)
+        {
+            time.time_changed -= process_yuanxi_external_time;
+            time.TimeAdvanceStarting -= process_age_advance;
+        }
         base._ExitTree();
     }
 
     // 用现有倍率之比，不把缕/小时转换成新的养息资源，也不改全局吐纳数值。
     public double get_yuanxi_efficiency() => get_element_efficiency(main_gongfa) * get_cultivation_environment_factor();
-    public double get_yuanxi_phase_required(int phase) => phase switch
+    public double get_yuanxi_duration_reduction() => Math.Clamp(human?.yuanxi_duration_reduction ?? 0d, 0d, .10d);
+    public double get_yuanxi_phase_required(int phase)
     {
-        0 => 640d,
-        1 => (8 + yuanxi_count) * 16d,
-        _ => (6 + 2 * yuanxi_count) * 16d
-    };
+        var baseHours = phase switch
+        {
+            0 => 640d,
+            1 => (8 + yuanxi_count) * 16d,
+            _ => (6 + 2 * yuanxi_count) * 16d
+        };
+        return baseHours * (1d - get_yuanxi_duration_reduction());
+    }
     public string get_yuanxi_phase_name() => (human?.yuanxi_phase ?? 0) switch { 0 => "周行", 1 => "牵引", _ => "平衡" };
     public double get_yuanxi_remaining_hours()
     {

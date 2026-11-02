@@ -28,10 +28,11 @@ public partial class BattleUnitOverlay : CanvasLayer
         AddToGroup("battle_unit_overlays");
         var controls=new CanvasLayer{Name="BattleControlsCanvas",Layer=BattlePresentationLayers.HudCanvas};AddChild(controls);
         targetFrames=new TargetFrameLayer();AddChild(targetFrames);
-        var speed=new Button{Text="倍速 ×1",Size=new(140,40)};
+        var speed=new Button{Size=new(140,40)};
         speedButton=speed;BattleUiArt.Skin(speed);speed.Icon=BattleUiArt.Texture("icon_speed");speed.ExpandIcon=true;speed.AddThemeConstantOverride("icon_max_width",22);
         speed.AddThemeFontSizeOverride("font_size",20);controls.AddChild(speed);
-        speed.Pressed+=()=>{manager.set_battle_speed(manager.get_battle_speed_scale()==1?2:manager.get_battle_speed_scale()==2?3:1);speed.Text=$"倍速 ×{manager.get_battle_speed_scale()}";};
+        refresh_speed_button();
+        speed.Pressed+=()=>manager.cycle_battle_speed();
         pauseButton=new Button{Text="暂停",Size=new(156,40)};
         BattleUiArt.Skin(pauseButton);pauseButton.Icon=BattleUiArt.Texture("icon_pause");pauseButton.ExpandIcon=true;pauseButton.AddThemeConstantOverride("icon_max_width",20);
         pauseButton.AddThemeFontSizeOverride("font_size",18);controls.AddChild(pauseButton);
@@ -47,6 +48,11 @@ public partial class BattleUnitOverlay : CanvasLayer
     {
         if(pauseButton is not null&&GodotObject.IsInstanceValid(pauseButton))
             pauseButton.Text=manager.is_battle_paused()?"继续":"暂停";
+    }
+    public void refresh_speed_button()
+    {
+        if(speedButton is not null&&GodotObject.IsInstanceValid(speedButton))
+            speedButton.Text=$"倍速 ×{manager.get_battle_speed_scale():0}";
     }
     public void ShowTargetFrames(IEnumerable<GodotObject> targets,Color color,float duration=.55f)
         => ShowTargetFrames(targets,color,duration,null,null);

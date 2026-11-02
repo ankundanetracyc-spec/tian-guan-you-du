@@ -12,6 +12,7 @@ public sealed record SpatialInventoryEntry(string InstanceId, string ItemPath, s
 public partial class Character
 {
     private bool _spatialCommitting;
+    private bool _consumingBreakthroughReservation;
     private int? _spatialReconciledStamp;
     private readonly System.Collections.Generic.Dictionary<string, ItemData?> _spatialItemCache = new(StringComparer.Ordinal);
     private int spatial_state_stamp()
@@ -187,7 +188,8 @@ public partial class Character
         paths = human.inventory_item_paths.ToList(); counts = human.inventory_item_counts.ToList(); slots = human.inventory_item_positions.ToList();
         foreach (var (path, count) in outgoing)
         {
-            if (count < 0 || get_inventory_total_count(path) - get_equipped_item_count(path) < count) return false;
+            var reservedForBreakthrough = !_consumingBreakthroughReservation && human.is_in_breakthrough_retreat && human.breakthrough_pill_path == path ? 1 : 0;
+            if (count < 0 || get_inventory_total_count(path) - get_equipped_item_count(path) - reservedForBreakthrough < count) return false;
             int remaining = count;
             for (int i = paths.Count - 1; i >= 0 && remaining > 0; i--)
             {

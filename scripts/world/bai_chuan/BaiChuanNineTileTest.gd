@@ -1,8 +1,23 @@
 extends Control
 ## Isolated art/placement preview. No travel, calendar or save transactions.
 
+signal map_zoom_changed(zoom: float, level: int)
+
 const TILE_SIZE := 1254.0
 const WORLD_SIZE := TILE_SIZE * 3.0
+const FORMAL_ZOOM_LEVELS := [0.24, 0.48, 0.96]
+const FORMAL_DOUBLE_CLICK_WINDOW_MS := 450
+const FAR_ZOOM_FILL := 0.90
+# 1280x720 HUD safe bounds: beyond the roster/date strip, left of task cards,
+# and above the persistent bottom navigation.
+const FORMAL_MAP_SAFE_LEFT := 340.0
+const FORMAL_MAP_SAFE_TOP := 100.0
+const FORMAL_MAP_SAFE_RIGHT_MARGIN := 390.0
+const FORMAL_MAP_SAFE_BOTTOM_MARGIN := 155.0
+const FORMAL_DETAILS_WIDTH := 360.0
+const FORMAL_DETAILS_RIGHT_MARGIN := 18.0
+const FORMAL_DETAILS_TOP_MARGIN := 18.0
+const FORMAL_DETAILS_TASK_GAP := 8.0
 const ART_DIR := "res://textures/world/bai_chuan/acceptance_v1/tiles/"
 const PRESENTATION_PATH := "res://textures/world/bai_chuan/acceptance_v1/presentation.json"
 const ENTRANCE_PATH := "res://textures/world/bai_chuan/entrance_v1/nodes.json"
@@ -21,13 +36,21 @@ var presentation: Dictionary = {}
 var place_views: Dictionary = {}
 var icon_cache: Dictionary = {}
 var camera_pos := Vector2.ZERO
+var world_zoom := 1.0
+var zoom_level := -1
+var _last_camera_safe_rect := Rect2()
 var dragging := false
 var _map_press_active := false
 var _map_press_origin := Vector2.ZERO
 var _map_press_target: BaseButton
+var _last_formal_click_node_id := ""
+var _last_formal_click_time_ms := 0
 var formal_info_box: VBoxContainer
+var formal_details_panel: PanelContainer
 var title_label: Label
 var detail_label: Label
+var _formal_details_layout_queued := false
+var _formal_details_density := ""
 var mini: Control
 var mini_frame: ReferenceRect
 var _old_mode: int
@@ -171,6 +194,12 @@ func _ready() -> void:
 	# Only the isolated preview scene adopts the pending art.
 	_art_base = "res://textures/world/bai_chuan/acceptance_20261030/"
 	_whole_mode = true
+	if is_in_group("node_world_map_presentation"):
+		zoom_level = 2
+		world_zoom = _zoom_for_level(zoom_level, get_viewport_rect().size)
+	else:
+		zoom_level = -1
+		world_zoom = 1.0
 	var win := get_window()
 	_old_mode = win.content_scale_mode
 	_old_size = win.content_scale_size
@@ -221,8 +250,9 @@ func _ready() -> void:
 	_build_places()
 	_rebuild_path_art()
 	_build_hud()
-	get_viewport().size_changed.connect(_update_camera)
-	_focus_place("玉虚仙宗")
+	get_viewport().size_changed.connect(_on_viewport_size_changed)
+	if not is_in_group("node_world_map_presentation"):
+		_focus_place("玉虚仙宗")
 
 func _adapt_acceptance_presentation() -> void:
 	# Browser rectangles are left/top/right/bottom; this scene uses x/y/width/height.
@@ -407,6 +437,7 @@ func _build_places() -> void:
 			marker.add_child(natural_mark)
 		var hit := EntranceHitButton.new()
 		hit.name = "SelectIcon"
+		hit.set_meta("formal_map_node_id", str(node.id))
 		hit.flat = true
 		hit.focus_mode = Control.FOCUS_NONE
 		hit.position = image_view.position
@@ -428,6 +459,7 @@ func _build_places() -> void:
 		marker.add_child(hit)
 		var button := Button.new()
 		button.name = "SelectPlace"
+		button.set_meta("formal_map_node_id", str(node.id))
 		var characters := PackedStringArray()
 		for character in str(node.name): characters.append(character)
 		button.text = "\n".join(characters)
@@ -632,28 +664,72 @@ func _build_formal_hud() -> void:
 	# The game's own clock, health and navigation already surround the map.
 	# Keep the map-specific information in a single compact card.
 	var details := _panel(self)
+	formal_details_panel = details
 	details.name = "WorldMapDetails"
 	details.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT)
-	details.offset_left = -270
-	details.offset_top = 18
-	details.offset_right = -18
-	details.offset_bottom = 205
+	details.offset_left = -(FORMAL_DETAILS_WIDTH + FORMAL_DETAILS_RIGHT_MARGIN)
+	details.offset_top = FORMAL_DETAILS_TOP_MARGIN
+	details.offset_right = -FORMAL_DETAILS_RIGHT_MARGIN
+	details.offset_bottom = FORMAL_DETAILS_TOP_MARGIN + 154.0
+	var paper := details.get_theme_stylebox("panel") as StyleBoxFlat
+	if paper != null:
+		paper.content_margin_left = 10
+		paper.content_margin_right = 10
+		paper.content_margin_top = 6
+		paper.content_margin_bottom = 6
 	formal_info_box = VBoxContainer.new()
-	formal_info_box.add_theme_constant_override("separation", 8)
+	formal_info_box.add_theme_constant_override("separation", 4)
 	details.add_child(formal_info_box)
-	var heading := Label.new()
-	heading.text = "百川舆图"
-	heading.add_theme_font_size_override("font_size", 17)
-	formal_info_box.add_child(heading)
 	title_label = Label.new()
 	title_label.text = "选择地点"
-	title_label.add_theme_font_size_override("font_size", 21)
+	title_label.add_theme_font_size_override("font_size", 18)
 	formal_info_box.add_child(title_label)
 	detail_label = Label.new()
 	detail_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	detail_label.custom_minimum_size.x = 215
-	detail_label.add_theme_font_size_override("font_size", 15)
+	detail_label.custom_minimum_size.x = 300
+	detail_label.add_theme_font_size_override("font_size", 14)
 	formal_info_box.add_child(detail_label)
+	formal_info_box.minimum_size_changed.connect(_queue_formal_details_layout)
+	call_deferred("_queue_formal_details_layout")
+
+func _queue_formal_details_layout() -> void:
+	if _formal_details_layout_queued or not is_instance_valid(formal_details_panel):
+		return
+	_formal_details_layout_queued = true
+	call_deferred("_layout_formal_details")
+
+func _layout_formal_details() -> void:
+	_formal_details_layout_queued = false
+	if not is_instance_valid(formal_details_panel) or not is_instance_valid(formal_info_box):
+		return
+	var viewport_size := get_viewport_rect().size
+	var compact := viewport_size.y < 800.0 or viewport_size.x < 1200.0
+	var density := "compact" if compact else "regular"
+	if density != _formal_details_density:
+		_formal_details_density = density
+		formal_info_box.add_theme_constant_override("separation", 2 if compact else 4)
+		title_label.add_theme_font_size_override("font_size", 16 if compact else 18)
+		detail_label.add_theme_font_size_override("font_size", 13 if compact else 14)
+		for child in formal_info_box.get_children():
+			if child is Label and child.name == "CurrentLocation":
+				child.add_theme_font_size_override("font_size", 13 if compact else 14)
+	var paper := formal_details_panel.get_theme_stylebox("panel") as StyleBoxFlat
+	if paper != null:
+		var vertical_margin := 4.0 if compact else 6.0
+		paper.content_margin_top = vertical_margin
+		paper.content_margin_bottom = vertical_margin
+	var width := minf(FORMAL_DETAILS_WIDTH, maxf(240.0, viewport_size.x - 32.0))
+	var detail_min_width := maxf(210.0, width - 28.0)
+	if absf(detail_label.custom_minimum_size.x - detail_min_width) > 0.5:
+		detail_label.custom_minimum_size.x = detail_min_width
+	formal_details_panel.offset_left = -(width + FORMAL_DETAILS_RIGHT_MARGIN)
+	formal_details_panel.offset_right = -FORMAL_DETAILS_RIGHT_MARGIN
+	var card_top := FORMAL_DETAILS_TOP_MARGIN
+	var available_height := maxf(70.0, viewport_size.y * 0.25 - card_top - FORMAL_DETAILS_TASK_GAP)
+	var minimum_height := formal_details_panel.get_combined_minimum_size().y
+	var card_height := minf(maxf(minimum_height, 70.0), available_height)
+	formal_details_panel.offset_top = card_top
+	formal_details_panel.offset_bottom = card_top + card_height
 
 func _toggle_layer(on: bool, layer: String) -> void:
 	if layer == "places":
@@ -675,6 +751,7 @@ func _select_place(node: Dictionary) -> void:
 		detail_label.text += " · 资源产地"
 	if node.has("owner"):
 		detail_label.text += "\n归属：" + str(node.owner)
+	_queue_formal_details_layout()
 
 func _focus_place(place_name: String) -> void:
 	_clear_hover()
@@ -686,36 +763,136 @@ func _focus_place(place_name: String) -> void:
 					if row.id == node.id:
 						center = Vector2(row.drawPos[0],row.drawPos[1])
 						break
-			camera_pos = center - get_viewport_rect().size * 0.5
-			_update_camera()
+			focus_world_point(center)
 			_select_place(node)
 			return
 
+func get_world_zoom() -> float:
+	return world_zoom
+
+func get_zoom_level() -> int:
+	return zoom_level
+
+func get_viewport_world_size() -> Vector2:
+	return get_viewport_rect().size / maxf(world_zoom, 0.001)
+
+func get_map_safe_rect() -> Rect2:
+	return _map_safe_rect_for_viewport(get_viewport_rect().size)
+
+func _map_safe_rect_for_viewport(viewport_size: Vector2) -> Rect2:
+	if not is_in_group("node_world_map_presentation"):
+		return Rect2(Vector2.ZERO, viewport_size)
+	var left := FORMAL_MAP_SAFE_LEFT
+	var top := FORMAL_MAP_SAFE_TOP
+	var right := viewport_size.x - FORMAL_MAP_SAFE_RIGHT_MARGIN
+	var bottom := viewport_size.y - FORMAL_MAP_SAFE_BOTTOM_MARGIN
+	if right <= left or bottom <= top:
+		return Rect2(Vector2.ZERO, viewport_size)
+	return Rect2(Vector2(left, top), Vector2(right - left, bottom - top))
+
+func _zoom_for_level(level: int, viewport_size: Vector2) -> float:
+	var bounded_level := clampi(level, 0, FORMAL_ZOOM_LEVELS.size() - 1)
+	if bounded_level == 0:
+		var safe_rect := _map_safe_rect_for_viewport(viewport_size)
+		var fit_zoom := minf(safe_rect.size.x, safe_rect.size.y) * FAR_ZOOM_FILL / WORLD_SIZE
+		return minf(FORMAL_ZOOM_LEVELS[0], maxf(fit_zoom, 0.01))
+	return FORMAL_ZOOM_LEVELS[bounded_level]
+
+func focus_world_point(point: Vector2) -> void:
+	var focus_screen_point := get_viewport_rect().size * 0.5
+	if is_in_group("node_world_map_presentation") and zoom_level == 0:
+		focus_screen_point = get_map_safe_rect().get_center()
+	camera_pos = point - focus_screen_point / maxf(world_zoom, 0.001)
+	_update_camera()
+
+func _set_zoom_level(level: int, anchor_screen_position: Vector2) -> void:
+	if not is_in_group("node_world_map_presentation"):
+		return
+	var next_level := clampi(level, 0, FORMAL_ZOOM_LEVELS.size() - 1)
+	if next_level == zoom_level:
+		return
+	var anchor_world_position := camera_pos + anchor_screen_position / world_zoom
+	zoom_level = next_level
+	world_zoom = _zoom_for_level(zoom_level, get_viewport_rect().size)
+	camera_pos = anchor_world_position - anchor_screen_position / world_zoom
+	_update_camera()
+	map_zoom_changed.emit(world_zoom, zoom_level)
+
 func _update_camera() -> void:
 	var viewport_size := get_viewport_rect().size
-	var margin := viewport_size * 0.5 if is_in_group("node_world_map_presentation") else Vector2.ZERO
+	var viewport_world_size := viewport_size / maxf(world_zoom, 0.001)
+	var formal_map := is_in_group("node_world_map_presentation")
+	var safe_rect := _map_safe_rect_for_viewport(viewport_size)
+	var margin := viewport_world_size * 0.5 if formal_map else Vector2.ZERO
 	var lower := -margin
-	var limits := (Vector2.ONE * WORLD_SIZE + margin - viewport_size).max(lower)
-	camera_pos = camera_pos.clamp(lower, limits).round()
-	world.position = -camera_pos
-	world.scale = Vector2.ONE
+	var limits := (Vector2.ONE * WORLD_SIZE + margin - viewport_world_size).max(lower)
+	if formal_map and zoom_level == 0:
+		lower = Vector2.ONE * WORLD_SIZE - safe_rect.end / world_zoom
+		limits = -safe_rect.position / world_zoom
+	camera_pos = camera_pos.clamp(lower, limits)
+	if formal_map:
+		camera_pos = (camera_pos * world_zoom).round() / world_zoom
+	else:
+		camera_pos = camera_pos.round()
+	world.position = -camera_pos * world_zoom
+	world.scale = Vector2.ONE * world_zoom
 	if is_instance_valid(mini_frame):
 		mini_frame.position = camera_pos / WORLD_SIZE * 180.0
-		mini_frame.size = viewport_size.min(Vector2.ONE * WORLD_SIZE) / WORLD_SIZE * 180.0
+		mini_frame.size = viewport_world_size.min(Vector2.ONE * WORLD_SIZE) / WORLD_SIZE * 180.0
+	_last_camera_safe_rect = safe_rect
+
+func _on_viewport_size_changed() -> void:
+	var formal_far_view := is_in_group("node_world_map_presentation") and zoom_level == 0
+	if formal_far_view:
+		var center_world_position := Vector2.ZERO
+		var can_preserve_center := _last_camera_safe_rect.size.x > 0.0 and _last_camera_safe_rect.size.y > 0.0
+		if can_preserve_center:
+			center_world_position = camera_pos + _last_camera_safe_rect.get_center() / world_zoom
+		world_zoom = _zoom_for_level(0, get_viewport_rect().size)
+		if can_preserve_center:
+			camera_pos = center_world_position - get_map_safe_rect().get_center() / world_zoom
+		else:
+			camera_pos = Vector2.ONE * WORLD_SIZE * 0.5 - get_map_safe_rect().get_center() / world_zoom
+	_update_camera()
+	_queue_formal_details_layout()
+	if formal_far_view:
+		map_zoom_changed.emit(world_zoom, zoom_level)
 
 func _mini_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		camera_pos = event.position.clamp(Vector2.ZERO, Vector2.ONE * 180.0) / 180.0 * WORLD_SIZE - get_viewport_rect().size * 0.5
+		camera_pos = event.position.clamp(Vector2.ZERO, Vector2.ONE * 180.0) / 180.0 * WORLD_SIZE - get_viewport_world_size() * 0.5
 		_update_camera()
 		mini.accept_event()
 
+func _is_pointer_over_map(screen_position: Vector2) -> bool:
+	if not Rect2(Vector2.ZERO, get_viewport_rect().size).has_point(screen_position):
+		return false
+	var hovered := get_viewport().gui_get_hovered_control()
+	if hovered == null or hovered == self:
+		return true
+	return is_instance_valid(world) and world.is_ancestor_of(hovered)
+
 func _input(event: InputEvent) -> void:
+	if is_in_group("node_world_map_presentation") and event is InputEventMouseButton and event.button_index in [MOUSE_BUTTON_WHEEL_UP, MOUSE_BUTTON_WHEEL_DOWN, MOUSE_BUTTON_WHEEL_LEFT, MOUSE_BUTTON_WHEEL_RIGHT]:
+		_clear_formal_map_click_sequence()
+		if not _is_pointer_over_map(event.position):
+			return
+		if event.pressed:
+			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+				_set_zoom_level(zoom_level + 1, event.position)
+			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+				_set_zoom_level(zoom_level - 1, event.position)
+		get_viewport().set_input_as_handled()
+		return
 	if is_in_group("node_world_map_presentation") and _formal_map_pointer_input(event):
 		return
+	if is_in_group("node_world_map_presentation") and (event is InputEventMagnifyGesture or event is InputEventPanGesture or (event is InputEventKey and event.pressed)):
+		_clear_formal_map_click_sequence()
 	if event is InputEventMagnifyGesture or event is InputEventPanGesture:
 		get_viewport().set_input_as_handled()
 	elif event is InputEventMouseButton and event.button_index in [MOUSE_BUTTON_WHEEL_UP, MOUSE_BUTTON_WHEEL_DOWN, MOUSE_BUTTON_WHEEL_LEFT, MOUSE_BUTTON_WHEEL_RIGHT]:
-		get_viewport().set_input_as_handled()
+		if not is_in_group("node_world_map_presentation"):
+			get_viewport().set_input_as_handled()
 	elif event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
 		get_viewport().set_input_as_handled()
 		_return_to_menu()
@@ -738,7 +915,9 @@ func _formal_map_pointer_input(event: InputEvent) -> bool:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			var hovered := get_viewport().gui_get_hovered_control()
-			if hovered != null and hovered != self and not world.is_ancestor_of(hovered): return false
+			if hovered != null and hovered != self and not world.is_ancestor_of(hovered):
+				_clear_formal_map_click_sequence()
+				return false
 			_map_press_active = true
 			_map_press_origin = event.position
 			dragging = false
@@ -752,24 +931,52 @@ func _formal_map_pointer_input(event: InputEvent) -> bool:
 			dragging = false
 			if clicked and not target.disabled:
 				target.emit_signal("pressed")
+				_record_formal_map_click(str(target.get_meta("formal_map_node_id", "")))
+			else:
+				_clear_formal_map_click_sequence()
 		get_viewport().set_input_as_handled()
 		return true
 	if event is InputEventMouseMotion and _map_press_active:
 		if not dragging and event.position.distance_to(_map_press_origin) >= 6.0:
 			dragging = true
+			_clear_formal_map_click_sequence()
 		if dragging:
-			camera_pos -= event.relative
+			camera_pos -= event.relative / world_zoom
 			_update_camera()
 		get_viewport().set_input_as_handled()
 		return true
 	return false
 
+func _record_formal_map_click(node_id: String) -> void:
+	if node_id.is_empty() or not _can_record_formal_map_click(node_id):
+		_clear_formal_map_click_sequence()
+		return
+	var now_ms := Time.get_ticks_msec()
+	if node_id == _last_formal_click_node_id and now_ms - _last_formal_click_time_ms <= FORMAL_DOUBLE_CLICK_WINDOW_MS:
+		_clear_formal_map_click_sequence()
+		_on_formal_map_double_click(node_id)
+		return
+	_last_formal_click_node_id = node_id
+	_last_formal_click_time_ms = now_ms
+
+func _clear_formal_map_click_sequence() -> void:
+	_last_formal_click_node_id = ""
+	_last_formal_click_time_ms = 0
+
+func _can_record_formal_map_click(_node_id: String) -> bool:
+	return true
+
+func _on_formal_map_double_click(_node_id: String) -> void:
+	pass
+
 func _process(delta: float) -> void:
-	# Input has no zoom command; also guard against accidental transform changes.
-	world.scale = Vector2.ONE
+	# The standalone art preview remains fixed at 1:1; only the formal map zooms.
+	if not is_in_group("node_world_map_presentation") and is_instance_valid(world) and world.scale != Vector2.ONE:
+		world_zoom = 1.0
+		world.scale = Vector2.ONE
 	var axis := Vector2(float(Input.is_physical_key_pressed(KEY_RIGHT)) - float(Input.is_physical_key_pressed(KEY_LEFT)), float(Input.is_physical_key_pressed(KEY_DOWN)) - float(Input.is_physical_key_pressed(KEY_UP)))
 	if axis != Vector2.ZERO:
-		camera_pos += axis.normalized() * 650.0 * delta
+		camera_pos += axis.normalized() * 650.0 * delta / maxf(world_zoom, 0.001)
 		_update_camera()
 
 func _return_to_menu() -> void:

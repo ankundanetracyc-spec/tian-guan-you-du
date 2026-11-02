@@ -12,7 +12,7 @@ public partial class MainScene : Node2D
         ["mat_spirit_spring_algae"]="res://resources/entities/items/灵泉藻.tres",
         ["spirit_stones"]="res://resources/entities/items/灵石.tres"
     };
-    private MainHUD? hud; private GameTimeUI? time_ui; private Button? _prologue_skip_button; private bool _prologue_skip_available; private StoragePanel? storage; private EstateResourceSystem? estate_resources; private InfoPanel? info; private CultivationUI? cultivation_ui; private CondensationPanel? condensation_panel; private RealmPanel? realm_panel; private StoryDialoguePanel? story_dialogue; private NpcInteractionPanel? npc_interactions; private TradePanel? trade_panel; private PrologueGuide? prologue_guide; private WorldNodeMapData? _world_node_data; private WorldLocationInteriorPanel? location_interior; private EstateOverview? estate; private DungeonExploreUI? back_hill_trial; private QingxiTerritoryState? territory_state; private QingxiTerritoryPanel? territory_panel; private QingxiFarmlandPanel? farmland_panel; private FamilyResidencePanel? residence_panel; private TerritoryLedgerPanel? territory_ledger; private OpeningIntro? opening_intro; private JournalPanel? journal; private BaigongPanel? baigong; private ActionTransitionPanel? action_transition; private bool _suppress_persistent_chrome; private Character? player; private QingxiPrologueStep _qingxi_prologue = QingxiPrologueStep.Awakened; private bool _xuanjian_awakened, _rested_after_xuanjian, _static_room_authorized, _first_breakthrough_reported, _back_hill_departure_arranged, _rested_for_back_hill, _first_back_hill_battle_explained, _qingxi_herbs_gathered, _back_hill_nest_seen, _back_hill_trial_complete, _beast_hunt_prompt_open, _beast_hunt_trigger_queued; private int _qingxi_arrival_hour, _journal_started_hour=-1, _journal_rumor_stage, _journal_unread; private readonly List<JournalPanel.Entry> _earned_rumors=[]; private readonly List<JournalPanel.Entry> _completed_quests=[]; private JournalPanel.Entry? _active_quest; private bool _prologue_goal_recorded; private readonly List<Character> family=[]; private readonly List<Character> retainers=[];
+    private MainHUD? hud; private GameTimeUI? time_ui; private Button? _prologue_skip_button; private bool _prologue_skip_available; private StoragePanel? storage; private EstateResourceSystem? estate_resources; private InfoPanel? info; private CultivationUI? cultivation_ui; private CondensationCardGamePanel? condensation_panel; private RealmPanel? realm_panel; private StoryDialoguePanel? story_dialogue; private NpcInteractionPanel? npc_interactions; private TradePanel? trade_panel; private PrologueGuide? prologue_guide; private WorldNodeMapData? _world_node_data; private WorldLocationInteriorPanel? location_interior; private EstateOverview? estate; private DungeonExploreUI? back_hill_trial; private QingxiTerritoryState? territory_state; private QingxiTerritoryPanel? territory_panel; private QingxiFarmlandPanel? farmland_panel; private FamilyResidencePanel? residence_panel; private TerritoryLedgerPanel? territory_ledger; private OpeningIntro? opening_intro; private JournalPanel? journal; private BaigongPanel? baigong; private ActionTransitionPanel? action_transition; private bool _suppress_persistent_chrome; private Character? player; private QingxiPrologueStep _qingxi_prologue = QingxiPrologueStep.Awakened; private bool _xuanjian_awakened, _rested_after_xuanjian, _static_room_authorized, _first_breakthrough_reported, _back_hill_departure_arranged, _rested_for_back_hill, _first_back_hill_battle_explained, _qingxi_herbs_gathered, _back_hill_nest_seen, _back_hill_trial_complete, _beast_hunt_prompt_open, _beast_hunt_trigger_queued; private int _qingxi_arrival_hour, _journal_started_hour=-1, _journal_rumor_stage, _journal_unread; private readonly List<JournalPanel.Entry> _earned_rumors=[]; private readonly List<JournalPanel.Entry> _completed_quests=[]; private JournalPanel.Entry? _active_quest; private bool _prologue_goal_recorded; private readonly List<Character> family=[]; private readonly List<Character> retainers=[];
     private string _player_world_node_id = "home_village"; private NpcWorldManager? _npc_world; private WorldNpcData? _qingxi_shopkeeper; private bool _cloud_state_initialized; private bool _world_open_in_progress; private bool _trade_hud_was_visible;
     public bool StartupComplete { get; private set; }
     public Exception? StartupError { get; private set; }
@@ -32,7 +32,7 @@ public partial class MainScene : Node2D
         info=GetNodeOrNull<InfoPanel>("CanvasLayer/HumanInfoPanel");
         if (info is not null) info.AppearanceChanged += mark_save_dirty;
         cultivation_ui=GetNodeOrNull<CultivationUI>("CanvasLayer/CultivationUI");
-        condensation_panel = new CondensationPanel { Name = "CondensationPanel" };
+        condensation_panel = new CondensationCardGamePanel { Name = "CondensationCardGamePanel" };
         GetNode<CanvasLayer>("CanvasLayer").AddChild(condensation_panel);
         realm_panel=GetNodeOrNull<RealmPanel>("CanvasLayer/RealmPanel");
         if (realm_panel is not null) realm_panel.PresentationStarted += () => cultivation_ui?.close_panel();
@@ -161,8 +161,11 @@ public partial class MainScene : Node2D
         if (npc_interactions?.Visible == true) { npc_interactions.close(); return true; }
         if (_restPanel?.Visible == true) { _restPanel.Close(); return true; }
         if (cultivation_ui?.Visible == true) { cultivation_ui.close_panel(); return true; }
-        if (condensation_panel?.TryClosePileBrowser() == true) return true;
-        if (condensation_panel?.Visible == true) { condensation_panel.ClosePanel(); return true; }
+        if (condensation_panel?.Visible == true)
+        {
+            condensation_panel.TryCloseTopModal();
+            return true;
+        }
         if (realm_panel?.Visible == true) { realm_panel.Hide(); return true; }
         if (info?.Visible == true) { if (info.dismiss_top_overlay()) return true; info.hide_panel(); return true; }
         if (storage?.Visible == true) { storage.hide_panel(); return true; }
@@ -342,8 +345,14 @@ public partial class MainScene : Node2D
     private void open_condensation(Character target)
     {
         if(condensation_panel is null || !GodotObject.IsInstanceValid(target)) return;
+        if (target != player) return;
+        if (!target.can_attempt_condensation_breakthrough())
+        {
+            cultivation_ui?.show_entity(target);
+            return;
+        }
         cultivation_ui?.close_panel();
-        condensation_panel.ShowFor(target);
+        condensation_panel.ShowFor(target, false);
     }
     private void open_condensation_test(Character target)
     {
@@ -353,11 +362,24 @@ public partial class MainScene : Node2D
     }
     private void close_condensation()
     {
-        if(player is not null && condensation_panel?.Visible != true) cultivation_ui?.show_entity(player);
+        condensation_panel?.Hide();
+        if(player is not null) cultivation_ui?.show_entity(player);
     }
-    private void on_condensation_finished(Character target, bool success)
+    private void on_condensation_finished(Character target, bool success, int finalScore)
     {
-        if(success) refresh_qingxi_quest();
+        if (target != player) return;
+        if (success)
+        {
+            if (target.complete_condensation(finalScore))
+            {
+                mark_save_dirty();
+                refresh_qingxi_quest();
+            }
+            else show_message("凝核条件已变化", "人物条件已变化，本次未写入境界或凝核结果。请重新查看突破条件。 ");
+            return;
+        }
+        if (!apply_player_severe_injury_from_condensation_failure())
+            show_message("凝核失败", "本次没有扣除灵力，但重伤状态未能写入。请重新查看人物状态。 ");
     }
     private void open_qingxi_location(string location)
     {
@@ -814,6 +836,7 @@ public partial class MainScene : Node2D
     // 见闻只由玩家主动消耗时间的行动触发；没有自然流逝，也不会用弹窗打断结算。
     private void on_action_time_changed()
     {
+        info?.refresh_current_age();
         if (player?.entity_data is HumanData human && human.sect_affiliation_id == YuxuSectId)
         {
             sync_yuxu_true_disciple_lecture_schedule(human);

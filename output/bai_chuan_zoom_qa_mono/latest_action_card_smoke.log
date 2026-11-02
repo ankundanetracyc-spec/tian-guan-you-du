@@ -1,0 +1,208 @@
+Godot Engine v4.7.2.stable.mono.custom_build.ed1daf0bf (2026-08-17 01:18:38 UTC) - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 596.36 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4060 Laptop GPU
+
+WARNING: res://tscn/scene/MainScene.tscn:3 - ext_resource, invalid UID: uid://c4jgg0n3ov8m6 - using text path instead: res://tscn/panel/TimePanel.tscn
+   at: ResourceLoaderText::load (scene\resources\resource_format_text.cpp:501)
+   C# backtrace (most recent call first):
+       [0] Godot.GodotObject Godot.NativeCalls.godot_icall_3_1268(nint, nint, string, string, int) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\NativeCalls.cs:11632)
+       [1] Godot.Resource Godot.ResourceLoader.Load(string, string, Godot.ResourceLoader+CacheMode) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\ResourceLoader.cs:120)
+       [2] T Godot.ResourceLoader.Load<T>(string, string, Godot.ResourceLoader+CacheMode) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\Extensions\ResourceLoaderExtensions.cs:27)
+       [3] T Godot.GD.Load<T>(string) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\GD.cs:129)
+       [4] void BaiChuanFormalMapZoomSmoke+<Run>d__27.MoveNext()
+       [5] void System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start<TStateMachine>(TStateMachine&)
+       [6] void BaiChuanFormalMapZoomSmoke.Run()
+       [7] bool BaiChuanFormalMapZoomSmoke.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&)
+       [8] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\Bridge\CSharpInstanceBridge.cs:24)
+WARNING: res://tscn/scene/MainScene.tscn:4 - ext_resource, invalid UID: uid://b4leek80jiuoq - using text path instead: res://tscn/panel/InfoPanel.tscn
+   at: ResourceLoaderText::load (scene\resources\resource_format_text.cpp:501)
+   C# backtrace (most recent call first):
+       [0] Godot.GodotObject Godot.NativeCalls.godot_icall_3_1268(nint, nint, string, string, int) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\NativeCalls.cs:11632)
+       [1] Godot.Resource Godot.ResourceLoader.Load(string, string, Godot.ResourceLoader+CacheMode) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\ResourceLoader.cs:120)
+       [2] T Godot.ResourceLoader.Load<T>(string, string, Godot.ResourceLoader+CacheMode) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\Extensions\ResourceLoaderExtensions.cs:27)
+       [3] T Godot.GD.Load<T>(string) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\GD.cs:129)
+       [4] void BaiChuanFormalMapZoomSmoke+<Run>d__27.MoveNext()
+       [5] void System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start<TStateMachine>(TStateMachine&)
+       [6] void BaiChuanFormalMapZoomSmoke.Run()
+       [7] bool BaiChuanFormalMapZoomSmoke.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&)
+       [8] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\Bridge\CSharpInstanceBridge.cs:24)
+WARNING: res://tscn/panel/InfoPanel.tscn:14 - ext_resource, invalid UID: uid://bf77pss4wwv5d - using text path instead: res://tscn/panel/BattleCard.tscn
+   at: ResourceLoaderText::load (scene\resources\resource_format_text.cpp:501)
+   C# backtrace (most recent call first):
+       [0] Godot.GodotObject Godot.NativeCalls.godot_icall_3_1268(nint, nint, string, string, int) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\NativeCalls.cs:11632)
+       [1] Godot.Resource Godot.ResourceLoader.Load(string, string, Godot.ResourceLoader+CacheMode) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\ResourceLoader.cs:120)
+       [2] T Godot.ResourceLoader.Load<T>(string, string, Godot.ResourceLoader+CacheMode) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\Extensions\ResourceLoaderExtensions.cs:27)
+       [3] T Godot.GD.Load<T>(string) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\GD.cs:129)
+       [4] void BaiChuanFormalMapZoomSmoke+<Run>d__27.MoveNext()
+       [5] void System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start<TStateMachine>(TStateMachine&)
+       [6] void BaiChuanFormalMapZoomSmoke.Run()
+       [7] bool BaiChuanFormalMapZoomSmoke.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&)
+       [8] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\Bridge\CSharpInstanceBridge.cs:24)
+WARNING: res://tscn/scene/MainScene.tscn:7 - ext_resource, invalid UID: uid://base5bcjm2wd4 - using text path instead: res://tscn/panel/MainHUD.tscn
+   at: ResourceLoaderText::load (scene\resources\resource_format_text.cpp:501)
+   C# backtrace (most recent call first):
+       [0] Godot.GodotObject Godot.NativeCalls.godot_icall_3_1268(nint, nint, string, string, int) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\NativeCalls.cs:11632)
+       [1] Godot.Resource Godot.ResourceLoader.Load(string, string, Godot.ResourceLoader+CacheMode) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\ResourceLoader.cs:120)
+       [2] T Godot.ResourceLoader.Load<T>(string, string, Godot.ResourceLoader+CacheMode) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\Extensions\ResourceLoaderExtensions.cs:27)
+       [3] T Godot.GD.Load<T>(string) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\GD.cs:129)
+       [4] void BaiChuanFormalMapZoomSmoke+<Run>d__27.MoveNext()
+       [5] void System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start<TStateMachine>(TStateMachine&)
+       [6] void BaiChuanFormalMapZoomSmoke.Run()
+       [7] bool BaiChuanFormalMapZoomSmoke.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&)
+       [8] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\Bridge\CSharpInstanceBridge.cs:24)
+WARNING: res://tscn/scene/MainScene.tscn:12 - ext_resource, invalid UID: uid://bhf4k8gslmr5p - using text path instead: res://tscn/panel/CultivationUI.tscn
+   at: ResourceLoaderText::load (scene\resources\resource_format_text.cpp:501)
+   C# backtrace (most recent call first):
+       [0] Godot.GodotObject Godot.NativeCalls.godot_icall_3_1268(nint, nint, string, string, int) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\NativeCalls.cs:11632)
+       [1] Godot.Resource Godot.ResourceLoader.Load(string, string, Godot.ResourceLoader+CacheMode) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\ResourceLoader.cs:120)
+       [2] T Godot.ResourceLoader.Load<T>(string, string, Godot.ResourceLoader+CacheMode) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\Extensions\ResourceLoaderExtensions.cs:27)
+       [3] T Godot.GD.Load<T>(string) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\GD.cs:129)
+       [4] void BaiChuanFormalMapZoomSmoke+<Run>d__27.MoveNext()
+       [5] void System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start<TStateMachine>(TStateMachine&)
+       [6] void BaiChuanFormalMapZoomSmoke.Run()
+       [7] bool BaiChuanFormalMapZoomSmoke.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&)
+       [8] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\Bridge\CSharpInstanceBridge.cs:24)
+WARNING: res://resources/activeskills/补虚行血诀/化法/卸力.tres:4 - ext_resource, invalid UID: uid://corjswdok5c7 - using text path instead: res://csharp/gongfa/DamageBonus.cs
+   at: ResourceLoaderText::load (scene\resources\resource_format_text.cpp:501)
+   GDScript backtrace (most recent call first):
+       [0] _ready (res://scripts/world/bai_chuan/YuxuPeakInterior.gd:127)
+   C# backtrace (most recent call first):
+       [0] Godot.GodotObject Godot.NativeCalls.godot_icall_3_1268(nint, nint, string, string, int) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\NativeCalls.cs:11632)
+       [1] Godot.Resource Godot.ResourceLoader.Load(string, string, Godot.ResourceLoader+CacheMode) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\ResourceLoader.cs:120)
+       [2] T Godot.ResourceLoader.Load<T>(string, string, Godot.ResourceLoader+CacheMode) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\Extensions\ResourceLoaderExtensions.cs:27)
+       [3] T Godot.GD.Load<T>(string) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\GD.cs:129)
+       [4] void YuxuExchangeCatalog.Collect(string, System.Collections.Generic.List`1[ItemData], System.Collections.Generic.HashSet`1[System.String])
+       [5] System.Collections.Generic.List`1[ItemData] YuxuExchangeCatalog.LoadItems()
+       [6] void YuxuSectExchangePanel._Ready()
+       [7] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\Node.cs:2660)
+       [8] bool Godot.CanvasItem.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\CanvasItem.cs:1845)
+       [9] bool Godot.Control.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\Control.cs:4029)
+       [10] bool YuxuSectExchangePanel.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&)
+       [11] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\Bridge\CSharpInstanceBridge.cs:24)
+       [12] void Godot.NativeInterop.NativeFuncs.godotsharp_method_bind_ptrcall(nint, nint, System.Void**, System.Void*) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\obj\Debug\Godot.SourceGenerators.Internal\Godot.SourceGenerators.Internal.UnmanagedCallbacksGenerator\Godot.NativeInterop.NativeFuncs.generated.cs:380)
+       [13] void Godot.NativeCalls.godot_icall_3_912(nint, nint, nint, Godot.NativeInterop.godot_bool, int) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\NativeCalls.cs:8082)
+       [14] void Godot.Node.AddChild(Godot.Node, bool, Godot.Node+InternalMode) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\Node.cs:848)
+       [15] void BaiChuanFormalMapZoomSmoke+<Run>d__27.MoveNext()
+       [16] void System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start<TStateMachine>(TStateMachine&)
+       [17] void BaiChuanFormalMapZoomSmoke.Run()
+       [18] bool BaiChuanFormalMapZoomSmoke.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&)
+       [19] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\Bridge\CSharpInstanceBridge.cs:24)
+BAICHUAN_ZOOM_LEVEL level=1 zoom=0.48 places=53/123 transit=0/321 pawn=32.0px
+BAICHUAN_HIDDEN_NODE_CLICK level=1 id=bc_place_045 hovered=/root/BaiChuanFormalMapZoomSmoke/Base/MapLayer/BaiChuanNodeWorld unchanged=true
+BAICHUAN_FAR_VIEW 1920×1080 level0 zoom=0.1974 mapSide=742.5px safeRect=(340, 100), (1190, 825) viewport=(1920, 1080) full=true
+BAICHUAN_ZOOM_LEVEL level=0 zoom=0.20 places=19/123 transit=0/321 pawn=32.0px
+BAICHUAN_HIDDEN_NODE_CLICK level=0 id=bc_place_004 hovered=/root/BaiChuanFormalMapZoomSmoke/Base/MapLayer/BaiChuanNodeWorld unchanged=true
+BAICHUAN_FAR_NAMEPLATE_COMPENSATION viewport=1920×1080 level0 zoom=0.1974 primary=3 cities=16 labels=19 minLabel=12.4px minBadge=8.9px hudSafe=true collisionFree=true
+BAICHUAN_FAR_VIEW 1920×1080 level0 zoom=0.1974 mapSide=742.5px safeRect=(340, 100), (1190, 825) viewport=(1920, 1080) full=true
+BAICHUAN_ZOOM_LEVEL level=1 zoom=0.48 places=53/123 transit=0/321 pawn=32.0px
+BAICHUAN_HIDDEN_NODE_CLICK level=1 id=bc_place_045 hovered=/root/BaiChuanFormalMapZoomSmoke/Base/MapLayer/BaiChuanNodeWorld unchanged=true
+BAICHUAN_ZOOM_LEVEL level=2 zoom=0.96 places=123/123 transit=321/321 pawn=32.0px
+BAICHUAN_ZOOM_LEVEL level=2 zoom=0.96 places=123/123 transit=321/321 pawn=32.0px
+BAICHUAN_ZOOM_LEVEL level=0 zoom=0.11 places=19/123 transit=0/321 pawn=32.0px
+BAICHUAN_FAR_VIEW 1280×720 level0 zoom=0.1112 mapSide=418.5px safeRect=(340, 100), (550, 465) viewport=(1280, 720) full=true
+BAICHUAN_FAR_NAMEPLATE_COMPENSATION viewport=1280×720 level0 zoom=0.1112 primary=3 cities=16 labels=19 minLabel=11.6px minBadge=8.7px hudSafe=true collisionFree=true
+BAICHUAN_FAR_CITY_POINTER viewport=1280×720 level0 id=bc_place_018 hover=true click=true
+ERROR: Node not found: "WorldMapActionButtons" (relative to "/root/BaiChuanFormalMapZoomSmoke/Base/MapLayer/BaiChuanNodeWorld/WorldMapDetails").
+   at: Node::get_node (scene\main\node.cpp:1976)
+   C# backtrace (most recent call first):
+       [0] Godot.GodotObject Godot.NativeCalls.godot_icall_1_914(nint, nint, Godot.NativeInterop.godot_node_path) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\NativeCalls.cs:8100)
+       [1] Godot.Node Godot.Node.GetNode(Godot.NodePath) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\Node.cs:962)
+       [2] T Godot.Node.GetNode<T>(Godot.NodePath) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\Extensions\NodeExtensions.cs:47)
+       [3] void BaiChuanFormalMapZoomSmoke+<VerifySelectedLocationActions>d__22.MoveNext()
+       [4] void System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start<TStateMachine>(TStateMachine&)
+       [5] System.Threading.Tasks.Task BaiChuanFormalMapZoomSmoke.VerifySelectedLocationActions(MainScene, Godot.Control, Godot.Collections.Dictionary, Godot.Collections.Dictionary, string, bool)
+       [6] void BaiChuanFormalMapZoomSmoke+<Run>d__27.MoveNext()
+       [7] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [8] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [9] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [10] void System.Threading.Tasks.Task.RunContinuations(object)
+       [11] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [12] void BaiChuanFormalMapZoomSmoke+<VerifyFarCityHitAndSelection>d__20.MoveNext()
+       [13] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [14] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [15] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [16] void System.Threading.Tasks.Task.RunContinuations(object)
+       [17] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [18] void BaiChuanFormalMapZoomSmoke+<Click>d__10.MoveNext()
+       [19] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [20] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [21] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [22] void System.Threading.Tasks.Task.RunContinuations(object)
+       [23] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [24] void BaiChuanFormalMapZoomSmoke+<Frames>d__7.MoveNext()
+       [25] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [26] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [27] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\SignalAwaiter.cs:65)
+ERROR: BAICHUAN_FORMAL_MAP_ZOOM_SMOKE_FAILED: System.NullReferenceException: Object reference not set to an instance of an object.
+   at BaiChuanFormalMapZoomSmoke.VerifySelectedLocationActions(MainScene main, Control map, Dictionary data, Dictionary placeViews, String viewportLabel, Boolean exerciseTravelAndEnter)
+   at BaiChuanFormalMapZoomSmoke.Run()
+   at: void BaiChuanFormalMapZoomSmoke+<Run>d__27.MoveNext() (res://:0)
+   C# backtrace (most recent call first):
+       [0] void Godot.GD.PushError(string) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\GD.cs:366)
+       [1] void BaiChuanFormalMapZoomSmoke+<Run>d__27.MoveNext()
+       [2] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [3] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [4] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [5] void System.Threading.Tasks.Task.RunContinuations(object)
+       [6] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [7] void BaiChuanFormalMapZoomSmoke+<VerifyFarCityHitAndSelection>d__20.MoveNext()
+       [8] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [9] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [10] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [11] void System.Threading.Tasks.Task.RunContinuations(object)
+       [12] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [13] void BaiChuanFormalMapZoomSmoke+<Click>d__10.MoveNext()
+       [14] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [15] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [16] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [17] void System.Threading.Tasks.Task.RunContinuations(object)
+       [18] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [19] void BaiChuanFormalMapZoomSmoke+<Frames>d__7.MoveNext()
+       [20] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [21] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [22] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\SignalAwaiter.cs:65)
+WARNING: 6 RIDs of type "CanvasItem" were leaked.
+   at: RendererCanvasCull::_free_rids (servers\rendering\renderer_canvas_cull.cpp:2735)
+ERROR: Texture with GL ID of 23: leaked 12280 bytes.
+   at: GLES3::Utilities::~Utilities (drivers\gles3\storage\utilities.cpp:82)
+ERROR: Texture with GL ID of 168: leaked 174762 bytes.
+   at: GLES3::Utilities::~Utilities (drivers\gles3\storage\utilities.cpp:82)
+ERROR: Texture with GL ID of 169: leaked 131072 bytes.
+   at: GLES3::Utilities::~Utilities (drivers\gles3\storage\utilities.cpp:82)
+ERROR: Texture with GL ID of 170: leaked 174762 bytes.
+   at: GLES3::Utilities::~Utilities (drivers\gles3\storage\utilities.cpp:82)
+ERROR: Texture with GL ID of 171: leaked 174762 bytes.
+   at: GLES3::Utilities::~Utilities (drivers\gles3\storage\utilities.cpp:82)
+ERROR: Texture with GL ID of 172: leaked 131072 bytes.
+   at: GLES3::Utilities::~Utilities (drivers\gles3\storage\utilities.cpp:82)
+ERROR: Texture with GL ID of 173: leaked 174762 bytes.
+   at: GLES3::Utilities::~Utilities (drivers\gles3\storage\utilities.cpp:82)
+ERROR: Texture with GL ID of 174: leaked 131072 bytes.
+   at: GLES3::Utilities::~Utilities (drivers\gles3\storage\utilities.cpp:82)
+ERROR: Texture with GL ID of 175: leaked 131072 bytes.
+   at: GLES3::Utilities::~Utilities (drivers\gles3\storage\utilities.cpp:82)
+ERROR: Texture with GL ID of 176: leaked 174762 bytes.
+   at: GLES3::Utilities::~Utilities (drivers\gles3\storage\utilities.cpp:82)
+ERROR: Texture with GL ID of 177: leaked 131072 bytes.
+   at: GLES3::Utilities::~Utilities (drivers\gles3\storage\utilities.cpp:82)
+ERROR: Texture with GL ID of 178: leaked 131072 bytes.
+   at: GLES3::Utilities::~Utilities (drivers\gles3\storage\utilities.cpp:82)
+ERROR: Texture with GL ID of 179: leaked 174762 bytes.
+   at: GLES3::Utilities::~Utilities (drivers\gles3\storage\utilities.cpp:82)
+ERROR: Texture with GL ID of 180: leaked 131072 bytes.
+   at: GLES3::Utilities::~Utilities (drivers\gles3\storage\utilities.cpp:82)
+ERROR: Texture with GL ID of 144: leaked 131072 bytes.
+   at: GLES3::Utilities::~Utilities (drivers\gles3\storage\utilities.cpp:82)
+ERROR: Texture with GL ID of 182: leaked 131072 bytes.
+   at: GLES3::Utilities::~Utilities (drivers\gles3\storage\utilities.cpp:82)
+ERROR: Texture with GL ID of 183: leaked 131072 bytes.
+   at: GLES3::Utilities::~Utilities (drivers\gles3\storage\utilities.cpp:82)
+ERROR: Texture with GL ID of 48: leaked 131072 bytes.
+   at: GLES3::Utilities::~Utilities (drivers\gles3\storage\utilities.cpp:82)
+ERROR: Parameter "RenderingServer::get_singleton()" is null.
+   at: ImageTexture::~ImageTexture (scene\resources\image_texture.cpp:245)
+WARNING: 70 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+   at: ObjectDB::cleanup (core\object\object.cpp:2536)
+ERROR: 1 resources still in use at exit (run with --verbose for details).
+   at: ResourceCache::clear (core\io\resource.cpp:822)
+ERROR: 18 RID allocations of type 'struct GLES3::Texture' were leaked at exit.
+ERROR: 2 RID allocations of type 'struct TextServerAdvanced::FontAdvanced * __ptr64' were leaked at exit.

@@ -75,6 +75,8 @@ public partial class InfoPanel : Control
     private WorldNpcData? _npc_card;
     private VBoxContainer? _npc_page;
     private bool _npc_read_only;
+    private int _lastShownCharacterAge = -1;
+    private int _lastShownNpcAge = -1;
 
     public override void _Process(double delta)
     {
@@ -156,6 +158,25 @@ public partial class InfoPanel : Control
         current_card = entity;
         populate(entity);
         ZIndex = 20; Show(); _scrollBody?.Show(); show_page(0); MoveToFront();
+    }
+
+    public void refresh_current_age()
+    {
+        if (current_card is Character character)
+        {
+            if (_lastShownCharacterAge == character.current_age) return;
+            _lastShownCharacterAge = character.current_age;
+            set_overview_value("age", $"{character.current_age} 岁");
+            set_label("AgeValue", $"{character.current_age} / {character.max_age} 岁");
+            refresh_profile_portrait();
+            return;
+        }
+        if (_npc_card is WorldNpcData npc && _lastShownNpcAge != npc.current_age)
+        {
+            _lastShownNpcAge = npc.current_age;
+            set_overview_value("age", $"{npc.current_age} 岁");
+            _profilePortraitRenderer?.show_world_npc(npc);
+        }
     }
 
     /// <summary>世界人物沿用同一张人物档案，但只显示已知资料，不开放主角专属页面。</summary>
@@ -1890,6 +1911,7 @@ public partial class InfoPanel : Control
     {
         set_label("NameValue", entity.entity_name);
         if (entity is not Creature unit) return;
+        _lastShownCharacterAge = unit.current_age;
         set_label("AgeValue", $"{unit.current_age} / {unit.max_age} 岁");
         set_label("GenderValue", string.IsNullOrWhiteSpace(entity.family_gender) ? "未详" : entity.family_gender);
         set_label("RealmValue", unit.cultivation_realm); set_label("FactionValue", entity.get_faction_display_name());

@@ -26,6 +26,8 @@ public partial class LivingData : EntityData
     [Export] public int spirit_strands;
     [Export] public int current_age = 22;
     [Export] public int max_age = 80;
+    /// <summary>Absolute game-hour cursor used to preserve partial years and save/load continuity.</summary>
+    [Export] public long age_last_updated_game_hour = -1;
     [Export] public string cultivation_realm = "凡人";
     [Export] public int current_health = 100;
     [Export] public int max_health = 100;

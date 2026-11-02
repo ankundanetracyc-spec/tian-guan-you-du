@@ -8,7 +8,12 @@ public partial class CultivationUI : Control
 	private YuanxiPanel? _yuanxiPanel;
 	private PanelContainer? _panel;
 	private Label? _name, _realm, _power, _rate, _plan, _studyHint, _breakthroughHint;
+	private Label? _breakthroughPillEffect;
 	private OptionButton? _mode, _studyBook;
+	private OptionButton? _breakthroughPillPicker;
+	private Character? _breakthroughPillOwner;
+	private string _breakthroughPillRealm = "", _breakthroughSelectedPillPath = "";
+	private bool _updatingBreakthroughPills;
 	private SpinBox? _strands, _days, _year, _month, _date;
 	private int _dateModeHour;
 	private Button? _cultivate, _study, _breakthrough, _inviteScheduleButton;
@@ -832,6 +837,7 @@ public partial class CultivationUI : Control
     private void update_breakthrough()
 	{
 		if (_breakthrough is null || _breakthroughHint is null || _target is null) return;
+		hide_breakthrough_pill_controls();
 		var realms = GetNodeOrNull<RealmManager>("/root/RealmManager");
 		if (realms is null) { _breakthrough.Text = "闭关突破"; _breakthrough.Disabled = true; return; }
 		var next = realms.get_next_realm_name(value("cultivation_realm", "").AsString());
@@ -851,6 +857,14 @@ public partial class CultivationUI : Control
 			return;
 		}
 		var pillHint = _target is Character pillCharacter ? pillCharacter.get_breakthrough_pill_hint(next) : "";
+		if (_target is Character injuredCondensationTarget && injuredCondensationTarget.requires_condensation_breakthrough() && injuredCondensationTarget.has_active_severe_injury())
+		{
+			var remaining = injuredCondensationTarget.get_active_severe_injury_remaining_rest_hours();
+			_breakthrough.Text = "重伤休养中";
+			_breakthroughHint.Text = $"凝核失败不扣灵力；重伤恢复后可重试。还需通过休息行动调养 {format_duration_hours(remaining)}。";
+			_breakthrough.Disabled = true;
+			return;
+		}
 		if (!call("is_breakthrough_ready").AsBool())
 		{
 			var gongfaHint = realms.get_main_gongfa_breakthrough_hint(_target, next);
@@ -864,12 +878,31 @@ public partial class CultivationUI : Control
 		}
 		if (_target is Character condensationTarget && condensationTarget.requires_condensation_breakthrough())
 		{
-			_breakthroughHint.Text = "云息六层至七层改为八回合凝核牌局：每回合六张牌，必须对调两张，杂质达到 100 立即失败。";
+			_breakthroughHint.Text = "正式突破进行八回合凝核，全部结算后须达到100。人物属性固定，可调整36张牌组，正式局不开放道具。失败不扣灵力；重伤使正式战斗生命上限暂降15%，通过休息行动累计调养120小时后可重试。";
 			_breakthrough.Text = "进入凝核牌局"; _breakthrough.Disabled = false; return;
 		}
-		if (_target is Character missingPillTarget && !missingPillTarget.has_required_breakthrough_pill(next))
+		Godot.Collections.Dictionary? selectedPill = null;
+		var requiresPill = !string.IsNullOrEmpty(Character.get_required_breakthrough_pill_path(next));
+		if (requiresPill && _target is Character pillTarget)
 		{
-			_breakthroughHint.Text = pillHint;
+			var choices = refresh_breakthrough_pill_picker(pillTarget, next);
+			if (choices.Count == 0)
+			{
+				_breakthroughHint.Text = pillHint;
+				_breakthrough.Text = "缺少突破丹";
+				_breakthrough.Disabled = true;
+				return;
+			}
+			foreach (var choice in choices)
+				if (choice.GetValueOrDefault("path", "").AsString() == _breakthroughSelectedPillPath)
+				{
+					selectedPill = choice;
+					break;
+				}
+		}
+		if (requiresPill && selectedPill is null)
+		{
+			_breakthroughHint.Text = string.IsNullOrEmpty(pillHint) ? "当前角色没有可用于此关口的丹药。" : pillHint;
 			_breakthrough.Text = "缺少突破丹";
 			_breakthrough.Disabled = true;
 			return;
@@ -879,8 +912,80 @@ public partial class CultivationUI : Control
 		var low = range.GetValueOrDefault("min_hours", 0).AsInt32(); var high = range.GetValueOrDefault("max_hours", 0).AsInt32();
 		var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
 		_breakthroughHint.Text = time is null ? pillHint : $"闭关突破至 {next} 约需 {format_duration_range(low, high)}，将在 {format_date_after(time, low)} 至 {format_date_after(time, high)} 之间结束。{(string.IsNullOrEmpty(pillHint) ? "" : $"\n{pillHint}")}";
-		_breakthrough.Text = room ? "入静室闭关突破" : "闭关突破";
+		if (requiresPill && selectedPill is not null && _target is Character selectedCharacter && _breakthroughPillEffect is not null)
+			_breakthroughPillEffect.Text = breakthrough_pill_preview(selectedCharacter, selectedPill);
+		_breakthrough.Text = requiresPill
+			? room ? "入静室服用所选丹并突破" : "服用所选丹药并闭关突破"
+			: room ? "入静室闭关突破" : "闭关突破";
 		_breakthrough.Disabled = false;
+	}
+
+	private void hide_breakthrough_pill_controls()
+	{
+		if (_breakthroughPillPicker is not null) _breakthroughPillPicker.Hide();
+		if (_breakthroughPillEffect is not null) _breakthroughPillEffect.Hide();
+	}
+
+	private Godot.Collections.Array<GDict> refresh_breakthrough_pill_picker(Character character, string targetRealm)
+	{
+		var choices = character.get_breakthrough_pill_choices(targetRealm);
+		if (_breakthroughPillPicker is null || _breakthroughPillEffect is null) return choices;
+		if (_breakthroughPillOwner != character || _breakthroughPillRealm != targetRealm)
+		{
+			_breakthroughPillOwner = character;
+			_breakthroughPillRealm = targetRealm;
+			_breakthroughSelectedPillPath = "";
+		}
+
+		_updatingBreakthroughPills = true;
+		_breakthroughPillPicker.Clear();
+		var selectedIndex = 0;
+		for (var i = 0; i < choices.Count; i++)
+		{
+			var choice = choices[i];
+			var path = choice.GetValueOrDefault("path", "").AsString();
+			var name = choice.GetValueOrDefault("name", "突破丹").AsString();
+			var count = choice.GetValueOrDefault("count", 0).AsInt32();
+			_breakthroughPillPicker.AddItem($"{name}　持有 {count}");
+			_breakthroughPillPicker.SetItemMetadata(i, path);
+			if (path == _breakthroughSelectedPillPath) selectedIndex = i;
+		}
+		if (choices.Count > 0)
+		{
+			_breakthroughPillPicker.Select(selectedIndex);
+			_breakthroughSelectedPillPath = _breakthroughPillPicker.GetItemMetadata(selectedIndex).AsString();
+			_breakthroughPillPicker.Show();
+			_breakthroughPillEffect.Show();
+			_breakthroughPillEffect.Text = breakthrough_pill_preview(character, choices[selectedIndex]);
+		}
+		else
+		{
+			_breakthroughSelectedPillPath = "";
+			_breakthroughPillEffect.Text = "";
+		}
+		_updatingBreakthroughPills = false;
+		return choices;
+	}
+
+	private void on_breakthrough_pill_selected(long index)
+	{
+		if (_updatingBreakthroughPills || _breakthroughPillPicker is null || _target is not Character character || index < 0 || index >= _breakthroughPillPicker.ItemCount) return;
+		_breakthroughSelectedPillPath = _breakthroughPillPicker.GetItemMetadata((int)index).AsString();
+		update_breakthrough();
+	}
+
+	private static string breakthrough_pill_preview(Character character, GDict choice)
+	{
+		var id = choice.GetValueOrDefault("pill_id", "").AsString();
+		var effectValue = choice.GetValueOrDefault("effect_value", 0).AsInt32();
+		var toxicityAdded = choice.GetValueOrDefault("toxicity", 0).AsInt32();
+		var toxicityBefore = character.PillToxicity;
+		var absorption = PillToxicityRules.Efficiency(toxicityBefore);
+		var benefit = id == "dingmai"
+			? $"晋入四层后补入 {PillToxicityRules.Absorb(effectValue, toxicityBefore)} 缕吐纳进度（档位基础 {effectValue} 缕）。"
+			: $"后续归元九息时长约缩短 {effectValue * absorption:0.#}%（档位基础 {effectValue}%）。";
+		var name = choice.GetValueOrDefault("name", "所选丹药").AsString();
+		return $"本次丹药：{name}\n{benefit}\n成功晋层后消耗，丹毒＋{toxicityAdded}；目前丹毒 {toxicityBefore:0.#}，本次丹效按 {absorption:P0} 折算。";
 	}
 
 	private void breakthrough()
@@ -893,7 +998,21 @@ public partial class CultivationUI : Control
 		var room = call("can_use_meditation_room_for_retreat").AsBool();
 		var range = call("get_breakthrough_retreat_hour_range", room).AsGodotDictionary();
 		var low = range.GetValueOrDefault("min_hours", 0).AsInt32(); var high = range.GetValueOrDefault("max_hours", 0).AsInt32();
-		play_transition("闭关突破", $"心神归一，突破过程约需 {format_duration_range(low, high)}。", "闭关结束。你缓缓收功，境界变化已结算。", () => { _target.Call("start_breakthrough_retreat", room); refresh(); });
+		var selectedPath = "";
+		var selectedName = "";
+		if (_target is Character pillUser)
+		{
+			var next = GetNodeOrNull<RealmManager>("/root/RealmManager")?.get_next_realm_name(pillUser.cultivation_realm) ?? "";
+			if (!string.IsNullOrEmpty(Character.get_required_breakthrough_pill_path(next)))
+			{
+				selectedPath = _breakthroughSelectedPillPath;
+				selectedName = ResourceLoader.Exists(selectedPath) ? ResourceLoader.Load<ItemData>(selectedPath)?.entity_name ?? "所选丹药" : "所选丹药";
+			}
+		}
+		var plan = string.IsNullOrEmpty(selectedPath)
+			? $"心神归一，突破过程约需 {format_duration_range(low, high)}。"
+			: $"本次选用{selectedName}。成功晋层后才会消耗，并结算丹效与丹毒；突破过程约需 {format_duration_range(low, high)}。";
+		play_transition("闭关突破", plan, "闭关结束。你缓缓收功，境界变化已结算。", () => { _target.Call("start_breakthrough_retreat", room, selectedPath); refresh(); });
 	}
 
 	private void condensation_test()

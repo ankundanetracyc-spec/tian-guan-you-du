@@ -48,6 +48,24 @@ public partial class MainScene
                 "east_woods_beast" => "东林地妖兽遭遇",
                 _ => "正式战斗"
             };
+        record_player_severe_injury(summary.GetValueOrDefault("battle_id", "").AsString(), sourceName);
+    }
+
+    public bool apply_player_severe_injury_from_condensation_failure()
+    {
+        if (player is null) return false;
+        return record_player_severe_injury($"condensation_failure:{current_world_status_hour()}", "云息六层凝核未成");
+    }
+
+    private bool record_player_severe_injury(string sourceId, string sourceName)
+    {
+        if (player?.entity_data is not HumanData data) return false;
+        var requiredHours = WorldStatusRules.severe_injury_recovery_hours_for_realm(player.cultivation_realm);
+        if (requiredHours <= 0)
+        {
+            GD.PushWarning($"尚未配置境界“{player.cultivation_realm}”的重伤休养时长；本次不擅自推定。");
+            return false;
+        }
         var existing = data.world_status_records.FirstOrDefault(record =>
             record is not null && record.status_id == WorldStatusRules.SevereInjuryId);
         if (existing is null)
@@ -56,9 +74,9 @@ public partial class MainScene
             {
                 status_id = WorldStatusRules.SevereInjuryId,
                 display_name = "重伤",
-                description = "战斗中生命上限暂降 15%；需通过实际休息行动调养恢复。",
+                description = "参加正式战斗时生命上限暂降 15%；需通过实际休息行动调养恢复。",
                 stack_count = 1,
-                source_id = summary.GetValueOrDefault("battle_id", "").AsString(),
+                source_id = sourceId,
                 source_name = sourceName,
                 applied_at_total_game_hours = current_world_status_hour(),
                 expires_at_total_game_hours = WorldStatusRules.PermanentExpiry,
@@ -66,15 +84,15 @@ public partial class MainScene
                 recovery_hours_progress = 0,
                 recovery_realm = player.cultivation_realm
             };
-            if (!WorldStatusRules.add(data.world_status_records, existing, current_world_status_hour())) return;
+            if (!WorldStatusRules.add(data.world_status_records, existing, current_world_status_hour())) return false;
         }
         else
         {
-            // 重伤不叠层；再次战败以新伤为准，重置休养进度并记录最新缘起。
+            // 重伤不叠层；再次受伤以新伤为准，重置休养进度并记录最新缘起。
             existing.display_name = "重伤";
-            existing.description = "战斗中生命上限暂降 15%；需通过实际休息行动调养恢复。";
+            existing.description = "参加正式战斗时生命上限暂降 15%；需通过实际休息行动调养恢复。";
             existing.stack_count = 1;
-            existing.source_id = summary.GetValueOrDefault("battle_id", "").AsString();
+            existing.source_id = sourceId;
             existing.source_name = sourceName;
             existing.applied_at_total_game_hours = current_world_status_hour();
             existing.expires_at_total_game_hours = WorldStatusRules.PermanentExpiry;
@@ -84,6 +102,7 @@ public partial class MainScene
         }
         mark_save_dirty();
         refresh_player_world_status_ui();
+        return true;
     }
 
     private void advance_player_world_status_rest(int restHours)

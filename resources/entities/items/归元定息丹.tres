@@ -1,17 +1,23 @@
-[gd_resource type="Resource" script_class="ItemData" format=3]
+[gd_resource type="Resource" script_class="PillItemData" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://csharp/resources/ItemData.cs" id="1"]
+[ext_resource type="Script" path="res://csharp/resources/PillItemData.cs" id="1"]
 
 [resource]
 script = ExtResource("1")
 definition_id = &"pill_yunxi_return_origin"
-entity_name = "归元定息丹"
-description = "云息九层进阶十层的关口丹药。丹意收而不滞，取凝息归元之意；突破仍按既有修炼条件与闭关流程判定，成功晋层时消耗。"
+entity_name = "归元定息丹·薄效"
+description = "七品归元定息丹，丹效薄效。只用于云息九层晋升十层的闭关突破；成功后归元九息所需时间缩短2%并消耗。"
 icon_path = "res://textures/items/inventory_density_20261029/pill_container_empty_porcelain.png"
 item_category = "丹药"
 item_subcategory = "云息突破"
+grade_value = 1
 can_stack = false
 max_stack = 1
+
+pill_id = "guiyuan_dingxi"
+pill_rank = 7
+efficacy_tier = 0
+container_material_id = "porcelain"
 
 inventory_width = 2
 inventory_height = 3
