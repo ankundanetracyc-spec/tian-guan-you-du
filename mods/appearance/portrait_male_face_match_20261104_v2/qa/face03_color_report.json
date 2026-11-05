@@ -1,0 +1,414 @@
+{
+  "status": "candidate calibrated; active game files not modified",
+  "target": "THIRD reference person only",
+  "source": {
+    "generated_raw": "source/raw/face_texture03_match.png",
+    "registered_input": "source/face_material_before_color.png",
+    "input_sha256": "f0380466fcab67f02d2b44e5fcb98ec3170084801820ef25cede2c1430e1107a",
+    "reference_target": "qa/reference03_skin_targets.json",
+    "geometry_alpha_input": "source/face_before_color.png",
+    "geometry_registration": "source/face_refined03_registration.json",
+    "texture_transfer_report": "qa/face03_texture_transfer_report.json"
+  },
+  "output": {
+    "file": "male/face_shape/01.png",
+    "sha256": "01385c4fde7fda8279f612168e191912073c8ad67f514b97a0712c723082e3da",
+    "size": [
+      1024,
+      1536
+    ],
+    "alpha_different_pixels": 0,
+    "alpha_byte_exact": true,
+    "transparent_rgb_different_channels": 0,
+    "before_alpha180_bbox_inclusive": [
+      370,
+      175,
+      662,
+      718
+    ],
+    "after_alpha180_bbox_inclusive": [
+      370,
+      175,
+      662,
+      718
+    ],
+    "changed_rgb_channels": 278501
+  },
+  "method": {
+    "description": "Moderate regularized six-field additive RGB calibration, fitted to14 clean source03 skin patches. Globally smooth face/neck/asymmetry/under-chin fields; no local warp, texture synthesis, noise or alpha mask.",
+    "fit_shrinkage": 0.88,
+    "per_channel_offset_cap": 12,
+    "ridge": [
+      0.35,
+      0.45,
+      0.45,
+      0.35,
+      0.5,
+      0.4
+    ],
+    "coefficients": [
+      [
+        1.4916485294995154,
+        -0.3984747664865305,
+        -0.08647591538923266,
+        2.259997761228084,
+        0.284538610612853,
+        -4.3704366796487095
+      ],
+      [
+        0.700387358313458,
+        -1.4167898229203175,
+        1.1382313979090433,
+        4.045917130152436,
+        0.42438534425619756,
+        -4.692076513792998
+      ],
+      [
+        -1.399975684852668,
+        -1.8779986862620537,
+        1.5064233715496393,
+        4.923615842040047,
+        0.5035774218472471,
+        -5.162418898912692
+      ]
+    ],
+    "maximum_applied_absolute_channel_offset": 5.170689832722092
+  },
+  "patches": [
+    {
+      "name": "forehead_center",
+      "x": 517,
+      "y": 310,
+      "radius": 5,
+      "reference_rgb": [
+        231.7686,
+        201.6529,
+        183.8926
+      ],
+      "before_rgb": [
+        230.77685950413223,
+        203.53719008264463,
+        188.9917355371901
+      ],
+      "after_rgb": [
+        232.1404958677686,
+        204.53719008264463,
+        187.8099173553719
+      ],
+      "deltaE_before": 2.1647931599069783,
+      "deltaE_after": 1.460092202970823
+    },
+    {
+      "name": "forehead_right",
+      "x": 554,
+      "y": 304,
+      "radius": 5,
+      "reference_rgb": [
+        232.2479,
+        202.9504,
+        185.6777
+      ],
+      "before_rgb": [
+        230.54545454545453,
+        203.3305785123967,
+        188.55371900826447
+      ],
+      "after_rgb": [
+        231.54545454545453,
+        203.3305785123967,
+        186.46280991735537
+      ],
+      "deltaE_before": 1.5849439313598506,
+      "deltaE_after": 0.4945769895214421
+    },
+    {
+      "name": "forehead_lower",
+      "x": 528,
+      "y": 327,
+      "radius": 5,
+      "reference_rgb": [
+        232.124,
+        202.4463,
+        185
+      ],
+      "before_rgb": [
+        230.45454545454547,
+        201.88429752066116,
+        187.28925619834712
+      ],
+      "after_rgb": [
+        231.45454545454547,
+        202.2479338842975,
+        185.28925619834712
+      ],
+      "deltaE_before": 1.5882918397296952,
+      "deltaE_after": 0.33723316622282457
+    },
+    {
+      "name": "cheek_left_outer",
+      "x": 452,
+      "y": 419,
+      "radius": 5,
+      "reference_rgb": [
+        231.1322,
+        200.9008,
+        183.6033
+      ],
+      "before_rgb": [
+        230.44628099173553,
+        199.7520661157025,
+        184.82644628099175
+      ],
+      "after_rgb": [
+        232.44628099173553,
+        201.7520661157025,
+        184.82644628099175
+      ],
+      "deltaE_before": 1.271380578134974,
+      "deltaE_after": 0.43540132175741797
+    },
+    {
+      "name": "cheek_left_inner",
+      "x": 480,
+      "y": 416,
+      "radius": 5,
+      "reference_rgb": [
+        233.1322,
+        204.0992,
+        187.0992
+      ],
+      "before_rgb": [
+        229.86776859504133,
+        201.54545454545453,
+        187.04132231404958
+      ],
+      "after_rgb": [
+        231.86776859504133,
+        202.8181818181818,
+        186.8595041322314
+      ],
+      "deltaE_before": 1.6096756381709572,
+      "deltaE_after": 0.6854008065950333
+    },
+    {
+      "name": "cheek_right_inner",
+      "x": 552,
+      "y": 419,
+      "radius": 5,
+      "reference_rgb": [
+        231.7934,
+        201.7273,
+        184.5372
+      ],
+      "before_rgb": [
+        230.65289256198346,
+        202.5785123966942,
+        188.15702479338842
+      ],
+      "after_rgb": [
+        231.65289256198346,
+        202.5785123966942,
+        186.15702479338842
+      ],
+      "deltaE_before": 1.7096002232113257,
+      "deltaE_after": 0.6356225245536788
+    },
+    {
+      "name": "cheek_right_outer",
+      "x": 581,
+      "y": 418,
+      "radius": 5,
+      "reference_rgb": [
+        231.3802,
+        199.2314,
+        180.9917
+      ],
+      "before_rgb": [
+        230.099173553719,
+        200.80165289256198,
+        186.03305785123968
+      ],
+      "after_rgb": [
+        231.099173553719,
+        199.89256198347107,
+        183.03305785123968
+      ],
+      "deltaE_before": 2.2571119094766114,
+      "deltaE_after": 0.865389241328219
+    },
+    {
+      "name": "lower_cheek_left",
+      "x": 470,
+      "y": 468,
+      "radius": 5,
+      "reference_rgb": [
+        233.2479,
+        207.1736,
+        191.6942
+      ],
+      "before_rgb": [
+        230.21487603305786,
+        202.76859504132233,
+        188.0909090909091
+      ],
+      "after_rgb": [
+        232.21487603305786,
+        204.76859504132233,
+        188.11570247933884
+      ],
+      "deltaE_before": 1.5886203793960163,
+      "deltaE_after": 1.157816739009108
+    },
+    {
+      "name": "lower_cheek_right",
+      "x": 565,
+      "y": 468,
+      "radius": 5,
+      "reference_rgb": [
+        232.4793,
+        206.7603,
+        190.5537
+      ],
+      "before_rgb": [
+        231.3801652892562,
+        204.62809917355372,
+        190.4214876033058
+      ],
+      "after_rgb": [
+        232.3801652892562,
+        204.62809917355372,
+        188.41322314049586
+      ],
+      "deltaE_before": 1.2546265559110878,
+      "deltaE_after": 1.0048574570325683
+    },
+    {
+      "name": "chin_center",
+      "x": 517,
+      "y": 522,
+      "radius": 5,
+      "reference_rgb": [
+        231.2149,
+        204.3554,
+        187.9752
+      ],
+      "before_rgb": [
+        229.22314049586777,
+        202.01652892561984,
+        187.62809917355372
+      ],
+      "after_rgb": [
+        230.22314049586777,
+        204.01652892561984,
+        187.62809917355372
+      ],
+      "deltaE_before": 1.27642426949563,
+      "deltaE_after": 0.30694709174445933
+    },
+    {
+      "name": "neck_left",
+      "x": 476,
+      "y": 564,
+      "radius": 5,
+      "reference_rgb": [
+        228.3223,
+        198.1736,
+        180.5785
+      ],
+      "before_rgb": [
+        225.47107438016528,
+        194.6694214876033,
+        179.11570247933884
+      ],
+      "after_rgb": [
+        227.44628099173553,
+        197.52892561983472,
+        180.5702479338843
+      ],
+      "deltaE_before": 1.5696507746591497,
+      "deltaE_after": 0.4177485188093438
+    },
+    {
+      "name": "neck_right",
+      "x": 554,
+      "y": 564,
+      "radius": 5,
+      "reference_rgb": [
+        229.7438,
+        200.2562,
+        183.0165
+      ],
+      "before_rgb": [
+        226.5702479338843,
+        196.59504132231405,
+        181.4793388429752
+      ],
+      "after_rgb": [
+        228.36363636363637,
+        198.95867768595042,
+        182.27272727272728
+      ],
+      "deltaE_before": 1.6389911270665138,
+      "deltaE_after": 0.5385499182268827
+    },
+    {
+      "name": "neck_center",
+      "x": 517,
+      "y": 588,
+      "radius": 5,
+      "reference_rgb": [
+        224.5041,
+        192.7438,
+        174.405
+      ],
+      "before_rgb": [
+        219.37190082644628,
+        185.4214876033058,
+        167.62809917355372
+      ],
+      "after_rgb": [
+        223.37190082644628,
+        190.4214876033058,
+        170.94214876033058
+      ],
+      "deltaE_before": 2.631929135090356,
+      "deltaE_after": 1.12732419077619
+    },
+    {
+      "name": "under_chin_shadow",
+      "x": 517,
+      "y": 556,
+      "radius": 5,
+      "reference_rgb": [
+        201.1818,
+        163.7934,
+        142.5702
+      ],
+      "before_rgb": [
+        205.72727272727272,
+        167.9504132231405,
+        149.0082644628099
+      ],
+      "after_rgb": [
+        203.95867768595042,
+        166.79338842975207,
+        146
+      ],
+      "deltaE_before": 2.0569541373102984,
+      "deltaE_after": 1.1421881024253047
+    }
+  ],
+  "summary": {
+    "mean_deltaE_before": 1.7287852613513888,
+    "mean_deltaE_after": 0.757796305069521,
+    "max_deltaE_after": 1.460092202970823,
+    "neck_mean_deltaE_before": 1.9743812935315794,
+    "neck_mean_deltaE_after": 0.8064526825594303
+  },
+  "limitations": [
+    "The14 patches are calibration samples, not independent validation or whole-image identity.",
+    "The generated watercolor skin material is closer to reference03 than the flat intermediate, but still has slightly softer fine paper contrast. RGB-only calibration retains native microtexture without synthetic noise.",
+    "Generated head/ears/neck were registered together; complete hidden neck extends toalpha180 y718, around5px below old target but behind clothing.",
+    "No full noncollinear3-point <=2px rig certification is claimed."
+  ]
+}

@@ -1,5 +1,8 @@
 {
   "enabled": true,
+  "anchor_overlays": {
+    "male": "res://mods/appearance/portrait_original_restore_20261105_v6/whole_male_first_20261105/integration/rig/male_overlay.png"
+  },
   "package_id": "ink_three_variants_20261004",
   "rig_id": "ink_three_variants_20261004_active88",
   "rig_file": "res://mods/appearance/new_ink_hair_20261003_v1/rig/portrait_rig.json",
@@ -17,139 +20,147 @@
       "gender": "male",
       "part": "hair_front",
       "file": "male/hair_front/{index}.png",
-      "variant_count": 7,
+      "variant_count": 1,
       "variant_names": [
-        "墨云中分",
-        "疏额双垂",
-        "清风垂鬓",
-        "清雅分流",
-        "束风露额",
-        "守真拢发",
-        "行舟短发"
+        "木簪拢发"
       ],
       "variant_indices": [
-        1,
-        2,
-        3,
-        4,
-        6,
-        7,
-        8
-      ]
+        1
+      ],
+      "variant_style_ids": [
+        0
+      ],
+      "variant_aliases": {
+        "1": 0,
+        "2": 0
+      }
     },
     {
       "id": "male_back_hair",
       "gender": "male",
       "part": "hair_back",
       "file": "male/hair_back/{index}.png",
-      "variant_count": 8,
+      "variant_count": 1,
       "variant_names": [
-        "墨发长披",
-        "高束散尾",
-        "低束长披",
-        "清雅半束",
-        "高束流风",
-        "束风短尾",
-        "守真束髻",
-        "行舟短垂"
+        "木簪半束长披"
       ],
       "variant_indices": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8
-      ]
+        1
+      ],
+      "variant_style_ids": [
+        0
+      ],
+      "variant_aliases": {
+        "1": 0,
+        "2": 0
+      }
     },
     {
       "id": "male_eyebrows",
       "gender": "male",
       "part": "brow",
       "file": "male/eyebrows/{index}.png",
-      "variant_count": 9,
+      "variant_count": 1,
       "variant_names": [
-        "墨锋平眉",
-        "疏柳斜眉",
-        "折锋细眉",
-        "凝岳剑眉",
-        "磐石浓眉",
-        "凌锋扬眉",
-        "温玉柔眉",
-        "长风平眉",
-        "苍山厚眉"
-      ]
+        "清直眉"
+      ],
+      "variant_indices": [
+        1
+      ],
+      "variant_style_ids": [
+        0
+      ],
+      "variant_aliases": {
+        "1": 0,
+        "2": 0
+      }
     },
     {
       "id": "male_eyes",
       "gender": "male",
       "part": "eye",
       "file": "male/eyes/{index}.png",
-      "variant_count": 8,
+      "variant_count": 1,
       "variant_names": [
-        "清朗凤目",
-        "温润长目",
-        "凝岳沉目",
-        "磐石朗目",
-        "凌锋锐目",
-        "温玉和目",
-        "长风清目",
-        "苍山静目"
+        "浅长目"
       ],
       "variant_indices": [
-        1,
-        2,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9
-      ]
+        1
+      ],
+      "variant_style_ids": [
+        0
+      ],
+      "variant_aliases": {
+        "1": 0,
+        "2": 0
+      }
     },
     {
       "id": "male_nose",
       "gender": "male",
       "part": "nose",
       "file": "male/nose/{index}.png",
-      "variant_count": 3,
+      "variant_count": 1,
       "variant_names": [
-        "修直鼻",
-        "温钝鼻",
-        "挺秀鼻"
-      ]
+        "自然鼻型"
+      ],
+      "variant_indices": [
+        1
+      ],
+      "variant_style_ids": [
+        0
+      ],
+      "variant_aliases": {
+        "1": 0,
+        "2": 0
+      }
     },
     {
       "id": "male_mouth",
       "gender": "male",
       "part": "mouth",
       "file": "male/mouth/{index}.png",
-      "variant_count": 3,
+      "variant_count": 1,
       "variant_names": [
-        "薄唇淡赭",
-        "柔唇暖桃",
-        "平唇浅棕"
-      ]
+        "自然浅唇"
+      ],
+      "variant_indices": [
+        1
+      ],
+      "variant_style_ids": [
+        0
+      ],
+      "variant_aliases": {
+        "1": 0,
+        "2": 0
+      }
     },
     {
       "id": "male_face",
       "gender": "male",
       "part": "face",
       "file": "male/face_shape/{index}.png",
-      "variant_count": 3,
+      "variant_count": 1,
       "variant_names": [
-        "清俊长脸",
-        "温润卵面",
-        "削颏秀面"
-      ]
+        "清俊长脸"
+      ],
+      "variant_indices": [
+        1
+      ],
+      "variant_style_ids": [
+        0
+      ],
+      "variant_aliases": {
+        "1": 0,
+        "2": 0
+      }
     },
     {
       "id": "male_clothes",
       "gender": "male",
       "part": "clothes",
       "file": "male/clothing/{index}.png",
+      "rear_file": "male/clothing_back/{index}.png",
       "variant_count": 7,
       "variant_names": [
         "碧岚云叶袍",
@@ -175,36 +186,41 @@
       "gender": "male",
       "part": "beard",
       "file": "male/face_accessory/{index}.png",
-      "variant_count": 3,
+      "variant_count": 1,
       "variant_names": [
-        "无须",
-        "短八字须",
-        "八字颏须"
-      ]
+        "无须"
+      ],
+      "variant_indices": [
+        1
+      ],
+      "variant_style_ids": [
+        0
+      ],
+      "variant_aliases": {
+        "1": 0,
+        "2": 0
+      }
     },
     {
       "id": "female_front_hair",
       "gender": "female",
       "part": "hair_front",
       "file": "female/hair_front/{index}.png",
-      "variant_count": 7,
+      "variant_count": 3,
       "variant_names": [
-        "流云中分",
-        "柔丝垂鬓",
-        "疏影双垂",
-        "清雅分流",
-        "拂云露额",
-        "素心分缕",
-        "听雨短帘"
+        "清簪垂鬓",
+        "素挽分鬓",
+        "编云垂鬓"
       ],
       "variant_indices": [
         1,
         2,
-        3,
-        4,
-        6,
-        7,
-        8
+        3
+      ],
+      "variant_style_ids": [
+        0,
+        1,
+        2
       ]
     },
     {
@@ -212,26 +228,21 @@
       "gender": "female",
       "part": "hair_back",
       "file": "female/hair_back/{index}.png",
-      "variant_count": 8,
+      "variant_count": 3,
       "variant_names": [
-        "墨发长披",
-        "云髻散尾",
-        "柔波长披",
-        "清雅半束",
-        "高束流风",
-        "拂云轻束",
-        "素心盘髻",
-        "听雨齐颈"
+        "清簪半束",
+        "素挽低髻",
+        "编云长披"
       ],
       "variant_indices": [
         1,
         2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8
+        3
+      ],
+      "variant_style_ids": [
+        0,
+        1,
+        2
       ]
     },
     {
@@ -239,64 +250,105 @@
       "gender": "female",
       "part": "brow",
       "file": "female/eyebrows/{index}.png",
-      "variant_count": 4,
+      "variant_count": 3,
       "variant_names": [
-        "清秀平眉",
-        "柔柳细眉",
-        "微扬秀眉",
-        "温和远山眉"
-      ]
+        "疏平柔眉",
+        "弯挑细眉",
+        "平直细眉"
+      ],
+      "variant_indices": [
+        1,
+        2,
+        3
+      ],
+      "variant_style_ids": [
+        0,
+        1,
+        2
+      ],
+      "variant_aliases": {}
     },
     {
       "id": "female_eyes",
       "gender": "female",
       "part": "eye",
       "file": "female/eyes/{index}.png",
-      "variant_count": 4,
+      "variant_count": 2,
       "variant_names": [
-        "清润杏目",
-        "柔和圆目",
-        "含锋凤目",
-        "温婉杏目"
-      ]
+        "浅杏长目",
+        "清圆杏目"
+      ],
+      "variant_indices": [
+        1,
+        2
+      ],
+      "variant_style_ids": [
+        0,
+        1
+      ],
+      "variant_aliases": {
+        "2": 0,
+        "female_eyes_02": 0
+      }
     },
     {
       "id": "female_nose",
       "gender": "female",
       "part": "nose",
       "file": "female/nose/{index}.png",
-      "variant_count": 4,
+      "variant_count": 1,
       "variant_names": [
-        "清秀鼻",
-        "圆润鼻",
-        "小巧鼻",
-        "温润鼻"
-      ]
+        "柔圆鼻"
+      ],
+      "variant_indices": [
+        1
+      ],
+      "variant_style_ids": [
+        0
+      ],
+      "variant_aliases": {
+        "1": 0,
+        "2": 0,
+        "female_nose_01": 0,
+        "female_nose_02": 0
+      }
     },
     {
       "id": "female_mouth",
       "gender": "female",
       "part": "mouth",
       "file": "female/mouth/{index}.png",
-      "variant_count": 4,
+      "variant_count": 1,
       "variant_names": [
-        "桃色薄唇",
-        "朱粉柔唇",
-        "淡玫平唇",
-        "暖桃微唇"
-      ]
+        "自然浅唇"
+      ],
+      "variant_indices": [
+        1
+      ],
+      "variant_style_ids": [
+        0
+      ],
+      "variant_aliases": {
+        "1": 0,
+        "2": 0,
+        "female_mouth_01": 0,
+        "female_mouth_02": 0
+      }
     },
     {
       "id": "female_face",
       "gender": "female",
       "part": "face",
       "file": "female/face_shape/{index}.png",
-      "variant_count": 4,
+      "variant_count": 1,
       "variant_names": [
-        "清秀鹅蛋面",
-        "温婉圆颏面",
-        "秀长尖颏面",
         "柔和卵面"
+      ],
+      "variant_indices": [
+        4
+      ],
+      "variant_style_ids": [
+        3
       ]
     },
     {
@@ -329,11 +381,15 @@
       "gender": "female",
       "part": "makeup",
       "file": "female/face_accessory/{index}.png",
-      "variant_count": 3,
+      "variant_count": 1,
       "variant_names": [
-        "素颜",
-        "淡花叶颊妆",
-        "浅玫眼妆"
+        "素颜"
+      ],
+      "variant_indices": [
+        1
+      ],
+      "variant_style_ids": [
+        0
       ]
     }
   ]

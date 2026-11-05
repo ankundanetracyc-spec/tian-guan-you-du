@@ -1,0 +1,930 @@
+{
+  "target": "USER FINAL: THIRD PERSON ONLY; no pooled01/02 color or texture average",
+  "source": "E:\\stacklands\\mods\\appearance\\portrait_male_reference_20261104_v1\\source\\guides\\reference_03_in_canvas.png",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "alignment": {
+    "triptych_column_start": 1187,
+    "column_width": 587,
+    "translation_to_canvas": [
+      220,
+      50
+    ]
+  },
+  "exclude": [
+    "third-person viewer-left forehead covered by swept fringe",
+    "brow and eye pigment",
+    "nose and lip pigment except separately measured feature work",
+    "background and clothing"
+  ],
+  "samples": [
+    {
+      "name": "forehead_center",
+      "x": 517,
+      "y": 310,
+      "radius": 5,
+      "stats": {
+        "mean_rgb": [
+          231.7686,
+          201.6529,
+          183.8926
+        ],
+        "median_rgb": [
+          232,
+          201,
+          183
+        ],
+        "mean_luma": 206.7732,
+        "std_luma": 1.6264,
+        "four_neighbor_highpass_rms": 0.8058
+      }
+    },
+    {
+      "name": "forehead_right",
+      "x": 554,
+      "y": 304,
+      "radius": 5,
+      "stats": {
+        "mean_rgb": [
+          232.2479,
+          202.9504,
+          185.6777
+        ],
+        "median_rgb": [
+          232,
+          203,
+          185
+        ],
+        "mean_luma": 207.932,
+        "std_luma": 1.4838,
+        "four_neighbor_highpass_rms": 1.1053
+      }
+    },
+    {
+      "name": "forehead_lower",
+      "x": 528,
+      "y": 327,
+      "radius": 5,
+      "stats": {
+        "mean_rgb": [
+          232.124,
+          202.4463,
+          185
+        ],
+        "median_rgb": [
+          232,
+          202,
+          185
+        ],
+        "mean_luma": 207.4961,
+        "std_luma": 1.4911,
+        "four_neighbor_highpass_rms": 1.0497
+      }
+    },
+    {
+      "name": "cheek_left_outer",
+      "x": 452,
+      "y": 419,
+      "radius": 5,
+      "stats": {
+        "mean_rgb": [
+          231.1322,
+          200.9008,
+          183.6033
+        ],
+        "median_rgb": [
+          231,
+          201,
+          183
+        ],
+        "mean_luma": 206.0791,
+        "std_luma": 1.4911,
+        "four_neighbor_highpass_rms": 1.1078
+      }
+    },
+    {
+      "name": "cheek_left_inner",
+      "x": 480,
+      "y": 416,
+      "radius": 5,
+      "stats": {
+        "mean_rgb": [
+          233.1322,
+          204.0992,
+          187.0992
+        ],
+        "median_rgb": [
+          233,
+          204,
+          187
+        ],
+        "mean_luma": 209.0442,
+        "std_luma": 1.6421,
+        "four_neighbor_highpass_rms": 1.0284
+      }
+    },
+    {
+      "name": "cheek_right_inner",
+      "x": 552,
+      "y": 419,
+      "radius": 5,
+      "stats": {
+        "mean_rgb": [
+          231.7934,
+          201.7273,
+          184.5372
+        ],
+        "median_rgb": [
+          232,
+          202,
+          184
+        ],
+        "mean_luma": 206.8782,
+        "std_luma": 1.8461,
+        "four_neighbor_highpass_rms": 1.51
+      }
+    },
+    {
+      "name": "cheek_right_outer",
+      "x": 581,
+      "y": 418,
+      "radius": 5,
+      "stats": {
+        "mean_rgb": [
+          231.3802,
+          199.2314,
+          180.9917
+        ],
+        "median_rgb": [
+          231,
+          199,
+          181
+        ],
+        "mean_luma": 204.7493,
+        "std_luma": 1.6911,
+        "four_neighbor_highpass_rms": 1.0339
+      }
+    },
+    {
+      "name": "lower_cheek_left",
+      "x": 470,
+      "y": 468,
+      "radius": 5,
+      "stats": {
+        "mean_rgb": [
+          233.2479,
+          207.1736,
+          191.6942
+        ],
+        "median_rgb": [
+          233,
+          207,
+          191
+        ],
+        "mean_luma": 211.5994,
+        "std_luma": 1.5284,
+        "four_neighbor_highpass_rms": 0.9155
+      }
+    },
+    {
+      "name": "lower_cheek_right",
+      "x": 565,
+      "y": 468,
+      "radius": 5,
+      "stats": {
+        "mean_rgb": [
+          232.4793,
+          206.7603,
+          190.5537
+        ],
+        "median_rgb": [
+          232,
+          207,
+          190
+        ],
+        "mean_luma": 211.0581,
+        "std_luma": 1.0531,
+        "four_neighbor_highpass_rms": 0.8685
+      }
+    },
+    {
+      "name": "chin_center",
+      "x": 517,
+      "y": 522,
+      "radius": 5,
+      "stats": {
+        "mean_rgb": [
+          231.2149,
+          204.3554,
+          187.9752
+        ],
+        "median_rgb": [
+          231,
+          204,
+          188
+        ],
+        "mean_luma": 208.8831,
+        "std_luma": 1.5729,
+        "four_neighbor_highpass_rms": 1.03
+      }
+    },
+    {
+      "name": "neck_left",
+      "x": 476,
+      "y": 564,
+      "radius": 5,
+      "stats": {
+        "mean_rgb": [
+          228.3223,
+          198.1736,
+          180.5785
+        ],
+        "median_rgb": [
+          230,
+          201,
+          183
+        ],
+        "mean_luma": 203.3128,
+        "std_luma": 6.4423,
+        "four_neighbor_highpass_rms": 1.1635
+      }
+    },
+    {
+      "name": "neck_right",
+      "x": 554,
+      "y": 564,
+      "radius": 5,
+      "stats": {
+        "mean_rgb": [
+          229.7438,
+          200.2562,
+          183.0165
+        ],
+        "median_rgb": [
+          230,
+          200,
+          183
+        ],
+        "mean_luma": 205.2806,
+        "std_luma": 2.5264,
+        "four_neighbor_highpass_rms": 1.224
+      }
+    },
+    {
+      "name": "neck_center",
+      "x": 517,
+      "y": 588,
+      "radius": 5,
+      "stats": {
+        "mean_rgb": [
+          224.5041,
+          192.7438,
+          174.405
+        ],
+        "median_rgb": [
+          225,
+          193,
+          175
+        ],
+        "mean_luma": 198.172,
+        "std_luma": 8.5932,
+        "four_neighbor_highpass_rms": 1.7453
+      }
+    },
+    {
+      "name": "under_chin_shadow",
+      "x": 517,
+      "y": 556,
+      "radius": 5,
+      "stats": {
+        "mean_rgb": [
+          201.1818,
+          163.7934,
+          142.5702
+        ],
+        "median_rgb": [
+          203,
+          166,
+          144
+        ],
+        "mean_luma": 170.2099,
+        "std_luma": 7.424,
+        "four_neighbor_highpass_rms": 2.192
+      }
+    }
+  ],
+  "region_texture_targets": [
+    {
+      "name": "forehead",
+      "box": [
+        492,
+        291,
+        552,
+        329
+      ],
+      "reference03": {
+        "mean_rgb": [
+          232.7776,
+          204.3355,
+          187.1908
+        ],
+        "median_rgb": [
+          233,
+          204,
+          187
+        ],
+        "mean_luma": 209.1445,
+        "std_luma": 2.2596,
+        "four_neighbor_highpass_rms": 0.9499
+      },
+      "current_blank": {
+        "mean_rgb": [
+          229.8649,
+          201.0943,
+          182.9439
+        ],
+        "median_rgb": [
+          230,
+          201,
+          183
+        ],
+        "mean_luma": 205.9005,
+        "std_luma": 1.5833,
+        "four_neighbor_highpass_rms": 0.6835
+      },
+      "new_blank_v1": {
+        "mean_rgb": [
+          231.5908,
+          199.8083,
+          180.8417
+        ],
+        "median_rgb": [
+          232,
+          200,
+          181
+        ],
+        "mean_luma": 205.1959,
+        "std_luma": 2.6583,
+        "four_neighbor_highpass_rms": 1.2181
+      }
+    },
+    {
+      "name": "left_cheek",
+      "box": [
+        450,
+        403,
+        485,
+        457
+      ],
+      "reference03": {
+        "mean_rgb": [
+          232.6042,
+          204.4116,
+          187.5698
+        ],
+        "median_rgb": [
+          233,
+          204,
+          188
+        ],
+        "mean_luma": 209.1894,
+        "std_luma": 2.4223,
+        "four_neighbor_highpass_rms": 1.0315
+      },
+      "current_blank": {
+        "mean_rgb": [
+          231.3984,
+          201.8598,
+          185
+        ],
+        "median_rgb": [
+          231,
+          202,
+          185
+        ],
+        "mean_luma": 206.9224,
+        "std_luma": 1.8904,
+        "four_neighbor_highpass_rms": 0.7832
+      },
+      "new_blank_v1": {
+        "mean_rgb": [
+          232.6138,
+          201.7418,
+          183.7392
+        ],
+        "median_rgb": [
+          233,
+          202,
+          184
+        ],
+        "mean_luma": 207.0054,
+        "std_luma": 2.3881,
+        "four_neighbor_highpass_rms": 1.2409
+      }
+    },
+    {
+      "name": "right_cheek",
+      "box": [
+        550,
+        402,
+        584,
+        458
+      ],
+      "reference03": {
+        "mean_rgb": [
+          232.0431,
+          202.3046,
+          185.0242
+        ],
+        "median_rgb": [
+          232,
+          202,
+          185
+        ],
+        "mean_luma": 207.3794,
+        "std_luma": 2.3465,
+        "four_neighbor_highpass_rms": 1.1618
+      },
+      "current_blank": {
+        "mean_rgb": [
+          231.6822,
+          200.9853,
+          184.1591
+        ],
+        "median_rgb": [
+          232,
+          201,
+          184
+        ],
+        "mean_luma": 206.2966,
+        "std_luma": 1.8936,
+        "four_neighbor_highpass_rms": 0.8112
+      },
+      "new_blank_v1": {
+        "mean_rgb": [
+          232.3629,
+          200.261,
+          181.968
+        ],
+        "median_rgb": [
+          232,
+          200,
+          182
+        ],
+        "mean_luma": 205.7651,
+        "std_luma": 2.7744,
+        "four_neighbor_highpass_rms": 1.2991
+      }
+    },
+    {
+      "name": "chin_clean",
+      "box": [
+        498,
+        512,
+        535,
+        528
+      ],
+      "reference03": {
+        "mean_rgb": [
+          232.2111,
+          206.0541,
+          189.8514
+        ],
+        "median_rgb": [
+          232,
+          206,
+          190
+        ],
+        "mean_luma": 210.4452,
+        "std_luma": 2.28,
+        "four_neighbor_highpass_rms": 0.9603
+      },
+      "current_blank": {
+        "mean_rgb": [
+          232.3514,
+          206.951,
+          190.5422
+        ],
+        "median_rgb": [
+          232,
+          207,
+          191
+        ],
+        "mean_luma": 211.1664,
+        "std_luma": 1.7445,
+        "four_neighbor_highpass_rms": 0.7084
+      },
+      "new_blank_v1": {
+        "mean_rgb": [
+          232.5422,
+          203.9932,
+          186.8632
+        ],
+        "median_rgb": [
+          232,
+          204,
+          187
+        ],
+        "mean_luma": 208.826,
+        "std_luma": 2.2788,
+        "four_neighbor_highpass_rms": 1.0279
+      }
+    },
+    {
+      "name": "left_neck",
+      "box": [
+        467,
+        551,
+        489,
+        579
+      ],
+      "reference03": {
+        "mean_rgb": [
+          224.6347,
+          193.4854,
+          175.2744
+        ],
+        "median_rgb": [
+          229,
+          200,
+          183
+        ],
+        "mean_luma": 198.7929,
+        "std_luma": 12.6281,
+        "four_neighbor_highpass_rms": 1.4517
+      },
+      "current_blank": {
+        "mean_rgb": [
+          222.0049,
+          190.4464,
+          171.651
+        ],
+        "median_rgb": [
+          227,
+          196,
+          178
+        ],
+        "mean_luma": 195.7987,
+        "std_luma": 11.4302,
+        "four_neighbor_highpass_rms": 1.1615
+      },
+      "new_blank_v1": {
+        "mean_rgb": [
+          224.5812,
+          191.9481,
+          172.3149
+        ],
+        "median_rgb": [
+          228,
+          198,
+          179
+        ],
+        "mean_luma": 197.4683,
+        "std_luma": 11.567,
+        "four_neighbor_highpass_rms": 1.4963
+      }
+    },
+    {
+      "name": "right_neck",
+      "box": [
+        543,
+        551,
+        565,
+        579
+      ],
+      "reference03": {
+        "mean_rgb": [
+          229.3912,
+          200.4075,
+          183.1834
+        ],
+        "median_rgb": [
+          230,
+          201,
+          184
+        ],
+        "mean_luma": 205.3258,
+        "std_luma": 4.587,
+        "four_neighbor_highpass_rms": 1.3505
+      },
+      "current_blank": {
+        "mean_rgb": [
+          229.5633,
+          201.4075,
+          184.0276
+        ],
+        "median_rgb": [
+          230,
+          202,
+          185
+        ],
+        "mean_luma": 206.1386,
+        "std_luma": 4.8089,
+        "four_neighbor_highpass_rms": 0.9956
+      },
+      "new_blank_v1": {
+        "mean_rgb": [
+          227.1705,
+          194.9756,
+          176.4237
+        ],
+        "median_rgb": [
+          227,
+          195,
+          177
+        ],
+        "mean_luma": 200.4808,
+        "std_luma": 4.0438,
+        "four_neighbor_highpass_rms": 1.3711
+      }
+    },
+    {
+      "name": "middle_neck",
+      "box": [
+        502,
+        570,
+        532,
+        608
+      ],
+      "reference03": {
+        "mean_rgb": [
+          226.6377,
+          196.1614,
+          178.4307
+        ],
+        "median_rgb": [
+          228,
+          198,
+          181
+        ],
+        "mean_luma": 201.3605,
+        "std_luma": 6.8748,
+        "four_neighbor_highpass_rms": 1.4199
+      },
+      "current_blank": {
+        "mean_rgb": [
+          225.6263,
+          193.8781,
+          175.0877
+        ],
+        "median_rgb": [
+          226,
+          194,
+          174
+        ],
+        "mean_luma": 199.2711,
+        "std_luma": 6.5196,
+        "four_neighbor_highpass_rms": 1.1357
+      },
+      "new_blank_v1": {
+        "mean_rgb": [
+          224.5333,
+          190.2605,
+          170.3614
+        ],
+        "median_rgb": [
+          226,
+          191,
+          172
+        ],
+        "mean_luma": 196.1102,
+        "std_luma": 6.8799,
+        "four_neighbor_highpass_rms": 1.5085
+      }
+    },
+    {
+      "name": "under_chin_shadow",
+      "box": [
+        505,
+        548,
+        530,
+        566
+      ],
+      "reference03": {
+        "mean_rgb": [
+          200.1933,
+          163.2244,
+          141.98
+        ],
+        "median_rgb": [
+          203,
+          166,
+          145
+        ],
+        "mean_luma": 169.5502,
+        "std_luma": 12.0523,
+        "four_neighbor_highpass_rms": 2.267
+      },
+      "current_blank": {
+        "mean_rgb": [
+          204.6511,
+          169.1778,
+          148.9733
+        ],
+        "median_rgb": [
+          206,
+          170,
+          150
+        ],
+        "mean_luma": 175.2606,
+        "std_luma": 7.408,
+        "four_neighbor_highpass_rms": 1.6994
+      },
+      "new_blank_v1": {
+        "mean_rgb": [
+          211.2756,
+          170.6689,
+          148.1644
+        ],
+        "median_rgb": [
+          214,
+          174,
+          151
+        ],
+        "mean_luma": 177.677,
+        "std_luma": 12.1653,
+        "four_neighbor_highpass_rms": 1.9104
+      }
+    }
+  ],
+  "visible_jaw_line": {
+    "reference03": [
+      {
+        "x": 450,
+        "line_y": 496,
+        "min_luma": 87.9918
+      },
+      {
+        "x": 460,
+        "line_y": 508,
+        "min_luma": 91.8514
+      },
+      {
+        "x": 470,
+        "line_y": 520,
+        "min_luma": 90.7202
+      },
+      {
+        "x": 480,
+        "line_y": 530,
+        "min_luma": 85.711
+      },
+      {
+        "x": 490,
+        "line_y": 539,
+        "min_luma": 87.648
+      },
+      {
+        "x": 500,
+        "line_y": 544,
+        "min_luma": 85.5116
+      },
+      {
+        "x": 517,
+        "line_y": 545,
+        "min_luma": 71.2268
+      },
+      {
+        "x": 535,
+        "line_y": 543,
+        "min_luma": 74.1638
+      },
+      {
+        "x": 550,
+        "line_y": 533,
+        "min_luma": 102.9196
+      },
+      {
+        "x": 565,
+        "line_y": 517,
+        "min_luma": 98.9236
+      },
+      {
+        "x": 580,
+        "line_y": 499,
+        "min_luma": 89.7792
+      }
+    ],
+    "current": [
+      {
+        "x": 450,
+        "line_y": 492,
+        "min_luma": 86.1322
+      },
+      {
+        "x": 460,
+        "line_y": 505,
+        "min_luma": 88.4852
+      },
+      {
+        "x": 470,
+        "line_y": 516,
+        "min_luma": 81.5614
+      },
+      {
+        "x": 480,
+        "line_y": 526,
+        "min_luma": 84.5614
+      },
+      {
+        "x": 490,
+        "line_y": 536,
+        "min_luma": 106.354
+      },
+      {
+        "x": 500,
+        "line_y": 540,
+        "min_luma": 89.4394
+      },
+      {
+        "x": 517,
+        "line_y": 542,
+        "min_luma": 76.9368
+      },
+      {
+        "x": 535,
+        "line_y": 541,
+        "min_luma": 74.5798
+      },
+      {
+        "x": 550,
+        "line_y": 532,
+        "min_luma": 93.6388
+      },
+      {
+        "x": 565,
+        "line_y": 516,
+        "min_luma": 87.1362
+      },
+      {
+        "x": 580,
+        "line_y": 499,
+        "min_luma": 90.123
+      }
+    ],
+    "new_blank_v1": [
+      {
+        "x": 450,
+        "line_y": 494,
+        "min_luma": 98.119
+      },
+      {
+        "x": 460,
+        "line_y": 507,
+        "min_luma": 106.6164
+      },
+      {
+        "x": 470,
+        "line_y": 518,
+        "min_luma": 99.1912
+      },
+      {
+        "x": 480,
+        "line_y": 528,
+        "min_luma": 104.0468
+      },
+      {
+        "x": 490,
+        "line_y": 536,
+        "min_luma": 92.06
+      },
+      {
+        "x": 500,
+        "line_y": 541,
+        "min_luma": 102.9878
+      },
+      {
+        "x": 517,
+        "line_y": 542,
+        "min_luma": 90.5614
+      },
+      {
+        "x": 535,
+        "line_y": 540,
+        "min_luma": 95.064
+      },
+      {
+        "x": 550,
+        "line_y": 530,
+        "min_luma": 109.413
+      },
+      {
+        "x": 565,
+        "line_y": 514,
+        "min_luma": 117.8342
+      },
+      {
+        "x": 580,
+        "line_y": 497,
+        "min_luma": 95.9734
+      }
+    ]
+  },
+  "notes": [
+    "Native-size source03 skin, not new generated target and not sample means averaged across source styles.",
+    "Texture stats are supporting diagnostics. A good mean does not establish soft-gradient or paper-texture equivalence.",
+    "Jaw minima track visible dark outline and under-chin shade, not an alpha contour; no full ear/head geometry inferred behind hair."
+  ]
+}

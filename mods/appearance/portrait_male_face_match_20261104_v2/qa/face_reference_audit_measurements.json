@@ -1,0 +1,906 @@
+{
+  "reference_sha256": "63251bb7eea03e8a4cb88c6e50e97fef7b2612f4abb91ccba2423bc1dd36ad0d",
+  "alignment": "existing native-size reference guides; style01 +204,+50; style02 +215,+49; style03 +220,+50",
+  "montage": "face_reference_vs_active.png: top reference, bottom installed male; columns01/02/03; exact shared crop, 2x display only",
+  "patch_radius": 3,
+  "patches": [
+    {
+      "style": "01",
+      "patches": [
+        {
+          "name": "forehead_mid",
+          "x": 517,
+          "y": 312,
+          "reference_rgb": [
+            229.96,
+            199.16,
+            181.14
+          ],
+          "active_rgb": [
+            229.2,
+            200.63,
+            182.35
+          ],
+          "luma_delta": 0.98
+        },
+        {
+          "name": "forehead_left",
+          "x": 480,
+          "y": 310,
+          "reference_rgb": [
+            232.2,
+            204.14,
+            187.35
+          ],
+          "active_rgb": [
+            229.02,
+            200.94,
+            182.9
+          ],
+          "luma_delta": -3.29
+        },
+        {
+          "name": "forehead_right",
+          "x": 555,
+          "y": 310,
+          "reference_rgb": [
+            232.55,
+            202.86,
+            185.33
+          ],
+          "active_rgb": [
+            229.84,
+            200.86,
+            182.92
+          ],
+          "luma_delta": -2.18
+        },
+        {
+          "name": "left_cheek",
+          "x": 460,
+          "y": 421,
+          "reference_rgb": [
+            231.16,
+            200.06,
+            182.45
+          ],
+          "active_rgb": [
+            230.82,
+            200.45,
+            183.69
+          ],
+          "luma_delta": 0.3
+        },
+        {
+          "name": "right_cheek",
+          "x": 578,
+          "y": 421,
+          "reference_rgb": [
+            230.92,
+            200.02,
+            182.71
+          ],
+          "active_rgb": [
+            232.22,
+            202.04,
+            185.02
+          ],
+          "luma_delta": 1.89
+        },
+        {
+          "name": "nose_bridge",
+          "x": 517,
+          "y": 407,
+          "reference_rgb": [
+            232.45,
+            203.65,
+            186
+          ],
+          "active_rgb": [
+            222.63,
+            195.1,
+            180.71
+          ],
+          "luma_delta": -8.58
+        },
+        {
+          "name": "nose_tip",
+          "x": 517,
+          "y": 447,
+          "reference_rgb": [
+            229.71,
+            199.39,
+            181.88
+          ],
+          "active_rgb": [
+            225.22,
+            199.08,
+            186.04
+          ],
+          "luma_delta": -0.88
+        },
+        {
+          "name": "nose_left_wing",
+          "x": 502,
+          "y": 450,
+          "reference_rgb": [
+            190.57,
+            156.59,
+            138.84
+          ],
+          "active_rgb": [
+            179,
+            145.18,
+            130.31
+          ],
+          "luma_delta": -11.24
+        },
+        {
+          "name": "nose_right_wing",
+          "x": 532,
+          "y": 450,
+          "reference_rgb": [
+            176.76,
+            139.61,
+            121.06
+          ],
+          "active_rgb": [
+            190.12,
+            156.82,
+            141.27
+          ],
+          "luma_delta": 16.61
+        },
+        {
+          "name": "philtrum",
+          "x": 517,
+          "y": 466,
+          "reference_rgb": [
+            226.06,
+            194.96,
+            177.16
+          ],
+          "active_rgb": [
+            217.71,
+            188.37,
+            171.61
+          ],
+          "luma_delta": -6.89
+        },
+        {
+          "name": "mouth_mid",
+          "x": 517,
+          "y": 482,
+          "reference_rgb": [
+            151.43,
+            103.92,
+            84.59
+          ],
+          "active_rgb": [
+            169.63,
+            124.67,
+            104.94
+          ],
+          "luma_delta": 20.18
+        },
+        {
+          "name": "mouth_left",
+          "x": 490,
+          "y": 481,
+          "reference_rgb": [
+            178.96,
+            145.61,
+            127.88
+          ],
+          "active_rgb": [
+            175.22,
+            148,
+            133.39
+          ],
+          "luma_delta": 1.31
+        },
+        {
+          "name": "mouth_right",
+          "x": 544,
+          "y": 481,
+          "reference_rgb": [
+            186.84,
+            150.45,
+            132.31
+          ],
+          "active_rgb": [
+            181.82,
+            154.47,
+            139.1
+          ],
+          "luma_delta": 2.3
+        },
+        {
+          "name": "chin",
+          "x": 517,
+          "y": 521,
+          "reference_rgb": [
+            232.43,
+            206.55,
+            189.88
+          ],
+          "active_rgb": [
+            231.61,
+            205.55,
+            188.18
+          ],
+          "luma_delta": -1.01
+        },
+        {
+          "name": "neck_mid",
+          "x": 517,
+          "y": 588,
+          "reference_rgb": [
+            221.37,
+            187.16,
+            167.14
+          ],
+          "active_rgb": [
+            221.49,
+            186.16,
+            165.9
+          ],
+          "luma_delta": -0.78
+        },
+        {
+          "name": "neck_left",
+          "x": 472,
+          "y": 558,
+          "reference_rgb": [
+            232.33,
+            203.29,
+            185.9
+          ],
+          "active_rgb": [
+            226.92,
+            196.33,
+            177.65
+          ],
+          "luma_delta": -6.72
+        },
+        {
+          "name": "neck_right",
+          "x": 561,
+          "y": 558,
+          "reference_rgb": [
+            230.14,
+            202.47,
+            186.08
+          ],
+          "active_rgb": [
+            231.16,
+            204.18,
+            187.18
+          ],
+          "luma_delta": 1.52
+        }
+      ]
+    },
+    {
+      "style": "02",
+      "patches": [
+        {
+          "name": "forehead_mid",
+          "x": 517,
+          "y": 312,
+          "reference_rgb": [
+            232.2,
+            202.02,
+            184.88
+          ],
+          "active_rgb": [
+            229.2,
+            200.63,
+            182.35
+          ],
+          "luma_delta": -1.81
+        },
+        {
+          "name": "forehead_left",
+          "x": 480,
+          "y": 310,
+          "reference_rgb": [
+            232.18,
+            203.31,
+            185.71
+          ],
+          "active_rgb": [
+            229.02,
+            200.94,
+            182.9
+          ],
+          "luma_delta": -2.57
+        },
+        {
+          "name": "forehead_right",
+          "x": 555,
+          "y": 310,
+          "reference_rgb": [
+            232.1,
+            203.35,
+            185.69
+          ],
+          "active_rgb": [
+            229.84,
+            200.86,
+            182.92
+          ],
+          "luma_delta": -2.46
+        },
+        {
+          "name": "left_cheek",
+          "x": 460,
+          "y": 421,
+          "reference_rgb": [
+            231.45,
+            200.86,
+            183.57
+          ],
+          "active_rgb": [
+            230.82,
+            200.45,
+            183.69
+          ],
+          "luma_delta": -0.42
+        },
+        {
+          "name": "right_cheek",
+          "x": 578,
+          "y": 421,
+          "reference_rgb": [
+            231.61,
+            200.22,
+            182.59
+          ],
+          "active_rgb": [
+            232.22,
+            202.04,
+            185.02
+          ],
+          "luma_delta": 1.61
+        },
+        {
+          "name": "nose_bridge",
+          "x": 517,
+          "y": 407,
+          "reference_rgb": [
+            232.84,
+            203.47,
+            186.18
+          ],
+          "active_rgb": [
+            222.63,
+            195.1,
+            180.71
+          ],
+          "luma_delta": -8.55
+        },
+        {
+          "name": "nose_tip",
+          "x": 517,
+          "y": 447,
+          "reference_rgb": [
+            231.08,
+            201.57,
+            183.88
+          ],
+          "active_rgb": [
+            225.22,
+            199.08,
+            186.04
+          ],
+          "luma_delta": -2.87
+        },
+        {
+          "name": "nose_left_wing",
+          "x": 502,
+          "y": 450,
+          "reference_rgb": [
+            168.61,
+            135.18,
+            118.04
+          ],
+          "active_rgb": [
+            179,
+            145.18,
+            130.31
+          ],
+          "luma_delta": 10.25
+        },
+        {
+          "name": "nose_right_wing",
+          "x": 532,
+          "y": 450,
+          "reference_rgb": [
+            206.88,
+            170.22,
+            150.67
+          ],
+          "active_rgb": [
+            190.12,
+            156.82,
+            141.27
+          ],
+          "luma_delta": -13.83
+        },
+        {
+          "name": "philtrum",
+          "x": 517,
+          "y": 466,
+          "reference_rgb": [
+            223.31,
+            191.04,
+            171.61
+          ],
+          "active_rgb": [
+            217.71,
+            188.37,
+            171.61
+          ],
+          "luma_delta": -3.1
+        },
+        {
+          "name": "mouth_mid",
+          "x": 517,
+          "y": 482,
+          "reference_rgb": [
+            163.47,
+            117,
+            96.69
+          ],
+          "active_rgb": [
+            169.63,
+            124.67,
+            104.94
+          ],
+          "luma_delta": 7.39
+        },
+        {
+          "name": "mouth_left",
+          "x": 490,
+          "y": 481,
+          "reference_rgb": [
+            189.06,
+            151.9,
+            132.92
+          ],
+          "active_rgb": [
+            175.22,
+            148,
+            133.39
+          ],
+          "luma_delta": -5.7
+        },
+        {
+          "name": "mouth_right",
+          "x": 544,
+          "y": 481,
+          "reference_rgb": [
+            192.45,
+            161.45,
+            145.37
+          ],
+          "active_rgb": [
+            181.82,
+            154.47,
+            139.1
+          ],
+          "luma_delta": -7.7
+        },
+        {
+          "name": "chin",
+          "x": 517,
+          "y": 521,
+          "reference_rgb": [
+            231.82,
+            205.18,
+            188.63
+          ],
+          "active_rgb": [
+            231.61,
+            205.55,
+            188.18
+          ],
+          "luma_delta": 0.19
+        },
+        {
+          "name": "neck_mid",
+          "x": 517,
+          "y": 588,
+          "reference_rgb": [
+            226.53,
+            194.88,
+            176.76
+          ],
+          "active_rgb": [
+            221.49,
+            186.16,
+            165.9
+          ],
+          "luma_delta": -8.09
+        },
+        {
+          "name": "neck_left",
+          "x": 472,
+          "y": 558,
+          "reference_rgb": [
+            228.92,
+            198.78,
+            180.71
+          ],
+          "active_rgb": [
+            226.92,
+            196.33,
+            177.65
+          ],
+          "luma_delta": -2.4
+        },
+        {
+          "name": "neck_right",
+          "x": 561,
+          "y": 558,
+          "reference_rgb": [
+            232.14,
+            204.88,
+            188.41
+          ],
+          "active_rgb": [
+            231.16,
+            204.18,
+            187.18
+          ],
+          "luma_delta": -0.8
+        }
+      ]
+    },
+    {
+      "style": "03",
+      "patches": [
+        {
+          "name": "forehead_mid",
+          "x": 517,
+          "y": 312,
+          "reference_rgb": [
+            231.35,
+            200.96,
+            183.04
+          ],
+          "active_rgb": [
+            229.2,
+            200.63,
+            182.35
+          ],
+          "luma_delta": -0.74
+        },
+        {
+          "name": "forehead_left",
+          "x": 480,
+          "y": 310,
+          "reference_rgb": [
+            232.59,
+            204.61,
+            188.04
+          ],
+          "active_rgb": [
+            229.02,
+            200.94,
+            182.9
+          ],
+          "luma_delta": -3.75
+        },
+        {
+          "name": "forehead_right",
+          "x": 555,
+          "y": 310,
+          "reference_rgb": [
+            232.57,
+            203.12,
+            185.63
+          ],
+          "active_rgb": [
+            229.84,
+            200.86,
+            182.92
+          ],
+          "luma_delta": -2.39
+        },
+        {
+          "name": "left_cheek",
+          "x": 460,
+          "y": 421,
+          "reference_rgb": [
+            231.41,
+            202.14,
+            184.94
+          ],
+          "active_rgb": [
+            230.82,
+            200.45,
+            183.69
+          ],
+          "luma_delta": -1.42
+        },
+        {
+          "name": "right_cheek",
+          "x": 578,
+          "y": 421,
+          "reference_rgb": [
+            231.59,
+            200.31,
+            182.1
+          ],
+          "active_rgb": [
+            232.22,
+            202.04,
+            185.02
+          ],
+          "luma_delta": 1.58
+        },
+        {
+          "name": "nose_bridge",
+          "x": 517,
+          "y": 407,
+          "reference_rgb": [
+            231.76,
+            202.69,
+            185.59
+          ],
+          "active_rgb": [
+            222.63,
+            195.1,
+            180.71
+          ],
+          "luma_delta": -7.72
+        },
+        {
+          "name": "nose_tip",
+          "x": 517,
+          "y": 447,
+          "reference_rgb": [
+            233.9,
+            205.51,
+            187.49
+          ],
+          "active_rgb": [
+            225.22,
+            199.08,
+            186.04
+          ],
+          "luma_delta": -6.55
+        },
+        {
+          "name": "nose_left_wing",
+          "x": 502,
+          "y": 450,
+          "reference_rgb": [
+            180.18,
+            148.12,
+            130.92
+          ],
+          "active_rgb": [
+            179,
+            145.18,
+            130.31
+          ],
+          "luma_delta": -2.4
+        },
+        {
+          "name": "nose_right_wing",
+          "x": 532,
+          "y": 450,
+          "reference_rgb": [
+            197.61,
+            161.12,
+            140.49
+          ],
+          "active_rgb": [
+            190.12,
+            156.82,
+            141.27
+          ],
+          "luma_delta": -4.61
+        },
+        {
+          "name": "philtrum",
+          "x": 517,
+          "y": 466,
+          "reference_rgb": [
+            225.51,
+            196.49,
+            178.69
+          ],
+          "active_rgb": [
+            217.71,
+            188.37,
+            171.61
+          ],
+          "luma_delta": -7.98
+        },
+        {
+          "name": "mouth_mid",
+          "x": 517,
+          "y": 482,
+          "reference_rgb": [
+            168.2,
+            118.94,
+            97.59
+          ],
+          "active_rgb": [
+            169.63,
+            124.67,
+            104.94
+          ],
+          "luma_delta": 4.93
+        },
+        {
+          "name": "mouth_left",
+          "x": 490,
+          "y": 481,
+          "reference_rgb": [
+            198.02,
+            164.92,
+            147.1
+          ],
+          "active_rgb": [
+            175.22,
+            148,
+            133.39
+          ],
+          "luma_delta": -17.94
+        },
+        {
+          "name": "mouth_right",
+          "x": 544,
+          "y": 481,
+          "reference_rgb": [
+            204,
+            173.02,
+            155.45
+          ],
+          "active_rgb": [
+            181.82,
+            154.47,
+            139.1
+          ],
+          "luma_delta": -19.16
+        },
+        {
+          "name": "chin",
+          "x": 517,
+          "y": 521,
+          "reference_rgb": [
+            230.98,
+            204.02,
+            187.76
+          ],
+          "active_rgb": [
+            231.61,
+            205.55,
+            188.18
+          ],
+          "luma_delta": 1.26
+        },
+        {
+          "name": "neck_mid",
+          "x": 517,
+          "y": 588,
+          "reference_rgb": [
+            224.35,
+            192.18,
+            173.78
+          ],
+          "active_rgb": [
+            221.49,
+            186.16,
+            165.9
+          ],
+          "luma_delta": -5.48
+        },
+        {
+          "name": "neck_left",
+          "x": 472,
+          "y": 558,
+          "reference_rgb": [
+            229.24,
+            199,
+            181.61
+          ],
+          "active_rgb": [
+            226.92,
+            196.33,
+            177.65
+          ],
+          "luma_delta": -2.69
+        },
+        {
+          "name": "neck_right",
+          "x": 561,
+          "y": 558,
+          "reference_rgb": [
+            231.45,
+            204.37,
+            187.45
+          ],
+          "active_rgb": [
+            231.16,
+            204.18,
+            187.18
+          ],
+          "luma_delta": -0.22
+        }
+      ]
+    }
+  ],
+  "current_face_alpha_rows": [
+    {
+      "y": 440,
+      "left": 408,
+      "right": 619
+    },
+    {
+      "y": 450,
+      "left": 424,
+      "right": 606
+    },
+    {
+      "y": 460,
+      "left": 426,
+      "right": 604
+    },
+    {
+      "y": 470,
+      "left": 429,
+      "right": 602
+    },
+    {
+      "y": 480,
+      "left": 430,
+      "right": 600
+    },
+    {
+      "y": 490,
+      "left": 432,
+      "right": 599
+    },
+    {
+      "y": 500,
+      "left": 433,
+      "right": 598
+    },
+    {
+      "y": 510,
+      "left": 434,
+      "right": 597
+    },
+    {
+      "y": 520,
+      "left": 435,
+      "right": 596
+    },
+    {
+      "y": 530,
+      "left": 437,
+      "right": 594
+    },
+    {
+      "y": 540,
+      "left": 439,
+      "right": 593
+    },
+    {
+      "y": 543,
+      "left": 439,
+      "right": 592
+    }
+  ],
+  "limitations": [
+    "Patch deltas on a feature can reflect shape misregistration, pigment or shading; not a skin-only score.",
+    "Existing guides align by prior face landmarks and may retain a few-pixel illustration displacement.",
+    "Reference ears and upper lateral jaw can be occluded by hair; no alpha geometry inferred there."
+  ]
+}

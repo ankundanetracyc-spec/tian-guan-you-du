@@ -1,0 +1,21 @@
+{
+  "id": "06",
+  "tool": "built-in image_gen",
+  "stage": "selected_pure_back_band_color_material_variant",
+  "inputs": [
+    "source/clothing01_back_v2_band_registered.png",
+    "source/clothing06_palette_reference.png"
+  ],
+  "prompt": "Use case: precise-object-edit. FIRST image is the production master REAR COLLAR on an exact1024x1536 transparent canvas. SECOND image is only the material/pigment reference from 玉虚·内门常服 existing garment. Make a COLOR AND FABRIC-MATERIAL VARIANT OF IMAGE1 ONLY. Preserve the first image exact canvas, occupied position, shape, folded rim, continuous filled hidden center, proportions, shadows, highlights directions, outer contour and opacity. Do not enlarge, reposition, rescale, recrop, rotate, sharpen, thicken, redraw geometry or cut a neck hole. Match image2 robe outer textile hue and its inner collar lining/piping hue and subtle woven surface texture. Ivory facing remains fabric, not skin; preserve realistic painterly fold shading rather than replacing with flat color. No redrawing of a full garment, no front lapels, shoulders, head, neck, face, skin or hair. The rear collar is one continuous solid fabric support behind an unchanged neck and must keep its entire center painted. Everything outside the precise existing cloth remains actually transparent. No background glow, text, label, guide marks, extra pattern, bright stripe or plastic sheen. The result will contribute RGB only within the fixed alpha of master1; keep palette aligned in the exact same common canvas.\nCanvas and placement lock: output the FIRST target's exact portrait1024x1536 framing. Its small continuous collar band occupies only approximately x400..635,y514..615. Keep that modest size and these generous transparent margins; do not zoom in, enlarge or adopt reference2's close-up framing. For this variation specifically match soft muted celadon-gray outer silk with pale ivory lining; fine woven understated pattern. Geometry is already final; change only the pigment and existing fine fabric surface, preserving light direction. Do not paint a neck hole into the solid center.",
+  "geometry_source": "source/clothing01_back_v2_registration.json",
+  "alpha_source": "source/clothing01_back_v2_band_registered.png",
+  "alpha_policy": "Freeze every alpha byte from the pure band master only, never use the final rear01 that also contains original upper collar pixels.",
+  "geometric_certification": "Shared master geometry; this color variant does not claim an independent three-point fit.",
+  "assembly": "source/assemble_clothing_pair_v2.cjs --index 06",
+  "raw": "source/clothing06_back_v2_palette_first.png",
+  "output": "source/clothing06_back_v2_band_registered.png",
+  "selected": false,
+  "status": "rejected_material_zone_assignment",
+  "reason": "Broad neck-facing lining was incorrectly colored as exterior cloth. Native follow-up restores ivory lining with exterior color only on thin piping.",
+  "selected_followup": "source/clothing06_back_v2_palette_refine_prompt.json"
+}

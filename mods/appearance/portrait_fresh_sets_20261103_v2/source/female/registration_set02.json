@@ -1,0 +1,117 @@
+[
+  {
+    "part": "eyebrows",
+    "set": 2,
+    "source": "source\\female\\raw\\eyebrows\\02.png",
+    "output": "female\\eyebrows\\02.png",
+    "transform": {
+      "s": 1,
+      "x": 0,
+      "y": 0
+    },
+    "method": "uniform scale and whole-layer translation; no artistic or per-pixel edits",
+    "registration_certification": "not asserted",
+    "measured_controls": null
+  },
+  {
+    "part": "eyes",
+    "set": 2,
+    "source": "source\\female\\raw\\eyes\\02.png",
+    "output": "female\\eyes\\02.png",
+    "transform": {
+      "s": 0.875,
+      "x": 60,
+      "y": -11
+    },
+    "method": "uniform scale and whole-layer translation; no artistic or per-pixel edits",
+    "registration_certification": "not asserted",
+    "measured_controls": {
+      "source_pupils": [
+        [
+          461.5,
+          446
+        ],
+        [
+          587.4,
+          446
+        ]
+      ],
+      "target_pupils": [
+        [
+          464,
+          379
+        ],
+        [
+          574,
+          379
+        ]
+      ]
+    }
+  },
+  {
+    "part": "nose",
+    "set": 2,
+    "source": "source\\female\\raw\\nose\\02.png",
+    "output": "female\\nose\\02.png",
+    "transform": {
+      "s": 0.65,
+      "x": 183,
+      "y": 91
+    },
+    "method": "uniform scale and whole-layer translation; no artistic or per-pixel edits",
+    "registration_certification": "not asserted",
+    "measured_controls": null
+  },
+  {
+    "part": "mouth",
+    "set": 2,
+    "source": "source\\female\\raw\\mouth\\02.png",
+    "output": "female\\mouth\\02.png",
+    "transform": {
+      "s": 0.75,
+      "x": 134,
+      "y": 71
+    },
+    "method": "uniform scale and whole-layer translation; no artistic or per-pixel edits",
+    "registration_certification": "not asserted",
+    "measured_controls": null
+  },
+  {
+    "part": "hair_front",
+    "set": 2,
+    "source": "source\\female\\raw\\hair_front\\02.png",
+    "output": "female\\hair_front\\02.png",
+    "transform": {
+      "s": 1,
+      "x": 0,
+      "y": -55
+    },
+    "method": "uniform scale and whole-layer translation; no artistic or per-pixel edits",
+    "registration_certification": "not asserted",
+    "measured_controls": null
+  },
+  {
+    "part": "hair_back",
+    "set": 2,
+    "source": "source\\female\\raw\\hair_back\\02.png",
+    "output": "female\\hair_back\\02.png",
+    "transform": {
+      "s": 0.85,
+      "x": 78,
+      "y": -13
+    },
+    "method": "uniform scale and whole-layer translation; no artistic or per-pixel edits",
+    "registration_certification": "not asserted",
+    "measured_controls": null
+  },
+  {
+    "part": "hair_back",
+    "set": 1,
+    "transform": {
+      "s": 0.6,
+      "x": 208,
+      "y": 30
+    },
+    "method": "complete newly generated rear scalp, uniform placement only"
+  }
+]

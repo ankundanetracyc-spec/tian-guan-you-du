@@ -1,0 +1,17 @@
+{
+  "id": "06",
+  "tool": "built-in image_gen",
+  "stage": "correct_broad_inner_lining_material_role",
+  "selected": true,
+  "rejected_first": "source/clothing06_back_v2_palette_first.png",
+  "first_rejection_reason": "Broad inner lining was incorrectly colored as exterior robe fabric.",
+  "inputs": [
+    "source/clothing06_back_v2_palette_first.png",
+    "source/clothing06_palette_reference.png",
+    "source/clothing01_back_v2_band_registered.png"
+  ],
+  "prompt": "Precise-object-edit. Edit ONLY FIRST image. It has the correct rear-collar geometry and position but the wrong fabric color roles: the BROAD INNER FACE was mistakenly made robe-colored gray/blue. SECOND image is this garment's original collar material reference. THIRD image is the original shared master and shows the CORRECT MATERIAL ZONES: an almost entirely IVORY BROCADE INNER FACE, with the robe color restricted to the VERY THIN OUTER PERIMETER/PIPING. Repaint the ENTIRE BROAD FACE to pale warm IVORY lining (not celadon exterior cloth), narrow muted celadon-gray piping. The big central panel is the neck-facing lining, not the outer robe fabric; it must match the light ivory band in image2. Keep the delicate existing fabric weave, folded shading, silhouette, small occupied size, exact x/y placement, and 1024x1536 transparent canvas of image1. DO NOT alter geometry or opacity; DO NOT zoom, enlarge, reposition or recrop. Only colors/material values change. Keep the solid continuous center fully fabric-filled with no U-shaped hole, because this will be behind a separate opaque neck. No skin, person, neck, face, hair, front lapels or chest garment. Do not paint broad blue/gray/red fabric across the inner face. No large shiny gold trim, text, shadow or backdrop. Return a genuinely transparent isolated collar in the same exact canvas framing.",
+  "raw": "source/clothing06_back_v2_palette_raw.png",
+  "output": "source/clothing06_back_v2_band_registered.png",
+  "alpha_policy": "Use fixed pure-master alpha; generated alpha is discarded."
+}

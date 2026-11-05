@@ -1,0 +1,92 @@
+{
+  "id": "male_neck_collar_overlay_20261104_v4",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "scope": "Current frozen wearer neck and shared rear-collar registration controls; not a claim about all facial variant points",
+  "face_sha256": "0e2e751160bbfafefc0300df20e6ee5497945141f43b5672fa796159d0ad6639",
+  "anchors": [
+    {
+      "id": "L0",
+      "p": [
+        442,
+        530
+      ],
+      "kind": "neck"
+    },
+    {
+      "id": "R0",
+      "p": [
+        589,
+        530
+      ],
+      "kind": "neck"
+    },
+    {
+      "id": "L1",
+      "p": [
+        441,
+        550
+      ],
+      "kind": "neck"
+    },
+    {
+      "id": "R1",
+      "p": [
+        589,
+        550
+      ],
+      "kind": "neck"
+    },
+    {
+      "id": "L2",
+      "p": [
+        436,
+        580
+      ],
+      "kind": "neck",
+      "hidden": true
+    },
+    {
+      "id": "R2",
+      "p": [
+        595,
+        580
+      ],
+      "kind": "neck",
+      "hidden": true
+    },
+    {
+      "id": "B0",
+      "p": [
+        433,
+        528
+      ],
+      "kind": "rear",
+      "hidden": false
+    },
+    {
+      "id": "B1",
+      "p": [
+        516,
+        514
+      ],
+      "kind": "rear",
+      "hidden": true
+    },
+    {
+      "id": "B2",
+      "p": [
+        600,
+        528
+      ],
+      "kind": "rear",
+      "hidden": false
+    }
+  ],
+  "rear_registration": "source/clothing01_back_v2_registration.json",
+  "source_neck_outline": "source/clothing_strict_rig.json",
+  "overlay": "rig/male_overlay.png",
+  "sha256": "4726fdd2f4da57e0dc6eace044c8f187062e16cb96b699b24a13be03ffb52084"
+}

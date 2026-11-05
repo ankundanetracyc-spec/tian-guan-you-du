@@ -1,0 +1,14 @@
+{
+  "tool": "built-in image_gen",
+  "stage": "right_tip_fabric_addition_refinement",
+  "prompt": "Edit input 1 only, preserving the left collar completely. Input 2 marks one RED MASK where the RIGHT collar tip needs a substantial but narrow inward fabric extension. Replace the ENTIRE red mask support with the same beige ivory collar fabric; keep the inner edge at the LEFT boundary of the mask, with softly rounded top/bottom corners, and blend into the existing cloth below. Do not leave the inner edge at its old location. The right tip must touch/overlap the right neck edge shown in fitting guide input 3, so no dark slit is left between skin and cloth. Add enough cloth; the previous version only widened half the required amount and remained detached. Keep the large central U opening transparent, no horizontal connecting band, no person/skin/head/neck, no red in result, no background or shadow. Retain the same 1000x520 close-up crop framing, exact outer green silhouette, subtle ivory brocade weave, and existing left collar. Only the right upright inner collar tip and its clean soft alpha edge change. Output only the two cloth sides, native transparent RGBA.",
+  "inputs": [
+    "source/clothing01_right_target.png",
+    "source/clothing01_right_addition_guide.png",
+    "source/clothing01_collar_guide.png"
+  ],
+  "raw": "source/clothing01_selected_raw.png",
+  "output": "male/clothing/01.png",
+  "registration": "source/clothing01_registration.json",
+  "selected": true
+}

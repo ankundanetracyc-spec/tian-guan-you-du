@@ -21,37 +21,38 @@
   ],
   "variants_per_slot": {
     "male": [
-      8,
-      8,
-      9,
-      9,
       3,
       3,
       3,
+      2,
+      1,
+      1,
+      1,
       7,
-      3
+      1
     ],
     "female": [
-      8,
-      8,
-      4,
-      4,
-      4,
-      4,
-      4,
+      3,
+      3,
+      3,
+      2,
+      1,
+      1,
+      1,
       7,
-      3
+      1
     ]
   },
-  "total_pngs": 99,
+  "total_pngs": 51,
   "empty_accessory_variant": 1,
   "blend_order": [
     "hair_back",
+    "clothing_back",
     "face_shape",
     "clothing",
+    "nose",
     "eyes",
     "eyebrows",
-    "nose",
     "mouth",
     "face_accessory",
     "hair_front"
@@ -825,7 +826,7 @@
     "reference_thread": "01a0e25d-8e41-7fd1-837d-8c5621e8d2fa"
   },
   "active_catalog": "appearance_parts.json",
-  "active_variant_count": 96,
+  "active_variant_count": 44,
   "masculine_revision": "source/masculine_soft_revision_20261005/registration.json",
   "masculine_revision_status": "natural eye size, reduced sclera and short lashes; separate eye/brow layers; awaiting user visual review",
   "sclera_revision": "source/sclera_refinement_20261005/registration.json",
@@ -900,9 +901,9 @@
           1488
         ],
         "opaque_rgb_median": [
-          73.0,
-          68.0,
-          64.0
+          73,
+          68,
+          64
         ],
         "notes": [
           "one uniform scale and translation",
@@ -927,9 +928,9 @@
           1488
         ],
         "opaque_rgb_median": [
-          61.0,
-          56.0,
-          52.0
+          61,
+          56,
+          52
         ],
         "notes": [
           "one uniform scale and translation",
@@ -955,9 +956,9 @@
           1269
         ],
         "opaque_rgb_median": [
-          72.0,
-          67.0,
-          63.0
+          72,
+          67,
+          63
         ],
         "notes": [
           "one uniform scale and translation",
@@ -982,9 +983,9 @@
           1207
         ],
         "opaque_rgb_median": [
-          59.0,
-          55.0,
-          51.0
+          59,
+          55,
+          51
         ],
         "notes": [
           "one uniform scale and translation",
@@ -1010,9 +1011,9 @@
           1488
         ],
         "opaque_rgb_median": [
-          73.0,
-          68.0,
-          64.0
+          73,
+          68,
+          64
         ],
         "notes": [
           "one uniform scale and translation",
@@ -1037,9 +1038,9 @@
           1488
         ],
         "opaque_rgb_median": [
-          59.0,
-          54.0,
-          50.0
+          59,
+          54,
+          50
         ],
         "notes": [
           "one uniform scale and translation",
@@ -1082,12 +1083,12 @@
           1199
         ],
         "opaque_rgb_median": [
-          72.0,
-          68.0,
-          63.0
+          72,
+          68,
+          63
         ],
         "source_head_axis_x_visual_estimate": 700,
-        "registered_head_axis_x": 519.0,
+        "registered_head_axis_x": 519,
         "no_local_warp": true,
         "layer_ownership": "front cap, fringe and cheek-facing locks only"
       },
@@ -1106,12 +1107,12 @@
           1488
         ],
         "opaque_rgb_median": [
-          60.0,
-          56.0,
-          51.0
+          60,
+          56,
+          51
         ],
         "source_head_axis_x_visual_estimate": 530,
-        "registered_head_axis_x": 519.0,
+        "registered_head_axis_x": 519,
         "no_local_warp": true,
         "layer_ownership": "continuous rear scalp, rear knot, nape and behind-body hair; no face hole"
       },
@@ -1130,9 +1131,9 @@
           1324
         ],
         "opaque_rgb_median": [
-          72.0,
-          67.0,
-          63.0
+          72,
+          67,
+          63
         ],
         "source_head_axis_x_visual_estimate": 607,
         "registered_head_axis_x": 519.24,
@@ -1154,9 +1155,9 @@
           1199
         ],
         "opaque_rgb_median": [
-          60.0,
-          55.0,
-          51.0
+          60,
+          55,
+          51
         ],
         "source_head_axis_x_visual_estimate": 656,
         "registered_head_axis_x": 519.04,
@@ -1178,9 +1179,9 @@
           1295
         ],
         "opaque_rgb_median": [
-          73.0,
-          68.0,
-          63.0
+          73,
+          68,
+          63
         ],
         "source_head_axis_x_visual_estimate": 607,
         "registered_head_axis_x": 519.1,
@@ -1202,9 +1203,9 @@
           1310
         ],
         "opaque_rgb_median": [
-          60.0,
-          55.0,
-          51.0
+          60,
+          55,
+          51
         ],
         "source_head_axis_x_visual_estimate": 610,
         "registered_head_axis_x": 519.1,
@@ -1256,5 +1257,400 @@
     "wardrobe_verification": "wardrobe_verification_20261008.json",
     "access_policy": "wardrobe selectable without rank gating in this iteration",
     "visual_approved_by_user": false
+  },
+  "retirement_20261103": {
+    "record": "../../../docs/美术规范/立绘全面复核_20261103/removed.json",
+    "note": "Six rejected active files deleted; historical registrations below are provenance only. appearance_parts.json is authoritative for active options; variant_style_ids preserve save identifiers."
+  },
+  "female_face_retirement_20261103": {
+    "retained": "female/face_shape/04.png",
+    "name": "柔和卵面",
+    "saved_style_id": 3,
+    "removed": [
+      "female/face_shape/01.png",
+      "female/face_shape/02.png",
+      "female/face_shape/03.png"
+    ],
+    "reason": "User requested only 柔和卵面; delete all other female face variants"
+  },
+  "female_three_replacement_20261103": {
+    "parts": [
+      "hair_front",
+      "hair_back",
+      "eyebrows",
+      "eyes",
+      "nose",
+      "mouth"
+    ],
+    "variants_per_part": 3,
+    "source": "mods\\appearance\\portrait_rebuild_20261103\\three_style_parts",
+    "face": "female/face_shape/04.png",
+    "legacy_styles": "0..2 now use new styles; unavailable IDs use existing deterministic catalog fallback"
+  },
+  "clothing_polish_installed_20261103": {
+    "count": 14,
+    "source": "mods\\appearance\\clothing_polish_20261103",
+    "canvas": [
+      1024,
+      1536
+    ],
+    "style_ids_and_item_paths": "unchanged"
+  },
+  "reference_hair_installation_20261104": {
+    "source": "res://mods/appearance/portrait_reference_hair_20261104_v1",
+    "hair_variants": 3,
+    "hair_style_ids": [
+      0,
+      1,
+      2
+    ],
+    "face": "female/face_shape/04.png",
+    "empty_female_parts": [
+      "eyebrows",
+      "eyes",
+      "nose",
+      "mouth",
+      "face_accessory"
+    ],
+    "retired_assets_backup": "res://mods/appearance/portrait_reference_hair_20261104_v1/installation/before_install.zip",
+    "legacy_style_fallback": "Existing deterministic catalog fallback; retired features resolve to the sole transparent variant."
+  },
+  "reference_features_installation_20261104": {
+    "source": "res://mods/appearance/portrait_reference_features_20261104_v1",
+    "counts": {
+      "eyebrows": 3,
+      "eyes": 2,
+      "nose": 1,
+      "mouth": 1
+    },
+    "selection": [
+      {
+        "part": "eyebrows",
+        "retained_source_index": 1,
+        "merged_source_indices": [
+          1
+        ],
+        "saved_style_id": 0,
+        "name": "疏平柔眉"
+      },
+      {
+        "part": "eyebrows",
+        "retained_source_index": 2,
+        "merged_source_indices": [
+          2
+        ],
+        "saved_style_id": 1,
+        "name": "弯挑细眉"
+      },
+      {
+        "part": "eyebrows",
+        "retained_source_index": 3,
+        "merged_source_indices": [
+          3
+        ],
+        "saved_style_id": 2,
+        "name": "平直细眉"
+      },
+      {
+        "part": "eyes",
+        "retained_source_index": 1,
+        "merged_source_indices": [
+          1,
+          3
+        ],
+        "saved_style_id": 0,
+        "name": "浅杏长目"
+      },
+      {
+        "part": "eyes",
+        "retained_source_index": 2,
+        "merged_source_indices": [
+          2
+        ],
+        "saved_style_id": 1,
+        "name": "清圆杏目"
+      },
+      {
+        "part": "nose",
+        "retained_source_index": 1,
+        "merged_source_indices": [
+          1,
+          2,
+          3
+        ],
+        "saved_style_id": 0,
+        "name": "柔圆鼻"
+      },
+      {
+        "part": "mouth",
+        "retained_source_index": 1,
+        "merged_source_indices": [
+          1,
+          2,
+          3
+        ],
+        "saved_style_id": 0,
+        "name": "自然浅唇"
+      }
+    ],
+    "independent_slots": true,
+    "hair_unchanged": true,
+    "face_unchanged": true,
+    "deprecated_previous_blank_features": true
+  },
+  "hair_layer_skin_revision_20261104": {
+    "source": "res://mods/appearance/portrait_hair_skin_revision_20261104_v1",
+    "head_boundary": "Baihui anterior vs posterior; not a horizontal image cut",
+    "body_boundary": "in front of clothes vs behind body",
+    "anterior_hair": "Anterior scalp cap and temple sections/front braids/front hanging locks",
+    "posterior_hair": "Posterior scalp, bun/chignon and body-rear loose hair; complete hidden underlay",
+    "face": "Female face04 RGB calibrated to the reference, original Alpha preserved exactly",
+    "female_features_unchanged": {
+      "brow": 3,
+      "eye": 2,
+      "nose": 1,
+      "mouth": 1
+    },
+    "full_three_point_2px_certification": false
+  },
+  "male_reference_installation_20261104": {
+    "source": "res://mods/appearance/portrait_male_reference_20261104_v1",
+    "head_boundary": "Baihui anterior/posterior plane",
+    "body_boundary": "in front of clothes versus behind body",
+    "ear_hair_rule": "User final choice: restore the initial ear-space version with continuous clean ear edges; no ear-exposure ratio requirement.",
+    "hair_selection": "source/hair_registration.json",
+    "hair_color": "RGB-only regional calibration to active female material; original selected alpha and geometry unchanged.",
+    "feature_counts": {
+      "brow": 3,
+      "eye": 2,
+      "nose": 1,
+      "mouth": 1
+    },
+    "face": "male/face_shape/01.png",
+    "face_alpha_preserved": true,
+    "female_unchanged": true,
+    "full_three_point_2px_certification": false,
+    "legacy_styles": "Retired IDs use the existing deterministic catalog fallback.",
+    "status": "rejected_by_user_superseded",
+    "do_not_restore": true
+  },
+  "male_face_match_20261104_v2": {
+    "source": "res://mods/appearance/portrait_male_face_match_20261104_v2",
+    "skin_reference_column": 3,
+    "user_direction": "Use the third reference face skin color and material; match all independent facial components to that skin.",
+    "face": "male/face_shape/01.png",
+    "feature_counts": {
+      "brow": 3,
+      "eye": 2,
+      "nose": 1,
+      "mouth": 1
+    },
+    "face_alpha_may_change": true,
+    "hair_and_clothes_unchanged": true,
+    "female_unchanged": true,
+    "full_three_point_2px_certification": false,
+    "status": "rejected_by_user_superseded",
+    "do_not_restore": true
+  },
+  "male_regenerated_20261104_v3": {
+    "source": "res://mods/appearance/portrait_male_regenerated_20261104_v3",
+    "status": "installed_awaiting_visual_review",
+    "user_direction": "Discard both previous male portrait rounds and generate all male hair, facial features and face again from the supplied reference.",
+    "rejected_previous_sources": [
+      "portrait_male_reference_20261104_v1",
+      "portrait_male_face_match_20261104_v2"
+    ],
+    "restore_rejected_artwork": false,
+    "regenerated_part_count": 14,
+    "hair_counts": {
+      "front": 3,
+      "back": 3
+    },
+    "feature_counts": {
+      "brow": 3,
+      "eye": 2,
+      "nose": 1,
+      "mouth": 1
+    },
+    "independent_selections": true,
+    "hair_tone_material_reference": "active_female_parts",
+    "face_alpha_may_change": true,
+    "female_and_clothes_unchanged": true,
+    "full_three_point_2px_certification": false
+  },
+  "private_sublayers": {
+    "clothing_back": {
+      "parent_slot": "clothing",
+      "file": "male/clothing_back/{index}.png",
+      "gender": "male",
+      "independent_option": false
+    }
+  },
+  "nasion_clothing_20261104_v4": {
+    "source": "res://mods/appearance/portrait_nasion_clothing_20261104_v4",
+    "status": "installed_awaiting_visual_review",
+    "changed_parts": [
+      {
+        "gender": "female",
+        "part": "nose",
+        "index": 1
+      },
+      {
+        "gender": "male",
+        "part": "clothing",
+        "index": 1
+      },
+      {
+        "gender": "male",
+        "part": "clothing",
+        "index": 2
+      },
+      {
+        "gender": "male",
+        "part": "clothing",
+        "index": 3
+      },
+      {
+        "gender": "male",
+        "part": "clothing",
+        "index": 4
+      },
+      {
+        "gender": "male",
+        "part": "clothing",
+        "index": 5
+      },
+      {
+        "gender": "male",
+        "part": "clothing",
+        "index": 6
+      },
+      {
+        "gender": "male",
+        "part": "clothing",
+        "index": 7
+      },
+      {
+        "gender": "male",
+        "part": "clothing_back",
+        "index": 1
+      },
+      {
+        "gender": "male",
+        "part": "clothing_back",
+        "index": 2
+      },
+      {
+        "gender": "male",
+        "part": "clothing_back",
+        "index": 3
+      },
+      {
+        "gender": "male",
+        "part": "clothing_back",
+        "index": 4
+      },
+      {
+        "gender": "male",
+        "part": "clothing_back",
+        "index": 5
+      },
+      {
+        "gender": "male",
+        "part": "clothing_back",
+        "index": 6
+      },
+      {
+        "gender": "male",
+        "part": "clothing_back",
+        "index": 7
+      },
+      {
+        "gender": "male",
+        "part": "nose",
+        "index": 1
+      }
+    ],
+    "independent_selections": true,
+    "paired_rear_clothing_count": 7,
+    "option_count_unchanged": 44,
+    "nose_lower_region_preserved_from_y": 415,
+    "strict_guard": "res://mods/appearance/portrait_nasion_clothing_20261104_v4/source/clothing_strict_v2_guard.cjs",
+    "strict_guard_sha256": "698b34b76d955140a62cc85877150ace7dfbf018d65a1eb40b717f66931c1447"
+  },
+  "latest_male_rebuild": {
+    "id": "portrait_original_restore_20261105_v6",
+    "source": "res://mods/appearance/portrait_original_restore_20261105_v6",
+    "replaces": "male face, hair, brows, eyes, nose and lips; user rejected prior male art",
+    "canvas": [
+      1024,
+      1536
+    ],
+    "selected_assets": 28,
+    "original_pixel_head_assets": 14,
+    "clothing_painting_preserved": true,
+    "clothing_depth_updated": false,
+    "female_assets_preserved": true,
+    "user_visual_approval": false,
+    "edge_cleanup": {
+      "source": "res://mods/appearance/portrait_original_restore_20261105_v6/edge_cleanup_20261105",
+      "changed_pngs": 12,
+      "new_builtin_generated_layers": 6,
+      "scope": "Six hair layers regenerated from original and current version; ear remnants removed from front01, front03 interior wisps cleaned, back02 lower curtain reworked. Previous head restored as requested, skin matches third original; its face/neck alpha retained exactly. Three brows/two eyes retain original cores with contaminated ends masked.",
+      "user_visual_approval": false
+    },
+    "female_hair_match": {
+      "source": "res://mods/appearance/portrait_original_restore_20261105_v6/female_hair_match_20261105",
+      "changed_pngs": 6,
+      "scope": "Local right-temple correction in front03; female-reference chroma and micro-highlight calibration for six hair layers. Other hair alpha unchanged. Head, neck, clothes and female PNGs unchanged.",
+      "user_visual_approval": false
+    },
+    "fresh_high_skull_head": {
+      "source": "res://mods/appearance/portrait_original_restore_20261105_v6/skull_partition_fix_20261105/head_only",
+      "paint_source": "res://mods/appearance/portrait_original_restore_20261105_v6/skull_partition_fix_20261105/source/head_final_native.png",
+      "mode": "Fresh built-in image_gen head, native PNG selected byte for byte without RGB or Alpha editing",
+      "old_high_skull_reference_only": true,
+      "canvas_and_origin_preserved": true,
+      "seven_collars_visually_verified": true,
+      "smooth_neck_contour_no_notch": true,
+      "scope": "Fresh native head installed; three posterior hair replacements now installed separately.",
+      "user_visual_approval": false
+    },
+    "posterior_partition": {
+      "source": "res://mods/appearance/portrait_original_restore_20261105_v6/skull_partition_fix_20261105/hair_set",
+      "front_hair": "Existing three female-color-matched front hair options retained",
+      "rear_hair": "Three narrowed posterior layers installed",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "offset": [
+        0,
+        0
+      ],
+      "user_visual_approval": false
+    },
+    "fixed_neck_collars": {
+      "source": "res://mods/appearance/portrait_original_restore_20261105_v6/collar_hair_fixed_neck_20261105/collars_only",
+      "paint_sources": "res://mods/appearance/portrait_original_restore_20261105_v6/collar_hair_fixed_neck_20261105/source",
+      "scope": "Seven front garments and seven rear collars. Head, neck, facial parts, female assets and current hair unchanged.",
+      "head_sha256": "ed790ac8bcd41fd54d9a2e0a7be55f21704413ff5b86213a91285782a5d6f7c2",
+      "registration": "res://mods/appearance/portrait_original_restore_20261105_v6/collar_hair_fixed_neck_20261105/source/registration.json",
+      "new_hair_status": "Old hairstyle revisions abandoned; separate new pairs await explicit user selection before installation",
+      "user_visual_approval": false
+    },
+    "approved_whole_01": {
+      "master": "res://mods/appearance/portrait_original_restore_20261105_v6/whole_male_first_20261105/male_whole_01.png",
+      "master_sha256": "76e789ffa97e72c8ece941401e4b7aa93ba74e7567e881ed2e7f48a67ae266c2",
+      "master_user_approved": true,
+      "source": "res://mods/appearance/portrait_original_restore_20261105_v6/whole_male_first_20261105/integration",
+      "mode": "Built-in image_gen part extraction and hidden-region completion from approved whole portrait; original visible feature RGB retained",
+      "head_neck_alpha_unchanged": true,
+      "selected_parts": 9,
+      "retired_old_variants": 7,
+      "male_selectable": 15,
+      "female_selectable": 22,
+      "user_part_visual_approval": false
+    }
   }
 }

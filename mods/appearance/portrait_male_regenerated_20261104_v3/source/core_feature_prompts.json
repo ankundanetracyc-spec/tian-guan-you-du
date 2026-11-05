@@ -1,0 +1,22 @@
+{
+  "tool": "built-in image_gen",
+  "new_generation": true,
+  "reference": "source/reference_user.png",
+  "eyepair01": {
+    "reference_detail": "source/face_detail_01.png",
+    "request": "Entirely newly paint only one pair of male eyes, real transparent alpha, no eyebrows/nose/hair/head or opaque surrounding skin. Frontal calm gaze. Fine Chinese xianxia ink and matte watercolor, warm grey-brown irises and small dark pupils, natural ivory sclera, partly covered iris, soft tapering lid brushwork. Match original01/02 long gently hooded eyes, shallow upper-lid arch, no big round eyes or aggressive narrow slits. Pair fills narrow central horizontal band of square canvas, pupil positions approx300/724, outer corners155/870. Retain slight natural asymmetry. No other anatomy or text."
+  },
+  "eyepair02": {
+    "reference_detail": "source/face_detail_03.png",
+    "request": "Entirely newly paint only one pair of male eyes, real transparent alpha, no eyebrows/nose/hair/head or opaque surrounding skin. Frontal calm gaze. Fine Chinese xianxia ink and matte watercolor, warm grey-brown irises and small dark pupils, natural ivory sclera, partly covered iris, soft tapering lid brushwork. Match original03 slightly more open clean almond eyes, width52 versus opening14 at game size, adult male restrained gaze. Pair fills narrow central horizontal band of square canvas, pupil positions approx300/724, outer corners155/870. Retain slight natural asymmetry. No other anatomy or text."
+  },
+  "nose01": {
+    "reference_detail": "source/face_detail_03.png",
+    "request": "Entirely new isolated elegant straight nose matching original03. Real transparent alpha, narrow understated bridge fading to transparency at top, gently rounded tip and small dark curved nostril marks. Warm peach and soft sepia, sparse highlights, no white bridge stripe or opaque surrounding skin plate. Fine matte watercolor and illustrated linework. Feature alone centered large on square canvas, no other anatomy or text."
+  },
+  "mouth01": {
+    "reference_detail": "source/face_detail_03.png",
+    "request": "Entirely new isolated relaxed closed male lips matching original03. Real transparent alpha, fine gently horizontal warm sepia seam, subtly raised ends, understated cupid bow, delicate lower lip and thin-to-medium male volume. Muted peach beige, soft watercolor edges, low-key highlights, tiny soft shadow beneath lower lip. No pout/smile/teeth/lipstick, no nose/philtrum/chin/skin plate. Centered large on square canvas, no text or background."
+  },
+  "note": "These production prompt specifications preserve the semantic requests; original tool conversations additionally included shared anti-artifact and canvas phrasing. All raw outputs retained."
+}

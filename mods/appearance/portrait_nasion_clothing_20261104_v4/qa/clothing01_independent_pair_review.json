@@ -1,0 +1,317 @@
+{
+  "ready": true,
+  "root_reviewed_scheme": true,
+  "reviewed_scheme_sha256": {
+    "front": "61209e75322b68e6a4d4834e93ddbc4e493669842466b63df5b8955f31046ddb",
+    "rear": "dea92c22f2f205da5a6204f0dc373fc4dc16e4536e3e753508e3230d7f8afdaa"
+  },
+  "user_visual_approval": false,
+  "front_sha256": "61209e75322b68e6a4d4834e93ddbc4e493669842466b63df5b8955f31046ddb",
+  "rear_sha256": "dea92c22f2f205da5a6204f0dc373fc4dc16e4536e3e753508e3230d7f8afdaa",
+  "face_sha256": "0e2e751160bbfafefc0300df20e6ee5497945141f43b5672fa796159d0ad6639",
+  "original_sha256": "d000653195a539310ff4d70856aaac5aa4cdf2af0bfbc4591c4ae2e1012dc89c",
+  "structure": "Original upper collar plus a newly painted complete rear band behind the face; original y>=550 front V/body after the face.",
+  "stage_crop": {
+    "left": 395,
+    "top": 500,
+    "width": 250,
+    "height": 130
+  },
+  "stage_scale": 4,
+  "stage_order": "Top left original face+single clothing; top right rear texture alone; bottom left front texture alone; bottom right real rear+face+front composition.",
+  "landmarks": [
+    {
+      "id": "left_original_tip",
+      "role": "preserved_original_tip",
+      "side": "left",
+      "alpha_threshold": 40,
+      "detector": "first_side_row_inner_pixel",
+      "px": [
+        434,
+        528
+      ],
+      "category": "original_garment_reference",
+      "rear_alpha": 253,
+      "front_alpha": 0
+    },
+    {
+      "id": "left_outer_540",
+      "role": "preserved_outer_frame",
+      "side": "left",
+      "alpha_threshold": 230,
+      "detector": "row_outer_pixel",
+      "px": [
+        420,
+        540
+      ],
+      "category": "original_garment_reference",
+      "rear_alpha": 250,
+      "front_alpha": 0
+    },
+    {
+      "id": "left_outer_550",
+      "role": "preserved_outer_frame",
+      "side": "left",
+      "alpha_threshold": 230,
+      "detector": "row_outer_pixel",
+      "px": [
+        413,
+        550
+      ],
+      "category": "original_garment_reference",
+      "rear_alpha": 0,
+      "front_alpha": 244
+    },
+    {
+      "id": "left_outer_570",
+      "role": "preserved_outer_frame",
+      "side": "left",
+      "alpha_threshold": 230,
+      "detector": "row_outer_pixel",
+      "px": [
+        401,
+        570
+      ],
+      "category": "original_garment_reference",
+      "rear_alpha": 0,
+      "front_alpha": 245
+    },
+    {
+      "id": "left_outer_600",
+      "role": "preserved_outer_frame",
+      "side": "left",
+      "alpha_threshold": 230,
+      "detector": "row_outer_pixel",
+      "px": [
+        373,
+        600
+      ],
+      "category": "original_garment_reference",
+      "rear_alpha": 0,
+      "front_alpha": 247
+    },
+    {
+      "id": "left_front_v_580",
+      "role": "preserved_front_v",
+      "side": "left",
+      "alpha_threshold": 230,
+      "detector": "row_inner_pixel",
+      "px": [
+        452,
+        580
+      ],
+      "category": "original_garment_reference",
+      "rear_alpha": 253,
+      "front_alpha": 235
+    },
+    {
+      "id": "left_front_v_600",
+      "role": "preserved_front_v",
+      "side": "left",
+      "alpha_threshold": 230,
+      "detector": "row_inner_pixel",
+      "px": [
+        465,
+        600
+      ],
+      "category": "original_garment_reference",
+      "rear_alpha": 253,
+      "front_alpha": 234
+    },
+    {
+      "id": "left_front_v_620",
+      "role": "preserved_front_v",
+      "side": "left",
+      "alpha_threshold": 230,
+      "detector": "row_inner_pixel",
+      "px": [
+        480,
+        620
+      ],
+      "category": "original_garment_reference",
+      "rear_alpha": 0,
+      "front_alpha": 236
+    },
+    {
+      "id": "right_original_tip",
+      "role": "preserved_original_tip",
+      "side": "right",
+      "alpha_threshold": 40,
+      "detector": "first_side_row_inner_pixel",
+      "px": [
+        599,
+        528
+      ],
+      "category": "original_garment_reference",
+      "rear_alpha": 249,
+      "front_alpha": 0
+    },
+    {
+      "id": "right_outer_540",
+      "role": "preserved_outer_frame",
+      "side": "right",
+      "alpha_threshold": 230,
+      "detector": "row_outer_pixel",
+      "px": [
+        609,
+        540
+      ],
+      "category": "original_garment_reference",
+      "rear_alpha": 245,
+      "front_alpha": 0
+    },
+    {
+      "id": "right_outer_550",
+      "role": "preserved_outer_frame",
+      "side": "right",
+      "alpha_threshold": 230,
+      "detector": "row_outer_pixel",
+      "px": [
+        618,
+        550
+      ],
+      "category": "original_garment_reference",
+      "rear_alpha": 0,
+      "front_alpha": 247
+    },
+    {
+      "id": "right_outer_570",
+      "role": "preserved_outer_frame",
+      "side": "right",
+      "alpha_threshold": 230,
+      "detector": "row_outer_pixel",
+      "px": [
+        630,
+        570
+      ],
+      "category": "original_garment_reference",
+      "rear_alpha": 0,
+      "front_alpha": 246
+    },
+    {
+      "id": "right_outer_600",
+      "role": "preserved_outer_frame",
+      "side": "right",
+      "alpha_threshold": 230,
+      "detector": "row_outer_pixel",
+      "px": [
+        652,
+        600
+      ],
+      "category": "original_garment_reference",
+      "rear_alpha": 0,
+      "front_alpha": 250
+    },
+    {
+      "id": "right_front_v_580",
+      "role": "preserved_front_v",
+      "side": "right",
+      "alpha_threshold": 230,
+      "detector": "row_inner_pixel",
+      "px": [
+        588,
+        580
+      ],
+      "category": "original_garment_reference",
+      "rear_alpha": 253,
+      "front_alpha": 244
+    },
+    {
+      "id": "right_front_v_600",
+      "role": "preserved_front_v",
+      "side": "right",
+      "alpha_threshold": 230,
+      "detector": "row_inner_pixel",
+      "px": [
+        578,
+        600
+      ],
+      "category": "original_garment_reference",
+      "rear_alpha": 254,
+      "front_alpha": 243
+    },
+    {
+      "id": "right_front_v_620",
+      "role": "preserved_front_v",
+      "side": "right",
+      "alpha_threshold": 230,
+      "detector": "row_inner_pixel",
+      "px": [
+        568,
+        620
+      ],
+      "category": "original_garment_reference",
+      "rear_alpha": 0,
+      "front_alpha": 249
+    },
+    {
+      "id": "left_neck_top",
+      "px": [
+        442,
+        530
+      ],
+      "role": "visible_join",
+      "category": "visible_neck_support",
+      "rear_alpha": 253,
+      "front_alpha": 0
+    },
+    {
+      "id": "left_neck_mid",
+      "px": [
+        441,
+        550
+      ],
+      "role": "visible_join",
+      "category": "visible_neck_support",
+      "rear_alpha": 253,
+      "front_alpha": 0
+    },
+    {
+      "id": "left_neck_lower",
+      "px": [
+        436,
+        580
+      ],
+      "role": "hidden_coverage_only",
+      "category": "hidden_neck_support",
+      "rear_alpha": 253,
+      "front_alpha": 253
+    },
+    {
+      "id": "right_neck_top",
+      "px": [
+        589,
+        530
+      ],
+      "role": "visible_join",
+      "category": "visible_neck_support",
+      "rear_alpha": 253,
+      "front_alpha": 0
+    },
+    {
+      "id": "right_neck_mid",
+      "px": [
+        589,
+        550
+      ],
+      "role": "visible_join",
+      "category": "visible_neck_support",
+      "rear_alpha": 253,
+      "front_alpha": 0
+    },
+    {
+      "id": "right_neck_lower",
+      "px": [
+        595,
+        580
+      ],
+      "role": "hidden_coverage_only",
+      "category": "hidden_neck_support",
+      "rear_alpha": 253,
+      "front_alpha": 253
+    }
+  ],
+  "landmark_notice": "Reference overlay for independent visual assessment, not a new or reused single-layer guard certification.",
+  "review_findings": "Inspected the selected_pair_v2 light/dark images and both actual PNGs. Thin collar tips and original V read naturally, without rejected rolled thickness or a cloth-painted vertical skin border. Deep background shows no obvious pale fringe, leak or detached green fragments. The fine green rim remains softly painted.",
+  "guard_status": "Await the separately authored two-layer guard and runtime integration; this report does not approve the remaining six garments."
+}

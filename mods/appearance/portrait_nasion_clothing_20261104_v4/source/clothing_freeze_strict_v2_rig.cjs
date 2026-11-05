@@ -1,0 +1,18 @@
+// Freeze the selected two-depth contract from original snapshots and the registered pure band.
+const fs=require('fs'),path=require('path'),crypto=require('crypto');
+const pack=path.resolve(__dirname,'..'),hash=f=>crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex');
+const old=JSON.parse(fs.readFileSync(path.join(__dirname,'clothing_strict_rig.json'),'utf8'));
+const geometryFile=path.join(__dirname,'clothing01_back_v2_registration.json');
+const geometry=JSON.parse(fs.readFileSync(geometryFile,'utf8'));
+const master=path.join(pack,'source/clothing01_back_v2_band_registered.png');
+const output=path.join(__dirname,'clothing_strict_v2_rig.json');
+if(fs.existsSync(output))throw Error('Frozen v2 contract exists; do not silently replace targets.');
+if(hash(master)!==geometry.output_sha256)throw Error('Selected pure band does not match its geometry record.');
+const rig={schema_version:2,id:'male_collar_two_depth_snapshot_20261104_v4',status:'frozen_engineering_contract_visual_review_separate',canvas:[1024,1536],origin:[0,0],maximum_control_residual_px:2,
+ layer_order:['hair_back','clothing_back','face','clothing_front','features','hair_front'],split_y:550,
+ face:old.face,
+ pure_band_master:{file:'source/clothing01_back_v2_band_registered.png',sha256:hash(master),geometry_record:'source/clothing01_back_v2_registration.json',geometry_record_sha256:hash(geometryFile),native_source:geometry.source,native_source_sha256:geometry.source_sha256,source_controls:geometry.source_controls,target_controls:geometry.target_controls,transform:geometry.transform,control_roles:['rear_left_rim','rear_center_rim_hidden_by_face','rear_right_rim'],alpha_threshold:230},
+ common_neck_controls:old.shared_contact_controls,
+ rules:{front_rgba_equal_snapshot_from_y:550,front_transparent_before_y:550,body_rgba_equal_snapshot_from_y:620,rear_composition:'source-over: original upper surface y<550 above the variant pure continuous AI band',variant_band_alpha_equals_pure_master:true,hidden_band_center_x:516,hidden_band_center_rows:[530,550,570],continuous_band_region_rows:[530,570],minimum_core_alpha:230,side_join_check_rows:[530,565],original_tip_detector:'At the frozen original tip X, scan only Y+-4 in visible cloth rear*(1-faceAlpha)+front. Never scan the whole half-image and mistake hidden center fabric for a tip.',outer_frame_detector:'Original external left/right contour rows in the complete rear+front cloth, excluding the newly introduced central hidden back edge.',front_v_detector:'Original visible front collar inner contour at fixed rows; hidden skin lower support never moves the V.',local_warp:false,source_points_are_measured_native_pixels:true,visual_acceptance_is_not_inferred_from_numeric_pass:true},
+ garments:old.garments.map(g=>({index:g.index,snapshot_source:g.snapshot_source,snapshot_sha256:g.snapshot_sha256,body_frame:{scale:1,rotation_degrees:0,translation:[0,0]},preserved_controls:g.preserved_controls.map(c=>({...c,detector:c.role==='preserved_original_tip'?'local_tip_column_visible':c.role==='preserved_front_v'?'front_row_inner': 'complete_cloth_row_outer'})),frozen_collar_rows:g.frozen_collar_rows,front_file:`male/clothing/${String(g.index).padStart(2,'0')}.png`,rear_file:`male/clothing_back/${String(g.index).padStart(2,'0')}.png`,pure_band_file:`source/clothing${String(g.index).padStart(2,'0')}_back_v2_band_registered.png`,pair_record:`source/clothing${String(g.index).padStart(2,'0')}_pair_v2_registration.json`,palette_record:g.index===1?null:`source/clothing${String(g.index).padStart(2,'0')}_back_v2_palette_registration.json`}))};
+fs.writeFileSync(output,JSON.stringify(rig,null,2)+'\n');console.log('Frozen v2 rig: continuous pure rear geometry + face contour + seven per-garment original frames.');

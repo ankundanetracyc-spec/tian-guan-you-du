@@ -1,0 +1,108 @@
+{
+  "comparison_target": "qa/reference_feature_landmarks.json",
+  "same_method_rois": true,
+  "source03_nose_target_distance": 22.0245,
+  "source03_lip_target_soft_width": 72,
+  "candidate": {
+    "eyes_01": [
+      {
+        "center": [
+          466.3874014551294,
+          376.3329571230157
+        ],
+        "bbox": [
+          458,
+          375,
+          475,
+          379
+        ],
+        "width": 18
+      },
+      {
+        "center": [
+          567.6493919112687,
+          376.4392681901809
+        ],
+        "bbox": [
+          558,
+          375,
+          577,
+          379
+        ],
+        "width": 20
+      }
+    ],
+    "eyes_02": [
+      {
+        "center": [
+          465.016180548368,
+          376.8967037798247
+        ],
+        "bbox": [
+          460,
+          376,
+          475,
+          379
+        ],
+        "width": 16
+      },
+      {
+        "center": [
+          566.3997697068562,
+          376.95954604336316
+        ],
+        "bbox": [
+          561,
+          376,
+          577,
+          379
+        ],
+        "width": 17
+      }
+    ],
+    "nose_01": [
+      {
+        "center": [
+          503.5855583464511,
+          451.88196618082156
+        ],
+        "bbox": [
+          495,
+          449,
+          513,
+          456
+        ],
+        "width": 19
+      },
+      {
+        "center": [
+          526.0491481481052,
+          451.08322247224703
+        ],
+        "bbox": [
+          519,
+          448,
+          533,
+          456
+        ],
+        "width": 15
+      }
+    ],
+    "mouth_01": [
+      {
+        "center": [
+          515.2081649791362,
+          483.3558501163767
+        ],
+        "bbox": [
+          479,
+          477,
+          551,
+          487
+        ],
+        "width": 73
+      }
+    ]
+  },
+  "note": "Eye02 final layer translated+1Y after sampled comparison; uniform transform only."
+}

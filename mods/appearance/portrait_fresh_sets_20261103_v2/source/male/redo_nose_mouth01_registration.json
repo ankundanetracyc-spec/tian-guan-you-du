@@ -1,0 +1,121 @@
+{
+  "supersedes": "registration_01.json nose/mouth records",
+  "records": [
+    {
+      "set": 1,
+      "part": "nose",
+      "source": "source/male/raw/nose/01.png",
+      "source_dimensions": [
+        1024,
+        1536
+      ],
+      "output": "male/nose/01.png",
+      "output_dimensions": [
+        1024,
+        1536
+      ],
+      "source_sha256": "95cbd06188fb18b038000b2fafbd3dea85363eb19020236f054948e660a11efd",
+      "output_sha256": "f5e9d1c0f6134f88ff41ef3fe409d33d1817748ea440bc8f6b0abe3bac96cf49",
+      "transform": {
+        "uniform_scale": 0.2898550724637681,
+        "rounded_canvas_size": [
+          297,
+          445
+        ],
+        "translation": [
+          368,
+          255
+        ],
+        "local_warp": false,
+        "threshold_matting": false,
+        "pigment_changed": false,
+        "native_alpha_retained": true
+      },
+      "landmarks": [
+        {
+          "name": "bridge_midline",
+          "source": [
+            515,
+            530
+          ],
+          "target": [
+            517,
+            409
+          ],
+          "mapped": [
+            517.3701171875,
+            408.54817708333337
+          ],
+          "residual_px": 0.5840639352913768
+        },
+        {
+          "name": "tip_bulb_center",
+          "source": [
+            515,
+            668
+          ],
+          "target": [
+            517,
+            449
+          ],
+          "mapped": [
+            517.3701171875,
+            448.52864583333337
+          ],
+          "residual_px": 0.5993008283966427
+        }
+      ],
+      "certification": "Visual anatomical landmarks; no independent three non-collinear point certification asserted"
+    },
+    {
+      "set": 1,
+      "part": "mouth",
+      "source": "source/male/raw/mouth/01.png",
+      "source_dimensions": [
+        1024,
+        1536
+      ],
+      "output": "male/mouth/01.png",
+      "output_dimensions": [
+        1024,
+        1536
+      ],
+      "source_sha256": "e7bebf1baf138cdd7513754be9e6504be7bb277014fa5cdfa96cd223fecb5960",
+      "output_sha256": "ee22d4623c1cb69f2c618ccd67ab7d3018679da50cafe271cbbe65d98e37c3e0",
+      "transform": {
+        "uniform_scale": 0.6741573033707865,
+        "rounded_canvas_size": [
+          690,
+          1036
+        ],
+        "translation": [
+          169,
+          -35
+        ],
+        "local_warp": false,
+        "threshold_matting": false,
+        "pigment_changed": false,
+        "native_alpha_retained": true
+      },
+      "landmarks": [
+        {
+          "name": "lip_seam_center",
+          "source": [
+            516,
+            765
+          ],
+          "target": [
+            517,
+            481
+          ],
+          "mapped": [
+            516.6953125,
+            480.9765625
+          ],
+          "residual_px": 0.30558761274387414
+        }
+      ],
+      "certification": "Visual anatomical landmarks; no independent three non-collinear point certification asserted"
+    }
+  ]
+}

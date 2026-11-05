@@ -1,0 +1,42 @@
+{
+  "tool": "built-in image_gen",
+  "shape_source": "source/raw/nose01_natural.png",
+  "color_source": "source/raw/nose01_natural_warm.png",
+  "output": "male/nose/01.png",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "transform": {
+    "scale": 1,
+    "left": 2,
+    "top": -3
+  },
+  "color_edit_blend": 0.65,
+  "alpha_changed_pixels_after_whole_layer_translation": 0,
+  "nostril_centers_before_translation": [
+    [
+      502.03,
+      454.97
+    ],
+    [
+      524.11,
+      454.61
+    ]
+  ],
+  "nostril_centers_after_translation": [
+    [
+      504.03,
+      451.97
+    ],
+    [
+      526.11,
+      451.61
+    ]
+  ],
+  "shape_sha256": "56c0204e0da91df531bfd843c82d2034024a054b35089c3f5622a108e3bd1a41",
+  "color_sha256": "6da627cd32a6592ed97cbdffd2d2efe4c85b43f800cbbdb774697f5e8af2f5d0",
+  "sha256": "2c479351c3fa9ae8d824281f510bb617905a7cbd7816f0f70f5e0892d6434122",
+  "operation": "RGB from generated warm color edit applied only to generated natural nose alpha; reject skin haze in color-edit alpha; whole-layer integer translation only, no local warp",
+  "full_three_noncollinear_2px_certification": false
+}

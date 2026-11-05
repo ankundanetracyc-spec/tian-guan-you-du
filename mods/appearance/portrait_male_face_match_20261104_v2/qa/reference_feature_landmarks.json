@@ -1,0 +1,446 @@
+{
+  "canvas": [
+    1024,
+    1536
+  ],
+  "source": "mods/appearance/portrait_male_reference_20261104_v1/source/guides/reference_01_in_canvas.png through reference_03_in_canvas.png",
+  "alignment": {
+    "source_triptych": "C:/Users/34784/AppData/Local/Temp/codex-clipboard-2c1a6159-89a6-44b4-919d-ff18f66c7c1c.png",
+    "columns": [
+      {
+        "id": "01",
+        "left": 0,
+        "width": 590,
+        "translation": [
+          204,
+          50
+        ]
+      },
+      {
+        "id": "02",
+        "left": 593,
+        "width": 589,
+        "translation": [
+          215,
+          49
+        ]
+      },
+      {
+        "id": "03",
+        "left": 1187,
+        "width": 587,
+        "translation": [
+          220,
+          50
+        ]
+      }
+    ]
+  },
+  "instruction": "Measure the supplied source portraits directly. No fixed old rig landmark substituted. Reference03 nose/lip axes near x515 are natural in this alignment; do not force all parts to symmetrical x517.",
+  "material_target": "USER FINAL: skin color and watercolor texture from source03 only. Source01/02 retain feature-shape reference roles.",
+  "measurements": {
+    "eyebrows": {
+      "method": "Pixel-enlarged visual inspection of dark brow pigment. Bounds/centers below are approximate visible silhouette estimates, not alpha bounds or a recovered complete hidden eyebrow. Parenthesis centers are bounding-interval midpoints; heavily occluded outer tails are explicitly uncertain.",
+      "coordinate_uncertainty_pixels": 2,
+      "source01": {
+        "left": {
+          "visible_x_extent_approx": [
+            430,
+            498
+          ],
+          "visible_y_extent_approx": [
+            345,
+            358
+          ],
+          "bounding_midpoint_approx": [
+            464,
+            351
+          ],
+          "outer_tail_hair_occlusion": true
+        },
+        "right": {
+          "visible_x_extent_approx": [
+            536,
+            604
+          ],
+          "visible_y_extent_approx": [
+            345,
+            358
+          ],
+          "bounding_midpoint_approx": [
+            570,
+            351
+          ],
+          "outer_tail_hair_occlusion": true
+        },
+        "pair_midpoint_distance_approx": 106
+      },
+      "source02": {
+        "left": {
+          "visible_x_extent_approx": [
+            424,
+            496
+          ],
+          "outer_tail_y_approx": 347,
+          "inner_end_y_approx": 364,
+          "bounding_x_midpoint_approx": 460,
+          "pigment_body_y_approx": [
+            355,
+            356
+          ]
+        },
+        "right": {
+          "visible_x_extent_approx": [
+            533,
+            602
+          ],
+          "outer_tail_y_approx": 347,
+          "inner_end_y_approx": 364,
+          "bounding_x_midpoint_approx": 567.5,
+          "pigment_body_y_approx": [
+            355,
+            356
+          ]
+        },
+        "pair_midpoint_distance_approx": 107.5
+      },
+      "source03": {
+        "left": {
+          "reliably_visible_body_x_approx": [
+            452,
+            491
+          ],
+          "reliably_visible_body_y_approx": [
+            346,
+            357
+          ],
+          "outer_tail_hair_occlusion": true,
+          "complete_eyebrow_center_unobservable": true,
+          "complete_center_x_inferred_range": [
+            464,
+            469
+          ],
+          "warning": "The swept fringe occludes the outer eyebrow. Do not treat the midpoint of the visible body as the full eyebrow center."
+        },
+        "right": {
+          "visible_x_extent_approx": [
+            538,
+            603
+          ],
+          "visible_y_extent_approx": [
+            347,
+            357
+          ],
+          "bounding_midpoint_approx": [
+            570.5,
+            352
+          ],
+          "outermost_tail_hair_occlusion": "minor fine hair crossing"
+        }
+      },
+      "rejected_rig_target": {
+        "left": [
+          456,
+          346
+        ],
+        "right": [
+          579,
+          345
+        ],
+        "pair_distance": 123,
+        "reason": "That frozen rig distance is not the source brow-pair distance and can over-separate/overscale a newly generated pair."
+      },
+      "qa_images": [
+        "ref_01_brow_eyes_pixels.png",
+        "ref_02_brow_eyes_pixels.png",
+        "ref_03_brow_eyes_pixels.png"
+      ]
+    },
+    "pupils": {
+      "method": "Dark pupil-kernel weighted center in source RGB, luminanceY=.2126R+.7152G+.0722B, weight=max(0,75-Y). This is the dark visible kernel position, not a fitted full iris ellipse hidden beneath the lid.",
+      "sampling_rois_exclusive": {
+        "left": [
+          456,
+          375,
+          476,
+          386
+        ],
+        "right": [
+          558,
+          375,
+          578,
+          386
+        ]
+      },
+      "source01": {
+        "left": [
+          466.5602,
+          376.3564
+        ],
+        "right": [
+          567.1334,
+          376.2645
+        ]
+      },
+      "source02": {
+        "left": [
+          465.7306,
+          376.4557
+        ],
+        "right": [
+          566.1283,
+          376.4679
+        ]
+      },
+      "source03": {
+        "left": [
+          465.1978,
+          376.6272
+        ],
+        "right": [
+          566.9339,
+          376.728
+        ]
+      },
+      "limitations": "The upper lid can slightly bias dark-kernel Y upward; source brushwork is not a literal iris-circle mask."
+    },
+    "nose": {
+      "method": "Source RGB luminance thresholds inside ROI[486,442,548,464], excluding broad faint wash. Bounds are inclusive. Dark-pigment weighted center uses weight=threshold-Y. Threshold support is descriptive, not anatomy or a universal acceptance limit.",
+      "source01": {
+        "threshold155": {
+          "bbox": [
+            502,
+            448,
+            534,
+            459
+          ],
+          "width": 33,
+          "pigment_centroid": [
+            518.3546,
+            450.8615
+          ]
+        },
+        "threshold175": {
+          "bbox": [
+            499,
+            447,
+            537,
+            460
+          ],
+          "width": 39,
+          "pigment_centroid": [
+            517.6389,
+            452.1113
+          ]
+        }
+      },
+      "source02": {
+        "threshold155": {
+          "bbox": [
+            498,
+            450,
+            530,
+            460
+          ],
+          "width": 33,
+          "pigment_centroid": [
+            514.7707,
+            451.9308
+          ]
+        },
+        "threshold175": {
+          "bbox": [
+            495,
+            448,
+            533,
+            462
+          ],
+          "width": 39,
+          "pigment_centroid": [
+            514.6866,
+            453.098
+          ]
+        }
+      },
+      "source03": {
+        "threshold155": {
+          "bbox": [
+            499,
+            450,
+            533,
+            461
+          ],
+          "width": 35,
+          "pigment_centroid": [
+            515.0906,
+            452.2972
+          ]
+        },
+        "threshold175": {
+          "bbox": [
+            497,
+            449,
+            535,
+            462
+          ],
+          "width": 39,
+          "pigment_centroid": [
+            514.7379,
+            453.535
+          ]
+        },
+        "nostrils": {
+          "threshold": 155,
+          "left_roi_exclusive": [
+            493,
+            446,
+            514,
+            457
+          ],
+          "right_roi_exclusive": [
+            519,
+            446,
+            541,
+            457
+          ],
+          "left_bbox": [
+            499,
+            450,
+            510,
+            456
+          ],
+          "right_bbox": [
+            520,
+            450,
+            533,
+            455
+          ],
+          "left_weighted_center": [
+            504.1252,
+            451.9542
+          ],
+          "right_weighted_center": [
+            526.1497,
+            451.9898
+          ],
+          "horizontal_center_distance": 22.0245,
+          "center_axis_x": 515.1374
+        }
+      },
+      "limitation": "The complete soft alar skin volume is broader than the dark-ridge masks. Stronger pigment can expand a threshold bbox without the same geometric widening; nostril center distance is the more stable whole-layer scaling reference."
+    },
+    "mouth": {
+      "method": "Source RGB luminance thresholds within ROI[477,476,558,488]. This measures mouth seam/pigment, not all transparent wash or sub-lip cast shadow. Inclusive bounds; centroid weighted by threshold-Y.",
+      "source01": {
+        "threshold150": {
+          "bbox": [
+            483,
+            478,
+            553,
+            485
+          ],
+          "width": 71,
+          "weighted_center": [
+            517.2909,
+            482.2471
+          ]
+        },
+        "threshold170": {
+          "bbox": [
+            483,
+            476,
+            553,
+            486
+          ],
+          "width": 71,
+          "weighted_center": [
+            517.3198,
+            481.9628
+          ]
+        }
+      },
+      "source02": {
+        "threshold150": {
+          "bbox": [
+            480,
+            480,
+            550,
+            486
+          ],
+          "width": 71,
+          "weighted_center": [
+            514.6483,
+            483.6584
+          ]
+        },
+        "threshold170": {
+          "bbox": [
+            479,
+            478,
+            550,
+            487
+          ],
+          "width": 72,
+          "weighted_center": [
+            514.6814,
+            483.3954
+          ]
+        }
+      },
+      "source03": {
+        "threshold150": {
+          "bbox": [
+            481,
+            480,
+            550,
+            487
+          ],
+          "width": 70,
+          "weighted_center": [
+            514.9332,
+            483.9702
+          ]
+        },
+        "threshold170": {
+          "bbox": [
+            480,
+            478,
+            551,
+            487
+          ],
+          "width": 72,
+          "weighted_center": [
+            515.2423,
+            483.6193
+          ]
+        }
+      }
+    }
+  },
+  "audit_stage_candidate_comparison": {
+    "warning": "One transient v2 candidate read during coordination; NOT a final accepted geometry and must not be used as source target.",
+    "nose_nostril_centers": [
+      503.2663,
+      528.6925
+    ],
+    "nose_center_distance": 25.4262,
+    "nose_to_source03_distance_scale": 0.8662128041154399,
+    "mouth_dark_width": 78,
+    "mouth_dark_center": [
+      517.1911,
+      480.9638
+    ],
+    "mouth_to_source03_soft_width_scale": 0.9230769230769231,
+    "suggested_mouth_center_delta_approx": [
+      -2,
+      3
+    ],
+    "note": "Use complete whole-layer scale/translation, not individual-eye/nostril/brow warp. Parent owns final candidate selection."
+  },
+  "limitations": [
+    "These are measurement and visual-estimation aids, not a full noncollinear3-point <=2px certificate.",
+    "Hair occlusion prevents exact recovery of hidden brow tails or ear geometry.",
+    "Pixel enlargement is for inspection only; all coordinates are native1024x1536.",
+    "Dark-support bounds depend on pigment contrast; do not normalize a generated feature solely to an arbitrary threshold bbox."
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "rig_id": "our_selected_ink_portrait_rig_20261003_v1",
+  "gender": "male",
+  "part": "hair_back",
+  "new_generation": true,
+  "built_in_tool": true,
+  "records": [
+    {
+      "id": "01",
+      "raw": "exec-5e6e9b50-d639-4842-bd0a-eff83b0108ba.png",
+      "scale": 0.97,
+      "left": 24,
+      "top": 27,
+      "description": "Wooden pin half-up rear knot and long continuous curtain",
+      "native_canvas": [
+        1024,
+        1536
+      ],
+      "source_path": "source/back_raw/01.png",
+      "output_path": "male/hair_back/01.png",
+      "output_canvas": [
+        1024,
+        1536
+      ],
+      "resized_canvas": [
+        993,
+        1490
+      ],
+      "source_sha256": "abc8ad330aa1092500190bf9af637da41293a50cbceef101374f3ca07a4c060e",
+      "output_sha256": "24f7a85d0ac4d313cb410a4965879c530a538c4737f5dc5bb5db4e2709c0f04f",
+      "transform": "One whole-layer uniform scale and translation. No local deformation, mask, alpha clipping, or color edits. Zero-alpha RGB cleared only.",
+      "certified_three_point_2px": false
+    },
+    {
+      "id": "02",
+      "raw": "exec-9734b6dd-ace4-49bd-b799-8fa7a483b3f2.png",
+      "scale": 0.64,
+      "left": 189,
+      "top": 59,
+      "description": "High rear bun with black cloth wrap and long continuous curtain",
+      "native_canvas": [
+        1024,
+        1536
+      ],
+      "source_path": "source/back_raw/02.png",
+      "output_path": "male/hair_back/02.png",
+      "output_canvas": [
+        1024,
+        1536
+      ],
+      "resized_canvas": [
+        655,
+        983
+      ],
+      "source_sha256": "c335f91027f7af15532c4376597f438f54ccf227cec115c36151d4af6bf908c9",
+      "output_sha256": "b05366731c045d772d82cbe62eb42d73e04a6a48671bc05eae13cbb358b9ecf6",
+      "transform": "One whole-layer uniform scale and translation. No local deformation, mask, alpha clipping, or color edits. Zero-alpha RGB cleared only.",
+      "certified_three_point_2px": false
+    },
+    {
+      "id": "03",
+      "raw": "exec-c9cfa472-a304-4549-bf06-57e0f24be5a8.png",
+      "scale": 0.64,
+      "left": 184,
+      "top": 47,
+      "description": "Loose rear hair, no bun or ornament",
+      "native_canvas": [
+        1024,
+        1536
+      ],
+      "source_path": "source/back_raw/03.png",
+      "output_path": "male/hair_back/03.png",
+      "output_canvas": [
+        1024,
+        1536
+      ],
+      "resized_canvas": [
+        655,
+        983
+      ],
+      "source_sha256": "d9db5825ed33218634186b721aaa708de743392c76435a961fb1fb711a9c5dff",
+      "output_sha256": "da5df6c3fb53d981577d744cef5405d2570ab69550bb4cd52f6c802731837bdd",
+      "transform": "One whole-layer uniform scale and translation. No local deformation, mask, alpha clipping, or color edits. Zero-alpha RGB cleared only.",
+      "certified_three_point_2px": false
+    }
+  ]
+}

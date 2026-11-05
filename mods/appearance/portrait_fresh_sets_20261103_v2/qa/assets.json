@@ -1,0 +1,1249 @@
+{
+  "pass": true,
+  "new_assets": 36,
+  "fixed_assets": 6,
+  "active_files_unchanged": 553,
+  "failures": [],
+  "warnings": [],
+  "records": [
+    {
+      "gender": "male",
+      "part": "eyebrows",
+      "variant": 1,
+      "file": "male/eyebrows/01.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "04acad05be2b37518dff40ed348d6ec0184a3f160fb58bef6209cab0d1c3bb08",
+      "not_old_source": true,
+      "visible_pixels": 3007,
+      "partial_alpha_pixels": 3007,
+      "alpha180_pixels": 999,
+      "alpha180_bbox": [
+        421,
+        339,
+        615,
+        353
+      ],
+      "alpha180_rgb_median": [
+        59,
+        54,
+        49
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "male",
+      "part": "eyebrows",
+      "variant": 2,
+      "file": "male/eyebrows/02.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "6a71a312fd1869b03e0377a9e5d35e4ede08f322d9f57a6c95e5b4e7fce0a226",
+      "not_old_source": true,
+      "visible_pixels": 3444,
+      "partial_alpha_pixels": 3444,
+      "alpha180_pixels": 984,
+      "alpha180_bbox": [
+        431,
+        340,
+        607,
+        352
+      ],
+      "alpha180_rgb_median": [
+        69,
+        62,
+        57
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "male",
+      "part": "eyebrows",
+      "variant": 3,
+      "file": "male/eyebrows/03.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "b41a7e8987ba4b6afe3abbbfba63598ec1e04b3f8dc149f7a274f63a95878ae7",
+      "not_old_source": true,
+      "visible_pixels": 2871,
+      "partial_alpha_pixels": 2871,
+      "alpha180_pixels": 629,
+      "alpha180_bbox": [
+        429,
+        341,
+        606,
+        351
+      ],
+      "alpha180_rgb_median": [
+        85,
+        69,
+        60
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "male",
+      "part": "eyes",
+      "variant": 1,
+      "file": "male/eyes/01.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "a099a1767e2cd844a809d7121f6993557cc6240c32fdc7373ac175ed12495341",
+      "not_old_source": true,
+      "visible_pixels": 5008,
+      "partial_alpha_pixels": 5008,
+      "alpha180_pixels": 2340,
+      "alpha180_bbox": [
+        424,
+        364,
+        609,
+        388
+      ],
+      "alpha180_rgb_median": [
+        145,
+        116,
+        102
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "male",
+      "part": "eyes",
+      "variant": 2,
+      "file": "male/eyes/02.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "649e7e65fba6caf52d1b5f91e40499247e22c935659b114394020b5335493309",
+      "not_old_source": true,
+      "visible_pixels": 3915,
+      "partial_alpha_pixels": 3915,
+      "alpha180_pixels": 1842,
+      "alpha180_bbox": [
+        427,
+        367,
+        604,
+        387
+      ],
+      "alpha180_rgb_median": [
+        154,
+        125,
+        108
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "male",
+      "part": "eyes",
+      "variant": 3,
+      "file": "male/eyes/03.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "52a7f4a6a4f1ca1d9997f58e02c4715425313942f2c8a5fb60f1f1baccbe3426",
+      "not_old_source": true,
+      "visible_pixels": 4154,
+      "partial_alpha_pixels": 4154,
+      "alpha180_pixels": 2002,
+      "alpha180_bbox": [
+        438,
+        362,
+        596,
+        388
+      ],
+      "alpha180_rgb_median": [
+        166,
+        131,
+        111
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "male",
+      "part": "nose",
+      "variant": 1,
+      "file": "male/nose/01.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "f5e9d1c0f6134f88ff41ef3fe409d33d1817748ea440bc8f6b0abe3bac96cf49",
+      "not_old_source": true,
+      "visible_pixels": 2345,
+      "partial_alpha_pixels": 2345,
+      "alpha180_pixels": 348,
+      "alpha180_bbox": [
+        495,
+        419,
+        539,
+        457
+      ],
+      "alpha180_rgb_median": [
+        196,
+        161,
+        142
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "male",
+      "part": "nose",
+      "variant": 2,
+      "file": "male/nose/02.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "9f0c109937810990e5bd3f9dc62484404c7b0248795c1c70373194668c2557c6",
+      "not_old_source": true,
+      "visible_pixels": 2793,
+      "partial_alpha_pixels": 2793,
+      "alpha180_pixels": 737,
+      "alpha180_bbox": [
+        496,
+        398,
+        536,
+        458
+      ],
+      "alpha180_rgb_median": [
+        218,
+        188,
+        171
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "male",
+      "part": "nose",
+      "variant": 3,
+      "file": "male/nose/03.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "8203aa55ba43d7e0b1b4ba1df5b73b900049bccb92ca6ef5cf18c98c14e5b758",
+      "not_old_source": true,
+      "visible_pixels": 1538,
+      "partial_alpha_pixels": 1535,
+      "alpha180_pixels": 808,
+      "alpha180_bbox": [
+        501,
+        402,
+        532,
+        460
+      ],
+      "alpha180_rgb_median": [
+        214,
+        187,
+        174
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "male",
+      "part": "mouth",
+      "variant": 1,
+      "file": "male/mouth/01.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "ee22d4623c1cb69f2c618ccd67ab7d3018679da50cafe271cbbe65d98e37c3e0",
+      "not_old_source": true,
+      "visible_pixels": 1087,
+      "partial_alpha_pixels": 1081,
+      "alpha180_pixels": 756,
+      "alpha180_bbox": [
+        487,
+        473,
+        545,
+        492
+      ],
+      "alpha180_rgb_median": [
+        180,
+        141,
+        118
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "male",
+      "part": "mouth",
+      "variant": 2,
+      "file": "male/mouth/02.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "0dd6f55a43386958f533b35da3be2b057ae9771f3afff706720dcd7f415ff1c3",
+      "not_old_source": true,
+      "visible_pixels": 1122,
+      "partial_alpha_pixels": 1122,
+      "alpha180_pixels": 607,
+      "alpha180_bbox": [
+        488,
+        475,
+        545,
+        491
+      ],
+      "alpha180_rgb_median": [
+        222,
+        177,
+        154
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "male",
+      "part": "mouth",
+      "variant": 3,
+      "file": "male/mouth/03.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "a5966e477ba94ea35537bde79161bbc1f9269e82231bd5d41befcfd3531781a0",
+      "not_old_source": true,
+      "visible_pixels": 1295,
+      "partial_alpha_pixels": 1293,
+      "alpha180_pixels": 821,
+      "alpha180_bbox": [
+        488,
+        474,
+        546,
+        495
+      ],
+      "alpha180_rgb_median": [
+        200,
+        155,
+        137
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "male",
+      "part": "hair_front",
+      "variant": 1,
+      "file": "male/hair_front/01.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "8708f0df387b9863f3a7a9e97d198bb8ff3304092e78a8db1752d8b57f0b93ce",
+      "not_old_source": true,
+      "visible_pixels": 160369,
+      "partial_alpha_pixels": 160369,
+      "alpha180_pixels": 111991,
+      "alpha180_bbox": [
+        341,
+        131,
+        693,
+        1120
+      ],
+      "alpha180_rgb_median": [
+        76,
+        72,
+        71
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": 0,
+      "central_hairline_scan_y": [
+        132,
+        277
+      ]
+    },
+    {
+      "gender": "male",
+      "part": "hair_front",
+      "variant": 2,
+      "file": "male/hair_front/02.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "47d91fb2447716ad923608f6c95bf26132c060f82e5160d0946af48b1a8fd01a",
+      "not_old_source": true,
+      "visible_pixels": 66902,
+      "partial_alpha_pixels": 66902,
+      "alpha180_pixels": 53618,
+      "alpha180_bbox": [
+        338,
+        124,
+        687,
+        446
+      ],
+      "alpha180_rgb_median": [
+        63,
+        59,
+        56
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": 0,
+      "central_hairline_scan_y": [
+        127,
+        275
+      ]
+    },
+    {
+      "gender": "male",
+      "part": "hair_front",
+      "variant": 3,
+      "file": "male/hair_front/03.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "b5dddfc39f19bba931465008c72afa8840e731bfd345a4d4f5f287bb41ae838a",
+      "not_old_source": true,
+      "visible_pixels": 43379,
+      "partial_alpha_pixels": 43379,
+      "alpha180_pixels": 32368,
+      "alpha180_bbox": [
+        380,
+        137,
+        651,
+        372
+      ],
+      "alpha180_rgb_median": [
+        58,
+        56,
+        55
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": 0,
+      "central_hairline_scan_y": [
+        138,
+        276
+      ]
+    },
+    {
+      "gender": "male",
+      "part": "hair_back",
+      "variant": 1,
+      "file": "male/hair_back/01.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "f3d9543780852e46b78edc8b4089360580d2a2dcf1e6bfae3f4df36a14e6c76d",
+      "not_old_source": true,
+      "visible_pixels": 356782,
+      "partial_alpha_pixels": 356782,
+      "alpha180_pixels": 294996,
+      "alpha180_bbox": [
+        316,
+        152,
+        713,
+        1274
+      ],
+      "alpha180_rgb_median": [
+        76,
+        71,
+        68
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "male",
+      "part": "hair_back",
+      "variant": 2,
+      "file": "male/hair_back/02.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "73cad6efd504463a38ca2c12b1040c6596c97e642127985819f5c29a9de2af8f",
+      "not_old_source": true,
+      "visible_pixels": 136722,
+      "partial_alpha_pixels": 136722,
+      "alpha180_pixels": 114642,
+      "alpha180_bbox": [
+        356,
+        153,
+        675,
+        796
+      ],
+      "alpha180_rgb_median": [
+        73,
+        68,
+        65
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "male",
+      "part": "hair_back",
+      "variant": 3,
+      "file": "male/hair_back/03.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "05aea961978d322884f4f949ce2f3c71036a21948bcbf675c041ed6f4af294f0",
+      "not_old_source": true,
+      "visible_pixels": 121034,
+      "partial_alpha_pixels": 121010,
+      "alpha180_pixels": 105625,
+      "alpha180_bbox": [
+        388,
+        90,
+        676,
+        791
+      ],
+      "alpha180_rgb_median": [
+        35,
+        32,
+        29
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "male",
+      "part": "face_shape",
+      "variant": null,
+      "file": "male/face_shape.png",
+      "new_asset": false,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "b584696489925efe1818a200fb4be6e01fd56aa08ee281d46f74abe32b7edbc8",
+      "not_old_source": null,
+      "visible_pixels": 102268,
+      "partial_alpha_pixels": 0,
+      "alpha180_pixels": 102268,
+      "alpha180_bbox": [
+        370,
+        172,
+        659,
+        713
+      ],
+      "alpha180_rgb_median": [
+        226,
+        200,
+        184
+      ],
+      "forehead_median": [
+        234,
+        209,
+        193
+      ],
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "male",
+      "part": "clothing",
+      "variant": null,
+      "file": "male/clothing.png",
+      "new_asset": false,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "d000653195a539310ff4d70856aaac5aa4cdf2af0bfbc4591c4ae2e1012dc89c",
+      "not_old_source": null,
+      "visible_pixels": 875747,
+      "partial_alpha_pixels": 875747,
+      "alpha180_pixels": 872322,
+      "alpha180_bbox": [
+        0,
+        528,
+        1023,
+        1535
+      ],
+      "alpha180_rgb_median": [
+        75,
+        98,
+        87
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "male",
+      "part": "face_accessory",
+      "variant": null,
+      "file": "male/face_accessory.png",
+      "new_asset": false,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "1913847bf9091720c48139f49dfbb3aa70c4d20de82f2718e3dcd8348c6e5e9c",
+      "not_old_source": null,
+      "visible_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "alpha180_pixels": 0,
+      "alpha180_bbox": null,
+      "alpha180_rgb_median": [
+        null,
+        null,
+        null
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "female",
+      "part": "eyebrows",
+      "variant": 1,
+      "file": "female/eyebrows/01.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "6f172825bf2673f33b7ca7ec20a940211a4516033934233656be61483cf00020",
+      "not_old_source": true,
+      "visible_pixels": 2311,
+      "partial_alpha_pixels": 2311,
+      "alpha180_pixels": 646,
+      "alpha180_bbox": [
+        426,
+        348,
+        613,
+        358
+      ],
+      "alpha180_rgb_median": [
+        75,
+        66,
+        59
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "female",
+      "part": "eyebrows",
+      "variant": 2,
+      "file": "female/eyebrows/02.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "1c1f99a279c370563c899b86a7f196b4a024e747cbd579e1406464445a488cad",
+      "not_old_source": true,
+      "visible_pixels": 2806,
+      "partial_alpha_pixels": 2806,
+      "alpha180_pixels": 505,
+      "alpha180_bbox": [
+        428,
+        350,
+        612,
+        361
+      ],
+      "alpha180_rgb_median": [
+        96,
+        84,
+        77
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "female",
+      "part": "eyebrows",
+      "variant": 3,
+      "file": "female/eyebrows/03.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "8aeffe1b77e97c3c8845a6fe790b8327d477b8099c940db519b3fb31cafcfc09",
+      "not_old_source": true,
+      "visible_pixels": 4746,
+      "partial_alpha_pixels": 4746,
+      "alpha180_pixels": 967,
+      "alpha180_bbox": [
+        419,
+        343,
+        616,
+        357
+      ],
+      "alpha180_rgb_median": [
+        155,
+        138,
+        128
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "female",
+      "part": "eyes",
+      "variant": 1,
+      "file": "female/eyes/01.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "2266ccded0f8f923dcf3707d658aa3d552cbd2c76b0a45a49f0db96310b8d40a",
+      "not_old_source": true,
+      "visible_pixels": 4925,
+      "partial_alpha_pixels": 4925,
+      "alpha180_pixels": 2675,
+      "alpha180_bbox": [
+        426,
+        370,
+        611,
+        395
+      ],
+      "alpha180_rgb_median": [
+        174,
+        140,
+        124
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "female",
+      "part": "eyes",
+      "variant": 2,
+      "file": "female/eyes/02.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "0053581b8bff1adcd65b6b6c3c8e845b74e6c84e29b6d99f2e96476d66cd1f3e",
+      "not_old_source": true,
+      "visible_pixels": 5175,
+      "partial_alpha_pixels": 5175,
+      "alpha180_pixels": 2197,
+      "alpha180_bbox": [
+        430,
+        367,
+        605,
+        392
+      ],
+      "alpha180_rgb_median": [
+        165,
+        126,
+        107
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "female",
+      "part": "eyes",
+      "variant": 3,
+      "file": "female/eyes/03.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "6c029d06f16d4887892e09c24cc010b803873364260a2b6c0d8201d328bc5f19",
+      "not_old_source": true,
+      "visible_pixels": 7605,
+      "partial_alpha_pixels": 7605,
+      "alpha180_pixels": 3199,
+      "alpha180_bbox": [
+        420,
+        362,
+        612,
+        396
+      ],
+      "alpha180_rgb_median": [
+        166,
+        121,
+        93
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "female",
+      "part": "nose",
+      "variant": 1,
+      "file": "female/nose/01.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "33a13a0b42e971f4cd76806b6a9111247558a7690d787a4a829353b2aa962fb5",
+      "not_old_source": true,
+      "visible_pixels": 3524,
+      "partial_alpha_pixels": 3524,
+      "alpha180_pixels": 1499,
+      "alpha180_bbox": [
+        499,
+        398,
+        538,
+        457
+      ],
+      "alpha180_rgb_median": [
+        220,
+        189,
+        174
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "female",
+      "part": "nose",
+      "variant": 2,
+      "file": "female/nose/02.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "66ec4e90398445c1395f9473f515d2642a6f6375525fecaa1f71bed57cbbdc58",
+      "not_old_source": true,
+      "visible_pixels": 4194,
+      "partial_alpha_pixels": 4194,
+      "alpha180_pixels": 1160,
+      "alpha180_bbox": [
+        506,
+        400,
+        535,
+        458
+      ],
+      "alpha180_rgb_median": [
+        222,
+        190,
+        176
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "female",
+      "part": "nose",
+      "variant": 3,
+      "file": "female/nose/03.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "e6f99807c303fd1d885e81a69137d9d22950697eb63f380f557e91e39c13fe55",
+      "not_old_source": true,
+      "visible_pixels": 3995,
+      "partial_alpha_pixels": 3995,
+      "alpha180_pixels": 1058,
+      "alpha180_bbox": [
+        504,
+        408,
+        533,
+        456
+      ],
+      "alpha180_rgb_median": [
+        218,
+        186,
+        164
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "female",
+      "part": "mouth",
+      "variant": 1,
+      "file": "female/mouth/01.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "4cf1654d97810920cd35c7fd98e54a755dfae8cf878a3fc2a32502c352cb3c48",
+      "not_old_source": true,
+      "visible_pixels": 3748,
+      "partial_alpha_pixels": 3748,
+      "alpha180_pixels": 939,
+      "alpha180_bbox": [
+        489,
+        474,
+        549,
+        500
+      ],
+      "alpha180_rgb_median": [
+        188,
+        142,
+        129
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "female",
+      "part": "mouth",
+      "variant": 2,
+      "file": "female/mouth/02.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "f2f9dd83d0df6e65d12c1d26cc9e1489a4dbc7f879df0cfc0d9f6b24aeaa1461",
+      "not_old_source": true,
+      "visible_pixels": 1706,
+      "partial_alpha_pixels": 1706,
+      "alpha180_pixels": 717,
+      "alpha180_bbox": [
+        493,
+        474,
+        546,
+        495
+      ],
+      "alpha180_rgb_median": [
+        192,
+        139,
+        120
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "female",
+      "part": "mouth",
+      "variant": 3,
+      "file": "female/mouth/03.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "a787b9dd6424d42b5f965751d842aad954bf1e6cedc396f2b5902cb3719ccee5",
+      "not_old_source": true,
+      "visible_pixels": 1154,
+      "partial_alpha_pixels": 1154,
+      "alpha180_pixels": 732,
+      "alpha180_bbox": [
+        492,
+        475,
+        544,
+        495
+      ],
+      "alpha180_rgb_median": [
+        199,
+        150,
+        137
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "female",
+      "part": "hair_front",
+      "variant": 1,
+      "file": "female/hair_front/01.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "83f77811cb62680fd32db5639f7d175718cd9f2602771a9bd79a2bc4fdf1e562",
+      "not_old_source": true,
+      "visible_pixels": 147505,
+      "partial_alpha_pixels": 147505,
+      "alpha180_pixels": 100085,
+      "alpha180_bbox": [
+        324,
+        157,
+        698,
+        992
+      ],
+      "alpha180_rgb_median": [
+        67,
+        63,
+        60
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": 0,
+      "central_hairline_scan_y": [
+        158,
+        279
+      ]
+    },
+    {
+      "gender": "female",
+      "part": "hair_front",
+      "variant": 2,
+      "file": "female/hair_front/02.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "4b3b9bcef48a396d5fcc89806ce79bf06cf830a2c278ee4fd7bfa3dad1fe8927",
+      "not_old_source": true,
+      "visible_pixels": 51323,
+      "partial_alpha_pixels": 51323,
+      "alpha180_pixels": 35246,
+      "alpha180_bbox": [
+        374,
+        148,
+        667,
+        386
+      ],
+      "alpha180_rgb_median": [
+        56,
+        52,
+        48
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": 0,
+      "central_hairline_scan_y": [
+        148,
+        277
+      ]
+    },
+    {
+      "gender": "female",
+      "part": "hair_front",
+      "variant": 3,
+      "file": "female/hair_front/03.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "15fba319b96cf6e7626aeff6ffe992a3f19559ad3485bfca70dcab7783804825",
+      "not_old_source": true,
+      "visible_pixels": 52192,
+      "partial_alpha_pixels": 52192,
+      "alpha180_pixels": 39815,
+      "alpha180_bbox": [
+        364,
+        159,
+        669,
+        442
+      ],
+      "alpha180_rgb_median": [
+        45,
+        42,
+        41
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": 0,
+      "central_hairline_scan_y": [
+        159,
+        276
+      ]
+    },
+    {
+      "gender": "female",
+      "part": "hair_back",
+      "variant": 1,
+      "file": "female/hair_back/01.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "d12ed2293861f5e08dfc6e5b84f131fcf00c3817349b87e0a14ed43c7eea3f3e",
+      "not_old_source": true,
+      "visible_pixels": 110725,
+      "partial_alpha_pixels": 110721,
+      "alpha180_pixels": 96970,
+      "alpha180_bbox": [
+        366,
+        156,
+        679,
+        668
+      ],
+      "alpha180_rgb_median": [
+        52,
+        47,
+        47
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "female",
+      "part": "hair_back",
+      "variant": 2,
+      "file": "female/hair_back/02.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "7cb6654c749fab2cf27c94544e0f9d21b7669cbee80953d7f96b59618f4f3d3b",
+      "not_old_source": true,
+      "visible_pixels": 126968,
+      "partial_alpha_pixels": 126944,
+      "alpha180_pixels": 109628,
+      "alpha180_bbox": [
+        374,
+        61,
+        650,
+        959
+      ],
+      "alpha180_rgb_median": [
+        57,
+        53,
+        49
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "female",
+      "part": "hair_back",
+      "variant": 3,
+      "file": "female/hair_back/03.png",
+      "new_asset": true,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "4e1355bbb253a01a7c93894604277368b8e75577440c7e1677bd433ebf2057c8",
+      "not_old_source": true,
+      "visible_pixels": 428100,
+      "partial_alpha_pixels": 428100,
+      "alpha180_pixels": 267653,
+      "alpha180_bbox": [
+        317,
+        178,
+        710,
+        1174
+      ],
+      "alpha180_rgb_median": [
+        58,
+        53,
+        50
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "female",
+      "part": "face_shape",
+      "variant": null,
+      "file": "female/face_shape.png",
+      "new_asset": false,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "769a4ad743391d62c0053b489166e72d28c9eaec2d02d98c091f0ce70134b4a5",
+      "not_old_source": null,
+      "visible_pixels": 106954,
+      "partial_alpha_pixels": 106954,
+      "alpha180_pixels": 105115,
+      "alpha180_bbox": [
+        333,
+        209,
+        704,
+        725
+      ],
+      "alpha180_rgb_median": [
+        229,
+        201,
+        182
+      ],
+      "forehead_median": [
+        233,
+        209,
+        192
+      ],
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "female",
+      "part": "clothing",
+      "variant": null,
+      "file": "female/clothing.png",
+      "new_asset": false,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "2456e11244be9106b1cf80415eb33f44111332225fd166adf441a9c751014b38",
+      "not_old_source": null,
+      "visible_pixels": 826573,
+      "partial_alpha_pixels": 826573,
+      "alpha180_pixels": 822039,
+      "alpha180_bbox": [
+        0,
+        548,
+        1023,
+        1535
+      ],
+      "alpha180_rgb_median": [
+        202,
+        192,
+        187
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    },
+    {
+      "gender": "female",
+      "part": "face_accessory",
+      "variant": null,
+      "file": "female/face_accessory.png",
+      "new_asset": false,
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "1913847bf9091720c48139f49dfbb3aa70c4d20de82f2718e3dcd8348c6e5e9c",
+      "not_old_source": null,
+      "visible_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "alpha180_pixels": 0,
+      "alpha180_bbox": null,
+      "alpha180_rgb_median": [
+        null,
+        null,
+        null
+      ],
+      "forehead_median": null,
+      "pupil_region_hair_overlap": null,
+      "central_hairline_scan_y": null
+    }
+  ],
+  "limits": [
+    "Source alpha and geometry checks are not artistic approval.",
+    "Native generation provenance is recorded separately; uniqueness alone does not prove semantic layer purity.",
+    "Control-point residual certification requires actual anatomical landmarks and is not inferred from alpha bounds."
+  ]
+}

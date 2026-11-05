@@ -1,0 +1,42 @@
+{
+  "positive": {
+    "pass": true,
+    "checks": 36
+  },
+  "negative": [
+    {
+      "fixture": "original",
+      "rejected": true,
+      "failures": [
+        "Measured solid neckline interface <=2px 01/left_neck_top",
+        "Measured solid neckline interface <=2px 01/left_neck_mid",
+        "Measured solid neckline interface <=2px 01/right_neck_top",
+        "Measured solid neckline interface <=2px 01/right_neck_mid",
+        "Whole required connection segment has solid composed support 01",
+        "Registration binds exact original, target rig and final PNG 01"
+      ]
+    },
+    {
+      "fixture": "rejected_roll",
+      "rejected": true,
+      "failures": [
+        "Preserved control <=2px 01/left_original_tip",
+        "Preserved control <=2px 01/right_original_tip",
+        "All original opaque garment RGBA preserved 01",
+        "Changes confined to frozen tiny inner-connector envelope 01",
+        "Registration binds exact original, target rig and final PNG 01"
+      ]
+    }
+  ],
+  "default_full_set": {
+    "pass": false,
+    "missing": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  }
+}

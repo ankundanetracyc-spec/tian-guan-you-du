@@ -1,0 +1,2815 @@
+{
+  "generated_at": "2026-11-04T07:17:18.310Z",
+  "method": "Only source RGBA core pixels with Alpha >= 230; no background composite and no transparent RGB. CIE Lab D65 via linear sRGB. Percentiles and threshold coverage are measured per anatomy region. Texture measures are indicative because strand widths/directions vary.",
+  "ornament_exclusion": "Front layers contain no ornaments. Back measurements start y190 or lower, below wood pin/high cloth wrap and knot. Decorative parts are excluded rather than made hair-color targets.",
+  "regions": {
+    "hair_front": [
+      {
+        "name": "crown_front",
+        "box": [
+          330,
+          170,
+          710,
+          340
+        ],
+        "meaning": "Anterior crown/cap; no hair ornaments are present in these front layers."
+      },
+      {
+        "name": "temple_front",
+        "box": [
+          330,
+          340,
+          710,
+          500
+        ],
+        "meaning": "Anterior temples and face-framing strands; opaque hair only."
+      },
+      {
+        "name": "chest_front",
+        "box": [
+          300,
+          520,
+          740,
+          950
+        ],
+        "meaning": "Hair intended in front of clothing; opaque strands only."
+      }
+    ],
+    "hair_back": [
+      {
+        "name": "crown_back",
+        "box": [
+          340,
+          190,
+          700,
+          330
+        ],
+        "meaning": "Posterior scalp/cap under front layers; excludes high knot/pin."
+      },
+      {
+        "name": "nape_back",
+        "box": [
+          300,
+          340,
+          740,
+          500
+        ],
+        "meaning": "Posterior side hair, nape and side buns."
+      },
+      {
+        "name": "curtain_back",
+        "box": [
+          260,
+          500,
+          780,
+          1000
+        ],
+        "meaning": "Posterior long hair curtain behind shoulders/body. Female style02 is a low bun and has no comparable curtain."
+      }
+    ]
+  },
+  "records": [
+    {
+      "sex": "female",
+      "part": "hair_front",
+      "id": "01",
+      "file": "E:\\stacklands\\mods\\appearance\\ink_three_variants_20261004\\female\\hair_front\\01.png",
+      "sha256": "821fe4406c90fcfc0a9cafe2048403fbdfb98aa0bafce0698fcf912e7d1f7681",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "regions": [
+        {
+          "name": "crown_front",
+          "box": [
+            330,
+            170,
+            710,
+            340
+          ],
+          "meaning": "Anterior crown/cap; no hair ornaments are present in these front layers.",
+          "stats": {
+            "pixels": 33999,
+            "comparable": true,
+            "mean_rgb": [
+              78.476,
+              72.767,
+              68.874
+            ],
+            "median_rgb": [
+              77,
+              71,
+              67
+            ],
+            "mean_lab": [
+              31.118,
+              1.61,
+              3.197
+            ],
+            "mean_lab_chroma": 3.579,
+            "mean_lab_hue_degrees": 63.26,
+            "luma_srgb_255": {
+              "mean": 73.699,
+              "p1": 30.846,
+              "p10": 45.987,
+              "p50": 72.046,
+              "p90": 104.272,
+              "p99": 128.489
+            },
+            "cie_Lstar": {
+              "p1": 11.723,
+              "p10": 18.974,
+              "p50": 30.645,
+              "p90": 44.141,
+              "p99": 53.786
+            },
+            "percent_luma_above": {
+              "100": 12.865,
+              "110": 6.483,
+              "125": 1.438,
+              "140": 0.412
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 9.789,
+              "p90": 21.856
+            },
+            "four_neighbor_highpass_rms": 8.509
+          }
+        },
+        {
+          "name": "temple_front",
+          "box": [
+            330,
+            340,
+            710,
+            500
+          ],
+          "meaning": "Anterior temples and face-framing strands; opaque hair only.",
+          "stats": {
+            "pixels": 9094,
+            "comparable": true,
+            "mean_rgb": [
+              85.268,
+              79.178,
+              74.912
+            ],
+            "median_rgb": [
+              86,
+              80,
+              75
+            ],
+            "mean_lab": [
+              33.908,
+              1.668,
+              3.428
+            ],
+            "mean_lab_chroma": 3.812,
+            "mean_lab_hue_degrees": 64.053,
+            "luma_srgb_255": {
+              "mean": 80.165,
+              "p1": 33.349,
+              "p10": 50.272,
+              "p50": 80.915,
+              "p90": 108.272,
+              "p99": 120.272
+            },
+            "cie_Lstar": {
+              "p1": 12.932,
+              "p10": 20.96,
+              "p50": 34.445,
+              "p90": 45.761,
+              "p99": 50.549
+            },
+            "percent_luma_above": {
+              "100": 20.838,
+              "110": 8.082,
+              "125": 0.264,
+              "140": 0
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 8.957,
+              "p90": 20.643
+            },
+            "four_neighbor_highpass_rms": 7.711
+          }
+        },
+        {
+          "name": "chest_front",
+          "box": [
+            300,
+            520,
+            740,
+            950
+          ],
+          "meaning": "Hair intended in front of clothing; opaque strands only.",
+          "stats": {
+            "pixels": 3725,
+            "comparable": true,
+            "mean_rgb": [
+              111.526,
+              104.933,
+              100.411
+            ],
+            "median_rgb": [
+              113,
+              106,
+              102
+            ],
+            "mean_lab": [
+              44.795,
+              1.717,
+              3.469
+            ],
+            "mean_lab_chroma": 3.871,
+            "mean_lab_hue_degrees": 63.672,
+            "luma_srgb_255": {
+              "mean": 106.008,
+              "p1": 74.489,
+              "p10": 89.199,
+              "p50": 107.059,
+              "p90": 120.987,
+              "p99": 130.63
+            },
+            "cie_Lstar": {
+              "p1": 31.708,
+              "p10": 37.937,
+              "p50": 45.275,
+              "p90": 50.839,
+              "p99": 54.628
+            },
+            "percent_luma_above": {
+              "100": 70.658,
+              "110": 40.51,
+              "125": 4.725,
+              "140": 0
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 8.341,
+              "p90": 20.787
+            },
+            "four_neighbor_highpass_rms": 7.207
+          }
+        }
+      ]
+    },
+    {
+      "sex": "female",
+      "part": "hair_front",
+      "id": "02",
+      "file": "E:\\stacklands\\mods\\appearance\\ink_three_variants_20261004\\female\\hair_front\\02.png",
+      "sha256": "70143ebb272c9627206c17544688431d1bb06c6b628824909e7f80e2b3ffe53e",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "regions": [
+        {
+          "name": "crown_front",
+          "box": [
+            330,
+            170,
+            710,
+            340
+          ],
+          "meaning": "Anterior crown/cap; no hair ornaments are present in these front layers.",
+          "stats": {
+            "pixels": 33598,
+            "comparable": true,
+            "mean_rgb": [
+              84.213,
+              77.191,
+              73.055
+            ],
+            "median_rgb": [
+              83,
+              76,
+              72
+            ],
+            "mean_lab": [
+              33.134,
+              2.107,
+              3.511
+            ],
+            "mean_lab_chroma": 4.094,
+            "mean_lab_hue_degrees": 59.027,
+            "luma_srgb_255": {
+              "mean": 78.385,
+              "p1": 32.059,
+              "p10": 49.344,
+              "p50": 77.059,
+              "p90": 110.055,
+              "p99": 130.485
+            },
+            "cie_Lstar": {
+              "p1": 12.333,
+              "p10": 20.532,
+              "p50": 32.811,
+              "p90": 46.485,
+              "p99": 54.58
+            },
+            "percent_luma_above": {
+              "100": 17.93,
+              "110": 10.021,
+              "125": 2.461,
+              "140": 0.188
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 8.89,
+              "p90": 19.715
+            },
+            "four_neighbor_highpass_rms": 7.091
+          }
+        },
+        {
+          "name": "temple_front",
+          "box": [
+            330,
+            340,
+            710,
+            500
+          ],
+          "meaning": "Anterior temples and face-framing strands; opaque hair only.",
+          "stats": {
+            "pixels": 7899,
+            "comparable": true,
+            "mean_rgb": [
+              85.306,
+              77.82,
+              73.605
+            ],
+            "median_rgb": [
+              86,
+              78,
+              74
+            ],
+            "mean_lab": [
+              33.457,
+              2.283,
+              3.621
+            ],
+            "mean_lab_chroma": 4.281,
+            "mean_lab_hue_degrees": 57.771,
+            "luma_srgb_255": {
+              "mean": 79.107,
+              "p1": 32.272,
+              "p10": 50.059,
+              "p50": 78.983,
+              "p90": 108.127,
+              "p99": 131.698
+            },
+            "cie_Lstar": {
+              "p1": 12.454,
+              "p10": 20.851,
+              "p50": 33.652,
+              "p90": 45.706,
+              "p99": 55.069
+            },
+            "percent_luma_above": {
+              "100": 17.243,
+              "110": 8.811,
+              "125": 2.38,
+              "140": 0.025
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 9.216,
+              "p90": 20.43
+            },
+            "four_neighbor_highpass_rms": 6.965
+          }
+        },
+        {
+          "name": "chest_front",
+          "box": [
+            300,
+            520,
+            740,
+            950
+          ],
+          "meaning": "Hair intended in front of clothing; opaque strands only.",
+          "stats": {
+            "pixels": 0,
+            "comparable": false
+          }
+        }
+      ]
+    },
+    {
+      "sex": "female",
+      "part": "hair_front",
+      "id": "03",
+      "file": "E:\\stacklands\\mods\\appearance\\ink_three_variants_20261004\\female\\hair_front\\03.png",
+      "sha256": "745dce89cbbf19a963bc0558b8cfdc14434ecf145ceb9898ab3e25918f6df2dc",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "regions": [
+        {
+          "name": "crown_front",
+          "box": [
+            330,
+            170,
+            710,
+            340
+          ],
+          "meaning": "Anterior crown/cap; no hair ornaments are present in these front layers.",
+          "stats": {
+            "pixels": 39640,
+            "comparable": true,
+            "mean_rgb": [
+              84.122,
+              76.894,
+              72.455
+            ],
+            "median_rgb": [
+              85,
+              77,
+              73
+            ],
+            "mean_lab": [
+              32.931,
+              2.118,
+              3.705
+            ],
+            "mean_lab_chroma": 4.268,
+            "mean_lab_hue_degrees": 60.244,
+            "luma_srgb_255": {
+              "mean": 78.11,
+              "p1": 20.421,
+              "p10": 42.846,
+              "p50": 78.412,
+              "p90": 112.765,
+              "p99": 134.915
+            },
+            "cie_Lstar": {
+              "p1": 6.53,
+              "p10": 17.492,
+              "p50": 33.393,
+              "p90": 47.587,
+              "p99": 56.299
+            },
+            "percent_luma_above": {
+              "100": 20.275,
+              "110": 11.816,
+              "125": 3.713,
+              "140": 0.54
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 10.311,
+              "p90": 23
+            },
+            "four_neighbor_highpass_rms": 8.589
+          }
+        },
+        {
+          "name": "temple_front",
+          "box": [
+            330,
+            340,
+            710,
+            500
+          ],
+          "meaning": "Anterior temples and face-framing strands; opaque hair only.",
+          "stats": {
+            "pixels": 11779,
+            "comparable": true,
+            "mean_rgb": [
+              89.914,
+              81.856,
+              76.96
+            ],
+            "median_rgb": [
+              93,
+              85,
+              80
+            ],
+            "mean_lab": [
+              35.205,
+              2.361,
+              4.068
+            ],
+            "mean_lab_chroma": 4.703,
+            "mean_lab_hue_degrees": 59.868,
+            "luma_srgb_255": {
+              "mean": 83.216,
+              "p1": 30.203,
+              "p10": 51.059,
+              "p50": 86.48,
+              "p90": 110.484,
+              "p99": 122.842
+            },
+            "cie_Lstar": {
+              "p1": 11.414,
+              "p10": 21.31,
+              "p50": 36.806,
+              "p90": 46.696,
+              "p99": 51.576
+            },
+            "percent_luma_above": {
+              "100": 25.562,
+              "110": 10.655,
+              "125": 0.518,
+              "140": 0.008
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 9.462,
+              "p90": 21.856
+            },
+            "four_neighbor_highpass_rms": 7.516
+          }
+        },
+        {
+          "name": "chest_front",
+          "box": [
+            300,
+            520,
+            740,
+            950
+          ],
+          "meaning": "Hair intended in front of clothing; opaque strands only.",
+          "stats": {
+            "pixels": 8843,
+            "comparable": true,
+            "mean_rgb": [
+              109.058,
+              100.194,
+              95.112
+            ],
+            "median_rgb": [
+              111,
+              102,
+              96
+            ],
+            "mean_lab": [
+              43.018,
+              2.555,
+              4.149
+            ],
+            "mean_lab_chroma": 4.872,
+            "mean_lab_hue_degrees": 58.378,
+            "luma_srgb_255": {
+              "mean": 101.712,
+              "p1": 58.484,
+              "p10": 78.765,
+              "p50": 103.34,
+              "p90": 121.48,
+              "p99": 133.693
+            },
+            "cie_Lstar": {
+              "p1": 24.691,
+              "p10": 33.567,
+              "p50": 43.772,
+              "p90": 51.054,
+              "p99": 55.847
+            },
+            "percent_luma_above": {
+              "100": 57.854,
+              "110": 33.292,
+              "125": 5.711,
+              "140": 0.102
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 8.512,
+              "p90": 20.218
+            },
+            "four_neighbor_highpass_rms": 7.067
+          }
+        }
+      ]
+    },
+    {
+      "sex": "female",
+      "part": "hair_back",
+      "id": "01",
+      "file": "E:\\stacklands\\mods\\appearance\\ink_three_variants_20261004\\female\\hair_back\\01.png",
+      "sha256": "0449a25c7ee9807332770849d3ea11f66ff4a41da8891daa3995f9c8deb6321f",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "regions": [
+        {
+          "name": "crown_back",
+          "box": [
+            340,
+            190,
+            700,
+            330
+          ],
+          "meaning": "Posterior scalp/cap under front layers; excludes high knot/pin.",
+          "stats": {
+            "pixels": 37008,
+            "comparable": true,
+            "mean_rgb": [
+              77.125,
+              70.045,
+              65.493
+            ],
+            "median_rgb": [
+              77,
+              70,
+              65
+            ],
+            "mean_lab": [
+              30.175,
+              2.087,
+              3.827
+            ],
+            "mean_lab_chroma": 4.359,
+            "mean_lab_hue_degrees": 61.394,
+            "luma_srgb_255": {
+              "mean": 71.222,
+              "p1": 40.774,
+              "p10": 51.059,
+              "p50": 70.915,
+              "p90": 91.127,
+              "p99": 110.268
+            },
+            "cie_Lstar": {
+              "p1": 16.518,
+              "p10": 21.31,
+              "p50": 30.154,
+              "p90": 38.742,
+              "p99": 46.563
+            },
+            "percent_luma_above": {
+              "100": 3.497,
+              "110": 1.027,
+              "125": 0.105,
+              "140": 0
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 7.185,
+              "p90": 15.715
+            },
+            "four_neighbor_highpass_rms": 6.433
+          }
+        },
+        {
+          "name": "nape_back",
+          "box": [
+            300,
+            340,
+            740,
+            500
+          ],
+          "meaning": "Posterior side hair, nape and side buns.",
+          "stats": {
+            "pixels": 47362,
+            "comparable": true,
+            "mean_rgb": [
+              73.9,
+              66.71,
+              62.006
+            ],
+            "median_rgb": [
+              72,
+              65,
+              60
+            ],
+            "mean_lab": [
+              28.77,
+              2.126,
+              3.97
+            ],
+            "mean_lab_chroma": 4.503,
+            "mean_lab_hue_degrees": 61.836,
+            "luma_srgb_255": {
+              "mean": 67.899,
+              "p1": 47.63,
+              "p10": 54.127,
+              "p50": 65.842,
+              "p90": 83.558,
+              "p99": 111.765
+            },
+            "cie_Lstar": {
+              "p1": 19.734,
+              "p10": 22.725,
+              "p50": 27.943,
+              "p90": 35.586,
+              "p99": 47.171
+            },
+            "percent_luma_above": {
+              "100": 2.679,
+              "110": 1.168,
+              "125": 0.171,
+              "140": 0.008
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 5.364,
+              "p90": 12.213
+            },
+            "four_neighbor_highpass_rms": 4.866
+          }
+        },
+        {
+          "name": "curtain_back",
+          "box": [
+            260,
+            500,
+            780,
+            1000
+          ],
+          "meaning": "Posterior long hair curtain behind shoulders/body. Female style02 is a low bun and has no comparable curtain.",
+          "stats": {
+            "pixels": 205138,
+            "comparable": true,
+            "mean_rgb": [
+              82.009,
+              74.368,
+              69.414
+            ],
+            "median_rgb": [
+              78,
+              70,
+              65
+            ],
+            "mean_lab": [
+              32.061,
+              2.225,
+              4.118
+            ],
+            "mean_lab_chroma": 4.681,
+            "mean_lab_hue_degrees": 61.624,
+            "luma_srgb_255": {
+              "mean": 75.635,
+              "p1": 49.987,
+              "p10": 56.625,
+              "p50": 71.412,
+              "p90": 101.268,
+              "p99": 130.197
+            },
+            "cie_Lstar": {
+              "p1": 20.821,
+              "p10": 23.874,
+              "p50": 30.384,
+              "p90": 42.93,
+              "p99": 54.474
+            },
+            "percent_luma_above": {
+              "100": 10.817,
+              "110": 5.565,
+              "125": 1.73,
+              "140": 0.278
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 6.402,
+              "p90": 14.928
+            },
+            "four_neighbor_highpass_rms": 5.914
+          }
+        }
+      ]
+    },
+    {
+      "sex": "female",
+      "part": "hair_back",
+      "id": "02",
+      "file": "E:\\stacklands\\mods\\appearance\\ink_three_variants_20261004\\female\\hair_back\\02.png",
+      "sha256": "fa8306f6778f65ee2a1b95425a60648ac61699449148d2671b9f5c1ae3b2aa89",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "regions": [
+        {
+          "name": "crown_back",
+          "box": [
+            340,
+            190,
+            700,
+            330
+          ],
+          "meaning": "Posterior scalp/cap under front layers; excludes high knot/pin.",
+          "stats": {
+            "pixels": 38679,
+            "comparable": true,
+            "mean_rgb": [
+              76.428,
+              72.193,
+              68.869
+            ],
+            "median_rgb": [
+              79,
+              74,
+              71
+            ],
+            "mean_lab": [
+              30.845,
+              1.083,
+              2.633
+            ],
+            "mean_lab_chroma": 2.847,
+            "mean_lab_hue_degrees": 67.648,
+            "luma_srgb_255": {
+              "mean": 72.854,
+              "p1": 35.136,
+              "p10": 49.421,
+              "p50": 74.846,
+              "p90": 91.846,
+              "p99": 103.349
+            },
+            "cie_Lstar": {
+              "p1": 13.794,
+              "p10": 20.534,
+              "p50": 31.841,
+              "p90": 39.025,
+              "p99": 43.75
+            },
+            "percent_luma_above": {
+              "100": 2.216,
+              "110": 0.098,
+              "125": 0,
+              "140": 0
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 3.761,
+              "p90": 8.715
+            },
+            "four_neighbor_highpass_rms": 2.764
+          }
+        },
+        {
+          "name": "nape_back",
+          "box": [
+            300,
+            340,
+            740,
+            500
+          ],
+          "meaning": "Posterior side hair, nape and side buns.",
+          "stats": {
+            "pixels": 46959,
+            "comparable": true,
+            "mean_rgb": [
+              63.2,
+              59.223,
+              55.963
+            ],
+            "median_rgb": [
+              62,
+              58,
+              55
+            ],
+            "mean_lab": [
+              25.143,
+              1.03,
+              2.641
+            ],
+            "mean_lab_chroma": 2.835,
+            "mean_lab_hue_degrees": 68.702,
+            "luma_srgb_255": {
+              "mean": 59.833,
+              "p1": 33.349,
+              "p10": 42.421,
+              "p50": 58.634,
+              "p90": 78.421,
+              "p99": 96.562
+            },
+            "cie_Lstar": {
+              "p1": 12.932,
+              "p10": 17.275,
+              "p50": 24.722,
+              "p90": 33.363,
+              "p99": 40.973
+            },
+            "percent_luma_above": {
+              "100": 0.53,
+              "110": 0.047,
+              "125": 0.002,
+              "140": 0
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 3.587,
+              "p90": 8
+            },
+            "four_neighbor_highpass_rms": 2.677
+          }
+        },
+        {
+          "name": "curtain_back",
+          "box": [
+            260,
+            500,
+            780,
+            1000
+          ],
+          "meaning": "Posterior long hair curtain behind shoulders/body. Female style02 is a low bun and has no comparable curtain.",
+          "stats": {
+            "pixels": 3033,
+            "comparable": true,
+            "mean_rgb": [
+              61.686,
+              57.972,
+              54.695
+            ],
+            "median_rgb": [
+              62,
+              58,
+              55
+            ],
+            "mean_lab": [
+              24.62,
+              0.913,
+              2.613
+            ],
+            "mean_lab_chroma": 2.768,
+            "mean_lab_hue_degrees": 70.743,
+            "luma_srgb_255": {
+              "mean": 58.525,
+              "p1": 38.349,
+              "p10": 45.706,
+              "p50": 58.706,
+              "p90": 70.349,
+              "p99": 77.349
+            },
+            "cie_Lstar": {
+              "p1": 15.346,
+              "p10": 18.818,
+              "p50": 24.752,
+              "p90": 29.887,
+              "p99": 32.907
+            },
+            "percent_luma_above": {
+              "100": 0,
+              "110": 0,
+              "125": 0,
+              "140": 0
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 3.616,
+              "p90": 8.213
+            },
+            "four_neighbor_highpass_rms": 2.693
+          }
+        }
+      ]
+    },
+    {
+      "sex": "female",
+      "part": "hair_back",
+      "id": "03",
+      "file": "E:\\stacklands\\mods\\appearance\\ink_three_variants_20261004\\female\\hair_back\\03.png",
+      "sha256": "d390a0512599dd63b813166e826b58154521d69ab29adc6237695cb93471efcc",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "regions": [
+        {
+          "name": "crown_back",
+          "box": [
+            340,
+            190,
+            700,
+            330
+          ],
+          "meaning": "Posterior scalp/cap under front layers; excludes high knot/pin.",
+          "stats": {
+            "pixels": 36348,
+            "comparable": true,
+            "mean_rgb": [
+              77.829,
+              70.648,
+              65.589
+            ],
+            "median_rgb": [
+              75,
+              68,
+              63
+            ],
+            "mean_lab": [
+              30.466,
+              2.028,
+              4.142
+            ],
+            "mean_lab_chroma": 4.612,
+            "mean_lab_hue_degrees": 63.913,
+            "luma_srgb_255": {
+              "mean": 71.809,
+              "p1": 49.055,
+              "p10": 57.127,
+              "p50": 69.34,
+              "p90": 90.127,
+              "p99": 112.268
+            },
+            "cie_Lstar": {
+              "p1": 20.414,
+              "p10": 24.078,
+              "p50": 29.487,
+              "p90": 38.326,
+              "p99": 47.38
+            },
+            "percent_luma_above": {
+              "100": 4.418,
+              "110": 1.425,
+              "125": 0.096,
+              "140": 0
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 6.432,
+              "p90": 14.503
+            },
+            "four_neighbor_highpass_rms": 6.063
+          }
+        },
+        {
+          "name": "nape_back",
+          "box": [
+            300,
+            340,
+            740,
+            500
+          ],
+          "meaning": "Posterior side hair, nape and side buns.",
+          "stats": {
+            "pixels": 46377,
+            "comparable": true,
+            "mean_rgb": [
+              76.888,
+              69.603,
+              64.483
+            ],
+            "median_rgb": [
+              74,
+              67,
+              62
+            ],
+            "mean_lab": [
+              30.029,
+              2.065,
+              4.208
+            ],
+            "mean_lab_chroma": 4.687,
+            "mean_lab_hue_degrees": 63.859,
+            "luma_srgb_255": {
+              "mean": 70.782,
+              "p1": 51.915,
+              "p10": 57.412,
+              "p50": 68.127,
+              "p90": 87.055,
+              "p99": 116.408
+            },
+            "cie_Lstar": {
+              "p1": 21.707,
+              "p10": 24.214,
+              "p50": 28.977,
+              "p90": 37.045,
+              "p99": 49.029
+            },
+            "percent_luma_above": {
+              "100": 3.765,
+              "110": 1.738,
+              "125": 0.379,
+              "140": 0.028
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 5.075,
+              "p90": 11.715
+            },
+            "four_neighbor_highpass_rms": 4.636
+          }
+        },
+        {
+          "name": "curtain_back",
+          "box": [
+            260,
+            500,
+            780,
+            1000
+          ],
+          "meaning": "Posterior long hair curtain behind shoulders/body. Female style02 is a low bun and has no comparable curtain.",
+          "stats": {
+            "pixels": 201119,
+            "comparable": true,
+            "mean_rgb": [
+              84.884,
+              77.107,
+              71.838
+            ],
+            "median_rgb": [
+              80,
+              73,
+              67
+            ],
+            "mean_lab": [
+              33.232,
+              2.204,
+              4.301
+            ],
+            "mean_lab_chroma": 4.833,
+            "mean_lab_hue_degrees": 62.87,
+            "luma_srgb_255": {
+              "mean": 78.38,
+              "p1": 52.055,
+              "p10": 58.842,
+              "p50": 73.842,
+              "p90": 105.34,
+              "p99": 134.911
+            },
+            "cie_Lstar": {
+              "p1": 21.787,
+              "p10": 24.84,
+              "p50": 31.451,
+              "p90": 44.584,
+              "p99": 56.307
+            },
+            "percent_luma_above": {
+              "100": 13.545,
+              "110": 7.465,
+              "125": 2.517,
+              "140": 0.552
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 6.038,
+              "p90": 14.285
+            },
+            "four_neighbor_highpass_rms": 5.624
+          }
+        }
+      ]
+    },
+    {
+      "sex": "male",
+      "part": "hair_front",
+      "id": "01",
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_male_reference_20261104_v1\\male\\hair_front\\01.png",
+      "sha256": "f15c18fe91f19124e91212c50db1f3c9701c245883fbacf7dba7965bd21720d2",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "regions": [
+        {
+          "name": "crown_front",
+          "box": [
+            330,
+            170,
+            710,
+            340
+          ],
+          "meaning": "Anterior crown/cap; no hair ornaments are present in these front layers.",
+          "stats": {
+            "pixels": 30099,
+            "comparable": true,
+            "mean_rgb": [
+              88.238,
+              80.534,
+              75.946
+            ],
+            "median_rgb": [
+              86,
+              78,
+              73
+            ],
+            "mean_lab": [
+              34.574,
+              2.286,
+              3.859
+            ],
+            "mean_lab_chroma": 4.485,
+            "mean_lab_hue_degrees": 59.352,
+            "luma_srgb_255": {
+              "mean": 81.841,
+              "p1": 34.846,
+              "p10": 50.774,
+              "p50": 79.127,
+              "p90": 118.055,
+              "p99": 142.195
+            },
+            "cie_Lstar": {
+              "p1": 13.676,
+              "p10": 21.183,
+              "p50": 33.692,
+              "p90": 49.684,
+              "p99": 59.123
+            },
+            "percent_luma_above": {
+              "100": 23.107,
+              "110": 14.804,
+              "125": 6.711,
+              "140": 1.425
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 8.516,
+              "p90": 19.425
+            },
+            "four_neighbor_highpass_rms": 6.498
+          }
+        },
+        {
+          "name": "temple_front",
+          "box": [
+            330,
+            340,
+            710,
+            500
+          ],
+          "meaning": "Anterior temples and face-framing strands; opaque hair only.",
+          "stats": {
+            "pixels": 6955,
+            "comparable": true,
+            "mean_rgb": [
+              95.97,
+              87.027,
+              81.783
+            ],
+            "median_rgb": [
+              96,
+              87,
+              82
+            ],
+            "mean_lab": [
+              37.491,
+              2.64,
+              4.365
+            ],
+            "mean_lab_chroma": 5.101,
+            "mean_lab_hue_degrees": 58.841,
+            "luma_srgb_255": {
+              "mean": 88.55,
+              "p1": 44.412,
+              "p10": 59.199,
+              "p50": 88.48,
+              "p90": 117.693,
+              "p99": 133.833
+            },
+            "cie_Lstar": {
+              "p1": 18.268,
+              "p10": 25.003,
+              "p50": 37.658,
+              "p90": 49.56,
+              "p99": 55.91
+            },
+            "percent_luma_above": {
+              "100": 31.531,
+              "110": 17.412,
+              "125": 4.86,
+              "140": 0.403
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 8.552,
+              "p90": 21.213
+            },
+            "four_neighbor_highpass_rms": 6.31
+          }
+        },
+        {
+          "name": "chest_front",
+          "box": [
+            300,
+            520,
+            740,
+            950
+          ],
+          "meaning": "Hair intended in front of clothing; opaque strands only.",
+          "stats": {
+            "pixels": 18264,
+            "comparable": true,
+            "mean_rgb": [
+              111.448,
+              101.429,
+              95.53
+            ],
+            "median_rgb": [
+              113,
+              103,
+              97
+            ],
+            "mean_lab": [
+              43.536,
+              2.873,
+              4.777
+            ],
+            "mean_lab_chroma": 5.574,
+            "mean_lab_hue_degrees": 58.975,
+            "luma_srgb_255": {
+              "mean": 103.134,
+              "p1": 50.272,
+              "p10": 73.412,
+              "p50": 104.621,
+              "p90": 130.901,
+              "p99": 146.336
+            },
+            "cie_Lstar": {
+              "p1": 20.984,
+              "p10": 31.277,
+              "p50": 44.313,
+              "p90": 54.769,
+              "p99": 60.717
+            },
+            "percent_luma_above": {
+              "100": 57.381,
+              "110": 40.221,
+              "125": 16.338,
+              "140": 2.896
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 9.564,
+              "p90": 23.285
+            },
+            "four_neighbor_highpass_rms": 7.358
+          }
+        }
+      ]
+    },
+    {
+      "sex": "male",
+      "part": "hair_front",
+      "id": "02",
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_male_reference_20261104_v1\\male\\hair_front\\02.png",
+      "sha256": "226fa88d193912d1405bd71fb525c8adb72af8adc4ba4eb9e50b3d7565675230",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "regions": [
+        {
+          "name": "crown_front",
+          "box": [
+            330,
+            170,
+            710,
+            340
+          ],
+          "meaning": "Anterior crown/cap; no hair ornaments are present in these front layers.",
+          "stats": {
+            "pixels": 31992,
+            "comparable": true,
+            "mean_rgb": [
+              89.046,
+              81.678,
+              76.619
+            ],
+            "median_rgb": [
+              87,
+              80,
+              75
+            ],
+            "mean_lab": [
+              35.053,
+              2.049,
+              4.069
+            ],
+            "mean_lab_chroma": 4.556,
+            "mean_lab_hue_degrees": 63.274,
+            "luma_srgb_255": {
+              "mean": 82.879,
+              "p1": 36.774,
+              "p10": 53.63,
+              "p50": 80.915,
+              "p90": 115.127,
+              "p99": 136.68
+            },
+            "cie_Lstar": {
+              "p1": 14.61,
+              "p10": 22.483,
+              "p50": 34.445,
+              "p90": 48.516,
+              "p99": 57.014
+            },
+            "percent_luma_above": {
+              "100": 23.865,
+              "110": 14.194,
+              "125": 4.373,
+              "140": 0.638
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 8.387,
+              "p90": 18.856
+            },
+            "four_neighbor_highpass_rms": 6.269
+          }
+        },
+        {
+          "name": "temple_front",
+          "box": [
+            330,
+            340,
+            710,
+            500
+          ],
+          "meaning": "Anterior temples and face-framing strands; opaque hair only.",
+          "stats": {
+            "pixels": 5400,
+            "comparable": true,
+            "mean_rgb": [
+              103.746,
+              94.935,
+              88.921
+            ],
+            "median_rgb": [
+              105,
+              96,
+              90
+            ],
+            "mean_lab": [
+              40.816,
+              2.39,
+              4.713
+            ],
+            "mean_lab_chroma": 5.284,
+            "mean_lab_hue_degrees": 63.108,
+            "luma_srgb_255": {
+              "mean": 96.374,
+              "p1": 53.915,
+              "p10": 72.34,
+              "p50": 97.693,
+              "p90": 117.268,
+              "p99": 129.408
+            },
+            "cie_Lstar": {
+              "p1": 22.617,
+              "p10": 30.789,
+              "p50": 41.482,
+              "p90": 49.377,
+              "p99": 54.173
+            },
+            "percent_luma_above": {
+              "100": 45.593,
+              "110": 23.963,
+              "125": 2.63,
+              "140": 0.019
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 8.258,
+              "p90": 21.213
+            },
+            "four_neighbor_highpass_rms": 6.281
+          }
+        },
+        {
+          "name": "chest_front",
+          "box": [
+            300,
+            520,
+            740,
+            950
+          ],
+          "meaning": "Hair intended in front of clothing; opaque strands only.",
+          "stats": {
+            "pixels": 12305,
+            "comparable": true,
+            "mean_rgb": [
+              106.169,
+              97.532,
+              91.372
+            ],
+            "median_rgb": [
+              108,
+              99,
+              93
+            ],
+            "mean_lab": [
+              41.864,
+              2.276,
+              4.746
+            ],
+            "mean_lab_chroma": 5.264,
+            "mean_lab_hue_degrees": 64.376,
+            "luma_srgb_255": {
+              "mean": 98.924,
+              "p1": 57.702,
+              "p10": 74.34,
+              "p50": 100.48,
+              "p90": 120.195,
+              "p99": 134.123
+            },
+            "cie_Lstar": {
+              "p1": 24.323,
+              "p10": 31.651,
+              "p50": 42.616,
+              "p90": 50.542,
+              "p99": 56.006
+            },
+            "percent_luma_above": {
+              "100": 51.207,
+              "110": 28.623,
+              "125": 5.095,
+              "140": 0.154
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 7.936,
+              "p90": 19.14
+            },
+            "four_neighbor_highpass_rms": 6.127
+          }
+        }
+      ]
+    },
+    {
+      "sex": "male",
+      "part": "hair_front",
+      "id": "03",
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_male_reference_20261104_v1\\male\\hair_front\\03.png",
+      "sha256": "02093b4bd6c54f1ac250d2783a9f79d36588fc36802940fd1696bd112ee136cc",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "regions": [
+        {
+          "name": "crown_front",
+          "box": [
+            330,
+            170,
+            710,
+            340
+          ],
+          "meaning": "Anterior crown/cap; no hair ornaments are present in these front layers.",
+          "stats": {
+            "pixels": 40907,
+            "comparable": true,
+            "mean_rgb": [
+              86.433,
+              77.94,
+              73.256
+            ],
+            "median_rgb": [
+              84,
+              75,
+              71
+            ],
+            "mean_lab": [
+              33.6,
+              2.626,
+              4.068
+            ],
+            "mean_lab_chroma": 4.842,
+            "mean_lab_hue_degrees": 57.154,
+            "luma_srgb_255": {
+              "mean": 79.407,
+              "p1": 39.199,
+              "p10": 51.552,
+              "p50": 76.842,
+              "p90": 111.625,
+              "p99": 132.978
+            },
+            "cie_Lstar": {
+              "p1": 15.797,
+              "p10": 21.582,
+              "p50": 32.741,
+              "p90": 47.125,
+              "p99": 55.556
+            },
+            "percent_luma_above": {
+              "100": 19.649,
+              "110": 11.179,
+              "125": 2.88,
+              "140": 0.357
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 7.559,
+              "p90": 16.928
+            },
+            "four_neighbor_highpass_rms": 5.873
+          }
+        },
+        {
+          "name": "temple_front",
+          "box": [
+            330,
+            340,
+            710,
+            500
+          ],
+          "meaning": "Anterior temples and face-framing strands; opaque hair only.",
+          "stats": {
+            "pixels": 13680,
+            "comparable": true,
+            "mean_rgb": [
+              92.68,
+              83.927,
+              79.013
+            ],
+            "median_rgb": [
+              91,
+              82,
+              77
+            ],
+            "mean_lab": [
+              36.141,
+              2.656,
+              4.184
+            ],
+            "mean_lab_chroma": 4.956,
+            "mean_lab_hue_degrees": 57.592,
+            "luma_srgb_255": {
+              "mean": 85.433,
+              "p1": 43.484,
+              "p10": 54.702,
+              "p50": 83.837,
+              "p90": 118.625,
+              "p99": 141.48
+            },
+            "cie_Lstar": {
+              "p1": 17.831,
+              "p10": 23.001,
+              "p50": 35.714,
+              "p90": 49.919,
+              "p99": 58.851
+            },
+            "percent_luma_above": {
+              "100": 26.974,
+              "110": 16.484,
+              "125": 5.95,
+              "140": 1.308
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 8.017,
+              "p90": 17.928
+            },
+            "four_neighbor_highpass_rms": 5.787
+          }
+        },
+        {
+          "name": "chest_front",
+          "box": [
+            300,
+            520,
+            740,
+            950
+          ],
+          "meaning": "Hair intended in front of clothing; opaque strands only.",
+          "stats": {
+            "pixels": 16115,
+            "comparable": true,
+            "mean_rgb": [
+              125.749,
+              116.018,
+              110.358
+            ],
+            "median_rgb": [
+              128,
+              118,
+              112
+            ],
+            "mean_lab": [
+              49.428,
+              2.724,
+              4.493
+            ],
+            "mean_lab_chroma": 5.254,
+            "mean_lab_hue_degrees": 58.775,
+            "luma_srgb_255": {
+              "mean": 117.678,
+              "p1": 70.905,
+              "p10": 88.978,
+              "p50": 119.905,
+              "p90": 142.268,
+              "p99": 154.765
+            },
+            "cie_Lstar": {
+              "p1": 30.208,
+              "p10": 37.883,
+              "p50": 50.446,
+              "p90": 59.149,
+              "p99": 63.923
+            },
+            "percent_luma_above": {
+              "100": 78.343,
+              "110": 65.343,
+              "125": 40.949,
+              "140": 13.391
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 8.939,
+              "p90": 21.643
+            },
+            "four_neighbor_highpass_rms": 6.343
+          }
+        }
+      ]
+    },
+    {
+      "sex": "male",
+      "part": "hair_back",
+      "id": "01",
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_male_reference_20261104_v1\\male\\hair_back\\01.png",
+      "sha256": "4019df2a1540e833c2143bf7ac6735f6c275b58fe1b2b9d076b33aa6e1e1c37d",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "regions": [
+        {
+          "name": "crown_back",
+          "box": [
+            340,
+            190,
+            700,
+            330
+          ],
+          "meaning": "Posterior scalp/cap under front layers; excludes high knot/pin.",
+          "stats": {
+            "pixels": 36742,
+            "comparable": true,
+            "mean_rgb": [
+              86.159,
+              77.061,
+              71.338
+            ],
+            "median_rgb": [
+              85,
+              76,
+              70
+            ],
+            "mean_lab": [
+              33.348,
+              2.687,
+              4.774
+            ],
+            "mean_lab_chroma": 5.478,
+            "mean_lab_hue_degrees": 60.627,
+            "luma_srgb_255": {
+              "mean": 78.582,
+              "p1": 43.199,
+              "p10": 56.412,
+              "p50": 77.693,
+              "p90": 101.195,
+              "p99": 120.761
+            },
+            "cie_Lstar": {
+              "p1": 17.686,
+              "p10": 23.765,
+              "p50": 33.113,
+              "p90": 42.931,
+              "p99": 50.776
+            },
+            "percent_luma_above": {
+              "100": 11.102,
+              "110": 4.006,
+              "125": 0.468,
+              "140": 0.003
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 6.178,
+              "p90": 14.358
+            },
+            "four_neighbor_highpass_rms": 4.784
+          }
+        },
+        {
+          "name": "nape_back",
+          "box": [
+            300,
+            340,
+            740,
+            500
+          ],
+          "meaning": "Posterior side hair, nape and side buns.",
+          "stats": {
+            "pixels": 46530,
+            "comparable": true,
+            "mean_rgb": [
+              88.056,
+              78.637,
+              72.658
+            ],
+            "median_rgb": [
+              85,
+              76,
+              70
+            ],
+            "mean_lab": [
+              34.049,
+              2.762,
+              4.957
+            ],
+            "mean_lab_chroma": 5.674,
+            "mean_lab_hue_degrees": 60.877,
+            "luma_srgb_255": {
+              "mean": 80.208,
+              "p1": 41.915,
+              "p10": 61.552,
+              "p50": 77.693,
+              "p90": 103.48,
+              "p99": 126.974
+            },
+            "cie_Lstar": {
+              "p1": 17.073,
+              "p10": 26.078,
+              "p50": 33.113,
+              "p90": 43.843,
+              "p99": 53.244
+            },
+            "percent_luma_above": {
+              "100": 12.942,
+              "110": 5.826,
+              "125": 1.309,
+              "140": 0.073
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 5.004,
+              "p90": 12.213
+            },
+            "four_neighbor_highpass_rms": 4.101
+          }
+        },
+        {
+          "name": "curtain_back",
+          "box": [
+            260,
+            500,
+            780,
+            1000
+          ],
+          "meaning": "Posterior long hair curtain behind shoulders/body. Female style02 is a low bun and has no comparable curtain.",
+          "stats": {
+            "pixels": 167636,
+            "comparable": true,
+            "mean_rgb": [
+              98.743,
+              88.765,
+              82.365
+            ],
+            "median_rgb": [
+              94,
+              84,
+              77
+            ],
+            "mean_lab": [
+              38.276,
+              2.848,
+              5.18
+            ],
+            "mean_lab_chroma": 5.912,
+            "mean_lab_hue_degrees": 61.204,
+            "luma_srgb_255": {
+              "mean": 90.424,
+              "p1": 56.625,
+              "p10": 64.268,
+              "p50": 85.48,
+              "p90": 124.974,
+              "p99": 146.761
+            },
+            "cie_Lstar": {
+              "p1": 23.874,
+              "p10": 27.27,
+              "p50": 36.401,
+              "p90": 52.459,
+              "p99": 60.892
+            },
+            "percent_luma_above": {
+              "100": 31.895,
+              "110": 22.205,
+              "125": 9.929,
+              "140": 2.428
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 5.234,
+              "p90": 12.928
+            },
+            "four_neighbor_highpass_rms": 4.413
+          }
+        }
+      ]
+    },
+    {
+      "sex": "male",
+      "part": "hair_back",
+      "id": "02",
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_male_reference_20261104_v1\\male\\hair_back\\02.png",
+      "sha256": "3da21299bc0ce3d7ddc761a0420137d9348492d25ecd75b1d90dfc43dc8a2a9e",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "regions": [
+        {
+          "name": "crown_back",
+          "box": [
+            340,
+            190,
+            700,
+            330
+          ],
+          "meaning": "Posterior scalp/cap under front layers; excludes high knot/pin.",
+          "stats": {
+            "pixels": 35845,
+            "comparable": true,
+            "mean_rgb": [
+              85.749,
+              77.087,
+              70.979
+            ],
+            "median_rgb": [
+              84,
+              76,
+              69
+            ],
+            "mean_lab": [
+              33.306,
+              2.432,
+              4.943
+            ],
+            "mean_lab_chroma": 5.509,
+            "mean_lab_hue_degrees": 63.798,
+            "luma_srgb_255": {
+              "mean": 78.488,
+              "p1": 46.625,
+              "p10": 57.48,
+              "p50": 77.127,
+              "p90": 101.48,
+              "p99": 125.983
+            },
+            "cie_Lstar": {
+              "p1": 19.313,
+              "p10": 24.266,
+              "p50": 32.873,
+              "p90": 43.024,
+              "p99": 52.819
+            },
+            "percent_luma_above": {
+              "100": 11.025,
+              "110": 5.493,
+              "125": 1.127,
+              "140": 0.036
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 6.047,
+              "p90": 13.715
+            },
+            "four_neighbor_highpass_rms": 4.81
+          }
+        },
+        {
+          "name": "nape_back",
+          "box": [
+            300,
+            340,
+            740,
+            500
+          ],
+          "meaning": "Posterior side hair, nape and side buns.",
+          "stats": {
+            "pixels": 40847,
+            "comparable": true,
+            "mean_rgb": [
+              87.017,
+              77.935,
+              71.336
+            ],
+            "median_rgb": [
+              85,
+              76,
+              69
+            ],
+            "mean_lab": [
+              33.725,
+              2.511,
+              5.287
+            ],
+            "mean_lab_chroma": 5.853,
+            "mean_lab_hue_degrees": 64.593,
+            "luma_srgb_255": {
+              "mean": 79.39,
+              "p1": 50.195,
+              "p10": 62.48,
+              "p50": 77.195,
+              "p90": 99.051,
+              "p99": 126.476
+            },
+            "cie_Lstar": {
+              "p1": 20.957,
+              "p10": 26.493,
+              "p50": 32.883,
+              "p90": 42.059,
+              "p99": 53.048
+            },
+            "percent_luma_above": {
+              "100": 9.45,
+              "110": 5.432,
+              "125": 1.214,
+              "140": 0.061
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 4.467,
+              "p90": 10.643
+            },
+            "four_neighbor_highpass_rms": 3.667
+          }
+        },
+        {
+          "name": "curtain_back",
+          "box": [
+            260,
+            500,
+            780,
+            1000
+          ],
+          "meaning": "Posterior long hair curtain behind shoulders/body. Female style02 is a low bun and has no comparable curtain.",
+          "stats": {
+            "pixels": 136744,
+            "comparable": true,
+            "mean_rgb": [
+              100.649,
+              90.766,
+              83.7
+            ],
+            "median_rgb": [
+              96,
+              86,
+              79
+            ],
+            "mean_lab": [
+              39.098,
+              2.672,
+              5.537
+            ],
+            "mean_lab_chroma": 6.148,
+            "mean_lab_hue_degrees": 64.238,
+            "luma_srgb_255": {
+              "mean": 92.357,
+              "p1": 59.268,
+              "p10": 66.552,
+              "p50": 87.621,
+              "p90": 126.905,
+              "p99": 143.761
+            },
+            "cie_Lstar": {
+              "p1": 25.052,
+              "p10": 28.282,
+              "p50": 37.312,
+              "p90": 53.219,
+              "p99": 59.744
+            },
+            "percent_luma_above": {
+              "100": 32.671,
+              "110": 23.066,
+              "125": 11.364,
+              "140": 2.306
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 5.111,
+              "p90": 12.285
+            },
+            "four_neighbor_highpass_rms": 4.257
+          }
+        }
+      ]
+    },
+    {
+      "sex": "male",
+      "part": "hair_back",
+      "id": "03",
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_male_reference_20261104_v1\\male\\hair_back\\03.png",
+      "sha256": "ea21838c15799f9ca107c18d492853dc5e45fd8d21170b8a7a24c10d75f4bcd9",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "regions": [
+        {
+          "name": "crown_back",
+          "box": [
+            340,
+            190,
+            700,
+            330
+          ],
+          "meaning": "Posterior scalp/cap under front layers; excludes high knot/pin.",
+          "stats": {
+            "pixels": 35884,
+            "comparable": true,
+            "mean_rgb": [
+              87.631,
+              78.9,
+              73.206
+            ],
+            "median_rgb": [
+              86,
+              77,
+              72
+            ],
+            "mean_lab": [
+              34.104,
+              2.522,
+              4.682
+            ],
+            "mean_lab_chroma": 5.318,
+            "mean_lab_hue_degrees": 61.695,
+            "luma_srgb_255": {
+              "mean": 80.345,
+              "p1": 52.127,
+              "p10": 59.48,
+              "p50": 78.552,
+              "p90": 103.621,
+              "p99": 125.195
+            },
+            "cie_Lstar": {
+              "p1": 21.816,
+              "p10": 25.16,
+              "p50": 33.466,
+              "p90": 43.907,
+              "p99": 52.537
+            },
+            "percent_luma_above": {
+              "100": 13.521,
+              "110": 5.727,
+              "125": 1.028,
+              "140": 0.003
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 5.651,
+              "p90": 12.928
+            },
+            "four_neighbor_highpass_rms": 4.808
+          }
+        },
+        {
+          "name": "nape_back",
+          "box": [
+            300,
+            340,
+            740,
+            500
+          ],
+          "meaning": "Posterior side hair, nape and side buns.",
+          "stats": {
+            "pixels": 50537,
+            "comparable": true,
+            "mean_rgb": [
+              81.445,
+              73.094,
+              67.491
+            ],
+            "median_rgb": [
+              78,
+              70,
+              65
+            ],
+            "mean_lab": [
+              31.588,
+              2.415,
+              4.633
+            ],
+            "mean_lab_chroma": 5.225,
+            "mean_lab_hue_degrees": 62.474,
+            "luma_srgb_255": {
+              "mean": 74.465,
+              "p1": 49.34,
+              "p10": 56.34,
+              "p50": 71.34,
+              "p90": 97.408,
+              "p99": 122.264
+            },
+            "cie_Lstar": {
+              "p1": 20.554,
+              "p10": 23.736,
+              "p50": 30.356,
+              "p90": 41.36,
+              "p99": 51.359
+            },
+            "percent_luma_above": {
+              "100": 8.319,
+              "110": 4.068,
+              "125": 0.596,
+              "140": 0.02
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 4.374,
+              "p90": 10.643
+            },
+            "four_neighbor_highpass_rms": 3.84
+          }
+        },
+        {
+          "name": "curtain_back",
+          "box": [
+            260,
+            500,
+            780,
+            1000
+          ],
+          "meaning": "Posterior long hair curtain behind shoulders/body. Female style02 is a low bun and has no comparable curtain.",
+          "stats": {
+            "pixels": 213712,
+            "comparable": true,
+            "mean_rgb": [
+              96.06,
+              87.129,
+              81.14
+            ],
+            "median_rgb": [
+              90,
+              81,
+              75
+            ],
+            "mean_lab": [
+              37.478,
+              2.493,
+              4.807
+            ],
+            "mean_lab_chroma": 5.415,
+            "mean_lab_hue_degrees": 62.585,
+            "luma_srgb_255": {
+              "mean": 88.595,
+              "p1": 55.34,
+              "p10": 62.34,
+              "p50": 82.552,
+              "p90": 125.979,
+              "p99": 153.693
+            },
+            "cie_Lstar": {
+              "p1": 23.285,
+              "p10": 26.414,
+              "p50": 35.164,
+              "p90": 52.852,
+              "p99": 63.53
+            },
+            "percent_luma_above": {
+              "100": 27.669,
+              "110": 19.39,
+              "125": 10.496,
+              "140": 4.398
+            },
+            "neighbor_absolute_luma_difference": {
+              "mean": 4.807,
+              "p90": 11.715
+            },
+            "four_neighbor_highpass_rms": 4.136
+          }
+        }
+      ]
+    }
+  ],
+  "pooled": {
+    "female": {
+      "crown_front": {
+        "pixels": 107237,
+        "comparable": true,
+        "mean_rgb": [
+          82.36,
+          75.678,
+          71.508
+        ],
+        "median_rgb": [
+          81,
+          75,
+          70
+        ],
+        "mean_lab": [
+          32.42,
+          1.954,
+          3.483
+        ],
+        "mean_lab_chroma": 3.993,
+        "mean_lab_hue_degrees": 60.71,
+        "luma_srgb_255": {
+          "mean": 76.798,
+          "p1": 26.344,
+          "p10": 45.987,
+          "p50": 75.774,
+          "p90": 109.277,
+          "p99": 132.272
+        },
+        "cie_Lstar": {
+          "p1": 9.465,
+          "p10": 18.974,
+          "p50": 32.258,
+          "p90": 46.192,
+          "p99": 55.281
+        },
+        "percent_luma_above": {
+          "100": 17.191,
+          "110": 9.563,
+          "125": 2.6,
+          "140": 0.389
+        },
+        "neighbor_absolute_luma_difference": {
+          "mean": 9.701,
+          "p90": 21.71
+        },
+        "four_neighbor_highpass_rms": 8.124
+      },
+      "temple_front": {
+        "pixels": 28772,
+        "comparable": true,
+        "mean_rgb": [
+          87.181,
+          79.902,
+          75.392
+        ],
+        "median_rgb": [
+          89,
+          81,
+          77
+        ],
+        "mean_lab": [
+          34.315,
+          2.12,
+          3.743
+        ],
+        "mean_lab_chroma": 4.302,
+        "mean_lab_hue_degrees": 60.467,
+        "luma_srgb_255": {
+          "mean": 81.124,
+          "p1": 31.344,
+          "p10": 50.484,
+          "p50": 82.412,
+          "p90": 109.34,
+          "p99": 124.693
+        },
+        "cie_Lstar": {
+          "p1": 11.984,
+          "p10": 21.067,
+          "p50": 35.092,
+          "p90": 46.201,
+          "p99": 52.328
+        },
+        "percent_luma_above": {
+          "100": 21.785,
+          "110": 9.335,
+          "125": 0.949,
+          "140": 0.01
+        },
+        "neighbor_absolute_luma_difference": {
+          "mean": 9.235,
+          "p90": 21
+        },
+        "four_neighbor_highpass_rms": 7.423
+      },
+      "chest_front": {
+        "pixels": 12568,
+        "comparable": true,
+        "mean_rgb": [
+          109.789,
+          101.598,
+          96.683
+        ],
+        "median_rgb": [
+          111,
+          103,
+          98
+        ],
+        "mean_lab": [
+          43.544,
+          2.306,
+          3.947
+        ],
+        "mean_lab_chroma": 4.572,
+        "mean_lab_hue_degrees": 59.705,
+        "luma_srgb_255": {
+          "mean": 102.985,
+          "p1": 60.841,
+          "p10": 81.625,
+          "p50": 104.625,
+          "p90": 121.268,
+          "p99": 132.911
+        },
+        "cie_Lstar": {
+          "p1": 25.733,
+          "p10": 34.768,
+          "p50": 44.281,
+          "p90": 50.964,
+          "p99": 55.548
+        },
+        "percent_luma_above": {
+          "100": 61.649,
+          "110": 35.431,
+          "125": 5.419,
+          "140": 0.072
+        },
+        "neighbor_absolute_luma_difference": {
+          "mean": 8.462,
+          "p90": 20.43
+        },
+        "four_neighbor_highpass_rms": 7.104
+      },
+      "crown_back": {
+        "pixels": 112035,
+        "comparable": true,
+        "mean_rgb": [
+          77.113,
+          70.982,
+          66.69
+        ],
+        "median_rgb": [
+          77,
+          71,
+          66
+        ],
+        "mean_lab": [
+          30.501,
+          1.721,
+          3.517
+        ],
+        "mean_lab_chroma": 3.915,
+        "mean_lab_hue_degrees": 63.924,
+        "luma_srgb_255": {
+          "mean": 71.976,
+          "p1": 38.634,
+          "p10": 52.987,
+          "p50": 71.562,
+          "p90": 91.349,
+          "p99": 108.698
+        },
+        "cie_Lstar": {
+          "p1": 15.486,
+          "p10": 22.192,
+          "p50": 30.418,
+          "p90": 38.838,
+          "p99": 45.938
+        },
+        "percent_luma_above": {
+          "100": 3.353,
+          "110": 0.835,
+          "125": 0.066,
+          "140": 0
+        },
+        "neighbor_absolute_luma_difference": {
+          "mean": 5.758,
+          "p90": 13.214
+        },
+        "four_neighbor_highpass_rms": 5.313
+      },
+      "nape_back": {
+        "pixels": 93739,
+        "comparable": true,
+        "mean_rgb": [
+          75.378,
+          68.141,
+          63.232
+        ],
+        "median_rgb": [
+          73,
+          66,
+          61
+        ],
+        "mean_lab": [
+          29.393,
+          2.096,
+          4.088
+        ],
+        "mean_lab_chroma": 4.594,
+        "mean_lab_hue_degrees": 62.857,
+        "luma_srgb_255": {
+          "mean": 69.325,
+          "p1": 49.127,
+          "p10": 55.842,
+          "p50": 67.127,
+          "p90": 85.127,
+          "p99": 113.911
+        },
+        "cie_Lstar": {
+          "p1": 20.442,
+          "p10": 23.493,
+          "p50": 28.512,
+          "p90": 36.235,
+          "p99": 48.037
+        },
+        "percent_luma_above": {
+          "100": 3.216,
+          "110": 1.45,
+          "125": 0.274,
+          "140": 0.018
+        },
+        "neighbor_absolute_luma_difference": {
+          "mean": 5.221,
+          "p90": 11.928
+        },
+        "four_neighbor_highpass_rms": 4.754
+      },
+      "curtain_back": {
+        "pixels": 406257,
+        "comparable": true,
+        "mean_rgb": [
+          83.432,
+          75.724,
+          70.614
+        ],
+        "median_rgb": [
+          79,
+          71,
+          66
+        ],
+        "mean_lab": [
+          32.64,
+          2.214,
+          4.209
+        ],
+        "mean_lab_chroma": 4.756,
+        "mean_lab_hue_degrees": 62.251,
+        "luma_srgb_255": {
+          "mean": 76.994,
+          "p1": 50.769,
+          "p10": 57.484,
+          "p50": 72.625,
+          "p90": 103.268,
+          "p99": 132.765
+        },
+        "cie_Lstar": {
+          "p1": 21.194,
+          "p10": 24.243,
+          "p50": 30.919,
+          "p90": 43.745,
+          "p99": 55.484
+        },
+        "percent_luma_above": {
+          "100": 12.168,
+          "110": 6.505,
+          "125": 2.12,
+          "140": 0.414
+        },
+        "neighbor_absolute_luma_difference": {
+          "mean": 6.222,
+          "p90": 14.643
+        },
+        "four_neighbor_highpass_rms": 5.772
+      }
+    },
+    "male": {
+      "crown_front": {
+        "pixels": 102998,
+        "comparable": true,
+        "mean_rgb": [
+          87.772,
+          79.859,
+          75.087
+        ],
+        "median_rgb": [
+          86,
+          77,
+          73
+        ],
+        "mean_lab": [
+          34.336,
+          2.348,
+          4.007
+        ],
+        "mean_lab_chroma": 4.644,
+        "mean_lab_hue_degrees": 59.636,
+        "luma_srgb_255": {
+          "mean": 81.197,
+          "p1": 37.059,
+          "p10": 51.987,
+          "p50": 78.842,
+          "p90": 114.34,
+          "p99": 138.34
+        },
+        "cie_Lstar": {
+          "p1": 14.756,
+          "p10": 21.737,
+          "p50": 33.58,
+          "p90": 48.207,
+          "p99": 57.634
+        },
+        "percent_luma_above": {
+          "100": 21.969,
+          "110": 13.175,
+          "125": 4.463,
+          "140": 0.756
+        },
+        "neighbor_absolute_luma_difference": {
+          "mean": 8.095,
+          "p90": 18.213
+        },
+        "four_neighbor_highpass_rms": 6.183
+      },
+      "temple_front": {
+        "pixels": 26035,
+        "comparable": true,
+        "mean_rgb": [
+          95.854,
+          87.038,
+          81.808
+        ],
+        "median_rgb": [
+          96,
+          87,
+          82
+        ],
+        "mean_lab": [
+          37.471,
+          2.597,
+          4.342
+        ],
+        "mean_lab_chroma": 5.06,
+        "mean_lab_hue_degrees": 59.122,
+        "luma_srgb_255": {
+          "mean": 88.535,
+          "p1": 44.484,
+          "p10": 58.127,
+          "p50": 88.625,
+          "p90": 118.055,
+          "p99": 138.268
+        },
+        "cie_Lstar": {
+          "p1": 18.298,
+          "p10": 24.555,
+          "p50": 37.713,
+          "p90": 49.711,
+          "p99": 57.607
+        },
+        "percent_luma_above": {
+          "100": 32.053,
+          "110": 18.283,
+          "125": 4.97,
+          "140": 0.799
+        },
+        "neighbor_absolute_luma_difference": {
+          "mean": 8.209,
+          "p90": 19.353
+        },
+        "four_neighbor_highpass_rms": 6.028
+      },
+      "chest_front": {
+        "pixels": 46684,
+        "comparable": true,
+        "mean_rgb": [
+          114.993,
+          105.438,
+          99.553
+        ],
+        "median_rgb": [
+          116,
+          106,
+          100
+        ],
+        "mean_lab": [
+          45.129,
+          2.664,
+          4.671
+        ],
+        "mean_lab_chroma": 5.377,
+        "mean_lab_hue_degrees": 60.299,
+        "luma_srgb_255": {
+          "mean": 107.045,
+          "p1": 55.552,
+          "p10": 78.475,
+          "p50": 107.693,
+          "p90": 135.264,
+          "p99": 150.621
+        },
+        "cie_Lstar": {
+          "p1": 23.395,
+          "p10": 33.422,
+          "p50": 45.554,
+          "p90": 56.446,
+          "p99": 62.355
+        },
+        "percent_luma_above": {
+          "100": 62.989,
+          "110": 45.836,
+          "125": 21.87,
+          "140": 5.796
+        },
+        "neighbor_absolute_luma_difference": {
+          "mean": 8.92,
+          "p90": 21.643
+        },
+        "four_neighbor_highpass_rms": 6.709
+      },
+      "crown_back": {
+        "pixels": 108471,
+        "comparable": true,
+        "mean_rgb": [
+          86.51,
+          77.678,
+          71.837
+        ],
+        "median_rgb": [
+          85,
+          76,
+          70
+        ],
+        "mean_lab": [
+          33.584,
+          2.548,
+          4.799
+        ],
+        "mean_lab_chroma": 5.434,
+        "mean_lab_hue_degrees": 62.035,
+        "luma_srgb_255": {
+          "mean": 79.134,
+          "p1": 46.34,
+          "p10": 58.195,
+          "p50": 77.693,
+          "p90": 102.195,
+          "p99": 124.186
+        },
+        "cie_Lstar": {
+          "p1": 19.17,
+          "p10": 24.578,
+          "p50": 33.113,
+          "p90": 43.312,
+          "p99": 52.121
+        },
+        "percent_luma_above": {
+          "100": 11.877,
+          "110": 5.067,
+          "125": 0.871,
+          "140": 0.014
+        },
+        "neighbor_absolute_luma_difference": {
+          "mean": 5.96,
+          "p90": 13.715
+        },
+        "four_neighbor_highpass_rms": 4.8
+      },
+      "nape_back": {
+        "pixels": 137914,
+        "comparable": true,
+        "mean_rgb": [
+          85.326,
+          76.398,
+          70.373
+        ],
+        "median_rgb": [
+          83,
+          74,
+          68
+        ],
+        "mean_lab": [
+          33.051,
+          2.56,
+          4.936
+        ],
+        "mean_lab_chroma": 5.56,
+        "mean_lab_hue_degrees": 62.585,
+        "luma_srgb_255": {
+          "mean": 77.861,
+          "p1": 48.127,
+          "p10": 59.268,
+          "p50": 75.408,
+          "p90": 100.408,
+          "p99": 125.191
+        },
+        "cie_Lstar": {
+          "p1": 19.982,
+          "p10": 25.052,
+          "p50": 32.128,
+          "p90": 42.589,
+          "p99": 52.528
+        },
+        "percent_luma_above": {
+          "100": 10.214,
+          "110": 5.065,
+          "125": 1.019,
+          "140": 0.05
+        },
+        "neighbor_absolute_luma_difference": {
+          "mean": 4.614,
+          "p90": 11
+        },
+        "four_neighbor_highpass_rms": 3.881
+      },
+      "curtain_back": {
+        "pixels": 518092,
+        "comparable": true,
+        "mean_rgb": [
+          98.139,
+          88.618,
+          82.212
+        ],
+        "median_rgb": [
+          93,
+          83,
+          77
+        ],
+        "mean_lab": [
+          38.164,
+          2.655,
+          5.121
+        ],
+        "mean_lab_chroma": 5.768,
+        "mean_lab_hue_degrees": 62.592,
+        "luma_srgb_255": {
+          "mean": 90.18,
+          "p1": 56.34,
+          "p10": 64.055,
+          "p50": 84.765,
+          "p90": 125.905,
+          "p99": 149.689
+        },
+        "cie_Lstar": {
+          "p1": 23.736,
+          "p10": 27.165,
+          "p50": 36.107,
+          "p90": 52.812,
+          "p99": 62
+        },
+        "percent_luma_above": {
+          "100": 30.357,
+          "110": 21.271,
+          "125": 10.542,
+          "140": 3.209
+        },
+        "neighbor_absolute_luma_difference": {
+          "mean": 5.025,
+          "p90": 12.213
+        },
+        "four_neighbor_highpass_rms": 4.259
+      }
+    }
+  },
+  "limitations": [
+    "This is a tone baseline, not an exact shape or strand-texture equivalence test.",
+    "Female style02 is a low bun without long rear curtain; it is excluded from pooled nape and rear-curtain targets, but its individual statistics remain recorded.",
+    "Back scalp interior is often hidden; visual judgement should prioritize exposed cap, side hair and front/chest strands.",
+    "Low chroma makes hue angle unstable; use Lab a/b and mean RGB channel differences for hue matching.",
+    "Opaque core statistics do not evaluate soft alpha edge haze, which still needs light/dark composite inspection."
+  ]
+}

@@ -1,0 +1,107 @@
+[
+  {
+    "part": "eyebrows",
+    "id": "01",
+    "target": "mods\\appearance\\portrait_male_face_match_20261104_v2\\source\\feature_refinement_inputs\\eyebrows_01_target.png",
+    "original_shape_source": "mods\\appearance\\portrait_rebuild_20261103\\final\\male\\eyebrows\\01.png",
+    "reference": "01",
+    "detail": "mods\\appearance\\portrait_male_face_match_20261104_v2\\source\\feature_refinement_inputs\\eyebrows_01_reference_detail.png",
+    "crop": {
+      "left": 420,
+      "top": 337,
+      "width": 200,
+      "height": 29
+    },
+    "detail_enlargement": 4
+  },
+  {
+    "part": "eyebrows",
+    "id": "02",
+    "target": "mods\\appearance\\portrait_male_face_match_20261104_v2\\source\\feature_refinement_inputs\\eyebrows_02_target.png",
+    "original_shape_source": "mods\\appearance\\portrait_rebuild_20261103\\final\\male\\eyebrows\\02.png",
+    "reference": "02",
+    "detail": "mods\\appearance\\portrait_male_face_match_20261104_v2\\source\\feature_refinement_inputs\\eyebrows_02_reference_detail.png",
+    "crop": {
+      "left": 420,
+      "top": 337,
+      "width": 200,
+      "height": 29
+    },
+    "detail_enlargement": 4
+  },
+  {
+    "part": "eyebrows",
+    "id": "03",
+    "target": "mods\\appearance\\portrait_male_face_match_20261104_v2\\source\\feature_refinement_inputs\\eyebrows_03_target.png",
+    "original_shape_source": "mods\\appearance\\portrait_rebuild_20261103\\final\\male\\eyebrows\\03.png",
+    "reference": "03",
+    "detail": "mods\\appearance\\portrait_male_face_match_20261104_v2\\source\\feature_refinement_inputs\\eyebrows_03_reference_detail.png",
+    "crop": {
+      "left": 420,
+      "top": 337,
+      "width": 200,
+      "height": 29
+    },
+    "detail_enlargement": 4
+  },
+  {
+    "part": "eyes",
+    "id": "01",
+    "target": "mods\\appearance\\portrait_male_face_match_20261104_v2\\source\\feature_refinement_inputs\\eyes_01_target.png",
+    "original_shape_source": "mods\\appearance\\ink_three_variants_20261004\\source\\eye_diversity_revision_20261006\\previous\\male\\eyes\\08.png",
+    "reference": "01",
+    "detail": "mods\\appearance\\portrait_male_face_match_20261104_v2\\source\\feature_refinement_inputs\\eyes_01_reference_detail.png",
+    "crop": {
+      "left": 420,
+      "top": 360,
+      "width": 200,
+      "height": 40
+    },
+    "detail_enlargement": 4
+  },
+  {
+    "part": "eyes",
+    "id": "02",
+    "target": "mods\\appearance\\portrait_male_face_match_20261104_v2\\source\\feature_refinement_inputs\\eyes_02_target.png",
+    "original_shape_source": "mods\\appearance\\portrait_fresh_sets_20261103_v2\\male\\eyes\\02.png",
+    "reference": "03",
+    "detail": "mods\\appearance\\portrait_male_face_match_20261104_v2\\source\\feature_refinement_inputs\\eyes_02_reference_detail.png",
+    "crop": {
+      "left": 420,
+      "top": 360,
+      "width": 200,
+      "height": 40
+    },
+    "detail_enlargement": 4
+  },
+  {
+    "part": "nose",
+    "id": "01",
+    "target": "mods\\appearance\\portrait_male_face_match_20261104_v2\\source\\feature_refinement_inputs\\nose_01_target.png",
+    "original_shape_source": "mods\\appearance\\selected_ink_portrait_clean_20261003_v1\\male\\nose.png",
+    "reference": "03",
+    "detail": "mods\\appearance\\portrait_male_face_match_20261104_v2\\source\\feature_refinement_inputs\\nose_01_reference_detail.png",
+    "crop": {
+      "left": 486,
+      "top": 411,
+      "width": 64,
+      "height": 63
+    },
+    "detail_enlargement": 4
+  },
+  {
+    "part": "mouth",
+    "id": "01",
+    "target": "mods\\appearance\\portrait_male_face_match_20261104_v2\\source\\feature_refinement_inputs\\mouth_01_target.png",
+    "original_shape_source": "mods\\appearance\\selected_ink_portrait_clean_20261003_v1\\male\\mouth.png",
+    "reference": "03",
+    "detail": "mods\\appearance\\portrait_male_face_match_20261104_v2\\source\\feature_refinement_inputs\\mouth_01_reference_detail.png",
+    "crop": {
+      "left": 474,
+      "top": 469,
+      "width": 86,
+      "height": 46
+    },
+    "detail_enlargement": 4
+  }
+]

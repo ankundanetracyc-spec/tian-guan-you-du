@@ -1,0 +1,489 @@
+{
+  "rig_id": "our_selected_ink_portrait_rig_20261003_v1",
+  "compatibility_family": "our_selected_ink_male_20261003_v1",
+  "method": "One uniform whole-layer scale and integer translation per component; no local edits, no Alpha modifications.",
+  "records": [
+    {
+      "part": "eyebrows",
+      "id": "01",
+      "raw_id": "01_refined",
+      "scale": 0.9915454705963901,
+      "source_centers": [
+        [
+          455.6907853988428,
+          344.7453811175958
+        ],
+        [
+          579.7395594061695,
+          345.05854029527086
+        ]
+      ],
+      "target_centers": [
+        [
+          456,
+          346
+        ],
+        [
+          579,
+          345
+        ]
+      ],
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_male_reference_20261104_v1\\source\\raw_features\\eyebrows\\01_refined.png",
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_male_reference_20261104_v1\\male\\eyebrows\\01.png",
+      "translation": [
+        4,
+        4
+      ],
+      "whole_layer_uniform_transform": true,
+      "three_noncollinear_control_certification": false,
+      "source_sha256": "1ec87a8783e4c22fe73395d9ea01f543c7faf0b02c7efc801388af449b40ddcc",
+      "sha256": "c97344340a9731195746032063af7b01aaeaf4f88d027dd26423c5ea9f2a44c3",
+      "metrics": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 4,
+        "zero_alpha_pixels": 1569381,
+        "opaque_pixels": 0,
+        "bounds": {
+          "1": {
+            "bbox": [
+              51,
+              72,
+              925,
+              1375
+            ],
+            "pixels": 3483
+          },
+          "20": {
+            "bbox": [
+              407,
+              337,
+              626,
+              356
+            ],
+            "pixels": 2446
+          },
+          "180": {
+            "bbox": [
+              414,
+              339,
+              618,
+              352
+            ],
+            "pixels": 1239
+          }
+        }
+      }
+    },
+    {
+      "part": "eyebrows",
+      "id": "02",
+      "scale": 1.1593541737457178,
+      "source_centers": [
+        [
+          461.1316,
+          360.0788
+        ],
+        [
+          567.2251,
+          360.0127
+        ]
+      ],
+      "target_centers": [
+        [
+          456,
+          346
+        ],
+        [
+          579,
+          345
+        ]
+      ],
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_male_reference_20261104_v1\\source\\raw_features\\eyebrows\\02.png",
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_male_reference_20261104_v1\\male\\eyebrows\\02.png",
+      "translation": [
+        -79,
+        -72
+      ],
+      "whole_layer_uniform_transform": true,
+      "three_noncollinear_control_certification": false,
+      "source_sha256": "97a902897538e35755b7f6e8927017f6527b58854579be39582b36d90e1e9b1c",
+      "sha256": "4e960b0e4b5d71f73c6bc95f001bdc6418cd0c0039d81beaebc6b7b557cb43f7",
+      "metrics": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 4,
+        "zero_alpha_pixels": 1569565,
+        "opaque_pixels": 0,
+        "bounds": {
+          "1": {
+            "bbox": [
+              62,
+              332,
+              952,
+              1004
+            ],
+            "pixels": 3299
+          },
+          "20": {
+            "bbox": [
+              404,
+              334,
+              630,
+              360
+            ],
+            "pixels": 2082
+          },
+          "180": {
+            "bbox": [
+              423,
+              338,
+              611,
+              354
+            ],
+            "pixels": 1021
+          }
+        }
+      }
+    },
+    {
+      "part": "eyebrows",
+      "id": "03",
+      "scale": 1.076176967940513,
+      "source_centers": [
+        [
+          455.0505,
+          372.6935
+        ],
+        [
+          569.344,
+          372.616
+        ]
+      ],
+      "target_centers": [
+        [
+          456,
+          346
+        ],
+        [
+          579,
+          345
+        ]
+      ],
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_male_reference_20261104_v1\\source\\raw_features\\eyebrows\\03.png",
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_male_reference_20261104_v1\\male\\eyebrows\\03.png",
+      "translation": [
+        -34,
+        -56
+      ],
+      "whole_layer_uniform_transform": true,
+      "three_noncollinear_control_certification": false,
+      "source_sha256": "ca018eeddaefd6cc2defec6f6e7e04d9c479cb65f1628ba9049372c434b2511c",
+      "sha256": "6c2f5ae37483f42ff46468c290399a6d9e72f1883fc75b02587de9428522c524",
+      "metrics": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 4,
+        "zero_alpha_pixels": 1569773,
+        "opaque_pixels": 0,
+        "bounds": {
+          "1": {
+            "bbox": [
+              2,
+              55,
+              941,
+              1241
+            ],
+            "pixels": 3091
+          },
+          "20": {
+            "bbox": [
+              411,
+              340,
+              623,
+              354
+            ],
+            "pixels": 1313
+          },
+          "180": {
+            "bbox": [
+              425,
+              342,
+              607,
+              348
+            ],
+            "pixels": 448
+          }
+        }
+      }
+    },
+    {
+      "part": "eyes",
+      "id": "01",
+      "scale": 1,
+      "source_centers": [
+        [
+          464,
+          410
+        ],
+        [
+          568,
+          410
+        ]
+      ],
+      "target_centers": [
+        [
+          464,
+          375
+        ],
+        [
+          569,
+          374
+        ]
+      ],
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_male_reference_20261104_v1\\source\\raw_features\\eyes\\01.png",
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_male_reference_20261104_v1\\male\\eyes\\01.png",
+      "translation": [
+        1,
+        -35
+      ],
+      "whole_layer_uniform_transform": true,
+      "three_noncollinear_control_certification": false,
+      "source_sha256": "4f0d4da9ea23a91bbdaa8058081c4ad7c8e3fd0b179396de8e1dc55fe61faabe",
+      "sha256": "e595b565728ac4f32aa9ef22239385ebbd7ef4bb5b06da487ed6e4fd503d2565",
+      "metrics": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 4,
+        "zero_alpha_pixels": 1569025,
+        "opaque_pixels": 0,
+        "bounds": {
+          "1": {
+            "bbox": [
+              66,
+              114,
+              952,
+              1170
+            ],
+            "pixels": 3839
+          },
+          "20": {
+            "bbox": [
+              428,
+              365,
+              605,
+              389
+            ],
+            "pixels": 2507
+          },
+          "180": {
+            "bbox": [
+              432,
+              366,
+              602,
+              387
+            ],
+            "pixels": 1989
+          }
+        }
+      }
+    },
+    {
+      "part": "eyes",
+      "id": "02",
+      "scale": 1,
+      "source_centers": [
+        [
+          460,
+          389
+        ],
+        [
+          570,
+          389
+        ]
+      ],
+      "target_centers": [
+        [
+          464,
+          375
+        ],
+        [
+          569,
+          374
+        ]
+      ],
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_male_reference_20261104_v1\\source\\raw_features\\eyes\\02.png",
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_male_reference_20261104_v1\\male\\eyes\\02.png",
+      "translation": [
+        2,
+        -14
+      ],
+      "whole_layer_uniform_transform": true,
+      "three_noncollinear_control_certification": false,
+      "source_sha256": "279583a2a306346809d2e79cba1a3548abd5fc5a6aa17b3a5b9e6beb71e85faa",
+      "sha256": "902fdec1c157133316f6705fdc31ff98d0b5f4816dc5ef54ba3f8dcbedd13dc3",
+      "metrics": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 4,
+        "zero_alpha_pixels": 1565546,
+        "opaque_pixels": 0,
+        "bounds": {
+          "1": {
+            "bbox": [
+              43,
+              193,
+              625,
+              537
+            ],
+            "pixels": 7318
+          },
+          "20": {
+            "bbox": [
+              419,
+              358,
+              616,
+              392
+            ],
+            "pixels": 3646
+          },
+          "180": {
+            "bbox": [
+              428,
+              364,
+              608,
+              387
+            ],
+            "pixels": 2041
+          }
+        }
+      }
+    },
+    {
+      "part": "nose",
+      "id": "01",
+      "scale": 0.7,
+      "source_centers": [
+        [
+          513,
+          503
+        ]
+      ],
+      "target_centers": [
+        [
+          517,
+          451
+        ]
+      ],
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_male_reference_20261104_v1\\source\\raw_features\\nose\\01.png",
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_male_reference_20261104_v1\\male\\nose\\01.png",
+      "translation": [
+        158,
+        99
+      ],
+      "whole_layer_uniform_transform": true,
+      "three_noncollinear_control_certification": false,
+      "source_sha256": "5a83f13817d0ee6c5e74fbf5db449c0b4a91b4741ff0e06df29e012f330c805f",
+      "sha256": "391af7aee4ade90d51c884814e165af480a1e2f6cd64807111865bf8d856cd13",
+      "metrics": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 4,
+        "zero_alpha_pixels": 1568540,
+        "opaque_pixels": 0,
+        "bounds": {
+          "1": {
+            "bbox": [
+              158,
+              203,
+              842,
+              1032
+            ],
+            "pixels": 4324
+          },
+          "20": {
+            "bbox": [
+              489,
+              377,
+              545,
+              467
+            ],
+            "pixels": 3277
+          },
+          "180": {
+            "bbox": [
+              493,
+              390,
+              539,
+              464
+            ],
+            "pixels": 2244
+          }
+        }
+      }
+    },
+    {
+      "part": "mouth",
+      "id": "01",
+      "scale": 0.84,
+      "source_centers": [
+        [
+          513,
+          581
+        ]
+      ],
+      "target_centers": [
+        [
+          517,
+          481
+        ]
+      ],
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_male_reference_20261104_v1\\source\\raw_features\\mouth\\01.png",
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_male_reference_20261104_v1\\male\\mouth\\01.png",
+      "translation": [
+        86,
+        -7
+      ],
+      "whole_layer_uniform_transform": true,
+      "three_noncollinear_control_certification": false,
+      "source_sha256": "33ea225d3f8eb564a06da5838a2e8ec39c09f46b211bc97ba73e5367c0787d48",
+      "sha256": "6679d0c8a1fbf034b2549c43b3d38f0814d52ab76a4d787f013284b09cb07803",
+      "metrics": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 4,
+        "zero_alpha_pixels": 1570754,
+        "opaque_pixels": 0,
+        "bounds": {
+          "1": {
+            "bbox": [
+              235,
+              353,
+              649,
+              792
+            ],
+            "pixels": 2110
+          },
+          "20": {
+            "bbox": [
+              484,
+              471,
+              550,
+              499
+            ],
+            "pixels": 1204
+          },
+          "180": {
+            "bbox": [
+              487,
+              474,
+              547,
+              495
+            ],
+            "pixels": 759
+          }
+        }
+      }
+    }
+  ]
+}

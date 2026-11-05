@@ -1,0 +1,45 @@
+{
+  "part": "nose",
+  "set": 2,
+  "source": "source/male/raw/nose_redo/02.png",
+  "output": "male/nose/02.png",
+  "method": "whole-layer uniform scale and integer translation; native alpha retained; no extraction, background removal or local deformation",
+  "scale": 0.37,
+  "tx": 328,
+  "ty": 231,
+  "actual_source_measurement": {
+    "alpha128_bbox": [
+      451,
+      426,
+      570,
+      619
+    ],
+    "central_bridge": [
+      512,
+      480
+    ],
+    "tip_ball": [
+      512,
+      588
+    ],
+    "nasal_bottom_pigment": [
+      512,
+      610
+    ]
+  },
+  "result_approx": {
+    "central_bridge": [
+      517.44,
+      408.6
+    ],
+    "tip_ball": [
+      517.44,
+      448.56
+    ],
+    "nasal_bottom_pigment": [
+      517.44,
+      456.7
+    ]
+  },
+  "registration_certification": "not a full three-noncollinear-control <=2px certification"
+}

@@ -1,0 +1,35 @@
+{
+  "set": 1,
+  "part": "hair_front",
+  "source": "source/female/raw/hair_front/01.png",
+  "output": "female/hair_front/01.png",
+  "transform": {
+    "scale": 0.7,
+    "resized": [
+      717,
+      1075
+    ],
+    "translation": [
+      156,
+      31
+    ]
+  },
+  "measured_source": {
+    "center_crown": [
+      519,
+      181
+    ],
+    "center_hairline": [
+      519,
+      352
+    ]
+  },
+  "projected_center_hairline": [
+    519.3,
+    277.4
+  ],
+  "native_alpha_preserved": true,
+  "per_pixel_editing": false,
+  "ear_review": "Only continuous hair contours and long locks; no skin ears, ear contour or ear-shaped notches. Ears in composite come from fixed face04.",
+  "registration_certification": "not asserted"
+}

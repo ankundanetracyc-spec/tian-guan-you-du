@@ -1,0 +1,37 @@
+{
+  "active_option_count": 44,
+  "all_hair_feature_combinations": 108,
+  "baseline_files_checked": 35,
+  "both_gender_independent_controls_verified": true,
+  "checks": 1126,
+  "expected_changed_count": 16.0,
+  "failures": [],
+  "female_hair_feature_combinations": 54,
+  "female_viewport_captured": true,
+  "gender_selection_memory_verified": true,
+  "installed_pngs_checked": 16,
+  "male_hair_feature_combinations": 54,
+  "male_viewport_captured": true,
+  "nose_lower_region_checks": [
+    {
+      "gender": "female",
+      "lower_changed_pixels": 0,
+      "preserved_from_y": 415,
+      "resource_path": "res://mods/appearance/ink_three_variants_20261004/female/nose/01.png",
+      "upper_visible_changed_pixels": 1590
+    },
+    {
+      "gender": "male",
+      "lower_changed_pixels": 0,
+      "preserved_from_y": 415,
+      "resource_path": "res://mods/appearance/ink_three_variants_20261004/male/nose/01.png",
+      "upper_visible_changed_pixels": 2898
+    }
+  ],
+  "pass": true,
+  "physical_png_count": 51,
+  "pixel_composites_verified": true,
+  "rear_pair_visibility_checks": 14,
+  "renderer_pair_checks": 14,
+  "visual_acceptance": "Runtime checks verify installation, preserved anatomy and independent composition, not artistic approval or neckline appearance."
+}

@@ -1,0 +1,50 @@
+{
+  "index": 1,
+  "status": "strict_geometry_candidate_awaiting_user_visual_review",
+  "snapshot_source": "res://mods/appearance/portrait_nasion_clothing_20261104_v4/installation/backup_before/male/clothing/01.png",
+  "snapshot_sha256": "d000653195a539310ff4d70856aaac5aa4cdf2af0bfbc4591c4ae2e1012dc89c",
+  "face_sha256": "0e2e751160bbfafefc0300df20e6ee5497945141f43b5672fa796159d0ad6639",
+  "rig_sha256": "45035a497fd9fcfadf90e1bc99cb3538ffc98060f5ffba199ef2ccd7ed5fe84c",
+  "output": "male/clothing/01.png",
+  "output_sha256": "790fe4b3f8497ab3ebb2492ae41ee66eef12e67742ae38270e95726f34a127dd",
+  "original_garment_frame": {
+    "scale": 1,
+    "rotation_degrees": 0,
+    "translation": [
+      0,
+      0
+    ],
+    "provenance": "Unchanged pre-edit snapshot body, outer collar and front V supply actual noncollinear preserved controls."
+  },
+  "ai_art_source": "res://mods/appearance/portrait_nasion_clothing_20261104_v4/source/clothing01_selected_raw.png",
+  "ai_art_sha256": "b86786b39ee5d3c556fd7bacf42ad13eb8b76e042fadb98cc070a8471b88671a",
+  "ai_art_raw_size": [
+    1740,
+    904
+  ],
+  "ai_art_uniform_scale": 0.14367816091954022,
+  "ai_art_reference_crop_origin": [
+    395,
+    500
+  ],
+  "ai_art_piece_translations": {
+    "left": [
+      1,
+      0
+    ],
+    "right": [
+      0,
+      0
+    ]
+  },
+  "operation": "Use retained native AI-painted pigment only in the two tiny missing connector supports. Preserve all original alpha>=230 RGBA. Diagonal tip-to-neck top selection, no full rolled-collar replacement, no source pixel warp and no synthetic texture.",
+  "changed_pixels": 501,
+  "changed_bbox_inclusive": [
+    433,
+    528,
+    600,
+    570
+  ],
+  "original_opaque_changed_pixels": 0,
+  "y_ge620_changed_pixels": 0
+}

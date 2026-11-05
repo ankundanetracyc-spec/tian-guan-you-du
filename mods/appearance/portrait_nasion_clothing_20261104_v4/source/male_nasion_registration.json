@@ -1,0 +1,52 @@
+{
+  "mode": "built-in image_gen and whole-layer registration",
+  "raw": "source\\raw\\male_nasion_01.png",
+  "raw_sha256": "429b287f488c415c3bd1ede15692c6096bce9a30faf3cce04b0b559f84bf8f70",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "uniform_scale": 0.7,
+  "left": 158,
+  "top": 102,
+  "chosen_opacity": 0.55,
+  "integration": "generated upper-nose shadow overlay composited over old nose; finite upper support tapers at y415; original bytes restored outside painted support",
+  "lower_nose_y_from": 415,
+  "records": [
+    {
+      "opacity": 0.45,
+      "changed_pixels": 2586,
+      "lower_changed_pixels": 0,
+      "changed_bbox": [
+        488,
+        348,
+        542,
+        410
+      ]
+    },
+    {
+      "opacity": 0.55,
+      "changed_pixels": 2898,
+      "lower_changed_pixels": 0,
+      "changed_bbox": [
+        488,
+        348,
+        543,
+        410
+      ]
+    },
+    {
+      "opacity": 0.65,
+      "changed_pixels": 2995,
+      "lower_changed_pixels": 0,
+      "changed_bbox": [
+        488,
+        348,
+        543,
+        410
+      ]
+    }
+  ],
+  "final_sha256": "dcb4d0113d8d77968c1458eda639311f9c6bb4b7bba32b85d4cf3e648863be11",
+  "full_three_point_2px_certification": false
+}

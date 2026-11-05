@@ -1,0 +1,15 @@
+{
+  "id": "02",
+  "tool": "built-in image_gen",
+  "stage": "native_material_variant_with_explicit_inner_lining_zones",
+  "selected": true,
+  "inputs": [
+    "source/clothing01_back_v2_band_registered.png",
+    "source/clothing02_palette_reference.png"
+  ],
+  "prompt": "Use case: precise-object-edit. FIRST image is the edit target: the registered PURE REAR COLLAR BAND on a1024x1536 transparent portrait canvas. SECOND image is only this garment's original collar COLOR/MATERIAL reference. Change only pigment and delicate existing fabric material to match warm ivory/off-white brocade lining across the ENTIRE BROAD NECK-FACING PANEL, with only a very thin dark blue-gray exterior cloth rim/piping. CRITICAL MATERIAL ZONES: the big continuous central face is INNER LINING, not outer robe fabric. Never dye the entire panel blue, gray or red. Restrict outer-robes color to the very thin perimeter and folded piping. Preserve image1's exact occupied size and xy position (approximately x400..635,y514..615), silhouette, arched top edge, all transparent margins, opacity, delicate fold shading, and same1024x1536 framing. No zoom, crop, enlargement, rotation, relocation or geometry change. Keep the entire hidden center solid fabric-filled with NO U-shaped neck hole. The opaque man's neck will later cover it; do not draw that person or any skin/head/neck/face/hair. Do not paint front lapels, torso, garment shoulders, background, glow, labels or text. Return only the small continuous rear collar on the same exact transparent canvas. New image will contribute RGB only within the unchanged first-image alpha support; preserve the geometric alignment.",
+  "raw": "source/clothing02_back_v2_palette_raw.png",
+  "output": "source/clothing02_back_v2_band_registered.png",
+  "alpha_policy": "Every alpha byte is preserved from the pure01 band (not the final rear01 composite).",
+  "geometry": "Shared master01 registration; no independent three-point fit is claimed."
+}

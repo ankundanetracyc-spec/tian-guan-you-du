@@ -1,0 +1,161 @@
+{
+  "method": "Reference-only luminance correlation after approximate paired-pupil whole-face alignment; visual comparison is required and no universal merge threshold asserted.",
+  "attachment_columns": [
+    {
+      "index": 1,
+      "offsetX": 0,
+      "width": 590,
+      "rgbDifferentChannels": 0
+    },
+    {
+      "index": 2,
+      "offsetX": 593,
+      "width": 589,
+      "rgbDifferentChannels": 0
+    },
+    {
+      "index": 3,
+      "offsetX": 1187,
+      "width": 587,
+      "rgbDifferentChannels": 0
+    }
+  ],
+  "transforms": [
+    {
+      "s": 1.0101786289485613,
+      "dx": 204.1524906124647,
+      "dy": 50.47312036185366,
+      "pupils": [
+        [
+          260.3765029778627,
+          324.57191819305547
+        ],
+        [
+          364.31851579720797,
+          324.4818410832372
+        ]
+      ]
+    },
+    {
+      "s": 1.000499169627508,
+      "dx": 215.46867425312956,
+      "dy": 49.420812240090754,
+      "pupils": [
+        [
+          248.55751907739958,
+          325.9663205003155
+        ],
+        [
+          353.5051324163413,
+          325.192055019503
+        ]
+      ]
+    },
+    {
+      "s": 0.9906711275749103,
+      "dx": 220.06925136343364,
+      "dy": 50.01428907451083,
+      "pupils": [
+        [
+          243.43637084691977,
+          325.31241737904287
+        ],
+        [
+          349.425126426213,
+          324.6590044719355
+        ]
+      ]
+    }
+  ],
+  "metrics": {
+    "eyebrows": {
+      "targetRoi": [
+        420,
+        336,
+        615,
+        364
+      ],
+      "pairs": {
+        "01_02": {
+          "luminanceCorrelation": 0.4535517474633658,
+          "meanAbsoluteLuminanceDifference": 35.190841090500676
+        },
+        "01_03": {
+          "luminanceCorrelation": 0.7382625113843612,
+          "meanAbsoluteLuminanceDifference": 24.205107671902518
+        },
+        "02_03": {
+          "luminanceCorrelation": 0.456551809992376,
+          "meanAbsoluteLuminanceDifference": 34.58535242183943
+        }
+      }
+    },
+    "eyes": {
+      "targetRoi": [
+        428,
+        363,
+        610,
+        393
+      ],
+      "pairs": {
+        "01_02": {
+          "luminanceCorrelation": 0.820031038923615,
+          "meanAbsoluteLuminanceDifference": 17.79430510868794
+        },
+        "01_03": {
+          "luminanceCorrelation": 0.8136096115407652,
+          "meanAbsoluteLuminanceDifference": 19.45245268019446
+        },
+        "02_03": {
+          "luminanceCorrelation": 0.8502817246572479,
+          "meanAbsoluteLuminanceDifference": 16.31417058501461
+        }
+      }
+    },
+    "nose": {
+      "targetRoi": [
+        491,
+        414,
+        544,
+        464
+      ],
+      "pairs": {
+        "01_02": {
+          "luminanceCorrelation": 0.7946678873439577,
+          "meanAbsoluteLuminanceDifference": 6.2376839491876925
+        },
+        "01_03": {
+          "luminanceCorrelation": 0.8280166626587305,
+          "meanAbsoluteLuminanceDifference": 5.9227081967767425
+        },
+        "02_03": {
+          "luminanceCorrelation": 0.909323163958379,
+          "meanAbsoluteLuminanceDifference": 4.012907081627853
+        }
+      }
+    },
+    "mouth": {
+      "targetRoi": [
+        477,
+        468,
+        559,
+        503
+      ],
+      "pairs": {
+        "01_02": {
+          "luminanceCorrelation": 0.9460939233438354,
+          "meanAbsoluteLuminanceDifference": 6.301813082240645
+        },
+        "01_03": {
+          "luminanceCorrelation": 0.8472150405006328,
+          "meanAbsoluteLuminanceDifference": 9.121259791259073
+        },
+        "02_03": {
+          "luminanceCorrelation": 0.8390509056168589,
+          "meanAbsoluteLuminanceDifference": 9.631073709424237
+        }
+      }
+    }
+  },
+  "existing_final_assets": "Existing final male assets are generated reference-derived sprites; current noses lack reference volume and must not be copied as matching originals."
+}

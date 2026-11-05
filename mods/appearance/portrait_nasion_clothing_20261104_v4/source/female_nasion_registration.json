@@ -1,0 +1,52 @@
+{
+  "gender": "female",
+  "part": "nose",
+  "tool": "built-in image_gen",
+  "raw": "source/female_nasion_raw.png",
+  "overlay": "source/female_nasion_overlay_registered.png",
+  "previous": "source/female_nasion_before_nose.png",
+  "final": "female/nose/01.png",
+  "raw_sha256": "88cf3a061ab981b5f08cd5e415d2be08564cb269a146e7f61cd4e78ebece3844",
+  "previous_sha256": "9a0ab7858d68e81fd0ee82cb0ef1301f2ee3d5b64e7bc6c8c8750dba4b181590",
+  "final_sha256": "ff4f943786aaa4a0befcd3505936d6c02bcd1ad4e85d4664d88fb4bdc9676dfc",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "source_roi": [
+    460,
+    370,
+    110,
+    90
+  ],
+  "uniform_scale": 0.7,
+  "source_to_canvas_translation": [
+    159,
+    100
+  ],
+  "cropped_roi_placement": [
+    481,
+    359
+  ],
+  "opacity": 0.45,
+  "support_roi": [
+    490,
+    356,
+    548,
+    415
+  ],
+  "edge_fade": "Smooth alpha-only ROI falloff; no generated pigment is altered, no synthetic stroke, no local warp.",
+  "changed_pixels": 1590,
+  "changed_bbox_inclusive": [
+    491,
+    363,
+    546,
+    411
+  ],
+  "lower_nose_y415_and_below_changed_pixels": 0,
+  "outside_actual_overlay_changed_pixels": 0,
+  "lower_nose_pixel_identical": true,
+  "original_nose_tip_alae_nostrils_preserved": true,
+  "visual_selection": "45% chosen over 65% and 85% to keep a subtle female eye-socket/nasion transition without a white bridge panel or strong frown.",
+  "full_three_point_2px_certification": false
+}

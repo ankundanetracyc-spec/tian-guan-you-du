@@ -1,0 +1,30 @@
+{
+  "index": 2,
+  "part": "pure_back_band",
+  "tool": "built-in image_gen material variant",
+  "master_pure_band": "source/clothing01_back_v2_band_registered.png",
+  "master_pure_band_sha256": "588bd0bef686ea0c9db96be22f0b40dc22f5a320c7ef5b47590e489618f99902",
+  "native_material_source": "source/clothing02_back_v2_palette_raw.png",
+  "native_material_sha256": "155aef80b65c88ac15177b900bc2d321531cd98a85d4f1d6fa0552f737d6bcd4",
+  "material_reference": "source/clothing02_palette_reference.png",
+  "material_reference_sha256": "c09ef5098f0f98518cb502b9c8bf987ebad18cfb39e17d540b4c0c7aedb2ea83",
+  "prompt": "source/clothing02_back_v2_palette_refine_prompt.json",
+  "output": "source/clothing02_back_v2_band_registered.png",
+  "output_sha256": "e52a5f0fca663fc338e45017e95d0eb75bfd027f089096d77e900203d2ab789a",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "output_alpha_changed_pixels": 0,
+  "direct_native_rgb_pixels": 18418,
+  "edge_native_rgb_continued_pixels": 104,
+  "maximum_edge_rgb_sample_distance_px": 31.827660925679098,
+  "very_faint_alpha_fringe_continuations_beyond8px": 3,
+  "edge_color_policy": "For master-supported edge pixels whose AI source had alpha<128, extend neighboring native cloth RGB only. Visible support uses search radius<=8; a few preexisting master alpha<40 specks may use radius<=64 to avoid transparent background RGB. All master alpha bytes remain unchanged; no pixels move and no fabric texture is synthesized.",
+  "color_calibration": "None; RGB comes directly from selected native AI material or its edge-color continuation.",
+  "shared_geometry": "source/clothing01_back_v2_registration.json",
+  "shared_geometry_maximum_residual_px": 0.819902413467133,
+  "independent_variant_three_point_fit": false,
+  "local_warp": false,
+  "final_rear01_alpha_not_used": true
+}

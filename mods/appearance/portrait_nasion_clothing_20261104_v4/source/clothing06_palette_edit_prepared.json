@@ -1,0 +1,72 @@
+{
+  "id": "06",
+  "name": "玉虚·内门常服",
+  "status": "prepared_waiting_for_master01_pair_selection_no_generation",
+  "tool": "built-in image_gen",
+  "material_reference": "source/clothing06_palette_reference.png",
+  "material_snapshot": "installation/backup_before/male/clothing/06.png",
+  "material_snapshot_sha256": "462d1aae705eaca1ba42b3bc4f6e5f73fb9df11d8f9f73e3928fbc9680fe1ea2",
+  "material_reference_sha256": "327dde7089cf0287789a1db434b615c1dd128c55ca734e3f70b00495a90e0b3c",
+  "palette_samples": [
+    {
+      "name": "left_inner_lining",
+      "source_roi": [
+        424,
+        550,
+        12,
+        20
+      ],
+      "alpha_minimum": 230,
+      "sample_pixels": 240,
+      "median_rgb": [
+        227,
+        219,
+        211
+      ],
+      "median_hex": "#e3dbd3",
+      "not_a_global_flat_fill": true
+    },
+    {
+      "name": "right_inner_lining",
+      "source_roi": [
+        601,
+        550,
+        12,
+        20
+      ],
+      "alpha_minimum": 230,
+      "sample_pixels": 240,
+      "median_rgb": [
+        234,
+        226,
+        219
+      ],
+      "median_hex": "#eae2db",
+      "not_a_global_flat_fill": true
+    },
+    {
+      "name": "outer_collar_fabric",
+      "source_roi": [
+        403,
+        575,
+        8,
+        8
+      ],
+      "alpha_minimum": 230,
+      "sample_pixels": 64,
+      "median_rgb": [
+        149,
+        159,
+        157
+      ],
+      "median_hex": "#959f9d",
+      "not_a_global_flat_fill": true
+    }
+  ],
+  "master_geometry": "male/clothing_back/01.png once explicitly selected",
+  "master_registration": "source/clothing01_back_v2_registration.json",
+  "geometry_policy": "Share only explicitly selected master01 geometry/alpha and its existing measured similarity registration. Do not claim a new 3-point fit for a color variant. Freeze all alpha bytes and canvas coordinates to that master.",
+  "color_policy": "Use native AI color/material RGB; map RGB back to the unchanged registered master alpha only after examining native alignment. Never generate alpha or replace it with palette output.",
+  "front_split_policy": "Pending root/audit master01 pairing decision. Proposed original upper y<550 moves to rear, original y>=550 front/body remains identity. Not yet applied.",
+  "prompt": "Use case: precise-object-edit. FIRST image is the production master REAR COLLAR on an exact1024x1536 transparent canvas. SECOND image is only the material/pigment reference from 玉虚·内门常服 existing garment. Make a COLOR AND FABRIC-MATERIAL VARIANT OF IMAGE1 ONLY. Preserve the first image exact canvas, occupied position, shape, folded rim, continuous filled hidden center, proportions, shadows, highlights directions, outer contour and opacity. Do not enlarge, reposition, rescale, recrop, rotate, sharpen, thicken, redraw geometry or cut a neck hole. Match image2 robe outer textile hue and its inner collar lining/piping hue and subtle woven surface texture. Ivory facing remains fabric, not skin; preserve realistic painterly fold shading rather than replacing with flat color. No redrawing of a full garment, no front lapels, shoulders, head, neck, face, skin or hair. The rear collar is one continuous solid fabric support behind an unchanged neck and must keep its entire center painted. Everything outside the precise existing cloth remains actually transparent. No background glow, text, label, guide marks, extra pattern, bright stripe or plastic sheen. The result will contribute RGB only within the fixed alpha of master1; keep palette aligned in the exact same common canvas."
+}

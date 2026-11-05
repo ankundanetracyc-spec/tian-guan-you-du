@@ -1,0 +1,178 @@
+{
+  "rig_id": "our_selected_ink_portrait_rig_20261003_v1",
+  "gender": "male",
+  "family": "our_selected_ink_male_20261003_v1",
+  "tool": "built-in image_gen",
+  "all_new_painting": true,
+  "rejected_male_assets_used_as_source": false,
+  "registration": "Native redraw against placed original guide, final identity transform and original full canvas margins retained",
+  "records": [
+    {
+      "id": "01",
+      "source": "source/front_raw/01_v2.png",
+      "output": "male/hair_front/01.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "transform": {
+        "scale": 1,
+        "rotation_degrees": 0,
+        "translation": [
+          0,
+          0
+        ]
+      },
+      "measurement": {
+        "bbox_inclusive": [
+          284,
+          154,
+          735,
+          1156
+        ],
+        "pixels": 128274,
+        "skin_color_probe_pixels": 2,
+        "head_bbox_to_y475": [
+          345,
+          154,
+          683,
+          474
+        ],
+        "center_axis_inner_hairline_y": 282
+      },
+      "geometry_reference": "source/reference_placed_01.png",
+      "native_generated_alpha_preserved": true,
+      "full_three_point_2px_certification": false,
+      "sha256": "617076de25b090b322619d1f687471c99bae1b2abb5a6be224be9646a14b9024"
+    },
+    {
+      "id": "02",
+      "source": "source/front_raw/02_v3.png",
+      "output": "male/hair_front/02.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "transform": {
+        "scale": 1,
+        "rotation_degrees": 0,
+        "translation": [
+          0,
+          0
+        ]
+      },
+      "measurement": {
+        "bbox_inclusive": [
+          344,
+          143,
+          685,
+          1070
+        ],
+        "pixels": 86259,
+        "skin_color_probe_pixels": 3,
+        "head_bbox_to_y475": [
+          344,
+          143,
+          685,
+          474
+        ],
+        "center_axis_inner_hairline_y": 268
+      },
+      "geometry_reference": "source/reference_placed_02.png",
+      "native_generated_alpha_preserved": true,
+      "full_three_point_2px_certification": false,
+      "sha256": "27df429df1915c803143184b9ac46db2fda71ed811d5e30eff9c48413e00ea5e"
+    },
+    {
+      "id": "03",
+      "source": "source/front_raw/03_v2.png",
+      "output": "male/hair_front/03.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "transform": {
+        "scale": 1,
+        "rotation_degrees": 0,
+        "translation": [
+          0,
+          0
+        ]
+      },
+      "measurement": {
+        "bbox_inclusive": [
+          315,
+          140,
+          742,
+          1056
+        ],
+        "pixels": 131878,
+        "skin_color_probe_pixels": 106,
+        "head_bbox_to_y475": [
+          330,
+          140,
+          698,
+          474
+        ],
+        "center_axis_inner_hairline_y": 278
+      },
+      "geometry_reference": "source/reference_placed_03.png",
+      "native_generated_alpha_preserved": true,
+      "full_three_point_2px_certification": false,
+      "sha256": "e16a057b35dba6fa878312d933ce0df774155ec76972636dfd9696dc76241749"
+    }
+  ],
+  "female_active_scale_reference": [
+    {
+      "id": "01",
+      "bbox_inclusive": [
+        351,
+        146,
+        683,
+        880
+      ],
+      "pixels": 67089,
+      "skin_color_probe_pixels": 0,
+      "head_bbox_to_y475": [
+        351,
+        146,
+        683,
+        474
+      ]
+    },
+    {
+      "id": "02",
+      "bbox_inclusive": [
+        340,
+        149,
+        684,
+        738
+      ],
+      "pixels": 57612,
+      "skin_color_probe_pixels": 35,
+      "head_bbox_to_y475": [
+        340,
+        149,
+        684,
+        474
+      ]
+    },
+    {
+      "id": "03",
+      "bbox_inclusive": [
+        336,
+        105,
+        688,
+        961
+      ],
+      "pixels": 91153,
+      "skin_color_probe_pixels": 214,
+      "head_bbox_to_y475": [
+        336,
+        105,
+        688,
+        474
+      ]
+    }
+  ]
+}

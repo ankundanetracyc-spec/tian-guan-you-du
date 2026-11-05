@@ -1,0 +1,155 @@
+{
+  "status": "readonly_interface_proposal_not_implemented_or_approved",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "face_contour_threshold": 230,
+  "controls": [
+    {
+      "id": "left_top_neck_support",
+      "measured_full_canvas_px": [
+        442,
+        530
+      ],
+      "source": "active male/face_shape/01.png alpha>=230 silhouette",
+      "enlarged_reference_crop_px": [
+        188,
+        120
+      ],
+      "role": "neck-side support contour; candidate collar must fit this frozen support, not redefine it"
+    },
+    {
+      "id": "right_top_neck_support",
+      "measured_full_canvas_px": [
+        589,
+        530
+      ],
+      "source": "active male/face_shape/01.png alpha>=230 silhouette",
+      "enlarged_reference_crop_px": [
+        776,
+        120
+      ],
+      "role": "neck-side support contour; candidate collar must fit this frozen support, not redefine it"
+    },
+    {
+      "id": "left_mid_neck_support",
+      "measured_full_canvas_px": [
+        441,
+        550
+      ],
+      "source": "active male/face_shape/01.png alpha>=230 silhouette",
+      "enlarged_reference_crop_px": [
+        184,
+        200
+      ],
+      "role": "neck-side support contour; candidate collar must fit this frozen support, not redefine it"
+    },
+    {
+      "id": "right_mid_neck_support",
+      "measured_full_canvas_px": [
+        589,
+        550
+      ],
+      "source": "active male/face_shape/01.png alpha>=230 silhouette",
+      "enlarged_reference_crop_px": [
+        776,
+        200
+      ],
+      "role": "neck-side support contour; candidate collar must fit this frozen support, not redefine it"
+    },
+    {
+      "id": "left_lower_neck_support_hidden_by_front_cloth",
+      "measured_full_canvas_px": [
+        436,
+        580
+      ],
+      "source": "active male/face_shape/01.png alpha>=230 silhouette",
+      "enlarged_reference_crop_px": [
+        164,
+        320
+      ],
+      "role": "hidden skin support contour; not visible front V seam"
+    },
+    {
+      "id": "right_lower_neck_support_hidden_by_front_cloth",
+      "measured_full_canvas_px": [
+        595,
+        580
+      ],
+      "source": "active male/face_shape/01.png alpha>=230 silhouette",
+      "enlarged_reference_crop_px": [
+        800,
+        320
+      ],
+      "role": "hidden skin support contour; not visible front V seam"
+    }
+  ],
+  "rows_source": "clothing_strict_neck_rows.json",
+  "original_clothing01_front_seam_controls": [
+    {
+      "side": "left",
+      "full_canvas_px": [
+        452,
+        580
+      ]
+    },
+    {
+      "side": "right",
+      "full_canvas_px": [
+        588,
+        580
+      ]
+    },
+    {
+      "side": "left",
+      "full_canvas_px": [
+        465,
+        600
+      ]
+    },
+    {
+      "side": "right",
+      "full_canvas_px": [
+        578,
+        600
+      ]
+    }
+  ],
+  "critical_distinction": "The lower skin silhouette is hidden behind front clothes. Do not move the visible front collar V edge to the hidden face-outline coordinate merely to claim a zero seam residual.",
+  "coordinate_frames": {
+    "full_canvas_origin": [
+      0,
+      0
+    ],
+    "reference_crop_origin_full_canvas": [
+      395,
+      500
+    ],
+    "reference_crop_size": [
+      250,
+      130
+    ],
+    "reference_crop_enlargement": 4,
+    "reference_conversion": "X=395+u/4; Y=500+v/4",
+    "generated_crop_raw_size": [
+      1740,
+      904
+    ],
+    "uniform_scale": 0.14367816091954022,
+    "note": "A crop frame is only a storage/placement frame, never a semantic anchor. Annotate actual source-native controls separately; never backfill source control coordinates from target/inverse affine to manufacture zero residual."
+  },
+  "rejected_method": [
+    "alpha>=40 gap=0 without a frozen garment contour contract",
+    "clipping newly generated cloth against face silhouette to conceal unsupported source geometry",
+    "using crop center or transparent alpha bounding-box center as a collar landmark"
+  ],
+  "proposed_verification": [
+    "Freeze current face PNG hash and the full y510..600 alpha230 contour before generating more art.",
+    "Freeze per-garment top-tip/outer-curve anchors and lower front-V transition from the existing clothing, separately from shared neck support controls.",
+    "Annotate semantic source-native controls for each generated layer, minimum three non-collinear controls across both sides. Fit only one similarity transform; refuse maximum residual >2px.",
+    "Validate whole contact curves and occlusion in final composition: alpha230 core overlap of 1-2px at visible joins, no open side slit, no excessive skin coverage and no displaced collar top/outer shoulder/V.",
+    "If using a full rear collar support, render it before face, with front clothing after face. Its hidden connecting span may cross behind neck, but must never appear as a front horizontal band.",
+    "Hash-bound registration reports must refer to the exact final PNG; pixel-composite/runtime equality alone does not certify anchor fit or visual acceptance."
+  ]
+}
