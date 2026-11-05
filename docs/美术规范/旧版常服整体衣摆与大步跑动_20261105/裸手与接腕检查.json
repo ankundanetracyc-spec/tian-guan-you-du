@@ -1,0 +1,107 @@
+{
+	"checks": 8363,
+	"failures": [],
+	"hand_layer": {
+		"assets": {
+			"far_fist": {
+				"native_size": [
+					1254,
+					1254
+				],
+				"path": "res://art/approved_outfit_hands_20261105/far_fist.png",
+				"sha256": "e3d56a1b2a6efd0a757b8fc7447b54e6cb4a6be62868235972d864557a3bcac5"
+			},
+			"far_open": {
+				"native_size": [
+					1254,
+					1254
+				],
+				"path": "res://art/approved_outfit_hands_20261105/far_open.png",
+				"sha256": "a4d8ea601f8029117eb2495cf24adfa55a38a7cf61a7c0b0566060c575f34058"
+			},
+			"near_fist": {
+				"native_size": [
+					1254,
+					1254
+				],
+				"path": "res://art/approved_outfit_hands_20261105/near_fist.png",
+				"sha256": "7e90a1a8c4c8965f7873a55e2cf2f6944118f3d462bb67c3c6c307acf1ba6af7"
+			},
+			"near_grip": {
+				"native_size": [
+					1254,
+					1254
+				],
+				"path": "res://art/approved_outfit_hands_20261105/near_grip.png",
+				"sha256": "c4f439ce4fdd5707bd97ecc307b7d1d3a17eb126ee51d1f99ee15d03966b1d5a"
+			},
+			"near_open": {
+				"native_size": [
+					1254,
+					1254
+				],
+				"path": "res://art/approved_outfit_hands_20261105/near_open.png",
+				"sha256": "c878ce60ddfb77994a55e91b2657c8b018b6efc88743dbdd67c571dc16b91bb3"
+			}
+		},
+		"clothing": "original sleeve/cuff pixels; old skin only erased beyond measured oblique cuff",
+		"distinct_near_far_images": true,
+		"errors": [],
+		"hands": {
+			"far": {
+				"anatomy": "left palm facing camera",
+				"asset": "far_open",
+				"registration": {
+					"cuff_exit_source_px": [
+						627.299987792969,
+						458.100006103516
+					],
+					"palm_width_px": 380.0,
+					"rotation": 1.01408501068619,
+					"scale": 0.00973684210526316,
+					"target_palm_width": 3.7,
+					"wrist_px": [
+						621.0,
+						1066.0
+					]
+				},
+				"rigid_wrist_mount": true,
+				"style": "open",
+				"visible": false
+			},
+			"near": {
+				"anatomy": "right hand back facing camera",
+				"asset": "near_open",
+				"registration": {
+					"cuff_exit_source_px": [
+						627.299987792969,
+						458.100006103516
+					],
+					"palm_width_px": 400.0,
+					"rotation": 1.01408501068619,
+					"scale": 0.00925,
+					"target_palm_width": 3.7,
+					"wrist_px": [
+						631.0,
+						1086.0
+					]
+				},
+				"rigid_wrist_mount": true,
+				"style": "open",
+				"visible": false
+			}
+		},
+		"loaded": true,
+		"mount": "fixed hand Bone2D; one uniform image scale per pose; no finger warping",
+		"pose_override": "auto",
+		"sword_preserved": "original v21 texture and legacy shader boundary; no generated replacement",
+		"sword_source_sha256": "dcc95466b3b9430131d73a4b2d99f89c1e5a8c64a25fd42f9c54bc3b37302721"
+	},
+	"maximum_palm_width_error": 0.0000112533569334161,
+	"maximum_rigid_shape_error": 0.0000160503695951775,
+	"maximum_weapon_socket_error": 0.0,
+	"maximum_wrist_drift": 0.0000341196900990326,
+	"passed": true,
+	"poses": 1440,
+	"scope": "independent near/far skin, fixed cuff wrist, fixed physical palm width, rigid distal images through all sampled motions and facings; exact original sword-source checksum"
+}

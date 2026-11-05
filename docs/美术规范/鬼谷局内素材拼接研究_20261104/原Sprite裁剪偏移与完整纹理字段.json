@@ -1,0 +1,712 @@
+{
+  "scope": "Only seven known male101 Sprite objects and their selected Texture2D stream ranges; original installation unchanged",
+  "source": {
+    "path": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\guigubahuang_Data\\resources.assets",
+    "sizeBytes": 1764255120,
+    "sha256": "0d1e14ae4a2719b91055e201fadf294b600f730e5bfbba14f4806b7619ec3ced",
+    "unityVersion": "2020.3f1c1"
+  },
+  "coordinateNote": "rdTextureRect and explicit offset fields are separate original serialized fields. No equality or trim meaning is inferred from matching numbers.",
+  "records": [
+    {
+      "spriteId": 65806,
+      "spriteName": "101",
+      "texturePathId": 13071,
+      "textureName": "101",
+      "fullTextureSize": [
+        24,
+        24
+      ],
+      "spriteRect": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 24.0,
+        "height": 24.0
+      },
+      "spritePivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "pixelsPerUnit": 100.0,
+      "rdTextureRect": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 24.0,
+        "height": 24.0
+      },
+      "rdFields": {
+        "textureRectOffset": {
+          "present": true,
+          "value": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        },
+        "atlasRectOffset": {
+          "present": true,
+          "value": {
+            "x": -1.0,
+            "y": -1.0
+          }
+        },
+        "settingsRaw": {
+          "present": true,
+          "value": 64
+        },
+        "packingRotation": {
+          "present": false,
+          "value": null
+        },
+        "uvTransform": {
+          "present": true,
+          "value": {
+            "x": 100.0,
+            "y": 12.0,
+            "z": 100.0,
+            "w": 12.0
+          }
+        }
+      },
+      "spriteFields": {
+        "m_Offset": {
+          "present": true,
+          "value": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        },
+        "m_Border": {
+          "present": true,
+          "value": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          }
+        },
+        "m_IsPolygon": {
+          "present": true,
+          "value": false
+        }
+      },
+      "fullTexturePng": "docs/美术规范/鬼谷局内素材拼接研究_20261104/source_full_textures/sprite_65806_full_texture.png",
+      "fullTexturePngSha256": "6c90c8972e56e871cb537d94117467abcd32709d835d3a51549bda4fb4b2e7ca",
+      "decodedSettings": {
+        "method": "UnityPy.export.SpriteHelper.SpriteSettings bit decoding of the exact serialized settingsRaw",
+        "packed": false,
+        "packingMode": {
+          "value": 0,
+          "name": "kSPMTight"
+        },
+        "packingRotation": {
+          "value": 0,
+          "name": "kSPRNone"
+        },
+        "meshType": {
+          "value": 1,
+          "name": "kSpriteMeshTypeTight"
+        }
+      }
+    },
+    {
+      "spriteId": 79543,
+      "spriteName": "youbi",
+      "texturePathId": 25132,
+      "textureName": "youbi",
+      "fullTextureSize": [
+        60,
+        60
+      ],
+      "spriteRect": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 60.0,
+        "height": 60.0
+      },
+      "spritePivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "pixelsPerUnit": 100.0,
+      "rdTextureRect": {
+        "x": 21.026750564575195,
+        "y": 11.076120376586914,
+        "width": 15.897127151489258,
+        "height": 43.847755432128906
+      },
+      "rdFields": {
+        "textureRectOffset": {
+          "present": true,
+          "value": {
+            "x": 21.026750564575195,
+            "y": 11.076120376586914
+          }
+        },
+        "atlasRectOffset": {
+          "present": true,
+          "value": {
+            "x": -1.0,
+            "y": -1.0
+          }
+        },
+        "settingsRaw": {
+          "present": true,
+          "value": 64
+        },
+        "packingRotation": {
+          "present": false,
+          "value": null
+        },
+        "uvTransform": {
+          "present": true,
+          "value": {
+            "x": 100.0,
+            "y": 30.0,
+            "z": 100.0,
+            "w": 30.0
+          }
+        }
+      },
+      "spriteFields": {
+        "m_Offset": {
+          "present": true,
+          "value": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        },
+        "m_Border": {
+          "present": true,
+          "value": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          }
+        },
+        "m_IsPolygon": {
+          "present": true,
+          "value": false
+        }
+      },
+      "fullTexturePng": "docs/美术规范/鬼谷局内素材拼接研究_20261104/source_full_textures/sprite_79543_full_texture.png",
+      "fullTexturePngSha256": "891d33d2db86eed2a2960acb362d1e88b64fa574e76fb3036d35c9cb04c1f77b",
+      "decodedSettings": {
+        "method": "UnityPy.export.SpriteHelper.SpriteSettings bit decoding of the exact serialized settingsRaw",
+        "packed": false,
+        "packingMode": {
+          "value": 0,
+          "name": "kSPMTight"
+        },
+        "packingRotation": {
+          "value": 0,
+          "name": "kSPRNone"
+        },
+        "meshType": {
+          "value": 1,
+          "name": "kSpriteMeshTypeTight"
+        }
+      }
+    },
+    {
+      "spriteId": 84807,
+      "spriteName": "zuobi",
+      "texturePathId": 29810,
+      "textureName": "zuobi",
+      "fullTextureSize": [
+        60,
+        60
+      ],
+      "spriteRect": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 60.0,
+        "height": 60.0
+      },
+      "spritePivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "pixelsPerUnit": 100.0,
+      "rdTextureRect": {
+        "x": 20.026750564575195,
+        "y": 9.026750564575195,
+        "width": 20.897127151489258,
+        "height": 42.93034362792969
+      },
+      "rdFields": {
+        "textureRectOffset": {
+          "present": true,
+          "value": {
+            "x": 20.026750564575195,
+            "y": 9.026750564575195
+          }
+        },
+        "atlasRectOffset": {
+          "present": true,
+          "value": {
+            "x": -1.0,
+            "y": -1.0
+          }
+        },
+        "settingsRaw": {
+          "present": true,
+          "value": 64
+        },
+        "packingRotation": {
+          "present": false,
+          "value": null
+        },
+        "uvTransform": {
+          "present": true,
+          "value": {
+            "x": 100.0,
+            "y": 30.0,
+            "z": 100.0,
+            "w": 30.0
+          }
+        }
+      },
+      "spriteFields": {
+        "m_Offset": {
+          "present": true,
+          "value": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        },
+        "m_Border": {
+          "present": true,
+          "value": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          }
+        },
+        "m_IsPolygon": {
+          "present": true,
+          "value": false
+        }
+      },
+      "fullTexturePng": "docs/美术规范/鬼谷局内素材拼接研究_20261104/source_full_textures/sprite_84807_full_texture.png",
+      "fullTexturePngSha256": "75ff211cac225c58ad36932fead6db7615c783a5eec23be79b190812026c034e",
+      "decodedSettings": {
+        "method": "UnityPy.export.SpriteHelper.SpriteSettings bit decoding of the exact serialized settingsRaw",
+        "packed": false,
+        "packingMode": {
+          "value": 0,
+          "name": "kSPMTight"
+        },
+        "packingRotation": {
+          "value": 0,
+          "name": "kSPRNone"
+        },
+        "meshType": {
+          "value": 1,
+          "name": "kSpriteMeshTypeTight"
+        }
+      }
+    },
+    {
+      "spriteId": 85649,
+      "spriteName": "yifu",
+      "texturePathId": 30565,
+      "textureName": "yifu",
+      "fullTextureSize": [
+        60,
+        100
+      ],
+      "spriteRect": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 60.0,
+        "height": 100.0
+      },
+      "spritePivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "pixelsPerUnit": 100.0,
+      "rdTextureRect": {
+        "x": 10.02226734161377,
+        "y": 0.0,
+        "width": 41.94144821166992,
+        "height": 94.97325134277344
+      },
+      "rdFields": {
+        "textureRectOffset": {
+          "present": true,
+          "value": {
+            "x": 10.02226734161377,
+            "y": 0.0
+          }
+        },
+        "atlasRectOffset": {
+          "present": true,
+          "value": {
+            "x": -1.0,
+            "y": -1.0
+          }
+        },
+        "settingsRaw": {
+          "present": true,
+          "value": 64
+        },
+        "packingRotation": {
+          "present": false,
+          "value": null
+        },
+        "uvTransform": {
+          "present": true,
+          "value": {
+            "x": 100.0,
+            "y": 30.0,
+            "z": 100.0,
+            "w": 50.0
+          }
+        }
+      },
+      "spriteFields": {
+        "m_Offset": {
+          "present": true,
+          "value": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        },
+        "m_Border": {
+          "present": true,
+          "value": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          }
+        },
+        "m_IsPolygon": {
+          "present": true,
+          "value": false
+        }
+      },
+      "fullTexturePng": "docs/美术规范/鬼谷局内素材拼接研究_20261104/source_full_textures/sprite_85649_full_texture.png",
+      "fullTexturePngSha256": "71037ae43cdf88793fde345f7090436f7a1f36e85b950903045ff02ed3ff9871",
+      "decodedSettings": {
+        "method": "UnityPy.export.SpriteHelper.SpriteSettings bit decoding of the exact serialized settingsRaw",
+        "packed": false,
+        "packingMode": {
+          "value": 0,
+          "name": "kSPMTight"
+        },
+        "packingRotation": {
+          "value": 0,
+          "name": "kSPRNone"
+        },
+        "meshType": {
+          "value": 1,
+          "name": "kSpriteMeshTypeTight"
+        }
+      }
+    },
+    {
+      "spriteId": 87557,
+      "spriteName": "tui",
+      "texturePathId": 32290,
+      "textureName": "tui",
+      "fullTextureSize": [
+        50,
+        80
+      ],
+      "spriteRect": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 50.0,
+        "height": 80.0
+      },
+      "spritePivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "pixelsPerUnit": 100.0,
+      "rdTextureRect": {
+        "x": 13.026750564575195,
+        "y": 6.04290771484375,
+        "width": 23.897127151489258,
+        "height": 67.88097381591797
+      },
+      "rdFields": {
+        "textureRectOffset": {
+          "present": true,
+          "value": {
+            "x": 13.026750564575195,
+            "y": 6.04290771484375
+          }
+        },
+        "atlasRectOffset": {
+          "present": true,
+          "value": {
+            "x": -1.0,
+            "y": -1.0
+          }
+        },
+        "settingsRaw": {
+          "present": true,
+          "value": 64
+        },
+        "packingRotation": {
+          "present": false,
+          "value": null
+        },
+        "uvTransform": {
+          "present": true,
+          "value": {
+            "x": 100.0,
+            "y": 25.0,
+            "z": 100.0,
+            "w": 40.0
+          }
+        }
+      },
+      "spriteFields": {
+        "m_Offset": {
+          "present": true,
+          "value": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        },
+        "m_Border": {
+          "present": true,
+          "value": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          }
+        },
+        "m_IsPolygon": {
+          "present": true,
+          "value": false
+        }
+      },
+      "fullTexturePng": "docs/美术规范/鬼谷局内素材拼接研究_20261104/source_full_textures/sprite_87557_full_texture.png",
+      "fullTexturePngSha256": "49de79f21a7ab9d9345b0c6afce390f3c11ddf8a110ba70abec1d2acdd4b5d89",
+      "decodedSettings": {
+        "method": "UnityPy.export.SpriteHelper.SpriteSettings bit decoding of the exact serialized settingsRaw",
+        "packed": false,
+        "packingMode": {
+          "value": 0,
+          "name": "kSPMTight"
+        },
+        "packingRotation": {
+          "value": 0,
+          "name": "kSPRNone"
+        },
+        "meshType": {
+          "value": 1,
+          "name": "kSpriteMeshTypeTight"
+        }
+      }
+    },
+    {
+      "spriteId": 87679,
+      "spriteName": "101",
+      "texturePathId": 32398,
+      "textureName": "101",
+      "fullTextureSize": [
+        21,
+        56
+      ],
+      "spriteRect": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 21.0,
+        "height": 56.0
+      },
+      "spritePivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "pixelsPerUnit": 100.0,
+      "rdTextureRect": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 21.0,
+        "height": 56.0
+      },
+      "rdFields": {
+        "textureRectOffset": {
+          "present": true,
+          "value": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        },
+        "atlasRectOffset": {
+          "present": true,
+          "value": {
+            "x": -1.0,
+            "y": -1.0
+          }
+        },
+        "settingsRaw": {
+          "present": true,
+          "value": 64
+        },
+        "packingRotation": {
+          "present": false,
+          "value": null
+        },
+        "uvTransform": {
+          "present": true,
+          "value": {
+            "x": 100.0,
+            "y": 10.5,
+            "z": 100.0,
+            "w": 28.0
+          }
+        }
+      },
+      "spriteFields": {
+        "m_Offset": {
+          "present": true,
+          "value": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        },
+        "m_Border": {
+          "present": true,
+          "value": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          }
+        },
+        "m_IsPolygon": {
+          "present": true,
+          "value": false
+        }
+      },
+      "fullTexturePng": "docs/美术规范/鬼谷局内素材拼接研究_20261104/source_full_textures/sprite_87679_full_texture.png",
+      "fullTexturePngSha256": "18a113928aa47fcc84b6a66a6ccf835b8b186ceffa39d25040147174c9e1f433",
+      "decodedSettings": {
+        "method": "UnityPy.export.SpriteHelper.SpriteSettings bit decoding of the exact serialized settingsRaw",
+        "packed": false,
+        "packingMode": {
+          "value": 0,
+          "name": "kSPMTight"
+        },
+        "packingRotation": {
+          "value": 0,
+          "name": "kSPRNone"
+        },
+        "meshType": {
+          "value": 1,
+          "name": "kSpriteMeshTypeTight"
+        }
+      }
+    },
+    {
+      "spriteId": 60765,
+      "spriteName": "yinying",
+      "texturePathId": 8625,
+      "textureName": "yinying",
+      "fullTextureSize": [
+        200,
+        100
+      ],
+      "spriteRect": {
+        "x": 0.0,
+        "y": 0.0,
+        "width": 200.0,
+        "height": 100.0
+      },
+      "spritePivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "pixelsPerUnit": 100.0,
+      "rdTextureRect": {
+        "x": 5.051316738128662,
+        "y": 0.0,
+        "width": 188.87255859375,
+        "height": 100.0
+      },
+      "rdFields": {
+        "textureRectOffset": {
+          "present": true,
+          "value": {
+            "x": 5.051316738128662,
+            "y": 0.0
+          }
+        },
+        "atlasRectOffset": {
+          "present": true,
+          "value": {
+            "x": -1.0,
+            "y": -1.0
+          }
+        },
+        "settingsRaw": {
+          "present": true,
+          "value": 64
+        },
+        "packingRotation": {
+          "present": false,
+          "value": null
+        },
+        "uvTransform": {
+          "present": true,
+          "value": {
+            "x": 100.0,
+            "y": 100.0,
+            "z": 100.0,
+            "w": 50.0
+          }
+        }
+      },
+      "spriteFields": {
+        "m_Offset": {
+          "present": true,
+          "value": {
+            "x": 0.0,
+            "y": 0.0
+          }
+        },
+        "m_Border": {
+          "present": true,
+          "value": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 0.0
+          }
+        },
+        "m_IsPolygon": {
+          "present": true,
+          "value": false
+        }
+      },
+      "fullTexturePng": "docs/美术规范/鬼谷局内素材拼接研究_20261104/source_full_textures/sprite_60765_full_texture.png",
+      "fullTexturePngSha256": "440ce453d07ebafb0207280b1dfafc04a6ede6d61ca09959d1c9dabaee2fa4cb",
+      "decodedSettings": {
+        "method": "UnityPy.export.SpriteHelper.SpriteSettings bit decoding of the exact serialized settingsRaw",
+        "packed": false,
+        "packingMode": {
+          "value": 0,
+          "name": "kSPMTight"
+        },
+        "packingRotation": {
+          "value": 0,
+          "name": "kSPRNone"
+        },
+        "meshType": {
+          "value": 1,
+          "name": "kSpriteMeshTypeTight"
+        }
+      }
+    }
+  ]
+}

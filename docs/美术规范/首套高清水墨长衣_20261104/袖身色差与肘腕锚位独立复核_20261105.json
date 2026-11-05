@@ -1,0 +1,373 @@
+{
+  "schema_version": 1,
+  "inspected_at": "2026-11-05T01:46:52.040+08:00",
+  "status": "只读独立色彩与肘腕纹理复核；未修改PNG或skin",
+  "roi_samples": {
+    "body": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\body.png",
+      "png_sha256": "9a87016e7b3aaf208d369fd7033cb0fa62f31ec8690cb2727d050120099a3109",
+      "actual_size": [
+        971,
+        1620
+      ],
+      "roi_px": [
+        445,
+        250,
+        475,
+        290
+      ],
+      "roi_normalized": [
+        0.45829042224510813,
+        0.15432098765432098,
+        0.48918640576725025,
+        0.17901234567901234
+      ],
+      "valid_opaque_pixel_count": 1200,
+      "alpha_threshold": 250,
+      "rgb_median": [
+        247.0,
+        237.0,
+        229.0
+      ],
+      "rgb_mean": [
+        246.505,
+        237.4075,
+        228.93166666666667
+      ],
+      "lab_D65_from_median_rgb": [
+        94.31254184148787,
+        2.0124756239888186,
+        5.06786088236475
+      ],
+      "roi_definition": "目视选取避开青灰云纹、半透明边和显著暗褶的净米白亮部。",
+      "stable_read": true,
+      "delta_Lab_from_body": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "delta_E76_from_body": 0.0
+    },
+    "sleeve_near": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_near.png",
+      "png_sha256": "3dbd0516571a25c84710bc3675b518fc40744f8627da7491553e2fc32db31082",
+      "actual_size": [
+        1254,
+        1254
+      ],
+      "roi_px": [
+        580,
+        140,
+        620,
+        170
+      ],
+      "roi_normalized": [
+        0.4625199362041467,
+        0.11164274322169059,
+        0.4944178628389155,
+        0.13556618819776714
+      ],
+      "valid_opaque_pixel_count": 1200,
+      "alpha_threshold": 250,
+      "rgb_median": [
+        234.0,
+        222.0,
+        213.0
+      ],
+      "rgb_mean": [
+        233.87416666666667,
+        221.71333333333334,
+        212.53083333333333
+      ],
+      "lab_D65_from_median_rgb": [
+        89.17704301271175,
+        2.574736319128468,
+        5.872191383739689
+      ],
+      "roi_definition": "目视选取避开青灰云纹、半透明边和显著暗褶的净米白亮部。",
+      "stable_read": true,
+      "delta_Lab_from_body": [
+        -5.135498828776122,
+        0.5622606951396492,
+        0.8043305013749391
+      ],
+      "delta_E76_from_body": 5.228425467107846
+    },
+    "sleeve_far": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_far.png",
+      "png_sha256": "3045f76c238120f3440cdbc24b00ea78871c9ed7bf39f77815c392b86db17f09",
+      "actual_size": [
+        1254,
+        1254
+      ],
+      "roi_px": [
+        480,
+        225,
+        515,
+        250
+      ],
+      "roi_normalized": [
+        0.3827751196172249,
+        0.17942583732057416,
+        0.41068580542264754,
+        0.19936204146730463
+      ],
+      "valid_opaque_pixel_count": 875,
+      "alpha_threshold": 250,
+      "rgb_median": [
+        237.0,
+        228.0,
+        220.0
+      ],
+      "rgb_mean": [
+        236.31085714285715,
+        226.65942857142858,
+        219.70971428571428
+      ],
+      "lab_D65_from_median_rgb": [
+        91.07992024178894,
+        1.6850792601451614,
+        4.983012192148628
+      ],
+      "roi_definition": "目视选取避开青灰云纹、半透明边和显著暗褶的净米白亮部。",
+      "stable_read": true,
+      "delta_Lab_from_body": [
+        -3.2326215996989305,
+        -0.3273963638436572,
+        -0.08484869021612162
+      ],
+      "delta_E76_from_body": 3.2502661561985215
+    },
+    "sleeve_near_fist": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_near_fist.png",
+      "png_sha256": "4d9566e8ff9f85f0bf2b9f85b22393f67db7835f66e20de158e54d799b1919e1",
+      "actual_size": [
+        1254,
+        1254
+      ],
+      "roi_px": [
+        580,
+        140,
+        620,
+        170
+      ],
+      "roi_normalized": [
+        0.4625199362041467,
+        0.11164274322169059,
+        0.4944178628389155,
+        0.13556618819776714
+      ],
+      "valid_opaque_pixel_count": 1200,
+      "alpha_threshold": 250,
+      "rgb_median": [
+        240.0,
+        226.0,
+        215.0
+      ],
+      "rgb_mean": [
+        239.65583333333333,
+        225.46666666666667,
+        214.41416666666666
+      ],
+      "lab_D65_from_median_rgb": [
+        90.70012036145296,
+        2.935629765391523,
+        7.079904977540252
+      ],
+      "roi_definition": "目视选取避开青灰云纹、半透明边和显著暗褶的净米白亮部。",
+      "stable_read": true,
+      "delta_Lab_from_body": [
+        -3.612421480034911,
+        0.9231541414027045,
+        2.0120440951755025
+      ],
+      "delta_E76_from_body": 4.236758661894395
+    },
+    "sleeve_far_fist": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_far_fist.png",
+      "png_sha256": "25de5070de5816921e1c7cb292c183bcef7cf026d1d9b22e6f6b43b044c5202e",
+      "actual_size": [
+        1254,
+        1254
+      ],
+      "roi_px": [
+        480,
+        225,
+        515,
+        250
+      ],
+      "roi_normalized": [
+        0.3827751196172249,
+        0.17942583732057416,
+        0.41068580542264754,
+        0.19936204146730463
+      ],
+      "valid_opaque_pixel_count": 875,
+      "alpha_threshold": 250,
+      "rgb_median": [
+        233.0,
+        222.0,
+        214.0
+      ],
+      "rgb_mean": [
+        232.15314285714285,
+        221.21257142857144,
+        213.34857142857143
+      ],
+      "lab_D65_from_median_rgb": [
+        89.12155175264036,
+        2.391441823071938,
+        5.2568981836504936
+      ],
+      "roi_definition": "目视选取避开青灰云纹、半透明边和显著暗褶的净米白亮部。",
+      "stable_read": true,
+      "delta_Lab_from_body": [
+        -5.190990088847514,
+        0.37896619908311946,
+        0.1890373012857438
+      ],
+      "delta_E76_from_body": 5.2082366098169945
+    },
+    "portrait06": {
+      "path": "E:\\stacklands\\mods\\appearance\\clothing_polish_20261103\\final\\male\\clothing\\06.png",
+      "png_sha256": "462d1aae705eaca1ba42b3bc4f6e5f73fb9df11d8f9f73e3928fbc9680fe1ea2",
+      "actual_size": [
+        1024,
+        1536
+      ],
+      "roi_px": [
+        270,
+        900,
+        300,
+        930
+      ],
+      "roi_normalized": [
+        0.263671875,
+        0.5859375,
+        0.29296875,
+        0.60546875
+      ],
+      "valid_opaque_pixel_count": 900,
+      "alpha_threshold": 250,
+      "rgb_median": [
+        241.0,
+        233.0,
+        222.0
+      ],
+      "rgb_mean": [
+        240.4011111111111,
+        232.32666666666665,
+        221.72666666666666
+      ],
+      "lab_D65_from_median_rgb": [
+        92.68650409412786,
+        0.8346243319422575,
+        6.298651779029418
+      ],
+      "roi_definition": "目视选取避开青灰云纹、半透明边和显著暗褶的净米白亮部。",
+      "stable_read": true,
+      "delta_Lab_from_body": [
+        -1.6260377473600158,
+        -1.1778512920465611,
+        1.2307908966646686
+      ],
+      "delta_E76_from_body": 2.355032622561311
+    }
+  },
+  "color_conclusion": "净布样本近袖比body低约5.14 L*，远袖低约3.23 L*；近袖另略偏红黄灰。主要差异是明度，不是完全不同色相。",
+  "color_limitations": "局部净布亮部比较可证实实际画面差异，但单个ROI不能完全剥离物理光照与材料本色；不能据全图平均色套统一提亮。",
+  "wrist_texture_observations": {
+    "sleeve_near": {
+      "template_wrist_normalized": [
+        0.49810930905178225,
+        0.6875595298318736
+      ],
+      "rgba_at_template_wrist": [
+        182,
+        153,
+        138,
+        253
+      ],
+      "skin_contact_axis_x": 625,
+      "skin_contact_axis_half_width_px": 5,
+      "skin_contact_axis_first_y_px": 862,
+      "skin_contact_axis_first_y_normalized": 0.6874003189792663,
+      "delta_contact_y_from_template_wrist_normalized": -0.0001592108526072833,
+      "delta_contact_y_from_template_wrist_px": -0.19965040916952148,
+      "five_rows_skin_width_over_20_first_y_px": 863,
+      "five_rows_skin_width_over_20_first_y_normalized": 0.6881977671451356,
+      "method": "不透明皮肤候选RGB满足R-G>15、G-B>10、R>150；只在y>0.60H搜索。腕X轴±5像素至少6个皮肤像素为第一接点，同时记录连续5行皮肤宽度>20的接点。",
+      "limitation": "这是纹理肤色接边，不是测得的新骨pivot。"
+    },
+    "sleeve_far": {
+      "template_wrist_normalized": [
+        0.5596602146157985,
+        0.6677954575542979
+      ],
+      "rgba_at_template_wrist": [
+        209,
+        197,
+        190,
+        253
+      ],
+      "skin_contact_axis_x": 702,
+      "skin_contact_axis_half_width_px": 5,
+      "skin_contact_axis_first_y_px": 891,
+      "skin_contact_axis_first_y_normalized": 0.7105263157894737,
+      "delta_contact_y_from_template_wrist_normalized": 0.04273085823517575,
+      "delta_contact_y_from_template_wrist_px": 53.58449622691046,
+      "five_rows_skin_width_over_20_first_y_px": 887,
+      "five_rows_skin_width_over_20_first_y_normalized": 0.7073365231259968,
+      "method": "不透明皮肤候选RGB满足R-G>15、G-B>10、R>150；只在y>0.60H搜索。腕X轴±5像素至少6个皮肤像素为第一接点，同时记录连续5行皮肤宽度>20的接点。",
+      "limitation": "这是纹理肤色接边，不是测得的新骨pivot。"
+    }
+  },
+  "near_elbow_fold_observation": {
+    "template_elbow_y_normalized": 0.4877057503499695,
+    "warm_cloth_search_roi_px": [
+      520,
+      540,
+      610,
+      625
+    ],
+    "lowest_luma_rows": [
+      {
+        "row_px": 571,
+        "dark_quintile_luma": 172.6888
+      },
+      {
+        "row_px": 575,
+        "dark_quintile_luma": 172.75627999999998
+      },
+      {
+        "row_px": 570,
+        "dark_quintile_luma": 177.17383999999998
+      },
+      {
+        "row_px": 572,
+        "dark_quintile_luma": 178.114
+      },
+      {
+        "row_px": 576,
+        "dark_quintile_luma": 178.6206
+      }
+    ],
+    "main_visible_fold_rows_px": [
+      571,
+      575
+    ],
+    "main_visible_fold_y_normalized": [
+      0.45534290271132377,
+      0.4585326953748006
+    ],
+    "main_fold_above_template_elbow_px": [
+      40.583010938861776,
+      36.583010938861776
+    ],
+    "interpretation": "最明显收拢褶/暗谷在约0.455..0.459H，比真实模板肘高约36..41px；约0.48H另有较弱褶，不能说全部褶线都移高。",
+    "limitation": "图案暗谷为纹理观察点，不是骨关节。"
+  },
+  "twist_inference": "near主预画肘褶与模板折弯中心分离，far袖口/衣料向下越过腕骨后才进入皮肤；结合carrier权重可能形成两处折弯、袖口被手骨带扭的观感。该因果为源纹理与关节关系支持的推断，不声称仅凭PNG排除了蒙皮或求解器问题。",
+  "recommendation": "新袖同材质亮部参考body(247,237,229)与真实06(241,233,222)，保留云纹/阴影层次；调整far袖口肤色接边回到实际腕附近，near主褶围绕0.488H组织。稍加宽袖口不能单独解决全部扭曲。",
+  "approval_status": "未认定新图或整套视觉已获用户批准。"
+}

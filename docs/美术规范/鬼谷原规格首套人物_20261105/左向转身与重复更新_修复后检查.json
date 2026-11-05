@@ -1,0 +1,59 @@
+{
+	"cases": [
+		{
+			"case": "static right",
+			"frames": 120,
+			"max_bone_angle_error_degrees": 0.0,
+			"max_cloth_vertex_error_px": 0.0,
+			"max_visible_triangle_flips": 0,
+			"minimum_actor_determinant": 1.0,
+			"visible_triangles_sampled": 43
+		},
+		{
+			"case": "static left",
+			"frames": 120,
+			"max_bone_angle_error_degrees": 0.0,
+			"max_cloth_vertex_error_px": 0.0,
+			"max_visible_triangle_flips": 0,
+			"minimum_actor_determinant": 1.0,
+			"visible_triangles_sampled": 43
+		},
+		{
+			"case": "static",
+			"facing_changes": 35,
+			"frames": 600,
+			"max_bone_angle_difference_from_control_degrees": 0.0,
+			"max_cloth_difference_from_unturned_control_px": 0.0,
+			"max_control_flips_against_physics_off": 0,
+			"max_turn_induced_triangle_flips": 0,
+			"max_turning_flips_against_physics_off": 0
+		},
+		{
+			"case": "run",
+			"facing_changes": 35,
+			"frames": 600,
+			"max_bone_angle_difference_from_control_degrees": 0.0279764551182933,
+			"max_cloth_difference_from_unturned_control_px": 0.0000222433154704049,
+			"max_control_flips_against_physics_off": 0,
+			"max_turn_induced_triangle_flips": 0,
+			"max_turning_flips_against_physics_off": 0
+		},
+		{
+			"case": "clip_transitions",
+			"facing_changes": 35,
+			"frames": 600,
+			"max_bone_angle_difference_from_control_degrees": 0.0279764551182933,
+			"max_cloth_difference_from_unturned_control_px": 0.0115566840395331,
+			"max_control_flips_against_physics_off": 4,
+			"max_turn_induced_triangle_flips": 0,
+			"max_turning_flips_against_physics_off": 4
+		}
+	],
+	"checks": 32,
+	"duplicate_same_clock_cloth_error_px": 0.0,
+	"failures": [],
+	"limits": "Animated control may itself contain source/secondary cloth folds; these are reported separately and never labelled no-intersection merely because turning matches it.",
+	"passed": true,
+	"samples": 2040,
+	"scope": "Actual native runtime/skin, both static facings and 3x600frame repeated pure-turn cases. Inspect 3D bone orientation and alpha-visible cloth triangle signs; length/finite checks alone are insufficient."
+}

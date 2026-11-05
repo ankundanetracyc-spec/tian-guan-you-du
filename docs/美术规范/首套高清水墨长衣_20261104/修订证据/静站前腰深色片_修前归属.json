@@ -1,0 +1,280 @@
+{
+	"finding": "The dark patch above the front waistband belongs to source left pants mesh1. The new narrow body alpha is transparent there; pending evaluation of upper-leg coverage. No runtime change was made.",
+	"materials": {
+		"body": {
+			"mapping": "source crop to complete Sprite canvas affine; no local registration",
+			"native_per_template_x": 0.674305555555556,
+			"native_per_template_y": 0.675,
+			"native_size": [
+				971,
+				1620
+			],
+			"path": "res://art/ink_outfit_01_20261104/assets/body.png",
+			"sha256": "9a87016e7b3aaf208d369fd7033cb0fa62f31ec8690cb2727d050120099a3109",
+			"source_canvas": [
+				60.0,
+				100.0
+			],
+			"target_ppu": 2400.0,
+			"template_size": [
+				1440.0,
+				2400.0
+			]
+		},
+		"leg": {
+			"mapping": "source crop to complete Sprite canvas affine; no local registration",
+			"native_per_template_x": 0.825833333333333,
+			"native_per_template_y": 0.8265625,
+			"native_size": [
+				991,
+				1587
+			],
+			"path": "res://art/ink_outfit_01_20261104/assets/leg.png",
+			"sha256": "0d189c16b9d0ea151a7418f2556182957cfecbcfa91c0d3d48bcfda5dfccbfda",
+			"source_canvas": [
+				50.0,
+				80.0
+			],
+			"target_ppu": 2400.0,
+			"template_size": [
+				1200.0,
+				1920.0
+			]
+		},
+		"sleeve_far": {
+			"mapping": "source crop to complete Sprite canvas affine; no local registration",
+			"native_per_template_x": 0.870833333333333,
+			"native_per_template_y": 0.870833333333333,
+			"native_size": [
+				1254,
+				1254
+			],
+			"path": "res://art/ink_outfit_01_20261104/assets/sleeve_far.png",
+			"sha256": "34373a9d61335660aa000ae07f4631ef198697b63b71d880f6c8ee28bbec2c4d",
+			"source_canvas": [
+				60.0,
+				60.0
+			],
+			"target_ppu": 2400.0,
+			"template_size": [
+				1440.0,
+				1440.0
+			]
+		},
+		"sleeve_near": {
+			"mapping": "source crop to complete Sprite canvas affine; no local registration",
+			"native_per_template_x": 0.870833333333333,
+			"native_per_template_y": 0.870833333333333,
+			"native_size": [
+				1254,
+				1254
+			],
+			"path": "res://art/ink_outfit_01_20261104/assets/sleeve_near.png",
+			"sha256": "fd2590534d4391d8297112713cd2c39521914bbc4f7c47ae927d2fdd49f54ade",
+			"source_canvas": [
+				60.0,
+				60.0
+			],
+			"target_ppu": 2400.0,
+			"template_size": [
+				1440.0,
+				1440.0
+			]
+		}
+	},
+	"results": [
+		{
+			"layers_back_to_front": [
+				{
+					"component": "leg",
+					"renderer": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui",
+					"rgba": [
+						0.254901975393295,
+						0.243137255311012,
+						0.24705882370472,
+						0.992156863212585
+					],
+					"source_mesh_index": 1,
+					"uv_pixels": [
+						625.441345214844,
+						248.439559936523
+					],
+					"z": 31
+				},
+				{
+					"component": "body",
+					"renderer": "/HumanRootMan/Root/Body/yifu/yifu",
+					"rgba": [
+						0.0,
+						0.0,
+						0.0,
+						0.0
+					],
+					"source_mesh_index": 3,
+					"uv_pixels": [
+						644.403991699219,
+						585.172424316406
+					],
+					"z": 33
+				},
+				{
+					"component": "sleeve_near",
+					"renderer": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi",
+					"rgba": [
+						0.0,
+						0.0,
+						0.0,
+						0.0
+					],
+					"source_mesh_index": 5,
+					"uv_pixels": [
+						476.867553710938,
+						666.74609375
+					],
+					"z": 35
+				}
+			],
+			"screen": [
+				340.0,
+				385.0
+			]
+		},
+		{
+			"layers_back_to_front": [
+				{
+					"component": "leg",
+					"renderer": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui",
+					"rgba": [
+						0.258823543787003,
+						0.243137255311012,
+						0.250980406999588,
+						0.992156863212585
+					],
+					"source_mesh_index": 1,
+					"uv_pixels": [
+						620.661560058594,
+						282.048828125
+					],
+					"z": 31
+				},
+				{
+					"component": "body",
+					"renderer": "/HumanRootMan/Root/Body/yifu/yifu",
+					"rgba": [
+						0.0,
+						0.0,
+						0.0,
+						0.0
+					],
+					"source_mesh_index": 3,
+					"uv_pixels": [
+						645.96875,
+						611.457275390625
+					],
+					"z": 33
+				}
+			],
+			"screen": [
+				340.0,
+				393.0
+			]
+		},
+		{
+			"layers_back_to_front": [
+				{
+					"component": "leg",
+					"renderer": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui",
+					"rgba": [
+						0.254901975393295,
+						0.239215686917305,
+						0.24705882370472,
+						0.992156863212585
+					],
+					"source_mesh_index": 1,
+					"uv_pixels": [
+						620.676696777344,
+						312.0546875
+					],
+					"z": 31
+				},
+				{
+					"component": "body",
+					"renderer": "/HumanRootMan/Root/Body/yifu/yifu",
+					"rgba": [
+						0.0,
+						0.0,
+						0.0,
+						0.0
+					],
+					"source_mesh_index": 3,
+					"uv_pixels": [
+						650.723510742188,
+						633.408996582031
+					],
+					"z": 33
+				}
+			],
+			"screen": [
+				341.0,
+				400.0
+			]
+		},
+		{
+			"layers_back_to_front": [
+				{
+					"component": "leg",
+					"renderer": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui",
+					"rgba": [
+						0.254901975393295,
+						0.239215686917305,
+						0.250980406999588,
+						0.992156863212585
+					],
+					"source_mesh_index": 1,
+					"uv_pixels": [
+						612.297058105469,
+						340.864837646484
+					],
+					"z": 31
+				},
+				{
+					"component": "leg",
+					"renderer": "/HumanRootMan/Root/Body/Foot/youtui/youtui",
+					"rgba": [
+						0.0,
+						0.0,
+						0.0,
+						0.0
+					],
+					"source_mesh_index": 2,
+					"uv_pixels": [
+						625.116149902344,
+						173.683746337891
+					],
+					"z": 32
+				},
+				{
+					"component": "body",
+					"renderer": "/HumanRootMan/Root/Body/yifu/yifu",
+					"rgba": [
+						0.52549022436142,
+						0.560784339904785,
+						0.556862771511078,
+						0.964705884456635
+					],
+					"source_mesh_index": 3,
+					"uv_pixels": [
+						648.49169921875,
+						655.468872070313
+					],
+					"z": 33
+				}
+			],
+			"screen": [
+				340.0,
+				407.0
+			]
+		}
+	],
+	"view": "1200x800 showcase left Idle_041; time42/60"
+}

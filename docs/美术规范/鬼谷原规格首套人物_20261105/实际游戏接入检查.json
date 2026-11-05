@@ -1,0 +1,10 @@
+{
+	"checks": 28,
+	"failures": [],
+	"first_pose_after_restart_cloth_error_pixels": 0.0000254840360867092,
+	"maximum_grip_error_world_pixels": 0.0000431583721365314,
+	"maximum_grip_to_source_hand_distance_native_pixels": 2.74877190589905,
+	"maximum_source_arm_length_error_pixels": 0.0000491738319396973,
+	"passed": true,
+	"scope": "Actual root arena and WorldActionTraveler, original male101 skin, source hand/head anchors, independent sword holding and inspection swing, restart placement and duplicate pose stability; original attack rules retained."
+}

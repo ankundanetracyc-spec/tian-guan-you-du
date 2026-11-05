@@ -52,186 +52,187 @@
     "file": "pill_container_empty_porcelain.png",
     "name": "通用瓷瓶",
     "cells": [
-      2,
-      3
+      1,
+      2
     ],
     "ref": "E:\\stacklands\\textures\\items\\alchemy_20261024\\porcelain_bottle_closed.png",
     "style_reference": "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png",
-    "prompt": "One complete standalone inventory object for a Chinese cultivation RPG. Image 1 is the USER APPROVED PORCELAIN BOTTLE STYLE REFERENCE, not the subject to copy unless the subject is a bottle. Match its hand-painted watercolor texture and believable painted volume, while keeping this object's own material and local colors. Chinese ink and restrained watercolor, thin varied grey-brown contours, low-saturation pigments, subtle directional brushwork following the form. Quiet matte surfaces under broad diffuse illumination. Solid volume through gently separated light, middle and shadow planes of the LOCAL COLOR. Lighter strokes are muted pigment on the object, never reflected light spots. Clear silhouette and few readable material features for small inventory display. No self-emission, bloom, aura, halo, rim lighting, white edge streaks, specular hotspots, sparkles, glossy reflections, glassy droplets, plastic or frosted 3D rendering. No flat vector shapes, thick cartoon outline, photographic noise or dense tiny scratches. TRUE ALPHA TRANSPARENCY outside the physical silhouette; no backdrop, floor, cast shadow, frame, lettering or interface. Exactly ONE complete object, fully inside canvas with about 6 percent even safe margin. Never reproduce the brown/black preview background of the reference. Subject: exactly one simple closed porcelain medicine bottle, the same practical rounded silhouette and white ceramic material as Image1. Round full belly, short narrow neck, modest rolled lip, dark brown wooden cork, one subdued cobalt-blue band around the neck. No labels, text, ornamental painting or pill outside. Preserve the reference soft directional painted texture and ceramic thickness with calmer broad local-color planes; no painted light halo. Upright front-three-quarter view. Canvas portrait aspect 2:3; final grid footprint2x3, packed256x384.",
-    "output_source_directory": "textures/items/inventory_density_20261029/raw_unified_final/",
+    "prompt": "Use case: precise-object-edit. Asset type: transparent Chinese xianxia inventory icon, one-cell small medicine vial. Edit target: referenced ivory porcelain pill bottle. Preserve muted ivory porcelain, a single small cobalt neck stripe, brown stopper, subtle hand-painted ink-and-watercolor material. Redesign the proportions as a SMALL PALM-SIZED PILL VIAL, compact narrow shoulders and a modest oval rounded body, not a bulbous large vase. Upright straight-on orthographic catalog view with minimal depth, symmetrical vertical axis. Bottle height is about 1.55 times its maximum width. One complete bottle centered on a square canvas, occupies approximately 78% canvas height and 50% canvas width, generous true transparent space on sides. NO background, NO checkerboard, NO black matte, NO ground shadow, no glow, no text, no extra pills. Preserve hand painted brush quality and soft natural highlights; avoid glossy 3D rendering. 1024x1024 source.",
+    "output_source_directory": "textures/items/inventory_scale_20261104/raw/",
     "references": [
-      "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png"
-    ]
+      "E:/stacklands/textures/items/inventory_density_20261029/pill_container_empty_porcelain.png"
+    ],
+    "source": "res://textures/items/inventory_scale_20261104/raw/pill_container_empty_porcelain.png"
   },
   {
     "key": "portrait_clothing_female_yuebai_zhuying",
     "file": "portrait_clothing_female_yuebai_zhuying.png",
     "name": "月白竹影袍",
     "cells": [
-      3,
-      4
+      2,
+      3
     ],
     "ref": "E:\\stacklands\\textures\\items\\clothing\\portrait_clothing_female_yuebai_zhuying.png",
     "style_reference": "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png",
-    "prompt": "One complete standalone inventory object for a Chinese cultivation RPG. Image 1 is the USER APPROVED PORCELAIN BOTTLE STYLE REFERENCE, not the subject to copy unless the subject is a bottle. Match its hand-painted watercolor texture and believable painted volume, while keeping this object's own material and local colors. Chinese ink and restrained watercolor, thin varied grey-brown contours, low-saturation pigments, subtle directional brushwork following the form. Quiet matte surfaces under broad diffuse illumination. Solid volume through gently separated light, middle and shadow planes of the LOCAL COLOR. Lighter strokes are muted pigment on the object, never reflected light spots. Clear silhouette and few readable material features for small inventory display. No self-emission, bloom, aura, halo, rim lighting, white edge streaks, specular hotspots, sparkles, glossy reflections, glassy droplets, plastic or frosted 3D rendering. No flat vector shapes, thick cartoon outline, photographic noise or dense tiny scratches. TRUE ALPHA TRANSPARENCY outside the physical silhouette; no backdrop, floor, cast shadow, frame, lettering or interface. Exactly ONE complete object, fully inside canvas with about 6 percent even safe margin. Never reproduce the brown/black preview background of the reference. Image2 is the OBJECT IDENTITY reference only, not a lighting or rendering reference. Subject: 月白竹影袍: ivory-white Chinese robe, pale muted gray-green lapels, trim and sash, very sparse low-contrast bamboo-leaf ink motifs. Retain reference2 ivory and gray-green palette. Exactly ONE FOLDED ROBE as a portable inventory object, sleeves folded inward and hem underneath in a compact rectangular bundle. Clearly visible V-shaped crossed collar and tied cloth sash, a few broad overlapping cloth folds. No wearer, body, neck, mannequin, hanger, standing garment, floating detached sash or extra garment. Image2 is only identity and palette reference; reduce its dense embroidery to a few quiet sparse brush motifs. Matte cloth, no shiny satin, no bright light folds. Compose a portrait rectangle around 3:4 proportion. Target grid footprint 3x4, final packed resolution 384x512. Keep the correct aspect ratio. Use maximum readable silhouette with 6% safe margin.",
-    "output_source_directory": "textures/items/inventory_density_20261029/raw_unified_final/",
+    "prompt": "Use case: precise-object-edit. Asset type: transparent Chinese xianxia inventory sprite. Edit target: referenced 月白竹影袍 robe icon. Transform the standing hollow-torso robe presentation into ONE NEATLY FOLDED COMPACT CLOTHING BUNDLE for storage. Preserve the original garment's color identity: ivory cloth, subdued sage-green lapel and small bamboo-leaf motifs. Keep its subtle ink outlines, matte hand-painted watercolor texture and restrained readable embroidery. All sleeves tucked under, long hem folded underneath; no upright chest or mannequin, no spread sleeves, no hanging waist ties. The fold is a compact low rectangular stack, longer vertically than horizontally, with a small V-collar fold visible near its top and a short sash folded across the middle. Orthographic near-top view aligned perfectly upright to a 2:3 portrait inventory footprint, outer stack edges straight, no diagonal tilt, no large perspective side face. Centered single object, about 78% canvas width and 80% height with even safe clear margins. Preserve distinctive trim and motifs but avoid tiny busy detail. TRUE ALPHA TRANSPARENT background and no cast shadow, no black or brown matte, no checkerboard, no glow, no text or labels. One folded robe only, no human or accessories. At least 768x1152 source pixels.",
+    "output_source_directory": "textures/items/inventory_scale_20261104/raw/",
     "references": [
-      "E:/stacklands/docs/美术规范/行囊全物品图标与占地_20261029/风格参考_用户指定瓷瓶.png",
-      "E:\\stacklands\\textures\\items\\clothing\\portrait_clothing_female_yuebai_zhuying.png"
-    ]
+      "E:/stacklands/textures/items/inventory_density_20261029/portrait_clothing_female_yuebai_zhuying.png"
+    ],
+    "source": "res://textures/items/inventory_scale_20261104/raw/portrait_clothing_female_yuebai_zhuying.png"
   },
   {
     "key": "portrait_clothing_female_ouhe_huayun",
     "file": "portrait_clothing_female_ouhe_huayun.png",
     "name": "藕荷花云袍",
     "cells": [
-      3,
-      4
+      2,
+      3
     ],
     "ref": "E:\\stacklands\\textures\\items\\clothing\\portrait_clothing_female_ouhe_huayun.png",
     "style_reference": "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png",
-    "prompt": "One complete standalone inventory object for a Chinese cultivation RPG. Image 1 is the USER APPROVED PORCELAIN BOTTLE STYLE REFERENCE, not the subject to copy unless the subject is a bottle. Match its hand-painted watercolor texture and believable painted volume, while keeping this object's own material and local colors. Chinese ink and restrained watercolor, thin varied grey-brown contours, low-saturation pigments, subtle directional brushwork following the form. Quiet matte surfaces under broad diffuse illumination. Solid volume through gently separated light, middle and shadow planes of the LOCAL COLOR. Lighter strokes are muted pigment on the object, never reflected light spots. Clear silhouette and few readable material features for small inventory display. No self-emission, bloom, aura, halo, rim lighting, white edge streaks, specular hotspots, sparkles, glossy reflections, glassy droplets, plastic or frosted 3D rendering. No flat vector shapes, thick cartoon outline, photographic noise or dense tiny scratches. TRUE ALPHA TRANSPARENCY outside the physical silhouette; no backdrop, floor, cast shadow, frame, lettering or interface. Exactly ONE complete object, fully inside canvas with about 6 percent even safe margin. Never reproduce the brown/black preview background of the reference. Image2 is the OBJECT IDENTITY reference only, not a lighting or rendering reference. Subject: 藕荷花云袍: pale muted dusty mauve and lotus-pink Chinese robe with ivory inner collar, soft gray-rose trim and sash, a few faint lotus and cloud brush motifs. Retain reference2 quiet dusty pink and cream palette. Exactly ONE FOLDED ROBE as a portable inventory object, sleeves folded inward and hem underneath in a compact rectangular bundle. Clearly visible V-shaped crossed collar and tied cloth sash, a few broad overlapping cloth folds. No wearer, body, neck, mannequin, hanger, standing garment, floating detached sash or extra garment. Image2 is only identity and palette reference; reduce its dense embroidery to a few quiet sparse brush motifs. Matte cloth, no shiny satin, no bright light folds. Compose a portrait rectangle around 3:4 proportion. Target grid footprint 3x4, final packed resolution 384x512. Keep the correct aspect ratio. Use maximum readable silhouette with 6% safe margin.",
-    "output_source_directory": "textures/items/inventory_density_20261029/raw_unified_final/",
+    "prompt": "Use case: precise-object-edit. Asset type: transparent Chinese xianxia inventory sprite. Edit target: referenced 藕荷花云袍 robe icon. Transform the standing hollow-torso robe presentation into ONE NEATLY FOLDED COMPACT CLOTHING BUNDLE for storage. Preserve the original garment's color identity: warm ivory cloth, dusty pale mauve lapel and sash, understated floral/cloud motifs. Keep its subtle ink outlines, matte hand-painted watercolor texture and restrained readable embroidery. All sleeves tucked under, long hem folded underneath; no upright chest or mannequin, no spread sleeves, no hanging waist ties. The fold is a compact low rectangular stack, longer vertically than horizontally, with a small V-collar fold visible near its top and a short sash folded across the middle. Orthographic near-top view aligned perfectly upright to a 2:3 portrait inventory footprint, outer stack edges straight, no diagonal tilt, no large perspective side face. Centered single object, about 78% canvas width and 80% height with even safe clear margins. Preserve distinctive trim and motifs but avoid tiny busy detail. TRUE ALPHA TRANSPARENT background and no cast shadow, no black or brown matte, no checkerboard, no glow, no text or labels. One folded robe only, no human or accessories. At least 768x1152 source pixels.",
+    "output_source_directory": "textures/items/inventory_scale_20261104/raw/",
     "references": [
-      "E:/stacklands/docs/美术规范/行囊全物品图标与占地_20261029/风格参考_用户指定瓷瓶.png",
-      "E:\\stacklands\\textures\\items\\clothing\\portrait_clothing_female_ouhe_huayun.png"
-    ]
+      "E:/stacklands/textures/items/inventory_density_20261029/portrait_clothing_female_ouhe_huayun.png"
+    ],
+    "source": "res://textures/items/inventory_scale_20261104/raw/portrait_clothing_female_ouhe_huayun.png"
   },
   {
     "key": "portrait_clothing_female_qingci_yunmei",
     "file": "portrait_clothing_female_qingci_yunmei.png",
     "name": "青瓷云梅袍",
     "cells": [
-      3,
-      4
+      2,
+      3
     ],
     "ref": "E:\\stacklands\\textures\\items\\clothing\\portrait_clothing_female_qingci_yunmei.png",
     "style_reference": "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png",
-    "prompt": "One complete standalone inventory object for a Chinese cultivation RPG. Image 1 is the USER APPROVED PORCELAIN BOTTLE STYLE REFERENCE, not the subject to copy unless the subject is a bottle. Match its hand-painted watercolor texture and believable painted volume, while keeping this object's own material and local colors. Chinese ink and restrained watercolor, thin varied grey-brown contours, low-saturation pigments, subtle directional brushwork following the form. Quiet matte surfaces under broad diffuse illumination. Solid volume through gently separated light, middle and shadow planes of the LOCAL COLOR. Lighter strokes are muted pigment on the object, never reflected light spots. Clear silhouette and few readable material features for small inventory display. No self-emission, bloom, aura, halo, rim lighting, white edge streaks, specular hotspots, sparkles, glossy reflections, glassy droplets, plastic or frosted 3D rendering. No flat vector shapes, thick cartoon outline, photographic noise or dense tiny scratches. TRUE ALPHA TRANSPARENCY outside the physical silhouette; no backdrop, floor, cast shadow, frame, lettering or interface. Exactly ONE complete object, fully inside canvas with about 6 percent even safe margin. Never reproduce the brown/black preview background of the reference. Image2 is the OBJECT IDENTITY reference only, not a lighting or rendering reference. Subject: 青瓷云梅袍: ivory-white Chinese robe with subdued blue-gray collar, trim and sash, a few sparse light blue plum-blossom and cloud brush motifs. Retain reference2 ivory-and-blue palette. Exactly ONE FOLDED ROBE as a portable inventory object, sleeves folded inward and hem underneath in a compact rectangular bundle. Clearly visible V-shaped crossed collar and tied cloth sash, a few broad overlapping cloth folds. No wearer, body, neck, mannequin, hanger, standing garment, floating detached sash or extra garment. Image2 is only identity and palette reference; reduce its dense embroidery to a few quiet sparse brush motifs. Matte cloth, no shiny satin, no bright light folds. Compose a portrait rectangle around 3:4 proportion. Target grid footprint 3x4, final packed resolution 384x512. Keep the correct aspect ratio. Use maximum readable silhouette with 6% safe margin.",
-    "output_source_directory": "textures/items/inventory_density_20261029/raw_unified_final/",
+    "prompt": "Use case: precise-object-edit. Asset type: transparent Chinese xianxia inventory sprite. Edit target: referenced 青瓷云梅袍 robe icon. Transform the standing hollow-torso robe presentation into ONE NEATLY FOLDED COMPACT CLOTHING BUNDLE for storage. Preserve the original garment's color identity: ivory cloth, porcelain-blue lapel and sash with blue plum blossom/cloud motifs. Keep its subtle ink outlines, matte hand-painted watercolor texture and restrained readable embroidery. All sleeves tucked under, long hem folded underneath; no upright chest or mannequin, no spread sleeves, no hanging waist ties. The fold is a compact low rectangular stack, longer vertically than horizontally, with a small V-collar fold visible near its top and a short sash folded across the middle. Orthographic near-top view aligned perfectly upright to a 2:3 portrait inventory footprint, outer stack edges straight, no diagonal tilt, no large perspective side face. Centered single object, about 78% canvas width and 80% height with even safe clear margins. Preserve distinctive trim and motifs but avoid tiny busy detail. TRUE ALPHA TRANSPARENT background and no cast shadow, no black or brown matte, no checkerboard, no glow, no text or labels. One folded robe only, no human or accessories. At least 768x1152 source pixels.",
+    "output_source_directory": "textures/items/inventory_scale_20261104/raw/",
     "references": [
-      "E:/stacklands/docs/美术规范/行囊全物品图标与占地_20261029/风格参考_用户指定瓷瓶.png",
-      "E:\\stacklands\\textures\\items\\clothing\\portrait_clothing_female_qingci_yunmei.png"
-    ]
+      "E:/stacklands/textures/items/inventory_density_20261029/portrait_clothing_female_qingci_yunmei.png"
+    ],
+    "source": "res://textures/items/inventory_scale_20261104/raw/portrait_clothing_female_qingci_yunmei.png"
   },
   {
     "key": "portrait_clothing_yuxu_neimen",
     "file": "portrait_clothing_yuxu_neimen.png",
     "name": "玉虚·内门常服",
     "cells": [
-      3,
-      4
+      2,
+      3
     ],
     "ref": "E:\\stacklands\\textures\\items\\clothing\\portrait_clothing_yuxu_neimen.png",
     "style_reference": "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png",
-    "prompt": "One complete standalone inventory object for a Chinese cultivation RPG. Image 1 is the USER APPROVED PORCELAIN BOTTLE STYLE REFERENCE, not the subject to copy unless the subject is a bottle. Match its hand-painted watercolor texture and believable painted volume, while keeping this object's own material and local colors. Chinese ink and restrained watercolor, thin varied grey-brown contours, low-saturation pigments, subtle directional brushwork following the form. Quiet matte surfaces under broad diffuse illumination. Solid volume through gently separated light, middle and shadow planes of the LOCAL COLOR. Lighter strokes are muted pigment on the object, never reflected light spots. Clear silhouette and few readable material features for small inventory display. No self-emission, bloom, aura, halo, rim lighting, white edge streaks, specular hotspots, sparkles, glossy reflections, glassy droplets, plastic or frosted 3D rendering. No flat vector shapes, thick cartoon outline, photographic noise or dense tiny scratches. TRUE ALPHA TRANSPARENCY outside the physical silhouette; no backdrop, floor, cast shadow, frame, lettering or interface. Exactly ONE complete object, fully inside canvas with about 6 percent even safe margin. Never reproduce the brown/black preview background of the reference. Image2 is the OBJECT IDENTITY reference only, not a lighting or rendering reference. Subject: 玉虚·内门常服: ivory-white Chinese robe with muted teal-gray green broad lapels, matching sash and restrained few cloud brush motifs. Retain reference2 white and teal-green palette. Exactly ONE FOLDED ROBE as a portable inventory object, sleeves folded inward and hem underneath in a compact rectangular bundle. Clearly visible V-shaped crossed collar and tied cloth sash, a few broad overlapping cloth folds. No wearer, body, neck, mannequin, hanger, standing garment, floating detached sash or extra garment. Image2 is only identity and palette reference; reduce its dense embroidery to a few quiet sparse brush motifs. Matte cloth, no shiny satin, no bright light folds. Compose a portrait rectangle around 3:4 proportion. Target grid footprint 3x4, final packed resolution 384x512. Keep the correct aspect ratio. Use maximum readable silhouette with 6% safe margin.",
-    "output_source_directory": "textures/items/inventory_density_20261029/raw_unified_final/",
+    "prompt": "Use case: precise-object-edit. Asset type: transparent Chinese xianxia inventory sprite. Edit target: referenced 玉虚内门常服 robe icon. Transform the standing hollow-torso robe presentation into ONE NEATLY FOLDED COMPACT CLOTHING BUNDLE for storage. Preserve the original garment's color identity: ivory outer cloth, muted jade-teal lapels and sash, pale grey-blue clouds. Keep its subtle ink outlines, matte hand-painted watercolor texture and restrained readable embroidery. All sleeves tucked under, long hem folded underneath; no upright chest or mannequin, no spread sleeves, no hanging waist ties. The fold is a compact low rectangular stack, longer vertically than horizontally, with a small V-collar fold visible near its top and a short sash folded across the middle. Orthographic near-top view aligned perfectly upright to a 2:3 portrait inventory footprint, outer stack edges straight, no diagonal tilt, no large perspective side face. Centered single object, about 78% canvas width and 80% height with even safe clear margins. Preserve distinctive trim and motifs but avoid tiny busy detail. TRUE ALPHA TRANSPARENT background and no cast shadow, no black or brown matte, no checkerboard, no glow, no text or labels. One folded robe only, no human or accessories. At least 768x1152 source pixels.",
+    "output_source_directory": "textures/items/inventory_scale_20261104/raw/",
     "references": [
-      "E:/stacklands/docs/美术规范/行囊全物品图标与占地_20261029/风格参考_用户指定瓷瓶.png",
-      "E:\\stacklands\\textures\\items\\clothing\\portrait_clothing_yuxu_neimen.png"
-    ]
+      "E:/stacklands/textures/items/inventory_density_20261029/portrait_clothing_yuxu_neimen.png"
+    ],
+    "source": "res://textures/items/inventory_scale_20261104/raw/portrait_clothing_yuxu_neimen.png"
   },
   {
     "key": "portrait_clothing_yuxu_waimen",
     "file": "portrait_clothing_yuxu_waimen.png",
     "name": "玉虚·外门常服",
     "cells": [
-      3,
-      4
+      2,
+      3
     ],
     "ref": "E:\\stacklands\\textures\\items\\clothing\\portrait_clothing_yuxu_waimen.png",
     "style_reference": "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png",
-    "prompt": "One complete standalone inventory object for a Chinese cultivation RPG. Image 1 is the USER APPROVED PORCELAIN BOTTLE STYLE REFERENCE, not the subject to copy unless the subject is a bottle. Match its hand-painted watercolor texture and believable painted volume, while keeping this object's own material and local colors. Chinese ink and restrained watercolor, thin varied grey-brown contours, low-saturation pigments, subtle directional brushwork following the form. Quiet matte surfaces under broad diffuse illumination. Solid volume through gently separated light, middle and shadow planes of the LOCAL COLOR. Lighter strokes are muted pigment on the object, never reflected light spots. Clear silhouette and few readable material features for small inventory display. No self-emission, bloom, aura, halo, rim lighting, white edge streaks, specular hotspots, sparkles, glossy reflections, glassy droplets, plastic or frosted 3D rendering. No flat vector shapes, thick cartoon outline, photographic noise or dense tiny scratches. TRUE ALPHA TRANSPARENCY outside the physical silhouette; no backdrop, floor, cast shadow, frame, lettering or interface. Exactly ONE complete object, fully inside canvas with about 6 percent even safe margin. Never reproduce the brown/black preview background of the reference. Image2 is the OBJECT IDENTITY reference only, not a lighting or rendering reference. Subject: 玉虚·外门常服: plain muted medium steel-blue Chinese robe with darker blue-gray lapels and sash, ivory inner collar, a few low-contrast cloud brush motifs. Retain reference2 practical blue-and-ivory palette. Exactly ONE FOLDED ROBE as a portable inventory object, sleeves folded inward and hem underneath in a compact rectangular bundle. Clearly visible V-shaped crossed collar and tied cloth sash, a few broad overlapping cloth folds. No wearer, body, neck, mannequin, hanger, standing garment, floating detached sash or extra garment. Image2 is only identity and palette reference; reduce its dense embroidery to a few quiet sparse brush motifs. Matte cloth, no shiny satin, no bright light folds. Compose a portrait rectangle around 3:4 proportion. Target grid footprint 3x4, final packed resolution 384x512. Keep the correct aspect ratio. Use maximum readable silhouette with 6% safe margin.",
-    "output_source_directory": "textures/items/inventory_density_20261029/raw_unified_final/",
+    "prompt": "Use case: precise-object-edit. Asset type: transparent Chinese xianxia inventory sprite. Edit target: referenced 玉虚外门常服 robe icon. Transform the standing hollow-torso robe presentation into ONE NEATLY FOLDED COMPACT CLOTHING BUNDLE for storage. Preserve the original garment's color identity: muted medium blue outer cloth, ivory inner collar and white painted cloud motifs. Keep its subtle ink outlines, matte hand-painted watercolor texture and restrained readable embroidery. All sleeves tucked under, long hem folded underneath; no upright chest or mannequin, no spread sleeves, no hanging waist ties. The fold is a compact low rectangular stack, longer vertically than horizontally, with a small V-collar fold visible near its top and a short sash folded across the middle. Orthographic near-top view aligned perfectly upright to a 2:3 portrait inventory footprint, outer stack edges straight, no diagonal tilt, no large perspective side face. Centered single object, about 78% canvas width and 80% height with even safe clear margins. Preserve distinctive trim and motifs but avoid tiny busy detail. TRUE ALPHA TRANSPARENT background and no cast shadow, no black or brown matte, no checkerboard, no glow, no text or labels. One folded robe only, no human or accessories. At least 768x1152 source pixels.",
+    "output_source_directory": "textures/items/inventory_scale_20261104/raw/",
     "references": [
-      "E:/stacklands/docs/美术规范/行囊全物品图标与占地_20261029/风格参考_用户指定瓷瓶.png",
-      "E:\\stacklands\\textures\\items\\clothing\\portrait_clothing_yuxu_waimen.png"
-    ]
+      "E:/stacklands/textures/items/inventory_density_20261029/portrait_clothing_yuxu_waimen.png"
+    ],
+    "source": "res://textures/items/inventory_scale_20261104/raw/portrait_clothing_yuxu_waimen.png"
   },
   {
     "key": "portrait_clothing_yuxu_zayi",
     "file": "portrait_clothing_yuxu_zayi.png",
     "name": "玉虚·杂役常服",
     "cells": [
-      3,
-      4
+      2,
+      3
     ],
     "ref": "E:\\stacklands\\textures\\items\\clothing\\portrait_clothing_yuxu_zayi.png",
     "style_reference": "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png",
-    "prompt": "One complete standalone inventory object for a Chinese cultivation RPG. Image 1 is the USER APPROVED PORCELAIN BOTTLE STYLE REFERENCE, not the subject to copy unless the subject is a bottle. Match its hand-painted watercolor texture and believable painted volume, while keeping this object's own material and local colors. Chinese ink and restrained watercolor, thin varied grey-brown contours, low-saturation pigments, subtle directional brushwork following the form. Quiet matte surfaces under broad diffuse illumination. Solid volume through gently separated light, middle and shadow planes of the LOCAL COLOR. Lighter strokes are muted pigment on the object, never reflected light spots. Clear silhouette and few readable material features for small inventory display. No self-emission, bloom, aura, halo, rim lighting, white edge streaks, specular hotspots, sparkles, glossy reflections, glassy droplets, plastic or frosted 3D rendering. No flat vector shapes, thick cartoon outline, photographic noise or dense tiny scratches. TRUE ALPHA TRANSPARENCY outside the physical silhouette; no backdrop, floor, cast shadow, frame, lettering or interface. Exactly ONE complete object, fully inside canvas with about 6 percent even safe margin. Never reproduce the brown/black preview background of the reference. Image2 is the OBJECT IDENTITY reference only, not a lighting or rendering reference. Subject: 玉虚·杂役常服: humble plain warm gray-beige Chinese robe with slate-blue collar trim and sash, pale cream inner collar, simple broad cloth folds and a few quiet small cloud brush motifs. No luxury pattern, embroidery or gold. Exactly ONE FOLDED ROBE as a portable inventory object, sleeves folded inward and hem underneath in a compact rectangular bundle. Clearly visible V-shaped crossed collar and tied cloth sash, a few broad overlapping cloth folds. No wearer, body, neck, mannequin, hanger, standing garment, floating detached sash or extra garment. Image2 is only identity and palette reference; reduce its dense embroidery to a few quiet sparse brush motifs. Matte cloth, no shiny satin, no bright light folds. Compose a portrait rectangle around 3:4 proportion. Target grid footprint 3x4, final packed resolution 384x512. Keep the correct aspect ratio. Use maximum readable silhouette with 6% safe margin.",
-    "output_source_directory": "textures/items/inventory_density_20261029/raw_unified_final/",
+    "prompt": "Use case: precise-object-edit. Asset type: transparent Chinese xianxia inventory sprite. Edit target: referenced 玉虚杂役常服 robe icon. Transform the standing hollow-torso robe presentation into ONE NEATLY FOLDED COMPACT CLOTHING BUNDLE for storage. Preserve the original garment's color identity: warm pale grey-beige cloth, restrained blue-grey lapel, sash and a few soft cloud motifs. Keep its subtle ink outlines, matte hand-painted watercolor texture and restrained readable embroidery. All sleeves tucked under, long hem folded underneath; no upright chest or mannequin, no spread sleeves, no hanging waist ties. The fold is a compact low rectangular stack, longer vertically than horizontally, with a small V-collar fold visible near its top and a short sash folded across the middle. Orthographic near-top view aligned perfectly upright to a 2:3 portrait inventory footprint, outer stack edges straight, no diagonal tilt, no large perspective side face. Centered single object, about 78% canvas width and 80% height with even safe clear margins. Preserve distinctive trim and motifs but avoid tiny busy detail. TRUE ALPHA TRANSPARENT background and no cast shadow, no black or brown matte, no checkerboard, no glow, no text or labels. One folded robe only, no human or accessories. At least 768x1152 source pixels.",
+    "output_source_directory": "textures/items/inventory_scale_20261104/raw/",
     "references": [
-      "E:/stacklands/docs/美术规范/行囊全物品图标与占地_20261029/风格参考_用户指定瓷瓶.png",
-      "E:\\stacklands\\textures\\items\\clothing\\portrait_clothing_yuxu_zayi.png"
-    ]
+      "E:/stacklands/textures/items/inventory_density_20261029/portrait_clothing_yuxu_zayi.png"
+    ],
+    "source": "res://textures/items/inventory_scale_20261104/raw/portrait_clothing_yuxu_zayi.png"
   },
   {
     "key": "portrait_clothing_yuxu_zhenchuan",
     "file": "portrait_clothing_yuxu_zhenchuan.png",
     "name": "玉虚·真传常服",
     "cells": [
-      3,
-      4
+      2,
+      3
     ],
     "ref": "E:\\stacklands\\textures\\items\\clothing\\portrait_clothing_yuxu_zhenchuan.png",
     "style_reference": "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png",
-    "prompt": "One complete standalone inventory object for a Chinese cultivation RPG. Image 1 is the USER APPROVED PORCELAIN BOTTLE STYLE REFERENCE, not the subject to copy unless the subject is a bottle. Match its hand-painted watercolor texture and believable painted volume, while keeping this object's own material and local colors. Chinese ink and restrained watercolor, thin varied grey-brown contours, low-saturation pigments, subtle directional brushwork following the form. Quiet matte surfaces under broad diffuse illumination. Solid volume through gently separated light, middle and shadow planes of the LOCAL COLOR. Lighter strokes are muted pigment on the object, never reflected light spots. Clear silhouette and few readable material features for small inventory display. No self-emission, bloom, aura, halo, rim lighting, white edge streaks, specular hotspots, sparkles, glossy reflections, glassy droplets, plastic or frosted 3D rendering. No flat vector shapes, thick cartoon outline, photographic noise or dense tiny scratches. TRUE ALPHA TRANSPARENCY outside the physical silhouette; no backdrop, floor, cast shadow, frame, lettering or interface. Exactly ONE complete object, fully inside canvas with about 6 percent even safe margin. Never reproduce the brown/black preview background of the reference. Image2 is the OBJECT IDENTITY reference only, not a lighting or rendering reference. Subject: 玉虚·真传常服: ivory-white Chinese robe with deep muted blue-gray lapels and sash, extremely sparing aged-gold thin trim and sparse soft ink-blue mountain/cloud brush marks. Retain reference2 white/blue palette, but simplify dense pattern. No bright gold shine. Exactly ONE FOLDED ROBE as a portable inventory object, sleeves folded inward and hem underneath in a compact rectangular bundle. Clearly visible V-shaped crossed collar and tied cloth sash, a few broad overlapping cloth folds. No wearer, body, neck, mannequin, hanger, standing garment, floating detached sash or extra garment. Image2 is only identity and palette reference; reduce its dense embroidery to a few quiet sparse brush motifs. Matte cloth, no shiny satin, no bright light folds. Compose a portrait rectangle around 3:4 proportion. Target grid footprint 3x4, final packed resolution 384x512. Keep the correct aspect ratio. Use maximum readable silhouette with 6% safe margin.",
-    "output_source_directory": "textures/items/inventory_density_20261029/raw_unified_final/",
+    "prompt": "Use case: precise-object-edit. Asset type: transparent Chinese xianxia inventory sprite. Edit target: referenced 玉虚真传常服 robe icon. Transform the standing hollow-torso robe presentation into ONE NEATLY FOLDED COMPACT CLOTHING BUNDLE for storage. Preserve the original garment's color identity: ivory and deep muted blue, restrained pale gold piping and subtle cloud embroidery. Keep its subtle ink outlines, matte hand-painted watercolor texture and restrained readable embroidery. All sleeves tucked under, long hem folded underneath; no upright chest or mannequin, no spread sleeves, no hanging waist ties. The fold is a compact low rectangular stack, longer vertically than horizontally, with a small V-collar fold visible near its top and a short sash folded across the middle. Orthographic near-top view aligned perfectly upright to a 2:3 portrait inventory footprint, outer stack edges straight, no diagonal tilt, no large perspective side face. Centered single object, about 78% canvas width and 80% height with even safe clear margins. Preserve distinctive trim and motifs but avoid tiny busy detail. TRUE ALPHA TRANSPARENT background and no cast shadow, no black or brown matte, no checkerboard, no glow, no text or labels. One folded robe only, no human or accessories. At least 768x1152 source pixels.",
+    "output_source_directory": "textures/items/inventory_scale_20261104/raw/",
     "references": [
-      "E:/stacklands/docs/美术规范/行囊全物品图标与占地_20261029/风格参考_用户指定瓷瓶.png",
-      "E:\\stacklands\\textures\\items\\clothing\\portrait_clothing_yuxu_zhenchuan.png"
-    ]
+      "E:/stacklands/textures/items/inventory_density_20261029/portrait_clothing_yuxu_zhenchuan.png"
+    ],
+    "source": "res://textures/items/inventory_scale_20261104/raw/portrait_clothing_yuxu_zhenchuan.png"
   },
   {
     "key": "portrait_clothing_male_xuanqing_yunzhu",
     "file": "portrait_clothing_male_xuanqing_yunzhu.png",
     "name": "玄青云竹袍",
     "cells": [
-      3,
-      4
+      2,
+      3
     ],
     "ref": "E:\\stacklands\\textures\\items\\clothing\\portrait_clothing_male_xuanqing_yunzhu.png",
     "style_reference": "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png",
-    "prompt": "One complete standalone inventory object for a Chinese cultivation RPG. Image 1 is the USER APPROVED PORCELAIN BOTTLE STYLE REFERENCE, not the subject to copy unless the subject is a bottle. Match its hand-painted watercolor texture and believable painted volume, while keeping this object's own material and local colors. Chinese ink and restrained watercolor, thin varied grey-brown contours, low-saturation pigments, subtle directional brushwork following the form. Quiet matte surfaces under broad diffuse illumination. Solid volume through gently separated light, middle and shadow planes of the LOCAL COLOR. Lighter strokes are muted pigment on the object, never reflected light spots. Clear silhouette and few readable material features for small inventory display. No self-emission, bloom, aura, halo, rim lighting, white edge streaks, specular hotspots, sparkles, glossy reflections, glassy droplets, plastic or frosted 3D rendering. No flat vector shapes, thick cartoon outline, photographic noise or dense tiny scratches. TRUE ALPHA TRANSPARENCY outside the physical silhouette; no backdrop, floor, cast shadow, frame, lettering or interface. Exactly ONE complete object, fully inside canvas with about 6 percent even safe margin. Never reproduce the brown/black preview background of the reference. Image2 is the OBJECT IDENTITY reference only, not a lighting or rendering reference. Subject: 玄青云竹袍: deep muted charcoal-navy Chinese robe, blue-gray broad lapels and sash, ivory inner collar, sparse pale gray-blue bamboo and cloud brush marks. Retain reference2 somber navy palette. Exactly ONE FOLDED ROBE as a portable inventory object, sleeves folded inward and hem underneath in a compact rectangular bundle. Clearly visible V-shaped crossed collar and tied cloth sash, a few broad overlapping cloth folds. No wearer, body, neck, mannequin, hanger, standing garment, floating detached sash or extra garment. Image2 is only identity and palette reference; reduce its dense embroidery to a few quiet sparse brush motifs. Matte cloth, no shiny satin, no bright light folds. Compose a portrait rectangle around 3:4 proportion. Target grid footprint 3x4, final packed resolution 384x512. Keep the correct aspect ratio. Use maximum readable silhouette with 6% safe margin.",
-    "output_source_directory": "textures/items/inventory_density_20261029/raw_unified_final/",
+    "prompt": "Use case: precise-object-edit. Asset type: transparent Chinese xianxia inventory sprite. Edit target: referenced 玄青云竹袍 robe icon. Transform the standing hollow-torso robe presentation into ONE NEATLY FOLDED COMPACT CLOTHING BUNDLE for storage. Preserve the original garment's color identity: deep blue-grey cloth and lapels, ivory collar, small silver-grey bamboo/cloud motifs. Keep its subtle ink outlines, matte hand-painted watercolor texture and restrained readable embroidery. All sleeves tucked under, long hem folded underneath; no upright chest or mannequin, no spread sleeves, no hanging waist ties. The fold is a compact low rectangular stack, longer vertically than horizontally, with a small V-collar fold visible near its top and a short sash folded across the middle. Orthographic near-top view aligned perfectly upright to a 2:3 portrait inventory footprint, outer stack edges straight, no diagonal tilt, no large perspective side face. Centered single object, about 78% canvas width and 80% height with even safe clear margins. Preserve distinctive trim and motifs but avoid tiny busy detail. TRUE ALPHA TRANSPARENT background and no cast shadow, no black or brown matte, no checkerboard, no glow, no text or labels. One folded robe only, no human or accessories. At least 768x1152 source pixels.",
+    "output_source_directory": "textures/items/inventory_scale_20261104/raw/",
     "references": [
-      "E:/stacklands/docs/美术规范/行囊全物品图标与占地_20261029/风格参考_用户指定瓷瓶.png",
-      "E:\\stacklands\\textures\\items\\clothing\\portrait_clothing_male_xuanqing_yunzhu.png"
-    ]
+      "E:/stacklands/textures/items/inventory_density_20261029/portrait_clothing_male_xuanqing_yunzhu.png"
+    ],
+    "source": "res://textures/items/inventory_scale_20261104/raw/portrait_clothing_male_xuanqing_yunzhu.png"
   },
   {
     "key": "portrait_clothing_male_bilan_yunye",
     "file": "portrait_clothing_male_bilan_yunye.png",
     "name": "碧岚云叶袍",
     "cells": [
-      3,
-      4
+      2,
+      3
     ],
     "ref": "E:\\stacklands\\textures\\items\\clothing\\portrait_clothing_male_bilan_yunye.png",
     "style_reference": "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png",
-    "prompt": "One complete standalone inventory object for a Chinese cultivation RPG. Image 1 is the USER APPROVED PORCELAIN BOTTLE STYLE REFERENCE, not the subject to copy unless the subject is a bottle. Match its hand-painted watercolor texture and believable painted volume, while keeping this object's own material and local colors. Chinese ink and restrained watercolor, thin varied grey-brown contours, low-saturation pigments, subtle directional brushwork following the form. Quiet matte surfaces under broad diffuse illumination. Solid volume through gently separated light, middle and shadow planes of the LOCAL COLOR. Lighter strokes are muted pigment on the object, never reflected light spots. Clear silhouette and few readable material features for small inventory display. No self-emission, bloom, aura, halo, rim lighting, white edge streaks, specular hotspots, sparkles, glossy reflections, glassy droplets, plastic or frosted 3D rendering. No flat vector shapes, thick cartoon outline, photographic noise or dense tiny scratches. TRUE ALPHA TRANSPARENCY outside the physical silhouette; no backdrop, floor, cast shadow, frame, lettering or interface. Exactly ONE complete object, fully inside canvas with about 6 percent even safe margin. Never reproduce the brown/black preview background of the reference. Image2 is the OBJECT IDENTITY reference only, not a lighting or rendering reference. Subject: 碧岚云叶袍: muted deep teal-green Chinese robe, darker gray-green broad lapels and sash, warm ivory inner collar, sparse low-contrast cream leaf/cloud brush marks. Retain reference2 green palette. Exactly ONE FOLDED ROBE as a portable inventory object, sleeves folded inward and hem underneath in a compact rectangular bundle. Clearly visible V-shaped crossed collar and tied cloth sash, a few broad overlapping cloth folds. No wearer, body, neck, mannequin, hanger, standing garment, floating detached sash or extra garment. Image2 is only identity and palette reference; reduce its dense embroidery to a few quiet sparse brush motifs. Matte cloth, no shiny satin, no bright light folds. Compose a portrait rectangle around 3:4 proportion. Target grid footprint 3x4, final packed resolution 384x512. Keep the correct aspect ratio. Use maximum readable silhouette with 6% safe margin.",
-    "output_source_directory": "textures/items/inventory_density_20261029/raw_unified_final/",
+    "prompt": "Use case: precise-object-edit. Asset type: transparent Chinese xianxia inventory sprite. Edit target: referenced 碧岚云叶袍 robe icon. Transform the standing hollow-torso robe presentation into ONE NEATLY FOLDED COMPACT CLOTHING BUNDLE for storage. Preserve the original garment's color identity: desaturated deep teal-green cloth, ivory collar, pale cloud/leaf embroidery. Keep its subtle ink outlines, matte hand-painted watercolor texture and restrained readable embroidery. All sleeves tucked under, long hem folded underneath; no upright chest or mannequin, no spread sleeves, no hanging waist ties. The fold is a compact low rectangular stack, longer vertically than horizontally, with a small V-collar fold visible near its top and a short sash folded across the middle. Orthographic near-top view aligned perfectly upright to a 2:3 portrait inventory footprint, outer stack edges straight, no diagonal tilt, no large perspective side face. Centered single object, about 78% canvas width and 80% height with even safe clear margins. Preserve distinctive trim and motifs but avoid tiny busy detail. TRUE ALPHA TRANSPARENT background and no cast shadow, no black or brown matte, no checkerboard, no glow, no text or labels. One folded robe only, no human or accessories. At least 768x1152 source pixels.",
+    "output_source_directory": "textures/items/inventory_scale_20261104/raw/",
     "references": [
-      "E:/stacklands/docs/美术规范/行囊全物品图标与占地_20261029/风格参考_用户指定瓷瓶.png",
-      "E:\\stacklands\\textures\\items\\clothing\\portrait_clothing_male_bilan_yunye.png"
-    ]
+      "E:/stacklands/textures/items/inventory_density_20261029/portrait_clothing_male_bilan_yunye.png"
+    ],
+    "source": "res://textures/items/inventory_scale_20261104/raw/portrait_clothing_male_bilan_yunye.png"
   },
   {
     "key": "portrait_clothing_male_jiangxia_liuyun",
     "file": "portrait_clothing_male_jiangxia_liuyun.png",
     "name": "绛霞流云袍",
     "cells": [
-      3,
-      4
+      2,
+      3
     ],
     "ref": "E:\\stacklands\\textures\\items\\clothing\\portrait_clothing_male_jiangxia_liuyun.png",
     "style_reference": "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png",
-    "prompt": "One complete standalone inventory object for a Chinese cultivation RPG. Image 1 is the USER APPROVED PORCELAIN BOTTLE STYLE REFERENCE, not the subject to copy unless the subject is a bottle. Match its hand-painted watercolor texture and believable painted volume, while keeping this object's own material and local colors. Chinese ink and restrained watercolor, thin varied grey-brown contours, low-saturation pigments, subtle directional brushwork following the form. Quiet matte surfaces under broad diffuse illumination. Solid volume through gently separated light, middle and shadow planes of the LOCAL COLOR. Lighter strokes are muted pigment on the object, never reflected light spots. Clear silhouette and few readable material features for small inventory display. No self-emission, bloom, aura, halo, rim lighting, white edge streaks, specular hotspots, sparkles, glossy reflections, glassy droplets, plastic or frosted 3D rendering. No flat vector shapes, thick cartoon outline, photographic noise or dense tiny scratches. TRUE ALPHA TRANSPARENCY outside the physical silhouette; no backdrop, floor, cast shadow, frame, lettering or interface. Exactly ONE complete object, fully inside canvas with about 6 percent even safe margin. Never reproduce the brown/black preview background of the reference. Image2 is the OBJECT IDENTITY reference only, not a lighting or rendering reference. Subject: 绛霞流云袍: dark muted brick-red Chinese robe, charcoal-black broad lapels and sash, warm gray inner collar, sparse subdued tan cloud brush marks. Retain reference2 red-black palette. Exactly ONE FOLDED ROBE as a portable inventory object, sleeves folded inward and hem underneath in a compact rectangular bundle. Clearly visible V-shaped crossed collar and tied cloth sash, a few broad overlapping cloth folds. No wearer, body, neck, mannequin, hanger, standing garment, floating detached sash or extra garment. Image2 is only identity and palette reference; reduce its dense embroidery to a few quiet sparse brush motifs. Matte cloth, no shiny satin, no bright light folds. Compose a portrait rectangle around 3:4 proportion. Target grid footprint 3x4, final packed resolution 384x512. Keep the correct aspect ratio. Use maximum readable silhouette with 6% safe margin.",
-    "output_source_directory": "textures/items/inventory_density_20261029/raw_unified_final/",
+    "prompt": "Use case: precise-object-edit. Asset type: transparent Chinese xianxia inventory sprite. Edit target: referenced 绛霞流云袍 robe icon. Transform the standing hollow-torso robe presentation into ONE NEATLY FOLDED COMPACT CLOTHING BUNDLE for storage. Preserve the original garment's color identity: muted cinnabar-red cloth, charcoal lapel and sash, ivory collar and sparse gold cloud motifs. Keep its subtle ink outlines, matte hand-painted watercolor texture and restrained readable embroidery. All sleeves tucked under, long hem folded underneath; no upright chest or mannequin, no spread sleeves, no hanging waist ties. The fold is a compact low rectangular stack, longer vertically than horizontally, with a small V-collar fold visible near its top and a short sash folded across the middle. Orthographic near-top view aligned perfectly upright to a 2:3 portrait inventory footprint, outer stack edges straight, no diagonal tilt, no large perspective side face. Centered single object, about 78% canvas width and 80% height with even safe clear margins. Preserve distinctive trim and motifs but avoid tiny busy detail. TRUE ALPHA TRANSPARENT background and no cast shadow, no black or brown matte, no checkerboard, no glow, no text or labels. One folded robe only, no human or accessories. At least 768x1152 source pixels.",
+    "output_source_directory": "textures/items/inventory_scale_20261104/raw/",
     "references": [
-      "E:/stacklands/docs/美术规范/行囊全物品图标与占地_20261029/风格参考_用户指定瓷瓶.png",
-      "E:\\stacklands\\textures\\items\\clothing\\portrait_clothing_male_jiangxia_liuyun.png"
-    ]
+      "E:/stacklands/textures/items/inventory_density_20261029/portrait_clothing_male_jiangxia_liuyun.png"
+    ],
+    "source": "res://textures/items/inventory_scale_20261104/raw/portrait_clothing_male_jiangxia_liuyun.png"
   },
   {
     "key": "mat_dark_feather",
@@ -261,11 +262,12 @@
     ],
     "ref": "E:\\stacklands\\textures\\items\\inventory_density_20261029\\manual_2x3.png",
     "style_reference": "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png",
-    "prompt": "One complete standalone inventory object for a Chinese cultivation RPG. Image 1 is the USER APPROVED PORCELAIN BOTTLE STYLE REFERENCE, not the subject to copy unless the subject is a bottle. Match its hand-painted watercolor texture and believable painted volume, while keeping this object's own material and local colors. Chinese ink and restrained watercolor, thin varied grey-brown contours, low-saturation pigments, subtle directional brushwork following the form. Quiet matte surfaces under broad diffuse illumination. Solid volume through gently separated light, middle and shadow planes of the LOCAL COLOR. Lighter strokes are muted pigment on the object, never reflected light spots. Clear silhouette and few readable material features for small inventory display. No self-emission, bloom, aura, halo, rim lighting, white edge streaks, specular hotspots, sparkles, glossy reflections, glassy droplets, plastic or frosted 3D rendering. No flat vector shapes, thick cartoon outline, photographic noise or dense tiny scratches. TRUE ALPHA TRANSPARENCY outside the physical silhouette; no backdrop, floor, cast shadow, frame, lettering or interface. Exactly ONE complete object, fully inside canvas with about 6 percent even safe margin. Never reproduce the brown/black preview background of the reference. Subject: a single plain closed Chinese thread-bound manual book. Muted faded slate-grey cloth cover, modest thin tan binding stitches down the left edge, layered warm ivory paper edges at the bottom and right. Slight three-quarter view but primarily a readable portrait rectangle. Utterly generic and practical; no title, blank label, embossing, symbols, motifs, gold ornaments, tassel, loose pages or extra books. Canvas portrait aspect 2:3; final grid footprint 2x3 and packed dimensions256x384.",
-    "output_source_directory": "textures/items/inventory_density_20261029/raw_unified_final/",
+    "prompt": "Use case: precise-object-edit. Asset type: transparent Chinese xianxia inventory icon. Edit target: the referenced plain blue-grey thread-bound book. Keep the existing muted ink-and-watercolor brushwork, simple worn blue-grey cover, ivory pages and tan thread binding. Redraw it in an EXACTLY UPRIGHT, ORTHOGRAPHIC TOP VIEW: spine and outer edges perfectly vertical, top/bottom exactly horizontal, rectangular closed cover, no in-plane tilt, no foreshortening or perspective skew, no visible large side face. It must read as a flat plain pocket manual lying squarely aligned to a rectangular inventory grid. A 2:3 portrait object, centered, approximately 82% of canvas height with breathing space. Entire book visible. Real transparent background, NO checkerboard, NO black matte, NO ground shadow, no scenery, no text or glyphs, no ornate decoration. One book only. Preserve fine paper texture and hand painted material shading. Produce at least 768x1152 source pixels.",
+    "output_source_directory": "textures/items/inventory_scale_20261104/raw/",
     "references": [
-      "E:\\stacklands\\docs\\美术规范\\行囊全物品图标与占地_20261029\\风格参考_用户指定瓷瓶.png"
-    ]
+      "E:/stacklands/textures/items/inventory_density_20261029/manual_generic_2x3.png"
+    ],
+    "source": "res://textures/items/inventory_scale_20261104/raw/manual_generic_2x3.png"
   },
   {
     "key": "mat_cloud_mist_mushroom",

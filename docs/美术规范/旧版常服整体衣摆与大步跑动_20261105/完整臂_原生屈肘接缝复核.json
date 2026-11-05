@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "method": "Native renderer screenshot compared against the solid viewport background; count enclosed background-colored pixels in the elbow ROI. PNG sources and capture images were not edited.",
+  "elbow_roi_per_panel": [
+    60,
+    160,
+    120,
+    110
+  ],
+  "deep_flex_degrees": 160,
+  "columns": [
+    "near_open",
+    "far_open",
+    "near_fist",
+    "far_fist",
+    "near_grip",
+    "protected_v21"
+  ],
+  "captures": {
+    "gallery": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\output\\approved_outfit_full_arms_gallery\\complete_arm_gallery.png",
+      "enclosed_elbow_background_pixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "bent": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\output\\approved_outfit_full_arms_bent\\complete_arm_gallery.png",
+      "enclosed_elbow_background_pixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  }
+}

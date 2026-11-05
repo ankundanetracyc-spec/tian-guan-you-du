@@ -1,0 +1,1508 @@
+{
+  "schema_version": 1,
+  "inspected_at": "2026-11-05T01:28:17.965+08:00",
+  "timezone": "Asia/Shanghai",
+  "status": "六件实际PNG独立检查完成：body、双侧普通放松手/握拳及瘦腿；整套试穿待验",
+  "scope": "只读六件实际PNG与原完整画布模板；仅本QA JSON写入，无PNG/runtime/renderer/adapter/registration修改。",
+  "approval_status": "未认定用户已经视觉批准。",
+  "basis": [
+    "实际文件W/H、RGBA及PNG SHA256，未从提示词尺寸推断。",
+    "Alpha>=128用于主体范围；Alpha非零范围同时保留供边缘检查。",
+    "sourceCanvasNormalized按完整画布归一化；所有实际轮廓测量与原模板骨pivot严格分开。"
+  ],
+  "style_reference": [
+    "mods/appearance/clothing_polish_20261103/final/male/clothing/06.png"
+  ],
+  "style_assessment": {
+    "visual_result": "衣身v7未变；四袖仍为半身06的米白青灰成组流云/浅回纹；新手型为普通放松全手和握拳，旧剑指不作本轮默认结论。",
+    "hands": "nearopen手背朝屏、拇指在画面RIGHT；faropen掌心朝屏。两侧fist均四指收拢成拳。用户指定画面方向优先，不从youbi/zuobi标签反回。",
+    "boots": "新腿帽与上腿较旧图收直，靴筒/圆脚背/鞋底仍可辨；精确局部宽度另报告。",
+    "limitation": "只读PNG无法证明骨pivot注册、手型切换连续性、源网格承载、动态接缝或整套通过。",
+    "user_review": "未认定用户已批准本轮最终整套观感。"
+  },
+  "batch_hashes_match_before_write": true,
+  "materials": [
+    {
+      "component": "body",
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\body.png",
+      "read_at": "2026-11-05T01:28:17.723+08:00",
+      "width": 971,
+      "height": 1620,
+      "mode": "RGBA",
+      "png_sha256": "9a87016e7b3aaf208d369fd7033cb0fa62f31ec8690cb2727d050120099a3109",
+      "file_size_bytes": 848678,
+      "alpha_nonzero_bbox": [
+        0,
+        29,
+        939,
+        1620
+      ],
+      "alpha_ge_128_bbox": [
+        214,
+        146,
+        704,
+        1589
+      ],
+      "alpha_nonzero_bbox_normalized": [
+        0.0,
+        0.017901234567901235,
+        0.9670442842430484,
+        1.0
+      ],
+      "alpha_ge_128_bbox_normalized": [
+        0.2203913491246138,
+        0.09012345679012346,
+        0.7250257466529351,
+        0.9808641975308642
+      ],
+      "bbox_convention": "[left,top,right,bottom]，右/下界不含",
+      "transparent_background": {
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "min_alpha": 0,
+        "max_alpha": 255,
+        "note": "实际RGBA透明图；非零Alpha中含极淡散点，不据此自动裁切原画布。"
+      },
+      "stability": {
+        "before_sha256": "9a87016e7b3aaf208d369fd7033cb0fa62f31ec8690cb2727d050120099a3109",
+        "after_sha256": "9a87016e7b3aaf208d369fd7033cb0fa62f31ec8690cb2727d050120099a3109",
+        "match": true,
+        "attempts": 1
+      },
+      "source_template_core_bbox_normalized": [
+        0.21666666666666667,
+        0.09,
+        0.8,
+        0.99
+      ],
+      "template_pivots_are_not_measured_image_joints": true,
+      "template_anchor_samples": [
+        {
+          "name": "upper_body",
+          "kind": "source_skin_bindpose_pivot",
+          "template_source_canvas_normalized": [
+            0.5539279915193419,
+            0.4300222793977793
+          ],
+          "image_pixel_at_guide_coordinate": [
+            538,
+            697
+          ],
+          "rgba_at_guide_coordinate": [
+            145,
+            159,
+            161,
+            253
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        },
+        {
+          "name": "cloth_root",
+          "kind": "source_skin_bindpose_pivot",
+          "template_source_canvas_normalized": [
+            0.5539279904662158,
+            0.43108387221872135
+          ],
+          "image_pixel_at_guide_coordinate": [
+            538,
+            698
+          ],
+          "rgba_at_guide_coordinate": [
+            151,
+            165,
+            166,
+            253
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        },
+        {
+          "name": "shenti2_1",
+          "kind": "source_skin_bindpose_pivot",
+          "template_source_canvas_normalized": [
+            0.5004842456787878,
+            0.6347892109792075
+          ],
+          "image_pixel_at_guide_coordinate": [
+            486,
+            1028
+          ],
+          "rgba_at_guide_coordinate": [
+            243,
+            235,
+            224,
+            253
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        },
+        {
+          "name": "shenti2_2",
+          "kind": "source_skin_bindpose_pivot",
+          "template_source_canvas_normalized": [
+            0.33269542438277316,
+            0.7035691146085422
+          ],
+          "image_pixel_at_guide_coordinate": [
+            323,
+            1140
+          ],
+          "rgba_at_guide_coordinate": [
+            192,
+            193,
+            191,
+            253
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        },
+        {
+          "name": "bone_3",
+          "kind": "source_skin_bindpose_pivot",
+          "template_source_canvas_normalized": [
+            0.4971584692999937,
+            0.6337751481497101
+          ],
+          "image_pixel_at_guide_coordinate": [
+            483,
+            1027
+          ],
+          "rgba_at_guide_coordinate": [
+            245,
+            235,
+            227,
+            254
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        },
+        {
+          "name": "bone_4",
+          "kind": "source_skin_bindpose_pivot",
+          "template_source_canvas_normalized": [
+            0.6741241932342267,
+            0.7350840141947168
+          ],
+          "image_pixel_at_guide_coordinate": [
+            655,
+            1191
+          ],
+          "rgba_at_guide_coordinate": [
+            146,
+            153,
+            152,
+            253
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        },
+        {
+          "name": "bone_5",
+          "kind": "source_skin_bindpose_pivot",
+          "template_source_canvas_normalized": [
+            0.5193664554382016,
+            0.5940444893457731
+          ],
+          "image_pixel_at_guide_coordinate": [
+            504,
+            962
+          ],
+          "rgba_at_guide_coordinate": [
+            246,
+            236,
+            229,
+            253
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        },
+        {
+          "name": "head_neck",
+          "kind": "external_source_rig_mount",
+          "template_source_canvas_normalized": [
+            0.510888477617112,
+            0.10369862103211268
+          ],
+          "image_pixel_at_guide_coordinate": [
+            496,
+            168
+          ],
+          "rgba_at_guide_coordinate": [
+            245,
+            236,
+            227,
+            252
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        },
+        {
+          "name": "near_shoulder_mount",
+          "kind": "external_source_rig_mount",
+          "template_source_canvas_normalized": [
+            0.4947585364118313,
+            0.19838295754958446
+          ],
+          "image_pixel_at_guide_coordinate": [
+            480,
+            321
+          ],
+          "rgba_at_guide_coordinate": [
+            247,
+            236,
+            228,
+            253
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        },
+        {
+          "name": "far_shoulder_mount",
+          "kind": "external_source_rig_mount",
+          "template_source_canvas_normalized": [
+            0.5195419780463973,
+            0.1834935320548009
+          ],
+          "image_pixel_at_guide_coordinate": [
+            504,
+            297
+          ],
+          "rgba_at_guide_coordinate": [
+            248,
+            237,
+            229,
+            253
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        }
+      ],
+      "layout_observations": {
+        "waistband_blue_band_rows": [
+          650,
+          743
+        ],
+        "waistband_blue_band_y_normalized": [
+          0.4012345679012346,
+          0.458641975308642
+        ],
+        "waistband_center_y_normalized": 0.42993827160493825,
+        "waistband_expected_center_y": 0.431,
+        "waistband_center_delta_normalized": -0.001061728395061745,
+        "waistband_method": "主体内蓝灰像素(B-R>5,G-R>4)，仅在0.35H..0.50H搜索每行宽度大于0.07W的带区；颜色分区测量，非腰骨pivot。",
+        "closed_lower_garment_alpha_check": {
+          "threshold": 128,
+          "tested_y_normalized": [
+            0.47,
+            0.975
+          ],
+          "rows_with_internal_alpha_gaps": 0,
+          "gap_rows": [],
+          "result": "被测下摆每行主体内Alpha连续，无竖向透明开衩。",
+          "limitation": "仅PNG透明连续性，不代替网格承载/动态接缝/整套验收。"
+        },
+        "visual_neck_and_edge": "侧向右窄边为青灰底与浅回纹，无正面V/X交领；上背后缘未见旧尖凸点，原半圆肩窝/封闭肩圈已不见。",
+        "visible_costume_identity": "成组青灰流云、前窄边浅回纹、同色云纹腰束；侧后与下摆云纹是用户授权下按半身06设计词汇原创延展，并非从未展示的06下摆直接提取。",
+        "unchanged_from_prior_v7_png": true
+      },
+      "individual_png_assessment": "已记录实际PNG与独立手型/透明域观察；正常open/fist取代旧剑指，整套试穿与用户评价待验。",
+      "source_logical_canvas_size": [
+        60,
+        100
+      ],
+      "template_nominal_drawing_canvas_size": [
+        1440,
+        2400
+      ],
+      "actual_png_size_is_independent_of_nominal_template": true,
+      "generation_version": "portrait_restore_v7_retained",
+      "template_component": "body"
+    },
+    {
+      "component": "sleeve_near",
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_near.png",
+      "read_at": "2026-11-05T01:28:17.815+08:00",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "png_sha256": "3dbd0516571a25c84710bc3675b518fc40744f8627da7491553e2fc32db31082",
+      "file_size_bytes": 297417,
+      "alpha_nonzero_bbox": [
+        0,
+        67,
+        1174,
+        1230
+      ],
+      "alpha_ge_128_bbox": [
+        477,
+        109,
+        711,
+        994
+      ],
+      "alpha_nonzero_bbox_normalized": [
+        0.0,
+        0.05342902711323764,
+        0.9362041467304625,
+        0.9808612440191388
+      ],
+      "alpha_ge_128_bbox_normalized": [
+        0.3803827751196172,
+        0.08692185007974482,
+        0.5669856459330144,
+        0.7926634768740032
+      ],
+      "bbox_convention": "[left,top,right,bottom]，右/下界不含",
+      "transparent_background": {
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "min_alpha": 0,
+        "max_alpha": 255,
+        "note": "实际RGBA透明图；非零Alpha中含极淡散点，不据此自动裁切原画布。"
+      },
+      "stability": {
+        "before_sha256": "3dbd0516571a25c84710bc3675b518fc40744f8627da7491553e2fc32db31082",
+        "after_sha256": "3dbd0516571a25c84710bc3675b518fc40744f8627da7491553e2fc32db31082",
+        "match": true,
+        "attempts": 1
+      },
+      "source_template_core_bbox_normalized": [
+        0.4,
+        0.11666666666666667,
+        0.5666666666666667,
+        0.75
+      ],
+      "template_pivots_are_not_measured_image_joints": true,
+      "template_anchor_samples": [
+        {
+          "name": "shoulder",
+          "kind": "source_skin_bindpose_pivot",
+          "template_source_canvas_normalized": [
+            0.4925894099499961,
+            0.21725443210457893
+          ],
+          "image_pixel_at_guide_coordinate": [
+            618,
+            272
+          ],
+          "rgba_at_guide_coordinate": [
+            165,
+            170,
+            171,
+            253
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        },
+        {
+          "name": "elbow",
+          "kind": "source_skin_bindpose_pivot",
+          "template_source_canvas_normalized": [
+            0.4826962165593356,
+            0.4877057503499695
+          ],
+          "image_pixel_at_guide_coordinate": [
+            605,
+            612
+          ],
+          "rgba_at_guide_coordinate": [
+            141,
+            146,
+            145,
+            253
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        },
+        {
+          "name": "wrist",
+          "kind": "source_skin_bindpose_pivot",
+          "template_source_canvas_normalized": [
+            0.49810930905178225,
+            0.6875595298318736
+          ],
+          "image_pixel_at_guide_coordinate": [
+            625,
+            862
+          ],
+          "rgba_at_guide_coordinate": [
+            182,
+            153,
+            138,
+            253
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        }
+      ],
+      "layout_observations": {
+        "actual_visible_hand_bottom_y_normalized": 0.7926634768740032,
+        "source_guide_core_bottom_y_normalized": 0.75,
+        "bottom_delta_normalized": 0.04266347687400318,
+        "bottom_delta_actual_pixels": 53.499999999999986,
+        "guide_wrist_y_normalized": 0.6875595298318736,
+        "hand_shape_visual_assessment": "普通放松全手，手背朝屏，拇指明确在画面RIGHT；四指自然并拢下垂，已不是剑指。",
+        "pivot_limitation": "手底属于实际PNG轮廓占位；腕骨位置来自模板，不能仅靠可见袖口/肤色交界反推。",
+        "hand_identification_limit": "用户指定画面方向优先；不按youbi/zuobi或近远标签反推、翻回用户手向。目视手面和指向不等于骨pivot注册验收。",
+        "shoulder_root_visual_assessment": "肩顶为浅色衣料，无黑outline、闭圆圈或明显圆形肩窝；实际躯干拼接缝不能由单件PNG证明。",
+        "visible_costume_identity": "成组浅青灰流云与纤细浅回纹边，袖口同色窄束带；不再使用旧孤立S形云标。",
+        "prior_v7_hand_bottom_y_normalized": 0.7575757575757576,
+        "delta_from_prior_v7_normalized": 0.03508771929824561,
+        "delta_from_prior_v7_actual_pixels": 44.0,
+        "pose_comparison_limit": "旧v7为两指候选，本轮普通放松全手/握拳；指端轮廓不同，不能把底位置变化当作腕骨位移，也不能直接宣称占位不变。",
+        "user_direction_check": {
+          "back_of_hand_toward_screen": true,
+          "thumb_screen_side": "RIGHT",
+          "readout_basis": "右侧短粗拇指独立轮廓，手背无横贯掌纹，四指连续下垂。"
+        }
+      },
+      "individual_png_assessment": "已记录实际PNG与独立手型/透明域观察；正常open/fist取代旧剑指，整套试穿与用户评价待验。",
+      "source_logical_canvas_size": [
+        60,
+        60
+      ],
+      "template_nominal_drawing_canvas_size": [
+        1440,
+        1440
+      ],
+      "actual_png_size_is_independent_of_nominal_template": true,
+      "generation_version": "neutral_hands_and_leg",
+      "template_component": "sleeve_near",
+      "hand_pose": "neutral_open",
+      "logical_part": "near_neutral_open"
+    },
+    {
+      "component": "sleeve_far",
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_far.png",
+      "read_at": "2026-11-05T01:28:17.845+08:00",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "png_sha256": "3045f76c238120f3440cdbc24b00ea78871c9ed7bf39f77815c392b86db17f09",
+      "file_size_bytes": 302148,
+      "alpha_nonzero_bbox": [
+        31,
+        31,
+        1144,
+        1230
+      ],
+      "alpha_ge_128_bbox": [
+        438,
+        209,
+        774,
+        1016
+      ],
+      "alpha_nonzero_bbox_normalized": [
+        0.024720893141945772,
+        0.024720893141945772,
+        0.9122807017543859,
+        0.9808612440191388
+      ],
+      "alpha_ge_128_bbox_normalized": [
+        0.3492822966507177,
+        0.16666666666666666,
+        0.6172248803827751,
+        0.810207336523126
+      ],
+      "bbox_convention": "[left,top,right,bottom]，右/下界不含",
+      "transparent_background": {
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "min_alpha": 0,
+        "max_alpha": 255,
+        "note": "实际RGBA透明图；非零Alpha中含极淡散点，不据此自动裁切原画布。"
+      },
+      "stability": {
+        "before_sha256": "3045f76c238120f3440cdbc24b00ea78871c9ed7bf39f77815c392b86db17f09",
+        "after_sha256": "3045f76c238120f3440cdbc24b00ea78871c9ed7bf39f77815c392b86db17f09",
+        "match": true,
+        "attempts": 1
+      },
+      "source_template_core_bbox_normalized": [
+        0.38333333333333336,
+        0.16666666666666666,
+        0.6333333333333333,
+        0.8
+      ],
+      "template_pivots_are_not_measured_image_joints": true,
+      "template_anchor_samples": [
+        {
+          "name": "shoulder",
+          "kind": "source_skin_bindpose_pivot",
+          "template_source_canvas_normalized": [
+            0.4079027889967888,
+            0.24491132909366964
+          ],
+          "image_pixel_at_guide_coordinate": [
+            512,
+            307
+          ],
+          "rgba_at_guide_coordinate": [
+            178,
+            181,
+            181,
+            254
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        },
+        {
+          "name": "elbow",
+          "kind": "source_skin_bindpose_pivot",
+          "template_source_canvas_normalized": [
+            0.5272523706571535,
+            0.5222480426305165
+          ],
+          "image_pixel_at_guide_coordinate": [
+            661,
+            655
+          ],
+          "rgba_at_guide_coordinate": [
+            225,
+            215,
+            207,
+            253
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        },
+        {
+          "name": "wrist",
+          "kind": "source_skin_bindpose_pivot",
+          "template_source_canvas_normalized": [
+            0.5596602146157985,
+            0.6677954575542979
+          ],
+          "image_pixel_at_guide_coordinate": [
+            702,
+            837
+          ],
+          "rgba_at_guide_coordinate": [
+            209,
+            197,
+            190,
+            253
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        }
+      ],
+      "layout_observations": {
+        "actual_visible_hand_bottom_y_normalized": 0.810207336523126,
+        "source_guide_core_bottom_y_normalized": 0.8,
+        "bottom_delta_normalized": 0.010207336523125998,
+        "bottom_delta_actual_pixels": 12.800000000000002,
+        "guide_wrist_y_normalized": 0.6677954575542979,
+        "hand_shape_visual_assessment": "普通放松全手，掌面朝屏，可辨横向掌纹和拇指；身体仍为斜侧向袖轴，未翻成正面身体。",
+        "pivot_limitation": "手底属于实际PNG轮廓占位；腕骨位置来自模板，不能仅靠可见袖口/肤色交界反推。",
+        "hand_identification_limit": "用户指定画面方向优先；不按youbi/zuobi或近远标签反推、翻回用户手向。目视手面和指向不等于骨pivot注册验收。",
+        "shoulder_root_visual_assessment": "肩顶为浅色衣料，无黑outline、闭圆圈或明显圆形肩窝；实际躯干拼接缝不能由单件PNG证明。",
+        "visible_costume_identity": "成组浅青灰流云与纤细浅回纹边，袖口同色窄束带；不再使用旧孤立S形云标。",
+        "prior_v7_hand_bottom_y_normalized": 0.7854864433811802,
+        "delta_from_prior_v7_normalized": 0.02472089314194581,
+        "delta_from_prior_v7_actual_pixels": 31.000000000000046,
+        "pose_comparison_limit": "旧v7为两指候选，本轮普通放松全手/握拳；指端轮廓不同，不能把底位置变化当作腕骨位移，也不能直接宣称占位不变。",
+        "user_direction_check": {
+          "palm_toward_screen": true,
+          "readout_basis": "掌心横向纹线与拇指展开面可读，不依据部件命名改方向。"
+        }
+      },
+      "individual_png_assessment": "已记录实际PNG与独立手型/透明域观察；正常open/fist取代旧剑指，整套试穿与用户评价待验。",
+      "source_logical_canvas_size": [
+        60,
+        60
+      ],
+      "template_nominal_drawing_canvas_size": [
+        1440,
+        1440
+      ],
+      "actual_png_size_is_independent_of_nominal_template": true,
+      "generation_version": "neutral_hands_and_leg",
+      "template_component": "sleeve_far",
+      "hand_pose": "neutral_open",
+      "logical_part": "far_neutral_open"
+    },
+    {
+      "component": "sleeve_near_fist",
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_near_fist.png",
+      "read_at": "2026-11-05T01:28:17.872+08:00",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "png_sha256": "4d9566e8ff9f85f0bf2b9f85b22393f67db7835f66e20de158e54d799b1919e1",
+      "file_size_bytes": 315360,
+      "alpha_nonzero_bbox": [
+        35,
+        19,
+        1224,
+        1214
+      ],
+      "alpha_ge_128_bbox": [
+        477,
+        111,
+        712,
+        945
+      ],
+      "alpha_nonzero_bbox_normalized": [
+        0.027910685805422646,
+        0.015151515151515152,
+        0.9760765550239234,
+        0.9681020733652312
+      ],
+      "alpha_ge_128_bbox_normalized": [
+        0.3803827751196172,
+        0.08851674641148326,
+        0.5677830940988836,
+        0.7535885167464115
+      ],
+      "bbox_convention": "[left,top,right,bottom]，右/下界不含",
+      "transparent_background": {
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "min_alpha": 0,
+        "max_alpha": 255,
+        "note": "实际RGBA透明图；非零Alpha中含极淡散点，不据此自动裁切原画布。"
+      },
+      "stability": {
+        "before_sha256": "4d9566e8ff9f85f0bf2b9f85b22393f67db7835f66e20de158e54d799b1919e1",
+        "after_sha256": "4d9566e8ff9f85f0bf2b9f85b22393f67db7835f66e20de158e54d799b1919e1",
+        "match": true,
+        "attempts": 1
+      },
+      "source_template_core_bbox_normalized": [
+        0.4,
+        0.11666666666666667,
+        0.5666666666666667,
+        0.75
+      ],
+      "template_pivots_are_not_measured_image_joints": true,
+      "template_anchor_samples": [
+        {
+          "name": "shoulder",
+          "kind": "source_skin_bindpose_pivot",
+          "template_source_canvas_normalized": [
+            0.4925894099499961,
+            0.21725443210457893
+          ],
+          "image_pixel_at_guide_coordinate": [
+            618,
+            272
+          ],
+          "rgba_at_guide_coordinate": [
+            151,
+            161,
+            163,
+            253
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        },
+        {
+          "name": "elbow",
+          "kind": "source_skin_bindpose_pivot",
+          "template_source_canvas_normalized": [
+            0.4826962165593356,
+            0.4877057503499695
+          ],
+          "image_pixel_at_guide_coordinate": [
+            605,
+            612
+          ],
+          "rgba_at_guide_coordinate": [
+            109,
+            120,
+            120,
+            253
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        },
+        {
+          "name": "wrist",
+          "kind": "source_skin_bindpose_pivot",
+          "template_source_canvas_normalized": [
+            0.49810930905178225,
+            0.6875595298318736
+          ],
+          "image_pixel_at_guide_coordinate": [
+            625,
+            862
+          ],
+          "rgba_at_guide_coordinate": [
+            161,
+            128,
+            109,
+            253
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        }
+      ],
+      "layout_observations": {
+        "actual_visible_hand_bottom_y_normalized": 0.7535885167464115,
+        "source_guide_core_bottom_y_normalized": 0.75,
+        "bottom_delta_normalized": 0.0035885167464114742,
+        "bottom_delta_actual_pixels": 4.4999999999999885,
+        "guide_wrist_y_normalized": 0.6875595298318736,
+        "hand_shape_visual_assessment": "普通握拳，四指收拢、指节底弧与右侧拇指可读；不是旧伸出两指。",
+        "pivot_limitation": "手底属于实际PNG轮廓占位；腕骨位置来自模板，不能仅靠可见袖口/肤色交界反推。",
+        "hand_identification_limit": "用户指定画面方向优先；不按youbi/zuobi或近远标签反推、翻回用户手向。目视手面和指向不等于骨pivot注册验收。",
+        "shoulder_root_visual_assessment": "肩顶为浅色衣料，无黑outline、闭圆圈或明显圆形肩窝；实际躯干拼接缝不能由单件PNG证明。",
+        "visible_costume_identity": "成组浅青灰流云与纤细浅回纹边，袖口同色窄束带；不再使用旧孤立S形云标。",
+        "prior_v7_hand_bottom_y_normalized": 0.7575757575757576,
+        "delta_from_prior_v7_normalized": -0.003987240829346095,
+        "delta_from_prior_v7_actual_pixels": -5.000000000000003,
+        "pose_comparison_limit": "旧v7为两指候选，本轮普通放松全手/握拳；指端轮廓不同，不能把底位置变化当作腕骨位移，也不能直接宣称占位不变。"
+      },
+      "individual_png_assessment": "已记录实际PNG与独立手型/透明域观察；正常open/fist取代旧剑指，整套试穿与用户评价待验。",
+      "source_logical_canvas_size": [
+        60,
+        60
+      ],
+      "template_nominal_drawing_canvas_size": [
+        1440,
+        1440
+      ],
+      "actual_png_size_is_independent_of_nominal_template": true,
+      "generation_version": "neutral_hands_and_leg",
+      "template_component": "sleeve_near",
+      "hand_pose": "fist",
+      "logical_part": "near_fist"
+    },
+    {
+      "component": "sleeve_far_fist",
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_far_fist.png",
+      "read_at": "2026-11-05T01:28:17.898+08:00",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "png_sha256": "25de5070de5816921e1c7cb292c183bcef7cf026d1d9b22e6f6b43b044c5202e",
+      "file_size_bytes": 299060,
+      "alpha_nonzero_bbox": [
+        23,
+        101,
+        1210,
+        1198
+      ],
+      "alpha_ge_128_bbox": [
+        434,
+        207,
+        776,
+        977
+      ],
+      "alpha_nonzero_bbox_normalized": [
+        0.018341307814992026,
+        0.08054226475279107,
+        0.9649122807017544,
+        0.9553429027113237
+      ],
+      "alpha_ge_128_bbox_normalized": [
+        0.34609250398724084,
+        0.16507177033492823,
+        0.6188197767145136,
+        0.7791068580542265
+      ],
+      "bbox_convention": "[left,top,right,bottom]，右/下界不含",
+      "transparent_background": {
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "min_alpha": 0,
+        "max_alpha": 255,
+        "note": "实际RGBA透明图；非零Alpha中含极淡散点，不据此自动裁切原画布。"
+      },
+      "stability": {
+        "before_sha256": "25de5070de5816921e1c7cb292c183bcef7cf026d1d9b22e6f6b43b044c5202e",
+        "after_sha256": "25de5070de5816921e1c7cb292c183bcef7cf026d1d9b22e6f6b43b044c5202e",
+        "match": true,
+        "attempts": 1
+      },
+      "source_template_core_bbox_normalized": [
+        0.38333333333333336,
+        0.16666666666666666,
+        0.6333333333333333,
+        0.8
+      ],
+      "template_pivots_are_not_measured_image_joints": true,
+      "template_anchor_samples": [
+        {
+          "name": "shoulder",
+          "kind": "source_skin_bindpose_pivot",
+          "template_source_canvas_normalized": [
+            0.4079027889967888,
+            0.24491132909366964
+          ],
+          "image_pixel_at_guide_coordinate": [
+            512,
+            307
+          ],
+          "rgba_at_guide_coordinate": [
+            174,
+            177,
+            177,
+            253
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        },
+        {
+          "name": "elbow",
+          "kind": "source_skin_bindpose_pivot",
+          "template_source_canvas_normalized": [
+            0.5272523706571535,
+            0.5222480426305165
+          ],
+          "image_pixel_at_guide_coordinate": [
+            661,
+            655
+          ],
+          "rgba_at_guide_coordinate": [
+            216,
+            203,
+            193,
+            253
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        },
+        {
+          "name": "wrist",
+          "kind": "source_skin_bindpose_pivot",
+          "template_source_canvas_normalized": [
+            0.5596602146157985,
+            0.6677954575542979
+          ],
+          "image_pixel_at_guide_coordinate": [
+            702,
+            837
+          ],
+          "rgba_at_guide_coordinate": [
+            197,
+            185,
+            177,
+            253
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        }
+      ],
+      "layout_observations": {
+        "actual_visible_hand_bottom_y_normalized": 0.7791068580542265,
+        "source_guide_core_bottom_y_normalized": 0.8,
+        "bottom_delta_normalized": -0.02089314194577352,
+        "bottom_delta_actual_pixels": -26.199999999999992,
+        "guide_wrist_y_normalized": 0.6677954575542979,
+        "hand_shape_visual_assessment": "普通握拳，掌侧弯曲四指和压住的拇指可读；不是旧伸出两指。",
+        "pivot_limitation": "手底属于实际PNG轮廓占位；腕骨位置来自模板，不能仅靠可见袖口/肤色交界反推。",
+        "hand_identification_limit": "用户指定画面方向优先；不按youbi/zuobi或近远标签反推、翻回用户手向。目视手面和指向不等于骨pivot注册验收。",
+        "shoulder_root_visual_assessment": "肩顶为浅色衣料，无黑outline、闭圆圈或明显圆形肩窝；实际躯干拼接缝不能由单件PNG证明。",
+        "visible_costume_identity": "成组浅青灰流云与纤细浅回纹边，袖口同色窄束带；不再使用旧孤立S形云标。",
+        "prior_v7_hand_bottom_y_normalized": 0.7854864433811802,
+        "delta_from_prior_v7_normalized": -0.006379585326953707,
+        "delta_from_prior_v7_actual_pixels": -7.9999999999999485,
+        "pose_comparison_limit": "旧v7为两指候选，本轮普通放松全手/握拳；指端轮廓不同，不能把底位置变化当作腕骨位移，也不能直接宣称占位不变。"
+      },
+      "individual_png_assessment": "已记录实际PNG与独立手型/透明域观察；正常open/fist取代旧剑指，整套试穿与用户评价待验。",
+      "source_logical_canvas_size": [
+        60,
+        60
+      ],
+      "template_nominal_drawing_canvas_size": [
+        1440,
+        1440
+      ],
+      "actual_png_size_is_independent_of_nominal_template": true,
+      "generation_version": "neutral_hands_and_leg",
+      "template_component": "sleeve_far",
+      "hand_pose": "fist",
+      "logical_part": "far_fist"
+    },
+    {
+      "component": "leg",
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\leg.png",
+      "read_at": "2026-11-05T01:28:17.929+08:00",
+      "width": 992,
+      "height": 1586,
+      "mode": "RGBA",
+      "png_sha256": "1a34b9c4f232f77e67bd56f64fdbeb4734a8e7271bfb50d71528bc0d3e656ec0",
+      "file_size_bytes": 378132,
+      "alpha_nonzero_bbox": [
+        41,
+        8,
+        946,
+        1586
+      ],
+      "alpha_ge_128_bbox": [
+        303,
+        157,
+        657,
+        1426
+      ],
+      "alpha_nonzero_bbox_normalized": [
+        0.04133064516129032,
+        0.005044136191677175,
+        0.9536290322580645,
+        1.0
+      ],
+      "alpha_ge_128_bbox_normalized": [
+        0.30544354838709675,
+        0.09899117276166457,
+        0.6622983870967742,
+        0.8991172761664565
+      ],
+      "bbox_convention": "[left,top,right,bottom]，右/下界不含",
+      "transparent_background": {
+        "corner_alpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "min_alpha": 0,
+        "max_alpha": 255,
+        "note": "实际RGBA透明图；非零Alpha中含极淡散点，不据此自动裁切原画布。"
+      },
+      "stability": {
+        "before_sha256": "1a34b9c4f232f77e67bd56f64fdbeb4734a8e7271bfb50d71528bc0d3e656ec0",
+        "after_sha256": "1a34b9c4f232f77e67bd56f64fdbeb4734a8e7271bfb50d71528bc0d3e656ec0",
+        "match": true,
+        "attempts": 1
+      },
+      "source_template_core_bbox_normalized": [
+        0.3,
+        0.1,
+        0.68,
+        0.8875
+      ],
+      "template_pivots_are_not_measured_image_joints": true,
+      "template_anchor_samples": [
+        {
+          "name": "hip",
+          "kind": "source_skin_bindpose_pivot",
+          "template_source_canvas_normalized": [
+            0.464342535923491,
+            0.14987622131287132
+          ],
+          "image_pixel_at_guide_coordinate": [
+            461,
+            238
+          ],
+          "rgba_at_guide_coordinate": [
+            78,
+            72,
+            77,
+            252
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        },
+        {
+          "name": "knee",
+          "kind": "source_skin_bindpose_pivot",
+          "template_source_canvas_normalized": [
+            0.4390717092014897,
+            0.4967442872815166
+          ],
+          "image_pixel_at_guide_coordinate": [
+            436,
+            788
+          ],
+          "rgba_at_guide_coordinate": [
+            82,
+            75,
+            80,
+            253
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        },
+        {
+          "name": "ankle",
+          "kind": "source_skin_bindpose_pivot",
+          "template_source_canvas_normalized": [
+            0.39260864020078157,
+            0.8534752281921696
+          ],
+          "image_pixel_at_guide_coordinate": [
+            389,
+            1354
+          ],
+          "rgba_at_guide_coordinate": [
+            130,
+            139,
+            142,
+            253
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        },
+        {
+          "name": "boot_cuff_top",
+          "kind": "source_texture_observation_not_joint",
+          "template_source_canvas_normalized": [
+            0.43165024274661223,
+            0.6000325287089628
+          ],
+          "image_pixel_at_guide_coordinate": [
+            428,
+            952
+          ],
+          "rgba_at_guide_coordinate": [
+            78,
+            75,
+            78,
+            253
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        },
+        {
+          "name": "boot_cuff_bottom",
+          "kind": "source_texture_observation_not_joint",
+          "template_source_canvas_normalized": [
+            0.43165024274661223,
+            0.662423129642711
+          ],
+          "image_pixel_at_guide_coordinate": [
+            428,
+            1051
+          ],
+          "rgba_at_guide_coordinate": [
+            134,
+            143,
+            147,
+            253
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        },
+        {
+          "name": "heel_back",
+          "kind": "source_texture_observation_not_joint",
+          "template_source_canvas_normalized": [
+            0.3601063744227092,
+            0.8745511728174545
+          ],
+          "image_pixel_at_guide_coordinate": [
+            357,
+            1387
+          ],
+          "rgba_at_guide_coordinate": [
+            58,
+            61,
+            62,
+            253
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        },
+        {
+          "name": "heel_sole",
+          "kind": "source_texture_observation_not_joint",
+          "template_source_canvas_normalized": [
+            0.3601063744227092,
+            0.8870292930042043
+          ],
+          "image_pixel_at_guide_coordinate": [
+            357,
+            1407
+          ],
+          "rgba_at_guide_coordinate": [
+            87,
+            81,
+            83,
+            252
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        },
+        {
+          "name": "instep",
+          "kind": "source_texture_observation_not_joint",
+          "template_source_canvas_normalized": [
+            0.5094634191195171,
+            0.824638692070456
+          ],
+          "image_pixel_at_guide_coordinate": [
+            505,
+            1308
+          ],
+          "rgba_at_guide_coordinate": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        },
+        {
+          "name": "ball_upper",
+          "kind": "source_texture_observation_not_joint",
+          "template_source_canvas_normalized": [
+            0.549291964371999,
+            0.8495949324439553
+          ],
+          "image_pixel_at_guide_coordinate": [
+            545,
+            1347
+          ],
+          "rgba_at_guide_coordinate": [
+            132,
+            139,
+            143,
+            253
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        },
+        {
+          "name": "ball_sole",
+          "kind": "source_texture_observation_not_joint",
+          "template_source_canvas_normalized": [
+            0.549291964371999,
+            0.8870292930042043
+          ],
+          "image_pixel_at_guide_coordinate": [
+            545,
+            1407
+          ],
+          "rgba_at_guide_coordinate": [
+            84,
+            81,
+            81,
+            253
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        },
+        {
+          "name": "toe_tip",
+          "kind": "source_texture_observation_not_joint",
+          "template_source_canvas_normalized": [
+            0.6787347364425659,
+            0.873267961876264
+          ],
+          "image_pixel_at_guide_coordinate": [
+            673,
+            1385
+          ],
+          "rgba_at_guide_coordinate": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        },
+        {
+          "name": "toe_sole",
+          "kind": "source_texture_observation_not_joint",
+          "template_source_canvas_normalized": [
+            0.6787347364425659,
+            0.8870292930042043
+          ],
+          "image_pixel_at_guide_coordinate": [
+            673,
+            1407
+          ],
+          "rgba_at_guide_coordinate": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        },
+        {
+          "name": "sole_center",
+          "kind": "source_texture_observation_not_joint",
+          "template_source_canvas_normalized": [
+            0.5194205554326374,
+            0.8870292930042043
+          ],
+          "image_pixel_at_guide_coordinate": [
+            515,
+            1407
+          ],
+          "rgba_at_guide_coordinate": [
+            83,
+            80,
+            81,
+            253
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        },
+        {
+          "name": "soft_sole_edge",
+          "kind": "source_texture_observation_not_joint",
+          "template_source_canvas_normalized": [
+            0.5293776917457581,
+            0.8995074131909538
+          ],
+          "image_pixel_at_guide_coordinate": [
+            525,
+            1427
+          ],
+          "rgba_at_guide_coordinate": [
+            0,
+            0,
+            0,
+            2
+          ],
+          "interpretation": "仅在模板位置取样；实际图片轮廓/指端/袖口不是骨pivot。"
+        }
+      ],
+      "layout_observations": {
+        "observed_trouser_cuff_y_normalized_approx": [
+          0.6,
+          0.665
+        ],
+        "cuff_method": "目视蓝灰束口上/下分界，因相邻靴筒同色使用近似区间，不伪称骨关节或精确自动分割。",
+        "source_cuff_y_normalized": [
+          0.6000325287089628,
+          0.662423129642711
+        ],
+        "actual_sole_bottom_y_normalized": 0.8991172761664565,
+        "source_sole_center_y_normalized": 0.8870292930042043,
+        "sole_bottom_delta_normalized": 0.012087983162252236,
+        "pivot_limitation": "髋、膝、踝骨pivot来自模板；图片只可检查对应部位覆盖与占位，不从裤褶反造关节。",
+        "retained_from_previous_inspection": false,
+        "leg_change_note": "本轮新瘦腿实际992×1586；旧side_v3腿另存archive_v7_before_neutral/leg.png。详细髋宽/膝下比例由另一独立报告负责，不以单件bbox替代局部宽度判断。",
+        "prior_leg_png_sha256": "0d189c16b9d0ea151a7418f2556182957cfecbcfa91c0d3d48bcfda5dfccbfda"
+      },
+      "individual_png_assessment": "已记录实际PNG与独立手型/透明域观察；正常open/fist取代旧剑指，整套试穿与用户评价待验。",
+      "source_logical_canvas_size": [
+        50,
+        80
+      ],
+      "template_nominal_drawing_canvas_size": [
+        1200,
+        1920
+      ],
+      "actual_png_size_is_independent_of_nominal_template": true,
+      "generation_version": "neutral_hands_and_leg",
+      "template_component": "leg"
+    }
+  ],
+  "priorInspectionSummary": {
+    "inspected_at": "2026-11-05T00:57:25.994+08:00",
+    "status": "portrait_restore_v7三件及side_v3裤靴PNG独立检查完成；整套试穿与源网格承载尚待另验",
+    "generation_version": "body/near/far=portrait_restore_v7; leg=side_v3",
+    "materials": [
+      {
+        "component": "body",
+        "width": 971,
+        "height": 1620,
+        "png_sha256": "9a87016e7b3aaf208d369fd7033cb0fa62f31ec8690cb2727d050120099a3109",
+        "alpha_nonzero_bbox": [
+          0,
+          29,
+          939,
+          1620
+        ],
+        "alpha_ge_128_bbox": [
+          214,
+          146,
+          704,
+          1589
+        ],
+        "alpha_ge_128_bbox_normalized": [
+          0.2203913491246138,
+          0.09012345679012346,
+          0.7250257466529351,
+          0.9808641975308642
+        ]
+      },
+      {
+        "component": "sleeve_near",
+        "width": 1254,
+        "height": 1254,
+        "png_sha256": "fd2590534d4391d8297112713cd2c39521914bbc4f7c47ae927d2fdd49f54ade",
+        "alpha_nonzero_bbox": [
+          49,
+          33,
+          1216,
+          1124
+        ],
+        "alpha_ge_128_bbox": [
+          483,
+          126,
+          702,
+          950
+        ],
+        "alpha_ge_128_bbox_normalized": [
+          0.38516746411483255,
+          0.10047846889952153,
+          0.5598086124401914,
+          0.7575757575757576
+        ]
+      },
+      {
+        "component": "sleeve_far",
+        "width": 1254,
+        "height": 1254,
+        "png_sha256": "34373a9d61335660aa000ae07f4631ef198697b63b71d880f6c8ee28bbec2c4d",
+        "alpha_nonzero_bbox": [
+          33,
+          71,
+          1240,
+          1236
+        ],
+        "alpha_ge_128_bbox": [
+          450,
+          181,
+          737,
+          985
+        ],
+        "alpha_ge_128_bbox_normalized": [
+          0.3588516746411483,
+          0.14433811802232854,
+          0.5877192982456141,
+          0.7854864433811802
+        ]
+      },
+      {
+        "component": "leg",
+        "width": 991,
+        "height": 1587,
+        "png_sha256": "0d189c16b9d0ea151a7418f2556182957cfecbcfa91c0d3d48bcfda5dfccbfda",
+        "alpha_nonzero_bbox": [
+          40,
+          51,
+          798,
+          1565
+        ],
+        "alpha_ge_128_bbox": [
+          304,
+          144,
+          657,
+          1426
+        ],
+        "alpha_ge_128_bbox_normalized": [
+          0.3067608476286579,
+          0.09073724007561437,
+          0.6629667003027245,
+          0.8985507246376812
+        ]
+      }
+    ],
+    "style_assessment": {
+      "visual_result": "新三件的成组青灰流云、前窄边浅回纹与同色腰束，明显比旧孤立S云标更接近半身06。肩顶未见黑outline或闭圆圈，body上背无旧尖凸点且底弧闭合；米白青灰克制洗染，不以v15旧图案版位否决本轮授权延展。",
+      "hands": "近侧窄小侧面两指，远侧放松窄侧缘；未见大正面掌。此为轮廓读法，不据此认定拇指或精细解剖与原图精确一致。",
+      "boots": "leg沿用side_v3；靴筒、踝部转折、圆脚背与鞋底厚度可辨。",
+      "unseen_areas": "06只显示半身正面；侧后与下摆成组云纹按用户授权原创补全，不宣称复原原图未展示区域。",
+      "limitation": "单件PNG不能证明整套骨pivot、源网格承载、动态遮挡与接缝通过。",
+      "user_review": "整套尚未获得本轮用户视觉批准。"
+    },
+    "note": "保留neutral open/fist与瘦腿更新前v7的实际PNG记录；旧剑指视觉结论不自动继承。",
+    "independent_render_review": {
+      "reviewer": "/root/local_guigubahuang_reference",
+      "method": "另一代理对现有渲染的只读目视观察；与本文件PNG像素/哈希测量分开记录。",
+      "evidence": [
+        "tools/action_battle_test/output/ink_outfit_01_shoulders_v7/Run_New1_shoulder_cycle_sheet.png",
+        "tools/action_battle_test/output/ink_outfit_01_shoulders_v7/Run_New2_shoulder_cycle_sheet.png",
+        "tools/action_battle_test/output/ink_outfit_01_showcase_v7/showcase_041.png"
+      ],
+      "reported_observations": "两段各24相位未目视到透明肩断口；旧黑圈/黑半圆缝线已消失。淡灰肩帽弧与近袖浅回纹边仍可辨。",
+      "qualification": "不能据此称完全无缝，不将目视观察当作PNG像素测量或整套用户验收。"
+    }
+  },
+  "generation_version": "body=portrait_restore_v7_retained; four sleeves=neutral_open_and_fist; leg=slim_upper_leg",
+  "secondary_historical_style_reference": [
+    "tools/action_battle_test/art/yuxu_fullbody_v15/design.png"
+  ],
+  "priorInspectionHistory": [
+    {
+      "inspected_at": "2026-11-05T00:38:22.217+08:00",
+      "status": "四件PNG独立检查完成；整套试穿与源网格承载尚待另行验收",
+      "materials": [
+        {
+          "component": "body",
+          "width": 971,
+          "height": 1620,
+          "png_sha256": "79b1fe4bafb9a35869c60b135c8abe69dd4e12eed35a2448f9e7563c22a1257d",
+          "alpha_nonzero_bbox": [
+            209,
+            99,
+            925,
+            1594
+          ],
+          "alpha_ge_128_bbox": [
+            212,
+            148,
+            697,
+            1588
+          ],
+          "alpha_ge_128_bbox_normalized": [
+            0.21833161688980432,
+            0.09135802469135802,
+            0.717816683831102,
+            0.980246913580247
+          ]
+        },
+        {
+          "component": "sleeve_near",
+          "width": 1254,
+          "height": 1254,
+          "png_sha256": "a61f6f54d20945f41adc5b8b83cc226feadc6a4f20b2bb7f470e86b5ed230e9a",
+          "alpha_nonzero_bbox": [
+            49,
+            127,
+            1227,
+            1228
+          ],
+          "alpha_ge_128_bbox": [
+            489,
+            131,
+            703,
+            950
+          ],
+          "alpha_ge_128_bbox_normalized": [
+            0.38995215311004783,
+            0.10446570972886762,
+            0.5606060606060606,
+            0.7575757575757576
+          ]
+        },
+        {
+          "component": "sleeve_far",
+          "width": 1254,
+          "height": 1254,
+          "png_sha256": "06a81a3a959847d3dffc9d2e0de434a0237bd29b6fd9fad879f0066f4d5d7820",
+          "alpha_nonzero_bbox": [
+            65,
+            31,
+            1192,
+            1101
+          ],
+          "alpha_ge_128_bbox": [
+            463,
+            187,
+            747,
+            989
+          ],
+          "alpha_ge_128_bbox_normalized": [
+            0.36921850079744817,
+            0.14912280701754385,
+            0.5956937799043063,
+            0.7886762360446571
+          ]
+        },
+        {
+          "component": "leg",
+          "width": 991,
+          "height": 1587,
+          "png_sha256": "0d189c16b9d0ea151a7418f2556182957cfecbcfa91c0d3d48bcfda5dfccbfda",
+          "alpha_nonzero_bbox": [
+            40,
+            51,
+            798,
+            1565
+          ],
+          "alpha_ge_128_bbox": [
+            304,
+            144,
+            657,
+            1426
+          ],
+          "alpha_ge_128_bbox_normalized": [
+            0.3067608476286579,
+            0.09073724007561437,
+            0.6629667003027245,
+            0.8985507246376812
+          ]
+        }
+      ],
+      "note": "保留本次更新前的实际四件PNG哈希及主体边界；旧图视觉结论不自动继承到新图。"
+    }
+  ],
+  "material_count": 6
+}

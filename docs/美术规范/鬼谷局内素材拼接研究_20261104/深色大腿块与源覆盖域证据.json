@@ -1,0 +1,473 @@
+{
+  "scope": "Original male101 only; no generated art, runtime or registration modified",
+  "clip": "Run_New1",
+  "clock": 0.7166666666666667,
+  "sourcePhase": 0.228571470416324,
+  "sourceFrames": [
+    32,
+    33
+  ],
+  "interpolation": 0.9142917399506558,
+  "referenceImage": "男性101原作_Run1同相位.png",
+  "screenCanvas": [
+    440,
+    500
+  ],
+  "pixelCoordinates": "Original 440x500 reproduction image coordinates, not arbitrary user screenshot scaling",
+  "sourceProjection": {
+    "centerX": 2.4744399999999995,
+    "footY": 9.80515,
+    "sourceScaleTimesDisplayTimesZoom": 2.6336962227668055
+  },
+  "partLegend": [
+    {
+      "meshIndex": 0,
+      "spriteId": 84807,
+      "rendererPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi/zuobi",
+      "researchColorRGB": [
+        89,
+        176,
+        211
+      ],
+      "visiblePixelsAtAlpha128": 1250
+    },
+    {
+      "meshIndex": 1,
+      "spriteId": 87557,
+      "rendererPath": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui",
+      "researchColorRGB": [
+        85,
+        203,
+        147
+      ],
+      "visiblePixelsAtAlpha128": 3207
+    },
+    {
+      "meshIndex": 2,
+      "spriteId": 87557,
+      "rendererPath": "/HumanRootMan/Root/Body/Foot/youtui/youtui",
+      "researchColorRGB": [
+        170,
+        122,
+        221
+      ],
+      "visiblePixelsAtAlpha128": 1097
+    },
+    {
+      "meshIndex": 3,
+      "spriteId": 85649,
+      "rendererPath": "/HumanRootMan/Root/Body/yifu/yifu",
+      "researchColorRGB": [
+        232,
+        184,
+        75
+      ],
+      "visiblePixelsAtAlpha128": 11135
+    },
+    {
+      "meshIndex": 4,
+      "spriteId": 65806,
+      "rendererPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/101(Clone)/lian",
+      "researchColorRGB": [
+        230,
+        112,
+        104
+      ],
+      "visiblePixelsAtAlpha128": 426
+    },
+    {
+      "meshIndex": 5,
+      "spriteId": 79543,
+      "rendererPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi",
+      "researchColorRGB": [
+        231,
+        231,
+        216
+      ],
+      "visiblePixelsAtAlpha128": 1839
+    },
+    {
+      "meshIndex": 6,
+      "spriteId": 87679,
+      "rendererPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa",
+      "researchColorRGB": [
+        73,
+        83,
+        94
+      ],
+      "visiblePixelsAtAlpha128": 1376
+    }
+  ],
+  "darkRegionSamples": [
+    {
+      "screenPixel": [
+        245,
+        290
+      ],
+      "visibleHit": {
+        "meshIndex": 1,
+        "spriteId": 87557,
+        "rendererPath": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui",
+        "sourceUV": [
+          0.5195244919042339,
+          0.289430280686842
+        ],
+        "sourcePixel": [
+          12,
+          19
+        ],
+        "sourceRGBA": [
+          45,
+          43,
+          47,
+          255
+        ],
+        "triangle": [
+          11,
+          33,
+          30
+        ],
+        "barycentric": [
+          0.12976850032812298,
+          0.5346624845818182,
+          0.3355690150900588
+        ],
+        "interpolatedSourceBoneWeights": {
+          "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1": 1.0
+        }
+      },
+      "allOpaqueHitsBackToFront": [
+        {
+          "meshIndex": 1,
+          "spriteId": 87557,
+          "rendererPath": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui",
+          "sourceUV": [
+            0.5195244919042339,
+            0.289430280686842
+          ],
+          "sourcePixel": [
+            12,
+            19
+          ],
+          "sourceRGBA": [
+            45,
+            43,
+            47,
+            255
+          ],
+          "triangle": [
+            11,
+            33,
+            30
+          ],
+          "barycentric": [
+            0.12976850032812298,
+            0.5346624845818182,
+            0.3355690150900588
+          ],
+          "interpolatedSourceBoneWeights": {
+            "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "screenPixel": [
+        250,
+        300
+      ],
+      "visibleHit": {
+        "meshIndex": 1,
+        "spriteId": 87557,
+        "rendererPath": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui",
+        "sourceUV": [
+          0.4721835709091868,
+          0.349706586193319
+        ],
+        "sourcePixel": [
+          11,
+          23
+        ],
+        "sourceRGBA": [
+          39,
+          37,
+          41,
+          255
+        ],
+        "triangle": [
+          21,
+          33,
+          31
+        ],
+        "barycentric": [
+          0.003340849174403443,
+          0.845605439007178,
+          0.15105371181841856
+        ],
+        "interpolatedSourceBoneWeights": {
+          "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1": 1.0
+        }
+      },
+      "allOpaqueHitsBackToFront": [
+        {
+          "meshIndex": 1,
+          "spriteId": 87557,
+          "rendererPath": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui",
+          "sourceUV": [
+            0.4721835709091868,
+            0.349706586193319
+          ],
+          "sourcePixel": [
+            11,
+            23
+          ],
+          "sourceRGBA": [
+            39,
+            37,
+            41,
+            255
+          ],
+          "triangle": [
+            21,
+            33,
+            31
+          ],
+          "barycentric": [
+            0.003340849174403443,
+            0.845605439007178,
+            0.15105371181841856
+          ],
+          "interpolatedSourceBoneWeights": {
+            "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "screenPixel": [
+        255,
+        310
+      ],
+      "visibleHit": {
+        "meshIndex": 1,
+        "spriteId": 87557,
+        "rendererPath": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui",
+        "sourceUV": [
+          0.4248426661626161,
+          0.4099828381460035
+        ],
+        "sourcePixel": [
+          10,
+          27
+        ],
+        "sourceRGBA": [
+          38,
+          36,
+          40,
+          255
+        ],
+        "triangle": [
+          21,
+          33,
+          31
+        ],
+        "barycentric": [
+          0.12728402089581947,
+          0.2619314968515573,
+          0.6107844822526232
+        ],
+        "interpolatedSourceBoneWeights": {
+          "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1": 1.0
+        }
+      },
+      "allOpaqueHitsBackToFront": [
+        {
+          "meshIndex": 1,
+          "spriteId": 87557,
+          "rendererPath": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui",
+          "sourceUV": [
+            0.4248426661626161,
+            0.4099828381460035
+          ],
+          "sourcePixel": [
+            10,
+            27
+          ],
+          "sourceRGBA": [
+            38,
+            36,
+            40,
+            255
+          ],
+          "triangle": [
+            21,
+            33,
+            31
+          ],
+          "barycentric": [
+            0.12728402089581947,
+            0.2619314968515573,
+            0.6107844822526232
+          ],
+          "interpolatedSourceBoneWeights": {
+            "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "screenPixel": [
+        260,
+        320
+      ],
+      "visibleHit": {
+        "meshIndex": 1,
+        "spriteId": 87557,
+        "rendererPath": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui",
+        "sourceUV": [
+          0.3460303399301968,
+          0.47802638425442096
+        ],
+        "sourcePixel": [
+          8,
+          32
+        ],
+        "sourceRGBA": [
+          37,
+          35,
+          39,
+          255
+        ],
+        "triangle": [
+          32,
+          22,
+          31
+        ],
+        "barycentric": [
+          0.15060097213815837,
+          0.32777281206753944,
+          0.5216262157943022
+        ],
+        "interpolatedSourceBoneWeights": {
+          "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1": 0.6277876436251721,
+          "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1/tui2": 0.37221235637482786
+        }
+      },
+      "allOpaqueHitsBackToFront": [
+        {
+          "meshIndex": 1,
+          "spriteId": 87557,
+          "rendererPath": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui",
+          "sourceUV": [
+            0.3460303399301968,
+            0.47802638425442096
+          ],
+          "sourcePixel": [
+            8,
+            32
+          ],
+          "sourceRGBA": [
+            37,
+            35,
+            39,
+            255
+          ],
+          "triangle": [
+            32,
+            22,
+            31
+          ],
+          "barycentric": [
+            0.15060097213815837,
+            0.32777281206753944,
+            0.5216262157943022
+          ],
+          "interpolatedSourceBoneWeights": {
+            "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1": 0.6277876436251721,
+            "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1/tui2": 0.37221235637482786
+          }
+        }
+      ]
+    },
+    {
+      "screenPixel": [
+        265,
+        330
+      ],
+      "visibleHit": {
+        "meshIndex": 1,
+        "spriteId": 87557,
+        "rendererPath": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui",
+        "sourceUV": [
+          0.30905526608543804,
+          0.5367662848998837
+        ],
+        "sourcePixel": [
+          7,
+          36
+        ],
+        "sourceRGBA": [
+          36,
+          34,
+          38,
+          255
+        ],
+        "triangle": [
+          32,
+          23,
+          22
+        ],
+        "barycentric": [
+          0.640660010631678,
+          0.04708477025110894,
+          0.3122552191172131
+        ],
+        "interpolatedSourceBoneWeights": {
+          "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1/tui2": 0.8988645223500299,
+          "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1": 0.10113547764997013
+        }
+      },
+      "allOpaqueHitsBackToFront": [
+        {
+          "meshIndex": 1,
+          "spriteId": 87557,
+          "rendererPath": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui",
+          "sourceUV": [
+            0.30905526608543804,
+            0.5367662848998837
+          ],
+          "sourcePixel": [
+            7,
+            36
+          ],
+          "sourceRGBA": [
+            36,
+            34,
+            38,
+            255
+          ],
+          "triangle": [
+            32,
+            23,
+            22
+          ],
+          "barycentric": [
+            0.640660010631678,
+            0.04708477025110894,
+            0.3122552191172131
+          ],
+          "interpolatedSourceBoneWeights": {
+            "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1/tui2": 0.8988645223500299,
+            "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1": 0.10113547764997013
+          }
+        }
+      ]
+    }
+  ],
+  "conclusion": "The sampled dark upper-leg region is the original 87557 trouser sprite on the zuotui leg chain; it is not a third garment or coat lining.",
+  "limitations": "Source binding/located clip reconstruction, not the original game's full Animator or DynamicBone state; owner diagram uses original alpha>=128 with nearest source-pixel sampling for attribution.",
+  "inputHashes": {
+    "source_reference_vertex_frames.json": "7603c46731ab56f6de5e33e06837636b10820a67495cd6093d489568ad767537",
+    "skins.json": "52c438bc6fb939a418a4bb7d9185e90c05c84be01ee038f8dd796649b1104ade"
+  }
+}

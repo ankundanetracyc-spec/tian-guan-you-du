@@ -1,0 +1,51 @@
+{
+  "status": "native preview complete; ready for user visual review",
+  "hand_only_scale": 0.8,
+  "target_palm_width": 3.8127774541901065,
+  "arm_lengths_kept": true,
+  "new_complete_arm_sources": 5,
+  "new_sources_have_no_fingernails": true,
+  "protected_sword_fingers_unchanged": true,
+  "hem": "continuous closed robe; sustained trailing, curl and stop rebound",
+  "video": {
+    "path": "output/approved_outfit_full_arm_demo_final/complete_arm_and_hem_30fps.mp4",
+    "frames": 300,
+    "fps": 30,
+    "duration_seconds": 10,
+    "width": 1000,
+    "height": 830,
+    "full_decode_passed": true
+  },
+  "checks": [
+    {
+      "path": "output/approved_outfit_full_arms_smoke.json",
+      "passed": true,
+      "checks": 15855,
+      "frames": null,
+      "poses": 1440
+    },
+    {
+      "path": "output/approved_outfit_sword_smoke.json",
+      "passed": true,
+      "checks": 20,
+      "frames": 1021,
+      "poses": null
+    },
+    {
+      "path": "output/approved_outfit_hem_elastic_review/hem_elastic_smoke.json",
+      "passed": true,
+      "checks": 21,
+      "frames": 732,
+      "poses": null
+    },
+    {
+      "path": "output/approved_outfit_full_arms_native_joint_check.json",
+      "passed": true,
+      "checks": null,
+      "frames": null,
+      "poses": null
+    }
+  ],
+  "native_fitting_scene": "approved_outfit_fitting_room.tscn",
+  "default_game_entry_replaced": false
+}

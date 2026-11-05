@@ -1,0 +1,74 @@
+{
+	"actual_movement_speed_pixels_per_second": 114.0,
+	"cases": [
+		{
+			"case": "static right",
+			"frames": 120,
+			"max_bone_angle_error_degrees": 0.0,
+			"max_cloth_vertex_error_px": 0.0,
+			"max_visible_triangle_flips": 0,
+			"minimum_actor_determinant": 1.0,
+			"visible_triangles_sampled": 43
+		},
+		{
+			"case": "static left",
+			"frames": 120,
+			"max_bone_angle_error_degrees": 0.0,
+			"max_cloth_vertex_error_px": 0.0,
+			"max_visible_triangle_flips": 0,
+			"minimum_actor_determinant": 1.0,
+			"visible_triangles_sampled": 43
+		},
+		{
+			"case": "static",
+			"facing_changes": 35,
+			"frames": 600,
+			"max_bone_angle_difference_from_control_degrees": 0.0,
+			"max_cloth_difference_from_unturned_control_px": 0.0,
+			"max_control_flips_against_physics_off": 0,
+			"max_turn_induced_triangle_flips": 0,
+			"max_turning_flips_against_physics_off": 0
+		},
+		{
+			"case": "run",
+			"facing_changes": 35,
+			"frames": 600,
+			"max_bone_angle_difference_from_control_degrees": 0.0279764551182933,
+			"max_cloth_difference_from_unturned_control_px": 0.00252152141183615,
+			"max_control_flips_against_physics_off": 0,
+			"max_turn_induced_triangle_flips": 0,
+			"max_turning_flips_against_physics_off": 0
+		},
+		{
+			"case": "clip_transitions",
+			"facing_changes": 35,
+			"frames": 600,
+			"max_bone_angle_difference_from_control_degrees": 0.0279764551182933,
+			"max_cloth_difference_from_unturned_control_px": 0.00112119817640632,
+			"max_control_flips_against_physics_off": 9,
+			"max_turn_induced_triangle_flips": 0,
+			"max_turning_flips_against_physics_off": 9
+		},
+		{
+			"case": "far_placement_move_stop_clip_turn",
+			"first_placement_pixels": [
+				5344.0,
+				3789.0
+			],
+			"frames": 420,
+			"max_control_flips_against_physics_off": 7,
+			"max_difference_from_same_path_control_px": 0.0164624284952879,
+			"max_extra_triangle_flips": 0,
+			"max_late_idle_flips_against_physics_off": 0,
+			"max_placed_flips_against_physics_off": 7
+		}
+	],
+	"checks": 48,
+	"duplicate_same_clock_cloth_error_px": 0.0,
+	"failures": [],
+	"limits": "Control-relative extra flips and retained stopped folds are measured separately. Backward and forward world travel must not be called the same physical control. This is bounded visible-geometry QA, not a proof that all source clips or every combat moment have zero cloth overlap.",
+	"locomotion_composition_enabled": true,
+	"passed": true,
+	"samples": 2460,
+	"scope": "Actual native source actor with new movement composition enabled. Control/turning actors each advance114px/s in their own facing direction, preserving comparable local-forward inertia during Run and Attack. Original43 alpha-visible cloth triangle tests include static left/right,35 repeated turns per600-frame static/run/clip-transition case, moving-attack transitions and far placement plus move/stop/recovery."
+}

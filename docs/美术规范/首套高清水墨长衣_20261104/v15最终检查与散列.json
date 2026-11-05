@@ -1,0 +1,200 @@
+{
+  "status": "current v15 candidate ready for user review; no default game integration",
+  "modules": {
+    "ink_outfit_fitting_skin.gd": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\ink_outfit_fitting_skin.gd",
+      "sha256": "564487b0d4431046abf31e042685ca140a7fb17ad1f2b7943df8a9601d8710f6"
+    },
+    "ink_outfit_fitting_runtime.gd": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\ink_outfit_fitting_runtime.gd",
+      "sha256": "706e21b6b255fda64c98f3dc9c21a19434a2eb3141876bda841f6599fc076355"
+    },
+    "ink_outfit_sleeve_mesh.gd": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\ink_outfit_sleeve_mesh.gd",
+      "sha256": "c62ff8a62a3190c4ccfb43771d25c17afdde996aef68a00e5a8ccb10bc798335"
+    },
+    "ink_outfit_hem_secondary.gd": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\ink_outfit_hem_secondary.gd",
+      "sha256": "294fb9290be5f7a6aaca8e3500d9990a49af2ed261f2dd69ac12528a7c653c16"
+    }
+  },
+  "png_inventory": {
+    "body.png": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\body.png",
+      "sha256": "9a87016e7b3aaf208d369fd7033cb0fa62f31ec8690cb2727d050120099a3109",
+      "native_size": [
+        971,
+        1620
+      ]
+    },
+    "leg.png": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\leg.png",
+      "sha256": "1a34b9c4f232f77e67bd56f64fdbeb4734a8e7271bfb50d71528bc0d3e656ec0",
+      "native_size": [
+        992,
+        1586
+      ]
+    },
+    "sleeve_far.png": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_far.png",
+      "sha256": "40c510c31d0b60c818304d9f58eca32d3e08ab73724265fc9e46474e6cc380de",
+      "native_size": [
+        1254,
+        1254
+      ]
+    },
+    "sleeve_far_fist.png": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_far_fist.png",
+      "sha256": "482f474bea8156a4425306aa3d13cacf66458fc2406fa5d6a0200a921d334d8f",
+      "native_size": [
+        1254,
+        1254
+      ]
+    },
+    "sleeve_near.png": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_near.png",
+      "sha256": "b5637eb58dd30de992295a09037a13fb7703ca2756b178148cf20fbf94b894ba",
+      "native_size": [
+        1254,
+        1254
+      ]
+    },
+    "sleeve_near_fist.png": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_near_fist.png",
+      "sha256": "4d2cacfb8a58827d5f56f5637bfd8ddd7754d23a9f7e41d5469b77137f8d5d80",
+      "native_size": [
+        1254,
+        1254
+      ]
+    },
+    "sleeve_near_grip.png": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_near_grip.png",
+      "sha256": "a92e11d85325c42fe7918ee83babe5b32e88b63f53a3d9b96c39dccc79d41e73",
+      "native_size": [
+        1254,
+        1254
+      ]
+    },
+    "sleeve_near_sword.png": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_near_sword.png",
+      "sha256": "2fdc515d0abb28869792ac65379b5fe23566d4a56b90c528e832ac606209c307",
+      "native_size": [
+        1254,
+        1254
+      ]
+    }
+  },
+  "capture_records": {
+    "showcase": {
+      "capture_directory": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v15_showcase",
+      "raw_record": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v15_showcase\\capture_record.json",
+      "refreshed_record": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v15_final_records\\showcase_capture_record.json",
+      "skin_hash_matches": true,
+      "unused_optional_metadata_refreshed": 2
+    },
+    "small": {
+      "capture_directory": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v15_small",
+      "raw_record": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v15_small\\capture_record.json",
+      "refreshed_record": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v15_final_records\\small_capture_record.json",
+      "skin_hash_matches": true,
+      "unused_optional_metadata_refreshed": 0
+    },
+    "sleeve_bent_extended": {
+      "capture_directory": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v15_sleeve_pose_review",
+      "raw_record": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v15_sleeve_pose_review\\sleeve_pose_capture_record.json",
+      "refreshed_record": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v15_final_records\\sleeve_bent_extended_capture_record.json",
+      "skin_hash_matches": true,
+      "unused_optional_metadata_refreshed": 8
+    },
+    "normal_hands": {
+      "capture_directory": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v15_hands",
+      "raw_record": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v15_hands\\hand_closeup_record.json",
+      "refreshed_record": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v15_final_records\\normal_hands_capture_record.json",
+      "skin_hash_matches": true,
+      "unused_optional_metadata_refreshed": 8
+    },
+    "optional_near_hands": {
+      "capture_directory": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v15_hands",
+      "raw_record": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v15_hands\\optional_hand_closeup_record.json",
+      "refreshed_record": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v15_final_records\\optional_near_hands_capture_record.json",
+      "skin_hash_matches": true,
+      "unused_optional_metadata_refreshed": 0
+    },
+    "shoulders72": {
+      "capture_directory": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v15_shoulders",
+      "raw_record": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v15_shoulders\\shoulder_capture_record.json",
+      "refreshed_record": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v15_final_records\\shoulders72_capture_record.json",
+      "skin_hash_matches": true,
+      "unused_optional_metadata_refreshed": 0
+    }
+  },
+  "source_and_hand_checks": {
+    "path": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_fitting_smoke.json",
+    "passed": true,
+    "count": 49,
+    "secondary_and_sleeve_layers_explicitly_disabled_for_exact_source_comparison": true
+  },
+  "active_hem_checks": {
+    "path": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_secondary_smoke.json",
+    "passed": true,
+    "count": 19,
+    "frames": 682,
+    "waist_added_drift": 0.0,
+    "minimum_triangle_area_ratio": 0.810070701079008,
+    "maximum_visible_added_offset": 6.99297046661377,
+    "minimum_safety_scale": 1.0
+  },
+  "visual_review": [
+    "current v15 whole-outfit 041/059",
+    "whole-outfit and isolated near/far bent/extended same-length diagrams",
+    "4 normal hand closeups",
+    "latest right-back near sword and thumb-hidden grip closeups",
+    "all 24 Run1 and 24 Run2 shoulder cells plus Idle cycle",
+    "stop .167s/.5s/2s native frames",
+    "nominal 150px native comparison"
+  ],
+  "findings": [
+    "upper arm converges to narrow elbow, forearm opens toward cuff without the old compressed bulge",
+    "near/far share exact same near-master Texture object and physical transverse scale; far cloth never comes from hand variants",
+    "hand-region mix follows measured diagonal cuff only; current near prepared poses are explicit, with no skill binding",
+    "no old black shoulder circle or transparent shoulder gap observed; pale trim and angular elbow remain visible",
+    "hem stays closed and has velocity-driven trailing, delayed lower movement and damped stopping"
+  ],
+  "limitations": [
+    "bent elbow is deliberately graphic/angular and uses a lightweight spine, not realistic cloth simulation",
+    "measured cuff is about2.5–2.7 palm widths with wrist clearance1:1.81, not claimed exact2:1",
+    "sleeve source image remains slightly warmer/darker than body (independent PNG color review); native GL difference is reduced, not claimed identical",
+    "neutral faceless mannequin; hair excluded; gameplay/default entry unchanged"
+  ],
+  "media_handoff": {
+    "main": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v15_showcase",
+    "small": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v15_small",
+    "normal_and_latest_optional": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v15_hands",
+    "bent_extended": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v15_sleeve_pose_review",
+    "shoulders72": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v15_shoulders",
+    "ready_records": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v15_final_records",
+    "media_packaging_owner": "root"
+  },
+  "optional_near_latest_revision": {
+    "source": "exec-c6364f4e-d2a7-4d2f-b09d-d8fb1cb830e0.png",
+    "sword": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_near_sword.png",
+      "sha256": "2fdc515d0abb28869792ac65379b5fe23566d4a56b90c528e832ac606209c307",
+      "native_size": [
+        1254,
+        1254
+      ]
+    },
+    "previous_sword_sha256": "6b80b1b7b9dcd82a4ed20e463d0c0f125659e0e172bf16557efd2d94d18c8bf6",
+    "native_image": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v15_hands\\near_optional_hands_native.png",
+    "native_image_sha256": "ac952d44617f6335c3f60020bee6a625bda4039474e2c1434153aeb8585dddf7",
+    "raw_capture_record": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v15_hands\\optional_hand_closeup_record.json",
+    "raw_capture_record_sha256": "c252a3b504c2d9071a030297374abe6b7482077fbd5a3acb8cfd9ee2c89a73a6",
+    "refreshed_record": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v15_final_records\\optional_near_hands_capture_record.json",
+    "other_assets_and_runtime_unchanged": true,
+    "source49_hem19_reused_not_rerun": true,
+    "visual_note": "New sword native closeup reviewed: two extended fingers, folded ring/little remain compact; grip image unchanged; no skill mapping."
+  },
+  "superseded_sword_scope": "Old c636 sword was rejected for wrong handedness; its measurements/hash/visual conclusion remain historical. Normal-hand/body media and unchanged-code tests retain their original scope.",
+  "current_sword_record": "E:\\stacklands\\docs\\美术规范\\首套高清水墨长衣_20261104\\右手剑指左右纠正_20261105.json"
+}

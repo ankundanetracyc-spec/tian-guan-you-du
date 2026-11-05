@@ -1,0 +1,68 @@
+{
+  "scope": "read-only native alpha versus arm carrier; source data and art untouched",
+  "engineered_near_extension": true,
+  "method": "native PNG alpha>=70%, exact full-canvas affine; lower wrist/hand region only",
+  "results": [
+    {
+      "part": "sleeve_near",
+      "style": "open",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "3dbd0516571a25c84710bc3675b518fc40744f8627da7491553e2fc32db31082",
+      "hand_region_cut_v": 0.662,
+      "alpha_threshold": 0.7,
+      "hand_opaque_pixels": 12948,
+      "hand_alpha_outside_carrier": 0,
+      "outside_fraction": 0.0,
+      "outside_bbox": null
+    },
+    {
+      "part": "sleeve_near",
+      "style": "fist",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "4d9566e8ff9f85f0bf2b9f85b22393f67db7835f66e20de158e54d799b1919e1",
+      "hand_region_cut_v": 0.662,
+      "alpha_threshold": 0.7,
+      "hand_opaque_pixels": 10299,
+      "hand_alpha_outside_carrier": 0,
+      "outside_fraction": 0.0,
+      "outside_bbox": null
+    },
+    {
+      "part": "sleeve_far",
+      "style": "open",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "3045f76c238120f3440cdbc24b00ea78871c9ed7bf39f77815c392b86db17f09",
+      "hand_region_cut_v": 0.65,
+      "alpha_threshold": 0.7,
+      "hand_opaque_pixels": 17345,
+      "hand_alpha_outside_carrier": 0,
+      "outside_fraction": 0.0,
+      "outside_bbox": null
+    },
+    {
+      "part": "sleeve_far",
+      "style": "fist",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "25de5070de5816921e1c7cb292c183bcef7cf026d1d9b22e6f6b43b044c5202e",
+      "hand_region_cut_v": 0.65,
+      "alpha_threshold": 0.7,
+      "hand_opaque_pixels": 16548,
+      "hand_alpha_outside_carrier": 0,
+      "outside_fraction": 0.0,
+      "outside_bbox": null
+    }
+  ],
+  "interpretation": "Nonzero edge pixels require visual review; zero coverage loss does not establish anatomical hand quality."
+}

@@ -1,0 +1,266 @@
+{
+  "subject": "Original male101 Sprite87557 trouser + binding + boot + foot, shared by both leg instances",
+  "croppedPngSize": [
+    24,
+    68
+  ],
+  "spriteDesignCanvas": [
+    50,
+    80
+  ],
+  "spritePivot": [
+    0.5,
+    0.5
+  ],
+  "coordinateConvention": "Cropped PNG top-left, X right/Y down. UV=original cropped pixels/[24,68]. These are not HD target anchors or Sprite design-canvas coordinates.",
+  "alphaCoreThreshold": 128,
+  "regions": {
+    "trouser": "opaque dark trouser above gray band; through row41",
+    "grayBindingRowsInclusive": [
+      42,
+      46
+    ],
+    "goldBootBeginsRow": 47,
+    "coreSoleLowerEdge": 65,
+    "nonzeroSoftAlphaLowerEdge": 66
+  },
+  "anchors": [
+    {
+      "name": "hip",
+      "kind": "source_rig_bindpose_pivot",
+      "source_pixels": [
+        10.234243974516536,
+        5.924349127995502
+      ],
+      "source_uv": [
+        0.42642683227152234,
+        0.08712278129405149
+      ],
+      "definition": "inverse source bindpose pivot; actual source rig joint"
+    },
+    {
+      "name": "knee",
+      "kind": "source_rig_bindpose_pivot",
+      "source_pixels": [
+        8.965263319471074,
+        33.72245178908227
+      ],
+      "source_uv": [
+        0.3735526383112947,
+        0.49591840866297454
+      ],
+      "definition": "inverse source bindpose pivot; actual source rig joint"
+    },
+    {
+      "name": "ankle",
+      "kind": "source_rig_bindpose_pivot",
+      "source_pixels": [
+        6.632109110289273,
+        62.310967973552216
+      ],
+      "source_uv": [
+        0.27633787959538636,
+        0.9163377643169444
+      ],
+      "definition": "inverse source bindpose pivot; actual source rig joint"
+    },
+    {
+      "name": "boot_cuff_top",
+      "kind": "texture_observation_not_rig_joint",
+      "source_pixels": [
+        8.592592592592593,
+        42.0
+      ],
+      "source_uv": [
+        0.3580246913580247,
+        0.6176470588235294
+      ],
+      "definition": "Top of observed gray/light binding band; band occupies original rows42..46"
+    },
+    {
+      "name": "boot_cuff_bottom",
+      "kind": "texture_observation_not_rig_joint",
+      "source_pixels": [
+        8.592592592592593,
+        47.0
+      ],
+      "source_uv": [
+        0.3580246913580247,
+        0.6911764705882353
+      ],
+      "definition": "Bottom edge after gray binding row46; gold shaft starts at row47"
+    },
+    {
+      "name": "heel_back",
+      "kind": "texture_observation_not_rig_joint",
+      "source_pixels": [
+        5.0,
+        64.0
+      ],
+      "source_uv": [
+        0.20833333333333334,
+        0.9411764705882353
+      ],
+      "definition": "Core-alpha left edge in the heel/sole observation row64; not a separate heel bone"
+    },
+    {
+      "name": "heel_sole",
+      "kind": "texture_observation_not_rig_joint",
+      "source_pixels": [
+        5.0,
+        65.0
+      ],
+      "source_uv": [
+        0.20833333333333334,
+        0.9558823529411765
+      ],
+      "definition": "Core-alpha lower-left outer pixel corner of row64"
+    },
+    {
+      "name": "instep",
+      "kind": "texture_observation_not_rig_joint",
+      "source_pixels": [
+        12.5,
+        60.0
+      ],
+      "source_uv": [
+        0.5208333333333334,
+        0.8823529411764706
+      ],
+      "definition": "Upper core-alpha boundary at original pixel column12; visible instep observation"
+    },
+    {
+      "name": "ball_upper",
+      "kind": "texture_observation_not_rig_joint",
+      "source_pixels": [
+        14.5,
+        62.0
+      ],
+      "source_uv": [
+        0.6041666666666666,
+        0.9117647058823529
+      ],
+      "definition": "Upper core-alpha boundary at forefoot observation column14; not an anatomical metatarsal pivot"
+    },
+    {
+      "name": "ball_sole",
+      "kind": "texture_observation_not_rig_joint",
+      "source_pixels": [
+        14.5,
+        65.0
+      ],
+      "source_uv": [
+        0.6041666666666666,
+        0.9558823529411765
+      ],
+      "definition": "Lower core-alpha boundary at observation column14"
+    },
+    {
+      "name": "toe_tip",
+      "kind": "texture_observation_not_rig_joint",
+      "source_pixels": [
+        21.0,
+        63.89716312056738
+      ],
+      "source_uv": [
+        0.875,
+        0.9396641635377555
+      ],
+      "definition": "Right outer edge of rightmost core-alpha column20; alpha-weighted pixel-center Y"
+    },
+    {
+      "name": "toe_sole",
+      "kind": "texture_observation_not_rig_joint",
+      "source_pixels": [
+        21.0,
+        65.0
+      ],
+      "source_uv": [
+        0.875,
+        0.9558823529411765
+      ],
+      "definition": "Core-alpha lower-right outer pixel corner of row64"
+    },
+    {
+      "name": "sole_center",
+      "kind": "texture_observation_not_rig_joint",
+      "source_pixels": [
+        13.0,
+        65.0
+      ],
+      "source_uv": [
+        0.5416666666666666,
+        0.9558823529411765
+      ],
+      "definition": "Midpoint of the visible core-alpha sole interval x5..21 at lower edge65"
+    },
+    {
+      "name": "soft_sole_edge",
+      "kind": "texture_observation_not_rig_joint",
+      "source_pixels": [
+        13.5,
+        66.0
+      ],
+      "source_uv": [
+        0.5625,
+        0.9705882352941176
+      ],
+      "definition": "Faint nonzero-alpha fringe extends one more row to edge66; do not confuse it with core sole edge65"
+    }
+  ],
+  "archUnderside": {
+    "separateRigBone": false,
+    "distinctVisibleConcavityConfirmed": false,
+    "note": "The tiny source underside is effectively a straight core-alpha sole edge; no precise concave arch can be inferred. Do not invent an arch pivot from the word arch."
+  },
+  "measuredProportions": {
+    "definition": "Core alpha>=128, observed foot ROI rows60..64; these are source raster proportions, not gameplay dimensions",
+    "observedFootHorizontalExtent": [
+      5,
+      21
+    ],
+    "observedFootExtentPixels": 16,
+    "grayBindingToSoleHeightPixels": 23,
+    "goldBootToSoleHeightPixels": 18,
+    "sectionsByOriginalColumn": {
+      "12": {
+        "upper": 60,
+        "lowerEdge": 65,
+        "thicknessPixels": 5,
+        "thicknessOverObservedFootExtent": 0.3125
+      },
+      "14": {
+        "upper": 62,
+        "lowerEdge": 65,
+        "thicknessPixels": 3,
+        "thicknessOverObservedFootExtent": 0.1875
+      },
+      "20": {
+        "upper": 63,
+        "lowerEdge": 65,
+        "thicknessPixels": 2,
+        "thicknessOverObservedFootExtent": 0.125
+      }
+    },
+    "darkSoleBorderApproxPixels": 1,
+    "darkSoleBorderOverObservedFootExtent": 0.0625
+  },
+  "sourceMeshPadding": {
+    "note": "Several original foot mesh vertices are outside visible alpha; source mesh envelope must not be painted fully opaque",
+    "examplesCropPixels": [
+      [
+        23.072,
+        65.038
+      ],
+      [
+        20.704,
+        60.118
+      ],
+      [
+        15.311,
+        59.3
+      ]
+    ]
+  },
+  "limitations": "Only hip/knee/ankle entries are source rig pivots. Other names label observed texture regions and raster edges; the original24x68 raster does not establish exact anatomical heel/ball/arch joints. No runtime, source PNG, HD PNG or registration was modified."
+}

@@ -1,0 +1,1870 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-05T01:29:24.103195+08:00",
+  "scope": "只读PNG横截面与修后同相位图复核；新增本JSON和风险笔记，不改PNG、renderer、骨架或mask。",
+  "status": "新瘦裤靴只读量测已完成；先验候选不是用户验收标准，最终按整套实穿评价。",
+  "measurementMethod": {
+    "alphaThreshold": 128,
+    "coordinates": "各自完整Sprite逻辑画布、左上原点、Y向下；腿50x80，衣身60x100。共同sourcePPU100，局部逻辑横宽可比较。不是动画屏幕宽。",
+    "sampleRow": "round(logicalY / fullCanvasHeight * actualPNGHeight)",
+    "xRange": "首末Alpha>=128像素的左边界和右侧排他边界，各除actualPNGWidth再乘逻辑宽。",
+    "sourcePrecision": "低清源原纹理逐像素量化，约一个源像素级边界分辨率；不是精密人体标准。"
+  },
+  "measurements": {
+    "source_leg": {
+      "path": "E:\\stacklands\\docs\\美术规范\\鬼谷局内素材拼接研究_20261104\\source_full_textures\\sprite_87557_full_texture.png",
+      "sha256": "49de79f21a7ab9d9345b0c6afce390f3c11ddf8a110ba70abec1d2acdd4b5d89",
+      "nativeSize": [
+        50,
+        80
+      ],
+      "logicalFullCanvasSize": [
+        50,
+        80
+      ],
+      "coreAlphaTopLogicalY": 8.0,
+      "slices": [
+        {
+          "logicalY": 8,
+          "nativeSampleRow": 8,
+          "nativeXRangeExclusive": [
+            19,
+            24
+          ],
+          "logicalXRangeExclusive": [
+            19.0,
+            24.0
+          ],
+          "logicalCenterX": 21.5,
+          "logicalWidth": 5.0
+        },
+        {
+          "logicalY": 10,
+          "nativeSampleRow": 10,
+          "nativeXRangeExclusive": [
+            18,
+            32
+          ],
+          "logicalXRangeExclusive": [
+            18.0,
+            32.0
+          ],
+          "logicalCenterX": 25.0,
+          "logicalWidth": 14.0
+        },
+        {
+          "logicalY": 11.99,
+          "nativeSampleRow": 12,
+          "nativeXRangeExclusive": [
+            18,
+            32
+          ],
+          "logicalXRangeExclusive": [
+            18.0,
+            32.0
+          ],
+          "logicalCenterX": 25.0,
+          "logicalWidth": 14.0
+        },
+        {
+          "logicalY": 15,
+          "nativeSampleRow": 15,
+          "nativeXRangeExclusive": [
+            17,
+            31
+          ],
+          "logicalXRangeExclusive": [
+            17.0,
+            31.0
+          ],
+          "logicalCenterX": 24.0,
+          "logicalWidth": 14.0
+        },
+        {
+          "logicalY": 20,
+          "nativeSampleRow": 20,
+          "nativeXRangeExclusive": [
+            19,
+            30
+          ],
+          "logicalXRangeExclusive": [
+            19.0,
+            30.0
+          ],
+          "logicalCenterX": 24.5,
+          "logicalWidth": 11.0
+        },
+        {
+          "logicalY": 25,
+          "nativeSampleRow": 25,
+          "nativeXRangeExclusive": [
+            19,
+            30
+          ],
+          "logicalXRangeExclusive": [
+            19.0,
+            30.0
+          ],
+          "logicalCenterX": 24.5,
+          "logicalWidth": 11.0
+        },
+        {
+          "logicalY": 30,
+          "nativeSampleRow": 30,
+          "nativeXRangeExclusive": [
+            19,
+            30
+          ],
+          "logicalXRangeExclusive": [
+            19.0,
+            30.0
+          ],
+          "logicalCenterX": 24.5,
+          "logicalWidth": 11.0
+        },
+        {
+          "logicalY": 35,
+          "nativeSampleRow": 35,
+          "nativeXRangeExclusive": [
+            19,
+            29
+          ],
+          "logicalXRangeExclusive": [
+            19.0,
+            28.999999999999996
+          ],
+          "logicalCenterX": 24.0,
+          "logicalWidth": 9.999999999999996
+        },
+        {
+          "logicalY": 39.74,
+          "nativeSampleRow": 40,
+          "nativeXRangeExclusive": [
+            19,
+            28
+          ],
+          "logicalXRangeExclusive": [
+            19.0,
+            28.000000000000004
+          ],
+          "logicalCenterX": 23.5,
+          "logicalWidth": 9.000000000000004
+        },
+        {
+          "logicalY": 43,
+          "nativeSampleRow": 43,
+          "nativeXRangeExclusive": [
+            18,
+            27
+          ],
+          "logicalXRangeExclusive": [
+            18.0,
+            27.0
+          ],
+          "logicalCenterX": 22.5,
+          "logicalWidth": 9.0
+        },
+        {
+          "logicalY": 48,
+          "nativeSampleRow": 48,
+          "nativeXRangeExclusive": [
+            16,
+            27
+          ],
+          "logicalXRangeExclusive": [
+            16.0,
+            27.0
+          ],
+          "logicalCenterX": 21.5,
+          "logicalWidth": 11.0
+        }
+      ],
+      "hashMatchesAfterRead": true
+    },
+    "HD_leg": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\leg.png",
+      "sha256": "1a34b9c4f232f77e67bd56f64fdbeb4734a8e7271bfb50d71528bc0d3e656ec0",
+      "nativeSize": [
+        992,
+        1586
+      ],
+      "logicalFullCanvasSize": [
+        50,
+        80
+      ],
+      "coreAlphaTopLogicalY": 7.919293820933166,
+      "slices": [
+        {
+          "logicalY": 8.1,
+          "nativeSampleRow": 161,
+          "nativeXRangeExclusive": [
+            416,
+            470
+          ],
+          "logicalXRangeExclusive": [
+            20.967741935483872,
+            23.68951612903226
+          ],
+          "logicalCenterX": 22.328629032258064,
+          "logicalWidth": 2.721774193548388
+        },
+        {
+          "logicalY": 10,
+          "nativeSampleRow": 198,
+          "nativeXRangeExclusive": [
+            388,
+            574
+          ],
+          "logicalXRangeExclusive": [
+            19.556451612903224,
+            28.931451612903224
+          ],
+          "logicalCenterX": 24.243951612903224,
+          "logicalWidth": 9.375
+        },
+        {
+          "logicalY": 11.99,
+          "nativeSampleRow": 238,
+          "nativeXRangeExclusive": [
+            377,
+            590
+          ],
+          "logicalXRangeExclusive": [
+            19.00201612903226,
+            29.73790322580645
+          ],
+          "logicalCenterX": 24.369959677419352,
+          "logicalWidth": 10.735887096774189
+        },
+        {
+          "logicalY": 15,
+          "nativeSampleRow": 297,
+          "nativeXRangeExclusive": [
+            353,
+            596
+          ],
+          "logicalXRangeExclusive": [
+            17.79233870967742,
+            30.040322580645164
+          ],
+          "logicalCenterX": 23.916330645161292,
+          "logicalWidth": 12.247983870967744
+        },
+        {
+          "logicalY": 20,
+          "nativeSampleRow": 396,
+          "nativeXRangeExclusive": [
+            351,
+            577
+          ],
+          "logicalXRangeExclusive": [
+            17.691532258064516,
+            29.08266129032258
+          ],
+          "logicalCenterX": 23.387096774193548,
+          "logicalWidth": 11.391129032258064
+        },
+        {
+          "logicalY": 25,
+          "nativeSampleRow": 496,
+          "nativeXRangeExclusive": [
+            359,
+            558
+          ],
+          "logicalXRangeExclusive": [
+            18.094758064516128,
+            28.125
+          ],
+          "logicalCenterX": 23.109879032258064,
+          "logicalWidth": 10.030241935483872
+        },
+        {
+          "logicalY": 30,
+          "nativeSampleRow": 595,
+          "nativeXRangeExclusive": [
+            363,
+            545
+          ],
+          "logicalXRangeExclusive": [
+            18.296370967741936,
+            27.46975806451613
+          ],
+          "logicalCenterX": 22.883064516129032,
+          "logicalWidth": 9.173387096774196
+        },
+        {
+          "logicalY": 35,
+          "nativeSampleRow": 694,
+          "nativeXRangeExclusive": [
+            359,
+            527
+          ],
+          "logicalXRangeExclusive": [
+            18.094758064516128,
+            26.5625
+          ],
+          "logicalCenterX": 22.328629032258064,
+          "logicalWidth": 8.467741935483872
+        },
+        {
+          "logicalY": 39.74,
+          "nativeSampleRow": 788,
+          "nativeXRangeExclusive": [
+            333,
+            522
+          ],
+          "logicalXRangeExclusive": [
+            16.784274193548388,
+            26.310483870967744
+          ],
+          "logicalCenterX": 21.547379032258064,
+          "logicalWidth": 9.526209677419356
+        },
+        {
+          "logicalY": 43,
+          "nativeSampleRow": 852,
+          "nativeXRangeExclusive": [
+            319,
+            520
+          ],
+          "logicalXRangeExclusive": [
+            16.078629032258064,
+            26.209677419354836
+          ],
+          "logicalCenterX": 21.14415322580645,
+          "logicalWidth": 10.131048387096772
+        },
+        {
+          "logicalY": 48,
+          "nativeSampleRow": 952,
+          "nativeXRangeExclusive": [
+            310,
+            512
+          ],
+          "logicalXRangeExclusive": [
+            15.625,
+            25.806451612903224
+          ],
+          "logicalCenterX": 20.715725806451612,
+          "logicalWidth": 10.181451612903224
+        },
+        {
+          "logicalY": 50,
+          "nativeSampleRow": 991,
+          "nativeXRangeExclusive": [
+            315,
+            509
+          ],
+          "logicalXRangeExclusive": [
+            15.87701612903226,
+            25.65524193548387
+          ],
+          "logicalCenterX": 20.766129032258064,
+          "logicalWidth": 9.778225806451609
+        },
+        {
+          "logicalY": 52,
+          "nativeSampleRow": 1031,
+          "nativeXRangeExclusive": [
+            319,
+            497
+          ],
+          "logicalXRangeExclusive": [
+            16.078629032258064,
+            25.05040322580645
+          ],
+          "logicalCenterX": 20.564516129032256,
+          "logicalWidth": 8.971774193548384
+        },
+        {
+          "logicalY": 55,
+          "nativeSampleRow": 1090,
+          "nativeXRangeExclusive": [
+            330,
+            479
+          ],
+          "logicalXRangeExclusive": [
+            16.633064516129032,
+            24.14314516129032
+          ],
+          "logicalCenterX": 20.388104838709676,
+          "logicalWidth": 7.510080645161288
+        },
+        {
+          "logicalY": 60,
+          "nativeSampleRow": 1190,
+          "nativeXRangeExclusive": [
+            342,
+            465
+          ],
+          "logicalXRangeExclusive": [
+            17.237903225806452,
+            23.4375
+          ],
+          "logicalCenterX": 20.337701612903224,
+          "logicalWidth": 6.199596774193548
+        },
+        {
+          "logicalY": 65,
+          "nativeSampleRow": 1289,
+          "nativeXRangeExclusive": [
+            348,
+            486
+          ],
+          "logicalXRangeExclusive": [
+            17.540322580645164,
+            24.495967741935484
+          ],
+          "logicalCenterX": 21.018145161290324,
+          "logicalWidth": 6.95564516129032
+        },
+        {
+          "logicalY": 68.278,
+          "nativeSampleRow": 1354,
+          "nativeXRangeExclusive": [
+            336,
+            656
+          ],
+          "logicalXRangeExclusive": [
+            16.93548387096774,
+            33.064516129032256
+          ],
+          "logicalCenterX": 25.0,
+          "logicalWidth": 16.129032258064516
+        },
+        {
+          "logicalY": 70,
+          "nativeSampleRow": 1388,
+          "nativeXRangeExclusive": [
+            339,
+            657
+          ],
+          "logicalXRangeExclusive": [
+            17.086693548387096,
+            33.11491935483871
+          ],
+          "logicalCenterX": 25.100806451612904,
+          "logicalWidth": 16.028225806451616
+        },
+        {
+          "logicalY": 71.5,
+          "nativeSampleRow": 1417,
+          "nativeXRangeExclusive": [
+            348,
+            627
+          ],
+          "logicalXRangeExclusive": [
+            17.540322580645164,
+            31.602822580645164
+          ],
+          "logicalCenterX": 24.571572580645164,
+          "logicalWidth": 14.0625
+        }
+      ],
+      "regionBBoxes": {
+        "below_knee": {
+          "logicalBBoxExclusive": [
+            15.272177419354838,
+            39.74779319041615,
+            33.11491935483871,
+            71.92938209331652
+          ]
+        },
+        "boot_cuff_down": {
+          "logicalBBoxExclusive": [
+            15.625,
+            48.02017654476671,
+            33.11491935483871,
+            71.92938209331652
+          ]
+        },
+        "foot_ankle_down": {
+          "logicalBBoxExclusive": [
+            16.93548387096774,
+            68.29760403530895,
+            33.11491935483871,
+            71.92938209331652
+          ]
+        }
+      },
+      "blueGreyCuffFirstLogicalYApprox": 48.12105926860025,
+      "capMaximumInY8_1to20": {
+        "logicalY": 16.242118537200504,
+        "logicalWidth": 12.449596774193548,
+        "logicalCenterX": 23.714717741935484
+      },
+      "hashMatchesAfterRead": true
+    },
+    "source_body": {
+      "path": "E:\\stacklands\\docs\\美术规范\\鬼谷局内素材拼接研究_20261104\\source_full_textures\\sprite_85649_full_texture.png",
+      "sha256": "71037ae43cdf88793fde345f7090436f7a1f36e85b950903045ff02ed3ff9871",
+      "nativeSize": [
+        60,
+        100
+      ],
+      "logicalFullCanvasSize": [
+        60,
+        100
+      ],
+      "coreAlphaTopLogicalY": 9.0,
+      "slices": [
+        {
+          "logicalY": 40,
+          "nativeSampleRow": 40,
+          "nativeXRangeExclusive": [
+            25,
+            41
+          ],
+          "logicalXRangeExclusive": [
+            25.0,
+            41.0
+          ],
+          "logicalCenterX": 33.0,
+          "logicalWidth": 16.0
+        },
+        {
+          "logicalY": 41,
+          "nativeSampleRow": 41,
+          "nativeXRangeExclusive": [
+            25,
+            41
+          ],
+          "logicalXRangeExclusive": [
+            25.0,
+            41.0
+          ],
+          "logicalCenterX": 33.0,
+          "logicalWidth": 16.0
+        },
+        {
+          "logicalY": 42,
+          "nativeSampleRow": 42,
+          "nativeXRangeExclusive": [
+            25,
+            41
+          ],
+          "logicalXRangeExclusive": [
+            25.0,
+            41.0
+          ],
+          "logicalCenterX": 33.0,
+          "logicalWidth": 16.0
+        },
+        {
+          "logicalY": 43.108,
+          "nativeSampleRow": 43,
+          "nativeXRangeExclusive": [
+            24,
+            42
+          ],
+          "logicalXRangeExclusive": [
+            24.0,
+            42.0
+          ],
+          "logicalCenterX": 33.0,
+          "logicalWidth": 18.0
+        },
+        {
+          "logicalY": 44,
+          "nativeSampleRow": 44,
+          "nativeXRangeExclusive": [
+            24,
+            42
+          ],
+          "logicalXRangeExclusive": [
+            24.0,
+            42.0
+          ],
+          "logicalCenterX": 33.0,
+          "logicalWidth": 18.0
+        },
+        {
+          "logicalY": 45,
+          "nativeSampleRow": 45,
+          "nativeXRangeExclusive": [
+            24,
+            42
+          ],
+          "logicalXRangeExclusive": [
+            24.0,
+            42.0
+          ],
+          "logicalCenterX": 33.0,
+          "logicalWidth": 18.0
+        },
+        {
+          "logicalY": 46,
+          "nativeSampleRow": 46,
+          "nativeXRangeExclusive": [
+            24,
+            42
+          ],
+          "logicalXRangeExclusive": [
+            24.0,
+            42.0
+          ],
+          "logicalCenterX": 33.0,
+          "logicalWidth": 18.0
+        }
+      ],
+      "hashMatchesAfterRead": true
+    },
+    "HD_body": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\body.png",
+      "sha256": "9a87016e7b3aaf208d369fd7033cb0fa62f31ec8690cb2727d050120099a3109",
+      "nativeSize": [
+        971,
+        1620
+      ],
+      "logicalFullCanvasSize": [
+        60,
+        100
+      ],
+      "coreAlphaTopLogicalY": 9.012345679012345,
+      "slices": [
+        {
+          "logicalY": 40,
+          "nativeSampleRow": 648,
+          "nativeXRangeExclusive": [
+            420,
+            648
+          ],
+          "logicalXRangeExclusive": [
+            25.952626158599383,
+            40.04119464469619
+          ],
+          "logicalCenterX": 32.99691040164779,
+          "logicalWidth": 14.088568486096808
+        },
+        {
+          "logicalY": 41,
+          "nativeSampleRow": 664,
+          "nativeXRangeExclusive": [
+            418,
+            652
+          ],
+          "logicalXRangeExclusive": [
+            25.829042224510815,
+            40.28836251287333
+          ],
+          "logicalCenterX": 33.05870236869207,
+          "logicalWidth": 14.459320288362512
+        },
+        {
+          "logicalY": 42,
+          "nativeSampleRow": 680,
+          "nativeXRangeExclusive": [
+            415,
+            656
+          ],
+          "logicalXRangeExclusive": [
+            25.64366632337796,
+            40.535530381050464
+          ],
+          "logicalCenterX": 33.08959835221421,
+          "logicalWidth": 14.891864057672503
+        },
+        {
+          "logicalY": 43.108,
+          "nativeSampleRow": 698,
+          "nativeXRangeExclusive": [
+            415,
+            656
+          ],
+          "logicalXRangeExclusive": [
+            25.64366632337796,
+            40.535530381050464
+          ],
+          "logicalCenterX": 33.08959835221421,
+          "logicalWidth": 14.891864057672503
+        },
+        {
+          "logicalY": 44,
+          "nativeSampleRow": 713,
+          "nativeXRangeExclusive": [
+            411,
+            661
+          ],
+          "logicalXRangeExclusive": [
+            25.396498455200824,
+            40.844490216271886
+          ],
+          "logicalCenterX": 33.12049433573635,
+          "logicalWidth": 15.447991761071062
+        },
+        {
+          "logicalY": 45,
+          "nativeSampleRow": 729,
+          "nativeXRangeExclusive": [
+            412,
+            660
+          ],
+          "logicalXRangeExclusive": [
+            25.458290422245106,
+            40.7826982492276
+          ],
+          "logicalCenterX": 33.12049433573635,
+          "logicalWidth": 15.324407826982494
+        },
+        {
+          "logicalY": 46,
+          "nativeSampleRow": 745,
+          "nativeXRangeExclusive": [
+            413,
+            660
+          ],
+          "logicalXRangeExclusive": [
+            25.520082389289392,
+            40.7826982492276
+          ],
+          "logicalCenterX": 33.151390319258496,
+          "logicalWidth": 15.262615859938208
+        }
+      ],
+      "hashMatchesAfterRead": true
+    },
+    "previous_HD_leg": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\archive_v7_before_neutral\\leg.png",
+      "sha256": "0d189c16b9d0ea151a7418f2556182957cfecbcfa91c0d3d48bcfda5dfccbfda",
+      "nativeSize": [
+        991,
+        1587
+      ],
+      "logicalFullCanvasSize": [
+        50,
+        80
+      ],
+      "coreAlphaTopLogicalY": 7.258979206049149,
+      "slices": [
+        {
+          "logicalY": 8.1,
+          "nativeSampleRow": 161,
+          "nativeXRangeExclusive": [
+            367,
+            481
+          ],
+          "logicalXRangeExclusive": [
+            18.51664984863774,
+            24.268415741675074
+          ],
+          "logicalCenterX": 21.392532795156406,
+          "logicalWidth": 5.751765893037334
+        },
+        {
+          "logicalY": 10,
+          "nativeSampleRow": 198,
+          "nativeXRangeExclusive": [
+            353,
+            616
+          ],
+          "logicalXRangeExclusive": [
+            17.81029263370333,
+            31.079717457114025
+          ],
+          "logicalCenterX": 24.445005045408678,
+          "logicalWidth": 13.269424823410695
+        },
+        {
+          "logicalY": 11.99,
+          "nativeSampleRow": 238,
+          "nativeXRangeExclusive": [
+            340,
+            643
+          ],
+          "logicalXRangeExclusive": [
+            17.15438950554995,
+            32.44197780020181
+          ],
+          "logicalCenterX": 24.79818365287588,
+          "logicalWidth": 15.287588294651862
+        },
+        {
+          "logicalY": 15,
+          "nativeSampleRow": 298,
+          "nativeXRangeExclusive": [
+            316,
+            646
+          ],
+          "logicalXRangeExclusive": [
+            15.943491422805248,
+            32.593340060544904
+          ],
+          "logicalCenterX": 24.268415741675078,
+          "logicalWidth": 16.649848637739655
+        },
+        {
+          "logicalY": 20,
+          "nativeSampleRow": 397,
+          "nativeXRangeExclusive": [
+            339,
+            608
+          ],
+          "logicalXRangeExclusive": [
+            17.10393541876892,
+            30.67608476286579
+          ],
+          "logicalCenterX": 23.890010090817356,
+          "logicalWidth": 13.572149344096871
+        },
+        {
+          "logicalY": 25,
+          "nativeSampleRow": 496,
+          "nativeXRangeExclusive": [
+            353,
+            600
+          ],
+          "logicalXRangeExclusive": [
+            17.81029263370333,
+            30.272452068617557
+          ],
+          "logicalCenterX": 24.041372351160444,
+          "logicalWidth": 12.462159434914227
+        },
+        {
+          "logicalY": 30,
+          "nativeSampleRow": 595,
+          "nativeXRangeExclusive": [
+            353,
+            599
+          ],
+          "logicalXRangeExclusive": [
+            17.81029263370333,
+            30.22199798183653
+          ],
+          "logicalCenterX": 24.016145307769932,
+          "logicalWidth": 12.4117053481332
+        },
+        {
+          "logicalY": 35,
+          "nativeSampleRow": 694,
+          "nativeXRangeExclusive": [
+            359,
+            559
+          ],
+          "logicalXRangeExclusive": [
+            18.113017154389503,
+            28.20383451059536
+          ],
+          "logicalCenterX": 23.158425832492433,
+          "logicalWidth": 10.090817356205857
+        },
+        {
+          "logicalY": 39.74,
+          "nativeSampleRow": 788,
+          "nativeXRangeExclusive": [
+            334,
+            537
+          ],
+          "logicalXRangeExclusive": [
+            16.851664984863774,
+            27.093844601412716
+          ],
+          "logicalCenterX": 21.972754793138243,
+          "logicalWidth": 10.242179616548942
+        },
+        {
+          "logicalY": 43,
+          "nativeSampleRow": 853,
+          "nativeXRangeExclusive": [
+            319,
+            524
+          ],
+          "logicalXRangeExclusive": [
+            16.094853683148337,
+            26.437941473259336
+          ],
+          "logicalCenterX": 21.266397578203836,
+          "logicalWidth": 10.343087790111
+        },
+        {
+          "logicalY": 48,
+          "nativeSampleRow": 952,
+          "nativeXRangeExclusive": [
+            309,
+            512
+          ],
+          "logicalXRangeExclusive": [
+            15.590312815338041,
+            25.832492431886983
+          ],
+          "logicalCenterX": 20.711402623612514,
+          "logicalWidth": 10.242179616548942
+        },
+        {
+          "logicalY": 50,
+          "nativeSampleRow": 992,
+          "nativeXRangeExclusive": [
+            315,
+            508
+          ],
+          "logicalXRangeExclusive": [
+            15.893037336024218,
+            25.630676084762865
+          ],
+          "logicalCenterX": 20.76185671039354,
+          "logicalWidth": 9.737638748738647
+        },
+        {
+          "logicalY": 52,
+          "nativeSampleRow": 1032,
+          "nativeXRangeExclusive": [
+            319,
+            495
+          ],
+          "logicalXRangeExclusive": [
+            16.094853683148337,
+            24.97477295660949
+          ],
+          "logicalCenterX": 20.534813319878914,
+          "logicalWidth": 8.879919273461152
+        },
+        {
+          "logicalY": 55,
+          "nativeSampleRow": 1091,
+          "nativeXRangeExclusive": [
+            331,
+            477
+          ],
+          "logicalXRangeExclusive": [
+            16.700302724520686,
+            24.06659939455096
+          ],
+          "logicalCenterX": 20.383451059535822,
+          "logicalWidth": 7.366296670030273
+        },
+        {
+          "logicalY": 60,
+          "nativeSampleRow": 1190,
+          "nativeXRangeExclusive": [
+            342,
+            464
+          ],
+          "logicalXRangeExclusive": [
+            17.255297679112008,
+            23.41069626639758
+          ],
+          "logicalCenterX": 20.332996972754792,
+          "logicalWidth": 6.155398587285571
+        },
+        {
+          "logicalY": 65,
+          "nativeSampleRow": 1289,
+          "nativeXRangeExclusive": [
+            348,
+            484
+          ],
+          "logicalXRangeExclusive": [
+            17.558022199798184,
+            24.419778002018163
+          ],
+          "logicalCenterX": 20.988900100908175,
+          "logicalWidth": 6.861755802219978
+        },
+        {
+          "logicalY": 68.278,
+          "nativeSampleRow": 1354,
+          "nativeXRangeExclusive": [
+            337,
+            655
+          ],
+          "logicalXRangeExclusive": [
+            17.003027245206862,
+            33.047426841574165
+          ],
+          "logicalCenterX": 25.025227043390515,
+          "logicalWidth": 16.044399596367303
+        },
+        {
+          "logicalY": 70,
+          "nativeSampleRow": 1389,
+          "nativeXRangeExclusive": [
+            339,
+            657
+          ],
+          "logicalXRangeExclusive": [
+            17.10393541876892,
+            33.148335015136226
+          ],
+          "logicalCenterX": 25.126135216952573,
+          "logicalWidth": 16.044399596367306
+        },
+        {
+          "logicalY": 71.5,
+          "nativeSampleRow": 1418,
+          "nativeXRangeExclusive": [
+            350,
+            622
+          ],
+          "logicalXRangeExclusive": [
+            17.658930373360242,
+            31.3824419778002
+          ],
+          "logicalCenterX": 24.520686175580224,
+          "logicalWidth": 13.72351160443996
+        }
+      ],
+      "regionBBoxes": {
+        "below_knee": {
+          "logicalBBoxExclusive": [
+            15.338042381432896,
+            39.72274732199118,
+            33.148335015136226,
+            71.8840579710145
+          ]
+        },
+        "boot_cuff_down": {
+          "logicalBBoxExclusive": [
+            15.590312815338041,
+            47.98991808443604,
+            33.148335015136226,
+            71.8840579710145
+          ]
+        },
+        "foot_ankle_down": {
+          "logicalBBoxExclusive": [
+            16.95257315842583,
+            68.25456836798992,
+            33.148335015136226,
+            71.8840579710145
+          ]
+        }
+      },
+      "blueGreyCuffFirstLogicalYApprox": 48.09073724007561,
+      "capMaximumInY8_1to20": {
+        "logicalY": 14.921235034656586,
+        "logicalWidth": 16.700302724520686,
+        "logicalCenterX": 24.29364278506559
+      },
+      "hashMatchesAfterRead": true
+    }
+  },
+  "ratios": {
+    "currentCapAtY15ToWaist": 0.8224614342122876,
+    "currentCapMaxToWaist": 0.835999894034712,
+    "previousCapAtY15ToWaist": 1.1180500018841775,
+    "currentToSourceWaistScale": 0.8273257809818058,
+    "sourceThigh11ScaledByCurrentWaist": 9.100583590799864
+  },
+  "visualReview": {
+    "reviewers": [
+      "/root/local_guigubahuang_reference",
+      "/root/local_guigubahuang_reference/fresh_source_mesh_evidence"
+    ],
+    "evidence": [
+      "tools/action_battle_test/output/ink_outfit_01_showcase_v7_waist_fix/showcase_041.png",
+      "tools/action_battle_test/output/ink_outfit_01_showcase_v7_waist_fix/showcase_059.png",
+      "tools/action_battle_test/output/ink_outfit_leg_proportion_readonly/source_vs_HD_leg_fullcanvas.png"
+    ],
+    "result": "pelvis平面mask已去除腰上裤顶，但059后腰下仍可读到突出深色裤根弧。HD髋帽两侧更鼓，衣腰更窄亦放大此差异；支持局部收根，不支持整腿统一缩放。"
+  },
+  "candidateRedraw": {
+    "logicalCanvasSize": [
+      50,
+      80
+    ],
+    "hipUpperHiddenOverlapLogicalHeight": 3.8900000000000006,
+    "hipCapMaxLogicalWidth": 12.8,
+    "profile": [
+      {
+        "logicalY": 10,
+        "logicalContourCenterX": 24.45,
+        "logicalWidth": 11.8,
+        "logicalXRange": [
+          18.549999999999997,
+          30.35
+        ],
+        "normalizedY": 0.125,
+        "normalizedCenterX": 0.489,
+        "normalizedWidth": 0.23600000000000002,
+        "currentNativeReferencePixelsOnly": {
+          "y": 198.375,
+          "centerX": 484.599,
+          "width": 233.876,
+          "xRange": [
+            367.66099999999994,
+            601.537
+          ]
+        }
+      },
+      {
+        "logicalY": 11.99,
+        "logicalContourCenterX": 24.8,
+        "logicalWidth": 12.6,
+        "logicalXRange": [
+          18.5,
+          31.1
+        ],
+        "normalizedY": 0.149875,
+        "normalizedCenterX": 0.496,
+        "normalizedWidth": 0.252,
+        "currentNativeReferencePixelsOnly": {
+          "y": 237.851625,
+          "centerX": 491.536,
+          "width": 249.732,
+          "xRange": [
+            366.67,
+            616.402
+          ]
+        }
+      },
+      {
+        "logicalY": 15,
+        "logicalContourCenterX": 24.27,
+        "logicalWidth": 12.8,
+        "logicalXRange": [
+          17.869999999999997,
+          30.67
+        ],
+        "normalizedY": 0.1875,
+        "normalizedCenterX": 0.4854,
+        "normalizedWidth": 0.256,
+        "currentNativeReferencePixelsOnly": {
+          "y": 297.5625,
+          "centerX": 481.0314,
+          "width": 253.696,
+          "xRange": [
+            354.18339999999995,
+            607.8794
+          ]
+        }
+      },
+      {
+        "logicalY": 20,
+        "logicalContourCenterX": 23.89,
+        "logicalWidth": 11.2,
+        "logicalXRange": [
+          18.29,
+          29.490000000000002
+        ],
+        "normalizedY": 0.25,
+        "normalizedCenterX": 0.4778,
+        "normalizedWidth": 0.22399999999999998,
+        "currentNativeReferencePixelsOnly": {
+          "y": 396.75,
+          "centerX": 473.4998,
+          "width": 221.98399999999998,
+          "xRange": [
+            362.5078,
+            584.4918
+          ]
+        }
+      },
+      {
+        "logicalY": 25,
+        "logicalContourCenterX": 24.04,
+        "logicalWidth": 11.0,
+        "logicalXRange": [
+          18.54,
+          29.54
+        ],
+        "normalizedY": 0.3125,
+        "normalizedCenterX": 0.4808,
+        "normalizedWidth": 0.22,
+        "currentNativeReferencePixelsOnly": {
+          "y": 495.9375,
+          "centerX": 476.4728,
+          "width": 218.02,
+          "xRange": [
+            367.46279999999996,
+            585.4828
+          ]
+        }
+      },
+      {
+        "logicalY": 30,
+        "logicalContourCenterX": 24.02,
+        "logicalWidth": 10.8,
+        "logicalXRange": [
+          18.619999999999997,
+          29.42
+        ],
+        "normalizedY": 0.375,
+        "normalizedCenterX": 0.4804,
+        "normalizedWidth": 0.21600000000000003,
+        "currentNativeReferencePixelsOnly": {
+          "y": 595.125,
+          "centerX": 476.0764,
+          "width": 214.056,
+          "xRange": [
+            369.04839999999996,
+            583.1044
+          ]
+        }
+      },
+      {
+        "logicalY": 35,
+        "logicalContourCenterX": 23.16,
+        "logicalWidth": 10.4,
+        "logicalXRange": [
+          17.96,
+          28.36
+        ],
+        "normalizedY": 0.4375,
+        "normalizedCenterX": 0.4632,
+        "normalizedWidth": 0.20800000000000002,
+        "currentNativeReferencePixelsOnly": {
+          "y": 694.3125,
+          "centerX": 459.0312,
+          "width": 206.12800000000001,
+          "xRange": [
+            355.9672,
+            562.0952000000001
+          ]
+        }
+      },
+      {
+        "logicalY": 39.74,
+        "logicalContourCenterX": 21.97,
+        "logicalWidth": 10.24,
+        "logicalXRange": [
+          16.849999999999998,
+          27.09
+        ],
+        "normalizedY": 0.49675,
+        "normalizedCenterX": 0.43939999999999996,
+        "normalizedWidth": 0.2048,
+        "currentNativeReferencePixelsOnly": {
+          "y": 788.34225,
+          "centerX": 435.44539999999995,
+          "width": 202.95680000000002,
+          "xRange": [
+            333.967,
+            536.9237999999999
+          ]
+        }
+      }
+    ],
+    "contourCentersAreBonePivots": false,
+    "keepFixed": [
+      {
+        "name": "hip",
+        "logicalXY": [
+          23.21712679617455,
+          11.990097705029704
+        ],
+        "exactSourceTemplateAnchor": "hip"
+      },
+      {
+        "name": "knee",
+        "logicalXY": [
+          21.953585460074486,
+          39.73954298252133
+        ],
+        "exactSourceTemplateAnchor": "knee"
+      },
+      {
+        "name": "ankle",
+        "logicalXY": [
+          19.63043201003908,
+          68.27801825537357
+        ],
+        "exactSourceTemplateAnchor": "ankle"
+      }
+    ],
+    "sourceTemplateAnchors": [
+      {
+        "name": "hip",
+        "kind": "source_skin_bindpose_pivot",
+        "sourceRigPath": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1",
+        "sourceSpriteLocal": [
+          -0.017828732038254507,
+          0.28009902294970296,
+          0.0
+        ],
+        "sourceCropUV": [
+          0.42642683227152245,
+          0.08712278129405104
+        ],
+        "sourceCanvasPx": [
+          23.21712679617455,
+          11.990097705029704
+        ],
+        "sourceCanvasNormalized": [
+          0.464342535923491,
+          0.14987622131287132
+        ],
+        "templatePx": [
+          557.2110431081892,
+          287.7623449207129
+        ]
+      },
+      {
+        "name": "knee",
+        "kind": "source_skin_bindpose_pivot",
+        "sourceRigPath": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1/tui2",
+        "sourceSpriteLocal": [
+          -0.030464145399255137,
+          0.002604570174786689,
+          0.0
+        ],
+        "sourceCropUV": [
+          0.3735526383112948,
+          0.495918408662974
+        ],
+        "sourceCanvasPx": [
+          21.953585460074486,
+          39.73954298252133
+        ],
+        "sourceCanvasNormalized": [
+          0.4390717092014897,
+          0.4967442872815166
+        ],
+        "templatePx": [
+          526.8860510417876,
+          953.7490315805119
+        ]
+      },
+      {
+        "name": "ankle",
+        "kind": "source_skin_bindpose_pivot",
+        "sourceRigPath": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1/tui2/tui3",
+        "sourceSpriteLocal": [
+          -0.0536956798996092,
+          -0.28278018255373566,
+          0.0
+        ],
+        "sourceCropUV": [
+          0.2763378795953867,
+          0.916337764316944
+        ],
+        "sourceCanvasPx": [
+          19.63043201003908,
+          68.27801825537357
+        ],
+        "sourceCanvasNormalized": [
+          0.39260864020078157,
+          0.8534752281921696
+        ],
+        "templatePx": [
+          471.1303682409379,
+          1638.6724381289655
+        ]
+      },
+      {
+        "name": "boot_cuff_top",
+        "kind": "source_texture_observation_not_joint",
+        "definition": "Top of observed gray/light binding band; band occupies original rows42..46",
+        "sourceCropUV": [
+          0.3580246913580247,
+          0.6176470588235294
+        ],
+        "sourceCanvasPx": [
+          21.58251213733061,
+          48.00260229671703
+        ],
+        "sourceCanvasNormalized": [
+          0.43165024274661223,
+          0.6000325287089628
+        ],
+        "templatePx": [
+          517.9802912959346,
+          1152.0624551212086
+        ]
+      },
+      {
+        "name": "boot_cuff_bottom",
+        "kind": "source_texture_observation_not_joint",
+        "definition": "Bottom edge after gray binding row46; gold shaft starts at row47",
+        "sourceCropUV": [
+          0.3580246913580247,
+          0.6911764705882353
+        ],
+        "sourceCanvasPx": [
+          21.58251213733061,
+          52.993850371416876
+        ],
+        "sourceCanvasNormalized": [
+          0.43165024274661223,
+          0.662423129642711
+        ],
+        "templatePx": [
+          517.9802912959346,
+          1271.852408914005
+        ]
+      },
+      {
+        "name": "heel_back",
+        "kind": "source_texture_observation_not_joint",
+        "definition": "Core-alpha left edge in the heel/sole observation row64; not a separate heel bone",
+        "sourceCropUV": [
+          0.20833333333333334,
+          0.9411764705882353
+        ],
+        "sourceCanvasPx": [
+          18.00531872113546,
+          69.96409382539636
+        ],
+        "sourceCanvasNormalized": [
+          0.3601063744227092,
+          0.8745511728174545
+        ],
+        "templatePx": [
+          432.12764930725103,
+          1679.1382518095127
+        ]
+      },
+      {
+        "name": "heel_sole",
+        "kind": "source_texture_observation_not_joint",
+        "definition": "Core-alpha lower-left outer pixel corner of row64",
+        "sourceCropUV": [
+          0.20833333333333334,
+          0.9558823529411765
+        ],
+        "sourceCanvasPx": [
+          18.00531872113546,
+          70.96234344033634
+        ],
+        "sourceCanvasNormalized": [
+          0.3601063744227092,
+          0.8870292930042043
+        ],
+        "templatePx": [
+          432.12764930725103,
+          1703.0962425680723
+        ]
+      },
+      {
+        "name": "instep",
+        "kind": "source_texture_observation_not_joint",
+        "definition": "Upper core-alpha boundary at original pixel column12; visible instep observation",
+        "sourceCropUV": [
+          0.5208333333333334,
+          0.8823529411764706
+        ],
+        "sourceCanvasPx": [
+          25.473170955975853,
+          65.97109536563649
+        ],
+        "sourceCanvasNormalized": [
+          0.5094634191195171,
+          0.824638692070456
+        ],
+        "templatePx": [
+          611.3561029434204,
+          1583.3062887752758
+        ]
+      },
+      {
+        "name": "ball_upper",
+        "kind": "source_texture_observation_not_joint",
+        "definition": "Upper core-alpha boundary at forefoot observation column14; not an anatomical metatarsal pivot",
+        "sourceCropUV": [
+          0.6041666666666666,
+          0.9117647058823529
+        ],
+        "sourceCanvasPx": [
+          27.464598218599953,
+          67.96759459551643
+        ],
+        "sourceCanvasNormalized": [
+          0.549291964371999,
+          0.8495949324439553
+        ],
+        "templatePx": [
+          659.1503572463989,
+          1631.2222702923943
+        ]
+      },
+      {
+        "name": "ball_sole",
+        "kind": "source_texture_observation_not_joint",
+        "definition": "Lower core-alpha boundary at observation column14",
+        "sourceCropUV": [
+          0.6041666666666666,
+          0.9558823529411765
+        ],
+        "sourceCanvasPx": [
+          27.464598218599953,
+          70.96234344033634
+        ],
+        "sourceCanvasNormalized": [
+          0.549291964371999,
+          0.8870292930042043
+        ],
+        "templatePx": [
+          659.1503572463989,
+          1703.0962425680723
+        ]
+      },
+      {
+        "name": "toe_tip",
+        "kind": "source_texture_observation_not_joint",
+        "definition": "Right outer edge of rightmost core-alpha column20; alpha-weighted pixel-center Y",
+        "sourceCropUV": [
+          0.875,
+          0.9396641635377555
+        ],
+        "sourceCanvasPx": [
+          33.936736822128296,
+          69.86143695010112
+        ],
+        "sourceCanvasNormalized": [
+          0.6787347364425659,
+          0.873267961876264
+        ],
+        "templatePx": [
+          814.4816837310791,
+          1676.674486802427
+        ]
+      },
+      {
+        "name": "toe_sole",
+        "kind": "source_texture_observation_not_joint",
+        "definition": "Core-alpha lower-right outer pixel corner of row64",
+        "sourceCropUV": [
+          0.875,
+          0.9558823529411765
+        ],
+        "sourceCanvasPx": [
+          33.936736822128296,
+          70.96234344033634
+        ],
+        "sourceCanvasNormalized": [
+          0.6787347364425659,
+          0.8870292930042043
+        ],
+        "templatePx": [
+          814.4816837310791,
+          1703.0962425680723
+        ]
+      },
+      {
+        "name": "sole_center",
+        "kind": "source_texture_observation_not_joint",
+        "definition": "Midpoint of the visible core-alpha sole interval x5..21 at lower edge65",
+        "sourceCropUV": [
+          0.5416666666666666,
+          0.9558823529411765
+        ],
+        "sourceCanvasPx": [
+          25.971027771631874,
+          70.96234344033634
+        ],
+        "sourceCanvasNormalized": [
+          0.5194205554326374,
+          0.8870292930042043
+        ],
+        "templatePx": [
+          623.304666519165,
+          1703.0962425680723
+        ]
+      },
+      {
+        "name": "soft_sole_edge",
+        "kind": "source_texture_observation_not_joint",
+        "definition": "Faint nonzero-alpha fringe extends one more row to edge66; do not confuse it with core sole edge65",
+        "sourceCropUV": [
+          0.5625,
+          0.9705882352941176
+        ],
+        "sourceCanvasPx": [
+          26.468884587287903,
+          71.9605930552763
+        ],
+        "sourceCanvasNormalized": [
+          0.5293776917457581,
+          0.8995074131909538
+        ],
+        "templatePx": [
+          635.2532300949097,
+          1727.0542333266312
+        ]
+      }
+    ],
+    "constraints": [
+      "完整画布、全高和骨锚不变；只收髋帽和上大腿外形。",
+      "上缘按现有略斜布料形状圆顺连接，不造独立球形髋包。",
+      "帽顶Y8.1至10是收口连接段，不需填满最大宽；保3至4逻辑像素上插覆盖。",
+      "膝点高度39.74接回现有宽度及中心，膝以下束口、靴筒、脚踝、圆脚背、鞋尖鞋底保留。",
+      "保持中心的当前实测走向，禁止把轮廓中心强行当骨pivot或整条腿等比缩放。",
+      "像素参考只对应当前991x1587 PNG；若新图native尺寸变化，按完整画布归一化行/中心/宽换算，不伪报模板像素。"
+    ],
+    "legCoreAlphaTopLogicalY": 8.1,
+    "status": "收束前先验，保留追溯；不作为当前PNG的验收阈值。"
+  },
+  "latestHandRule": "近手手背朝屏幕且open拇指在画面RIGHT，远手掌心朝屏幕，各有open/fist；用户指定方向优先，不能按youbi标签翻回。普通待机跑动不使用剑指；本轮不生成或绑定备用剑指，只留历史归档。",
+  "priorInspectionHistory": [
+    {
+      "recordedAt": "2026-11-05T01:18:26.935280+08:00",
+      "status": "以下目标为重绘先验候选，尚未经用户视觉批准。",
+      "HD_leg": {
+        "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\archive_v7_before_neutral\\leg.png",
+        "sha256": "0d189c16b9d0ea151a7418f2556182957cfecbcfa91c0d3d48bcfda5dfccbfda",
+        "nativeSize": [
+          991,
+          1587
+        ],
+        "logicalFullCanvasSize": [
+          50,
+          80
+        ],
+        "coreAlphaTopLogicalY": 7.258979206049149,
+        "slices": [
+          {
+            "logicalY": 8,
+            "nativeSampleRow": 159,
+            "nativeXRangeExclusive": [
+              370,
+              475
+            ],
+            "logicalXRangeExclusive": [
+              18.66801210898083,
+              23.965691220988898
+            ],
+            "logicalCenterX": 21.316851664984863,
+            "logicalWidth": 5.297679112008069
+          },
+          {
+            "logicalY": 10,
+            "nativeSampleRow": 198,
+            "nativeXRangeExclusive": [
+              353,
+              616
+            ],
+            "logicalXRangeExclusive": [
+              17.81029263370333,
+              31.079717457114025
+            ],
+            "logicalCenterX": 24.445005045408678,
+            "logicalWidth": 13.269424823410695
+          },
+          {
+            "logicalY": 11.99,
+            "nativeSampleRow": 238,
+            "nativeXRangeExclusive": [
+              340,
+              643
+            ],
+            "logicalXRangeExclusive": [
+              17.15438950554995,
+              32.44197780020181
+            ],
+            "logicalCenterX": 24.79818365287588,
+            "logicalWidth": 15.287588294651862
+          },
+          {
+            "logicalY": 15,
+            "nativeSampleRow": 298,
+            "nativeXRangeExclusive": [
+              316,
+              646
+            ],
+            "logicalXRangeExclusive": [
+              15.943491422805248,
+              32.593340060544904
+            ],
+            "logicalCenterX": 24.268415741675078,
+            "logicalWidth": 16.649848637739655
+          },
+          {
+            "logicalY": 20,
+            "nativeSampleRow": 397,
+            "nativeXRangeExclusive": [
+              339,
+              608
+            ],
+            "logicalXRangeExclusive": [
+              17.10393541876892,
+              30.67608476286579
+            ],
+            "logicalCenterX": 23.890010090817356,
+            "logicalWidth": 13.572149344096871
+          },
+          {
+            "logicalY": 25,
+            "nativeSampleRow": 496,
+            "nativeXRangeExclusive": [
+              353,
+              600
+            ],
+            "logicalXRangeExclusive": [
+              17.81029263370333,
+              30.272452068617557
+            ],
+            "logicalCenterX": 24.041372351160444,
+            "logicalWidth": 12.462159434914227
+          },
+          {
+            "logicalY": 30,
+            "nativeSampleRow": 595,
+            "nativeXRangeExclusive": [
+              353,
+              599
+            ],
+            "logicalXRangeExclusive": [
+              17.81029263370333,
+              30.22199798183653
+            ],
+            "logicalCenterX": 24.016145307769932,
+            "logicalWidth": 12.4117053481332
+          },
+          {
+            "logicalY": 35,
+            "nativeSampleRow": 694,
+            "nativeXRangeExclusive": [
+              359,
+              559
+            ],
+            "logicalXRangeExclusive": [
+              18.113017154389503,
+              28.20383451059536
+            ],
+            "logicalCenterX": 23.158425832492433,
+            "logicalWidth": 10.090817356205857
+          },
+          {
+            "logicalY": 39.74,
+            "nativeSampleRow": 788,
+            "nativeXRangeExclusive": [
+              334,
+              537
+            ],
+            "logicalXRangeExclusive": [
+              16.851664984863774,
+              27.093844601412716
+            ],
+            "logicalCenterX": 21.972754793138243,
+            "logicalWidth": 10.242179616548942
+          },
+          {
+            "logicalY": 43,
+            "nativeSampleRow": 853,
+            "nativeXRangeExclusive": [
+              319,
+              524
+            ],
+            "logicalXRangeExclusive": [
+              16.094853683148337,
+              26.437941473259336
+            ],
+            "logicalCenterX": 21.266397578203836,
+            "logicalWidth": 10.343087790111
+          },
+          {
+            "logicalY": 48,
+            "nativeSampleRow": 952,
+            "nativeXRangeExclusive": [
+              309,
+              512
+            ],
+            "logicalXRangeExclusive": [
+              15.590312815338041,
+              25.832492431886983
+            ],
+            "logicalCenterX": 20.711402623612514,
+            "logicalWidth": 10.242179616548942
+          }
+        ],
+        "hashMatchesAfterRead": true,
+        "pathAtInspection": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\leg.png"
+      },
+      "ratios": {
+        "currentCapAtY15ToWaist": 1.1180500018841775,
+        "sourceCapAtY15ToWaist": 0.7777777777777778,
+        "candidateCapMaxToCurrentWaist": 0.8595297372060857
+      }
+    }
+  ],
+  "latestSlimLegComparison": {
+    "currentNativeSize": [
+      992,
+      1586
+    ],
+    "previousNativeSize": [
+      991,
+      1587
+    ],
+    "widthChanges": [
+      {
+        "logicalY": 11.99,
+        "oldWidth": 15.287588294651862,
+        "newWidth": 10.735887096774189,
+        "priorCandidateWidth": 12.6,
+        "newMinusPriorCandidate": -1.864112903225811,
+        "newCenterShiftFromOld": -0.4282239754565289
+      },
+      {
+        "logicalY": 15,
+        "oldWidth": 16.649848637739655,
+        "newWidth": 12.247983870967744,
+        "priorCandidateWidth": 12.8,
+        "newMinusPriorCandidate": -0.5520161290322569,
+        "newCenterShiftFromOld": -0.35208509651378606
+      },
+      {
+        "logicalY": 20,
+        "oldWidth": 13.572149344096871,
+        "newWidth": 11.391129032258064,
+        "priorCandidateWidth": 11.2,
+        "newMinusPriorCandidate": 0.19112903225806477,
+        "newCenterShiftFromOld": -0.5029133166238076
+      },
+      {
+        "logicalY": 25,
+        "oldWidth": 12.462159434914227,
+        "newWidth": 10.030241935483872,
+        "priorCandidateWidth": 11.0,
+        "newMinusPriorCandidate": -0.9697580645161281,
+        "newCenterShiftFromOld": -0.9314933189023797
+      },
+      {
+        "logicalY": 30,
+        "oldWidth": 12.4117053481332,
+        "newWidth": 9.173387096774196,
+        "priorCandidateWidth": 10.8,
+        "newMinusPriorCandidate": -1.626612903225805,
+        "newCenterShiftFromOld": -1.1330807916409
+      },
+      {
+        "logicalY": 35,
+        "oldWidth": 10.090817356205857,
+        "newWidth": 8.467741935483872,
+        "priorCandidateWidth": 10.4,
+        "newMinusPriorCandidate": -1.9322580645161285,
+        "newCenterShiftFromOld": -0.8297968002343694
+      },
+      {
+        "logicalY": 39.74,
+        "oldWidth": 10.242179616548942,
+        "newWidth": 9.526209677419356,
+        "priorCandidateWidth": 10.24,
+        "newMinusPriorCandidate": -0.7137903225806443,
+        "newCenterShiftFromOld": -0.42537576088017914
+      }
+    ],
+    "upperHiddenOverlapHeight": 4.070803884096539,
+    "normalizedOccupancyComparison": {
+      "commonAnalysisGrid": [
+        1000,
+        1600
+      ],
+      "alphaThreshold": 128,
+      "resampling": "nearest of alpha only for diagnostic measurement; no image asset modified",
+      "regions": {
+        "below_knee": {
+          "iou": 0.9838695038737943,
+          "oldAreaLogical": 300.6625,
+          "newAreaLogical": 300.445,
+          "areaChangePercent": -0.07234024861763605
+        },
+        "boot_cuff_down": {
+          "iou": 0.9894578313253012,
+          "oldAreaLogical": 213.76,
+          "newAreaLogical": 215.565,
+          "areaChangePercent": 0.8444049401197605
+        },
+        "foot_ankle_down": {
+          "iou": 0.9831154937438951,
+          "oldAreaLogical": 52.9775,
+          "newAreaLogical": 53.61,
+          "areaChangePercent": 1.1939030720588928
+        }
+      }
+    },
+    "imageEvidence": "tools/action_battle_test/output/ink_outfit_leg_proportion_readonly/old_v7_vs_new_slim_leg_fullcanvas.png",
+    "candidateProfileIsAcceptanceThreshold": false,
+    "conclusion": "髋帽和上腿已明显收束，最大帽宽12.4496低于当前侧腰14.892。Y25至35比先验候选窄，但候选并非用户标准；腰宽缩放率约.827，源上腿11同尺度约9.10，新Y30约9.17可成立，不能仅凭未达候选10.8判过细。膝/靴存在小Alpha形状变化，完整画布中的脚区占位几乎保持，非逐像素相同。",
+    "rootVisualReviewReported": "Root已目视v9整套041/059，认为上腿轮廓正常、无须为追候选值反复生成；用户最终视觉评价仍另验。"
+  }
+}

@@ -1,0 +1,2245 @@
+{
+	"samples": [
+		{
+			"clip": "Idle",
+			"facing": 1.0,
+			"geometry_inside_panel": true,
+			"hand_socket": {
+				"grip_axis_local": "(-1.0, 0.0, 0.0)",
+				"grip_local": "(0.027438, -0.001649, 0.0)",
+				"grip_native": "(23.67581, -77.62447)",
+				"hand_axis_native": "(-0.93358, 0.358368)",
+				"source": "projected original near-hand Transform3D basis; no forearm-direction substitute"
+			},
+			"panel_geometry_bounds": "[P: (184.4382, 77.65898), S: (193.1095, 244.0137)]",
+			"phase": 0.0,
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.0000152587890625,
+					"clip": "Idle",
+					"elbow": "(9.438126, -73.68233)",
+					"elbow_flex_degrees": 70.0,
+					"elbow_hyperextension": false,
+					"grip_axis_world": "(0.93358, -0.358368)",
+					"grip_global": "(269.7192, 158.6613)",
+					"grip_to_tip_native": 55.0,
+					"grip_to_tip_world": 115.499984741211,
+					"lower_length": 12.0268230438232,
+					"mode": "swing",
+					"phase": 0.0,
+					"pose_angles_degrees": "(55.0, -15.0, -6.0)",
+					"rotations_only": true,
+					"shoulder": "(2.085556, -84.18288)",
+					"swing_section": "prepare",
+					"tip_global": "(377.5477, 117.2698)",
+					"total_length_native": 63.4716679968077,
+					"total_length_world": 133.290512084961,
+					"upper_length": 12.8188133239746,
+					"wrist": "(21.05515, -76.7951)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "swing",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": "Idle",
+			"facing": 1.0,
+			"geometry_inside_panel": true,
+			"hand_socket": {
+				"grip_axis_local": "(-1.0, 0.0, 0.0)",
+				"grip_local": "(0.027438, -0.001649, 0.0)",
+				"grip_native": "(24.71977, -86.40944)",
+				"hand_axis_native": "(-0.7023, 0.711881)",
+				"source": "projected original near-hand Transform3D basis; no forearm-direction substitute"
+			},
+			"panel_geometry_bounds": "[P: (184.1194, 57.99062), S: (168.9077, 263.6821)]",
+			"phase": 0.15,
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.0000341196900990326,
+					"clip": "Idle",
+					"elbow": "(13.0201, -77.40121)",
+					"elbow_flex_degrees": 68.2502777676136,
+					"elbow_hyperextension": false,
+					"grip_axis_world": "(0.7023, -0.711881)",
+					"grip_global": "(271.9115, 140.2129)",
+					"grip_to_tip_native": 55.0,
+					"grip_to_tip_world": 115.500022888184,
+					"lower_length": 12.0268239974976,
+					"mode": "swing",
+					"phase": 0.15,
+					"pose_angles_degrees": "(31.64998, -36.6003, -8.787868)",
+					"rotations_only": true,
+					"shoulder": "(2.107834, -84.1276)",
+					"swing_section": "prepare",
+					"tip_global": "(353.0271, 57.99062)",
+					"total_length_native": 63.4716679968077,
+					"total_length_world": 133.29052734375,
+					"upper_length": 12.8188152313232,
+					"wrist": "(22.67541, -84.57195)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "swing",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": "Idle",
+			"facing": 1.0,
+			"geometry_inside_panel": true,
+			"hand_socket": {
+				"grip_axis_local": "(-1.0, 0.0, 0.0)",
+				"grip_local": "(0.027438, -0.001649, 0.0)",
+				"grip_native": "(20.0996, -93.81943)",
+				"hand_axis_native": "(-0.156434, 0.987688)",
+				"source": "projected original near-hand Transform3D basis; no forearm-direction substitute"
+			},
+			"panel_geometry_bounds": "[P: (183.2891, 10.57387), S: (96.98822, 311.0988)]",
+			"phase": 0.3,
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.00003814697265625,
+					"clip": "Idle",
+					"elbow": "(14.42476, -80.23517)",
+					"elbow_flex_degrees": 82.0,
+					"elbow_hyperextension": false,
+					"grip_axis_world": "(0.156434, -0.987688)",
+					"grip_global": "(262.2092, 124.6519)",
+					"grip_to_tip_native": 55.0,
+					"grip_to_tip_world": 115.500015258789,
+					"lower_length": 12.0268316268921,
+					"mode": "swing",
+					"phase": 0.3,
+					"pose_angles_degrees": "(17.0, -65.0, -16.0)",
+					"rotations_only": true,
+					"shoulder": "(2.166077, -83.98303)",
+					"swing_section": "cut",
+					"tip_global": "(280.2773, 10.57387)",
+					"total_length_native": 63.4716679968077,
+					"total_length_world": 133.29052734375,
+					"upper_length": 12.8188047409058,
+					"wrist": "(19.50752, -91.13518)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "swing",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": "Idle",
+			"facing": 1.0,
+			"geometry_inside_panel": true,
+			"hand_socket": {
+				"grip_axis_local": "(-1.0, 0.0, 0.0)",
+				"grip_local": "(0.027438, -0.001649, 0.0)",
+				"grip_native": "(23.88951, -77.46381)",
+				"hand_axis_native": "(-0.924815, 0.380417)",
+				"source": "projected original near-hand Transform3D basis; no forearm-direction substitute"
+			},
+			"panel_geometry_bounds": "[P: (182.3031, 78.24097), S: (194.681, 243.4317)]",
+			"phase": 0.43,
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.000030517578125,
+					"clip": "Idle",
+					"elbow": "(9.692886, -73.38365)",
+					"elbow_flex_degrees": 69.8023964473815,
+					"elbow_hyperextension": false,
+					"grip_axis_world": "(0.924815, -0.380417)",
+					"grip_global": "(270.168, 158.9987)",
+					"grip_to_tip_native": 55.0,
+					"grip_to_tip_world": 115.500015258789,
+					"lower_length": 12.0268363952637,
+					"mode": "swing",
+					"phase": 0.43,
+					"pose_angles_degrees": "(54.42688, -15.37551, -6.984)",
+					"rotations_only": true,
+					"shoulder": "(2.235657, -83.81013)",
+					"swing_section": "cut",
+					"tip_global": "(376.9841, 115.0605)",
+					"total_length_native": 63.4716679968077,
+					"total_length_world": 133.290512084961,
+					"upper_length": 12.8188076019287,
+					"wrist": "(21.28927, -76.57249)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "swing",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": "Idle",
+			"facing": 1.0,
+			"geometry_inside_panel": true,
+			"hand_socket": {
+				"grip_axis_local": "(-1.0, 0.0, 0.0)",
+				"grip_local": "(0.027438, -0.001649, 0.0)",
+				"grip_native": "(20.511, -65.12257)",
+				"hand_axis_native": "(-0.766044, -0.642788)",
+				"source": "projected original near-hand Transform3D basis; no forearm-direction substitute"
+			},
+			"panel_geometry_bounds": "[P: (181.1988, 78.54944), S: (170.3524, 243.1233)]",
+			"phase": 0.56,
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.000030517578125,
+					"clip": "Idle",
+					"elbow": "(7.52803, -71.90433)",
+					"elbow_flex_degrees": 42.0,
+					"elbow_hyperextension": false,
+					"grip_axis_world": "(0.766044, 0.642788)",
+					"grip_global": "(263.0731, 184.9153)",
+					"grip_to_tip_native": 55.0,
+					"grip_to_tip_world": 115.500015258789,
+					"lower_length": 12.0268383026123,
+					"mode": "swing",
+					"phase": 0.56,
+					"pose_angles_degrees": "(66.0, 24.0, 16.0)",
+					"rotations_only": true,
+					"shoulder": "(2.31414, -83.61489)",
+					"swing_section": "recover",
+					"tip_global": "(351.5513, 259.1573)",
+					"total_length_native": 63.4716679968077,
+					"total_length_world": 133.29052734375,
+					"upper_length": 12.8188123703003,
+					"wrist": "(18.51509, -67.01257)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "swing",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": "Idle",
+			"facing": 1.0,
+			"geometry_inside_panel": true,
+			"hand_socket": {
+				"grip_axis_local": "(-1.0, 0.0, 0.0)",
+				"grip_local": "(0.027438, -0.001649, 0.0)",
+				"grip_native": "(22.98006, -68.95778)",
+				"hand_axis_native": "(-0.94142, -0.337237)",
+				"source": "projected original near-hand Transform3D basis; no forearm-direction substitute"
+			},
+			"panel_geometry_bounds": "[P: (179.4695, 79.0433), S: (197.5227, 242.6294)]",
+			"phase": 0.77,
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.0000341196900990326,
+					"clip": "Idle",
+					"elbow": "(8.597466, -72.06338)",
+					"elbow_flex_degrees": 51.5897161156188,
+					"elbow_hyperextension": false,
+					"grip_axis_world": "(0.94142, 0.337237)",
+					"grip_global": "(268.2581, 176.8614)",
+					"grip_to_tip_native": 55.0,
+					"grip_to_tip_world": 115.500015258789,
+					"lower_length": 12.0268259048462,
+					"mode": "swing",
+					"phase": 0.77,
+					"pose_angles_degrees": "(61.28334, 9.693623, 10.01497)",
+					"rotations_only": true,
+					"shoulder": "(2.438301, -83.30556)",
+					"swing_section": "recover",
+					"tip_global": "(376.9922, 215.8122)",
+					"total_length_native": 63.4716679968077,
+					"total_length_world": 133.290496826172,
+					"upper_length": 12.818811416626,
+					"wrist": "(20.45258, -70.03831)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "swing",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": "Idle",
+			"facing": 1.0,
+			"geometry_inside_panel": true,
+			"hand_socket": {
+				"grip_axis_local": "(-1.0, 0.0, 0.0)",
+				"grip_local": "(0.027438, -0.001649, 0.0)",
+				"grip_native": "(24.12393, -76.50916)",
+				"hand_axis_native": "(-0.93358, 0.358368)",
+				"source": "projected original near-hand Transform3D basis; no forearm-direction substitute"
+			},
+			"panel_geometry_bounds": "[P: (178.1561, 79.42758), S: (200.3327, 242.2451)]",
+			"phase": 0.99999,
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.0000341196900990326,
+					"clip": "Idle",
+					"elbow": "(9.886238, -72.56701)",
+					"elbow_flex_degrees": 69.9999999417854,
+					"elbow_hyperextension": false,
+					"grip_axis_world": "(0.93358, -0.358368)",
+					"grip_global": "(270.6602, 161.0035)",
+					"grip_to_tip_native": 55.0,
+					"grip_to_tip_world": 115.500015258789,
+					"lower_length": 12.0268411636353,
+					"mode": "swing",
+					"phase": 0.99999,
+					"pose_angles_degrees": "(55.0, -15.0, -6.0)",
+					"rotations_only": true,
+					"shoulder": "(2.533669, -83.06756)",
+					"swing_section": "recover",
+					"tip_global": "(378.4888, 119.612)",
+					"total_length_native": 63.4716679968077,
+					"total_length_world": 133.290512084961,
+					"upper_length": 12.8188066482544,
+					"wrist": "(21.50327, -75.67979)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "swing",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": "Idle",
+			"facing": -1.0,
+			"geometry_inside_panel": true,
+			"hand_socket": {
+				"grip_axis_local": "(-1.0, 0.0, 0.0)",
+				"grip_local": "(0.027438, -0.001649, 0.0)",
+				"grip_native": "(23.67581, -77.62447)",
+				"hand_axis_native": "(-0.93358, 0.358368)",
+				"source": "projected original near-hand Transform3D basis; no forearm-direction substitute"
+			},
+			"panel_geometry_bounds": "[P: (62.45226, 77.65898), S: (193.1095, 244.0137)]",
+			"phase": 0.0,
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.0000152587890625,
+					"clip": "Idle",
+					"elbow": "(9.438118, -73.68233)",
+					"elbow_flex_degrees": 70.0,
+					"elbow_hyperextension": false,
+					"grip_axis_world": "(-0.93358, -0.358368)",
+					"grip_global": "(170.2808, 158.6613)",
+					"grip_to_tip_native": 55.0,
+					"grip_to_tip_world": 115.500015258789,
+					"lower_length": 12.0268230438232,
+					"mode": "swing",
+					"phase": 0.0,
+					"pose_angles_degrees": "(55.0, -15.0, -6.0)",
+					"rotations_only": true,
+					"shoulder": "(2.085556, -84.18288)",
+					"swing_section": "prepare",
+					"tip_global": "(62.45226, 117.2698)",
+					"total_length_native": 63.4716679968077,
+					"total_length_world": 133.29052734375,
+					"upper_length": 12.8188095092773,
+					"wrist": "(21.05514, -76.7951)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "swing",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": "Idle",
+			"facing": -1.0,
+			"geometry_inside_panel": true,
+			"hand_socket": {
+				"grip_axis_local": "(-1.0, 0.0, 0.0)",
+				"grip_local": "(0.027438, -0.001649, 0.0)",
+				"grip_native": "(24.71977, -86.40944)",
+				"hand_axis_native": "(-0.7023, 0.711881)",
+				"source": "projected original near-hand Transform3D basis; no forearm-direction substitute"
+			},
+			"panel_geometry_bounds": "[P: (86.97284, 57.99062), S: (168.9078, 263.6821)]",
+			"phase": 0.15,
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.0000152587890625,
+					"clip": "Idle",
+					"elbow": "(13.0201, -77.40121)",
+					"elbow_flex_degrees": 68.2502777676136,
+					"elbow_hyperextension": false,
+					"grip_axis_world": "(-0.7023, -0.711881)",
+					"grip_global": "(168.0885, 140.2129)",
+					"grip_to_tip_native": 55.0,
+					"grip_to_tip_world": 115.500022888184,
+					"lower_length": 12.0268297195435,
+					"mode": "swing",
+					"phase": 0.15,
+					"pose_angles_degrees": "(31.64998, -36.6003, -8.787868)",
+					"rotations_only": true,
+					"shoulder": "(2.107834, -84.1276)",
+					"swing_section": "prepare",
+					"tip_global": "(86.97284, 57.99062)",
+					"total_length_native": 63.4716679968077,
+					"total_length_world": 133.29052734375,
+					"upper_length": 12.8188152313232,
+					"wrist": "(22.67542, -84.57195)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "swing",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": "Idle",
+			"facing": -1.0,
+			"geometry_inside_panel": true,
+			"hand_socket": {
+				"grip_axis_local": "(-1.0, 0.0, 0.0)",
+				"grip_local": "(0.027438, -0.001649, 0.0)",
+				"grip_native": "(20.0996, -93.81943)",
+				"hand_axis_native": "(-0.156434, 0.987688)",
+				"source": "projected original near-hand Transform3D basis; no forearm-direction substitute"
+			},
+			"panel_geometry_bounds": "[P: (159.7227, 10.57387), S: (96.98822, 311.0988)]",
+			"phase": 0.3,
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.0000275081729341764,
+					"clip": "Idle",
+					"elbow": "(14.42476, -80.23517)",
+					"elbow_flex_degrees": 82.0,
+					"elbow_hyperextension": false,
+					"grip_axis_world": "(-0.156434, -0.987688)",
+					"grip_global": "(177.7908, 124.6519)",
+					"grip_to_tip_native": 55.0,
+					"grip_to_tip_world": 115.500015258789,
+					"lower_length": 12.0268316268921,
+					"mode": "swing",
+					"phase": 0.3,
+					"pose_angles_degrees": "(17.0, -65.0, -16.0)",
+					"rotations_only": true,
+					"shoulder": "(2.166069, -83.98303)",
+					"swing_section": "cut",
+					"tip_global": "(159.7227, 10.57387)",
+					"total_length_native": 63.4716679968077,
+					"total_length_world": 133.29052734375,
+					"upper_length": 12.8188123703003,
+					"wrist": "(19.50752, -91.13518)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "swing",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": "Idle",
+			"facing": -1.0,
+			"geometry_inside_panel": true,
+			"hand_socket": {
+				"grip_axis_local": "(-1.0, 0.0, 0.0)",
+				"grip_local": "(0.027438, -0.001649, 0.0)",
+				"grip_native": "(23.88951, -77.46381)",
+				"hand_axis_native": "(-0.924815, 0.380417)",
+				"source": "projected original near-hand Transform3D basis; no forearm-direction substitute"
+			},
+			"panel_geometry_bounds": "[P: (63.01587, 78.24097), S: (194.681, 243.4317)]",
+			"phase": 0.43,
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.000030517578125,
+					"clip": "Idle",
+					"elbow": "(9.692886, -73.38365)",
+					"elbow_flex_degrees": 69.8023964473815,
+					"elbow_hyperextension": false,
+					"grip_axis_world": "(-0.924815, -0.380417)",
+					"grip_global": "(169.832, 158.9987)",
+					"grip_to_tip_native": 55.0,
+					"grip_to_tip_world": 115.500015258789,
+					"lower_length": 12.0268363952637,
+					"mode": "swing",
+					"phase": 0.43,
+					"pose_angles_degrees": "(54.42688, -15.37551, -6.984)",
+					"rotations_only": true,
+					"shoulder": "(2.235649, -83.81013)",
+					"swing_section": "cut",
+					"tip_global": "(63.01587, 115.0605)",
+					"total_length_native": 63.4716679968077,
+					"total_length_world": 133.290512084961,
+					"upper_length": 12.818811416626,
+					"wrist": "(21.28927, -76.57249)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "swing",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": "Idle",
+			"facing": -1.0,
+			"geometry_inside_panel": true,
+			"hand_socket": {
+				"grip_axis_local": "(-1.0, 0.0, 0.0)",
+				"grip_local": "(0.027438, -0.001649, 0.0)",
+				"grip_native": "(20.511, -65.12257)",
+				"hand_axis_native": "(-0.766044, -0.642788)",
+				"source": "projected original near-hand Transform3D basis; no forearm-direction substitute"
+			},
+			"panel_geometry_bounds": "[P: (88.44876, 78.54944), S: (170.3524, 243.1233)]",
+			"phase": 0.56,
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.0,
+					"clip": "Idle",
+					"elbow": "(7.528023, -71.90433)",
+					"elbow_flex_degrees": 42.0,
+					"elbow_hyperextension": false,
+					"grip_axis_world": "(-0.766044, 0.642788)",
+					"grip_global": "(176.9269, 184.9153)",
+					"grip_to_tip_native": 55.0,
+					"grip_to_tip_world": 115.500015258789,
+					"lower_length": 12.0268449783325,
+					"mode": "swing",
+					"phase": 0.56,
+					"pose_angles_degrees": "(66.0, 24.0, 16.0)",
+					"rotations_only": true,
+					"shoulder": "(2.31414, -83.61489)",
+					"swing_section": "recover",
+					"tip_global": "(88.44876, 259.1573)",
+					"total_length_native": 63.4716679968077,
+					"total_length_world": 133.290512084961,
+					"upper_length": 12.8188095092773,
+					"wrist": "(18.51509, -67.01257)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "swing",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": "Idle",
+			"facing": -1.0,
+			"geometry_inside_panel": true,
+			"hand_socket": {
+				"grip_axis_local": "(-1.0, 0.0, 0.0)",
+				"grip_local": "(0.027438, -0.001649, 0.0)",
+				"grip_native": "(22.98006, -68.95778)",
+				"hand_axis_native": "(-0.94142, -0.337237)",
+				"source": "projected original near-hand Transform3D basis; no forearm-direction substitute"
+			},
+			"panel_geometry_bounds": "[P: (63.00785, 79.0433), S: (197.5227, 242.6294)]",
+			"phase": 0.77,
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.0000215791860682657,
+					"clip": "Idle",
+					"elbow": "(8.597466, -72.06338)",
+					"elbow_flex_degrees": 51.5897161156188,
+					"elbow_hyperextension": false,
+					"grip_axis_world": "(-0.94142, 0.337237)",
+					"grip_global": "(171.7419, 176.8614)",
+					"grip_to_tip_native": 55.0,
+					"grip_to_tip_world": 115.500015258789,
+					"lower_length": 12.0268259048462,
+					"mode": "swing",
+					"phase": 0.77,
+					"pose_angles_degrees": "(61.28334, 9.693623, 10.01497)",
+					"rotations_only": true,
+					"shoulder": "(2.438293, -83.30556)",
+					"swing_section": "recover",
+					"tip_global": "(63.00785, 215.8122)",
+					"total_length_native": 63.4716679968077,
+					"total_length_world": 133.290496826172,
+					"upper_length": 12.8188152313232,
+					"wrist": "(20.45258, -70.03831)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "swing",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": "Idle",
+			"facing": -1.0,
+			"geometry_inside_panel": true,
+			"hand_socket": {
+				"grip_axis_local": "(-1.0, 0.0, 0.0)",
+				"grip_local": "(0.027438, -0.001649, 0.0)",
+				"grip_native": "(24.12393, -76.50916)",
+				"hand_axis_native": "(-0.93358, 0.358368)",
+				"source": "projected original near-hand Transform3D basis; no forearm-direction substitute"
+			},
+			"panel_geometry_bounds": "[P: (61.5112, 79.42758), S: (200.3327, 242.2451)]",
+			"phase": 0.99999,
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.0000152587890625,
+					"clip": "Idle",
+					"elbow": "(9.886238, -72.56701)",
+					"elbow_flex_degrees": 69.9999999417854,
+					"elbow_hyperextension": false,
+					"grip_axis_world": "(-0.93358, -0.358368)",
+					"grip_global": "(169.3398, 161.0035)",
+					"grip_to_tip_native": 55.0,
+					"grip_to_tip_world": 115.500015258789,
+					"lower_length": 12.0268335342407,
+					"mode": "swing",
+					"phase": 0.99999,
+					"pose_angles_degrees": "(55.0, -15.0, -6.0)",
+					"rotations_only": true,
+					"shoulder": "(2.533661, -83.06756)",
+					"swing_section": "recover",
+					"tip_global": "(61.5112, 119.612)",
+					"total_length_native": 63.4716679968077,
+					"total_length_world": 133.29052734375,
+					"upper_length": 12.818811416626,
+					"wrist": "(21.50327, -75.67979)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "swing",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": "Run_New1",
+			"facing": 1.0,
+			"geometry_inside_panel": true,
+			"hand_socket": {
+				"grip_axis_local": "(-1.0, 0.0, 0.0)",
+				"grip_local": "(0.027438, -0.001649, 0.0)",
+				"grip_native": "(41.85763, -75.51646)",
+				"hand_axis_native": "(-0.93358, 0.358368)",
+				"source": "projected original near-hand Transform3D basis; no forearm-direction substitute"
+			},
+			"panel_geometry_bounds": "[P: (136.0845, 68.84294), S: (279.6451, 244.7377)]",
+			"phase": 0.0,
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.0000341196900990326,
+					"clip": "Run_New1",
+					"elbow": "(27.17458, -71.45498)",
+					"elbow_flex_degrees": 70.0,
+					"elbow_hyperextension": false,
+					"grip_axis_world": "(0.93358, -0.358368)",
+					"grip_global": "(307.901, 163.915)",
+					"grip_to_tip_native": 55.0,
+					"grip_to_tip_world": 115.500015258789,
+					"lower_length": 12.48792552948,
+					"mode": "swing",
+					"phase": 0.0,
+					"pose_angles_degrees": "(55.0, -15.0, -6.0)",
+					"rotations_only": true,
+					"shoulder": "(17.66375, -85.03782)",
+					"swing_section": "prepare",
+					"tip_global": "(415.7296, 122.5235)",
+					"total_length_native": 63.4716679968077,
+					"total_length_world": 133.290512084961,
+					"upper_length": 16.5815963745117,
+					"wrist": "(39.23698, -74.6871)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "swing",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": "Run_New1",
+			"facing": 1.0,
+			"geometry_inside_panel": true,
+			"hand_socket": {
+				"grip_axis_local": "(-1.0, 0.0, 0.0)",
+				"grip_local": "(0.027438, -0.001649, 0.0)",
+				"grip_native": "(42.05054, -85.9625)",
+				"hand_axis_native": "(-0.7023, 0.711881)",
+				"source": "projected original near-hand Transform3D basis; no forearm-direction substitute"
+			},
+			"panel_geometry_bounds": "[P: (94.97353, 59.75603), S: (294.4482, 245.0257)]",
+			"phase": 0.15,
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.0000341196900990326,
+					"clip": "Run_New1",
+					"elbow": "(29.98073, -76.67937)",
+					"elbow_flex_degrees": 68.2502777676136,
+					"elbow_hyperextension": false,
+					"grip_axis_world": "(0.7023, -0.711881)",
+					"grip_global": "(308.3061, 141.9783)",
+					"grip_to_tip_native": 55.0,
+					"grip_to_tip_world": 115.500022888184,
+					"lower_length": 12.4879055023193,
+					"mode": "swing",
+					"phase": 0.15,
+					"pose_angles_degrees": "(31.64998, -36.6003, -8.787868)",
+					"rotations_only": true,
+					"shoulder": "(16.19424, -85.17745)",
+					"swing_section": "prepare",
+					"tip_global": "(389.4218, 59.75603)",
+					"total_length_native": 63.4716679968077,
+					"total_length_world": 133.29052734375,
+					"upper_length": 16.1952095031738,
+					"wrist": "(40.0062, -84.12502)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "swing",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": "Run_New1",
+			"facing": 1.0,
+			"geometry_inside_panel": true,
+			"hand_socket": {
+				"grip_axis_local": "(-1.0, 0.0, 0.0)",
+				"grip_local": "(0.027438, -0.001649, 0.0)",
+				"grip_native": "(34.97178, -94.02514)",
+				"hand_axis_native": "(-0.156434, 0.987688)",
+				"source": "projected original near-hand Transform3D basis; no forearm-direction substitute"
+			},
+			"panel_geometry_bounds": "[P: (127.4903, 10.96874), S: (184.0186, 302.5774)]",
+			"phase": 0.3,
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.00002288818359375,
+					"clip": "Run_New1",
+					"elbow": "(29.1021, -80.02299)",
+					"elbow_flex_degrees": 82.0,
+					"elbow_hyperextension": false,
+					"grip_axis_world": "(0.156434, -0.987688)",
+					"grip_global": "(293.4407, 125.0468)",
+					"grip_to_tip_native": 55.0,
+					"grip_to_tip_world": 115.500015258789,
+					"lower_length": 12.4879198074341,
+					"mode": "swing",
+					"phase": 0.3,
+					"pose_angles_degrees": "(17.0, -65.0, -16.0)",
+					"rotations_only": true,
+					"shoulder": "(14.14083, -84.59711)",
+					"swing_section": "cut",
+					"tip_global": "(311.5089, 10.96874)",
+					"total_length_native": 63.4716679968077,
+					"total_length_world": 133.29052734375,
+					"upper_length": 15.644871711731,
+					"wrist": "(34.37971, -91.3409)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "swing",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": "Run_New1",
+			"facing": 1.0,
+			"geometry_inside_panel": true,
+			"hand_socket": {
+				"grip_axis_local": "(-1.0, 0.0, 0.0)",
+				"grip_local": "(0.027438, -0.001649, 0.0)",
+				"grip_native": "(37.4762, -79.27684)",
+				"hand_axis_native": "(-0.924815, 0.380417)",
+				"source": "projected original near-hand Transform3D basis; no forearm-direction substitute"
+			},
+			"panel_geometry_bounds": "[P: (126.6121, 66.89725), S: (278.9041, 244.299)]",
+			"phase": 0.43,
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.000030517578125,
+					"clip": "Run_New1",
+					"elbow": "(22.835, -75.07442)",
+					"elbow_flex_degrees": 69.8023964473815,
+					"elbow_hyperextension": false,
+					"grip_axis_world": "(0.924815, -0.380417)",
+					"grip_global": "(298.7, 156.0182)",
+					"grip_to_tip_native": 55.0,
+					"grip_to_tip_world": 115.500030517578,
+					"lower_length": 12.4879217147827,
+					"mode": "swing",
+					"phase": 0.43,
+					"pose_angles_degrees": "(54.42688, -15.37551, -6.984)",
+					"rotations_only": true,
+					"shoulder": "(13.6954, -87.85316)",
+					"swing_section": "cut",
+					"tip_global": "(405.5162, 112.08)",
+					"total_length_native": 63.4716679968077,
+					"total_length_world": 133.29052734375,
+					"upper_length": 15.7107772827148,
+					"wrist": "(34.87596, -78.38553)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "swing",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": "Run_New1",
+			"facing": 1.0,
+			"geometry_inside_panel": true,
+			"hand_socket": {
+				"grip_axis_local": "(-1.0, 0.0, 0.0)",
+				"grip_local": "(0.027438, -0.001649, 0.0)",
+				"grip_native": "(34.79041, -64.00426)",
+				"hand_axis_native": "(-0.766044, -0.642788)",
+				"source": "projected original near-hand Transform3D basis; no forearm-direction substitute"
+			},
+			"panel_geometry_bounds": "[P: (84.92558, 70.22108), S: (296.6124, 232.7797)]",
+			"phase": 0.56,
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.0,
+					"clip": "Run_New1",
+					"elbow": "(21.38622, -70.97356)",
+					"elbow_flex_degrees": 42.0,
+					"elbow_hyperextension": false,
+					"grip_axis_world": "(0.766044, 0.642788)",
+					"grip_global": "(293.0598, 188.0906)",
+					"grip_to_tip_native": 55.0,
+					"grip_to_tip_world": 115.499992370605,
+					"lower_length": 12.4879188537598,
+					"mode": "swing",
+					"phase": 0.56,
+					"pose_angles_degrees": "(66.0, 24.0, 16.0)",
+					"rotations_only": true,
+					"shoulder": "(14.77045, -85.83282)",
+					"swing_section": "recover",
+					"tip_global": "(381.538, 262.3326)",
+					"total_length_native": 63.4716679968077,
+					"total_length_world": 133.290512084961,
+					"upper_length": 16.2654819488525,
+					"wrist": "(32.79449, -65.89426)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "swing",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": "Run_New1",
+			"facing": 1.0,
+			"geometry_inside_panel": true,
+			"hand_socket": {
+				"grip_axis_local": "(-1.0, 0.0, 0.0)",
+				"grip_local": "(0.027438, -0.001649, 0.0)",
+				"grip_native": "(40.33952, -65.686)",
+				"hand_axis_native": "(-0.94142, -0.337236)",
+				"source": "projected original near-hand Transform3D basis; no forearm-direction substitute"
+			},
+			"panel_geometry_bounds": "[P: (141.5693, 72.41374), S: (271.8777, 241.5046)]",
+			"phase": 0.77,
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.000030517578125,
+					"clip": "Run_New1",
+					"elbow": "(25.50241, -68.86925)",
+					"elbow_flex_degrees": 51.5897161156188,
+					"elbow_hyperextension": false,
+					"grip_axis_world": "(0.94142, 0.337237)",
+					"grip_global": "(304.713, 184.5589)",
+					"grip_to_tip_native": 55.0,
+					"grip_to_tip_world": 115.500015258789,
+					"lower_length": 12.4879302978516,
+					"mode": "swing",
+					"phase": 0.77,
+					"pose_angles_degrees": "(61.28334, 9.693623, 10.01497)",
+					"rotations_only": true,
+					"shoulder": "(17.53983, -83.40316)",
+					"swing_section": "recover",
+					"tip_global": "(413.447, 223.5098)",
+					"total_length_native": 63.4716679968077,
+					"total_length_world": 133.290496826172,
+					"upper_length": 16.5721836090088,
+					"wrist": "(37.81204, -66.76654)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "swing",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": "Run_New1",
+			"facing": 1.0,
+			"geometry_inside_panel": true,
+			"hand_socket": {
+				"grip_axis_local": "(-1.0, 0.0, 0.0)",
+				"grip_local": "(0.027438, -0.001649, 0.0)",
+				"grip_native": "(39.43068, -75.81058)",
+				"hand_axis_native": "(-0.93358, 0.358368)",
+				"source": "projected original near-hand Transform3D basis; no forearm-direction substitute"
+			},
+			"panel_geometry_bounds": "[P: (91.35481, 70.82356), S: (319.2781, 231.8457)]",
+			"phase": 0.99999,
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.0000341196900990326,
+					"clip": "Run_New1",
+					"elbow": "(24.74762, -71.7491)",
+					"elbow_flex_degrees": 69.9999999417854,
+					"elbow_hyperextension": false,
+					"grip_axis_world": "(0.93358, -0.358368)",
+					"grip_global": "(302.8044, 163.2973)",
+					"grip_to_tip_native": 55.0,
+					"grip_to_tip_world": 115.500015258789,
+					"lower_length": 12.4879064559937,
+					"mode": "swing",
+					"phase": 0.99999,
+					"pose_angles_degrees": "(55.0, -15.0, -6.0)",
+					"rotations_only": true,
+					"shoulder": "(15.55336, -84.87988)",
+					"swing_section": "recover",
+					"tip_global": "(410.6329, 121.9059)",
+					"total_length_native": 63.4716679968077,
+					"total_length_world": 133.290512084961,
+					"upper_length": 16.029712677002,
+					"wrist": "(36.81001, -74.9812)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "swing",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": "Run_New1",
+			"facing": -1.0,
+			"geometry_inside_panel": true,
+			"hand_socket": {
+				"grip_axis_local": "(-1.0, 0.0, 0.0)",
+				"grip_local": "(0.027438, -0.001649, 0.0)",
+				"grip_native": "(41.85763, -75.51646)",
+				"hand_axis_native": "(-0.93358, 0.358368)",
+				"source": "projected original near-hand Transform3D basis; no forearm-direction substitute"
+			},
+			"panel_geometry_bounds": "[P: (24.27043, 68.84294), S: (279.6451, 244.7377)]",
+			"phase": 0.0,
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.0000215791860682657,
+					"clip": "Run_New1",
+					"elbow": "(27.17456, -71.45498)",
+					"elbow_flex_degrees": 70.0,
+					"elbow_hyperextension": false,
+					"grip_axis_world": "(-0.93358, -0.358368)",
+					"grip_global": "(132.099, 163.915)",
+					"grip_to_tip_native": 55.0,
+					"grip_to_tip_world": 115.500015258789,
+					"lower_length": 12.48792552948,
+					"mode": "swing",
+					"phase": 0.0,
+					"pose_angles_degrees": "(55.0, -15.0, -6.0)",
+					"rotations_only": true,
+					"shoulder": "(17.66375, -85.03782)",
+					"swing_section": "prepare",
+					"tip_global": "(24.27043, 122.5235)",
+					"total_length_native": 63.4716679968077,
+					"total_length_world": 133.29052734375,
+					"upper_length": 16.5815887451172,
+					"wrist": "(39.23697, -74.6871)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "swing",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": "Run_New1",
+			"facing": -1.0,
+			"geometry_inside_panel": true,
+			"hand_socket": {
+				"grip_axis_local": "(-1.0, 0.0, 0.0)",
+				"grip_local": "(0.027438, -0.001649, 0.0)",
+				"grip_native": "(42.05054, -85.9625)",
+				"hand_axis_native": "(-0.7023, 0.711881)",
+				"source": "projected original near-hand Transform3D basis; no forearm-direction substitute"
+			},
+			"panel_geometry_bounds": "[P: (50.57821, 59.75603), S: (294.4482, 245.0257)]",
+			"phase": 0.15,
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.0000152587890625,
+					"clip": "Run_New1",
+					"elbow": "(29.98071, -76.67937)",
+					"elbow_flex_degrees": 68.2502777676136,
+					"elbow_hyperextension": false,
+					"grip_axis_world": "(-0.7023, -0.711881)",
+					"grip_global": "(131.6939, 141.9783)",
+					"grip_to_tip_native": 55.0,
+					"grip_to_tip_world": 115.500015258789,
+					"lower_length": 12.4879179000854,
+					"mode": "swing",
+					"phase": 0.15,
+					"pose_angles_degrees": "(31.64998, -36.6003, -8.787868)",
+					"rotations_only": true,
+					"shoulder": "(16.19424, -85.17745)",
+					"swing_section": "prepare",
+					"tip_global": "(50.57821, 59.75603)",
+					"total_length_native": 63.4716679968077,
+					"total_length_world": 133.29052734375,
+					"upper_length": 16.1951961517334,
+					"wrist": "(40.0062, -84.12502)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "swing",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": "Run_New1",
+			"facing": -1.0,
+			"geometry_inside_panel": true,
+			"hand_socket": {
+				"grip_axis_local": "(-1.0, 0.0, 0.0)",
+				"grip_local": "(0.027438, -0.001649, 0.0)",
+				"grip_native": "(34.97178, -94.02514)",
+				"hand_axis_native": "(-0.156434, 0.987688)",
+				"source": "projected original near-hand Transform3D basis; no forearm-direction substitute"
+			},
+			"panel_geometry_bounds": "[P: (128.4911, 10.96874), S: (184.0186, 302.5774)]",
+			"phase": 0.3,
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.00002288818359375,
+					"clip": "Run_New1",
+					"elbow": "(29.10209, -80.02299)",
+					"elbow_flex_degrees": 82.0,
+					"elbow_hyperextension": false,
+					"grip_axis_world": "(-0.156434, -0.987688)",
+					"grip_global": "(146.5593, 125.0468)",
+					"grip_to_tip_native": 55.0,
+					"grip_to_tip_world": 115.500015258789,
+					"lower_length": 12.4879236221313,
+					"mode": "swing",
+					"phase": 0.3,
+					"pose_angles_degrees": "(17.0, -65.0, -16.0)",
+					"rotations_only": true,
+					"shoulder": "(14.14083, -84.59711)",
+					"swing_section": "cut",
+					"tip_global": "(128.4911, 10.96874)",
+					"total_length_native": 63.4716679968077,
+					"total_length_world": 133.29052734375,
+					"upper_length": 15.6448650360107,
+					"wrist": "(34.37971, -91.3409)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "swing",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": "Run_New1",
+			"facing": -1.0,
+			"geometry_inside_panel": true,
+			"hand_socket": {
+				"grip_axis_local": "(-1.0, 0.0, 0.0)",
+				"grip_local": "(0.027438, -0.001649, 0.0)",
+				"grip_native": "(37.4762, -79.27684)",
+				"hand_axis_native": "(-0.924815, 0.380417)",
+				"source": "projected original near-hand Transform3D basis; no forearm-direction substitute"
+			},
+			"panel_geometry_bounds": "[P: (34.48383, 66.89725), S: (278.9041, 244.299)]",
+			"phase": 0.43,
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.0000341196900990326,
+					"clip": "Run_New1",
+					"elbow": "(22.835, -75.07442)",
+					"elbow_flex_degrees": 69.8023964473815,
+					"elbow_hyperextension": false,
+					"grip_axis_world": "(-0.924815, -0.380417)",
+					"grip_global": "(141.3, 156.0182)",
+					"grip_to_tip_native": 55.0,
+					"grip_to_tip_world": 115.5,
+					"lower_length": 12.4879140853882,
+					"mode": "swing",
+					"phase": 0.43,
+					"pose_angles_degrees": "(54.42688, -15.37551, -6.984)",
+					"rotations_only": true,
+					"shoulder": "(13.6954, -87.85316)",
+					"swing_section": "cut",
+					"tip_global": "(34.48383, 112.08)",
+					"total_length_native": 63.4716679968077,
+					"total_length_world": 133.290512084961,
+					"upper_length": 15.7107772827148,
+					"wrist": "(34.87595, -78.38553)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "swing",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": "Run_New1",
+			"facing": -1.0,
+			"geometry_inside_panel": true,
+			"hand_socket": {
+				"grip_axis_local": "(-1.0, 0.0, 0.0)",
+				"grip_local": "(0.027438, -0.001649, 0.0)",
+				"grip_native": "(34.79041, -64.00426)",
+				"hand_axis_native": "(-0.766044, -0.642788)",
+				"source": "projected original near-hand Transform3D basis; no forearm-direction substitute"
+			},
+			"panel_geometry_bounds": "[P: (58.46201, 70.22108), S: (296.6124, 232.7797)]",
+			"phase": 0.56,
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.0,
+					"clip": "Run_New1",
+					"elbow": "(21.38622, -70.97356)",
+					"elbow_flex_degrees": 42.0,
+					"elbow_hyperextension": false,
+					"grip_axis_world": "(-0.766044, 0.642788)",
+					"grip_global": "(146.9402, 188.0906)",
+					"grip_to_tip_native": 55.0,
+					"grip_to_tip_world": 115.500015258789,
+					"lower_length": 12.4879188537598,
+					"mode": "swing",
+					"phase": 0.56,
+					"pose_angles_degrees": "(66.0, 24.0, 16.0)",
+					"rotations_only": true,
+					"shoulder": "(14.77045, -85.83282)",
+					"swing_section": "recover",
+					"tip_global": "(58.46201, 262.3326)",
+					"total_length_native": 63.4716679968077,
+					"total_length_world": 133.290512084961,
+					"upper_length": 16.2654857635498,
+					"wrist": "(32.79449, -65.89426)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "swing",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": "Run_New1",
+			"facing": -1.0,
+			"geometry_inside_panel": true,
+			"hand_socket": {
+				"grip_axis_local": "(-1.0, 0.0, 0.0)",
+				"grip_local": "(0.027438, -0.001649, 0.0)",
+				"grip_native": "(40.33952, -65.686)",
+				"hand_axis_native": "(-0.94142, -0.337236)",
+				"source": "projected original near-hand Transform3D basis; no forearm-direction substitute"
+			},
+			"panel_geometry_bounds": "[P: (26.55298, 72.41374), S: (271.8777, 241.5046)]",
+			"phase": 0.77,
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.0000431583721365314,
+					"clip": "Run_New1",
+					"elbow": "(25.50241, -68.86925)",
+					"elbow_flex_degrees": 51.5897161156188,
+					"elbow_hyperextension": false,
+					"grip_axis_world": "(-0.94142, 0.337237)",
+					"grip_global": "(135.287, 184.5589)",
+					"grip_to_tip_native": 55.0,
+					"grip_to_tip_world": 115.500015258789,
+					"lower_length": 12.4879302978516,
+					"mode": "swing",
+					"phase": 0.77,
+					"pose_angles_degrees": "(61.28334, 9.693623, 10.01497)",
+					"rotations_only": true,
+					"shoulder": "(17.53983, -83.40316)",
+					"swing_section": "recover",
+					"tip_global": "(26.55298, 223.5098)",
+					"total_length_native": 63.4716679968077,
+					"total_length_world": 133.290496826172,
+					"upper_length": 16.5721874237061,
+					"wrist": "(37.81204, -66.76654)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "swing",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": "Run_New1",
+			"facing": -1.0,
+			"geometry_inside_panel": true,
+			"hand_socket": {
+				"grip_axis_local": "(-1.0, 0.0, 0.0)",
+				"grip_local": "(0.027438, -0.001649, 0.0)",
+				"grip_native": "(39.43068, -75.81058)",
+				"hand_axis_native": "(-0.93358, 0.358368)",
+				"source": "projected original near-hand Transform3D basis; no forearm-direction substitute"
+			},
+			"panel_geometry_bounds": "[P: (29.36703, 70.82356), S: (319.2782, 231.8457)]",
+			"phase": 0.99999,
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.0000152587890625,
+					"clip": "Run_New1",
+					"elbow": "(24.74762, -71.7491)",
+					"elbow_flex_degrees": 69.9999999417854,
+					"elbow_hyperextension": false,
+					"grip_axis_world": "(-0.93358, -0.358368)",
+					"grip_global": "(137.1956, 163.2973)",
+					"grip_to_tip_native": 55.0,
+					"grip_to_tip_world": 115.500015258789,
+					"lower_length": 12.4879064559937,
+					"mode": "swing",
+					"phase": 0.99999,
+					"pose_angles_degrees": "(55.0, -15.0, -6.0)",
+					"rotations_only": true,
+					"shoulder": "(15.55336, -84.87988)",
+					"swing_section": "recover",
+					"tip_global": "(29.36703, 121.9059)",
+					"total_length_native": 63.4716679968077,
+					"total_length_world": 133.29052734375,
+					"upper_length": 16.029712677002,
+					"wrist": "(36.81001, -74.9812)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "swing",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		}
+	],
+	"scope": "Actual 51-transform NativeRuntime renderer; native source body meshes/alpha, own tied hair, unchanged fixed-length sword PNG; both facings, standing and running. Independent 0-key visual swing only."
+}

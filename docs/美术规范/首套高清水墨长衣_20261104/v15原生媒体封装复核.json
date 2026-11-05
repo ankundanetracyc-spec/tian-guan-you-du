@@ -1,0 +1,64 @@
+{
+  "scope": "v15 current native media, final c636 sword candidate and hidden-thumb grip; user visual approval is not implied",
+  "mode": "Godot native PNG; GIF palette encoding only; generated source artwork via built-in image_gen",
+  "source_png_assets_sha256": {
+    "body.png": "9a87016e7b3aaf208d369fd7033cb0fa62f31ec8690cb2727d050120099a3109",
+    "leg.png": "1a34b9c4f232f77e67bd56f64fdbeb4734a8e7271bfb50d71528bc0d3e656ec0",
+    "sleeve_far.png": "40c510c31d0b60c818304d9f58eca32d3e08ab73724265fc9e46474e6cc380de",
+    "sleeve_far_fist.png": "482f474bea8156a4425306aa3d13cacf66458fc2406fa5d6a0200a921d334d8f",
+    "sleeve_near.png": "b5637eb58dd30de992295a09037a13fb7703ca2756b178148cf20fbf94b894ba",
+    "sleeve_near_fist.png": "4d2cacfb8a58827d5f56f5637bfd8ddd7754d23a9f7e41d5469b77137f8d5d80",
+    "sleeve_near_grip.png": "a92e11d85325c42fe7918ee83babe5b32e88b63f53a3d9b96c39dccc79d41e73",
+    "sleeve_near_sword.png": "2fdc515d0abb28869792ac65379b5fe23566d4a56b90c528e832ac606209c307"
+  },
+  "media": [
+    {
+      "capture": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v15_showcase",
+      "native_png": "E:\\stacklands\\docs\\美术规范\\首套高清水墨长衣_20261104\\首套水墨长衣_静站与持架跑动.png",
+      "png_sha256": "8a5f6fc0d0269c3f12d6107c10760681138cc6cd3cd5774582448b2f0daeddfe",
+      "png_identical_to_source": true,
+      "gif": "E:\\stacklands\\docs\\美术规范\\首套高清水墨长衣_20261104\\首套水墨长衣_跑停.gif",
+      "gif_sha256": "4156ab1399bbaf0159415f42b12f35f4608a52a282da9618f0cffc9d578cae66",
+      "gif_frames": 75,
+      "duration_ms": 5000,
+      "canvas": [
+        1200,
+        800
+      ]
+    },
+    {
+      "capture": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v15_small",
+      "native_png": "E:\\stacklands\\docs\\美术规范\\首套高清水墨长衣_20261104\\局内尺寸观察\\首套水墨长衣_静站与持架跑动.png",
+      "png_sha256": "0df282965df99c1f4bbcc33e8026c6602a0c0f29a8de5eefd5d4a08b4a3b0240",
+      "png_identical_to_source": true,
+      "gif": "E:\\stacklands\\docs\\美术规范\\首套高清水墨长衣_20261104\\局内尺寸观察\\首套水墨长衣_跑停.gif",
+      "gif_sha256": "9ffca2c8a395a0c023c41a4622ab2ec54c300a6fc10f5c187c8fcca6f45b9e41",
+      "gif_frames": 75,
+      "duration_ms": 5000,
+      "canvas": [
+        800,
+        400
+      ]
+    },
+    {
+      "native_png": "E:\\stacklands\\docs\\美术规范\\首套高清水墨长衣_20261104\\近侧右手_剑指与握柄_原生近景.png",
+      "png_sha256": "ac952d44617f6335c3f60020bee6a625bda4039474e2c1434153aeb8585dddf7"
+    },
+    {
+      "native_png": "E:\\stacklands\\docs\\美术规范\\首套高清水墨长衣_20261104\\两侧同尺寸袖片_伸直与屈肘.png",
+      "png_sha256": "ef801fccf1aca80a157121c082643bf87b84b864ebba74856031da70e375a881"
+    },
+    {
+      "native_png": "E:\\stacklands\\docs\\美术规范\\首套高清水墨长衣_20261104\\正常舒展与握拳_原生近景.png",
+      "png_sha256": "7d056337c5e704ca9448304ece1392b45301c82c7c0469728831b4ad2cf3b0c4"
+    }
+  ],
+  "checks": {
+    "ordinary_source_hand_and_pause": 49,
+    "active_light_hem": 19,
+    "native_sleeve_source_poses": 864
+  },
+  "visual_review": "Smooth sleeve narrows to elbow then flares; bend is angular; rigid hands complete. Last sword gesture reviewed at actual bent pose after user rejection of previous 10a3 candidate. No claim of complete original-game cloth physics.",
+  "superseded_sword_scope": "Old c636 sword was rejected for wrong handedness; its measurements/hash/visual conclusion remain historical. Normal-hand/body media and unchanged-code tests retain their original scope.",
+  "current_sword_record": "E:\\stacklands\\docs\\美术规范\\首套高清水墨长衣_20261104\\右手剑指左右纠正_20261105.json"
+}

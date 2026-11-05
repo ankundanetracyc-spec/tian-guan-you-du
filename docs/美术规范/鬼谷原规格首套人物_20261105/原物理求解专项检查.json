@@ -1,0 +1,38 @@
+{
+	"checks": 1941,
+	"diagnostics": {
+		"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+		"components": [
+			{
+				"particles": 7,
+				"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+				"sourceTotalLength": 0.335419170558453,
+				"virtualEndParticles": 2
+			},
+			{
+				"particles": 4,
+				"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+				"sourceTotalLength": 0.303497962653637,
+				"virtualEndParticles": 1
+			}
+		],
+		"coordinateSystem": "full 3D Unity units before XY projection",
+		"setupErrors": [],
+		"unsupportedActiveBranches": [
+			"nonempty collider geometry",
+			"camera distant-disable",
+			"non-Normal Unity scheduling",
+			"weighted AnimationCurve keys"
+		]
+	},
+	"failures": [],
+	"limits": "Parameter/geometry/scheduling regression of supplied SDK port. Does not establish native instruction identity or original gameplay runtime state.",
+	"max3DLengthError": 0.000000044703483581543,
+	"maxDynamicDisplacement": 0.0762539133429527,
+	"maxRootMountError": 0.0000000600973706355035,
+	"maxSceneZExcursion": 0.256639331579208,
+	"maxUnaffectedBoneError": 0.00000194556128008117,
+	"passed": true,
+	"samples": 1908,
+	"source": "all six male101 clips at48 samples, three cycles, both facings, 3D actor movement, plus static source test"
+}

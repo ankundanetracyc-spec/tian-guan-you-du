@@ -1,0 +1,204 @@
+{
+  "status": "upper_body_open_candidate_short_review",
+  "single_movement_speed": 114,
+  "ordinary_movement_stamina_cost": 0,
+  "source_capture": "tools\\action_battle_test\\output\\reference_upper_open_lean_short_probe",
+  "forward_clip_seconds": 2,
+  "backward_review_seconds": 0.8,
+  "fixture_initial_opponent_distance": 600,
+  "opponent_ai_and_camera": "unchanged live battle rules",
+  "comparison_image_left": "cape_like_robe_skin old scheme",
+  "comparison_image_right": "new reference_walk_skin open upper-body candidate",
+  "bone_measurement_baseline_source": "tools\\action_battle_test\\output\\reference_walk_full\\frames.jsonl",
+  "bone_measurement_baseline_profile": "new, previous delivered compact pose",
+  "bone_measurement_baseline_sha256": "6c40db16de58550c75f9295b76dab5e95625b1dd688a455eb5e80f3752b47941",
+  "baseline_window": [
+    30,
+    70
+  ],
+  "candidate_forward_window": [
+    8,
+    59
+  ],
+  "baseline_metrics_world_units": {
+    "near_hand_forward_of_hip": {
+      "min": 6.38678741455078,
+      "mean": 7.951119771817833,
+      "max": 9.38724517822261
+    },
+    "near_hand_above_hip": {
+      "min": 6.8265380859375,
+      "mean": 7.57889296368856,
+      "max": 8.2966537475586
+    },
+    "near_hand_forward_of_shoulder": {
+      "min": 9.027030944824219,
+      "mean": 10.757306168719035,
+      "max": 12.30984497070313
+    },
+    "near_hand_below_shoulder": {
+      "min": 20.073173522949205,
+      "mean": 20.827744646770196,
+      "max": 21.62779235839851
+    },
+    "forearm_angle_degrees_down_from_horizontal": {
+      "min": 36.44353668021451,
+      "mean": 40.3823054370081,
+      "max": 44.76179003184898
+    },
+    "near_far_hand_distance": {
+      "min": 3.7293606330153133,
+      "mean": 9.556026553861596,
+      "max": 15.140550784753914
+    },
+    "near_far_horizontal_span": {
+      "min": 1.6623382568359393,
+      "mean": 8.464156732326598,
+      "max": 14.58522033691403
+    },
+    "head_forward_of_hip": {
+      "min": 1.4505310058593701,
+      "mean": 1.8256342818097357,
+      "max": 2.2153396606445304
+    }
+  },
+  "candidate_metrics_world_units": {
+    "near_hand_forward_of_hip": {
+      "min": 17.79273986816404,
+      "mean": 18.999218133779674,
+      "max": 19.948738098144542
+    },
+    "near_hand_above_hip": {
+      "min": 15.1600723266601,
+      "mean": 18.10059268657978,
+      "max": 20.7607040405273
+    },
+    "near_hand_forward_of_shoulder": {
+      "min": 18.65026092529297,
+      "mean": 20.321681976318363,
+      "max": 21.774154663085938
+    },
+    "near_hand_below_shoulder": {
+      "min": 7.8187789916992045,
+      "mean": 10.524845416729256,
+      "max": 13.50092315673831
+    },
+    "forearm_angle_degrees_down_from_horizontal": {
+      "min": -4.608677149735786,
+      "mean": 3.059064186935492,
+      "max": 11.977295091685939
+    },
+    "near_far_hand_distance": {
+      "min": 21.825609075463603,
+      "mean": 29.653931311876597,
+      "max": 36.11497452392802
+    },
+    "near_far_horizontal_span": {
+      "min": 18.13378143310547,
+      "mean": 26.669757696298458,
+      "max": 33.8735084533691
+    },
+    "head_forward_of_hip": {
+      "min": 2.50297546386719,
+      "mean": 3.325462047870344,
+      "max": 4.068168640136721
+    }
+  },
+  "candidate_metrics_native_pixels": {
+    "near_hand_forward_of_shoulder_px": {
+      "min": 12.7666015625,
+      "mean": 13.924410306490424,
+      "max": 14.884887695311988
+    },
+    "near_hand_above_hip_px": {
+      "min": 10.407348632812045,
+      "mean": 12.409358097956702,
+      "max": 14.208068847656989
+    },
+    "near_far_hand_distance_px": {
+      "min": 14.936820936654206,
+      "mean": 20.363161043275554,
+      "max": 24.71600307032475
+    }
+  },
+  "cadence_mean_previous": 1.5481789964046386,
+  "cadence_mean_candidate": 1.54797144545679,
+  "body_lean_degrees_previous_mean": 4.958399889810957,
+  "body_lean_degrees_candidate_mean": 8.190397429349336,
+  "source_sha256": {
+    "capture_reference_upper_short.gd": "6743bcfd8cbae5707e98863a013171d4a1265b8f328cbdb4a30d8b5c848aa204",
+    "capture_reference_walk.gd": "c79c71a013214053d582f3fbe866738ee328628cb4b9fbf30f22bd4540c11e44",
+    "reference_walk_skin.gd": "9adf1a6809422daba08ae273653b70ae833272a382732a84928edf6e34525bbc",
+    "cape_like_robe_skin.gd": "06fd1a5c73830a5f20164c28bac62642adafc342c9362e4622bf0dda440b19fc"
+  },
+  "native_pngs_repainted": false,
+  "native_crop_resampled": false,
+  "metrics_scope": "Own rig bone measurements. No exact source-video joint or cadence measurement is claimed. Baseline bone comparison is independent of the old-scheme rendering panel.",
+  "artifacts": {
+    "上身展开_原生近景对照2秒.gif": 874640,
+    "上身展开_实际局内2秒.gif": 5021575,
+    "参考_用户52秒截图.png": 767161,
+    "实际局内_前进一.png": 826484,
+    "实际局内_前进二.png": 825504,
+    "实际局内_后退.png": 826272,
+    "实际游戏尺寸_未缩放人物局部2秒.gif": 565287,
+    "实际游戏尺寸_未缩放局部六相位.png": 235956,
+    "旧方案与新展开动作_前进一.png": 104956,
+    "旧方案与新展开动作_前进二.png": 104223,
+    "旧方案与新展开动作_后退.png": 102021,
+    "旧方案与新展开动作_静止.png": 60863,
+    "静止前进后退_六相位.png": 244614
+  },
+  "reference_walk_pose_smoke.json": {
+    "brake_lean_minimum": -0.0197438821196556,
+    "checks": 11,
+    "dedicated_actions": {
+      "AttackIdle": {
+        "errors": {
+          "angle": 0.0,
+          "position": 0.0
+        },
+        "passed": true
+      },
+      "Step1": {
+        "errors": {
+          "angle": 0.0,
+          "position": 0.0
+        },
+        "passed": true
+      },
+      "guard": {
+        "errors": {
+          "angle": 0.0,
+          "position": 0.0
+        },
+        "passed": true
+      },
+      "preparing": {
+        "errors": {
+          "angle": 0.0,
+          "position": 0.0
+        },
+        "passed": true
+      }
+    },
+    "failures": [],
+    "final_chest_angle": -1.59473291776874e-13,
+    "final_chest_speed": 1.44604521499364e-12,
+    "final_gait_amount": 0.0,
+    "idle_maximum_angle_error": 0.0,
+    "idle_maximum_position_error": 0.0,
+    "passed": true,
+    "settled_angle": 6.02221916778944e-06,
+    "settled_angular_speed": 4.44677539235272e-07,
+    "stop_angle_peak": 0.0732813477516174
+  },
+  "reference_walk_actual_contact.json": {
+    "maximum_actual_sole_contact_error": 0.000115871429443359,
+    "maximum_floor_penetration": 0.000115871429443359,
+    "maximum_leg_length_error": 0.0001068115234375,
+    "maximum_pelvis_drop": 3.23125457763672,
+    "passed": true,
+    "sampled_frames": 1080
+  }
+}

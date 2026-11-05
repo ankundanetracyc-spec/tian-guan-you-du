@@ -1,0 +1,14 @@
+{
+	"bad_depth_frames": 0,
+	"bad_hand_frames": 0,
+	"checks": 20,
+	"failures": [],
+	"frames": 1021,
+	"maximum_arm_length_error": 0.00000492025504428284,
+	"maximum_grip_attachment_error_character_units": 0.0000343198458828321,
+	"maximum_grip_to_tip_length_error": 0.000019007258188708,
+	"maximum_uniform_scale_error": 0.0,
+	"nonfinite_attachments": 0,
+	"passed": true,
+	"scope": "Actual final sword global transform after runtime zoom, both facings, Idle/Run_New1, looped and single swing, pause, hand restore. No skill, damage, hitbox or game inventory behavior is tested or introduced."
+}

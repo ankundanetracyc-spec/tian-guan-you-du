@@ -1,0 +1,105 @@
+{
+  "selected_user_reference": "codex-clipboard-9b1ad0b5-5f53-492f-b6f7-84060b029a9a.png",
+  "project_source": "tools/action_battle_test/art/yuxu_fullbody_v15",
+  "source_origin_px": [
+    475,
+    1474
+  ],
+  "drawing_pixel_scale": "16/186",
+  "parts": {
+    "cutout.png": {
+      "sha256": "2b468e1a647513fbd31fc94c95f229fe9a4708b036bd3e9efa6951a7a19b4bdb",
+      "size": [
+        1024,
+        1536
+      ]
+    },
+    "body.png": {
+      "sha256": "7492f1ef54c3f24770528d99691f9a0e541cd2b125b60fe3e66c2f65dbb2ab87",
+      "size": [
+        1024,
+        1536
+      ]
+    },
+    "arm_relaxed_v19.png": {
+      "sha256": "66cd876c74746db0a357d0bc5004e91387c55ea0c37596bd359e8ff7c2112bb9",
+      "size": [
+        1024,
+        1536
+      ]
+    },
+    "arm_open_v19.png": {
+      "sha256": "d21db8192685796319e9b2d7fafd12501cb2429c2cf769b588d262a52a443a1f",
+      "size": [
+        1024,
+        1536
+      ]
+    },
+    "arm_sword_fingers_v21.png": {
+      "sha256": "dcc95466b3b9430131d73a4b2d99f89c1e5a8c64a25fd42f9c54bc3b37302721",
+      "size": [
+        1024,
+        1536
+      ]
+    },
+    "leg.png": {
+      "sha256": "1ab3f2288ebc881b05889452da018006a988fc71ef62f0d2212772a978f4c375",
+      "size": [
+        1024,
+        1536
+      ]
+    }
+  },
+  "scope": "Original approved body, old head region, sleeves and leg PNGs retained. Binding, static garment volume, fixed limb proportions and closed cloth inertia adapted independently. Five bare-hand variants and an icon-based sword prop are generated and saved separately; independent preview integration and dedicated tests completed, visual acceptance pending. Original base hashes do not claim all artwork is unchanged.",
+  "base_art_pngs_preserved": true,
+  "separate_addons": {
+    "status": "integrated into independent approved outfit fitting; hand and sword dedicated regressions passed; visual acceptance pending",
+    "bare_hand_variants": [
+      "near_right_open",
+      "far_left_open",
+      "near_right_fist",
+      "far_left_fist",
+      "near_right_grip"
+    ],
+    "near_sword_fingers": "original arm_sword_fingers_v21.png retained",
+    "sword_reference": "textures/items/inventory_density_20261029/slender_sword_2x6.png",
+    "new_addons_saved_separately": true,
+    "hands_asset_directory": "tools/action_battle_test/art/approved_outfit_hands_20261105",
+    "sword_asset_directory": "tools/action_battle_test/art/approved_outfit_sword_20261105",
+    "generation_mode": "built-in image_gen",
+    "formal_archives": {
+      "hands_registration": "裸手锚点与尺标.json",
+      "sword_registration": "剑道具握点与尺标.json",
+      "hands_prompts": "裸手生成提示词.json",
+      "sword_prompt": "剑道具生成提示词.json",
+      "hands_validation": "裸手与接腕检查.json",
+      "sword_validation": "持剑专项检查.json"
+    },
+    "actual_generated_pngs": {
+      "near_open": {
+        "path": "tools/action_battle_test/art/approved_outfit_hands_20261105/near_open.png",
+        "sha256": "c878ce60ddfb77994a55e91b2657c8b018b6efc88743dbdd67c571dc16b91bb3"
+      },
+      "far_open": {
+        "path": "tools/action_battle_test/art/approved_outfit_hands_20261105/far_open.png",
+        "sha256": "a4d8ea601f8029117eb2495cf24adfa55a38a7cf61a7c0b0566060c575f34058"
+      },
+      "near_fist": {
+        "path": "tools/action_battle_test/art/approved_outfit_hands_20261105/near_fist.png",
+        "sha256": "7e90a1a8c4c8965f7873a55e2cf2f6944118f3d462bb67c3c6c307acf1ba6af7"
+      },
+      "far_fist": {
+        "path": "tools/action_battle_test/art/approved_outfit_hands_20261105/far_fist.png",
+        "sha256": "e3d56a1b2a6efd0a757b8fc7447b54e6cb4a6be62868235972d864557a3bcac5"
+      },
+      "near_grip": {
+        "path": "tools/action_battle_test/art/approved_outfit_hands_20261105/near_grip.png",
+        "sha256": "c4f439ce4fdd5707bd97ecc307b7d1d3a17eb126ee51d1f99ee15d03966b1d5a"
+      },
+      "sword": {
+        "path": "tools/action_battle_test/art/approved_outfit_sword_20261105/sword.png",
+        "sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18"
+      }
+    }
+  }
+}

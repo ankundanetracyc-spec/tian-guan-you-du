@@ -1,0 +1,127 @@
+{
+  "source": "Unmodified male101 Run_New1 original streamed cubic channels, TRS and original3D LBS; no DynamicBone or new locomotion layer sampled",
+  "source_sha256": {
+    "rig.json": "59a56da10dea11afbb4f6c4aaa19388bb72fc7ebc772c215189da17e90e04ffd",
+    "skins.json": "52c438bc6fb939a418a4bb7d9185e90c05c84be01ee038f8dd796649b1104ade",
+    "animations.json": "b8131a73445fafd7c850382a74fc720171325a52809e8779d7053c6147675063",
+    "grounding_profile.json": "5bb2928ba34bdbe615582f598cb75e548750836dbbdf67f258a69c7d4094b06b"
+  },
+  "clip_duration_seconds": 0.5833333134651184,
+  "cycles_per_second": 1.7142857726739398,
+  "two_steps_per_cycle_assumption_steps_per_second": 3.4285715453478796,
+  "sampled_phases": 720,
+  "source_alpha_threshold": 128,
+  "source_solid_sole_hull_points_per_leg": 65,
+  "source_contact_speed_method": "Central finite difference of each retained barycentric alpha-sole point, periodic720 phase samples; collect points within the stated source-alpha ground clearance band. Positive backward speed means local foot motion opposing forward character travel.",
+  "contact_velocity_samples": [
+    {
+      "maximum_clearance_native_pixels": 0.15,
+      "sample_count": 63,
+      "backward_velocity_pixels_per_second_percentiles_0_10_25_50_75_90_100": [
+        259.9422756241424,
+        333.1680729127491,
+        402.35028364792527,
+        488.9241305098085,
+        563.9995706702188,
+        603.88242477682,
+        637.6220013396586
+      ]
+    },
+    {
+      "maximum_clearance_native_pixels": 0.5,
+      "sample_count": 385,
+      "backward_velocity_pixels_per_second_percentiles_0_10_25_50_75_90_100": [
+        84.65693541282293,
+        123.24455066533918,
+        286.72780406770266,
+        603.0883813675765,
+        811.6127521708438,
+        874.1130307292711,
+        930.2929196932221
+      ]
+    },
+    {
+      "maximum_clearance_native_pixels": 1,
+      "sample_count": 1058,
+      "backward_velocity_pixels_per_second_percentiles_0_10_25_50_75_90_100": [
+        84.65693541282293,
+        134.9757201262416,
+        253.8151624897079,
+        629.3531402631863,
+        813.1097428096385,
+        912.0278627085373,
+        971.2895897906025
+      ]
+    },
+    {
+      "maximum_clearance_native_pixels": 2,
+      "sample_count": 2760,
+      "backward_velocity_pixels_per_second_percentiles_0_10_25_50_75_90_100": [
+        84.65693541282293,
+        155.95749767827346,
+        288.81321861043284,
+        575.3031681063159,
+        751.6274230190684,
+        954.1828422244943,
+        1227.8338997597614
+      ]
+    },
+    {
+      "maximum_clearance_native_pixels": 3,
+      "sample_count": 4695,
+      "backward_velocity_pixels_per_second_percentiles_0_10_25_50_75_90_100": [
+        84.65693541282293,
+        188.17476479344393,
+        351.8990550920688,
+        611.7163182449813,
+        735.6018650947558,
+        971.6455401301092,
+        1227.8338997597614
+      ]
+    }
+  ],
+  "feet": [
+    {
+      "renderer": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui",
+      "maximum_lowering_phase": 0.4638888888888889,
+      "source_sole_x_pixels": -2.8720049765518416,
+      "clearance_from_calibrated_ground_pixels": 0.16890534151882708,
+      "lowest_point_instantaneous_backward_velocity_pixels_per_second": 828.8020679242925,
+      "ankle_x_span_pixels": 75.19534486495506
+    },
+    {
+      "renderer": "/HumanRootMan/Root/Body/Foot/youtui/youtui",
+      "maximum_lowering_phase": 0.8833333333333333,
+      "source_sole_x_pixels": -1.5294842945474374,
+      "clearance_from_calibrated_ground_pixels": -0.0004331091581315505,
+      "lowest_point_instantaneous_backward_velocity_pixels_per_second": 527.7235101532534,
+      "ankle_x_span_pixels": 67.55422761842486
+    }
+  ],
+  "stride_inference": {
+    "mean_ankle_x_span_pixels": 71.37478624168996,
+    "assumption": "Use mean ankle X excursion as an approximate step-amplitude scale and two steps per cycle; this is an estimate, not source root-motion metadata or a measured planted stride.",
+    "inferred_speed_pixels_per_second": 244.7135611635455,
+    "current_candidates": [
+      {
+        "speed_pixels_per_second": 114,
+        "world_distance_per_1x_source_cycle_pixels": 66.4999977350235,
+        "world_distance_per_step_if_two_steps_per_cycle_pixels": 33.24999886751175
+      },
+      {
+        "speed_pixels_per_second": 235,
+        "world_distance_per_1x_source_cycle_pixels": 137.08332866430283,
+        "world_distance_per_step_if_two_steps_per_cycle_pixels": 68.54166433215141
+      }
+    ],
+    "recommended_trial_speed_and_native_ruler": 235,
+    "actual_clock_rule": "Advance leg time by unpaused_delta * actual_native_display_velocity_magnitude / 235; actual half-speed self-cast gives0.5 cadence; Step1 retains its own full-body clip and freezes run clock.",
+    "world_marker_boundary": "WorldActionTraveler normalizes route motion to the shared235 native visual ruler; route hours, logical travel speeds and map zoom remain outside this animation calibration."
+  },
+  "limits": [
+    "Original Run1 has narrow contact windows and strongly varying instantaneous sole velocities; a single235 reference cannot establish locked planted feet or zero slipping.",
+    "Lowest-point instantaneous speeds are not used as an exact gameplay speed prescription.",
+    "The235 choice matches the approximate whole-cycle amplitude and the already established formal action move-speed value;114 advances only about half as far per source cycle.",
+    "Foot curves, source lengths, local translations, skin weights and body artwork remain source data; no foot-lock IK or root-motion reconstruction is claimed."
+  ]
+}

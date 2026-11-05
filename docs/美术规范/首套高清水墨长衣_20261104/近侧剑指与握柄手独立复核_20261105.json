@@ -1,0 +1,1112 @@
+{
+  "schema_version": 1,
+  "inspected_at": "2026-11-05T02:49:18.094661+08:00",
+  "scope": "本轮仅更新被用户否定的6b80 near剑指至c636候选、重采optional两手并刷新当前散列；旧剑指测量和旧目视结论归历史，其他7PNG与49/19检查复用，不重测大项。",
+  "active_png_manifest": [
+    {
+      "component": "body",
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\body.png",
+      "width": 971,
+      "height": 1620,
+      "mode": "RGBA",
+      "sha256": "9a87016e7b3aaf208d369fd7033cb0fa62f31ec8690cb2727d050120099a3109",
+      "alpha_nonzero_bbox": [
+        0,
+        29,
+        939,
+        1620
+      ],
+      "alpha_ge128_bbox": [
+        214,
+        146,
+        704,
+        1589
+      ],
+      "stable_read": true,
+      "visual_review_scope": "previous_measurement_retained_hash_unchanged"
+    },
+    {
+      "component": "sleeve_near",
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_near.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "sha256": "b5637eb58dd30de992295a09037a13fb7703ca2756b178148cf20fbf94b894ba",
+      "alpha_nonzero_bbox": [
+        0,
+        57,
+        1218,
+        1150
+      ],
+      "alpha_ge128_bbox": [
+        468,
+        147,
+        708,
+        1004
+      ],
+      "stable_read": true,
+      "visual_review_scope": "previous_measurement_retained_hash_unchanged"
+    },
+    {
+      "component": "sleeve_far",
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_far.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "sha256": "40c510c31d0b60c818304d9f58eca32d3e08ab73724265fc9e46474e6cc380de",
+      "alpha_nonzero_bbox": [
+        0,
+        19,
+        1226,
+        1254
+      ],
+      "alpha_ge128_bbox": [
+        468,
+        146,
+        709,
+        1004
+      ],
+      "stable_read": true,
+      "visual_review_scope": "previous_measurement_retained_hash_unchanged"
+    },
+    {
+      "component": "sleeve_near_fist",
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_near_fist.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "sha256": "4d2cacfb8a58827d5f56f5637bfd8ddd7754d23a9f7e41d5469b77137f8d5d80",
+      "alpha_nonzero_bbox": [
+        49,
+        87,
+        973,
+        1035
+      ],
+      "alpha_ge128_bbox": [
+        467,
+        145,
+        709,
+        964
+      ],
+      "stable_read": true,
+      "visual_review_scope": "previous_measurement_retained_hash_unchanged"
+    },
+    {
+      "component": "sleeve_far_fist",
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_far_fist.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "sha256": "482f474bea8156a4425306aa3d13cacf66458fc2406fa5d6a0200a921d334d8f",
+      "alpha_nonzero_bbox": [
+        57,
+        31,
+        1152,
+        1221
+      ],
+      "alpha_ge128_bbox": [
+        467,
+        146,
+        708,
+        978
+      ],
+      "stable_read": true,
+      "visual_review_scope": "previous_measurement_retained_hash_unchanged"
+    },
+    {
+      "component": "sleeve_near_sword",
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_near_sword.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "sha256": "2fdc515d0abb28869792ac65379b5fe23566d4a56b90c528e832ac606209c307",
+      "stable_read": true,
+      "visual_review_scope": "current c636 candidate metadata only; old6b80 measurements archived, not transferred",
+      "source_image": "exec-c6364f4e-d2a7-4d2f-b09d-d8fb1cb830e0.png"
+    },
+    {
+      "component": "sleeve_near_grip",
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_near_grip.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "sha256": "a92e11d85325c42fe7918ee83babe5b32e88b63f53a3d9b96c39dccc79d41e73",
+      "alpha_nonzero_bbox": [
+        0,
+        142,
+        1214,
+        1149
+      ],
+      "alpha_ge128_bbox": [
+        467,
+        145,
+        709,
+        969
+      ],
+      "stable_read": true,
+      "visual_review_scope": "new_near_two_hands_only"
+    },
+    {
+      "component": "leg",
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\leg.png",
+      "width": 992,
+      "height": 1586,
+      "mode": "RGBA",
+      "sha256": "1a34b9c4f232f77e67bd56f64fdbeb4734a8e7271bfb50d71528bc0d3e656ec0",
+      "alpha_nonzero_bbox": [
+        41,
+        8,
+        946,
+        1586
+      ],
+      "alpha_ge128_bbox": [
+        303,
+        157,
+        657,
+        1426
+      ],
+      "stable_read": true,
+      "visual_review_scope": "previous_measurement_retained_hash_unchanged"
+    }
+  ],
+  "new_hand_measurements": {
+    "sleeve_near": {
+      "bare_skin_threshold_bbox": [
+        565,
+        863,
+        657,
+        1004
+      ],
+      "skin_contact_first_stable_y_at_x": {
+        "580": 878,
+        "600": 873,
+        "610": 870,
+        "620": 867,
+        "630": 864
+      },
+      "skin_width_rows": [
+        {
+          "y": 880,
+          "left": 572,
+          "right_exclusive": 644,
+          "width": 72
+        },
+        {
+          "y": 890,
+          "left": 568,
+          "right_exclusive": 649,
+          "width": 81
+        },
+        {
+          "y": 900,
+          "left": 567,
+          "right_exclusive": 652,
+          "width": 85
+        },
+        {
+          "y": 910,
+          "left": 565,
+          "right_exclusive": 653,
+          "width": 88
+        },
+        {
+          "y": 920,
+          "left": 565,
+          "right_exclusive": 653,
+          "width": 88
+        },
+        {
+          "y": 930,
+          "left": 566,
+          "right_exclusive": 655,
+          "width": 89
+        },
+        {
+          "y": 940,
+          "left": 566,
+          "right_exclusive": 657,
+          "width": 91
+        },
+        {
+          "y": 950,
+          "left": 568,
+          "right_exclusive": 635,
+          "width": 67
+        },
+        {
+          "y": 960,
+          "left": 570,
+          "right_exclusive": 634,
+          "width": 64
+        },
+        {
+          "y": 970,
+          "left": 572,
+          "right_exclusive": 633,
+          "width": 61
+        },
+        {
+          "y": 980,
+          "left": 585,
+          "right_exclusive": 631,
+          "width": 46
+        },
+        {
+          "y": 990,
+          "left": 587,
+          "right_exclusive": 628,
+          "width": 41
+        },
+        {
+          "y": 1000,
+          "left": 602,
+          "right_exclusive": 613,
+          "width": 11
+        }
+      ],
+      "opening_line_y_equals_mx_plus_b": [
+        -0.2779020884995915,
+        1038.035812930932
+      ],
+      "opening_fit_max_residual_px": 0.9776355131232322,
+      "cloth_RGB_mean_absolute_difference_from_base": 0.0,
+      "cloth_opaque_pixels_fraction_RGB_max_difference_over5_from_base": 0.0,
+      "method": "Skin: A>=200,R-G>22,G-B>12,R>150，下侧斜口之外且540<x<700；接点同列连续4像素。opening仅用外侧袖口自由边拟合，排除中央hand。",
+      "limitation": "肤色阈值 bbox/横宽是图像观察，不是完整解剖识别或新骨pivot。"
+    },
+    "sleeve_near_sword": {
+      "status": "current_candidate_not_remeasured",
+      "sha256": "2fdc515d0abb28869792ac65379b5fe23566d4a56b90c528e832ac606209c307",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "previous_6b80_measurements": "priorRevisionHistory entry marked rejected",
+      "scope": "本轮仅重采optional原生图并刷新散列；未重测腕接缝/Alpha大项，不套用旧测量。"
+    },
+    "sleeve_near_grip": {
+      "bare_skin_threshold_bbox": [
+        560,
+        864,
+        659,
+        968
+      ],
+      "skin_contact_first_stable_y_at_x": {
+        "580": 879,
+        "600": 873,
+        "610": 871,
+        "620": 868,
+        "630": 865
+      },
+      "skin_width_rows": [
+        {
+          "y": 880,
+          "left": 575,
+          "right_exclusive": 646,
+          "width": 71
+        },
+        {
+          "y": 890,
+          "left": 565,
+          "right_exclusive": 652,
+          "width": 87
+        },
+        {
+          "y": 900,
+          "left": 561,
+          "right_exclusive": 657,
+          "width": 96
+        },
+        {
+          "y": 910,
+          "left": 560,
+          "right_exclusive": 659,
+          "width": 99
+        },
+        {
+          "y": 920,
+          "left": 560,
+          "right_exclusive": 658,
+          "width": 98
+        },
+        {
+          "y": 930,
+          "left": 562,
+          "right_exclusive": 657,
+          "width": 95
+        },
+        {
+          "y": 940,
+          "left": 563,
+          "right_exclusive": 655,
+          "width": 92
+        },
+        {
+          "y": 950,
+          "left": 566,
+          "right_exclusive": 652,
+          "width": 86
+        },
+        {
+          "y": 960,
+          "left": 573,
+          "right_exclusive": 647,
+          "width": 74
+        },
+        {
+          "y": 970,
+          "left": null,
+          "right_exclusive": null,
+          "width": 0
+        },
+        {
+          "y": 980,
+          "left": null,
+          "right_exclusive": null,
+          "width": 0
+        },
+        {
+          "y": 990,
+          "left": null,
+          "right_exclusive": null,
+          "width": 0
+        },
+        {
+          "y": 1000,
+          "left": null,
+          "right_exclusive": null,
+          "width": 0
+        },
+        {
+          "y": 1010,
+          "left": null,
+          "right_exclusive": null,
+          "width": 0
+        },
+        {
+          "y": 1020,
+          "left": null,
+          "right_exclusive": null,
+          "width": 0
+        }
+      ],
+      "opening_line_y_equals_mx_plus_b": [
+        -0.2773278910937305,
+        1038.5626231533565
+      ],
+      "opening_fit_max_residual_px": 0.5547645716341094,
+      "cloth_RGB_mean_absolute_difference_from_base": 6.8677599869291726,
+      "cloth_opaque_pixels_fraction_RGB_max_difference_over5_from_base": 0.5112021076709419,
+      "method": "仅重测本轮新两图：A>=200,R-G>22,G-B>12,R>150，base公共斜口线下且540<x<700；同列连续4像素判皮肤接点。",
+      "limitation": "图像接缝/阈值观察，不是新骨pivot或用户满意度。"
+    }
+  },
+  "visual_observations": {
+    "sword": "当前为c636重绘候选，参照旧v21：食指较短、中指较长、环小紧收；仅保留本轮新原生近景供用户评价。旧6b80“方向正确”的观察已历史化，不套用，不声称用户认可。",
+    "grip": "手背侧握柄准备姿，外轮廓未见独立外露拇指；不宣称真实剑柄已经画入。未见断腕或额外指团。",
+    "shared_wrist": "共同基准仍为master的W610870；c636本轮未重新做像素锚点测量，使用实际optional原生近景复核，旧6b80测量仅保历史。",
+    "approval_limit": "只描述可见方向、轮廓与实测大小，不据数学或本代理判断认定用户喜欢。"
+  },
+  "rig_clipping_recommendation": {
+    "common_physical_scale": true,
+    "canonical_wrist_suggestion": [
+      610,
+      870
+    ],
+    "fixed_master_cloth": "cloth始终取nearbase；这些AI衍生PNG的cloth并非逐像素完全一致，不能整张替换以免出现袖纹/轮廓闪变。",
+    "bare_hand_only_domain": {
+      "canvas": [
+        1254,
+        1254
+      ],
+      "x_range_approx": [
+        540,
+        700
+      ],
+      "side": "below_opening_line",
+      "opening_line_y_equals_mx_plus_b": [
+        -0.2779020884995915,
+        1038.035812930932
+      ],
+      "note": "这是nearbase斜口边；各pose局部口线相差约1–2px。实现应在同一手区clip/skin mask内更换裸肤及其Alpha，不替cloth、不沿用旧剑指全袖坐标。"
+    }
+  },
+  "user_direction_rule": "最新仅修近侧靠屏右手剑指/握柄：剑指手背朝屏，悬垂拇指基部在画面LEFT、收拢ring/little在RIGHT；握柄不露拇指。原normal继续既定普通手方向，绝不按这次剑指翻动normal。far原画面RIGHT拇指纠正不被近剑指规则覆盖。",
+  "approval_status": "6b80剑指已被用户否定；c636剑指为当前候选，等待用户评价。本记录不宣称已认可左右关系或手型。",
+  "priorRevisionHistory": [
+    {
+      "inspected_at": "2026-11-05T02:33:30.337+08:00",
+      "status": "已被用户否定并由本轮重画覆盖；本段旧方向/手势观感仅作历史记录。",
+      "active_png_manifest": [
+        {
+          "component": "body",
+          "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\body.png",
+          "width": 971,
+          "height": 1620,
+          "mode": "RGBA",
+          "sha256": "9a87016e7b3aaf208d369fd7033cb0fa62f31ec8690cb2727d050120099a3109",
+          "alpha_nonzero_bbox": [
+            0,
+            29,
+            939,
+            1620
+          ],
+          "alpha_ge128_bbox": [
+            214,
+            146,
+            704,
+            1589
+          ],
+          "stable_read": true,
+          "visual_review_scope": "previous_measurement_retained_hash_unchanged"
+        },
+        {
+          "component": "sleeve_near",
+          "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_near.png",
+          "width": 1254,
+          "height": 1254,
+          "mode": "RGBA",
+          "sha256": "b5637eb58dd30de992295a09037a13fb7703ca2756b178148cf20fbf94b894ba",
+          "alpha_nonzero_bbox": [
+            0,
+            57,
+            1218,
+            1150
+          ],
+          "alpha_ge128_bbox": [
+            468,
+            147,
+            708,
+            1004
+          ],
+          "stable_read": true,
+          "visual_review_scope": "previous_measurement_retained_hash_unchanged"
+        },
+        {
+          "component": "sleeve_far",
+          "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_far.png",
+          "width": 1254,
+          "height": 1254,
+          "mode": "RGBA",
+          "sha256": "40c510c31d0b60c818304d9f58eca32d3e08ab73724265fc9e46474e6cc380de",
+          "alpha_nonzero_bbox": [
+            0,
+            19,
+            1226,
+            1254
+          ],
+          "alpha_ge128_bbox": [
+            468,
+            146,
+            709,
+            1004
+          ],
+          "stable_read": true,
+          "visual_review_scope": "previous_measurement_retained_hash_unchanged"
+        },
+        {
+          "component": "sleeve_near_fist",
+          "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_near_fist.png",
+          "width": 1254,
+          "height": 1254,
+          "mode": "RGBA",
+          "sha256": "4d2cacfb8a58827d5f56f5637bfd8ddd7754d23a9f7e41d5469b77137f8d5d80",
+          "alpha_nonzero_bbox": [
+            49,
+            87,
+            973,
+            1035
+          ],
+          "alpha_ge128_bbox": [
+            467,
+            145,
+            709,
+            964
+          ],
+          "stable_read": true,
+          "visual_review_scope": "previous_measurement_retained_hash_unchanged"
+        },
+        {
+          "component": "sleeve_far_fist",
+          "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_far_fist.png",
+          "width": 1254,
+          "height": 1254,
+          "mode": "RGBA",
+          "sha256": "482f474bea8156a4425306aa3d13cacf66458fc2406fa5d6a0200a921d334d8f",
+          "alpha_nonzero_bbox": [
+            57,
+            31,
+            1152,
+            1221
+          ],
+          "alpha_ge128_bbox": [
+            467,
+            146,
+            708,
+            978
+          ],
+          "stable_read": true,
+          "visual_review_scope": "previous_measurement_retained_hash_unchanged"
+        },
+        {
+          "component": "sleeve_near_sword",
+          "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_near_sword.png",
+          "width": 1254,
+          "height": 1254,
+          "mode": "RGBA",
+          "sha256": "213eb6cdcef6c3a175206521b2068318c2248d0c35d4abc675c43976d79f91fc",
+          "alpha_nonzero_bbox": [
+            0,
+            61,
+            1224,
+            1238
+          ],
+          "alpha_ge128_bbox": [
+            468,
+            146,
+            709,
+            1006
+          ],
+          "stable_read": true,
+          "visual_review_scope": "new_near_hand_and_base"
+        },
+        {
+          "component": "sleeve_near_grip",
+          "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_near_grip.png",
+          "width": 1254,
+          "height": 1254,
+          "mode": "RGBA",
+          "sha256": "107ab56c5e8bde2e008ac25893e33f50b6f544a51de156b9902654ffb7d1678c",
+          "alpha_nonzero_bbox": [
+            25,
+            28,
+            1230,
+            1230
+          ],
+          "alpha_ge128_bbox": [
+            467,
+            145,
+            709,
+            981
+          ],
+          "stable_read": true,
+          "visual_review_scope": "new_near_hand_and_base"
+        },
+        {
+          "component": "leg",
+          "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\leg.png",
+          "width": 992,
+          "height": 1586,
+          "mode": "RGBA",
+          "sha256": "1a34b9c4f232f77e67bd56f64fdbeb4734a8e7271bfb50d71528bc0d3e656ec0",
+          "alpha_nonzero_bbox": [
+            41,
+            8,
+            946,
+            1586
+          ],
+          "alpha_ge128_bbox": [
+            303,
+            157,
+            657,
+            1426
+          ],
+          "stable_read": true,
+          "visual_review_scope": "previous_measurement_retained_hash_unchanged"
+        }
+      ],
+      "new_hand_measurements": {
+        "sleeve_near": {
+          "bare_skin_threshold_bbox": [
+            565,
+            863,
+            657,
+            1004
+          ],
+          "skin_contact_first_stable_y_at_x": {
+            "580": 878,
+            "600": 873,
+            "610": 870,
+            "620": 867,
+            "630": 864
+          },
+          "skin_width_rows": [
+            {
+              "y": 880,
+              "left": 572,
+              "right_exclusive": 644,
+              "width": 72
+            },
+            {
+              "y": 890,
+              "left": 568,
+              "right_exclusive": 649,
+              "width": 81
+            },
+            {
+              "y": 900,
+              "left": 567,
+              "right_exclusive": 652,
+              "width": 85
+            },
+            {
+              "y": 910,
+              "left": 565,
+              "right_exclusive": 653,
+              "width": 88
+            },
+            {
+              "y": 920,
+              "left": 565,
+              "right_exclusive": 653,
+              "width": 88
+            },
+            {
+              "y": 930,
+              "left": 566,
+              "right_exclusive": 655,
+              "width": 89
+            },
+            {
+              "y": 940,
+              "left": 566,
+              "right_exclusive": 657,
+              "width": 91
+            },
+            {
+              "y": 950,
+              "left": 568,
+              "right_exclusive": 635,
+              "width": 67
+            },
+            {
+              "y": 960,
+              "left": 570,
+              "right_exclusive": 634,
+              "width": 64
+            },
+            {
+              "y": 970,
+              "left": 572,
+              "right_exclusive": 633,
+              "width": 61
+            },
+            {
+              "y": 980,
+              "left": 585,
+              "right_exclusive": 631,
+              "width": 46
+            },
+            {
+              "y": 990,
+              "left": 587,
+              "right_exclusive": 628,
+              "width": 41
+            },
+            {
+              "y": 1000,
+              "left": 602,
+              "right_exclusive": 613,
+              "width": 11
+            }
+          ],
+          "opening_line_y_equals_mx_plus_b": [
+            -0.2779020884995915,
+            1038.035812930932
+          ],
+          "opening_fit_max_residual_px": 0.9776355131232322,
+          "cloth_RGB_mean_absolute_difference_from_base": 0.0,
+          "cloth_opaque_pixels_fraction_RGB_max_difference_over5_from_base": 0.0,
+          "method": "Skin: A>=200,R-G>22,G-B>12,R>150，下侧斜口之外且540<x<700；接点同列连续4像素。opening仅用外侧袖口自由边拟合，排除中央hand。",
+          "limitation": "肤色阈值 bbox/横宽是图像观察，不是完整解剖识别或新骨pivot。"
+        },
+        "sleeve_near_sword": {
+          "bare_skin_threshold_bbox": [
+            555,
+            863,
+            648,
+            1025
+          ],
+          "skin_contact_first_stable_y_at_x": {
+            "580": 878,
+            "600": 873,
+            "610": 870,
+            "620": 867,
+            "630": 864
+          },
+          "skin_width_rows": [
+            {
+              "y": 880,
+              "left": 572,
+              "right_exclusive": 641,
+              "width": 69
+            },
+            {
+              "y": 890,
+              "left": 560,
+              "right_exclusive": 644,
+              "width": 84
+            },
+            {
+              "y": 900,
+              "left": 557,
+              "right_exclusive": 646,
+              "width": 89
+            },
+            {
+              "y": 910,
+              "left": 555,
+              "right_exclusive": 648,
+              "width": 93
+            },
+            {
+              "y": 920,
+              "left": 557,
+              "right_exclusive": 646,
+              "width": 89
+            },
+            {
+              "y": 930,
+              "left": 561,
+              "right_exclusive": 644,
+              "width": 83
+            },
+            {
+              "y": 940,
+              "left": 565,
+              "right_exclusive": 640,
+              "width": 75
+            },
+            {
+              "y": 950,
+              "left": 569,
+              "right_exclusive": 629,
+              "width": 60
+            },
+            {
+              "y": 960,
+              "left": 573,
+              "right_exclusive": 612,
+              "width": 39
+            },
+            {
+              "y": 970,
+              "left": 574,
+              "right_exclusive": 611,
+              "width": 37
+            },
+            {
+              "y": 980,
+              "left": 574,
+              "right_exclusive": 610,
+              "width": 36
+            },
+            {
+              "y": 990,
+              "left": 576,
+              "right_exclusive": 610,
+              "width": 34
+            },
+            {
+              "y": 1000,
+              "left": 577,
+              "right_exclusive": 609,
+              "width": 32
+            },
+            {
+              "y": 1010,
+              "left": 578,
+              "right_exclusive": 607,
+              "width": 29
+            },
+            {
+              "y": 1020,
+              "left": 592,
+              "right_exclusive": 604,
+              "width": 12
+            }
+          ],
+          "opening_line_y_equals_mx_plus_b": [
+            -0.2788211404741415,
+            1039.6261419756331
+          ],
+          "opening_fit_max_residual_px": 1.4166693742090501,
+          "cloth_RGB_mean_absolute_difference_from_base": 6.025,
+          "cloth_opaque_pixels_fraction_RGB_max_difference_over5_from_base": 0.5578898894801474,
+          "method": "仅重测本轮新两图：A>=200,R-G>22,G-B>12,R>150，base公共斜口线下且540<x<700；同列连续4像素判皮肤接点。",
+          "limitation": "图像接缝/阈值观察，不是新骨pivot或用户满意度。"
+        },
+        "sleeve_near_grip": {
+          "bare_skin_threshold_bbox": [
+            560,
+            864,
+            659,
+            968
+          ],
+          "skin_contact_first_stable_y_at_x": {
+            "580": 879,
+            "600": 873,
+            "610": 871,
+            "620": 868,
+            "630": 865
+          },
+          "skin_width_rows": [
+            {
+              "y": 880,
+              "left": 575,
+              "right_exclusive": 646,
+              "width": 71
+            },
+            {
+              "y": 890,
+              "left": 565,
+              "right_exclusive": 652,
+              "width": 87
+            },
+            {
+              "y": 900,
+              "left": 561,
+              "right_exclusive": 657,
+              "width": 96
+            },
+            {
+              "y": 910,
+              "left": 560,
+              "right_exclusive": 659,
+              "width": 99
+            },
+            {
+              "y": 920,
+              "left": 560,
+              "right_exclusive": 658,
+              "width": 98
+            },
+            {
+              "y": 930,
+              "left": 562,
+              "right_exclusive": 657,
+              "width": 95
+            },
+            {
+              "y": 940,
+              "left": 563,
+              "right_exclusive": 655,
+              "width": 92
+            },
+            {
+              "y": 950,
+              "left": 566,
+              "right_exclusive": 652,
+              "width": 86
+            },
+            {
+              "y": 960,
+              "left": 573,
+              "right_exclusive": 647,
+              "width": 74
+            },
+            {
+              "y": 970,
+              "left": null,
+              "right_exclusive": null,
+              "width": 0
+            },
+            {
+              "y": 980,
+              "left": null,
+              "right_exclusive": null,
+              "width": 0
+            },
+            {
+              "y": 990,
+              "left": null,
+              "right_exclusive": null,
+              "width": 0
+            },
+            {
+              "y": 1000,
+              "left": null,
+              "right_exclusive": null,
+              "width": 0
+            },
+            {
+              "y": 1010,
+              "left": null,
+              "right_exclusive": null,
+              "width": 0
+            },
+            {
+              "y": 1020,
+              "left": null,
+              "right_exclusive": null,
+              "width": 0
+            }
+          ],
+          "opening_line_y_equals_mx_plus_b": [
+            -0.2773278910937305,
+            1038.5626231533565
+          ],
+          "opening_fit_max_residual_px": 0.5547645716341094,
+          "cloth_RGB_mean_absolute_difference_from_base": 6.8677599869291726,
+          "cloth_opaque_pixels_fraction_RGB_max_difference_over5_from_base": 0.5112021076709419,
+          "method": "仅重测本轮新两图：A>=200,R-G>22,G-B>12,R>150，base公共斜口线下且540<x<700；同列连续4像素判皮肤接点。",
+          "limitation": "图像接缝/阈值观察，不是新骨pivot或用户满意度。"
+        }
+      },
+      "historical_visual_observations": {
+        "sword": "近侧靠屏右手的两指剑指可读，其余指收拢、拇指在画面右侧；未见断腕、额外手或明显主体缺口。",
+        "grip": "近侧空握/准备握柄轮廓可读，拇指与屈指围合，未实际绘制剑柄；比base掌团更宽更短。",
+        "shared_wrist": "三者x600/620/630接点同位；sword x610=870同base，grip869仅高1px。",
+        "scale": "sword y900中掌宽85同base85；grip y920宽111对base88约1.26倍，握持团增宽不能据此直接判用户喜欢/不喜欢。"
+      },
+      "historical_user_direction_rule": "near=靠屏右手，仅该侧新增剑指/握柄候选；far的拇指画面RIGHT继续按用户纠正，不按youbi/zuobi标签翻回。"
+    },
+    {
+      "inspected_at": "2026-11-05T02:38:11.409+08:00",
+      "revision": "6b80 sword superseded by c636",
+      "status": "用户明确否定此版方向与小指扭曲；旧目视方向判断不再作为有效结论。",
+      "sword_manifest": {
+        "component": "sleeve_near_sword",
+        "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_near_sword.png",
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "sha256": "6b80b1b7b9dcd82a4ed20e463d0c0f125659e0e172bf16557efd2d94d18c8bf6",
+        "alpha_nonzero_bbox": [
+          130,
+          36,
+          1125,
+          1198
+        ],
+        "alpha_ge128_bbox": [
+          467,
+          145,
+          709,
+          1027
+        ],
+        "stable_read": true,
+        "visual_review_scope": "new_near_two_hands_only"
+      },
+      "sword_measurements": {
+        "bare_skin_threshold_bbox": [
+          555,
+          863,
+          648,
+          1025
+        ],
+        "skin_contact_first_stable_y_at_x": {
+          "580": 878,
+          "600": 873,
+          "610": 870,
+          "620": 867,
+          "630": 864
+        },
+        "skin_width_rows": [
+          {
+            "y": 880,
+            "left": 572,
+            "right_exclusive": 641,
+            "width": 69
+          },
+          {
+            "y": 890,
+            "left": 560,
+            "right_exclusive": 644,
+            "width": 84
+          },
+          {
+            "y": 900,
+            "left": 557,
+            "right_exclusive": 646,
+            "width": 89
+          },
+          {
+            "y": 910,
+            "left": 555,
+            "right_exclusive": 648,
+            "width": 93
+          },
+          {
+            "y": 920,
+            "left": 557,
+            "right_exclusive": 646,
+            "width": 89
+          },
+          {
+            "y": 930,
+            "left": 561,
+            "right_exclusive": 644,
+            "width": 83
+          },
+          {
+            "y": 940,
+            "left": 565,
+            "right_exclusive": 640,
+            "width": 75
+          },
+          {
+            "y": 950,
+            "left": 569,
+            "right_exclusive": 629,
+            "width": 60
+          },
+          {
+            "y": 960,
+            "left": 573,
+            "right_exclusive": 612,
+            "width": 39
+          },
+          {
+            "y": 970,
+            "left": 574,
+            "right_exclusive": 611,
+            "width": 37
+          },
+          {
+            "y": 980,
+            "left": 574,
+            "right_exclusive": 610,
+            "width": 36
+          },
+          {
+            "y": 990,
+            "left": 576,
+            "right_exclusive": 610,
+            "width": 34
+          },
+          {
+            "y": 1000,
+            "left": 577,
+            "right_exclusive": 609,
+            "width": 32
+          },
+          {
+            "y": 1010,
+            "left": 578,
+            "right_exclusive": 607,
+            "width": 29
+          },
+          {
+            "y": 1020,
+            "left": 592,
+            "right_exclusive": 604,
+            "width": 12
+          }
+        ],
+        "opening_line_y_equals_mx_plus_b": [
+          -0.2788211404741415,
+          1039.6261419756331
+        ],
+        "opening_fit_max_residual_px": 1.4166693742090501,
+        "cloth_RGB_mean_absolute_difference_from_base": 6.025,
+        "cloth_opaque_pixels_fraction_RGB_max_difference_over5_from_base": 0.5578898894801474,
+        "method": "仅重测本轮新两图：A>=200,R-G>22,G-B>12,R>150，base公共斜口线下且540<x<700；同列连续4像素判皮肤接点。",
+        "limitation": "图像接缝/阈值观察，不是新骨pivot或用户满意度。"
+      },
+      "sword_visual_observation": "本轮新图为近侧靠屏右手手背，两指并伸向下；画面LEFT可读拇指基部侧缘线索，画面RIGHT为收拢的无名指/小指团，与此前被否定的方向分开记录。未见断腕/额外手/主体缺口。"
+    }
+  ],
+  "revision": "c636 near sword candidate;6b80 rejected",
+  "superseded_sword_scope": "Old c636 sword was rejected for wrong handedness; its measurements/hash/visual conclusion remain historical. Normal-hand/body media and unchanged-code tests retain their original scope.",
+  "current_sword_record": "E:\\stacklands\\docs\\美术规范\\首套高清水墨长衣_20261104\\右手剑指左右纠正_20261105.json"
+}

@@ -1,0 +1,98 @@
+{
+	"actual_human_elevation": {
+		"maximum_world_ground_y_error_pixels": 0.0,
+		"scope": "Actual human arena player and NPC update_skinned_player overrides with body elevations0/12/0; native shadow centres must remain at each logical player.y.",
+		"shadow_centres_sampled": 28
+	},
+	"cases": [
+		{
+			"case": "run_right",
+			"contact_fraction": 0.8125,
+			"contact_frames_within0_15px": 117,
+			"gait_rate": 1.0,
+			"literal_ground_contact_frames": 104,
+			"longest_visible_flight_frames": 18,
+			"longest_visible_flight_source_seconds": 0.0729166641831398,
+			"longest_visible_flight_wall_seconds": 0.0729166641831398,
+			"maximum_visible_shoe_height_pixels": 2.00000381469727,
+			"minimum_visible_shoe_height_pixels": -0.0000238418579101562,
+			"phases": 144
+		},
+		{
+			"case": "run_left",
+			"contact_fraction": 0.8125,
+			"contact_frames_within0_15px": 117,
+			"gait_rate": 1.0,
+			"literal_ground_contact_frames": 104,
+			"longest_visible_flight_frames": 18,
+			"longest_visible_flight_source_seconds": 0.0729166641831398,
+			"longest_visible_flight_wall_seconds": 0.0729166641831398,
+			"maximum_visible_shoe_height_pixels": 2.00000381469727,
+			"minimum_visible_shoe_height_pixels": -0.0000238418579101562,
+			"phases": 144
+		},
+		{
+			"case": "moving_attack_right",
+			"contact_fraction": 0.8125,
+			"contact_frames_within0_15px": 117,
+			"gait_rate": 1.0,
+			"literal_ground_contact_frames": 104,
+			"longest_visible_flight_frames": 18,
+			"longest_visible_flight_source_seconds": 0.0729166641831398,
+			"longest_visible_flight_wall_seconds": 0.0729166641831398,
+			"maximum_visible_shoe_height_pixels": 2.00000381469727,
+			"minimum_visible_shoe_height_pixels": -0.0000238418579101562,
+			"phases": 144
+		},
+		{
+			"case": "moving_attack_left",
+			"contact_fraction": 0.8125,
+			"contact_frames_within0_15px": 117,
+			"gait_rate": 1.0,
+			"literal_ground_contact_frames": 104,
+			"longest_visible_flight_frames": 18,
+			"longest_visible_flight_source_seconds": 0.0729166641831398,
+			"longest_visible_flight_wall_seconds": 0.0729166641831398,
+			"maximum_visible_shoe_height_pixels": 2.00000381469727,
+			"minimum_visible_shoe_height_pixels": -0.0000238418579101562,
+			"phases": 144
+		},
+		{
+			"case": "half_speed_self_cast",
+			"contact_fraction": 0.8125,
+			"contact_frames_within0_15px": 117,
+			"gait_rate": 0.5,
+			"literal_ground_contact_frames": 104,
+			"longest_visible_flight_frames": 18,
+			"longest_visible_flight_source_seconds": 0.0729166641831398,
+			"longest_visible_flight_wall_seconds": 0.14583332836628,
+			"maximum_visible_shoe_height_pixels": 2.00000381469727,
+			"minimum_visible_shoe_height_pixels": -0.0000238418579101562,
+			"phases": 144
+		},
+		{
+			"case": "backward_right_facing",
+			"contact_fraction": 0.8125,
+			"contact_frames_within0_15px": 117,
+			"gait_rate": 1.0,
+			"literal_ground_contact_frames": 104,
+			"longest_visible_flight_frames": 18,
+			"longest_visible_flight_source_seconds": 0.0729166641831398,
+			"longest_visible_flight_wall_seconds": 0.0729166641831398,
+			"maximum_visible_shoe_height_pixels": 2.00000381469727,
+			"minimum_visible_shoe_height_pixels": -0.0000238418579101562,
+			"phases": 144
+		}
+	],
+	"checks": 69,
+	"failures": [],
+	"maximum_reported_alpha_height_error_pixels": 0.0000244089251798946,
+	"maximum_shadow_contact_x_outside_shoe_bounds_pixels": 0.0,
+	"maximum_shadow_ground_y_error_pixels": 0.0,
+	"maximum_source_local_leg_vertex_error_pixels": 0.0000566132439416833,
+	"passed": true,
+	"sampled_actual_moving_phases": 864,
+	"sampled_source_leg_vertices": 63936,
+	"scope": "Actual shared runtime,235/117.5 speeds, both facings, moving Attack, backward travel, opaque-alpha sole hull, untouched source3D/LBS oracle, stop, duplicate-clock pause and dedicated Step1; source textures, bones and combat rules unchanged.",
+	"step_source_world_samples": 3672
+}

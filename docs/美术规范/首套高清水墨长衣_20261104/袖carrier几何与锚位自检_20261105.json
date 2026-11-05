@@ -1,0 +1,115 @@
+{
+  "clips": {
+    "AttackIdle": {
+      "frames": 144,
+      "visible_triangle_flip_observations": 0
+    },
+    "AttackRun": {
+      "frames": 144,
+      "visible_triangle_flip_observations": 0
+    },
+    "Idle": {
+      "frames": 144,
+      "visible_triangle_flip_observations": 0
+    },
+    "Run_New1": {
+      "frames": 144,
+      "visible_triangle_flip_observations": 0
+    },
+    "Run_New2": {
+      "frames": 144,
+      "visible_triangle_flip_observations": 0
+    },
+    "Step1": {
+      "frames": 144,
+      "visible_triangle_flip_observations": 0
+    }
+  },
+  "coordinate_scale": "exported Godot/source pixels; scale1 probe, uniform source_scale preserves topology",
+  "flip_examples": [],
+  "flips_by_component": {},
+  "helper": {
+    "enabled": true,
+    "errors": [],
+    "method": "authored shared-chart UV strip; two straight bone segments with smooth fixed-width section frames; independent rigid wrist/hand",
+    "parts": {
+      "sleeve_far": {
+        "author": {
+          "elbow": "(28.4689, 27.60765)",
+          "note": "canonical_v15: exactly the same sleeve chart and physical width/hand scale as near; source far arm targets do not rescale the hand",
+          "shoulder": "(29.42584, 13.01435)",
+          "wrist": "(29.1866, 41.62679)"
+        },
+        "canvas": [
+          60,
+          60
+        ],
+        "hand_rigid": true,
+        "last": {
+          "elbow": "(10.0, 26.04235)",
+          "hand_rotation": -2.217777967453,
+          "hand_scale_error": 0.0,
+          "shoulder": "(10.0, 10.0)",
+          "vertices": 1105,
+          "wrist": "(16.85357, 20.29152)"
+        },
+        "triangles": 2016,
+        "vertices": 1105,
+        "width_scale": 1.0
+      },
+      "sleeve_near": {
+        "author": {
+          "elbow": "(28.4689, 27.60765)",
+          "note": "canonical_v15 shared chart: chosen shoulder axis S(615,272), measured narrow elbow E(595,577), actual skin exit W(610,870) on native1254",
+          "shoulder": "(29.42584, 13.01435)",
+          "wrist": "(29.1866, 41.62679)"
+        },
+        "canvas": [
+          60,
+          60
+        ],
+        "hand_rigid": true,
+        "last": {
+          "elbow": "(10.0, 22.81881)",
+          "hand_rotation": -2.217777967453,
+          "hand_scale_error": 0.0,
+          "shoulder": "(10.0, 10.0)",
+          "vertices": 1105,
+          "wrist": "(19.21309, 15.08811)"
+        },
+        "triangles": 2016,
+        "vertices": 1105,
+        "width_scale": 1.0
+      }
+    },
+    "scope": "project-authored sleeve reconstruction, not the original tight-sleeve mesh or complete cloth simulation",
+    "source_current_vertices_modified": false,
+    "source_frames_modified": false,
+    "source_meshes_hidden_only": true,
+    "updates": 868,
+    "visible": true
+  },
+  "helper_sha256": "c62ff8a62a3190c4ccfb43771d25c17afdde996aef68a00e5a8ccb10bc798335",
+  "maximum_rigid_hand_width_error": 0.00000762939453125,
+  "minimum_visible_signed_double_area": 0.0541136264801025,
+  "non_finite_vertices": 0,
+  "pose_data_sha256": "7603c46731ab56f6de5e33e06837636b10820a67495cd6093d489568ad767537",
+  "poses": 864,
+  "scope": "standalone source bone-pose geometry probe, not a visual approval",
+  "synthetic_both_arms": {
+    "bent_130": {
+      "visible_triangle_flip_observations": 0
+    },
+    "bent_90": {
+      "visible_triangle_flip_observations": 0
+    },
+    "straight": {
+      "visible_triangle_flip_observations": 0
+    }
+  },
+  "texture_sha256": {
+    "sleeve_far": "40c510c31d0b60c818304d9f58eca32d3e08ab73724265fc9e46474e6cc380de",
+    "sleeve_near": "b5637eb58dd30de992295a09037a13fb7703ca2756b178148cf20fbf94b894ba"
+  },
+  "visible_triangle_flip_observations": 0
+}

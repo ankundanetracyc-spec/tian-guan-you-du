@@ -1,0 +1,827 @@
+{
+  "scope": "Read-only independent male1013D/LBS source-frame oracle and original65 opaque-alpha sole hull points per leg; no new production contact layer sampled",
+  "source_sha256": {
+    "resources\\appearance\\guigu_male101\\model_frames_20261104.json": "7603c46731ab56f6de5e33e06837636b10820a67495cd6093d489568ad767537",
+    "resources\\appearance\\guigu_native_first_20261105\\grounding_profile.json": "5bb2928ba34bdbe615582f598cb75e548750836dbbdf67f258a69c7d4094b06b"
+  },
+  "clip": "Run_New1",
+  "duration_seconds": 0.5833333134651184,
+  "phase_samples": 144,
+  "original": {
+    "minimum_height_pixels": 0.0,
+    "maximum_height_pixels": 11.969227382003757,
+    "within_0_15_pixel_contact_frames": 4,
+    "contact_fraction": 0.027777777777777776,
+    "height_percentiles_0_10_25_50_60_65_70_75_80_90_100": [
+      0.0,
+      0.6965088436103144,
+      2.713330440488738,
+      5.500181981674374,
+      6.9451833638571445,
+      7.430872332416197,
+      7.868895977043387,
+      8.257583241183704,
+      8.919449112437094,
+      10.365691803651632,
+      11.969227382003757
+    ],
+    "maximum_continuous_visible_flight_seconds": 0.5671296103133096
+  },
+  "candidate_formula": "target_height = 2 * max(0,(source_height-threshold)/(source_max_height-threshold))^2. Apply only a common whole-actor downward display offset source_height-target_height; preserve source local/world TRS, bone lengths, speed and phase.",
+  "candidates": [
+    {
+      "source_height_deadband_pixels": 7,
+      "maximum_height_pixels": 2,
+      "literal_zero_height_frames": 87,
+      "within_0_15_pixel_contact_frames": 109,
+      "visible_flight_phase_frame_lengths": [
+        11,
+        4,
+        20
+      ],
+      "visible_flight_durations_seconds_at_1x": [
+        0.04456018366747432,
+        0.016203703151808843,
+        0.08101851575904423
+      ],
+      "mean_height_pixels": 0.19782700839080544
+    },
+    {
+      "source_height_deadband_pixels": 8,
+      "maximum_height_pixels": 2,
+      "literal_zero_height_frames": 104,
+      "within_0_15_pixel_contact_frames": 117,
+      "visible_flight_phase_frame_lengths": [
+        9,
+        18
+      ],
+      "visible_flight_durations_seconds_at_1x": [
+        0.0364583320915699,
+        0.0729166641831398
+      ],
+      "mean_height_pixels": 0.1457855034452122
+    },
+    {
+      "source_height_deadband_pixels": 9,
+      "maximum_height_pixels": 2,
+      "literal_zero_height_frames": 117,
+      "within_0_15_pixel_contact_frames": 123,
+      "visible_flight_phase_frame_lengths": [
+        7,
+        14
+      ],
+      "visible_flight_durations_seconds_at_1x": [
+        0.02835648051566548,
+        0.05671296103133096
+      ],
+      "mean_height_pixels": 0.09614883178908962
+    }
+  ],
+  "recommended_threshold_pixels": 8,
+  "recommended_maximum_height_pixels": 2,
+  "shadow_audit": {
+    "shared_native_skin_current_shadow": "Empty NativeFootAnchor Node2D; no has_contact_shadow method, so no native painted contact shadow",
+    "base_arena_fallback_black_shadow_center_relative_to_actor": [
+      0,
+      4
+    ],
+    "base_arena_fallback_black_shadow_radii": [
+      14,
+      3.5
+    ],
+    "base_arena_visible_sole_to_shadow_center_gap_range_pixels": [
+      4,
+      15.969227382003757
+    ],
+    "human_arena_ground_rings": "Player and NPC each draw a radius17 ellipse outline at their logical player position, scaled Y0.34.",
+    "human_arena_black_shadow": "Inherited base arena black ellipse covers the player only; NPC own _draw has no matching black ellipse.",
+    "elevation_boundary": "body_effect_origin subtracts explicit elevation separately; intentional elevation must remain visible and must not be cancelled by a local shoe contact correction."
+  },
+  "source_phases": [
+    {
+      "phase": 0.0,
+      "clearance_pixels": 3.3488484619563117,
+      "lowest_sole_support_x_pixels": -26.53473005360477
+    },
+    {
+      "phase": 0.006944444444444444,
+      "clearance_pixels": 3.5860051073732007,
+      "lowest_sole_support_x_pixels": -27.505251440930532
+    },
+    {
+      "phase": 0.013888888888888888,
+      "clearance_pixels": 3.72897702536504,
+      "lowest_sole_support_x_pixels": -28.665137280516504
+    },
+    {
+      "phase": 0.020833333333333332,
+      "clearance_pixels": 3.8229686231145106,
+      "lowest_sole_support_x_pixels": -29.822675870132684
+    },
+    {
+      "phase": 0.027777777777777776,
+      "clearance_pixels": 3.905122050052519,
+      "lowest_sole_support_x_pixels": -31.313561863995616
+    },
+    {
+      "phase": 0.034722222222222224,
+      "clearance_pixels": 4.02972436955196,
+      "lowest_sole_support_x_pixels": -32.936821810007245
+    },
+    {
+      "phase": 0.041666666666666664,
+      "clearance_pixels": 4.215926455882618,
+      "lowest_sole_support_x_pixels": -33.4810724661758
+    },
+    {
+      "phase": 0.04861111111111111,
+      "clearance_pixels": 4.42905561228009,
+      "lowest_sole_support_x_pixels": -35.27061315825691
+    },
+    {
+      "phase": 0.05555555555555555,
+      "clearance_pixels": 4.7694656148566,
+      "lowest_sole_support_x_pixels": -37.08299547099503
+    },
+    {
+      "phase": 0.0625,
+      "clearance_pixels": 5.244089362871666,
+      "lowest_sole_support_x_pixels": -38.86762869459168
+    },
+    {
+      "phase": 0.06944444444444445,
+      "clearance_pixels": 5.84647832406024,
+      "lowest_sole_support_x_pixels": -40.57215691108273
+    },
+    {
+      "phase": 0.0763888888888889,
+      "clearance_pixels": 6.558320661878792,
+      "lowest_sole_support_x_pixels": -42.145102393884386
+    },
+    {
+      "phase": 0.08333333333333333,
+      "clearance_pixels": 7.352536605565281,
+      "lowest_sole_support_x_pixels": -43.537707108457425
+    },
+    {
+      "phase": 0.09027777777777778,
+      "clearance_pixels": 8.199619288986844,
+      "lowest_sole_support_x_pixels": -44.754463002082275
+    },
+    {
+      "phase": 0.09722222222222222,
+      "clearance_pixels": 9.088191088268092,
+      "lowest_sole_support_x_pixels": -45.812487630625135
+    },
+    {
+      "phase": 0.10416666666666667,
+      "clearance_pixels": 10.01124307655332,
+      "lowest_sole_support_x_pixels": -46.970978654806004
+    },
+    {
+      "phase": 0.1111111111111111,
+      "clearance_pixels": 10.9722510507236,
+      "lowest_sole_support_x_pixels": -48.101275624207624
+    },
+    {
+      "phase": 0.11805555555555555,
+      "clearance_pixels": 11.969227382003757,
+      "lowest_sole_support_x_pixels": -49.19950566792795
+    },
+    {
+      "phase": 0.125,
+      "clearance_pixels": 11.641725083778937,
+      "lowest_sole_support_x_pixels": 8.494514005796285
+    },
+    {
+      "phase": 0.13194444444444445,
+      "clearance_pixels": 11.17562024725555,
+      "lowest_sole_support_x_pixels": 9.343886381282251
+    },
+    {
+      "phase": 0.1388888888888889,
+      "clearance_pixels": 10.65419377555246,
+      "lowest_sole_support_x_pixels": 10.469663033314609
+    },
+    {
+      "phase": 0.14583333333333334,
+      "clearance_pixels": 10.114247080876318,
+      "lowest_sole_support_x_pixels": 11.84295008715349
+    },
+    {
+      "phase": 0.1527777777777778,
+      "clearance_pixels": 9.516816305625218,
+      "lowest_sole_support_x_pixels": 12.241367507283016
+    },
+    {
+      "phase": 0.1597222222222222,
+      "clearance_pixels": 8.935432600113012,
+      "lowest_sole_support_x_pixels": 13.986982930854559
+    },
+    {
+      "phase": 0.16666666666666666,
+      "clearance_pixels": 8.417377792958328,
+      "lowest_sole_support_x_pixels": 15.861006456902707
+    },
+    {
+      "phase": 0.1736111111111111,
+      "clearance_pixels": 7.985065422262787,
+      "lowest_sole_support_x_pixels": 17.643998663721533
+    },
+    {
+      "phase": 0.18055555555555555,
+      "clearance_pixels": 7.655354812939856,
+      "lowest_sole_support_x_pixels": 19.645378446005466
+    },
+    {
+      "phase": 0.1875,
+      "clearance_pixels": 7.446154335210928,
+      "lowest_sole_support_x_pixels": 21.64289214326343
+    },
+    {
+      "phase": 0.19444444444444445,
+      "clearance_pixels": 7.358401359762547,
+      "lowest_sole_support_x_pixels": 23.591553148847307
+    },
+    {
+      "phase": 0.2013888888888889,
+      "clearance_pixels": 7.383999509994421,
+      "lowest_sole_support_x_pixels": 25.448486396059415
+    },
+    {
+      "phase": 0.20833333333333334,
+      "clearance_pixels": 7.506662646142171,
+      "lowest_sole_support_x_pixels": 27.174231960681873
+    },
+    {
+      "phase": 0.2152777777777778,
+      "clearance_pixels": 7.696130300444555,
+      "lowest_sole_support_x_pixels": 28.338508859136663
+    },
+    {
+      "phase": 0.2222222222222222,
+      "clearance_pixels": 7.908099922496747,
+      "lowest_sole_support_x_pixels": 29.187636308138654
+    },
+    {
+      "phase": 0.22916666666666666,
+      "clearance_pixels": 8.109216016680504,
+      "lowest_sole_support_x_pixels": 30.334130940064234
+    },
+    {
+      "phase": 0.2361111111111111,
+      "clearance_pixels": 8.339974076882926,
+      "lowest_sole_support_x_pixels": 31.372300852899325
+    },
+    {
+      "phase": 0.24305555555555555,
+      "clearance_pixels": 8.617481992308086,
+      "lowest_sole_support_x_pixels": 32.37110946420924
+    },
+    {
+      "phase": 0.25,
+      "clearance_pixels": 8.93295565750082,
+      "lowest_sole_support_x_pixels": 33.30523700444296
+    },
+    {
+      "phase": 0.2569444444444444,
+      "clearance_pixels": 8.794683335822066,
+      "lowest_sole_support_x_pixels": 22.774989126717514
+    },
+    {
+      "phase": 0.2638888888888889,
+      "clearance_pixels": 8.461255777030242,
+      "lowest_sole_support_x_pixels": 20.822731566591088
+    },
+    {
+      "phase": 0.2708333333333333,
+      "clearance_pixels": 8.140008577551713,
+      "lowest_sole_support_x_pixels": 21.51644325170286
+    },
+    {
+      "phase": 0.2777777777777778,
+      "clearance_pixels": 7.868014616218799,
+      "lowest_sole_support_x_pixels": 22.092083607094246
+    },
+    {
+      "phase": 0.2847222222222222,
+      "clearance_pixels": 7.638965920319779,
+      "lowest_sole_support_x_pixels": 22.525585274310004
+    },
+    {
+      "phase": 0.2916666666666667,
+      "clearance_pixels": 7.431009881122396,
+      "lowest_sole_support_x_pixels": 22.796185107579348
+    },
+    {
+      "phase": 0.2986111111111111,
+      "clearance_pixels": 7.210024740530781,
+      "lowest_sole_support_x_pixels": 22.885862487561276
+    },
+    {
+      "phase": 0.3055555555555556,
+      "clearance_pixels": 6.965884628926913,
+      "lowest_sole_support_x_pixels": 22.772549991847562
+    },
+    {
+      "phase": 0.3125,
+      "clearance_pixels": 6.691339443633424,
+      "lowest_sole_support_x_pixels": 22.43395569118399
+    },
+    {
+      "phase": 0.3194444444444444,
+      "clearance_pixels": 6.390638237190637,
+      "lowest_sole_support_x_pixels": 21.900448988266707
+    },
+    {
+      "phase": 0.3263888888888889,
+      "clearance_pixels": 6.0835174156710154,
+      "lowest_sole_support_x_pixels": 21.295675386238543
+    },
+    {
+      "phase": 0.3333333333333333,
+      "clearance_pixels": 5.772884826408774,
+      "lowest_sole_support_x_pixels": 20.62980987468653
+    },
+    {
+      "phase": 0.3402777777777778,
+      "clearance_pixels": 5.460854956758684,
+      "lowest_sole_support_x_pixels": 19.906968576394
+    },
+    {
+      "phase": 0.3472222222222222,
+      "clearance_pixels": 5.14643021498509,
+      "lowest_sole_support_x_pixels": 19.12428358011704
+    },
+    {
+      "phase": 0.3541666666666667,
+      "clearance_pixels": 4.82059416668022,
+      "lowest_sole_support_x_pixels": 18.260916736429973
+    },
+    {
+      "phase": 0.3611111111111111,
+      "clearance_pixels": 4.485194987849114,
+      "lowest_sole_support_x_pixels": 17.32110930745576
+    },
+    {
+      "phase": 0.3680555555555556,
+      "clearance_pixels": 4.14305870883698,
+      "lowest_sole_support_x_pixels": 16.311644584332623
+    },
+    {
+      "phase": 0.375,
+      "clearance_pixels": 3.805198438481885,
+      "lowest_sole_support_x_pixels": 15.2756716148944
+    },
+    {
+      "phase": 0.3819444444444444,
+      "clearance_pixels": 3.5107174977950364,
+      "lowest_sole_support_x_pixels": 14.393741580802727
+    },
+    {
+      "phase": 0.3888888888888889,
+      "clearance_pixels": 3.2455619223257504,
+      "lowest_sole_support_x_pixels": 13.623126949790104
+    },
+    {
+      "phase": 0.3958333333333333,
+      "clearance_pixels": 2.9915504945658293,
+      "lowest_sole_support_x_pixels": 12.883989653272737
+    },
+    {
+      "phase": 0.4027777777777778,
+      "clearance_pixels": 2.73347871494202,
+      "lowest_sole_support_x_pixels": 12.096931310282681
+    },
+    {
+      "phase": 0.4097222222222222,
+      "clearance_pixels": 2.457989078288172,
+      "lowest_sole_support_x_pixels": 11.195648164631578
+    },
+    {
+      "phase": 0.4166666666666667,
+      "clearance_pixels": 2.1561892697467524,
+      "lowest_sole_support_x_pixels": 10.106033966637739
+    },
+    {
+      "phase": 0.4236111111111111,
+      "clearance_pixels": 1.8250475350723745,
+      "lowest_sole_support_x_pixels": 8.749958586017938
+    },
+    {
+      "phase": 0.4305555555555556,
+      "clearance_pixels": 1.4702256381978378,
+      "lowest_sole_support_x_pixels": 7.049802455460879
+    },
+    {
+      "phase": 0.4375,
+      "clearance_pixels": 1.0991977564379782,
+      "lowest_sole_support_x_pixels": 6.013107303437649
+    },
+    {
+      "phase": 0.4444444444444444,
+      "clearance_pixels": 0.7467985574115623,
+      "lowest_sole_support_x_pixels": 3.6177955960526202
+    },
+    {
+      "phase": 0.4513888888888889,
+      "clearance_pixels": 0.4577608140040299,
+      "lowest_sole_support_x_pixels": 1.0495685807962551
+    },
+    {
+      "phase": 0.4583333333333333,
+      "clearance_pixels": 0.24800027775105438,
+      "lowest_sole_support_x_pixels": -0.2868135051075984
+    },
+    {
+      "phase": 0.4652777777777778,
+      "clearance_pixels": 0.17228624742317145,
+      "lowest_sole_support_x_pixels": -3.5495198153326455
+    },
+    {
+      "phase": 0.4722222222222222,
+      "clearance_pixels": 0.34336302982136147,
+      "lowest_sole_support_x_pixels": -7.102801558943019
+    },
+    {
+      "phase": 0.4791666666666667,
+      "clearance_pixels": 0.7967498649642035,
+      "lowest_sole_support_x_pixels": -10.889883043974738
+    },
+    {
+      "phase": 0.4861111111111111,
+      "clearance_pixels": 1.5181077445984963,
+      "lowest_sole_support_x_pixels": -9.83418815014478
+    },
+    {
+      "phase": 0.4930555555555556,
+      "clearance_pixels": 1.9208142437526359,
+      "lowest_sole_support_x_pixels": -7.84664225644834
+    },
+    {
+      "phase": 0.5,
+      "clearance_pixels": 1.7380193611468506,
+      "lowest_sole_support_x_pixels": -12.434037862465768
+    },
+    {
+      "phase": 0.5069444444444444,
+      "clearance_pixels": 1.59211780052693,
+      "lowest_sole_support_x_pixels": -16.417629807387204
+    },
+    {
+      "phase": 0.5138888888888888,
+      "clearance_pixels": 1.9900655061951475,
+      "lowest_sole_support_x_pixels": -21.329458152165223
+    },
+    {
+      "phase": 0.5208333333333334,
+      "clearance_pixels": 2.9704770057267726,
+      "lowest_sole_support_x_pixels": -26.082697673003707
+    },
+    {
+      "phase": 0.5277777777777778,
+      "clearance_pixels": 4.200522606065052,
+      "lowest_sole_support_x_pixels": -30.696930931100834
+    },
+    {
+      "phase": 0.5347222222222222,
+      "clearance_pixels": 5.713161025237854,
+      "lowest_sole_support_x_pixels": -35.45131026408711
+    },
+    {
+      "phase": 0.5416666666666666,
+      "clearance_pixels": 7.428258906998411,
+      "lowest_sole_support_x_pixels": -38.896026973529544
+    },
+    {
+      "phase": 0.5486111111111112,
+      "clearance_pixels": 9.452785864472226,
+      "lowest_sole_support_x_pixels": -43.358518249302946
+    },
+    {
+      "phase": 0.5555555555555556,
+      "clearance_pixels": 11.006578530194629,
+      "lowest_sole_support_x_pixels": 6.25566813254785
+    },
+    {
+      "phase": 0.5625,
+      "clearance_pixels": 10.814879859066476,
+      "lowest_sole_support_x_pixels": 8.376842691769586
+    },
+    {
+      "phase": 0.5694444444444444,
+      "clearance_pixels": 10.655199017593329,
+      "lowest_sole_support_x_pixels": 10.610856732093582
+    },
+    {
+      "phase": 0.5763888888888888,
+      "clearance_pixels": 10.532474984545445,
+      "lowest_sole_support_x_pixels": 11.718529204507707
+    },
+    {
+      "phase": 0.5833333333333334,
+      "clearance_pixels": 10.4119013664439,
+      "lowest_sole_support_x_pixels": 13.997801859041912
+    },
+    {
+      "phase": 0.5902777777777778,
+      "clearance_pixels": 10.36365155785872,
+      "lowest_sole_support_x_pixels": 16.20223446947352
+    },
+    {
+      "phase": 0.5972222222222222,
+      "clearance_pixels": 10.366566194705737,
+      "lowest_sole_support_x_pixels": 18.08448169606065
+    },
+    {
+      "phase": 0.6041666666666666,
+      "clearance_pixels": 10.388592149323681,
+      "lowest_sole_support_x_pixels": 19.944225096013035
+    },
+    {
+      "phase": 0.6111111111111112,
+      "clearance_pixels": 10.419268625545044,
+      "lowest_sole_support_x_pixels": 21.606874948551226
+    },
+    {
+      "phase": 0.6180555555555556,
+      "clearance_pixels": 10.43583376209874,
+      "lowest_sole_support_x_pixels": 23.031470054916305
+    },
+    {
+      "phase": 0.625,
+      "clearance_pixels": 10.410879289432902,
+      "lowest_sole_support_x_pixels": 24.174230055483218
+    },
+    {
+      "phase": 0.6319444444444444,
+      "clearance_pixels": 10.320627428968193,
+      "lowest_sole_support_x_pixels": 25.032401612458244
+    },
+    {
+      "phase": 0.6388888888888888,
+      "clearance_pixels": 10.177372038105391,
+      "lowest_sole_support_x_pixels": 25.821730833859867
+    },
+    {
+      "phase": 0.6458333333333334,
+      "clearance_pixels": 9.99064913830441,
+      "lowest_sole_support_x_pixels": 26.580984215634082
+    },
+    {
+      "phase": 0.6527777777777778,
+      "clearance_pixels": 9.766544154187454,
+      "lowest_sole_support_x_pixels": 27.308055192771725
+    },
+    {
+      "phase": 0.6597222222222222,
+      "clearance_pixels": 9.511011411183409,
+      "lowest_sole_support_x_pixels": 28.0009183088952
+    },
+    {
+      "phase": 0.6666666666666666,
+      "clearance_pixels": 9.22446644593591,
+      "lowest_sole_support_x_pixels": 28.262436003667773
+    },
+    {
+      "phase": 0.6736111111111112,
+      "clearance_pixels": 8.910444749061277,
+      "lowest_sole_support_x_pixels": 28.881737936960235
+    },
+    {
+      "phase": 0.6805555555555556,
+      "clearance_pixels": 8.581672797104835,
+      "lowest_sole_support_x_pixels": 28.94659167101124
+    },
+    {
+      "phase": 0.6875,
+      "clearance_pixels": 8.230119629283964,
+      "lowest_sole_support_x_pixels": 29.48657219619757
+    },
+    {
+      "phase": 0.6944444444444444,
+      "clearance_pixels": 7.876828224464678,
+      "lowest_sole_support_x_pixels": 29.985167814228266
+    },
+    {
+      "phase": 0.7013888888888888,
+      "clearance_pixels": 7.527393540640151,
+      "lowest_sole_support_x_pixels": 30.441203585235677
+    },
+    {
+      "phase": 0.7083333333333334,
+      "clearance_pixels": 7.187362712740812,
+      "lowest_sole_support_x_pixels": 30.85367516206229
+    },
+    {
+      "phase": 0.7152777777777778,
+      "clearance_pixels": 6.86237830357807,
+      "lowest_sole_support_x_pixels": 31.22182391781586
+    },
+    {
+      "phase": 0.7222222222222222,
+      "clearance_pixels": 6.56696082488126,
+      "lowest_sole_support_x_pixels": 31.547635554026375
+    },
+    {
+      "phase": 0.7291666666666666,
+      "clearance_pixels": 6.313635275058942,
+      "lowest_sole_support_x_pixels": 31.831851622436538
+    },
+    {
+      "phase": 0.7361111111111112,
+      "clearance_pixels": 6.110104130966013,
+      "lowest_sole_support_x_pixels": 32.07367611538798
+    },
+    {
+      "phase": 0.7430555555555556,
+      "clearance_pixels": 5.963975075327157,
+      "lowest_sole_support_x_pixels": 32.27237893063296
+    },
+    {
+      "phase": 0.75,
+      "clearance_pixels": 5.846727084254926,
+      "lowest_sole_support_x_pixels": 26.158436413502997
+    },
+    {
+      "phase": 0.7569444444444444,
+      "clearance_pixels": 5.539509006590064,
+      "lowest_sole_support_x_pixels": 21.111734340978558
+    },
+    {
+      "phase": 0.7638888888888888,
+      "clearance_pixels": 5.2290506400618355,
+      "lowest_sole_support_x_pixels": 21.162303908446884
+    },
+    {
+      "phase": 0.7708333333333334,
+      "clearance_pixels": 4.903767960225538,
+      "lowest_sole_support_x_pixels": 18.433818709096442
+    },
+    {
+      "phase": 0.7777777777777778,
+      "clearance_pixels": 4.4941879672236285,
+      "lowest_sole_support_x_pixels": 18.073622313000325
+    },
+    {
+      "phase": 0.7847222222222222,
+      "clearance_pixels": 3.921691830287289,
+      "lowest_sole_support_x_pixels": 16.974556403340344
+    },
+    {
+      "phase": 0.7916666666666666,
+      "clearance_pixels": 3.253760266557916,
+      "lowest_sole_support_x_pixels": 15.247540562283017
+    },
+    {
+      "phase": 0.7986111111111112,
+      "clearance_pixels": 2.5675831642675915,
+      "lowest_sole_support_x_pixels": 13.011600185510622
+    },
+    {
+      "phase": 0.8055555555555556,
+      "clearance_pixels": 1.9169893529449027,
+      "lowest_sole_support_x_pixels": 13.36254174467512
+    },
+    {
+      "phase": 0.8125,
+      "clearance_pixels": 1.4397888067474973,
+      "lowest_sole_support_x_pixels": 11.319156993052664
+    },
+    {
+      "phase": 0.8194444444444444,
+      "clearance_pixels": 1.0958750925204388,
+      "lowest_sole_support_x_pixels": 9.618427246024153
+    },
+    {
+      "phase": 0.8263888888888888,
+      "clearance_pixels": 0.8497998323654681,
+      "lowest_sole_support_x_pixels": 8.233342525798026
+    },
+    {
+      "phase": 0.8333333333333334,
+      "clearance_pixels": 0.6749561091240652,
+      "lowest_sole_support_x_pixels": 7.1331420975865045
+    },
+    {
+      "phase": 0.8402777777777778,
+      "clearance_pixels": 0.5390077418312469,
+      "lowest_sole_support_x_pixels": 4.656992697723285
+    },
+    {
+      "phase": 0.8472222222222222,
+      "clearance_pixels": 0.41550047742127205,
+      "lowest_sole_support_x_pixels": 3.899812246840511
+    },
+    {
+      "phase": 0.8541666666666666,
+      "clearance_pixels": 0.3134651293093942,
+      "lowest_sole_support_x_pixels": 3.4495110979853836
+    },
+    {
+      "phase": 0.8611111111111112,
+      "clearance_pixels": 0.2226326834720922,
+      "lowest_sole_support_x_pixels": 3.0318076039280393
+    },
+    {
+      "phase": 0.8680555555555556,
+      "clearance_pixels": 0.1267388536411742,
+      "lowest_sole_support_x_pixels": 2.1349640566818864
+    },
+    {
+      "phase": 0.875,
+      "clearance_pixels": 0.04261963743165431,
+      "lowest_sole_support_x_pixels": 0.7388199635219788
+    },
+    {
+      "phase": 0.8819444444444444,
+      "clearance_pixels": 0.0,
+      "lowest_sole_support_x_pixels": -1.1097838942678386
+    },
+    {
+      "phase": 0.8888888888888888,
+      "clearance_pixels": 0.03379216019463538,
+      "lowest_sole_support_x_pixels": -3.3517558501717786
+    },
+    {
+      "phase": 0.8958333333333334,
+      "clearance_pixels": 0.1672545635891618,
+      "lowest_sole_support_x_pixels": -5.737698062663738
+    },
+    {
+      "phase": 0.9027777777777778,
+      "clearance_pixels": 0.4262853863342153,
+      "lowest_sole_support_x_pixels": -8.452867741855265
+    },
+    {
+      "phase": 0.9097222222222222,
+      "clearance_pixels": 0.8306852984691027,
+      "lowest_sole_support_x_pixels": -11.308250958880361
+    },
+    {
+      "phase": 0.9166666666666666,
+      "clearance_pixels": 1.3874243944515499,
+      "lowest_sole_support_x_pixels": -14.241041430909906
+    },
+    {
+      "phase": 0.9236111111111112,
+      "clearance_pixels": 2.0208335556498067,
+      "lowest_sole_support_x_pixels": -15.566619582720232
+    },
+    {
+      "phase": 0.9305555555555556,
+      "clearance_pixels": 2.6528856171288924,
+      "lowest_sole_support_x_pixels": -13.455691921407205
+    },
+    {
+      "phase": 0.9375,
+      "clearance_pixels": 2.7761295156710917,
+      "lowest_sole_support_x_pixels": -10.07429744635194
+    },
+    {
+      "phase": 0.9444444444444444,
+      "clearance_pixels": 2.7974902795163494,
+      "lowest_sole_support_x_pixels": -12.834446100971993
+    },
+    {
+      "phase": 0.9513888888888888,
+      "clearance_pixels": 2.835286464617619,
+      "lowest_sole_support_x_pixels": -15.490048239018435
+    },
+    {
+      "phase": 0.9583333333333334,
+      "clearance_pixels": 2.8777032058769336,
+      "lowest_sole_support_x_pixels": -17.490823418365167
+    },
+    {
+      "phase": 0.9652777777777778,
+      "clearance_pixels": 2.9243470182532,
+      "lowest_sole_support_x_pixels": -19.432461120807176
+    },
+    {
+      "phase": 0.9722222222222222,
+      "clearance_pixels": 3.0017646373850644,
+      "lowest_sole_support_x_pixels": -21.541961881960326
+    },
+    {
+      "phase": 0.9791666666666666,
+      "clearance_pixels": 3.105448947394568,
+      "lowest_sole_support_x_pixels": -23.368043790197525
+    },
+    {
+      "phase": 0.9861111111111112,
+      "clearance_pixels": 3.2142042076518997,
+      "lowest_sole_support_x_pixels": -24.850580832185734
+    },
+    {
+      "phase": 0.9930555555555556,
+      "clearance_pixels": 3.3028488602673463,
+      "lowest_sole_support_x_pixels": -25.927200393642533
+    }
+  ],
+  "limits": [
+    "The proposed8px threshold and2px cap are a visual calibration candidate, not original animation metadata.",
+    "Contact ratio uses opaque shoe alpha hull and0.15 native-pixel tolerance; this does not prove physically planted feet or horizontal foot lock.",
+    "The new display correction and shadow require actual runtime, mirrored, moving-attack, stop and duplicate-clock checks; source-frame analysis alone is not final visual acceptance."
+  ]
+}
