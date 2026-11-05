@@ -1,0 +1,116 @@
+{
+  "date": "2026-11-05",
+  "result": "pass",
+  "new_images": 10,
+  "existing_lecture_courtyard": 1,
+  "total_interiors": 11,
+  "gallery_images": 11,
+  "gallery_categories": {
+    "streets": 4,
+    "facilities_including_lecture_courtyard": 7
+  },
+  "gallery_javascript": "syntax_check_pass",
+  "visual_review": "All ten generated outputs viewed individually for scene identity, palette continuity, plausible main approaches, lack of readable text/figures and clear edges. Subjective art approval remains with user.",
+  "runtime_changes": "none",
+  "files": [
+    {
+      "id": "street_south",
+      "path": "textures/baishi/interiors_20261105/street_south.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "3c5970543523f022ef5aa351f1b48954f4e9d38613bdc976f5ff5783bb65ad08"
+    },
+    {
+      "id": "street_east",
+      "path": "textures/baishi/interiors_20261105/street_east.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "8b23f50ddbb1396ef103fe10c4994654537ad1e62a620c6d6220ce266faac7aa"
+    },
+    {
+      "id": "street_fuqian",
+      "path": "textures/baishi/interiors_20261105/street_fuqian.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "a4d1c5dd925a58d93d26a5b6733fb4950302b0fdc97605b179804d556ff54bf1"
+    },
+    {
+      "id": "street_west",
+      "path": "textures/baishi/interiors_20261105/street_west.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "43aa7f676a0eb6cfe6dc74e355d150b6b540d856e56a18525ad157aebe16e9a2"
+    },
+    {
+      "id": "inn_lobby",
+      "path": "textures/baishi/interiors_20261105/inn_lobby.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "bd26c72740e13eeb762726c11ce307f49507e2b6016cceaa512fb1b0a5761806"
+    },
+    {
+      "id": "market_arcade",
+      "path": "textures/baishi/interiors_20261105/market_arcade.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "2153fbd9530026d007544304a3fc84b0dd315e7cc3d7907dd6c1b360a3df50c7"
+    },
+    {
+      "id": "bookshop",
+      "path": "textures/baishi/interiors_20261105/bookshop.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "1e56e355860826da72777c517542ada32c69495c30dc7d53d989a24ed8a749da"
+    },
+    {
+      "id": "notice_hall",
+      "path": "textures/baishi/interiors_20261105/notice_hall.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "7a1f2548828eafbd91a10f7621eb564d5b85801ef49982b72f552aafd82d0ecd"
+    },
+    {
+      "id": "city_office",
+      "path": "textures/baishi/interiors_20261105/city_office.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "5e49f2c06578e4b35e7b5567e6e33557b0bff3119768892049264609c6097183"
+    },
+    {
+      "id": "study_room",
+      "path": "textures/baishi/interiors_20261105/study_room.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "3372808277bb580851b9bae4f0294e58794f225a7b68485d6e55f92256e64962"
+    },
+    {
+      "id": "lecture_courtyard",
+      "path": "textures/baishi/lecture_courtyard_v2_urban_style.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "8546fc602f5ab3e52c53af0c9ef18f3e70b19e4168cfea30a002ad4dbd34e0b4"
+    }
+  ]
+}

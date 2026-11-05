@@ -1,0 +1,154 @@
+{
+  "rendered_frames": 360,
+  "replay_seconds": 12,
+  "active_simulation_seconds": 11.6,
+  "detail_native_scale": 4,
+  "facing_correct_all_frames": true,
+  "paused_bones_equal_12_frames": true,
+  "paused_native_images_equal_12_frames": true,
+  "garment_start": {
+    "acceleration_drive": 2.85003643035889,
+    "angles": [
+      0.0384648740291595,
+      0.0530472323298454,
+      0.0635078027844429
+    ],
+    "angular_velocity": [
+      1.85109353065491,
+      2.58420515060425,
+      3.10235381126404
+    ],
+    "continuous_mesh": true,
+    "ground_shift": -0.733145865797997,
+    "lowest_cloth_y": -0.550008356571198,
+    "mode": "closed_robe",
+    "outline_samples": 75,
+    "simulation_steps": 19,
+    "travel_drag": 1.00001278258207
+  },
+  "garment_stop": {
+    "acceleration_drive": -2.85003643035889,
+    "angles": [
+      -0.0146677065640688,
+      -0.0608545541763306,
+      -0.0715268477797508
+    ],
+    "angular_velocity": [
+      -1.61631071567535,
+      -2.46529674530029,
+      -3.2608802318573
+    ],
+    "continuous_mesh": true,
+    "ground_shift": -1.21587072610855,
+    "lowest_cloth_y": -0.550068080425262,
+    "mode": "closed_robe",
+    "outline_samples": 75,
+    "simulation_steps": 229,
+    "travel_drag": 0.0
+  },
+  "garment_settle": {
+    "acceleration_drive": 0.0,
+    "angles": [
+      -2.01338598571077e-12,
+      -1.05342294887123e-08,
+      -1.17745594252483e-06
+    ],
+    "angular_velocity": [
+      -1.54538794955306e-11,
+      -5.04564283687614e-08,
+      4.78306355944369e-06
+    ],
+    "continuous_mesh": true,
+    "ground_shift": -0.896568405628204,
+    "lowest_cloth_y": -0.549919307231903,
+    "mode": "closed_robe",
+    "outline_samples": 75,
+    "simulation_steps": 348,
+    "travel_drag": 0.0
+  },
+  "lowest_cloth_y_range": [
+    -0.550098598003387,
+    -0.549838900566101
+  ],
+  "maximum_foot_contact_y": 0.000157356262207031,
+  "stop_decay_samples": [
+    {
+      "frame": 228,
+      "angle_norm": 0.09505003068467271,
+      "speed_norm": 4.395848980403317
+    },
+    {
+      "frame": 231,
+      "angle_norm": 0.30025700786573467,
+      "speed_norm": 0.3840291395539918
+    },
+    {
+      "frame": 240,
+      "angle_norm": 0.02190970219606551,
+      "speed_norm": 0.6648186891722286
+    },
+    {
+      "frame": 252,
+      "angle_norm": 0.007877247339257397,
+      "speed_norm": 0.13452597880437886
+    },
+    {
+      "frame": 264,
+      "angle_norm": 0.003353185747123382,
+      "speed_norm": 0.02610309115295202
+    },
+    {
+      "frame": 276,
+      "angle_norm": 0.0011031428833530024,
+      "speed_norm": 0.003375587240923683
+    },
+    {
+      "frame": 287,
+      "angle_norm": 0.0002647727145596383,
+      "speed_norm": 0.0011044496184592894
+    },
+    {
+      "frame": 288,
+      "angle_norm": 0.0002647727145596383,
+      "speed_norm": 0.0011044496184592894
+    },
+    {
+      "frame": 299,
+      "angle_norm": 0.0002647727145596383,
+      "speed_norm": 0.0011044496184592894
+    },
+    {
+      "frame": 300,
+      "angle_norm": 0.00028835634649087893,
+      "speed_norm": 0.0004916693859009423
+    },
+    {
+      "frame": 359,
+      "angle_norm": 1.1775030643620467e-06,
+      "speed_norm": 4.7833296839210965e-06
+    }
+  ],
+  "artifacts": {
+    "关键帧总览.png": 332303,
+    "反向错步_原生四倍近景.png": 46861,
+    "后退同相位前后对照.png": 87613,
+    "当前闭袍原生四倍近景_12秒.gif": 1533407,
+    "急停回落与暂停_中间相位.png": 332831,
+    "石坪实际窗口_12秒.gif": 7291969,
+    "石坪实际窗口_后退.png": 999495,
+    "石坪实际窗口_急停.png": 908903,
+    "起步转向后退出掌_中间相位.png": 437132,
+    "近景_出掌.png": 41406,
+    "近景_后退.png": 38969,
+    "近景_回落.png": 39614,
+    "近景_急停.png": 40023,
+    "近景_起步.png": 40416,
+    "近景_转向.png": 41578,
+    "近景_错步.png": 42070,
+    "近景_静止.png": 39799,
+    "闭袍与旧版同输入对照_12秒.gif": 2961671
+  },
+  "source_capture": "tools/action_battle_test/output/realtime_closed_robe_final_knees_20261104",
+  "garment_source_sha256": "a9783e77426aa84e49e1f417ec42b29b4bde9b6d0270b392136f932002874abc",
+  "paused_simulation_steps_equal_12_frames": true
+}

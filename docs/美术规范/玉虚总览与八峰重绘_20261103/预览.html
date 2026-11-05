@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>玉虚仙宗 · 总览与八峰重绘</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#ece7db;color:#34382f;font-family:system-ui,"Microsoft YaHei",sans-serif}
+header{padding:28px 4vw 18px;max-width:1800px;margin:auto}h1{font-size:25px;font-weight:600;margin:0 0 10px}p{margin:0;line-height:1.7;color:#626558}
+main{max-width:1800px;margin:0 auto;padding:0 4vw 40px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+figure{margin:0;background:#f7f4eb;border:1px solid #cec8b8;border-radius:5px;overflow:hidden}
+figure button{border:0;background:none;padding:0;display:block;width:100%;cursor:zoom-in}figure img{display:block;width:100%;aspect-ratio:1672/941;object-fit:contain}
+figcaption{padding:12px 15px 15px}h2{font-size:18px;margin:0 0 4px}figcaption span{font-size:13px;color:#676b5c}
+dialog{padding:0;border:1px solid #878a7d;background:#ede9de;color:#30352b;max-width:96vw;width:1600px;max-height:96vh}dialog::backdrop{background:rgba(20,25,22,.86)}
+.viewerbar{display:flex;align-items:center;gap:10px;padding:10px 15px}.viewerbar strong{margin-right:auto}
+.viewerbar button{padding:7px 12px;cursor:pointer;background:#f6f3e9;color:#30352b;border:1px solid #b9baa9;border-radius:3px}
+#large{display:block;width:100%;height:auto;max-height:85vh;object-fit:contain}
+footer{padding:0 4vw 25px;color:#626558;font-size:13px}
+@media(max-width:1000px){main{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:600px){main{grid-template-columns:1fr}}
+</style>
+<header><h1>玉虚仙宗 · 总览与八峰重绘</h1><p>共用同一色调参照，采用山域局部截景。点击图片放大；左右方向键切换，Esc关闭。<br>以下为九张空间关系待修旧稿，尚未替换游戏原图。<br><a href="空间关系复核_20261104.md">空间复核记录</a> · <a href="../../../textures/sect_overview/repaint_20261103/peaks/heguang_spatial_v2.png">和光峰修订样板 v2</a></p></header>
+<main><figure><button type="button" data-index="0" aria-label="放大玉虚仙宗总览"><img src="../../../textures/sect_overview/repaint_20261103/yuxu_overview_v3.png" alt="玉虚仙宗总览" loading="eager"></button><figcaption><h2>玉虚仙宗总览</h2><span>山域总览，宫阙在连续山脉间延展</span></figcaption></figure>
+<figure><button type="button" data-index="1" aria-label="放大和光峰"><img src="../../../textures/sect_overview/repaint_20261103/peaks/heguang.png" alt="和光峰" loading="eager"></button><figcaption><h2>和光峰</h2><span>庶务、膳房、仓储与修缮</span></figcaption></figure>
+<figure><button type="button" data-index="2" aria-label="放大观复峰"><img src="../../../textures/sect_overview/repaint_20261103/peaks/guanfu.png" alt="观复峰" loading="eager"></button><figcaption><h2>观复峰</h2><span>普通弟子居所、授业与日常修持</span></figcaption></figure>
+<figure><button type="button" data-index="3" aria-label="放大紫府峰"><img src="../../../textures/sect_overview/repaint_20261103/peaks/zifu.png" alt="紫府峰" loading="lazy"></button><figcaption><h2>紫府峰</h2><span>真传居所、长老与宗门中枢</span></figcaption></figure>
+<figure><button type="button" data-index="4" aria-label="放大玄览峰"><img src="../../../textures/sect_overview/repaint_20261103/peaks/xuanlan.png" alt="玄览峰" loading="lazy"></button><figcaption><h2>玄览峰</h2><span>藏经、研读与传承</span></figcaption></figure>
+<figure><button type="button" data-index="5" aria-label="放大天问峰"><img src="../../../textures/sect_overview/repaint_20261103/peaks/tianwen.png" alt="天问峰" loading="lazy"></button><figcaption><h2>天问峰</h2><span>演法、试炼与比试</span></figcaption></figure>
+<figure><button type="button" data-index="6" aria-label="放大天工峰"><img src="../../../textures/sect_overview/repaint_20261103/peaks/tiangong.png" alt="天工峰" loading="lazy"></button><figcaption><h2>天工峰</h2><span>丹、器、符、阵</span></figcaption></figure>
+<figure><button type="button" data-index="7" aria-label="放大执中峰"><img src="../../../textures/sect_overview/repaint_20261103/peaks/zhizhong.png" alt="执中峰" loading="lazy"></button><figcaption><h2>执中峰</h2><span>戒律、执法与宗内裁断</span></figcaption></figure>
+<figure><button type="button" data-index="8" aria-label="放大瑶圃峰"><img src="../../../textures/sect_overview/repaint_20261103/peaks/yaopu.png" alt="瑶圃峰" loading="lazy"></button><figcaption><h2>瑶圃峰</h2><span>灵植、药圃与培育</span></figcaption></figure></main>
+<footer>1672 × 941 原图 · 2026-11-03开始制作，2026-11-04补齐</footer>
+<dialog id="viewer" aria-labelledby="viewerTitle"><div class="viewerbar"><strong id="viewerTitle"></strong><button type="button" id="prev">上一张</button><button type="button" id="next">下一张</button><button type="button" id="close">关闭</button></div><img id="large" alt=""></dialog>
+<script>
+const items=[{"name":"玉虚仙宗总览","src":"../../../textures/sect_overview/repaint_20261103/yuxu_overview_v3.png"},{"name":"和光峰","src":"../../../textures/sect_overview/repaint_20261103/peaks/heguang.png"},{"name":"观复峰","src":"../../../textures/sect_overview/repaint_20261103/peaks/guanfu.png"},{"name":"紫府峰","src":"../../../textures/sect_overview/repaint_20261103/peaks/zifu.png"},{"name":"玄览峰","src":"../../../textures/sect_overview/repaint_20261103/peaks/xuanlan.png"},{"name":"天问峰","src":"../../../textures/sect_overview/repaint_20261103/peaks/tianwen.png"},{"name":"天工峰","src":"../../../textures/sect_overview/repaint_20261103/peaks/tiangong.png"},{"name":"执中峰","src":"../../../textures/sect_overview/repaint_20261103/peaks/zhizhong.png"},{"name":"瑶圃峰","src":"../../../textures/sect_overview/repaint_20261103/peaks/yaopu.png"}];
+const viewer=document.getElementById('viewer'),large=document.getElementById('large'),title=document.getElementById('viewerTitle');let index=0;
+function show(n){index=(n+items.length)%items.length;large.src=items[index].src;large.alt=items[index].name;title.textContent=items[index].name;if(!viewer.open)viewer.showModal()}
+document.querySelectorAll('[data-index]').forEach(b=>b.addEventListener('click',()=>show(Number(b.dataset.index))));
+document.getElementById('prev').addEventListener('click',()=>show(index-1));document.getElementById('next').addEventListener('click',()=>show(index+1));document.getElementById('close').addEventListener('click',()=>viewer.close());
+document.addEventListener('keydown',e=>{if(!viewer.open)return;if(e.key==='ArrowLeft'){e.preventDefault();show(index-1)}if(e.key==='ArrowRight'){e.preventDefault();show(index+1)}});
+viewer.addEventListener('click',e=>{if(e.target===viewer)viewer.close()});
+</script></html>

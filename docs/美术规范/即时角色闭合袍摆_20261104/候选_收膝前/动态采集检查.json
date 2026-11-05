@@ -1,0 +1,86 @@
+{
+  "rendered_frames": 360,
+  "simulated_seconds": 12,
+  "detail_native_scale": 4,
+  "facing_correct_all_frames": true,
+  "paused_bones_equal_12_frames": true,
+  "paused_native_images_equal_12_frames": true,
+  "garment_start": {
+    "acceleration_drive": 2.85003643035889,
+    "angles": [
+      0.0386151447892189,
+      0.0531246140599251,
+      0.0635456368327141
+    ],
+    "angular_velocity": [
+      1.85832464694977,
+      2.58790874481201,
+      3.10407757759094
+    ],
+    "continuous_mesh": true,
+    "ground_shift": -2.51924686431885,
+    "lowest_cloth_y": -0.549918293952942,
+    "mode": "closed_robe",
+    "outline_samples": 75,
+    "simulation_steps": 19,
+    "travel_drag": 1.00001278258207
+  },
+  "garment_stop": {
+    "acceleration_drive": -2.85003643035889,
+    "angles": [
+      -0.00470013590529561,
+      -0.0572831034660339,
+      -0.0752048566937447
+    ],
+    "angular_velocity": [
+      -1.61278128623962,
+      -2.45438504219055,
+      -3.25045323371887
+    ],
+    "continuous_mesh": true,
+    "ground_shift": -3.39620332717895,
+    "lowest_cloth_y": -0.5499147772789,
+    "mode": "closed_robe",
+    "outline_samples": 75,
+    "simulation_steps": 229,
+    "travel_drag": 0.0
+  },
+  "garment_settle": {
+    "acceleration_drive": 0.0,
+    "angles": [
+      -1.77207521660089e-12,
+      -1.07031423723924e-08,
+      -1.17912759378669e-06
+    ],
+    "angular_velocity": [
+      -1.66737960244356e-11,
+      -4.9356859932459e-08,
+      5.22586105944356e-06
+    ],
+    "continuous_mesh": true,
+    "ground_shift": -0.896568405628204,
+    "lowest_cloth_y": -0.549919307231903,
+    "mode": "closed_robe",
+    "outline_samples": 75,
+    "simulation_steps": 348,
+    "travel_drag": 0.0
+  },
+  "artifacts": {
+    "关键帧总览.png": 331706,
+    "后退同相位前后对照.png": 73114,
+    "当前闭袍原生四倍近景_12秒.gif": 1626655,
+    "急停回落与暂停_中间相位.png": 331484,
+    "石坪实际窗口_12秒.gif": 28023328,
+    "石坪实际窗口_后退.png": 999494,
+    "石坪实际窗口_急停.png": 908816,
+    "起步转向后退出掌_中间相位.png": 437747,
+    "近景_出掌.png": 41483,
+    "近景_后退.png": 38784,
+    "近景_回落.png": 39665,
+    "近景_急停.png": 39857,
+    "近景_起步.png": 39808,
+    "近景_转向.png": 41355,
+    "近景_静止.png": 39797,
+    "闭袍与旧版同输入对照_12秒.gif": 2904252
+  }
+}

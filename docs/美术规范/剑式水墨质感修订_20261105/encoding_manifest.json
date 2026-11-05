@@ -1,0 +1,36 @@
+{
+  "source": "E:\\stacklands\\docs\\美术规范\\剑式水墨质感修订_20261105\\capture_manifest.json",
+  "source_frames": 102,
+  "frames_dir": "E:\\stacklands\\output\\sword_ink_round_final_20261105",
+  "native_size": [
+    1280,
+    720
+  ],
+  "stages_only": false,
+  "total_milliseconds": 3400,
+  "requested_crop": [
+    430,
+    212,
+    1080,
+    664
+  ],
+  "closeup_crop": [
+    430,
+    209,
+    1080,
+    664
+  ],
+  "closeup_resize": false,
+  "full_size": [
+    960,
+    540
+  ],
+  "grid": "native crops with labels, no redrawing",
+  "palette": "constant 224 colors sampled across the real sequence, dithering disabled",
+  "outputs": [
+    "combo_closeup.gif",
+    "combo_full.gif",
+    "stages_grid.png",
+    "stages_geometry_grid.png"
+  ]
+}

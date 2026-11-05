@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-05",
+  "status": "generated_and_installed",
+  "tool": "built-in image_gen.imagegen",
+  "use_case": "style-transfer",
+  "references": [
+    {
+      "path": "E:/stacklands/textures/baishi/lecture_courtyard_v1.png",
+      "role": "Edit target: preserve court, teaching platform, desk, seated mats, inspection stone and exact camera"
+    },
+    {
+      "path": "E:/stacklands/textures/baishi/baishi_city_inner_overview_v7_urban_style.png",
+      "role": "New Baishi urban brick-and-timber architecture and Yuxu-compatible matte palette"
+    }
+  ],
+  "prompt": "Use case: style-transfer.\nAsset: 16:9 opaque game background of the existing Baishi city magistrate's lecture courtyard.\nEDIT IMAGE 1. Keep its exact camera, framing, courtyard layout, stone teaching platform, supported low steps, single wooden lecture desk and closed book, cushion rows, inspection stone on a small side table, left colonnade and old tree positions. Keep the foreground unobstructed. No new props or rearranging functions.\nRepaint the scene in the exact cool desaturated matte gouache/watercolor color relationships and broad quiet brush shapes of IMAGE 2, the newly approved Baishi CITY architecture. Replace the old yellow/sepia fine-etched illustration look. Blue-grey roof planes, grey stone paving, muted olive foliage, low-chroma grey-brown exposed timber, subdued ivory-grey stone and walls.\nBaishi must have its own urban brick-and-timber identity, different from Yuxu sect palaces: use cool grey-brick masonry on the existing rear wall and pillars, restrained stepped firebreak gables where the existing side buildings meet, straight orderly dark timber window bays and a practical city covered gallery. Change surface and architectural vocabulary while preserving the precise original court geometry. Do NOT turn it into an open mountaintop temple, add mountains inside the courtyard, replace the lecture platform with an altar or copy Yuxu halls.\nBroad clean matte pigment, subdued daylight, legible architectural supports and stairs, no dense fine grain, no roof-tile etching, no black cartoon outlines, no white or gold stipple/flecks on leaves or masonry. No edge blur, vignette, white-faded corners, bloom or glowing objects. Four edges fully painted and clear. No people, animals, letters, readable text, calligraphy, signs, labels, paper tags, HUD or watermarks.",
+  "workspace_output": "textures/baishi/lecture_courtyard_v2_urban_style.png",
+  "generated_source": "E:/tmp/CodexData/generated_images/01a1a0bb-bca0-7622-87eb-903f01e63b98/exec-eca58543-f293-4386-b380-88a2dc6ebc32.png"
+}

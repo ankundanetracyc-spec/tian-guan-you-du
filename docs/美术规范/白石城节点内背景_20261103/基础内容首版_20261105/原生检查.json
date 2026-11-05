@@ -1,0 +1,250 @@
+{
+	"checks": [
+		"使用隔离存档",
+		"正式白石入口显示总览",
+		"保存 city_overview",
+		"点选可见控件",
+		"街区位置 south",
+		"街区实图 south",
+		"保存 street_south",
+		"点选可见控件",
+		"进入实际场所 inn",
+		"场所实图 inn",
+		"保存 inn",
+		"点选可见控件",
+		"从公共角色列表打开人物菜单",
+		"人物菜单提供本地问答",
+		"保存 npc_menu",
+		"点选可见控件",
+		"本地问答使用共用对白",
+		"保存 npc_dialogue",
+		"点选可见控件",
+		"点选可见控件",
+		"原NPC交易界面接通",
+		"保存 npc_trade",
+		"交易后保留所在内景",
+		"点选可见控件",
+		"街区位置 east",
+		"街区实图 east",
+		"保存 street_east",
+		"点选可见控件",
+		"进入实际场所 market",
+		"场所实图 market",
+		"保存 market",
+		"点选可见控件",
+		"进入实际场所 bookshop",
+		"场所实图 bookshop",
+		"保存 bookshop",
+		"点选可见控件",
+		"书坊只读书目打开",
+		"保存 book_catalog",
+		"浏览书目不发首卷或学习权限",
+		"查看书目不推进时间",
+		"点选可见控件",
+		"街区位置 fuqian",
+		"街区实图 fuqian",
+		"保存 street_fuqian",
+		"点选可见控件",
+		"进入实际场所 notice_hall",
+		"场所实图 notice_hall",
+		"保存 notice_hall",
+		"三类告示入口",
+		"点选可见控件",
+		"读取实际告示 notice_lecture",
+		"保存 notice_reading",
+		"点选可见控件",
+		"读取实际告示 notice_city",
+		"点选可见控件",
+		"读取实际告示 notice_admission",
+		"点选可见控件",
+		"进入实际场所 city_office",
+		"场所实图 city_office",
+		"保存 city_office",
+		"点选可见控件",
+		"进入实际场所 lecture",
+		"场所实图 lecture",
+		"保存 lecture",
+		"随机主持保留前院实际位置",
+		"点选可见控件",
+		"可见返回从前院到前厅",
+		"点选可见控件",
+		"进入实际场所 lecture_study",
+		"场所实图 lecture_study",
+		"保存 lecture_study",
+		"未验灵选书时不提供研习操作",
+		"本期支持条件未满足时不提供暂歇",
+		"前院主持不会复制到研习室远程交谈",
+		"点选可见控件",
+		"街区位置 west",
+		"街区实图 west",
+		"保存 street_west",
+		"已有世界NPC提供本地问答",
+		"已有NPC交易入口可达",
+		"点选可见控件",
+		"街区位置 fuqian",
+		"街区实图 fuqian",
+		"保存 street_fuqian",
+		"点选可见控件",
+		"保存 notice_1280",
+		"点选可见控件",
+		"小窗口告示仍能实际点选",
+		"逐层返回到世界"
+	],
+	"date": "2026-11-05",
+	"result": "pass",
+	"scope": "Full MainScene, real world NPC roster, viewport mouse events and shared return routing; isolated save.",
+	"screenshots": [
+		{
+			"id": "city_overview",
+			"path": "res://docs/美术规范/白石城节点内背景_20261103/基础内容首版_20261105/city_overview.png",
+			"size": [
+				1920,
+				1080
+			]
+		},
+		{
+			"id": "street_south",
+			"path": "res://docs/美术规范/白石城节点内背景_20261103/基础内容首版_20261105/street_south.png",
+			"size": [
+				1920,
+				1080
+			]
+		},
+		{
+			"id": "inn",
+			"path": "res://docs/美术规范/白石城节点内背景_20261103/基础内容首版_20261105/inn.png",
+			"size": [
+				1920,
+				1080
+			]
+		},
+		{
+			"id": "npc_menu",
+			"path": "res://docs/美术规范/白石城节点内背景_20261103/基础内容首版_20261105/npc_menu.png",
+			"size": [
+				1920,
+				1080
+			]
+		},
+		{
+			"id": "npc_dialogue",
+			"path": "res://docs/美术规范/白石城节点内背景_20261103/基础内容首版_20261105/npc_dialogue.png",
+			"size": [
+				1920,
+				1080
+			]
+		},
+		{
+			"id": "npc_trade",
+			"path": "res://docs/美术规范/白石城节点内背景_20261103/基础内容首版_20261105/npc_trade.png",
+			"size": [
+				1920,
+				1080
+			]
+		},
+		{
+			"id": "street_east",
+			"path": "res://docs/美术规范/白石城节点内背景_20261103/基础内容首版_20261105/street_east.png",
+			"size": [
+				1920,
+				1080
+			]
+		},
+		{
+			"id": "market",
+			"path": "res://docs/美术规范/白石城节点内背景_20261103/基础内容首版_20261105/market.png",
+			"size": [
+				1920,
+				1080
+			]
+		},
+		{
+			"id": "bookshop",
+			"path": "res://docs/美术规范/白石城节点内背景_20261103/基础内容首版_20261105/bookshop.png",
+			"size": [
+				1920,
+				1080
+			]
+		},
+		{
+			"id": "book_catalog",
+			"path": "res://docs/美术规范/白石城节点内背景_20261103/基础内容首版_20261105/book_catalog.png",
+			"size": [
+				1920,
+				1080
+			]
+		},
+		{
+			"id": "street_fuqian",
+			"path": "res://docs/美术规范/白石城节点内背景_20261103/基础内容首版_20261105/street_fuqian.png",
+			"size": [
+				1920,
+				1080
+			]
+		},
+		{
+			"id": "notice_hall",
+			"path": "res://docs/美术规范/白石城节点内背景_20261103/基础内容首版_20261105/notice_hall.png",
+			"size": [
+				1920,
+				1080
+			]
+		},
+		{
+			"id": "notice_reading",
+			"path": "res://docs/美术规范/白石城节点内背景_20261103/基础内容首版_20261105/notice_reading.png",
+			"size": [
+				1920,
+				1080
+			]
+		},
+		{
+			"id": "city_office",
+			"path": "res://docs/美术规范/白石城节点内背景_20261103/基础内容首版_20261105/city_office.png",
+			"size": [
+				1920,
+				1080
+			]
+		},
+		{
+			"id": "lecture",
+			"path": "res://docs/美术规范/白石城节点内背景_20261103/基础内容首版_20261105/lecture.png",
+			"size": [
+				1920,
+				1080
+			]
+		},
+		{
+			"id": "lecture_study",
+			"path": "res://docs/美术规范/白石城节点内背景_20261103/基础内容首版_20261105/lecture_study.png",
+			"size": [
+				1920,
+				1080
+			]
+		},
+		{
+			"id": "street_west",
+			"path": "res://docs/美术规范/白石城节点内背景_20261103/基础内容首版_20261105/street_west.png",
+			"size": [
+				1920,
+				1080
+			]
+		},
+		{
+			"id": "street_fuqian",
+			"path": "res://docs/美术规范/白石城节点内背景_20261103/基础内容首版_20261105/street_fuqian.png",
+			"size": [
+				1920,
+				1080
+			]
+		},
+		{
+			"id": "notice_1280",
+			"path": "res://docs/美术规范/白石城节点内背景_20261103/基础内容首版_20261105/notice_1280.png",
+			"size": [
+				1280,
+				720
+			]
+		}
+	]
+}

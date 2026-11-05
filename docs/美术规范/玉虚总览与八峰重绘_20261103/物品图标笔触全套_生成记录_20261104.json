@@ -1,0 +1,145 @@
+{
+  "date": "2026-11-04",
+  "authorization": "用户认可和光峰单张试稿并要求继续",
+  "status": "总览与其余七峰已重绘，连同认可和光峰共九张候选；未替换游戏原图",
+  "accepted_master": "textures/sect_overview/repaint_20261103/local_20261104/heguang_item_style_v1.png",
+  "source_directory": "textures/sect_overview/repaint_20261103/local_20261104/",
+  "output_directory": "textures/sect_overview/repaint_20261103/item_style_20261104/",
+  "common_prompt": "ONE full landscape Chinese cultivation RPG background, 1672x941, opaque.\nREFERENCE ROLES: Image 1 is the edit target for COMPOSITION, CAMERA, SUBJECTS AND PHYSICAL CONNECTIONS ONLY. Image 2 is the USER ACCEPTED HEGUANG STYLE MASTER: use its SAME matte painted materials, large soft pigment planes, local-color shadows, brush scale, restrained gray-brown contours, muted color balance and daylight. Image 3 is the project's actual porcelain-bottle inventory icon: support for hand-painted layered watercolor/gouache volume ONLY; do not copy the bottle object, its dark preview background or transparency into the scene.\nDo a full STYLE-TRANSFER REPAINT of Image 1, not a blur/filter or small local touch-up. Keep its scene layout and all main architectural/terrain anchors unchanged, but replace fine patterned texture with the broad hand-painted look of Image 2.\n\nZERO SPECKLE TEXTURE: remove the dense white/cream/yellow dot pattern on rocks and foliage. No tiny bright leaf tips, white specks, lichen-dot decoration, snowy flecks, glitter, stippling, high-frequency grain, dense scratches or sparkling points. Rock faces have a few large gray-blue light/mid/shadow planes with broad directional strokes, not hundreds of contrasting spots. Tree crowns are coherent olive-green leaf masses with broad painted patches, not bead-like clusters with tiny bright centers. Remove scattered ornamental white/pink blossom speckling and replace with simple low-contrast foliage. Where actual herb flowers are part of the subject, paint a few coherent natural petal masses, not a field of tiny white flecks.\nRoofs keep local blue-gray color and gentle brush planes; simplify repetitive tiny tile lines. Stone paving keeps its main joints and direction but becomes quiet broad pigment planes rather than fine high-contrast grid. Wood/metal have soft LOCAL-COLOR volume; bronze and gold fittings muted and matte, no gleaming outlined rims or mirror hotspots. Water uses coherent low-contrast blue-gray strokes and continuous restrained foam ribbons rather than scattered white dots.\nNot flat vector, cel cartoon, plastic 3D, photograph, heavy oil impasto, detailed pen engraving or dirty paper texture. Maintain real material identities, don't turn all surfaces to ceramic or iron. SAME gray-blue/slate, light warm stone, olive greenery and understated ochre fittings as accepted Image 2, no individual warm/yellow/blue/purple grading, no more gold. Broad diffuse light and comfortable midtone contrast.\n\nPreserve existing local ground, entrance, forecourt, stairs, approach and terrain relationships. Don't add/delete/move halls, roads, rivers, platform entrances or stairs except surface simplification. Columns still rest on floors, roofs rest on beams, stairs join visible landings and doors, level work yards stay level. Don't invent roof bridges or create eave/stair intersections. Same local cropping and footprint as Image 1. All four borders FULLY PAINTED AND CRISP, no white fade, feathering, vignette, tilt-shift or depth-of-field blur; painted softness is brushwork, not focus blur.\nNo people, silhouettes, humanoid statues, text, readable signs/calligraphy, UI, labels, border, watermark or magical glows. Exactly ONE image.\nSCENE-SPECIFIC INVARIANTS:\n",
+  "tasks": [
+    {
+      "id": "overview",
+      "name": "八峰总览",
+      "spec": "This target is the BROAD EIGHT-PEAK DOMAIN OVERVIEW, not a close courtyard. Preserve the large mountain ranges continuing off-frame, open river valley at left, sweeping pale main road along the mountain contour, real bridge location, palace ridge upper middle, library roofs left, practice terrace right and medicinal terraces lower-right. Maintain immense scale and partially concealed/out-of-frame palace domains. Overview remains simplified with generalized roof bands, no added tiny architectural detail, no eight isolated diorama platforms, no cropping into one little campus. Preserve main road geometry and valley flow; do not rebuild their connections."
+    },
+    {
+      "id": "guanfu",
+      "name": "观复峰",
+      "spec": "Keep this LOCAL teaching/residence courtyard: teaching hall upper-right with broad short stair joining visible court, cropped residence wing at left, approach path entering lower-left, small practice corner right, glimpse of water below lower-right. No full peak or distant roof city. Keep doors and stairs reachable on same ground. Eliminate ornamental flowering dots and use broad olive/bamboo forms."
+    },
+    {
+      "id": "zifu",
+      "name": "紫府峰",
+      "spec": "Keep the LOCAL governing/true-disciple forecourt: dignified main hall right, short central stair with two clear landings, quiet partial side residence at left and curving level approach around garden. Main hall and side wing remain separate with real path access. No entire palace city, purple lighting or extra gold. Repaint rock, paving and greenery quietly with broad icon-like pigment planes."
+    },
+    {
+      "id": "xuanlan",
+      "name": "玄览峰",
+      "spec": "Keep LOCAL scripture library entrance and reading gallery: multistory archive hall upper-right, its visible front door and straight broad short stair, open reading gallery partly cropped at left with book cabinets and tables, same connected stone court and approach from lower-middle. No new pagodas or whole peak. Books remain unlettered. Preserve stepped height and clear door access."
+    },
+    {
+      "id": "tianwen",
+      "name": "天问峰",
+      "spec": "Keep ONE LOCAL dueling/practice terrace with its round/concentric plain engraved paving, open path entering from left through clear balustrade opening, observation pavilion upper-left reached by proper short stairs and cropped resting hall right. No additional arenas, glowing runes, people or fights. Preserve continuous supported stone ground and the open terrace entry."
+    },
+    {
+      "id": "tiangong",
+      "name": "天工峰",
+      "spec": "Keep ONE LOCAL crafting yard: open alchemy hall left with bronze furnace and very small white steam ribbon, open refining bay right with forge/anvil and work tables, partly cropped near-left paper/craft veranda, same-level common stone yard and broad cart road from lower-right, short back pedestrian stairs. Cargo road remains free of stairs. Keep any furnace fire tiny and local, no overall red grade. No river or invented connecting bridge."
+    },
+    {
+      "id": "zhizhong",
+      "name": "执中峰",
+      "spec": "Keep LOCAL discipline hall forecourt: main hall upper-right, straight broad short stair with visible top/bottom landings, bronze bell pavilion left on same foreground court and partial archive gallery right. Path from left reaches court/pavilion/stair without obstruction. No dark/red theme or additional justice symbols, no bridges. Keep bell readable with matte bronze planes rather than shiny flecks."
+    },
+    {
+      "id": "yaopu",
+      "name": "瑶圃峰",
+      "spec": "Keep ONE LOCAL medicinal nursery section: open seedling/trellis gallery left, herb beds continuing off right, caretaker/store pavilion upper-middle with its short stairs and clear entrance, gently sloped service path from lower-left, narrow irrigation rill beside it flowing to lower-right lotus pond. Water remains beside the path and downhill, not under doors; retain actual garden steps and maintenance access. Herbs remain recognizable plants with broad grouped leaves/petals, no dense scattered white/pink flower dots or bright emerald/purple filter. No full mountain field district."
+    }
+  ],
+  "completed": [
+    "overview",
+    "heguang",
+    "guanfu",
+    "zifu",
+    "xuanlan",
+    "tianwen",
+    "tiangong",
+    "zhizhong",
+    "yaopu"
+  ],
+  "files": [
+    {
+      "id": "overview",
+      "path": "textures/sect_overview/repaint_20261103/item_style_20261104/overview.png",
+      "native_size": [
+        1672,
+        941
+      ],
+      "sha256": "662c824524ad7532d3e11165fe4ad157c870c7fd4637b42594ed0a1be3a21b4c"
+    },
+    {
+      "id": "heguang",
+      "path": "textures/sect_overview/repaint_20261103/item_style_20261104/heguang.png",
+      "native_size": [
+        1672,
+        941
+      ],
+      "sha256": "39bc529181425a90b98a53b7f1793f4051b737ee61e6fc487b6376a68cad9324"
+    },
+    {
+      "id": "guanfu",
+      "path": "textures/sect_overview/repaint_20261103/item_style_20261104/guanfu.png",
+      "native_size": [
+        1672,
+        941
+      ],
+      "sha256": "18f4db84fd9d5b203a4064a5001a7bd45b78d127ed5e9abf08c156dee26e8f44"
+    },
+    {
+      "id": "zifu",
+      "path": "textures/sect_overview/repaint_20261103/item_style_20261104/zifu.png",
+      "native_size": [
+        1672,
+        941
+      ],
+      "sha256": "5f96b41d023c37b0fc4efd51c657c037592cb0c4d675e8a444cb3a7d66529482"
+    },
+    {
+      "id": "xuanlan",
+      "path": "textures/sect_overview/repaint_20261103/item_style_20261104/xuanlan.png",
+      "native_size": [
+        1670,
+        941
+      ],
+      "sha256": "71647c9f13d1b417766101bde61b2c7a9639dcadf32a1d512ac032e85265767c"
+    },
+    {
+      "id": "tianwen",
+      "path": "textures/sect_overview/repaint_20261103/item_style_20261104/tianwen.png",
+      "native_size": [
+        1672,
+        941
+      ],
+      "sha256": "f1b1560ca65950e3b0d80f05d67b13009705bc386736019aec978f43ce3416ce"
+    },
+    {
+      "id": "tiangong",
+      "path": "textures/sect_overview/repaint_20261103/item_style_20261104/tiangong.png",
+      "native_size": [
+        1672,
+        941
+      ],
+      "sha256": "6445b4779cfee7b446cb5bbd6be3034f4fb7b0cc242808ad5a47421290056eec"
+    },
+    {
+      "id": "zhizhong",
+      "path": "textures/sect_overview/repaint_20261103/item_style_20261104/zhizhong.png",
+      "native_size": [
+        1672,
+        941
+      ],
+      "sha256": "152b92b5601a7f5496e095ce4bbd62a511d7967d44d5b102ceb7766b4698abde"
+    },
+    {
+      "id": "yaopu",
+      "path": "textures/sect_overview/repaint_20261103/item_style_20261104/yaopu.png",
+      "native_size": [
+        1672,
+        941
+      ],
+      "sha256": "eedb15b006939d5a230af7282c6de74485413322b509d5412f59d132cfffc785"
+    }
+  ]
+}

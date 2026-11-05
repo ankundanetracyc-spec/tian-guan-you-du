@@ -1,0 +1,11 @@
+# 外门宽袖素材提示与来源
+
+内置 imagegen 编辑生成，未用程序重绘。输入：`tools/action_battle_test/art/queue_yuxu_outer_v1/arm_relaxed_v19.png`（原位置与手部）及 `mods/appearance/ink_three_variants_20261004/male/clothing/05.png`（真实外门服装）。输出：`tools/action_battle_test/art/queue_yuxu_outer_wide_v2/arm_relaxed_v19.png`。原输出保留 `E:/tmp/CodexData/generated_images/01a1a0d4-ddd9-75c2-a465-d12127d14e93/exec-2d568e9d-5719-447d-9c87-8fb2b94328e8.png`。
+
+## 完整提示
+
+Use case precise-object-edit. Edit image1 narrow sleeve game texture into a genuinely wide flowing Hanfu robe sleeve; image2 provides the actual outer-disciple blue robe clothing design. Output exactly1024x1536 transparent PNG. Single complete bent arm sleeve plus SAME hand only, no body/head/legs. Keep image1 shoulder upper tip(404,358), anatomical shoulder pivot(425,435), elbow pivot(470,565), wrist(606,474), hand outline x608..695 y407..477 ALL in their original pixel positions. Do not recenter/rescale canvas or enlarge the anatomical arm. Critical CHANGE: remove the snug band clasping wrist; make an open wide hanging sleeve mouth, the hand emerging at the TOP of the opening. Mouth upper edge starts beside wrist(600,466), extends into a deep draped opening downward to about(650,685); show a narrow dark navy interior recess behind that hanging opening, and a flowing light ivory-edged rim, NOT a wrist bracelet. The broad slack blue fabric hangs from the bent forearm and elbow as a curved bag-like drape with lowest hem near y740 and x450..590, instead of hugging the forearm. Keep shoulder cap continuous and connected with solid fabric. The lower sleeve droop must be cloth hanging UNDER arm, not an enlarged muscular arm. Slate blue cloth, off-white flowing cloud motifs, dark navy edge, as image2. Broad 2D ink outlines and simple shaded folds, same clean game art as image1, readable at small scale; no photoreal microtexture. Preserve hand skin tone and fingers exactly. Sleeve may expand only downward around lower silhouette, retain shoulder upper and wrist positions so a new cloth mesh can bind. True transparent background outside entire sprite, no glow, no rectangle, no text, no extra parts.
+
+## 生成检查
+
+画布1024×1536、RGBA。新图已具有下垂开口与内暗面，肩顶、手部位置接近旧图。袖底实际超出提示中的740目标，需由新袖网格检查有效轮廓与垂坠比例，不能直接用旧窄袖UV裁切。

@@ -1,0 +1,81 @@
+{
+	"backward_stop_samples": {
+		"0.1": {
+			"front_tip_x": 14.3193511962891,
+			"rear_tip_x": 17.0566711425781,
+			"wind_load": -0.606521977391069
+		},
+		"0.2": {
+			"front_tip_x": 10.4940338134766,
+			"rear_tip_x": 12.8920593261719,
+			"wind_load": -0.367874175077216
+		},
+		"0.3": {
+			"front_tip_x": 6.27740478515625,
+			"rear_tip_x": 7.94886779785156,
+			"wind_load": -0.223126966100825
+		},
+		"0.6": {
+			"front_tip_x": 0.96038818359375,
+			"rear_tip_x": 0.96441650390625,
+			"wind_load": -0.0497863556795103
+		},
+		"1.0": {
+			"front_tip_x": 0.162506103515625,
+			"rear_tip_x": 0.223907470703125,
+			"wind_load": -0.00673785054720528
+		},
+		"2.0": {
+			"front_tip_x": 0.0010986328125,
+			"rear_tip_x": -0.000885009765625,
+			"wind_load": -0.0000453992798748283
+		}
+	},
+	"clock_reset": true,
+	"forward_stop_samples": {
+		"0.0": {
+			"front_tip_x": -4.92880249023438,
+			"rear_tip_x": -19.3822326660156,
+			"wind_load": 0.999999999986112
+		},
+		"0.1": {
+			"front_tip_x": -3.7401123046875,
+			"rear_tip_x": -16.8839416503906,
+			"wind_load": 0.60653065970421
+		},
+		"0.2": {
+			"front_tip_x": -2.67279052734375,
+			"rear_tip_x": -12.6671447753906,
+			"wind_load": 0.367879441166333
+		},
+		"0.3": {
+			"front_tip_x": -1.72381591796875,
+			"rear_tip_x": -7.8643798828125,
+			"wind_load": 0.223130160145331
+		},
+		"0.6": {
+			"front_tip_x": -0.36065673828125,
+			"rear_tip_x": -1.08218383789063,
+			"wind_load": 0.0497870683671726
+		},
+		"1.0": {
+			"front_tip_x": -0.037994384765625,
+			"rear_tip_x": -0.19525146484375,
+			"wind_load": 0.00673794699899191
+		}
+	},
+	"maximum_sampled_opaque_cloth_y": -7.02874612808228,
+	"noncloth_angle_error": 0.0,
+	"noncloth_position_error": 0.0,
+	"passed": true,
+	"pause_frozen": true,
+	"rear_trail_first_stopped_frame": 19.1597595214844,
+	"steady_backward_front_tip_x": 16.1466758728027,
+	"steady_backward_rear_tip_x": 19.2789138793945,
+	"steady_forward_front_tip_x": -4.93255360921224,
+	"steady_forward_rear_tip_x": -19.4056055704753,
+	"stopped_settled": true,
+	"teleport_reset": true,
+	"world_turn_angle_error": 0.0,
+	"world_turn_load_error": 0.0
+}

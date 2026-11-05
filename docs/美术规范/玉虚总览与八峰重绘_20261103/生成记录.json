@@ -1,0 +1,58 @@
+{
+  "started": "2026-11-03",
+  "continued": "2026-11-04",
+  "status": "原九张空间关系待修，另有和光峰局部修订样板；未接入游戏",
+  "master": "textures/sect_overview/repaint_20261103/yuxu_overview_v3.png",
+  "common_prompt": "One 1672x941 landscape environment illustration, Yuxu first-rank immortal sect. Supplied image is the EXACT color, light and brushwork master for this matching series. Retain its warm-neutral paper/stone, slate-blue-gray roofs and rocks, olive-green pines, ivory walls, graybrown contours, restrained gold, brightness and saturation. No new warm/cool grading, extra gold, purple/red lighting, or thematic tint. Clean hand-painted Chinese game-map style; readable forms and soft shading, no photo/3D/engraved microdetail.\n\nShow ONLY A PART of this individual peak's enormous domain, with no visible complete campus boundary. High steep oblique bird's-eye view. Immense connected mountain ridges continue outside all four borders, partially hiding long palace and gallery rooflines. Architecture enters from frame edges, travels along terraces, disappears behind a ridge and reappears deeper in the mountains; distant roofs merge into broad interwoven color bands instead of countable tiny houses. A few legible functional foreground fragments express this peak's role. Neither the total number of buildings nor the full institutional footprint can be counted. No enclosed miniature compound, one hall surrounded by a finite set of wings, garden-island diorama, or complete isolated pedestal. No ground-level view. Fine grand Daoist halls, long galleries, white stone and multi-eaved slate roofs, pines. Buildings belong to an old vast immortal sect, not peasant huts. Main visual anchors within x20–80%, y18–78%. All corners and borders fully painted, sharp and clear. No edge blur, vignette, feathering, white fades, DOF, or tilt-shift. Natural mountain occlusion instead of blurring. Small shaped cloud ribbons only in lower valleys, not concealing whole scene. No horizon/sky, no neon magic, readable writing, calligraphy, signage, UI, labels, frame, watermark, people/silhouettes or humanoid statues.\nSPECIFIC PEAK:\n",
+  "tasks": [
+    {
+      "id": "zifu",
+      "name": "紫府峰",
+      "spec": "Sect governing center, true disciples and elders' residences. Grand processional stone terraces, long monumental colonnades and governing palace roof-bands extend over overlapping high mountain ridges. One segment of majestic main hall upper-center is partly concealed by a nearer rocky pine shoulder; both its side wings continue out of view. Distant elder pavilions and elegant true-disciple garden terraces peek between mountain folds, roof-bands extend into side valleys and beyond frame, do not inventory individual little mansions. A foreground gallery roof is cropped across lower edge, emphasizing that viewer is inside a much larger palace domain. Ancient noble calm, same exact palette (no purple or extra gilding). Never show entire symmetrical closed imperial palace."
+    },
+    {
+      "id": "xuanlan",
+      "name": "玄览峰",
+      "spec": "Scriptures, archives, learning and inheritance. View one segment of an immense scholarly mountain precinct: long archive-gallery roofs weave along ridges and disappear behind cliffs, then reappear far away; a multistory scripture pavilion partly hidden at upper-right anchors the landscape. Some open foreground reading veranda fragments hint at wooden book cabinets and closed manuscript boxes, without any legible words. Reading court fragments and quiet pines on deep terraces between archival roof bands. Library domain clearly continues beyond frame and behind mountains, not a single library on one rock, not a countable row of separate pagodas. Quiet distinguished architecture, same exact palette."
+    },
+    {
+      "id": "tianwen",
+      "name": "天问峰",
+      "spec": "Cultivation practice, sparring and testing peak. A huge rugged mountain training domain, cropped portions of expansive pale-stone practice terraces follow irregular ridges out of frame; one partly visible round dueling dais central-right as anchor, with simple concentric engraved stone rings (not glowing spell runes). Other practice grounds appear as partial pale terrace strips behind rock shoulders and outside edges, never expose an enumerable set of three complete circles. Long observation galleries and pavilions appear intermittently along cliffs, bridges and stair paths disappear behind larger ridges and continue to remote practice terrain. More open stone and rugged mountains, fewer roof-bands than residential peaks, but same precise color values and painting style. Empty grounds, no fighters, weapon statues, dungeon gate, neon or explosions."
+    },
+    {
+      "id": "tiangong",
+      "name": "天工峰",
+      "spec": "Crafts: alchemy, refining, talismans and formations. Show a slice of enormous elegant craft-hall mountain domain, not an entire factory campus. Long covered work galleries and substantial halls follow stepped rock ledges, disappear behind mountain masses and continue far out of frame. One open alchemy-gallery fragment shows a bronze furnace and very faint smoke, another gallery hints at anvil/work tables, a near veranda suggests brushes, paper and tools without lettering; a small pale-stone formation-work court partly cropped/obscured, no giant glowing diagram. Long roof-bands and institutional spaces imply far more ateliers beyond view, no four neatly separated enumerated workshop boxes. Grandeur and practicality, not rustic smith village or industrial chimneys. Exact palette unchanged, no red forge lighting flooding the scene."
+    },
+    {
+      "id": "zhizhong",
+      "name": "执中峰",
+      "spec": "Sect discipline, law and internal adjudication. Partial view through solemn monumental mountain halls: a distant austere main hall roof partly hidden at ridge bend, broad pale-stone stair and forecourt only partly visible, long archive and hearing galleries flow across terraces out of the frame. Bronze bell pavilion glimpse at central-right as the existing distinguishing landmark; beyond it roofs and passageways disappear behind rocky pines into unseen mountain depths. Authoritative calm, disciplined formal architecture without enclosing a complete symmetric compound. Foreground roof cropped at a frame edge, further mountain folds obscure much of the institution. No prison torture, weapon statues, ominous red/black grade or invented justice symbols. Exact same master palette, not darker or colder."
+    },
+    {
+      "id": "yaopu",
+      "name": "瑶圃峰",
+      "spec": "Medicinal herbs, spirit plants, nurseries and husbandry. Partial view of an immense cultivated mountain domain: long curving herb-terrace color bands weave across slopes behind rocky ridges and out of frame, impossible to count total beds, no complete circular garden island. Foreground cut-off nursery galleries and bamboo plant trellises with muted herbs hint at cultivation work; elegant supporting halls and long storage galleries half-hidden among olive pines further up. A small partly visible blue-gray lotus pond or irrigation stream along lower-right continues beyond frame and waterfalls below rocky banks. Quiet husbandry garden glimpses can be empty, no need for animals or figures. Green growth stays within reference's olive palette; no bright emerald filter, purple flowers everywhere or luminous plants. Grand scale through landscape continuation, not tiny enumerated beds."
+    }
+  ],
+  "completed": [
+    "overview",
+    "heguang",
+    "guanfu",
+    "zifu",
+    "xuanlan",
+    "tianwen",
+    "tiangong",
+    "zhizhong",
+    "yaopu"
+  ],
+  "constraints": [
+    "庞大山域的局部截景，不能像沙盘一样一眼数完",
+    "色调固定同一母参考",
+    "四周清晰，无虚化",
+    "总览比峰内更概括",
+    "无人物、文字、UI"
+  ],
+  "overview": "textures/sect_overview/repaint_20261103/yuxu_overview_v3.png"
+}

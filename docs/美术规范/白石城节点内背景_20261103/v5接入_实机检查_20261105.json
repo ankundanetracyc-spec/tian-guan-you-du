@@ -1,0 +1,70 @@
+{
+  "checks": [
+    "隔离存档目录",
+    "实际序章入城入口可调用",
+    "正式地点进入显示白石总览",
+    "白石实际加载v5",
+    "四片街区标签",
+    "纸签同源 District_south",
+    "纸签同源 District_east",
+    "纸签同源 District_fuqian",
+    "纸签同源 District_west",
+    "正式HUD仍显示",
+    "保存 白石城v5_总览实机_20261105.png",
+    "实际鼠标输入打开府前街",
+    "府前街沿用三处既有入口",
+    "保存 白石城v5_府前街实机_20261105.png",
+    "鼠标进入城守府讲法前院",
+    "讲法前院保留独立背景",
+    "保存 白石城v5_城守府讲法实机_20261105.png",
+    "可见返回先到府前街",
+    "共用返回可用",
+    "共用返回从府前街到白石总览",
+    "东市保留坊市入口",
+    "东市保留书坊入口",
+    "南街保留客栈入口",
+    "保存 白石城v5_1280窗口实机_20261105.png",
+    "小窗口研习入口仍可点选",
+    "总览返回世界地图",
+    "从地图再次入城仍显示v5总览"
+  ],
+  "date": "2026-11-05",
+  "result": "pass",
+  "scope": "Full MainScene and native HUD, isolated save; viewport mouse input and shared back routing; no screenshot compositing",
+  "screenshots": [
+    {
+      "path": "docs/美术规范/白石城节点内背景_20261103/白石城v5_总览实机_20261105.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "70f0557d6a7c1ff7537ca13b98bafe69e1a5bf68c313d566a112b9eb6e43b0bc"
+    },
+    {
+      "path": "docs/美术规范/白石城节点内背景_20261103/白石城v5_府前街实机_20261105.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "fcdc37c4bbe8d1d239aaa5e360abf02e3e4a575709fd82baae41d2bba443d064"
+    },
+    {
+      "path": "docs/美术规范/白石城节点内背景_20261103/白石城v5_城守府讲法实机_20261105.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "3e29cf8d6de228d52637c8acf37e7fd6a91c50b030faca6850e90428dae58cf3"
+    },
+    {
+      "path": "docs/美术规范/白石城节点内背景_20261103/白石城v5_1280窗口实机_20261105.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "17848d315a44769b2e6b36471015d5b22384937d3a7e4a2e0780fdfcdaeca6a4"
+    }
+  ],
+  "runtime_log": "tmp/baishi_city_v5_capture_20261105/stdout_final.log",
+  "warnings": "Existing resource UID fallback in 卸力.tres; exit ObjectDB leak warning. No script or runtime errors in the final capture."
+}

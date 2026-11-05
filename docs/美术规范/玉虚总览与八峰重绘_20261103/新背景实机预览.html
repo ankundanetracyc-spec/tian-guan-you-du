@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>玉虚仙宗 · 新背景实机</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#eae7dd;color:#30392e;font-family:system-ui,"Microsoft YaHei",sans-serif}header,main,footer{max-width:1800px;margin:auto}
+header{padding:28px 3vw 22px}h1{font-size:26px;font-weight:600;margin:0 0 10px}header p{color:#5b6556;line-height:1.8;margin:0}
+.toolbar{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:18px}.toolbar button,.viewerbar button{font:inherit;background:#f4f2e8;color:#30392e;border:1px solid #a7af9b;border-radius:4px;padding:8px 14px;cursor:pointer}.toolbar button[aria-pressed=true]{background:#d3dcc7;border-color:#748865}button:focus-visible{outline:3px solid #758b60;outline-offset:2px}#mode{font-size:14px;color:#5b6556}
+main{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;padding:0 3vw 30px}figure{margin:0;background:#f6f4eb;border:1px solid #c9c8b8;border-radius:5px;overflow:hidden}figure.overview{grid-column:1/-1}
+figure>button{display:block;width:100%;padding:0;border:0;cursor:zoom-in;background:#dedfd3}figure img{display:block;width:100%;aspect-ratio:1672/941;object-fit:contain}figcaption{padding:12px 16px 15px}h2{font-size:18px;font-weight:600;margin:0 0 5px}figcaption p{font-size:14px;color:#606954;margin:0;line-height:1.6}
+footer{padding:0 3vw 25px;font-size:13px;color:#606954}
+dialog{padding:0;border:1px solid #8b9582;background:#eae7dd;color:#30392e;max-width:97vw;width:1700px;max-height:97vh}dialog::backdrop{background:rgba(22,28,23,.88)}.viewerbar{display:flex;align-items:center;gap:8px;padding:10px 14px;flex-wrap:wrap}.viewerbar strong{margin-right:auto;font-size:16px}.viewerbar button{padding:6px 11px}#large{display:block;width:100%;max-height:84vh;object-fit:contain}
+@media(max-width:760px){main{grid-template-columns:1fr;gap:18px}figure.overview{grid-column:auto}h1{font-size:22px}}
+</style></head>
+<body>
+<header><h1>玉虚仙宗 · 新背景实机</h1><p>新总览与八峰内景均已接入，八峰标签使用大世界同一张纸签素材。<br>点击放大，左右方向键切换。</p></header>
+<main><figure class="overview"><button type="button" data-index="0" aria-label="放大玉虚仙宗 · 八峰总览"><img src="新总览与纸签实机_20261104.png" alt="玉虚仙宗 · 八峰总览" loading="eager"></button><figcaption><h2>玉虚仙宗 · 八峰总览</h2><p>新总览与大世界同款纸签</p></figcaption></figure>
+<figure><button type="button" data-index="1" aria-label="放大和光峰"><img src="内景实机_heguang_20261104.png" alt="和光峰" loading="eager"></button><figcaption><h2>和光峰</h2><p>庶务工作坪</p></figcaption></figure>
+<figure><button type="button" data-index="2" aria-label="放大观复峰"><img src="内景实机_guanfu_20261104.png" alt="观复峰" loading="eager"></button><figcaption><h2>观复峰</h2><p>临水住居与授业亭</p></figcaption></figure>
+<figure><button type="button" data-index="3" aria-label="放大紫府峰"><img src="内景实机_zifu_20261104.png" alt="紫府峰" loading="lazy"></button><figcaption><h2>紫府峰</h2><p>宗门中枢与登殿长阶</p></figcaption></figure>
+<figure><button type="button" data-index="4" aria-label="放大玄览峰"><img src="内景实机_xuanlan_20261104.png" alt="玄览峰" loading="lazy"></button><figcaption><h2>玄览峰</h2><p>贴崖书阁与研读廊</p></figcaption></figure>
+<figure><button type="button" data-index="5" aria-label="放大天问峰"><img src="内景实机_tianwen_20261104.png" alt="天问峰" loading="lazy"></button><figcaption><h2>天问峰</h2><p>露天演法台</p></figcaption></figure>
+<figure><button type="button" data-index="6" aria-label="放大天工峰"><img src="内景实机_tiangong_20261104.png" alt="天工峰" loading="lazy"></button><figcaption><h2>天工峰</h2><p>错层工坊</p></figcaption></figure>
+<figure><button type="button" data-index="7" aria-label="放大执中峰"><img src="内景实机_zhizhong_20261104.png" alt="执中峰" loading="lazy"></button><figcaption><h2>执中峰</h2><p>钟亭与戒律殿</p></figcaption></figure>
+<figure><button type="button" data-index="8" aria-label="放大瑶圃峰"><img src="内景实机_yaopu_20261104.png" alt="瑶圃峰" loading="lazy"></button><figcaption><h2>瑶圃峰</h2><p>药田、水渠与荷池</p></figcaption></figure></main>
+<footer>2026-11-04 · 1920×1080 · 宗门场景独立运行截图</footer>
+<dialog id="viewer" aria-labelledby="viewerTitle"><div class="viewerbar"><strong id="viewerTitle"></strong><button type="button" id="prev">上一张</button><button type="button" id="next">下一张</button><button type="button" id="close">关闭</button></div><img id="large" alt=""></dialog>
+<script>
+const items=[{"id":"overview","name":"玉虚仙宗 · 八峰总览","note":"新总览与大世界同款纸签","image":"新总览与纸签实机_20261104.png"},{"id":"heguang","name":"和光峰","note":"庶务工作坪","image":"内景实机_heguang_20261104.png"},{"id":"guanfu","name":"观复峰","note":"临水住居与授业亭","image":"内景实机_guanfu_20261104.png"},{"id":"zifu","name":"紫府峰","note":"宗门中枢与登殿长阶","image":"内景实机_zifu_20261104.png"},{"id":"xuanlan","name":"玄览峰","note":"贴崖书阁与研读廊","image":"内景实机_xuanlan_20261104.png"},{"id":"tianwen","name":"天问峰","note":"露天演法台","image":"内景实机_tianwen_20261104.png"},{"id":"tiangong","name":"天工峰","note":"错层工坊","image":"内景实机_tiangong_20261104.png"},{"id":"zhizhong","name":"执中峰","note":"钟亭与戒律殿","image":"内景实机_zhizhong_20261104.png"},{"id":"yaopu","name":"瑶圃峰","note":"药田、水渠与荷池","image":"内景实机_yaopu_20261104.png"}];
+const viewer=document.getElementById('viewer'),large=document.getElementById('large'),title=document.getElementById('viewerTitle');let index=0;
+function show(n){index=(n+items.length)%items.length;large.src=items[index].image;large.alt=items[index].name;title.textContent=items[index].name;if(!viewer.open)viewer.showModal()}
+document.querySelectorAll('[data-index]').forEach(b=>b.addEventListener('click',()=>show(Number(b.dataset.index))));
+document.getElementById('prev').addEventListener('click',()=>show(index-1));document.getElementById('next').addEventListener('click',()=>show(index+1));document.getElementById('close').addEventListener('click',()=>viewer.close());
+document.addEventListener('keydown',e=>{if(!viewer.open)return;if(e.key==='ArrowLeft'){e.preventDefault();show(index-1)}if(e.key==='ArrowRight'){e.preventDefault();show(index+1)}});viewer.addEventListener('click',e=>{if(e.target===viewer)viewer.close()});
+</script></body></html>

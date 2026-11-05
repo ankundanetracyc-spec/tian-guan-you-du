@@ -1,0 +1,911 @@
+{
+  "example": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\Mod\\modFQA\\MOD模板例子\\制作“静态和动态”立绘例子\\ModProject",
+  "parts": {
+    "Body": {
+      "size": [
+        532,
+        718
+      ],
+      "bbox": [
+        0,
+        0,
+        532,
+        718
+      ],
+      "nontransparent": 236582,
+      "partial_alpha": 32170,
+      "alpha_gt240": 216191,
+      "rgb_channel_difference_max": 0,
+      "sprite_local_position": [
+        -0.22000027,
+        3.59,
+        0.0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "pixels_per_unit": 100.0,
+      "png_path": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\Mod\\modFQA\\MOD模板例子\\制作“静态和动态”立绘例子\\ModProject\\ModRes\\ResBuildABProject\\Assets\\立绘资源\\Portrait（静态立绘）\\Woman\\Body（yifu）\\88888101.png",
+      "prefab_path": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\Mod\\modFQA\\MOD模板例子\\制作“静态和动态”立绘例子\\ModProject\\ModRes\\ResBuildABProject\\Assets\\Resources\\Game\\Portrait\\Woman\\Body\\88888101.prefab",
+      "sha256": "d4b8ad2a7c01fec77f5278d707136a307c7d22553615a841581b3ee527b3cfe7"
+    },
+    "Head": {
+      "size": [
+        136,
+        171
+      ],
+      "bbox": [
+        0,
+        0,
+        136,
+        171
+      ],
+      "nontransparent": 15789,
+      "partial_alpha": 753,
+      "alpha_gt240": 15138,
+      "rgb_channel_difference_max": 0,
+      "sprite_local_position": [
+        -0.009999275,
+        7.515,
+        0.0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "pixels_per_unit": 100.0,
+      "png_path": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\Mod\\modFQA\\MOD模板例子\\制作“静态和动态”立绘例子\\ModProject\\ModRes\\ResBuildABProject\\Assets\\立绘资源\\Portrait（静态立绘）\\Woman\\Head（lian）\\88888101.png",
+      "prefab_path": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\Mod\\modFQA\\MOD模板例子\\制作“静态和动态”立绘例子\\ModProject\\ModRes\\ResBuildABProject\\Assets\\Resources\\Game\\Portrait\\Woman\\Head\\88888101.prefab",
+      "sha256": "e37f713d7f374f5688a53babf869c32726515d18b8ba7a57acb957fbefb1ae81"
+    },
+    "Hair": {
+      "size": [
+        166,
+        71
+      ],
+      "bbox": [
+        0,
+        0,
+        166,
+        71
+      ],
+      "nontransparent": 4507,
+      "partial_alpha": 3735,
+      "alpha_gt240": 3544,
+      "rgb_channel_difference_max": 0,
+      "sprite_local_position": [
+        -0.009999275,
+        8.505,
+        0.0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "pixels_per_unit": 100.0,
+      "png_path": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\Mod\\modFQA\\MOD模板例子\\制作“静态和动态”立绘例子\\ModProject\\ModRes\\ResBuildABProject\\Assets\\立绘资源\\Portrait（静态立绘）\\Woman\\Hair_（toufahou）\\88888101.png",
+      "prefab_path": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\Mod\\modFQA\\MOD模板例子\\制作“静态和动态”立绘例子\\ModProject\\ModRes\\ResBuildABProject\\Assets\\Resources\\Game\\Portrait\\Woman\\Hair\\88888101.prefab",
+      "sha256": "abf0524e9a97625be1d96b86b44eec56b4942cdb1b29df0876bf25392d498912"
+    },
+    "HairFront": {
+      "size": [
+        150,
+        118
+      ],
+      "bbox": [
+        0,
+        0,
+        150,
+        118
+      ],
+      "nontransparent": 8778,
+      "partial_alpha": 1620,
+      "alpha_gt240": 7583,
+      "rgb_channel_difference_max": 0,
+      "sprite_local_position": [
+        -0.009999275,
+        7.99,
+        0.0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "pixels_per_unit": 100.0,
+      "png_path": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\Mod\\modFQA\\MOD模板例子\\制作“静态和动态”立绘例子\\ModProject\\ModRes\\ResBuildABProject\\Assets\\立绘资源\\Portrait（静态立绘）\\Woman\\HairFront（toufaqian）\\88888101.png",
+      "prefab_path": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\Mod\\modFQA\\MOD模板例子\\制作“静态和动态”立绘例子\\ModProject\\ModRes\\ResBuildABProject\\Assets\\Resources\\Game\\Portrait\\Woman\\HairFront\\88888101.prefab",
+      "sha256": "f47f16cd15c834c2f02d4e77204ebb155b4f4cd20071cde426a47a8859f5a195"
+    },
+    "Eyebrows": {
+      "size": [
+        104,
+        14
+      ],
+      "bbox": [
+        0,
+        0,
+        104,
+        14
+      ],
+      "nontransparent": 415,
+      "partial_alpha": 415,
+      "alpha_gt240": 16,
+      "rgb_channel_difference_max": 0,
+      "sprite_local_position": [
+        -0.009999275,
+        7.5899997,
+        0.0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "pixels_per_unit": 100.0,
+      "png_path": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\Mod\\modFQA\\MOD模板例子\\制作“静态和动态”立绘例子\\ModProject\\ModRes\\ResBuildABProject\\Assets\\立绘资源\\Portrait（静态立绘）\\Woman\\Eyebrows（meimao）\\88888101.png",
+      "prefab_path": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\Mod\\modFQA\\MOD模板例子\\制作“静态和动态”立绘例子\\ModProject\\ModRes\\ResBuildABProject\\Assets\\Resources\\Game\\Portrait\\Woman\\Eyebrows\\88888101.prefab",
+      "sha256": "913acdc2a659fd30001fa4d72f7301e5dc7b2fc4d1d18cd2415d7dd56dc0e6de"
+    },
+    "Eyes": {
+      "size": [
+        109,
+        37
+      ],
+      "bbox": [
+        0,
+        0,
+        109,
+        37
+      ],
+      "nontransparent": 2765,
+      "partial_alpha": 2688,
+      "alpha_gt240": 354,
+      "rgb_channel_difference_max": 0,
+      "sprite_local_position": [
+        -0.01499939,
+        7.4649997,
+        0.0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "pixels_per_unit": 100.0,
+      "png_path": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\Mod\\modFQA\\MOD模板例子\\制作“静态和动态”立绘例子\\ModProject\\ModRes\\ResBuildABProject\\Assets\\立绘资源\\Portrait（静态立绘）\\Woman\\Eyes（yanjing）\\88888101.png",
+      "prefab_path": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\Mod\\modFQA\\MOD模板例子\\制作“静态和动态”立绘例子\\ModProject\\ModRes\\ResBuildABProject\\Assets\\Resources\\Game\\Portrait\\Woman\\Eyes\\88888101.prefab",
+      "sha256": "8db4a1f2c1894cb7ebd62c31fa93e7374ff0d550be02041f184906eb0d726914"
+    },
+    "Nose": {
+      "size": [
+        28,
+        59
+      ],
+      "bbox": [
+        0,
+        0,
+        28,
+        59
+      ],
+      "nontransparent": 904,
+      "partial_alpha": 863,
+      "alpha_gt240": 173,
+      "rgb_channel_difference_max": 0,
+      "sprite_local_position": [
+        -0.019999504,
+        7.305,
+        0.0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "pixels_per_unit": 100.0,
+      "png_path": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\Mod\\modFQA\\MOD模板例子\\制作“静态和动态”立绘例子\\ModProject\\ModRes\\ResBuildABProject\\Assets\\立绘资源\\Portrait（静态立绘）\\Woman\\Nose（bizi）\\88888101.png",
+      "prefab_path": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\Mod\\modFQA\\MOD模板例子\\制作“静态和动态”立绘例子\\ModProject\\ModRes\\ResBuildABProject\\Assets\\Resources\\Game\\Portrait\\Woman\\Nose\\88888101.prefab",
+      "sha256": "cb828d8b3646dca22676c897d0bb4cdd20c712b92832a2fa4734adec2622b736"
+    },
+    "Mouth": {
+      "size": [
+        35,
+        19
+      ],
+      "bbox": [
+        0,
+        0,
+        35,
+        19
+      ],
+      "nontransparent": 540,
+      "partial_alpha": 537,
+      "alpha_gt240": 40,
+      "rgb_channel_difference_max": 0,
+      "sprite_local_position": [
+        -0.0049991608,
+        6.915,
+        0.0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "pixels_per_unit": 100.0,
+      "png_path": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\Mod\\modFQA\\MOD模板例子\\制作“静态和动态”立绘例子\\ModProject\\ModRes\\ResBuildABProject\\Assets\\立绘资源\\Portrait（静态立绘）\\Woman\\Mouth（zuiba）\\88888101.png",
+      "prefab_path": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\Mod\\modFQA\\MOD模板例子\\制作“静态和动态”立绘例子\\ModProject\\ModRes\\ResBuildABProject\\Assets\\Resources\\Game\\Portrait\\Woman\\Mouth\\88888101.prefab",
+      "sha256": "46063653ee105585fb7dd574a164ada8a7997b7a10ad653a7212ee1458b2e9df"
+    }
+  },
+  "preview_node_z": {
+    "Nose（鼻子）": 0.1,
+    "Hat（头部装饰）": 0.01,
+    "FaceFull（全脸装饰）": 0.03,
+    "Hair（后发）": 0.13,
+    "Back（背部装饰）": 0.14,
+    "Eyebrows（眉毛）": 0.04,
+    "FaceLeft（左脸装饰，右脸只是把左脸反转）": 0.09,
+    "Head（头）": 0.11,
+    "HairFront（前发）": 0.02,
+    "Mouth（嘴巴）": 0.06,
+    "Body（身体）": 0.12,
+    "Eyes（眼睛）": 0.07,
+    "静态立绘节点": 0.0
+  },
+  "role_dress": [
+    {
+      "sheet": "xl/worksheets/sheet1.xml",
+      "rows": [
+        {
+          "A1": "ID",
+          "B1": "衣服ID",
+          "C1": "衣服性别",
+          "D1": "衣服类型",
+          "E1": "分类",
+          "F1": "颜色组",
+          "G1": "颜色",
+          "H1": "衣服名称",
+          "I1": "标签",
+          "J1": "玩家投稿标签",
+          "K1": "标签Tips",
+          "L1": "魅力",
+          "M1": "单位是否可选",
+          "N1": "NPC出现的概率",
+          "O1": "NPC穿戴境界要求"
+        },
+        {
+          "A2": "id",
+          "B2": "dressID",
+          "C2": "sex",
+          "D2": "type",
+          "E2": "className",
+          "F2": "colorGroup",
+          "G2": "color",
+          "H2": "name",
+          "I2": "flag",
+          "J2": "gamerFlag",
+          "K2": "flagDesc",
+          "L2": "beauty",
+          "M2": "active",
+          "N2": "weight",
+          "O2": "npcGrade"
+        },
+        {
+          "A3": "int",
+          "B3": "int",
+          "C3": "int",
+          "D3": "string",
+          "E3": "string",
+          "F3": "int",
+          "G3": "string",
+          "H3": "string",
+          "I3": "string",
+          "J3": "string",
+          "K3": "string",
+          "L3": "int",
+          "M3": "int",
+          "N3": "int",
+          "O3": "int"
+        },
+        {
+          "A4": "MID&10101",
+          "B4": "88888101",
+          "C4": "0",
+          "D4": "houbei",
+          "E4": "0",
+          "F4": "MID&10101",
+          "G4": "ffffff",
+          "H4": "common_houbei",
+          "I4": "0",
+          "J4": "0",
+          "K4": "0",
+          "L4": "50",
+          "M4": "1",
+          "N4": "100",
+          "O4": "0",
+          "Q4": "背部-男女通用",
+          "Y4": "-110"
+        },
+        {
+          "A5": "MID&10102",
+          "B5": "88888102",
+          "C5": "0",
+          "D5": "houbei",
+          "E5": "0",
+          "F5": "MID&10102",
+          "G5": "ffffff",
+          "H5": "common_houbei",
+          "I5": "0",
+          "J5": "0",
+          "K5": "0",
+          "L5": "50",
+          "M5": "1",
+          "N5": "100",
+          "O5": "0"
+        },
+        {
+          "A6": "MID&10103",
+          "B6": "88888103",
+          "C6": "0",
+          "D6": "houbei",
+          "E6": "0",
+          "F6": "MID&10103",
+          "G6": "ffffff",
+          "H6": "common_houbei",
+          "I6": "0",
+          "J6": "0",
+          "K6": "0",
+          "L6": "50",
+          "M6": "1",
+          "N6": "100",
+          "O6": "0"
+        },
+        {
+          "A7": "MID&11101",
+          "B7": "88888101",
+          "C7": "0",
+          "D7": "maozi",
+          "E7": "0",
+          "F7": "MID&11101",
+          "G7": "ffffff",
+          "H7": "common_maozi",
+          "I7": "0",
+          "J7": "0",
+          "K7": "0",
+          "L7": "50",
+          "M7": "1",
+          "N7": "100",
+          "O7": "0",
+          "Q7": "帽子-男女通用"
+        },
+        {
+          "A8": "MID&11102",
+          "B8": "88888102",
+          "C8": "0",
+          "D8": "maozi",
+          "E8": "0",
+          "F8": "MID&11102",
+          "G8": "ffffff",
+          "H8": "common_maozi",
+          "I8": "0",
+          "J8": "0",
+          "K8": "0",
+          "L8": "50",
+          "M8": "1",
+          "N8": "100",
+          "O8": "0"
+        },
+        {
+          "A9": "MID&11103",
+          "B9": "88888103",
+          "C9": "0",
+          "D9": "maozi",
+          "E9": "0",
+          "F9": "MID&11103",
+          "G9": "ffffff",
+          "H9": "common_maozi",
+          "I9": "0",
+          "J9": "0",
+          "K9": "0",
+          "L9": "50",
+          "M9": "1",
+          "N9": "100",
+          "O9": "0"
+        },
+        {
+          "A10": "MID&20101",
+          "B10": "88888101",
+          "C10": "1",
+          "D10": "yifu",
+          "E10": "0",
+          "F10": "MID&20101",
+          "G10": "ffffff",
+          "H10": "common_yifu",
+          "I10": "0",
+          "J10": "0",
+          "K10": "0",
+          "L10": "0",
+          "M10": "1",
+          "N10": "100",
+          "O10": "0",
+          "Q10": "男-衣服"
+        },
+        {
+          "A11": "MID&20102",
+          "B11": "88888102",
+          "C11": "1",
+          "D11": "yifu",
+          "E11": "0",
+          "F11": "MID&20102",
+          "G11": "ffffff",
+          "H11": "common_yifu",
+          "I11": "0",
+          "J11": "0",
+          "K11": "0",
+          "L11": "0",
+          "M11": "1",
+          "N11": "100",
+          "O11": "0"
+        },
+        {
+          "A12": "MID&20103",
+          "B12": "88888103",
+          "C12": "1",
+          "D12": "yifu",
+          "E12": "0",
+          "F12": "MID&20103",
+          "G12": "ffffff",
+          "H12": "common_yifu",
+          "I12": "0",
+          "J12": "0",
+          "K12": "0",
+          "L12": "0",
+          "M12": "1",
+          "N12": "100",
+          "O12": "0"
+        },
+        {
+          "A13": "MID&21101",
+          "B13": "88888101",
+          "C13": "1",
+          "D13": "meimao",
+          "E13": "0",
+          "F13": "MID&21101",
+          "G13": "ffffff",
+          "H13": "common_meimao",
+          "I13": "0",
+          "J13": "0",
+          "K13": "0",
+          "L13": "50",
+          "M13": "1",
+          "N13": "100",
+          "O13": "0",
+          "Q13": "男-眉毛"
+        },
+        {
+          "A14": "MID&22102",
+          "B14": "88888101",
+          "C14": "1",
+          "D14": "yanjing",
+          "E14": "0",
+          "F14": "MID&22102",
+          "G14": "ffffff",
+          "H14": "common_yanjing",
+          "I14": "0",
+          "J14": "0",
+          "K14": "0",
+          "L14": "50",
+          "M14": "1",
+          "N14": "100",
+          "O14": "0",
+          "Q14": "男-眼睛"
+        },
+        {
+          "A15": "MID&23103",
+          "B15": "88888101",
+          "C15": "1",
+          "D15": "quanlian",
+          "E15": "0",
+          "F15": "MID&23103",
+          "G15": "ffffff",
+          "H15": "common_lianshi",
+          "I15": "0",
+          "J15": "0",
+          "K15": "0",
+          "L15": "50",
+          "M15": "1",
+          "N15": "100",
+          "O15": "0",
+          "Q15": "男-全脸"
+        },
+        {
+          "A16": "MID&24104",
+          "B16": "88888101",
+          "C16": "1",
+          "D16": "zuolian",
+          "E16": "0",
+          "F16": "MID&24104",
+          "G16": "ffffff",
+          "H16": "common_lianshi",
+          "I16": "0",
+          "J16": "0",
+          "K16": "0",
+          "L16": "50",
+          "M16": "1",
+          "N16": "100",
+          "O16": "0",
+          "Q16": "男-左脸"
+        },
+        {
+          "A17": "MID&25105",
+          "B17": "88888101",
+          "C17": "1",
+          "D17": "youlian",
+          "E17": "0",
+          "F17": "MID&25105",
+          "G17": "ffffff",
+          "H17": "common_lianshi",
+          "I17": "0",
+          "J17": "0",
+          "K17": "0",
+          "L17": "50",
+          "M17": "1",
+          "N17": "100",
+          "O17": "0",
+          "Q17": "男-右脸"
+        },
+        {
+          "A18": "MID&26106",
+          "B18": "88888101",
+          "C18": "1",
+          "D18": "toufaqian",
+          "E18": "0",
+          "F18": "MID&26106",
+          "G18": "ffffff",
+          "H18": "common_qianfa",
+          "I18": "0",
+          "J18": "0",
+          "K18": "0",
+          "L18": "50",
+          "M18": "1",
+          "N18": "100",
+          "O18": "0",
+          "Q18": "男-头发前"
+        },
+        {
+          "A19": "MID&27107",
+          "B19": "88888101",
+          "C19": "1",
+          "D19": "toufa",
+          "E19": "0",
+          "F19": "MID&27107",
+          "G19": "ffffff",
+          "H19": "common_houfa",
+          "I19": "0",
+          "J19": "0",
+          "K19": "0",
+          "L19": "50",
+          "M19": "1",
+          "N19": "100",
+          "O19": "0",
+          "Q19": "男-头发后"
+        },
+        {
+          "A20": "MID&28108",
+          "B20": "88888101",
+          "C20": "1",
+          "D20": "lian",
+          "E20": "0",
+          "F20": "MID&28108",
+          "G20": "ffffff",
+          "H20": "common_tou",
+          "I20": "0",
+          "J20": "0",
+          "K20": "0",
+          "L20": "50",
+          "M20": "1",
+          "N20": "100",
+          "O20": "0",
+          "Q20": "男-脸"
+        },
+        {
+          "A21": "MID&29109",
+          "B21": "88888101",
+          "C21": "1",
+          "D21": "zuiba",
+          "E21": "0",
+          "F21": "MID&29109",
+          "G21": "ffffff",
+          "H21": "common_zuiba",
+          "I21": "0",
+          "J21": "0",
+          "K21": "0",
+          "L21": "50",
+          "M21": "1",
+          "N21": "100",
+          "O21": "0",
+          "Q21": "男-嘴巴"
+        },
+        {
+          "A22": "MID&40110",
+          "B22": "88888101",
+          "C22": "1",
+          "D22": "bizi",
+          "E22": "0",
+          "F22": "MID&40110",
+          "G22": "ffffff",
+          "H22": "common_bizi",
+          "I22": "0",
+          "J22": "0",
+          "K22": "0",
+          "L22": "50",
+          "M22": "1",
+          "N22": "100",
+          "O22": "0",
+          "Q22": "男-鼻子"
+        },
+        {
+          "A23": "MID&40101",
+          "B23": "88888101",
+          "C23": "2",
+          "D23": "yifu",
+          "E23": "0",
+          "F23": "MID&40101",
+          "G23": "ffffff",
+          "H23": "common_yifu",
+          "I23": "0",
+          "J23": "0",
+          "K23": "0",
+          "L23": "0",
+          "M23": "1",
+          "N23": "100",
+          "O23": "0",
+          "Q23": "女-衣服"
+        },
+        {
+          "A24": "MID&40102",
+          "B24": "88888102",
+          "C24": "2",
+          "D24": "yifu",
+          "E24": "0",
+          "F24": "MID&40102",
+          "G24": "ffffff",
+          "H24": "common_yifu",
+          "I24": "0",
+          "J24": "0",
+          "K24": "0",
+          "L24": "0",
+          "M24": "1",
+          "N24": "100",
+          "O24": "0"
+        },
+        {
+          "A25": "MID&40103",
+          "B25": "88888103",
+          "C25": "2",
+          "D25": "yifu",
+          "E25": "0",
+          "F25": "MID&40103",
+          "G25": "ffffff",
+          "H25": "common_yifu",
+          "I25": "0",
+          "J25": "0",
+          "K25": "0",
+          "L25": "0",
+          "M25": "1",
+          "N25": "100",
+          "O25": "0"
+        },
+        {
+          "A26": "MID&41101",
+          "B26": "88888101",
+          "C26": "2",
+          "D26": "meimao",
+          "E26": "0",
+          "F26": "MID&41101",
+          "G26": "ffffff",
+          "H26": "common_meimao",
+          "I26": "0",
+          "J26": "0",
+          "K26": "0",
+          "L26": "50",
+          "M26": "1",
+          "N26": "100",
+          "O26": "0",
+          "Q26": "女-眉毛"
+        },
+        {
+          "A27": "MID&42102",
+          "B27": "88888101",
+          "C27": "2",
+          "D27": "yanjing",
+          "E27": "0",
+          "F27": "MID&42102",
+          "G27": "ffffff",
+          "H27": "common_yanjing",
+          "I27": "0",
+          "J27": "0",
+          "K27": "0",
+          "L27": "50",
+          "M27": "1",
+          "N27": "100",
+          "O27": "0",
+          "Q27": "女-眼睛"
+        },
+        {
+          "A28": "MID&43103",
+          "B28": "88888101",
+          "C28": "2",
+          "D28": "quanlian",
+          "E28": "0",
+          "F28": "MID&43103",
+          "G28": "ffffff",
+          "H28": "common_lianshi",
+          "I28": "0",
+          "J28": "0",
+          "K28": "0",
+          "L28": "50",
+          "M28": "1",
+          "N28": "100",
+          "O28": "0",
+          "Q28": "女-全脸"
+        },
+        {
+          "A29": "MID&44104",
+          "B29": "88888101",
+          "C29": "2",
+          "D29": "zuolian",
+          "E29": "0",
+          "F29": "MID&44104",
+          "G29": "ffffff",
+          "H29": "common_lianshi",
+          "I29": "0",
+          "J29": "0",
+          "K29": "0",
+          "L29": "50",
+          "M29": "1",
+          "N29": "100",
+          "O29": "0",
+          "Q29": "女-左脸"
+        },
+        {
+          "A30": "MID&45105",
+          "B30": "88888101",
+          "C30": "2",
+          "D30": "youlian",
+          "E30": "0",
+          "F30": "MID&45105",
+          "G30": "ffffff",
+          "H30": "common_lianshi",
+          "I30": "0",
+          "J30": "0",
+          "K30": "0",
+          "L30": "50",
+          "M30": "1",
+          "N30": "100",
+          "O30": "0",
+          "Q30": "女-右脸"
+        },
+        {
+          "A31": "MID&46106",
+          "B31": "88888101",
+          "C31": "2",
+          "D31": "toufaqian",
+          "E31": "0",
+          "F31": "MID&46106",
+          "G31": "ffffff",
+          "H31": "common_qianfa",
+          "I31": "0",
+          "J31": "0",
+          "K31": "0",
+          "L31": "50",
+          "M31": "1",
+          "N31": "100",
+          "O31": "0",
+          "Q31": "女-头发前"
+        },
+        {
+          "A32": "MID&47107",
+          "B32": "88888101",
+          "C32": "2",
+          "D32": "toufa",
+          "E32": "0",
+          "F32": "MID&47107",
+          "G32": "ffffff",
+          "H32": "common_houfa",
+          "I32": "0",
+          "J32": "0",
+          "K32": "0",
+          "L32": "50",
+          "M32": "1",
+          "N32": "100",
+          "O32": "0",
+          "Q32": "女-头发后"
+        },
+        {
+          "A33": "MID&48108",
+          "B33": "88888101",
+          "C33": "2",
+          "D33": "lian",
+          "E33": "0",
+          "F33": "MID&48108",
+          "G33": "ffffff",
+          "H33": "common_tou",
+          "I33": "0",
+          "J33": "0",
+          "K33": "0",
+          "L33": "50",
+          "M33": "1",
+          "N33": "100",
+          "O33": "0",
+          "Q33": "女-脸"
+        },
+        {
+          "A34": "MID&49109",
+          "B34": "88888101",
+          "C34": "2",
+          "D34": "zuiba",
+          "E34": "0",
+          "F34": "MID&49109",
+          "G34": "ffffff",
+          "H34": "common_zuiba",
+          "I34": "0",
+          "J34": "0",
+          "K34": "0",
+          "L34": "50",
+          "M34": "1",
+          "N34": "100",
+          "O34": "0",
+          "Q34": "女-嘴巴"
+        },
+        {
+          "A35": "MID&50110",
+          "B35": "88888101",
+          "C35": "2",
+          "D35": "bizi",
+          "E35": "0",
+          "F35": "MID&50110",
+          "G35": "ffffff",
+          "H35": "common_bizi",
+          "I35": "0",
+          "J35": "0",
+          "K35": "0",
+          "L35": "50",
+          "M35": "1",
+          "N35": "100",
+          "O35": "0",
+          "Q35": "女-鼻子"
+        },
+        {
+          "A39": "此ID会记录到存档中，不可轻易修改"
+        },
+        {
+          "A40": "ID说明：MID&AABBB，MID&是模组唯一ID，AA是分类ID，比如男衣服是20，BBB是资源ID，101开始，比如衣服是101 102 103"
+        },
+        {
+          "B46": "对应预制体资源的名称：Resources/Game/Portrait"
+        },
+        {
+          "B47": "资源ID说明：资源ID需要和预制体资源文件名称一样，并且同一种类型的资源名称不能一样，比如衣服是88888101、88888102、88888103"
+        },
+        {
+          "B49": "注意：88888是一个唯一ID，如果两个模组的唯一ID都是88888，那么两个模组就会冲突。"
+        },
+        {
+          "B51": "制作模组之前，必须吧88888改为自己定义的一个唯一ID（unity中有工具），比如：12345，65841，52145，98999，54441，随便什么都可以，是5位数的就行，两个模组之间不能重复。"
+        },
+        {
+          "B52": "注意，包括Resources/Game/Portrait和Texture/Game/Portrait，里面的资源也需要修改文件名称。"
+        },
+        {
+          "B55": "注意：制作模组之前，需要通过Unity提供的工具修改88888ID为其他ID。"
+        }
+      ]
+    },
+    {
+      "sheet": "xl/worksheets/sheet2.xml",
+      "rows": []
+    },
+    {
+      "sheet": "xl/worksheets/sheet3.xml",
+      "rows": []
+    }
+  ]
+}
