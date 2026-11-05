@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "role": "Gentle presentation cleanup of the user's selected original grey-green landscape.",
+  "source_master": "res://textures/world/bai_chuan/free_world_8000_3x3_20261104/master_8000.png",
+  "source_master_sha256": "385f5ebf0898111767b4738c14e3deb071c1a32873aa05a633d027af88574cb9",
+  "shader_parameters": {
+    "plain_cleanup": 0.22,
+    "landmark_cleanup": 0.38,
+    "regional_strength": 0.0,
+    "plain_region_strength": 0.0,
+    "forest_strength": 0.0,
+    "rock_strength": 0.0,
+    "water_strength": 0.28,
+    "water_detail": 0.65,
+    "water_native_mode": 0.0,
+    "water_geometry_lock": 0.0,
+    "paper_color": "#e7e5db",
+    "water_color": "#85a7b4"
+  },
+  "scope": "Faint-ground texture, existing landmark clearings and water highlights only. Existing mountains and woods keep their painted scale and silhouettes. The new standalone scenery and redraw are archived, with no active map references."
+}

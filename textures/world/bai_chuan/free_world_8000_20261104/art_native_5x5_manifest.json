@@ -1,0 +1,469 @@
+{
+  "expected_tiles": 25,
+  "present_tiles": 25,
+  "missing_tiles": [],
+  "unique_native_sizes": [
+    "1254x1254"
+  ],
+  "native_tiles": [
+    {
+      "tile": "bc_r0c0",
+      "row": 0,
+      "col": 0,
+      "path": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r0c0.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "C1E7D9808413C0CEAE335BA2F7D65AC1338B8DA598D138D54D3F12DADCAF2BBB",
+      "guide_rect": [
+        0,
+        0,
+        251,
+        251
+      ],
+      "reference_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r0c0_core.png"
+      ]
+    },
+    {
+      "tile": "bc_r0c1",
+      "row": 0,
+      "col": 1,
+      "path": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r0c1.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "F7494FA61BA45948EDF11B834039D714C89C61CFAE7A2C0E1933B0E0B0A7DB9E",
+      "guide_rect": [
+        251,
+        0,
+        502,
+        251
+      ],
+      "reference_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r0c1_core.png"
+      ]
+    },
+    {
+      "tile": "bc_r0c2",
+      "row": 0,
+      "col": 2,
+      "path": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r0c2.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "1C69F0709CB8B076732C5FB5EF8F3C0A0A2D25D8BE9EEA41194CE0D9411C9141",
+      "guide_rect": [
+        502,
+        0,
+        752,
+        251
+      ],
+      "reference_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r0c2_core.png"
+      ]
+    },
+    {
+      "tile": "bc_r0c3",
+      "row": 0,
+      "col": 3,
+      "path": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r0c3.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "200C5473734BD33E7AD9FE2F9CCFB65A23840EF9094CEF5CAD158B17C047E996",
+      "guide_rect": [
+        752,
+        0,
+        1003,
+        251
+      ],
+      "reference_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r0c3_core.png"
+      ]
+    },
+    {
+      "tile": "bc_r0c4",
+      "row": 0,
+      "col": 4,
+      "path": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r0c4.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "DBF43909D953EBF1BE581717A6E57C38426485214EFA747104F1315E89E643A6",
+      "guide_rect": [
+        1003,
+        0,
+        1254,
+        251
+      ],
+      "reference_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r0c4_core.png"
+      ]
+    },
+    {
+      "tile": "bc_r1c0",
+      "row": 1,
+      "col": 0,
+      "path": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r1c0.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "479E74BD3F2B5FC492E70DF631F48E9ED0515FCF576D6433216B6E6A87691F13",
+      "guide_rect": [
+        0,
+        251,
+        251,
+        502
+      ],
+      "reference_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r1c0_core.png"
+      ]
+    },
+    {
+      "tile": "bc_r1c1",
+      "row": 1,
+      "col": 1,
+      "path": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r1c1.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "3420CFE3CF2C802C407EDC981CB3926CA7CF3C4CA40721A4CD7258F91F7B3B07",
+      "guide_rect": [
+        251,
+        251,
+        502,
+        502
+      ],
+      "reference_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r1c1_core.png"
+      ]
+    },
+    {
+      "tile": "bc_r1c2",
+      "row": 1,
+      "col": 2,
+      "path": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r1c2.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "C67194D58938F107C327BCB48B7D832D959CF2FEBBC0B5723EFA5FE1283906C0",
+      "guide_rect": [
+        502,
+        251,
+        752,
+        502
+      ],
+      "reference_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r1c2_core.png"
+      ]
+    },
+    {
+      "tile": "bc_r1c3",
+      "row": 1,
+      "col": 3,
+      "path": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r1c3.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "7D740B99C6EB6026AFA0AD37A32F282A04144976C5344C8CB67300D564C86D48",
+      "guide_rect": [
+        752,
+        251,
+        1003,
+        502
+      ],
+      "reference_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r1c3_core.png"
+      ]
+    },
+    {
+      "tile": "bc_r1c4",
+      "row": 1,
+      "col": 4,
+      "path": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r1c4.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "D4E74312D49FDDE08216AE2F92917520F0E13D384A1A64E7F3EEF44123BC1511",
+      "guide_rect": [
+        1003,
+        251,
+        1254,
+        502
+      ],
+      "reference_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r1c4_core.png"
+      ]
+    },
+    {
+      "tile": "bc_r2c0",
+      "row": 2,
+      "col": 0,
+      "path": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r2c0.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "1C885BE2CB2C187360CDE2E663E31AF1267FA0C27D2329FB1BC72D97F425760F",
+      "guide_rect": [
+        0,
+        502,
+        251,
+        752
+      ],
+      "reference_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r2c0_core.png"
+      ]
+    },
+    {
+      "tile": "bc_r2c1",
+      "row": 2,
+      "col": 1,
+      "path": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r2c1.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "DCB1B6C044DE9FBBF12A1D0950DFB06296A60E06C9B94C27A4C176BCA7CADFBA",
+      "guide_rect": [
+        251,
+        502,
+        502,
+        752
+      ],
+      "reference_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r2c1_core.png"
+      ]
+    },
+    {
+      "tile": "bc_r2c2",
+      "row": 2,
+      "col": 2,
+      "path": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r2c2.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "E18075A5122FE066F3F890AB3F2210A9F54CB941D6A4911BF834B2DAB8766F8F",
+      "guide_rect": [
+        502,
+        502,
+        752,
+        752
+      ],
+      "reference_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r2c2_core.png"
+      ]
+    },
+    {
+      "tile": "bc_r2c3",
+      "row": 2,
+      "col": 3,
+      "path": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r2c3.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "823F3C37D3A9559ADB1B1D978BC13A61893F81CAF4869564120EA5254C9A7593",
+      "guide_rect": [
+        752,
+        502,
+        1003,
+        752
+      ],
+      "reference_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r2c3_core.png"
+      ]
+    },
+    {
+      "tile": "bc_r2c4",
+      "row": 2,
+      "col": 4,
+      "path": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r2c4.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "293A2E500EF2F4A0BF789A416E3244E5662D4D82693D01AD0EFC6CA299A0D167",
+      "guide_rect": [
+        1003,
+        502,
+        1254,
+        752
+      ],
+      "reference_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r2c4_core.png"
+      ]
+    },
+    {
+      "tile": "bc_r3c0",
+      "row": 3,
+      "col": 0,
+      "path": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r3c0.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "48B6CAE9A85C07B561289FA2792DBDB8E3CDBB4CD910F94540B5CA680E28E53C",
+      "guide_rect": [
+        0,
+        752,
+        251,
+        1003
+      ],
+      "reference_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r3c0_core.png"
+      ]
+    },
+    {
+      "tile": "bc_r3c1",
+      "row": 3,
+      "col": 1,
+      "path": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r3c1.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "D4EE3AED54509E8EE0D8ED26F13C046D14D8773D5A1B3242C78515F1A5F436EA",
+      "guide_rect": [
+        251,
+        752,
+        502,
+        1003
+      ],
+      "reference_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r3c1_core.png"
+      ]
+    },
+    {
+      "tile": "bc_r3c2",
+      "row": 3,
+      "col": 2,
+      "path": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r3c2.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "0EB029CE9364FA6851086BE7D86641CE63F2EC38FDA91D41F2623D7BC7E25D66",
+      "guide_rect": [
+        502,
+        752,
+        752,
+        1003
+      ],
+      "reference_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r3c2_core.png"
+      ]
+    },
+    {
+      "tile": "bc_r3c3",
+      "row": 3,
+      "col": 3,
+      "path": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r3c3.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "1BAF91B03AB10D1A06DD3BE0D8FE4DBD22D56CEDDDF18F5B83F85EA150A56C3E",
+      "guide_rect": [
+        752,
+        752,
+        1003,
+        1003
+      ],
+      "reference_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r3c3_core.png"
+      ]
+    },
+    {
+      "tile": "bc_r3c4",
+      "row": 3,
+      "col": 4,
+      "path": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r3c4.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "CEDC8D46FD3CB5D48E77FEC514E2445B8BCE01F99AB290EB14AC77DCFBDD3F39",
+      "guide_rect": [
+        1003,
+        752,
+        1254,
+        1003
+      ],
+      "reference_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r3c4_core.png"
+      ]
+    },
+    {
+      "tile": "bc_r4c0",
+      "row": 4,
+      "col": 0,
+      "path": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r4c0.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "8EA08BAF9BB7DE37C8B5230AAE95E9CB58A12900F955E4294B75F52661F15C0B",
+      "guide_rect": [
+        0,
+        1003,
+        251,
+        1254
+      ],
+      "reference_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r4c0_core.png"
+      ]
+    },
+    {
+      "tile": "bc_r4c1",
+      "row": 4,
+      "col": 1,
+      "path": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r4c1.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "856931939E024F3CB686D39AC2CBCF2AE57D2D4CE6654B2D8D068FBB4E49D8E9",
+      "guide_rect": [
+        251,
+        1003,
+        502,
+        1254
+      ],
+      "reference_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r4c1_core.png"
+      ]
+    },
+    {
+      "tile": "bc_r4c2",
+      "row": 4,
+      "col": 2,
+      "path": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r4c2.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "9FDF7234FD3B9F11C783F9286F59BA03E9267FDEF98FBE44C2021851CCCF0D0C",
+      "guide_rect": [
+        502,
+        1003,
+        752,
+        1254
+      ],
+      "reference_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r4c2_core.png"
+      ]
+    },
+    {
+      "tile": "bc_r4c3",
+      "row": 4,
+      "col": 3,
+      "path": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r4c3.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "77C24D6826BDB6EF338D2480CAFBFC52376DE0E53DE982AEB1E01BB730A23DB6",
+      "guide_rect": [
+        752,
+        1003,
+        1003,
+        1254
+      ],
+      "reference_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r4c3_core.png"
+      ]
+    },
+    {
+      "tile": "bc_r4c4",
+      "row": 4,
+      "col": 4,
+      "path": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r4c4.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "987B60B005DA7B6A892A37F55C5CC7399629857C4550F720C7C5EF18FE1FCEBB",
+      "guide_rect": [
+        1003,
+        1003,
+        1254,
+        1254
+      ],
+      "reference_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r4c4_core.png"
+      ]
+    }
+  ],
+  "generation_mode": "built-in image_gen, one new native image per tile",
+  "output_overlap_pixels": 0,
+  "assembly": "DrawImageUnscaled; every native pixel preserved; no upsampling",
+  "master": {
+    "path": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\master_8000_5x5_native.png",
+    "width": 6270,
+    "height": 6270,
+    "sha256": "BD6171D83A913A947DA05D68ACF6ED44856C59106CED17B02389FEE4DD545F09"
+  }
+}

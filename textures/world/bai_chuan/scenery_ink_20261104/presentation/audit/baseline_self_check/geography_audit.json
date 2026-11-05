@@ -1,0 +1,5092 @@
+{
+  "version": 1,
+  "role": "Read-only image/geography review; never gameplay data or a navigation certification.",
+  "source_art": "textures/world/bai_chuan/free_world_8000_3x3_20261104/master_8000.png",
+  "source_art_sha256": "385f5ebf0898111767b4738c14e3deb071c1a32873aa05a633d027af88574cb9",
+  "baseline_art": "textures/world/bai_chuan/free_world_8000_3x3_20261104/master_8000.png",
+  "baseline_matches_navigation_source": true,
+  "input_sha256": {
+    "textures/world/bai_chuan/free_world_8000_3x3_20261104/master_8000.png": "385f5ebf0898111767b4738c14e3deb071c1a32873aa05a633d027af88574cb9",
+    "resources/world/bai_chuan/free_layout_3x3_20261104.json": "29044a4b10acc61e8fd35169c78370c4a0bb0eff4927ae191749a72bee65b090",
+    "resources/world/bai_chuan/free_navigation_3x3_20261104.json": "68b75e8cd519e1c61d71f20b5f08534768d46ccf94789abfd06c12f0233bf38b",
+    "docs/prototypes/百川宗门城镇资源规划数据_20261027.json": "28fd79f81c136c9e488842add2a69f8fac5a6e59271d1125371fd6553452e6a7"
+  },
+  "tool_sha256": "26c51f6731b35dd25bdfceb5c9932498ba006b6fb49437f58f2d3e91fa537843",
+  "world_size": 7372.8,
+  "world_km": 8000.0,
+  "named_locations": 123,
+  "candidate_native_size": [
+    6270,
+    6270
+  ],
+  "measurement_size": 2048,
+  "water_mode": "native_source_blue_heuristic",
+  "limits": [
+    "Source-blue classification is high confidence only for blue-water painting styles.",
+    "Muted grey-green water, rock and foliage can share colours; amber findings require visual review or --water-mask.",
+    "Dark-mass changes are visual clutter/possible hills, not newly blocked cells.",
+    "Existing navigation crossings can intentionally run over source water; only introduced visual deltas are ranked.",
+    "Review crops are exact native crops for repair references. Annotated overviews are diagnostics, not replacement art."
+  ],
+  "summary": {
+    "review_anchor_count": 1,
+    "introduced_water_anchor_count": 0,
+    "muted_water_review_count": 0,
+    "new_dark_mass_review_count": 0,
+    "old_water_fraction": 0.12917041778564453,
+    "new_water_fraction": 0.12917041778564453,
+    "water_intersection_over_union": 1.0,
+    "symmetric_water_footprint_distance_p95_world_units": 0.0,
+    "new_water_evidence_on_existing_walkable_cells": 0,
+    "new_dark_mass_on_existing_walkable_cells": 0
+  },
+  "walkable_water_review_regions": [],
+  "walkable_dark_mass_review_regions": [],
+  "anchors": [
+    {
+      "id": "bc_place_001",
+      "name": "玉虚仙宗",
+      "type": "sect",
+      "world_point": [
+        1622.7215311004786,
+        5456.107177033493
+      ],
+      "world_icon_rect": [
+        1572.7215311004784,
+        5391.107177033493,
+        1672.7215311004784,
+        5456.107177033493
+      ],
+      "nav_cell": [
+        103,
+        348
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 92.55571295171357,
+      "candidate_repair_crop_native_px": [
+        1235,
+        4495,
+        1525,
+        4785
+      ],
+      "baseline_reference_crop_native_px": [
+        1235,
+        4495,
+        1525,
+        4785
+      ]
+    },
+    {
+      "id": "bc_place_002",
+      "name": "玄都天府",
+      "type": "sect",
+      "world_point": [
+        3076.8995215311006,
+        1377.7454545454545
+      ],
+      "world_icon_rect": [
+        3026.8995215311006,
+        1306.7454545454545,
+        3126.8995215311006,
+        1377.7454545454548
+      ],
+      "nav_cell": [
+        196,
+        87
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 474.1215034144729,
+      "candidate_repair_crop_native_px": [
+        2472,
+        1027,
+        2762,
+        1317
+      ],
+      "baseline_reference_crop_native_px": [
+        2472,
+        1027,
+        2762,
+        1317
+      ]
+    },
+    {
+      "id": "bc_place_003",
+      "name": "无相圣宗",
+      "type": "sect",
+      "world_point": [
+        5906.863157894737,
+        4850.526315789474
+      ],
+      "world_icon_rect": [
+        5856.863157894737,
+        4775.526315789474,
+        5956.863157894737,
+        4850.526315789474
+      ],
+      "nav_cell": [
+        376,
+        309
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 178.7355588572123,
+      "candidate_repair_crop_native_px": [
+        4878,
+        3980,
+        5168,
+        4270
+      ],
+      "baseline_reference_crop_native_px": [
+        4878,
+        3980,
+        5168,
+        4270
+      ]
+    },
+    {
+      "id": "bc_place_004",
+      "name": "太微道宫",
+      "type": "sect",
+      "world_point": [
+        2316.4937799043064,
+        3488.4593301435407
+      ],
+      "world_icon_rect": [
+        2280.4937799043064,
+        3433.4593301435407,
+        2352.4937799043064,
+        3488.4593301435407
+      ],
+      "nav_cell": [
+        147,
+        222
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 215.66974753080228,
+      "candidate_repair_crop_native_px": [
+        1825,
+        2822,
+        2115,
+        3112
+      ],
+      "baseline_reference_crop_native_px": [
+        1825,
+        2822,
+        2115,
+        3112
+      ]
+    },
+    {
+      "id": "bc_place_005",
+      "name": "镇岳观",
+      "type": "sect",
+      "world_point": [
+        772.1645933014354,
+        3237.603827751196
+      ],
+      "world_icon_rect": [
+        736.1645933014354,
+        3182.603827751196,
+        808.1645933014354,
+        3237.603827751196
+      ],
+      "nav_cell": [
+        49,
+        206
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 341.62084245549187,
+      "candidate_repair_crop_native_px": [
+        512,
+        2608,
+        802,
+        2898
+      ],
+      "baseline_reference_crop_native_px": [
+        512,
+        2608,
+        802,
+        2898
+      ]
+    },
+    {
+      "id": "bc_place_006",
+      "name": "抱朴山",
+      "type": "sect",
+      "world_point": [
+        3186.648803827751,
+        4680.022966507177
+      ],
+      "world_icon_rect": [
+        3150.648803827751,
+        4625.022966507177,
+        3222.648803827751,
+        4680.022966507177
+      ],
+      "nav_cell": [
+        203,
+        298
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 392.54859571777865,
+      "candidate_repair_crop_native_px": [
+        2565,
+        3835,
+        2855,
+        4125
+      ],
+      "baseline_reference_crop_native_px": [
+        2565,
+        3835,
+        2855,
+        4125
+      ]
+    },
+    {
+      "id": "bc_place_007",
+      "name": "百药谷",
+      "type": "sect",
+      "world_point": [
+        2645.7416267942585,
+        7165.06028708134
+      ],
+      "world_icon_rect": [
+        2609.7416267942585,
+        7110.06028708134,
+        2681.7416267942585,
+        7165.06028708134
+      ],
+      "nav_cell": [
+        168,
+        457
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 606.9604270461132,
+      "candidate_repair_crop_native_px": [
+        2105,
+        5948,
+        2395,
+        6238
+      ],
+      "baseline_reference_crop_native_px": [
+        2105,
+        5948,
+        2395,
+        6238
+      ]
+    },
+    {
+      "id": "bc_place_008",
+      "name": "丹鼎宗",
+      "type": "sect",
+      "world_point": [
+        4597.711004784689,
+        493.87177033492827
+      ],
+      "world_icon_rect": [
+        4561.711004784689,
+        438.8717703349282,
+        4633.711004784689,
+        493.8717703349282
+      ],
+      "nav_cell": [
+        293,
+        31
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 1598.4405400264347,
+      "candidate_repair_crop_native_px": [
+        3765,
+        275,
+        4055,
+        565
+      ],
+      "baseline_reference_crop_native_px": [
+        3765,
+        275,
+        4055,
+        565
+      ]
+    },
+    {
+      "id": "bc_place_009",
+      "name": "归藏书院",
+      "type": "sect",
+      "world_point": [
+        4111.678468899521,
+        2876.999043062201
+      ],
+      "world_icon_rect": [
+        4075.6784688995212,
+        2821.999043062201,
+        4147.678468899521,
+        2876.999043062201
+      ],
+      "nav_cell": [
+        262,
+        183
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 313.94394404097045,
+      "candidate_repair_crop_native_px": [
+        3352,
+        2302,
+        3642,
+        2592
+      ],
+      "baseline_reference_crop_native_px": [
+        3352,
+        2302,
+        3642,
+        2592
+      ]
+    },
+    {
+      "id": "bc_place_010",
+      "name": "沧溟水府",
+      "type": "sect",
+      "world_point": [
+        5311.081339712919,
+        846.6373205741627
+      ],
+      "world_icon_rect": [
+        5275.081339712919,
+        791.6373205741627,
+        5347.081339712919,
+        846.6373205741627
+      ],
+      "nav_cell": [
+        338,
+        54
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 1523.174422054152,
+      "candidate_repair_crop_native_px": [
+        4372,
+        575,
+        4662,
+        865
+      ],
+      "baseline_reference_crop_native_px": [
+        4372,
+        575,
+        4662,
+        865
+      ]
+    },
+    {
+      "id": "bc_place_011",
+      "name": "血河教",
+      "type": "sect",
+      "world_point": [
+        4425.247846889953,
+        6522.243062200957
+      ],
+      "world_icon_rect": [
+        4389.247846889953,
+        6467.243062200956,
+        4461.247846889953,
+        6522.243062200956
+      ],
+      "nav_cell": [
+        282,
+        416
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 133.92774171171558,
+      "candidate_repair_crop_native_px": [
+        3618,
+        5402,
+        3908,
+        5692
+      ],
+      "baseline_reference_crop_native_px": [
+        3618,
+        5402,
+        3908,
+        5692
+      ]
+    },
+    {
+      "id": "bc_place_012",
+      "name": "蚀日宫",
+      "type": "sect",
+      "world_point": [
+        6322.342583732057,
+        6726.063157894737
+      ],
+      "world_icon_rect": [
+        6286.342583732057,
+        6671.063157894736,
+        6358.342583732057,
+        6726.063157894736
+      ],
+      "nav_cell": [
+        403,
+        429
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 35.455888086465976,
+      "candidate_repair_crop_native_px": [
+        5232,
+        5575,
+        5522,
+        5865
+      ],
+      "baseline_reference_crop_native_px": [
+        5232,
+        5575,
+        5522,
+        5865
+      ]
+    },
+    {
+      "id": "bc_place_013",
+      "name": "枯骨寺",
+      "type": "sect",
+      "world_point": [
+        6416.413397129187,
+        2469.3588516746413
+      ],
+      "world_icon_rect": [
+        6380.413397129187,
+        2414.3588516746413,
+        6452.413397129187,
+        2469.3588516746413
+      ],
+      "nav_cell": [
+        409,
+        157
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 366.4403907868236,
+      "candidate_repair_crop_native_px": [
+        5312,
+        1955,
+        5602,
+        2245
+      ],
+      "baseline_reference_crop_native_px": [
+        5312,
+        1955,
+        5602,
+        2245
+      ]
+    },
+    {
+      "id": "bc_place_014",
+      "name": "望岫城",
+      "type": "city",
+      "world_point": [
+        1454.177990430622,
+        2336.0918660287084
+      ],
+      "world_icon_rect": [
+        1410.6779904306222,
+        2277.0918660287084,
+        1497.6779904306222,
+        2336.0918660287084
+      ],
+      "nav_cell": [
+        92,
+        149
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 59.37272100889432,
+      "candidate_repair_crop_native_px": [
+        1092,
+        1842,
+        1382,
+        2132
+      ],
+      "baseline_reference_crop_native_px": [
+        1092,
+        1842,
+        1382,
+        2132
+      ]
+    },
+    {
+      "id": "bc_place_015",
+      "name": "绛阙城",
+      "type": "city",
+      "world_point": [
+        3923.536842105263,
+        1379.7052631578947
+      ],
+      "world_icon_rect": [
+        3880.0368421052626,
+        1320.7052631578947,
+        3967.0368421052626,
+        1379.7052631578945
+      ],
+      "nav_cell": [
+        250,
+        88
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 590.794989823035,
+      "candidate_repair_crop_native_px": [
+        3192,
+        1028,
+        3482,
+        1318
+      ],
+      "baseline_reference_crop_native_px": [
+        3192,
+        1028,
+        3482,
+        1318
+      ]
+    },
+    {
+      "id": "bc_place_016",
+      "name": "承天城",
+      "type": "city",
+      "world_point": [
+        3029.864114832536,
+        2390.9665071770337
+      ],
+      "world_icon_rect": [
+        2986.364114832536,
+        2331.9665071770337,
+        3073.364114832536,
+        2390.9665071770337
+      ],
+      "nav_cell": [
+        193,
+        152
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 298.300787796479,
+      "candidate_repair_crop_native_px": [
+        2432,
+        1888,
+        2722,
+        2178
+      ],
+      "baseline_reference_crop_native_px": [
+        2432,
+        1888,
+        2722,
+        2178
+      ]
+    },
+    {
+      "id": "bc_place_017",
+      "name": "赤水城",
+      "type": "city",
+      "world_point": [
+        1712.8727272727274,
+        3872.581818181818
+      ],
+      "world_icon_rect": [
+        1669.3727272727274,
+        3813.5818181818177,
+        1756.3727272727274,
+        3872.5818181818177
+      ],
+      "nav_cell": [
+        109,
+        247
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 223.22903037015593,
+      "candidate_repair_crop_native_px": [
+        1312,
+        3148,
+        1602,
+        3438
+      ],
+      "baseline_reference_crop_native_px": [
+        1312,
+        3148,
+        1602,
+        3438
+      ]
+    },
+    {
+      "id": "bc_place_018",
+      "name": "镇海城",
+      "type": "city",
+      "world_point": [
+        6761.339712918661,
+        525.2287081339713
+      ],
+      "world_icon_rect": [
+        6717.83971291866,
+        466.2287081339713,
+        6804.83971291866,
+        525.2287081339713
+      ],
+      "nav_cell": [
+        431,
+        33
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 173.09974003446683,
+      "candidate_repair_crop_native_px": [
+        5605,
+        302,
+        5895,
+        592
+      ],
+      "baseline_reference_crop_native_px": [
+        5605,
+        302,
+        5895,
+        592
+      ]
+    },
+    {
+      "id": "bc_place_019",
+      "name": "临渊城",
+      "type": "city",
+      "world_point": [
+        5138.618181818182,
+        2100.914832535885
+      ],
+      "world_icon_rect": [
+        5095.118181818182,
+        2041.9148325358851,
+        5182.118181818182,
+        2100.914832535885
+      ],
+      "nav_cell": [
+        327,
+        134
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 339.7187071681511,
+      "candidate_repair_crop_native_px": [
+        4225,
+        1642,
+        4515,
+        1932
+      ],
+      "baseline_reference_crop_native_px": [
+        4225,
+        1642,
+        4515,
+        1932
+      ]
+    },
+    {
+      "id": "bc_place_020",
+      "name": "春水府",
+      "type": "city",
+      "world_point": [
+        3696.199043062201,
+        3927.456459330144
+      ],
+      "world_icon_rect": [
+        3652.699043062201,
+        3868.456459330144,
+        3739.699043062201,
+        3927.456459330144
+      ],
+      "nav_cell": [
+        235,
+        250
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 117.92404334994623,
+      "candidate_repair_crop_native_px": [
+        2998,
+        3195,
+        3288,
+        3485
+      ],
+      "baseline_reference_crop_native_px": [
+        2998,
+        3195,
+        3288,
+        3485
+      ]
+    },
+    {
+      "id": "bc_place_021",
+      "name": "白石城",
+      "type": "city",
+      "world_point": [
+        1932.3712918660287,
+        4805.450717703349
+      ],
+      "world_icon_rect": [
+        1888.8712918660285,
+        4746.450717703349,
+        1975.8712918660285,
+        4805.450717703349
+      ],
+      "nav_cell": [
+        123,
+        306
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 229.6393694469657,
+      "candidate_repair_crop_native_px": [
+        1498,
+        3942,
+        1788,
+        4232
+      ],
+      "baseline_reference_crop_native_px": [
+        1498,
+        3942,
+        1788,
+        4232
+      ]
+    },
+    {
+      "id": "bc_place_022",
+      "name": "溪云城",
+      "type": "city",
+      "world_point": [
+        3798.109090909091,
+        5573.695693779904
+      ],
+      "world_icon_rect": [
+        3754.609090909091,
+        5514.695693779904,
+        3841.609090909091,
+        5573.695693779904
+      ],
+      "nav_cell": [
+        242,
+        355
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 130.44723071035276,
+      "candidate_repair_crop_native_px": [
+        3085,
+        4595,
+        3375,
+        4885
+      ],
+      "baseline_reference_crop_native_px": [
+        3085,
+        4595,
+        3375,
+        4885
+      ]
+    },
+    {
+      "id": "bc_place_023",
+      "name": "青萝城",
+      "type": "city",
+      "world_point": [
+        2206.7444976076554,
+        6506.564593301436
+      ],
+      "world_icon_rect": [
+        2163.2444976076554,
+        6447.564593301435,
+        2250.2444976076554,
+        6506.564593301435
+      ],
+      "nav_cell": [
+        140,
+        415
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 359.657837395489,
+      "candidate_repair_crop_native_px": [
+        1732,
+        5388,
+        2022,
+        5678
+      ],
+      "baseline_reference_crop_native_px": [
+        1732,
+        5388,
+        2022,
+        5678
+      ]
+    },
+    {
+      "id": "bc_place_024",
+      "name": "暮烟城",
+      "type": "city",
+      "world_point": [
+        5154.296650717703,
+        6263.548325358852
+      ],
+      "world_icon_rect": [
+        5110.796650717703,
+        6204.548325358852,
+        5197.796650717703,
+        6263.548325358852
+      ],
+      "nav_cell": [
+        328,
+        399
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 294.60672090093266,
+      "candidate_repair_crop_native_px": [
+        4238,
+        5182,
+        4528,
+        5472
+      ],
+      "baseline_reference_crop_native_px": [
+        4238,
+        5182,
+        4528,
+        5472
+      ]
+    },
+    {
+      "id": "bc_place_025",
+      "name": "归寂城",
+      "type": "city",
+      "world_point": [
+        6436.011483253588,
+        2955.3913875598087
+      ],
+      "world_icon_rect": [
+        6392.511483253587,
+        2896.391387559808,
+        6479.511483253587,
+        2955.391387559808
+      ],
+      "nav_cell": [
+        410,
+        188
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 118.85453293837809,
+      "candidate_repair_crop_native_px": [
+        5328,
+        2368,
+        5618,
+        2658
+      ],
+      "baseline_reference_crop_native_px": [
+        5328,
+        2368,
+        5618,
+        2658
+      ]
+    },
+    {
+      "id": "bc_place_026",
+      "name": "通济城",
+      "type": "city",
+      "world_point": [
+        5083.743540669857,
+        3449.263157894737
+      ],
+      "world_icon_rect": [
+        5040.243540669857,
+        3390.2631578947367,
+        5127.243540669857,
+        3449.2631578947367
+      ],
+      "nav_cell": [
+        324,
+        220
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 277.66713885514076,
+      "candidate_repair_crop_native_px": [
+        4178,
+        2788,
+        4468,
+        3078
+      ],
+      "baseline_reference_crop_native_px": [
+        4178,
+        2788,
+        4468,
+        3078
+      ]
+    },
+    {
+      "id": "bc_place_027",
+      "name": "松风镇",
+      "type": "town",
+      "world_point": [
+        819.2,
+        1975.487081339713
+      ],
+      "world_icon_rect": [
+        788.7,
+        1944.4870813397129,
+        849.7,
+        1975.4870813397129
+      ],
+      "nav_cell": [
+        52,
+        126
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 212.73532851879588,
+      "candidate_repair_crop_native_px": [
+        552,
+        1535,
+        842,
+        1825
+      ],
+      "baseline_reference_crop_native_px": [
+        552,
+        1535,
+        842,
+        1825
+      ]
+    },
+    {
+      "id": "bc_place_028",
+      "name": "玉泉镇",
+      "type": "town",
+      "world_point": [
+        2810.3655502392344,
+        2939.712918660287
+      ],
+      "world_icon_rect": [
+        2779.865550239234,
+        2908.712918660287,
+        2840.865550239234,
+        2939.712918660287
+      ],
+      "nav_cell": [
+        179,
+        187
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 195.927333468304,
+      "candidate_repair_crop_native_px": [
+        2245,
+        2355,
+        2535,
+        2645
+      ],
+      "baseline_reference_crop_native_px": [
+        2245,
+        2355,
+        2535,
+        2645
+      ]
+    },
+    {
+      "id": "bc_place_029",
+      "name": "临皋镇",
+      "type": "town",
+      "world_point": [
+        1062.2162679425837,
+        3692.2794258373206
+      ],
+      "world_icon_rect": [
+        1031.7162679425837,
+        3661.2794258373206,
+        1092.7162679425837,
+        3692.2794258373206
+      ],
+      "nav_cell": [
+        67,
+        235
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 80.49844718999243,
+      "candidate_repair_crop_native_px": [
+        758,
+        2995,
+        1048,
+        3285
+      ],
+      "baseline_reference_crop_native_px": [
+        758,
+        2995,
+        1048,
+        3285
+      ]
+    },
+    {
+      "id": "bc_place_030",
+      "name": "听风镇",
+      "type": "town",
+      "world_point": [
+        5883.345454545455,
+        305.73014354066987
+      ],
+      "world_icon_rect": [
+        5852.845454545455,
+        274.73014354066987,
+        5913.845454545455,
+        305.73014354066987
+      ],
+      "nav_cell": [
+        375,
+        19
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 949.7793427949463,
+      "candidate_repair_crop_native_px": [
+        4858,
+        115,
+        5148,
+        405
+      ],
+      "baseline_reference_crop_native_px": [
+        4858,
+        115,
+        5148,
+        405
+      ]
+    },
+    {
+      "id": "bc_place_031",
+      "name": "烟柳镇",
+      "type": "town",
+      "world_point": [
+        3852.9837320574165,
+        4531.077511961723
+      ],
+      "world_icon_rect": [
+        3822.483732057417,
+        4500.077511961723,
+        3883.483732057417,
+        4531.077511961723
+      ],
+      "nav_cell": [
+        245,
+        289
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 645.0432543636125,
+      "candidate_repair_crop_native_px": [
+        3132,
+        3708,
+        3422,
+        3998
+      ],
+      "baseline_reference_crop_native_px": [
+        3132,
+        3708,
+        3422,
+        3998
+      ]
+    },
+    {
+      "id": "bc_place_032",
+      "name": "桑落镇",
+      "type": "town",
+      "world_point": [
+        2998.507177033493,
+        4123.437320574163
+      ],
+      "world_icon_rect": [
+        2968.0071770334926,
+        4092.437320574163,
+        3029.0071770334926,
+        4123.437320574163
+      ],
+      "nav_cell": [
+        191,
+        263
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 370.5902319273944,
+      "candidate_repair_crop_native_px": [
+        2405,
+        3362,
+        2695,
+        3652
+      ],
+      "baseline_reference_crop_native_px": [
+        2405,
+        3362,
+        2695,
+        3652
+      ]
+    },
+    {
+      "id": "bc_place_033",
+      "name": "荷汀镇",
+      "type": "town",
+      "world_point": [
+        4182.231578947369,
+        3543.333971291866
+      ],
+      "world_icon_rect": [
+        4151.731578947369,
+        3512.333971291866,
+        4212.731578947369,
+        3543.333971291866
+      ],
+      "nav_cell": [
+        266,
+        226
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 278.52928032793966,
+      "candidate_repair_crop_native_px": [
+        3412,
+        2868,
+        3702,
+        3158
+      ],
+      "baseline_reference_crop_native_px": [
+        3412,
+        2868,
+        3702,
+        3158
+      ]
+    },
+    {
+      "id": "bc_place_034",
+      "name": "岚溪镇",
+      "type": "town",
+      "world_point": [
+        1211.1617224880383,
+        4366.453588516746
+      ],
+      "world_icon_rect": [
+        1180.6617224880383,
+        4335.453588516746,
+        1241.6617224880383,
+        4366.453588516746
+      ],
+      "nav_cell": [
+        77,
+        278
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 88.91344105364497,
+      "candidate_repair_crop_native_px": [
+        885,
+        3568,
+        1175,
+        3858
+      ],
+      "baseline_reference_crop_native_px": [
+        885,
+        3568,
+        1175,
+        3858
+      ]
+    },
+    {
+      "id": "bc_place_035",
+      "name": "望岚镇",
+      "type": "town",
+      "world_point": [
+        3139.6133971291865,
+        5848.068899521531
+      ],
+      "world_icon_rect": [
+        3109.1133971291865,
+        5817.068899521531,
+        3170.1133971291865,
+        5848.068899521531
+      ],
+      "nav_cell": [
+        200,
+        373
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 363.22554976212786,
+      "candidate_repair_crop_native_px": [
+        2525,
+        4828,
+        2815,
+        5118
+      ],
+      "baseline_reference_crop_native_px": [
+        2525,
+        4828,
+        2815,
+        5118
+      ]
+    },
+    {
+      "id": "bc_place_036",
+      "name": "雁回镇",
+      "type": "town",
+      "world_point": [
+        5993.094736842106,
+        6232.191387559808
+      ],
+      "world_icon_rect": [
+        5962.594736842106,
+        6201.1913875598075,
+        6023.594736842106,
+        6232.1913875598075
+      ],
+      "nav_cell": [
+        382,
+        397
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 248.81704121703564,
+      "candidate_repair_crop_native_px": [
+        4952,
+        5155,
+        5242,
+        5445
+      ],
+      "baseline_reference_crop_native_px": [
+        4952,
+        5155,
+        5242,
+        5445
+      ]
+    },
+    {
+      "id": "bc_place_037",
+      "name": "槐安镇",
+      "type": "town",
+      "world_point": [
+        6486.966507177033,
+        5573.695693779904
+      ],
+      "world_icon_rect": [
+        6456.466507177032,
+        5542.695693779904,
+        6517.466507177032,
+        5573.695693779904
+      ],
+      "nav_cell": [
+        413,
+        355
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 88.54829190899167,
+      "candidate_repair_crop_native_px": [
+        5372,
+        4595,
+        5662,
+        4885
+      ],
+      "baseline_reference_crop_native_px": [
+        5372,
+        4595,
+        5662,
+        4885
+      ]
+    },
+    {
+      "id": "bc_place_038",
+      "name": "流丹坊",
+      "type": "market",
+      "world_point": [
+        4511.47942583732,
+        1293.4736842105262
+      ],
+      "world_icon_rect": [
+        4482.47942583732,
+        1269.4736842105262,
+        4540.47942583732,
+        1293.4736842105262
+      ],
+      "nav_cell": [
+        287,
+        82
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 801.0869615715887,
+      "candidate_repair_crop_native_px": [
+        3692,
+        955,
+        3982,
+        1245
+      ],
+      "baseline_reference_crop_native_px": [
+        3692,
+        955,
+        3982,
+        1245
+      ]
+    },
+    {
+      "id": "bc_place_039",
+      "name": "忘机坊",
+      "type": "market",
+      "world_point": [
+        5193.492822966507,
+        7063.15023923445
+      ],
+      "world_icon_rect": [
+        5164.492822966507,
+        7039.15023923445,
+        5222.492822966507,
+        7063.15023923445
+      ],
+      "nav_cell": [
+        331,
+        450
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 405.9069844188444,
+      "candidate_repair_crop_native_px": [
+        4272,
+        5862,
+        4562,
+        6152
+      ],
+      "baseline_reference_crop_native_px": [
+        4272,
+        5862,
+        4562,
+        6152
+      ]
+    },
+    {
+      "id": "bc_place_040",
+      "name": "白蘋里",
+      "type": "village",
+      "world_point": [
+        6980.838277511962,
+        1787.3454545454547
+      ],
+      "world_icon_rect": [
+        6958.838277511961,
+        1762.3454545454547,
+        7002.838277511961,
+        1787.3454545454547
+      ],
+      "nav_cell": [
+        445,
+        114
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 33.1903600462544,
+      "candidate_repair_crop_native_px": [
+        5792,
+        1375,
+        6082,
+        1665
+      ],
+      "baseline_reference_crop_native_px": [
+        5792,
+        1375,
+        6082,
+        1665
+      ]
+    },
+    {
+      "id": "bc_place_041",
+      "name": "桑榆里",
+      "type": "village",
+      "world_point": [
+        2810.3655502392344,
+        5354.197129186603
+      ],
+      "world_icon_rect": [
+        2788.365550239234,
+        5329.197129186603,
+        2832.365550239234,
+        5354.197129186603
+      ],
+      "nav_cell": [
+        179,
+        341
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 81.21970204328504,
+      "candidate_repair_crop_native_px": [
+        2245,
+        4408,
+        2535,
+        4698
+      ],
+      "baseline_reference_crop_native_px": [
+        2245,
+        4408,
+        2535,
+        4698
+      ]
+    },
+    {
+      "id": "bc_place_042",
+      "name": "采薇里",
+      "type": "village",
+      "world_point": [
+        1712.8727272727274,
+        7000.436363636364
+      ],
+      "world_icon_rect": [
+        1690.8727272727274,
+        6975.436363636363,
+        1734.8727272727274,
+        7000.436363636363
+      ],
+      "nav_cell": [
+        109,
+        446
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 1056.665926393011,
+      "candidate_repair_crop_native_px": [
+        1312,
+        5808,
+        1602,
+        6098
+      ],
+      "baseline_reference_crop_native_px": [
+        1312,
+        5808,
+        1602,
+        6098
+      ]
+    },
+    {
+      "id": "bc_place_043",
+      "name": "澜浦渡",
+      "type": "dock",
+      "world_point": [
+        7035.712918660287,
+        1073.975119617225
+      ],
+      "world_icon_rect": [
+        7012.212918660287,
+        1037.975119617225,
+        7059.212918660287,
+        1073.975119617225
+      ],
+      "nav_cell": [
+        448,
+        68
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 61.51682696628622,
+      "candidate_repair_crop_native_px": [
+        5838,
+        768,
+        6128,
+        1058
+      ],
+      "baseline_reference_crop_native_px": [
+        5838,
+        768,
+        6128,
+        1058
+      ]
+    },
+    {
+      "id": "bc_place_044",
+      "name": "问津渡",
+      "type": "dock",
+      "world_point": [
+        5068.065071770335,
+        4013.688038277512
+      ],
+      "world_icon_rect": [
+        5044.565071770335,
+        3977.6880382775125,
+        5091.565071770335,
+        4013.6880382775125
+      ],
+      "nav_cell": [
+        323,
+        256
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 178.7355588572123,
+      "candidate_repair_crop_native_px": [
+        4165,
+        3268,
+        4455,
+        3558
+      ],
+      "baseline_reference_crop_native_px": [
+        4165,
+        3268,
+        4455,
+        3558
+      ]
+    },
+    {
+      "id": "bc_place_045",
+      "name": "朔雪岭",
+      "type": "wild",
+      "world_point": [
+        356.68516746411484,
+        1403.222966507177
+      ],
+      "world_icon_rect": [
+        349.6851674641148,
+        1396.2229665071773,
+        363.6851674641148,
+        1410.2229665071773
+      ],
+      "nav_cell": [
+        22,
+        89
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 100.41354490306574,
+      "candidate_repair_crop_native_px": [
+        158,
+        1048,
+        448,
+        1338
+      ],
+      "baseline_reference_crop_native_px": [
+        158,
+        1048,
+        448,
+        1338
+      ]
+    },
+    {
+      "id": "bc_place_046",
+      "name": "天门峡",
+      "type": "wild",
+      "world_point": [
+        1595.2842105263157,
+        2916.195215311005
+      ],
+      "world_icon_rect": [
+        1588.2842105263157,
+        2909.195215311005,
+        1602.2842105263157,
+        2923.195215311005
+      ],
+      "nav_cell": [
+        101,
+        186
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 153.28561576351512,
+      "candidate_repair_crop_native_px": [
+        1212,
+        2335,
+        1502,
+        2625
+      ],
+      "baseline_reference_crop_native_px": [
+        1212,
+        2335,
+        1502,
+        2625
+      ]
+    },
+    {
+      "id": "bc_place_047",
+      "name": "望辰台",
+      "type": "wild",
+      "world_point": [
+        164.62392344497607,
+        2751.571291866029
+      ],
+      "world_icon_rect": [
+        157.62392344497607,
+        2744.5712918660283,
+        171.62392344497607,
+        2758.5712918660283
+      ],
+      "nav_cell": [
+        10,
+        175
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 136.8,
+      "candidate_repair_crop_native_px": [
+        0,
+        2195,
+        285,
+        2485
+      ],
+      "baseline_reference_crop_native_px": [
+        0,
+        2195,
+        285,
+        2485
+      ]
+    },
+    {
+      "id": "bc_place_048",
+      "name": "眠龙岗",
+      "type": "wild",
+      "world_point": [
+        1885.335885167464,
+        1536.4899521531102
+      ],
+      "world_icon_rect": [
+        1878.3358851674639,
+        1529.4899521531102,
+        1892.3358851674639,
+        1543.4899521531102
+      ],
+      "nav_cell": [
+        120,
+        98
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 103.08831165558975,
+      "candidate_repair_crop_native_px": [
+        1458,
+        1162,
+        1748,
+        1452
+      ],
+      "baseline_reference_crop_native_px": [
+        1458,
+        1162,
+        1748,
+        1452
+      ]
+    },
+    {
+      "id": "bc_place_049",
+      "name": "朱明谷",
+      "type": "wild",
+      "world_point": [
+        2704.535885167464,
+        411.5598086124402
+      ],
+      "world_icon_rect": [
+        2697.535885167464,
+        404.5598086124402,
+        2711.535885167464,
+        418.5598086124402
+      ],
+      "nav_cell": [
+        172,
+        26
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 1346.2363536912826,
+      "candidate_repair_crop_native_px": [
+        2155,
+        205,
+        2445,
+        495
+      ],
+      "baseline_reference_crop_native_px": [
+        2155,
+        205,
+        2445,
+        495
+      ]
+    },
+    {
+      "id": "bc_place_050",
+      "name": "地火窟",
+      "type": "wild",
+      "world_point": [
+        3860.822966507177,
+        627.1387559808612
+      ],
+      "world_icon_rect": [
+        3853.8229665071776,
+        620.1387559808612,
+        3867.8229665071776,
+        634.1387559808612
+      ],
+      "nav_cell": [
+        246,
+        40
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 1268.722948480085,
+      "candidate_repair_crop_native_px": [
+        3138,
+        388,
+        3428,
+        678
+      ],
+      "baseline_reference_crop_native_px": [
+        3138,
+        388,
+        3428,
+        678
+      ]
+    },
+    {
+      "id": "bc_place_051",
+      "name": "赤霄石林",
+      "type": "wild",
+      "world_point": [
+        2700.616267942584,
+        1787.3454545454547
+      ],
+      "world_icon_rect": [
+        2693.616267942584,
+        1780.3454545454547,
+        2707.616267942584,
+        1794.3454545454547
+      ],
+      "nav_cell": [
+        172,
+        114
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 56.92099788303083,
+      "candidate_repair_crop_native_px": [
+        2152,
+        1375,
+        2442,
+        1665
+      ],
+      "baseline_reference_crop_native_px": [
+        2152,
+        1375,
+        2442,
+        1665
+      ]
+    },
+    {
+      "id": "bc_place_052",
+      "name": "石雾原",
+      "type": "wild",
+      "world_point": [
+        3359.111961722488,
+        2829.9636363636364
+      ],
+      "world_icon_rect": [
+        3352.1119617224886,
+        2822.9636363636364,
+        3366.1119617224886,
+        2836.9636363636364
+      ],
+      "nav_cell": [
+        214,
+        180
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 438.3286438278932,
+      "candidate_repair_crop_native_px": [
+        2712,
+        2262,
+        3002,
+        2552
+      ],
+      "baseline_reference_crop_native_px": [
+        2712,
+        2262,
+        3002,
+        2552
+      ]
+    },
+    {
+      "id": "bc_place_053",
+      "name": "潜龙原",
+      "type": "wild",
+      "world_point": [
+        3523.7358851674644,
+        2336.0918660287084
+      ],
+      "world_icon_rect": [
+        3516.7358851674644,
+        2329.0918660287084,
+        3530.7358851674644,
+        2343.0918660287084
+      ],
+      "nav_cell": [
+        224,
+        149
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 71.27636354360399,
+      "candidate_repair_crop_native_px": [
+        2852,
+        1842,
+        3142,
+        2132
+      ],
+      "baseline_reference_crop_native_px": [
+        2852,
+        1842,
+        3142,
+        2132
+      ]
+    },
+    {
+      "id": "bc_place_054",
+      "name": "潮生泽",
+      "type": "wild",
+      "world_point": [
+        6377.217224880383,
+        195.98086124401914
+      ],
+      "world_icon_rect": [
+        6370.217224880384,
+        188.98086124401914,
+        6384.217224880384,
+        202.98086124401914
+      ],
+      "nav_cell": [
+        406,
+        12
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 450.0143997696074,
+      "candidate_repair_crop_native_px": [
+        5278,
+        22,
+        5568,
+        312
+      ],
+      "baseline_reference_crop_native_px": [
+        5278,
+        22,
+        5568,
+        312
+      ]
+    },
+    {
+      "id": "bc_place_055",
+      "name": "沧溟滩",
+      "type": "wild",
+      "world_point": [
+        6749.58086124402,
+        1324.8306220095694
+      ],
+      "world_icon_rect": [
+        6742.58086124402,
+        1317.8306220095694,
+        6756.58086124402,
+        1331.8306220095694
+      ],
+      "nav_cell": [
+        430,
+        84
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 50.52840785142552,
+      "candidate_repair_crop_native_px": [
+        5595,
+        982,
+        5885,
+        1272
+      ],
+      "baseline_reference_crop_native_px": [
+        5595,
+        982,
+        5885,
+        1272
+      ]
+    },
+    {
+      "id": "bc_place_056",
+      "name": "沉舟湾",
+      "type": "wild",
+      "world_point": [
+        6142.04019138756,
+        1951.9693779904308
+      ],
+      "world_icon_rect": [
+        6135.040191387561,
+        1944.969377990431,
+        6149.040191387561,
+        1958.969377990431
+      ],
+      "nav_cell": [
+        391,
+        124
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 625.4164692426959,
+      "candidate_repair_crop_native_px": [
+        5078,
+        1515,
+        5368,
+        1805
+      ],
+      "baseline_reference_crop_native_px": [
+        5078,
+        1515,
+        5368,
+        1805
+      ]
+    },
+    {
+      "id": "bc_place_057",
+      "name": "镇星台",
+      "type": "wild",
+      "world_point": [
+        4021.5272727272727,
+        164.62392344497607
+      ],
+      "world_icon_rect": [
+        4014.527272727273,
+        157.62392344497607,
+        4028.527272727273,
+        171.62392344497607
+      ],
+      "nav_cell": [
+        256,
+        10
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 1760.528829641821,
+      "candidate_repair_crop_native_px": [
+        3275,
+        0,
+        3565,
+        285
+      ],
+      "baseline_reference_crop_native_px": [
+        3275,
+        0,
+        3565,
+        285
+      ]
+    },
+    {
+      "id": "bc_place_058",
+      "name": "回风峡",
+      "type": "wild",
+      "world_point": [
+        5444.348325358852,
+        1285.6344497607656
+      ],
+      "world_icon_rect": [
+        5437.348325358853,
+        1278.6344497607656,
+        5451.348325358853,
+        1292.6344497607656
+      ],
+      "nav_cell": [
+        347,
+        82
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 1175.7073105156742,
+      "candidate_repair_crop_native_px": [
+        4485,
+        948,
+        4775,
+        1238
+      ],
+      "baseline_reference_crop_native_px": [
+        4485,
+        948,
+        4775,
+        1238
+      ]
+    },
+    {
+      "id": "bc_place_059",
+      "name": "绝仙谷",
+      "type": "wild",
+      "world_point": [
+        5005.351196172249,
+        525.2287081339713
+      ],
+      "world_icon_rect": [
+        4998.351196172249,
+        518.2287081339713,
+        5012.351196172249,
+        532.2287081339713
+      ],
+      "nav_cell": [
+        319,
+        33
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 1695.6152865552965,
+      "candidate_repair_crop_native_px": [
+        4112,
+        302,
+        4402,
+        592
+      ],
+      "baseline_reference_crop_native_px": [
+        4112,
+        302,
+        4402,
+        592
+      ]
+    },
+    {
+      "id": "bc_place_060",
+      "name": "凌霄故墟",
+      "type": "wild",
+      "world_point": [
+        5334.599043062201,
+        195.98086124401914
+      ],
+      "world_icon_rect": [
+        5327.599043062201,
+        188.98086124401914,
+        5341.599043062201,
+        202.98086124401914
+      ],
+      "nav_cell": [
+        340,
+        12
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 1494.0043373431017,
+      "candidate_repair_crop_native_px": [
+        4392,
+        22,
+        4682,
+        312
+      ],
+      "baseline_reference_crop_native_px": [
+        4392,
+        22,
+        4682,
+        312
+      ]
+    },
+    {
+      "id": "bc_place_061",
+      "name": "回澜滩",
+      "type": "wild",
+      "world_point": [
+        2974.9894736842107,
+        3331.6746411483255
+      ],
+      "world_icon_rect": [
+        2967.9894736842107,
+        3324.6746411483255,
+        2981.9894736842107,
+        3338.6746411483255
+      ],
+      "nav_cell": [
+        189,
+        212
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 39.6,
+      "candidate_repair_crop_native_px": [
+        2385,
+        2688,
+        2675,
+        2978
+      ],
+      "baseline_reference_crop_native_px": [
+        2385,
+        2688,
+        2675,
+        2978
+      ]
+    },
+    {
+      "id": "bc_place_062",
+      "name": "涵虚泽",
+      "type": "wild",
+      "world_point": [
+        3523.7358851674644,
+        3457.1023923444977
+      ],
+      "world_icon_rect": [
+        3516.7358851674644,
+        3450.1023923444973,
+        3530.7358851674644,
+        3464.1023923444973
+      ],
+      "nav_cell": [
+        224,
+        220
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.010471204188481676,
+      "new_entrance_water_fraction": 0.010471204188481676,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 25.95996918334072,
+      "candidate_repair_crop_native_px": [
+        2852,
+        2795,
+        3142,
+        3085
+      ],
+      "baseline_reference_crop_native_px": [
+        2852,
+        2795,
+        3142,
+        3085
+      ]
+    },
+    {
+      "id": "bc_place_063",
+      "name": "蒹葭浦",
+      "type": "wild",
+      "world_point": [
+        4237.106220095694,
+        4256.7043062200955
+      ],
+      "world_icon_rect": [
+        4230.106220095694,
+        4249.7043062200955,
+        4244.106220095694,
+        4263.7043062200955
+      ],
+      "nav_cell": [
+        270,
+        271
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 230.00591296747135,
+      "candidate_repair_crop_native_px": [
+        3458,
+        3475,
+        3748,
+        3765
+      ],
+      "baseline_reference_crop_native_px": [
+        3458,
+        3475,
+        3748,
+        3765
+      ]
+    },
+    {
+      "id": "bc_place_064",
+      "name": "浮翠岭",
+      "type": "wild",
+      "world_point": [
+        176.38277511961724,
+        3323.835406698565
+      ],
+      "world_icon_rect": [
+        169.38277511961724,
+        3316.835406698565,
+        183.38277511961724,
+        3330.835406698565
+      ],
+      "nav_cell": [
+        11,
+        212
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 121.4433201127176,
+      "candidate_repair_crop_native_px": [
+        5,
+        2682,
+        295,
+        2972
+      ],
+      "baseline_reference_crop_native_px": [
+        5,
+        2682,
+        295,
+        2972
+      ]
+    },
+    {
+      "id": "bc_place_065",
+      "name": "千仞沟",
+      "type": "wild",
+      "world_point": [
+        262.61435406698564,
+        4303.73971291866
+      ],
+      "world_icon_rect": [
+        255.61435406698564,
+        4296.73971291866,
+        269.61435406698564,
+        4310.73971291866
+      ],
+      "nav_cell": [
+        16,
+        274
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 152.9470496609856,
+      "candidate_repair_crop_native_px": [
+        78,
+        3515,
+        368,
+        3805
+      ],
+      "baseline_reference_crop_native_px": [
+        78,
+        3515,
+        368,
+        3805
+      ]
+    },
+    {
+      "id": "bc_place_066",
+      "name": "问道崖",
+      "type": "wild",
+      "world_point": [
+        176.38277511961724,
+        4805.450717703349
+      ],
+      "world_icon_rect": [
+        169.38277511961724,
+        4798.450717703349,
+        183.38277511961724,
+        4812.450717703349
+      ],
+      "nav_cell": [
+        11,
+        306
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 286.39804468606275,
+      "candidate_repair_crop_native_px": [
+        5,
+        3942,
+        295,
+        4232
+      ],
+      "baseline_reference_crop_native_px": [
+        5,
+        3942,
+        295,
+        4232
+      ]
+    },
+    {
+      "id": "bc_place_067",
+      "name": "芙蓉原",
+      "type": "wild",
+      "world_point": [
+        2206.7444976076554,
+        5189.573205741627
+      ],
+      "world_icon_rect": [
+        2199.7444976076554,
+        5182.573205741627,
+        2213.7444976076554,
+        5196.573205741627
+      ],
+      "nav_cell": [
+        140,
+        331
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 266.1322979271776,
+      "candidate_repair_crop_native_px": [
+        1732,
+        4268,
+        2022,
+        4558
+      ],
+      "baseline_reference_crop_native_px": [
+        1732,
+        4268,
+        2022,
+        4558
+      ]
+    },
+    {
+      "id": "bc_place_068",
+      "name": "浣纱涧",
+      "type": "wild",
+      "world_point": [
+        3578.6105263157897,
+        6004.853588516747
+      ],
+      "world_icon_rect": [
+        3571.6105263157897,
+        5997.853588516748,
+        3585.6105263157897,
+        6011.853588516748
+      ],
+      "nav_cell": [
+        228,
+        383
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 163.23529030206674,
+      "candidate_repair_crop_native_px": [
+        2898,
+        4962,
+        3188,
+        5252
+      ],
+      "baseline_reference_crop_native_px": [
+        2898,
+        4962,
+        3188,
+        5252
+      ]
+    },
+    {
+      "id": "bc_place_069",
+      "name": "藏真洞天",
+      "type": "wild",
+      "world_point": [
+        2700.616267942584,
+        6067.567464114833
+      ],
+      "world_icon_rect": [
+        2693.616267942584,
+        6060.567464114833,
+        2707.616267942584,
+        6074.567464114833
+      ],
+      "nav_cell": [
+        172,
+        387
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 193.19627325598185,
+      "candidate_repair_crop_native_px": [
+        2152,
+        5015,
+        2442,
+        5305
+      ],
+      "baseline_reference_crop_native_px": [
+        2152,
+        5015,
+        2442,
+        5305
+      ]
+    },
+    {
+      "id": "bc_place_070",
+      "name": "东林地",
+      "type": "wild",
+      "world_point": [
+        4511.47942583732,
+        3872.581818181818
+      ],
+      "world_icon_rect": [
+        4504.47942583732,
+        3865.5818181818177,
+        4518.47942583732,
+        3879.5818181818177
+      ],
+      "nav_cell": [
+        287,
+        247
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 103.08831165558975,
+      "candidate_repair_crop_native_px": [
+        3692,
+        3148,
+        3982,
+        3438
+      ],
+      "baseline_reference_crop_native_px": [
+        3692,
+        3148,
+        3982,
+        3438
+      ]
+    },
+    {
+      "id": "bc_place_071",
+      "name": "灵草谷",
+      "type": "wild",
+      "world_point": [
+        4237.106220095694,
+        5463.9464114832535
+      ],
+      "world_icon_rect": [
+        4230.106220095694,
+        5456.9464114832535,
+        4244.106220095694,
+        5470.9464114832535
+      ],
+      "nav_cell": [
+        270,
+        348
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 569.2099788303084,
+      "candidate_repair_crop_native_px": [
+        3458,
+        4502,
+        3748,
+        4792
+      ],
+      "baseline_reference_crop_native_px": [
+        3458,
+        4502,
+        3748,
+        4792
+      ]
+    },
+    {
+      "id": "bc_place_072",
+      "name": "鹿鸣林",
+      "type": "wild",
+      "world_point": [
+        2974.9894736842107,
+        6835.812440191387
+      ],
+      "world_icon_rect": [
+        2967.9894736842107,
+        6828.812440191388,
+        2981.9894736842107,
+        6842.812440191388
+      ],
+      "nav_cell": [
+        189,
+        436
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 187.82204343473637,
+      "candidate_repair_crop_native_px": [
+        2385,
+        5668,
+        2675,
+        5958
+      ],
+      "baseline_reference_crop_native_px": [
+        2385,
+        5668,
+        2675,
+        5958
+      ]
+    },
+    {
+      "id": "bc_place_073",
+      "name": "雷泽",
+      "type": "wild",
+      "world_point": [
+        5499.222966507177,
+        3214.086124401914
+      ],
+      "world_icon_rect": [
+        5492.222966507177,
+        3207.0861244019143,
+        5506.222966507177,
+        3221.0861244019143
+      ],
+      "nav_cell": [
+        350,
+        205
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.042105263157894736,
+      "new_entrance_water_fraction": 0.042105263157894736,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 25.455844122715714,
+      "candidate_repair_crop_native_px": [
+        4532,
+        2588,
+        4822,
+        2878
+      ],
+      "baseline_reference_crop_native_px": [
+        4532,
+        2588,
+        4822,
+        2878
+      ]
+    },
+    {
+      "id": "bc_place_074",
+      "name": "落星墟",
+      "type": "wild",
+      "world_point": [
+        4895.601913875598,
+        5409.071770334928
+      ],
+      "world_icon_rect": [
+        4888.601913875598,
+        5402.071770334928,
+        4902.601913875598,
+        5416.071770334928
+      ],
+      "nav_cell": [
+        312,
+        345
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 577.6738179976655,
+      "candidate_repair_crop_native_px": [
+        4018,
+        4455,
+        4308,
+        4745
+      ],
+      "baseline_reference_crop_native_px": [
+        4018,
+        4455,
+        4308,
+        4745
+      ]
+    },
+    {
+      "id": "bc_place_075",
+      "name": "黑水泽",
+      "type": "wild",
+      "world_point": [
+        4331.177033492823,
+        7196.417224880383
+      ],
+      "world_icon_rect": [
+        4324.177033492823,
+        7189.417224880384,
+        4338.177033492823,
+        7203.417224880384
+      ],
+      "nav_cell": [
+        276,
+        459
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 92.55571295171357,
+      "candidate_repair_crop_native_px": [
+        3538,
+        5975,
+        3828,
+        6265
+      ],
+      "baseline_reference_crop_native_px": [
+        3538,
+        5975,
+        3828,
+        6265
+      ]
+    },
+    {
+      "id": "bc_place_076",
+      "name": "九幽涧",
+      "type": "wild",
+      "world_point": [
+        5644.2488038277515,
+        7133.703349282297
+      ],
+      "world_icon_rect": [
+        5637.2488038277515,
+        7126.703349282296,
+        5651.2488038277515,
+        7140.703349282296
+      ],
+      "nav_cell": [
+        360,
+        455
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 143.3686158125271,
+      "candidate_repair_crop_native_px": [
+        4655,
+        5922,
+        4945,
+        6212
+      ],
+      "baseline_reference_crop_native_px": [
+        4655,
+        5922,
+        4945,
+        6212
+      ]
+    },
+    {
+      "id": "bc_place_077",
+      "name": "沉璧渊",
+      "type": "wild",
+      "world_point": [
+        4895.601913875598,
+        6757.42009569378
+      ],
+      "world_icon_rect": [
+        4888.601913875598,
+        6750.42009569378,
+        4902.601913875598,
+        6764.42009569378
+      ],
+      "nav_cell": [
+        312,
+        431
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 198.130865843765,
+      "candidate_repair_crop_native_px": [
+        4018,
+        5602,
+        4308,
+        5892
+      ],
+      "baseline_reference_crop_native_px": [
+        4018,
+        5602,
+        4308,
+        5892
+      ]
+    },
+    {
+      "id": "bc_place_078",
+      "name": "无生谷",
+      "type": "wild",
+      "world_point": [
+        5389.473684210527,
+        5793.194258373206
+      ],
+      "world_icon_rect": [
+        5382.473684210527,
+        5786.194258373205,
+        5396.473684210527,
+        5800.194258373205
+      ],
+      "nav_cell": [
+        343,
+        369
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 526.7576292755522,
+      "candidate_repair_crop_native_px": [
+        4438,
+        4782,
+        4728,
+        5072
+      ],
+      "baseline_reference_crop_native_px": [
+        4438,
+        4782,
+        4728,
+        5072
+      ]
+    },
+    {
+      "id": "bc_place_079",
+      "name": "蚀月原",
+      "type": "wild",
+      "world_point": [
+        6232.191387559808,
+        4382.132057416268
+      ],
+      "world_icon_rect": [
+        6225.1913875598075,
+        4375.132057416268,
+        6239.1913875598075,
+        4389.132057416268
+      ],
+      "nav_cell": [
+        397,
+        279
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 136.84736022298713,
+      "candidate_repair_crop_native_px": [
+        5155,
+        3582,
+        5445,
+        3872
+      ],
+      "baseline_reference_crop_native_px": [
+        5155,
+        3582,
+        5445,
+        3872
+      ]
+    },
+    {
+      "id": "bc_place_080",
+      "name": "疏影潭",
+      "type": "wild",
+      "world_point": [
+        6134.2009569378,
+        5471.785645933014
+      ],
+      "world_icon_rect": [
+        6127.200956937799,
+        5464.785645933014,
+        6141.200956937799,
+        5478.785645933014
+      ],
+      "nav_cell": [
+        391,
+        349
+      ],
+      "existing_nav_value": 0,
+      "flags": [
+        "existing_water_colour_evidence"
+      ],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.20526315789473684,
+      "new_entrance_water_fraction": 0.20526315789473684,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 12.97998459167036,
+      "candidate_repair_crop_native_px": [
+        5072,
+        4508,
+        5362,
+        4798
+      ],
+      "baseline_reference_crop_native_px": [
+        5072,
+        4508,
+        5362,
+        4798
+      ]
+    },
+    {
+      "id": "bc_place_081",
+      "name": "埋骨原",
+      "type": "wild",
+      "world_point": [
+        6871.088995215311,
+        3433.5846889952154
+      ],
+      "world_icon_rect": [
+        6864.088995215312,
+        3426.5846889952154,
+        6878.088995215312,
+        3440.5846889952154
+      ],
+      "nav_cell": [
+        438,
+        219
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 35.455888086465976,
+      "candidate_repair_crop_native_px": [
+        5698,
+        2775,
+        5988,
+        3065
+      ],
+      "baseline_reference_crop_native_px": [
+        5698,
+        2775,
+        5988,
+        3065
+      ]
+    },
+    {
+      "id": "bc_place_082",
+      "name": "玄荒战墟",
+      "type": "wild",
+      "world_point": [
+        6486.966507177033,
+        3707.9578947368423
+      ],
+      "world_icon_rect": [
+        6479.966507177032,
+        3700.9578947368427,
+        6493.966507177032,
+        3714.9578947368427
+      ],
+      "nav_cell": [
+        413,
+        236
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 109.31203044496063,
+      "candidate_repair_crop_native_px": [
+        5372,
+        3008,
+        5662,
+        3298
+      ],
+      "baseline_reference_crop_native_px": [
+        5372,
+        3008,
+        5662,
+        3298
+      ]
+    },
+    {
+      "id": "bc_place_083",
+      "name": "寂照林",
+      "type": "wild",
+      "world_point": [
+        6980.838277511962,
+        2610.465071770335
+      ],
+      "world_icon_rect": [
+        6973.838277511961,
+        2603.465071770335,
+        6987.838277511961,
+        2617.465071770335
+      ],
+      "nav_cell": [
+        445,
+        166
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 58.048255787749554,
+      "candidate_repair_crop_native_px": [
+        5792,
+        2075,
+        6082,
+        2365
+      ],
+      "baseline_reference_crop_native_px": [
+        5792,
+        2075,
+        6082,
+        2365
+      ]
+    },
+    {
+      "id": "bc_place_084",
+      "name": "无名陵",
+      "type": "wild",
+      "world_point": [
+        6047.969377990431,
+        3268.960765550239
+      ],
+      "world_icon_rect": [
+        6040.96937799043,
+        3261.9607655502386,
+        6054.96937799043,
+        3275.9607655502386
+      ],
+      "nav_cell": [
+        385,
+        208
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 37.585103432077986,
+      "candidate_repair_crop_native_px": [
+        4998,
+        2635,
+        5288,
+        2925
+      ],
+      "baseline_reference_crop_native_px": [
+        4998,
+        2635,
+        5288,
+        2925
+      ]
+    },
+    {
+      "id": "bc_place_085",
+      "name": "天碑原",
+      "type": "wild",
+      "world_point": [
+        4895.601913875598,
+        2829.9636363636364
+      ],
+      "world_icon_rect": [
+        4888.601913875598,
+        2822.9636363636364,
+        4902.601913875598,
+        2836.9636363636364
+      ],
+      "nav_cell": [
+        312,
+        180
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 60.346996611264764,
+      "candidate_repair_crop_native_px": [
+        4018,
+        2262,
+        4308,
+        2552
+      ],
+      "baseline_reference_crop_native_px": [
+        4018,
+        2262,
+        4308,
+        2552
+      ]
+    },
+    {
+      "id": "bc_place_086",
+      "name": "镜月泽",
+      "type": "wild",
+      "world_point": [
+        5467.866028708134,
+        4241.025837320574
+      ],
+      "world_icon_rect": [
+        5460.866028708133,
+        4234.025837320574,
+        5474.866028708133,
+        4248.025837320574
+      ],
+      "nav_cell": [
+        348,
+        270
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 68.77790342835408,
+      "candidate_repair_crop_native_px": [
+        4505,
+        3462,
+        4795,
+        3752
+      ],
+      "baseline_reference_crop_native_px": [
+        4505,
+        3462,
+        4795,
+        3752
+      ]
+    },
+    {
+      "id": "bc_place_087",
+      "name": "碎星滩",
+      "type": "wild",
+      "world_point": [
+        4229.266985645933,
+        4758.415311004785
+      ],
+      "world_icon_rect": [
+        4222.266985645933,
+        4751.415311004785,
+        4236.266985645933,
+        4765.415311004785
+      ],
+      "nav_cell": [
+        269,
+        303
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 702.7472945518895,
+      "candidate_repair_crop_native_px": [
+        3452,
+        3902,
+        3742,
+        4192
+      ],
+      "baseline_reference_crop_native_px": [
+        3452,
+        3902,
+        3742,
+        4192
+      ]
+    },
+    {
+      "id": "bc_place_088",
+      "name": "沉锋谷",
+      "type": "wild",
+      "world_point": [
+        1712.8727272727274,
+        634.9779904306221
+      ],
+      "world_icon_rect": [
+        1705.8727272727274,
+        627.9779904306221,
+        1719.8727272727274,
+        641.9779904306221
+      ],
+      "nav_cell": [
+        109,
+        40
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 750.8481604159392,
+      "candidate_repair_crop_native_px": [
+        1312,
+        395,
+        1602,
+        685
+      ],
+      "baseline_reference_crop_native_px": [
+        1312,
+        395,
+        1602,
+        685
+      ]
+    },
+    {
+      "id": "bc_place_089",
+      "name": "丹穴山",
+      "type": "wild",
+      "world_point": [
+        4068.5626794258374,
+        1748.1492822966509
+      ],
+      "world_icon_rect": [
+        4061.562679425837,
+        1741.149282296651,
+        4075.562679425837,
+        1755.149282296651
+      ],
+      "nav_cell": [
+        259,
+        111
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 259.5247965031473,
+      "candidate_repair_crop_native_px": [
+        3315,
+        1342,
+        3605,
+        1632
+      ],
+      "baseline_reference_crop_native_px": [
+        3315,
+        1342,
+        3605,
+        1632
+      ]
+    },
+    {
+      "id": "bc_place_090",
+      "name": "天籁长峡",
+      "type": "wild",
+      "world_point": [
+        2081.316746411483,
+        2453.6803827751196
+      ],
+      "world_icon_rect": [
+        2074.316746411483,
+        2446.6803827751196,
+        2088.316746411483,
+        2460.6803827751196
+      ],
+      "nav_cell": [
+        132,
+        156
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 169.92610158536564,
+      "candidate_repair_crop_native_px": [
+        1625,
+        1942,
+        1915,
+        2232
+      ],
+      "baseline_reference_crop_native_px": [
+        1625,
+        1942,
+        1915,
+        2232
+      ]
+    },
+    {
+      "id": "bc_place_091",
+      "name": "砺青崖",
+      "type": "wild",
+      "world_point": [
+        4440.926315789474,
+        1991.1655502392346
+      ],
+      "world_icon_rect": [
+        4433.926315789474,
+        1984.1655502392346,
+        4447.926315789474,
+        1998.1655502392346
+      ],
+      "nav_cell": [
+        283,
+        127
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 128.89809928777075,
+      "candidate_repair_crop_native_px": [
+        3632,
+        1548,
+        3922,
+        1838
+      ],
+      "baseline_reference_crop_native_px": [
+        3632,
+        1548,
+        3922,
+        1838
+      ]
+    },
+    {
+      "id": "bc_place_092",
+      "name": "含章窟",
+      "type": "wild",
+      "world_point": [
+        4048.9645933014353,
+        2265.5387559808614
+      ],
+      "world_icon_rect": [
+        4041.9645933014353,
+        2258.5387559808614,
+        4055.9645933014353,
+        2272.5387559808614
+      ],
+      "nav_cell": [
+        258,
+        144
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 155.46832474816213,
+      "candidate_repair_crop_native_px": [
+        3298,
+        1782,
+        3588,
+        2072
+      ],
+      "baseline_reference_crop_native_px": [
+        3298,
+        1782,
+        3588,
+        2072
+      ]
+    },
+    {
+      "id": "bc_place_093",
+      "name": "蕴辉岩",
+      "type": "wild",
+      "world_point": [
+        5561.936842105263,
+        6765.259330143541
+      ],
+      "world_icon_rect": [
+        5554.936842105264,
+        6758.259330143541,
+        5568.936842105264,
+        6772.259330143541
+      ],
+      "nav_cell": [
+        354,
+        431
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 43.2,
+      "candidate_repair_crop_native_px": [
+        4585,
+        5608,
+        4875,
+        5898
+      ],
+      "baseline_reference_crop_native_px": [
+        4585,
+        5608,
+        4875,
+        5898
+      ]
+    },
+    {
+      "id": "bc_place_094",
+      "name": "长生坞",
+      "type": "wild",
+      "world_point": [
+        2371.3684210526317,
+        4695.701435406699
+      ],
+      "world_icon_rect": [
+        2364.3684210526317,
+        4688.701435406699,
+        2378.3684210526317,
+        4702.701435406699
+      ],
+      "nav_cell": [
+        151,
+        299
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 61.2,
+      "candidate_repair_crop_native_px": [
+        1872,
+        3848,
+        2162,
+        4138
+      ],
+      "baseline_reference_crop_native_px": [
+        1872,
+        3848,
+        2162,
+        4138
+      ]
+    },
+    {
+      "id": "bc_place_095",
+      "name": "万毒谷",
+      "type": "wild",
+      "world_point": [
+        2151.86985645933,
+        7165.06028708134
+      ],
+      "world_icon_rect": [
+        2144.86985645933,
+        7158.06028708134,
+        2158.86985645933,
+        7172.06028708134
+      ],
+      "nav_cell": [
+        137,
+        457
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 913.7194317732332,
+      "candidate_repair_crop_native_px": [
+        1685,
+        5948,
+        1975,
+        6238
+      ],
+      "baseline_reference_crop_native_px": [
+        1685,
+        5948,
+        1975,
+        6238
+      ]
+    },
+    {
+      "id": "bc_place_096",
+      "name": "采露坪",
+      "type": "wild",
+      "world_point": [
+        293.9712918660287,
+        3833.3856459330145
+      ],
+      "world_icon_rect": [
+        286.9712918660287,
+        3826.3856459330145,
+        300.9712918660287,
+        3840.3856459330145
+      ],
+      "nav_cell": [
+        18,
+        244
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 289.81676970113375,
+      "candidate_repair_crop_native_px": [
+        105,
+        3115,
+        395,
+        3405
+      ],
+      "baseline_reference_crop_native_px": [
+        105,
+        3115,
+        395,
+        3405
+      ]
+    },
+    {
+      "id": "bc_place_097",
+      "name": "玄霜坞",
+      "type": "wild",
+      "world_point": [
+        1767.7473684210527,
+        3378.71004784689
+      ],
+      "world_icon_rect": [
+        1760.7473684210527,
+        3371.71004784689,
+        1774.7473684210527,
+        3385.71004784689
+      ],
+      "nav_cell": [
+        112,
+        215
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 220.07162470432212,
+      "candidate_repair_crop_native_px": [
+        1358,
+        2728,
+        1648,
+        3018
+      ],
+      "baseline_reference_crop_native_px": [
+        1358,
+        2728,
+        1648,
+        3018
+      ]
+    },
+    {
+      "id": "bc_place_098",
+      "name": "盘龙涧",
+      "type": "wild",
+      "world_point": [
+        3319.9157894736845,
+        7086.667942583732
+      ],
+      "world_icon_rect": [
+        3312.9157894736845,
+        7079.667942583732,
+        3326.9157894736845,
+        7093.667942583732
+      ],
+      "nav_cell": [
+        211,
+        452
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 188.6482440946642,
+      "candidate_repair_crop_native_px": [
+        2678,
+        5882,
+        2968,
+        6172
+      ],
+      "baseline_reference_crop_native_px": [
+        2678,
+        5882,
+        2968,
+        6172
+      ]
+    },
+    {
+      "id": "bc_place_099",
+      "name": "不老林",
+      "type": "wild",
+      "world_point": [
+        3798.109090909091,
+        7055.311004784689
+      ],
+      "world_icon_rect": [
+        3791.109090909091,
+        7048.311004784689,
+        3805.109090909091,
+        7062.311004784689
+      ],
+      "nav_cell": [
+        242,
+        450
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 56.23379766652791,
+      "candidate_repair_crop_native_px": [
+        3085,
+        5855,
+        3375,
+        6145
+      ],
+      "baseline_reference_crop_native_px": [
+        3085,
+        5855,
+        3375,
+        6145
+      ]
+    },
+    {
+      "id": "bc_place_100",
+      "name": "松露台",
+      "type": "wild",
+      "world_point": [
+        176.38277511961724,
+        2116.593301435407
+      ],
+      "world_icon_rect": [
+        169.38277511961724,
+        2109.593301435407,
+        183.38277511961724,
+        2123.593301435407
+      ],
+      "nav_cell": [
+        11,
+        135
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 447.5163460701743,
+      "candidate_repair_crop_native_px": [
+        5,
+        1655,
+        295,
+        1945
+      ],
+      "baseline_reference_crop_native_px": [
+        5,
+        1655,
+        295,
+        1945
+      ]
+    },
+    {
+      "id": "bc_place_101",
+      "name": "濯缨泉",
+      "type": "wild",
+      "world_point": [
+        3468.8612440191387,
+        5134.698564593302
+      ],
+      "world_icon_rect": [
+        3461.861244019139,
+        5127.698564593302,
+        3475.861244019139,
+        5141.698564593302
+      ],
+      "nav_cell": [
+        221,
+        327
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.1702127659574468,
+      "new_entrance_water_fraction": 0.1702127659574468,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 14.84318025222358,
+      "candidate_repair_crop_native_px": [
+        2805,
+        4222,
+        3095,
+        4512
+      ],
+      "baseline_reference_crop_native_px": [
+        2805,
+        4222,
+        3095,
+        4512
+      ]
+    },
+    {
+      "id": "bc_place_102",
+      "name": "鸣玉溪",
+      "type": "wild",
+      "world_point": [
+        5463.9464114832535,
+        1951.9693779904308
+      ],
+      "world_icon_rect": [
+        5456.9464114832535,
+        1944.969377990431,
+        5470.9464114832535,
+        1958.969377990431
+      ],
+      "nav_cell": [
+        348,
+        124
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 688.955731524167,
+      "candidate_repair_crop_native_px": [
+        4502,
+        1515,
+        4792,
+        1805
+      ],
+      "baseline_reference_crop_native_px": [
+        4502,
+        1515,
+        4792,
+        1805
+      ]
+    },
+    {
+      "id": "bc_place_103",
+      "name": "紫泥湾",
+      "type": "wild",
+      "world_point": [
+        913.2708133971292,
+        6945.561722488039
+      ],
+      "world_icon_rect": [
+        906.2708133971291,
+        6938.561722488039,
+        920.2708133971291,
+        6952.561722488039
+      ],
+      "nav_cell": [
+        58,
+        443
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 1207.2942309147343,
+      "candidate_repair_crop_native_px": [
+        632,
+        5762,
+        922,
+        6052
+      ],
+      "baseline_reference_crop_native_px": [
+        632,
+        5762,
+        922,
+        6052
+      ]
+    },
+    {
+      "id": "bc_place_104",
+      "name": "凝素泽",
+      "type": "wild",
+      "world_point": [
+        6761.339712918661,
+        6451.68995215311
+      ],
+      "world_icon_rect": [
+        6754.33971291866,
+        6444.68995215311,
+        6768.33971291866,
+        6458.68995215311
+      ],
+      "nav_cell": [
+        431,
+        411
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 48.433046569465354,
+      "candidate_repair_crop_native_px": [
+        5605,
+        5342,
+        5895,
+        5632
+      ],
+      "baseline_reference_crop_native_px": [
+        5605,
+        5342,
+        5895,
+        5632
+      ]
+    },
+    {
+      "id": "bc_place_105",
+      "name": "藏蜕林",
+      "type": "wild",
+      "world_point": [
+        6651.59043062201,
+        2116.593301435407
+      ],
+      "world_icon_rect": [
+        6644.590430622011,
+        2109.593301435407,
+        6658.590430622011,
+        2123.593301435407
+      ],
+      "nav_cell": [
+        424,
+        135
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 109.72620470972284,
+      "candidate_repair_crop_native_px": [
+        5512,
+        1655,
+        5802,
+        1945
+      ],
+      "baseline_reference_crop_native_px": [
+        5512,
+        1655,
+        5802,
+        1945
+      ]
+    },
+    {
+      "id": "bc_place_106",
+      "name": "太和城",
+      "type": "city",
+      "world_point": [
+        450.75598086124404,
+        5307.161722488038
+      ],
+      "world_icon_rect": [
+        407.2559808612441,
+        5248.161722488038,
+        494.2559808612441,
+        5307.161722488038
+      ],
+      "nav_cell": [
+        28,
+        338
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 244.90585946440729,
+      "candidate_repair_crop_native_px": [
+        238,
+        4368,
+        528,
+        4658
+      ],
+      "baseline_reference_crop_native_px": [
+        238,
+        4368,
+        528,
+        4658
+      ]
+    },
+    {
+      "id": "bc_place_107",
+      "name": "洗心镇",
+      "type": "town",
+      "world_point": [
+        717.2899521531101,
+        6020.532057416268
+      ],
+      "world_icon_rect": [
+        686.7899521531101,
+        5989.532057416269,
+        747.7899521531101,
+        6020.532057416269
+      ],
+      "nav_cell": [
+        45,
+        384
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 355.380359614878,
+      "candidate_repair_crop_native_px": [
+        465,
+        4975,
+        755,
+        5265
+      ],
+      "baseline_reference_crop_native_px": [
+        465,
+        4975,
+        755,
+        5265
+      ]
+    },
+    {
+      "id": "bc_place_108",
+      "name": "松月坊",
+      "type": "market",
+      "world_point": [
+        1109.2516746411484,
+        5095.502392344498
+      ],
+      "world_icon_rect": [
+        1080.2516746411484,
+        5071.502392344498,
+        1138.2516746411484,
+        5095.502392344498
+      ],
+      "nav_cell": [
+        70,
+        325
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 403.40887446857187,
+      "candidate_repair_crop_native_px": [
+        798,
+        4188,
+        1088,
+        4478
+      ],
+      "baseline_reference_crop_native_px": [
+        798,
+        4188,
+        1088,
+        4478
+      ]
+    },
+    {
+      "id": "bc_place_109",
+      "name": "坐忘谷",
+      "type": "wild",
+      "world_point": [
+        176.38277511961724,
+        7165.06028708134
+      ],
+      "world_icon_rect": [
+        169.38277511961724,
+        7158.06028708134,
+        183.38277511961724,
+        7172.06028708134
+      ],
+      "nav_cell": [
+        11,
+        457
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 1543.598393365321,
+      "candidate_repair_crop_native_px": [
+        5,
+        5948,
+        295,
+        6238
+      ],
+      "baseline_reference_crop_native_px": [
+        5,
+        5948,
+        295,
+        6238
+      ]
+    },
+    {
+      "id": "bc_place_110",
+      "name": "清籁涧",
+      "type": "wild",
+      "world_point": [
+        1336.5894736842106,
+        6216.512918660287
+      ],
+      "world_icon_rect": [
+        1329.5894736842106,
+        6209.512918660286,
+        1343.5894736842106,
+        6223.512918660286
+      ],
+      "nav_cell": [
+        85,
+        396
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 456.1073557837014,
+      "candidate_repair_crop_native_px": [
+        992,
+        5142,
+        1282,
+        5432
+      ],
+      "baseline_reference_crop_native_px": [
+        992,
+        5142,
+        1282,
+        5432
+      ]
+    },
+    {
+      "id": "bc_place_111",
+      "name": "太素原",
+      "type": "wild",
+      "world_point": [
+        286.13205741626797,
+        5848.068899521531
+      ],
+      "world_icon_rect": [
+        279.13205741626797,
+        5841.068899521531,
+        293.13205741626797,
+        5855.068899521531
+      ],
+      "nav_cell": [
+        18,
+        373
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 221.48047317991714,
+      "candidate_repair_crop_native_px": [
+        98,
+        4828,
+        388,
+        5118
+      ],
+      "baseline_reference_crop_native_px": [
+        98,
+        4828,
+        388,
+        5118
+      ]
+    },
+    {
+      "id": "bc_place_112",
+      "name": "金阙城",
+      "type": "city",
+      "world_point": [
+        2371.3684210526317,
+        548.7464114832536
+      ],
+      "world_icon_rect": [
+        2327.8684210526317,
+        489.7464114832536,
+        2414.8684210526317,
+        548.7464114832536
+      ],
+      "nav_cell": [
+        151,
+        35
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 1127.5128735406972,
+      "candidate_repair_crop_native_px": [
+        1872,
+        322,
+        2162,
+        612
+      ],
+      "baseline_reference_crop_native_px": [
+        1872,
+        322,
+        2162,
+        612
+      ]
+    },
+    {
+      "id": "bc_place_113",
+      "name": "含光镇",
+      "type": "town",
+      "world_point": [
+        3029.864114832536,
+        305.73014354066987
+      ],
+      "world_icon_rect": [
+        2999.364114832536,
+        274.73014354066987,
+        3060.364114832536,
+        305.73014354066987
+      ],
+      "nav_cell": [
+        193,
+        19
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 1534.0562701543904,
+      "candidate_repair_crop_native_px": [
+        2432,
+        115,
+        2722,
+        405
+      ],
+      "baseline_reference_crop_native_px": [
+        2432,
+        115,
+        2722,
+        405
+      ]
+    },
+    {
+      "id": "bc_place_114",
+      "name": "琼华坊",
+      "type": "market",
+      "world_point": [
+        3359.111961722488,
+        799.6019138755981
+      ],
+      "world_icon_rect": [
+        3330.1119617224886,
+        775.6019138755983,
+        3388.1119617224886,
+        799.6019138755983
+      ],
+      "nav_cell": [
+        214,
+        51
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 1011.6064056736691,
+      "candidate_repair_crop_native_px": [
+        2712,
+        535,
+        3002,
+        825
+      ],
+      "baseline_reference_crop_native_px": [
+        2712,
+        535,
+        3002,
+        825
+      ]
+    },
+    {
+      "id": "bc_place_115",
+      "name": "丹丘原",
+      "type": "wild",
+      "world_point": [
+        1328.7502392344497,
+        360.6047846889952
+      ],
+      "world_icon_rect": [
+        1321.7502392344497,
+        353.6047846889952,
+        1335.7502392344497,
+        367.6047846889952
+      ],
+      "nav_cell": [
+        84,
+        23
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 638.7438923387057,
+      "candidate_repair_crop_native_px": [
+        985,
+        162,
+        1275,
+        452
+      ],
+      "baseline_reference_crop_native_px": [
+        985,
+        162,
+        1275,
+        452
+      ]
+    },
+    {
+      "id": "bc_place_116",
+      "name": "垂虹岭",
+      "type": "wild",
+      "world_point": [
+        2535.9923444976075,
+        1230.7598086124403
+      ],
+      "world_icon_rect": [
+        2528.9923444976075,
+        1223.7598086124403,
+        2542.9923444976075,
+        1237.7598086124403
+      ],
+      "nav_cell": [
+        161,
+        78
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 530.9725416629376,
+      "candidate_repair_crop_native_px": [
+        2012,
+        902,
+        2302,
+        1192
+      ],
+      "baseline_reference_crop_native_px": [
+        2012,
+        902,
+        2302,
+        1192
+      ]
+    },
+    {
+      "id": "bc_place_117",
+      "name": "断岳山",
+      "type": "wild",
+      "world_point": [
+        3515.8966507177033,
+        376.28325358851674
+      ],
+      "world_icon_rect": [
+        3508.896650717703,
+        369.2832535885168,
+        3522.896650717703,
+        383.2832535885168
+      ],
+      "nav_cell": [
+        224,
+        24
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 1441.3044092071598,
+      "candidate_repair_crop_native_px": [
+        2845,
+        175,
+        3135,
+        465
+      ],
+      "baseline_reference_crop_native_px": [
+        2845,
+        175,
+        3135,
+        465
+      ]
+    },
+    {
+      "id": "bc_place_118",
+      "name": "永夜关",
+      "type": "city",
+      "world_point": [
+        6596.715789473685,
+        4146.955023923445
+      ],
+      "world_icon_rect": [
+        6553.215789473685,
+        4087.955023923445,
+        6640.215789473685,
+        4146.955023923445
+      ],
+      "nav_cell": [
+        420,
+        264
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 58.603754145958945,
+      "candidate_repair_crop_native_px": [
+        5465,
+        3382,
+        5755,
+        3672
+      ],
+      "baseline_reference_crop_native_px": [
+        5465,
+        3382,
+        5755,
+        3672
+      ]
+    },
+    {
+      "id": "bc_place_119",
+      "name": "听澜镇",
+      "type": "town",
+      "world_point": [
+        6651.59043062201,
+        4805.450717703349
+      ],
+      "world_icon_rect": [
+        6621.090430622011,
+        4774.450717703349,
+        6682.090430622011,
+        4805.450717703349
+      ],
+      "nav_cell": [
+        424,
+        306
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 228.81957958181815,
+      "candidate_repair_crop_native_px": [
+        5512,
+        3942,
+        5802,
+        4232
+      ],
+      "baseline_reference_crop_native_px": [
+        5512,
+        3942,
+        5802,
+        4232
+      ]
+    },
+    {
+      "id": "bc_place_120",
+      "name": "夜泊坊",
+      "type": "market",
+      "world_point": [
+        6047.969377990431,
+        3927.456459330144
+      ],
+      "world_icon_rect": [
+        6018.96937799043,
+        3903.456459330144,
+        6076.96937799043,
+        3927.456459330144
+      ],
+      "nav_cell": [
+        385,
+        250
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 169.2382935390215,
+      "candidate_repair_crop_native_px": [
+        4998,
+        3195,
+        5288,
+        3485
+      ],
+      "baseline_reference_crop_native_px": [
+        4998,
+        3195,
+        5288,
+        3485
+      ]
+    },
+    {
+      "id": "bc_place_121",
+      "name": "葬日谷",
+      "type": "wild",
+      "world_point": [
+        6428.172248803828,
+        5115.100478468899
+      ],
+      "world_icon_rect": [
+        6421.172248803829,
+        5108.100478468899,
+        6435.172248803829,
+        5122.100478468899
+      ],
+      "nav_cell": [
+        410,
+        326
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 276.6149670570991,
+      "candidate_repair_crop_native_px": [
+        5322,
+        4205,
+        5612,
+        4495
+      ],
+      "baseline_reference_crop_native_px": [
+        5322,
+        4205,
+        5612,
+        4495
+      ]
+    },
+    {
+      "id": "bc_place_122",
+      "name": "晦明原",
+      "type": "wild",
+      "world_point": [
+        6545.76076555024,
+        6044.049760765551
+      ],
+      "world_icon_rect": [
+        6538.76076555024,
+        6037.049760765551,
+        6552.76076555024,
+        6051.049760765551
+      ],
+      "nav_cell": [
+        417,
+        385
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 61.0940258945177,
+      "candidate_repair_crop_native_px": [
+        5422,
+        4995,
+        5712,
+        5285
+      ],
+      "baseline_reference_crop_native_px": [
+        5422,
+        4995,
+        5712,
+        5285
+      ]
+    },
+    {
+      "id": "bc_place_123",
+      "name": "黑瘴大泽",
+      "type": "wild",
+      "world_point": [
+        5444.348325358852,
+        5024.949282296651
+      ],
+      "world_icon_rect": [
+        5437.348325358853,
+        5017.949282296651,
+        5451.348325358853,
+        5031.949282296651
+      ],
+      "nav_cell": [
+        347,
+        320
+      ],
+      "existing_nav_value": 0,
+      "flags": [],
+      "review_score": 0.0,
+      "old_entrance_water_fraction": 0.0,
+      "new_entrance_water_fraction": 0.0,
+      "added_entrance_water_fraction": 0.0,
+      "added_icon_water_fraction": 0.0,
+      "muted_colour_review_fraction": 0.0,
+      "added_dark_mass_fraction": 0.0,
+      "nearest_detected_new_water_world_units": 63.69050164663488,
+      "candidate_repair_crop_native_px": [
+        4485,
+        4128,
+        4775,
+        4418
+      ],
+      "baseline_reference_crop_native_px": [
+        4485,
+        4128,
+        4775,
+        4418
+      ]
+    }
+  ]
+}

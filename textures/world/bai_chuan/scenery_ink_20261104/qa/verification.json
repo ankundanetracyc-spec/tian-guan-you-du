@@ -1,0 +1,205 @@
+{
+  "version": 1,
+  "date": "2026-11-04",
+  "all_15_expected_ids": true,
+  "source_hashes_match_original_generator_outputs": true,
+  "production_atlas_minimum_cell_margin_px": 35,
+  "native_atlas_sizes": [
+    [
+      1254,
+      1254
+    ],
+    [
+      1254,
+      1254
+    ]
+  ],
+  "production_atlas_sizes": [
+    [
+      1404,
+      1404
+    ],
+    [
+      1404,
+      1404
+    ]
+  ],
+  "source_alpha_noise_retained_in_native_files": true,
+  "sprite_alpha_noise_cleanup_recorded_in_catalog": true,
+  "no_visible_fluorescent_rgb_remaining_in_sprites": true,
+  "local_visual_qa": [
+    "native atlases on paper",
+    "native atlases on dark",
+    "all 15 sprite contact sheet on paper",
+    "all 15 sprite contact sheet on dark",
+    "clean padded transparent atlases A and B",
+    "transparent willow group close-up"
+  ],
+  "sprites": [
+    {
+      "id": "pine_single",
+      "actual_size": [
+        346,
+        308
+      ],
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "visible_fluorescent_pixels": 0
+    },
+    {
+      "id": "broadleaf_single",
+      "actual_size": [
+        348,
+        317
+      ],
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "visible_fluorescent_pixels": 0
+    },
+    {
+      "id": "willow_single",
+      "actual_size": [
+        303,
+        300
+      ],
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "visible_fluorescent_pixels": 0
+    },
+    {
+      "id": "pine_group",
+      "actual_size": [
+        355,
+        283
+      ],
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "visible_fluorescent_pixels": 0
+    },
+    {
+      "id": "mixed_group",
+      "actual_size": [
+        372,
+        283
+      ],
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "visible_fluorescent_pixels": 0
+    },
+    {
+      "id": "willow_group",
+      "actual_size": [
+        375,
+        268
+      ],
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "visible_fluorescent_pixels": 0
+    },
+    {
+      "id": "shrub",
+      "actual_size": [
+        301,
+        202
+      ],
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 253,
+      "visible_fluorescent_pixels": 0
+    },
+    {
+      "id": "reeds",
+      "actual_size": [
+        283,
+        219
+      ],
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 249,
+      "visible_fluorescent_pixels": 0
+    },
+    {
+      "id": "rock_group",
+      "actual_size": [
+        318,
+        175
+      ],
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "visible_fluorescent_pixels": 0
+    },
+    {
+      "id": "road_dirt",
+      "actual_size": [
+        322,
+        120
+      ],
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "visible_fluorescent_pixels": 0
+    },
+    {
+      "id": "road_woodland",
+      "actual_size": [
+        319,
+        119
+      ],
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 254,
+      "visible_fluorescent_pixels": 0
+    },
+    {
+      "id": "road_stone",
+      "actual_size": [
+        322,
+        105
+      ],
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "visible_fluorescent_pixels": 0
+    },
+    {
+      "id": "bridge_wood",
+      "actual_size": [
+        537,
+        164
+      ],
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "visible_fluorescent_pixels": 0
+    },
+    {
+      "id": "bridge_stone",
+      "actual_size": [
+        510,
+        186
+      ],
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "visible_fluorescent_pixels": 0
+    },
+    {
+      "id": "roadside_stones",
+      "actual_size": [
+        578,
+        69
+      ],
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "visible_fluorescent_pixels": 0
+    }
+  ]
+}

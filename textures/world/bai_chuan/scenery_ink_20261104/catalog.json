@@ -1,0 +1,1179 @@
+{
+  "version": 1,
+  "source_records": [
+    {
+      "id": "atlas_a_vegetation",
+      "tool": "image_gen.imagegen",
+      "mode": "built-in",
+      "source_path": "res://textures/world/bai_chuan/scenery_ink_20261104/source/atlas_a_vegetation_native.png",
+      "prompt_path": "res://textures/world/bai_chuan/scenery_ink_20261104/prompts/atlas_a_vegetation.prompt.json",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "grid": [
+        3,
+        3
+      ],
+      "sha256": "81c7c19da91555e201997882e955f514f70730f6f44c7ebf502b23246adf83c3",
+      "original_source_alpha_preserved": true,
+      "derived_near_zero_alpha_cleanup": {
+        "alpha_1_2_noise_and_fluorescent_alpha_le_12_pixels_removed": 398992,
+        "other_rgba_pixels_preserved": true,
+        "fluorescent_rgb_alpha_max_in_source": 11
+      },
+      "split_method": "exact equal-cell crop; alpha 1/2 residual and fluorescent RGB alpha<=12 cleared; bbox at remaining alpha >=3; add 4px transparent padding; no resize, repaint or recolour",
+      "alpha": {
+        "mode": "RGBA",
+        "size": [
+          1254,
+          1254
+        ],
+        "fully_transparent": 728106,
+        "partially_transparent": 844367,
+        "fully_opaque": 43,
+        "transparent_fraction": 0.4630197721358638
+      },
+      "cells": [
+        {
+          "id": "pine_single",
+          "cell_bounds": [
+            0,
+            0,
+            418,
+            418
+          ],
+          "signal_bbox_in_cell": [
+            33,
+            69,
+            371,
+            369
+          ],
+          "crop_bbox_in_cell": [
+            33,
+            69,
+            371,
+            369
+          ],
+          "signal_margins": [
+            33,
+            69,
+            47,
+            49
+          ],
+          "final_size": [
+            346,
+            308
+          ],
+          "alpha": {
+            "mode": "RGBA",
+            "size": [
+              346,
+              308
+            ],
+            "fully_transparent": 58839,
+            "partially_transparent": 47727,
+            "fully_opaque": 2,
+            "transparent_fraction": 0.5521263418662262
+          }
+        },
+        {
+          "id": "broadleaf_single",
+          "cell_bounds": [
+            418,
+            0,
+            836,
+            418
+          ],
+          "signal_bbox_in_cell": [
+            33,
+            63,
+            373,
+            372
+          ],
+          "crop_bbox_in_cell": [
+            33,
+            63,
+            373,
+            372
+          ],
+          "signal_margins": [
+            33,
+            63,
+            45,
+            46
+          ],
+          "final_size": [
+            348,
+            317
+          ],
+          "alpha": {
+            "mode": "RGBA",
+            "size": [
+              348,
+              317
+            ],
+            "fully_transparent": 46592,
+            "partially_transparent": 63721,
+            "fully_opaque": 3,
+            "transparent_fraction": 0.42235033902607055
+          }
+        },
+        {
+          "id": "willow_single",
+          "cell_bounds": [
+            836,
+            0,
+            1254,
+            418
+          ],
+          "signal_bbox_in_cell": [
+            59,
+            78,
+            354,
+            370
+          ],
+          "crop_bbox_in_cell": [
+            59,
+            78,
+            354,
+            370
+          ],
+          "signal_margins": [
+            59,
+            78,
+            64,
+            48
+          ],
+          "final_size": [
+            303,
+            300
+          ],
+          "alpha": {
+            "mode": "RGBA",
+            "size": [
+              303,
+              300
+            ],
+            "fully_transparent": 34319,
+            "partially_transparent": 56578,
+            "fully_opaque": 3,
+            "transparent_fraction": 0.37754675467546756
+          }
+        },
+        {
+          "id": "pine_group",
+          "cell_bounds": [
+            0,
+            418,
+            418,
+            836
+          ],
+          "signal_bbox_in_cell": [
+            33,
+            63,
+            380,
+            338
+          ],
+          "crop_bbox_in_cell": [
+            33,
+            63,
+            380,
+            338
+          ],
+          "signal_margins": [
+            33,
+            63,
+            38,
+            80
+          ],
+          "final_size": [
+            355,
+            283
+          ],
+          "alpha": {
+            "mode": "RGBA",
+            "size": [
+              355,
+              283
+            ],
+            "fully_transparent": 47363,
+            "partially_transparent": 53097,
+            "fully_opaque": 5,
+            "transparent_fraction": 0.47143781416413677
+          }
+        },
+        {
+          "id": "mixed_group",
+          "cell_bounds": [
+            418,
+            418,
+            836,
+            836
+          ],
+          "signal_bbox_in_cell": [
+            17,
+            63,
+            381,
+            338
+          ],
+          "crop_bbox_in_cell": [
+            17,
+            63,
+            381,
+            338
+          ],
+          "signal_margins": [
+            17,
+            63,
+            37,
+            80
+          ],
+          "final_size": [
+            372,
+            283
+          ],
+          "alpha": {
+            "mode": "RGBA",
+            "size": [
+              372,
+              283
+            ],
+            "fully_transparent": 41079,
+            "partially_transparent": 64192,
+            "fully_opaque": 5,
+            "transparent_fraction": 0.39020289524677987
+          }
+        },
+        {
+          "id": "willow_group",
+          "cell_bounds": [
+            836,
+            418,
+            1254,
+            836
+          ],
+          "signal_bbox_in_cell": [
+            19,
+            79,
+            386,
+            339
+          ],
+          "crop_bbox_in_cell": [
+            19,
+            79,
+            386,
+            339
+          ],
+          "signal_margins": [
+            19,
+            79,
+            32,
+            79
+          ],
+          "final_size": [
+            375,
+            268
+          ],
+          "alpha": {
+            "mode": "RGBA",
+            "size": [
+              375,
+              268
+            ],
+            "fully_transparent": 39919,
+            "partially_transparent": 60578,
+            "fully_opaque": 3,
+            "transparent_fraction": 0.3972039800995025
+          }
+        },
+        {
+          "id": "shrub",
+          "cell_bounds": [
+            0,
+            836,
+            418,
+            1254
+          ],
+          "signal_bbox_in_cell": [
+            56,
+            112,
+            349,
+            306
+          ],
+          "crop_bbox_in_cell": [
+            56,
+            112,
+            349,
+            306
+          ],
+          "signal_margins": [
+            56,
+            112,
+            69,
+            112
+          ],
+          "final_size": [
+            301,
+            202
+          ],
+          "alpha": {
+            "mode": "RGBA",
+            "size": [
+              301,
+              202
+            ],
+            "fully_transparent": 24800,
+            "partially_transparent": 36002,
+            "fully_opaque": 0,
+            "transparent_fraction": 0.4078813196934311
+          }
+        },
+        {
+          "id": "reeds",
+          "cell_bounds": [
+            418,
+            836,
+            836,
+            1254
+          ],
+          "signal_bbox_in_cell": [
+            66,
+            96,
+            341,
+            307
+          ],
+          "crop_bbox_in_cell": [
+            66,
+            96,
+            341,
+            307
+          ],
+          "signal_margins": [
+            66,
+            96,
+            77,
+            111
+          ],
+          "final_size": [
+            283,
+            219
+          ],
+          "alpha": {
+            "mode": "RGBA",
+            "size": [
+              283,
+              219
+            ],
+            "fully_transparent": 30283,
+            "partially_transparent": 31694,
+            "fully_opaque": 0,
+            "transparent_fraction": 0.48861674492150314
+          }
+        },
+        {
+          "id": "rock_group",
+          "cell_bounds": [
+            836,
+            836,
+            1254,
+            1254
+          ],
+          "signal_bbox_in_cell": [
+            51,
+            133,
+            361,
+            300
+          ],
+          "crop_bbox_in_cell": [
+            51,
+            133,
+            361,
+            300
+          ],
+          "signal_margins": [
+            51,
+            133,
+            57,
+            118
+          ],
+          "final_size": [
+            318,
+            175
+          ],
+          "alpha": {
+            "mode": "RGBA",
+            "size": [
+              318,
+              175
+            ],
+            "fully_transparent": 23842,
+            "partially_transparent": 31786,
+            "fully_opaque": 22,
+            "transparent_fraction": 0.42842767295597484
+          }
+        }
+      ],
+      "generation_output": {
+        "id": "atlas_a_vegetation",
+        "original_output_path": "E:\\tmp\\CodexData\\generated_images\\01a1a6b5-1231-70b3-bcb6-650bc733d0d4\\exec-66861973-2960-4b05-89e3-fd8b702d4e0b.png",
+        "output_hint": "Generated images are saved to E:\\tmp\\CodexData\\generated_images\\01a1a6b5-1231-70b3-bcb6-650bc733d0d4 as E:\\tmp\\CodexData\\generated_images\\01a1a6b5-1231-70b3-bcb6-650bc733d0d4\\exec-66861973-2960-4b05-89e3-fd8b702d4e0b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "tool": "image_gen.imagegen",
+        "mode": "built-in",
+        "native_size": [
+          1254,
+          1254
+        ],
+        "workspace_original": "source/atlas_a_vegetation_native.png",
+        "prompt": "prompts/atlas_a_vegetation.prompt.json"
+      },
+      "production_atlas": {
+        "size": [
+          1404,
+          1404
+        ],
+        "grid": [
+          3,
+          3
+        ],
+        "cells": [
+          {
+            "id": "pine_single",
+            "bounds": [
+              0,
+              0,
+              468,
+              468
+            ],
+            "object_margins": [
+              65,
+              84,
+              65,
+              84
+            ]
+          },
+          {
+            "id": "broadleaf_single",
+            "bounds": [
+              468,
+              0,
+              936,
+              468
+            ],
+            "object_margins": [
+              64,
+              79,
+              64,
+              80
+            ]
+          },
+          {
+            "id": "willow_single",
+            "bounds": [
+              936,
+              0,
+              1404,
+              468
+            ],
+            "object_margins": [
+              86,
+              88,
+              87,
+              88
+            ]
+          },
+          {
+            "id": "pine_group",
+            "bounds": [
+              0,
+              468,
+              468,
+              936
+            ],
+            "object_margins": [
+              60,
+              96,
+              61,
+              97
+            ]
+          },
+          {
+            "id": "mixed_group",
+            "bounds": [
+              468,
+              468,
+              936,
+              936
+            ],
+            "object_margins": [
+              52,
+              96,
+              52,
+              97
+            ]
+          },
+          {
+            "id": "willow_group",
+            "bounds": [
+              936,
+              468,
+              1404,
+              936
+            ],
+            "object_margins": [
+              50,
+              104,
+              51,
+              104
+            ]
+          },
+          {
+            "id": "shrub",
+            "bounds": [
+              0,
+              936,
+              468,
+              1404
+            ],
+            "object_margins": [
+              87,
+              137,
+              88,
+              137
+            ]
+          },
+          {
+            "id": "reeds",
+            "bounds": [
+              468,
+              936,
+              936,
+              1404
+            ],
+            "object_margins": [
+              96,
+              128,
+              97,
+              129
+            ]
+          },
+          {
+            "id": "rock_group",
+            "bounds": [
+              936,
+              936,
+              1404,
+              1404
+            ],
+            "object_margins": [
+              79,
+              150,
+              79,
+              151
+            ]
+          }
+        ],
+        "path": "res://textures/world/bai_chuan/scenery_ink_20261104/atlases/atlas_a_vegetation_clean_padded.png"
+      }
+    },
+    {
+      "id": "atlas_b_roads_bridges",
+      "tool": "image_gen.imagegen",
+      "mode": "built-in",
+      "source_path": "res://textures/world/bai_chuan/scenery_ink_20261104/source/atlas_b_roads_bridges_native.png",
+      "prompt_path": "res://textures/world/bai_chuan/scenery_ink_20261104/prompts/atlas_b_roads_bridges.prompt.json",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "grid": [
+        2,
+        3
+      ],
+      "sha256": "a3fccf1b18801bdc0c2663cf5a1fe22c4047c42cdcf47e2ceb6586fc12aa0be9",
+      "original_source_alpha_preserved": true,
+      "derived_near_zero_alpha_cleanup": {
+        "alpha_1_2_noise_and_fluorescent_alpha_le_12_pixels_removed": 155027,
+        "other_rgba_pixels_preserved": true,
+        "fluorescent_rgb_alpha_max_in_source": 5
+      },
+      "split_method": "exact equal-cell crop; alpha 1/2 residual and fluorescent RGB alpha<=12 cleared; bbox at remaining alpha >=3; add 4px transparent padding; no resize, repaint or recolour",
+      "alpha": {
+        "mode": "RGBA",
+        "size": [
+          1254,
+          1254
+        ],
+        "fully_transparent": 1101733,
+        "partially_transparent": 470732,
+        "fully_opaque": 51,
+        "transparent_fraction": 0.7006179905323697
+      },
+      "cells": [
+        {
+          "id": "road_dirt",
+          "cell_bounds": [
+            0,
+            0,
+            627,
+            418
+          ],
+          "signal_bbox_in_cell": [
+            22,
+            177,
+            598,
+            289
+          ],
+          "crop_bbox_in_cell": [
+            149,
+            177,
+            471,
+            289
+          ],
+          "signal_margins": [
+            22,
+            177,
+            29,
+            129
+          ],
+          "final_size": [
+            322,
+            120
+          ],
+          "alpha": {
+            "mode": "RGBA",
+            "size": [
+              322,
+              120
+            ],
+            "fully_transparent": 5398,
+            "partially_transparent": 33241,
+            "fully_opaque": 1,
+            "transparent_fraction": 0.13969979296066254
+          }
+        },
+        {
+          "id": "road_woodland",
+          "cell_bounds": [
+            627,
+            0,
+            1254,
+            418
+          ],
+          "signal_bbox_in_cell": [
+            32,
+            178,
+            601,
+            289
+          ],
+          "crop_bbox_in_cell": [
+            157,
+            178,
+            476,
+            289
+          ],
+          "signal_margins": [
+            32,
+            178,
+            26,
+            129
+          ],
+          "final_size": [
+            319,
+            119
+          ],
+          "alpha": {
+            "mode": "RGBA",
+            "size": [
+              319,
+              119
+            ],
+            "fully_transparent": 7439,
+            "partially_transparent": 30522,
+            "fully_opaque": 0,
+            "transparent_fraction": 0.19596427912857933
+          }
+        },
+        {
+          "id": "road_stone",
+          "cell_bounds": [
+            0,
+            418,
+            627,
+            836
+          ],
+          "signal_bbox_in_cell": [
+            26,
+            163,
+            600,
+            260
+          ],
+          "crop_bbox_in_cell": [
+            152,
+            163,
+            474,
+            260
+          ],
+          "signal_margins": [
+            26,
+            163,
+            27,
+            158
+          ],
+          "final_size": [
+            322,
+            105
+          ],
+          "alpha": {
+            "mode": "RGBA",
+            "size": [
+              322,
+              105
+            ],
+            "fully_transparent": 7720,
+            "partially_transparent": 26089,
+            "fully_opaque": 1,
+            "transparent_fraction": 0.22833481218574386
+          }
+        },
+        {
+          "id": "bridge_wood",
+          "cell_bounds": [
+            627,
+            418,
+            1254,
+            836
+          ],
+          "signal_bbox_in_cell": [
+            50,
+            135,
+            579,
+            291
+          ],
+          "crop_bbox_in_cell": [
+            50,
+            135,
+            579,
+            291
+          ],
+          "signal_margins": [
+            50,
+            135,
+            48,
+            127
+          ],
+          "final_size": [
+            537,
+            164
+          ],
+          "alpha": {
+            "mode": "RGBA",
+            "size": [
+              537,
+              164
+            ],
+            "fully_transparent": 18571,
+            "partially_transparent": 69471,
+            "fully_opaque": 26,
+            "transparent_fraction": 0.2108711450242994
+          }
+        },
+        {
+          "id": "bridge_stone",
+          "cell_bounds": [
+            0,
+            836,
+            627,
+            1254
+          ],
+          "signal_bbox_in_cell": [
+            60,
+            114,
+            562,
+            292
+          ],
+          "crop_bbox_in_cell": [
+            60,
+            114,
+            562,
+            292
+          ],
+          "signal_margins": [
+            60,
+            114,
+            65,
+            126
+          ],
+          "final_size": [
+            510,
+            186
+          ],
+          "alpha": {
+            "mode": "RGBA",
+            "size": [
+              510,
+              186
+            ],
+            "fully_transparent": 25063,
+            "partially_transparent": 69782,
+            "fully_opaque": 15,
+            "transparent_fraction": 0.26421041534893525
+          }
+        },
+        {
+          "id": "roadside_stones",
+          "cell_bounds": [
+            627,
+            836,
+            1254,
+            1254
+          ],
+          "signal_bbox_in_cell": [
+            30,
+            179,
+            600,
+            240
+          ],
+          "crop_bbox_in_cell": [
+            30,
+            179,
+            600,
+            240
+          ],
+          "signal_margins": [
+            30,
+            179,
+            27,
+            178
+          ],
+          "final_size": [
+            578,
+            69
+          ],
+          "alpha": {
+            "mode": "RGBA",
+            "size": [
+              578,
+              69
+            ],
+            "fully_transparent": 17199,
+            "partially_transparent": 22682,
+            "fully_opaque": 1,
+            "transparent_fraction": 0.4312471791785768
+          }
+        }
+      ],
+      "generation_output": {
+        "id": "atlas_b_roads_bridges",
+        "original_output_path": "E:\\tmp\\CodexData\\generated_images\\01a1a6b5-1231-70b3-bcb6-650bc733d0d4\\exec-c813d12d-7c4c-4631-8793-b6fe0ec835dd.png",
+        "output_hint": "Generated images are saved to E:\\tmp\\CodexData\\generated_images\\01a1a6b5-1231-70b3-bcb6-650bc733d0d4 as E:\\tmp\\CodexData\\generated_images\\01a1a6b5-1231-70b3-bcb6-650bc733d0d4\\exec-c813d12d-7c4c-4631-8793-b6fe0ec835dd.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+        "tool": "image_gen.imagegen",
+        "mode": "built-in",
+        "native_size": [
+          1254,
+          1254
+        ],
+        "workspace_original": "source/atlas_b_roads_bridges_native.png",
+        "prompt": "prompts/atlas_b_roads_bridges.prompt.json"
+      },
+      "production_atlas": {
+        "size": [
+          1404,
+          1404
+        ],
+        "grid": [
+          2,
+          3
+        ],
+        "cells": [
+          {
+            "id": "road_dirt",
+            "bounds": [
+              0,
+              0,
+              702,
+              468
+            ],
+            "object_margins": [
+              63,
+              178,
+              63,
+              178
+            ]
+          },
+          {
+            "id": "road_woodland",
+            "bounds": [
+              702,
+              0,
+              1404,
+              468
+            ],
+            "object_margins": [
+              66,
+              178,
+              67,
+              179
+            ]
+          },
+          {
+            "id": "road_stone",
+            "bounds": [
+              0,
+              468,
+              702,
+              936
+            ],
+            "object_margins": [
+              64,
+              185,
+              64,
+              186
+            ]
+          },
+          {
+            "id": "bridge_wood",
+            "bounds": [
+              702,
+              468,
+              1404,
+              936
+            ],
+            "object_margins": [
+              86,
+              156,
+              87,
+              156
+            ]
+          },
+          {
+            "id": "bridge_stone",
+            "bounds": [
+              0,
+              936,
+              702,
+              1404
+            ],
+            "object_margins": [
+              100,
+              145,
+              100,
+              145
+            ]
+          },
+          {
+            "id": "roadside_stones",
+            "bounds": [
+              702,
+              936,
+              1404,
+              1404
+            ],
+            "object_margins": [
+              66,
+              203,
+              66,
+              204
+            ]
+          }
+        ],
+        "path": "res://textures/world/bai_chuan/scenery_ink_20261104/atlases/atlas_b_roads_bridges_clean_padded.png"
+      }
+    }
+  ],
+  "sprites": {
+    "pine_single": {
+      "path": "res://textures/world/bai_chuan/scenery_ink_20261104/sprites/pine_single.png",
+      "size": [
+        346,
+        308
+      ],
+      "world_height": 42,
+      "pivot": [
+        0.5,
+        1.0
+      ]
+    },
+    "broadleaf_single": {
+      "path": "res://textures/world/bai_chuan/scenery_ink_20261104/sprites/broadleaf_single.png",
+      "size": [
+        348,
+        317
+      ],
+      "world_height": 42,
+      "pivot": [
+        0.5,
+        1.0
+      ]
+    },
+    "willow_single": {
+      "path": "res://textures/world/bai_chuan/scenery_ink_20261104/sprites/willow_single.png",
+      "size": [
+        303,
+        300
+      ],
+      "world_height": 44,
+      "pivot": [
+        0.5,
+        1.0
+      ]
+    },
+    "pine_group": {
+      "path": "res://textures/world/bai_chuan/scenery_ink_20261104/sprites/pine_group.png",
+      "size": [
+        355,
+        283
+      ],
+      "world_height": 56,
+      "pivot": [
+        0.5,
+        1.0
+      ]
+    },
+    "mixed_group": {
+      "path": "res://textures/world/bai_chuan/scenery_ink_20261104/sprites/mixed_group.png",
+      "size": [
+        372,
+        283
+      ],
+      "world_height": 56,
+      "pivot": [
+        0.5,
+        1.0
+      ]
+    },
+    "willow_group": {
+      "path": "res://textures/world/bai_chuan/scenery_ink_20261104/sprites/willow_group.png",
+      "size": [
+        375,
+        268
+      ],
+      "world_height": 54,
+      "pivot": [
+        0.5,
+        1.0
+      ]
+    },
+    "shrub": {
+      "path": "res://textures/world/bai_chuan/scenery_ink_20261104/sprites/shrub.png",
+      "size": [
+        301,
+        202
+      ],
+      "world_height": 14,
+      "pivot": [
+        0.5,
+        1.0
+      ]
+    },
+    "reeds": {
+      "path": "res://textures/world/bai_chuan/scenery_ink_20261104/sprites/reeds.png",
+      "size": [
+        283,
+        219
+      ],
+      "world_height": 22,
+      "pivot": [
+        0.5,
+        1.0
+      ]
+    },
+    "rock_group": {
+      "path": "res://textures/world/bai_chuan/scenery_ink_20261104/sprites/rock_group.png",
+      "size": [
+        318,
+        175
+      ],
+      "world_height": 18,
+      "pivot": [
+        0.5,
+        1.0
+      ]
+    },
+    "road_dirt": {
+      "path": "res://textures/world/bai_chuan/scenery_ink_20261104/sprites/road_dirt.png",
+      "size": [
+        322,
+        120
+      ],
+      "world_height": 10,
+      "pivot": [
+        0.5,
+        1.0
+      ],
+      "texture_axis": "x",
+      "world_width": 10,
+      "tile_middle_crop": true
+    },
+    "road_woodland": {
+      "path": "res://textures/world/bai_chuan/scenery_ink_20261104/sprites/road_woodland.png",
+      "size": [
+        319,
+        119
+      ],
+      "world_height": 10,
+      "pivot": [
+        0.5,
+        1.0
+      ],
+      "texture_axis": "x",
+      "world_width": 10,
+      "tile_middle_crop": true
+    },
+    "road_stone": {
+      "path": "res://textures/world/bai_chuan/scenery_ink_20261104/sprites/road_stone.png",
+      "size": [
+        322,
+        105
+      ],
+      "world_height": 10,
+      "pivot": [
+        0.5,
+        1.0
+      ],
+      "texture_axis": "x",
+      "world_width": 10,
+      "tile_middle_crop": true
+    },
+    "bridge_wood": {
+      "path": "res://textures/world/bai_chuan/scenery_ink_20261104/sprites/bridge_wood.png",
+      "size": [
+        537,
+        164
+      ],
+      "world_height": 16,
+      "pivot": [
+        0.5,
+        1.0
+      ],
+      "span_axis": "x",
+      "short_contact_shadow": true
+    },
+    "bridge_stone": {
+      "path": "res://textures/world/bai_chuan/scenery_ink_20261104/sprites/bridge_stone.png",
+      "size": [
+        510,
+        186
+      ],
+      "world_height": 18,
+      "pivot": [
+        0.5,
+        1.0
+      ],
+      "span_axis": "x",
+      "short_contact_shadow": true
+    },
+    "roadside_stones": {
+      "path": "res://textures/world/bai_chuan/scenery_ink_20261104/sprites/roadside_stones.png",
+      "size": [
+        578,
+        69
+      ],
+      "world_height": 9,
+      "pivot": [
+        0.5,
+        1.0
+      ]
+    }
+  }
+}

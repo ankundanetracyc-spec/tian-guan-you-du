@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "purpose": "Native Godot display-only scalar masks. No gameplay consumer.",
+  "world_size": 7372.8,
+  "world_km": 8000.0,
+  "named_locations": 123,
+  "source_art_pixels": [
+    6270,
+    6270
+  ],
+  "mask_pixels": [
+    2048,
+    2048
+  ],
+  "sampling": "clamp((tile_origin + UV * tile_size) / map_size, 0, 1); linear; repeat disabled; not sRGB",
+  "inputs_sha256": {
+    "textures/world/bai_chuan/free_world_8000_3x3_20261104/master_8000.png": "385f5ebf0898111767b4738c14e3deb071c1a32873aa05a633d027af88574cb9",
+    "resources/world/bai_chuan/free_layout_3x3_20261104.json": "29044a4b10acc61e8fd35169c78370c4a0bb0eff4927ae191749a72bee65b090",
+    "resources/world/bai_chuan/free_navigation_3x3_20261104.json": "68b75e8cd519e1c61d71f20b5f08534768d46ccf94789abfd06c12f0233bf38b",
+    "docs/prototypes/百川宗门城镇资源规划数据_20261027.json": "28fd79f81c136c9e488842add2a69f8fac5a6e59271d1125371fd6553452e6a7"
+  },
+  "generator_sha256": "413b0cfd40190d6085b6658f9276989a696e929ffdafd8bb130100b800e44056",
+  "files": [
+    {
+      "path": "textures/world/bai_chuan/scenery_ink_20261104/presentation/terrain_presentation_data.png",
+      "sha256": "6b2d8e30d2530785c2b25417367edda4b519ac174b4f5fca1a3f14d3879a3927",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA8 scalar data; no sRGB conversion"
+    },
+    {
+      "path": "textures/world/bai_chuan/scenery_ink_20261104/presentation/regional_presentation_data.png",
+      "sha256": "6d27e3cf5e13a48d669305309af500721164a9858d8f007f656598d214551f18",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA8 scalar data; no sRGB conversion"
+    }
+  ],
+  "channels": {
+    "terrain_presentation_data.png": {
+      "R": "water coverage from source blue chroma; shader checks native texel again",
+      "G": "preserve connected rock/woodland ink masses, pale interiors, dark contours and banks",
+      "B": "7 mask-pixel Gaussian source luminance measurement for flat-ground contrast compression",
+      "A": "123 existing named-location soft asymmetric clearing weights; not a white decal"
+    },
+    "regional_presentation_data.png": {
+      "R": "green wash from existing Yuxu/Baiyao woodland/valley regions",
+      "G": "earth wash from existing western/northern/eastern rock/highland regions",
+      "B": "cool grey wash from existing water/valley regions plus actual source-bank proximity",
+      "A": "native source woodland tendency from warm-green dark crown clusters"
+    }
+  },
+  "rules": {
+    "source_resampling": "Only logical measurements use BOX reduction. Original art and nine tiles are never written or resampled.",
+    "protection": "Local dark density >0.16 over 7x7 at 2048; connected components >=20; close/fill/dilate and feather; native dark lines remain protected.",
+    "regions": "Nine existing terrainPlanning.areas polygons, 3.5% world Gaussian feather; artistic weights only. Original planning waters/ridges are not applied.",
+    "clearings": "Built 92x59 world-unit e-folding field, wild 45x34; feathered, asymmetric, low opacity, same nearby paper tone; water excluded.",
+    "navigation": "Input SHA recorded only. No navigation/layout/path writes and no playable climate/terrain definitions."
+  },
+  "coverage": {
+    "water_mean": 0.12973670661449432,
+    "protected_mean": 0.6846199027446009,
+    "clearings_mean": 0.011707670986652374,
+    "grove_mean": 0.2468510866165161
+  }
+}

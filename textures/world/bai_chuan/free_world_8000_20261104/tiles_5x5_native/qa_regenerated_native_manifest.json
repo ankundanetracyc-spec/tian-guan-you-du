@@ -1,0 +1,16 @@
+[
+  {
+    "tile": "bc_r0c0",
+    "source": "E:\\tmp\\CodexData\\generated_images\\01a1a575-1032-73b0-9bd6-a2a604641746\\exec-b74910f1-f5c3-46e8-b481-2de21456a7fa.png",
+    "output": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r0c0.png",
+    "width": 1254,
+    "height": 1254,
+    "sha256": "c1e7d9808413c0ceae335ba2f7d65ac1338b8da598d138d54d3f12dadcaf2bbb",
+    "mode": "built-in image_gen; core-only; native PNG copied byte-for-byte",
+    "recorded_utc": "2026-11-04T09:32:09.296092+00:00",
+    "referenced_image_paths": [
+      "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r0c0_core.png"
+    ],
+    "prompt": "Edit ONLY the attached small square terrain crop into a new native high-detail square painting at the largest native square resolution supported. This is a precise detail reconstruction of THAT SAME CROP, not a new composition and not a zoomed-out larger map. The attached image is both the sole geometry target and the style source. Its complete left/right/top/bottom cuts define the exact output framing. Keep all landforms in precisely the same normalized positions, shapes, scale and footprint. In particular preserve every river and coastline centerline, edge position, width, tangent, branch, lake outline and their exact crossing points on all four boundaries. Preserve the mountains' silhouettes, positions, relative size, forests and spacious pale plains. Add crisp fine brush contours, rock striations, delicate leafy tree details, and subtle native rice-paper texture, faithful to the current traditional Chinese grey-green ink and pale blue mineral-watercolor palette. Refine detail inside the existing shapes. Do not enlarge peaks, move rivers, introduce or remove branches or lakes, expand the crop, add scenery from beyond this image, or change the camera. The outermost boundary geometry and paper tone must closely match the attached crop for adjacency in a 5 by 5 world map. The image must have no UI, writing, numerals, buildings, people, roads, labels, symbols, border or grid. Produce only the exact cropped landscape, finely painted at native resolution. Coordination tile bc_r0c0 (never paint this identifier)."
+  }
+]
