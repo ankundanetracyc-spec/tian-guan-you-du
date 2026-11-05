@@ -214,6 +214,7 @@ public partial class BattlePaperDoll : Node2D
 
     public Rect2? static_screen_rect()
     {
+        if (_queueAvatar is not null) return QueueAvatarRect(true);
         if (_usesSpineCharacter || _portrait?.Texture is null || _portraitLocalBounds.Size == Vector2.Zero) return null;
         var local = _portraitLocalBounds;
         if (_portrait.FlipH) local.Position = new Vector2(-local.End.X, local.Position.Y);
@@ -228,6 +229,7 @@ public partial class BattlePaperDoll : Node2D
     // Keep the approved upright oval around the standing body, independent of action width.
     public Rect2 shield_world_rect()
     {
+        if (_queueAvatar is not null) return QueueAvatarRect(false, true);
         if (_portraitLocalBounds.Size != Vector2.Zero && !_usesSpineCharacter)
         {
             var portraitBounds = UsesStaticBeastPoses ? _forestWolfIdleLocalBounds : _portraitLocalBounds;
@@ -314,12 +316,14 @@ public partial class BattlePaperDoll : Node2D
         hold_attack_contact(false);
         ResetForestWolfPortraitPose();
         EndContactPoseHold();
-        ResetSideInkPose();
+        // Finish the authored recovery pose during the existing return movement.
+        // Do not replace the held contact pose with idle at the first retreat frame.
+        if (_queueAvatar is null || _sidePose is not ("chop" or "punch")) ResetSideInkPose();
         face_direction(facing);
         _actionTween?.Kill();
         Position = Vector2.Zero;
         // Face the opponent while the root flies backwards along its return arc.
-        Rotation = UsesStaticBeastPoses ? 0 : -Mathf.Sign(facing.X) * .075f;
+        Rotation = UsesStaticBeastPoses || _queueAvatar is not null ? 0 : -Mathf.Sign(facing.X) * .075f;
         _actionTween = CreateTween();
         _actionTween.TweenProperty(this, "rotation", 0f, BattleAttackMotion.ReturnSeconds)
             .SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.Out);
@@ -362,7 +366,7 @@ public partial class BattlePaperDoll : Node2D
             // 受击／倒地已经替换攻击时，不暂停新动作。
             if(UsesStaticBeastPoses && _forestWolfPose!=ForestWolfPose.Attack)return;
             if(_usesSpineCharacter && _spineAnimation!="attack")return;
-            if (_usesSideInk && _sidePose is not ("chop" or "cast" or "throw" or "sword_cut" or "sword_finish")) return;
+            if (_usesSideInk && _sidePose is not ("chop" or "punch" or "cast" or "throw" or "sword_cut" or "sword_finish")) return;
             _attackContactHeld=true;
             _heldAttackTween=_actionTween;
             if(_heldAttackTween?.IsValid()==true)_heldAttackTween.Pause();
@@ -421,6 +425,11 @@ public partial class BattlePaperDoll : Node2D
         ResetForestWolfPortraitPose();
         face_direction(direction);
         if (UsesStaticBeastPoses) SetForestWolfPortraitPose(ForestWolfPose.Attack);
+        if (_queueAvatar is not null && useHandChop)
+        {
+            StartQueueAvatarAttack(direction, "chop");
+            return;
+        }
         if (_usesSideInk) StartSideInkPose(useHandChop ? "chop" : "idle", .95f);
         if (_usesSpineCharacter) PlaySpineAnimation("attack", false);
         _actionTween?.Kill();
@@ -438,6 +447,7 @@ public partial class BattlePaperDoll : Node2D
     public void face_direction(Vector2 direction)
     {
         if (Mathf.Abs(direction.X) < 0.001f) return;
+        _queueAvatar?.SetFacing(direction.X < 0);
         if (_usesSpineCharacter && IsInstanceValid(_spineCharacter))
             _spineCharacter!.Call("set_flip_x", _portraitFacesLeft ? direction.X >= 0f : direction.X < 0f);
         else if (_portrait is not null)
@@ -447,7 +457,9 @@ public partial class BattlePaperDoll : Node2D
         }
     }
 
-    public Vector2 combat_anchor(bool head = false) => ToGlobal(new Vector2(0f, head ? _combatHeadY : _combatChestY));
+    public Vector2 combat_anchor(bool head = false) => _queueAvatar is not null
+        ? _sidePresentation!.ToGlobal(QueueAvatarPoint(head ? _queueAvatar.HeadAnchor : _queueAvatar.ChestAnchor))
+        : ToGlobal(new Vector2(0f, head ? _combatHeadY : _combatChestY));
 
     public void play_hit(Vector2 direction, float weight = 1f, bool critical = false, bool playHurtFx = true)
     {

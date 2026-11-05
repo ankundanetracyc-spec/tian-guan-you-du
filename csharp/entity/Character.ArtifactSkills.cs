@@ -30,7 +30,8 @@ public partial class Character
         if (!is_combat_skill_slot_eligible(original)) return null;
         var skillCopy = (ActiveSkillData)original!.Duplicate(true);
         skillCopy.combat_source_key = resolved;
-        return apply_selected_skill_rewrites(skillCopy, resolved);
+        return ForgedSwordBattleAdapter.BindHandheldSource(apply_selected_skill_rewrites(skillCopy, resolved),
+            get_equipped_forged_sword());
     }
 
     public bool is_valid_artifact_binding(ArtifactInstanceData item, string path)

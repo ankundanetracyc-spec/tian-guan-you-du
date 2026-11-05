@@ -13,6 +13,7 @@ public partial class BattleInkCombatVfx
         if(swordPose is "cut" or "finish"&&doll.play_sword_action(swordPose,direction))return;
         if (IsJingzhe(skill)) doll.play_cast(direction);
         else if (UsesThrowCast(skill)) doll.play_throw(direction);
+        else if (doll.uses_queue_avatar() && BattleInkSlashEffect.IsPunchSkill(skill)) doll.play_punch(direction);
         else doll.play_attack(direction, UsesHandChop(skill));
     }
 

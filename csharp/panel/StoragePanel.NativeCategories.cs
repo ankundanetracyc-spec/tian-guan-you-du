@@ -9,7 +9,7 @@ public partial class StoragePanel
 
     private bool handle_native_category_input(InputEvent input)
     {
-        if (_nativeCategoryScroll is null) return false;
+        if (_nativeContainerId.Length > 0 || _nativeCategoryScroll?.IsVisibleInTree() != true) return false;
         if (input is InputEventMouseButton { Pressed: true } press)
         {
             var local = _nativeCategoryScroll.GetGlobalTransformWithCanvas().AffineInverse() * press.Position;

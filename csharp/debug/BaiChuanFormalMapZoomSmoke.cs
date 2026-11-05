@@ -254,6 +254,10 @@ public partial class BaiChuanFormalMapZoomSmoke : Node
         await MoveMouse(clickPoint);
         Check(GetViewport().GuiGetHoveredControl() == hit, $"{viewportLabel} 悬停未命中可见城市节点：{id}。");
         Check(map.Get("hover_id").AsString() == id, $"{viewportLabel} 悬停没有激活城市标签：{id}。");
+        // Each resize check intends a single selection. Without this interval,
+        // consecutive checks click the same city inside the 450ms double-click
+        // window and correctly start travel, invalidating the action-card check.
+        await ToSignal(GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
         await Click(clickPoint, true);
         await Click(clickPoint, false);
         Check(map.Get("selected_node").AsString() == id, $"{viewportLabel} 城市点击没有选择节点：{id}。");
@@ -287,91 +291,45 @@ public partial class BaiChuanFormalMapZoomSmoke : Node
     {
         var currentNode = map.Call("get_current_node").AsString();
         var selectedNode = map.Get("selected_node").AsString();
-        Check(!string.IsNullOrWhiteSpace(selectedNode) && selectedNode != currentNode,
-            $"{viewportLabel} 动作卡测试没有选中远处地点。");
-
-        var details = map.GetNode<Control>("WorldMapDetails");
-        var actionRow = details.FindChild("WorldMapActionButtons", true, false) as Control
-            ?? throw new InvalidOperationException($"{viewportLabel} 地点卡双按钮容器缺失。");
-        var travelButton = map.Get("travel_button").AsGodotObject() as Button
-            ?? throw new InvalidOperationException("正式地图前往按钮缺失。");
-        var enterButton = map.Get("enter_button").AsGodotObject() as Button
-            ?? throw new InvalidOperationException("正式地图进入按钮缺失。");
-        var taskTracker = main.GetNodeOrNull<Control>("HUDLayer/MainHUD/TaskTracker");
-        Check(taskTracker is not null && taskTracker.IsVisibleInTree(), $"{viewportLabel} 持续任务卡未显示，无法验证遮挡。");
-        Check(details.IsVisibleInTree() && actionRow.IsVisibleInTree() && actionRow.GetChildCount() == 2,
-            $"{viewportLabel} 地点卡/双按钮容器未显示或不是两个按钮。");
-        Check(travelButton.IsVisibleInTree() && enterButton.IsVisibleInTree() && !travelButton.Disabled && enterButton.Disabled,
-            $"{viewportLabel} 远处地点动作状态异常：travelVisible={travelButton.IsVisibleInTree()} travelDisabled={travelButton.Disabled} enterVisible={enterButton.IsVisibleInTree()} enterDisabled={enterButton.Disabled}。");
-
-        var viewportRect = new Rect2(Vector2.Zero, GetViewport().GetVisibleRect().Size);
-        var cardRect = details.GetGlobalRect();
-        var taskRect = taskTracker!.GetGlobalRect();
-        var mapSafeRect = map.Call("get_map_safe_rect").AsRect2();
-        var travelRect = travelButton.GetGlobalRect();
-        var enterRect = enterButton.GetGlobalRect();
-        Check(viewportRect.Encloses(cardRect) && viewportRect.Encloses(travelRect) && viewportRect.Encloses(enterRect),
-            $"{viewportLabel} 地点卡按钮超出窗口：card={cardRect} travel={travelRect} enter={enterRect} viewport={viewportRect}。");
-        Check(!cardRect.Intersects(taskRect),
-            $"{viewportLabel} 地点卡整体被持续任务卡覆盖：card={cardRect} task={taskRect}。");
-        Check(!cardRect.Intersects(mapSafeRect),
-            $"{viewportLabel} 地点卡与地图安全区重叠：card={cardRect} mapSafe={mapSafeRect}。");
-        Check(!travelRect.Intersects(taskRect) && !enterRect.Intersects(taskRect),
-            $"{viewportLabel} 行旅按钮被任务卡盖住：travel={travelRect} enter={enterRect} task={taskRect}。");
-
-        var detailLabel = map.Get("detail_label").AsGodotObject() as Label
-            ?? throw new InvalidOperationException("地点卡详情文字缺失。");
-        Check(detailLabel.Text.Contains("路程", StringComparison.Ordinal) && detailLabel.Text.Length >= 14,
-            $"{viewportLabel} 远处地点长详情没有进入卡片：{detailLabel.Text}。");
-
-        var travelCenter = travelRect.GetCenter();
-        await MoveMouse(travelCenter);
-        Check(GetViewport().GuiGetHoveredControl() == travelButton,
-            $"{viewportLabel} 前往按钮被遮挡或不可命中：hover={GetViewport().GuiGetHoveredControl()?.GetPath()} rect={travelRect} task={taskRect}。");
-        GD.Print($"BAICHUAN_ACTION_CARD viewport={viewportLabel} card={cardRect} travel={travelRect} enter={enterRect} task={taskRect} mapSafe={mapSafeRect} visible=true hover=true longDetail=true");
-        if (!exerciseTravelAndEnter) return;
-
-        var cityId = selectedNode;
-        var runtimeId = map.Call("get_runtime_id", cityId).AsString();
-        var route = map.Call("get_assigned_route_to_node", runtimeId).AsGodotArray<string>();
-        Check(route.Count > 1 && route[0] == currentNode, $"{viewportLabel} 远处地点没有行旅路线。");
-        await Click(travelCenter, true);
-        await Click(travelCenter, false);
-        Check(map.Call("is_traveling").AsBool(), $"{viewportLabel} 点击前往按钮没有启动行旅。");
-        map.Call("pause_travel_at_node");
-        var travelDeadline = Time.GetTicksMsec() + 45000UL;
-        while (map.Call("is_traveling").AsBool() && Time.GetTicksMsec() < travelDeadline) await Frames();
-        Check(!map.Call("is_traveling").AsBool() && map.Call("get_current_node").AsString() == route[1],
-            $"{viewportLabel} 点击前往按钮后没有完成第一段行旅：{map.Call("get_current_node")}。");
-
-        // Put the test traveler at a known enterable city, then activate the other button through its real hit area.
-        const string enterCityId = "bc_place_014";
-        Check(map.Call("restore_node_state", new Dictionary
-        {
-            ["current_node"] = enterCityId,
-            ["remaining_route"] = new Godot.Collections.Array<string>()
-        }).AsBool(), "测试用的进入地点状态恢复失败。");
-        typeof(MainScene).GetMethod("on_node_world_arrived", BindingFlags.Instance | BindingFlags.NonPublic)!
-            .Invoke(main, [enterCityId]);
+        Check(!string.IsNullOrWhiteSpace(selectedNode) && selectedNode != currentNode, $"{viewportLabel} 没有选择远处地点。");
+        Check(map.GetNodeOrNull("WorldMapDetails") is null && map.FindChild("WorldMapActionButtons", true, false) is null,
+            "旧右上角行旅操作框仍存在。");
+        var hint = map.GetNode<Control>("WorldMapDestinationHint");
+        var enterButton = map.GetNode<Button>("EnterCurrentLocation");
         await Frames(3);
-        Check(travelButton.IsVisibleInTree() && enterButton.IsVisibleInTree(),
-            "到达地点后行旅动作按钮不再显示。");
-        Check(enterButton.Disabled == false && travelButton.Disabled,
-            $"到达当前地点后的动作状态错误：travelDisabled={travelButton.Disabled}, enterDisabled={enterButton.Disabled}。");
-        var currentEnterRect = enterButton.GetGlobalRect();
-        Check(!currentEnterRect.Intersects(taskTracker.GetGlobalRect()),
-            $"{viewportLabel} 当前地点的进入按钮被任务卡盖住：enter={currentEnterRect} task={taskTracker.GetGlobalRect()}。");
-        await MoveMouse(currentEnterRect.GetCenter());
-        Check(GetViewport().GuiGetHoveredControl() == enterButton,
-            $"{viewportLabel} 进入按钮被遮挡或不可命中：hover={GetViewport().GuiGetHoveredControl()?.GetPath()} rect={currentEnterRect}。");
-        await Click(currentEnterRect.GetCenter(), true);
-        await Click(currentEnterRect.GetCenter(), false);
+        Check(hint.IsVisibleInTree() && hint.MouseFilter == Control.MouseFilterEnum.Ignore,
+            $"{viewportLabel} 地点路程提示未显示或拦截输入。");
+        var viewportRect = new Rect2(Vector2.Zero, GetViewport().GetVisibleRect().Size);
+        Check(viewportRect.Encloses(hint.GetGlobalRect()), $"{viewportLabel} 路程提示越出视口。");
+        var detailLabel = map.Get("detail_label").AsGodotObject() as Label;
+        Check(detailLabel?.Text.Contains("路程", StringComparison.Ordinal) == true, "远处地点缺少真实路程。");
+        GD.Print($"BAICHUAN_LOCAL_HINT viewport={viewportLabel} rect={hint.GetGlobalRect()} pass_input=true");
+        if (!exerciseTravelAndEnter) return;
+        var runtimeId = map.Call("get_runtime_id", selectedNode).AsString();
+        var route = map.Call("get_assigned_route_to_node", runtimeId).AsGodotArray<string>();
+        Check(route.Count > 1 && route[0] == currentNode, "远处地点没有行旅路线。");
+        // The real pointer double-click sequence is covered by FormalDoubleClickSmoke.
+        map.Call("_on_formal_map_double_click", selectedNode);
+        Check(map.Call("is_traveling").AsBool() && !enterButton.Visible, "双击目的地没有启动行旅并收起进入入口。");
+        map.Call("pause_travel_at_node");
+        var deadline = Time.GetTicksMsec() + 45000UL;
+        while (map.Call("is_traveling").AsBool() && Time.GetTicksMsec() < deadline) await Frames();
+        Check(!map.Call("is_traveling").AsBool() && map.Call("get_current_node").AsString() == route[1], "第一段行旅没有完成。");
+        const string city = "bc_place_014";
+        Check(map.Call("restore_node_state", new Dictionary { ["current_node"] = city, ["remaining_route"] = new Godot.Collections.Array<string>() }).AsBool(), "恢复地点失败。");
+        typeof(MainScene).GetMethod("on_node_world_arrived", BindingFlags.Instance | BindingFlags.NonPublic)!.Invoke(main, [city]);
+        map.Call("_set_zoom_level", 2, viewportRect.GetCenter());
+        map.Call("focus_player_node");
+        await Frames(4);
+        Check(enterButton.IsVisibleInTree() && !enterButton.Disabled && enterButton.Text == "进入", "当前位置缺少进入入口。");
+        var point = enterButton.GetGlobalRect().GetCenter();
+        await MoveMouse(point);
+        Check(GetViewport().GuiGetHoveredControl() == enterButton, "地点进入入口被遮挡。");
+        await Click(point, true);
+        await Click(point, false);
         await Frames(6);
-        Check(main.FindChild("WorldLocationInteriorPanel", true, false) is Control { Visible: true },
-            $"{viewportLabel} 点击进入按钮没有打开地点界面。");
-        // Opening a location intentionally frees the previous map instance. Keep the entry
-        // click as the final interaction so later checks do not use that disposed reference.
-        GD.Print($"BAICHUAN_ACTION_BUTTONS_CLICK viewport={viewportLabel} travel=true enter=true firstStep={route[1]} enterCity={enterCityId}");
+        Check(main.FindChild("WorldLocationInteriorPanel", true, false) is Control { Visible: true }, "地点进入按钮没有打开内景。");
+        GD.Print($"BAICHUAN_LOCAL_ACTIONS viewport={viewportLabel} double_click_travel=true local_enter_click=true");
     }
 
     private async Task VerifyLevelZeroTravelKeepsFullMap(MainScene main, Control map, Dictionary data, Dictionary placeViews, Vector2 viewportSize)
@@ -482,6 +440,8 @@ public partial class BaiChuanFormalMapZoomSmoke : Node
             typeof(MainScene).GetField("_skipExitSave", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(main, true);
             var stage = typeof(MainScene).GetField("_qingxi_prologue", BindingFlags.Instance | BindingFlags.NonPublic)!;
             stage.SetValue(main, Enum.Parse(stage.FieldType, "Departed"));
+            typeof(MainScene).GetField("_baishiLecture", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(main, null);
+            (typeof(MainScene).GetField("story_dialogue", BindingFlags.Instance | BindingFlags.NonPublic)!.GetValue(main) as Control)?.Hide();
             typeof(MainScene).GetMethod("open_world", BindingFlags.Instance | BindingFlags.NonPublic)!.Invoke(main, []);
             await Frames(10);
 
@@ -557,7 +517,7 @@ public partial class BaiChuanFormalMapZoomSmoke : Node
 
             // Scrolling over the floating information panel must leave zoom and camera unchanged.
             map.Call("_set_zoom_level", 2, viewportSize * 0.5f);
-            var details = map.GetNode<Control>("WorldMapDetails");
+            var details = main.GetNode<Control>("HUDLayer/MainHUD/PlayerStatus");
             var panelRect = details.GetGlobalRect();
             var panelPoint = panelRect.Position + new Vector2(24f, Mathf.Max(20f, panelRect.Size.Y * 0.5f));
             await MoveMouse(panelPoint);

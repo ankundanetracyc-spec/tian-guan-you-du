@@ -1460,9 +1460,8 @@ public partial class NpcWorldManager : Node
         if (time is null) return;
         var currentHour = time.get_total_game_hours();
         var currentMonth = month_index(time);
-        // The world-grid design advances NPCs only at month boundaries. A normal
-        // player time step has no settlement work and should not open/clear a batch.
-        if (_last_world_grid_hour >= 0 && currentHour >= _last_world_grid_hour &&
+        // Repeated notifications in the same hour have no settlement work.
+        if (_last_world_grid_hour >= 0 && currentHour == _last_world_grid_hour &&
             _last_processed_month >= currentMonth)
             return;
         begin_settlement_batch();
@@ -1501,10 +1500,15 @@ public partial class NpcWorldManager : Node
             }
             foreach (var step in simulate_month_steps(month)) yield return step;
             _last_processed_month = month;
-            // 只把完成月结的时点作为下一段行旅起点。月内时间信号不推进
-            // NPC；下次跨月时一次性补齐从此边界（或读档锚点）到月界的行程。
+            // Month boundaries commit both travel and monthly world simulation.
             cursorHour = Math.Max(cursorHour, monthBoundaryHour);
             _last_world_grid_hour = cursorHour;
+        }
+        // Commit month-internal travel, so a later month boundary never replays it.
+        if (nowHour > cursorHour)
+        {
+            foreach (var step in advance_world_grid_travel_steps(nowHour - cursorHour, cursorHour)) yield return step;
+            _last_world_grid_hour = nowHour;
         }
     }
 
@@ -1700,6 +1704,7 @@ public partial class NpcWorldManager : Node
             if (npc.is_yuxu_lineage_staff) continue;
             update_age(npc, month);
             if (!npc.is_alive) continue;
+            if (!string.IsNullOrEmpty(npc.public_lecture_event_id)) continue;
             NpcPurchaseRules.SettleMonth(npc, month);
             // 副本行程由同一遁速时间轴推进；不能在月演算里把人抽走到大世界地点。
             if (!string.IsNullOrWhiteSpace(npc.dungeon_id)) continue;

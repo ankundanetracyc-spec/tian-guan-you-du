@@ -1,0 +1,114 @@
+{
+	"checks": 361,
+	"details": {
+		"display_scale": 0.72,
+		"low_resolution_reference_meshes_visible": 0,
+		"mapped_clips": {
+			"AttackIdle": "AttackIdle",
+			"AttackRun": "AttackRun",
+			"BackstepWalk": "Run_New2",
+			"Idle": "Idle",
+			"Run_New1": "Run_New1",
+			"Step1": "Step1"
+		},
+		"maximum_registration_anchor_pixel_error": 0.0015295366756618,
+		"maximum_source_hand_error": 0.00000786419968790142,
+		"maximum_source_vertex_error": 0.0000152885622810572,
+		"maximum_uv_error": 0.000246040581259876,
+		"maximum_world_hand_error": 0.00000786419968790142,
+		"minimum_hd_long_edge": 1254,
+		"native_height": 104.0,
+		"pause_frozen": true,
+		"release_proxy_samples": {
+			"1": {
+				"hand_error_from_current_idle": 16.4056339263916,
+				"hem_error_from_current_idle": 28.1044044494629,
+				"seconds": 0.0166666666666667,
+				"upper_error_from_current_idle": 14.7929077148438
+			},
+			"12": {
+				"hand_error_from_current_idle": 0.0,
+				"hem_error_from_current_idle": 20.3394184112549,
+				"seconds": 0.2,
+				"upper_error_from_current_idle": 0.00000764428114052862
+			},
+			"36": {
+				"hand_error_from_current_idle": 0.0,
+				"hem_error_from_current_idle": 0.000000674349564633303,
+				"seconds": 0.6,
+				"upper_error_from_current_idle": 0.00000768876816437114
+			},
+			"42": {
+				"hand_error_from_current_idle": 0.0,
+				"hem_error_from_current_idle": 0.00000106624031559477,
+				"seconds": 0.7,
+				"upper_error_from_current_idle": 0.00000768876816437114
+			}
+		},
+		"sampled_source_vertices": 16776,
+		"shoulder_underlays": 2,
+		"source_data": "E:/stacklands/resources/appearance/guigu_male101/model_frames_20261104.json",
+		"textures": [
+			{
+				"path": "res://art/guigu_male101_ink_hd/sprite_84807.png",
+				"size": [
+					887,
+					1774
+				],
+				"sprite": "84807.0"
+			},
+			{
+				"path": "res://art/guigu_male101_ink_hd/sprite_87557.png",
+				"size": [
+					745,
+					2110
+				],
+				"sprite": "87557.0"
+			},
+			{
+				"path": "res://art/guigu_male101_ink_hd/sprite_87557.png",
+				"size": [
+					745,
+					2110
+				],
+				"sprite": "87557.0"
+			},
+			{
+				"path": "res://art/guigu_male101_ink_hd/sprite_85649.png",
+				"size": [
+					834,
+					1886
+				],
+				"sprite": "85649.0"
+			},
+			{
+				"path": "res://art/guigu_male101_ink_hd/sprite_65806.png",
+				"size": [
+					1254,
+					1254
+				],
+				"sprite": "65806.0"
+			},
+			{
+				"path": "res://art/guigu_male101_ink_hd/sprite_79543.png",
+				"size": [
+					756,
+					2079
+				],
+				"sprite": "79543.0"
+			},
+			{
+				"path": "res://art/guigu_male101_ink_hd/sprite_87679.png",
+				"size": [
+					887,
+					1774
+				],
+				"sprite": "87679.0"
+			}
+		],
+		"unique_sprite_count": 6,
+		"visual_review_required": "Actual HD sharpness, rounded shoulder blending, faceless head and ink style still require rendered image review."
+	},
+	"failures": [],
+	"passed": true
+}

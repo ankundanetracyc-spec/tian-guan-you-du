@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://smoke_leg_support_causality.gd" id="1"]
+
+[node name="LegSupportCausality" type="Node2D"]
+script = ExtResource("1")

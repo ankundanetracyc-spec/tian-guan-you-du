@@ -30,7 +30,7 @@ public partial class StorageItemSlot : Control
     public void configure_spatial_layout(Vector2 footprint, Vector2 original, int rotation)
     {
         spatial_drag_enabled = true;
-        Size = footprint; CustomMinimumSize = Vector2.Zero;
+        CustomMinimumSize = Vector2.Zero; Size = footprint;
         if (GetNodeOrNull<Panel>("Frame") is { } frame)
         { frame.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect); frame.AddThemeStyleboxOverride("panel", new StyleBoxEmpty()); frame.MouseFilter = MouseFilterEnum.Ignore; }
         name_label?.Hide();

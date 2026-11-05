@@ -225,10 +225,12 @@ public partial class Creature : WorldEntity
         if(eventName!="turn_start")return context;
         foreach(var instance in status_instances().ToArray())
         {
+            if(instance.remaining_pill_ticks>=0 && (instance.remaining_pill_ticks==0 || current_health<=0))
+            { statuses.Remove(instance); continue; }
             var damage=instance.get_damage_per_tick();if(damage>0){current_health=Mathf.Max(0,current_health-damage);if(context.TryGetValue("battle_manager",out var manager))manager.AsGodotObject()?.Call("show_damage_number",this,damage,"dot",false);}
             var heal=instance.get_heal_per_tick();if(heal>0)apply_healing(heal);
             shield+=Mathf.Max(0,instance.get_shield_per_tick());current_stamina=Mathf.Min(max_stamina,current_stamina+Mathf.Max(0,instance.get_stamina_per_tick()));
-
+            if(instance.remaining_pill_ticks>0 && --instance.remaining_pill_ticks==0)statuses.Remove(instance);
         }
         return context;
     }

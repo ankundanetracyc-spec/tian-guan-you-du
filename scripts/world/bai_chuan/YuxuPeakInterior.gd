@@ -8,56 +8,55 @@ signal exchange_purchase_requested(item_path: String, contribution_cost: int)
 const SCENE_ACTION_BUTTON = preload("res://tscn/panel/SceneActionButton.tscn")
 const HEGUANG_DUTY_BOARD = preload("res://tscn/world/bai_chuan/YuxuSectDutyBoard.tscn")
 const SECT_EXCHANGE_PANEL = preload("res://tscn/world/bai_chuan/YuxuSectExchangePanel.tscn")
-const HEGUANG_AFFAIRS_BACKGROUND := "res://textures/sect_overview/peaks/yuxu_heguang_affairs_v1.png"
 
 const PEAKS := {
 	"heguang": {
 		"title": "和光峰",
 		"subtitle": "庶务、杂役与供给",
 		"body": "杂役弟子、膳房、库房、修缮与宗门传讯都归于此峰。这里是玉虚仙宗最接近凡俗烟火的一处所在。",
-		"background": "res://textures/sect_overview/peaks/yuxu_peak_heguang_v4.png"
+		"background": "res://textures/sect_overview/repaint_20261103/live_composition_item_style_20261104/heguang.png"
 	},
 	"guanfu": {
 		"title": "观复峰",
 		"subtitle": "外门、内门与日常修持",
 		"body": "这里是杂役、外门与内门弟子的日常居所、修习与授业活动之处；静室与休息处按身份供弟子使用，月例在此按月发放。真传入宗满一年后，每半年一期的答疑讲席也在此开设，面向外门与内门弟子。",
-		"background": "res://textures/sect_overview/peaks/yuxu_peak_guanfu_v4.png"
+		"background": "res://textures/sect_overview/repaint_20261103/live_composition_item_style_20261104/guanfu.png"
 	},
 	"zifu": {
 		"title": "紫府峰",
 		"subtitle": "真传起居、长老与宗门中枢",
 		"body": "天灵根入门的真传弟子在此居住并使用专属静室与休息处；首座、长老与宗主也在此处理宗门中枢事务。",
-		"background": "res://textures/sect_overview/peaks/yuxu_peak_zifu_v4.png"
+		"background": "res://textures/sect_overview/repaint_20261103/live_composition_item_style_20261104/zifu.png"
 	},
 	"xuanlan": {
 		"title": "玄览峰",
 		"subtitle": "藏经、研读与传承",
 		"body": "可在此研读当前已有权限的典籍；真传首卷仍按师承流程回紫府峰静室研读并汇报。",
-		"background": "res://textures/sect_overview/peaks/yuxu_peak_xuanlan_v4.png"
+		"background": "res://textures/sect_overview/repaint_20261103/live_composition_item_style_20261104/xuanlan.png"
 	},
 	"tianwen": {
 		"title": "天问峰",
 		"subtitle": "演法、试炼与宗门比试",
 		"body": "斗法台、试炼场和论道台分布于峰间，用来检验术法、应敌和临场取舍。",
-		"background": "res://textures/sect_overview/peaks/yuxu_peak_tianwen_v4.png"
+		"background": "res://textures/sect_overview/repaint_20261103/live_composition_item_style_20261104/tianwen.png"
 	},
 	"tiangong": {
 		"title": "天工峰",
 		"subtitle": "丹、器、符、阵诸般技艺",
 		"body": "丹房：炼丹与丹方；器作：炼器与法宝；云篆：符箓与符印；阵枢：阵法、阵盘与护宗阵枢。四类技艺在同一峰内分院传承。",
-		"background": "res://textures/sect_overview/peaks/yuxu_peak_tiangong_v3.png"
+		"background": "res://textures/sect_overview/repaint_20261103/live_composition_item_style_20261104/tiangong.png"
 	},
 	"zhizhong": {
 		"title": "执中峰",
 		"subtitle": "戒律、执法与宗内裁断",
 		"body": "门规、惩戒、执法和宗内争端裁断皆由此峰主持，维持各峰之间的秩序。",
-		"background": "res://textures/sect_overview/peaks/yuxu_peak_zhizhong_v4.png"
+		"background": "res://textures/sect_overview/repaint_20261103/live_composition_item_style_20261104/zhizhong.png"
 	},
 	"yaopu": {
 		"title": "瑶圃峰",
 		"subtitle": "灵植、灵兽与灵材培育",
 		"body": "灵药、灵植、灵兽与各类宗门资源在此培育，所得灵材再送往天工峰炼制。",
-		"background": "res://textures/sect_overview/peaks/yuxu_peak_yaopu_v3.png"
+		"background": "res://textures/sect_overview/repaint_20261103/live_composition_item_style_20261104/yaopu.png"
 	}
 }
 
@@ -439,7 +438,7 @@ func _open_duty_board() -> void:
 	_duty_board_open = true
 	_life_page_open = false
 	back_button.text = "返回和光峰"
-	background.texture = load(HEGUANG_AFFAIRS_BACKGROUND)
+	background.texture = load(str(PEAKS["heguang"]["background"]))
 	info_card.hide()
 	$ActionRope.hide()
 	admission_button.hide()

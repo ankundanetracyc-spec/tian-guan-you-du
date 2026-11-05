@@ -184,7 +184,8 @@ public partial class StoragePanel
         var leftSide = local.X < DesignSize.X * .4f;
         var anchorX = local.X + slot.Size.X * (leftSide ? .8f : .5f);
         var x = leftSide ? local.X + slot.Size.X * .6f : anchorX - PopupWidth * .5f;
-        x = Mathf.Clamp(x, 276f, DesignSize.X - PopupWidth - 24f);
+        var leftLimit = _nativeContainerId.Length > 0 ? 24f : 276f;
+        x = Mathf.Clamp(x, leftLimit, DesignSize.X - PopupWidth - 24f);
         var y = local.Y + slot.Size.Y + 13f;
         var above = false;
         var pointer = true;
@@ -198,7 +199,7 @@ public partial class StoragePanel
                 y = Mathf.Clamp(local.Y, 78f, Mathf.Max(78f, DesignSize.Y - popupSize.Y - 25f));
                 x = local.X + slot.Size.X + 14f;
                 if (x + PopupWidth > DesignSize.X - 24f) x = local.X - PopupWidth - 14f;
-                x = Mathf.Clamp(x, 276f, DesignSize.X - PopupWidth - 24f);
+                x = Mathf.Clamp(x, leftLimit, DesignSize.X - PopupWidth - 24f);
             }
         }
         _detail_panel.Position = new Vector2(x, y);
@@ -214,6 +215,7 @@ public partial class StoragePanel
         var scale = Mathf.Min(viewport.X / DesignSize.X, viewport.Y / DesignSize.Y);
         _canvas.Scale = Vector2.One * scale;
         _canvas.Position = (viewport - DesignSize * scale) * .5f;
+        fit_ring_shade(viewport, scale);
     }
     private Texture2D? navigation_icon(int index) => _navigation_atlas is null ? null : new AtlasTexture
     {

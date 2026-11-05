@@ -7,13 +7,13 @@ public static class BattleSupplyRules
     public static readonly string[] QualityNames = ["薄效", "良效", "优效", "极效", "满效"];
     private static readonly System.Collections.Generic.Dictionary<string, PillItemData> Pills = [];
 
-    // 首批只开放已有正式丹种的战斗用途。静心丹与未定稿消耗型符箓不开放。
+    // 世界专用丹、暂停丹种及未定稿消耗型符箓不进入战备。
     public static PillItemData? Load(string path)
     {
         if (string.IsNullOrWhiteSpace(path)) return null;
-        if (Pills.TryGetValue(path, out var cached)) return AlchemyProductCatalog.IsEnabled(cached.pill_id) ? cached : null;
+        if (Pills.TryGetValue(path, out var cached)) return AlchemyProductCatalog.IsBattlePill(cached.pill_id) ? cached : null;
         if (!ResourceLoader.Exists(path) || GD.Load<Resource>(path) is not PillItemData pill ||
-            !AlchemyProductCatalog.IsEnabled(pill.pill_id) || pill.pill_rank != 9 || pill.efficacy_tier is < 0 or > 4) return null;
+            !AlchemyProductCatalog.IsBattlePill(pill.pill_id) || pill.pill_rank != 9 || pill.efficacy_tier is < 0 or > 4 || pill.validate_definition().Count != 0) return null;
         return Pills[path] = pill;
     }
 
@@ -59,12 +59,13 @@ public static class BattleSupplyRules
 
     public static int Amount(PillItemData pill, int manaCapacity, double toxicity)
     {
-        if (pill.pill_id == "huichun") return PillToxicityRules.Absorb(AlchemyProductCatalog.Healing[pill.efficacy_tier], toxicity);
+        if (AlchemyProductCatalog.IsBattlePill(pill.pill_id))
+            return PillToxicityRules.Absorb(AlchemyProductCatalog.PrimaryAmount(pill.pill_id, pill.efficacy_tier), toxicity);
         // 沿现行丹效与低法力口径；不恢复已燃烧的法力上限。
         var nominal = (long)Math.Max(0, manaCapacity) * AlchemyProductCatalog.ManaPercent[pill.efficacy_tier] / 100;
         return nominal <= 0 ? 0 : Math.Max(1, (int)Math.Floor((double)Math.Max(0, manaCapacity) *
             AlchemyProductCatalog.ManaPercent[pill.efficacy_tier] / 100 * PillToxicityRules.Efficiency(toxicity) + 1e-9));
     }
 
-    public static string Name(PillItemData pill) => pill.pill_id == "huichun" ? "回春丹" : "通脉丹";
+    public static string Name(PillItemData pill) => AlchemyProductCatalog.Name(pill.pill_id);
 }

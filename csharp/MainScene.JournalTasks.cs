@@ -42,7 +42,7 @@ public partial class MainScene
         var lecture = get_active_yuxu_true_disciple_lecture_journal_task();
         var lineage = get_active_yuxu_lineage_journal_task();
         var invitation = get_letter_invitation_tasks().FirstOrDefault(entry => entry.State != "已完成");
-        var current = duty ?? lecture ?? lineage ?? invitation ?? IdentifyJournalTask(has_open_world_access() ? get_cultivation_guidance_task() : _active_quest ?? get_phase_goal());
+        var current = (_baishiLecture is { finished: false } ? IdentifyJournalTask(baishi_current_task()) : null) ?? duty ?? lecture ?? lineage ?? invitation ?? IdentifyJournalTask(has_open_world_access() ? get_cultivation_guidance_task() : _active_quest ?? get_phase_goal());
         var ongoing = get_quest_entries().Where(e => e.State != "已完成").DistinctBy(e => e.Id).ToList();
         if (!_journalTrackingChosen || (!string.IsNullOrEmpty(_trackedJournalTask) && ongoing.All(e => e.Id != _trackedJournalTask)))
             _trackedJournalTask = current.Id;

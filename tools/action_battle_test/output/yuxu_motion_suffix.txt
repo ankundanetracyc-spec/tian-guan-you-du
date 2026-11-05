@@ -1,0 +1,3 @@
+func summary() -> Dictionary:
+	return {"meshes":meshes.size(),"own_bones":bones.size(),"source":"approved fullbody v15","common_pixel_scale":PIXEL_SCALE,"head_to_crown_ratio":(1474.0-130.0)/186.0,"display_scale":display_scale,"errors":validation_errors.duplicate()}
+

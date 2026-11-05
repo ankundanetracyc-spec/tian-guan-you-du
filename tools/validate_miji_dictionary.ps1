@@ -84,7 +84,9 @@ $buildKeywords = @(
 $combatMechanicKeywords = @(
     (Text @(0x6C14,0x8840)), (Text @(0x62A4,0x76FE)), (Text @(0x5316,0x89E3)), (Text @(0x5468,0x5929)),
     (Text @(0x6563,0x8840)), (Text @(0x7A7F,0x76FE)), (Text @(0x5FF5)), (Text @(0x5FC3,0x9699)),
-    (Text @(0x5251)), (Text @(0x5251,0x610F)), (Text @(0x6F6E)), (Text @(0x7081))
+    (Text @(0x5251)), (Text @(0x5251,0x610F)), (Text @(0x6F6E)), (Text @(0x7081)),
+    # 2026-11-04: approved blood-wave displacement control, implemented in the action runtime.
+    (Text @(0x51FB,0x9000))
 )
 $allowedKeywords += $buildKeywords + $combatMechanicKeywords
 

@@ -1,0 +1,58 @@
+{
+  "output/yuxu_robed_v21_arena/arena_12s.gif": {
+    "duration_ms": 12000,
+    "frames": 180,
+    "bytes": 53913405
+  },
+  "output/yuxu_robed_v21_arena/detail_12s.gif": {
+    "duration_ms": 12000,
+    "frames": 180,
+    "bytes": 3971779
+  },
+  "output/yuxu_robed_v21_arena/before_after_12s.gif": {
+    "duration_ms": 12000,
+    "frames": 180,
+    "bytes": 6066269
+  },
+  "output/yuxu_robed_v21_arena/normal_slow_24s.gif": {
+    "duration_ms": 24000,
+    "frames": 360,
+    "bytes": 12081260
+  },
+  "output/yuxu_gestures_v21/arena_26s.gif": {
+    "duration_ms": 26000,
+    "frames": 260,
+    "bytes": 88154847
+  },
+  "output/yuxu_gestures_v21/detail_26s.gif": {
+    "duration_ms": 26000,
+    "frames": 260,
+    "bytes": 4328970
+  },
+  "visual_review": {
+    "arena_frames": 360,
+    "arena_sheets": [
+      "continuous_00.jpg",
+      "continuous_01.jpg",
+      "continuous_02.jpg",
+      "continuous_03.jpg",
+      "continuous_04.jpg",
+      "continuous_05.jpg",
+      "continuous_06.jpg",
+      "continuous_07.jpg",
+      "continuous_08.jpg",
+      "continuous_09.jpg",
+      "continuous_10.jpg",
+      "continuous_11.jpg"
+    ],
+    "cycle_poses": 140,
+    "result": "逐相位目视检查未见袍腰断缝、裁腿、明显过量抖动；上肢关键转场经独立代理交叉目视。",
+    "limits": "二维侧视近似；没有真实布料碰撞或三维脚锁；慢步支撑横向滑移测量不覆盖起停、脚滚或闪避。"
+  },
+  "source_sha256": {
+    "yuxu_approved_skin.gd": "518fe222e19983f08b1e79d19bafc48c6f9290733309eac5b40abe7c840d06b4",
+    "action_battle_feel_test.gd": "047335ef675c5f1bcfe17ac514ae04925826f358d221adbe4896c5671c4de0b7",
+    "yuxu_hand_blend.gdshader": "8747f62bbe930938a107c6d3e83890c62e36503e626a9151b03f9983824d83b0",
+    "capture_yuxu_natural.gd": "bb6263bcb56c5b18f5aa06514b146cb04aa2a31fa6fce37b2c67098364cf7b89"
+  }
+}

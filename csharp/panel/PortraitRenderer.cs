@@ -3,7 +3,8 @@ using Godot.Collections;
 
 public partial class PortraitRenderer : Control
 {
-    private static readonly string[] LayerOrder=["hair_back","face","ear","clothes","eye","brow","nose","mouth","beard","makeup","hair_front"];
+    // The rear garment is a private sublayer of the selected clothes, never a selectable part.
+    private static readonly string[] LayerOrder=["hair_back","rear_clothes","face","ear","clothes","nose","eye","brow","mouth","beard","makeup","hair_front"];
     private static readonly Color[] SkinTones=[new("fff0df"),new("f4ddc8"),new("e5c4a7"),new("c99b79"),new("a77758")];
     private static readonly Color[] HairTones=[new("ffffff"),new("c8a77b"),new("8a6550"),new("89919a"),new("9b4b38")];
     private static readonly System.Collections.Generic.Dictionary<string,Dictionary> SelectionCache=[];
@@ -53,13 +54,14 @@ public partial class PortraitRenderer : Control
         _current_key=key;
         foreach(var part in LayerOrder)
         {
-            var layer=_layers[part];var entry=selected.GetValueOrDefault(part,new Dictionary()).AsGodotDictionary();
-            var path=entry.GetValueOrDefault("resource_path","").AsString();
+            var layer=_layers[part];var entry=selected.GetValueOrDefault(part=="rear_clothes"?"clothes":part,new Dictionary()).AsGodotDictionary();
+            var path=entry.GetValueOrDefault(part=="rear_clothes"?"rear_resource_path":"resource_path","").AsString();
             layer.Texture=path.Length>0&&ResourceLoader.Exists(path)?ResourceLoader.Load<Texture2D>(path):null;
             layer.Visible=layer.Texture is not null;
             layer.Position=new Vector2(entry.GetValueOrDefault("offset_x",0).AsSingle(),entry.GetValueOrDefault("offset_y",0).AsSingle());
             layer.Scale=Vector2.One;layer.PivotOffset=Vector2.Zero;layer.Modulate=Colors.White;
         }
+        _layers["rear_clothes"].Visible=_layers["rear_clothes"].Texture is not null&&_layers["clothes"].Visible;
         if(_headshotComposition is not null && _layers["face"].Texture is { } faceTexture)
             _headshotComposition.Size=faceTexture.GetSize();
         foreach(var layer in _layers.Values)layer.Size=CompositionSize;

@@ -53,7 +53,7 @@ public partial class Character
             "tongmai" => (long)max_mana * AlchemyProductCatalog.ManaPercent[tier] / 100 <= 0 ? 0 :
                 Math.Max(1, (int)Math.Floor((double)max_mana * AlchemyProductCatalog.ManaPercent[tier] / 100 * PillToxicityRules.Efficiency(toxicity) + 1e-9)),
             "jingxin" => PillToxicityRules.Absorb(AlchemyProductCatalog.Calm[tier], toxicity),
-            _ => 0
+            _ => PillToxicityRules.Absorb(AlchemyProductCatalog.PrimaryAmount(pillId, tier), toxicity)
         };
     }
 }

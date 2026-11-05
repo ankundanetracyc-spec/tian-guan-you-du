@@ -20,6 +20,11 @@ public partial class PillItemData : ItemData
             errors.Add("丹药标识、丹阶或丹效档无效");
         if (PillContainerCatalog.LoadContainerDefinition(container_material_id) is null)
             errors.Add("丹药没有对应的有效容器材质定义");
+        if (AlchemyProductCatalog.IsEnabled(pill_id))
+        {
+            int expected = pill_id == "huichun" ? 2 : AlchemyProductCatalog.IsBattlePill(pill_id) ? 1 : 0;
+            if (usage_type != expected) errors.Add("丹药用途与正式开放范围不一致");
+        }
         return errors;
     }
 }

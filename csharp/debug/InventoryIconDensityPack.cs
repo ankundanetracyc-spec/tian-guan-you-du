@@ -7,14 +7,14 @@ public static class InventoryIconDensityPack
     public const string Manifest = "res://docs/美术规范/行囊全物品图标与占地_20261029/物品占地与图标清单.json";
     public const string Tasks = "res://docs/美术规范/行囊全物品图标与占地_20261029/生成任务.json";
     public const string AnimationPillPath = Root + "pill_2x2.png";
-    public const int PixelsPerCell = 128;
+    public const int PixelsPerCell = InventoryGridMetrics.SourcePixelsPerCell;
     public const float UsableFraction = .88f;
     public const int BoundsAlphaThreshold = 2;
-    public readonly record struct Spec(string File, int Width, int Height);
+    public readonly record struct Spec(string File, int Width, int Height, string Source = "");
     public static Spec[] Specs => Json.ParseString(Godot.FileAccess.GetFileAsString(Tasks)).AsGodotArray().Select(value =>
     {
         var row = value.AsGodotDictionary(); var cells = row["cells"].AsGodotArray();
-        return new Spec(row["file"].AsString(), cells[0].AsInt32(), cells[1].AsInt32());
+        return new Spec(row["file"].AsString(), cells[0].AsInt32(), cells[1].AsInt32(), row.ContainsKey("source") ? row["source"].AsString() : "");
     }).ToArray();
     private static IEnumerable<Spec> AllSpecs => Specs.Append(new Spec("pill_2x2.png", 2, 2));
 
@@ -55,7 +55,7 @@ public static class InventoryIconDensityPack
         file.StoreString(Json.Stringify(metadata, "  "));
         Verify();
     }
-    private static string SourcePath(Spec spec) => Root + "raw_unified_final/" + spec.File;
+    private static string SourcePath(Spec spec) => spec.Source.Length > 0 ? spec.Source : Root + "raw_unified_final/" + spec.File;
     private static void ValidateSource(Spec spec)
     {
         using var image = Image.LoadFromFile(ProjectSettings.GlobalizePath(SourcePath(spec)));

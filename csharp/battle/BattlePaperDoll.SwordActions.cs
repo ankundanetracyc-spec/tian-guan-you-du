@@ -22,7 +22,7 @@ public partial class BattlePaperDoll
         if(hasSword)show_sword_idle(weapon.Icon,weapon.Grip,weapon.Tip);
     }
     public bool side_ink_female()=>_sideFemale;
-    public bool can_present_sword_action(string pose)=>_usesSideInk&&!_sideDead&&BattleSwordArt.TryPose(pose,out _,_sideFemale);
+    public bool can_present_sword_action(string pose)=>_queueAvatar is null&&_usesSideInk&&!_sideDead&&BattleSwordArt.TryPose(pose,out _,_sideFemale);
     public bool play_sword_action(string pose,Vector2 direction,bool awaitingContact=false)
     {
         if(!can_present_sword_action(pose)||!BattleSwordArt.TryPose(pose,out var art,_sideFemale))return false;
@@ -48,6 +48,6 @@ public partial class BattlePaperDoll
         StartSideInkPose("sword_hurt",1.12f);
         return true;
     }
-    public Vector2 sword_action_grip(string pose)=>BattleSwordArt.TryPose(pose,out var art,_sideFemale)?art!.Grip-SideInkGround:side_ink_hand();
+    public Vector2 sword_action_grip(string pose)=>_queueAvatar?.HandAnchor ?? (BattleSwordArt.TryPose(pose,out var art,_sideFemale)?art!.Grip-SideInkGround:side_ink_hand());
     public float sword_action_angle(string pose)=>BattleSwordArt.TryPose(pose,out var art,_sideFemale)?art!.Angle:0;
 }

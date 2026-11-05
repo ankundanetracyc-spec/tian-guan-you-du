@@ -28,6 +28,6 @@ public partial class SecretBook : Item
     }
     public string get_next_unread_chapter(GodotObject human){if(gongfa is null||gongfa.chapters.Count==0)return "";foreach(var chapter in gongfa.get_sorted_chapters())if(!human.Call("get_learned_gongfa_chapter_ids",gongfa).AsGodotArray().Contains(chapter.get_id()))return chapter.get_id();return "";}
     private string next_unread_chapter(GodotObject human)=>get_next_unread_chapter(human);
-    private string select_chapter(GodotObject human){if(gongfa is null||gongfa.chapters.Count==0)return "";foreach(var chapter in gongfa.get_sorted_chapters()){var id=chapter.get_id();if(!human.Call("get_learned_gongfa_chapter_ids",gongfa).AsGodotArray().Contains(id)&&(!human.Call("has_learned_gongfa",gongfa).AsBool()||human.Call("can_learn_gongfa_chapter",gongfa,chapter).AsBool()))return id;}return "";}
+    private string select_chapter(GodotObject human){if(gongfa is null||gongfa.chapters.Count==0)return "";foreach(var chapter in gongfa.get_sorted_chapters()){var id=chapter.get_id();if(!human.Call("get_learned_gongfa_chapter_ids",gongfa).AsGodotArray().Contains(id)&&((!human.Call("has_learned_gongfa",gongfa).AsBool() && !(human is Character actor && actor.entity_data is HumanData data && data.baishi_first_volume_path == gongfa.ResourcePath))||human.Call("can_learn_gongfa_chapter",gongfa,chapter).AsBool()))return id;}return "";}
 }
 #pragma warning restore CS8604

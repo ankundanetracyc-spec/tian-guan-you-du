@@ -13,6 +13,7 @@ public partial class AppearanceModCatalog : Node
 	{
 		_parts.Clear();
 		scan_directory(ModRoot);
+		PortraitRenderer.clear_selection_cache();
 	}
 
 	public Array<Dictionary> get_parts(string gender, string part)
@@ -107,11 +108,15 @@ public partial class AppearanceModCatalog : Node
 				entry["min_age"] = entry.GetValueOrDefault("min_age", 0).AsInt32();
 				entry["max_age"] = entry.GetValueOrDefault("max_age", 999).AsInt32();
 				entry["realm_min"] = entry.GetValueOrDefault("realm_min", 0).AsInt32();
-				entry["variant_index"] = variantIndex;
+				// Saved style IDs must not shift when a rejected option is removed.
+				Variant styleIds = source.GetValueOrDefault("variant_style_ids", new Godot.Collections.Array());
+				int styleId = styleIds.VariantType == Variant.Type.Array && variantIndex < styleIds.AsGodotArray().Count
+					? styleIds.AsGodotArray()[variantIndex].AsInt32() : variantIndex;
+				entry["variant_index"] = styleId;
 				Variant names = source.GetValueOrDefault("variant_names", new Godot.Collections.Array());
 				entry["display_name"] = names.VariantType == Variant.Type.Array && variantIndex < names.AsGodotArray().Count
 					? names.AsGodotArray()[variantIndex].AsString() : $"款式 {variantIndex + 1}";
-				entry["id"] = entry.GetValueOrDefault("id", "part").AsString() + $"_{variantIndex:00}";
+				entry["id"] = entry.GetValueOrDefault("id", "part").AsString() + $"_{styleId:00}";
 				int indexStart = source.GetValueOrDefault("index_start", config.GetValueOrDefault("index_start", 0)).AsInt32();
 				int indexPadding = Math.Max(0, source.GetValueOrDefault("index_padding", config.GetValueOrDefault("index_padding", 0)).AsInt32());
 				int fileIndex = variantIndex + indexStart;
@@ -123,6 +128,9 @@ public partial class AppearanceModCatalog : Node
 				if (relativeFile.Length == 0)
 					continue;
 				entry["resource_path"] = path.PathJoin(relativeFile);
+				string rearFile = source.GetValueOrDefault("rear_file", "").AsString().Replace("{index}", formattedIndex);
+				if (rearFile.Length > 0)
+					entry["rear_resource_path"] = path.PathJoin(rearFile);
 				entry["package_path"] = path;
 				Variant itemPaths = source.GetValueOrDefault("item_paths", new Godot.Collections.Array());
 				if (itemPaths.VariantType == Variant.Type.Array && variantIndex < itemPaths.AsGodotArray().Count)

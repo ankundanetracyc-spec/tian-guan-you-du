@@ -321,6 +321,48 @@ subscene_id = "inn"
 subscene_name = "客栈"
 description = "行人与散修的歇脚处。"
 
+[sub_resource type="Resource" id="BaishiLecture"]
+script = ExtResource("2_eesvk")
+subscene_id = "lecture"
+subscene_name = "讲法处"
+description = "城约三方共同筹办的讲法场地，可旁听、验灵与向在场修士问询。"
+
+[sub_resource type="Resource" id="BaishiStudy"]
+script = ExtResource("2_eesvk")
+subscene_id = "lecture_study"
+subscene_name = "研习处"
+description = "初学者选读首卷、研读、吐纳与休息的地方。"
+
+[sub_resource type="Resource" id="BaishiSouthStreet"]
+script = ExtResource("2_eesvk")
+subscene_id = "street_south"
+subscene_name = "南街"
+description = "客栈和临街铺面所在的主街。"
+
+[sub_resource type="Resource" id="BaishiEastStreet"]
+script = ExtResource("2_eesvk")
+subscene_id = "street_east"
+subscene_name = "东市"
+description = "坊市与书坊相接的商街。"
+
+[sub_resource type="Resource" id="BaishiCivicStreet"]
+script = ExtResource("2_eesvk")
+subscene_id = "street_fuqian"
+subscene_name = "府前街"
+description = "告示所和城守府前的街面。"
+
+[sub_resource type="Resource" id="BaishiWestStreet"]
+script = ExtResource("2_eesvk")
+subscene_id = "street_west"
+subscene_name = "西城旧巷"
+description = "砖墙宅院间的旧巷。"
+
+[sub_resource type="Resource" id="BaishiCityOffice"]
+script = ExtResource("2_eesvk")
+subscene_id = "city_office"
+subscene_name = "城守府"
+description = "城务与轮值问询的前厅，侧院通往讲法和研习场所。"
+
 [sub_resource type="Resource" id="Resource_aav2t"]
 script = ExtResource("1_prh2e")
 node_id = "white_stone_town"
@@ -334,7 +376,7 @@ spirit_pressure = 2
 danger_level = 2
 population = 500
 description = "百川东南近域的商路枢纽。坊市、客栈与告示所收拢了南来北往的行人消息。"
-subscenes = Array[ExtResource("2_eesvk")]([SubResource("Resource_376p3"), SubResource("Resource_ckunq"), SubResource("Resource_mrx5b"), SubResource("Resource_bhri5")])
+subscenes = Array[ExtResource("2_eesvk")]([SubResource("Resource_376p3"), SubResource("Resource_ckunq"), SubResource("Resource_mrx5b"), SubResource("Resource_bhri5"), SubResource("BaishiLecture"), SubResource("BaishiStudy"), SubResource("BaishiSouthStreet"), SubResource("BaishiEastStreet"), SubResource("BaishiCivicStreet"), SubResource("BaishiWestStreet"), SubResource("BaishiCityOffice")])
 
 [sub_resource type="Resource" id="Resource_daktt"]
 script = ExtResource("1_prh2e")

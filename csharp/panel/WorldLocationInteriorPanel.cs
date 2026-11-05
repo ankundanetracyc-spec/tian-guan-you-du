@@ -10,6 +10,7 @@ using System.Collections.Generic;
 public partial class WorldLocationInteriorPanel : Control
 {
     public event System.Action? Closed;
+    public event System.Action<string, string>? SubsceneEntered;
 
     private WorldNodeData? _node;
     private NpcWorldManager? _npc_world;
@@ -34,6 +35,32 @@ public partial class WorldLocationInteriorPanel : Control
     public bool is_npc_in_current_space(WorldNpcData npc) => Visible && _node?.node_id == npc.current_node_id &&
         (string.IsNullOrEmpty(_selected_subscene_id) || npc.current_subscene_id == _selected_subscene_id);
     private string _east_woods_current = "forest_edge";
+    private ColorRect? _sceneShade;
+    private TextureRect? _npcBackdrop;
+
+    public void show_npc_space(WorldNodeData node, NpcWorldManager? world, string backgroundPath)
+    {
+        if (node.node_id == "white_stone_town")
+        {
+            show_baishi_space(node, world, "lecture");
+            return;
+        }
+        show_for(node, world);
+        _baishiView?.Hide();
+        if (_npcBackdrop is null)
+        {
+            _npcBackdrop = new TextureRect
+            {
+                Name = "NpcLocationBackdrop", ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
+                StretchMode = TextureRect.StretchModeEnum.KeepAspectCovered, MouseFilter = MouseFilterEnum.Ignore
+            };
+            AddChild(_npcBackdrop); MoveChild(_npcBackdrop, 0);
+            _npcBackdrop.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        }
+        _npcBackdrop.Texture = GD.Load<Texture2D>(backgroundPath);
+        _npcBackdrop.Show(); _sceneShade?.Hide(); _generic_frame?.Hide();
+        if (node.node_id == "white_stone_town") _baishiView?.Call("show_courtyard_controls");
+    }
 
     public override void _Ready()
     {
@@ -47,10 +74,19 @@ public partial class WorldLocationInteriorPanel : Control
 
     public void show_for(WorldNodeData node, NpcWorldManager? npc_world)
     {
+        _baishiView?.Hide();
+        _npcBackdrop?.Hide(); _sceneShade?.Show();
         _node = node;
         _npc_world = npc_world;
         _selected_subscene_id = "";
         _cell_roster ??= GetTree().GetFirstNodeInGroup("cell_character_list") as CellCharacterList;
+        if (node.node_id == "white_stone_town")
+        {
+            show_baishi_city();
+            Show();
+            MoveToFront();
+            return;
+        }
         if (node.node_id == "east_woods")
         {
             ensure_east_woods_view();
@@ -70,6 +106,7 @@ public partial class WorldLocationInteriorPanel : Control
 
     public void close()
     {
+        if (return_one_level()) return;
         hide_roster();
         Hide();
         Closed?.Invoke();
@@ -84,6 +121,7 @@ public partial class WorldLocationInteriorPanel : Control
             Color = new Color(0.025f, 0.035f, 0.032f, 0.82f),
             MouseFilter = MouseFilterEnum.Stop,
         };
+        _sceneShade = shade;
         shade.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         AddChild(shade);
 
@@ -472,11 +510,17 @@ public partial class WorldLocationInteriorPanel : Control
     private void show_subscene(WorldSubsceneData subscene)
     {
         if (_subscene_detail is null) return;
+        if (_node?.node_id == "white_stone_town")
+        {
+            show_baishi_space(_node, _npc_world, subscene.subscene_id);
+            return;
+        }
         _selected_subscene_id = subscene.subscene_id;
         refresh_current_roster();
         _subscene_detail.Text = string.IsNullOrWhiteSpace(subscene.description)
             ? $"{subscene.subscene_name}：暂未留下详细说明。"
             : $"{subscene.subscene_name}：{subscene.description}";
+        if (_node is not null) SubsceneEntered?.Invoke(_node.node_id, subscene.subscene_id);
     }
 
     private void refresh_current_roster()

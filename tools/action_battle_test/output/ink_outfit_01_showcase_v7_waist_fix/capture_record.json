@@ -1,0 +1,1347 @@
+{
+	"canvas": [
+		1200,
+		800
+	],
+	"capture_fps": 15,
+	"mannequin_note": "Neutral vector head without face features; hair is outside this outfit delivery.",
+	"materials": {
+		"body": {
+			"mapping": "source crop to complete Sprite canvas affine; no local registration",
+			"native_per_template_x": 0.674305555555556,
+			"native_per_template_y": 0.675,
+			"native_size": [
+				971,
+				1620
+			],
+			"path": "res://art/ink_outfit_01_20261104/assets/body.png",
+			"sha256": "9a87016e7b3aaf208d369fd7033cb0fa62f31ec8690cb2727d050120099a3109",
+			"source_canvas": [
+				60.0,
+				100.0
+			],
+			"target_ppu": 2400.0,
+			"template_size": [
+				1440.0,
+				2400.0
+			]
+		},
+		"leg": {
+			"mapping": "source crop to complete Sprite canvas affine; no local registration",
+			"native_per_template_x": 0.825833333333333,
+			"native_per_template_y": 0.8265625,
+			"native_size": [
+				991,
+				1587
+			],
+			"path": "res://art/ink_outfit_01_20261104/assets/leg.png",
+			"sha256": "0d189c16b9d0ea151a7418f2556182957cfecbcfa91c0d3d48bcfda5dfccbfda",
+			"source_canvas": [
+				50.0,
+				80.0
+			],
+			"target_ppu": 2400.0,
+			"template_size": [
+				1200.0,
+				1920.0
+			]
+		},
+		"sleeve_far": {
+			"mapping": "source crop to complete Sprite canvas affine; no local registration",
+			"native_per_template_x": 0.870833333333333,
+			"native_per_template_y": 0.870833333333333,
+			"native_size": [
+				1254,
+				1254
+			],
+			"path": "res://art/ink_outfit_01_20261104/assets/sleeve_far.png",
+			"sha256": "34373a9d61335660aa000ae07f4631ef198697b63b71d880f6c8ee28bbec2c4d",
+			"source_canvas": [
+				60.0,
+				60.0
+			],
+			"target_ppu": 2400.0,
+			"template_size": [
+				1440.0,
+				1440.0
+			]
+		},
+		"sleeve_near": {
+			"mapping": "source crop to complete Sprite canvas affine; no local registration",
+			"native_per_template_x": 0.870833333333333,
+			"native_per_template_y": 0.870833333333333,
+			"native_size": [
+				1254,
+				1254
+			],
+			"path": "res://art/ink_outfit_01_20261104/assets/sleeve_near.png",
+			"sha256": "fd2590534d4391d8297112713cd2c39521914bbc4f7c47ae927d2fdd49f54ade",
+			"source_canvas": [
+				60.0,
+				60.0
+			],
+			"target_ppu": 2400.0,
+			"template_size": [
+				1440.0,
+				1440.0
+			]
+		}
+	},
+	"motion_note": "Evaluated source bone/skin frames; no secondary-frame surrogate. Run-to-Idle hem release is a project transition proxy up to 0.58 s, not original DynamicBone simulation.",
+	"nominal_full_source_envelope_pixels": 531.648,
+	"run_seconds": 3,
+	"run_stop_frames": [
+		{
+			"clock": 0.0333333333333333,
+			"frame": 0,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.0571428590891313
+		},
+		{
+			"clock": 0.0666666666666667,
+			"frame": 1,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.114285718178263
+		},
+		{
+			"clock": 0.1,
+			"frame": 2,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.171428577267394
+		},
+		{
+			"clock": 0.133333333333333,
+			"frame": 3,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.228571436356525
+		},
+		{
+			"clock": 0.166666666666667,
+			"frame": 4,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.285714295445657
+		},
+		{
+			"clock": 0.2,
+			"frame": 5,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.342857154534788
+		},
+		{
+			"clock": 0.233333333333333,
+			"frame": 6,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.400000013623919
+		},
+		{
+			"clock": 0.266666666666667,
+			"frame": 7,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.457142872713051
+		},
+		{
+			"clock": 0.3,
+			"frame": 8,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.514285731802182
+		},
+		{
+			"clock": 0.333333333333333,
+			"frame": 9,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.571428590891313
+		},
+		{
+			"clock": 0.366666666666667,
+			"frame": 10,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.628571449980445
+		},
+		{
+			"clock": 0.4,
+			"frame": 11,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.685714309069576
+		},
+		{
+			"clock": 0.433333333333333,
+			"frame": 12,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.742857168158707
+		},
+		{
+			"clock": 0.466666666666667,
+			"frame": 13,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.800000027247838
+		},
+		{
+			"clock": 0.5,
+			"frame": 14,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.85714288633697
+		},
+		{
+			"clock": 0.533333333333333,
+			"frame": 15,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.914285745426101
+		},
+		{
+			"clock": 0.566666666666667,
+			"frame": 16,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.971428604515233
+		},
+		{
+			"clock": 0.6,
+			"frame": 17,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.0285714636043637
+		},
+		{
+			"clock": 0.633333333333333,
+			"frame": 18,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.0857143226934951
+		},
+		{
+			"clock": 0.666666666666667,
+			"frame": 19,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.142857181782627
+		},
+		{
+			"clock": 0.7,
+			"frame": 20,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.200000040871758
+		},
+		{
+			"clock": 0.733333333333333,
+			"frame": 21,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.257142899960889
+		},
+		{
+			"clock": 0.766666666666667,
+			"frame": 22,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.31428575905002
+		},
+		{
+			"clock": 0.8,
+			"frame": 23,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.371428618139152
+		},
+		{
+			"clock": 0.833333333333333,
+			"frame": 24,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.428571477228283
+		},
+		{
+			"clock": 0.866666666666667,
+			"frame": 25,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.485714336317414
+		},
+		{
+			"clock": 0.9,
+			"frame": 26,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.542857195406546
+		},
+		{
+			"clock": 0.933333333333333,
+			"frame": 27,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.600000054495677
+		},
+		{
+			"clock": 0.966666666666667,
+			"frame": 28,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.657142913584808
+		},
+		{
+			"clock": 1.0,
+			"frame": 29,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.71428577267394
+		},
+		{
+			"clock": 1.03333333333333,
+			"frame": 30,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.771428631763071
+		},
+		{
+			"clock": 1.06666666666667,
+			"frame": 31,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.828571490852202
+		},
+		{
+			"clock": 1.1,
+			"frame": 32,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.885714349941334
+		},
+		{
+			"clock": 1.13333333333333,
+			"frame": 33,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.942857209030465
+		},
+		{
+			"clock": 1.16666666666667,
+			"frame": 34,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.000000068119597074201
+		},
+		{
+			"clock": 1.2,
+			"frame": 35,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.0571429272087283
+		},
+		{
+			"clock": 1.23333333333333,
+			"frame": 36,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.11428578629786
+		},
+		{
+			"clock": 1.26666666666667,
+			"frame": 37,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.171428645386992
+		},
+		{
+			"clock": 1.3,
+			"frame": 38,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.228571504476123
+		},
+		{
+			"clock": 1.33333333333333,
+			"frame": 39,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.285714363565254
+		},
+		{
+			"clock": 1.36666666666667,
+			"frame": 40,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.342857222654386
+		},
+		{
+			"clock": 1.4,
+			"frame": 41,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.400000081743517
+		},
+		{
+			"clock": 1.43333333333333,
+			"frame": 42,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.457142940832649
+		},
+		{
+			"clock": 1.46666666666667,
+			"frame": 43,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.51428579992178
+		},
+		{
+			"clock": 1.5,
+			"frame": 44,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.571428659010912
+		},
+		{
+			"clock": 1.53333333333333,
+			"frame": 45,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.628571518100043
+		},
+		{
+			"clock": 1.56666666666667,
+			"frame": 46,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.685714377189175
+		},
+		{
+			"clock": 1.6,
+			"frame": 47,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.742857236278307
+		},
+		{
+			"clock": 1.63333333333334,
+			"frame": 48,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.800000095367438
+		},
+		{
+			"clock": 1.66666666666667,
+			"frame": 49,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.857142954456569
+		},
+		{
+			"clock": 1.7,
+			"frame": 50,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.914285813545701
+		},
+		{
+			"clock": 1.73333333333334,
+			"frame": 51,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.971428672634832
+		},
+		{
+			"clock": 1.76666666666667,
+			"frame": 52,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.0285715317239639
+		},
+		{
+			"clock": 1.8,
+			"frame": 53,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.0857143908130955
+		},
+		{
+			"clock": 1.83333333333334,
+			"frame": 54,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.142857249902227
+		},
+		{
+			"clock": 1.86666666666667,
+			"frame": 55,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.200000108991358
+		},
+		{
+			"clock": 1.9,
+			"frame": 56,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.25714296808049
+		},
+		{
+			"clock": 1.93333333333334,
+			"frame": 57,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.314285827169622
+		},
+		{
+			"clock": 1.96666666666667,
+			"frame": 58,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.371428686258753
+		},
+		{
+			"clock": 2.0,
+			"frame": 59,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.428571545347884
+		},
+		{
+			"clock": 2.03333333333334,
+			"frame": 60,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.485714404437015
+		},
+		{
+			"clock": 2.06666666666667,
+			"frame": 61,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.542857263526146
+		},
+		{
+			"clock": 2.1,
+			"frame": 62,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.600000122615278
+		},
+		{
+			"clock": 2.13333333333334,
+			"frame": 63,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.657142981704408
+		},
+		{
+			"clock": 2.16666666666667,
+			"frame": 64,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.71428584079354
+		},
+		{
+			"clock": 2.2,
+			"frame": 65,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.771428699882671
+		},
+		{
+			"clock": 2.23333333333334,
+			"frame": 66,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.828571558971802
+		},
+		{
+			"clock": 2.26666666666667,
+			"frame": 67,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.885714418060933
+		},
+		{
+			"clock": 2.3,
+			"frame": 68,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.942857277150064
+		},
+		{
+			"clock": 2.33333333333333,
+			"frame": 69,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.00000013623919503658
+		},
+		{
+			"clock": 2.36666666666667,
+			"frame": 70,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.0571429953283262
+		},
+		{
+			"clock": 2.4,
+			"frame": 71,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.114285854417457
+		},
+		{
+			"clock": 2.43333333333333,
+			"frame": 72,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.171428713506589
+		},
+		{
+			"clock": 2.46666666666667,
+			"frame": 73,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.22857157259572
+		},
+		{
+			"clock": 2.5,
+			"frame": 74,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.285714431684851
+		},
+		{
+			"clock": 2.53333333333333,
+			"frame": 75,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.342857290773982
+		},
+		{
+			"clock": 2.56666666666667,
+			"frame": 76,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.400000149863113
+		},
+		{
+			"clock": 2.6,
+			"frame": 77,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.457143008952245
+		},
+		{
+			"clock": 2.63333333333333,
+			"frame": 78,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.514285868041376
+		},
+		{
+			"clock": 2.66666666666667,
+			"frame": 79,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.571428727130506
+		},
+		{
+			"clock": 2.7,
+			"frame": 80,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.628571586219637
+		},
+		{
+			"clock": 2.73333333333333,
+			"frame": 81,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.685714445308768
+		},
+		{
+			"clock": 2.76666666666667,
+			"frame": 82,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.7428573043979
+		},
+		{
+			"clock": 2.8,
+			"frame": 83,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.800000163487031
+		},
+		{
+			"clock": 2.83333333333333,
+			"frame": 84,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.857143022576162
+		},
+		{
+			"clock": 2.86666666666667,
+			"frame": 85,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.914285881665293
+		},
+		{
+			"clock": 2.9,
+			"frame": 86,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.971428740754424
+		},
+		{
+			"clock": 2.93333333333333,
+			"frame": 87,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.0285715998435556
+		},
+		{
+			"clock": 2.96666666666667,
+			"frame": 88,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.0857144589326868
+		},
+		{
+			"clock": 3.0,
+			"frame": 89,
+			"release_transition_proxy": false,
+			"right_clip": "Run_New1",
+			"right_source_phase": 0.142857318021818
+		},
+		{
+			"clock": 3.03333333333333,
+			"frame": 90,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.857142866179129
+		},
+		{
+			"clock": 3.06666666666667,
+			"frame": 91,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.877551029543735
+		},
+		{
+			"clock": 3.1,
+			"frame": 92,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.897959192908341
+		},
+		{
+			"clock": 3.13333333333333,
+			"frame": 93,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.918367356272946
+		},
+		{
+			"clock": 3.16666666666667,
+			"frame": 94,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.938775519637552
+		},
+		{
+			"clock": 3.2,
+			"frame": 95,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.959183683002158
+		},
+		{
+			"clock": 3.23333333333333,
+			"frame": 96,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.979591846366764
+		},
+		{
+			"clock": 3.26666666666666,
+			"frame": 97,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.00000000973136948800857
+		},
+		{
+			"clock": 3.3,
+			"frame": 98,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.0204081730959751
+		},
+		{
+			"clock": 3.33333333333333,
+			"frame": 99,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.0408163364605811
+		},
+		{
+			"clock": 3.36666666666666,
+			"frame": 100,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.0612244998251867
+		},
+		{
+			"clock": 3.4,
+			"frame": 101,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.0816326631897923
+		},
+		{
+			"clock": 3.43333333333333,
+			"frame": 102,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.102040826554398
+		},
+		{
+			"clock": 3.46666666666666,
+			"frame": 103,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.122448989919004
+		},
+		{
+			"clock": 3.5,
+			"frame": 104,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.14285715328361
+		},
+		{
+			"clock": 3.53333333333333,
+			"frame": 105,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.163265316648216
+		},
+		{
+			"clock": 3.56666666666666,
+			"frame": 106,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.183673480012821
+		},
+		{
+			"clock": 3.6,
+			"frame": 107,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.204081643377427
+		},
+		{
+			"clock": 3.63333333333333,
+			"frame": 108,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.224489806742033
+		},
+		{
+			"clock": 3.66666666666666,
+			"frame": 109,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.244897970106639
+		},
+		{
+			"clock": 3.7,
+			"frame": 110,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.265306133471244
+		},
+		{
+			"clock": 3.73333333333333,
+			"frame": 111,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.28571429683585
+		},
+		{
+			"clock": 3.76666666666666,
+			"frame": 112,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.306122460200456
+		},
+		{
+			"clock": 3.8,
+			"frame": 113,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.326530623565061
+		},
+		{
+			"clock": 3.83333333333333,
+			"frame": 114,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.346938786929667
+		},
+		{
+			"clock": 3.86666666666666,
+			"frame": 115,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.367346950294273
+		},
+		{
+			"clock": 3.9,
+			"frame": 116,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.387755113658879
+		},
+		{
+			"clock": 3.93333333333333,
+			"frame": 117,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.408163277023485
+		},
+		{
+			"clock": 3.96666666666666,
+			"frame": 118,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.42857144038809
+		},
+		{
+			"clock": 4.0,
+			"frame": 119,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.448979603752696
+		},
+		{
+			"clock": 4.03333333333333,
+			"frame": 120,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.469387767117302
+		},
+		{
+			"clock": 4.06666666666666,
+			"frame": 121,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.489795930481908
+		},
+		{
+			"clock": 4.1,
+			"frame": 122,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.510204093846513
+		},
+		{
+			"clock": 4.13333333333333,
+			"frame": 123,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.530612257211119
+		},
+		{
+			"clock": 4.16666666666666,
+			"frame": 124,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.551020420575725
+		},
+		{
+			"clock": 4.19999999999999,
+			"frame": 125,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.57142858394033
+		},
+		{
+			"clock": 4.23333333333333,
+			"frame": 126,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.591836747304936
+		},
+		{
+			"clock": 4.26666666666666,
+			"frame": 127,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.612244910669542
+		},
+		{
+			"clock": 4.29999999999999,
+			"frame": 128,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.632653074034148
+		},
+		{
+			"clock": 4.33333333333333,
+			"frame": 129,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.653061237398754
+		},
+		{
+			"clock": 4.36666666666666,
+			"frame": 130,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.673469400763359
+		},
+		{
+			"clock": 4.39999999999999,
+			"frame": 131,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.693877564127965
+		},
+		{
+			"clock": 4.43333333333333,
+			"frame": 132,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.714285727492571
+		},
+		{
+			"clock": 4.46666666666666,
+			"frame": 133,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.734693890857177
+		},
+		{
+			"clock": 4.49999999999999,
+			"frame": 134,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.755102054221782
+		},
+		{
+			"clock": 4.53333333333333,
+			"frame": 135,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.775510217586388
+		},
+		{
+			"clock": 4.56666666666666,
+			"frame": 136,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.795918380950994
+		},
+		{
+			"clock": 4.59999999999999,
+			"frame": 137,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.816326544315599
+		},
+		{
+			"clock": 4.63333333333333,
+			"frame": 138,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.836734707680205
+		},
+		{
+			"clock": 4.66666666666666,
+			"frame": 139,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.857142871044811
+		},
+		{
+			"clock": 4.69999999999999,
+			"frame": 140,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.877551034409417
+		},
+		{
+			"clock": 4.73333333333333,
+			"frame": 141,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.897959197774023
+		},
+		{
+			"clock": 4.76666666666666,
+			"frame": 142,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.918367361138628
+		},
+		{
+			"clock": 4.79999999999999,
+			"frame": 143,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.938775524503234
+		},
+		{
+			"clock": 4.83333333333333,
+			"frame": 144,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.95918368786784
+		},
+		{
+			"clock": 4.86666666666666,
+			"frame": 145,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.979591851232446
+		},
+		{
+			"clock": 4.89999999999999,
+			"frame": 146,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.0000000145970511233884
+		},
+		{
+			"clock": 4.93333333333333,
+			"frame": 147,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.0204081779616572
+		},
+		{
+			"clock": 4.96666666666666,
+			"frame": 148,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.0408163413262628
+		},
+		{
+			"clock": 4.99999999999999,
+			"frame": 149,
+			"release_transition_proxy": true,
+			"right_clip": "Idle",
+			"right_source_phase": 0.0612245046908684
+		}
+	],
+	"scope": "independent outfit visual preview; default game entry unchanged",
+	"snapshots": [
+		{
+			"clock": 0.25,
+			"file": "showcase_014.png",
+			"left_source_phase": 0.153061225234544,
+			"right_source_phase": 0.428571443168485
+		},
+		{
+			"clock": 0.5,
+			"file": "showcase_029.png",
+			"left_source_phase": 0.306122450469087,
+			"right_source_phase": 0.85714288633697
+		},
+		{
+			"clock": 0.700000000000001,
+			"file": "showcase_041.png",
+			"left_source_phase": 0.428571430656723,
+			"right_source_phase": 0.200000040871759
+		},
+		{
+			"clock": 1.0,
+			"file": "showcase_059.png",
+			"left_source_phase": 0.612244900938176,
+			"right_source_phase": 0.714285772673942
+		}
+	],
+	"source": {
+		"errors": [],
+		"loaded": true,
+		"skin": {
+			"errors": [],
+			"garment": {
+				"body_carrier_extension": {
+					"added_triangles": [
+						[
+							30,
+							31,
+							40
+						],
+						[
+							31,
+							32,
+							40
+						],
+						[
+							32,
+							33,
+							40
+						]
+					],
+					"affine_weights": [
+						0.581574440002441,
+						0.851899147033691,
+						-0.433473587036133
+					],
+					"carrier_triangle_count": 46,
+					"carrier_vertex_count": 41,
+					"full_canvas_px": [
+						12.1999998092651,
+						94.5
+					],
+					"motion": "engineered local affine extension of adjacent evaluated source cloth",
+					"new_vertex": 40,
+					"original_source_document_unchanged": true,
+					"original_triangle_count": 43,
+					"original_vertex_count": 40,
+					"original_vertices_unchanged": true,
+					"purpose": "cover the new continuous rear hem; original mesh had no topological slit",
+					"source_basis": [
+						32,
+						31,
+						35
+					],
+					"uv": "unchanged crop-to-full-canvas affine"
+				},
+				"clothing_meshes": 5,
+				"default_entry_modified": false,
+				"density_multiplier": 24.0,
+				"hair_in_scope": false,
+				"mode": "isolated_outfit_full_canvas_affine",
+				"native_materials": {
+					"body": {
+						"mapping": "source crop to complete Sprite canvas affine; no local registration",
+						"native_per_template_x": 0.674305555555556,
+						"native_per_template_y": 0.675,
+						"native_size": [
+							971,
+							1620
+						],
+						"path": "res://art/ink_outfit_01_20261104/assets/body.png",
+						"source_canvas": [
+							60.0,
+							100.0
+						],
+						"target_ppu": 2400.0,
+						"template_size": [
+							1440.0,
+							2400.0
+						]
+					},
+					"leg": {
+						"mapping": "source crop to complete Sprite canvas affine; no local registration",
+						"native_per_template_x": 0.825833333333333,
+						"native_per_template_y": 0.8265625,
+						"native_size": [
+							991,
+							1587
+						],
+						"path": "res://art/ink_outfit_01_20261104/assets/leg.png",
+						"source_canvas": [
+							50.0,
+							80.0
+						],
+						"target_ppu": 2400.0,
+						"template_size": [
+							1200.0,
+							1920.0
+						]
+					},
+					"sleeve_far": {
+						"mapping": "source crop to complete Sprite canvas affine; no local registration",
+						"native_per_template_x": 0.870833333333333,
+						"native_per_template_y": 0.870833333333333,
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/ink_outfit_01_20261104/assets/sleeve_far.png",
+						"source_canvas": [
+							60.0,
+							60.0
+						],
+						"target_ppu": 2400.0,
+						"template_size": [
+							1440.0,
+							1440.0
+						]
+					},
+					"sleeve_near": {
+						"mapping": "source crop to complete Sprite canvas affine; no local registration",
+						"native_per_template_x": 0.870833333333333,
+						"native_per_template_y": 0.870833333333333,
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/ink_outfit_01_20261104/assets/sleeve_near.png",
+						"source_canvas": [
+							60.0,
+							60.0
+						],
+						"target_ppu": 2400.0,
+						"template_size": [
+							1440.0,
+							1440.0
+						]
+					}
+				},
+				"neutral_head_only": true,
+				"old_hd_registration_used": false,
+				"outfit": "ink_outfit_01_20261104",
+				"pants_upper_insertion_mask": {
+					"frozen_when_paused": true,
+					"native_uv_unchanged": true,
+					"normal": "head-pelvis",
+					"point": [
+						1.39509081840515,
+						-56.1996955871582
+					],
+					"scope": "leg fragments only; hide insertion above source pelvis/waist center",
+					"source_anchor": "pelvis / shenti2",
+					"source_vertices_unchanged": true,
+					"up_normal": [
+						-0.0398940667510033,
+						-0.99920392036438
+					]
+				},
+				"release_cloth_proxy": false,
+				"secondary_surrogate": false,
+				"selected_source_meshes": [
+					0,
+					1,
+					2,
+					3,
+					5
+				],
+				"skin_sha256": "d607d524d6f2e834c6437077c855cb2e6257bed06a0b8c8f6e0e8a50b1e55cfb",
+				"source_clip": "Idle",
+				"source_data": "E:/stacklands/resources/appearance/guigu_male101/model_frames_20261104.json",
+				"source_frames": "original evaluated bone/skin frames plus disclosed rear carrier extension",
+				"source_phase": 0.0612245046908684,
+				"source_ppu": 100.0,
+				"template": "res://art/ink_outfit_01_20261104/assets/template/fullcanvas_template_anchors.json",
+				"template_ppu": 2400.0
+			},
+			"meshes": 5,
+			"source": "first independent ink outfit fitting prototype"
+		}
+	},
+	"stop_seconds": 2,
+	"zoom": 7.1
+}

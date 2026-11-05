@@ -1,0 +1,68 @@
+{
+	"clips": {
+		"AttackIdle": {
+			"mesh_count": 7,
+			"near_hand": "(12.72239, -76.26937)",
+			"source_clip": "AttackIdle"
+		},
+		"AttackRun": {
+			"mesh_count": 7,
+			"near_hand": "(26.65391, -75.10275)",
+			"source_clip": "AttackRun"
+		},
+		"BackstepWalk": {
+			"mesh_count": 7,
+			"near_hand": "(10.05439, -77.14951)",
+			"source_clip": "Run_New2"
+		},
+		"Idle": {
+			"mesh_count": 7,
+			"near_hand": "(10.76853, -74.55506)",
+			"source_clip": "Idle"
+		},
+		"Run_New1": {
+			"mesh_count": 7,
+			"near_hand": "(22.79585, -69.3085)",
+			"source_clip": "Run_New1"
+		},
+		"Step1": {
+			"mesh_count": 7,
+			"near_hand": "(10.9444, -62.61108)",
+			"source_clip": "Step1"
+		}
+	},
+	"errors": [],
+	"passed": true,
+	"pause_frozen": true,
+	"summary": {
+		"bones": 51,
+		"errors": [],
+		"garment": {
+			"faceless": true,
+			"fixed_source_scale": 0.914477855127363,
+			"gameplay_modified": false,
+			"hd_texture_root": "res://art/guigu_male101_ink_hd",
+			"high_definition_materials": false,
+			"interpolation_weight": 0.599989700317714,
+			"mode": "source_model_direct_vertex_sampling",
+			"native_height": 104.0,
+			"rounded_shoulder_underlays": 2,
+			"sampled_frames": [
+				57,
+				58
+			],
+			"sampled_source_clip": "Step1",
+			"secondary_limit": "secondaryFrames adds a project-authored damped final-cloth-segment surrogate; neither DynamicBone parameters nor the original Animator were reconstructed.",
+			"secondary_surrogate": true,
+			"source_attach_points": 51,
+			"source_data": "res://output/guigu_source_reference_v2/male101/source_reference_vertex_frames.json",
+			"source_foot_y": 9.80515,
+			"source_mesh_count": 7,
+			"source_method": "Source world bone matrices * source bindpose matrices * original Sprite-local vertices, original unmodified weights. Cubic streamed channels and constant channels, unknown paths excluded, 3D source transforms projected to XY.",
+			"source_phase": 0.399999928474429,
+			"strict_hd_required": false
+		},
+		"meshes": 7,
+		"source": "verified source model topology and pose frames, original ink pigment"
+	}
+}

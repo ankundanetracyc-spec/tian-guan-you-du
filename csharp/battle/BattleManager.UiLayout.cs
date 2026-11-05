@@ -3,6 +3,9 @@ using Godot;
 public partial class BattleManager
 {
     private Vector2 _layoutViewportSize;
+    // Explicit art-trial flag. Ordinary encounters retain their existing layout.
+    public bool distant_avatar_preview;
+    public bool is_distant_avatar_preview() => isolated_trial_battle && distant_avatar_preview;
     private void ApplyBattleArtwork(Node scene)
     {
         scene.GetNodeOrNull<CanvasItem>("InkMountainValley")?.Hide();
@@ -22,7 +25,8 @@ public partial class BattleManager
         background.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
     }
 
-    public float get_unit_display_height() => new[] { 320f, 280f, 240f, 210f, 190f }[Mathf.Clamp(Math.Max(player_units.Count, enemy_units.Count), 1, 5) - 1] * BattleUiArt.Scale(GetViewport());
+    public float get_unit_display_height() => (is_distant_avatar_preview() ? 160f
+        : new[] { 320f, 280f, 240f, 210f, 190f }[Mathf.Clamp(Math.Max(player_units.Count, enemy_units.Count), 1, 5) - 1]) * BattleUiArt.Scale(GetViewport());
     public Rect2 get_unit_screen_rect(Node2D unit)
     {
         if (unit is ArtifactBody) return BattleLocalFocusView.FrameUnitRect(unit, new Rect2(unit.GetGlobalTransformWithCanvas().Origin + new Vector2(-65, -52), new Vector2(130, 115)));
@@ -51,13 +55,15 @@ public partial class BattleManager
         var origin = BattleUiArt.Origin(viewport);
         var canvasInverse = viewport.GetCanvasTransform().AffineInverse();
         var height = get_unit_display_height() / scale;
-        var rowDepth = Mathf.Clamp(360f - height, 0f, 170f);
+        var rowDepth = is_distant_avatar_preview() ? 96f : Mathf.Clamp(360f - height, 0f, 170f);
         var fit = 1f;
-        var centerY = Math.Max(player_units.Count, enemy_units.Count) == 1 ? 495f : 540f;
+        var centerY = is_distant_avatar_preview() ? 500f : Math.Max(player_units.Count, enemy_units.Count) == 1 ? 495f : 540f;
         foreach (var team in new[] { player_units, enemy_units })
         {
             if (team.Count == 0) continue;
-            var positions = layouts[Mathf.Clamp(team.Count, 1, 5) - 1];
+            var positions = is_distant_avatar_preview() && team.Count == 3
+                ? new Vector2[] { new(-160, -.55f), new(165, 0), new(-20, .65f) }
+                : layouts[Mathf.Clamp(team.Count, 1, 5) - 1];
             var center = new Vector2(BattleUiArt.Canvas.X * (team == enemy_units ? .75f : .25f), centerY);
             Rect2? teamBounds = null;
             for (var i = 0; i < team.Count; i++)

@@ -1,0 +1,741 @@
+extends Node2D
+
+# Original puppet based on the project's existing 碧岚云叶袍.
+@export var experimental_bilan_parts := false
+@export var original_wanderer_enabled := false
+@export var original_wanderer_art_folder := "original_wanderer"
+var original_wanderer: Node2D
+var player_parts: Texture2D
+var reference_parts: Array = []
+var reference_mode = false
+var skinned_player: Node2D = null
+var skinned_player_ready := false
+var original_clips: Dictionary = {}
+var motion_time = 0.0
+var visual_attack_time = -1.0
+var battle_ground: Texture2D
+var battle_hud: Node2D
+var wolf_idle: Texture2D
+var wolf_attack: Texture2D
+# Trial-only tuning for movement; wolf physique is the template mean.
+const WOLF_SPEED = 95.0
+const WOLF_REACH = 70.0
+const WOLF_WINDUP = 0.8
+const WOLF_LUNGE_SECONDS = 0.2
+const WOLF_LUNGE_SPEED = 300.0
+const WOLF_RECOVERY = 1.5
+var wolf_physique = 9.75
+var wolf_state = "chase"
+var wolf_clock = 0.0
+var wolf_direction = Vector2.LEFT
+var wolf_stamina = 6.0
+var wolf_stamina_clock = 0.0
+var wolf_facing = -1.0
+var wolf_contact_resolved = false
+var player = Vector2(400, 500)
+var enemy = Vector2(1000, 400)
+var shots = []
+# Sample attributes from the project attribute preview; not a formal character.
+var physique = 8.0
+var soul = 8.0
+var stamina = 6.0
+var stamina_clock = 0.0
+# Same sample mana capacity as the existing artifact combat preview.
+var mana = 3
+var mana_capacity = 3
+var visible_statuses: Array[String] = []
+var attack_lock = 0.0
+const SKILL_RULES = {
+ "拳掌": {"cost": 0, "cooldown": 0.40, "delay": 0.08, "reach": 70.0},
+ "痛击": {"cost": 1, "cooldown": 1.20, "delay": 0.20, "reach": 90.0},
+ "错步": {"cost": 1, "cooldown": 0.65, "delay": 0.0},
+ "架招": {"cost": 1, "cooldown": 0.65, "delay": 0.0},
+}
+var skill_cooldowns = {"拳掌": 0.0, "痛击": 0.0, "错步": 0.0, "架招": 0.0}
+var pending_attack = ""
+var release_timer = 0.0
+var strike_kind = "拳掌"
+var strike_direction = Vector2.RIGHT
+# Each release owns its own immutable aim/origin; rapid skill changes cannot redirect it.
+const STRIKE_FX_SECONDS := 0.22
+const STRIKE_FX_FRAMES := 8
+const STRIKE_FX_ATLASES := {
+ "拳掌": "art/palm_qi_v4/fist_atlas.png",
+ "痛击": "art/palm_qi_v4/heavy_palm_atlas.png",
+}
+var strike_fx: Array[Dictionary] = []
+var strike_fx_textures: Dictionary = {}
+var held_basic_attack = false
+var guard_window = 0.0
+var dash_move = 0.0
+var dash_direction = Vector2.ZERO
+var skill_slots = ["痛击", "架招", "", "", ""]
+var configuring = false
+var selected_slot = -1
+var feedback = ""
+var feedback_timer = 0.0
+var attack_effect = 0.0
+var basic_strike_effect = 0.0
+var basic_strike_hit = false
+var basic_strike_origin = Vector2.ZERO
+var basic_strike_impact = Vector2.ZERO
+var hurt_visual = 0.0
+var attack_direction = Vector2.RIGHT
+var attack_reach = 70.0
+var enemy_shots = []
+var hp = 100
+var enemy_hp = 100
+var fire_timer = 0.0
+var enemy_timer = 1.0
+var dash_timer = 0.0
+var invulnerable = 0.0
+var elapsed = 0.0
+var facing = 1.0
+var message = ""
+var walk_phase = 0.0
+var walk_amount = 0.0
+var moving_backward := false
+var visual_motion_delta := 0.0
+var visual_motion_velocity := Vector2.ZERO
+var saved_window_state := {}
+const TRIAL_WORLD_SIZE := Vector2(3344, 1882)
+const TRIAL_ZOOM := 1.35
+var trial_camera: Camera2D
+
+func _ready():
+ _load_strike_fx()
+ var ground_image = Image.new()
+ if ground_image.load(ProjectSettings.globalize_path(_action_test_path("art/battle_ground_stone_v1.png"))) == OK:
+  battle_ground = ImageTexture.create_from_image(ground_image)
+ _enter_trial_fullscreen(original_wanderer_enabled)
+ # Load a local-only copy of the original sample for direct comparison.
+ var clip_data = JSON.parse_string(FileAccess.get_file_as_string(_action_test_path("art/guigu_reference/animation_curves.json")))
+ if clip_data is Dictionary: original_clips = clip_data
+ var reference_layout = FileAccess.get_file_as_string(_action_test_path("art/guigu_reference/layout.json"))
+ var parsed = JSON.parse_string(reference_layout)
+ if parsed is Array:
+  for entry in parsed:
+   var reference_image = Image.new()
+   if reference_image.load(ProjectSettings.globalize_path(_action_test_path("art/guigu_reference/" + entry.sprite))) == OK:
+    reference_parts.append({"data": entry, "texture": ImageTexture.create_from_image(reference_image)})
+ var puppet_image = Image.new()
+ if puppet_image.load(ProjectSettings.globalize_path(_action_test_path("art/bilan_puppet_parts_v2.png"))) == OK:
+  player_parts = ImageTexture.create_from_image(puppet_image)
+ else:
+  message = "未找到角色素材"
+ for item in [["textures/bestiary/static/forest_wolf.png", false], ["textures/bestiary/static/forest_wolf_pounce.png", true]]:
+  var img = Image.new()
+  var image_path = _resolve_project_art_path(str(item[0]))
+  if not image_path.is_empty() and img.load(image_path) == OK:
+   if item[1]: wolf_attack = ImageTexture.create_from_image(img)
+   else: wolf_idle = ImageTexture.create_from_image(img)
+ _setup_skinned_player()
+ if original_wanderer_enabled:
+  trial_camera = Camera2D.new()
+  trial_camera.zoom = Vector2.ONE * TRIAL_ZOOM
+  add_child(trial_camera)
+  _update_trial_camera()
+  trial_camera.make_current()
+ # Keep screen UI independent of the battle camera and the project's canvas size.
+ var hud_layer = CanvasLayer.new()
+ hud_layer.name = "BattleHudLayer"
+ hud_layer.layer = 20
+ add_child(hud_layer)
+ battle_hud = load(_action_test_path("action_battle_hud.gd")).new()
+ battle_hud.battle = self
+ hud_layer.add_child(battle_hud)
+ queue_redraw()
+
+
+func _load_strike_fx() -> void:
+ for kind in STRIKE_FX_ATLASES:
+  var bitmap := Image.new()
+  var source_path := _action_test_path(str(STRIKE_FX_ATLASES[kind]))
+  if bitmap.load(ProjectSettings.globalize_path(source_path)) == OK:
+   strike_fx_textures[kind] = ImageTexture.create_from_image(bitmap)
+  else:
+   push_error("拳掌劲序列帧加载失败：" + source_path)
+
+
+func strike_fx_frame_rect(texture: Texture2D, frame: int) -> Rect2:
+ # The generated 1774x887 atlas is not divisible by four. Retain fractional cells,
+ # and inset the sampled rectangle to prevent filtering from adjacent frames.
+ var cell := Vector2(texture.get_size()) / Vector2(4.0, 2.0)
+ var index := clampi(frame, 0, STRIKE_FX_FRAMES - 1)
+ return Rect2(Vector2(index % 4, floori(index / 4.0)) * cell + Vector2.ONE, cell - Vector2(2, 2))
+
+
+func strike_fx_destination_rect(texture: Texture2D, reach: float, progress: float) -> Rect2:
+ var source_size := strike_fx_frame_rect(texture, 0).size
+ var width := reach * 1.15
+ var height := width * source_size.y / source_size.x
+ # Retain the source cell's aspect ratio, including the sampling inset.
+ var push := 8.0 * (1.0 - minf(progress / 0.25, 1.0))
+ return Rect2(reach - width - push, -height * 0.5, width, height)
+
+
+func update_strike_fx(delta: float) -> void:
+ for index in range(strike_fx.size() - 1, -1, -1):
+  strike_fx[index]["age"] = float(strike_fx[index].age) + delta
+  if float(strike_fx[index].age) >= STRIKE_FX_SECONDS:
+   strike_fx.remove_at(index)
+
+
+func _update_trial_camera() -> void:
+ if trial_camera == null: return
+ var half_view = get_viewport_rect().size / (2.0 * TRIAL_ZOOM)
+ trial_camera.position = player.clamp(half_view, TRIAL_WORLD_SIZE - half_view)
+
+
+func _enter_trial_fullscreen(fullscreen := true) -> void:
+ var window := get_window()
+ saved_window_state = {
+  "mode": DisplayServer.window_get_mode(),
+  "size": DisplayServer.window_get_size(),
+  "position": DisplayServer.window_get_position(),
+  "scale_size": window.content_scale_size,
+  "scale_mode": window.content_scale_mode,
+  "scale_aspect": window.content_scale_aspect,
+ }
+ window.content_scale_size = Vector2i(1280, 720)
+ window.content_scale_mode = Window.CONTENT_SCALE_MODE_CANVAS_ITEMS
+ window.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_KEEP
+ if fullscreen:
+  DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+
+
+func _exit_tree() -> void:
+ if saved_window_state.is_empty():
+  return
+ var window := get_window()
+ window.content_scale_size = saved_window_state.scale_size
+ window.content_scale_mode = saved_window_state.scale_mode
+ window.content_scale_aspect = saved_window_state.scale_aspect
+ var restore_mode: int = saved_window_state.mode
+ var restore_size: Vector2i = saved_window_state.size
+ var restore_position: Vector2i = saved_window_state.position
+ DisplayServer.window_set_mode(restore_mode)
+ if restore_mode == DisplayServer.WINDOW_MODE_WINDOWED:
+  DisplayServer.window_set_size(restore_size)
+  DisplayServer.window_set_position(restore_position)
+ # The returning menu reapplies video preferences during initialization.
+ # Restore the actual entry state once the new scene has finished entering.
+ get_tree().create_timer(0.1).timeout.connect(func():
+  DisplayServer.window_set_mode(restore_mode)
+  if restore_mode == DisplayServer.WINDOW_MODE_WINDOWED:
+   DisplayServer.window_set_size(restore_size)
+   DisplayServer.window_set_position(restore_position)
+ , CONNECT_ONE_SHOT)
+ saved_window_state.clear()
+
+
+func _action_test_path(relative_path: String) -> String:
+ var main_project_path = "res://tools/action_battle_test/" + relative_path
+ if FileAccess.file_exists(main_project_path): return main_project_path
+ return "res://" + relative_path
+
+
+func _resolve_project_art_path(relative_path: String) -> String:
+ var local_resource_path = "res://" + relative_path
+ if FileAccess.file_exists(local_resource_path):
+  return ProjectSettings.globalize_path(local_resource_path)
+ var project_root = ProjectSettings.globalize_path("res://").simplify_path()
+ var parent_project_path = project_root.path_join("..").path_join("..").path_join(relative_path).simplify_path()
+ return parent_project_path if FileAccess.file_exists(parent_project_path) else ""
+
+
+func _setup_skinned_player():
+ var runtime_script = load(_action_test_path("guigu_rig_runtime.gd"))
+ if runtime_script == null or not runtime_script.can_instantiate():
+  push_warning("原版蒙皮运行时脚本未能加载，保留旧刚性分件预览")
+  return
+ var runtime_instance: Node2D = runtime_script.new()
+ add_child(runtime_instance)
+ var own_manifest_path = _action_test_path("art/own_guigu_fit/manifest.json")
+ var art_root = own_manifest_path.get_base_dir().get_base_dir()
+ var loaded_rig = runtime_instance.load_runtime(
+  _action_test_path("guigu_rig/rig.json"),
+  _action_test_path("guigu_rig/skins.json"),
+  _action_test_path("guigu_rig/animations.json"),
+  art_root
+ )
+ if not loaded_rig:
+  push_warning("原版骨架/蒙皮数据未接入：%s" % str(runtime_instance.get_runtime_summary().errors))
+  runtime_instance.queue_free()
+  return
+ skinned_player = runtime_instance
+ skinned_player_ready = true
+ skinned_player.set_skin_mode(_active_project_skin_mode())
+ skinned_player.position = player
+ if original_wanderer_enabled:
+  original_wanderer = runtime_script.new()
+  add_child(original_wanderer)
+  var original_loaded = original_wanderer.load_runtime(
+   _action_test_path("guigu_rig/rig.json"), _action_test_path("guigu_rig/skins.json"),
+   _action_test_path("guigu_rig/animations.json"), art_root, original_wanderer_art_folder)
+  if original_loaded:
+   original_wanderer.set_skin_mode("experiment")
+  else:
+   push_error("原创行旅者骨架加载失败：%s" % str(original_wanderer.get_runtime_summary().errors))
+ update_skinned_player()
+ print("动作试玩已加载原版层级/蒙皮/动画：", skinned_player.get_runtime_summary())
+
+
+func _current_player_animation() -> Array:
+ if visual_attack_time >= 0.0:
+  return ["AttackIdle", visual_attack_time]
+ if dash_move > 0.0:
+  return ["Step1", 0.20 - dash_move]
+ if walk_amount > 0.1:
+  return ["BackstepWalk" if original_wanderer_enabled and moving_backward else "Run_New1", motion_time]
+ return ["Idle", motion_time]
+
+
+func _active_project_skin_mode() -> String:
+ return "experiment" if experimental_bilan_parts else "project"
+
+
+func update_skinned_player():
+ if not skinned_player_ready or skinned_player == null:
+  return
+ var animation = _current_player_animation()
+ skinned_player.position = player
+ var show_original = original_wanderer_enabled and not reference_mode and not experimental_bilan_parts
+ skinned_player.visible = not show_original
+ if original_wanderer != null:
+  original_wanderer.visible = show_original
+  original_wanderer.position = player
+  if original_wanderer.wanderer_skin != null and original_wanderer.wanderer_skin.has_method("set_motion_context"):
+   original_wanderer.wanderer_skin.set_motion_context(visual_motion_delta, visual_motion_velocity, motion_time, facing)
+  original_wanderer.set_character_pose(str(animation[0]), float(animation[1]), facing, hurt_visual / 0.2)
+ skinned_player.set_character_pose(str(animation[0]), float(animation[1]), facing, hurt_visual / 0.2)
+
+
+func export_user_capture(source_path: String, destination_path: String) -> String:
+ var image = Image.new()
+ var load_error = image.load(source_path)
+ if load_error != OK:
+  return "load error %d" % load_error
+ var save_error = image.save_png(destination_path)
+ return "saved" if save_error == OK else "save error %d" % save_error
+
+func _input(event):
+ if event is InputEventKey and event.pressed and not event.echo:
+  if event.keycode == KEY_ESCAPE:
+   var viewport = get_viewport()
+   if viewport != null:
+    viewport.set_input_as_handled()
+   var menu_scene = "res://tscn/scene/StartMenu.tscn"
+   if ResourceLoader.exists(menu_scene):
+    var error = get_tree().change_scene_to_file(menu_scene)
+    if error != OK:
+     push_error("返回游戏首页失败：%s" % error_string(error))
+   else:
+    get_tree().quit()
+   return
+  if event.keycode == KEY_G:
+   reference_mode = not reference_mode
+   if skinned_player_ready:
+    skinned_player.set_skin_mode("reference" if reference_mode else _active_project_skin_mode())
+   queue_redraw()
+   return
+  if event.keycode == KEY_H:
+   experimental_bilan_parts = not experimental_bilan_parts
+   reference_mode = false
+   if skinned_player_ready:
+    skinned_player.set_skin_mode(_active_project_skin_mode())
+   queue_redraw()
+   return
+  if event.keycode == KEY_TAB:
+   configuring = not configuring
+   held_basic_attack = false
+   selected_slot = -1
+   get_viewport().set_input_as_handled()
+   return
+  if configuring and event.keycode >= KEY_1 and event.keycode <= KEY_5:
+   var slot = event.keycode - KEY_1
+   if selected_slot < 0: selected_slot = slot
+   else:
+    var previous = skill_slots[slot]
+    skill_slots[slot] = skill_slots[selected_slot]
+    skill_slots[selected_slot] = previous
+    selected_slot = -1
+   return
+  if not configuring:
+   if event.keycode == KEY_Q: use_slot(1)
+   if event.keycode == KEY_E: use_slot(2)
+   if event.keycode == KEY_R: use_slot(3)
+   if event.keycode == KEY_F: use_slot(4)
+   if event.keycode == KEY_SPACE: use_skill("错步")
+ if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+  held_basic_attack = event.pressed and not configuring
+  if held_basic_attack: use_skill("拳掌")
+ if not configuring and event is InputEventMouseButton and event.pressed:
+  if event.button_index == MOUSE_BUTTON_RIGHT: use_slot(0)
+
+func use_slot(index: int):
+ if index < 0 or index >= skill_slots.size(): return
+ use_skill(skill_slots[index])
+
+func _notification(what: int) -> void:
+ if what == NOTIFICATION_WM_WINDOW_FOCUS_OUT:
+  held_basic_attack = false
+
+func use_skill(name: String):
+ if hp <= 0 or enemy_hp <= 0 or not SKILL_RULES.has(name): return
+ if float(skill_cooldowns[name]) > 0 or dash_move > 0: return
+ if not pending_attack.is_empty() and name != "错步": return
+ var cost = skill_cost(name)
+ if stamina < cost:
+  show_feedback("体力不足")
+  return
+ stamina -= cost
+ skill_cooldowns[name] = skill_cooldown_duration(name)
+ if name == "拳掌" or name == "痛击":
+  pending_attack = name
+  release_timer = float(SKILL_RULES[name].delay)
+  attack_lock = release_timer
+  attack_direction = (get_global_mouse_position() - player).normalized()
+  if attack_direction == Vector2.ZERO: attack_direction = Vector2(facing, 0)
+  visual_attack_time = 0.0
+ elif name == "架招":
+  guard_window = 0.2
+  show_feedback("架招")
+ elif name == "错步":
+  var direction = movement_direction()
+  if direction == Vector2.ZERO: direction = Vector2(-facing, 0)
+  pending_attack = ""
+  release_timer = 0.0
+  attack_lock = 0.0
+  guard_window = 0.0
+  dash_direction = direction
+  dash_timer = 0.65
+  dash_move = 0.20
+  invulnerable = 0.15
+  show_feedback("错步")
+
+func skill_cost(name: String) -> int:
+ return int(SKILL_RULES[name].cost) if SKILL_RULES.has(name) else 0
+
+func skill_cooldown_duration(name: String) -> float:
+ return float(SKILL_RULES[name].cooldown) if SKILL_RULES.has(name) else 0.0
+
+func skill_cooldown_remaining(name: String) -> float:
+ return float(skill_cooldowns.get(name, 0.0))
+
+func resolve_pending_attack() -> void:
+ var name = pending_attack
+ pending_attack = ""
+ release_timer = 0.0
+ attack_lock = 0.0
+ if hp <= 0 or enemy_hp <= 0 or name.is_empty(): return
+ strike_kind = name
+ strike_direction = attack_direction
+ attack_reach = float(SKILL_RULES[name].reach)
+ basic_strike_origin = player
+ basic_strike_impact = enemy
+ basic_strike_effect = 0.22
+ var to_enemy = enemy - player
+ basic_strike_hit = to_enemy.length() <= attack_reach and strike_direction.dot(to_enemy) > 0
+ strike_fx.append({
+  "age": 0.0, "kind": name, "origin": basic_strike_origin,
+  "dir": strike_direction, "reach": attack_reach,
+  "hit": basic_strike_hit, "impact": basic_strike_impact,
+ })
+ if basic_strike_hit:
+  var amount = roundi(11.0 + physique * 0.75) if name == "痛击" else roundi(7.0 + physique * 0.45)
+  enemy_hp = maxi(0, enemy_hp - amount)
+  show_feedback("%s 命中 %d" % [name, amount])
+ else: show_feedback("%s 落空" % name)
+
+func update_skill_timers(delta: float) -> void:
+ for name in skill_cooldowns:
+  skill_cooldowns[name] = maxf(0.0, float(skill_cooldowns[name]) - delta)
+ dash_timer = skill_cooldown_remaining("错步")
+ if not pending_attack.is_empty():
+  release_timer -= delta
+  attack_lock = maxf(0.0, release_timer)
+  if release_timer <= 0: resolve_pending_attack()
+
+func movement_direction() -> Vector2:
+ return Vector2(float(Input.is_key_pressed(KEY_D))-float(Input.is_key_pressed(KEY_A)), float(Input.is_key_pressed(KEY_S))-float(Input.is_key_pressed(KEY_W))).normalized()
+
+func show_feedback(value: String):
+ feedback = value
+ feedback_timer = 0.7
+ if battle_hud != null: battle_hud.notify_feedback(value)
+
+func _process(delta):
+ delta = minf(delta, 0.05)
+ visual_motion_delta = delta
+ visual_motion_velocity = Vector2.ZERO
+ elapsed += delta
+ if configuring or (battle_hud != null and battle_hud.help_open):
+  visual_motion_delta = 0.0
+  held_basic_attack = false
+  update_skinned_player()
+  queue_redraw()
+  return
+ motion_time += delta
+ if visual_attack_time >= 0:
+  visual_attack_time += delta
+  if visual_attack_time > 0.167: visual_attack_time = -1.0
+ attack_effect = maxf(0, attack_effect-delta)
+ basic_strike_effect = maxf(0, basic_strike_effect-delta)
+ update_strike_fx(delta)
+ hurt_visual = maxf(0, hurt_visual-delta)
+ guard_window = maxf(0, guard_window-delta)
+ feedback_timer = maxf(0, feedback_timer-delta)
+ enemy_timer -= delta
+ var dash_step = minf(dash_move, delta)
+ dash_move = maxf(0, dash_move-delta)
+ invulnerable = maxf(0, invulnerable-delta)
+ if hp > 0 and enemy_hp > 0:
+  if stamina < 6.0:
+   stamina_clock += delta
+   if stamina_clock >= 2.0:
+    stamina = minf(6.0, stamina + 1.0)
+    stamina_clock -= 2.0
+  else:
+   stamina_clock = 0.0
+  var previous_player = player
+  var direction = movement_direction()
+  walk_amount = move_toward(walk_amount, 1.0 if direction != Vector2.ZERO else 0.0, delta * 8.0)
+  if direction != Vector2.ZERO: walk_phase += delta * 11.0
+  if dash_step > 0: player += dash_direction * 500.0 * dash_step
+  else: player += direction * 235.0 * delta
+  if original_wanderer_enabled:
+   player = player.clamp(Vector2(50, 50), TRIAL_WORLD_SIZE - Vector2(50, 50))
+  else:
+   player = player.clamp(Vector2(50,160), Vector2(1230,680))
+  visual_motion_velocity = (player-previous_player)/maxf(delta,0.001)
+  facing = 1.0 if get_global_mouse_position().x >= player.x else -1.0
+  moving_backward = direction.x * facing < -0.1
+  update_skill_timers(delta)
+  update_wolf(delta, previous_player)
+  if held_basic_attack and not configuring: use_skill("拳掌")
+
+ if Input.is_key_pressed(KEY_T) and (hp <= 0 or enemy_hp <= 0):
+  player = Vector2(400,500); enemy = Vector2(1000,400); hp = 100; enemy_hp = 100; wolf_state = "chase"; wolf_clock = 0; wolf_stamina = 6; wolf_stamina_clock = 0; stamina = 6.0; stamina_clock = 0.0; enemy_shots.clear(); enemy_timer = 1.0; guard_window = 0.0; attack_lock = 0.0; attack_effect = 0.0; basic_strike_effect = 0.0; dash_timer = 0.0; dash_move = 0.0; invulnerable = 0.0
+  pending_attack = ""
+  held_basic_attack = false
+  strike_fx.clear()
+  for name in skill_cooldowns: skill_cooldowns[name] = 0.0
+ update_skinned_player()
+ _update_trial_camera()
+ queue_redraw()
+
+# Physical bite uses the existing skill formula and one stamina.
+func update_wolf(delta: float, previous_player: Vector2 = Vector2.INF):
+ if previous_player == Vector2.INF: previous_player = player
+ if wolf_stamina < 6.0:
+  wolf_stamina_clock += delta
+  if wolf_stamina_clock >= 2.0:
+   wolf_stamina = minf(6.0, wolf_stamina + 1.0)
+   wolf_stamina_clock -= 2.0
+ else: wolf_stamina_clock = 0.0
+ var diff = player - enemy
+ if diff.x != 0: wolf_facing = -1.0 if diff.x < 0 else 1.0
+ if wolf_state == "chase":
+  if diff.length() <= WOLF_REACH and wolf_stamina >= 1:
+   wolf_stamina -= 1
+   wolf_state = "windup"
+   wolf_clock = WOLF_WINDUP
+   wolf_direction = diff.normalized()
+  elif diff.length() > WOLF_REACH:
+   enemy += diff.normalized() * WOLF_SPEED * delta
+ elif wolf_state == "windup":
+  wolf_clock -= delta
+  if wolf_clock <= 0:
+   wolf_state = "lunge"
+   wolf_clock = WOLF_LUNGE_SECONDS
+   wolf_contact_resolved = false
+ elif wolf_state == "lunge":
+  var previous_enemy = enemy
+  enemy += wolf_direction * WOLF_LUNGE_SPEED * minf(delta, wolf_clock)
+  wolf_clock -= delta
+  # Sweep the existing bite radius across both moving actors; resolve one contact.
+  var relative_start = previous_player - previous_enemy
+  var relative_end = player - enemy
+  var closest = Geometry2D.get_closest_point_to_segment(Vector2.ZERO, relative_start, relative_end)
+  if not wolf_contact_resolved and relative_start.dot(wolf_direction) >= 0 and closest.length() <= WOLF_REACH:
+   wolf_contact_resolved = true
+   if invulnerable <= 0: receive_wolf_bite()
+  if wolf_clock <= 0:
+   wolf_state = "recover"
+   wolf_clock = WOLF_RECOVERY
+ elif wolf_state == "recover":
+  wolf_clock -= delta
+  if wolf_clock <= 0: wolf_state = "chase"
+ if original_wanderer_enabled:
+  enemy = enemy.clamp(Vector2(50, 50), TRIAL_WORLD_SIZE - Vector2(50, 50))
+
+func receive_wolf_bite():
+ var damage = roundi(7.0 + wolf_physique * 0.7 + wolf_physique * 0.8)
+ if guard_window > 0:
+  var block = 3 + floori(physique / 4.0) + floori(minf(physique * 0.25, soul * 0.20))
+  damage = maxi(0, damage - block)
+  guard_window = 0.0
+  show_feedback("架招成功 · 化解 %d，受伤 %d" % [block, damage])
+ else: show_feedback("撕咬伤害 %d" % damage)
+ if damage > 0: hurt_visual = 0.2
+ hp = maxi(0, hp - damage)
+
+# Generated ink-force textures are presentation only; damage still resolves once
+# in resolve_pending_attack(), independently of frame count or overlapping effects.
+func draw_basic_strike():
+ for effect in strike_fx:
+  var kind := str(effect.kind)
+  if not strike_fx_textures.has(kind): continue
+  var texture: Texture2D = strike_fx_textures[kind]
+  var progress := clampf(float(effect.age) / STRIKE_FX_SECONDS, 0.0, 1.0)
+  # Frames 3/4 carry the generated peak at the middle of this 0.22-second clip.
+  var frame := mini(int(progress * STRIKE_FX_FRAMES), STRIKE_FX_FRAMES - 1)
+  var direction: Vector2 = effect.dir
+  var origin: Vector2 = effect.origin
+  var reach := float(effect.reach)
+  # A square source keeps the fist/palm legible. Only an eight-pixel early push
+  # is added; its far edge never travels beyond this attack's existing reach.
+  var destination := strike_fx_destination_rect(texture, reach, progress)
+  var finish_fade := 1.0 - smoothstep(0.82, 1.0, progress)
+  # The approved robed character's hand is higher than the older small puppet.
+  # Mirror left-facing strikes rather than rotating the upright palm upside down.
+  var hand_height := 58.0 if original_wanderer_enabled else 32.0
+  var mirrored := direction.x < 0.0
+  var angle := direction.angle() + (PI if mirrored else 0.0)
+  draw_set_transform(origin + Vector2(0, -hand_height), angle, Vector2(-1.0 if mirrored else 1.0, 1.0))
+  draw_texture_rect_region(texture, destination, strike_fx_frame_rect(texture, frame), Color(1, 1, 1, finish_fade), false, true)
+  draw_set_transform(Vector2.ZERO)
+
+func _draw():
+ if battle_ground and original_wanderer_enabled:
+  # Repeat at native resolution so the expanded arena does not enlarge the texture.
+  for x in range(2):
+   for y in range(2):
+    # Mirror neighboring copies so their adjoining edges meet continuously.
+    draw_set_transform(Vector2(x * 3344, y * 1882), 0.0, Vector2(-1 if x else 1, -1 if y else 1))
+    # Keep the stone subdued and slightly cool so the pale figure reads clearly.
+    draw_texture(battle_ground, Vector2.ZERO, Color(0.93, 0.96, 1.0))
+  draw_set_transform(Vector2.ZERO)
+ elif battle_ground:
+  draw_texture_rect(battle_ground, Rect2(0,0,1280,720), false)
+ else:
+  draw_rect(Rect2(Vector2.ZERO, TRIAL_WORLD_SIZE if original_wanderer_enabled else Vector2(1280, 720)), Color("aeb99a"))
+ if original_wanderer_enabled:
+  draw_set_transform(enemy + Vector2(0, 12), 0.0, Vector2(1.0, 0.3))
+  draw_circle(Vector2.ZERO, 25, Color(0, 0, 0, 0.14))
+  draw_set_transform(Vector2.ZERO)
+ else:
+  draw_circle(enemy + Vector2(0,12), 30, Color(0,0,0,0.17))
+ var wolf_texture = wolf_attack if wolf_state == "lunge" and wolf_attack != null else wolf_idle
+ if wolf_texture != null:
+  draw_set_transform(enemy, 0, Vector2(-wolf_facing, 1))
+  draw_texture_rect(wolf_texture, Rect2(-70,-76,140,94), false)
+  draw_set_transform(Vector2.ZERO)
+ else: draw_circle(enemy, 30, Color("804c46"))
+ if wolf_state == "windup": draw_arc(enemy, 48, 0, TAU, 40, Color("d75f4b"), 4)
+ draw_rect(Rect2(enemy.x-35,enemy.y-90,70,6), Color("493b34"))
+ draw_rect(Rect2(enemy.x-35,enemy.y-90,70*maxf(enemy_hp,0)/100.0,6), Color("bd5850"))
+ if not strike_fx.is_empty():
+  draw_basic_strike()
+ if guard_window > 0: draw_arc(player, 32, 0, TAU, 32, Color("e7f1de"), 3)
+ for s in enemy_shots: draw_circle(s[0], 9, Color("d75f4b"))
+ if original_wanderer_enabled and not reference_mode and not experimental_bilan_parts:
+  draw_set_transform(player + Vector2(0, 4), 0.0, Vector2(1.0, 0.25))
+  draw_circle(Vector2.ZERO, 14, Color(0,0,0,0.18))
+  draw_set_transform(Vector2.ZERO)
+ else:
+  draw_circle(player + Vector2(0,5), 22, Color(0,0,0,0.18))
+ var stride = sin(walk_phase) * walk_amount
+ var bounce = absf(sin(walk_phase)) * 1.5 * walk_amount
+ if not skinned_player_ready and reference_mode and not reference_parts.is_empty():
+  draw_reference_player(stride, bounce)
+ elif not skinned_player_ready and player_parts != null:
+  # Drive the project's rigid cutouts with the corresponding original bone curves.
+  var clip_name = "Idle"
+  var clip_time = motion_time
+  if visual_attack_time >= 0:
+   clip_name = "AttackIdle"
+   clip_time = visual_attack_time
+  elif dash_move > 0:
+   clip_name = "Step1"
+   clip_time = 0.18 - dash_move
+  elif walk_amount > 0.1:
+   clip_name = "Run_New1"
+  var far_arm = clampf(original_bone_delta(clip_name, clip_time, "yifu/yifu/shenti1/zuobi/zuobi/zuobi1", -90.62), -0.40, 0.40)
+  var near_arm = clampf(original_bone_delta(clip_name, clip_time, "yifu/yifu/shenti1/youbi/youbi/youbi1", -62.844), -0.40, 0.40)
+  var far_leg = clampf(original_bone_delta(clip_name, clip_time, "Foot/youtui/youtui/tui1", -94.618), -0.48, 0.48)
+  var near_leg = clampf(original_bone_delta(clip_name, clip_time, "Foot/zuotui/zuotui/tui1", -84.506), -0.48, 0.48)
+  draw_player_part(Rect2(265, 557, 125, 345), Rect2(-12, -77, 13, 35), Vector2(-6, -74), far_arm, bounce)
+  draw_player_part(Rect2(755, 578, 190, 315), Rect2(-9, -39, 13, 39), Vector2(-4, -36), far_leg, bounce)
+  draw_player_part(Rect2(755, 578, 190, 315), Rect2(0, -39, 13, 39), Vector2(4, -36), near_leg, bounce)
+  draw_player_part(Rect2(735, 25, 230, 480), Rect2(-14, -82, 29, 65), Vector2.ZERO, 0, bounce)
+  draw_player_part(Rect2(1300, 108, 130, 345), Rect2(1, -77, 13, 35), Vector2(5, -74), near_arm, bounce)
+  draw_player_part(Rect2(200, 160, 260, 240), Rect2(-17, -103, 30, 29), Vector2.ZERO, 0, bounce)
+ draw_set_transform(Vector2.ZERO)
+ var font = ThemeDB.fallback_font
+ if feedback_timer > 0: draw_string(font, player + Vector2(-40,-120), feedback, HORIZONTAL_ALIGNMENT_LEFT, -1, 18, Color("fff7d7"))
+
+# Streamed animation keys are cubic coefficients from the local source clip.
+# Bone rotations are converted from Unity's Y-up degrees to Godot Y-down radians.
+func original_bone_delta(clip_name: String, time: float, path: String, rest_degrees: float) -> float:
+ if not original_clips.has(clip_name): return 0.0
+ var clip: Dictionary = original_clips[clip_name]
+ var index = -1
+ for binding in clip.bindings:
+  if binding.path == path and int(binding.attribute) == 4:
+   index = int(binding.index) + 2
+   break
+ if index < 0 or index >= int(clip.stream_curve_count): return 0.0
+ var duration = float(clip.duration)
+ var t = fposmod(time, duration) if clip_name in ["Idle", "Run_New1"] and duration > 0 else minf(time, duration)
+ var key: Array = []
+ var key_time = 0.0
+ for frame in clip.frames:
+  if float(frame[0]) > t: break
+  for candidate in frame[1]:
+   if int(candidate[0]) == index:
+    key = candidate
+    key_time = float(frame[0])
+    break
+ if key.is_empty(): return 0.0
+ var dt = maxf(0.0, t - key_time)
+ var value = ((float(key[1]) * dt + float(key[2])) * dt + float(key[3])) * dt + float(key[4])
+ return deg_to_rad(-(value - rest_degrees))
+
+
+func draw_reference_player(stride: float, bounce: float):
+ # Exact source sprite offsets / rotations from the original sample prefab;
+ # limb rotations below are provisional Godot animation, not extracted clips.
+ var order = ["/Foot/youtui/", "/Foot/zuotui/", "/Body/yifu/yifu", "/shenti1/zuobi/", "/shenti1/youbi/youbi", "/tou/101(Clone)/lian", "/tou/toufa/"]
+ for key in order:
+  for part in reference_parts:
+   var data = part.data
+   if key == "/Body/yifu/yifu":
+    if not str(data.path).ends_with(key): continue
+   elif key == "/shenti1/youbi/youbi":
+    if not str(data.path).ends_with(key): continue
+   elif not key in str(data.path): continue
+   var p = Vector2(float(data.position[0]), float(data.position[1]))
+   var angle = float(data.angle)
+   if "/Foot/youtui/" in key: angle += stride * 0.25
+   if "/Foot/zuotui/" in key: angle -= stride * 0.25
+   if "/shenti1/zuobi/" in key: angle += stride * 0.15
+   if "/shenti1/youbi/" in key:
+    angle -= stride * 0.15
+    if attack_effect > 0: angle -= 0.35
+    elif guard_window > 0: angle -= 0.2
+   var tex: Texture2D = part.texture
+   var origin = player + Vector2(p.x * facing, p.y - bounce)
+   draw_set_transform(origin, angle * facing, Vector2(facing, 1))
+   draw_texture(tex, -Vector2(tex.get_size()) * 0.5)
+
+
+func draw_player_part(source: Rect2, dest: Rect2, pivot: Vector2, angle: float, bounce: float):
+ var recoil = -facing * 3.0 * minf(hurt_visual / 0.2, 1.0)
+ var origin = player + Vector2(pivot.x * facing + recoil, pivot.y - bounce)
+ draw_set_transform(origin, angle * facing, Vector2(facing, 1))
+ var tint = Color(1.0, 0.78, 0.78) if hurt_visual > 0 else Color.WHITE
+ draw_texture_rect_region(player_parts, Rect2(dest.position - pivot, dest.size), source, tint)
+
+

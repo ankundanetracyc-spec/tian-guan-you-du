@@ -98,6 +98,10 @@ public partial class HumanData : LivingData
     [Export] public Array<string> combat_skill_slot_paths = [];
     /// <summary>是否已经手动确认过即时战斗技能槽；用于区分默认装配与玩家主动清空。</summary>
     [Export] public bool combat_skill_slots_configured;
+    /// <summary>即时动作战斗的五个自由槽，独立保存，不覆盖迁移期间的原队列装配。</summary>
+    [Export] public Array<string> action_combat_skill_slot_paths = [];
+    /// <summary>区分默认的痛击／架招配置与玩家主动清空的动作槽。</summary>
+    [Export] public bool action_combat_skill_slots_configured;
     [Export] public Array<string> combat_passive_paths = [];
 
     [Export] public float mana_regen_rate = 0.04f;
@@ -180,6 +184,9 @@ public partial class HumanData : LivingData
     /// <summary>序章玄镜交予幼子的首卷；必须由玩家主动放入研读位。</summary>
     [Export] public string intro_gongfa_path = "";
     [Export] public float intro_gongfa_study_progress;
+    /// <summary>Public first-volume license; a full acquired copy can supersede it.</summary>
+    [Export] public string baishi_first_volume_path = "";
+    [Export] public bool baishi_first_volume_only;
     /// <summary>未满一缕的修炼积累；与 spirit_strands 一同保存，避免日程结算丢失小数进度。</summary>
     [Export] public float cultivation_progress;
     // 归元息状态随完整人物资源保存；阶段0/1/2分别为周行、牵引、平衡。
@@ -256,6 +263,8 @@ public partial class HumanData : LivingData
     [Export] public Array<string> equipped_artifact_ids = [];
     [Export] public Array<int> artifact_inventory_positions = [];
     [Export] public Array<InventoryPlacementData> inventory_placements = [];
+    /// <summary>Separate storage only; take items out before using existing inventory consumers.</summary>
+    [Export] public Array<StorageRingContentsData> storage_ring_contents = [];
 
     [Export] public string weapon_path = "";
     // 武器已并入法宝体系；常规穿戴仅保留四个直观属性位。

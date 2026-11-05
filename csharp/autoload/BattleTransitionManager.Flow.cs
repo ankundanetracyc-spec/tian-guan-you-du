@@ -110,6 +110,14 @@ public partial class BattleTransitionManager
     private async void BeginConfirmedBattle()
     {
         if(_flowTransitionActive)return;
+        if (return_context.GetValueOrDefault("kind", "").AsString() == "player_npc_attack" &&
+            GetTree().CurrentScene is MainScene origin && !origin.validate_pending_npc_attack(return_context))
+        {
+            var cancelled = return_context.Duplicate(true);
+            CloseFlow(); pending_attackers=[]; pending_defenders=[]; pending_attacker_data=[]; pending_defender_data=[];
+            return_context.Clear(); BriefingCancelled?.Invoke(cancelled);
+            return;
+        }
         foreach (var snapshot in Data(pending_attacker_data).Concat(Data(pending_defender_data)))
         {
             var prepared = _beforeBattle.FirstOrDefault(unit => unit.uid == snapshot.uid);
@@ -189,8 +197,11 @@ public partial class BattleTransitionManager
         var spectator=return_context.GetValueOrDefault("kind","").AsString()=="east_woods_npc_encounter"&&!return_context.GetValueOrDefault("target_player",false).AsBool();
         if(victory&&!spectator)
         {
-            foreach(var defeated in all.Where(d=>d.faction==(int)WorldEntity.Faction.ENEMY&&d.current_health<=0))RollLoot(defeated.battle_loot.Select(d=>Variant.From(d)),defeated.entity_name,rewards);
-            if(return_context.TryGetValue("loot_rewards",out var configured))RollLoot(configured.AsGodotArray(),"遭遇奖励",rewards);
+            if (return_context.GetValueOrDefault("kind", "").AsString() != "player_npc_attack")
+            {
+                foreach(var defeated in all.Where(d=>d.faction==(int)WorldEntity.Faction.ENEMY&&d.current_health<=0))RollLoot(defeated.battle_loot.Select(d=>Variant.From(d)),defeated.entity_name,rewards);
+                if(return_context.TryGetValue("loot_rewards",out var configured))RollLoot(configured.AsGodotArray(),"遭遇奖励",rewards);
+            }
             // 东林地已有明确的击杀掠夺规则，沿用该遭遇，而非全局默认搬空背包。
             if(return_context.GetValueOrDefault("kind","").AsString()=="east_woods_npc_encounter"&&return_context.GetValueOrDefault("target_player",false).AsBool()&&!Training)
             {
@@ -199,6 +210,28 @@ public partial class BattleTransitionManager
                 {
                     for(var i=0;i<Math.Min(loser.pack_item_paths.Count,loser.pack_item_counts.Count);i++)AddLoot(loser.pack_item_paths[i],loser.pack_item_counts[i],loser.entity_name,rewards,loser.uid[9..]);
                     return_context["loot_handled_by_settlement"]=true;
+                }
+            }
+            if (return_context.GetValueOrDefault("kind", "").AsString() == "player_npc_attack" && !Training)
+            {
+                var loser = all.FirstOrDefault(d => d.uid.StartsWith("worldnpc:") && d.current_health <= 0);
+                if (loser is not null)
+                {
+                    var actualCarried = return_context.GetValueOrDefault("target_carried_items", new GDictionary()).AsGodotDictionary();
+                    var initialRewardCount = rewards.Count;
+                    foreach (var pathKey in actualCarried.Keys)
+                    {
+                        var path = pathKey.AsString();
+                        var remainingInBattle = 0;
+                        for (var i = 0; i < Math.Min(loser.pack_item_paths.Count, loser.pack_item_counts.Count); i++)
+                            if (loser.pack_item_paths[i] == path) remainingInBattle += Math.Max(0, loser.pack_item_counts[i]);
+                        var count = Math.Min(actualCarried[pathKey].AsInt32(), remainingInBattle);
+                        var previous = rewards.Count;
+                        AddLoot(path, count, loser.entity_name, rewards, loser.uid[9..]);
+                        if (rewards.Count > previous) rewards[^1].AsGodotDictionary()["incident_id"] = return_context.GetValueOrDefault("incident_id", "");
+                    }
+                    return_context["loot_handled_by_settlement"] = true;
+                    return_context["attack_loot_available"] = rewards.Count > initialRewardCount;
                 }
             }
         }
@@ -282,7 +315,7 @@ public partial class BattleTransitionManager
     private static void AddLoot(string path,int count,string source,GArray rewards,string npcId="")
     {
         if(count<=0||string.IsNullOrEmpty(path)||!ResourceLoader.Exists(path)||!GongfaAvailability.IsItemEnabled(GD.Load<ItemData>(path))||!AlchemyProductCatalog.IsItemEnabled(GD.Load<ItemData>(path)))return;
-        rewards.Add(new GDictionary{{"item_path",path},{"count",count},{"source",source},{"npc_id",npcId}});
+        rewards.Add(new GDictionary{{"entry_id",Guid.NewGuid().ToString("N")},{"item_path",path},{"count",count},{"source",source},{"npc_id",npcId}});
     }
     private CanvasLayer? _lootReminder;
     private void ShowPendingLootReminder()
@@ -311,13 +344,31 @@ public partial class BattleTransitionManager
                 foreach(var value in resolved)
                 {
                     if(value.VariantType!=Variant.Type.Dictionary)continue;
-                    var entry=value.AsGodotDictionary();var count=entry.GetValueOrDefault("count",0).AsInt32();if(count<=0)continue;
-                    if(wasClaimed)
+                    var receipt=value.AsGodotDictionary();var remainingCount=receipt.GetValueOrDefault("count",0).AsInt32();
+                    // 领取面板返回的是拆分副本；必须扣原账，不能只清理回调副本。
+                    foreach (var original in entries)
                     {
-                        var npc=GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager")?.get_npc(entry.GetValueOrDefault("npc_id","").AsString());
-                        npc?.change_carried_item(entry.GetValueOrDefault("item_path","").AsString(),-count);
+                        if (remainingCount <= 0) break;
+                        if (original.VariantType != Variant.Type.Dictionary) continue;
+                        var entry = original.AsGodotDictionary();
+                        var receiptId = receipt.GetValueOrDefault("entry_id", "").AsString();
+                        if (receiptId.Length > 0 ? entry.GetValueOrDefault("entry_id", "").AsString() != receiptId :
+                            entry.GetValueOrDefault("item_path", "").AsString() != receipt.GetValueOrDefault("item_path", "").AsString() ||
+                            entry.GetValueOrDefault("npc_id", "").AsString() != receipt.GetValueOrDefault("npc_id", "").AsString()) continue;
+                        var available = entry.GetValueOrDefault("count", 0).AsInt32();
+                        var count = Math.Min(remainingCount, available);
+                        if (count <= 0) continue;
+                        if (wasClaimed)
+                        {
+                            var npc = GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager")?.get_npc(entry.GetValueOrDefault("npc_id", "").AsString());
+                            if (npc is not null && entry.GetValueOrDefault("incident_id", "").AsString() is { Length: > 0 } incidentId)
+                                GetNode<NpcWorldManager>("/root/NpcWorldManager").record_player_conflict_loot(incidentId, npc,
+                                    entry.GetValueOrDefault("item_path", "").AsString(), count, player.entity_name);
+                            npc?.change_carried_item(entry.GetValueOrDefault("item_path", "").AsString(), -count);
+                        }
+                        entry["count"] = available - count;
+                        remainingCount -= count;
                     }
-                    entry["count"]=0;
                 }
                 var pending=entries.Count(v=>v.VariantType==Variant.Type.Dictionary&&v.AsGodotDictionary().GetValueOrDefault("count",0).AsInt32()>0);
                 record["claimed"]=pending==0;

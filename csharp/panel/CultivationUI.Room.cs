@@ -588,6 +588,8 @@ public partial class CultivationUI
 
     private static bool is_lineage_first_volume_restricted(Character student, GongfaResource book, GongfaChapterConfig chapter)
     {
+        if (student.entity_data is HumanData baishi && baishi.baishi_first_volume_only &&
+            baishi.baishi_first_volume_path == book.ResourcePath && book.get_sorted_chapters().FirstOrDefault()?.get_id() != chapter.get_id()) return true;
         if (student.entity_data is not HumanData human || human.sect_affiliation_id != "yuxu_xianzong" ||
             human.sect_lineage_gongfa_path != book.ResourcePath ||
             !human.sect_lineage_first_volume_only_access ||

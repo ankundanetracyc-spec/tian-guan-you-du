@@ -2,9 +2,13 @@ extends RefCounted
 ## Runtime graph derived from the reviewed display layout; distances are kilometres.
 
 const LAYOUT_PATH := "res://textures/world/bai_chuan/acceptance_20261030/display_layout_v3.json"
-const MAP_PIXELS := 3762.0
-const WORLD_KM := 200.0
+const Scale = preload("res://gdscripts/world/BaiChuanWorldScale.gd")
+const MAP_PIXELS := Scale.LEGACY_MAP_PIXELS
+const WORLD_KM := Scale.LEGACY_WORLD_KM
 const RUNTIME_IDS_PATH := "res://resources/world/bai_chuan/bai_chuan_node_runtime_ids_20261031.json"
+var use_free_world := false
+var coordinate_scale := 1.0
+var km_per_pixel := WORLD_KM / MAP_PIXELS
 var positions: Dictionary = {}
 var adjacency: Dictionary = {}
 var edge_points: Dictionary = {}
@@ -12,9 +16,12 @@ var edge_km: Dictionary = {}
 var runtime_ids: Dictionary = {}
 
 func load_layout() -> bool:
-	var parsed = JSON.parse_string(FileAccess.get_file_as_string(LAYOUT_PATH))
+	var parsed = JSON.parse_string(FileAccess.get_file_as_string(Scale.LAYOUT_PATH if use_free_world else LAYOUT_PATH))
 	if not parsed is Dictionary:
 		return false
+	coordinate_scale = Scale.COORDINATE_SCALE if use_free_world else 1.0
+	km_per_pixel = Scale.KM_PER_PIXEL if use_free_world else WORLD_KM / MAP_PIXELS
+	if use_free_world and not is_equal_approx(float(parsed.get("worldSize", 0.0)), Scale.MAP_PIXELS): return false
 	positions.clear()
 	adjacency.clear()
 	edge_points.clear()
@@ -37,7 +44,7 @@ func load_layout() -> bool:
 		if points.size() < 2 or points[0].distance_to(positions[edge.from]) > 0.01 or points[-1].distance_to(positions[edge.to]) > 0.01: return false
 		var length := 0.0
 		for i in range(1,points.size()): length += points[i-1].distance_to(points[i])
-		length *= WORLD_KM / MAP_PIXELS
+		length *= km_per_pixel
 		if length <= 0.0: return false
 		edge_points[key] = points
 		edge_km[key] = length

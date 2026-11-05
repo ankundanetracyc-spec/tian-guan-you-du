@@ -29,7 +29,6 @@ public partial class InfoPanel
         var basic = CharacterBox(CharacterPanel(page, 0, 0, 426, 594), "基础属性");
         var battle = CharacterBox(CharacterPanel(page, 442, 0, 466, 594), "战斗属性");
         var cultivation = CharacterBox(CharacterPanel(page, 924, 0, 426, 594), "修行属性");
-        cultivation.AddThemeConstantOverride("separation", 8);
         void Stat(Control parent, string name, string value, string rowName, bool large = false)
         {
             var row = new HBoxContainer { CustomMinimumSize = new Vector2(0, large ? 82 : 36), SizeFlagsHorizontal = SizeFlags.ExpandFill };
@@ -66,7 +65,7 @@ public partial class InfoPanel
             CharacterAttributePresentation.Bind(bar, unit, resource.Item4, resource.Item1);
         }
         battle.AddChild(new HSeparator()); var combatGrid = new GridContainer { Columns = 2, SizeFlagsHorizontal = SizeFlags.ExpandFill }; combatGrid.AddThemeConstantOverride("h_separation", 16); battle.AddChild(combatGrid);
-        foreach (var stat in new[] { ("速度", unit.initiative_speed.ToString("0.0"), "MindRow"), ("灵识", $"{unit.used_spirit_perception}/{unit.max_spirit_perception}", "SpiritPerceptionRow"), ("物理防御", unit.physical_defense.ToString(), "PhysicalDefenseRow"), ("精准", unit.precision.ToString(), "PrecisionRow"), ("身法", unit.dodge.ToString(), "DodgeRow"), ("会心", unit.critical.ToString(), "CriticalRow"), ("护心", unit.crit_resist.ToString(), "CritResistRow"), ("会心伤害", unit.crit_damage_mult.ToString("0.00"), "CritDamageRow"), ("物理减伤", $"{unit.physical_damage_reduction * 100:0.#}%", "StaminaRegenRow"), ("遁速", human?.dun_speed.ToString("0.#") ?? "未详", "ManaRegenRow") }) Stat(combatGrid, stat.Item1, stat.Item2, stat.Item3);
+        foreach (var stat in new[] { ("速度", unit.initiative_speed.ToString("0.0"), "MindRow"), ("灵识", $"{unit.used_spirit_perception}/{unit.max_spirit_perception}", "SpiritPerceptionRow"), ("物理防御", unit.physical_defense.ToString(), "PhysicalDefenseRow"), ("精准", unit.precision.ToString(), "PrecisionRow"), ("身法", unit.dodge.ToString(), "DodgeRow"), ("会心", unit.critical.ToString(), "CriticalRow"), ("护心", unit.crit_resist.ToString(), "CritResistRow"), ("会心伤害", $"{unit.crit_damage_mult:0.00}倍", "CritDamageRow"), ("物理减伤", $"{unit.physical_damage_reduction * 100:0.#}%", "PhysicalReductionRow"), ("遁速", human?.dun_speed.ToString("0.#") ?? "未详", "TravelSpeedRow") }) Stat(combatGrid, stat.Item1, stat.Item2, stat.Item3);
         foreach (var stat in new[] { ("境界", unit.cultivation_realm, "RealmRow"), ("灵根", human?.spirit_root_name ?? "未详", "SpiritRootRow"), ("灵力", $"{unit.spirit_strands} 缕", "StrandsRow"), ("学习效率", human is null ? "—" : $"{human.get_learning_rate():0.00}/小时", "LearningRow"), ("修炼效率", human is null ? "—" : $"{human.get_cultivation_rate():0.000}/小时", "CultivationRow") }) Stat(cultivation, stat.Item1, stat.Item2, stat.Item3);
         cultivation.AddChild(new HSeparator()); cultivation.AddChild(CharacterText("灵根权重", 23));
         var data = human?.entity_data as HumanData; var roots = new[] { "金", "木", "水", "火", "土" };

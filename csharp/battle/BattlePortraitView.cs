@@ -50,7 +50,8 @@ public partial class BattlePortraitView : Control
             var texture=GD.Load<Texture2D>(path);
             if(texture is not null)
             {
-                var bounds=texture.GetImage().GetUsedRect();
+                using var pixels=texture.GetImage();
+                var bounds=pixels.GetUsedRect();
                 var beast=_data.entity_type==(int)WorldEntity.EntityType.BEAST;
                 var region=beast?new Rect2(Vector2.Zero,texture.GetSize()):new Rect2(bounds.Position,new Vector2(bounds.Size.X,Mathf.Min(bounds.Size.Y,bounds.Size.X)));
                 var image=new TextureRect{Texture=new AtlasTexture{Atlas=texture,Region=region},Size=Size,ExpandMode=TextureRect.ExpandModeEnum.IgnoreSize,StretchMode=TextureRect.StretchModeEnum.KeepAspectCentered,MouseFilter=MouseFilterEnum.Ignore};AddChild(image);return;

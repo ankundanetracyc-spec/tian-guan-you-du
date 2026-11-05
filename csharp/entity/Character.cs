@@ -259,7 +259,7 @@ public partial class Character : Creature
             {
                 ["slot_index"] = human.inventory_item_positions[i], ["item_path"] = path, ["count"] = human.inventory_item_counts[i],
                 ["item_name"] = item?.entity_name ?? path, ["category"] = item?.item_category ?? "",
-                ["equipped"] = is_item_equipped(path), ["instance_id"] = placement?.instance_id ?? "",
+                ["equipped"] = is_item_equipped(path), ["storage_locked"] = has_nonempty_storage_ring(placement?.instance_id ?? ""), ["instance_id"] = placement?.instance_id ?? "",
                 ["region_id"] = placement?.region_id ?? "", ["cell_x"] = placement?.cell_x ?? -1, ["cell_y"] = placement?.cell_y ?? -1, ["rotation"] = placement?.rotation ?? 0
             });
         }
@@ -465,6 +465,8 @@ public partial class Character : Creature
     public bool can_learn_gongfa_chapter(GongfaResource gongfa, GongfaChapterConfig chapter)
     {
         if (human is null || gongfa is null || !GongfaAvailability.IsEnabled(gongfa) || chapter is null) return false;
+        if (human.baishi_first_volume_only && human.baishi_first_volume_path == gongfa.ResourcePath &&
+            gongfa.get_sorted_chapters().FirstOrDefault()?.get_id() != chapter.get_id()) return false;
         // 玉虚师承首期只开放所选秘籍的第一卷；首卷之后的借阅权限尚未定案。
         if (human.sect_affiliation_id == "yuxu_xianzong" &&
             human.sect_lineage_gongfa_path == gongfa.ResourcePath &&
@@ -1241,7 +1243,7 @@ public partial class Character : Creature
     {
         if(!has_spirit_core)return "未凝";
         if(condensation_final_score>=CondensationOutcomeRules.SuccessScore)
-            return $"凝核程度 {condensation_final_score}　体魄、神魂各 +{get_condensation_flat_bonus("physique"):0.#}　灵慧 +{get_condensation_flat_bonus("intelligence"):0.#}";
+            return $"凝核程度 {condensation_final_score}　体魄、灵慧、神魂各定额 +{get_condensation_flat_bonus("physique"):0.##}";
         var title=string.IsNullOrWhiteSpace(spirit_core_quality)?"云息灵核":spirit_core_quality;
         return $"{title}　体 {spirit_core_volume:0.00}　密 {spirit_core_density:0.00}　杂 {spirit_core_impurity:0.00}";
     }
@@ -1840,6 +1842,8 @@ public partial class Character : Creature
      {
          if (human is null || index < 0 || index >= human.inventory_item_paths.Count) return new Dictionary();
          var path = human.inventory_item_paths[index]; var count = human.inventory_item_counts[index];
+         var physical = human.inventory_placements.FirstOrDefault(p => p.row_slot == human.inventory_item_positions[index]);
+         if (physical is not null && has_nonempty_storage_ring(physical.instance_id)) return new Dictionary();
          if (get_inventory_total_count(path) - get_equipped_item_count(path) < count) return new Dictionary();
          var result = new Dictionary { ["item_path"] = path, ["count"] = count };
          human.inventory_item_paths.RemoveAt(index); human.inventory_item_counts.RemoveAt(index); human.inventory_item_positions.RemoveAt(index); notify_inventory_changed(); return result;

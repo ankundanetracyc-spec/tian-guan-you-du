@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="PillItemData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/PillItemData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+definition_id = &"alchemy_hezhong_9_0"
+entity_name = "和中丹·薄效"
+description = "用于战斗内伤，调和气机并恢复生命。"
+icon_path = "res://textures/items/inventory_density_20261029/pill_container_empty_porcelain.png"
+item_category = "丹药"
+item_subcategory = "九品丹药"
+grade_value = 1
+can_stack = true
+max_stack = 999
+pill_id = "hezhong"
+pill_rank = 9
+usage_type = 1
+efficacy_tier = 0
+container_material_id = "porcelain"
+inventory_width = 1
+inventory_height = 2
+inventory_can_rotate = true
+

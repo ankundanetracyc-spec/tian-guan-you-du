@@ -1,0 +1,12 @@
+{
+  "mode": "built-in image_gen",
+  "user_direction_approval": "User confirmed image2/b1ed hand orientation is correct. It must remain locked.",
+  "request": "Combine image2 approved right-hand dorsal orientation with image1 pinky length, removing twist. Only pinky length/curvature changes.",
+  "references": [
+    "archive_optional_before_right_back/user_confirmed_dorsal_direction_960c.png",
+    "archive_optional_before_right_back/user_pinky_length_reference_3278.png"
+  ],
+  "output": "sleeve_near_sword.png",
+  "source_output": "exec-b2182f9e-6c03-4743-b01e-31c2366cd313.png",
+  "prompt": "Very localized edit combining two references. IMAGE1 (the correct RIGHT HAND BACK VIEW, with TWO clearly visible folded finger knuckles on picture LEFT) is the EDIT TARGET AND DIRECTION LOCK. User CONFIRMED image1's hand orientation is correct. Never mirror it again, never switch to palm view. IMAGE2 is ONLY the desired LITTLE-FINGER length/proportion reference; its direction and twisted pinky are WRONG and must not be copied.\nChange ONLY the LITTLE FINGER in image1: it is currently a tiny upper-left curled nub, too short. Lengthen its visible curled segment to about1.6times current, giving a proper gently curved finger with a readable middle segment, similar to image2 pinky's substantial length after mentally matching handedness. It must be only moderately shorter than the adjacent curled RING finger, not a tiny bump. Curve the little finger smoothly inward at its natural joints, no twisted hook, crossed joints, sharp kink, sideways broken tip or dangling straight finger. Keep both ring and little as distinct short folded fingers, never merge them. Do NOT enlarge the whole hand or change ring finger, thumb, index/middle lengths. Exactly five digits.\nRIGHT-HAND BACK VIEW LOCKED: hand hangs down, thumb edge remains on picture RIGHT, longer middle extended finger remains LEFT, shorter index remains RIGHT; ring and lengthened little fingers remain LEFT of extended pair. Tiny simple nail cues and smooth hand back remain. NO palm creases, NO long thumb across the visible hand, NO palm-pad shading.\nAll sleeve/cloth/cuff/clouds/meander, original1254x1254 canvas and wrist(610,870) stay fixed. Only little finger's contour and minimal joint lines change. Same small game-illustration hand and skin color. Genuine transparent background, no halo, no added objects."
+}

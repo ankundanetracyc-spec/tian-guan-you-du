@@ -1,0 +1,127 @@
+{
+  "width": 120,
+  "height": 180,
+  "parts": [
+    {
+      "sprite_id": 65806,
+      "size": [
+        24,
+        24
+      ],
+      "atlas_rect": [
+        90,
+        138,
+        24,
+        24
+      ],
+      "source_file": "source/sprite_65806.png",
+      "source_sha256": "6c90c8972e56e871cb537d94117467abcd32709d835d3a51549bda4fb4b2e7ca",
+      "pixels_per_unit": 100,
+      "source_pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "sprite_id": 79543,
+      "size": [
+        60,
+        60
+      ],
+      "atlas_rect": [
+        60,
+        0,
+        60,
+        60
+      ],
+      "source_file": "source/sprite_79543.png",
+      "source_sha256": "891d33d2db86eed2a2960acb362d1e88b64fa574e76fb3036d35c9cb04c1f77b",
+      "pixels_per_unit": 100,
+      "source_pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "sprite_id": 84807,
+      "size": [
+        60,
+        60
+      ],
+      "atlas_rect": [
+        60,
+        60,
+        60,
+        60
+      ],
+      "source_file": "source/sprite_84807.png",
+      "source_sha256": "75ff211cac225c58ad36932fead6db7615c783a5eec23be79b190812026c034e",
+      "pixels_per_unit": 100,
+      "source_pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "sprite_id": 85649,
+      "size": [
+        60,
+        100
+      ],
+      "atlas_rect": [
+        0,
+        0,
+        60,
+        100
+      ],
+      "source_file": "source/sprite_85649.png",
+      "source_sha256": "71037ae43cdf88793fde345f7090436f7a1f36e85b950903045ff02ed3ff9871",
+      "pixels_per_unit": 100,
+      "source_pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "sprite_id": 87557,
+      "size": [
+        50,
+        80
+      ],
+      "atlas_rect": [
+        0,
+        100,
+        50,
+        80
+      ],
+      "source_file": "source/sprite_87557.png",
+      "source_sha256": "49de79f21a7ab9d9345b0c6afce390f3c11ddf8a110ba70abec1d2acdd4b5d89",
+      "pixels_per_unit": 100,
+      "source_pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "sprite_id": 87679,
+      "size": [
+        21,
+        56
+      ],
+      "atlas_rect": [
+        60,
+        120,
+        21,
+        56
+      ],
+      "source_file": "source/sprite_87679.png",
+      "source_sha256": "18a113928aa47fcc84b6a66a6ccf835b8b186ceffa39d25040147174c9e1f433",
+      "pixels_per_unit": 100,
+      "source_pivot": [
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "scope": "Original full Texture2D canvases, no crop, source pivot/offset/alpha retained; RGB art master may be reauthored"
+}

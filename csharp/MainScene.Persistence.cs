@@ -111,6 +111,13 @@ public partial class MainScene
             _loaded_game_save.npc_last_processed_month,
             _loaded_game_save.east_woods_npc_incidents,
             _loaded_game_save.npc_population_version);
+        var savedTerrainProfile = _loaded_game_save.node_world_state?.GetValueOrDefault("terrain_speed_profile", "").AsString();
+        var usesUniformTravel = string.IsNullOrEmpty(savedTerrainProfile);
+        if (usesUniformTravel && _nodeWorldState.GetValueOrDefault("version", 1).AsInt32() < 2)
+            _npc_world?.migrate_legacy_free_world_travel();
+        if (usesUniformTravel &&
+            _npc_world is { } npcWorld && npcWorld.migrate_uniform_terrain_travel())
+            _nodeWorldState["terrain_speed_profile"] = npcWorld.get_terrain_speed_profile();
     }
 
     private void restore_node_world_position()
@@ -140,6 +147,7 @@ public partial class MainScene
     {
         if (_loaded_game_save is null) return;
         refresh_qingxi_quest();
+        if (_baishiLecture is { departed_qingxi: false }) { show_baishi_opening(); mark_save_dirty(); return; }
         var departed = has_open_world_access();
         hud?.set_world_map_available(departed);
         set_prologue_skip_available(false);
@@ -323,6 +331,7 @@ public partial class MainScene
         {
             ["qingxi_prologue"] = (int)_qingxi_prologue,
             ["story_free_start"] = _story_free_start,
+            ["baishi_lecture"] = _baishiLecture is null ? default(Variant) : _baishiLecture.Duplicate(true),
             ["world_road_encounter"] = _worldEncounterState.Duplicate(true),
             ["player_unique_id"] = player?.unique_id ?? "",
             ["social_membership_month"] = _socialMembershipMonth,
@@ -374,6 +383,7 @@ public partial class MainScene
             ? (QingxiPrologueStep)step
             : QingxiPrologueStep.Awakened;
         _story_free_start = read_bool(state, "story_free_start");
+        _baishiLecture = state.GetValueOrDefault("baishi_lecture", default(Variant)).AsGodotObject() as BaishiLectureProgress;
         _xuanjian_awakened = read_bool(state, "xuanjian_awakened");
         _rested_after_xuanjian = read_bool(state, "rested_after_xuanjian");
         _static_room_authorized = read_bool(state, "static_room_authorized");

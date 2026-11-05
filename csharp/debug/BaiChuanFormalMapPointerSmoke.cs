@@ -114,6 +114,8 @@ public partial class BaiChuanFormalMapPointerSmoke : Node
             typeof(MainScene).GetField("_skipExitSave", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(main, true);
             var stage = typeof(MainScene).GetField("_qingxi_prologue", BindingFlags.Instance | BindingFlags.NonPublic)!;
             stage.SetValue(main, Enum.Parse(stage.FieldType, "Departed"));
+            typeof(MainScene).GetField("_baishiLecture", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(main, null);
+            (typeof(MainScene).GetField("story_dialogue", BindingFlags.Instance | BindingFlags.NonPublic)!.GetValue(main) as Control)?.Hide();
             typeof(MainScene).GetMethod("open_world", BindingFlags.Instance | BindingFlags.NonPublic)!.Invoke(main, []);
             await Frames(8);
 
@@ -160,7 +162,7 @@ public partial class BaiChuanFormalMapPointerSmoke : Node
             Check(title.Text == ExpectedPlaceTitle, $"短点击没有选中节点 {ExpectedPlaceTitle}，当前标题：{title.Text}。");
 
             // A gesture originating on the map information panel must not start map panning.
-            var details = map.GetNode<PanelContainer>("WorldMapDetails");
+            var details = main.GetNode<Control>("HUDLayer/MainHUD/PlayerStatus");
             var detailsRect = details.GetGlobalRect();
             var panelPoint = detailsRect.Position + new Vector2(detailsRect.Size.X - 8, detailsRect.Size.Y * 0.5f);
             await MoveMouse(panelPoint, Vector2.Zero);

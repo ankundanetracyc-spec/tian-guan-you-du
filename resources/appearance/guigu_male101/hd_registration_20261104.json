@@ -1,0 +1,602 @@
+{
+  "schemaVersion": 1,
+  "description": "Source skeleton/vertices stay unchanged; HD pixel registration is manually initialized from visual anatomy and alpha spans.",
+  "alpha_threshold": 0.7,
+  "review_status": "initial manual registration; native render review required",
+  "sprites": {
+    "79543": {
+      "mode": "axis",
+      "source_size": [
+        16,
+        44
+      ],
+      "target_size": [
+        756,
+        2079
+      ],
+      "joint_blend": 0.16,
+      "anchors": [
+        {
+          "name": "shoulder",
+          "source_uv": [
+            0.5364877534885667,
+            0.1815176548161132
+          ],
+          "target_px": [
+            350.0,
+            340.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review",
+          "source_width": 9,
+          "target_width": 337,
+          "source_width_sample_row": 8,
+          "target_width_sample_row": 340
+        },
+        {
+          "name": "elbow",
+          "source_uv": [
+            0.49914820164482226,
+            0.5515954144369227
+          ],
+          "target_px": [
+            350.0,
+            900.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review",
+          "source_width": 7,
+          "target_width": 249,
+          "source_width_sample_row": 24,
+          "target_width_sample_row": 900
+        },
+        {
+          "name": "wrist",
+          "source_uv": [
+            0.5573213256774976,
+            0.8250695444291695
+          ],
+          "target_px": [
+            285.0,
+            1450.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review",
+          "source_width": 5,
+          "target_width": 124,
+          "source_width_sample_row": 36,
+          "target_width_sample_row": 1450
+        },
+        {
+          "name": "finger_tip",
+          "source_uv": [
+            0.55,
+            0.955
+          ],
+          "target_px": [
+            277.0,
+            1805.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review",
+          "source_width": 2,
+          "target_width": 7,
+          "source_width_sample_row": 39,
+          "target_width_sample_row": 1805
+        }
+      ]
+    },
+    "84807": {
+      "mode": "axis",
+      "source_size": [
+        21,
+        43
+      ],
+      "target_size": [
+        887,
+        1774
+      ],
+      "joint_blend": 0.16,
+      "anchors": [
+        {
+          "name": "shoulder",
+          "source_uv": [
+            0.21282431517938027,
+            0.15494341242117465
+          ],
+          "target_px": [
+            225.0,
+            260.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review",
+          "source_width": 7,
+          "target_width": 289,
+          "source_width_sample_row": 7,
+          "target_width_sample_row": 260
+        },
+        {
+          "name": "elbow",
+          "source_uv": [
+            0.5555017965245396,
+            0.5425527676229113
+          ],
+          "target_px": [
+            390.0,
+            900.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review",
+          "source_width": 7,
+          "target_width": 294,
+          "source_width_sample_row": 23,
+          "target_width_sample_row": 900
+        },
+        {
+          "name": "wrist",
+          "source_uv": [
+            0.6485514594481882,
+            0.7459717053121373
+          ],
+          "target_px": [
+            550.0,
+            1370.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review",
+          "source_width": 4,
+          "target_width": 161,
+          "source_width_sample_row": 32,
+          "target_width_sample_row": 1370
+        },
+        {
+          "name": "finger_tip",
+          "source_uv": [
+            0.77,
+            0.9535
+          ],
+          "target_px": [
+            594.0,
+            1678.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review",
+          "source_width": 1,
+          "target_width": 9,
+          "source_width_sample_row": 39,
+          "target_width_sample_row": 1678
+        }
+      ]
+    },
+    "87557": {
+      "mode": "triangles",
+      "source_size": [
+        24,
+        68
+      ],
+      "target_size": [
+        745,
+        2110
+      ],
+      "anchors": [
+        {
+          "name": "hip",
+          "source_uv": [
+            0.42642683227152234,
+            0.08712278129405149
+          ],
+          "target_px": [
+            275.0,
+            180.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review"
+        },
+        {
+          "name": "hip_left",
+          "source_uv": [
+            0.20833333333333334,
+            0.08712278129405149
+          ],
+          "target_px": [
+            46.0,
+            180.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review"
+        },
+        {
+          "name": "hip_right",
+          "source_uv": [
+            0.7916666666666666,
+            0.08712278129405149
+          ],
+          "target_px": [
+            522.0,
+            180.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review"
+        },
+        {
+          "name": "knee",
+          "source_uv": [
+            0.3735526383112947,
+            0.49591840866297454
+          ],
+          "target_px": [
+            285.0,
+            950.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review"
+        },
+        {
+          "name": "knee_left",
+          "source_uv": [
+            0.25,
+            0.49591840866297454
+          ],
+          "target_px": [
+            162.0,
+            950.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review"
+        },
+        {
+          "name": "knee_right",
+          "source_uv": [
+            0.625,
+            0.49591840866297454
+          ],
+          "target_px": [
+            423.0,
+            950.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review"
+        },
+        {
+          "name": "ankle",
+          "source_uv": [
+            0.27633787959538636,
+            0.9163377643169444
+          ],
+          "target_px": [
+            275.0,
+            1860.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review"
+        },
+        {
+          "name": "ankle_left",
+          "source_uv": [
+            0.20833333333333334,
+            0.9163377643169444
+          ],
+          "target_px": [
+            170.0,
+            1860.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review"
+        },
+        {
+          "name": "sole_center",
+          "source_uv": [
+            0.5625,
+            0.9705882352941176
+          ],
+          "target_px": [
+            420.0,
+            2050.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review"
+        },
+        {
+          "name": "sole_left",
+          "source_uv": [
+            0.208333,
+            0.970588
+          ],
+          "target_px": [
+            170.0,
+            2050.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review"
+        },
+        {
+          "name": "sole_right",
+          "source_uv": [
+            0.833333,
+            0.970588
+          ],
+          "target_px": [
+            603,
+            2050
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review"
+        },
+        {
+          "name": "canvas_tl",
+          "source_uv": [
+            0.0,
+            0.0
+          ],
+          "target_px": [
+            0.0,
+            0.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review"
+        },
+        {
+          "name": "canvas_tr",
+          "source_uv": [
+            1.0,
+            0.0
+          ],
+          "target_px": [
+            745.0,
+            0.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review"
+        },
+        {
+          "name": "canvas_bl",
+          "source_uv": [
+            0.0,
+            1.0
+          ],
+          "target_px": [
+            0.0,
+            2110.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review"
+        },
+        {
+          "name": "canvas_br",
+          "source_uv": [
+            1.0,
+            1.0
+          ],
+          "target_px": [
+            745.0,
+            2110.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review"
+        }
+      ]
+    },
+    "65806": {
+      "mode": "affine",
+      "source_size": [
+        24,
+        24
+      ],
+      "target_size": [
+        1254,
+        1254
+      ],
+      "anchors": [
+        {
+          "name": "head_crown",
+          "source_uv": [
+            0.4314932318104907,
+            0.16666666666666666
+          ],
+          "target_px": [
+            569.0,
+            126.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review"
+        },
+        {
+          "name": "head_neck",
+          "source_uv": [
+            0.44369780051407665,
+            0.716126867354573
+          ],
+          "target_px": [
+            508.0,
+            1030.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review"
+        },
+        {
+          "name": "face_horizontal_span",
+          "source_uv": [
+            0.9314932318104907,
+            0.16666666666666666
+          ],
+          "target_px": [
+            1372.0,
+            126.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review"
+        }
+      ],
+      "source_alpha_bbox": [
+        4,
+        4,
+        16,
+        19
+      ],
+      "target_alpha_bbox": [
+        191,
+        126,
+        994,
+        1179
+      ],
+      "note": "Crown and neck establish the height/shear. A measured alpha-width span establishes the transverse scale; no local face squashing."
+    },
+    "87679": {
+      "mode": "affine",
+      "source_size": [
+        21,
+        56
+      ],
+      "target_size": [
+        887,
+        1774
+      ],
+      "anchors": [
+        {
+          "name": "hair_crown",
+          "source_uv": [
+            0.5666666666666667,
+            0.07142857142857142
+          ],
+          "target_px": [
+            560.3276216586703,
+            14
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review"
+        },
+        {
+          "name": "hair_front_edge",
+          "source_uv": [
+            1.0,
+            0.19866071428571427
+          ],
+          "target_px": [
+            255,
+            329.5357142857143
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review"
+        },
+        {
+          "name": "hair_tip",
+          "source_uv": [
+            0.1488095238095238,
+            0.9821428571428571
+          ],
+          "target_px": [
+            437.0,
+            1758
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review"
+        }
+      ],
+      "note": "Temporary UV-only hair-facing comparison; native render review required."
+    },
+    "85649": {
+      "mode": "triangles",
+      "source_size": [
+        42,
+        95
+      ],
+      "target_size": [
+        834,
+        1886
+      ],
+      "anchors": [
+        {
+          "name": "bbox_tl",
+          "source_uv": [
+            0.07142857142857142,
+            0.042105263157894736
+          ],
+          "target_px": [
+            55.0,
+            40.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review"
+        },
+        {
+          "name": "bbox_tr",
+          "source_uv": [
+            0.9047619047619048,
+            0.042105263157894736
+          ],
+          "target_px": [
+            779.0,
+            40.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review"
+        },
+        {
+          "name": "bbox_bl",
+          "source_uv": [
+            0.07142857142857142,
+            0.9789473684210527
+          ],
+          "target_px": [
+            55.0,
+            1846.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review"
+        },
+        {
+          "name": "bbox_br",
+          "source_uv": [
+            0.9047619047619048,
+            0.9789473684210527
+          ],
+          "target_px": [
+            779.0,
+            1846.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review"
+        },
+        {
+          "name": "waist_left",
+          "source_uv": [
+            0.07142857142857142,
+            0.401
+          ],
+          "target_px": [
+            55.0,
+            650.67
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review"
+        },
+        {
+          "name": "waist_right",
+          "source_uv": [
+            0.9047619047619048,
+            0.401
+          ],
+          "target_px": [
+            779.0,
+            650.67
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review"
+        },
+        {
+          "name": "canvas_tl",
+          "source_uv": [
+            0.0,
+            0.0
+          ],
+          "target_px": [
+            0.0,
+            0.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review"
+        },
+        {
+          "name": "canvas_tr",
+          "source_uv": [
+            1.0,
+            0.0
+          ],
+          "target_px": [
+            834.0,
+            0.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review"
+        },
+        {
+          "name": "canvas_bl",
+          "source_uv": [
+            0.0,
+            1.0
+          ],
+          "target_px": [
+            0.0,
+            1886.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review"
+        },
+        {
+          "name": "canvas_br",
+          "source_uv": [
+            1.0,
+            1.0
+          ],
+          "target_px": [
+            834.0,
+            1886.0
+          ],
+          "target_method": "initial manual anatomical registration; needs native-render review"
+        }
+      ]
+    }
+  }
+}

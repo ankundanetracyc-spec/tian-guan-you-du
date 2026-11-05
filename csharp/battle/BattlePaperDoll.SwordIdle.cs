@@ -17,6 +17,7 @@ public partial class BattlePaperDoll
     /// <summary>Independent weapon registration only. Never equips an item or changes battle data.</summary>
     public bool show_sword_idle(Texture2D icon,Vector2 gripUv,Vector2 tipUv,float gripToTip=780f,float bladeDegrees=float.NaN)
     {
+        if (_queueAvatar is not null) return false;
         if(!_usesSideInk||_sideDead||_sidePresentation is null||!BattleSwordArt.TryPose("idle",out var idle,_sideFemale)) return false;
         _swordIdleTexture=idle!.Body;_swordHandFrontTexture=idle.HandFront;_swordHeldGrip=idle.Grip;
         var pixels=icon.GetSize();

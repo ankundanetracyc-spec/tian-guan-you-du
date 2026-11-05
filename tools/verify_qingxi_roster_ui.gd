@@ -20,19 +20,16 @@ func verify() -> void:
 	scene.add_child(roster)
 	var estate: Control = load("res://tscn/panel/bamboo/EstateOverview.tscn").instantiate()
 	scene.add_child(estate)
-	var fixed_height := 0.0
 	for location in ["li_residence", "village", "farmland", "back_hill"]:
 		estate.call("open_location_view", location)
 		await settle()
-		if fixed_height == 0.0:
-			fixed_height = roster.size.y
-		assert(is_equal_approx(roster.size.y, fixed_height), "Roster height changed with population")
+		assert(roster.size.y < 300, "Short roster wastes a tall empty panel")
 		var panel: Control = roster.get_node("ListPanel")
 		var header: Control = panel.get_node("RosterHeader")
 		assert(header.position.x >= 18 and header.position.y >= 18)
 		assert(header.get_rect().end.x <= panel.size.x - 18)
 		assert(not panel.has_node("RosterPaperFrame"), "Double frame returned")
-		assert(is_equal_approx(roster.position.y + roster.size.y * 0.5, roster.get_viewport_rect().size.y * 0.5))
+		assert(roster.position == Vector2(22, 132), "Roster no longer aligns with HUD")
 		var scroll: ScrollContainer = panel.get_node("CharacterScroll")
 		assert(scroll.position.x >= 14 and scroll.get_rect().end.x <= panel.size.x - 14)
 		var rows: VBoxContainer = scroll.get_node("CharacterVBox")
@@ -63,12 +60,12 @@ func verify() -> void:
 		await settle()
 		var scroll: ScrollContainer = roster.get_node("ListPanel/CharacterScroll")
 		var rows: VBoxContainer = scroll.get_node("CharacterVBox")
-		assert(is_equal_approx(roster.size.y, fixed_height))
+		assert(roster.size.y > 500 and roster.size.y < 700)
 		if index == 6:
 			assert(rows.get_child(6).get_rect().end.y <= scroll.size.y, "Seventh row clipped")
 		else:
 			assert(rows.size.y > scroll.size.y, "Eighth row should scroll")
 		if DisplayServer.get_name() != "headless":
 			assert(root.get_texture().get_image().save_png("res://tmp/roster_ui/roster_%d.png" % (index + 1)) == OK)
-	print("QINGXI_ROSTER_OK: single frame, centered, fixed height, seven visible rows, eighth scrolls, Qingxi portraits")
+	print("QINGXI_ROSTER_OK: single frame, HUD aligned, short roster fits content, seven visible rows, eighth scrolls, Qingxi portraits")
 	quit()

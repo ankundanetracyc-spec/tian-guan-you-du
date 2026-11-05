@@ -198,7 +198,7 @@ public partial class TradePanel : Control
             var path = entry.GetValueOrDefault("item_path", "").AsString();
             var count = entry.GetValueOrDefault("count", 0).AsInt32();
             var equipped = entry.GetValueOrDefault("equipped", false).AsBool();
-            if (string.IsNullOrWhiteSpace(path) || count <= 0 || equipped || load_item(path) is null) continue;
+            if (string.IsNullOrWhiteSpace(path) || count <= 0 || equipped || entry.GetValueOrDefault("storage_locked", false).AsBool() || load_item(path) is null) continue;
             var existing = _player_entries.FirstOrDefault(candidate => candidate.path == path);
             if (existing is null) _player_entries.Add(new TradeEntry { path = path, count = count });
             else existing.count += count;

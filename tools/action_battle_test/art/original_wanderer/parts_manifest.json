@@ -1,0 +1,289 @@
+{
+  "schema": "original-wanderer-rig-parts/v1",
+  "source": "source.png",
+  "sourceSize": [
+    1536,
+    1024
+  ],
+  "coordinateNotes": "Texture crops retain their transparent silhouette. Runtime scaling, bone paths, local rotations and offsets are listed per part.",
+  "experimentWeightedTextures": {
+    "79450": "parts/bilan_robe_body_weighted.png",
+    "61872": "parts/bilan_weighted_leg_v2.png"
+  },
+  "bindings": {
+    "robe_body": {
+      "parentPath": "/10002/Root/Body/yifu/yifu/shenti1",
+      "scale": [
+        0.082,
+        0.11
+      ],
+      "rotationDegrees": 97.91,
+      "position": [
+        -8.4,
+        -5.8
+      ],
+      "zIndex": 0,
+      "anchor": "center"
+    },
+    "head_hair": {
+      "parentPath": "/10002/Root/Body/yifu/yifu/shenti1/tou",
+      "scale": [
+        0.052,
+        0.072
+      ],
+      "rotationDegrees": 97.91,
+      "position": [
+        -6.5,
+        -5.5
+      ],
+      "zIndex": 5,
+      "anchor": "center"
+    },
+    "far_upper_arm": {
+      "parentPath": "/10002/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1",
+      "scale": [
+        0.0473,
+        0.0473
+      ],
+      "rotationDegrees": -90.0,
+      "position": [
+        0.0,
+        0.0
+      ],
+      "zIndex": -2,
+      "anchor": "top_center"
+    },
+    "far_forearm": {
+      "parentPath": "/10002/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1/zuobi2",
+      "scale": [
+        0.0212,
+        0.0212
+      ],
+      "rotationDegrees": -90.0,
+      "position": [
+        0.0,
+        0.0
+      ],
+      "zIndex": -2,
+      "anchor": "top_center"
+    },
+    "near_upper_arm": {
+      "parentPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1",
+      "scale": [
+        0.0444,
+        0.0444
+      ],
+      "rotationDegrees": -90.0,
+      "position": [
+        0.0,
+        0.0
+      ],
+      "zIndex": 3,
+      "anchor": "top_center"
+    },
+    "near_forearm": {
+      "parentPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2",
+      "scale": [
+        0.031,
+        0.031
+      ],
+      "rotationDegrees": -90.0,
+      "position": [
+        0.0,
+        0.0
+      ],
+      "zIndex": 3,
+      "anchor": "top_center"
+    },
+    "far_lower_leg": {
+      "parentPath": "/10002/Root/Body/Foot/youtui/youtui/tui1/tui2",
+      "scale": [
+        0.082,
+        0.168
+      ],
+      "rotationDegrees": -90.0,
+      "position": [
+        0.0,
+        0.0
+      ],
+      "zIndex": -2,
+      "anchor": "top_center"
+    },
+    "near_lower_leg": {
+      "parentPath": "/10002/Root/Body/Foot/zuotui/zuotui/tui1/tui2",
+      "scale": [
+        0.082,
+        0.168
+      ],
+      "rotationDegrees": -90.0,
+      "position": [
+        0.0,
+        0.0
+      ],
+      "zIndex": 2,
+      "anchor": "top_center"
+    }
+  },
+  "parts": [
+    {
+      "name": "head_hair",
+      "png": "parts/bilan_head_hair.png",
+      "sourceRegion": [
+        70,
+        55,
+        455,
+        515
+      ],
+      "trimmedSourceBounds": [
+        75,
+        58,
+        455,
+        515
+      ],
+      "size": [
+        380,
+        457
+      ]
+    },
+    {
+      "name": "robe_body",
+      "png": "parts/bilan_robe_body.png",
+      "sourceRegion": [
+        445,
+        20,
+        865,
+        580
+      ],
+      "trimmedSourceBounds": [
+        445,
+        26,
+        855,
+        577
+      ],
+      "size": [
+        410,
+        551
+      ]
+    },
+    {
+      "name": "far_upper_arm",
+      "png": "parts/bilan_far_upper_arm.png",
+      "sourceRegion": [
+        980,
+        100,
+        1160,
+        525
+      ],
+      "trimmedSourceBounds": [
+        993,
+        108,
+        1150,
+        518
+      ],
+      "size": [
+        157,
+        410
+      ]
+    },
+    {
+      "name": "far_forearm",
+      "png": "parts/bilan_far_forearm.png",
+      "sourceRegion": [
+        1260,
+        125,
+        1490,
+        545
+      ],
+      "trimmedSourceBounds": [
+        1273,
+        136,
+        1477,
+        535
+      ],
+      "size": [
+        204,
+        399
+      ]
+    },
+    {
+      "name": "near_upper_arm",
+      "png": "parts/bilan_near_upper_arm.png",
+      "sourceRegion": [
+        120,
+        600,
+        350,
+        1005
+      ],
+      "trimmedSourceBounds": [
+        132,
+        618,
+        328,
+        996
+      ],
+      "size": [
+        196,
+        378
+      ]
+    },
+    {
+      "name": "near_forearm",
+      "png": "parts/bilan_near_forearm.png",
+      "sourceRegion": [
+        430,
+        585,
+        720,
+        1010
+      ],
+      "trimmedSourceBounds": [
+        471,
+        634,
+        690,
+        1002
+      ],
+      "size": [
+        219,
+        368
+      ]
+    },
+    {
+      "name": "far_lower_leg",
+      "png": "parts/bilan_far_lower_leg.png",
+      "sourceRegion": [
+        850,
+        825,
+        1135,
+        990
+      ],
+      "trimmedSourceBounds": [
+        876,
+        825,
+        1109,
+        980
+      ],
+      "size": [
+        233,
+        155
+      ]
+    },
+    {
+      "name": "near_lower_leg",
+      "png": "parts/bilan_near_lower_leg.png",
+      "sourceRegion": [
+        1220,
+        825,
+        1475,
+        990
+      ],
+      "trimmedSourceBounds": [
+        1257,
+        825,
+        1465,
+        983
+      ],
+      "size": [
+        208,
+        158
+      ]
+    }
+  ]
+}

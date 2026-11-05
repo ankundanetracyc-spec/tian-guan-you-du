@@ -27,7 +27,11 @@ internal static class BattleUiArt
         if (Textures.TryGetValue(path, out var cached)) return cached;
         Texture2D? texture = ResourceLoader.Exists(path) ? GD.Load<Texture2D>(path) : null;
         // 新素材尚未被编辑器导入时，测试入口仍可从 PNG 直接加载。
-        texture ??= ImageTexture.CreateFromImage(Image.LoadFromFile(ProjectSettings.GlobalizePath(path)));
+        if (texture is null)
+        {
+            using var image = Image.LoadFromFile(ProjectSettings.GlobalizePath(path));
+            texture = ImageTexture.CreateFromImage(image);
+        }
         Textures[path] = texture;
         return texture;
     }
@@ -37,7 +41,7 @@ internal static class BattleUiArt
         var key = $"{name}:{size}";
         if (!Textures.TryGetValue(key, out var texture))
         {
-            var image = Texture(name).GetImage();
+            using var image = Texture(name).GetImage();
             image.Resize((int)size.X, (int)size.Y, Image.Interpolation.Lanczos);
             texture = ImageTexture.CreateFromImage(image);
             Textures[key] = texture;

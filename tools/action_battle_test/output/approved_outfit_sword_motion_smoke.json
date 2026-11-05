@@ -1,0 +1,43 @@
+{
+	"actual_elbow_flex_degrees": [
+		21.9999522316992,
+		47.0000343204751
+	],
+	"checks": 22,
+	"failures": [],
+	"maximum_arm_length_error": 0.0000104904174804688,
+	"maximum_blade_angle_step_degrees": 1.24215186283686,
+	"passed": true,
+	"peak_blade_angular_speeds": [
+		{
+			"cut_degrees_per_second": 1242.14503264769,
+			"facing": -1.0,
+			"prepare_degrees_per_second": 474.220034073985,
+			"recovery_degrees_per_second": 310.578946844235,
+			"zoom": 2.0
+		},
+		{
+			"cut_degrees_per_second": 1242.15186283686,
+			"facing": -1.0,
+			"prepare_degrees_per_second": 474.213203884815,
+			"recovery_degrees_per_second": 310.592607222575,
+			"zoom": 5.0
+		},
+		{
+			"cut_degrees_per_second": 1242.14503264769,
+			"facing": 1.0,
+			"prepare_degrees_per_second": 474.220034073985,
+			"recovery_degrees_per_second": 310.578946844235,
+			"zoom": 2.0
+		},
+		{
+			"cut_degrees_per_second": 1242.15186283686,
+			"facing": 1.0,
+			"prepare_degrees_per_second": 474.213203884815,
+			"recovery_degrees_per_second": 310.592607222575,
+			"zoom": 5.0
+		}
+	],
+	"samples": 2884,
+	"scope": "Actual fixed-bone joint geometry and independent sword transform at 1000Hz, both facings and display scales. Checks safe elbow bend, lift/cut/recovery tempo and closed loop seam. No combat rules or artwork changes."
+}

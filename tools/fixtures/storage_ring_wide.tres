@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="StorageRingItemData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/StorageRingItemData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+entity_name = "储物戒指"
+definition_id = &"debug_storage_ring_wide"
+description = "隔离收纳测试用规格，不是正式品质或产出配置。"
+icon_path = "res://textures/items/inventory_scale_20261104/storage_ring_1x1.png"
+item_category = "器具"
+item_subcategory = "储物戒指"
+storage_quality = "八品"
+storage_width = 8
+storage_height = 4
+inventory_width = 1
+inventory_height = 1
+

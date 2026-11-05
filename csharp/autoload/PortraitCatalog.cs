@@ -41,6 +41,15 @@ public partial class PortraitCatalog : Node
             if (int.TryParse(requested_id, out int requestedVariant))
                 foreach (Dictionary entry in candidates)
                     if (value(entry, "variant_index", -1).AsInt32() == requestedVariant) return entry;
+            // Retired lookalike styles resolve to their retained component, independent of other slots.
+            foreach (Dictionary entry in candidates)
+            {
+                Variant aliases = value(entry, "variant_aliases", new Dictionary());
+                if (aliases.VariantType != Variant.Type.Dictionary) continue;
+                Dictionary mapping = aliases.AsGodotDictionary();
+                if (mapping.ContainsKey(requested_id) &&
+                    value(entry, "variant_index", -1).AsInt32() == mapping[requested_id].AsInt32()) return entry;
+            }
         }
 
         var rng = new RandomNumberGenerator { Seed = (ulong)(value(context, "seed", 1).AsInt64() ^ (long)GD.Hash(part)) };

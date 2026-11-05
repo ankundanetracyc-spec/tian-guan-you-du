@@ -21,7 +21,9 @@ public partial class MainScene
     [
         new AcquaintanceNoteNpcInteractionComponent(),
         new BasicNpcInteractionComponent(),
+        new BaishiTownNpcInteractionComponent(),
         new SparNpcInteractionComponent(),
+        new AttackNpcInteractionComponent(),
         new PurchaseNpcInteractionComponent(),
         new YuxuCaseNpcInteractionComponent()
     ];
@@ -70,6 +72,13 @@ public partial class MainScene
 
     private IEnumerable<NpcInteractionAction> collect_world_npc_interaction_actions(WorldNpcData npc)
     {
+        if (baishi_present_actor(npc.npc_id) is not null)
+        {
+            foreach (var action in baishi_actor_actions(npc)) yield return action;
+            foreach (var action in new SparNpcInteractionComponent().GetActions(this, npc)) yield return action;
+            foreach (var action in new AttackNpcInteractionComponent().GetActions(this, npc)) yield return action;
+            yield break;
+        }
         var contactFailure = social_contact_failure_reason(npc);
         if (contactFailure.Length > 0)
         {
@@ -112,7 +121,7 @@ public partial class MainScene
     private void refresh_active_world_npc_interaction(bool force = true)
     {
         if (string.IsNullOrWhiteSpace(_activeWorldNpcInteractionId) || npc_interactions?.Visible != true) return;
-        var npc = _npc_world?.get_npc(_activeWorldNpcInteractionId);
+        var npc = baishi_present_actor(_activeWorldNpcInteractionId) ?? _npc_world?.get_npc(_activeWorldNpcInteractionId);
         if (npc is null || !GodotObject.IsInstanceValid(npc) || !npc.is_alive)
         {
             _activeWorldNpcInteractionId = "";
@@ -180,8 +189,18 @@ public partial class MainScene
         public override string ComponentId => "npc.spar";
         public override IEnumerable<NpcInteractionAction> GetActions(MainScene owner, WorldNpcData target)
         {
-            if (owner.can_sect_spar(target))
-                yield return new("spar", "切磋", () => owner.request_npc_spar(target));
+            var reason = owner.npc_spar_unavailable_reason(target);
+            yield return new("spar", "切磋", () => owner.request_npc_spar(target), reason.Length == 0, reason);
+        }
+    }
+
+    private sealed class AttackNpcInteractionComponent : NpcInteractionActionComponent
+    {
+        public override string ComponentId => "npc.attack";
+        public override IEnumerable<NpcInteractionAction> GetActions(MainScene owner, WorldNpcData target)
+        {
+            var reason = owner.npc_attack_unavailable_reason(target);
+            yield return new("attack", "攻击", () => owner.request_npc_attack(target), reason.Length == 0, reason);
         }
     }
 

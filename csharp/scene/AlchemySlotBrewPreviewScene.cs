@@ -132,7 +132,7 @@ public partial class AlchemySlotBrewPreviewScene : Control
         foreach (var file in directory.GetFiles().Where(name => name.EndsWith(".tres", StringComparison.OrdinalIgnoreCase))
                      .OrderBy(name => name, StringComparer.Ordinal))
         {
-            // 骨材暂不进入这组三种九品丹的试演材料架。
+            // 骨材沿现有材料架的开放范围筛选。
             if (file.Contains("骨", StringComparison.Ordinal)) continue;
             var path = $"{ItemDirectory}/{file}";
             var item = GD.Load<ItemData>(path);
@@ -459,21 +459,21 @@ public partial class AlchemySlotBrewPreviewScene : Control
         content.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         scroll.AddChild(content);
 
-        AddTutorialSection(content, "一、先配伍，开炉后才知成丹", "普通炼丹从投料开始，不预先选择目标丹药。你先安排君、臣、佐、使与整数剂量；炼前只核对已知药材信息和本次资源需求，不显示丹种、颗数、品质或成败预估。点击炼丹后，系统读取君药核心功用并结算整炉药性，结果此时才揭晓。\n\n君药、臣药各一种；佐药、使药各最多三种。造诣32／68／203／508依次解锁第二味使药、第二味佐药、第三味使药、第三味佐药。\n\n左下角丹方笺可载入一套起步配伍；载入后仍能换药、调量或移位，样方不限制其他解法。");
+        AddTutorialSection(content, "一、先配伍，开炉后才知成丹", "普通炼丹从投料开始，不预先选择目标丹药。你先安排君、臣、佐、使与整数剂量；炼前只核对已知药材信息和本次资源需求，不显示丹种、颗数、品质或成败预估。点击炼丹后，系统读取君药核心、五行和阴阳并结算整炉药性，结果此时才揭晓。\n\n君药、臣药各一种；佐药、使药各最多三种。造诣32／68／203／508依次解锁第二味使药、第二味佐药、第三味使药、第三味佐药。\n\n左下角丹方笺可载入一套起步配伍；载入后仍能换药、调量或移位，样方不限制其他解法。");
         AddTutorialSection(content, "二、君臣佐使：四类药位", "君位：提供成品识别核心，并决定颗数基础。\n臣位：可用「聚」争取更多丹；可用「固」扶持成形。\n佐位：可用「破、化」争取得率，也可用「固、镇、护、明、藏」处理稳形、冲突、危险、纯度与封存。\n使位：可用「通、行、引、藏」处理相合、送达、主效导向与留存。\n\n这些是角色能发挥的功用范围，不是必须照抄的格子。放错角色的功用不会触发对应效果，但该材料的五行、阴阳、原料和灵识负担仍会计入。换材料、换位置、换剂量都可能形成另一条有效路线。");
         AddTutorialSection(content, "三、以尝试积累经验", "不载入丹方时，先选一味核心功用合适的君药，臣、佐、使可以留空，再自由替换材料、剂量与角色位。炼前只会看到本炉材料、已知五行阴阳与资源需求；每一次尝试的结果要等点击炼丹后才会出现。\n\n成功不要求凑齐固定辅药，也不按材料味数封顶；成色来自每颗实际得到的核心药力、五行阴阳、通路、稳形和纯度。同一种丹药可以用不同材料路线炼成。");
         AddTutorialSection(content, "四、五行、阴阳与资源", "五行生克会改变各味药性发挥；阴阳偏性影响配伍相合，阴阳相激会损失混合效率，过烈时还会带来炸炉危险。「镇」缓和相激并改善混合；「护」只降低炸炉危险，不补回混合损耗。\n\n灵识占用取决于材料品阶、本位发挥的功用数量与品级、药位和剂量。君臣位责任较重；高阶、多功用材料通常更难驾驭。增加同味剂量会缓慢增加占用。本位不发挥的功用不收功用负担，但材料本身仍需灵识照看。\n\n顶部显示剩余可支配灵识／人物灵识总值。左边扣除其他事务占用，右边始终是人物总值，配伍不提前扣除左边余额。本炉灵识需求显示在右侧用度栏，悬停查看各味分摊；需求不得超过顶部左边的剩余额度。悬停药材查看该药位、剂量的占用明细。超限请换药、减量或调整药位。正式入口读取人物真实数据；独立试演总灵识24，其他占用0。\n\n精力按丹阶、产量、材料种数、功用组合和总投料计算。右侧只列本次用度，不提前揭晓炼制结果。");
-        AddTutorialSection(content, "五、十二功用：按短板选路线", "破：佐位拆解致密材料残余，改善有效得率。\n化：佐位转化全炉残余；可与破互补，也可少用破、专注处理总残余。\n通：使位改善多味材料的相合程度。\n行：使位提高药力送达比例。\n引：使位从其他丹胚转移一部分君药药性给首颗；总药性守恒，一颗时没有可转移来源。\n聚：臣位影响本炉可形成的丹药数量；数量由配伍与剂量自动决定。\n固：臣或佐位支撑成形，是稳形路线之一。\n镇：佐位缓和阴阳相激，兼顾混合与危险。\n护：佐位降低炸炉危险，不补回混合损耗。\n生：可作为君药核心之一；当前九品试演中对应回春丹方向，其他已知丹种由各自核心功用识别。\n明：佐位降低残余夹带、改善纯度。\n藏：佐／使位减少已炼出药性在炉内的自然散失；不改变同档成品的效果或时长。\n\n功用品级会按造诣掌控率折算。同一目标有不同办法：例如用「化」减少残余，或用「明」降低残余夹带；调阴阳可以直接换材料，也可以用「镇」处理相激。不同路线各有成本与边界。");
+        AddTutorialSection(content, "五、十二功用：按短板选路线", "破：佐位拆解致密材料残余，改善有效得率。\n化：佐位转化全炉残余；可与破互补，也可少用破、专注处理总残余。\n通：使位改善多味材料的相合程度。\n行：使位提高药力送达比例。\n引：使位从其他丹胚转移一部分君药药性给首颗；总药性守恒，一颗时没有可转移来源。\n聚：臣位影响本炉可形成的丹药数量；数量由配伍与剂量自动决定。\n固：臣或佐位支撑成形，是稳形路线之一。\n镇：佐位缓和阴阳相激，兼顾混合与危险。\n护：佐位降低炸炉危险，不补回混合损耗。\n生：君药核心之一，与整炉五行、阴阳共同区分回春和续生。\n明：佐位降低残余夹带、改善纯度。\n藏：佐／使位减少已炼出药性在炉内的自然散失；不改变同档成品的效果或时长。\n\n功用品级会按造诣掌控率折算。同一目标有不同办法：例如用「化」减少残余，或用「明」降低残余夹带；调阴阳可以直接换材料，也可以用「镇」处理相激。不同路线各有成本与边界。");
 
         var footer = new HBoxContainer();
         footer.AddThemeConstantOverride("separation", 12);
         layout.AddChild(footer);
-        AddTutorialSection(content, "六、自动分丹、逐颗丹效与正式消耗", "本炉自动形成0—4颗候选丹，数量由君药实际可用药性、剂量及臣位聚性决定，不设置颗数选择。各颗再独立判断是否成丹；想改变数量，需要调整配伍或用量。引只在丹胚之间搬运君药药性，不增加总药性。\n\n每颗独立按关键短板判分，同炉可以出现相邻丹效档；少数丹被引性集中时，其余丹可能降档。同档成品药效一致并可堆叠：薄效20—50、良效51—75、优效76—90、极效91—99、满效100，低于20不成丹。高档需要明显更好的实际配伍，核心药力过量不能抵消阴阳或纯度缺陷。\n\n百工正式入口使用人物行囊和精力：预检失败零消耗，普通失败或炸炉也消耗投料与精力。成功丹药按档入包；空间不足不会吞料。独立试演免扣资源。正式炼制结束按显示耗时推进历法。丹方只保存药材、位置与剂量，不保存指定产量。结果逐颗展示具体丹效分，悬停查看物品信息；同档药效相同、入包后合并堆叠。");
+        AddTutorialSection(content, "六、自动分丹、逐颗丹效与正式消耗", "本炉自动形成0—4颗候选丹，数量由君药实际可用药性、剂量及臣位聚性决定，不设置颗数选择。各颗再独立判断是否成丹；想改变数量，需要调整配伍或用量。引只在丹胚之间搬运君药药性，不增加总药性。\n\n每颗独立按关键短板判分，同炉可以出现相邻丹效档；少数丹被引性集中时，其余丹可能降档。同档成品药效一致：薄效20—50、良效51—75、优效76—90、极效91—99、满效100，低于20不成丹。高档需要明显更好的实际配伍，核心药力过量不能抵消阴阳或纯度缺陷。\n\n天工峰丹房使用人物行囊和精力：预检失败零消耗，普通失败或炸炉也消耗投料与精力。合格丹药在领取页确认后入包，可先整理空间或明确放弃。独立试演免扣资源。正式炼制结束按显示耗时推进历法。丹方只保存药材、位置与剂量，不保存指定产量。结果逐颗展示具体丹效分，悬停查看物品信息；同档药效相同；入包后逐件占格，清册汇总同类数量。");
         var example = MakeButton("载入回春丹样方甲", () => ApplySampleRoute(
             AlchemyRecipeCatalog.GetPill("huichun").SampleRoutes[2], true), 16);
         example.CustomMinimumSize = new Vector2(280, 46);
         footer.AddChild(example);
-        var note = QuietRoomStyle.Text("左下角【丹方】可载入十五套样例，只自动填料，不指定成品；替换药材、角色位或整数份数后可重新炼丹。", 14);
+        var note = QuietRoomStyle.Text("左下角【丹方】可载入各丹种样方，只自动填料，不指定成品；替换药材、角色位或整数份数后可重新炼丹。", 14);
         note.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         note.AutowrapMode = TextServer.AutowrapMode.WordSmart;
         note.AddThemeColorOverride("font_color", new Color("727b70"));
@@ -1121,14 +1121,16 @@ public partial class AlchemySlotBrewPreviewScene : Control
 
     private string MaterialTooltip(MaterialChoice material, int slot)
     {
-        var active = material.Craft.utilities.Where(u => u is not null && FunctionActsInSlot(slot, u.utility_id))
-            .Select(u => u.utility_id).Distinct().ToArray();
-        var inactive = material.Craft.utilities.Where(u => u is not null && !FunctionActsInSlot(slot, u.utility_id))
-            .Select(u => u.utility_id).Distinct().ToArray();
         int dose = slot < 0 ? (_main?.Path == material.Path ? _mainDose : 1)
             : (_assistants[slot]?.Path == material.Path ? _assistantDoses[slot] : 1);
-        var load = AlchemySlotSimulation.SpiritLoads([new(material.Name, material.Path, material.Craft, dose,
-            slot < 0 ? AlchemySlotSimulation.SlotRole.Jun : RoleFor(slot))]).Single();
+        var input = new AlchemySlotSimulation.Input(material.Name, material.Path, material.Craft, dose,
+            slot < 0 ? AlchemySlotSimulation.SlotRole.Jun : RoleFor(slot));
+        IReadOnlyList<AlchemySlotSimulation.Input> probe = slot < 0 ? GetSimulationInputs().Where(i => !i.IsMain).Append(input).ToArray() : GetSimulationInputs();
+        string core = AlchemySlotSimulation.IdentifyPill(probe)?.CoreUtility ?? "";
+        bool Active(string utility) => slot < 0 ? utility == core : FunctionActsInSlot(slot, utility);
+        var active = material.Craft.utilities.Where(u => u is not null && Active(u.utility_id)).Select(u => u.utility_id).Distinct().ToArray();
+        var inactive = material.Craft.utilities.Where(u => u is not null && !Active(u.utility_id)).Select(u => u.utility_id).Distinct().ToArray();
+        var load = AlchemySlotSimulation.SpiritLoads([input], core).Single();
         return $"{material.Name} · {material.Craft.material_grade_name()}\n五行　{material.Craft.element}　阴阳　{PolarityName(material.Craft.polarity)}\n材性　{material.Craft.texture}\n功用　{material.UtilityText}\n\n本位发挥　{(active.Length == 0 ? "无对应功用" : string.Join("、", active))}"
             + (inactive.Length == 0 ? "" : $"\n本位不发挥　{string.Join("、", inactive)}")
             + $"\n\n本位{dose}份 · 灵识占用 {load.Occupation:0.00}\n材料负担 {load.BaseLoad:0.00} ＋ 功用负担 {load.FunctionLoad:0.00}\n药位倍率 ×{load.RoleMultiplier:0.0} · 用量倍率 ×{load.DoseMultiplier:0.00}\n各味合计后统一向上取整"

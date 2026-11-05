@@ -75,6 +75,15 @@ public partial class RealmManager : Node
     }
     private static string cloud_realm_name(int tier)=>"云息"+new[]{"","一","二","三","四","五","六","七","八","九","十"}[tier]+"层";
     private static int realm_rank(string realm)=>realm switch{"凡人"=>0,"云息一层"=>1,"云息二层"=>2,"云息三层"=>3,"云息四层"=>4,"云息五层"=>5,"云息六层"=>6,"云息七层"=>7,"云息八层"=>8,"云息九层"=>9,"云息十层"=>10,_=>int.MaxValue};
+    /// <summary>识别正式中文云息境界，兼容旧阿拉伯数字显示名；其他境界不冒充云息。</summary>
+    public static int get_cloud_realm_tier(string realm)
+    {
+        var rank = realm_rank(realm);
+        if (rank != int.MaxValue) return rank;
+        const string prefix = "云息";
+        return realm.StartsWith(prefix, StringComparison.Ordinal) && realm.EndsWith("层", StringComparison.Ordinal) &&
+            int.TryParse(realm.AsSpan(prefix.Length, realm.Length - prefix.Length - 1), out var tier) && tier is >= 1 and <= 10 ? tier : 0;
+    }
     public bool is_realm_before_or_equal(string a,string b)=>string.IsNullOrEmpty(a)||string.IsNullOrEmpty(b)||realm_order.IndexOf(a)<0||realm_order.IndexOf(b)<0||realm_order.IndexOf(a)<=realm_order.IndexOf(b);
     public bool is_realm_after_or_equal(string a,string b)=>string.IsNullOrEmpty(a)||string.IsNullOrEmpty(b)||realm_order.IndexOf(a)<0||realm_order.IndexOf(b)<0||realm_order.IndexOf(a)>=realm_order.IndexOf(b);
     public bool can_be_main_gongfa(GodotObject? gongfa,string realm)=>check_gongfa(gongfa,realm,"can_be_main","main_realm_start","main_realm_end");

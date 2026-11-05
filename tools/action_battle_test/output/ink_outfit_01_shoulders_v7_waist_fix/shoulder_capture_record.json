@@ -1,0 +1,524 @@
+{
+	"camera_focus": "near shoulder source attachment; pose and materials unchanged",
+	"clipped_viewport": true,
+	"frames_per_cycle": 24,
+	"materials": {
+		"body": {
+			"mapping": "source crop to complete Sprite canvas affine; no local registration",
+			"native_per_template_x": 0.674305555555556,
+			"native_per_template_y": 0.675,
+			"native_size": [
+				971,
+				1620
+			],
+			"path": "res://art/ink_outfit_01_20261104/assets/body.png",
+			"sha256": "9a87016e7b3aaf208d369fd7033cb0fa62f31ec8690cb2727d050120099a3109",
+			"source_canvas": [
+				60.0,
+				100.0
+			],
+			"target_ppu": 2400.0,
+			"template_size": [
+				1440.0,
+				2400.0
+			]
+		},
+		"leg": {
+			"mapping": "source crop to complete Sprite canvas affine; no local registration",
+			"native_per_template_x": 0.825833333333333,
+			"native_per_template_y": 0.8265625,
+			"native_size": [
+				991,
+				1587
+			],
+			"path": "res://art/ink_outfit_01_20261104/assets/leg.png",
+			"sha256": "0d189c16b9d0ea151a7418f2556182957cfecbcfa91c0d3d48bcfda5dfccbfda",
+			"source_canvas": [
+				50.0,
+				80.0
+			],
+			"target_ppu": 2400.0,
+			"template_size": [
+				1200.0,
+				1920.0
+			]
+		},
+		"sleeve_far": {
+			"mapping": "source crop to complete Sprite canvas affine; no local registration",
+			"native_per_template_x": 0.870833333333333,
+			"native_per_template_y": 0.870833333333333,
+			"native_size": [
+				1254,
+				1254
+			],
+			"path": "res://art/ink_outfit_01_20261104/assets/sleeve_far.png",
+			"sha256": "34373a9d61335660aa000ae07f4631ef198697b63b71d880f6c8ee28bbec2c4d",
+			"source_canvas": [
+				60.0,
+				60.0
+			],
+			"target_ppu": 2400.0,
+			"template_size": [
+				1440.0,
+				1440.0
+			]
+		},
+		"sleeve_near": {
+			"mapping": "source crop to complete Sprite canvas affine; no local registration",
+			"native_per_template_x": 0.870833333333333,
+			"native_per_template_y": 0.870833333333333,
+			"native_size": [
+				1254,
+				1254
+			],
+			"path": "res://art/ink_outfit_01_20261104/assets/sleeve_near.png",
+			"sha256": "fd2590534d4391d8297112713cd2c39521914bbc4f7c47ae927d2fdd49f54ade",
+			"source_canvas": [
+				60.0,
+				60.0
+			],
+			"target_ppu": 2400.0,
+			"template_size": [
+				1440.0,
+				1440.0
+			]
+		}
+	},
+	"pose_blending": false,
+	"samples": [
+		{
+			"clip": "Idle",
+			"file": "Idle_000.png",
+			"phase": 0.0,
+			"sampled_phase": 0.0
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_001.png",
+			"phase": 0.0416666666666667,
+			"sampled_phase": 0.0416666666666667
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_002.png",
+			"phase": 0.0833333333333333,
+			"sampled_phase": 0.0833333333333333
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_003.png",
+			"phase": 0.125,
+			"sampled_phase": 0.125
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_004.png",
+			"phase": 0.166666666666667,
+			"sampled_phase": 0.166666666666667
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_005.png",
+			"phase": 0.208333333333333,
+			"sampled_phase": 0.208333333333333
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_006.png",
+			"phase": 0.25,
+			"sampled_phase": 0.25
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_007.png",
+			"phase": 0.291666666666667,
+			"sampled_phase": 0.291666666666667
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_008.png",
+			"phase": 0.333333333333333,
+			"sampled_phase": 0.333333333333333
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_009.png",
+			"phase": 0.375,
+			"sampled_phase": 0.375
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_010.png",
+			"phase": 0.416666666666667,
+			"sampled_phase": 0.416666666666667
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_011.png",
+			"phase": 0.458333333333333,
+			"sampled_phase": 0.458333333333333
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_012.png",
+			"phase": 0.5,
+			"sampled_phase": 0.5
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_013.png",
+			"phase": 0.541666666666667,
+			"sampled_phase": 0.541666666666667
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_014.png",
+			"phase": 0.583333333333333,
+			"sampled_phase": 0.583333333333333
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_015.png",
+			"phase": 0.625,
+			"sampled_phase": 0.625
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_016.png",
+			"phase": 0.666666666666667,
+			"sampled_phase": 0.666666666666667
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_017.png",
+			"phase": 0.708333333333333,
+			"sampled_phase": 0.708333333333333
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_018.png",
+			"phase": 0.75,
+			"sampled_phase": 0.75
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_019.png",
+			"phase": 0.791666666666667,
+			"sampled_phase": 0.791666666666667
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_020.png",
+			"phase": 0.833333333333333,
+			"sampled_phase": 0.833333333333333
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_021.png",
+			"phase": 0.875,
+			"sampled_phase": 0.875
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_022.png",
+			"phase": 0.916666666666667,
+			"sampled_phase": 0.916666666666667
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_023.png",
+			"phase": 0.958333333333333,
+			"sampled_phase": 0.958333333333333
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_000.png",
+			"phase": 0.0,
+			"sampled_phase": 0.0
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_001.png",
+			"phase": 0.0416666666666667,
+			"sampled_phase": 0.0416666666666667
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_002.png",
+			"phase": 0.0833333333333333,
+			"sampled_phase": 0.0833333333333333
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_003.png",
+			"phase": 0.125,
+			"sampled_phase": 0.125
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_004.png",
+			"phase": 0.166666666666667,
+			"sampled_phase": 0.166666666666667
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_005.png",
+			"phase": 0.208333333333333,
+			"sampled_phase": 0.208333333333333
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_006.png",
+			"phase": 0.25,
+			"sampled_phase": 0.25
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_007.png",
+			"phase": 0.291666666666667,
+			"sampled_phase": 0.291666666666667
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_008.png",
+			"phase": 0.333333333333333,
+			"sampled_phase": 0.333333333333333
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_009.png",
+			"phase": 0.375,
+			"sampled_phase": 0.375
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_010.png",
+			"phase": 0.416666666666667,
+			"sampled_phase": 0.416666666666667
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_011.png",
+			"phase": 0.458333333333333,
+			"sampled_phase": 0.458333333333333
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_012.png",
+			"phase": 0.5,
+			"sampled_phase": 0.5
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_013.png",
+			"phase": 0.541666666666667,
+			"sampled_phase": 0.541666666666667
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_014.png",
+			"phase": 0.583333333333333,
+			"sampled_phase": 0.583333333333333
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_015.png",
+			"phase": 0.625,
+			"sampled_phase": 0.625
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_016.png",
+			"phase": 0.666666666666667,
+			"sampled_phase": 0.666666666666667
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_017.png",
+			"phase": 0.708333333333333,
+			"sampled_phase": 0.708333333333333
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_018.png",
+			"phase": 0.75,
+			"sampled_phase": 0.75
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_019.png",
+			"phase": 0.791666666666667,
+			"sampled_phase": 0.791666666666667
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_020.png",
+			"phase": 0.833333333333333,
+			"sampled_phase": 0.833333333333333
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_021.png",
+			"phase": 0.875,
+			"sampled_phase": 0.875
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_022.png",
+			"phase": 0.916666666666667,
+			"sampled_phase": 0.916666666666667
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_023.png",
+			"phase": 0.958333333333333,
+			"sampled_phase": 0.958333333333333
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_000.png",
+			"phase": 0.0,
+			"sampled_phase": 0.0
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_001.png",
+			"phase": 0.0416666666666667,
+			"sampled_phase": 0.0416666666666667
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_002.png",
+			"phase": 0.0833333333333333,
+			"sampled_phase": 0.0833333333333333
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_003.png",
+			"phase": 0.125,
+			"sampled_phase": 0.125
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_004.png",
+			"phase": 0.166666666666667,
+			"sampled_phase": 0.166666666666667
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_005.png",
+			"phase": 0.208333333333333,
+			"sampled_phase": 0.208333333333333
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_006.png",
+			"phase": 0.25,
+			"sampled_phase": 0.25
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_007.png",
+			"phase": 0.291666666666667,
+			"sampled_phase": 0.291666666666667
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_008.png",
+			"phase": 0.333333333333333,
+			"sampled_phase": 0.333333333333333
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_009.png",
+			"phase": 0.375,
+			"sampled_phase": 0.375
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_010.png",
+			"phase": 0.416666666666667,
+			"sampled_phase": 0.416666666666667
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_011.png",
+			"phase": 0.458333333333333,
+			"sampled_phase": 0.458333333333333
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_012.png",
+			"phase": 0.5,
+			"sampled_phase": 0.5
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_013.png",
+			"phase": 0.541666666666667,
+			"sampled_phase": 0.541666666666667
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_014.png",
+			"phase": 0.583333333333333,
+			"sampled_phase": 0.583333333333333
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_015.png",
+			"phase": 0.625,
+			"sampled_phase": 0.625
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_016.png",
+			"phase": 0.666666666666667,
+			"sampled_phase": 0.666666666666667
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_017.png",
+			"phase": 0.708333333333333,
+			"sampled_phase": 0.708333333333333
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_018.png",
+			"phase": 0.75,
+			"sampled_phase": 0.75
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_019.png",
+			"phase": 0.791666666666667,
+			"sampled_phase": 0.791666666666667
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_020.png",
+			"phase": 0.833333333333333,
+			"sampled_phase": 0.833333333333333
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_021.png",
+			"phase": 0.875,
+			"sampled_phase": 0.875
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_022.png",
+			"phase": 0.916666666666667,
+			"sampled_phase": 0.916666666666667
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_023.png",
+			"phase": 0.958333333333333,
+			"sampled_phase": 0.958333333333333
+		}
+	],
+	"scope": "native close-up visual audit across complete Idle/Run1/Run2 cycles; no aesthetic pass inferred from data checks",
+	"secondary_surrogate": false
+}

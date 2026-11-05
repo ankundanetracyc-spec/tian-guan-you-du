@@ -1,0 +1,5405 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "path": "resources/appearance/guigu_male101/model_frames_20261104.json",
+    "sha256": "7603c46731ab56f6de5e33e06837636b10820a67495cd6093d489568ad767537",
+    "asset": {
+      "path": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\guigubahuang_Data\\resources.assets",
+      "sizeBytes": 1764255120,
+      "sha256": "0d1e14ae4a2719b91055e201fadf294b600f730e5bfbba14f4806b7619ec3ced",
+      "unityVersion": "2020.3f1c1"
+    },
+    "character": "male101",
+    "method": "Direct evaluated source boneFrames/boneTransforms; source phase unshifted. Angles and normalized wrists are references only; target fixed limb lengths are retained.",
+    "bone_indices": {
+      "near_leg": [
+        39,
+        40,
+        41
+      ],
+      "far_leg": [
+        35,
+        36,
+        37
+      ],
+      "near_arm": [
+        31,
+        32,
+        33
+      ],
+      "far_arm": [
+        27,
+        28,
+        29
+      ],
+      "waist": 13,
+      "neck": 23
+    },
+    "bone_paths": {
+      "near_leg": [
+        "/HumanRootMan/Root/Body/Foot/youtui/youtui/tui1",
+        "/HumanRootMan/Root/Body/Foot/youtui/youtui/tui1/tui2",
+        "/HumanRootMan/Root/Body/Foot/youtui/youtui/tui1/tui2/tui3"
+      ],
+      "far_leg": [
+        "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1",
+        "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1/tui2",
+        "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1/tui2/tui3"
+      ],
+      "near_arm": [
+        "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1",
+        "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2",
+        "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/youbi3"
+      ],
+      "far_arm": [
+        "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1",
+        "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1/zuobi2",
+        "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1/zuobi2/zuobi3"
+      ],
+      "waist": "/HumanRootMan/Root/Body/yifu/yifu/shenti2",
+      "neck": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou"
+    }
+  },
+  "coordinates": {
+    "x": "forward/right",
+    "y": "down",
+    "phase": "unshifted source sample index / 144; not female10002 frontmost-aligned",
+    "pelvis": "midpoint of source near/far hip positions",
+    "body_lean": "waist13 to neck23; atan2(dx,-dy)",
+    "limb_angles": "absolute XY angle measured hip->knee->ankle, radians",
+    "foot_angle": "source foot world rotation minus same foot Idle frame0 rotation; use lerp_angle",
+    "wrist": "same-side shoulder-to-wrist divided by same frame upper+lower arm lengths"
+  },
+  "duration": 0.5833333134651184,
+  "sampleCount": 144,
+  "samples": [
+    {
+      "phase": 0.0,
+      "pelvis": [
+        2.45,
+        -53.399995000000004
+      ],
+      "near_hip": [
+        2.4,
+        -49.89999
+      ],
+      "far_hip": [
+        2.5,
+        -56.9
+      ],
+      "body_lean": 0.4830906597808105,
+      "near_foot_angle": 0.7399324,
+      "near_wrist": [
+        0.5638299239101263,
+        0.21034616183857327
+      ],
+      "near_arm_hand_angle": -0.13885269999999994,
+      "far_foot_angle": 1.468007,
+      "far_wrist": [
+        -0.7548039986856451,
+        0.5510019970901546
+      ],
+      "far_arm_hand_angle": 0.7353087,
+      "near_leg_upper_angle": 2.224701685319216,
+      "near_upper_angle": 1.1056982450204222,
+      "near_leg_lower_angle": 2.368533990700569,
+      "near_lower_angle": -0.7713755113861922,
+      "far_leg_upper_angle": 1.276405235506719,
+      "far_upper_angle": 2.761376160569996,
+      "far_leg_lower_angle": -3.1108821132705318,
+      "far_lower_angle": 1.985506711465518,
+      "cloth_root_angle": 0.6516350136545181
+    },
+    {
+      "phase": 0.006944444444444444,
+      "pelvis": [
+        2.4450700000000003,
+        -53.402785
+      ],
+      "near_hip": [
+        2.40185,
+        -49.90055
+      ],
+      "far_hip": [
+        2.48829,
+        -56.90502
+      ],
+      "body_lean": 0.48301799971414033,
+      "near_foot_angle": 0.773746,
+      "near_wrist": [
+        0.5662035748944596,
+        0.21287602883011203
+      ],
+      "near_arm_hand_angle": -0.13103900000000002,
+      "far_foot_angle": 1.4109475,
+      "far_wrist": [
+        -0.7598264378945648,
+        0.5487586526595999
+      ],
+      "far_arm_hand_angle": 0.7519988,
+      "near_leg_upper_angle": 2.239018110992268,
+      "near_upper_angle": 1.1058128081954044,
+      "near_leg_lower_angle": 2.382857394073464,
+      "near_lower_angle": -0.7632305967683439,
+      "far_leg_upper_angle": 1.2117625166844272,
+      "far_upper_angle": 2.7613410014145954,
+      "far_leg_lower_angle": 3.1087657983278594,
+      "far_lower_angle": 2.0021971339417233,
+      "cloth_root_angle": 0.6523746534491894
+    },
+    {
+      "phase": 0.013888888888888888,
+      "pelvis": [
+        2.431025,
+        -53.410804999999996
+      ],
+      "near_hip": [
+        2.40733,
+        -49.9022
+      ],
+      "far_hip": [
+        2.45472,
+        -56.91941
+      ],
+      "body_lean": 0.4828023004666007,
+      "near_foot_angle": 0.8229427,
+      "near_wrist": [
+        0.5684420389916313,
+        0.21544067601767317
+      ],
+      "near_arm_hand_angle": -0.12389129999999993,
+      "far_foot_angle": 1.3606046,
+      "far_wrist": [
+        -0.7646785847418563,
+        0.5465327146574005
+      ],
+      "far_arm_hand_angle": 0.7683093999999999,
+      "near_leg_upper_angle": 2.2537836504973794,
+      "near_upper_angle": 1.1061500900931458,
+      "near_leg_lower_angle": 2.397720188276339,
+      "near_lower_angle": -0.7551102690172715,
+      "far_leg_upper_angle": 1.1437362487921852,
+      "far_upper_angle": 2.7612305009918696,
+      "far_leg_lower_angle": 3.040082175906589,
+      "far_lower_angle": 2.018507595998755,
+      "cloth_root_angle": 0.6545322463231762
+    },
+    {
+      "phase": 0.020833333333333332,
+      "pelvis": [
+        2.408995,
+        -53.42355
+      ],
+      "near_hip": [
+        2.41634,
+        -49.90495
+      ],
+      "far_hip": [
+        2.40165,
+        -56.94215
+      ],
+      "body_lean": 0.4824487804822764,
+      "near_foot_angle": 0.8848537,
+      "near_wrist": [
+        0.5705467920288522,
+        0.21803843766896755
+      ],
+      "near_arm_hand_angle": -0.11738090000000001,
+      "far_foot_angle": 1.3170564,
+      "far_wrist": [
+        -0.7693536641111428,
+        0.5443377663612942
+      ],
+      "far_arm_hand_angle": 0.7842189000000002,
+      "near_leg_upper_angle": 2.2688927937083405,
+      "near_upper_angle": 1.1067048753616773,
+      "near_leg_lower_angle": 2.4131372579650883,
+      "near_lower_angle": -0.7470190969498076,
+      "far_leg_upper_angle": 1.073971106168982,
+      "far_upper_angle": 2.7610383041243014,
+      "far_leg_lower_angle": 2.9679723501245356,
+      "far_lower_angle": 2.0344174430282345,
+      "cloth_root_angle": 0.6580164484685458
+    },
+    {
+      "phase": 0.027777777777777776,
+      "pelvis": [
+        2.380095,
+        -53.440515000000005
+      ],
+      "near_hip": [
+        2.42876,
+        -49.90878
+      ],
+      "far_hip": [
+        2.33143,
+        -56.97225
+      ],
+      "body_lean": 0.48196146760722597,
+      "near_foot_angle": 0.9568104,
+      "near_wrist": [
+        0.5725198678534453,
+        0.2206665784732068
+      ],
+      "near_arm_hand_angle": -0.1114792,
+      "far_foot_angle": 1.2803813,
+      "far_wrist": [
+        -0.7738446539106582,
+        0.5421888478625083
+      ],
+      "far_arm_hand_angle": 0.7997056999999999,
+      "near_leg_upper_angle": 2.284242510537552,
+      "near_upper_angle": 1.1074715124288061,
+      "near_leg_lower_angle": 2.4291222462744315,
+      "near_lower_angle": -0.7389611645371478,
+      "far_leg_upper_angle": 1.0041120777510981,
+      "far_upper_angle": 2.7607548778695032,
+      "far_leg_lower_angle": 2.894155310007354,
+      "far_lower_angle": 2.0499033618190494,
+      "cloth_root_angle": 0.6627343417696796
+    },
+    {
+      "phase": 0.034722222222222224,
+      "pelvis": [
+        2.3454550000000003,
+        -53.461175
+      ],
+      "near_hip": [
+        2.4445,
+        -49.91367
+      ],
+      "far_hip": [
+        2.24641,
+        -57.00868
+      ],
+      "body_lean": 0.48134477238853396,
+      "near_foot_angle": 1.0361439,
+      "near_wrist": [
+        0.5743638759855738,
+        0.22332362824907004
+      ],
+      "near_arm_hand_angle": -0.10615759999999998,
+      "far_foot_angle": 1.2506576,
+      "far_wrist": [
+        -0.7781457609437058,
+        0.5400995645332711
+      ],
+      "far_arm_hand_angle": 0.8147483,
+      "near_leg_upper_angle": 2.299728508066815,
+      "near_upper_angle": 1.1084422841749852,
+      "near_leg_lower_angle": 2.4456896829716093,
+      "near_lower_angle": -0.7309409596725418,
+      "far_leg_upper_angle": 0.9358052999767943,
+      "far_upper_angle": 2.7603746864734475,
+      "far_leg_lower_angle": 2.820350451986366,
+      "far_lower_angle": 2.064946860901586,
+      "cloth_root_angle": 0.6685958561319305
+    },
+    {
+      "phase": 0.041666666666666664,
+      "pelvis": [
+        2.3062,
+        -53.48504
+      ],
+      "near_hip": [
+        2.46344,
+        -49.91963
+      ],
+      "far_hip": [
+        2.14896,
+        -57.05045
+      ],
+      "body_lean": 0.48060367483526706,
+      "near_foot_angle": 1.1201857,
+      "near_wrist": [
+        0.5760808553318403,
+        0.22600681476653606
+      ],
+      "near_arm_hand_angle": -0.10138729999999996,
+      "far_foot_angle": 1.2279636,
+      "far_wrist": [
+        -0.7822504214226619,
+        0.5380847634514967
+      ],
+      "far_arm_hand_angle": 0.8293250000000001,
+      "near_leg_upper_angle": 2.3152463327742816,
+      "near_upper_angle": 1.1096122526902463,
+      "near_leg_lower_angle": 2.462853496073759,
+      "near_lower_angle": -0.7229615871253672,
+      "far_leg_upper_angle": 0.8706977949539845,
+      "far_upper_angle": 2.7598891209485514,
+      "far_leg_lower_angle": 2.748277128054245,
+      "far_lower_angle": 2.0795229597354226,
+      "cloth_root_angle": 0.6755074808631991
+    },
+    {
+      "phase": 0.04861111111111111,
+      "pelvis": [
+        2.263445,
+        -53.51159
+      ],
+      "near_hip": [
+        2.48548,
+        -49.92664
+      ],
+      "far_hip": [
+        2.04141,
+        -57.09654
+      ],
+      "body_lean": 0.4797420763475494,
+      "near_foot_angle": 1.2062669,
+      "near_wrist": [
+        0.5776725054337911,
+        0.22871459231750352
+      ],
+      "near_arm_hand_angle": -0.09713969999999994,
+      "far_foot_angle": 1.2123777,
+      "far_wrist": [
+        -0.7861530333268438,
+        0.536159323377393
+      ],
+      "far_arm_hand_angle": 0.8434142999999998,
+      "near_leg_upper_angle": 2.3306922040056146,
+      "near_upper_angle": 1.110975200083378,
+      "near_leg_lower_angle": 2.4806277934447225,
+      "near_lower_angle": -0.7150281355672435,
+      "far_leg_upper_angle": 0.8104353203703828,
+      "far_upper_angle": 2.7592904906111086,
+      "far_leg_lower_angle": 2.679654698874918,
+      "far_lower_angle": 2.093612873046464,
+      "cloth_root_angle": 0.6833796536301935
+    },
+    {
+      "phase": 0.05555555555555555,
+      "pelvis": [
+        2.218315,
+        -53.54031500000001
+      ],
+      "near_hip": [
+        2.5105,
+        -49.93469
+      ],
+      "far_hip": [
+        1.92613,
+        -57.14594
+      ],
+      "body_lean": 0.47876495044772527,
+      "near_foot_angle": 1.2917189,
+      "near_wrist": [
+        0.5791421315338948,
+        0.23144386228565134
+      ],
+      "near_arm_hand_angle": -0.09338619999999997,
+      "far_foot_angle": 1.203978,
+      "far_wrist": [
+        -0.7898480304301412,
+        0.5343370123668422
+      ],
+      "far_arm_hand_angle": 0.8569945999999999,
+      "near_leg_upper_angle": 2.345961727953015,
+      "near_upper_angle": 1.1125236215806533,
+      "near_leg_lower_angle": 2.499026482353276,
+      "near_lower_angle": -0.7071436368660089,
+      "far_leg_upper_angle": 0.7566649462178531,
+      "far_upper_angle": 2.7585727482465656,
+      "far_leg_lower_angle": 2.6162024496349616,
+      "far_lower_angle": 2.107192835916261,
+      "cloth_root_angle": 0.6921183736765375
+    },
+    {
+      "phase": 0.0625,
+      "pelvis": [
+        2.171945,
+        -53.570710000000005
+      ],
+      "near_hip": [
+        2.53841,
+        -49.94377
+      ],
+      "far_hip": [
+        1.80548,
+        -57.19765
+      ],
+      "body_lean": 0.4776764688629512,
+      "near_foot_angle": 1.3738728,
+      "near_wrist": [
+        0.5804915092348876,
+        0.23419215279621686
+      ],
+      "near_arm_hand_angle": -0.09009820000000002,
+      "far_foot_angle": 1.2028429999999999,
+      "far_wrist": [
+        -0.7933299633113586,
+        0.5326332854338004
+      ],
+      "far_arm_hand_angle": 0.8700444,
+      "near_leg_upper_angle": 2.360951115229451,
+      "near_upper_angle": 1.114251408868881,
+      "near_leg_lower_angle": 2.5180642895730245,
+      "near_lower_angle": -0.6993133275944104,
+      "far_leg_upper_angle": 0.7110338263738114,
+      "far_upper_angle": 2.757726976081771,
+      "far_leg_lower_angle": 2.559639764369261,
+      "far_lower_angle": 2.120242772708007,
+      "cloth_root_angle": 0.7016335887405223
+    },
+    {
+      "phase": 0.06944444444444445,
+      "pelvis": [
+        2.125445,
+        -53.602265
+      ],
+      "near_hip": [
+        2.5691,
+        -49.95387
+      ],
+      "far_hip": [
+        1.68179,
+        -57.25066
+      ],
+      "body_lean": 0.47648134493342986,
+      "near_foot_angle": 1.4500601,
+      "near_wrist": [
+        0.5817229574782085,
+        0.23695609820090383
+      ],
+      "near_arm_hand_angle": -0.08724690000000002,
+      "far_foot_angle": 1.2090508,
+      "far_wrist": [
+        -0.7965935201937605,
+        0.5310628394834854
+      ],
+      "far_arm_hand_angle": 0.8825420000000002,
+      "near_leg_upper_angle": 2.375556469114614,
+      "near_upper_angle": 1.1161527695556408,
+      "near_leg_lower_angle": 2.537754558968471,
+      "near_lower_angle": -0.6915410201066292,
+      "far_leg_upper_angle": 0.675187492599576,
+      "far_upper_angle": 2.7567452804860246,
+      "far_leg_lower_angle": 2.511685878586764,
+      "far_lower_angle": 2.1327399591142777,
+      "cloth_root_angle": 0.7118326028045918
+    },
+    {
+      "phase": 0.0763888888888889,
+      "pelvis": [
+        2.079945,
+        -53.634460000000004
+      ],
+      "near_hip": [
+        2.60245,
+        -49.96497
+      ],
+      "far_hip": [
+        1.55744,
+        -57.30395
+      ],
+      "body_lean": 0.47518389113760834,
+      "near_foot_angle": 1.5176119,
+      "near_wrist": [
+        0.5828391040319458,
+        0.23973493967799797
+      ],
+      "near_arm_hand_angle": -0.08480379999999998,
+      "far_foot_angle": 1.2226799,
+      "far_wrist": [
+        -0.7996340457398163,
+        0.5296395642877133
+      ],
+      "far_arm_hand_angle": 0.8944658999999999,
+      "near_leg_upper_angle": 2.3896733446934952,
+      "near_upper_angle": 1.118220856522266,
+      "near_leg_lower_angle": 2.5581121369333832,
+      "near_lower_angle": -0.6838294226620008,
+      "far_leg_upper_angle": 0.6507724012408472,
+      "far_upper_angle": 2.755621605216896,
+      "far_leg_lower_angle": 2.474060099732054,
+      "far_lower_angle": 2.144664519163866,
+      "cloth_root_angle": 0.7226243936729149
+    },
+    {
+      "phase": 0.08333333333333333,
+      "pelvis": [
+        2.036565,
+        -53.666805
+      ],
+      "near_hip": [
+        2.63837,
+        -49.97708
+      ],
+      "far_hip": [
+        1.43476,
+        -57.35653
+      ],
+      "body_lean": 0.4737888223149434,
+      "near_foot_angle": 1.5738595,
+      "near_wrist": [
+        0.5838416679709135,
+        0.24252415656762896
+      ],
+      "near_arm_hand_angle": -0.08274019999999993,
+      "far_foot_angle": 1.2438086,
+      "far_wrist": [
+        -0.8024462788117284,
+        0.5283781807541699
+      ],
+      "far_arm_hand_angle": 0.9057945000000001,
+      "near_leg_upper_angle": 2.4031977532967628,
+      "near_upper_angle": 1.1204499335623848,
+      "near_leg_lower_angle": 2.579150608238457,
+      "near_lower_angle": -0.6761847594335071,
+      "far_leg_upper_angle": 0.6394335086736767,
+      "far_upper_angle": 2.754347956666489,
+      "far_leg_lower_angle": 2.448482085241434,
+      "far_lower_angle": 2.155993092520386,
+      "cloth_root_angle": 0.7339165503961134
+    },
+    {
+      "phase": 0.09027777777777778,
+      "pelvis": [
+        1.9964300000000001,
+        -53.698775
+      ],
+      "near_hip": [
+        2.67674,
+        -49.99017
+      ],
+      "far_hip": [
+        1.31612,
+        -57.40738
+      ],
+      "body_lean": 0.4723008472148843,
+      "near_foot_angle": 1.6195154,
+      "near_wrist": [
+        0.5847337833497601,
+        0.24532157858284817
+      ],
+      "near_arm_hand_angle": -0.08102739999999997,
+      "far_foot_angle": 1.2693518,
+      "far_wrist": [
+        -0.8050249269182412,
+        0.5272935183602024
+      ],
+      "far_arm_hand_angle": 0.9165062999999998,
+      "near_leg_upper_angle": 2.4160258605789244,
+      "near_upper_angle": 1.122832093995665,
+      "near_leg_lower_angle": 2.6008844823254518,
+      "near_lower_angle": -0.6686105895336012,
+      "far_leg_upper_angle": 0.639652232733122,
+      "far_upper_angle": 2.752916741169419,
+      "far_leg_lower_angle": 2.433507177443349,
+      "far_lower_angle": 2.1667037631155672,
+      "cloth_root_angle": 0.7456174587904791
+    },
+    {
+      "phase": 0.09722222222222222,
+      "pelvis": [
+        1.960665,
+        -53.72986
+      ],
+      "near_hip": [
+        2.71746,
+        -50.00424
+      ],
+      "far_hip": [
+        1.20387,
+        -57.45548
+      ],
+      "body_lean": 0.4707240207336679,
+      "near_foot_angle": 1.6644913,
+      "near_wrist": [
+        0.5855179144886834,
+        0.24812434144667006
+      ],
+      "near_arm_hand_angle": -0.07963679999999995,
+      "far_foot_angle": 1.2879892,
+      "far_wrist": [
+        -0.8073659716509459,
+        0.5263993957720958
+      ],
+      "far_arm_hand_angle": 0.9265796,
+      "near_leg_upper_angle": 2.4280533890744227,
+      "near_upper_angle": 1.125361903299839,
+      "near_leg_lower_angle": 2.623327618969304,
+      "near_lower_angle": -0.6611096088627028,
+      "far_leg_upper_angle": 0.641673386484323,
+      "far_upper_angle": 2.7513195499218126,
+      "far_leg_lower_angle": 2.4194570039396153,
+      "far_lower_angle": 2.1767775812084698,
+      "cloth_root_angle": 0.7576354151914724
+    },
+    {
+      "phase": 0.10416666666666667,
+      "pelvis": [
+        1.9303949999999999,
+        -53.75956
+      ],
+      "near_hip": [
+        2.76043,
+        -50.01928
+      ],
+      "far_hip": [
+        1.10036,
+        -57.49984
+      ],
+      "body_lean": 0.46906305180955093,
+      "near_foot_angle": 1.709658,
+      "near_wrist": [
+        0.5861958721256056,
+        0.250929435001688
+      ],
+      "near_arm_hand_angle": -0.07853969999999999,
+      "far_foot_angle": 1.2972837,
+      "far_wrist": [
+        -0.8094636981500043,
+        0.5257099988076411
+      ],
+      "far_arm_hand_angle": 0.9359928,
+      "near_leg_upper_angle": 2.4391760897424306,
+      "near_upper_angle": 1.1280333610015087,
+      "near_leg_lower_angle": 2.6464948942525353,
+      "near_lower_angle": -0.6536872953385826,
+      "far_leg_upper_angle": 0.6446243566516041,
+      "far_upper_angle": 2.74955031581833,
+      "far_leg_lower_angle": 2.405534885502801,
+      "far_lower_angle": 2.1861904425211143,
+      "cloth_root_angle": 0.7698788243342931
+    },
+    {
+      "phase": 0.1111111111111111,
+      "pelvis": [
+        1.90674,
+        -53.787365
+      ],
+      "near_hip": [
+        2.80553,
+        -50.03528
+      ],
+      "far_hip": [
+        1.00795,
+        -57.53945
+      ],
+      "body_lean": 0.46732225413190165,
+      "near_foot_angle": 1.7550181,
+      "near_wrist": [
+        0.5867706799289227,
+        0.25373355823777993
+      ],
+      "near_arm_hand_angle": -0.07770749999999993,
+      "far_foot_angle": 1.2956262,
+      "far_wrist": [
+        -0.8113138937394723,
+        0.5252385164672546
+      ],
+      "far_arm_hand_angle": 0.9447245000000002,
+      "near_leg_upper_angle": 2.449290104165261,
+      "near_upper_angle": 1.1308388318281424,
+      "near_leg_lower_angle": 2.670399294588113,
+      "near_lower_angle": -0.6463480251234988,
+      "far_leg_upper_angle": 0.648459937752358,
+      "far_upper_angle": 2.747601136003363,
+      "far_leg_lower_angle": 2.3917728919905077,
+      "far_lower_angle": 2.1949223873457386,
+      "cloth_root_angle": 0.7822563635547026
+    },
+    {
+      "phase": 0.11805555555555555,
+      "pelvis": [
+        1.8908200000000002,
+        -53.81276
+      ],
+      "near_hip": [
+        2.85265,
+        -50.05223
+      ],
+      "far_hip": [
+        0.92899,
+        -57.57329
+      ],
+      "body_lean": 0.4655064742276019,
+      "near_foot_angle": 1.8005742,
+      "near_wrist": [
+        0.5872447735741299,
+        0.2565342780051731
+      ],
+      "near_arm_hand_angle": -0.0771115,
+      "far_foot_angle": 1.2816812,
+      "far_wrist": [
+        -0.8129108618692569,
+        0.5249992580158754
+      ],
+      "far_arm_hand_angle": 0.9527530000000002,
+      "near_leg_upper_angle": 2.458291296815436,
+      "near_upper_angle": 1.1337728681439208,
+      "near_leg_lower_angle": 2.6950555816666384,
+      "near_lower_angle": -0.6390944328486903,
+      "far_leg_upper_angle": 0.6531329334914169,
+      "far_upper_angle": 2.7454639795490965,
+      "far_leg_lower_angle": 2.3769807463224915,
+      "far_lower_angle": 2.202951116692123,
+      "cloth_root_angle": 0.7946756064783624
+    },
+    {
+      "phase": 0.125,
+      "pelvis": [
+        1.883765,
+        -53.835235
+      ],
+      "near_hip": [
+        2.9017,
+        -50.07011
+      ],
+      "far_hip": [
+        0.86583,
+        -57.60036
+      ],
+      "body_lean": 0.4636201540738731,
+      "near_foot_angle": 1.8463289,
+      "near_wrist": [
+        0.5876205009358847,
+        0.25932849914685463
+      ],
+      "near_arm_hand_angle": -0.07672319999999999,
+      "far_foot_angle": 1.2563109,
+      "far_wrist": [
+        -0.8142496430975454,
+        0.5250051865736449
+      ],
+      "far_arm_hand_angle": 0.9600566999999998,
+      "near_leg_upper_angle": 2.4660763862891937,
+      "near_upper_angle": 1.1368282737251354,
+      "near_leg_lower_angle": 2.720477531356826,
+      "near_lower_angle": -0.6319322212553424,
+      "far_leg_upper_angle": 0.6585957671907765,
+      "far_upper_angle": 2.7431311506456266,
+      "far_leg_lower_angle": 2.355314060653006,
+      "far_lower_angle": 2.210255712268648,
+      "cloth_root_angle": 0.8070446121155648
+    },
+    {
+      "phase": 0.13194444444444445,
+      "pelvis": [
+        1.886695,
+        -53.85428
+      ],
+      "near_hip": [
+        2.95256,
+        -50.08892
+      ],
+      "far_hip": [
+        0.82083,
+        -57.61964
+      ],
+      "body_lean": 0.46166746845721934,
+      "near_foot_angle": 1.8922849,
+      "near_wrist": [
+        0.5879008162517462,
+        0.2621129339283183
+      ],
+      "near_arm_hand_angle": -0.07651379999999997,
+      "far_foot_angle": 1.2207327,
+      "far_wrist": [
+        -0.8153242092381761,
+        0.5252691613794956
+      ],
+      "far_arm_hand_angle": 0.9666140999999998,
+      "near_leg_upper_angle": 2.4725402641129715,
+      "near_upper_angle": 1.1399993344044614,
+      "near_leg_lower_angle": 2.74667988627761,
+      "near_lower_angle": -0.6248636029180346,
+      "far_leg_upper_angle": 0.6647993787060658,
+      "far_upper_angle": 2.740596348667617,
+      "far_leg_lower_angle": 2.3267386795538485,
+      "far_lower_angle": 2.2168121044362326,
+      "cloth_root_angle": 0.8192726582297483
+    },
+    {
+      "phase": 0.1388888888888889,
+      "pelvis": [
+        1.900735,
+        -53.869389999999996
+      ],
+      "near_hip": [
+        3.00513,
+        -50.10864
+      ],
+      "far_hip": [
+        0.79634,
+        -57.63014
+      ],
+      "body_lean": 0.45965365730722824,
+      "near_foot_angle": 1.9384448,
+      "near_wrist": [
+        0.5880877517578136,
+        0.2648840964777445
+      ],
+      "near_arm_hand_angle": -0.07645459999999993,
+      "far_foot_angle": 1.1760647,
+      "far_wrist": [
+        -0.8161296984532043,
+        0.5258033141904059
+      ],
+      "far_arm_hand_angle": 0.9724035999999999,
+      "near_leg_upper_angle": 2.477579837781957,
+      "near_upper_angle": 1.1432793344126935,
+      "near_leg_lower_angle": 2.7736760148318935,
+      "near_lower_angle": -0.6178950071762752,
+      "far_leg_upper_angle": 0.6716944211679025,
+      "far_upper_angle": 2.7378510119066166,
+      "far_leg_lower_angle": 2.29211662308719,
+      "far_lower_angle": 2.2226022611975846,
+      "cloth_root_angle": 0.8312666076495527
+    },
+    {
+      "phase": 0.14583333333333334,
+      "pelvis": [
+        1.926205,
+        -53.878785
+      ],
+      "near_hip": [
+        3.0593,
+        -50.12928
+      ],
+      "far_hip": [
+        0.79311,
+        -57.62829
+      ],
+      "body_lean": 0.4575820887354392,
+      "near_foot_angle": 1.9848112,
+      "near_wrist": [
+        0.5881844282467598,
+        0.26764030909772357
+      ],
+      "near_arm_hand_angle": -0.0765171,
+      "far_foot_angle": 1.1234252,
+      "far_wrist": [
+        -0.8166591557405375,
+        0.526620275733425
+      ],
+      "far_arm_hand_angle": 0.9774035999999999,
+      "near_leg_upper_angle": 2.4810901014345834,
+      "near_upper_angle": 1.1466615961116895,
+      "near_leg_lower_angle": 2.801480842255232,
+      "near_lower_angle": -0.6110283239920451,
+      "far_leg_upper_angle": 0.6792291561375488,
+      "far_upper_angle": 2.7348880191250124,
+      "far_leg_lower_angle": 2.2523095147693053,
+      "far_lower_angle": 2.227601489748543,
+      "cloth_root_angle": 0.8429364721581978
+    },
+    {
+      "phase": 0.1527777777777778,
+      "pelvis": [
+        1.95721,
+        -53.872460000000004
+      ],
+      "near_hip": [
+        3.11496,
+        -50.15081
+      ],
+      "far_hip": [
+        0.79946,
+        -57.59411
+      ],
+      "body_lean": 0.45545866533610885,
+      "near_foot_angle": 2.0313868,
+      "near_wrist": [
+        0.5881927855335872,
+        0.27037709842143864
+      ],
+      "near_arm_hand_angle": -0.07667269999999993,
+      "far_foot_angle": 1.0639324,
+      "far_wrist": [
+        -0.8169067781435481,
+        0.5277312013304404
+      ],
+      "far_arm_hand_angle": 0.9815924999999999,
+      "near_leg_upper_angle": 2.4829675865669008,
+      "near_upper_angle": 1.150140464302114,
+      "near_leg_lower_angle": 2.8301077212891745,
+      "near_lower_angle": -0.6042697664235065,
+      "far_leg_upper_angle": 0.6873519954512911,
+      "far_upper_angle": 2.73169952059668,
+      "far_leg_lower_angle": 2.208178447094664,
+      "far_lower_angle": 2.231790577976021,
+      "cloth_root_angle": 0.8541892472974149
+    },
+    {
+      "phase": 0.1597222222222222,
+      "pelvis": [
+        1.99201,
+        -53.849895000000004
+      ],
+      "near_hip": [
+        3.17201,
+        -50.17322
+      ],
+      "far_hip": [
+        0.81201,
+        -57.52657
+      ],
+      "body_lean": 0.45328661406887766,
+      "near_foot_angle": 2.0781742999999997,
+      "near_wrist": [
+        0.5881153257471597,
+        0.27309245445419633
+      ],
+      "near_arm_hand_angle": -0.07689250000000004,
+      "far_foot_angle": 0.9987044,
+      "far_wrist": [
+        -0.8168652238749011,
+        0.5291473156014788
+      ],
+      "far_arm_hand_angle": 0.9849488,
+      "near_leg_upper_angle": 2.4831083677259267,
+      "near_upper_angle": 1.1537102345475725,
+      "near_leg_lower_angle": 2.8595715938295734,
+      "near_lower_angle": -0.5976221207248432,
+      "far_leg_upper_angle": 0.696009692973534,
+      "far_upper_angle": 2.728278798204244,
+      "far_leg_lower_angle": 2.1605854570503893,
+      "far_lower_angle": 2.235146394380924,
+      "cloth_root_angle": 0.8649333431254385
+    },
+    {
+      "phase": 0.16666666666666666,
+      "pelvis": [
+        2.030195,
+        -53.81298
+      ],
+      "near_hip": [
+        3.23034,
+        -50.19651
+      ],
+      "far_hip": [
+        0.83005,
+        -57.42945
+      ],
+      "body_lean": 0.4510711677617654,
+      "near_foot_angle": 2.1251761,
+      "near_wrist": [
+        0.5879560054889743,
+        0.2757829826787192
+      ],
+      "near_arm_hand_angle": -0.077148,
+      "far_foot_angle": 0.9288595,
+      "far_wrist": [
+        -0.8165275880572155,
+        0.5308789325316994
+      ],
+      "far_arm_hand_angle": 0.9874509,
+      "near_leg_upper_angle": 2.4814085781500075,
+      "near_upper_angle": 1.1573627176185146,
+      "near_leg_lower_angle": 2.8898856756097255,
+      "near_lower_angle": -0.591088393145968,
+      "far_leg_upper_angle": 0.7051488631678542,
+      "far_upper_angle": 2.724617684485857,
+      "far_leg_lower_angle": 2.1103915414396894,
+      "far_lower_angle": 2.237649164358033,
+      "cloth_root_angle": 0.8750773222350356
+    },
+    {
+      "phase": 0.1736111111111111,
+      "pelvis": [
+        2.071365,
+        -53.763580000000005
+      ],
+      "near_hip": [
+        3.28984,
+        -50.22066
+      ],
+      "far_hip": [
+        0.85289,
+        -57.3065
+      ],
+      "body_lean": 0.44881633883705324,
+      "near_foot_angle": 2.1724115,
+      "near_wrist": [
+        0.5877155668732851,
+        0.2784455882750624
+      ],
+      "near_arm_hand_angle": -0.0774106,
+      "far_foot_angle": 0.8555158999999999,
+      "far_wrist": [
+        -0.8158853129197821,
+        0.5329367290791136
+      ],
+      "far_arm_hand_angle": 0.9890771999999999,
+      "near_leg_upper_angle": 2.47778051847988,
+      "near_upper_angle": 1.161093965540107,
+      "near_leg_lower_angle": 2.9210810218541745,
+      "near_lower_angle": -0.584675174699334,
+      "far_leg_upper_angle": 0.7147144304163376,
+      "far_upper_angle": 2.7207081270670654,
+      "far_leg_lower_angle": 2.0584590922342354,
+      "far_lower_angle": 2.239275932207816,
+      "cloth_root_angle": 0.8845292926148653
+    },
+    {
+      "phase": 0.18055555555555555,
+      "pelvis": [
+        2.11512,
+        -53.703585
+      ],
+      "near_hip": [
+        3.35041,
+        -50.24567
+      ],
+      "far_hip": [
+        0.87983,
+        -57.1615
+      ],
+      "body_lean": 0.4465272241707798,
+      "near_foot_angle": 2.2201731000000002,
+      "near_wrist": [
+        0.5873980025602483,
+        0.28107734466523077
+      ],
+      "near_arm_hand_angle": -0.07765159999999993,
+      "far_foot_angle": 0.7797917,
+      "far_wrist": [
+        -0.8149300393821606,
+        0.5353291675946876
+      ],
+      "far_arm_hand_angle": 0.9898060999999998,
+      "near_leg_upper_angle": 2.4724097073383855,
+      "near_upper_angle": 1.164895667219212,
+      "near_leg_lower_angle": 2.953462078006891,
+      "near_lower_angle": -0.5783853050793965,
+      "far_leg_upper_angle": 0.7246519249678074,
+      "far_upper_angle": 2.7165442874291186,
+      "far_leg_lower_angle": 2.0056491793228464,
+      "far_lower_angle": 2.240004034446317,
+      "cloth_root_angle": 0.8931974270124488
+    },
+    {
+      "phase": 0.1875,
+      "pelvis": [
+        2.161055,
+        -53.63487
+      ],
+      "near_hip": [
+        3.41194,
+        -50.27153
+      ],
+      "far_hip": [
+        0.91017,
+        -56.99821
+      ],
+      "body_lean": 0.44420783585325296,
+      "near_foot_angle": 2.2687076,
+      "near_wrist": [
+        0.5870053639272008,
+        0.28367540030826555
+      ],
+      "near_arm_hand_angle": -0.07784239999999999,
+      "far_foot_angle": 0.7028051999999999,
+      "far_wrist": [
+        -0.8136528610143512,
+        0.5380649766016343
+      ],
+      "far_arm_hand_angle": 0.9896160999999999,
+      "near_leg_upper_angle": 2.465436585835269,
+      "near_upper_angle": 1.1687629321998017,
+      "near_leg_lower_angle": 2.987286456170359,
+      "near_lower_angle": -0.5722227751748703,
+      "far_leg_upper_angle": 0.7349054741402511,
+      "far_upper_angle": 2.7121175139811897,
+      "far_leg_lower_angle": 1.9528230071976425,
+      "far_lower_angle": 2.2398137560527642,
+      "cloth_root_angle": 0.900990891002523
+    },
+    {
+      "phase": 0.19444444444444445,
+      "pelvis": [
+        2.20876,
+        -53.559305
+      ],
+      "near_hip": [
+        3.47431,
+        -50.29822
+      ],
+      "far_hip": [
+        0.94321,
+        -56.82039
+      ],
+      "body_lean": 0.4418627167058282,
+      "near_foot_angle": 2.3181976000000004,
+      "near_wrist": [
+        0.5865401498142003,
+        0.28623690092809667
+      ],
+      "near_arm_hand_angle": -0.07795419999999997,
+      "far_foot_angle": 0.6256746,
+      "far_wrist": [
+        -0.8120434020352666,
+        0.5411525062432218
+      ],
+      "far_arm_hand_angle": 0.9884856,
+      "near_leg_upper_angle": 2.456936729348568,
+      "near_upper_angle": 1.1726897466667918,
+      "near_leg_lower_angle": 3.0227487683572924,
+      "near_lower_angle": -0.5661918222291433,
+      "far_leg_upper_angle": 0.7454194568188661,
+      "far_upper_angle": 2.7074202700129253,
+      "far_leg_lower_angle": 1.9008430957067513,
+      "far_lower_angle": 2.238683117296753,
+      "cloth_root_angle": 0.9078161243677614
+    },
+    {
+      "phase": 0.2013888888888889,
+      "pelvis": [
+        2.25784,
+        -53.47877
+      ],
+      "near_hip": [
+        3.53744,
+        -50.32573
+      ],
+      "far_hip": [
+        0.97824,
+        -56.63181
+      ],
+      "body_lean": 0.4394962771512092,
+      "near_foot_angle": 2.3688111000000003,
+      "near_wrist": [
+        0.5860054364511852,
+        0.28875820544854036
+      ],
+      "near_arm_hand_angle": -0.07795849999999993,
+      "far_foot_angle": 0.549518,
+      "far_wrist": [
+        -0.8100914263655831,
+        0.5445981106836449
+      ],
+      "far_arm_hand_angle": 0.9863929,
+      "near_leg_upper_angle": 2.446987166103731,
+      "near_upper_angle": 1.176669219109034,
+      "near_leg_lower_angle": 3.0600282806799117,
+      "near_lower_angle": -0.5602969539672903,
+      "far_leg_upper_angle": 0.7561381596204816,
+      "far_upper_angle": 2.7024453561592003,
+      "far_leg_lower_angle": 1.8505702732281355,
+      "far_lower_angle": 2.2365906020967974,
+      "cloth_root_angle": 0.9135836117685705
+    },
+    {
+      "phase": 0.20833333333333334,
+      "pelvis": [
+        2.30789,
+        -53.395145
+      ],
+      "near_hip": [
+        3.6012,
+        -50.35405
+      ],
+      "far_hip": [
+        1.01458,
+        -56.43624
+      ],
+      "body_lean": 0.4371138410215488,
+      "near_foot_angle": 2.4201468000000004,
+      "near_wrist": [
+        0.5854030167196621,
+        0.2912374432287567
+      ],
+      "near_arm_hand_angle": -0.07782650000000002,
+      "far_foot_angle": 0.47545370000000003,
+      "far_wrist": [
+        -0.8077853253964419,
+        0.548408099597871
+      ],
+      "far_arm_hand_angle": 0.9833166,
+      "near_leg_upper_angle": 2.435662414258773,
+      "near_upper_angle": 1.180696818687178,
+      "near_leg_lower_angle": 3.0987349748036803,
+      "near_lower_angle": -0.5545417804297545,
+      "far_leg_upper_angle": 0.767006433424884,
+      "far_upper_angle": 2.697185143865053,
+      "far_leg_lower_angle": 1.8028661600145948,
+      "far_lower_angle": 2.2335148528734936,
+      "cloth_root_angle": 0.9181993520878322
+    },
+    {
+      "phase": 0.2152777777777778,
+      "pelvis": [
+        2.358505,
+        -53.310320000000004
+      ],
+      "near_hip": [
+        3.6655,
+        -50.38319
+      ],
+      "far_hip": [
+        1.05151,
+        -56.23745
+      ],
+      "body_lean": 0.43471862133529604,
+      "near_foot_angle": 2.4717643000000002,
+      "near_wrist": [
+        0.5847367226583019,
+        0.29367128899496675
+      ],
+      "near_arm_hand_angle": -0.07752979999999998,
+      "far_foot_angle": 0.4046,
+      "far_wrist": [
+        -0.8051124878159766,
+        0.552587604748629
+      ],
+      "far_arm_hand_angle": 0.9792349999999999,
+      "near_leg_upper_angle": 2.4230392726309145,
+      "near_upper_angle": 1.18476436248673,
+      "near_leg_lower_angle": 3.1384403305445763,
+      "near_lower_angle": -0.5489301826249643,
+      "far_leg_upper_angle": 0.7779688236562987,
+      "far_upper_angle": 2.6916326365949876,
+      "far_leg_lower_angle": 1.758592503115237,
+      "far_lower_angle": 2.2294325277296867,
+      "cloth_root_angle": 0.921573063644884
+    },
+    {
+      "phase": 0.2222222222222222,
+      "pelvis": [
+        2.40928,
+        -53.226150000000004
+      ],
+      "near_hip": [
+        3.73021,
+        -50.41311
+      ],
+      "far_hip": [
+        1.08835,
+        -56.03919
+      ],
+      "body_lean": 0.43231553501657494,
+      "near_foot_angle": 2.5234094000000002,
+      "near_wrist": [
+        0.584007838343738,
+        0.29605685675167187
+      ],
+      "near_arm_hand_angle": -0.07703949999999993,
+      "far_foot_angle": 0.3380748,
+      "far_wrist": [
+        -0.8020599326744774,
+        0.5571411583543817
+      ],
+      "far_arm_hand_angle": 0.9741266000000002,
+      "near_leg_upper_angle": 2.4091925189499106,
+      "near_upper_angle": 1.1888679747230237,
+      "near_leg_lower_angle": -3.104283889724306,
+      "near_lower_angle": -0.5434674423022257,
+      "far_leg_upper_angle": 0.7889720310069518,
+      "far_upper_angle": 2.685778885374048,
+      "far_leg_lower_angle": 1.718611276327043,
+      "far_lower_angle": 2.2243254218783544,
+      "cloth_root_angle": 0.9236127191755208
+    },
+    {
+      "phase": 0.22916666666666666,
+      "pelvis": [
+        2.459815,
+        -53.144525
+      ],
+      "near_hip": [
+        3.79525,
+        -50.44382
+      ],
+      "far_hip": [
+        1.12438,
+        -55.84523
+      ],
+      "body_lean": 0.4299093659059997,
+      "near_foot_angle": 2.5748274999999996,
+      "near_wrist": [
+        0.5832199867926418,
+        0.29839153149998604
+      ],
+      "near_arm_hand_angle": -0.07632709999999998,
+      "far_foot_angle": 0.2769699,
+      "far_wrist": [
+        -0.7986132426732135,
+        0.5620710862483815
+      ],
+      "far_arm_hand_angle": 0.9679697999999999,
+      "near_leg_upper_angle": 2.394198935540598,
+      "near_upper_angle": 1.1930002382798934,
+      "near_leg_lower_angle": -3.0633101892542625,
+      "near_lower_angle": -0.5381565474083806,
+      "far_leg_upper_angle": 0.7999638903477846,
+      "far_upper_angle": 2.6796182944081326,
+      "far_leg_lower_angle": 1.6837561595015176,
+      "far_lower_angle": 2.218167917004731,
+      "cloth_root_angle": 0.9242293738428011
+    },
+    {
+      "phase": 0.2361111111111111,
+      "pelvis": [
+        2.50971,
+        -53.06732
+      ],
+      "near_hip": [
+        3.8605,
+        -50.47529
+      ],
+      "far_hip": [
+        1.15892,
+        -55.65935
+      ],
+      "body_lean": 0.42750437382055506,
+      "near_foot_angle": 2.6257640999999996,
+      "near_wrist": [
+        0.5823750862429516,
+        0.30067285410747846
+      ],
+      "near_arm_hand_angle": -0.07536389999999993,
+      "far_foot_angle": 0.21815420000000005,
+      "far_wrist": [
+        -0.7947573575440228,
+        0.5673795570192253
+      ],
+      "far_arm_hand_angle": 0.9607430000000001,
+      "near_leg_upper_angle": 2.378134390579532,
+      "near_upper_angle": 1.1971567827008154,
+      "near_leg_lower_angle": -3.022066566708156,
+      "near_lower_angle": -0.5330013295973052,
+      "far_leg_upper_angle": 0.8112349228182,
+      "far_upper_angle": 2.673142273151865,
+      "far_leg_lower_angle": 1.6506411427104386,
+      "far_lower_angle": 2.2109404419766934,
+      "cloth_root_angle": 0.9237717235913347
+    },
+    {
+      "phase": 0.24305555555555555,
+      "pelvis": [
+        2.558555,
+        -52.99642
+      ],
+      "near_hip": [
+        3.92585,
+        -50.50754
+      ],
+      "far_hip": [
+        1.19126,
+        -55.4853
+      ],
+      "body_lean": 0.4251049383226588,
+      "near_foot_angle": 2.6759648,
+      "near_wrist": [
+        0.5814759212191668,
+        0.30289808476315483
+      ],
+      "near_arm_hand_angle": -0.0741212,
+      "far_foot_angle": 0.1595606,
+      "far_wrist": [
+        -0.7904762360438999,
+        0.5730672064101073
+      ],
+      "far_arm_hand_angle": 0.9524245999999998,
+      "near_leg_upper_angle": 2.3610735146655912,
+      "near_upper_angle": 1.2013304949729164,
+      "near_leg_lower_angle": -2.9807965956027513,
+      "near_lower_angle": -0.5280070084597046,
+      "far_leg_upper_angle": 0.8230080075452517,
+      "far_upper_angle": 2.666342636338425,
+      "far_leg_lower_angle": 1.6169413605706067,
+      "far_lower_angle": 2.2026224873658875,
+      "cloth_root_angle": 0.9225610580154937
+    },
+    {
+      "phase": 0.25,
+      "pelvis": [
+        2.605945,
+        -52.933685
+      ],
+      "near_hip": [
+        3.99119,
+        -50.54053
+      ],
+      "far_hip": [
+        1.2207,
+        -55.32684
+      ],
+      "body_lean": 0.4227155550540599,
+      "near_foot_angle": 2.7251752,
+      "near_wrist": [
+        0.5805246108990179,
+        0.30506428306823674
+      ],
+      "near_arm_hand_angle": -0.07257040000000003,
+      "far_foot_angle": 0.10214720000000001,
+      "far_wrist": [
+        -0.7857527895070229,
+        0.579132492125017
+      ],
+      "far_arm_hand_angle": 0.9429931,
+      "near_leg_upper_angle": 2.343093100732208,
+      "near_upper_angle": 1.20551696840593,
+      "near_leg_lower_angle": -2.9397426186488906,
+      "near_lower_angle": -0.5231774805802198,
+      "far_leg_upper_angle": 0.8352714395930966,
+      "far_upper_angle": 2.6592133403087663,
+      "far_leg_lower_angle": 1.5833587835471468,
+      "far_lower_angle": 2.1931908865494263,
+      "cloth_root_angle": 0.9206372955877118
+    },
+    {
+      "phase": 0.2569444444444444,
+      "pelvis": [
+        2.651485,
+        -52.881015
+      ],
+      "near_hip": [
+        4.05643,
+        -50.57427
+      ],
+      "far_hip": [
+        1.24654,
+        -55.18776
+      ],
+      "body_lean": 0.4203407396166076,
+      "near_foot_angle": 2.7731408,
+      "near_wrist": [
+        0.5795239170548125,
+        0.3071691652022898
+      ],
+      "near_arm_hand_angle": -0.07068289999999999,
+      "far_foot_angle": 0.04687240000000001,
+      "far_wrist": [
+        -0.7805688023021254,
+        0.5855733919346995
+      ],
+      "far_arm_hand_angle": 0.9324269000000001,
+      "near_leg_upper_angle": 2.3242683554807724,
+      "near_upper_angle": 1.2097103352113143,
+      "near_leg_lower_angle": -2.8991478126888452,
+      "near_lower_angle": -0.5185161033814123,
+      "far_leg_upper_angle": 0.8480140512964167,
+      "far_upper_angle": 2.651745988402683,
+      "far_leg_lower_angle": 1.5505944941038166,
+      "far_lower_angle": 2.1826255029814647,
+      "cloth_root_angle": 0.9180399781807811
+    },
+    {
+      "phase": 0.2638888888888889,
+      "pelvis": [
+        2.6947650000000003,
+        -52.840275
+      ],
+      "near_hip": [
+        4.12145,
+        -50.60874
+      ],
+      "far_hip": [
+        1.26808,
+        -55.07181
+      ],
+      "body_lean": 0.41798458230268076,
+      "near_foot_angle": 2.8196070000000004,
+      "near_wrist": [
+        0.5784767397217667,
+        0.30921031071293364
+      ],
+      "near_arm_hand_angle": -0.06842999999999999,
+      "far_foot_angle": -0.005305599999999997,
+      "far_wrist": [
+        -0.7741223855055822,
+        0.5929195766354337
+      ],
+      "far_arm_hand_angle": 0.9178401,
+      "near_leg_upper_angle": 2.304675104363745,
+      "near_upper_angle": 1.2139036988197678,
+      "near_leg_lower_angle": -2.8592548894765417,
+      "near_lower_angle": -0.5140273403030713,
+      "far_leg_upper_angle": 0.8612238784816509,
+      "far_upper_angle": 2.6439333674195833,
+      "far_leg_lower_angle": 1.519350960973796,
+      "far_lower_angle": 2.1680377584793793,
+      "cloth_root_angle": 0.9148084916680603
+    },
+    {
+      "phase": 0.2708333333333333,
+      "pelvis": [
+        2.7353899999999998,
+        -52.813335
+      ],
+      "near_hip": [
+        4.18615,
+        -50.64392
+      ],
+      "far_hip": [
+        1.28463,
+        -54.98275
+      ],
+      "body_lean": 0.41565182942997164,
+      "near_foot_angle": 2.8643196,
+      "near_wrist": [
+        0.5773852621009627,
+        0.31118491368028456
+      ],
+      "near_arm_hand_angle": -0.06578309999999998,
+      "far_foot_angle": -0.0534285,
+      "far_wrist": [
+        -0.7655541299723084,
+        0.6016579484013724
+      ],
+      "far_arm_hand_angle": 0.8962687999999999,
+      "near_leg_upper_angle": 2.2843893506073427,
+      "near_upper_angle": 1.218091839145333,
+      "near_leg_lower_angle": -2.8203070956949676,
+      "near_lower_angle": -0.5097159726707278,
+      "far_leg_upper_angle": 0.8748894225646048,
+      "far_upper_angle": 2.6357685385961704,
+      "far_leg_lower_angle": 1.490329521989547,
+      "far_lower_angle": 2.146466713924493,
+      "cloth_root_angle": 0.9109838973781361
+    },
+    {
+      "phase": 0.2777777777777778,
+      "pelvis": [
+        2.772945,
+        -52.80209
+      ],
+      "near_hip": [
+        4.25042,
+        -50.67982
+      ],
+      "far_hip": [
+        1.29547,
+        -54.92436
+      ],
+      "body_lean": 0.41334674160665397,
+      "near_foot_angle": 2.9070239000000004,
+      "near_wrist": [
+        0.5762514219446881,
+        0.3130916097949426
+      ],
+      "near_arm_hand_angle": -0.06271340000000004,
+      "far_foot_angle": -0.0965381,
+      "far_wrist": [
+        -0.7548835087102514,
+        0.6115989439872705
+      ],
+      "far_arm_hand_angle": 0.8680923,
+      "near_leg_upper_angle": 2.2634862753514375,
+      "near_upper_angle": 1.222270863630527,
+      "near_leg_lower_angle": -2.7825475639758475,
+      "near_lower_angle": -0.5055843201335539,
+      "far_leg_upper_angle": 0.888998487319347,
+      "far_upper_angle": 2.627242737881187,
+      "far_leg_lower_angle": 1.464231586351038,
+      "far_lower_angle": 2.1182903642290265,
+      "cloth_root_angle": 0.906604494062961
+    },
+    {
+      "phase": 0.2847222222222222,
+      "pelvis": [
+        2.807035,
+        -52.80841
+      ],
+      "near_hip": [
+        4.31414,
+        -50.71643
+      ],
+      "far_hip": [
+        1.29993,
+        -54.90039
+      ],
+      "body_lean": 0.4110740210097807,
+      "near_foot_angle": 2.9474656,
+      "near_wrist": [
+        0.5750781479021535,
+        0.3149267035215633
+      ],
+      "near_arm_hand_angle": -0.05919249999999998,
+      "far_foot_angle": -0.1336761,
+      "far_wrist": [
+        -0.7421217858640186,
+        0.622520618928257
+      ],
+      "far_arm_hand_angle": 0.8336927999999999,
+      "near_leg_upper_angle": 2.2420407947114915,
+      "near_upper_angle": 1.2264338041459868,
+      "near_leg_lower_angle": -2.7462189307365947,
+      "near_lower_angle": -0.5016382999624154,
+      "far_leg_upper_angle": 0.9035405931224041,
+      "far_upper_angle": 2.6183489965842233,
+      "far_leg_lower_angle": 1.4417586464640806,
+      "far_lower_angle": 2.083891159068311,
+      "cloth_root_angle": 0.9017102867790334
+    },
+    {
+      "phase": 0.2916666666666667,
+      "pelvis": [
+        2.838615,
+        -52.826859999999996
+      ],
+      "near_hip": [
+        4.37723,
+        -50.75372
+      ],
+      "far_hip": [
+        1.3,
+        -54.9
+      ],
+      "body_lean": 0.40883752882125846,
+      "near_foot_angle": 2.9853902000000003,
+      "near_wrist": [
+        0.5738680104816226,
+        0.3166885556277461
+      ],
+      "near_arm_hand_angle": -0.05544199999999999,
+      "far_foot_angle": -0.16388429999999998,
+      "far_wrist": [
+        -0.7272780291773866,
+        0.634175938325759
+      ],
+      "far_arm_hand_angle": 0.7934522000000002,
+      "near_leg_upper_angle": 2.220130388234433,
+      "near_upper_angle": 1.230575066620283,
+      "near_leg_lower_angle": -2.7115644855592462,
+      "near_lower_angle": -0.497880974458127,
+      "far_leg_upper_angle": 0.918503186091517,
+      "far_upper_angle": 2.6090803091647223,
+      "far_leg_lower_angle": 1.4236130225569794,
+      "far_lower_angle": 2.0436505626823416,
+      "cloth_root_angle": 0.8963416362315049
+    },
+    {
+      "phase": 0.2986111111111111,
+      "pelvis": [
+        2.86978,
+        -52.845845
+      ],
+      "near_hip": [
+        4.43956,
+        -50.79169
+      ],
+      "far_hip": [
+        1.3,
+        -54.9
+      ],
+      "body_lean": 0.40664237928265207,
+      "near_foot_angle": 3.0205431999999997,
+      "near_wrist": [
+        0.5726225156922473,
+        0.3183748310408345
+      ],
+      "near_arm_hand_angle": -0.05187659999999993,
+      "far_foot_angle": -0.1862045,
+      "far_wrist": [
+        -0.7103681837434843,
+        0.6462971069731205
+      ],
+      "far_arm_hand_angle": 0.7477525999999999,
+      "near_leg_upper_angle": 2.197828380311305,
+      "near_upper_angle": 1.2346899528872795,
+      "near_leg_lower_angle": -2.678826656145433,
+      "near_lower_angle": -0.4943179785773038,
+      "far_leg_upper_angle": 0.9338750516719799,
+      "far_upper_angle": 2.599429078845428,
+      "far_leg_lower_angle": 1.4104956482943485,
+      "far_lower_angle": 1.9979502601535275,
+      "cloth_root_angle": 0.890536904815745
+    },
+    {
+      "phase": 0.3055555555555556,
+      "pelvis": [
+        2.9005199999999998,
+        -52.865165
+      ],
+      "near_hip": [
+        4.50104,
+        -50.83033
+      ],
+      "far_hip": [
+        1.3,
+        -54.9
+      ],
+      "body_lean": 0.4044922342723914,
+      "near_foot_angle": 3.0526701999999997,
+      "near_wrist": [
+        0.5713444879229972,
+        0.3199838342280602
+      ],
+      "near_arm_hand_angle": -0.04850730000000003,
+      "far_foot_angle": -0.19967819999999997,
+      "far_wrist": [
+        -0.6914227006037512,
+        0.65860120412177
+      ],
+      "far_arm_hand_angle": 0.696976,
+      "near_leg_upper_angle": 2.1752123145044915,
+      "near_upper_angle": 1.2387728958329,
+      "near_leg_lower_angle": -2.648248924507522,
+      "near_lower_angle": -0.4909516994956068,
+      "far_leg_upper_angle": 0.9496445201894768,
+      "far_upper_angle": 2.589387340471803,
+      "far_leg_lower_angle": 1.4031083931909016,
+      "far_lower_angle": 1.9471739661412233,
+      "cloth_root_angle": 0.884336383735719
+    },
+    {
+      "phase": 0.3125,
+      "pelvis": [
+        2.930775,
+        -52.884815
+      ],
+      "near_hip": [
+        4.56155,
+        -50.86963
+      ],
+      "far_hip": [
+        1.3,
+        -54.9
+      ],
+      "body_lean": 0.40239199893446637,
+      "near_foot_angle": 3.0815168,
+      "near_wrist": [
+        0.5700364105493915,
+        0.3215131545201681
+      ],
+      "near_arm_hand_angle": -0.045338199999999995,
+      "far_foot_angle": -0.20334739999999998,
+      "far_wrist": [
+        -0.670492437313132,
+        0.6707961793487334
+      ],
+      "far_arm_hand_angle": 0.6415043000000001,
+      "near_leg_upper_angle": 2.1523559467607765,
+      "near_upper_angle": 1.2428182686910745,
+      "near_leg_lower_angle": -2.6200743744292714,
+      "near_lower_angle": -0.48778633136424354,
+      "far_leg_upper_angle": 0.9657995818479846,
+      "far_upper_angle": 2.578946890201635,
+      "far_leg_lower_angle": 1.402153254997541,
+      "far_lower_angle": 1.8917024721835434,
+      "cloth_root_angle": 0.8777809313050078
+    },
+    {
+      "phase": 0.3194444444444444,
+      "pelvis": [
+        2.96049,
+        -52.904795
+      ],
+      "near_hip": [
+        4.62098,
+        -50.90959
+      ],
+      "far_hip": [
+        1.3,
+        -54.9
+      ],
+      "body_lean": 0.400345832547709,
+      "near_foot_angle": 3.104782807179587,
+      "near_wrist": [
+        0.5687001418988537,
+        0.32296056611814317
+      ],
+      "near_arm_hand_angle": -0.04237329999999995,
+      "far_foot_angle": -0.1979262,
+      "far_wrist": [
+        -0.6476559883550865,
+        0.6825859529661146
+      ],
+      "far_arm_hand_angle": 0.5817195,
+      "near_leg_upper_angle": 2.127423169200354,
+      "near_upper_angle": 1.2468207918967136,
+      "near_leg_lower_angle": -2.5964574966115803,
+      "near_lower_angle": -0.4848271667064065,
+      "far_leg_upper_angle": 0.9823291233918292,
+      "far_upper_angle": 2.5681012838871258,
+      "far_leg_lower_angle": 1.4066484209650105,
+      "far_lower_angle": 1.831917977668535,
+      "cloth_root_angle": 0.8709084074499884
+    },
+    {
+      "phase": 0.3263888888888889,
+      "pelvis": [
+        2.98962,
+        -52.92509
+      ],
+      "near_hip": [
+        4.67924,
+        -50.95018
+      ],
+      "far_hip": [
+        1.3,
+        -54.9
+      ],
+      "body_lean": 0.39835824488920596,
+      "near_foot_angle": 3.117385407179587,
+      "near_wrist": [
+        0.5673378209750244,
+        0.3243245437398503
+      ],
+      "near_arm_hand_angle": -0.039616899999999955,
+      "far_foot_angle": -0.18765169999999998,
+      "far_wrist": [
+        -0.6230221725865538,
+        0.6936791428609452
+      ],
+      "far_arm_hand_angle": 0.5180038,
+      "near_leg_upper_angle": 2.0959660708661225,
+      "near_upper_angle": 1.2507759213847973,
+      "near_leg_lower_angle": -2.582165116142237,
+      "near_lower_angle": -0.48207701011434495,
+      "far_leg_upper_angle": 0.9992217569066733,
+      "far_upper_angle": 2.5568440222915223,
+      "far_leg_lower_angle": 1.4127015910130596,
+      "far_lower_angle": 1.7682017508627212,
+      "cloth_root_angle": 0.8637593189524582
+    },
+    {
+      "phase": 0.3333333333333333,
+      "pelvis": [
+        3.018105,
+        -52.9457
+      ],
+      "near_hip": [
+        4.73621,
+        -50.9914
+      ],
+      "far_hip": [
+        1.3,
+        -54.9
+      ],
+      "body_lean": 0.3964333848534566,
+      "near_foot_angle": 3.119400007179587,
+      "near_wrist": [
+        0.5659520012718757,
+        0.32560247565928024
+      ],
+      "near_arm_hand_angle": -0.037072899999999964,
+      "far_foot_angle": -0.17373309999999997,
+      "far_wrist": [
+        -0.5967331868410037,
+        0.7037977861148147
+      ],
+      "far_arm_hand_angle": 0.45073910000000006,
+      "near_leg_upper_angle": 2.058349418063794,
+      "near_upper_angle": 1.254677459746541,
+      "near_leg_lower_angle": -2.5771506780778455,
+      "near_lower_angle": -0.4795408047387808,
+      "far_leg_upper_angle": 1.0164654683347507,
+      "far_upper_angle": 2.5451649143525903,
+      "far_leg_lower_angle": 1.4200709640321194,
+      "far_lower_angle": 1.7009373815788182,
+      "cloth_root_angle": 0.8563730062910402
+    },
+    {
+      "phase": 0.3402777777777778,
+      "pelvis": [
+        3.045895,
+        -52.96662
+      ],
+      "near_hip": [
+        4.79179,
+        -51.03324
+      ],
+      "far_hip": [
+        1.3,
+        -54.9
+      ],
+      "body_lean": 0.3945759860107712,
+      "near_foot_angle": 3.1111532071795867,
+      "near_wrist": [
+        0.5645437145101755,
+        0.32679329810864793
+      ],
+      "near_arm_hand_angle": -0.034745599999999925,
+      "far_foot_angle": -0.15720060000000002,
+      "far_wrist": [
+        -0.5689662331384053,
+        0.7126813286123481
+      ],
+      "far_arm_hand_angle": 0.3803072999999999,
+      "near_leg_upper_angle": 2.015173110834322,
+      "near_upper_angle": 1.258521962812732,
+      "near_leg_lower_angle": -2.5811322841302937,
+      "near_lower_angle": -0.47722245670208785,
+      "far_leg_upper_angle": 1.034048858409276,
+      "far_upper_angle": 2.5330587887909988,
+      "far_leg_lower_angle": 1.428707444623466,
+      "far_lower_angle": 1.6305062910149324,
+      "cloth_root_angle": 0.8487908575117897
+    },
+    {
+      "phase": 0.3472222222222222,
+      "pelvis": [
+        3.06942,
+        -52.98629
+      ],
+      "near_hip": [
+        4.84588,
+        -51.07568
+      ],
+      "far_hip": [
+        1.29296,
+        -54.8969
+      ],
+      "body_lean": 0.39279000487171956,
+      "near_foot_angle": 3.0929721,
+      "near_wrist": [
+        0.5631164136373568,
+        0.32789448660859966
+      ],
+      "near_arm_hand_angle": -0.032638999999999974,
+      "far_foot_angle": -0.1390848,
+      "far_wrist": [
+        -0.5399303480410911,
+        0.7200985399564961
+      ],
+      "far_arm_hand_angle": 0.3070906,
+      "near_leg_upper_angle": 1.9670378527132533,
+      "near_upper_angle": 1.262301712569243,
+      "near_leg_lower_angle": -2.593828854431587,
+      "near_lower_angle": -0.47512622113490094,
+      "far_leg_upper_angle": 1.0519599444323737,
+      "far_upper_angle": 2.520516921659118,
+      "far_leg_lower_angle": 1.4385631259292784,
+      "far_lower_angle": 1.5572892692295692,
+      "cloth_root_angle": 0.8410506965995852
+    },
+    {
+      "phase": 0.3541666666666667,
+      "pelvis": [
+        3.076095,
+        -52.99921
+      ],
+      "near_hip": [
+        4.89835,
+        -51.11873
+      ],
+      "far_hip": [
+        1.25384,
+        -54.87969
+      ],
+      "body_lean": 0.3910798510285783,
+      "near_foot_angle": 3.0651833999999996,
+      "near_wrist": [
+        0.5616710851671408,
+        0.3289052055197071
+      ],
+      "near_arm_hand_angle": -0.03075719999999993,
+      "far_foot_angle": -0.1204162,
+      "far_wrist": [
+        -0.5098660607958634,
+        0.7258521235357319
+      ],
+      "far_arm_hand_angle": 0.23147080000000006,
+      "near_leg_upper_angle": 1.9145423184641728,
+      "near_upper_angle": 1.2660127783720452,
+      "near_leg_lower_angle": -2.614958095431809,
+      "near_lower_angle": -0.4732563995496596,
+      "far_leg_upper_angle": 1.0701876699670225,
+      "far_upper_angle": 2.507532315479621,
+      "far_leg_lower_angle": 1.4495881758906746,
+      "far_lower_angle": 1.4816690317313737,
+      "cloth_root_angle": 0.8331923537768513
+    },
+    {
+      "phase": 0.3611111111111111,
+      "pelvis": [
+        3.06588,
+        -53.005365
+      ],
+      "near_hip": [
+        4.94911,
+        -51.16236
+      ],
+      "far_hip": [
+        1.18265,
+        -54.84837
+      ],
+      "body_lean": 0.38945013851095345,
+      "near_foot_angle": 3.0281139,
+      "near_wrist": [
+        0.5602100496047769,
+        0.3298231787182022
+      ],
+      "near_arm_hand_angle": -0.029104299999999975,
+      "far_foot_angle": -0.10222509999999999,
+      "far_wrist": [
+        -0.4790383385000894,
+        0.7297869058794454
+      ],
+      "far_arm_hand_angle": 0.15383020000000003,
+      "near_leg_upper_angle": 1.858287190919671,
+      "near_upper_angle": 1.2696507830257624,
+      "near_leg_lower_angle": -2.6442390639774422,
+      "near_lower_angle": -0.47161579613682103,
+      "far_leg_upper_angle": 1.0887208086323186,
+      "far_upper_angle": 2.494097770627662,
+      "far_leg_lower_angle": 1.461734653055055,
+      "far_lower_angle": 1.404028043515347,
+      "cloth_root_angle": 0.8252564231569477
+    },
+    {
+      "phase": 0.3680555555555556,
+      "pelvis": [
+        3.0399700000000003,
+        -53.0053
+      ],
+      "near_hip": [
+        4.99805,
+        -51.20657
+      ],
+      "far_hip": [
+        1.08189,
+        -54.80403
+      ],
+      "body_lean": 0.3879051576510465,
+      "near_foot_angle": 2.9820906000000003,
+      "near_wrist": [
+        0.5587351857411056,
+        0.330647260159584
+      ],
+      "near_arm_hand_angle": -0.0276845,
+      "far_foot_angle": -0.0855422,
+      "far_wrist": [
+        -0.4477309030251003,
+        0.7317954753123667
+      ],
+      "far_arm_hand_angle": 0.07455049999999996,
+      "near_leg_upper_angle": 1.798871800498146,
+      "near_upper_angle": 1.2732094807645882,
+      "near_leg_lower_angle": -2.6813901511058775,
+      "near_lower_angle": -0.47020943242037566,
+      "far_leg_upper_angle": 1.10754669474141,
+      "far_upper_angle": 2.4802044855133807,
+      "far_leg_lower_angle": 1.4749539658900304,
+      "far_lower_angle": 1.3247487577021646,
+      "cloth_root_angle": 0.8172816367006264
+    },
+    {
+      "phase": 0.375,
+      "pelvis": [
+        2.9995700000000003,
+        -52.999570000000006
+      ],
+      "near_hip": [
+        5.04506,
+        -51.25135
+      ],
+      "far_hip": [
+        0.95408,
+        -54.74779
+      ],
+      "body_lean": 0.38644924667160657,
+      "near_foot_angle": 2.9283551,
+      "near_wrist": [
+        0.5572479324778727,
+        0.3313755482984442
+      ],
+      "near_arm_hand_angle": -0.02650180000000002,
+      "far_foot_angle": -0.0726352,
+      "far_wrist": [
+        -0.4162388982261585,
+        0.731820204213024
+      ],
+      "far_arm_hand_angle": -0.005986100000000105,
+      "near_leg_upper_angle": 1.7368965152247964,
+      "near_upper_angle": 1.2766842311618958,
+      "near_leg_lower_angle": -2.725214245651785,
+      "near_lower_angle": -0.4690423113205037,
+      "far_leg_upper_angle": 1.1260594975960696,
+      "far_upper_angle": 2.465846257007719,
+      "far_leg_lower_angle": 1.4886015442274085,
+      "far_lower_angle": 1.2442118698224287,
+      "cloth_root_angle": 0.8093084642313944
+    },
+    {
+      "phase": 0.3819444444444444,
+      "pelvis": [
+        2.94588,
+        -52.988715
+      ],
+      "near_hip": [
+        5.09004,
+        -51.29668
+      ],
+      "far_hip": [
+        0.80172,
+        -54.68075
+      ],
+      "body_lean": 0.3850871311239857,
+      "near_foot_angle": 2.8723951000000003,
+      "near_wrist": [
+        0.5557511176180929,
+        0.33200698100014187
+      ],
+      "near_arm_hand_angle": -0.025560399999999928,
+      "far_foot_angle": -0.06946230000000002,
+      "far_wrist": [
+        -0.3848595254722808,
+        0.72985827808549
+      ],
+      "far_arm_hand_angle": -0.08739769999999991,
+      "near_leg_upper_angle": 1.6729610410544953,
+      "near_upper_angle": 1.2800691491236493,
+      "near_leg_lower_angle": -2.7702691432893074,
+      "near_lower_angle": -0.4681162103832465,
+      "far_leg_upper_angle": 1.1413733619157698,
+      "far_upper_angle": 2.4510150822352683,
+      "far_leg_lower_angle": 1.4997558406818168,
+      "far_lower_angle": 1.1628003063799999,
+      "cloth_root_angle": 0.8013759813300174
+    },
+    {
+      "phase": 0.3888888888888889,
+      "pelvis": [
+        2.880105,
+        -52.973295
+      ],
+      "near_hip": [
+        5.13288,
+        -51.34257
+      ],
+      "far_hip": [
+        0.62733,
+        -54.60402
+      ],
+      "body_lean": 0.38382227410230263,
+      "near_foot_angle": 2.8152859,
+      "near_wrist": [
+        0.5542449190615949,
+        0.33253983393880693
+      ],
+      "near_arm_hand_angle": -0.02486440000000001,
+      "far_foot_angle": -0.0729088,
+      "far_wrist": [
+        -0.3538830018942769,
+        0.7259605890425829
+      ],
+      "far_arm_hand_angle": -0.16930219999999996,
+      "near_leg_upper_angle": 1.607665657675761,
+      "near_upper_angle": 1.2833608963500895,
+      "near_leg_lower_angle": -2.815524905090762,
+      "near_lower_angle": -0.46743756952502463,
+      "far_leg_upper_angle": 1.1542089849725208,
+      "far_upper_angle": 2.435703201293161,
+      "far_leg_lower_angle": 1.5090997311301886,
+      "far_lower_angle": 1.080895347270345,
+      "cloth_root_angle": 0.7935249930947341
+    },
+    {
+      "phase": 0.3958333333333333,
+      "pelvis": [
+        2.803445,
+        -52.95384
+      ],
+      "near_hip": [
+        5.17347,
+        -51.38898
+      ],
+      "far_hip": [
+        0.43342,
+        -54.5187
+      ],
+      "body_lean": 0.3826597290675285,
+      "near_foot_angle": 2.7572839,
+      "near_wrist": [
+        0.5527323807284295,
+        0.3329729693511202
+      ],
+      "near_arm_hand_angle": -0.024417899999999992,
+      "far_foot_angle": -0.0785411,
+      "far_wrist": [
+        -0.32358419139502054,
+        0.7202305122677709
+      ],
+      "far_arm_hand_angle": -0.25131760000000003,
+      "near_leg_upper_angle": 1.541609411899425,
+      "near_upper_angle": 1.2865522013669302,
+      "near_leg_lower_angle": -2.860770856006802,
+      "near_lower_angle": -0.4670092616781616,
+      "far_leg_upper_angle": 1.1658694188072822,
+      "far_upper_angle": 2.4199038386393554,
+      "far_leg_lower_angle": 1.5178992193731977,
+      "far_lower_angle": 0.9988801470920277,
+      "cloth_root_angle": 0.7857937392970458
+    },
+    {
+      "phase": 0.4027777777777778,
+      "pelvis": [
+        2.717105,
+        -52.930915
+      ],
+      "near_hip": [
+        5.21171,
+        -51.43593
+      ],
+      "far_hip": [
+        0.2225,
+        -54.4259
+      ],
+      "body_lean": 0.3816033463122966,
+      "near_foot_angle": 2.6986454,
+      "near_wrist": [
+        0.5512143773332364,
+        0.333304953345324
+      ],
+      "near_arm_hand_angle": -0.024224899999999994,
+      "far_foot_angle": -0.08247749999999998,
+      "far_wrist": [
+        -0.29421037978567194,
+        0.7128216013749807
+      ],
+      "far_arm_hand_angle": -0.3330619,
+      "near_leg_upper_angle": 1.4753933150066372,
+      "near_upper_angle": 1.2896392570838822,
+      "near_leg_lower_angle": -2.90579496680746,
+      "near_lower_angle": -0.4668359303983289,
+      "far_leg_upper_angle": 1.1776577274774889,
+      "far_upper_angle": 2.403608531669252,
+      "far_leg_lower_angle": 1.5274205510019987,
+      "far_lower_angle": 0.9171366604401845,
+      "cloth_root_angle": 0.7782226412167814
+    },
+    {
+      "phase": 0.4097222222222222,
+      "pelvis": [
+        2.622285,
+        -52.905055000000004
+      ],
+      "near_hip": [
+        5.24748,
+        -51.48339
+      ],
+      "far_hip": [
+        -0.00291,
+        -54.32672
+      ],
+      "body_lean": 0.38065780026602,
+      "near_foot_angle": 2.6396268999999997,
+      "near_wrist": [
+        0.5496921529207063,
+        0.3335352991519006
+      ],
+      "near_arm_hand_angle": -0.024289600000000022,
+      "far_foot_angle": -0.08606939999999999,
+      "far_wrist": [
+        -0.26597718917142543,
+        0.7039300432963933
+      ],
+      "far_arm_hand_angle": -0.4141532,
+      "near_leg_upper_angle": 1.4096162515202506,
+      "near_upper_angle": 1.2926173420276386,
+      "near_leg_lower_angle": -2.9503873220646524,
+      "near_lower_angle": -0.4669211629692844,
+      "far_leg_upper_angle": 1.1908772413682063,
+      "far_upper_angle": 2.3868107018092717,
+      "far_leg_lower_angle": 1.5389293420925123,
+      "far_lower_angle": 0.8360452044983763,
+      "cloth_root_angle": 0.7708517327832931
+    },
+    {
+      "phase": 0.4166666666666667,
+      "pelvis": [
+        2.52019,
+        -52.87681
+      ],
+      "near_hip": [
+        5.28069,
+        -51.53136
+      ],
+      "far_hip": [
+        -0.24031,
+        -54.22226
+      ],
+      "body_lean": 0.37982760597027626,
+      "near_foot_angle": 2.5804847000000004,
+      "near_wrist": [
+        0.5481679195440231,
+        0.33366197579188867
+      ],
+      "near_arm_hand_angle": -0.024616199999999977,
+      "far_foot_angle": -0.088087,
+      "far_wrist": [
+        -0.23905900301450286,
+        0.6937907218973449
+      ],
+      "far_arm_hand_angle": -0.4942093,
+      "near_leg_upper_angle": 1.3448797007414448,
+      "near_upper_angle": 1.2954798891943722,
+      "near_leg_lower_angle": -2.994335546091469,
+      "near_lower_angle": -0.4672699706041874,
+      "far_leg_upper_angle": 1.2068303240915226,
+      "far_upper_angle": 2.3695023149484227,
+      "far_leg_lower_angle": 1.5536917011857971,
+      "far_lower_angle": 0.7559879974350496,
+      "cloth_root_angle": 0.7637194298107199
+    },
+    {
+      "phase": 0.4236111111111111,
+      "pelvis": [
+        2.4120199999999996,
+        -52.846729999999994
+      ],
+      "near_hip": [
+        5.31122,
+        -51.57982
+      ],
+      "far_hip": [
+        -0.48718,
+        -54.11364
+      ],
+      "body_lean": 0.37911722580469626,
+      "near_foot_angle": 2.5214752000000002,
+      "near_wrist": [
+        0.5466431443339521,
+        0.3336845887727001
+      ],
+      "near_arm_hand_angle": -0.025208699999999973,
+      "far_foot_angle": -0.0861847,
+      "far_wrist": [
+        -0.2135857160867992,
+        0.682668377363443
+      ],
+      "far_arm_hand_angle": -0.5728483,
+      "near_leg_upper_angle": 1.2817824261724216,
+      "near_upper_angle": 1.2982217460719583,
+      "near_leg_lower_angle": -3.0374288077353775,
+      "near_lower_angle": -0.46788558041782663,
+      "far_leg_upper_angle": 1.2268208129629337,
+      "far_upper_angle": 2.351676433949332,
+      "far_leg_lower_angle": 1.572973329017618,
+      "far_lower_angle": 0.677349745194068,
+      "cloth_root_angle": 0.7568663452436266
+    },
+    {
+      "phase": 0.4305555555555556,
+      "pelvis": [
+        2.29897,
+        -52.81536
+      ],
+      "near_hip": [
+        5.33896,
+        -51.62877
+      ],
+      "far_hip": [
+        -0.74102,
+        -54.00195
+      ],
+      "body_lean": 0.37853035788007683,
+      "near_foot_angle": 2.4628549,
+      "near_wrist": [
+        0.5451184617128813,
+        0.3336021148434328
+      ],
+      "near_arm_hand_angle": -0.02607119999999996,
+      "far_foot_angle": -0.07804459999999999,
+      "far_wrist": [
+        -0.18963620738676412,
+        0.6708484023572059
+      ],
+      "far_arm_hand_angle": -0.6496882999999999,
+      "near_leg_upper_angle": 1.2209252250770126,
+      "near_upper_angle": 1.3008391808109048,
+      "near_leg_lower_angle": -3.0794561918952965,
+      "near_lower_angle": -0.468772289055882,
+      "far_leg_upper_angle": 1.2521232844770478,
+      "far_upper_angle": 2.333324395333067,
+      "far_leg_lower_angle": 1.5980127083610698,
+      "far_lower_angle": 0.6005093610482685,
+      "cloth_root_angle": 0.7503327949112655
+    },
+    {
+      "phase": 0.4375,
+      "pelvis": [
+        2.18226,
+        -52.783249999999995
+      ],
+      "near_hip": [
+        5.36382,
+        -51.67819
+      ],
+      "far_hip": [
+        -0.9993,
+        -53.88831
+      ],
+      "body_lean": 0.37807186120495245,
+      "near_foot_angle": 2.4048800999999997,
+      "near_wrist": [
+        0.5435959535408855,
+        0.33341356168389263
+      ],
+      "near_arm_hand_angle": -0.027207800000000004,
+      "far_foot_angle": -0.06231259999999999,
+      "far_wrist": [
+        -0.16723916107838033,
+        0.6586286773850853
+      ],
+      "far_arm_hand_angle": -0.7243471,
+      "near_leg_upper_angle": 1.1629081016614773,
+      "near_upper_angle": 1.3033258286564111,
+      "near_leg_lower_angle": -3.120206574915177,
+      "near_lower_angle": -0.46993367658066443,
+      "far_leg_upper_angle": 1.2830499831158202,
+      "far_upper_angle": 2.314439578015813,
+      "far_leg_lower_angle": 1.629084041567904,
+      "far_lower_angle": 0.5258508047223546,
+      "cloth_root_angle": 0.7441579133705236
+    },
+    {
+      "phase": 0.4444444444444444,
+      "pelvis": [
+        2.063085,
+        -52.75094
+      ],
+      "near_hip": [
+        5.38569,
+        -51.72807
+      ],
+      "far_hip": [
+        -1.25952,
+        -53.77381
+      ],
+      "body_lean": 0.37774643515377754,
+      "near_foot_angle": 2.3478072,
+      "near_wrist": [
+        0.5420761242156872,
+        0.3331185214741463
+      ],
+      "near_arm_hand_angle": -0.028622599999999943,
+      "far_foot_angle": -0.038518500000000004,
+      "far_wrist": [
+        -0.14637333889330245,
+        0.6463108530321546
+      ],
+      "far_arm_hand_angle": -0.7964427000000001,
+      "near_leg_upper_angle": 1.108331945011546,
+      "near_upper_angle": 1.305676585507393,
+      "near_leg_lower_angle": 3.1237165774740028,
+      "near_lower_angle": -0.4713751376395255,
+      "far_leg_upper_angle": 1.319027939140115,
+      "far_upper_angle": 2.2950142851090125,
+      "far_leg_lower_angle": 1.6655781356779797,
+      "far_lower_angle": 0.45375613748136634,
+      "cloth_root_angle": 0.738380470927559
+    },
+    {
+      "phase": 0.4513888888888889,
+      "pelvis": [
+        1.94264,
+        -52.718995
+      ],
+      "near_hip": [
+        5.40444,
+        -51.77842
+      ],
+      "far_hip": [
+        -1.51916,
+        -53.65957
+      ],
+      "body_lean": 0.3775574142692468,
+      "near_foot_angle": 2.2918925999999997,
+      "near_wrist": [
+        0.5405607405935441,
+        0.3327154972473288
+      ],
+      "near_arm_hand_angle": -0.030319899999999955,
+      "far_foot_angle": -0.006176499999999999,
+      "far_wrist": [
+        -0.1269678718293227,
+        0.6341912283014338
+      ],
+      "far_arm_hand_angle": -0.8655932,
+      "near_leg_upper_angle": 1.0577966398385883,
+      "near_upper_angle": 1.3078857585914847,
+      "near_leg_lower_angle": 3.0861538590846216,
+      "near_lower_angle": -0.47310060859951364,
+      "far_leg_upper_angle": 1.3595005701723937,
+      "far_upper_angle": 2.275041040999026,
+      "far_leg_lower_angle": 1.7069007996661731,
+      "far_lower_angle": 0.38460584957177424,
+      "cloth_root_angle": 0.7330415632099423
+    },
+    {
+      "phase": 0.4583333333333333,
+      "pelvis": [
+        1.8221350000000003,
+        -52.68794
+      ],
+      "near_hip": [
+        5.41999,
+        -51.8292
+      ],
+      "far_hip": [
+        -1.77572,
+        -53.54668
+      ],
+      "body_lean": 0.37750973270089594,
+      "near_foot_angle": 2.2373928000000003,
+      "near_wrist": [
+        0.5390456563952517,
+        0.3322098826321228
+      ],
+      "near_arm_hand_angle": -0.03229689999999996,
+      "far_foot_angle": 0.0347002,
+      "far_wrist": [
+        -0.10890921762714674,
+        0.622554922656522
+      ],
+      "far_arm_hand_angle": -0.9314172000000001,
+      "near_leg_upper_angle": 1.0119027698491643,
+      "near_upper_angle": 1.3099602003800899,
+      "near_leg_lower_angle": 3.0505015517327116,
+      "near_lower_angle": -0.4751058139198625,
+      "far_leg_upper_angle": 1.4039108208603692,
+      "far_upper_angle": 2.254511994050057,
+      "far_leg_lower_angle": 1.752567462410264,
+      "far_lower_angle": 0.31878080433434725,
+      "cloth_root_angle": 0.7281802078284092
+    },
+    {
+      "phase": 0.4652777777777778,
+      "pelvis": [
+        1.702775,
+        -52.658339999999995
+      ],
+      "near_hip": [
+        5.43223,
+        -51.88042
+      ],
+      "far_hip": [
+        -2.02668,
+        -53.43626
+      ],
+      "body_lean": 0.3775782569807324,
+      "near_foot_angle": 2.184564,
+      "near_wrist": [
+        0.537305685930966,
+        0.33181515694785707
+      ],
+      "near_arm_hand_angle": -0.03427239999999998,
+      "far_foot_angle": 0.0646418,
+      "far_wrist": [
+        -0.09202903230608007,
+        0.6116728978226212
+      ],
+      "far_arm_hand_angle": -0.9935565999999999,
+      "near_leg_upper_angle": 0.9712259035548498,
+      "near_upper_angle": 1.3124000147979387,
+      "near_leg_lower_angle": 3.01697150844739,
+      "near_lower_angle": -0.47711071499030644,
+      "far_leg_upper_angle": 1.451701439103731,
+      "far_upper_angle": 2.233394704345079,
+      "far_leg_lower_angle": 1.8065913609689788,
+      "far_lower_angle": 0.2566422750386819,
+      "cloth_root_angle": 0.7238353920603444
+    },
+    {
+      "phase": 0.4722222222222222,
+      "pelvis": [
+        1.5857449999999997,
+        -52.63073
+      ],
+      "near_hip": [
+        5.44103,
+        -51.93206
+      ],
+      "far_hip": [
+        -2.26954,
+        -53.3294
+      ],
+      "body_lean": 0.3777464351537774,
+      "near_foot_angle": 2.1336627999999997,
+      "near_wrist": [
+        0.5352373691629642,
+        0.33163384384005146
+      ],
+      "near_arm_hand_angle": -0.036098899999999934,
+      "far_foot_angle": 0.07959750000000002,
+      "far_wrist": [
+        -0.0761324517381853,
+        0.6017890207461322
+      ],
+      "far_arm_hand_angle": -1.0516467,
+      "near_leg_upper_angle": 0.9363406176795374,
+      "near_upper_angle": 1.3154430837831514,
+      "near_leg_lower_angle": 2.9857737334019867,
+      "near_lower_angle": -0.4789680888334118,
+      "far_leg_upper_angle": 1.5023156826011248,
+      "far_upper_angle": 2.211665356614762,
+      "far_leg_lower_angle": 1.8702003560161575,
+      "far_lower_angle": 0.19855120853538225,
+      "cloth_root_angle": 0.7200484870054482
+    },
+    {
+      "phase": 0.4791666666666667,
+      "pelvis": [
+        1.4722700000000002,
+        -52.60567
+      ],
+      "near_hip": [
+        5.44631,
+        -51.98412
+      ],
+      "far_hip": [
+        -2.50177,
+        -53.22722
+      ],
+      "body_lean": 0.3780118018257818,
+      "near_foot_angle": 2.0849453999999996,
+      "near_wrist": [
+        0.5328652228119978,
+        0.33165148783978105
+      ],
+      "near_arm_hand_angle": -0.03778209999999993,
+      "far_foot_angle": 0.08808830000000002,
+      "far_wrist": [
+        -0.06100671525520821,
+        0.5931233677846861
+      ],
+      "far_arm_hand_angle": -1.1053114,
+      "near_leg_upper_angle": 0.9078332610254524,
+      "near_upper_angle": 1.3190431425849685,
+      "near_leg_lower_angle": 2.9571201833172402,
+      "near_lower_angle": -0.4806826281958047,
+      "far_leg_upper_angle": 1.5551971632602901,
+      "far_upper_angle": 2.189310028268218,
+      "far_leg_lower_angle": 1.9419622045422247,
+      "far_lower_angle": 0.14488697099782066,
+      "cloth_root_angle": 0.7168577877254405
+    },
+    {
+      "phase": 0.4861111111111111,
+      "pelvis": [
+        1.363535,
+        -52.58373
+      ],
+      "near_hip": [
+        5.44794,
+        -52.03664
+      ],
+      "far_hip": [
+        -2.72087,
+        -53.13082
+      ],
+      "body_lean": 0.3783716732041128,
+      "near_foot_angle": 2.0386385000000002,
+      "near_wrist": [
+        0.5302133510807798,
+        0.3318506130854728
+      ],
+      "near_arm_hand_angle": -0.03932800000000003,
+      "far_foot_angle": 0.0987946,
+      "far_wrist": [
+        -0.046420424069114244,
+        0.5858662137337987
+      ],
+      "far_arm_hand_angle": -1.1541854,
+      "near_leg_upper_angle": 0.8862762729878305,
+      "near_upper_angle": 1.3231548011676157,
+      "near_leg_lower_angle": 2.931191535976075,
+      "near_lower_angle": -0.48226181328688966,
+      "far_leg_upper_angle": 1.6097881827707046,
+      "far_upper_angle": 2.166311109635002,
+      "far_leg_lower_angle": 2.0204442017669098,
+      "far_lower_angle": 0.09601289964638121,
+      "cloth_root_angle": 0.7143029496950439
+    },
+    {
+      "phase": 0.4930555555555556,
+      "pelvis": [
+        1.25815,
+        -52.576094999999995
+      ],
+      "near_hip": [
+        5.44062,
+        -52.11089
+      ],
+      "far_hip": [
+        -2.92432,
+        -53.0413
+      ],
+      "body_lean": 0.3788235922070436,
+      "near_foot_angle": 1.9854923999999998,
+      "near_wrist": [
+        0.5273048192693405,
+        0.3322162150014624
+      ],
+      "near_arm_hand_angle": -0.0407421,
+      "far_foot_angle": 0.16548970000000002,
+      "far_wrist": [
+        -0.03116901621944149,
+        0.5795735027643409
+      ],
+      "far_arm_hand_angle": -1.2015066,
+      "near_leg_upper_angle": 0.8673378910043742,
+      "near_upper_angle": 1.327734481644275,
+      "near_leg_lower_angle": 2.898693642011844,
+      "near_lower_angle": -0.4837103077308697,
+      "far_leg_upper_angle": 1.6655320375526894,
+      "far_upper_angle": 2.141044640615314,
+      "far_leg_lower_angle": 2.1042135620661435,
+      "far_lower_angle": 0.04869074190783611,
+      "cloth_root_angle": 0.712071290379483
+    },
+    {
+      "phase": 0.5,
+      "pelvis": [
+        1.1557350000000002,
+        -52.58998
+      ],
+      "near_hip": [
+        5.42109,
+        -52.22019
+      ],
+      "far_hip": [
+        -3.10962,
+        -52.95977
+      ],
+      "body_lean": 0.37936493902465446,
+      "near_foot_angle": 1.9202394,
+      "near_wrist": [
+        0.524164500784618,
+        0.3327326505723053
+      ],
+      "near_arm_hand_angle": -0.042030299999999965,
+      "far_foot_angle": 0.2992907,
+      "far_wrist": [
+        -0.014538594089163522,
+        0.5736915555504069
+      ],
+      "far_arm_hand_angle": -1.2498385,
+      "near_leg_upper_angle": 0.8474483913814217,
+      "near_upper_angle": 1.3327347986884954,
+      "near_leg_lower_angle": 2.8543132934442204,
+      "near_lower_angle": -0.4850334869182078,
+      "far_leg_upper_angle": 1.721871811197439,
+      "far_upper_angle": 2.1124837195316464,
+      "far_leg_lower_angle": 2.191837256715891,
+      "far_lower_angle": 0.000358791093292138,
+      "cloth_root_angle": 0.7098927978805705
+    },
+    {
+      "phase": 0.5069444444444444,
+      "pelvis": [
+        1.0582,
+        -52.62327
+      ],
+      "near_hip": [
+        5.39065,
+        -52.35921
+      ],
+      "far_hip": [
+        -3.27425,
+        -52.88733
+      ],
+      "body_lean": 0.37999293144930607,
+      "near_foot_angle": 1.8461327,
+      "near_wrist": [
+        0.520815743594535,
+        0.3333839549987511
+      ],
+      "near_arm_hand_angle": -0.04319830000000002,
+      "far_foot_angle": 0.46070990000000006,
+      "far_wrist": [
+        0.003290908259669361,
+        0.5680689274154824
+      ],
+      "far_arm_hand_angle": -1.2988611,
+      "near_leg_upper_angle": 0.8268966482195206,
+      "near_upper_angle": 1.3381112124311074,
+      "near_leg_lower_angle": 2.8012583386091245,
+      "near_lower_angle": -0.48623776838775057,
+      "far_leg_upper_angle": 1.778250680559128,
+      "far_upper_angle": 2.0810088295379154,
+      "far_leg_lower_angle": 2.2818827955412058,
+      "far_lower_angle": -0.04866283176457549,
+      "cloth_root_angle": 0.7077658115815169
+    },
+    {
+      "phase": 0.5138888888888888,
+      "pelvis": [
+        0.9674499999999999,
+        -52.67385
+      ],
+      "near_hip": [
+        5.3506,
+        -52.52261
+      ],
+      "far_hip": [
+        -3.4157,
+        -52.82509
+      ],
+      "body_lean": 0.3807049556855199,
+      "near_foot_angle": 1.7664255,
+      "near_wrist": [
+        0.5172826302545468,
+        0.33415464249296384
+      ],
+      "near_arm_hand_angle": -0.04425199999999996,
+      "far_foot_angle": 0.6102597999999998,
+      "far_wrist": [
+        0.0221447060610015,
+        0.5625628874596387
+      ],
+      "far_arm_hand_angle": -1.3482542,
+      "near_leg_upper_angle": 0.8059724757504751,
+      "near_upper_angle": 1.3438184321890483,
+      "near_leg_lower_angle": 2.742736716507152,
+      "near_lower_angle": -0.4873285231078511,
+      "far_leg_upper_angle": 1.8341114587447072,
+      "far_upper_angle": 2.047001774814991,
+      "far_leg_lower_angle": 2.3729171933820643,
+      "far_lower_angle": -0.09805565325843649,
+      "cloth_root_angle": 0.7056911150701253
+    },
+    {
+      "phase": 0.5208333333333334,
+      "pelvis": [
+        0.8853900000000001,
+        -52.739605
+      ],
+      "near_hip": [
+        5.30224,
+        -52.70505
+      ],
+      "far_hip": [
+        -3.53146,
+        -52.77416
+      ],
+      "body_lean": 0.3814985103179949,
+      "near_foot_angle": 1.6843711,
+      "near_wrist": [
+        0.5135891973491743,
+        0.33502938370980484
+      ],
+      "near_arm_hand_angle": -0.04519709999999999,
+      "far_foot_angle": 0.7459545999999999,
+      "far_wrist": [
+        0.041850978802692736,
+        0.5570460281125189
+      ],
+      "far_arm_hand_angle": -1.3976978,
+      "near_leg_upper_angle": 0.7849644165616153,
+      "near_upper_angle": 1.3498111293127042,
+      "near_leg_lower_angle": 2.6819562447834553,
+      "near_lower_angle": -0.4883118297113505,
+      "far_leg_upper_angle": 1.8888970287613829,
+      "far_upper_angle": 2.010842720887556,
+      "far_leg_lower_angle": 2.4635081939077863,
+      "far_lower_angle": -0.14750006309873065,
+      "cloth_root_angle": 0.7036670494714667
+    },
+    {
+      "phase": 0.5277777777777778,
+      "pelvis": [
+        0.8139350000000001,
+        -52.81842
+      ],
+      "near_hip": [
+        5.24688,
+        -52.90121
+      ],
+      "far_hip": [
+        -3.61901,
+        -52.73563
+      ],
+      "body_lean": 0.38237126086240886,
+      "near_foot_angle": 1.6032225,
+      "near_wrist": [
+        0.5097598712757623,
+        0.3359940291340234
+      ],
+      "near_arm_hand_angle": -0.046039300000000005,
+      "far_foot_angle": 0.89689,
+      "far_wrist": [
+        0.062237920533207085,
+        0.5514085172206787
+      ],
+      "far_arm_hand_angle": -1.4468718,
+      "near_leg_upper_angle": 0.7641628364502621,
+      "near_upper_angle": 1.3560427615093749,
+      "near_leg_lower_angle": 2.6221251633684237,
+      "near_lower_angle": -0.4891938113879233,
+      "far_leg_upper_angle": 1.9420510840533654,
+      "far_upper_angle": 1.9729140792808584,
+      "far_leg_lower_angle": 2.552222836444383,
+      "far_lower_angle": -0.19667371811013507,
+      "cloth_root_angle": 0.701692748638048
+    },
+    {
+      "phase": 0.5347222222222222,
+      "pelvis": [
+        0.754985,
+        -52.90819
+      ],
+      "near_hip": [
+        5.18583,
+        -53.10576
+      ],
+      "far_hip": [
+        -3.67586,
+        -52.71062
+      ],
+      "body_lean": 0.3833200491280573,
+      "near_foot_angle": 1.5262329,
+      "near_wrist": [
+        0.5058191105748607,
+        0.33703351393007247
+      ],
+      "near_arm_hand_angle": -0.04678439999999995,
+      "far_foot_angle": 1.0584305999999999,
+      "far_wrist": [
+        0.08313509435454744,
+        0.545560938898453
+      ],
+      "far_arm_hand_angle": -1.4954561,
+      "near_leg_upper_angle": 0.7438561036194515,
+      "near_upper_angle": 1.3624699500120843,
+      "near_leg_lower_angle": 2.56645080487748,
+      "near_lower_angle": -0.48997871164053425,
+      "far_leg_upper_angle": 1.993015595629663,
+      "far_upper_angle": 1.9335952802727623,
+      "far_leg_lower_angle": 2.6376280484104475,
+      "far_lower_angle": -0.2452578848986895,
+      "cloth_root_angle": 0.6997686692207719
+    },
+    {
+      "phase": 0.5416666666666666,
+      "pelvis": [
+        0.7104550000000001,
+        -53.006789999999995
+      ],
+      "near_hip": [
+        5.12038,
+        -53.31335
+      ],
+      "far_hip": [
+        -3.69947,
+        -52.70023
+      ],
+      "body_lean": 0.38434265382046756,
+      "near_foot_angle": 1.4566557,
+      "near_wrist": [
+        0.5017910921098556,
+        0.3381335721339701
+      ],
+      "near_arm_hand_angle": -0.04743829999999994,
+      "far_foot_angle": 1.225822,
+      "far_wrist": [
+        0.10436900403031082,
+        0.5394372987758637
+      ],
+      "far_arm_hand_angle": -1.5431305,
+      "near_leg_upper_angle": 0.724331138834593,
+      "near_upper_angle": 1.3690469294152614,
+      "near_leg_lower_angle": 2.5181423607545677,
+      "near_lower_angle": -0.49067477285122746,
+      "far_leg_upper_angle": 2.0412341439427415,
+      "far_upper_angle": 1.8932692094980716,
+      "far_leg_lower_angle": 2.718291975711776,
+      "far_lower_angle": -0.2929323901226545,
+      "cloth_root_angle": 0.6978939457821114
+    },
+    {
+      "phase": 0.5486111111111112,
+      "pelvis": [
+        0.6773749999999998,
+        -53.11032
+      ],
+      "near_hip": [
+        5.05183,
+        -53.51866
+      ],
+      "far_hip": [
+        -3.69708,
+        -52.70198
+      ],
+      "body_lean": 0.3854359193760818,
+      "near_foot_angle": 1.3911132,
+      "near_wrist": [
+        0.49770094289083755,
+        0.3392814658076322
+      ],
+      "near_arm_hand_angle": -0.04800660000000001,
+      "far_foot_angle": 1.396606,
+      "far_wrist": [
+        0.1257673286456004,
+        0.532998995236267
+      ],
+      "far_arm_hand_angle": -1.589575,
+      "near_leg_upper_angle": 0.7058745232049792,
+      "near_upper_angle": 1.375729867773307,
+      "near_leg_lower_angle": 2.4737758939477574,
+      "near_lower_angle": -0.4912848686094678,
+      "far_leg_upper_angle": 2.0861496664701082,
+      "far_upper_angle": 1.852315549838303,
+      "far_leg_lower_angle": 2.7950770898228217,
+      "far_lower_angle": -0.3393766251948217,
+      "cloth_root_angle": 0.6960677892327971
+    },
+    {
+      "phase": 0.5555555555555556,
+      "pelvis": [
+        0.6477949999999999,
+        -53.212945
+      ],
+      "near_hip": [
+        4.9815,
+        -53.71635
+      ],
+      "far_hip": [
+        -3.68591,
+        -52.70954
+      ],
+      "body_lean": 0.3865981757081278,
+      "near_foot_angle": 1.3195877,
+      "near_wrist": [
+        0.49357279323631437,
+        0.3404632895503427
+      ],
+      "near_arm_hand_angle": -0.04849519999999996,
+      "far_foot_angle": 1.5703966999999999,
+      "far_wrist": [
+        0.14715817227088482,
+        0.5262333021843875
+      ],
+      "far_arm_hand_angle": -1.6344695,
+      "near_leg_upper_angle": 0.6887718842263161,
+      "near_upper_angle": 1.3824743527011998,
+      "near_leg_lower_angle": 2.42328883082142,
+      "near_lower_angle": -0.4918179488959445,
+      "far_leg_upper_angle": 2.1272055386747724,
+      "far_upper_angle": 1.8111157749589994,
+      "far_leg_lower_angle": 2.870919158844777,
+      "far_lower_angle": -0.3842708515976202,
+      "cloth_root_angle": 0.6942884022922979
+    },
+    {
+      "phase": 0.5625,
+      "pelvis": [
+        0.6220249999999998,
+        -53.311845000000005
+      ],
+      "near_hip": [
+        4.91069,
+        -53.90109
+      ],
+      "far_hip": [
+        -3.66664,
+        -52.7226
+      ],
+      "body_lean": 0.3878263801608065,
+      "near_foot_angle": 1.2434973,
+      "near_wrist": [
+        0.48943206861344535,
+        0.3416675359832303
+      ],
+      "near_arm_hand_angle": -0.048909699999999945,
+      "far_foot_angle": 1.7426698999999999,
+      "far_wrist": [
+        0.16836950805661519,
+        0.5191582541930184
+      ],
+      "far_arm_hand_angle": -1.6774939,
+      "near_leg_upper_angle": 0.6733049493965292,
+      "near_upper_angle": 1.3892370254764372,
+      "near_leg_lower_angle": 2.368054265291914,
+      "near_lower_angle": -0.49227688802778413,
+      "far_leg_upper_angle": 2.1638437456267816,
+      "far_upper_angle": 1.770051749013824,
+      "far_leg_lower_angle": 2.944616318363393,
+      "far_lower_angle": -0.42729500172727214,
+      "cloth_root_angle": 0.6925567927948872
+    },
+    {
+      "phase": 0.5694444444444444,
+      "pelvis": [
+        0.6005850000000001,
+        -53.404259999999994
+      ],
+      "near_hip": [
+        4.84069,
+        -54.06755
+      ],
+      "far_hip": [
+        -3.63952,
+        -52.74097
+      ],
+      "body_lean": 0.3891180898215185,
+      "near_foot_angle": 1.1645363,
+      "near_wrist": [
+        0.4853034681577074,
+        0.3428817351821349
+      ],
+      "near_arm_hand_angle": -0.049256100000000025,
+      "far_foot_angle": 1.9088038999999999,
+      "far_wrist": [
+        0.18923345270896652,
+        0.511821816026534
+      ],
+      "far_arm_hand_angle": -1.718328,
+      "near_leg_upper_angle": 0.6597551728701954,
+      "near_upper_angle": 1.3959749714879823,
+      "near_leg_lower_angle": 2.3097209801273184,
+      "near_lower_angle": -0.49266846726281127,
+      "far_leg_upper_angle": 2.1955081610317633,
+      "far_upper_angle": 1.7295033055358977,
+      "far_leg_lower_angle": 3.0148672576172553,
+      "far_lower_angle": -0.4681304044723448,
+      "cloth_root_angle": 0.6908719398332424
+    },
+    {
+      "phase": 0.5763888888888888,
+      "pelvis": [
+        0.5839949999999998,
+        -53.487435
+      ],
+      "near_hip": [
+        4.77281,
+        -54.21039
+      ],
+      "far_hip": [
+        -3.60482,
+        -52.76448
+      ],
+      "body_lean": 0.3904699877004191,
+      "near_foot_angle": 1.0843988,
+      "near_wrist": [
+        0.48121236982579035,
+        0.34409460589183866
+      ],
+      "near_arm_hand_angle": -0.04954000000000002,
+      "far_foot_angle": 2.0641770000000004,
+      "far_wrist": [
+        0.20958675045609232,
+        0.5043018018548506
+      ],
+      "far_arm_hand_angle": -1.7566519,
+      "near_leg_upper_angle": 0.6483997847929149,
+      "near_upper_angle": 1.4026447494611383,
+      "near_leg_lower_angle": 2.249937539621357,
+      "near_lower_angle": -0.4929984346887904,
+      "far_leg_upper_angle": 2.221641538996685,
+      "far_upper_angle": 1.6898525623604488,
+      "far_leg_lower_angle": 3.0803727361892306,
+      "far_lower_angle": -0.5064535285899312,
+      "cloth_root_angle": 0.6892326716454176
+    },
+    {
+      "phase": 0.5833333333333334,
+      "pelvis": [
+        0.5727849999999999,
+        -53.558615
+      ],
+      "near_hip": [
+        4.70836,
+        -54.32428
+      ],
+      "far_hip": [
+        -3.56279,
+        -52.79295
+      ],
+      "body_lean": 0.3918800157758325,
+      "near_foot_angle": 1.0047793,
+      "near_wrist": [
+        0.47718322794529444,
+        0.34529462742375044
+      ],
+      "near_arm_hand_angle": -0.04976720000000001,
+      "far_foot_angle": 2.2041674,
+      "far_wrist": [
+        0.22927127657197774,
+        0.49670504062191456
+      ],
+      "far_arm_hand_angle": -1.7921453,
+      "near_leg_upper_angle": 0.6395143849726193,
+      "near_upper_angle": 1.4092049907493944,
+      "near_leg_lower_angle": 2.190353349894219,
+      "near_lower_angle": -0.49327394978340566,
+      "far_leg_upper_angle": 2.241686400269532,
+      "far_upper_angle": 1.6514800779763847,
+      "far_leg_lower_angle": 3.1398323877738954,
+      "far_lower_angle": -0.5419463044380713,
+      "cloth_root_angle": 0.6876394545440396
+    },
+    {
+      "phase": 0.5902777777777778,
+      "pelvis": [
+        0.5674649999999999,
+        -53.61505
+      ],
+      "near_hip": [
+        4.64863,
+        -54.40389
+      ],
+      "far_hip": [
+        -3.5137,
+        -52.82621
+      ],
+      "body_lean": 0.3933456792260429,
+      "near_foot_angle": 0.9273718,
+      "near_wrist": [
+        0.47324125255232774,
+        0.3464724395838517
+      ],
+      "near_arm_hand_angle": -0.04994339999999998,
+      "far_foot_angle": 2.3241535,
+      "far_wrist": [
+        0.24813572699287584,
+        0.48916603595498814
+      ],
+      "far_arm_hand_angle": -1.8244882,
+      "near_leg_upper_angle": 0.6333710048834079,
+      "near_upper_angle": 1.4156146150222806,
+      "near_leg_lower_angle": 2.132617812940382,
+      "near_lower_angle": -0.4934985922024747,
+      "far_leg_upper_angle": 2.2550858888468275,
+      "far_upper_angle": 1.6147667452085421,
+      "far_leg_lower_angle": -3.0912390566683854,
+      "far_lower_angle": -0.5742901467801542,
+      "cloth_root_angle": 0.6860901012549072
+    },
+    {
+      "phase": 0.5972222222222222,
+      "pelvis": [
+        0.56857,
+        -53.653975
+      ],
+      "near_hip": [
+        4.59494,
+        -54.44388
+      ],
+      "far_hip": [
+        -3.4578,
+        -52.86407
+      ],
+      "body_lean": 0.39486420927993704,
+      "near_foot_angle": 0.8538707,
+      "near_wrist": [
+        0.46941275074372774,
+        0.34761721567079795
+      ],
+      "near_arm_hand_angle": -0.05007459999999997,
+      "far_foot_angle": 2.4195136,
+      "far_wrist": [
+        0.2660358063827598,
+        0.48184592611301547
+      ],
+      "far_arm_hand_angle": -1.8533605,
+      "near_leg_upper_angle": 0.6302390195264754,
+      "near_upper_angle": 1.4218300287700298,
+      "near_leg_lower_angle": 2.0783793005399818,
+      "near_lower_angle": -0.49367952106936575,
+      "far_leg_upper_angle": 2.26128359962078,
+      "far_upper_angle": 1.580095007991133,
+      "far_leg_lower_angle": -3.0477721224424337,
+      "far_lower_angle": -0.6031622912959713,
+      "cloth_root_angle": 0.6845854636212128
+    },
+    {
+      "phase": 0.6041666666666666,
+      "pelvis": [
+        0.5762549999999997,
+        -53.671665000000004
+      ],
+      "near_hip": [
+        4.54787,
+        -54.43696
+      ],
+      "far_hip": [
+        -3.39536,
+        -52.90637
+      ],
+      "body_lean": 0.39643327029435227,
+      "near_foot_angle": 0.7856625,
+      "near_wrist": [
+        0.4657220362591867,
+        0.34871987998173753
+      ],
+      "near_arm_hand_angle": -0.0501663,
+      "far_foot_angle": 2.4902909,
+      "far_wrist": [
+        0.2828344707074655,
+        0.4749298843809842
+      ],
+      "far_arm_hand_angle": -1.8784421,
+      "near_leg_upper_angle": 0.63007581458158,
+      "near_upper_angle": 1.4278127236498017,
+      "near_leg_lower_angle": 2.0289792505655564,
+      "near_lower_angle": -0.49382140051545276,
+      "far_leg_upper_angle": 2.261061193645363,
+      "far_upper_angle": 1.5478440929386315,
+      "far_leg_lower_angle": -3.012911206191244,
+      "far_lower_angle": -0.6282437273232279,
+      "cloth_root_angle": 0.6831239111808785
+    },
+    {
+      "phase": 0.6111111111111112,
+      "pelvis": [
+        0.5891900000000001,
+        -53.663709999999995
+      ],
+      "near_hip": [
+        4.50502,
+        -54.3745
+      ],
+      "far_hip": [
+        -3.32664,
+        -52.95292
+      ],
+      "body_lean": 0.39805009184532625,
+      "near_foot_angle": 0.7230197,
+      "near_wrist": [
+        0.46219478317173507,
+        0.3497710419876878
+      ],
+      "near_arm_hand_angle": -0.050224500000000005,
+      "far_foot_angle": 2.5527097000000003,
+      "far_wrist": [
+        0.29839875803299865,
+        0.46862173629942633
+      ],
+      "far_arm_hand_angle": -1.8994129000000002,
+      "near_leg_upper_angle": 0.6317220126188571,
+      "near_upper_angle": 1.433520726982591,
+      "near_leg_lower_angle": 1.9846450068082466,
+      "near_lower_angle": -0.49393138963202704,
+      "far_leg_upper_angle": 2.2596198059696153,
+      "far_upper_angle": 1.518396364911495,
+      "far_leg_lower_angle": -2.9821991419860803,
+      "far_lower_angle": -0.6492152020191622,
+      "cloth_root_angle": 0.6817054423091746
+    },
+    {
+      "phase": 0.6180555555555556,
+      "pelvis": [
+        0.6068399999999998,
+        -53.632369999999995
+      ],
+      "near_hip": [
+        4.46557,
+        -54.26119
+      ],
+      "far_hip": [
+        -3.25189,
+        -53.00355
+      ],
+      "body_lean": 0.39971167265101276,
+      "near_foot_angle": 0.6671439,
+      "near_wrist": [
+        0.4588557466330683,
+        0.35076259224659234
+      ],
+      "near_arm_hand_angle": -0.05025479999999993,
+      "far_foot_angle": 2.6080224000000003,
+      "far_wrist": [
+        0.31260046360783394,
+        0.4631423445842036
+      ],
+      "far_arm_hand_angle": -1.9159528,
+      "near_leg_upper_angle": 0.6349459798185209,
+      "near_upper_angle": 1.438914967000002,
+      "near_leg_lower_angle": 1.9465331968884028,
+      "near_lower_angle": -0.49401453233468423,
+      "far_leg_upper_angle": 2.257565941257194,
+      "far_upper_angle": 1.492132691975548,
+      "far_leg_lower_angle": -2.955773316260648,
+      "far_lower_angle": -0.6657535950586757,
+      "cloth_root_angle": 0.680329108359611
+    },
+    {
+      "phase": 0.625,
+      "pelvis": [
+        0.6287800000000001,
+        -53.58048
+      ],
+      "near_hip": [
+        4.42895,
+        -54.10287
+      ],
+      "far_hip": [
+        -3.17139,
+        -53.05809
+      ],
+      "body_lean": 0.40141578602254624,
+      "near_foot_angle": 0.6193638,
+      "near_wrist": [
+        0.45573103774708307,
+        0.35168604759590166
+      ],
+      "near_arm_hand_angle": -0.05026299999999995,
+      "far_foot_angle": 2.6555124,
+      "far_wrist": [
+        0.32530760728624886,
+        0.4587256958702492
+      ],
+      "far_arm_hand_angle": -1.9277417,
+      "near_leg_upper_angle": 0.639637749855855,
+      "near_upper_angle": 1.4439550566143358,
+      "near_leg_lower_angle": 1.915926868143962,
+      "near_lower_angle": -0.4940754385649225,
+      "far_leg_upper_angle": 2.2549249868715666,
+      "far_upper_angle": 1.4694340650390294,
+      "far_leg_lower_angle": -2.9343499801995705,
+      "far_lower_angle": -0.6775436831001078,
+      "cloth_root_angle": 0.6789954686727637
+    },
+    {
+      "phase": 0.6319444444444444,
+      "pelvis": [
+        0.6546049999999999,
+        -53.51088
+      ],
+      "near_hip": [
+        4.3946,
+        -53.90541
+      ],
+      "far_hip": [
+        -3.08539,
+        -53.11635
+      ],
+      "body_lean": 0.4031598144026422,
+      "near_foot_angle": 0.5798624999999998,
+      "near_wrist": [
+        0.45284537600245073,
+        0.35253273431546495
+      ],
+      "near_arm_hand_angle": -0.050209100000000007,
+      "far_foot_angle": 2.6951598000000003,
+      "far_wrist": [
+        0.3363860983812596,
+        0.4556125800033554
+      ],
+      "far_arm_hand_angle": -1.9344595,
+      "near_leg_upper_angle": 0.6457195508683149,
+      "near_upper_angle": 1.4486011237220469,
+      "near_leg_lower_angle": 1.8929640151467655,
+      "near_lower_angle": -0.49412235196523685,
+      "far_leg_upper_angle": 2.251723845850467,
+      "far_upper_angle": 1.450680948734011,
+      "far_leg_lower_angle": -2.9179487111869222,
+      "far_lower_angle": -0.6842612420834797,
+      "cloth_root_angle": 0.6777014800920012
+    },
+    {
+      "phase": 0.6388888888888888,
+      "pelvis": [
+        0.6839100000000002,
+        -53.426410000000004
+      ],
+      "near_hip": [
+        4.36197,
+        -53.67466
+      ],
+      "far_hip": [
+        -2.99415,
+        -53.17816
+      ],
+      "body_lean": 0.4049409815564347,
+      "near_foot_angle": 0.5422306,
+      "near_wrist": [
+        0.45022408512925133,
+        0.35329554211523656
+      ],
+      "near_arm_hand_angle": -0.0498132,
+      "far_foot_angle": 2.7309431,
+      "far_wrist": [
+        0.34568670797020556,
+        0.45404643759325397
+      ],
+      "far_arm_hand_angle": -1.9357861,
+      "near_leg_upper_angle": 0.6532892093194317,
+      "near_upper_angle": 1.4528144780787133,
+      "near_leg_lower_angle": 1.8711904063992473,
+      "near_lower_angle": -0.4941589065967844,
+      "far_leg_upper_angle": 2.247988658081974,
+      "far_upper_angle": 1.4362555242544395,
+      "far_leg_lower_angle": -2.9025916640036096,
+      "far_lower_angle": -0.6855886610185175,
+      "cloth_root_angle": 0.6764488520481358
+    },
+    {
+      "phase": 0.6458333333333334,
+      "pelvis": [
+        0.71628,
+        -53.32991
+      ],
+      "near_hip": [
+        4.33049,
+        -53.41648
+      ],
+      "far_hip": [
+        -2.89793,
+        -53.24334
+      ],
+      "body_lean": 0.4067566663437618,
+      "near_foot_angle": 0.5053255,
+      "near_wrist": [
+        0.44789249884356547,
+        0.3539663594610421
+      ],
+      "near_arm_hand_angle": -0.049043599999999965,
+      "far_foot_angle": 2.7636157000000003,
+      "far_wrist": [
+        0.35304306960247395,
+        0.4542667252627781
+      ],
+      "far_arm_hand_angle": -1.9314014,
+      "near_leg_upper_angle": 0.6622962608779116,
+      "near_upper_angle": 1.4565551093780238,
+      "near_leg_lower_angle": 1.849417394329355,
+      "near_lower_angle": -0.49419188174974754,
+      "far_leg_upper_angle": 2.2437458598424747,
+      "far_upper_angle": 1.426539194865926,
+      "far_leg_lower_angle": -2.8875250990836725,
+      "far_lower_angle": -0.6812038962424182,
+      "cloth_root_angle": 0.6752351090088382
+    },
+    {
+      "phase": 0.6527777777777778,
+      "pelvis": [
+        0.7513100000000001,
+        -53.22421
+      ],
+      "near_hip": [
+        4.29961,
+        -53.13671
+      ],
+      "far_hip": [
+        -2.79699,
+        -53.31171
+      ],
+      "body_lean": 0.40860451726058494,
+      "near_foot_angle": 0.46923380000000003,
+      "near_wrist": [
+        0.44587558369545216,
+        0.3545366544129647
+      ],
+      "near_arm_hand_angle": -0.04792069999999993,
+      "far_foot_angle": 2.7931811,
+      "far_wrist": [
+        0.3582625024785031,
+        0.4565008471485113
+      ],
+      "far_arm_hand_angle": -1.9209853,
+      "near_leg_upper_angle": 0.6726548165048079,
+      "near_upper_angle": 1.459784098061397,
+      "near_leg_lower_angle": 1.8276864897872394,
+      "near_lower_angle": -0.4942280565811852,
+      "far_leg_upper_angle": 2.2390218071712122,
+      "far_upper_angle": 1.4219107190810005,
+      "far_leg_lower_angle": -2.8727454548901963,
+      "far_lower_angle": -0.6707878430522105,
+      "cloth_root_angle": 0.6740613913831779
+    },
+    {
+      "phase": 0.6597222222222222,
+      "pelvis": [
+        0.7885849999999999,
+        -53.112165000000005
+      ],
+      "near_hip": [
+        4.26877,
+        -52.84122
+      ],
+      "far_hip": [
+        -2.6916,
+        -53.38311
+      ],
+      "body_lean": 0.41048175298964534,
+      "near_foot_angle": 0.4340422,
+      "near_wrist": [
+        0.4442038676686604,
+        0.3549795901273096
+      ],
+      "near_arm_hand_angle": -0.04652469999999998,
+      "far_foot_angle": 2.8196429000000003,
+      "far_wrist": [
+        0.3612923533670599,
+        0.46081518744896316
+      ],
+      "far_arm_hand_angle": -1.9046052,
+      "near_leg_upper_angle": 0.6842802394539539,
+      "near_upper_angle": 1.4624271414141214,
+      "near_leg_lower_angle": 1.8060394857640987,
+      "near_lower_angle": -0.494329801863198,
+      "far_leg_upper_angle": 2.2338418408206437,
+      "far_upper_angle": 1.4223660808987866,
+      "far_leg_lower_angle": -2.8582492971873132,
+      "far_lower_angle": -0.6544074690586722,
+      "cloth_root_angle": 0.6729252246833757
+    },
+    {
+      "phase": 0.6666666666666666,
+      "pelvis": [
+        0.8276950000000001,
+        -52.996605
+      ],
+      "near_hip": [
+        4.2374,
+        -52.53586
+      ],
+      "far_hip": [
+        -2.58201,
+        -53.45735
+      ],
+      "body_lean": 0.4123856261408769,
+      "near_foot_angle": 0.3998374,
+      "near_wrist": [
+        0.44294061526405093,
+        0.3550804711862342
+      ],
+      "near_arm_hand_angle": -0.04549199999999998,
+      "far_foot_angle": 2.8430049000000004,
+      "far_wrist": [
+        0.36383590263927695,
+        0.46585217459201683
+      ],
+      "far_arm_hand_angle": -1.886166,
+      "near_leg_upper_angle": 0.6970874192770313,
+      "near_upper_angle": 1.4641025826392415,
+      "near_leg_lower_angle": 1.784517782771407,
+      "near_lower_angle": -0.49512055238551317,
+      "far_leg_upper_angle": 2.2282335636131276,
+      "far_upper_angle": 1.4240609897172694,
+      "far_leg_lower_angle": -2.8440323780509305,
+      "far_lower_angle": -0.6359684360386437,
+      "cloth_root_angle": 0.6718279395976485
+    },
+    {
+      "phase": 0.6736111111111112,
+      "pelvis": [
+        0.8682300000000001,
+        -52.880365
+      ],
+      "near_hip": [
+        4.20495,
+        -52.22648
+      ],
+      "far_hip": [
+        -2.46849,
+        -53.53425
+      ],
+      "body_lean": 0.41431350380488824,
+      "near_foot_angle": 0.3667061,
+      "near_wrist": [
+        0.44208844825953775,
+        0.35480236353233124
+      ],
+      "near_arm_hand_angle": -0.04496420000000001,
+      "far_foot_angle": 2.8632706000000003,
+      "far_wrist": [
+        0.36633713153743636,
+        0.47123451102234976
+      ],
+      "far_arm_hand_angle": -1.8667616,
+      "near_leg_upper_angle": 0.7109906380709179,
+      "near_upper_angle": 1.4647479328708108,
+      "near_leg_lower_angle": 1.7631632428857322,
+      "near_lower_angle": -0.49672825088923084,
+      "far_leg_upper_angle": 2.222222385892969,
+      "far_upper_angle": 1.4259618201017559,
+      "far_leg_lower_angle": -2.8300923969340186,
+      "far_lower_angle": -0.6165632688719869,
+      "cloth_root_angle": 0.6707677266952885
+    },
+    {
+      "phase": 0.6805555555555556,
+      "pelvis": [
+        0.90978,
+        -52.766295
+      ],
+      "near_hip": [
+        4.17086,
+        -51.91895
+      ],
+      "far_hip": [
+        -2.3513,
+        -53.61364
+      ],
+      "body_lean": 0.41626314198478953,
+      "near_foot_angle": 0.33473499999999995,
+      "near_wrist": [
+        0.44163311280739254,
+        0.35416896818477106
+      ],
+      "near_arm_hand_angle": -0.04490890000000003,
+      "far_foot_angle": 2.8804436,
+      "far_wrist": [
+        0.36874132951524036,
+        0.4769739955636102
+      ],
+      "far_arm_hand_angle": -1.8463973999999999,
+      "near_leg_upper_angle": 0.7259061467353092,
+      "near_upper_angle": 1.4644049755340611,
+      "near_leg_lower_angle": 1.742016329130074,
+      "near_lower_angle": -0.4991046992386956,
+      "far_leg_upper_angle": 2.21583465234757,
+      "far_upper_angle": 1.4281236915486402,
+      "far_leg_lower_angle": -2.8164243128996764,
+      "far_lower_angle": -0.5961994716169231,
+      "cloth_root_angle": 0.6697446824900157
+    },
+    {
+      "phase": 0.6875,
+      "pelvis": [
+        0.9519349999999998,
+        -52.657225
+      ],
+      "near_hip": [
+        4.13456,
+        -51.61911
+      ],
+      "far_hip": [
+        -2.23069,
+        -53.69534
+      ],
+      "body_lean": 0.41823163134724045,
+      "near_foot_angle": 0.3040107999999999,
+      "near_wrist": [
+        0.44155930461054516,
+        0.35320048150671624
+      ],
+      "near_arm_hand_angle": -0.04529369999999999,
+      "far_foot_angle": 2.8945649,
+      "far_wrist": [
+        0.37099542022188375,
+        0.483085844913207
+      ],
+      "far_arm_hand_angle": -1.825064,
+      "near_leg_upper_angle": 0.7417483918714914,
+      "near_upper_angle": 1.4631167356962853,
+      "near_leg_lower_angle": 1.721119143510554,
+      "near_lower_angle": -0.5022034455574573,
+      "far_leg_upper_angle": 2.209096618755409,
+      "far_upper_angle": 1.4306037550502182,
+      "far_leg_lower_angle": -2.8030250970460893,
+      "far_lower_angle": -0.5748655593929901,
+      "cloth_root_angle": 0.6687566188929934
+    },
+    {
+      "phase": 0.6944444444444444,
+      "pelvis": [
+        0.9942899999999999,
+        -52.556
+      ],
+      "near_hip": [
+        4.09551,
+        -51.33282
+      ],
+      "far_hip": [
+        -2.10693,
+        -53.77918
+      ],
+      "body_lean": 0.42021606047580184,
+      "near_foot_angle": 0.2746201999999999,
+      "near_wrist": [
+        0.44185233196443724,
+        0.3519182019292281
+      ],
+      "near_arm_hand_angle": -0.04608599999999996,
+      "far_foot_angle": 2.9064332000000004,
+      "far_wrist": [
+        0.3730990925644867,
+        0.4896721201428411
+      ],
+      "far_arm_hand_angle": -1.802442,
+      "near_leg_upper_angle": 0.7584331531605291,
+      "near_upper_angle": 1.4609239337064026,
+      "near_leg_lower_angle": 1.700512704741567,
+      "near_lower_angle": -0.505975000158819,
+      "far_leg_upper_angle": 2.2020345596496065,
+      "far_upper_angle": 1.4334563607789728,
+      "far_leg_lower_angle": -2.78989138277971,
+      "far_lower_angle": -0.552243930836487,
+      "cloth_root_angle": 0.6678043896690466
+    },
+    {
+      "phase": 0.7013888888888888,
+      "pelvis": [
+        1.0364300000000002,
+        -52.465455000000006
+      ],
+      "near_hip": [
+        4.05313,
+        -51.06593
+      ],
+      "far_hip": [
+        -1.98027,
+        -53.86498
+      ],
+      "body_lean": 0.42221432939913656,
+      "near_foot_angle": 0.24664989999999998,
+      "near_wrist": [
+        0.4424952713463566,
+        0.3503394720701073
+      ],
+      "near_arm_hand_angle": -0.04725360000000001,
+      "far_foot_angle": 2.9164166000000002,
+      "far_wrist": [
+        0.37501505238810084,
+        0.4967930873518457
+      ],
+      "far_arm_hand_angle": -1.7783727,
+      "near_leg_upper_angle": 0.7758764054850052,
+      "near_upper_angle": 1.4578681674986245,
+      "near_leg_lower_angle": 1.680238798212595,
+      "near_lower_angle": -0.5103767007321527,
+      "far_leg_upper_angle": 2.1946748359581627,
+      "far_upper_angle": 1.4367378308696284,
+      "far_leg_lower_angle": -2.7770195340381365,
+      "far_lower_angle": -0.5281748574964366,
+      "cloth_root_angle": 0.6668872401347454
+    },
+    {
+      "phase": 0.7083333333333334,
+      "pelvis": [
+        1.0779400000000001,
+        -52.38843
+      ],
+      "near_hip": [
+        4.00687,
+        -50.82431
+      ],
+      "far_hip": [
+        -1.85099,
+        -53.95255
+      ],
+      "body_lean": 0.4242233985863698,
+      "near_foot_angle": 0.2201866,
+      "near_wrist": [
+        0.4434718715660473,
+        0.3484839731523657
+      ],
+      "near_arm_hand_angle": -0.04876400000000003,
+      "far_foot_angle": 2.9245768,
+      "far_wrist": [
+        0.37668053112034916,
+        0.5044761567017987
+      ],
+      "far_arm_hand_angle": -1.7528184,
+      "near_leg_upper_angle": 0.7939939806271895,
+      "near_upper_angle": 1.4539930462024064,
+      "near_leg_lower_angle": 1.6603394183709201,
+      "near_lower_angle": -0.5153566045858481,
+      "far_leg_upper_angle": 2.18704355985239,
+      "far_upper_angle": 1.4405027968595583,
+      "far_leg_lower_angle": -2.7644053005015814,
+      "far_lower_angle": -0.5026199137160743,
+      "cloth_root_angle": 0.666004589892546
+    },
+    {
+      "phase": 0.7152777777777778,
+      "pelvis": [
+        1.1184150000000002,
+        -52.32777
+      ],
+      "near_hip": [
+        3.95617,
+        -50.6138
+      ],
+      "far_hip": [
+        -1.71934,
+        -54.04174
+      ],
+      "body_lean": 0.42624074102901915,
+      "near_foot_angle": 0.195306,
+      "near_wrist": [
+        0.4447651980753236,
+        0.34636839016152016
+      ],
+      "near_arm_hand_angle": -0.05058309999999999,
+      "far_foot_angle": 2.9309756,
+      "far_wrist": [
+        0.3780275986548494,
+        0.5127460393193268
+      ],
+      "far_arm_hand_angle": -1.7257412,
+      "near_leg_upper_angle": 0.8127022421470869,
+      "near_upper_angle": 1.4493398157762445,
+      "near_leg_lower_angle": 1.640855145526112,
+      "near_lower_angle": -0.520869780736651,
+      "far_leg_upper_angle": 2.179166638369087,
+      "far_upper_angle": 1.4448084392394223,
+      "far_leg_lower_angle": -2.7520453115579926,
+      "far_lower_angle": -0.47554265098718596,
+      "cloth_root_angle": 0.6651548302493833
+    },
+    {
+      "phase": 0.7222222222222222,
+      "pelvis": [
+        1.1574499999999999,
+        -52.286305
+      ],
+      "near_hip": [
+        3.90048,
+        -50.44026
+      ],
+      "far_hip": [
+        -1.58558,
+        -54.13235
+      ],
+      "body_lean": 0.4282637059388305,
+      "near_foot_angle": 0.1713865,
+      "near_wrist": [
+        0.44637977624949216,
+        0.34404371873454603
+      ],
+      "near_arm_hand_angle": -0.05258750000000001,
+      "far_foot_angle": 2.9356748,
+      "far_wrist": [
+        0.37898503211679735,
+        0.5216281154560953
+      ],
+      "far_arm_hand_angle": -1.6971035,
+      "near_leg_upper_angle": 0.8319191894368484,
+      "near_upper_angle": 1.4439492956996154,
+      "near_leg_lower_angle": 1.621827712026258,
+      "near_lower_angle": -0.526775450520327,
+      "far_leg_upper_angle": 2.1710704899710533,
+      "far_upper_angle": 1.4497095191161138,
+      "far_leg_lower_angle": -2.739936705679986,
+      "far_lower_angle": -0.4469053836501677,
+      "cloth_root_angle": 0.6643384404567318
+    },
+    {
+      "phase": 0.7291666666666666,
+      "pelvis": [
+        1.194625,
+        -52.26688
+      ],
+      "near_hip": [
+        3.83922,
+        -50.30955
+      ],
+      "far_hip": [
+        -1.44997,
+        -54.22421
+      ],
+      "body_lean": 0.430289391991103,
+      "near_foot_angle": 0.1479759,
+      "near_wrist": [
+        0.4483060362969731,
+        0.34153882858011664
+      ],
+      "near_arm_hand_angle": -0.05470900000000001,
+      "far_foot_angle": 2.9387364000000002,
+      "far_wrist": [
+        0.37947784515934396,
+        0.5311448259472643
+      ],
+      "far_arm_hand_angle": -1.6668676,
+      "near_leg_upper_angle": 0.8515610516686779,
+      "near_upper_angle": 1.4378645940707566,
+      "near_leg_lower_angle": 1.6032985052159232,
+      "near_lower_angle": -0.5329923981909603,
+      "far_leg_upper_angle": 2.162781516184828,
+      "far_upper_angle": 1.455260730972176,
+      "far_leg_lower_angle": -2.728074738009993,
+      "far_lower_angle": -0.4166701069734316,
+      "cloth_root_angle": 0.663554462065508
+    },
+    {
+      "phase": 0.7361111111111112,
+      "pelvis": [
+        1.229535,
+        -52.27233
+      ],
+      "near_hip": [
+        3.77184,
+        -50.22751
+      ],
+      "far_hip": [
+        -1.31277,
+        -54.31715
+      ],
+      "body_lean": 0.43231580510173157,
+      "near_foot_angle": 0.12499949999999999,
+      "near_wrist": [
+        0.45052259580445475,
+        0.33885987265718964
+      ],
+      "near_arm_hand_angle": -0.05693910000000003,
+      "far_foot_angle": 2.9402221,
+      "far_wrist": [
+        0.37942512673877077,
+        0.5413162896737532
+      ],
+      "far_arm_hand_angle": -1.6349956,
+      "near_leg_upper_angle": 0.8715453708027211,
+      "near_upper_angle": 1.4311282730389459,
+      "near_leg_lower_angle": 1.5853092367640105,
+      "near_lower_angle": -0.5394971808349037,
+      "far_leg_upper_angle": 2.1543255438149407,
+      "far_upper_angle": 1.4615190934578404,
+      "far_leg_lower_angle": -2.716456287521537,
+      "far_lower_angle": -0.38479784439014314,
+      "cloth_root_angle": 0.6628024140005406
+    },
+    {
+      "phase": 0.7430555555555556,
+      "pelvis": [
+        1.261765,
+        -52.305495
+      ],
+      "near_hip": [
+        3.69778,
+        -50.2
+      ],
+      "far_hip": [
+        -1.17425,
+        -54.41099
+      ],
+      "body_lean": 0.4343398700856671,
+      "near_foot_angle": 0.1023827,
+      "near_wrist": [
+        0.45300902344276744,
+        0.33601253391422703
+      ],
+      "near_arm_hand_angle": -0.05926940000000002,
+      "far_foot_angle": 2.9401937,
+      "far_wrist": [
+        0.378741659302995,
+        0.5521595614102314
+      ],
+      "far_arm_hand_angle": -1.6014498000000001,
+      "near_leg_upper_angle": 0.8917914451095537,
+      "near_upper_angle": 1.4237807366368305,
+      "near_leg_lower_angle": 1.567900900387757,
+      "near_lower_angle": -0.5462671121660139,
+      "far_leg_upper_angle": 2.1457290678252336,
+      "far_upper_angle": 1.4685395256021412,
+      "far_leg_lower_angle": -2.7050780677886794,
+      "far_lower_angle": -0.35125156250930717,
+      "cloth_root_angle": 0.662080691377934
+    },
+    {
+      "phase": 0.75,
+      "pelvis": [
+        1.287515,
+        -52.35758
+      ],
+      "near_hip": [
+        3.60969,
+        -50.20961
+      ],
+      "far_hip": [
+        -1.03466,
+        -54.50555
+      ],
+      "body_lean": 0.4363582803865188,
+      "near_foot_angle": 0.0800506,
+      "near_wrist": [
+        0.4557442495308032,
+        0.33300368676644787
+      ],
+      "near_arm_hand_angle": -0.06169139999999995,
+      "far_foot_angle": 2.9387131,
+      "far_wrist": [
+        0.3773366432141491,
+        0.5636875462278355
+      ],
+      "far_arm_hand_angle": -1.5661926,
+      "near_leg_upper_angle": 0.9122166704615048,
+      "near_upper_angle": 1.4158648748600946,
+      "near_leg_lower_angle": 1.55111555935719,
+      "near_lower_angle": -0.5532764312541361,
+      "far_leg_upper_angle": 2.1370177534661106,
+      "far_upper_angle": 1.476377863871884,
+      "far_leg_lower_angle": -2.693935726687597,
+      "far_lower_angle": -0.31599411460909776,
+      "cloth_root_angle": 0.66139062901386
+    },
+    {
+      "phase": 0.7569444444444444,
+      "pelvis": [
+        1.3042,
+        -52.418515
+      ],
+      "near_hip": [
+        3.50267,
+        -50.23637
+      ],
+      "far_hip": [
+        -0.89427,
+        -54.60066
+      ],
+      "body_lean": 0.4383695741377207,
+      "near_foot_angle": 0.0579286,
+      "near_wrist": [
+        0.45870665768580005,
+        0.3298378474190437
+      ],
+      "near_arm_hand_angle": -0.06419679999999996,
+      "far_foot_angle": 2.9358422,
+      "far_wrist": [
+        0.37511469507794293,
+        0.5759077287634194
+      ],
+      "far_arm_hand_angle": -1.5291861,
+      "near_leg_upper_angle": 0.9327411387629656,
+      "near_upper_angle": 1.4074218436898742,
+      "near_leg_lower_angle": 1.5349943202486283,
+      "near_lower_angle": -0.560506018817789,
+      "far_leg_upper_angle": 2.128218070190229,
+      "far_upper_angle": 1.4850896111981928,
+      "far_leg_lower_angle": -2.6830262199269836,
+      "far_lower_angle": -0.27898794286921785,
+      "cloth_root_angle": 0.6607299313987989
+    },
+    {
+      "phase": 0.7638888888888888,
+      "pelvis": [
+        1.312665,
+        -52.487449999999995
+      ],
+      "near_hip": [
+        3.37866,
+        -50.27877
+      ],
+      "far_hip": [
+        -0.75333,
+        -54.69613
+      ],
+      "body_lean": 0.44037067124791107,
+      "near_foot_angle": 0.035942,
+      "near_wrist": [
+        0.46187543917329216,
+        0.32652216357716646
+      ],
+      "near_arm_hand_angle": -0.06677710000000003,
+      "far_foot_angle": 2.9316427000000003,
+      "far_wrist": [
+        0.3719742524906252,
+        0.5888238979251674
+      ],
+      "far_arm_hand_angle": -1.4903927000000001,
+      "near_leg_upper_angle": 0.9532837768593757,
+      "near_upper_angle": 1.3984946641254339,
+      "near_leg_lower_angle": 1.519578729553718,
+      "near_lower_angle": -0.5679296658776644,
+      "far_leg_upper_angle": 2.119356389910495,
+      "far_upper_angle": 1.4947299385612822,
+      "far_leg_lower_angle": -2.67234603277498,
+      "far_lower_angle": -0.24019391725493097,
+      "cloth_root_angle": 0.6600983313327378
+    },
+    {
+      "phase": 0.7708333333333334,
+      "pelvis": [
+        1.31376,
+        -52.56354
+      ],
+      "near_hip": [
+        3.23963,
+        -50.33528
+      ],
+      "far_hip": [
+        -0.61211,
+        -54.7918
+      ],
+      "body_lean": 0.44235852238602025,
+      "near_foot_angle": 0.014015999999999994,
+      "near_wrist": [
+        0.465229901089046,
+        0.3230630116222478
+      ],
+      "near_arm_hand_angle": -0.06942379999999992,
+      "far_foot_angle": 2.9261764,
+      "far_wrist": [
+        0.36780799460190716,
+        0.6024302658722266
+      ],
+      "far_arm_hand_angle": -1.4497745,
+      "near_leg_upper_angle": 0.9737649812596699,
+      "near_upper_angle": 1.3891247426846292,
+      "near_leg_lower_angle": 1.504909714610273,
+      "near_lower_angle": -0.5755245517522218,
+      "far_leg_upper_angle": 2.110458435170594,
+      "far_upper_angle": 1.5053551033074248,
+      "far_leg_lower_angle": -2.66189137275707,
+      "far_lower_angle": -0.19957752857078975,
+      "cloth_root_angle": 0.6594952405715389
+    },
+    {
+      "phase": 0.7777777777777778,
+      "pelvis": [
+        1.30832,
+        -52.645934999999994
+      ],
+      "near_hip": [
+        3.08751,
+        -50.40439
+      ],
+      "far_hip": [
+        -0.47087,
+        -54.88748
+      ],
+      "body_lean": 0.4443304541425263,
+      "near_foot_angle": -0.001860500000000001,
+      "near_wrist": [
+        0.46874922950572234,
+        0.319466833304838
+      ],
+      "near_arm_hand_angle": -0.07212849999999993,
+      "far_foot_angle": 2.9195053,
+      "far_wrist": [
+        0.3625042714988172,
+        0.6167156459406339
+      ],
+      "far_arm_hand_angle": -1.4072939,
+      "near_leg_upper_angle": 1.0001678878158216,
+      "near_upper_angle": 1.3793530313593199,
+      "near_leg_lower_angle": 1.4970931895128776,
+      "near_lower_angle": -0.5832695221770933,
+      "far_leg_upper_angle": 2.101550614749892,
+      "far_upper_angle": 1.5170204615218361,
+      "far_leg_lower_angle": -2.651657984661894,
+      "far_lower_angle": -0.15709631823961656,
+      "cloth_root_angle": 0.6589211390699838
+    },
+    {
+      "phase": 0.7847222222222222,
+      "pelvis": [
+        1.2972,
+        -52.733795
+      ],
+      "near_hip": [
+        2.92426,
+        -50.48459
+      ],
+      "far_hip": [
+        -0.32986,
+        -54.983
+      ],
+      "body_lean": 0.4462843290608693,
+      "near_foot_angle": -0.004888700000000003,
+      "near_wrist": [
+        0.4724124892771728,
+        0.3157412309430094
+      ],
+      "near_arm_hand_angle": -0.07488289999999997,
+      "far_foot_angle": 2.9116911,
+      "far_wrist": [
+        0.3559446645006574,
+        0.631658194857925
+      ],
+      "far_arm_hand_angle": -1.3629132,
+      "near_leg_upper_angle": 1.0392870740717155,
+      "near_upper_angle": 1.3692237155260225,
+      "near_leg_lower_angle": 1.5030435069120605,
+      "near_lower_angle": -0.5911392519009482,
+      "far_leg_upper_angle": 2.092659584103541,
+      "far_upper_angle": 1.529781799975786,
+      "far_leg_lower_angle": -2.6416433950983556,
+      "far_lower_angle": -0.1127145982887102,
+      "cloth_root_angle": 0.6583735733626788
+    },
+    {
+      "phase": 0.7916666666666666,
+      "pelvis": [
+        1.281235,
+        -52.82627
+      ],
+      "near_hip": [
+        2.75183,
+        -50.57436
+      ],
+      "far_hip": [
+        -0.18936,
+        -55.07818
+      ],
+      "body_lean": 0.44821720192883596,
+      "near_foot_angle": 0.002428599999999996,
+      "near_wrist": [
+        0.4761995497140889,
+        0.31189441699226356
+      ],
+      "near_arm_hand_angle": -0.07767839999999991,
+      "far_foot_angle": 2.9027957,
+      "far_wrist": [
+        0.34800636606943813,
+        0.6472251802233603
+      ],
+      "far_arm_hand_angle": -1.3165944,
+      "near_leg_upper_angle": 1.0886160075200129,
+      "near_upper_angle": 1.3587767807176085,
+      "near_leg_lower_angle": 1.5203745365949073,
+      "near_lower_angle": -0.599112453018483,
+      "far_leg_upper_angle": 2.0838100554764334,
+      "far_upper_angle": 1.5436944640173316,
+      "far_leg_lower_angle": -2.631842743976231,
+      "far_lower_angle": -0.06639611717237101,
+      "cloth_root_angle": 0.6578532889972748
+    },
+    {
+      "phase": 0.7986111111111112,
+      "pelvis": [
+        1.26128,
+        -52.922515000000004
+      ],
+      "near_hip": [
+        2.57217,
+        -50.67219
+      ],
+      "far_hip": [
+        -0.04961,
+        -55.17284
+      ],
+      "body_lean": 0.45012599800321174,
+      "near_foot_angle": 0.017532299999999994,
+      "near_wrist": [
+        0.48009046989964044,
+        0.307934792949897
+      ],
+      "near_arm_hand_angle": -0.08050659999999998,
+      "far_foot_angle": 2.8928809,
+      "far_wrist": [
+        0.3385614126464034,
+        0.6633731443561722
+      ],
+      "far_arm_hand_angle": -1.2683,
+      "near_leg_upper_angle": 1.1455919760338382,
+      "near_upper_angle": 1.3480543820244755,
+      "near_leg_lower_angle": 1.5466427228287,
+      "near_lower_angle": -0.6071656718725599,
+      "far_leg_upper_angle": 2.0750299175675715,
+      "far_upper_angle": 1.5588141947485945,
+      "far_leg_lower_angle": -2.622253502942395,
+      "far_lower_angle": -0.018101505636916457,
+      "cloth_root_angle": 0.6573589498160373
+    },
+    {
+      "phase": 0.8055555555555556,
+      "pelvis": [
+        1.23817,
+        -53.021685000000005
+      ],
+      "near_hip": [
+        2.38723,
+        -50.77655
+      ],
+      "far_hip": [
+        0.08911,
+        -55.26682
+      ],
+      "body_lean": 0.4520091102418655,
+      "near_foot_angle": 0.03362169999999999,
+      "near_wrist": [
+        0.4840659989838578,
+        0.30387188050043007
+      ],
+      "near_arm_hand_angle": -0.08335919999999997,
+      "far_foot_angle": 2.8820085,
+      "far_wrist": [
+        0.32747780233065366,
+        0.6800438773984933
+      ],
+      "far_arm_hand_angle": -1.2179923,
+      "near_leg_upper_angle": 1.2037114392966866,
+      "near_upper_angle": 1.3370982657088488,
+      "near_leg_lower_angle": 1.5754649226499868,
+      "near_lower_angle": -0.615274558259996,
+      "far_leg_upper_angle": 2.066343579547585,
+      "far_upper_angle": 1.5751969351888586,
+      "far_leg_lower_angle": -2.6128716030419086,
+      "far_lower_angle": 0.032206232652827974,
+      "cloth_root_angle": 0.6568898115419675
+    },
+    {
+      "phase": 0.8125,
+      "pelvis": [
+        1.212755,
+        -53.122925
+      ],
+      "near_hip": [
+        2.19896,
+        -50.88593
+      ],
+      "far_hip": [
+        0.22655,
+        -55.35992
+      ],
+      "body_lean": 0.45386239434112885,
+      "near_foot_angle": 0.041277799999999996,
+      "near_wrist": [
+        0.4881055626976178,
+        0.2997159846385059
+      ],
+      "near_arm_hand_angle": -0.08622750000000001,
+      "far_foot_angle": 2.8702403000000003,
+      "far_wrist": [
+        0.3146201251048046,
+        0.6971650058490506
+      ],
+      "far_arm_hand_angle": -1.1656333,
+      "near_leg_upper_angle": 1.2540129529893305,
+      "near_upper_angle": 1.3259519264942998,
+      "near_leg_lower_angle": 1.5979994043333943,
+      "near_lower_angle": -0.6234168152902531,
+      "far_leg_upper_angle": 2.057778395593881,
+      "far_upper_angle": 1.5928976994435797,
+      "far_leg_lower_angle": -2.6036932124701986,
+      "far_lower_angle": 0.08456531293030727,
+      "cloth_root_angle": 0.6564466177106549
+    },
+    {
+      "phase": 0.8194444444444444,
+      "pelvis": [
+        1.18588,
+        -53.22541
+      ],
+      "near_hip": [
+        2.00931,
+        -50.99883
+      ],
+      "far_hip": [
+        0.36245,
+        -55.45199
+      ],
+      "body_lean": 0.45568436723836814,
+      "near_foot_angle": 0.041151399999999984,
+      "near_wrist": [
+        0.49219155516650703,
+        0.2954775409185745
+      ],
+      "near_arm_hand_angle": -0.0891033,
+      "far_foot_angle": 2.8576382000000002,
+      "far_wrist": [
+        0.299849874191759,
+        0.7146468745318414
+      ],
+      "far_arm_hand_angle": -1.1111855,
+      "near_leg_upper_angle": 1.296868455709297,
+      "near_upper_angle": 1.3146554637445043,
+      "near_leg_lower_angle": 1.6147348795883634,
+      "near_lower_angle": -0.6315684933070511,
+      "far_leg_upper_angle": 2.0493600485907955,
+      "far_upper_angle": 1.6119727270486333,
+      "far_leg_lower_angle": -2.5947150711199174,
+      "far_lower_angle": 0.1390133641795541,
+      "cloth_root_angle": 0.6560272888284491
+    },
+    {
+      "phase": 0.8263888888888888,
+      "pelvis": [
+        1.158395,
+        -53.328265
+      ],
+      "near_hip": [
+        1.82024,
+        -51.11371
+      ],
+      "far_hip": [
+        0.49655,
+        -55.54282
+      ],
+      "body_lean": 0.4574718091500984,
+      "near_foot_angle": 0.0341819,
+      "near_wrist": [
+        0.49630403834936576,
+        0.2911684656746377
+      ],
+      "near_arm_hand_angle": -0.09197809999999995,
+      "far_foot_angle": 2.8442641,
+      "far_wrist": [
+        0.283028820013689,
+        0.7323807901297762
+      ],
+      "far_arm_hand_angle": -1.0546111,
+      "near_leg_upper_angle": 1.3329166024146073,
+      "near_upper_angle": 1.3032517082832331,
+      "near_leg_lower_angle": 1.626430216548828,
+      "near_lower_angle": -0.6397086346050266,
+      "far_leg_upper_angle": 2.0411148917447584,
+      "far_upper_angle": 1.6324763035547867,
+      "far_leg_lower_angle": -2.5859334937289007,
+      "far_lower_angle": 0.19558667909504268,
+      "cloth_root_angle": 0.6556310827382652
+    },
+    {
+      "phase": 0.8333333333333334,
+      "pelvis": [
+        1.13113,
+        -53.430675
+      ],
+      "near_hip": [
+        1.63368,
+        -51.22908
+      ],
+      "far_hip": [
+        0.62858,
+        -55.63227
+      ],
+      "body_lean": 0.45922190696438764,
+      "near_foot_angle": 0.021308399999999998,
+      "near_wrist": [
+        0.5004260495064445,
+        0.28680178137763124
+      ],
+      "near_arm_hand_angle": -0.09484349999999997,
+      "far_foot_angle": 2.8301797,
+      "far_wrist": [
+        0.26298364178229006,
+        0.7506018386395175
+      ],
+      "far_arm_hand_angle": -0.9944945000000001,
+      "near_leg_upper_angle": 1.362796433277918,
+      "near_upper_angle": 1.2917815142549296,
+      "near_leg_lower_angle": 1.633842704566755,
+      "near_lower_angle": -0.6478120136963519,
+      "far_leg_upper_angle": 2.0330686460743,
+      "far_upper_angle": 1.6558431962592435,
+      "far_leg_lower_angle": -2.5773449548881953,
+      "far_lower_angle": 0.2557039723846283,
+      "cloth_root_angle": 0.6552586307335444
+    },
+    {
+      "phase": 0.8402777777777778,
+      "pelvis": [
+        1.104945,
+        -53.531765
+      ],
+      "near_hip": [
+        1.4516,
+        -51.3434
+      ],
+      "far_hip": [
+        0.75829,
+        -55.72013
+      ],
+      "body_lean": 0.4609325056689481,
+      "near_foot_angle": 0.0034701999999999997,
+      "near_wrist": [
+        0.5045388707336799,
+        0.28239015975770204
+      ],
+      "near_arm_hand_angle": -0.09769099999999997,
+      "far_foot_angle": 2.8154469,
+      "far_wrist": [
+        0.2365441216059012,
+        0.7699817006577712
+      ],
+      "far_arm_hand_angle": -0.9269539,
+      "near_leg_upper_angle": 1.3871479581176425,
+      "near_upper_angle": 1.2802887925415871,
+      "near_leg_lower_angle": 1.6377301201283947,
+      "near_lower_angle": -0.6558564038314749,
+      "far_leg_upper_angle": 2.0252477573608982,
+      "far_upper_angle": 1.6859724466039647,
+      "far_leg_lower_angle": -2.568945020276291,
+      "far_lower_angle": 0.32324426597825945,
+      "cloth_root_angle": 0.6549082247417894
+    },
+    {
+      "phase": 0.8472222222222222,
+      "pelvis": [
+        1.08067,
+        -53.63071
+      ],
+      "near_hip": [
+        1.27593,
+        -51.45517
+      ],
+      "far_hip": [
+        0.88541,
+        -55.80625
+      ],
+      "body_lean": 0.462600515339328,
+      "near_foot_angle": -0.018393400000000008,
+      "near_wrist": [
+        0.5086260521646959,
+        0.27794842864395725
+      ],
+      "near_arm_hand_angle": -0.10051219999999994,
+      "far_foot_angle": 2.8001274,
+      "far_wrist": [
+        0.2036271989366813,
+        0.7897915174509282
+      ],
+      "far_arm_hand_angle": -0.852387,
+      "near_leg_upper_angle": 1.4066110827686864,
+      "near_upper_angle": 1.2688137513456346,
+      "near_leg_lower_angle": 1.6388498543453431,
+      "near_lower_angle": -0.6638186210395137,
+      "far_leg_upper_angle": 2.0176780962494965,
+      "far_upper_angle": 1.7224846658404003,
+      "far_leg_lower_angle": -2.5607314115688955,
+      "far_lower_angle": 0.39781148707304825,
+      "cloth_root_angle": 0.6545799764273497
+    },
+    {
+      "phase": 0.8541666666666666,
+      "pelvis": [
+        1.0591650000000001,
+        -53.726645000000005
+      ],
+      "near_hip": [
+        1.10864,
+        -51.56286
+      ],
+      "far_hip": [
+        1.00969,
+        -55.89043
+      ],
+      "body_lean": 0.46422324864834125,
+      "near_foot_angle": -0.04334310000000001,
+      "near_wrist": [
+        0.5126709047797423,
+        0.27349199508506106
+      ],
+      "near_arm_hand_angle": -0.10329860000000002,
+      "far_foot_angle": 2.7842833000000002,
+      "far_wrist": [
+        0.16444633686227964,
+        0.8091423276119415
+      ],
+      "far_arm_hand_angle": -0.7714932000000001,
+      "near_leg_upper_angle": 1.4218261304899575,
+      "near_upper_angle": 1.2573986601521567,
+      "near_leg_lower_angle": 1.6379600580806328,
+      "near_lower_angle": -0.6716750952541238,
+      "far_leg_upper_angle": 2.0103862759889024,
+      "far_upper_angle": 1.7646985228360172,
+      "far_leg_lower_angle": -2.5526993756682073,
+      "far_lower_angle": 0.478705568880004,
+      "cloth_root_angle": 0.6542730325123105
+    },
+    {
+      "phase": 0.8611111111111112,
+      "pelvis": [
+        1.0412649999999999,
+        -53.81874
+      ],
+      "near_hip": [
+        0.95168,
+        -51.66497
+      ],
+      "far_hip": [
+        1.13085,
+        -55.97251
+      ],
+      "body_lean": 0.4657980146143888,
+      "near_foot_angle": -0.06854170000000001,
+      "near_wrist": [
+        0.5166570561696796,
+        0.2690367983328461
+      ],
+      "near_arm_hand_angle": -0.10604179999999996,
+      "far_foot_angle": 2.7679761000000003,
+      "far_wrist": [
+        0.11931925263045357,
+        0.8271065283932555
+      ],
+      "far_arm_hand_angle": -0.6849716,
+      "near_leg_upper_angle": 1.4353315632405848,
+      "near_upper_angle": 1.2460857703943207,
+      "near_leg_lower_angle": 1.637715853516095,
+      "near_lower_angle": -0.6794031912130333,
+      "far_leg_upper_angle": 2.0033976561409976,
+      "far_upper_angle": 1.8119315187421021,
+      "far_leg_lower_angle": -2.5448458367824975,
+      "far_lower_angle": 0.5652266122391894,
+      "cloth_root_angle": 0.6539869101331983
+    },
+    {
+      "phase": 0.8680555555555556,
+      "pelvis": [
+        1.027815,
+        -53.906144999999995
+      ],
+      "near_hip": [
+        0.80698,
+        -51.75998
+      ],
+      "far_hip": [
+        1.24865,
+        -56.05231
+      ],
+      "body_lean": 0.46732238841395024,
+      "near_foot_angle": -0.08501080000000001,
+      "near_wrist": [
+        0.5205696357907103,
+        0.26459965851363976
+      ],
+      "near_arm_hand_angle": -0.10873349999999993,
+      "far_foot_angle": 2.7512679,
+      "far_wrist": [
+        0.0686859779375459,
+        0.842757412990066
+      ],
+      "far_arm_hand_angle": -0.5935217,
+      "near_leg_upper_angle": 1.4558062411513955,
+      "near_upper_angle": 1.2349161514651201,
+      "near_leg_lower_angle": 1.6469146614924643,
+      "near_lower_angle": -0.6869792396011737,
+      "far_leg_upper_angle": 1.9967389543525962,
+      "far_upper_angle": 1.8635028714597468,
+      "far_leg_lower_angle": -2.5371672249063018,
+      "far_lower_angle": 0.656677520506842,
+      "cloth_root_angle": 0.653719902351813
+    },
+    {
+      "phase": 0.875,
+      "pelvis": [
+        1.0196649999999998,
+        -53.988020000000006
+      ],
+      "near_hip": [
+        0.67651,
+        -51.84638
+      ],
+      "far_hip": [
+        1.36282,
+        -56.12966
+      ],
+      "body_lean": 0.46879340942965364,
+      "near_foot_angle": -0.09220730000000002,
+      "near_wrist": [
+        0.5243929185589734,
+        0.26019763549758257
+      ],
+      "near_arm_hand_angle": -0.11136509999999998,
+      "far_foot_angle": 2.7342204000000003,
+      "far_wrist": [
+        0.013122246969270335,
+        0.8552089680859198
+      ],
+      "far_arm_hand_angle": -0.49784269999999997,
+      "near_leg_upper_angle": 1.4834952933522294,
+      "near_upper_angle": 1.223932670548566,
+      "near_leg_lower_angle": 1.6659178176451492,
+      "near_lower_angle": -0.6943814767887924,
+      "far_leg_upper_angle": 1.99043593341758,
+      "far_upper_angle": 1.9187319186531528,
+      "far_leg_lower_angle": -2.5296596578079567,
+      "far_lower_angle": 0.7523561393127467,
+      "cloth_root_angle": 0.6534728626609043
+    },
+    {
+      "phase": 0.8819444444444444,
+      "pelvis": [
+        1.01766,
+        -54.063495
+      ],
+      "near_hip": [
+        0.56222,
+        -51.92263
+      ],
+      "far_hip": [
+        1.4731,
+        -56.20436
+      ],
+      "body_lean": 0.47020825437572805,
+      "near_foot_angle": -0.090702,
+      "near_wrist": [
+        0.5281134941576201,
+        0.25584979492572835
+      ],
+      "near_arm_hand_angle": -0.11392820000000003,
+      "far_foot_angle": 2.7168954000000003,
+      "far_wrist": [
+        -0.04666135327161009,
+        0.86366127206033
+      ],
+      "far_arm_hand_angle": -0.39863380000000004,
+      "near_leg_upper_angle": 1.5175294987899155,
+      "near_upper_angle": 1.2131759482135722,
+      "near_leg_lower_angle": 1.6939726059870406,
+      "near_lower_angle": -0.7015853950137474,
+      "far_leg_upper_angle": 1.9845151191894168,
+      "far_upper_angle": 1.9769366883399524,
+      "far_leg_lower_angle": -2.5223196713536766,
+      "far_lower_angle": 0.8515650856592818,
+      "cloth_root_angle": 0.6532449376722496
+    },
+    {
+      "phase": 0.8888888888888888,
+      "pelvis": [
+        1.02264,
+        -54.13175
+      ],
+      "near_hip": [
+        0.46605,
+        -51.98724
+      ],
+      "far_hip": [
+        1.57923,
+        -56.27626
+      ],
+      "body_lean": 0.47156462393549503,
+      "near_foot_angle": -0.0813623,
+      "near_wrist": [
+        0.5317169813154952,
+        0.25157468920159626
+      ],
+      "near_arm_hand_angle": -0.11641449999999999,
+      "far_foot_angle": 2.6977671,
+      "far_wrist": [
+        -0.1097092298854162,
+        0.8673554809313583
+      ],
+      "far_arm_hand_angle": -0.2970264,
+      "near_leg_upper_angle": 1.5570396224004504,
+      "near_upper_angle": 1.2026892611540736,
+      "near_leg_lower_angle": 1.7300300622249554,
+      "near_lower_angle": -0.7085680785350243,
+      "far_leg_upper_angle": 1.9782637582417537,
+      "far_upper_angle": 2.0374354465381743,
+      "far_leg_lower_angle": -2.5158815775928023,
+      "far_lower_angle": 0.9531717590643555,
+      "cloth_root_angle": 0.6530343071159481
+    },
+    {
+      "phase": 0.8958333333333334,
+      "pelvis": [
+        1.03545,
+        -54.191925
+      ],
+      "near_hip": [
+        0.38995,
+        -52.03869
+      ],
+      "far_hip": [
+        1.68095,
+        -56.34516
+      ],
+      "body_lean": 0.47285982474805366,
+      "near_foot_angle": -0.0669194,
+      "near_wrist": [
+        0.5351901065313215,
+        0.24739279479293746
+      ],
+      "near_arm_hand_angle": -0.11881529999999996,
+      "far_foot_angle": 2.6660601,
+      "far_wrist": [
+        -0.17418161228357792,
+        0.8653224607931712
+      ],
+      "far_arm_hand_angle": -0.19674279999999997,
+      "near_leg_upper_angle": 1.6011560372351672,
+      "near_upper_angle": 1.1925138596551603,
+      "near_leg_lower_angle": 1.77117783647699,
+      "near_lower_angle": -0.7153068611948324,
+      "far_leg_upper_angle": 1.9665523555613247,
+      "far_upper_angle": 2.099546178668005,
+      "far_leg_lower_angle": -2.5154990635661014,
+      "far_lower_angle": 1.053455548019599,
+      "cloth_root_angle": 0.6528414542218988
+    },
+    {
+      "phase": 0.9027777777777778,
+      "pelvis": [
+        1.05694,
+        -54.243174999999994
+      ],
+      "near_hip": [
+        0.33588,
+        -52.07545
+      ],
+      "far_hip": [
+        1.778,
+        -56.4109
+      ],
+      "body_lean": 0.4740906343193088,
+      "near_foot_angle": -0.0484597,
+      "near_wrist": [
+        0.5385205366149028,
+        0.24332400356107953
+      ],
+      "near_arm_hand_angle": -0.12112239999999996,
+      "far_foot_angle": 2.6210271,
+      "far_wrist": [
+        -0.2387753141182265,
+        0.8574976749916654
+      ],
+      "far_arm_hand_angle": -0.09890060000000012,
+      "near_leg_upper_angle": 1.6490101383045266,
+      "near_upper_angle": 1.1826915155495414,
+      "near_leg_lower_angle": 1.8161482518699616,
+      "near_lower_angle": -0.7217780629809384,
+      "far_leg_upper_angle": 1.9487145464697981,
+      "far_upper_angle": 2.1625885997736143,
+      "far_leg_lower_angle": -2.5218595668888426,
+      "far_lower_angle": 1.1512980898567715,
+      "cloth_root_angle": 0.6526660092196042
+    },
+    {
+      "phase": 0.9097222222222222,
+      "pelvis": [
+        1.087945,
+        -54.28466
+      ],
+      "near_hip": [
+        0.30578,
+        -52.09602
+      ],
+      "far_hip": [
+        1.87011,
+        -56.4733
+      ],
+      "body_lean": 0.47525488560156454,
+      "near_foot_angle": -0.026656000000000003,
+      "near_wrist": [
+        0.54169585386427,
+        0.2393886906667064
+      ],
+      "near_arm_hand_angle": -0.12332730000000003,
+      "far_foot_angle": 2.5642335000000003,
+      "far_wrist": [
+        -0.3023840531467443,
+        0.844166705745093
+      ],
+      "far_arm_hand_angle": -0.003998500000000016,
+      "near_leg_upper_angle": 1.6997328860501992,
+      "near_upper_angle": 1.1732639477216849,
+      "near_leg_lower_angle": 1.8640860690067116,
+      "near_lower_angle": -0.7279596525222334,
+      "far_leg_upper_angle": 1.9251448491251761,
+      "far_upper_angle": 2.22588132467729,
+      "far_leg_lower_angle": -2.534590990558313,
+      "far_lower_angle": 1.2461997297726426,
+      "cloth_root_angle": 0.6525066352980455
+    },
+    {
+      "phase": 0.9166666666666666,
+      "pelvis": [
+        1.1309,
+        -54.313585
+      ],
+      "near_hip": [
+        0.30477,
+        -52.09499
+      ],
+      "far_hip": [
+        1.95703,
+        -56.53218
+      ],
+      "body_lean": 0.4763493487811804,
+      "near_foot_angle": -0.0012132000000000046,
+      "near_wrist": [
+        0.5447045727162342,
+        0.23560901547869537
+      ],
+      "near_arm_hand_angle": -0.12542160000000002,
+      "far_foot_angle": 2.4972449,
+      "far_wrist": [
+        -0.3639844422357809,
+        0.8258196040728462
+      ],
+      "far_arm_hand_angle": 0.0874649999999999,
+      "near_leg_upper_angle": 1.7524554499756688,
+      "near_upper_angle": 1.16427307438202,
+      "near_leg_lower_angle": 1.9141368208731204,
+      "near_lower_angle": -0.7338271393530978,
+      "far_leg_upper_angle": 1.8962374421876806,
+      "far_upper_angle": 2.2887424013746114,
+      "far_leg_lower_angle": -2.5533226500351205,
+      "far_lower_angle": 1.3376634508872753,
+      "cloth_root_angle": 0.6523633324764133
+    },
+    {
+      "phase": 0.9236111111111112,
+      "pelvis": [
+        1.203825,
+        -54.307455000000004
+      ],
+      "near_hip": [
+        0.36916,
+        -52.02754
+      ],
+      "far_hip": [
+        2.03849,
+        -56.58737
+      ],
+      "body_lean": 0.47737226457855647,
+      "near_foot_angle": 0.0383821,
+      "near_wrist": [
+        0.5475345288578718,
+        0.23200569533275353
+      ],
+      "near_arm_hand_angle": -0.12739679999999998,
+      "far_foot_angle": 2.4216268000000003,
+      "far_wrist": [
+        -0.4226661150842139,
+        0.8031294709753574
+      ],
+      "far_arm_hand_angle": 0.17499109999999998,
+      "near_leg_upper_angle": 1.80630867417564,
+      "near_upper_angle": 1.1557616520315073,
+      "near_leg_lower_angle": 1.965446533681805,
+      "near_lower_angle": -0.7393590725198633,
+      "far_leg_upper_angle": 1.8623858511305562,
+      "far_upper_angle": 2.350490994926094,
+      "far_leg_lower_angle": -2.5776823799796813,
+      "far_lower_angle": 1.4251888698044757,
+      "cloth_root_angle": 0.6522339104628121
+    },
+    {
+      "phase": 0.9305555555555556,
+      "pelvis": [
+        1.3062500000000001,
+        -54.265485
+      ],
+      "near_hip": [
+        0.49826,
+        -51.89229
+      ],
+      "far_hip": [
+        2.11424,
+        -56.63868
+      ],
+      "body_lean": 0.47832001190098794,
+      "near_foot_angle": 0.0926695,
+      "near_wrist": [
+        0.550175877058159,
+        0.22860168071834475
+      ],
+      "near_arm_hand_angle": -0.12924439999999993,
+      "far_foot_angle": 2.3389445,
+      "far_wrist": [
+        -0.4776560363084292,
+        0.7769275963069047
+      ],
+      "far_arm_hand_angle": 0.2580811999999999,
+      "near_leg_upper_angle": 1.8604234391366272,
+      "near_upper_angle": 1.1477705966173786,
+      "near_leg_lower_angle": 2.017160358266364,
+      "near_lower_angle": -0.7445297076379486,
+      "far_leg_upper_angle": 1.8239843823099278,
+      "far_upper_angle": 2.4104442034551488,
+      "far_leg_lower_angle": -2.6072998399985385,
+      "far_lower_angle": 1.5082789995363564,
+      "cloth_root_angle": 0.6521197062885653
+    },
+    {
+      "phase": 0.9375,
+      "pelvis": [
+        1.4313449999999999,
+        -54.19462
+      ],
+      "near_hip": [
+        0.67867,
+        -51.70329
+      ],
+      "far_hip": [
+        2.18402,
+        -56.68595
+      ],
+      "body_lean": 0.47919028471007,
+      "near_foot_angle": 0.1584506,
+      "near_wrist": [
+        0.5526169913424178,
+        0.22541841580043423
+      ],
+      "near_arm_hand_angle": -0.13095619999999997,
+      "far_foot_angle": 2.2507637000000003,
+      "far_wrist": [
+        -0.5283345094752403,
+        0.7481690994283017
+      ],
+      "far_arm_hand_angle": 0.3362368,
+      "near_leg_upper_angle": 1.913930599587985,
+      "near_upper_angle": 1.1403420100203296,
+      "near_leg_lower_angle": 2.068424168154838,
+      "near_lower_angle": -0.7493184816240981,
+      "far_leg_upper_angle": 1.7814271209891495,
+      "far_upper_angle": 2.4679214778827667,
+      "far_leg_lower_angle": -2.6418024050986824,
+      "far_lower_angle": 1.586435125467102,
+      "cloth_root_angle": 0.6520193829000096
+    },
+    {
+      "phase": 0.9444444444444444,
+      "pelvis": [
+        1.57227,
+        -54.101780000000005
+      ],
+      "near_hip": [
+        0.89699,
+        -51.47457
+      ],
+      "far_hip": [
+        2.24755,
+        -56.72899
+      ],
+      "body_lean": 0.47998026749485495,
+      "near_foot_angle": 0.23252669999999998,
+      "near_wrist": [
+        0.5548480109212693,
+        0.22247875077720267
+      ],
+      "near_arm_hand_angle": -0.13252350000000002,
+      "far_foot_angle": 2.1586498,
+      "far_wrist": [
+        -0.5742406918281445,
+        0.7178988788862191
+      ],
+      "far_arm_hand_angle": 0.40895919999999997,
+      "near_leg_upper_angle": 1.9659616759917273,
+      "near_upper_angle": 1.133517131372654,
+      "near_leg_lower_angle": 2.1183825549951205,
+      "near_lower_angle": -0.753700789233853,
+      "far_leg_upper_angle": 1.7351076293142629,
+      "far_upper_angle": 2.5222426309268275,
+      "far_leg_lower_angle": -2.6808190565049235,
+      "far_lower_angle": 1.659157173456679,
+      "cloth_root_angle": 0.6519320870347363
+    },
+    {
+      "phase": 0.9513888888888888,
+      "pelvis": [
+        1.7222,
+        -53.99391
+      ],
+      "near_hip": [
+        1.13981,
+        -51.22019
+      ],
+      "far_hip": [
+        2.30459,
+        -56.76763
+      ],
+      "body_lean": 0.48068726319034877,
+      "near_foot_angle": 0.3116993,
+      "near_wrist": [
+        0.5568576002642623,
+        0.21980434138006774
+      ],
+      "near_arm_hand_angle": -0.133938,
+      "far_foot_angle": 2.0641683000000004,
+      "far_wrist": [
+        -0.6150679680941984,
+        0.6872181510763604
+      ],
+      "far_arm_hand_angle": 0.4757498,
+      "near_leg_upper_angle": 2.015646051332755,
+      "near_upper_angle": 1.127339324175504,
+      "near_leg_lower_angle": 2.166181894472706,
+      "near_lower_angle": -0.7576543024242447,
+      "far_leg_upper_angle": 1.6854204680196065,
+      "far_upper_angle": 2.5727246138514643,
+      "far_leg_lower_angle": -2.723978210800588,
+      "far_lower_angle": 1.7259475369440023,
+      "cloth_root_angle": 0.6518578186915129
+    },
+    {
+      "phase": 0.9583333333333334,
+      "pelvis": [
+        1.874305,
+        -53.87793
+      ],
+      "near_hip": [
+        1.39374,
+        -50.95417
+      ],
+      "far_hip": [
+        2.35487,
+        -56.80169
+      ],
+      "body_lean": 0.4813088511225959,
+      "near_foot_angle": 0.3927699,
+      "near_wrist": [
+        0.5586359064922958,
+        0.21741778955596722
+      ],
+      "near_arm_hand_angle": -0.13519130000000001,
+      "far_foot_angle": 1.9688847999999999,
+      "far_wrist": [
+        -0.6506504485204742,
+        0.6572481532012696
+      ],
+      "far_arm_hand_angle": 0.5361100000000001,
+      "near_leg_upper_angle": 2.0621155542988525,
+      "near_upper_angle": 1.121848941940655,
+      "near_leg_lower_angle": 2.210967286470749,
+      "near_lower_angle": -0.761155927124096,
+      "far_leg_upper_angle": 1.6327594744680558,
+      "far_upper_angle": 2.6186865449243344,
+      "far_leg_lower_angle": -2.7709084442640357,
+      "far_lower_angle": 1.7863081906169707,
+      "cloth_root_angle": 0.6517948714459854
+    },
+    {
+      "phase": 0.9652777777777778,
+      "pelvis": [
+        2.021745,
+        -53.760774999999995
+      ],
+      "near_hip": [
+        1.64536,
+        -50.69056
+      ],
+      "far_hip": [
+        2.39813,
+        -56.83099
+      ],
+      "body_lean": 0.4818420716937587,
+      "near_foot_angle": 0.47253990000000007,
+      "near_wrist": [
+        0.560172111165508,
+        0.21534071344099273
+      ],
+      "near_arm_hand_angle": -0.13627500000000003,
+      "far_foot_angle": 1.8743646,
+      "far_wrist": [
+        -0.6809372373311319,
+        0.6291015759142362
+      ],
+      "far_arm_hand_angle": 0.5895410999999999,
+      "near_leg_upper_angle": 2.104499788664232,
+      "near_upper_angle": 1.1170883991199425,
+      "near_leg_lower_angle": 2.2518841208925524,
+      "near_lower_angle": -0.7641826645757123,
+      "far_leg_upper_angle": 1.5775182202629068,
+      "far_upper_angle": 2.659446911947471,
+      "far_leg_lower_angle": -2.821238701665006,
+      "far_lower_angle": 1.839738848667132,
+      "cloth_root_angle": 0.6517436145756688
+    },
+    {
+      "phase": 0.9722222222222222,
+      "pelvis": [
+        2.1577,
+        -53.649375
+      ],
+      "near_hip": [
+        1.8813,
+        -50.44339
+      ],
+      "far_hip": [
+        2.4341,
+        -56.85536
+      ],
+      "body_lean": 0.48228438156512565,
+      "near_foot_angle": 0.5478107,
+      "near_wrist": [
+        0.5614551876987488,
+        0.213595421918479
+      ],
+      "near_arm_hand_angle": -0.13718049999999993,
+      "far_foot_angle": 1.7821733,
+      "far_wrist": [
+        -0.7059636601877446,
+        0.6038546159288818
+      ],
+      "far_arm_hand_angle": 0.6355444999999998,
+      "near_leg_upper_angle": 2.1419301552857113,
+      "near_upper_angle": 1.1130997776510723,
+      "near_leg_lower_angle": 2.2880782194559823,
+      "near_lower_angle": -0.7667113964356914,
+      "far_leg_upper_angle": 1.5200911680284945,
+      "far_upper_angle": 2.69432426862707,
+      "far_leg_lower_angle": -2.874596863277489,
+      "far_lower_angle": 1.8857424280646455,
+      "cloth_root_angle": 0.6517028256167503
+    },
+    {
+      "phase": 0.9791666666666666,
+      "pelvis": [
+        2.275335,
+        -53.55067
+      ],
+      "near_hip": [
+        2.08813,
+        -50.22671
+      ],
+      "far_hip": [
+        2.46254,
+        -56.87463
+      ],
+      "body_lean": 0.48263308906775215,
+      "near_foot_angle": 0.6153839999999999,
+      "near_wrist": [
+        0.5624750011672627,
+        0.21220294522361868
+      ],
+      "near_arm_hand_angle": -0.1378994,
+      "far_foot_angle": 1.6938764,
+      "far_wrist": [
+        -0.7258101894664221,
+        0.5825259575717716
+      ],
+      "far_arm_hand_angle": 0.6736215999999999,
+      "near_leg_upper_angle": 2.1735356506934256,
+      "near_upper_angle": 1.1099245351244797,
+      "near_leg_lower_angle": 2.3186944555162183,
+      "near_lower_angle": -0.7687167438852747,
+      "far_leg_upper_angle": 1.460872216446007,
+      "far_upper_angle": 2.7226370127945465,
+      "far_leg_lower_angle": -2.9306119759417153,
+      "far_lower_angle": 1.9238209390979246,
+      "cloth_root_angle": 0.6516723898217514
+    },
+    {
+      "phase": 0.9861111111111112,
+      "pelvis": [
+        2.3678150000000002,
+        -53.471585000000005
+      ],
+      "near_hip": [
+        2.25245,
+        -50.05456
+      ],
+      "far_hip": [
+        2.48318,
+        -56.88861
+      ],
+      "body_lean": 0.4828856425887056,
+      "near_foot_angle": 0.672061,
+      "near_wrist": [
+        0.5632187113084453,
+        0.21118409694699322
+      ],
+      "near_arm_hand_angle": -0.1384234,
+      "far_foot_angle": 1.6110393,
+      "far_wrist": [
+        -0.7405573373072722,
+        0.5660586724305915
+      ],
+      "far_arm_hand_angle": 0.7032737,
+      "near_leg_upper_angle": 2.198445832203304,
+      "near_upper_angle": 1.1076045394688048,
+      "near_leg_lower_angle": 2.342879459507164,
+      "near_lower_angle": -0.7701789323291595,
+      "far_leg_upper_angle": 1.4002559358521538,
+      "far_upper_angle": 2.7437043495142364,
+      "far_leg_lower_angle": -2.988911822012872,
+      "far_lower_angle": 1.9534714715325519,
+      "cloth_root_angle": 0.6516510847562409
+    },
+    {
+      "phase": 0.9930555555555556,
+      "pelvis": [
+        2.428315,
+        -53.419045
+      ],
+      "near_hip": [
+        2.36088,
+        -49.94097
+      ],
+      "far_hip": [
+        2.49575,
+        -56.89712
+      ],
+      "body_lean": 0.4830388388555091,
+      "near_foot_angle": 0.7146433,
+      "near_wrist": [
+        0.5636745712751302,
+        0.21055871579387922
+      ],
+      "near_arm_hand_angle": -0.13874399999999998,
+      "far_foot_angle": 1.5352276,
+      "far_wrist": [
+        -0.7502424648294974,
+        0.5553028940038074
+      ],
+      "far_arm_hand_angle": 0.7240023,
+      "near_leg_upper_angle": 2.2157918824764606,
+      "near_upper_angle": 1.1061823544541292,
+      "near_leg_lower_angle": 2.3597771595304295,
+      "near_lower_angle": -0.7710725510646872,
+      "far_leg_upper_angle": 1.3386353857126265,
+      "far_upper_angle": 2.7568446073292576,
+      "far_leg_lower_angle": -3.0491259311934997,
+      "far_lower_angle": 1.9742003537480406,
+      "cloth_root_angle": 0.6516393944304637
+    }
+  ]
+}

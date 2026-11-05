@@ -96,7 +96,8 @@ public partial class BattleQueueLayoutCheck : Node
         Require(controls.Position.Y+controls.Size.Y<743.4f,$"{cap} 按钮覆盖技能栏");
         Require(Contains(canvas,target.GetRect()),$"{cap} 目标清单越界");
         var label=panel.GetNode("TitleTab").GetChild<Label>(0);
-        Require(label.Text==$"行动队列  {count}/{cap}",$"{cap}/{count} 容量标题未更新");
+        var filled=_manager.get_battle_unit(_player).skill_queue.Count(action=>action.kind!=BattleQueuedSkill.ActionKind.Empty);
+        Require(label.Text==$"行动队列  {filled}/{cap}",$"{cap}/{count} 容量标题未按非空行动更新");
         Require(label.GetThemeFont("font").GetStringSize(label.Text,fontSize:label.GetThemeFontSize("font_size")).X<=label.Size.X,$"{cap} 标题文字溢出");
         CheckCards(slots,cap);CheckCards(execution,cap);
         Require(rows.GetChildCount()==cap,$"{cap} 目标清单数量");

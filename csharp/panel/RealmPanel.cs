@@ -23,6 +23,18 @@ public partial class RealmPanel : Control
     private Label? _nextRealm;
     private Label? _visualHint;
     private Button? _skipAnimation;
+    private readonly List<Control> _presentationSurroundings = [];
+    private VBoxContainer? _presentationLayer;
+    private Label? _presentationPhase;
+    private Tween? _presentationTween;
+    private bool _isPresenting;
+    private string _presentationResult = "";
+    public bool IsPresenting => _isPresenting;
+    private enum PendingPresentation { None, Breakthrough, Completion }
+    private PendingPresentation _pendingPresentation;
+    private Func<bool>? _presentationReadiness;
+    public bool HasPendingPresentation => _pendingPresentation != PendingPresentation.None;
+    public void SetPresentationReadiness(Func<bool> readiness) => _presentationReadiness = readiness;
     private string _observedRealm = "";
     private int _observedBreaths;
     private int _pendingBreathsFrom;
@@ -32,6 +44,7 @@ public partial class RealmPanel : Control
     private float _refreshElapsed;
     private int _previewStage = -1;
     public event Action? PresentationStarted;
+    public event Action? Closed;
 
     public override void _Ready()
     {
@@ -44,7 +57,15 @@ public partial class RealmPanel : Control
 
     public override void _Process(double delta)
     {
-        if (!Visible || _qiVisual?.IsTransitioning == true) return;
+        // 结算先于呈现；长行动和跨月结算结束后才播放，避免动画藏在过渡页下。
+        if (HasPendingPresentation && !_isPresenting && (_presentationReadiness?.Invoke() ?? true))
+        {
+            var pending = _pendingPresentation;
+            _pendingPresentation = PendingPresentation.None;
+            if (pending == PendingPresentation.Breakthrough) PresentBreakthrough();
+            else PresentBreaths();
+        }
+        if (!Visible || _isPresenting || _qiVisual?.IsTransitioning == true) return;
         _refreshElapsed += (float)delta;
         if (_refreshElapsed < .25f) return;
         _refreshElapsed = 0f;
@@ -53,6 +74,7 @@ public partial class RealmPanel : Control
 
     public override void _ExitTree()
     {
+        ResetPresentation();
         UnbindPlayer();
     }
 
@@ -69,6 +91,7 @@ public partial class RealmPanel : Control
     {
         if (_player == target) return;
         UnbindPlayer();
+        _pendingPresentation = PendingPresentation.None;
         _player = target;
         _observedRealm = target.cultivation_realm;
         _observedBreaths = target.yuanxi_count;
@@ -79,6 +102,7 @@ public partial class RealmPanel : Control
     public void show_for(Character target)
     {
         if (!is_unlocked(target)) return;
+        ResetPresentation();
         bind_player(target);
         _previewStage = -1;
         _qiVisual?.StopTransition();
@@ -102,7 +126,7 @@ public partial class RealmPanel : Control
         paper.AddChild(background);
 
         // 同一片气由疏到密；六层以前不叠中心光球，成核后仍保留气的流动。
-        var cloudEye = new Control { MouseFilter = MouseFilterEnum.Ignore, ClipContents = true };
+        var cloudEye = new Control { MouseFilter = MouseFilterEnum.Ignore };
         cloudEye.SetAnchorsPreset(LayoutPreset.FullRect);
         // 主视觉放在纸面正中，为左下加成和右上题字各留一角。
         cloudEye.AnchorLeft = .28f; cloudEye.AnchorTop = .14f; cloudEye.AnchorRight = .72f; cloudEye.AnchorBottom = .86f;
@@ -112,6 +136,7 @@ public partial class RealmPanel : Control
         _qiVisual = new RealmQiVisual();
         _qiVisual.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         cloudEye.AddChild(_qiVisual);
+        _qiVisual.Resized += () => _qiVisual.PivotOffset = _qiVisual.Size * .5f;
 
         var root = new VBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
         root.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
@@ -126,7 +151,9 @@ public partial class RealmPanel : Control
         ButtonStyle(close, false);
         close.Pressed += () => Hide();
         header.AddChild(close);
-        root.AddChild(Separator());
+        var headerRule = Separator();
+        root.AddChild(headerRule);
+        _presentationSurroundings.Add(headerRule);
 
         // 右上题字、左下加成与中部云眼三者互不挤占。
         var content = new Control { SizeFlagsVertical = SizeFlags.ExpandFill, MouseFilter = MouseFilterEnum.Ignore };
@@ -152,12 +179,21 @@ public partial class RealmPanel : Control
             line.HorizontalAlignment = HorizontalAlignment.Center;
             realmInfo.AddChild(line);
         }
+        _presentationLayer = new VBoxContainer { Alignment = BoxContainer.AlignmentMode.Center, MouseFilter = MouseFilterEnum.Ignore, Visible = false };
+        _presentationLayer.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        _presentationLayer.AnchorLeft = .28f; _presentationLayer.AnchorTop = .77f;
+        _presentationLayer.AnchorRight = .72f; _presentationLayer.AnchorBottom = .98f;
+        _presentationLayer.AddThemeConstantOverride("separation", 18);
+        content.AddChild(_presentationLayer);
+        _presentationPhase = Label("", 21, new Color("eee8d5"));
+        _presentationPhase.HorizontalAlignment = HorizontalAlignment.Center;
+        _presentationLayer.AddChild(_presentationPhase);
         _skipAnimation = new Button { Text = "跳过动画", Visible = false, MouseFilter = MouseFilterEnum.Stop };
         _skipAnimation.AddThemeStyleboxOverride("normal", new StyleBoxEmpty());
         _skipAnimation.AddThemeStyleboxOverride("hover", new StyleBoxEmpty());
         _skipAnimation.AddThemeColorOverride("font_color", new Color("c7c1ac"));
         _skipAnimation.Pressed += FinishPresentation;
-        realmInfo.AddChild(_skipAnimation);
+        _presentationLayer.AddChild(_skipAnimation);
 
         var bonus = new VBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
         bonus.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
@@ -176,7 +212,7 @@ public partial class RealmPanel : Control
         _bonusToggle = new Button { Text = "查看累计", MouseFilter = MouseFilterEnum.Stop };
         ButtonStyle(_bonusToggle, false);
         _bonusToggle.AddThemeFontSizeOverride("font_size", 14);
-        _bonusToggle.Pressed += () => { _showCumulativeBonuses = !_showCumulativeBonuses; Refresh(); };
+        _bonusToggle.Pressed += () => { if (_isPresenting) return; _showCumulativeBonuses = !_showCumulativeBonuses; Refresh(); };
         bonusHeader.AddChild(_bonusToggle);
         bonus.AddChild(Label("仅列境界贡献，成长倍率显示增加量", 14, new Color(.81f, .78f, .68f)));
         _bonuses = Label("", 17, new Color(.96f, .94f, .87f));
@@ -200,6 +236,7 @@ public partial class RealmPanel : Control
         _stageRail.AddThemeConstantOverride("separation", 6);
         _stageRail.ZIndex = 20;
         AddChild(_stageRail);
+        _presentationSurroundings.AddRange([poem, realmInfo, bonus, _majorTabs, _stageRail]);
     }
 
     private void Rebuild()
@@ -238,7 +275,7 @@ public partial class RealmPanel : Control
         };
         ButtonStyle(button, current);
         button.SelfModulate = new Color(1f, 1f, 1f, current ? 1f : .70f);
-        button.Pressed += () => { _previewStage = stage; Refresh(); };
+        button.Pressed += () => { if (_isPresenting) return; _previewStage = stage; Refresh(); };
         _stageRail.AddChild(button);
     }
 
@@ -294,33 +331,25 @@ public partial class RealmPanel : Control
         _pendingFrom = previous;
         _pendingTo = newRealm;
         _previewStage = -1;
-        CallDeferred(nameof(PresentBreakthrough));
+        _pendingPresentation = PendingPresentation.Breakthrough;
     }
 
     private void PresentBreakthrough()
     {
         if (!GodotObject.IsInstanceValid(_player) || _qiVisual is null || _player!.cultivation_realm != _pendingTo) return;
-        PresentationStarted?.Invoke();
-        Rebuild();
-        Refresh();
-        Show();
-        MoveToFront();
-        if (_skipAnimation is not null) _skipAnimation.Visible = true;
-        if (_realmCaption is not null) _realmCaption.Visible = false;
-        if (_currentRealm is not null) _currentRealm.Text = "境界突破";
-        if (_nextRealm is not null) _nextRealm.Text = $"{_pendingFrom} → {_pendingTo}";
+        BeginPresentation($"已突破至{_pendingTo}");
         if (_pendingFrom == "云息六层" && _pendingTo == "云息七层")
-            _qiVisual.PlayCondensation(text => { if (_visualHint is not null) _visualHint.Text = text; }, FinishPresentation);
+            _qiVisual.PlayCondensation(SetPresentationPhase, CompletePresentation);
         else if (Index(_pendingTo) >= 7)
         {
-            if (_visualHint is not null) _visualHint.Text = "灵流向外续行，新环逐渐贯通";
-            _qiVisual.PlayPathGrowth(Mathf.Clamp((Index(_pendingFrom) - 6) / 3f, 0, 1), (Index(_pendingTo) - 6) / 3f, FinishPresentation);
+            SetPresentationPhase("灵流向外续行，新环逐渐贯通");
+            _qiVisual.PlayPathGrowth(Mathf.Clamp((Index(_pendingFrom) - 6) / 3f, 0, 1), (Index(_pendingTo) - 6) / 3f, CompletePresentation);
         }
         else
         {
             var amount = CloudAccumulation();
-            if (_visualHint is not null) _visualHint.Text = "气息渐稳，灵云舒展";
-            _qiVisual.PlayAccumulation(Mathf.Max(0f, amount - .025f), amount, FinishPresentation);
+            SetPresentationPhase("气息渐稳，灵云舒展");
+            _qiVisual.PlayAccumulation(Mathf.Max(0f, amount - .025f), amount, CompletePresentation);
         }
     }
 
@@ -333,24 +362,110 @@ public partial class RealmPanel : Control
         _pendingBreathsFrom = previous;
         _pendingBreathsTo = _observedBreaths;
         _previewStage = -1;
-        CallDeferred(nameof(PresentBreaths));
+        _pendingPresentation = PendingPresentation.Completion;
     }
 
     private void PresentBreaths()
     {
         if (!GodotObject.IsInstanceValid(_player) || !_player!.is_yuanxi_realm() || _qiVisual is null) return;
+        BeginPresentation(_pendingBreathsTo == 9 ? "云息十层圆满" : "归元息已成");
+        SetPresentationPhase(_pendingBreathsTo == 9 ? "九息相续，气机圆融" : "环流分出新息，渐与已有气息相和");
+        _qiVisual.PlayBreathGain(_pendingBreathsFrom, _pendingBreathsTo, CompletePresentation);
+    }
+
+    private void BeginPresentation(string result)
+    {
+        var wasVisible = Visible;
+        ResetPresentation();
+        _isPresenting = true;
+        _presentationResult = result;
         PresentationStarted?.Invoke();
-        Rebuild(); Refresh(); Show(); MoveToFront();
-        if (_skipAnimation is not null) _skipAnimation.Visible = true;
-        if (_currentRealm is not null) _currentRealm.Text = _pendingBreathsTo == 9 ? "云息十层圆满" : "归元息已成";
-        if (_nextRealm is not null) _nextRealm.Text = _pendingBreathsTo == 9 ? "后续　准备铸玄基" : $"归元息　{_pendingBreathsTo}／九息";
-        if (_visualHint is not null) _visualHint.Text = _pendingBreathsTo == 9 ? "九息相续，气机圆融" : "环流分出新息，渐与已有气息相和";
-        _qiVisual.PlayBreathGain(_pendingBreathsFrom, _pendingBreathsTo, FinishPresentation);
+        // 不提前刷新新境界的说明和收益；演出结束后再揭示结果。
+        foreach (var control in _presentationSurroundings)
+        {
+            control.Visible = wasVisible;
+            control.Modulate = new Color(1, 1, 1, wasVisible ? 1 : 0);
+        }
+        _presentationLayer!.Show();
+        _presentationLayer.Modulate = new Color(1, 1, 1, 0);
+        _presentationPhase!.AddThemeFontSizeOverride("font_size", 21);
+        _presentationPhase.Modulate = Colors.White;
+        _skipAnimation!.Show();
+        Show(); MoveToFront();
+        _presentationTween = CreateTween().SetParallel();
+        foreach (var control in _presentationSurroundings)
+            _presentationTween.TweenProperty(control, "modulate:a", 0f, .3);
+        _presentationTween.TweenProperty(_presentationLayer, "modulate:a", 1f, .3);
+        _presentationTween.TweenMethod(Callable.From<float>(SetPresentationFocus), 0f, 1f, .4)
+            .SetTrans(Tween.TransitionType.Sine).SetEase(Tween.EaseType.InOut);
+        _presentationTween.Chain().TweenCallback(Callable.From(() =>
+        {
+            foreach (var control in _presentationSurroundings) control.Hide();
+        }));
+    }
+
+    private void SetPresentationPhase(string text)
+    {
+        if (_presentationPhase is not null) _presentationPhase.Text = text;
+    }
+
+    private void SetPresentationFocus(float amount)
+    {
+        if (_qiVisual is null) return;
+        _qiVisual.PivotOffset = _qiVisual.Size * .5f;
+        _qiVisual.Scale = Vector2.One * (1f + .65f * amount);
+        _qiVisual.SetPresentationFocus(amount);
+    }
+
+    private void CompletePresentation()
+    {
+        if (!_isPresenting) return;
+        _qiVisual?.StopTransition();
+        _presentationTween?.Kill();
+        _presentationTween = CreateTween();
+        // 先看清稳定后的形态，再出现新境界；其余说明最后恢复。
+        _presentationTween.TweenInterval(.45);
+        _presentationTween.TweenProperty(_presentationPhase!, "modulate:a", 0f, .15);
+        _presentationTween.TweenCallback(Callable.From(() =>
+        {
+            _presentationPhase!.Text = _presentationResult;
+            _presentationPhase.AddThemeFontSizeOverride("font_size", 32);
+        }));
+        _presentationTween.TweenProperty(_presentationPhase!, "modulate:a", 1f, .2);
+        _presentationTween.TweenInterval(1.0);
+        _presentationTween.TweenCallback(Callable.From(() =>
+        {
+            Rebuild(); Refresh();
+            foreach (var control in _presentationSurroundings)
+            {
+                control.Show(); control.Modulate = new Color(1, 1, 1, 0);
+            }
+        }));
+        _presentationTween.TweenProperty(_presentationLayer!, "modulate:a", 0f, .4);
+        _presentationTween.Parallel().TweenMethod(Callable.From<float>(SetPresentationFocus), 1f, 0f, .4)
+            .SetTrans(Tween.TransitionType.Sine).SetEase(Tween.EaseType.InOut);
+        foreach (var control in _presentationSurroundings)
+            _presentationTween.Parallel().TweenProperty(control, "modulate:a", 1f, .4);
+        _presentationTween.TweenCallback(Callable.From(FinishPresentation));
+    }
+
+    private void ResetPresentation()
+    {
+        _presentationTween?.Kill(); _presentationTween = null;
+        _qiVisual?.StopTransition();
+        _isPresenting = false;
+        foreach (var control in _presentationSurroundings)
+        {
+            control.Show(); control.Modulate = Colors.White;
+        }
+        _presentationLayer?.Hide();
+        if (_skipAnimation is not null) _skipAnimation.Visible = false;
+        SetPresentationFocus(0f);
     }
 
     private void FinishPresentation()
     {
-        _qiVisual?.StopTransition();
+        ResetPresentation();
         Rebuild();
         Refresh();
     }
@@ -358,8 +473,9 @@ public partial class RealmPanel : Control
     private void OnVisibilityChanged()
     {
         if (Visible) return;
-        _qiVisual?.StopTransition();
-        if (_skipAnimation is not null) _skipAnimation.Visible = false;
+        _pendingPresentation = PendingPresentation.None;
+        ResetPresentation();
+        Closed?.Invoke();
     }
 
     private static int Index(string realm)

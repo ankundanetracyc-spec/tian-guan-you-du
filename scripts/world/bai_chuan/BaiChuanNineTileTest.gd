@@ -5,6 +5,8 @@ signal map_zoom_changed(zoom: float, level: int)
 
 const TILE_SIZE := 1254.0
 const WORLD_SIZE := TILE_SIZE * 3.0
+const FreeWorldScale = preload("res://gdscripts/world/BaiChuanWorldScale.gd")
+const LOCATION_NAMEPLATE_STYLE = preload("res://scripts/ui/WorldLocationNameplateStyle.gd")
 const FORMAL_ZOOM_LEVELS := [0.24, 0.48, 0.96]
 const FORMAL_DOUBLE_CLICK_WINDOW_MS := 450
 const FAR_ZOOM_FILL := 0.90
@@ -64,6 +66,34 @@ var hover_id := ""
 var hit_mask_cache: Dictionary = {}
 var _nameplate_texture: Texture2D
 var display_layout: Dictionary = {}
+
+func _is_free_world() -> bool:
+	return is_in_group("free_world_map_presentation")
+
+func get_world_size() -> float:
+	return FreeWorldScale.MAP_PIXELS if _is_free_world() else WORLD_SIZE
+
+func get_tile_size() -> float:
+	return get_world_size() / float(_art_columns())
+
+func _art_columns() -> int:
+	return FreeWorldScale.ART_COLUMNS if _is_free_world() else 3
+
+func _background_files() -> Array[String]:
+	var files: Array[String] = []
+	if _is_free_world():
+		for row in FreeWorldScale.ART_COLUMNS:
+			for column in FreeWorldScale.ART_COLUMNS:
+				files.append("bc_r%dc%d.png" % [row, column])
+	else:
+		files.assign(TILE_FILES)
+	return files
+
+func _background_tile_path(file: String) -> String:
+	return FreeWorldScale.ART_BASE + "tiles/" + file if _is_free_world() else _art_base + "tiles/" + file
+
+func _background_master_path() -> String:
+	return FreeWorldScale.ART_BASE + FreeWorldScale.MASTER_FILE if _is_free_world() else _art_base + "master_3762.png"
 
 class EntranceHitButton extends Button:
 	var silhouette: BitMap
@@ -191,7 +221,8 @@ class WorldInk extends Node2D:
 				draw_arc(marks[i], 3.0 if junctions[i] else 2.5, 0, TAU, 16, Color(0.40, 0.33, 0.24, 0.82), 1.0, true)
 
 func _ready() -> void:
-	# Only the isolated preview scene adopts the pending art.
+	# Reuse the reviewed location art; the free-world branch supplies its own
+	# terrain tiles and entrance layout while the old preview keeps its extent.
 	_art_base = "res://textures/world/bai_chuan/acceptance_20261030/"
 	_whole_mode = true
 	if is_in_group("node_world_map_presentation"):
@@ -215,6 +246,7 @@ func _ready() -> void:
 	_nameplate_texture = _image_texture(_art_base+"nameplates/blank_48x152.png")
 	_adapt_acceptance_presentation()
 	_apply_display_layout()
+	if _is_free_world(): _apply_free_world_layout()
 	if data.is_empty():
 		push_error("百川地图测试：规划数据未能读取")
 		_return_to_menu.call_deferred()
@@ -225,20 +257,23 @@ func _ready() -> void:
 		var border := ColorRect.new()
 		border.name = "MapMargin"
 		border.position = Vector2.ONE * -2500.0
-		border.size = Vector2.ONE * (WORLD_SIZE + 5000.0)
-		border.color = Color("b9ad82")
+		border.size = Vector2.ONE * (get_world_size() + 5000.0)
+		border.color = Color("d7d6ca") if _is_free_world() else Color("b9ad82")
 		border.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		world.add_child(border)
-	for i in TILE_FILES.size():
-		var texture := _image_texture(_art_base+"tiles/"+TILE_FILES[i])
+	var background_files := _background_files()
+	var art_columns := _art_columns()
+	for i in background_files.size():
+		var texture := _image_texture(_background_tile_path(background_files[i]))
 		if texture == null:
 			continue
 		_textures.append(texture)
 		var tile := Sprite2D.new()
-		tile.name = "Background" + str(i / 3 + 1) + str(i % 3 + 1)
+		tile.name = "Background" + str(i / art_columns + 1) + str(i % art_columns + 1)
 		tile.centered = false
 		tile.texture = texture
-		tile.position = Vector2(i % 3, floori(i / 3.0)) * TILE_SIZE
+		tile.position = Vector2(i % art_columns, floori(float(i) / art_columns)) * get_tile_size()
+		if _is_free_world(): tile.scale = Vector2.ONE * get_tile_size() / Vector2(texture.get_size())
 		world.add_child(tile)
 	_layout_nameplates()
 	ink = WorldInk.new()
@@ -291,10 +326,17 @@ func _layout_nameplates() -> void:
 	var occupied: Array[Rect2] = []
 	for row: Dictionary in presentation.placements:
 		occupied.append(Rect2(row.rect[0],row.rect[1],row.rect[2],row.rect[3]).grow(4))
-	for point: Array in display_layout.transitPositions.values():
-		occupied.append(Rect2(float(point[0])-6,float(point[1])-6,12,12))
+	if not _is_free_world():
+		for point: Array in display_layout.transitPositions.values():
+			occupied.append(Rect2(float(point[0])-6,float(point[1])-6,12,12))
 	var ground: Array[Image] = []
-	for texture in _textures: ground.append(texture.get_image())
+	for texture in _textures:
+		var pixels := texture.get_image()
+		# Name placement needs only a coarse water-colour sample. Avoid retaining
+		# Full-resolution CPU copies alongside the final terrain textures.
+		if _is_free_world() and maxi(pixels.get_width(), pixels.get_height()) > 256:
+			pixels.resize(256, 256, Image.INTERPOLATE_BILINEAR)
+		ground.append(pixels)
 	for row: Dictionary in presentation.placements:
 		row.labelSize = 18 if row.get("level") == 1 else (16 if row.drawIcon else 14)
 		var dimensions := Vector2(row.labelSize+16,str(row.name).length()*(row.labelSize+4)+16)
@@ -306,15 +348,14 @@ func _layout_nameplates() -> void:
 				for vertical in [0,-28,28,-60,60,-100,100]:
 					var x: float = icon.end.x+distance if side == 1 else icon.position.x-distance-dimensions.x
 					var candidate := Rect2(Vector2(x,icon.end.y-dimensions.y+vertical),dimensions)
-					if not Rect2(Vector2.ONE*4,Vector2.ONE*(WORLD_SIZE-8)).encloses(candidate): continue
+					if not Rect2(Vector2.ONE*4,Vector2.ONE*(get_world_size()-8)).encloses(candidate): continue
 					var score := float(distance)+absf(vertical)*0.7+(0 if side == 1 else 12)
 					for obstacle in occupied:
 						if candidate.grow(3).intersects(obstacle): score += 100000+candidate.intersection(obstacle).get_area()
 					for sy in [0.15,0.5,0.85]:
 						for sx in [0.2,0.8]:
 							var point := candidate.position+candidate.size*Vector2(sx,sy)
-							var tile_index := floori(point.y/TILE_SIZE)*3+floori(point.x/TILE_SIZE)
-							var color := ground[tile_index].get_pixel(int(point.x)%int(TILE_SIZE),int(point.y)%int(TILE_SIZE))
+							var color := _background_color_at(point, ground)
 							if color.b > color.r*1.15 and color.b > color.g*1.04: score += 3000
 					if score < best_score:
 						best_score = score
@@ -322,19 +363,41 @@ func _layout_nameplates() -> void:
 		row.labelRect = [best.position.x,best.position.y,best.size.x,best.size.y]
 		occupied.append(best)
 
+func _apply_free_world_layout() -> void:
+	# Spread anchors and curves, retaining each building's authored dimensions
+	# and its local offset from the entrance. Labels are laid out afterwards.
+	var free_layout = JSON.parse_string(FileAccess.get_file_as_string(FreeWorldScale.LAYOUT_PATH))
+	if not free_layout is Dictionary:
+		push_error("百川自由地图：地点布局数据加载失败")
+		return
+	for row: Dictionary in presentation.placements:
+		var old_anchor := Vector2(row.drawPos[0], row.drawPos[1])
+		var placement: Dictionary = free_layout.locations[row.id]
+		var anchor := Vector2(placement.drawPos[0], placement.drawPos[1])
+		row.drawPos = [anchor.x, anchor.y]
+		row.rect = [placement.rect[0], placement.rect[1], placement.rect[2] - placement.rect[0], placement.rect[3] - placement.rect[1]]
+		row.labelRect[0] = anchor.x + float(row.labelRect[0]) - old_anchor.x
+		row.labelRect[1] = anchor.y + float(row.labelRect[1]) - old_anchor.y
+		if row.has("approach"):
+			for p: Array in row.approach:
+				p[0] = anchor.x + float(p[0]) - old_anchor.x
+				p[1] = anchor.y + float(p[1]) - old_anchor.y
+	display_layout = free_layout
+	presentation.displayEdges = display_layout.displayEdges
+
+func _background_color_at(point: Vector2, ground: Array[Image]) -> Color:
+	var tile_size := get_tile_size()
+	var columns := _art_columns()
+	var tile_cell := Vector2i((point / tile_size).floor()).clamp(Vector2i.ZERO, Vector2i.ONE * (columns - 1))
+	var tile_index := tile_cell.y * columns + tile_cell.x
+	if tile_index >= ground.size(): return Color("e8dcc0")
+	var source := ground[tile_index]
+	var uv := (point / tile_size - Vector2(tile_cell)).clamp(Vector2.ZERO, Vector2.ONE)
+	var pixel := Vector2i(uv * Vector2(source.get_size())).clamp(Vector2i.ZERO, source.get_size() - Vector2i.ONE)
+	return source.get_pixelv(pixel)
+
 func _nameplate_style(fill: String, _border: String) -> StyleBoxTexture:
-	var style := StyleBoxTexture.new()
-	style.texture = _nameplate_texture
-	style.texture_margin_left = 7
-	style.texture_margin_right = 7
-	style.texture_margin_top = 10
-	style.texture_margin_bottom = 10
-	style.modulate_color = Color.WHITE if fill == "ead3a3" else Color(1.04,1.01,0.94)
-	style.content_margin_left = 5
-	style.content_margin_right = 5
-	style.content_margin_top = 6
-	style.content_margin_bottom = 6
-	return style
+	return LOCATION_NAMEPLATE_STYLE.create(fill != "ead3a3", _nameplate_texture)
 
 func _image_texture(path: String) -> Texture2D:
 	# Read original PNG bytes without import timing dependencies or resampling.
@@ -346,7 +409,7 @@ func _image_texture(path: String) -> Texture2D:
 	return ImageTexture.create_from_image(source)
 
 func _point(pos: Array) -> Vector2:
-	return Vector2(float(pos[0]), float(pos[1])) * WORLD_SIZE / 100.0
+	return Vector2(float(pos[0]), float(pos[1])) * get_world_size() / 100.0
 
 func _apply_entrance_art() -> void:
 	if bool(presentation.get("nodesIntegrated",false)):
@@ -372,6 +435,10 @@ func _apply_entrance_art() -> void:
 		row.rect = [roundf(anchor[0]+offset[0]-dimensions[0]*pivot[0]), roundf(anchor[1]+offset[1]-dimensions[1]*pivot[1]), dimensions[0], dimensions[1]]
 
 func _build_routes() -> void:
+	if _is_free_world():
+		ink.paths_visible = false
+		ink.marks_visible = false
+		return
 	for row: Dictionary in presentation.placements:
 		if row.has("approach"):
 			var approach := PackedVector2Array()
@@ -648,7 +715,7 @@ func _build_hud() -> void:
 	mini.gui_input.connect(_mini_input)
 	mini_panel.add_child(mini)
 	var atlas_view := TextureRect.new()
-	atlas_view.texture = _image_texture(_art_base+"master_3762.png")
+	atlas_view.texture = _image_texture(_background_master_path())
 	atlas_view.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	atlas_view.size = Vector2(180, 180)
 	atlas_view.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -794,7 +861,7 @@ func _zoom_for_level(level: int, viewport_size: Vector2) -> float:
 	var bounded_level := clampi(level, 0, FORMAL_ZOOM_LEVELS.size() - 1)
 	if bounded_level == 0:
 		var safe_rect := _map_safe_rect_for_viewport(viewport_size)
-		var fit_zoom := minf(safe_rect.size.x, safe_rect.size.y) * FAR_ZOOM_FILL / WORLD_SIZE
+		var fit_zoom := minf(safe_rect.size.x, safe_rect.size.y) * FAR_ZOOM_FILL / get_world_size()
 		return minf(FORMAL_ZOOM_LEVELS[0], maxf(fit_zoom, 0.01))
 	return FORMAL_ZOOM_LEVELS[bounded_level]
 
@@ -825,9 +892,9 @@ func _update_camera() -> void:
 	var safe_rect := _map_safe_rect_for_viewport(viewport_size)
 	var margin := viewport_world_size * 0.5 if formal_map else Vector2.ZERO
 	var lower := -margin
-	var limits := (Vector2.ONE * WORLD_SIZE + margin - viewport_world_size).max(lower)
+	var limits := (Vector2.ONE * get_world_size() + margin - viewport_world_size).max(lower)
 	if formal_map and zoom_level == 0:
-		lower = Vector2.ONE * WORLD_SIZE - safe_rect.end / world_zoom
+		lower = Vector2.ONE * get_world_size() - safe_rect.end / world_zoom
 		limits = -safe_rect.position / world_zoom
 	camera_pos = camera_pos.clamp(lower, limits)
 	if formal_map:
@@ -837,8 +904,8 @@ func _update_camera() -> void:
 	world.position = -camera_pos * world_zoom
 	world.scale = Vector2.ONE * world_zoom
 	if is_instance_valid(mini_frame):
-		mini_frame.position = camera_pos / WORLD_SIZE * 180.0
-		mini_frame.size = viewport_world_size.min(Vector2.ONE * WORLD_SIZE) / WORLD_SIZE * 180.0
+		mini_frame.position = camera_pos / get_world_size() * 180.0
+		mini_frame.size = viewport_world_size.min(Vector2.ONE * get_world_size()) / get_world_size() * 180.0
 	_last_camera_safe_rect = safe_rect
 
 func _on_viewport_size_changed() -> void:
@@ -852,7 +919,7 @@ func _on_viewport_size_changed() -> void:
 		if can_preserve_center:
 			camera_pos = center_world_position - get_map_safe_rect().get_center() / world_zoom
 		else:
-			camera_pos = Vector2.ONE * WORLD_SIZE * 0.5 - get_map_safe_rect().get_center() / world_zoom
+			camera_pos = Vector2.ONE * get_world_size() * 0.5 - get_map_safe_rect().get_center() / world_zoom
 	_update_camera()
 	_queue_formal_details_layout()
 	if formal_far_view:
@@ -860,7 +927,7 @@ func _on_viewport_size_changed() -> void:
 
 func _mini_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		camera_pos = event.position.clamp(Vector2.ZERO, Vector2.ONE * 180.0) / 180.0 * WORLD_SIZE - get_viewport_world_size() * 0.5
+		camera_pos = event.position.clamp(Vector2.ZERO, Vector2.ONE * 180.0) / 180.0 * get_world_size() - get_viewport_world_size() * 0.5
 		_update_camera()
 		mini.accept_event()
 

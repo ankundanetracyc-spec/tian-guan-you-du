@@ -54,7 +54,15 @@ public partial class MainScene
     private void resolve_world_encounter_and_continue()
     {
         if (!initialize_road_encounter_clock()) return;
-        _roadEncounterClock!.Call("resolve_encounter");
+        var resolvedId = _worldEncounterState.GetValueOrDefault("pending", new Dictionary()).AsGodotDictionary().GetValueOrDefault("id", "").AsString();
+        if (_nodeWorldMap?.HasMethod("resolve_visible_encounter") == true)
+            _nodeWorldMap.Call("resolve_visible_encounter", resolvedId);
+        // A visible marker was already removed from the distance clock when it
+        // appeared. Resolving it later must not consume a newer waiting event.
+        var clockPending = _roadEncounterClock!.Call("persistent_state").AsGodotDictionary()
+            .GetValueOrDefault("pending", new Dictionary()).AsGodotDictionary();
+        if (clockPending.GetValueOrDefault("id", "").AsString() == resolvedId)
+            _roadEncounterClock.Call("resolve_encounter");
         _worldEncounterState["clock"] = _roadEncounterClock.Call("persistent_state").AsGodotDictionary();
         _worldEncounterState.Remove("pending");
         _worldEncounterState.Remove("enemy_human");

@@ -49,6 +49,10 @@ public partial class BaiChuanFormalDoubleClickSmoke : Node
         for (var i = 0; i < count; i++) await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
     }
 
+    // Frame counts are not elapsed time on fast/uncapped renderers.
+    private async Task ExpireClickPair() =>
+        await ToSignal(GetTree().CreateTimer((DoubleClickWindowMs + 60) / 1000.0), SceneTreeTimer.SignalName.Timeout);
+
     private async Task MoveMouse(Vector2 point, Vector2 relative = default, bool leftHeld = false)
     {
         Input.ParseInputEvent(new InputEventMouseMotion
@@ -222,6 +226,8 @@ public partial class BaiChuanFormalDoubleClickSmoke : Node
             typeof(MainScene).GetField("_skipExitSave", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(main, true);
             var stage = typeof(MainScene).GetField("_qingxi_prologue", BindingFlags.Instance | BindingFlags.NonPublic)!;
             stage.SetValue(main, Enum.Parse(stage.FieldType, "Departed"));
+            typeof(MainScene).GetField("_baishiLecture", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(main, null);
+            (typeof(MainScene).GetField("story_dialogue", BindingFlags.Instance | BindingFlags.NonPublic)!.GetValue(main) as Control)?.Hide();
             Invoke(main, "open_world");
             await Frames(8);
 
@@ -276,7 +282,7 @@ public partial class BaiChuanFormalDoubleClickSmoke : Node
                 Check(SelectedNode(map) == targetA.Id, $"縮放档 {level} 单击未选中 {targetA.Name}。" );
                 Check(!map.Call("is_traveling").AsBool() && travelStarted == 0 && enteredIds.Count == 0,
                     $"缩放档 {level} 单击启动了行旅或地点进入。" );
-                await Frames(30); // Let the 450 ms click-pair window expire before the next tier.
+                await ExpireClickPair();
             }
 
             // A wheel gesture between two clicks on the same node must break the double-click pair.
@@ -288,7 +294,7 @@ public partial class BaiChuanFormalDoubleClickSmoke : Node
             await Click(map, targetA);
             Check(SelectedNode(map) == targetA.Id && travelStarted == 0 && enteredIds.Count == 0,
                 "节点单击、滚轮、同节点单击被误判为双击。" );
-            await Frames(30);
+            await ExpireClickPair();
 
             // Changing from one node hotspot to another cannot be mistaken for a double-click.
             await SetZoom(map, 2);
@@ -298,7 +304,7 @@ public partial class BaiChuanFormalDoubleClickSmoke : Node
             await Click(map, targetB);
             Check(SelectedNode(map) == targetB.Id && CurrentNode(map) == initialNode && travelStarted == 0 && enteredIds.Count == 0,
                 "连续点击不同节点被误判为双击或没有选中第二个节点。" );
-            await Frames(30);
+            await ExpireClickPair();
 
             // A drag over a real node hotspot pans the map, but never counts as the first click of a pair.
             await FocusPlace(map, targetA);
@@ -317,7 +323,7 @@ public partial class BaiChuanFormalDoubleClickSmoke : Node
             await Click(map, targetA);
             Check(!map.Call("is_traveling").AsBool() && travelStarted == 0,
                 "拖拽被错误记录为双击的第一下。" );
-            await Frames(30);
+            await ExpireClickPair();
 
             // A click made while encounter-blocked is discarded. After unlock, one fresh click is still only a selection.
             await SetZoom(map, 0);
@@ -338,10 +344,9 @@ public partial class BaiChuanFormalDoubleClickSmoke : Node
             await Click(map, targetA, useNameplate: true);
             Check(map.Call("is_traveling").AsBool() && travelStarted == 1,
                 "同一节点先点图标再点名牌没有启动行旅。" );
-            var travelButton = map.Get("travel_button").AsGodotObject() as Button ?? throw new InvalidOperationException("行旅按钮缺失。" );
             var enterButton = map.Get("enter_button").AsGodotObject() as Button ?? throw new InvalidOperationException("进入按钮缺失。" );
-            Check(travelButton.Disabled && enterButton.Disabled,
-                "行旅中操作按钮没有锁定。" );
+            Check(enterButton.Disabled && !enterButton.Visible && map.GetNodeOrNull("WorldMapDetails") is null,
+                "行旅中仍显示地点入口，或旧右上角操作框仍存在。" );
 
             // While the route is moving, a same-node double-click cannot enter the origin or start another route.
             await DoubleClick(map, initialPlace);
@@ -356,13 +361,13 @@ public partial class BaiChuanFormalDoubleClickSmoke : Node
             map.Call("_refresh_actions");
             await FocusPlace(map, targetB);
             await Click(map, targetB);
-            Check(map.Get("travel_busy").AsBool() && travelStarted == 1, "行旅锁期间首击清除了锁状态或启动了额外行旅。" );
+            Check(map.Get("travel_busy").AsBool() && travelStarted == 1, $"行旅锁期间首击清除了锁状态或启动了额外行旅：busy={map.Get("travel_busy")} started={travelStarted} current={CurrentNode(map)}。" );
             map.Set("travel_busy", false);
             map.Call("_refresh_actions");
             await Click(map, targetB);
             Check(!map.Call("is_traveling").AsBool() && travelStarted == 1,
                 "行旅锁期间的首击被保留，解锁后一次点击就误启了行旅。" );
-            await Frames(30);
+            await ExpireClickPair();
 
             // Restore the fresh-start location so the final enter test uses the known unlocked, enterable place.
             var resetState = new GDictionary

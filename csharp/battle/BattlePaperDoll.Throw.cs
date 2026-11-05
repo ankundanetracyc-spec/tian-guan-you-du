@@ -17,7 +17,7 @@ public partial class BattlePaperDoll
 
     public Vector2 throw_cast_origin()
     {
-        var point = _sideFemale ? new Vector2(710, -1100) : new Vector2(770, -1130);
+        var point = _queueAvatar?.HandAnchor ?? (_sideFemale ? new Vector2(710, -1100) : new Vector2(770, -1130));
         if (side_ink_faces_left()) point.X = -point.X;
         return side_ink_visual_transform() * point;
     }

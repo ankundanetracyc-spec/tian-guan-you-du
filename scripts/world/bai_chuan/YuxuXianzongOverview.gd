@@ -12,6 +12,8 @@ var _admission_member := false
 var _admission_current_rank := ""
 var _has_other_affiliation := false
 
+const LOCATION_NAMEPLATE_STYLE = preload("res://scripts/ui/WorldLocationNameplateStyle.gd")
+
 const PEAK_LABELS := {
 	"heguang": "和\n光\n峰",
 	"guanfu": "观\n复\n峰",
@@ -39,13 +41,14 @@ func _ready() -> void:
 		if child is Button:
 			var peak_id := str(child.get_meta("peak_id", ""))
 			child.pressed.connect(_on_peak_pressed.bind(peak_id))
-			# 宗门内景沿用地点标签：竖排以贴合峰位，文字统一使用黑色。
+			# 峰名直接复用大世界地点纸签，竖排文字保留深墨色。
 			child.offset_left = -30.0
 			child.offset_top = -68.0
 			child.offset_right = 30.0
 			child.offset_bottom = 68.0
 			child.add_theme_stylebox_override("normal", _peak_label_style(false))
 			child.add_theme_stylebox_override("hover", _peak_label_style(true))
+			child.add_theme_stylebox_override("pressed", _peak_label_style(true))
 			var icon := child.get_node_or_null("Icon") as Control
 			if icon != null:
 				icon.hide()
@@ -57,7 +60,7 @@ func _ready() -> void:
 				title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 				title.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 				title.add_theme_font_size_override("font_size", 18)
-				title.add_theme_color_override("font_color", Color("1d1912"))
+				title.add_theme_color_override("font_color", Color("292217"))
 				title.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0))
 				title.add_theme_constant_override("outline_size", 0)
 			var subtitle := child.get_node_or_null("Subtitle") as Control
@@ -167,21 +170,8 @@ func _hide_roster() -> void:
 	if roster != null and roster.has_method("hide_world_npcs"):
 		roster.call("hide_world_npcs")
 
-func _peak_label_style(hovered: bool) -> StyleBoxFlat:
-	var style := StyleBoxFlat.new()
-	style.bg_color = Color(0.93, 0.9, 0.82, 0.92) if not hovered else Color(0.98, 0.93, 0.79, 0.98)
-	style.border_color = Color(0.32, 0.28, 0.2, 0.72) if not hovered else Color(0.64, 0.42, 0.18, 0.96)
-	style.border_width_left = 1
-	style.border_width_top = 1
-	style.border_width_right = 1
-	style.border_width_bottom = 1
-	style.corner_radius_top_left = 6
-	style.corner_radius_top_right = 6
-	style.corner_radius_bottom_left = 6
-	style.corner_radius_bottom_right = 6
-	style.shadow_color = Color(0.06, 0.05, 0.03, 0.2)
-	style.shadow_size = 3
-	return style
+func _peak_label_style(hovered: bool) -> StyleBoxTexture:
+	return LOCATION_NAMEPLATE_STYLE.create(hovered)
 
 func _refresh_peak_population_badges() -> void:
 	var manager := get_node_or_null("/root/NpcWorldManager")
@@ -204,14 +194,12 @@ func _refresh_peak_population_badges() -> void:
 			badge.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 			badge.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			badge.add_theme_font_size_override("font_size", 13)
-			badge.add_theme_color_override("font_color", Color("ffffff"))
-			badge.add_theme_color_override("font_outline_color", Color(0.10, 0.08, 0.06, 0.96))
-			badge.add_theme_constant_override("outline_size", 2)
+			badge.add_theme_color_override("font_color", Color("29231d"))
+			badge.add_theme_constant_override("outline_size", 0)
 			var badge_style := StyleBoxFlat.new()
-			badge_style.bg_color = Color(0.58, 0.16, 0.12, 0.96)
-			badge_style.border_color = Color(0.92, 0.76, 0.48, 0.95)
+			badge_style.bg_color = Color("f4dfb1")
+			badge_style.border_color = Color("5d4d39")
 			badge_style.set_border_width_all(1)
-			badge_style.set_corner_radius_all(13)
 			badge.add_theme_stylebox_override("normal", badge_style)
 			child.add_child(badge)
 		badge.text = str(count)

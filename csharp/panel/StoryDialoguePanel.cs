@@ -14,6 +14,7 @@ public partial class StoryDialoguePanel : Control
     public override void _Ready()
     {
         SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        Theme = QuietRoomStyle.MakeTheme();
         MouseFilter = MouseFilterEnum.Stop;
         ZIndex = 240;
         GuiInput += on_background_input;
@@ -28,7 +29,7 @@ public partial class StoryDialoguePanel : Control
         frame.OffsetTop = -250;
         frame.OffsetRight = 0;
         frame.OffsetBottom = 0;
-        frame.AddThemeStyleboxOverride("panel", make_frame_style());
+        frame.AddThemeStyleboxOverride("panel", QuietRoomStyle.Paper());
         frame.GuiInput += on_background_input;
         AddChild(frame);
 
@@ -45,12 +46,12 @@ public partial class StoryDialoguePanel : Control
         margin.AddChild(column);
         _speaker = new Label { Text = "旁白" };
         _speaker.AddThemeFontSizeOverride("font_size", 26);
-        _speaker.AddThemeColorOverride("font_color", new Color("e6c77e"));
+        _speaker.AddThemeColorOverride("font_color", QuietRoomStyle.Teal);
         column.AddChild(_speaker);
 
         _body = new Label { AutowrapMode = TextServer.AutowrapMode.WordSmart, HorizontalAlignment = HorizontalAlignment.Left, SizeFlagsVertical = SizeFlags.ExpandFill };
         _body.AddThemeFontSizeOverride("font_size", 23);
-        _body.AddThemeColorOverride("font_color", new Color("f2eee2"));
+        _body.AddThemeColorOverride("font_color", QuietRoomStyle.Ink);
         column.AddChild(_body);
 
         var continueHint = new Label
@@ -61,7 +62,7 @@ public partial class StoryDialoguePanel : Control
         };
         continueHint.AddThemeFontSizeOverride("font_size", 15);
         _continueHint = continueHint;
-        continueHint.AddThemeColorOverride("font_color", new Color("c9b98d"));
+        continueHint.AddThemeColorOverride("font_color", QuietRoomStyle.Ink);
         column.AddChild(continueHint);
 
         Hide();

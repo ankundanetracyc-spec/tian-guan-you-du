@@ -158,6 +158,7 @@ public partial class MainScene
         refresh_yuxu_admission_context();
         refresh_yuxu_life_context();
         GetNodeOrNull<Node>("SceneLayer/YuxuXianzongOverview")?.Call("refresh_admission_detail");
+        refresh_qingxi_quest();
         open_yuxu_peak_after_admission(is_yuxu_true_disciple(currentRank) ? "zifu" : "guanfu");
     }
 

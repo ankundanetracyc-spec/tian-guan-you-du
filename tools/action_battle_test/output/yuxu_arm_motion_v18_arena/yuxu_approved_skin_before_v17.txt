@@ -1,0 +1,386 @@
+extends "yuxu_unified_skin.gd"
+
+## V15 uses the approved illustration's common 1024x1536 pixel space.
+## Head, bent arm and continuous clothing share that one rest drawing.
+const PIXEL_SCALE := 16.0 / 186.0
+const SOURCE_ORIGIN := Vector2(475, 1474)
+var textures: Dictionary = {}
+var arm_rest_points := [Vector2(425, 435), Vector2(466, 562), Vector2(609, 473)]
+var motion_context := false
+var motion_delta := 0.0
+var motion_clock := 0.0
+var previous_velocity := Vector2.ZERO
+var motion_facing := 1.0
+var gait_phase := 0.0
+var gait_amount := 0.0
+var gait_backward := 0.0
+var acceleration_lean := 0.0
+var cloth_positions: Dictionary = {}
+var cloth_speeds: Dictionary = {}
+var transition_age := 1.0
+
+## The live arena supplies simulation time, including zero while paused. Capture
+## tools can disable pose_blending and sample the same motion deterministically.
+func set_motion_context(delta: float, velocity: Vector2, clock: float, facing: float) -> void:
+	motion_context = true
+	motion_delta = clampf(delta, 0.0, 0.05)
+	motion_clock = clock
+	if delta <= 0.0:
+		return
+	var speed := velocity.length()
+	var active := clampf(speed / 235.0, 0.0, 1.0)
+	var response := 15.0 if active > gait_amount else 19.0
+	gait_amount = lerpf(gait_amount, active, 1.0-exp(-response*delta))
+	var backward := 1.0 if velocity.x*facing < -10.0 else 0.0
+	gait_backward = lerpf(gait_backward, backward, 1.0-exp(-12.0*delta))
+	if facing != motion_facing:
+		# Reverse the contact trajectory at a turn: a grounded foot remains
+		# grounded instead of starting again at the opposite airborne pose.
+		gait_phase = fposmod(0.5-gait_phase, 1.0)
+		# Preserve world-space cloth inertia when the side-view body mirrors.
+		for key in cloth_positions:
+			# Knee coverage stays on its anatomical side. Only the free fold
+			# and edge inertia changes sign; mirroring the coverage envelope
+			# would pull both sides inward and briefly expose the upper leg.
+			if key in ["front","back"]: continue
+			cloth_positions[key].x *= -1.0
+			cloth_speeds[key].x *= -1.0
+		motion_facing = facing
+	var cadence := lerpf(2.65, 1.95, gait_backward)
+	if active > 0.01 or gait_amount > 0.08:
+		gait_phase = fposmod(gait_phase+delta*cadence*maxf(0.35,gait_amount),1.0)
+	var acceleration := (velocity.x-previous_velocity.x)*facing/maxf(delta,0.001)
+	acceleration_lean = lerpf(acceleration_lean, clampf(acceleration/4000.0,-1.0,1.0),1.0-exp(-10.0*delta))
+	previous_velocity = velocity
+	transition_age += delta
+
+func _world(point: Vector2) -> Vector2:
+	return (point - SOURCE_ORIGIN) * PIXEL_SCALE
+
+func build(owner_runtime: Node2D, art_dir: String) -> bool:
+	runtime = owner_runtime
+	display_scale = 0.72
+	for name in ["cutout", "body", "arm", "leg"]:
+		var image := Image.new()
+		if image.load(ProjectSettings.globalize_path(art_dir.path_join(name + ".png"))) != OK:
+			return false
+		image.generate_mipmaps()
+		textures[name] = ImageTexture.create_from_image(image)
+	_new_bone("pelvis", "", _world(Vector2(475, 760)))
+	_new_bone("torso", "pelvis", _world(Vector2(490, 635)))
+	_new_bone("head", "torso", _world(Vector2(470, 330)))
+	for side in ["near", "far"]:
+		var offset := Vector2.ZERO if side == "near" else Vector2(43, -9)
+		_new_bone(side + "_upper", "torso", _world(arm_rest_points[0] + offset))
+		_new_bone(side + "_forearm", side + "_upper", _world(arm_rest_points[1] + offset))
+		_new_bone(side + "_hand", side + "_forearm", _world(arm_rest_points[2] + offset))
+		arm_chains[side] = [bones[side+"_upper"], bones[side+"_forearm"], bones[side+"_hand"]]
+		var points := _leg_points(side)
+		_new_bone(side+"_thigh", "pelvis", _world(points[0]))
+		_new_bone(side+"_calf", side+"_thigh", _world(points[1]))
+		_new_bone(side+"_foot", side+"_calf", _world(points[2]))
+		leg_chains[side] = [bones[side+"_thigh"], bones[side+"_calf"], bones[side+"_foot"]]
+	for side in ["front", "back"]:
+		_new_bone(side+"_cloth", "pelvis", _world(Vector2(475, 1040)))
+		_new_bone(side+"_hem", side+"_cloth", _world(Vector2(475, 1160)))
+		_new_bone(side+"_edge", side+"_hem", _world(Vector2(475, 1280)))
+	cloth_chains = {"front": [bones.front_cloth, bones.front_hem, bones.front_edge], "back": [bones.back_cloth, bones.back_hem, bones.back_edge]}
+	_build_approved_head()
+	_build_approved_body()
+	for side in ["far", "near"]:
+		_build_approved_arm(side)
+		_build_approved_leg(side)
+	return validation_errors.is_empty() and meshes.size() == 6
+
+func _leg_points(side: String) -> Array:
+	return [Vector2(475, 760), Vector2(440, 1080), Vector2(423, 1417)] if side == "near" else [Vector2(485, 760), Vector2(482, 1080), Vector2(510, 1417)]
+
+func _build_approved_head() -> void:
+	var rect := [335, 75, 245, 310]
+	var vertices := PackedVector2Array()
+	var sets := [PackedFloat32Array(), PackedFloat32Array()]
+	for row in range(ROWS+1):
+		var y := float(rect[1]) + float(rect[3]) * row / ROWS
+		# Lower neck/collar underlap belongs to the torso. The head can turn
+		# without peeling its skin base off the garment's front collar.
+		var head_share := 1.0 - smoothstep(300.0, 354.0, y)
+		for column in range(COLUMNS+1):
+			vertices.append(_world(Vector2(float(rect[0]) + float(rect[2]) * column / COLUMNS, y)))
+			sets[0].append(head_share)
+			sets[1].append(1.0-head_share)
+	texture = textures.cutout
+	_create_mesh("head", rect, vertices, ["head", "torso"], sets, 50)
+
+func _build_approved_body() -> void:
+	var rect := [275, 310, 390, 1030]
+	var vertices := PackedVector2Array()
+	var sets := [PackedFloat32Array(), PackedFloat32Array(), PackedFloat32Array(), PackedFloat32Array(), PackedFloat32Array(), PackedFloat32Array(), PackedFloat32Array(), PackedFloat32Array()]
+	for row in range(ROWS+1):
+		var y := float(rect[1]) + float(rect[3]) * row / ROWS
+		var torso_share := 1.0-smoothstep(660.0, 790.0, y)
+		var cloth_share := smoothstep(735.0, 1000.0, y)
+		for column in range(COLUMNS+1):
+			var x := float(rect[0]) + float(rect[2]) * column / COLUMNS
+			var front_share := smoothstep(365.0, 575.0, x)
+			# One continuous mesh, with an oblique, gradual bend envelope:
+			# the trailing edge releases earlier than the heavier front facing.
+			var hem_share := smoothstep(1010.0+front_share*45.0, 1225.0+front_share*30.0, y)
+			var edge_share := smoothstep(1210.0+front_share*20.0, 1340.0, y)
+			var loose := (1.0-torso_share)*cloth_share
+			vertices.append(_world(Vector2(x,y)))
+			sets[0].append(torso_share)
+			sets[1].append((1.0-torso_share)*(1.0-cloth_share))
+			sets[2].append(loose*(1.0-hem_share)*front_share)
+			sets[3].append(loose*hem_share*(1.0-edge_share)*front_share)
+			sets[4].append(loose*(1.0-hem_share)*(1.0-front_share))
+			sets[5].append(loose*hem_share*(1.0-edge_share)*(1.0-front_share))
+			sets[6].append(loose*hem_share*edge_share*front_share)
+			sets[7].append(loose*hem_share*edge_share*(1.0-front_share))
+	texture = textures.body
+	_create_mesh("robe",rect,vertices,["torso","pelvis","front_cloth","front_hem","back_cloth","back_hem","front_edge","back_edge"],sets,60)
+
+func _build_approved_arm(side: String) -> void:
+	var rect := [360, 345, 355, 285]
+	var offset := Vector2.ZERO if side == "near" else Vector2(43, -9)
+	var vertices := PackedVector2Array()
+	var sets := [PackedFloat32Array(), PackedFloat32Array(), PackedFloat32Array(), PackedFloat32Array()]
+	var upper: Vector2 = (arm_rest_points[1]-arm_rest_points[0]).normalized()
+	var lower: Vector2 = (arm_rest_points[2]-arm_rest_points[1]).normalized()
+	var elbow_axis: Vector2 = (upper+lower).normalized()
+	for row in range(ROWS+1):
+		for column in range(COLUMNS+1):
+			var point := Vector2(float(rect[0]) + float(rect[2])*column/COLUMNS, float(rect[1]) + float(rect[3])*row/ROWS)
+			# An oblique joint envelope follows the bent sleeve; inner/outer
+			# elbow vertices do not receive identical horizontal-row weights.
+			var forearm := smoothstep(-42.0, 42.0, (point-arm_rest_points[1]).dot(elbow_axis))
+			var hand := smoothstep(-18.0, 20.0, (point-arm_rest_points[2]).dot(lower))
+			var seam := 1.0-smoothstep(375.0, 420.0, point.y)
+			vertices.append(_world(point+offset))
+			sets[0].append((1.0-forearm)*(1.0-seam))
+			sets[1].append(forearm*(1.0-hand)*(1.0-seam))
+			sets[2].append(forearm*hand*(1.0-seam))
+			sets[3].append(seam)
+	texture = textures.arm
+	_create_mesh(side+"_arm",rect,vertices,[side+"_upper",side+"_forearm",side+"_hand","torso"],sets,70 if side=="near" else 40)
+	if side == "near":
+		var mesh: Polygon2D = meshes.back()
+		var shoulder := mesh.duplicate() as Polygon2D
+		shoulder.name = "ShoulderUnderClothing"
+		mesh.add_child(shoulder)
+		shoulder.z_as_relative = false
+		shoulder.z_index = 59
+		shoulder.skeleton = shoulder.get_path_to(runtime.skeleton)
+		var cap: Array = []
+		var sleeve: Array = []
+		for triangle in mesh.polygons:
+			var average: float = (mesh.uv[triangle[0]].y+mesh.uv[triangle[1]].y+mesh.uv[triangle[2]].y)/3.0
+			if average < 405.0: cap.append(triangle)
+			else: sleeve.append(triangle)
+		shoulder.polygons = cap
+		mesh.polygons = sleeve
+
+func _build_approved_leg(side: String) -> void:
+	var rect := [325, 660, 195, 830]
+	var points := _leg_points(side)
+	var vertices := PackedVector2Array()
+	var sets := [PackedFloat32Array(),PackedFloat32Array(),PackedFloat32Array()]
+	for row in range(ROWS+1):
+		var y := float(rect[1])+float(rect[3])*row/ROWS
+		var source_axis := _interpolate(y,[760.0,1080.0,1417.0],[410.0,386.0,384.0])
+		var target_axis := _interpolate(y,[760.0,1080.0,1417.0],[points[0].x,points[1].x,points[2].x])
+		var calf := smoothstep(1045.0,1115.0,y)
+		var foot := smoothstep(1398.0,1435.0,y)
+		for column in range(COLUMNS+1):
+			var x := float(rect[0])+float(rect[2])*column/COLUMNS
+			vertices.append(_world(Vector2(x+target_axis-source_axis,y)))
+			sets[0].append(1.0-calf)
+			sets[1].append(calf*(1.0-foot))
+			sets[2].append(calf*foot)
+	texture = textures.leg
+	_create_mesh(side+"_leg",rect,vertices,[side+"_thigh",side+"_calf",side+"_foot"],sets,35 if side=="near" else 30)
+
+func _aim_arm(side: String, upper_angle: float, lower_angle: float) -> void:
+	var upper: Bone2D = bones[side+"_upper"]
+	var lower: Bone2D = bones[side+"_forearm"]
+	var hand: Bone2D = bones[side+"_hand"]
+	upper.rotation = upper_angle - lower.rest.origin.angle() - bones.torso.rotation
+	lower.rotation = lower_angle - hand.rest.origin.angle() - upper.rotation - bones.torso.rotation
+	hand.rotation = 0.0
+
+
+## A contact/swing trajectory has explicit heel contact, support, toe-off,
+## passing and landing events. It deliberately has no long straight back-leg
+## hold: the swing foot folds under the body before reaching forwards.
+func _foot_sample(phase: float, backwards: float) -> Vector3:
+	var p := fposmod(phase, 1.0)
+	var x := 0.0
+	var lift := 0.0
+	var pitch := 0.0
+	if p < 0.46:
+		var support := p/0.46
+		x = lerpf(24.0,-23.0,support)
+		pitch = lerpf(-0.12,0.0,smoothstep(0.0,0.15,support))
+		pitch += 0.42*smoothstep(0.70,1.0,support)
+	else:
+		var swing := (p-0.46)/0.54
+		# Fast recovery under the pelvis, then ease into the next contact.
+		x = lerpf(-23.0,24.0,pow(smoothstep(0.0,1.0,swing),1.45))
+		lift = 14.0*pow(maxf(0.0,sin(minf(swing/0.84,1.0)*PI)),1.3)
+		pitch = lerpf(0.42,-0.12,smoothstep(0.05,0.82,swing))
+	var backward_x := -x*0.63
+	var backward_lift := lift*0.45
+	x = lerpf(x,backward_x,backwards)
+	lift = lerpf(lift,backward_lift,backwards)
+	pitch = lerpf(pitch,-pitch*0.50,backwards)
+	return Vector3(x,lift,pitch)
+
+func _solve_leg(side: String, ankle: Vector2, foot_pitch: float) -> void:
+	var thigh: Bone2D = bones[side+"_thigh"]
+	var calf: Bone2D = bones[side+"_calf"]
+	var foot: Bone2D = bones[side+"_foot"]
+	var hip: Vector2 = runtime.rig_root_node.to_local(thigh.global_position)
+	var upper_length := calf.rest.origin.length()
+	var lower_length := foot.rest.origin.length()
+	var offset := ankle-hip
+	var distance := clampf(offset.length(),1.0,upper_length+lower_length-0.03)
+	var hinge := acos(clampf((upper_length*upper_length+distance*distance-lower_length*lower_length)/(2.0*upper_length*distance),-1.0,1.0))
+	var upper_angle := offset.angle()-hinge
+	var knee := hip+Vector2.from_angle(upper_angle)*upper_length
+	var lower_angle := (ankle-knee).angle()
+	thigh.rotation = upper_angle-calf.rest.origin.angle()
+	calf.rotation = lower_angle-foot.rest.origin.angle()-thigh.rotation
+	foot.rotation = foot_pitch-thigh.rotation-calf.rotation
+
+func _cloth_spring(key: String, target: Vector2, live: bool, stiffness: float = 190.0, damping: float = 18.0) -> Vector2:
+	if not live or not cloth_positions.has(key):
+		cloth_positions[key] = target
+		cloth_speeds[key] = Vector2.ZERO
+		return target
+	var point: Vector2 = cloth_positions[key]
+	var speed: Vector2 = cloth_speeds[key]
+	# Two substeps keep short cloth chains stable at the arena's 50ms clamp.
+	var dt := motion_delta*0.5
+	for substep in range(2):
+		speed += ((target-point)*stiffness-speed*damping)*dt
+		point += speed*dt
+	cloth_positions[key] = point
+	cloth_speeds[key] = speed
+	return point
+
+func update_cloth(clip: String, time: float, duration: float, tracks: Dictionary) -> void:
+	var live := motion_context and pose_blending
+	if clip != last_clip:
+		blend_from.clear()
+		if pose_blending and not last_clip.is_empty():
+			for key in bones: blend_from[key] = bones[key].transform
+		transition_age = 0.0
+	last_clip = clip
+	for bone in bones.values(): bone.transform = bone.rest
+	if clip == "BindPose": return
+	var running := clip in ["Run_New1","Run_New2"]
+	var backward := clip == "BackstepWalk"
+	var amount := gait_amount if live else (1.0 if running or backward else 0.0)
+	var reverse := gait_backward if live else (1.0 if backward else 0.0)
+	var phase := gait_phase if live else fposmod(time/(0.70 if backward else 0.5833333),1.0)
+	var clock := motion_clock if live else time
+	var breathe := sin(clock*TAU/3.4)
+	var double_step := cos((phase-0.18)*TAU*2.0)
+	var impulse := acceleration_lean if live else 0.0
+	var attack := 0.0
+	if clip == "AttackIdle":
+		# Quick preparation and extension; recovery is longer than the strike.
+		var p := clampf(time/maxf(duration,0.001),0.0,1.0)
+		attack = smoothstep(0.06,0.39,p)*(1.0-smoothstep(0.48,1.0,p))
+	var dash := sin(clampf(time/0.20,0.0,1.0)*PI) if clip == "Step1" else 0.0
+	if clip == "Step1": amount = minf(amount,0.60)
+	var lean := lerpf(0.12,-0.055,reverse)*amount+impulse*0.045+attack*0.052+dash*lerpf(0.075,-0.08,reverse)
+	var weight_shift := lerpf(4.5,-1.5,reverse)*amount+impulse*1.1+attack*0.7
+	bones.pelvis.position += Vector2(weight_shift,(5.8+1.3*double_step)*amount+dash*1.2+breathe*0.24*(1.0-amount))
+	bones.torso.rotation = lean+sin(phase*TAU)*0.024*amount+breathe*0.006*(1.0-amount)
+	# Counter-rotation keeps the eyes/head plane level while chest and pelvis
+	# transfer weight. Neck/collar vertices still share the same continuous seam.
+	bones.head.rotation = -bones.torso.rotation*0.72+breathe*0.004
+	for index in range(2):
+		var side := "near" if index == 0 else "far"
+		var leg_phase := fposmod(phase+float(index)*0.5,1.0)
+		var sample := _foot_sample(leg_phase,reverse)
+		var points := _leg_points(side)
+		var rest_ankle := _world(points[2])
+		var ankle := Vector2(lerpf(rest_ankle.x,sample.x,amount),rest_ankle.y-sample.y*amount)
+		var foot_pitch := sample.z*amount
+		# The sole, not the ankle bone, is the ground contact. Toe-off lifts
+		# the ankle while the toe remains on the floor.
+		ankle.y -= maxf(0.0,sin(foot_pitch)*8.8)
+		if dash > 0.0:
+			ankle.x = lerpf(rest_ankle.x,-21.0 if index==0 else 15.0,dash)
+			ankle.y = rest_ankle.y-(0.0 if index==0 else 2.0)*dash
+			foot_pitch = (0.02 if index==0 else -0.10)*dash
+		_solve_leg(side,ankle,foot_pitch)
+		# Opposite arm follows the leg's contact/recovery events, with a small
+		# lag and an actively changing elbow angle; both hands stay in guard.
+		var arm_sample := _foot_sample(leg_phase-0.08,reverse)
+		var swing := arm_sample.x/24.0
+		var rest_upper := 1.32 if index == 0 else 1.48
+		var rest_lower := -0.52 if index == 0 else -0.42
+		var upper_angle := rest_upper+swing*0.43*amount
+		var lower_angle := rest_lower+swing*0.32*amount
+		upper_angle += breathe*0.018*(1.0-amount)
+		lower_angle -= breathe*0.012*(1.0-amount)
+		if index == 0:
+			upper_angle = lerpf(upper_angle,0.34,attack)
+			lower_angle = lerpf(lower_angle,-0.08,attack)
+		else:
+			upper_angle += attack*0.12
+			lower_angle -= attack*0.14
+		upper_angle += dash*(0.12 if index == 0 else -0.18)
+		_aim_arm(side,upper_angle,lower_angle)
+	var a: Vector2 = runtime.rig_root_node.to_local(bones.near_calf.global_position)
+	var b: Vector2 = runtime.rig_root_node.to_local(bones.far_calf.global_position)
+	var lead := maxf(a.x,b.x)-weight_shift
+	var trail := minf(a.x,b.x)-weight_shift
+	# The upper cloth follows the knee envelope; the lower cloth bends with
+	# successively slower damped angular responses. No bone scale changes or
+	# extra panels: the source drawing stays continuous from collar to hem.
+	var drift := lerpf(-3.6,2.2,reverse)*amount-impulse*2.4
+	var front_target := Vector2(maxf(0.0,lead-1.0)*0.68+amount*1.8+drift*0.24,0.0)
+	var back_target := Vector2(minf(0.0,trail+3.0)*0.75+drift,0.0)
+	var front_envelope := _cloth_spring("front",front_target,live,230.0,25.0)
+	var back_envelope := _cloth_spring("back",back_target,live,190.0,22.0)
+	# The upper envelope is a one-sided leg clearance constraint: it can
+	# settle slowly inward, but must yield immediately when a knee advances.
+	# Delaying this expansion exposes a knee during the first backward step.
+	front_envelope.x = maxf(front_envelope.x,front_target.x)
+	back_envelope.x = minf(back_envelope.x,back_target.x)
+	bones.front_cloth.position += front_envelope
+	bones.back_cloth.position += back_envelope
+	var travel := clampf(previous_velocity.x*motion_facing/235.0,-1.0,1.0) if live else lerpf(1.0,-0.65,reverse)*amount
+	for side in ["front","back"]:
+		var front: bool = side=="front"
+		var wave := sin((phase-(0.10 if front else 0.28))*TAU)*amount
+		var upper_angle := travel*0.045+wave*0.028+impulse*0.035+breathe*0.002*(1.0-amount)
+		var upper := _cloth_spring(side+"_bend",Vector2(upper_angle,0.0),live,210.0,24.0).x
+		var middle_target := upper*0.65+travel*(0.035 if front else 0.075)+wave*(0.18 if front else 0.24)
+		var middle := _cloth_spring(side+"_fold",Vector2(middle_target,0.0),live,125.0 if front else 100.0,16.5 if front else 14.0).x
+		var edge_target := -middle*0.45+wave*(0.26 if front else 0.36)+impulse*0.07
+		var edge := _cloth_spring(side+"_curl",Vector2(edge_target,0.0),live,80.0 if front else 65.0,12.0 if front else 10.5).x
+		bones[side+"_cloth"].rotation = clampf(upper,-0.13,0.13)
+		bones[side+"_hem"].rotation = clampf(middle,-0.25,0.25)
+		bones[side+"_edge"].rotation = clampf(edge,-0.30,0.30)
+		# Only the running lift is translated. Free-edge motion comes from
+		# bending fixed-length segments, avoiding a stretched rubber silhouette.
+		var knee_release := -front_target.x*0.35 if front else -back_target.x*0.15
+		bones[side+"_hem"].position += _cloth_spring(side+"_lift",Vector2(knee_release+drift*(0.65 if front else 0.45),-8.5*amount),live,155.0 if front else 120.0,19.0 if front else 16.0)
+	if pose_blending and not blend_from.is_empty():
+		var blend_time := 0.035 if clip == "AttackIdle" else 0.11
+		var mix := smoothstep(0.0,1.0,transition_age/blend_time)
+		for key in bones:
+			# Live locomotion continues below the waist while casting. Its
+			# contact solution must not be frozen by an upper-body transition.
+			if live and (key.contains("thigh") or key.contains("calf") or key.contains("foot") or key=="pelvis" or key.contains("cloth") or key.ends_with("hem") or key.ends_with("edge")):
+				continue
+			bones[key].transform = blend_from[key].interpolate_with(bones[key].transform,mix)
+		if mix >= 1.0: blend_from.clear()
+
+func summary() -> Dictionary:
+	return {"meshes":meshes.size(),"own_bones":bones.size(),"source":"approved fullbody v15","common_pixel_scale":PIXEL_SCALE,"head_to_crown_ratio":(1474.0-130.0)/186.0,"display_scale":display_scale,"errors":validation_errors.duplicate()}
+

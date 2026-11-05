@@ -1,0 +1,1078 @@
+{
+	"hands": [
+		{
+			"isolated_arm_for_review": true,
+			"runtime": {
+				"errors": [],
+				"loaded": true,
+				"skin": {
+					"errors": [],
+					"garment": {
+						"body_carrier_extension": {
+							"added_triangles": [
+								[
+									30,
+									31,
+									40
+								],
+								[
+									31,
+									32,
+									40
+								],
+								[
+									32,
+									33,
+									40
+								]
+							],
+							"affine_weights": [
+								0.581574440002441,
+								0.851899147033691,
+								-0.433473587036133
+							],
+							"carrier_triangle_count": 46,
+							"carrier_vertex_count": 41,
+							"full_canvas_px": [
+								12.1999998092651,
+								94.5
+							],
+							"motion": "engineered local affine extension of adjacent evaluated source cloth",
+							"new_vertex": 40,
+							"original_source_document_unchanged": true,
+							"original_triangle_count": 43,
+							"original_vertex_count": 40,
+							"original_vertices_unchanged": true,
+							"purpose": "cover the new continuous rear hem; original mesh had no topological slit",
+							"source_basis": [
+								32,
+								31,
+								35
+							],
+							"uv": "unchanged crop-to-full-canvas affine"
+						},
+						"clothing_meshes": 5,
+						"default_entry_modified": false,
+						"density_multiplier": 24.0,
+						"hair_in_scope": false,
+						"hand_pose_variants": {
+							"active": {
+								"sleeve_far": "open",
+								"sleeve_near": "open"
+							},
+							"base": "open sleeve remains unchanged; variants sampled only at wrist/hand",
+							"materials": {
+								"sleeve_far": {
+									"fist": {
+										"native_size": [
+											1254,
+											1254
+										],
+										"path": "res://art/ink_outfit_01_20261104/assets/sleeve_far_fist.png",
+										"sampling": "normalized complete-canvas UV, independent of base PNG pixel dimensions",
+										"scope": "wrist and hand only; shoulder and sleeve stay on the open base material",
+										"sha256": "25de5070de5816921e1c7cb292c183bcef7cf026d1d9b22e6f6b43b044c5202e"
+									}
+								},
+								"sleeve_near": {
+									"fist": {
+										"native_size": [
+											1254,
+											1254
+										],
+										"path": "res://art/ink_outfit_01_20261104/assets/sleeve_near_fist.png",
+										"sampling": "normalized complete-canvas UV, independent of base PNG pixel dimensions",
+										"scope": "wrist and hand only; shoulder and sleeve stay on the open base material",
+										"sha256": "4d9566e8ff9f85f0bf2b9f85b22393f67db7835f66e20de158e54d799b1919e1"
+									}
+								}
+							},
+							"ordinary_idle": "open",
+							"ordinary_run": "fist",
+							"override": "",
+							"regions": {
+								"sleeve_far": {
+									"cut_v": 0.65,
+									"feather": 0.003
+								},
+								"sleeve_near": {
+									"cut_v": 0.662,
+									"feather": 0.003
+								}
+							},
+							"sampling": "normalized full-canvas coordinates per native texture",
+							"strict_required": true,
+							"sword": "explicit single near-hand override only; no skill mapping",
+							"unspecified_special_action": "open"
+						},
+						"mode": "isolated_outfit_full_canvas_affine",
+						"native_materials": {
+							"body": {
+								"mapping": "source crop to complete Sprite canvas affine; no local registration",
+								"native_per_template_x": 0.674305555555556,
+								"native_per_template_y": 0.675,
+								"native_size": [
+									971,
+									1620
+								],
+								"path": "res://art/ink_outfit_01_20261104/assets/body.png",
+								"source_canvas": [
+									60.0,
+									100.0
+								],
+								"target_ppu": 2400.0,
+								"template_size": [
+									1440.0,
+									2400.0
+								]
+							},
+							"leg": {
+								"mapping": "source crop to complete Sprite canvas affine; no local registration",
+								"native_per_template_x": 0.826666666666667,
+								"native_per_template_y": 0.826041666666667,
+								"native_size": [
+									992,
+									1586
+								],
+								"path": "res://art/ink_outfit_01_20261104/assets/leg.png",
+								"source_canvas": [
+									50.0,
+									80.0
+								],
+								"target_ppu": 2400.0,
+								"template_size": [
+									1200.0,
+									1920.0
+								]
+							},
+							"sleeve_far": {
+								"mapping": "source crop to complete Sprite canvas affine; no local registration",
+								"native_per_template_x": 0.870833333333333,
+								"native_per_template_y": 0.870833333333333,
+								"native_size": [
+									1254,
+									1254
+								],
+								"path": "res://art/ink_outfit_01_20261104/assets/sleeve_far.png",
+								"source_canvas": [
+									60.0,
+									60.0
+								],
+								"target_ppu": 2400.0,
+								"template_size": [
+									1440.0,
+									1440.0
+								]
+							},
+							"sleeve_near": {
+								"mapping": "source crop to complete Sprite canvas affine; no local registration",
+								"native_per_template_x": 0.870833333333333,
+								"native_per_template_y": 0.870833333333333,
+								"native_size": [
+									1254,
+									1254
+								],
+								"path": "res://art/ink_outfit_01_20261104/assets/sleeve_near.png",
+								"source_canvas": [
+									60.0,
+									60.0
+								],
+								"target_ppu": 2400.0,
+								"template_size": [
+									1440.0,
+									1440.0
+								]
+							}
+						},
+						"near_hand_carrier_extension": {
+							"added_triangles": [
+								[
+									15,
+									16,
+									35
+								],
+								[
+									16,
+									17,
+									35
+								]
+							],
+							"affine_weights": [
+								1.96450090408325,
+								0.562674999237061,
+								-1.52717590332031
+							],
+							"carrier_triangle_count": 49,
+							"carrier_vertex_count": 36,
+							"full_canvas_px": [
+								26.5,
+								48.5
+							],
+							"motion": "local affine extension of the adjacent source hand segment",
+							"new_vertex": 35,
+							"original_source_document_unchanged": true,
+							"original_triangle_count": 47,
+							"original_vertex_count": 35,
+							"original_vertices_unchanged": true,
+							"purpose": "preserve the full natural open fingers beyond the old short source hand silhouette",
+							"source_basis": [
+								17,
+								16,
+								0
+							],
+							"wrist_and_sleeve_unchanged": true
+						},
+						"neutral_head_only": true,
+						"old_hd_registration_used": false,
+						"outfit": "ink_outfit_01_20261104",
+						"pants_upper_insertion_mask": {
+							"frozen_when_paused": true,
+							"native_uv_unchanged": true,
+							"normal": "head-pelvis",
+							"point": [
+								1.39509081840515,
+								-56.2450981140137
+							],
+							"scope": "leg fragments only; hide insertion above source pelvis/waist center",
+							"source_anchor": "pelvis / shenti2",
+							"source_vertices_unchanged": true,
+							"up_normal": [
+								-0.040766566991806,
+								-0.999168694019318
+							]
+						},
+						"release_cloth_proxy": false,
+						"secondary_surrogate": false,
+						"selected_source_meshes": [
+							0,
+							1,
+							2,
+							3,
+							5
+						],
+						"skin_sha256": "a89b5c239217753e31efc01a7c18dc6186f483720d5276ce20df3d949d883b88",
+						"source_clip": "Idle",
+						"source_data": "E:/stacklands/resources/appearance/guigu_male101/model_frames_20261104.json",
+						"source_frames": "original evaluated bone/skin frames plus disclosed rear carrier extension",
+						"source_phase": 0.0,
+						"source_ppu": 100.0,
+						"template": "res://art/ink_outfit_01_20261104/assets/template/fullcanvas_template_anchors.json",
+						"template_ppu": 2400.0
+					},
+					"meshes": 5,
+					"source": "first independent ink outfit fitting prototype"
+				}
+			},
+			"side": "near",
+			"source_clip": "Idle",
+			"source_phase": 0.0,
+			"style": "open"
+		},
+		{
+			"isolated_arm_for_review": true,
+			"runtime": {
+				"errors": [],
+				"loaded": true,
+				"skin": {
+					"errors": [],
+					"garment": {
+						"body_carrier_extension": {
+							"added_triangles": [
+								[
+									30,
+									31,
+									40
+								],
+								[
+									31,
+									32,
+									40
+								],
+								[
+									32,
+									33,
+									40
+								]
+							],
+							"affine_weights": [
+								0.581574440002441,
+								0.851899147033691,
+								-0.433473587036133
+							],
+							"carrier_triangle_count": 46,
+							"carrier_vertex_count": 41,
+							"full_canvas_px": [
+								12.1999998092651,
+								94.5
+							],
+							"motion": "engineered local affine extension of adjacent evaluated source cloth",
+							"new_vertex": 40,
+							"original_source_document_unchanged": true,
+							"original_triangle_count": 43,
+							"original_vertex_count": 40,
+							"original_vertices_unchanged": true,
+							"purpose": "cover the new continuous rear hem; original mesh had no topological slit",
+							"source_basis": [
+								32,
+								31,
+								35
+							],
+							"uv": "unchanged crop-to-full-canvas affine"
+						},
+						"clothing_meshes": 5,
+						"default_entry_modified": false,
+						"density_multiplier": 24.0,
+						"hair_in_scope": false,
+						"hand_pose_variants": {
+							"active": {
+								"sleeve_far": "open",
+								"sleeve_near": "open"
+							},
+							"base": "open sleeve remains unchanged; variants sampled only at wrist/hand",
+							"materials": {
+								"sleeve_far": {
+									"fist": {
+										"native_size": [
+											1254,
+											1254
+										],
+										"path": "res://art/ink_outfit_01_20261104/assets/sleeve_far_fist.png",
+										"sampling": "normalized complete-canvas UV, independent of base PNG pixel dimensions",
+										"scope": "wrist and hand only; shoulder and sleeve stay on the open base material",
+										"sha256": "25de5070de5816921e1c7cb292c183bcef7cf026d1d9b22e6f6b43b044c5202e"
+									}
+								},
+								"sleeve_near": {
+									"fist": {
+										"native_size": [
+											1254,
+											1254
+										],
+										"path": "res://art/ink_outfit_01_20261104/assets/sleeve_near_fist.png",
+										"sampling": "normalized complete-canvas UV, independent of base PNG pixel dimensions",
+										"scope": "wrist and hand only; shoulder and sleeve stay on the open base material",
+										"sha256": "4d9566e8ff9f85f0bf2b9f85b22393f67db7835f66e20de158e54d799b1919e1"
+									}
+								}
+							},
+							"ordinary_idle": "open",
+							"ordinary_run": "fist",
+							"override": "",
+							"regions": {
+								"sleeve_far": {
+									"cut_v": 0.65,
+									"feather": 0.003
+								},
+								"sleeve_near": {
+									"cut_v": 0.662,
+									"feather": 0.003
+								}
+							},
+							"sampling": "normalized full-canvas coordinates per native texture",
+							"strict_required": true,
+							"sword": "explicit single near-hand override only; no skill mapping",
+							"unspecified_special_action": "open"
+						},
+						"mode": "isolated_outfit_full_canvas_affine",
+						"native_materials": {
+							"body": {
+								"mapping": "source crop to complete Sprite canvas affine; no local registration",
+								"native_per_template_x": 0.674305555555556,
+								"native_per_template_y": 0.675,
+								"native_size": [
+									971,
+									1620
+								],
+								"path": "res://art/ink_outfit_01_20261104/assets/body.png",
+								"source_canvas": [
+									60.0,
+									100.0
+								],
+								"target_ppu": 2400.0,
+								"template_size": [
+									1440.0,
+									2400.0
+								]
+							},
+							"leg": {
+								"mapping": "source crop to complete Sprite canvas affine; no local registration",
+								"native_per_template_x": 0.826666666666667,
+								"native_per_template_y": 0.826041666666667,
+								"native_size": [
+									992,
+									1586
+								],
+								"path": "res://art/ink_outfit_01_20261104/assets/leg.png",
+								"source_canvas": [
+									50.0,
+									80.0
+								],
+								"target_ppu": 2400.0,
+								"template_size": [
+									1200.0,
+									1920.0
+								]
+							},
+							"sleeve_far": {
+								"mapping": "source crop to complete Sprite canvas affine; no local registration",
+								"native_per_template_x": 0.870833333333333,
+								"native_per_template_y": 0.870833333333333,
+								"native_size": [
+									1254,
+									1254
+								],
+								"path": "res://art/ink_outfit_01_20261104/assets/sleeve_far.png",
+								"source_canvas": [
+									60.0,
+									60.0
+								],
+								"target_ppu": 2400.0,
+								"template_size": [
+									1440.0,
+									1440.0
+								]
+							},
+							"sleeve_near": {
+								"mapping": "source crop to complete Sprite canvas affine; no local registration",
+								"native_per_template_x": 0.870833333333333,
+								"native_per_template_y": 0.870833333333333,
+								"native_size": [
+									1254,
+									1254
+								],
+								"path": "res://art/ink_outfit_01_20261104/assets/sleeve_near.png",
+								"source_canvas": [
+									60.0,
+									60.0
+								],
+								"target_ppu": 2400.0,
+								"template_size": [
+									1440.0,
+									1440.0
+								]
+							}
+						},
+						"near_hand_carrier_extension": {
+							"added_triangles": [
+								[
+									15,
+									16,
+									35
+								],
+								[
+									16,
+									17,
+									35
+								]
+							],
+							"affine_weights": [
+								1.96450090408325,
+								0.562674999237061,
+								-1.52717590332031
+							],
+							"carrier_triangle_count": 49,
+							"carrier_vertex_count": 36,
+							"full_canvas_px": [
+								26.5,
+								48.5
+							],
+							"motion": "local affine extension of the adjacent source hand segment",
+							"new_vertex": 35,
+							"original_source_document_unchanged": true,
+							"original_triangle_count": 47,
+							"original_vertex_count": 35,
+							"original_vertices_unchanged": true,
+							"purpose": "preserve the full natural open fingers beyond the old short source hand silhouette",
+							"source_basis": [
+								17,
+								16,
+								0
+							],
+							"wrist_and_sleeve_unchanged": true
+						},
+						"neutral_head_only": true,
+						"old_hd_registration_used": false,
+						"outfit": "ink_outfit_01_20261104",
+						"pants_upper_insertion_mask": {
+							"frozen_when_paused": true,
+							"native_uv_unchanged": true,
+							"normal": "head-pelvis",
+							"point": [
+								1.39509081840515,
+								-56.2450981140137
+							],
+							"scope": "leg fragments only; hide insertion above source pelvis/waist center",
+							"source_anchor": "pelvis / shenti2",
+							"source_vertices_unchanged": true,
+							"up_normal": [
+								-0.040766566991806,
+								-0.999168694019318
+							]
+						},
+						"release_cloth_proxy": false,
+						"secondary_surrogate": false,
+						"selected_source_meshes": [
+							0,
+							1,
+							2,
+							3,
+							5
+						],
+						"skin_sha256": "a89b5c239217753e31efc01a7c18dc6186f483720d5276ce20df3d949d883b88",
+						"source_clip": "Idle",
+						"source_data": "E:/stacklands/resources/appearance/guigu_male101/model_frames_20261104.json",
+						"source_frames": "original evaluated bone/skin frames plus disclosed rear carrier extension",
+						"source_phase": 0.0,
+						"source_ppu": 100.0,
+						"template": "res://art/ink_outfit_01_20261104/assets/template/fullcanvas_template_anchors.json",
+						"template_ppu": 2400.0
+					},
+					"meshes": 5,
+					"source": "first independent ink outfit fitting prototype"
+				}
+			},
+			"side": "far",
+			"source_clip": "Idle",
+			"source_phase": 0.0,
+			"style": "open"
+		},
+		{
+			"isolated_arm_for_review": true,
+			"runtime": {
+				"errors": [],
+				"loaded": true,
+				"skin": {
+					"errors": [],
+					"garment": {
+						"body_carrier_extension": {
+							"added_triangles": [
+								[
+									30,
+									31,
+									40
+								],
+								[
+									31,
+									32,
+									40
+								],
+								[
+									32,
+									33,
+									40
+								]
+							],
+							"affine_weights": [
+								0.581574440002441,
+								0.851899147033691,
+								-0.433473587036133
+							],
+							"carrier_triangle_count": 46,
+							"carrier_vertex_count": 41,
+							"full_canvas_px": [
+								12.1999998092651,
+								94.5
+							],
+							"motion": "engineered local affine extension of adjacent evaluated source cloth",
+							"new_vertex": 40,
+							"original_source_document_unchanged": true,
+							"original_triangle_count": 43,
+							"original_vertex_count": 40,
+							"original_vertices_unchanged": true,
+							"purpose": "cover the new continuous rear hem; original mesh had no topological slit",
+							"source_basis": [
+								32,
+								31,
+								35
+							],
+							"uv": "unchanged crop-to-full-canvas affine"
+						},
+						"clothing_meshes": 5,
+						"default_entry_modified": false,
+						"density_multiplier": 24.0,
+						"hair_in_scope": false,
+						"hand_pose_variants": {
+							"active": {
+								"sleeve_far": "fist",
+								"sleeve_near": "fist"
+							},
+							"base": "open sleeve remains unchanged; variants sampled only at wrist/hand",
+							"materials": {
+								"sleeve_far": {
+									"fist": {
+										"native_size": [
+											1254,
+											1254
+										],
+										"path": "res://art/ink_outfit_01_20261104/assets/sleeve_far_fist.png",
+										"sampling": "normalized complete-canvas UV, independent of base PNG pixel dimensions",
+										"scope": "wrist and hand only; shoulder and sleeve stay on the open base material",
+										"sha256": "25de5070de5816921e1c7cb292c183bcef7cf026d1d9b22e6f6b43b044c5202e"
+									}
+								},
+								"sleeve_near": {
+									"fist": {
+										"native_size": [
+											1254,
+											1254
+										],
+										"path": "res://art/ink_outfit_01_20261104/assets/sleeve_near_fist.png",
+										"sampling": "normalized complete-canvas UV, independent of base PNG pixel dimensions",
+										"scope": "wrist and hand only; shoulder and sleeve stay on the open base material",
+										"sha256": "4d9566e8ff9f85f0bf2b9f85b22393f67db7835f66e20de158e54d799b1919e1"
+									}
+								}
+							},
+							"ordinary_idle": "open",
+							"ordinary_run": "fist",
+							"override": "",
+							"regions": {
+								"sleeve_far": {
+									"cut_v": 0.65,
+									"feather": 0.003
+								},
+								"sleeve_near": {
+									"cut_v": 0.662,
+									"feather": 0.003
+								}
+							},
+							"sampling": "normalized full-canvas coordinates per native texture",
+							"strict_required": true,
+							"sword": "explicit single near-hand override only; no skill mapping",
+							"unspecified_special_action": "open"
+						},
+						"mode": "isolated_outfit_full_canvas_affine",
+						"native_materials": {
+							"body": {
+								"mapping": "source crop to complete Sprite canvas affine; no local registration",
+								"native_per_template_x": 0.674305555555556,
+								"native_per_template_y": 0.675,
+								"native_size": [
+									971,
+									1620
+								],
+								"path": "res://art/ink_outfit_01_20261104/assets/body.png",
+								"source_canvas": [
+									60.0,
+									100.0
+								],
+								"target_ppu": 2400.0,
+								"template_size": [
+									1440.0,
+									2400.0
+								]
+							},
+							"leg": {
+								"mapping": "source crop to complete Sprite canvas affine; no local registration",
+								"native_per_template_x": 0.826666666666667,
+								"native_per_template_y": 0.826041666666667,
+								"native_size": [
+									992,
+									1586
+								],
+								"path": "res://art/ink_outfit_01_20261104/assets/leg.png",
+								"source_canvas": [
+									50.0,
+									80.0
+								],
+								"target_ppu": 2400.0,
+								"template_size": [
+									1200.0,
+									1920.0
+								]
+							},
+							"sleeve_far": {
+								"mapping": "source crop to complete Sprite canvas affine; no local registration",
+								"native_per_template_x": 0.870833333333333,
+								"native_per_template_y": 0.870833333333333,
+								"native_size": [
+									1254,
+									1254
+								],
+								"path": "res://art/ink_outfit_01_20261104/assets/sleeve_far.png",
+								"source_canvas": [
+									60.0,
+									60.0
+								],
+								"target_ppu": 2400.0,
+								"template_size": [
+									1440.0,
+									1440.0
+								]
+							},
+							"sleeve_near": {
+								"mapping": "source crop to complete Sprite canvas affine; no local registration",
+								"native_per_template_x": 0.870833333333333,
+								"native_per_template_y": 0.870833333333333,
+								"native_size": [
+									1254,
+									1254
+								],
+								"path": "res://art/ink_outfit_01_20261104/assets/sleeve_near.png",
+								"source_canvas": [
+									60.0,
+									60.0
+								],
+								"target_ppu": 2400.0,
+								"template_size": [
+									1440.0,
+									1440.0
+								]
+							}
+						},
+						"near_hand_carrier_extension": {
+							"added_triangles": [
+								[
+									15,
+									16,
+									35
+								],
+								[
+									16,
+									17,
+									35
+								]
+							],
+							"affine_weights": [
+								1.96450090408325,
+								0.562674999237061,
+								-1.52717590332031
+							],
+							"carrier_triangle_count": 49,
+							"carrier_vertex_count": 36,
+							"full_canvas_px": [
+								26.5,
+								48.5
+							],
+							"motion": "local affine extension of the adjacent source hand segment",
+							"new_vertex": 35,
+							"original_source_document_unchanged": true,
+							"original_triangle_count": 47,
+							"original_vertex_count": 35,
+							"original_vertices_unchanged": true,
+							"purpose": "preserve the full natural open fingers beyond the old short source hand silhouette",
+							"source_basis": [
+								17,
+								16,
+								0
+							],
+							"wrist_and_sleeve_unchanged": true
+						},
+						"neutral_head_only": true,
+						"old_hd_registration_used": false,
+						"outfit": "ink_outfit_01_20261104",
+						"pants_upper_insertion_mask": {
+							"frozen_when_paused": true,
+							"native_uv_unchanged": true,
+							"normal": "head-pelvis",
+							"point": [
+								1.12074744701386,
+								-62.3286437988281
+							],
+							"scope": "leg fragments only; hide insertion above source pelvis/waist center",
+							"source_anchor": "pelvis / shenti2",
+							"source_vertices_unchanged": true,
+							"up_normal": [
+								0.464518398046494,
+								-0.885563433170319
+							]
+						},
+						"release_cloth_proxy": false,
+						"secondary_surrogate": false,
+						"selected_source_meshes": [
+							0,
+							1,
+							2,
+							3,
+							5
+						],
+						"skin_sha256": "a89b5c239217753e31efc01a7c18dc6186f483720d5276ce20df3d949d883b88",
+						"source_clip": "Run_New1",
+						"source_data": "E:/stacklands/resources/appearance/guigu_male101/model_frames_20261104.json",
+						"source_frames": "original evaluated bone/skin frames plus disclosed rear carrier extension",
+						"source_phase": 0.0,
+						"source_ppu": 100.0,
+						"template": "res://art/ink_outfit_01_20261104/assets/template/fullcanvas_template_anchors.json",
+						"template_ppu": 2400.0
+					},
+					"meshes": 5,
+					"source": "first independent ink outfit fitting prototype"
+				}
+			},
+			"side": "near",
+			"source_clip": "Run_New1",
+			"source_phase": 0.0,
+			"style": "fist"
+		},
+		{
+			"isolated_arm_for_review": true,
+			"runtime": {
+				"errors": [],
+				"loaded": true,
+				"skin": {
+					"errors": [],
+					"garment": {
+						"body_carrier_extension": {
+							"added_triangles": [
+								[
+									30,
+									31,
+									40
+								],
+								[
+									31,
+									32,
+									40
+								],
+								[
+									32,
+									33,
+									40
+								]
+							],
+							"affine_weights": [
+								0.581574440002441,
+								0.851899147033691,
+								-0.433473587036133
+							],
+							"carrier_triangle_count": 46,
+							"carrier_vertex_count": 41,
+							"full_canvas_px": [
+								12.1999998092651,
+								94.5
+							],
+							"motion": "engineered local affine extension of adjacent evaluated source cloth",
+							"new_vertex": 40,
+							"original_source_document_unchanged": true,
+							"original_triangle_count": 43,
+							"original_vertex_count": 40,
+							"original_vertices_unchanged": true,
+							"purpose": "cover the new continuous rear hem; original mesh had no topological slit",
+							"source_basis": [
+								32,
+								31,
+								35
+							],
+							"uv": "unchanged crop-to-full-canvas affine"
+						},
+						"clothing_meshes": 5,
+						"default_entry_modified": false,
+						"density_multiplier": 24.0,
+						"hair_in_scope": false,
+						"hand_pose_variants": {
+							"active": {
+								"sleeve_far": "fist",
+								"sleeve_near": "fist"
+							},
+							"base": "open sleeve remains unchanged; variants sampled only at wrist/hand",
+							"materials": {
+								"sleeve_far": {
+									"fist": {
+										"native_size": [
+											1254,
+											1254
+										],
+										"path": "res://art/ink_outfit_01_20261104/assets/sleeve_far_fist.png",
+										"sampling": "normalized complete-canvas UV, independent of base PNG pixel dimensions",
+										"scope": "wrist and hand only; shoulder and sleeve stay on the open base material",
+										"sha256": "25de5070de5816921e1c7cb292c183bcef7cf026d1d9b22e6f6b43b044c5202e"
+									}
+								},
+								"sleeve_near": {
+									"fist": {
+										"native_size": [
+											1254,
+											1254
+										],
+										"path": "res://art/ink_outfit_01_20261104/assets/sleeve_near_fist.png",
+										"sampling": "normalized complete-canvas UV, independent of base PNG pixel dimensions",
+										"scope": "wrist and hand only; shoulder and sleeve stay on the open base material",
+										"sha256": "4d9566e8ff9f85f0bf2b9f85b22393f67db7835f66e20de158e54d799b1919e1"
+									}
+								}
+							},
+							"ordinary_idle": "open",
+							"ordinary_run": "fist",
+							"override": "",
+							"regions": {
+								"sleeve_far": {
+									"cut_v": 0.65,
+									"feather": 0.003
+								},
+								"sleeve_near": {
+									"cut_v": 0.662,
+									"feather": 0.003
+								}
+							},
+							"sampling": "normalized full-canvas coordinates per native texture",
+							"strict_required": true,
+							"sword": "explicit single near-hand override only; no skill mapping",
+							"unspecified_special_action": "open"
+						},
+						"mode": "isolated_outfit_full_canvas_affine",
+						"native_materials": {
+							"body": {
+								"mapping": "source crop to complete Sprite canvas affine; no local registration",
+								"native_per_template_x": 0.674305555555556,
+								"native_per_template_y": 0.675,
+								"native_size": [
+									971,
+									1620
+								],
+								"path": "res://art/ink_outfit_01_20261104/assets/body.png",
+								"source_canvas": [
+									60.0,
+									100.0
+								],
+								"target_ppu": 2400.0,
+								"template_size": [
+									1440.0,
+									2400.0
+								]
+							},
+							"leg": {
+								"mapping": "source crop to complete Sprite canvas affine; no local registration",
+								"native_per_template_x": 0.826666666666667,
+								"native_per_template_y": 0.826041666666667,
+								"native_size": [
+									992,
+									1586
+								],
+								"path": "res://art/ink_outfit_01_20261104/assets/leg.png",
+								"source_canvas": [
+									50.0,
+									80.0
+								],
+								"target_ppu": 2400.0,
+								"template_size": [
+									1200.0,
+									1920.0
+								]
+							},
+							"sleeve_far": {
+								"mapping": "source crop to complete Sprite canvas affine; no local registration",
+								"native_per_template_x": 0.870833333333333,
+								"native_per_template_y": 0.870833333333333,
+								"native_size": [
+									1254,
+									1254
+								],
+								"path": "res://art/ink_outfit_01_20261104/assets/sleeve_far.png",
+								"source_canvas": [
+									60.0,
+									60.0
+								],
+								"target_ppu": 2400.0,
+								"template_size": [
+									1440.0,
+									1440.0
+								]
+							},
+							"sleeve_near": {
+								"mapping": "source crop to complete Sprite canvas affine; no local registration",
+								"native_per_template_x": 0.870833333333333,
+								"native_per_template_y": 0.870833333333333,
+								"native_size": [
+									1254,
+									1254
+								],
+								"path": "res://art/ink_outfit_01_20261104/assets/sleeve_near.png",
+								"source_canvas": [
+									60.0,
+									60.0
+								],
+								"target_ppu": 2400.0,
+								"template_size": [
+									1440.0,
+									1440.0
+								]
+							}
+						},
+						"near_hand_carrier_extension": {
+							"added_triangles": [
+								[
+									15,
+									16,
+									35
+								],
+								[
+									16,
+									17,
+									35
+								]
+							],
+							"affine_weights": [
+								1.96450090408325,
+								0.562674999237061,
+								-1.52717590332031
+							],
+							"carrier_triangle_count": 49,
+							"carrier_vertex_count": 36,
+							"full_canvas_px": [
+								26.5,
+								48.5
+							],
+							"motion": "local affine extension of the adjacent source hand segment",
+							"new_vertex": 35,
+							"original_source_document_unchanged": true,
+							"original_triangle_count": 47,
+							"original_vertex_count": 35,
+							"original_vertices_unchanged": true,
+							"purpose": "preserve the full natural open fingers beyond the old short source hand silhouette",
+							"source_basis": [
+								17,
+								16,
+								0
+							],
+							"wrist_and_sleeve_unchanged": true
+						},
+						"neutral_head_only": true,
+						"old_hd_registration_used": false,
+						"outfit": "ink_outfit_01_20261104",
+						"pants_upper_insertion_mask": {
+							"frozen_when_paused": true,
+							"native_uv_unchanged": true,
+							"normal": "head-pelvis",
+							"point": [
+								1.12074744701386,
+								-62.3286437988281
+							],
+							"scope": "leg fragments only; hide insertion above source pelvis/waist center",
+							"source_anchor": "pelvis / shenti2",
+							"source_vertices_unchanged": true,
+							"up_normal": [
+								0.464518398046494,
+								-0.885563433170319
+							]
+						},
+						"release_cloth_proxy": false,
+						"secondary_surrogate": false,
+						"selected_source_meshes": [
+							0,
+							1,
+							2,
+							3,
+							5
+						],
+						"skin_sha256": "a89b5c239217753e31efc01a7c18dc6186f483720d5276ce20df3d949d883b88",
+						"source_clip": "Run_New1",
+						"source_data": "E:/stacklands/resources/appearance/guigu_male101/model_frames_20261104.json",
+						"source_frames": "original evaluated bone/skin frames plus disclosed rear carrier extension",
+						"source_phase": 0.0,
+						"source_ppu": 100.0,
+						"template": "res://art/ink_outfit_01_20261104/assets/template/fullcanvas_template_anchors.json",
+						"template_ppu": 2400.0
+					},
+					"meshes": 5,
+					"source": "first independent ink outfit fitting prototype"
+				}
+			},
+			"side": "far",
+			"source_clip": "Run_New1",
+			"source_phase": 0.0,
+			"style": "fist"
+		}
+	],
+	"optional_sword": "unavailable; explicit near-only interface exists; no skill mapping",
+	"scope": "four native closeups; same arm meshes/shaders/source poses as fitting room, other body parts hidden only to expose each complete hand"
+}

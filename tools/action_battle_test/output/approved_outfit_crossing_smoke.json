@@ -1,0 +1,1338 @@
+{
+	"checks": 16,
+	"failures": [],
+	"passed": true,
+	"samples": [
+		{
+			"clip": "Idle",
+			"clock": 0.216666666666667,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.0,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.0,
+				"rest_drawing_preserved": true,
+				"samples": 13,
+				"tip_horizontal_gap": 0.0,
+				"tip_order_changes": 0
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Idle",
+			"clock": 0.416666666666667,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.0,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.0,
+				"rest_drawing_preserved": true,
+				"samples": 25,
+				"tip_horizontal_gap": 0.0,
+				"tip_order_changes": 0
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Idle",
+			"clock": 0.6,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.0,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.0,
+				"rest_drawing_preserved": true,
+				"samples": 36,
+				"tip_horizontal_gap": 0.0,
+				"tip_order_changes": 0
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Idle",
+			"clock": 0.800000000000001,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.0,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.0,
+				"rest_drawing_preserved": true,
+				"samples": 48,
+				"tip_horizontal_gap": 0.0,
+				"tip_order_changes": 0
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Idle",
+			"clock": 1.0,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.0,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.0,
+				"rest_drawing_preserved": true,
+				"samples": 60,
+				"tip_horizontal_gap": 0.0,
+				"tip_order_changes": 0
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 1.2,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.930516548777198,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.837679388818152,
+				"rest_drawing_preserved": true,
+				"samples": 72,
+				"tip_horizontal_gap": -0.478158950805664,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 1.4,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.995172050006169,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.973652019185551,
+				"rest_drawing_preserved": true,
+				"samples": 84,
+				"tip_horizontal_gap": -4.41630744934082,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 1.41666666666667,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.996134079860527,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.977356417213466,
+				"rest_drawing_preserved": true,
+				"samples": 85,
+				"tip_horizontal_gap": -4.64879608154297,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 1.61666666666667,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.999731382526558,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.996324479802743,
+				"rest_drawing_preserved": true,
+				"samples": 97,
+				"tip_horizontal_gap": -6.31280899047852,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 1.81666666666667,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.999981335530887,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.99940338731517,
+				"rest_drawing_preserved": true,
+				"samples": 109,
+				"tip_horizontal_gap": -6.81618118286133,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 2.01666666666666,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.999998703128271,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.999903157464359,
+				"rest_drawing_preserved": true,
+				"samples": 121,
+				"tip_horizontal_gap": -7.28936576843262,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 2.21666666666666,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.999999909888876,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.999984280460426,
+				"rest_drawing_preserved": true,
+				"samples": 133,
+				"tip_horizontal_gap": -5.49957084655762,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 2.41666666666666,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.999999993738768,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.999997448394729,
+				"rest_drawing_preserved": true,
+				"samples": 145,
+				"tip_horizontal_gap": -5.26175498962402,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 2.61666666666666,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.999999999564948,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.999999585821873,
+				"rest_drawing_preserved": true,
+				"samples": 157,
+				"tip_horizontal_gap": -6.19844818115234,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 2.81666666666666,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.999999999969771,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.999999932770353,
+				"rest_drawing_preserved": true,
+				"samples": 169,
+				"tip_horizontal_gap": -6.95098114013672,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Idle",
+			"clock": 3.01666666666666,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.930099445302617,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.959189444929312,
+				"rest_drawing_preserved": true,
+				"samples": 181,
+				"tip_horizontal_gap": -7.04253387451172,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Idle",
+			"clock": 3.21666666666666,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.38983606066215,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.58177780682237,
+				"rest_drawing_preserved": true,
+				"samples": 193,
+				"tip_horizontal_gap": -9.12919807434082,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Idle",
+			"clock": 3.41666666666666,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.163393446754651,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.352866076978141,
+				"rest_drawing_preserved": true,
+				"samples": 205,
+				"tip_horizontal_gap": -9.17270421981812,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Idle",
+			"clock": 3.61666666666666,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.0684837067074259,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.214024094459761,
+				"rest_drawing_preserved": true,
+				"samples": 217,
+				"tip_horizontal_gap": -7.79948878288269,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Idle",
+			"clock": 3.81666666666666,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.0287038322377224,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.129812175207078,
+				"rest_drawing_preserved": true,
+				"samples": 229,
+				"tip_horizontal_gap": -5.4760605096817,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Idle",
+			"clock": 4.01666666666666,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.0120307446069062,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.0787350642670807,
+				"rest_drawing_preserved": true,
+				"samples": 241,
+				"tip_horizontal_gap": -3.09484708309174,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Idle",
+			"clock": 4.21666666666666,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.00504249100252154,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.0477552304724291,
+				"rest_drawing_preserved": true,
+				"samples": 253,
+				"tip_horizontal_gap": -1.97512495517731,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Idle",
+			"clock": 4.41666666666666,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.00211347812137202,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.0289650114431713,
+				"rest_drawing_preserved": true,
+				"samples": 265,
+				"tip_horizontal_gap": -1.53418526053429,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Idle",
+			"clock": 4.61666666666666,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.00088582999301031,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.0175681674992106,
+				"rest_drawing_preserved": true,
+				"samples": 277,
+				"tip_horizontal_gap": -0.889293789863586,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Idle",
+			"clock": 4.81666666666665,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.000371281239479896,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.0106556322232383,
+				"rest_drawing_preserved": true,
+				"samples": 289,
+				"tip_horizontal_gap": -0.259487099945545,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Idle",
+			"clock": 5.01666666666665,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.000155616495125971,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.0064629676420159,
+				"rest_drawing_preserved": true,
+				"samples": 301,
+				"tip_horizontal_gap": -0.0995123535394669,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Idle",
+			"clock": 5.21666666666665,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.0000652241238722825,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.0039199880276133,
+				"rest_drawing_preserved": true,
+				"samples": 313,
+				"tip_horizontal_gap": -0.253394089639187,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Idle",
+			"clock": 5.41666666666665,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.0000273376310876499,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.00237759292445392,
+				"rest_drawing_preserved": true,
+				"samples": 325,
+				"tip_horizontal_gap": -0.299667693674564,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Idle",
+			"clock": 5.61666666666665,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.0000114581236069624,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.00144208300499713,
+				"rest_drawing_preserved": true,
+				"samples": 337,
+				"tip_horizontal_gap": -0.135284721851349,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Idle",
+			"clock": 5.81666666666665,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.00000480248622023949,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.000874667556381283,
+				"rest_drawing_preserved": true,
+				"samples": 349,
+				"tip_horizontal_gap": 0.0390082430094481,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Idle",
+			"clock": 6.01666666666665,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.00000201288401894841,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.000530512690001177,
+				"rest_drawing_preserved": true,
+				"samples": 361,
+				"tip_horizontal_gap": 0.0692815369693562,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Idle",
+			"clock": 6.21666666666665,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.000000843667610468618,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.000321772211852337,
+				"rest_drawing_preserved": true,
+				"samples": 373,
+				"tip_horizontal_gap": -0.00198821723461151,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Idle",
+			"clock": 6.41666666666665,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.000000353609562326238,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.000195164711931991,
+				"rest_drawing_preserved": true,
+				"samples": 385,
+				"tip_horizontal_gap": -0.0570941846817732,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Idle",
+			"clock": 6.61666666666665,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.000000148209698958456,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.000118373381480737,
+				"rest_drawing_preserved": true,
+				"samples": 397,
+				"tip_horizontal_gap": -0.04655018937774,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Idle",
+			"clock": 6.81666666666665,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.0000000621196856805878,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.0000717970851619265,
+				"rest_drawing_preserved": true,
+				"samples": 409,
+				"tip_horizontal_gap": -0.00380717334337533,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Idle",
+			"clock": 7.01666666666665,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.0000000260364562924906,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.0000435471334287074,
+				"rest_drawing_preserved": true,
+				"samples": 421,
+				"tip_horizontal_gap": 0.0220307097770274,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 7.21666666666665,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.891631979218958,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.780233922245686,
+				"rest_drawing_preserved": true,
+				"samples": 433,
+				"tip_horizontal_gap": -0.599068641662598,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 7.41666666666665,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.992470215913949,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.964327435941882,
+				"rest_drawing_preserved": true,
+				"samples": 445,
+				"tip_horizontal_gap": -4.28650856018066,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 7.61666666666664,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.999476804614739,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.994209607599663,
+				"rest_drawing_preserved": true,
+				"samples": 457,
+				"tip_horizontal_gap": -5.7180118560791,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 7.81666666666664,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.999963646578968,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.999060099966595,
+				"rest_drawing_preserved": true,
+				"samples": 469,
+				"tip_horizontal_gap": -5.9598560333252,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 8.01666666666664,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.999997474038843,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.999847434852128,
+				"rest_drawing_preserved": true,
+				"samples": 481,
+				"tip_horizontal_gap": -6.41861534118652,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 8.21666666666665,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.999999824487501,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.999975235531952,
+				"rest_drawing_preserved": true,
+				"samples": 493,
+				"tip_horizontal_gap": -7.18399810791016,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 8.41666666666666,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.999999987804786,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.999995980216411,
+				"rest_drawing_preserved": true,
+				"samples": 505,
+				"tip_horizontal_gap": -6.63510513305664,
+				"tip_order_changes": 1
+			},
+			"facing": 1.0
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 8.60000000000001,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": -0.399345073308128,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": -0.593405986811221,
+				"rest_drawing_preserved": true,
+				"samples": 516,
+				"tip_horizontal_gap": 5.63142776489258,
+				"tip_order_changes": 2
+			},
+			"facing": -1.0
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 8.80000000000002,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.867495481832033,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.560450496682901,
+				"rest_drawing_preserved": true,
+				"samples": 528,
+				"tip_horizontal_gap": 11.893545627594,
+				"tip_order_changes": 2
+			},
+			"facing": -1.0
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 9.00000000000003,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.990793128775075,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.928652055976891,
+				"rest_drawing_preserved": true,
+				"samples": 540,
+				"tip_horizontal_gap": -1.51283264160156,
+				"tip_order_changes": 3
+			},
+			"facing": -1.0
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 9.20000000000004,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.999360274812328,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.988418758119601,
+				"rest_drawing_preserved": true,
+				"samples": 552,
+				"tip_horizontal_gap": -6.78114318847656,
+				"tip_order_changes": 3
+			},
+			"facing": -1.0
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 9.40000000000005,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.999955549686126,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.998120125739729,
+				"rest_drawing_preserved": true,
+				"samples": 564,
+				"tip_horizontal_gap": -7.94198608398438,
+				"tip_order_changes": 3
+			},
+			"facing": -1.0
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 9.60000000000006,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.999996911438784,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.999694857661128,
+				"rest_drawing_preserved": true,
+				"samples": 576,
+				"tip_horizontal_gap": -5.63039207458496,
+				"tip_order_changes": 3
+			},
+			"facing": -1.0
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 9.80000000000007,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.999999785396107,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.999950469109057,
+				"rest_drawing_preserved": true,
+				"samples": 588,
+				"tip_horizontal_gap": -5.22773361206055,
+				"tip_order_changes": 3
+			},
+			"facing": -1.0
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 10.0000000000001,
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.999999985088581,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one continuous cloth chart; small front/rear response differences retain natural depth",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.99999196011551,
+				"rest_drawing_preserved": true,
+				"samples": 600,
+				"tip_horizontal_gap": -6.16884422302246,
+				"tip_order_changes": 3
+			},
+			"facing": -1.0
+		}
+	],
+	"scope": "One continuous approved artwork surface with independent front/rear controls; startup/steady/stop/turn/pause; hidden legacy split panels stay hidden. Does not constitute final art approval",
+	"tip_gap_range": [
+		-9.47883701324463,
+		11.893545627594
+	]
+}

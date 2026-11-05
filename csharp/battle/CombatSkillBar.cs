@@ -86,6 +86,8 @@ public partial class CombatSkillBar : Control
         var column = new VBoxContainer { MouseFilter = MouseFilterEnum.Ignore, SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ExpandFill };
         column.AddThemeConstantOverride("separation", 6); panel.AddChild(column);
         var header = new HBoxContainer { CustomMinimumSize = new Vector2(0, 50), MouseFilter = MouseFilterEnum.Ignore, SizeFlagsVertical = SizeFlags.ShrinkCenter };
+        // 旧资源行虽已隐藏，仍须归属于场景，否则其节点、主题和字体永远不会随技能栏释放。
+        column.AddChild(header);
         var resourceCluster = new VBoxContainer { CustomMinimumSize = new Vector2(300, 50), MouseFilter = MouseFilterEnum.Ignore };
         resourceCluster.AddThemeConstantOverride("separation", 2);
         resourceCluster.AddChild(CreateResourceRow("体力", 6, new Color(.31f, .78f, .43f), out energyPips, out energyValue));

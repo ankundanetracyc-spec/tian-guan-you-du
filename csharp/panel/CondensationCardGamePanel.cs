@@ -23,6 +23,7 @@ public partial class CondensationCardGamePanel : Control
     private int _comprehension = 50, _intelligence = 15, _rootWeight = 40;
     private bool _animating;
     private bool _testMode = true, _resultReported, _successAnimationPlayed;
+    private bool _resumeResultAfterRealmPresentation;
     private string _selectionName = "";
     private int _selectionIndex = -1;
     private bool _selectionItem;
@@ -80,6 +81,7 @@ public partial class CondensationCardGamePanel : Control
         _swap.ZIndex = _extra.ZIndex = _start.ZIndex = 45;
         _handLayer = new Control { Size = _canvas.Size, MouseFilter = MouseFilterEnum.Ignore };
         _canvas.AddChild(_handLayer);
+        ButtonAt(_canvas, "收益", new Rect2(1205, 25, 85, 38), () => ShowRewards());
         ButtonAt(_canvas, "玩法", new Rect2(1300, 25, 85, 38), ShowHelp);
         _restartButton = ButtonAt(_canvas, "重开", new Rect2(1395, 25, 85, 38), ConfirmRestart);
         _returnButton = ButtonAt(_canvas, "返回", new Rect2(1490, 25, 85, 38), RequestClose);
@@ -98,6 +100,7 @@ public partial class CondensationCardGamePanel : Control
         _testMode = testMode;
         _game = null;
         _resultReported = false;
+        _resumeResultAfterRealmPresentation = false;
         _successAnimationPlayed = false;
         _comprehension = Mathf.RoundToInt(target.comprehension);
         _intelligence = Mathf.RoundToInt(target.intelligence);
@@ -161,6 +164,12 @@ public partial class CondensationCardGamePanel : Control
         var summary = Text(box, "", 22, new Rect2(25, 145, 420, 40), Cream);
         void UpdateSummary() => summary.Text = $"牌组：{_counts.Values.Sum()} / 36 张";
         UpdateSummary();
+        ButtonAt(box, "恢复推荐牌组", new Rect2(735, 145, 235, 40), () =>
+        {
+            foreach (var card in CondensationCardGame.Pool) _counts[card.Name] = card.Count;
+            ShowSetup();
+        });
+        ButtonAt(box, "查看凝核收益", new Rect2(1000, 145, 245, 40), () => ShowRewards(ShowSetup));
         for (var i = 0; i < CondensationCardGame.Pool.Length; i++)
         {
             var card = CondensationCardGame.Pool[i]; var col = i % 3; var row = i / 3; var x = 25 + col * 415; var y = 195 + row * 67;
@@ -240,7 +249,8 @@ public partial class CondensationCardGamePanel : Control
         if (!_animating && !g.Finished) _qi.ShowCompression(g.Score);
         if (g.Finished)
         {
-            if (!g.Failed && !_successAnimationPlayed)
+            // 正式成功交给统一境界演出；试演仍只操作本页，不写正式人物。
+            if (_testMode && !g.Failed && !_successAnimationPlayed)
             {
                 _successAnimationPlayed = true;
                 _animating = true; _end.Disabled = true;
@@ -382,18 +392,47 @@ public partial class CondensationCardGamePanel : Control
             CondensationFinished?.Invoke(_target, !g.Failed, g.Failed ? 0 : g.Score);
         }
         UpdateModeVisibility();
-        var box = Modal(g.Failed ? "凝核未成" : "灵核已成", 1000, 680);
+        var box = Modal(g.Failed ? "凝核未成" : "灵核已成", 1000, 740);
         var outcome = g.Failed
             ? g.Disorder > 10 ? $"紊乱升至 {g.Disorder}，超过10，凝核失败。" : $"最终凝核程度 {g.Score}，未达到100。"
             : $"全部结算后的凝核程度：{g.Score}\n成核标准：100，上不封顶。";
         Text(box, outcome, 32, new Rect2(40, 85, 920, 100), Cream);
-        Text(box, string.Join("\n", g.Log.TakeLast(6)), 21, new Rect2(40, 205, 920, 220), Cream);
-        if (!g.Failed) Text(box, CondensationOutcomeRules.Describe(g.Score), 21, new Rect2(40, 440, 920, 85), Cream);
-        else Text(box, _testMode ? "试演失败不会影响角色。" : "本次不扣灵力；主角已受重伤，正式战斗生命上限暂降15%，实际休息行动累计120小时后可重新凝核。", 19, new Rect2(40, 440, 920, 70), Cream);
-        Text(box, _testMode ? "试演只展示收益，不写入正式人物或存档；云气在铸玄基时转化。" : "凝核成功已写入正式人物；后续云气在铸玄基时转化。", 19, new Rect2(40, 535, 920, 50), Cream);
-        if (_testMode) ButtonAt(box, "重新构筑", new Rect2(40, 600, 240, 45), ShowSetup);
-        ButtonAt(box, "查看完整记录", new Rect2(_testMode ? 340 : 210, 600, 280, 45), ShowLog);
-        ButtonAt(box, _testMode ? "收起" : "返回修炼", new Rect2(_testMode ? 710 : 690, 600, 240, 45), _testMode ? HideModal : RequestClose);
+        Text(box, string.Join("\n", g.Log.TakeLast(6)), 20, new Rect2(40, 205, 920, 180), Cream);
+        var reward = Text(box, !g.Failed ? CondensationOutcomeRules.Describe(g.Score)
+            : _testMode ? "试演失败不会影响角色。" : "本次不扣灵力；重伤使正式战斗生命上限暂降15%，实际休息行动累计120小时后可重新凝核。",
+            21, new Rect2(40, 395, 920, 135), Cream);
+        reward.Name = "CondensationOutcome";
+        var applied = !_testMode && _target is { has_spirit_core: true } && _target.condensation_final_score == g.Score;
+        var persistence = _testMode ? "试演只展示收益，不写入正式人物或存档。"
+            : g.Failed ? "本次失败已结算；重伤恢复后可重试。"
+            : applied ? "最终分数已写入人物，三项属性加成已生效；重算与读档不会重复领取。"
+            : "本次结果未写入人物，请重新查看突破条件。";
+        Text(box, persistence + "\n铸基云气仅保存补正，当前不生成云气，也不改变归元九息。", 19, new Rect2(40, 550, 920, 70), Cream);
+        if (_testMode) ButtonAt(box, "重新构筑", new Rect2(40, 650, 240, 45), ShowSetup);
+        ButtonAt(box, "查看完整记录", new Rect2(_testMode ? 340 : 210, 650, 280, 45), ShowLog);
+        ButtonAt(box, _testMode ? "收起" : "返回修炼", new Rect2(_testMode ? 710 : 690, 650, 240, 45), _testMode ? HideModal : RequestClose);
+    }
+    private void ShowRewards(Action? returnToSetup = null)
+    {
+        var box = Modal("凝核分数与后续收益", 1120, 760);
+        Text(box, "100分成核；超过100每满5分计一档，分数上不封顶。\n每档：体魄、灵慧、神魂各定额＋0.25；云息后期门槛倍率＋0.0125；铸基云气补正＋2.5%。",
+            22, new Rect2(35, 85, 1050, 105), Cream);
+        string[] headers = ["最终分数", "三项各定额", "云息后期门槛", "铸基云气补正（待兑现）"];
+        float[] columns = [35, 200, 430, 680];
+        for (var column = 0; column < headers.Length; column++)
+            Text(box, headers[column], 21, new Rect2(columns[column], 205, column == 3 ? 405 : 210, 42), Cream);
+        var scores = new[] { 100, 125, 150, 175, 200, 250 };
+        for (var row = 0; row < scores.Length; row++)
+        {
+            var score = scores[row];
+            string[] values = [score.ToString(), $"＋{CondensationOutcomeRules.FlatAttributeBonus(score):0.##}",
+                $"×{CondensationOutcomeRules.SpiritRequirementMultiplier(score):0.####}", $"＋{CondensationOutcomeRules.FoundationCloudBonus(score) * 100:0.##}%"];
+            for (var column = 0; column < values.Length; column++)
+                Text(box, values[column], 23, new Rect2(columns[column], 250 + row * 47, column == 3 ? 405 : 210, 40), Cream);
+        }
+        Text(box, "门槛倍率只乘七→八、八→九、九→十的本层54／60／66缕，并逐次向上取整。\n属性是永久定额，不增加成长倍率、悟性或福缘；云气补正待玄基正式流程兑现，\n不增加归元息、不缩短养息，也不代表已经提高玄基品质。",
+            20, new Rect2(35, 555, 1050, 105), Cream);
+        ButtonAt(box, returnToSetup is null ? "返回牌局" : "返回准备", new Rect2(835, 680, 235, 48), returnToSetup ?? HideModal);
     }
     private void ShowItems()
     {
@@ -507,6 +546,7 @@ public partial class CondensationCardGamePanel : Control
     }
     public override void _UnhandledKeyInput(InputEvent @event)
     {
+        if (!IsVisibleInTree()) return;
         if (@event is not InputEventKey { Pressed: true, Echo: false, Keycode: Key.Escape }) return;
         if (_game?.Busy == true) return;
         if (_modal.Visible) HideModal();
@@ -518,7 +558,7 @@ public partial class CondensationCardGamePanel : Control
 
     public bool TryCloseTopModal()
     {
-        if (!_modal.Visible || _game?.Busy == true) return false;
+        if (!IsVisibleInTree() || !_modal.Visible || _game?.Busy == true) return false;
         HideModal();
         return true;
     }
@@ -526,9 +566,28 @@ public partial class CondensationCardGamePanel : Control
     private void RequestClose()
     {
         if (!_testMode && _game is { Finished: false }) return;
+        _resumeResultAfterRealmPresentation = false;
         _qi.StopTransition();
         Hide();
         Closed?.Invoke();
+    }
+
+    /// <summary>保留已结算的正式结果，避免牌局和高层弹窗盖住统一突破演出。</summary>
+    public void SuspendResultForRealmPresentation()
+    {
+        if (!Visible || _testMode || !_resultReported || _game is not { Finished: true, Failed: false } ||
+            _target is not { has_spirit_core: true } || _target.condensation_final_score != _game.Score) return;
+        _resumeResultAfterRealmPresentation = true;
+        _qi.StopTransition();
+        Hide();
+    }
+
+    public void RestoreResultAfterRealmPresentation()
+    {
+        if (!_resumeResultAfterRealmPresentation) return;
+        _resumeResultAfterRealmPresentation = false;
+        if (_testMode || _game is not { Finished: true, Failed: false } || _target is not { has_spirit_core: true } || _target.condensation_final_score != _game.Score) return;
+        Show(); MoveToFront(); ShowResult();
     }
     private Button Pile(Rect2 rect, Texture2D texture, Action click)
     {

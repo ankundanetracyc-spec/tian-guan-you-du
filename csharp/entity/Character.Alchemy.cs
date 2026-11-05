@@ -6,6 +6,7 @@ using System.Linq;
 public partial class Character
 {
     private bool _alchemyCommitting;
+    private bool _usingAlchemyPill;
     public double AlchemyAttainment => Math.Max(0, human?.alchemy_proficiency ?? 0);
     /// <summary>正式界面只使用配伍自动产量。</summary>
     public bool TryBrewAlchemy(IReadOnlyList<AlchemySlotSimulation.Input> supplied,
@@ -91,10 +92,12 @@ public partial class Character
     public bool CanUseAlchemyPill(PillItemData item)
     {
         if (HasMeta("artifact_battle_clone")) return false;
-        if (human is null || !AlchemyProductCatalog.IsEnabled(item.pill_id) || !has_inventory_item(item.ResourcePath) || item.efficacy_tier is < 0 or > 4) return false;
+        if (_usingAlchemyPill || human is null || !AlchemyProductCatalog.IsWorldPill(item.pill_id) || !has_inventory_item(item.ResourcePath) || item.efficacy_tier is < 0 or > 4) return false;
         bool effectAvailable = item.pill_id switch
         {
             "huichun" => current_health > 0 && current_health < max_health,
+            "naling" => current_health > 0 && NalingRemainingProgress() > 1e-6,
+            "fanyuan" => current_health > 0 && current_world_stamina < max_world_stamina,
             "tongmai" => current_health > 0 && current_mana < max_mana &&
                 (long)max_mana * AlchemyProductCatalog.ManaPercent[item.efficacy_tier] / 100 > 0,
             "jingxin" => current_health > 0 && human.mood_value < 0,
@@ -107,36 +110,55 @@ public partial class Character
     public bool TryUseAlchemyPill(PillItemData item)
     {
         if (human is null || !CanUseAlchemyPill(item)) return false;
-        ensure_inventory_state();
-        var paths = human.inventory_item_paths.ToList();
-        var amounts = human.inventory_item_counts.ToList();
-        var positions = human.inventory_item_positions.ToList();
-        int index = FindPillUseIndex(paths, amounts, item.ResourcePath);
-        if (index < 0) return false;
-        amounts[index]--;
-        if (amounts[index] == 0)
+        _usingAlchemyPill = true;
+        try
         {
-            paths.RemoveAt(index);
-            amounts.RemoveAt(index);
-            positions.RemoveAt(index);
-        }
-        human.inventory_item_paths = new(paths);
-        human.inventory_item_counts = new(amounts);
-        human.inventory_item_positions = new(positions);
-        int tier = item.efficacy_tier;
-        int amount = AlchemyPillAmount(item.pill_id, tier);
-        switch (item.pill_id)
-        {
-            case "huichun": current_health = Math.Min(max_health, current_health + amount); break;
-            case "tongmai": current_mana = Math.Min(max_mana, current_mana + amount); break;
-            case "jingxin": human.mood_value = Math.Min(0, human.mood_value + amount); break;
-        }
-        AddPillToxicity(item.pill_id, tier);
-        ensure_spatial_inventory_state();
+            ensure_inventory_state();
+            var paths = human.inventory_item_paths.ToList();
+            var amounts = human.inventory_item_counts.ToList();
+            var positions = human.inventory_item_positions.ToList();
+            int index = FindPillUseIndex(paths, amounts, item.ResourcePath);
+            if (index < 0) return false;
+            amounts[index]--;
+            if (amounts[index] == 0)
+            {
+                paths.RemoveAt(index);
+                amounts.RemoveAt(index);
+                positions.RemoveAt(index);
+            }
+            human.inventory_item_paths = new(paths);
+            human.inventory_item_counts = new(amounts);
+            human.inventory_item_positions = new(positions);
+            int tier = item.efficacy_tier;
+            int amount = AlchemyPillAmount(item.pill_id, tier);
+            switch (item.pill_id)
+            {
+                case "huichun": current_health = Math.Min(max_health, current_health + amount); break;
+                case "naling":
+                    double gained = Math.Min(amount, NalingRemainingProgress());
+                    double progress = spirit_strands + Math.Max(0, human.cultivation_progress) + gained;
+                    spirit_strands = (int)Math.Floor(progress + 1e-7);
+                    human.cultivation_progress = (float)Math.Clamp(progress - spirit_strands, 0, .999999);
+                    break;
+                case "fanyuan": restore_world_stamina(amount); break;
+                case "tongmai": current_mana = Math.Min(max_mana, current_mana + amount); break;
+                case "jingxin": human.mood_value = Math.Min(0, human.mood_value + amount); break;
+            }
+            AddPillToxicity(item.pill_id, tier);
+            ensure_spatial_inventory_state();
             EmitSignal(SignalName.inventory_changed);
-        InventoryChanged?.Invoke(this);
-        if (IsInsideTree()) GetTree().CallGroup("main_scene", "notify_world_stamina_changed", this);
-        return true;
+            InventoryChanged?.Invoke(this);
+            if (IsInsideTree()) GetTree().CallGroup("main_scene", "notify_world_stamina_changed", this);
+            return true;
+        }
+        finally { _usingAlchemyPill = false; }
+    }
+
+    private double NalingRemainingProgress()
+    {
+        if (human is null || cultivation_realm is not ("云息一层" or "云息二层" or "云息三层" or "云息四层" or "云息五层" or "云息六层" or "云息七层" or "云息八层" or "云息九层")) return 0;
+        var progress = get_next_realm_progress();
+        return Math.Max(0, progress.GetValueOrDefault("required", 0).AsInt32() - progress.GetValueOrDefault("current", 0).AsInt32() - Math.Max(0, human.cultivation_progress));
     }
 
     private static int FindPillUseIndex(List<string> paths, List<int> amounts, string pillPath)

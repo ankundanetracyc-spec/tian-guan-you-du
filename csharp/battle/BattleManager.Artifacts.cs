@@ -9,15 +9,17 @@ public partial class BattleManager
 
     private void InitializeArtifacts(GodotObject owner, BattleEntityData snapshot)
     {
-        var items = snapshot.equipped_artifacts.Where(item => item is not null && ArtifactSkillFactory.IsConfigured(item)).ToList();
+        var items = snapshot.equipped_artifacts.Where(item => item is not null && ArtifactSkillFactory.IsConfigured(item))
+            .DistinctBy(item => item.instance_id).ToList();
         _artifactItems[owner] = items;
         owner.SetMeta("artifact_bond_sword_bonus", ArtifactBondRuntime.Aggregate(items).SwordDamageBonus);
         if (!snapshot.artifact_bond_defense_applied && ArtifactBondRuntime.Aggregate(items).DefenseBonus > 0)
             owner.Set("physical_defense", Mathf.FloorToInt(snapshot.physical_defense * (1 + ArtifactBondRuntime.Aggregate(items).DefenseBonus)));
         if (items.FirstOrDefault(ForgedArtifactInventory.IsForged) is { } forged) owner.SetMeta("forged_sword_json", forged.forged_snapshot_json);
+        else owner.RemoveMeta("forged_sword_json");
         var baseDamage = items.Where(ForgedArtifactInventory.IsForged).Select(item => { ForgedArtifactInventory.TryRead(item, out var sword); return sword; })
             .SelectMany(sword => sword.Effects).Where(effect => effect.CarrierId == "base" && effect.AtomId == "physical_damage_percent").Sum(effect => effect.Value) / 100;
-        if (items.Any(ForgedArtifactInventory.IsForged)) owner.SetMeta("forged_physical_bonus", baseDamage);
+        owner.SetMeta("forged_physical_bonus", baseDamage);
         _artifactRuntime[owner] = new(items.Where(item => item.ritual_mode == "外祭").Select(item => (item.instance_id, item.spirit_cost)));
         owner.Set("used_spirit_perception", Math.Max(0, snapshot.used_spirit_perception));
     }

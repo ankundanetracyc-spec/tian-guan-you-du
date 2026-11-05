@@ -47,6 +47,9 @@ public partial class WorldLootCapacitySmoke : Node
             Invoke("collect_back_hill_resource", "spirit_stones", 2);
             Check(ReferenceEquals(first, Field<ItemClaimPanel>("_active_item_claim")), "第二批掉落覆盖领取页");
             Check(_player.remove_item_from_inventory(Stone, 70), "释放领取空间失败");
+            // External mutation invalidates the open workspace. First finish refreshes it, then retry safely.
+            typeof(ItemClaimPanel).GetMethod("commit_receipt", Flags)!.Invoke(first, null);
+            Check(_scene.has_active_item_claim() && _player.get_inventory_total_count(Hide) == 0, "过期预览不应覆盖库存");
             Claim(first); await Frames();
             Check(_player.get_inventory_total_count(Hide) == 1 && _player.get_inventory_total_count(Bone) == 1, "战利品没有完整领取");
             Check(_scene.has_active_item_claim() && !ReferenceEquals(first, Field<ItemClaimPanel>("_active_item_claim")) && GetTree().Paused, "第二批掉落未排队打开或暂停被旧页覆盖");

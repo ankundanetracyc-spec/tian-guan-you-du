@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 
-/// <summary>宗内友好对练；判断只使用对方确实掌握的玩家信息。</summary>
+/// <summary>当面友好对练；判断只使用对方确实掌握的玩家信息。</summary>
 public static class NpcSparringRules
 {
     public static bool Supports(WorldNpcData npc, HumanData player) =>
-        player.sect_affiliation_id == "yuxu_xianzong" && npc.faction_id == player.sect_affiliation_id &&
         player.cultivation_realm.StartsWith("云息") && npc.cultivation_realm.StartsWith("云息");
     public static bool WantsToInvite(WorldNpcData npc, HumanData player) => Supports(npc, player) &&
+        player.sect_affiliation_id == "yuxu_xianzong" && npc.faction_id == player.sect_affiliation_id &&
         (NpcSocialRules.KnowsName(npc) || NpcPlayerImpressionRules.SparPartner(npc)) &&
         (NpcPersonalityRules.Values(npc, "修行") || CharacterRelationshipRules.Value(npc, CharacterRelationshipRules.PlayerCharacterId, CharacterRelationshipRules.Respect) >= 30) &&
         Evaluate(npc, player).AgreesToSpar;
@@ -17,7 +17,7 @@ public static class NpcSparringRules
         void Note(string rule, string text) { steps.Add(new(rule, text)); lines.Add(text); }
         NpcSocialRules.Response Finish(string text, bool agrees = false) => new(text, "", lines) {
             DecisionSteps = steps.ToArray(), ActionName = "商议切磋", AgreesToSpar = agrees };
-        if (!Supports(npc, player)) return Finish("目前只开放玉虚同门之间的云息对练。");
+        if (!Supports(npc, player)) return Finish("双方踏入云息后，才可相约印证所学。");
         if (CharacterRelationshipRules.IsHostile(npc, CharacterRelationshipRules.PlayerCharacterId))
         { Note("spar_hostile", "说起对练，对方提起旧怨，并不愿与你点到为止。"); return Finish("对方婉拒了此次切磋。"); }
         var known = NpcSocialRules.KnowsName(npc);

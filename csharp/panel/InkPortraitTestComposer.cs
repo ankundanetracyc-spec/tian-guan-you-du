@@ -38,7 +38,7 @@ public static class InkPortraitTestComposer
     }
 
     // Source-over order is fixed by portrait_manifest.json, from back to front.
-    private static readonly int[] BlendOrder = [1, 6, 7, 3, 2, 4, 5, 8, 0];
+    private static readonly int[] BlendOrder = [1, 6, 7, 4, 3, 2, 5, 8, 0];
     private static readonly System.Collections.Generic.Dictionary<string, Image> Images = [];
     private static readonly System.Collections.Generic.Queue<string> ImageOrder = new();
     private static readonly System.Collections.Generic.Dictionary<string, Texture2D> Composites = [];
@@ -62,11 +62,27 @@ public static class InkPortraitTestComposer
         using var result = Image.CreateEmpty(Width, Height, false, Image.Format.Rgba8);
         foreach (int part in BlendOrder)
         {
+            // Rear fabric belongs to this same clothing choice/visibility; draw it behind skin.
+            if (part == 6 && visible[7])
+            {
+                string rearFile = Component(female, 7).GetValueOrDefault("rear_file", "").AsString();
+                if (rearFile.Length > 0)
+                    result.BlendRect(LoadImageAt(Root + rearFile.Replace("{index}", FileIndex(female, 7, variants[7]).ToString("00"))), Canvas, Vector2I.Zero);
+            }
             if (!visible[part]) continue;
             result.BlendRect(LoadImage(sex, PartKeys[part], variants[part]), Canvas, Vector2I.Zero);
         }
         if (showAnchors)
-            result.BlendRect(LoadImageAt(SelectedRigRoot + sex + "_overlay.png"), Canvas, Vector2I.Zero);
+        {
+            string overlayPath = SelectedRigRoot + sex + "_overlay.png";
+            Variant overlays = _config!.GetValueOrDefault("anchor_overlays", new Godot.Collections.Dictionary());
+            if (overlays.VariantType == Variant.Type.Dictionary)
+            {
+                string configured = overlays.AsGodotDictionary().GetValueOrDefault(sex, "").AsString();
+                if (configured.Length > 0) overlayPath = configured;
+            }
+            result.BlendRect(LoadImageAt(overlayPath), Canvas, Vector2I.Zero);
+        }
 
         var texture = ImageTexture.CreateFromImage(result);
         Composites[key] = texture;
@@ -110,5 +126,6 @@ public static class InkPortraitTestComposer
         Images.Clear();
         ImageOrder.Clear();
         CompositeOrder.Clear();
+        _config = null;
     }
 }

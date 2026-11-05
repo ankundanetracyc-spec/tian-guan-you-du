@@ -1,0 +1,22 @@
+{
+	"actual_arm_lower_upper_ratios": {
+		"far": 0.450000149098465,
+		"near": 0.770000046800765
+	},
+	"body_copied_children": 0,
+	"body_mesh_count": 1,
+	"errors": [],
+	"materials": {
+		"arm": "res://art/yuxu_fullbody_v15/arm.png",
+		"arm_open_v19": "res://art/yuxu_fullbody_v15/arm_open_v19.png",
+		"arm_relaxed_v19": "res://art/yuxu_fullbody_v15/arm_relaxed_v19.png",
+		"arm_sword_fingers_v21": "res://art/yuxu_fullbody_v15/arm_sword_fingers_v21.png",
+		"body": "res://art/yuxu_fullbody_v15/body.png",
+		"cutout": "res://art/yuxu_fullbody_v15/cutout.png",
+		"leg": "res://art/yuxu_fullbody_v15/leg.png"
+	},
+	"maximum_arm_length_error": 0.000011444091796875,
+	"maximum_sole_error": 0.0000128746032714844,
+	"mesh_count": 6,
+	"passed": true
+}

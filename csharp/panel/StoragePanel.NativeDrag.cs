@@ -22,13 +22,13 @@ public partial class StoragePanel
     {
         if (ev is not InputEventMouseButton { ButtonIndex: MouseButton.Left, Pressed: true } mouse) return;
         clear_active_info();
-        var pointer = _nativeSurface!.Position + slot.Position + mouse.Position;
+        var pointer = _canvas!.GetGlobalTransformWithCanvas().AffineInverse() * (slot.GetGlobalTransformWithCanvas() * mouse.Position);
         _nativeDrag = new NativeDragState
         {
             Item = entry, Source = slot, Start = pointer, Pointer = pointer, Rotation = entry.Rotation,
             Size = entry.Size, Grab = mouse.Position / NativeCell
         };
-        _nativeSelected = entry.InstanceId; _nativeSurface.QueueRedraw(); slot.AcceptEvent();
+        _nativeSelected = entry.InstanceId; _nativeSurface!.QueueRedraw(); slot.AcceptEvent();
     }
     private bool handle_native_input(InputEvent ev)
     {
@@ -61,7 +61,8 @@ public partial class StoragePanel
             if (!drag.Active)
             {
                 _nativeDrag = null;
-                on_slot_info_requested(drag.Source, true);
+                if (drag.Item.Item is StorageRingItemData) open_native_container(drag.Item.InstanceId);
+                else on_slot_info_requested(drag.Source, true);
             }
             else
             {
@@ -69,7 +70,7 @@ public partial class StoragePanel
                 var region = drag.Region; var cell = drag.Cell; var rotation = drag.Rotation; var id = drag.Item.InstanceId;
                 var valid = drag.Valid;
                 cancel_native_drag();
-                var moved = valid && _player?.move_spatial_item(id, region, cell.X, cell.Y, rotation) == true;
+                var moved = valid && _player?.move_stored_item(id, _nativeContainerId, region, cell.X, cell.Y, rotation) == true;
                 _nativeLocated = moved ? id : "";
                 _nativeStatus!.Text = moved ? "已放置：" + native_name(drag.Item) : "无法放置，已保留原位";
                 _nativeSurface!.QueueRedraw();
@@ -104,15 +105,16 @@ public partial class StoragePanel
         drag.Image!.Size = new Vector2(original.X, original.Y) * NativeCell;
         drag.Image.Position = (drag.Ghost.Size - drag.Image.Size) * .5f;
         drag.Image.PivotOffset = drag.Image.Size * .5f; drag.Image.RotationDegrees = drag.Rotation * 90;
-        var point = drag.Pointer - _nativeSurface.Position;
+        var globalPointer = _canvas.GetGlobalTransformWithCanvas() * drag.Pointer;
+        var point = _nativeSurface.GetGlobalTransformWithCanvas().AffineInverse() * globalPointer;
         drag.Region = ""; drag.Valid = false;
-        foreach (var pair in _nativeRegions)
+        foreach (var pair in _nativeRegions.Where(_ => _nativeSpaceScroll?.GetGlobalRect().HasPoint(globalPointer) != false))
         {
             if (!pair.Value.HasPoint(point)) continue;
             drag.Region = pair.Key;
             var cell = (point - pair.Value.Position) / NativeCell - drag.Grab;
             drag.Cell = new(Mathf.RoundToInt(cell.X), Mathf.RoundToInt(cell.Y));
-            drag.Valid = _player?.can_move_spatial_item(drag.Item.InstanceId, drag.Region, drag.Cell.X, drag.Cell.Y, drag.Rotation) == true;
+            drag.Valid = _player?.can_move_stored_item(drag.Item.InstanceId, _nativeContainerId, drag.Region, drag.Cell.X, drag.Cell.Y, drag.Rotation) == true;
             break;
         }
         drag.Hint!.Text = drag.Valid ? "松开放置" : "不可放置";
@@ -123,6 +125,7 @@ public partial class StoragePanel
     }
     private void cancel_native_drag()
     {
+        _nativeShadePressed = false;
         _nativeCategoryPressed = _nativeCategoryPanning = false; _nativeCategoryButton = null;
         if (_nativeDrag is not { } drag) return;
         _nativeDrag = null;

@@ -262,7 +262,7 @@ public partial class InfoPanel : Control
 
     private void render_npc_page() => render_shared_npc_overview();
 
-    private static string npc_faction_name(string faction_id) => faction_id switch
+    public static string npc_faction_name(string faction_id) => faction_id switch
     {
         "yuxu_xianzong" or "yuxu_sect" or "yuxu" => "玉虚仙宗",
         "fulan_temple" => "伏岚观",
@@ -272,6 +272,9 @@ public partial class InfoPanel : Control
         "white_stone_town" => "白石城",
         "herb_valley_gatherers" => "灵草谷采药会",
         "wuxiang_shengzong" => "无相圣宗",
+        "xuandu_tianfu" => "玄都天府",
+        "zhenyue_guan" => "镇岳观",
+        "baopu_shan" => "抱朴山",
         _ => string.IsNullOrWhiteSpace(faction_id) ? "无明确归属" : faction_id,
     };
 

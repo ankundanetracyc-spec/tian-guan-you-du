@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="StorageRingItemData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/StorageRingItemData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+entity_name = "储物戒指"
+definition_id = &"debug_storage_ring_fullscreen"
+description = "整屏子页布局试样，不是正式品质容量表。"
+icon_path = "res://textures/items/inventory_scale_20261104/storage_ring_1x1.png"
+item_category = "器具"
+item_subcategory = "储物戒指"
+storage_quality = "一品"
+storage_width = 38
+storage_height = 18
+inventory_width = 1
+inventory_height = 1
+

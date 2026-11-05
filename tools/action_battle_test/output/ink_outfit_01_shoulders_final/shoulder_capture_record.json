@@ -1,0 +1,785 @@
+{
+	"camera_focus": "near shoulder source attachment; pose and materials unchanged",
+	"clipped_viewport": true,
+	"frames_per_cycle": 24,
+	"materials": {
+		"body": {
+			"mapping": "source crop to complete Sprite canvas affine; no local registration",
+			"native_per_template_x": 0.674305555555556,
+			"native_per_template_y": 0.675,
+			"native_size": [
+				971,
+				1620
+			],
+			"path": "res://art/ink_outfit_01_20261104/assets/body.png",
+			"sha256": "9a87016e7b3aaf208d369fd7033cb0fa62f31ec8690cb2727d050120099a3109",
+			"source_canvas": [
+				60.0,
+				100.0
+			],
+			"target_ppu": 2400.0,
+			"template_size": [
+				1440.0,
+				2400.0
+			]
+		},
+		"leg": {
+			"mapping": "source crop to complete Sprite canvas affine; no local registration",
+			"native_per_template_x": 0.826666666666667,
+			"native_per_template_y": 0.826041666666667,
+			"native_size": [
+				992,
+				1586
+			],
+			"path": "res://art/ink_outfit_01_20261104/assets/leg.png",
+			"sha256": "1a34b9c4f232f77e67bd56f64fdbeb4734a8e7271bfb50d71528bc0d3e656ec0",
+			"source_canvas": [
+				50.0,
+				80.0
+			],
+			"target_ppu": 2400.0,
+			"template_size": [
+				1200.0,
+				1920.0
+			]
+		},
+		"sleeve_far": {
+			"mapping": "source crop to complete Sprite canvas affine; no local registration",
+			"native_per_template_x": 0.870833333333333,
+			"native_per_template_y": 0.870833333333333,
+			"native_size": [
+				1254,
+				1254
+			],
+			"path": "res://art/ink_outfit_01_20261104/assets/sleeve_far.png",
+			"sha256": "3045f76c238120f3440cdbc24b00ea78871c9ed7bf39f77815c392b86db17f09",
+			"source_canvas": [
+				60.0,
+				60.0
+			],
+			"target_ppu": 2400.0,
+			"template_size": [
+				1440.0,
+				1440.0
+			]
+		},
+		"sleeve_near": {
+			"mapping": "source crop to complete Sprite canvas affine; no local registration",
+			"native_per_template_x": 0.870833333333333,
+			"native_per_template_y": 0.870833333333333,
+			"native_size": [
+				1254,
+				1254
+			],
+			"path": "res://art/ink_outfit_01_20261104/assets/sleeve_near.png",
+			"sha256": "3dbd0516571a25c84710bc3675b518fc40744f8627da7491553e2fc32db31082",
+			"source_canvas": [
+				60.0,
+				60.0
+			],
+			"target_ppu": 2400.0,
+			"template_size": [
+				1440.0,
+				1440.0
+			]
+		}
+	},
+	"pose_blending": false,
+	"runtime": {
+		"errors": [],
+		"loaded": true,
+		"skin": {
+			"errors": [],
+			"garment": {
+				"body_carrier_extension": {
+					"added_triangles": [
+						[
+							30,
+							31,
+							40
+						],
+						[
+							31,
+							32,
+							40
+						],
+						[
+							32,
+							33,
+							40
+						]
+					],
+					"affine_weights": [
+						0.581574440002441,
+						0.851899147033691,
+						-0.433473587036133
+					],
+					"carrier_triangle_count": 46,
+					"carrier_vertex_count": 41,
+					"full_canvas_px": [
+						12.1999998092651,
+						94.5
+					],
+					"motion": "engineered local affine extension of adjacent evaluated source cloth",
+					"new_vertex": 40,
+					"original_source_document_unchanged": true,
+					"original_triangle_count": 43,
+					"original_vertex_count": 40,
+					"original_vertices_unchanged": true,
+					"purpose": "cover the new continuous rear hem; original mesh had no topological slit",
+					"source_basis": [
+						32,
+						31,
+						35
+					],
+					"uv": "unchanged crop-to-full-canvas affine"
+				},
+				"clothing_meshes": 5,
+				"default_entry_modified": false,
+				"density_multiplier": 24.0,
+				"hair_in_scope": false,
+				"hand_pose_variants": {
+					"active": {
+						"sleeve_far": "fist",
+						"sleeve_near": "fist"
+					},
+					"base": "open sleeve remains unchanged; variants sampled only at wrist/hand",
+					"materials": {
+						"sleeve_far": {
+							"fist": {
+								"native_size": [
+									1254,
+									1254
+								],
+								"path": "res://art/ink_outfit_01_20261104/assets/sleeve_far_fist.png",
+								"sampling": "normalized complete-canvas UV, independent of base PNG pixel dimensions",
+								"scope": "wrist and hand only; shoulder and sleeve stay on the open base material",
+								"sha256": "25de5070de5816921e1c7cb292c183bcef7cf026d1d9b22e6f6b43b044c5202e"
+							}
+						},
+						"sleeve_near": {
+							"fist": {
+								"native_size": [
+									1254,
+									1254
+								],
+								"path": "res://art/ink_outfit_01_20261104/assets/sleeve_near_fist.png",
+								"sampling": "normalized complete-canvas UV, independent of base PNG pixel dimensions",
+								"scope": "wrist and hand only; shoulder and sleeve stay on the open base material",
+								"sha256": "4d9566e8ff9f85f0bf2b9f85b22393f67db7835f66e20de158e54d799b1919e1"
+							}
+						}
+					},
+					"ordinary_idle": "open",
+					"ordinary_run": "fist",
+					"override": "",
+					"regions": {
+						"sleeve_far": {
+							"cut_v": 0.65,
+							"feather": 0.003
+						},
+						"sleeve_near": {
+							"cut_v": 0.662,
+							"feather": 0.003
+						}
+					},
+					"sampling": "normalized full-canvas coordinates per native texture",
+					"strict_required": true,
+					"sword": "explicit single near-hand override only; no skill mapping",
+					"unspecified_special_action": "open"
+				},
+				"mode": "isolated_outfit_full_canvas_affine",
+				"native_materials": {
+					"body": {
+						"mapping": "source crop to complete Sprite canvas affine; no local registration",
+						"native_per_template_x": 0.674305555555556,
+						"native_per_template_y": 0.675,
+						"native_size": [
+							971,
+							1620
+						],
+						"path": "res://art/ink_outfit_01_20261104/assets/body.png",
+						"source_canvas": [
+							60.0,
+							100.0
+						],
+						"target_ppu": 2400.0,
+						"template_size": [
+							1440.0,
+							2400.0
+						]
+					},
+					"leg": {
+						"mapping": "source crop to complete Sprite canvas affine; no local registration",
+						"native_per_template_x": 0.826666666666667,
+						"native_per_template_y": 0.826041666666667,
+						"native_size": [
+							992,
+							1586
+						],
+						"path": "res://art/ink_outfit_01_20261104/assets/leg.png",
+						"source_canvas": [
+							50.0,
+							80.0
+						],
+						"target_ppu": 2400.0,
+						"template_size": [
+							1200.0,
+							1920.0
+						]
+					},
+					"sleeve_far": {
+						"mapping": "source crop to complete Sprite canvas affine; no local registration",
+						"native_per_template_x": 0.870833333333333,
+						"native_per_template_y": 0.870833333333333,
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/ink_outfit_01_20261104/assets/sleeve_far.png",
+						"source_canvas": [
+							60.0,
+							60.0
+						],
+						"target_ppu": 2400.0,
+						"template_size": [
+							1440.0,
+							1440.0
+						]
+					},
+					"sleeve_near": {
+						"mapping": "source crop to complete Sprite canvas affine; no local registration",
+						"native_per_template_x": 0.870833333333333,
+						"native_per_template_y": 0.870833333333333,
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/ink_outfit_01_20261104/assets/sleeve_near.png",
+						"source_canvas": [
+							60.0,
+							60.0
+						],
+						"target_ppu": 2400.0,
+						"template_size": [
+							1440.0,
+							1440.0
+						]
+					}
+				},
+				"near_hand_carrier_extension": {
+					"added_triangles": [
+						[
+							15,
+							16,
+							35
+						],
+						[
+							16,
+							17,
+							35
+						]
+					],
+					"affine_weights": [
+						1.96450090408325,
+						0.562674999237061,
+						-1.52717590332031
+					],
+					"carrier_triangle_count": 49,
+					"carrier_vertex_count": 36,
+					"full_canvas_px": [
+						26.5,
+						48.5
+					],
+					"motion": "local affine extension of the adjacent source hand segment",
+					"new_vertex": 35,
+					"original_source_document_unchanged": true,
+					"original_triangle_count": 47,
+					"original_vertex_count": 35,
+					"original_vertices_unchanged": true,
+					"purpose": "preserve the full natural open fingers beyond the old short source hand silhouette",
+					"source_basis": [
+						17,
+						16,
+						0
+					],
+					"wrist_and_sleeve_unchanged": true
+				},
+				"neutral_head_only": true,
+				"old_hd_registration_used": false,
+				"outfit": "ink_outfit_01_20261104",
+				"pants_upper_insertion_mask": {
+					"frozen_when_paused": true,
+					"native_uv_unchanged": true,
+					"normal": "head-pelvis",
+					"point": [
+						1.39509081840515,
+						-57.4664573669434
+					],
+					"scope": "leg fragments only; hide insertion above source pelvis/waist center",
+					"source_anchor": "pelvis / shenti2",
+					"source_vertices_unchanged": true,
+					"up_normal": [
+						-0.0576060228049755,
+						-0.998339414596558
+					]
+				},
+				"release_cloth_proxy": false,
+				"secondary_surrogate": false,
+				"selected_source_meshes": [
+					0,
+					1,
+					2,
+					3,
+					5
+				],
+				"skin_sha256": "a89b5c239217753e31efc01a7c18dc6186f483720d5276ce20df3d949d883b88",
+				"source_clip": "Run_New2",
+				"source_data": "E:/stacklands/resources/appearance/guigu_male101/model_frames_20261104.json",
+				"source_frames": "original evaluated bone/skin frames plus disclosed rear carrier extension",
+				"source_phase": 0.958333333333333,
+				"source_ppu": 100.0,
+				"template": "res://art/ink_outfit_01_20261104/assets/template/fullcanvas_template_anchors.json",
+				"template_ppu": 2400.0
+			},
+			"meshes": 5,
+			"source": "first independent ink outfit fitting prototype"
+		}
+	},
+	"samples": [
+		{
+			"clip": "Idle",
+			"file": "Idle_000.png",
+			"phase": 0.0,
+			"sampled_phase": 0.0
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_001.png",
+			"phase": 0.0416666666666667,
+			"sampled_phase": 0.0416666666666667
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_002.png",
+			"phase": 0.0833333333333333,
+			"sampled_phase": 0.0833333333333333
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_003.png",
+			"phase": 0.125,
+			"sampled_phase": 0.125
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_004.png",
+			"phase": 0.166666666666667,
+			"sampled_phase": 0.166666666666667
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_005.png",
+			"phase": 0.208333333333333,
+			"sampled_phase": 0.208333333333333
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_006.png",
+			"phase": 0.25,
+			"sampled_phase": 0.25
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_007.png",
+			"phase": 0.291666666666667,
+			"sampled_phase": 0.291666666666667
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_008.png",
+			"phase": 0.333333333333333,
+			"sampled_phase": 0.333333333333333
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_009.png",
+			"phase": 0.375,
+			"sampled_phase": 0.375
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_010.png",
+			"phase": 0.416666666666667,
+			"sampled_phase": 0.416666666666667
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_011.png",
+			"phase": 0.458333333333333,
+			"sampled_phase": 0.458333333333333
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_012.png",
+			"phase": 0.5,
+			"sampled_phase": 0.5
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_013.png",
+			"phase": 0.541666666666667,
+			"sampled_phase": 0.541666666666667
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_014.png",
+			"phase": 0.583333333333333,
+			"sampled_phase": 0.583333333333333
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_015.png",
+			"phase": 0.625,
+			"sampled_phase": 0.625
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_016.png",
+			"phase": 0.666666666666667,
+			"sampled_phase": 0.666666666666667
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_017.png",
+			"phase": 0.708333333333333,
+			"sampled_phase": 0.708333333333333
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_018.png",
+			"phase": 0.75,
+			"sampled_phase": 0.75
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_019.png",
+			"phase": 0.791666666666667,
+			"sampled_phase": 0.791666666666667
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_020.png",
+			"phase": 0.833333333333333,
+			"sampled_phase": 0.833333333333333
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_021.png",
+			"phase": 0.875,
+			"sampled_phase": 0.875
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_022.png",
+			"phase": 0.916666666666667,
+			"sampled_phase": 0.916666666666667
+		},
+		{
+			"clip": "Idle",
+			"file": "Idle_023.png",
+			"phase": 0.958333333333333,
+			"sampled_phase": 0.958333333333333
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_000.png",
+			"phase": 0.0,
+			"sampled_phase": 0.0
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_001.png",
+			"phase": 0.0416666666666667,
+			"sampled_phase": 0.0416666666666667
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_002.png",
+			"phase": 0.0833333333333333,
+			"sampled_phase": 0.0833333333333333
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_003.png",
+			"phase": 0.125,
+			"sampled_phase": 0.125
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_004.png",
+			"phase": 0.166666666666667,
+			"sampled_phase": 0.166666666666667
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_005.png",
+			"phase": 0.208333333333333,
+			"sampled_phase": 0.208333333333333
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_006.png",
+			"phase": 0.25,
+			"sampled_phase": 0.25
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_007.png",
+			"phase": 0.291666666666667,
+			"sampled_phase": 0.291666666666667
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_008.png",
+			"phase": 0.333333333333333,
+			"sampled_phase": 0.333333333333333
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_009.png",
+			"phase": 0.375,
+			"sampled_phase": 0.375
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_010.png",
+			"phase": 0.416666666666667,
+			"sampled_phase": 0.416666666666667
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_011.png",
+			"phase": 0.458333333333333,
+			"sampled_phase": 0.458333333333333
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_012.png",
+			"phase": 0.5,
+			"sampled_phase": 0.5
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_013.png",
+			"phase": 0.541666666666667,
+			"sampled_phase": 0.541666666666667
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_014.png",
+			"phase": 0.583333333333333,
+			"sampled_phase": 0.583333333333333
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_015.png",
+			"phase": 0.625,
+			"sampled_phase": 0.625
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_016.png",
+			"phase": 0.666666666666667,
+			"sampled_phase": 0.666666666666667
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_017.png",
+			"phase": 0.708333333333333,
+			"sampled_phase": 0.708333333333333
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_018.png",
+			"phase": 0.75,
+			"sampled_phase": 0.75
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_019.png",
+			"phase": 0.791666666666667,
+			"sampled_phase": 0.791666666666667
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_020.png",
+			"phase": 0.833333333333333,
+			"sampled_phase": 0.833333333333333
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_021.png",
+			"phase": 0.875,
+			"sampled_phase": 0.875
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_022.png",
+			"phase": 0.916666666666667,
+			"sampled_phase": 0.916666666666667
+		},
+		{
+			"clip": "Run_New1",
+			"file": "Run_New1_023.png",
+			"phase": 0.958333333333333,
+			"sampled_phase": 0.958333333333333
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_000.png",
+			"phase": 0.0,
+			"sampled_phase": 0.0
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_001.png",
+			"phase": 0.0416666666666667,
+			"sampled_phase": 0.0416666666666667
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_002.png",
+			"phase": 0.0833333333333333,
+			"sampled_phase": 0.0833333333333333
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_003.png",
+			"phase": 0.125,
+			"sampled_phase": 0.125
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_004.png",
+			"phase": 0.166666666666667,
+			"sampled_phase": 0.166666666666667
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_005.png",
+			"phase": 0.208333333333333,
+			"sampled_phase": 0.208333333333333
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_006.png",
+			"phase": 0.25,
+			"sampled_phase": 0.25
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_007.png",
+			"phase": 0.291666666666667,
+			"sampled_phase": 0.291666666666667
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_008.png",
+			"phase": 0.333333333333333,
+			"sampled_phase": 0.333333333333333
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_009.png",
+			"phase": 0.375,
+			"sampled_phase": 0.375
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_010.png",
+			"phase": 0.416666666666667,
+			"sampled_phase": 0.416666666666667
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_011.png",
+			"phase": 0.458333333333333,
+			"sampled_phase": 0.458333333333333
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_012.png",
+			"phase": 0.5,
+			"sampled_phase": 0.5
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_013.png",
+			"phase": 0.541666666666667,
+			"sampled_phase": 0.541666666666667
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_014.png",
+			"phase": 0.583333333333333,
+			"sampled_phase": 0.583333333333333
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_015.png",
+			"phase": 0.625,
+			"sampled_phase": 0.625
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_016.png",
+			"phase": 0.666666666666667,
+			"sampled_phase": 0.666666666666667
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_017.png",
+			"phase": 0.708333333333333,
+			"sampled_phase": 0.708333333333333
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_018.png",
+			"phase": 0.75,
+			"sampled_phase": 0.75
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_019.png",
+			"phase": 0.791666666666667,
+			"sampled_phase": 0.791666666666667
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_020.png",
+			"phase": 0.833333333333333,
+			"sampled_phase": 0.833333333333333
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_021.png",
+			"phase": 0.875,
+			"sampled_phase": 0.875
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_022.png",
+			"phase": 0.916666666666667,
+			"sampled_phase": 0.916666666666667
+		},
+		{
+			"clip": "Run_New2",
+			"file": "Run_New2_023.png",
+			"phase": 0.958333333333333,
+			"sampled_phase": 0.958333333333333
+		}
+	],
+	"scope": "native close-up visual audit across complete Idle/Run1/Run2 cycles; no aesthetic pass inferred from data checks",
+	"secondary_surrogate": false
+}

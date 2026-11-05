@@ -11,7 +11,7 @@ public partial class RealmProgressionSmokeScene : Control
             SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
             Check(CondensationOutcomeRules.DifficultySteps(104) == 0, "不足五分不计档");
             Check(CondensationOutcomeRules.DifficultySteps(105) == 1, "五分增加一档");
-            Check(CondensationOutcomeRules.FlatAttributeBonus(124) == 0 && CondensationOutcomeRules.FlatAttributeBonus(125) == 1, "定额二十五分一档");
+            Check(CondensationOutcomeRules.FlatAttributeBonus(104) == 0 && CondensationOutcomeRules.FlatAttributeBonus(105) == .25f && CondensationOutcomeRules.FlatAttributeBonus(125) == 1.25f, "凝核三项定额统一五分一档");
             Check(CondensationOutcomeRules.SpiritRequirementMultiplier(225) == 1.3125d && CondensationOutcomeRules.FoundationCloudBonus(225) == .625d, "超过二百分继续计档");
             var realms = GetNode<RealmManager>("/root/RealmManager");
             foreach (var realm in realms.realm_order.Where(r => r.StartsWith("云息")))
@@ -87,7 +87,7 @@ public partial class RealmProgressionSmokeScene : Control
             data.cultivation_realm="云息六层";character.spirit_strands=144;
             Check(!character.start_breakthrough_retreat(),"六至七不能用普通闭关绕过凝核");
             data.cultivation_realm="云息十层";
-            Check(character.get_condensation_flat_bonus("physique") == 7.5f && character.get_condensation_flat_bonus("soul") == 7.5f && character.get_condensation_flat_bonus("intelligence") == 5 && character.get_condensation_flat_bonus("comprehension") == 0, "敏捷定额分入体魄与神魂，悟性不变");
+            Check(character.get_condensation_flat_bonus("physique") == 6.25f && character.get_condensation_flat_bonus("soul") == 6.25f && character.get_condensation_flat_bonus("intelligence") == 6.25f && character.get_condensation_flat_bonus("comprehension") == 0, "凝核三项同额，悟性不变");
             var attribute = character.calculate_realm_base_attribute("physique", 5);
             character.recalculate_attributes(); character.recalculate_attributes();
             Check(character.calculate_realm_base_attribute("physique", 5) == attribute, "反复重算不重复奖励");

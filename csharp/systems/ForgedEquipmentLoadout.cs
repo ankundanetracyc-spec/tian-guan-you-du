@@ -73,6 +73,7 @@ public sealed class ForgedEquipmentLoadout
             if (_swordSkills.Contains(key) && IsPhysicalAttack(skill))
             {
                 skill.forged_weapon_instance_id = _item.InstanceId;
+                if (!skill.tags.Contains("剑")) skill.tags.Add("剑");
                 skill.forged_equipment_description += $"\n用器：{_item.Name}，锋锐{_item.Sharpness}；本次忽略{_item.Sharpness}点物防。";
             }
             foreach (var effect in _item.Effects.Where(x => _bindings.GetValueOrDefault(x.EffectId) == key))
@@ -116,12 +117,16 @@ public sealed class ForgedEquipmentLoadout
         if (owner is Creature creature) creature.physical_defense += defense - oldDefense;
         owner.SetMeta("forged_defense_bonus", defense); owner.SetMeta("forged_physical_bonus", damage);
         owner.SetMeta("forged_instance", item?.InstanceId ?? ""); owner.SetMeta("forged_sharpness", item?.Sharpness ?? 0);
+        if (item is not null) owner.SetMeta("forged_sword_json", json);
+        else owner.RemoveMeta("forged_sword_json");
     }
     public static int WeaponIgnore(GodotObject? owner, ActiveSkillData skill)
     {
         if (!GodotObject.IsInstanceValid(owner) || !IsPhysicalAttack(skill) || skill.combat_is_gongfa_bonus_damage_segment || skill.combat_is_blood_arm_segment
-            || skill.artifact_instance_id.Length > 0 || skill.forged_weapon_instance_id.Length == 0 || !owner!.HasMeta("forged_instance")
-            || owner.GetMeta("forged_instance").AsString() != skill.forged_weapon_instance_id) return 0;
-        return Math.Max(0, owner.GetMeta("forged_sharpness", 0).AsInt32());
+            || !skill.get_presentation_tags().Contains("剑") || skill.forged_weapon_instance_id.Length == 0
+            || ForgedSwordBattleAdapter.Read(owner!) is not { } sword || sword.InstanceId != skill.forged_weapon_instance_id
+            || skill.forged_source_instance_id.Length > 0 && skill.forged_source_instance_id != sword.InstanceId
+            || skill.artifact_instance_id.Length > 0 && skill.artifact_instance_id != sword.InstanceId) return 0;
+        return Math.Max(0, sword.Sharpness);
     }
 }

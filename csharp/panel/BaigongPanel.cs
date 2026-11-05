@@ -112,7 +112,14 @@ public partial class BaigongPanel : Control
 
     private void build_placeholder(string page)
     {
-        _body!.AddChild(title(page, 27, new Color("f4f0df"))); _body.AddChild(muted($"{page}的具体制作规则尚未定稿。\n本页已保留在百工入口中，待对应专题确认后接入，不在阵法任务中擅自补全。"));
+        _body!.AddChild(title(page, 27, new Color("f4f0df")));
+        _body.AddChild(muted("百工 · 传承与器物"));
+        var space = new CenterContainer { SizeFlagsVertical = SizeFlags.ExpandFill, SizeFlagsHorizontal = SizeFlags.ExpandFill };
+        _body.AddChild(space);
+        var empty = card("尚未开放", 360);
+        empty.SizeFlagsHorizontal = SizeFlags.ShrinkCenter;
+        empty.AddChild(muted($"{page}相关内容尚未开放，敬请期待。"));
+        space.AddChild(empty);
     }
 
     private void build_formation()

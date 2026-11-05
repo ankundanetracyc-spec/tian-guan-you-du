@@ -73,12 +73,14 @@ public partial class MainScene
 
     private string get_current_profile_location()
     {
+        if (_baishiLecture is { departed_qingxi: false } opening) return opening.met_fang ? "青溪里外·野地" : "溪边野地";
         var overview = GetNodeOrNull<Control>("SceneLayer/YuxuXianzongOverview");
         if (!string.IsNullOrEmpty(_player_current_yuxu_peak_id) && overview?.Visible == true &&
             overview.GetNodeOrNull<Control>("PeakInterior")?.Visible == true)
             return "玉虚仙宗·" + get_yuxu_peak_name(_player_current_yuxu_peak_id);
         var locationName = _world_node_data?.get_node(_player_world_node_id)?.node_name;
         if (!string.IsNullOrWhiteSpace(locationName)) return locationName;
+        if (_nodeWorldMap?.IsVisibleInTree() == true && _nodeWorldMap.HasMethod("get_world_position")) return "百川野外";
         return _player_world_node_id == "home_village" ? "青溪里" : "位置未详";
     }
 

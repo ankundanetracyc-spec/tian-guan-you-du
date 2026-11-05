@@ -25,10 +25,11 @@ public partial class BattleManager
         public HashSet<ActiveSkillData> Converted = [];
         public HashSet<string> Summoned = [];
         public HashSet<string> Statuses = [];
+        public Dictionary<string, int> SupplyWounds = [];
         public AiDraft Copy() => new() { Stamina=Stamina,Mana=Mana,Capacity=Capacity,Qi=Qi,Blood=Blood,Shield=Shield,
             SwordIntent=SwordIntent,EmptyManaTriggers=EmptyManaTriggers,EmptyGuardQiUsed=EmptyGuardQiUsed,CloudIntentExtraUsed=CloudIntentExtraUsed,
             ConversionReady=ConversionReady,CapQiUsed=CapQiUsed,Value=Value,Last=Last,PillToxicity=PillToxicity,
-            Actions=new(Actions),Health=new(Health),Shields=new(Shields),Uses=new(Uses),Converted=new(Converted),Summoned=new(Summoned),Statuses=new(Statuses) };
+            Actions=new(Actions),Health=new(Health),Shields=new(Shields),Uses=new(Uses),Converted=new(Converted),Summoned=new(Summoned),Statuses=new(Statuses),SupplyWounds=new(SupplyWounds) };
     }
 
     private void BuildConstructedAiQueue(GodotObject unit, Dictionary<GodotObject,float> forecast, bool teammate)

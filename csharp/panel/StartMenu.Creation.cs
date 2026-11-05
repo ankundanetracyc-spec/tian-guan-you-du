@@ -129,7 +129,7 @@ public partial class StartMenu
             pageHint.Text = currentPage switch
             {
                 0 => "选择姓名、性别与立绘部件；所有变化都会即时预览。",
-                1 => "分配天资，定下灵根与第一卷功法。",
+                1 => "分配天资，查看灵根；功法将在白石讲法会选读。",
                 _ => "九项造诣可自由调整，不消耗资质点；入世后作为角色的初始造诣。"
             };
             next.Text = currentPage < 2 ? "下一页" : "入世";
@@ -479,22 +479,6 @@ public partial class StartMenu
         var configuration = new HBoxContainer { CustomMinimumSize = new Vector2(0, 172) };
         configuration.AddThemeConstantOverride("separation", 14);
         page.AddChild(configuration);
-        var techniqueCard = creation_card("初始功法", "伴随此行的第一卷功法。");
-        techniqueCard.Panel.SizeFlagsHorizontal = SizeFlags.ExpandFill;
-        configuration.AddChild(techniqueCard.Panel);
-        var techniqueChoice = new OptionButton { SizeFlagsHorizontal = SizeFlags.ExpandFill, CustomMinimumSize = new Vector2(0, 40) };
-        style_creation_option(techniqueChoice);
-        foreach (var technique in InitialGongfas) techniqueChoice.AddItem(technique.Name);
-        var techniqueSummary = creation_label("", 14);
-        techniqueSummary.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-        techniqueCard.Body.AddChild(techniqueChoice);
-        techniqueCard.Body.AddChild(techniqueSummary);
-        techniqueChoice.ItemSelected += index =>
-        {
-            profile.selected_initial_gongfa_path = InitialGongfas[index].Path;
-            refresh();
-        };
-
         var presetCard = creation_card("建档方案", "方案仅保存开局选择，不是旅程进度存档。");
         presetCard.Panel.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         configuration.AddChild(presetCard.Panel);
@@ -513,7 +497,7 @@ public partial class StartMenu
         var loadPreset = creation_button("载入");
         loadPreset.CustomMinimumSize = new Vector2(76, 38);
         presetControls.AddChild(loadPreset);
-        var presetHint = creation_label("保存后可复用姓名、外观、属性、灵根、功法与九项初始造诣。", 14);
+        var presetHint = creation_label("保存后可复用姓名、外观、属性、灵根与九项初始造诣。", 14);
         presetHint.AutowrapMode = TextServer.AutowrapMode.WordSmart;
         presetCard.Body.AddChild(presetHint);
 
@@ -556,12 +540,7 @@ public partial class StartMenu
                 rootWeightTotalValue += weight;
             }
             rootWeightTotal.Text = $"权重合计：{rootWeightTotalValue}%";
-            var selectedTechnique = Array.FindIndex(InitialGongfas, book => book.Path == profile.selected_initial_gongfa_path);
-            if (selectedTechnique < 0) selectedTechnique = 0;
-            techniqueChoice.Select(selectedTechnique);
-            var detail = InitialGongfas[selectedTechnique];
-            profile.selected_initial_gongfa_path = detail.Path;
-            techniqueSummary.Text = $"《{detail.Name}》\n{detail.Summary}\n入世后可在修行界面查看与研习。";
+
         };
 
         reroll.Pressed += () => { profile.roll_fated_aptitude(); refresh(); };

@@ -1,0 +1,529 @@
+{
+	"actual_speed": 0.0,
+	"backward": false,
+	"base_speed": 114.0,
+	"clip": "Idle",
+	"clock": 0.0333333333333333,
+	"delta": 0.0333333333333333,
+	"enemy": [
+		2096.83325195313,
+		950.0
+	],
+	"facing": 1.0,
+	"frame": -1,
+	"hp": 100,
+	"label": "静止",
+	"native": {
+		"camera_zoom": [
+			0.985064625740051,
+			0.985064625740051
+		],
+		"foot_origin": [
+			144.80517578125,
+			369.650329589844
+		],
+		"points": {
+			"far_forearm": [
+				141.43701171875,
+				313.311828613281
+			],
+			"far_hand": [
+				142.685913085938,
+				323.511901855469
+			],
+			"far_upper": [
+				144.382934570313,
+				305.721374511719
+			],
+			"head": [
+				144.507080078125,
+				299.864379882813
+			],
+			"near_forearm": [
+				140.540893554688,
+				314.319885253906
+			],
+			"near_hand": [
+				145.663330078125,
+				323.228454589844
+			],
+			"near_upper": [
+				141.759155273438,
+				306.269409179688
+			],
+			"pelvis": [
+				144.80517578125,
+				326.099304199219
+			],
+			"torso": [
+				145.720336914063,
+				318.473022460938
+			]
+		}
+	},
+	"phase": 0.0333333333333333,
+	"player": [
+		1500.0,
+		950.0
+	],
+	"profiles": {
+		"new": {
+			"arm_bones": {
+				"far_forearm": {
+					"position": [
+						-4.74903106689453,
+						-79.4342803955078
+					],
+					"rotation": 1.32319819927216
+				},
+				"far_hand": {
+					"position": [
+						-2.98818969726563,
+						-65.052734375
+					],
+					"rotation": 0.0500000007450581
+				},
+				"far_upper": {
+					"position": [
+						-0.595512390136719,
+						-90.136474609375
+					],
+					"rotation": 0.682108819484711
+				},
+				"near_forearm": {
+					"position": [
+						-6.01259613037109,
+						-78.0129776000977
+					],
+					"rotation": 1.14319801330566
+				},
+				"near_hand": {
+					"position": [
+						1.20968627929688,
+						-65.4524002075195
+					],
+					"rotation": 0.0299999993294477
+				},
+				"near_upper": {
+					"position": [
+						-4.29472351074219,
+						-89.3636474609375
+					],
+					"rotation": 0.462108790874481
+				}
+			},
+			"body_rotations": {
+				"far_calf": 0.309314846992493,
+				"far_foot": -0.150195941329002,
+				"far_thigh": -0.15911890566349,
+				"head": 0.0000172370491782203,
+				"near_calf": 0.263099789619446,
+				"near_foot": -0.128826260566711,
+				"near_thigh": -0.134273529052734,
+				"pelvis": 0.0,
+				"torso": 0.000369365443475544
+			},
+			"bone_points": {
+				"far_calf": [
+					4.96699523925781,
+					-34.1845626831055
+				],
+				"far_foot": [
+					3.01076507568359,
+					-5.16127014160156
+				],
+				"far_thigh": [
+					0.860214233398438,
+					-61.4045944213867
+				],
+				"head": [
+					-0.420417785644531,
+					-98.3944702148438
+				],
+				"near_calf": [
+					0.701385498046875,
+					-33.7224349975586
+				],
+				"near_foot": [
+					-4.47312164306641,
+					-5.16128540039063
+				],
+				"near_thigh": [
+					0.0,
+					-61.4045944213867
+				],
+				"pelvis": [
+					0.0,
+					-61.4045944213867
+				],
+				"torso": [
+					1.29032135009766,
+					-72.1572799682617
+				]
+			},
+			"bones": 21,
+			"contacts": {
+				"far": {
+					"center": [
+						8.88957023620605,
+						0.0
+					],
+					"lift": 0.0,
+					"pitch": 0.0
+				},
+				"near": {
+					"center": [
+						0.716505527496338,
+						0.0
+					],
+					"lift": 0.0,
+					"pitch": 0.0
+				}
+			},
+			"gait": {
+				"actual_speed": 0.0,
+				"amount": 0.0,
+				"backward": 0.0,
+				"horizontal": 1.0,
+				"phase": 0.0,
+				"sample_back": [
+					-7.35483884811401,
+					0.0,
+					0.000307905080262572
+				],
+				"sample_forward": [
+					12.0,
+					0.0,
+					-0.0395999997854233
+				],
+				"sample_lift": [
+					-5.18822002410889,
+					2.88670468330383,
+					0.0536414198577404
+				]
+			},
+			"garment": {
+				"acceleration_drive": 0.0,
+				"angles": [
+					0.0,
+					0.0,
+					0.0
+				],
+				"angular_velocity": [
+					0.0,
+					0.0,
+					0.0
+				],
+				"arm_speed_correction": [
+					0.0,
+					0.0,
+					0.0
+				],
+				"arm_swing_scale": 0.72,
+				"continuous_mesh": false,
+				"front_bones_resting": true,
+				"gait_amount": 0.0,
+				"gait_cadence_hz": 1.2,
+				"gait_lift": 3.5,
+				"gait_phase": 0.0,
+				"gait_phase_advance_location": "update_cloth_once_per_clock",
+				"gait_speed_actual": 0.0,
+				"gait_speed_smoothed": 0.0,
+				"gait_stride_half": 12.0,
+				"gait_style": "slow",
+				"ground_shift": 0.0,
+				"hidden_leg_meshes": 0,
+				"leg_rendering": "original_full_legs_and_boots",
+				"locomotion_style": "ground",
+				"lowest_cloth_y": -13.0942888259888,
+				"mode": "cape_like_open_robe",
+				"original_split_panels": true,
+				"outline_samples": 0,
+				"pants_uv_clipped": false,
+				"rear_anchor": [
+					0.0,
+					-56.2432861328125
+				],
+				"rear_tip": [
+					0.0,
+					-11.5121459960938
+				],
+				"rear_wind": 0.0,
+				"reference_arm_samples": {},
+				"reference_chest_angle": 0.0,
+				"reference_chest_counter": 0.0,
+				"reference_chest_target": 0.0,
+				"reference_chest_velocity": 0.0,
+				"reference_elastic_tail": true,
+				"reference_far_hand_from_shoulder": [
+					-2.39267730712891,
+					25.083740234375
+				],
+				"reference_hip_loading": 0.0,
+				"reference_lean_inertia": 0.0,
+				"reference_measured_body_lean": -0.101089334705756,
+				"reference_near_arm_pose": "alternating_contralateral_swing",
+				"reference_near_hand_from_shoulder": [
+					5.50440979003906,
+					23.911247253418
+				],
+				"reference_parameter_source": "project_visual_fit_not_video_measurement",
+				"reference_pelvis_drop": 0.0147743225097656,
+				"reference_pose_active": true,
+				"reset_count": 0,
+				"rest_hem_source_y": 1340.0,
+				"simulation_steps": 1,
+				"source_geometry_preserved": true,
+				"support_model": "hip_hung_rear_chain_gravity_inertia",
+				"travel_drag": 0.0,
+				"visible_leg_meshes": 2,
+				"walk_profile": "reference_run_like_single_movement_project_fit",
+				"walk_support_fraction": 0.62
+			},
+			"legs": [
+				{
+					"in_tree": true,
+					"name": "YuxuUnified_far_leg",
+					"visible": true
+				},
+				{
+					"in_tree": true,
+					"name": "YuxuUnified_near_leg",
+					"visible": true
+				}
+			],
+			"meshes": 7,
+			"neck_chain_distance": 26.2929039001465,
+			"rest_neck_chain_distance": 26.2929039001465
+		},
+		"old": {
+			"arm_bones": {
+				"far_forearm": {
+					"position": [
+						-4.74903106689453,
+						-79.4342803955078
+					],
+					"rotation": 1.32319819927216
+				},
+				"far_hand": {
+					"position": [
+						-2.98818969726563,
+						-65.052734375
+					],
+					"rotation": 0.0500000007450581
+				},
+				"far_upper": {
+					"position": [
+						-0.595512390136719,
+						-90.136474609375
+					],
+					"rotation": 0.682108819484711
+				},
+				"near_forearm": {
+					"position": [
+						-6.01259613037109,
+						-78.0129776000977
+					],
+					"rotation": 1.14319801330566
+				},
+				"near_hand": {
+					"position": [
+						1.20968627929688,
+						-65.4524002075195
+					],
+					"rotation": 0.0299999993294477
+				},
+				"near_upper": {
+					"position": [
+						-4.29472351074219,
+						-89.3636474609375
+					],
+					"rotation": 0.462108790874481
+				}
+			},
+			"body_rotations": {
+				"far_calf": 0.309314846992493,
+				"far_foot": -0.150195941329002,
+				"far_thigh": -0.15911890566349,
+				"head": 0.0000172370491782203,
+				"near_calf": 0.263099789619446,
+				"near_foot": -0.128826260566711,
+				"near_thigh": -0.134273529052734,
+				"pelvis": 0.0,
+				"torso": 0.000369365443475544
+			},
+			"bone_points": {
+				"far_calf": [
+					4.96699523925781,
+					-34.1845626831055
+				],
+				"far_foot": [
+					3.01076507568359,
+					-5.16127014160156
+				],
+				"far_thigh": [
+					0.860214233398438,
+					-61.4045944213867
+				],
+				"head": [
+					-0.420417785644531,
+					-98.3944702148438
+				],
+				"near_calf": [
+					0.701385498046875,
+					-33.7224349975586
+				],
+				"near_foot": [
+					-4.47312164306641,
+					-5.16128540039063
+				],
+				"near_thigh": [
+					0.0,
+					-61.4045944213867
+				],
+				"pelvis": [
+					0.0,
+					-61.4045944213867
+				],
+				"torso": [
+					1.29032135009766,
+					-72.1572799682617
+				]
+			},
+			"bones": 21,
+			"contacts": {
+				"far": {
+					"center": [
+						8.88957023620605,
+						0.0
+					],
+					"lift": 0.0,
+					"pitch": 0.0
+				},
+				"near": {
+					"center": [
+						0.716505527496338,
+						0.0
+					],
+					"lift": 0.0,
+					"pitch": 0.0
+				}
+			},
+			"gait": {
+				"actual_speed": 0.0,
+				"amount": 0.0,
+				"backward": 0.0,
+				"horizontal": 1.0,
+				"phase": 0.0,
+				"sample_back": [
+					-7.35483884811401,
+					0.0,
+					0.000307905080262572
+				],
+				"sample_forward": [
+					12.0,
+					0.0,
+					-0.0395999997854233
+				],
+				"sample_lift": [
+					-5.18822002410889,
+					2.88670468330383,
+					0.0536414198577404
+				]
+			},
+			"garment": {
+				"acceleration_drive": 0.0,
+				"angles": [
+					0.0,
+					0.0,
+					0.0
+				],
+				"angular_velocity": [
+					0.0,
+					0.0,
+					0.0
+				],
+				"arm_speed_correction": [
+					0.0,
+					0.0,
+					0.0
+				],
+				"arm_swing_scale": 0.72,
+				"continuous_mesh": false,
+				"front_bones_resting": true,
+				"gait_amount": 0.0,
+				"gait_cadence_hz": 1.2,
+				"gait_lift": 3.5,
+				"gait_phase": 0.0,
+				"gait_phase_advance_location": "update_cloth_once_per_clock",
+				"gait_speed_actual": 0.0,
+				"gait_speed_smoothed": 0.0,
+				"gait_stride_half": 12.0,
+				"gait_style": "slow",
+				"ground_shift": 0.0,
+				"hidden_leg_meshes": 0,
+				"leg_rendering": "original_full_legs_and_boots",
+				"locomotion_style": "ground",
+				"lowest_cloth_y": -13.0942888259888,
+				"mode": "cape_like_open_robe",
+				"original_split_panels": true,
+				"outline_samples": 0,
+				"pants_uv_clipped": false,
+				"rear_anchor": [
+					0.0,
+					-56.2432861328125
+				],
+				"rear_tip": [
+					0.0,
+					-11.5121459960938
+				],
+				"rear_wind": 0.0,
+				"reference_chest_angle": 0.0,
+				"reference_chest_counter": 0.0,
+				"reference_chest_target": 0.0,
+				"reference_chest_velocity": 0.0,
+				"reference_elastic_tail": true,
+				"reference_far_hand_from_shoulder": [
+					-2.39267730712891,
+					25.083740234375
+				],
+				"reference_hip_loading": 0.0,
+				"reference_lean_inertia": 0.0,
+				"reference_near_arm_pose": "extended_bent_elbow_in_front_of_chest",
+				"reference_near_hand_from_shoulder": [
+					5.50440979003906,
+					23.911247253418
+				],
+				"reference_parameter_source": "project_visual_fit_not_video_measurement",
+				"reference_pelvis_drop": 0.0147743225097656,
+				"reference_pose_active": true,
+				"reset_count": 0,
+				"rest_hem_source_y": 1340.0,
+				"simulation_steps": 1,
+				"source_geometry_preserved": true,
+				"support_model": "hip_hung_rear_chain_gravity_inertia",
+				"travel_drag": 0.0,
+				"visible_leg_meshes": 2,
+				"walk_profile": "reference_combat_mobile_project_fit",
+				"walk_support_fraction": 0.62
+			},
+			"legs": [
+				{
+					"in_tree": true,
+					"name": "YuxuUnified_far_leg",
+					"visible": true
+				},
+				{
+					"in_tree": true,
+					"name": "YuxuUnified_near_leg",
+					"visible": true
+				}
+			],
+			"meshes": 7,
+			"neck_chain_distance": 26.2929039001465,
+			"rest_neck_chain_distance": 26.2929039001465
+		}
+	},
+	"seconds": 0.0,
+	"stamina": 6.0
+}

@@ -23,8 +23,14 @@ public partial class CharacterGenerator : RefCounted
         data.base_physique = normal(cfg.StatMean,cfg.StatStd,cfg.StatMin,cfg.StatMax); data.base_intelligence = normal(cfg.StatMean,cfg.StatStd,cfg.StatMin,cfg.StatMax); data.base_soul = normal(cfg.StatMean,cfg.StatStd,cfg.StatMin,cfg.StatMax);
         data.base_fortune = normal(Mathf.Min(75, cfg.StatMean + 44.5f),15,20,100); data.base_comprehension = normal(Mathf.Min(75,cfg.StatMean+44.5f),15,20,100); data.base_charisma = normal(Mathf.Min(75,cfg.StatMean+44.5f),15,20,100); data.base_social = data.base_charisma; data.base_management = data.base_charisma;
         data.base_sword_proficiency=proficiency(cfg); data.base_blade_proficiency=proficiency(cfg); data.base_spear_proficiency=proficiency(cfg); data.base_body_proficiency=proficiency(cfg); data.base_magic_proficiency=proficiency(cfg); data.base_forging_proficiency=proficiency(cfg); data.base_talisman_proficiency=proficiency(cfg); data.base_formation_proficiency=proficiency(cfg); data.base_alchemy_proficiency=proficiency(cfg);
-        data.spirit_strands = Mathf.RoundToInt(normal(cfg.SpiritMean,cfg.SpiritStd,cfg.SpiritMin,cfg.SpiritMax)); data.core_count = GD.RandRange(cfg.CoreMin,cfg.CoreMax); data.current_age = GD.RandRange(cfg.AgeMin,cfg.AgeMax); data.max_age = data.current_age + GD.RandRange(10,cfg.AgeBonus); data.gender = GD.Randf() < cfg.MaleRatio ? 0 : 1; data.entity_name = new NameGenerator().generate_full(data.gender);
+        data.spirit_strands = Mathf.RoundToInt(normal(cfg.SpiritMean,cfg.SpiritStd,cfg.SpiritMin,cfg.SpiritMax)); data.core_count = GD.RandRange(cfg.CoreMin,cfg.CoreMax); data.current_age = GD.RandRange(cfg.AgeMin,cfg.AgeMax); data.max_age = data.current_age + GD.RandRange(10,cfg.AgeBonus); data.gender = GD.Randf() < cfg.MaleRatio ? 0 : 1; data.entity_name = generate_name(data.gender);
         assign_random_appearance(data); assign_random_personality(data); generate_spirit_root(data); if (template is not null) apply_template(data,template); sync_derived(data); return data;
+    }
+    private static string generate_name(int gender)
+    {
+        var names = new NameGenerator();
+        try { return names.generate_full(gender); }
+        finally { names.Free(); }
     }
     public Array<HumanData> generate_world_npcs(Dictionary distribution, int faction = 0) { var result = new Array<HumanData>(); foreach (var pair in distribution) for (var i=0;i<pair.Value.AsInt32();i++) result.Add(generate(pair.Key.AsString(),faction)); return result; }
     public HumanData? generate_from_template(string template_path) { var template = ResourceLoader.Load<HumanData>(template_path); return template is null ? null : generate(string.IsNullOrEmpty(template.cultivation_realm) ? "凡人" : template.cultivation_realm, template.faction, template); }

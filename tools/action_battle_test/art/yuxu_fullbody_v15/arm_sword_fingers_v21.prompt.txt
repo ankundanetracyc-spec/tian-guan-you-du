@@ -1,0 +1,5 @@
+Tool: built-in image_gen, transparent_background=true.
+Reference/edit target: arm_relaxed_v19.png.
+Output: arm_sword_fingers_v21.png, 1024x1536 RGBA.
+Prompt: Keep exactly the original sleeve, cloud design, cuff, elbow, location, scale and wrist connection. Change only the hand beyond the blue cuff into a calm Daoist sword-finger sign: index and middle fingers extended together up-right along the existing forearm direction, ring and pinky curled under thumb, hand back visible. Muted peach skin, flat hand-painted Chinese game style, dark soft outline. No weapon, effects, text or background; preserve transparency.
+Runtime: blend only the wrist/hand area against the original relaxed arm. The long-idle gesture has no gameplay effect; palm strikes retain their existing open-hand texture.

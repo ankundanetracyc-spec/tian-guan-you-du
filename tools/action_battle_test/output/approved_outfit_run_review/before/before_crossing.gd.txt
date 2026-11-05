@@ -1,0 +1,188 @@
+extends "approved_outfit_stride_skin.gd"
+
+## Independent preview of the approved v15 drawing. A single closed surface
+## shares its front/rear cloth loads, so internal folds can overlap without
+## separating the outer garment into two open tips.
+var approved_closed_robe_mesh: Polygon2D
+var approved_closed_robe_record: Dictionary = {}
+var approved_original_panels_hidden := false
+var approved_cross_rear_load := 0.0
+var approved_cross_front_load := 0.0
+var approved_cross_clock := -INF
+var approved_cross_samples := 0
+var approved_cross_order_changes := 0
+var approved_cross_last_order := 0.0
+var approved_cross_tip_gap := 0.0
+var approved_hands: RefCounted
+var approved_sword: RefCounted
+
+func build(owner_runtime: Node2D, art_dir: String) -> bool:
+	if not super.build(owner_runtime,art_dir): return false
+	var rect := [275,310,390,1030]
+	var vertices := PackedVector2Array()
+	var sets: Array = []
+	for index in range(8): sets.append(PackedFloat32Array())
+	for row in range(ROWS+1):
+		var source_y := float(rect[1])+float(rect[3])*row/ROWS
+		var torso_share := 1.0-smoothstep(660.0,790.0,source_y)
+		var cloth_share := smoothstep(735.0,1000.0,source_y)
+		var hem_share := smoothstep(1010.0,1225.0,source_y)
+		var edge_share := smoothstep(1210.0,1340.0,source_y)
+		for column in range(COLUMNS+1):
+			var source_x := float(rect[0])+float(rect[2])*column/COLUMNS
+			var front_share := smoothstep(365.0,575.0,source_x)
+			var loose := (1.0-torso_share)*cloth_share
+			# One native chart, no seam split and no floor-length extension.
+			vertices.append(_world(Vector2(source_x,source_y)))
+			sets[0].append(torso_share)
+			sets[1].append((1.0-torso_share)*(1.0-cloth_share))
+			sets[2].append(loose*(1.0-hem_share)*front_share)
+			sets[3].append(loose*hem_share*(1.0-edge_share)*front_share)
+			sets[4].append(loose*(1.0-hem_share)*(1.0-front_share))
+			sets[5].append(loose*hem_share*(1.0-edge_share)*(1.0-front_share))
+			sets[6].append(loose*hem_share*edge_share*front_share)
+			sets[7].append(loose*hem_share*edge_share*(1.0-front_share))
+	texture = textures.body
+	_create_mesh("robe_continuous",rect,vertices,["torso","pelvis","front_cloth","front_hem","back_cloth","back_hem","front_edge","back_edge"],sets,60)
+	approved_closed_robe_mesh = meshes.back()
+	approved_closed_robe_record = mesh_records.back()
+	# Existing floor checks must measure the visible surface, not hidden
+	# split-panel descendants. Their original meshes remain for provenance.
+	cape_body_records.clear()
+	cape_body_records.append(approved_closed_robe_record)
+	_hide_original_panels()
+	approved_hands = load("res://approved_outfit_hand_layer.gd").new()
+	if not approved_hands.build(self):
+		for error in approved_hands.errors: validation_errors.append(error)
+	approved_sword = load("res://approved_outfit_sword_layer.gd").new()
+	if not approved_sword.build(self,approved_hands,"res://art/approved_outfit_sword_20261105"):
+		validation_errors.append("Sword attachment could not load")
+	return validation_errors.is_empty()
+
+func _hide_original_panels() -> void:
+	for record in mesh_records:
+		if record.name in ["robe_back","robe_front"]: record.mesh.visible = false
+	approved_original_panels_hidden = true
+
+func set_visible(value: bool) -> void:
+	super.set_visible(value)
+	_hide_original_panels()
+	if approved_hands!=null: approved_hands.set_visible(value)
+	if approved_sword!=null: approved_sword.set_visible(value)
+
+func set_motion_context(delta: float, velocity: Vector2, clock: float, facing: float) -> void:
+	var was_facing := motion_facing
+	var reset := is_finite(approved_cross_clock) and (clock<approved_cross_clock or clock-approved_cross_clock>0.25)
+	super.set_motion_context(delta,velocity,clock,facing)
+	if delta<=0.0: return
+	if reset or pending_gait_reset:
+		approved_cross_rear_load = 0.0
+		approved_cross_front_load = 0.0
+		approved_cross_samples = 0
+		approved_cross_order_changes = 0
+		approved_cross_last_order = 0.0
+	elif facing!=was_facing:
+		approved_cross_rear_load *= -1.0
+		approved_cross_front_load *= -1.0
+	approved_cross_clock = clock
+
+func _integrate_garment() -> void:
+	if not reference_pose_active:
+		super._integrate_garment()
+		return
+	var anchor_drive := _sample_anchor_drive()
+	var source_cloth: float = _source_sample("Run_New1",_source_phase(gait_phase),"cloth_root_angle")
+	reference_cloth_base = clampf(0.79+(source_cloth-0.75)*0.58,0.72,0.90)
+	reference_target_wind_load = signf(cape_wind)*sqrt(absf(cape_wind))
+	var target := reference_target_wind_load
+	var rear_opposite := target*approved_cross_rear_load<0.0
+	var front_opposite := target*approved_cross_front_load<0.0
+	var rear_unload := absf(target)<absf(approved_cross_rear_load)
+	var front_unload := absf(target)<absf(approved_cross_front_load)
+	# The sheltered facing catches up first; the longer rear keeps its load
+	# through braking. Their real drawn edges can pass one another naturally.
+	var rear_time := 0.24 if rear_opposite else (0.32 if rear_unload else 0.16)
+	var front_time := 0.10 if front_opposite else (0.13 if front_unload else 0.065)
+	approved_cross_rear_load = lerpf(approved_cross_rear_load,target,1.0-exp(-motion_delta/rear_time))
+	approved_cross_front_load = lerpf(approved_cross_front_load,target,1.0-exp(-motion_delta/front_time))
+	reference_trailing_wind_load = approved_cross_rear_load
+	var dt := motion_delta/8.0
+	for substep in range(8):
+		var parent_angle := 0.0
+		var parent_speed := 0.0
+		for segment in range(3):
+			var stiffness: float = [62.0,34.0,20.0][segment]
+			var gravity: float = [27.0,21.0,15.0][segment]
+			var damping: float = [9.6,6.6,3.8][segment]
+			var inertia: float = [4.5,8.0,11.0][segment]
+			var root_target := reference_cloth_base+27.0/62.0*sin(reference_cloth_base)
+			var angle_target := approved_cross_rear_load*float([root_target,0.27,0.36][segment])
+			var angle := garment_angles[segment]
+			var torque := (angle_target-angle)*stiffness-gravity*sin(parent_angle+angle)
+			torque += garment_drive*inertia*cos(parent_angle+angle)-parent_speed*1.8
+			torque += anchor_drive*float([0.0,1.4,3.4][segment])
+			garment_angular_velocity[segment] += (torque-garment_angular_velocity[segment]*damping)*dt
+			angle += garment_angular_velocity[segment]*dt
+			var limit: float = [0.94,0.43,0.48][segment]
+			if absf(angle)>limit:
+				angle = clampf(angle,-limit,limit)
+				garment_angular_velocity[segment] *= 0.25
+			garment_angles[segment] = angle
+			parent_angle += angle
+			parent_speed += garment_angular_velocity[segment]
+		parent_angle = 0.0
+		parent_speed = 0.0
+		var exposure := 0.76 if approved_cross_front_load>=0.0 else 1.0
+		for segment in range(3):
+			var stiffness: float = [96.0,62.0,39.0][segment]
+			var gravity: float = [34.0,26.0,19.0][segment]
+			var damping: float = [12.8,8.8,5.7][segment]
+			var inertia: float = [2.4,4.5,7.0][segment]
+			var root_target := reference_cloth_base+34.0/96.0*sin(reference_cloth_base)
+			var angle_target := approved_cross_front_load*exposure*float([root_target,0.25,0.34][segment])
+			var angle := reference_front_angles[segment]
+			var torque := (angle_target-angle)*stiffness-gravity*sin(parent_angle+angle)
+			torque += garment_drive*inertia*cos(parent_angle+angle)-parent_speed*1.65
+			torque += anchor_drive*float([0.0,0.75,1.8][segment])
+			reference_front_angular_velocity[segment] += (torque-reference_front_angular_velocity[segment]*damping)*dt
+			angle += reference_front_angular_velocity[segment]*dt
+			var limit: float = [0.78,0.37,0.43][segment]
+			if absf(angle)>limit:
+				angle = clampf(angle,-limit,limit)
+				reference_front_angular_velocity[segment] *= 0.25
+			reference_front_angles[segment] = angle
+			parent_angle += angle
+			parent_speed += reference_front_angular_velocity[segment]
+	garment_simulation_steps += 1
+
+func update_cloth(clip: String, time: float, duration: float, tracks: Dictionary) -> void:
+	if motion_context and motion_delta<=0.0 and last_clip!="": return
+	super.update_cloth(clip,time,duration,tracks)
+	if approved_sword!=null: approved_sword.update_pose(motion_delta,clip,time)
+	if approved_hands!=null: approved_hands.update_pose()
+	if approved_sword!=null: approved_sword.update_attachment()
+	if clip=="BindPose": return
+	# These are control-chain tips inside one connected cloth surface. Their
+	# different inertia changes internal facing/folds, never opens a gap.
+	var front_tip: Vector2 = runtime.rig_root_node.to_local(bones.front_edge.to_global(Vector2(0.0,120.0*PIXEL_SCALE)))
+	var rear_tip: Vector2 = runtime.rig_root_node.to_local(bones.back_edge.to_global(Vector2(0.0,120.0*PIXEL_SCALE)))
+	approved_cross_tip_gap = rear_tip.x-front_tip.x
+	var order := signf(approved_cross_tip_gap) if absf(approved_cross_tip_gap)>0.20 else 0.0
+	if order!=0.0 and approved_cross_last_order!=0.0 and order!=approved_cross_last_order: approved_cross_order_changes += 1
+	if order!=0.0: approved_cross_last_order = order
+	approved_cross_samples += 1
+
+func get_garment_diagnostics() -> Dictionary:
+	var result := super.get_garment_diagnostics()
+	result.mode = "approved_continuous_closed_robe"
+	result.support_model = "single connected native cloth with front/rear delayed control chains"
+	result.original_split_panels = false
+	if approved_hands!=null: result.approved_hands = approved_hands.get_diagnostics()
+	if approved_sword!=null: result.approved_sword = approved_sword.get_diagnostics()
+	result.approved_crossing = {"mode":"one connected closed original cloth chart; independent front/rear control-chain inertia for internal overlap","rear_load":approved_cross_rear_load,"front_load":approved_cross_front_load,"tip_horizontal_gap":approved_cross_tip_gap,"tip_order_changes":approved_cross_order_changes,"samples":approved_cross_samples,"depth_order":"one fixed-depth garment; legacy split meshes hidden","new_artwork":false,"rest_drawing_preserved":true,"limb_lengths_changed":false,"continuous_closed_mesh":approved_closed_robe_mesh!=null,"legacy_panels_hidden":approved_original_panels_hidden,"native_chart":[275,310,390,1030],"extra_length_added":0.0}
+	return result
+
+func summary() -> Dictionary:
+	var result := super.summary()
+	result.source = "approved v15 original drawing / fixed stride limbs / crossing panel inertia preview"
+	return result

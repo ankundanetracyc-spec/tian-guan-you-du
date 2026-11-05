@@ -25,7 +25,7 @@ public partial class CharacterAttributeHoverSmoke : Node
         var pixels = (GetViewport().GetFinalTransform() * card.GetGlobalTransformWithCanvas()) * new Rect2(Vector2.Zero, card.Size);
         Check(pixels.Position.X >= 0 && pixels.Position.Y >= 0 && pixels.End.X <= image.GetWidth() + 1 && pixels.End.Y <= image.GetHeight() + 1, "实际像素范围不裁切 " + name);
         using var crop = image.GetRegion(new Rect2I((Vector2I)pixels.Position, (Vector2I)pixels.Size));
-        Check(crop.SavePng("res://docs/美术规范/信息栏整理_20261025/27_人物属性实装_" + name + ".png") == Error.Ok, "截图 " + name);
+        Check(crop.SavePng("res://output/queue_attributes_restored_20261105_" + name + ".png") == Error.Ok, "截图 " + name);
     }
     public override void _Ready() => CallDeferred(nameof(Run));
     private async void Run()
@@ -45,6 +45,12 @@ public partial class CharacterAttributeHoverSmoke : Node
                 Check(!text.Contains("取整") && !text.Contains("四舍五入") && !text.Contains("简介："), "无底层处理与简介 " + entry.Item1);
             }
             Check(Text(owner, "PrecisionRow", "精准").Contains("灵慧[10.5]") && Text(owner, "PrecisionRow", "精准").Contains("＝87"), "精准真实代入");
+            Check(Text(owner, "DodgeRow", "身法").Contains("属性闪避") && Text(owner, "DodgeRow", "身法").Contains("＝"), "保留身法派生与属性闪避");
+            Check(Text(owner, "MindRow", "速度").Contains("1000") && Text(owner, "MindRow", "速度").Contains("＝" + Character.AttributeNumber(owner.initiative_speed)), "行动速度读取真实派生属性");
+            Check(Text(owner, "StaminaRow", "体力").Contains("每回合补给3点") && Text(owner, "StaminaRow", "体力").Contains("回复2点") && !Text(owner, "StaminaRow", "体力").Contains("自动恢复"), "体力恢复队列轮次与休整规则");
+            foreach (var row in new[] { "PhysiqueRow", "IntelligenceRow", "SoulRow" })
+                Check(Text(owner, row, "基础属性").Contains("影响行动速度"), "基础属性恢复行动速度作用 " + row);
+            Check(!Text(owner, "DodgeRow", "身法").Contains("错步"), "身法恢复队列属性闪避说明");
             foreach (var key in new[] { "sword", "blade", "spear", "body", "magic", "forging", "talisman", "formation", "alchemy" })
                 Check(Text(owner, key + "_proficiency", "造诣").Contains("基础造诣["), "九类造诣 " + key);
             var sword = "res://resources/entities/equipment/承露剑.tres";
@@ -55,6 +61,9 @@ public partial class CharacterAttributeHoverSmoke : Node
             owner.refresh_gongfa_effects();
             Check(Text(owner, "PhysicalDefenseRow", "物理防御").Contains("炼体·皮") && Text(owner, "PhysicalDefenseRow", "物理防御").Contains("承露剑"), "实际炼体与装备共同来源");
             Check(Text(owner, "HealthRow", "生命").Contains("炼体·骨[2]"), "骨部位生命奖励只计入生命");
+            data.body_refinement_progress[BodyRefinementRules.Heart] = BodyRefinementRules.GetThreshold(BodyRefinementRules.Heart, 5);
+            owner.refresh_gongfa_effects();
+            Check(owner.healing_received_bonus > 0 && Text(owner, "HealingReceivedRow", "受治疗加成").Contains("炼体·心"), "受疗加成显示真实炼体来源");
             var before = owner.physical_defense; var healthBefore = owner.max_health;
             owner.refresh_gongfa_effects();
             Check(owner.physical_defense == before && owner.max_health == healthBefore, "显示记录与重复刷新不累加奖励");
@@ -95,6 +104,18 @@ public partial class CharacterAttributeHoverSmoke : Node
             typeof(InfoPanel).GetMethod("render_new_page", BindingFlags.Instance | BindingFlags.NonPublic)!.Invoke(panel, [1]); await Settle();
             var pages = (Dictionary<int, Control>)typeof(InfoPanel).GetField("_characterPages", BindingFlags.Instance | BindingFlags.NonPublic)!.GetValue(panel)!;
             var anchors = pages[1].FindChildren("*", "Control", true, false).OfType<Control>().Where(c => c.HasMeta("attribute_hover_row")).ToArray();
+            Check(!anchors.Any(c => c.GetMeta("attribute_hover_row").AsString() is "CombatMoveSpeedRow" or "ActionStaminaRecoveryRow"), "属性页撤下动作移速与持续恢复");
+            foreach (var row in new[] { "MindRow", "TravelSpeedRow", "DodgeRow" })
+                Check(anchors.Count(c => c.GetMeta("attribute_hover_row").AsString() == row) >= 2, "队列属性名称与数值共用 " + row);
+            Check(!pages[1].FindChildren("CurrentCharacterActionDrill", "Button", true, false).Any(), "撤下当前角色即时演练入口");
+            var travel = anchors.First(c => c.GetMeta("attribute_hover_row").AsString() == "TravelSpeedRow");
+            var speed = anchors.First(c => c.GetMeta("attribute_hover_row").AsString() == "MindRow");
+            Check(travel.GetParent().GetParent() == speed.GetParent().GetParent(), "遁速与行动速度恢复原战斗属性布局");
+            var proficiency = anchors.First(c => c.GetMeta("attribute_hover_row").AsString() == "sword_proficiency");
+            Check(travel.GetGlobalRect().End.Y < proficiency.GetGlobalRect().Position.Y - 70, "行旅信息不与下方造诣区重叠");
+            Check(anchors.All(c => c.GetGlobalRect().End.Y <= pages[1].GetGlobalRect().End.Y + 1), "新增行未溢出属性页面");
+            await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
+            using (var fullPage = GetViewport().GetTexture().GetImage()) Check(fullPage.SavePng("res://output/queue_attributes_restored_20261105_full.png") == Error.Ok, "恢复队列属性后完整页面截图");
             foreach (var row in new[] { "PhysiqueRow", "PrecisionRow", "HealthRow", "LearningRow", "CultivationRow", "sword_proficiency", "RootWeight:0" })
                 Check(anchors.Count(c => c.GetMeta("attribute_hover_row").AsString() == row) >= 2, "真实页面名称与数值共用 " + row);
             var actual = anchors.First(c => c.GetMeta("attribute_hover_row").AsString() == "PhysiqueRow" && c.IsVisibleInTree());

@@ -444,10 +444,15 @@ public partial class SkillExecutor : Node
             var contact=BattleAttackMotion.ContactPosition(node,targetNode,home);
             node.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.face_direction(targetNode.GlobalPosition-home);
             var tween=node.CreateTween().SetPauseMode(Tween.TweenPauseMode.Stop);
-            tween.TweenProperty(node,"global_position",contact,BattleAttackMotion.ApproachSeconds)
+            var smallAvatar = node.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.uses_queue_avatar() == true;
+            node.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.set_queue_travel_mode("approach");
+            if(smallAvatar)
+                tween.TweenMethod(Callable.From<float>(p=>BattleAttackMotion.ApplySmallAvatarTravel(node,home,contact,p)),0f,1f,BattleAttackMotion.TravelSeconds(node,home,contact));
+            else tween.TweenProperty(node,"global_position",contact,BattleAttackMotion.ApproachSeconds)
                 .SetTrans(Tween.TransitionType.Expo).SetEase(Tween.EaseType.Out);
             await ToSignal(tween,Tween.SignalName.Finished);
             if(!GodotObject.IsInstanceValid(node)||!GodotObject.IsInstanceValid(targetNode))return;
+            node.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.set_queue_travel_mode("idle");
         }
         var direction=(targetNode.GlobalPosition-node.GlobalPosition).Normalized();
         BattleInkCombatVfx.PresentAttackPose(node, direction, skill);
@@ -566,12 +571,16 @@ public partial class SkillExecutor : Node
         {
             var contact=node.GlobalPosition;
             if(contact.DistanceTo(home.Position)>1f&&GodotObject.IsInstanceValid(doll))doll!.play_retreat(contact-home.Position);
+            doll?.set_queue_travel_mode("retreat");
             var tween=node.CreateTween().SetPauseMode(Tween.TweenPauseMode.Stop);
             tween.TweenMethod(Callable.From<float>(progress=>
             {
-                if(GodotObject.IsInstanceValid(node))node.GlobalPosition=BattleAttackMotion.ReturnPosition(node,contact,home.Position,progress);
-            }),0f,1f,BattleAttackMotion.ReturnSeconds).SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.Out);
+                if(doll?.uses_queue_avatar() == true) BattleAttackMotion.ApplySmallAvatarTravel(node,contact,home.Position,progress);
+                else if(GodotObject.IsInstanceValid(node))node.GlobalPosition=BattleAttackMotion.ReturnPosition(node,contact,home.Position,progress);
+            }),0f,1f,BattleAttackMotion.TravelSeconds(node,contact,home.Position,true))
+                .SetTrans(doll?.uses_queue_avatar() == true ? Tween.TransitionType.Linear : Tween.TransitionType.Cubic).SetEase(Tween.EaseType.Out);
             await ToSignal(tween,Tween.SignalName.Finished);
+            if(GodotObject.IsInstanceValid(doll)) doll!.set_queue_travel_mode("idle");
             if(GodotObject.IsInstanceValid(node)){node.GlobalPosition=home.Position;node.ZIndex=home.ZIndex;}
         }
         else await PresentationWait(BattleAttackMotion.ReturnSeconds);

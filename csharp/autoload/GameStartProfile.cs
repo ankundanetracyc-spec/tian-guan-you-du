@@ -10,7 +10,8 @@ public partial class GameStartProfile : Node
     public int player_gender;
     public HumanData player_appearance_data = new();
     public string surname = "李", family_name = "本家";
-    public string selected_initial_gongfa_path = GongfaAvailability.DefaultBookPath;
+    // Legacy previews may set this explicitly; new journeys select at the lecture.
+    public string selected_initial_gongfa_path = "";
     public Array<string> generation_characters = ["守", "承", "远", "宁"];
     public int fated_youngest_root_type = 22, fated_youngest_element = 2, fated_remaining_points;
     public bool has_fated_roll;
@@ -120,7 +121,7 @@ public partial class GameStartProfile : Node
     public void save_preset(string name)
     {
         name = string.IsNullOrWhiteSpace(name) ? "未命名设定" : name.Trim(); var cfg = new ConfigFile(); cfg.Load(PresetFile); var key = name.Replace("/", "_").Replace("\\", "_");
-        cfg.SetValue(key,"attribute_schema",2); cfg.SetValue(key,"name",player_name); cfg.SetValue(key,"gender",player_gender); cfg.SetValue(key,"gongfa",selected_initial_gongfa_path); cfg.SetValue(key,"root_type",fated_youngest_root_type); cfg.SetValue(key,"root_name",fated_youngest_root_name); cfg.SetValue(key,"root_element",fated_youngest_element); cfg.SetValue(key,"weights",fated_youngest_root_weights); cfg.SetValue(key,"remaining_points",fated_remaining_points); cfg.SetValue(key,"physique",fated_base_physique); cfg.SetValue(key,"intelligence",fated_base_intelligence); cfg.SetValue(key,"soul",fated_base_soul);
+        cfg.SetValue(key,"attribute_schema",2); cfg.SetValue(key,"name",player_name); cfg.SetValue(key,"gender",player_gender);  cfg.SetValue(key,"root_type",fated_youngest_root_type); cfg.SetValue(key,"root_name",fated_youngest_root_name); cfg.SetValue(key,"root_element",fated_youngest_element); cfg.SetValue(key,"weights",fated_youngest_root_weights); cfg.SetValue(key,"remaining_points",fated_remaining_points); cfg.SetValue(key,"physique",fated_base_physique); cfg.SetValue(key,"intelligence",fated_base_intelligence); cfg.SetValue(key,"soul",fated_base_soul);
         cfg.SetValue(key,"fortune",fated_base_fortune); cfg.SetValue(key,"comprehension",fated_base_comprehension); cfg.SetValue(key,"charisma",fated_base_charisma); cfg.SetValue(key,"social",fated_base_social); cfg.SetValue(key,"management",fated_base_management);
         foreach (var field in PortraitFields) cfg.SetValue(key, "portrait_" + field, player_appearance_data.Get(field));
         save_starting_proficiencies(cfg, key);
@@ -130,7 +131,7 @@ public partial class GameStartProfile : Node
     public bool load_preset(string name)
     {
         var cfg=new ConfigFile();if(cfg.Load(PresetFile)!=Error.Ok||!cfg.HasSection(name))return false;
-        player_name=cfg.GetValue(name,"name",player_name).AsString(); player_gender=cfg.GetValue(name,"gender",player_gender).AsInt32(); selected_initial_gongfa_path=cfg.GetValue(name,"gongfa",selected_initial_gongfa_path).AsString(); fated_youngest_root_weights=cfg.GetValue(name,"weights",fated_youngest_root_weights).AsGodotArray();
+        player_name=cfg.GetValue(name,"name",player_name).AsString(); player_gender=cfg.GetValue(name,"gender",player_gender).AsInt32(); selected_initial_gongfa_path=""; fated_youngest_root_weights=cfg.GetValue(name,"weights",fated_youngest_root_weights).AsGodotArray();
         if (cfg.HasSectionKey(name, "root_type"))
         {
             fated_youngest_root_type=cfg.GetValue(name,"root_type",fated_youngest_root_type).AsInt32();

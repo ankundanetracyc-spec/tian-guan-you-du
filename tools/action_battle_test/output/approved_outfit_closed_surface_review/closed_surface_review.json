@@ -1,0 +1,327 @@
+{
+	"checks": 29,
+	"failures": [],
+	"frames": 495,
+	"hip_material_native_review": {
+		"method": "original leg image rendered through actual current leg ShaderMaterial to transparent native-size SubViewport",
+		"probes": [
+			{
+				"before_alpha": 0.976470589637756,
+				"region": "hidden_cap",
+				"rendered_alpha": 0.0,
+				"source_px": [
+					351,
+					700
+				]
+			},
+			{
+				"before_alpha": 0.972549021244049,
+				"region": "underlap_below_hip",
+				"rendered_alpha": 0.972549021244049,
+				"source_px": [
+					354,
+					780
+				]
+			},
+			{
+				"before_alpha": 0.984313726425171,
+				"region": "knee",
+				"rendered_alpha": 0.984313726425171,
+				"source_px": [
+					352,
+					1080
+				]
+			},
+			{
+				"before_alpha": 0.992156863212585,
+				"region": "ankle",
+				"rendered_alpha": 0.992156863212585,
+				"source_px": [
+					345,
+					1417
+				]
+			}
+		]
+	},
+	"motion_states": {
+		"01_idle": {
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.0,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one connected closed original cloth chart; independent front/rear control-chain inertia for internal overlap",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.0,
+				"rest_drawing_preserved": true,
+				"samples": 60,
+				"tip_horizontal_gap": 0.0,
+				"tip_order_changes": 0
+			},
+			"front_angles": "(0.0, 0.0, 0.0)",
+			"rear_angles": "(0.0, 0.0, 0.0)"
+		},
+		"02_run_right": {
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.999999999999957,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one connected closed original cloth chart; independent front/rear control-chain inertia for internal overlap",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.999996273346828,
+				"rest_drawing_preserved": true,
+				"samples": 180,
+				"tip_horizontal_gap": -4.83538818359375,
+				"tip_order_changes": 1
+			},
+			"front_angles": "(0.560661, -0.034077, -0.000215)",
+			"rear_angles": "(0.765385, -0.125517, -0.076809)"
+		},
+		"03_turn_01": {
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": -0.692963449781192,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one connected closed original cloth chart; independent front/rear control-chain inertia for internal overlap",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": -0.865820444134978,
+				"rest_drawing_preserved": true,
+				"samples": 181,
+				"tip_horizontal_gap": 4.64801025390625,
+				"tip_order_changes": 2
+			},
+			"front_angles": "(-0.556709, 0.034166, 0.00143)",
+			"rear_angles": "(-0.757044, 0.12729, 0.079428)"
+		},
+		"04_turn_06": {
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.327394571764973,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one connected closed original cloth chart; independent front/rear control-chain inertia for internal overlap",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": -0.318478803639701,
+				"rest_drawing_preserved": true,
+				"samples": 186,
+				"tip_horizontal_gap": 7.25439453125,
+				"tip_order_changes": 2
+			},
+			"front_angles": "(-0.417529, 0.055006, 0.028331)",
+			"rear_angles": "(-0.672789, 0.145613, 0.105792)"
+		},
+		"05_turn_15": {
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.933082095500904,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one connected closed original cloth chart; independent front/rear control-chain inertia for internal overlap",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.406745892844778,
+				"rest_drawing_preserved": true,
+				"samples": 195,
+				"tip_horizontal_gap": 19.7802124023438,
+				"tip_order_changes": 2
+			},
+			"front_angles": "(0.30981, 0.071692, 0.050172)",
+			"rear_angles": "(-0.192609, 0.140943, 0.099682)"
+		},
+		"06_run_left": {
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.999999999993641,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one connected closed original cloth chart; independent front/rear control-chain inertia for internal overlap",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.999949681233578,
+				"rest_drawing_preserved": true,
+				"samples": 285,
+				"tip_horizontal_gap": -4.63623046875,
+				"tip_order_changes": 3
+			},
+			"front_angles": "(0.560116, -0.033248, 0.000996)",
+			"rear_angles": "(0.764218, -0.129052, -0.085386)"
+		},
+		"07_stop_01": {
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.879672914904396,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one connected closed original cloth chart; independent front/rear control-chain inertia for internal overlap",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.949201994323256,
+				"rest_drawing_preserved": true,
+				"samples": 286,
+				"tip_horizontal_gap": -4.50347900390625,
+				"tip_order_changes": 3
+			},
+			"front_angles": "(0.55439, -0.033422, -0.000236)",
+			"rear_angles": "(0.755401, -0.130613, -0.088222)"
+		},
+		"08_stop_06": {
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.463369369228229,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one connected closed original cloth chart; independent front/rear control-chain inertia for internal overlap",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.731578814950698,
+				"rest_drawing_preserved": true,
+				"samples": 291,
+				"tip_horizontal_gap": -5.25958251953125,
+				"tip_order_changes": 3
+			},
+			"front_angles": "(0.476231, -0.043011, -0.017264)",
+			"rear_angles": "(0.692448, -0.141209, -0.1093)"
+		},
+		"09_stop_30": {
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.0213617391748713,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one connected closed original cloth chart; independent front/rear control-chain inertia for internal overlap",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.209600839764668,
+				"rest_drawing_preserved": true,
+				"samples": 315,
+				"tip_horizontal_gap": -7.2781982421875,
+				"tip_order_changes": 3
+			},
+			"front_angles": "(-0.001984, 0.01187, 0.021637)",
+			"rear_angles": "(0.185212, -0.02797, 0.018943)"
+		},
+		"10_settled": {
+			"crossing": {
+				"continuous_closed_mesh": true,
+				"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+				"extra_length_added": 0.0,
+				"front_load": 0.00000000000202981406009311,
+				"legacy_panels_hidden": true,
+				"limb_lengths_changed": false,
+				"mode": "one connected closed original cloth chart; independent front/rear control-chain inertia for internal overlap",
+				"native_chart": [
+					275,
+					310,
+					390,
+					1030
+				],
+				"new_artwork": false,
+				"rear_load": 0.000017777973335017,
+				"rest_drawing_preserved": true,
+				"samples": 495,
+				"tip_horizontal_gap": 0.00054931640625,
+				"tip_order_changes": 3
+			},
+			"front_angles": "(0.0, 0.0, -0.000002)",
+			"rear_angles": "(0.000016, 0.0, -0.000131)"
+		}
+	},
+	"native_captures": [
+		"res://output/approved_outfit_closed_surface_review/01_idle.png",
+		"res://output/approved_outfit_closed_surface_review/02_run_right.png",
+		"res://output/approved_outfit_closed_surface_review/03_turn_01.png",
+		"res://output/approved_outfit_closed_surface_review/04_turn_06.png",
+		"res://output/approved_outfit_closed_surface_review/05_turn_15.png",
+		"res://output/approved_outfit_closed_surface_review/06_run_left.png",
+		"res://output/approved_outfit_closed_surface_review/07_stop_01.png",
+		"res://output/approved_outfit_closed_surface_review/08_stop_06.png",
+		"res://output/approved_outfit_closed_surface_review/09_stop_30.png",
+		"res://output/approved_outfit_closed_surface_review/10_settled.png"
+	],
+	"nonfinite_vertices": 0,
+	"original_body_png_sha256": "7492f1ef54c3f24770528d99691f9a0e541cd2b125b60fe3e66c2f65dbb2ab87",
+	"passed": true,
+	"projected_physical_fold_triangle_samples": 411,
+	"scope": "One actual indexed closed outer cloth surface, exact original body texture/UV registration, native run-turn-stop capture with actual garment simulation enabled. Projected overlapping folds are reported rather than forbidden. No final aesthetic approval inferred.",
+	"topology": {
+		"bad_boundary_degrees": 0,
+		"boundary_loops": 1,
+		"connected_components": 1,
+		"nonmanifold_edges": 0,
+		"triangles": 896,
+		"vertices": 513
+	},
+	"visible_robe_count_range": [
+		1,
+		1
+	]
+}

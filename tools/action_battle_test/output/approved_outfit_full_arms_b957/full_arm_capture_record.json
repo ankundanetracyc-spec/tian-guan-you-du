@@ -1,0 +1,824 @@
+{
+	"arms": [
+		{
+			"full_arm_layer": {
+				"assets": {
+					"far_fist": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_full_arms_20261105/far_fist.png",
+						"sha256": "baf20039a1e0b5d192ae676673a9fd28cc3ade424fb48a3b755ce6d1e65ea835"
+					},
+					"far_open": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_full_arms_20261105/far_open.png",
+						"sha256": "9a38aafb3bcd8777aa08773d3166e8d6e1a303d3697a38ee0c416b2240e8088a"
+					},
+					"near_fist": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_full_arms_20261105/near_fist.png",
+						"sha256": "5def66a619f1b85902b822189c594e6522f9bcaa0bcd16671958d21aac3a5003"
+					},
+					"near_grip": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_full_arms_20261105/near_grip.png",
+						"sha256": "348c869a1e1b8d3582a291ca35deaf6239aea6aa88385baca4354b13941d0a8f"
+					},
+					"near_open": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_full_arms_20261105/near_open.png",
+						"sha256": "c10dfc191b9c303ac59c7aaac83ec169eee52b266206d73f7dc30f73f3c4076d"
+					}
+				},
+				"clothing": "new complete shoulder-to-fingertips drawings on approved fixed arm rig",
+				"distinct_near_far_images": true,
+				"errors": [],
+				"hands": {
+					"far": {
+						"anatomy": "left palm facing camera",
+						"asset": "far_open",
+						"mesh": "YuxuUnified_far_arm",
+						"registration": {
+							"anatomy": "left palm facing camera",
+							"elbow_px": [
+								411.0,
+								957.0
+							],
+							"grip_px": [
+								1003.0,
+								430.0
+							],
+							"hand_source_scale": 4.04976697448859,
+							"no_fingernails": true,
+							"palm_width_basis": "metacarpals, perpendicular to palm axis; thumb excluded",
+							"palm_width_px": 179.5,
+							"shoulder_px": [
+								270.0,
+								510.0
+							],
+							"source_sha256": "9a38aafb3bcd8777aa08773d3166e8d6e1a303d3697a38ee0c416b2240e8088a",
+							"target_palm_width": 3.81277745419011,
+							"wrist_mount_source_px": [
+								609.0,
+								473.0
+							],
+							"wrist_px": [
+								922.0,
+								553.0
+							]
+						},
+						"rigid_wrist_mount": true,
+						"shader": "res://approved_outfit_full_arm.gdshader",
+						"socket_textureless": true,
+						"style": "open",
+						"visible": false,
+						"whole_arm_source": true
+					},
+					"near": {
+						"anatomy": "right hand back facing camera",
+						"asset": "near_open",
+						"mesh": "YuxuUnified_near_arm",
+						"registration": {
+							"anatomy": "right hand back facing camera",
+							"elbow_px": [
+								411.0,
+								957.0
+							],
+							"grip_px": [
+								1005.0,
+								430.0
+							],
+							"hand_source_scale": 4.0046442226837,
+							"no_fingernails": true,
+							"palm_width_basis": "metacarpals, perpendicular to palm axis; thumb excluded",
+							"palm_width_px": 177.5,
+							"shoulder_px": [
+								270.0,
+								510.0
+							],
+							"source_sha256": "c10dfc191b9c303ac59c7aaac83ec169eee52b266206d73f7dc30f73f3c4076d",
+							"target_palm_width": 3.81277745419011,
+							"wrist_mount_source_px": [
+								609.0,
+								473.0
+							],
+							"wrist_px": [
+								922.0,
+								553.0
+							]
+						},
+						"rigid_wrist_mount": true,
+						"shader": "res://approved_outfit_full_arm.gdshader",
+						"socket_textureless": true,
+						"style": "open",
+						"visible": true,
+						"whole_arm_source": true
+					}
+				},
+				"loaded": true,
+				"mount": "registered wrist directly on hand Bone2D; one measured physical palm width shared across poses; no dynamic bone scaling",
+				"pose_override": "open",
+				"sampling": "single continuous full-arm source per variant; static similarity maps at shoulder/elbow/wrist",
+				"sword_preserved": "exact original v21 source and legacy blend boundary",
+				"sword_source_sha256": "dcc95466b3b9430131d73a4b2d99f89c1e5a8c64a25fd42f9c54bc3b37302721",
+				"target_palm_width": 3.81277745419011
+			},
+			"side": "near",
+			"style": "open"
+		},
+		{
+			"full_arm_layer": {
+				"assets": {
+					"far_fist": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_full_arms_20261105/far_fist.png",
+						"sha256": "baf20039a1e0b5d192ae676673a9fd28cc3ade424fb48a3b755ce6d1e65ea835"
+					},
+					"far_open": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_full_arms_20261105/far_open.png",
+						"sha256": "9a38aafb3bcd8777aa08773d3166e8d6e1a303d3697a38ee0c416b2240e8088a"
+					},
+					"near_fist": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_full_arms_20261105/near_fist.png",
+						"sha256": "5def66a619f1b85902b822189c594e6522f9bcaa0bcd16671958d21aac3a5003"
+					},
+					"near_grip": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_full_arms_20261105/near_grip.png",
+						"sha256": "348c869a1e1b8d3582a291ca35deaf6239aea6aa88385baca4354b13941d0a8f"
+					},
+					"near_open": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_full_arms_20261105/near_open.png",
+						"sha256": "c10dfc191b9c303ac59c7aaac83ec169eee52b266206d73f7dc30f73f3c4076d"
+					}
+				},
+				"clothing": "new complete shoulder-to-fingertips drawings on approved fixed arm rig",
+				"distinct_near_far_images": true,
+				"errors": [],
+				"hands": {
+					"far": {
+						"anatomy": "left palm facing camera",
+						"asset": "far_open",
+						"mesh": "YuxuUnified_far_arm",
+						"registration": {
+							"anatomy": "left palm facing camera",
+							"elbow_px": [
+								411.0,
+								957.0
+							],
+							"grip_px": [
+								1003.0,
+								430.0
+							],
+							"hand_source_scale": 4.04976697448859,
+							"no_fingernails": true,
+							"palm_width_basis": "metacarpals, perpendicular to palm axis; thumb excluded",
+							"palm_width_px": 179.5,
+							"shoulder_px": [
+								270.0,
+								510.0
+							],
+							"source_sha256": "9a38aafb3bcd8777aa08773d3166e8d6e1a303d3697a38ee0c416b2240e8088a",
+							"target_palm_width": 3.81277745419011,
+							"wrist_mount_source_px": [
+								609.0,
+								473.0
+							],
+							"wrist_px": [
+								922.0,
+								553.0
+							]
+						},
+						"rigid_wrist_mount": true,
+						"shader": "res://approved_outfit_full_arm.gdshader",
+						"socket_textureless": true,
+						"style": "open",
+						"visible": true,
+						"whole_arm_source": true
+					},
+					"near": {
+						"anatomy": "right hand back facing camera",
+						"asset": "near_open",
+						"mesh": "YuxuUnified_near_arm",
+						"registration": {
+							"anatomy": "right hand back facing camera",
+							"elbow_px": [
+								411.0,
+								957.0
+							],
+							"grip_px": [
+								1005.0,
+								430.0
+							],
+							"hand_source_scale": 4.0046442226837,
+							"no_fingernails": true,
+							"palm_width_basis": "metacarpals, perpendicular to palm axis; thumb excluded",
+							"palm_width_px": 177.5,
+							"shoulder_px": [
+								270.0,
+								510.0
+							],
+							"source_sha256": "c10dfc191b9c303ac59c7aaac83ec169eee52b266206d73f7dc30f73f3c4076d",
+							"target_palm_width": 3.81277745419011,
+							"wrist_mount_source_px": [
+								609.0,
+								473.0
+							],
+							"wrist_px": [
+								922.0,
+								553.0
+							]
+						},
+						"rigid_wrist_mount": true,
+						"shader": "res://approved_outfit_full_arm.gdshader",
+						"socket_textureless": true,
+						"style": "open",
+						"visible": false,
+						"whole_arm_source": true
+					}
+				},
+				"loaded": true,
+				"mount": "registered wrist directly on hand Bone2D; one measured physical palm width shared across poses; no dynamic bone scaling",
+				"pose_override": "open",
+				"sampling": "single continuous full-arm source per variant; static similarity maps at shoulder/elbow/wrist",
+				"sword_preserved": "exact original v21 source and legacy blend boundary",
+				"sword_source_sha256": "dcc95466b3b9430131d73a4b2d99f89c1e5a8c64a25fd42f9c54bc3b37302721",
+				"target_palm_width": 3.81277745419011
+			},
+			"side": "far",
+			"style": "open"
+		},
+		{
+			"full_arm_layer": {
+				"assets": {
+					"far_fist": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_full_arms_20261105/far_fist.png",
+						"sha256": "baf20039a1e0b5d192ae676673a9fd28cc3ade424fb48a3b755ce6d1e65ea835"
+					},
+					"far_open": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_full_arms_20261105/far_open.png",
+						"sha256": "9a38aafb3bcd8777aa08773d3166e8d6e1a303d3697a38ee0c416b2240e8088a"
+					},
+					"near_fist": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_full_arms_20261105/near_fist.png",
+						"sha256": "5def66a619f1b85902b822189c594e6522f9bcaa0bcd16671958d21aac3a5003"
+					},
+					"near_grip": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_full_arms_20261105/near_grip.png",
+						"sha256": "348c869a1e1b8d3582a291ca35deaf6239aea6aa88385baca4354b13941d0a8f"
+					},
+					"near_open": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_full_arms_20261105/near_open.png",
+						"sha256": "c10dfc191b9c303ac59c7aaac83ec169eee52b266206d73f7dc30f73f3c4076d"
+					}
+				},
+				"clothing": "new complete shoulder-to-fingertips drawings on approved fixed arm rig",
+				"distinct_near_far_images": true,
+				"errors": [],
+				"hands": {
+					"far": {
+						"anatomy": "left palm facing camera",
+						"asset": "far_fist",
+						"mesh": "YuxuUnified_far_arm",
+						"registration": {
+							"anatomy": "left palm facing camera",
+							"elbow_px": [
+								411.0,
+								957.0
+							],
+							"grip_px": [
+								990.0,
+								430.0
+							],
+							"hand_source_scale": 4.1061704142447,
+							"no_fingernails": true,
+							"palm_width_basis": "metacarpal body span perpendicular to palm axis, excluding crossing thumb projection and distal folded fingertips",
+							"palm_width_px": 182.0,
+							"shoulder_px": [
+								270.0,
+								510.0
+							],
+							"source_sha256": "baf20039a1e0b5d192ae676673a9fd28cc3ade424fb48a3b755ce6d1e65ea835",
+							"target_palm_width": 3.81277745419011,
+							"wrist_mount_source_px": [
+								609.0,
+								473.0
+							],
+							"wrist_px": [
+								922.0,
+								553.0
+							]
+						},
+						"rigid_wrist_mount": true,
+						"shader": "res://approved_outfit_full_arm.gdshader",
+						"socket_textureless": true,
+						"style": "fist",
+						"visible": false,
+						"whole_arm_source": true
+					},
+					"near": {
+						"anatomy": "right hand back facing camera",
+						"asset": "near_fist",
+						"mesh": "YuxuUnified_near_arm",
+						"registration": {
+							"anatomy": "right hand back facing camera",
+							"elbow_px": [
+								411.0,
+								957.0
+							],
+							"grip_px": [
+								985.0,
+								430.0
+							],
+							"hand_source_scale": 4.1061704142447,
+							"no_fingernails": true,
+							"palm_width_basis": "metacarpals, perpendicular to palm axis; thumb excluded",
+							"palm_width_px": 182.0,
+							"shoulder_px": [
+								270.0,
+								510.0
+							],
+							"source_sha256": "5def66a619f1b85902b822189c594e6522f9bcaa0bcd16671958d21aac3a5003",
+							"target_palm_width": 3.81277745419011,
+							"wrist_mount_source_px": [
+								609.0,
+								473.0
+							],
+							"wrist_px": [
+								922.0,
+								553.0
+							]
+						},
+						"rigid_wrist_mount": true,
+						"shader": "res://approved_outfit_full_arm.gdshader",
+						"socket_textureless": true,
+						"style": "fist",
+						"visible": true,
+						"whole_arm_source": true
+					}
+				},
+				"loaded": true,
+				"mount": "registered wrist directly on hand Bone2D; one measured physical palm width shared across poses; no dynamic bone scaling",
+				"pose_override": "fist",
+				"sampling": "single continuous full-arm source per variant; static similarity maps at shoulder/elbow/wrist",
+				"sword_preserved": "exact original v21 source and legacy blend boundary",
+				"sword_source_sha256": "dcc95466b3b9430131d73a4b2d99f89c1e5a8c64a25fd42f9c54bc3b37302721",
+				"target_palm_width": 3.81277745419011
+			},
+			"side": "near",
+			"style": "fist"
+		},
+		{
+			"full_arm_layer": {
+				"assets": {
+					"far_fist": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_full_arms_20261105/far_fist.png",
+						"sha256": "baf20039a1e0b5d192ae676673a9fd28cc3ade424fb48a3b755ce6d1e65ea835"
+					},
+					"far_open": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_full_arms_20261105/far_open.png",
+						"sha256": "9a38aafb3bcd8777aa08773d3166e8d6e1a303d3697a38ee0c416b2240e8088a"
+					},
+					"near_fist": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_full_arms_20261105/near_fist.png",
+						"sha256": "5def66a619f1b85902b822189c594e6522f9bcaa0bcd16671958d21aac3a5003"
+					},
+					"near_grip": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_full_arms_20261105/near_grip.png",
+						"sha256": "348c869a1e1b8d3582a291ca35deaf6239aea6aa88385baca4354b13941d0a8f"
+					},
+					"near_open": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_full_arms_20261105/near_open.png",
+						"sha256": "c10dfc191b9c303ac59c7aaac83ec169eee52b266206d73f7dc30f73f3c4076d"
+					}
+				},
+				"clothing": "new complete shoulder-to-fingertips drawings on approved fixed arm rig",
+				"distinct_near_far_images": true,
+				"errors": [],
+				"hands": {
+					"far": {
+						"anatomy": "left palm facing camera",
+						"asset": "far_fist",
+						"mesh": "YuxuUnified_far_arm",
+						"registration": {
+							"anatomy": "left palm facing camera",
+							"elbow_px": [
+								411.0,
+								957.0
+							],
+							"grip_px": [
+								990.0,
+								430.0
+							],
+							"hand_source_scale": 4.1061704142447,
+							"no_fingernails": true,
+							"palm_width_basis": "metacarpal body span perpendicular to palm axis, excluding crossing thumb projection and distal folded fingertips",
+							"palm_width_px": 182.0,
+							"shoulder_px": [
+								270.0,
+								510.0
+							],
+							"source_sha256": "baf20039a1e0b5d192ae676673a9fd28cc3ade424fb48a3b755ce6d1e65ea835",
+							"target_palm_width": 3.81277745419011,
+							"wrist_mount_source_px": [
+								609.0,
+								473.0
+							],
+							"wrist_px": [
+								922.0,
+								553.0
+							]
+						},
+						"rigid_wrist_mount": true,
+						"shader": "res://approved_outfit_full_arm.gdshader",
+						"socket_textureless": true,
+						"style": "fist",
+						"visible": true,
+						"whole_arm_source": true
+					},
+					"near": {
+						"anatomy": "right hand back facing camera",
+						"asset": "near_fist",
+						"mesh": "YuxuUnified_near_arm",
+						"registration": {
+							"anatomy": "right hand back facing camera",
+							"elbow_px": [
+								411.0,
+								957.0
+							],
+							"grip_px": [
+								985.0,
+								430.0
+							],
+							"hand_source_scale": 4.1061704142447,
+							"no_fingernails": true,
+							"palm_width_basis": "metacarpals, perpendicular to palm axis; thumb excluded",
+							"palm_width_px": 182.0,
+							"shoulder_px": [
+								270.0,
+								510.0
+							],
+							"source_sha256": "5def66a619f1b85902b822189c594e6522f9bcaa0bcd16671958d21aac3a5003",
+							"target_palm_width": 3.81277745419011,
+							"wrist_mount_source_px": [
+								609.0,
+								473.0
+							],
+							"wrist_px": [
+								922.0,
+								553.0
+							]
+						},
+						"rigid_wrist_mount": true,
+						"shader": "res://approved_outfit_full_arm.gdshader",
+						"socket_textureless": true,
+						"style": "fist",
+						"visible": false,
+						"whole_arm_source": true
+					}
+				},
+				"loaded": true,
+				"mount": "registered wrist directly on hand Bone2D; one measured physical palm width shared across poses; no dynamic bone scaling",
+				"pose_override": "fist",
+				"sampling": "single continuous full-arm source per variant; static similarity maps at shoulder/elbow/wrist",
+				"sword_preserved": "exact original v21 source and legacy blend boundary",
+				"sword_source_sha256": "dcc95466b3b9430131d73a4b2d99f89c1e5a8c64a25fd42f9c54bc3b37302721",
+				"target_palm_width": 3.81277745419011
+			},
+			"side": "far",
+			"style": "fist"
+		},
+		{
+			"full_arm_layer": {
+				"assets": {
+					"far_fist": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_full_arms_20261105/far_fist.png",
+						"sha256": "baf20039a1e0b5d192ae676673a9fd28cc3ade424fb48a3b755ce6d1e65ea835"
+					},
+					"far_open": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_full_arms_20261105/far_open.png",
+						"sha256": "9a38aafb3bcd8777aa08773d3166e8d6e1a303d3697a38ee0c416b2240e8088a"
+					},
+					"near_fist": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_full_arms_20261105/near_fist.png",
+						"sha256": "5def66a619f1b85902b822189c594e6522f9bcaa0bcd16671958d21aac3a5003"
+					},
+					"near_grip": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_full_arms_20261105/near_grip.png",
+						"sha256": "348c869a1e1b8d3582a291ca35deaf6239aea6aa88385baca4354b13941d0a8f"
+					},
+					"near_open": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_full_arms_20261105/near_open.png",
+						"sha256": "c10dfc191b9c303ac59c7aaac83ec169eee52b266206d73f7dc30f73f3c4076d"
+					}
+				},
+				"clothing": "new complete shoulder-to-fingertips drawings on approved fixed arm rig",
+				"distinct_near_far_images": true,
+				"errors": [],
+				"hands": {
+					"far": {
+						"anatomy": "left palm facing camera",
+						"asset": "far_open",
+						"mesh": "YuxuUnified_far_arm",
+						"registration": {
+							"anatomy": "left palm facing camera",
+							"elbow_px": [
+								411.0,
+								957.0
+							],
+							"grip_px": [
+								1003.0,
+								430.0
+							],
+							"hand_source_scale": 4.04976697448859,
+							"no_fingernails": true,
+							"palm_width_basis": "metacarpals, perpendicular to palm axis; thumb excluded",
+							"palm_width_px": 179.5,
+							"shoulder_px": [
+								270.0,
+								510.0
+							],
+							"source_sha256": "9a38aafb3bcd8777aa08773d3166e8d6e1a303d3697a38ee0c416b2240e8088a",
+							"target_palm_width": 3.81277745419011,
+							"wrist_mount_source_px": [
+								609.0,
+								473.0
+							],
+							"wrist_px": [
+								922.0,
+								553.0
+							]
+						},
+						"rigid_wrist_mount": true,
+						"shader": "res://approved_outfit_full_arm.gdshader",
+						"socket_textureless": true,
+						"style": "open",
+						"visible": false,
+						"whole_arm_source": true
+					},
+					"near": {
+						"anatomy": "right hand back facing camera",
+						"asset": "near_grip",
+						"mesh": "YuxuUnified_near_arm",
+						"registration": {
+							"anatomy": "right hand back facing camera",
+							"elbow_px": [
+								411.0,
+								957.0
+							],
+							"grip_px": [
+								1005.0,
+								420.0
+							],
+							"hand_source_scale": 4.37690692507402,
+							"no_fingernails": true,
+							"palm_width_basis": "metacarpals, perpendicular to palm axis; thumb excluded",
+							"palm_width_px": 194.0,
+							"shoulder_px": [
+								270.0,
+								510.0
+							],
+							"source_sha256": "348c869a1e1b8d3582a291ca35deaf6239aea6aa88385baca4354b13941d0a8f",
+							"target_palm_width": 3.81277745419011,
+							"wrist_mount_source_px": [
+								609.0,
+								473.0
+							],
+							"wrist_px": [
+								920.0,
+								548.0
+							]
+						},
+						"rigid_wrist_mount": true,
+						"shader": "res://approved_outfit_full_arm.gdshader",
+						"socket_textureless": true,
+						"style": "grip",
+						"visible": true,
+						"whole_arm_source": true
+					}
+				},
+				"loaded": true,
+				"mount": "registered wrist directly on hand Bone2D; one measured physical palm width shared across poses; no dynamic bone scaling",
+				"pose_override": "grip_near",
+				"sampling": "single continuous full-arm source per variant; static similarity maps at shoulder/elbow/wrist",
+				"sword_preserved": "exact original v21 source and legacy blend boundary",
+				"sword_source_sha256": "dcc95466b3b9430131d73a4b2d99f89c1e5a8c64a25fd42f9c54bc3b37302721",
+				"target_palm_width": 3.81277745419011
+			},
+			"side": "near",
+			"style": "grip_near"
+		},
+		{
+			"full_arm_layer": {
+				"assets": {
+					"far_fist": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_full_arms_20261105/far_fist.png",
+						"sha256": "baf20039a1e0b5d192ae676673a9fd28cc3ade424fb48a3b755ce6d1e65ea835"
+					},
+					"far_open": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_full_arms_20261105/far_open.png",
+						"sha256": "9a38aafb3bcd8777aa08773d3166e8d6e1a303d3697a38ee0c416b2240e8088a"
+					},
+					"near_fist": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_full_arms_20261105/near_fist.png",
+						"sha256": "5def66a619f1b85902b822189c594e6522f9bcaa0bcd16671958d21aac3a5003"
+					},
+					"near_grip": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_full_arms_20261105/near_grip.png",
+						"sha256": "348c869a1e1b8d3582a291ca35deaf6239aea6aa88385baca4354b13941d0a8f"
+					},
+					"near_open": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_full_arms_20261105/near_open.png",
+						"sha256": "c10dfc191b9c303ac59c7aaac83ec169eee52b266206d73f7dc30f73f3c4076d"
+					}
+				},
+				"clothing": "new complete shoulder-to-fingertips drawings on approved fixed arm rig",
+				"distinct_near_far_images": true,
+				"errors": [],
+				"hands": {
+					"far": {
+						"anatomy": "left palm facing camera",
+						"asset": "far_open",
+						"mesh": "YuxuUnified_far_arm",
+						"registration": {
+							"anatomy": "left palm facing camera",
+							"elbow_px": [
+								411.0,
+								957.0
+							],
+							"grip_px": [
+								1003.0,
+								430.0
+							],
+							"hand_source_scale": 4.04976697448859,
+							"no_fingernails": true,
+							"palm_width_basis": "metacarpals, perpendicular to palm axis; thumb excluded",
+							"palm_width_px": 179.5,
+							"shoulder_px": [
+								270.0,
+								510.0
+							],
+							"source_sha256": "9a38aafb3bcd8777aa08773d3166e8d6e1a303d3697a38ee0c416b2240e8088a",
+							"target_palm_width": 3.81277745419011,
+							"wrist_mount_source_px": [
+								609.0,
+								473.0
+							],
+							"wrist_px": [
+								922.0,
+								553.0
+							]
+						},
+						"rigid_wrist_mount": true,
+						"shader": "res://approved_outfit_full_arm.gdshader",
+						"socket_textureless": true,
+						"style": "open",
+						"visible": false,
+						"whole_arm_source": true
+					},
+					"near": {
+						"anatomy": "right hand back facing camera",
+						"asset": "original_v21_sword",
+						"mesh": "YuxuUnified_near_arm",
+						"registration": {
+							"legacy_source": true,
+							"wrist_px": [
+								609.0,
+								473.0
+							]
+						},
+						"rigid_wrist_mount": true,
+						"shader": "res://approved_outfit_full_arm.gdshader",
+						"socket_textureless": true,
+						"style": "sword",
+						"visible": true,
+						"whole_arm_source": true
+					}
+				},
+				"loaded": true,
+				"mount": "registered wrist directly on hand Bone2D; one measured physical palm width shared across poses; no dynamic bone scaling",
+				"pose_override": "sword_near",
+				"sampling": "single continuous full-arm source per variant; static similarity maps at shoulder/elbow/wrist",
+				"sword_preserved": "exact original v21 source and legacy blend boundary",
+				"sword_source_sha256": "dcc95466b3b9430131d73a4b2d99f89c1e5a8c64a25fd42f9c54bc3b37302721",
+				"target_palm_width": 3.81277745419011
+			},
+			"side": "near",
+			"style": "sword_near"
+		}
+	],
+	"bent": true,
+	"scope": "native renderer full-arm gallery using the actual fitting runtime; no source-image slicing or composite"
+}

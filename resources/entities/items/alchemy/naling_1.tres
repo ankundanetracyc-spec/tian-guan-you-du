@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="PillItemData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/PillItemData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+definition_id = &"alchemy_naling_9_1"
+entity_name = "纳灵丹·良效"
+description = "将药中灵力纳入当前层修行进度。"
+icon_path = "res://textures/items/inventory_density_20261029/pill_container_empty_porcelain.png"
+item_category = "丹药"
+item_subcategory = "九品丹药"
+grade_value = 1
+can_stack = true
+max_stack = 999
+pill_id = "naling"
+pill_rank = 9
+usage_type = 0
+efficacy_tier = 1
+container_material_id = "porcelain"
+inventory_width = 1
+inventory_height = 2
+inventory_can_rotate = true
+

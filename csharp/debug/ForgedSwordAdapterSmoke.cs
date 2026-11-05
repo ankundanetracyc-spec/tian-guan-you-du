@@ -49,6 +49,10 @@ public partial class ForgedSwordAdapterSmoke : Node
                         Call(manager, "ResolveArtifactSummon", owner, queued);
                         Check(owner.used_spirit_perception == 1 + s.SpiritRequired, "召出真实器体及在场占用");
                     }
+                    Check(ForgedEquipmentLoadout.WeaponIgnore(owner, skill) == (skill.base_damage > 0 ? s.Sharpness : 0), "直施与御使按实际来源使用本剑锋锐");
+                    Check(skill.forged_flat_ignore == 0, "锋锐共用判定且不重复追加固定穿防");
+                    var wrongSource = ForgedEquipmentLoadout.CopySkill(skill); wrongSource.forged_source_instance_id = "other-sword";
+                    Check(ForgedEquipmentLoadout.WeaponIgnore(owner, wrongSource) == 0, "主动能力不能借用其他器物来源");
                     var before = owner.used_spirit_perception;
                     owner.max_spirit_perception = before;
                     Check(!manager.can_pay_skill_mana_cost(owner, skill), "施法峰值不足拒绝");
@@ -61,6 +65,8 @@ public partial class ForgedSwordAdapterSmoke : Node
                 }
                 Call(manager, "FinishArtifacts"); Check(owner.used_spirit_perception == 1, "战斗结束释放在场占用");
                 Check(owner.unequip_artifact(item.instance_id) && owner.get_combat_skill_slot_paths().All(string.IsNullOrEmpty), "卸下清空来源且保留槽位");
+                if (i < model.Parameters.Examples.Count)
+                    Check(owner.remove_artifact_from_inventory(item.instance_id), "逐样方释放真实占地");
             }
             Check(seenSkills > 0, "实际投料形成主动能力");
             var persistedItem = owner.get_artifact_items().Last();

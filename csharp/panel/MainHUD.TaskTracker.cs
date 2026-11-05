@@ -15,6 +15,7 @@ public partial class MainHUD : Control
         {
             panel.Resized += sync_task_tracker_toggle_vertical_bounds;
             panel.MinimumSizeChanged += queue_task_tracker_height_sync;
+            Resized += () => CallDeferred(nameof(sync_task_tracker_toggle_vertical_bounds));
             _taskTrackerResizeSyncConnected = true;
         }
         panel.AnchorTop = panel.AnchorBottom = .25f;
@@ -35,14 +36,7 @@ public partial class MainHUD : Control
         {
             _taskTrackerToggle = new Button { Name = "TaskTrackerToggle", ZIndex = 11, FocusMode = FocusModeEnum.None };
             _taskTrackerToggle.SetAnchorsPreset(LayoutPreset.TopRight);
-            WorldHudStyle.StyleSmallButton(_taskTrackerToggle, 14);
-            foreach (var state in new[] { "normal", "hover", "pressed" })
-                _taskTrackerToggle.AddThemeStyleboxOverride(state, new StyleBoxFlat
-                {
-                    BgColor = new Color(state == "normal" ? "eee9d9" : "e3e2d2"),
-                    BorderColor = new Color("968772"),
-                    BorderWidthLeft = 1, BorderWidthRight = 1, BorderWidthTop = 1, BorderWidthBottom = 1
-                });
+            WorldHudStyle.StylePaperButton(_taskTrackerToggle, 14);
             _taskTrackerToggle.Pressed += () => { _taskTrackerExpanded = !_taskTrackerExpanded; apply_task_tracker_horizontal_layout(); };
             AddChild(_taskTrackerToggle);
         }
@@ -55,9 +49,9 @@ public partial class MainHUD : Control
     {
         if (_taskTracker is null || _taskTrackerToggle is null) return;
         var rect = _taskTracker.GetRect();
-        _taskTrackerToggle.AnchorTop = _taskTrackerToggle.AnchorBottom = 0;
-        _taskTrackerToggle.OffsetTop = rect.Position.Y;
-        _taskTrackerToggle.OffsetBottom = rect.End.Y;
+        _taskTrackerToggle.SetAnchorsAndOffsetsPreset(LayoutPreset.TopLeft);
+        _taskTrackerToggle.Position = new Vector2(Size.X - 14 - ToggleWidth, rect.Position.Y);
+        _taskTrackerToggle.Size = new Vector2(ToggleWidth, rect.Size.Y);
     }
     private void queue_task_tracker_height_sync()
     {

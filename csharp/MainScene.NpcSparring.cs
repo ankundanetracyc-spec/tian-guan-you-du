@@ -3,10 +3,16 @@ using System;
 
 public partial class MainScene
 {
-    private bool can_sect_spar(WorldNpcData npc) => player?.entity_data is HumanData human && !is_npc_in_seclusion_now(npc) &&
-        player.current_health > 0 && npc.current_health > 0 && NpcSparringRules.Supports(npc, human) && can_contact_social_npc(npc) &&
-        _player_world_node_id == "yuxu_xianzong_core" &&
-        GetNodeOrNull<Control>("SceneLayer/YuxuXianzongOverview/PeakInterior")?.IsVisibleInTree() == true;
+    private string npc_spar_unavailable_reason(WorldNpcData npc)
+    {
+        var contact = social_contact_failure_reason(npc);
+        if (contact.Length > 0) return contact;
+        if (is_npc_in_seclusion_now(npc)) return "对方正在闭关。";
+        if (player?.entity_data is not HumanData human || player.current_health <= 0 || npc.current_health <= 0)
+            return "当前伤势不宜切磋。";
+        return NpcSparringRules.Supports(npc, human) ? "" : "双方踏入云息后可切磋。";
+    }
+    private bool can_sect_spar(WorldNpcData npc) => npc_spar_unavailable_reason(npc).Length == 0;
 
     private void request_npc_spar(WorldNpcData npc, bool proactive = false)
     {
@@ -47,7 +53,7 @@ public partial class MainScene
             proactive ? "对方想与你印证所学，邀你切磋一场。" : "你准备邀对方切磋，双方点到为止。",
             new (string, Action)[] {
                 ($"{(proactive ? "接受" : "发出邀约")} · 精力 {WorldStaminaRules.ConversationCost:0.#}", () => Answer(true)),
-                (proactive ? "婉拒" : "取消", () => Answer(false)) }, () => Answer(false), "同门切磋", proactive ? "右键婉拒" : "右键取消");
+                (proactive ? "婉拒" : "取消", () => Answer(false)) }, () => Answer(false), "切磋", proactive ? "右键婉拒" : "右键取消");
     }
     private void start_npc_spar(WorldNpcData npc)
     {
@@ -58,10 +64,13 @@ public partial class MainScene
         var (opponentScene, opponentSnapshot) = create_npc_battle_package(npc, (int)WorldEntity.Faction.ENEMY);
         if (transition is null || playerScene is null || playerSnapshot is null || opponentScene is null || opponentSnapshot is null)
         { show_message("切磋未能开始", "对练配置未能载入，未开始战斗。"); return; }
-        transition.set_battle_return_context(new Godot.Collections.Dictionary {
-            ["kind"] = "yuxu_npc_spar", ["is_training"] = true, ["title"] = "同门切磋 · 点到为止",
-            ["allow_prebattle_cancel"] = true, ["npc_id"] = npc.npc_id,
-            ["origin_peak"] = _player_current_yuxu_peak_id });
+        var context = npc_interaction_return_context();
+        context["kind"] = "yuxu_npc_spar";
+        context["is_training"] = true;
+        context["title"] = "切磋 · 点到为止";
+        context["allow_prebattle_cancel"] = true;
+        context["npc_id"] = npc.npc_id;
+        transition.set_battle_return_context(context);
         transition.start_team_battle(new Godot.Collections.Array<PackedScene> { playerScene },
             new Godot.Collections.Array<PackedScene> { opponentScene },
             new Godot.Collections.Array { playerSnapshot }, new Godot.Collections.Array { opponentSnapshot },
@@ -71,12 +80,7 @@ public partial class MainScene
     {
         var npc = _npc_world?.get_npc(context.GetValueOrDefault("npc_id", "").AsString());
         var peak = context.GetValueOrDefault("origin_peak", "").AsString();
-        Callable.From(() => {
-            if (_player_world_node_id != "yuxu_xianzong_core" || string.IsNullOrWhiteSpace(peak)) return;
-            estate?.Hide(); _nodeWorldMap?.Hide();  location_interior?.Hide();
-            open_faction_overview_if_available(_player_world_node_id);
-            GetNodeOrNull<Node>("SceneLayer/YuxuXianzongOverview")?.Call("_on_peak_pressed", peak);
-        }).CallDeferred();
+        restore_npc_interaction_location(context);
         if (npc is null || story_dialogue is null) return;
         var outcome = summary.GetValueOrDefault("escaped", false).AsBool() ? "此次切磋提前结束。" :
             summary.GetValueOrDefault("is_draw", false).AsBool() ? "此次切磋不分胜负。" :
@@ -93,7 +97,7 @@ public partial class MainScene
             var month = get_game_month_index(GetNode<GameTimeMgr>("/root/GameTimeManager"));
             var time = GetNode<GameTimeMgr>("/root/GameTimeManager");
             var date = $"{time.year}年{time.month}月{time.day}日";
-            NpcPersonalityRules.Observe(npc, "spar_experience", "交手经历：" + outcome, "宗内切磋", month);
+            NpcPersonalityRules.Observe(npc, "spar_experience", "交手经历：" + outcome, "切磋", month);
             if (!summary.GetValueOrDefault("escaped", false).AsBool() && player?.entity_data is HumanData human && npc.is_alive)
             {
                 var eventId = "sect-spar:" + battleId;
@@ -103,8 +107,8 @@ public partial class MainScene
                         "敬重：本次切磋关系证据已处理。")
                     : "敬重：本次切磋没有新增待月结记事。";
             }
-            npc.record(new NpcActionRecord { month_index = month, date_label = date, action_id = "sect_spar_result", action_name = "同门切磋",
-                node_id = _player_world_node_id, subscene_id = peak, target_npc_id = "player",
+            npc.record(new NpcActionRecord { month_index = month, date_label = date, action_id = "sect_spar_result", action_name = "切磋",
+                node_id = _player_world_node_id, subscene_id = context.GetValueOrDefault("origin_space", peak).AsString(), target_npc_id = "player",
                 outcome = outcome + "\n" + relationshipFeedback, reason = "双方约定点到为止。" });
             mark_save_dirty();
         }

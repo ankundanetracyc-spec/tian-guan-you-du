@@ -10,7 +10,7 @@ public partial class StoragePanel : Control
     private const float GridHorizontalGap = 12f;
     // 30 格按八列四行展示，完整网格落在正文与页脚之间。
     private const float GridSlotHeight = 164f;
-    private const float PopupWidth = 236f;
+    private float PopupWidth => _nativeStorageActions.Count > 0 ? 352f : 236f;
 
     private Character? _player;
     private StorageItemSlot? _active_slot;
@@ -65,6 +65,7 @@ public partial class StoragePanel : Control
         if (@event is InputEventKey { Pressed: true, Echo: false, Keycode: Key.Escape })
         {
             if (_pinned_selection) clear_active_info();
+            else if (_nativeContainerId.Length > 0) open_native_container("");
             else hide_panel();
             GetViewport().SetInputAsHandled();
         }
@@ -215,7 +216,10 @@ public partial class StoragePanel : Control
     }
     private void on_player_inventory_changed(Character _) { if (Visible && !_inventory_mutation) refresh_slots(); }
 
-    private bool can_act_on(StorageItemSlot slot)
+    private bool can_act_on(StorageItemSlot slot) => has_native_storage_actions(slot)
+        || (native_slot_entry(slot)?.ContainerId.Length is not > 0 && can_use_inventory_slot(slot));
+
+    private bool can_use_inventory_slot(StorageItemSlot slot)
     {
         if (_player is null) return false;
         if (slot.artifact_data is { } forged && ForgedArtifactInventory.IsForged(forged))
@@ -260,6 +264,7 @@ public partial class StoragePanel : Control
     private void clear_active_info() => clear_active_info(true);
     private void clear_active_info(bool hideHover)
     {
+        clear_native_storage_actions();
         if (hideHover) HoverInfoManager.HideAll();
         bind_detail_layout_anchor(null);
         HoverInfoManager.SuspendFor(_active_slot, false);
@@ -271,7 +276,7 @@ public partial class StoragePanel : Control
     private void show_info_content(StorageItemSlot slot)
     {
         if (_detail_panel is null) return;
-        if (_action_button?.Visible != true || _action_button.Disabled) { clear_active_info(); return; }
+        if (_action_row?.GetChildren().OfType<Button>().Any(b => b.Visible && !b.Disabled && b != _cancel_button) != true) { clear_active_info(); return; }
         _action_row?.Show();
         _detail_panel.Show();
         layout_detail_popup(slot);
@@ -288,6 +293,12 @@ public partial class StoragePanel : Control
 
     internal static HoverInfoManager.HoverInfoContent ItemHover(ItemData item, int? count = null, string path = "", Character? user = null)
     {
+        if (item is StorageRingItemData ring)
+        {
+            var icon = !string.IsNullOrWhiteSpace(ring.icon_path) && ResourceLoader.Exists(ring.icon_path) ? GD.Load<Texture2D>(ring.icon_path) : null;
+            return new(StorageRingItemData.ItemName, $"收纳空间：{ring.storage_width} × {ring.storage_height} 格\n不能放入储物戒指。", icon,
+                $"器具 · {ring.storage_quality}", Footprint: Vector2I.One);
+        }
         if (item is PortraitClothingData clothingItem) return ClothingItemPresentation.Hover(clothingItem);
         if (AlchemyPillVisual.IsPill(item)) return AlchemyPillVisual.Hover(item, user);
         if (MaterialItemPresentation.IsMaterial(item)) return MaterialItemPresentation.Hover(item);
@@ -342,7 +353,9 @@ public partial class StoragePanel : Control
 
     private void configure_active_actions()
     {
-        if (_active_artifact is { } artifact)
+        if (_active_slot is not null && native_slot_entry(_active_slot)?.ContainerId.Length > 0)
+            _action_button?.Hide();
+        else if (_active_artifact is { } artifact)
         {
             _action_button!.Text = _player?.is_artifact_equipped(artifact.instance_id) == true ? "卸下" : "装备";
             _action_button.Disabled = false;
@@ -350,13 +363,14 @@ public partial class StoragePanel : Control
             _cancel_button!.Show();
         }
         else if (_active_slot is { } slot && load_item_data(slot.item_path) is { } item) configure_item_actions(item);
+        configure_native_storage_actions();
     }
 
     private void configure_item_actions(ItemData item)
     {
         _action_button?.Hide(); _cancel_button?.Hide();
         if (!_pinned_selection || _player is null || _active_slot is null || _action_button is null || _cancel_button is null) return;
-        if (!can_act_on(_active_slot)) { _pinned_selection = false; return; }
+        if (!can_use_inventory_slot(_active_slot)) return;
         HoverInfoManager.SetTooltip(_action_button, "");
         bool clothing = item is PortraitClothingData;
         bool equipped = _player.is_item_equipped(_active_slot.item_path);

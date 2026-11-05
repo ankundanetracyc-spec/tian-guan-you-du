@@ -1,0 +1,93 @@
+extends Node2D
+
+const OutfitRuntime = preload("approved_outfit_fitting_runtime.gd")
+const HandLayer = preload("approved_outfit_hand_layer.gd")
+const ORIGINAL_SWORD := "dcc95466b3b9430131d73a4b2d99f89c1e5a8c64a25fd42f9c54bc3b37302721"
+var failures: Array[String] = []
+var checks := 0
+var poses := 0
+var maximum_wrist_drift := 0.0
+var maximum_shape_error := 0.0
+var maximum_palm_width_error := 0.0
+var maximum_socket_error := 0.0
+
+func _check(value: bool, message: String) -> void:
+	checks += 1
+	if not value and failures.size()<40: failures.append(message)
+
+func _save_and_quit(layer: RefCounted = null) -> void:
+	var report := {"passed":failures.is_empty(),"checks":checks,"poses":poses,"failures":failures,"maximum_wrist_drift":maximum_wrist_drift,"maximum_rigid_shape_error":maximum_shape_error,"maximum_palm_width_error":maximum_palm_width_error,"maximum_weapon_socket_error":maximum_socket_error,"scope":"independent near/far skin, fixed cuff wrist, fixed physical palm width, rigid distal images through all sampled motions and facings; exact original sword-source checksum","hand_layer":layer.get_diagnostics() if layer!=null else {}}
+	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path("res://output"))
+	var file := FileAccess.open("res://output/approved_outfit_hands_smoke.json",FileAccess.WRITE)
+	file.store_string(JSON.stringify(report,"\t"))
+	file.close()
+	print("APPROVED OUTFIT HANDS ","PASS" if failures.is_empty() else "FAIL"," ",checks," checks, ",poses," poses, wrist ",maximum_wrist_drift," shape ",maximum_shape_error," socket ",maximum_socket_error," ",JSON.stringify(failures))
+	get_tree().quit(0 if failures.is_empty() else 1)
+
+func _ready() -> void:
+	var rig := OutfitRuntime.new()
+	add_child(rig)
+	_check(rig.build(),"approved outfit builds")
+	if not rig.loaded:
+		_save_and_quit()
+		return
+	var skin = rig.wanderer_skin
+	skin.motion_context = false
+	skin.pose_blending = false
+	rig.display_zoom = 5.0
+	var layer = skin.get("approved_hands")
+	if layer==null:
+		layer = HandLayer.new()
+		_check(layer.build(skin),"five independent hand assets load: "+str(layer.errors))
+	if not layer.errors.is_empty():
+		_save_and_quit(layer)
+		return
+	for pair in [["near_open","far_open"],["near_fist","far_fist"]]:
+		_check(layer.assets[pair[0]].sha256!=layer.assets[pair[1]].sha256,"near/far are separate images: "+str(pair))
+	_check(FileAccess.get_sha256("res://art/yuxu_fullbody_v15/arm_sword_fingers_v21.png")==ORIGINAL_SWORD,"user-protected sword art is exactly unchanged")
+	var references := {}
+	for style in ["open","fist","grip_near","sword_near","auto"]:
+		layer.set_pose_override(style)
+		for facing in [1.0,-1.0]:
+			for clip in ["Idle","Run_New1","Run_New2","BackstepWalk","Attack1","Step1"]:
+				for frame in range(24):
+					rig.set_character_pose(clip,float(frame)/24.0,facing)
+					layer.update_pose()
+					poses += 1
+					for side in ["near","far"]:
+						var state: Dictionary = layer.hands[side]
+						var sprite: Sprite2D = state.node
+						if style=="sword_near" and side=="near":
+							_check(not sprite.visible,"preserved sword uses no new sprite")
+							_check(bool(state.material.get_shader_parameter("keep_original_sword")),"preserved sword branch enabled")
+							continue
+						_check(sprite.visible,"non-sword hand visible")
+						_check(not bool(state.material.get_shader_parameter("keep_original_sword")),"old hand removed for new gestures")
+						_check(sprite.texture==layer.assets[state.key].texture,"selected independent image actually bound")
+						var registration: Dictionary = state.last
+						var wrist := Vector2(registration.wrist_px[0],registration.wrist_px[1])
+						var attach_source := Vector2(registration.cuff_exit_source_px[0],registration.cuff_exit_source_px[1])
+						var expected: Vector2 = skin.bones[side+"_hand"].to_global((attach_source-Vector2(609,473))*float(skin.PIXEL_SCALE))
+						maximum_wrist_drift = maxf(maximum_wrist_drift,sprite.to_global(wrist).distance_to(expected))
+						var inverse: Transform2D = rig.global_transform.affine_inverse()
+						var points := [inverse*sprite.to_global(wrist),inverse*sprite.to_global(wrist+Vector2(300,-400)),inverse*sprite.to_global(wrist+Vector2(-100,-700))]
+						var lengths := Vector3(points[0].distance_to(points[1]),points[1].distance_to(points[2]),points[2].distance_to(points[0]))
+						if references.has(state.key): maximum_shape_error = maxf(maximum_shape_error,lengths.distance_to(references[state.key]))
+						else: references[state.key] = lengths
+						var width := float(registration.palm_width_px)
+						var actual_width: float = (inverse*sprite.to_global(wrist+Vector2(width,0))).distance_to(inverse*sprite.to_global(wrist))
+						var config: Dictionary = layer.registrations.get(state.key,{})
+						var target_width := float(registration.target_palm_width)*float(config.get("scale_multiplier",1.0))
+						maximum_palm_width_error = maxf(maximum_palm_width_error,absf(actual_width-target_width))
+						var grip_value: Array = config.get("grip_px",[512.0,590.0])
+						var expected_socket := sprite.to_global(Vector2(grip_value[0],grip_value[1]))
+						maximum_socket_error = maxf(maximum_socket_error,layer.get_attachment_transform(side).origin.distance_to(expected_socket))
+	_check(maximum_wrist_drift<0.0001,"wrist remains fixed at cuff through all poses")
+	_check(maximum_shape_error<0.0001,"hand and all finger proportions remain rigid")
+	_check(maximum_palm_width_error<0.0001,"physical palm width is maintained, regardless of finger extension")
+	_check(maximum_socket_error<0.0001,"weapon socket stays on registered palm")
+	_check(references.size()==5,"all five regenerated assets were exercised")
+	layer.set_visible(false)
+	_check(not layer.get_hand_node("near").visible and not layer.get_hand_node("far").visible,"skin visibility hides both independent hands")
+	_check(FileAccess.get_sha256("res://art/yuxu_fullbody_v15/arm_sword_fingers_v21.png")==ORIGINAL_SWORD,"sword art remains unchanged after all gesture previews")
+	_save_and_quit(layer)

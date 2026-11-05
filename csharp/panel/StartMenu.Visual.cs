@@ -152,45 +152,73 @@ public partial class StartMenu
         list.AddThemeConstantOverride("separation", 12);
         scroll.AddChild(list);
         var menu = GetNode<VBoxContainer>("StartMenuMenu");
-        var inventoryLayout = SettingsButton("行囊 · 细网格布局试阅");
-        inventoryLayout.Name = "InventorySpatialLayoutPreview";
-        inventoryLayout.SizeFlagsHorizontal = SizeFlags.ExpandFill;
-        inventoryLayout.CustomMinimumSize = new Vector2(0, 58);
-        inventoryLayout.Pressed += () => { CloseDemoEntries(); GetTree().ChangeSceneToFile("res://tools/InventorySpatialLayoutPreview.tscn"); };
-        list.AddChild(inventoryLayout);
-        var inventoryIcons = SettingsButton("行囊 · 全物品图标审阅");
-        inventoryIcons.Name = "InventoryIconCatalogPreview";
-        inventoryIcons.SizeFlagsHorizontal = SizeFlags.ExpandFill;
-        inventoryIcons.CustomMinimumSize = new Vector2(0, 58);
-        inventoryIcons.Pressed += () => { CloseDemoEntries(); GetTree().ChangeSceneToFile("res://tools/InventoryIconCatalogPreview.tscn"); };
-        list.AddChild(inventoryIcons);
-        var baiChuan = SettingsButton("百川九图 · 地图测试（固定倍率）");
-        baiChuan.Name = "BaiChuanNineMapTest";
-        baiChuan.SizeFlagsHorizontal = SizeFlags.ExpandFill;
-        baiChuan.CustomMinimumSize = new Vector2(0, 58);
-        baiChuan.Pressed += () => { CloseDemoEntries(); GetTree().ChangeSceneToFile("res://tscn/world/bai_chuan/BaiChuanNineTileTest.tscn"); };
-        list.AddChild(baiChuan);
-        foreach (var name in new[] { "AppearanceTest", "AppearanceCreatorTest", "InkVfxTest", "BattleTest", "CondensationTest", "YuanxiPreview", "SocialInteractionTest" })
+
+        VBoxContainer AddGroup(string name, string title, bool expanded = false)
+        {
+            var group = new VBoxContainer { Name = name, SizeFlagsHorizontal = SizeFlags.ExpandFill };
+            group.AddThemeConstantOverride("separation", 8);
+            list.AddChild(group);
+            var toggle = SettingsButton((expanded ? "▾  " : "▸  ") + title);
+            toggle.Name = "Toggle";
+            toggle.ToggleMode = true;
+            toggle.ButtonPressed = expanded;
+            toggle.Alignment = HorizontalAlignment.Left;
+            toggle.CustomMinimumSize = new Vector2(0, 46);
+            StyleSettingsText(toggle, 20, new Color(.17f, .26f, .22f));
+            foreach (var state in new[] { "font_hover_color", "font_pressed_color", "font_focus_color" })
+                toggle.AddThemeColorOverride(state, new Color(.12f, .22f, .18f));
+            toggle.AddThemeStyleboxOverride("normal", MenuPaperButtonStyle(false));
+            toggle.AddThemeStyleboxOverride("hover", MenuPaperButtonStyle(false, true));
+            toggle.AddThemeStyleboxOverride("pressed", MenuPaperButtonStyle(false, true));
+            group.AddChild(toggle);
+            var entries = new VBoxContainer { Name = "Entries", Visible = expanded, SizeFlagsHorizontal = SizeFlags.ExpandFill };
+            entries.AddThemeConstantOverride("separation", 8);
+            group.AddChild(entries);
+            toggle.Toggled += open => { entries.Visible = open; toggle.Text = (open ? "▾  " : "▸  ") + title; };
+            return entries;
+        }
+
+        Button AddEntry(VBoxContainer parent, string name, string text, Action open)
+        {
+            var button = SettingsButton(text);
+            button.Name = name;
+            button.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+            button.CustomMinimumSize = new Vector2(0, 52);
+            button.Pressed += () => { CloseDemoEntries(); open(); };
+            parent.AddChild(button);
+            return button;
+        }
+
+        void AddScene(VBoxContainer parent, string name, string text, string path) =>
+            AddEntry(parent, name, text, () => GetTree().ChangeSceneToFile(path));
+        void AddExisting(VBoxContainer parent, string name, string? text = null)
         {
             var source = menu.GetNode<Button>(name);
-            var button = SettingsButton(source.Text);
-            button.SizeFlagsHorizontal = SizeFlags.ExpandFill;
-            button.CustomMinimumSize = new Vector2(0, 58);
-            button.Pressed += () => { CloseDemoEntries(); source.EmitSignal(BaseButton.SignalName.Pressed); };
-            list.AddChild(button);
+            AddEntry(parent, name, text ?? source.Text, () => source.EmitSignal(BaseButton.SignalName.Pressed));
         }
-        var alchemy = SettingsButton("炼丹配伍");
-        alchemy.SizeFlagsHorizontal = SizeFlags.ExpandFill; alchemy.CustomMinimumSize = new Vector2(0, 58);
-        alchemy.Pressed += () => { CloseDemoEntries(); GetTree().ChangeSceneToFile("res://tscn/scene/AlchemyPreviewScene.tscn"); };
-        list.AddChild(alchemy);
-        var forging = SettingsButton("炼器工坊 · 剑类试炼");
-        forging.SizeFlagsHorizontal = SizeFlags.ExpandFill; forging.CustomMinimumSize = new Vector2(0, 58);
-        forging.Pressed += () => { CloseDemoEntries(); GetTree().ChangeSceneToFile("res://tscn/scene/ProcessForgingScene.tscn"); };
-        list.AddChild(forging);
-        var letters = SettingsButton("信件界面预览");
-        letters.SizeFlagsHorizontal = SizeFlags.ExpandFill; letters.CustomMinimumSize = new Vector2(0, 58);
-        letters.Pressed += () => { CloseDemoEntries(); GetTree().ChangeSceneToFile("res://tscn/scene/LettersPreviewScene.tscn"); };
-        list.AddChild(letters);
+
+        var combat = AddGroup("CombatAndVfxPreviews", "战斗与特效", true);
+        AddExisting(combat, "BattleTest", "自定义战斗 · 秘籍与队列");
+        AddExisting(combat, "InkVfxTest");
+
+        var appearance = AddGroup("AppearancePreviews", "人物与衣装");
+        AddExisting(appearance, "AppearanceCreatorTest", "人物立绘 · 部件搭配");
+        AddExisting(appearance, "AppearanceTest", "局内动作 · 姿势库");
+        AddScene(appearance, "QueueAvatarBattlePreview", "玉虚衣装 · 远景试演", "res://tools/QueueAvatarBattlePreview.tscn");
+
+        var cultivation = AddGroup("CultivationAndCraftingPreviews", "修行与工坊");
+        AddExisting(cultivation, "CondensationTest");
+        AddExisting(cultivation, "YuanxiPreview");
+        AddScene(cultivation, "AlchemyPreview", "炼丹配伍", "res://tscn/scene/AlchemyPreviewScene.tscn");
+        AddScene(cultivation, "ForgingPreview", "炼器工坊 · 剑类试炼", "res://tscn/scene/ProcessForgingScene.tscn");
+
+        var world = AddGroup("WorldAndInterfacePreviews", "世界与界面");
+        AddScene(world, "InventorySpatialLayoutPreview", "行囊 · 细网格布局试阅", "res://tools/InventorySpatialLayoutPreview.tscn");
+        AddScene(world, "InventoryIconCatalogPreview", "行囊 · 全物品图标审阅", "res://tools/InventoryIconCatalogPreview.tscn");
+        AddScene(world, "BaiChuanNineMapTest", "百川九图 · 地图试阅", "res://tscn/world/bai_chuan/BaiChuanNineTileTest.tscn");
+        AddExisting(world, "SocialInteractionTest");
+        AddScene(world, "LettersPreview", "信件界面预览", "res://tscn/scene/LettersPreviewScene.tscn");
+
         var close = SettingsButton("返回首页");
         close.Pressed += CloseDemoEntries;
         box.AddChild(close);

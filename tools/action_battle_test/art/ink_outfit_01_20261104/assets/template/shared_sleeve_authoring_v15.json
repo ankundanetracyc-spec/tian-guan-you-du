@@ -1,0 +1,38 @@
+{
+  "engineering_guide_only": true,
+  "canvas": [
+    1254,
+    1254
+  ],
+  "common_to_both_sides": true,
+  "shoulder": [
+    620,
+    272
+  ],
+  "elbow": [
+    600,
+    610
+  ],
+  "wrist": [
+    610,
+    875
+  ],
+  "cuff_lower_edge": [
+    478,
+    907
+  ],
+  "cuff_upper_edge": [
+    676,
+    853
+  ],
+  "cuff_width_px": 205.2315765509403,
+  "intended_upper_lower_clearance_ratio": [
+    1,
+    2
+  ],
+  "upper_arm_taper": "170 at shoulder, down to100 at elbow",
+  "forearm_flare": "100 at elbow, monotonically to205 at opening; no midarm bag",
+  "no_painted_folds": true,
+  "hand_scale_same_for_both_sides": true,
+  "note": "Authored target, not measurement of an AI image. Actual output landmarks require reinspection; source motion rig coordinates remain separately referenced."
+}

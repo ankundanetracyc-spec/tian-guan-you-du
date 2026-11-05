@@ -187,7 +187,9 @@ public partial class BattleManager : Node2D
             battle_units[unit] = new BattleUnit(); ((BattleUnit)battle_units[unit].AsGodotObject()!).setup(unit, deck);
             initialize_formation_circuits(unit, snapshot);
             InitializeArtifacts(unit, snapshot);
-            ForgedEquipmentLoadout.ApplyBattleBonuses(unit, snapshot.trial_forged_equipment_json);
+            // 正式快照已由 InitializeArtifacts 登记；空的试器数据不能撤销正式装备收益。
+            if (snapshot.trial_forged_equipment_json.Length > 0)
+                ForgedEquipmentLoadout.ApplyBattleBonuses(unit, snapshot.trial_forged_equipment_json);
         }
     }
 }

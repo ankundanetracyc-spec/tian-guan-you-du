@@ -36,7 +36,7 @@ public partial class BattleManager
         var absorption = owner.PillAbsorption * 100;
         var effect = pill.pill_id == "huichun"
             ? $"恢复自身{amount}点生命值，基础{AlchemyProductCatalog.Healing[tier]}点 计算公式：四舍五入(取较大值(1,向下取整({AlchemyProductCatalog.Healing[tier]}×{absorption:0.##}%))×{1 + Mathf.Max(0, owner.healing_received_bonus):0.####})＝{amount}"
-            : $"恢复自身{amount}点法力，基础为有效法力上限的{AlchemyProductCatalog.ManaPercent[tier]}% 计算公式：有效法力上限[{get_effective_mana_capacity(owner)}]×{AlchemyProductCatalog.ManaPercent[tier]}%×{absorption:0.##}%，向下取整且基础恢复大于0时至少1点＝{amount}";
+            : AlchemyPillVisual.ActualEffectText(pill, owner.PillToxicity);
         return AlchemyPillVisual.Hover(pill, user: owner, effectOverride: effect);
     }
 
@@ -82,13 +82,49 @@ public partial class BattleManager
                 var urgent = health / Math.Max(1, owner.max_health) < .30f;
                 branch.Value += (urgent ? 5 : 3) * 100 + (urgent ? 1800 + healing * 12 : 400 + healing * 8);
             }
-            else
+            else if (pill.pill_id == "tongmai")
             {
                 var restored = Math.Min(amount, Math.Max(0, draft.Capacity - draft.Mana));
                 if (restored <= 0 || remaining < 2) continue;
                 branch.Mana += restored;
                 if (!AiDraftCandidates(unit, loadout, branch, teammate, remaining - 1).Any(candidate => candidate.ManaCost > draft.Mana)) continue;
                 branch.Value -= 35; // 与已有休整铺垫采用同一行动机会成本。
+            }
+            else
+            {
+                string key = "pill:" + pill.pill_id;
+                if (branch.Statuses.Contains(key)) continue;
+                switch (pill.pill_id)
+                {
+                    case "ninggang":
+                        branch.Shield += amount;
+                        branch.Value += 160 + amount * 3;
+                        break;
+                    case "jinji": case "xusheng": case "qingshen":
+                        if (!owner.CanUseBattlePill(i, draft.Capacity)) continue;
+                        if (pill.pill_id == "xusheng")
+                        {
+                            var missing = Math.Max(0, owner.max_health - draft.Health.GetValueOrDefault(unit, owner.current_health));
+                            if (missing <= 0) continue;
+                            branch.Value += 140 + Math.Min(missing, amount * 2) * 5;
+                        }
+                        else branch.Value += 140 + amount * (pill.pill_id == "jinji" ? 40 : 8);
+                        break;
+                    case "jiegu": case "hezhong":
+                        string wound = pill.pill_id == "jiegu" ? "外伤" : "内伤";
+                        int wounds = draft.SupplyWounds.GetValueOrDefault(wound, owner.get_status_stacks(wound));
+                        if (wounds <= 0) continue;
+                        branch.SupplyWounds[wound] = Math.Max(0, wounds - amount);
+                        if (wound == "内伤") branch.Capacity = Math.Max(0, owner.max_mana - Math.Min(2, branch.SupplyWounds[wound]));
+                        var heal = PillToxicityRules.Absorb(AlchemyProductCatalog.WoundHealing[pill.efficacy_tier], draft.PillToxicity);
+                        branch.Health[unit] = Math.Min(owner.max_health, draft.Health.GetValueOrDefault(unit, owner.current_health) +
+                            Mathf.RoundToInt(heal * (1 + Mathf.Max(0, owner.healing_received_bonus))));
+                        branch.Value += 260 + Math.Min(wounds, amount) * 100;
+                        break;
+                    default: continue;
+                }
+                // 持续药效只估算后续价值，不把续生当作即时治疗。
+                if (pill.pill_id is not ("ninggang" or "jiegu" or "hezhong")) branch.Statuses.Add(key);
             }
             branch.PillToxicity += PillToxicityRules.Load(pill.pill_id, pill.efficacy_tier);
             branch.Actions.Add(BattleQueuedSkill.Pill(i, slot.item_path, unit));

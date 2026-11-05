@@ -48,7 +48,7 @@ public partial class BattleInkCombatVfx
 
     private static BattleInkCombatVfx? PlayHandChop(BattlePaperDoll doll, ActiveSkillData skill)
     {
-        var shift = doll.side_ink_hand() - new Vector2(650, -355);
+        var shift = doll.side_ink_strike_contact() - new Vector2(650, -355);
         const float contact = .30f;
         var effect = SpawnSequence(doll, true, "slash", new Vector2(480, -780) + shift, new Vector2(940, 1080), 5f / contact);
         if (effect is not null)

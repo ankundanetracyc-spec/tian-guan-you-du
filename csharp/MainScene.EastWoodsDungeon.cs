@@ -293,6 +293,7 @@ public partial class MainScene
     /// <summary>CombatTrigger 在既有主角战败处理之后回调；东林地 NPC 状态与掠夺在此一次性落账。</summary>
     public void handle_persistent_battle_return(Godot.Collections.Array attackers, Godot.Collections.Array defenders, Godot.Collections.Dictionary summary, Godot.Collections.Dictionary context)
     {
+        if (handle_player_npc_attack_return(attackers, defenders, summary, context)) return;
         apply_player_severe_injury(summary, context);
         award_successful_combat_inspiration(summary, context);
         if (handle_world_encounter_battle_return(summary, context)) return;

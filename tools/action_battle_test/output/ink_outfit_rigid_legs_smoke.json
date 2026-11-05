@@ -1,0 +1,62 @@
+{
+	"ankle_support_boundary_checks": 20736,
+	"ankle_support_boundary_misses": 0,
+	"ankle_support_degeneracies": 0,
+	"ankle_support_flips": 0,
+	"ankle_support_triangle_checks": 6912,
+	"clips": {
+		"AttackIdle": {
+			"facings": 2,
+			"frames": 144,
+			"visible_triangle_flips": 0
+		},
+		"AttackRun": {
+			"facings": 2,
+			"frames": 144,
+			"visible_triangle_flips": 0
+		},
+		"Idle": {
+			"facings": 2,
+			"frames": 144,
+			"visible_triangle_flips": 0
+		},
+		"Run_New1": {
+			"facings": 2,
+			"frames": 144,
+			"visible_triangle_flips": 0
+		},
+		"Run_New2": {
+			"facings": 2,
+			"frames": 144,
+			"visible_triangle_flips": 0
+		},
+		"Step1": {
+			"facings": 2,
+			"frames": 144,
+			"visible_triangle_flips": 0
+		}
+	},
+	"failures": [],
+	"fold_examples": [],
+	"maximum_rigid_distance_error": 0.000011444091796875,
+	"maximum_shared_leg_length_error": 0.0000057220458984375,
+	"minimum_ankle_support_alpha": 0.992156863212585,
+	"nonfinite_vertices": 0,
+	"passed": true,
+	"poses": 1728,
+	"rigid_edge_checks": 262656,
+	"run_foot_rotation_relative_to_calf": {
+		"far": {
+			"max": 1.01628565788269,
+			"min": -0.327898681163788,
+			"span": 1.34418433904648
+		},
+		"near": {
+			"max": 1.1396449804306,
+			"min": -0.204815432429314,
+			"span": 1.34446041285992
+		}
+	},
+	"scope": "All evaluated source frames in both facings. All thigh/calf/foot and rigid knee support mesh edges preserve initial lengths; both legs use the same fixed thigh/calf lengths. Native alpha>=0.5 triangle-centroid fold check. Ankle support is a permitted local changing hull, tested using current triangulation for finite geometry, UV orientation, opacity and coverage of calf/foot cut edges. Foot must articulate independently in Run_New1. Does not assert robe occlusion or overall visual acceptance.",
+	"visible_triangle_flips": 0
+}

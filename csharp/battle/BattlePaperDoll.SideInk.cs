@@ -23,10 +23,11 @@ public partial class BattlePaperDoll
     public bool uses_side_ink() => _usesSideInk;
     public bool side_ink_dead() => _sideDead;
     public bool side_ink_faces_left() => _portrait?.FlipH == true;
-    public Vector2 side_ink_hand() => _sideFemale ? new(751, -397) : new(685, -376);
-    public Vector2 side_ink_body() => _sideFemale ? new(-50, -970) : new(-15, -925);
-    public Vector2 side_ink_guard() => _sideFemale ? new(335, -1050) : new(320, -1025);
-    public Vector2 side_ink_cast_finger() => _sideFemale ? new(366, -1423) : new(344, -1456);
+    public Vector2 side_ink_hand() => _queueAvatar?.HandAnchor ?? (_sideFemale ? new(751, -397) : new(685, -376));
+    public Vector2 side_ink_strike_contact() => _queueAvatar?.PalmStrikeContactAnchor ?? side_ink_hand();
+    public Vector2 side_ink_body() => _queueAvatar?.ChestAnchor ?? (_sideFemale ? new(-50, -970) : new(-15, -925));
+    public Vector2 side_ink_guard() => _queueAvatar?.HandAnchor ?? (_sideFemale ? new(335, -1050) : new(320, -1025));
+    public Vector2 side_ink_cast_finger() => _queueAvatar?.HandAnchor ?? (_sideFemale ? new(366, -1423) : new(344, -1456));
     public bool is_defense_presenting() => _usesSideInk && !_sideDead && _sidePose is "guard" or "sword_parry";
     public float presentation_zoom() => _sidePresentation?.Scale.X ?? 1;
     public Transform2D side_ink_visual_transform() => _sidePresentation?.GlobalTransform ?? GlobalTransform;
@@ -46,6 +47,7 @@ public partial class BattlePaperDoll
 
     public void reset_presentation()
     {
+        set_queue_travel_mode("idle");
         EndContactPoseHold();
         _actionTween?.Kill();
         _heldAttackTween = null;
@@ -62,6 +64,7 @@ public partial class BattlePaperDoll
 
     private void ResetSideInk()
     {
+        ResetQueueAvatar();
         clear_sword_idle();
         _battleSword=null;
         _actionTween?.Kill();
@@ -143,7 +146,7 @@ public partial class BattlePaperDoll
         // The legacy shadow is in display units; register it to the new native art units.
         if (GetNodeOrNull<Polygon2D>("InkShadow") is { } shadow) shadow.Scale = Vector2.One * SideInkReferenceHeight / 348f;
         Name = "BattlePaperDoll";
-        ConfigureSwordCombatPresentation(data);
+        if (!MatchesQueueAvatar(data) || !ConfigureQueueAvatar(data)) ConfigureSwordCombatPresentation(data);
         return true;
     }
 
@@ -177,6 +180,7 @@ public partial class BattlePaperDoll
         if (_portrait is not null) { _portrait.Texture = SideIdleTexture(); _portrait.Modulate = Colors.White; }
         if (_sideIdle is not null) _sideIdle.Visible = false;
         UpdateHeldSword();
+        UpdateQueueAvatar(0);
     }
 
     private void ProcessSideInkPose(float delta)
@@ -223,8 +227,10 @@ public partial class BattlePaperDoll
             var shakeAge = .22f - _contactAccent;
             _sidePresentation.Position = _contactAccent <= 0 ? Vector2.Zero
                 : new Vector2(Mathf.Sin(shakeAge * 155), Mathf.Cos(shakeAge * 187) * .45f) * (16 * _contactShake * Mathf.Pow(_contactAccent / .22f, 2));
+            _sidePresentation.Position += QueueAvatarPoseOffset();
         }
         UpdateHeldSword();
+        UpdateQueueAvatar(delta);
     }
 
     public void play_cast(Vector2 direction)

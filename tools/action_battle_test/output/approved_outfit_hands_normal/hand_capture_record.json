@@ -1,0 +1,3157 @@
+{
+	"hands": [
+		{
+			"hand_layer": {
+				"assets": {
+					"far_fist": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_hands_20261105/far_fist.png",
+						"sha256": "e3d56a1b2a6efd0a757b8fc7447b54e6cb4a6be62868235972d864557a3bcac5"
+					},
+					"far_open": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_hands_20261105/far_open.png",
+						"sha256": "a4d8ea601f8029117eb2495cf24adfa55a38a7cf61a7c0b0566060c575f34058"
+					},
+					"near_fist": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_hands_20261105/near_fist.png",
+						"sha256": "7e90a1a8c4c8965f7873a55e2cf2f6944118f3d462bb67c3c6c307acf1ba6af7"
+					},
+					"near_grip": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_hands_20261105/near_grip.png",
+						"sha256": "c4f439ce4fdd5707bd97ecc307b7d1d3a17eb126ee51d1f99ee15d03966b1d5a"
+					},
+					"near_open": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_hands_20261105/near_open.png",
+						"sha256": "c878ce60ddfb77994a55e91b2657c8b018b6efc88743dbdd67c571dc16b91bb3"
+					}
+				},
+				"clothing": "original sleeve/cuff pixels; old skin only erased beyond measured oblique cuff",
+				"distinct_near_far_images": true,
+				"errors": [],
+				"hands": {
+					"far": {
+						"anatomy": "left palm facing camera",
+						"asset": "far_open",
+						"registration": {
+							"cuff_exit_source_px": [
+								627.299987792969,
+								458.100006103516
+							],
+							"palm_width_px": 380.0,
+							"rotation": 1.01408501068619,
+							"scale": 0.00973684210526316,
+							"target_palm_width": 3.7,
+							"wrist_px": [
+								621.0,
+								1066.0
+							]
+						},
+						"rigid_wrist_mount": true,
+						"style": "open",
+						"visible": false
+					},
+					"near": {
+						"anatomy": "right hand back facing camera",
+						"asset": "near_open",
+						"registration": {
+							"cuff_exit_source_px": [
+								627.299987792969,
+								458.100006103516
+							],
+							"palm_width_px": 400.0,
+							"rotation": 1.01408501068619,
+							"scale": 0.00925,
+							"target_palm_width": 3.7,
+							"wrist_px": [
+								631.0,
+								1086.0
+							]
+						},
+						"rigid_wrist_mount": true,
+						"style": "open",
+						"visible": true
+					}
+				},
+				"loaded": true,
+				"mount": "fixed hand Bone2D; one uniform image scale per pose; no finger warping",
+				"pose_override": "open",
+				"sword_preserved": "original v21 texture and legacy shader boundary; no generated replacement",
+				"sword_source_sha256": "dcc95466b3b9430131d73a4b2d99f89c1e5a8c64a25fd42f9c54bc3b37302721"
+			},
+			"runtime": {
+				"art": "yuxu_fullbody_v15 unchanged original PNGs",
+				"default_entry_modified": false,
+				"errors": [],
+				"loaded": true,
+				"skin": {
+					"acceleration_drive": 0.0,
+					"angles": "(0.0, 0.0, 0.0)",
+					"angular_velocity": "(0.0, 0.0, 0.0)",
+					"approved_crossing": {
+						"continuous_closed_mesh": true,
+						"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+						"extra_length_added": 0.0,
+						"front_load": 0.0,
+						"legacy_panels_hidden": true,
+						"limb_lengths_changed": false,
+						"mode": "one connected closed original cloth chart; independent front/rear control-chain inertia for internal overlap",
+						"native_chart": [
+							275,
+							310,
+							390,
+							1030
+						],
+						"new_artwork": false,
+						"rear_load": 0.0,
+						"rest_drawing_preserved": true,
+						"samples": 1,
+						"tip_horizontal_gap": 0.0,
+						"tip_order_changes": 0
+					},
+					"approved_fixed_legs": {
+						"base_art": "yuxu_fullbody_v15",
+						"both_sides_same_chart": true,
+						"calf": 29.0261077880859,
+						"foot": "independent sole-aware ankle pitch; original project IK",
+						"lift": 25.5227182388306,
+						"lift_ratio": 0.45,
+						"maximum_length_error": 0.0,
+						"ratio": 0.954004720713048,
+						"source_pose_lengths_copied": false,
+						"stride_half": 34.0302909851074,
+						"stride_ratio": 0.6,
+						"support_fraction": 0.44,
+						"thigh": 27.6910438537598,
+						"width_fit": {
+							"far": {
+								"boot_shaft": 1.1,
+								"calf": 1.18,
+								"full_foot": 1.0,
+								"hip_source_y": 760.0,
+								"root_trim_source_y": 720.0,
+								"row_samples": [
+									{
+										"source_y": 660.0,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 674.821428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 689.642857142857,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 704.464285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 719.285714285714,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 734.107142857143,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 748.928571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 763.75,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 778.571428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 793.392857142857,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 808.214285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 823.035714285714,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 837.857142857143,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 852.678571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 867.5,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 882.321428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 897.142857142857,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 911.964285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 926.785714285714,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 941.607142857143,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 956.428571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 971.25,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 986.071428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1000.89285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1015.71428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1030.53571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1045.35714285714,
+										"width_factor": 1.23999533038955
+									},
+									{
+										"source_y": 1060.17857142857,
+										"width_factor": 1.23276016144952
+									},
+									{
+										"source_y": 1075.0,
+										"width_factor": 1.21638483965015
+									},
+									{
+										"source_y": 1089.82142857143,
+										"width_factor": 1.19770389370607
+									},
+									{
+										"source_y": 1104.64285714286,
+										"width_factor": 1.18355185233194
+									},
+									{
+										"source_y": 1119.46428571429,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1134.28571428571,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1149.10714285714,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1163.92857142857,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1178.75,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1193.57142857143,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1208.39285714286,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1223.21428571429,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1238.03571428571,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1252.85714285714,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1267.67857142857,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1282.5,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1297.32142857143,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1312.14285714286,
+										"width_factor": 1.17661968259739
+									},
+									{
+										"source_y": 1326.96428571429,
+										"width_factor": 1.16516354726822
+									},
+									{
+										"source_y": 1341.78571428571,
+										"width_factor": 1.14876998969386
+									},
+									{
+										"source_y": 1356.60714285714,
+										"width_factor": 1.1307599664898
+									},
+									{
+										"source_y": 1371.42857142857,
+										"width_factor": 1.11445443427151
+									},
+									{
+										"source_y": 1386.25,
+										"width_factor": 1.10317434965448
+									},
+									{
+										"source_y": 1401.07142857143,
+										"width_factor": 1.09804712840968
+									},
+									{
+										"source_y": 1415.89285714286,
+										"width_factor": 1.05246050627637
+									},
+									{
+										"source_y": 1430.71428571429,
+										"width_factor": 1.00371417508908
+									},
+									{
+										"source_y": 1445.53571428571,
+										"width_factor": 1.0
+									},
+									{
+										"source_y": 1460.35714285714,
+										"width_factor": 1.0
+									},
+									{
+										"source_y": 1475.17857142857,
+										"width_factor": 1.0
+									},
+									{
+										"source_y": 1490.0,
+										"width_factor": 1.0
+									}
+								],
+								"static_rest_transverse_only": true,
+								"thigh": 1.24,
+								"underrobe_overlap_source_pixels": 40.0
+							},
+							"near": {
+								"boot_shaft": 1.1,
+								"calf": 1.18,
+								"full_foot": 1.0,
+								"hip_source_y": 760.0,
+								"root_trim_source_y": 720.0,
+								"row_samples": [
+									{
+										"source_y": 660.0,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 674.821428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 689.642857142857,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 704.464285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 719.285714285714,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 734.107142857143,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 748.928571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 763.75,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 778.571428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 793.392857142857,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 808.214285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 823.035714285714,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 837.857142857143,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 852.678571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 867.5,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 882.321428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 897.142857142857,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 911.964285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 926.785714285714,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 941.607142857143,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 956.428571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 971.25,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 986.071428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1000.89285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1015.71428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1030.53571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1045.35714285714,
+										"width_factor": 1.23999533038955
+									},
+									{
+										"source_y": 1060.17857142857,
+										"width_factor": 1.23276016144952
+									},
+									{
+										"source_y": 1075.0,
+										"width_factor": 1.21638483965015
+									},
+									{
+										"source_y": 1089.82142857143,
+										"width_factor": 1.19770389370607
+									},
+									{
+										"source_y": 1104.64285714286,
+										"width_factor": 1.18355185233194
+									},
+									{
+										"source_y": 1119.46428571429,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1134.28571428571,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1149.10714285714,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1163.92857142857,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1178.75,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1193.57142857143,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1208.39285714286,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1223.21428571429,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1238.03571428571,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1252.85714285714,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1267.67857142857,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1282.5,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1297.32142857143,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1312.14285714286,
+										"width_factor": 1.17661968259739
+									},
+									{
+										"source_y": 1326.96428571429,
+										"width_factor": 1.16516354726822
+									},
+									{
+										"source_y": 1341.78571428571,
+										"width_factor": 1.14876998969386
+									},
+									{
+										"source_y": 1356.60714285714,
+										"width_factor": 1.1307599664898
+									},
+									{
+										"source_y": 1371.42857142857,
+										"width_factor": 1.11445443427151
+									},
+									{
+										"source_y": 1386.25,
+										"width_factor": 1.10317434965448
+									},
+									{
+										"source_y": 1401.07142857143,
+										"width_factor": 1.09804712840968
+									},
+									{
+										"source_y": 1415.89285714286,
+										"width_factor": 1.05246050627637
+									},
+									{
+										"source_y": 1430.71428571429,
+										"width_factor": 1.00371417508908
+									},
+									{
+										"source_y": 1445.53571428571,
+										"width_factor": 1.0
+									},
+									{
+										"source_y": 1460.35714285714,
+										"width_factor": 1.0
+									},
+									{
+										"source_y": 1475.17857142857,
+										"width_factor": 1.0
+									},
+									{
+										"source_y": 1490.0,
+										"width_factor": 1.0
+									}
+								],
+								"static_rest_transverse_only": true,
+								"thigh": 1.24,
+								"underrobe_overlap_source_pixels": 40.0
+							}
+						}
+					},
+					"approved_hands": {
+						"assets": {
+							"far_fist": {
+								"native_size": [
+									1254,
+									1254
+								],
+								"path": "res://art/approved_outfit_hands_20261105/far_fist.png",
+								"sha256": "e3d56a1b2a6efd0a757b8fc7447b54e6cb4a6be62868235972d864557a3bcac5"
+							},
+							"far_open": {
+								"native_size": [
+									1254,
+									1254
+								],
+								"path": "res://art/approved_outfit_hands_20261105/far_open.png",
+								"sha256": "a4d8ea601f8029117eb2495cf24adfa55a38a7cf61a7c0b0566060c575f34058"
+							},
+							"near_fist": {
+								"native_size": [
+									1254,
+									1254
+								],
+								"path": "res://art/approved_outfit_hands_20261105/near_fist.png",
+								"sha256": "7e90a1a8c4c8965f7873a55e2cf2f6944118f3d462bb67c3c6c307acf1ba6af7"
+							},
+							"near_grip": {
+								"native_size": [
+									1254,
+									1254
+								],
+								"path": "res://art/approved_outfit_hands_20261105/near_grip.png",
+								"sha256": "c4f439ce4fdd5707bd97ecc307b7d1d3a17eb126ee51d1f99ee15d03966b1d5a"
+							},
+							"near_open": {
+								"native_size": [
+									1254,
+									1254
+								],
+								"path": "res://art/approved_outfit_hands_20261105/near_open.png",
+								"sha256": "c878ce60ddfb77994a55e91b2657c8b018b6efc88743dbdd67c571dc16b91bb3"
+							}
+						},
+						"clothing": "original sleeve/cuff pixels; old skin only erased beyond measured oblique cuff",
+						"distinct_near_far_images": true,
+						"errors": [],
+						"hands": {
+							"far": {
+								"anatomy": "left palm facing camera",
+								"asset": "far_open",
+								"registration": {
+									"cuff_exit_source_px": [
+										627.299987792969,
+										458.100006103516
+									],
+									"palm_width_px": 380.0,
+									"rotation": 1.01408501068619,
+									"scale": 0.00973684210526316,
+									"target_palm_width": 3.7,
+									"wrist_px": [
+										621.0,
+										1066.0
+									]
+								},
+								"rigid_wrist_mount": true,
+								"style": "open",
+								"visible": false
+							},
+							"near": {
+								"anatomy": "right hand back facing camera",
+								"asset": "near_open",
+								"registration": {
+									"cuff_exit_source_px": [
+										627.299987792969,
+										458.100006103516
+									],
+									"palm_width_px": 400.0,
+									"rotation": 1.01408501068619,
+									"scale": 0.00925,
+									"target_palm_width": 3.7,
+									"wrist_px": [
+										631.0,
+										1086.0
+									]
+								},
+								"rigid_wrist_mount": true,
+								"style": "open",
+								"visible": true
+							}
+						},
+						"loaded": true,
+						"mount": "fixed hand Bone2D; one uniform image scale per pose; no finger warping",
+						"pose_override": "open",
+						"sword_preserved": "original v21 texture and legacy shader boundary; no generated replacement",
+						"sword_source_sha256": "dcc95466b3b9430131d73a4b2d99f89c1e5a8c64a25fd42f9c54bc3b37302721"
+					},
+					"arm_speed_correction": "(0.0, 0.0, 0.0)",
+					"arm_swing_scale": 1.45,
+					"continuous_mesh": false,
+					"front_bones_resting": true,
+					"gait_amount": 0.0,
+					"gait_cadence_hz": 1.7,
+					"gait_lift": 25.5227182388306,
+					"gait_phase": 0.0,
+					"gait_phase_advance_location": "update_cloth_once_per_clock",
+					"gait_speed_actual": 0.0,
+					"gait_speed_smoothed": 0.0,
+					"gait_stride_half": 34.0302909851074,
+					"gait_style": "slow",
+					"ground_shift": 0.0,
+					"hidden_leg_meshes": 0,
+					"leg_rendering": "original_full_legs_and_boots",
+					"locomotion_style": "ground",
+					"lowest_cloth_y": -13.109058380127,
+					"mode": "approved_continuous_closed_robe",
+					"original_split_panels": false,
+					"outline_samples": 0,
+					"pants_uv_clipped": false,
+					"rear_anchor": "(0.0, -56.25807)",
+					"rear_tip": "(0.0, -11.52688)",
+					"rear_wind": 0.0,
+					"reference_anchor_acceleration": "(0.0, 0.0)",
+					"reference_anchor_drive": 0.0,
+					"reference_anchor_reset_count": 0,
+					"reference_anchor_samples": 0,
+					"reference_arm_samples": {},
+					"reference_arm_stride_half": 18.5,
+					"reference_chest_angle": 0.0,
+					"reference_chest_counter": 0.0,
+					"reference_chest_target": 0.0,
+					"reference_chest_velocity": 0.0,
+					"reference_cloth_base": 0.0,
+					"reference_elastic_tail": true,
+					"reference_far_arm_pose": "source_zuobi_rear_swing",
+					"reference_far_hand_from_shoulder": "(-2.396836, 25.08971)",
+					"reference_front_angles": "(0.0, 0.0, 0.0)",
+					"reference_front_angular_velocity": "(0.0, 0.0, 0.0)",
+					"reference_front_tip_from_anchor": "(0.0, 44.73119)",
+					"reference_hip_loading": 0.0,
+					"reference_lean_inertia": 0.0,
+					"reference_measured_body_lean": -0.101321046847717,
+					"reference_near_arm_pose": "source_youbi_held_guard_pose_only",
+					"reference_near_hand_from_shoulder": "(5.502783, 23.92043)",
+					"reference_parameter_source": "local_verified_source_wrist_and_lean_with_project_ik_and_cloth_fit",
+					"reference_pelvis_drop": 0.0,
+					"reference_pose_active": true,
+					"reference_rear_tip_from_anchor": "(0.0, 44.73119)",
+					"reference_source_phase": 0.770833333333333,
+					"reference_target_wind_load": 0.0,
+					"reference_trailing_wind_load": 0.0,
+					"reset_count": 0,
+					"rest_hem_source_y": 1340.0,
+					"simulation_steps": 0,
+					"source_geometry_preserved": true,
+					"support_model": "single connected native cloth with front/rear delayed control chains",
+					"travel_drag": 0.0,
+					"visible_leg_meshes": 2,
+					"walk_profile": "guigu_guard_run_retargeted_to_project_bone_lengths",
+					"walk_support_fraction": 0.44
+				}
+			},
+			"side": "near",
+			"style": "open"
+		},
+		{
+			"hand_layer": {
+				"assets": {
+					"far_fist": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_hands_20261105/far_fist.png",
+						"sha256": "e3d56a1b2a6efd0a757b8fc7447b54e6cb4a6be62868235972d864557a3bcac5"
+					},
+					"far_open": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_hands_20261105/far_open.png",
+						"sha256": "a4d8ea601f8029117eb2495cf24adfa55a38a7cf61a7c0b0566060c575f34058"
+					},
+					"near_fist": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_hands_20261105/near_fist.png",
+						"sha256": "7e90a1a8c4c8965f7873a55e2cf2f6944118f3d462bb67c3c6c307acf1ba6af7"
+					},
+					"near_grip": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_hands_20261105/near_grip.png",
+						"sha256": "c4f439ce4fdd5707bd97ecc307b7d1d3a17eb126ee51d1f99ee15d03966b1d5a"
+					},
+					"near_open": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_hands_20261105/near_open.png",
+						"sha256": "c878ce60ddfb77994a55e91b2657c8b018b6efc88743dbdd67c571dc16b91bb3"
+					}
+				},
+				"clothing": "original sleeve/cuff pixels; old skin only erased beyond measured oblique cuff",
+				"distinct_near_far_images": true,
+				"errors": [],
+				"hands": {
+					"far": {
+						"anatomy": "left palm facing camera",
+						"asset": "far_open",
+						"registration": {
+							"cuff_exit_source_px": [
+								627.299987792969,
+								458.100006103516
+							],
+							"palm_width_px": 380.0,
+							"rotation": 1.01408501068619,
+							"scale": 0.00973684210526316,
+							"target_palm_width": 3.7,
+							"wrist_px": [
+								621.0,
+								1066.0
+							]
+						},
+						"rigid_wrist_mount": true,
+						"style": "open",
+						"visible": true
+					},
+					"near": {
+						"anatomy": "right hand back facing camera",
+						"asset": "near_open",
+						"registration": {
+							"cuff_exit_source_px": [
+								627.299987792969,
+								458.100006103516
+							],
+							"palm_width_px": 400.0,
+							"rotation": 1.01408501068619,
+							"scale": 0.00925,
+							"target_palm_width": 3.7,
+							"wrist_px": [
+								631.0,
+								1086.0
+							]
+						},
+						"rigid_wrist_mount": true,
+						"style": "open",
+						"visible": false
+					}
+				},
+				"loaded": true,
+				"mount": "fixed hand Bone2D; one uniform image scale per pose; no finger warping",
+				"pose_override": "open",
+				"sword_preserved": "original v21 texture and legacy shader boundary; no generated replacement",
+				"sword_source_sha256": "dcc95466b3b9430131d73a4b2d99f89c1e5a8c64a25fd42f9c54bc3b37302721"
+			},
+			"runtime": {
+				"art": "yuxu_fullbody_v15 unchanged original PNGs",
+				"default_entry_modified": false,
+				"errors": [],
+				"loaded": true,
+				"skin": {
+					"acceleration_drive": 0.0,
+					"angles": "(0.0, 0.0, 0.0)",
+					"angular_velocity": "(0.0, 0.0, 0.0)",
+					"approved_crossing": {
+						"continuous_closed_mesh": true,
+						"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+						"extra_length_added": 0.0,
+						"front_load": 0.0,
+						"legacy_panels_hidden": true,
+						"limb_lengths_changed": false,
+						"mode": "one connected closed original cloth chart; independent front/rear control-chain inertia for internal overlap",
+						"native_chart": [
+							275,
+							310,
+							390,
+							1030
+						],
+						"new_artwork": false,
+						"rear_load": 0.0,
+						"rest_drawing_preserved": true,
+						"samples": 1,
+						"tip_horizontal_gap": 0.0,
+						"tip_order_changes": 0
+					},
+					"approved_fixed_legs": {
+						"base_art": "yuxu_fullbody_v15",
+						"both_sides_same_chart": true,
+						"calf": 29.0261077880859,
+						"foot": "independent sole-aware ankle pitch; original project IK",
+						"lift": 25.5227182388306,
+						"lift_ratio": 0.45,
+						"maximum_length_error": 0.0,
+						"ratio": 0.954004720713048,
+						"source_pose_lengths_copied": false,
+						"stride_half": 34.0302909851074,
+						"stride_ratio": 0.6,
+						"support_fraction": 0.44,
+						"thigh": 27.6910438537598,
+						"width_fit": {
+							"far": {
+								"boot_shaft": 1.1,
+								"calf": 1.18,
+								"full_foot": 1.0,
+								"hip_source_y": 760.0,
+								"root_trim_source_y": 720.0,
+								"row_samples": [
+									{
+										"source_y": 660.0,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 674.821428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 689.642857142857,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 704.464285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 719.285714285714,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 734.107142857143,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 748.928571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 763.75,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 778.571428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 793.392857142857,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 808.214285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 823.035714285714,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 837.857142857143,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 852.678571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 867.5,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 882.321428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 897.142857142857,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 911.964285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 926.785714285714,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 941.607142857143,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 956.428571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 971.25,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 986.071428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1000.89285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1015.71428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1030.53571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1045.35714285714,
+										"width_factor": 1.23999533038955
+									},
+									{
+										"source_y": 1060.17857142857,
+										"width_factor": 1.23276016144952
+									},
+									{
+										"source_y": 1075.0,
+										"width_factor": 1.21638483965015
+									},
+									{
+										"source_y": 1089.82142857143,
+										"width_factor": 1.19770389370607
+									},
+									{
+										"source_y": 1104.64285714286,
+										"width_factor": 1.18355185233194
+									},
+									{
+										"source_y": 1119.46428571429,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1134.28571428571,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1149.10714285714,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1163.92857142857,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1178.75,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1193.57142857143,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1208.39285714286,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1223.21428571429,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1238.03571428571,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1252.85714285714,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1267.67857142857,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1282.5,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1297.32142857143,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1312.14285714286,
+										"width_factor": 1.17661968259739
+									},
+									{
+										"source_y": 1326.96428571429,
+										"width_factor": 1.16516354726822
+									},
+									{
+										"source_y": 1341.78571428571,
+										"width_factor": 1.14876998969386
+									},
+									{
+										"source_y": 1356.60714285714,
+										"width_factor": 1.1307599664898
+									},
+									{
+										"source_y": 1371.42857142857,
+										"width_factor": 1.11445443427151
+									},
+									{
+										"source_y": 1386.25,
+										"width_factor": 1.10317434965448
+									},
+									{
+										"source_y": 1401.07142857143,
+										"width_factor": 1.09804712840968
+									},
+									{
+										"source_y": 1415.89285714286,
+										"width_factor": 1.05246050627637
+									},
+									{
+										"source_y": 1430.71428571429,
+										"width_factor": 1.00371417508908
+									},
+									{
+										"source_y": 1445.53571428571,
+										"width_factor": 1.0
+									},
+									{
+										"source_y": 1460.35714285714,
+										"width_factor": 1.0
+									},
+									{
+										"source_y": 1475.17857142857,
+										"width_factor": 1.0
+									},
+									{
+										"source_y": 1490.0,
+										"width_factor": 1.0
+									}
+								],
+								"static_rest_transverse_only": true,
+								"thigh": 1.24,
+								"underrobe_overlap_source_pixels": 40.0
+							},
+							"near": {
+								"boot_shaft": 1.1,
+								"calf": 1.18,
+								"full_foot": 1.0,
+								"hip_source_y": 760.0,
+								"root_trim_source_y": 720.0,
+								"row_samples": [
+									{
+										"source_y": 660.0,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 674.821428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 689.642857142857,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 704.464285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 719.285714285714,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 734.107142857143,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 748.928571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 763.75,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 778.571428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 793.392857142857,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 808.214285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 823.035714285714,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 837.857142857143,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 852.678571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 867.5,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 882.321428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 897.142857142857,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 911.964285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 926.785714285714,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 941.607142857143,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 956.428571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 971.25,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 986.071428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1000.89285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1015.71428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1030.53571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1045.35714285714,
+										"width_factor": 1.23999533038955
+									},
+									{
+										"source_y": 1060.17857142857,
+										"width_factor": 1.23276016144952
+									},
+									{
+										"source_y": 1075.0,
+										"width_factor": 1.21638483965015
+									},
+									{
+										"source_y": 1089.82142857143,
+										"width_factor": 1.19770389370607
+									},
+									{
+										"source_y": 1104.64285714286,
+										"width_factor": 1.18355185233194
+									},
+									{
+										"source_y": 1119.46428571429,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1134.28571428571,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1149.10714285714,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1163.92857142857,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1178.75,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1193.57142857143,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1208.39285714286,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1223.21428571429,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1238.03571428571,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1252.85714285714,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1267.67857142857,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1282.5,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1297.32142857143,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1312.14285714286,
+										"width_factor": 1.17661968259739
+									},
+									{
+										"source_y": 1326.96428571429,
+										"width_factor": 1.16516354726822
+									},
+									{
+										"source_y": 1341.78571428571,
+										"width_factor": 1.14876998969386
+									},
+									{
+										"source_y": 1356.60714285714,
+										"width_factor": 1.1307599664898
+									},
+									{
+										"source_y": 1371.42857142857,
+										"width_factor": 1.11445443427151
+									},
+									{
+										"source_y": 1386.25,
+										"width_factor": 1.10317434965448
+									},
+									{
+										"source_y": 1401.07142857143,
+										"width_factor": 1.09804712840968
+									},
+									{
+										"source_y": 1415.89285714286,
+										"width_factor": 1.05246050627637
+									},
+									{
+										"source_y": 1430.71428571429,
+										"width_factor": 1.00371417508908
+									},
+									{
+										"source_y": 1445.53571428571,
+										"width_factor": 1.0
+									},
+									{
+										"source_y": 1460.35714285714,
+										"width_factor": 1.0
+									},
+									{
+										"source_y": 1475.17857142857,
+										"width_factor": 1.0
+									},
+									{
+										"source_y": 1490.0,
+										"width_factor": 1.0
+									}
+								],
+								"static_rest_transverse_only": true,
+								"thigh": 1.24,
+								"underrobe_overlap_source_pixels": 40.0
+							}
+						}
+					},
+					"approved_hands": {
+						"assets": {
+							"far_fist": {
+								"native_size": [
+									1254,
+									1254
+								],
+								"path": "res://art/approved_outfit_hands_20261105/far_fist.png",
+								"sha256": "e3d56a1b2a6efd0a757b8fc7447b54e6cb4a6be62868235972d864557a3bcac5"
+							},
+							"far_open": {
+								"native_size": [
+									1254,
+									1254
+								],
+								"path": "res://art/approved_outfit_hands_20261105/far_open.png",
+								"sha256": "a4d8ea601f8029117eb2495cf24adfa55a38a7cf61a7c0b0566060c575f34058"
+							},
+							"near_fist": {
+								"native_size": [
+									1254,
+									1254
+								],
+								"path": "res://art/approved_outfit_hands_20261105/near_fist.png",
+								"sha256": "7e90a1a8c4c8965f7873a55e2cf2f6944118f3d462bb67c3c6c307acf1ba6af7"
+							},
+							"near_grip": {
+								"native_size": [
+									1254,
+									1254
+								],
+								"path": "res://art/approved_outfit_hands_20261105/near_grip.png",
+								"sha256": "c4f439ce4fdd5707bd97ecc307b7d1d3a17eb126ee51d1f99ee15d03966b1d5a"
+							},
+							"near_open": {
+								"native_size": [
+									1254,
+									1254
+								],
+								"path": "res://art/approved_outfit_hands_20261105/near_open.png",
+								"sha256": "c878ce60ddfb77994a55e91b2657c8b018b6efc88743dbdd67c571dc16b91bb3"
+							}
+						},
+						"clothing": "original sleeve/cuff pixels; old skin only erased beyond measured oblique cuff",
+						"distinct_near_far_images": true,
+						"errors": [],
+						"hands": {
+							"far": {
+								"anatomy": "left palm facing camera",
+								"asset": "far_open",
+								"registration": {
+									"cuff_exit_source_px": [
+										627.299987792969,
+										458.100006103516
+									],
+									"palm_width_px": 380.0,
+									"rotation": 1.01408501068619,
+									"scale": 0.00973684210526316,
+									"target_palm_width": 3.7,
+									"wrist_px": [
+										621.0,
+										1066.0
+									]
+								},
+								"rigid_wrist_mount": true,
+								"style": "open",
+								"visible": true
+							},
+							"near": {
+								"anatomy": "right hand back facing camera",
+								"asset": "near_open",
+								"registration": {
+									"cuff_exit_source_px": [
+										627.299987792969,
+										458.100006103516
+									],
+									"palm_width_px": 400.0,
+									"rotation": 1.01408501068619,
+									"scale": 0.00925,
+									"target_palm_width": 3.7,
+									"wrist_px": [
+										631.0,
+										1086.0
+									]
+								},
+								"rigid_wrist_mount": true,
+								"style": "open",
+								"visible": false
+							}
+						},
+						"loaded": true,
+						"mount": "fixed hand Bone2D; one uniform image scale per pose; no finger warping",
+						"pose_override": "open",
+						"sword_preserved": "original v21 texture and legacy shader boundary; no generated replacement",
+						"sword_source_sha256": "dcc95466b3b9430131d73a4b2d99f89c1e5a8c64a25fd42f9c54bc3b37302721"
+					},
+					"arm_speed_correction": "(0.0, 0.0, 0.0)",
+					"arm_swing_scale": 1.45,
+					"continuous_mesh": false,
+					"front_bones_resting": true,
+					"gait_amount": 0.0,
+					"gait_cadence_hz": 1.7,
+					"gait_lift": 25.5227182388306,
+					"gait_phase": 0.0,
+					"gait_phase_advance_location": "update_cloth_once_per_clock",
+					"gait_speed_actual": 0.0,
+					"gait_speed_smoothed": 0.0,
+					"gait_stride_half": 34.0302909851074,
+					"gait_style": "slow",
+					"ground_shift": 0.0,
+					"hidden_leg_meshes": 0,
+					"leg_rendering": "original_full_legs_and_boots",
+					"locomotion_style": "ground",
+					"lowest_cloth_y": -13.109058380127,
+					"mode": "approved_continuous_closed_robe",
+					"original_split_panels": false,
+					"outline_samples": 0,
+					"pants_uv_clipped": false,
+					"rear_anchor": "(0.0, -56.25807)",
+					"rear_tip": "(0.0, -11.52688)",
+					"rear_wind": 0.0,
+					"reference_anchor_acceleration": "(0.0, 0.0)",
+					"reference_anchor_drive": 0.0,
+					"reference_anchor_reset_count": 0,
+					"reference_anchor_samples": 0,
+					"reference_arm_samples": {},
+					"reference_arm_stride_half": 18.5,
+					"reference_chest_angle": 0.0,
+					"reference_chest_counter": 0.0,
+					"reference_chest_target": 0.0,
+					"reference_chest_velocity": 0.0,
+					"reference_cloth_base": 0.0,
+					"reference_elastic_tail": true,
+					"reference_far_arm_pose": "source_zuobi_rear_swing",
+					"reference_far_hand_from_shoulder": "(-2.396836, 25.08971)",
+					"reference_front_angles": "(0.0, 0.0, 0.0)",
+					"reference_front_angular_velocity": "(0.0, 0.0, 0.0)",
+					"reference_front_tip_from_anchor": "(0.0, 44.73119)",
+					"reference_hip_loading": 0.0,
+					"reference_lean_inertia": 0.0,
+					"reference_measured_body_lean": -0.101321024979012,
+					"reference_near_arm_pose": "source_youbi_held_guard_pose_only",
+					"reference_near_hand_from_shoulder": "(5.502783, 23.92043)",
+					"reference_parameter_source": "local_verified_source_wrist_and_lean_with_project_ik_and_cloth_fit",
+					"reference_pelvis_drop": 0.0,
+					"reference_pose_active": true,
+					"reference_rear_tip_from_anchor": "(0.0, 44.73119)",
+					"reference_source_phase": 0.770833333333333,
+					"reference_target_wind_load": 0.0,
+					"reference_trailing_wind_load": 0.0,
+					"reset_count": 0,
+					"rest_hem_source_y": 1340.0,
+					"simulation_steps": 0,
+					"source_geometry_preserved": true,
+					"support_model": "single connected native cloth with front/rear delayed control chains",
+					"travel_drag": 0.0,
+					"visible_leg_meshes": 2,
+					"walk_profile": "guigu_guard_run_retargeted_to_project_bone_lengths",
+					"walk_support_fraction": 0.44
+				}
+			},
+			"side": "far",
+			"style": "open"
+		},
+		{
+			"hand_layer": {
+				"assets": {
+					"far_fist": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_hands_20261105/far_fist.png",
+						"sha256": "e3d56a1b2a6efd0a757b8fc7447b54e6cb4a6be62868235972d864557a3bcac5"
+					},
+					"far_open": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_hands_20261105/far_open.png",
+						"sha256": "a4d8ea601f8029117eb2495cf24adfa55a38a7cf61a7c0b0566060c575f34058"
+					},
+					"near_fist": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_hands_20261105/near_fist.png",
+						"sha256": "7e90a1a8c4c8965f7873a55e2cf2f6944118f3d462bb67c3c6c307acf1ba6af7"
+					},
+					"near_grip": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_hands_20261105/near_grip.png",
+						"sha256": "c4f439ce4fdd5707bd97ecc307b7d1d3a17eb126ee51d1f99ee15d03966b1d5a"
+					},
+					"near_open": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_hands_20261105/near_open.png",
+						"sha256": "c878ce60ddfb77994a55e91b2657c8b018b6efc88743dbdd67c571dc16b91bb3"
+					}
+				},
+				"clothing": "original sleeve/cuff pixels; old skin only erased beyond measured oblique cuff",
+				"distinct_near_far_images": true,
+				"errors": [],
+				"hands": {
+					"far": {
+						"anatomy": "left palm facing camera",
+						"asset": "far_fist",
+						"registration": {
+							"cuff_exit_source_px": [
+								627.299987792969,
+								458.100006103516
+							],
+							"palm_width_px": 430.0,
+							"rotation": 1.01408501068619,
+							"scale": 0.0086046511627907,
+							"target_palm_width": 3.7,
+							"wrist_px": [
+								627.0,
+								1004.0
+							]
+						},
+						"rigid_wrist_mount": true,
+						"style": "fist",
+						"visible": false
+					},
+					"near": {
+						"anatomy": "right hand back facing camera",
+						"asset": "near_fist",
+						"registration": {
+							"cuff_exit_source_px": [
+								627.299987792969,
+								458.100006103516
+							],
+							"palm_width_px": 400.0,
+							"rotation": 1.01408501068619,
+							"scale": 0.00925,
+							"target_palm_width": 3.7,
+							"wrist_px": [
+								626.0,
+								956.0
+							]
+						},
+						"rigid_wrist_mount": true,
+						"style": "fist",
+						"visible": true
+					}
+				},
+				"loaded": true,
+				"mount": "fixed hand Bone2D; one uniform image scale per pose; no finger warping",
+				"pose_override": "fist",
+				"sword_preserved": "original v21 texture and legacy shader boundary; no generated replacement",
+				"sword_source_sha256": "dcc95466b3b9430131d73a4b2d99f89c1e5a8c64a25fd42f9c54bc3b37302721"
+			},
+			"runtime": {
+				"art": "yuxu_fullbody_v15 unchanged original PNGs",
+				"default_entry_modified": false,
+				"errors": [],
+				"loaded": true,
+				"skin": {
+					"acceleration_drive": 0.0,
+					"angles": "(0.0, 0.0, 0.0)",
+					"angular_velocity": "(0.0, 0.0, 0.0)",
+					"approved_crossing": {
+						"continuous_closed_mesh": true,
+						"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+						"extra_length_added": 0.0,
+						"front_load": 0.0,
+						"legacy_panels_hidden": true,
+						"limb_lengths_changed": false,
+						"mode": "one connected closed original cloth chart; independent front/rear control-chain inertia for internal overlap",
+						"native_chart": [
+							275,
+							310,
+							390,
+							1030
+						],
+						"new_artwork": false,
+						"rear_load": 0.0,
+						"rest_drawing_preserved": true,
+						"samples": 1,
+						"tip_horizontal_gap": 0.0,
+						"tip_order_changes": 0
+					},
+					"approved_fixed_legs": {
+						"base_art": "yuxu_fullbody_v15",
+						"both_sides_same_chart": true,
+						"calf": 29.0261077880859,
+						"foot": "independent sole-aware ankle pitch; original project IK",
+						"lift": 25.5227182388306,
+						"lift_ratio": 0.45,
+						"maximum_length_error": 0.0,
+						"ratio": 0.954004720713048,
+						"source_pose_lengths_copied": false,
+						"stride_half": 34.0302909851074,
+						"stride_ratio": 0.6,
+						"support_fraction": 0.44,
+						"thigh": 27.6910438537598,
+						"width_fit": {
+							"far": {
+								"boot_shaft": 1.1,
+								"calf": 1.18,
+								"full_foot": 1.0,
+								"hip_source_y": 760.0,
+								"root_trim_source_y": 720.0,
+								"row_samples": [
+									{
+										"source_y": 660.0,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 674.821428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 689.642857142857,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 704.464285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 719.285714285714,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 734.107142857143,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 748.928571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 763.75,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 778.571428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 793.392857142857,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 808.214285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 823.035714285714,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 837.857142857143,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 852.678571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 867.5,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 882.321428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 897.142857142857,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 911.964285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 926.785714285714,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 941.607142857143,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 956.428571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 971.25,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 986.071428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1000.89285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1015.71428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1030.53571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1045.35714285714,
+										"width_factor": 1.23999533038955
+									},
+									{
+										"source_y": 1060.17857142857,
+										"width_factor": 1.23276016144952
+									},
+									{
+										"source_y": 1075.0,
+										"width_factor": 1.21638483965015
+									},
+									{
+										"source_y": 1089.82142857143,
+										"width_factor": 1.19770389370607
+									},
+									{
+										"source_y": 1104.64285714286,
+										"width_factor": 1.18355185233194
+									},
+									{
+										"source_y": 1119.46428571429,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1134.28571428571,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1149.10714285714,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1163.92857142857,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1178.75,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1193.57142857143,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1208.39285714286,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1223.21428571429,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1238.03571428571,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1252.85714285714,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1267.67857142857,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1282.5,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1297.32142857143,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1312.14285714286,
+										"width_factor": 1.17661968259739
+									},
+									{
+										"source_y": 1326.96428571429,
+										"width_factor": 1.16516354726822
+									},
+									{
+										"source_y": 1341.78571428571,
+										"width_factor": 1.14876998969386
+									},
+									{
+										"source_y": 1356.60714285714,
+										"width_factor": 1.1307599664898
+									},
+									{
+										"source_y": 1371.42857142857,
+										"width_factor": 1.11445443427151
+									},
+									{
+										"source_y": 1386.25,
+										"width_factor": 1.10317434965448
+									},
+									{
+										"source_y": 1401.07142857143,
+										"width_factor": 1.09804712840968
+									},
+									{
+										"source_y": 1415.89285714286,
+										"width_factor": 1.05246050627637
+									},
+									{
+										"source_y": 1430.71428571429,
+										"width_factor": 1.00371417508908
+									},
+									{
+										"source_y": 1445.53571428571,
+										"width_factor": 1.0
+									},
+									{
+										"source_y": 1460.35714285714,
+										"width_factor": 1.0
+									},
+									{
+										"source_y": 1475.17857142857,
+										"width_factor": 1.0
+									},
+									{
+										"source_y": 1490.0,
+										"width_factor": 1.0
+									}
+								],
+								"static_rest_transverse_only": true,
+								"thigh": 1.24,
+								"underrobe_overlap_source_pixels": 40.0
+							},
+							"near": {
+								"boot_shaft": 1.1,
+								"calf": 1.18,
+								"full_foot": 1.0,
+								"hip_source_y": 760.0,
+								"root_trim_source_y": 720.0,
+								"row_samples": [
+									{
+										"source_y": 660.0,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 674.821428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 689.642857142857,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 704.464285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 719.285714285714,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 734.107142857143,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 748.928571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 763.75,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 778.571428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 793.392857142857,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 808.214285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 823.035714285714,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 837.857142857143,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 852.678571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 867.5,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 882.321428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 897.142857142857,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 911.964285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 926.785714285714,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 941.607142857143,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 956.428571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 971.25,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 986.071428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1000.89285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1015.71428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1030.53571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1045.35714285714,
+										"width_factor": 1.23999533038955
+									},
+									{
+										"source_y": 1060.17857142857,
+										"width_factor": 1.23276016144952
+									},
+									{
+										"source_y": 1075.0,
+										"width_factor": 1.21638483965015
+									},
+									{
+										"source_y": 1089.82142857143,
+										"width_factor": 1.19770389370607
+									},
+									{
+										"source_y": 1104.64285714286,
+										"width_factor": 1.18355185233194
+									},
+									{
+										"source_y": 1119.46428571429,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1134.28571428571,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1149.10714285714,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1163.92857142857,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1178.75,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1193.57142857143,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1208.39285714286,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1223.21428571429,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1238.03571428571,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1252.85714285714,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1267.67857142857,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1282.5,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1297.32142857143,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1312.14285714286,
+										"width_factor": 1.17661968259739
+									},
+									{
+										"source_y": 1326.96428571429,
+										"width_factor": 1.16516354726822
+									},
+									{
+										"source_y": 1341.78571428571,
+										"width_factor": 1.14876998969386
+									},
+									{
+										"source_y": 1356.60714285714,
+										"width_factor": 1.1307599664898
+									},
+									{
+										"source_y": 1371.42857142857,
+										"width_factor": 1.11445443427151
+									},
+									{
+										"source_y": 1386.25,
+										"width_factor": 1.10317434965448
+									},
+									{
+										"source_y": 1401.07142857143,
+										"width_factor": 1.09804712840968
+									},
+									{
+										"source_y": 1415.89285714286,
+										"width_factor": 1.05246050627637
+									},
+									{
+										"source_y": 1430.71428571429,
+										"width_factor": 1.00371417508908
+									},
+									{
+										"source_y": 1445.53571428571,
+										"width_factor": 1.0
+									},
+									{
+										"source_y": 1460.35714285714,
+										"width_factor": 1.0
+									},
+									{
+										"source_y": 1475.17857142857,
+										"width_factor": 1.0
+									},
+									{
+										"source_y": 1490.0,
+										"width_factor": 1.0
+									}
+								],
+								"static_rest_transverse_only": true,
+								"thigh": 1.24,
+								"underrobe_overlap_source_pixels": 40.0
+							}
+						}
+					},
+					"approved_hands": {
+						"assets": {
+							"far_fist": {
+								"native_size": [
+									1254,
+									1254
+								],
+								"path": "res://art/approved_outfit_hands_20261105/far_fist.png",
+								"sha256": "e3d56a1b2a6efd0a757b8fc7447b54e6cb4a6be62868235972d864557a3bcac5"
+							},
+							"far_open": {
+								"native_size": [
+									1254,
+									1254
+								],
+								"path": "res://art/approved_outfit_hands_20261105/far_open.png",
+								"sha256": "a4d8ea601f8029117eb2495cf24adfa55a38a7cf61a7c0b0566060c575f34058"
+							},
+							"near_fist": {
+								"native_size": [
+									1254,
+									1254
+								],
+								"path": "res://art/approved_outfit_hands_20261105/near_fist.png",
+								"sha256": "7e90a1a8c4c8965f7873a55e2cf2f6944118f3d462bb67c3c6c307acf1ba6af7"
+							},
+							"near_grip": {
+								"native_size": [
+									1254,
+									1254
+								],
+								"path": "res://art/approved_outfit_hands_20261105/near_grip.png",
+								"sha256": "c4f439ce4fdd5707bd97ecc307b7d1d3a17eb126ee51d1f99ee15d03966b1d5a"
+							},
+							"near_open": {
+								"native_size": [
+									1254,
+									1254
+								],
+								"path": "res://art/approved_outfit_hands_20261105/near_open.png",
+								"sha256": "c878ce60ddfb77994a55e91b2657c8b018b6efc88743dbdd67c571dc16b91bb3"
+							}
+						},
+						"clothing": "original sleeve/cuff pixels; old skin only erased beyond measured oblique cuff",
+						"distinct_near_far_images": true,
+						"errors": [],
+						"hands": {
+							"far": {
+								"anatomy": "left palm facing camera",
+								"asset": "far_fist",
+								"registration": {
+									"cuff_exit_source_px": [
+										627.299987792969,
+										458.100006103516
+									],
+									"palm_width_px": 430.0,
+									"rotation": 1.01408501068619,
+									"scale": 0.0086046511627907,
+									"target_palm_width": 3.7,
+									"wrist_px": [
+										627.0,
+										1004.0
+									]
+								},
+								"rigid_wrist_mount": true,
+								"style": "fist",
+								"visible": false
+							},
+							"near": {
+								"anatomy": "right hand back facing camera",
+								"asset": "near_fist",
+								"registration": {
+									"cuff_exit_source_px": [
+										627.299987792969,
+										458.100006103516
+									],
+									"palm_width_px": 400.0,
+									"rotation": 1.01408501068619,
+									"scale": 0.00925,
+									"target_palm_width": 3.7,
+									"wrist_px": [
+										626.0,
+										956.0
+									]
+								},
+								"rigid_wrist_mount": true,
+								"style": "fist",
+								"visible": true
+							}
+						},
+						"loaded": true,
+						"mount": "fixed hand Bone2D; one uniform image scale per pose; no finger warping",
+						"pose_override": "fist",
+						"sword_preserved": "original v21 texture and legacy shader boundary; no generated replacement",
+						"sword_source_sha256": "dcc95466b3b9430131d73a4b2d99f89c1e5a8c64a25fd42f9c54bc3b37302721"
+					},
+					"arm_speed_correction": "(0.0, 0.0, 0.0)",
+					"arm_swing_scale": 1.45,
+					"continuous_mesh": false,
+					"front_bones_resting": true,
+					"gait_amount": 0.0,
+					"gait_cadence_hz": 1.7,
+					"gait_lift": 25.5227182388306,
+					"gait_phase": 0.0,
+					"gait_phase_advance_location": "update_cloth_once_per_clock",
+					"gait_speed_actual": 0.0,
+					"gait_speed_smoothed": 0.0,
+					"gait_stride_half": 34.0302909851074,
+					"gait_style": "slow",
+					"ground_shift": 0.0,
+					"hidden_leg_meshes": 0,
+					"leg_rendering": "original_full_legs_and_boots",
+					"locomotion_style": "ground",
+					"lowest_cloth_y": -13.109058380127,
+					"mode": "approved_continuous_closed_robe",
+					"original_split_panels": false,
+					"outline_samples": 0,
+					"pants_uv_clipped": false,
+					"rear_anchor": "(0.0, -56.25807)",
+					"rear_tip": "(0.0, -11.52688)",
+					"rear_wind": 0.0,
+					"reference_anchor_acceleration": "(0.0, 0.0)",
+					"reference_anchor_drive": 0.0,
+					"reference_anchor_reset_count": 0,
+					"reference_anchor_samples": 0,
+					"reference_arm_samples": {},
+					"reference_arm_stride_half": 18.5,
+					"reference_chest_angle": 0.0,
+					"reference_chest_counter": 0.0,
+					"reference_chest_target": 0.0,
+					"reference_chest_velocity": 0.0,
+					"reference_cloth_base": 0.0,
+					"reference_elastic_tail": true,
+					"reference_far_arm_pose": "source_zuobi_rear_swing",
+					"reference_far_hand_from_shoulder": "(-2.396836, 25.08971)",
+					"reference_front_angles": "(0.0, 0.0, 0.0)",
+					"reference_front_angular_velocity": "(0.0, 0.0, 0.0)",
+					"reference_front_tip_from_anchor": "(0.0, 44.73119)",
+					"reference_hip_loading": 0.0,
+					"reference_lean_inertia": 0.0,
+					"reference_measured_body_lean": -0.101321046847717,
+					"reference_near_arm_pose": "source_youbi_held_guard_pose_only",
+					"reference_near_hand_from_shoulder": "(5.502783, 23.92043)",
+					"reference_parameter_source": "local_verified_source_wrist_and_lean_with_project_ik_and_cloth_fit",
+					"reference_pelvis_drop": 0.0,
+					"reference_pose_active": true,
+					"reference_rear_tip_from_anchor": "(0.0, 44.73119)",
+					"reference_source_phase": 0.770833333333333,
+					"reference_target_wind_load": 0.0,
+					"reference_trailing_wind_load": 0.0,
+					"reset_count": 0,
+					"rest_hem_source_y": 1340.0,
+					"simulation_steps": 0,
+					"source_geometry_preserved": true,
+					"support_model": "single connected native cloth with front/rear delayed control chains",
+					"travel_drag": 0.0,
+					"visible_leg_meshes": 2,
+					"walk_profile": "guigu_guard_run_retargeted_to_project_bone_lengths",
+					"walk_support_fraction": 0.44
+				}
+			},
+			"side": "near",
+			"style": "fist"
+		},
+		{
+			"hand_layer": {
+				"assets": {
+					"far_fist": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_hands_20261105/far_fist.png",
+						"sha256": "e3d56a1b2a6efd0a757b8fc7447b54e6cb4a6be62868235972d864557a3bcac5"
+					},
+					"far_open": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_hands_20261105/far_open.png",
+						"sha256": "a4d8ea601f8029117eb2495cf24adfa55a38a7cf61a7c0b0566060c575f34058"
+					},
+					"near_fist": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_hands_20261105/near_fist.png",
+						"sha256": "7e90a1a8c4c8965f7873a55e2cf2f6944118f3d462bb67c3c6c307acf1ba6af7"
+					},
+					"near_grip": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_hands_20261105/near_grip.png",
+						"sha256": "c4f439ce4fdd5707bd97ecc307b7d1d3a17eb126ee51d1f99ee15d03966b1d5a"
+					},
+					"near_open": {
+						"native_size": [
+							1254,
+							1254
+						],
+						"path": "res://art/approved_outfit_hands_20261105/near_open.png",
+						"sha256": "c878ce60ddfb77994a55e91b2657c8b018b6efc88743dbdd67c571dc16b91bb3"
+					}
+				},
+				"clothing": "original sleeve/cuff pixels; old skin only erased beyond measured oblique cuff",
+				"distinct_near_far_images": true,
+				"errors": [],
+				"hands": {
+					"far": {
+						"anatomy": "left palm facing camera",
+						"asset": "far_fist",
+						"registration": {
+							"cuff_exit_source_px": [
+								627.299987792969,
+								458.100006103516
+							],
+							"palm_width_px": 430.0,
+							"rotation": 1.01408501068619,
+							"scale": 0.0086046511627907,
+							"target_palm_width": 3.7,
+							"wrist_px": [
+								627.0,
+								1004.0
+							]
+						},
+						"rigid_wrist_mount": true,
+						"style": "fist",
+						"visible": true
+					},
+					"near": {
+						"anatomy": "right hand back facing camera",
+						"asset": "near_fist",
+						"registration": {
+							"cuff_exit_source_px": [
+								627.299987792969,
+								458.100006103516
+							],
+							"palm_width_px": 400.0,
+							"rotation": 1.01408501068619,
+							"scale": 0.00925,
+							"target_palm_width": 3.7,
+							"wrist_px": [
+								626.0,
+								956.0
+							]
+						},
+						"rigid_wrist_mount": true,
+						"style": "fist",
+						"visible": false
+					}
+				},
+				"loaded": true,
+				"mount": "fixed hand Bone2D; one uniform image scale per pose; no finger warping",
+				"pose_override": "fist",
+				"sword_preserved": "original v21 texture and legacy shader boundary; no generated replacement",
+				"sword_source_sha256": "dcc95466b3b9430131d73a4b2d99f89c1e5a8c64a25fd42f9c54bc3b37302721"
+			},
+			"runtime": {
+				"art": "yuxu_fullbody_v15 unchanged original PNGs",
+				"default_entry_modified": false,
+				"errors": [],
+				"loaded": true,
+				"skin": {
+					"acceleration_drive": 0.0,
+					"angles": "(0.0, 0.0, 0.0)",
+					"angular_velocity": "(0.0, 0.0, 0.0)",
+					"approved_crossing": {
+						"continuous_closed_mesh": true,
+						"depth_order": "one fixed-depth garment; legacy split meshes hidden",
+						"extra_length_added": 0.0,
+						"front_load": 0.0,
+						"legacy_panels_hidden": true,
+						"limb_lengths_changed": false,
+						"mode": "one connected closed original cloth chart; independent front/rear control-chain inertia for internal overlap",
+						"native_chart": [
+							275,
+							310,
+							390,
+							1030
+						],
+						"new_artwork": false,
+						"rear_load": 0.0,
+						"rest_drawing_preserved": true,
+						"samples": 1,
+						"tip_horizontal_gap": 0.0,
+						"tip_order_changes": 0
+					},
+					"approved_fixed_legs": {
+						"base_art": "yuxu_fullbody_v15",
+						"both_sides_same_chart": true,
+						"calf": 29.0261077880859,
+						"foot": "independent sole-aware ankle pitch; original project IK",
+						"lift": 25.5227182388306,
+						"lift_ratio": 0.45,
+						"maximum_length_error": 0.0,
+						"ratio": 0.954004720713048,
+						"source_pose_lengths_copied": false,
+						"stride_half": 34.0302909851074,
+						"stride_ratio": 0.6,
+						"support_fraction": 0.44,
+						"thigh": 27.6910438537598,
+						"width_fit": {
+							"far": {
+								"boot_shaft": 1.1,
+								"calf": 1.18,
+								"full_foot": 1.0,
+								"hip_source_y": 760.0,
+								"root_trim_source_y": 720.0,
+								"row_samples": [
+									{
+										"source_y": 660.0,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 674.821428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 689.642857142857,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 704.464285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 719.285714285714,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 734.107142857143,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 748.928571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 763.75,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 778.571428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 793.392857142857,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 808.214285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 823.035714285714,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 837.857142857143,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 852.678571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 867.5,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 882.321428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 897.142857142857,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 911.964285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 926.785714285714,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 941.607142857143,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 956.428571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 971.25,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 986.071428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1000.89285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1015.71428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1030.53571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1045.35714285714,
+										"width_factor": 1.23999533038955
+									},
+									{
+										"source_y": 1060.17857142857,
+										"width_factor": 1.23276016144952
+									},
+									{
+										"source_y": 1075.0,
+										"width_factor": 1.21638483965015
+									},
+									{
+										"source_y": 1089.82142857143,
+										"width_factor": 1.19770389370607
+									},
+									{
+										"source_y": 1104.64285714286,
+										"width_factor": 1.18355185233194
+									},
+									{
+										"source_y": 1119.46428571429,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1134.28571428571,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1149.10714285714,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1163.92857142857,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1178.75,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1193.57142857143,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1208.39285714286,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1223.21428571429,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1238.03571428571,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1252.85714285714,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1267.67857142857,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1282.5,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1297.32142857143,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1312.14285714286,
+										"width_factor": 1.17661968259739
+									},
+									{
+										"source_y": 1326.96428571429,
+										"width_factor": 1.16516354726822
+									},
+									{
+										"source_y": 1341.78571428571,
+										"width_factor": 1.14876998969386
+									},
+									{
+										"source_y": 1356.60714285714,
+										"width_factor": 1.1307599664898
+									},
+									{
+										"source_y": 1371.42857142857,
+										"width_factor": 1.11445443427151
+									},
+									{
+										"source_y": 1386.25,
+										"width_factor": 1.10317434965448
+									},
+									{
+										"source_y": 1401.07142857143,
+										"width_factor": 1.09804712840968
+									},
+									{
+										"source_y": 1415.89285714286,
+										"width_factor": 1.05246050627637
+									},
+									{
+										"source_y": 1430.71428571429,
+										"width_factor": 1.00371417508908
+									},
+									{
+										"source_y": 1445.53571428571,
+										"width_factor": 1.0
+									},
+									{
+										"source_y": 1460.35714285714,
+										"width_factor": 1.0
+									},
+									{
+										"source_y": 1475.17857142857,
+										"width_factor": 1.0
+									},
+									{
+										"source_y": 1490.0,
+										"width_factor": 1.0
+									}
+								],
+								"static_rest_transverse_only": true,
+								"thigh": 1.24,
+								"underrobe_overlap_source_pixels": 40.0
+							},
+							"near": {
+								"boot_shaft": 1.1,
+								"calf": 1.18,
+								"full_foot": 1.0,
+								"hip_source_y": 760.0,
+								"root_trim_source_y": 720.0,
+								"row_samples": [
+									{
+										"source_y": 660.0,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 674.821428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 689.642857142857,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 704.464285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 719.285714285714,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 734.107142857143,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 748.928571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 763.75,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 778.571428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 793.392857142857,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 808.214285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 823.035714285714,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 837.857142857143,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 852.678571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 867.5,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 882.321428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 897.142857142857,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 911.964285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 926.785714285714,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 941.607142857143,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 956.428571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 971.25,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 986.071428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1000.89285714286,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1015.71428571429,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1030.53571428571,
+										"width_factor": 1.24
+									},
+									{
+										"source_y": 1045.35714285714,
+										"width_factor": 1.23999533038955
+									},
+									{
+										"source_y": 1060.17857142857,
+										"width_factor": 1.23276016144952
+									},
+									{
+										"source_y": 1075.0,
+										"width_factor": 1.21638483965015
+									},
+									{
+										"source_y": 1089.82142857143,
+										"width_factor": 1.19770389370607
+									},
+									{
+										"source_y": 1104.64285714286,
+										"width_factor": 1.18355185233194
+									},
+									{
+										"source_y": 1119.46428571429,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1134.28571428571,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1149.10714285714,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1163.92857142857,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1178.75,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1193.57142857143,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1208.39285714286,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1223.21428571429,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1238.03571428571,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1252.85714285714,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1267.67857142857,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1282.5,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1297.32142857143,
+										"width_factor": 1.18
+									},
+									{
+										"source_y": 1312.14285714286,
+										"width_factor": 1.17661968259739
+									},
+									{
+										"source_y": 1326.96428571429,
+										"width_factor": 1.16516354726822
+									},
+									{
+										"source_y": 1341.78571428571,
+										"width_factor": 1.14876998969386
+									},
+									{
+										"source_y": 1356.60714285714,
+										"width_factor": 1.1307599664898
+									},
+									{
+										"source_y": 1371.42857142857,
+										"width_factor": 1.11445443427151
+									},
+									{
+										"source_y": 1386.25,
+										"width_factor": 1.10317434965448
+									},
+									{
+										"source_y": 1401.07142857143,
+										"width_factor": 1.09804712840968
+									},
+									{
+										"source_y": 1415.89285714286,
+										"width_factor": 1.05246050627637
+									},
+									{
+										"source_y": 1430.71428571429,
+										"width_factor": 1.00371417508908
+									},
+									{
+										"source_y": 1445.53571428571,
+										"width_factor": 1.0
+									},
+									{
+										"source_y": 1460.35714285714,
+										"width_factor": 1.0
+									},
+									{
+										"source_y": 1475.17857142857,
+										"width_factor": 1.0
+									},
+									{
+										"source_y": 1490.0,
+										"width_factor": 1.0
+									}
+								],
+								"static_rest_transverse_only": true,
+								"thigh": 1.24,
+								"underrobe_overlap_source_pixels": 40.0
+							}
+						}
+					},
+					"approved_hands": {
+						"assets": {
+							"far_fist": {
+								"native_size": [
+									1254,
+									1254
+								],
+								"path": "res://art/approved_outfit_hands_20261105/far_fist.png",
+								"sha256": "e3d56a1b2a6efd0a757b8fc7447b54e6cb4a6be62868235972d864557a3bcac5"
+							},
+							"far_open": {
+								"native_size": [
+									1254,
+									1254
+								],
+								"path": "res://art/approved_outfit_hands_20261105/far_open.png",
+								"sha256": "a4d8ea601f8029117eb2495cf24adfa55a38a7cf61a7c0b0566060c575f34058"
+							},
+							"near_fist": {
+								"native_size": [
+									1254,
+									1254
+								],
+								"path": "res://art/approved_outfit_hands_20261105/near_fist.png",
+								"sha256": "7e90a1a8c4c8965f7873a55e2cf2f6944118f3d462bb67c3c6c307acf1ba6af7"
+							},
+							"near_grip": {
+								"native_size": [
+									1254,
+									1254
+								],
+								"path": "res://art/approved_outfit_hands_20261105/near_grip.png",
+								"sha256": "c4f439ce4fdd5707bd97ecc307b7d1d3a17eb126ee51d1f99ee15d03966b1d5a"
+							},
+							"near_open": {
+								"native_size": [
+									1254,
+									1254
+								],
+								"path": "res://art/approved_outfit_hands_20261105/near_open.png",
+								"sha256": "c878ce60ddfb77994a55e91b2657c8b018b6efc88743dbdd67c571dc16b91bb3"
+							}
+						},
+						"clothing": "original sleeve/cuff pixels; old skin only erased beyond measured oblique cuff",
+						"distinct_near_far_images": true,
+						"errors": [],
+						"hands": {
+							"far": {
+								"anatomy": "left palm facing camera",
+								"asset": "far_fist",
+								"registration": {
+									"cuff_exit_source_px": [
+										627.299987792969,
+										458.100006103516
+									],
+									"palm_width_px": 430.0,
+									"rotation": 1.01408501068619,
+									"scale": 0.0086046511627907,
+									"target_palm_width": 3.7,
+									"wrist_px": [
+										627.0,
+										1004.0
+									]
+								},
+								"rigid_wrist_mount": true,
+								"style": "fist",
+								"visible": true
+							},
+							"near": {
+								"anatomy": "right hand back facing camera",
+								"asset": "near_fist",
+								"registration": {
+									"cuff_exit_source_px": [
+										627.299987792969,
+										458.100006103516
+									],
+									"palm_width_px": 400.0,
+									"rotation": 1.01408501068619,
+									"scale": 0.00925,
+									"target_palm_width": 3.7,
+									"wrist_px": [
+										626.0,
+										956.0
+									]
+								},
+								"rigid_wrist_mount": true,
+								"style": "fist",
+								"visible": false
+							}
+						},
+						"loaded": true,
+						"mount": "fixed hand Bone2D; one uniform image scale per pose; no finger warping",
+						"pose_override": "fist",
+						"sword_preserved": "original v21 texture and legacy shader boundary; no generated replacement",
+						"sword_source_sha256": "dcc95466b3b9430131d73a4b2d99f89c1e5a8c64a25fd42f9c54bc3b37302721"
+					},
+					"arm_speed_correction": "(0.0, 0.0, 0.0)",
+					"arm_swing_scale": 1.45,
+					"continuous_mesh": false,
+					"front_bones_resting": true,
+					"gait_amount": 0.0,
+					"gait_cadence_hz": 1.7,
+					"gait_lift": 25.5227182388306,
+					"gait_phase": 0.0,
+					"gait_phase_advance_location": "update_cloth_once_per_clock",
+					"gait_speed_actual": 0.0,
+					"gait_speed_smoothed": 0.0,
+					"gait_stride_half": 34.0302909851074,
+					"gait_style": "slow",
+					"ground_shift": 0.0,
+					"hidden_leg_meshes": 0,
+					"leg_rendering": "original_full_legs_and_boots",
+					"locomotion_style": "ground",
+					"lowest_cloth_y": -13.109058380127,
+					"mode": "approved_continuous_closed_robe",
+					"original_split_panels": false,
+					"outline_samples": 0,
+					"pants_uv_clipped": false,
+					"rear_anchor": "(0.0, -56.25807)",
+					"rear_tip": "(0.0, -11.52688)",
+					"rear_wind": 0.0,
+					"reference_anchor_acceleration": "(0.0, 0.0)",
+					"reference_anchor_drive": 0.0,
+					"reference_anchor_reset_count": 0,
+					"reference_anchor_samples": 0,
+					"reference_arm_samples": {},
+					"reference_arm_stride_half": 18.5,
+					"reference_chest_angle": 0.0,
+					"reference_chest_counter": 0.0,
+					"reference_chest_target": 0.0,
+					"reference_chest_velocity": 0.0,
+					"reference_cloth_base": 0.0,
+					"reference_elastic_tail": true,
+					"reference_far_arm_pose": "source_zuobi_rear_swing",
+					"reference_far_hand_from_shoulder": "(-2.396836, 25.08971)",
+					"reference_front_angles": "(0.0, 0.0, 0.0)",
+					"reference_front_angular_velocity": "(0.0, 0.0, 0.0)",
+					"reference_front_tip_from_anchor": "(0.0, 44.73119)",
+					"reference_hip_loading": 0.0,
+					"reference_lean_inertia": 0.0,
+					"reference_measured_body_lean": -0.101321024979012,
+					"reference_near_arm_pose": "source_youbi_held_guard_pose_only",
+					"reference_near_hand_from_shoulder": "(5.502783, 23.92043)",
+					"reference_parameter_source": "local_verified_source_wrist_and_lean_with_project_ik_and_cloth_fit",
+					"reference_pelvis_drop": 0.0,
+					"reference_pose_active": true,
+					"reference_rear_tip_from_anchor": "(0.0, 44.73119)",
+					"reference_source_phase": 0.770833333333333,
+					"reference_target_wind_load": 0.0,
+					"reference_trailing_wind_load": 0.0,
+					"reset_count": 0,
+					"rest_hem_source_y": 1340.0,
+					"simulation_steps": 0,
+					"source_geometry_preserved": true,
+					"support_model": "single connected native cloth with front/rear delayed control chains",
+					"travel_drag": 0.0,
+					"visible_leg_meshes": 2,
+					"walk_profile": "guigu_guard_run_retargeted_to_project_bone_lengths",
+					"walk_support_fraction": 0.44
+				}
+			},
+			"side": "far",
+			"style": "fist"
+		}
+	],
+	"scope": "native rigid hand sprites on the same approved-arm bones and cuff mask as the live fitting scene"
+}

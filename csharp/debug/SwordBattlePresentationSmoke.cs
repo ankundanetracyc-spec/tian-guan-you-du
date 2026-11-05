@@ -46,7 +46,7 @@ public partial class SwordBattlePresentationSmoke : Node
             {
                 var snapshot=((Creature)unit).get_snapshot_data();snapshot.gender=0;
                 _snapshots[unit]=snapshot;
-                snapshot.active_skill_paths=new(["res://resources/activeskills/剑修基础/斩剑.tres"]);
+                snapshot.active_skill_paths=new() { "res://resources/activeskills/剑修基础/斩剑.tres" };
                 snapshot.combat_skill_slots_configured=false;Doll(unit).Configure(snapshot);Doll(unit).SetDisplayHeight(300);
                 unit.Set("precision",100);unit.Set("critical",0);unit.Set("dodge",0);unit.Set("max_health",1000);unit.Set("current_health",1000);
             }
@@ -70,7 +70,7 @@ public partial class SwordBattlePresentationSmoke : Node
             foreach(var unit in new[]{_actor,_target})
             {
                 var snapshot=_snapshots[unit];snapshot.gender=1;
-                snapshot.active_skill_paths=new(["res://resources/activeskills/剑修基础/斩剑.tres"]);
+                snapshot.active_skill_paths=new() { "res://resources/activeskills/剑修基础/斩剑.tres" };
                 snapshot.combat_skill_slots_configured=false;Doll(unit).Configure(snapshot);Doll(unit).SetDisplayHeight(300);
             }
             Check(Doll(_actor).has_sword_idle()&&Doll(_actor).GetNode<Sprite2D>("InkPresentation/Portrait").Texture.ResourcePath.StartsWith(BattleSwordArt.FemaleArtRoot),"女修正式快照使用女修持剑待机");
@@ -89,7 +89,7 @@ public partial class SwordBattlePresentationSmoke : Node
             foreach(var (shape,icon) in new[]{("细身","slender"),("宽展","broad"),("厚脊","spined")})
             {
                 var sample=ProcessForgingTrial.Clone(product);sample.Shape=shape;
-                var snapshot=new BattleEntityData{gender=gender,equipped_artifacts=new([ForgedArtifactInventory.Create(sample)])};
+                var snapshot=new BattleEntityData{gender=gender,equipped_artifacts=new() { ForgedArtifactInventory.Create(sample) }};
                 Doll(_actor).Configure(snapshot);
                 var sword=(Sprite2D)Doll(_actor).FindChild("ReplaceableSwordIcon",true,false);
                 var fingers=(Sprite2D)Doll(_actor).FindChild("RightHandNearFingers",true,false);

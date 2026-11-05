@@ -43,6 +43,15 @@ public partial class CultivationUI : Control
 	/// <summary>正式突破与测试入口均由主场景接管，避免面板持有另一套牌局状态。</summary>
 	public event Action<Character>? CondensationRequested;
 	public event Action<Character>? CondensationTestRequested;
+	private Func<bool>? _locationSessionAccess;
+	public void SetLocationSessionAccess(Func<bool> access) => _locationSessionAccess = access;
+	private bool has_location_session_access()
+	{
+		if (_locationSessionAccess?.Invoke() != false) return true;
+		if (_studyHint is not null) _studyHint.Text = "本期初学研习已结束。可返回地点安排后续修行。";
+		if (_autoRefinementFeedback is not null) _autoRefinementFeedback.Text = "本期初学研习已结束，请返回地点。";
+		return false;
+	}
 
 	public override void _Ready()
 	{
@@ -65,6 +74,7 @@ public partial class CultivationUI : Control
 	public void show_entity(GodotObject entity)
 	{
 		if (!GodotObject.IsInstanceValid(entity)) return;
+		_locationSessionAccess = null;
 		_yuanxiPanel?.Hide();
 		_target = entity;
 		_bodyReadOnly = false;
@@ -289,6 +299,8 @@ public partial class CultivationUI : Control
 		}
 		_bodyNodeLabels[part] = nodeLabels;
 		var reward = label("当前节点：尚无", 12); reward.AutowrapMode = TextServer.AutowrapMode.WordSmart; reward.Modulate = new Color(.35f, .28f, .20f, .82f); _bodyRewardLabels[part] = reward;
+		// 保留现有隐藏展示，但让标签随部位卡片销毁，避免静室退出后留下孤立节点。
+		reward.Hide(); box.AddChild(reward);
 		return card;
 	}
 
@@ -764,6 +776,7 @@ public partial class CultivationUI : Control
 
 	private void cultivate()
 	{
+		if (!has_location_session_access()) return;
 		if (_target is null) return;
 		var mode = _mode?.Selected ?? 0;
 		var wanted = mode == 0 ? (int)_strands!.Value : mode == 3 ? call("get_strands_until_next_realm").AsInt32() : 0;
@@ -774,6 +787,7 @@ public partial class CultivationUI : Control
 		_autoRefinementFeedback.Text = "";
 		play_transition("吐纳修行", $"灵力沿周天缓缓运转，预计耗时 {format_duration_hours(hours)}，消耗精力 {staminaCost:0.#} 点。", $"修炼结束，实得 {strands} 缕灵力。未满一缕的余数已散去。", () =>
 		{
+			if (!has_location_session_access()) return;
 			var outcome = mode is 0 or 3
 				? _target.Call("cultivate_with_world_stamina_for_strands", wanted).AsGodotDictionary()
 				: _target.Call("cultivate_with_world_stamina_for_hours", requestedHours).AsGodotDictionary();
@@ -795,7 +809,8 @@ public partial class CultivationUI : Control
 			if (chapter is null && (book.chapters.Count > 0 || student.has_learned_gongfa(book)))
 			{ _studyHint.Text = "全卷已研读"; _study.Text = "已读完"; _study.Disabled = true; refresh_room_study_requirements(null, null, null); return; }
 			// Match SecretBook's existing first-volume access; later volumes use chapter requirements.
-			var firstVolumeAccess = !student.has_learned_gongfa(book);
+			var firstVolumeAccess = !student.has_learned_gongfa(book) &&
+                !(student.entity_data is HumanData studentData && studentData.baishi_first_volume_path == book.ResourcePath);
 			var eligible = firstVolumeAccess || chapter is null || student.can_learn_gongfa_chapter(book, chapter);
 			refresh_room_study_requirements(student, book, chapter, firstVolumeAccess);
 			var hours = student.get_available_study_hours(24);
@@ -832,7 +847,7 @@ public partial class CultivationUI : Control
 	}
 	private GongfaResource? selected_study_book() => _studyBook is not null && _studyBook.Selected >= 0 && _studyBook.Selected < _studyCandidates.Count ? _studyCandidates[_studyBook.Selected] : null;
 
-	private void study(){if(_target is not Character reader || selected_study_book() is not { } book)return;var hours=reader.get_available_study_hours(24);if(hours<=0 || !reader.select_gongfa_for_study(book)){refresh();return;}var staminaCost=hours*WorldStaminaRules.StudyCostPerGameHour;play_transition("研读功法",$"研读 {format_duration_hours(hours)}，消耗精力 {staminaCost:0.#} 点。","研读结束。",()=>{reader.study_for_world_hours(hours);refresh();});}
+	private void study(){if(!has_location_session_access())return;if(_target is not Character reader || selected_study_book() is not { } book)return;var hours=reader.get_available_study_hours(24);if(hours<=0 || !reader.select_gongfa_for_study(book)){refresh();return;}var staminaCost=hours*WorldStaminaRules.StudyCostPerGameHour;play_transition("研读功法",$"研读 {format_duration_hours(hours)}，消耗精力 {staminaCost:0.#} 点。","研读结束。",()=>{if(has_location_session_access())reader.study_for_world_hours(hours);refresh();});}
 
     private void update_breakthrough()
 	{

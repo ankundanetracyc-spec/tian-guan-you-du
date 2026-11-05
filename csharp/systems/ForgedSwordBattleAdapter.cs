@@ -4,6 +4,19 @@ using System.Globalization;
 /// <summary>按成器快照能力构建运行态；无商品名、材料名或器形白名单。</summary>
 public static class ForgedSwordBattleAdapter
 {
+    // 只在人物解析真实普通剑招时绑定。仅有剑标签或其他器物的来源引用不能借用本剑。
+    public static ActiveSkillData BindHandheldSource(ActiveSkillData skill, ArtifactInstanceData? item)
+    {
+        if (item is not null && ForgedArtifactInventory.TryRead(item, out var sword)
+            && ForgedEquipmentLoadout.IsPhysicalAttack(skill) && skill.get_presentation_tags().Contains("剑")
+            && skill.artifact_instance_id.Length == 0 && skill.forged_source_instance_id.Length == 0
+            && skill.forged_weapon_instance_id.Length == 0 && !ArtifactSkillFactory.Key(skill).StartsWith("artifact:", StringComparison.Ordinal))
+        {
+            skill.forged_weapon_instance_id = sword.InstanceId;
+            skill.forged_equipment_description += $"\n用器：{sword.Name}，锋锐{sword.Sharpness}；本次忽略{sword.Sharpness}点物防。";
+        }
+        return skill;
+    }
     public static ProcessForgingTrial.Artifact? Read(GodotObject owner)
     {
         if (owner is Character c && c.get_equipped_forged_sword() is { } item && ForgedArtifactInventory.TryRead(item, out var s)) return s;
@@ -45,7 +58,8 @@ public static class ForgedSwordBattleAdapter
                 skill_type = damage > 0 ? ActiveSkillData.SkillType.ATTACK : ActiveSkillData.SkillType.BUFF,
                 target_type = damage > 0 ? 2 : 0, damage_type = "physical", base_damage = (float)damage,
                 energy_cost = 1, mana_cost = 1, forged_source_instance_id = item.instance_id, forged_spirit_cost = 1,
-                forged_flat_ignore = carrier == "summon" && damage > 0 ? s.Sharpness : 0,
+                forged_weapon_instance_id = damage > 0 ? item.instance_id : "",
+                forged_equipment_description = damage > 0 ? $"用器：{s.Name}，锋锐{s.Sharpness}；本次忽略{s.Sharpness}点物防。" : "",
                 description = $"体力1，法力1；施法期间临时占用灵识1，结束释放。物理伤害{damage:0.##}；自身护盾+{shield:0.##}。" };
             skill.tags.Add("剑");
             if (shield > 0) skill.special_effects.Add(new Godot.Collections.Dictionary { ["effect"] = "shield", ["formula"] = shield.ToString(CultureInfo.InvariantCulture) });

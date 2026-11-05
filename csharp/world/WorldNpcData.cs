@@ -38,6 +38,8 @@ public partial class WorldNpcData : Resource
     [Export] public string formal_identity = "";
     /// <summary>玉虚师承候选之间的稳定关联；不与私人关系分数合并。</summary>
     [Export] public bool is_yuxu_lineage_staff;
+    /// <summary>Temporary local lecture assignment; keeps the assigned job in town without freezing age.</summary>
+    [Export] public string public_lecture_event_id = "";
     [Export] public string sect_assigned_guide_npc_id = "";
     [Export] public string sect_teacher_npc_id = "";
     [Export] public Array<string> learned_gongfa_ids = [];

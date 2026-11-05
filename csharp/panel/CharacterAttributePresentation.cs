@@ -18,18 +18,21 @@ public static class CharacterAttributePresentation
         ["SocialRow"] = new("social", "参与往来、交易与外务事件。"),
         ["ManagementRow"] = new("management", "参与事务调度与经营事件。"),
         ["HealthRow"] = new("max_health", "生命归零时无法继续行动。"),
-        ["StaminaRow"] = new("max_stamina", "用于施展招式。\n每轮补给3点，休整回复2点，不超过上限。"),
-        ["ManaRow"] = new("max_mana", "用于术法等行动。\n跨轮保留，不自动回复。"),
-        ["MindRow"] = new("initiative_speed", "影响战斗中的出手频率。"),
+        ["StaminaRow"] = new("max_stamina", "用于施展招式。\n每回合补给3点，未用余额保留，不超过上限。\n休整占一个行动位并回复2点体力。"),
+        ["ManaRow"] = new("max_mana", "用于术法等行动。\n开战按有效容量初始化，不自动回复；只有明确效果可以恢复。"),
+        ["MindRow"] = new("initiative_speed", "决定行动条的推进速度。\n行动进度达到1000时结算当前行动。"),
         ["SpiritPerceptionRow"] = new("max_spirit_perception", "持续御使器体时占用灵识。\n收回、损毁或驱散后释放占用。"),
         ["PhysicalDefenseRow"] = new("physical_defense", "减轻受到的物理伤害。"),
-        ["PrecisionRow"] = new("precision", "影响攻击与技艺的命中判定。"),
-        ["DodgeRow"] = new("dodge", "影响规避判定。"),
+        ["PrecisionRow"] = new("precision", "影响参与命中判定的攻击与技艺；与目标身法对抗。"),
+        ["DodgeRow"] = new("dodge", "影响属性闪避判定；与来袭者精准对抗。"),
         ["CriticalRow"] = new("critical", "影响会心判定。"),
         ["CritResistRow"] = new("crit_resist", "抵抗敌方会心。"),
         ["CritDamageRow"] = new("crit_damage_mult", "会心触发时使用的伤害倍率。"),
         ["StaminaRegenRow"] = new("physical_damage_reduction", "减轻受到的物理伤害。"),
         ["ManaRegenRow"] = new("dun_speed", "影响大世界移动与撤退，不影响战斗行动条。"),
+        ["PhysicalReductionRow"] = new("physical_damage_reduction", "按比例减轻受到的物理伤害，与固定物理防御分别结算。"),
+        ["HealingReceivedRow"] = new("healing_received_bonus", "提高实际受到的治疗；不代表自动恢复生命。"),
+        ["TravelSpeedRow"] = new("dun_speed", "影响大世界行旅与撤退，不影响战斗行动条。"),
         ["LearningRow"] = new("learning", "影响秘籍研读的推进速度。"),
         ["CultivationRow"] = new("cultivation", "影响灵力积累速度。"),
         ["StrandsRow"] = new("spirit_strands", "修行积累，达到要求后可尝试突破。")
@@ -98,7 +101,8 @@ public static class CharacterAttributePresentation
         }
         var formula = expression + $"＝{N(value)}";
         var heading = $"当前值：{N(value)} 计算公式：{formula}";
-        if (field.Key == "physical_damage_reduction") heading = $"当前值：{N(value * 100)}% 计算公式：({expression})×100%＝{N(value * 100)}%";
+        if (field.Key is "physical_damage_reduction" or "healing_received_bonus") heading = $"当前值：{N(value * 100)}% 计算公式：({expression})×100%＝{N(value * 100)}%";
+        if (field.Key == "crit_damage_mult") heading = $"当前值：{N(value)}倍 计算公式：{formula}\n实际会心结算还读取双方属性。";
         if (field.Key is "learning" or "cultivation") heading = $"当前值：{N(value)}/小时 计算公式：{formula}";
         if (field.Key is "max_health" or "max_stamina" or "max_mana" or "max_spirit_perception")
         {

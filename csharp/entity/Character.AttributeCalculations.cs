@@ -8,7 +8,7 @@ public partial class Character
     // Presentation-only, rebuilt with attributes, never serialized to the save.
     public sealed record AttributeCalculation(string Expression, float Result, IReadOnlyList<string> Sources);
     private readonly Dictionary<string, AttributeCalculation> _attributeCalculations = new();
-    private static readonly string[] CalculationKeys = ["physique", "intelligence", "soul", "fortune", "comprehension", "max_health", "initiative_speed", "precision", "dodge", "critical", "crit_resist", "physical_defense", "physical_damage_reduction", "crit_damage_mult", "max_spirit_perception", "sword_proficiency", "blade_proficiency", "spear_proficiency", "body_proficiency", "magic_proficiency", "forging_proficiency", "talisman_proficiency", "formation_proficiency", "alchemy_proficiency"];
+    private static readonly string[] CalculationKeys = ["physique", "intelligence", "soul", "fortune", "comprehension", "max_health", "initiative_speed", "precision", "dodge", "critical", "crit_resist", "physical_defense", "physical_damage_reduction", "healing_received_bonus", "crit_damage_mult", "max_spirit_perception", "sword_proficiency", "blade_proficiency", "spear_proficiency", "body_proficiency", "magic_proficiency", "forging_proficiency", "talisman_proficiency", "formation_proficiency", "alchemy_proficiency"];
     internal static string AttributeNumber(float value) => value.ToString("0.######", System.Globalization.CultureInfo.InvariantCulture);
     private float CalculationValue(string key) => entity_data!.Get(key).AsSingle();
     public AttributeCalculation? GetAttributeCalculation(string key)

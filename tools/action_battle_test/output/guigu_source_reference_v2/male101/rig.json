@@ -1,0 +1,6293 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "path": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\guigubahuang_Data\\resources.assets",
+    "sizeBytes": 1764255120,
+    "sha256": "0d1e14ae4a2719b91055e201fadf294b600f730e5bfbba14f4806b7619ec3ced",
+    "unityVersion": "2020.3f1c1"
+  },
+  "rigRootPath": "/HumanRootMan/Root",
+  "rigRootGameObjectPathId": 120384,
+  "assembly": [
+    {
+      "sourceResource": "battle/human/humanrootman (Root child)",
+      "sourceGameObjectPathId": 120384,
+      "targetPath": "/HumanRootMan/Root",
+      "parentPath": null,
+      "rootNameOverride": null
+    },
+    {
+      "sourceResource": "battle/human/man/body/101/yifu",
+      "sourceGameObjectPathId": 129435,
+      "targetPath": "/HumanRootMan/Root/Body/yifu/yifu",
+      "parentPath": "/HumanRootMan/Root/Body/yifu",
+      "rootNameOverride": null
+    },
+    {
+      "sourceResource": "battle/human/humanbodyman child zuobi",
+      "sourceGameObjectPathId": 111395,
+      "targetPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1",
+      "rootNameOverride": null
+    },
+    {
+      "sourceResource": "battle/human/humanbodyman child youbi",
+      "sourceGameObjectPathId": 143655,
+      "targetPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1",
+      "rootNameOverride": null
+    },
+    {
+      "sourceResource": "battle/human/humanbodyman child beiqian",
+      "sourceGameObjectPathId": 384627,
+      "targetPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/beiqian",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1",
+      "rootNameOverride": null
+    },
+    {
+      "sourceResource": "battle/human/humanbodyman child beihou",
+      "sourceGameObjectPathId": 127289,
+      "targetPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/beihou",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1",
+      "rootNameOverride": null
+    },
+    {
+      "sourceResource": "battle/human/humanbodyman child tou",
+      "sourceGameObjectPathId": 403938,
+      "targetPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1",
+      "rootNameOverride": null
+    },
+    {
+      "sourceResource": "battle/human/man/body/101/zuobi",
+      "sourceGameObjectPathId": 373383,
+      "targetPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi/zuobi",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi",
+      "rootNameOverride": null
+    },
+    {
+      "sourceResource": "battle/human/man/body/101/youbi",
+      "sourceGameObjectPathId": 391256,
+      "targetPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi",
+      "rootNameOverride": null
+    },
+    {
+      "sourceResource": "battle/human/man/body/101/tui",
+      "sourceGameObjectPathId": 150497,
+      "targetPath": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui",
+      "parentPath": "/HumanRootMan/Root/Body/Foot/zuotui",
+      "rootNameOverride": "zuotui"
+    },
+    {
+      "sourceResource": "battle/human/man/body/101/tui",
+      "sourceGameObjectPathId": 150497,
+      "targetPath": "/HumanRootMan/Root/Body/Foot/youtui/youtui",
+      "parentPath": "/HumanRootMan/Root/Body/Foot/youtui",
+      "rootNameOverride": "youtui"
+    },
+    {
+      "sourceResource": "battle/human/man/head/101",
+      "sourceGameObjectPathId": 466843,
+      "targetPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/101(Clone)",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou",
+      "rootNameOverride": null
+    },
+    {
+      "sourceResource": "battle/human/man/hair/101",
+      "sourceGameObjectPathId": 396215,
+      "targetPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa",
+      "rootNameOverride": null
+    }
+  ],
+  "assemblyNote": "Original separately stored male prefabs instantiated into explicit male attachment slots. Not an originally preassembled 101 instance.",
+  "coordinateSystem": {
+    "position": "Unity local units; X-right, Y-up, Z-depth",
+    "pixelsPerUnit": 100.0,
+    "rotation": "Unity quaternion XYZW"
+  },
+  "nodes": [
+    {
+      "pathId": 120384,
+      "transformPathId": 537154,
+      "name": "Root",
+      "path": "/HumanRootMan/Root",
+      "parentPath": null,
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 354346,
+      "transformPathId": 662634,
+      "name": "Body",
+      "path": "/HumanRootMan/Root/Body",
+      "parentPath": "/HumanRootMan/Root",
+      "components": [
+        "Transform",
+        "Animator"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          -0.0,
+          -0.0,
+          -0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 236257,
+      "transformPathId": 616193,
+      "name": "yifu",
+      "path": "/HumanRootMan/Root/Body/yifu",
+      "parentPath": "/HumanRootMan/Root/Body",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.0,
+          0.5649999976158142,
+          0.03999999910593033
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.5649999976158142
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.03999999910593033
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.5649999976158142
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.03999999910593033
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 425796,
+      "transformPathId": 761503,
+      "name": "Foot",
+      "path": "/HumanRootMan/Root/Body/Foot",
+      "parentPath": "/HumanRootMan/Root/Body",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          -0.0,
+          -0.0,
+          -0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 236245,
+      "transformPathId": 616181,
+      "name": "zuotui",
+      "path": "/HumanRootMan/Root/Body/Foot/zuotui",
+      "parentPath": "/HumanRootMan/Root/Body/Foot",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.024000000208616257,
+          0.30000001192092896,
+          0.07000000029802322
+        ],
+        "rotationQuaternionXYZW": [
+          -0.0,
+          -0.0,
+          -0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.024000000208616257
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.30000001192092896
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.07000000029802322
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.024000000208616257
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.30000001192092896
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.07000000029802322
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 236248,
+      "transformPathId": 616184,
+      "name": "youtui",
+      "path": "/HumanRootMan/Root/Body/Foot/youtui",
+      "parentPath": "/HumanRootMan/Root/Body/Foot",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.0,
+          0.28999999165534973,
+          0.05999999865889549
+        ],
+        "rotationQuaternionXYZW": [
+          -0.0,
+          -0.0,
+          -0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.28999999165534973
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.05999999865889549
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.28999999165534973
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.05999999865889549
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 268572,
+      "transformPathId": 714922,
+      "name": "Shadow",
+      "path": "/HumanRootMan/Root/Body/Shadow",
+      "parentPath": "/HumanRootMan/Root/Body",
+      "components": [
+        "Transform",
+        "SpriteRenderer"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.029999971389770508,
+          -0.03500000014901161,
+          10.0
+        ],
+        "rotationQuaternionXYZW": [
+          -0.0,
+          -0.0,
+          -0.0,
+          1.0
+        ],
+        "scale": [
+          0.30000001192092896,
+          0.20000000298023224,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.30000001192092896,
+          0.0,
+          0.0,
+          0.029999971389770508
+        ],
+        [
+          0.0,
+          0.20000000298023224,
+          0.0,
+          -0.03500000014901161
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          10.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.30000001192092896,
+          0.0,
+          0.0,
+          0.029999971389770508
+        ],
+        [
+          0.0,
+          0.20000000298023224,
+          0.0,
+          -0.03500000014901161
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          10.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 289983,
+      "transformPathId": 737026,
+      "name": "Foot2",
+      "path": "/HumanRootMan/Root/Foot2",
+      "parentPath": "/HumanRootMan/Root",
+      "components": [
+        "Transform",
+        "Animator"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          -0.0,
+          -0.0,
+          -0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 468117,
+      "transformPathId": 840745,
+      "name": "Foot",
+      "path": "/HumanRootMan/Root/Foot2/Foot",
+      "parentPath": "/HumanRootMan/Root/Foot2",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 236254,
+      "transformPathId": 616190,
+      "name": "zuotui",
+      "path": "/HumanRootMan/Root/Foot2/Foot/zuotui",
+      "parentPath": "/HumanRootMan/Root/Foot2/Foot",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.03600001335144043,
+          0.30100005865097046,
+          0.07000000029802322
+        ],
+        "rotationQuaternionXYZW": [
+          -0.0,
+          -0.0,
+          -0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.03600001335144043
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.30100005865097046
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.07000000029802322
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.03600001335144043
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.30100005865097046
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.07000000029802322
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 236251,
+      "transformPathId": 616187,
+      "name": "youtui",
+      "path": "/HumanRootMan/Root/Foot2/Foot/youtui",
+      "parentPath": "/HumanRootMan/Root/Foot2/Foot",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.009999990463256836,
+          0.2889999747276306,
+          0.05999999865889549
+        ],
+        "rotationQuaternionXYZW": [
+          -0.0,
+          -0.0,
+          -0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.009999990463256836
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.2889999747276306
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.05999999865889549
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.009999990463256836
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.2889999747276306
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.05999999865889549
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 129435,
+      "transformPathId": 519536,
+      "name": "yifu",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu",
+      "parentPath": "/HumanRootMan/Root/Body/yifu",
+      "components": [
+        "Transform",
+        "SpriteRenderer",
+        "MonoBehaviour"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.5649999976158142
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.03999999910593033
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 166795,
+      "transformPathId": 740693,
+      "name": "shenti1",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.03235679492354393,
+          0.06997772306203842,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.7498287558555603,
+          0.6616319417953491
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          -0.12448632621579492,
+          -0.9922213115014102,
+          0.0,
+          0.03235679492354393
+        ],
+        [
+          0.9922213115014102,
+          -0.12448632621579492,
+          0.0,
+          0.06997772306203842
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          -0.12448632621579492,
+          -0.9922213115014102,
+          0.0,
+          0.03235679492354393
+        ],
+        [
+          0.9922213115014102,
+          -0.12448632621579492,
+          0.0,
+          0.6349777206778526
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.03999999910593033
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 365986,
+      "transformPathId": 642986,
+      "name": "shenti2",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti2",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.03235679492354393,
+          0.06891612708568573,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          -0.7518339157104492,
+          0.6593525409698486
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          -0.13050847362501372,
+          0.9914472054219914,
+          0.0,
+          0.03235679492354393
+        ],
+        [
+          -0.9914472054219914,
+          -0.13050847362501372,
+          -0.0,
+          0.06891612708568573
+        ],
+        [
+          -0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          -0.13050847362501372,
+          0.9914472054219914,
+          0.0,
+          0.03235679492354393
+        ],
+        [
+          -0.9914472054219914,
+          -0.13050847362501372,
+          0.0,
+          0.6339161247014999
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.03999999910593033
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 406820,
+      "transformPathId": 644960,
+      "name": "bone_5",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2",
+      "components": [
+        "Transform",
+        "MonoBehaviour"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.1642731875181198,
+          0.0007081707590259612,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          -0.09620487689971924,
+          0.9953615665435791
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.9814892433214197,
+          0.19151727396007345,
+          0.0,
+          0.1642731875181198
+        ],
+        [
+          -0.19151727396007345,
+          0.9814892433214197,
+          -0.0,
+          0.0007081707590259612
+        ],
+        [
+          -0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          -0.3179719290830009,
+          0.9481001403454138,
+          0.0,
+          0.011619865883036318
+        ],
+        [
+          -0.9481001403454138,
+          -0.3179719290830009,
+          0.0,
+          0.4709555097260709
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.03999999910593033
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 406746,
+      "transformPathId": 715666,
+      "name": "shenti2_1",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5/shenti2_1",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.04223249480128288,
+          0.0022143423557281494,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          -0.31828802824020386,
+          0.9479940533638
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.7973854621579264,
+          0.603470316057205,
+          0.0,
+          0.04223249480128288
+        ],
+        [
+          -0.603470316057205,
+          0.7973854621579264,
+          -0.0,
+          0.0022143423557281494
+        ],
+        [
+          -0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          -0.8256964849732233,
+          0.5641146480402849,
+          0.0,
+          0.0002905363393232441
+        ],
+        [
+          -0.5641146480402849,
+          -0.8256964849732233,
+          0.0,
+          0.4302107767673366
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.03999999910593033
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 310792,
+      "transformPathId": 535155,
+      "name": "shenti2_2",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5/shenti2_1/shenti2_2",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5/shenti2_1",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.12192533165216446,
+          4.747653381542705e-10,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.30409833788871765,
+          0.9526406526565552
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.8150484017866386,
+          -0.5793928781561632,
+          0.0,
+          0.12192533165216446
+        ],
+        [
+          0.5793928781561632,
+          0.8150484017866386,
+          0.0,
+          4.747653381542705e-10
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          -0.34613859090015925,
+          0.9381834052217295,
+          0.0,
+          -0.10038278116724135
+        ],
+        [
+          -0.9381834052217295,
+          -0.34613859090015925,
+          0.0,
+          0.36143091082316875
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.03999999910593033
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 236492,
+      "transformPathId": 613261,
+      "name": "bone_3",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5/bone_3",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.04190555214881897,
+          -3.9286454089904055e-09,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.536453127861023,
+          0.843930184841156
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.4244360832162499,
+          -0.9054579747087388,
+          0.0,
+          0.04190555214881897
+        ],
+        [
+          0.9054579747087388,
+          0.4244360832162499,
+          0.0,
+          -3.9286454089904055e-09
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.7235060727455253,
+          0.6903181289867091,
+          0.0,
+          -0.001704927097761209
+        ],
+        [
+          -0.6903181289867091,
+          0.7235060727455253,
+          0.0,
+          0.4312248511017226
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.03999999910593033
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 231263,
+      "transformPathId": 730991,
+      "name": "bone_4",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5/bone_3/bone_4",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5/bone_3",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.14675679802894592,
+          -1.1910166186623883e-08,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          -0.3601982295513153,
+          0.9328758120536804
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.7405144708561959,
+          0.6720404317859625,
+          0.0,
+          0.14675679802894592
+        ],
+        [
+          -0.6720404317859625,
+          0.7405144708561959,
+          -0.0,
+          -1.1910166186623883e-08
+        ],
+        [
+          -0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.07184502314649127,
+          0.9974158975367009,
+          0.0,
+          0.10447449927106606
+        ],
+        [
+          -0.9974158975367009,
+          0.07184502314649127,
+          0.0,
+          0.3299159642532227
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.03999999910593033
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 111395,
+      "transformPathId": 702419,
+      "name": "zuobi",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.06736044585704803,
+          -0.07052922248840332,
+          0.03999999910593033
+        ],
+        "rotationQuaternionXYZW": [
+          -0.0,
+          -0.0,
+          -0.7498287558555603,
+          0.6616319417953491
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          -0.12448632621579492,
+          0.9922213115014102,
+          0.0,
+          0.06736044585704803
+        ],
+        [
+          -0.9922213115014102,
+          -0.12448632621579492,
+          0.0,
+          -0.07052922248840332
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.03999999910593033
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.9999999764122839,
+          0.0,
+          0.0,
+          0.09395193812316036
+        ],
+        [
+          0.0,
+          0.9999999764122839,
+          0.0,
+          0.7105941144078903
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.07999999821186066
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 143655,
+      "transformPathId": 534356,
+      "name": "youbi",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.10000000149011612,
+          0.05000000074505806,
+          -0.029999999329447746
+        ],
+        "rotationQuaternionXYZW": [
+          -0.0,
+          -0.0,
+          -0.7498287558555603,
+          0.6616319417953491
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          -0.12448632621579492,
+          0.9922213115014102,
+          0.0,
+          0.10000000149011612
+        ],
+        [
+          -0.9922213115014102,
+          -0.12448632621579492,
+          0.0,
+          0.05000000074505806
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.029999999329447746
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.9999999764122839,
+          0.0,
+          0.0,
+          -0.02970290419786764
+        ],
+        [
+          0.0,
+          0.9999999764122839,
+          0.0,
+          0.7279755369029793
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.009999999776482582
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 384627,
+      "transformPathId": 510745,
+      "name": "beiqian",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/beiqian",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.2753605544567108,
+          0.06947058439254761,
+          -0.019999999552965164
+        ],
+        "rotationQuaternionXYZW": [
+          -0.0,
+          -0.0,
+          -0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.2753605544567108
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.06947058439254761
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.019999999552965164
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          -0.12448632621579492,
+          -0.9922213115014102,
+          0.0,
+          -0.07085202324225931
+        ],
+        [
+          0.9922213115014102,
+          -0.12448632621579492,
+          0.0,
+          0.8995481933255531
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.019999999552965164
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 127289,
+      "transformPathId": 823904,
+      "name": "beihou",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/beihou",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.2753605544567108,
+          0.06947058439254761,
+          0.05000000447034836
+        ],
+        "rotationQuaternionXYZW": [
+          -0.0,
+          -0.0,
+          -0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.2753605544567108
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.06947058439254761
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.05000000447034836
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          -0.12448632621579492,
+          -0.9922213115014102,
+          0.0,
+          -0.07085202324225931
+        ],
+        [
+          0.9922213115014102,
+          -0.12448632621579492,
+          0.0,
+          0.8995481933255531
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.09000000357627869
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 403938,
+      "transformPathId": 657582,
+      "name": "tou",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.3269999921321869,
+          -0.014999999664723873,
+          -0.009999999776482582
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.3269999921321869
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -0.014999999664723873
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.009999999776482582
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          -0.12448632621579492,
+          -0.9922213115014102,
+          0.0,
+          0.006533086570267174
+        ],
+        [
+          0.9922213115014102,
+          -0.12448632621579492,
+          0.0,
+          0.9613013765837015
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.029999999329447746
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 438328,
+      "transformPathId": 806784,
+      "name": "toufa",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.0,
+          0.0,
+          -0.05000000074505806
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.05000000074505806
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          -0.12448632621579492,
+          -0.9922213115014102,
+          0.0,
+          0.006533086570267174
+        ],
+        [
+          0.9922213115014102,
+          -0.12448632621579492,
+          0.0,
+          0.9613013765837015
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.020000001415610313
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 358313,
+      "transformPathId": 500384,
+      "name": "maozi",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/maozi",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.0,
+          0.0,
+          -0.05999999865889549
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          -0.7372773885726929,
+          0.6755901575088501
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          -0.0871558954011391,
+          0.9961946941470785,
+          0.0,
+          0.0
+        ],
+        [
+          -0.9961946941470785,
+          -0.0871558954011391,
+          -0.0,
+          0.0
+        ],
+        [
+          -0.0,
+          0.0,
+          1.0,
+          -0.05999999865889549
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.9992953231638965,
+          -0.037534680830039274,
+          0.0,
+          0.006533086570267174
+        ],
+        [
+          0.037534680830039274,
+          0.9992953231638965,
+          0.0,
+          0.9613013765837015
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.029999999329447746
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 373383,
+      "transformPathId": 742188,
+      "name": "zuobi",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi/zuobi",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi",
+      "components": [
+        "Transform",
+        "SpriteRenderer",
+        "MonoBehaviour"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.9999999764122839,
+          0.0,
+          0.0,
+          0.09395193812316036
+        ],
+        [
+          0.0,
+          0.9999999764122839,
+          0.0,
+          0.7105941144078903
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.07999999821186066
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 373612,
+      "transformPathId": 742417,
+      "name": "zuobi1",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi/zuobi",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          -0.08222675323486328,
+          0.17091235518455505,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          -0.5263177752494812,
+          0.850287914276123
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.4459791989128732,
+          0.8950432867266613,
+          0.0,
+          -0.08222675323486328
+        ],
+        [
+          -0.8950432867266613,
+          0.4459791989128732,
+          -0.0,
+          0.17091235518455505
+        ],
+        [
+          -0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.44597918839324246,
+          0.8950432656146344,
+          0.0,
+          0.01172518682783838
+        ],
+        [
+          -0.8950432656146344,
+          0.44597918839324246,
+          0.0,
+          0.8815064655610133
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.07999999821186066
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 373604,
+      "transformPathId": 742409,
+      "name": "zuobi2",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1/zuobi2",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.1811562478542328,
+          -1.5799484387457596e-08,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          -0.09351271390914917,
+          0.9956181049346924
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.9825107446746912,
+          0.1862059020190543,
+          0.0,
+          0.1811562478542328
+        ],
+        [
+          -0.1862059020190543,
+          0.9825107446746912,
+          -0.0,
+          -1.5799484387457596e-08
+        ],
+        [
+          -0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.2715170058778061,
+          0.9624335824715913,
+          0.0,
+          0.0925170890770121
+        ],
+        [
+          -0.9624335824715913,
+          0.2715170058778061,
+          0.0,
+          0.7193637788488254
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.07999999821186066
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 373596,
+      "transformPathId": 742401,
+      "name": "zuobi3",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1/zuobi2/zuobi3",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1/zuobi2",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.08946705609560013,
+          2.7427404347690754e-08,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          -0.010940954089164734,
+          -0.9999402165412903
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.9997605910472376,
+          -0.0218806000021754,
+          -0.0,
+          0.08946705609560013
+        ],
+        [
+          0.0218806000021754,
+          0.9997605910472376,
+          0.0,
+          2.7427404347690754e-08
+        ],
+        [
+          0.0,
+          -0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.2925106265224932,
+          0.9562622122561077,
+          0.0,
+          0.11680894266984618
+        ],
+        [
+          -0.9562622122561077,
+          0.2925106265224932,
+          0.0,
+          0.6332576869845569
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.07999999821186066
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 391256,
+      "transformPathId": 758165,
+      "name": "youbi",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi",
+      "components": [
+        "Transform",
+        "SpriteRenderer",
+        "MonoBehaviour"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.9999999764122839,
+          0.0,
+          0.0,
+          -0.02970290419786764
+        ],
+        [
+          0.0,
+          0.9999999764122839,
+          0.0,
+          0.7279755369029793
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.009999999776482582
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 391416,
+      "transformPathId": 758325,
+      "name": "youbi1",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.026558026671409607,
+          0.13864150643348694,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          -0.0,
+          -0.0,
+          -0.38754498958587646,
+          0.921850860118866
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.6996177620937658,
+          0.7145173639689943,
+          0.0,
+          0.026558026671409607
+        ],
+        [
+          -0.7145173639689943,
+          0.6996177620937658,
+          0.0,
+          0.13864150643348694
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.6996177455913807,
+          0.7145173471151616,
+          0.0,
+          -0.0031448781529012267
+        ],
+        [
+          -0.7145173471151616,
+          0.6996177455913807,
+          0.0,
+          0.8666170400662297
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.009999999776482582
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 391013,
+      "transformPathId": 757922,
+      "name": "youbi2",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.16237933933734894,
+          4.198985692482893e-08,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.056736309081315994,
+          0.9983891844749451
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.9935619824636588,
+          -0.11328983470762699,
+          0.0,
+          0.16237933933734894
+        ],
+        [
+          0.11328983470762699,
+          0.9935619824636588,
+          0.0,
+          4.198985692482893e-08
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.7760611464269366,
+          0.6306576931478441,
+          0.0,
+          0.1104586191673938
+        ],
+        [
+          -0.6306576931478441,
+          0.7760611464269366,
+          0.0,
+          0.7505942146734437
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.009999999776482582
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 391543,
+      "transformPathId": 758452,
+      "name": "youbi3",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/youbi3",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.1202683374285698,
+          -6.355132420310383e-09,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.012164191342890263,
+          0.9999260306358337
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.999704064897947,
+          -0.024326583130782065,
+          0.0,
+          0.1202683374285698
+        ],
+        [
+          0.024326583130782065,
+          0.999704064897947,
+          0.0,
+          -6.355132420310383e-09
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.7911732294917977,
+          0.611592143405937,
+          0.0,
+          0.20379419898315815
+        ],
+        [
+          -0.611592143405937,
+          0.7911732294917977,
+          0.0,
+          0.6747460575000439
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.009999999776482582
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 150497,
+      "transformPathId": 538964,
+      "name": "zuotui",
+      "path": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui",
+      "parentPath": "/HumanRootMan/Root/Body/Foot/zuotui",
+      "components": [
+        "Transform",
+        "SpriteRenderer",
+        "MonoBehaviour"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.024000000208616257
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.30000001192092896
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.07000000029802322
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "sourceName": "tui"
+    },
+    {
+      "pathId": 150848,
+      "transformPathId": 539315,
+      "name": "tui1",
+      "path": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1",
+      "parentPath": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.007350950036197901,
+          0.29543811082839966,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          -0.7291392087936401,
+          0.6843653917312622
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          -0.06328797160043109,
+          0.9979952805053642,
+          0.0,
+          0.007350950036197901
+        ],
+        [
+          -0.9979952805053642,
+          -0.06328797160043109,
+          -0.0,
+          0.29543811082839966
+        ],
+        [
+          -0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          -0.06328797160043109,
+          0.9979952805053642,
+          0.0,
+          0.03135095024481416
+        ],
+        [
+          -0.9979952805053642,
+          -0.06328797160043109,
+          0.0,
+          0.5954381227493286
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.07000000029802322
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 150286,
+      "transformPathId": 538753,
+      "name": "tui2",
+      "path": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1/tui2",
+      "parentPath": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.27778199315071106,
+          3.108682022912035e-08,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          -0.01785985194146633,
+          0.999840497970581
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.9993620513772578,
+          0.03571400651767309,
+          0.0,
+          0.27778199315071106
+        ],
+        [
+          -0.03571400651767309,
+          0.9993620513772578,
+          -0.0,
+          3.108682022912035e-08
+        ],
+        [
+          -0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          -0.098890007078688,
+          0.9950983437604345,
+          0.0,
+          0.013770722375680687
+        ],
+        [
+          -0.9950983437604345,
+          -0.098890007078688,
+          0.0,
+          0.3182130026081238
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.07000000029802322
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 150675,
+      "transformPathId": 539142,
+      "name": "tui3",
+      "path": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1/tui2/tui3",
+      "parentPath": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1/tui2",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.2863287925720215,
+          -2.4958717403933406e-07,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.6886964440345764,
+          0.7250497937202454
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.05139441594825911,
+          -0.9986784293662723,
+          0.0,
+          0.2863287925720215
+        ],
+        [
+          0.9986784293662723,
+          0.05139441594825911,
+          0.0,
+          -2.4958717403933406e-07
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.9887008568547212,
+          0.14990181513801118,
+          0.0,
+          -0.014544582312382218
+        ],
+        [
+          -0.14990181513801118,
+          0.9887008568547212,
+          0.0,
+          0.03328772003045766
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.07000000029802322
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 150497,
+      "transformPathId": 538964,
+      "name": "youtui",
+      "path": "/HumanRootMan/Root/Body/Foot/youtui/youtui",
+      "parentPath": "/HumanRootMan/Root/Body/Foot/youtui",
+      "components": [
+        "Transform",
+        "SpriteRenderer",
+        "MonoBehaviour"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.28999999165534973
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.05999999865889549
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "sourceName": "tui"
+    },
+    {
+      "pathId": 150848,
+      "transformPathId": 539315,
+      "name": "tui1",
+      "path": "/HumanRootMan/Root/Body/Foot/youtui/youtui/tui1",
+      "parentPath": "/HumanRootMan/Root/Body/Foot/youtui/youtui",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.007350950036197901,
+          0.29543811082839966,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          -0.7291392087936401,
+          0.6843653917312622
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          -0.06328797160043109,
+          0.9979952805053642,
+          0.0,
+          0.007350950036197901
+        ],
+        [
+          -0.9979952805053642,
+          -0.06328797160043109,
+          -0.0,
+          0.29543811082839966
+        ],
+        [
+          -0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          -0.06328797160043109,
+          0.9979952805053642,
+          0.0,
+          0.007350950036197901
+        ],
+        [
+          -0.9979952805053642,
+          -0.06328797160043109,
+          0.0,
+          0.5854381024837494
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.05999999865889549
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 150286,
+      "transformPathId": 538753,
+      "name": "tui2",
+      "path": "/HumanRootMan/Root/Body/Foot/youtui/youtui/tui1/tui2",
+      "parentPath": "/HumanRootMan/Root/Body/Foot/youtui/youtui/tui1",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.27778199315071106,
+          3.108682022912035e-08,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          -0.01785985194146633,
+          0.999840497970581
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.9993620513772578,
+          0.03571400651767309,
+          0.0,
+          0.27778199315071106
+        ],
+        [
+          -0.03571400651767309,
+          0.9993620513772578,
+          -0.0,
+          3.108682022912035e-08
+        ],
+        [
+          -0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          -0.098890007078688,
+          0.9950983437604345,
+          0.0,
+          -0.01022927783293557
+        ],
+        [
+          -0.9950983437604345,
+          -0.098890007078688,
+          0.0,
+          0.3082129823425446
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.05999999865889549
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 150675,
+      "transformPathId": 539142,
+      "name": "tui3",
+      "path": "/HumanRootMan/Root/Body/Foot/youtui/youtui/tui1/tui2/tui3",
+      "parentPath": "/HumanRootMan/Root/Body/Foot/youtui/youtui/tui1/tui2",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.2863287925720215,
+          -2.4958717403933406e-07,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.6886964440345764,
+          0.7250497937202454
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.05139441594825911,
+          -0.9986784293662723,
+          0.0,
+          0.2863287925720215
+        ],
+        [
+          0.9986784293662723,
+          0.05139441594825911,
+          0.0,
+          -2.4958717403933406e-07
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.9887008568547212,
+          0.14990181513801118,
+          0.0,
+          -0.038544582520998474
+        ],
+        [
+          -0.14990181513801118,
+          0.9887008568547212,
+          0.0,
+          0.023287699764878433
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.05999999865889549
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 466843,
+      "transformPathId": 825032,
+      "name": "101",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/101(Clone)",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          -0.12448632621579492,
+          -0.9922213115014102,
+          0.0,
+          0.006533086570267174
+        ],
+        [
+          0.9922213115014102,
+          -0.12448632621579492,
+          0.0,
+          0.9613013765837015
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.029999999329447746
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 466829,
+      "transformPathId": 825018,
+      "name": "lian",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/101(Clone)/lian",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/101(Clone)",
+      "components": [
+        "Transform",
+        "SpriteRenderer"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.049784839153289795,
+          -0.019864579662680626,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          -0.0,
+          -0.0,
+          -0.7498287558555603,
+          0.6616319417953491
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          -0.12448632621579492,
+          0.9922213115014102,
+          0.0,
+          0.049784839153289795
+        ],
+        [
+          -0.9922213115014102,
+          -0.12448632621579492,
+          0.0,
+          -0.019864579662680626
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.9999999764122839,
+          0.0,
+          0.0,
+          0.020045614128159077
+        ],
+        [
+          0.0,
+          0.9999999764122839,
+          0.0,
+          1.0131718235252936
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.029999999329447746
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 396215,
+      "transformPathId": 551934,
+      "name": "101",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          -0.12448632621579492,
+          -0.9922213115014102,
+          0.0,
+          0.006533086570267174
+        ],
+        [
+          0.9922213115014102,
+          -0.12448632621579492,
+          0.0,
+          0.9613013765837015
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.020000001415610313
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 321638,
+      "transformPathId": 776753,
+      "name": "toufa",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)",
+      "components": [
+        "Transform",
+        "SpriteRenderer",
+        "MonoBehaviour"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          -0.07800000160932541,
+          0.026000000536441803,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          -0.0,
+          -0.0,
+          -0.7206299304962158,
+          0.6933198571205139
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          -0.03861499345396169,
+          0.9992540808968045,
+          0.0,
+          -0.07800000160932541
+        ],
+        [
+          -0.9992540808968045,
+          -0.03861499345396169,
+          0.0,
+          0.026000000536441803
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.9962882333424943,
+          -0.08607885003847568,
+          0.0,
+          -0.009554734415867471
+        ],
+        [
+          0.08607885003847568,
+          0.9962882333424943,
+          0.0,
+          0.8806714681413942
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.020000001415610313
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 268528,
+      "transformPathId": 535625,
+      "name": "bone_1",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.054697390645742416,
+          0.1846432089805603,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          -0.9850264191627502,
+          0.17240367829799652
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          -0.9405540928971803,
+          0.33964435576872454,
+          0.0,
+          0.054697390645742416
+        ],
+        [
+          -0.33964435576872454,
+          -0.9405540928971803,
+          -0.0,
+          0.1846432089805603
+        ],
+        [
+          -0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          -0.9078267800089531,
+          0.4193454898891431,
+          0.0,
+          0.029045757182562935
+        ],
+        [
+          -0.4193454898891431,
+          -0.9078267800089531,
+          0.0,
+          1.0693376131022163
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.020000001415610313
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 276175,
+      "transformPathId": 725140,
+      "name": "bone_2",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1",
+      "components": [
+        "Transform",
+        "MonoBehaviour"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.09681200236082077,
+          4.144265375316536e-08,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.553149938583374,
+          0.8330817222595215
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.3880502908904191,
+          -0.9216382070055715,
+          0.0,
+          0.09681200236082077
+        ],
+        [
+          0.9216382070055715,
+          0.3880502908904191,
+          0.0,
+          4.144265375316536e-08
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.03420237935671605,
+          0.9994149851341603,
+          0.0,
+          -0.05884275380809022
+        ],
+        [
+          -0.9994149851341603,
+          0.03420237935671605,
+          0.0,
+          1.0287398989223182
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.020000001415610313
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 190251,
+      "transformPathId": 742857,
+      "name": "bone_3",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.10954274237155914,
+          1.0774855674355877e-08,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          -0.05006490647792816,
+          0.9987459778785706
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.9949870102787126,
+          0.10000424795539509,
+          0.0,
+          0.10954274237155914
+        ],
+        [
+          -0.10000424795539509,
+          0.9949870102787126,
+          -0.0,
+          1.0774855674355877e-08
+        ],
+        [
+          -0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          -0.06591482080313675,
+          0.9978253113122358,
+          0.0,
+          -0.05509612060917093
+        ],
+        [
+          -0.9978253113122358,
+          -0.06591482080313675,
+          0.0,
+          0.919261241052017
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.020000001415610313
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 451202,
+      "transformPathId": 831670,
+      "name": "bone_4",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3/bone_4",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.09595952928066254,
+          3.865795861202059e-08,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.01805238239467144,
+          0.9998370409011841
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.9993482229797531,
+          -0.03609888118940985,
+          0.0,
+          0.09595952928066254
+        ],
+        [
+          0.03609888118940985,
+          0.9993482229797531,
+          0.0,
+          3.865795861202059e-08
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          -0.029851481676797284,
+          0.9995544029888953,
+          0.0,
+          -0.06142123721216956
+        ],
+        [
+          -0.9995544029888953,
+          -0.029851481676797284,
+          0.0,
+          0.8235103913260319
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.020000001415610313
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 329987,
+      "transformPathId": 593443,
+      "name": "bone_5",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3/bone_4/bone_5",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3/bone_4",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.10376915335655212,
+          3.0888326563172086e-08,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.05798780918121338,
+          0.9983173608779907
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.9932748279727264,
+          -0.11578047324977092,
+          0.0,
+          0.10376915335655212
+        ],
+        [
+          0.11578047324977092,
+          0.9932748279727264,
+          0.0,
+          3.0888326563172086e-08
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.0860781564896947,
+          0.9962884463539227,
+          0.0,
+          -0.06451886931764664
+        ],
+        [
+          -0.9962884463539227,
+          0.0860781564896947,
+          0.0,
+          0.719787476271998
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.020000001415610313
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    }
+  ],
+  "boneNodes": [
+    {
+      "pathId": 150848,
+      "transformPathId": 539315,
+      "name": "tui1",
+      "path": "/HumanRootMan/Root/Body/Foot/youtui/youtui/tui1",
+      "parentPath": "/HumanRootMan/Root/Body/Foot/youtui/youtui",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.007350950036197901,
+          0.29543811082839966,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          -0.7291392087936401,
+          0.6843653917312622
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          -0.06328797160043109,
+          0.9979952805053642,
+          0.0,
+          0.007350950036197901
+        ],
+        [
+          -0.9979952805053642,
+          -0.06328797160043109,
+          -0.0,
+          0.29543811082839966
+        ],
+        [
+          -0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          -0.06328797160043109,
+          0.9979952805053642,
+          0.0,
+          0.007350950036197901
+        ],
+        [
+          -0.9979952805053642,
+          -0.06328797160043109,
+          0.0,
+          0.5854381024837494
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.05999999865889549
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 150286,
+      "transformPathId": 538753,
+      "name": "tui2",
+      "path": "/HumanRootMan/Root/Body/Foot/youtui/youtui/tui1/tui2",
+      "parentPath": "/HumanRootMan/Root/Body/Foot/youtui/youtui/tui1",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.27778199315071106,
+          3.108682022912035e-08,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          -0.01785985194146633,
+          0.999840497970581
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.9993620513772578,
+          0.03571400651767309,
+          0.0,
+          0.27778199315071106
+        ],
+        [
+          -0.03571400651767309,
+          0.9993620513772578,
+          -0.0,
+          3.108682022912035e-08
+        ],
+        [
+          -0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          -0.098890007078688,
+          0.9950983437604345,
+          0.0,
+          -0.01022927783293557
+        ],
+        [
+          -0.9950983437604345,
+          -0.098890007078688,
+          0.0,
+          0.3082129823425446
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.05999999865889549
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 150675,
+      "transformPathId": 539142,
+      "name": "tui3",
+      "path": "/HumanRootMan/Root/Body/Foot/youtui/youtui/tui1/tui2/tui3",
+      "parentPath": "/HumanRootMan/Root/Body/Foot/youtui/youtui/tui1/tui2",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.2863287925720215,
+          -2.4958717403933406e-07,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.6886964440345764,
+          0.7250497937202454
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.05139441594825911,
+          -0.9986784293662723,
+          0.0,
+          0.2863287925720215
+        ],
+        [
+          0.9986784293662723,
+          0.05139441594825911,
+          0.0,
+          -2.4958717403933406e-07
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.9887008568547212,
+          0.14990181513801118,
+          0.0,
+          -0.038544582520998474
+        ],
+        [
+          -0.14990181513801118,
+          0.9887008568547212,
+          0.0,
+          0.023287699764878433
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.05999999865889549
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 150848,
+      "transformPathId": 539315,
+      "name": "tui1",
+      "path": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1",
+      "parentPath": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.007350950036197901,
+          0.29543811082839966,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          -0.7291392087936401,
+          0.6843653917312622
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          -0.06328797160043109,
+          0.9979952805053642,
+          0.0,
+          0.007350950036197901
+        ],
+        [
+          -0.9979952805053642,
+          -0.06328797160043109,
+          -0.0,
+          0.29543811082839966
+        ],
+        [
+          -0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          -0.06328797160043109,
+          0.9979952805053642,
+          0.0,
+          0.03135095024481416
+        ],
+        [
+          -0.9979952805053642,
+          -0.06328797160043109,
+          0.0,
+          0.5954381227493286
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.07000000029802322
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 150286,
+      "transformPathId": 538753,
+      "name": "tui2",
+      "path": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1/tui2",
+      "parentPath": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.27778199315071106,
+          3.108682022912035e-08,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          -0.01785985194146633,
+          0.999840497970581
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.9993620513772578,
+          0.03571400651767309,
+          0.0,
+          0.27778199315071106
+        ],
+        [
+          -0.03571400651767309,
+          0.9993620513772578,
+          -0.0,
+          3.108682022912035e-08
+        ],
+        [
+          -0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          -0.098890007078688,
+          0.9950983437604345,
+          0.0,
+          0.013770722375680687
+        ],
+        [
+          -0.9950983437604345,
+          -0.098890007078688,
+          0.0,
+          0.3182130026081238
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.07000000029802322
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 150675,
+      "transformPathId": 539142,
+      "name": "tui3",
+      "path": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1/tui2/tui3",
+      "parentPath": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1/tui2",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.2863287925720215,
+          -2.4958717403933406e-07,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.6886964440345764,
+          0.7250497937202454
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.05139441594825911,
+          -0.9986784293662723,
+          0.0,
+          0.2863287925720215
+        ],
+        [
+          0.9986784293662723,
+          0.05139441594825911,
+          0.0,
+          -2.4958717403933406e-07
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.9887008568547212,
+          0.14990181513801118,
+          0.0,
+          -0.014544582312382218
+        ],
+        [
+          -0.14990181513801118,
+          0.9887008568547212,
+          0.0,
+          0.03328772003045766
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.07000000029802322
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 166795,
+      "transformPathId": 740693,
+      "name": "shenti1",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.03235679492354393,
+          0.06997772306203842,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.7498287558555603,
+          0.6616319417953491
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          -0.12448632621579492,
+          -0.9922213115014102,
+          0.0,
+          0.03235679492354393
+        ],
+        [
+          0.9922213115014102,
+          -0.12448632621579492,
+          0.0,
+          0.06997772306203842
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          -0.12448632621579492,
+          -0.9922213115014102,
+          0.0,
+          0.03235679492354393
+        ],
+        [
+          0.9922213115014102,
+          -0.12448632621579492,
+          0.0,
+          0.6349777206778526
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.03999999910593033
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 268528,
+      "transformPathId": 535625,
+      "name": "bone_1",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.054697390645742416,
+          0.1846432089805603,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          -0.9850264191627502,
+          0.17240367829799652
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          -0.9405540928971803,
+          0.33964435576872454,
+          0.0,
+          0.054697390645742416
+        ],
+        [
+          -0.33964435576872454,
+          -0.9405540928971803,
+          -0.0,
+          0.1846432089805603
+        ],
+        [
+          -0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          -0.9078267800089531,
+          0.4193454898891431,
+          0.0,
+          0.029045757182562935
+        ],
+        [
+          -0.4193454898891431,
+          -0.9078267800089531,
+          0.0,
+          1.0693376131022163
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.020000001415610313
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 276175,
+      "transformPathId": 725140,
+      "name": "bone_2",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1",
+      "components": [
+        "Transform",
+        "MonoBehaviour"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.09681200236082077,
+          4.144265375316536e-08,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.553149938583374,
+          0.8330817222595215
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.3880502908904191,
+          -0.9216382070055715,
+          0.0,
+          0.09681200236082077
+        ],
+        [
+          0.9216382070055715,
+          0.3880502908904191,
+          0.0,
+          4.144265375316536e-08
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.03420237935671605,
+          0.9994149851341603,
+          0.0,
+          -0.05884275380809022
+        ],
+        [
+          -0.9994149851341603,
+          0.03420237935671605,
+          0.0,
+          1.0287398989223182
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.020000001415610313
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 190251,
+      "transformPathId": 742857,
+      "name": "bone_3",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.10954274237155914,
+          1.0774855674355877e-08,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          -0.05006490647792816,
+          0.9987459778785706
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.9949870102787126,
+          0.10000424795539509,
+          0.0,
+          0.10954274237155914
+        ],
+        [
+          -0.10000424795539509,
+          0.9949870102787126,
+          -0.0,
+          1.0774855674355877e-08
+        ],
+        [
+          -0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          -0.06591482080313675,
+          0.9978253113122358,
+          0.0,
+          -0.05509612060917093
+        ],
+        [
+          -0.9978253113122358,
+          -0.06591482080313675,
+          0.0,
+          0.919261241052017
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.020000001415610313
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 451202,
+      "transformPathId": 831670,
+      "name": "bone_4",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3/bone_4",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.09595952928066254,
+          3.865795861202059e-08,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.01805238239467144,
+          0.9998370409011841
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.9993482229797531,
+          -0.03609888118940985,
+          0.0,
+          0.09595952928066254
+        ],
+        [
+          0.03609888118940985,
+          0.9993482229797531,
+          0.0,
+          3.865795861202059e-08
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          -0.029851481676797284,
+          0.9995544029888953,
+          0.0,
+          -0.06142123721216956
+        ],
+        [
+          -0.9995544029888953,
+          -0.029851481676797284,
+          0.0,
+          0.8235103913260319
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.020000001415610313
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 329987,
+      "transformPathId": 593443,
+      "name": "bone_5",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3/bone_4/bone_5",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3/bone_4",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.10376915335655212,
+          3.0888326563172086e-08,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.05798780918121338,
+          0.9983173608779907
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.9932748279727264,
+          -0.11578047324977092,
+          0.0,
+          0.10376915335655212
+        ],
+        [
+          0.11578047324977092,
+          0.9932748279727264,
+          0.0,
+          3.0888326563172086e-08
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.0860781564896947,
+          0.9962884463539227,
+          0.0,
+          -0.06451886931764664
+        ],
+        [
+          -0.9962884463539227,
+          0.0860781564896947,
+          0.0,
+          0.719787476271998
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          -0.020000001415610313
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 391416,
+      "transformPathId": 758325,
+      "name": "youbi1",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.026558026671409607,
+          0.13864150643348694,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          -0.0,
+          -0.0,
+          -0.38754498958587646,
+          0.921850860118866
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.6996177620937658,
+          0.7145173639689943,
+          0.0,
+          0.026558026671409607
+        ],
+        [
+          -0.7145173639689943,
+          0.6996177620937658,
+          0.0,
+          0.13864150643348694
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.6996177455913807,
+          0.7145173471151616,
+          0.0,
+          -0.0031448781529012267
+        ],
+        [
+          -0.7145173471151616,
+          0.6996177455913807,
+          0.0,
+          0.8666170400662297
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.009999999776482582
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 391013,
+      "transformPathId": 757922,
+      "name": "youbi2",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.16237933933734894,
+          4.198985692482893e-08,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.056736309081315994,
+          0.9983891844749451
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.9935619824636588,
+          -0.11328983470762699,
+          0.0,
+          0.16237933933734894
+        ],
+        [
+          0.11328983470762699,
+          0.9935619824636588,
+          0.0,
+          4.198985692482893e-08
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.7760611464269366,
+          0.6306576931478441,
+          0.0,
+          0.1104586191673938
+        ],
+        [
+          -0.6306576931478441,
+          0.7760611464269366,
+          0.0,
+          0.7505942146734437
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.009999999776482582
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 391543,
+      "transformPathId": 758452,
+      "name": "youbi3",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/youbi3",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.1202683374285698,
+          -6.355132420310383e-09,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.012164191342890263,
+          0.9999260306358337
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.999704064897947,
+          -0.024326583130782065,
+          0.0,
+          0.1202683374285698
+        ],
+        [
+          0.024326583130782065,
+          0.999704064897947,
+          0.0,
+          -6.355132420310383e-09
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.7911732294917977,
+          0.611592143405937,
+          0.0,
+          0.20379419898315815
+        ],
+        [
+          -0.611592143405937,
+          0.7911732294917977,
+          0.0,
+          0.6747460575000439
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.009999999776482582
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 373612,
+      "transformPathId": 742417,
+      "name": "zuobi1",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi/zuobi",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          -0.08222675323486328,
+          0.17091235518455505,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          -0.5263177752494812,
+          0.850287914276123
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.4459791989128732,
+          0.8950432867266613,
+          0.0,
+          -0.08222675323486328
+        ],
+        [
+          -0.8950432867266613,
+          0.4459791989128732,
+          -0.0,
+          0.17091235518455505
+        ],
+        [
+          -0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.44597918839324246,
+          0.8950432656146344,
+          0.0,
+          0.01172518682783838
+        ],
+        [
+          -0.8950432656146344,
+          0.44597918839324246,
+          0.0,
+          0.8815064655610133
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.07999999821186066
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 373604,
+      "transformPathId": 742409,
+      "name": "zuobi2",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1/zuobi2",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.1811562478542328,
+          -1.5799484387457596e-08,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          -0.09351271390914917,
+          0.9956181049346924
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.9825107446746912,
+          0.1862059020190543,
+          0.0,
+          0.1811562478542328
+        ],
+        [
+          -0.1862059020190543,
+          0.9825107446746912,
+          -0.0,
+          -1.5799484387457596e-08
+        ],
+        [
+          -0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.2715170058778061,
+          0.9624335824715913,
+          0.0,
+          0.0925170890770121
+        ],
+        [
+          -0.9624335824715913,
+          0.2715170058778061,
+          0.0,
+          0.7193637788488254
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.07999999821186066
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 373596,
+      "transformPathId": 742401,
+      "name": "zuobi3",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1/zuobi2/zuobi3",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1/zuobi2",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.08946705609560013,
+          2.7427404347690754e-08,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          -0.010940954089164734,
+          -0.9999402165412903
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.9997605910472376,
+          -0.0218806000021754,
+          -0.0,
+          0.08946705609560013
+        ],
+        [
+          0.0218806000021754,
+          0.9997605910472376,
+          0.0,
+          2.7427404347690754e-08
+        ],
+        [
+          0.0,
+          -0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.2925106265224932,
+          0.9562622122561077,
+          0.0,
+          0.11680894266984618
+        ],
+        [
+          -0.9562622122561077,
+          0.2925106265224932,
+          0.0,
+          0.6332576869845569
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.07999999821186066
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 365986,
+      "transformPathId": 642986,
+      "name": "shenti2",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti2",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.03235679492354393,
+          0.06891612708568573,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          -0.7518339157104492,
+          0.6593525409698486
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          -0.13050847362501372,
+          0.9914472054219914,
+          0.0,
+          0.03235679492354393
+        ],
+        [
+          -0.9914472054219914,
+          -0.13050847362501372,
+          -0.0,
+          0.06891612708568573
+        ],
+        [
+          -0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          -0.13050847362501372,
+          0.9914472054219914,
+          0.0,
+          0.03235679492354393
+        ],
+        [
+          -0.9914472054219914,
+          -0.13050847362501372,
+          0.0,
+          0.6339161247014999
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.03999999910593033
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 406820,
+      "transformPathId": 644960,
+      "name": "bone_5",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2",
+      "components": [
+        "Transform",
+        "MonoBehaviour"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.1642731875181198,
+          0.0007081707590259612,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          -0.09620487689971924,
+          0.9953615665435791
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.9814892433214197,
+          0.19151727396007345,
+          0.0,
+          0.1642731875181198
+        ],
+        [
+          -0.19151727396007345,
+          0.9814892433214197,
+          -0.0,
+          0.0007081707590259612
+        ],
+        [
+          -0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          -0.3179719290830009,
+          0.9481001403454138,
+          0.0,
+          0.011619865883036318
+        ],
+        [
+          -0.9481001403454138,
+          -0.3179719290830009,
+          0.0,
+          0.4709555097260709
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.03999999910593033
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 236492,
+      "transformPathId": 613261,
+      "name": "bone_3",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5/bone_3",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.04190555214881897,
+          -3.9286454089904055e-09,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.536453127861023,
+          0.843930184841156
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.4244360832162499,
+          -0.9054579747087388,
+          0.0,
+          0.04190555214881897
+        ],
+        [
+          0.9054579747087388,
+          0.4244360832162499,
+          0.0,
+          -3.9286454089904055e-09
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.7235060727455253,
+          0.6903181289867091,
+          0.0,
+          -0.001704927097761209
+        ],
+        [
+          -0.6903181289867091,
+          0.7235060727455253,
+          0.0,
+          0.4312248511017226
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.03999999910593033
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 231263,
+      "transformPathId": 730991,
+      "name": "bone_4",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5/bone_3/bone_4",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5/bone_3",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.14675679802894592,
+          -1.1910166186623883e-08,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          -0.3601982295513153,
+          0.9328758120536804
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.7405144708561959,
+          0.6720404317859625,
+          0.0,
+          0.14675679802894592
+        ],
+        [
+          -0.6720404317859625,
+          0.7405144708561959,
+          -0.0,
+          -1.1910166186623883e-08
+        ],
+        [
+          -0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          0.07184502314649127,
+          0.9974158975367009,
+          0.0,
+          0.10447449927106606
+        ],
+        [
+          -0.9974158975367009,
+          0.07184502314649127,
+          0.0,
+          0.3299159642532227
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.03999999910593033
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 406746,
+      "transformPathId": 715666,
+      "name": "shenti2_1",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5/shenti2_1",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.04223249480128288,
+          0.0022143423557281494,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          -0.31828802824020386,
+          0.9479940533638
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.7973854621579264,
+          0.603470316057205,
+          0.0,
+          0.04223249480128288
+        ],
+        [
+          -0.603470316057205,
+          0.7973854621579264,
+          -0.0,
+          0.0022143423557281494
+        ],
+        [
+          -0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          -0.8256964849732233,
+          0.5641146480402849,
+          0.0,
+          0.0002905363393232441
+        ],
+        [
+          -0.5641146480402849,
+          -0.8256964849732233,
+          0.0,
+          0.4302107767673366
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.03999999910593033
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "pathId": 310792,
+      "transformPathId": 535155,
+      "name": "shenti2_2",
+      "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5/shenti2_1/shenti2_2",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5/shenti2_1",
+      "components": [
+        "Transform"
+      ],
+      "activeSelf": true,
+      "activeInHierarchy": true,
+      "localTRS": {
+        "position": [
+          0.12192533165216446,
+          4.747653381542705e-10,
+          0.0
+        ],
+        "rotationQuaternionXYZW": [
+          0.0,
+          0.0,
+          0.30409833788871765,
+          0.9526406526565552
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "localMatrix": [
+        [
+          0.8150484017866386,
+          -0.5793928781561632,
+          0.0,
+          0.12192533165216446
+        ],
+        [
+          0.5793928781561632,
+          0.8150484017866386,
+          0.0,
+          4.747653381542705e-10
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "restMatrix": [
+        [
+          -0.34613859090015925,
+          0.9381834052217295,
+          0.0,
+          -0.10038278116724135
+        ],
+        [
+          -0.9381834052217295,
+          -0.34613859090015925,
+          0.0,
+          0.36143091082316875
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.03999999910593033
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    }
+  ],
+  "meshCount": 8,
+  "checks": {
+    "nodeCount": 51,
+    "boneNodeCount": 24,
+    "spriteRendererCount": 8,
+    "spriteBonePathMappingErrors": []
+  }
+}

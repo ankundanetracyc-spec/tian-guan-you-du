@@ -199,13 +199,21 @@ public partial class BattleUnitOverlay : CanvasLayer
                 var intent=new Label{Name="Intent",Position=new(0,57),Size=new(232,20),HorizontalAlignment=HorizontalAlignment.Center,MouseFilter=Control.MouseFilterEnum.Ignore};intent.AddThemeFontSizeOverride("font_size",11);view.AddChild(intent);
                 var statuses=new HFlowContainer{Name="Statuses",Position=new(0,-38),Size=new(232,36),MouseFilter=Control.MouseFilterEnum.Ignore};
                 statuses.AddThemeConstantOverride("separation",4);view.AddChild(statuses);
+                if (manager.is_distant_avatar_preview())
+                {
+                    name.AddThemeFontSizeOverride("font_size",18);
+                    label.AddThemeFontSizeOverride("font_size",16);
+                    intent.AddThemeFontSizeOverride("font_size",16);
+                }
             }
-            view.Scale=Vector2.One*scale;
+            var compact = manager.is_distant_avatar_preview();
+            var overheadScale = scale * (compact ? .72f : 1f);
+            view.Scale=Vector2.One*overheadScale;
             var team=unit.faction==(int)WorldEntity.Faction.PLAYER?manager.player_units:manager.enemy_units;
             var stagger=team.Count==5 && team.IndexOf(unit)==1?30f:0f;
-            var head=unit.GetGlobalTransformWithCanvas().Origin-new Vector2(0,manager.get_unit_display_height()+(64+stagger)*scale);
+            var head=unit.GetGlobalTransformWithCanvas().Origin-new Vector2(0,manager.get_unit_display_height()+((compact?46:64)+stagger)*scale);
             head=BattleLocalFocusView.FrameUnitRect(unit,new Rect2(head,Vector2.Zero)).Position;
-            view.Position=head-new Vector2(116*scale,0);
+            view.Position=head-new Vector2(116*overheadScale,0);
             var alpha=Mathf.MoveToward(view.Modulate.A,emphasized.Contains(unit) ? .16f : 1f,manager.is_battle_paused()?0f:(float)delta*7f);
             view.Modulate=new Color(1,1,1,alpha);
             view.GetNode<BattleHealthBar>("Health").MaxValue=Math.Max(1,unit.max_health);view.GetNode<BattleHealthBar>("Health").Value=unit.current_health;view.GetNode<BattleHealthBar>("Health").QueueRedraw();
@@ -410,6 +418,8 @@ public partial class BattleUnitOverlay : CanvasLayer
     private static bool IsInternalStatusBadge(string id)=>id is "化解" or "身法" or "借力";
     internal static Texture2D? GetStatusIcon(string id,StatusInstance? instance)
     {
+        if (id is Character.DefensePillStatus or Character.RegenerationPillStatus)
+            return GD.Load<Texture2D>("res://textures/items/inventory_density_20261029/pill_container_empty_porcelain.png");
         if(id.StartsWith("心法:"))
         {
             var heartIcon=instance?.source_name switch

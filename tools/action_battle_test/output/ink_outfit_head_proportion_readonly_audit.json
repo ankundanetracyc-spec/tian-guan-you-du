@@ -1,0 +1,23 @@
+{
+  "method": "Source face alpha>=128 mapped with exact Idle face affine. Selected art main crown/chin/neck visually identified in source pixels; excludes bun and ribbons. Approximate crown/chin location, no raster edit. Geometry units are source model pixels before common scale.",
+  "source_face_core_height": 15.095906666666664,
+  "source_face_crown_to_sole": 109.23219999999999,
+  "source_face_head_count": 7.235882044845711,
+  "selected_art_crown_px": [
+    169,
+    35
+  ],
+  "selected_art_chin_px": [
+    212,
+    199
+  ],
+  "selected_art_neck_px": [
+    167,
+    214
+  ],
+  "old_oval_height": 13.573219333333327,
+  "selected_main_head_height": 10.600037955555552,
+  "selected_crown_to_sole": 103.70978528888888,
+  "selected_head_count": 9.783906975024925,
+  "recommendation": "Scale selected head around fixed neck by1.25\u20131.30 as moderate first correction. Source face core alone is not exactly comparable to full cranium/skin head; do not force exact ratio solely from source. Preserve body and limb geometry."
+}

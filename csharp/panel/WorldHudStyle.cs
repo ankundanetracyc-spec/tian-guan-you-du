@@ -8,6 +8,32 @@ public static class WorldHudStyle
     public static readonly Color Ink = new("303d38"), SecondaryInk = new("535e54");
     public static readonly Color HealthInk = new("985344"), StaminaInk = new("537264");
 
+    public static StyleBoxFlat QuietPaper(bool hovered = false, bool border = true) => new()
+    {
+        BgColor = new Color(hovered ? "e2e7d9" : "f0eddf"),
+        BorderColor = new Color("a3a594"),
+        BorderWidthLeft = border ? 1 : 0, BorderWidthRight = border ? 1 : 0,
+        BorderWidthTop = border ? 1 : 0, BorderWidthBottom = border ? 1 : 0,
+        CornerRadiusTopLeft = 3, CornerRadiusBottomRight = 3,
+        ContentMarginLeft = 8, ContentMarginRight = 8,
+        ContentMarginTop = 3, ContentMarginBottom = 3
+    };
+
+    public static void StylePaperButton(Button button, int fontSize = 16)
+    {
+        StyleSmallButton(button, fontSize);
+        foreach (var state in new[] { "normal", "hover", "pressed" })
+            button.AddThemeStyleboxOverride(state, new StyleBoxEmpty());
+        if (button.GetNodeOrNull<WorldHudFrame>("InkButtonPaper") is null)
+        {
+            var paper = new WorldHudFrame { Name = "InkButtonPaper", ShowBehindParent = true };
+            button.AddChild(paper);
+            paper.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
+            button.MouseEntered += () => paper.Modulate = new Color("e1e9db");
+            button.MouseExited += () => paper.Modulate = Colors.White;
+        }
+    }
+
     private static AtlasTexture PaperTexture() => new()
     {
         Atlas = GD.Load<Texture2D>(PaperPath),
@@ -32,6 +58,12 @@ public static class WorldHudStyle
             Text = text, VerticalAlignment = VerticalAlignment.Center,
             MouseFilter = Control.MouseFilterEnum.Ignore
         };
+        StyleText(label, size, secondary);
+        return label;
+    }
+
+    public static void StyleText(Label label, int size = 18, bool secondary = false)
+    {
         label.AddThemeFontOverride("font", GD.Load<FontFile>(FontPath));
         label.AddThemeFontSizeOverride("font_size", size);
         label.AddThemeColorOverride("font_color", secondary ? SecondaryInk : Ink);
@@ -40,7 +72,6 @@ public static class WorldHudStyle
         label.AddThemeConstantOverride("outline_size", 0);
         label.AddThemeConstantOverride("shadow_offset_x", 0);
         label.AddThemeConstantOverride("shadow_offset_y", 0);
-        return label;
     }
 
     public static RichTextLabel RichText(string bbcode, int size = 18, bool secondary = false)
@@ -91,11 +122,13 @@ public static class WorldHudStyle
         };
         bar.AddThemeStyleboxOverride("background", new StyleBoxTexture
         {
-            Texture = PaperTexture(), ModulateColor = new Color("bec2b4")
+            Texture = WorldHudArt.Texture("white_stroke"), ModulateColor = new Color("9ea595", .35f),
+            TextureMarginLeft = 14, TextureMarginRight = 14
         });
         bar.AddThemeStyleboxOverride("fill", new StyleBoxTexture
         {
-            Texture = PaperTexture(), ModulateColor = ink
+            Texture = WorldHudArt.Texture("white_stroke"), ModulateColor = ink,
+            TextureMarginLeft = 14, TextureMarginRight = 14
         });
         return bar;
     }

@@ -1,0 +1,59 @@
+{
+	"checks": 21,
+	"failures": [],
+	"frames": 732,
+	"maximum_arm_length_error": 0.000011444091796875,
+	"maximum_leg_length_error": 0.00000762939453125,
+	"maximum_limb_scale_error": 0.000000168587391158326,
+	"maximum_state_angle_rad": 0.303074896335602,
+	"maximum_waist_anchor_error": 0.0,
+	"metrics": {
+		"idle": {
+			"front": "(0.0, 0.0, 0.0)",
+			"front_load": 0.0,
+			"rear": "(0.0, 0.0, 0.0)",
+			"rear_load": 0.0
+		},
+		"run": {
+			"front": "(0.237477, 0.146207, 0.103422)",
+			"front_load": 0.999999999904979,
+			"rear": "(0.251696, 0.162554, 0.122746)",
+			"rear_load": 0.999999992805867
+		},
+		"settled": {
+			"front": "(0.0, -0.0, 0.000001)",
+			"front_load": 0.00000000534224934123605,
+			"rear": "(0.0, 0.0, 0.000011)",
+			"rear_load": 0.000000208231500743439
+		},
+		"stop03": {
+			"front": "(0.243051, 0.140675, 0.096112)",
+			"front_load": 0.788127627670422,
+			"rear": "(0.258314, 0.157265, 0.115744)",
+			"rear_load": 0.825052961044995
+		},
+		"stop18": {
+			"front": "(0.139116, 0.071441, 0.056458)",
+			"front_load": 0.239651036419004,
+			"rear": "(0.172289, 0.089928, 0.074171)",
+			"rear_load": 0.315421272369765
+		},
+		"stop60": {
+			"front": "(0.004106, 0.002011, -0.004506)",
+			"front_load": 0.0085493094788737,
+			"rear": "(0.009906, 0.004682, -0.002781)",
+			"rear_load": 0.0213617390213278
+		},
+		"topology": {
+			"bad_boundary_degree": 0,
+			"boundary_vertices": 128,
+			"components": 1,
+			"euler_characteristic": 1,
+			"nonmanifold_edges": 0,
+			"triangles": 896,
+			"vertices": 513
+		}
+	},
+	"passed": true,
+	"scope": "Actual single connected cloth; moving waist attachment, lower trailing/deceleration/settling, layer difference, turns/non-run clip/pause, unchanged PNG/UV/topology and fixed limb proportions. Visual review remains separate."
+}

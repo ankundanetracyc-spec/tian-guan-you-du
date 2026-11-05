@@ -1,0 +1,144 @@
+{
+  "schema": "original-wanderer-anatomical-skin/v2",
+  "source": "yuxu_neimen_parts_v6.png",
+  "displayScale": 0.72,
+  "clothingName": "玉虚·内门常服",
+  "clothingReference": "mods/appearance/yuxu_daily_drafts_20261005/preview/male_neimen.png",
+  "notes": "Source parts use their own UV rectangles. Joint rows correspond to exported shoulder/elbow/wrist and hip/knee/ankle landmarks; no original garment UV or bitmap stretching is reused.",
+  "parts": {
+    "head": {
+      "region": [
+        100,
+        26,
+        268,
+        359
+      ],
+      "bounds": [
+        -9,
+        -104,
+        18,
+        23
+      ],
+      "layer": 80
+    },
+    "torso": {
+      "region": [
+        512,
+        25,
+        174,
+        397
+      ],
+      "bounds": [
+        -7,
+        -89,
+        21,
+        36
+      ],
+      "layer": 60
+    },
+    "far_arm": {
+      "region": [
+        874,
+        23,
+        144,
+        457
+      ],
+      "width": 11.0,
+      "axis": 0.5,
+      "joints": [
+        0.04,
+        0.5,
+        0.83,
+        1.0
+      ],
+      "layer": 20
+    },
+    "near_arm": {
+      "region": [
+        1241,
+        22,
+        140,
+        458
+      ],
+      "width": 11.0,
+      "axis": 0.5,
+      "joints": [
+        0.04,
+        0.5,
+        0.83,
+        1.0
+      ],
+      "layer": 70
+    },
+    "far_leg": {
+      "region": [
+        138,
+        487,
+        186,
+        506
+      ],
+      "width": 15.5,
+      "axis": 0.34,
+      "joints": [
+        0.0,
+        0.4,
+        0.86,
+        1.0
+      ],
+      "layer": 30
+    },
+    "near_leg": {
+      "region": [
+        521,
+        488,
+        177,
+        505
+      ],
+      "width": 15.5,
+      "axis": 0.34,
+      "joints": [
+        0.0,
+        0.4,
+        0.86,
+        1.0
+      ],
+      "layer": 40
+    },
+    "front_panel": {
+      "region": [
+        787,
+        494,
+        319,
+        500
+      ],
+      "bounds": [
+        -9.0,
+        -61.0,
+        30.0,
+        52.0
+      ],
+      "waistCanvasWidth": 28.0,
+      "layer": 50,
+      "rotationResponse": 0.95,
+      "phaseLag": 0.0
+    },
+    "back_panel": {
+      "region": [
+        1164,
+        494,
+        329,
+        503
+      ],
+      "bounds": [
+        -16.0,
+        -61.0,
+        38.0,
+        55.0
+      ],
+      "waistCanvasWidth": 28.0,
+      "layer": 10,
+      "rotationResponse": 1.15,
+      "phaseLag": 0.065
+    }
+  }
+}

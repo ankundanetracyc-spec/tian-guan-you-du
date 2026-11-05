@@ -19,6 +19,7 @@ uniform float path_surge = 0.0;
 uniform float breath_count = 0.0;
 uniform float breath_previous_count = 9.0;
 uniform float breath_reveal = 1.0;
+uniform float presentation_focus = 0.0;
 
 float qi_hash(vec2 p) {
     p = fract(p * vec2(123.34, 456.21));
@@ -252,5 +253,7 @@ void fragment() {
     float with_back = combined_alpha+back_breath.a*(1.0-combined_alpha);
     premultiplied = front_breath.rgb*front_breath.a+premultiplied*(1.0-front_breath.a);
     float total_alpha = front_breath.a+with_back*(1.0-front_breath.a);
-    COLOR = vec4(premultiplied/max(total_alpha,0.0001),total_alpha);
+    vec3 final_ink = premultiplied/max(total_alpha,0.0001);
+    final_ink = mix(final_ink, vec3(0.96, 0.94, 0.84), presentation_focus*0.18);
+    COLOR = vec4(final_ink, mix(total_alpha, min(0.99, total_alpha*1.35), presentation_focus));
 }

@@ -40,6 +40,8 @@ public partial class GameTimeUI : Control
         AddChild(panel);
         var frame = new WorldHudFrame { Position = Vector2.Zero, Size = new Vector2(430, 46) };
         panel.AddChild(frame);
+        var seal = new ColorRect { Position = new Vector2(19, 18), Size = new Vector2(5, 6), Color = new Color("985344"), MouseFilter = MouseFilterEnum.Ignore };
+        panel.AddChild(seal);
         _date = WorldHudStyle.Text("", 22);
         _date.Position = new Vector2(16, 5);
         _date.Size = new Vector2(348, 36);

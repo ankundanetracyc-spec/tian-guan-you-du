@@ -120,6 +120,9 @@ public partial class MainHUD : Control
             button.AddChild(margin); margin.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
             var box = new VBoxContainer { MouseFilter = MouseFilterEnum.Ignore }; box.AddThemeConstantOverride("separation", 5); margin.AddChild(box);
             var title = WorldHudStyle.RichText(entry.Title, 20);
+            title.AddChild(WorldHudArt.Mark("white_stroke", new Vector2(0, 25), new Vector2(62, 3), new Color("536b5a", .6f)));
+            var cinnabar = new ColorRect { Position = new Vector2(-8, 10), Size = new Vector2(3, 3), Color = WorldHudStyle.HealthInk, MouseFilter = MouseFilterEnum.Ignore };
+            title.AddChild(cinnabar);
             box.AddChild(title);
             var objective = WorldHudStyle.RichText(entry.Body, 16, true);
             box.AddChild(objective);
@@ -169,7 +172,7 @@ public partial class MainHUD : Control
             ZIndex = 100, FocusMode = FocusModeEnum.All, ClipContents = true
         };
         panel.SetAnchorsPreset(LayoutPreset.BottomLeft);
-        panel.OffsetLeft = 22; panel.OffsetTop = -172; panel.OffsetRight = 402; panel.OffsetBottom = -22;
+        panel.OffsetLeft = 22; panel.OffsetTop = -164; panel.OffsetRight = 374; panel.OffsetBottom = -22;
         foreach (var state in new[] { "normal", "hover", "pressed" })
             panel.AddThemeStyleboxOverride(state, new StyleBoxEmpty());
         panel.AddThemeStyleboxOverride("focus", new StyleBoxFlat
@@ -195,7 +198,9 @@ public partial class MainHUD : Control
         var heading = new HBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
         heading.AddThemeConstantOverride("separation", 10);
         box.AddChild(heading);
-        _playerNameLabel = WorldHudStyle.Text("修行者", 24);
+        _playerNameLabel = WorldHudStyle.Text("修行者", 22);
+        WorldHudArt.AddLabelPaper(_playerNameLabel, true);
+        _playerNameLabel.AddThemeColorOverride("font_color", new Color("f5f0e3"));
         _playerNameLabel.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         _playerNameLabel.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
         heading.AddChild(_playerNameLabel);
@@ -231,10 +236,11 @@ public partial class MainHUD : Control
         var name = WorldHudStyle.Text(title, 18);
         name.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         caption.AddChild(name);
-        var value = WorldHudStyle.Text("— / —", 20);
+        var value = WorldHudStyle.Text("— / —", 19);
         value.HorizontalAlignment = HorizontalAlignment.Right;
         caption.AddChild(value);
         var bar = WorldHudStyle.Bar(ink);
+        bar.CustomMinimumSize = new Vector2(90, 9);
         group.AddChild(bar);
         return (value, bar);
     }
@@ -293,7 +299,7 @@ public partial class MainHUD : Control
             if (_worldStatusLabel.Visible) statusLineCount++;
         }
         if (GetNodeOrNull<Control>("PlayerStatus") is { } statusPanel)
-            statusPanel.OffsetTop = -172 - 32 * statusLineCount;
+            statusPanel.OffsetTop = -164 - 32 * statusLineCount;
         if (FindButton("BtnRealm") is { } realmButton)
         {
             var realms = GetNodeOrNull<RealmManager>("/root/RealmManager");

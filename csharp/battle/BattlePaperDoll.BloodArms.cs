@@ -17,6 +17,8 @@ public partial class BattlePaperDoll
     /// Both sides use the unmirrored right-facing view; the arm rig mirrors once.</summary>
     public Vector2 side_ink_blood_shoulder(bool near)
     {
+        if (_queueAvatar is not null)
+            return _queueAvatar.ShoulderAnchor(near);
         var idle = near ? new Vector2(_sideFemale ? -110 : -85, -1020)
             : new Vector2(_sideFemale ? 85 : 65, -1080);
         var pose = _sidePose;

@@ -137,7 +137,7 @@ public partial class AlchemySlotBrewPreviewScene
                 foreach (var route in pill.SampleRoutes)
                 {
                     var current = route;
-                    var required = route.Ingredients.Select(i => i.AssistantSlot < 0 ? 8 : UnlockAt(i.AssistantSlot)).Max();
+                    var required = NotebookRequiredAttainment(route);
                     var button = NotebookListButton(route.Name,
                         $"{route.Ingredients.Length}味 · {route.Ingredients.Sum(i => i.Dose)}份 · 造诣{required}",
                         () => SelectNotebookRoute(current));
@@ -210,6 +210,14 @@ public partial class AlchemySlotBrewPreviewScene
                 button.AddThemeStyleboxOverride("normal", QuietRoomStyle.Edge(button.GetMeta("recipe_name", "").AsString() == name, 10));
     }
 
+    private static double NotebookRequiredAttainment(AlchemyRecipeCatalog.SampleRoute route)
+    {
+        int slots = route.Ingredients.Select(i => i.AssistantSlot < 0 ? 8 : UnlockAt(i.AssistantSlot)).DefaultIfEmpty(8).Max();
+        // 内置方已有明确丹阶；自拟配伍只检查药位，不提前推断其成品。
+        var known = AlchemyRecipeCatalog.Pills.FirstOrDefault(p => p.SampleRoutes.Contains(route));
+        return Math.Max(slots, known is null ? 8 : AlchemySlotSimulation.RequiredAttainment(known.Rank));
+    }
+
     private void ShowNotebookDetail(AlchemyRecipeCatalog.SampleRoute? route)
     {
         ClearNotebookChildren(_notebookDetail);
@@ -228,8 +236,9 @@ public partial class AlchemySlotBrewPreviewScene
         var direction = QuietRoomStyle.Text(route.Direction, 15);
         direction.AutowrapMode = TextServer.AutowrapMode.WordSmart;
         _notebookDetail.AddChild(direction);
-        var required = route.Ingredients.Select(i => i.AssistantSlot < 0 ? 8 : UnlockAt(i.AssistantSlot)).Max();
-        _notebookDetail.AddChild(QuietRoomStyle.Text($"{route.Ingredients.Length}味 · {route.Ingredients.Sum(i => i.Dose)}份 · 产量随配伍结算 · 药位需造诣{required}", 15));
+        var required = NotebookRequiredAttainment(route);
+        string requirement = _selectedSaved is null ? "开炼与药位" : "药位";
+        _notebookDetail.AddChild(QuietRoomStyle.Text($"{route.Ingredients.Length}味 · {route.Ingredients.Sum(i => i.Dose)}份 · 产量随配伍结算 · {requirement}需造诣{required}", 15));
         _recipeLoad.Disabled = Attainment < required;
         foreach (var ingredient in route.Ingredients.OrderBy(i => (int)RoleFor(i.AssistantSlot)).ThenBy(i => i.AssistantSlot))
         {
@@ -247,7 +256,7 @@ public partial class AlchemySlotBrewPreviewScene
             row.AddChild(QuietRoomStyle.Text($"{ingredient.Dose}份", 18));
             if (material is not null) SetHover(card, MaterialTooltip(material, ingredient.AssistantSlot));
         }
-        if (Attainment < required) _notebookDetail.AddChild(QuietRoomStyle.Text($"当前造诣不足，需要{required}才能载入全部药位。", 15));
+        if (Attainment < required) _notebookDetail.AddChild(QuietRoomStyle.Text($"当前造诣不足，需要{required}才能载入此方。", 15));
     }
 
     private void LoadNotebookSelection()

@@ -35,7 +35,20 @@ public partial class MainScene : Node2D
         condensation_panel = new CondensationCardGamePanel { Name = "CondensationCardGamePanel" };
         GetNode<CanvasLayer>("CanvasLayer").AddChild(condensation_panel);
         realm_panel=GetNodeOrNull<RealmPanel>("CanvasLayer/RealmPanel");
-        if (realm_panel is not null) realm_panel.PresentationStarted += () => cultivation_ui?.close_panel();
+        if (realm_panel is not null)
+        {
+            realm_panel.SetPresentationReadiness(() => !GetTree().Paused && action_transition?.IsPlaying != true &&
+                _npc_world?.HasPendingSettlement != true && GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.IsSmoothAdvanceBusy != true);
+            realm_panel.PresentationStarted += () =>
+            {
+                cultivation_ui?.close_panel();
+                condensation_panel?.SuspendResultForRealmPresentation();
+            };
+            realm_panel.Closed += () =>
+            {
+                if (IsInsideTree() && !IsQueuedForDeletion()) condensation_panel?.RestoreResultAfterRealmPresentation();
+            };
+        }
         story_dialogue=GetNodeOrNull<StoryDialoguePanel>("DialogueLayer/StoryDialoguePanel");
         npc_interactions=GetNodeOrNull<NpcInteractionPanel>("CanvasLayer/NpcInteractionPanel");
         await JourneyCreationLoadingView.StageAsync(GetTree(), .81, "正在安放百川地貌…");
@@ -174,7 +187,13 @@ public partial class MainScene : Node2D
         if (baigong?.Visible == true) { baigong.close(); return true; }
         // Shared overlays are above the current scene. Never return the scene underneath them.
         if (GetNodeOrNull<EastWoodsDungeonPanel>("SceneLayer/EastWoodsDungeonPanel") is { Visible: true } east_woods_dungeon) { east_woods_dungeon.return_one_level(); return true; }
-        if (location_interior?.Visible == true) { close_world_location(); return true; }
+        if (location_interior?.Visible == true)
+        {
+            // The waking place is the opening's root, not a panel to dismiss into an empty scene.
+            if (_baishiLecture is { departed_qingxi: false }) return false;
+            if (location_interior.return_one_level()) return true;
+            close_world_location(); return true;
+        }
         if (GetNodeOrNull<Control>("SceneLayer/YuxuXianzongOverview") is { Visible: true } yuxuOverview)
         {
             if (yuxuOverview.HasMethod("handle_back") && yuxuOverview.Call("handle_back").AsBool()) return true;
@@ -235,7 +254,12 @@ public partial class MainScene : Node2D
         if(estate is not null) { estate.SlipOpened+=open_qingxi_location; estate.ResidentSelected+=open_qingxi_resident; estate.BackHillTrialRequested+=open_back_hill_trial; estate.MeditationRequested+=open_li_residence_meditation; estate.RestRequested+=rest_at_li_residence; estate.TaskRequested+=open_journal_task; }
         if(back_hill_trial is not null) { back_hill_trial.battle_requested+=resolve_back_hill_beast; back_hill_trial.resource_collected+=collect_back_hill_resource; back_hill_trial.event_requested+=resolve_back_hill_event; back_hill_trial.exploration_finished+=finish_back_hill_trial; }
         if (_world_node_data is { } mapData) _npc_world?.set_world_map(mapData);
-        if (location_interior is not null) location_interior.Closed += close_world_location;
+        if (location_interior is not null)
+        {
+            location_interior.Closed += close_world_location;
+            location_interior.SubsceneEntered += on_baishi_subscene_entered;
+            location_interior.BaishiLocationActionRequested += on_baishi_location_action;
+        }
         if (GetNodeOrNull<Node>("SceneLayer/YuxuXianzongOverview") is { } yuxu && yuxu.HasSignal("overview_closed"))
             yuxu.Connect("overview_closed", Callable.From(on_yuxu_overview_closed));
         if (GetNodeOrNull<Node>("SceneLayer/YuxuXianzongOverview") is { } yuxuPeak && yuxuPeak.HasSignal("peak_selected"))
@@ -372,6 +396,7 @@ public partial class MainScene : Node2D
         {
             if (target.complete_condensation(finalScore))
             {
+                condensation_panel?.SuspendResultForRealmPresentation();
                 mark_save_dirty();
                 refresh_qingxi_quest();
             }
@@ -435,11 +460,15 @@ public partial class MainScene : Node2D
     public void open_world_npc_actions(WorldNpcData npc)
     {
         if (!GodotObject.IsInstanceValid(npc)) return;
+        if (_nodeWorldMap?.IsVisibleInTree() == true && _nodeWorldMap.HasMethod("stop_free_travel"))
+            _nodeWorldMap.Call("stop_free_travel");
         var name = string.IsNullOrWhiteSpace(npc.npc_name) ? "无名修士" : npc.npc_name;
         _activeWorldNpcInteractionId = npc.npc_id;
-        npc_interactions?.show_dynamic_menu(name, () =>
+        var selectedId = npc.npc_id;
+        WorldNpcData? ResolveTarget() => baishi_present_actor(selectedId) ?? _npc_world?.get_npc(selectedId);
+        npc_interactions?.show_npc_page(npc, ResolveTarget, () =>
         {
-            var current = _npc_world?.get_npc(_activeWorldNpcInteractionId);
+            var current = ResolveTarget();
             return current is not null && GodotObject.IsInstanceValid(current)
                 ? collect_world_npc_interaction_actions(current).ToArray()
                 : System.Array.Empty<NpcInteractionAction>();
@@ -478,6 +507,7 @@ public partial class MainScene : Node2D
     {
         if (_story_free_start)
         {
+            refresh_baishi_progress();
             RefreshJournalTracker();
             mark_save_dirty();
             return;
@@ -517,6 +547,7 @@ public partial class MainScene : Node2D
         for (var i = 0; i < _completed_quests.Count; i++) _completed_quests[i] = IdentifyJournalTask(_completed_quests[i]);
         var entries = new List<JournalPanel.Entry> { get_phase_goal() };
         if (_active_quest is not null) entries.Add(_active_quest);
+        if (_baishiLecture is not null) entries.Add(baishi_current_task());
         if (has_open_world_access()) entries.Add(get_cultivation_guidance_task());
         entries.AddRange(get_yuxu_lineage_journal_tasks());
         if (get_active_yuxu_true_disciple_lecture_journal_task() is { } lecture) entries.Add(lecture);
@@ -532,9 +563,7 @@ public partial class MainScene : Node2D
     private JournalPanel.Entry get_cultivation_guidance_task()
     {
         var realm = player?.cultivation_realm ?? "凡人";
-        var tier = 0;
-        if (realm.StartsWith("云息", StringComparison.Ordinal) && realm.EndsWith("层", StringComparison.Ordinal))
-            int.TryParse(realm.AsSpan(2, realm.Length - 3), out tier);
+        var tier = RealmManager.get_cloud_realm_tier(realm);
 
         if (tier is >= 1 and < 6)
             return new("精进修为", $"当前境界：{realm}。继续修行与历练，先达到云息六层，为凝核作准备。", "长期主线", "个人修行", "进行中");
@@ -543,7 +572,7 @@ public partial class MainScene : Node2D
         if (tier is 7 or 8)
             return new("稳固灵核", $"当前境界：{realm}。继续养护灵核并精进修为，目标是云息九层。", "长期主线", "个人修行", "进行中");
         if (tier == 9)
-            return new("核成阵", "你已修至云息九层。继续精进，向云息十层迈进；此处进入核成阵节点。", "长期主线", "个人修行", "进行中");
+            return new("晋入云息十层", "你已修至云息九层。积累足够灵力、保持有效主修，并备妥归元定息丹后，可在静室闭关突破。晋入十层后开始归元九息。", "长期主线", "个人修行", "进行中");
 		if (tier >= 10 && player?.is_yunxi_complete() == true)
 			return new("准备铸玄基", "归元九息已成，云息十层圆满。铸玄基后的修行内容暂未开放。", "长期主线", "个人修行", "进行中");
 		if (tier >= 10)
@@ -551,7 +580,11 @@ public partial class MainScene : Node2D
         return new("继续精进", $"当前境界：{realm}。继续修行，在修炼界面查看当前开放的境界目标与突破条件。", "长期主线", "个人修行", "进行中");
     }
 
-    private JournalPanel.Entry get_phase_goal() => has_open_world_access()
+    private JournalPanel.Entry get_phase_goal() => _baishiLecture is { finished: false }
+        ? (_baishiLecture.met_fang
+            ? new("白石问道", "随方远到白石赴会，查验灵根、选择首卷并踏入云息，再决定去向。", "阶段目标", "白石城", "进行中", Id: "phase.baishi")
+            : new("身在何处", "先向身旁的年轻人问清情况。", "阶段目标", "溪边野地", "进行中", Id: "phase.baishi"))
+        : has_open_world_access()
         ? new("行旅与积累", "在百川区域自由选择修炼、交易、旅行、探索、委托或接触势力，积累下一次境界突破所需的资源与条件。", "阶段目标", "百川区域", "进行中")
         : new("初醒青溪", "确认身处何地并踏入云息，取得离村资格。", "阶段目标", "青溪里", "进行中");
 
@@ -681,6 +714,8 @@ public partial class MainScene : Node2D
     private void on_player_item_acquired(Character character, ItemData item, int count)
     {
         if (character != player || item is null || count <= 0) return;
+        if (character.entity_data is HumanData acquired && item.gongfa is GongfaResource fullBook && acquired.baishi_first_volume_path == fullBook.ResourcePath)
+            acquired.baishi_first_volume_only = false;
         var description = string.IsNullOrWhiteSpace(item.description) ? "已收入行囊。" : item.description.Trim();
         hud?.show_event_notification("收获入囊", $"{item.entity_name} ×{count} · {item.item_category}\n{description}", "物资");
     }
@@ -837,6 +872,7 @@ public partial class MainScene : Node2D
     private void on_action_time_changed()
     {
         info?.refresh_current_age();
+        if (_baishiLecture is not null) { refresh_baishi_progress(); RefreshJournalTracker(); }
         if (player?.entity_data is HumanData human && human.sect_affiliation_id == YuxuSectId)
         {
             sync_yuxu_true_disciple_lecture_schedule(human);
@@ -919,10 +955,13 @@ public partial class MainScene : Node2D
     }
     public void open_world_npc_talk(WorldNpcData npc)
     {
+        if (try_talk_baishi_actor(npc)) return;
         begin_npc_social_talk(npc, false);
     }
     private void open_world()
     {
+        _baishiLectureSpaceOpen = false;
+        hud?.set_paper_scene(false);
         if (_east_woods_dungeon?.Visible == true)
         {
             _east_woods_dungeon.locate_exit();
@@ -1019,11 +1058,17 @@ public partial class MainScene : Node2D
             open_east_woods_dungeon();
             return;
         }
+        if (node_id == BaishiNodeId)
+        {
+            _baishiLectureSpaceOpen = false;
+            hud?.set_paper_scene(true);
+        }
         location_interior?.show_for(node, _npc_world);
     }
 
     private void close_world_location()
     {
+        if (_baishiLecture is { departed_qingxi: false }) { show_baishi_opening(); return; }
         location_interior?.hide_roster();
         location_interior?.Hide();
         open_world();
@@ -1211,7 +1256,13 @@ public partial class MainScene : Node2D
         if(npc is not null) story_dialogue?.show_npc_speech(speaker,body,npc,on_closed);
         else story_dialogue?.show_npc_speech(speaker,body,on_closed);
     }
-    private static WorldNpcData? resolve_scripted_dialogue_npc(string speaker) => QingxiResidentAppearance.Find(speaker);
+    private WorldNpcData? resolve_scripted_dialogue_npc(string speaker)
+    {
+        if (_baishiLecture?.companion.npc_name == speaker) return _baishiLecture.companion;
+        if (_baishiLecture?.host_snapshot?.npc_name == speaker) return _baishiLecture.host_snapshot;
+        if (_baishiLecture?.representatives.FirstOrDefault(n => n.npc_name == speaker) is { } representative) return representative;
+        return QingxiResidentAppearance.Find(speaker);
+    }
     private void show_player_thought(string body,Action? on_closed=null)
     {
         if(player is not null) story_dialogue?.show_player_thought(player.entity_name,body,player,on_closed);

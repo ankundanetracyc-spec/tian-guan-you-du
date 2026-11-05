@@ -199,14 +199,25 @@ public sealed partial class ProcessForgingTrial
     public Dictionary<string, ItemData> Materials { get; } = [];
     private readonly Dictionary<string, MaterialSnapshot> _facts = [];
     private readonly string _parameterText;
+    // 物品定义按目录生命周期持有。反复加载同一路径的 C# Resource 时，自动回收与
+    // ResourceLoader 复用原生资源可能交错；不能只保留最后被选中的十一种材料。
+    private static readonly Dictionary<string, Resource> MaterialDefinitions = new(StringComparer.Ordinal);
     public ProcessForgingTrial()
     {
         _parameters = JsonSerializer.Deserialize<Config>(Godot.FileAccess.GetFileAsString(ConfigPath)) ?? throw new InvalidOperationException("炼器参数为空");
         // 当前生产参数只定义公共规则；Profiles 仍保留给旧成器快照和隔离复算。
         _parameters.Profiles.Clear();
-        foreach (var path in MaterialPaths("res://resources/entities/items"))
+        var paths = MaterialPaths("res://resources/entities/items").ToHashSet(StringComparer.Ordinal);
+        foreach (var removed in MaterialDefinitions.Keys.Where(path => !paths.Contains(path)).ToArray()) MaterialDefinitions.Remove(removed);
+        foreach (var path in paths.OrderBy(path => path, StringComparer.Ordinal))
         {
-            if (ResourceLoader.Load(path) is not ItemData { craft_data: MaterialCraftData { forging: { } forging } } item) continue;
+            if (!MaterialDefinitions.TryGetValue(path, out var definition) || !GodotObject.IsInstanceValid(definition))
+            {
+                definition = ResourceLoader.Load(path);
+                if (definition is null) throw new InvalidOperationException("物品定义加载失败：" + path);
+                MaterialDefinitions[path] = definition;
+            }
+            if (definition is not ItemData { craft_data: MaterialCraftData { forging: { } forging } } item) continue;
             if (string.IsNullOrWhiteSpace(item.entity_name) || string.IsNullOrWhiteSpace(item.definition_id.ToString()))
                 throw new InvalidOperationException("炼器材料缺少名称或定义身份：" + path);
             if (!Materials.TryAdd(item.entity_name, item))

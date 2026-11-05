@@ -94,7 +94,7 @@ public static partial class AlchemySlotSimulation
     {
         var target = ElementTarget(pill.Id);
         double distance = .5 * Elements.Sum(e => Math.Abs(vector.GetValueOrDefault(e) - target.GetValueOrDefault(e)));
-        string anchor = pill.Id switch { "huichun" => "木", "tongmai" => "水", _ => "土" };
+        string anchor = AlchemyRecipeCatalog.Anchor(pill.Id);
         return Math.Clamp(1 + .25 * (.50 - distance) + .125 *
             (vector.GetValueOrDefault(ElementThatGenerates(anchor)) - vector.GetValueOrDefault(ElementThatOvercomes(anchor))), .75, 1.25);
     }

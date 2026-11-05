@@ -24,7 +24,13 @@ public partial class MainScene
     {
         if (npc is null || !GodotObject.IsInstanceValid(npc)) return "对方已不在场，人物名单可能刚刚更新。";
         if (!npc.is_alive) return "对方已不在场。";
+        if (baishi_present_actor(npc.npc_id) is not null) return "";
         if (player is null) return "当前没有可以进行交互的角色。";
+        if (_nodeWorldMap?.IsVisibleInTree() == true && _nodeWorldMap.HasMethod("can_contact_map_npc"))
+        {
+            if (!string.IsNullOrWhiteSpace(npc.dungeon_id)) return "对方正在其他历练之中。";
+            return get_free_world_roster().Any(n => n.npc_id == npc.npc_id) ? "" : "对方距离较远，请先靠近。";
+        }
         if (npc.is_traveling) return "对方正在旅途中，抵达后才能交谈。";
         if (_east_woods_dungeon?.Visible == true)
             return npc.dungeon_id == EastWoodsDungeonRules.DungeonId && npc.dungeon_node_id == _east_woods_dungeon.get_current_route_node_id()

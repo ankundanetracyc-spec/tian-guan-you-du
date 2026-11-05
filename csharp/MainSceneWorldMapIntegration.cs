@@ -1,4 +1,5 @@
 using Godot;
+using System.Linq;
 
 /// <summary>Connects the current node to the shared world-character roster.</summary>
 public partial class MainScene
@@ -41,8 +42,19 @@ public partial class MainScene
 
     private void refresh_node_world_character_list(bool force = false)
     {
-        if (_nodeWorldMap?.Visible != true || _tileWorldTravelInProgress || _npc_world is null) return;
+        if (_nodeWorldMap?.Visible != true || _npc_world is null) return;
         if (GetTree().GetFirstNodeInGroup("cell_character_list") is not CellCharacterList rosterPanel) return;
+        if (_nodeWorldMap.HasMethod("get_nearby_person_ids"))
+        {
+            if (_tileWorldTravelInProgress) return;
+            var people = get_free_world_roster();
+            var context = "free-world:" + _nodeWorldMap.Call("get_current_location_runtime_id").AsString() + ":" + string.Join("|", people.Select(n => n.npc_id));
+            if (!force && _nodeRosterContextInitialized && _lastNodeRosterContext == context) return;
+            _nodeRosterContextInitialized = true;
+            _lastNodeRosterContext = context;
+            rosterPanel.show_world_npcs(people, context);
+            return;
+        }
         var id = _nodeWorldMap.Call("get_current_node").AsString();
         if (string.IsNullOrEmpty(id)) return;
         var cell = _npc_world.node_world_cell_for_node_id(id);

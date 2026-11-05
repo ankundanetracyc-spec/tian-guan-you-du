@@ -1,0 +1,339 @@
+{
+	"actual_speed": 0.0,
+	"backward": false,
+	"base_speed": 114.0,
+	"clip": "Idle",
+	"clock": 0.0333333333333333,
+	"delta": 0.0333333333333333,
+	"enemy": [
+		853.166687011719,
+		950.0
+	],
+	"facing": 1.0,
+	"frame": -1,
+	"hp": 100,
+	"label": "静止",
+	"native": {
+		"camera_zoom": [
+			0.923456788063049,
+			0.923456788063049
+		],
+		"foot_origin": [
+			740.12353515625,
+			364.716613769531
+		],
+		"points": {
+			"far_forearm": [
+				738.548706054688,
+				322.603210449219
+			],
+			"far_hand": [
+				740.262451171875,
+				327.766052246094
+			],
+			"far_upper": [
+				738.977294921875,
+				312.858459472656
+			],
+			"head": [
+				740.199829101562,
+				306.407348632812
+			],
+			"near_forearm": [
+				743.21142578125,
+				320.5849609375
+			],
+			"near_hand": [
+				747.6015625,
+				314.736755371094
+			],
+			"near_upper": [
+				739.888427734375,
+				313.53466796875
+			],
+			"pelvis": [
+				741.051147460938,
+				327.323425292969
+			],
+			"torso": [
+				741.111938476562,
+				326.289794921875
+			]
+		}
+	},
+	"phase": 0.0333333333333333,
+	"player": [
+		1500.0,
+		950.0
+	],
+	"profiles": {
+		"new": {
+			"bone_points": {
+				"far_calf": [
+					2.63835144042969,
+					-36.720458984375
+				],
+				"far_foot": [
+					1.818603515625,
+					-10.5491638183594
+				],
+				"far_forearm": [
+					-2.36846923828125,
+					-63.3390045166016
+				],
+				"far_hand": [
+					0.208976745605469,
+					-55.5740432739258
+				],
+				"far_thigh": [
+					0.206268310546875,
+					-62.0063171386719
+				],
+				"far_upper": [
+					-1.72389221191406,
+					-77.9952163696289
+				],
+				"head": [
+					0.114837646484375,
+					-87.6977767944336
+				],
+				"near_calf": [
+					-1.93038940429688,
+					-30.2848815917969
+				],
+				"near_foot": [
+					-5.85762023925781,
+					-4.39692687988281
+				],
+				"near_forearm": [
+					4.64426422119141,
+					-66.3744735717773
+				],
+				"near_hand": [
+					11.2471160888672,
+					-75.1701812744141
+				],
+				"near_thigh": [
+					0.114822387695312,
+					-55.6049575805664
+				],
+				"near_upper": [
+					-0.353538513183594,
+					-76.9782180786133
+				],
+				"pelvis": [
+					1.39509582519531,
+					-56.2397232055664
+				],
+				"torso": [
+					1.48654174804688,
+					-57.7943420410156
+				]
+			},
+			"bones": 18,
+			"garment": {
+				"faceless": true,
+				"fixed_source_scale": 0.914477855127363,
+				"gameplay_modified": false,
+				"hd_texture_root": "res://art/guigu_male101_ink_hd",
+				"high_definition_materials": true,
+				"interpolation_weight": 0.938775524503238,
+				"mode": "source_model_direct_vertex_sampling",
+				"native_height": 104.0,
+				"rounded_shoulder_underlays": 2,
+				"sampled_frames": [
+					2,
+					3
+				],
+				"sampled_source_clip": "Idle",
+				"secondary_limit": "secondaryFrames adds a project-authored damped final-cloth-segment surrogate; neither DynamicBone parameters nor the original Animator were reconstructed.",
+				"secondary_surrogate": true,
+				"source_attach_points": 51,
+				"source_data": "E:/stacklands/resources/appearance/guigu_male101/model_frames_20261104.json",
+				"source_foot_y": 9.80515,
+				"source_mesh_count": 7,
+				"source_method": "Source world bone matrices * source bindpose matrices * original Sprite-local vertices, original unmodified weights. Cubic streamed channels and constant channels, unknown paths excluded, 3D source transforms projected to XY.",
+				"source_phase": 0.0204081633646058,
+				"strict_hd_required": true
+			},
+			"meshes": 7
+		},
+		"old": {
+			"bone_points": {
+				"far_calf": [
+					4.96699523925781,
+					-34.1845626831055
+				],
+				"far_foot": [
+					3.01076507568359,
+					-5.16127014160156
+				],
+				"far_forearm": [
+					-4.74903106689453,
+					-79.4342803955078
+				],
+				"far_hand": [
+					-2.98818969726562,
+					-65.052734375
+				],
+				"far_thigh": [
+					0.860214233398438,
+					-61.4045944213867
+				],
+				"far_upper": [
+					-0.595512390136719,
+					-90.136474609375
+				],
+				"head": [
+					-0.420417785644531,
+					-98.3944702148438
+				],
+				"near_calf": [
+					0.701385498046875,
+					-33.7224349975586
+				],
+				"near_foot": [
+					-4.47312164306641,
+					-5.16128540039062
+				],
+				"near_forearm": [
+					-6.01259613037109,
+					-78.0129776000977
+				],
+				"near_hand": [
+					1.20968627929688,
+					-65.4524002075195
+				],
+				"near_thigh": [
+					0.0,
+					-61.4045944213867
+				],
+				"near_upper": [
+					-4.29472351074219,
+					-89.3636474609375
+				],
+				"pelvis": [
+					0.0,
+					-61.4045944213867
+				],
+				"torso": [
+					1.29032135009766,
+					-72.1572799682617
+				]
+			},
+			"bones": 21,
+			"garment": {
+				"acceleration_drive": 0.0,
+				"angles": [
+					0.0,
+					0.0,
+					0.0
+				],
+				"angular_velocity": [
+					0.0,
+					0.0,
+					0.0
+				],
+				"arm_speed_correction": [
+					0.0,
+					0.0,
+					0.0
+				],
+				"arm_swing_scale": 0.818181818181818,
+				"continuous_mesh": false,
+				"front_bones_resting": true,
+				"gait_amount": 0.0,
+				"gait_cadence_hz": 1.2,
+				"gait_lift": 14.5,
+				"gait_phase": 0.0,
+				"gait_phase_advance_location": "update_cloth_once_per_clock",
+				"gait_speed_actual": 0.0,
+				"gait_speed_smoothed": 0.0,
+				"gait_stride_half": 18.0,
+				"gait_style": "slow",
+				"ground_shift": 0.0,
+				"hidden_leg_meshes": 0,
+				"leg_rendering": "original_full_legs_and_boots",
+				"locomotion_style": "ground",
+				"lowest_cloth_y": -13.094313621521,
+				"mode": "cape_like_open_robe",
+				"original_split_panels": true,
+				"outline_samples": 0,
+				"pants_uv_clipped": false,
+				"rear_anchor": [
+					0.0,
+					-56.2432861328125
+				],
+				"rear_tip": [
+					0.0,
+					-11.5121459960938
+				],
+				"rear_wind": 0.0,
+				"reference_anchor_acceleration": [
+					0.0,
+					0.0
+				],
+				"reference_anchor_drive": 0.0,
+				"reference_anchor_reset_count": 0,
+				"reference_anchor_samples": 1,
+				"reference_arm_samples": {},
+				"reference_arm_stride_half": 12.0,
+				"reference_chest_angle": 0.0,
+				"reference_chest_counter": 0.0,
+				"reference_chest_target": 0.0,
+				"reference_chest_velocity": 0.0,
+				"reference_cloth_base": 0.559675545030084,
+				"reference_elastic_tail": true,
+				"reference_far_arm_pose": "source_zuobi_rear_swing",
+				"reference_far_hand_from_shoulder": [
+					-2.39267730712891,
+					25.083740234375
+				],
+				"reference_front_angles": [
+					0.0,
+					0.0,
+					0.0
+				],
+				"reference_front_angular_velocity": [
+					0.0,
+					0.0,
+					0.0
+				],
+				"reference_front_tip_from_anchor": [
+					0.0,
+					44.7311401367188
+				],
+				"reference_hip_loading": 0.0,
+				"reference_lean_inertia": 0.0,
+				"reference_measured_body_lean": -0.101089334705756,
+				"reference_near_arm_pose": "source_youbi_held_guard_pose_only",
+				"reference_near_hand_from_shoulder": [
+					5.50440979003906,
+					23.911247253418
+				],
+				"reference_parameter_source": "local_verified_source_wrist_and_lean_with_project_ik_and_cloth_fit",
+				"reference_pelvis_drop": 0.0147743225097656,
+				"reference_pose_active": true,
+				"reference_rear_tip_from_anchor": [
+					0.0,
+					44.7311401367188
+				],
+				"reference_source_phase": 0.770833333333333,
+				"reference_target_wind_load": 0.0,
+				"reference_trailing_wind_load": 0.0,
+				"reset_count": 0,
+				"rest_hem_source_y": 1340.0,
+				"simulation_steps": 1,
+				"source_geometry_preserved": true,
+				"support_model": "hip_hung_rear_chain_gravity_inertia",
+				"travel_drag": 0.0,
+				"visible_leg_meshes": 2,
+				"walk_profile": "guigu_guard_run_retargeted_to_project_bone_lengths",
+				"walk_support_fraction": 0.54
+			},
+			"meshes": 7
+		}
+	},
+	"seconds": 0.0,
+	"stamina": 6.0
+}

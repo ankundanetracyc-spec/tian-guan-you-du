@@ -3,7 +3,7 @@ using GArray = Godot.Collections.Array;
 
 public sealed record SpatialInventoryRegion(string Id, string Name, int Width, int Height);
 public sealed record SpatialInventoryEntry(string InstanceId, string ItemPath, string ArtifactId, string RegionId,
-    int X, int Y, int Width, int Height, int Rotation, int SlotIndex, ItemData? Item, ArtifactInstanceData? Artifact, bool IsEquipped)
+    int X, int Y, int Width, int Height, int Rotation, int SlotIndex, ItemData? Item, ArtifactInstanceData? Artifact, bool IsEquipped, string ContainerId = "")
 {
     public bool IsPlaced => !string.IsNullOrEmpty(RegionId) && X >= 0 && Y >= 0;
     public Vector2I Size => new(Width, Height);
@@ -189,11 +189,14 @@ public partial class Character
         foreach (var (path, count) in outgoing)
         {
             var reservedForBreakthrough = !_consumingBreakthroughReservation && human.is_in_breakthrough_retreat && human.breakthrough_pill_path == path ? 1 : 0;
-            if (count < 0 || get_inventory_total_count(path) - get_equipped_item_count(path) - reservedForBreakthrough < count) return false;
+            if (count < 0 || get_inventory_total_count(path) - get_equipped_item_count(path) - get_nonempty_storage_ring_count(path) - reservedForBreakthrough < count) return false;
             int remaining = count;
             for (int i = paths.Count - 1; i >= 0 && remaining > 0; i--)
             {
                 if (paths[i] != path) continue;
+                int rowSlot = slots[i];
+                var physical = human.inventory_placements.FirstOrDefault(p => p.row_slot == rowSlot);
+                if (physical is not null && has_nonempty_storage_ring(physical.instance_id)) continue;
                 int amount = Math.Min(counts[i], remaining); counts[i] -= amount; remaining -= amount;
                 if (counts[i] == 0) { paths.RemoveAt(i); counts.RemoveAt(i); slots.RemoveAt(i); }
             }
@@ -207,6 +210,7 @@ public partial class Character
         {
             var item = load_inventory_item(path);
             if (count > 0 && (item is null || !GongfaAvailability.IsItemEnabled(item))) return false;
+            if (count > 0 && item is StorageRingItemData ring && ring.validate_definition().Count > 0) return false;
             for (int n = 0; n < count; n++) { paths.Add(path); counts.Add(1); slots.Add(next++); }
         }
         return plan_spatial_inventory(spatial_candidates(paths, slots, human.artifact_inventory, human.artifact_inventory_positions), human.inventory_placements, out placements, preserveUnplaced: incomingCount == 0);

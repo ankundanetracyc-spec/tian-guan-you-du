@@ -23,7 +23,7 @@ public static class BattleActionResolver
 
         var finalDamage = Mathf.Max(Mathf.RoundToInt(damage), 1);
         var blocked = damageType == "physical" ? Mathf.Min(Mathf.Max(block_stacks, 0), finalDamage) : 0;
-        finalDamage = apply_defense(finalDamage - blocked, damageType, defender, skill.physical_defense_ignore_ratio, ForgedEquipmentLoadout.WeaponIgnore(attacker, skill) + Math.Max(0, skill.forged_flat_ignore));
+        finalDamage = apply_defense(finalDamage - blocked, damageType, defender, skill.physical_defense_ignore_ratio, ForgedEquipmentLoadout.WeaponIgnore(attacker, skill));
         return new(false, critical, finalDamage, blocked);
     }
 

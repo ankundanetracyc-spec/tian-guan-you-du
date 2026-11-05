@@ -18,6 +18,8 @@ public static partial class AlchemySlotSimulation
     private static readonly string[] ZuoUtilities = ["破", "化", "固", "镇", "护", "明", "藏"];
     private static readonly string[] ShiUtilities = ["通", "行", "引", "藏"];
 
+    public static double RequiredAttainment(int pillRank) => MasteryThreshold[Math.Clamp(10 - pillRank, 1, 9)];
+
     public enum SlotRole { Jun, Chen, Zuo, Shi }
 
     public static int RoleCapacity(SlotRole role, double attainment) => role switch
@@ -139,23 +141,11 @@ public static partial class AlchemySlotSimulation
         if (main is null)
             return Blocked(AlchemyRecipeCatalog.Pills[0], "先放入一味君药。", SpiritOccupation(inputs), 0, "尚未选君药，无法开始炼制。");
 
-        double totalDose = inputs.Sum(input => (double)input.Dose);
-        var candidates = AlchemyRecipeCatalog.Pills
-            .Where(pill => Grade(main.Craft, pill.CoreUtility) > 0)
-            .Select(pill => SimulateForPill(pill, inputs, attainment, AvailableSpirit(totalSpirit, otherSpiritOccupation), requestedCount))
-            .ToArray();
-
-        if (candidates.Length == 0)
+        var selected = IdentifyPill(inputs);
+        if (selected is null)
             return SimulateUnrecognized(inputs, attainment, AvailableSpirit(totalSpirit, otherSpiritOccupation));
-
-        // 若同一核心功用对应多个已知丹种，优先君药较高品级核心，再比较实际成形结果。
-        // 目前三种试演丹的核心功用互不重复，因此常规情况只有一个候选。
-        var chosen = candidates
-            .OrderByDescending(result => Grade(main.Craft, result.CoreUtility))
-            .ThenByDescending(result => result.CanSimulate)
-            .ThenByDescending(result => result.OutputCount > 0)
-            .ThenByDescending(result => result.Quality)
-            .First();
+        // 先识别再检查准入与评分，不以更高丹效或可开炼与否倒选丹种。
+        var chosen = SimulateForPill(selected, inputs, attainment, AvailableSpirit(totalSpirit, otherSpiritOccupation), requestedCount);
         var details = new List<string>
         {
             $"成品由投料推导：君药核心「{chosen.CoreUtility}」对应{chosen.ProductName}；其余药材共同改变成丹、品质与药效。"
@@ -169,7 +159,7 @@ public static partial class AlchemySlotSimulation
         var main = inputs.FirstOrDefault(input => input.IsMain);
         var mainGrade = main is null ? 0 : Grade(main.Craft, pill.CoreUtility);
         var pillGrade = Math.Clamp(10 - pill.Rank, 1, 9);
-        var requiredAttainment = MasteryThreshold[pillGrade];
+        var requiredAttainment = RequiredAttainment(pill.Rank);
 
         if (main is null)
             return Blocked(pill, "先放入一味君药。", 0, 0, "尚未选君药，无法判断成丹。");
@@ -232,7 +222,7 @@ public static partial class AlchemySlotSimulation
             details.Add("普通失败不生成丹药或药渣；正式事务仍扣材料与精力，独立试演免扣。");
         }
 
-        details.Add("成品模板只读取君药核心用于识别丹种；臣、佐、使不指定固定药材或固定辅功，实际触发的功用按所在角色进入不同结算通道。");
+        details.Add("丹种由君药核心、整炉五行与阴阳识别；臣、佐、使不指定固定药材或固定辅功，实际触发的功用按所在角色进入不同结算通道。");
         details.AddRange(inputs.Select(input => DescribeRoleFunctions(pill, input)));
 
         return new Result(true, "", exploded, ordinaryFailure, metrics.CandidateCount, outputCount, quality, qualityName,
@@ -331,28 +321,31 @@ public static partial class AlchemySlotSimulation
     public sealed record SpiritLoad(Input Material, double BaseLoad, double FunctionLoad,
         double RoleMultiplier, double DoseMultiplier, double Occupation, string Functions);
 
-    public static IReadOnlyList<SpiritLoad> SpiritLoads(IReadOnlyList<Input> inputs) => inputs.Select(input =>
+    public static IReadOnlyList<SpiritLoad> SpiritLoads(IReadOnlyList<Input> inputs, string? selectedCore = null)
     {
-        var functions = input.Craft.utilities
-            .Where(entry => entry is not null && !string.IsNullOrWhiteSpace(entry.utility_id))
-            .Select(entry => entry.utility_id).Distinct(StringComparer.Ordinal).ToArray();
-        var coreFunctions = functions.Where(utility => AlchemyRecipeCatalog.Pills.Any(pill => pill.CoreUtility == utility)).ToArray();
-        var active = functions.Where(utility => input.IsMain
-            ? coreFunctions.Length == 0 || coreFunctions.Contains(utility, StringComparer.Ordinal)
-            : CanFunctionAct(input.Role, utility)).ToArray();
-        int materialGrade = Math.Clamp(input.Craft.material_grade_value(), 0, 27);
-        double baseLoad = 1.0 + .13 * materialGrade + .0065 * materialGrade * materialGrade;
-        double functionLoad = active.Sum(utility => SpiritFunctionCosts[Grade(input.Craft, utility)]);
-        double roleMultiplier = input.Role switch { SlotRole.Jun => 1.4, SlotRole.Chen => 1.2, SlotRole.Zuo => 1, _ => .9 };
-        double doseMultiplier = 1 + .40 * Math.Max(0d, input.Dose - 1) + .04 * Math.Pow(Math.Max(0d, input.Dose - 1), 2);
-        return new SpiritLoad(input, baseLoad, functionLoad, roleMultiplier, doseMultiplier,
-            (baseLoad + functionLoad) * roleMultiplier * doseMultiplier,
-            string.Join("、", active.Select(utility => $"{utility}{MaterialCraftData.utility_grade_name(Grade(input.Craft, utility))}")));
-    }).ToArray();
+        selectedCore ??= IdentifyPill(inputs)?.CoreUtility ?? "";
+        return inputs.Select(input =>
+        {
+            var functions = input.Craft.utilities
+                .Where(entry => entry is not null && !string.IsNullOrWhiteSpace(entry.utility_id))
+                .Select(entry => entry.utility_id).Distinct(StringComparer.Ordinal).ToArray();
+            var active = functions.Where(utility => input.IsMain
+                ? utility == selectedCore
+                : CanFunctionAct(input.Role, utility)).ToArray();
+            int materialGrade = Math.Clamp(input.Craft.material_grade_value(), 0, 27);
+            double baseLoad = 1.0 + .13 * materialGrade + .0065 * materialGrade * materialGrade;
+            double functionLoad = active.Sum(utility => SpiritFunctionCosts[Grade(input.Craft, utility)]);
+            double roleMultiplier = input.Role switch { SlotRole.Jun => 1.4, SlotRole.Chen => 1.2, SlotRole.Zuo => 1, _ => .9 };
+            double doseMultiplier = 1 + .40 * Math.Max(0d, input.Dose - 1) + .04 * Math.Pow(Math.Max(0d, input.Dose - 1), 2);
+            return new SpiritLoad(input, baseLoad, functionLoad, roleMultiplier, doseMultiplier,
+                (baseLoad + functionLoad) * roleMultiplier * doseMultiplier,
+                string.Join("、", active.Select(utility => $"{utility}{MaterialCraftData.utility_grade_name(Grade(input.Craft, utility))}")));
+        }).ToArray();
+    }
 
     // 各味保留小数，只在整炉合计后向上取整，防止拆味逐项取整形成额外负担。
-    public static int SpiritOccupation(IReadOnlyList<Input> inputs) =>
-        (int)Math.Min(int.MaxValue, Math.Ceiling(Math.Round(SpiritLoads(inputs).Sum(line => line.Occupation), 8)));
+    public static int SpiritOccupation(IReadOnlyList<Input> inputs, string? selectedCore = null) =>
+        (int)Math.Min(int.MaxValue, Math.Ceiling(Math.Round(SpiritLoads(inputs, selectedCore).Sum(line => line.Occupation), 8)));
 
     public static int AvailableSpirit(int total, int otherOccupation) => Math.Max(0, total - Math.Max(0, otherOccupation));
 
@@ -402,7 +395,7 @@ public static partial class AlchemySlotSimulation
             + CommonUtilities.Count(utility => CanFunctionAct(input.Role, utility) && Grade(input.Craft, utility) > 0));
         var count = inputs.Select(input => input.Path).Distinct(StringComparer.Ordinal).Count();
         var totalDose = inputs.Sum(input => (double)input.Dose);
-        int spirit = SpiritOccupation(inputs);
+        int spirit = SpiritOccupation(inputs, pill.CoreUtility);
 
         var utilityPower = new Dictionary<string, double>(StringComparer.Ordinal);
         foreach (var utility in usedUtilities)
@@ -476,7 +469,7 @@ public static partial class AlchemySlotSimulation
             foreach (var element in Elements) elementVector[element] /= deliveredPerPill;
         var target = ElementTarget(pill.Id);
         double distance = .5 * Elements.Sum(element => Math.Abs(elementVector[element] - target.GetValueOrDefault(element)));
-        string anchor = pill.Id switch { "huichun" => "木", "tongmai" => "水", _ => "土" };
+        string anchor = AlchemyRecipeCatalog.Anchor(pill.Id);
         string producing = ElementThatGenerates(anchor);
         string overcoming = ElementThatOvercomes(anchor);
         double generatingShare = elementVector.GetValueOrDefault(producing);
@@ -582,12 +575,27 @@ public static partial class AlchemySlotSimulation
         }
     }
 
-    private static Dictionary<string, double> ElementTarget(string pillId) => pillId switch
+    private static Dictionary<string, double> ElementTarget(string pillId) => AlchemyRecipeCatalog.ElementTarget(pillId);
+
+    /// <summary>以基础得率参考质量识别，不读取丹效、存档丹方名或实际逐颗分配。</summary>
+    public static AlchemyRecipeCatalog.PillType? IdentifyPill(IReadOnlyList<Input> inputs)
     {
-        "huichun" => new(StringComparer.Ordinal) { ["木"] = .50, ["火"] = 0, ["土"] = .10, ["金"] = .05, ["水"] = .35 },
-        "tongmai" => new(StringComparer.Ordinal) { ["木"] = .20, ["火"] = .10, ["土"] = .20, ["金"] = 0, ["水"] = .50 },
-        _ => new(StringComparer.Ordinal) { ["木"] = .30, ["火"] = .05, ["土"] = .25, ["金"] = .10, ["水"] = .30 }
-    };
+        var main = inputs.FirstOrDefault(i => i.IsMain);
+        if (main is null || inputs.Any(i => i.Dose < 1)) return null;
+        double mass = inputs.Sum(i => 100d * i.Dose * BaseYield(i.Craft));
+        if (mass <= 0) return null;
+        var vector = Elements.ToDictionary(e => e, e => inputs.Where(i => i.Craft.element.Trim() == e)
+            .Sum(i => 100d * i.Dose * BaseYield(i.Craft)) / mass, StringComparer.Ordinal);
+        double yin = inputs.Sum(i => 100d * i.Dose * BaseYield(i.Craft) * Math.Sign(i.Craft.polarity)) / mass;
+        var candidates = AlchemyRecipeCatalog.Pills.Select(p => new { Pill = p, Grade = Grade(main.Craft, p.CoreUtility),
+            Distance = .5 * Elements.Sum(e => Math.Abs(vector[e] - ElementTarget(p.Id)[e])) + .5 * Math.Abs(yin - p.PolarityTarget) })
+            .Where(p => p.Grade > 0 && p.Distance <= .85 + 1e-9).ToArray();
+        if (candidates.Length == 0) return null;
+        int grade = candidates.Max(p => p.Grade);
+        double distance = candidates.Where(p => p.Grade == grade).Min(p => p.Distance);
+        return candidates.Where(p => p.Grade == grade && p.Distance <= distance + 1e-6)
+            .OrderBy(p => p.Pill.Id, StringComparer.Ordinal).First().Pill;
+    }
 
     private static string ElementThatGenerates(string element) => element switch
     {

@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "canvas": [1254, 1254],
+  "mount_source": "original v15 right forearm UV chart; fingers-up canonical cutouts; no limb stretch",
+  "measurement": "Actual alpha silhouettes and metacarpal body, excluding abducted thumb; uniform scale per hand; open and clenched total image heights deliberately differ.",
+  "hands": {
+    "near_open": {
+      "wrist_px": [631, 1086],
+      "palm_width_px": 400,
+      "target_palm_width": 4.5,
+      "grip_px": [635, 785],
+      "cuff_exit_source_px": [627.3, 458.1],
+      "anatomy": "right hand, dorsal surface toward camera, thumb left in this fingers-up chart"
+    },
+    "far_open": {
+      "wrist_px": [621, 1066],
+      "palm_width_px": 380,
+      "target_palm_width": 4.5,
+      "grip_px": [620, 778],
+      "cuff_exit_source_px": [627.3, 458.1],
+      "anatomy": "left hand, palm toward camera, thumb left in this fingers-up chart"
+    },
+    "near_fist": {
+      "wrist_px": [626, 956],
+      "palm_width_px": 400,
+      "target_palm_width": 4.5,
+      "grip_px": [624, 655],
+      "cuff_exit_source_px": [627.3, 458.1],
+      "anatomy": "right hand, dorsal surface toward camera, four knuckles and thumb on left"
+    },
+    "far_fist": {
+      "wrist_px": [627, 1004],
+      "palm_width_px": 430,
+      "target_palm_width": 4.5,
+      "grip_px": [630, 700],
+      "cuff_exit_source_px": [627.3, 458.1],
+      "anatomy": "left hand, curled fingers and palm toward camera, thumb crossing from left"
+    },
+    "near_grip": {
+      "wrist_px": [616, 1075],
+      "palm_width_px": 400,
+      "target_palm_width": 4.5,
+      "grip_px": [625, 735],
+      "cuff_exit_source_px": [627.3, 458.1],
+      "anatomy": "right dorsal grip, four curled fingers, thumb hidden behind the handle"
+    }
+  }
+}

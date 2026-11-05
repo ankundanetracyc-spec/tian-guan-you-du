@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-/// <summary>八回合凝核试演规则。独立于战斗与旧体积/密度小游戏，不写正式人物。</summary>
+/// <summary>正式凝核与试演共用的八回合规则；人物写回由正式入口负责。</summary>
 public sealed class CondensationCardGame
 {
     public sealed record Card(string Name, string Kind, string Description, int Count);
@@ -68,12 +68,13 @@ public sealed class CondensationCardGame
     public List<string> Log { get; private set; } = [];
     private List<int> _directions = [];
     private int _nextRecoil;
+    private readonly int _openingShuffleSeed;
     public bool Busy => Choices.Count > 0 || ForcedDiscards > 0;
     public static int DisorderLoss(int value) => value * value / 4;
     public static Card Definition(string name) => Pool.First(c => c.Name == name);
 
     public CondensationCardGame(int comprehension, int intelligence, int rootWeight,
-        IReadOnlyDictionary<string, int> counts, IEnumerable<string> items)
+        IReadOnlyDictionary<string, int> counts, IEnumerable<string> items, int? seed = null)
     {
         Comprehension = comprehension; Intelligence = intelligence; RootWeight = rootWeight;
         ExtraSwaps = comprehension < 40 ? 0 : comprehension < 70 ? 1 : comprehension < 90 ? 2 : 3;
@@ -84,7 +85,9 @@ public sealed class CondensationCardGame
         EquippedItems = items.Distinct().Take(2).ToList();
         if (EquippedItems.Any(i => !Items.Contains(i))) throw new ArgumentException("未定义的凝核道具。");
         foreach (var card in Pool) for (var n = 0; n < counts.GetValueOrDefault(card.Name); n++) Deck.Add(card.Name);
-        var random = new Random();
+        // 可选种子只供规则回放；正式界面不提供或显示牌序种子。
+        var random = seed.HasValue ? new Random(seed.Value) : new Random();
+        _openingShuffleSeed = random.Next();
         for (var n = Deck.Count - 1; n > 0; n--) { var j = random.Next(n + 1); (Deck[n], Deck[j]) = (Deck[j], Deck[n]); }
         Draw(6);
         Log.Add($"凝核开始：悟性{comprehension}，灵慧{intelligence}，匹配灵根权重{rootWeight}%。");
@@ -108,7 +111,7 @@ public sealed class CondensationCardGame
             var removed = indices.OrderDescending().Select(i => { var c = Hand[i]; Hand.RemoveAt(i); return c; }).ToArray();
             Draw(removed.Length);
             Deck.AddRange(removed);
-            var rng = new Random();
+            var rng = new Random(_openingShuffleSeed);
             for (var i = Deck.Count - 1; i > 0; i--) { var j = rng.Next(i + 1); (Deck[i], Deck[j]) = (Deck[j], Deck[i]); }
         }
         else

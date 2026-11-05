@@ -30,15 +30,7 @@ public partial class ForgingMaterialDiscoverySmoke : Node
     }
     private Character Actor(ProcessForgingTrial model, ProcessForgingTrial.Draft draft)
     {
-        var inputs = draft.Inputs.GroupBy(input => input.Material).ToArray();
-        var actor = new Character { entity_data = new HumanData
-        {
-            forging_proficiency = draft.Proficiency, current_world_stamina = 100,
-            max_spirit_perception = 10000, current_health = 100, max_health = 100,
-            inventory_item_paths = new(inputs.Select(group => model.Materials[group.Key].ResourcePath)),
-            inventory_item_counts = new(inputs.Select(group => group.Sum(input => input.Quantity) * 2)),
-            inventory_item_positions = new(Enumerable.Range(0, inputs.Length))
-        } };
+        var actor = ForgingSmokeFixtures.Actor(model, draft);
         _actors.Add(actor); return actor;
     }
     public override void _Ready() => CallDeferred(nameof(Run));
@@ -49,7 +41,7 @@ public partial class ForgingMaterialDiscoverySmoke : Node
         {
             Check(!DirAccess.DirExistsAbsolute(Folder), "临时材料目录不存在，避免覆盖项目资源");
             var original = new ProcessForgingTrial();
-            var originalDraft = original.ExampleDraft(3);
+            var originalDraft = ForgingSmokeFixtures.ArtifactDraft(original);
             var originalProduct = original.Evaluate(originalDraft).Product!;
             Check(originalProduct is not null && original.Parameters.Profiles.Count > 0
                 && original.Parameters.Profiles.Keys.All(original.Materials.ContainsKey), "现有加工材料从自身档案自动发现");
@@ -105,10 +97,13 @@ public partial class ForgingMaterialDiscoverySmoke : Node
             Check(owner.equip_artifact(item.instance_id) && owner.get_equipped_forged_sword()?.instance_id == item.instance_id
                 && owner.get_used_artifact_spirit() == 0, "新材料产物进入现有剑装备接口且装备不占灵识");
             var skills = owner.get_artifact_skills().ToList();
-            Check(skills.Count > 0 && skills.Count == ForgedSwordBattleAdapter.Skills(item).Count(), "实际生成的主动能力复用现有战斗适配");
+            originalProduct.InstanceId = "material-reference";
+            var expectedSkills = ForgedSwordBattleAdapter.Skills(ForgedArtifactInventory.Create(originalProduct)).ToList();
+            Check(skills.Count == expectedSkills.Count && skills.Count == ForgedSwordBattleAdapter.Skills(item).Count(),
+                "新材与原材按实际成器能力一致生成技能，不凭名称补发主动能力");
             Check(owner.set_combat_skill_slot_paths(new Godot.Collections.Array<string>(skills.Select(ArtifactSkillFactory.Key)))
                 && skills.All(skill => owner.resolve_combat_skill(ArtifactSkillFactory.Key(skill)) is not null),
-                "新材料产物的实际主动能力可装槽并解析");
+                skills.Count > 0 ? "新材料产物的实际主动能力可装槽并解析" : "本炉无主动能力时不生成或自动占用技能位置");
             Check(result.Product!.Effects.Any(effect => effect.CarrierId == "binding")
                 && owner.get_skill_rewrite_choices().Any(choice => choice.Id == "forged:" + item.instance_id && choice.Available),
                 "新材料形成的化法进入现有绑定来源");
@@ -122,6 +117,7 @@ public partial class ForgingMaterialDiscoverySmoke : Node
                 && restored.get_equipped_forged_sword()?.instance_id == item.instance_id, "读回恢复新材料来源与装备实例");
             // 删除 live 资源后，只靠成器自带数据重演，避免未来材料删除或修改使旧器物失效。
             DirAccess.RemoveAbsolute(ItemPath);
+            Check(!new ProcessForgingTrial().Materials.ContainsKey(NewMaterial), "移除材料后重新发现会剔除目录缓存，不保留幽灵候选");
             Check(ProcessForgingTrial.Replay(archived).Product!.InputHash == archived.InputHash,
                 "材料不再位于当前目录时，成器仍能独立重演");
             var invalid = Alias(original.Materials["铜髓矿"], "非法加工档案测试材", "smoke_forging_invalid");

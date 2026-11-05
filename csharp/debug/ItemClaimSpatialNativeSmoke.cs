@@ -3,97 +3,142 @@ using System.Reflection;
 using GArray = Godot.Collections.Array;
 using GDictionary = Godot.Collections.Dictionary;
 
-/// <summary>Actual receipt handlers and spatial inventory, isolated from journey saves.</summary>
+/// <summary>Actual receipt pointer input, spatial transactions and callback conservation; no player saves.</summary>
 public partial class ItemClaimSpatialNativeSmoke : Node
 {
-    private const string Stone = "res://resources/entities/items/灵石.tres";
-    private const string Book = "res://resources/entities/items/玄枢含章经秘籍.tres";
-    private const string Iron = "res://resources/entities/items/玄铁.tres";
+    private const string Stone = "res://resources/entities/items/灵石.tres", Book = "res://resources/entities/items/玄枢含章经秘籍.tres", Iron = "res://resources/entities/items/玄铁.tres";
+    private const BindingFlags Flags = BindingFlags.Instance | BindingFlags.NonPublic;
     private int _checks;
     private readonly List<Character> _players = [];
+    private ItemClaimPanel _panel = null!;
     private void Check(bool ok, string message) { _checks++; if (!ok) throw new InvalidOperationException(message); }
     private Character Player() { var p = new Character { entity_data = new HumanData { entity_name = "领取空间验证" } }; _players.Add(p); return p; }
-    private static string Stamp(Character p) => string.Join("|", p.get_spatial_inventory().OrderBy(e => e.InstanceId).Select(e => $"{e.InstanceId}:{e.ItemPath}:{e.RegionId}:{e.X},{e.Y}:{e.Rotation}"));
-    private static object? Invoke(ItemClaimPanel p, string name, params object?[] args) => typeof(ItemClaimPanel).GetMethod(name, BindingFlags.NonPublic | BindingFlags.Instance)!.Invoke(p, args);
-    private static T Field<T>(ItemClaimPanel p, string name) => (T)typeof(ItemClaimPanel).GetField(name, BindingFlags.NonPublic | BindingFlags.Instance)!.GetValue(p)!;
-    private static GArray Rewards(params (string Path, int Count)[] entries)
-    { var array = new GArray(); foreach (var e in entries) array.Add(new GDictionary { ["item_path"] = e.Path, ["count"] = e.Count }); return array; }
-    private ItemClaimPanel Present(Character p, GArray entries, Action<GArray>? claimed = null)
-    { var panel = new ItemClaimPanel(); AddChild(panel); Check(panel.Present(p, entries, claimed: claimed), "领取队列无法打开"); return panel; }
-    private async Task Clear(ItemClaimPanel p)
+    private static string Stamp(Character p) => Character.claim_inventory_stamp(p.get_spatial_inventory());
+    private object? Call(string name, params object?[] args) => typeof(ItemClaimPanel).GetMethod(name, Flags)!.Invoke(_panel, args);
+    private T Field<T>(string name) => (T)typeof(ItemClaimPanel).GetField(name, Flags)!.GetValue(_panel)!;
+    private List<SpatialInventoryEntry> Layout => Field<List<SpatialInventoryEntry>>("_layout");
+    private static int Count(GArray array, string path) => array.Sum(v => { var d = v.AsGodotDictionary(); return d["item_path"].AsString() == path ? d["count"].AsInt32() : 0; });
+    private void Present(Character p, params (string Path, int Count)[] items)
     {
-        if (GodotObject.IsInstanceValid(p) && !p.IsQueuedForDeletion())
-            p.FindChildren("ClaimFooterClose", "Button", true, false).OfType<Button>().First().EmitSignal(BaseButton.SignalName.Pressed);
-        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
-        Check(!GetTree().Paused, "关闭领取后暂停状态未恢复");
+        var rewards = new GArray(); foreach (var i in items) rewards.Add(new GDictionary { ["item_path"] = i.Path, ["count"] = i.Count, ["source"] = "测试来源" });
+        _panel = new ItemClaimPanel(); AddChild(_panel); Check(_panel.Present(p, rewards), "领取页无法打开");
+    }
+    private async Task Frames(int n = 4) { for (int i = 0; i < n; i++) await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame); }
+    private void Move(Vector2 p) => GetViewport().PushInput(new InputEventMouseMotion { Position = p, GlobalPosition = p, ButtonMask = MouseButtonMask.Left }, true);
+    private void Mouse(Vector2 p, bool pressed) => GetViewport().PushInput(new InputEventMouseButton { Position = p, GlobalPosition = p, ButtonIndex = MouseButton.Left, Pressed = pressed }, true);
+    private void Key(Key key) { foreach (bool down in new[] { true, false }) GetViewport().PushInput(new InputEventKey { Keycode = key, PhysicalKeycode = key, Pressed = down }, true); }
+    private Vector2 CanvasPoint(Vector2 p) => Field<Control>("_canvas").GetGlobalTransformWithCanvas() * p;
+    private async Task Grab(Control c)
+    {
+        var p = c.GetGlobalTransformWithCanvas() * (c.Size * .5f); Move(p); Mouse(p, true); Move(p + new Vector2(9, 0)); await Frames(2);
+        Check(_panel.FindChild("DraggedItem", true, false) is not null, $"真实鼠标未抓起物品 check={_checks} point={p} drag={Field<object?>("_drag") is not null} viewport={GetViewport().GetVisibleRect().Size}");
+    }
+    private Control Row(string path) => Field<VBoxContainer>("_rows").GetChildren().OfType<Control>().First(r => r.HasMeta("item_path") && r.GetMeta("item_path").AsString() == path);
+    private async Task Drop(string region, float x, float y)
+    {
+        var surface = Field<NativeInventorySurface>("_surface"); var r = Field<Dictionary<string, Rect2>>("_regions")[region];
+        var p = surface.GetGlobalTransformWithCanvas() * (r.Position + new Vector2(x, y) * 48); Move(p); await Frames(2); Mouse(p, false); await Frames();
+    }
+    private async Task Close()
+    { Call("commit_receipt"); await Frames(); Check(!GetTree().Paused, "关闭后暂停未恢复"); }
+    private async Task Capture(string name)
+    {
+        if (DisplayServer.GetName() == "headless") return;
+        await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
+        var folder = "res://docs/美术规范/领取空间收纳_20261103/"; DirAccess.MakeDirRecursiveAbsolute(ProjectSettings.GlobalizePath(folder));
+        using var img = GetViewport().GetTexture().GetImage(); Check(img.SavePng(folder + name) == Error.Ok, "截图保存失败");
+    }
+    private async Task AlchemyReceipt()
+    {
+        var actor = Player(); var data = (HumanData)actor.entity_data!;
+        data.base_alchemy_proficiency = data.alchemy_proficiency = 36; data.max_spirit_perception = 10000; data.current_world_stamina = 100;
+        AddChild(actor);
+        var facilities = new LocationCraftingPanel(); AddChild(facilities); facilities.ShowFor(actor, true);
+        var room = facilities.GetChildren().OfType<AlchemySlotBrewPreviewScene>().Single();
+        typeof(AlchemySlotBrewPreviewScene).GetMethod("ApplySampleRoute", Flags)!.Invoke(room, [AlchemyRecipeCatalog.Pills[0].SampleRoutes.Last(), false]);
+        var inputs = (IReadOnlyList<AlchemySlotSimulation.Input>)typeof(AlchemySlotBrewPreviewScene).GetMethod("GetSimulationInputs", Flags)!.Invoke(room, null)!;
+        foreach (var input in inputs) Check(actor.add_item_to_inventory(input.Path, input.Dose), $"炼丹样本投料入包失败：{input.Path} ×{input.Dose}，已有{actor.get_inventory_occupied_cell_count()}格");
+        typeof(AlchemySlotBrewPreviewScene).GetField("_simpleAlchemyPresentation", Flags)!.SetValue(room, true);
+        var task = (Task)typeof(AlchemySlotBrewPreviewScene).GetMethod("BrewWithPresentation", Flags)!.Invoke(room, null)!;
+        for (int i = 0; i < 600 && !task.IsCompleted; i++)
+        {
+            room.FindChildren("*", "Button", true, false).OfType<Button>().FirstOrDefault(b => b.Text == "确定 · 按丹效装瓶" && b.IsVisibleInTree())?.EmitSignal(BaseButton.SignalName.Pressed);
+            await Frames(1);
+        }
+        Check(task.IsCompleted, "真实炼丹演出未到领取"); await task;
+        _panel = (ItemClaimPanel)typeof(AlchemySlotBrewPreviewScene).GetField("_alchemyClaim", Flags)!.GetValue(room)!;
+        Check(_panel is not null && inputs.All(i => actor.get_inventory_total_count(i.Path) == 0), "开炼应扣投料并进入共享领取");
+        int oldCount = actor.get_spatial_inventory().Count;
+        _panel!.FindChild("ClaimAutoPlace", true, false)!.Call("emit_signal", "pressed");
+        Check(actor.get_spatial_inventory().Count == oldCount && Layout.Count > oldCount, "自动放入应只预览产物");
+        _panel.FindChild("ClaimFooterPrimary", true, false)!.Call("emit_signal", "pressed"); await Frames();
+        Check(actor.get_spatial_inventory().Count > oldCount && !GetTree().Paused, "炼丹确认未入包或未解除暂停");
+        facilities.ReturnToLocation(); await Frames(); Check(!facilities.Visible, "领取完成后不能返回地点"); facilities.QueueFree();
     }
     public override async void _Ready()
     {
         ProcessMode = ProcessModeEnum.Always;
         try
         {
-            var full = Player(); Check(full.add_item_to_inventory(Stone, 120), "满包样本创建失败");
-            int claimed = 0; var panel = Present(full, Rewards((Stone, 1)), _ => claimed++); var before = Stamp(full);
-            Invoke(panel, "claim_selected_items");
-            Check(Stamp(full) == before && claimed == 0 && Field<bool>(panel, "_presented"), "满包领取改变库存或消耗队列");
-            Check(panel.FindChildren("ClaimFooterStatus", "Label", true, false).OfType<Label>().Last().Text.Contains("空间不足"), "满包反馈缺失");
-            await Clear(panel);
+            var full = Player(); Check(full.add_item_to_inventory(Stone, 120), "满包样本失败"); Present(full, (Stone, 1));
+            var before = Stamp(full); Call("auto_place"); Check(Layout.Count == 120 && Stamp(full) == before, "满包自动放入改动库存或预览");
+            var remove = Layout.First(); Check((bool)Call("discard_entry", remove)!, "不能预览丢弃");
+            Check(Stamp(full) == before, "确认前提前丢弃"); Call("auto_place"); Check(Layout.Count == 120, "丢弃腾空后不能放入");
+            Call("commit_receipt"); Check(full.get_inventory_total_count(Stone) == 120 && !full.get_spatial_inventory().Any(e => e.InstanceId == remove.InstanceId), "没有丢弃指定实例"); await Frames();
 
-            var partial = Player(); Check(partial.add_item_to_inventory(Stone, 119), "批量失败样本创建失败");
-            panel = Present(partial, Rewards((Stone, 1), (Book, 1)), _ => claimed++); before = Stamp(partial);
-            Invoke(panel, "claim_selected_items"); Invoke(panel, "claim_selected_items");
-            Check(Stamp(partial) == before && partial.get_inventory_total_count(Book) == 0 && claimed == 0, "批量失败曾部分入包或重复领取");
-            await Clear(panel);
+            var partial = Player(); partial.add_item_to_inventory(Stone, 119); Present(partial, (Stone, 1), (Book, 1)); before = Stamp(partial);
+            Call("auto_place"); Check(Layout.Count == 119 && Stamp(partial) == before, "失败批次部分放入"); await Close();
 
-            var success = Player(); int notices = 0, changed = 0, callbackEntries = 0; ItemClaimPanel? activeReceipt = null;
-            success.ItemAcquired += (_, _, count) => notices += count; success.InventoryChanged += _ => { changed++; if (activeReceipt is not null) Invoke(activeReceipt, "claim_selected_items"); };
-            panel = Present(success, Rewards((Stone, 2), (Book, 2)), reward => callbackEntries = reward.Count);
-            activeReceipt = panel;
-            Invoke(panel, "claim_selected_items");
-            Check(success.get_inventory_total_count(Stone) == 2 && success.get_inventory_total_count(Book) == 2, "成功领取数量不守恒");
-            Check(success.get_inventory_occupied_cell_count() == 14 && success.get_spatial_inventory().Count == 4, "不堆叠占格错误");
-            Check(changed == 1 && notices == 4 && callbackEntries == 2, "原子领取通知或回调数量错误");
-            Invoke(panel, "claim_selected_items");
-            Check(changed == 1 && success.get_inventory_total_count(Book) == 2, "提交重入或关闭后重复点击导致重复领取");
-            await Clear(panel);
+            var p = Player(); p.add_item_to_inventory(Book); var oldBook = p.get_spatial_inventory().Single();
+            Present(p, (Book, 2), (Stone, 3)); await Frames(10); before = Stamp(p);
+            GArray claimed = new(), abandoned = new(); int notices = 0, changes = 0;
+            typeof(ItemClaimPanel).GetField("_claimedCallback", Flags)!.SetValue(_panel, (Action<GArray>)(a => claimed = a));
+            typeof(ItemClaimPanel).GetField("_abandonedCallback", Flags)!.SetValue(_panel, (Action<GArray>)(a => abandoned = a));
+            p.ItemAcquired += (_, _, n) => notices += n;
+            p.InventoryChanged += _ => { changes++; Call("commit_receipt"); };
+            await Grab(Row(Book)); Key(Godot.Key.R); await Drop("back", 1.5f, 1);
+            Check(Layout.Count == 2 && Layout.Last().Rotation == 1 && Layout.Last().RegionId == "back", "新物品R旋转入包失败");
+            Check(Stamp(p) == before, "预览提前写入人物");
+            var newBook = Layout.Last(); await Grab(Field<Dictionary<string, StorageItemSlot>>("_slots")[newBook.InstanceId]); Key(Godot.Key.Escape); await Frames();
+            Check(Layout.Contains(newBook) && Field<bool>("_presented"), "Esc未仅取消拖动");
+            await Grab(Row(Stone)); await Drop("back", .5f, .5f);
+            Check(Layout.Count == 2, "重叠放置应退回待领取");
+            await Grab(Field<Dictionary<string, StorageItemSlot>>("_slots")[oldBook.InstanceId]); Key(Godot.Key.R); await Drop("waist", 1.5f, 1);
+            Check(Layout.First(e => e.InstanceId == oldBook.InstanceId).Rotation == 1, "现有物品旋转失败");
+            await Capture("01_领取收纳_1920.png");
+            await Grab(Field<Dictionary<string, StorageItemSlot>>("_slots")[oldBook.InstanceId]); var outside = CanvasPoint(new(720, 980)); Move(outside); Mouse(outside, false); await Frames();
+            Check(Layout.Count == 1 && Stamp(p) == before, "拖出未移除预览或提前实扣");
+            Call("request_finish"); await Frames(); var dialog = Field<ConfirmationDialog>("_leaveDialog");
+            Check(dialog.Visible && GetTree().Paused, "剩余物品没有退出确认"); dialog.Hide();
+            _panel.FindChild("ClaimFooterPrimary", true, false)!.Call("emit_signal", "pressed"); await Frames();
+            Check(dialog.Visible, "确认领取应提示剩余物品"); dialog.EmitSignal(ConfirmationDialog.SignalName.Confirmed); await Frames();
+            Check(p.get_inventory_total_count(Book) == 1 && p.get_spatial_inventory().Single().InstanceId == newBook.InstanceId, "精确摆放与指定丢弃提交失败");
+            Check(Count(claimed, Book) == 1 && Count(abandoned, Book) == 1 && Count(abandoned, Stone) == 3, "部分领取来源回调不守恒");
+            Check(notices == 1 && changes == 1 && !GetTree().Paused, "提交重入或通知次数错误");
 
-            var stale = Player(); panel = Present(stale, Rewards((Book, 1)), _ => claimed++);
-            Check(stale.add_item_to_inventory(Stone, 120), "动态变化样本失败"); before = Stamp(stale); Invoke(panel, "claim_selected_items");
-            Check(Stamp(stale) == before && stale.get_inventory_total_count(Book) == 0 && claimed == 0, "选择后容量变化未重新检查");
-            await Clear(panel);
+            var stale = Player(); Present(stale, (Book, 1)); Call("auto_place"); stale.add_item_to_inventory(Stone, 120); before = Stamp(stale);
+            Call("commit_receipt"); Check(Stamp(stale) == before && Field<bool>("_presented") && Layout.Count == 120, "动态库存变化覆盖真实数据"); await Close();
 
-            var fragmented = Player(); Check(fragmented.add_item_to_inventory(Stone, 120) && fragmented.remove_item_from_inventory(Stone, 6), "碎片样本创建失败");
-            var occupied = fragmented.get_spatial_inventory();
-            var cells = (from r in Character.InventoryRegions from y in Enumerable.Range(0, r.Height) from x in Enumerable.Range(0, r.Width) select (r.Id, X: x, Y: y));
-            var free = cells.Where(c => !occupied.Any(e => e.RegionId == c.Id && e.X == c.X && e.Y == c.Y)).ToArray();
-            var holes = new[] { ("chest", 0, 0), ("chest", 3, 2), ("sleeve-left", 0, 0), ("sleeve-right", 0, 0), ("waist", 0, 0), ("back", 0, 0) };
-            for (var i = 0; i < holes.Length; i++)
-            {
-                var e = fragmented.get_spatial_inventory().First(e => e.RegionId == holes[i].Item1 && e.X == holes[i].Item2 && e.Y == holes[i].Item3);
-                Check(fragmented.move_spatial_item(e.InstanceId, free[i].Id, free[i].X, free[i].Y, 0), "无法构造分散空位");
-            }
-            Check(fragmented.get_inventory_free_slot_count() == 6, "碎片空位面积错误");
-            panel = Present(fragmented, Rewards((Book, 1))); before = Stamp(fragmented); Invoke(panel, "claim_selected_items");
-            Check(Stamp(fragmented) == before && fragmented.get_inventory_total_count(Book) == 0, "面积足够却形状不符时错误领取");
-            Check(panel.FindChildren("ClaimFooterStatus", "Label", true, false).OfType<Label>().Last().Text.Contains("空位无法放下"), "碎片空位反馈错误");
-            await Clear(panel);
+            var protectedPlayer = Player(); const string sword = "res://resources/entities/equipment/素行剑.tres";
+            Check(protectedPlayer.add_item_to_inventory(sword) && protectedPlayer.equip_inventory_item(sword), "装备样本创建失败");
+            Present(protectedPlayer, (Stone, 1)); Check(!(bool)Call("discard_entry", Layout.Single())!, "使用中物品被丢弃"); await Close();
+            var discardedNew = Player(); Present(discardedNew, (Book, 2)); Call("auto_place");
+            Check((bool)Call("discard_entry", Layout.First())!, "新领物品无法丢弃"); Call("commit_receipt"); await Frames();
+            Check(discardedNew.get_inventory_total_count(Book) == 1, "丢弃的新领物品仍然入包");
 
-            var organizer = Player(); Check(organizer.add_item_to_inventory(Iron) && organizer.add_item_to_inventory(Stone, 111), "整理样本创建失败");
-            panel = Present(organizer, Rewards((Book, 1))); Invoke(panel, "open_organizer"); before = Stamp(organizer);
-            var source = panel.FindChild("PackSourceList", true, false)!;
-            var ironCard = source.GetChildren().OfType<Control>().First(c => c.GetNodeOrNull<Label>("ItemCaption")?.Text == "玄铁");
-            ironCard.GetNode<Button>("ItemHitTarget").EmitSignal(BaseButton.SignalName.Pressed);
-            Check(Stamp(organizer) == before, "待丢弃预览提前移除了物品");
-            Check(panel.FindChildren("*", "Label", true, false).OfType<Label>().Any(l => l.Text.Contains("待丢弃物品") && l.Text.Contains("9 格")), "整理未显示实际9格");
-            Check((bool)Invoke(panel, "can_claim_after_discard", Field<object>(panel, "_items"))!, "丢弃9格后应可摆入书册");
-            Check(Stamp(organizer) == before, "假想整理预检修改了实际人物");
-            Invoke(panel, "discard_and_return_to_claim"); Invoke(panel, "claim_selected_items");
-            Check(organizer.get_inventory_total_count(Iron) == 0 && organizer.get_inventory_total_count(Stone) == 111 && organizer.get_inventory_total_count(Book) == 1, "确认整理和领取数量不守恒");
-            Check(organizer.get_inventory_occupied_cell_count() == 117, "确认整理后占格错误");
-            await Clear(panel);
-            foreach (var p in _players) p.Free();
-            GD.Print($"ITEM_CLAIM_SPATIAL_NATIVE_OK {_checks}"); GetTree().Quit();
+            await AlchemyReceipt();
+
+            var preview = Player(); preview.add_item_to_inventory(Book, 2); preview.add_item_to_inventory(Stone, 12); preview.add_item_to_inventory(Iron); preview.add_item_to_inventory("res://resources/entities/items/alchemy/huichun_2.tres");
+            Present(preview, (Book, 1), (Stone, 6), (Iron, 1), ("res://resources/entities/items/alchemy/huichun_2.tres", 2)); await Frames(10);
+            await Capture("02_领取收纳_完整.png"); GetWindow().Size = new(1280, 720); await Frames(12);
+            Check(new Rect2(Vector2.Zero, GetViewport().GetVisibleRect().Size).Encloses(Field<NativeInventorySurface>("_surface").GetGlobalRect()), "小窗五区裁切");
+            await Capture("03_领取收纳_1280.png"); GetWindow().GrabFocus(); await Frames(5); await Grab(Row(Book)); Key(Godot.Key.R);
+            var hoverPoint = Field<NativeInventorySurface>("_surface").GetGlobalTransformWithCanvas() * (Field<Dictionary<string, Rect2>>("_regions")["back"].Position + new Vector2(1.5f, 1) * 48);
+            Move(hoverPoint); await Capture("04_领取收纳_拖动预览.png"); await Drop("back", 1.5f, 1); Check(Layout.Last().Rotation == 1, "小窗拖放旋转失败");
+            await Capture("04_领取收纳_旋转.png"); await Close();
+            GetTree().Paused = true; Present(Player(), (Stone, 1)); Call("auto_place"); Call("commit_receipt"); await Frames(); Check(GetTree().Paused, "原暂停状态丢失"); GetTree().Paused = false;
+            foreach (var player in _players) player.Free(); GD.Print($"ITEM_CLAIM_SPATIAL_NATIVE_OK {_checks}"); GetTree().Quit();
         }
-        catch (Exception error) { GD.PushError(error.ToString()); GetTree().Paused = false; foreach (var p in _players) p.Free(); GetTree().Quit(1); }
+        catch (Exception e) { GD.PushError(e.ToString()); GetTree().Paused = false; GetTree().Quit(1); }
     }
 }

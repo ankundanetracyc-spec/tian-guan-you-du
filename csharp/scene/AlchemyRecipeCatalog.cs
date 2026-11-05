@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 /// <summary>当前槽位配伍的成品识别模板与可载入投料样例；旧 Formula 数据仅供兼容预览。</summary>
-public static class AlchemyRecipeCatalog
+public static partial class AlchemyRecipeCatalog
 {
     // Legacy process notes retained for the unused step-by-step preview model.
     public sealed record Ingredient(string HerbName, int Recommended, string Timing);
@@ -49,11 +49,9 @@ public static class AlchemyRecipeCatalog
             "以生机药性修复可恢复的伤损；成丹偏向以阴阳相对平和为宜。",
             ["聚：提高拟成颗数，换取单颗药力分摊", "引／行：把药力集中送入君药主效", "破／化／明：分别处理致密残余、全炉残余与夹带纯度", "调配木、水及阴阳，让材料组成贴近丹方目标"],
             [
-                new("赤核平衡方", "采用高品核心，配液质转化与藏性稳形，阴阳和五行共同调和。", [S("赤瓤木核", 1, -1), S("伏地兽筋", 3, 3), S("凝霜叶", 2, 1), S("灵泉露", 1, 2), S("雾铃花", 1, 0)]),
                 new("藤心通路方", "青岚藤心作君，溪纹藻丝由使位通路，佐位稳形与识残。", [S("青岚藤心", 3, -1), S("清音玉片", 1, 1), S("溪纹藻丝", 2, 3), S("山蚕长丝", 1, 2), S("朱阳花籽", 1, 0)]),
                 new("青芽多味方", "青髓芽作君，臣位固形、佐位化残、使位通藏，尝试以分工和材料互补搭配。", [S("青髓芽", 2, -1), S("灵石", 2, 3), S("回泉珠", 2, 1), S("凝露松脂", 1, 0)]),
-                new("青木清露方", "木性君药与水性辅药配伍，佐化转残、使通相合。", [S("青木芯", 2, -1), S("山蚕长丝", 1, 0), S("灵泉露", 2, 1), S("溪纹藻丝", 2, 3)]),
-                new("青芽明净方", "青芽作君，以佐明降低夹带，保留四味分工。", [S("青髓芽", 2, -1), S("山蚕长丝", 1, 0), S("清音玉片", 2, 1), S("溪纹藻丝", 2, 3)])
+                new("青木清露方", "木性君药与水性辅药配伍，佐化转残、使通相合。", [S("青木芯", 2, -1), S("山蚕长丝", 1, 0), S("灵泉露", 2, 1), S("溪纹藻丝", 2, 3)])
             ],
             [
                 new("qingmu_standard", "青木回春常方", "青木芯", "青木芯的生机足，通可建立药性联系；阴阳相对的辅材有助于把药团拉回平和。",
@@ -107,7 +105,8 @@ public static class AlchemyRecipeCatalog
             ])
     ];
 
-    public static PillType[] Pills => Definitions.Where(p => AlchemyProductCatalog.IsEnabled(p.Id)).ToArray();
+    public static PillType[] Pills => Definitions.Concat(ExpansionDefinitions).Concat(BreakthroughDefinitions)
+        .Where(p => AlchemyProductCatalog.IsEnabled(p.Id)).ToArray();
     public static IEnumerable<string> MaterialNames => Pills.SelectMany(p => p.MainCandidates.Concat(p.Formulas.SelectMany(f => f.Ingredients.Select(i => i.HerbName)))).Distinct();
     public static PillType GetPill(string id) => Definitions.First(p => p.Id == id);
     public static Formula GetFormula(string pillId, string formulaId) =>

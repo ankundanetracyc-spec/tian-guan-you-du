@@ -9,22 +9,16 @@ public partial class CraftingIntegrationSmoke : Node
     private int _checks;
     private readonly List<Character> _actors = [];
     private void Check(bool ok, string label) { if (!ok) throw new Exception(label); GD.Print("PASS " + label); _checks++; }
-    private Character Actor(ProcessForgingTrial model, ProcessForgingTrial.Draft draft, int copies = 3)
+    private Character Actor(ProcessForgingTrial model, ProcessForgingTrial.Draft draft, int copies = 1)
     {
-        var required = draft.Inputs.GroupBy(i => i.Material).ToArray();
-        var data = new HumanData { forging_proficiency = draft.Proficiency, current_world_stamina = 100,
-            max_spirit_perception = 10000, current_health = 100, max_health = 100,
-            inventory_item_paths = new(required.Select(g => model.Materials[g.Key].ResourcePath)),
-            inventory_item_counts = new(required.Select(g => g.Sum(i => i.Quantity) * copies)),
-            inventory_item_positions = new(Enumerable.Range(0, required.Length)) };
-        var actor = new Character { entity_data = data }; _actors.Add(actor); return actor;
+        var actor = ForgingSmokeFixtures.Actor(model, draft, copies); _actors.Add(actor); return actor;
     }
     public override void _Ready() => CallDeferred(nameof(Run));
     private async void Run()
     {
         try
         {
-            var model = new ProcessForgingTrial(); var draft = model.ExampleDraft(1);
+            var model = new ProcessForgingTrial(); var draft = ForgingSmokeFixtures.SmallDraft(model, 0);
             var owner = Actor(model, draft); var data = (HumanData)owner.entity_data!;
             data.used_spirit_perception = 7;
             var stock = owner.GetForgingStock(model);
@@ -33,7 +27,8 @@ public partial class CraftingIntegrationSmoke : Node
             Check(owner.current_world_stamina == 100 - result.Energy && result.Hours == (int)Math.Ceiling(result.Units / 3d), "正式工时与精力采用确认参数");
             Check(data.artifact_inventory.Count == 1 && owner.used_spirit_perception == 7, "成器入包且保留其他灵识占用");
             Check(ForgedArtifactInventory.TryRead(data.artifact_inventory[0], out var archived) && archived.InstanceId.StartsWith("forged-"), "正式唯一实例带完整快照");
-            Check(owner.TryForge(model, draft, out _) && data.artifact_inventory[0].instance_id != data.artifact_inventory[1].instance_id, "相同配伍可再炼且实例不同");
+            ForgingSmokeFixtures.Restock(owner, model, draft);
+            Check(owner.TryForge(model, draft, out _) && data.artifact_inventory[0].instance_id != data.artifact_inventory[1].instance_id, "重新投料可再炼且实例不同");
             var tired = Actor(model, draft); ((HumanData)tired.entity_data!).current_world_stamina = 0;
             Check(!tired.TryForge(model, draft, out _) && tired.GetForgingStock(model).SequenceEqual(stock), "精力不足零扣料");
             var limited = Actor(model, draft); ((HumanData)limited.entity_data!).used_spirit_perception = 10000;
@@ -42,14 +37,22 @@ public partial class CraftingIntegrationSmoke : Node
             Check(!missing.TryForge(model, draft, out _) && missing.current_world_stamina == 100, "缺材料不扣精力");
             var invalid = model.ExampleDraft(1); invalid.Inputs.RemoveAll(i => i.Role == "主体");
             Check(!owner.TryForge(model, invalid, out _), "非法岗位拒绝开炼");
-            var full = Actor(model, draft); var fullData = (HumanData)full.entity_data!;
-            while (full.get_inventory_slot_count() < Character.InventorySlotCapacity)
-                full.add_artifact_to_inventory(new ArtifactInstanceData { instance_id = Guid.NewGuid().ToString() });
-            Check(!full.TryForge(model, draft, out _) && full.current_world_stamina == 100 && full.GetForgingStock(model).SequenceEqual(stock), "满包预检不吞料");
-            var freed = Actor(model, draft, 1);
-            while (freed.get_inventory_slot_count() < Character.InventorySlotCapacity)
-                freed.add_artifact_to_inventory(new ArtifactInstanceData { instance_id = Guid.NewGuid().ToString() });
-            Check(freed.TryForge(model, draft, out var freedResult) && freedResult.Success, "满包可使用本炉扣料腾出的格位");
+            var tightDraft = new ProcessForgingTrial.Draft { Proficiency = 12, Inputs = [
+                new() { Role = "主体", Material = "铜髓矿" }, new() { Role = "承接", Material = "青木芯" }] };
+            var full = Actor(model, tightDraft);
+            var fullWood = full.get_spatial_inventory().Single(i => i.ItemPath == model.Materials["青木芯"].ResourcePath);
+            Check(full.move_spatial_item(fullWood.InstanceId, "waist", 0, 0, 1), "满包保护夹具按真实尺寸摆放木芯");
+            ForgingSmokeFixtures.FillWithStones(full); var fullStock = full.GetForgingStock(model);
+            Check(!full.TryForge(model, tightDraft, out _) && full.current_world_stamina == 100 && full.GetForgingStock(model).SequenceEqual(fullStock), "满包碎片空间不足时不吞料");
+            tightDraft.Inputs.Add(new() { Role = "质材", Material = "铜髓矿" });
+            var freed = Actor(model, tightDraft);
+            var entries = freed.get_spatial_inventory();
+            var wood = entries.Single(i => i.ItemPath == model.Materials["青木芯"].ResourcePath);
+            Check(freed.move_spatial_item(wood.InstanceId, "waist", 0, 0, 1), "扣料腾位夹具合法旋转木芯");
+            var copper = entries.Where(i => i.ItemPath == model.Materials["铜髓矿"].ResourcePath).ToArray();
+            Check(freed.move_spatial_item(copper[0].InstanceId, "back", 0, 0, 0) && freed.move_spatial_item(copper[1].InstanceId, "back", 0, 3, 0), "扣料后可腾出连续3乘6空间");
+            ForgingSmokeFixtures.FillWithStones(freed);
+            Check(freed.TryForge(model, tightDraft, out var freedResult) && freedResult.Success && freed.get_spatial_inventory().All(i => i.IsPlaced), "满包可使用本炉扣料腾出的实际空间");
             const string savePath = "user://tests/crafting_integration.tres";
             DirAccess.MakeDirRecursiveAbsolute(ProjectSettings.GlobalizePath("user://tests"));
             Check(ResourceSaver.Save(new PersistentGameSave { player_data = data }, savePath) == Error.Ok, "炼成器写入正式保存容器");
@@ -94,9 +97,9 @@ public partial class CraftingIntegrationSmoke : Node
             typeof(AlchemySlotBrewPreviewScene).GetMethod("ApplySampleRoute", hidden)!.Invoke(room, [AlchemyRecipeCatalog.Pills[0].SampleRoutes.Last(), false]);
             var inputs = (IReadOnlyList<AlchemySlotSimulation.Input>)typeof(AlchemySlotBrewPreviewScene).GetMethod("GetSimulationInputs", hidden)!.Invoke(room, null)!;
             var pillData = new HumanData { alchemy_proficiency = 36, max_spirit_perception = 10000, current_world_stamina = 100,
-                inventory_item_paths = new(inputs.Select(i => i.Path)), inventory_item_counts = new(inputs.Select(i => i.Dose * 3)),
-                inventory_item_positions = new(Enumerable.Range(0, inputs.Count)) };
+                max_health = 100, current_health = 100 };
             var alchemist = new Character { entity_data = pillData }; _actors.Add(alchemist);
+            Check(alchemist.try_exchange_inventory(new Dictionary<string, int>(), inputs.ToDictionary(i => i.Path, i => i.Dose)), "炼丹投料实际摆入行囊");
             Check(alchemist.TryBrewAlchemy(inputs, out var brewed, out _) && brewed!.OutputCount > 0, "正式炼丹自动产量成功");
             Check(pillData.alchemy_records.Count == 1, "正式开炉新增一条炼丹记录");
             const string pillSave = "user://tests/crafting_alchemy_records.tres";
@@ -108,9 +111,10 @@ public partial class CraftingIntegrationSmoke : Node
             foreach (var group in brewed!.Pills.Where(p => p.Quality >= 20).GroupBy(p => AlchemyQualityRules.Tier(p.Quality)))
                 rewards.Add(new Godot.Collections.Dictionary { ["item_path"] = AlchemyProductCatalog.Path(brewed.ProductId, group.Key), ["count"] = group.Count() });
             Check(rewards.All(entry => alchemist.get_inventory_total_count(entry.AsGodotDictionary()["item_path"].AsString()) == 0) &&
-                inputs.All(i => alchemist.get_inventory_total_count(i.Path) == i.Dose * 2), "开炼只扣投料，成品等待领取");
+                inputs.All(i => alchemist.get_inventory_total_count(i.Path) == 0), "开炼只扣投料，成品等待领取");
             var claim = new ItemClaimPanel(); GetTree().Root.AddChild(claim);
             Check(claim.Present(alchemist, rewards, "炼丹所得"), "炼丹成果进入通用领取页");
+            claim.FindChildren("ClaimAutoPlace", "Button", true, false).OfType<Button>().Single().EmitSignal(Button.SignalName.Pressed);
             typeof(ItemClaimPanel).GetMethod("claim_selected_items", hidden)!.Invoke(claim, null);
             Check(rewards.All(entry => alchemist.get_inventory_total_count(entry.AsGodotDictionary()["item_path"].AsString()) == entry.AsGodotDictionary()["count"].AsInt32()), "确认领取后丹药入包");
             typeof(AlchemySlotBrewPreviewScene).GetField("_brewing", hidden)!.SetValue(room, true);
@@ -137,6 +141,7 @@ public partial class CraftingIntegrationSmoke : Node
             Check(clockOwner.TryForge(model, draft, out var timed) && Math.Abs(time.get_precise_game_hours() - before - timed.Hours * 2) < .001,
                 "树内正式炼器推进真实历法且时辰换算正确");
             // 连通真实配伍页面、开炼演出与领取按钮，避免只验算两个独立接口。
+            Check(alchemist.try_exchange_inventory(new Dictionary<string, int>(), inputs.ToDictionary(i => i.Path, i => i.Dose)), "下一炉重新装入真实投料");
             pillData.base_alchemy_proficiency = 36; AddChild(alchemist);
             pillData.alchemy_proficiency = 36; pillData.max_spirit_perception = 10000; pillData.current_world_stamina = 100;
             var realFacilities = new LocationCraftingPanel(); AddChild(realFacilities); realFacilities.ShowFor(alchemist, true);
@@ -162,7 +167,9 @@ public partial class CraftingIntegrationSmoke : Node
             Check(alchemist.current_world_stamina < 100 && time.get_precise_game_hours() > oldTime,
                 "真实开炉同时扣精力并推进历法");
             Check(oldPills.All(p => alchemist.get_inventory_total_count(p.Key) == p.Value), "真实领取确认前不提前发丹");
-            realClaim!.FindChildren("ClaimFooterPrimary", "Button", true, false).OfType<Button>().Single().EmitSignal(Button.SignalName.Pressed);
+            realClaim!.FindChildren("ClaimAutoPlace", "Button", true, false).OfType<Button>().Single().EmitSignal(Button.SignalName.Pressed);
+            Check(oldPills.All(p => alchemist.get_inventory_total_count(p.Key) == p.Value), "自动放入仅预览，未确认前不发丹");
+            realClaim.FindChildren("ClaimFooterPrimary", "Button", true, false).OfType<Button>().Single().EmitSignal(Button.SignalName.Pressed);
             Check(oldPills.All(p => alchemist.get_inventory_total_count(p.Key) > p.Value), "点击真实领取按钮后丹药进入人物行囊");
             realFacilities.ReturnToLocation(); await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             Check(!realFacilities.Visible, "真实领取完成后可以返回地点"); realFacilities.QueueFree();

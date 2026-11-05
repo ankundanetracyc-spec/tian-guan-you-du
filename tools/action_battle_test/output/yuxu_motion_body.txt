@@ -1,0 +1,152 @@
+## A contact/swing trajectory has explicit heel contact, support, toe-off,
+## passing and landing events. It deliberately has no long straight back-leg
+## hold: the swing foot folds under the body before reaching forwards.
+func _foot_sample(phase: float, backwards: float) -> Vector3:
+	var p := fposmod(phase, 1.0)
+	var x := 0.0
+	var lift := 0.0
+	var pitch := 0.0
+	if p < 0.52:
+		var support := p/0.52
+		x = lerpf(24.0,-23.0,support)
+		pitch = lerpf(-0.12,0.0,smoothstep(0.0,0.15,support))
+		pitch += 0.42*smoothstep(0.70,1.0,support)
+	else:
+		var swing := (p-0.52)/0.48
+		# Fast recovery under the pelvis, then ease into the next contact.
+		x = lerpf(-23.0,24.0,smoothstep(0.0,1.0,swing))
+		lift = 18.0*pow(sin(swing*PI),1.25)
+		pitch = lerpf(0.42,-0.12,smoothstep(0.05,0.82,swing))
+	var backward_x := -x*0.63
+	var backward_lift := lift*0.45
+	x = lerpf(x,backward_x,backwards)
+	lift = lerpf(lift,backward_lift,backwards)
+	pitch = lerpf(pitch,-pitch*0.50,backwards)
+	return Vector3(x,lift,pitch)
+
+func _solve_leg(side: String, ankle: Vector2, foot_pitch: float) -> void:
+	var thigh: Bone2D = bones[side+"_thigh"]
+	var calf: Bone2D = bones[side+"_calf"]
+	var foot: Bone2D = bones[side+"_foot"]
+	var hip := runtime.rig_root_node.to_local(thigh.global_position)
+	var upper_length := calf.rest.origin.length()
+	var lower_length := foot.rest.origin.length()
+	var offset := ankle-hip
+	var distance := clampf(offset.length(),1.0,upper_length+lower_length-0.03)
+	var hinge := acos(clampf((upper_length*upper_length+distance*distance-lower_length*lower_length)/(2.0*upper_length*distance),-1.0,1.0))
+	var upper_angle := offset.angle()-hinge
+	var knee := hip+Vector2.from_angle(upper_angle)*upper_length
+	var lower_angle := (ankle-knee).angle()
+	thigh.rotation = upper_angle-calf.rest.origin.angle()
+	calf.rotation = lower_angle-foot.rest.origin.angle()-thigh.rotation
+	foot.rotation = foot_pitch-thigh.rotation-calf.rotation
+
+func _cloth_spring(key: String, target: Vector2, live: bool) -> Vector2:
+	if not live or not cloth_positions.has(key):
+		cloth_positions[key] = target
+		cloth_speeds[key] = Vector2.ZERO
+		return target
+	var point: Vector2 = cloth_positions[key]
+	var speed: Vector2 = cloth_speeds[key]
+	# Two substeps keep short cloth chains stable at the arena's 50ms clamp.
+	var dt := motion_delta*0.5
+	for substep in range(2):
+		speed += ((target-point)*190.0-speed*18.0)*dt
+		point += speed*dt
+	cloth_positions[key] = point
+	cloth_speeds[key] = speed
+	return point
+
+func update_cloth(clip: String, time: float, duration: float, tracks: Dictionary) -> void:
+	var live := motion_context and pose_blending
+	if clip != last_clip:
+		blend_from.clear()
+		if pose_blending and not last_clip.is_empty():
+			for key in bones: blend_from[key] = bones[key].transform
+		transition_age = 0.0
+	last_clip = clip
+	for bone in bones.values(): bone.transform = bone.rest
+	if clip == "BindPose": return
+	var running := clip in ["Run_New1","Run_New2"]
+	var backward := clip == "BackstepWalk"
+	var amount := gait_amount if live else (1.0 if running or backward else 0.0)
+	var reverse := gait_backward if live else (1.0 if backward else 0.0)
+	var phase := gait_phase if live else fposmod(time/(0.70 if backward else 0.5833333),1.0)
+	var clock := motion_clock if live else time
+	var breathe := sin(clock*TAU/3.4)
+	var double_step := cos(phase*TAU*2.0)
+	var impulse := acceleration_lean if live else 0.0
+	var attack := 0.0
+	if clip == "AttackIdle":
+		# Quick preparation and extension; recovery is longer than the strike.
+		var p := clampf(time/maxf(duration,0.001),0.0,1.0)
+		attack = smoothstep(0.06,0.39,p)*(1.0-smoothstep(0.48,1.0,p))
+	var dash := sin(clampf(time/0.20,0.0,1.0)*PI) if clip == "Step1" else 0.0
+	var lean := lerpf(0.105,-0.055,reverse)*amount+impulse*0.045+attack*0.052+dash*0.075
+	bones.pelvis.position += Vector2(impulse*1.1+attack*0.7,(5.0+1.5*double_step)*amount+dash*3.0+breathe*0.24*(1.0-amount))
+	bones.torso.rotation = lean+sin(phase*TAU)*0.014*amount+breathe*0.006*(1.0-amount)
+	# Counter-rotation keeps the eyes/head plane level while chest and pelvis
+	# transfer weight. Neck/collar vertices still share the same continuous seam.
+	bones.head.rotation = -bones.torso.rotation*0.72+breathe*0.004
+	for index in range(2):
+		var side := "near" if index == 0 else "far"
+		var leg_phase := fposmod(phase+float(index)*0.5,1.0)
+		var sample := _foot_sample(leg_phase,reverse)
+		var points := _leg_points(side)
+		var rest_ankle := _world(points[2])
+		var ankle := Vector2(lerpf(rest_ankle.x,sample.x,amount),rest_ankle.y-sample.y*amount)
+		var foot_pitch := sample.z*amount
+		# The sole, not the ankle bone, is the ground contact. Toe-off lifts
+		# the ankle while the toe remains on the floor.
+		ankle.y -= maxf(0.0,sin(foot_pitch)*8.8)
+		if dash > 0.0:
+			ankle.x += (-12.0 if index == 0 else 11.0)*dash
+			ankle.y -= (2.0 if index == 0 else 7.0)*dash
+		_solve_leg(side,ankle,foot_pitch)
+		# Opposite arm follows the leg's contact/recovery events, with a small
+		# lag and an actively changing elbow angle; both hands stay in guard.
+		var arm_sample := _foot_sample(leg_phase-0.08,reverse)
+		var swing := arm_sample.x/24.0
+		var rest_upper := 1.32 if index == 0 else 1.48
+		var rest_lower := -0.52 if index == 0 else -0.42
+		var upper_angle := rest_upper+swing*0.33*amount
+		var lower_angle := rest_lower+swing*0.25*amount
+		upper_angle += breathe*0.018*(1.0-amount)
+		lower_angle -= breathe*0.012*(1.0-amount)
+		if index == 0:
+			upper_angle = lerpf(upper_angle,0.34,attack)
+			lower_angle = lerpf(lower_angle,-0.08,attack)
+		else:
+			upper_angle += attack*0.12
+			lower_angle -= attack*0.14
+		upper_angle += dash*(0.12 if index == 0 else -0.18)
+		_aim_arm(side,upper_angle,lower_angle)
+	var a := runtime.rig_root_node.to_local(bones.near_calf.global_position)
+	var b := runtime.rig_root_node.to_local(bones.far_calf.global_position)
+	var lead := maxf(a.x,b.x)
+	var trail := minf(a.x,b.x)
+	# Cloth carries over the actual thigh silhouette. Its lower half trails
+	# the contact cycle; the spring supplies overshoot and settling at stops.
+	var drift := lerpf(-3.6,2.2,reverse)*amount-impulse*2.4
+	var delayed := sin((phase-0.14)*TAU*2.0)*amount
+	var front_target := Vector2(maxf(0.0,lead-1.0)*0.73+drift*0.24,0.0)
+	var back_target := Vector2(minf(0.0,trail+3.0)*0.75+drift,0.0)
+	bones.front_cloth.position += _cloth_spring("front",front_target,live)
+	bones.back_cloth.position += _cloth_spring("back",back_target,live)
+	bones.front_hem.position += _cloth_spring("front_hem",Vector2(-front_target.x*0.12+drift+delayed*1.2,absf(delayed)*0.7),live)
+	bones.back_hem.position += _cloth_spring("back_hem",Vector2(drift*0.7+delayed*1.8,absf(delayed)*0.6),live)
+	bones.front_cloth.rotation = delayed*0.025+breathe*0.002
+	bones.front_hem.rotation = -delayed*0.035
+	bones.back_cloth.rotation = delayed*0.035
+	bones.back_hem.rotation = delayed*0.045
+	if pose_blending and not blend_from.is_empty():
+		var blend_time := 0.035 if clip == "AttackIdle" else 0.11
+		var mix := smoothstep(0.0,1.0,transition_age/blend_time)
+		for key in bones:
+			# Live locomotion continues below the waist while casting. Its
+			# contact solution must not be frozen by an upper-body transition.
+			if live and (key.contains("thigh") or key.contains("calf") or key.contains("foot") or key=="pelvis"):
+				continue
+			bones[key].transform = blend_from[key].interpolate_with(bones[key].transform,mix)
+		if mix >= 1.0: blend_from.clear()
+
