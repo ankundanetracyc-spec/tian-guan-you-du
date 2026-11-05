@@ -1,0 +1,74 @@
+{
+  "rigRootPath": "/HumanRootMan/Root",
+  "nodeCount": 51,
+  "meshCount": 7,
+  "sourceHash": "0d1e14ae4a2719b91055e201fadf294b600f730e5bfbba14f4806b7619ec3ced",
+  "clips": {
+    "Idle": {
+      "duration": 1.6333333253860474,
+      "loop": true,
+      "frames": 144,
+      "excludedBindings": []
+    },
+    "Run_New1": {
+      "duration": 0.5833333134651184,
+      "loop": true,
+      "frames": 144,
+      "excludedBindings": [
+        {
+          "pathHash": 569651382,
+          "attributeId": 4,
+          "curveIndex": 72
+        }
+      ]
+    },
+    "Run_New2": {
+      "duration": 0.44999998807907104,
+      "loop": true,
+      "frames": 144,
+      "excludedBindings": [
+        {
+          "pathHash": 569651382,
+          "attributeId": 4,
+          "curveIndex": 57
+        }
+      ]
+    },
+    "AttackIdle": {
+      "duration": 0.1666666716337204,
+      "loop": false,
+      "frames": 144,
+      "excludedBindings": []
+    },
+    "AttackRun": {
+      "duration": 0.25,
+      "loop": false,
+      "frames": 144,
+      "excludedBindings": []
+    },
+    "Step1": {
+      "duration": 0.1666666716337204,
+      "loop": true,
+      "frames": 144,
+      "excludedBindings": []
+    }
+  },
+  "inputsUnchanged": true,
+  "nativeCapture": {
+    "pngFrames": 144,
+    "perClip": 48,
+    "clips": [
+      "Run_New1",
+      "Run_New2",
+      "Idle"
+    ],
+    "exitCode": 0,
+    "noScriptErrorsOrResourceLeaks": true
+  },
+  "sourceFileHashes": {
+    "tools/action_battle_test/source_reference_build_frames_20261104.py": "543600fc957750e33a0a1e16d95c26094517386ad3530f64700235a83ad6be4c",
+    "tools/action_battle_test/source_reference_player_20261104.gd": "173120a252e38a5e5ba7c43a7e9237e0869e3d6d96f3a52aeb1d26c38c500954",
+    "tools/action_battle_test/source_reference_capture_20261104.gd": "dd94f990a7c63dc9e87f2688a855b27d1b01ca1f6768b63890e83e80dc60cfdf",
+    "tools/action_battle_test/output/guigu_source_reference_v2/male101/source_reference_vertex_frames.json": "7603c46731ab56f6de5e33e06837636b10820a67495cd6093d489568ad767537"
+  }
+}

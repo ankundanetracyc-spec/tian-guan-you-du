@@ -1,0 +1,138 @@
+{
+  "source": {
+    "path": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\guigubahuang_Data\\resources.assets",
+    "sizeBytes": 1764255120,
+    "sha256": "0d1e14ae4a2719b91055e201fadf294b600f730e5bfbba14f4806b7619ec3ced",
+    "unityVersion": "2020.3f1c1"
+  },
+  "meshes": [
+    {
+      "spriteId": 85649,
+      "vertices": 40,
+      "triangles": 43,
+      "blendedVertices": 18,
+      "bones": [
+        {
+          "index": 0,
+          "name": "shenti1",
+          "parentIndex": -1,
+          "influencedVertices": 15
+        },
+        {
+          "index": 1,
+          "name": "shenti2",
+          "parentIndex": -1,
+          "influencedVertices": 10
+        },
+        {
+          "index": 2,
+          "name": "shenti2_1",
+          "parentIndex": 6,
+          "influencedVertices": 4
+        },
+        {
+          "index": 3,
+          "name": "shenti2_2",
+          "parentIndex": 2,
+          "influencedVertices": 11
+        },
+        {
+          "index": 4,
+          "name": "bone_3",
+          "parentIndex": 6,
+          "influencedVertices": 5
+        },
+        {
+          "index": 5,
+          "name": "bone_4",
+          "parentIndex": 4,
+          "influencedVertices": 13
+        },
+        {
+          "index": 6,
+          "name": "bone_5",
+          "parentIndex": 1,
+          "influencedVertices": 5
+        }
+      ]
+    },
+    {
+      "spriteId": 84807,
+      "vertices": 39,
+      "triangles": 53,
+      "blendedVertices": 9,
+      "bones": [
+        {
+          "index": 0,
+          "name": "zuobi1",
+          "parentIndex": -1,
+          "influencedVertices": 22
+        },
+        {
+          "index": 1,
+          "name": "zuobi2",
+          "parentIndex": 0,
+          "influencedVertices": 14
+        },
+        {
+          "index": 2,
+          "name": "zuobi3",
+          "parentIndex": 1,
+          "influencedVertices": 12
+        }
+      ]
+    },
+    {
+      "spriteId": 79543,
+      "vertices": 35,
+      "triangles": 47,
+      "blendedVertices": 7,
+      "bones": [
+        {
+          "index": 0,
+          "name": "youbi1",
+          "parentIndex": -1,
+          "influencedVertices": 23
+        },
+        {
+          "index": 1,
+          "name": "youbi2",
+          "parentIndex": 0,
+          "influencedVertices": 13
+        },
+        {
+          "index": 2,
+          "name": "youbi3",
+          "parentIndex": 1,
+          "influencedVertices": 6
+        }
+      ]
+    },
+    {
+      "spriteId": 87557,
+      "vertices": 37,
+      "triangles": 43,
+      "blendedVertices": 7,
+      "bones": [
+        {
+          "index": 0,
+          "name": "tui1",
+          "parentIndex": -1,
+          "influencedVertices": 19
+        },
+        {
+          "index": 1,
+          "name": "tui2",
+          "parentIndex": 0,
+          "influencedVertices": 16
+        },
+        {
+          "index": 2,
+          "name": "tui3",
+          "parentIndex": 1,
+          "influencedVertices": 9
+        }
+      ]
+    }
+  ]
+}

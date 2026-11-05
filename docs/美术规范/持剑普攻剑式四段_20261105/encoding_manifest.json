@@ -1,0 +1,28 @@
+{
+  "source": "capture_manifest.json",
+  "source_frames": 102,
+  "native_size": [
+    1280,
+    720
+  ],
+  "total_milliseconds": 3400,
+  "closeup_crop": [
+    470,
+    214,
+    1040,
+    650
+  ],
+  "closeup_resize": false,
+  "full_size": [
+    960,
+    540
+  ],
+  "grid": "fixed native crops with labels, no redrawing",
+  "palette": "constant 224 colors, dithering disabled",
+  "outputs": [
+    "combo_closeup.gif",
+    "combo_full.gif",
+    "stages_grid.png",
+    "stages_geometry_grid.png"
+  ]
+}

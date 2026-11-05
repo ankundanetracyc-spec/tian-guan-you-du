@@ -1,0 +1,943 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "path": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\guigubahuang_Data\\resources.assets",
+    "sizeBytes": 1764255120,
+    "sha256": "0d1e14ae4a2719b91055e201fadf294b600f730e5bfbba14f4806b7619ec3ced",
+    "unityVersion": "2020.3f1c1"
+  },
+  "rigRootPath": "/HumanRootMan/Root",
+  "coordinates": {
+    "source_uv": "Normalized crop PNG UV, top-left origin, X right, Y down. Not spriteRect/full-atlas UV.",
+    "source_pixels": "Original cropped PNG edge coordinates: source_uv multiplied by image_size. Fractional coordinates are retained.",
+    "alpha_bbox_pixels": "Nonzero source-alpha bounding rectangle [left,top,right,bottom], right/bottom exclusive. Alpha threshold >0, no threshold cleanup.",
+    "bone_pivot_method": "inverse(source bindpose) * [0,0,0,1], then least-squares exact affine Sprite-local XY -> uvCropLowerLeft and Y flip.",
+    "external_mount_method": "inverse(rendererToRigRoot) * rigBoneWorldMatrix * [0,0,0,1], then the same affine. Used for rigid face and head/neck mounts outside a mesh's own skin bones.",
+    "registration": "Measure matching joint/mount/visible-extent landmarks in each new HD image and fit a mapping from these source UV anchors to those measured HD pixels. Multiplying source UV by arbitrary HD width/height assumes identical internal layout and does not perform registration.",
+    "limitations": "Alpha crown/sole/front-edge values describe raster silhouette extents, not skeletal joints. External-mount anchors use the assembled prefab pose and must not replace inverse-bindpose anchors for skinned joints. Do not clamp anchors merely because they fall outside a crop."
+  },
+  "sprites": {
+    "85649": {
+      "sprite_id": 85649,
+      "source_name": "yifu",
+      "image_size": [
+        42,
+        95
+      ],
+      "alpha_bbox_pixels": [
+        2,
+        4,
+        39,
+        94
+      ],
+      "alpha_bbox_uv": [
+        0.047619047619047616,
+        0.042105263157894736,
+        0.9285714285714286,
+        0.9894736842105263
+      ],
+      "renderer_paths": [
+        "/HumanRootMan/Root/Body/yifu/yifu"
+      ],
+      "is_skinned": true,
+      "localXYToUvTopLeft": [
+        [
+          2.3842762771404646,
+          1.6653345369377348e-16,
+          0.4763243404844462
+        ],
+        [
+          1.8719147910008286e-15,
+          -1.0529280464357726,
+          0.47353597678211357
+        ]
+      ],
+      "maxUvFitResidual": 7.771561172376096e-16,
+      "anchors": [
+        {
+          "name": "upper_body",
+          "kind": "inverse_source_bindpose_pivot",
+          "source_uv": [
+            0.5534718789964858,
+            0.39985447213438907
+          ],
+          "source_pixels": [
+            23.2458189178524,
+            37.986174852766965
+          ],
+          "sprite_local": [
+            0.03235679491160516,
+            0.06997772060222071,
+            0.0
+          ],
+          "rigPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1",
+          "boneName": "shenti1",
+          "boneIndex": 0
+        },
+        {
+          "name": "cloth_root",
+          "kind": "inverse_source_bindpose_pivot",
+          "source_uv": [
+            0.5534718774899194,
+            0.4009722529894538
+          ],
+          "source_pixels": [
+            23.245818854576616,
+            38.092364033998116
+          ],
+          "sprite_local": [
+            0.03235679427972946,
+            0.06891612778127863,
+            0.0
+          ],
+          "rigPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2",
+          "boneName": "shenti2",
+          "boneIndex": 1
+        },
+        {
+          "name": "shenti2_1",
+          "kind": "inverse_source_bindpose_pivot",
+          "source_uv": [
+            0.47701708577499113,
+            0.6154593173790697
+          ],
+          "source_pixels": [
+            20.034717602549627,
+            58.46863515101162
+          ],
+          "sprite_local": [
+            0.00029054740727269343,
+            -0.13478921097920743,
+            0.0
+          ],
+          "rigPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5/shenti2_1",
+          "boneName": "shenti2_1",
+          "boneIndex": 2
+        },
+        {
+          "name": "shenti2_2",
+          "kind": "inverse_source_bindpose_pivot",
+          "source_uv": [
+            0.23698414206372198,
+            0.6878796069415456
+          ],
+          "source_pixels": [
+            9.953333966676324,
+            65.34856265944683
+          ],
+          "sprite_local": [
+            -0.10038274537033612,
+            -0.20356911460854216,
+            0.0
+          ],
+          "rigPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5/shenti2_1/shenti2_2",
+          "boneName": "shenti2_2",
+          "boneIndex": 3
+        },
+        {
+          "name": "bone_3",
+          "kind": "inverse_source_bindpose_pivot",
+          "source_uv": [
+            0.4722593439411714,
+            0.614391582185044
+          ],
+          "source_pixels": [
+            19.8348924455292,
+            58.367200307579175
+          ],
+          "sprite_local": [
+            -0.0017049184200037635,
+            -0.13377514814971014,
+            0.0
+          ],
+          "rigPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5/bone_3",
+          "boneName": "bone_3",
+          "boneIndex": 4
+        },
+        {
+          "name": "bone_4",
+          "kind": "inverse_source_bindpose_pivot",
+          "source_uv": [
+            0.7254204504071995,
+            0.7210625285964363
+          ],
+          "source_pixels": [
+            30.46765891710238,
+            68.50094021666145
+          ],
+          "sprite_local": [
+            0.104474515940536,
+            -0.23508401419471675,
+            0.0
+          ],
+          "rigPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5/bone_3/bone_4",
+          "boneName": "bone_4",
+          "boneIndex": 5
+        },
+        {
+          "name": "bone_5",
+          "kind": "inverse_source_bindpose_pivot",
+          "source_uv": [
+            0.5040293286486074,
+            0.5725580572270084
+          ],
+          "source_pixels": [
+            21.16923180324151,
+            54.3930154365658
+          ],
+          "sprite_local": [
+            0.011619873262920962,
+            -0.09404448934577314,
+            0.0
+          ],
+          "rigPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+          "boneName": "bone_5",
+          "boneIndex": 6
+        },
+        {
+          "name": "head_neck",
+          "kind": "inverse_renderer_times_rig_bone_pivot",
+          "source_uv": [
+            0.49190102381043926,
+            0.05625914002565319
+          ],
+          "source_pixels": [
+            20.65984300003845,
+            5.344618302437053
+          ],
+          "sprite_local": [
+            0.006533086570267174,
+            0.3963013789678873,
+            -0.009999999776482582
+          ],
+          "rigPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou",
+          "poseBasis": "source assembled prefab matrices; external mount anchor, not a skinned bindpose pivot"
+        },
+        {
+          "name": "hair_mount",
+          "kind": "inverse_renderer_times_rig_bone_pivot",
+          "source_uv": [
+            0.49190102381043926,
+            0.05625914002565319
+          ],
+          "source_pixels": [
+            20.65984300003845,
+            5.344618302437053
+          ],
+          "sprite_local": [
+            0.006533086570267174,
+            0.3963013789678873,
+            -0.06000000052154064
+          ],
+          "rigPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa",
+          "poseBasis": "source assembled prefab matrices; external mount anchor, not a skinned bindpose pivot"
+        },
+        {
+          "name": "near_shoulder_mount",
+          "kind": "inverse_renderer_times_rig_bone_pivot",
+          "source_uv": [
+            0.46882608210998655,
+            0.155954933503062
+          ],
+          "source_pixels": [
+            19.690695448619437,
+            14.815718682790889
+          ],
+          "sprite_local": [
+            -0.0031448781529012267,
+            0.30161704245041554,
+            -0.029999999329447746
+          ],
+          "rigPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1",
+          "poseBasis": "external shoulder mount in the assembled prefab; not a source cloth bindpose bone"
+        },
+        {
+          "name": "far_shoulder_mount",
+          "kind": "inverse_renderer_times_rig_bone_pivot",
+          "source_uv": [
+            0.5042804252831011,
+            0.14027743980428858
+          ],
+          "source_pixels": [
+            21.179777861890248,
+            13.326356781407416
+          ],
+          "sprite_local": [
+            0.01172518682783838,
+            0.3165064679451991,
+            0.03999999910593033
+          ],
+          "rigPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1",
+          "poseBasis": "external shoulder mount in the assembled prefab; not a source cloth bindpose bone"
+        }
+      ]
+    },
+    "84807": {
+      "sprite_id": 84807,
+      "source_name": "zuobi",
+      "image_size": [
+        21,
+        43
+      ],
+      "alpha_bbox_pixels": [
+        2,
+        2,
+        18,
+        41
+      ],
+      "alpha_bbox_uv": [
+        0.09523809523809523,
+        0.046511627906976744,
+        0.8571428571428571,
+        0.9534883720930233
+      ],
+      "renderer_paths": [
+        "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi/zuobi"
+      ],
+      "is_skinned": true,
+      "localXYToUvTopLeft": [
+        [
+          4.785346773988183,
+          5.967448757360216e-16,
+          0.47725457011989575
+        ],
+        [
+          -1.1938157079626688e-15,
+          -2.3293547535208146,
+          0.511458617308155
+        ]
+      ],
+      "maxUvFitResidual": 3.3306690738754696e-16,
+      "anchors": [
+        {
+          "name": "shoulder",
+          "kind": "inverse_source_bindpose_pivot",
+          "source_uv": [
+            0.21282431517938027,
+            0.15494341242117465
+          ],
+          "source_pixels": [
+            4.469310618766986,
+            6.66256673411051
+          ],
+          "sprite_local": [
+            -0.05525832660192674,
+            0.15305320254379823,
+            0.0
+          ],
+          "rigPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1",
+          "boneName": "zuobi1",
+          "boneIndex": 0
+        },
+        {
+          "name": "elbow",
+          "kind": "inverse_source_bindpose_pivot",
+          "source_uv": [
+            0.5555017965245396,
+            0.5425527676229113
+          ],
+          "source_pixels": [
+            11.66553772701533,
+            23.329769007785185
+          ],
+          "sprite_local": [
+            0.016351422394292093,
+            -0.01334882557830987,
+            0.0
+          ],
+          "rigPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1/zuobi2",
+          "boneName": "zuobi2",
+          "boneIndex": 1
+        },
+        {
+          "name": "wrist",
+          "kind": "inverse_source_bindpose_pivot",
+          "source_uv": [
+            0.6485514594481882,
+            0.7459717053121373
+          ],
+          "source_pixels": [
+            13.61958064841195,
+            32.076783328421904
+          ],
+          "sprite_local": [
+            0.0357961287694791,
+            -0.10067727453257876,
+            0.0
+          ],
+          "rigPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1/zuobi2/zuobi3",
+          "boneName": "zuobi3",
+          "boneIndex": 2
+        }
+      ]
+    },
+    "79543": {
+      "sprite_id": 79543,
+      "source_name": "youbi",
+      "image_size": [
+        16,
+        44
+      ],
+      "alpha_bbox_pixels": [
+        2,
+        2,
+        14,
+        42
+      ],
+      "alpha_bbox_uv": [
+        0.125,
+        0.045454545454545456,
+        0.875,
+        0.9545454545454546
+      ],
+      "renderer_paths": [
+        "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi"
+      ],
+      "is_skinned": true,
+      "localXYToUvTopLeft": [
+        [
+          6.290444748102289,
+          9.992007221626409e-16,
+          0.5644572978447983
+        ],
+        [
+          -1.239116369176433e-15,
+          -2.280618449324918,
+          0.5684185099804023
+        ]
+      ],
+      "maxUvFitResidual": 8.881784197001252e-16,
+      "anchors": [
+        {
+          "name": "shoulder",
+          "kind": "inverse_source_bindpose_pivot",
+          "source_uv": [
+            0.5364877534885667,
+            0.1815176548161132
+          ],
+          "source_pixels": [
+            8.583804055817067,
+            7.986776811908981
+          ],
+          "sprite_local": [
+            -0.004446354030002354,
+            0.16964734073725263,
+            0.0
+          ],
+          "rigPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1",
+          "boneName": "youbi1",
+          "boneIndex": 0
+        },
+        {
+          "name": "elbow",
+          "kind": "inverse_source_bindpose_pivot",
+          "source_uv": [
+            0.49914820164482226,
+            0.5515954144369227
+          ],
+          "source_pixels": [
+            7.986371226317156,
+            24.2701982352246
+          ],
+          "sprite_local": [
+            -0.010382270064398635,
+            0.007376549790018301,
+            0.0
+          ],
+          "rigPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2",
+          "boneName": "youbi2",
+          "boneIndex": 1
+        },
+        {
+          "name": "wrist",
+          "kind": "inverse_source_bindpose_pivot",
+          "source_uv": [
+            0.5573213256774976,
+            0.8250695444291695
+          ],
+          "source_pixels": [
+            8.917141210839961,
+            36.30305995488346
+          ],
+          "sprite_local": [
+            -0.0011344145689306468,
+            -0.11253571789912423,
+            0.0
+          ],
+          "rigPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/youbi3",
+          "boneName": "youbi3",
+          "boneIndex": 2
+        }
+      ]
+    },
+    "87557": {
+      "sprite_id": 87557,
+      "source_name": "tui",
+      "image_size": [
+        24,
+        68
+      ],
+      "alpha_bbox_pixels": [
+        2,
+        2,
+        21,
+        66
+      ],
+      "alpha_bbox_uv": [
+        0.08333333333333333,
+        0.029411764705882353,
+        0.875,
+        0.9705882352941176
+      ],
+      "renderer_paths": [
+        "/HumanRootMan/Root/Body/Foot/zuotui/zuotui",
+        "/HumanRootMan/Root/Body/Foot/youtui/youtui"
+      ],
+      "is_skinned": true,
+      "localXYToUvTopLeft": [
+        [
+          4.184603419736503,
+          4.440892098500626e-16,
+          0.5010330053283678
+        ],
+        [
+          5.779778173714196e-16,
+          -1.4731668445297137,
+          0.49975537508872125
+        ]
+      ],
+      "maxUvFitResidual": 5.551115123125783e-16,
+      "anchors": [
+        {
+          "name": "hip",
+          "kind": "inverse_source_bindpose_pivot",
+          "source_uv": [
+            0.42642683227152234,
+            0.08712278129405149
+          ],
+          "source_pixels": [
+            10.234243974516536,
+            5.924349127995502
+          ],
+          "sprite_local": [
+            -0.017828732038254507,
+            0.28009902294970296,
+            0.0
+          ],
+          "rigPath": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1",
+          "boneName": "tui1",
+          "boneIndex": 0
+        },
+        {
+          "name": "knee",
+          "kind": "inverse_source_bindpose_pivot",
+          "source_uv": [
+            0.3735526383112947,
+            0.49591840866297454
+          ],
+          "source_pixels": [
+            8.965263319471074,
+            33.72245178908227
+          ],
+          "sprite_local": [
+            -0.030464145399255137,
+            0.002604570174786689,
+            0.0
+          ],
+          "rigPath": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1/tui2",
+          "boneName": "tui2",
+          "boneIndex": 1
+        },
+        {
+          "name": "ankle",
+          "kind": "inverse_source_bindpose_pivot",
+          "source_uv": [
+            0.27633787959538636,
+            0.9163377643169444
+          ],
+          "source_pixels": [
+            6.632109110289273,
+            62.310967973552216
+          ],
+          "sprite_local": [
+            -0.0536956798996092,
+            -0.28278018255373566,
+            0.0
+          ],
+          "rigPath": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1/tui2/tui3",
+          "boneName": "tui3",
+          "boneIndex": 2
+        },
+        {
+          "name": "sole_center",
+          "kind": "visible_alpha_extent",
+          "source_uv": [
+            0.5625,
+            0.9705882352941176
+          ],
+          "source_pixels": [
+            13.5,
+            66.0
+          ],
+          "definition": "At last nonzero-alpha row: alpha-weighted pixel-center X, bottom pixel edge Y=max_nonzero_y+1"
+        },
+        {
+          "name": "sole_left",
+          "kind": "visible_alpha_extent",
+          "source_uv": [
+            0.20833333333333334,
+            0.9705882352941176
+          ],
+          "source_pixels": [
+            5.0,
+            66.0
+          ],
+          "definition": "Left outer pixel edge on the last nonzero-alpha row"
+        },
+        {
+          "name": "sole_right",
+          "kind": "visible_alpha_extent",
+          "source_uv": [
+            0.8333333333333334,
+            0.9705882352941176
+          ],
+          "source_pixels": [
+            20.0,
+            66.0
+          ],
+          "definition": "Right outer pixel edge on the last nonzero-alpha row"
+        }
+      ]
+    },
+    "65806": {
+      "sprite_id": 65806,
+      "source_name": "101",
+      "image_size": [
+        24,
+        24
+      ],
+      "alpha_bbox_pixels": [
+        3,
+        4,
+        17,
+        21
+      ],
+      "alpha_bbox_uv": [
+        0.125,
+        0.16666666666666666,
+        0.7083333333333334,
+        0.875
+      ],
+      "renderer_paths": [
+        "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/101(Clone)/lian"
+      ],
+      "is_skinned": false,
+      "localXYToUvTopLeft": [
+        [
+          4.166666666666667,
+          -9.251858745338129e-16,
+          0.49999999999999983
+        ],
+        [
+          -0.0,
+          -4.166666666666668,
+          0.5000000000000002
+        ]
+      ],
+      "maxUvFitResidual": 3.885780586188048e-16,
+      "anchors": [
+        {
+          "name": "head_neck",
+          "kind": "inverse_renderer_times_rig_bone_pivot",
+          "source_uv": [
+            0.44369780051407665,
+            0.716126867354573
+          ],
+          "source_pixels": [
+            10.64874721233784,
+            17.18704481650975
+          ],
+          "sprite_local": [
+            -0.013512527876621576,
+            -0.05187044816509745,
+            0.0
+          ],
+          "rigPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou",
+          "poseBasis": "source assembled prefab matrices; external mount anchor, not a skinned bindpose pivot"
+        },
+        {
+          "name": "hair_mount",
+          "kind": "inverse_renderer_times_rig_bone_pivot",
+          "source_uv": [
+            0.44369780051407665,
+            0.716126867354573
+          ],
+          "source_pixels": [
+            10.64874721233784,
+            17.18704481650975
+          ],
+          "sprite_local": [
+            -0.013512527876621576,
+            -0.05187044816509745,
+            -0.05000000074505806
+          ],
+          "rigPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa",
+          "poseBasis": "source assembled prefab matrices; external mount anchor, not a skinned bindpose pivot"
+        },
+        {
+          "name": "head_crown",
+          "kind": "visible_alpha_extent",
+          "source_uv": [
+            0.4314932318104907,
+            0.16666666666666666
+          ],
+          "source_pixels": [
+            10.355837563451777,
+            4.0
+          ],
+          "definition": "First nonzero-alpha row: alpha-weighted pixel-center X, top pixel edge Y"
+        },
+        {
+          "name": "head_alpha_center",
+          "kind": "visible_alpha_extent",
+          "source_uv": [
+            0.4166666666666667,
+            0.5208333333333334
+          ],
+          "source_pixels": [
+            10.0,
+            12.5
+          ],
+          "definition": "Center of the nonzero-alpha bounding box; a visible-extent landmark, not a skeletal pivot"
+        }
+      ]
+    },
+    "87679": {
+      "sprite_id": 87679,
+      "source_name": "101",
+      "image_size": [
+        21,
+        56
+      ],
+      "alpha_bbox_pixels": [
+        0,
+        4,
+        21,
+        55
+      ],
+      "alpha_bbox_uv": [
+        0.0,
+        0.07142857142857142,
+        1.0,
+        0.9821428571428571
+      ],
+      "renderer_paths": [
+        "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa"
+      ],
+      "is_skinned": true,
+      "localXYToUvTopLeft": [
+        [
+          4.761904761904757,
+          1.1657341758564144e-15,
+          0.4999999999999999
+        ],
+        [
+          -6.640466037356144e-15,
+          -1.7857142857142878,
+          0.4999999999999998
+        ]
+      ],
+      "maxUvFitResidual": 1.3322676295501878e-15,
+      "anchors": [
+        {
+          "name": "hair_bone_1",
+          "kind": "inverse_source_bindpose_pivot",
+          "source_uv": [
+            0.760463782894276,
+            0.17027999260622245
+          ],
+          "source_pixels": [
+            15.969739440779795,
+            9.535679585948458
+          ],
+          "sprite_local": [
+            0.05469739440779797,
+            0.18464320414051488,
+            0.0
+          ],
+          "rigPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1",
+          "boneName": "bone_1",
+          "boneIndex": 0
+        },
+        {
+          "name": "hair_bone_2",
+          "kind": "inverse_source_bindpose_pivot",
+          "source_uv": [
+            0.32685943440091486,
+            0.22899735641334917
+          ],
+          "source_pixels": [
+            6.864048122419212,
+            12.823851959147554
+          ],
+          "sprite_local": [
+            -0.036359518775807925,
+            0.15176148040852427,
+            0.0
+          ],
+          "rigPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2",
+          "boneName": "bone_2",
+          "boneIndex": 1
+        },
+        {
+          "name": "hair_bone_3",
+          "kind": "inverse_source_bindpose_pivot",
+          "source_uv": [
+            0.299759176313914,
+            0.4243452543715129
+          ],
+          "source_pixels": [
+            6.294942702592195,
+            23.76333424480472
+          ],
+          "sprite_local": [
+            -0.04205057297407809,
+            0.04236665755195278,
+            0.0
+          ],
+          "rigPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+          "boneName": "bone_3",
+          "boneIndex": 2
+        },
+        {
+          "name": "hair_bone_4",
+          "kind": "inverse_source_bindpose_pivot",
+          "source_uv": [
+            0.2305031570808852,
+            0.5937220746517202
+          ],
+          "source_pixels": [
+            4.840566298698589,
+            33.248436180496334
+          ],
+          "sprite_local": [
+            -0.05659433701301412,
+            -0.05248436180496315,
+            0.0
+          ],
+          "rigPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3/bone_4",
+          "boneName": "bone_4",
+          "boneIndex": 3
+        },
+        {
+          "name": "hair_bone_5",
+          "kind": "inverse_source_bindpose_pivot",
+          "source_uv": [
+            0.17329131894497235,
+            0.7777778679558809
+          ],
+          "source_pixels": [
+            3.6391176978444193,
+            43.55556060552933
+          ],
+          "sprite_local": [
+            -0.06860882302155581,
+            -0.15555560605529295,
+            0.0
+          ],
+          "rigPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3/bone_4/bone_5",
+          "boneName": "bone_5",
+          "boneIndex": 4
+        },
+        {
+          "name": "head_neck",
+          "kind": "inverse_renderer_times_rig_bone_pivot",
+          "source_uv": [
+            0.60937448027032,
+            0.3590253165661738
+          ],
+          "source_pixels": [
+            12.79686408567672,
+            20.105417727705735
+          ],
+          "sprite_local": [
+            0.02296864085676724,
+            0.07894582272294237,
+            0.05000000074505806
+          ],
+          "rigPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou",
+          "poseBasis": "source assembled prefab matrices; external mount anchor, not a skinned bindpose pivot"
+        },
+        {
+          "name": "hair_mount",
+          "kind": "inverse_renderer_times_rig_bone_pivot",
+          "source_uv": [
+            0.60937448027032,
+            0.3590253165661738
+          ],
+          "source_pixels": [
+            12.79686408567672,
+            20.105417727705735
+          ],
+          "sprite_local": [
+            0.02296864085676724,
+            0.07894582272294237,
+            0.0
+          ],
+          "rigPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa",
+          "poseBasis": "source assembled prefab matrices; external mount anchor, not a skinned bindpose pivot"
+        },
+        {
+          "name": "hair_crown",
+          "kind": "visible_alpha_extent",
+          "source_uv": [
+            0.5666666666666667,
+            0.07142857142857142
+          ],
+          "source_pixels": [
+            11.9,
+            4.0
+          ],
+          "definition": "First nonzero-alpha row: alpha-weighted pixel-center X, top pixel edge Y"
+        },
+        {
+          "name": "hair_tip",
+          "kind": "visible_alpha_extent",
+          "source_uv": [
+            0.1488095238095238,
+            0.9821428571428571
+          ],
+          "source_pixels": [
+            3.125,
+            55.0
+          ],
+          "definition": "Last nonzero-alpha row: alpha-weighted pixel-center X, bottom pixel edge Y"
+        },
+        {
+          "name": "hair_front_edge",
+          "kind": "visible_alpha_extent",
+          "source_uv": [
+            1.0,
+            0.19866071428571427
+          ],
+          "source_pixels": [
+            21.0,
+            11.125
+          ],
+          "definition": "Rightmost nonzero-alpha column above the head/neck mount; alpha-weighted pixel-center Y, right outer pixel edge X"
+        }
+      ]
+    }
+  },
+  "validation": {
+    "spriteCount": 6,
+    "rendererCount": 7,
+    "maxSourceAffineResidual": 1.3322676295501878e-15,
+    "sharedLegAnchorsAgree": true,
+    "inverseBindposeRoundTripsPass": true
+  },
+  "inputHashes": {
+    "rig.json": "59a56da10dea11afbb4f6c4aaa19388bb72fc7ebc772c215189da17e90e04ffd",
+    "skins.json": "52c438bc6fb939a418a4bb7d9185e90c05c84be01ee038f8dd796649b1104ade"
+  }
+}
