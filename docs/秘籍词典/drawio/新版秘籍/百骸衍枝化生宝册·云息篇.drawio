@@ -1,0 +1,195 @@
+<mxfile host="app.diagrams.net" agent="Codex">
+  <diagram id="bai_hai_yun_xi_player" name="01 主图（游戏内文案）">
+    <mxGraphModel dx="1740" dy="1524" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1740" pageHeight="1524" math="0" shadow="0" background="#FFFFFF">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="player_title" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;百骸衍枝化生宝册·云息篇&lt;/b&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=16;spacingBottom=16;fontFamily=Microsoft YaHei;fontSize=20;fillColor=#e3f0df;strokeColor=#82a972;fontColor=#203a21;dashed=0;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="660" y="25" width="560" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="player_overview" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;云息篇 · 四卷&lt;/b&gt;&lt;br&gt;可主修、可辅修&lt;br&gt;持血外放，近身双判，末段涌潮。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=16;spacingBottom=16;fontFamily=Microsoft YaHei;fontSize=15;fillColor=#e3f0df;strokeColor=#82a972;fontColor=#203a21;dashed=0;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="660" y="120" width="560" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="p_c1_cards" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;心法：百骸化生&lt;/b&gt;&lt;br&gt;关键词：气血&lt;br&gt;有气血时，普攻每段外放血气，可与本体同时命中。&lt;br&gt;血气造成该段50%的物理伤害，向前额外延伸R单位（R=40＋10×气血）。&lt;br&gt;外放不消耗气血，血气增伤同样作用于血浪。&lt;br&gt;主修：血气额外距离提高15%。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=16;spacingBottom=16;fontFamily=Microsoft YaHei;fontSize=14;fillColor=#eaf3ff;strokeColor=#6b91c5;fontColor=#172d49;dashed=0;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="285" width="620" height="164" as="geometry" />
+        </mxCell>
+        <mxCell id="p_c1" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;第一卷 · 养络&lt;/b&gt;&lt;br&gt;前置：无&lt;br&gt;新招式：无&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=16;spacingBottom=16;fontFamily=Microsoft YaHei;fontSize=15;fillColor=#e3f0df;strokeColor=#82a972;fontColor=#203a21;dashed=0;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="800" y="285" width="280" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="p_c1_right" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;化法：催血&lt;/b&gt;&lt;br&gt;气血≤2层时发动，完成后额外获得气血1层。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=16;spacingBottom=16;fontFamily=Microsoft YaHei;fontSize=14;fillColor=#eaf3ff;strokeColor=#6b91c5;fontColor=#172d49;dashed=0;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="285" width="460" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="p_e1_heart" source="p_c1" target="p_c1_cards" value="心法" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#7b8794;fontFamily=Microsoft YaHei;fontSize=12;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p_e1_rewrite" source="p_c1" target="p_c1_right" value="化法" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#7b8794;fontFamily=Microsoft YaHei;fontSize=12;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p_c2_cards" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;心法：百骸化生&lt;/b&gt;&lt;br&gt;关键词：气血&lt;br&gt;有气血时，普攻每段外放血气，可与本体同时命中。&lt;br&gt;血气造成该段50%的物理伤害，向前额外延伸R单位（R=40＋10×气血）。&lt;br&gt;外放不消耗气血，血气增伤同样作用于血浪。&lt;br&gt;本体命中时，同次血气对该敌人伤害＋25%。&lt;br&gt;主修：血气额外距离提高15%。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=16;spacingBottom=16;fontFamily=Microsoft YaHei;fontSize=14;fillColor=#eaf3ff;strokeColor=#6b91c5;fontColor=#172d49;dashed=0;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="504" width="620" height="185" as="geometry" />
+        </mxCell>
+        <mxCell id="p_c2" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;第二卷 · 行血&lt;/b&gt;&lt;br&gt;前置：养络&lt;br&gt;新招式：赤潮奔涌&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=16;spacingBottom=16;fontFamily=Microsoft YaHei;fontSize=15;fillColor=#e3f0df;strokeColor=#82a972;fontColor=#203a21;dashed=0;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="800" y="504" width="280" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="p_c2_right" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;化法：架招&lt;/b&gt;&lt;br&gt;气血≥4层时发动，本次基础化解量＋20%。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=16;spacingBottom=16;fontFamily=Microsoft YaHei;fontSize=14;fillColor=#eaf3ff;strokeColor=#6b91c5;fontColor=#172d49;dashed=0;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="504" width="460" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="p_chichao" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;招式：赤潮奔涌&lt;/b&gt;&lt;br&gt;关键词：气血、击退&lt;br&gt;耗费：体力1、法力0&lt;br&gt;目标：自身；需气血≥2层。&lt;br&gt;连段外发动，降低气血2层。&lt;br&gt;6秒内，每套普攻末段出手时追加一道血浪。&lt;br&gt;造成A点物理伤害（A=末段基础伤害×（50%＋气血×10%））。&lt;br&gt;范围：前方120°扇面、最远440单位，0.78秒扩散，贯穿敌人。&lt;br&gt;血浪命中时有几率小幅击退敌人。&lt;br&gt;冷却：24秒，自强化结束后计算。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=16;spacingBottom=16;fontFamily=Microsoft YaHei;fontSize=14;fillColor=#eaf3ff;strokeColor=#6b91c5;fontColor=#172d49;dashed=0;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="709" width="620" height="248" as="geometry" />
+        </mxCell>
+        <mxCell id="p_e_chichao" source="p_c2" target="p_chichao" value="习得" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#7b8794;fontFamily=Microsoft YaHei;fontSize=12;exitX=0;exitY=0.85;entryX=1;entryY=0.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p_e2_heart" source="p_c2" target="p_c2_cards" value="心法" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#7b8794;fontFamily=Microsoft YaHei;fontSize=12;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p_e2_rewrite" source="p_c2" target="p_c2_right" value="化法" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#7b8794;fontFamily=Microsoft YaHei;fontSize=12;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p_c3_cards" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;心法：百骸化生&lt;/b&gt;&lt;br&gt;关键词：气血&lt;br&gt;有气血时，普攻每段外放血气，可与本体同时命中。&lt;br&gt;血气造成该段50%的物理伤害，向前额外延伸R单位（R=40＋10×气血）。&lt;br&gt;外放不消耗气血，血气增伤同样作用于血浪。&lt;br&gt;本体命中时，同次血气对该敌人伤害＋25%。&lt;br&gt;自身主动招式降血后，下一套血气伤害＋40%，不可叠加。&lt;br&gt;主修：血气额外距离提高15%。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=16;spacingBottom=16;fontFamily=Microsoft YaHei;fontSize=14;fillColor=#eaf3ff;strokeColor=#6b91c5;fontColor=#172d49;dashed=0;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1012" width="620" height="206" as="geometry" />
+        </mxCell>
+        <mxCell id="p_c3" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;第三卷 · 贯劲&lt;/b&gt;&lt;br&gt;前置：行血&lt;br&gt;新招式：无&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=16;spacingBottom=16;fontFamily=Microsoft YaHei;fontSize=15;fillColor=#e3f0df;strokeColor=#82a972;fontColor=#203a21;dashed=0;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="800" y="1012" width="280" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="p_c3_right" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;化法：赤潮奔涌&lt;/b&gt;&lt;br&gt;气血≥4层时发动，多降低气血1层；&lt;br&gt;本次强化期间，血浪扇面扩大至180°。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=16;spacingBottom=16;fontFamily=Microsoft YaHei;fontSize=14;fillColor=#eaf3ff;strokeColor=#6b91c5;fontColor=#172d49;dashed=0;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="1012" width="460" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="p_e3_heart" source="p_c3" target="p_c3_cards" value="心法" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#7b8794;fontFamily=Microsoft YaHei;fontSize=12;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p_e3_rewrite" source="p_c3" target="p_c3_right" value="化法" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#7b8794;fontFamily=Microsoft YaHei;fontSize=12;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p_c4_cards" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;心法：百骸化生&lt;/b&gt;&lt;br&gt;关键词：气血&lt;br&gt;有气血时，普攻每段外放血气，可与本体同时命中。&lt;br&gt;血气造成该段70%的物理伤害，向前额外延伸R单位（R=40＋10×气血）。&lt;br&gt;外放不消耗气血，血气增伤同样作用于血浪。&lt;br&gt;本体命中时，同次血气对该敌人伤害＋25%。&lt;br&gt;自身主动招式降血后，下一套血气伤害＋40%，不可叠加。&lt;br&gt;主修：血气额外距离提高15%。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=16;spacingBottom=16;fontFamily=Microsoft YaHei;fontSize=14;fillColor=#eaf3ff;strokeColor=#6b91c5;fontColor=#172d49;dashed=0;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1273" width="620" height="206" as="geometry" />
+        </mxCell>
+        <mxCell id="p_c4" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;第四卷 · 归养&lt;/b&gt;&lt;br&gt;前置：贯劲&lt;br&gt;新招式：无&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=16;spacingBottom=16;fontFamily=Microsoft YaHei;fontSize=15;fillColor=#e3f0df;strokeColor=#82a972;fontColor=#203a21;dashed=0;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="800" y="1273" width="280" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="p_c4_right" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;化法：拳掌&lt;/b&gt;&lt;br&gt;拳掌各段攻击距离提高25%。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingTop=16;spacingBottom=16;fontFamily=Microsoft YaHei;fontSize=14;fillColor=#eaf3ff;strokeColor=#6b91c5;fontColor=#172d49;dashed=0;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="1273" width="460" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="p_e4_heart" source="p_c4" target="p_c4_cards" value="心法" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#7b8794;fontFamily=Microsoft YaHei;fontSize=12;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p_e4_rewrite" source="p_c4" target="p_c4_right" value="化法" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#7b8794;fontFamily=Microsoft YaHei;fontSize=12;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p_e0" source="player_overview" target="p_c1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#7b8794;fontFamily=Microsoft YaHei;fontSize=12;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p_e1" source="p_c1" target="p_c2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#7b8794;fontFamily=Microsoft YaHei;fontSize=12;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p_e2" source="p_c2" target="p_c3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#7b8794;fontFamily=Microsoft YaHei;fontSize=12;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p_e3" source="p_c3" target="p_c4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#7b8794;fontFamily=Microsoft YaHei;fontSize=12;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="bai_hai_yun_xi" name="02 策划说明（内部）">
+    <mxGraphModel dx="1740" dy="2189" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1740" pageHeight="2189" math="0" shadow="0" background="#FFFFFF">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;百骸衍枝化生宝册·云息篇&lt;/b&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=20;fontFamily=Microsoft YaHei;align=left;verticalAlign=top;spacingTop=14;spacingBottom=14;fillColor=#f3f4f6;strokeColor=#8993a0;fontColor=#374151;dashed=1;dashPattern=6 4;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="660" y="25" width="560" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="overview" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;02｜策划说明 · 即时对练版 v0.9&lt;/b&gt;&lt;br&gt;可主修、可辅修；本页不进入游戏正文。&lt;br&gt;持血拉距，近身双判，末段涌潮。&lt;br&gt;同部功法：云息外放，玄基显臂。&lt;br&gt;当前已接即时自选对练，与玩家文案共用数值。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=15;fontFamily=Microsoft YaHei;align=left;verticalAlign=top;spacingTop=14;spacingBottom=14;fillColor=#f3f4f6;strokeColor=#8993a0;fontColor=#374151;dashed=1;dashPattern=6 4;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="660" y="120" width="560" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="pending" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;待定与接入边界&lt;/b&gt;&lt;br&gt;五行、灵根、修炼跨度及各卷修持仍待定。&lt;br&gt;当前普攻通过连段与末段元数据接入。&lt;br&gt;新伤害与化法已在即时自选对练生效。&lt;br&gt;正式养成获取与其他秘籍继续单独迁移。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Microsoft YaHei;align=left;verticalAlign=top;spacingTop=14;spacingBottom=14;fillColor=#f3f4f6;strokeColor=#8993a0;fontColor=#374151;dashed=1;dashPattern=6 4;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="120" width="380" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_cards" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;心法被动：百骸化生&lt;/b&gt;&lt;br&gt;关键词：气血&lt;br&gt;气血＞0时，普攻每段外放血气；近处可与本体同时命中，远处仅血气。&lt;br&gt;血气造成该段防御前本体基础值50%的物理伤害。&lt;br&gt;额外前向距离R（R=40＋10×H；H为该段出手时实际气血）。&lt;br&gt;横宽沿原段；外放不扣气血；动作、位移和冷却沿当前普攻。&lt;br&gt;血气增伤统一加算，血浪共享，本体伤害不受其影响。&lt;br&gt;主修额外效果：血气额外前向距离提高15%。&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Microsoft YaHei;align=left;verticalAlign=top;spacingTop=14;spacingBottom=14;fillColor=#f3f4f6;strokeColor=#8993a0;fontColor=#374151;dashed=1;dashPattern=6 4;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="335" width="620" height="202" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;第一卷 · 养络&lt;/b&gt;&lt;br&gt;卷章ID：yunxi_yang_luo&lt;br&gt;顺序：1&lt;br&gt;定位：持血外放&lt;br&gt;前置：无&lt;br&gt;习得：无&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=15;fontFamily=Microsoft YaHei;align=left;verticalAlign=top;spacingTop=14;spacingBottom=14;fillColor=#f3f4f6;strokeColor=#8993a0;fontColor=#374151;dashed=1;dashPattern=6 4;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="800" y="335" width="280" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_right" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;化法&lt;/b&gt;&lt;br&gt;适用范围：催血&lt;br&gt;化法追加：起手气血≤2层，完成后额外获得气血1层。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Microsoft YaHei;align=left;verticalAlign=top;spacingTop=14;spacingBottom=14;fillColor=#f3f4f6;strokeColor=#8993a0;fontColor=#374151;dashed=1;dashPattern=6 4;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="335" width="460" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_heart" source="c1" target="c1_cards" value="心法" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;exitX=0;exitY=0.48;entryX=1;entryY=0.48;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1_rewrite" source="c1" target="c1_right" value="化法" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_cards" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;心法被动：百骸化生&lt;/b&gt;&lt;br&gt;关键词：气血&lt;br&gt;气血＞0时，普攻每段外放血气；近处可与本体同时命中，远处仅血气。&lt;br&gt;血气造成该段防御前本体基础值50%的物理伤害。&lt;br&gt;额外前向距离R（R=40＋10×H；H为该段出手时实际气血）。&lt;br&gt;横宽沿原段；外放不扣气血；动作、位移和冷却沿当前普攻。&lt;br&gt;血气增伤统一加算，血浪共享，本体伤害不受其影响。&lt;br&gt;本体命中时，同次血气对该目标伤害＋25%。&lt;br&gt;主修额外效果：血气额外前向距离提高15%。&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Microsoft YaHei;align=left;verticalAlign=top;spacingTop=14;spacingBottom=14;fillColor=#f3f4f6;strokeColor=#8993a0;fontColor=#374151;dashed=1;dashPattern=6 4;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="592" width="620" height="223" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;第二卷 · 行血&lt;/b&gt;&lt;br&gt;卷章ID：yunxi_xing_xue&lt;br&gt;顺序：2&lt;br&gt;定位：贴身双判&lt;br&gt;前置：养络&lt;br&gt;习得：赤潮奔涌&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=15;fontFamily=Microsoft YaHei;align=left;verticalAlign=top;spacingTop=14;spacingBottom=14;fillColor=#f3f4f6;strokeColor=#8993a0;fontColor=#374151;dashed=1;dashPattern=6 4;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="800" y="592" width="280" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_right" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;化法&lt;/b&gt;&lt;br&gt;适用范围：架招&lt;br&gt;化法追加：发动时气血≥4层，本次基础化解量＋20%。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Microsoft YaHei;align=left;verticalAlign=top;spacingTop=14;spacingBottom=14;fillColor=#f3f4f6;strokeColor=#8993a0;fontColor=#374151;dashed=1;dashPattern=6 4;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="592" width="460" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="chichao" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;招式：赤潮奔涌&lt;/b&gt;&lt;br&gt;关键词：气血、击退&lt;br&gt;耗费：体力1、法力0&lt;br&gt;目标：自身（气血≥2层）；血浪只伤敌。&lt;br&gt;连段外发动，立即降低气血2层，强化普攻6秒。&lt;br&gt;期间每套普攻末段追加一道血浪，落空也会释放。&lt;br&gt;范围：前方120°扇面，最远440单位，0.78秒扩散，浪头扫到判伤；贯穿群敌。&lt;br&gt;物理伤害A（A=round(B×(50%＋10%×H))）。&lt;br&gt;B为末段防御前本体基础值，H为末段出手时气血。&lt;br&gt;命中后独立判定形类击退；同境24单位／0.12秒，不自动打断。&lt;br&gt;冷却24秒，自强化到期或提前结束后起算。&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Microsoft YaHei;align=left;verticalAlign=top;spacingTop=14;spacingBottom=14;fillColor=#f3f4f6;strokeColor=#8993a0;fontColor=#374151;dashed=1;dashPattern=6 4;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="835" width="620" height="265" as="geometry" />
+        </mxCell>
+        <mxCell id="e_chichao" source="c2" target="chichao" value="习得" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;exitX=0;exitY=0.85;entryX=1;entryY=0.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_heart" source="c2" target="c2_cards" value="心法" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;exitX=0;exitY=0.48;entryX=1;entryY=0.48;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_rewrite" source="c2" target="c2_right" value="化法" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_cards" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;心法被动：百骸化生&lt;/b&gt;&lt;br&gt;关键词：气血&lt;br&gt;气血＞0时，普攻每段外放血气；近处可与本体同时命中，远处仅血气。&lt;br&gt;血气造成该段防御前本体基础值50%的物理伤害。&lt;br&gt;额外前向距离R（R=40＋10×H；H为该段出手时实际气血）。&lt;br&gt;横宽沿原段；外放不扣气血；动作、位移和冷却沿当前普攻。&lt;br&gt;血气增伤统一加算，血浪共享，本体伤害不受其影响。&lt;br&gt;本体命中时，同次血气对该目标伤害＋25%。&lt;br&gt;自身主动招式实际降血后，下一套血气伤害＋40%。&lt;br&gt;主修额外效果：血气额外前向距离提高15%。&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Microsoft YaHei;align=left;verticalAlign=top;spacingTop=14;spacingBottom=14;fillColor=#f3f4f6;strokeColor=#8993a0;fontColor=#374151;dashed=1;dashPattern=6 4;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1155" width="620" height="244" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;第三卷 · 贯劲&lt;/b&gt;&lt;br&gt;卷章ID：yunxi_guan_jin&lt;br&gt;顺序：3&lt;br&gt;定位：降血蓄劲&lt;br&gt;前置：行血&lt;br&gt;习得：无&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=15;fontFamily=Microsoft YaHei;align=left;verticalAlign=top;spacingTop=14;spacingBottom=14;fillColor=#f3f4f6;strokeColor=#8993a0;fontColor=#374151;dashed=1;dashPattern=6 4;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="800" y="1155" width="280" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_right" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;化法&lt;/b&gt;&lt;br&gt;适用范围：赤潮奔涌&lt;br&gt;化法追加：起手气血≥4层时，多降低气血1层；本次强化期间，血浪&lt;br&gt;扇面扩大至180°。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Microsoft YaHei;align=left;verticalAlign=top;spacingTop=14;spacingBottom=14;fillColor=#f3f4f6;strokeColor=#8993a0;fontColor=#374151;dashed=1;dashPattern=6 4;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="1155" width="460" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_heart" source="c3" target="c3_cards" value="心法" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;exitX=0;exitY=0.48;entryX=1;entryY=0.48;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3_rewrite" source="c3" target="c3_right" value="化法" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_cards" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;心法被动：百骸化生&lt;/b&gt;&lt;br&gt;关键词：气血&lt;br&gt;气血＞0时，普攻每段外放血气；近处可与本体同时命中，远处仅血气。&lt;br&gt;血气造成该段防御前本体基础值70%的物理伤害。&lt;br&gt;额外前向距离R（R=40＋10×H；H为该段出手时实际气血）。&lt;br&gt;横宽沿原段；外放不扣气血；动作、位移和冷却沿当前普攻。&lt;br&gt;血气增伤统一加算，血浪共享，本体伤害不受其影响。&lt;br&gt;本体命中时，同次血气对该目标伤害＋25%。&lt;br&gt;自身主动招式实际降血后，下一套血气伤害＋40%。&lt;br&gt;主修额外效果：血气额外前向距离提高15%。&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Microsoft YaHei;align=left;verticalAlign=top;spacingTop=14;spacingBottom=14;fillColor=#f3f4f6;strokeColor=#8993a0;fontColor=#374151;dashed=1;dashPattern=6 4;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1454" width="620" height="244" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;第四卷 · 归养&lt;/b&gt;&lt;br&gt;卷章ID：yunxi_gui_yang&lt;br&gt;顺序：4&lt;br&gt;定位：外放增威&lt;br&gt;前置：贯劲&lt;br&gt;习得：无&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=15;fontFamily=Microsoft YaHei;align=left;verticalAlign=top;spacingTop=14;spacingBottom=14;fillColor=#f3f4f6;strokeColor=#8993a0;fontColor=#374151;dashed=1;dashPattern=6 4;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="800" y="1454" width="280" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_right" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;化法&lt;/b&gt;&lt;br&gt;适用范围：拳掌&lt;br&gt;化法追加：拳掌各段的攻击距离提高25%。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Microsoft YaHei;align=left;verticalAlign=top;spacingTop=14;spacingBottom=14;fillColor=#f3f4f6;strokeColor=#8993a0;fontColor=#374151;dashed=1;dashPattern=6 4;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="1454" width="460" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_heart" source="c4" target="c4_cards" value="心法" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;exitX=0;exitY=0.48;entryX=1;entryY=0.48;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4_rewrite" source="c4" target="c4_right" value="化法" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" source="overview" target="c1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" source="c1" target="c2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" source="c2" target="c3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" source="c3" target="c4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="settlement" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;共用说明&lt;/b&gt;&lt;br&gt;末段指当前普攻连段的结束段；适用于拳掌、剑、乐器等，不按末段伤害次数或命中人数重复放浪。&lt;br&gt;血浪从角色位置沿末段出手方向展开；每道对同一敌人只判伤一次，原攻击和被动血气保留。&lt;br&gt;单套中断不补发血浪，强化期继续计时；到期、死亡或战斗结束清除，不叠加或刷新，已耗资源不退。&lt;br&gt;心法40%强化不叠存，下一套产生血气或血浪的普攻起手用掉；中断不返，战斗结束清除。&lt;br&gt;主动降血沿公共回复规则；本体命中但被化解至0仍算命中。&lt;br&gt;血气与血浪不另算行动，不递归外放，不复制本体的衍生攻击；气血获得受当前上限限制。&lt;br&gt;主修15%仅作用于血气的额外前向距离：R主修=(40＋10×H)×1.15，不放大普攻本体距离或血浪440单位范围。&lt;br&gt;第四卷化法使拳掌各段原有距离×1.25，保留原有形状、方向、动作与贴步；无需本经血气段也能生效。&lt;br&gt;血气沿化法后的普攻范围额外延伸R；第四卷仅把血气基础比例改为70%，血浪仍沿原伤害公式。&lt;br&gt;取整：先取整比例基础值，再应用加算增伤并取整；架招20%乘完整基础化解量后取整。&lt;br&gt;血浪0.78秒按同一波前曲线推进与连续扫掠；余迹不判伤，无敌或属性闪避后不重掷该道波。&lt;br&gt;击退为形类承载控制：P=clamp(70%＋(施方体魄－受方体魄)×1%＋云息招式10%＋高境界修正－承载抵抗,0%,99%)×K。&lt;br&gt;K=0.2^n；n为施方低于受方的大境界数。施方高一境界＋10个百分点，高两境界及以上＋20个百分点。&lt;br&gt;击退距离24×K，时长0.12×K；无保底补偿。方向沿释放圆心向接触位置，覆盖普通走动，不自动打断或附带僵直。&lt;br&gt;重复击退覆盖剩余过程；边界截断、不回弹、不撞墙补伤。暂停冻结，死亡／结束／重开清理。&lt;br&gt;完整结算与测试入口：docs/plans/百骸云息篇即时实装与自选对练_20261104.md。&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Microsoft YaHei;align=left;verticalAlign=top;spacingTop=14;spacingBottom=14;fillColor=#f3f4f6;strokeColor=#8993a0;fontColor=#374151;dashed=1;dashPattern=6 4;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1753" width="1640" height="391" as="geometry" />
+        </mxCell>
+        <mxCell id="design_reading_guide" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;阅读约定（仅供策划）&lt;/b&gt;&lt;br&gt;01主图：所有文字均为游戏内展示文案。&lt;br&gt;02策划说明：适配、精确算法与结算边界。&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;fontSize=14;fontFamily=Microsoft YaHei;align=left;verticalAlign=top;spacingTop=14;spacingBottom=14;fillColor=#f3f4f6;strokeColor=#8993a0;fontColor=#374151;dashed=1;dashPattern=6 4;spacing=0;spacingLeft=16;spacingRight=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="15" width="560" height="97" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram name="错步">
+    <mxGraphModel>
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" parent="1" vertex="1" value="错步&#10;关键词：无&#10;体力1、法力0；立即；冷却：C秒（C=max(2,6÷(1+身法÷100))），最低2秒&#10;目标：自身&#10;0.20秒位移最多100像素，前0.15秒无敌。&#10;沿移动方向；无输入时向当前左右面向反方向后撤。&#10;可取消未释放攻击，费用和冷却不退。&#10;冷却从逻辑招式结束或中断后起算。" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#eee9d9;strokeColor=#557f70;fontSize=16;align=left;spacing=16;">
+          <mxGeometry x="30" y="30" width="450" height="350" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,137 @@
+<mxfile host="app.diagrams.net" agent="Codex" version="24.7.17">
+  <diagram id="shu_juan_yun_xi_player" name="01 主图（游戏内文案）">
+    <mxGraphModel dx="1840" dy="1650" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1840" pageHeight="1650" math="0" shadow="0" background="#FFFFFF">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;舒卷天章·云息篇&lt;/b&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Microsoft YaHei;fontSize=26;fontColor=#203A21;fillColor=#E3F0DF;strokeColor=#82A972;strokeWidth=1.2;spacing=0;spacingLeft=18;spacingRight=18;spacingTop=16;spacingBottom=16;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="670" y="28" width="600" height="72" />
+        </mxCell>
+        <mxCell id="overview" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;云息篇 · 四卷&lt;/b&gt;&lt;br&gt;可主修、可辅修&lt;br&gt;剑式每段命中积1层剑意，上限10层。&lt;br&gt;4秒未再积累，开始每秒失去1层。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Microsoft YaHei;fontSize=16;fontColor=#203A21;fillColor=#E3F0DF;strokeColor=#82A972;strokeWidth=1.2;spacing=0;spacingLeft=18;spacingRight=18;spacingTop=16;spacingBottom=16;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="670" y="120" width="600" height="150" />
+        </mxCell>
+        <mxCell id="volume_1" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;第一卷 · 云舒&lt;/b&gt;&lt;br&gt;前置：无&lt;br&gt;新招式：无&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Microsoft YaHei;fontSize=16;fontColor=#203A21;fillColor=#E3F0DF;strokeColor=#82A972;strokeWidth=1.2;spacing=0;spacingLeft=18;spacingRight=18;spacingTop=16;spacingBottom=16;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="840" y="357" width="260" height="126" />
+        </mxCell>
+        <mxCell id="heart_1" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;心法：流云剑势&lt;/b&gt;&lt;br&gt;关键词：剑、剑意&lt;br&gt;起手剑意达到9层时，同一次连招中&lt;br&gt;连续命中同一敌人，后续每击增伤10%，最多50%。&lt;br&gt;未命中或连招结束，增伤重新累计。&lt;br&gt;主修额外效果：所需剑意降至8层。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Microsoft YaHei;fontSize=16;fontColor=#172D49;fillColor=#EAF3FF;strokeColor=#6B91C5;strokeWidth=1.2;spacing=0;spacingLeft=18;spacingRight=18;spacingTop=16;spacingBottom=16;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="320" width="680" height="200" />
+        </mxCell>
+        <mxCell id="rewrite_1" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;化法&lt;/b&gt;&lt;br&gt;适用范围：架招&lt;br&gt;化法追加：&lt;br&gt;持剑时，本次架招首次实际化解伤害，&lt;br&gt;获得2层剑意。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Microsoft YaHei;fontSize=16;fontColor=#172D49;fillColor=#EAF3FF;strokeColor=#6B91C5;strokeWidth=1.2;spacing=0;spacingLeft=18;spacingRight=18;spacingTop=16;spacingBottom=16;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1220" y="335" width="560" height="170" />
+        </mxCell>
+        <mxCell id="heart_link_1" value="心法" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#7B8796;strokeWidth=1.3;fontFamily=Microsoft YaHei;fontSize=14;fontColor=#263546;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="volume_1" target="heart_1">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="rewrite_link_1" value="化法" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#7B8796;strokeWidth=1.3;fontFamily=Microsoft YaHei;fontSize=14;fontColor=#263546;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="volume_1" target="rewrite_1">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="volume_2" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;第二卷 · 回岚&lt;/b&gt;&lt;br&gt;前置：云舒&lt;br&gt;新招式：无&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Microsoft YaHei;fontSize=16;fontColor=#203A21;fillColor=#E3F0DF;strokeColor=#82A972;strokeWidth=1.2;spacing=0;spacingLeft=18;spacingRight=18;spacingTop=16;spacingBottom=16;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="840" y="607" width="260" height="126" />
+        </mxCell>
+        <mxCell id="heart_2" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;心法：流云剑势&lt;/b&gt;&lt;br&gt;关键词：剑、剑意&lt;br&gt;起手剑意达到9层时，同一次连招中&lt;br&gt;连续命中同一敌人，后续每击增伤15%，最多75%。&lt;br&gt;未命中或连招结束，增伤重新累计。&lt;br&gt;主修额外效果：所需剑意降至8层。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Microsoft YaHei;fontSize=16;fontColor=#172D49;fillColor=#EAF3FF;strokeColor=#6B91C5;strokeWidth=1.2;spacing=0;spacingLeft=18;spacingRight=18;spacingTop=16;spacingBottom=16;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="570" width="680" height="200" />
+        </mxCell>
+        <mxCell id="rewrite_2" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;化法&lt;/b&gt;&lt;br&gt;适用范围：剑式&lt;br&gt;化法追加：&lt;br&gt;第二、三段的前进距离提高50%。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Microsoft YaHei;fontSize=16;fontColor=#172D49;fillColor=#EAF3FF;strokeColor=#6B91C5;strokeWidth=1.2;spacing=0;spacingLeft=18;spacingRight=18;spacingTop=16;spacingBottom=16;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1220" y="585" width="560" height="170" />
+        </mxCell>
+        <mxCell id="heart_link_2" value="心法" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#7B8796;strokeWidth=1.3;fontFamily=Microsoft YaHei;fontSize=14;fontColor=#263546;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="volume_2" target="heart_2">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="rewrite_link_2" value="化法" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#7B8796;strokeWidth=1.3;fontFamily=Microsoft YaHei;fontSize=14;fontColor=#263546;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="volume_2" target="rewrite_2">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="volume_3" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;第三卷 · 逐影&lt;/b&gt;&lt;br&gt;前置：回岚&lt;br&gt;新招式：云岚三叠&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Microsoft YaHei;fontSize=16;fontColor=#203A21;fillColor=#E3F0DF;strokeColor=#82A972;strokeWidth=1.2;spacing=0;spacingLeft=18;spacingRight=18;spacingTop=16;spacingBottom=16;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="840" y="820" width="260" height="126" />
+        </mxCell>
+        <mxCell id="heart_3" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;心法：流云剑势&lt;/b&gt;&lt;br&gt;沿用第二卷，无新增效果。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Microsoft YaHei;fontSize=16;fontColor=#172D49;fillColor=#EAF3FF;strokeColor=#6B91C5;strokeWidth=1.2;spacing=0;spacingLeft=18;spacingRight=18;spacingTop=16;spacingBottom=16;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="820" width="680" height="90" />
+        </mxCell>
+        <mxCell id="rewrite_3" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;化法&lt;/b&gt;&lt;br&gt;适用范围：云岚三叠&lt;br&gt;化法追加：&lt;br&gt;第二、四、六击伤害提高20%。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Microsoft YaHei;fontSize=16;fontColor=#172D49;fillColor=#EAF3FF;strokeColor=#6B91C5;strokeWidth=1.2;spacing=0;spacingLeft=18;spacingRight=18;spacingTop=16;spacingBottom=16;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1220" y="820" width="560" height="170" />
+        </mxCell>
+        <mxCell id="heart_link_3" value="心法" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#7B8796;strokeWidth=1.3;fontFamily=Microsoft YaHei;fontSize=14;fontColor=#263546;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.35;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="volume_3" target="heart_3">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="rewrite_link_3" value="化法" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#7B8796;strokeWidth=1.3;fontFamily=Microsoft YaHei;fontSize=14;fontColor=#263546;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="volume_3" target="rewrite_3">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="volume_4" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;第四卷 · 天章&lt;/b&gt;&lt;br&gt;前置：逐影&lt;br&gt;新招式：无&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Microsoft YaHei;fontSize=16;fontColor=#203A21;fillColor=#E3F0DF;strokeColor=#82A972;strokeWidth=1.2;spacing=0;spacingLeft=18;spacingRight=18;spacingTop=16;spacingBottom=16;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="840" y="1422" width="260" height="126" />
+        </mxCell>
+        <mxCell id="heart_4" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;心法：流云剑势&lt;/b&gt;&lt;br&gt;关键词：剑、剑意&lt;br&gt;起手剑意达到9层时，同一次连招中&lt;br&gt;连续命中同一敌人，后续每击增伤20%，最多100%。&lt;br&gt;未命中或连招结束，增伤重新累计。&lt;br&gt;主修额外效果：所需剑意降至8层。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Microsoft YaHei;fontSize=16;fontColor=#172D49;fillColor=#EAF3FF;strokeColor=#6B91C5;strokeWidth=1.2;spacing=0;spacingLeft=18;spacingRight=18;spacingTop=16;spacingBottom=16;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1385" width="680" height="200" />
+        </mxCell>
+        <mxCell id="rewrite_4" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;化法&lt;/b&gt;&lt;br&gt;适用范围：错步&lt;br&gt;化法追加：&lt;br&gt;位移距离提高20%。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Microsoft YaHei;fontSize=16;fontColor=#172D49;fillColor=#EAF3FF;strokeColor=#6B91C5;strokeWidth=1.2;spacing=0;spacingLeft=18;spacingRight=18;spacingTop=16;spacingBottom=16;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1220" y="1400" width="560" height="170" />
+        </mxCell>
+        <mxCell id="heart_link_4" value="心法" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#7B8796;strokeWidth=1.3;fontFamily=Microsoft YaHei;fontSize=14;fontColor=#263546;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="volume_4" target="heart_4">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="rewrite_link_4" value="化法" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#7B8796;strokeWidth=1.3;fontFamily=Microsoft YaHei;fontSize=14;fontColor=#263546;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="volume_4" target="rewrite_4">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="yun_lan_san_die" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;招式：云岚三叠&lt;/b&gt;&lt;br&gt;关键词：剑&lt;br&gt;耗费：体力2、法力0&lt;br&gt;目标：前方范围内敌人；持剑使用，近身。&lt;br&gt;向前连攻三轮，每轮两击，并略微前进。&lt;br&gt;每轮可调整出手方向。&lt;br&gt;基数A（A=6＋体魄×0.40＋剑道造诣×0.60）。&lt;br&gt;第1／3／5击：B点物理伤害（B=A×40%）。&lt;br&gt;第2／4击：C点物理伤害（C=A×50%）。&lt;br&gt;第6击：D点物理伤害（D=A×80%）。&lt;br&gt;范围：前方120°扇面，最远220单位。&lt;br&gt;动作T秒（T=1.20÷（1＋剑道造诣×0.02&lt;br&gt;＋体魄与神魂较低值×0.002），最短0.78秒）。&lt;br&gt;冷却：18秒，从招式结束或中断后计算。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Microsoft YaHei;fontSize=16;fontColor=#172D49;fillColor=#EAF3FF;strokeColor=#6B91C5;strokeWidth=1.2;spacing=0;spacingLeft=18;spacingRight=18;spacingTop=16;spacingBottom=16;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="930" width="680" height="400" />
+        </mxCell>
+        <mxCell id="start" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#7B8796;strokeWidth=1.3;fontFamily=Microsoft YaHei;fontSize=14;fontColor=#263546;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="overview" target="volume_1">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="volume_link_1_2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#7B8796;strokeWidth=1.3;fontFamily=Microsoft YaHei;fontSize=14;fontColor=#263546;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="volume_1" target="volume_2">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="volume_link_2_3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#7B8796;strokeWidth=1.3;fontFamily=Microsoft YaHei;fontSize=14;fontColor=#263546;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="volume_2" target="volume_3">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="volume_link_3_4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#7B8796;strokeWidth=1.3;fontFamily=Microsoft YaHei;fontSize=14;fontColor=#263546;labelBackgroundColor=#FFFFFF;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="volume_3" target="volume_4">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="learn_yun_lan" value="习得" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#7B8796;strokeWidth=1.3;fontFamily=Microsoft YaHei;fontSize=14;fontColor=#263546;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.8;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="volume_3" target="yun_lan_san_die">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="780" y="921" />
+              <mxPoint x="780" y="1130" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="shu_juan_yun_xi_notes" name="02 策划说明（内部）">
+    <mxGraphModel dx="1840" dy="1800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1840" pageHeight="1800" math="0" shadow="0" background="#FFFFFF">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="notes_title" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;策划说明｜舒卷天章·云息篇&lt;/b&gt;&lt;br&gt;01主图所有可见文字均按玩家文案处理；本页记录精确规则、来源与待定项。&lt;br&gt;当前为图谱审阅稿，未实装。架招3秒／正面180°／共享额度已确认；本书其余内容沿当前讨论稿。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Microsoft YaHei;fontSize=16;fontColor=#374151;fillColor=#F3F4F6;strokeColor=#8993A0;strokeWidth=1.2;spacing=0;spacingLeft=18;spacingRight=18;spacingTop=16;spacingBottom=16;dashed=1;dashPattern=6 4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="28" width="1740" height="112" />
+        </mxCell>
+        <mxCell id="intent_rules" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;剑意｜公共状态与来源&lt;/b&gt;&lt;br&gt;上限10层，开战为0；战斗结束、死亡、重开或退出清除。&lt;br&gt;剑式本体每段至少命中1敌，段后获得1层；每套四段最多4层。&lt;br&gt;同段群体与多个判定片段只计一次，击杀命中也获得。&lt;br&gt;身法闪避、错步无敌、空间落空不获得；命中后减至0仍获得。&lt;br&gt;符合来源触发后满4秒先降1层，其后每秒降1；最低0。&lt;br&gt;满层触发仍刷新保持计时，超出部分不储存；暂停冻结时钟。&lt;br&gt;来源拟增补至剑式基础规则，独立于本书；换武器不刷新计时。&lt;br&gt;云岚三叠、血气、血浪与残影不产剑意；本书不消耗剑意。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Microsoft YaHei;fontSize=14;fontColor=#374151;fillColor=#F3F4F6;strokeColor=#8993A0;strokeWidth=1.2;spacing=0;spacingLeft=18;spacingRight=18;spacingTop=16;spacingBottom=16;dashed=1;dashPattern=6 4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="180" width="850" height="280" />
+        </mxCell>
+        <mxCell id="heart_rules" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;流云剑势｜起手与连续命中&lt;/b&gt;&lt;br&gt;起手读取：普通门槛9层，主修8层；整套剑式／整次技能只读一次。&lt;br&gt;中途叠够不追溯开启；起手已开启，中途回落也不撤销本次。&lt;br&gt;只提高带剑关键词的本体攻击，不增加伤害段或额外行动。&lt;br&gt;逐目标计数，第一击100%；新进入范围的敌人从自己的首击开始。&lt;br&gt;同目标下一本体段未命中，则该目标归零；其他目标独立。&lt;br&gt;命中后化解至0仍连续；闪避、无敌不连续。&lt;br&gt;结束、续接超时、中断或切到另一技能清除本次计数。&lt;br&gt;衍生段既不推进也不断开计数；云岚落空不取消后续原生攻击。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Microsoft YaHei;fontSize=14;fontColor=#374151;fillColor=#F3F4F6;strokeColor=#8993A0;strokeWidth=1.2;spacing=0;spacingLeft=18;spacingRight=18;spacingTop=16;spacingBottom=16;dashed=1;dashPattern=6 4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="930" y="180" width="850" height="280" />
+        </mxCell>
+        <mxCell id="guard_rules" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;架招｜已确认的持续防御&lt;/b&gt;&lt;br&gt;按住最多3秒，正面180°、无防御距离，可慢速走动和转向；移速×0.20。&lt;br&gt;原体力1／法力0；松开、到时或额度耗尽结束，之后起算原CD。&lt;br&gt;初始额度A=3+floor(P/4)+floor(min(P×0.25,S×0.20))。&lt;br&gt;P、S为起手体魄、神魂；整次共用A，按实际抵消量逐次扣减。&lt;br&gt;CD=max(1.5,5−min(P,S)×0.03)秒，结束时读取属性。&lt;br&gt;首次实际化解物理伤害且持剑时，本次化法获得2剑意，只触发一次。&lt;br&gt;空放、背后受击、属性闪避与未抵消伤害不触发，不按受击数叠层。&lt;br&gt;架招新机制仍未实装；共享额度只属于明定来源，不普改所有化解。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Microsoft YaHei;fontSize=14;fontColor=#374151;fillColor=#F3F4F6;strokeColor=#8993A0;strokeWidth=1.2;spacing=0;spacingLeft=18;spacingRight=18;spacingTop=16;spacingBottom=16;dashed=1;dashPattern=6 4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="500" width="850" height="280" />
+        </mxCell>
+        <mxCell id="volumes_rules" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;四卷版本与化法｜显式绑定&lt;/b&gt;&lt;br&gt;云舒：每档10%，上限50%；架招首次实际化解，持剑获2剑意。&lt;br&gt;回岚：每档15%，上限75%；剑式二／三段前压＋50%。&lt;br&gt;逐影：心法沿用回岚；习得云岚三叠，化法使二／四／六击＋20%。&lt;br&gt;天章：每档20%，上限100%；错步位移距离＋20%。&lt;br&gt;剑式原6／14单位前压改为9／21，准备时间、范围与CD不改。&lt;br&gt;错步100改为120单位，动作0.20秒、无敌0.15秒及原CD不改。&lt;br&gt;化法只改自己的指定目标，须有效来源且由玩家明确绑定。&lt;br&gt;主辅修资格沿现行规则；剑式、架招与错步不是本书新增招式。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Microsoft YaHei;fontSize=14;fontColor=#374151;fillColor=#F3F4F6;strokeColor=#8993A0;strokeWidth=1.2;spacing=0;spacingLeft=18;spacingRight=18;spacingTop=16;spacingBottom=16;dashed=1;dashPattern=6 4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="930" y="500" width="850" height="280" />
+        </mxCell>
+        <mxCell id="skill_rules" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;云岚三叠｜六击时序与判定&lt;/b&gt;&lt;br&gt;第三卷习得；持剑、近身，体力2／法力0，无剑意使用门槛。&lt;br&gt;A=round(6+0.40P+0.60J)；P、S、J为起手体魄、神魂、剑道。&lt;br&gt;q=max(0.65,1/(1+0.02J+0.002×min(P,S)))。&lt;br&gt;各击基础值：round(A×[0.40,0.50,0.40,0.50,0.40,0.80])。&lt;br&gt;六击时刻：[0.12,0.26,0.40,0.54,0.68,0.82]×q秒。&lt;br&gt;总动作1.20q秒，第六击后收势0.38q秒；最短总动作0.78秒。&lt;br&gt;各击均为前方120°扇面、220单位；每击每敌最多一次接触判定。&lt;br&gt;逐击读取实际位置与攻击层高度，物理命中、会心与防御沿现行流程。&lt;br&gt;冷却固定18秒，从整招结束或中断后起算，不受q缩短。&lt;br&gt;六击固定执行，无概率续段；未命中只影响该目标的心法递进。&lt;br&gt;成功发动扣费；取消不退款、不补发剩余攻击，也不重置CD。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Microsoft YaHei;fontSize=14;fontColor=#374151;fillColor=#F3F4F6;strokeColor=#8993A0;strokeWidth=1.2;spacing=0;spacingLeft=18;spacingRight=18;spacingTop=16;spacingBottom=16;dashed=1;dashPattern=6 4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="820" width="850" height="350" />
+        </mxCell>
+        <mxCell id="damage_rules" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;伤害算法｜递进、化法与衍生边界&lt;/b&gt;&lt;br&gt;第n次连续命中，档幅s为0.10／0.15／0.20：h=min(n−1,5)×s。&lt;br&gt;B为本段已取整的原始基础值；未开启心法时h=0。&lt;br&gt;云岚化法在二／四／六击令w=0.20，其余为0。&lt;br&gt;本书修正后D=round(B×(1+h+w))，心法与化法加算。&lt;br&gt;随后进入现有物理加成、命中、会心、化解、物防与减伤流程。&lt;br&gt;不把前一击结果用作后一击基数，不把本书增伤自行并入血气／血浪。&lt;br&gt;样例P=8、S=8、J=6：A=13，q≈0.8803，总动作≈1.056秒。&lt;br&gt;六击原始基础值5／7／5／7／5／10，总计39。&lt;br&gt;全连时第一卷总计50，第二／三卷56，第四卷60。&lt;br&gt;第四卷叠本书云岚化法：5／10／7／13／9／22，总计66。&lt;br&gt;样例均为防御前数值，不直接作为玩家实际伤害显示。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Microsoft YaHei;fontSize=14;fontColor=#374151;fillColor=#F3F4F6;strokeColor=#8993A0;strokeWidth=1.2;spacing=0;spacingLeft=18;spacingRight=18;spacingTop=16;spacingBottom=16;dashed=1;dashPattern=6 4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="930" y="820" width="850" height="350" />
+        </mxCell>
+        <mxCell id="movement_rules" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;云岚交互｜方向、前压与取消&lt;/b&gt;&lt;br&gt;每轮首击前跟随瞄准，首击释放时锁定该轮两击方向；下轮重瞄。&lt;br&gt;每轮前压4单位，共12；转向不重置路程预算，边界截断。&lt;br&gt;前压窗口分别为0～0.12q、0.26q～0.40q、0.54q～0.68q秒。&lt;br&gt;正常WASD保留，无自动追敌、转火、瞬移或额外控制。&lt;br&gt;错步随时取消；其他就绪技能在本轮第二击后可合法接入并结束本招。&lt;br&gt;费用不足或条件不符时不发动，也不能免费取消当前动作。&lt;br&gt;普通受伤或推移不自动取消；明确打断与死亡停止剩余攻击。&lt;br&gt;暂停冻结，换槽不刷新；死亡、结束、重开或退出清理临时状态。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Microsoft YaHei;fontSize=14;fontColor=#374151;fillColor=#F3F4F6;strokeColor=#8993A0;strokeWidth=1.2;spacing=0;spacingLeft=18;spacingRight=18;spacingTop=16;spacingBottom=16;dashed=1;dashPattern=6 4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1210" width="850" height="300" />
+        </mxCell>
+        <mxCell id="review_scope" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;本次审阅范围与待定项&lt;/b&gt;&lt;br&gt;本文件是新版秘籍图谱，主图只呈现玩家可见效果与必要公式。&lt;br&gt;沿既定四卷与当前讨论数值整理，本轮未改平衡、未改运行时。&lt;br&gt;持剑基础剑式的产剑意来源和回落尚未接入原演练。&lt;br&gt;基础架招3秒／180°／共享额度已由用户确认，仍待迁移实现。&lt;br&gt;研读门槛、永久奖励、修持与五行等养成未定，不从旧队列稿补造。&lt;br&gt;旧养锋、格剑、尽锋及概率追击不作为新版招式或前置。&lt;br&gt;主辅修、已学技能与化法绑定分开；学会不等于自动装配。&lt;br&gt;后续实装须同步数据、词典和技能详情，再做真实战斗与NPC验证。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Microsoft YaHei;fontSize=14;fontColor=#374151;fillColor=#F3F4F6;strokeColor=#8993A0;strokeWidth=1.2;spacing=0;spacingLeft=18;spacingRight=18;spacingTop=16;spacingBottom=16;dashed=1;dashPattern=6 4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="930" y="1210" width="850" height="300" />
+        </mxCell>
+        <mxCell id="sources" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;权威来源与阅读约定&lt;/b&gt;&lt;br&gt;秘籍主案：docs/plans/舒卷天章云息篇即时战斗规划_20261105.md&lt;br&gt;架招新案：docs/plans/架招持续正面防御修订_20261105.md；剑式主案：docs/plans/持剑普攻剑式四段与特效试作_20261105.md&lt;br&gt;共同规则：云息公共战斗状态与秘籍构筑规则／云息现行秘籍战斗技能与费用规范／化法来源汇总与技能绑定_20261024。&lt;br&gt;展示：信息展示与规则详解分层规范_20261026。主图不放适配清单、内部标识、测试样例与未实装标签。&lt;br&gt;绿色框和连线表示卷章、前置及习得；蓝色实线框为玩家效果；本页灰色虚线框只供策划。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Microsoft YaHei;fontSize=14;fontColor=#374151;fillColor=#F3F4F6;strokeColor=#8993A0;strokeWidth=1.2;spacing=0;spacingLeft=18;spacingRight=18;spacingTop=16;spacingBottom=16;dashed=1;dashPattern=6 4;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1550" width="1740" height="182" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

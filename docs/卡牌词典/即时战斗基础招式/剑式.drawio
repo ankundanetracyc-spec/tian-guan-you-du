@@ -1,0 +1,68 @@
+<mxfile host="app.diagrams.net" agent="Codex" version="24.7.17">
+  <diagram id="sword_combo_player" name="01 主图（游戏内文案）">
+    <mxGraphModel dx="1280" dy="720" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1280" pageHeight="1290" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="player_title" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;剑式&lt;/b&gt;&lt;br&gt;持剑四段连招&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=0;spacingTop=15;spacingBottom=15;spacingLeft=18;spacingRight=18;fontFamily=Microsoft YaHei;fontSize=20;fillColor=#e3f0df;strokeColor=#82a972;fontColor=#203a21;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="24" width="1200" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="player_main" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;剑式&lt;/b&gt;&lt;br&gt;关键词：剑&lt;br&gt;耗费：体力0、法力0；持剑使用。&lt;br&gt;近身；攻击本段前方范围内的敌人，每段对同一敌人最多命中一次。&lt;br&gt;连点或按住左键逐段接续，错步可中断。&lt;br&gt;伤害基数A（A=6＋体魄×0.40＋剑道造诣×0.60）。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=0;spacingTop=15;spacingBottom=15;spacingLeft=18;spacingRight=18;fontFamily=Microsoft YaHei;fontSize=17;fillColor=#eaf3ff;strokeColor=#6b91c5;fontColor=#172d49;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="144" width="1200" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="s1" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;第一段 · 斜斩&lt;/b&gt;&lt;br&gt;造成B点物理伤害（B=A×40%）。&lt;br&gt;前方80°扇面，距离R₁单位。&lt;br&gt;R₁=160＋体魄×1.00，上限220。&lt;br&gt;动作时长0.40×q秒。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=0;spacingTop=15;spacingBottom=15;spacingLeft=18;spacingRight=18;fontFamily=Microsoft YaHei;fontSize=17;fillColor=#eaf3ff;strokeColor=#6b91c5;fontColor=#172d49;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="360" width="580" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="s2" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;第二段 · 回斩&lt;/b&gt;&lt;br&gt;造成C点物理伤害（C=A×45%）。&lt;br&gt;前方120°扇面，距离R₂单位。&lt;br&gt;R₂=170＋体魄×1.00，上限230。&lt;br&gt;前进6单位；动作时长0.44×q秒。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=0;spacingTop=15;spacingBottom=15;spacingLeft=18;spacingRight=18;fontFamily=Microsoft YaHei;fontSize=17;fillColor=#eaf3ff;strokeColor=#6b91c5;fontColor=#172d49;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="660" y="360" width="580" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="s3" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;第三段 · 直刺&lt;/b&gt;&lt;br&gt;造成D点物理伤害（D=A×60%）。&lt;br&gt;前方宽40单位的刺击，最远R₃单位。&lt;br&gt;R₃=240＋体魄×1.00，上限290。&lt;br&gt;前进14单位；动作时长0.52×q秒。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=0;spacingTop=15;spacingBottom=15;spacingLeft=18;spacingRight=18;fontFamily=Microsoft YaHei;fontSize=17;fillColor=#eaf3ff;strokeColor=#6b91c5;fontColor=#172d49;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="645" width="580" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="s4" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;第四段 · 横扫&lt;/b&gt;&lt;br&gt;造成E点物理伤害（E=A×80%）。&lt;br&gt;前方170°扇面，距离R₄单位。&lt;br&gt;R₄=200＋体魄×1.20，上限270。&lt;br&gt;动作时长0.74×q秒。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=0;spacingTop=15;spacingBottom=15;spacingLeft=18;spacingRight=18;fontFamily=Microsoft YaHei;fontSize=17;fillColor=#eaf3ff;strokeColor=#6b91c5;fontColor=#172d49;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="660" y="645" width="580" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="player_pacing" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;连招节奏与冷却&lt;/b&gt;&lt;br&gt;四段动作时长均乘q，整套基准2.10秒。&lt;br&gt;q=1÷(1＋剑道造诣×0.02＋体魄与神魂较低值×0.002)，最低0.65。&lt;br&gt;整套结束、中断或续接超时后开始冷却T秒。&lt;br&gt;T=1÷(1＋剑道造诣×0.035＋体魄×0.002)，最低0.45秒。&lt;br&gt;准备时可调整方向，出手后该段剑痕定向。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=0;spacingTop=15;spacingBottom=15;spacingLeft=18;spacingRight=18;fontFamily=Microsoft YaHei;fontSize=17;fillColor=#eaf3ff;strokeColor=#6b91c5;fontColor=#172d49;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="940" width="1200" height="265" as="geometry" />
+        </mxCell>
+        <mxCell id="seq12" source="s1" target="s2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#7b8794;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="seq23" source="s2" target="s3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#7b8794;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="950" y="622" />
+              <mxPoint x="330" y="622" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="seq34" source="s3" target="s4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;strokeColor=#7b8794;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="sword_combo_internal" name="02 策划说明（内部）">
+    <mxGraphModel dx="1280" dy="720" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="1280" pageHeight="1560" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="internal_title" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;剑式 · 四段试作规格&lt;/b&gt;&lt;br&gt;2026-11-05，用户授权直接设计并制作独立演示。&lt;br&gt;本页记载结算与制作边界，不进入玩家效果正文。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=0;spacingTop=15;spacingBottom=15;spacingLeft=18;spacingRight=18;fontFamily=Microsoft YaHei;fontSize=17;fillColor=#f3f4f6;strokeColor=#8993a0;fontColor=#374151;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="24" width="1200" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="internal_rules" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;数据与身份&lt;/b&gt;&lt;br&gt;主案：docs/plans/持剑普攻剑式四段与特效试作_20261105.md&lt;br&gt;P、S、J为非负的当前体魄、神魂、剑道造诣；先round(6＋0.40P＋0.60J)，再逐段round(A×系数)。&lt;br&gt;伤害系数0.40／0.45／0.60／0.80；基准时长0.40／0.44／0.52／0.74秒。&lt;br&gt;释放点为本段40%／40%／45%／45%。q在整套起手确定，伤害与范围逐段读取。&lt;br&gt;剑式是持剑左键，旧主动斩剑仍保留1体力定义；不自动获得剑意、追斩或控制。&lt;br&gt;实际武器来源须检查装备，不能凭剑图虚构锋锐；不改拳掌及未迁移的化法。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=0;spacingTop=15;spacingBottom=15;spacingLeft=18;spacingRight=18;fontFamily=Microsoft YaHei;fontSize=16;fillColor=#f3f4f6;strokeColor=#8993a0;fontColor=#374151;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="174" width="1200" height="265" as="geometry" />
+        </mxCell>
+        <mxCell id="internal_geometry" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;判定几何&lt;/b&gt;&lt;br&gt;第1／2／4段：释放点O为圆心，方向d为中轴，扇面80°／120°／170°，距离沿主案计算。&lt;br&gt;第3段：线段O＋20d至O＋(R₃－20)d，半径20，组成宽40、最远R₃的胶囊。&lt;br&gt;每段每敌人最多命中一次，范围内逐目标判定，不攻击身后、不自动追敌或转火。&lt;br&gt;第二／三段仅在准备阶段累计前压6／14；随瞄准调整但不重置路程，边界截断。&lt;br&gt;释放后固定本段位置／方向／攻击层高度；特效消散不增加判伤。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=0;spacingTop=15;spacingBottom=15;spacingLeft=18;spacingRight=18;fontFamily=Microsoft YaHei;fontSize=16;fillColor=#f3f4f6;strokeColor=#8993a0;fontColor=#374151;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="479" width="1200" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="internal_input" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;输入与生命周期&lt;/b&gt;&lt;br&gt;按住或连点接续，最多缓存下一段一次；段尾0.30秒窗口，超时收势；第4段结束直接计CD。&lt;br&gt;错步随时中断；未执行段和剩余前压不补发。费用不足／冷却中技能不能免费取消连段。&lt;br&gt;0费由动作时长、同技能互斥和整套CD限制，不返费、不额外行动、不生成资源。&lt;br&gt;暂停冻结所有时钟；重开、死亡和退出清理。预览不冒称正式世界战斗或舒卷秘籍已接入。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=0;spacingTop=15;spacingBottom=15;spacingLeft=18;spacingRight=18;fontFamily=Microsoft YaHei;fontSize=16;fillColor=#f3f4f6;strokeColor=#8993a0;fontColor=#374151;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="759" width="1200" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="internal_vfx" value="&lt;div style=&quot;line-height:1.5;text-align:left;&quot;&gt;&lt;b&gt;动作与特效&lt;/b&gt;&lt;br&gt;真实右手持剑：斜斩从右上至左下；回斩反向横切；直刺收剑至腰后送锋；横扫撤剑转腰收势。&lt;br&gt;共用批准的人物、手、剑与骨长；剑柄锚点固定，前后遮挡正确，不拉长肢体，不重画衣装。&lt;br&gt;斜斩薄短弧、回斩宽反弧、直刺窄长梭、横扫厚月弧。灰白水墨、柔边与飞白，不做霓虹或飞行剑气。&lt;br&gt;视觉寿命0.30／0.34／0.26／0.44秒；展锋0.09／0.11／0.07／0.14秒。寿命不延长命中或CD。&lt;br&gt;表现与判定读取同一份范围参数；世界位置消散，暂停冻结。落空没有命中碎墨。&lt;br&gt;样例P8、S8、J6：伤害5／6／8／10，距离168／178／248／209.6；完整约1.849秒，CD约0.816秒。&lt;br&gt;交付四段实机PNG与完整连招GIF、可交互场景及启动器，并完成几何、前压、时钟和清理检查。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=0;spacingTop=15;spacingBottom=15;spacingLeft=18;spacingRight=18;fontFamily=Microsoft YaHei;fontSize=16;fillColor=#f3f4f6;strokeColor=#8993a0;fontColor=#374151;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1019" width="1200" height="315" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

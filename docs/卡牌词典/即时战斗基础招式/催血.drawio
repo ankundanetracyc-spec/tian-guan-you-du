@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram name="催血 · 即时动作版">
+    <mxGraphModel>
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#eee9d9;strokeColor=#a34c43;fontSize=16;align=left;spacing=16;" value="技能名：催血&#10;基础资源：res://resources/activeskills/催血.tres&#10;动作数据：action_battle_feel_test.gd · SKILL_RULES&#10;关键词：生命&#10;耗费：体力1、法力0&#10;目标：自身&#10;效果：运功完成获得气血2层，受当前上限限制。&#10;运功：1秒；期间移速为普通战斗移速的50%。&#10;冷却：C秒（C=max(4,12−体魄×0.05)），最低4秒。&#10;错步可中断；费用、冷却不退，不补发效果。&#10;结束或中断立即恢复移速；不产生减速状态。&#10;气血不自动回落，获得时不直接治疗；战斗结束清空。&#10;冷却从逻辑招式结束或中断后起算。">
+          <mxGeometry x="30" y="30" width="620" height="420" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
