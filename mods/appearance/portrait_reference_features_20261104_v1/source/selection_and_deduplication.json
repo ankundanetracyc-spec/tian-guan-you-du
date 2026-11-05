@@ -1,0 +1,104 @@
+{
+  "reference": "res://mods/appearance/portrait_reference_features_20261104_v1/source/reference_user.png",
+  "selection": [
+    {
+      "part": "eyebrows",
+      "retained_source_index": 1,
+      "merged_source_indices": [
+        1
+      ],
+      "saved_style_id": 0,
+      "name": "疏平柔眉"
+    },
+    {
+      "part": "eyebrows",
+      "retained_source_index": 2,
+      "merged_source_indices": [
+        2
+      ],
+      "saved_style_id": 1,
+      "name": "弯挑细眉"
+    },
+    {
+      "part": "eyebrows",
+      "retained_source_index": 3,
+      "merged_source_indices": [
+        3
+      ],
+      "saved_style_id": 2,
+      "name": "平直细眉"
+    },
+    {
+      "part": "eyes",
+      "retained_source_index": 1,
+      "merged_source_indices": [
+        1,
+        3
+      ],
+      "saved_style_id": 0,
+      "name": "浅杏长目"
+    },
+    {
+      "part": "eyes",
+      "retained_source_index": 2,
+      "merged_source_indices": [
+        2
+      ],
+      "saved_style_id": 1,
+      "name": "清圆杏目"
+    },
+    {
+      "part": "nose",
+      "retained_source_index": 1,
+      "merged_source_indices": [
+        1,
+        2,
+        3
+      ],
+      "saved_style_id": 0,
+      "name": "柔圆鼻"
+    },
+    {
+      "part": "mouth",
+      "retained_source_index": 1,
+      "merged_source_indices": [
+        1,
+        2,
+        3
+      ],
+      "saved_style_id": 0,
+      "name": "自然浅唇"
+    }
+  ],
+  "comparisons": {
+    "eyebrows": {
+      "pairwise_luminance_correlation": [
+        0.837,
+        0.859
+      ],
+      "decision": "retain all three shapes"
+    },
+    "eyes": {
+      "one_vs_three": 0.9606,
+      "one_vs_two": 0.8614,
+      "two_vs_three": 0.8512,
+      "decision": "merge source03 into source01"
+    },
+    "nose": {
+      "pairwise_luminance_correlation": [
+        0.988,
+        0.994
+      ],
+      "local_mean_difference_at_most": 1.04,
+      "decision": "retain source01 for all three"
+    },
+    "mouth": {
+      "pairwise_luminance_correlation": [
+        0.975,
+        0.989
+      ],
+      "decision": "retain source01 for all three"
+    }
+  },
+  "operation": "No averaging, color edits, extraction, rescaling or regeneration; exact copies of the attachment-derived existing transparent sprites."
+}

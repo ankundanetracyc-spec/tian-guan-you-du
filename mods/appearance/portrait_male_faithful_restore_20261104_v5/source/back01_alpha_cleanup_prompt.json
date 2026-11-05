@@ -1,0 +1,8 @@
+{
+  "tool": "built-in image_gen",
+  "stage": "native_alpha_cleanup_after_invalid_background",
+  "input": "source/back01_refined_bad_background_alpha.png",
+  "prompt": "Use case: background-extraction. This is an independent hair sprite that SHOULD have true transparency, but its PNG has a faulty black/near-black backdrop with arbitrary nonzero alpha. REMOVE ALL the dark/black empty background, including every corner, every outer edge and the wide blank margins. Set all NON-HAIR pixels to genuine alpha0; do not merely paint them black, gray or faintly transparent. Preserve the exact hair drawing, charcoal-gray-brown pigment, fine internal strands, natural wisps, any existing bun/wrap/woodpin, position, scale and1024x1536 canvas. Do not repaint, smooth, blur, resize, zoom or change the hairstyle. Preserve continuous solid hair in the entire hidden head/face/neck/body region: do not cut a face hole or remove dark painted hair interior. Only the area OUTSIDE the real hair/accessory contour becomes transparent; outside the subject there must be no black field, checkerboard, vignette, glow or shadow at all. All four corner pixels and all border pixels must have alpha exactly0. Hair edges keep fine natural antialiasing without a black halo. Output only this one isolated existing hair layer as a genuinely transparent RGBA PNG.",
+  "pixel_threshold_background_removal_used": false,
+  "final_raw": "source/back01_raw.png"
+}

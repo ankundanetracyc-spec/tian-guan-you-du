@@ -1,0 +1,9 @@
+{
+  "tool": "built-in image_gen",
+  "reason": "Direct faithful repaint after first candidate forehead/side support discrepancy and failed local repaint; rejected attempt02 contains ear pixels and is not used.",
+  "references": [
+    "source/front_reference_02_placed.png",
+    "source/master03_registered.png"
+  ],
+  "prompt": "Faithfully paint ONLY the FRONT HAIR from the original MIDDLE male portrait (image 1), as one new transparent 1024x1536 game sprite at exactly the same original placement. Keep the precise shape, head width, hairline, center part, combed-back forehead volume, and naturally long slender front locks. Match the beautiful dark charcoal fine hair strands and restrained silky highlights of image 2, our new visual master.\n\nThe entire face opening must preserve the original shape: center hairline (517,283); inner left/right hair edges around (419,405)/(606,405). Forehead crown top about y172. Keep the head small at original native scale and retain all original canvas margins. Do not enlarge or recenter. Preserve a complete rounded front crown. Show the delicate ear-front strands and chest-front locks, naturally tapering around y1100. Keep the original controlled front locks rather than invent curly or ropelike designs. Separate hairstyle into the anatomically front part only: omit rear high bun and band, rear scalp and shoulder-back curtain.\n\nAll skin, ears, eyes, eyebrows, face, neck, clothing and background are absent and genuinely transparent. NO EARS or skin fragments at all. There must be only painted dark fine front hair. Do not create ear-shaped holes, white highlights, grey outlines, silver bands, hats, hair accessories, bun or a whole person. Real transparent PNG, no backdrop, matte, checkerboard, labels or guide marks. This is a faithful reproduction of the supplied original front hair silhouette, no aesthetic redesign."
+}

@@ -1,0 +1,38 @@
+{
+  "scope": "Read-only audit of the rejected active male portrait before v5, compared at the same canvas scale with the original three-panel reference and the female portrait. This does not describe the newly restored v5 assets.",
+  "original": "C:/Users/34784/AppData/Local/Temp/codex-clipboard-06d9557d-f435-4c84-9dd6-28df85a05f63.png",
+  "reference_integrity": "Original attachment decoded RGBA equals source/reference_user.png and the archived original used for reference_placed_01~03.",
+  "comparison_images": [
+    "../portrait_nasion_clothing_20261104_v4/qa/original_comparison_faces.png",
+    "../portrait_nasion_clothing_20261104_v4/qa/original_comparison_eyes.png",
+    "../portrait_nasion_clothing_20261104_v4/qa/original_comparison_hair.png",
+    "../portrait_nasion_clothing_20261104_v4/qa/original_male_female_head_comparison.png"
+  ],
+  "observations": [
+    {"part": "eyes", "difference": "Rejected male eyes were taller, rounder and more open, exposing more iris and using a stronger lower lid. Original eyes are narrow, elongated and calm, with the upper lid covering more of the iris. Matching pupil distance alone does not restore the eye shape."},
+    {"part": "mouth", "difference": "Rejected lips were fuller, pink-orange and glossier. Original lips are thinner with a muted brown/bean pigment and a restrained horizontal seam."},
+    {"part": "nose", "difference": "Rejected nose looked rounder and bulbous with a bright central highlight. Original nose uses restrained matte alar and underside shading."},
+    {"part": "face_skin", "difference": "Rejected face was smoother and more even, with a soft egg-shaped lower jaw. Original has subtle watercolor cellular texture, slight angular jaw transitions, a smaller flatter chin, and more chin/neck tonal variation."},
+    {"part": "hair", "difference": "Rejected hair had broader regular grey-white highlight ribbons and lighter pigment. Original uses darker warm-charcoal masses and finer irregular hairs, with different density and placement of chest locks."},
+    {"part": "female_comparison", "difference": "Existing female assets help establish shared paint softness, pigment family and canvas scale. Their oval jaw and almond-eye anatomy are not male shape targets."},
+    {"part": "framing", "difference": "The original reference consists of bust columns about590 pixels wide. Each placed reference preserves its native scale within the1024x1536 canvas. Current full clothing extends farther down the body. Do not stretch an entire original column to1024 pixels or infer a head-size problem solely from different bottom crops."}
+  ],
+  "local_hair_roi": {
+    "canvas_roi": [445, 185, 135, 60],
+    "meaning": "Local crown sample only, not a whole-hair acceptance metric.",
+    "source_median_rgb": [[78,73,69],[78,73,69],[78,73,69]],
+    "rejected_active_median_rgb": [[87,81,77],[94,86,83],[94,87,83]],
+    "source_luminance_median": [73.8464,73.6298,73.9146],
+    "rejected_active_luminance_median": [81.8464,87.769,87.9868]
+  },
+  "authoritative_reference_regions": [
+    "Unoccluded face, neck, eyes, brows and lips provide visible shape and pigment references.",
+    "Hairline, crown, visible side locks, complete buns and hairpins provide visible silhouette references."
+  ],
+  "requires_new_painting": [
+    "Unseen skull and ear-side connections, hair behind ears and shoulders, and continuous featureless skin require newly painted support.",
+    "The source has no true transparent component layers; rectangular crops are references only and must not be presented as finished transparent parts.",
+    "All v5 brows are newly painted native transparent AI artwork, never cut out of the original or copied from rejected assets."
+  ],
+  "acceptance_limit": "Registration, texture-import and runtime checks do not establish visual faithfulness. Original/new composited comparisons remain necessary."
+}

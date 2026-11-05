@@ -1,0 +1,279 @@
+{
+  "status": "six_new_generated_layers_pending_visual_selection",
+  "generation": "Six separate built-in imagegen calls, no copied set01 artwork and no original-portrait extraction.",
+  "registration_policy": "Only a single uniform scale and translation per complete layer; no alpha/color threshold cleanup, warping or fragment repairs.",
+  "fixed_sources": {
+    "face_shape": {
+      "path": "E:\\stacklands\\mods\\appearance\\portrait_modular_sample_20261103\\parts\\face_shape.png",
+      "sha256": "3d2bd3402115da481a7f1db6ee8745aa4faa26165e825397e8e78670532ed6c7"
+    },
+    "clothing": {
+      "path": "E:\\stacklands\\mods\\appearance\\portrait_modular_sample_20261103\\parts\\clothing.png",
+      "sha256": "2456e11244be9106b1cf80415eb33f44111332225fd166adf441a9c751014b38"
+    }
+  },
+  "parts": {
+    "hair_front": {
+      "scale": 0.4,
+      "translation": [
+        313.4,
+        101.0
+      ],
+      "anchors": {
+        "crown_source": [
+          514,
+          220
+        ],
+        "crown_target": [
+          519,
+          189
+        ],
+        "soft_off_center_hairline_source": [
+          549,
+          440
+        ],
+        "soft_off_center_hairline_target": [
+          533,
+          277
+        ]
+      },
+      "method": "Registration from the anatomical crown and visible hairline; whole-hair bounding-box center is not used. Lateral placement corrected to cover both scalp sides, preserving the slight off-center part.",
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_three_samples_20261103\\source\\set02\\hair_front_attempt_01.png",
+      "generated_original": "E:\\tmp\\CodexData\\generated_images\\01a1a1ae-f744-70a3-8368-2201c0206eae\\exec-976f21f5-9ff1-4308-a353-d5d440ad0d4e.png",
+      "registered_candidate": "E:\\stacklands\\mods\\appearance\\portrait_three_samples_20261103\\preview\\set02\\hair_front_registered_attempt_01.png",
+      "source_size": [
+        1024,
+        1536
+      ],
+      "target_size": [
+        1024,
+        1536
+      ],
+      "source_sha256": "0400d26e40f9d4c3069eccbe0f0b365f1ea624dbe1a611cb705eefd3a8185c02",
+      "candidate_sha256": "3d560df3d048f9b9dc6f4de738197c1d571b2a96af53d02bdfd007dc0afe890b",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "partial_alpha_pixels": 39327,
+      "fully_opaque_pixels": 1
+    },
+    "hair_back": {
+      "scale": 0.45,
+      "translation": [
+        291.05,
+        90.0
+      ],
+      "anchors": {
+        "crown_source": [
+          512,
+          215
+        ],
+        "crown_target": [
+          521.45,
+          186.75
+        ],
+        "low_bun_source": [
+          631,
+          900
+        ],
+        "low_bun_target": [
+          575,
+          495
+        ]
+      },
+      "method": "Posterior crown plus low nape-bun position; the low bun is allowed to protrude behind the right neck. Not centered on the entire hair bounding box.",
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_three_samples_20261103\\source\\set02\\hair_back_attempt_01.png",
+      "generated_original": "E:\\tmp\\CodexData\\generated_images\\01a1a1ae-f744-70a3-8368-2201c0206eae\\exec-2a4caaee-0043-4de2-b17e-3c499dd5594e.png",
+      "registered_candidate": "E:\\stacklands\\mods\\appearance\\portrait_three_samples_20261103\\preview\\set02\\hair_back_registered_attempt_01.png",
+      "source_size": [
+        1024,
+        1536
+      ],
+      "target_size": [
+        1024,
+        1536
+      ],
+      "source_sha256": "090b56f0eae844b8dfd563cff7d4ee3efc2a5e306f9ed40f9d1589609151b518",
+      "candidate_sha256": "dea73dcf2d8cf20c9fd97200c358c3e7487240db2d6836742ad32c2cec57cb0a",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "partial_alpha_pixels": 76288,
+      "fully_opaque_pixels": 3
+    },
+    "eyes": {
+      "scale": 0.2514998226479795,
+      "translation": [
+        361.8721064445239,
+        223.34135736731866
+      ],
+      "anchors": {
+        "source_pupils": [
+          [
+            406.07540983606555,
+            618.9508196721312
+          ],
+          [
+            843.4514637904468,
+            618.8921417565485
+          ]
+        ],
+        "target_pupils": [
+          [
+            464,
+            379
+          ],
+          [
+            574,
+            379
+          ]
+        ]
+      },
+      "method": "Dark-pupil centroid within manually inspected pupil-only windows, followed by actual face composition.",
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_three_samples_20261103\\source\\set02\\eyes_attempt_01.png",
+      "generated_original": "E:\\tmp\\CodexData\\generated_images\\01a1a1ae-f744-70a3-8368-2201c0206eae\\exec-4b70808f-efdc-4593-9410-61b7586f425e.png",
+      "registered_candidate": "E:\\stacklands\\mods\\appearance\\portrait_three_samples_20261103\\preview\\set02\\eyes_registered_attempt_01.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "target_size": [
+        1024,
+        1536
+      ],
+      "source_sha256": "1aca284227e986c37e3194195bfda6fbba7e939bf4dcf7147f83e7c9e62a92d4",
+      "candidate_sha256": "934bf64b5dc3fa5a83418429f41f1e8cafb3e7c7cd1d26e18f4c51569b61be23",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "partial_alpha_pixels": 3630,
+      "fully_opaque_pixels": 0
+    },
+    "eyebrows": {
+      "scale": 0.26458352559343423,
+      "translation": [
+        354.34953972145365,
+        188.35325818355346
+      ],
+      "anchors": {
+        "source_brow_centers": [
+          [
+            387.96996165317427,
+            624.1448657861099
+          ],
+          [
+            860.4105632349907,
+            624.207551062513
+          ]
+        ],
+        "target_brow_centers": [
+          [
+            457,
+            354
+          ],
+          [
+            582,
+            353
+          ]
+        ]
+      },
+      "method": "Individually inspected brow-body centroids followed by visual placement on the fixed face.",
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_three_samples_20261103\\source\\set02\\eyebrows_attempt_01.png",
+      "generated_original": "E:\\tmp\\CodexData\\generated_images\\01a1a1ae-f744-70a3-8368-2201c0206eae\\exec-f3191ac4-030a-45bd-a528-5b39c4a1c0a5.png",
+      "registered_candidate": "E:\\stacklands\\mods\\appearance\\portrait_three_samples_20261103\\preview\\set02\\eyebrows_registered_attempt_01.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "target_size": [
+        1024,
+        1536
+      ],
+      "source_sha256": "7d6e6d8084fafd84ae7ffdcf94765d11b752a3b0725d9005d7e18194ba81a997",
+      "candidate_sha256": "037c2392609ab3e56567988e7a23cf65a0530b68805918384db458f8819e62c0",
+      "alpha_extrema": [
+        0,
+        231
+      ],
+      "partial_alpha_pixels": 1609,
+      "fully_opaque_pixels": 0
+    },
+    "nose": {
+      "scale": 0.13,
+      "translation": [
+        437.75,
+        332.9
+      ],
+      "anchors": {
+        "source_tip": [
+          625,
+          870
+        ],
+        "target_tip": [
+          519,
+          446
+        ]
+      },
+      "method": "Nose tip registration, width checked against the fixed face; not the entire source canvas center.",
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_three_samples_20261103\\source\\set02\\nose_attempt_01.png",
+      "generated_original": "E:\\tmp\\CodexData\\generated_images\\01a1a1ae-f744-70a3-8368-2201c0206eae\\exec-3e9d040a-9fad-4950-8551-a52aae4f72f0.png",
+      "registered_candidate": "E:\\stacklands\\mods\\appearance\\portrait_three_samples_20261103\\preview\\set02\\nose_registered_attempt_01.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "target_size": [
+        1024,
+        1536
+      ],
+      "source_sha256": "8fa129dc56695a1284280156262fb6261cd7f89285a7f51058b1c0d490b9247d",
+      "candidate_sha256": "0ebc9d5b8304c25f9dc59a946d04d0c0d8c9112f44f894cc0b81d416da927348",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "partial_alpha_pixels": 3228,
+      "fully_opaque_pixels": 0
+    },
+    "mouth": {
+      "scale": 0.1382488479262673,
+      "translation": [
+        432.59447004608296,
+        396.7327188940092
+      ],
+      "anchors": {
+        "source_center_line": [
+          625,
+          624
+        ],
+        "target_center_line": [
+          519,
+          483
+        ]
+      },
+      "method": "Lip center-line registration with 60px intended corner width.",
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_three_samples_20261103\\source\\set02\\mouth_attempt_01.png",
+      "generated_original": "E:\\tmp\\CodexData\\generated_images\\01a1a1ae-f744-70a3-8368-2201c0206eae\\exec-c4370982-fc24-43d8-a749-906a4fdcaff7.png",
+      "registered_candidate": "E:\\stacklands\\mods\\appearance\\portrait_three_samples_20261103\\preview\\set02\\mouth_registered_attempt_01.png",
+      "source_size": [
+        1254,
+        1254
+      ],
+      "target_size": [
+        1024,
+        1536
+      ],
+      "source_sha256": "9e6daa49d1dda3dc0e215c8e33725c8111faa237ce423e4f22423bbcc887914b",
+      "candidate_sha256": "52244914640dcb317eef3917fb8a2769762bad3ebc040281ae583fb3ba50b789",
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "partial_alpha_pixels": 845,
+      "fully_opaque_pixels": 0
+    }
+  }
+}

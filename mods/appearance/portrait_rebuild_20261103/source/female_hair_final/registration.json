@@ -1,0 +1,171 @@
+{
+  "canvas": [
+    1024,
+    1536
+  ],
+  "method": "Single uniform scale and translation per complete layer; premultiplied-alpha affine sampling. No local warp, drawing, color changes, or pixel erasure.",
+  "records": [
+    {
+      "part": "hair_front",
+      "variant": 1,
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\source\\female_hair_final\\hair_front_01_generated.png",
+      "source_sha256": "4703abd3798549dc735ae1f64b65b36e022c525c04f64b48f96a1777e3a06027",
+      "uniform_scale": 0.6,
+      "translation": [
+        203.60000000000002,
+        37.400000000000006
+      ],
+      "source_control": [
+        524,
+        366
+      ],
+      "target_control": [
+        518,
+        257
+      ],
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\female\\hair_front\\01.png",
+      "output_sha256": "f7a266829a84682ee048fc04d561ad94390d1ab2a5ee97967d62db3391714fff",
+      "visible_bbox": [
+        340,
+        101,
+        697,
+        934
+      ]
+    },
+    {
+      "part": "hair_front",
+      "variant": 2,
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\source\\female_hair_final\\hair_front_02_generated.png",
+      "source_sha256": "d1bf37b7b04e50fafe273420cec9b362aac0a09a4f9069a6018cfa62aedd8219",
+      "uniform_scale": 0.57,
+      "translation": [
+        218.18,
+        44.390000000000015
+      ],
+      "source_control": [
+        526,
+        373
+      ],
+      "target_control": [
+        518,
+        257
+      ],
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\female\\hair_front\\02.png",
+      "output_sha256": "4dd9815fdae5a4a26882ea08618665a1faba6b8c67aaf17fc029d3a94cfbd1e4",
+      "visible_bbox": [
+        328,
+        95,
+        693,
+        787
+      ]
+    },
+    {
+      "part": "hair_front",
+      "variant": 3,
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\source\\female_hair_final\\hair_front_03_generated.png",
+      "source_sha256": "0693e4104e827f03445fffbe52258364c031f08e65d20b1350511a19f4ee6ab7",
+      "uniform_scale": 0.59,
+      "translation": [
+        211.79000000000002,
+        44.01000000000002
+      ],
+      "source_control": [
+        519,
+        361
+      ],
+      "target_control": [
+        518,
+        257
+      ],
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\female\\hair_front\\03.png",
+      "output_sha256": "55157316a36efd4062b32b5db8364b20f45f7c3540908a2110430291e65f19db",
+      "visible_bbox": [
+        333,
+        101,
+        696,
+        949
+      ]
+    },
+    {
+      "part": "hair_back",
+      "variant": 1,
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\source\\female_hair_final\\hair_back_01_tips_repaired.png",
+      "source_sha256": "ce3231ca0d553bf60cffe64c75e081bd4e13c39a99d0ac00f7261bce90ef9d03",
+      "uniform_scale": 0.64,
+      "translation": [
+        190.32,
+        3.9200000000000017
+      ],
+      "source_control": [
+        512,
+        72
+      ],
+      "target_control": [
+        518,
+        50
+      ],
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\female\\hair_back\\01.png",
+      "output_sha256": "ac50fa5565ed842d7f9770f8b9a4e2d74ae73b01bd78777050884876cdccc143",
+      "visible_bbox": [
+        261,
+        50,
+        777,
+        974
+      ]
+    },
+    {
+      "part": "hair_back",
+      "variant": 2,
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\source\\female_hair_final\\hair_back_02_generated.png",
+      "source_sha256": "d794d6922c919c943ea3d776996befbf8a764aa306d2db1024e53391ed26c911",
+      "uniform_scale": 0.56,
+      "translation": [
+        230.15999999999997,
+        49.959999999999994
+      ],
+      "source_control": [
+        514,
+        84
+      ],
+      "target_control": [
+        518,
+        97
+      ],
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\female\\hair_back\\02.png",
+      "output_sha256": "e7669465be8188ea9fa5598977f0a40ca432912129d0e1408b27d78454f3e764",
+      "visible_bbox": [
+        350,
+        97,
+        686,
+        512
+      ]
+    },
+    {
+      "part": "hair_back",
+      "variant": 3,
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\source\\female_hair_final\\hair_back_03_generated.png",
+      "source_sha256": "68c1ace707b4a2cec64ce7b294ec4cb535c547eb3d4daba63f894045e2c0492a",
+      "uniform_scale": 0.6,
+      "translation": [
+        212.0,
+        40.6
+      ],
+      "source_control": [
+        510,
+        99
+      ],
+      "target_control": [
+        518,
+        100
+      ],
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\female\\hair_back\\03.png",
+      "output_sha256": "2a83bbc3a2d91ed0a60a25dae4e1731cf15a950305cf308501197c8fc75f33fe",
+      "visible_bbox": [
+        276,
+        100,
+        759,
+        961
+      ]
+    }
+  ]
+}

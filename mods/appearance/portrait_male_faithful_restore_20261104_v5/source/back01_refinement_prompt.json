@@ -1,0 +1,12 @@
+{
+  "tool": "built-in image_gen",
+  "stage": "wooden_pin_width_only",
+  "prompt": "Precise local edit. Image1 is a new independent REAR-HAIR layer on its1024x1536 transparent shared canvas. Image2 original male portrait is hairpin-size reference only. Change ONLY the plain WOODEN HAIRPIN of image1: it is too long relative to the skull. Shorten the horizontal pin from its current approximately x376..648 to about x399..625, staying at the same vertical y200..210 and the same simple brown carved-knob wood style. The pin's right end must be narrower/shorter, not a new ornament. Preserve the bun and all hair shape, hair strand pixels, scalp, long rear curtain, tip length, darkness, shading, entire canvas and exact placement. Vacated old pin space becomes actual transparency, or matching existing hair only where hair is behind that pin; no white fill or residual brown ends. Nothing else changes. No face, ears, skin, person, neck, clothes, background, glow, symbols or new objects. Keep the solid hidden rear scalp/hair continuous with no face hole. Return the same full1024x1536 RGBA hair-only layer, not a zoomed hairpin close-up.",
+  "inputs": [
+    "source/back01_raw.png",
+    "E:/stacklands/mods/appearance/portrait_rebuild_20261103/source/male_final/reference_01.png"
+  ],
+  "raw_before": "source/back01_before_refinement.png",
+  "selected_raw": "source/back01_raw.png",
+  "shape_changes_by_native_tool_only": true
+}

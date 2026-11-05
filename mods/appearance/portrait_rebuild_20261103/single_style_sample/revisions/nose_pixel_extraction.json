@@ -1,0 +1,21 @@
+{
+  "method": "source-pixel local pigment extraction against estimated source skin; composite onto unchanged original face",
+  "user_authorized": true,
+  "source": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\source\\female_hair_final\\reference_01.png",
+  "source_sha256": "b007f8b80c15dd723ee66c4801b4626c8e1437ab5bf19dfc0dae324984236739",
+  "source_nose_tip": [
+    312,
+    398
+  ],
+  "target_nose_tip": [
+    519,
+    446
+  ],
+  "scale": 1.0,
+  "canvas": [
+    1024,
+    1536
+  ],
+  "opaque_pixels": 0,
+  "limitations": "Underlying source skin is estimated from surrounding skin; not a claim of whole-image pixel identity."
+}

@@ -1,0 +1,1417 @@
+{
+  "canvas": [
+    1024,
+    1536
+  ],
+  "required_asset_count": 36,
+  "present_asset_count": 36,
+  "active_variant_counts": {
+    "male": 49,
+    "female": 41
+  },
+  "draw_order": [
+    "hair_back",
+    "face_shape",
+    "clothing",
+    "eyes",
+    "eyebrows",
+    "nose",
+    "mouth",
+    "face_accessory",
+    "hair_front"
+  ],
+  "artwork_acceptance": "not_automatically_determined",
+  "changed_active_files": [],
+  "changed_outside_replacement_scope": [],
+  "assets": [
+    {
+      "gender": "female",
+      "part": "hair_front",
+      "variant": 1,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\female\\hair_front\\01.png",
+      "errors": [],
+      "review_flags": [
+        "inspect_possible_skin_or_ear_pixels_in_hair"
+      ],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "f7a266829a84682ee048fc04d561ad94390d1ab2a5ee97967d62db3391714fff",
+      "nonzero_alpha_bbox": [
+        204,
+        48,
+        805,
+        947
+      ],
+      "visible_alpha_bbox": [
+        340,
+        101,
+        697,
+        934
+      ],
+      "opaque_pixel_count": 72086,
+      "continuous_alpha_pixel_count": 40885,
+      "possible_opaque_skin_pixels": 157,
+      "possible_opaque_skin_bbox": [
+        367,
+        194,
+        622,
+        851
+      ],
+      "central_face_region_visible_pixels": 0
+    },
+    {
+      "gender": "female",
+      "part": "hair_front",
+      "variant": 2,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\female\\hair_front\\02.png",
+      "errors": [],
+      "review_flags": [
+        "inspect_possible_skin_or_ear_pixels_in_hair"
+      ],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "4dd9815fdae5a4a26882ea08618665a1faba6b8c67aaf17fc029d3a94cfbd1e4",
+      "nonzero_alpha_bbox": [
+        218,
+        44,
+        727,
+        860
+      ],
+      "visible_alpha_bbox": [
+        328,
+        95,
+        693,
+        787
+      ],
+      "opaque_pixel_count": 64111,
+      "continuous_alpha_pixel_count": 22125,
+      "possible_opaque_skin_pixels": 205,
+      "possible_opaque_skin_bbox": [
+        513,
+        165,
+        523,
+        249
+      ],
+      "central_face_region_visible_pixels": 0
+    },
+    {
+      "gender": "female",
+      "part": "hair_front",
+      "variant": 3,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\female\\hair_front\\03.png",
+      "errors": [],
+      "review_flags": [
+        "inspect_possible_skin_or_ear_pixels_in_hair"
+      ],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "55157316a36efd4062b32b5db8364b20f45f7c3540908a2110430291e65f19db",
+      "nonzero_alpha_bbox": [
+        212,
+        54,
+        808,
+        950
+      ],
+      "visible_alpha_bbox": [
+        333,
+        101,
+        696,
+        949
+      ],
+      "opaque_pixel_count": 77235,
+      "continuous_alpha_pixel_count": 41689,
+      "possible_opaque_skin_pixels": 334,
+      "possible_opaque_skin_bbox": [
+        368,
+        168,
+        659,
+        688
+      ],
+      "central_face_region_visible_pixels": 0
+    },
+    {
+      "gender": "female",
+      "part": "hair_back",
+      "variant": 1,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\female\\hair_back\\01.png",
+      "errors": [],
+      "review_flags": [],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "ac50fa5565ed842d7f9770f8b9a4e2d74ae73b01bd78777050884876cdccc143",
+      "nonzero_alpha_bbox": [
+        219,
+        46,
+        810,
+        977
+      ],
+      "visible_alpha_bbox": [
+        261,
+        50,
+        777,
+        974
+      ],
+      "opaque_pixel_count": 294390,
+      "continuous_alpha_pixel_count": 42504,
+      "possible_opaque_skin_pixels": 8,
+      "possible_opaque_skin_bbox": [
+        391,
+        111,
+        674,
+        115
+      ],
+      "hidden_center_fill_alpha": {
+        "519,260": 253,
+        "519,330": 253,
+        "519,400": 253,
+        "519,450": 253
+      }
+    },
+    {
+      "gender": "female",
+      "part": "hair_back",
+      "variant": 2,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\female\\hair_back\\02.png",
+      "errors": [],
+      "review_flags": [],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "e7669465be8188ea9fa5598977f0a40ca432912129d0e1408b27d78454f3e764",
+      "nonzero_alpha_bbox": [
+        303,
+        94,
+        697,
+        861
+      ],
+      "visible_alpha_bbox": [
+        350,
+        97,
+        686,
+        512
+      ],
+      "opaque_pixel_count": 103587,
+      "continuous_alpha_pixel_count": 6103,
+      "possible_opaque_skin_pixels": 0,
+      "possible_opaque_skin_bbox": null,
+      "hidden_center_fill_alpha": {
+        "519,260": 253,
+        "519,330": 253,
+        "519,400": 252,
+        "519,450": 253
+      }
+    },
+    {
+      "gender": "female",
+      "part": "hair_back",
+      "variant": 3,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\female\\hair_back\\03.png",
+      "errors": [],
+      "review_flags": [],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "2a83bbc3a2d91ed0a60a25dae4e1731cf15a950305cf308501197c8fc75f33fe",
+      "nonzero_alpha_bbox": [
+        270,
+        56,
+        787,
+        962
+      ],
+      "visible_alpha_bbox": [
+        276,
+        100,
+        759,
+        961
+      ],
+      "opaque_pixel_count": 269292,
+      "continuous_alpha_pixel_count": 34631,
+      "possible_opaque_skin_pixels": 0,
+      "possible_opaque_skin_bbox": null,
+      "hidden_center_fill_alpha": {
+        "519,260": 253,
+        "519,330": 252,
+        "519,400": 253,
+        "519,450": 253
+      }
+    },
+    {
+      "gender": "female",
+      "part": "eyebrows",
+      "variant": 1,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\female\\eyebrows\\01.png",
+      "errors": [],
+      "review_flags": [],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "f094c565dbb5b0c252c3830cb7920ca13b420ab811105be8f439304bff49e665",
+      "nonzero_alpha_bbox": [
+        423,
+        344,
+        615,
+        364
+      ],
+      "visible_alpha_bbox": [
+        424,
+        346,
+        613,
+        362
+      ],
+      "opaque_pixel_count": 828,
+      "continuous_alpha_pixel_count": 827,
+      "outside_feature_roi_alpha_nonzero_pixels": 0,
+      "outside_feature_roi_visible_pixels": 0,
+      "left_right_visible_pixel_counts": [
+        670,
+        629
+      ]
+    },
+    {
+      "gender": "female",
+      "part": "eyebrows",
+      "variant": 2,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\female\\eyebrows\\02.png",
+      "errors": [],
+      "review_flags": [],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "5e956ef978360fe4de41927d9cd74ef2cf5af53482a4138e1186e9c11f3482af",
+      "nonzero_alpha_bbox": [
+        422,
+        336,
+        617,
+        365
+      ],
+      "visible_alpha_bbox": [
+        425,
+        345,
+        614,
+        363
+      ],
+      "opaque_pixel_count": 754,
+      "continuous_alpha_pixel_count": 761,
+      "outside_feature_roi_alpha_nonzero_pixels": 0,
+      "outside_feature_roi_visible_pixels": 0,
+      "left_right_visible_pixel_counts": [
+        580,
+        568
+      ]
+    },
+    {
+      "gender": "female",
+      "part": "eyebrows",
+      "variant": 3,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\female\\eyebrows\\03.png",
+      "errors": [],
+      "review_flags": [],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "b066a1940dfe56491dec1723360626dc55128a8a35abe1c44365d4338cf01210",
+      "nonzero_alpha_bbox": [
+        422,
+        344,
+        615,
+        364
+      ],
+      "visible_alpha_bbox": [
+        424,
+        346,
+        613,
+        362
+      ],
+      "opaque_pixel_count": 571,
+      "continuous_alpha_pixel_count": 708,
+      "outside_feature_roi_alpha_nonzero_pixels": 0,
+      "outside_feature_roi_visible_pixels": 0,
+      "left_right_visible_pixel_counts": [
+        465,
+        471
+      ]
+    },
+    {
+      "gender": "female",
+      "part": "eyes",
+      "variant": 1,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\female\\eyes\\01.png",
+      "errors": [],
+      "review_flags": [],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "5c6d807236e43e01abb2680267b4f7e00609258bbd6ca1b1970473ef074d18c3",
+      "nonzero_alpha_bbox": [
+        424,
+        368,
+        614,
+        418
+      ],
+      "visible_alpha_bbox": [
+        425,
+        370,
+        612,
+        395
+      ],
+      "opaque_pixel_count": 1731,
+      "continuous_alpha_pixel_count": 704,
+      "outside_feature_roi_alpha_nonzero_pixels": 0,
+      "outside_feature_roi_visible_pixels": 0,
+      "left_right_visible_pixel_counts": [
+        1038,
+        1043
+      ]
+    },
+    {
+      "gender": "female",
+      "part": "eyes",
+      "variant": 2,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\female\\eyes\\02.png",
+      "errors": [],
+      "review_flags": [],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "bb71367a50c5fdc5098180183eb00f8c7ca69e9e37cd560eda304856fc5cd730",
+      "nonzero_alpha_bbox": [
+        422,
+        343,
+        616,
+        418
+      ],
+      "visible_alpha_bbox": [
+        423,
+        365,
+        614,
+        396
+      ],
+      "opaque_pixel_count": 1997,
+      "continuous_alpha_pixel_count": 1008,
+      "outside_feature_roi_alpha_nonzero_pixels": 0,
+      "outside_feature_roi_visible_pixels": 0,
+      "left_right_visible_pixel_counts": [
+        1276,
+        1273
+      ]
+    },
+    {
+      "gender": "female",
+      "part": "eyes",
+      "variant": 3,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\female\\eyes\\03.png",
+      "errors": [],
+      "review_flags": [],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "e3b307f9c94683d289a29d56fb776a8576ccff2ad976e56ff1fd4a2ffc07399d",
+      "nonzero_alpha_bbox": [
+        423,
+        363,
+        615,
+        412
+      ],
+      "visible_alpha_bbox": [
+        425,
+        369,
+        613,
+        396
+      ],
+      "opaque_pixel_count": 1866,
+      "continuous_alpha_pixel_count": 773,
+      "outside_feature_roi_alpha_nonzero_pixels": 0,
+      "outside_feature_roi_visible_pixels": 0,
+      "left_right_visible_pixel_counts": [
+        1166,
+        1114
+      ]
+    },
+    {
+      "gender": "female",
+      "part": "nose",
+      "variant": 1,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\female\\nose\\01.png",
+      "errors": [],
+      "review_flags": [],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "0bcd4f0c8f80ec39fa26a888dbd81a1090b222267e7a01183051d29bdca43f01",
+      "nonzero_alpha_bbox": [
+        491,
+        428,
+        546,
+        468
+      ],
+      "visible_alpha_bbox": [
+        498,
+        442,
+        540,
+        458
+      ],
+      "opaque_pixel_count": 19,
+      "continuous_alpha_pixel_count": 723,
+      "outside_feature_roi_alpha_nonzero_pixels": 0,
+      "outside_feature_roi_visible_pixels": 0
+    },
+    {
+      "gender": "female",
+      "part": "nose",
+      "variant": 2,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\female\\nose\\02.png",
+      "errors": [],
+      "review_flags": [],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "46a6f8e268b560b6949833fa2d266be645236c0ac62507bed2418e354b0a96db",
+      "nonzero_alpha_bbox": [
+        498,
+        438,
+        542,
+        458
+      ],
+      "visible_alpha_bbox": [
+        499,
+        440,
+        541,
+        456
+      ],
+      "opaque_pixel_count": 13,
+      "continuous_alpha_pixel_count": 577,
+      "outside_feature_roi_alpha_nonzero_pixels": 0,
+      "outside_feature_roi_visible_pixels": 0
+    },
+    {
+      "gender": "female",
+      "part": "nose",
+      "variant": 3,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\female\\nose\\03.png",
+      "errors": [],
+      "review_flags": [
+        "faint_alpha_outside_expected_feature_region"
+      ],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "ea724c82b076befc74106021911e9647201fdc127b5b1bf8c7b14a29c16d63b2",
+      "nonzero_alpha_bbox": [
+        497,
+        415,
+        547,
+        481
+      ],
+      "visible_alpha_bbox": [
+        499,
+        441,
+        541,
+        457
+      ],
+      "opaque_pixel_count": 12,
+      "continuous_alpha_pixel_count": 810,
+      "outside_feature_roi_alpha_nonzero_pixels": 4,
+      "outside_feature_roi_visible_pixels": 0
+    },
+    {
+      "gender": "female",
+      "part": "mouth",
+      "variant": 1,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\female\\mouth\\01.png",
+      "errors": [],
+      "review_flags": [],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "8b94176b26464814ce38d4716ef15dde92dd1ba4d2131bc2c4994ca42d5274f6",
+      "nonzero_alpha_bbox": [
+        484,
+        472,
+        554,
+        501
+      ],
+      "visible_alpha_bbox": [
+        487,
+        474,
+        552,
+        498
+      ],
+      "opaque_pixel_count": 765,
+      "continuous_alpha_pixel_count": 324,
+      "outside_feature_roi_alpha_nonzero_pixels": 0,
+      "outside_feature_roi_visible_pixels": 0
+    },
+    {
+      "gender": "female",
+      "part": "mouth",
+      "variant": 2,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\female\\mouth\\02.png",
+      "errors": [],
+      "review_flags": [],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "59d71d78e208c02140a9ad88f4e0af59d15247cbcc1932407578d6cd17fce953",
+      "nonzero_alpha_bbox": [
+        484,
+        472,
+        553,
+        500
+      ],
+      "visible_alpha_bbox": [
+        486,
+        474,
+        551,
+        498
+      ],
+      "opaque_pixel_count": 807,
+      "continuous_alpha_pixel_count": 329,
+      "outside_feature_roi_alpha_nonzero_pixels": 0,
+      "outside_feature_roi_visible_pixels": 0
+    },
+    {
+      "gender": "female",
+      "part": "mouth",
+      "variant": 3,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\female\\mouth\\03.png",
+      "errors": [],
+      "review_flags": [],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "3928ba2bdd05cf0a14beb4e1cb511ba15479314ba1fa6261a7eb4b1557c71bea",
+      "nonzero_alpha_bbox": [
+        484,
+        472,
+        554,
+        501
+      ],
+      "visible_alpha_bbox": [
+        486,
+        474,
+        552,
+        500
+      ],
+      "opaque_pixel_count": 785,
+      "continuous_alpha_pixel_count": 367,
+      "outside_feature_roi_alpha_nonzero_pixels": 0,
+      "outside_feature_roi_visible_pixels": 0
+    },
+    {
+      "gender": "male",
+      "part": "hair_front",
+      "variant": 1,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\male\\hair_front\\01.png",
+      "errors": [],
+      "review_flags": [
+        "inspect_possible_skin_or_ear_pixels_in_hair"
+      ],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "8bff690844b1f42f1579c822ea5bcace0685744c20570ff8d37bdab242459bb2",
+      "nonzero_alpha_bbox": [
+        195,
+        28,
+        797,
+        950
+      ],
+      "visible_alpha_bbox": [
+        345,
+        131,
+        684,
+        946
+      ],
+      "opaque_pixel_count": 71384,
+      "continuous_alpha_pixel_count": 32755,
+      "possible_opaque_skin_pixels": 169,
+      "possible_opaque_skin_bbox": [
+        457,
+        263,
+        611,
+        340
+      ],
+      "central_face_region_visible_pixels": 0
+    },
+    {
+      "gender": "male",
+      "part": "hair_front",
+      "variant": 2,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\male\\hair_front\\02.png",
+      "errors": [],
+      "review_flags": [
+        "inspect_possible_skin_or_ear_pixels_in_hair"
+      ],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "c96ac13e003d32a300fcbdc17062442ca3334f87ae78f6e71a1415785f63e5f6",
+      "nonzero_alpha_bbox": [
+        224,
+        37,
+        823,
+        954
+      ],
+      "visible_alpha_bbox": [
+        351,
+        145,
+        678,
+        949
+      ],
+      "opaque_pixel_count": 58700,
+      "continuous_alpha_pixel_count": 39401,
+      "possible_opaque_skin_pixels": 69,
+      "possible_opaque_skin_bbox": [
+        366,
+        181,
+        666,
+        806
+      ],
+      "central_face_region_visible_pixels": 0
+    },
+    {
+      "gender": "male",
+      "part": "hair_front",
+      "variant": 3,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\male\\hair_front\\03.png",
+      "errors": [],
+      "review_flags": [],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "bc1654b57d15f6e8b740b4d62121fe33594282b01e00eb0916d622006b006c99",
+      "nonzero_alpha_bbox": [
+        121,
+        112,
+        936,
+        1238
+      ],
+      "visible_alpha_bbox": [
+        315,
+        117,
+        670,
+        953
+      ],
+      "opaque_pixel_count": 98391,
+      "continuous_alpha_pixel_count": 30189,
+      "possible_opaque_skin_pixels": 0,
+      "possible_opaque_skin_bbox": null,
+      "central_face_region_visible_pixels": 0
+    },
+    {
+      "gender": "male",
+      "part": "hair_back",
+      "variant": 1,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\male\\hair_back\\01.png",
+      "errors": [],
+      "review_flags": [
+        "inspect_possible_skin_or_ear_pixels_in_hair"
+      ],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "2790570aeaa9335bb060f4a9d55fab3847363088c45f9cae8ff3b29c8dd3ab1c",
+      "nonzero_alpha_bbox": [
+        205,
+        50,
+        753,
+        943
+      ],
+      "visible_alpha_bbox": [
+        314,
+        106,
+        719,
+        942
+      ],
+      "opaque_pixel_count": 230502,
+      "continuous_alpha_pixel_count": 17971,
+      "possible_opaque_skin_pixels": 343,
+      "possible_opaque_skin_bbox": [
+        400,
+        151,
+        643,
+        162
+      ],
+      "hidden_center_fill_alpha": {
+        "517,260": 253,
+        "517,330": 253,
+        "517,400": 253,
+        "517,450": 253
+      }
+    },
+    {
+      "gender": "male",
+      "part": "hair_back",
+      "variant": 2,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\male\\hair_back\\02.png",
+      "errors": [],
+      "review_flags": [],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "647861dee24cd5b13d2428dd9164d64bb4bf0731ec58ba8d25f58407dd9a0c11",
+      "nonzero_alpha_bbox": [
+        210,
+        53,
+        816,
+        954
+      ],
+      "visible_alpha_bbox": [
+        368,
+        70,
+        666,
+        939
+      ],
+      "opaque_pixel_count": 140361,
+      "continuous_alpha_pixel_count": 15730,
+      "possible_opaque_skin_pixels": 0,
+      "possible_opaque_skin_bbox": null,
+      "hidden_center_fill_alpha": {
+        "517,260": 253,
+        "517,330": 253,
+        "517,400": 253,
+        "517,450": 253
+      }
+    },
+    {
+      "gender": "male",
+      "part": "hair_back",
+      "variant": 3,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\male\\hair_back\\03.png",
+      "errors": [],
+      "review_flags": [],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "eb43f3ecf317e57fff0a20ec397279be3daf3cafa741cad9043bdc3a5ff59032",
+      "nonzero_alpha_bbox": [
+        209,
+        39,
+        815,
+        938
+      ],
+      "visible_alpha_bbox": [
+        283,
+        124,
+        746,
+        903
+      ],
+      "opaque_pixel_count": 239920,
+      "continuous_alpha_pixel_count": 23873,
+      "possible_opaque_skin_pixels": 0,
+      "possible_opaque_skin_bbox": null,
+      "hidden_center_fill_alpha": {
+        "517,260": 253,
+        "517,330": 253,
+        "517,400": 252,
+        "517,450": 252
+      }
+    },
+    {
+      "gender": "male",
+      "part": "eyebrows",
+      "variant": 1,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\male\\eyebrows\\01.png",
+      "errors": [],
+      "review_flags": [],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "c53a19a7b6da57fb163a509135c74e107eb0e89780f09a649b71230b0efd0870",
+      "nonzero_alpha_bbox": [
+        405,
+        335,
+        628,
+        357
+      ],
+      "visible_alpha_bbox": [
+        406,
+        337,
+        626,
+        355
+      ],
+      "opaque_pixel_count": 1090,
+      "continuous_alpha_pixel_count": 1342,
+      "outside_feature_roi_alpha_nonzero_pixels": 0,
+      "outside_feature_roi_visible_pixels": 0,
+      "left_right_visible_pixel_counts": [
+        996,
+        977
+      ]
+    },
+    {
+      "gender": "male",
+      "part": "eyebrows",
+      "variant": 2,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\male\\eyebrows\\02.png",
+      "errors": [],
+      "review_flags": [],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "40364651aec95ebea782ee4e91946f213c27e7d187c9c0b8442b7c8d07d52885",
+      "nonzero_alpha_bbox": [
+        408,
+        331,
+        627,
+        361
+      ],
+      "visible_alpha_bbox": [
+        410,
+        334,
+        625,
+        359
+      ],
+      "opaque_pixel_count": 1096,
+      "continuous_alpha_pixel_count": 1055,
+      "outside_feature_roi_alpha_nonzero_pixels": 0,
+      "outside_feature_roi_visible_pixels": 0,
+      "left_right_visible_pixel_counts": [
+        865,
+        852
+      ]
+    },
+    {
+      "gender": "male",
+      "part": "eyebrows",
+      "variant": 3,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\male\\eyebrows\\03.png",
+      "errors": [],
+      "review_flags": [],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "1b2054c5d0669852647f6419c223fd9cc7d9de98e966f6da79c4126931521129",
+      "nonzero_alpha_bbox": [
+        413,
+        337,
+        631,
+        357
+      ],
+      "visible_alpha_bbox": [
+        415,
+        339,
+        628,
+        355
+      ],
+      "opaque_pixel_count": 689,
+      "continuous_alpha_pixel_count": 1069,
+      "outside_feature_roi_alpha_nonzero_pixels": 0,
+      "outside_feature_roi_visible_pixels": 0,
+      "left_right_visible_pixel_counts": [
+        629,
+        722
+      ]
+    },
+    {
+      "gender": "male",
+      "part": "eyes",
+      "variant": 1,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\male\\eyes\\01.png",
+      "errors": [],
+      "review_flags": [],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "6b79ca72213c52114675b193950af1b7f39b2c44f8437a853055395f1383c4f3",
+      "nonzero_alpha_bbox": [
+        422,
+        363,
+        609,
+        388
+      ],
+      "visible_alpha_bbox": [
+        424,
+        365,
+        607,
+        386
+      ],
+      "opaque_pixel_count": 1547,
+      "continuous_alpha_pixel_count": 659,
+      "outside_feature_roi_alpha_nonzero_pixels": 0,
+      "outside_feature_roi_visible_pixels": 0,
+      "left_right_visible_pixel_counts": [
+        960,
+        927
+      ]
+    },
+    {
+      "gender": "male",
+      "part": "eyes",
+      "variant": 2,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\male\\eyes\\02.png",
+      "errors": [],
+      "review_flags": [],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "9e16c6bf43d3e6d5e44bc5980ae48cb7ac2973ec924a28aea3f0b9c19b7e022c",
+      "nonzero_alpha_bbox": [
+        408,
+        348,
+        613,
+        410
+      ],
+      "visible_alpha_bbox": [
+        424,
+        366,
+        609,
+        387
+      ],
+      "opaque_pixel_count": 1410,
+      "continuous_alpha_pixel_count": 746,
+      "outside_feature_roi_alpha_nonzero_pixels": 0,
+      "outside_feature_roi_visible_pixels": 0,
+      "left_right_visible_pixel_counts": [
+        870,
+        862
+      ]
+    },
+    {
+      "gender": "male",
+      "part": "eyes",
+      "variant": 3,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\male\\eyes\\03.png",
+      "errors": [],
+      "review_flags": [],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "f4393cca585d6eb4929023d8d49b7118f1c0ff6b3d5376bfb09110a4ae8600de",
+      "nonzero_alpha_bbox": [
+        431,
+        364,
+        609,
+        390
+      ],
+      "visible_alpha_bbox": [
+        433,
+        366,
+        607,
+        388
+      ],
+      "opaque_pixel_count": 1398,
+      "continuous_alpha_pixel_count": 731,
+      "outside_feature_roi_alpha_nonzero_pixels": 0,
+      "outside_feature_roi_visible_pixels": 0,
+      "left_right_visible_pixel_counts": [
+        877,
+        951
+      ]
+    },
+    {
+      "gender": "male",
+      "part": "nose",
+      "variant": 1,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\male\\nose\\01.png",
+      "errors": [],
+      "review_flags": [],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "9ded27b0b0888a56cba250aa61d07bb7eaf74c0f0ed96cfa1a9415d33c60ea70",
+      "nonzero_alpha_bbox": [
+        490,
+        444,
+        543,
+        465
+      ],
+      "visible_alpha_bbox": [
+        493,
+        446,
+        541,
+        462
+      ],
+      "opaque_pixel_count": 19,
+      "continuous_alpha_pixel_count": 561,
+      "outside_feature_roi_alpha_nonzero_pixels": 0,
+      "outside_feature_roi_visible_pixels": 0
+    },
+    {
+      "gender": "male",
+      "part": "nose",
+      "variant": 2,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\male\\nose\\02.png",
+      "errors": [],
+      "review_flags": [],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "2f5d07059723eaaa2d928a9f7899c9366f932b6b757b7cd589bb349fe7f3f9a2",
+      "nonzero_alpha_bbox": [
+        493,
+        444,
+        542,
+        465
+      ],
+      "visible_alpha_bbox": [
+        495,
+        445,
+        540,
+        463
+      ],
+      "opaque_pixel_count": 28,
+      "continuous_alpha_pixel_count": 482,
+      "outside_feature_roi_alpha_nonzero_pixels": 0,
+      "outside_feature_roi_visible_pixels": 0
+    },
+    {
+      "gender": "male",
+      "part": "nose",
+      "variant": 3,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\male\\nose\\03.png",
+      "errors": [],
+      "review_flags": [],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "30df8c4f30438ac5f8554baf5136dc87b9fe6382179a2c33efe7b632c66d27d7",
+      "nonzero_alpha_bbox": [
+        489,
+        444,
+        544,
+        465
+      ],
+      "visible_alpha_bbox": [
+        492,
+        447,
+        543,
+        463
+      ],
+      "opaque_pixel_count": 16,
+      "continuous_alpha_pixel_count": 591,
+      "outside_feature_roi_alpha_nonzero_pixels": 0,
+      "outside_feature_roi_visible_pixels": 0
+    },
+    {
+      "gender": "male",
+      "part": "mouth",
+      "variant": 1,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\male\\mouth\\01.png",
+      "errors": [],
+      "review_flags": [],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "a0be19dd1e83263794f86f4aad59c5b047fc5e2b64d54a1ba7af1a67129b7402",
+      "nonzero_alpha_bbox": [
+        479,
+        470,
+        555,
+        498
+      ],
+      "visible_alpha_bbox": [
+        481,
+        472,
+        553,
+        496
+      ],
+      "opaque_pixel_count": 808,
+      "continuous_alpha_pixel_count": 361,
+      "outside_feature_roi_alpha_nonzero_pixels": 0,
+      "outside_feature_roi_visible_pixels": 0
+    },
+    {
+      "gender": "male",
+      "part": "mouth",
+      "variant": 2,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\male\\mouth\\02.png",
+      "errors": [],
+      "review_flags": [],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "32a5257ae572bb9a458524816d72a548e4eac2fc27a53d58075906588c39c333",
+      "nonzero_alpha_bbox": [
+        479,
+        470,
+        555,
+        498
+      ],
+      "visible_alpha_bbox": [
+        482,
+        472,
+        553,
+        495
+      ],
+      "opaque_pixel_count": 851,
+      "continuous_alpha_pixel_count": 333,
+      "outside_feature_roi_alpha_nonzero_pixels": 0,
+      "outside_feature_roi_visible_pixels": 0
+    },
+    {
+      "gender": "male",
+      "part": "mouth",
+      "variant": 3,
+      "file": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\final\\male\\mouth\\03.png",
+      "errors": [],
+      "review_flags": [],
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "5489933d51adcbcd5767fd83164c8506fbd6d05b23d9fd0538e464a4b67691dc",
+      "nonzero_alpha_bbox": [
+        479,
+        471,
+        555,
+        496
+      ],
+      "visible_alpha_bbox": [
+        481,
+        473,
+        553,
+        493
+      ],
+      "opaque_pixel_count": 732,
+      "continuous_alpha_pixel_count": 339,
+      "outside_feature_roi_alpha_nonzero_pixels": 0,
+      "outside_feature_roi_visible_pixels": 0
+    }
+  ],
+  "errors": [],
+  "previews": [
+    {
+      "type": "set",
+      "gender": "female",
+      "variant": 1,
+      "preview": "preview/female/set_01.jpg"
+    },
+    {
+      "type": "set",
+      "gender": "female",
+      "variant": 2,
+      "preview": "preview/female/set_02.jpg"
+    },
+    {
+      "type": "set",
+      "gender": "female",
+      "variant": 3,
+      "preview": "preview/female/set_03.jpg"
+    },
+    {
+      "type": "mix",
+      "gender": "female",
+      "front": 1,
+      "back": 1,
+      "preview": "preview/female/mix_front_01_back_01.jpg"
+    },
+    {
+      "type": "mix",
+      "gender": "female",
+      "front": 1,
+      "back": 2,
+      "preview": "preview/female/mix_front_01_back_02.jpg"
+    },
+    {
+      "type": "mix",
+      "gender": "female",
+      "front": 1,
+      "back": 3,
+      "preview": "preview/female/mix_front_01_back_03.jpg"
+    },
+    {
+      "type": "mix",
+      "gender": "female",
+      "front": 2,
+      "back": 1,
+      "preview": "preview/female/mix_front_02_back_01.jpg"
+    },
+    {
+      "type": "mix",
+      "gender": "female",
+      "front": 2,
+      "back": 2,
+      "preview": "preview/female/mix_front_02_back_02.jpg"
+    },
+    {
+      "type": "mix",
+      "gender": "female",
+      "front": 2,
+      "back": 3,
+      "preview": "preview/female/mix_front_02_back_03.jpg"
+    },
+    {
+      "type": "mix",
+      "gender": "female",
+      "front": 3,
+      "back": 1,
+      "preview": "preview/female/mix_front_03_back_01.jpg"
+    },
+    {
+      "type": "mix",
+      "gender": "female",
+      "front": 3,
+      "back": 2,
+      "preview": "preview/female/mix_front_03_back_02.jpg"
+    },
+    {
+      "type": "mix",
+      "gender": "female",
+      "front": 3,
+      "back": 3,
+      "preview": "preview/female/mix_front_03_back_03.jpg"
+    },
+    {
+      "type": "set",
+      "gender": "male",
+      "variant": 1,
+      "preview": "preview/male/set_01.jpg"
+    },
+    {
+      "type": "set",
+      "gender": "male",
+      "variant": 2,
+      "preview": "preview/male/set_02.jpg"
+    },
+    {
+      "type": "set",
+      "gender": "male",
+      "variant": 3,
+      "preview": "preview/male/set_03.jpg"
+    },
+    {
+      "type": "mix",
+      "gender": "male",
+      "front": 1,
+      "back": 1,
+      "preview": "preview/male/mix_front_01_back_01.jpg"
+    },
+    {
+      "type": "mix",
+      "gender": "male",
+      "front": 1,
+      "back": 2,
+      "preview": "preview/male/mix_front_01_back_02.jpg"
+    },
+    {
+      "type": "mix",
+      "gender": "male",
+      "front": 1,
+      "back": 3,
+      "preview": "preview/male/mix_front_01_back_03.jpg"
+    },
+    {
+      "type": "mix",
+      "gender": "male",
+      "front": 2,
+      "back": 1,
+      "preview": "preview/male/mix_front_02_back_01.jpg"
+    },
+    {
+      "type": "mix",
+      "gender": "male",
+      "front": 2,
+      "back": 2,
+      "preview": "preview/male/mix_front_02_back_02.jpg"
+    },
+    {
+      "type": "mix",
+      "gender": "male",
+      "front": 2,
+      "back": 3,
+      "preview": "preview/male/mix_front_02_back_03.jpg"
+    },
+    {
+      "type": "mix",
+      "gender": "male",
+      "front": 3,
+      "back": 1,
+      "preview": "preview/male/mix_front_03_back_01.jpg"
+    },
+    {
+      "type": "mix",
+      "gender": "male",
+      "front": 3,
+      "back": 2,
+      "preview": "preview/male/mix_front_03_back_02.jpg"
+    },
+    {
+      "type": "mix",
+      "gender": "male",
+      "front": 3,
+      "back": 3,
+      "preview": "preview/male/mix_front_03_back_03.jpg"
+    }
+  ],
+  "limitations": [
+    "Skin and hidden-fill tests are heuristics requiring visual review.",
+    "These previews use actual game layer order but are not a running-game screenshot.",
+    "No source, final or active image pixels are modified by this script."
+  ]
+}

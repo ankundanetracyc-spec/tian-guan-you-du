@@ -1,0 +1,248 @@
+{
+  "count": 12,
+  "original_face04_sha256": "769a4ad743391d62c0053b489166e72d28c9eaec2d02d98c091f0ce70134b4a5",
+  "pupils": [
+    {
+      "variant": 1,
+      "measured_pupils": [
+        [
+          463.8949246912699,
+          379.0733813976729
+        ],
+        [
+          574.1602865457802,
+          379.0424595179464
+        ]
+      ],
+      "target_pupils": [
+        [
+          464,
+          379
+        ],
+        [
+          574,
+          379
+        ]
+      ],
+      "dark_centroid_measurement": "RGB mean below 90 in a 15x13 pupil neighborhood, after compositing on unchanged face04"
+    },
+    {
+      "variant": 2,
+      "measured_pupils": [
+        [
+          464.25763873286894,
+          378.84924736014375
+        ],
+        [
+          574.1201217656012,
+          378.81120243531205
+        ]
+      ],
+      "target_pupils": [
+        [
+          464,
+          379
+        ],
+        [
+          574,
+          379
+        ]
+      ],
+      "dark_centroid_measurement": "RGB mean below 90 in a 15x13 pupil neighborhood, after compositing on unchanged face04"
+    },
+    {
+      "variant": 3,
+      "measured_pupils": [
+        [
+          463.6845890711341,
+          378.9784229453557
+        ],
+        [
+          573.6987049599153,
+          379.0649282001586
+        ]
+      ],
+      "target_pupils": [
+        [
+          464,
+          379
+        ],
+        [
+          574,
+          379
+        ]
+      ],
+      "dark_centroid_measurement": "RGB mean below 90 in a 15x13 pupil neighborhood, after compositing on unchanged face04"
+    }
+  ],
+  "results": [
+    {
+      "part": "eyes",
+      "variant": 1,
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "d1d57a82ba87f3cd1eefc81eda08932432e77ce08dd000dc7fabf1e8b8555fcd",
+      "alpha_max": 255,
+      "near_opaque_pixels": 1598,
+      "near_opaque_warm_skin_pixels": 612,
+      "nonzero": 3755
+    },
+    {
+      "part": "eyebrows",
+      "variant": 1,
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "0365039042cbf66dc869b1777f1c7c40e8d2cbe89c86a80b11d2c34c8e45bed5",
+      "alpha_max": 188,
+      "near_opaque_pixels": 0,
+      "near_opaque_warm_skin_pixels": 0,
+      "nonzero": 1350
+    },
+    {
+      "part": "nose",
+      "variant": 1,
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "9a0ab7858d68e81fd0ee82cb0ef1301f2ee3d5b64e7bc6c8c8750dba4b181590",
+      "alpha_max": 228,
+      "near_opaque_pixels": 0,
+      "near_opaque_warm_skin_pixels": 0,
+      "nonzero": 1872
+    },
+    {
+      "part": "mouth",
+      "variant": 1,
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "bf84b1e940a888a9a09e36ea2bc7cceb222f7411a49ea025aa37b63091e1cd4d",
+      "alpha_max": 255,
+      "near_opaque_pixels": 552,
+      "near_opaque_warm_skin_pixels": 217,
+      "nonzero": 1636
+    },
+    {
+      "part": "eyes",
+      "variant": 2,
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "02168cc7007021adb42002627cb97c574f1bc3a3087d83741a7cdc6cef458ea5",
+      "alpha_max": 255,
+      "near_opaque_pixels": 1982,
+      "near_opaque_warm_skin_pixels": 827,
+      "nonzero": 4404
+    },
+    {
+      "part": "eyebrows",
+      "variant": 2,
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "5b0c2767c3936a2356de249b1c451cc1065090cd8168dcd02d2dac50b679d833",
+      "alpha_max": 210,
+      "near_opaque_pixels": 0,
+      "near_opaque_warm_skin_pixels": 0,
+      "nonzero": 1348
+    },
+    {
+      "part": "nose",
+      "variant": 2,
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "b5de9652674999b0cde6dd7cffa549854cff0484a6f0e46e117731173344f553",
+      "alpha_max": 254,
+      "near_opaque_pixels": 7,
+      "near_opaque_warm_skin_pixels": 0,
+      "nonzero": 1877
+    },
+    {
+      "part": "mouth",
+      "variant": 2,
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "4a0efe6311ee317ed68000ecb25d77d1265e4cf3b54ef5cf41886b930294b71d",
+      "alpha_max": 255,
+      "near_opaque_pixels": 536,
+      "near_opaque_warm_skin_pixels": 180,
+      "nonzero": 1604
+    },
+    {
+      "part": "eyes",
+      "variant": 3,
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "7febfacecf5e7d0cb2085e196bc73b8d6e951d37a9f9700c1cf91e7e0a1c4e6a",
+      "alpha_max": 255,
+      "near_opaque_pixels": 1543,
+      "near_opaque_warm_skin_pixels": 632,
+      "nonzero": 3769
+    },
+    {
+      "part": "eyebrows",
+      "variant": 3,
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "14329a3b4e4ebd514c5449fa25898be4fa9918402bc60ddeb6e66555f981eabb",
+      "alpha_max": 183,
+      "near_opaque_pixels": 0,
+      "near_opaque_warm_skin_pixels": 0,
+      "nonzero": 1380
+    },
+    {
+      "part": "nose",
+      "variant": 3,
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "58da3ce8a126930df433f6e6e0a59454143873f1c3005b25dd39b0d337f9de92",
+      "alpha_max": 232,
+      "near_opaque_pixels": 0,
+      "near_opaque_warm_skin_pixels": 0,
+      "nonzero": 1882
+    },
+    {
+      "part": "mouth",
+      "variant": 3,
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "e0a54cc52cfed87bb837b846dc5e77334aead7db2a60de97c86b5f496f1ab539",
+      "alpha_max": 255,
+      "near_opaque_pixels": 536,
+      "near_opaque_warm_skin_pixels": 199,
+      "nonzero": 1588
+    }
+  ]
+}

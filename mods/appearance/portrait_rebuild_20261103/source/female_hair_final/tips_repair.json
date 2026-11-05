@@ -1,0 +1,9 @@
+{
+  "tool": "built-in image_gen",
+  "source": "hair_back_01_generated.png",
+  "result": "hair_back_01_tips_repaired.png",
+  "reason": "Original rear-hair center tips were cut by the bottom edge: 341 pixels with alpha > 20 in the last row. Front-hair 03 was inspected separately and its taper is complete, so no edit was made to that image.",
+  "prompt": "Precisely edit this single transparent rear-hair game sprite. Preserve the same hairstyle, hairpin, dark matte charcoal color, extraordinarily fine strand texture and ancient Chinese gongbi painting. The very bottom center of the long rear hair is cut off by the current canvas edge. Restore ONLY the complete naturally tapered lower hair tips, keeping all hair fully inside a 1024 x 1536 transparent canvas with at least 35px empty clearance at bottom. You may uniformly reduce the entire sprite by roughly 8 percent around its top center to make space. Keep the hair as a solid continuous filled rear layer including all areas that will be hidden behind the head and body: no face-shaped hole, no ears, no face, no skin, no clothes. No new stray flyaway loops, no glow, no backdrop, no text. Exactly one rear-hair layer on real alpha, not a sheet. Retain existing visible silhouette except minimal lower-tip completion, and preserve the hairpin and bun. Do not invent an alternative style.",
+  "generated_path": "E:/tmp/CodexData/generated_images/01a1a131-1d2e-7893-b5b8-07a677ce24e5/exec-c2d9774e-94dc-4432-b486-a61354db733b.png",
+  "visual_review": "Repaired continuous tapered lower end, unchanged hairpin and rear bun structure. Repaired raw visible-alpha bounds end at y1516; final uniform registration ends at y974."
+}

@@ -1,0 +1,21 @@
+const fs=require('fs'),path=require('path'),sharp=require('sharp'),crypto=require('crypto');
+const base=path.resolve(__dirname,'..'),{fit}=require('./register_master.cjs'),{render}=require('./resample_rgba.cjs');
+const hash=f=>crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex');
+(async()=>{
+ const src=path.join(__dirname,'brow02_material_raw.png'),output=path.join(base,'male/eyebrows/02.png');
+ const source=[[323,570],[516,648],[744,645]],target=[[461,351],[493,364],[536,364]],t=fit(source,target);
+ if(Math.max(...t.residuals)>2)throw Error('Paired brow controls fail shared similarity');
+ const {data,info}=await sharp(src).ensureAlpha().raw().toBuffer({resolveWithObject:true});
+ for(const [x,y]of source)if(data[(y*info.width+x)*4+3]<180)throw Error('Actual source control has no supported brow hair');
+ fs.mkdirSync(path.dirname(output),{recursive:true});await render(src,output,t);
+ const {data:d}=await sharp(output).ensureAlpha().raw().toBuffer({resolveWithObject:true});let bbox=[1024,1536,-1,-1];
+ for(let y=0;y<1536;y++)for(let x=0;x<1024;x++)if(d[(y*1024+x)*4+3]>=40)bbox=[Math.min(bbox[0],x),Math.min(bbox[1],y),Math.max(bbox[2],x),Math.max(bbox[3],y)];
+ const report={index:2,raw:'source/brow02_material_raw.png',raw_sha256:hash(src),source_canvas:[info.width,info.height],source_controls:source,target_controls:target,control_names:['left_upper_body_supported_pixel','left_inner_head_bottom_supported_pixel','right_inner_head_bottom_supported_pixel'],source_control_method:'Actual alpha>=180 upper body and inner-head bottom hair pixels read from native pair; noncollinear, not bbox centers. Reference outer ends are partly hidden by head hair and are not chosen as registration controls.',target_control_role:'Reference02 unoccluded slanted left upper body at(461,351), inner-head lower end near(493,364), right inner-head lower end near(536,364); original visible dark pigment and feathered edge manually reviewed, not historical common y350.',transform:t,maximum_residual_px:Math.max(...t.residuals),whole_pair_transform_only:true,separate_eyebrow_movement:false,local_warp:false,antialias:'resample_rgba.cjs: premultiplied source-area integration at reduction',canvas:[1024,1536],alpha40_bbox_inclusive:bbox,output:'male/eyebrows/02.png',output_sha256:hash(output),old_asset_reused:false};
+ fs.writeFileSync(path.join(__dirname,'brow02_registration.json'),JSON.stringify(report,null,2)+'\n');
+ const face=path.join(base,'male/face_shape/01.png'),layers=['eyes/01','nose/01','mouth/01'];
+ const composed=await sharp({create:{width:1024,height:1536,channels:4,background:'#e8e1d6'}}).composite([{input:face},...layers.map(p=>({input:path.join(base,'male',p+'.png')})),{input:output}]).png().toBuffer();
+ const reference=path.resolve(base,'../portrait_male_regenerated_20261104_v3/source/reference_placed_02.png');
+ const panels=[];for(const [i,input]of[reference,composed].entries())panels.push({input:await sharp(input).extract({left:418,top:333,width:195,height:100}).resize({width:780}).png().toBuffer(),left:i*780,top:0});
+ await sharp({create:{width:1560,height:400,channels:4,background:'#e8e1d6'}}).composite(panels).png().toFile(path.join(base,'qa/brow02_original_comparison.png'));
+ console.log(JSON.stringify(report));
+})().catch(e=>{console.error(e);process.exitCode=1;});

@@ -1,0 +1,7 @@
+{
+  "mode": "built-in",
+  "use_case": "precise-object-edit",
+  "target": "source/back01_before_pin_height_refinement.png",
+  "reference": "portrait_rebuild_20261103/source/male_final/reference_01.png",
+  "prompt": "Use case: precise-object-edit. Edit target image1 is the transparent posterior hair layer; image2 is only the original small bun and pin proportion reference. Make ONE targeted correction: move the plain wooden horizontal pin AND the narrow brown wrap directly behind it upward by about 20 pixels on the unchanged 1024x1536 canvas, from their current y~200 to y~180. This restores the compact small upper bun seen in image2. Keep the top crest of the small bun at its current y~135, so the visible bun between its top and pin becomes shorter. Remove the previous lower pin/wrap completely and paint matching continuous charcoal brown hair in its place. Do not duplicate any pin. Keep the big lower posterior scalp, side width, long hair curtain, strand material, all lower tips, and their coordinates exactly as image1. This is a hidden rear underpainting asset, not a portrait: continuous solid rear scalp and hair, no face, skin, ears, clothes, holes, front hairline or chest-side strands. Maintain real transparent background alpha0 around all hair and all four borders; do not add black or gray background, fog, glow, shadow or a rectangle. All non-hair space must be genuinely transparent. Preserve fine ink strands and soft charcoal gray-brown material. No labels, diagram marks, text, or extra ornaments. Output one1024x1536 RGBA transparent asset."
+}

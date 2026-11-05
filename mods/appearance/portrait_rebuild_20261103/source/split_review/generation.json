@@ -1,0 +1,32 @@
+{
+  "status": "single female front/back prototype; old facial parts used only for alignment inspection; not installed",
+  "rules_source": "docs/美术规范/男女立绘统一风格基准_20261003.md#前后发拆件边界补充",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "mode": "built-in image_gen",
+  "jobs": [
+    {
+      "part": "front",
+      "prompt": "Edit IMAGE ONE, which is an existing production FRONT HAIR layer. Image two is DESIGN/STYLE reference only, use its LEFT woman's elegant swept half-up style. Output exactly ONE FRONT HAIR layer on real transparency, portrait 1024x1536 canvas, KEEP image one's same placement and scale, cap location, face opening, and FULL-LENGTH front-of-body tresses. FRONT means all hair that lies IN FRONT of face or clothing, including the top cap, natural hairline, temple and ear-front strands, and the complete two chest-front locks from roots to tips. These long locks MUST NOT be moved into the back layer or cut off at the shoulders. There must be NO rear curtain of hair between the two hanging front locks. Skin/ears/head/body/clothes are absent and transparent. Match reference two's LEFT hair arrangement and fine ink strokes, but match image ONE's deep ink charcoal-black color exactly. No added brown tint, no silver shine, no photorealism. This is one independently interchangeable modular front layer, not a two-panel sheet, not a full hairstyle with rear hair, not a complete character. Preserve alpha background.",
+      "output": "front_unaccepted.png"
+    },
+    {
+      "part": "back",
+      "prompt": "Edit IMAGE ONE, which is an existing production BACK HAIR layer used behind a separate head, neck, and clothing. Image two is DESIGN/STYLE reference only, use its LEFT woman's restrained half-up hairstyle. Output exactly ONE BACK HAIR layer on real transparency, portrait 1024x1536 canvas. KEEP image one's same center, head size and placement, and long behind-body volume. BACK means a CONTINUOUS FILLED mass of rear hair and a small half-up knot/pin: fill ALL regions hidden by head/neck/body with natural continuous painted hair, with no face hole, no ear holes, no missing middle, no shoulder-shaped cuts. No front hairline or frontal bangs, no front-of-chest separated tresses: those belong to another front layer. Only rear hair. Refine original wavy curtain to gently flowing coherent long black strands matching reference two's left design, preserving original deep charcoal-black color and matte fine ink linework exactly. No skin, head, ears, face, body or clothes. Not a complete character, not two panels, no labels. Preserve alpha background.",
+      "output": "back_unaccepted.png"
+    }
+  ],
+  "checks": [
+    "front and back independently composed",
+    "rear hidden preserves chest-front locks",
+    "front hidden removes chest-front locks",
+    "new front swapped onto existing back01"
+  ],
+  "limitations": [
+    "not all face shapes tested",
+    "not all cross-combinations tested",
+    "remaining male/female features and hairstyles are unfinished"
+  ]
+}

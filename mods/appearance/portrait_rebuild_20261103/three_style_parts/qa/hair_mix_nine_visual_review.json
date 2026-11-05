@@ -1,0 +1,111 @@
+{
+  "status": "nine_hair_pairings_visually_inspected_on_light_and_dark_not_user_approval",
+  "method": "All nine front/back pairs composited at (0,0), scale1, with fixed original face04 and identical sample features/clothing; native 420x600 head ROIs reviewed in both backgrounds. Full native PNGs also saved for each pair.",
+  "backgrounds": {
+    "light": [
+      235,
+      229,
+      217
+    ],
+    "dark": [
+      38,
+      42,
+      47
+    ]
+  },
+  "evidence": [
+    "hair_mix_9_heads_light.jpg",
+    "hair_mix_9_heads_dark.jpg"
+  ],
+  "pair_results": [
+    {
+      "front": 1,
+      "back": 1,
+      "unexpected_scalp_gap_seen": false,
+      "disconnected_hair_seam_seen": false,
+      "front_hair_ear_or_skin_fragment_seen": false,
+      "short_rear_bun_pairing": false,
+      "verdict": "No blocking geometric/ownership defect observed at reviewed native head scale; pending overall visual review"
+    },
+    {
+      "front": 1,
+      "back": 2,
+      "unexpected_scalp_gap_seen": false,
+      "disconnected_hair_seam_seen": false,
+      "front_hair_ear_or_skin_fragment_seen": false,
+      "short_rear_bun_pairing": true,
+      "verdict": "No blocking geometric/ownership defect observed at reviewed native head scale; pending overall visual review"
+    },
+    {
+      "front": 1,
+      "back": 3,
+      "unexpected_scalp_gap_seen": false,
+      "disconnected_hair_seam_seen": false,
+      "front_hair_ear_or_skin_fragment_seen": false,
+      "short_rear_bun_pairing": false,
+      "verdict": "No blocking geometric/ownership defect observed at reviewed native head scale; pending overall visual review"
+    },
+    {
+      "front": 2,
+      "back": 1,
+      "unexpected_scalp_gap_seen": false,
+      "disconnected_hair_seam_seen": false,
+      "front_hair_ear_or_skin_fragment_seen": false,
+      "short_rear_bun_pairing": false,
+      "verdict": "No blocking geometric/ownership defect observed at reviewed native head scale; pending overall visual review"
+    },
+    {
+      "front": 2,
+      "back": 2,
+      "unexpected_scalp_gap_seen": false,
+      "disconnected_hair_seam_seen": false,
+      "front_hair_ear_or_skin_fragment_seen": false,
+      "short_rear_bun_pairing": true,
+      "verdict": "No blocking geometric/ownership defect observed at reviewed native head scale; pending overall visual review"
+    },
+    {
+      "front": 2,
+      "back": 3,
+      "unexpected_scalp_gap_seen": false,
+      "disconnected_hair_seam_seen": false,
+      "front_hair_ear_or_skin_fragment_seen": false,
+      "short_rear_bun_pairing": false,
+      "verdict": "No blocking geometric/ownership defect observed at reviewed native head scale; pending overall visual review"
+    },
+    {
+      "front": 3,
+      "back": 1,
+      "unexpected_scalp_gap_seen": false,
+      "disconnected_hair_seam_seen": false,
+      "front_hair_ear_or_skin_fragment_seen": false,
+      "short_rear_bun_pairing": false,
+      "verdict": "No blocking geometric/ownership defect observed at reviewed native head scale; pending overall visual review"
+    },
+    {
+      "front": 3,
+      "back": 2,
+      "unexpected_scalp_gap_seen": false,
+      "disconnected_hair_seam_seen": false,
+      "front_hair_ear_or_skin_fragment_seen": false,
+      "short_rear_bun_pairing": true,
+      "verdict": "No blocking geometric/ownership defect observed at reviewed native head scale; pending overall visual review"
+    },
+    {
+      "front": 3,
+      "back": 3,
+      "unexpected_scalp_gap_seen": false,
+      "disconnected_hair_seam_seen": false,
+      "front_hair_ear_or_skin_fragment_seen": false,
+      "short_rear_bun_pairing": false,
+      "verdict": "No blocking geometric/ownership defect observed at reviewed native head scale; pending overall visual review"
+    }
+  ],
+  "shared_observations": [
+    "No unexpected exposed scalp strip, disconnected crown edge or recognizable front-hair ear/skin fragment seen in the 18 head views.",
+    "Visible ears come from fixed full face04 and remain naturally occluded by front hair; no ear-shaped holes cut in rear layers.",
+    "Back02 is a short low bun; background beside the neck under the bun is intentional, not a face hole. Front01/back02 and front03/back02 retain complete front tresses to chest while the rear stays short.",
+    "Rear01 bun/pin and rear02 rolled bun remain visible behind the front crown as designed; overlap does not produce an observed skin gap.",
+    "Original clothing still has known thin chest lines; hair pairing check does not resolve or approve them.",
+    "Some fine silhouette flyaways and local inner-hairline resampling waviness remain painting/style matters for user review. No per-pixel semantic certification or complete source-scaffold registration is claimed."
+  ]
+}

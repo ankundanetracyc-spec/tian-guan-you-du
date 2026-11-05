@@ -1,0 +1,23 @@
+{
+  "source": "source/front02_raw.png",
+  "selected_generation": "source/front02_attempt03_raw.png",
+  "target": "source/front_reference_02_placed.png",
+  "source_controls": [[517,278],[418,415],[616,415]],
+  "target_controls": [[517,283],[417,415],[610,415]],
+  "source_measurement": [
+    "At selected native source x517, the last alpha>=180 frontal support before the forehead opening is y278.",
+    "At native source y415, the innermost alpha>=180 left foreground lock support before the face opening is x418.",
+    "At native source y415, the first alpha>=180 right foreground lock support after the face opening is x616."
+  ],
+  "target_measurement": [
+    "At native original middle portrait placement x517, the first clean warm-skin support below the frontal hairline is y283.",
+    "At original middle placement y415, the clean warm-skin run is x417..610, before the foreground temple locks; predicate alpha>180,R>160,R-G>12,G-B>6.",
+    "The two selected lower face-opening endpoints and forehead support are real observed pixel-support controls, not alpha-bbox centers."
+  ],
+  "attempts": {
+    "attempt01": "Forehead/side guide fit exceeded 2px and was not selected.",
+    "attempt02": "Targeted native repaint did not correct the opening and added skin ears; rejected.",
+    "attempt03": "Direct original middle hairstyle repaint selected. Refined source is not a local program warp."
+  },
+  "limitation": "Three selected forehead/face-side guides pass the local registration check; this does not claim every strand or complete reference silhouette is pixel-identical."
+}

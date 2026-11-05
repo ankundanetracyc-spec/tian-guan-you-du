@@ -1,0 +1,168 @@
+[
+  {
+    "index": "01",
+    "sha256": "fd447a7a5d2c8cb979de25ba5861b49e13bf3d3122d81df58f8befc7822f078c",
+    "canvas": [
+      1024,
+      1536
+    ],
+    "controls": [
+      {
+        "source": [
+          310,
+          528
+        ],
+        "target": [
+          462,
+          346
+        ],
+        "transformed": [
+          461.55500443213026,
+          345.6640735878942
+        ],
+        "nearest_actual_alpha40": {
+          "xy": [
+            462,
+            346
+          ],
+          "distance": 0.5575550284716052,
+          "alpha": 232
+        }
+      },
+      {
+        "source": [
+          563,
+          620
+        ],
+        "target": [
+          497,
+          358
+        ],
+        "transformed": [
+          497.9960231923932,
+          358.5004771200356
+        ],
+        "nearest_actual_alpha40": {
+          "xy": [
+            498,
+            359
+          ],
+          "distance": 0.4995387098180263,
+          "alpha": 118
+        }
+      },
+      {
+        "source": [
+          824,
+          618
+        ],
+        "target": [
+          536,
+          358
+        ],
+        "transformed": [
+          535.4489723754765,
+          357.8354492920701
+        ],
+        "nearest_actual_alpha40": {
+          "xy": [
+            535,
+            358
+          ],
+          "distance": 0.4781768808937132,
+          "alpha": 52
+        }
+      }
+    ],
+    "all_actual_support_within2": true,
+    "notes": [
+      "Source3 controls are actual native hair support pixels, paired similarity only.",
+      "Original outer brow tails are partly hidden by head hair; matching targets use visible upper body and inner head ends.",
+      "Native alpha retained through premultiplied area resampling, no skin underpaint introduced by code.",
+      "Geometric support is not a declaration of visual acceptance."
+    ]
+  },
+  {
+    "index": "02",
+    "sha256": "bfd838a7cb64cbe3385640e57ccc7b5ea354743c9b2ddc3825f1ffa3351b3e4b",
+    "canvas": [
+      1024,
+      1536
+    ],
+    "controls": [
+      {
+        "source": [
+          323,
+          570
+        ],
+        "target": [
+          461,
+          351
+        ],
+        "transformed": [
+          460.21516794156554,
+          350.5912894691436
+        ],
+        "nearest_actual_alpha40": {
+          "xy": [
+            460,
+            351
+          ],
+          "distance": 0.4618891004456375,
+          "alpha": 241
+        }
+      },
+      {
+        "source": [
+          516,
+          648
+        ],
+        "target": [
+          493,
+          364
+        ],
+        "transformed": [
+          494.58988755967107,
+          364.47559239661814
+        ],
+        "nearest_actual_alpha40": {
+          "xy": [
+            495,
+            364
+          ],
+          "distance": 0.6279970871218566,
+          "alpha": 116
+        }
+      },
+      {
+        "source": [
+          744,
+          645
+        ],
+        "target": [
+          536,
+          364
+        ],
+        "transformed": [
+          535.1949444987634,
+          363.9331181342382
+        ],
+        "nearest_actual_alpha40": {
+          "xy": [
+            535,
+            364
+          ],
+          "distance": 0.2060983783679763,
+          "alpha": 158
+        }
+      }
+    ],
+    "all_actual_support_within2": true,
+    "notes": [
+      "Source3 controls are actual native hair support pixels, paired similarity only.",
+      "Original outer brow tails are partly hidden by head hair; matching targets use visible upper body and inner head ends.",
+      "Native alpha retained through premultiplied area resampling, no skin underpaint introduced by code.",
+      "Geometric support is not a declaration of visual acceptance."
+    ]
+  }
+]

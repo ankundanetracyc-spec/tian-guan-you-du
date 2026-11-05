@@ -1,0 +1,69 @@
+{
+  "gender": "male",
+  "part": "hair_front",
+  "index": 2,
+  "tool": "built-in image_gen",
+  "source": "source/front02_raw.png",
+  "source_sha256": "fef977ea6dccacf6ef39c297208bf3b969dfa0760e64d587a191d9a75b4191ba",
+  "output": "male/hair_front/02.png",
+  "output_sha256": "d224c2664be469b04a817b8fca808ff38206924d3af517b8b174887748ac6369",
+  "source_control_record": "source/front02_measured_controls.json",
+  "target_artwork": "source/front_reference_02_placed.png",
+  "target_artwork_sha256": "83aabfbe939ece281d68d9a5123b16482658bbf2b69d6e4c9413918a9dad5e1f",
+  "source_controls": [
+    [
+      517,
+      278
+    ],
+    [
+      418,
+      415
+    ],
+    [
+      616,
+      415
+    ]
+  ],
+  "target_controls": [
+    [
+      517,
+      283
+    ],
+    [
+      417,
+      415
+    ],
+    [
+      610,
+      415
+    ]
+  ],
+  "actual_noncollinear_controls": true,
+  "source_control_triangle_double_area": 27126,
+  "transform": {
+    "a": 0.9703666030058955,
+    "b": 0.009953915137424246,
+    "tx": 16.663445570040814,
+    "ty": 7.465093830440878,
+    "uniform_scale": 0.9704176547527176,
+    "rotation_degrees": 0.5877132650159139
+  },
+  "control_residuals_px": [
+    1.5560431627861842,
+    1.3283470926733483,
+    1.3283470926732095
+  ],
+  "maximum_control_residual_px": 1.5560431627861842,
+  "measured_control_check_pass": true,
+  "sampling": "Whole-layer similarity, premultiplied colour source-area integration using resample_rgba.cjs; no local warp, no pigment edits.",
+  "scope": "Three selected actual forehead-opening support controls; this does not certify every hair strand or all future mix combinations.",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "source_visual_reference": "new v5 master and original user triptych; rejected male v3/v4 artwork not used as a source",
+  "provisional_missing_new_parts": [
+    "hair_back/02",
+    "eyebrows/02"
+  ]
+}

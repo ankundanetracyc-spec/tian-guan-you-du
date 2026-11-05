@@ -1,0 +1,11 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Paint a brand-new isolated PAIR of male eyebrows for a faithful modular gongbi/watercolor portrait restoration. Input1 supplies the exact shape of the LEFT ORIGINAL MAN'S eyebrow pair; faithfully redraw those brows, never reuse or extract old generated artwork. Input2 is the newly restored portrait master: use its warm charcoal hair pigment, subtle matte brush texture and fine strand softness ONLY, not its thin style03 brow shape. Style01 is natural and gently straight, moderately full, subtly sloping down toward the inner heads, with distinct individual oblique short hairs and slender tapered outer tails. Keep the original natural minor left-right asymmetry, no forced mirror clone. Do not make an angry sharply arched sword brow, heavy dark block, powder makeup stencil, laminated bar, silver-grey caterpillar, or barely visible hairline. Moderate original density with small genuine gaps between the fine hairs; no broad pale highlights. Deep WARM charcoal brown-black with fine natural texture, consistent with the restored master, not black ink rectangles. Composition: a single square transparent PNG, both brows together at native large illustration resolution. On a nominal1254x1254 square, left brow spans about x140..540, right x740..1140; center separation about600, total visible span about1000. Outer tips near y585 and inner heads near y620 create only a gentle tilt; hair body thickness around45..60 native pixels and tapers gracefully. All margins and all space between the two brows are truly transparent. No eyes, face, forehead, skin-colored underpaint, foundation patch, nose, hairline, head, whole portrait, background, checkerboard, label or text. Output ONLY the freshly painted complete eyebrow pair with native clean alpha around individual hairs.",
+  "inputs": [
+    "res://mods/appearance/portrait_male_regenerated_20261104_v3/source/face_detail_01.png",
+    "source/master03_raw.png"
+  ],
+  "raw": "source/brow01_raw.png",
+  "source_is_new_native_artwork": true,
+  "source_is_not_old_brow_or_original_pixel_cutout": true
+}

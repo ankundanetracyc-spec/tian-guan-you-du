@@ -1,0 +1,10 @@
+{
+  "tool": "built-in image_gen",
+  "reason": "Initial full-layer registration of selected forehead/side-opening guides exceeded the 2px guide check; native repaint of right inner strands rather than local program warping.",
+  "references": [
+    "source/front02_raw.png",
+    "source/front_reference_02_placed.png",
+    "source/master03_registered.png"
+  ],
+  "prompt": "Precise transparent hair edit of image1, which is our new second-style front hair painting. Keep its exact 1024x1536 canvas, all crown and outer hair silhouette, pigment and fine strand brushwork. Image2 is the original middle man's placed portrait and is the authoritative shape/position guide; image3 is the new dark-haired material master.\n\nCorrect only the inner face-framing strand placement by naturally repainting the strands, so the forehead and cheek opening matches image2 instead of being too wide on the viewer RIGHT. On image1's native canvas: central inner hairline at (517,281) should meet (517,283); at y405 the left inner hair support is x417 and should meet x419, while the right inner hair support is x618 and should meet x606. At y415 the right inner edge similarly moves LEFT from x619 to about x610. Gently extend these right-side front temple strands inward by about 8-12 pixels through y370..435, with smooth transitions above and below. This is a small REAL PAINTED shape correction to the hair, not stretching or shifting the image, no widened outer head, no ear hole or skin patch. Preserve complete rounded forehead crown and tidy swept-back center part, natural narrow long front locks, dark charcoal fine hair texture. Do not add bun, wrap, back curtain or any skin/ears/eyes/eyebrows/robe/background. Keep image2's exact head size and current overall placement. Entire face/neck remains truly alpha-zero, except the corrected hair edge. Transparent background only."
+}

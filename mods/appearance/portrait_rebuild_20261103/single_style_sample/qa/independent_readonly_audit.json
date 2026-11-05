@@ -1,0 +1,536 @@
+{
+  "status": "single_sample_source_pixel_features_and_local_hairline_under_user_review",
+  "parts": {
+    "eyebrows": {
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "0365039042cbf66dc869b1777f1c7c40e8d2cbe89c86a80b11d2c34c8e45bed5",
+      "bbox": [
+        436,
+        348,
+        607,
+        368
+      ],
+      "component_sizes": [
+        718,
+        632
+      ]
+    },
+    "eyes": {
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "5895bc986f6d5d3e86ce31adbd3163691ad7916aeb41d8c17b53b48f8042532c",
+      "bbox": [
+        426,
+        361,
+        614,
+        398
+      ],
+      "component_sizes": [
+        1914,
+        1907,
+        1
+      ]
+    },
+    "face_shape": {
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "769a4ad743391d62c0053b489166e72d28c9eaec2d02d98c091f0ce70134b4a5",
+      "bbox": [
+        331,
+        208,
+        706,
+        727
+      ],
+      "component_sizes": [
+        106954
+      ]
+    },
+    "hair_back": {
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "ac50fa5565ed842d7f9770f8b9a4e2d74ae73b01bd78777050884876cdccc143",
+      "bbox": [
+        219,
+        46,
+        810,
+        977
+      ],
+      "component_sizes": [
+        336250,
+        18,
+        15,
+        11,
+        10,
+        9,
+        9,
+        7
+      ]
+    },
+    "hair_front": {
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "4f39b17acbbfbf0b33bd3d2de4241cc30d6f7befb6f0d3488a1e5595c64884e0",
+      "bbox": [
+        0,
+        23,
+        986,
+        1520
+      ],
+      "component_sizes": [
+        124859,
+        137,
+        15,
+        8,
+        7,
+        7,
+        7,
+        6
+      ]
+    },
+    "mouth": {
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "bf84b1e940a888a9a09e36ea2bc7cceb222f7411a49ea025aa37b63091e1cd4d",
+      "bbox": [
+        485,
+        470,
+        555,
+        506
+      ],
+      "component_sizes": [
+        1633,
+        1,
+        1,
+        1
+      ]
+    },
+    "nose": {
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sha256": "ed35603d62abfb2811bf8d9b29333da23d69f7c2627f9a35525571db50eedce0",
+      "bbox": [
+        495,
+        404,
+        543,
+        465
+      ],
+      "component_sizes": [
+        1831,
+        3,
+        1,
+        1,
+        1
+      ]
+    }
+  },
+  "face_source_sha256": "769a4ad743391d62c0053b489166e72d28c9eaec2d02d98c091f0ce70134b4a5",
+  "face_source_equal_bytes": true,
+  "rear_hair_enclosed_holes_alpha128": {
+    "count": 110,
+    "largest": 6,
+    "total_pixels": 158,
+    "center_face_alpha": [
+      253,
+      253,
+      253,
+      253,
+      253
+    ]
+  },
+  "front_hair_warm_pixel_candidates": {
+    "count": 1191,
+    "bbox": [
+      418,
+      187,
+      669,
+      572
+    ],
+    "method": "R>B+14 and R>120 and alpha>=32; only a color heuristic"
+  },
+  "coordinate_evidence": {
+    "origin": "All layers composited unshifted at (0,0), scale 1 on a 1024x1536 canvas. Canvas compatibility is verified; a complete registration scaffold is absent, so full multi-point residual certification is unverified.",
+    "pupils": [
+      {
+        "side": "left",
+        "measured": [
+          465.0584072919165,
+          376.19525065963063
+        ],
+        "rig": [
+          464,
+          379
+        ],
+        "roi": [
+          453,
+          374,
+          475,
+          389
+        ],
+        "measurement": "Dark-core weighted center, gray<75",
+        "distance_px": 2.9978066745346474,
+        "caveat": "Pigment estimate supports visual placement; it is not a source-scaffold control point and is not full registration certification."
+      },
+      {
+        "side": "right",
+        "measured": [
+          573.2245865758755,
+          376.26325389105057
+        ],
+        "rig": [
+          574,
+          379
+        ],
+        "roi": [
+          563,
+          374,
+          585,
+          389
+        ],
+        "measurement": "Dark-core weighted center, gray<75",
+        "distance_px": 2.8444762686938265,
+        "caveat": "Pigment estimate supports visual placement; it is not a source-scaffold control point and is not full registration certification."
+      }
+    ],
+    "mouth": {
+      "side": "center",
+      "measured": [
+        518.5251247576676,
+        482.96855107683376
+      ],
+      "rig": [
+        519,
+        483
+      ],
+      "roi": [
+        507,
+        479,
+        531,
+        488
+      ],
+      "measurement": "Dark pigment weighted center in fixed ROI",
+      "distance_px": 0.47591546575892346,
+      "caveat": "Pigment estimate supports visual placement; it is not a source-scaffold control point and is not full registration certification."
+    },
+    "eyebrows": [
+      {
+        "side": "left",
+        "measured": [
+          457.01057128958297,
+          355.2563196136232
+        ],
+        "rig": [
+          457,
+          354
+        ],
+        "roi": [
+          455,
+          340,
+          460,
+          365
+        ],
+        "measurement": "Dark pigment weighted center in fixed ROI",
+        "distance_px": 1.2563640888443806,
+        "caveat": "Pigment estimate supports visual placement; it is not a source-scaffold control point and is not full registration certification."
+      },
+      {
+        "side": "right",
+        "measured": [
+          582.0262193120396,
+          354.160660048186
+        ],
+        "rig": [
+          582,
+          353
+        ],
+        "roi": [
+          580,
+          340,
+          585,
+          365
+        ],
+        "measurement": "Dark pigment weighted center in fixed ROI",
+        "distance_px": 1.160956157561071,
+        "caveat": "Pigment estimate supports visual placement; it is not a source-scaffold control point and is not full registration certification."
+      }
+    ],
+    "pupil_measurement_sensitivity": {
+      "alternate_dark_threshold": 55,
+      "alternate_rois": [
+        [
+          455,
+          365,
+          474,
+          392
+        ],
+        [
+          565,
+          365,
+          584,
+          392
+        ]
+      ],
+      "alternate_centers": [
+        [
+          463.9452674461854,
+          375.1149700238086
+        ],
+        [
+          574.5824662860031,
+          375.4252378132597
+        ]
+      ],
+      "interpretation": "Source eye controls were transformed to the declared rig targets, but the measured dark pupil cores sit roughly 3 to 4 pixels above rig y379. These pigment centroids depend on ROI and threshold; do not substitute declared targets for actual measurement or claim full three-point certification."
+    }
+  },
+  "visual_observations": {
+    "ear_roi": "Rechecked current locally lowered front-hair ear ROI x380..690,y300..600 enlarged 3x on dark background. No recognizable ear contour or skin fragment seen; fixed y>=355 pixel equality also holds.",
+    "front_hairline": "Viewed x400..640,y160..320 at 4x. Warm highlights are concentrated in the center part/root, with no obvious detached skin patch. Complete skull cap and forehead join look covered in the unshifted assembly.",
+    "front_chest_locks": "Both isolated front locks are continuous from crown/temples through the chest to roughly y940..951; no shoulder-edge truncation visible.",
+    "rear_hair": "Isolated rear layer is a continuous filled head/neck/shoulder curtain. Center alpha253 at sampled y300,379,450,520,600; no large face hole found.",
+    "style": "Previous generated eye/lip style observations are superseded by the source-pixel extraction; new appearance requires user review.",
+    "nose": "Revised source-pixel extraction inspected on unchanged original face. Strong prior orange-red wash reduced, with retained local bridge/tip/nasal strokes. Actual dark-stroke centers and alpha limits recorded separately. User review remains pending."
+  },
+  "front_hair_alpha_bounds": {
+    "1": [
+      0,
+      23,
+      986,
+      1520
+    ],
+    "8": [
+      341,
+      98,
+      703,
+      952
+    ],
+    "16": [
+      342,
+      99,
+      702,
+      951
+    ],
+    "32": [
+      342,
+      99,
+      702,
+      947
+    ],
+    "64": [
+      342,
+      99,
+      702,
+      944
+    ],
+    "128": [
+      343,
+      100,
+      701,
+      936
+    ],
+    "200": [
+      344,
+      101,
+      700,
+      931
+    ]
+  },
+  "needed_changes_or_decisions": [
+    "Clean very low-alpha stray front-hair pixels beyond the actual silhouette without cropping the full chest strands. Alpha1 bbox is [0,23,986,1520]; alpha8 bbox is [341,98,703,952].",
+    "Full three-point registration cannot be certified from declared rig targets alone; actual source scaffold evidence is unavailable.",
+    "Revised nose is ready for user review as part of this isolated single sample; no visual approval or full three-point certification is claimed.",
+    "Local sample hairline y277 overrides original rig hairline257 for this sample; user visual review pending.",
+    "New source-extracted pupil dark-core measurements sit about 3 to 4px above rig eye y379; inspect visually rather than asserting target equality."
+  ],
+  "not_verified": [
+    "User style approval",
+    "Complete multi-point source control registration",
+    "Semantic skin absence for every front-hair pixel",
+    "Runtime selection/UI installation (sample remains isolated)",
+    "Original clothing embedded hair remains a separate concern"
+  ],
+  "nose_revision_audit": {
+    "sha256": "ed35603d62abfb2811bf8d9b29333da23d69f7c2627f9a35525571db50eedce0",
+    "size": [
+      1024,
+      1536
+    ],
+    "mode": "RGBA",
+    "bbox": [
+      495,
+      404,
+      543,
+      465
+    ],
+    "alpha_max": 228,
+    "alpha_nonzero_pixels": 1837,
+    "alpha_ge240_pixels": 0,
+    "transparent_rgb_nonzero_pixels": 0,
+    "source_hash_matches_record": true,
+    "measurements": {
+      "nostril_left": {
+        "measured_dark_stroke_center": [
+          510.9709029184953,
+          451.3624760313329
+        ],
+        "roi": [
+          500,
+          446,
+          518,
+          461
+        ],
+        "rig": [
+          509,
+          453
+        ],
+        "delta_from_rig": [
+          1.9709029184953124,
+          -1.6375239686670966
+        ],
+        "distance_px": 2.56240962027787
+      },
+      "nostril_right": {
+        "measured_dark_stroke_center": [
+          527.2894553342582,
+          451.5966277317532
+        ],
+        "roi": [
+          520,
+          446,
+          538,
+          461
+        ],
+        "rig": [
+          528,
+          453
+        ],
+        "delta_from_rig": [
+          -0.7105446657418497,
+          -1.4033722682468124
+        ],
+        "distance_px": 1.5729995058163242
+      },
+      "rig_nose_tip": {
+        "point": [
+          519,
+          446
+        ],
+        "alpha": 68,
+        "face_rgb": [
+          231,
+          205,
+          188
+        ],
+        "composited_rgb": [
+          204,
+          163,
+          145
+        ],
+        "rgb_delta": [
+          -26.93,
+          -42.13,
+          -43.2
+        ]
+      },
+      "rig_bridge": {
+        "point": [
+          519,
+          409
+        ],
+        "alpha": 2,
+        "face_rgb": [
+          231,
+          206,
+          188
+        ],
+        "composited_rgb": [
+          230,
+          205,
+          188
+        ],
+        "rgb_delta": [
+          -0.91,
+          -0.5,
+          0.2
+        ]
+      }
+    },
+    "method": "Measure nostril dark stroke centers from actual alpha-composited pigment minus unchanged face base, fixed ROIs, negative mean RGB difference >12. No claimed source control residual.",
+    "color_assessment": "Viewed 2x actual head and 4x isolated feature pigment on light background. Previous strong orange-red wash is visibly reduced; bridge, rounded tip, nostril strokes and faint local volume remain. No opaque skin patch (alpha max and >=240 count reported), but removal estimates source skin and does not establish whole-source pixel identity.",
+    "source_limitations": "Underlying source skin is estimated from surrounding skin; not a claim of whole-image pixel identity.",
+    "tip_limitation": "The recorded (519,446) is a transform target. Pigment at this point is sampled, not treated as a measured tip center; tip shape/highlight is diffuse and not independently certified."
+  },
+  "hairline_local_revision": {
+    "before_y": 255,
+    "after_y": 277,
+    "fixed_region_checks": {
+      "above175": {
+        "changed_visible_pixels": 0,
+        "changed_alpha_pixels": 0
+      },
+      "below355": {
+        "changed_visible_pixels": 0,
+        "changed_alpha_pixels": 0
+      }
+    },
+    "changed_visible_bbox": [
+      364,
+      177,
+      673,
+      355
+    ],
+    "actual_sample_hairline_override": [
+      518,
+      277
+    ],
+    "original_rig_hairline_y": 257,
+    "scope": "This sample local inner edge only; rig and all other parts unmodified."
+  },
+  "source_core_checks": {
+    "eyes": {
+      "source_sha_matches": true,
+      "source_core_pixel_count": 1179,
+      "core_alpha_min": 255,
+      "core_source_rgb_max_channel_error": 0,
+      "core_source_rgb_mean_error": 0.0,
+      "caveat": "Strict warped coverage>=0.9999 compares exported RGB against independently resampled source core, not source-control certification; eyebrow has no opaque source core."
+    },
+    "eyebrows": {
+      "source_sha_matches": true,
+      "source_core_pixel_count": 0,
+      "core_alpha_min": null,
+      "core_source_rgb_max_channel_error": null,
+      "core_source_rgb_mean_error": null,
+      "caveat": "Strict warped coverage>=0.9999 compares exported RGB against independently resampled source core, not source-control certification; eyebrow has no opaque source core."
+    },
+    "mouth": {
+      "source_sha_matches": true,
+      "source_core_pixel_count": 358,
+      "core_alpha_min": 255,
+      "core_source_rgb_max_channel_error": 0,
+      "core_source_rgb_mean_error": 0.0,
+      "caveat": "Strict warped coverage>=0.9999 compares exported RGB against independently resampled source core, not source-control certification; eyebrow has no opaque source core."
+    }
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "status": "independent_geometry_candidates_not_installed_not_full_restoration",
+  "records": [
+    {
+      "variant": 2,
+      "part": "hair_front",
+      "source": "mods\\appearance\\portrait_rebuild_20261103\\final\\female\\hair_front\\02.png",
+      "source_sha256": "4dd9815fdae5a4a26882ea08618665a1faba6b8c67aaf17fc029d3a94cfbd1e4",
+      "candidate": "mods\\appearance\\portrait_rebuild_20261103\\alignment_skin_revision\\female\\hair_front\\02.png",
+      "matrix": [
+        [
+          0.9399999976158142,
+          0.0,
+          34.13999938964844
+        ],
+        [
+          0.0,
+          0.9399999976158142,
+          21.299999237060547
+        ]
+      ],
+      "uniform_scale": 0.94,
+      "delta_about_anchor": [
+        3,
+        6
+      ],
+      "anchor": [
+        519,
+        255
+      ],
+      "color": "No tone/color operation; premultiplied-alpha sampling for geometric transform only",
+      "inner_hairline_source": "Original pre22px-lowering registered front candidate",
+      "reason": "Front02 reduce lateral bouffant and align center; back02 remains unscaled to preserve low bun/neck and shifts down10px"
+    },
+    {
+      "variant": 2,
+      "part": "hair_back",
+      "source": "mods\\appearance\\ink_three_variants_20261004\\female\\hair_back\\02.png",
+      "source_sha256": "e7669465be8188ea9fa5598977f0a40ca432912129d0e1408b27d78454f3e764",
+      "candidate": "mods\\appearance\\portrait_rebuild_20261103\\alignment_skin_revision\\female\\hair_back\\02.png",
+      "matrix": [
+        [
+          1.0,
+          0.0,
+          3.0
+        ],
+        [
+          0.0,
+          1.0,
+          10.0
+        ]
+      ],
+      "uniform_scale": 1,
+      "delta_about_anchor": [
+        3,
+        10
+      ],
+      "anchor": [
+        519,
+        255
+      ],
+      "color": "No tone/color operation; premultiplied-alpha sampling for geometric transform only",
+      "inner_hairline_source": null,
+      "reason": "Front02 reduce lateral bouffant and align center; back02 remains unscaled to preserve low bun/neck and shifts down10px"
+    },
+    {
+      "variant": 3,
+      "part": "hair_front",
+      "source": "mods\\appearance\\portrait_rebuild_20261103\\final\\female\\hair_front\\03.png",
+      "source_sha256": "55157316a36efd4062b32b5db8364b20f45f7c3540908a2110430291e65f19db",
+      "candidate": "mods\\appearance\\portrait_rebuild_20261103\\alignment_skin_revision\\female\\hair_front\\03.png",
+      "matrix": [
+        [
+          0.9599999785423279,
+          0.0,
+          18.760000228881836
+        ],
+        [
+          0.0,
+          0.9599999785423279,
+          13.199999809265137
+        ]
+      ],
+      "uniform_scale": 0.96,
+      "delta_about_anchor": [
+        -2,
+        3
+      ],
+      "anchor": [
+        519,
+        255
+      ],
+      "color": "No tone/color operation; premultiplied-alpha sampling for geometric transform only",
+      "inner_hairline_source": "Original pre22px-lowering registered front candidate",
+      "reason": "Reduce moderate excess width and move silhouette center left2px"
+    },
+    {
+      "variant": 3,
+      "part": "hair_back",
+      "source": "mods\\appearance\\ink_three_variants_20261004\\female\\hair_back\\03.png",
+      "source_sha256": "2a83bbc3a2d91ed0a60a25dae4e1731cf15a950305cf308501197c8fc75f33fe",
+      "candidate": "mods\\appearance\\portrait_rebuild_20261103\\alignment_skin_revision\\female\\hair_back\\03.png",
+      "matrix": [
+        [
+          0.9599999785423279,
+          0.0,
+          18.760000228881836
+        ],
+        [
+          0.0,
+          0.9599999785423279,
+          13.199999809265137
+        ]
+      ],
+      "uniform_scale": 0.96,
+      "delta_about_anchor": [
+        -2,
+        3
+      ],
+      "anchor": [
+        519,
+        255
+      ],
+      "color": "No tone/color operation; premultiplied-alpha sampling for geometric transform only",
+      "inner_hairline_source": null,
+      "reason": "Reduce moderate excess width and move silhouette center left2px"
+    }
+  ],
+  "limitations": [
+    "References registered from correct actual source pupils, not old329 vertical controls.",
+    "02/03 candidate front changes are uniform scale/translation only; no local stretches. Generated strand design is still different from reference.",
+    "Back02 translated separately from front to preserve original low bun scale; requires all9pair view before installation.",
+    "Face, skin, features, clothing and active assets untouched.",
+    "01 is being handled by original-pixel extraction separately."
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "part": "hair_back",
+  "index": 2,
+  "native_new_generation": true,
+  "reused_rejected_v3_v4_shape": false,
+  "source": "source/back02_raw.png",
+  "source_sha256": "a0e212c4a5ac5ccb310c40c2e9fbf0a0395cbe4f4e2fe7c007bb1b1e605e7192",
+  "source_canvas": [
+    1024,
+    1536
+  ],
+  "source_points": [
+    [
+      531,
+      80
+    ],
+    [
+      306,
+      437
+    ],
+    [
+      721,
+      437
+    ]
+  ],
+  "source_point_alpha": [
+    249,
+    241,
+    244
+  ],
+  "source_point_names": [
+    "upper_right_bun_crest_supported_pixel",
+    "left_main_posterior_cap_rim_y437",
+    "right_main_posterior_cap_rim_y437"
+  ],
+  "target_points": [
+    [
+      531,
+      88
+    ],
+    [
+      365,
+      350
+    ],
+    [
+      670,
+      350
+    ]
+  ],
+  "source_measurement": "Manually inspected actual native painted support and main posterior cap rim, alpha>=230; source coordinates were measured from the delivered PNG, not copied from a generation prompt.",
+  "target_scaffold": "The upper-right crest follows the right-hand high-bun lobe; it is not the center axis of the whole head. After native wrap-height revision, actual cap rim and crest were remeasured; the generator also changed small contour details, so old controls were not reused. Lateral posterior cap targets follow the new master envelope behind front hair. These are hidden-underpainting design targets, not independently measured visible anatomy.",
+  "transform": {
+    "a": 0.7344642773738538,
+    "b": 0.0009127212716601081,
+    "tx": 140.85846398156647,
+    "ty": 28.63301988136567,
+    "scale": 0.7344648444945592,
+    "rotation_degrees": 0.07120162467939284
+  },
+  "residuals": [
+    0.2479442868202606,
+    0.24161837293427935,
+    0.25211940064666055
+  ],
+  "maximum_residual_px": 0.25211940064666055,
+  "residual_scope": "Fit of three posterior-underpainting design controls only. This does not certify visible anatomical alignment or visual acceptance.",
+  "local_warp": false,
+  "colour_edit_by_script": false,
+  "antialiasing": "source/resample_rgba.cjs whole-layer area-integrated premultiplied reduction",
+  "source_stats": {
+    "alpha40_bbox": [
+      213,
+      71,
+      795,
+      1499
+    ],
+    "nonzero_border_pixel_count": 0
+  },
+  "output_stats": {
+    "alpha40_bbox": [
+      297,
+      81,
+      723,
+      1130
+    ],
+    "nonzero_border_pixel_count": 0
+  },
+  "output": "male/hair_back/02.png",
+  "output_sha256": "8a7e8447503059b9084e1d182b8c53b208569632f0eab0de84e585a4635c7d8d",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "transparent_background": "Native alpha retained through premultiplied antialiasing; no threshold extraction or background alpha removal.",
+  "visual_status": "Candidate for independent front-layer pairing and original-reference comparison; awaiting parent visual review."
+}

@@ -1,0 +1,1822 @@
+{
+  "user_authorized_original_pixel_extraction": true,
+  "status": "isolated_review_assets_not_installed",
+  "face": "E:\\stacklands\\mods\\appearance\\ink_three_variants_20261004\\female\\face_shape\\04.png",
+  "face_sha256": "769a4ad743391d62c0053b489166e72d28c9eaec2d02d98c091f0ce70134b4a5",
+  "rig": "E:\\stacklands\\mods\\appearance\\new_ink_hair_20261003_v1\\rig\\portrait_rig.json",
+  "rig_sha256": "35170a563821b96721ab197778633cfa34aa9f877132fb70b84de5e08a87d624",
+  "output_count": 12,
+  "records": [
+    {
+      "part": "eyes",
+      "variant": 1,
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\source\\female_hair_final\\reference_01.png",
+      "source_sha256": "b007f8b80c15dd723ee66c4801b4626c8e1437ab5bf19dfc0dae324984236739",
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\three_style_parts\\female\\eyes\\01.png",
+      "sha256": "d1d57a82ba87f3cd1eefc81eda08932432e77ce08dd000dc7fabf1e8b8555fcd",
+      "spec": {
+        "box": [
+          212,
+          306,
+          412,
+          352
+        ],
+        "supports": [
+          [
+            [
+              222,
+              324
+            ],
+            [
+              234,
+              314
+            ],
+            [
+              253,
+              311
+            ],
+            [
+              274,
+              314
+            ],
+            [
+              287,
+              326
+            ],
+            [
+              295,
+              339
+            ],
+            [
+              277,
+              346
+            ],
+            [
+              252,
+              347
+            ],
+            [
+              233,
+              338
+            ]
+          ],
+          [
+            [
+              332,
+              339
+            ],
+            [
+              339,
+              326
+            ],
+            [
+              353,
+              314
+            ],
+            [
+              374,
+              311
+            ],
+            [
+              393,
+              315
+            ],
+            [
+              404,
+              324
+            ],
+            [
+              393,
+              339
+            ],
+            [
+              374,
+              347
+            ],
+            [
+              351,
+              346
+            ]
+          ]
+        ],
+        "cores": [
+          [
+            [
+              226,
+              325
+            ],
+            [
+              239,
+              322
+            ],
+            [
+              251,
+              319
+            ],
+            [
+              263,
+              319
+            ],
+            [
+              275,
+              324
+            ],
+            [
+              286,
+              333
+            ],
+            [
+              287,
+              335
+            ],
+            [
+              271,
+              339
+            ],
+            [
+              255,
+              340
+            ],
+            [
+              242,
+              336
+            ],
+            [
+              234,
+              331
+            ]
+          ],
+          [
+            [
+              338,
+              335
+            ],
+            [
+              348,
+              324
+            ],
+            [
+              361,
+              319
+            ],
+            [
+              374,
+              319
+            ],
+            [
+              388,
+              322
+            ],
+            [
+              400,
+              325
+            ],
+            [
+              390,
+              332
+            ],
+            [
+              382,
+              337
+            ],
+            [
+              368,
+              340
+            ],
+            [
+              353,
+              339
+            ]
+          ]
+        ],
+        "controls": [
+          [
+            259.183,
+            325.313
+          ],
+          [
+            367.106,
+            325.374
+          ]
+        ],
+        "targets": [
+          [
+            464,
+            379
+          ],
+          [
+            574,
+            379
+          ]
+        ],
+        "feather": 3
+      },
+      "uniform_similarity_matrix_on_crop": [
+        [
+          1.0192451477050781,
+          0.0005761394277215004,
+          415.8978271484375
+        ],
+        [
+          -0.0005761394277215004,
+          1.0192451477050781,
+          359.3424987792969
+        ]
+      ],
+      "uniform_scale": 1.0192453105396104,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "bbox": [
+        426,
+        364,
+        612,
+        401
+      ],
+      "opaque_pixels": 1598,
+      "nonzero_pixels": 3755,
+      "method": "Original feature core pixels plus source skin-relative edge pigment; same original face04 underneath. Nose preserves source nose-specific light/shadow without an opaque skin base."
+    },
+    {
+      "part": "eyebrows",
+      "variant": 1,
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\source\\female_hair_final\\reference_01.png",
+      "source_sha256": "b007f8b80c15dd723ee66c4801b4626c8e1437ab5bf19dfc0dae324984236739",
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\three_style_parts\\female\\eyebrows\\01.png",
+      "sha256": "0365039042cbf66dc869b1777f1c7c40e8d2cbe89c86a80b11d2c34c8e45bed5",
+      "spec": {
+        "box": [
+          218,
+          285,
+          407,
+          314
+        ],
+        "supports": [
+          [
+            [
+              230,
+              296
+            ],
+            [
+              242,
+              292
+            ],
+            [
+              264,
+              293
+            ],
+            [
+              284,
+              298
+            ],
+            [
+              295,
+              308
+            ],
+            [
+              279,
+              309
+            ],
+            [
+              258,
+              304
+            ],
+            [
+              239,
+              302
+            ],
+            [
+              229,
+              300
+            ]
+          ],
+          [
+            [
+              334,
+              307
+            ],
+            [
+              344,
+              300
+            ],
+            [
+              361,
+              294
+            ],
+            [
+              381,
+              293
+            ],
+            [
+              397,
+              296
+            ],
+            [
+              398,
+              300
+            ],
+            [
+              382,
+              302
+            ],
+            [
+              364,
+              304
+            ],
+            [
+              343,
+              310
+            ]
+          ]
+        ],
+        "cores": [],
+        "controls": [
+          [
+            249,
+            298
+          ],
+          [
+            375,
+            298
+          ]
+        ],
+        "targets": [
+          [
+            457,
+            354
+          ],
+          [
+            582,
+            353
+          ]
+        ],
+        "feather": 2
+      },
+      "uniform_similarity_matrix_on_crop": [
+        [
+          0.9920634627342224,
+          0.007936508394777775,
+          426.1428527832031
+        ],
+        [
+          -0.007936508394777775,
+          0.9920634627342224,
+          341.3492126464844
+        ]
+      ],
+      "uniform_scale": 0.9920952082626527,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "bbox": [
+        436,
+        348,
+        607,
+        368
+      ],
+      "opaque_pixels": 0,
+      "nonzero_pixels": 1350,
+      "method": "Original feature core pixels plus source skin-relative edge pigment; same original face04 underneath. Nose preserves source nose-specific light/shadow without an opaque skin base."
+    },
+    {
+      "part": "mouth",
+      "variant": 1,
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\source\\female_hair_final\\reference_01.png",
+      "source_sha256": "b007f8b80c15dd723ee66c4801b4626c8e1437ab5bf19dfc0dae324984236739",
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\three_style_parts\\female\\mouth\\01.png",
+      "sha256": "bf84b1e940a888a9a09e36ea2bc7cceb222f7411a49ea025aa37b63091e1cd4d",
+      "spec": {
+        "box": [
+          272,
+          417,
+          355,
+          458
+        ],
+        "supports": [
+          [
+            [
+              280,
+              428
+            ],
+            [
+              295,
+              424
+            ],
+            [
+              307,
+              419
+            ],
+            [
+              314,
+              422
+            ],
+            [
+              322,
+              419
+            ],
+            [
+              336,
+              425
+            ],
+            [
+              348,
+              429
+            ],
+            [
+              346,
+              438
+            ],
+            [
+              331,
+              450
+            ],
+            [
+              313,
+              455
+            ],
+            [
+              297,
+              449
+            ],
+            [
+              282,
+              439
+            ]
+          ]
+        ],
+        "cores": [
+          [
+            [
+              283,
+              432
+            ],
+            [
+              296,
+              430
+            ],
+            [
+              307,
+              427
+            ],
+            [
+              314,
+              430
+            ],
+            [
+              322,
+              427
+            ],
+            [
+              334,
+              430
+            ],
+            [
+              343,
+              432
+            ],
+            [
+              334,
+              436
+            ],
+            [
+              324,
+              442
+            ],
+            [
+              312,
+              444
+            ],
+            [
+              301,
+              441
+            ],
+            [
+              290,
+              436
+            ]
+          ]
+        ],
+        "controls": [
+          [
+            282,
+            432
+          ],
+          [
+            344,
+            432
+          ]
+        ],
+        "targets": [
+          [
+            487,
+            483
+          ],
+          [
+            551,
+            483
+          ]
+        ],
+        "feather": 4
+      },
+      "uniform_similarity_matrix_on_crop": [
+        [
+          1.0322580337524414,
+          -0.0,
+          476.6773986816406
+        ],
+        [
+          0.0,
+          1.0322580337524414,
+          467.51611328125
+        ]
+      ],
+      "uniform_scale": 1.0322580337524414,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "bbox": [
+        485,
+        470,
+        555,
+        506
+      ],
+      "opaque_pixels": 552,
+      "nonzero_pixels": 1636,
+      "method": "Original feature core pixels plus source skin-relative edge pigment; same original face04 underneath. Nose preserves source nose-specific light/shadow without an opaque skin base."
+    },
+    {
+      "part": "nose",
+      "variant": 1,
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\source\\female_hair_final\\reference_01.png",
+      "source_sha256": "b007f8b80c15dd723ee66c4801b4626c8e1437ab5bf19dfc0dae324984236739",
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\three_style_parts\\female\\nose\\01.png",
+      "sha256": "9a0ab7858d68e81fd0ee82cb0ef1301f2ee3d5b64e7bc6c8c8750dba4b181590",
+      "spec": {
+        "center": [
+          313,
+          398
+        ],
+        "source_box": [
+          270,
+          344,
+          356,
+          426
+        ],
+        "polygon_offset_x": 0
+      },
+      "uniform_similarity_matrix_on_crop": [
+        [
+          1.0,
+          0.0,
+          476.0
+        ],
+        [
+          0.0,
+          1.0,
+          392.0
+        ]
+      ],
+      "uniform_scale": 1.0,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "bbox": [
+        494,
+        403,
+        542,
+        465
+      ],
+      "opaque_pixels": 0,
+      "nonzero_pixels": 1872,
+      "method": "Original feature core pixels plus source skin-relative edge pigment; same original face04 underneath. Nose preserves source nose-specific light/shadow without an opaque skin base."
+    },
+    {
+      "part": "eyes",
+      "variant": 2,
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\source\\female_hair_final\\reference_02.png",
+      "source_sha256": "24014af02ddfb74aba093c40e263112d7769cfa23f77683611cc5c140f085731",
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\three_style_parts\\female\\eyes\\02.png",
+      "sha256": "02168cc7007021adb42002627cb97c574f1bc3a3087d83741a7cdc6cef458ea5",
+      "spec": {
+        "box": [
+          201,
+          302,
+          403,
+          353
+        ],
+        "supports": [
+          [
+            [
+              211,
+              324
+            ],
+            [
+              217,
+              319
+            ],
+            [
+              221,
+              311
+            ],
+            [
+              239,
+              306
+            ],
+            [
+              256,
+              308
+            ],
+            [
+              271,
+              316
+            ],
+            [
+              286,
+              336
+            ],
+            [
+              283,
+              343
+            ],
+            [
+              262,
+              349
+            ],
+            [
+              241,
+              348
+            ],
+            [
+              222,
+              340
+            ],
+            [
+              216,
+              333
+            ],
+            [
+              213,
+              328
+            ]
+          ],
+          [
+            [
+              322,
+              337
+            ],
+            [
+              331,
+              322
+            ],
+            [
+              345,
+              310
+            ],
+            [
+              362,
+              306
+            ],
+            [
+              382,
+              311
+            ],
+            [
+              389,
+              318
+            ],
+            [
+              393,
+              324
+            ],
+            [
+              389,
+              329
+            ],
+            [
+              382,
+              341
+            ],
+            [
+              363,
+              349
+            ],
+            [
+              342,
+              348
+            ],
+            [
+              324,
+              342
+            ]
+          ]
+        ],
+        "cores": [
+          [
+            [
+              217,
+              325
+            ],
+            [
+              230,
+              319
+            ],
+            [
+              240,
+              315
+            ],
+            [
+              251,
+              315
+            ],
+            [
+              261,
+              319
+            ],
+            [
+              272,
+              326
+            ],
+            [
+              281,
+              335
+            ],
+            [
+              270,
+              338
+            ],
+            [
+              253,
+              342
+            ],
+            [
+              239,
+              340
+            ],
+            [
+              225,
+              334
+            ]
+          ],
+          [
+            [
+              328,
+              335
+            ],
+            [
+              340,
+              322
+            ],
+            [
+              352,
+              315
+            ],
+            [
+              362,
+              315
+            ],
+            [
+              374,
+              318
+            ],
+            [
+              389,
+              325
+            ],
+            [
+              379,
+              333
+            ],
+            [
+              367,
+              339
+            ],
+            [
+              351,
+              341
+            ],
+            [
+              337,
+              339
+            ]
+          ]
+        ],
+        "controls": [
+          [
+            246.754109829,
+            323.509327271
+          ],
+          [
+            355.991360142,
+            323.712280033
+          ]
+        ],
+        "targets": [
+          [
+            464,
+            379
+          ],
+          [
+            574,
+            379
+          ]
+        ],
+        "feather": 3
+      },
+      "uniform_similarity_matrix_on_crop": [
+        [
+          1.006978988647461,
+          0.0018707739654928446,
+          417.8863220214844
+        ],
+        [
+          -0.0018707739654928446,
+          1.006978988647461,
+          357.4261474609375
+        ]
+      ],
+      "uniform_scale": 1.0069807264157011,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "bbox": [
+        428,
+        361,
+        612,
+        405
+      ],
+      "opaque_pixels": 1982,
+      "nonzero_pixels": 4404,
+      "method": "Original feature core pixels plus source skin-relative edge pigment; same original face04 underneath. Nose preserves source nose-specific light/shadow without an opaque skin base."
+    },
+    {
+      "part": "eyebrows",
+      "variant": 2,
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\source\\female_hair_final\\reference_02.png",
+      "source_sha256": "24014af02ddfb74aba093c40e263112d7769cfa23f77683611cc5c140f085731",
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\three_style_parts\\female\\eyebrows\\02.png",
+      "sha256": "5b0c2767c3936a2356de249b1c451cc1065090cd8168dcd02d2dac50b679d833",
+      "spec": {
+        "box": [
+          203,
+          281,
+          402,
+          314
+        ],
+        "supports": [
+          [
+            [
+              218,
+              291
+            ],
+            [
+              229,
+              287
+            ],
+            [
+              244,
+              288
+            ],
+            [
+              264,
+              295
+            ],
+            [
+              277,
+              304
+            ],
+            [
+              281,
+              310
+            ],
+            [
+              266,
+              305
+            ],
+            [
+              247,
+              300
+            ],
+            [
+              229,
+              297
+            ],
+            [
+              217,
+              296
+            ]
+          ],
+          [
+            [
+              322,
+              309
+            ],
+            [
+              331,
+              299
+            ],
+            [
+              345,
+              292
+            ],
+            [
+              367,
+              287
+            ],
+            [
+              383,
+              290
+            ],
+            [
+              389,
+              295
+            ],
+            [
+              385,
+              299
+            ],
+            [
+              370,
+              298
+            ],
+            [
+              350,
+              301
+            ],
+            [
+              334,
+              306
+            ]
+          ]
+        ],
+        "cores": [],
+        "controls": [
+          [
+            237,
+            294
+          ],
+          [
+            363,
+            294
+          ]
+        ],
+        "targets": [
+          [
+            457,
+            354
+          ],
+          [
+            582,
+            353
+          ]
+        ],
+        "feather": 2
+      },
+      "uniform_similarity_matrix_on_crop": [
+        [
+          0.9920634627342224,
+          0.007936508394777775,
+          423.1666564941406
+        ],
+        [
+          -0.007936508394777775,
+          0.9920634627342224,
+          341.3730163574219
+        ]
+      ],
+      "uniform_scale": 0.9920952082626527,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "bbox": [
+        436,
+        346,
+        610,
+        371
+      ],
+      "opaque_pixels": 0,
+      "nonzero_pixels": 1348,
+      "method": "Original feature core pixels plus source skin-relative edge pigment; same original face04 underneath. Nose preserves source nose-specific light/shadow without an opaque skin base."
+    },
+    {
+      "part": "mouth",
+      "variant": 2,
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\source\\female_hair_final\\reference_02.png",
+      "source_sha256": "24014af02ddfb74aba093c40e263112d7769cfa23f77683611cc5c140f085731",
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\three_style_parts\\female\\mouth\\02.png",
+      "sha256": "4a0efe6311ee317ed68000ecb25d77d1265e4cf3b54ef5cf41886b930294b71d",
+      "spec": {
+        "box": [
+          261,
+          417,
+          345,
+          458
+        ],
+        "supports": [
+          [
+            [
+              269,
+              428
+            ],
+            [
+              284,
+              424
+            ],
+            [
+              296,
+              419
+            ],
+            [
+              303,
+              422
+            ],
+            [
+              311,
+              419
+            ],
+            [
+              325,
+              425
+            ],
+            [
+              337,
+              429
+            ],
+            [
+              335,
+              438
+            ],
+            [
+              320,
+              450
+            ],
+            [
+              302,
+              455
+            ],
+            [
+              286,
+              449
+            ],
+            [
+              271,
+              439
+            ]
+          ]
+        ],
+        "cores": [
+          [
+            [
+              273,
+              432
+            ],
+            [
+              286,
+              430
+            ],
+            [
+              297,
+              427
+            ],
+            [
+              303,
+              430
+            ],
+            [
+              311,
+              427
+            ],
+            [
+              324,
+              430
+            ],
+            [
+              334,
+              432
+            ],
+            [
+              324,
+              436
+            ],
+            [
+              314,
+              442
+            ],
+            [
+              302,
+              444
+            ],
+            [
+              291,
+              441
+            ],
+            [
+              280,
+              436
+            ]
+          ]
+        ],
+        "controls": [
+          [
+            272,
+            432
+          ],
+          [
+            335,
+            432
+          ]
+        ],
+        "targets": [
+          [
+            487,
+            483
+          ],
+          [
+            551,
+            483
+          ]
+        ],
+        "feather": 4
+      },
+      "uniform_similarity_matrix_on_crop": [
+        [
+          1.0158730745315552,
+          -0.0,
+          475.8254089355469
+        ],
+        [
+          0.0,
+          1.0158730745315552,
+          467.76190185546875
+        ]
+      ],
+      "uniform_scale": 1.0158730745315552,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "bbox": [
+        484,
+        470,
+        552,
+        506
+      ],
+      "opaque_pixels": 536,
+      "nonzero_pixels": 1604,
+      "method": "Original feature core pixels plus source skin-relative edge pigment; same original face04 underneath. Nose preserves source nose-specific light/shadow without an opaque skin base."
+    },
+    {
+      "part": "nose",
+      "variant": 2,
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\source\\female_hair_final\\reference_02.png",
+      "source_sha256": "24014af02ddfb74aba093c40e263112d7769cfa23f77683611cc5c140f085731",
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\three_style_parts\\female\\nose\\02.png",
+      "sha256": "b5de9652674999b0cde6dd7cffa549854cff0484a6f0e46e117731173344f553",
+      "spec": {
+        "center": [
+          302,
+          398
+        ],
+        "source_box": [
+          259,
+          344,
+          345,
+          426
+        ],
+        "polygon_offset_x": -11
+      },
+      "uniform_similarity_matrix_on_crop": [
+        [
+          1.0,
+          0.0,
+          476.0
+        ],
+        [
+          0.0,
+          1.0,
+          392.0
+        ]
+      ],
+      "uniform_scale": 1.0,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "bbox": [
+        493,
+        403,
+        542,
+        465
+      ],
+      "opaque_pixels": 7,
+      "nonzero_pixels": 1877,
+      "method": "Original feature core pixels plus source skin-relative edge pigment; same original face04 underneath. Nose preserves source nose-specific light/shadow without an opaque skin base."
+    },
+    {
+      "part": "eyes",
+      "variant": 3,
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\source\\female_hair_final\\reference_03.png",
+      "source_sha256": "3d1c0c2e322df479376f319447559a443a6382d54511635c54486e947cf5dc8b",
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\three_style_parts\\female\\eyes\\03.png",
+      "sha256": "7febfacecf5e7d0cb2085e196bc73b8d6e951d37a9f9700c1cf91e7e0a1c4e6a",
+      "spec": {
+        "box": [
+          199,
+          306,
+          402,
+          352
+        ],
+        "supports": [
+          [
+            [
+              210,
+              323
+            ],
+            [
+              220,
+              314
+            ],
+            [
+              240,
+              310
+            ],
+            [
+              257,
+              313
+            ],
+            [
+              272,
+              324
+            ],
+            [
+              282,
+              338
+            ],
+            [
+              274,
+              345
+            ],
+            [
+              254,
+              347
+            ],
+            [
+              235,
+              346
+            ],
+            [
+              219,
+              337
+            ],
+            [
+              210,
+              330
+            ]
+          ],
+          [
+            [
+              319,
+              339
+            ],
+            [
+              326,
+              326
+            ],
+            [
+              342,
+              313
+            ],
+            [
+              360,
+              310
+            ],
+            [
+              381,
+              314
+            ],
+            [
+              394,
+              324
+            ],
+            [
+              383,
+              338
+            ],
+            [
+              364,
+              347
+            ],
+            [
+              341,
+              347
+            ]
+          ]
+        ],
+        "cores": [
+          [
+            [
+              215,
+              325
+            ],
+            [
+              227,
+              322
+            ],
+            [
+              239,
+              319
+            ],
+            [
+              251,
+              319
+            ],
+            [
+              263,
+              324
+            ],
+            [
+              274,
+              333
+            ],
+            [
+              275,
+              336
+            ],
+            [
+              259,
+              340
+            ],
+            [
+              243,
+              340
+            ],
+            [
+              230,
+              336
+            ],
+            [
+              222,
+              331
+            ]
+          ],
+          [
+            [
+              325,
+              335
+            ],
+            [
+              335,
+              324
+            ],
+            [
+              348,
+              319
+            ],
+            [
+              361,
+              319
+            ],
+            [
+              375,
+              322
+            ],
+            [
+              387,
+              325
+            ],
+            [
+              377,
+              332
+            ],
+            [
+              369,
+              337
+            ],
+            [
+              355,
+              340
+            ],
+            [
+              340,
+              339
+            ]
+          ]
+        ],
+        "controls": [
+          [
+            245.365449657,
+            325.547220536
+          ],
+          [
+            355.348564531,
+            325.461074231
+          ]
+        ],
+        "targets": [
+          [
+            464,
+            379
+          ],
+          [
+            574,
+            379
+          ]
+        ],
+        "feather": 3
+      },
+      "uniform_similarity_matrix_on_crop": [
+        [
+          1.000152826309204,
+          -0.0007834319258108735,
+          417.6427917480469
+        ],
+        [
+          0.0007834319258108735,
+          1.000152826309204,
+          359.4134521484375
+        ]
+      ],
+      "uniform_scale": 1.0001531331450557,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "bbox": [
+        426,
+        364,
+        614,
+        401
+      ],
+      "opaque_pixels": 1543,
+      "nonzero_pixels": 3769,
+      "method": "Original feature core pixels plus source skin-relative edge pigment; same original face04 underneath. Nose preserves source nose-specific light/shadow without an opaque skin base."
+    },
+    {
+      "part": "eyebrows",
+      "variant": 3,
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\source\\female_hair_final\\reference_03.png",
+      "source_sha256": "3d1c0c2e322df479376f319447559a443a6382d54511635c54486e947cf5dc8b",
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\three_style_parts\\female\\eyebrows\\03.png",
+      "sha256": "14329a3b4e4ebd514c5449fa25898be4fa9918402bc60ddeb6e66555f981eabb",
+      "spec": {
+        "box": [
+          201,
+          286,
+          400,
+          316
+        ],
+        "supports": [
+          [
+            [
+              211,
+              297
+            ],
+            [
+              228,
+              293
+            ],
+            [
+              245,
+              294
+            ],
+            [
+              266,
+              300
+            ],
+            [
+              279,
+              309
+            ],
+            [
+              269,
+              310
+            ],
+            [
+              249,
+              305
+            ],
+            [
+              229,
+              303
+            ],
+            [
+              212,
+              302
+            ]
+          ],
+          [
+            [
+              319,
+              310
+            ],
+            [
+              330,
+              302
+            ],
+            [
+              348,
+              296
+            ],
+            [
+              369,
+              293
+            ],
+            [
+              389,
+              295
+            ],
+            [
+              393,
+              300
+            ],
+            [
+              375,
+              303
+            ],
+            [
+              355,
+              306
+            ],
+            [
+              334,
+              310
+            ]
+          ]
+        ],
+        "cores": [],
+        "controls": [
+          [
+            236,
+            300
+          ],
+          [
+            362,
+            300
+          ]
+        ],
+        "targets": [
+          [
+            457,
+            354
+          ],
+          [
+            582,
+            353
+          ]
+        ],
+        "feather": 2
+      },
+      "uniform_similarity_matrix_on_crop": [
+        [
+          0.9920634627342224,
+          0.007936508394777775,
+          422.1666564941406
+        ],
+        [
+          -0.007936508394777775,
+          0.9920634627342224,
+          340.3888854980469
+        ]
+      ],
+      "uniform_scale": 0.9920952082626527,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "bbox": [
+        431,
+        346,
+        615,
+        366
+      ],
+      "opaque_pixels": 0,
+      "nonzero_pixels": 1380,
+      "method": "Original feature core pixels plus source skin-relative edge pigment; same original face04 underneath. Nose preserves source nose-specific light/shadow without an opaque skin base."
+    },
+    {
+      "part": "mouth",
+      "variant": 3,
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\source\\female_hair_final\\reference_03.png",
+      "source_sha256": "3d1c0c2e322df479376f319447559a443a6382d54511635c54486e947cf5dc8b",
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\three_style_parts\\female\\mouth\\03.png",
+      "sha256": "e0a54cc52cfed87bb837b846dc5e77334aead7db2a60de97c86b5f496f1ab539",
+      "spec": {
+        "box": [
+          259,
+          417,
+          343,
+          458
+        ],
+        "supports": [
+          [
+            [
+              267,
+              428
+            ],
+            [
+              282,
+              424
+            ],
+            [
+              294,
+              419
+            ],
+            [
+              301,
+              422
+            ],
+            [
+              309,
+              419
+            ],
+            [
+              323,
+              425
+            ],
+            [
+              335,
+              429
+            ],
+            [
+              333,
+              438
+            ],
+            [
+              318,
+              450
+            ],
+            [
+              300,
+              455
+            ],
+            [
+              284,
+              449
+            ],
+            [
+              269,
+              439
+            ]
+          ]
+        ],
+        "cores": [
+          [
+            [
+              271,
+              432
+            ],
+            [
+              284,
+              430
+            ],
+            [
+              295,
+              427
+            ],
+            [
+              301,
+              430
+            ],
+            [
+              309,
+              427
+            ],
+            [
+              322,
+              430
+            ],
+            [
+              332,
+              432
+            ],
+            [
+              322,
+              436
+            ],
+            [
+              312,
+              442
+            ],
+            [
+              300,
+              444
+            ],
+            [
+              289,
+              441
+            ],
+            [
+              278,
+              436
+            ]
+          ]
+        ],
+        "controls": [
+          [
+            270,
+            432
+          ],
+          [
+            333,
+            432
+          ]
+        ],
+        "targets": [
+          [
+            487,
+            483
+          ],
+          [
+            551,
+            483
+          ]
+        ],
+        "feather": 4
+      },
+      "uniform_similarity_matrix_on_crop": [
+        [
+          1.0158730745315552,
+          -0.0,
+          475.82537841796875
+        ],
+        [
+          0.0,
+          1.0158730745315552,
+          467.76190185546875
+        ]
+      ],
+      "uniform_scale": 1.0158730745315552,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "bbox": [
+        484,
+        471,
+        553,
+        506
+      ],
+      "opaque_pixels": 536,
+      "nonzero_pixels": 1588,
+      "method": "Original feature core pixels plus source skin-relative edge pigment; same original face04 underneath. Nose preserves source nose-specific light/shadow without an opaque skin base."
+    },
+    {
+      "part": "nose",
+      "variant": 3,
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\source\\female_hair_final\\reference_03.png",
+      "source_sha256": "3d1c0c2e322df479376f319447559a443a6382d54511635c54486e947cf5dc8b",
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\three_style_parts\\female\\nose\\03.png",
+      "sha256": "58da3ce8a126930df433f6e6e0a59454143873f1c3005b25dd39b0d337f9de92",
+      "spec": {
+        "center": [
+          300,
+          398
+        ],
+        "source_box": [
+          257,
+          344,
+          343,
+          426
+        ],
+        "polygon_offset_x": -13
+      },
+      "uniform_similarity_matrix_on_crop": [
+        [
+          1.0,
+          0.0,
+          476.0
+        ],
+        [
+          0.0,
+          1.0,
+          392.0
+        ]
+      ],
+      "uniform_scale": 1.0,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "bbox": [
+        493,
+        403,
+        542,
+        465
+      ],
+      "opaque_pixels": 0,
+      "nonzero_pixels": 1882,
+      "method": "Original feature core pixels plus source skin-relative edge pigment; same original face04 underneath. Nose preserves source nose-specific light/shadow without an opaque skin base."
+    }
+  ],
+  "limits": [
+    "The source skin background is estimated from surrounding unpainted skin.",
+    "Two visible pupil anchors define each eye-pair similarity transform, not a three-point certification.",
+    "Source art that is genuinely hidden by hair is not invented.",
+    "Each part uses one uniform similarity transform; no per-eye stretch or local facial shape changes."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "status": "pre_adjustment_review_superseded_by_revisions/hair_tone_01/curve_report.json",
+  "observations": [
+    "All six layers remain in the warm charcoal/matte warm-gray hue family. Conditional same-luminance color medians are similar, mostly R-B7..11; no strong blue/brown chromatic split observed.",
+    "Style01 front and rear are visibly grayer/lighter and have raised shadows versus original and styles02/03. This difference is visible in nine-pair review rather than inferred from a single mean.",
+    "Front02/rear01 and front03/rear01 expose lighter gray crown/bun at the rear; front01/rear02 and front01/rear03 expose the lighter front mass against deeper rear shading.",
+    "Style03 has somewhat stronger bright strand contrast than original, with retained dark troughs; this is a contrast/strand-density difference, not a hue mismatch."
+  ],
+  "recommendation": "A restrained tone unification pass is justified for style01 front and rear. Use a smooth monotonic luminance curve that deepens lifted shadows/midtones while retaining relative highlights, alpha, outlines and real strand contrast. Judge front/rear exposed meeting zones on both backgrounds afterward. Do not map each whole-layer mean or full histogram to one number, and do not brighten all rear shadows to front intensity. Styles02/03 do not need an automatic mean-equalizing pass.",
+  "evidence": [
+    "hair_color_native_patches.jpg",
+    "hair_color_measurements.json",
+    "hair_mix_9_heads_light.jpg",
+    "hair_mix_9_heads_dark.jpg"
+  ],
+  "limits": "Spatially shared crown ROI samples differing folds and braids, so quantiles support but do not alone establish a recoloring target. No visual approval or numerical color acceptance threshold is claimed."
+}

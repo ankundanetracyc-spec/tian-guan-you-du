@@ -1,0 +1,17 @@
+{
+  "source": "source/front01_raw.png",
+  "target": "source/front_reference_01_placed.png",
+  "source_controls": [[517,282],[428,405],[613,405]],
+  "target_controls": [[517,282],[428,405],[608,405]],
+  "source_measurement": [
+    "At source x517, last alpha>=180 frontal support before the forehead opening is y282.",
+    "At source y405, the innermost alpha>=180 left foreground lock/wisp support before the face opening is x428.",
+    "At source y405, the first alpha>=180 right foreground lock/wisp support after the face opening is x613."
+  ],
+  "target_measurement": [
+    "On the original first portrait native-size placement, first clean warm-skin support at x517 is y282.",
+    "On original first placement y405, clean skin spans x428..608; skin predicate alpha>180,R>160,R-G>12,G-B>6.",
+    "The two selected face-opening endpoints are observed warm-skin support points, not alpha-bbox centers."
+  ],
+  "limitation": "These three noncollinear guides concern the registered hairline and face-side opening, not a claim that every hand-painted crown or strand matches the original pixel-for-pixel."
+}

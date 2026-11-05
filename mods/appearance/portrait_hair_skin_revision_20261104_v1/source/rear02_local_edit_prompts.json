@@ -1,0 +1,14 @@
+{
+  "tool": "built-in image_gen",
+  "edits": [
+    {
+      "prompt": "Use case: precise-object-edit. Image1 is the EDIT TARGET: a 1024x1536 transparent posterior-hair game sprite, already at the correct production coordinates. Image2 is an exact-size reference portrait, used ONLY to match the visible low chignon silhouette.\nChange ONLY the two LOW CHIGNON COILS, around y400..520. Widen them gently outward, so at y450 the left visible outer edge reaches x365 (currently around x377), and right reaches x668 (currently around x654). Keep their underside near y515 (currently around y519). Preserve natural coiled strand flow; the rolls should be wider and slightly flatter like Image2, not balloon-shaped.\nKeep EVERYTHING ABOVE y390 unchanged: same posterior top bun, same top y103, same center x519, same hair texture/charcoal color, same complete solid back-of-head underlay. Preserve the empty rest of the tall transparent canvas. Do not zoom, scale, move or reframe the whole component.\nThis is only POSTERIOR hair: no forehead hairline, no anterior V/heart cap, no swept frontal temple shells, no braid, no face/ears/skin, no front wisps, no loose long curtain. Do not copy the face or clothes from Image2. Output only this single corrected 1024x1536 genuine transparent RGBA hair sprite.",
+      "output": "E:/tmp/CodexData/generated_images/01a1a4be-7b8b-76e1-af95-b099fa3c88dc/exec-72d68bba-2277-4cc1-a4ff-913b9282c9d3.png"
+    },
+    {
+      "prompt": "Precise local edit of Image1 only. It is a transparent 1024x1536 rear-hair game sprite.\nThe LOW CHIGNON has become a little too wide. Keep everything above y390 exactly as is, including the posterior scalp and upper bun at y103. Keep lower bun bottom near y515 and center x519.\nRefine ONLY the low coil silhouette (y400..520), reducing its width about 8% horizontally while preserving its height and natural round coiled volume. At y450 move LEFT edge inward from x350 to about x365 and RIGHT edge inward from x680 to about x668. The desired outer width at that row is approximately303 pixels, not330. Blend the coil connection naturally, do not make an unnaturally squeezed hair roll.\nNo global resizing, no moving the head or bun, no new hair, no front cap/forehead hairline, no face/ears/skin/clothes, no added wisps, no background. Preserve hair color and fine matte ink strands. Exact same canvas, genuine transparent alpha.",
+      "output": "E:/tmp/CodexData/generated_images/01a1a4be-7b8b-76e1-af95-b099fa3c88dc/exec-8f80545a-9f22-46e4-be51-9a3b97268dfc.png",
+      "selected": true
+    }
+  ]
+}

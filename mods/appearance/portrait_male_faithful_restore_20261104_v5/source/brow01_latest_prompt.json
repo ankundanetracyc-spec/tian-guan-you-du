@@ -1,0 +1,12 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Edit the NEW eyebrow pair in input1 only. Input2 marks RED areas beneath the two INNER HEADS that need additional downward-growing brow hairs, because the original man's inner-head bottom is lower than this candidate. Input3 is the original LEFT man's exact eyebrow shape. Keep the two OUTER TAILS, overall pair centers, upper outline and lengths unchanged; add natural fine hairs extending the lower inner heads about25 native pixels DOWNWARD into the full red areas. No red remains. This must lower the visible inner-head bottom to about y648..653 instead of y625, while outer tips stay aroundy600. Do not simply shift the entire pair, thin the brows, fill the red areas as opaque squared blocks, or paint a forehead. Follow the original natural straight-medium-full brows with feathered irregular inner ends. Keep original warm charcoal individual hair texture and the same square transparent framing. Output only the full paired eyebrows, no skin, eyes, head, background or labels.",
+  "inputs": [
+    "E:/stacklands/mods/appearance/portrait_male_faithful_restore_20261104_v5/source/brow01_scaffold_raw.png",
+    "E:/stacklands/mods/appearance/portrait_male_faithful_restore_20261104_v5/source/brow01_inner_head_addition_guide.png",
+    "E:/stacklands/mods/appearance/portrait_male_regenerated_20261104_v3/source/face_detail_01.png"
+  ],
+  "raw": "source/brow01_latest_raw.png",
+  "whole_pair_native_art": true,
+  "no_pixel_extraction": true
+}

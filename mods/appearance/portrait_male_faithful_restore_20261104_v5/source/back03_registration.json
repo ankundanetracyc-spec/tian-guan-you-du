@@ -1,0 +1,88 @@
+{
+  "part": "hair_back",
+  "index": 3,
+  "new_native_generation": true,
+  "source": "source/back03_raw.png",
+  "source_sha256": "36ea770292f7a290c18d4b9d94924de7130b3f39433e1bc1230b3abf371abf41",
+  "source_canvas": [
+    1024,
+    1536
+  ],
+  "source_points": [
+    [
+      498,
+      151
+    ],
+    [
+      352,
+      345
+    ],
+    [
+      682,
+      345
+    ]
+  ],
+  "target_points": [
+    [
+      503,
+      170
+    ],
+    [
+      365,
+      350
+    ],
+    [
+      670,
+      350
+    ]
+  ],
+  "point_names": [
+    "left_of_center_high_crest_supported_pixel",
+    "left_main_rear_skull_contour_y345",
+    "right_main_rear_skull_contour_y345"
+  ],
+  "source_measurement": "Manually inspected actual alpha>=230 crest pixel(498,151) and lateral main-cap contour row345. The first top row has separated strand clusters, so its bbox midpoint was not used. These are actual painted source pixels, not coordinates copied from prompt.",
+  "initial_automatic_scaffold_attempt": {
+    "source_points": [
+      [
+        508,
+        151
+      ],
+      [
+        353,
+        350
+      ],
+      [
+        683,
+        350
+      ]
+    ],
+    "maximum_residual_px": 2.9431349908929727,
+    "status": "rejected before export; control landmarks refined by inspecting actual crest and main cap rim"
+  },
+  "target_scaffold": "Shared head underpainting design behind the new master03 front-hair envelope: rear top(503,170), sides(365,350)/(670,350). Hidden rear-scalp points are design scaffolds rather than claimed visible anatomy in the original.",
+  "transform": {
+    "a": 0.924886356039842,
+    "b": 0.00507219733939432,
+    "tx": 41.77994016979751,
+    "ty": 28.133322748846865,
+    "scale": 0.9249002642309643,
+    "rotation_degrees": 0.31421437355273735
+  },
+  "residuals": [
+    1.4282073245708142,
+    1.157193643781113,
+    1.0508157848014927
+  ],
+  "maximum_residual_px": 1.4282073245708142,
+  "antialiasing": "source/resample_rgba.cjs: whole-layer area-integrated premultiplied reduction",
+  "output": "male/hair_back/03.png",
+  "output_sha256": "cb716866946fd719d787cf4b94beef49351a5200db5da36ae59abaa71a75ff5f",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "local_warp": false,
+  "reused_v3_v4_shape": false,
+  "visual_status": "First v5 rear03 candidate, awaiting parent review and front-hair pairing; the three design controls alone are not full anatomical or visual certification."
+}

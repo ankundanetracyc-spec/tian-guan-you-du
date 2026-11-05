@@ -1,0 +1,11 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. Paint a completely NEW pair of transparent male eyebrows from original reference, for faithful watercolor game portrait restoration. Input1 is a tight enlargement of the ORIGINAL man's exact pair: authoritative proportions, curvature, inner-head bottom, density and pigment reference ONLY. Input2 is the restored master for matching warm charcoal-brown matte fine-hair brush material. Original RIGHT man's softer thinner almost level eyebrows, very modest arch and softer fine inner heads. Preserve the lower drooping inner heads as reference. Original final pair has moderately thin6-pixel body, softly visible hair density, not faint lines or thick bars. Redraw with tiny irregular natural short hair strokes and natural sparse feathered edges, not a cutout from reference. Exclude skin/head hair that occludes reference's outer ends; reconstruct the tiny hidden eyebrow taper naturally. Output the two brows inseparably paired on a roughly1254square transparent canvas, total span about1000pixels, gap between inner heads about240pixels. Keep faithful original pair proportions including the gap, don't overlengthen the brows relative to spacing. No silver-white high shine, no grey caterpillar fill, no bold solid black graphic bar, no skin underpainting or fade rectangle, no eyes, no head, no background, no checkerboard or text. Transparent background, brows only.",
+  "inputs": [
+    "E:/stacklands/mods/appearance/portrait_male_faithful_restore_20261104_v5/source/brow03_original_tight_reference.png",
+    "E:/stacklands/mods/appearance/portrait_male_faithful_restore_20261104_v5/source/master03_registered.png"
+  ],
+  "raw": "source/brow03_tight_raw.png",
+  "newly_painted": true,
+  "reference_pixels_not_extracted": true
+}

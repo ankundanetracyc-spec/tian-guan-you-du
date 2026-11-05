@@ -1,0 +1,502 @@
+[
+  {
+    "name": "hair_front1",
+    "source": "mods\\appearance\\portrait_rebuild_20261103\\three_style_parts\\female\\hair_front\\01.png",
+    "alpha_min": 240,
+    "roi": [
+      350,
+      145,
+      690,
+      350
+    ],
+    "luma_quantiles_05_25_50_75_95": [
+      33.49,
+      50.63,
+      65.85,
+      82.84,
+      105.56
+    ],
+    "conditional_color_bins": {
+      "20_50": {
+        "count": 12450,
+        "median_rgb": [
+          44.0,
+          40.0,
+          38.0
+        ],
+        "median_R_minus_B": 6.0
+      },
+      "50_80": {
+        "count": 24079,
+        "median_rgb": [
+          68.0,
+          63.0,
+          61.0
+        ],
+        "median_R_minus_B": 8.0
+      },
+      "80_110": {
+        "count": 12862,
+        "median_rgb": [
+          96.0,
+          91.0,
+          87.0
+        ],
+        "median_R_minus_B": 9.0
+      },
+      "110_140": {
+        "count": 1385,
+        "median_rgb": [
+          120.0,
+          114.0,
+          110.0
+        ],
+        "median_R_minus_B": 9.0
+      },
+      "140_180": {
+        "count": 92,
+        "median_rgb": [
+          159.0,
+          146.0,
+          138.0
+        ],
+        "median_R_minus_B": 21.0
+      }
+    }
+  },
+  {
+    "name": "hair_front2",
+    "source": "mods\\appearance\\portrait_rebuild_20261103\\three_style_parts\\female\\hair_front\\02.png",
+    "alpha_min": 240,
+    "roi": [
+      350,
+      145,
+      690,
+      350
+    ],
+    "luma_quantiles_05_25_50_75_95": [
+      35.63,
+      51.85,
+      65.13,
+      80.27,
+      107.91
+    ],
+    "conditional_color_bins": {
+      "20_50": {
+        "count": 10747,
+        "median_rgb": [
+          46.0,
+          41.0,
+          38.0
+        ],
+        "median_R_minus_B": 9.0
+      },
+      "50_80": {
+        "count": 25725,
+        "median_rgb": [
+          69.0,
+          63.0,
+          60.0
+        ],
+        "median_R_minus_B": 9.0
+      },
+      "80_110": {
+        "count": 10333,
+        "median_rgb": [
+          97.0,
+          90.0,
+          86.0
+        ],
+        "median_R_minus_B": 10.0
+      },
+      "110_140": {
+        "count": 1918,
+        "median_rgb": [
+          123.0,
+          115.5,
+          112.0
+        ],
+        "median_R_minus_B": 10.0
+      },
+      "140_180": {
+        "count": 109,
+        "median_rgb": [
+          159.0,
+          143.0,
+          134.0
+        ],
+        "median_R_minus_B": 24.0
+      }
+    }
+  },
+  {
+    "name": "hair_front3",
+    "source": "mods\\appearance\\portrait_rebuild_20261103\\three_style_parts\\female\\hair_front\\03.png",
+    "alpha_min": 240,
+    "roi": [
+      350,
+      145,
+      690,
+      350
+    ],
+    "luma_quantiles_05_25_50_75_95": [
+      33.06,
+      56.06,
+      72.99,
+      90.7,
+      113.91
+    ],
+    "conditional_color_bins": {
+      "20_50": {
+        "count": 8598,
+        "median_rgb": [
+          44.0,
+          39.0,
+          36.0
+        ],
+        "median_R_minus_B": 9.0
+      },
+      "50_80": {
+        "count": 21318,
+        "median_rgb": [
+          71.0,
+          65.0,
+          61.0
+        ],
+        "median_R_minus_B": 10.0
+      },
+      "80_110": {
+        "count": 16112,
+        "median_rgb": [
+          98.0,
+          91.0,
+          87.0
+        ],
+        "median_R_minus_B": 11.0
+      },
+      "110_140": {
+        "count": 3395,
+        "median_rgb": [
+          123.0,
+          116.0,
+          111.0
+        ],
+        "median_R_minus_B": 11.0
+      },
+      "140_180": {
+        "count": 191,
+        "median_rgb": [
+          159.0,
+          145.0,
+          136.0
+        ],
+        "median_R_minus_B": 23.0
+      }
+    }
+  },
+  {
+    "name": "hair_back1",
+    "source": "mods\\appearance\\portrait_rebuild_20261103\\three_style_parts\\female\\hair_back\\01.png",
+    "alpha_min": 240,
+    "roi": [
+      350,
+      145,
+      690,
+      350
+    ],
+    "luma_quantiles_05_25_50_75_95": [
+      37.92,
+      47.71,
+      57.85,
+      67.13,
+      84.06
+    ],
+    "conditional_color_bins": {
+      "20_50": {
+        "count": 18095,
+        "median_rgb": [
+          47.0,
+          43.0,
+          40.0
+        ],
+        "median_R_minus_B": 7.0
+      },
+      "50_80": {
+        "count": 38713,
+        "median_rgb": [
+          66.0,
+          61.0,
+          58.0
+        ],
+        "median_R_minus_B": 8.0
+      },
+      "80_110": {
+        "count": 4554,
+        "median_rgb": [
+          91.0,
+          86.0,
+          82.0
+        ],
+        "median_R_minus_B": 9.0
+      },
+      "110_140": {
+        "count": 39,
+        "median_rgb": [
+          118.0,
+          113.0,
+          108.0
+        ],
+        "median_R_minus_B": 11.0
+      },
+      "140_180": {
+        "count": 0,
+        "median_rgb": null,
+        "median_R_minus_B": null
+      }
+    }
+  },
+  {
+    "name": "hair_back2",
+    "source": "mods\\appearance\\portrait_rebuild_20261103\\three_style_parts\\female\\hair_back\\02.png",
+    "alpha_min": 240,
+    "roi": [
+      350,
+      145,
+      690,
+      350
+    ],
+    "luma_quantiles_05_25_50_75_95": [
+      31.42,
+      44.13,
+      54.56,
+      65.42,
+      81.7
+    ],
+    "conditional_color_bins": {
+      "20_50": {
+        "count": 22326,
+        "median_rgb": [
+          45.0,
+          41.0,
+          38.0
+        ],
+        "median_R_minus_B": 7.0
+      },
+      "50_80": {
+        "count": 31538,
+        "median_rgb": [
+          65.0,
+          61.0,
+          58.0
+        ],
+        "median_R_minus_B": 8.0
+      },
+      "80_110": {
+        "count": 3521,
+        "median_rgb": [
+          90.0,
+          85.0,
+          80.0
+        ],
+        "median_R_minus_B": 9.0
+      },
+      "110_140": {
+        "count": 11,
+        "median_rgb": [
+          116.0,
+          113.0,
+          106.0
+        ],
+        "median_R_minus_B": 11.0
+      },
+      "140_180": {
+        "count": 0,
+        "median_rgb": null,
+        "median_R_minus_B": null
+      }
+    }
+  },
+  {
+    "name": "hair_back3",
+    "source": "mods\\appearance\\portrait_rebuild_20261103\\three_style_parts\\female\\hair_back\\03.png",
+    "alpha_min": 240,
+    "roi": [
+      350,
+      145,
+      690,
+      350
+    ],
+    "luma_quantiles_05_25_50_75_95": [
+      39.63,
+      48.06,
+      55.28,
+      63.56,
+      77.2
+    ],
+    "conditional_color_bins": {
+      "20_50": {
+        "count": 17462,
+        "median_rgb": [
+          50.0,
+          44.0,
+          42.0
+        ],
+        "median_R_minus_B": 8.0
+      },
+      "50_80": {
+        "count": 36342,
+        "median_rgb": [
+          64.0,
+          59.0,
+          56.0
+        ],
+        "median_R_minus_B": 9.0
+      },
+      "80_110": {
+        "count": 1936,
+        "median_rgb": [
+          91.0,
+          83.5,
+          80.0
+        ],
+        "median_R_minus_B": 11.0
+      },
+      "110_140": {
+        "count": 3,
+        "median_rgb": [
+          118.0,
+          111.0,
+          105.0
+        ],
+        "median_R_minus_B": 12.0
+      },
+      "140_180": {
+        "count": 0,
+        "median_rgb": null,
+        "median_R_minus_B": null
+      }
+    }
+  },
+  {
+    "name": "original_hair_front",
+    "source": "mods\\appearance\\ink_three_variants_20261004\\female\\hair_front\\01.png",
+    "alpha_min": 240,
+    "roi": [
+      350,
+      145,
+      690,
+      350
+    ],
+    "luma_quantiles_05_25_50_75_95": [
+      31.13,
+      47.77,
+      63.06,
+      80.71,
+      103.63
+    ],
+    "conditional_color_bins": {
+      "20_50": {
+        "count": 11952,
+        "median_rgb": [
+          44.0,
+          39.0,
+          36.0
+        ],
+        "median_R_minus_B": 8.0
+      },
+      "50_80": {
+        "count": 18875,
+        "median_rgb": [
+          68.0,
+          63.0,
+          59.0
+        ],
+        "median_R_minus_B": 8.0
+      },
+      "80_110": {
+        "count": 9752,
+        "median_rgb": [
+          96.0,
+          92.0,
+          89.0
+        ],
+        "median_R_minus_B": 7.0
+      },
+      "110_140": {
+        "count": 888,
+        "median_rgb": [
+          122.0,
+          114.0,
+          110.0
+        ],
+        "median_R_minus_B": 17.0
+      },
+      "140_180": {
+        "count": 94,
+        "median_rgb": [
+          158.0,
+          143.0,
+          134.0
+        ],
+        "median_R_minus_B": 24.0
+      }
+    }
+  },
+  {
+    "name": "original_hair_back",
+    "source": "mods\\appearance\\ink_three_variants_20261004\\female\\hair_back\\01.png",
+    "alpha_min": 240,
+    "roi": [
+      350,
+      145,
+      690,
+      350
+    ],
+    "luma_quantiles_05_25_50_75_95": [
+      36.28,
+      46.2,
+      56.06,
+      65.41,
+      82.06
+    ],
+    "conditional_color_bins": {
+      "20_50": {
+        "count": 15701,
+        "median_rgb": [
+          47.0,
+          42.0,
+          36.0
+        ],
+        "median_R_minus_B": 9.0
+      },
+      "50_80": {
+        "count": 24908,
+        "median_rgb": [
+          65.0,
+          61.0,
+          56.0
+        ],
+        "median_R_minus_B": 9.0
+      },
+      "80_110": {
+        "count": 2784,
+        "median_rgb": [
+          89.0,
+          84.0,
+          81.0
+        ],
+        "median_R_minus_B": 9.0
+      },
+      "110_140": {
+        "count": 0,
+        "median_rgb": null,
+        "median_R_minus_B": null
+      },
+      "140_180": {
+        "count": 0,
+        "median_rgb": null,
+        "median_R_minus_B": null
+      }
+    }
+  }
+]

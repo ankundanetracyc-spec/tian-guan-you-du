@@ -1,0 +1,10 @@
+{
+  "prompt": "Image1 is a transparent modular nose. Preserve its exact shape, position, canvas1024x1536 and genuine alpha transparency. Soften reddish pigmentation along the long upper bridge: it should be an extremely faint neutral warm beige shadow fading invisibly into surrounding skin, not a vertical red stripe. Match the subdued peach-beige color of image2. Preserve image1 complete nose tip and visible alar wings, nostrils and their contrast. DO NOT bake any black or white background into pixels. Transparent PNG with alpha0 outside; no white glow. Only repaint warm bridge color and soften outer bridge pigment; do not change nose geometry.",
+  "selected": "nose_soft.png",
+  "rejected": [
+    "nose_raw.png: white matte",
+    "nose_clean.png: red bridge",
+    "nose_tip_final.png: baked dark matte"
+  ],
+  "mode": "built-in image_gen"
+}

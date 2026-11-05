@@ -1,0 +1,116 @@
+{
+  "index": 3,
+  "raw": "source/brow03_tight_raw.png",
+  "raw_sha256": "4a7f5e8afe91d75f3c18ca8eb5b726900304ad55206a4fef698b55eacc1c8262",
+  "source_canvas": [
+    1388,
+    1133
+  ],
+  "source_controls": [
+    [
+      563,
+      583
+    ],
+    [
+      814,
+      579
+    ],
+    [
+      975,
+      531
+    ]
+  ],
+  "target_controls": [
+    [
+      488,
+      356
+    ],
+    [
+      539,
+      355
+    ],
+    [
+      570,
+      348
+    ]
+  ],
+  "control_names": [
+    "left_dense_inner_head_bottom_supported_pixel",
+    "right_dense_inner_head_supported_pixel",
+    "right_unoccluded_upper_body_supported_pixel"
+  ],
+  "source_control_method": "Measured alpha>=180 native pair hair support. The right upper body is used because the left outer/top contour in the original is partly covered by front hair; all three controls are noncollinear.",
+  "target_control_role": "Original03 actual visible dense brow contour pixels: left inner head(488,356),right inner head(539,355),right upper body(570,348). These replace approximate y350 or soft skin-edge points. Target RGB samples retained below.",
+  "target_reference": "source/front_reference_03_placed.png",
+  "target_reference_sha256": "f2dce3a6d55040084cc6384b35d6adb2cf406eeafce26d863fd4dd3d03e2ec24",
+  "target_pixel_samples": [
+    {
+      "px": [
+        488,
+        356
+      ],
+      "rgba": [
+        150,
+        126,
+        115,
+        255
+      ]
+    },
+    {
+      "px": [
+        539,
+        355
+      ],
+      "rgba": [
+        158,
+        133,
+        120,
+        255
+      ]
+    },
+    {
+      "px": [
+        570,
+        348
+      ],
+      "rgba": [
+        145,
+        123,
+        112,
+        255
+      ]
+    }
+  ],
+  "transform": {
+    "a": 0.19846031324661534,
+    "b": 0.0048617695020668214,
+    "tx": 379.48410633698654,
+    "ty": 237.1906026015397,
+    "scale": 0.19851985476681147,
+    "residuals": [
+      0.5323253608359744,
+      1.3157981238378453,
+      0.7954063320138798
+    ]
+  },
+  "maximum_residual_px": 1.3157981238378453,
+  "whole_pair_transform_only": true,
+  "separate_eyebrow_movement": false,
+  "local_warp": false,
+  "pigment_edited": false,
+  "antialias": "resample_rgba.cjs: premultiplied source-area integration at reduction",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "alpha40_bbox_inclusive": [
+    389,
+    343,
+    638,
+    360
+  ],
+  "output": "male/eyebrows/03.png",
+  "output_sha256": "3625e8ef8872fc64b1a39356dcad8ab549fc0d3aa864d0864eae732c46819772",
+  "old_asset_reused": false,
+  "visual_observation": "New pair on current face/light skin was compared to original03 using current eyes01/nose/mouth. Visible brows have a similar slender near-flat contour and naturally soften at inner ends; no skin panel or opaque matte observed. Hair-occluded outer ends are not claimed to be directly measurable original anatomy."
+}

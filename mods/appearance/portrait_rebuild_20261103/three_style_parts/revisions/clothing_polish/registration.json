@@ -1,0 +1,16 @@
+{
+  "canvas": [
+    1024,
+    1536
+  ],
+  "scale": 1,
+  "translation": [
+    0,
+    0
+  ],
+  "method": "imagegen local garment polish followed by original silhouette alpha constraint and removal of skin ownership inside neckline",
+  "source_sha256": "10e6ab3f04527c5c333f07df797b44d976ebdc11df5aa8a3c776aa8cc21edf06",
+  "output_sha256": "a02ce13e6336db6785b019615e71c9a52133230ba46845b5e03316bae442cad3",
+  "limitations": "Generated brushwork and small motif details differ from original. No geometric warp or canvas resize; original neckline/shoulder ownership constrains output.",
+  "output": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\three_style_parts\\female\\clothing\\01.png"
+}
