@@ -1,0 +1,140 @@
+[
+  {
+    "part": "hair_front",
+    "index": 1,
+    "native_source": "source/regen/front01_revision.png",
+    "canvas": [
+      1024,
+      1536
+    ],
+    "resized": false,
+    "runtime_offset": [
+      0,
+      0
+    ],
+    "components_above_alpha20": [
+      101117,
+      3,
+      1,
+      1
+    ]
+  },
+  {
+    "part": "hair_front",
+    "index": 2,
+    "native_source": "source/regen/front02_raw.png",
+    "canvas": [
+      1024,
+      1536
+    ],
+    "resized": false,
+    "runtime_offset": [
+      0,
+      0
+    ],
+    "components_above_alpha20": [
+      75858,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "part": "hair_front",
+    "index": 3,
+    "native_source": "source/regen/front03_revision.png",
+    "canvas": [
+      1024,
+      1536
+    ],
+    "resized": false,
+    "runtime_offset": [
+      0,
+      0
+    ],
+    "components_above_alpha20": [
+      106371,
+      1,
+      1
+    ]
+  },
+  {
+    "part": "hair_back",
+    "index": 1,
+    "native_source": "source/regen/back01_raw.png",
+    "canvas": [
+      1024,
+      1536
+    ],
+    "resized": false,
+    "runtime_offset": [
+      0,
+      0
+    ],
+    "components_above_alpha20": [
+      253197,
+      1
+    ]
+  },
+  {
+    "part": "hair_back",
+    "index": 2,
+    "native_source": "source/regen/back02_revision.png",
+    "canvas": [
+      1024,
+      1536
+    ],
+    "resized": false,
+    "runtime_offset": [
+      0,
+      0
+    ],
+    "components_above_alpha20": [
+      251612,
+      1
+    ]
+  },
+  {
+    "part": "hair_back",
+    "index": 3,
+    "native_source": "source/regen/back03_raw.png",
+    "canvas": [
+      1024,
+      1536
+    ],
+    "resized": false,
+    "runtime_offset": [
+      0,
+      0
+    ],
+    "components_above_alpha20": [
+      253224,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "part": "face_shape",
+    "index": 1,
+    "source": "before_male/face_shape/01.png; cleaned by clean_previous_head.py",
+    "generated_face_rejected_per_user": true,
+    "canvas": [
+      1024,
+      1536
+    ],
+    "resized": false,
+    "face_neck_alpha_exactly_preserved": true
+  }
+]

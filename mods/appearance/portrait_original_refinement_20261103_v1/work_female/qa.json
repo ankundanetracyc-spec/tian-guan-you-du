@@ -1,0 +1,153 @@
+{
+  "method": "built-in image_gen, native alpha; integer whole-layer translation only, no per-pixel edits, no color thresholds",
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "front_translation": {
+    "x": 0,
+    "y": -22
+  },
+  "back_translation": {
+    "x": 0,
+    "y": 18
+  },
+  "measured_front_alpha128_columns": {
+    "442": {
+      "first": 147,
+      "last": 303
+    },
+    "519": {
+      "first": 132,
+      "last": 277
+    },
+    "596": {
+      "first": 154,
+      "last": 324
+    }
+  },
+  "front_center_hairline": [
+    519,
+    277
+  ],
+  "front_center_crown": [
+    519,
+    132
+  ],
+  "back_center_crown": [
+    519,
+    157
+  ],
+  "significant_front_overlap_with_original_features": {
+    "eyes": 3,
+    "eyebrows": 8
+  },
+  "padding_clips": [
+    {
+      "path": "E:/stacklands/mods/appearance/portrait_original_refinement_20261103_v1/work_female/front_source.png",
+      "nonzero_alpha_in_discarded_padding": 0
+    },
+    {
+      "path": "E:/stacklands/mods/appearance/portrait_original_refinement_20261103_v1/work_female/back_source.png",
+      "nonzero_alpha_in_discarded_padding": 0
+    }
+  ],
+  "registration_status": "visual candidate only, no 2px three-point certification",
+  "visual_review": "Light and dark actual baseline composite inspected. Original female face04 and old valid eyebrows01/eyes02/nose01/mouth01 untouched. No double crown, clean eye region, coordinated dark matte front/back. Remaining thin shoulder flyaways may also originate from unchanged clothing layer.",
+  "feature_overlap_detail": {
+    "eyes": [
+      [
+        613,
+        373
+      ],
+      [
+        614,
+        373
+      ],
+      [
+        613,
+        374
+      ]
+    ],
+    "eyebrows": [
+      [
+        607,
+        350
+      ],
+      [
+        608,
+        350
+      ],
+      [
+        609,
+        350
+      ],
+      [
+        610,
+        350
+      ],
+      [
+        607,
+        351
+      ],
+      [
+        608,
+        351
+      ],
+      [
+        609,
+        351
+      ],
+      [
+        610,
+        351
+      ]
+    ],
+    "note": "At outermost right soft feature tail only; no pupil or central eyebrow overlap. These small tail pixels are a visible boundary candidate limitation, no alpha was deleted to mask it."
+  },
+  "measured_geometry_landmarks": {
+    "front_source": {
+      "central_hairline": [
+        519,
+        299
+      ],
+      "left_transition_alpha128": [
+        442,
+        325
+      ],
+      "right_transition_alpha128": [
+        596,
+        346
+      ]
+    },
+    "front_final": {
+      "central_hairline": [
+        519,
+        277
+      ],
+      "left_transition_alpha128": [
+        442,
+        303
+      ],
+      "right_transition_alpha128": [
+        596,
+        324
+      ]
+    },
+    "requested_reference": {
+      "central_hairline": [
+        519,
+        277
+      ],
+      "left_transition": [
+        442,
+        310
+      ],
+      "right_transition": [
+        596,
+        310
+      ]
+    },
+    "limitation": "Side transitions are actual alpha128 column intersections, not artificially equalized semantic control points. Residuals versus target remain left7px and right14px; NOT certified <=2px. Center exact, crown132 vs approx desired145."
+  }
+}

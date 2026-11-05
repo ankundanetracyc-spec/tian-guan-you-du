@@ -1,0 +1,16 @@
+const fs=require('fs'),path=require('path'),sharp=require('sharp'),crypto=require('crypto');
+const base=path.resolve(__dirname,'..'),active=path.resolve(base,'../ink_three_variants_20261004'),sha=f=>crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex');
+(async()=>{
+ const face=path.join(base,'male/face_shape/01.png'),{data,info}=await sharp(face).raw().toBuffer({resolveWithObject:true}),rows=[];
+ for(let y=500;y<=700;y++){let xs=[];for(let x=350;x<=680;x++)if(data[(y*info.width+x)*4+3]>=230)xs.push(x);rows.push({y,left:xs[0],right:xs.at(-1)});}
+ const anchors=rows.filter(r=>[530,550,580].includes(r.y)).flatMap(r=>[{id:'L'+r.y,p:[r.left,r.y],hidden:r.y===580},{id:'R'+r.y,p:[r.right,r.y],hidden:r.y===580}]);
+ let svg='<svg width="1024" height="1536" xmlns="http://www.w3.org/2000/svg"><path d="M517 140V710" stroke="#68a3ab" stroke-width="1" stroke-dasharray="4 5"/>';
+ for(const side of ['left','right'])svg+='<polyline points="'+rows.map(r=>`${r[side]},${r.y}`).join(' ')+'" fill="none" stroke="#ec9636" stroke-width="1.3" stroke-dasharray="3 3"/>';
+ for(const a of anchors){const[x,y]=a.p;svg+=`<g fill="none" stroke="#e7973a" stroke-width="1.4"><circle cx="${x}" cy="${y}" r="4" ${a.hidden?'stroke-dasharray="2 2"':''}/><path d="M${x-6} ${y}H${x+6}M${x} ${y-6}V${y+6}"/></g>`;}
+ const fixed=[['chin',516,546],['lip',515.2,483.5],['nose L',504,451.8],['nose R',526,451.8]];
+ for(const[id,x,y]of fixed)svg+=`<g stroke="#4aadb3" stroke-width="1.1" fill="none"><circle cx="${x}" cy="${y}" r="3"/><path d="M${x-5} ${y}H${x+5}M${x} ${y-5}V${y+5}"/></g>`;
+ svg+='</svg>';fs.mkdirSync(path.join(base,'rig'),{recursive:true});fs.writeFileSync(path.join(base,'rig/male_overlay.svg'),svg);await sharp(Buffer.from(svg)).png().toFile(path.join(base,'rig/male_overlay.png'));
+ let result={canvas:[1024,1536],face_sha256:sha(face),neck_alpha_threshold:230,neck_rows:rows,anchors,fixed_feature_controls:fixed,clothing_original_painting_preserved:true,clothing_depth_updated:true,scope:'Measured current head/neck silhouette, reference chin/lips/nose controls. Hair and brow variant design points remain in each registration record; overlay does not assert all shapes share the same design contour.'};fs.writeFileSync(path.join(base,'rig/current_face_neck.json'),JSON.stringify(result,null,2));
+ for(const[bg,label]of[['#e8e1d6','light'],['#202a2e','dark']]){let layers=[];for(let i=1;i<=7;i++){const id=String(i).padStart(2,'0'),full=await sharp({create:{width:1024,height:1536,channels:4,background:bg}}).composite([{input:path.join(base,'male/clothing_back',id+'.png')},{input:face},{input:path.join(base,'male/clothing',id+'.png')}]).png().toBuffer();layers.push({input:await sharp(full).extract({left:390,top:500,width:255,height:170}).resize(510,340).png().toBuffer(),left:((i-1)%4)*510,top:Math.floor((i-1)/4)*364+24},{input:Buffer.from(`<svg width="510" height="24"><text x="8" y="18" font-size="16" fill="${label==='light'?'#484b41':'#e8e1d6'}">${id}</text></svg>`),left:((i-1)%4)*510,top:Math.floor((i-1)/4)*364});}await sharp({create:{width:2040,height:728,channels:4,background:bg}}).composite(layers).png().toFile(path.join(base,'qa/new_face_seven_clothes_'+label+'.png'));}
+ console.log(JSON.stringify({anchors,face_sha256:result.face_sha256}));
+})().catch(e=>{console.error(e);process.exitCode=1;});

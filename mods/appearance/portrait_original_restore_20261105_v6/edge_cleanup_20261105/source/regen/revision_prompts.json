@@ -1,0 +1,23 @@
+[
+  {
+    "id": "front01_revision",
+    "refs": [
+      "E:/stacklands/mods/appearance/portrait_original_restore_20261105_v6/edge_cleanup_20261105/source/regen/front01_raw.png"
+    ],
+    "prompt": "Precise-object-edit. Correct ONLY the two accidentally included ears/skin pieces in this transparent foreground-hair layer. Remove ALL ivory/white/skin/grey ear remnants in LEFT x388..425,y386..451 and RIGHT x617..645,y386..451 on the 1024x1536 canvas. These are the two pale pieces just inside the hair beside the empty face opening. Replace their pixels with actual transparency, including every inner edge; the surrounding dark hair locks must remain hair-only and smoothly connected. DO NOT draw ears again, not even grey ears. The front-hair sprite has absolutely NO skin, ears, face, clothes or accessories. Keep EVERY other part of the hairstyle, color, detailed original charcoal texture, silhouette, lock length, exact 1024x1536 placement and scale unchanged. Transparent background, crisp clean alpha, no haze/matte/halos or detached pixels. Only this surgical ear-removal edit."
+  },
+  {
+    "id": "front03_revision",
+    "refs": [
+      "E:/stacklands/mods/appearance/portrait_original_restore_20261105_v6/edge_cleanup_20261105/source/regen/front03_raw.png"
+    ],
+    "prompt": "Precise-object-edit. Correct ONLY the lower anterior hair locks of this transparent game hair sprite: remove the frayed tangled wisps and extra hair webbing hanging from the INSIDE and outside of the two long curved locks, approximately x360..445 and x610..680,y540..1000. The user sees this as an unclean cutout. Keep ONE coherent flowing primary ribbon/lock on each side with finely painted interior strands, smooth clean perimeter and naturally tapered ends. Avoid detached flyaways, fuzzy fringe, hooks, loops, tiny short stray threads and transparent interior webs. Do not create blunt cut ends or extra short triangular side-tails. Keep the upper head hair above y500 entirely unchanged including the asymmetrical part, dark charcoal color and original textured highlights; same exact 1024x1536 canvas, hairline position near (517,278), center, scale and long-lock length. No face, skin, ears, clothes or accessories. Real transparent empty canvas, no matte, haze, grey fog or pixel islands."
+  },
+  {
+    "id": "back02_revision",
+    "refs": [
+      "E:/stacklands/mods/appearance/portrait_original_restore_20261105_v6/edge_cleanup_20261105/source/regen/back02_raw.png"
+    ],
+    "prompt": "Precise-object-edit. Correct ONLY the lower hanging posterior hair mass of this transparent 1024x1536 male rear-hair sprite. The current hem is wrongly forked into a central pointed tail and TWO separate long tusk-like curly side tentacles. Remove that three-pronged structure. Make a single continuous straight-falling posterior curtain of long charcoal hair, with a gentle broad rounded lower contour and subtle staggered natural hair tips ending around y870..940. No dangling separate curled side locks, no sharp central spear, no three spikes, no web-like stray hairs or fuzzy fringe. Dense coherent hair masses with fine individually painted ink strands inside and crisp clean tapered tips at the bottom. Preserve the upper high topknot and black wrap (x455..565,y86..170), head cap and shoulders above y600, original colors, soft warm grey highlights and ink texture. EXACT same 1024x1536 coordinates, canvas and scale; do not enlarge or move. Only hair and black wrap, no face, ears, body, garments, accessories or background. Real transparency with no halos, matte, haze, grey fog or detached pixels."
+  }
+]

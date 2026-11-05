@@ -1,0 +1,136 @@
+{
+  "created": "2026-11-03",
+  "tool": "built-in image_gen__imagegen",
+  "source_policy": "Fresh generation for this sample; no rejected prior-trial image or old-part pixel extraction used.",
+  "reference_roles": {
+    "face_shape.png": "fixed skin color and diffuse light",
+    "reference_01.png": "gongbi pale-color brushwork only"
+  },
+  "operations": "Unmodified generated source -> one whole-layer uniform LANCZOS resize -> integer translation onto 1024x1536 transparent canvas. No RGB correction, local warping, pixel extraction, alpha threshold, matte removal or local repaint.",
+  "selection": {
+    "nose": "Accepted first new generation after actual fixed-face/clothing overlay: complete bridge, tip, alar volume and soft local shadow; no visible gray cap or skin-colored patch seam on the fixed shallow-warm face.",
+    "mouth": "Accepted first new generation after actual overlay: pale low-saturation peach-rose, a fine muted seam, small subdued diffuse highlight, no oily stripe or black lip outline.",
+    "prior_trials": "Earlier portrait_generated_anchors trials are not used in this sample.",
+    "limit": "This is one trial set for parent/user composite review, not a claim of final artistic approval."
+  },
+  "registration": {
+    "nose": {
+      "raw": "nose_raw_01.png",
+      "resize_size": [
+        148,
+        148
+      ],
+      "scale": 0.11802232854864433,
+      "translation": [
+        446,
+        345
+      ],
+      "source_tip": [
+        622,
+        854
+      ],
+      "source_bridge": [
+        622,
+        542
+      ],
+      "target_tip": [
+        519,
+        446
+      ],
+      "target_bridge": [
+        519,
+        409
+      ],
+      "actual_tip": [
+        519.4098883572568,
+        445.7910685805423
+      ],
+      "actual_bridge": [
+        519.4098883572568,
+        408.96810207336523
+      ]
+    },
+    "mouth": {
+      "raw": "mouth_raw_01.png",
+      "resize_size": [
+        157,
+        157
+      ],
+      "scale": 0.1251993620414673,
+      "translation": [
+        440,
+        402
+      ],
+      "source_lip_seam": [
+        627,
+        644
+      ],
+      "target_lip_seam": [
+        519,
+        483
+      ],
+      "actual_lip_seam": [
+        518.5,
+        482.62838915470496
+      ]
+    }
+  },
+  "checks": {
+    "nose": {
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "source_sha256": "550a1826cb8bc3bc430720be62850c2d6ff92ce3f6f855eb0f778186550404c9",
+      "output_sha256": "edb0ade533423165f9179bd954cb222aa3ca7085f1e14a659c26c72f54a0d435",
+      "alpha_min_max": [
+        0,
+        253
+      ],
+      "nonzero_pixels": 3971,
+      "partial_alpha_pixels": 3971,
+      "alpha_1_pixels_retained": 255,
+      "alpha_gt_32_bbox": [
+        499,
+        371,
+        540,
+        464
+      ]
+    },
+    "mouth": {
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "source_sha256": "a3690ca2e236ebcdc52bbfa3a1d6c976b9a92bc4fb7266f4f88d6d97b1bda1ab",
+      "output_sha256": "e7fd97083bee2bafb574bf714600214ed48f90d12d7c3e703bb11bbda5307bfb",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "nonzero_pixels": 1112,
+      "partial_alpha_pixels": 1062,
+      "alpha_1_pixels_retained": 83,
+      "alpha_gt_32_bbox": [
+        488,
+        474,
+        549,
+        497
+      ]
+    }
+  },
+  "reference_sha256": {
+    "face_shape.png": "3d2bd3402115da481a7f1db6ee8745aa4faa26165e825397e8e78670532ed6c7",
+    "clothing.png": "2456e11244be9106b1cf80415eb33f44111332225fd166adf441a9c751014b38"
+  },
+  "generated_source_files": {
+    "nose": "E:/tmp/CodexData/generated_images/01a1a1af-79b9-7802-96d4-6957dfc73ad9/exec-ceb2b489-4b77-4b19-a6fe-845a31368730.png",
+    "mouth": "E:/tmp/CodexData/generated_images/01a1a1af-79b9-7802-96d4-6957dfc73ad9/exec-6990b4ab-be4e-455d-9bb1-b9838aaa9df2.png"
+  },
+  "prompt_files": {
+    "nose": "source/nose_prompt_01.txt",
+    "mouth": "source/mouth_prompt_01.txt"
+  }
+}

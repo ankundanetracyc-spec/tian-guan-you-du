@@ -1,0 +1,78 @@
+{
+  "active_count": 51,
+  "sizes": {
+    "1024x1536 RGBA=true": 51
+  },
+  "neck_alpha_threshold": 230,
+  "necks": [
+    {
+      "name": "current",
+      "rows": [
+        {
+          "y": 530,
+          "left": 428,
+          "right": 603,
+          "width": 176
+        },
+        {
+          "y": 550,
+          "left": 429,
+          "right": 603,
+          "width": 175
+        },
+        {
+          "y": 580,
+          "left": 427,
+          "right": 604,
+          "width": 178
+        }
+      ]
+    },
+    {
+      "name": "before_last_revision",
+      "rows": [
+        {
+          "y": 530,
+          "left": 434,
+          "right": 599,
+          "width": 166
+        },
+        {
+          "y": 550,
+          "left": 435,
+          "right": 599,
+          "width": 165
+        },
+        {
+          "y": 580,
+          "left": 433,
+          "right": 601,
+          "width": 169
+        }
+      ]
+    },
+    {
+      "name": "before_v5",
+      "rows": [
+        {
+          "y": 530,
+          "left": 442,
+          "right": 589,
+          "width": 148
+        },
+        {
+          "y": 550,
+          "left": 441,
+          "right": 589,
+          "width": 149
+        },
+        {
+          "y": 580,
+          "left": 436,
+          "right": 595,
+          "width": 160
+        }
+      ]
+    }
+  ]
+}

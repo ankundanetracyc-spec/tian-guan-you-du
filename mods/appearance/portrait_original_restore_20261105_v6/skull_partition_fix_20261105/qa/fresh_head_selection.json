@@ -1,0 +1,88 @@
+{
+  "mode": "fresh built-in image_gen render",
+  "generated_rgb_only": true,
+  "old_portrait_rgb_copied": false,
+  "canvas": [
+    1024,
+    1536
+  ],
+  "resized_or_shifted": false,
+  "source_sha256": "34c4f1722c8ac0510a23bbdfe96e6a01e72f5fa6422207ee888ac3dd10f28b0d",
+  "selected_sha256": "dcc032b03bdb682bd72b8031025b199cc92e6620181635d610c7f9936e38df27",
+  "opaque_bbox": [
+    369,
+    174,
+    658,
+    729
+  ],
+  "neck_anchor_rows_530_550_580_exact": true,
+  "neck_contour": "smooth PCHIP anchored collar support; former y510-520 notch removed",
+  "neck_control_rows": {
+    "172": null,
+    "175": [
+      493,
+      539
+    ],
+    "210": [
+      425,
+      605
+    ],
+    "280": [
+      389,
+      638
+    ],
+    "330": [
+      389,
+      637
+    ],
+    "370": [
+      369,
+      658
+    ],
+    "520": [
+      430,
+      603
+    ],
+    "530": [
+      430,
+      605
+    ],
+    "550": [
+      430,
+      605
+    ],
+    "580": [
+      430,
+      605
+    ],
+    "600": [
+      441,
+      598
+    ],
+    "620": [
+      456,
+      589
+    ],
+    "650": [
+      480,
+      575
+    ],
+    "680": [
+      500,
+      559
+    ],
+    "700": [
+      513,
+      548
+    ],
+    "720": [
+      526,
+      537
+    ],
+    "729": [
+      532,
+      532
+    ]
+  },
+  "native_rgb_changed_only_for_generated_skin_edge_extension_below_y488": true
+}

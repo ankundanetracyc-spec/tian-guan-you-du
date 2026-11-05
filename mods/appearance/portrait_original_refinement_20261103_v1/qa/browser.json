@@ -1,0 +1,30 @@
+{
+  "browser": "Microsoft Edge via Playwright CLI",
+  "pass": true,
+  "verified": [
+    "male/female switching",
+    "warm/dark/checker backdrop",
+    "reference anchors",
+    "eight nonempty visible layers",
+    "old/new front and back switches",
+    "reset restores identical pixels",
+    "transparent PNG download"
+  ],
+  "empty_accessory": "retained blank default; no visual difference expected",
+  "export": {
+    "file": "browser_export.png",
+    "width": 1024,
+    "height": 1536,
+    "rgba": true
+  },
+  "latest_smoke": {
+    "ready": true,
+    "gender": "female",
+    "backdrop": true,
+    "anchors": true,
+    "reset": true,
+    "canvases": 2
+  },
+  "screenshot": "preview_browser.png",
+  "game_runtime_tested": false
+}

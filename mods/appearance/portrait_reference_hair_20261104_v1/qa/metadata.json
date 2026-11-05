@@ -1,0 +1,703 @@
+{
+  "status": "Generated hair candidates with whole-layer uniform scaling/translation only; not installed in active game; full non-collinear three-point <=2px certification not asserted.",
+  "canvas": {
+    "width": 1024,
+    "height": 1536,
+    "origin": "top-left"
+  },
+  "fixedFace": "unchanged copy of portrait_fresh_sets_20261103_v2/female/face_shape.png",
+  "faceReference": "User attachment is a close crop of near-identical fixed-face geometry; never enlarged to fill the production canvas.",
+  "operations": [
+    "lossless raw source copy",
+    "whole-layer uniform resize",
+    "whole-layer translation",
+    "alpha composite for preview"
+  ],
+  "noPixelCleanup": true,
+  "layerOrder": [
+    "hair_back",
+    "face_shape",
+    "clothing",
+    "hair_front"
+  ],
+  "pairedPreviewOrder": [
+    "01 reference left",
+    "02 reference middle",
+    "03 reference right"
+  ],
+  "sixLayerSheet": "row 1 fronts 01/02/03; row 2 backs 01/02/03",
+  "nineMixSheet": "rows are front 01/02/03; columns are back 01/02/03",
+  "visualReview": {
+    "reviewed": [
+      "three paired styles on light/dark backgrounds",
+      "six isolated hair layers on light/dark backgrounds",
+      "nine front/back mixes"
+    ],
+    "findings": [
+      "Final front layers use scale 0.85 to match reference temple/ear coverage; back layers retain scale 0.75. Fixed face and clothing are unchanged.",
+      "No visible ear skin patches or facial feature fragments were found in isolated alpha-composited hair layers. Color-candidate metrics include warm hair highlights and are not semantic skin findings.",
+      "Narrow warm scalp-colored part strokes remain within the central hair part. They are not detached ear or face fragments.",
+      "Front02 shows a continuous front hair cap and wisps, not a separate exposed rear bun. Its high rear crown/chignon is supplied by back02.",
+      "Back03 includes outer rear braids; mixing it with other fronts exposes those rear braid edges. This style-specific silhouette is retained without pixel cleanup.",
+      "Front central opaque hairline runs at x518 end near y257/y254/y254. Side geometry was visually fitted; non-collinear three-point <=2px certification was not performed."
+    ]
+  },
+  "records": [
+    {
+      "key": "hair_front_01",
+      "generatedSource": "E:\\tmp\\CodexData\\generated_images\\01a1a4be-7b8b-76e1-af95-b099fa3c88dc\\exec-dc90e477-7d8e-46bc-ba9b-3e41c731a34b.png",
+      "rawCopy": "E:\\stacklands\\mods\\appearance\\portrait_reference_hair_20261104_v1\\source\\raw\\hair_front\\01.png",
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_reference_hair_20261104_v1\\female\\hair_front\\01.png",
+      "rawSha256": "749f2a2f05c9b441101f4d69ced525f5647c04d96cf0ea059869485f267da208",
+      "copiedSha256": "749f2a2f05c9b441101f4d69ced525f5647c04d96cf0ea059869485f267da208",
+      "uniformScale": 0.85,
+      "translation": [
+        77,
+        -28
+      ],
+      "source": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 4,
+        "alpha": {
+          "zero": 1414273,
+          "partial": 158591,
+          "opaque": 0
+        },
+        "bboxAlphaAtLeast10": [
+          315,
+          166,
+          707,
+          1157
+        ],
+        "skinColorCandidatePixelsAlphaOver180": 409,
+        "strongWarmPixels": {
+          "count": 60,
+          "bounds": [
+            519,
+            270,
+            522,
+            312
+          ],
+          "note": "Color-only candidate metric, not a semantic skin detector; central scalp part strokes can satisfy it."
+        },
+        "verticalAlphaRunsAtLeast180": {
+          "442": [
+            [
+              191,
+              361
+            ]
+          ],
+          "518": [
+            [
+              167,
+              167
+            ],
+            [
+              170,
+              334
+            ]
+          ],
+          "596": [
+            [
+              194,
+              195
+            ],
+            [
+              199,
+              376
+            ]
+          ]
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 4,
+        "alpha": {
+          "zero": 1460070,
+          "partial": 112772,
+          "opaque": 22
+        },
+        "bboxAlphaAtLeast10": [
+          344,
+          113,
+          678,
+          955
+        ],
+        "skinColorCandidatePixelsAlphaOver180": 286,
+        "strongWarmPixels": {
+          "count": 39,
+          "bounds": [
+            518,
+            214,
+            520,
+            237
+          ],
+          "note": "Color-only candidate metric, not a semantic skin detector; central scalp part strokes can satisfy it."
+        },
+        "verticalAlphaRunsAtLeast180": {
+          "442": [
+            [
+              143,
+              310
+            ],
+            [
+              353,
+              353
+            ],
+            [
+              482,
+              487
+            ]
+          ],
+          "518": [
+            [
+              114,
+              114
+            ],
+            [
+              117,
+              257
+            ]
+          ],
+          "596": [
+            [
+              151,
+              326
+            ],
+            [
+              474,
+              479
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "key": "hair_back_01",
+      "generatedSource": "E:\\tmp\\CodexData\\generated_images\\01a1a4be-7b8b-76e1-af95-b099fa3c88dc\\exec-74331a6a-ab37-4d6e-92b1-dfb53b7fc485.png",
+      "rawCopy": "E:\\stacklands\\mods\\appearance\\portrait_reference_hair_20261104_v1\\source\\raw\\hair_back\\01.png",
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_reference_hair_20261104_v1\\female\\hair_back\\01.png",
+      "rawSha256": "a9be4c052384198d5a59828fb39528e4b1273aa2a881b22671e45dbce5f001dc",
+      "copiedSha256": "a9be4c052384198d5a59828fb39528e4b1273aa2a881b22671e45dbce5f001dc",
+      "uniformScale": 0.75,
+      "translation": [
+        129,
+        0
+      ],
+      "source": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 4,
+        "alpha": {
+          "zero": 1060671,
+          "partial": 512193,
+          "opaque": 0
+        },
+        "bboxAlphaAtLeast10": [
+          194,
+          145,
+          845,
+          1291
+        ],
+        "skinColorCandidatePixelsAlphaOver180": 1,
+        "strongWarmPixels": {
+          "count": 0,
+          "bounds": null,
+          "note": "Color-only candidate metric, not a semantic skin detector; central scalp part strokes can satisfy it."
+        },
+        "verticalAlphaRunsAtLeast180": {
+          "442": [
+            [
+              177,
+              650
+            ]
+          ],
+          "518": [
+            [
+              151,
+              650
+            ]
+          ],
+          "596": [
+            [
+              175,
+              650
+            ]
+          ]
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 4,
+        "alpha": {
+          "zero": 1285735,
+          "partial": 287113,
+          "opaque": 16
+        },
+        "bboxAlphaAtLeast10": [
+          274,
+          109,
+          763,
+          968
+        ],
+        "skinColorCandidatePixelsAlphaOver180": 0,
+        "strongWarmPixels": {
+          "count": 0,
+          "bounds": null,
+          "note": "Color-only candidate metric, not a semantic skin detector; central scalp part strokes can satisfy it."
+        },
+        "verticalAlphaRunsAtLeast180": {
+          "442": [
+            [
+              151,
+              650
+            ]
+          ],
+          "518": [
+            [
+              113,
+              650
+            ]
+          ],
+          "596": [
+            [
+              150,
+              650
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "key": "hair_front_02",
+      "generatedSource": "E:\\tmp\\CodexData\\generated_images\\01a1a4be-7b8b-76e1-af95-b099fa3c88dc\\exec-c815c10a-3ec3-4bef-8770-6479ec924583.png",
+      "rawCopy": "E:\\stacklands\\mods\\appearance\\portrait_reference_hair_20261104_v1\\source\\raw\\hair_front\\02.png",
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_reference_hair_20261104_v1\\female\\hair_front\\02.png",
+      "rawSha256": "d78e2e06ebdeb07f6ceae5a2b3a55a18b730babaa19c9ef6d7aba7d95ceed5f2",
+      "copiedSha256": "d78e2e06ebdeb07f6ceae5a2b3a55a18b730babaa19c9ef6d7aba7d95ceed5f2",
+      "uniformScale": 0.85,
+      "translation": [
+        77,
+        -15
+      ],
+      "source": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 4,
+        "alpha": {
+          "zero": 1481001,
+          "partial": 91863,
+          "opaque": 0
+        },
+        "bboxAlphaAtLeast10": [
+          336,
+          161,
+          688,
+          921
+        ],
+        "skinColorCandidatePixelsAlphaOver180": 1003,
+        "strongWarmPixels": {
+          "count": 176,
+          "bounds": [
+            518,
+            251,
+            522,
+            313
+          ],
+          "note": "Color-only candidate metric, not a semantic skin detector; central scalp part strokes can satisfy it."
+        },
+        "verticalAlphaRunsAtLeast180": {
+          "442": [
+            [
+              184,
+              353
+            ]
+          ],
+          "518": [
+            [
+              164,
+              316
+            ]
+          ],
+          "596": [
+            [
+              198,
+              355
+            ]
+          ]
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 4,
+        "alpha": {
+          "zero": 1507479,
+          "partial": 65353,
+          "opaque": 32
+        },
+        "bboxAlphaAtLeast10": [
+          362,
+          122,
+          661,
+          768
+        ],
+        "skinColorCandidatePixelsAlphaOver180": 721,
+        "strongWarmPixels": {
+          "count": 120,
+          "bounds": [
+            517,
+            200,
+            520,
+            250
+          ],
+          "note": "Color-only candidate metric, not a semantic skin detector; central scalp part strokes can satisfy it."
+        },
+        "verticalAlphaRunsAtLeast180": {
+          "442": [
+            [
+              150,
+              307
+            ]
+          ],
+          "518": [
+            [
+              126,
+              254
+            ]
+          ],
+          "596": [
+            [
+              170,
+              331
+            ],
+            [
+              522,
+              549
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "key": "hair_back_02",
+      "generatedSource": "E:\\tmp\\CodexData\\generated_images\\01a1a4be-7b8b-76e1-af95-b099fa3c88dc\\exec-4e5e2366-a3c3-4e09-95e1-59aba2142c9d.png",
+      "rawCopy": "E:\\stacklands\\mods\\appearance\\portrait_reference_hair_20261104_v1\\source\\raw\\hair_back\\02.png",
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_reference_hair_20261104_v1\\female\\hair_back\\02.png",
+      "rawSha256": "f373631b3c34f88147a6703b63e356299a020bde3dad3f191ecb91edc3797965",
+      "copiedSha256": "f373631b3c34f88147a6703b63e356299a020bde3dad3f191ecb91edc3797965",
+      "uniformScale": 0.75,
+      "translation": [
+        129,
+        0
+      ],
+      "source": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 4,
+        "alpha": {
+          "zero": 1401557,
+          "partial": 171307,
+          "opaque": 0
+        },
+        "bboxAlphaAtLeast10": [
+          303,
+          156,
+          723,
+          684
+        ],
+        "skinColorCandidatePixelsAlphaOver180": 0,
+        "strongWarmPixels": {
+          "count": 0,
+          "bounds": null,
+          "note": "Color-only candidate metric, not a semantic skin detector; central scalp part strokes can satisfy it."
+        },
+        "verticalAlphaRunsAtLeast180": {
+          "442": [
+            [
+              177,
+              177
+            ],
+            [
+              179,
+              650
+            ]
+          ],
+          "518": [
+            [
+              160,
+              650
+            ]
+          ],
+          "596": [
+            [
+              190,
+              650
+            ]
+          ]
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 4,
+        "alpha": {
+          "zero": 1476739,
+          "partial": 96120,
+          "opaque": 5
+        },
+        "bboxAlphaAtLeast10": [
+          356,
+          117,
+          671,
+          513
+        ],
+        "skinColorCandidatePixelsAlphaOver180": 0,
+        "strongWarmPixels": {
+          "count": 0,
+          "bounds": null,
+          "note": "Color-only candidate metric, not a semantic skin detector; central scalp part strokes can satisfy it."
+        },
+        "verticalAlphaRunsAtLeast180": {
+          "442": [
+            [
+              145,
+              493
+            ]
+          ],
+          "518": [
+            [
+              120,
+              510
+            ]
+          ],
+          "596": [
+            [
+              163,
+              491
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "key": "hair_front_03",
+      "generatedSource": "E:\\tmp\\CodexData\\generated_images\\01a1a4be-7b8b-76e1-af95-b099fa3c88dc\\exec-772dbf7a-fb13-48a5-9209-501b93438ecf.png",
+      "rawCopy": "E:\\stacklands\\mods\\appearance\\portrait_reference_hair_20261104_v1\\source\\raw\\hair_front\\03.png",
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_reference_hair_20261104_v1\\female\\hair_front\\03.png",
+      "rawSha256": "0c48e8f43769b97d56f6caf82175e7ca224da4af1969f3b0c17c6c445b18e9b6",
+      "copiedSha256": "0c48e8f43769b97d56f6caf82175e7ca224da4af1969f3b0c17c6c445b18e9b6",
+      "uniformScale": 0.85,
+      "translation": [
+        77,
+        -28
+      ],
+      "source": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 4,
+        "alpha": {
+          "zero": 1391295,
+          "partial": 181569,
+          "opaque": 0
+        },
+        "bboxAlphaAtLeast10": [
+          304,
+          156,
+          720,
+          1169
+        ],
+        "skinColorCandidatePixelsAlphaOver180": 705,
+        "strongWarmPixels": {
+          "count": 32,
+          "bounds": [
+            517,
+            237,
+            519,
+            292
+          ],
+          "note": "Color-only candidate metric, not a semantic skin detector; central scalp part strokes can satisfy it."
+        },
+        "verticalAlphaRunsAtLeast180": {
+          "442": [
+            [
+              179,
+              345
+            ]
+          ],
+          "518": [
+            [
+              160,
+              332
+            ]
+          ],
+          "596": [
+            [
+              186,
+              356
+            ]
+          ]
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 4,
+        "alpha": {
+          "zero": 1443422,
+          "partial": 129417,
+          "opaque": 25
+        },
+        "bboxAlphaAtLeast10": [
+          336,
+          104,
+          688,
+          966
+        ],
+        "skinColorCandidatePixelsAlphaOver180": 496,
+        "strongWarmPixels": {
+          "count": 14,
+          "bounds": [
+            516,
+            175,
+            517,
+            219
+          ],
+          "note": "Color-only candidate metric, not a semantic skin detector; central scalp part strokes can satisfy it."
+        },
+        "verticalAlphaRunsAtLeast180": {
+          "442": [
+            [
+              129,
+              282
+            ]
+          ],
+          "518": [
+            [
+              108,
+              254
+            ]
+          ],
+          "596": [
+            [
+              137,
+              301
+            ],
+            [
+              481,
+              492
+            ],
+            [
+              522,
+              536
+            ],
+            [
+              576,
+              577
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "key": "hair_back_03",
+      "generatedSource": "E:\\tmp\\CodexData\\generated_images\\01a1a4be-7b8b-76e1-af95-b099fa3c88dc\\exec-10a9eb65-275a-477a-9eb5-0318a83974d3.png",
+      "rawCopy": "E:\\stacklands\\mods\\appearance\\portrait_reference_hair_20261104_v1\\source\\raw\\hair_back\\03.png",
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_reference_hair_20261104_v1\\female\\hair_back\\03.png",
+      "rawSha256": "e7838ae0292fc445395d8a22a9719c4796784dfe3896103e772bee21931dca07",
+      "copiedSha256": "e7838ae0292fc445395d8a22a9719c4796784dfe3896103e772bee21931dca07",
+      "uniformScale": 0.75,
+      "translation": [
+        129,
+        0
+      ],
+      "source": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 4,
+        "alpha": {
+          "zero": 969446,
+          "partial": 603418,
+          "opaque": 0
+        },
+        "bboxAlphaAtLeast10": [
+          155,
+          144,
+          872,
+          1407
+        ],
+        "skinColorCandidatePixelsAlphaOver180": 40,
+        "strongWarmPixels": {
+          "count": 0,
+          "bounds": null,
+          "note": "Color-only candidate metric, not a semantic skin detector; central scalp part strokes can satisfy it."
+        },
+        "verticalAlphaRunsAtLeast180": {
+          "442": [
+            [
+              173,
+              650
+            ]
+          ],
+          "518": [
+            [
+              148,
+              650
+            ]
+          ],
+          "596": [
+            [
+              169,
+              650
+            ]
+          ]
+        }
+      },
+      "final": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 4,
+        "alpha": {
+          "zero": 1235928,
+          "partial": 336860,
+          "opaque": 76
+        },
+        "bboxAlphaAtLeast10": [
+          245,
+          108,
+          783,
+          1055
+        ],
+        "skinColorCandidatePixelsAlphaOver180": 29,
+        "strongWarmPixels": {
+          "count": 0,
+          "bounds": null,
+          "note": "Color-only candidate metric, not a semantic skin detector; central scalp part strokes can satisfy it."
+        },
+        "verticalAlphaRunsAtLeast180": {
+          "442": [
+            [
+              139,
+              650
+            ]
+          ],
+          "518": [
+            [
+              111,
+              650
+            ]
+          ],
+          "596": [
+            [
+              136,
+              650
+            ]
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+[
+  {
+    "variant": 2,
+    "source_sha256": "772badd760de39e1dd0f8ced89faf646284fa867b652d04686cf27eeb30587dd",
+    "generated_sha256": "655341ec10a0ad7e50ed5cc4c75d1cff39c9d736a9a8bbdbadfc5a2466ac5566",
+    "size": [
+      1024,
+      1536
+    ],
+    "source_bbox": [
+      0,
+      536,
+      1024,
+      1536
+    ],
+    "generated_bbox": [
+      0,
+      119,
+      1024,
+      1536
+    ],
+    "opaque_mask_iou": 0.9979614038634647,
+    "extra_opaque_pixels": 366,
+    "missing_opaque_pixels": 1328,
+    "opaque_pixels_above_y500": 0,
+    "source_bbox_alpha128": [
+      0,
+      538,
+      1024,
+      1536
+    ],
+    "generated_bbox_alpha128": [
+      0,
+      540,
+      1024,
+      1536
+    ],
+    "median_rgb_difference_inside": [
+      6.0,
+      4.0,
+      4.0
+    ],
+    "note": "Raw builtin edit; low-alpha specks outside original silhouette should be removed by final original-alpha constraint. Active source file unchanged."
+  },
+  {
+    "variant": 3,
+    "source_sha256": "e29ba111c2a45530144097d1c3b31dedd753cc0c59b4271541a7495b8c6cc8d1",
+    "generated_sha256": "0986e0b398abd9db51e5400a49ce05e53f2a1f688de5c193d19ed4de28b12665",
+    "size": [
+      1024,
+      1536
+    ],
+    "source_bbox": [
+      0,
+      520,
+      1024,
+      1536
+    ],
+    "generated_bbox": [
+      0,
+      519,
+      1024,
+      1536
+    ],
+    "opaque_mask_iou": 0.9977300338145066,
+    "extra_opaque_pixels": 21,
+    "missing_opaque_pixels": 1911,
+    "opaque_pixels_above_y500": 0,
+    "source_bbox_alpha128": [
+      0,
+      521,
+      1024,
+      1536
+    ],
+    "generated_bbox_alpha128": [
+      0,
+      522,
+      1024,
+      1536
+    ],
+    "median_rgb_difference_inside": [
+      1.0,
+      2.0,
+      3.0
+    ],
+    "note": "Raw builtin edit; low-alpha specks outside original silhouette should be removed by final original-alpha constraint. Active source file unchanged."
+  },
+  {
+    "variant": 4,
+    "source_sha256": "412df74c69591eb7fad69db72785ae91fe854703de203e9071087c93e55681af",
+    "generated_sha256": "df0a6e2627cf8bdd2f385d12e70c3e16ae417b93987fc4780777f611b009b6cf",
+    "size": [
+      1024,
+      1536
+    ],
+    "source_bbox": [
+      0,
+      528,
+      1024,
+      1536
+    ],
+    "generated_bbox": [
+      0,
+      485,
+      1024,
+      1536
+    ],
+    "opaque_mask_iou": 0.9975880331660537,
+    "extra_opaque_pixels": 42,
+    "missing_opaque_pixels": 1955,
+    "opaque_pixels_above_y500": 0,
+    "source_bbox_alpha128": [
+      0,
+      541,
+      1024,
+      1536
+    ],
+    "generated_bbox_alpha128": [
+      0,
+      544,
+      1024,
+      1536
+    ],
+    "median_rgb_difference_inside": [
+      9.0,
+      9.0,
+      10.0
+    ],
+    "note": "Raw builtin edit; low-alpha specks outside original silhouette should be removed by final original-alpha constraint. Active source file unchanged."
+  }
+]

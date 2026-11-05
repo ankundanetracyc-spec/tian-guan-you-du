@@ -1,0 +1,186 @@
+{
+  "status": "retained_for_single_set_combined_visual_review",
+  "generation": "Built-in imagegen, two fresh independent drawings after the local game assembly review. No previous rejected draft reused.",
+  "transform_policy": "One uniform scale and translation for each complete paired layer; no separate left/right reshaping, color cleanup, alpha thresholding, skin extraction or source pixel patching.",
+  "fixed_face": "E:\\stacklands\\mods\\appearance\\portrait_generated_anchors_20261103\\parts\\face_shape.png",
+  "fixed_clothing": "E:\\stacklands\\mods\\appearance\\portrait_generated_anchors_20261103\\parts\\clothing.png",
+  "fixed_face_sha256": "3d2bd3402115da481a7f1db6ee8745aa4faa26165e825397e8e78670532ed6c7",
+  "fixed_clothing_sha256": "2456e11244be9106b1cf80415eb33f44111332225fd166adf441a9c751014b38",
+  "parts": {
+    "eyes": {
+      "source_path": "E:\\stacklands\\mods\\appearance\\portrait_modular_sample_20261103\\source\\eyes\\attempt_01.png",
+      "generated_original_path": "E:\\tmp\\CodexData\\generated_images\\01a1a1ae-f744-70a3-8368-2201c0206eae\\exec-5ab0be7e-1d33-47e2-ab10-095b023ec045.png",
+      "registered_candidate": "E:\\stacklands\\mods\\appearance\\portrait_modular_sample_20261103\\preview\\eyes_registered_attempt_01.png",
+      "source_sha256": "bdc22626eea42ba363d6a56103481f81e1e653c1fe588a36f74ecf42fe575fe6",
+      "registered_sha256": "0a171927d51ba92a9359b81b8c217d32a4f401022fe3b1d82259f6cc5616ecad",
+      "registration": {
+        "source": [
+          [
+            459.36386138613864,
+            509.970297029703
+          ],
+          [
+            1076.858832807571,
+            509.74526813880124
+          ]
+        ],
+        "target": [
+          [
+            464,
+            379
+          ],
+          [
+            574,
+            379
+          ]
+        ],
+        "method": "Pupil dark-pigment centroid in manually inspected pupil-only windows; not the whole asset bounding box.",
+        "uniform_scale": 0.17813910248821513,
+        "translation": [
+          382.1693340171524,
+          288.1743922138098
+        ],
+        "mapped_source_points": [
+          [
+            464.0,
+            379.0200432223296
+          ],
+          [
+            574.0,
+            378.97995677767045
+          ]
+        ],
+        "maximum_anchor_distance_px": 0.02004322232960476
+      },
+      "source_alpha": {
+        "size": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "nonzero_alpha_pixels": 145123,
+        "partially_transparent_pixels": 145123,
+        "alpha_extrema": [
+          0,
+          254
+        ]
+      },
+      "registered_alpha": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "nonzero_alpha_pixels": 4419,
+        "partially_transparent_pixels": 4419,
+        "alpha_extrema": [
+          0,
+          254
+        ]
+      },
+      "selected_part": "E:\\stacklands\\mods\\appearance\\portrait_modular_sample_20261103\\parts\\eyes.png"
+    },
+    "eyebrows": {
+      "source_path": "E:\\stacklands\\mods\\appearance\\portrait_modular_sample_20261103\\source\\eyebrows\\attempt_01.png",
+      "generated_original_path": "E:\\tmp\\CodexData\\generated_images\\01a1a1ae-f744-70a3-8368-2201c0206eae\\exec-f6e1b3ff-eea6-49b9-9e04-7c6fcd2667da.png",
+      "registered_candidate": "E:\\stacklands\\mods\\appearance\\portrait_modular_sample_20261103\\preview\\eyebrows_registered_attempt_01.png",
+      "source_sha256": "113859593ff40a3e0c1f91160f51c862cf4fe975de658089c7e609e42be87009",
+      "registered_sha256": "1a5b5d38f66083fabcd3928ef4f2dc3849ba118d705510abe6def9636f0b5918",
+      "registration": {
+        "source": [
+          [
+            406.5,
+            624.5
+          ],
+          [
+            852,
+            623.5
+          ]
+        ],
+        "target": [
+          [
+            457,
+            354
+          ],
+          [
+            582,
+            353
+          ]
+        ],
+        "method": "Individually inspected brow-body midpoints, then visually checked on the fixed face.",
+        "uniform_scale": 0.28058361391694725,
+        "translation": [
+          342.94276094276097,
+          178.4158249158249
+        ],
+        "mapped_source_points": [
+          [
+            457.0,
+            353.64029180695843
+          ],
+          [
+            582.0,
+            353.3597081930415
+          ]
+        ],
+        "maximum_anchor_distance_px": 0.35970819304156976
+      },
+      "source_alpha": {
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "nonzero_alpha_pixels": 26542,
+        "partially_transparent_pixels": 26542,
+        "alpha_extrema": [
+          0,
+          249
+        ]
+      },
+      "registered_alpha": {
+        "size": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "nonzero_alpha_pixels": 1891,
+        "partially_transparent_pixels": 1891,
+        "alpha_extrema": [
+          0,
+          249
+        ]
+      },
+      "selected_part": "E:\\stacklands\\mods\\appearance\\portrait_modular_sample_20261103\\parts\\eyebrows.png"
+    }
+  },
+  "visual_review_record": "qa/brow_eye_generation_record.json",
+  "post_registration_pupil_check": {
+    "method": "Read the final PNG dark pupil pigment in pupil-only 9x9 windows; this is a practical localization check, not full eye-shape certification.",
+    "pupils": [
+      {
+        "target": [
+          464,
+          379
+        ],
+        "measured_dark_pupil_centroid": [
+          463.7692307692308,
+          377.9807692307692
+        ],
+        "pixels": 52
+      },
+      {
+        "target": [
+          574,
+          379
+        ],
+        "measured_dark_pupil_centroid": [
+          573.6296296296297,
+          378.037037037037
+        ],
+        "pixels": 54
+      }
+    ]
+  },
+  "fixed_source_hashes_unchanged": true
+}

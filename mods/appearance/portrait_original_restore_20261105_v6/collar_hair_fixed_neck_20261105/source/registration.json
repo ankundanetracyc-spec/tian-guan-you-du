@@ -1,0 +1,431 @@
+{
+  "head_neck_sha256": "ed790ac8bcd41fd54d9a2e0a7be55f21704413ff5b86213a91285782a5d6f7c2",
+  "head_changed": false,
+  "canvas": [
+    1024,
+    1536
+  ],
+  "zero_runtime_offset": true,
+  "records": [
+    {
+      "index": 1,
+      "front_source_tips": [
+        [
+          421,
+          561
+        ],
+        [
+          605.5,
+          564
+        ]
+      ],
+      "front_target_tips": [
+        [
+          424,
+          530
+        ],
+        [
+          607,
+          530
+        ]
+      ],
+      "v_points": {
+        "before": [
+          531,
+          692
+        ],
+        "raw": [
+          516,
+          727
+        ]
+      },
+      "front_transform": {
+        "sx": 0.991869918699187,
+        "tx": 6.42276422764229,
+        "sy": 0.9848024316109423,
+        "shear": 0.07764351199742989,
+        "midY": 562.5
+      },
+      "registration_box": [
+        300,
+        480,
+        730,
+        930
+      ],
+      "rear_source_bbox": [
+        371,
+        507,
+        654,
+        615
+      ],
+      "rear_target_bbox": [
+        382,
+        508,
+        650,
+        630
+      ],
+      "source_mode": "Continuous native generated garment with local collar displacement; no old/new lapel crossfade",
+      "generated_body_below_930_unchanged": true
+    },
+    {
+      "index": 2,
+      "front_source_tips": [
+        [
+          416,
+          570
+        ],
+        [
+          609,
+          571
+        ]
+      ],
+      "front_target_tips": [
+        [
+          424,
+          530
+        ],
+        [
+          607,
+          530
+        ]
+      ],
+      "v_points": {
+        "before": [
+          530,
+          689
+        ],
+        "raw": [
+          516,
+          727
+        ]
+      },
+      "front_transform": {
+        "sx": 0.9481865284974094,
+        "tx": 29.554404145077683,
+        "sy": 1.0159744408945688,
+        "shear": 0.07144630766938695,
+        "midY": 570.5
+      },
+      "registration_box": [
+        300,
+        480,
+        730,
+        930
+      ],
+      "rear_source_bbox": [
+        371,
+        573,
+        652,
+        683
+      ],
+      "rear_target_bbox": [
+        382,
+        508,
+        650,
+        630
+      ],
+      "source_mode": "Continuous native generated garment with local collar displacement; no old/new lapel crossfade",
+      "generated_body_below_930_unchanged": true
+    },
+    {
+      "index": 3,
+      "front_source_tips": [
+        [
+          414,
+          568
+        ],
+        [
+          611.5,
+          569
+        ]
+      ],
+      "front_target_tips": [
+        [
+          424,
+          530
+        ],
+        [
+          607,
+          530
+        ]
+      ],
+      "v_points": {
+        "before": [
+          528.5,
+          679
+        ],
+        "raw": [
+          517,
+          737
+        ]
+      },
+      "front_transform": {
+        "sx": 0.9265822784810127,
+        "tx": 40.39493670886071,
+        "sy": 0.884272997032641,
+        "shear": 0.0537805656762948,
+        "midY": 568.5
+      },
+      "registration_box": [
+        300,
+        480,
+        730,
+        930
+      ],
+      "rear_source_bbox": [
+        365,
+        698,
+        659,
+        824
+      ],
+      "rear_target_bbox": [
+        382,
+        508,
+        650,
+        630
+      ],
+      "source_mode": "Continuous native generated garment with local collar displacement; no old/new lapel crossfade",
+      "generated_body_below_930_unchanged": true
+    },
+    {
+      "index": 4,
+      "front_source_tips": [
+        [
+          420.5,
+          564
+        ],
+        [
+          606.5,
+          564
+        ]
+      ],
+      "front_target_tips": [
+        [
+          424,
+          530
+        ],
+        [
+          607,
+          530
+        ]
+      ],
+      "v_points": {
+        "before": [
+          532,
+          689
+        ],
+        "raw": [
+          520,
+          736
+        ]
+      },
+      "front_transform": {
+        "sx": 0.9838709677419355,
+        "tx": 10.2822580645161,
+        "sy": 0.9244186046511628,
+        "shear": 0.0587490622655665,
+        "midY": 564
+      },
+      "registration_box": [
+        300,
+        480,
+        730,
+        930
+      ],
+      "rear_source_bbox": [
+        386,
+        530,
+        643,
+        648
+      ],
+      "rear_target_bbox": [
+        382,
+        508,
+        650,
+        630
+      ],
+      "source_mode": "Continuous native generated garment with local collar displacement; no old/new lapel crossfade",
+      "generated_body_below_930_unchanged": true
+    },
+    {
+      "index": 5,
+      "front_source_tips": [
+        [
+          416,
+          565
+        ],
+        [
+          607,
+          564
+        ]
+      ],
+      "front_target_tips": [
+        [
+          424,
+          530
+        ],
+        [
+          607,
+          530
+        ]
+      ],
+      "v_points": {
+        "before": [
+          533,
+          686
+        ],
+        "raw": [
+          517,
+          750
+        ]
+      },
+      "front_transform": {
+        "sx": 0.9581151832460733,
+        "tx": 25.424083769633512,
+        "sy": 0.8409703504043127,
+        "shear": 0.06593189483637027,
+        "midY": 564.5
+      },
+      "registration_box": [
+        300,
+        480,
+        730,
+        930
+      ],
+      "rear_source_bbox": [
+        377,
+        554,
+        644,
+        665
+      ],
+      "rear_target_bbox": [
+        382,
+        508,
+        650,
+        630
+      ],
+      "source_mode": "Continuous native generated garment with local collar displacement; no old/new lapel crossfade",
+      "generated_body_below_930_unchanged": true
+    },
+    {
+      "index": 6,
+      "front_source_tips": [
+        [
+          417,
+          566
+        ],
+        [
+          611,
+          567
+        ]
+      ],
+      "front_target_tips": [
+        [
+          424,
+          530
+        ],
+        [
+          607,
+          530
+        ]
+      ],
+      "v_points": {
+        "before": [
+          532,
+          688
+        ],
+        "raw": [
+          515.5,
+          745
+        ]
+      },
+      "front_transform": {
+        "sx": 0.9432989690721649,
+        "tx": 30.64432989690721,
+        "sy": 0.8851540616246498,
+        "shear": 0.08451009269687225,
+        "midY": 566.5
+      },
+      "registration_box": [
+        300,
+        480,
+        730,
+        930
+      ],
+      "rear_source_bbox": [
+        367,
+        590,
+        657,
+        709
+      ],
+      "rear_target_bbox": [
+        382,
+        508,
+        650,
+        630
+      ],
+      "source_mode": "Continuous native generated garment with local collar displacement; no old/new lapel crossfade",
+      "generated_body_below_930_unchanged": true
+    },
+    {
+      "index": 7,
+      "front_source_tips": [
+        [
+          408,
+          578
+        ],
+        [
+          618.5,
+          579
+        ]
+      ],
+      "front_target_tips": [
+        [
+          424,
+          530
+        ],
+        [
+          607,
+          530
+        ]
+      ],
+      "v_points": {
+        "before": [
+          532,
+          688
+        ],
+        "raw": [
+          515.5,
+          753
+        ]
+      },
+      "front_transform": {
+        "sx": 0.8693586698337292,
+        "tx": 69.30166270783849,
+        "sy": 0.9054441260744985,
+        "shear": 0.08334637818265972,
+        "midY": 578.5
+      },
+      "registration_box": [
+        300,
+        480,
+        730,
+        930
+      ],
+      "rear_source_bbox": [
+        392,
+        518,
+        635,
+        623
+      ],
+      "rear_target_bbox": [
+        382,
+        508,
+        650,
+        630
+      ],
+      "source_mode": "Continuous native generated garment with local collar displacement; no old/new lapel crossfade",
+      "generated_body_below_930_unchanged": true
+    }
+  ]
+}
