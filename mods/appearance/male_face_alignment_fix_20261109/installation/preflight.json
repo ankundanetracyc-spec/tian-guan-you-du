@@ -1,0 +1,199 @@
+{
+  "schema": "male-face-alignment-install/v1",
+  "status": "preflight_passed",
+  "installed": false,
+  "time_utc": "2026-11-09T08:29:45.801428+00:00",
+  "explicit_replacement_count": 13,
+  "retained_png_count": 54,
+  "active_png_count": 67,
+  "active_choice_count": 60,
+  "baseline_sha256": "66e90d031c2048ee4391949bc430fc0eef8a6211a377e9026b504d1fd45bdec1",
+  "appearance_parts_sha256": "0b9f4024845b9d6ba9839f880ec2bc6542bb4e5f659d06dfd6ba724fb2c2a9e1",
+  "records": [
+    {
+      "target": "male/eyes/01.png",
+      "source": "mods/appearance/male_face_alignment_fix_20261109/male/eyes/01.png",
+      "before_sha256": "5ecb31eacb232bf8be1f83ddd97c50c3715b792564c73052f425aca7c20eb8af",
+      "sha256": "98026ce638f1c880ec3bb1c6e690ad7b15c0184b77a24561cef180dec746d642",
+      "same_size": [
+        1024,
+        1536
+      ],
+      "runtime_offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "target": "male/eyes/04.png",
+      "source": "mods/appearance/male_face_alignment_fix_20261109/male/eyes/04.png",
+      "before_sha256": "81723d5ca8413f3ecdb5a4a962a8850bf191aa7fd63c1a1818489eff4bd2f23a",
+      "sha256": "cf1e14f61b5ac2904cddcaad14eb38d3da6328673fa3e90a019e1e7629b99f05",
+      "same_size": [
+        1024,
+        1536
+      ],
+      "runtime_offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "target": "male/eyes/05.png",
+      "source": "mods/appearance/male_face_alignment_fix_20261109/male/eyes/05.png",
+      "before_sha256": "46d6b972e5667199e274b1c2dd8bc1686f01e0ed3f68eac4301f1fbf648f88fd",
+      "sha256": "a69e053c0f0af4be64b10a157c0f076aede96ab44ccc0915665f74c50a2560da",
+      "same_size": [
+        1024,
+        1536
+      ],
+      "runtime_offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "target": "male/eyebrows/01.png",
+      "source": "mods/appearance/male_face_alignment_fix_20261109/male/eyebrows/01.png",
+      "before_sha256": "b094a5d118e3b722b1901198c319919804cc93ab225c873366aa02af6fc6fa5f",
+      "sha256": "0b81852f026929d204972a43f9c0e88f9b15396e02941342fb761a615795f3cf",
+      "same_size": [
+        1024,
+        1536
+      ],
+      "runtime_offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "target": "male/eyebrows/04.png",
+      "source": "mods/appearance/male_face_alignment_fix_20261109/male/eyebrows/04.png",
+      "before_sha256": "f7d71d00f80370ddc6610a99aa8a001b7ae4f57abafe2d2eb4b0033fb9f63298",
+      "sha256": "530d5cf4e2fb3094269b6493ca7e9c552c30d27de5fe389a3a2012440adfcccf",
+      "same_size": [
+        1024,
+        1536
+      ],
+      "runtime_offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "target": "male/eyebrows/05.png",
+      "source": "mods/appearance/male_face_alignment_fix_20261109/male/eyebrows/05.png",
+      "before_sha256": "f5e0908457fb3b30a33dc7961af0b4c0e046f6794d8768104b79d1a0714839fd",
+      "sha256": "a8ef833cc1bfaadb9c0ee55f5c27806adfae05991216162d21a8ae6f492b6ef4",
+      "same_size": [
+        1024,
+        1536
+      ],
+      "runtime_offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "target": "male/nose/01.png",
+      "source": "mods/appearance/male_face_alignment_fix_20261109/male/nose/01.png",
+      "before_sha256": "e7271b38d96922434dbdf4a085b83a0d35ea5560989d0cfda9177beb085a2e79",
+      "sha256": "fea108d7478f923b820ad85c2bd0ea1aafd4ac0273c9702bec60a4ced9cc2d03",
+      "same_size": [
+        1024,
+        1536
+      ],
+      "runtime_offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "target": "male/mouth/01.png",
+      "source": "mods/appearance/male_face_alignment_fix_20261109/male/mouth/01.png",
+      "before_sha256": "471666da8f5b161007491c7f557e6aaf23c0b467d0414bc0839f7d54d942aa03",
+      "sha256": "8ead9b1c2bd3bbd9d0efc95b14ba273dba4f70afe458d83cdb6067e5d246cf1b",
+      "same_size": [
+        1024,
+        1536
+      ],
+      "runtime_offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "target": "male/face_accessory/02.png",
+      "source": "mods/appearance/male_face_alignment_fix_20261109/male/face_accessory/02.png",
+      "before_sha256": "8b44416a488007d1bd25c83540024bf7dfb0cc2869c7ea99a92b19220bfd1769",
+      "sha256": "fcb82b82b862de2da397c4f6369df87a5786ce8fdf9abeae5511f30748aa7b94",
+      "same_size": [
+        1024,
+        1536
+      ],
+      "runtime_offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "target": "male/face_accessory/03.png",
+      "source": "mods/appearance/male_face_alignment_fix_20261109/male/face_accessory/03.png",
+      "before_sha256": "40118e019e467e331201e3d7235c92eb0cc0a934d35712e6ffffdcd7164d5f82",
+      "sha256": "8582fc742f60b7df10111cfc4d8a24e747221323afa05e8ce2afdcd671bd1199",
+      "same_size": [
+        1024,
+        1536
+      ],
+      "runtime_offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "target": "male/face_accessory/04.png",
+      "source": "mods/appearance/male_face_alignment_fix_20261109/male/face_accessory/04.png",
+      "before_sha256": "bb4aa8dfb5d62eedc93048e694928adb89ba66b29a0ac511bf419c8b544d7a28",
+      "sha256": "29e4c3a7a5dfe4786e630fd7b3db7e5aff276bd80d231180079b8de99fffe0ad",
+      "same_size": [
+        1024,
+        1536
+      ],
+      "runtime_offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "target": "male/face_accessory/05.png",
+      "source": "mods/appearance/male_face_alignment_fix_20261109/male/face_accessory/05.png",
+      "before_sha256": "355e1a1b6ca07bdbfcbcd388515ef37c1ad219bda73a8964dc8f2f607c63c1fc",
+      "sha256": "0fece24df5ebd74a086bf50cf602aaa5523e4a61d62e679be9f9e1e9d2fcc76b",
+      "same_size": [
+        1024,
+        1536
+      ],
+      "runtime_offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "target": "male/face_accessory/06.png",
+      "source": "mods/appearance/male_face_alignment_fix_20261109/male/face_accessory/06.png",
+      "before_sha256": "c3bc9bd6eb602c064e498dcd1e881a83296f5cb7c03b2bf3fe2923a97086a3e3",
+      "sha256": "aaceb8ef949f763fb58b8a0fe5c58e86954f52e072a8762dccaa00b29db41b5b",
+      "same_size": [
+        1024,
+        1536
+      ],
+      "runtime_offset": [
+        0,
+        0
+      ]
+    }
+  ],
+  "gate_pass": true,
+  "gate_report": "qa/alignment_gate_install_preflight.json",
+  "active_files_written": []
+}

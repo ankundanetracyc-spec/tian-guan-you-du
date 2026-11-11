@@ -1,0 +1,14 @@
+{
+  "pass": true,
+  "exit_code": 0,
+  "warnings": 0,
+  "errors": 0,
+  "elapsed_seconds_reported": 14.52,
+  "mode": "incremental build with existing restore/cache; no clean or rebuild",
+  "command": "runtime/godot/Godot_v4.7.2-stable_spine3_8_mono_win64/dotnet/dotnet.exe build E:/stacklands/Stacklands.csproj --no-restore --no-dependencies --verbosity minimal",
+  "log": "qa/build.log",
+  "installer_root_verified": "E:/stacklands",
+  "installer_root_expression": "Path(__file__).resolve().parents[4]",
+  "code_changes_for_build": false,
+  "active_asset_or_config_changes": false
+}

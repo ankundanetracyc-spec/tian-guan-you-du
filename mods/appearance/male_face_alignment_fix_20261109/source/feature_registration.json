@@ -1,0 +1,198 @@
+{
+  "schema": "male-whole-pair-registration/v1",
+  "axis_x": 513,
+  "records": [
+    {
+      "part": "eyes",
+      "index": 1,
+      "native": "native/eyes01.png",
+      "placeholder": false,
+      "control_names": [
+        "left_dark_pupil_kernel",
+        "right_dark_pupil_kernel"
+      ],
+      "native_points": [
+        [
+          462.37457085149174,
+          363.8107146440522
+        ],
+        [
+          568.332395699375,
+          362.92774171188285
+        ]
+      ],
+      "target_points": [
+        [
+          460.29022593929454,
+          364.41249929350045
+        ],
+        [
+          566.7097740607055,
+          364.41249929350045
+        ]
+      ],
+      "note": "Target pair keeps current measured pupil distance and average vertical position, centered at513 and horizontal; native iris/fissure/corners still require visual QA before staging.",
+      "final_common_frame_adjustment": [
+        0.5,
+        0
+      ],
+      "final_adjustment_basis": "Actual staged semantic/probe pupil midpoint512.6227 and visible outer tip midpoint511.5; whole pair moves0.5px right to common face tolerance, no shape/scale change."
+    },
+    {
+      "part": "eyes",
+      "index": 4,
+      "native": "native/eyes04_v3.png",
+      "placeholder": false,
+      "control_names": [
+        "left_dark_pupil_kernel",
+        "right_dark_pupil_kernel"
+      ],
+      "native_points": [
+        [
+          461.69748806761555,
+          362.8661974938316
+        ],
+        [
+          567.3675218212155,
+          362.45579560514614
+        ]
+      ],
+      "target_points": [
+        [
+          460.4704283760824,
+          363.27045313240114
+        ],
+        [
+          565.5295716239176,
+          363.27045313240114
+        ]
+      ],
+      "note": "Target pair keeps current measured pupil distance and average vertical position, centered at513 and horizontal; native iris/fissure/corners still require visual QA before staging.",
+      "native_control_method": "MeanRGB dark kernel100 times alpha in fixed small source ROIs [453,358,475,374]/[557,358,581,374]. Final semantic/probe measurements are independent and mandatory."
+    },
+    {
+      "part": "eyes",
+      "index": 5,
+      "native": "native/eyes05_v2.png",
+      "placeholder": false,
+      "control_names": [
+        "left_dark_pupil_kernel",
+        "right_dark_pupil_kernel"
+      ],
+      "native_points": [
+        [
+          462.69078441139635,
+          363.087629901993
+        ],
+        [
+          566.9169027539034,
+          363.5966997554347
+        ]
+      ],
+      "target_points": [
+        [
+          460.5573281398251,
+          363.81511394960296
+        ],
+        [
+          565.4426718601749,
+          363.81511394960296
+        ]
+      ],
+      "note": "Target pair keeps current measured pupil distance and average vertical position, centered at513 and horizontal; native iris/fissure/corners still require visual QA before staging."
+    },
+    {
+      "part": "eyebrows",
+      "index": 1,
+      "native": "native/brows01.png",
+      "placeholder": false,
+      "control_names": [
+        "left_outer_tail",
+        "right_outer_tail"
+      ],
+      "native_points": [
+        [
+          421.1065465323058,
+          346.87348429164194
+        ],
+        [
+          602.7629213310686,
+          345.8640535783722
+        ]
+      ],
+      "target_points": [
+        [
+          424.15871026985127,
+          342.96089475352926
+        ],
+        [
+          601.8412897301487,
+          342.96089475352926
+        ]
+      ],
+      "note": "Whole generated pair preserves old overall tail-to-tail ink span; center513 and level tails at old average height. Repaired internal head/arch shape retained."
+    },
+    {
+      "part": "eyebrows",
+      "index": 4,
+      "native": "native/brows04.png",
+      "placeholder": false,
+      "control_names": [
+        "left_outer_tail",
+        "right_outer_tail"
+      ],
+      "native_points": [
+        [
+          419.1186524935216,
+          340.81706330318895
+        ],
+        [
+          603.8319541715922,
+          340.5373516523155
+        ]
+      ],
+      "target_points": [
+        [
+          421.16906541183556,
+          340.5349645664778
+        ],
+        [
+          604.8309345881644,
+          340.5349645664778
+        ]
+      ],
+      "note": "Whole generated pair preserves old overall tail-to-tail ink span; center513 and level tails at old average height. Repaired internal head/arch shape retained."
+    },
+    {
+      "part": "eyebrows",
+      "index": 5,
+      "native": "native/brows05.png",
+      "placeholder": false,
+      "control_names": [
+        "left_outer_tail",
+        "right_outer_tail"
+      ],
+      "native_points": [
+        [
+          432.07503918713104,
+          338.1117264015653
+        ],
+        [
+          593.7945478758587,
+          338.43450836515655
+        ]
+      ],
+      "target_points": [
+        [
+          426.49244960283715,
+          339.20514442457784
+        ],
+        [
+          599.5075503971628,
+          339.20514442457784
+        ]
+      ],
+      "note": "Whole generated pair preserves old overall tail-to-tail ink span; center513 and level tails at old average height. Repaired internal head/arch shape retained."
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "schema": "male-new-connected-beard-registration/v1",
+  "native": "native/beard06_v2.png",
+  "native_sha256": "70be15c549d1e20ea28cf0c0c9c75cc0a9ca73d680510d1d7932c5242ef8b5ed",
+  "candidate": "male/face_accessory/06.png",
+  "sha256": "9eac200eee2aa86d18d005ba3db9d8806a452d54120a312ea27d0760a5ce5e46",
+  "axis_x": 513,
+  "source_upper_center_x": 513.5123401071666,
+  "translation": [
+    -0.5123401071665512,
+    0
+  ],
+  "matrix": [
+    [
+      1,
+      0,
+      -0.5123401071665512
+    ],
+    [
+      0,
+      1,
+      0
+    ]
+  ],
+  "scale": 1,
+  "rotation_deg": 0,
+  "one_pass_premultiplied_alpha_bilinear_sampling": true,
+  "local_warps": false,
+  "RGB_repainting": false,
+  "source_RGB_paste": false,
+  "upper_moustache_after": {
+    "ink_centroid": [
+      513.9283026604318,
+      470.8304087475794
+    ],
+    "ink_endpoint_left_right": [
+      [
+        462.1628256634644,
+        476.447907500349
+      ],
+      [
+        562.8863393468309,
+        475.8738175913659
+      ]
+    ],
+    "endpoint_midpoint_x": 512.5245825051477,
+    "lower15pct_center": [
+      514.4069473432249,
+      477.23574115933656
+    ],
+    "ink_quantiles_x_1_99": [
+      462.0,
+      563.0
+    ],
+    "ink_quantiles_y_1_99": [
+      460.0,
+      479.0
+    ],
+    "roi_half_open": [
+      458,
+      449,
+      572,
+      480
+    ],
+    "pigment_weight_sum": 74957.26666666666
+  },
+  "lower_chin_jaw_after": {
+    "ink_centroid": [
+      511.56267819267845,
+      525.9190720844889
+    ],
+    "ink_endpoint_left_right": [
+      [
+        434.1182359114254,
+        492.62191506103125
+      ],
+      [
+        587.8685067426452,
+        493.65512954819945
+      ]
+    ],
+    "endpoint_midpoint_x": 510.99337132703533,
+    "lower15pct_center": [
+      511.72317313885515,
+      546.6430914011733
+    ],
+    "ink_quantiles_x_1_99": [
+      434.0,
+      588.0
+    ],
+    "ink_quantiles_y_1_99": [
+      490.0,
+      550.0
+    ],
+    "roi_half_open": [
+      421,
+      490,
+      606,
+      585
+    ],
+    "pigment_weight_sum": 137995.04052287582
+  },
+  "outside_fixedface_alpha128_y435_545_alpha64": 159
+}

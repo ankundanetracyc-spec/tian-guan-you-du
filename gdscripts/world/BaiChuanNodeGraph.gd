@@ -15,13 +15,21 @@ var edge_points: Dictionary = {}
 var edge_km: Dictionary = {}
 var runtime_ids: Dictionary = {}
 
-func load_layout() -> bool:
-	var parsed = JSON.parse_string(FileAccess.get_file_as_string(Scale.LAYOUT_PATH if use_free_world else LAYOUT_PATH))
+func load_layout(override_path := "") -> bool:
+	var path := override_path if not override_path.is_empty() else (Scale.LAYOUT_PATH if use_free_world else LAYOUT_PATH)
+	var parsed = JSON.parse_string(FileAccess.get_file_as_string(path))
 	if not parsed is Dictionary:
 		return false
-	coordinate_scale = Scale.COORDINATE_SCALE if use_free_world else 1.0
-	km_per_pixel = Scale.KM_PER_PIXEL if use_free_world else WORLD_KM / MAP_PIXELS
-	if use_free_world and not is_equal_approx(float(parsed.get("worldSize", 0.0)), Scale.MAP_PIXELS): return false
+	var parsed_world_size := float(parsed.get("worldSize", 0.0))
+	if use_free_world:
+		if not is_finite(parsed_world_size) or parsed_world_size <= 0.0: return false
+		if override_path.is_empty():
+			if absf(parsed_world_size - Scale.MAP_PIXELS) >= 0.001: return false
+		elif not preload("res://gdscripts/world/WorldMapSourceRegistry.gd").is_known_layout(path, parsed_world_size): return false
+	# An explicit historical graph keeps its own geometry and kilometre ruler.
+	# Using the target world's ruler here moves old weighted NPC progress.
+	coordinate_scale = parsed_world_size / Scale.LEGACY_MAP_PIXELS if use_free_world else 1.0
+	km_per_pixel = Scale.WORLD_KM / parsed_world_size if use_free_world else WORLD_KM / MAP_PIXELS
 	positions.clear()
 	adjacency.clear()
 	edge_points.clear()

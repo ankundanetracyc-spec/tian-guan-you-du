@@ -1,0 +1,75 @@
+{
+  "status": "four_additional_beard_whole_portrait_previews",
+  "mode": "built-in image_gen",
+  "reference": "reference/project_male_master.png",
+  "reference_sha256": "d97b79e3372df42db24b4dd5c3ec42f376d652616d9fa25d78a393b004da81a8",
+  "records": [
+    {
+      "id": "01_fine_moustache",
+      "name": "八字短髭",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-d5a26de9-5600-4cac-9e95-89b26ef6ec7b.png",
+      "workspace_file": "preview/01_fine_moustache.png",
+      "sha256": "59c46faa59d3060bfd66be106724e857b719c3fbac3cc143e786cd68643ac374",
+      "size": [
+        1024,
+        1536
+      ],
+      "native_unmodified": true,
+      "selected_for_installation": true
+    },
+    {
+      "id": "02_short_chin_only",
+      "name": "短颏须",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-393048be-eefd-47ac-9a26-35ba71f076fe.png",
+      "workspace_file": "preview/02_short_chin_only.png",
+      "sha256": "44881408a2771986d4333ec23ce39325488bcdef7788edb4007f545490d6ea63",
+      "size": [
+        1024,
+        1536
+      ],
+      "native_unmodified": true,
+      "selected_for_installation": true
+    },
+    {
+      "id": "03_separate_moustache_goatee",
+      "name": "细髭尖颏",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-4ad914e0-c537-4b3b-8374-b75edf22a8a5.png",
+      "workspace_file": "preview/03_separate_moustache_goatee.png",
+      "sha256": "7ac8cf94ebea0a712b39d5d2b019244c5d0cba8f0c544c95fb1783642b5bd18c",
+      "size": [
+        1024,
+        1536
+      ],
+      "native_unmodified": true,
+      "selected_for_installation": true
+    },
+    {
+      "id": "04_light_connected_beard",
+      "name": "薄络腮须",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-7033270d-22ab-409d-9510-d97462a45e08.png",
+      "workspace_file": "preview/04_light_connected_beard.png",
+      "sha256": "422578b881fa48a4914e3f201c61850d730f4386fa7b154c2988c4a10681b907",
+      "size": [
+        1024,
+        1536
+      ],
+      "native_unmodified": true,
+      "selected_for_installation": true
+    }
+  ],
+  "active_pngs_preserved": 55,
+  "active_config_files_preserved": 2,
+  "runtime_installation": false,
+  "parts_extracted": false,
+  "age_or_code_changes": false,
+  "anchor_status": "Original full-canvas face/neck composition used as guidance. Preview generation does not certify modular registration; extract and align any later selected beard against the real mouth/chin/sideburn anchors.",
+  "qa_scope": "Visual style/shape review plus1024x1536 size, native-file identity and57 existing asset/config hashes. No build/runtime rerun for preview-only work.",
+  "installation_followup": {
+    "user_approved": true,
+    "selected_beard_count": 4,
+    "status": "installed_and_runtime_verified",
+    "package": "../male_beard_round2_install_20261108",
+    "report": "../male_beard_round2_install_20261108/installation/install_report.json",
+    "note": "Original generation-stage validation fields above are historical; extracted parts are now installed as physical03..06/style4..7."
+  }
+}

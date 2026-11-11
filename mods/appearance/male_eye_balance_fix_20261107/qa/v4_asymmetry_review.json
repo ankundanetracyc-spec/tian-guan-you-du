@@ -1,0 +1,67 @@
+{
+  "sha256": "4a41566093a65da6366b2e1626133065789603ab18bf48b58342234be27ddb70",
+  "same_ROI": {
+    "left": {
+      "curve": [
+        {
+          "x": 458,
+          "upper_y": 359.5,
+          "lower_y": 374.5,
+          "opening": 15
+        },
+        {
+          "x": 466,
+          "upper_y": 359.5,
+          "lower_y": 374.5,
+          "opening": 15
+        }
+      ],
+      "median": 15,
+      "pupil": [
+        462.6952312287569,
+        365.41672674837787
+      ]
+    },
+    "right": {
+      "curve": [
+        {
+          "x": 564,
+          "upper_y": 359.5,
+          "lower_y": 372.5,
+          "opening": 13
+        },
+        {
+          "x": 572,
+          "upper_y": 359.5,
+          "lower_y": 372.5,
+          "opening": 13
+        }
+      ],
+      "median": 13,
+      "pupil": [
+        567.9499058380416,
+        364.74262397991214
+      ]
+    }
+  },
+  "left_changed_pixels": 0,
+  "schema": "male-eye04-balance-v4-quick-audit/v1",
+  "scope": "Only this QA JSON written; no PNG or active configuration changed.",
+  "ready_for_install": false,
+  "reason": "Same-method opening15/13px has not reached ROOT required right14-15px; v3 was15/12.",
+  "visual_notes": [
+    "No renewed baked hair or excessive long pointed outer tail observed.",
+    "Right remains somewhat narrower than preserved left; do not treat improvement alone as target achieved."
+  ],
+  "next_if_requested": "Only raise right central upper lid about1 additional output px; preserve pupil/iris/lower lid/left and existing common frame.",
+  "pupil_delta_from_frozen_old": {
+    "left": [
+      0,
+      0
+    ],
+    "right": [
+      0.1507131034302,
+      -0.17304561789666
+    ]
+  }
+}

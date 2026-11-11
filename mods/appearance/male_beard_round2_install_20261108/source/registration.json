@@ -1,0 +1,145 @@
+{
+  "mode": "whole_support_uniform_registration_only",
+  "records": [
+    {
+      "key": "01",
+      "native": "raw/01_native.png",
+      "bbox": [
+        210,
+        145,
+        1173,
+        373
+      ],
+      "target": [
+        465,
+        453,
+        571,
+        479
+      ],
+      "allowed_roi": [
+        450,
+        448,
+        134,
+        43
+      ],
+      "lip_exclusions": [
+        [
+          478,
+          477,
+          79,
+          15
+        ]
+      ],
+      "dilation_px": 3,
+      "scale": 0.11028301337719904,
+      "tx": 442,
+      "ty": 437,
+      "registration_note": "Whole generated support envelope fit to approved source beard area; approximate guides only. Final foreground uses approved source coordinates and color, no local warp."
+    },
+    {
+      "key": "02",
+      "native": "raw/02_native.png",
+      "bbox": [
+        391,
+        276,
+        1079,
+        724
+      ],
+      "target": [
+        483,
+        516,
+        554,
+        560
+      ],
+      "allowed_roi": [
+        475,
+        505,
+        85,
+        68
+      ],
+      "lip_exclusions": [],
+      "dilation_px": 3,
+      "scale": 0.10171382453475124,
+      "tx": 444,
+      "ty": 487,
+      "registration_note": "Whole generated support envelope fit to approved source beard area; approximate guides only. Final foreground uses approved source coordinates and color, no local warp."
+    },
+    {
+      "key": "03",
+      "native": "raw/03_native.png",
+      "bbox": [
+        218,
+        135,
+        1081,
+        1089
+      ],
+      "target": [
+        464,
+        453,
+        572,
+        574
+      ],
+      "allowed_roi": [
+        450,
+        448,
+        135,
+        132
+      ],
+      "lip_exclusions": [
+        [
+          478,
+          477,
+          79,
+          15
+        ]
+      ],
+      "dilation_px": 4,
+      "scale": 0.1260740172277832,
+      "tx": 436,
+      "ty": 436,
+      "registration_note": "Whole generated support envelope fit to approved source beard area; approximate guides only. Final foreground uses approved source coordinates and color, no local warp."
+    },
+    {
+      "key": "04",
+      "native": "raw/04_native.png",
+      "bbox": [
+        112,
+        177,
+        1286,
+        901
+      ],
+      "target": [
+        424,
+        422,
+        608,
+        547
+      ],
+      "allowed_roi": [
+        417,
+        418,
+        195,
+        139
+      ],
+      "lip_exclusions": [
+        [
+          478,
+          477,
+          79,
+          15
+        ]
+      ],
+      "dilation_px": 5,
+      "scale": 0.16111628571969228,
+      "tx": 403,
+      "ty": 398,
+      "registration_note": "Whole generated support envelope fit to approved source beard area; approximate guides only. Final foreground uses approved source coordinates and color, no local warp.",
+      "clean_reference": "reference/active_no_beard_composite.png",
+      "bias_override_rgb": [
+        0,
+        0,
+        0
+      ],
+      "background_note": "Actual all-base no-beard composition from prior verified UI; all existing source layers remain byte-identical. Foreground is recovered against the actual destination skin, avoiding duplicate anatomical jaw shadow. The same0 bias is applied to the entire beard; no local face repaint."
+    }
+  ]
+}

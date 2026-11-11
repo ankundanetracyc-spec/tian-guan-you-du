@@ -1,0 +1,67 @@
+{
+  "status": "first_portrait_selected_and_four_unique_parts_appended",
+  "mode": "built-in image_gen",
+  "project_master": "reference/project_approved_male_01.png",
+  "project_master_sha256": "d97b79e3372df42db24b4dd5c3ec42f376d652616d9fa25d78a393b004da81a8",
+  "secondary_approved_reference": "reference/selected_loose_male_02.png",
+  "prompt_set": "source/generation_prompts.json",
+  "records": [
+    {
+      "file": "preview/01_open_crown_high_tie.png",
+      "name": "露额高束·清峻英气",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "sha256": "fe7b9280cbb19019e76ffd6d451679e5e3ff3dc2b685b9020471b96451312f18",
+      "native_source": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-c544b637-c0fb-4a85-851f-39626edd7184.png",
+      "native_unmodified_output": true,
+      "user_selected": true,
+      "integration_package": "res://mods/appearance/male_high_tie_install_20261107/",
+      "installed_unique_parts": [
+        "hair_front",
+        "hair_back",
+        "eyebrows",
+        "eyes"
+      ],
+      "nose_mouth": "Existing01 reused after deduplication; current fixed head/skin unchanged."
+    },
+    {
+      "file": "preview/02_broken_short_fringe.png",
+      "name": "碎额微束·清朗少年",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "sha256": "6de0ee05b6e653ba0a4e26ab747f3b8e9002e17025e76c0e56e09fe4e881188c",
+      "native_source": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-7edd2ed1-a9bb-4969-a299-4505b1b2a755.png",
+      "native_unmodified_output": true,
+      "user_selected": false
+    },
+    {
+      "file": "preview/03_side_sweep_braid.png",
+      "name": "偏分长辫·沉静疏朗",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "sha256": "8cce7df01bf1d3c3a05139cb9ac5cc983c7c31e50fa98673c51e601ac8a64f44",
+      "native_source": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-4d8c782e-1774-4fdd-9905-157ab77f1242.png",
+      "native_unmodified_output": true,
+      "user_selected": false
+    }
+  ],
+  "active_assets_or_config_modified": true,
+  "baseline_files_preserved": 52,
+  "parts_extracted": "Selected01 only; the other two remain whole-portrait review candidates.",
+  "anchor_status": "Selected01 measured using a shared source-to-fixed-head frame. Native eye support registered as one pair before shared frame sampling; see integration records. No certification for other unselected candidates.",
+  "visual_review": {
+    "style": "Warm pale skin, charcoal matte fine hair and delicate project painting retained on root whole-image inspection.",
+    "eye_scale": "No evident enlarged doll eyes on whole-image inspection.",
+    "variation": "Hair silhouettes are visibly different. Faces remain in a close family; softer02 and quieter03 are not claimed as entirely new independent feature sets.",
+    "future_deduplication": "Compare actual source features to active parts before any extraction or installation; do not count micro-shading changes as new features."
+  }
+}

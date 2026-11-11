@@ -1,0 +1,56 @@
+{
+  "sha256": "348cda599bc98ce9fcfcb48bec7216d5b6cf3d09be9eec609ffb71379bb0f9c6",
+  "same_ROI": {
+    "left": {
+      "curve": [
+        {
+          "x": 458,
+          "upper_y": 359.5,
+          "lower_y": 374.5,
+          "opening": 15
+        },
+        {
+          "x": 466,
+          "upper_y": 359.5,
+          "lower_y": 374.5,
+          "opening": 15
+        }
+      ],
+      "median": 15
+    },
+    "right": {
+      "curve": [
+        {
+          "x": 564,
+          "upper_y": 359.5,
+          "lower_y": 372.5,
+          "opening": 13
+        },
+        {
+          "x": 572,
+          "upper_y": 359.5,
+          "lower_y": 372.5,
+          "opening": 13
+        }
+      ],
+      "median": 13
+    }
+  },
+  "left_changed_pixels": 0,
+  "schema": "male-eye04-balance-v5-quick-audit/v1",
+  "scope": "Only this QA JSON written; no candidate PNG or active resource modified.",
+  "ready_for_install": false,
+  "reason": "Same unchanged native ROI gives15/13px, below ROOT explicit right14-15px criterion; no measurement-window changes made to produce a passing value.",
+  "method": "RGB mean over frozen head;3-column mean at x458/466 and564/572, upper min diff355..365 and lower max diff371..377, y+.5; same as prior versions.",
+  "edge_uncertainty_px": [
+    1,
+    1.5
+  ],
+  "visual_notes": [
+    "No renewed baked dark hair or excessive long pointed outer wing.",
+    "Right reads somewhat narrower than left but materially cleaner than the original; ROOT target remains14-15px.",
+    "V5 shows a subtle visual change, but both discrete measured upper edges remain359.5 rather than shifting a full row."
+  ],
+  "frame_and_pupil": "Existing <=0.50px preservation validation retained; not remeasured in this necessary quick audit.",
+  "next": "Featureagent continuing under ROOT authorization; raise actual central upper-lid edge, preserve lower contour, tail, iris/pupil and old left."
+}

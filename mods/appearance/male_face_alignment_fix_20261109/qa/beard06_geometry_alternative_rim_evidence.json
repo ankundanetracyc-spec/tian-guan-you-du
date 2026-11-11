@@ -1,0 +1,16 @@
+{
+  "definition": "beardalpha>=64, fixedfacealpha<128,y435..545",
+  "count": 35,
+  "bbox_xyxy_halfopen": [
+    418,
+    442,
+    603,
+    473
+  ],
+  "maximum_euclidean_distance_px": 2.8284271247461903,
+  "p95_distance_px": 2.23606797749979,
+  "outside_pixel_alpha_range": [
+    76,
+    255
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "date": "2026-11-08",
+  "compile": {
+    "warnings": 0,
+    "errors": 0
+  },
+  "static_checks": 1334,
+  "runtime": {
+    "effects": {
+      "checks": 358,
+      "functional_assertions_passed": true,
+      "log": "../../output/board_effects_20261108/effects_run.log"
+    },
+    "migration": {
+      "checks": 121,
+      "functional_assertions_passed": true,
+      "log": "../../output/board_effects_20261108/migration.log"
+    },
+    "formal": {
+      "checks": 17,
+      "functional_assertions_passed": true,
+      "log": "../../output/board_effects_20261108/formal.log"
+    }
+  },
+  "total_assertions": 1830,
+  "formal_exit_cleanup": "正式往返17项功能断言通过，退出仍报告10个ObjectDB实例、5个资源及5份DummyTexture分配未清理；不作为无日志通过。已有正式场景同类退出问题不改变本次效果与存读断言。",
+  "save_scope": "只使用隔离场景和隔离存档，未打开或覆盖玩家正式旅程。",
+  "deferred": [
+    "寄念新盘目标规则",
+    "妖兽布阵",
+    "符箓新盘接入",
+    "新器物参战未定部分"
+  ]
+}

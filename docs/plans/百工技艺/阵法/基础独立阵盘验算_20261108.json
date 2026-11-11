@@ -1,0 +1,621 @@
+{
+  "date": "2026-11-08",
+  "status": "基础独立盘推荐稿的静态验算，未批准、未实现",
+  "source": "基础独立阵盘构筑与护持重排_20261108.md",
+  "scope": "几何、固定成器值与简化事件模型，不验证真实材料成器、战斗代码或平衡",
+  "hardware": {
+    "grid": [
+      5,
+      5
+    ],
+    "eye_complexity_cap": 4,
+    "source_capacity": 4,
+    "source_initial": 4,
+    "source_recharge_per_common_round": 1,
+    "peaks": {
+      "source": 2,
+      "link": 2,
+      "board": 2
+    }
+  },
+  "ward": {
+    "target": "owner",
+    "energy_cost": 2,
+    "peak": 2,
+    "shield": 2,
+    "success_limit_per_common_round": 1
+  },
+  "units": {
+    "eye": {
+      "name": "阵眼",
+      "shape": [
+        1,
+        1
+      ],
+      "complexity": 0
+    },
+    "source": {
+      "name": "阵源",
+      "shape": [
+        2,
+        1
+      ],
+      "complexity": 0
+    },
+    "sensor": {
+      "name": "本人术法感应枢",
+      "shape": [
+        1,
+        1
+      ],
+      "complexity": 1
+    },
+    "counter": {
+      "name": "普通候枢",
+      "shape": [
+        2,
+        1
+      ],
+      "complexity": 2
+    },
+    "ward": {
+      "name": "内置护持阵器",
+      "shape": [
+        1,
+        2
+      ],
+      "complexity": 1
+    }
+  },
+  "layouts": {
+    "A": {
+      "name": "直接护持",
+      "parts": [
+        {
+          "id": "E",
+          "type": "eye",
+          "at": [
+            3,
+            3
+          ]
+        },
+        {
+          "id": "S",
+          "type": "source",
+          "at": [
+            1,
+            5
+          ]
+        },
+        {
+          "id": "I",
+          "type": "sensor",
+          "at": [
+            1,
+            1
+          ]
+        },
+        {
+          "id": "O",
+          "type": "ward",
+          "at": [
+            5,
+            2
+          ]
+        }
+      ],
+      "routes": [
+        {
+          "kind": "signal",
+          "cells": [
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              4,
+              1
+            ],
+            [
+              5,
+              1
+            ],
+            [
+              5,
+              2
+            ]
+          ],
+          "out_port": [
+            [
+              1,
+              1
+            ],
+            "east"
+          ],
+          "in_port": [
+            [
+              5,
+              2
+            ],
+            "north"
+          ]
+        },
+        {
+          "kind": "energy",
+          "cells": [
+            [
+              2,
+              5
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              5,
+              5
+            ],
+            [
+              5,
+              4
+            ],
+            [
+              5,
+              3
+            ]
+          ],
+          "out_port": [
+            [
+              2,
+              5
+            ],
+            "east"
+          ],
+          "in_port": [
+            [
+              5,
+              3
+            ],
+            "south"
+          ]
+        }
+      ],
+      "expected": {
+        "part_cells": 6,
+        "signal_cells": 4,
+        "energy_cells": 4,
+        "empty_cells": 11,
+        "complexity": 2,
+        "minimum_proficiency": 5
+      },
+      "calculated": {
+        "part_cells": 6,
+        "signal_cells": 4,
+        "energy_cells": 4,
+        "empty_cells": 11,
+        "complexity": 2
+      }
+    },
+    "B": {
+      "name": "三候护持",
+      "parts": [
+        {
+          "id": "E",
+          "type": "eye",
+          "at": [
+            3,
+            3
+          ]
+        },
+        {
+          "id": "S",
+          "type": "source",
+          "at": [
+            1,
+            5
+          ]
+        },
+        {
+          "id": "I",
+          "type": "sensor",
+          "at": [
+            1,
+            1
+          ]
+        },
+        {
+          "id": "O",
+          "type": "ward",
+          "at": [
+            5,
+            2
+          ]
+        },
+        {
+          "id": "C",
+          "type": "counter",
+          "at": [
+            3,
+            2
+          ]
+        }
+      ],
+      "routes": [
+        {
+          "kind": "signal",
+          "cells": [
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              3,
+              2
+            ]
+          ],
+          "out_port": [
+            [
+              1,
+              1
+            ],
+            "east"
+          ],
+          "in_port": [
+            [
+              3,
+              2
+            ],
+            "west"
+          ]
+        },
+        {
+          "kind": "signal",
+          "cells": [
+            [
+              4,
+              2
+            ],
+            [
+              4,
+              1
+            ],
+            [
+              5,
+              1
+            ],
+            [
+              5,
+              2
+            ]
+          ],
+          "out_port": [
+            [
+              4,
+              2
+            ],
+            "north"
+          ],
+          "in_port": [
+            [
+              5,
+              2
+            ],
+            "north"
+          ]
+        },
+        {
+          "kind": "energy",
+          "cells": [
+            [
+              2,
+              5
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              5,
+              5
+            ],
+            [
+              5,
+              4
+            ],
+            [
+              5,
+              3
+            ]
+          ],
+          "out_port": [
+            [
+              2,
+              5
+            ],
+            "east"
+          ],
+          "in_port": [
+            [
+              5,
+              3
+            ],
+            "south"
+          ]
+        }
+      ],
+      "expected": {
+        "part_cells": 8,
+        "signal_cells": 4,
+        "energy_cells": 4,
+        "empty_cells": 9,
+        "complexity": 4,
+        "minimum_proficiency": 30
+      },
+      "calculated": {
+        "part_cells": 8,
+        "signal_cells": 4,
+        "energy_cells": 4,
+        "empty_cells": 9,
+        "complexity": 4
+      }
+    }
+  },
+  "event_examples": {
+    "A": [
+      {
+        "round": 1,
+        "counter_after": null,
+        "energy_after": 2,
+        "extra_shield_this_action": 2
+      },
+      {
+        "round": 2,
+        "counter_after": null,
+        "energy_after": 1,
+        "extra_shield_this_action": 2
+      },
+      {
+        "round": 3,
+        "counter_after": null,
+        "energy_after": 0,
+        "extra_shield_this_action": 2
+      },
+      {
+        "round": 4,
+        "counter_after": null,
+        "energy_after": 1,
+        "extra_shield_this_action": 0
+      }
+    ],
+    "B": [
+      {
+        "round": 1,
+        "counter_after": 1,
+        "energy_after": 4,
+        "extra_shield_this_action": 0
+      },
+      {
+        "round": 2,
+        "counter_after": 2,
+        "energy_after": 4,
+        "extra_shield_this_action": 0
+      },
+      {
+        "round": 3,
+        "counter_after": 0,
+        "energy_after": 2,
+        "extra_shield_this_action": 2
+      },
+      {
+        "round": 4,
+        "counter_after": 1,
+        "energy_after": 3,
+        "extra_shield_this_action": 0
+      }
+    ]
+  },
+  "checks": [
+    {
+      "项目": "A：部件边界与不重叠",
+      "通过": true
+    },
+    {
+      "项目": "A：阵眼固定中央",
+      "通过": true
+    },
+    {
+      "项目": "A：线路1连续且在有效格",
+      "通过": true
+    },
+    {
+      "项目": "A：线路1只经过空格且两端接部件",
+      "通过": true
+    },
+    {
+      "项目": "A：线路1端口方向正确",
+      "通过": true
+    },
+    {
+      "项目": "A：线路2连续且在有效格",
+      "通过": true
+    },
+    {
+      "项目": "A：线路2只经过空格且两端接部件",
+      "通过": true
+    },
+    {
+      "项目": "A：线路2端口方向正确",
+      "通过": true
+    },
+    {
+      "项目": "A：两类线路不交叉",
+      "通过": true
+    },
+    {
+      "项目": "A：占格与复杂度吻合",
+      "通过": true,
+      "说明": {
+        "part_cells": 6,
+        "signal_cells": 4,
+        "energy_cells": 4,
+        "empty_cells": 11,
+        "complexity": 2
+      }
+    },
+    {
+      "项目": "A：基础阵眼承载合格",
+      "通过": true
+    },
+    {
+      "项目": "B：部件边界与不重叠",
+      "通过": true
+    },
+    {
+      "项目": "B：阵眼固定中央",
+      "通过": true
+    },
+    {
+      "项目": "B：线路1连续且在有效格",
+      "通过": true
+    },
+    {
+      "项目": "B：线路1只经过空格且两端接部件",
+      "通过": true
+    },
+    {
+      "项目": "B：线路1端口方向正确",
+      "通过": true
+    },
+    {
+      "项目": "B：线路2连续且在有效格",
+      "通过": true
+    },
+    {
+      "项目": "B：线路2只经过空格且两端接部件",
+      "通过": true
+    },
+    {
+      "项目": "B：线路2端口方向正确",
+      "通过": true
+    },
+    {
+      "项目": "B：线路3连续且在有效格",
+      "通过": true
+    },
+    {
+      "项目": "B：线路3只经过空格且两端接部件",
+      "通过": true
+    },
+    {
+      "项目": "B：线路3端口方向正确",
+      "通过": true
+    },
+    {
+      "项目": "B：两类线路不交叉",
+      "通过": true
+    },
+    {
+      "项目": "B：占格与复杂度吻合",
+      "通过": true,
+      "说明": {
+        "part_cells": 8,
+        "signal_cells": 4,
+        "energy_cells": 4,
+        "empty_cells": 9,
+        "complexity": 4
+      }
+    },
+    {
+      "项目": "B：基础阵眼承载合格",
+      "通过": true
+    },
+    {
+      "项目": "A：直接护持四轮实际供能",
+      "通过": true
+    },
+    {
+      "项目": "B：三次施法才产生一次额外护持",
+      "通过": true
+    },
+    {
+      "项目": "未启用前事件不追补",
+      "通过": true
+    },
+    {
+      "项目": "同一原始施法只计一次",
+      "通过": true
+    },
+    {
+      "项目": "零实际付款或失败施法不计",
+      "通过": true
+    },
+    {
+      "项目": "达数无能仍归零但不扣能不加盾",
+      "通过": true
+    },
+    {
+      "项目": "同轮六个合法事件仍最多成功一次",
+      "通过": true
+    },
+    {
+      "项目": "阵源峰值不足不付款",
+      "通过": true
+    },
+    {
+      "项目": "灵络峰值不足不付款",
+      "通过": true
+    },
+    {
+      "项目": "盘体峰值不足不付款",
+      "通过": true
+    },
+    {
+      "项目": "同轮再启用不重复回复",
+      "通过": true
+    },
+    {
+      "项目": "来源关闭仍换限次，轮中恢复不补轮初回复",
+      "通过": true
+    },
+    {
+      "项目": "同件盘重启不刷新源与计数",
+      "通过": true
+    },
+    {
+      "项目": "源像素与盘底边框吻合",
+      "通过": true
+    }
+  ],
+  "verification": {
+    "passed": 39,
+    "total": 39,
+    "game_runtime_tested": false,
+    "real_material_generation_tested": false
+  },
+  "superseded_as_lowest_board_by": "基础阵盘四格单层接线实施_20261108.md",
+  "historical_scope_notice": "5x5 reference layout only; it does not verify the user-approved lowest 4x4 wiring implementation."
+}

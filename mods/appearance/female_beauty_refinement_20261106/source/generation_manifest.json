@@ -1,0 +1,50 @@
+{
+  "task": "女性五官美感修订：鬼谷女性立绘协调关系参考",
+  "created_local_date": "2026-11-06",
+  "status": "preview_only_pending_user_selection",
+  "generator": "built-in image_gen",
+  "user_direction": "不要太丑的，你可以从鬼谷八荒立绘找找美感",
+  "selected_preview": "preview/beauty_four_comparison_v2.png",
+  "prompt": "source/final_generation_prompt.txt",
+  "concepts_left_to_right": [
+    "清婉",
+    "灵秀",
+    "清冷",
+    "明艳"
+  ],
+  "actual_reference_inputs": [
+    {
+      "path": "tmp/guigu_facial_study_20261003/official_facial_composition.png",
+      "role": "右侧官方女性完整五官用于观察眉眼曲线、鼻唇视觉分量与协调关系；不沿用灰度配色、尖颏或原贴图"
+    },
+    {
+      "path": "mods/appearance/female_front_exploration_20261106/preview/01_open_ears.png",
+      "role": "本项目画风、浅暖肤色、脸轮廓、发型与衣服参照，不锁定原五官身份"
+    }
+  ],
+  "further_sources_viewed": [
+    "docs/美术规范/鬼谷八荒立绘拼接复核_20261103/official_layers_and_occlusion.jpg",
+    "docs/美术规范/鬼谷八荒立绘拼接复核_20261103/official_original_assembled.png"
+  ],
+  "web_sources_searched": [
+    "https://www.gamersky.com/handbook/202102/1363259.shtml",
+    "https://www.3dmgame.com/news/202112/3832118.html"
+  ],
+  "user_instruction_priority": "本次明确授权借鉴鬼谷女性五官美感与协调关系，扩大旧文档仅学拼接技术的参考范围；本项目浅暖肤色、脸型轮廓及工笔淡彩画风继续保留。",
+  "art_direction": [
+    "以秀美、自然、耐看和整张脸协调为先",
+    "眉眼曲线共同组织神态",
+    "眼睛舒展有神，避免半闭疲惫与凌厉挤窄",
+    "鼻部完整而轻巧，避免鼻翼鼻孔过重",
+    "唇形柔和克制，避免横直厚唇与嘟唇",
+    "变化以组合协调为准，不追求极端部件差异"
+  ],
+  "first_round": {
+    "status": "not_selected_too_similar",
+    "prompts": "source/first_round_prompts.json",
+    "note": "四张独立编辑稿与基准脸接近，差异不足；未作为最终四组交付或接入。"
+  },
+  "source_image": "E:/tmp/CodexData/generated_images/01a1ac35-8591-7bc0-b31a-ed6a532b5357/exec-7ce60374-e581-46ab-af06-129a3bb430f8.png",
+  "integration": "仍为整体审美对照，未新增透明五官部件或修改活动素材、游戏配置；须用户选稿后另做独立生成、配准、试拼与验收。",
+  "limitations": "生成候选不能认定脸轮廓、衣发逐像素不变；尚未完成独立层透明边缘及自由混搭验收。"
+}

@@ -1,0 +1,185 @@
+{
+  "method": "Active81 male combinations; native RGBA ROI x280..850,y280..430, bilinear display scales .400..805; all offsets searched",
+  "reported_crop_size": [
+    181,
+    40
+  ],
+  "ranked_matches": [
+    {
+      "score": 0.012116418220102787,
+      "scale": 0.4600000000000001,
+      "crop_top_left_in_scaled_roi": [
+        37,
+        19
+      ],
+      "parts": {
+        "hair_front": 4,
+        "hair_back": 5,
+        "eyebrows": 4,
+        "eyes": 4
+      }
+    },
+    {
+      "score": 0.012151803821325302,
+      "scale": 0.4600000000000001,
+      "crop_top_left_in_scaled_roi": [
+        37,
+        19
+      ],
+      "parts": {
+        "hair_front": 4,
+        "hair_back": 1,
+        "eyebrows": 4,
+        "eyes": 4
+      }
+    },
+    {
+      "score": 0.013901518657803535,
+      "scale": 0.4600000000000001,
+      "crop_top_left_in_scaled_roi": [
+        37,
+        19
+      ],
+      "parts": {
+        "hair_front": 4,
+        "hair_back": 5,
+        "eyebrows": 4,
+        "eyes": 1
+      }
+    },
+    {
+      "score": 0.013937116600573063,
+      "scale": 0.4600000000000001,
+      "crop_top_left_in_scaled_roi": [
+        37,
+        19
+      ],
+      "parts": {
+        "hair_front": 4,
+        "hair_back": 1,
+        "eyebrows": 4,
+        "eyes": 1
+      }
+    },
+    {
+      "score": 0.013984493911266327,
+      "scale": 0.4600000000000001,
+      "crop_top_left_in_scaled_roi": [
+        37,
+        19
+      ],
+      "parts": {
+        "hair_front": 4,
+        "hair_back": 4,
+        "eyebrows": 4,
+        "eyes": 4
+      }
+    },
+    {
+      "score": 0.014467025175690651,
+      "scale": 0.4600000000000001,
+      "crop_top_left_in_scaled_roi": [
+        37,
+        19
+      ],
+      "parts": {
+        "hair_front": 4,
+        "hair_back": 5,
+        "eyebrows": 4,
+        "eyes": 5
+      }
+    },
+    {
+      "score": 0.014502521604299545,
+      "scale": 0.4600000000000001,
+      "crop_top_left_in_scaled_roi": [
+        37,
+        19
+      ],
+      "parts": {
+        "hair_front": 4,
+        "hair_back": 1,
+        "eyebrows": 4,
+        "eyes": 5
+      }
+    },
+    {
+      "score": 0.01576569676399231,
+      "scale": 0.4600000000000001,
+      "crop_top_left_in_scaled_roi": [
+        37,
+        19
+      ],
+      "parts": {
+        "hair_front": 4,
+        "hair_back": 4,
+        "eyebrows": 4,
+        "eyes": 1
+      }
+    },
+    {
+      "score": 0.01633146032691002,
+      "scale": 0.4600000000000001,
+      "crop_top_left_in_scaled_roi": [
+        37,
+        19
+      ],
+      "parts": {
+        "hair_front": 4,
+        "hair_back": 4,
+        "eyebrows": 4,
+        "eyes": 5
+      }
+    },
+    {
+      "score": 0.017487777397036552,
+      "scale": 0.4600000000000001,
+      "crop_top_left_in_scaled_roi": [
+        37,
+        19
+      ],
+      "parts": {
+        "hair_front": 4,
+        "hair_back": 5,
+        "eyebrows": 1,
+        "eyes": 4
+      }
+    },
+    {
+      "score": 0.017523540183901787,
+      "scale": 0.4600000000000001,
+      "crop_top_left_in_scaled_roi": [
+        37,
+        19
+      ],
+      "parts": {
+        "hair_front": 4,
+        "hair_back": 1,
+        "eyebrows": 1,
+        "eyes": 4
+      }
+    },
+    {
+      "score": 0.017650289461016655,
+      "scale": 0.4600000000000001,
+      "crop_top_left_in_scaled_roi": [
+        37,
+        20
+      ],
+      "parts": {
+        "hair_front": 4,
+        "hair_back": 5,
+        "eyebrows": 1,
+        "eyes": 1
+      }
+    }
+  ],
+  "identification": {
+    "affected_layer": "male/eyes/04.png",
+    "front_hair": 4,
+    "eyebrows": 4,
+    "back_hair": "Not reliably distinguishable in this tight eye crop",
+    "evidence": "Image-match ranking plus independent visual audit of both screenshot and unoccluded current04 eyes",
+    "limit": "The screenshot uses display scaling; this is not a full-pixel identity assertion."
+  }
+}

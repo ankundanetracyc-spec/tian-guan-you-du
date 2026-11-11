@@ -1,0 +1,11 @@
+{
+  "status": "rejected_superseded",
+  "source": "res://mods/appearance/female_features_install_20261106/source/reference/approved_02_long_eyes.png",
+  "source_sha256": "4c9e0bed4d2443ca38e453e3616fafdc54fe04d4d3ac810fb86e206b43c8baa8",
+  "output": "res://mods/appearance/female_features_install_20261106/candidates/eyes/extraction_v3.png",
+  "output_sha256": "ba88e54d0b139a45d98398bbd8b4e167e8e39455d539654c925e4f8580896548",
+  "method": "Built-in image_gen approved-source eye background extraction; native 1024x1536 output copied unchanged; no post-generation translation or scaling",
+  "supersedes": "source/eye_registration.json",
+  "prompt": "source/approved_eye_extraction_prompt_v3.txt",
+  "rejected_reason": "原尺寸眼裂/虹膜接近，但上睑弧度、褶线、眼尾及深浅被重绘，未忠实还原获批02，不接入。"
+}

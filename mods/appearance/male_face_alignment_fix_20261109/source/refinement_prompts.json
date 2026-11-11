@@ -1,0 +1,37 @@
+{
+  "mode": "built-in image_gen",
+  "rejected": "first eyes04/05 too large and eyeliner-like, beard06 too faint; do not install those",
+  "jobs": [
+    {
+      "key": "eyes04_v2",
+      "part": "eyes",
+      "index": 4,
+      "refs": [
+        "E:/stacklands/mods/appearance/male_face_alignment_fix_20261109/source/frozen/male/eyes/04.png",
+        "E:/stacklands/mods/appearance/male_guigu_inspiration_20261106/preview/02_asymmetric_loose_gentle.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Correct the existing male eye pair in IMAGE1, preserving its exact eye SIZE and original delicate low-contrast painted hand. IMAGE2 is only a painting/palette and natural-eye reference, not geometry.\nReturn ONLY the pair of eyes on native transparent1024x1536, in original position nearx460/566,y364, centered onx513. Do not crop, zoom or enlarge. Preserve original small iris diameter, narrow natural eye opening, subdued grey-brown iris hue and soft faint lid folds. No hair, brows, face, nose, solid skin patch, background or labels.\nThe previous failed edit exaggerated the ROUND iris/opening, black upper liner and sharp wing tips. Do NOT improve beauty or add any makeup. Use a very fine soft grey-brown upper rim at original stroke weight, gentle partially obscured small irises, no black eyeliner, no flick/wing, no full hard line drawn around the lower eye. Both eyes must feel like a restrained adult Chinese gongbi portrait, NOT cosmetic ‘cat eyes’.\nBalance full left/right upper/lower eyelid arcs and outer-half opening, inner/outer corners, short tail lengths and iris color/coverage. Natural tiny hand-painted differences are allowed, visibly different roundness/density is not. No bitmap mirroring or changing pupil size to hide lid problems.\nDESIGN:温雅杏目. Keep the original LEFT eye's small gentle low-opening long-almond character and softly flatter upper eyelid; make RIGHT coherent with it, removing its extra round dome and outer-half openness. The pair should not look rounder or larger than the original left. Keep both upper eyelids low and calm, short soft outer corners without any extended dark spike. Same muted warm GREY-BROWN iris on BOTH, no brown-left/grey-right color split. A gentle natural gaze, no lifted eyeliner or seductive deep folds. Pupil distance105.06, midpoint513,y363.27; no independent iris shrinking."
+    },
+    {
+      "key": "eyes05_v2",
+      "part": "eyes",
+      "index": 5,
+      "refs": [
+        "E:/stacklands/mods/appearance/male_face_alignment_fix_20261109/source/frozen/male/eyes/05.png",
+        "E:/stacklands/mods/appearance/male_exploration_round2_20261106/preview/01_open_crown_high_tie.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Correct the existing male eye pair in IMAGE1, preserving its exact eye SIZE and original delicate low-contrast painted hand. IMAGE2 is only a painting/palette and natural-eye reference, not geometry.\nReturn ONLY the pair of eyes on native transparent1024x1536, in original position nearx460/566,y364, centered onx513. Do not crop, zoom or enlarge. Preserve original small iris diameter, narrow natural eye opening, subdued grey-brown iris hue and soft faint lid folds. No hair, brows, face, nose, solid skin patch, background or labels.\nThe previous failed edit exaggerated the ROUND iris/opening, black upper liner and sharp wing tips. Do NOT improve beauty or add any makeup. Use a very fine soft grey-brown upper rim at original stroke weight, gentle partially obscured small irises, no black eyeliner, no flick/wing, no full hard line drawn around the lower eye. Both eyes must feel like a restrained adult Chinese gongbi portrait, NOT cosmetic ‘cat eyes’.\nBalance full left/right upper/lower eyelid arcs and outer-half opening, inner/outer corners, short tail lengths and iris color/coverage. Natural tiny hand-painted differences are allowed, visibly different roundness/density is not. No bitmap mirroring or changing pupil size to hide lid problems.\nDESIGN:清锐长目. Preserve the original narrow, clear elongated eye opening and subtle intent, with the same small partly lid-covered iris. Make the two lids correspond naturally; keep upper stroke extremely fine soft grey-brown, especially outer third, and reduce dark long external spikes to SHORT natural corners. No lifted thick dark wing at either end; lower rim should dissolve softly into transparency rather than form a complete hard eyeliner border. Do not round or enlarge. Pupil distance104.88, midpoint513,y363.82."
+    },
+    {
+      "key": "beard06_v2",
+      "part": "face_accessory",
+      "index": 6,
+      "refs": [
+        "E:/stacklands/mods/appearance/male_face_alignment_fix_20261109/source/frozen/male/face_accessory/06.png",
+        "E:/stacklands/mods/appearance/male_beard_round2_install_20261108/reference/04_approved.png",
+        "E:/stacklands/mods/appearance/male_face_alignment_fix_20261109/source/frozen/male/face_shape/01.png"
+      ],
+      "prompt": "Use case: precise-object-edit, exact established beard correction.\nImage1 is current independent thin cheek-and-jaw beard. Image2 is the USER-APPROVED original full portrait showing its exact beard TYPE, natural hair density and dark grey-brown strength. Image3 is only the exact fixed face/ears/neck outline and pale skin color reference, not a blank face to draw.\nReturn ONLY the complete existing beard: visibly defined short moustache, a continuous but THIN low cheek/jaw line of individual short hairs connecting to a softly fuller short chin beard, matching Image2. Do not dilute it into pale stubble or a misty ‘five o’clock shadow’. The beard must be clearly visible on this pale skin at normal original portrait size, with the same modest medium grey-brown pigment and short pointed hair strokes as Image2. No dense full-beard block, increased length, extra hair or changed hairstyle.\nCorrect its placement about the actual face axisx513: moustache midpoint513 at y468, chin beard midpoint513..514 at y539. Keep the low cheek/jaw boundaries within Image3’s skin contour from x420..606,y425..543; follow the face naturally, no detached strips outside the left cheek. Full1024x1536 canvas with beard in its original small face region; no crop/zoom/enlargement. Mouth/lips/nose/skin/face/hair/robe/paper must all be absent, native transparent background. Do not bake a skin color plate into the layer. Preserve fine semi-transparent tips, no halo or soft fog. This is a geometric/fit correction of this exact approved beard, not a new beard design."
+    }
+  ]
+}

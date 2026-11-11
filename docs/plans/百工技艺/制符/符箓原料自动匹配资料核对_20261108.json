@@ -1,0 +1,1287 @@
+{
+  "date": "2026-11-08",
+  "scope": "现有物品及其材性只读核对；不读取人物库存，不计算工艺结果。",
+  "inputRule": "质地、功用及品级、五行；制作时另读真实份数。相性、材评、名称、子类和炼器档案不入匹配。",
+  "utilityGradeEncoding": "内部1为九品，9为一品；等级不是线性倍率。",
+  "count": 50,
+  "textureCounts": {
+    "纤维": 18,
+    "致密": 22,
+    "黏胶": 2,
+    "液体": 3,
+    "颗粒": 5
+  },
+  "paperEligible": 23,
+  "inkEligible": 32,
+  "sameFieldGroups": [
+    [
+      "云雾菌",
+      "砾地菌伞",
+      "青岚藤心"
+    ],
+    [
+      "凝霜叶",
+      "月露苔",
+      "苦苔根"
+    ],
+    [
+      "山蝉蜕壳",
+      "盐纹石膏",
+      "砂脉石片"
+    ],
+    [
+      "斑甲壳片",
+      "玄甲薄片"
+    ],
+    [
+      "泥脉石团",
+      "瘴泥珠"
+    ]
+  ],
+  "errors": [],
+  "materials": [
+    {
+      "name": "乌羽片",
+      "id": "mat_dark_feather",
+      "definition": "resources/entities/items/乌羽片.tres",
+      "craft": "resources/material_craft/乌羽片材性.tres",
+      "texture": "纤维",
+      "elements": [
+        "木"
+      ],
+      "utilities": {
+        "行": 2
+      },
+      "paperEligible": true,
+      "inkEligible": false,
+      "inkSourceEligible": false,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "云雾菌",
+      "id": "mat_cloud_mist_mushroom",
+      "definition": "resources/entities/items/云雾菌.tres",
+      "craft": "resources/material_craft/云雾菌材性.tres",
+      "texture": "纤维",
+      "elements": [
+        "木"
+      ],
+      "utilities": {
+        "生": 1
+      },
+      "paperEligible": true,
+      "inkEligible": false,
+      "inkSourceEligible": false,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "伏地兽筋",
+      "id": "mat_earthbeast_sinew",
+      "definition": "resources/entities/items/伏地兽筋.tres",
+      "craft": "resources/material_craft/伏地兽筋材性.tres",
+      "texture": "纤维",
+      "elements": [
+        "木"
+      ],
+      "utilities": {
+        "通": 1,
+        "生": 1
+      },
+      "paperEligible": true,
+      "inkEligible": false,
+      "inkSourceEligible": false,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "兽皮",
+      "id": "mat_beast_hide",
+      "definition": "resources/entities/items/兽皮.tres",
+      "craft": "resources/material_craft/兽皮材性.tres",
+      "texture": "纤维",
+      "elements": [
+        "木"
+      ],
+      "utilities": {
+        "固": 1,
+        "护": 1
+      },
+      "paperEligible": true,
+      "inkEligible": false,
+      "inkSourceEligible": false,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "兽骨",
+      "id": "mat_beast_bone",
+      "definition": "resources/entities/items/兽骨.tres",
+      "craft": "resources/material_craft/兽骨材性.tres",
+      "texture": "致密",
+      "elements": [
+        "土"
+      ],
+      "utilities": {
+        "固": 1,
+        "生": 1
+      },
+      "paperEligible": false,
+      "inkEligible": true,
+      "inkSourceEligible": true,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "凝霜叶",
+      "id": "mat_frostdew_leaf",
+      "definition": "resources/entities/items/凝霜叶.tres",
+      "craft": "resources/material_craft/凝霜叶材性.tres",
+      "texture": "纤维",
+      "elements": [
+        "木"
+      ],
+      "utilities": {
+        "藏": 1
+      },
+      "paperEligible": true,
+      "inkEligible": false,
+      "inkSourceEligible": false,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "凝露松脂",
+      "id": "mat_dew_pine_resin",
+      "definition": "resources/entities/items/凝露松脂.tres",
+      "craft": "resources/material_craft/凝露松脂材性.tres",
+      "texture": "黏胶",
+      "elements": [
+        "木"
+      ],
+      "utilities": {
+        "固": 1
+      },
+      "paperEligible": true,
+      "inkEligible": true,
+      "inkSourceEligible": false,
+      "inkAuxiliaryEligible": true
+    },
+    {
+      "name": "回泉珠",
+      "id": "mat_return_spring_pearl",
+      "definition": "resources/entities/items/回泉珠.tres",
+      "craft": "resources/material_craft/回泉珠材性.tres",
+      "texture": "液体",
+      "elements": [
+        "水"
+      ],
+      "utilities": {
+        "聚": 2,
+        "化": 1
+      },
+      "paperEligible": true,
+      "inkEligible": true,
+      "inkSourceEligible": true,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "地脉焰炭",
+      "id": "mat_geovein_flame_coal",
+      "definition": "resources/entities/items/地脉焰炭.tres",
+      "craft": "resources/material_craft/地脉焰炭材性.tres",
+      "texture": "致密",
+      "elements": [
+        "火"
+      ],
+      "utilities": {
+        "聚": 2,
+        "通": 1
+      },
+      "paperEligible": false,
+      "inkEligible": true,
+      "inkSourceEligible": true,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "山蚕长丝",
+      "id": "mat_mountain_silkworm_thread",
+      "definition": "resources/entities/items/山蚕长丝.tres",
+      "craft": "resources/material_craft/山蚕长丝材性.tres",
+      "texture": "纤维",
+      "elements": [
+        "木"
+      ],
+      "utilities": {
+        "固": 1,
+        "藏": 1
+      },
+      "paperEligible": true,
+      "inkEligible": false,
+      "inkSourceEligible": false,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "山蝉蜕壳",
+      "id": "mat_cicada_shell",
+      "definition": "resources/entities/items/山蝉蜕壳.tres",
+      "craft": "resources/material_craft/山蝉蜕壳材性.tres",
+      "texture": "致密",
+      "elements": [
+        "土"
+      ],
+      "utilities": {
+        "固": 1
+      },
+      "paperEligible": false,
+      "inkEligible": true,
+      "inkSourceEligible": true,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "斑甲壳片",
+      "id": "mat_mottled_beetle_shell",
+      "definition": "resources/entities/items/斑甲壳片.tres",
+      "craft": "resources/material_craft/斑甲壳片材性.tres",
+      "texture": "致密",
+      "elements": [
+        "土"
+      ],
+      "utilities": {
+        "护": 2
+      },
+      "paperEligible": false,
+      "inkEligible": true,
+      "inkSourceEligible": true,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "断角骨片",
+      "id": "mat_broken_horn_bone",
+      "definition": "resources/entities/items/断角骨片.tres",
+      "craft": "resources/material_craft/断角骨片材性.tres",
+      "texture": "致密",
+      "elements": [
+        "土"
+      ],
+      "utilities": {
+        "破": 2
+      },
+      "paperEligible": false,
+      "inkEligible": true,
+      "inkSourceEligible": true,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "月露苔",
+      "id": "mat_moon_dew_moss",
+      "definition": "resources/entities/items/月露苔.tres",
+      "craft": "resources/material_craft/月露苔材性.tres",
+      "texture": "纤维",
+      "elements": [
+        "木"
+      ],
+      "utilities": {
+        "藏": 1
+      },
+      "paperEligible": true,
+      "inkEligible": false,
+      "inkSourceEligible": false,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "月露菌汁",
+      "id": "mat_moonmist_mushroom_juice",
+      "definition": "resources/entities/items/月露菌汁.tres",
+      "craft": "resources/material_craft/月露菌汁材性.tres",
+      "texture": "液体",
+      "elements": [
+        "水"
+      ],
+      "utilities": {
+        "化": 1
+      },
+      "paperEligible": true,
+      "inkEligible": true,
+      "inkSourceEligible": true,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "朱阳花籽",
+      "id": "mat_redsun_flower_seed",
+      "definition": "resources/entities/items/朱阳花籽.tres",
+      "craft": "resources/material_craft/朱阳花籽材性.tres",
+      "texture": "纤维",
+      "elements": [
+        "火"
+      ],
+      "utilities": {
+        "引": 1
+      },
+      "paperEligible": true,
+      "inkEligible": false,
+      "inkSourceEligible": false,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "松心炭",
+      "id": "mat_pineheart_charcoal",
+      "definition": "resources/entities/items/松心炭.tres",
+      "craft": "resources/material_craft/松心炭材性.tres",
+      "texture": "颗粒",
+      "elements": [
+        "火"
+      ],
+      "utilities": {
+        "固": 1
+      },
+      "paperEligible": false,
+      "inkEligible": true,
+      "inkSourceEligible": true,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "沉云玉屑",
+      "id": "mat_sinking_cloud_jade_shard",
+      "definition": "resources/entities/items/沉云玉屑.tres",
+      "craft": "resources/material_craft/沉云玉屑材性.tres",
+      "texture": "颗粒",
+      "elements": [
+        "土"
+      ],
+      "utilities": {
+        "藏": 2
+      },
+      "paperEligible": false,
+      "inkEligible": true,
+      "inkSourceEligible": true,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "泥脉石团",
+      "id": "mat_clay_vein_lump",
+      "definition": "resources/entities/items/泥脉石团.tres",
+      "craft": "resources/material_craft/泥脉石团材性.tres",
+      "texture": "致密",
+      "elements": [
+        "土"
+      ],
+      "utilities": {
+        "镇": 1
+      },
+      "paperEligible": false,
+      "inkEligible": true,
+      "inkSourceEligible": true,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "清音玉片",
+      "id": "mat_clear_chime_jade_shard",
+      "definition": "resources/entities/items/清音玉片.tres",
+      "craft": "resources/material_craft/清音玉片材性.tres",
+      "texture": "致密",
+      "elements": [
+        "水"
+      ],
+      "utilities": {
+        "明": 1,
+        "通": 1
+      },
+      "paperEligible": false,
+      "inkEligible": true,
+      "inkSourceEligible": true,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "溪纹藻丝",
+      "id": "mat_streampattern_algae_fiber",
+      "definition": "resources/entities/items/溪纹藻丝.tres",
+      "craft": "resources/material_craft/溪纹藻丝材性.tres",
+      "texture": "纤维",
+      "elements": [
+        "水"
+      ],
+      "utilities": {
+        "通": 2
+      },
+      "paperEligible": true,
+      "inkEligible": false,
+      "inkSourceEligible": false,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "灵泉藻",
+      "id": "mat_spirit_spring_algae",
+      "definition": "resources/entities/items/灵泉藻.tres",
+      "craft": "resources/material_craft/灵泉藻材性.tres",
+      "texture": "纤维",
+      "elements": [
+        "水"
+      ],
+      "utilities": {
+        "聚": 2
+      },
+      "paperEligible": true,
+      "inkEligible": false,
+      "inkSourceEligible": false,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "灵泉露",
+      "id": "mat_spirit_spring_dew",
+      "definition": "resources/entities/items/灵泉露.tres",
+      "craft": "resources/material_craft/灵泉露材性.tres",
+      "texture": "液体",
+      "elements": [
+        "水"
+      ],
+      "utilities": {
+        "聚": 3,
+        "化": 2
+      },
+      "paperEligible": true,
+      "inkEligible": true,
+      "inkSourceEligible": true,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "灵石",
+      "id": "mat_spirit_stone",
+      "definition": "resources/entities/items/灵石.tres",
+      "craft": "resources/material_craft/灵石材性.tres",
+      "texture": "致密",
+      "elements": [
+        "土"
+      ],
+      "utilities": {
+        "聚": 1,
+        "藏": 1,
+        "通": 1
+      },
+      "paperEligible": false,
+      "inkEligible": true,
+      "inkSourceEligible": true,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "玄甲薄片",
+      "id": "mat_darkscale_thin_plate",
+      "definition": "resources/entities/items/玄甲薄片.tres",
+      "craft": "resources/material_craft/玄甲薄片材性.tres",
+      "texture": "致密",
+      "elements": [
+        "土"
+      ],
+      "utilities": {
+        "护": 2
+      },
+      "paperEligible": false,
+      "inkEligible": true,
+      "inkSourceEligible": true,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "玄铁",
+      "id": "mat_xuantie",
+      "definition": "resources/entities/items/玄铁.tres",
+      "craft": "resources/material_craft/玄铁材性.tres",
+      "texture": "致密",
+      "elements": [
+        "金"
+      ],
+      "utilities": {
+        "固": 2
+      },
+      "paperEligible": false,
+      "inkEligible": true,
+      "inkSourceEligible": true,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "瘴泥珠",
+      "id": "mat_miasma_clay_pearl",
+      "definition": "resources/entities/items/瘴泥珠.tres",
+      "craft": "resources/material_craft/瘴泥珠材性.tres",
+      "texture": "致密",
+      "elements": [
+        "土"
+      ],
+      "utilities": {
+        "镇": 1
+      },
+      "paperEligible": false,
+      "inkEligible": true,
+      "inkSourceEligible": true,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "盐纹石膏",
+      "id": "mat_salt_gypsum",
+      "definition": "resources/entities/items/盐纹石膏.tres",
+      "craft": "resources/material_craft/盐纹石膏材性.tres",
+      "texture": "致密",
+      "elements": [
+        "土"
+      ],
+      "utilities": {
+        "固": 1
+      },
+      "paperEligible": false,
+      "inkEligible": true,
+      "inkSourceEligible": true,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "石蜂蜡",
+      "id": "mat_stone_bee_wax",
+      "definition": "resources/entities/items/石蜂蜡.tres",
+      "craft": "resources/material_craft/石蜂蜡材性.tres",
+      "texture": "黏胶",
+      "elements": [
+        "土"
+      ],
+      "utilities": {
+        "固": 1
+      },
+      "paperEligible": true,
+      "inkEligible": true,
+      "inkSourceEligible": false,
+      "inkAuxiliaryEligible": true
+    },
+    {
+      "name": "砂脉石片",
+      "id": "mat_sandvein_stone_fragment",
+      "definition": "resources/entities/items/砂脉石片.tres",
+      "craft": "resources/material_craft/砂脉石片材性.tres",
+      "texture": "致密",
+      "elements": [
+        "土"
+      ],
+      "utilities": {
+        "固": 1
+      },
+      "paperEligible": false,
+      "inkEligible": true,
+      "inkSourceEligible": true,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "砾地菌伞",
+      "id": "mat_gravel_mushroom",
+      "definition": "resources/entities/items/砾地菌伞.tres",
+      "craft": "resources/material_craft/砾地菌伞材性.tres",
+      "texture": "纤维",
+      "elements": [
+        "木"
+      ],
+      "utilities": {
+        "生": 1
+      },
+      "paperEligible": true,
+      "inkEligible": false,
+      "inkSourceEligible": false,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "紫砂灵土",
+      "id": "mat_zisha_spirit_soil",
+      "definition": "resources/entities/items/紫砂灵土.tres",
+      "craft": "resources/material_craft/紫砂灵土材性.tres",
+      "texture": "颗粒",
+      "elements": [
+        "土"
+      ],
+      "utilities": {
+        "藏": 1
+      },
+      "paperEligible": false,
+      "inkEligible": true,
+      "inkSourceEligible": true,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "苦苔根",
+      "id": "mat_bitter_moss_root",
+      "definition": "resources/entities/items/苦苔根.tres",
+      "craft": "resources/material_craft/苦苔根材性.tres",
+      "texture": "纤维",
+      "elements": [
+        "木"
+      ],
+      "utilities": {
+        "藏": 1
+      },
+      "paperEligible": true,
+      "inkEligible": false,
+      "inkSourceEligible": false,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "荒藤结节",
+      "id": "mat_withered_vine_knot",
+      "definition": "resources/entities/items/荒藤结节.tres",
+      "craft": "resources/material_craft/荒藤结节材性.tres",
+      "texture": "致密",
+      "elements": [
+        "木"
+      ],
+      "utilities": {
+        "固": 1
+      },
+      "paperEligible": false,
+      "inkEligible": true,
+      "inkSourceEligible": true,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "裂甲石",
+      "id": "mat_cracked_armor_stone",
+      "definition": "resources/entities/items/裂甲石.tres",
+      "craft": "resources/material_craft/裂甲石材性.tres",
+      "texture": "致密",
+      "elements": [
+        "金"
+      ],
+      "utilities": {
+        "破": 1
+      },
+      "paperEligible": false,
+      "inkEligible": true,
+      "inkSourceEligible": true,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "褐铜砂",
+      "id": "mat_brown_copper_sand",
+      "definition": "resources/entities/items/褐铜砂.tres",
+      "craft": "resources/material_craft/褐铜砂材性.tres",
+      "texture": "颗粒",
+      "elements": [
+        "金"
+      ],
+      "utilities": {
+        "聚": 2
+      },
+      "paperEligible": false,
+      "inkEligible": true,
+      "inkSourceEligible": true,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "赤瓤木核",
+      "id": "mat_redwood_seed_core",
+      "definition": "resources/entities/items/赤瓤木核.tres",
+      "craft": "resources/material_craft/赤瓤木核材性.tres",
+      "texture": "致密",
+      "elements": [
+        "木"
+      ],
+      "utilities": {
+        "生": 1
+      },
+      "paperEligible": false,
+      "inkEligible": true,
+      "inkSourceEligible": true,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "赤纹燧石",
+      "id": "mat_chiwen_suilishi",
+      "definition": "resources/entities/items/赤纹燧石.tres",
+      "craft": "resources/material_craft/赤纹燧石材性.tres",
+      "texture": "致密",
+      "elements": [
+        "火"
+      ],
+      "utilities": {
+        "破": 1
+      },
+      "paperEligible": false,
+      "inkEligible": true,
+      "inkSourceEligible": true,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "赤鳞蜕",
+      "id": "mat_red_scale_shed",
+      "definition": "resources/entities/items/赤鳞蜕.tres",
+      "craft": "resources/material_craft/赤鳞蜕材性.tres",
+      "texture": "致密",
+      "elements": [
+        "火"
+      ],
+      "utilities": {
+        "护": 1
+      },
+      "paperEligible": false,
+      "inkEligible": true,
+      "inkSourceEligible": true,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "铜髓矿",
+      "id": "mat_tong_sui_ore",
+      "definition": "resources/entities/items/铜髓矿.tres",
+      "craft": "resources/material_craft/铜髓矿材性.tres",
+      "texture": "致密",
+      "elements": [
+        "金"
+      ],
+      "utilities": {
+        "固": 1
+      },
+      "paperEligible": false,
+      "inkEligible": true,
+      "inkSourceEligible": true,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "雾心菌核",
+      "id": "mat_mistheart_mushroom_core",
+      "definition": "resources/entities/items/雾心菌核.tres",
+      "craft": "resources/material_craft/雾心菌核材性.tres",
+      "texture": "致密",
+      "elements": [
+        "木"
+      ],
+      "utilities": {
+        "藏": 1,
+        "镇": 1
+      },
+      "paperEligible": false,
+      "inkEligible": true,
+      "inkSourceEligible": true,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "雾铃花",
+      "id": "mat_mist_bell_flower",
+      "definition": "resources/entities/items/雾铃花.tres",
+      "craft": "resources/material_craft/雾铃花材性.tres",
+      "texture": "纤维",
+      "elements": [
+        "木"
+      ],
+      "utilities": {
+        "引": 1
+      },
+      "paperEligible": true,
+      "inkEligible": false,
+      "inkSourceEligible": false,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "霜叶枝",
+      "id": "mat_frostleaf_twig",
+      "definition": "resources/entities/items/霜叶枝.tres",
+      "craft": "resources/material_craft/霜叶枝材性.tres",
+      "texture": "纤维",
+      "elements": [
+        "木"
+      ],
+      "utilities": {
+        "护": 1
+      },
+      "paperEligible": true,
+      "inkEligible": false,
+      "inkSourceEligible": false,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "青岚藤心",
+      "id": "mat_qinglan_vine_core",
+      "definition": "resources/entities/items/青岚藤心.tres",
+      "craft": "resources/material_craft/青岚藤心材性.tres",
+      "texture": "纤维",
+      "elements": [
+        "木"
+      ],
+      "utilities": {
+        "生": 1
+      },
+      "paperEligible": true,
+      "inkEligible": false,
+      "inkSourceEligible": false,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "青木芯",
+      "id": "mat_qingmu_core",
+      "definition": "resources/entities/items/青木芯.tres",
+      "craft": "resources/material_craft/青木芯材性.tres",
+      "texture": "致密",
+      "elements": [
+        "木"
+      ],
+      "utilities": {
+        "通": 2,
+        "生": 3
+      },
+      "paperEligible": false,
+      "inkEligible": true,
+      "inkSourceEligible": true,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "青羽翎",
+      "id": "mat_bluegreen_feather",
+      "definition": "resources/entities/items/青羽翎.tres",
+      "craft": "resources/material_craft/青羽翎材性.tres",
+      "texture": "纤维",
+      "elements": [
+        "木"
+      ],
+      "utilities": {
+        "行": 1
+      },
+      "paperEligible": true,
+      "inkEligible": false,
+      "inkSourceEligible": false,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "青髓芽",
+      "id": "mat_qingmarrow_sprout",
+      "definition": "resources/entities/items/青髓芽.tres",
+      "craft": "resources/material_craft/青髓芽材性.tres",
+      "texture": "纤维",
+      "elements": [
+        "木"
+      ],
+      "utilities": {
+        "生": 1,
+        "聚": 1
+      },
+      "paperEligible": true,
+      "inkEligible": false,
+      "inkSourceEligible": false,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "风窍晶屑",
+      "id": "mat_windaperture_crystal_shard",
+      "definition": "resources/entities/items/风窍晶屑.tres",
+      "craft": "resources/material_craft/风窍晶屑材性.tres",
+      "texture": "颗粒",
+      "elements": [
+        "金"
+      ],
+      "utilities": {
+        "行": 1
+      },
+      "paperEligible": false,
+      "inkEligible": true,
+      "inkSourceEligible": true,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "风纹石英",
+      "id": "mat_fengwen_quartz",
+      "definition": "resources/entities/items/风纹石英.tres",
+      "craft": "resources/material_craft/风纹石英材性.tres",
+      "texture": "致密",
+      "elements": [
+        "金"
+      ],
+      "utilities": {
+        "通": 2
+      },
+      "paperEligible": false,
+      "inkEligible": true,
+      "inkSourceEligible": true,
+      "inkAuxiliaryEligible": false
+    },
+    {
+      "name": "风络藤丝",
+      "id": "mat_windvein_vine_fiber",
+      "definition": "resources/entities/items/风络藤丝.tres",
+      "craft": "resources/material_craft/风络藤丝材性.tres",
+      "texture": "纤维",
+      "elements": [
+        "木"
+      ],
+      "utilities": {
+        "通": 1
+      },
+      "paperEligible": true,
+      "inkEligible": false,
+      "inkSourceEligible": false,
+      "inkAuxiliaryEligible": false
+    }
+  ],
+  "revision": "用户最新裁定：墨源只接致密、颗粒、液体；纤维不接，黏胶仅辅料，液体允许直接制墨。",
+  "derivedFlagsNotice": "本报告的候选标记仅由现有质地派生，用于核对，不是新增原料字段，也不代表已达完整成品条件。",
+  "inkSourceCount": 30,
+  "inkAuxiliaryCount": 2,
+  "inkSourceUtilityCoverage": {
+    "固": [
+      {
+        "name": "兽骨",
+        "grade": 1
+      },
+      {
+        "name": "山蝉蜕壳",
+        "grade": 1
+      },
+      {
+        "name": "松心炭",
+        "grade": 1
+      },
+      {
+        "name": "玄铁",
+        "grade": 2
+      },
+      {
+        "name": "盐纹石膏",
+        "grade": 1
+      },
+      {
+        "name": "砂脉石片",
+        "grade": 1
+      },
+      {
+        "name": "荒藤结节",
+        "grade": 1
+      },
+      {
+        "name": "铜髓矿",
+        "grade": 1
+      }
+    ],
+    "聚": [
+      {
+        "name": "回泉珠",
+        "grade": 2
+      },
+      {
+        "name": "地脉焰炭",
+        "grade": 2
+      },
+      {
+        "name": "灵泉露",
+        "grade": 3
+      },
+      {
+        "name": "灵石",
+        "grade": 1
+      },
+      {
+        "name": "褐铜砂",
+        "grade": 2
+      }
+    ],
+    "通": [
+      {
+        "name": "地脉焰炭",
+        "grade": 1
+      },
+      {
+        "name": "清音玉片",
+        "grade": 1
+      },
+      {
+        "name": "灵石",
+        "grade": 1
+      },
+      {
+        "name": "青木芯",
+        "grade": 2
+      },
+      {
+        "name": "风纹石英",
+        "grade": 2
+      }
+    ],
+    "化": [
+      {
+        "name": "回泉珠",
+        "grade": 1
+      },
+      {
+        "name": "月露菌汁",
+        "grade": 1
+      },
+      {
+        "name": "灵泉露",
+        "grade": 2
+      }
+    ],
+    "引": [],
+    "破": [
+      {
+        "name": "断角骨片",
+        "grade": 2
+      },
+      {
+        "name": "裂甲石",
+        "grade": 1
+      },
+      {
+        "name": "赤纹燧石",
+        "grade": 1
+      }
+    ],
+    "护": [
+      {
+        "name": "斑甲壳片",
+        "grade": 2
+      },
+      {
+        "name": "玄甲薄片",
+        "grade": 2
+      },
+      {
+        "name": "赤鳞蜕",
+        "grade": 1
+      }
+    ],
+    "镇": [
+      {
+        "name": "泥脉石团",
+        "grade": 1
+      },
+      {
+        "name": "瘴泥珠",
+        "grade": 1
+      },
+      {
+        "name": "雾心菌核",
+        "grade": 1
+      }
+    ],
+    "生": [
+      {
+        "name": "兽骨",
+        "grade": 1
+      },
+      {
+        "name": "赤瓤木核",
+        "grade": 1
+      },
+      {
+        "name": "青木芯",
+        "grade": 3
+      }
+    ],
+    "明": [
+      {
+        "name": "清音玉片",
+        "grade": 1
+      }
+    ],
+    "藏": [
+      {
+        "name": "沉云玉屑",
+        "grade": 2
+      },
+      {
+        "name": "灵石",
+        "grade": 1
+      },
+      {
+        "name": "紫砂灵土",
+        "grade": 1
+      },
+      {
+        "name": "雾心菌核",
+        "grade": 1
+      }
+    ],
+    "行": [
+      {
+        "name": "风窍晶屑",
+        "grade": 1
+      }
+    ]
+  },
+  "missingInkSourceUtilities": [
+    "引"
+  ],
+  "inkCandidateUtilityCoverage": {
+    "固": [
+      {
+        "name": "兽骨",
+        "grade": 1
+      },
+      {
+        "name": "凝露松脂",
+        "grade": 1
+      },
+      {
+        "name": "山蝉蜕壳",
+        "grade": 1
+      },
+      {
+        "name": "松心炭",
+        "grade": 1
+      },
+      {
+        "name": "玄铁",
+        "grade": 2
+      },
+      {
+        "name": "盐纹石膏",
+        "grade": 1
+      },
+      {
+        "name": "石蜂蜡",
+        "grade": 1
+      },
+      {
+        "name": "砂脉石片",
+        "grade": 1
+      },
+      {
+        "name": "荒藤结节",
+        "grade": 1
+      },
+      {
+        "name": "铜髓矿",
+        "grade": 1
+      }
+    ],
+    "聚": [
+      {
+        "name": "回泉珠",
+        "grade": 2
+      },
+      {
+        "name": "地脉焰炭",
+        "grade": 2
+      },
+      {
+        "name": "灵泉露",
+        "grade": 3
+      },
+      {
+        "name": "灵石",
+        "grade": 1
+      },
+      {
+        "name": "褐铜砂",
+        "grade": 2
+      }
+    ],
+    "通": [
+      {
+        "name": "地脉焰炭",
+        "grade": 1
+      },
+      {
+        "name": "清音玉片",
+        "grade": 1
+      },
+      {
+        "name": "灵石",
+        "grade": 1
+      },
+      {
+        "name": "青木芯",
+        "grade": 2
+      },
+      {
+        "name": "风纹石英",
+        "grade": 2
+      }
+    ],
+    "化": [
+      {
+        "name": "回泉珠",
+        "grade": 1
+      },
+      {
+        "name": "月露菌汁",
+        "grade": 1
+      },
+      {
+        "name": "灵泉露",
+        "grade": 2
+      }
+    ],
+    "引": [],
+    "破": [
+      {
+        "name": "断角骨片",
+        "grade": 2
+      },
+      {
+        "name": "裂甲石",
+        "grade": 1
+      },
+      {
+        "name": "赤纹燧石",
+        "grade": 1
+      }
+    ],
+    "护": [
+      {
+        "name": "斑甲壳片",
+        "grade": 2
+      },
+      {
+        "name": "玄甲薄片",
+        "grade": 2
+      },
+      {
+        "name": "赤鳞蜕",
+        "grade": 1
+      }
+    ],
+    "镇": [
+      {
+        "name": "泥脉石团",
+        "grade": 1
+      },
+      {
+        "name": "瘴泥珠",
+        "grade": 1
+      },
+      {
+        "name": "雾心菌核",
+        "grade": 1
+      }
+    ],
+    "生": [
+      {
+        "name": "兽骨",
+        "grade": 1
+      },
+      {
+        "name": "赤瓤木核",
+        "grade": 1
+      },
+      {
+        "name": "青木芯",
+        "grade": 3
+      }
+    ],
+    "明": [
+      {
+        "name": "清音玉片",
+        "grade": 1
+      }
+    ],
+    "藏": [
+      {
+        "name": "沉云玉屑",
+        "grade": 2
+      },
+      {
+        "name": "灵石",
+        "grade": 1
+      },
+      {
+        "name": "紫砂灵土",
+        "grade": 1
+      },
+      {
+        "name": "雾心菌核",
+        "grade": 1
+      }
+    ],
+    "行": [
+      {
+        "name": "风窍晶屑",
+        "grade": 1
+      }
+    ]
+  },
+  "missingInkCandidateUtilities": [
+    "引"
+  ]
+}

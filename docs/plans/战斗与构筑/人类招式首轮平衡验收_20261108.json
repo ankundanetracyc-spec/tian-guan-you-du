@@ -1,0 +1,83 @@
+{
+  "date": "2026-11-08",
+  "authority": "人类招式首轮平衡与名称标注_20261108.md",
+  "passed": true,
+  "scope": {
+    "changed_skills": [
+      "血臂撼岳",
+      "灵击",
+      "尽锋",
+      "乘势再攻",
+      "云岚三叠",
+      "养锋"
+    ],
+    "numeric_resource_changes": 12,
+    "numeric_fields": 13,
+    "rule_resources_checked": 50,
+    "diagrams": 79,
+    "primary_books": 5
+  },
+  "acceptance": [
+    {
+      "item": "卡牌效果、数值、费用、目标与当前专题一致",
+      "passed": true,
+      "evidence": "六招与六份化法副本的13项字段按定稿变更；二十招卡文及五本习得正文逐字与当前资源核对；120组实际伤害／防御／费用计算。"
+    },
+    {
+      "item": "未引入未定义属性、资源、关键词、射程或位移",
+      "passed": true,
+      "evidence": "12份差异逐字段反向还原后与迁移原始指纹一致，其余38份保全；云岚只调整其独有追加公式，普通心法252组结果原值相同。"
+    },
+    {
+      "item": "0费、返费、抽牌、额外行动和资源生成符合总案限制",
+      "passed": true,
+      "evidence": "未增加0费、抽牌、通用返费或额外行动；真实施放验证养锋首轮5层、次轮封顶10；周天、复命与焚元边界保留。限2普通与周天合计两次，跨轮改盘不刷新。"
+    },
+    {
+      "item": "实现、词典图文和展示文案一致",
+      "passed": true,
+      "evidence": "79份图、五本主稿、五本文字及灵击／云帔节点文字同步。*N是可摆份数，限N是整场共享次数，每回合次数明写。主图无公共扫格流程。五张原生PNG逐张目检。"
+    },
+    {
+      "item": "运行与变更相称的编译和场景验证",
+      "passed": true,
+      "evidence": "完整编译0警告0错误；图文1407项、人类扫盘与效果392项、限次与隔离迁移125项、正式往返17项通过。"
+    }
+  ],
+  "checks": {
+    "static": 1407,
+    "effects": 392,
+    "limits": 125,
+    "formal": 17,
+    "total_assertions": 1941
+  },
+  "balance_calculations": {
+    "profiles": 6,
+    "skill_rows_before": 120,
+    "skill_rows_after": 120,
+    "heart_rows_before": 252,
+    "heart_rows_after": 252,
+    "sword_comparison_rows_before": 324,
+    "sword_comparison_rows_after": 324,
+    "ordinary_hearts_unchanged": true,
+    "all_unmodified_skills_unchanged": true,
+    "scope": "四卷舒卷主修；分别假设每段100%或75%命中，无会心、应对、护盾与其他加成；追加须前段命中且概率成功，不计算击杀中止；完整付费另列",
+    "complete_match_win_rates_measured": false
+  },
+  "compile": {
+    "warnings": 0,
+    "errors": 0,
+    "full_build": true,
+    "log": "../../output/combat_balance_20261108/build.log"
+  },
+  "runtime_logs": {
+    "effects": "../../output/combat_balance_20261108/effects_headless.log",
+    "limits": "../../output/combat_balance_20261108/limits.log",
+    "formal": "../../output/combat_balance_20261108/formal.log"
+  },
+  "visual_review": "五本秘籍图谱平衡后排版验收_20261108.json",
+  "formal_exit_cleanup": "正式17项功能断言通过，退出仍报告10个ObjectDB实例、5个资源与5份DummyTexture未清理，保留既有清理问题，不表述为无日志通过。",
+  "ui_validation_scope": "五本draw.io已原生导出并逐张目检；游戏功能以headless场景为本轮通过依据。屏外游戏窗口的鼠标拖拽尝试未通过，未计入原生界面验收，不据此改动玩家拖拽代码。",
+  "save_scope": "只运行隔离场景与隔离存档，未打开或覆盖玩家正式旅程。",
+  "remaining_balance_evidence": "本轮完成数值纠偏与资源／状态边界验证；未将概率期望或这些功能断言当成完整对局胜率。"
+}

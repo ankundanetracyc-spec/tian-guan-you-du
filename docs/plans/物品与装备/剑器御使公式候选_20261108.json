@@ -1,0 +1,338 @@
+{
+  "date": "2026-11-08",
+  "documentation_schema": 3,
+  "status": "per_item_ownership_and_physical_type_confirmed_complete_numeric_candidate_not_live",
+  "authority": "剑器属性池与化法接口修订实算_20261108.md",
+  "held_sharpness_target": "starred_character_techniques_with_sword_term_only",
+  "held_sharpness_affects_controlled_sword_attacks": false,
+  "qinghe_held_sharpness_geometry": {
+    "status": "confirmed_by_user",
+    "definition_key": "qinghe.blade_tip_sharpness.v1",
+    "definition_version": 1,
+    "origin": "blade_tip",
+    "canonical_facing_quarter_turns": 0,
+    "body_cells_retained_this_revision": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ]
+    ],
+    "source_anchor": [
+      1,
+      0
+    ],
+    "offsets": [
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ]
+    ],
+    "range_cells": [
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        4,
+        0
+      ]
+    ],
+    "rotation": "clockwise_quarter_turns_with_body_and_tip",
+    "occupies_board_cells": false,
+    "changes_attack_range": false,
+    "derived_from_battle_or_inventory_footprint": false,
+    "applies_to_other_items_without_definition": false,
+    "withdrawn_previous_geometry": "battle_footprint_sized_inward_two_cell_rectangle",
+    "changes_numeric_effects_coefficients_or_budgets": false
+  },
+  "base_combat_bonus_kind": "fixed_points_only",
+  "durability_scope": "persistent_item_condition_not_battle_control_life",
+  "battle_life_name": {
+    "proposal": "御使稳定度",
+    "short_display": "稳定",
+    "status": "not_confirmed"
+  },
+  "formula_forms": {
+    "status": "complete_additive_numeric_candidate_defined_not_live_balance",
+    "stability_cap": "floor(S0_i + ks_i*soul + kw_i*sword_proficiency + kn_i*this_item_spirit_occupation)",
+    "sword_default_attack_raw_damage": "round(D0_i + ds_i*soul + dw_i*sword_proficiency)",
+    "stability_rounding": "floor_at_end",
+    "damage_rounding": "nearest_half_up_at_end_for_nonnegative_values"
+  },
+  "per_item_parameter_contract": {
+    "status": "parameter_ownership_confirmed_numeric_mapping_candidate_defined",
+    "owner": "finished_sword_item_instance",
+    "stability_required_fields": [
+      "base",
+      "soul_coefficient",
+      "sword_proficiency_coefficient",
+      "this_item_spirit_occupation_coefficient"
+    ],
+    "default_attack_required_fields": [
+      "base",
+      "soul_coefficient",
+      "sword_proficiency_coefficient",
+      "damage_type"
+    ],
+    "default_attack_damage_type": "physical",
+    "attribute_inputs_determine_damage_type": false,
+    "coefficients_are_character_bonuses": false,
+    "class_wide_fixed_coefficients": false,
+    "force_random_differences_between_identical_inputs": false,
+    "generation_input_model": "shared_material_process_and_actual_allocation_rules",
+    "quality_or_tier_post_multiplier": false,
+    "double_spend_source_budget": false,
+    "changes_bond_reservation_priority": false,
+    "generation_mapping_weights": {
+      "parameter_document": "剑器材料换算候选参数_20261108_v2.json",
+      "version": "sword-material-profile-trial-2-shape-pools",
+      "status": "complete_candidate_not_live"
+    },
+    "coefficient_bounds": {
+      "minimum": 0,
+      "global_numeric_maximum": null,
+      "finite_values_required": true,
+      "bounded_by": "actual_sources_shared_constraints_and_group_value_partition"
+    },
+    "coefficient_storage_precision": 4,
+    "frozen_with_item": [
+      "parameter_groups",
+      "source_allocations",
+      "formula_rule_version",
+      "generation_parameter_snapshot"
+    ],
+    "missing_old_parameters": "preserve_missing_no_silent_reference_fixture_fallback",
+    "battle_attribute_owner": "current_controller_not_forging_creator",
+    "coefficient_quantization": "truncate_down_without_refund"
+  },
+  "numeric_fixtures": {
+    "status": "manual_math_examples_only_not_actual_forging_output_not_quality_presets_not_for_runtime",
+    "equal_material_budget_claimed": false,
+    "profiles": [
+      {
+        "id": "A",
+        "stability": {
+          "base": 12,
+          "soul_coefficient": 2,
+          "sword_proficiency_coefficient": 0.5,
+          "this_item_spirit_occupation_coefficient": 8
+        },
+        "default_attack": {
+          "base": 4,
+          "soul_coefficient": 0.45,
+          "sword_proficiency_coefficient": 0.55,
+          "damage_type": "physical"
+        }
+      },
+      {
+        "id": "B",
+        "stability": {
+          "base": 10,
+          "soul_coefficient": 3,
+          "sword_proficiency_coefficient": 0.25,
+          "this_item_spirit_occupation_coefficient": 10
+        },
+        "default_attack": {
+          "base": 3,
+          "soul_coefficient": 0.35,
+          "sword_proficiency_coefficient": 0.45,
+          "damage_type": "physical"
+        }
+      },
+      {
+        "id": "C",
+        "stability": {
+          "base": 8,
+          "soul_coefficient": 1.5,
+          "sword_proficiency_coefficient": 0.75,
+          "this_item_spirit_occupation_coefficient": 6
+        },
+        "default_attack": {
+          "base": 5,
+          "soul_coefficient": 0.3,
+          "sword_proficiency_coefficient": 0.85,
+          "damage_type": "physical"
+        }
+      }
+    ],
+    "same_controller_examples": [
+      {
+        "profile_id": "A",
+        "soul": 10,
+        "sword_proficiency": 10,
+        "occupation": 2,
+        "stability_cap": 53,
+        "raw_damage": 14
+      },
+      {
+        "profile_id": "B",
+        "soul": 10,
+        "sword_proficiency": 10,
+        "occupation": 2,
+        "stability_cap": 62,
+        "raw_damage": 11
+      },
+      {
+        "profile_id": "C",
+        "soul": 10,
+        "sword_proficiency": 10,
+        "occupation": 2,
+        "stability_cap": 42,
+        "raw_damage": 17
+      }
+    ],
+    "reference_A_examples": [
+      {
+        "soul": 6,
+        "sword_proficiency": 6,
+        "occupation": 1,
+        "stability_cap": 35,
+        "raw_damage": 10
+      },
+      {
+        "soul": 10,
+        "sword_proficiency": 10,
+        "occupation": 1,
+        "stability_cap": 45,
+        "raw_damage": 14
+      },
+      {
+        "soul": 10,
+        "sword_proficiency": 10,
+        "occupation": 2,
+        "stability_cap": 53,
+        "raw_damage": 14
+      },
+      {
+        "soul": 10,
+        "sword_proficiency": 10,
+        "occupation": 3,
+        "stability_cap": 61,
+        "raw_damage": 14
+      },
+      {
+        "soul": 20,
+        "sword_proficiency": 10,
+        "occupation": 2,
+        "stability_cap": 73,
+        "raw_damage": 19
+      },
+      {
+        "soul": 10,
+        "sword_proficiency": 20,
+        "occupation": 2,
+        "stability_cap": 58,
+        "raw_damage": 20
+      },
+      {
+        "soul": 20,
+        "sword_proficiency": 20,
+        "occupation": 3,
+        "stability_cap": 86,
+        "raw_damage": 24
+      }
+    ]
+  },
+  "same_battle_reinsert_refills_stability": {
+    "proposal": false,
+    "status": "not_confirmed"
+  },
+  "zero_stability": {
+    "proposal": "loss_of_control_release_occupation_no_free_reinitialization",
+    "status": "not_confirmed"
+  },
+  "permanent_durability_loss_formula": null,
+  "runtime_modified": false,
+  "runtime_save_schema_modified": false,
+  "real_material_trial": {
+    "input": "清和剑真实炼器输入_20261108.json",
+    "output": "清和剑属性池修订实算结果_20261108.json",
+    "card": "清和剑新版实算卡面_20261108.md",
+    "manual_fixtures_are_not_trial_output": true,
+    "parameters": "剑器材料换算候选参数_20261108_v2.json",
+    "verification": "清和剑属性池修订验收_20261108.json",
+    "withdrawn_previous_output": "清和剑新版材料实算结果_20261108.json"
+  },
+  "base_combat_bonus_stat_ids": [
+    "max_health",
+    "physical_defense",
+    "precision",
+    "dodge",
+    "critical",
+    "crit_resist"
+  ],
+  "base_combat_bonus_form_hard_exclusion": true,
+  "base_combat_bonus_profile_document": "器物战斗属性白名单与剑形属性池_20261108.md",
+  "base_combat_bonus_scope": "held_or_controlled_enabled_owner_global_not_sharpness_stars",
+  "base_combat_bonus_activation": "held_or_controlled_enabled",
+  "base_combat_bonus_deduplication": "source_instance_id+stat_id",
+  "controlled_action_character_stat_read": "owner_final_stats_once_no_duplicate_instance_bonus",
+  "transformation_activation_unchanged": "held_active_only",
+  "player_card_common_eligibility": "separate_rules_interface_not_repeated_on_each_card",
+  "bond_contribution_display_example": "惊鸿2、抱朴3",
+  "base_combat_bonus_runtime_ledger_implemented": false,
+  "artifact_transformation_contract": {
+    "document": "器物化法生成与招式改写接口_20261108.md",
+    "registry": "器物化法接口契约候选_20261108.json",
+    "whole_bundle": true,
+    "one_placed_target": true,
+    "held_active_only": true,
+    "godot_integrated": false
+  },
+  "skills": [
+    {
+      "skill_id": "weapon.sword.ordinary_attack",
+      "title": "飞斩",
+      "damage_type": "physical",
+      "damage_type_status": "confirmed_by_user",
+      "spirit_occupation_damage_multiplier": false,
+      "target_proposal": "one_random_legal_enemy_character",
+      "attack_mode": {
+        "proposal": "ranged",
+        "status": "not_confirmed"
+      },
+      "sharpness_source": "this_actual_controlled_sword_only"
+    }
+  ],
+  "skill_dispatch": {
+    "status": "confirmed_by_user_latest_unified_skill_list",
+    "ordinary_attack_is_a_skill": true,
+    "resource_insufficient": "skip_this_skill_without_replacement",
+    "other_conditions_invalid": "skip_this_skill_without_replacement",
+    "automatic_substitution": false,
+    "automatic_extra_ordinary_attack": false,
+    "multi_skill_scan_order_status": "not_decided"
+  },
+  "historical_withdrawn_rule": {
+    "resource_insufficient_default_attack_fallback": "withdrawn_by_user_do_not_execute",
+    "reason": "ordinary_attack_is_itself_a_skill_not_an_automatic_backup_branch"
+  },
+  "ordinary_attack_stamina": {
+    "value": 0,
+    "status": "tentative_by_user"
+  },
+  "ordinary_attack_mana": {
+    "proposal": 0,
+    "status": "not_confirmed"
+  },
+  "ordinary_attack_timing": {
+    "proposal": "first_scan_of_this_body_each_common_round_once",
+    "status": "not_confirmed"
+  }
+}

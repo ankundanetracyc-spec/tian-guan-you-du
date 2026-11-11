@@ -1,0 +1,251 @@
+{
+  "schema": "male-eye04-alpha-only-edge-candidate/v1",
+  "source": "source/intermediate/eyes04_v3_registered_before_edge.png",
+  "source_sha256": "7d6037cdd3278308513dbb4519b2085c43ef4affeb3cc20839de6a34e91bd77d",
+  "guide": "qa/eye04_single_left_geometry_guide.png",
+  "guide_sha256": "4d09a586ab0957b598e645520ef99aff362ccfc337ad0e5c8a1f7572271de911",
+  "candidate": "qa/eye04_edge_candidate.png",
+  "candidate_sha256": "400303fd0da9bdd76834a11a82e9da20c8006ea681cc507e2dd2504a61baad83",
+  "guide_usage": "OnlyAlpha230 solid support as external3.5px smooth distance feather; not old uneven04 Alpha as a whole-eye crop.",
+  "actual_core_protection": {
+    "polygons": [
+      [
+        [
+          428,
+          362
+        ],
+        [
+          442,
+          358
+        ],
+        [
+          459,
+          357
+        ],
+        [
+          474,
+          360
+        ],
+        [
+          485,
+          369
+        ],
+        [
+          488,
+          374
+        ],
+        [
+          481,
+          377
+        ],
+        [
+          469,
+          379
+        ],
+        [
+          457,
+          379
+        ],
+        [
+          445,
+          377
+        ],
+        [
+          435,
+          373
+        ],
+        [
+          428,
+          368
+        ]
+      ],
+      [
+        [
+          536,
+          374
+        ],
+        [
+          543,
+          366
+        ],
+        [
+          551,
+          360
+        ],
+        [
+          565,
+          357
+        ],
+        [
+          580,
+          359
+        ],
+        [
+          595,
+          362
+        ],
+        [
+          600,
+          365
+        ],
+        [
+          596,
+          370
+        ],
+        [
+          586,
+          375
+        ],
+        [
+          575,
+          379
+        ],
+        [
+          565,
+          379
+        ],
+        [
+          553,
+          378
+        ],
+        [
+          543,
+          376
+        ]
+      ]
+    ],
+    "main_dark_core": "Current meanRGB<100 andAlpha>=230 within actual two-lid zone; same rule both sides",
+    "lower_core_includes_y379": true,
+    "protected_pixels": 1996,
+    "protected_supported_pixels": 1996,
+    "protected_core_RGBA_changed_pixels": 0
+  },
+  "RGB_changed_pixels": 0,
+  "Alpha_added_pixels": 0,
+  "Alpha_reduced_pixels": 2230,
+  "Alpha_changed_bbox_half_open": [
+    81,
+    207,
+    974,
+    980
+  ],
+  "Alpha_reduced_source_ge5_pixels": 1320,
+  "Alpha_changed_source_ge5_bbox_half_open": [
+    411,
+    354,
+    611,
+    384
+  ],
+  "native_Alpha1_to4_speck_pixels_removed": 910,
+  "outer_rule": "min(currentAlpha, max(guide3.5px_distance_cap, current_core4px_distance_cap)); cubic smooth falloff around all contours, no hard rectangular clip",
+  "probes": {
+    "592,377": {
+      "before": [
+        122,
+        100,
+        86,
+        95
+      ],
+      "after": [
+        122,
+        100,
+        86,
+        0
+      ],
+      "protected": false
+    },
+    "426,370": {
+      "before": [
+        121,
+        99,
+        84,
+        176
+      ],
+      "after": [
+        121,
+        99,
+        84,
+        53
+      ],
+      "protected": false
+    },
+    "422,374": {
+      "before": [
+        92,
+        78,
+        67,
+        3
+      ],
+      "after": [
+        92,
+        78,
+        67,
+        0
+      ],
+      "protected": false
+    },
+    "459,379": {
+      "before": [
+        189,
+        156,
+        136,
+        165
+      ],
+      "after": [
+        189,
+        156,
+        136,
+        165
+      ],
+      "protected": true
+    },
+    "565,379": {
+      "before": [
+        202,
+        168,
+        147,
+        218
+      ],
+      "after": [
+        202,
+        168,
+        147,
+        218
+      ],
+      "protected": true
+    },
+    "460,365": {
+      "before": [
+        44,
+        38,
+        35,
+        250
+      ],
+      "after": [
+        44,
+        38,
+        35,
+        250
+      ],
+      "protected": true
+    },
+    "565,365": {
+      "before": [
+        34,
+        31,
+        27,
+        250
+      ],
+      "after": [
+        34,
+        31,
+        27,
+        250
+      ],
+      "protected": true
+    }
+  },
+  "other12_candidate_PNGs_written": false,
+  "active67_PNG_two_configs_preserved": true,
+  "visual_status": "pending independent actual-face matte/core review"
+}

@@ -1,0 +1,306 @@
+{
+  "schema": "male-face-final-semantics/v1",
+  "axis_x": 513,
+  "fixed_head_sha256": "d86319252035a286a92e8892b9816bdb917a39f7f41f4cb1edf40f4dee51c357",
+  "status": "partial_old_diagnosis_not_a_final_measurement_or_approval",
+  "source": {
+    "file": "qa/geometry_diagnosis.json",
+    "sha256": "02ea360e5bd1d178ee9f46ec1bc6bd54d06489f46d2e8a5681fd94466f51d73b"
+  },
+  "limits": "Only existing actual old-image diagnostic observations are transcribed. Missing lid/iris/brow-depth/beard observations remain missing. No inferred target, template point, fabricated completion or accepted visual status is inserted. This input is intentionally incomplete and must fail.",
+  "records": [
+    {
+      "file": "male/eyes/01.png",
+      "part": "eye",
+      "index": 1,
+      "sha256": "5ecb31eacb232bf8be1f83ddd97c50c3715b792564c73052f425aca7c20eb8af",
+      "points": {
+        "pupils": [
+          [
+            462.5633505472131,
+            364.8594827739339
+          ],
+          [
+            568.9791437615578,
+            363.965515813067
+          ]
+        ],
+        "inner_corners": [
+          [
+            483.84483881225293,
+            369.5732499507881
+          ],
+          [
+            546.2809450075943,
+            369.8485408405734
+          ]
+        ],
+        "outer_corners": [
+          [
+            430.204567473738,
+            363.7936159428741
+          ],
+          [
+            597.7939898100129,
+            364.04009619281567
+          ]
+        ]
+      },
+      "measurements": {},
+      "status": "partial_diagnostic_only_not_release_acceptance"
+    },
+    {
+      "file": "male/eyes/04.png",
+      "part": "eye",
+      "index": 4,
+      "sha256": "81723d5ca8413f3ecdb5a4a962a8850bf191aa7fd63c1a1818489eff4bd2f23a",
+      "points": {
+        "pupils": [
+          [
+            462.91674364332664,
+            363.7212441523236
+          ],
+          [
+            567.9720182838442,
+            362.81966211247874
+          ]
+        ],
+        "inner_corners": [
+          [
+            481.83613804454484,
+            368.22578716550083
+          ],
+          [
+            543.0971954707627,
+            369.53182235438027
+          ]
+        ],
+        "outer_corners": [
+          [
+            429.1505785509047,
+            365.58579827011914
+          ],
+          [
+            593.7629656181856,
+            363.3468650117991
+          ]
+        ]
+      },
+      "measurements": {},
+      "status": "partial_diagnostic_only_not_release_acceptance"
+    },
+    {
+      "file": "male/eyes/05.png",
+      "part": "eye",
+      "index": 5,
+      "sha256": "46d6b972e5667199e274b1c2dd8bc1686f01e0ed3f68eac4301f1fbf648f88fd",
+      "points": {
+        "pupils": [
+          [
+            462.7115168543904,
+            363.5715772541107
+          ],
+          [
+            567.5957296170733,
+            364.05865064509516
+          ]
+        ],
+        "inner_corners": [
+          [
+            482.7081159220202,
+            369.1509690622855
+          ],
+          [
+            545.1662181452274,
+            370.267186171499
+          ]
+        ],
+        "outer_corners": [
+          [
+            431.2129161318016,
+            361.3269365491381
+          ],
+          [
+            595.8228459191084,
+            362.74939325639764
+          ]
+        ]
+      },
+      "measurements": {},
+      "status": "partial_diagnostic_only_not_release_acceptance"
+    },
+    {
+      "file": "male/eyebrows/01.png",
+      "part": "brow",
+      "index": 1,
+      "sha256": "b094a5d118e3b722b1901198c319919804cc93ab225c873366aa02af6fc6fa5f",
+      "points": {
+        "inner_heads": [
+          [
+            489.79528952616687,
+            350.6747766239202
+          ],
+          [
+            538.1186472292432,
+            350.83966350144004
+          ]
+        ],
+        "outer_tails": [
+          [
+            427.1813554180079,
+            344.7390440130648
+          ],
+          [
+            604.8639348783054,
+            341.1827454939937
+          ]
+        ],
+        "crests": [
+          [
+            443.0,
+            340.0
+          ],
+          [
+            595.0,
+            336.0
+          ]
+        ]
+      },
+      "measurements": {
+        "widths": [
+          62.61393410815896,
+          66.74528764906222
+        ]
+      },
+      "status": "partial_diagnostic_only_not_release_acceptance"
+    },
+    {
+      "file": "male/eyebrows/04.png",
+      "part": "brow",
+      "index": 4,
+      "sha256": "f7d71d00f80370ddc6610a99aa8a001b7ae4f57abafe2d2eb4b0033fb9f63298",
+      "points": {
+        "inner_heads": [
+          [
+            488.77955627596,
+            347.2792422246987
+          ],
+          [
+            539.1047863710114,
+            346.8357220118983
+          ]
+        ],
+        "outer_tails": [
+          [
+            419.2133665453349,
+            340.5043468649104
+          ],
+          [
+            602.8752357216638,
+            340.5655822680452
+          ]
+        ],
+        "crests": [
+          [
+            438.0,
+            337.0
+          ],
+          [
+            584.5,
+            336.0
+          ]
+        ]
+      },
+      "measurements": {
+        "widths": [
+          69.56618973062507,
+          63.77044935065237
+        ]
+      },
+      "status": "partial_diagnostic_only_not_release_acceptance"
+    },
+    {
+      "file": "male/eyebrows/05.png",
+      "part": "brow",
+      "index": 5,
+      "sha256": "f5e0908457fb3b30a33dc7961af0b4c0e046f6794d8768104b79d1a0714839fd",
+      "points": {
+        "inner_heads": [
+          [
+            488.7134996871983,
+            354.3538540455391
+          ],
+          [
+            536.1322457731482,
+            354.85810043995
+          ]
+        ],
+        "outer_tails": [
+          [
+            427.4916328433265,
+            338.604965360505
+          ],
+          [
+            600.5067336376521,
+            339.80532348865074
+          ]
+        ],
+        "crests": [
+          [
+            429.5,
+            335.0
+          ],
+          [
+            594.5,
+            336.0
+          ]
+        ]
+      },
+      "measurements": {
+        "widths": [
+          61.221866843871794,
+          64.37448786450398
+        ]
+      },
+      "status": "partial_diagnostic_only_not_release_acceptance"
+    },
+    {
+      "file": "male/nose/01.png",
+      "part": "nose",
+      "index": 1,
+      "sha256": "e7271b38d96922434dbdf4a085b83a0d35ea5560989d0cfda9177beb085a2e79",
+      "points": {
+        "nostrils": [
+          [
+            504.75552975419737,
+            443.90917077764334
+          ],
+          [
+            529.3945198032751,
+            444.142255363013
+          ]
+        ],
+        "center": [
+          517,
+          450
+        ]
+      },
+      "measurements": {},
+      "status": "partial_diagnostic_only_not_release_acceptance"
+    },
+    {
+      "file": "male/mouth/01.png",
+      "part": "mouth",
+      "index": 1,
+      "sha256": "471666da8f5b161007491c7f557e6aaf23c0b467d0414bc0839f7d54d942aa03",
+      "points": {
+        "seam_center": [
+          516.4748748856731,
+          477.41006563536166
+        ]
+      },
+      "measurements": {},
+      "status": "partial_diagnostic_only_not_release_acceptance"
+    }
+  ]
+}

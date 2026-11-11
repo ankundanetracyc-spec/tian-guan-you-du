@@ -1,0 +1,168 @@
+{
+  "schema": "male-whole-pair-registration/v1",
+  "axis_x": 513,
+  "records": [
+    {
+      "part": "eyes",
+      "index": 1,
+      "native": "native/eyes01.png",
+      "placeholder": true,
+      "control_names": [
+        "left_dark_pupil_kernel",
+        "right_dark_pupil_kernel"
+      ],
+      "native_points": [],
+      "target_points": [
+        [
+          459.79022593929454,
+          364.41249929350045
+        ],
+        [
+          566.2097740607055,
+          364.41249929350045
+        ]
+      ],
+      "note": "Target pair keeps current measured pupil distance and average vertical position, centered at513 and horizontal; native iris/fissure/corners still require visual QA before staging."
+    },
+    {
+      "part": "eyes",
+      "index": 4,
+      "native": "native/eyes04.png",
+      "placeholder": true,
+      "control_names": [
+        "left_dark_pupil_kernel",
+        "right_dark_pupil_kernel"
+      ],
+      "native_points": [],
+      "target_points": [
+        [
+          460.4704283760824,
+          363.27045313240114
+        ],
+        [
+          565.5295716239176,
+          363.27045313240114
+        ]
+      ],
+      "note": "Target pair keeps current measured pupil distance and average vertical position, centered at513 and horizontal; native iris/fissure/corners still require visual QA before staging."
+    },
+    {
+      "part": "eyes",
+      "index": 5,
+      "native": "native/eyes05.png",
+      "placeholder": true,
+      "control_names": [
+        "left_dark_pupil_kernel",
+        "right_dark_pupil_kernel"
+      ],
+      "native_points": [],
+      "target_points": [
+        [
+          460.5573281398251,
+          363.81511394960296
+        ],
+        [
+          565.4426718601749,
+          363.81511394960296
+        ]
+      ],
+      "note": "Target pair keeps current measured pupil distance and average vertical position, centered at513 and horizontal; native iris/fissure/corners still require visual QA before staging."
+    },
+    {
+      "part": "eyebrows",
+      "index": 1,
+      "native": "native/eyebrows01.png",
+      "placeholder": true,
+      "control_names": [
+        "left_inner_head",
+        "right_inner_head",
+        "left_outer_tail",
+        "right_outer_tail"
+      ],
+      "native_points": [],
+      "target_points": [
+        [
+          488.8383211484619,
+          350.7572200626801
+        ],
+        [
+          537.1616788515381,
+          350.7572200626801
+        ],
+        [
+          424.15871026985127,
+          342.96089475352926
+        ],
+        [
+          601.8412897301487,
+          342.96089475352926
+        ]
+      ],
+      "note": "Suggested symmetric semantic body control targets; review generated native shape before accepting. No pixel mirroring."
+    },
+    {
+      "part": "eyebrows",
+      "index": 4,
+      "native": "native/eyebrows04.png",
+      "placeholder": true,
+      "control_names": [
+        "left_inner_head",
+        "right_inner_head",
+        "left_outer_tail",
+        "right_outer_tail"
+      ],
+      "native_points": [],
+      "target_points": [
+        [
+          487.8373849524743,
+          347.0574821182985
+        ],
+        [
+          538.1626150475257,
+          347.0574821182985
+        ],
+        [
+          421.16906541183556,
+          340.5349645664778
+        ],
+        [
+          604.8309345881644,
+          340.5349645664778
+        ]
+      ],
+      "note": "Suggested symmetric semantic body control targets; review generated native shape before accepting. No pixel mirroring."
+    },
+    {
+      "part": "eyebrows",
+      "index": 5,
+      "native": "native/eyebrows05.png",
+      "placeholder": true,
+      "control_names": [
+        "left_inner_head",
+        "right_inner_head",
+        "left_outer_tail",
+        "right_outer_tail"
+      ],
+      "native_points": [],
+      "target_points": [
+        [
+          489.2906269570251,
+          354.60597724274453
+        ],
+        [
+          536.7093730429749,
+          354.60597724274453
+        ],
+        [
+          426.49244960283715,
+          339.20514442457784
+        ],
+        [
+          599.5075503971628,
+          339.20514442457784
+        ]
+      ],
+      "note": "Suggested symmetric semantic body control targets; review generated native shape before accepting. No pixel mirroring."
+    }
+  ]
+}

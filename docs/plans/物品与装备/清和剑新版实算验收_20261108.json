@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "validation_kind": "offline_candidate_math_and_documents_not_live_battle",
+  "native_export_exit_code": 0,
+  "native_export_existing_warning": "Old 卸力 UID fell back to resource path; native export completed.",
+  "native_baseline_allocation_reproduction_max_error": 4.12560625662195e-07,
+  "new_allocation_closed_form_max_error": 6.387141224806214e-06,
+  "new_budget_conservation_max_error": 1.7763568394002505e-14,
+  "checks": [
+    "native_source_supply_and_B_E_J",
+    "five_shared_allocation_demands",
+    "all_source_capacity_and_process_constraints",
+    "seven_coefficients_and_reference_price_quantization",
+    "seven_actor_growth_examples",
+    "material_rename_invariance",
+    "explicit_name_does_not_change_performance",
+    "two_character_prefixes_and_two_default_groups",
+    "third_group_requires_actual_special_effect",
+    "zero_effect_omission",
+    "fallback_contract_and_pending_boundaries",
+    "input_and_parameter_sha256",
+    "calculator_syntax"
+  ],
+  "auto_name": "固身·卸劲·薄脊剑",
+  "game_runtime_modified": false,
+  "player_save_modified": false,
+  "balance_proven": false,
+  "documentation_check": {
+    "markdown_files": 22,
+    "relative_links": 1727,
+    "missing_links": [],
+    "card_coefficients_and_values_match": true,
+    "short_prefixes_match": true,
+    "unresolved_table_placeholders": false
+  },
+  "current_rule_validity": "withdrawn_v1_attribute_scope_and_form_pool_mismatch",
+  "superseded_by": "清和剑属性池修订实算结果_20261108.json",
+  "historical_numeric_records_preserved": true
+}

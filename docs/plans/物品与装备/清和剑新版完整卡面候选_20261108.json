@@ -1,0 +1,81 @@
+{
+  "date": "2026-11-08",
+  "status": "superseded_requires_redesign_not_approved_not_implemented",
+  "superseded_by": "清和剑新版实算卡面_20261108.md",
+  "not_for_runtime": true,
+  "historical_fields_notice": "old_handheld_sharpness_and_no_default_attack_candidate_preserved_for_comparison_only",
+  "spirit_model": "continuous_occupation_only",
+  "value_source": "new_design_candidate_not_conversion_of_old_snapshot",
+  "name": "清和剑",
+  "tier": "法器",
+  "category": "剑",
+  "shape": "修长薄脊剑",
+  "polarity": "偏阳",
+  "inventory_size": [2, 6],
+  "same_instance_modes_exclusive": true,
+  "sharpness": {
+    "value": 5,
+    "mode": "valid_handheld_or_controlled_weapon_source",
+    "scope": "physical_attack_segments_involving_this_exact_weapon_body",
+    "area_coverage_transfers_sharpness": false
+  },
+  "handheld": {
+    "location": "single_perimeter_handheld_slot",
+    "activation_stamina": 0,
+    "activation_mana": 0,
+    "spirit_occupation": 0,
+    "physical_defense_bonus": 3,
+    "original_single_target_physical_sword_segment_damage_bonus": 2
+  },
+  "transformation": {
+    "mode": "active_handheld_only",
+    "target_base_skill": "res://resources/activeskills/剑修基础/格剑.tres",
+    "target_placements": 1,
+    "required_existing_terms": ["剑", "应对", "化解"],
+    "event": "successful_physical_attack_response",
+    "extra_defuse": 2,
+    "self_shield": 2,
+    "additional_stamina": 0,
+    "additional_mana": 0
+  },
+  "controlled": {
+    "effect_name": "清和护持",
+    "body_cells": [[0, 0], [1, 0]],
+    "benefit_cells": [[0, 1], [1, 1]],
+    "quarter_turn_orientations": [0, 1, 2, 3],
+    "activation_rule": "available_spirit_only",
+    "activation_stamina": 0,
+    "activation_mana": 0,
+    "spirit_occupation": 2,
+    "beneficiary_terms": ["剑"],
+    "beneficiary_effect": "non_response_single_target_physical_attack",
+    "current_base_beneficiaries": ["斩剑", "尽锋"],
+    "event": "successful_cast_with_positive_physical_damage_including_shield_absorption",
+    "self_shield_per_trigger": 3,
+    "per_placement_per_common_round": 1,
+    "per_instance_per_common_round": 2,
+    "max_self_shield_per_instance_per_common_round": 6,
+    "active_between_common_rounds": true,
+    "repeat_activation_recharges_cost": false,
+    "repeat_activation_requires_spirit_recheck": true,
+    "repeat_activation_resets_trigger_ledger": false,
+    "standalone_attack": false,
+    "standalone_skill": false,
+    "attackable_artifact_body": false,
+    "inherits_handheld_effects": false,
+    "inherits_handheld_transformation": false,
+    "same_effect_stacks_on_same_placement": false,
+    "zhoutian_shares_placement_proc_budget": true,
+    "fuming_uses_borrowed_original_placement_and_position": true
+  },
+  "bonds": {"惊鸿": 2, "抱朴": 3},
+  "example_board": {
+    "size": [3, 3],
+    "placements": [
+      {"key": "sword", "cells": [[0, 0], [1, 0]]},
+      {"key": "zhan_a", "cells": [[0, 1], [0, 2]]},
+      {"key": "zhan_b", "cells": [[1, 1], [1, 2]]}
+    ],
+    "true_empty_cells": 3
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "preview_checks": [
+    {
+      "id": "01",
+      "name": "柔弯杏目",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "sha256": "ba1c02ef10b1f586b06c69174a50f2c6c148c7af532c509fd010d2779839115e"
+    },
+    {
+      "id": "02",
+      "name": "疏平长目",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "sha256": "4c9e0bed4d2443ca38e453e3616fafdc54fe04d4d3ac810fb86e206b43c8baa8"
+    },
+    {
+      "id": "03",
+      "name": "淡挑清目",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "sha256": "90976c16dadb082149b2834679091c16d71d90e3403568640d3640e60f71bf8a"
+    }
+  ],
+  "active_base_unchanged": [
+    {
+      "part": "hair_back",
+      "index": 1,
+      "unchanged": true
+    },
+    {
+      "part": "face_shape",
+      "index": 4,
+      "unchanged": true
+    },
+    {
+      "part": "clothing",
+      "index": 1,
+      "unchanged": true
+    },
+    {
+      "part": "nose",
+      "index": 1,
+      "unchanged": true
+    },
+    {
+      "part": "eyes",
+      "index": 1,
+      "unchanged": true
+    },
+    {
+      "part": "eyebrows",
+      "index": 1,
+      "unchanged": true
+    },
+    {
+      "part": "mouth",
+      "index": 1,
+      "unchanged": true
+    },
+    {
+      "part": "hair_front",
+      "index": 1,
+      "unchanged": true
+    }
+  ]
+}

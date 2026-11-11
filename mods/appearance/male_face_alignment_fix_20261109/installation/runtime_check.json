@@ -1,0 +1,233 @@
+{
+  "active_options": 60,
+  "active_pngs": 67,
+  "appearance_parts_byte_identical": true,
+  "bald_combinations_captured": 9,
+  "beard_cases": 54,
+  "checks": 3355,
+  "collar_cases": 63,
+  "creator_actual_dropdown_cases": 9,
+  "editor_manual_cases": 9,
+  "failures": [],
+  "female_hair_feature_combinations": 108,
+  "front_overlay_captures": 7,
+  "geometry_source_hash_records_checked": 2,
+  "imported_textures": [
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 615,
+      "file": "male/eyebrows/01.png",
+      "low_alpha_rgb_different_pixels": 1802,
+      "note": "Import-integrity check only. Low-alpha edge RGB can change under existing Godot fix_alpha_border. Does not establish anatomic balance or symmetry."
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 30,
+      "file": "male/eyebrows/04.png",
+      "low_alpha_rgb_different_pixels": 1900,
+      "note": "Import-integrity check only. Low-alpha edge RGB can change under existing Godot fix_alpha_border. Does not establish anatomic balance or symmetry."
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 647,
+      "file": "male/eyebrows/05.png",
+      "low_alpha_rgb_different_pixels": 1767,
+      "note": "Import-integrity check only. Low-alpha edge RGB can change under existing Godot fix_alpha_border. Does not establish anatomic balance or symmetry."
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 1162,
+      "file": "male/eyes/01.png",
+      "low_alpha_rgb_different_pixels": 1544,
+      "note": "Import-integrity check only. Low-alpha edge RGB can change under existing Godot fix_alpha_border. Does not establish anatomic balance or symmetry."
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 1802,
+      "file": "male/eyes/04.png",
+      "low_alpha_rgb_different_pixels": 1646,
+      "note": "Import-integrity check only. Low-alpha edge RGB can change under existing Godot fix_alpha_border. Does not establish anatomic balance or symmetry."
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 1417,
+      "file": "male/eyes/05.png",
+      "low_alpha_rgb_different_pixels": 1584,
+      "note": "Import-integrity check only. Low-alpha edge RGB can change under existing Godot fix_alpha_border. Does not establish anatomic balance or symmetry."
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 64,
+      "file": "male/face_accessory/02.png",
+      "low_alpha_rgb_different_pixels": 3461,
+      "note": "Import-integrity check only. Low-alpha edge RGB can change under existing Godot fix_alpha_border. Does not establish anatomic balance or symmetry."
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 0,
+      "file": "male/face_accessory/03.png",
+      "low_alpha_rgb_different_pixels": 1413,
+      "note": "Import-integrity check only. Low-alpha edge RGB can change under existing Godot fix_alpha_border. Does not establish anatomic balance or symmetry."
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 66,
+      "file": "male/face_accessory/04.png",
+      "low_alpha_rgb_different_pixels": 1039,
+      "note": "Import-integrity check only. Low-alpha edge RGB can change under existing Godot fix_alpha_border. Does not establish anatomic balance or symmetry."
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 96,
+      "file": "male/face_accessory/05.png",
+      "low_alpha_rgb_different_pixels": 3013,
+      "note": "Import-integrity check only. Low-alpha edge RGB can change under existing Godot fix_alpha_border. Does not establish anatomic balance or symmetry."
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 167,
+      "file": "male/face_accessory/06.png",
+      "low_alpha_rgb_different_pixels": 5073,
+      "note": "Import-integrity check only. Low-alpha edge RGB can change under existing Godot fix_alpha_border. Does not establish anatomic balance or symmetry."
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 931,
+      "file": "male/mouth/01.png",
+      "low_alpha_rgb_different_pixels": 919,
+      "note": "Import-integrity check only. Low-alpha edge RGB can change under existing Godot fix_alpha_border. Does not establish anatomic balance or symmetry."
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 2945,
+      "file": "male/nose/01.png",
+      "low_alpha_rgb_different_pixels": 1397,
+      "note": "Import-integrity check only. Low-alpha edge RGB can change under existing Godot fix_alpha_border. Does not establish anatomic balance or symmetry."
+    }
+  ],
+  "male_hair_feature_combinations": 441,
+  "pass": true,
+  "repair_records": [
+    {
+      "active": "res://mods/appearance/ink_three_variants_20261004/male/eyebrows/01.png",
+      "before_sha256": "b094a5d118e3b722b1901198c319919804cc93ab225c873366aa02af6fc6fa5f",
+      "candidate": "res://mods/appearance/male_face_alignment_fix_20261109/male/eyebrows/01.png",
+      "file": "male/eyebrows/01.png",
+      "same_bytes_as_before": false,
+      "sha256": "0b81852f026929d204972a43f9c0e88f9b15396e02941342fb761a615795f3cf"
+    },
+    {
+      "active": "res://mods/appearance/ink_three_variants_20261004/male/eyebrows/04.png",
+      "before_sha256": "f7d71d00f80370ddc6610a99aa8a001b7ae4f57abafe2d2eb4b0033fb9f63298",
+      "candidate": "res://mods/appearance/male_face_alignment_fix_20261109/male/eyebrows/04.png",
+      "file": "male/eyebrows/04.png",
+      "same_bytes_as_before": false,
+      "sha256": "530d5cf4e2fb3094269b6493ca7e9c552c30d27de5fe389a3a2012440adfcccf"
+    },
+    {
+      "active": "res://mods/appearance/ink_three_variants_20261004/male/eyebrows/05.png",
+      "before_sha256": "f5e0908457fb3b30a33dc7961af0b4c0e046f6794d8768104b79d1a0714839fd",
+      "candidate": "res://mods/appearance/male_face_alignment_fix_20261109/male/eyebrows/05.png",
+      "file": "male/eyebrows/05.png",
+      "same_bytes_as_before": false,
+      "sha256": "a8ef833cc1bfaadb9c0ee55f5c27806adfae05991216162d21a8ae6f492b6ef4"
+    },
+    {
+      "active": "res://mods/appearance/ink_three_variants_20261004/male/eyes/01.png",
+      "before_sha256": "5ecb31eacb232bf8be1f83ddd97c50c3715b792564c73052f425aca7c20eb8af",
+      "candidate": "res://mods/appearance/male_face_alignment_fix_20261109/male/eyes/01.png",
+      "file": "male/eyes/01.png",
+      "same_bytes_as_before": false,
+      "sha256": "98026ce638f1c880ec3bb1c6e690ad7b15c0184b77a24561cef180dec746d642"
+    },
+    {
+      "active": "res://mods/appearance/ink_three_variants_20261004/male/eyes/04.png",
+      "before_sha256": "81723d5ca8413f3ecdb5a4a962a8850bf191aa7fd63c1a1818489eff4bd2f23a",
+      "candidate": "res://mods/appearance/male_face_alignment_fix_20261109/male/eyes/04.png",
+      "file": "male/eyes/04.png",
+      "same_bytes_as_before": false,
+      "sha256": "cf1e14f61b5ac2904cddcaad14eb38d3da6328673fa3e90a019e1e7629b99f05"
+    },
+    {
+      "active": "res://mods/appearance/ink_three_variants_20261004/male/eyes/05.png",
+      "before_sha256": "46d6b972e5667199e274b1c2dd8bc1686f01e0ed3f68eac4301f1fbf648f88fd",
+      "candidate": "res://mods/appearance/male_face_alignment_fix_20261109/male/eyes/05.png",
+      "file": "male/eyes/05.png",
+      "same_bytes_as_before": false,
+      "sha256": "a69e053c0f0af4be64b10a157c0f076aede96ab44ccc0915665f74c50a2560da"
+    },
+    {
+      "active": "res://mods/appearance/ink_three_variants_20261004/male/face_accessory/02.png",
+      "before_sha256": "8b44416a488007d1bd25c83540024bf7dfb0cc2869c7ea99a92b19220bfd1769",
+      "candidate": "res://mods/appearance/male_face_alignment_fix_20261109/male/face_accessory/02.png",
+      "file": "male/face_accessory/02.png",
+      "same_bytes_as_before": false,
+      "sha256": "fcb82b82b862de2da397c4f6369df87a5786ce8fdf9abeae5511f30748aa7b94"
+    },
+    {
+      "active": "res://mods/appearance/ink_three_variants_20261004/male/face_accessory/03.png",
+      "before_sha256": "40118e019e467e331201e3d7235c92eb0cc0a934d35712e6ffffdcd7164d5f82",
+      "candidate": "res://mods/appearance/male_face_alignment_fix_20261109/male/face_accessory/03.png",
+      "file": "male/face_accessory/03.png",
+      "same_bytes_as_before": false,
+      "sha256": "8582fc742f60b7df10111cfc4d8a24e747221323afa05e8ce2afdcd671bd1199"
+    },
+    {
+      "active": "res://mods/appearance/ink_three_variants_20261004/male/face_accessory/04.png",
+      "before_sha256": "bb4aa8dfb5d62eedc93048e694928adb89ba66b29a0ac511bf419c8b544d7a28",
+      "candidate": "res://mods/appearance/male_face_alignment_fix_20261109/male/face_accessory/04.png",
+      "file": "male/face_accessory/04.png",
+      "same_bytes_as_before": false,
+      "sha256": "29e4c3a7a5dfe4786e630fd7b3db7e5aff276bd80d231180079b8de99fffe0ad"
+    },
+    {
+      "active": "res://mods/appearance/ink_three_variants_20261004/male/face_accessory/05.png",
+      "before_sha256": "355e1a1b6ca07bdbfcbcd388515ef37c1ad219bda73a8964dc8f2f607c63c1fc",
+      "candidate": "res://mods/appearance/male_face_alignment_fix_20261109/male/face_accessory/05.png",
+      "file": "male/face_accessory/05.png",
+      "same_bytes_as_before": false,
+      "sha256": "0fece24df5ebd74a086bf50cf602aaa5523e4a61d62e679be9f9e1e9d2fcc76b"
+    },
+    {
+      "active": "res://mods/appearance/ink_three_variants_20261004/male/face_accessory/06.png",
+      "before_sha256": "c3bc9bd6eb602c064e498dcd1e881a83296f5cb7c03b2bf3fe2923a97086a3e3",
+      "candidate": "res://mods/appearance/male_face_alignment_fix_20261109/male/face_accessory/06.png",
+      "file": "male/face_accessory/06.png",
+      "same_bytes_as_before": false,
+      "sha256": "aaceb8ef949f763fb58b8a0fe5c58e86954f52e072a8762dccaa00b29db41b5b"
+    },
+    {
+      "active": "res://mods/appearance/ink_three_variants_20261004/male/mouth/01.png",
+      "before_sha256": "471666da8f5b161007491c7f557e6aaf23c0b467d0414bc0839f7d54d942aa03",
+      "candidate": "res://mods/appearance/male_face_alignment_fix_20261109/male/mouth/01.png",
+      "file": "male/mouth/01.png",
+      "same_bytes_as_before": false,
+      "sha256": "8ead9b1c2bd3bbd9d0efc95b14ba273dba4f70afe458d83cdb6067e5d246cf1b"
+    },
+    {
+      "active": "res://mods/appearance/ink_three_variants_20261004/male/nose/01.png",
+      "before_sha256": "e7271b38d96922434dbdf4a085b83a0d35ea5560989d0cfda9177beb085a2e79",
+      "candidate": "res://mods/appearance/male_face_alignment_fix_20261109/male/nose/01.png",
+      "file": "male/nose/01.png",
+      "same_bytes_as_before": false,
+      "sha256": "fea108d7478f923b820ad85c2bd0ea1aafd4ac0273c9702bec60a4ced9cc2d03"
+    }
+  ],
+  "retained_pngs": 54,
+  "scope": "Thirteen existing PNG repairs only: eight facial features plus five nonempty beards; empty beard01 is preserved. No added IDs/options or runtime offsets. Exact441male/108female selected-layer compositions,9bald+7front current-game captures and separately named frozen raw-before diagnostic references,7collars/6beards,formal renderer geometry/IDs and original0/3/4 actual manual workflows. Temporary in-memory fixtures only; no game or preset save.",
+  "user_preset_unchanged": true,
+  "visual_scope": "Passing import hashes, alpha/core checks or raw composition equality is not evidence that eyes or brows are anatomically balanced. Symmetry, eye opening and aesthetic review belong to root/pipeline/visual review; no mirror-image acceptance assertion exists here."
+}

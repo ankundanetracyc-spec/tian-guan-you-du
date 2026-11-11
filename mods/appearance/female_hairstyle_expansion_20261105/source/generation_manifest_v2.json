@@ -1,0 +1,28 @@
+{
+  "task": "女性立绘增补：新五官与自然刘海整体预览",
+  "created_local_date": "2026-11-05",
+  "status": "preview_only_pending_user_selection",
+  "generator": "built-in image_gen",
+  "preview": "preview/features_fringe_concept_v2.png",
+  "prompt": "source/generation_prompt_v2.txt",
+  "revision_of": "preview/hairstyles_concept_v1.png",
+  "user_direction": "弄一下新的五官，然后不要所有的刘海都这么干净，但也不要像朵拉",
+  "concepts_left_to_right": [
+    {
+      "hairstyle": "高马尾与疏松斜刘海",
+      "features": "略厚平眉、细长眼、纤细鼻、唇峰较明确"
+    },
+    {
+      "hairstyle": "双环髻与轻薄散束刘海",
+      "features": "柔弯眉、清圆杏眼、圆润鼻尖、柔和丰唇"
+    },
+    {
+      "hairstyle": "侧垂长辫与不对称长刘海",
+      "features": "细长眉、微挑长目、收窄鼻尖、小弓唇"
+    }
+  ],
+  "current_user_instruction_priority": "本次新五官及自然刘海要求覆盖旧阶段不重新生成五官和否定碎刘海的制作偏好，仅对本次新候选生效。",
+  "integration": "未修改活动女性素材或游戏配置；预览选定后再独立生成前后发、成对眉眼、鼻与嘴的1024×1536真透明素材，按原女脸04配准和试拼。",
+  "limitations": "整张生成画稿，不能认定原脸原衣像素保持；当前不是透明独立部件，未完成游戏接入或混搭检查。",
+  "source_image": "E:/tmp/CodexData/generated_images/01a1ac35-8591-7bc0-b31a-ed6a532b5357/exec-c8f9971e-49d7-411d-80f7-2232066b8205.png"
+}

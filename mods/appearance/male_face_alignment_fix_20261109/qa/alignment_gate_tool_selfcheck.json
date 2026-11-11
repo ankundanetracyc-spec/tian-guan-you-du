@@ -1,0 +1,30 @@
+{
+  "schema": "portrait-feature-alignment-tool-selfcheck/v1",
+  "pass": true,
+  "python_syntax": "valid_without_pycache",
+  "frozen_old_process_exit_code": 1,
+  "old_report": "qa/alignment_gate_frozen_before.json",
+  "old_report_checks": 423,
+  "old_report_holds": 111,
+  "required_actual_old_numeric_rejections": [
+    {
+      "file": "male/eyes/04.png",
+      "code": "pixel_ink_envelope_upper_50"
+    },
+    {
+      "file": "male/eyebrows/05.png",
+      "code": "semantic_brow_width_difference"
+    },
+    {
+      "file": "male/nose/01.png",
+      "code": "pixel_nostril_midpoint_axis"
+    },
+    {
+      "file": "male/mouth/01.png",
+      "code": "pixel_lip_seam_axis"
+    }
+  ],
+  "stale_semantic_sha_rejected": true,
+  "stale_visual_sha_rejected": true,
+  "mutation_scope": "Only temporary in-memory metadata was changed. No PNG, pack config, canonical frame, final measurements, or final review was changed. No accepted review or positive visual result was fabricated. Actual corrected candidates must pass their own complete measurement and review gate later."
+}

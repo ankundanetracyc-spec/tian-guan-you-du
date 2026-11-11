@@ -1,0 +1,101 @@
+{
+  "note": "Example only. Copy to registration.json only after replacing each scale/tx/ty with measured values. Target and allowed coordinates are on the original1024x1536 approved canvas. Native RGB is never the final pigment.",
+  "records": [
+    {
+      "key": "01",
+      "native": "raw/01_native.png",
+      "scale": 0,
+      "tx": 0,
+      "ty": 0,
+      "allowed_roi": [
+        450,
+        448,
+        134,
+        43
+      ],
+      "lip_exclusions": [
+        [
+          478,
+          477,
+          79,
+          15
+        ]
+      ],
+      "dilation_px": 3
+    },
+    {
+      "key": "02",
+      "native": "raw/02_native.png",
+      "scale": 0,
+      "tx": 0,
+      "ty": 0,
+      "allowed_roi": [
+        475,
+        505,
+        85,
+        68
+      ],
+      "lip_exclusions": [
+        [
+          478,
+          477,
+          79,
+          15
+        ]
+      ],
+      "dilation_px": 3
+    },
+    {
+      "key": "03",
+      "native": "raw/03_native.png",
+      "scale": 0,
+      "tx": 0,
+      "ty": 0,
+      "allowed_roi": [
+        450,
+        448,
+        135,
+        132
+      ],
+      "lip_exclusions": [
+        [
+          478,
+          477,
+          79,
+          15
+        ]
+      ],
+      "dilation_px": 3
+    },
+    {
+      "key": "04",
+      "native": "raw/04_native.png",
+      "scale": 0,
+      "tx": 0,
+      "ty": 0,
+      "allowed_roi": [
+        417,
+        418,
+        195,
+        139
+      ],
+      "lip_exclusions": [
+        [
+          478,
+          477,
+          79,
+          15
+        ]
+      ],
+      "dilation_px": 3
+    }
+  ],
+  "optional_fields": {
+    "approved": "reference/01_approved.png",
+    "guides": "Freeform measured guide notes; reported unchanged",
+    "sample_boxes": "Array of x,y,width,height boxes; defaults are measured separately per approved image",
+    "bias_override_rgb": "Optional explicit source background delta in0..255 channel units; override is reported",
+    "minimum_darkening_255": 5,
+    "foreground_luminance_255": 80
+  }
+}

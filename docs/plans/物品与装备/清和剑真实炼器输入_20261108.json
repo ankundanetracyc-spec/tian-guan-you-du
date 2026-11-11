@@ -1,0 +1,1074 @@
+{
+  "evidence_kind": "native_qinghe_offer_reconstruction_not_a_player_save",
+  "native_export": {
+    "evidence_kind": "native_CreateArtifact_readonly_export_no_player_save",
+    "offer_example_index": 1,
+    "offer_inventory_can_rotate": true,
+    "offer_inventory_height": 6,
+    "offer_inventory_width": 2,
+    "offer_path": "res://resources/entities/equipment/清和剑.tres",
+    "snapshot": {
+      "BodyMaximum": 0.0,
+      "BondContributions": [
+        "惊鸿 +2",
+        "抱朴 +3"
+      ],
+      "Calculation": {
+        "Assessment": {
+          "Capacity": 56.6313680303471,
+          "IsArtifact": true,
+          "Maintenance": 24.9544233424503,
+          "SpiritLevel": 22.8333485699881,
+          "Stability": 0.915002052207154,
+          "Transmission": 31.6118690875437
+        },
+        "CharacterPotential": {
+          "固": 24.109758326742,
+          "生": 0.642756923076923,
+          "破": 13.2489221409669,
+          "聚": 0.65886493213392,
+          "藏": 0.65886493213392,
+          "通": 2.212588009057
+        },
+        "Ledger": [
+          "器蕴惊鸿贡献2：支出source/破=2、root=0.5、通=0.5；不重复用于词条。",
+          "器蕴抱朴贡献3：支出source/固=3、root=0.75、通=0.75；不重复用于词条。",
+          "本体和角色收益按岗位权重分账；锋锐与评阶各自计算，等级不再乘属性倍率。",
+          "灵性判定只评价本体能力，不生成额外效力。凡器仅允许基础加成。"
+        ],
+        "Resources": {
+          "root": 24.9544233424503,
+          "source/固": 24.109758326742,
+          "source/生": 0.642756923076923,
+          "source/破": 13.2489221409669,
+          "source/聚": 0.65886493213392,
+          "source/藏": 0.65886493213392,
+          "source/通": 2.212588009057,
+          "structure": 109.389786719736,
+          "聚": 5.27091945707136,
+          "藏": 5.27091945707136,
+          "通": 15.089504072456
+        },
+        "Unused": {
+          "root": 6.07858652301729e-10,
+          "source/固": 8.6542571258654,
+          "source/生": 0.642756923076923,
+          "source/破": 1.06936681731895e-12,
+          "source/聚": 0.65886493213392,
+          "source/藏": 0.65886493213392,
+          "source/通": 2.212588009057,
+          "structure": 85.6853633778933,
+          "聚": 5.27091945707136,
+          "藏": 5.01719120956479,
+          "通": 10.7256519904008
+        },
+        "Used": {
+          "root": 24.9544233418424,
+          "source/固": 15.4555012008766,
+          "source/破": 13.2489221409658,
+          "structure": 23.7044233418424,
+          "藏": 0.253728247506569,
+          "通": 4.3638520820552
+        }
+      },
+      "Category": "剑",
+      "CraftingEnergy": 16.0,
+      "CraftingHours": 8.0,
+      "Effects": [
+        {
+          "Allocated": 6.61651750021766,
+          "AtomId": "physical_damage_percent",
+          "AttributeKey": "physical_damage_percent",
+          "BattleTemplateStatus": "未装配",
+          "CarrierId": "base",
+          "Condition": "装备后提供基础战斗属性",
+          "Description": "物理伤害 +3.31%",
+          "EffectId": "trial2/base/physical_damage_percent",
+          "Event": "装备期间",
+          "QuantizationLoss": 0.0,
+          "Route": "基础加成",
+          "Scope": "角色",
+          "SourceAllocations": {
+            "破": 6.61651750021766
+          },
+          "Special": false,
+          "Value": 3.30825875010883
+        },
+        {
+          "Allocated": 9.27859238220945,
+          "AtomId": "physical_defense",
+          "AttributeKey": "physical_defense",
+          "BattleTemplateStatus": "未装配",
+          "CarrierId": "base",
+          "Condition": "装备后提供基础战斗属性",
+          "Description": "物理防御 +4",
+          "EffectId": "trial2/base/physical_defense",
+          "Event": "装备期间",
+          "QuantizationLoss": 1.27859238220945,
+          "Route": "基础加成",
+          "Scope": "角色",
+          "SourceAllocations": {
+            "固": 9.27859238220945
+          },
+          "Special": false,
+          "Value": 4.0
+        },
+        {
+          "Allocated": 3.17690881866711,
+          "AtomId": "defuse_flat",
+          "AttributeKey": "",
+          "BattleTemplateStatus": "未装配",
+          "CarrierId": "binding",
+          "Condition": "选择一个类别、关键词与实际效果均符合要求的技能绑定；要求守御、含实际应对化解",
+          "Description": "实际应对追加化解 +1",
+          "EffectId": "trial2/binding/defuse_flat",
+          "Event": "随绑定技能结算",
+          "QuantizationLoss": 1.17690881866711,
+          "Route": "化法",
+          "Scope": "玩家选定的合格技能",
+          "SourceAllocations": {
+            "固": 3.17690881866711
+          },
+          "Special": true,
+          "Value": 1.0
+        },
+        {
+          "Allocated": 2.09512216568248,
+          "AtomId": "physical_defense_ignore_ratio",
+          "AttributeKey": "",
+          "BattleTemplateStatus": "未装配",
+          "CarrierId": "binding",
+          "Condition": "选择一个类别、关键词与实际效果均符合要求的技能绑定；要求攻伐、气血、含单体物理伤害",
+          "Description": "本次物理防御忽略 2.1%",
+          "EffectId": "trial2/binding/physical_defense_ignore_ratio",
+          "Event": "随绑定技能结算",
+          "QuantizationLoss": 0.0,
+          "Route": "化法",
+          "Scope": "玩家选定的合格技能",
+          "SourceAllocations": {
+            "破": 2.09512216568248
+          },
+          "Special": true,
+          "Value": 0.0209512216568248
+        },
+        {
+          "Allocated": 2.53728247506569,
+          "AtomId": "physical_damage_percent",
+          "AttributeKey": "",
+          "BattleTemplateStatus": "未装配",
+          "CarrierId": "keyword",
+          "Condition": "自动作用于所有合格技能，无需绑定",
+          "Description": "物理伤害 +1.27%",
+          "EffectId": "trial2/keyword/physical_damage_percent",
+          "Event": "伤害结算",
+          "QuantizationLoss": 0.0,
+          "Route": "常驻效果",
+          "Scope": "剑关键词技能中的物理伤害",
+          "SourceAllocations": {
+            "破": 2.53728247506569
+          },
+          "Special": true,
+          "Value": 1.26864123753285
+        }
+      ],
+      "InputHash": "32e086ccbce62ac777619820d0ec49d8fc102dd0d5250f543492eb451e5d471b",
+      "InstanceId": "sect-artifact-6ff1f2a9abdd46ecb69765d84fb07c53",
+      "InventoryHeight": 0.0,
+      "InventoryIconPath": "",
+      "InventoryWidth": 0.0,
+      "Length": 22.5102860783911,
+      "Lifecycle": "独立试炼；仅展示物品信息，不接正式装备或存档",
+      "MaterialElementContributions": {
+        "土": 2.4707434955022,
+        "木": 0.51,
+        "金": 10.3432764816802
+      },
+      "Name": "清和剑",
+      "ParameterSnapshot": "{\"Version\":\"sword-process-trial-3-spirit-1\",\"BondParameters\":{\"SourceShare\":0.2,\"SourcePerPoint\":1,\"RootPerPoint\":0.25,\"ConnectionPerPoint\":0.25},\"ExtraSourceProficiency\":32,\"ExtraAuxiliaryProficiency\":20,\"AdvancedAuxiliaryProficiency\":50,\"MaxUnits\":0,\"QuantityScale\":3,\"GradeBase\":1.6,\"SupplyScale\":8,\"RoleWeights\":{\"\\u548C\\u6750\":[0.1,0.1,0.8],\"\\u8D28\\u6750\":[0.3,0.2,0.5],\"\\u8EAB\\u6750\":[0.75,0.1,0.15],\"\\u6027\\u6750\":[0.1,0.75,0.15]},\"Scalars\":{\"CapacityScale\":1.5,\"IndirectSharpnessScale\":0.03,\"SpiritBodyScale\":0.15,\"StabilityThreshold\":0.8,\"SharpnessScale\":4,\"SpiritThreshold\":10,\"TransmissionScale\":1.6,\"GradeBodyGrowth\":0.12,\"ConnectionPerVolume\":0.25,\"MinimumEffect\":1.5,\"ConnectionLoss\":1,\"CapacityPerVolume\":6,\"MaintenanceScale\":1,\"MinimumSummonVolume\":7,\"SpiritEffectScale\":0.1,\"PolarityTolerance\":3,\"BodyScale\":2,\"WeightScale\":10,\"ProcessingLoss\":0.02,\"ConflictLoss\":0.5,\"PolarityDecay\":0.2,\"BodyMaintenance\":0.05,\"ProficiencySpan\":40,\"SharpnessReferenceThickness\":0.15,\"SharpnessShapeMaximum\":1.25,\"BodyStability\":0.3,\"SharpnessShapeMinimum\":0.75,\"RetentionFloor\":0.8},\"Metrics\":{\"Capacity\":{\"*\":0.6,\"\\u56FA\":0.3,\"\\u62A4\":0.2},\"Sharpness\":{\"\\u7834\":0.5,\"\\u56FA\":0.2},\"Transmission\":{\"*\":0.1,\"\\u901A\":1},\"Stability\":{\"*\":0.6,\"\\u85CF\":0.8,\"\\u56FA\":0.6,\"\\u62A4\":0.8},\"Maintenance\":{\"*\":0.2,\"\\u85CF\":1,\"\\u56FA\":0.45,\"\\u751F\":0.2}},\"Profiles\":{\"\\u517D\\u9AA8\":{\"Roles\":[\"\\u590D\\u5408\\u8EAB\\u6750\",\"\\u6027\\u6750\"],\"Difficulty\":8,\"Retention\":0.8,\"Volume\":2,\"Extension\":9,\"Thickness\":0.24,\"Edge\":0.6,\"Strength\":0.8,\"Connection\":0},\"\\u7075\\u6CC9\\u9732\":{\"Roles\":[\"\\u548C\\u6750\"],\"Difficulty\":8,\"Retention\":0.8,\"Volume\":0,\"Extension\":0,\"Thickness\":0,\"Edge\":0,\"Strength\":0,\"Connection\":0},\"\\u7075\\u77F3\":{\"Roles\":[\"\\u8D28\\u6750\",\"\\u548C\\u6750\"],\"Difficulty\":8,\"Retention\":0.9,\"Volume\":0,\"Extension\":0,\"Thickness\":0,\"Edge\":0,\"Strength\":0,\"Connection\":0},\"\\u7384\\u94C1\":{\"Roles\":[\"\\u4E3B\\u4F53\",\"\\u590D\\u5408\\u8EAB\\u6750\",\"\\u8D28\\u6750\",\"\\u6027\\u6750\"],\"Difficulty\":8,\"Retention\":0.8,\"Volume\":4,\"Extension\":14,\"Thickness\":0.18,\"Edge\":1.4,\"Strength\":1.3,\"Connection\":0},\"\\u7D2B\\u7802\\u7075\\u571F\":{\"Roles\":[\"\\u548C\\u6750\"],\"Difficulty\":8,\"Retention\":0.85,\"Volume\":0,\"Extension\":0,\"Thickness\":0,\"Edge\":0,\"Strength\":0,\"Connection\":0},\"\\u88C2\\u7532\\u77F3\":{\"Roles\":[\"\\u6027\\u6750\"],\"Difficulty\":8,\"Retention\":0.85,\"Volume\":0,\"Extension\":0,\"Thickness\":0,\"Edge\":0,\"Strength\":0,\"Connection\":0},\"\\u8910\\u94DC\\u7802\":{\"Roles\":[\"\\u548C\\u6750\"],\"Difficulty\":8,\"Retention\":0.85,\"Volume\":0,\"Extension\":0,\"Thickness\":0,\"Edge\":0,\"Strength\":0,\"Connection\":0},\"\\u8D64\\u7EB9\\u71E7\\u77F3\":{\"Roles\":[\"\\u548C\\u6750\",\"\\u6027\\u6750\"],\"Difficulty\":8,\"Retention\":0.8,\"Volume\":0,\"Extension\":0,\"Thickness\":0,\"Edge\":0,\"Strength\":0,\"Connection\":0},\"\\u94DC\\u9AD3\\u77FF\":{\"Roles\":[\"\\u4E3B\\u4F53\",\"\\u590D\\u5408\\u8EAB\\u6750\",\"\\u8D28\\u6750\",\"\\u6027\\u6750\"],\"Difficulty\":8,\"Retention\":0.85,\"Volume\":3,\"Extension\":10,\"Thickness\":0.12,\"Edge\":0.9,\"Strength\":1,\"Connection\":0},\"\\u9752\\u6728\\u82AF\":{\"Roles\":[\"\\u627F\\u63A5\",\"\\u8D28\\u6750\",\"\\u6027\\u6750\",\"\\u548C\\u6750\"],\"Difficulty\":8,\"Retention\":0.85,\"Volume\":0,\"Extension\":0,\"Thickness\":0,\"Edge\":0,\"Strength\":0.8,\"Connection\":8},\"\\u98CE\\u7EB9\\u77F3\\u82F1\":{\"Roles\":[\"\\u548C\\u6750\"],\"Difficulty\":8,\"Retention\":0.9,\"Volume\":0,\"Extension\":0,\"Thickness\":0,\"Edge\":0,\"Strength\":0,\"Connection\":0}},\"Atoms\":[{\"Id\":\"physical_damage_percent\",\"Sources\":{\"\\u7834\":1},\"Coefficient\":0.5,\"Kind\":\"percent\",\"Label\":\"\\u7269\\u7406\\u4F24\\u5BB3\",\"Maximum\":0},{\"Id\":\"physical_defense\",\"Sources\":{\"\\u56FA\":1},\"Coefficient\":0.5,\"Kind\":\"integer\",\"Label\":\"\\u7269\\u7406\\u9632\\u5FA1\",\"Maximum\":0},{\"Id\":\"physical_defense_ignore_ratio\",\"Sources\":{\"\\u7834\":1},\"Coefficient\":0.01,\"Kind\":\"ratio\",\"Label\":\"\\u672C\\u6B21\\u7269\\u7406\\u9632\\u5FA1\\u5FFD\\u7565\",\"Maximum\":0.35},{\"Id\":\"defuse_flat\",\"Sources\":{\"\\u56FA\":1},\"Coefficient\":0.5,\"Kind\":\"integer\",\"Label\":\"\\u5B9E\\u9645\\u5E94\\u5BF9\\u8FFD\\u52A0\\u5316\\u89E3\",\"Maximum\":0},{\"Id\":\"physical_damage_base\",\"Sources\":{\"\\u7834\":1},\"Coefficient\":1.2,\"Kind\":\"integer\",\"Label\":\"\\u57FA\\u7840\\u7269\\u7406\\u4F24\\u5BB3\",\"Maximum\":0},{\"Id\":\"shield_flat\",\"Sources\":{\"\\u56FA\":1},\"Coefficient\":1.2,\"Kind\":\"integer\",\"Label\":\"\\u81EA\\u8EAB\\u62A4\\u76FE\",\"Maximum\":0}],\"Carriers\":[{\"Id\":\"base\",\"Label\":\"\\u57FA\\u7840\\u52A0\\u6210\",\"Atoms\":[\"physical_damage_percent\",\"physical_defense\"],\"Costs\":{},\"Weight\":1,\"Resource\":\"\",\"Scope\":\"\\u89D2\\u8272\",\"Event\":\"\\u88C5\\u5907\\u671F\\u95F4\",\"Condition\":\"\\u88C5\\u5907\\u540E\\u63D0\\u4F9B\\u57FA\\u7840\\u6218\\u6597\\u5C5E\\u6027\",\"Special\":false},{\"Id\":\"keyword\",\"Label\":\"\\u5E38\\u9A7B\\u6548\\u679C\",\"Atoms\":[\"physical_damage_percent\"],\"Costs\":{\"\\u901A\":0.5,\"\\u85CF\":0.1},\"Weight\":0.8,\"Resource\":\"\\u901A\",\"Scope\":\"\\u5251\\u5173\\u952E\\u8BCD\\u6280\\u80FD\\u4E2D\\u7684\\u7269\\u7406\\u4F24\\u5BB3\",\"Event\":\"\\u4F24\\u5BB3\\u7ED3\\u7B97\",\"Condition\":\"\\u81EA\\u52A8\\u4F5C\\u7528\\u4E8E\\u6240\\u6709\\u5408\\u683C\\u6280\\u80FD\\uFF0C\\u65E0\\u9700\\u7ED1\\u5B9A\",\"Special\":true},{\"Id\":\"binding\",\"Label\":\"\\u5316\\u6CD5\",\"Atoms\":[\"physical_defense_ignore_ratio\",\"defuse_flat\"],\"Costs\":{\"\\u901A\":0.35},\"Weight\":0.7,\"Resource\":\"\\u901A\",\"Scope\":\"\\u73A9\\u5BB6\\u9009\\u5B9A\\u7684\\u5408\\u683C\\u6280\\u80FD\",\"Event\":\"\\u968F\\u7ED1\\u5B9A\\u6280\\u80FD\\u7ED3\\u7B97\",\"Condition\":\"\\u9009\\u62E9\\u4E00\\u4E2A\\u7C7B\\u522B\\u3001\\u5173\\u952E\\u8BCD\\u4E0E\\u5B9E\\u9645\\u6548\\u679C\\u5747\\u7B26\\u5408\\u8981\\u6C42\\u7684\\u6280\\u80FD\\u7ED1\\u5B9A\",\"Special\":true},{\"Id\":\"trigger\",\"Label\":\"\\u89E6\\u53D1\\u6548\\u679C\",\"Atoms\":[\"shield_flat\"],\"Costs\":{\"\\u901A\":0.3,\"\\u805A\":0.3},\"Weight\":0.4,\"Resource\":\"\\u805A\",\"Scope\":\"\\u5251\\u5173\\u952E\\u8BCD\\u6280\\u80FD\\u7684\\u539F\\u59CB\\u653B\\u51FB\",\"Event\":\"\\u6BCF\\u6B21\\u6280\\u80FD\\u6267\\u884C\\u9996\\u6B21\\u5BF9\\u751F\\u7075\\u9020\\u6210\\u7269\\u7406\\u4F24\\u5BB3\\u540E\",\"Condition\":\"\\u751F\\u6210\\u81EA\\u8EAB\\u62A4\\u76FE\\uFF1B\\u540C\\u6B21\\u591A\\u6BB5/\\u7FA4\\u653B\\u53EA\\u8BA1\\u4E00\\u6B21\\uFF0C\\u884D\\u751F\\u6BB5\\u4E0D\\u518D\\u6B21\\u89E6\\u53D1\\u3002\\u4EC5\\u4E3A\\u5019\\u9009\\u8BF4\\u660E\",\"Special\":true},{\"Id\":\"direct\",\"Label\":\"\\u76F4\\u65BD\",\"Atoms\":[\"physical_damage_base\",\"shield_flat\"],\"Costs\":{\"\\u805A\":0.4},\"Weight\":0.4,\"Resource\":\"\\u805A\",\"Scope\":\"\\u4E3B\\u52A8\\u80FD\\u529B\",\"Event\":\"\\u6280\\u80FD\\u6267\\u884C\",\"Condition\":\"\\u6280\\u80FD\\u8D39\\u7528\\u4E0E\\u76EE\\u6807\\u6A21\\u677F\\u672A\\u88C5\\u914D\\uFF0C\\u5F53\\u524D\\u4E0D\\u53EF\\u6392\\u5165\\u6218\\u6597\",\"Special\":true},{\"Id\":\"summon\",\"Label\":\"\\u5FA1\\u5668\",\"Atoms\":[\"physical_damage_base\",\"shield_flat\"],\"Costs\":{\"\\u901A\":0.2,\"\\u85CF\":0.25},\"Weight\":0.4,\"Resource\":\"\\u85CF\",\"Scope\":\"\\u53EC\\u51FA\\u540E\\u5FA1\\u4F7F\",\"Event\":\"\\u5FA1\\u4F7F\\u6267\\u884C\",\"Condition\":\"\\u53EC\\u51FA/\\u5FA1\\u4F7F\\u6A21\\u677F\\u672A\\u88C5\\u914D\\uFF0C\\u5F53\\u524D\\u4E0D\\u53EF\\u6392\\u5165\\u6218\\u6597\",\"Special\":true}],\"Examples\":[{\"Name\":\"\\u57FA\\u7840\\u6295\\u6599\",\"Proficiency\":12,\"Inputs\":[{\"Role\":\"\\u4E3B\\u4F53\",\"Material\":\"\\u94DC\\u9AD3\\u77FF\",\"Quantity\":3},{\"Role\":\"\\u627F\\u63A5\",\"Material\":\"\\u9752\\u6728\\u82AF\",\"Quantity\":1},{\"Role\":\"\\u8D28\\u6750\",\"Material\":\"\\u94DC\\u9AD3\\u77FF\",\"Quantity\":3},{\"Role\":\"\\u6027\\u6750\",\"Material\":\"\\u88C2\\u7532\\u77F3\",\"Quantity\":3}]},{\"Name\":\"\\u590D\\u5408\\u6295\\u6599\",\"Proficiency\":40,\"Inputs\":[{\"Role\":\"\\u4E3B\\u4F53\",\"Material\":\"\\u7384\\u94C1\",\"Quantity\":3},{\"Role\":\"\\u627F\\u63A5\",\"Material\":\"\\u9752\\u6728\\u82AF\",\"Quantity\":1},{\"Role\":\"\\u590D\\u5408\\u8EAB\\u6750\",\"Material\":\"\\u94DC\\u9AD3\\u77FF\",\"Quantity\":2},{\"Role\":\"\\u8D28\\u6750\",\"Material\":\"\\u94DC\\u9AD3\\u77FF\",\"Quantity\":4},{\"Role\":\"\\u6027\\u6750\",\"Material\":\"\\u88C2\\u7532\\u77F3\",\"Quantity\":4},{\"Role\":\"\\u6027\\u6750\",\"Material\":\"\\u7384\\u94C1\",\"Quantity\":3},{\"Role\":\"\\u548C\\u6750\",\"Material\":\"\\u7075\\u77F3\",\"Quantity\":6},{\"Role\":\"\\u548C\\u6750\",\"Material\":\"\\u98CE\\u7EB9\\u77F3\\u82F1\",\"Quantity\":1}]},{\"Name\":\"\\u5355\\u6027\\u6750\\u6295\\u6599\",\"Proficiency\":12,\"Inputs\":[{\"Role\":\"\\u4E3B\\u4F53\",\"Material\":\"\\u7384\\u94C1\",\"Quantity\":3},{\"Role\":\"\\u627F\\u63A5\",\"Material\":\"\\u9752\\u6728\\u82AF\",\"Quantity\":1},{\"Role\":\"\\u8D28\\u6750\",\"Material\":\"\\u94DC\\u9AD3\\u77FF\",\"Quantity\":3},{\"Role\":\"\\u6027\\u6750\",\"Material\":\"\\u88C2\\u7532\\u77F3\",\"Quantity\":3}]},{\"Name\":\"\\u591A\\u6750\\u6295\\u6599\",\"Proficiency\":60,\"Inputs\":[{\"Role\":\"\\u4E3B\\u4F53\",\"Material\":\"\\u7384\\u94C1\",\"Quantity\":3},{\"Role\":\"\\u627F\\u63A5\",\"Material\":\"\\u9752\\u6728\\u82AF\",\"Quantity\":1},{\"Role\":\"\\u590D\\u5408\\u8EAB\\u6750\",\"Material\":\"\\u94DC\\u9AD3\\u77FF\",\"Quantity\":2},{\"Role\":\"\\u8D28\\u6750\",\"Material\":\"\\u94DC\\u9AD3\\u77FF\",\"Quantity\":4},{\"Role\":\"\\u6027\\u6750\",\"Material\":\"\\u88C2\\u7532\\u77F3\",\"Quantity\":4},{\"Role\":\"\\u6027\\u6750\",\"Material\":\"\\u7384\\u94C1\",\"Quantity\":3},{\"Role\":\"\\u548C\\u6750\",\"Material\":\"\\u98CE\\u7EB9\\u77F3\\u82F1\",\"Quantity\":2},{\"Role\":\"\\u548C\\u6750\",\"Material\":\"\\u8910\\u94DC\\u7802\",\"Quantity\":2},{\"Role\":\"\\u548C\\u6750\",\"Material\":\"\\u7075\\u77F3\",\"Quantity\":6}]}]}",
+      "Polarity": 0.867016288991305,
+      "Proficiency": 60.0,
+      "RootBudget": 24.9544233424503,
+      "RulesVersion": "sword-process-trial-3-spirit-1",
+      "SchemaVersion": 3.0,
+      "Shape": "修长薄脊剑",
+      "Sharpness": 5.0,
+      "Sources": [
+        {
+          "BodySupply": 17.126003939377,
+          "BridgeSpent": 0.0,
+          "CharacterSupply": 2.28346719191694,
+          "Delivery": 1.0,
+          "EffectiveQuantity": 2.22994842960638,
+          "Input": {
+            "Material": "玄铁",
+            "Quantity": 3.0,
+            "Role": "主体"
+          },
+          "Loss": 0.0,
+          "Material": {
+            "DefinitionId": "mat_xuantie",
+            "Element": "金",
+            "Name": "玄铁",
+            "Polarity": 2.0,
+            "Texture": "致密",
+            "Utilities": {
+              "固": 2.0
+            }
+          },
+          "ProcessSupply": 3.4252007878754,
+          "Retained": 1.78395874368511,
+          "Retention": 0.8,
+          "Supply": 22.8346719191693,
+          "Vector": {
+            "固": 22.8346719191693
+          }
+        },
+        {
+          "BodySupply": 1.152,
+          "BridgeSpent": 0.0,
+          "CharacterSupply": 1.152,
+          "Delivery": 1.0,
+          "EffectiveQuantity": 1.0,
+          "Input": {
+            "Material": "风纹石英",
+            "Quantity": 1.0,
+            "Role": "和材"
+          },
+          "Loss": 0.0,
+          "Material": {
+            "DefinitionId": "mat_fengwen_quartz",
+            "Element": "金",
+            "Name": "风纹石英",
+            "Polarity": 0.0,
+            "Texture": "致密",
+            "Utilities": {
+              "通": 2.0
+            }
+          },
+          "ProcessSupply": 9.216,
+          "Retained": 0.9,
+          "Retention": 0.9,
+          "Supply": 11.52,
+          "Vector": {
+            "通": 11.52
+          }
+        },
+        {
+          "BodySupply": 1.97659479640176,
+          "BridgeSpent": 0.0,
+          "CharacterSupply": 1.97659479640176,
+          "Delivery": 0.9,
+          "EffectiveQuantity": 3.05030061173111,
+          "Input": {
+            "Material": "灵石",
+            "Quantity": 6.0,
+            "Role": "和材"
+          },
+          "Loss": 2.1962164404464,
+          "Material": {
+            "DefinitionId": "mat_spirit_stone",
+            "Element": "土",
+            "Name": "灵石",
+            "Polarity": 0.0,
+            "Texture": "致密",
+            "Utilities": {
+              "聚": 1.0,
+              "藏": 1.0,
+              "通": 1.0
+            }
+          },
+          "ProcessSupply": 15.8127583712141,
+          "Retained": 2.4707434955022,
+          "Retention": 0.9,
+          "Supply": 21.962164404464,
+          "Vector": {
+            "聚": 7.32072146815467,
+            "藏": 7.32072146815467,
+            "通": 7.32072146815467
+          }
+        },
+        {
+          "BodySupply": 8.75430968392633,
+          "BridgeSpent": 0.0,
+          "CharacterSupply": 1.16724129119018,
+          "Delivery": 1.0,
+          "EffectiveQuantity": 1.71653131057379,
+          "Input": {
+            "Material": "铜髓矿",
+            "Quantity": 2.0,
+            "Role": "复合身材"
+          },
+          "Loss": 0.0,
+          "Material": {
+            "DefinitionId": "mat_tong_sui_ore",
+            "Element": "金",
+            "Name": "铜髓矿",
+            "Polarity": 0.0,
+            "Texture": "致密",
+            "Utilities": {
+              "固": 1.0
+            }
+          },
+          "ProcessSupply": 1.75086193678527,
+          "Retained": 1.45905161398772,
+          "Retention": 0.85,
+          "Supply": 11.6724129119018,
+          "Vector": {
+            "固": 11.6724129119018
+          }
+        },
+        {
+          "BodySupply": 1.76652295212892,
+          "BridgeSpent": 0.0,
+          "CharacterSupply": 13.2489221409669,
+          "Delivery": 1.0,
+          "EffectiveQuantity": 2.59782787077782,
+          "Input": {
+            "Material": "裂甲石",
+            "Quantity": 4.0,
+            "Role": "性材"
+          },
+          "Loss": 0.0,
+          "Material": {
+            "DefinitionId": "mat_cracked_armor_stone",
+            "Element": "金",
+            "Name": "裂甲石",
+            "Polarity": 2.0,
+            "Texture": "致密",
+            "Utilities": {
+              "破": 1.0
+            }
+          },
+          "ProcessSupply": 2.64978442819338,
+          "Retained": 2.20815369016115,
+          "Retention": 0.85,
+          "Supply": 17.6652295212892,
+          "Vector": {
+            "破": 17.6652295212892
+          }
+        },
+        {
+          "BodySupply": 2.28346719191694,
+          "BridgeSpent": 0.0,
+          "CharacterSupply": 17.126003939377,
+          "Delivery": 1.0,
+          "EffectiveQuantity": 2.22994842960638,
+          "Input": {
+            "Material": "玄铁",
+            "Quantity": 3.0,
+            "Role": "性材"
+          },
+          "Loss": 0.0,
+          "Material": {
+            "DefinitionId": "mat_xuantie",
+            "Element": "金",
+            "Name": "玄铁",
+            "Polarity": 2.0,
+            "Texture": "致密",
+            "Utilities": {
+              "固": 2.0
+            }
+          },
+          "ProcessSupply": 3.4252007878754,
+          "Retained": 1.78395874368511,
+          "Retention": 0.8,
+          "Supply": 22.8346719191693,
+          "Vector": {
+            "固": 22.8346719191693
+          }
+        },
+        {
+          "BodySupply": 7.8336,
+          "BridgeSpent": 0.0,
+          "CharacterSupply": 1.04448,
+          "Delivery": 0.6,
+          "EffectiveQuantity": 1.0,
+          "Input": {
+            "Material": "青木芯",
+            "Quantity": 1.0,
+            "Role": "承接"
+          },
+          "Loss": 6.9632,
+          "Material": {
+            "DefinitionId": "mat_qingmu_core",
+            "Element": "木",
+            "Name": "青木芯",
+            "Polarity": 0.0,
+            "Texture": "致密",
+            "Utilities": {
+              "生": 3.0,
+              "通": 2.0
+            }
+          },
+          "ProcessSupply": 1.56672,
+          "Retained": 0.51,
+          "Retention": 0.85,
+          "Supply": 17.408,
+          "Vector": {
+            "生": 10.7126153846154,
+            "通": 6.69538461538462
+          }
+        },
+        {
+          "BodySupply": 5.29956885638676,
+          "BridgeSpent": 0.0,
+          "CharacterSupply": 3.53304590425784,
+          "Delivery": 1.0,
+          "EffectiveQuantity": 2.59782787077782,
+          "Input": {
+            "Material": "铜髓矿",
+            "Quantity": 4.0,
+            "Role": "质材"
+          },
+          "Loss": 0.0,
+          "Material": {
+            "DefinitionId": "mat_tong_sui_ore",
+            "Element": "金",
+            "Name": "铜髓矿",
+            "Polarity": 0.0,
+            "Texture": "致密",
+            "Utilities": {
+              "固": 1.0
+            }
+          },
+          "ProcessSupply": 8.8326147606446,
+          "Retained": 2.20815369016115,
+          "Retention": 0.85,
+          "Supply": 17.6652295212892,
+          "Vector": {
+            "固": 17.6652295212892
+          }
+        }
+      ],
+      "SpiritRequired": 0.0,
+      "StructureCapacity": 109.389786719736,
+      "Thickness": 0.283539684054834,
+      "Tier": "法器",
+      "Volume": 11.5129898167036,
+      "Width": 1.80382023736775
+    }
+  },
+  "process_evidence": {
+    "provenance": "Native CreateArtifact snapshot plus arithmetic reconstructed from retained native Sources and ParameterSnapshot; no new gameplay rules",
+    "sources": [
+      {
+        "role": "主体",
+        "material": "玄铁",
+        "quantity": 3.0,
+        "facts": {
+          "DefinitionId": "mat_xuantie",
+          "Element": "金",
+          "Name": "玄铁",
+          "Polarity": 2.0,
+          "Texture": "致密",
+          "Utilities": {
+            "固": 2.0
+          }
+        },
+        "profile": {
+          "Roles": [
+            "主体",
+            "复合身材",
+            "质材",
+            "性材"
+          ],
+          "Difficulty": 8,
+          "Retention": 0.8,
+          "Volume": 4,
+          "Extension": 14,
+          "Thickness": 0.18,
+          "Edge": 1.4,
+          "Strength": 1.3,
+          "Connection": 0
+        },
+        "Q": 2.22994842960638,
+        "eta": 0.8,
+        "P": 22.8346719191693,
+        "delivery": 1.0,
+        "bridge_spent": 0.0,
+        "loss": 0.0,
+        "B": {
+          "固": 17.126003939376975
+        },
+        "E": {
+          "固": 2.28346719191693
+        },
+        "J": {
+          "固": 3.425200787875395
+        },
+        "body_grade_G": 4,
+        "F": 1.4333294145603401,
+        "blade_volume": 7.135834974740416
+      },
+      {
+        "role": "和材",
+        "material": "风纹石英",
+        "quantity": 1.0,
+        "facts": {
+          "DefinitionId": "mat_fengwen_quartz",
+          "Element": "金",
+          "Name": "风纹石英",
+          "Polarity": 0.0,
+          "Texture": "致密",
+          "Utilities": {
+            "通": 2.0
+          }
+        },
+        "profile": {
+          "Roles": [
+            "和材"
+          ],
+          "Difficulty": 8,
+          "Retention": 0.9,
+          "Volume": 0,
+          "Extension": 0,
+          "Thickness": 0,
+          "Edge": 0,
+          "Strength": 0,
+          "Connection": 0
+        },
+        "Q": 1.0,
+        "eta": 0.9,
+        "P": 11.52,
+        "delivery": 1.0,
+        "bridge_spent": 0.0,
+        "loss": 0.0,
+        "B": {
+          "通": 1.152
+        },
+        "E": {
+          "通": 1.152
+        },
+        "J": {
+          "通": 9.216
+        },
+        "body_grade_G": 4,
+        "F": 1.4333294145603401,
+        "blade_volume": 0
+      },
+      {
+        "role": "和材",
+        "material": "灵石",
+        "quantity": 6.0,
+        "facts": {
+          "DefinitionId": "mat_spirit_stone",
+          "Element": "土",
+          "Name": "灵石",
+          "Polarity": 0.0,
+          "Texture": "致密",
+          "Utilities": {
+            "聚": 1.0,
+            "藏": 1.0,
+            "通": 1.0
+          }
+        },
+        "profile": {
+          "Roles": [
+            "质材",
+            "和材"
+          ],
+          "Difficulty": 8,
+          "Retention": 0.9,
+          "Volume": 0,
+          "Extension": 0,
+          "Thickness": 0,
+          "Edge": 0,
+          "Strength": 0,
+          "Connection": 0
+        },
+        "Q": 3.05030061173111,
+        "eta": 0.9,
+        "P": 21.962164404464,
+        "delivery": 0.9,
+        "bridge_spent": 0.0,
+        "loss": 2.1962164404464,
+        "B": {
+          "聚": 0.6588649321339204,
+          "藏": 0.6588649321339204,
+          "通": 0.6588649321339204
+        },
+        "E": {
+          "聚": 0.6588649321339204,
+          "藏": 0.6588649321339204,
+          "通": 0.6588649321339204
+        },
+        "J": {
+          "聚": 5.270919457071363,
+          "藏": 5.270919457071363,
+          "通": 5.270919457071363
+        },
+        "body_grade_G": 3,
+        "F": 1.2712491503214047,
+        "blade_volume": 0
+      },
+      {
+        "role": "复合身材",
+        "material": "铜髓矿",
+        "quantity": 2.0,
+        "facts": {
+          "DefinitionId": "mat_tong_sui_ore",
+          "Element": "金",
+          "Name": "铜髓矿",
+          "Polarity": 0.0,
+          "Texture": "致密",
+          "Utilities": {
+            "固": 1.0
+          }
+        },
+        "profile": {
+          "Roles": [
+            "主体",
+            "复合身材",
+            "质材",
+            "性材"
+          ],
+          "Difficulty": 8,
+          "Retention": 0.85,
+          "Volume": 3,
+          "Extension": 10,
+          "Thickness": 0.12,
+          "Edge": 0.9,
+          "Strength": 1,
+          "Connection": 0
+        },
+        "Q": 1.71653131057379,
+        "eta": 0.85,
+        "P": 11.6724129119018,
+        "delivery": 1.0,
+        "bridge_spent": 0.0,
+        "loss": 0.0,
+        "B": {
+          "固": 8.75430968392635
+        },
+        "E": {
+          "固": 1.16724129119018
+        },
+        "J": {
+          "固": 1.75086193678527
+        },
+        "body_grade_G": 2,
+        "F": 1.1274968515793757,
+        "blade_volume": 4.377154841963164
+      },
+      {
+        "role": "性材",
+        "material": "裂甲石",
+        "quantity": 4.0,
+        "facts": {
+          "DefinitionId": "mat_cracked_armor_stone",
+          "Element": "金",
+          "Name": "裂甲石",
+          "Polarity": 2.0,
+          "Texture": "致密",
+          "Utilities": {
+            "破": 1.0
+          }
+        },
+        "profile": {
+          "Roles": [
+            "性材"
+          ],
+          "Difficulty": 8,
+          "Retention": 0.85,
+          "Volume": 0,
+          "Extension": 0,
+          "Thickness": 0,
+          "Edge": 0,
+          "Strength": 0,
+          "Connection": 0
+        },
+        "Q": 2.59782787077782,
+        "eta": 0.85,
+        "P": 17.6652295212892,
+        "delivery": 1.0,
+        "bridge_spent": 0.0,
+        "loss": 0.0,
+        "B": {
+          "破": 1.7665229521289199
+        },
+        "E": {
+          "破": 13.248922140966899
+        },
+        "J": {
+          "破": 2.64978442819338
+        },
+        "body_grade_G": 2,
+        "F": 1.1274968515793757,
+        "blade_volume": 0
+      },
+      {
+        "role": "性材",
+        "material": "玄铁",
+        "quantity": 3.0,
+        "facts": {
+          "DefinitionId": "mat_xuantie",
+          "Element": "金",
+          "Name": "玄铁",
+          "Polarity": 2.0,
+          "Texture": "致密",
+          "Utilities": {
+            "固": 2.0
+          }
+        },
+        "profile": {
+          "Roles": [
+            "主体",
+            "复合身材",
+            "质材",
+            "性材"
+          ],
+          "Difficulty": 8,
+          "Retention": 0.8,
+          "Volume": 4,
+          "Extension": 14,
+          "Thickness": 0.18,
+          "Edge": 1.4,
+          "Strength": 1.3,
+          "Connection": 0
+        },
+        "Q": 2.22994842960638,
+        "eta": 0.8,
+        "P": 22.8346719191693,
+        "delivery": 1.0,
+        "bridge_spent": 0.0,
+        "loss": 0.0,
+        "B": {
+          "固": 2.28346719191693
+        },
+        "E": {
+          "固": 17.126003939376975
+        },
+        "J": {
+          "固": 3.425200787875395
+        },
+        "body_grade_G": 4,
+        "F": 1.4333294145603401,
+        "blade_volume": 0
+      },
+      {
+        "role": "承接",
+        "material": "青木芯",
+        "quantity": 1.0,
+        "facts": {
+          "DefinitionId": "mat_qingmu_core",
+          "Element": "木",
+          "Name": "青木芯",
+          "Polarity": 0.0,
+          "Texture": "致密",
+          "Utilities": {
+            "生": 3.0,
+            "通": 2.0
+          }
+        },
+        "profile": {
+          "Roles": [
+            "承接",
+            "质材",
+            "性材",
+            "和材"
+          ],
+          "Difficulty": 8,
+          "Retention": 0.85,
+          "Volume": 0,
+          "Extension": 0,
+          "Thickness": 0,
+          "Edge": 0,
+          "Strength": 0.8,
+          "Connection": 8
+        },
+        "Q": 1.0,
+        "eta": 0.85,
+        "P": 17.408,
+        "delivery": 0.6,
+        "bridge_spent": 0.0,
+        "loss": 6.9632,
+        "B": {
+          "生": 4.82067692307693,
+          "通": 3.0129230769230793
+        },
+        "E": {
+          "生": 0.6427569230769241,
+          "通": 0.40172307692307724
+        },
+        "J": {
+          "生": 0.964135384615386,
+          "通": 0.6025846153846158
+        },
+        "body_grade_G": 7,
+        "F": 2.0544332106438876,
+        "blade_volume": 0
+      },
+      {
+        "role": "质材",
+        "material": "铜髓矿",
+        "quantity": 4.0,
+        "facts": {
+          "DefinitionId": "mat_tong_sui_ore",
+          "Element": "金",
+          "Name": "铜髓矿",
+          "Polarity": 0.0,
+          "Texture": "致密",
+          "Utilities": {
+            "固": 1.0
+          }
+        },
+        "profile": {
+          "Roles": [
+            "主体",
+            "复合身材",
+            "质材",
+            "性材"
+          ],
+          "Difficulty": 8,
+          "Retention": 0.85,
+          "Volume": 3,
+          "Extension": 10,
+          "Thickness": 0.12,
+          "Edge": 0.9,
+          "Strength": 1,
+          "Connection": 0
+        },
+        "Q": 2.59782787077782,
+        "eta": 0.85,
+        "P": 17.6652295212892,
+        "delivery": 1.0,
+        "bridge_spent": 0.0,
+        "loss": 0.0,
+        "B": {
+          "固": 5.29956885638676
+        },
+        "E": {
+          "固": 3.5330459042578397
+        },
+        "J": {
+          "固": 8.8326147606446
+        },
+        "body_grade_G": 2,
+        "F": 1.1274968515793757,
+        "blade_volume": 0
+      }
+    ],
+    "vectors": {
+      "B": {
+        "固": 33.46334967160701,
+        "通": 4.823788009056999,
+        "聚": 0.6588649321339204,
+        "藏": 0.6588649321339204,
+        "破": 1.7665229521289199,
+        "生": 4.82067692307693
+      },
+      "E": {
+        "固": 24.109758326741925,
+        "通": 2.2125880090569976,
+        "聚": 0.6588649321339204,
+        "藏": 0.6588649321339204,
+        "破": 13.248922140966899,
+        "生": 0.6427569230769241
+      },
+      "J": {
+        "固": 17.43387827318066,
+        "通": 15.089504072455979,
+        "聚": 5.270919457071363,
+        "藏": 5.270919457071363,
+        "破": 2.64978442819338,
+        "生": 0.964135384615386
+      }
+    },
+    "metrics": {
+      "volume": 11.5129898167036,
+      "lambda": 12.479229144939382,
+      "tau": 0.1571884371740907,
+      "length": 22.5102860783911,
+      "width": 1.80382023736775,
+      "thickness": 0.283539684054834,
+      "connection": 6.8,
+      "connection_needed": 2.8782474541759,
+      "connection_ratio": 1,
+      "C": 109.389786719736,
+      "C_spirit": 56.6313680303471,
+      "R": 24.9544233424503,
+      "T": 31.6118690875437,
+      "stability_support": 56.54216739915968,
+      "conflict_loss": 4.5797082202232,
+      "processing_loss": 0.44287432002572297,
+      "L": 5.022582540248923,
+      "S": 0.915002052207154,
+      "H": 22.8333485699881,
+      "tier": "法器",
+      "edge_material": 1.629542699594175,
+      "finish": 0.8190096356882566,
+      "shape_coefficient": 0.976866758771171,
+      "indirect_sharpness_support": 2.3998686857252,
+      "sharpness_raw": 5.28694522268199,
+      "sharpness": 5.0,
+      "polarity": 0.867016288991305,
+      "craft_hours": 8.0,
+      "craft_energy": 16.0
+    },
+    "native_resources_before_bonds": {
+      "root": 24.9544233424503,
+      "source/固": 24.109758326742,
+      "source/生": 0.642756923076923,
+      "source/破": 13.2489221409669,
+      "source/聚": 0.65886493213392,
+      "source/藏": 0.65886493213392,
+      "source/通": 2.212588009057,
+      "structure": 109.389786719736,
+      "聚": 5.27091945707136,
+      "藏": 5.27091945707136,
+      "通": 15.089504072456
+    },
+    "bonds": [
+      {
+        "bond": "惊鸿",
+        "points": 2,
+        "actual_debit": {
+          "source/破": 2,
+          "root": 0.5,
+          "通": 0.5
+        }
+      },
+      {
+        "bond": "抱朴",
+        "points": 3,
+        "actual_debit": {
+          "source/固": 3,
+          "root": 0.75,
+          "通": 0.75
+        }
+      }
+    ],
+    "resources_after_bonds_before_effects": {
+      "root": 23.7044233424503,
+      "source/固": 21.109758326742,
+      "source/生": 0.642756923076923,
+      "source/破": 11.2489221409669,
+      "source/聚": 0.65886493213392,
+      "source/藏": 0.65886493213392,
+      "source/通": 2.212588009057,
+      "structure": 109.389786719736,
+      "聚": 5.27091945707136,
+      "藏": 5.27091945707136,
+      "通": 13.839504072456
+    },
+    "native_used_including_bonds": {
+      "root": 24.9544233418424,
+      "source/固": 15.4555012008766,
+      "source/破": 13.2489221409658,
+      "structure": 23.7044233418424,
+      "藏": 0.253728247506569,
+      "通": 4.3638520820552
+    },
+    "native_unused_final": {
+      "root": 6.07858652301729e-10,
+      "source/固": 8.6542571258654,
+      "source/生": 0.642756923076923,
+      "source/破": 1.06936681731895e-12,
+      "source/聚": 0.65886493213392,
+      "source/藏": 0.65886493213392,
+      "source/通": 2.212588009057,
+      "structure": 85.6853633778933,
+      "聚": 5.27091945707136,
+      "藏": 5.01719120956479,
+      "通": 10.7256519904008
+    },
+    "native_effects": [
+      {
+        "Allocated": 6.61651750021766,
+        "AtomId": "physical_damage_percent",
+        "AttributeKey": "physical_damage_percent",
+        "BattleTemplateStatus": "未装配",
+        "CarrierId": "base",
+        "Condition": "装备后提供基础战斗属性",
+        "Description": "物理伤害 +3.31%",
+        "EffectId": "trial2/base/physical_damage_percent",
+        "Event": "装备期间",
+        "QuantizationLoss": 0.0,
+        "Route": "基础加成",
+        "Scope": "角色",
+        "SourceAllocations": {
+          "破": 6.61651750021766
+        },
+        "Special": false,
+        "Value": 3.30825875010883
+      },
+      {
+        "Allocated": 9.27859238220945,
+        "AtomId": "physical_defense",
+        "AttributeKey": "physical_defense",
+        "BattleTemplateStatus": "未装配",
+        "CarrierId": "base",
+        "Condition": "装备后提供基础战斗属性",
+        "Description": "物理防御 +4",
+        "EffectId": "trial2/base/physical_defense",
+        "Event": "装备期间",
+        "QuantizationLoss": 1.27859238220945,
+        "Route": "基础加成",
+        "Scope": "角色",
+        "SourceAllocations": {
+          "固": 9.27859238220945
+        },
+        "Special": false,
+        "Value": 4.0
+      },
+      {
+        "Allocated": 3.17690881866711,
+        "AtomId": "defuse_flat",
+        "AttributeKey": "",
+        "BattleTemplateStatus": "未装配",
+        "CarrierId": "binding",
+        "Condition": "选择一个类别、关键词与实际效果均符合要求的技能绑定；要求守御、含实际应对化解",
+        "Description": "实际应对追加化解 +1",
+        "EffectId": "trial2/binding/defuse_flat",
+        "Event": "随绑定技能结算",
+        "QuantizationLoss": 1.17690881866711,
+        "Route": "化法",
+        "Scope": "玩家选定的合格技能",
+        "SourceAllocations": {
+          "固": 3.17690881866711
+        },
+        "Special": true,
+        "Value": 1.0
+      },
+      {
+        "Allocated": 2.09512216568248,
+        "AtomId": "physical_defense_ignore_ratio",
+        "AttributeKey": "",
+        "BattleTemplateStatus": "未装配",
+        "CarrierId": "binding",
+        "Condition": "选择一个类别、关键词与实际效果均符合要求的技能绑定；要求攻伐、气血、含单体物理伤害",
+        "Description": "本次物理防御忽略 2.1%",
+        "EffectId": "trial2/binding/physical_defense_ignore_ratio",
+        "Event": "随绑定技能结算",
+        "QuantizationLoss": 0.0,
+        "Route": "化法",
+        "Scope": "玩家选定的合格技能",
+        "SourceAllocations": {
+          "破": 2.09512216568248
+        },
+        "Special": true,
+        "Value": 0.0209512216568248
+      },
+      {
+        "Allocated": 2.53728247506569,
+        "AtomId": "physical_damage_percent",
+        "AttributeKey": "",
+        "BattleTemplateStatus": "未装配",
+        "CarrierId": "keyword",
+        "Condition": "自动作用于所有合格技能，无需绑定",
+        "Description": "物理伤害 +1.27%",
+        "EffectId": "trial2/keyword/physical_damage_percent",
+        "Event": "伤害结算",
+        "QuantizationLoss": 0.0,
+        "Route": "常驻效果",
+        "Scope": "剑关键词技能中的物理伤害",
+        "SourceAllocations": {
+          "破": 2.53728247506569
+        },
+        "Special": true,
+        "Value": 1.26864123753285
+      }
+    ],
+    "verified": "per-source role reconstruction, assessment, sharpness, and budget used+unused match native snapshot"
+  }
+}

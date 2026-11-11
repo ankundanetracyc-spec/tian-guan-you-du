@@ -1,0 +1,121 @@
+{
+  "schema": "male-face-natural-recovery-review/v1",
+  "date": "2026-11-09",
+  "reviewer": "/root/portrait_audit",
+  "status": "baseline_recovery_only",
+  "installation_status": "restored_and_technically_verified",
+  "user_final_aesthetic_approval": false,
+  "complete_shape_correction": false,
+  "full_symmetry_claim": false,
+  "scope": "Six frozen original brow/eye layers installed with integer whole-pair horizontal moves only; current original-layer nose/mouth and five beards retained. Other61PNGs, selection configurations and user preset unchanged. No active PNG or manifest modified by this reviewer.",
+  "records": [
+    {
+      "file": "male/eyes/04.png",
+      "sha256": "aa8935dbb3e3695249321a96c9772108708c7b5e4c119a911580c81a57cf6bd3",
+      "source": "reference/original_features/eyes/04.png",
+      "source_sha256": "81723d5ca8413f3ecdb5a4a962a8850bf191aa7fd63c1a1818489eff4bd2f23a",
+      "horizontal_integer_dx": -2,
+      "exact_integer_RGBA_copy_verified": true,
+      "status": "original_brushwork_baseline_only"
+    },
+    {
+      "file": "male/eyebrows/04.png",
+      "sha256": "a4ea663fccd21521e9c434018726ec2f7c6de391ca57c8e47c6eda9537604bbb",
+      "source": "reference/original_features/eyebrows/04.png",
+      "source_sha256": "f7d71d00f80370ddc6610a99aa8a001b7ae4f57abafe2d2eb4b0033fb9f63298",
+      "horizontal_integer_dx": -1,
+      "exact_integer_RGBA_copy_verified": true,
+      "status": "original_brushwork_baseline_only"
+    },
+    {
+      "file": "male/eyes/01.png",
+      "sha256": "16d821b6f969f2bcc3d293ae9aef6a1d20e0ca41605f4c382f9cf6c9730d6264",
+      "source": "reference/original_features/eyes/01.png",
+      "source_sha256": "5ecb31eacb232bf8be1f83ddd97c50c3715b792564c73052f425aca7c20eb8af",
+      "horizontal_integer_dx": -3,
+      "exact_integer_RGBA_copy_verified": true,
+      "status": "original_brushwork_baseline_only"
+    },
+    {
+      "file": "male/eyebrows/01.png",
+      "sha256": "f38064b1d7acd76a3ced5c58a7482818e60598c94061f776a6b286b1b4749700",
+      "source": "reference/original_features/eyebrows/01.png",
+      "source_sha256": "b094a5d118e3b722b1901198c319919804cc93ab225c873366aa02af6fc6fa5f",
+      "horizontal_integer_dx": -1,
+      "exact_integer_RGBA_copy_verified": true,
+      "status": "original_brushwork_baseline_only"
+    },
+    {
+      "file": "male/eyes/05.png",
+      "sha256": "4d518b95c103e85aa18d8f331b4b61f4c039cbf36876d6cd9bac49f827346e91",
+      "source": "reference/original_features/eyes/05.png",
+      "source_sha256": "46d6b972e5667199e274b1c2dd8bc1686f01e0ed3f68eac4301f1fbf648f88fd",
+      "horizontal_integer_dx": -2,
+      "exact_integer_RGBA_copy_verified": true,
+      "status": "original_brushwork_baseline_only"
+    },
+    {
+      "file": "male/eyebrows/05.png",
+      "sha256": "23909da9d9e7ca5e1516cb29e0e038197b0d5d53ccd5c6aa838da58f8c8d7b04",
+      "source": "reference/original_features/eyebrows/05.png",
+      "source_sha256": "f5e0908457fb3b30a33dc7961af0b4c0e046f6794d8768104b79d1a0714839fd",
+      "horizontal_integer_dx": 1,
+      "exact_integer_RGBA_copy_verified": true,
+      "status": "original_brushwork_baseline_only"
+    }
+  ],
+  "visual_observation": "Native-scale natural_face01/04/05 QA reviewed. Original fine brow hairs, sharp eyelid painting and iris detail return; repeated gray-bar/blurred eyeliner look of rejected generated set is removed. This is recovery of prior style, not proof that original shape asymmetries are fixed. Actual installed04normal-scale output has also been read; original brushwork and expression are restored, with original shape differences intentionally still visible.",
+  "remaining_issues": [
+    "Original left/right lid aperture, corner, brow-weight and pupil/inner-corner relationships remain, including visible residual04shape difference.",
+    "Only horizontal whole-pair position is corrected; original tilt, eye distance, iris shape and brushwork remain.",
+    "Original residual shape differences remain unfinished and no user final aesthetic approval of the restored baseline has been recorded."
+  ],
+  "rejected_previous_stage": {
+    "package": "mods/appearance/male_face_alignment_fix_20261109",
+    "user_feedback": "修正后的这么怪异你没发现吗",
+    "reasons": [
+      "Regenerated brow01became uniform gray, brow04flattened and blurred, brow05thickened/darkened with an angry expression.",
+      "Regenerated eye01lost sharp eyelid/iris detail, eye05became squintier and harder.",
+      "Eye04combined coarse lash/short-block tails and soft blur; mirroring duplicated the same faults and created a stiff eyeliner-like look."
+    ],
+    "old_visual_acceptance": "withdrawn; old report status rejected",
+    "historical_technical_checks": {
+      "alignment": 799,
+      "runtime": 3355,
+      "interpretation": "Failed aesthetic stage technical history only, not new recovery results or user approval."
+    }
+  },
+  "evidence": [
+    {
+      "file": "qa/natural_face_01_1x.png",
+      "sha256": "727fe541aa93e4a6323c92b69328728447ad23dce67f2e8439a1b55fec2b52e4"
+    },
+    {
+      "file": "qa/natural_face_04_1x.png",
+      "sha256": "699503549764e3e8cfc210508cbb22854fb71626f027353ca6e4d6ffd6740baa"
+    },
+    {
+      "file": "qa/natural_face_05_1x.png",
+      "sha256": "7f136ff99226f49fb4190f1d5e44e6b40890d0ee247df841b8dd84a924d1e825"
+    },
+    {
+      "file": "installation/game_natural_whole_04_face_1x.png",
+      "sha256": "dc159ca2df22fcbac448e50172187b825a1706e8c78d356acf6aacdba4e26e72"
+    }
+  ],
+  "allowed_conclusion": "Original-style baseline and minimum integer horizontal centering are installed and technically verified. Original shape asymmetries remain unfinished; no full-symmetry, complete-correction or user-aesthetic-approval claim.",
+  "runtime_result": "installation/runtime_check.json",
+  "runtime_verification": {
+    "status": "technical_pass_only",
+    "checks": 305,
+    "failures": 0,
+    "report_sha256": "94d47977e184ab5dc6fc7ce030f32003fb74ba968c9eba6064c54369c2bd9b21",
+    "nine_nohair_outputs": 9,
+    "matching_whole_outputs": 3,
+    "production_renderer_outputs": 3,
+    "active_png_count": 67,
+    "active_choice_count": 60,
+    "user_preset_unchanged": true,
+    "not_aesthetic_approval": true
+  }
+}

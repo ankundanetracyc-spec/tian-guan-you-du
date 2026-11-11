@@ -1,0 +1,207 @@
+{
+  "schema": "male-eye-balance-correction-import/v1",
+  "status": "v6_final_PNG_locked_independently_accepted_delivered_to_parent",
+  "mode": "built-in image_gen edit plus technical RGBA assembly",
+  "input": {
+    "old": "E:\\stacklands\\mods\\appearance\\male_eye_balance_fix_20261107\\reference\\current_male\\eyes\\04.png",
+    "old_sha256": "fd3f04b779e0849bbe9c9cf46fcfa2b5bd6b8fcb8839b2aac5c1d26819acba89",
+    "native": "E:\\stacklands\\mods\\appearance\\male_eye_balance_fix_20261107\\raw\\eyes_balance_v6.png",
+    "native_sha256": "816fc2ff458cc09c6c8bb900b8cbf581d647dac72998a9cdcff417c22606d27f"
+  },
+  "output": {
+    "path": "E:\\stacklands\\mods\\appearance\\male_eye_balance_fix_20261107\\candidate\\new_male_eyes04.png",
+    "sha256": "6c3f023df0d845a979727f4fab210c3ad95a03a881a40f3ea493d19dc0252f14",
+    "width": 1024,
+    "height": 1536,
+    "runtime_offset": [
+      0,
+      0
+    ]
+  },
+  "geometry": {
+    "native_to_current": [
+      [
+        0.14299572588661474,
+        0.0010707366690791917,
+        385.00832536017134
+      ],
+      [
+        -0.0010707366690791917,
+        0.14299572588661474,
+        303.36306986296546
+      ]
+    ],
+    "reference_current_pupil_centers": [
+      [
+        462.695,
+        365.417
+      ],
+      [
+        567.799,
+        364.916
+      ]
+    ],
+    "native_pupil_reading_uncertainty": "approximately3 native pixels =0.43 output pixels",
+    "scale": 0.1429997346111327,
+    "resampling": "single premultiplied Alpha area-supersampled similarity (7x7 subpixel samples)",
+    "whole_pair_transform_only": true,
+    "local_warp": false,
+    "mirror_clone": false,
+    "right_upper_lid": "Intentionally newly painted lower to balance left; old upper lid is not a rigid registration target",
+    "native_dark_kernel_verification_centers": [
+      [
+        542.2651762304321,
+        436.9692147134699
+      ],
+      [
+        1273.2198793387713,
+        437.26218813251063
+      ]
+    ],
+    "native_dark_kernel_measurement": "Reuse independent audit ROI/method on final native: meanRGB; max(80-gray,0)*Alpha; L ROI x500..579 y420..464, R x1235..1314 y423..467",
+    "native_dark_kernel_position_errors_px": [
+      0.3558809679458914,
+      0.466986502422479
+    ],
+    "native_dark_kernel_max_pupil_error_px": 0.466986502422479,
+    "frame_registration_points_from_v3": [
+      [
+        540,
+        438
+      ],
+      [
+        1275,
+        440
+      ]
+    ],
+    "frame_reference_native": "raw/eyes_balance_v3.png; same whole-pair matrix retained throughv6, no fit to changed right upper lid",
+    "unchanged_frame_noncollinear_audit": {
+      "native_v3_controls": [
+        [
+          721,
+          492
+        ],
+        [
+          540,
+          497
+        ]
+      ],
+      "current_original_left_controls_approx": [
+        [
+          489.5,
+          373
+        ],
+        [
+          463,
+          374.5
+        ]
+      ],
+      "semantic_points": [
+        "True dark inner corner at upper/lower-lid meeting, not skin Alpha corner",
+        "Iris lower edge/lower-lid meeting"
+      ],
+      "audit_residual_bounds_px": [
+        1.4,
+        1.2
+      ],
+      "note": "Frame unchanged; final original-left RGBA unchanged. No refitting to changed right upper lid."
+    }
+  },
+  "assembly": {
+    "left": "Current original left RGBA retained unchanged; independent16x audit found its small outer-upper marks attached to fold/lash, so no speculative Alpha cut",
+    "right": "New built-in painting; no old source RGB restoration",
+    "join_x": 515,
+    "join_empty_alpha_interval": [
+      510,
+      525
+    ],
+    "original_left_nonzero_pixels": 1437,
+    "native_alpha_1_to_3_removed_pixels": 6226,
+    "right_alpha_matte": {
+      "method": "min(new Alpha, max(original04 Alpha,0.85*GaussianBlur(original04 Alpha,sigma0.65)))",
+      "reason": "Remove new pointed tail, extra inner extension and skin support; existing Alpha is a matte upper bound only, never a source of RGB or new visible pixels",
+      "reduced_pixels": 1179,
+      "total_alpha_reduction": 57724,
+      "can_increase_native_alpha": false
+    }
+  },
+  "art_intent": "User-requested natural eye-balance correction, not pixel-faithful extraction of the unequal old source",
+  "known_differences": [
+    "New right pupil/highlight texture and upper lid paint replace baked hair and the unequal old opening",
+    "Left current eye drawing retained",
+    "Right fold, lash/outer contour and iris highlight are newly painted; no source-pixel-equality claim",
+    "Right iris/lash/fold pigment is new built-in artwork. Natural non-mirrored asymmetry retained; original-left drawing preserved exactly.",
+    "Right lower gradient atx564 reads1px different than prior trial, within coarse1–1.5px boundary uncertainty; no scripted lower-lid/eye deformation."
+  ],
+  "active_files_edited": false,
+  "verification": {
+    "candidate_sha256": "6c3f023df0d845a979727f4fab210c3ad95a03a881a40f3ea493d19dc0252f14",
+    "canvas_rgba": [
+      1536,
+      1024,
+      4
+    ],
+    "left_rgba_differing_pixels": 0,
+    "right_matte_increased_alpha_pixels": 0,
+    "right_matte_changed_visible_rgb_pixels": 0,
+    "gap_alpha_max": 0,
+    "right_central_iris_alpha_min": 246
+  },
+  "same_method_self_check": {
+    "method": "RGBA over frozen blank head and paper235,229,216; meanRGB,3column mean at fixed anchors; strongest negative row gradient355..365, positive371..377; y+.5 boundaries",
+    "left": [
+      {
+        "x": 458,
+        "upper_y": 359.5,
+        "lower_y": 374.5,
+        "opening_px": 15
+      },
+      {
+        "x": 466,
+        "upper_y": 359.5,
+        "lower_y": 374.5,
+        "opening_px": 15
+      }
+    ],
+    "right": [
+      {
+        "x": 564,
+        "upper_y": 358.5,
+        "lower_y": 373.5,
+        "opening_px": 15
+      },
+      {
+        "x": 572,
+        "upper_y": 358.5,
+        "lower_y": 372.5,
+        "opening_px": 14
+      }
+    ],
+    "left_median": 15,
+    "right_median": 14.5,
+    "edge_uncertainty_px": [
+      1,
+      1.5
+    ],
+    "note": "Coarse painted-boundary support measurement, not exact anatomical segmentation. Not a claim of mirrored/pixel-identical eyes."
+  },
+  "qa": [
+    "qa/before_after_eye_hair_native_1x_light.png",
+    "qa/before_after_eye_hair_native_1x_dark.png",
+    "qa/before_after_eye_hair_comparison_light.png",
+    "qa/before_after_eye_hair_comparison_dark.png",
+    "qa/before_after_reported_scale_light.png",
+    "qa/before_after_reported_scale_dark.png",
+    "qa/candidate_isolated_light_6x.png",
+    "qa/candidate_isolated_dark_6x.png"
+  ],
+  "independent_review": {
+    "agent": "portrait_audit",
+    "report": "qa/v6_asymmetry_review.json",
+    "result": "Passed; left15/15, right15/14 median14.5; no obvious inequality at normal scale, no baked hair or extra long pointed tail",
+    "locked_sha256": "6c3f023df0d845a979727f4fab210c3ad95a03a881a40f3ea493d19dc0252f14",
+    "final_left_rgba_changed_pixels": 0,
+    "next_action": "Parent installation; this agent has stopped all material editing"
+  },
+  "png_editing_stopped": true
+}

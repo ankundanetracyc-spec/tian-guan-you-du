@@ -1,0 +1,93 @@
+{
+  "schema": "eye04-balance-native-v3-pupil-measurement/v1",
+  "scope": "Read-only native pupil measurement. Only this QA JSON written; no PNG/candidate/resource modified.",
+  "native_source": "E:\\stacklands\\mods\\appearance\\male_eye_balance_fix_20261107\\raw\\eyes_balance_v3.png",
+  "sha256": "c3dedcab80107c61b32797020fb96030a618d0efd7ae245a3fbb66cf213efdf2",
+  "native_canvas": [
+    1774,
+    887
+  ],
+  "method": "meanRGB grayscale; weight=max(threshold-gray,0)*alpha/255 in stated ROIs below the upper-lid dark band. No upper-lid mass included.",
+  "points": {
+    "left": {
+      "roi_half_open_xyxy": [
+        500,
+        420,
+        580,
+        465
+      ],
+      "threshold_readings": {
+        "70": [
+          541.1379066862912,
+          435.77920881032225
+        ],
+        "80": [
+          541.1772759558196,
+          436.02739795905205
+        ],
+        "90": [
+          540.7226481638905,
+          436.5903792863496
+        ]
+      },
+      "recommended_dark_core_center": [
+        541.1772759558196,
+        436.02739795905205
+      ],
+      "native_uncertainty_px": 1.5
+    },
+    "right": {
+      "roi_half_open_xyxy": [
+        1235,
+        423,
+        1315,
+        468
+      ],
+      "threshold_readings": {
+        "70": [
+          1273.2033759902326,
+          437.04912670757005
+        ],
+        "80": [
+          1273.6612047602712,
+          437.612915955342
+        ],
+        "90": [
+          1273.9507720910794,
+          438.63769075126396
+        ]
+      },
+      "recommended_dark_core_center": [
+        1273.6612047602712,
+        437.612915955342
+      ],
+      "native_uncertainty_px": 1.5
+    }
+  },
+  "current04_target_centers": {
+    "left": [
+      462.6952312287569,
+      365.41672674837787
+    ],
+    "right": [
+      567.7991927346114,
+      364.9156695978088
+    ]
+  },
+  "visible_horizontal_iris_diameter_native_px": {
+    "left": [
+      145,
+      148
+    ],
+    "right": [
+      145,
+      148
+    ],
+    "method": "Coarse manual outer-limbus read, approximately3px uncertainty; no notable one-sided whole-iris enlargement."
+  },
+  "limits": [
+    "A two-pupil similarity alone cannot validate aperture height or contour fidelity.",
+    "Check restored candidate at original1024x1536 scale against preserved old left eye; lower right upper lid naturally, not as far as possible.",
+    "Old left x437..442,y357..362 has a connected crease/lash detail in16x view; earlier coarse residual label is insufficient grounds to cut its alpha. Preserve old left body unless a distinct hair fragment is visually established."
+  ]
+}

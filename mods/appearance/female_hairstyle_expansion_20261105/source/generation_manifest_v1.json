@@ -1,0 +1,26 @@
+{
+  "task": "女性立绘发型增补：整体审美预览",
+  "created_local_date": "2026-11-05",
+  "status": "preview_only_pending_user_selection",
+  "generator": "built-in image_gen",
+  "preview": "preview/hairstyles_concept_v1.png",
+  "source_image": "E:/tmp/CodexData/generated_images/01a1ac35-8591-7bc0-b31a-ed6a532b5357/exec-b11b38a8-0f39-4195-838e-ab749549e35d.png",
+  "prompt": "source/generation_prompt_v1.txt",
+  "concepts_left_to_right": [
+    "高马尾",
+    "双环髻",
+    "侧垂长辫"
+  ],
+  "references": [
+    "mods/appearance/portrait_original_restore_20261105_v6/whole_male_first_20261105/reference/female_active.png",
+    "mods/appearance/portrait_reference_features_20261104_v1/preview/three_faces_light.png"
+  ],
+  "authority": [
+    "docs/美术规范/本轮男女立绘锚点规范_20261003.md",
+    "docs/美术规范/百会分层与发型肤色修订_20261104/README.md",
+    "docs/美术规范/三组参考五官去重接入_20261104/README.md",
+    "docs/美术规范/男女山根与男装领口修订_20261104/README.md"
+  ],
+  "integration": "未改活动包、配置或游戏入口。用户认可款式后，独立生成1024×1536 RGBA前后发，整层配准，再完成浅深底和自由混搭验证。",
+  "limitations": "整张生成预览，脸、衣纹与位置存在绘画差异；不是原脸原衣逐像素合成，不是可直接接入的拆件。"
+}

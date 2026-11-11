@@ -2,8 +2,8 @@ extends RefCounted
 ## Positive travel costs only. Walkability remains owned by FreeNavigation.
 
 const PROFILE_ID := "terrain-speed-v1"
-const DATA_PATH := "res://resources/world/bai_chuan/terrain_travel_20261105.json"
 const Scale = preload("res://gdscripts/world/BaiChuanWorldScale.gd")
+const DATA_PATH := Scale.TERRAIN_PATH
 static var _shared: Dictionary = {}
 static var _load_attempted := false
 var ready := false
@@ -20,13 +20,13 @@ func initialize() -> bool:
 static func _valid_data(data: Dictionary) -> bool:
 	if int(data.get("version", 0)) != 1 or str(data.get("profile_id", "")) != PROFILE_ID: return false
 	if not is_equal_approx(float(data.get("world_size", 0.0)), Scale.MAP_PIXELS): return false
-	if not is_equal_approx(float(data.get("cell_size", 0.0)), Scale.NAVIGATION_CELL_SIZE): return false
-	if int(data.get("columns", 0)) != Scale.NAVIGATION_COLUMNS: return false
+	if not is_equal_approx(float(data.get("cell_size", 0.0)), Scale.TERRAIN_CELL_SIZE): return false
+	if int(data.get("columns", 0)) != Scale.TERRAIN_COLUMNS: return false
 	var rows: Variant = data.get("rows")
 	var types: Variant = data.get("types")
-	if not rows is Array or rows.size() != Scale.NAVIGATION_COLUMNS or not types is Dictionary: return false
+	if not rows is Array or rows.size() != Scale.TERRAIN_COLUMNS or not types is Dictionary: return false
 	for row: Variant in rows:
-		if not row is String or row.length() != Scale.NAVIGATION_COLUMNS: return false
+		if not row is String or row.length() != Scale.TERRAIN_COLUMNS: return false
 		for index: int in row.length():
 			if not types.has(row.substr(index, 1)): return false
 	for entry: Variant in types.values():

@@ -1,0 +1,9898 @@
+{
+  "source": "真实ActiveSkillData、CardRules、BattleActionResolver及心法运行时计算；六档属性、三档物防；不伪称完整胜率模拟",
+  "expectation_scope": "四卷舒卷主修；分别假设每段100%或75%命中，无会心、应对、护盾与其他加成；追加须前段命中且概率成功，不计算击杀中止；完整付费另列",
+  "skills": [
+    {
+      "profile": "基础",
+      "skill": "应敌",
+      "energy": 1,
+      "mana": 0,
+      "cells": 1,
+      "max_placements": 3,
+      "battle_limit": 0,
+      "raw_damage": 9.25,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 9,
+        "4": 5,
+        "10": 1
+      }
+    },
+    {
+      "profile": "基础",
+      "skill": "架招",
+      "energy": 1,
+      "mana": 0,
+      "cells": 1,
+      "max_placements": 3,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 5,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "基础",
+      "skill": "痛击",
+      "energy": 2,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 14.75,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 15,
+        "4": 11,
+        "10": 5
+      }
+    },
+    {
+      "profile": "基础",
+      "skill": "催血",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "基础",
+      "skill": "聚炁",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "基础",
+      "skill": "灵击",
+      "energy": 2,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 7.5,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 8,
+        "4": 4,
+        "10": 1
+      }
+    },
+    {
+      "profile": "基础",
+      "skill": "寄念",
+      "energy": 1,
+      "mana": 0,
+      "cells": 1,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "基础",
+      "skill": "斩剑",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 3,
+      "battle_limit": 0,
+      "raw_damage": 9,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 9,
+        "4": 5,
+        "10": 1
+      }
+    },
+    {
+      "profile": "基础",
+      "skill": "养锋",
+      "energy": 1,
+      "mana": 0,
+      "cells": 1,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "基础",
+      "skill": "格剑",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 4,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "基础",
+      "skill": "尽锋",
+      "energy": 2,
+      "mana": 1,
+      "cells": 3,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 13,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 13,
+        "4": 9,
+        "10": 3
+      }
+    },
+    {
+      "profile": "基础",
+      "skill": "云帔",
+      "energy": 0,
+      "mana": 1,
+      "cells": 2,
+      "max_placements": 3,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 9,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "基础",
+      "skill": "惊蛰",
+      "energy": 0,
+      "mana": 1,
+      "cells": 3,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 12,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 12,
+        "4": 8,
+        "10": 2
+      }
+    },
+    {
+      "profile": "基础",
+      "skill": "复命",
+      "energy": 0,
+      "mana": 1,
+      "cells": 4,
+      "max_placements": 1,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "基础",
+      "skill": "折锋",
+      "energy": 1,
+      "mana": 1,
+      "cells": 3,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 12,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 12,
+        "4": 8,
+        "10": 2
+      }
+    },
+    {
+      "profile": "基础",
+      "skill": "焚元",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 1,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "基础",
+      "skill": "血臂撼岳",
+      "energy": 2,
+      "mana": 0,
+      "cells": 3,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 11,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 11,
+        "4": 7,
+        "10": 1
+      }
+    },
+    {
+      "profile": "基础",
+      "skill": "乘势再攻",
+      "energy": 1,
+      "mana": 0,
+      "cells": 4,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 12,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 12,
+        "4": 8,
+        "10": 2
+      }
+    },
+    {
+      "profile": "基础",
+      "skill": "虚怀纳劲",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 6,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "基础",
+      "skill": "云岚三叠",
+      "energy": 2,
+      "mana": 0,
+      "cells": 4,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 10,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 10,
+        "4": 6,
+        "10": 1
+      }
+    },
+    {
+      "profile": "均衡10",
+      "skill": "应敌",
+      "energy": 1,
+      "mana": 0,
+      "cells": 1,
+      "max_placements": 3,
+      "battle_limit": 0,
+      "raw_damage": 11.5,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 12,
+        "4": 8,
+        "10": 2
+      }
+    },
+    {
+      "profile": "均衡10",
+      "skill": "架招",
+      "energy": 1,
+      "mana": 0,
+      "cells": 1,
+      "max_placements": 3,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 7,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "均衡10",
+      "skill": "痛击",
+      "energy": 2,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 18.5,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 18,
+        "4": 14,
+        "10": 8
+      }
+    },
+    {
+      "profile": "均衡10",
+      "skill": "催血",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "均衡10",
+      "skill": "聚炁",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "均衡10",
+      "skill": "灵击",
+      "energy": 2,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 11,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 11,
+        "4": 7,
+        "10": 1
+      }
+    },
+    {
+      "profile": "均衡10",
+      "skill": "寄念",
+      "energy": 1,
+      "mana": 0,
+      "cells": 1,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "均衡10",
+      "skill": "斩剑",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 3,
+      "battle_limit": 0,
+      "raw_damage": 14,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 14,
+        "4": 10,
+        "10": 4
+      }
+    },
+    {
+      "profile": "均衡10",
+      "skill": "养锋",
+      "energy": 1,
+      "mana": 0,
+      "cells": 1,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "均衡10",
+      "skill": "格剑",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 7,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "均衡10",
+      "skill": "尽锋",
+      "energy": 2,
+      "mana": 1,
+      "cells": 3,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 19,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 19,
+        "4": 15,
+        "10": 9
+      }
+    },
+    {
+      "profile": "均衡10",
+      "skill": "云帔",
+      "energy": 0,
+      "mana": 1,
+      "cells": 2,
+      "max_placements": 3,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 12,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "均衡10",
+      "skill": "惊蛰",
+      "energy": 0,
+      "mana": 1,
+      "cells": 3,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 17,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 17,
+        "4": 13,
+        "10": 7
+      }
+    },
+    {
+      "profile": "均衡10",
+      "skill": "复命",
+      "energy": 0,
+      "mana": 1,
+      "cells": 4,
+      "max_placements": 1,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "均衡10",
+      "skill": "折锋",
+      "energy": 1,
+      "mana": 1,
+      "cells": 3,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 17,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 17,
+        "4": 13,
+        "10": 7
+      }
+    },
+    {
+      "profile": "均衡10",
+      "skill": "焚元",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 1,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "均衡10",
+      "skill": "血臂撼岳",
+      "energy": 2,
+      "mana": 0,
+      "cells": 3,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 15,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 15,
+        "4": 11,
+        "10": 5
+      }
+    },
+    {
+      "profile": "均衡10",
+      "skill": "乘势再攻",
+      "energy": 1,
+      "mana": 0,
+      "cells": 4,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 17,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 17,
+        "4": 13,
+        "10": 7
+      }
+    },
+    {
+      "profile": "均衡10",
+      "skill": "虚怀纳劲",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 8,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "均衡10",
+      "skill": "云岚三叠",
+      "energy": 2,
+      "mana": 0,
+      "cells": 4,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 14,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 14,
+        "4": 10,
+        "10": 4
+      }
+    },
+    {
+      "profile": "均衡20",
+      "skill": "应敌",
+      "energy": 1,
+      "mana": 0,
+      "cells": 1,
+      "max_placements": 3,
+      "battle_limit": 0,
+      "raw_damage": 16,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 16,
+        "4": 12,
+        "10": 6
+      }
+    },
+    {
+      "profile": "均衡20",
+      "skill": "架招",
+      "energy": 1,
+      "mana": 0,
+      "cells": 1,
+      "max_placements": 3,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 12,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "均衡20",
+      "skill": "痛击",
+      "energy": 2,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 26,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 26,
+        "4": 22,
+        "10": 16
+      }
+    },
+    {
+      "profile": "均衡20",
+      "skill": "催血",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "均衡20",
+      "skill": "聚炁",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "均衡20",
+      "skill": "灵击",
+      "energy": 2,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 18,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 18,
+        "4": 14,
+        "10": 8
+      }
+    },
+    {
+      "profile": "均衡20",
+      "skill": "寄念",
+      "energy": 1,
+      "mana": 0,
+      "cells": 1,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "均衡20",
+      "skill": "斩剑",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 3,
+      "battle_limit": 0,
+      "raw_damage": 24,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 24,
+        "4": 20,
+        "10": 14
+      }
+    },
+    {
+      "profile": "均衡20",
+      "skill": "养锋",
+      "energy": 1,
+      "mana": 0,
+      "cells": 1,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "均衡20",
+      "skill": "格剑",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 12,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "均衡20",
+      "skill": "尽锋",
+      "energy": 2,
+      "mana": 1,
+      "cells": 3,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 30,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 30,
+        "4": 26,
+        "10": 20
+      }
+    },
+    {
+      "profile": "均衡20",
+      "skill": "云帔",
+      "energy": 0,
+      "mana": 1,
+      "cells": 2,
+      "max_placements": 3,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 19,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "均衡20",
+      "skill": "惊蛰",
+      "energy": 0,
+      "mana": 1,
+      "cells": 3,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 25,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 25,
+        "4": 21,
+        "10": 15
+      }
+    },
+    {
+      "profile": "均衡20",
+      "skill": "复命",
+      "energy": 0,
+      "mana": 1,
+      "cells": 4,
+      "max_placements": 1,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "均衡20",
+      "skill": "折锋",
+      "energy": 1,
+      "mana": 1,
+      "cells": 3,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 25,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 25,
+        "4": 21,
+        "10": 15
+      }
+    },
+    {
+      "profile": "均衡20",
+      "skill": "焚元",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 1,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "均衡20",
+      "skill": "血臂撼岳",
+      "energy": 2,
+      "mana": 0,
+      "cells": 3,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 23,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 23,
+        "4": 19,
+        "10": 13
+      }
+    },
+    {
+      "profile": "均衡20",
+      "skill": "乘势再攻",
+      "energy": 1,
+      "mana": 0,
+      "cells": 4,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 25,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 25,
+        "4": 21,
+        "10": 15
+      }
+    },
+    {
+      "profile": "均衡20",
+      "skill": "虚怀纳劲",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 12,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "均衡20",
+      "skill": "云岚三叠",
+      "energy": 2,
+      "mana": 0,
+      "cells": 4,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 23,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 23,
+        "4": 19,
+        "10": 13
+      }
+    },
+    {
+      "profile": "体道",
+      "skill": "应敌",
+      "energy": 1,
+      "mana": 0,
+      "cells": 1,
+      "max_placements": 3,
+      "battle_limit": 0,
+      "raw_damage": 16,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 16,
+        "4": 12,
+        "10": 6
+      }
+    },
+    {
+      "profile": "体道",
+      "skill": "架招",
+      "energy": 1,
+      "mana": 0,
+      "cells": 1,
+      "max_placements": 3,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 9,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "体道",
+      "skill": "痛击",
+      "energy": 2,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 26,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 26,
+        "4": 22,
+        "10": 16
+      }
+    },
+    {
+      "profile": "体道",
+      "skill": "催血",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "体道",
+      "skill": "聚炁",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "体道",
+      "skill": "灵击",
+      "energy": 2,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 7.5,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 8,
+        "4": 4,
+        "10": 1
+      }
+    },
+    {
+      "profile": "体道",
+      "skill": "寄念",
+      "energy": 1,
+      "mana": 0,
+      "cells": 1,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "体道",
+      "skill": "斩剑",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 3,
+      "battle_limit": 0,
+      "raw_damage": 16,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 16,
+        "4": 12,
+        "10": 6
+      }
+    },
+    {
+      "profile": "体道",
+      "skill": "养锋",
+      "energy": 1,
+      "mana": 0,
+      "cells": 1,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "体道",
+      "skill": "格剑",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 7,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "体道",
+      "skill": "尽锋",
+      "energy": 2,
+      "mana": 1,
+      "cells": 3,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 13,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 13,
+        "4": 9,
+        "10": 3
+      }
+    },
+    {
+      "profile": "体道",
+      "skill": "云帔",
+      "energy": 0,
+      "mana": 1,
+      "cells": 2,
+      "max_placements": 3,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 9,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "体道",
+      "skill": "惊蛰",
+      "energy": 0,
+      "mana": 1,
+      "cells": 3,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 12,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 12,
+        "4": 8,
+        "10": 2
+      }
+    },
+    {
+      "profile": "体道",
+      "skill": "复命",
+      "energy": 0,
+      "mana": 1,
+      "cells": 4,
+      "max_placements": 1,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "体道",
+      "skill": "折锋",
+      "energy": 1,
+      "mana": 1,
+      "cells": 3,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 12,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 12,
+        "4": 8,
+        "10": 2
+      }
+    },
+    {
+      "profile": "体道",
+      "skill": "焚元",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 1,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "体道",
+      "skill": "血臂撼岳",
+      "energy": 2,
+      "mana": 0,
+      "cells": 3,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 23,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 23,
+        "4": 19,
+        "10": 13
+      }
+    },
+    {
+      "profile": "体道",
+      "skill": "乘势再攻",
+      "energy": 1,
+      "mana": 0,
+      "cells": 4,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 25,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 25,
+        "4": 21,
+        "10": 15
+      }
+    },
+    {
+      "profile": "体道",
+      "skill": "虚怀纳劲",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 9,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "体道",
+      "skill": "云岚三叠",
+      "energy": 2,
+      "mana": 0,
+      "cells": 4,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 16,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 16,
+        "4": 12,
+        "10": 6
+      }
+    },
+    {
+      "profile": "术法",
+      "skill": "应敌",
+      "energy": 1,
+      "mana": 0,
+      "cells": 1,
+      "max_placements": 3,
+      "battle_limit": 0,
+      "raw_damage": 9.25,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 9,
+        "4": 5,
+        "10": 1
+      }
+    },
+    {
+      "profile": "术法",
+      "skill": "架招",
+      "energy": 1,
+      "mana": 0,
+      "cells": 1,
+      "max_placements": 3,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 5,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "术法",
+      "skill": "痛击",
+      "energy": 2,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 14.75,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 15,
+        "4": 11,
+        "10": 5
+      }
+    },
+    {
+      "profile": "术法",
+      "skill": "催血",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "术法",
+      "skill": "聚炁",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "术法",
+      "skill": "灵击",
+      "energy": 2,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 18,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 18,
+        "4": 14,
+        "10": 8
+      }
+    },
+    {
+      "profile": "术法",
+      "skill": "寄念",
+      "energy": 1,
+      "mana": 0,
+      "cells": 1,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "术法",
+      "skill": "斩剑",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 3,
+      "battle_limit": 0,
+      "raw_damage": 9,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 9,
+        "4": 5,
+        "10": 1
+      }
+    },
+    {
+      "profile": "术法",
+      "skill": "养锋",
+      "energy": 1,
+      "mana": 0,
+      "cells": 1,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "术法",
+      "skill": "格剑",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 5,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "术法",
+      "skill": "尽锋",
+      "energy": 2,
+      "mana": 1,
+      "cells": 3,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 23,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 23,
+        "4": 19,
+        "10": 13
+      }
+    },
+    {
+      "profile": "术法",
+      "skill": "云帔",
+      "energy": 0,
+      "mana": 1,
+      "cells": 2,
+      "max_placements": 3,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 17,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "术法",
+      "skill": "惊蛰",
+      "energy": 0,
+      "mana": 1,
+      "cells": 3,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 25,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 25,
+        "4": 21,
+        "10": 15
+      }
+    },
+    {
+      "profile": "术法",
+      "skill": "复命",
+      "energy": 0,
+      "mana": 1,
+      "cells": 4,
+      "max_placements": 1,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "术法",
+      "skill": "折锋",
+      "energy": 1,
+      "mana": 1,
+      "cells": 3,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 25,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 25,
+        "4": 21,
+        "10": 15
+      }
+    },
+    {
+      "profile": "术法",
+      "skill": "焚元",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 1,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "术法",
+      "skill": "血臂撼岳",
+      "energy": 2,
+      "mana": 0,
+      "cells": 3,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 11,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 11,
+        "4": 7,
+        "10": 1
+      }
+    },
+    {
+      "profile": "术法",
+      "skill": "乘势再攻",
+      "energy": 1,
+      "mana": 0,
+      "cells": 4,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 12,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 12,
+        "4": 8,
+        "10": 2
+      }
+    },
+    {
+      "profile": "术法",
+      "skill": "虚怀纳劲",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 6,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "术法",
+      "skill": "云岚三叠",
+      "energy": 2,
+      "mana": 0,
+      "cells": 4,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 10,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 10,
+        "4": 6,
+        "10": 1
+      }
+    },
+    {
+      "profile": "剑道",
+      "skill": "应敌",
+      "energy": 1,
+      "mana": 0,
+      "cells": 1,
+      "max_placements": 3,
+      "battle_limit": 0,
+      "raw_damage": 11.5,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 12,
+        "4": 8,
+        "10": 2
+      }
+    },
+    {
+      "profile": "剑道",
+      "skill": "架招",
+      "energy": 1,
+      "mana": 0,
+      "cells": 1,
+      "max_placements": 3,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 6,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "剑道",
+      "skill": "痛击",
+      "energy": 2,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 18.5,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 18,
+        "4": 14,
+        "10": 8
+      }
+    },
+    {
+      "profile": "剑道",
+      "skill": "催血",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "剑道",
+      "skill": "聚炁",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "剑道",
+      "skill": "灵击",
+      "energy": 2,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 7.5,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 8,
+        "4": 4,
+        "10": 1
+      }
+    },
+    {
+      "profile": "剑道",
+      "skill": "寄念",
+      "energy": 1,
+      "mana": 0,
+      "cells": 1,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "剑道",
+      "skill": "斩剑",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 3,
+      "battle_limit": 0,
+      "raw_damage": 20,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 20,
+        "4": 16,
+        "10": 10
+      }
+    },
+    {
+      "profile": "剑道",
+      "skill": "养锋",
+      "energy": 1,
+      "mana": 0,
+      "cells": 1,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "剑道",
+      "skill": "格剑",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 8,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "剑道",
+      "skill": "尽锋",
+      "energy": 2,
+      "mana": 1,
+      "cells": 3,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 20,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 20,
+        "4": 16,
+        "10": 10
+      }
+    },
+    {
+      "profile": "剑道",
+      "skill": "云帔",
+      "energy": 0,
+      "mana": 1,
+      "cells": 2,
+      "max_placements": 3,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 9,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "剑道",
+      "skill": "惊蛰",
+      "energy": 0,
+      "mana": 1,
+      "cells": 3,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 12,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 12,
+        "4": 8,
+        "10": 2
+      }
+    },
+    {
+      "profile": "剑道",
+      "skill": "复命",
+      "energy": 0,
+      "mana": 1,
+      "cells": 4,
+      "max_placements": 1,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "剑道",
+      "skill": "折锋",
+      "energy": 1,
+      "mana": 1,
+      "cells": 3,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 12,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 12,
+        "4": 8,
+        "10": 2
+      }
+    },
+    {
+      "profile": "剑道",
+      "skill": "焚元",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 1,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "剑道",
+      "skill": "血臂撼岳",
+      "energy": 2,
+      "mana": 0,
+      "cells": 3,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 14,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 14,
+        "4": 10,
+        "10": 4
+      }
+    },
+    {
+      "profile": "剑道",
+      "skill": "乘势再攻",
+      "energy": 1,
+      "mana": 0,
+      "cells": 4,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 16,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 16,
+        "4": 12,
+        "10": 6
+      }
+    },
+    {
+      "profile": "剑道",
+      "skill": "虚怀纳劲",
+      "energy": 1,
+      "mana": 0,
+      "cells": 2,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 0,
+      "blocks": 0,
+      "shield": 7,
+      "defenses": {
+        "0": 0,
+        "4": 0,
+        "10": 0
+      }
+    },
+    {
+      "profile": "剑道",
+      "skill": "云岚三叠",
+      "energy": 2,
+      "mana": 0,
+      "cells": 4,
+      "max_placements": 2,
+      "battle_limit": 0,
+      "raw_damage": 19,
+      "blocks": 0,
+      "shield": 0,
+      "defenses": {
+        "0": 19,
+        "4": 15,
+        "10": 9
+      }
+    }
+  ],
+  "hearts": [
+    {
+      "profile": "基础",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 2.4,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 3,
+      "blood_arms": 0,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 5,
+      "blood_arms": 1,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 6,
+      "blood_arms": 1,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 7,
+      "blood_arms": 1,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 8,
+      "blood_arms": 1,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 10,
+      "blood_arms": 1,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 2.4,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 3,
+      "blood_arms": 0,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 5,
+      "blood_arms": 1,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 6,
+      "blood_arms": 1,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 7,
+      "blood_arms": 1,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 8,
+      "blood_arms": 1,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 10,
+      "blood_arms": 1,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 3,
+      "blood_arms": 1,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 5,
+      "blood_arms": 1,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 6,
+      "blood_arms": 1,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 7,
+      "blood_arms": 2,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 8,
+      "blood_arms": 2,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 10,
+      "blood_arms": 2,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 2,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 3,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 5,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 1,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 6,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 1,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 7,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 1,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 8,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 1,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 10,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 1,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 2,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 3,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 5,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 1,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 6,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 1,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 7,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 1,
+      "cloud_damage": 6
+    },
+    {
+      "profile": "基础",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 8,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 1,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "基础",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 10,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 1,
+      "cloud_damage": 9
+    },
+    {
+      "profile": "基础",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 2,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 3,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 5,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 1,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 6,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 1,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "基础",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 7,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 1,
+      "cloud_damage": 6
+    },
+    {
+      "profile": "基础",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 8,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 1,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "基础",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 10,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 2,
+      "cloud_damage": 9
+    },
+    {
+      "profile": "均衡10",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 3,
+      "blood_arms": 0,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 5,
+      "blood_arms": 1,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 6,
+      "blood_arms": 1,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 7,
+      "blood_arms": 1,
+      "arm_damage": 6,
+      "cloud_segments": 0,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 8,
+      "blood_arms": 1,
+      "arm_damage": 6,
+      "cloud_segments": 0,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 10,
+      "blood_arms": 1,
+      "arm_damage": 6,
+      "cloud_segments": 0,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 3,
+      "blood_arms": 0,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 5,
+      "blood_arms": 1,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 6,
+      "blood_arms": 1,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 7,
+      "blood_arms": 1,
+      "arm_damage": 6,
+      "cloud_segments": 0,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 8,
+      "blood_arms": 1,
+      "arm_damage": 6,
+      "cloud_segments": 0,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 10,
+      "blood_arms": 1,
+      "arm_damage": 6,
+      "cloud_segments": 0,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 3,
+      "blood_arms": 1,
+      "arm_damage": 6,
+      "cloud_segments": 0,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 5,
+      "blood_arms": 1,
+      "arm_damage": 6,
+      "cloud_segments": 0,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 6,
+      "blood_arms": 1,
+      "arm_damage": 6,
+      "cloud_segments": 0,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 7,
+      "blood_arms": 2,
+      "arm_damage": 7.2000003,
+      "cloud_segments": 0,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 8,
+      "blood_arms": 2,
+      "arm_damage": 7.2000003,
+      "cloud_segments": 0,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 10,
+      "blood_arms": 2,
+      "arm_damage": 7.2000003,
+      "cloud_segments": 0,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 4,
+      "cloud_segments": 0,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 3,
+      "blood_arms": 0,
+      "arm_damage": 4,
+      "cloud_segments": 0,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 5,
+      "blood_arms": 0,
+      "arm_damage": 4,
+      "cloud_segments": 1,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 6,
+      "blood_arms": 0,
+      "arm_damage": 4,
+      "cloud_segments": 1,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 7,
+      "blood_arms": 0,
+      "arm_damage": 5,
+      "cloud_segments": 1,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 8,
+      "blood_arms": 0,
+      "arm_damage": 5,
+      "cloud_segments": 1,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 10,
+      "blood_arms": 0,
+      "arm_damage": 5,
+      "cloud_segments": 1,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 4,
+      "cloud_segments": 0,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 3,
+      "blood_arms": 0,
+      "arm_damage": 4,
+      "cloud_segments": 0,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 5,
+      "blood_arms": 0,
+      "arm_damage": 4,
+      "cloud_segments": 1,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 6,
+      "blood_arms": 0,
+      "arm_damage": 4,
+      "cloud_segments": 1,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 7,
+      "blood_arms": 0,
+      "arm_damage": 5,
+      "cloud_segments": 1,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "均衡10",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 8,
+      "blood_arms": 0,
+      "arm_damage": 5,
+      "cloud_segments": 1,
+      "cloud_damage": 9
+    },
+    {
+      "profile": "均衡10",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 10,
+      "blood_arms": 0,
+      "arm_damage": 5,
+      "cloud_segments": 1,
+      "cloud_damage": 11
+    },
+    {
+      "profile": "均衡10",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 4,
+      "cloud_segments": 0,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 3,
+      "blood_arms": 0,
+      "arm_damage": 4,
+      "cloud_segments": 0,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 5,
+      "blood_arms": 0,
+      "arm_damage": 4,
+      "cloud_segments": 1,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 6,
+      "blood_arms": 0,
+      "arm_damage": 4,
+      "cloud_segments": 1,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "均衡10",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 7,
+      "blood_arms": 0,
+      "arm_damage": 5,
+      "cloud_segments": 1,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "均衡10",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 8,
+      "blood_arms": 0,
+      "arm_damage": 5,
+      "cloud_segments": 1,
+      "cloud_damage": 9
+    },
+    {
+      "profile": "均衡10",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 10,
+      "blood_arms": 0,
+      "arm_damage": 5,
+      "cloud_segments": 2,
+      "cloud_damage": 11
+    },
+    {
+      "profile": "均衡20",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 7.2000003,
+      "cloud_segments": 0,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 3,
+      "blood_arms": 0,
+      "arm_damage": 7.2000003,
+      "cloud_segments": 0,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 5,
+      "blood_arms": 1,
+      "arm_damage": 8.400001,
+      "cloud_segments": 0,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 6,
+      "blood_arms": 1,
+      "arm_damage": 8.400001,
+      "cloud_segments": 0,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 7,
+      "blood_arms": 1,
+      "arm_damage": 8.400001,
+      "cloud_segments": 0,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 8,
+      "blood_arms": 1,
+      "arm_damage": 8.400001,
+      "cloud_segments": 0,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 10,
+      "blood_arms": 1,
+      "arm_damage": 8.400001,
+      "cloud_segments": 0,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 7.2000003,
+      "cloud_segments": 0,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 3,
+      "blood_arms": 0,
+      "arm_damage": 7.2000003,
+      "cloud_segments": 0,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 5,
+      "blood_arms": 1,
+      "arm_damage": 8.400001,
+      "cloud_segments": 0,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 6,
+      "blood_arms": 1,
+      "arm_damage": 8.400001,
+      "cloud_segments": 0,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 7,
+      "blood_arms": 1,
+      "arm_damage": 8.400001,
+      "cloud_segments": 0,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 8,
+      "blood_arms": 1,
+      "arm_damage": 8.400001,
+      "cloud_segments": 0,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 10,
+      "blood_arms": 1,
+      "arm_damage": 8.400001,
+      "cloud_segments": 0,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 8.400001,
+      "cloud_segments": 0,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 3,
+      "blood_arms": 1,
+      "arm_damage": 9.6,
+      "cloud_segments": 0,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 5,
+      "blood_arms": 1,
+      "arm_damage": 9.6,
+      "cloud_segments": 0,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 6,
+      "blood_arms": 1,
+      "arm_damage": 10.8,
+      "cloud_segments": 0,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 7,
+      "blood_arms": 2,
+      "arm_damage": 10.8,
+      "cloud_segments": 0,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 8,
+      "blood_arms": 2,
+      "arm_damage": 10.8,
+      "cloud_segments": 0,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 10,
+      "blood_arms": 2,
+      "arm_damage": 10.8,
+      "cloud_segments": 0,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 6,
+      "cloud_segments": 0,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 3,
+      "blood_arms": 0,
+      "arm_damage": 6,
+      "cloud_segments": 0,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 5,
+      "blood_arms": 0,
+      "arm_damage": 7,
+      "cloud_segments": 1,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 6,
+      "blood_arms": 0,
+      "arm_damage": 7,
+      "cloud_segments": 1,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 7,
+      "blood_arms": 0,
+      "arm_damage": 7,
+      "cloud_segments": 1,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 8,
+      "blood_arms": 0,
+      "arm_damage": 7,
+      "cloud_segments": 1,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 10,
+      "blood_arms": 0,
+      "arm_damage": 7,
+      "cloud_segments": 1,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 6,
+      "cloud_segments": 0,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 3,
+      "blood_arms": 0,
+      "arm_damage": 6,
+      "cloud_segments": 0,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 5,
+      "blood_arms": 0,
+      "arm_damage": 7,
+      "cloud_segments": 1,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 6,
+      "blood_arms": 0,
+      "arm_damage": 7,
+      "cloud_segments": 1,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 7,
+      "blood_arms": 0,
+      "arm_damage": 7,
+      "cloud_segments": 1,
+      "cloud_damage": 13
+    },
+    {
+      "profile": "均衡20",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 8,
+      "blood_arms": 0,
+      "arm_damage": 7,
+      "cloud_segments": 1,
+      "cloud_damage": 14
+    },
+    {
+      "profile": "均衡20",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 10,
+      "blood_arms": 0,
+      "arm_damage": 7,
+      "cloud_segments": 1,
+      "cloud_damage": 16
+    },
+    {
+      "profile": "均衡20",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 6,
+      "cloud_segments": 0,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 3,
+      "blood_arms": 0,
+      "arm_damage": 6,
+      "cloud_segments": 0,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 5,
+      "blood_arms": 0,
+      "arm_damage": 7,
+      "cloud_segments": 1,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 6,
+      "blood_arms": 0,
+      "arm_damage": 7,
+      "cloud_segments": 1,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "均衡20",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 7,
+      "blood_arms": 0,
+      "arm_damage": 7,
+      "cloud_segments": 1,
+      "cloud_damage": 13
+    },
+    {
+      "profile": "均衡20",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 8,
+      "blood_arms": 0,
+      "arm_damage": 7,
+      "cloud_segments": 1,
+      "cloud_damage": 14
+    },
+    {
+      "profile": "均衡20",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 10,
+      "blood_arms": 0,
+      "arm_damage": 7,
+      "cloud_segments": 2,
+      "cloud_damage": 16
+    },
+    {
+      "profile": "体道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 7.2000003,
+      "cloud_segments": 0,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 3,
+      "blood_arms": 0,
+      "arm_damage": 7.2000003,
+      "cloud_segments": 0,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 5,
+      "blood_arms": 1,
+      "arm_damage": 8.400001,
+      "cloud_segments": 0,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 6,
+      "blood_arms": 1,
+      "arm_damage": 8.400001,
+      "cloud_segments": 0,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 7,
+      "blood_arms": 1,
+      "arm_damage": 8.400001,
+      "cloud_segments": 0,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 8,
+      "blood_arms": 1,
+      "arm_damage": 8.400001,
+      "cloud_segments": 0,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 10,
+      "blood_arms": 1,
+      "arm_damage": 8.400001,
+      "cloud_segments": 0,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 7.2000003,
+      "cloud_segments": 0,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 3,
+      "blood_arms": 0,
+      "arm_damage": 7.2000003,
+      "cloud_segments": 0,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 5,
+      "blood_arms": 1,
+      "arm_damage": 8.400001,
+      "cloud_segments": 0,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 6,
+      "blood_arms": 1,
+      "arm_damage": 8.400001,
+      "cloud_segments": 0,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 7,
+      "blood_arms": 1,
+      "arm_damage": 8.400001,
+      "cloud_segments": 0,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 8,
+      "blood_arms": 1,
+      "arm_damage": 8.400001,
+      "cloud_segments": 0,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 10,
+      "blood_arms": 1,
+      "arm_damage": 8.400001,
+      "cloud_segments": 0,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 8.400001,
+      "cloud_segments": 0,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 3,
+      "blood_arms": 1,
+      "arm_damage": 9.6,
+      "cloud_segments": 0,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 5,
+      "blood_arms": 1,
+      "arm_damage": 9.6,
+      "cloud_segments": 0,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 6,
+      "blood_arms": 1,
+      "arm_damage": 10.8,
+      "cloud_segments": 0,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 7,
+      "blood_arms": 2,
+      "arm_damage": 10.8,
+      "cloud_segments": 0,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 8,
+      "blood_arms": 2,
+      "arm_damage": 10.8,
+      "cloud_segments": 0,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 10,
+      "blood_arms": 2,
+      "arm_damage": 10.8,
+      "cloud_segments": 0,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 6,
+      "cloud_segments": 0,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 3,
+      "blood_arms": 0,
+      "arm_damage": 6,
+      "cloud_segments": 0,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 5,
+      "blood_arms": 0,
+      "arm_damage": 7,
+      "cloud_segments": 1,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 6,
+      "blood_arms": 0,
+      "arm_damage": 7,
+      "cloud_segments": 1,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 7,
+      "blood_arms": 0,
+      "arm_damage": 7,
+      "cloud_segments": 1,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 8,
+      "blood_arms": 0,
+      "arm_damage": 7,
+      "cloud_segments": 1,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 10,
+      "blood_arms": 0,
+      "arm_damage": 7,
+      "cloud_segments": 1,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 6,
+      "cloud_segments": 0,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 3,
+      "blood_arms": 0,
+      "arm_damage": 6,
+      "cloud_segments": 0,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 5,
+      "blood_arms": 0,
+      "arm_damage": 7,
+      "cloud_segments": 1,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 6,
+      "blood_arms": 0,
+      "arm_damage": 7,
+      "cloud_segments": 1,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 7,
+      "blood_arms": 0,
+      "arm_damage": 7,
+      "cloud_segments": 1,
+      "cloud_damage": 9
+    },
+    {
+      "profile": "体道",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 8,
+      "blood_arms": 0,
+      "arm_damage": 7,
+      "cloud_segments": 1,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "体道",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 10,
+      "blood_arms": 0,
+      "arm_damage": 7,
+      "cloud_segments": 1,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "体道",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 6,
+      "cloud_segments": 0,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 3,
+      "blood_arms": 0,
+      "arm_damage": 6,
+      "cloud_segments": 0,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 5,
+      "blood_arms": 0,
+      "arm_damage": 7,
+      "cloud_segments": 1,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 6,
+      "blood_arms": 0,
+      "arm_damage": 7,
+      "cloud_segments": 1,
+      "cloud_damage": 8
+    },
+    {
+      "profile": "体道",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 7,
+      "blood_arms": 0,
+      "arm_damage": 7,
+      "cloud_segments": 1,
+      "cloud_damage": 9
+    },
+    {
+      "profile": "体道",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 8,
+      "blood_arms": 0,
+      "arm_damage": 7,
+      "cloud_segments": 1,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "体道",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 10,
+      "blood_arms": 0,
+      "arm_damage": 7,
+      "cloud_segments": 2,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "术法",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 2.4,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 3,
+      "blood_arms": 0,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 5,
+      "blood_arms": 1,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 6,
+      "blood_arms": 1,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 7,
+      "blood_arms": 1,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 8,
+      "blood_arms": 1,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 10,
+      "blood_arms": 1,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 2.4,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 3,
+      "blood_arms": 0,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 5,
+      "blood_arms": 1,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 6,
+      "blood_arms": 1,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 7,
+      "blood_arms": 1,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 8,
+      "blood_arms": 1,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 10,
+      "blood_arms": 1,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 3,
+      "blood_arms": 1,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 5,
+      "blood_arms": 1,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 6,
+      "blood_arms": 1,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 7,
+      "blood_arms": 2,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 8,
+      "blood_arms": 2,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 10,
+      "blood_arms": 2,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 2,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 3,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 5,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 1,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 6,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 1,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 7,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 1,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 8,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 1,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 10,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 1,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 2,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 3,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 5,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 1,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 6,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 1,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 7,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 1,
+      "cloud_damage": 6
+    },
+    {
+      "profile": "术法",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 8,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 1,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "术法",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 10,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 1,
+      "cloud_damage": 9
+    },
+    {
+      "profile": "术法",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 2,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 3,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 0,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 5,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 1,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 6,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 1,
+      "cloud_damage": 5
+    },
+    {
+      "profile": "术法",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 7,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 1,
+      "cloud_damage": 6
+    },
+    {
+      "profile": "术法",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 8,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 1,
+      "cloud_damage": 7
+    },
+    {
+      "profile": "术法",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 10,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 2,
+      "cloud_damage": 9
+    },
+    {
+      "profile": "剑道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 3,
+      "blood_arms": 0,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 5,
+      "blood_arms": 1,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 6,
+      "blood_arms": 1,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 7,
+      "blood_arms": 1,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 8,
+      "blood_arms": 1,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 1,
+      "stacks": 10,
+      "blood_arms": 1,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 3,
+      "blood_arms": 0,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 5,
+      "blood_arms": 1,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 6,
+      "blood_arms": 1,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 7,
+      "blood_arms": 1,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 8,
+      "blood_arms": 1,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 2,
+      "stacks": 10,
+      "blood_arms": 1,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 3.6000001,
+      "cloud_segments": 0,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 3,
+      "blood_arms": 1,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 5,
+      "blood_arms": 1,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 6,
+      "blood_arms": 1,
+      "arm_damage": 4.8,
+      "cloud_segments": 0,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 7,
+      "blood_arms": 2,
+      "arm_damage": 6,
+      "cloud_segments": 0,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 8,
+      "blood_arms": 2,
+      "arm_damage": 6,
+      "cloud_segments": 0,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "百骸衍枝化生宝册",
+      "chapter": 4,
+      "stacks": 10,
+      "blood_arms": 2,
+      "arm_damage": 6,
+      "cloud_segments": 0,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 0,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 3,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 0,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 5,
+      "blood_arms": 0,
+      "arm_damage": 4,
+      "cloud_segments": 1,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 6,
+      "blood_arms": 0,
+      "arm_damage": 4,
+      "cloud_segments": 1,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 7,
+      "blood_arms": 0,
+      "arm_damage": 4,
+      "cloud_segments": 1,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 8,
+      "blood_arms": 0,
+      "arm_damage": 4,
+      "cloud_segments": 1,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "舒卷天章",
+      "chapter": 1,
+      "stacks": 10,
+      "blood_arms": 0,
+      "arm_damage": 4,
+      "cloud_segments": 1,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 0,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 3,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 0,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 5,
+      "blood_arms": 0,
+      "arm_damage": 4,
+      "cloud_segments": 1,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 6,
+      "blood_arms": 0,
+      "arm_damage": 4,
+      "cloud_segments": 1,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 7,
+      "blood_arms": 0,
+      "arm_damage": 4,
+      "cloud_segments": 1,
+      "cloud_damage": 11
+    },
+    {
+      "profile": "剑道",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 8,
+      "blood_arms": 0,
+      "arm_damage": 4,
+      "cloud_segments": 1,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "剑道",
+      "book": "舒卷天章",
+      "chapter": 2,
+      "stacks": 10,
+      "blood_arms": 0,
+      "arm_damage": 4,
+      "cloud_segments": 1,
+      "cloud_damage": 14
+    },
+    {
+      "profile": "剑道",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 0,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 0,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 3,
+      "blood_arms": 0,
+      "arm_damage": 3,
+      "cloud_segments": 0,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 5,
+      "blood_arms": 0,
+      "arm_damage": 4,
+      "cloud_segments": 1,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 6,
+      "blood_arms": 0,
+      "arm_damage": 4,
+      "cloud_segments": 1,
+      "cloud_damage": 10
+    },
+    {
+      "profile": "剑道",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 7,
+      "blood_arms": 0,
+      "arm_damage": 4,
+      "cloud_segments": 1,
+      "cloud_damage": 11
+    },
+    {
+      "profile": "剑道",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 8,
+      "blood_arms": 0,
+      "arm_damage": 4,
+      "cloud_segments": 1,
+      "cloud_damage": 12
+    },
+    {
+      "profile": "剑道",
+      "book": "舒卷天章",
+      "chapter": 4,
+      "stacks": 10,
+      "blood_arms": 0,
+      "arm_damage": 4,
+      "cloud_segments": 2,
+      "cloud_damage": 14
+    }
+  ],
+  "sword_comparisons": [
+    {
+      "profile": "基础",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 5,
+      "chances": [],
+      "expected_damage": 9,
+      "expected_per_energy": 9
+    },
+    {
+      "profile": "基础",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 5,
+      "chances": [],
+      "expected_damage": 6.75,
+      "expected_per_energy": 6.75
+    },
+    {
+      "profile": "基础",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 5,
+      "chances": [],
+      "expected_damage": 5,
+      "expected_per_energy": 5
+    },
+    {
+      "profile": "基础",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 5,
+      "chances": [],
+      "expected_damage": 3.75,
+      "expected_per_energy": 3.75
+    },
+    {
+      "profile": "基础",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 5,
+      "chances": [],
+      "expected_damage": 1,
+      "expected_per_energy": 1
+    },
+    {
+      "profile": "基础",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 5,
+      "chances": [],
+      "expected_damage": 0.75,
+      "expected_per_energy": 0.75
+    },
+    {
+      "profile": "基础",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 13,
+      "extra_damage": 5,
+      "chances": [],
+      "expected_damage": 13,
+      "expected_per_energy": 6.5
+    },
+    {
+      "profile": "基础",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 13,
+      "extra_damage": 5,
+      "chances": [],
+      "expected_damage": 9.75,
+      "expected_per_energy": 4.875
+    },
+    {
+      "profile": "基础",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 13,
+      "extra_damage": 5,
+      "chances": [],
+      "expected_damage": 9,
+      "expected_per_energy": 4.5
+    },
+    {
+      "profile": "基础",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 13,
+      "extra_damage": 5,
+      "chances": [],
+      "expected_damage": 6.75,
+      "expected_per_energy": 3.375
+    },
+    {
+      "profile": "基础",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 13,
+      "extra_damage": 5,
+      "chances": [],
+      "expected_damage": 3,
+      "expected_per_energy": 1.5
+    },
+    {
+      "profile": "基础",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 13,
+      "extra_damage": 5,
+      "chances": [],
+      "expected_damage": 2.25,
+      "expected_per_energy": 1.125
+    },
+    {
+      "profile": "基础",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 5,
+      "chances": [
+        0.425,
+        0.22500001,
+        0.025000006
+      ],
+      "expected_damage": 12.615078,
+      "expected_per_energy": 6.307539
+    },
+    {
+      "profile": "基础",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 5,
+      "chances": [
+        0.425,
+        0.22500001,
+        0.025000006
+      ],
+      "expected_damage": 8.900804,
+      "expected_per_energy": 4.450402
+    },
+    {
+      "profile": "基础",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 5,
+      "chances": [
+        0.425,
+        0.22500001,
+        0.025000006
+      ],
+      "expected_damage": 6.523016,
+      "expected_per_energy": 3.261508
+    },
+    {
+      "profile": "基础",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 5,
+      "chances": [
+        0.425,
+        0.22500001,
+        0.025000006
+      ],
+      "expected_damage": 4.7801604,
+      "expected_per_energy": 2.3900802
+    },
+    {
+      "profile": "基础",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 5,
+      "chances": [
+        0.425,
+        0.22500001,
+        0.025000006
+      ],
+      "expected_damage": 1.5230156,
+      "expected_per_energy": 0.7615078
+    },
+    {
+      "profile": "基础",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 5,
+      "chances": [
+        0.425,
+        0.22500001,
+        0.025000006
+      ],
+      "expected_damage": 1.0301608,
+      "expected_per_energy": 0.5150804
+    },
+    {
+      "profile": "基础",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 5,
+      "chances": [
+        1
+      ],
+      "expected_damage": 14,
+      "expected_per_energy": 14
+    },
+    {
+      "profile": "基础",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 5,
+      "chances": [
+        1
+      ],
+      "expected_damage": 9.5625,
+      "expected_per_energy": 9.5625
+    },
+    {
+      "profile": "基础",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 5,
+      "chances": [
+        1
+      ],
+      "expected_damage": 6,
+      "expected_per_energy": 6
+    },
+    {
+      "profile": "基础",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 5,
+      "chances": [
+        1
+      ],
+      "expected_damage": 4.3125,
+      "expected_per_energy": 4.3125
+    },
+    {
+      "profile": "基础",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 5,
+      "chances": [
+        1
+      ],
+      "expected_damage": 2,
+      "expected_per_energy": 2
+    },
+    {
+      "profile": "基础",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 5,
+      "chances": [
+        1
+      ],
+      "expected_damage": 1.3125,
+      "expected_per_energy": 1.3125
+    },
+    {
+      "profile": "基础",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 23,
+      "extra_damage": 5,
+      "chances": [
+        1
+      ],
+      "expected_damage": 28,
+      "expected_per_energy": 14
+    },
+    {
+      "profile": "基础",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 23,
+      "extra_damage": 5,
+      "chances": [
+        1
+      ],
+      "expected_damage": 20.0625,
+      "expected_per_energy": 10.03125
+    },
+    {
+      "profile": "基础",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 23,
+      "extra_damage": 5,
+      "chances": [
+        1
+      ],
+      "expected_damage": 20,
+      "expected_per_energy": 10
+    },
+    {
+      "profile": "基础",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 23,
+      "extra_damage": 5,
+      "chances": [
+        1
+      ],
+      "expected_damage": 14.8125,
+      "expected_per_energy": 7.40625
+    },
+    {
+      "profile": "基础",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 23,
+      "extra_damage": 5,
+      "chances": [
+        1
+      ],
+      "expected_damage": 14,
+      "expected_per_energy": 7
+    },
+    {
+      "profile": "基础",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 23,
+      "extra_damage": 5,
+      "chances": [
+        1
+      ],
+      "expected_damage": 10.3125,
+      "expected_per_energy": 5.15625
+    },
+    {
+      "profile": "基础",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 5,
+      "chances": [
+        0.67499995,
+        0.47499996,
+        0.27499995
+      ],
+      "expected_damage": 15.418983,
+      "expected_per_energy": 7.7094917
+    },
+    {
+      "profile": "基础",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 5,
+      "chances": [
+        0.67499995,
+        0.47499996,
+        0.27499995
+      ],
+      "expected_damage": 10.214247,
+      "expected_per_energy": 5.1071234
+    },
+    {
+      "profile": "基础",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 5,
+      "chances": [
+        0.67499995,
+        0.47499996,
+        0.27499995
+      ],
+      "expected_damage": 7.083797,
+      "expected_per_energy": 3.5418985
+    },
+    {
+      "profile": "基础",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 5,
+      "chances": [
+        0.67499995,
+        0.47499996,
+        0.27499995
+      ],
+      "expected_damage": 5.042849,
+      "expected_per_energy": 2.5214245
+    },
+    {
+      "profile": "基础",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 5,
+      "chances": [
+        0.67499995,
+        0.47499996,
+        0.27499995
+      ],
+      "expected_damage": 2.0837967,
+      "expected_per_energy": 1.0418984
+    },
+    {
+      "profile": "基础",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 5,
+      "chances": [
+        0.67499995,
+        0.47499996,
+        0.27499995
+      ],
+      "expected_damage": 1.2928493,
+      "expected_per_energy": 0.64642465
+    },
+    {
+      "profile": "基础",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 9,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 27,
+      "expected_per_energy": 27
+    },
+    {
+      "profile": "基础",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 9,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 15.609375,
+      "expected_per_energy": 15.609375
+    },
+    {
+      "profile": "基础",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 9,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 15,
+      "expected_per_energy": 15
+    },
+    {
+      "profile": "基础",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 9,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 8.671875,
+      "expected_per_energy": 8.671875
+    },
+    {
+      "profile": "基础",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 9,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 3,
+      "expected_per_energy": 3
+    },
+    {
+      "profile": "基础",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 9,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 1.734375,
+      "expected_per_energy": 1.734375
+    },
+    {
+      "profile": "基础",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 33,
+      "extra_damage": 9,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 51,
+      "expected_per_energy": 25.5
+    },
+    {
+      "profile": "基础",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 33,
+      "extra_damage": 9,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 33.609375,
+      "expected_per_energy": 16.804688
+    },
+    {
+      "profile": "基础",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 33,
+      "extra_damage": 9,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 39,
+      "expected_per_energy": 19.5
+    },
+    {
+      "profile": "基础",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 33,
+      "extra_damage": 9,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 26.671875,
+      "expected_per_energy": 13.3359375
+    },
+    {
+      "profile": "基础",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 33,
+      "extra_damage": 9,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 25,
+      "expected_per_energy": 12.5
+    },
+    {
+      "profile": "基础",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 33,
+      "extra_damage": 9,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 18.234375,
+      "expected_per_energy": 9.1171875
+    },
+    {
+      "profile": "基础",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 9,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 23.248001,
+      "expected_per_energy": 11.624001
+    },
+    {
+      "profile": "基础",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 9,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 13.9192505,
+      "expected_per_energy": 6.9596252
+    },
+    {
+      "profile": "基础",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 9,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 13.36,
+      "expected_per_energy": 6.68
+    },
+    {
+      "profile": "基础",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 9,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 8.06625,
+      "expected_per_energy": 4.033125
+    },
+    {
+      "profile": "基础",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 9,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 2.472,
+      "expected_per_energy": 1.236
+    },
+    {
+      "profile": "基础",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 9,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 1.46325,
+      "expected_per_energy": 0.731625
+    },
+    {
+      "profile": "均衡10",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 7,
+      "chances": [],
+      "expected_damage": 14,
+      "expected_per_energy": 14
+    },
+    {
+      "profile": "均衡10",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 7,
+      "chances": [],
+      "expected_damage": 10.5,
+      "expected_per_energy": 10.5
+    },
+    {
+      "profile": "均衡10",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 7,
+      "chances": [],
+      "expected_damage": 10,
+      "expected_per_energy": 10
+    },
+    {
+      "profile": "均衡10",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 7,
+      "chances": [],
+      "expected_damage": 7.5,
+      "expected_per_energy": 7.5
+    },
+    {
+      "profile": "均衡10",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 7,
+      "chances": [],
+      "expected_damage": 4,
+      "expected_per_energy": 4
+    },
+    {
+      "profile": "均衡10",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 7,
+      "chances": [],
+      "expected_damage": 3,
+      "expected_per_energy": 3
+    },
+    {
+      "profile": "均衡10",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 19,
+      "extra_damage": 7,
+      "chances": [],
+      "expected_damage": 19,
+      "expected_per_energy": 9.5
+    },
+    {
+      "profile": "均衡10",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 19,
+      "extra_damage": 7,
+      "chances": [],
+      "expected_damage": 14.25,
+      "expected_per_energy": 7.125
+    },
+    {
+      "profile": "均衡10",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 19,
+      "extra_damage": 7,
+      "chances": [],
+      "expected_damage": 15,
+      "expected_per_energy": 7.5
+    },
+    {
+      "profile": "均衡10",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 19,
+      "extra_damage": 7,
+      "chances": [],
+      "expected_damage": 11.25,
+      "expected_per_energy": 5.625
+    },
+    {
+      "profile": "均衡10",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 19,
+      "extra_damage": 7,
+      "chances": [],
+      "expected_damage": 9,
+      "expected_per_energy": 4.5
+    },
+    {
+      "profile": "均衡10",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 19,
+      "extra_damage": 7,
+      "chances": [],
+      "expected_damage": 6.75,
+      "expected_per_energy": 3.375
+    },
+    {
+      "profile": "均衡10",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 7,
+      "chances": [
+        0.45,
+        0.24999999,
+        0.049999982
+      ],
+      "expected_damage": 17.976875,
+      "expected_per_energy": 8.988438
+    },
+    {
+      "profile": "均衡10",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 7,
+      "chances": [
+        0.45,
+        0.24999999,
+        0.049999982
+      ],
+      "expected_damage": 12.616561,
+      "expected_per_energy": 6.3082805
+    },
+    {
+      "profile": "均衡10",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 7,
+      "chances": [
+        0.45,
+        0.24999999,
+        0.049999982
+      ],
+      "expected_damage": 11.704375,
+      "expected_per_energy": 5.8521876
+    },
+    {
+      "profile": "均衡10",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 7,
+      "chances": [
+        0.45,
+        0.24999999,
+        0.049999982
+      ],
+      "expected_damage": 8.407097,
+      "expected_per_energy": 4.2035484
+    },
+    {
+      "profile": "均衡10",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 7,
+      "chances": [
+        0.45,
+        0.24999999,
+        0.049999982
+      ],
+      "expected_damage": 4.568125,
+      "expected_per_energy": 2.2840624
+    },
+    {
+      "profile": "均衡10",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 7,
+      "chances": [
+        0.45,
+        0.24999999,
+        0.049999982
+      ],
+      "expected_damage": 3.3023658,
+      "expected_per_energy": 1.6511829
+    },
+    {
+      "profile": "均衡10",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 7,
+      "chances": [
+        1
+      ],
+      "expected_damage": 21,
+      "expected_per_energy": 21
+    },
+    {
+      "profile": "均衡10",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 7,
+      "chances": [
+        1
+      ],
+      "expected_damage": 14.4375,
+      "expected_per_energy": 14.4375
+    },
+    {
+      "profile": "均衡10",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 7,
+      "chances": [
+        1
+      ],
+      "expected_damage": 13,
+      "expected_per_energy": 13
+    },
+    {
+      "profile": "均衡10",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 7,
+      "chances": [
+        1
+      ],
+      "expected_damage": 9.1875,
+      "expected_per_energy": 9.1875
+    },
+    {
+      "profile": "均衡10",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 7,
+      "chances": [
+        1
+      ],
+      "expected_damage": 5,
+      "expected_per_energy": 5
+    },
+    {
+      "profile": "均衡10",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 7,
+      "chances": [
+        1
+      ],
+      "expected_damage": 3.5625,
+      "expected_per_energy": 3.5625
+    },
+    {
+      "profile": "均衡10",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 29,
+      "extra_damage": 7,
+      "chances": [
+        1
+      ],
+      "expected_damage": 36,
+      "expected_per_energy": 18
+    },
+    {
+      "profile": "均衡10",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 29,
+      "extra_damage": 7,
+      "chances": [
+        1
+      ],
+      "expected_damage": 25.6875,
+      "expected_per_energy": 12.84375
+    },
+    {
+      "profile": "均衡10",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 29,
+      "extra_damage": 7,
+      "chances": [
+        1
+      ],
+      "expected_damage": 28,
+      "expected_per_energy": 14
+    },
+    {
+      "profile": "均衡10",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 29,
+      "extra_damage": 7,
+      "chances": [
+        1
+      ],
+      "expected_damage": 20.4375,
+      "expected_per_energy": 10.21875
+    },
+    {
+      "profile": "均衡10",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 29,
+      "extra_damage": 7,
+      "chances": [
+        1
+      ],
+      "expected_damage": 20,
+      "expected_per_energy": 10
+    },
+    {
+      "profile": "均衡10",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 29,
+      "extra_damage": 7,
+      "chances": [
+        1
+      ],
+      "expected_damage": 14.8125,
+      "expected_per_energy": 7.40625
+    },
+    {
+      "profile": "均衡10",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 7,
+      "chances": [
+        0.7,
+        0.5,
+        0.29999998
+      ],
+      "expected_damage": 22.085001,
+      "expected_per_energy": 11.0425005
+    },
+    {
+      "profile": "均衡10",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 7,
+      "chances": [
+        0.7,
+        0.5,
+        0.29999998
+      ],
+      "expected_damage": 14.522403,
+      "expected_per_energy": 7.2612014
+    },
+    {
+      "profile": "均衡10",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 7,
+      "chances": [
+        0.7,
+        0.5,
+        0.29999998
+      ],
+      "expected_damage": 13.465,
+      "expected_per_energy": 6.7325
+    },
+    {
+      "profile": "均衡10",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 7,
+      "chances": [
+        0.7,
+        0.5,
+        0.29999998
+      ],
+      "expected_damage": 9.223886,
+      "expected_per_energy": 4.611943
+    },
+    {
+      "profile": "均衡10",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 7,
+      "chances": [
+        0.7,
+        0.5,
+        0.29999998
+      ],
+      "expected_damage": 5.1549997,
+      "expected_per_energy": 2.5774999
+    },
+    {
+      "profile": "均衡10",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 7,
+      "chances": [
+        0.7,
+        0.5,
+        0.29999998
+      ],
+      "expected_damage": 3.5746288,
+      "expected_per_energy": 1.7873144
+    },
+    {
+      "profile": "均衡10",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 11,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 36,
+      "expected_per_energy": 36
+    },
+    {
+      "profile": "均衡10",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 11,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 21.328125,
+      "expected_per_energy": 21.328125
+    },
+    {
+      "profile": "均衡10",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 11,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 24,
+      "expected_per_energy": 24
+    },
+    {
+      "profile": "均衡10",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 11,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 14.390625,
+      "expected_per_energy": 14.390625
+    },
+    {
+      "profile": "均衡10",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 11,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 6,
+      "expected_per_energy": 6
+    },
+    {
+      "profile": "均衡10",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 11,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 3.984375,
+      "expected_per_energy": 3.984375
+    },
+    {
+      "profile": "均衡10",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 39,
+      "extra_damage": 11,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 61,
+      "expected_per_energy": 30.5
+    },
+    {
+      "profile": "均衡10",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 39,
+      "extra_damage": 11,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 40.078125,
+      "expected_per_energy": 20.039062
+    },
+    {
+      "profile": "均衡10",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 39,
+      "extra_damage": 11,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 49,
+      "expected_per_energy": 24.5
+    },
+    {
+      "profile": "均衡10",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 39,
+      "extra_damage": 11,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 33.140625,
+      "expected_per_energy": 16.570312
+    },
+    {
+      "profile": "均衡10",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 39,
+      "extra_damage": 11,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 31,
+      "expected_per_energy": 15.5
+    },
+    {
+      "profile": "均衡10",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 39,
+      "extra_damage": 11,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 22.734375,
+      "expected_per_energy": 11.3671875
+    },
+    {
+      "profile": "均衡10",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 11,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 30.192,
+      "expected_per_energy": 15.096
+    },
+    {
+      "profile": "均衡10",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 11,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 18.345753,
+      "expected_per_energy": 9.172876
+    },
+    {
+      "profile": "均衡10",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 11,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 20.304,
+      "expected_per_energy": 10.152
+    },
+    {
+      "profile": "均衡10",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 11,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 12.49275,
+      "expected_per_energy": 6.246375
+    },
+    {
+      "profile": "均衡10",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 11,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 5.472,
+      "expected_per_energy": 2.736
+    },
+    {
+      "profile": "均衡10",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 14,
+      "extra_damage": 11,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 3.7132502,
+      "expected_per_energy": 1.8566251
+    },
+    {
+      "profile": "均衡20",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 24,
+      "extra_damage": 12,
+      "chances": [],
+      "expected_damage": 24,
+      "expected_per_energy": 24
+    },
+    {
+      "profile": "均衡20",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 24,
+      "extra_damage": 12,
+      "chances": [],
+      "expected_damage": 18,
+      "expected_per_energy": 18
+    },
+    {
+      "profile": "均衡20",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 24,
+      "extra_damage": 12,
+      "chances": [],
+      "expected_damage": 20,
+      "expected_per_energy": 20
+    },
+    {
+      "profile": "均衡20",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 24,
+      "extra_damage": 12,
+      "chances": [],
+      "expected_damage": 15,
+      "expected_per_energy": 15
+    },
+    {
+      "profile": "均衡20",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 24,
+      "extra_damage": 12,
+      "chances": [],
+      "expected_damage": 14,
+      "expected_per_energy": 14
+    },
+    {
+      "profile": "均衡20",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 24,
+      "extra_damage": 12,
+      "chances": [],
+      "expected_damage": 10.5,
+      "expected_per_energy": 10.5
+    },
+    {
+      "profile": "均衡20",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 30,
+      "extra_damage": 12,
+      "chances": [],
+      "expected_damage": 30,
+      "expected_per_energy": 15
+    },
+    {
+      "profile": "均衡20",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 30,
+      "extra_damage": 12,
+      "chances": [],
+      "expected_damage": 22.5,
+      "expected_per_energy": 11.25
+    },
+    {
+      "profile": "均衡20",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 30,
+      "extra_damage": 12,
+      "chances": [],
+      "expected_damage": 26,
+      "expected_per_energy": 13
+    },
+    {
+      "profile": "均衡20",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 30,
+      "extra_damage": 12,
+      "chances": [],
+      "expected_damage": 19.5,
+      "expected_per_energy": 9.75
+    },
+    {
+      "profile": "均衡20",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 30,
+      "extra_damage": 12,
+      "chances": [],
+      "expected_damage": 20,
+      "expected_per_energy": 10
+    },
+    {
+      "profile": "均衡20",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 30,
+      "extra_damage": 12,
+      "chances": [],
+      "expected_damage": 15,
+      "expected_per_energy": 7.5
+    },
+    {
+      "profile": "均衡20",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 23,
+      "extra_damage": 12,
+      "chances": [
+        0.5,
+        0.3,
+        0.099999994
+      ],
+      "expected_damage": 30.98,
+      "expected_per_energy": 15.49
+    },
+    {
+      "profile": "均衡20",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 23,
+      "extra_damage": 12,
+      "chances": [
+        0.5,
+        0.3,
+        0.099999994
+      ],
+      "expected_damage": 21.441328,
+      "expected_per_energy": 10.720664
+    },
+    {
+      "profile": "均衡20",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 23,
+      "extra_damage": 12,
+      "chances": [
+        0.5,
+        0.3,
+        0.099999994
+      ],
+      "expected_damage": 24.320002,
+      "expected_per_energy": 12.160001
+    },
+    {
+      "profile": "均衡20",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 23,
+      "extra_damage": 12,
+      "chances": [
+        0.5,
+        0.3,
+        0.099999994
+      ],
+      "expected_damage": 17.04422,
+      "expected_per_energy": 8.52211
+    },
+    {
+      "profile": "均衡20",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 23,
+      "extra_damage": 12,
+      "chances": [
+        0.5,
+        0.3,
+        0.099999994
+      ],
+      "expected_damage": 14.33,
+      "expected_per_energy": 7.165
+    },
+    {
+      "profile": "均衡20",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 23,
+      "extra_damage": 12,
+      "chances": [
+        0.5,
+        0.3,
+        0.099999994
+      ],
+      "expected_damage": 10.448554,
+      "expected_per_energy": 5.224277
+    },
+    {
+      "profile": "均衡20",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 24,
+      "extra_damage": 12,
+      "chances": [
+        1
+      ],
+      "expected_damage": 36,
+      "expected_per_energy": 36
+    },
+    {
+      "profile": "均衡20",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 24,
+      "extra_damage": 12,
+      "chances": [
+        1
+      ],
+      "expected_damage": 24.75,
+      "expected_per_energy": 24.75
+    },
+    {
+      "profile": "均衡20",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 24,
+      "extra_damage": 12,
+      "chances": [
+        1
+      ],
+      "expected_damage": 28,
+      "expected_per_energy": 28
+    },
+    {
+      "profile": "均衡20",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 24,
+      "extra_damage": 12,
+      "chances": [
+        1
+      ],
+      "expected_damage": 19.5,
+      "expected_per_energy": 19.5
+    },
+    {
+      "profile": "均衡20",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 24,
+      "extra_damage": 12,
+      "chances": [
+        1
+      ],
+      "expected_damage": 16,
+      "expected_per_energy": 16
+    },
+    {
+      "profile": "均衡20",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 24,
+      "extra_damage": 12,
+      "chances": [
+        1
+      ],
+      "expected_damage": 11.625,
+      "expected_per_energy": 11.625
+    },
+    {
+      "profile": "均衡20",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 40,
+      "extra_damage": 12,
+      "chances": [
+        1
+      ],
+      "expected_damage": 52,
+      "expected_per_energy": 26
+    },
+    {
+      "profile": "均衡20",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 40,
+      "extra_damage": 12,
+      "chances": [
+        1
+      ],
+      "expected_damage": 36.75,
+      "expected_per_energy": 18.375
+    },
+    {
+      "profile": "均衡20",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 40,
+      "extra_damage": 12,
+      "chances": [
+        1
+      ],
+      "expected_damage": 44,
+      "expected_per_energy": 22
+    },
+    {
+      "profile": "均衡20",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 40,
+      "extra_damage": 12,
+      "chances": [
+        1
+      ],
+      "expected_damage": 31.5,
+      "expected_per_energy": 15.75
+    },
+    {
+      "profile": "均衡20",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 40,
+      "extra_damage": 12,
+      "chances": [
+        1
+      ],
+      "expected_damage": 32,
+      "expected_per_energy": 16
+    },
+    {
+      "profile": "均衡20",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 40,
+      "extra_damage": 12,
+      "chances": [
+        1
+      ],
+      "expected_damage": 23.625,
+      "expected_per_energy": 11.8125
+    },
+    {
+      "profile": "均衡20",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 23,
+      "extra_damage": 12,
+      "chances": [
+        0.75,
+        0.55,
+        0.35
+      ],
+      "expected_damage": 38.682503,
+      "expected_per_energy": 19.341251
+    },
+    {
+      "profile": "均衡20",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 23,
+      "extra_damage": 12,
+      "chances": [
+        0.75,
+        0.55,
+        0.35
+      ],
+      "expected_damage": 24.948956,
+      "expected_per_energy": 12.474478
+    },
+    {
+      "profile": "均衡20",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 23,
+      "extra_damage": 12,
+      "chances": [
+        0.75,
+        0.55,
+        0.35
+      ],
+      "expected_damage": 29.455,
+      "expected_per_energy": 14.7275
+    },
+    {
+      "profile": "均衡20",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 23,
+      "extra_damage": 12,
+      "chances": [
+        0.75,
+        0.55,
+        0.35
+      ],
+      "expected_damage": 19.382637,
+      "expected_per_energy": 9.6913185
+    },
+    {
+      "profile": "均衡20",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 23,
+      "extra_damage": 12,
+      "chances": [
+        0.75,
+        0.55,
+        0.35
+      ],
+      "expected_damage": 15.6137495,
+      "expected_per_energy": 7.8068748
+    },
+    {
+      "profile": "均衡20",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 23,
+      "extra_damage": 12,
+      "chances": [
+        0.75,
+        0.55,
+        0.35
+      ],
+      "expected_damage": 11.033159,
+      "expected_per_energy": 5.5165796
+    },
+    {
+      "profile": "均衡20",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 24,
+      "extra_damage": 16,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 56,
+      "expected_per_energy": 56
+    },
+    {
+      "profile": "均衡20",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 24,
+      "extra_damage": 16,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 33.75,
+      "expected_per_energy": 33.75
+    },
+    {
+      "profile": "均衡20",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 24,
+      "extra_damage": 16,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 44,
+      "expected_per_energy": 44
+    },
+    {
+      "profile": "均衡20",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 24,
+      "extra_damage": 16,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 26.8125,
+      "expected_per_energy": 26.8125
+    },
+    {
+      "profile": "均衡20",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 24,
+      "extra_damage": 16,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 26,
+      "expected_per_energy": 26
+    },
+    {
+      "profile": "均衡20",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 24,
+      "extra_damage": 16,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 16.40625,
+      "expected_per_energy": 16.40625
+    },
+    {
+      "profile": "均衡20",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 50,
+      "extra_damage": 16,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 82,
+      "expected_per_energy": 41
+    },
+    {
+      "profile": "均衡20",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 50,
+      "extra_damage": 16,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 53.25,
+      "expected_per_energy": 26.625
+    },
+    {
+      "profile": "均衡20",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 50,
+      "extra_damage": 16,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 70,
+      "expected_per_energy": 35
+    },
+    {
+      "profile": "均衡20",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 50,
+      "extra_damage": 16,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 46.3125,
+      "expected_per_energy": 23.15625
+    },
+    {
+      "profile": "均衡20",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 50,
+      "extra_damage": 16,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 52,
+      "expected_per_energy": 26
+    },
+    {
+      "profile": "均衡20",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 50,
+      "extra_damage": 16,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 35.90625,
+      "expected_per_energy": 17.953125
+    },
+    {
+      "profile": "均衡20",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 23,
+      "extra_damage": 16,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 46.552,
+      "expected_per_energy": 23.276
+    },
+    {
+      "profile": "均衡20",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 23,
+      "extra_damage": 16,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 28.662,
+      "expected_per_energy": 14.331
+    },
+    {
+      "profile": "均衡20",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 23,
+      "extra_damage": 16,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 36.664,
+      "expected_per_energy": 18.332
+    },
+    {
+      "profile": "均衡20",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 23,
+      "extra_damage": 16,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 22.809,
+      "expected_per_energy": 11.4045
+    },
+    {
+      "profile": "均衡20",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 23,
+      "extra_damage": 16,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 21.832,
+      "expected_per_energy": 10.916
+    },
+    {
+      "profile": "均衡20",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 23,
+      "extra_damage": 16,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 14.0295,
+      "expected_per_energy": 7.01475
+    },
+    {
+      "profile": "体道",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 8,
+      "chances": [],
+      "expected_damage": 16,
+      "expected_per_energy": 16
+    },
+    {
+      "profile": "体道",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 8,
+      "chances": [],
+      "expected_damage": 12,
+      "expected_per_energy": 12
+    },
+    {
+      "profile": "体道",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 8,
+      "chances": [],
+      "expected_damage": 12,
+      "expected_per_energy": 12
+    },
+    {
+      "profile": "体道",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 8,
+      "chances": [],
+      "expected_damage": 9,
+      "expected_per_energy": 9
+    },
+    {
+      "profile": "体道",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 8,
+      "chances": [],
+      "expected_damage": 6,
+      "expected_per_energy": 6
+    },
+    {
+      "profile": "体道",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 8,
+      "chances": [],
+      "expected_damage": 4.5,
+      "expected_per_energy": 4.5
+    },
+    {
+      "profile": "体道",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 13,
+      "extra_damage": 8,
+      "chances": [],
+      "expected_damage": 13,
+      "expected_per_energy": 6.5
+    },
+    {
+      "profile": "体道",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 13,
+      "extra_damage": 8,
+      "chances": [],
+      "expected_damage": 9.75,
+      "expected_per_energy": 4.875
+    },
+    {
+      "profile": "体道",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 13,
+      "extra_damage": 8,
+      "chances": [],
+      "expected_damage": 9,
+      "expected_per_energy": 4.5
+    },
+    {
+      "profile": "体道",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 13,
+      "extra_damage": 8,
+      "chances": [],
+      "expected_damage": 6.75,
+      "expected_per_energy": 3.375
+    },
+    {
+      "profile": "体道",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 13,
+      "extra_damage": 8,
+      "chances": [],
+      "expected_damage": 3,
+      "expected_per_energy": 1.5
+    },
+    {
+      "profile": "体道",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 13,
+      "extra_damage": 8,
+      "chances": [],
+      "expected_damage": 2.25,
+      "expected_per_energy": 1.125
+    },
+    {
+      "profile": "体道",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 8,
+      "chances": [
+        0.425,
+        0.22500001,
+        0.025000006
+      ],
+      "expected_damage": 20.184124,
+      "expected_per_energy": 10.092062
+    },
+    {
+      "profile": "体道",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 8,
+      "chances": [
+        0.425,
+        0.22500001,
+        0.025000006
+      ],
+      "expected_damage": 14.241286,
+      "expected_per_energy": 7.120643
+    },
+    {
+      "profile": "体道",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 8,
+      "chances": [
+        0.425,
+        0.22500001,
+        0.025000006
+      ],
+      "expected_damage": 14.092062,
+      "expected_per_energy": 7.046031
+    },
+    {
+      "profile": "体道",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 8,
+      "chances": [
+        0.425,
+        0.22500001,
+        0.025000006
+      ],
+      "expected_damage": 10.120644,
+      "expected_per_energy": 5.060322
+    },
+    {
+      "profile": "体道",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 8,
+      "chances": [
+        0.425,
+        0.22500001,
+        0.025000006
+      ],
+      "expected_damage": 6.523016,
+      "expected_per_energy": 3.261508
+    },
+    {
+      "profile": "体道",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 8,
+      "chances": [
+        0.425,
+        0.22500001,
+        0.025000006
+      ],
+      "expected_damage": 4.7801604,
+      "expected_per_energy": 2.3900802
+    },
+    {
+      "profile": "体道",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 8,
+      "chances": [
+        1
+      ],
+      "expected_damage": 24,
+      "expected_per_energy": 24
+    },
+    {
+      "profile": "体道",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 8,
+      "chances": [
+        1
+      ],
+      "expected_damage": 16.5,
+      "expected_per_energy": 16.5
+    },
+    {
+      "profile": "体道",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 8,
+      "chances": [
+        1
+      ],
+      "expected_damage": 16,
+      "expected_per_energy": 16
+    },
+    {
+      "profile": "体道",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 8,
+      "chances": [
+        1
+      ],
+      "expected_damage": 11.25,
+      "expected_per_energy": 11.25
+    },
+    {
+      "profile": "体道",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 8,
+      "chances": [
+        1
+      ],
+      "expected_damage": 7,
+      "expected_per_energy": 7
+    },
+    {
+      "profile": "体道",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 8,
+      "chances": [
+        1
+      ],
+      "expected_damage": 5.0625,
+      "expected_per_energy": 5.0625
+    },
+    {
+      "profile": "体道",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 23,
+      "extra_damage": 8,
+      "chances": [
+        1
+      ],
+      "expected_damage": 31,
+      "expected_per_energy": 15.5
+    },
+    {
+      "profile": "体道",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 23,
+      "extra_damage": 8,
+      "chances": [
+        1
+      ],
+      "expected_damage": 21.75,
+      "expected_per_energy": 10.875
+    },
+    {
+      "profile": "体道",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 23,
+      "extra_damage": 8,
+      "chances": [
+        1
+      ],
+      "expected_damage": 23,
+      "expected_per_energy": 11.5
+    },
+    {
+      "profile": "体道",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 23,
+      "extra_damage": 8,
+      "chances": [
+        1
+      ],
+      "expected_damage": 16.5,
+      "expected_per_energy": 8.25
+    },
+    {
+      "profile": "体道",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 23,
+      "extra_damage": 8,
+      "chances": [
+        1
+      ],
+      "expected_damage": 14,
+      "expected_per_energy": 7
+    },
+    {
+      "profile": "体道",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 23,
+      "extra_damage": 8,
+      "chances": [
+        1
+      ],
+      "expected_damage": 10.3125,
+      "expected_per_energy": 5.15625
+    },
+    {
+      "profile": "体道",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 8,
+      "chances": [
+        0.67499995,
+        0.47499996,
+        0.27499995
+      ],
+      "expected_damage": 24.670376,
+      "expected_per_energy": 12.335188
+    },
+    {
+      "profile": "体道",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 8,
+      "chances": [
+        0.67499995,
+        0.47499996,
+        0.27499995
+      ],
+      "expected_damage": 16.342794,
+      "expected_per_energy": 8.171397
+    },
+    {
+      "profile": "体道",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 8,
+      "chances": [
+        0.67499995,
+        0.47499996,
+        0.27499995
+      ],
+      "expected_damage": 16.335188,
+      "expected_per_energy": 8.167594
+    },
+    {
+      "profile": "体道",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 8,
+      "chances": [
+        0.67499995,
+        0.47499996,
+        0.27499995
+      ],
+      "expected_damage": 11.171397,
+      "expected_per_energy": 5.5856986
+    },
+    {
+      "profile": "体道",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 8,
+      "chances": [
+        0.67499995,
+        0.47499996,
+        0.27499995
+      ],
+      "expected_damage": 7.083797,
+      "expected_per_energy": 3.5418985
+    },
+    {
+      "profile": "体道",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 8,
+      "chances": [
+        0.67499995,
+        0.47499996,
+        0.27499995
+      ],
+      "expected_damage": 5.042849,
+      "expected_per_energy": 2.5214245
+    },
+    {
+      "profile": "体道",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 12,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 40,
+      "expected_per_energy": 40
+    },
+    {
+      "profile": "体道",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 12,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 23.8125,
+      "expected_per_energy": 23.8125
+    },
+    {
+      "profile": "体道",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 12,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 28,
+      "expected_per_energy": 28
+    },
+    {
+      "profile": "体道",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 12,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 16.875,
+      "expected_per_energy": 16.875
+    },
+    {
+      "profile": "体道",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 12,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 10,
+      "expected_per_energy": 10
+    },
+    {
+      "profile": "体道",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 12,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 6.46875,
+      "expected_per_energy": 6.46875
+    },
+    {
+      "profile": "体道",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 33,
+      "extra_damage": 12,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 57,
+      "expected_per_energy": 28.5
+    },
+    {
+      "profile": "体道",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 33,
+      "extra_damage": 12,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 36.5625,
+      "expected_per_energy": 18.28125
+    },
+    {
+      "profile": "体道",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 33,
+      "extra_damage": 12,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 45,
+      "expected_per_energy": 22.5
+    },
+    {
+      "profile": "体道",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 33,
+      "extra_damage": 12,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 29.625,
+      "expected_per_energy": 14.8125
+    },
+    {
+      "profile": "体道",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 33,
+      "extra_damage": 12,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 27,
+      "expected_per_energy": 13.5
+    },
+    {
+      "profile": "体道",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 33,
+      "extra_damage": 12,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 19.21875,
+      "expected_per_energy": 9.609375
+    },
+    {
+      "profile": "体道",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 12,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 33.664,
+      "expected_per_energy": 16.832
+    },
+    {
+      "profile": "体道",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 12,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 20.559,
+      "expected_per_energy": 10.2795
+    },
+    {
+      "profile": "体道",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 12,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 23.776,
+      "expected_per_energy": 11.888
+    },
+    {
+      "profile": "体道",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 12,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 14.706,
+      "expected_per_energy": 7.353
+    },
+    {
+      "profile": "体道",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 12,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 8.943999,
+      "expected_per_energy": 4.4719996
+    },
+    {
+      "profile": "体道",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 16,
+      "extra_damage": 12,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 5.9265003,
+      "expected_per_energy": 2.9632502
+    },
+    {
+      "profile": "术法",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 5,
+      "chances": [],
+      "expected_damage": 9,
+      "expected_per_energy": 9
+    },
+    {
+      "profile": "术法",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 5,
+      "chances": [],
+      "expected_damage": 6.75,
+      "expected_per_energy": 6.75
+    },
+    {
+      "profile": "术法",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 5,
+      "chances": [],
+      "expected_damage": 5,
+      "expected_per_energy": 5
+    },
+    {
+      "profile": "术法",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 5,
+      "chances": [],
+      "expected_damage": 3.75,
+      "expected_per_energy": 3.75
+    },
+    {
+      "profile": "术法",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 5,
+      "chances": [],
+      "expected_damage": 1,
+      "expected_per_energy": 1
+    },
+    {
+      "profile": "术法",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 5,
+      "chances": [],
+      "expected_damage": 0.75,
+      "expected_per_energy": 0.75
+    },
+    {
+      "profile": "术法",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 23,
+      "extra_damage": 5,
+      "chances": [],
+      "expected_damage": 23,
+      "expected_per_energy": 11.5
+    },
+    {
+      "profile": "术法",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 23,
+      "extra_damage": 5,
+      "chances": [],
+      "expected_damage": 17.25,
+      "expected_per_energy": 8.625
+    },
+    {
+      "profile": "术法",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 23,
+      "extra_damage": 5,
+      "chances": [],
+      "expected_damage": 19,
+      "expected_per_energy": 9.5
+    },
+    {
+      "profile": "术法",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 23,
+      "extra_damage": 5,
+      "chances": [],
+      "expected_damage": 14.25,
+      "expected_per_energy": 7.125
+    },
+    {
+      "profile": "术法",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 23,
+      "extra_damage": 5,
+      "chances": [],
+      "expected_damage": 13,
+      "expected_per_energy": 6.5
+    },
+    {
+      "profile": "术法",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 23,
+      "extra_damage": 5,
+      "chances": [],
+      "expected_damage": 9.75,
+      "expected_per_energy": 4.875
+    },
+    {
+      "profile": "术法",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 5,
+      "chances": [
+        0.425,
+        0.22500001,
+        0.025000006
+      ],
+      "expected_damage": 12.615078,
+      "expected_per_energy": 6.307539
+    },
+    {
+      "profile": "术法",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 5,
+      "chances": [
+        0.425,
+        0.22500001,
+        0.025000006
+      ],
+      "expected_damage": 8.900804,
+      "expected_per_energy": 4.450402
+    },
+    {
+      "profile": "术法",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 5,
+      "chances": [
+        0.425,
+        0.22500001,
+        0.025000006
+      ],
+      "expected_damage": 6.523016,
+      "expected_per_energy": 3.261508
+    },
+    {
+      "profile": "术法",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 5,
+      "chances": [
+        0.425,
+        0.22500001,
+        0.025000006
+      ],
+      "expected_damage": 4.7801604,
+      "expected_per_energy": 2.3900802
+    },
+    {
+      "profile": "术法",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 5,
+      "chances": [
+        0.425,
+        0.22500001,
+        0.025000006
+      ],
+      "expected_damage": 1.5230156,
+      "expected_per_energy": 0.7615078
+    },
+    {
+      "profile": "术法",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 5,
+      "chances": [
+        0.425,
+        0.22500001,
+        0.025000006
+      ],
+      "expected_damage": 1.0301608,
+      "expected_per_energy": 0.5150804
+    },
+    {
+      "profile": "术法",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 5,
+      "chances": [
+        1
+      ],
+      "expected_damage": 14,
+      "expected_per_energy": 14
+    },
+    {
+      "profile": "术法",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 5,
+      "chances": [
+        1
+      ],
+      "expected_damage": 9.5625,
+      "expected_per_energy": 9.5625
+    },
+    {
+      "profile": "术法",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 5,
+      "chances": [
+        1
+      ],
+      "expected_damage": 6,
+      "expected_per_energy": 6
+    },
+    {
+      "profile": "术法",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 5,
+      "chances": [
+        1
+      ],
+      "expected_damage": 4.3125,
+      "expected_per_energy": 4.3125
+    },
+    {
+      "profile": "术法",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 5,
+      "chances": [
+        1
+      ],
+      "expected_damage": 2,
+      "expected_per_energy": 2
+    },
+    {
+      "profile": "术法",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 5,
+      "chances": [
+        1
+      ],
+      "expected_damage": 1.3125,
+      "expected_per_energy": 1.3125
+    },
+    {
+      "profile": "术法",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 33,
+      "extra_damage": 5,
+      "chances": [
+        1
+      ],
+      "expected_damage": 38,
+      "expected_per_energy": 19
+    },
+    {
+      "profile": "术法",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 33,
+      "extra_damage": 5,
+      "chances": [
+        1
+      ],
+      "expected_damage": 27.5625,
+      "expected_per_energy": 13.78125
+    },
+    {
+      "profile": "术法",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 33,
+      "extra_damage": 5,
+      "chances": [
+        1
+      ],
+      "expected_damage": 30,
+      "expected_per_energy": 15
+    },
+    {
+      "profile": "术法",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 33,
+      "extra_damage": 5,
+      "chances": [
+        1
+      ],
+      "expected_damage": 22.3125,
+      "expected_per_energy": 11.15625
+    },
+    {
+      "profile": "术法",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 33,
+      "extra_damage": 5,
+      "chances": [
+        1
+      ],
+      "expected_damage": 24,
+      "expected_per_energy": 12
+    },
+    {
+      "profile": "术法",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 33,
+      "extra_damage": 5,
+      "chances": [
+        1
+      ],
+      "expected_damage": 17.8125,
+      "expected_per_energy": 8.90625
+    },
+    {
+      "profile": "术法",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 5,
+      "chances": [
+        0.67499995,
+        0.47499996,
+        0.27499995
+      ],
+      "expected_damage": 15.418983,
+      "expected_per_energy": 7.7094917
+    },
+    {
+      "profile": "术法",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 5,
+      "chances": [
+        0.67499995,
+        0.47499996,
+        0.27499995
+      ],
+      "expected_damage": 10.214247,
+      "expected_per_energy": 5.1071234
+    },
+    {
+      "profile": "术法",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 5,
+      "chances": [
+        0.67499995,
+        0.47499996,
+        0.27499995
+      ],
+      "expected_damage": 7.083797,
+      "expected_per_energy": 3.5418985
+    },
+    {
+      "profile": "术法",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 5,
+      "chances": [
+        0.67499995,
+        0.47499996,
+        0.27499995
+      ],
+      "expected_damage": 5.042849,
+      "expected_per_energy": 2.5214245
+    },
+    {
+      "profile": "术法",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 5,
+      "chances": [
+        0.67499995,
+        0.47499996,
+        0.27499995
+      ],
+      "expected_damage": 2.0837967,
+      "expected_per_energy": 1.0418984
+    },
+    {
+      "profile": "术法",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 5,
+      "chances": [
+        0.67499995,
+        0.47499996,
+        0.27499995
+      ],
+      "expected_damage": 1.2928493,
+      "expected_per_energy": 0.64642465
+    },
+    {
+      "profile": "术法",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 9,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 27,
+      "expected_per_energy": 27
+    },
+    {
+      "profile": "术法",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 9,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 15.609375,
+      "expected_per_energy": 15.609375
+    },
+    {
+      "profile": "术法",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 9,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 15,
+      "expected_per_energy": 15
+    },
+    {
+      "profile": "术法",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 9,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 8.671875,
+      "expected_per_energy": 8.671875
+    },
+    {
+      "profile": "术法",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 9,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 3,
+      "expected_per_energy": 3
+    },
+    {
+      "profile": "术法",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 9,
+      "extra_damage": 9,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 1.734375,
+      "expected_per_energy": 1.734375
+    },
+    {
+      "profile": "术法",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 43,
+      "extra_damage": 9,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 61,
+      "expected_per_energy": 30.5
+    },
+    {
+      "profile": "术法",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 43,
+      "extra_damage": 9,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 41.109375,
+      "expected_per_energy": 20.554688
+    },
+    {
+      "profile": "术法",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 43,
+      "extra_damage": 9,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 49,
+      "expected_per_energy": 24.5
+    },
+    {
+      "profile": "术法",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 43,
+      "extra_damage": 9,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 34.171875,
+      "expected_per_energy": 17.085938
+    },
+    {
+      "profile": "术法",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 43,
+      "extra_damage": 9,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 35,
+      "expected_per_energy": 17.5
+    },
+    {
+      "profile": "术法",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 43,
+      "extra_damage": 9,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 25.734375,
+      "expected_per_energy": 12.8671875
+    },
+    {
+      "profile": "术法",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 9,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 23.248001,
+      "expected_per_energy": 11.624001
+    },
+    {
+      "profile": "术法",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 9,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 13.9192505,
+      "expected_per_energy": 6.9596252
+    },
+    {
+      "profile": "术法",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 9,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 13.36,
+      "expected_per_energy": 6.68
+    },
+    {
+      "profile": "术法",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 9,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 8.06625,
+      "expected_per_energy": 4.033125
+    },
+    {
+      "profile": "术法",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 9,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 2.472,
+      "expected_per_energy": 1.236
+    },
+    {
+      "profile": "术法",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 10,
+      "extra_damage": 9,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 1.46325,
+      "expected_per_energy": 0.731625
+    },
+    {
+      "profile": "剑道",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 20,
+      "extra_damage": 10,
+      "chances": [],
+      "expected_damage": 20,
+      "expected_per_energy": 20
+    },
+    {
+      "profile": "剑道",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 20,
+      "extra_damage": 10,
+      "chances": [],
+      "expected_damage": 15,
+      "expected_per_energy": 15
+    },
+    {
+      "profile": "剑道",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 20,
+      "extra_damage": 10,
+      "chances": [],
+      "expected_damage": 16,
+      "expected_per_energy": 16
+    },
+    {
+      "profile": "剑道",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 20,
+      "extra_damage": 10,
+      "chances": [],
+      "expected_damage": 12,
+      "expected_per_energy": 12
+    },
+    {
+      "profile": "剑道",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 20,
+      "extra_damage": 10,
+      "chances": [],
+      "expected_damage": 10,
+      "expected_per_energy": 10
+    },
+    {
+      "profile": "剑道",
+      "sword": "斩剑",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 20,
+      "extra_damage": 10,
+      "chances": [],
+      "expected_damage": 7.5,
+      "expected_per_energy": 7.5
+    },
+    {
+      "profile": "剑道",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 20,
+      "extra_damage": 10,
+      "chances": [],
+      "expected_damage": 20,
+      "expected_per_energy": 10
+    },
+    {
+      "profile": "剑道",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 20,
+      "extra_damage": 10,
+      "chances": [],
+      "expected_damage": 15,
+      "expected_per_energy": 7.5
+    },
+    {
+      "profile": "剑道",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 20,
+      "extra_damage": 10,
+      "chances": [],
+      "expected_damage": 16,
+      "expected_per_energy": 8
+    },
+    {
+      "profile": "剑道",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 20,
+      "extra_damage": 10,
+      "chances": [],
+      "expected_damage": 12,
+      "expected_per_energy": 6
+    },
+    {
+      "profile": "剑道",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 20,
+      "extra_damage": 10,
+      "chances": [],
+      "expected_damage": 10,
+      "expected_per_energy": 5
+    },
+    {
+      "profile": "剑道",
+      "sword": "尽锋",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 20,
+      "extra_damage": 10,
+      "chances": [],
+      "expected_damage": 7.5,
+      "expected_per_energy": 3.75
+    },
+    {
+      "profile": "剑道",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 19,
+      "extra_damage": 10,
+      "chances": [
+        0.5,
+        0.3,
+        0.099999994
+      ],
+      "expected_damage": 25.65,
+      "expected_per_energy": 12.825
+    },
+    {
+      "profile": "剑道",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 19,
+      "extra_damage": 10,
+      "chances": [
+        0.5,
+        0.3,
+        0.099999994
+      ],
+      "expected_damage": 17.742773,
+      "expected_per_energy": 8.871387
+    },
+    {
+      "profile": "剑道",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 19,
+      "extra_damage": 10,
+      "chances": [
+        0.5,
+        0.3,
+        0.099999994
+      ],
+      "expected_damage": 18.99,
+      "expected_per_energy": 9.495
+    },
+    {
+      "profile": "剑道",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 19,
+      "extra_damage": 10,
+      "chances": [
+        0.5,
+        0.3,
+        0.099999994
+      ],
+      "expected_damage": 13.345664,
+      "expected_per_energy": 6.672832
+    },
+    {
+      "profile": "剑道",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 19,
+      "extra_damage": 10,
+      "chances": [
+        0.5,
+        0.3,
+        0.099999994
+      ],
+      "expected_damage": 9.665,
+      "expected_per_energy": 4.8325
+    },
+    {
+      "profile": "剑道",
+      "sword": "云岚三叠",
+      "stacks": 0,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 19,
+      "extra_damage": 10,
+      "chances": [
+        0.5,
+        0.3,
+        0.099999994
+      ],
+      "expected_damage": 7.099277,
+      "expected_per_energy": 3.5496385
+    },
+    {
+      "profile": "剑道",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 20,
+      "extra_damage": 10,
+      "chances": [
+        1
+      ],
+      "expected_damage": 30,
+      "expected_per_energy": 30
+    },
+    {
+      "profile": "剑道",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 20,
+      "extra_damage": 10,
+      "chances": [
+        1
+      ],
+      "expected_damage": 20.625,
+      "expected_per_energy": 20.625
+    },
+    {
+      "profile": "剑道",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 20,
+      "extra_damage": 10,
+      "chances": [
+        1
+      ],
+      "expected_damage": 22,
+      "expected_per_energy": 22
+    },
+    {
+      "profile": "剑道",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 20,
+      "extra_damage": 10,
+      "chances": [
+        1
+      ],
+      "expected_damage": 15.375,
+      "expected_per_energy": 15.375
+    },
+    {
+      "profile": "剑道",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 20,
+      "extra_damage": 10,
+      "chances": [
+        1
+      ],
+      "expected_damage": 11,
+      "expected_per_energy": 11
+    },
+    {
+      "profile": "剑道",
+      "sword": "斩剑",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 20,
+      "extra_damage": 10,
+      "chances": [
+        1
+      ],
+      "expected_damage": 8.0625,
+      "expected_per_energy": 8.0625
+    },
+    {
+      "profile": "剑道",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 30,
+      "extra_damage": 10,
+      "chances": [
+        1
+      ],
+      "expected_damage": 40,
+      "expected_per_energy": 20
+    },
+    {
+      "profile": "剑道",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 30,
+      "extra_damage": 10,
+      "chances": [
+        1
+      ],
+      "expected_damage": 28.125,
+      "expected_per_energy": 14.0625
+    },
+    {
+      "profile": "剑道",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 30,
+      "extra_damage": 10,
+      "chances": [
+        1
+      ],
+      "expected_damage": 32,
+      "expected_per_energy": 16
+    },
+    {
+      "profile": "剑道",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 30,
+      "extra_damage": 10,
+      "chances": [
+        1
+      ],
+      "expected_damage": 22.875,
+      "expected_per_energy": 11.4375
+    },
+    {
+      "profile": "剑道",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 30,
+      "extra_damage": 10,
+      "chances": [
+        1
+      ],
+      "expected_damage": 21,
+      "expected_per_energy": 10.5
+    },
+    {
+      "profile": "剑道",
+      "sword": "尽锋",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 30,
+      "extra_damage": 10,
+      "chances": [
+        1
+      ],
+      "expected_damage": 15.5625,
+      "expected_per_energy": 7.78125
+    },
+    {
+      "profile": "剑道",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 19,
+      "extra_damage": 10,
+      "chances": [
+        0.75,
+        0.55,
+        0.35
+      ],
+      "expected_damage": 32.06875,
+      "expected_per_energy": 16.034374
+    },
+    {
+      "profile": "剑道",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 19,
+      "extra_damage": 10,
+      "chances": [
+        0.75,
+        0.55,
+        0.35
+      ],
+      "expected_damage": 20.665796,
+      "expected_per_energy": 10.332898
+    },
+    {
+      "profile": "剑道",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 19,
+      "extra_damage": 10,
+      "chances": [
+        0.75,
+        0.55,
+        0.35
+      ],
+      "expected_damage": 22.841251,
+      "expected_per_energy": 11.420626
+    },
+    {
+      "profile": "剑道",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 19,
+      "extra_damage": 10,
+      "chances": [
+        0.75,
+        0.55,
+        0.35
+      ],
+      "expected_damage": 15.099478,
+      "expected_per_energy": 7.549739
+    },
+    {
+      "profile": "剑道",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 19,
+      "extra_damage": 10,
+      "chances": [
+        0.75,
+        0.55,
+        0.35
+      ],
+      "expected_damage": 10.306875,
+      "expected_per_energy": 5.1534376
+    },
+    {
+      "profile": "剑道",
+      "sword": "云岚三叠",
+      "stacks": 5,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 19,
+      "extra_damage": 10,
+      "chances": [
+        0.75,
+        0.55,
+        0.35
+      ],
+      "expected_damage": 7.3915796,
+      "expected_per_energy": 3.6957898
+    },
+    {
+      "profile": "剑道",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 20,
+      "extra_damage": 14,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 48,
+      "expected_per_energy": 48
+    },
+    {
+      "profile": "剑道",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 20,
+      "extra_damage": 14,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 28.78125,
+      "expected_per_energy": 28.78125
+    },
+    {
+      "profile": "剑道",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 20,
+      "extra_damage": 14,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 36,
+      "expected_per_energy": 36
+    },
+    {
+      "profile": "剑道",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 20,
+      "extra_damage": 14,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 21.84375,
+      "expected_per_energy": 21.84375
+    },
+    {
+      "profile": "剑道",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 1,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 20,
+      "extra_damage": 14,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 18,
+      "expected_per_energy": 18
+    },
+    {
+      "profile": "剑道",
+      "sword": "斩剑",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 1,
+      "mana": 0,
+      "base_damage": 20,
+      "extra_damage": 14,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 11.4375,
+      "expected_per_energy": 11.4375
+    },
+    {
+      "profile": "剑道",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 40,
+      "extra_damage": 14,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 68,
+      "expected_per_energy": 34
+    },
+    {
+      "profile": "剑道",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 40,
+      "extra_damage": 14,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 43.78125,
+      "expected_per_energy": 21.890625
+    },
+    {
+      "profile": "剑道",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 40,
+      "extra_damage": 14,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 56,
+      "expected_per_energy": 28
+    },
+    {
+      "profile": "剑道",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 40,
+      "extra_damage": 14,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 36.84375,
+      "expected_per_energy": 18.421875
+    },
+    {
+      "profile": "剑道",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 40,
+      "extra_damage": 14,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 38,
+      "expected_per_energy": 19
+    },
+    {
+      "profile": "剑道",
+      "sword": "尽锋",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 1,
+      "base_damage": 40,
+      "extra_damage": 14,
+      "chances": [
+        1,
+        1
+      ],
+      "expected_damage": 26.4375,
+      "expected_per_energy": 13.21875
+    },
+    {
+      "profile": "剑道",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 19,
+      "extra_damage": 14,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 39.608,
+      "expected_per_energy": 19.804
+    },
+    {
+      "profile": "剑道",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 0,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 19,
+      "extra_damage": 14,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 24.2355,
+      "expected_per_energy": 12.11775
+    },
+    {
+      "profile": "剑道",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 19,
+      "extra_damage": 14,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 29.72,
+      "expected_per_energy": 14.86
+    },
+    {
+      "profile": "剑道",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 4,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 19,
+      "extra_damage": 14,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 18.3825,
+      "expected_per_energy": 9.19125
+    },
+    {
+      "profile": "剑道",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 1,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 19,
+      "extra_damage": 14,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 14.888,
+      "expected_per_energy": 7.444
+    },
+    {
+      "profile": "剑道",
+      "sword": "云岚三叠",
+      "stacks": 10,
+      "defense": 10,
+      "hit": 0.75,
+      "energy": 2,
+      "mana": 0,
+      "base_damage": 19,
+      "extra_damage": 14,
+      "chances": [
+        0.8,
+        0.6,
+        0.4
+      ],
+      "expected_damage": 9.603001,
+      "expected_per_energy": 4.8015003
+    }
+  ]
+}

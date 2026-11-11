@@ -1,0 +1,62 @@
+{
+  "task": "女性五官六组探索",
+  "created_local_date": "2026-11-06",
+  "status": "preview_only_pending_user_selection",
+  "generator": "built-in image_gen",
+  "user_direction": "五官多来几组吧",
+  "comparison_base": "mods/appearance/female_front_exploration_20261106/preview/01_open_ears.png",
+  "comparison_note": "统一收鬓发型、脸轮廓、肤色、服装、尺度与正面角度，用于比较眉眼鼻唇；采用同一发型作展示基准不表示该发型已获用户认可。",
+  "concepts": [
+    {
+      "id": "01",
+      "name": "剑眉凤目",
+      "preview": "preview/01_sword_brows_phoenix_eyes.png",
+      "prompt": "source/prompt_01.txt",
+      "source": "E:/tmp/CodexData/generated_images/01a1ac35-8591-7bc0-b31a-ed6a532b5357/exec-67f30a7e-70c6-4740-a59c-f7c89b9edcd7.png"
+    },
+    {
+      "id": "02",
+      "name": "柳眉杏眼",
+      "preview": "preview/02_willow_brows_almond_eyes.png",
+      "prompt": "source/prompt_02.txt",
+      "source": "E:/tmp/CodexData/generated_images/01a1ac35-8591-7bc0-b31a-ed6a532b5357/exec-f98c3f43-4dc5-45de-9e6d-e6bebf96e128.png"
+    },
+    {
+      "id": "03",
+      "name": "平眉单睑",
+      "preview": "preview/03_straight_brows_monolids.png",
+      "prompt": "source/prompt_03.txt",
+      "source": "E:/tmp/CodexData/generated_images/01a1ac35-8591-7bc0-b31a-ed6a532b5357/exec-afa53a66-0bb4-4124-9789-0cda1b43651d.png"
+    },
+    {
+      "id": "04",
+      "name": "弯眉柔目",
+      "preview": "preview/04_arched_brows_soft_eyes.png",
+      "prompt": "source/prompt_04.txt",
+      "source": "E:/tmp/CodexData/generated_images/01a1ac35-8591-7bc0-b31a-ed6a532b5357/exec-d57ddbd2-dd83-490f-961a-05f4aab65112.png"
+    },
+    {
+      "id": "05",
+      "name": "细眉长目",
+      "preview": "preview/05_fine_brows_hooded_eyes.png",
+      "prompt": "source/prompt_05.txt",
+      "source": "E:/tmp/CodexData/generated_images/01a1ac35-8591-7bc0-b31a-ed6a532b5357/exec-729c976b-e15e-4c8b-b8f5-69ff59ca7cde.png"
+    },
+    {
+      "id": "06",
+      "name": "英眉清圆目",
+      "preview": "preview/06_defined_brows_clear_eyes.png",
+      "prompt": "source/prompt_06.txt",
+      "source": "E:/tmp/CodexData/generated_images/01a1ac35-8591-7bc0-b31a-ed6a532b5357/exec-34acfbac-2cb9-4074-a843-d9707484bea3.png"
+    }
+  ],
+  "prompts": "source/generation_prompts.json",
+  "authority": [
+    "docs/美术规范/本轮男女立绘锚点规范_20261003.md",
+    "docs/美术规范/百会分层与发型肤色修订_20261104/README.md",
+    "docs/美术规范/三组参考五官去重接入_20261104/README.md",
+    "docs/美术规范/男女山根与男装领口修订_20261104/README.md"
+  ],
+  "integration": "本轮只有完整画面候选，未新增独立眉、眼、鼻、嘴素材，未修改活动素材或配置。选稿后分别独立生成并在女脸04共同画布上配准，保留各部位自由组合。",
+  "limitations": "生成预览不代表脸轮廓或衣发逐像素不变，不代表真实透明、独立层、锚点或游戏混搭已验收。"
+}

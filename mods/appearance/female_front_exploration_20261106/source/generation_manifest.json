@@ -1,0 +1,66 @@
+{
+  "task": "女性前发六款探索：收鬓、露耳与非对称轮廓",
+  "created_local_date": "2026-11-06",
+  "status": "preview_only_pending_user_selection",
+  "generator": "built-in image_gen",
+  "user_direction": "可以不要每个的前发两边都垂下来，你多来点，探索一下啊",
+  "preference_history": [
+    "新五官",
+    "自然疏松刘海，不是全部梳光",
+    "不要朵拉式厚齐刘海",
+    "此前前发均尚未满意",
+    "这轮打破双侧长垂鬓模板，增加探索数量"
+  ],
+  "concepts": [
+    {
+      "id": "01",
+      "name": "露耳收鬓",
+      "preview": "preview/01_open_ears.png",
+      "prompt": "source/prompt_01.txt",
+      "source": "E:/tmp/CodexData/generated_images/01a1ac35-8591-7bc0-b31a-ed6a532b5357/exec-52059850-8eee-4a5f-afb7-94f398fc9e41.png"
+    },
+    {
+      "id": "02",
+      "name": "斜掠额发",
+      "preview": "preview/02_side_sweep.png",
+      "prompt": "source/prompt_02.txt",
+      "source": "E:/tmp/CodexData/generated_images/01a1ac35-8591-7bc0-b31a-ed6a532b5357/exec-3d474456-80f4-4237-a928-d20ccfd2b37c.png"
+    },
+    {
+      "id": "03",
+      "name": "错落短刘海",
+      "preview": "preview/03_short_fringe.png",
+      "prompt": "source/prompt_03.txt",
+      "source": "E:/tmp/CodexData/generated_images/01a1ac35-8591-7bc0-b31a-ed6a532b5357/exec-5d00151d-7688-4aeb-9e0d-69ab957c41e9.png"
+    },
+    {
+      "id": "04",
+      "name": "单侧编冠",
+      "preview": "preview/04_side_braid.png",
+      "prompt": "source/prompt_04.txt",
+      "source": "E:/tmp/CodexData/generated_images/01a1ac35-8591-7bc0-b31a-ed6a532b5357/exec-d0720a31-de37-4a3d-8218-95955d1a2db5.png"
+    },
+    {
+      "id": "05",
+      "name": "单侧前束",
+      "preview": "preview/05_single_front_lock.png",
+      "prompt": "source/prompt_05.txt",
+      "source": "E:/tmp/CodexData/generated_images/01a1ac35-8591-7bc0-b31a-ed6a532b5357/exec-cc8335ca-b261-4a97-a6e8-ccebf78c91ac.png"
+    },
+    {
+      "id": "06",
+      "name": "颧侧短卷",
+      "preview": "preview/06_short_side_curl.png",
+      "prompt": "source/prompt_06.txt",
+      "source": "E:/tmp/CodexData/generated_images/01a1ac35-8591-7bc0-b31a-ed6a532b5357/exec-6c0d2a8d-15df-49af-856c-6e0e9e596744.png"
+    }
+  ],
+  "prompts": "source/generation_prompts.json",
+  "authority": [
+    "docs/美术规范/本轮男女立绘锚点规范_20261003.md",
+    "docs/美术规范/百会分层与发型肤色修订_20261104/README.md",
+    "docs/美术规范/三组参考五官去重接入_20261104/README.md"
+  ],
+  "integration": "仅整体头肩候选，未改活动女性素材、配置或游戏入口。用户选稿后才独立生成同画布透明部件并配准验收。",
+  "limitations": "六张生成预览，不是原脸04与原衣像素合成，不代表已完成前后发分层或全混搭验证。"
+}

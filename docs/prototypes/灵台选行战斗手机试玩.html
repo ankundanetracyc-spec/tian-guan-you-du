@@ -1,0 +1,1195 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#687681">
+  <title>灵台试武 · 战斗试玩</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #303d38;
+      --muted: #626b60;
+      --paper: #efe7d6;
+      --paper-light: #f5efe2;
+      --paper-deep: #e2d8c4;
+      --slate: #687681;
+      --slate-deep: #4c5b62;
+      --wood: #70615a;
+      --edge: #9a8a71;
+      --accent: #526d60;
+      --danger: #985344;
+      --blue: #58717d;
+      --shadow: 0 12px 28px rgba(34, 39, 35, .16);
+      --radius: 17px;
+    }
+    * { box-sizing: border-box; }
+    html { min-height: 100%; background: #596871; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: "Noto Serif CJK SC", "Songti SC", "STSong", "Source Han Serif SC", serif;
+      background:
+        radial-gradient(ellipse at 50% -12%, rgba(239, 231, 214, .34), transparent 52%),
+        linear-gradient(155deg, #75828a 0%, #596871 42%, #48575e 100%);
+    }
+    button, input, select { font: inherit; }
+    button { color: inherit; }
+    .app { width: min(100%, 1040px); margin: 0 auto; padding: 16px 16px calc(30px + env(safe-area-inset-bottom)); }
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      color: #f1ead9; padding: 3px 2px 14px;
+    }
+    .brand { display: flex; align-items: center; gap: 11px; min-width: 0; }
+    .seal {
+      display: grid; place-items: center; width: 42px; height: 42px; flex: 0 0 42px;
+      border: 1px solid rgba(239, 231, 214, .7); border-radius: 50%;
+      color: #f1ead9; font-size: 19px; box-shadow: inset 0 0 0 3px rgba(239,231,214,.13);
+    }
+    .brand h1 { margin: 0; font-size: 21px; line-height: 1.2; font-weight: 700; letter-spacing: .04em; }
+    .brand p { margin: 4px 0 0; color: rgba(241,234,217,.76); font: 12px/1.35 system-ui, sans-serif; letter-spacing: .04em; }
+    .top-actions { display: flex; align-items: center; gap: 8px; }
+    .top-actions button {
+      min-height: 42px; padding: 0 13px; border-radius: 12px;
+      border: 1px solid rgba(239,231,214,.42); color: #f1ead9;
+      background: rgba(28, 38, 40, .18); cursor: pointer;
+    }
+    .top-actions button:active { background: rgba(28,38,40,.34); transform: translateY(1px); }
+    .shell {
+      overflow: hidden; border: 1px solid rgba(239,231,214,.56); border-radius: 22px;
+      background: linear-gradient(145deg, rgba(245,239,226,.98), rgba(226,216,196,.98));
+      box-shadow: var(--shadow);
+    }
+    .page-head {
+      padding: 18px 20px 14px; border-bottom: 1px solid rgba(112,97,90,.25);
+      background: linear-gradient(90deg, rgba(104,118,129,.08), transparent 65%);
+    }
+    .eyebrow { color: var(--muted); font: 11px/1.4 system-ui, sans-serif; letter-spacing: .11em; text-transform: uppercase; }
+    .page-title-row { display: flex; justify-content: space-between; align-items: start; gap: 12px; }
+    .page-title { margin: 4px 0 0; font-size: clamp(23px, 5vw, 31px); line-height: 1.18; }
+    .phase-pill {
+      flex: 0 0 auto; margin-top: 3px; padding: 7px 11px; border-radius: 99px;
+      color: #f5efe2; background: var(--slate-deep); font: 12px/1 system-ui, sans-serif;
+    }
+    .head-note { margin: 8px 0 0; color: var(--muted); font: 13px/1.55 system-ui, sans-serif; }
+    .content { padding: 16px; }
+    .paper-card {
+      border: 1px solid rgba(154,138,113,.56); border-radius: var(--radius);
+      background: rgba(245,239,226,.87); box-shadow: 0 3px 8px rgba(54,52,43,.07);
+    }
+    .section-title {
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      margin: 0 0 12px; font-size: 18px; line-height: 1.3;
+    }
+    .section-title small { color: var(--muted); font: 12px/1.35 system-ui, sans-serif; }
+    .setup-card { padding: 17px; }
+    .preset-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; }
+    .preset {
+      min-height: 105px; padding: 12px 11px; text-align: left; cursor: pointer;
+      border: 1px solid rgba(112,97,90,.32); border-radius: 13px; background: #f5efe2;
+      transition: background .14s ease, border-color .14s ease, transform .14s ease;
+    }
+    .preset:hover { background: #f8f3e9; }
+    .preset:active { transform: translateY(1px); }
+    .preset[aria-pressed="true"] { background: #d9d4c5; border-color: #526d60; box-shadow: inset 0 0 0 1px rgba(82,109,96,.2); }
+    .preset strong { display: block; font-size: 16px; line-height: 1.35; }
+    .preset span { display: block; margin-top: 6px; color: var(--muted); font: 12px/1.45 system-ui, sans-serif; }
+    .setup-info {
+      margin: 12px 0 15px; padding: 11px 12px; border-radius: 11px;
+      color: var(--muted); background: rgba(104,118,129,.09); font: 13px/1.55 system-ui, sans-serif;
+    }
+    .setup-controls { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .field { min-width: 0; }
+    .field label { display: block; margin-bottom: 5px; color: var(--muted); font: 12px/1.35 system-ui, sans-serif; }
+    .field input, .field select {
+      width: 100%; height: 43px; padding: 0 10px; border-radius: 10px;
+      color: var(--ink); border: 1px solid rgba(112,97,90,.38); background: var(--paper-light);
+    }
+    .field input:focus, .field select:focus { outline: 2px solid rgba(82,109,96,.55); outline-offset: 1px; }
+    .field .hint { margin-top: 4px; color: #74776e; font: 11px/1.35 system-ui, sans-serif; }
+    details.advanced, details.rules {
+      margin-top: 13px; border: 1px solid rgba(112,97,90,.27); border-radius: 12px;
+      background: rgba(239,231,214,.66);
+    }
+    details summary { padding: 12px 13px; cursor: pointer; color: var(--ink); font-size: 14px; }
+    details summary::marker { color: var(--accent); }
+    .detail-body { padding: 0 13px 13px; }
+    .detail-body p { margin: 7px 0; color: var(--muted); font: 13px/1.55 system-ui, sans-serif; }
+    .settings-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 9px; }
+    .primary-button, .secondary-button {
+      min-height: 49px; padding: 0 17px; border-radius: 12px; cursor: pointer;
+      border: 1px solid var(--edge); background: #eee5d2; font-size: 16px;
+    }
+    .primary-button {
+      color: #f5efe2; border-color: #465c51;
+      background: linear-gradient(180deg, #617a6b, #526d60);
+      box-shadow: 0 3px 0 rgba(45,64,54,.2);
+    }
+    .primary-button:hover { background: linear-gradient(180deg, #6b8475, #5a7567); }
+    .primary-button:disabled, .secondary-button:disabled { opacity: .54; cursor: not-allowed; }
+    .secondary-button:hover { background: #f5efe2; }
+    .setup-footer { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 14px; }
+    .setup-footer p { margin: 0; color: var(--muted); font: 12px/1.5 system-ui, sans-serif; }
+    .battle { display: none; }
+    .battle.active { display: block; }
+    .setup.hidden { display: none; }
+    .round-strip {
+      display: flex; justify-content: space-between; align-items: center; gap: 8px;
+      margin-bottom: 12px; padding: 10px 13px; border-radius: 12px; color: #f5efe2; background: var(--slate-deep);
+      font: 13px/1.3 system-ui, sans-serif;
+    }
+    .round-strip strong { font-weight: 700; font-size: 16px; line-height: 1.2; }
+    .units { display: grid; grid-template-columns: 1fr; gap: 10px; }
+    .unit-card { position: relative; padding: 13px; }
+    .unit-card.selected-target { border-color: var(--accent); background: #e6e5d8; box-shadow: inset 0 0 0 1px rgba(82,109,96,.22); }
+    .unit-card.defeated { opacity: .57; filter: grayscale(.55); }
+    .unit-head { display: flex; align-items: center; gap: 11px; }
+    .avatar {
+      display: grid; place-items: center; width: 45px; height: 45px; flex: 0 0 45px;
+      color: #efe7d6; border: 2px solid rgba(239,231,214,.75); border-radius: 50%;
+      background: radial-gradient(circle at 36% 28%, #9ca79e, #65766d 52%, #42534c);
+      box-shadow: 0 2px 5px rgba(34,39,35,.2); font-size: 17px;
+    }
+    .avatar.enemy { background: radial-gradient(circle at 36% 28%, #b49c88, #8c7766 53%, #63574f); }
+    .unit-names { min-width: 0; flex: 1; }
+    .unit-name-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .unit-name { font-size: 16px; font-weight: 700; }
+    .unit-caption { margin-top: 3px; color: var(--muted); font: 11px/1.35 system-ui, sans-serif; }
+    .target-tag { color: var(--accent); font: 700 11px/1.2 system-ui, sans-serif; }
+    .health-line { display: flex; justify-content: space-between; gap: 10px; margin: 11px 0 5px; font: 12px/1.3 system-ui, sans-serif; }
+    .health-track, .resolve-track {
+      height: 8px; overflow: hidden; border-radius: 8px; background: rgba(112,97,90,.19);
+    }
+    .health-fill { height: 100%; border-radius: inherit; background: linear-gradient(90deg, #758a70, #526d60); transition: width .2s ease; }
+    .enemy-fill { background: linear-gradient(90deg, #a96e5f, #985344); }
+    .resolve-fill { height: 100%; border-radius: inherit; background: linear-gradient(90deg, #8f86a4, #655b7c); transition: width .2s ease; }
+    .resource-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 9px; }
+    .resource-pill {
+      padding: 5px 8px; border: 1px solid rgba(112,97,90,.22); border-radius: 99px;
+      background: rgba(255,255,255,.3); color: var(--ink); font: 11px/1.15 system-ui, sans-serif;
+    }
+    .resource-pill b { font-weight: 700; }
+    .status-line { min-height: 17px; margin-top: 6px; color: var(--danger); font: 11px/1.4 system-ui, sans-serif; }
+    .middle-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 13px; }
+    .board-card { padding: 14px; }
+    .board-intro { margin: -4px 0 11px; color: var(--muted); font: 12px/1.45 system-ui, sans-serif; }
+    .board-grid {
+      display: grid; grid-template-columns: 62px repeat(2, minmax(0,1fr));
+      grid-template-rows: repeat(4, 76px); gap: 7px;
+      padding: 9px; border-radius: 13px;
+      background:
+        linear-gradient(rgba(62,78,82,.13), rgba(62,78,82,.13)),
+        repeating-linear-gradient(135deg, rgba(239,231,214,.2) 0 7px, rgba(63,77,80,.05) 7px 14px),
+        #87949a;
+      border: 1px solid rgba(58,71,76,.45);
+    }
+    .row-pick, .empty-cell, .board-skill {
+      min-width: 0; border-radius: 9px;
+    }
+    .row-pick {
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+      border: 1px solid rgba(239,231,214,.45); color: #f5efe2; background: rgba(51,65,70,.46);
+      cursor: pointer; font: 12px/1.1 system-ui, sans-serif;
+    }
+    .row-pick small { opacity: .76; font-size: 10px; }
+    .row-pick[aria-pressed="true"] { background: #d9d4c5; border-color: #f5efe2; color: var(--ink); }
+    .row-pick:disabled { opacity: .48; cursor: default; }
+    .empty-cell {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 5px; text-align: center; border: 1px dashed rgba(239,231,214,.75);
+      color: #f5efe2; background: rgba(42,57,62,.21); font: 11px/1.3 system-ui, sans-serif;
+    }
+    .empty-cell b { font-size: 12px; }
+    .board-skill {
+      z-index: 1; display: flex; flex-direction: column; justify-content: space-between;
+      padding: 8px 9px; border: 1px solid rgba(239,231,214,.76);
+      color: #293731; background: linear-gradient(150deg, #f5efe2, #e8ddc7);
+      box-shadow: 0 2px 5px rgba(35,43,43,.22); overflow: hidden;
+    }
+    .board-skill.response { background: linear-gradient(150deg, #e9e5d8, #d8d8cb); }
+    .board-skill.resource { background: linear-gradient(150deg, #e6e8dc, #cfd8d0); }
+    .board-skill.special { background: linear-gradient(150deg, #efe2d6, #e2cdbd); }
+    .skill-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 5px; }
+    .skill-name { font-size: 14px; font-weight: 700; line-height: 1.25; }
+    .skill-mark { flex: 0 0 auto; color: var(--muted); font: 10px/1.1 system-ui, sans-serif; }
+    .skill-meta { margin-top: 5px; color: #5f695f; font: 10px/1.35 system-ui, sans-serif; }
+    .skill-rule { margin-top: 5px; color: #515d55; font: 10px/1.35 system-ui, sans-serif; }
+    .board-skill.vertical { padding: 8px 7px; }
+    .board-skill.vertical .skill-name { font-size: 13px; }
+    .board-skill.vertical .skill-rule { display: none; }
+    .board-skill.vertical .skill-meta { font-size: 9px; }
+    .board-skill.selected-line { box-shadow: 0 0 0 2px rgba(245,239,226,.9), 0 2px 5px rgba(35,43,43,.22); }
+    .board-footnote { margin: 9px 0 0; color: var(--muted); font: 11px/1.45 system-ui, sans-serif; }
+    .status-card { padding: 14px; }
+    .status-card .section-title { margin-bottom: 10px; }
+    .status-copy { margin: 0; color: var(--muted); font: 12px/1.55 system-ui, sans-serif; }
+    .turn-panel { margin-top: 12px; padding: 14px; }
+    .targets { display: flex; gap: 8px; overflow-x: auto; padding: 0 0 5px; }
+    .target-button {
+      min-width: 130px; min-height: 50px; padding: 8px 11px; text-align: left;
+      border: 1px solid rgba(112,97,90,.37); border-radius: 11px; background: var(--paper-light); cursor: pointer;
+    }
+    .target-button[aria-pressed="true"] { background: #d9d4c5; border-color: var(--accent); }
+    .target-button:disabled { opacity: .48; cursor: not-allowed; }
+    .target-button strong { display: block; font-size: 13px; }
+    .target-button span { display: block; margin-top: 3px; color: var(--muted); font: 11px/1.2 system-ui, sans-serif; }
+    .turn-message { min-height: 20px; margin: 8px 0 10px; color: var(--muted); font: 13px/1.45 system-ui, sans-serif; }
+    .turn-actions { display: flex; gap: 9px; }
+    .turn-actions button { flex: 1; }
+    .log-card { margin-top: 12px; padding: 14px; }
+    .log-head { display: flex; justify-content: space-between; align-items: center; gap: 9px; }
+    .log-head .section-title { margin: 0; }
+    .tiny-button { min-height: 36px; padding: 0 10px; border: 1px solid rgba(112,97,90,.35); border-radius: 9px; background: var(--paper-light); cursor: pointer; font: 12px/1 system-ui, sans-serif; }
+    .log-list { display: flex; flex-direction: column; gap: 6px; max-height: 310px; overflow: auto; margin-top: 11px; padding-right: 3px; }
+    .log-entry {
+      padding: 8px 9px; border-left: 3px solid rgba(104,118,129,.44); border-radius: 4px 8px 8px 4px;
+      background: rgba(104,118,129,.08); color: var(--ink); font: 12px/1.5 system-ui, sans-serif;
+    }
+    .log-entry strong { color: var(--slate-deep); }
+    .log-entry.hit { border-left-color: #985344; }
+    .log-entry.good { border-left-color: #526d60; }
+    .log-entry.rule { border-left-color: #81779b; }
+    .rules { margin-top: 12px !important; }
+    .rules-list { margin: 0; padding-left: 18px; color: var(--muted); font: 12px/1.6 system-ui, sans-serif; }
+    .rules-list li + li { margin-top: 5px; }
+    .sources { margin-top: 10px !important; font-size: 11px !important; }
+    .scope-alert {
+      margin-top: 12px; padding: 10px 12px; border: 1px solid rgba(152,83,68,.36);
+      border-radius: 11px; background: rgba(152,83,68,.07); color: #74473e;
+      font: 12px/1.5 system-ui, sans-serif;
+    }
+    .end-state {
+      display: none; margin-top: 12px; padding: 13px; border-radius: 12px;
+      color: #f5efe2; background: var(--slate-deep); font-size: 17px; text-align: center;
+    }
+    .end-state.active { display: block; }
+    .footer-note { padding: 12px 3px 0; color: rgba(245,239,226,.76); text-align: center; font: 11px/1.5 system-ui, sans-serif; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    @media (min-width: 720px) {
+      .app { padding-top: 22px; }
+      .content { padding: 20px; }
+      .units { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .middle-grid { grid-template-columns: minmax(0,1.28fr) minmax(250px,.72fr); align-items: start; }
+      .board-grid { grid-template-rows: repeat(4, 82px); }
+    }
+    @media (max-width: 620px) {
+      .app { padding: 10px 9px calc(18px + env(safe-area-inset-bottom)); }
+      .topbar { padding-bottom: 10px; }
+      .brand h1 { font-size: 18px; }
+      .brand p { font-size: 10px; }
+      .seal { width: 37px; height: 37px; flex-basis: 37px; }
+      .top-actions button { min-height: 39px; padding: 0 9px; font-size: 12px; }
+      .page-head { padding: 15px 14px 12px; }
+      .content { padding: 11px; }
+      .setup-card { padding: 13px; }
+      .preset-grid { gap: 6px; }
+      .preset { min-height: 98px; padding: 9px 8px; }
+      .preset strong { font-size: 14px; }
+      .preset span { font-size: 10px; }
+      .setup-controls { grid-template-columns: repeat(2, 1fr); }
+      .settings-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .setup-footer { align-items: stretch; flex-direction: column; }
+      .setup-footer button { width: 100%; }
+      .unit-card { padding: 11px; }
+      .middle-grid { gap: 9px; }
+      .board-card, .status-card, .turn-panel, .log-card { padding: 11px; }
+      .board-grid { grid-template-columns: 54px repeat(2, minmax(0,1fr)); grid-template-rows: repeat(4, 73px); gap: 6px; padding: 7px; }
+      .row-pick { font-size: 11px; }
+      .empty-cell { font-size: 10px; }
+      .board-skill { padding: 7px; }
+      .skill-name { font-size: 12px; }
+      .skill-meta { font-size: 9px; }
+      .skill-rule { font-size: 9px; }
+    }
+    @media (max-width: 370px) {
+      .board-grid { grid-template-columns: 48px repeat(2, minmax(0,1fr)); grid-template-rows: repeat(4, 70px); padding: 6px; gap: 5px; }
+      .preset-grid { grid-template-columns: 1fr; }
+      .preset { min-height: auto; }
+      .skill-rule { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="seal" aria-hidden="true">武</div>
+        <div>
+          <h1>灵台试武</h1>
+          <p>单文件 · 离线可玩 · 手机浏览器</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button type="button" id="showSetup">试演配置</button>
+        <button type="button" id="resetBattle" hidden>重开</button>
+      </div>
+    </header>
+
+    <main class="shell">
+      <div class="page-head">
+        <div class="eyebrow">Combat sandbox · 2026.11</div>
+        <div class="page-title-row">
+          <h2 class="page-title">招式盘对练</h2>
+          <span class="phase-pill" id="phasePill">配置试演</span>
+        </div>
+        <p class="head-note">每回合选一行。双方当前行按出手值交错结算；对手的招式会在实际出手时揭示。</p>
+      </div>
+
+      <div class="content">
+        <section class="setup" id="setup">
+          <div class="paper-card setup-card">
+            <h3 class="section-title">选择试演盘 <small>四行 · 每行两格</small></h3>
+            <div class="preset-grid" role="group" aria-label="选择招式盘">
+              <button type="button" class="preset" data-preset="basic" aria-pressed="true">
+                <strong>拳掌基础</strong>
+                <span>应敌、架招、痛击<br>留白可回复体力</span>
+              </button>
+              <button type="button" class="preset" data-preset="blood" aria-pressed="false">
+                <strong>气血显臂</strong>
+                <span>催血、近身攻击<br>接入百骸心法</span>
+              </button>
+              <button type="button" class="preset" data-preset="qi" aria-pressed="false">
+                <strong>聚炁周天</strong>
+                <span>尽锋、聚炁<br>试演跨行招式</span>
+              </button>
+            </div>
+            <div class="setup-info" id="presetInfo"></div>
+            <div class="setup-controls">
+              <div class="field">
+                <label for="enemyCount">陪练人数</label>
+                <select id="enemyCount">
+                  <option value="1">1 人</option>
+                  <option value="2">2 人</option>
+                  <option value="3">3 人</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="bookMode">百骸心法</label>
+                <select id="bookMode">
+                  <option value="none">不启用</option>
+                  <option value="aux">辅修</option>
+                  <option value="main">主修</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="heartVolume">已研读卷数</label>
+                <select id="heartVolume">
+                  <option value="1">一卷</option>
+                  <option value="2">二卷</option>
+                  <option value="3">三卷</option>
+                  <option value="4" selected>四卷</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="startingBlood">起始气血层数</label>
+                <input id="startingBlood" type="number" value="0" min="0" max="8" step="1" inputmode="numeric">
+              </div>
+            </div>
+            <details class="advanced">
+              <summary>调整试演属性与资源</summary>
+              <div class="detail-body">
+                <p>这些是本局试演输入。角色属性派生出有效速度、定力与生命上限；物理防御和法力上限可直接调整。</p>
+                <div class="settings-grid">
+                  <div class="field"><label for="p">体魄</label><input id="p" type="number" value="5" min="0" max="100" step="1" inputmode="numeric"></div>
+                  <div class="field"><label for="i">灵慧</label><input id="i" type="number" value="5" min="0" max="100" step="1" inputmode="numeric"></div>
+                  <div class="field"><label for="s">神魂</label><input id="s" type="number" value="5" min="0" max="100" step="1" inputmode="numeric"></div>
+                  <div class="field"><label for="baseP">基础体魄</label><input id="baseP" type="number" value="5" min="0" max="100" step="1" inputmode="numeric"></div>
+                  <div class="field"><label for="bodyProf">体道造诣</label><input id="bodyProf" type="number" value="0" min="0" max="100" step="1" inputmode="numeric"></div>
+                  <div class="field"><label for="magicProf">术法造诣</label><input id="magicProf" type="number" value="0" min="0" max="100" step="1" inputmode="numeric"></div>
+                  <div class="field"><label for="swordProf">剑道造诣</label><input id="swordProf" type="number" value="0" min="0" max="100" step="1" inputmode="numeric"></div>
+                  <div class="field"><label for="swordIntent">起始剑意</label><input id="swordIntent" type="number" value="0" min="0" max="10" step="1" inputmode="numeric"></div>
+                  <div class="field"><label for="defense">自身物理防御</label><input id="defense" type="number" value="4" min="0" max="100" step="1" inputmode="numeric"></div>
+                  <div class="field"><label for="enemyP">陪练体魄</label><input id="enemyP" type="number" value="5" min="0" max="100" step="1" inputmode="numeric"></div>
+                  <div class="field"><label for="enemyI">陪练灵慧</label><input id="enemyI" type="number" value="5" min="0" max="100" step="1" inputmode="numeric"></div>
+                  <div class="field"><label for="enemyS">陪练神魂</label><input id="enemyS" type="number" value="5" min="0" max="100" step="1" inputmode="numeric"></div>
+                  <div class="field"><label for="enemyBodyProf">陪练体道造诣</label><input id="enemyBodyProf" type="number" value="0" min="0" max="100" step="1" inputmode="numeric"></div>
+                  <div class="field"><label for="enemyDefense">陪练物理防御</label><input id="enemyDefense" type="number" value="4" min="0" max="100" step="1" inputmode="numeric"></div>
+                  <div class="field"><label for="manaCap">法力上限 M</label><input id="manaCap" type="number" value="2" min="0" max="12" step="1" inputmode="numeric"></div>
+                  <div class="field"><label for="startingMana">本局起始法力</label><input id="startingMana" type="number" value="2" min="0" max="12" step="1" inputmode="numeric"></div>
+                  <div class="field"><label for="startingQi">起始炁</label><input id="startingQi" type="number" value="0" min="0" max="30" step="1" inputmode="numeric"></div>
+                </div>
+                <p class="hint">正式战斗开局法力按容量初始化；“本局起始法力”只用于试演阈值变化。起始气血、炁同样是试演场景输入。</p>
+              </div>
+            </details>
+            <div class="scope-alert">五行公共战斗机制仍是待审构想，尚无可用于正式结算的完整规则。本试玩不模拟五行效果。</div>
+            <div class="setup-footer">
+              <p>命中固定成功、会心关闭，便于观察费用、伤害公式、出手顺序、化解、气血与炁。</p>
+              <button type="button" class="primary-button" id="startBattle">进入对练</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="battle" id="battle" aria-live="polite">
+          <div class="round-strip">
+            <span><strong id="roundText">第 1 回合</strong> · 选择一行交锋</span>
+            <span id="battleBuild">拳掌基础</span>
+          </div>
+          <div class="units" id="units"></div>
+          <div class="middle-grid">
+            <section class="paper-card board-card">
+              <h3 class="section-title">你的灵台 <small>战斗中不可改盘</small></h3>
+              <p class="board-intro">点选一行；真正空格按行内顺序回复体力。跨行招式选中覆盖行时可检查一次。</p>
+              <div class="board-grid" id="boardGrid" aria-label="四行两列招式盘"></div>
+              <p class="board-footnote" id="bookStatus"></p>
+            </section>
+            <aside class="paper-card status-card">
+              <h3 class="section-title">本回合 <small id="roundSub">等待选行</small></h3>
+              <p class="status-copy" id="turnSummary">选一行后开始交锋。敌方选择保持隐藏，实际出手时记入战斗记录。</p>
+              <div class="scope-alert">这是按最新选行主案制作的独立试玩，不读正式存档，也不修改游戏中的战斗实现。</div>
+            </aside>
+          </div>
+
+          <section class="paper-card turn-panel">
+            <h3 class="section-title">锁定目标 <small id="targetHint">单一合法目标会自动选中</small></h3>
+            <div class="targets" id="targets"></div>
+            <p class="turn-message" id="turnMessage">选择一行后开始本回合交锋。</p>
+            <div class="turn-actions">
+              <button type="button" class="primary-button" id="executeRow" disabled>交锋本行</button>
+              <button type="button" class="primary-button" id="nextRound" hidden>进入下一回合</button>
+              <button type="button" class="secondary-button" id="newBattle">重新配置</button>
+            </div>
+            <div class="end-state" id="endState"></div>
+          </section>
+
+          <section class="paper-card log-card">
+            <div class="log-head">
+              <h3 class="section-title">交锋记录 <small id="logCount">0 条</small></h3>
+              <button type="button" class="tiny-button" id="copyLog">复制记录</button>
+            </div>
+            <div class="log-list" id="logList" role="log" aria-live="polite"></div>
+          </section>
+
+          <details class="rules">
+            <summary>试玩结算口径与范围</summary>
+            <div class="detail-body">
+              <ul class="rules-list">
+                <li>体力每回合增加 3，上限 6，余额保留；行内真实空格回复 1。招式费用不足或锁定目标失效时跳过且不扣费。</li>
+                <li>选中一行后，交锋只比较各单位当前行动；同速按试玩阵容顺序、再按行内位置稳定处理。出手值使用人物有效速度、招式节奏倍率和招式属性修正。</li>
+                <li>应敌、痛击、灵击、尽锋、血臂撼岳伤害取当前招式资源公式；命中固定成功、会心关闭。物理伤害先受化解，再扣试演输入的固定物防，最低保留正伤害的 1%。</li>
+                <li>架招到达行内位置后待命；后续合格物理攻击触发时才支付体力并生成化解，未触发则免费结束。</li>
+                <li>气血上限 8；催血给予 2 层。百骸心法按卷章门槛显臂，每只显臂为近身物理攻击追加一段。气血减少的回复仅在有对应减少效果时发生；当前预设没有主动降气血技能。</li>
+                <li>聚炁增加 2 炁。炁达到当前法力上限两倍时清空，并将法力补至上限；法力上限为 0 时不触发周天。</li>
+                <li>定力上限按 60 + 4×神魂 + 2×灵慧 + 2×身心协调值计算；护盾前有效伤害乘招式定力冲击系数。定力归零会跳过本回合余下动作及下一整回合。</li>
+                <li>陪练选行策略、样例对手、固定命中和无会心是试玩夹具，不代表正式 NPC AI 或全套战斗判定。</li>
+              </ul>
+              <p class="sources">规则来源：<span>docs/plans/战斗与构筑/灵台选行战斗规则_20261111.md</span>、<span>docs/plans/战斗与构筑/design-plan.md</span>、<span>docs/plans/战斗与构筑/云息公共战斗状态与秘籍构筑规则.md</span>、<span>resources/activeskills/*.tres</span>。</p>
+            </div>
+          </details>
+        </section>
+      </div>
+    </main>
+    <p class="footer-note">独立试玩夹具 · 不会写入人物存档、招式配置或正式战斗记录</p>
+  </div>
+
+  <script>
+    'use strict';
+    const SKILLS = {
+      enemy: {
+        id: 'enemy', name: '应敌', kind: 'attack', cost: 1, mana: 0, w: 1, h: 1, melee: true,
+        text: '近身物理攻击', formula: '7 + 体魄×0.25 + 体魄×0.20',
+        terms: [['p', .25], ['p', .20]]
+      },
+      guard: {
+        id: 'guard', name: '架招', kind: 'response', cost: 1, mana: 0, w: 1, h: 1,
+        text: '应对后续物理攻击', formula: '3 + floor(体魄÷4) + floor(min(体魄×0.25, 神魂×0.20))',
+        terms: []
+      },
+      pain: {
+        id: 'pain', name: '痛击', kind: 'attack', cost: 2, mana: 0, w: 2, h: 1, melee: true,
+        text: '近身物理攻击', formula: '11 + 体魄×0.45 + 体魄×0.30',
+        terms: [['p', .45], ['p', .30]]
+      },
+      cuixue: {
+        id: 'cuixue', name: '催血', kind: 'blood', cost: 1, mana: 0, w: 2, h: 1,
+        text: '自身气血 +2', formula: '气血 +2', terms: []
+      },
+      qi: {
+        id: 'qi', name: '聚炁', kind: 'qi', cost: 1, mana: 0, w: 2, h: 1,
+        text: '自身获得炁', formula: '炁 +2', terms: []
+      },
+      lingji: {
+        id: 'lingji', name: '灵击', kind: 'attack', cost: 1, mana: 0, w: 2, h: 1, melee: false,
+        text: '远程物理攻击', formula: '6 + 灵慧×0.50 + 术法造诣×0.20',
+        terms: [['i', .5], ['magicProf', .2]]
+      },
+      jinfeng: {
+        id: 'jinfeng', name: '尽锋', kind: 'attack', cost: 2, mana: 1, w: 3, h: 1, melee: true,
+        text: '近身物理攻击', formula: '7 + 灵慧×0.30 + 术法造诣×0.35 + 剑道造诣×0.50 + 剑意×4',
+        terms: [['i', .30], ['magicProf', .35], ['swordProf', .50]]
+      },
+      bloodfist: {
+        id: 'bloodfist', name: '血臂撼岳', kind: 'attack', cost: 2, mana: 0, w: 3, h: 1, melee: true,
+        requiresBaihai: true, text: '近身物理攻击', formula: 'round(10 + 体魄×0.65 + 体道造诣×0.35)',
+        terms: [['p', .65], ['bodyProf', .35]]
+      }
+    };
+    const PRESETS = {
+      basic: {
+        name: '拳掌基础',
+        description: '两项基础拳招与架招；后两行留空，选中空行可按格回复体力。',
+        placements: [
+          { skill: 'enemy', r: 0, c: 0, w: 1, h: 1 },
+          { skill: 'guard', r: 0, c: 1, w: 1, h: 1 },
+          { skill: 'pain', r: 1, c: 0, w: 2, h: 1 }
+        ]
+      },
+      blood: {
+        name: '气血显臂',
+        description: '催血与近身攻击；可调整百骸心法卷数、主辅修和起始气血，观察显臂门槛。',
+        placements: [
+          { skill: 'enemy', r: 0, c: 0, w: 1, h: 1 },
+          { skill: 'guard', r: 0, c: 1, w: 1, h: 1 },
+          { skill: 'pain', r: 1, c: 0, w: 2, h: 1 },
+          { skill: 'cuixue', r: 2, c: 0, w: 2, h: 1 }
+        ]
+      },
+      qi: {
+        name: '聚炁周天',
+        description: '尽锋与聚炁各自纵向占格。第 2、3 行都可检查跨行招式；两次聚炁可触发周天。',
+        placements: [
+          { skill: 'enemy', r: 0, c: 0, w: 1, h: 1 },
+          { skill: 'guard', r: 0, c: 1, w: 1, h: 1 },
+          { skill: 'jinfeng', r: 1, c: 0, w: 1, h: 3 },
+          { skill: 'qi', r: 1, c: 1, w: 1, h: 2 }
+        ]
+      },
+      baihai: {
+        name: '百骸血手',
+        description: '血臂撼岳纵向占三行；催血纵向占两行。百骸心法为试演装配，可切换主修或辅修。',
+        placements: [
+          { skill: 'bloodfist', r: 0, c: 0, w: 1, h: 3 },
+          { skill: 'enemy', r: 0, c: 1, w: 1, h: 1 },
+          { skill: 'guard', r: 1, c: 1, w: 1, h: 1 },
+          { skill: 'cuixue', r: 2, c: 1, w: 1, h: 2 }
+        ]
+      }
+    };
+    const FORMULA = {
+      maxHealth: function (a) { return Math.round(60 + 9 * a.p + 2 * a.baseP + 3 * a.s + 1.5 * a.i); },
+      speed: function (a) { return 80 + .5 * a.p + .75 * a.i + 1.5 * Math.min(a.p, a.s) + .75 * a.s; },
+      precision: function (a) { return 7 * a.i + a.s + .5 * a.p; },
+      dodge: function (a) { return 4 * Math.min(a.p, a.s) + 2 * a.s + a.i + .5 * a.p; },
+      critical: function (a) { return .5 * a.p + 2 * a.s + .3 * a.i; },
+      critResist: function (a) { return 3 * a.p + 2 * a.i + 2 * Math.min(a.p, a.s) + 1.5 * a.s; },
+      composure: function (a) { return Math.round(60 + 4 * a.s + 2 * a.i + 2 * Math.min(a.p, a.s)); }
+    };
+    const state = {
+      phase: 'setup', preset: 'basic', round: 0, selectedRow: -1, selectedTarget: null,
+      hero: null, enemies: [], log: [], actionCount: 0
+    };
+    const $ = function (id) { return document.getElementById(id); };
+    const clamp = function (v, lo, hi) { return Math.max(lo, Math.min(hi, v)); };
+    const number = function (id, fallback, lo, hi) {
+      const raw = Number($(id).value);
+      return clamp(Number.isFinite(raw) ? raw : fallback, lo, hi);
+    };
+    const round = function (v) { return Math.floor(v + .5); };
+    const fmt = function (v) { return Math.round(v * 10) / 10; };
+    const esc = function (value) {
+      return String(value).replace(/[&<>"']/g, function (ch) {
+        return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[ch];
+      });
+    };
+    function readSetup() {
+      const heroAttrs = {
+        p: number('p', 5, 0, 100), i: number('i', 5, 0, 100), s: number('s', 5, 0, 100),
+        baseP: number('baseP', 5, 0, 100), bodyProf: number('bodyProf', 0, 0, 100),
+        magicProf: number('magicProf', 0, 0, 100), swordProf: number('swordProf', 0, 0, 100),
+        swordIntent: number('swordIntent', 0, 0, 10), physicalDefense: number('defense', 4, 0, 100)
+      };
+      const enemyAttrs = {
+        p: number('enemyP', 5, 0, 100), i: number('enemyI', 5, 0, 100), s: number('enemyS', 5, 0, 100),
+        baseP: number('enemyP', 5, 0, 100), bodyProf: number('enemyBodyProf', 0, 0, 100),
+        magicProf: 0, swordProf: 0, swordIntent: 0, physicalDefense: number('enemyDefense', 4, 0, 100)
+      };
+      const manaCap = number('manaCap', 2, 0, 12);
+      const startMana = Math.min(number('startingMana', manaCap, 0, 12), manaCap);
+      return {
+        heroAttrs: heroAttrs, enemyAttrs: enemyAttrs, enemyCount: number('enemyCount', 1, 1, 3),
+        bookMode: $('bookMode').value, heartVolume: number('heartVolume', 4, 1, 4),
+        startingBlood: number('startingBlood', 0, 0, 8), manaCap: manaCap, startingMana: startMana,
+        startingQi: number('startingQi', 0, 0, 30)
+      };
+    }
+    function unitFrom(name, side, attrs, cfg, idx) {
+      const maxHealth = FORMULA.maxHealth(attrs);
+      return {
+        id: side === 'hero' ? 'hero' : 'enemy-' + idx, name: name, side: side, attrs: attrs,
+        maxHealth: maxHealth, hp: maxHealth, maxComposure: FORMULA.composure(attrs),
+        composure: FORMULA.composure(attrs), energy: 0, manaCap: side === 'hero' ? cfg.manaCap : 0,
+        mana: side === 'hero' ? cfg.startingMana : 0, qi: side === 'hero' ? cfg.startingQi : 0,
+        qiBlood: side === 'hero' ? cfg.startingBlood : 0, maxQiBlood: 8,
+        physicalDefense: attrs.physicalDefense, bookMode: side === 'hero' ? cfg.bookMode : 'none',
+        heartVolume: side === 'hero' ? cfg.heartVolume : 0, placements: [],
+        selectedRow: -1, lockedTarget: null, cursor: 0, pendingResponse: null,
+        skipThisRound: false, skipNextRound: false, stunnedNow: false, died: false,
+        lastMove: ''
+      };
+    }
+    function copyPlacements(preset) {
+      return PRESETS[preset].placements.map(function (p) {
+        return { skill: p.skill, r: p.r, c: p.c, w: p.w, h: p.h };
+      });
+    }
+    function beginBattle() {
+      const cfg = readSetup();
+      state.phase = 'choose';
+      state.round = 0;
+      state.selectedRow = -1;
+      state.selectedTarget = null;
+      state.log = [];
+      state.actionCount = 0;
+      state.hero = unitFrom('试演修士', 'hero', cfg.heroAttrs, cfg, 0);
+      state.hero.placements = copyPlacements(state.preset);
+      state.enemies = [];
+      for (let n = 0; n < cfg.enemyCount; n++) {
+        const enemy = unitFrom('对练者 ' + (n + 1), 'enemy', Object.assign({}, cfg.enemyAttrs), cfg, n + 1);
+        enemy.placements = copyPlacements('basic');
+        state.enemies.push(enemy);
+      }
+      $('setup').classList.add('hidden');
+      $('battle').classList.add('active');
+      $('resetBattle').hidden = false;
+      $('showSetup').textContent = '配置';
+      log('演练开始。双方使用试演夹具；每回合体力 +3。', 'rule');
+      beginRound();
+    }
+    function aliveEnemies() { return state.enemies.filter(function (u) { return u.hp > 0; }); }
+    function allUnits() { return [state.hero].concat(state.enemies); }
+    function log(message, tone) {
+      state.log.push({ round: Math.max(1, state.round), text: message, tone: tone || '' });
+      if (state.log.length > 160) state.log.shift();
+    }
+    function beginRound() {
+      state.round += 1;
+      state.selectedRow = -1;
+      const everyone = allUnits();
+      everyone.forEach(function (u) {
+        if (u.hp <= 0) return;
+        u.energy = Math.min(6, u.energy + 3);
+        u.composure = u.maxComposure;
+        u.skipThisRound = u.skipNextRound;
+        u.skipNextRound = false;
+        u.stunnedNow = false;
+        u.pendingResponse = null;
+        u.selectedRow = -1;
+        u.lockedTarget = null;
+        u.cursor = 0;
+        if (u.skipThisRound) log(u.name + '仍在失神中，本回合跳过行动。', 'rule');
+      });
+      state.selectedTarget = aliveEnemies().length === 1 ? aliveEnemies()[0].id : null;
+      log('第 ' + state.round + ' 回合开始：存活参战者体力 +3，定力恢复至上限。', 'rule');
+      updateView();
+    }
+    function findPlacement(unit, row, col) {
+      for (let i = 0; i < unit.placements.length; i++) {
+        const p = unit.placements[i];
+        if (row >= p.r && row < p.r + p.h && col >= p.c && col < p.c + p.w) return p;
+      }
+      return null;
+    }
+    function rowHasAttack(unit, row) {
+      return unit.placements.some(function (p) {
+        return row >= p.r && row < p.r + p.h && SKILLS[p.skill].kind === 'attack';
+      });
+    }
+    function choosePlayerRow(row) {
+      if (state.phase !== 'choose' || state.hero.skipThisRound) return;
+      state.selectedRow = row;
+      state.hero.selectedRow = row;
+      if (rowHasAttack(state.hero, row)) {
+        const alive = aliveEnemies();
+        if (alive.length === 1) state.selectedTarget = alive[0].id;
+        else if (!alive.some(function (u) { return u.id === state.selectedTarget; })) state.selectedTarget = alive[0] ? alive[0].id : null;
+      } else {
+        state.selectedTarget = aliveEnemies().length === 1 ? aliveEnemies()[0].id : null;
+      }
+      updateView();
+    }
+    function chooseTarget(id) {
+      if (state.phase !== 'choose') return;
+      if (!aliveEnemies().some(function (u) { return u.id === id; })) return;
+      state.selectedTarget = id;
+      updateView();
+    }
+    function rowHasEmpty(row) {
+      for (let c = 0; c < 2; c++) if (!findPlacement(state.hero, row, c)) return true;
+      return false;
+    }
+    function enemyChooseRow(unit) {
+      if (unit.skipThisRound) return 0;
+      if (unit.energy < 1) return 2;
+      if (state.round % 2 === 1) return 0;
+      if (unit.energy >= 2) return 1;
+      return 0;
+    }
+    function currentHead(unit) {
+      if (!unit || unit.hp <= 0 || unit.skipThisRound || unit.cursor >= 2) return null;
+      while (unit.cursor < 2) {
+        const col = unit.cursor;
+        const p = findPlacement(unit, unit.selectedRow, col);
+        if (!p) {
+          unit.energy = Math.min(6, unit.energy + 1);
+          log(unit.name + '经过第 ' + (unit.selectedRow + 1) + ' 行空格，体力 +1（' + unit.energy + '/6）。', 'good');
+          unit.cursor += 1;
+          continue;
+        }
+        if (p.c < col) {
+          unit.cursor += 1;
+          continue;
+        }
+        const skill = SKILLS[p.skill];
+        const tempo = 1 / (1 + .08 * Math.max(p.w * p.h - 1, 0) + .04 * skill.cost);
+        const mainStat = skill.terms.reduce(function (best, item) {
+          const key = item[0], coefficient = item[1];
+          const value = key === 'p' ? unit.attrs.p : key === 'i' ? unit.attrs.i : key === 's' ? unit.attrs.s : 0;
+          return Math.max(best, Math.max(0, value * coefficient));
+        }, 0);
+        const speed = FORMULA.speed(unit.attrs) * tempo + mainStat;
+        return { unit: unit, placement: p, skill: skill, col: col, speed: speed };
+      }
+      return null;
+    }
+    function advance(unit, placement) {
+      unit.cursor += placement ? placement.w : 1;
+    }
+    function executeSelectedRow() {
+      if (state.phase !== 'choose') return;
+      const hero = state.hero;
+      if (!hero.skipThisRound && state.selectedRow < 0) return;
+      if (hero.skipThisRound) hero.selectedRow = 0;
+      if (!hero.skipThisRound && rowHasAttack(hero, state.selectedRow) && !aliveEnemies().some(function (u) { return u.id === state.selectedTarget; })) return;
+      hero.selectedRow = hero.skipThisRound ? 0 : state.selectedRow;
+      hero.lockedTarget = state.selectedTarget;
+      state.enemies.forEach(function (enemy) {
+        enemy.selectedRow = enemyChooseRow(enemy);
+        enemy.lockedTarget = hero.id;
+      });
+      state.phase = 'resolving';
+      log(hero.skipThisRound ? '你因失神跳过本回合。' : '你选择第 ' + (hero.selectedRow + 1) + ' 行。对手选行保持隐藏。', 'rule');
+      state.enemies.forEach(function (e) {
+        if (e.hp > 0) log(e.name + '选择了行动行。', 'rule');
+      });
+      const units = allUnits();
+      units.forEach(function (u) { u.cursor = 0; });
+      let head;
+      let safety = 0;
+      while (safety < 80) {
+        safety += 1;
+        const heads = units.map(currentHead).filter(Boolean);
+        if (!heads.length) break;
+        heads.sort(function (a, b) {
+          if (Math.abs(a.speed - b.speed) > .0001) return b.speed - a.speed;
+          const orderDiff = units.indexOf(a.unit) - units.indexOf(b.unit);
+          return orderDiff || a.col - b.col;
+        });
+        head = heads[0];
+        resolveAction(head);
+        advance(head.unit, head.placement);
+      }
+      if (safety >= 80) log('试演队列达到安全步数上限。', 'rule');
+      allUnits().forEach(function (u) {
+        if (u.pendingResponse) {
+          log(u.name + '的架招待命结束，未触发，不付费。', 'rule');
+          u.pendingResponse = null;
+        }
+      });
+      state.hero.skipThisRound = false;
+      state.enemies.forEach(function (u) { u.skipThisRound = false; });
+      state.phase = 'turnEnd';
+      checkEndState();
+      updateView();
+    }
+    function resolveAction(action) {
+      const unit = action.unit, skill = action.skill;
+      if (unit.hp <= 0) return;
+      if (unit.stunnedNow || unit.skipThisRound) {
+        log(unit.name + '失神，跳过「' + skill.name + '」，不付费用。', 'rule');
+        return;
+      }
+      if (skill.requiresBaihai && unit.bookMode === 'none') {
+        log(unit.name + '未装配百骸，跳过「' + skill.name + 」，不付费用。', 'rule');
+        return;
+      }
+      if (skill.kind === 'response') {
+        unit.pendingResponse = { skill: skill, placement: action.placement, block: guardValue(unit) };
+        log(unit.name + '的「架招」进入待命，等待本回合后续物理攻击。', 'good');
+        return;
+      }
+      let target = null;
+      if (skill.kind === 'attack') {
+        target = unit.side === 'hero'
+          ? state.enemies.find(function (u) { return u.id === unit.lockedTarget && u.hp > 0; })
+          : state.hero.hp > 0 ? state.hero : null;
+        if (!target) {
+          log(unit.name + '的「' + skill.name + '」目标已失效，跳过且不付费。', 'rule');
+          return;
+        }
+      }
+      if (unit.energy < skill.cost || unit.mana < skill.mana) {
+        log(unit.name + '体力或法力不足，跳过「' + skill.name + '」，不扣资源。', 'rule');
+        return;
+      }
+      unit.energy -= skill.cost;
+      unit.mana -= skill.mana;
+      unit.lastMove = skill.name;
+      if (skill.kind === 'blood') {
+        const before = unit.qiBlood;
+        unit.qiBlood = Math.min(unit.maxQiBlood, unit.qiBlood + 2);
+        const gained = unit.qiBlood - before;
+        log(unit.name + '施展「催血」：气血 +' + gained + '（' + unit.qiBlood + '/8）；消耗体力 1。', 'good');
+        return;
+      }
+      if (skill.kind === 'qi') {
+        gainQi(unit, 2);
+        log(unit.name + '施展「聚炁」：获得炁 2；当前炁 ' + unit.qi + '。体力 −1。', 'good');
+        return;
+      }
+      if (skill.kind === 'attack') resolveAttack(unit, target, skill, action.placement);
+    }
+    function gainQi(unit, amount) {
+      unit.qi += amount;
+      const threshold = unit.manaCap * 2;
+      if (unit.manaCap > 0 && unit.qi >= threshold) {
+        unit.qi = 0;
+        unit.mana = unit.manaCap;
+        log('周天完成：清除炁，法力恢复至 ' + unit.manaCap + '。', 'good');
+      }
+    }
+    function guardValue(unit) {
+      return 3 + Math.floor(unit.attrs.p / 4) + Math.floor(Math.min(unit.attrs.p * .25, unit.attrs.s * .20));
+    }
+    function displayedArms(unit) {
+      if (unit.bookMode === 'none') return 0;
+      const q = unit.qiBlood, volume = unit.heartVolume;
+      if (volume >= 4) return (q >= 7 ? 1 : 0) + (q >= 3 ? 1 : 0);
+      if (volume === 3) return (q >= 8 ? 1 : 0) + (q >= 4 ? 1 : 0);
+      const threshold = volume === 2 ? 4 : 5;
+      return q >= threshold ? 1 : 0;
+    }
+    function bloodArmDamage(unit) {
+      const q = unit.qiBlood, p = unit.attrs.p, b = unit.attrs.bodyProf;
+      let value;
+      if (unit.heartVolume >= 3) value = round(1 + q * .20 + p * .12 + b * .20);
+      else value = round(1 + q * .15 + p * .10 + b * .15);
+      return unit.bookMode === 'main' ? value * 1.2 : value;
+    }
+    function attackFormula(unit, skill) {
+      const a = unit.attrs;
+      if (skill.id === 'enemy') return 7 + a.p * .25 + a.p * .20;
+      if (skill.id === 'pain') return 11 + a.p * .45 + a.p * .30;
+      if (skill.id === 'lingji') return 6 + a.i * .50 + a.magicProf * .20;
+      if (skill.id === 'jinfeng') return 7 + a.i * .30 + a.magicProf * .35 + a.swordProf * .50 + a.swordIntent * 4;
+      if (skill.id === 'bloodfist') return round(10 + a.p * .65 + a.bodyProf * .35);
+      return 0;
+    }
+    function resolveAttack(attacker, defender, skill, placement) {
+      let blockLeft = 0;
+      if (defender.pendingResponse) {
+        const response = defender.pendingResponse;
+        defender.pendingResponse = null;
+        if (defender.energy >= response.skill.cost) {
+          defender.energy -= response.skill.cost;
+          blockLeft = response.block;
+          log(defender.name + '的「架招」触发，支付体力 1，获得化解 ' + blockLeft + '。', 'good');
+        } else {
+          log(defender.name + '的「架招」触发失败：体力不足。', 'rule');
+        }
+      }
+      const arms = skill.melee ? displayedArms(attacker) : 0;
+      const base = Math.max(1, round(attackFormula(attacker, skill)));
+      const armDamage = bloodArmDamage(attacker);
+      const armSegments = [];
+      for (let n = 0; n < arms; n++) armSegments.push(armDamage);
+      let segments = [];
+      if (skill.id === 'bloodfist' && attacker.bookMode !== 'none' && attacker.heartVolume >= 2) {
+        segments = armSegments.concat([base]);
+      } else {
+        segments = [base].concat(armSegments);
+      }
+      if (attacker.bookMode === 'none' || !skill.melee) segments = [base];
+      const label = attacker.name + '施展「' + skill.name + '」→ ' + defender.name;
+      log(label + '：出手值 ' + fmt(actionSpeed(attacker, skill, placement)) + '，消耗体力 ' + skill.cost + (skill.mana ? '、法力 ' + skill.mana : '') + '。', '');
+      let total = 0;
+      for (let n = 0; n < segments.length; n++) {
+        if (defender.hp <= 0) break;
+        const raw = Math.max(1, round(segments[n]));
+        const blocked = Math.min(blockLeft, raw);
+        blockLeft -= blocked;
+        const remaining = raw - blocked;
+        const afterDefense = remaining > 0
+          ? Math.max(remaining - round(defender.physicalDefense), Math.ceil(remaining * .01))
+          : 0;
+        defender.hp = Math.max(0, defender.hp - afterDefense);
+        total += afterDefense;
+        const segName = n === 0 ? '伤害段' : '追加段 ' + n;
+        log('　' + segName + '：基础 ' + raw + (blocked ? '，化解 ' + blocked : '') +
+          '，物防后 ' + afterDefense + '；生命 ' + defender.hp + '/' + defender.maxHealth + '。', afterDefense > 0 ? 'hit' : 'good');
+        if (skill.id === 'jinfeng' && afterDefense > 0) attacker.attrs.swordIntent = 0;
+      }
+      const pressureCoefficient = .20 + .12 * Math.max(placement.w * placement.h - 1, 0) + .04 * skill.cost;
+      if (total > 0 && !defender.skipThisRound && defender.composure > 0) {
+        const pressure = round(total * pressureCoefficient);
+        defender.composure = Math.max(0, defender.composure - pressure);
+        log('　定力冲击 ' + pressure + '（系数 ' + fmt(pressureCoefficient) + '），定力 ' + defender.composure + '/' + defender.maxComposure + '。', 'rule');
+        if (defender.composure === 0 && !defender.skipNextRound) {
+          defender.stunnedNow = true;
+          defender.skipNextRound = true;
+          log(defender.name + '定力归零，进入失神：跳过本回合余下动作及下一回合。', 'rule');
+        }
+      }
+      if (defender.hp === 0) log(defender.name + '倒下。', 'hit');
+      state.actionCount += 1;
+    }
+    function actionSpeed(unit, skill, placement) {
+      const cells = placement.w * placement.h;
+      const tempo = 1 / (1 + .08 * Math.max(cells - 1, 0) + .04 * skill.cost);
+      const primary = skill.terms.reduce(function (best, item) {
+        const value = item[0] === 'p' ? unit.attrs.p : item[0] === 'i' ? unit.attrs.i : item[0] === 's' ? unit.attrs.s : 0;
+        return Math.max(best, Math.max(0, value * item[1]));
+      }, 0);
+      return FORMULA.speed(unit.attrs) * tempo + primary;
+    }
+    function checkEndState() {
+      if (state.hero.hp <= 0) {
+        state.phase = 'ended';
+        $('endState').textContent = '对练结束 · 你已倒下';
+        $('endState').classList.add('active');
+        log('本局结束。', 'rule');
+      } else if (aliveEnemies().length === 0) {
+        state.phase = 'ended';
+        $('endState').textContent = '对练结束 · 全部陪练倒下';
+        $('endState').classList.add('active');
+        log('本局结束。', 'rule');
+      }
+    }
+    function startNextRound() {
+      if (state.phase !== 'turnEnd') return;
+      state.phase = 'choose';
+      $('endState').classList.remove('active');
+      beginRound();
+    }
+    function getCells(unit) {
+      const cells = [];
+      for (let r = 0; r < 4; r++) {
+        for (let c = 0; c < 2; c++) cells.push({ r: r, c: c, placement: findPlacement(unit, r, c) });
+      }
+      return cells;
+    }
+    function boardCard(p, isSelected) {
+      const skill = SKILLS[p.skill];
+      const className = 'board-skill ' + (skill.kind === 'response' ? 'response ' : skill.kind === 'blood' || skill.kind === 'qi' ? 'resource ' : skill.id === 'bloodfist' || skill.id === 'jinfeng' ? 'special ' : '') +
+        (p.h > 1 ? 'vertical ' : '') + (isSelected ? 'selected-line' : '');
+      let shape = p.w + '×' + p.h + '格';
+      let text = skill.text;
+      if (skill.id === 'bloodfist') text = '需百骸 · ' + text;
+      return '<div class="' + className + '" style="grid-column:' + (p.c + 2) + ' / span ' + p.w + ';grid-row:' + (p.r + 1) + ' / span ' + p.h + '">' +
+        '<div class="skill-top"><span class="skill-name">' + esc(skill.name) + '</span><span class="skill-mark">' + shape + '</span></div>' +
+        '<div><div class="skill-meta">体力 ' + skill.cost + (skill.mana ? ' · 法力 ' + skill.mana : '') + ' · ' + esc(skill.formula) + '</div>' +
+        '<div class="skill-rule">' + esc(text) + '</div></div></div>';
+    }
+    function renderBoard() {
+      const grid = $('boardGrid');
+      grid.innerHTML = '';
+      const hero = state.hero;
+      if (!hero) return;
+      const occupied = new Set();
+      hero.placements.forEach(function (p) {
+        for (let r = p.r; r < p.r + p.h; r++) for (let c = p.c; c < p.c + p.w; c++) occupied.add(r + ':' + c);
+      });
+      for (let r = 0; r < 4; r++) {
+        const rowButton = document.createElement('button');
+        rowButton.type = 'button';
+        rowButton.className = 'row-pick';
+        rowButton.style.gridColumn = '1';
+        rowButton.style.gridRow = String(r + 1);
+        rowButton.setAttribute('aria-pressed', String(state.selectedRow === r));
+        rowButton.disabled = state.phase !== 'choose' || hero.skipThisRound;
+        rowButton.innerHTML = '第 ' + (r + 1) + ' 行<small>' + (rowHasEmpty(r) ? '含空格' : '招式行') + '</small>';
+        rowButton.addEventListener('click', function () { choosePlayerRow(r); });
+        grid.appendChild(rowButton);
+      }
+      for (let r = 0; r < 4; r++) {
+        for (let c = 0; c < 2; c++) {
+          if (occupied.has(r + ':' + c)) continue;
+          const empty = document.createElement('div');
+          empty.className = 'empty-cell';
+          empty.style.gridColumn = String(c + 2);
+          empty.style.gridRow = String(r + 1);
+          empty.innerHTML = '<b>空格</b><span>经过 +1 体力</span>';
+          grid.appendChild(empty);
+        }
+      }
+      hero.placements.forEach(function (p) {
+        const chosen = state.selectedRow >= p.r && state.selectedRow < p.r + p.h;
+        grid.insertAdjacentHTML('beforeend', boardCard(p, chosen));
+      });
+    }
+    function unitHTML(unit) {
+      const hero = unit.side === 'hero';
+      const hpPct = unit.maxHealth ? clamp(unit.hp / unit.maxHealth * 100, 0, 100) : 0;
+      const resolvePct = unit.maxComposure ? clamp(unit.composure / unit.maxComposure * 100, 0, 100) : 0;
+      const selected = hero ? false : unit.id === state.selectedTarget && state.phase === 'choose';
+      const arms = displayedArms(unit);
+      const status = unit.hp <= 0 ? '已倒下' : unit.skipThisRound ? '失神 · 本回合跳过' : unit.pendingResponse ? '架招待命中' : unit.stunnedNow ? '失神中' : '';
+      let resources = '<span class="resource-pill"><b>体力</b> ' + unit.energy + '/6</span>';
+      if (hero) {
+        resources += '<span class="resource-pill"><b>法力</b> ' + unit.mana + '/' + unit.manaCap + '</span>';
+        resources += '<span class="resource-pill"><b>炁</b> ' + unit.qi + (unit.manaCap > 0 ? ' / 周天 ' + (unit.manaCap * 2) : ' / 不触发周天') + '</span>';
+        resources += '<span class="resource-pill"><b>气血</b> ' + unit.qiBlood + '/8</span>';
+        if (unit.bookMode !== 'none') resources += '<span class="resource-pill"><b>百骸显臂</b> ' + arms + '/2</span>';
+      }
+      const targetMark = selected ? '<span class="target-tag">本行锁定目标</span>' : '';
+      return '<article class="paper-card unit-card ' + (hero ? '' : 'enemy-card ') + (selected ? 'selected-target ' : '') + (unit.hp <= 0 ? 'defeated' : '') + '" data-unit="' + unit.id + '">' +
+        '<div class="unit-head"><div class="avatar ' + (hero ? '' : 'enemy') + '">' + (hero ? '修' : '练') + '</div>' +
+        '<div class="unit-names"><div class="unit-name-row"><strong class="unit-name">' + esc(unit.name) + '</strong>' + targetMark + '</div>' +
+        '<div class="unit-caption">' + (hero ? '主控 · ' + esc(PRESETS[state.preset].name) : '对练夹具 · 行式隐藏') + '</div></div></div>' +
+        '<div class="health-line"><span>生命</span><strong>' + unit.hp + ' / ' + unit.maxHealth + '</strong></div>' +
+        '<div class="health-track"><div class="health-fill ' + (hero ? '' : 'enemy-fill') + '" style="width:' + hpPct + '%"></div></div>' +
+        '<div class="health-line"><span>定力</span><strong>' + unit.composure + ' / ' + unit.maxComposure + '</strong></div>' +
+        '<div class="resolve-track"><div class="resolve-fill" style="width:' + resolvePct + '%"></div></div>' +
+        '<div class="resource-pills">' + resources + '</div><div class="status-line">' + esc(status) + '</div></article>';
+    }
+    function renderUnits() {
+      $('units').innerHTML = allUnits().map(unitHTML).join('');
+      if (state.phase === 'choose' && aliveEnemies().length > 1) {
+        Array.prototype.forEach.call(document.querySelectorAll('.enemy-card'), function (card) {
+          card.addEventListener('click', function () { chooseTarget(card.getAttribute('data-unit')); });
+        });
+      }
+    }
+    function renderTargets() {
+      const alive = aliveEnemies();
+      const needs = state.selectedRow >= 0 && rowHasAttack(state.hero, state.selectedRow);
+      $('targetHint').textContent = alive.length > 1 && needs ? '同侧单体招式共用该目标' : '单一合法目标会自动选中';
+      if (!needs || alive.length <= 1) {
+        $('targets').innerHTML = state.selectedRow < 0
+          ? '<span class="status-copy">先选择一行。</span>'
+          : !alive.length
+            ? '<span class="status-copy">没有存活的敌方目标。</span>'
+          : alive.length === 1
+          ? '<button type="button" class="target-button" aria-pressed="true" disabled><strong>' + esc(alive[0].name) + '</strong><span>唯一合法目标 · 自动选中</span></button>'
+          : '<span class="status-copy">本行没有单体攻击。</span>';
+        return;
+      }
+      $('targets').innerHTML = alive.map(function (u) {
+        return '<button type="button" class="target-button" data-target="' + u.id + '" aria-pressed="' + String(u.id === state.selectedTarget) + '">' +
+          '<strong>' + esc(u.name) + '</strong><span>生命 ' + u.hp + '/' + u.maxHealth + '</span></button>';
+      }).join('');
+      Array.prototype.forEach.call(document.querySelectorAll('[data-target]'), function (btn) {
+        btn.addEventListener('click', function () { chooseTarget(btn.getAttribute('data-target')); });
+      });
+    }
+    function renderLog() {
+      const list = $('logList');
+      list.innerHTML = state.log.slice().reverse().map(function (entry) {
+        return '<div class="log-entry ' + esc(entry.tone) + '"><strong>第 ' + entry.round + ' 回合</strong> · ' + esc(entry.text) + '</div>';
+      }).join('');
+      $('logCount').textContent = state.log.length + ' 条';
+    }
+    function renderTurn() {
+      const hero = state.hero;
+      const rowText = state.selectedRow >= 0 ? '第 ' + (state.selectedRow + 1) + ' 行' : '尚未选行';
+      $('roundSub').textContent = state.phase === 'choose' ? (hero.skipThisRound ? '失神跳过' : rowText) : state.phase === 'resolving' ? '交锋结算中' : state.phase === 'ended' ? '本局结束' : '本回合已结算';
+      if (state.phase === 'choose') {
+        $('turnMessage').textContent = hero.skipThisRound ? '你处于失神，本回合跳过；对手仍会按固定夹具继续行动。' :
+          state.selectedRow < 0 ? '点选一行。若该行含单体攻击，多名对手时还需锁定一名目标。' :
+          rowHasAttack(hero, state.selectedRow) && aliveEnemies().length > 1
+            ? '当前选择第 ' + (state.selectedRow + 1) + ' 行。所有单体攻击将锁定 ' + ((aliveEnemies().find(function (u) { return u.id === state.selectedTarget; }) || {}).name || '目标未选') + '。'
+            : '当前选择第 ' + (state.selectedRow + 1) + ' 行；准备完成后按出手值与对手交错结算。';
+      } else if (state.phase === 'turnEnd') {
+        $('turnMessage').textContent = '本回合交锋完成。查看记录后，可进入下一回合并重新选择一行。';
+      } else if (state.phase === 'ended') {
+        $('turnMessage').textContent = '本局已结束，可重新配置参数再试。';
+      } else {
+        $('turnMessage').textContent = '双方正在结算当前行。';
+      }
+      $('executeRow').hidden = state.phase !== 'choose';
+      $('executeRow').disabled = state.phase !== 'choose' || (!hero.skipThisRound && state.selectedRow < 0) ||
+        (!hero.skipThisRound && state.selectedRow >= 0 && rowHasAttack(hero, state.selectedRow) &&
+          aliveEnemies().length > 1 && !aliveEnemies().some(function (u) { return u.id === state.selectedTarget; }));
+      $('executeRow').textContent = hero.skipThisRound ? '跳过本回合' : '交锋本行';
+      $('nextRound').hidden = state.phase !== 'turnEnd';
+      $('newBattle').disabled = state.phase === 'resolving';
+      $('phasePill').textContent = state.phase === 'choose' ? '选择行动行' : state.phase === 'resolving' ? '交锋中' : state.phase === 'turnEnd' ? '本回合结束' : '对练结束';
+      $('roundText').textContent = '第 ' + state.round + ' 回合';
+      $('battleBuild').textContent = PRESETS[state.preset].name;
+      $('turnSummary').textContent = state.phase === 'choose'
+        ? '敌方行选择和招式保持隐藏；每个单位完成当前行动后，再比较本行下一项。'
+        : state.phase === 'turnEnd' ? '本行交锋已完成。定力与资源变化都记录在下方。'
+        : state.phase === 'ended' ? '战斗结束。试演记录可复制留档。' : '当前行依出手值交错推进。';
+      $('endState').classList.toggle('active', state.phase === 'ended');
+      if (state.phase !== 'ended') $('endState').textContent = '';
+    }
+    function renderBoardFooter() {
+      const hero = state.hero;
+      const book = hero.bookMode === 'none' ? '未启用百骸心法。' :
+        '百骸' + (hero.bookMode === 'main' ? '主修' : '辅修') + ' · ' + ['一','二','三','四'][hero.heartVolume - 1] +
+        '卷 · 显臂门槛按当前气血 ' + hero.qiBlood + ' 层判定。';
+      $('bookStatus').textContent = book + ' 选行、敌方目标与失神跨回合按 2026-11-11 规则试演。';
+    }
+    function updateView() {
+      if (!state.hero) return;
+      renderUnits();
+      renderBoard();
+      renderTargets();
+      renderTurn();
+      renderLog();
+      renderBoardFooter();
+    }
+    function selectPreset(id) {
+      if (!PRESETS[id]) return;
+      state.preset = id;
+      Array.prototype.forEach.call(document.querySelectorAll('[data-preset]'), function (btn) {
+        btn.setAttribute('aria-pressed', String(btn.getAttribute('data-preset') === id));
+      });
+      $('presetInfo').textContent = PRESETS[id].description;
+      if (id === 'baihai' && $('bookMode').value === 'none') $('bookMode').value = 'main';
+      if (id === 'baihai' && Number($('startingBlood').value) === 0) $('startingBlood').value = '4';
+    }
+    function showSetup() {
+      state.phase = 'setup';
+      $('battle').classList.remove('active');
+      $('setup').classList.remove('hidden');
+      $('phasePill').textContent = '配置试演';
+      $('resetBattle').hidden = true;
+      $('showSetup').textContent = '试演配置';
+    }
+    function copyLog() {
+      const text = state.log.map(function (entry) { return '第 ' + entry.round + ' 回合｜' + entry.text; }).join('\n');
+      if (!text) return;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () {
+          $('copyLog').textContent = '已复制';
+          setTimeout(function () { $('copyLog').textContent = '复制记录'; }, 1300);
+        }).catch(function () { fallbackCopy(text); });
+      } else fallbackCopy(text);
+    }
+    function fallbackCopy(text) {
+      const box = document.createElement('textarea');
+      box.value = text; box.style.position = 'fixed'; box.style.opacity = '0';
+      document.body.appendChild(box); box.select();
+      let ok = false;
+      try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+      document.body.removeChild(box);
+      $('copyLog').textContent = ok ? '已复制' : '请手动选择记录';
+      setTimeout(function () { $('copyLog').textContent = '复制记录'; }, 1500);
+    }
+    document.querySelectorAll('[data-preset]').forEach(function (btn) {
+      btn.addEventListener('click', function () { selectPreset(btn.getAttribute('data-preset')); });
+    });
+    $('startBattle').addEventListener('click', beginBattle);
+    $('executeRow').addEventListener('click', executeSelectedRow);
+    $('nextRound').addEventListener('click', startNextRound);
+    $('newBattle').addEventListener('click', showSetup);
+    $('showSetup').addEventListener('click', showSetup);
+    $('resetBattle').addEventListener('click', showSetup);
+    $('copyLog').addEventListener('click', copyLog);
+    selectPreset('basic');
+  </script>
+</body>
+</html>

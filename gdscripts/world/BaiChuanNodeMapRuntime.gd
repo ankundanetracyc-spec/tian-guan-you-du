@@ -10,10 +10,11 @@ signal node_step_committed(node_id: String)
 
 const Travel = preload("res://gdscripts/world/BaiChuanNodeTravel.gd")
 const ActionTraveler = preload("res://gdscripts/world/WorldActionTraveler.gd")
+const VisualScale = preload("res://gdscripts/world/WorldMapVisualScale.gd")
 const INK_PAPER: Texture2D = preload("res://textures/ui/world_ink_20261104/paper_panel.tres")
 const INK_BRUSH: Texture2D = preload("res://textures/ui/world_ink_20261104/brush_band.tres")
 const PLAYER_PAWN_TEXTURE: Texture2D = preload("res://textures/ui/world/player_pawn_marker_v6.tres")
-const PLAYER_PAWN_SCREEN_HEIGHT := 32.0
+const PLAYER_PAWN_WORLD_HEIGHT := VisualScale.PLAYER_WORLD_HEIGHT
 const MAX_FAR_LABEL_COMPENSATION := 6.5
 const MAX_FAR_CITY_ICON_COMPENSATION := 2.0
 const FAR_PRIMARY_LABEL_SCREEN_SIZE := 15.0
@@ -92,8 +93,8 @@ class PopulationBadges extends Node2D:
 
 class PlayerPositionHalo extends Node2D:
 	func _draw() -> void:
-		draw_arc(Vector2.ZERO, 13.0, 0.0, TAU, 40, Color(0.24, 0.20, 0.15, 0.76), 1.2, true)
-		draw_arc(Vector2.ZERO, 11.2, 0.0, TAU, 40, Color(0.76, 0.69, 0.55, 0.88), 1.0, true)
+		draw_arc(Vector2.ZERO, VisualScale.PLAYER_HALO_WORLD_RADIUS, 0.0, TAU, 40, Color(0.24, 0.20, 0.15, 0.76), 1.2, true)
+		draw_arc(Vector2.ZERO, VisualScale.PLAYER_HALO_WORLD_RADIUS * 11.2 / 13.0, 0.0, TAU, 40, Color(0.76, 0.69, 0.55, 0.88), 1.0, true)
 
 func _ready() -> void:
 	add_to_group("node_world_map_presentation")
@@ -231,8 +232,9 @@ func _position_location_control(control: Control, node_id: String) -> void:
 func _layout_location_controls() -> void:
 	if not is_instance_valid(enter_button): return
 	var available := not travel_busy and not encounter_blocked
-	enter_button.disabled = not available
-	enter_button.visible = available and _visible_place_ids.has(travel.current_node) and not travel.graph.runtime_id_for_node(travel.current_node).is_empty()
+	var enterable := _runtime_location_enterable(travel.current_node)
+	enter_button.disabled = not available or not enterable
+	enter_button.visible = available and enterable and _visible_place_ids.has(travel.current_node) and not travel.graph.runtime_id_for_node(travel.current_node).is_empty()
 	if enter_button.visible: _position_location_control(enter_button, travel.current_node)
 	formal_details_panel.visible = available and not selected_node.is_empty() and selected_node != travel.current_node and _selected_node_is_visible()
 	if formal_details_panel.visible: _position_location_control(formal_details_panel, selected_node)
@@ -251,7 +253,7 @@ func _capture_marker_compensation_baselines() -> void:
 		var icon: Sprite2D = marker.get_node("NativeIcon")
 		var icon_hit: Control = marker.get_node("SelectIcon")
 		var nameplate: Control = marker.get_node("SelectPlace")
-		var icon_size := Vector2(icon.texture.get_size()) if icon.texture != null else Vector2.ZERO
+		var icon_size := Vector2(icon.texture.get_size()) * icon.scale.abs() if icon.texture != null else Vector2.ZERO
 		_capture_control_compensation(icon, icon.position, icon_size)
 		_capture_control_compensation(icon_hit, icon_hit.position, icon_hit.size)
 		_capture_control_compensation(nameplate, nameplate.position, nameplate.size)
@@ -307,10 +309,9 @@ func _sync_initial_zoom_state() -> void:
 
 func _update_player_mark_scale() -> void:
 	if not is_instance_valid(player_mark): return
-	var world_height := PLAYER_PAWN_SCREEN_HEIGHT / maxf(_world_zoom, 0.01)
-	player_mark.scale = Vector2.ONE * (world_height / PLAYER_PAWN_TEXTURE.get_height())
+	player_mark.scale = Vector2.ONE * (PLAYER_PAWN_WORLD_HEIGHT / PLAYER_PAWN_TEXTURE.get_height())
 	if is_instance_valid(player_halo):
-		player_halo.scale = Vector2.ONE / maxf(_world_zoom, 0.01)
+		player_halo.scale = Vector2.ONE
 
 func _apply_marker_compensation() -> void:
 	var screen_factor := 1.0 / maxf(_world_zoom, 0.01)
@@ -479,7 +480,7 @@ func _resolve_far_label_layout(screen_factor: float, include_city_labels := true
 			label_rows.append(row)
 	if is_instance_valid(player_mark):
 		var zoom := maxf(_world_zoom, 0.01)
-		var sprite_scale := PLAYER_PAWN_SCREEN_HEIGHT / zoom / float(PLAYER_PAWN_TEXTURE.get_height())
+		var sprite_scale := PLAYER_PAWN_WORLD_HEIGHT / float(PLAYER_PAWN_TEXTURE.get_height())
 		var pawn_size := Vector2(PLAYER_PAWN_TEXTURE.get_size()) * sprite_scale
 		var pawn_rect := Rect2(player_mark.position + Vector2(-pawn_size.x * 0.5, -pawn_size.y), pawn_size)
 		icon_obstacles.append(pawn_rect.grow(16.0 / zoom))
@@ -799,9 +800,15 @@ func get_last_travel_step() -> Dictionary:
 	return last_travel_step.duplicate()
 
 func _enter_current() -> void:
-	if travel_busy or encounter_blocked: return
+	if travel_busy or encounter_blocked or not _runtime_location_enterable(travel.current_node): return
 	var runtime_id: String = travel.graph.runtime_id_for_node(travel.current_node)
 	if not runtime_id.is_empty(): node_enter_requested.emit(runtime_id)
+
+func _runtime_location_enterable(node_id: String) -> bool:
+	for node: Dictionary in data.get("nodes", []):
+		if str(node.get("id", "")) == node_id:
+			return bool(node.get("enterable", true))
+	return true
 
 func set_dun_speed(value: float) -> void:
 	dun_speed = maxf(value,0.01)

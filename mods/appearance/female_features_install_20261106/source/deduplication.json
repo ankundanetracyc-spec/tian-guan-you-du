@@ -1,0 +1,60 @@
+{
+  "approved_groups": "mods/appearance/female_aligned_features_20261106/preview/",
+  "instruction": "重复的五官就不用加了，不重复的可以加",
+  "keep": [
+    {
+      "part": "eyebrows",
+      "source_group": 1,
+      "name": "柔弯细眉",
+      "reason": "柔和连续圆弧，与已有平眉及折挑眉轮廓有别"
+    },
+    {
+      "part": "eyes",
+      "source_group": 2,
+      "name": "舒展长目",
+      "reason": "较低开合与平缓修长眼裂，区别于现有长目和圆杏目"
+    }
+  ],
+  "merge": [
+    {
+      "part": "eyebrows",
+      "source_group": 2,
+      "reason": "接近现有眉03"
+    },
+    {
+      "part": "eyebrows",
+      "source_group": 3,
+      "reason": "接近本次保留眉，避免相近两款"
+    },
+    {
+      "part": "eyes",
+      "source_group": 1,
+      "reason": "接近现有眼01"
+    },
+    {
+      "part": "eyes",
+      "source_group": 3,
+      "reason": "接近现有眼02及两款之间的变化"
+    },
+    {
+      "part": "nose",
+      "source_groups": [
+        1,
+        2,
+        3
+      ],
+      "reason": "与含山根的现有柔圆鼻结构相近，均不新增"
+    },
+    {
+      "part": "mouth",
+      "source_groups": [
+        1,
+        2,
+        3
+      ],
+      "reason": "唇峰、嘴角和上下唇关系接近原自然浅唇，均不新增"
+    }
+  ],
+  "independence": "只追加两件独立部件，不绑定整套；原前后发、脸型、鼻、嘴、服装与男性保持",
+  "method": "同脸同尺度人工形态比较；微小颜色、亮度、绘画差异不算新款"
+}

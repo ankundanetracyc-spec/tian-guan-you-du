@@ -1,0 +1,21 @@
+{
+  "mode": "built-in image_gen",
+  "approved_whole_portrait_prompts": "../male_beard_round2_review_20261108/source/generation_prompts.json",
+  "extraction_prompts": "source/extraction_prompts.json",
+  "native_outputs": "source/native_outputs.json",
+  "pipeline": [
+    "qa/prep_crops.gd",
+    "source/registration.json",
+    "qa/import_beards.gd"
+  ],
+  "final_import_report": "source/import_report.json",
+  "auxiliary_clean_reference_experiment": {
+    "prompt": "source/04_clean_skin_reference_prompt.txt",
+    "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-5705d368-c75e-4c09-96d4-e5e89882ddfd.png",
+    "workspace_file": "reference/04_clean_skin_native.png",
+    "used_in_final_import": false,
+    "note": "Final04 matting uses the actual unchanged no-beard UI composition to avoid duplicate anatomical jaw shadow. This experimental image never replaces the active face."
+  },
+  "final_background04": "source/04_background_review.json",
+  "scope": "Four added independent beard assets only. Existing55PNG, productionC# and age/random-selection rules unchanged."
+}

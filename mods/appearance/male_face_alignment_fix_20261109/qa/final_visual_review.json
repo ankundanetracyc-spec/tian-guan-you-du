@@ -1,0 +1,627 @@
+{
+  "schema": "male-face-visual-review/v1",
+  "status": "rejected",
+  "reviewer": "/root/portrait_audit",
+  "review_round": "USER REJECTED: six regenerated brows/eyes and paired04 aesthetic acceptance withdrawn",
+  "fixed_head_sha256": "d86319252035a286a92e8892b9816bdb917a39f7f41f4cb1edf40f4dee51c357",
+  "records": [
+    {
+      "file": "male/eyes/01.png",
+      "sha256": "98026ce638f1c880ec3bb1c6e690ad7b15c0184b77a24561cef180dec746d642",
+      "status": "rejected",
+      "checks": {
+        "whole_face_native_scale": false,
+        "light_dark_backgrounds": false,
+        "axis_alignment": true,
+        "eye_corners_and_lid_contours": false,
+        "iris_same_scale": false
+      },
+      "notes": "User rejected regenerated brushwork/expression. Prior visual acceptance withdrawn; restore frozen original painting with minimum integer whole-pair horizontal relocation.",
+      "historical_status": "accepted",
+      "historical_notes": "Current pair after final0.5px whole-layer centering seen in nohair9 and7hair. Natural narrow male eyes, no conspicuous size imbalance or extended dark tail.",
+      "historical_checks": {
+        "whole_face_native_scale": true,
+        "light_dark_backgrounds": true,
+        "axis_alignment": true,
+        "eye_corners_and_lid_contours": true,
+        "iris_same_scale": true
+      }
+    },
+    {
+      "file": "male/eyes/04.png",
+      "sha256": "cf1e14f61b5ac2904cddcaad14eb38d3da6328673fa3e90a019e1e7629b99f05",
+      "status": "rejected",
+      "checks": {
+        "whole_face_native_scale": false,
+        "light_dark_backgrounds": false,
+        "axis_alignment": true,
+        "eye_corners_and_lid_contours": false,
+        "iris_same_scale": false
+      },
+      "notes": "User rejected regenerated brushwork/expression. Prior visual acceptance withdrawn; restore frozen original painting with minimum integer whole-pair horizontal relocation.",
+      "historical_status": "accepted",
+      "historical_notes": "Final strict-axis paired geometry cf1e14. Painting source is this round image_gen V3 complete left eye after reviewed edge cleanup400303, not an input/helper guide. Complete left-eye RGBA receives one common uniform0.986035scale/translation; whole right eye is its geometric reflection aboutx513, no local eye stretch or RGB repaint. Actual pair reads centered with matched inner corners/apertures/iris, modest male eye style preserved. Mirrored catchlights and scleral shading explicitly reviewed at1x/2x and accepted as natural frontal lighting. No new hard edge, smoke fringe or cross-eyed/dead expression seen.",
+      "historical_checks": {
+        "whole_face_native_scale": true,
+        "light_dark_backgrounds": true,
+        "axis_alignment": true,
+        "eye_corners_and_lid_contours": true,
+        "iris_same_scale": true
+      }
+    },
+    {
+      "file": "male/eyes/05.png",
+      "sha256": "a69e053c0f0af4be64b10a157c0f076aede96ab44ccc0915665f74c50a2560da",
+      "status": "rejected",
+      "checks": {
+        "whole_face_native_scale": false,
+        "light_dark_backgrounds": false,
+        "axis_alignment": true,
+        "eye_corners_and_lid_contours": false,
+        "iris_same_scale": false
+      },
+      "notes": "User rejected regenerated brushwork/expression. Prior visual acceptance withdrawn; restore frozen original painting with minimum integer whole-pair horizontal relocation.",
+      "historical_status": "accepted",
+      "historical_notes": "V2 dark/thick elongated tail and hard lower line reduced; natural narrow clear eyes at1x. Visible lower-lid boundary at outer75% left[438,372]/right[586.5,374]±1px; distinct auxiliary dark ridges370/373 retained separately, not relabeled.",
+      "historical_checks": {
+        "whole_face_native_scale": true,
+        "light_dark_backgrounds": true,
+        "axis_alignment": true,
+        "eye_corners_and_lid_contours": true,
+        "iris_same_scale": true
+      }
+    },
+    {
+      "file": "male/eyebrows/01.png",
+      "sha256": "0b81852f026929d204972a43f9c0e88f9b15396e02941342fb761a615795f3cf",
+      "status": "rejected",
+      "checks": {
+        "whole_face_native_scale": false,
+        "light_dark_backgrounds": false,
+        "axis_alignment": true,
+        "brow_shape_width_depth": false
+      },
+      "notes": "User rejected regenerated brushwork/expression. Prior visual acceptance withdrawn; restore frozen original painting with minimum integer whole-pair horizontal relocation.",
+      "historical_status": "accepted",
+      "historical_notes": "Current layer and actual shallow/deep compositions reviewed. No obvious new hard skin patch, edge seam or alignment defect; natural small drawing differences remain.",
+      "historical_checks": {
+        "whole_face_native_scale": true,
+        "light_dark_backgrounds": true,
+        "axis_alignment": true,
+        "brow_shape_width_depth": true
+      }
+    },
+    {
+      "file": "male/eyebrows/04.png",
+      "sha256": "530d5cf4e2fb3094269b6493ca7e9c552c30d27de5fe389a3a2012440adfcccf",
+      "status": "rejected",
+      "checks": {
+        "whole_face_native_scale": false,
+        "light_dark_backgrounds": false,
+        "axis_alignment": true,
+        "brow_shape_width_depth": false
+      },
+      "notes": "User rejected regenerated brushwork/expression. Prior visual acceptance withdrawn; restore frozen original painting with minimum integer whole-pair horizontal relocation.",
+      "historical_status": "accepted",
+      "historical_notes": "Current layer and actual shallow/deep compositions reviewed. No obvious new hard skin patch, edge seam or alignment defect; natural small drawing differences remain.",
+      "historical_checks": {
+        "whole_face_native_scale": true,
+        "light_dark_backgrounds": true,
+        "axis_alignment": true,
+        "brow_shape_width_depth": true
+      }
+    },
+    {
+      "file": "male/eyebrows/05.png",
+      "sha256": "a8ef833cc1bfaadb9c0ee55f5c27806adfae05991216162d21a8ae6f492b6ef4",
+      "status": "rejected",
+      "checks": {
+        "whole_face_native_scale": false,
+        "light_dark_backgrounds": false,
+        "axis_alignment": true,
+        "brow_shape_width_depth": false
+      },
+      "notes": "User rejected regenerated brushwork/expression. Prior visual acceptance withdrawn; restore frozen original painting with minimum integer whole-pair horizontal relocation.",
+      "historical_status": "accepted",
+      "historical_notes": "Current layer and actual shallow/deep compositions reviewed. No obvious new hard skin patch, edge seam or alignment defect; natural small drawing differences remain.",
+      "historical_checks": {
+        "whole_face_native_scale": true,
+        "light_dark_backgrounds": true,
+        "axis_alignment": true,
+        "brow_shape_width_depth": true
+      }
+    },
+    {
+      "file": "male/nose/01.png",
+      "sha256": "fea108d7478f923b820ad85c2bd0ea1aafd4ac0273c9702bec60a4ced9cc2d03",
+      "status": "pending",
+      "checks": {
+        "whole_face_native_scale": true,
+        "light_dark_backgrounds": true,
+        "axis_alignment": true
+      },
+      "notes": "Original-layer nose/mouth/beard positioning may be retained in the recovery baseline. This withdrawn review does not confer user aesthetic approval; historical technical facts remain recorded.",
+      "historical_status": "accepted",
+      "historical_notes": "Current layer and actual shallow/deep compositions reviewed. No obvious new hard skin patch, edge seam or alignment defect; natural small drawing differences remain.",
+      "historical_checks": {
+        "whole_face_native_scale": true,
+        "light_dark_backgrounds": true,
+        "axis_alignment": true
+      }
+    },
+    {
+      "file": "male/mouth/01.png",
+      "sha256": "8ead9b1c2bd3bbd9d0efc95b14ba273dba4f70afe458d83cdb6067e5d246cf1b",
+      "status": "pending",
+      "checks": {
+        "whole_face_native_scale": true,
+        "light_dark_backgrounds": true,
+        "axis_alignment": true
+      },
+      "notes": "Original-layer nose/mouth/beard positioning may be retained in the recovery baseline. This withdrawn review does not confer user aesthetic approval; historical technical facts remain recorded.",
+      "historical_status": "accepted",
+      "historical_notes": "Current layer and actual shallow/deep compositions reviewed. No obvious new hard skin patch, edge seam or alignment defect; natural small drawing differences remain.",
+      "historical_checks": {
+        "whole_face_native_scale": true,
+        "light_dark_backgrounds": true,
+        "axis_alignment": true
+      }
+    },
+    {
+      "file": "male/face_accessory/02.png",
+      "sha256": "fcb82b82b862de2da397c4f6369df87a5786ce8fdf9abeae5511f30748aa7b94",
+      "status": "pending",
+      "checks": {
+        "whole_face_native_scale": true,
+        "light_dark_backgrounds": true,
+        "axis_alignment": true
+      },
+      "notes": "Original-layer nose/mouth/beard positioning may be retained in the recovery baseline. This withdrawn review does not confer user aesthetic approval; historical technical facts remain recorded.",
+      "historical_status": "accepted",
+      "historical_notes": "Current layer and actual shallow/deep compositions reviewed. No obvious new hard skin patch, edge seam or alignment defect; natural small drawing differences remain.",
+      "historical_checks": {
+        "whole_face_native_scale": true,
+        "light_dark_backgrounds": true,
+        "axis_alignment": true
+      }
+    },
+    {
+      "file": "male/face_accessory/03.png",
+      "sha256": "8582fc742f60b7df10111cfc4d8a24e747221323afa05e8ce2afdcd671bd1199",
+      "status": "pending",
+      "checks": {
+        "whole_face_native_scale": true,
+        "light_dark_backgrounds": true,
+        "axis_alignment": true
+      },
+      "notes": "Original-layer nose/mouth/beard positioning may be retained in the recovery baseline. This withdrawn review does not confer user aesthetic approval; historical technical facts remain recorded.",
+      "historical_status": "accepted",
+      "historical_notes": "Current layer and actual shallow/deep compositions reviewed. No obvious new hard skin patch, edge seam or alignment defect; natural small drawing differences remain.",
+      "historical_checks": {
+        "whole_face_native_scale": true,
+        "light_dark_backgrounds": true,
+        "axis_alignment": true
+      }
+    },
+    {
+      "file": "male/face_accessory/04.png",
+      "sha256": "29e4c3a7a5dfe4786e630fd7b3db7e5aff276bd80d231180079b8de99fffe0ad",
+      "status": "pending",
+      "checks": {
+        "whole_face_native_scale": true,
+        "light_dark_backgrounds": true,
+        "axis_alignment": true
+      },
+      "notes": "Original-layer nose/mouth/beard positioning may be retained in the recovery baseline. This withdrawn review does not confer user aesthetic approval; historical technical facts remain recorded.",
+      "historical_status": "accepted",
+      "historical_notes": "Current layer and actual shallow/deep compositions reviewed. No obvious new hard skin patch, edge seam or alignment defect; natural small drawing differences remain.",
+      "historical_checks": {
+        "whole_face_native_scale": true,
+        "light_dark_backgrounds": true,
+        "axis_alignment": true
+      }
+    },
+    {
+      "file": "male/face_accessory/05.png",
+      "sha256": "0fece24df5ebd74a086bf50cf602aaa5523e4a61d62e679be9f9e1e9d2fcc76b",
+      "status": "pending",
+      "checks": {
+        "whole_face_native_scale": true,
+        "light_dark_backgrounds": true,
+        "axis_alignment": true
+      },
+      "notes": "Original-layer nose/mouth/beard positioning may be retained in the recovery baseline. This withdrawn review does not confer user aesthetic approval; historical technical facts remain recorded.",
+      "historical_status": "accepted",
+      "historical_notes": "Current layer and actual shallow/deep compositions reviewed. No obvious new hard skin patch, edge seam or alignment defect; natural small drawing differences remain.",
+      "historical_checks": {
+        "whole_face_native_scale": true,
+        "light_dark_backgrounds": true,
+        "axis_alignment": true
+      }
+    },
+    {
+      "file": "male/face_accessory/06.png",
+      "sha256": "aaceb8ef949f763fb58b8a0fe5c58e86954f52e072a8762dccaa00b29db41b5b",
+      "status": "pending",
+      "checks": {
+        "whole_face_native_scale": true,
+        "light_dark_backgrounds": true,
+        "axis_alignment": true
+      },
+      "notes": "Original-layer nose/mouth/beard positioning may be retained in the recovery baseline. This withdrawn review does not confer user aesthetic approval; historical technical facts remain recorded.",
+      "historical_status": "accepted",
+      "historical_notes": "Selected frozen-original whole-layer geometry alternative preserves fine sparse connected beard type and skin gaps, fits centered mouth/jaw without visible floating edge.35 natural rim-hair pixels extend at most2.828px beyond fixed support; fine tips, not a continuous baked skin piece. Other generated06 versions were rejected for stubble/dark solid stripe.",
+      "historical_checks": {
+        "whole_face_native_scale": true,
+        "light_dark_backgrounds": true,
+        "axis_alignment": true
+      }
+    }
+  ],
+  "composition_review": {
+    "status": "rejected",
+    "nine_brow_eye_nohair": true,
+    "seven_front_hair": true,
+    "five_nonempty_beards": true,
+    "hair09_occlusion": true,
+    "input_hashes": {
+      "male/eyes/01.png": "98026ce638f1c880ec3bb1c6e690ad7b15c0184b77a24561cef180dec746d642",
+      "male/eyes/04.png": "cf1e14f61b5ac2904cddcaad14eb38d3da6328673fa3e90a019e1e7629b99f05",
+      "male/eyes/05.png": "a69e053c0f0af4be64b10a157c0f076aede96ab44ccc0915665f74c50a2560da",
+      "male/eyebrows/01.png": "0b81852f026929d204972a43f9c0e88f9b15396e02941342fb761a615795f3cf",
+      "male/eyebrows/04.png": "530d5cf4e2fb3094269b6493ca7e9c552c30d27de5fe389a3a2012440adfcccf",
+      "male/eyebrows/05.png": "a8ef833cc1bfaadb9c0ee55f5c27806adfae05991216162d21a8ae6f492b6ef4",
+      "male/nose/01.png": "fea108d7478f923b820ad85c2bd0ea1aafd4ac0273c9702bec60a4ced9cc2d03",
+      "male/mouth/01.png": "8ead9b1c2bd3bbd9d0efc95b14ba273dba4f70afe458d83cdb6067e5d246cf1b",
+      "male/face_accessory/02.png": "fcb82b82b862de2da397c4f6369df87a5786ce8fdf9abeae5511f30748aa7b94",
+      "male/face_accessory/03.png": "8582fc742f60b7df10111cfc4d8a24e747221323afa05e8ce2afdcd671bd1199",
+      "male/face_accessory/04.png": "29e4c3a7a5dfe4786e630fd7b3db7e5aff276bd80d231180079b8de99fffe0ad",
+      "male/face_accessory/05.png": "0fece24df5ebd74a086bf50cf602aaa5523e4a61d62e679be9f9e1e9d2fcc76b",
+      "male/face_accessory/06.png": "aaceb8ef949f763fb58b8a0fe5c58e86954f52e072a8762dccaa00b29db41b5b",
+      "male/face_shape/01.png": "d86319252035a286a92e8892b9816bdb917a39f7f41f4cb1edf40f4dee51c357",
+      "male/hair_front/01.png": "1bd9ccc12beb55970225414c698cd2c18bb0fc93489e31254e6d1bcbb6021b0e",
+      "male/hair_front/04.png": "1efd8c3a7630a1d0340e3acb5567be8d731293342c39c570f01b5654aec568ee",
+      "male/hair_front/05.png": "346e4d42c8890b2cf084075ee5751db92ff17cba890672ab3738f8825b9f811f",
+      "male/hair_front/06.png": "8acddc9edd4b7b0900a5f34b776deccdb86b95d0e7aaddc48297102e1d691914",
+      "male/hair_front/07.png": "14491c88ddb54f5636a71e4a4aba1750e87046d915cea090ca0a5580dc002a13",
+      "male/hair_front/08.png": "ebbd2eaadbb8c7a5748f49265c3235e0ea5929d3e24db8d07d464aeb84f2b3bb",
+      "male/hair_front/09.png": "bccea1734e04770fa98826500b8f1baaf1a13e3d04f85964b5cc86a249fd1e20",
+      "male/hair_back/01.png": "fd68eb34a86268596634df8512e3f468d0768aba8592800d8429dc94655865a3",
+      "male/hair_back/04.png": "19b2fbe402f9d0c6abad57c2f1a972288f9a8c5c5707d5cbd0e0e15c774811c8",
+      "male/hair_back/05.png": "b6ffb0366f15b3528a9ac66107e751a3da9afb17e2b77ad0cff0814656c7e741",
+      "male/hair_back/06.png": "7ed0990d32e9dd1c71622960169fef01737a9f89d7219402a86ab31f71ab4fc2",
+      "male/hair_back/07.png": "cd28c5d668e383959cacf73aea61465d082d34bd90c369404bdc911e56d7270e",
+      "male/hair_back/08.png": "4f3e33ee84dbeada96c4493d3057c6b41bf618b3bf58b4a78f19bb5445e01731",
+      "male/hair_back/09.png": "7efd9eb9309a5bdd2d22fe70e829cdfd1bd7b60e79b5e52f8ea0b4296028cb1a"
+    },
+    "evidence": [
+      {
+        "file": "qa/candidate_nine_nohair_1x.png",
+        "sha256": "25be739cb02dddfb54c062b83c665fcb71d78ede2be0cd540797c047ca7cfcfe"
+      },
+      {
+        "file": "qa/candidate_nine_nohair_dark.png",
+        "sha256": "d56519ae73619a5e7677565bcef7707292e3338b6321b33fb10193a00827d3f3"
+      },
+      {
+        "file": "qa/candidate_seven_front_hairs_three_faces.png",
+        "sha256": "1bab89b48de7a07d6f33e577930efd54884ae65ea77af24c79f8c1d275acb348"
+      },
+      {
+        "file": "qa/candidate_seven_front_hairs_three_faces_dark.png",
+        "sha256": "fe2bb3a7d19ceac88afef46822940eda64133844acea79932250d74fd7cd9254"
+      },
+      {
+        "file": "qa/candidate_six_beards_three_faces_1x.png",
+        "sha256": "d0da414ac1158486b99c953637f5433080d6e461e4523c2a4110170dd9a94803"
+      },
+      {
+        "file": "qa/candidate_six_beards_three_faces_dark.png",
+        "sha256": "54a28755d8e733598539e73fcec396404a8e709c8dc78d11042d760a1293f861"
+      },
+      {
+        "file": "qa/eye04_paired_geometry_face_light_1x.png",
+        "sha256": "75c9aba4f6a763aa6c0543c1aa67d9ead76f88662124b24bcee31897b855bdc0"
+      },
+      {
+        "file": "qa/eye04_paired_geometry_face_dark_2x.png",
+        "sha256": "d58b1e8383c6eaa2b2a84137ac42f7b0e5b9bddc6e0f76aba341d966fc4de7e7"
+      },
+      {
+        "file": "qa/eye04_frozen_generated_paired_three_faces_1x.png",
+        "sha256": "c599f33c1517f127dd4370e2ace69eb2a1ec28592f34a9882588e7743d1af1ac"
+      }
+    ]
+  },
+  "notes": [
+    "All aesthetic acceptance from this failed stage is withdrawn. Historical accepted observations are preserved only under historical_accepted_review and per-record historical fields.",
+    "799alignment checks and3355runtime checks are real historical technical records, not proof of original style, sharpness, expression or user approval.",
+    "The latest user explicitly rejected the result. Do not reuse this report to authorize current or future installation. Recovery baseline uses original painting and does not claim complete symmetry or completion of residual shape fixes."
+  ],
+  "remaining_natural_differences": {
+    "eyes04": "Final pair is intentionally strictly reflected; mirrored catchlights are documented and accepted at normal scale. Underlying brows/head/nose retain natural drawn texture.",
+    "eyes05": "Outer75% visible eyelid-to-skin boundary differs~2px within reading uncertainty; dark ridges370/373 remain separate auxiliary measurements, not relabeled.",
+    "hair09": "Foreground strands naturally obscure image-left eyebrow/outer eye; no compensating enlargement of the hidden eye."
+  },
+  "independent_final04_guard": {
+    "candidate_sha256": "cf1e14f61b5ac2904cddcaad14eb38d3da6328673fa3e90a019e1e7629b99f05",
+    "axis_x": 513,
+    "actual_RGBA_mirror_mismatched_pixels": 0,
+    "qa_guard": "qa/eye04_paired_independent_guard.json"
+  },
+  "user_rejection": {
+    "date": "2026-11-09",
+    "feedback": "修正后的这么怪异你没发现吗",
+    "prior_status": "accepted",
+    "reason": "Six regenerated brows/eyes changed original brushwork, clarity and expression; paired04 looked like thick eyeliner, blurred and stiff. Geometric symmetry and technical passes did not preserve aesthetics.",
+    "superseding_recovery_package": "mods/appearance/male_face_natural_restore_20261109",
+    "valid_for_new_installation": false
+  },
+  "historical_accepted_review": {
+    "schema": "male-face-visual-review/v1",
+    "status": "accepted",
+    "reviewer": "/root/portrait_audit",
+    "review_round": "Final strict-axis paired04 cf1e14; all6 final composition sheets reread after promotion. Prior400303final conclusion withdrawn and superseded.",
+    "fixed_head_sha256": "d86319252035a286a92e8892b9816bdb917a39f7f41f4cb1edf40f4dee51c357",
+    "records": [
+      {
+        "file": "male/eyes/01.png",
+        "sha256": "98026ce638f1c880ec3bb1c6e690ad7b15c0184b77a24561cef180dec746d642",
+        "status": "accepted",
+        "checks": {
+          "whole_face_native_scale": true,
+          "light_dark_backgrounds": true,
+          "axis_alignment": true,
+          "eye_corners_and_lid_contours": true,
+          "iris_same_scale": true
+        },
+        "notes": "Current pair after final0.5px whole-layer centering seen in nohair9 and7hair. Natural narrow male eyes, no conspicuous size imbalance or extended dark tail."
+      },
+      {
+        "file": "male/eyes/04.png",
+        "sha256": "cf1e14f61b5ac2904cddcaad14eb38d3da6328673fa3e90a019e1e7629b99f05",
+        "status": "accepted",
+        "checks": {
+          "whole_face_native_scale": true,
+          "light_dark_backgrounds": true,
+          "axis_alignment": true,
+          "eye_corners_and_lid_contours": true,
+          "iris_same_scale": true
+        },
+        "notes": "Final strict-axis paired geometry cf1e14. Painting source is this round image_gen V3 complete left eye after reviewed edge cleanup400303, not an input/helper guide. Complete left-eye RGBA receives one common uniform0.986035scale/translation; whole right eye is its geometric reflection aboutx513, no local eye stretch or RGB repaint. Actual pair reads centered with matched inner corners/apertures/iris, modest male eye style preserved. Mirrored catchlights and scleral shading explicitly reviewed at1x/2x and accepted as natural frontal lighting. No new hard edge, smoke fringe or cross-eyed/dead expression seen."
+      },
+      {
+        "file": "male/eyes/05.png",
+        "sha256": "a69e053c0f0af4be64b10a157c0f076aede96ab44ccc0915665f74c50a2560da",
+        "status": "accepted",
+        "checks": {
+          "whole_face_native_scale": true,
+          "light_dark_backgrounds": true,
+          "axis_alignment": true,
+          "eye_corners_and_lid_contours": true,
+          "iris_same_scale": true
+        },
+        "notes": "V2 dark/thick elongated tail and hard lower line reduced; natural narrow clear eyes at1x. Visible lower-lid boundary at outer75% left[438,372]/right[586.5,374]±1px; distinct auxiliary dark ridges370/373 retained separately, not relabeled."
+      },
+      {
+        "file": "male/eyebrows/01.png",
+        "sha256": "0b81852f026929d204972a43f9c0e88f9b15396e02941342fb761a615795f3cf",
+        "status": "accepted",
+        "checks": {
+          "whole_face_native_scale": true,
+          "light_dark_backgrounds": true,
+          "axis_alignment": true,
+          "brow_shape_width_depth": true
+        },
+        "notes": "Current layer and actual shallow/deep compositions reviewed. No obvious new hard skin patch, edge seam or alignment defect; natural small drawing differences remain."
+      },
+      {
+        "file": "male/eyebrows/04.png",
+        "sha256": "530d5cf4e2fb3094269b6493ca7e9c552c30d27de5fe389a3a2012440adfcccf",
+        "status": "accepted",
+        "checks": {
+          "whole_face_native_scale": true,
+          "light_dark_backgrounds": true,
+          "axis_alignment": true,
+          "brow_shape_width_depth": true
+        },
+        "notes": "Current layer and actual shallow/deep compositions reviewed. No obvious new hard skin patch, edge seam or alignment defect; natural small drawing differences remain."
+      },
+      {
+        "file": "male/eyebrows/05.png",
+        "sha256": "a8ef833cc1bfaadb9c0ee55f5c27806adfae05991216162d21a8ae6f492b6ef4",
+        "status": "accepted",
+        "checks": {
+          "whole_face_native_scale": true,
+          "light_dark_backgrounds": true,
+          "axis_alignment": true,
+          "brow_shape_width_depth": true
+        },
+        "notes": "Current layer and actual shallow/deep compositions reviewed. No obvious new hard skin patch, edge seam or alignment defect; natural small drawing differences remain."
+      },
+      {
+        "file": "male/nose/01.png",
+        "sha256": "fea108d7478f923b820ad85c2bd0ea1aafd4ac0273c9702bec60a4ced9cc2d03",
+        "status": "accepted",
+        "checks": {
+          "whole_face_native_scale": true,
+          "light_dark_backgrounds": true,
+          "axis_alignment": true
+        },
+        "notes": "Current layer and actual shallow/deep compositions reviewed. No obvious new hard skin patch, edge seam or alignment defect; natural small drawing differences remain."
+      },
+      {
+        "file": "male/mouth/01.png",
+        "sha256": "8ead9b1c2bd3bbd9d0efc95b14ba273dba4f70afe458d83cdb6067e5d246cf1b",
+        "status": "accepted",
+        "checks": {
+          "whole_face_native_scale": true,
+          "light_dark_backgrounds": true,
+          "axis_alignment": true
+        },
+        "notes": "Current layer and actual shallow/deep compositions reviewed. No obvious new hard skin patch, edge seam or alignment defect; natural small drawing differences remain."
+      },
+      {
+        "file": "male/face_accessory/02.png",
+        "sha256": "fcb82b82b862de2da397c4f6369df87a5786ce8fdf9abeae5511f30748aa7b94",
+        "status": "accepted",
+        "checks": {
+          "whole_face_native_scale": true,
+          "light_dark_backgrounds": true,
+          "axis_alignment": true
+        },
+        "notes": "Current layer and actual shallow/deep compositions reviewed. No obvious new hard skin patch, edge seam or alignment defect; natural small drawing differences remain."
+      },
+      {
+        "file": "male/face_accessory/03.png",
+        "sha256": "8582fc742f60b7df10111cfc4d8a24e747221323afa05e8ce2afdcd671bd1199",
+        "status": "accepted",
+        "checks": {
+          "whole_face_native_scale": true,
+          "light_dark_backgrounds": true,
+          "axis_alignment": true
+        },
+        "notes": "Current layer and actual shallow/deep compositions reviewed. No obvious new hard skin patch, edge seam or alignment defect; natural small drawing differences remain."
+      },
+      {
+        "file": "male/face_accessory/04.png",
+        "sha256": "29e4c3a7a5dfe4786e630fd7b3db7e5aff276bd80d231180079b8de99fffe0ad",
+        "status": "accepted",
+        "checks": {
+          "whole_face_native_scale": true,
+          "light_dark_backgrounds": true,
+          "axis_alignment": true
+        },
+        "notes": "Current layer and actual shallow/deep compositions reviewed. No obvious new hard skin patch, edge seam or alignment defect; natural small drawing differences remain."
+      },
+      {
+        "file": "male/face_accessory/05.png",
+        "sha256": "0fece24df5ebd74a086bf50cf602aaa5523e4a61d62e679be9f9e1e9d2fcc76b",
+        "status": "accepted",
+        "checks": {
+          "whole_face_native_scale": true,
+          "light_dark_backgrounds": true,
+          "axis_alignment": true
+        },
+        "notes": "Current layer and actual shallow/deep compositions reviewed. No obvious new hard skin patch, edge seam or alignment defect; natural small drawing differences remain."
+      },
+      {
+        "file": "male/face_accessory/06.png",
+        "sha256": "aaceb8ef949f763fb58b8a0fe5c58e86954f52e072a8762dccaa00b29db41b5b",
+        "status": "accepted",
+        "checks": {
+          "whole_face_native_scale": true,
+          "light_dark_backgrounds": true,
+          "axis_alignment": true
+        },
+        "notes": "Selected frozen-original whole-layer geometry alternative preserves fine sparse connected beard type and skin gaps, fits centered mouth/jaw without visible floating edge.35 natural rim-hair pixels extend at most2.828px beyond fixed support; fine tips, not a continuous baked skin piece. Other generated06 versions were rejected for stubble/dark solid stripe."
+      }
+    ],
+    "composition_review": {
+      "status": "accepted",
+      "nine_brow_eye_nohair": true,
+      "seven_front_hair": true,
+      "five_nonempty_beards": true,
+      "hair09_occlusion": true,
+      "input_hashes": {
+        "male/eyes/01.png": "98026ce638f1c880ec3bb1c6e690ad7b15c0184b77a24561cef180dec746d642",
+        "male/eyes/04.png": "cf1e14f61b5ac2904cddcaad14eb38d3da6328673fa3e90a019e1e7629b99f05",
+        "male/eyes/05.png": "a69e053c0f0af4be64b10a157c0f076aede96ab44ccc0915665f74c50a2560da",
+        "male/eyebrows/01.png": "0b81852f026929d204972a43f9c0e88f9b15396e02941342fb761a615795f3cf",
+        "male/eyebrows/04.png": "530d5cf4e2fb3094269b6493ca7e9c552c30d27de5fe389a3a2012440adfcccf",
+        "male/eyebrows/05.png": "a8ef833cc1bfaadb9c0ee55f5c27806adfae05991216162d21a8ae6f492b6ef4",
+        "male/nose/01.png": "fea108d7478f923b820ad85c2bd0ea1aafd4ac0273c9702bec60a4ced9cc2d03",
+        "male/mouth/01.png": "8ead9b1c2bd3bbd9d0efc95b14ba273dba4f70afe458d83cdb6067e5d246cf1b",
+        "male/face_accessory/02.png": "fcb82b82b862de2da397c4f6369df87a5786ce8fdf9abeae5511f30748aa7b94",
+        "male/face_accessory/03.png": "8582fc742f60b7df10111cfc4d8a24e747221323afa05e8ce2afdcd671bd1199",
+        "male/face_accessory/04.png": "29e4c3a7a5dfe4786e630fd7b3db7e5aff276bd80d231180079b8de99fffe0ad",
+        "male/face_accessory/05.png": "0fece24df5ebd74a086bf50cf602aaa5523e4a61d62e679be9f9e1e9d2fcc76b",
+        "male/face_accessory/06.png": "aaceb8ef949f763fb58b8a0fe5c58e86954f52e072a8762dccaa00b29db41b5b",
+        "male/face_shape/01.png": "d86319252035a286a92e8892b9816bdb917a39f7f41f4cb1edf40f4dee51c357",
+        "male/hair_front/01.png": "1bd9ccc12beb55970225414c698cd2c18bb0fc93489e31254e6d1bcbb6021b0e",
+        "male/hair_front/04.png": "1efd8c3a7630a1d0340e3acb5567be8d731293342c39c570f01b5654aec568ee",
+        "male/hair_front/05.png": "346e4d42c8890b2cf084075ee5751db92ff17cba890672ab3738f8825b9f811f",
+        "male/hair_front/06.png": "8acddc9edd4b7b0900a5f34b776deccdb86b95d0e7aaddc48297102e1d691914",
+        "male/hair_front/07.png": "14491c88ddb54f5636a71e4a4aba1750e87046d915cea090ca0a5580dc002a13",
+        "male/hair_front/08.png": "ebbd2eaadbb8c7a5748f49265c3235e0ea5929d3e24db8d07d464aeb84f2b3bb",
+        "male/hair_front/09.png": "bccea1734e04770fa98826500b8f1baaf1a13e3d04f85964b5cc86a249fd1e20",
+        "male/hair_back/01.png": "fd68eb34a86268596634df8512e3f468d0768aba8592800d8429dc94655865a3",
+        "male/hair_back/04.png": "19b2fbe402f9d0c6abad57c2f1a972288f9a8c5c5707d5cbd0e0e15c774811c8",
+        "male/hair_back/05.png": "b6ffb0366f15b3528a9ac66107e751a3da9afb17e2b77ad0cff0814656c7e741",
+        "male/hair_back/06.png": "7ed0990d32e9dd1c71622960169fef01737a9f89d7219402a86ab31f71ab4fc2",
+        "male/hair_back/07.png": "cd28c5d668e383959cacf73aea61465d082d34bd90c369404bdc911e56d7270e",
+        "male/hair_back/08.png": "4f3e33ee84dbeada96c4493d3057c6b41bf618b3bf58b4a78f19bb5445e01731",
+        "male/hair_back/09.png": "7efd9eb9309a5bdd2d22fe70e829cdfd1bd7b60e79b5e52f8ea0b4296028cb1a"
+      },
+      "evidence": [
+        {
+          "file": "qa/candidate_nine_nohair_1x.png",
+          "sha256": "25be739cb02dddfb54c062b83c665fcb71d78ede2be0cd540797c047ca7cfcfe"
+        },
+        {
+          "file": "qa/candidate_nine_nohair_dark.png",
+          "sha256": "d56519ae73619a5e7677565bcef7707292e3338b6321b33fb10193a00827d3f3"
+        },
+        {
+          "file": "qa/candidate_seven_front_hairs_three_faces.png",
+          "sha256": "1bab89b48de7a07d6f33e577930efd54884ae65ea77af24c79f8c1d275acb348"
+        },
+        {
+          "file": "qa/candidate_seven_front_hairs_three_faces_dark.png",
+          "sha256": "fe2bb3a7d19ceac88afef46822940eda64133844acea79932250d74fd7cd9254"
+        },
+        {
+          "file": "qa/candidate_six_beards_three_faces_1x.png",
+          "sha256": "d0da414ac1158486b99c953637f5433080d6e461e4523c2a4110170dd9a94803"
+        },
+        {
+          "file": "qa/candidate_six_beards_three_faces_dark.png",
+          "sha256": "54a28755d8e733598539e73fcec396404a8e709c8dc78d11042d760a1293f861"
+        },
+        {
+          "file": "qa/eye04_paired_geometry_face_light_1x.png",
+          "sha256": "75c9aba4f6a763aa6c0543c1aa67d9ead76f88662124b24bcee31897b855bdc0"
+        },
+        {
+          "file": "qa/eye04_paired_geometry_face_dark_2x.png",
+          "sha256": "d58b1e8383c6eaa2b2a84137ac42f7b0e5b9bddc6e0f76aba341d966fc4de7e7"
+        },
+        {
+          "file": "qa/eye04_frozen_generated_paired_three_faces_1x.png",
+          "sha256": "c599f33c1517f127dd4370e2ace69eb2a1ec28592f34a9882588e7743d1af1ac"
+        }
+      ]
+    },
+    "notes": [
+      "Final visual acceptance binds the current13staged layers, fixed head and14front/back hair SHA inputs. It is a reviewer judgment for installation checks, not a claim of user final aesthetic approval or completed runtime installation.",
+      "ROOT rejected400303inner-mid510.5 axis divergence; my prior final accepted400303conclusion was withdrawn. Final cf1e14strict-axis pairing resolves this instead of shifting the old pair to tolerance boundaries or relabeling measurement points.",
+      "Image source of paired04 is this round AI-generated, edge-reviewed complete left eye. Whole geometric reflection is an explicitly selected technical correction, not the helper guide used as production art. No anisotropic eye stretch, RGB repaint or old-source RGB paste.",
+      "The mechanical mirror includes catchlights and scleral shading. At normal-size face, same-scale three-version comparison and shallow/deep compositions, no conspicuous lighting conflict, cross-eyed gaze, glassy big-iris appearance, dead expression or seam was observed.",
+      "Independent final actual RGBA reflection aboutx513 has0mismatched pixels; pupil midpoint and complete bilateral drawing share that axis. Other12accepted layer SHA values are unchanged.",
+      "Latest shallow/deep9brow-eye mixes,7front hairstyles including09left occlusion, and6beard options including5nonempty have been reread after final04promotion. No new obvious skin patch, white fringe, lash discontinuity, face-axis split or floating beard noted.",
+      "Original06whole-layer geometry retains natural fine rim hairs (35pixels/max2.828px beyond head support), not a continuous baked skin piece. Rejected generated06versions were not selected.",
+      "No active PNG or configuration was edited by this reviewer; only QA diagnostics and review data. Technical gate and runtime checks remain separate required steps."
+    ],
+    "remaining_natural_differences": {
+      "eyes04": "Final pair is intentionally strictly reflected; mirrored catchlights are documented and accepted at normal scale. Underlying brows/head/nose retain natural drawn texture.",
+      "eyes05": "Outer75% visible eyelid-to-skin boundary differs~2px within reading uncertainty; dark ridges370/373 remain separate auxiliary measurements, not relabeled.",
+      "hair09": "Foreground strands naturally obscure image-left eyebrow/outer eye; no compensating enlargement of the hidden eye."
+    },
+    "independent_final04_guard": {
+      "candidate_sha256": "cf1e14f61b5ac2904cddcaad14eb38d3da6328673fa3e90a019e1e7629b99f05",
+      "axis_x": 513,
+      "actual_RGBA_mirror_mismatched_pixels": 0,
+      "qa_guard": "qa/eye04_paired_independent_guard.json"
+    }
+  },
+  "recovery_baseline_followup": {
+    "package": "mods/appearance/male_face_natural_restore_20261109",
+    "status": "original_brushwork_restored_and_integer_centered; original_shape_residuals_unfinished",
+    "runtime_result": "mods/appearance/male_face_natural_restore_20261109/installation/runtime_check.json",
+    "runtime_sha256": "94d47977e184ab5dc6fc7ce030f32003fb74ba968c9eba6064c54369c2bd9b21",
+    "runtime_checks": 305,
+    "runtime_failures": 0,
+    "meaning": "New restoration technical history only; does not reinstate the rejected generated-art aesthetic acceptance.",
+    "user_final_aesthetic_approval": false
+  }
+}

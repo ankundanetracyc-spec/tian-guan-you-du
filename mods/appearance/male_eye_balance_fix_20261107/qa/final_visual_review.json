@@ -1,0 +1,24 @@
+{
+  "schema": "male-eye-balance-final-review/v1",
+  "status": "root_and_independent_audit_passed",
+  "user_final_visual_acceptance": "pending",
+  "affected_layer": "male/eyes/04.png",
+  "final_sha256": "6c3f023df0d845a979727f4fab210c3ad95a03a881a40f3ea493d19dc0252f14",
+  "review_evidence": [
+    "qa/v6_asymmetry_review.json",
+    "qa/before_after_eye_hair_native_1x_light.png",
+    "qa/before_after_reported_scale_light.png",
+    "qa/before_after_selected_hair04_light.png"
+  ],
+  "findings": [
+    "User crop identified as front04/brow04/eyes04; tight crop does not reliably identify rear hair.",
+    "Original right upper opening was larger, with baked front-hair streaks in the eye layer; iris diameter and pupil centers were not the main cause.",
+    "Built-in generated right-eye correction selected after same-method measurement and normal-size review. Left RGBA retained unchanged.",
+    "Final common-ROI estimates: left15px; right samples15/14px, median14.5px. No conspicuous size mismatch, baked right-hair stripe or extra long pointed liner tail remains."
+  ],
+  "limits": [
+    "Readings are coarse painted-edge estimates with about1px uncertainty, not claims of perfect anatomical symmetry.",
+    "Small natural eye-corner and lid-brush differences remain.",
+    "Earlier physical04 installation source hashes are historical; this correction report provides the current activity SHA."
+  ]
+}
