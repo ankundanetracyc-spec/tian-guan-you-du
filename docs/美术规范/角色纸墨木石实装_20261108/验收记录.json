@@ -1,0 +1,201 @@
+{
+  "date": "2026-11-09",
+  "status": "passed",
+  "totalChecks": 432,
+  "failures": 0,
+  "integrated": true,
+  "battlePreparationIntegrated": false,
+  "realJourneyReadOrWritten": false,
+  "captureSource": "Fixed GPU SubViewport; real pointer events; no desktop capture",
+  "runtimeManifest": {
+    "phase": "Character overview without the location row",
+    "recordedAt": "2026-11-09T12:55:35.490745+08:00",
+    "sha256": {
+      ".godot/mono/temp/bin/Debug/stacklands.dll": "e967a187ceb8556049818547b725e447e0869fa0cda04feed0971d5972f174c3",
+      "csharp/panel/CraftingPaperStyle.cs": "89e4d262d9240ca94fd3e295a59ec4937c1868eb7673d76ecfd6370fbdde0aec",
+      "csharp/panel/PaperButtonFeedback.cs": "74894219692f987a32ac356e170377e0950dacc10de809f7ca8b941ea26ace7c",
+      "csharp/panel/WardrobePicker.cs": "5d1b6aefb2d6f5f0a41ab5d564b8cacdc34df3307d1080a30b9d3373fe7e780b",
+      "csharp/debug/CharacterPaperUiSmoke.cs": "970b687c32d48cc4a08a59147d8f249bc11aa06baa24c7bfdd220fb13712bf98",
+      "tools/CharacterPaperUiSmoke.tscn": "a406b54a42a3814aade70f228f2d13267f8ef8eb383c56c840c8a3c84494dbe9",
+      "tools/NativePaperCaptureHost.gd": "88cde01bf83fc43d7d184fe7b31ed0bed02be2d322a18501cc24936a872fb106",
+      "tools/NativePaperCaptureHost.tscn": "477dadb211cb701440ae94a55abbde2bbbbcaace20850225d557984c5645d728",
+      "csharp/panel/InfoPanel.Attributes.cs": "71254ceb781670e299dd79b258c805b6de5b4f56eed6d29bdbed3df906e00224",
+      "csharp/panel/InfoPanel.BaishiLecture.cs": "807277a02328c4d0697615e66dafd065db0d528a7bc7ff845693b287d6236576",
+      "csharp/panel/InfoPanel.cs": "4992221567cd5c177662580425df1979b4cd34ecf317a06383aa5d21b7759451",
+      "csharp/panel/InfoPanel.EquipmentLayout.cs": "4d159d4fc2c2434a9d2befa824e09c87356907300efe2cb89b7921a41d335483",
+      "csharp/panel/InfoPanel.EquipmentTotals.cs": "bffb977063f2523a75e2554c0ee2d000190a93568a388e8993dcd04478e6a7fd",
+      "csharp/panel/InfoPanel.ManualLibrary.cs": "5790ee4904c8f58b9b5739abbc7570e659f31eba6d074efcee4eb0feed02cff2",
+      "csharp/panel/InfoPanel.NpcProbe.cs": "eebf1e2c92abc06e737c9ffefe9c9aa6c928774c473a4f556764092a20ffd1b2",
+      "csharp/panel/InfoPanel.Overview.cs": "b777a971ce644729d62584410f744108fafbca2b9f2be3209725613c70ff6c84",
+      "csharp/panel/InfoPanel.Paper.cs": "bf9cf487f4faeace98e11440eab7496075403923e3e93ecf35321aa5458ba54d",
+      "csharp/panel/InfoPanel.Redesign.cs": "f5e7c026d48ff8a56bcfdc15413c227ed58aab4b003c729d8a247fef0578022b",
+      "csharp/panel/InfoPanel.RelationsLayout.cs": "de1485fd4fa5cd56b629a328b6d119271b529123ba4ccd6e18f8f1e1c61529ce",
+      "csharp/panel/InfoPanel.SkillLibrary.cs": "d013e1fc1a95ac20a331dd7082fd8a379fa1738e6f5acde607c6b17da613485d",
+      "csharp/panel/InfoPanel.SkillRewrites.cs": "be568cc9235fd3ee1960258e3792f566ff60d9553f8f5c0dd2336cf84165f1c2",
+      "csharp/panel/InfoPanel.Supplies.cs": "51e2870a959610964609b95be6b012a242a98868a8c9c189cdc19ccf5fe93da0",
+      "csharp/panel/InfoPanel.WorldStatus.cs": "efbf825594b3364e97e54f4bc2fbda3b4efbf920a44a8c963e3021e291d5a4a9"
+    }
+  },
+  "runs": [
+    {
+      "width": 1280,
+      "height": 720,
+      "checks": 216,
+      "exitCode": 0,
+      "warnings": 0,
+      "report": "验证记录_1280.json",
+      "log": "验收日志_1280.log",
+      "images": [
+        {
+          "name": "角色_概览_首次_1280.png",
+          "sha256": "9dbb8364a90b53d72d8c49622aa3b3a628688811502aa9eb15152a02b11037fa"
+        },
+        {
+          "name": "角色_概览_1280.png",
+          "sha256": "9dbb8364a90b53d72d8c49622aa3b3a628688811502aa9eb15152a02b11037fa"
+        },
+        {
+          "name": "角色_属性_1280.png",
+          "sha256": "f8344a1397de6259e99f28617530feec79fbc7b3ebd8bfc38e876ba78f14c7f2"
+        },
+        {
+          "name": "角色_战斗_1280.png",
+          "sha256": "7875404e6ba7e9a4c888160aed6aad3c9786309f5f700ee79811f0f394811266"
+        },
+        {
+          "name": "角色_功法_1280.png",
+          "sha256": "62d557a82140d5b416c1e650033071ec43eef2a6df911344014504ca2fe6d5db"
+        },
+        {
+          "name": "角色_造诣_1280.png",
+          "sha256": "d4436f7b07cde5d29d9491107c8671068e2a36ec8445a43a587b1115c8ce755f"
+        },
+        {
+          "name": "角色_装备_1280.png",
+          "sha256": "998be2c360558dc28ecbe800585fa245dc8e7d0973ba30fa379c1a599d1a5fe0"
+        },
+        {
+          "name": "角色_关系_1280.png",
+          "sha256": "b7d8ebbc01c7979e6da5a9c5dae2a633c0e11647f32d3f9f78ee98af1a92f181"
+        },
+        {
+          "name": "角色_按钮_选中_1280.png",
+          "sha256": "62d557a82140d5b416c1e650033071ec43eef2a6df911344014504ca2fe6d5db"
+        },
+        {
+          "name": "角色_按钮_悬停_1280.png",
+          "sha256": "5097285b4b5845ea9f7c87a444f4f735316dab73132f28cda33090aed470be37"
+        },
+        {
+          "name": "角色_按钮_按住_1280.png",
+          "sha256": "b2e5a348944aeb2ced1bec925ed8906565d5bf4cee899e5a6b669eea8f413365"
+        },
+        {
+          "name": "角色_按钮_禁用_1280.png",
+          "sha256": "8c4fccfd629f6714ea95fddf0d86c908d1dea7b155e94294d2ec754f50be2817"
+        },
+        {
+          "name": "角色_造诣_参悟_1280.png",
+          "sha256": "62d94bc32aa8baee01ecb98675f63953b6ee031ca28a91e47c90c62efdad0005"
+        },
+        {
+          "name": "角色_衣着_原生弹层_1280.png",
+          "sha256": "086f802b922447ffad05cfe55bd0381fee3658fd4aaf2f5e6607f025f27324c6"
+        },
+        {
+          "name": "角色_局外状态_1280.png",
+          "sha256": "3431709a61ea58312715c75d799f09b160c4d3d31f3725690b611ed216ec65f3"
+        },
+        {
+          "name": "角色_NPC_只读概览_1280.png",
+          "sha256": "07d1d16a14e0a2c896623d15ce8ed15d0ca23c9e091ba72fe8980e86cb929fa2"
+        },
+        {
+          "name": "角色_NPC_属性快照_1280.png",
+          "sha256": "da8849d8fcca1dc1f16c075ac823f6f08cd6b5e711a841c56983f3c95a1fe6df"
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "checks": 216,
+      "exitCode": 0,
+      "warnings": 0,
+      "report": "验证记录_1920.json",
+      "log": "验收日志_1920.log",
+      "images": [
+        {
+          "name": "角色_概览_首次_1920.png",
+          "sha256": "699442f4498fc23361b9ed53bbb7a27e979274804f34384db4ed1fccb4240c4f"
+        },
+        {
+          "name": "角色_概览_1920.png",
+          "sha256": "699442f4498fc23361b9ed53bbb7a27e979274804f34384db4ed1fccb4240c4f"
+        },
+        {
+          "name": "角色_属性_1920.png",
+          "sha256": "b758bae4ba2e8c7f6b72d44999e0ab19a4b60bfdad034e69db19b0203eb06ad9"
+        },
+        {
+          "name": "角色_战斗_1920.png",
+          "sha256": "cf313f697ec644934cd3f485c0be40b1c3e5ef41af8650ce58207ab80ed17f84"
+        },
+        {
+          "name": "角色_功法_1920.png",
+          "sha256": "1923199ab6c86b67a5926bc7405590a80bc8bbdb3514ae94161b7a609eb5712f"
+        },
+        {
+          "name": "角色_造诣_1920.png",
+          "sha256": "0054f07cf0c3f7d605b8adf9e08c05b1f218b0a0faf8d498687bd7d0e429a908"
+        },
+        {
+          "name": "角色_装备_1920.png",
+          "sha256": "4220ccc033f1633be2db0262d4db366e1022292172bda900881c5605703eacf6"
+        },
+        {
+          "name": "角色_关系_1920.png",
+          "sha256": "f1bc7ae2cdf56f828488304c181f67aef49b127fe807fdee60e9a5414e4c7297"
+        },
+        {
+          "name": "角色_按钮_选中_1920.png",
+          "sha256": "1923199ab6c86b67a5926bc7405590a80bc8bbdb3514ae94161b7a609eb5712f"
+        },
+        {
+          "name": "角色_按钮_悬停_1920.png",
+          "sha256": "7e680827c699063d7b7fa2c394c1594f9b016b9bfc6a5b57abab2f57506b501b"
+        },
+        {
+          "name": "角色_按钮_按住_1920.png",
+          "sha256": "0f7e5959cb31454a87e37934e18e0fa81a67924bae64c1a86412af18a436a831"
+        },
+        {
+          "name": "角色_按钮_禁用_1920.png",
+          "sha256": "32fda7787909e99f12063b8ac6d32400225140697da8a14efb56569585d6adc5"
+        },
+        {
+          "name": "角色_造诣_参悟_1920.png",
+          "sha256": "e9fd91db5c2219f384881c4b6fa00d5bad310516ef4756e179506efa302c2b21"
+        },
+        {
+          "name": "角色_衣着_原生弹层_1920.png",
+          "sha256": "29a0fca8ee3531477d1fca69f16174be860a919eff850d84c356369165d5847d"
+        },
+        {
+          "name": "角色_局外状态_1920.png",
+          "sha256": "b5d652d344956c3d90f88cb7be86e9ad5c3a50bc27d9dfba56f827cff1eb0fa9"
+        },
+        {
+          "name": "角色_NPC_只读概览_1920.png",
+          "sha256": "1378484728469dc7eefeee89513c838af6ddca9b3b0377fcb25f7c854dd9fd9d"
+        },
+        {
+          "name": "角色_NPC_属性快照_1920.png",
+          "sha256": "a6f13a3fe8919ba2e62bd16f63bc63638d62c03413ee21864b0bc2db00cae679"
+        }
+      ]
+    }
+  ],
+  "visualReview": "Both widths: seven pages, whole-paper button states, wardrobe, status, learned nodes and NPC overview/snapshot reviewed. Snapshot paper omission corrected before final runs.",
+  "revision": "Remove the location row from character and NPC overview"
+}

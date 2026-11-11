@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>配招素材 · 拼接预览</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="39_素材拼接预览.css">
+  <script src="../../../textures/ui/combat_board_20261107_v1/skin_manifest.js"></script>
+  <script defer src="39_素材拼接预览.js"></script>
+</head>
+<body>
+  <header class="preview-toolbar">
+    <div><h1>配招素材 · 拼接预览</h1><p>同一批透明拆件拼出不同轮廓；本页是素材样板。</p></div>
+    <div class="preview-options">
+      <label><input id="artToggle" type="checkbox" checked> 显示示意图标</label>
+      <button id="backgroundToggle" type="button">切换浅底</button>
+      <a href="../../../textures/ui/combat_board_20261107_v1/skin_manifest.json">素材清单</a>
+    </div>
+  </header>
+  <main>
+    <div class="preview-stage" id="stage"><canvas id="materialCanvas" width="1760" height="1140" aria-label="九格、L形、台阶与凹口拼接，右侧为控件素材预览"></canvas></div>
+    <p class="status" id="status" aria-live="polite">正在加载素材…</p>
+    <details><summary>查看独立部件</summary><div class="part-gallery" id="partGallery"></div></details>
+  </main>
+</body>
+</html>

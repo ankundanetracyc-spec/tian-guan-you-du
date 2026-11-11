@@ -1,0 +1,838 @@
+{
+  "passed": 154,
+  "failed": 0,
+  "errors": [],
+  "badRequests": [],
+  "checks": [
+    {
+      "name": "1920px: new page replaces old ten slots",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: separate plans initialized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: hit areas match SVG scale",
+      "passed": true,
+      "detail": "{\"ratio\":1.6744636978048941,\"inside\":true}"
+    },
+    {
+      "name": "1920px: main panel stays in viewport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: wood fills the whole viewport without outer border",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: title and return share compact row height",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: main content gains vertical space",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: proficiency has its own sidebar tab after manuals",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: battle no longer contains a graph entry",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: inventory is left of fixed aligned return",
+      "passed": true,
+      "detail": "{\"apart\":true,\"aligned\":true,\"unique\":true}"
+    },
+    {
+      "name": "1920px: valid rewrite target is recognized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: invalid direction is retained and marked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: saved rewrite remains leftward",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: four rotations return to saved configuration",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: rewrite tooltip includes actual target",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: missing consumable rejects whole plan",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: valid plan loads in one click",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: clear is draft-only",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: drag places real two-cell footprint",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: keyboard rotates placed strip",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: keyboard moves whole object",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: out-of-bounds movement is rejected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: Delete removes selection",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: click placement uses pending rotation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: overlapping drop is rejected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: right click removes selection",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: all three permitted copies can be placed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: source prevents fourth copy",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: save overwrites only active plan",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: empty names stay in form",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: fourth scheme can be created",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: duplicate name is rejected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: name is escaped text",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: fifth plan is empty and other plans remain",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: delete preserves editable draft",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: world-only pills excluded",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: pill inventory reservation caps third bottle",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: preview does not consume stock",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: combat loads a valid plan",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: combat does not change out-of-combat draft",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: combat does not rewrite saved schemes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: combat missing plan is also atomic",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: unbound resources are not fabricated",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: search finds by name",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: long detailed tooltip fits viewport",
+      "passed": true,
+      "detail": "{\"x\":847.21875,\"y\":443.65625,\"width\":540,\"height\":574.84375}"
+    },
+    {
+      "name": "1920px: tooltip has no internal scrolling",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: source filter restricts list",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: filter reset restores catalog",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: graph navigation starts with unsaved draft",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: node network remains available",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: proficiency has independent route",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: proficiency has own page title",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: graph no longer uses inline mode tabs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: proficiency selects its own sidebar tab",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: return from network preserves unsaved draft",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: battle sidebar restores battle route",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: character sibling overview",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: fixed return on character overview",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: character sibling attributes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: fixed return on character attributes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: character sibling manuals",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: fixed return on character manuals",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: character sibling proficiency",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: fixed return on character proficiency",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: character sibling equipment",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: fixed return on character equipment",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: character sibling relations",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: fixed return on character relations",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: character sibling battle",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: fixed return on character battle",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: quiet sibling practice",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: quiet sibling study",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: quiet sibling breakthrough",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1920px: reset restores independent sample plans",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: new page replaces old ten slots",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: separate plans initialized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: hit areas match SVG scale",
+      "passed": true,
+      "detail": "{\"ratio\":1.6744634451093683,\"inside\":true}"
+    },
+    {
+      "name": "1280px: main panel stays in viewport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: wood fills the whole viewport without outer border",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: title and return share compact row height",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: main content gains vertical space",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: proficiency has its own sidebar tab after manuals",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: battle no longer contains a graph entry",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: inventory is left of fixed aligned return",
+      "passed": true,
+      "detail": "{\"apart\":true,\"aligned\":true,\"unique\":true}"
+    },
+    {
+      "name": "1280px: valid rewrite target is recognized",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: invalid direction is retained and marked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: saved rewrite remains leftward",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: four rotations return to saved configuration",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: rewrite tooltip includes actual target",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: missing consumable rejects whole plan",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: valid plan loads in one click",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: clear is draft-only",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: drag places real two-cell footprint",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: keyboard rotates placed strip",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: keyboard moves whole object",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: out-of-bounds movement is rejected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: Delete removes selection",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: click placement uses pending rotation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: overlapping drop is rejected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: right click removes selection",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: all three permitted copies can be placed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: source prevents fourth copy",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: save overwrites only active plan",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: empty names stay in form",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: fourth scheme can be created",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: duplicate name is rejected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: name is escaped text",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: fifth plan is empty and other plans remain",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: delete preserves editable draft",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: world-only pills excluded",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: pill inventory reservation caps third bottle",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: preview does not consume stock",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: combat loads a valid plan",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: combat does not change out-of-combat draft",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: combat does not rewrite saved schemes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: combat missing plan is also atomic",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: unbound resources are not fabricated",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: search finds by name",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: long detailed tooltip fits viewport",
+      "passed": true,
+      "detail": "{\"x\":411.890625,\"y\":228.65625,\"width\":500,\"height\":479.34375}"
+    },
+    {
+      "name": "1280px: tooltip has no internal scrolling",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: source filter restricts list",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: filter reset restores catalog",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: graph navigation starts with unsaved draft",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: node network remains available",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: proficiency has independent route",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: proficiency has own page title",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: graph no longer uses inline mode tabs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: proficiency selects its own sidebar tab",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: return from network preserves unsaved draft",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: battle sidebar restores battle route",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: character sibling overview",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: fixed return on character overview",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: character sibling attributes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: fixed return on character attributes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: character sibling manuals",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: fixed return on character manuals",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: character sibling proficiency",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: fixed return on character proficiency",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: character sibling equipment",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: fixed return on character equipment",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: character sibling relations",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: fixed return on character relations",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: character sibling battle",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: fixed return on character battle",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: quiet sibling practice",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: quiet sibling study",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: quiet sibling breakthrough",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "1280px: reset restores independent sample plans",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "reduced-motion sidebar still selects correct page",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "proficiency can be opened from its own link",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "sidebar from proficiency opens editable board",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no browser script errors",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "all requested assets load",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no browser storage written",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "date": "2026-11-08",
+  "scope": "角色七页独立样稿：无框木底、紧凑页眉、独立造诣；不代表正式Godot或存档接入",
+  "viewports": [
+    "1920x1080",
+    "1280x720"
+  ],
+  "simple_mode_checks": 2,
+  "captures": [
+    "角色_概览_1920.png",
+    "角色_属性_1920.png",
+    "角色_战斗_1920.png",
+    "角色_功法_1920.png",
+    "角色_造诣_1920.png",
+    "角色_装备_1920.png",
+    "角色_关系_1920.png",
+    "战斗新版_配招_1920.png",
+    "战斗新版_方案_1920.png",
+    "战斗新版_局内载入_1920.png",
+    "战斗新版_详细悬停_1920.png",
+    "战斗新版_简略悬停_1920.png",
+    "角色_概览_1280.png",
+    "角色_属性_1280.png",
+    "角色_战斗_1280.png",
+    "角色_功法_1280.png",
+    "角色_造诣_1280.png",
+    "角色_装备_1280.png",
+    "角色_关系_1280.png",
+    "战斗新版_配招_1280.png",
+    "战斗新版_方案_1280.png",
+    "战斗新版_局内载入_1280.png",
+    "战斗新版_详细悬停_1280.png",
+    "战斗新版_简略悬停_1280.png"
+  ],
+  "layout": {
+    "canvas": [
+      1672,
+      941
+    ],
+    "header_height": 46,
+    "body_height_before": 777,
+    "body_height_now": 845,
+    "sidebar": [
+      "概览",
+      "属性",
+      "战斗",
+      "功法",
+      "造诣",
+      "装备",
+      "关系"
+    ]
+  },
+  "files": {
+    "battle-data.js": "19e42cc634dc226808330e541eebb415fe4693efdd970cdaf762e51707c4cadf",
+    "battle-preview.js": "e8c6b4a47854325bfb6aaf7c3ae49e1b923520f295aeff95e2ecbdb52e1bdc7f",
+    "battle-preview.css": "3cf59e5ce7a72759cebd2c41b86e908427dc67fa5b5fe53fd628242ae6ea1513",
+    "character-layout.css": "cb2cf96726cc9549bed6707be31846f5e11606ad4c380fa726fb3201af566a66",
+    "materials.js": "5682f36b2a66837add4b3244d5bf4ba7b55d84b65a417f6f8adbece1c2bf6fe2",
+    "preview.js": "b2bc06bd40a60af3d3c0becbaa6b946833af91eb399d9ea1ab0347bda5f2a417",
+    "index.html": "3942e058830ce51be01dacee369c90e36ad449d2b75120c6521c3593791f28d9"
+  }
+}

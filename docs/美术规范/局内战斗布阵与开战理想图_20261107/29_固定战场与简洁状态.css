@@ -1,0 +1,45 @@
+/* 侧栏只覆盖场景；两态共用整屏战场坐标。 */
+html[data-skin] .battlefield,
+html[data-skin] .battle[data-mode="combat"] .battlefield {
+  inset: 0;
+  transition: none;
+}
+html[data-skin] .actor--friend { left: 31%; }
+html[data-skin] .actor--enemy { left: 69%; }
+html[data-skin] .source-panel { width: clamp(260px, 22vw, 320px); }
+
+html[data-skin] .resources {
+  top: auto;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+/* 生命与状态独立呈现，不套用各材质的大面板装饰。 */
+html[data-skin] .actor-plate {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 6px 9px 7px;
+}
+html[data-skin] .actor-line,
+html[data-skin] .hp-value {
+  color: #eee9dc;
+  text-shadow: 0 1px 2px #151a18;
+}
+html[data-skin] .hp-track {
+  height: 6px;
+  border: 1px solid #292e2c;
+  border-radius: 1px;
+  background: #414642;
+}
+html[data-skin] .hp-fill { background: #a85d53; }
+
+/* 演示控制留在右下，避开正中的资源栏和左下小盘。 */
+html[data-skin] .battle-controls {
+  left: auto;
+  right: 20px;
+  bottom: 24px;
+}

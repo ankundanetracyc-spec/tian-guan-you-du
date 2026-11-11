@@ -12,4 +12,4 @@
 
 验证：[文本专项16项](../../../output/action_combat_text_smoke_20261104.log)、[基础四招24项](../../../output/action_combat_text_basic_correct_20261104.log)、[最终真实角色演练647项](../../../output/realtime_restored_character_final_20261104.log)。覆盖伤害一一对应、残影不重复、落空／空放无飘字、部分化解、零伤害、短词去重、帮助／配置冻结、会心标记、过期清理和重开清空。实际画面已检查数字、描边、化解和剩余伤害的组合显示。
 
-实现仅即时试玩 `action_battle_feel_test.gd`／`action_battle_hud.gd` 表现，不修改正式队列FloatingText或技能费用／伤害公式。规则见[文本精简范围](../../plans/即时战斗飘字与提示精简_20261104.md)。
+实现仅即时试玩 `action_battle_feel_test.gd`／`action_battle_hud.gd` 表现，不修改正式队列FloatingText或技能费用／伤害公式。规则见[文本精简范围](../../plans/战斗与构筑/即时战斗飘字与提示精简_20261104.md)。

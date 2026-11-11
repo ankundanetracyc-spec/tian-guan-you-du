@@ -1,0 +1,26 @@
+using Godot;
+
+public partial class Character
+{
+    /// <summary>出战时只复制局外配置；战斗回传仍走原运行盘，绝不回写此命名库。</summary>
+    private void CaptureCombatBoardPreparation(BattleEntityData snapshot)
+    {
+        if (human is null) return;
+        snapshot.combat_board_preparation_included = true;
+        snapshot.combat_board_preparation = human.combat_board_preparation?.CopyConfiguration();
+        snapshot.combat_board_named_plans = new(human.combat_board_named_plans
+            .Where(layout => layout is not null).Select(layout => layout.CopyConfiguration()));
+        if (!HasMeta("artifact_battle_clone") && human.combat_board_preparation is { } preparation)
+            snapshot.combat_board_layout = preparation.CopyConfiguration();
+    }
+
+    private void ApplyCombatBoardPreparation(BattleEntityData snapshot)
+    {
+        // World characters receive health/items/running bottles through the old return
+        // flow. Their preparation and named plans remain the player's world records.
+        if (human is null || !HasMeta("artifact_battle_clone") || !snapshot.combat_board_preparation_included) return;
+        human.combat_board_preparation = snapshot.combat_board_preparation?.CopyConfiguration();
+        human.combat_board_named_plans = new(snapshot.combat_board_named_plans
+            .Where(layout => layout is not null).Select(layout => layout.CopyConfiguration()));
+    }
+}

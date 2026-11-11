@@ -1,0 +1,94 @@
+/* 乌木骨饰：仅替换视觉，不改变占格或交互。 */
+html[data-skin="wood"] {
+  color-scheme: dark;
+  --ink: #d8d0bc; --muted: #aaa28f; --edge: #625848;
+  --paper: #292620;
+}
+html[data-skin="wood"] body { color: var(--ink); background: #25231f; }
+html[data-skin="wood"] .ink-panel,
+html[data-skin="wood"] .tooltip,
+html[data-skin="wood"] .board-frame {
+  background-color: #292620;
+  background-image: repeating-linear-gradient(2deg, transparent 0 5px, #c3b49805 6px, #00000014 7px, transparent 8px 13px), linear-gradient(100deg,#24231f,#343027 52%,#24221e);
+  border: 1px solid #645a48; border-radius: 1px;
+  box-shadow: inset 0 0 0 2px #15151070, 0 3px 10px #100f0d24;
+}
+html[data-skin="wood"] .source-panel { border-width: 3px 1px; border-color: #9a907a #514938; }
+html[data-skin="wood"] .source-toolbar { padding: 16px 13px 12px; border-bottom: 1px solid #71665070; }
+html[data-skin="wood"] .source-toolbar select,
+html[data-skin="wood"] .search-box { color: #ddd6c3; background: #1f201b; border: 1px solid #6c614d; border-radius: 0; }
+html[data-skin="wood"] .search-box input { color: #ddd6c3; }
+html[data-skin="wood"] .search-box input::placeholder { color: #aca28d; }
+html[data-skin="wood"] .source-list { padding: 5px 13px 3px; }
+html[data-skin="wood"] .source-item {
+  background: transparent; color: #e0d8c1; border: 0; border-bottom: 1px solid #75685069;
+  border-radius: 0; margin-bottom: 2px; padding: 8px 5px;
+}
+html[data-skin="wood"] .source-item:hover,
+html[data-skin="wood"] .source-item[aria-pressed="true"] { background: linear-gradient(90deg,#6f63533d,transparent); border-color: #9b8a6a; box-shadow: inset 3px 0 #a59476; }
+html[data-skin="wood"] .source-name { letter-spacing: .12em; color: #ded6c1; }
+html[data-skin="wood"] .source-meta,
+html[data-skin="wood"] .source-empty { color: #b5aa91; }
+html[data-skin="wood"] .piece-visual { border-color: #978970; background: #181c176b; box-shadow: inset 0 0 5px #0708054a; }
+html[data-skin="wood"] .placeholder-icon { border: 0; background: transparent; color: #c1b493; }
+html[data-skin="wood"] .placeholder-icon--warm { color: #b77c68; }
+html[data-skin="wood"] .shape-line--vertical,
+html[data-skin="wood"] .shape-line--horizontal { background: #ada0878c; }
+html[data-skin="wood"] .small-button,
+html[data-skin="wood"] .outline-button,
+html[data-skin="wood"] .primary-button,
+html[data-skin="wood"] .back-button {
+  color: #322c23; background: linear-gradient(175deg,#beb6a0,#a89e86);
+  border: 1px solid #71634b; border-radius: 1px; box-shadow: inset 0 0 0 2px #ddd4bd32, 0 1px 0 #11110d;
+}
+html[data-skin="wood"] .small-button:hover,
+html[data-skin="wood"] .outline-button:hover,
+html[data-skin="wood"] .primary-button:hover,
+html[data-skin="wood"] .back-button:hover { background: #cbc1a9; border-color: #9a8564; }
+html[data-skin="wood"] .primary-button { border-left: 4px solid #865b47; border-right: 4px solid #865b47; letter-spacing: .18em; }
+html[data-skin="wood"] .source-bottom { border-top: 0; padding-top: 10px; }
+html[data-skin="wood"] .source-bottom .outline-button { color: #d9cfb6; background: #423a2c; border-color: #827257; }
+html[data-skin="wood"] .location { border-top: 2px solid #a79a7d; }
+html[data-skin="wood"] .location-mark { color: #bead8a; }
+html[data-skin="wood"] .location small { color: #b3a78e; border-color: #5e5748; }
+html[data-skin="wood"] .initiative-label { color: #d1c5a8; }
+html[data-skin="wood"] .initiative-rail { background: #5a5445; }
+html[data-skin="wood"] .initiative-fill { background: #b0a486; }
+html[data-skin="wood"] .initiative-marker { color: #e0d3b8; border-color: #9b8b6b; background: #454335; }
+html[data-skin="wood"] .initiative-marker--enemy { background: #5e4538; }
+html[data-skin="wood"] .phase-note { color: #ded1b4; text-shadow: 0 1px 3px #27251f; }
+html[data-skin="wood"] .resource { color: #c6bda7; border-color: #8f7c594a; }
+html[data-skin="wood"] .resource strong { color: #ded5c0; }
+html[data-skin="wood"] .actor-plate { border-left: 3px solid #b9ad8d; padding-left: 8px; }
+html[data-skin="wood"] .actor-line { color: #e3dac4; }
+html[data-skin="wood"] .hp-value { color: #bfb79f; }
+html[data-skin="wood"] .hp-track { background: #4e3930; border-radius: 0; }
+html[data-skin="wood"] .hp-fill { background: #a96552; }
+html[data-skin="wood"] .status-icon { background: #292820; border: 1px solid #8d8168; border-radius: 0; }
+html[data-skin="wood"] .board-frame { border: 3px solid #62533d; padding: 5px; }
+html[data-skin="wood"] .hand-slot { background: #29271f; border: 2px solid #8d7b5b; border-radius: 1px; }
+html[data-skin="wood"] .hand-link { background: #9f8a64; }
+html[data-skin="wood"] .slot-caption { color: #d6c69f; }
+html[data-skin="wood"] .grid-cell { border-color: #95846c75; background: #11160f4a; }
+html[data-skin="wood"] .grid-cell:hover { background: #85725247; }
+html[data-skin="wood"] .board-piece { border-color: #9b896b; border-radius: 0; background: #4a4537d9; }
+html[data-skin="wood"] .board-piece:hover,
+html[data-skin="wood"] .board-piece[aria-pressed="true"] { background: #66583fe8; border-color: #d1bf98; }
+html[data-skin="wood"] .board-caption { color: #e0d4b7; }
+html[data-skin="wood"] .board-caption span:last-child,
+html[data-skin="wood"] .board-feedback { color: #d5c9ad; }
+html[data-skin="wood"] .scheme-heading,
+html[data-skin="wood"] .equipment-entry { border-color: #7a6a4f70; }
+html[data-skin="wood"] .scheme-option { color: #ddd1b7; background: #413b2d; border: 0; border-bottom: 1px solid #8d7a59; border-radius: 0; }
+html[data-skin="wood"] .scheme-option:hover { background: #62533c; }
+html[data-skin="wood"] .scheme-option small,
+html[data-skin="wood"] .tooltip p,
+html[data-skin="wood"] .character-dialog p { color: #bdb196; }
+html[data-skin="wood"] .tooltip strong { color: #e7dbc0; padding-bottom: 7px; border-bottom: 1px solid #8e7b565c; }
+html[data-skin="wood"] .character-dialog { color: #e0d5b9; }
+html[data-skin="wood"] .dialog-subtitle { color: #c5b89b; }
+html[data-skin="wood"] .dialog-close { color: #ded3b7; }
+html[data-skin="wood"] button:focus-visible,
+html[data-skin="wood"] input:focus-visible,
+html[data-skin="wood"] select:focus-visible { outline-color: #c8b48b; }
+

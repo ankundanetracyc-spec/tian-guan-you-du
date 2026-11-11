@@ -1,0 +1,150 @@
+{
+  "date": "2026-11-08",
+  "status": "按最新用户范围撤回预装配；仅暂存，不参与编译，不接入游戏",
+  "activeDeclarationsAndReferences": "csharp/tscn按完整符号边界检查：本线新接口/字段/方法0处",
+  "movesVerifiedAbsolutePathsInsideProject": true,
+  "sourceBoundary": {
+    "restored": [
+      {
+        "path": "csharp/entity/Character.cs",
+        "beforeWithdrawalSha256": "726E3F6504651686F91A9FF32D5BE107BA17EF066575274920074C69F105A49B",
+        "restoredSha256": "16BCAC61CC0AFD19D9DBDC29B6F3DB7E38F1589D65294E9CA258025B90F12D60",
+        "stillExists": true
+      },
+      {
+        "path": "csharp/battle/BattleEntityData.cs",
+        "beforeWithdrawalSha256": "74EBC08B1D9DC703D3897F5E2ACD1D7B8F9C306339CE0381A5EF0EE25C049966",
+        "restoredSha256": "A4DC7A3D6F9F0C38775356B4076769F2CDCF2DB7AA515534B82C45A48421BAD0",
+        "stillExists": true
+      },
+      {
+        "path": "csharp/resources/HumanData.CombatBoard.cs",
+        "beforeWithdrawalSha256": "348596ADCFD9288A4E4FDC35E91B556F21DDC1E7B8422A0B6FDD5293C2A19C15",
+        "restoredSha256": "74449453B45E9902DCCE95B2B610D611CE281B8F18376227D61EEB5C93896069",
+        "stillExists": true
+      },
+      {
+        "path": "csharp/resources/CombatBoardLayout.cs",
+        "beforeWithdrawalSha256": "B12BDC13BB668F477E0EC9DE5BA8827505B2A273C1BAFEF9AE4DCB0B716CEDBD",
+        "restoredSha256": "6B64ACAF5A245272789C7F65178BDB569DAA4D3460103E77A9F9F8D66462D6AC",
+        "stillExists": true
+      },
+      {
+        "path": "csharp/battle/BattleManager.CombatBoard.cs",
+        "beforeWithdrawalSha256": "8DC660BE35AEEC134C6FF5C95FDE57BDB30ED469F1919C89B8D23952926B9059",
+        "restoredSha256": "03A30B41E19772C4536F7B4F99D251E20A96DC5BAD0DCE67AEBC353895761B5D",
+        "stillExists": true
+      },
+      {
+        "path": "csharp/battle/BattleBoardHud.cs",
+        "beforeWithdrawalSha256": "86A9190B0C7E0F339B495912E77074C94AC050BD5C2ABB3AEECE918114A1CEC5",
+        "restoredSha256": "7C35CE24EF8FA336C79EA1B2474A7391C3462C214A90518F881DB9834E9AB3A4",
+        "stillExists": true
+      }
+    ],
+    "newActiveFilesRemaining": [],
+    "patchSha256": "AF5CEB73C51704E9849961C8EE98FA6AC8DAC9885C1D4E794BF0F21431B900C8",
+    "rest": [
+      {
+        "path": "csharp/panel/RestPanel.cs",
+        "sha256": "15D95F888F4D74D6F81F41A4EB7963244380EAB89676399CF4ABF191994923E0",
+        "approvedRecordSha256": "15D95F888F4D74D6F81F41A4EB7963244380EAB89676399CF4ABF191994923E0",
+        "unchangedAgainstApprovedRecord": true
+      },
+      {
+        "path": "csharp/panel/RestPaperControls.cs",
+        "sha256": "1879D5506296E7DD750CE167A6A778762CBF9EE3ED051CCD39B3E07F269FFE93",
+        "approvedRecordSha256": "1879D5506296E7DD750CE167A6A778762CBF9EE3ED051CCD39B3E07F269FFE93",
+        "unchangedAgainstApprovedRecord": true
+      },
+      {
+        "path": "csharp/debug/RestPaperUiSmoke.cs",
+        "sha256": "C2E101CAF6D34D91194A1CA4657E194A3FA2FA78B6BBC5211DF9FE2A65655938",
+        "approvedRecordSha256": "C2E101CAF6D34D91194A1CA4657E194A3FA2FA78B6BBC5211DF9FE2A65655938",
+        "unchangedAgainstApprovedRecord": true
+      }
+    ]
+  },
+  "rollbackMethod": "只在6个既有文件摘除本线精确片段；未git checkout，未移走任何既有文件，其他对话修改保持。",
+  "characterHooksRemoved": 2,
+  "snapshotCopyHookRemoved": 1,
+  "stagedFileManifest": "evidence/backend_moved_files.json",
+  "patchSummary": "evidence/backend_patch_summary.json",
+  "patchCheck": "git apply --ignore-space-change --check通过；未应用、未build",
+  "lastActualRun": {
+    "assertions": 76,
+    "assertionFailures": 0,
+    "headless": true,
+    "processExitCode": -1073741819,
+    "overallPassed": false,
+    "exitFailure": "Godot.NativeInterop.godotsharp_array_destroy / System.AccessViolationException",
+    "sourceBuildInclusion": {
+      "dllModified": "2026-11-08T23:21:55.4431622+08:00",
+      "included": true,
+      "sources": [
+        {
+          "path": "E:\\stacklands\\csharp\\resources\\CombatBoardLayout.cs",
+          "modified": "2026-11-08T23:18:54.4612167+08:00"
+        },
+        {
+          "path": "E:\\stacklands\\csharp\\battle\\CombatBoardPreparationService.cs",
+          "modified": "2026-11-08T23:18:54.4622270+08:00"
+        },
+        {
+          "path": "E:\\stacklands\\csharp\\debug\\CombatBoardPreparationSmoke.cs",
+          "modified": "2026-11-08T23:18:54.4622270+08:00"
+        },
+        {
+          "path": "E:\\stacklands\\csharp\\entity\\Character.CombatBoardPreparation.cs",
+          "modified": "2026-11-08T23:00:39.3565998+08:00"
+        },
+        {
+          "path": "E:\\stacklands\\csharp\\battle\\BattleEntityData.CombatBoardPreparation.cs",
+          "modified": "2026-11-08T23:00:39.3565998+08:00"
+        },
+        {
+          "path": "E:\\stacklands\\csharp\\resources\\HumanData.CombatBoard.cs",
+          "modified": "2026-11-08T23:00:39.3565998+08:00"
+        },
+        {
+          "path": "E:\\stacklands\\csharp\\battle\\BattleManager.CombatBoard.cs",
+          "modified": "2026-11-08T23:03:25.7368002+08:00"
+        },
+        {
+          "path": "E:\\stacklands\\csharp\\battle\\BattleBoardHud.cs",
+          "modified": "2026-11-08T23:02:14.3703299+08:00"
+        }
+      ]
+    },
+    "unverifiedLaterChange": "暂存Smoke的外层等待局部Task/释放夹具/GC退出整理未重新编译复测。",
+    "presetNameFixIncludedInVerifiedDll": true,
+    "verifiedDllModified": "2026-11-08T23:21:55.4431622+08:00",
+    "verifiedPresetAndSmokeModified": "2026-11-08T23:18:54+08:00"
+  },
+  "remainingFollowup": [
+    "战斗稿由另一对话验收后才能重新接入",
+    "旧locked周天的显式移除路径（含BattleBoardView）待后续解决",
+    "MainScene dirty通知由未来接入统一核验"
+  ],
+  "runtimeBinaryNote": "当前磁盘DLL可能仍含撤回前代码；根线需按撤回后的源统一重编译，本分线未自行build。",
+  "cleanup": {
+    "status": "保持保留，不再尝试删除",
+    "attempts": [
+      {
+        "path": "E:/stacklands/docs/美术规范/角色招式盘预装配暂存_20261108/evidence/backend_compare_temporary.json",
+        "action": "Remove-Item -LiteralPath $temp，删除本线生成的临时源比对JSON"
+      },
+      {
+        "path": "E:/stacklands/docs/美术规范/角色招式盘预装配正式接入_20261108",
+        "action": "确认目录为空后Remove-Item -LiteralPath $old；不带-Recurse"
+      }
+    ],
+    "bothPathsVerifiedInsideProjectBeforeAttempt": true,
+    "toolDisposition": "CreateProcess Rejected: rejected: blocked by policy",
+    "reasonExactlyReturned": "blocked by policy",
+    "moreDetailedReasonProvided": false,
+    "commandNotExecuted": true,
+    "noFurtherDeleteAttempts": true
+  },
+  "restScope": "休息源码未由本轮预装配撤回编辑；与已批准休息最终证据的三个源hash一致。"
+}

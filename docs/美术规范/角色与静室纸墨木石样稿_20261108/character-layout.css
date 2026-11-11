@@ -1,0 +1,18 @@
+/* Character-only layout: the existing wood fills the viewport without a frame. */
+#stage{z-index:1}
+.character-viewport-wood{position:absolute;inset:0;z-index:0;display:none;pointer-events:none;isolation:isolate}
+#viewport[data-preview-app="character"]>.character-viewport-wood{display:block}
+.wood-full-layer{display:block}
+.character-shell{box-shadow:none;isolation:isolate}
+.character-shell .game-header{left:16px;right:16px;top:12px;height:46px;gap:20px}
+.character-shell .page-plaque{height:46px;min-width:256px;padding:3px 20px;flex:none}
+.character-shell .page-plaque h1{font-size:26px;line-height:1.15}
+.character-shell .page-plaque h1>span{padding:0 9px}
+.character-shell .header-identity{height:46px;align-items:center;gap:16px;margin-left:0;max-width:850px;min-width:0}
+.character-shell .header-identity strong{font-size:23px;white-space:nowrap}
+.character-shell .header-identity>span{font-size:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.character-shell>.page-return{top:12px;right:16px;height:46px}
+.character-shell .side-rail{left:16px;top:76px;bottom:20px;width:200px;padding:20px 12px}
+.character-shell .side-rail nav{gap:17px}
+.character-shell .page-body{left:232px;right:16px;top:76px;bottom:20px}
+.character-shell .game-footer{display:none}

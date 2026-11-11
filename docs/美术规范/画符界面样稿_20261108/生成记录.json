@@ -1,0 +1,52 @@
+{
+  "created": "2026-11-08",
+  "generation_mode": "built-in image generation tool",
+  "reference_images": [],
+  "visual_references_only": [
+    "docs/美术规范/炼器火源素材_20261107/06_原UI与连续炉火.png",
+    "textures/ui/forging_20261021/ink_workshop.png",
+    "textures/ui/alchemy_room_20261017/wall_only_front_v8.png"
+  ],
+  "assets": [
+    {
+      "id": "desk_v1",
+      "original": "E:/tmp/CodexData/generated_images/01a1b681-bccc-7022-96a0-76bedc125579/exec-3dd304ce-b783-4df0-b98e-18f804467f21.png",
+      "asset": "textures/ui/talisman_crafting_20261108/desk_v1.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "mode": "RGB",
+      "prompt": "Use case: stylized-concept. Asset type: a production-quality blank background for a Chinese cultivation game's talisman crafting interface. Primary request: create a NEW 16:9 hand-painted ink-wash and muted mineral-watercolor scene matching a refined xianxia game whose alchemy and forging screens use rice paper, grey-green stone, aged wood and distant misty mountains. Scene: a quiet scholar-craftsman's mountain pavilion with a wide LOW grey-brown wooden writing desk in the LOWER CENTER, a softly painted grey-green mountain and pine view behind the desk, muted stone floor, open wooden beams at the sides. The desk top must be a generous empty usable writing surface in the central 40 percent of the image, viewed from a modest elevated front angle so a tall sheet of talisman paper can be layered onto it later. Keep an inkstone with a very small vermilion well and one traditional brush resting near the right edge of the desk, small and visually subordinate; no paper and no scroll on the desk. The left 29 percent and right 27 percent are quiet low-contrast scenery because actual material and cost panels will overlay those zones. Central workspace from x 32 to 68 percent and y 43 to 77 percent must be clear and uncluttered. Background and desk keep natural proportion and convincing contact shadows. Style: precise Chinese game environment illustration on lightly textured paper, sophisticated ink contours, restrained desaturated grey-green and warm stone, same visual family as an ink-wash smithing workshop, mature detailed game art, no glossy digital shading. The visual should support editable UI overlays; do not draw any UI panels or text. Text: none. Avoid: written characters, symbols, talisman glyphs, labels, decorative interface borders, logos, watermark, people, hands, furnace, fire, magic glow, gold ornament, oversized brush, top-down-only shot, highly saturated colors, photographic realism.",
+      "sha256": "16e12a32dd74336f167611056cf3d4a40c4bdfd70163224bcbc229f5e82e7121"
+    },
+    {
+      "id": "tools_v1",
+      "original": "E:/tmp/CodexData/generated_images/01a1b681-bccc-7022-96a0-76bedc125579/exec-b045663e-ce13-4383-9006-9d97adc4ccc6.png",
+      "asset": "textures/ui/talisman_crafting_20261108/tools_v1.png",
+      "dimensions": [
+        1774,
+        887
+      ],
+      "mode": "RGBA",
+      "transparent": true,
+      "regions": {
+        "inkstone": [
+          193,
+          363,
+          582,
+          308
+        ],
+        "brush": [
+          1322,
+          15,
+          71,
+          854
+        ]
+      },
+      "prompt": "Use case: product-mockup. Asset type: two clearly separated Chinese cultivation game desk props on a genuinely transparent background, for compositing into an ink-wash talisman crafting interface. Create ONE composition with only these two independent objects: on the LEFT half, a small low grey-green stone inkstone seen from a modest elevated front angle, shallow oval rectangular basin containing a very small pool of muted dark vermilion pigment; on the RIGHT half, a single elegant traditional Chinese writing brush, vertical in the composition with its bristles pointing down, plain aged warm bamboo handle, fine natural dark brown and soft off-white tapering bristles. Leave generous fully transparent space between the two so each can be referenced independently. No table, floor, shadows outside the props, UI frame, symbols, glyphs, text, seals, logos or watermark. Match detailed hand-painted Chinese ink contours, soft muted mineral watercolor, matte old stone and bamboo, restrained desaturated tones and natural proportions used in a refined xianxia game's alchemy and forging workbench art. Clean independent silhouettes; the brush must be fully visible and straight with no hand. Do not add a second brush, magic glow or gold ornament.",
+      "sha256": "59d4a3e43e484dfc67d466e0f6fc05acc69f42a3b0778f7182c6739e09b77cc2"
+    }
+  ],
+  "usage": "源图原样复制，运行时区域引用；新建文件，未覆盖现用丹器素材。"
+}

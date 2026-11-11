@@ -1,0 +1,127 @@
+{
+  "verified_date": "2026-11-06",
+  "build": {
+    "warnings": 0,
+    "errors": 0
+  },
+  "groups": [
+    {
+      "name": "原生窗口与悬浮选择",
+      "checks": 149,
+      "exit_code": 0,
+      "error_count": 0,
+      "log": "tmp/npc_probe_dialogue_release_20261106/stdout.log",
+      "diagnostics": "tmp/npc_probe_dialogue_release_20261106/stderr.log"
+    },
+    {
+      "name": "探查完整流程",
+      "checks": 108,
+      "exit_code": 0,
+      "error_count": 0,
+      "log": "tmp/npc_probe_dialogue_release_headless_20261106/stdout.log",
+      "diagnostics": "tmp/npc_probe_dialogue_release_headless_20261106/stderr.log"
+    },
+    {
+      "name": "白石序章与同行常规回归",
+      "checks": 73,
+      "exit_code": 0,
+      "error_count": 0,
+      "log": "tmp/baishi_lecture_dialogue_headless_final/stdout.log",
+      "diagnostics": "tmp/baishi_lecture_dialogue_headless_final/stderr.log"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "成功被发现_提醒.png",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 5020029
+    },
+    {
+      "file": "底部探查确认.png",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 4903693
+    },
+    {
+      "file": "底部质问_1280.png",
+      "width": 1280,
+      "height": 720,
+      "bytes": 1576350
+    },
+    {
+      "file": "反击结束_记录仍在.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 3501113
+    },
+    {
+      "file": "公开档案未探明.png",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 3774426
+    },
+    {
+      "file": "禁斗地点_强硬回应.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 3137014
+    },
+    {
+      "file": "禁斗地点质问.png",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 5034176
+    },
+    {
+      "file": "居中对话_1920.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 3137442
+    },
+    {
+      "file": "赔礼对白.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 3114651
+    },
+    {
+      "file": "赔礼后回应.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 3126021
+    },
+    {
+      "file": "失败被发现_忍下.png",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 5019287
+    },
+    {
+      "file": "探查入口.png",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 5069381
+    },
+    {
+      "file": "隐蔽成功属性页.png",
+      "width": 2560,
+      "height": 1440,
+      "bytes": 3658793
+    },
+    {
+      "file": "允许交手地点_出手.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 3534692
+    }
+  ],
+  "notes": [
+    "三个分组有重叠，不累计为独立用例总数",
+    "原生窗口检查包括水平居中、立绘比例、选项竖排及真实鼠标点选",
+    "隔离存档及稳定NPC数据，正式场景原生渲染，未覆盖玩家存档",
+    "首轮原生检查在技能资源读取出现GCHandle异常；后续完整复跑通过，未修改引擎或宣称资源生命周期问题根除",
+    "序章截图模式在行旅断言处中止；常规模式73项通过，不将该次截图模式记为通过",
+    "日志保留既有UID回退等提示"
+  ]
+}

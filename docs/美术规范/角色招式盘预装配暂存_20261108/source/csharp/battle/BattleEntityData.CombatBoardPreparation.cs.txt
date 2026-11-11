@@ -1,0 +1,16 @@
+using Godot;
+
+public partial class BattleEntityData
+{
+    [Export] public bool combat_board_preparation_included;
+    [Export] public CombatBoardLayout? combat_board_preparation;
+    [Export] public Godot.Collections.Array<CombatBoardLayout> combat_board_named_plans = [];
+
+    private void CopyCombatBoardPreparationFrom(BattleEntityData source)
+    {
+        combat_board_preparation_included = source.combat_board_preparation_included;
+        combat_board_preparation = source.combat_board_preparation?.CopyConfiguration();
+        combat_board_named_plans = new(source.combat_board_named_plans
+            .Where(layout => layout is not null).Select(layout => layout.CopyConfiguration()));
+    }
+}

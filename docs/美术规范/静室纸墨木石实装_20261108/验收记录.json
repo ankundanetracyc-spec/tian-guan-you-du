@@ -1,0 +1,132 @@
+{
+  "status": "passed",
+  "revision": "Whole-paper buttons, plain straight dividers and centered icon family",
+  "date": "2026-11-09",
+  "totalChecks": 116,
+  "failed": 0,
+  "errors": 0,
+  "warnings": 0,
+  "warningExplanation": "Current straight-divider logs are authoritative; earlier appearance backup warnings are historical.",
+  "captureSource": "Fixed-size GPU SubViewport via NativePaperCaptureHost; FramePostDraw capture; no desktop capture",
+  "visuallyReviewedImages": 10,
+  "playerJourneyRead": false,
+  "playerJourneyWritten": false,
+  "actualActions": [
+    "isolated real Character gains two strands with zero world stamina and advances game time",
+    "selected real book studies for 24 game hours and spends 24 world stamina with real chapter progress",
+    "real pointer down/up changes the navigation full-paper face and ordinary mode draw state"
+  ],
+  "buttonChecks": [
+    "navigation selected face references selectedFalse paper texture; no center-only selected patch",
+    "four practice modes, book list and chapters use regular original paper in all five button states",
+    "navigation shifts 18 design pixels; binding appears only on selection; dates/return remain aligned",
+    "Already-selected ordinary mode returns to stationary full-paper tint after actual pointer release; held state alone moves face by one design unit"
+  ],
+  "scopeLimits": [
+    "condensation and full nine-breath presentation are retained but not automatically played in this UI smoke"
+  ],
+  "runs": [
+    {
+      "width": 1280,
+      "height": 720,
+      "mode": "native-window with fixed GPU SubViewport",
+      "passed": true,
+      "checks": 58,
+      "failed": 0,
+      "errors": 0,
+      "warnings": 0,
+      "warningSource": "external appearance installation/before_install backup config scan; missing appearance parts",
+      "images": [
+        {
+          "name": "静室_吐纳修行_1280.png",
+          "sha256": "e040895cc319e714e043b1e93ba75de7a298523f955cc58a0b7b49a44323537d"
+        },
+        {
+          "name": "静室_功法研读_1280.png",
+          "sha256": "b88520a5143ebe3d118ef6a35d447d42570e0393481a433967446c8beef04d95"
+        },
+        {
+          "name": "静室_闭关突破_1280.png",
+          "sha256": "f15fe2df9dd8443298154d497b60ab62d52ce98b6fbd1a5f5eb6cf6e05d48a7f"
+        },
+        {
+          "name": "静室_指定日期_1280.png",
+          "sha256": "f7d393908c2f72fb723e9714ede4f9ccf23e0a85adfbea9bed5fbda260f243e1"
+        },
+        {
+          "name": "静室_归元九息_1280.png",
+          "sha256": "610a2efb18379de14b427bdbbf196650f4a183fc19c1af6839aed351e9bc23a3"
+        }
+      ],
+      "record": "验收记录_1280.json",
+      "log": "验收日志_1280.log",
+      "profile": "output/quiet-room-paper-native/profiles/1280",
+      "captureHost": "res://tools/NativePaperCaptureHost.tscn"
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "mode": "native-window with fixed GPU SubViewport",
+      "passed": true,
+      "checks": 58,
+      "failed": 0,
+      "errors": 0,
+      "warnings": 0,
+      "warningSource": "external appearance installation/before_install backup config scan; missing appearance parts",
+      "images": [
+        {
+          "name": "静室_吐纳修行_1920.png",
+          "sha256": "383d025c3005bb740446467076fa833551a80800d660cb0b439d086786c8c1ad"
+        },
+        {
+          "name": "静室_功法研读_1920.png",
+          "sha256": "2d7f84d6a0ca6466eefc6d796c72d41c6fd4988dac716f7e162bd9885ba54c64"
+        },
+        {
+          "name": "静室_闭关突破_1920.png",
+          "sha256": "25e895e7a1015758ed509ca2133417751775aaa80e0b8f91060c6699f0348c3d"
+        },
+        {
+          "name": "静室_指定日期_1920.png",
+          "sha256": "d6754ce8879cb0fd41f66d2f595e2afc593872bf1f113119f7a03b3914cf4289"
+        },
+        {
+          "name": "静室_归元九息_1920.png",
+          "sha256": "4d6ec0036612caa58ec7e8429cd22581d5f6bf33ffba810f318d880f0602b9e4"
+        }
+      ],
+      "record": "验收记录_1920.json",
+      "log": "验收日志_1920.log",
+      "profile": "output/quiet-room-paper-native/profiles/1920",
+      "captureHost": "res://tools/NativePaperCaptureHost.tscn"
+    }
+  ],
+  "sourceSha256": {
+    "csharp/panel/CultivationUI.cs": "f8be0bfd031e04b40a7214084e9299903be88ef093e07b5436ca925d0e3574ae",
+    "csharp/panel/CultivationUI.Room.cs": "2f1f0a397823101352b8307f9fba5f758e6f692b020019738e074e6aa1629a95",
+    "csharp/panel/CultivationUI.Paper.cs": "42ff62fbb47551351f440c11681dd834b5f30b233a3874fadc6d8fbfcd2125fc",
+    "csharp/panel/QuietRoomPaperTab.cs": "8e2645efea1a82f1b3a0e1e8ff2b065471c35313aacc4ca96089e87a9c3d2b79",
+    "csharp/panel/QuietRoomNumber.cs": "3d86be216c8772990efea8fcfd4dd756fe7c9e8c5b7b0bffacaf40c2655a8012",
+    "csharp/panel/QuietRoomTriangle.cs": "c84e797bdbe31ea74b528e978d73887e6a50f4afc161c5555f19605fc46c3f23",
+    "csharp/debug/QuietRoomPaperUiSmoke.cs": "04603dff97abdde16324c6bb342b20f1cff304167d36660c8c89c6f194eb21ea",
+    "tools/QuietRoomPaperUiSmoke.tscn": "c82ace69c2522861369290c5a481ff2811ced6a640d71abe3ee2f89eec508b6f",
+    "csharp/panel/CraftingPaperStyle.cs": "89e4d262d9240ca94fd3e295a59ec4937c1868eb7673d76ecfd6370fbdde0aec",
+    "csharp/panel/PaperButtonFeedback.cs": "74894219692f987a32ac356e170377e0950dacc10de809f7ca8b941ea26ace7c",
+    "tools/NativePaperCaptureHost.gd": "88cde01bf83fc43d7d184fe7b31ed0bed02be2d322a18501cc24936a872fb106",
+    "tools/NativePaperCaptureHost.tscn": "477dadb211cb701440ae94a55abbde2bbbbcaace20850225d557984c5645d728"
+  },
+  "executionRuntimeManifest": {
+    "phase": "straight dividers and centered icon",
+    "recordedAt": "2026-11-09T12:39:56.581208+08:00",
+    "sha256": {
+      ".godot/mono/temp/bin/Debug/stacklands.dll": "61b3f685603d99082fd76f56f6a42f9268982b7fced6177dbe4ee3312060822e",
+      "csharp/panel/CraftingPaperStyle.cs": "89e4d262d9240ca94fd3e295a59ec4937c1868eb7673d76ecfd6370fbdde0aec",
+      "csharp/panel/PaperButtonFeedback.cs": "74894219692f987a32ac356e170377e0950dacc10de809f7ca8b941ea26ace7c",
+      "csharp/panel/CultivationUI.Paper.cs": "42ff62fbb47551351f440c11681dd834b5f30b233a3874fadc6d8fbfcd2125fc",
+      "csharp/panel/RestPanel.cs": "e948d15913fc11c489368c3d773ea83c8939d1effea5629d9785af9a56de8167",
+      "csharp/scene/AlchemySlotBrewPreviewScene.PaperSkin.cs": "2e95ef688dceb5428d2542b290ed95b30385c3ee6e42a31fa5d6bd65e7ae191c",
+      "csharp/debug/CharacterPaperUiSmoke.cs": "a0ffc4b312d888e3c99ec053d6e0b822dcf13626f3d3159b2c26970679f632d7",
+      "tools/NativePaperCaptureHost.gd": "88cde01bf83fc43d7d184fe7b31ed0bed02be2d322a18501cc24936a872fb106"
+    }
+  }
+}

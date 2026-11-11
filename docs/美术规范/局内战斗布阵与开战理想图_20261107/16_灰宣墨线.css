@@ -1,0 +1,208 @@
+/* 候选：中灰宣纸、薄墨线和少量朱印。仅在 paper 风格启用时覆盖样板。 */
+html[data-skin="paper"] {
+  color-scheme: light;
+  --ink: #292d2a;
+  --muted: #525750;
+  --edge: #62665f;
+  --paper: #adada3;
+}
+
+html[data-skin="paper"] body {
+  color: #292d2a;
+  background: #74776f;
+}
+html[data-skin="paper"] button:focus-visible,
+html[data-skin="paper"] input:focus-visible,
+html[data-skin="paper"] select:focus-visible {
+  outline: 2px solid #793f39;
+  outline-offset: 2px;
+}
+html[data-skin="paper"] .ground { filter: grayscale(.25) brightness(.88) contrast(.97); }
+html[data-skin="paper"] .scene-tint {
+  background: radial-gradient(ellipse at center, transparent 38%, rgba(35,38,34,.27) 100%),
+              linear-gradient(180deg, rgba(50,53,47,.13), transparent 36%, rgba(39,42,37,.11));
+}
+
+/* 一整片低亮纸面；细纹只作材质，不在每条内容上套卡片。 */
+html[data-skin="paper"] .ink-panel {
+  color: #292d2a;
+  border: 1px solid #676a62;
+  border-radius: 1px;
+  background-color: #adada3;
+  background-image: repeating-linear-gradient(0deg, rgba(42,45,40,.018) 0 1px, transparent 1px 4px),
+                    linear-gradient(108deg, #a6a89e, #b3b4aa 54%, #a4a69d);
+  box-shadow: none;
+}
+html[data-skin="paper"] .location { border-left: 3px solid #8a4a40; }
+html[data-skin="paper"] .location-mark { color: #853f37; }
+html[data-skin="paper"] .location small { color: #555a52; border-left-color: #7a7e74; }
+html[data-skin="paper"] .initiative-label { color: #41453f; }
+html[data-skin="paper"] .initiative-rail { background: #797d74; }
+html[data-skin="paper"] .initiative-fill { background: #545b53; }
+html[data-skin="paper"] .initiative-marker {
+  color: #eff0e9;
+  border-color: #545950;
+  background: #646b62;
+  border-radius: 2px;
+}
+html[data-skin="paper"] .initiative-marker--enemy { background: #855a51; border-color: #704c44; }
+html[data-skin="paper"] .phase-note {
+  width: max-content;
+  margin: 4px auto 0;
+  padding: 1px 8px 2px;
+  color: #333832;
+  border-bottom: 1px solid rgba(65,70,62,.58);
+  background: rgba(174,175,164,.9);
+  text-shadow: none;
+}
+
+/* 按钮做墨线短签；重点按钮用更深的灰墨而不作金属装饰。 */
+html[data-skin="paper"] .small-button,
+html[data-skin="paper"] .outline-button,
+html[data-skin="paper"] .back-button {
+  color: #292d2a;
+  border: 0;
+  border-bottom: 1px solid #5e625a;
+  border-radius: 0;
+  background: #aaaca2;
+  box-shadow: none;
+}
+html[data-skin="paper"] .primary-button {
+  color: #f0f0e8;
+  border: 1px solid #515850;
+  border-radius: 1px;
+  background: #687168;
+  box-shadow: none;
+}
+html[data-skin="paper"] .small-button:hover,
+html[data-skin="paper"] .outline-button:hover,
+html[data-skin="paper"] .back-button:hover { color: #202520; background: #b9bbb0; border-bottom-color: #833f37; }
+html[data-skin="paper"] .primary-button:hover { background: #555f56; border-color: #80443a; }
+html[data-skin="paper"] .demo-button { color: #434942; }
+
+/* 血条下仍是状态：颜色、图形和文字分工保持清楚。 */
+html[data-skin="paper"] .resource { color: #3d433d; border-right-color: rgba(55,60,53,.28); }
+html[data-skin="paper"] .resource strong { color: #272c28; }
+html[data-skin="paper"] .resource-dot { background: #897c68; }
+html[data-skin="paper"] .resource-dot--mana { background: #647b82; }
+html[data-skin="paper"] .resource-dot--spirit { background: #817d70; }
+html[data-skin="paper"] .actor-plate { border-radius: 0; }
+html[data-skin="paper"] .actor-line { color: #272c28; }
+html[data-skin="paper"] .hp-value { color: #4e544d; }
+html[data-skin="paper"] .hp-track { background: #85877d; border-radius: 0; }
+html[data-skin="paper"] .hp-fill,
+html[data-skin="paper"] .hp-fill--enemy { background: #975c50; }
+html[data-skin="paper"] .status-icon {
+  border: 1px solid #6b7067;
+  border-radius: 0;
+  background: #a9ada1;
+}
+
+/* 主盘和手持仍是实际 52px 网格，颜色只换材质。 */
+html[data-skin="paper"] .board-caption,
+html[data-skin="paper"] .board-feedback {
+  color: #262c27;
+  background: rgba(173,175,164,.92);
+  text-shadow: none;
+}
+html[data-skin="paper"] .board-caption {
+  padding: 2px 5px;
+  border-bottom: 1px solid #666b61;
+}
+html[data-skin="paper"] .board-caption span:last-child { color: #535a50; }
+html[data-skin="paper"] .board-feedback { padding: 1px 4px; }
+html[data-skin="paper"] .hand-slot,
+html[data-skin="paper"] .board-frame {
+  border: 1px solid #63685e;
+  border-radius: 1px;
+  background: #a9aba0;
+  box-shadow: none;
+}
+html[data-skin="paper"] .hand-link { background: #666b61; }
+html[data-skin="paper"] .slot-caption { color: #85433b; }
+html[data-skin="paper"] .grid-cell { border-color: rgba(76,82,72,.47); background: rgba(101,110,97,.09); }
+html[data-skin="paper"] .grid-cell:hover { background: rgba(98,113,101,.22); }
+html[data-skin="paper"] .board-piece {
+  border: 1px solid #6d756a;
+  border-radius: 0;
+  background: rgba(218,218,204,.27);
+}
+html[data-skin="paper"] .board-piece:hover,
+html[data-skin="paper"] .board-piece[aria-pressed="true"] {
+  background: rgba(140,154,140,.55);
+  border-color: #74463d;
+  box-shadow: inset 0 0 0 1px #74463d;
+}
+
+/* 右栏只留连续分隔线；拼格仍依据原有尺寸与对象绘制。 */
+html[data-skin="paper"] .source-panel {
+  border: 0;
+  border-left: 1px solid #646960;
+  border-radius: 0;
+}
+html[data-skin="paper"] .source-toolbar select,
+html[data-skin="paper"] .search-box {
+  color: #292e29;
+  border: 0;
+  border-bottom: 1px solid #666c62;
+  border-radius: 0;
+  background: rgba(226,226,213,.12);
+}
+html[data-skin="paper"] .source-toolbar select option { color: #292e29; background: #b1b2a8; }
+html[data-skin="paper"] .search-box { color: #50574f; }
+html[data-skin="paper"] .search-box input { color: #292e29; }
+html[data-skin="paper"] .search-box input::placeholder { color: #62685f; }
+html[data-skin="paper"] .source-list { scrollbar-color: #737b70 transparent; }
+html[data-skin="paper"] .source-item {
+  color: #292e29;
+  border: 0;
+  border-bottom: 1px solid rgba(66,72,64,.33);
+  border-radius: 0;
+  background: transparent;
+}
+html[data-skin="paper"] .source-item:hover { border-bottom-color: #686e64; background: rgba(105,118,103,.16); }
+html[data-skin="paper"] .source-item[aria-pressed="true"] {
+  border-bottom-color: #686e64;
+  background: rgba(105,118,103,.24);
+  box-shadow: inset 3px 0 0 #8b473d;
+}
+html[data-skin="paper"] .source-name { color: #262b26; }
+html[data-skin="paper"] .source-meta,
+html[data-skin="paper"] .source-empty { color: #555d53; }
+html[data-skin="paper"] .source-bottom { border-top-color: rgba(62,68,60,.37); }
+html[data-skin="paper"] .piece-visual { border: 1px solid #667064; background: rgba(218,219,205,.25); }
+html[data-skin="paper"] .shape-line--vertical,
+html[data-skin="paper"] .shape-line--horizontal { background: rgba(64,72,63,.58); }
+html[data-skin="paper"] .placeholder-icon {
+  color: #4c554c;
+  border-color: rgba(82,91,79,.4);
+  background: rgba(131,143,129,.17);
+}
+html[data-skin="paper"] .placeholder-icon--warm { color: #8a4c40; }
+
+html[data-skin="paper"] .scheme-heading { color: #292e29; border-bottom-color: rgba(62,68,60,.35); }
+html[data-skin="paper"] .scheme-option {
+  color: #292e29;
+  border: 0;
+  border-bottom: 1px solid rgba(66,72,64,.33);
+  border-radius: 0;
+  background: transparent;
+}
+html[data-skin="paper"] .scheme-option:hover { background: rgba(105,118,103,.2); border-bottom-color: #7b5147; }
+html[data-skin="paper"] .scheme-option small { color: #555d53; }
+
+html[data-skin="paper"] .tooltip {
+  color: #292e29;
+  border: 1px solid #686d63;
+  border-left: 3px solid #8b473d;
+  border-radius: 0;
+  background: #b4b5aa;
+  box-shadow: 0 3px 8px rgba(40,45,39,.12);
+}
+html[data-skin="paper"] .tooltip p { color: #465047; }
+html[data-skin="paper"] .character-dialog { color: #292e29; }
+html[data-skin="paper"] .character-dialog::backdrop { background: rgba(24,28,25,.5); }
+html[data-skin="paper"] .dialog-subtitle,
+html[data-skin="paper"] .character-dialog p { color: #525a50; }
+html[data-skin="paper"] .dialog-subtitle span { color: #8b473d; }
+html[data-skin="paper"] .equipment-entry { border-bottom-color: rgba(66,72,64,.33); }

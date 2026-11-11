@@ -1,0 +1,110 @@
+using Godot;
+using System.Reflection;
+using System.Text.Json;
+
+/// <summary>正式七页角色入口的新盘鼠标、命名和预装配验证，仅用隔离内存人物。</summary>
+public partial class CharacterCombatPreparationUiSmoke : Node
+{
+    private const string Pill = "res://resources/entities/items/alchemy/huichun_1.tres";
+    private readonly List<object> _checks = [];
+    private readonly List<string> _captures = [];
+    private InfoPanel _info = null!;
+    private CharacterCombatBoardPanel _ui = null!;
+    private Character _actor = null!;
+    private int _width;
+    private string _output = "", _failure = "";
+    private static IEnumerable<T> Nodes<T>(Node root) where T : Node
+    { foreach (var child in root.GetChildren()) { if (child is T typed) yield return typed; foreach (var nested in Nodes<T>(child)) yield return nested; } }
+    private static T Find<T>(Node root, string name) where T : Node => root.FindChild(name, true, false) as T ?? throw new InvalidOperationException(name);
+    private void Check(bool passed, string name)
+    { _checks.Add(new { name, passed }); if (!passed) throw new InvalidOperationException(name); GD.Print("CHARACTER_BOARD_UI_OK " + name); }
+    private async Task Frames(int count = 4) { for (int i = 0; i < count; i++) await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame); }
+    private async Task Click(Control control, Vector2? local = null, MouseButton button = MouseButton.Left)
+    {
+        Check(control.IsVisibleInTree() && (control is not BaseButton clickable || !clickable.Disabled), "原生可操作 " + control.Name);
+        var point = control.GetGlobalTransformWithCanvas() * (local ?? control.Size / 2);
+        GetViewport().PushInput(new InputEventMouseMotion { Position = point, GlobalPosition = point }, true);
+        foreach (bool down in new[] { true, false }) GetViewport().PushInput(new InputEventMouseButton { Position = point, GlobalPosition = point, ButtonIndex = button, Pressed = down }, true);
+        await Frames();
+    }
+    private Button Button(string text, Node? root = null) => Nodes<Button>(root ?? _ui).First(button => button.IsVisibleInTree() && button.Text == text);
+    private async Task Capture(string name)
+    {
+        HoverInfoManager.HideAll(); GetViewport().PushInput(new InputEventMouseMotion { Position = new Vector2(3, 3) }, true); await Frames();
+        if (DisplayServer.GetName() == "headless") return;
+        await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
+        using var image = GetViewport().GetTexture().GetImage();
+        Check(image.GetWidth() == _width && image.GetHeight() == _width * 9 / 16, "原生截图尺寸 " + name);
+        string file = $"角色新盘_{name}_{_width}.png";
+        Check(image.SavePng(System.IO.Path.Combine(_output, file)) == Error.Ok, "截图写入 " + name); _captures.Add(file);
+    }
+    private static string Stamp(CombatBoardLayout? layout) => layout is null ? "null" : string.Join(";", layout.placements.Select(item => $"{item.placement_id}/{item.source_key}/{item.cell}/{item.quarter_turns}/{item.rewrite_direction}/{item.expended}"));
+    private string Resources() => $"{_actor.current_health}/{_actor.current_mana}/{_actor.current_stamina}/{_actor.current_world_stamina}/{_actor.used_spirit_perception}/" + string.Join(",", _actor.pack_items) + string.Join(",", _actor.pack_counts);
+    public override void _Ready() => CallDeferred(nameof(Run));
+    private async void Run()
+    {
+        try
+        {
+            string project = System.IO.Path.GetFullPath(ProjectSettings.GlobalizePath("res://"));
+            string user = System.IO.Path.GetFullPath(ProjectSettings.GlobalizePath("user://"));
+            Check(user.StartsWith(System.IO.Path.Combine(project, "output") + System.IO.Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase), "APPDATA在项目output内隔离");
+            _width = OS.GetCmdlineUserArgs().Contains("--wide") ? 1920 : 1280;
+            _output = System.IO.Path.Combine(project, "output", "character-board-native", _width.ToString()); System.IO.Directory.CreateDirectory(_output);
+            GetWindow().Mode = Window.ModeEnum.Windowed; GetWindow().Borderless = true; GetWindow().Unfocusable = true;
+            GetWindow().ContentScaleSize = Vector2I.Zero; GetWindow().Size = new Vector2I(_width, _width * 9 / 16);
+            Check(!GetNode<GameSaveManager>("/root/GameSaveManager").has_active_slot, "没有打开正式旅程");
+            GetNode<GameTimeMgr>("/root/GameTimeManager").pause_time();
+            var data = NpcCombatBuildPlanner.TestLearning(GongfaAvailability.EnabledBooks().Where(book => new[] { "玄枢含章经", "斫基损契玄经", "百骸衍枝化生宝册", "太和感物养元宝册", "舒卷天章" }.Contains(book.gongfa_name)));
+            data.entity_name = "预装配实机验收"; data.main_gongfa_path = ""; data.sub_gongfa_paths.Clear(); data.combat_board_layout = new CombatBoardLayout();
+            _actor = new Character(); AddChild(_actor); _actor.load_from_data(data); _actor.Hide();
+            Check(_actor.add_item_to_inventory(Pill, 2), "内存人物真实普通行囊两颗回春丹");
+            string originalResources = Resources(), originalRunning = Stamp(data.combat_board_layout);
+            _info = GD.Load<PackedScene>("res://tscn/panel/InfoPanel.tscn").Instantiate<InfoPanel>(); AddChild(_info); _info.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect); _info.show_entity(_actor); await Frames();
+            await Click(Nodes<Button>(_info).First(button => button.Name == "CharacterTab2"));
+            _ui = Nodes<CharacterCombatBoardPanel>(_info).Single(panel => panel.IsVisibleInTree());
+            Check(ReferenceEquals(_ui.BoundOwner, _actor), "正式战斗页挂接本人真实新盘");
+            Check(_ui.DraftSnapshot.placements.Count == 0 && data.combat_board_preparation is null, "打开不暗存草稿或预装配");
+            var catalog = CombatBoardCatalog.FromCharacter(_actor); var skill = catalog.skills.First(value => value.skill_name == "应敌");
+            var source = Nodes<BattleBoardSource>(_ui).Single(item => item.SourceKey == skill.get_board_skill_key());
+            Find<ScrollContainer>(_ui, "PreparationSourceScroll").EnsureControlVisible(source); await Frames();
+            await Click(source);
+            var board = Find<BattleBoardView>(_ui, "PreparationBoard"); await Click(board, new Vector2(board.CellSize / 2, board.CellSize / 2));
+            Check(_ui.DraftSnapshot.placements.Single().source_key == skill.get_board_skill_key(), "真实点选来源并点格摆入");
+            string placed = Stamp(_ui.DraftSnapshot);
+            Check(!_ui.TryPlaceSource(skill.get_board_skill_key(), Vector2I.Zero) && Stamp(_ui.DraftSnapshot) == placed, "重叠整份拒绝且原盘保持");
+            Check(Resources() == originalResources && Stamp(data.combat_board_layout) == originalRunning, "局外摆放不结算或提前覆盖运行盘");
+            await Capture("摆盘");
+            await Click(Button("另存方案")); var dialog = Find<Control>(_ui, "PreparationDialog"); Find<LineEdit>(dialog, "BoardPlanName").Text = "实机守势";
+            await Click(Button("另存方案", dialog));
+            Check(_ui.StoredPlanCount == 1 && CombatBoardPreparationService.GetPlans(_actor).Single().ResourceName == "实机守势", "原生命名输入并保存真实方案");
+            Check(data.combat_board_preparation is null, "命名保存不暗改出战默认");
+            await Click(Find<Button>(_ui, "SetPreparation")); string prepared = Stamp(data.combat_board_preparation);
+            Check(prepared == Stamp(_ui.DraftSnapshot) && Resources() == originalResources, "显式设置出战预装配且不补资源");
+            await Click(Find<Button>(_ui, "ShowBoardPlans")); await Click(Button("新建方案"));
+            dialog = Find<Control>(_ui, "PreparationDialog"); Find<LineEdit>(dialog, "BoardPlanName").Text = "新空盘"; await Click(Button("新建方案", dialog));
+            Check(_ui.StoredPlanCount == 2 && _ui.DraftSnapshot.placements.Count == 0 && Stamp(data.combat_board_preparation) == prepared, "新建真实空盘不覆盖出战默认");
+            var savedRow = Nodes<Button>(_ui).First(button => button.Name == "NamedBoardPlan" && Nodes<Label>(button).Any(label => label.Text == "实机守势")); await Click(savedRow);
+            Check(Stamp(_ui.DraftSnapshot) == placed, "方案点击整盘载入并回来源页");
+            await Capture("命名载入");
+            Check(_actor.add_item_to_inventory(Pill, 1), "缺项夹具先有三颗真实药品");
+            var medicines = new CombatBoardLayout { placements = new(Enumerable.Range(0, 3).Select(x => new CombatBoardPlacement { placement_id = "medicine-" + x, kind = CombatBoardPlacement.ObjectKind.Pill, source_key = Pill, cell = new Vector2I(x, 0) })) };
+            Check(CombatBoardPreparationService.TrySavePlan(_actor, medicines, "三颗回春", false, out _), "真实足量时保存三药方案");
+            _actor.remove_item_from_inventory(Pill, 1); await Click(Find<Button>(_ui, "ShowBoardPlans"));
+            var missingRow = Nodes<Button>(_ui).First(button => button.Name == "NamedBoardPlan" && Nodes<Label>(button).Any(label => label.Text == "三颗回春"));
+            await Click(missingRow);
+            Check(Stamp(_ui.DraftSnapshot) == placed && Find<Label>(_ui, "PreparationNotice").Text.Contains("缺1颗"), "实际缺药点击保留原草稿且说明缺一颗");
+            await Capture("方案缺项");
+            await Click(Button("返回"));
+            await Click(board, new Vector2(board.CellSize / 2, board.CellSize / 2), MouseButton.Right);
+            Check(_ui.DraftSnapshot.placements.Count == 0 && Stamp(data.combat_board_preparation) == prepared, "右键只移出当前草稿不改已设预装配");
+            Check(Resources() == originalResources && Stamp(data.combat_board_layout) == originalRunning, "完整UI操作不耗库存时间或覆盖运行盘");
+            await Click(Find<Button>(_info, "CharacterReturn")); Check(!_info.Visible, "统一右上返回收起真实角色页");
+        }
+        catch (Exception error) { _failure = error.ToString(); GD.PushError("CHARACTER_BOARD_UI_FAIL " + error); }
+        finally
+        {
+            if (_output.Length > 0) System.IO.File.WriteAllText(System.IO.Path.Combine(_output, "验证记录.json"), JsonSerializer.Serialize(new { width = _width, checks = _checks, captures = _captures, failure = _failure }, new JsonSerializerOptions { WriteIndented = true }));
+            GD.Print($"CHARACTER_BOARD_UI_{(_failure.Length == 0 ? "PASS" : "FAIL")} width={_width} checks={_checks.Count}"); GetTree().Quit(_failure.Length == 0 ? 0 : 1);
+        }
+    }
+}

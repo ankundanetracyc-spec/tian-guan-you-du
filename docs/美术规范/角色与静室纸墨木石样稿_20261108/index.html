@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>角色与静室 · 纸墨木石交互样稿</title><link rel="icon" href="data:,">
+  <link rel="stylesheet" href="preview.css?v=10">
+  <link rel="stylesheet" href="battle-preview.css?v=plans7">
+  <link rel="stylesheet" href="character-layout.css?v=1">
+  <script defer src="skin-data.js?v=5"></script><script defer src="fixture.js?v=5"></script><script defer src="materials.js?v=6"></script>
+  <script defer src="../../../textures/ui/combat_board_20261107_v1/skin_manifest.js"></script>
+  <script defer src="battle-data.js?v=owned2"></script><script defer src="battle-preview.js?v=plans7"></script><script defer src="preview.js?v=10"></script>
+</head>
+<body>
+  <header class="preview-tools" aria-label="样稿查看工具">
+    <div class="preview-name"><b>纸墨木石</b><span>角色／静室独立样稿</span></div>
+    <nav aria-label="切换样稿"><button data-skin="button" data-preview="character" class="is-selected" aria-pressed="true">角色面板</button><button data-skin="button" data-preview="quiet" aria-pressed="false">静室面板</button><button data-skin="button" data-preview="materials" aria-pressed="false">控件素材册</button></nav>
+    <span class="preview-disclaimer">示例内容 · 不读写游戏存档</span>
+    <button data-skin="button" id="reset-preview" class="tool-button" title="重置当前样稿">重置</button>
+    <a href="按钮分型.html" class="readme-link ui-button" data-skin="button">按钮分型</a>
+    <a href="README.md" class="readme-link ui-button" data-skin="button">说明</a>
+  </header>
+  <div id="viewport"><div class="character-viewport-wood" data-skin="woodFull" aria-hidden="true"></div><main id="stage" aria-label="界面样稿" tabindex="-1"></main></div>
+  <div id="toast" role="status" aria-live="polite" data-skin="panel" class="dark-skin" hidden></div>
+  <div id="tooltip" role="tooltip" data-skin="panel" class="dark-skin" hidden></div>
+  <div id="overlay-root"></div>
+  <noscript>请启用脚本以切换样稿。</noscript>
+</body>
+</html>

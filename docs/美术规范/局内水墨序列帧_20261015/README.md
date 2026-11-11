@@ -20,7 +20,7 @@
 
 ## 素材和复现
 
-- [独立 PNG 序列目录](../../../textures/vfx/ink_chop_sequence_20261015_v1/frames/)，保留完整 36 帧，通过 `.gdignore` 排除重复导入。
+- [独立 PNG 序列目录](../../../textures/vfx/ink_chop_sequence_20261015_v1/frames)，保留完整 36 帧，通过 `.gdignore` 排除重复导入。
 - [SpriteFrames 运行资源](../../../textures/vfx/ink_chop_sequence_20261015_v1/chop_effects.tres)：两个 AnimatedSprite2D 消费三页透明图集，图集最大边长 3072；首版未经显存压缩，正式批量制作时应另外评估帧尺寸与纹理压缩。
 - [逐帧清单](../../../textures/vfx/ink_chop_sequence_20261015_v1/bake_manifest.json)、[内置 image_gen 最终提示](../../../textures/vfx/ink_chop_sequence_20261015_v1/generation_prompts.json)；原纹理在素材包 source 目录中保留。
 - [Godot 烘焙工具](../../../tools/bake_ink_chop_sequence.gd)、[展开与消隐着色器](../../../textures/vfx/ink_chop_sequence_20261015_v1/bake.gdshader)、[样片实现](../../../gdscripts/test/SideInkChopPreview.gd)。重新烘焙后先重新导入图集，再运行预览。

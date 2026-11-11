@@ -1,0 +1,1145 @@
+{
+  "version": 5,
+  "scope": "侧栏右移与装订边显露专项；仅独立样稿",
+  "status": "passed",
+  "passed": 42,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "1920/character/只有选中项露出装订边",
+      "passed": true,
+      "detail": [
+        {
+          "name": "overview",
+          "selected": true,
+          "paperX": 18,
+          "copyX": 18,
+          "bindingOpacity": 1,
+          "overflow": 0,
+          "bounds": {
+            "x": 132.63124084472656,
+            "y": 220.1402587890625,
+            "width": 174.63124084472656,
+            "height": 73.472900390625,
+            "top": 220.1402587890625,
+            "right": 307.2624816894531,
+            "bottom": 293.6131591796875,
+            "left": 132.63124084472656
+          }
+        },
+        {
+          "name": "attributes",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 113.46439361572266,
+            "y": 311.7151794433594,
+            "width": 174.63125610351562,
+            "height": 73.472900390625,
+            "top": 311.7151794433594,
+            "right": 288.0956497192383,
+            "bottom": 385.1880798339844,
+            "left": 113.46439361572266
+          }
+        },
+        {
+          "name": "battle",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 113.46439361572266,
+            "y": 403.29010009765625,
+            "width": 174.63125610351562,
+            "height": 73.472900390625,
+            "top": 403.29010009765625,
+            "right": 288.0956497192383,
+            "bottom": 476.76300048828125,
+            "left": 113.46439361572266
+          }
+        },
+        {
+          "name": "manuals",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 113.46439361572266,
+            "y": 494.8650207519531,
+            "width": 174.63125610351562,
+            "height": 73.47286987304688,
+            "top": 494.8650207519531,
+            "right": 288.0956497192383,
+            "bottom": 568.337890625,
+            "left": 113.46439361572266
+          }
+        },
+        {
+          "name": "equipment",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 113.46439361572266,
+            "y": 586.43994140625,
+            "width": 174.63125610351562,
+            "height": 73.472900390625,
+            "top": 586.43994140625,
+            "right": 288.0956497192383,
+            "bottom": 659.912841796875,
+            "left": 113.46439361572266
+          }
+        },
+        {
+          "name": "relations",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 113.46439361572266,
+            "y": 678.014892578125,
+            "width": 174.63125610351562,
+            "height": 73.472900390625,
+            "top": 678.014892578125,
+            "right": 288.0956497192383,
+            "bottom": 751.48779296875,
+            "left": 113.46439361572266
+          }
+        }
+      ]
+    },
+    {
+      "name": "1920/character/切页保留侧栏节点",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/character/滑动存在中间帧",
+      "passed": true,
+      "detail": 9.94419
+    },
+    {
+      "name": "1920/character/文字与纸面同步",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/character/旧项收回新项滑出",
+      "passed": true,
+      "detail": [
+        {
+          "name": "overview",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 113.46439361572266,
+            "y": 220.1402587890625,
+            "width": 174.63125610351562,
+            "height": 73.472900390625,
+            "top": 220.1402587890625,
+            "right": 288.0956497192383,
+            "bottom": 293.6131591796875,
+            "left": 113.46439361572266
+          }
+        },
+        {
+          "name": "attributes",
+          "selected": true,
+          "paperX": 18,
+          "copyX": 18,
+          "bindingOpacity": 1,
+          "overflow": 0,
+          "bounds": {
+            "x": 132.63124084472656,
+            "y": 311.7151794433594,
+            "width": 174.63124084472656,
+            "height": 73.472900390625,
+            "top": 311.7151794433594,
+            "right": 307.2624816894531,
+            "bottom": 385.1880798339844,
+            "left": 132.63124084472656
+          }
+        },
+        {
+          "name": "battle",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 113.46439361572266,
+            "y": 403.29010009765625,
+            "width": 174.63125610351562,
+            "height": 73.472900390625,
+            "top": 403.29010009765625,
+            "right": 288.0956497192383,
+            "bottom": 476.76300048828125,
+            "left": 113.46439361572266
+          }
+        },
+        {
+          "name": "manuals",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 113.46439361572266,
+            "y": 494.8650207519531,
+            "width": 174.63125610351562,
+            "height": 73.47286987304688,
+            "top": 494.8650207519531,
+            "right": 288.0956497192383,
+            "bottom": 568.337890625,
+            "left": 113.46439361572266
+          }
+        },
+        {
+          "name": "equipment",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 113.46439361572266,
+            "y": 586.43994140625,
+            "width": 174.63125610351562,
+            "height": 73.472900390625,
+            "top": 586.43994140625,
+            "right": 288.0956497192383,
+            "bottom": 659.912841796875,
+            "left": 113.46439361572266
+          }
+        },
+        {
+          "name": "relations",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 113.46439361572266,
+            "y": 678.014892578125,
+            "width": 174.63125610351562,
+            "height": 73.472900390625,
+            "top": 678.014892578125,
+            "right": 288.0956497192383,
+            "bottom": 751.48779296875,
+            "left": 113.46439361572266
+          }
+        }
+      ]
+    },
+    {
+      "name": "1920/character/纸签不挤出侧栏且文字不溢出",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/character/仅悬停不露装订边",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/character/键盘切换保持选中语义",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/character/快速往返无残留状态",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/character/减少动态模式直接到终态",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/quiet/只有选中项露出装订边",
+      "passed": true,
+      "detail": [
+        {
+          "name": "practice",
+          "selected": true,
+          "paperX": 18,
+          "copyX": 18,
+          "bindingOpacity": 1,
+          "overflow": 0,
+          "bounds": {
+            "x": 132.63124084472656,
+            "y": 220.1402587890625,
+            "width": 174.63124084472656,
+            "height": 73.472900390625,
+            "top": 220.1402587890625,
+            "right": 307.2624816894531,
+            "bottom": 293.6131591796875,
+            "left": 132.63124084472656
+          }
+        },
+        {
+          "name": "study",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 113.46439361572266,
+            "y": 311.7151794433594,
+            "width": 174.63125610351562,
+            "height": 73.472900390625,
+            "top": 311.7151794433594,
+            "right": 288.0956497192383,
+            "bottom": 385.1880798339844,
+            "left": 113.46439361572266
+          }
+        },
+        {
+          "name": "breakthrough",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 113.46439361572266,
+            "y": 403.29010009765625,
+            "width": 174.63125610351562,
+            "height": 73.472900390625,
+            "top": 403.29010009765625,
+            "right": 288.0956497192383,
+            "bottom": 476.76300048828125,
+            "left": 113.46439361572266
+          }
+        }
+      ]
+    },
+    {
+      "name": "1920/quiet/切页保留侧栏节点",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/quiet/滑动存在中间帧",
+      "passed": true,
+      "detail": 7.15459
+    },
+    {
+      "name": "1920/quiet/文字与纸面同步",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/quiet/旧项收回新项滑出",
+      "passed": true,
+      "detail": [
+        {
+          "name": "practice",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 113.46439361572266,
+            "y": 220.1402587890625,
+            "width": 174.63125610351562,
+            "height": 73.472900390625,
+            "top": 220.1402587890625,
+            "right": 288.0956497192383,
+            "bottom": 293.6131591796875,
+            "left": 113.46439361572266
+          }
+        },
+        {
+          "name": "study",
+          "selected": true,
+          "paperX": 18,
+          "copyX": 18,
+          "bindingOpacity": 1,
+          "overflow": 0,
+          "bounds": {
+            "x": 132.63124084472656,
+            "y": 311.7151794433594,
+            "width": 174.63124084472656,
+            "height": 73.472900390625,
+            "top": 311.7151794433594,
+            "right": 307.2624816894531,
+            "bottom": 385.1880798339844,
+            "left": 132.63124084472656
+          }
+        },
+        {
+          "name": "breakthrough",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 113.46439361572266,
+            "y": 403.29010009765625,
+            "width": 174.63125610351562,
+            "height": 73.472900390625,
+            "top": 403.29010009765625,
+            "right": 288.0956497192383,
+            "bottom": 476.76300048828125,
+            "left": 113.46439361572266
+          }
+        }
+      ]
+    },
+    {
+      "name": "1920/quiet/纸签不挤出侧栏且文字不溢出",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/quiet/仅悬停不露装订边",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/quiet/键盘切换保持选中语义",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/quiet/快速往返无残留状态",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/quiet/减少动态模式直接到终态",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/character/只有选中项露出装订边",
+      "passed": true,
+      "detail": [
+        {
+          "name": "overview",
+          "selected": true,
+          "paperX": 18,
+          "copyX": 18,
+          "bindingOpacity": 1,
+          "overflow": 0,
+          "bounds": {
+            "x": 109.88945770263672,
+            "y": 166.19766235351562,
+            "width": 111.88948822021484,
+            "height": 47.07545471191406,
+            "top": 166.19766235351562,
+            "right": 221.77894592285156,
+            "bottom": 213.2731170654297,
+            "left": 109.88945770263672
+          }
+        },
+        {
+          "name": "attributes",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 97.60890197753906,
+            "y": 224.8714141845703,
+            "width": 111.88948059082031,
+            "height": 47.07545471191406,
+            "top": 224.8714141845703,
+            "right": 209.49838256835938,
+            "bottom": 271.9468688964844,
+            "left": 97.60890197753906
+          }
+        },
+        {
+          "name": "battle",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 97.60890197753906,
+            "y": 283.545166015625,
+            "width": 111.88948059082031,
+            "height": 47.075469970703125,
+            "top": 283.545166015625,
+            "right": 209.49838256835938,
+            "bottom": 330.6206359863281,
+            "left": 97.60890197753906
+          }
+        },
+        {
+          "name": "manuals",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 97.60890197753906,
+            "y": 342.21893310546875,
+            "width": 111.88948059082031,
+            "height": 47.075439453125,
+            "top": 342.21893310546875,
+            "right": 209.49838256835938,
+            "bottom": 389.29437255859375,
+            "left": 97.60890197753906
+          }
+        },
+        {
+          "name": "equipment",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 97.60890197753906,
+            "y": 400.8926696777344,
+            "width": 111.88948059082031,
+            "height": 47.075469970703125,
+            "top": 400.8926696777344,
+            "right": 209.49838256835938,
+            "bottom": 447.9681396484375,
+            "left": 97.60890197753906
+          }
+        },
+        {
+          "name": "relations",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 97.60890197753906,
+            "y": 459.5664367675781,
+            "width": 111.88948059082031,
+            "height": 47.075439453125,
+            "top": 459.5664367675781,
+            "right": 209.49838256835938,
+            "bottom": 506.6418762207031,
+            "left": 97.60890197753906
+          }
+        }
+      ]
+    },
+    {
+      "name": "1280/character/切页保留侧栏节点",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/character/滑动存在中间帧",
+      "passed": true,
+      "detail": 9.96371
+    },
+    {
+      "name": "1280/character/文字与纸面同步",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/character/旧项收回新项滑出",
+      "passed": true,
+      "detail": [
+        {
+          "name": "overview",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 97.60890197753906,
+            "y": 166.19766235351562,
+            "width": 111.88948059082031,
+            "height": 47.07545471191406,
+            "top": 166.19766235351562,
+            "right": 209.49838256835938,
+            "bottom": 213.2731170654297,
+            "left": 97.60890197753906
+          }
+        },
+        {
+          "name": "attributes",
+          "selected": true,
+          "paperX": 18,
+          "copyX": 18,
+          "bindingOpacity": 1,
+          "overflow": 0,
+          "bounds": {
+            "x": 109.88945770263672,
+            "y": 224.8714141845703,
+            "width": 111.88948822021484,
+            "height": 47.07545471191406,
+            "top": 224.8714141845703,
+            "right": 221.77894592285156,
+            "bottom": 271.9468688964844,
+            "left": 109.88945770263672
+          }
+        },
+        {
+          "name": "battle",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 97.60890197753906,
+            "y": 283.545166015625,
+            "width": 111.88948059082031,
+            "height": 47.075469970703125,
+            "top": 283.545166015625,
+            "right": 209.49838256835938,
+            "bottom": 330.6206359863281,
+            "left": 97.60890197753906
+          }
+        },
+        {
+          "name": "manuals",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 97.60890197753906,
+            "y": 342.21893310546875,
+            "width": 111.88948059082031,
+            "height": 47.075439453125,
+            "top": 342.21893310546875,
+            "right": 209.49838256835938,
+            "bottom": 389.29437255859375,
+            "left": 97.60890197753906
+          }
+        },
+        {
+          "name": "equipment",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 97.60890197753906,
+            "y": 400.8926696777344,
+            "width": 111.88948059082031,
+            "height": 47.075469970703125,
+            "top": 400.8926696777344,
+            "right": 209.49838256835938,
+            "bottom": 447.9681396484375,
+            "left": 97.60890197753906
+          }
+        },
+        {
+          "name": "relations",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 97.60890197753906,
+            "y": 459.5664367675781,
+            "width": 111.88948059082031,
+            "height": 47.075439453125,
+            "top": 459.5664367675781,
+            "right": 209.49838256835938,
+            "bottom": 506.6418762207031,
+            "left": 97.60890197753906
+          }
+        }
+      ]
+    },
+    {
+      "name": "1280/character/纸签不挤出侧栏且文字不溢出",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/character/仅悬停不露装订边",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/character/键盘切换保持选中语义",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/character/快速往返无残留状态",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/character/减少动态模式直接到终态",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/quiet/只有选中项露出装订边",
+      "passed": true,
+      "detail": [
+        {
+          "name": "practice",
+          "selected": true,
+          "paperX": 18,
+          "copyX": 18,
+          "bindingOpacity": 1,
+          "overflow": 0,
+          "bounds": {
+            "x": 109.88945770263672,
+            "y": 166.19766235351562,
+            "width": 111.88948822021484,
+            "height": 47.07545471191406,
+            "top": 166.19766235351562,
+            "right": 221.77894592285156,
+            "bottom": 213.2731170654297,
+            "left": 109.88945770263672
+          }
+        },
+        {
+          "name": "study",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 97.60890197753906,
+            "y": 224.8714141845703,
+            "width": 111.88948059082031,
+            "height": 47.07545471191406,
+            "top": 224.8714141845703,
+            "right": 209.49838256835938,
+            "bottom": 271.9468688964844,
+            "left": 97.60890197753906
+          }
+        },
+        {
+          "name": "breakthrough",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 97.60890197753906,
+            "y": 283.545166015625,
+            "width": 111.88948059082031,
+            "height": 47.075469970703125,
+            "top": 283.545166015625,
+            "right": 209.49838256835938,
+            "bottom": 330.6206359863281,
+            "left": 97.60890197753906
+          }
+        }
+      ]
+    },
+    {
+      "name": "1280/quiet/切页保留侧栏节点",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/quiet/滑动存在中间帧",
+      "passed": true,
+      "detail": 9.97293
+    },
+    {
+      "name": "1280/quiet/文字与纸面同步",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/quiet/旧项收回新项滑出",
+      "passed": true,
+      "detail": [
+        {
+          "name": "practice",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 97.60890197753906,
+            "y": 166.19766235351562,
+            "width": 111.88948059082031,
+            "height": 47.07545471191406,
+            "top": 166.19766235351562,
+            "right": 209.49838256835938,
+            "bottom": 213.2731170654297,
+            "left": 97.60890197753906
+          }
+        },
+        {
+          "name": "study",
+          "selected": true,
+          "paperX": 18,
+          "copyX": 18,
+          "bindingOpacity": 1,
+          "overflow": 0,
+          "bounds": {
+            "x": 109.88945770263672,
+            "y": 224.8714141845703,
+            "width": 111.88948822021484,
+            "height": 47.07545471191406,
+            "top": 224.8714141845703,
+            "right": 221.77894592285156,
+            "bottom": 271.9468688964844,
+            "left": 109.88945770263672
+          }
+        },
+        {
+          "name": "breakthrough",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 97.60890197753906,
+            "y": 283.545166015625,
+            "width": 111.88948059082031,
+            "height": 47.075469970703125,
+            "top": 283.545166015625,
+            "right": 209.49838256835938,
+            "bottom": 330.6206359863281,
+            "left": 97.60890197753906
+          }
+        }
+      ]
+    },
+    {
+      "name": "1280/quiet/纸签不挤出侧栏且文字不溢出",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/quiet/仅悬停不露装订边",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/quiet/键盘切换保持选中语义",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/quiet/快速往返无残留状态",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/quiet/减少动态模式直接到终态",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "动态预览来自两套实际侧栏",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "动效脚本无错误",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "captures": [
+    {
+      "app": "character",
+      "clip": {
+        "x": 95,
+        "y": 193,
+        "width": 232,
+        "height": 578
+      },
+      "frames": [
+        {
+          "path": "output/playwright/nav_motion_v5/character_000.png",
+          "duration": 700
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/character_001.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/character_002.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/character_003.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/character_004.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/character_005.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/character_006.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/character_007.png",
+          "duration": 35
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/character_008.png",
+          "duration": 35
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/character_009.png",
+          "duration": 650
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/character_010.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/character_011.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/character_012.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/character_013.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/character_014.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/character_015.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/character_016.png",
+          "duration": 35
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/character_017.png",
+          "duration": 35
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/character_018.png",
+          "duration": 650
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/character_019.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/character_020.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/character_021.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/character_022.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/character_023.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/character_024.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/character_025.png",
+          "duration": 35
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/character_026.png",
+          "duration": 35
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/character_027.png",
+          "duration": 650
+        }
+      ]
+    },
+    {
+      "app": "quiet",
+      "clip": {
+        "x": 95,
+        "y": 193,
+        "width": 232,
+        "height": 303
+      },
+      "frames": [
+        {
+          "path": "output/playwright/nav_motion_v5/quiet_000.png",
+          "duration": 700
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/quiet_001.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/quiet_002.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/quiet_003.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/quiet_004.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/quiet_005.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/quiet_006.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/quiet_007.png",
+          "duration": 35
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/quiet_008.png",
+          "duration": 35
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/quiet_009.png",
+          "duration": 650
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/quiet_010.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/quiet_011.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/quiet_012.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/quiet_013.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/quiet_014.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/quiet_015.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/quiet_016.png",
+          "duration": 35
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/quiet_017.png",
+          "duration": 35
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/quiet_018.png",
+          "duration": 650
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/quiet_019.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/quiet_020.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/quiet_021.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/quiet_022.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/quiet_023.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/quiet_024.png",
+          "duration": 25
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/quiet_025.png",
+          "duration": 35
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/quiet_026.png",
+          "duration": 35
+        },
+        {
+          "path": "output/playwright/nav_motion_v5/quiet_027.png",
+          "duration": 650
+        }
+      ]
+    }
+  ],
+  "gifExports": [
+    {
+      "file": "角色_侧栏动效.gif",
+      "size": [
+        232,
+        578
+      ],
+      "frames": 28,
+      "bytes": 2313608,
+      "source": "实际独立样稿CSS动效逐帧截图；仅编码为循环GIF，未改写控件PNG"
+    },
+    {
+      "file": "静室_侧栏动效.gif",
+      "size": [
+        232,
+        303
+      ],
+      "frames": 28,
+      "bytes": 1234968,
+      "source": "实际独立样稿CSS动效逐帧截图；仅编码为循环GIF，未改写控件PNG"
+    }
+  ]
+}

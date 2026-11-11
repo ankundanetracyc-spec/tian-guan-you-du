@@ -1,0 +1,788 @@
+{
+  "status": "passed",
+  "width": 1920,
+  "height": 1080,
+  "headless": false,
+  "passed": 153,
+  "failed": 0,
+  "failure": "",
+  "materialCatalogCount": 48,
+  "captures": [
+    "alchemy_paper_main_1920.png",
+    "alchemy_paper_picker_utility_1920.png",
+    "alchemy_paper_picker_1920.png",
+    "alchemy_paper_notebook_1920.png",
+    "alchemy_paper_full_eight_1920.png"
+  ],
+  "checks": [
+    {
+      "Name": "\u4F7F\u7528\u9879\u76EE\u5185\u9694\u79BB\u7528\u6237\u76EE\u5F55",
+      "Passed": true,
+      "Detail": "E:\\stacklands\\output\\alchemy_header_final_1920_profile\\SlayTheSpire2\\"
+    },
+    {
+      "Name": "\u771F\u5B9E\u6750\u6599\u88C5\u5165\u9694\u79BB\u4EBA\u7269 \u9752\u6728\u82AF",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6750\u6599\u88C5\u5165\u9694\u79BB\u4EBA\u7269 \u5C71\u8695\u957F\u4E1D",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6750\u6599\u88C5\u5165\u9694\u79BB\u4EBA\u7269 \u7075\u6CC9\u9732",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6750\u6599\u88C5\u5165\u9694\u79BB\u4EBA\u7269 \u6EAA\u7EB9\u85FB\u4E1D",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6750\u6599\u88C5\u5165\u9694\u79BB\u4EBA\u7269 \u7075\u77F3",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6750\u6599\u88C5\u5165\u9694\u79BB\u4EBA\u7269 \u51DD\u9732\u677E\u8102",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6750\u6599\u88C5\u5165\u9694\u79BB\u4EBA\u7269 \u56DE\u6CC9\u73E0",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6750\u6599\u88C5\u5165\u9694\u79BB\u4EBA\u7269 \u6708\u9732\u82D4",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6750\u6599\u88C5\u5165\u9694\u79BB\u4EBA\u7269 \u6731\u9633\u82B1\u7C7D",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6750\u6599\u88C5\u5165\u9694\u79BB\u4EBA\u7269 \u6C89\u4E91\u7389\u5C51",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u539F\u6750\u6599\u5168\u76EE\u5F55\u4FDD\u6301\uFF0C\u672A\u66FF\u6362\u4E3A\u7F51\u987511\u5473\u5939\u5177",
+      "Passed": true,
+      "Detail": "actual=48; expected=48"
+    },
+    {
+      "Name": "\u6B63\u5F0FOwner\u7ED1\u5B9A\u771F\u5B9E\u9020\u8BE3\u4E0E\u7075\u8BC6",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u4EBA\u7269\u9020\u8BE3\u53EA\u8BFB\uFF0C\u7CBE\u529B\u663E\u793A\u771F\u5B9E100",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u836F\u7B7E\u7528\u5EA6\u4F7F\u7528\u771F\u5B9E\u7D20\u6750 JunHerbCard",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u836F\u7B7E\u7528\u5EA6\u4F7F\u7528\u771F\u5B9E\u7D20\u6750 ChenHerbCard",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u836F\u7B7E\u7528\u5EA6\u4F7F\u7528\u771F\u5B9E\u7D20\u6750 ZuoHerbGroup",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u836F\u7B7E\u7528\u5EA6\u4F7F\u7528\u771F\u5B9E\u7D20\u6750 ShiHerbGroup",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u836F\u7B7E\u7528\u5EA6\u4F7F\u7528\u771F\u5B9E\u7D20\u6750 BatchRequirements",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u4E0D\u540C\u63A7\u4EF6\u4F7F\u7528\u539F\u751F\u6309\u94AE\u7D20\u6750 FormulaBookButton",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u4E0D\u540C\u63A7\u4EF6\u4F7F\u7528\u539F\u751F\u6309\u94AE\u7D20\u6750 BrewButton",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u4E0D\u540C\u63A7\u4EF6\u4F7F\u7528\u539F\u751F\u6309\u94AE\u7D20\u6750 ReturnButton",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u6CBF\u7528\u9879\u76EE\u6977\u4F53\u5B57\u4F53",
+      "Passed": true,
+      "Detail": "res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf"
+    },
+    {
+      "Name": "\u7EDF\u4E00\u8FD4\u56DE\u4F4D\u4E8E\u53F3\u4E0A\u89D2",
+      "Passed": true,
+      "Detail": "(1761.1052, 20.658875), (130.8396, 52.7949)"
+    },
+    {
+      "Name": "\u5DE5\u827A\u6A2A\u6761\u5728\u72EC\u7ACB\u8FD4\u56DE\u524D\u6536\u53E3\u5E76\u4FDD\u755916\u8BBE\u8BA1\u5355\u4F4D\u95F4\u9694",
+      "Passed": true,
+      "Detail": "bar=(28.055237, 11.477152), (1714.6865, 71.15834); back=(1761.1052, 20.658875), (130.8396, 52.7949)"
+    },
+    {
+      "Name": "\u70BC\u4E39\u6A2A\u6761\u8D44\u6E90\u6309\u94AE\u540C\u4E3A22\u5B5746\u9AD8\u4E14\u540C\u884C\u5C45\u4E2D",
+      "Passed": true,
+      "Detail": "AlchemyHelpButton: font=22; size=(136, 46); rect=(44.12325, 20.658875), (156.08926, 52.7949); CraftingHeaderSpiritCaption: font=22; size=(44, 46); rect=(1212.4974, 20.658875), (50.49951, 52.7949); CraftingHeaderSpiritValue: font=22; size=(60, 46); rect=(1272.1786, 20.658875), (68.862915, 52.7949); CraftingHeaderEnergyCaption: font=22; size=(44, 46); rect=(1357.1094, 20.658875), (50.49951, 52.7949); CraftingHeaderEnergyValue: font=22; size=(62, 46); rect=(1416.7905, 20.658875), (71.158325, 52.7949); CraftingHeaderAttainmentCaption: font=22; size=(88, 46); rect=(1504.0171, 20.658875), (100.9989, 52.7949); CraftingHeaderAttainmentValue: font=22; size=(100, 46); rect=(1614.1978, 20.658875), (114.771484, 52.7949); ReturnButton: font=22; size=(114, 46); rect=(1761.1052, 20.658875), (130.8396, 52.7949)"
+    },
+    {
+      "Name": "\u6A2A\u6761\u5185\u529F\u80FD\u548C\u8D44\u6E90\u5747\u672A\u5EF6\u4F38\u5230\u8FD4\u56DE\u533A\u57DF",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u540C\u7C7B\u5DE5\u827A\u4FE1\u606F\u4F7F\u7528\u56FA\u5B9A\u5217 AlchemyHelpButton",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u540C\u7C7B\u5DE5\u827A\u4FE1\u606F\u4F7F\u7528\u56FA\u5B9A\u5217 CraftingHeaderSpirit",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u540C\u7C7B\u5DE5\u827A\u4FE1\u606F\u4F7F\u7528\u56FA\u5B9A\u5217 CraftingHeaderEnergy",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u540C\u7C7B\u5DE5\u827A\u4FE1\u606F\u4F7F\u7528\u56FA\u5B9A\u5217 CraftingHeaderAttainment",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u70BC\u4E39\u6A2A\u6761\u4E0E\u4E0B\u65B9\u9605\u8BFB\u7EB8\u9762\u4F7F\u7528\u76F8\u540C\u7D20\u6750\u548C\u4E2D\u6027\u7EB8\u8272",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9876\u680F\u4E0D\u518D\u91CD\u590D\u9875\u9762\u540D\u548C\u5730\u70B9\u5B57\u6837",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u7075\u8BC6\u6574\u7EC4\u5728\u56FA\u5B9A\u8D44\u6E90\u680F\u5185\u5411\u53F3\u5BF9\u9F50",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u8FD4\u56DE\u4E09\u89D2\u4F4D\u4E8E\u6309\u94AE\u5185\u90E8\u6587\u5B57\u53F3\u4FA7",
+      "Passed": true,
+      "Detail": "(1862.1041, 42.46546), (6.8863525, 9.181721)"
+    },
+    {
+      "Name": "\u4E39\u7089\u4FDD\u6301\u6F14\u51FA\u6240\u9700\u7684\u76F4\u63A5\u753B\u5E03\u7236\u8282\u70B9",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9752\u6728\u6E05\u9732\u65B9\u56DB\u5473\u771F\u5B9E\u8D44\u6E90\u4E3A19\u7075\u8BC631\u7CBE\u529B8\u5C0F\u65F6",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u7528\u5EA6\u663E\u793A\u771F\u5B9E\u8D44\u6E90\u5E76\u6362\u7B97\u6E38\u620F\u5C0F\u65F6",
+      "Passed": true,
+      "Detail": "19/31/8 \u5C0F\u65F6"
+    },
+    {
+      "Name": "\u5F00\u70BC\u524D\u53EA\u5C55\u793A\u672C\u7089\u7528\u5EA6",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6750\u6599\u7CBE\u529B\u7075\u8BC6\u8DB3\u591F\u65F6\u5141\u8BB8\u5F00\u70BC",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u79FB\u9664\u70BC\u6210\u5C55\u793A\u63A7\u4EF6\u4E0E\u4E39\u65B9\u518C\u526F\u6807\u9898",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u4E39\u65B9\u518C\u4F7F\u7528\u65B0\u751F\u6210\u7684\u900F\u660E\u518C\u672C\u56FE\u6807",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u6EDA\u52A8\u6761\u4FDD\u7559\u56FA\u5B9A\u7AEF\u5E3D\u4EC5\u62C9\u4F38\u76F4\u6BB5",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u4E0B\u62C9\u9879\u76EE\u4E0D\u518D\u501F\u7528\u6298\u89D2\u9875\u7B7E\u7D20\u6750",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u622A\u56FE\u4F7F\u7528\u76EE\u6807\u539F\u751F\u7A97\u53E3\u5C3A\u5BF8 main",
+      "Passed": true,
+      "Detail": "1920x1080"
+    },
+    {
+      "Name": "\u4FDD\u5B58\u539F\u751F\u622A\u56FE main",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C DosePlus_0",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u541B\u836F\u52A0\u91CF\u6309\u94AE\u540C\u6B65\u914D\u4F0D\u4E0E\u53EF\u89C1\u4EFD\u6570",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C DoseMinus_0",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u541B\u836F\u51CF\u91CF\u6062\u590D\u539F\u4EFD\u6570\u4E0E\u663E\u793A",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C @Button@53",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u79FB\u9664\u6309\u94AE\u53EA\u4FEE\u6539\u8349\u7A3F\u836F\u4F4D",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C PickHerb_0",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u541B\u836F\u6309\u94AE\u6253\u5F00\u771F\u5B9E\u62E3\u836F\u754C\u9762",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u62E3\u836F\u68C0\u7D22\u63D0\u793A\u5B57\u53EF\u8BFB",
+      "Passed": true,
+      "Detail": "(0.40784314, 0.44705883, 0.39607844, 1)"
+    },
+    {
+      "Name": "\u529F\u7528\u7B5B\u9009\u540C\u7528\u9014\u7EDF\u4E00\u666E\u901A\u9F50\u8FB9\u7EB8\u9762",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C UtilityFilter_\u7834",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u529F\u7528\u9009\u4E2D\u4EC5\u6362\u6574\u7EB8\u72B6\u6001\u4E0D\u5347\u7EA7\u4E3B\u64CD\u4F5C\u6216\u6362\u9875\u7B7E",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u622A\u56FE\u4F7F\u7528\u76EE\u6807\u539F\u751F\u7A97\u53E3\u5C3A\u5BF8 picker_utility",
+      "Passed": true,
+      "Detail": "1920x1080"
+    },
+    {
+      "Name": "\u4FDD\u5B58\u539F\u751F\u622A\u56FE picker_utility",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C ResetPickerFilters",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u6B63\u5F0F\u62E3\u836F\u4EC5\u4F7F\u7528\u771F\u5B9E\u6301\u6709\u6750\u6599",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u540C\u6750\u5176\u4ED6\u836F\u4F4D\u7981\u9009\u4FDD\u6301",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u622A\u56FE\u4F7F\u7528\u76EE\u6807\u539F\u751F\u7A97\u53E3\u5C3A\u5BF8 picker",
+      "Passed": true,
+      "Detail": "1920x1080"
+    },
+    {
+      "Name": "\u4FDD\u5B58\u539F\u751F\u622A\u56FE picker",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u6750\u6599\u540D\u79F0\u68C0\u7D22\u7F29\u5C0F\u5B9E\u9645\u76EE\u5F55",
+      "Passed": true,
+      "Detail": "\u51DD\u9732\u677E\u8102"
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C Material_\u51DD\u9732\u677E\u8102",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u62E3\u836F\u70B9\u51FB\u66F4\u6362\u541B\u836F\u8349\u7A3F",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C PickHerb_0",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C ResetPickerFilters",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u4E94\u884C\u7B5B\u9009\u4F5C\u7528\u4E8E\u5B9E\u9645\u6301\u6709\u76EE\u5F55",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C ResetPickerFilters",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5B9E\u9645\u91CD\u7F6E\u6309\u94AE\u6062\u590D\u6750\u6599\u7B5B\u9009",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C FormulaBookButton",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u4E39\u65B9\u518C\u6309\u94AE\u6253\u5F00\u539F\u751F\u8D44\u6599",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u4E39\u65B9\u9898\u540D\u63D0\u793A\u5B57\u53EF\u8BFB",
+      "Passed": true,
+      "Detail": "(0.40784314, 0.44705883, 0.39607844, 1)"
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C @Button@188",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u4E39\u65B9\u518C\u4FDD\u7559\u5B8C\u6574\u539F\u76EE\u5F55\uFF0C\u672A\u622A\u65AD\u4E3A\u7F51\u9875\u4E09\u65B9",
+      "Passed": true,
+      "Detail": "25"
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C KnownFormula_huichun_\u9752\u6728\u6E05\u9732\u65B9",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u622A\u56FE\u4F7F\u7528\u76EE\u6807\u539F\u751F\u7A97\u53E3\u5C3A\u5BF8 notebook",
+      "Passed": true,
+      "Detail": "1920x1080"
+    },
+    {
+      "Name": "\u4FDD\u5B58\u539F\u751F\u622A\u56FE notebook",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C @Button@189",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u6211\u7684\u4E39\u65B9\u4ECD\u8BFB\u56DE\u539F\u4FDD\u5B58\u683C\u5F0F",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C @Button@779",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C @Button@204",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u8F7D\u5165\u4FDD\u5B58\u4E39\u65B9\u4E0D\u6539\u5199\u8BB0\u5F55\u6216\u4E22\u5931\u6295\u6599",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u6EE1\u914D\u5939\u5177\u4F7F\u7528\u516B\u79CD\u771F\u5B9E\u6301\u6709\u6750\u6599",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "508\u9020\u8BE3\u663E\u793A\u541B\u81E3\u4F50\u4F7F\u5168\u90E8\u516B\u5473",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u7B2C\u4E09\u4F4D\u5F00\u653E\u65F6\u836F\u7B7E\u4FDD\u6301326\u9AD8 ZuoHerbGroup",
+      "Passed": true,
+      "Detail": "(284, 326)"
+    },
+    {
+      "Name": "\u7B2C\u4E09\u4F4D\u5F00\u653E\u65F6\u836F\u7B7E\u4FDD\u6301326\u9AD8 ShiHerbGroup",
+      "Passed": true,
+      "Detail": "(284, 326)"
+    },
+    {
+      "Name": "\u516B\u5473\u63A7\u4EF6\u672A\u8D8A\u8FC7\u836F\u7B7E\u8FB9\u754C 0",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C PickHerb_0",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u516B\u5473\u9009\u836F\u70B9\u51FB\u5230\u8FBE\u6B63\u786E\u836F\u4F4D 0",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C DosePlus_0",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u516B\u5473\u4EFD\u6570\u52A0\u91CF\u70B9\u51FB\u6709\u6548 0",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C DoseMinus_0",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u516B\u5473\u4EFD\u6570\u51CF\u91CF\u70B9\u51FB\u6062\u590D 0",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u516B\u5473\u63A7\u4EF6\u672A\u8D8A\u8FC7\u836F\u7B7E\u8FB9\u754C 1",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C PickHerb_1",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u516B\u5473\u9009\u836F\u70B9\u51FB\u5230\u8FBE\u6B63\u786E\u836F\u4F4D 1",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C DosePlus_1",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u516B\u5473\u4EFD\u6570\u52A0\u91CF\u70B9\u51FB\u6709\u6548 1",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C DoseMinus_1",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u516B\u5473\u4EFD\u6570\u51CF\u91CF\u70B9\u51FB\u6062\u590D 1",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u516B\u5473\u63A7\u4EF6\u672A\u8D8A\u8FC7\u836F\u7B7E\u8FB9\u754C 2",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C PickHerb_2",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u516B\u5473\u9009\u836F\u70B9\u51FB\u5230\u8FBE\u6B63\u786E\u836F\u4F4D 2",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C DosePlus_2",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u516B\u5473\u4EFD\u6570\u52A0\u91CF\u70B9\u51FB\u6709\u6548 2",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C DoseMinus_2",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u516B\u5473\u4EFD\u6570\u51CF\u91CF\u70B9\u51FB\u6062\u590D 2",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u516B\u5473\u63A7\u4EF6\u672A\u8D8A\u8FC7\u836F\u7B7E\u8FB9\u754C 3",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C PickHerb_3",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u516B\u5473\u9009\u836F\u70B9\u51FB\u5230\u8FBE\u6B63\u786E\u836F\u4F4D 3",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C DosePlus_3",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u516B\u5473\u4EFD\u6570\u52A0\u91CF\u70B9\u51FB\u6709\u6548 3",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C DoseMinus_3",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u516B\u5473\u4EFD\u6570\u51CF\u91CF\u70B9\u51FB\u6062\u590D 3",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u516B\u5473\u63A7\u4EF6\u672A\u8D8A\u8FC7\u836F\u7B7E\u8FB9\u754C 4",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C PickHerb_4",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u516B\u5473\u9009\u836F\u70B9\u51FB\u5230\u8FBE\u6B63\u786E\u836F\u4F4D 4",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C DosePlus_4",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u516B\u5473\u4EFD\u6570\u52A0\u91CF\u70B9\u51FB\u6709\u6548 4",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C DoseMinus_4",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u516B\u5473\u4EFD\u6570\u51CF\u91CF\u70B9\u51FB\u6062\u590D 4",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u516B\u5473\u63A7\u4EF6\u672A\u8D8A\u8FC7\u836F\u7B7E\u8FB9\u754C 5",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C PickHerb_5",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u516B\u5473\u9009\u836F\u70B9\u51FB\u5230\u8FBE\u6B63\u786E\u836F\u4F4D 5",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C DosePlus_5",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u516B\u5473\u4EFD\u6570\u52A0\u91CF\u70B9\u51FB\u6709\u6548 5",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C DoseMinus_5",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u516B\u5473\u4EFD\u6570\u51CF\u91CF\u70B9\u51FB\u6062\u590D 5",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u516B\u5473\u63A7\u4EF6\u672A\u8D8A\u8FC7\u836F\u7B7E\u8FB9\u754C 6",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C PickHerb_6",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u516B\u5473\u9009\u836F\u70B9\u51FB\u5230\u8FBE\u6B63\u786E\u836F\u4F4D 6",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C DosePlus_6",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u516B\u5473\u4EFD\u6570\u52A0\u91CF\u70B9\u51FB\u6709\u6548 6",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C DoseMinus_6",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u516B\u5473\u4EFD\u6570\u51CF\u91CF\u70B9\u51FB\u6062\u590D 6",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u516B\u5473\u63A7\u4EF6\u672A\u8D8A\u8FC7\u836F\u7B7E\u8FB9\u754C 7",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C PickHerb_7",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u516B\u5473\u9009\u836F\u70B9\u51FB\u5230\u8FBE\u6B63\u786E\u836F\u4F4D 7",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C DosePlus_7",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u516B\u5473\u4EFD\u6570\u52A0\u91CF\u70B9\u51FB\u6709\u6548 7",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C DoseMinus_7",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u516B\u5473\u4EFD\u6570\u51CF\u91CF\u70B9\u51FB\u6062\u590D 7",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u622A\u56FE\u4F7F\u7528\u76EE\u6807\u539F\u751F\u7A97\u53E3\u5C3A\u5BF8 full_eight",
+      "Passed": true,
+      "Detail": "1920x1080"
+    },
+    {
+      "Name": "\u4FDD\u5B58\u539F\u751F\u622A\u56FE full_eight",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u7EAF\u914D\u4F0D\u6D4F\u89C8\u4E0D\u6263\u6599\u7CBE\u529B\u3001\u4E0D\u63A8\u8FDB\u5386\u6CD5\u3001\u4E0D\u751F\u6210\u7089\u6B21\u8BB0\u5F55",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5F00\u70BC\u6807\u8BB0\u671F\u95F4\u8FD4\u56DE\u4FDD\u62A4\u4FDD\u6301",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9274\u770B\u9886\u53D6\u9636\u6BB5\u8FD4\u56DE\u4FDD\u62A4\u4FDD\u6301",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u63A7\u4EF6\u53EF\u64CD\u4F5C ReturnButton",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u53F3\u4E0A\u8FD4\u56DE\u53EA\u5173\u95ED\u6B63\u5F0FOwner\u9875\u9762\uFF0C\u4E0D\u5207\u6362\u65C5\u7A0B\u573A\u666F",
+      "Passed": true,
+      "Detail": ""
+    }
+  ],
+  "inputMethod": "Viewport.PushInput mouse hit testing",
+  "ownerIsIsolatedFixture": true,
+  "playerJourneyRead": false,
+  "brewStarted": false
+}

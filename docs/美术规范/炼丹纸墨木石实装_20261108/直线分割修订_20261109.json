@@ -1,0 +1,75 @@
+{
+  "date": "2026-11-09",
+  "change": "普通细直线替换中央花纹分割线；原按钮和功能保持",
+  "scene": "res://tools/AlchemyPaperUiSmoke.tscn",
+  "runtimeManifest": {
+    "phase": "straight dividers and centered icon",
+    "recordedAt": "2026-11-09T12:39:56.581208+08:00",
+    "sha256": {
+      ".godot/mono/temp/bin/Debug/stacklands.dll": "61b3f685603d99082fd76f56f6a42f9268982b7fced6177dbe4ee3312060822e",
+      "csharp/panel/CraftingPaperStyle.cs": "89e4d262d9240ca94fd3e295a59ec4937c1868eb7673d76ecfd6370fbdde0aec",
+      "csharp/panel/PaperButtonFeedback.cs": "74894219692f987a32ac356e170377e0950dacc10de809f7ca8b941ea26ace7c",
+      "csharp/panel/CultivationUI.Paper.cs": "42ff62fbb47551351f440c11681dd834b5f30b233a3874fadc6d8fbfcd2125fc",
+      "csharp/panel/RestPanel.cs": "e948d15913fc11c489368c3d773ea83c8939d1effea5629d9785af9a56de8167",
+      "csharp/scene/AlchemySlotBrewPreviewScene.PaperSkin.cs": "2e95ef688dceb5428d2542b290ed95b30385c3ee6e42a31fa5d6bd65e7ae191c",
+      "csharp/debug/CharacterPaperUiSmoke.cs": "a0ffc4b312d888e3c99ec053d6e0b822dcf13626f3d3159b2c26970679f632d7",
+      "tools/NativePaperCaptureHost.gd": "88cde01bf83fc43d7d184fe7b31ed0bed02be2d322a18501cc24936a872fb106"
+    }
+  },
+  "runs": [
+    {
+      "width": 1280,
+      "checks": 134,
+      "exitCode": 0,
+      "errorCount": 0,
+      "warningCount": 2,
+      "record": "alchemy_paper_checks_1280.json",
+      "log": "分割线复验_1280.log",
+      "images": [
+        {
+          "name": "alchemy_paper_full_eight_1280.png",
+          "sha256": "b13646b613031923fe4aa97aa4a1a646f815aaaa99c873dd75a1874d658402bf"
+        },
+        {
+          "name": "alchemy_paper_main_1280.png",
+          "sha256": "92bad57f92a0c63dba378c989745fde52f0e0dc14bac28982955e481d3faa735"
+        },
+        {
+          "name": "alchemy_paper_notebook_1280.png",
+          "sha256": "8b1b77692d7315df02d4e5514c349cce73b82fa629ffc300aaa2ddd106d25f76"
+        },
+        {
+          "name": "alchemy_paper_picker_1280.png",
+          "sha256": "6581aa3366852ab97e41a44c2dc0bafe453b63d3dfcaabdcdf3b3d32f828a687"
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "checks": 134,
+      "exitCode": 0,
+      "errorCount": 0,
+      "warningCount": 2,
+      "record": "alchemy_paper_checks_1920.json",
+      "log": "分割线复验_1920.log",
+      "images": [
+        {
+          "name": "alchemy_paper_full_eight_1920.png",
+          "sha256": "e9bbc85f456479d5d9f7229e043bc815478d6091df416fb7a6ee373988731184"
+        },
+        {
+          "name": "alchemy_paper_main_1920.png",
+          "sha256": "c1314f93ea6acb18c4b1c7fb5ce17c1d3cbd33caff6953c2559da916db3ab25f"
+        },
+        {
+          "name": "alchemy_paper_notebook_1920.png",
+          "sha256": "39f291d3f71e12c8388c3aa026ab634d710d981c5297a7d59ca96592c704ff8a"
+        },
+        {
+          "name": "alchemy_paper_picker_1920.png",
+          "sha256": "40d8a04793eed38ef80d62148eceb07f70ac865ce9a04aa570ab23164a466ada"
+        }
+      ]
+    }
+  ]
+}

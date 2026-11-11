@@ -1,0 +1,21 @@
+{
+  "status": "failed",
+  "width": 1280,
+  "height": 720,
+  "headless": false,
+  "checks": [
+    {
+      "name": "APPDATA\u4F7F\u7528\u9879\u76EE\u5185\u9694\u79BB\u76EE\u5F55",
+      "passed": true,
+      "detail": "E:\\stacklands\\output\\character_paper_profile_1280\\SlayTheSpire2\\"
+    },
+    {
+      "name": "\u73B0\u6709\u5F85\u7814\u8BFB\u79D8\u7C4D\u4F5C\u4E3A\u771F\u5B9E\u4EBA\u7269\u76EE\u5F55\u5939\u5177",
+      "passed": false,
+      "detail": ""
+    }
+  ],
+  "captures": [],
+  "error": "System.InvalidOperationException: \u73B0\u6709\u5F85\u7814\u8BFB\u79D8\u7C4D\u4F5C\u4E3A\u771F\u5B9E\u4EBA\u7269\u76EE\u5F55\u5939\u5177: \r\n   at CharacterPaperUiSmoke.Check(Boolean passed, String name, String detail)\r\n   at CharacterPaperUiSmoke._Ready()",
+  "actualGameSavesReadOrWritten": false
+}

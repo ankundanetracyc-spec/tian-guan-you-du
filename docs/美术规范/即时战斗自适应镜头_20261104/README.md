@@ -12,4 +12,4 @@
 
 镜头60项、原四招24项和HUD检查通过。日志：[镜头](../../../output/shared_combat_camera_smoke.log)、[四招](../../../output/shared_camera_basic_skills.log)、[界面](../../../output/shared_camera_ui_smoke.log)。四种视口、常规六单位入框、远端单位、死亡剔除、每帧视野地图内、暂停／重开／resize均覆盖。极端地图对边与窗口长宽比冲突时记录取景饱和，地图边界优先；不暗中移动单位或扩大地图。
 
-实现：`tools/action_battle_test/adaptive_combat_camera.gd` 与原 `action_battle_feel_test.gd` 相机区域。规则见[本轮恢复主案](../../plans/即时动作战斗恢复与共同取景_20261104.md)。
+实现：`tools/action_battle_test/adaptive_combat_camera.gd` 与原 `action_battle_feel_test.gd` 相机区域。规则见[本轮恢复主案](../../plans/战斗与构筑/即时动作战斗恢复与共同取景_20261104.md)。

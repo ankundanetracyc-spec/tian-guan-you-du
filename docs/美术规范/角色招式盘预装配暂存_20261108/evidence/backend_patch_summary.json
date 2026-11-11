@@ -1,0 +1,68 @@
+[
+  {
+    "path": "csharp/entity/Character.cs",
+    "existing": true,
+    "added": 2,
+    "removed": 0
+  },
+  {
+    "path": "csharp/battle/BattleEntityData.cs",
+    "existing": true,
+    "added": 1,
+    "removed": 0
+  },
+  {
+    "path": "csharp/resources/HumanData.CombatBoard.cs",
+    "existing": true,
+    "added": 5,
+    "removed": 0
+  },
+  {
+    "path": "csharp/resources/CombatBoardLayout.cs",
+    "existing": true,
+    "added": 3,
+    "removed": 0
+  },
+  {
+    "path": "csharp/battle/BattleManager.CombatBoard.cs",
+    "existing": true,
+    "added": 21,
+    "removed": 3
+  },
+  {
+    "path": "csharp/battle/BattleBoardHud.cs",
+    "existing": true,
+    "added": 7,
+    "removed": 12
+  },
+  {
+    "path": "csharp/battle/CombatBoardPreparationService.cs",
+    "existing": false,
+    "added": 166,
+    "removed": 0
+  },
+  {
+    "path": "csharp/entity/Character.CombatBoardPreparation.cs",
+    "existing": false,
+    "added": 26,
+    "removed": 0
+  },
+  {
+    "path": "csharp/battle/BattleEntityData.CombatBoardPreparation.cs",
+    "existing": false,
+    "added": 16,
+    "removed": 0
+  },
+  {
+    "path": "csharp/debug/CombatBoardPreparationSmoke.cs",
+    "existing": false,
+    "added": 227,
+    "removed": 0
+  },
+  {
+    "path": "tscn/debug/CombatBoardPreparationSmoke.tscn",
+    "existing": false,
+    "added": 6,
+    "removed": 0
+  }
+]

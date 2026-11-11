@@ -1,0 +1,117 @@
+using Godot;
+
+public partial class CharacterCombatBoardPanel
+{
+    private bool CanPlace(CombatBoardPlacement candidate)
+    {
+        if (_owner is null) return false;
+        var others = _draft.placements.Where(item => item.placement_id != candidate.placement_id).ToArray();
+        var footprint = CombatBoardGeometry.Footprint(candidate, _catalog.FindSkill);
+        var occupied = others.SelectMany(item => CombatBoardGeometry.Cells(item, CombatBoardGeometry.Footprint(item, _catalog.FindSkill))).ToHashSet();
+        if (!CombatBoardGeometry.Fits(_draft.size, candidate.cell, footprint, occupied)) return false;
+        if (candidate.kind == CombatBoardPlacement.ObjectKind.Skill)
+            return _catalog.FindSkill(candidate.source_key) is { } skill
+                && others.Count(item => item.kind == candidate.kind && item.source_key == candidate.source_key) < skill.board_max_placements;
+        if (candidate.kind == CombatBoardPlacement.ObjectKind.Rewrite)
+            return _catalog.FindRewrite(candidate.source_key) is { } rewrite
+                && others.Count(item => item.kind == candidate.kind && item.source_key == candidate.source_key) < rewrite.max_placements;
+        if (candidate.kind == CombatBoardPlacement.ObjectKind.Pill)
+            return BattleSupplyRules.Load(candidate.source_key) is not null && (candidate.expended || others.Count(item => item.kind == candidate.kind
+                && !item.expended && item.source_key == candidate.source_key) < _owner.get_inventory_total_count(candidate.source_key));
+        return candidate.kind == CombatBoardPlacement.ObjectKind.ZhouTianIndicator
+            && CombatBoardPreparationService.RequiresIndicator(_owner) && candidate.locked
+            && !others.Any(item => item.kind == candidate.kind);
+    }
+
+    private bool CommitPlacement(CombatBoardPlacement candidate)
+    {
+        if (!CanPlace(candidate)) { _notice.Text = "此处放不下，或当前来源数量不足。"; return false; }
+        int index = _draft.placements.ToList().FindIndex(item => item.placement_id == candidate.placement_id);
+        if (index < 0) _draft.placements.Add(candidate.CopyConfiguration()); else _draft.placements[index] = candidate.CopyConfiguration();
+        _selected = candidate.placement_id; _picked = ""; Changed(); return true;
+    }
+    public bool TryPlaceSource(string key, Vector2I cell, int turns = 0)
+    {
+        if (_owner is null) return false;
+        CombatBoardPlacement item;
+        if (_catalog.FindSkill(key) is { } skill)
+            item = new() { placement_id = Guid.NewGuid().ToString("N"), source_key = key, cell = cell,
+                quarter_turns = skill.board_rotation_allowed ? turns % 2 : 0 };
+        else if (_catalog.FindRewrite(key) is not null)
+            item = new() { placement_id = Guid.NewGuid().ToString("N"), kind = CombatBoardPlacement.ObjectKind.Rewrite,
+                source_key = key, cell = cell, rewrite_direction = turns % 4 };
+        else if (BattleSupplyRules.Load(key) is { } pill)
+            item = new() { placement_id = Guid.NewGuid().ToString("N"), kind = CombatBoardPlacement.ObjectKind.Pill,
+                source_key = key, cell = cell, quarter_turns = pill.inventory_can_rotate ? turns % 2 : 0 };
+        else if (key == "heart:xuan_shu")
+            item = new() { placement_id = "heart:xuan_shu:indicator", source_key = key, cell = cell, locked = true,
+                kind = CombatBoardPlacement.ObjectKind.ZhouTianIndicator, rewrite_direction = turns % 4 };
+        else return false;
+        return CommitPlacement(item);
+    }
+    public bool MovePlacement(string id, Vector2I cell)
+    {
+        var item = _draft.placements.FirstOrDefault(item => item.placement_id == id); if (item is null) return false;
+        var candidate = item.CopyConfiguration(); candidate.cell = cell; return CommitPlacement(candidate);
+    }
+    public void RotateSelected()
+    {
+        if (_picked.Length > 0) { _pickedTurns = (_pickedTurns + 1) % 4; _notice.Text = "已旋转待摆对象。"; return; }
+        var item = _draft.placements.FirstOrDefault(item => item.placement_id == _selected); if (item is null) return;
+        var candidate = item.CopyConfiguration();
+        if (item.kind is CombatBoardPlacement.ObjectKind.Rewrite or CombatBoardPlacement.ObjectKind.ZhouTianIndicator)
+            candidate.rewrite_direction = (item.rewrite_direction + 1) % 4;
+        else
+        {
+            bool rotate = item.kind == CombatBoardPlacement.ObjectKind.Skill ? _catalog.FindSkill(item.source_key)?.board_rotation_allowed == true
+                : BattleSupplyRules.Load(item.source_key)?.inventory_can_rotate == true;
+            if (!rotate) { _notice.Text = "此对象无需转向。"; return; }
+            candidate.quarter_turns = (item.quarter_turns + 1) % 2;
+        }
+        CommitPlacement(candidate);
+    }
+    public void RemoveSelected() => RemovePlacement(_selected);
+    private void RemovePlacement(string id)
+    {
+        var item = _draft.placements.FirstOrDefault(item => item.placement_id == id); if (item is null) return;
+        if (item.locked) { _notice.Text = "周天指示可以移动、转向，不能移出。"; return; }
+        _draft.placements.Remove(item); _selected = ""; Changed();
+    }
+    public void ClearDraft()
+    {
+        _draft.placements = new(_draft.placements.Where(item => item.locked).Select(item => item.CopyConfiguration()));
+        _selected = _picked = ""; Changed();
+    }
+    private void SetPreparation()
+    {
+        if (_owner is null) return;
+        if (!CombatBoardPreparationService.TrySetPreparation(_owner, _draft, out var reason)) { _notice.Text = reason; return; }
+        NotifySaved();
+        _notice.Text = "已设为出战预装配。";
+    }
+    private void SaveCurrent()
+    {
+        if (_owner is null) return;
+        if (_activeName.Length == 0 || !CombatBoardPreparationService.GetPlans(_owner).Any(plan => plan.ResourceName == _activeName))
+        { NameDialog("save-as"); return; }
+        if (!CombatBoardPreparationService.TrySavePlan(_owner, _draft, _activeName, true, out var reason)) { _notice.Text = reason; return; }
+        NotifySaved();
+        _dirty = false; RefreshState(); _notice.Text = "已保存「" + _activeName + "」。";
+    }
+    public bool TryLoadPlan(CombatBoardLayout plan)
+    {
+        if (_owner is null) return false;
+        if (!CombatBoardPreparationService.TryLoadPlan(_owner, plan, out var loaded, out var reason)) { _notice.Text = reason; return false; }
+        _draft = loaded; _activeName = plan.ResourceName; _dirty = false; _selected = _picked = "";
+        ShowSources(); RefreshState(); _notice.Text = "已载入「" + _activeName + "」。"; return true;
+    }
+    private string PlacementName(CombatBoardPlacement item) => item.expended ? "空瓶" : SourceName(item.source_key);
+    private void NotifySaved()
+    {
+        if (_owner is not null && GetTree().GetFirstNodeInGroup("main_scene") is MainScene main)
+            main.notify_combat_board_preparation_changed(_owner);
+    }
+    private string SourceName(string key) => _catalog.FindSkill(key)?.get_board_display_name()
+        ?? _catalog.FindRewrite(key)?.get_board_display_name() ?? BattleSupplyRules.Load(key)?.entity_name
+        ?? (key == "heart:xuan_shu" ? "周天指示" : "来源暂不可用");
+}

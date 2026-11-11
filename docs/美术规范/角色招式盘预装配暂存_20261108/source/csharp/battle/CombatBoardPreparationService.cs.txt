@@ -1,0 +1,166 @@
+using Godot;
+
+/// <summary>局外布局意图与命名方案；读取逐项复制，事务先整盘校验，不参与战斗资源结算。</summary>
+public static class CombatBoardPreparationService
+{
+    public static readonly Vector2I CurrentBoardSize = new(3, 3);
+
+    public static bool RequiresIndicator(Character actor)
+    {
+        if (!HasCharacter(actor)) return false;
+        IEnumerable<string> paths = actor.HasMeta("artifact_battle_clone") && actor.HasMeta("combat_passive_paths")
+            ? actor.GetMeta("combat_passive_paths").AsGodotArray().Select(item => item.AsString())
+            : actor.get_combat_passive_paths();
+        return paths.Any(path => ResourceLoader.Exists(path)
+            && ResourceLoader.Load<ActiveSkillData>(path)?.skill_name == "玄枢含章");
+    }
+
+    public static CombatBoardLayout GetDraft(Character actor)
+    {
+        if (!HasCharacter(actor)) return new CombatBoardLayout();
+        var human = (HumanData)actor.entity_data!;
+        if (human.combat_board_preparation is { } preparation) return preparation.CopyConfiguration();
+        // Old saves retain their last running layout, including expended bottles.
+        // They are never turned back into pills; validation asks for explicit repair.
+        if (human.combat_board_layout is { } previous) return previous.CopyConfiguration();
+        IEnumerable<string> legacy = human.combat_skill_references.Count > 0
+            ? human.combat_skill_references.Select(reference => reference?.Key ?? "")
+            : human.combat_skill_slot_paths;
+        var catalog = Catalog(actor);
+        return CombatBoardMigration.CreatePreview(legacy, human.skill_rewrite_bindings,
+            catalog.FindSkill, RequiresIndicator(actor), CurrentBoardSize);
+    }
+
+    public static IReadOnlyList<CombatBoardLayout> GetPlans(Character actor) => !HasCharacter(actor)
+        ? []
+        : ((HumanData)actor.entity_data!).combat_board_named_plans
+            .Where(layout => layout is not null).Select(CopyNamed).ToList();
+
+    public static List<string> Validate(Character actor, CombatBoardLayout layout)
+    {
+        if (!HasCharacter(actor)) return ["尚未绑定人物。"];
+        return ValidateForContext(layout, Catalog(actor), CurrentBoardSize, RequiresIndicator(actor),
+            actor.get_inventory_total_count, allowExpended: false);
+    }
+
+    /// <summary>只有此操作改出战默认；命名保存、选择和删除均不暗中调用。</summary>
+    public static bool TrySetPreparation(Character actor, CombatBoardLayout layout, out string reason)
+    {
+        if (!CanEdit(actor, out reason)) return false;
+        var issues = Validate(actor, layout);
+        if (issues.Count > 0) { reason = string.Join("\n", issues); return false; }
+        var copy = layout.CopyConfiguration(); copy.confirmed = true;
+        ((HumanData)actor.entity_data!).combat_board_preparation = copy;
+        reason = ""; return true;
+    }
+
+    public static bool TrySavePlan(Character actor, CombatBoardLayout layout, string name, bool overwrite, out string reason)
+    {
+        if (!CanEdit(actor, out reason) || !Name(name, out name, out reason)) return false;
+        var plans = ((HumanData)actor.entity_data!).combat_board_named_plans;
+        int existing = Index(plans, name);
+        if (existing >= 0 && !overwrite) { reason = "已有同名方案，请使用新名称。"; return false; }
+        var issues = Validate(actor, layout);
+        if (issues.Count > 0) { reason = string.Join("\n", issues); return false; }
+        var copy = layout.CopyConfiguration(); copy.preset_name = name; copy.confirmed = true;
+        if (existing >= 0) plans[existing] = copy; else plans.Add(copy);
+        reason = ""; return true;
+    }
+
+    public static bool TryDeletePlan(Character actor, string name, out string reason)
+    {
+        if (!CanEdit(actor, out reason) || !Name(name, out name, out reason)) return false;
+        var plans = ((HumanData)actor.entity_data!).combat_board_named_plans;
+        int index = Index(plans, name);
+        if (index < 0) { reason = "未找到此方案。"; return false; }
+        plans.RemoveAt(index); reason = ""; return true;
+    }
+
+    public static bool TryRenamePlan(Character actor, string oldName, string newName, out string reason)
+    {
+        if (!CanEdit(actor, out reason) || !Name(oldName, out oldName, out reason)
+            || !Name(newName, out newName, out reason)) return false;
+        var plans = ((HumanData)actor.entity_data!).combat_board_named_plans;
+        int index = Index(plans, oldName);
+        if (index < 0) { reason = "未找到此方案。"; return false; }
+        if (oldName == newName) { reason = ""; return true; }
+        if (Index(plans, newName) >= 0) { reason = "已有同名方案，请使用新名称。"; return false; }
+        var copy = plans[index].CopyConfiguration(); copy.preset_name = newName;
+        plans[index] = copy; reason = ""; return true;
+    }
+
+    /// <summary>不写任何人物字段或当前草稿；只有全盘可用才返回副本。</summary>
+    public static bool TryLoadPlan(Character actor, CombatBoardLayout layout, out CombatBoardLayout loaded, out string reason)
+    {
+        loaded = null!;
+        var issues = Validate(actor, layout);
+        if (issues.Count > 0) { reason = string.Join("\n", issues); return false; }
+        loaded = layout.CopyConfiguration(); reason = ""; return true;
+    }
+
+    // Battle manager supplies its actual frozen catalog, current size and indicator.
+    // This checks configuration eligibility only: no health/mana/uses/cooldown writes.
+    internal static List<string> ValidateForContext(CombatBoardLayout layout, CombatBoardCatalog catalog,
+        Vector2I boardSize, bool indicator, Func<string, int> pillCount, bool allowExpended)
+    {
+        if (layout is null) return ["方案为空。"];
+        var messages = new List<string>();
+        if (layout.size != boardSize) messages.Add("方案盘面与当前已开放的招式盘不兼容。");
+        foreach (var issue in CombatBoardGeometry.Validate(layout, catalog.FindSkill,
+            key => catalog.FindSkill(key) is not null, key => catalog.FindRewrite(key)?.max_placements ?? 0,
+            indicator, pillCount))
+        {
+            var item = layout.placements.FirstOrDefault(value => value?.placement_id == issue.PlacementId);
+            string name = item is null ? "" : DisplayName(item, catalog);
+            messages.Add(name.Length == 0 ? issue.Message : name + "：" + issue.Message);
+        }
+        foreach (var group in layout.placements.Where(item => item?.kind == CombatBoardPlacement.ObjectKind.Pill && !item.expended)
+            .GroupBy(item => item.source_key, StringComparer.Ordinal))
+        {
+            int need = group.Count(), available = Math.Max(0, pillCount(group.Key));
+            if (need > available)
+                messages.Add($"{DisplayName(group.First(), catalog)}：需{need}颗，行囊现有{available}颗，缺{need - available}颗。");
+        }
+        if (!allowExpended && layout.placements.Any(item => item?.expended == true))
+            messages.Add("战斗空瓶不能存为预装配或命名方案；请移出空瓶，再从行囊按真实库存放入丹药。");
+        return messages.Distinct(StringComparer.Ordinal).ToList();
+    }
+
+    internal static CombatBoardCatalog Catalog(Character actor) =>
+        actor.HasMeta("artifact_battle_clone") && actor.HasMeta("combat_board_catalog")
+            && actor.GetMeta("combat_board_catalog").AsGodotObject() is CombatBoardCatalog snapshot
+                ? snapshot : CombatBoardCatalog.FromCharacter(actor);
+
+    private static string DisplayName(CombatBoardPlacement item, CombatBoardCatalog catalog) => item.kind switch
+    {
+        CombatBoardPlacement.ObjectKind.Skill => catalog.FindSkill(item.source_key)?.skill_name ?? "招式",
+        CombatBoardPlacement.ObjectKind.Rewrite => catalog.FindRewrite(item.source_key)?.get_board_display_name() ?? "化法",
+        CombatBoardPlacement.ObjectKind.Pill => BattleSupplyRules.Load(item.source_key)?.entity_name ?? "丹药",
+        CombatBoardPlacement.ObjectKind.ZhouTianIndicator => "周天指示",
+        _ => "未开放对象"
+    };
+    private static bool HasCharacter(Character actor) =>
+        actor is not null && GodotObject.IsInstanceValid(actor) && actor.entity_data is HumanData;
+    private static bool CanEdit(Character actor, out string reason)
+    {
+        reason = !HasCharacter(actor) ? "尚未绑定人物。"
+            : actor.HasMeta("artifact_battle_clone") ? "请在局外保存预装配和命名方案。" : "";
+        return reason.Length == 0;
+    }
+    private static bool Name(string input, out string name, out string reason)
+    {
+        name = input?.Trim() ?? ""; reason = name.Length == 0 ? "方案名称不能为空。" : ""; return reason.Length == 0;
+    }
+    private static int Index(Godot.Collections.Array<CombatBoardLayout> plans, string name)
+    {
+        for (int i = 0; i < plans.Count; i++)
+            if (plans[i]?.preset_name.Trim() == name) return i;
+        return -1;
+    }
+    private static CombatBoardLayout CopyNamed(CombatBoardLayout source)
+    {
+        var copy = source.CopyConfiguration();
+        copy.preset_name = source.preset_name.Trim();
+        return copy;
+    }
+}

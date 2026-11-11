@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="zh-CN" data-skin="wood">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>局内招式盘 · 布阵与战斗布局样板</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="11_局内UI布局样板.css">
+  <link rel="stylesheet" href="16_灰宣墨线.css">
+  <link rel="stylesheet" href="17_素绢朱印.css">
+  <link rel="stylesheet" href="18_乌木骨饰.css">
+  <link rel="stylesheet" href="29_固定战场与简洁状态.css">
+  <script defer src="11_局内UI布局样板.js"></script>
+  <script defer src="19_风格控制.js"></script>
+</head>
+<body>
+  <main class="battle" id="battle" data-mode="edit">
+    <div class="ground" aria-hidden="true"></div>
+    <div class="scenery scenery--pine" aria-hidden="true"></div>
+    <div class="scenery scenery--stone" aria-hidden="true"></div>
+    <div class="scene-tint" aria-hidden="true"></div>
+
+    <header class="battle-header">
+      <div class="location ink-panel">
+        <span class="location-mark" aria-hidden="true">◇</span>
+        <span>山谷对练</span>
+        <small>界面演示</small>
+      </div>
+      <div class="initiative-area">
+        <div class="initiative ink-panel" aria-label="行动条示意">
+          <span class="initiative-label">行动</span>
+          <div class="initiative-rail" aria-hidden="true">
+            <span class="initiative-fill"></span>
+            <span class="initiative-marker initiative-marker--friend">我</span>
+            <span class="initiative-marker initiative-marker--enemy">敌</span>
+          </div>
+        </div>
+        <div class="phase-note" id="phaseNote" aria-live="polite">布阵中</div>
+      </div>
+      <nav class="header-actions" aria-label="战斗控制">
+        <button class="small-button" id="characterButton" type="button">人物</button>
+        <button class="small-button" id="pauseButton" type="button" aria-pressed="false">暂停</button>
+        <button class="small-button" id="speedButton" type="button" aria-label="演示倍速">×1</button>
+      </nav>
+    </header>
+
+    <section class="battlefield" aria-label="战场">
+      <div class="resources ink-panel" aria-label="角色资源">
+        <div class="resource"><span class="resource-dot resource-dot--stamina"></span><span>体力</span><strong>— / —</strong></div>
+        <div class="resource"><span class="resource-dot resource-dot--mana"></span><span>法力</span><strong>— / —</strong></div>
+        <div class="resource" aria-label="灵识：当前占用与容量" title="灵识：当前占用 / 容量"><span class="resource-dot resource-dot--spirit"></span><span>灵识占用</span><strong>— / —</strong></div>
+      </div>
+
+      <div class="actor actor--friend" aria-label="我方角色示意">
+        <div class="actor-plate ink-panel">
+          <div class="actor-line"><span>玉虚修士</span><span class="hp-value">— / —</span></div>
+          <div class="hp-track"><span class="hp-fill hp-fill--friend"></span></div>
+          <div class="status-row" aria-label="我方状态示意">
+            <button class="status-icon" type="button" data-status="shield" aria-label="护盾：状态示意"><img src="../../../textures/ui/combat/status_icons/护盾_v1.png" alt=""></button>
+            <button class="status-icon" type="button" data-status="blood" aria-label="气血：状态示意"><img src="../../../textures/ui/combat/status_icons/气血_v1.png" alt=""></button>
+          </div>
+        </div>
+        <span class="actor-shadow" aria-hidden="true"></span>
+        <span class="actor-sprite actor-sprite--right" aria-hidden="true"></span>
+      </div>
+
+      <div class="actor actor--enemy" aria-label="对方角色示意">
+        <div class="actor-plate ink-panel">
+          <div class="actor-line"><span>对练者</span><span class="hp-value">— / —</span></div>
+          <div class="hp-track"><span class="hp-fill hp-fill--enemy"></span></div>
+          <div class="status-row" aria-label="对方状态示意">
+            <button class="status-icon" type="button" data-status="shield" aria-label="护盾：状态示意"><img src="../../../textures/ui/combat/status_icons/护盾_v1.png" alt=""></button>
+          </div>
+        </div>
+        <span class="actor-shadow" aria-hidden="true"></span>
+        <span class="actor-sprite actor-sprite--left" aria-hidden="true"></span>
+      </div>
+
+      <section class="board-dock" id="boardDock" aria-label="招式盘">
+        <div class="board-caption"><span>招式盘</span><span id="boardCaption">布阵中</span></div>
+        <div class="board-composite">
+          <button class="hand-slot" type="button" id="handSlot" aria-label="手持槽示意">
+            <span class="slot-caption">持</span>
+            <img src="../../../textures/items/inventory_density_20261029/slender_sword_2x6.png" alt="">
+          </button>
+          <span class="hand-link" aria-hidden="true"></span>
+          <div class="board-frame"><div class="board-grid" id="boardGrid" aria-label="九格招式盘示意"></div></div>
+        </div>
+        <div class="board-feedback" id="boardFeedback" aria-live="polite">选择招式，再点空格摆放</div>
+        <button class="primary-button" id="startButton" type="button">开始战斗</button>
+      </section>
+
+      <div class="battle-controls" id="battleControls" hidden>
+        <button class="small-button demo-button" id="roundButton" type="button">演示：回合结束</button>
+        <button class="primary-button compact-button" id="editButton" type="button" disabled>整理布阵</button>
+      </div>
+    </section>
+
+    <aside class="source-panel ink-panel" id="sourcePanel" aria-label="可摆放对象">
+      <div class="source-view" id="sourceView">
+        <div class="source-toolbar">
+          <label class="visually-hidden" for="category">来源分类</label>
+          <select id="category" aria-label="来源分类">
+            <option value="skill">招式</option>
+            <option value="rewrite">化法</option>
+            <option value="pill">丹药</option>
+            <option value="talisman">符箓</option>
+            <option value="artifact">法宝</option>
+          </select>
+          <label class="search-box"><span aria-hidden="true">⌕</span><span class="visually-hidden">搜索</span><input id="search" type="search" placeholder="搜索" autocomplete="off"></label>
+        </div>
+        <div class="source-list" id="sourceList" aria-label="可选对象"></div>
+        <div class="source-bottom"><button class="outline-button" id="schemeButton" type="button">方案</button></div>
+      </div>
+
+      <div class="scheme-view" id="schemeView" hidden>
+        <div class="scheme-heading"><button class="back-button" id="schemeBack" type="button" aria-label="返回招式">‹</button><span>我的方案</span></div>
+        <div class="scheme-list" aria-label="选择即覆盖当前布阵">
+          <button class="scheme-option" type="button" data-scheme="one"><span><strong>方案一</strong><small>选择后覆盖当前盘面</small></span><span aria-hidden="true">›</span></button>
+          <button class="scheme-option" type="button" data-scheme="two"><span><strong>方案二</strong><small>选择后覆盖当前盘面</small></span><span aria-hidden="true">›</span></button>
+        </div>
+      </div>
+    </aside>
+
+    <div class="tooltip" id="tooltip" role="tooltip" hidden></div>
+    <dialog class="character-dialog ink-panel" id="characterDialog" aria-labelledby="dialogTitle">
+      <div class="dialog-heading"><h2 id="dialogTitle">人物详情</h2><button class="dialog-close" id="closeDialog" type="button" aria-label="关闭人物详情">×</button></div>
+      <div class="dialog-subtitle">玉虚修士 <span>·</span> 装备</div>
+      <div class="equipment-entry"><span>甲／袍</span><strong>—</strong></div>
+      <div class="equipment-entry"><span>其他护具</span><strong>—</strong></div>
+      <p>布局示意，装备信息未连接角色数据。</p>
+    </dialog>
+  </main>
+</body>
+</html>

@@ -1,0 +1,452 @@
+{
+  "date": "2026-11-08",
+  "status": "passed",
+  "browser": "Microsoft Edge / Playwright CLI journal-review",
+  "checkCount": 52,
+  "results": [
+    {
+      "name": "1920 全页保持在窗口内",
+      "passed": true,
+      "detail": {
+        "x": 50.26141357421875,
+        "y": 56,
+        "right": 1869.7384643554688,
+        "bottom": 1080,
+        "viewport": [
+          1920,
+          1080
+        ],
+        "overflow": false,
+        "font": true
+      }
+    },
+    {
+      "name": "1920 真实项目字体加载",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1920 每个可见操作控件实际绑定PNG素材",
+      "passed": true,
+      "detail": {
+        "controls": 17
+      }
+    },
+    {
+      "name": "1920 连续阅读保留八份实际正文且不重复补写",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1920 省略未知发现状态与日期",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1920 长正文有真实滚动空间",
+      "passed": true,
+      "detail": {
+        "max": 1158,
+        "height": 470
+      }
+    },
+    {
+      "name": "1920 键盘可滚至最后正文且题头不移位",
+      "passed": true,
+      "detail": {
+        "top": 1158,
+        "max": 1158,
+        "last": 857.7513427734375,
+        "bottom": 899.3580932617188
+      }
+    },
+    {
+      "name": "1920 目录独立滚动可到末条",
+      "passed": true,
+      "detail": {
+        "lastRow": {
+          "x": 177.58128356933594,
+          "y": 802.3209228515625,
+          "width": 353.66627502441406,
+          "height": 91.46014404296875
+        },
+        "listBox": {
+          "x": 176.49307250976562,
+          "y": 369.9468688964844,
+          "width": 361.2837829589844,
+          "height": 532.6758728027344
+        }
+      }
+    },
+    {
+      "name": "1920 单条阅读显示完整原文",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1920 检索筛选当前内容",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1920 无结果检索有空状态",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1920 任务只展示三份当前源码目标",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1920 任务正文只出现一次",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1920 追踪按钮与目录状态同步",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1920 切换追踪始终唯一",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1920 取消追踪清除唯一标记",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1920 取消后可再次追踪同一任务",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1920 不编造已完成记录或完成奖励",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1920 记录无实际夹具时保持空白",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1920 空状态切换不修改原始八峰数据",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1920 分类签支持键盘方向切换及焦点",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1920 Esc收起且可继续查看",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1920 重新打开保留本页演示追踪",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1920 长正文入口恢复完整阅读",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1280 全页保持在窗口内",
+      "passed": true,
+      "detail": {
+        "x": 50.09136962890625,
+        "y": 56,
+        "right": 1229.9087524414062,
+        "bottom": 720,
+        "viewport": [
+          1280,
+          720
+        ],
+        "overflow": false,
+        "font": true
+      }
+    },
+    {
+      "name": "1280 真实项目字体加载",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1280 每个可见操作控件实际绑定PNG素材",
+      "passed": true,
+      "detail": {
+        "controls": 17
+      }
+    },
+    {
+      "name": "1280 连续阅读保留八份实际正文且不重复补写",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1280 省略未知发现状态与日期",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1280 长正文有真实滚动空间",
+      "passed": true,
+      "detail": {
+        "max": 1158,
+        "height": 470
+      }
+    },
+    {
+      "name": "1280 键盘可滚至最后正文且题头不移位",
+      "passed": true,
+      "detail": {
+        "top": 1158,
+        "max": 1158,
+        "last": 575.8856201171875,
+        "bottom": 602.8650512695312
+      }
+    },
+    {
+      "name": "1280 目录独立滚动可到末条",
+      "passed": true,
+      "detail": {
+        "lastRow": {
+          "x": 132.65036010742188,
+          "y": 539.9425048828125,
+          "width": 229.33050537109375,
+          "height": 59.30621337890625
+        },
+        "listBox": {
+          "x": 131.94471740722656,
+          "y": 259.5749206542969,
+          "width": 234.2699432373047,
+          "height": 345.4070129394531
+        }
+      }
+    },
+    {
+      "name": "1280 单条阅读显示完整原文",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1280 检索筛选当前内容",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1280 无结果检索有空状态",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1280 任务只展示三份当前源码目标",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1280 任务正文只出现一次",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1280 追踪按钮与目录状态同步",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1280 切换追踪始终唯一",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1280 取消追踪清除唯一标记",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1280 取消后可再次追踪同一任务",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1280 不编造已完成记录或完成奖励",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1280 记录无实际夹具时保持空白",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1280 空状态切换不修改原始八峰数据",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1280 分类签支持键盘方向切换及焦点",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1280 Esc收起且可继续查看",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1280 重新打开保留本页演示追踪",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "1280 长正文入口恢复完整阅读",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "减少动态效果设置生效",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "未写入持久或会话浏览器存储",
+      "passed": true,
+      "detail": {
+        "local": 0,
+        "session": 0
+      }
+    },
+    {
+      "name": "刷新复位且不冒充游戏存档",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "交互期间没有页面脚本异常",
+      "passed": true,
+      "detail": {
+        "errors": []
+      }
+    }
+  ],
+  "source": "验证脚本.js",
+  "viewports": [
+    [
+      1920,
+      1080
+    ],
+    [
+      1280,
+      720
+    ]
+  ],
+  "storage": {
+    "local": 0,
+    "session": 0
+  },
+  "gameIntegrated": false,
+  "playerSaveReadOrWritten": false,
+  "staticValidation": {
+    "status": "passed",
+    "exactSourceLoreEntries": 8,
+    "exactSourceTaskEntries": 3,
+    "unknownAcquisitionStateOrDateOmitted": true,
+    "completedRecordsFabricated": false,
+    "sourceFileHashesVerified": 4,
+    "materialAndFontFilesVerified": 8,
+    "localLinksVerified": 29,
+    "brokenLinks": [],
+    "runtimeBrowserStorageAndGameFileApiReferences": 0
+  },
+  "screenshots": [
+    {
+      "path": "任务_追踪_1280.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "fe39f532354e6f1a71acc5edddc3137dd0daf5f8d23453eaa93cf29400f050ad",
+      "origin": "Playwright直接窗口截图，无后期修改"
+    },
+    {
+      "path": "任务_追踪_1920.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "7b102d97c75aa5555f9891120106fc4dfc79ea36e8e196fa66579fa04a4fe09b",
+      "origin": "Playwright直接窗口截图，无后期修改"
+    },
+    {
+      "path": "见闻_1280.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "955adc7af83187b6b9781c55b1078001318a54b97d120ded4a3db3ccc60067db",
+      "origin": "Playwright直接窗口截图，无后期修改"
+    },
+    {
+      "path": "见闻_1920.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "c0893cb7d5d0a9da1ebe3376a6b1ee9c147257f42df7b01f6f9b6631d5cf8ed5",
+      "origin": "Playwright直接窗口截图，无后期修改"
+    },
+    {
+      "path": "见闻_单条_1920.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "0408c7547bc5205ddbd10d6637330295706f063a3fc7d9d5034100ef31507ea4",
+      "origin": "Playwright直接窗口截图，无后期修改"
+    },
+    {
+      "path": "见闻_正文末尾_1280.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "c3be7a11d1fc9e0b3237d4143d55c34b22efd657f7b8a75cd3e3a96eaddd3693",
+      "origin": "Playwright直接窗口截图，无后期修改"
+    },
+    {
+      "path": "记录_空状态_1280.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "7aabbd36cd0354168659291dc94f94a876fa1bc329fdfc9e086a788e16b35d4f",
+      "origin": "Playwright直接窗口截图，无后期修改"
+    },
+    {
+      "path": "记录_空状态_1920.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "b70802bb2ee7632276806b2152001f73d5159bad1c338687ddf76e6cdeeb266f",
+      "origin": "Playwright直接窗口截图，无后期修改"
+    }
+  ],
+  "ownCodeSha256": {
+    "index.html": "5338dddd136354d14723a1ea3b96729545664a501102c88c5eff8fa42d27083e",
+    "journal.css": "6312b6abc50852b1ecc1cdef76e60571438527409f5b40b4a7f4d1100b010e5c",
+    "journal.js": "ebaa671cb996820ddfe1d48d4ba5513b4d493c66fcb1514523db9824924eaa3c",
+    "journal-materials.js": "2f91baad8ffe3fed2aa2de1fc85033d1f156820a94700c265f6d062c0219e1b1",
+    "fixture.js": "c72f6e0ed33d57728f20a599cefe4951bb6ff0154e7a698106043ae3d8273cfb",
+    "验证脚本.js": "f2350180b34f421a11f4fa22cd0686d0c2149bb7dce2ff553cb22cb53dd94cdc"
+  }
+}
