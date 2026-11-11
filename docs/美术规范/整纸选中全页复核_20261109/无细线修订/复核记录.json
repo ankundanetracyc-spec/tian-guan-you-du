@@ -1,0 +1,766 @@
+{
+  "states": 30,
+  "selectedControls": 52,
+  "unexpectedCenterFilters": [],
+  "errors": [],
+  "missing": [],
+  "details": [
+    {
+      "width": 1920,
+      "page": "人物概览",
+      "controls": [
+        {
+          "text": "概览",
+          "class": "ui-button nav-button material-surface is-selected",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "page": "人物属性",
+      "controls": [
+        {
+          "text": "属性",
+          "class": "ui-button nav-button material-surface is-selected",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        },
+        {
+          "text": "全部",
+          "class": "ui-button small-button is-selected material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "page": "人物战斗",
+      "controls": [
+        {
+          "text": "战斗",
+          "class": "ui-button nav-button material-surface is-selected",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        },
+        {
+          "text": "招式\n20",
+          "class": "ui-button primary is-selected material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "page": "人物功法",
+      "controls": [
+        {
+          "text": "功法",
+          "class": "ui-button nav-button material-surface is-selected",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        },
+        {
+          "text": "太和感物养元宝册\n主修",
+          "class": "ui-button item-row is-selected material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        },
+        {
+          "text": "修持",
+          "class": "ui-button small-button is-selected material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "page": "人物造诣",
+      "controls": [
+        {
+          "text": "造诣",
+          "class": "ui-button nav-button material-surface is-selected",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "page": "人物装备",
+      "controls": [
+        {
+          "text": "装备",
+          "class": "ui-button nav-button material-surface is-selected",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "page": "人物关系",
+      "controls": [
+        {
+          "text": "关系",
+          "class": "ui-button nav-button material-surface is-selected",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        },
+        {
+          "text": "全部",
+          "class": "ui-button is-selected material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "page": "静室修行",
+      "controls": [
+        {
+          "text": "吐纳修行",
+          "class": "ui-button nav-button is-selected material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        },
+        {
+          "text": "指定天数",
+          "class": "ui-button is-selected material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "page": "静室研读",
+      "controls": [
+        {
+          "text": "功法研读",
+          "class": "ui-button nav-button material-surface is-selected",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        },
+        {
+          "text": "太和感物养元宝册\n当前查看",
+          "class": "ui-button item-row is-selected material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        },
+        {
+          "text": "第一卷\n听息",
+          "class": "ui-button is-selected-true material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "page": "静室突破",
+      "controls": [
+        {
+          "text": "闭关突破",
+          "class": "ui-button nav-button material-surface is-selected",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "page": "休息",
+      "controls": [
+        {
+          "text": "按时长",
+          "class": "ui-button is-selected material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "page": "炼丹",
+      "controls": [
+        {
+          "text": "完整",
+          "class": "ui-button is-selected material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025) brightness(0.94) saturate(0.8)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "page": "见闻",
+      "controls": [
+        {
+          "text": "见闻",
+          "class": "folder-tab material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        },
+        {
+          "text": "连续阅读",
+          "class": "is-selected material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "page": "任务",
+      "controls": [
+        {
+          "text": "任务",
+          "class": "folder-tab material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        },
+        {
+          "text": "进行中",
+          "class": "filter-button is-selected material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        },
+        {
+          "text": "行旅与积累\n阶段目标\n01",
+          "class": "entry-row is-selected material-surface",
+          "filter": "sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025) brightness(1)",
+          "center": [
+            "none"
+          ],
+          "caption": []
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "page": "记录",
+      "controls": [
+        {
+          "text": "记录",
+          "class": "folder-tab material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "page": "人物概览",
+      "controls": [
+        {
+          "text": "概览",
+          "class": "ui-button nav-button material-surface is-selected",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "page": "人物属性",
+      "controls": [
+        {
+          "text": "属性",
+          "class": "ui-button nav-button material-surface is-selected",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        },
+        {
+          "text": "全部",
+          "class": "ui-button small-button is-selected material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "page": "人物战斗",
+      "controls": [
+        {
+          "text": "战斗",
+          "class": "ui-button nav-button material-surface is-selected",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        },
+        {
+          "text": "招式\n20",
+          "class": "ui-button primary is-selected material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "page": "人物功法",
+      "controls": [
+        {
+          "text": "功法",
+          "class": "ui-button nav-button material-surface is-selected",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        },
+        {
+          "text": "太和感物养元宝册\n主修",
+          "class": "ui-button item-row is-selected material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        },
+        {
+          "text": "修持",
+          "class": "ui-button small-button is-selected material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "page": "人物造诣",
+      "controls": [
+        {
+          "text": "造诣",
+          "class": "ui-button nav-button material-surface is-selected",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "page": "人物装备",
+      "controls": [
+        {
+          "text": "装备",
+          "class": "ui-button nav-button material-surface is-selected",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "page": "人物关系",
+      "controls": [
+        {
+          "text": "关系",
+          "class": "ui-button nav-button material-surface is-selected",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        },
+        {
+          "text": "全部",
+          "class": "ui-button is-selected material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "page": "静室修行",
+      "controls": [
+        {
+          "text": "吐纳修行",
+          "class": "ui-button nav-button is-selected material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        },
+        {
+          "text": "指定天数",
+          "class": "ui-button is-selected material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "page": "静室研读",
+      "controls": [
+        {
+          "text": "功法研读",
+          "class": "ui-button nav-button material-surface is-selected",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        },
+        {
+          "text": "太和感物养元宝册\n当前查看",
+          "class": "ui-button item-row is-selected material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        },
+        {
+          "text": "第一卷\n听息",
+          "class": "ui-button is-selected-true material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "page": "静室突破",
+      "controls": [
+        {
+          "text": "闭关突破",
+          "class": "ui-button nav-button material-surface is-selected",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "page": "休息",
+      "controls": [
+        {
+          "text": "按时长",
+          "class": "ui-button is-selected material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "page": "炼丹",
+      "controls": [
+        {
+          "text": "完整",
+          "class": "ui-button is-selected material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025) brightness(0.94) saturate(0.8)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "page": "见闻",
+      "controls": [
+        {
+          "text": "见闻",
+          "class": "folder-tab material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        },
+        {
+          "text": "连续阅读",
+          "class": "is-selected material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "page": "任务",
+      "controls": [
+        {
+          "text": "任务",
+          "class": "folder-tab material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        },
+        {
+          "text": "进行中",
+          "class": "filter-button is-selected material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        },
+        {
+          "text": "行旅与积累\n阶段目标\n01",
+          "class": "entry-row is-selected material-surface",
+          "filter": "sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025) brightness(1)",
+          "center": [
+            "none"
+          ],
+          "caption": []
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "page": "记录",
+      "controls": [
+        {
+          "text": "记录",
+          "class": "folder-tab material-surface",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.2) hue-rotate(34deg) saturate(0.72) brightness(0.95) contrast(1.025)",
+          "center": [
+            "none"
+          ],
+          "caption": [
+            "rgba(0, 0, 0, 0)"
+          ]
+        }
+      ]
+    }
+  ],
+  "additional_selection_line_rules": [],
+  "scope": "本次只改网页选中显示，未修改原生生产代码或重跑其历史验收。",
+  "source_sha256": {
+    "全局界面风格母板_20261108/paper-button-selection.css": "5250ce4bbfc869365f49e513cae152b3fdc089b2a43b5e7cf2142c81f17abde7",
+    "角色与静室纸墨木石样稿_20261108/preview.css": "46a9f7df2eee2cf7d8a68f20582acd4517ac4b633293d344d409d9816c72ca85",
+    "休息纸墨木石样稿_20261108/rest.css": "cbceca11f9eff5c4d4113a1f0974582213fd2af30b1fb43066ddfdd3624580aa",
+    "炼丹纸墨木石样稿_20261108/preview.css": "a4b38940ef27630eea958729d26216524fa914791e46dc8babde5300a2264178",
+    "见闻任务纸墨木石样稿_20261108/journal.css": "d7653744959017898ef9e1e3a216ce4a1fbee7f4a67c56371eb16139f01d8b35"
+  }
+}

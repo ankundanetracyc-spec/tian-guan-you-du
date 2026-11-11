@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-07",
+  "version": "v6",
+  "use_case": "ui-mockup",
+  "method": "内置 image_gen 图像编辑",
+  "reference": "统一地块与自主改造_理想图_v5.png",
+  "output": "单地独立页面_理想图_v6.png",
+  "dimensions": {
+    "width": 1672,
+    "height": 941
+  },
+  "user_direction": "一个地一个页面吧",
+  "preserved_requirements": [
+    "同批田地具有相同初始条件，玩家自行改造",
+    "正俯视 UI 经营",
+    "地块当前、灵草需求与不满足原因逐项对照",
+    "基质配置与后续特定灵植遗骸需求",
+    "当前已生效配置与待提交预览分开",
+    "不适时逐步长慢、停长，持续严重不适才受损或枯死"
+  ],
+  "scope": "理想图与页面规划；示例环境组合、材料名称和按钮不构成正式参数、配方、费用或游戏实现。",
+  "prompt": "Use case: ui-mockup.\nAsset type: finished high fidelity Chinese xianxia cultivation-management game UI, landscape 16:9.\nInput image 1 is the EDIT TARGET and visual style reference. Redesign its information architecture to ONE SINGLE FIELD PER PAGE. Keep its thin deep jade header, ivory opaque panels, refined muted sage/terracotta indicators, crisp readable Chinese type, flat overhead soil art, restrained Chinese fantasy craftsmanship. This is a complete game screen, not a poster.\n\nPrimary request: 用户要求“一个地一个页面”。This entire page belongs to 一号田. Remove the six-field grid completely. Do not show any other fields, miniature multi-field map, plot catalogue, or character. A small return control goes to a separate field overview; this screen itself is a single plot detail and renovation page.\n\nOverall layout:\n- Very slim dark jade header across top: breadcrumb title “灵圃 / 一号田”; small location “瑶圃峰”; right outlined button “返回田地总览”.\n- Upper main area about 65% screen height split 57% left and 43% right, with a thin elegant divider.\n- Lower renovation workspace about 27% screen height across full width.\n- Clear aligned typesetting, readable relatively large Chinese text, generous breathing space but no huge decorative blank margins, no ornamental brush banners.\n\nUPPER LEFT — exactly ONE large rectangular field seen from directly overhead, no perspective, centered in its own panel:\nTop title “一号田” and small ochre badge “未改造”. Next line a compact selector “目标灵草：月露苔”.\nView toggles “当前地块” and “配置预览”, 当前地块 active.\nShow one continuous ordinary brown soil surface with a thin simple earthen perimeter, only a narrow grass margin, natural small soil texture, no large rocks, trees, ponds or buildings. It must read as usable farmland/planting ground, not a landscape illustration or inventory item icon. NO internal grid and NO subplots. NO plants yet. No modification has been applied.\nAt lower edge of this field panel add two concise factual labels “当前基底：普通土层” and “尚未定植”. This is actual current ground, not the pending preview. No player avatar.\n\nUPPER RIGHT — direct condition comparison, heading “环境与需求”, subtitle “一号田 · 月露苔” with badge “待改造”.\nAn exceptionally readable precisely aligned table with FOUR columns:\n“条件” | “地块当前” | “灵草需求” | “差距”\nExactly these five rows:\n“温度” | “偏暖” | “凉润” | “偏暖”\n“灵力” | “偏低” | “充足” | “不足”\n“水分” | “湿润” | “湿润” | “满足”\n“光照” | “直射” | “遮阴” | “过强”\n“基质” | “普通土层” | “阴湿岩面” | “缺少”\nUse restrained terracotta cross symbols on unmet rows and sage check on water row, never red/green alone.\nUnder the table a short cause message “温度偏暖，灵力不足，光照过强。” and “尚缺所需基质。”\nThis example is an unplanted plot, do not show stop-growth or damaged-plant badges.\nNo made-up numeric temperature, money, resource quantities, time, success percentage or crop yield.\n\nLOWER WORKSPACE — heading “改造一号田”. Main tabs in one row:\n“基质” (selected) “控温” “水分” “光照” “聚灵”.\nBelow active substrate tab, use compact subcategory chips “腐殖” “岩质” (selected) “遗骸” (grey with tiny “后续” label). No corpse illustration. This future category is optional and does not apply to the pictured crop automatically.\nUnder the chips arrange three compact horizontal groups separated by fine lines:\n1. small ordinary soil cross-section thumbnail with label “当前基底” and “普通土层”.\n2. small grey rocky substrate thumbnail with label “待加入” and “岩质基质”.\n3. heading “改造预览”, line in sage “可补足基质缺项”, line in terracotta “温度、光照与灵力仍需处理”.\nRight aligned outlined buttons “预览改造” and “清空选择”. Do not show a payment button or invented cost. Candidate material remains uncommitted and does not appear on the actual field above.\n\nHard constraints: single plot dedicated page, exactly one whole field; all fields in the wider system begin with the same baseline and become different only through player modifications; no innate natural spring/shade/rock terrain perks; no angled/isometric view; no greenhouse; no character movement control; no grids of multiple fields; no giant lone flower portrait; no numeric game rules; no developer annotations in the game UI; no watermarks. All displayed Chinese must be clean and sharp. Render the finished UI as one polished image, no external explanatory text."
+}

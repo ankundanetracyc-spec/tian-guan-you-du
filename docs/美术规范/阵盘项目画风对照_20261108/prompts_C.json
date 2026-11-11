@@ -1,0 +1,33 @@
+{
+  "title": "C2 墨绘青石",
+  "date": "2026-11-08",
+  "generator": "built-in image_gen",
+  "mode": "new complete style illustration with two actual project images as style references only",
+  "transparent_background": true,
+  "prompt": "Use case: stylized-concept. Create ONE complete low-tier cultivation-game formation plate, a NEW illustration in the actual hand-painted style of this specific project. Both supplied images are STYLE REFERENCES ONLY, not edit targets. Reference image 1 (the existing broad sword item icon): copy its confident dark ink contour, broad simplified grey value shapes, dry painted tonal marks, ivory edge accents and clear small-size item silhouette. Reference image 2 (the existing Chinese-game service-hall screen): copy its quiet low-saturation blue-grey stone, warm ivory, grey-brown minor accents, tidy restrained ink work and understated hand-painted material family. Do NOT copy the sword shape, building, UI, text or layout of either reference.\n\nPrimary subject: a plain functional hand-held formation plate made from LIGHT grey-celadon stone, clipped-corner short square / near octagon with a broad usable face and a thin modest rim. STRICT exact 90-degree top-down orthographic view, no perspective, no angled view. Entire object visible, centered with clear outer margin. TRUE TRANSPARENT ALPHA outside the item; there is NO black backdrop, room, table, floor, paper sheet or interface.\n\nMOST IMPORTANT VISUAL STYLE: distinctly drawn 2D game item like the reference sword, charcoal ink outlines, lightly irregular brush contour, broad hand-painted color masses and simple ink-grey shadow planes, narrow ivory-white light edges. Low-saturation pale grey-celadon face, dark grey-green contour and a little dull ochre-grey inlay. Small, simple contact shadows only, expressed as painted shapes, not lighting simulation. No realistic stone microtexture, photorealistic surface, polished gemstone, 3D render, raised sculptural relief, museum-object photograph, metallic reflectance, cinematic lighting or glossy magical glow. Prefer readable silhouettes and brush simplification over fine detail. The low-tier object should look at home beside the reference sword and the reference UI, not luxurious or high-level.\n\nExactly FOUR SMALL distinct installed components, each crisp and separate with substantial quiet empty plate face between them; use these simple footprints on a HIDDEN four-by-four arrangement, without drawing the grid: upper-left a 1x1 SHORT PIN / BONE-JADE sensor socket, compact ivory-grey stub set in one angular grey-green seat; center-left a 1x1 SQUARE STONE SEAL formation eye, flat square grey-green stamp with one restrained abstract incised seal-stroke, not a readable character; lower-left a 2x1 HORIZONTAL shallow spirit-marrow trough, long thin stone cradle with a soft grey-celadon and ivory mineral interior; right-middle a 1x2 VERTICAL ward executor made from TWO small curved jade slivers one above the other on a slender shared stone mounting, entirely functional small component, NOT a shield or large crescent ornament. All components are low-profile hand-drawn shapes, like separate inventory item parts mounted on the plate. No enormous central jewel, gold medallion, stars, flowers, butterflies or decorative jewelry.\n\nRoutes: only TWO clearly separate routes with distinct small physical contact ends. The upper route is a fine MUTED CINNABAR INK signal trace: from the upper-left sensor's east contact, run across the upper part and bend into the upper contact of the right-side ward. Lower route is a narrow grey-celadon / pale dull ochre-gold inlaid ENERGY vein: from the lower-left marrow trough's east contact, run along the lower part, then bend upward to the ward's lower contact. The two routes DO NOT CROSS, do not touch other components and do not merge; formation eye may remain unwired. Lines are painted/inlaid into the stone surface, modest thin width with quiet graceful bent corners, never ropes, neon tubes, broad colored plastic bars, modern PCB conductors, microchip leads or decorative sprawling constellations.\n\nFinish: a few faint pale-ink carving strokes ONLY on the rim to convey a cultivation formation artifact. No obvious checkerboard, no grid lines, no labels, UI, text, flags, extra objects or baked-in background. Restrained Chinese ink-and-mineral-color game illustration, confident simplified brushwork matching the actual supplied project references.",
+  "referenced_image_paths": [
+    {
+      "path": "E:/stacklands/textures/ui/forged_swords_icons_20261025_v1/broad_sword.png",
+      "role": "纯画风参考：墨线轮廓、概括色面、干笔明暗及象牙白窄亮边；生成前已view_image检查"
+    },
+    {
+      "path": "E:/stacklands/docs/美术规范/玄览峰拓印接入_20261107/08_善功堂_1920.png",
+      "role": "纯画风参考：项目灰青石、纸墨木石配色与克制厚度；生成前已view_image检查"
+    }
+  ],
+  "style_authority": "docs/plans/界面与美术/全局界面统一风格规范_20261108.md",
+  "excluded_reference": "未引用旧C玄石星图或其他旧阵盘图",
+  "raw_path": "E:/tmp/CodexData/generated_images/01a1ba6c-5f78-7ae3-a6b7-fe90e469ba47/exec-b4c7a2c9-df60-40aa-b6a7-cddfd8a5a4c2.png",
+  "output_path": "docs/美术规范/阵盘项目画风对照_20261108/C_墨绘青石.png",
+  "status": "项目画风理想图，未实装；隐藏4x4几何与接点未经逐格验算",
+  "checks": {
+    "visual_style": "墨线勾边、手绘概括灰青色面、墨灰阴面和象牙白亮缘；没有写实微材质或摄影式浅浮雕",
+    "shape": "浅灰青切角短方薄盘，整盘俯视，无可见网格或文字UI",
+    "components": "方石篆印阵眼、横向灵髓槽、短针骨玉感应座、竖向双弧玉片护持器；护持未画成盾",
+    "traces": "上部朱砂信号、下部浅赭金灰青供能，分开接入执行器两端，没有交叉；阵眼不接线",
+    "alpha": "1254×1254 RGBA，Alpha范围0至255，四角完全透明",
+    "small_size": "四个构件以方、横长、紧凑短柱和竖双弧区分剪影；未做游戏内像素尺寸验收"
+  },
+  "postprocess": "内置工具原始图直接复制，无代码重绘、抠图、改色或合成。",
+  "scope": "只新增本图与prompts_C.json，没有改代码、索引或共享文档。"
+}

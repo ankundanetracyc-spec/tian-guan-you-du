@@ -1,0 +1,1470 @@
+{
+  "date": "2026-11-09",
+  "scope": "整纸选中样式；网页15种页面状态的两档实拍与原生共用选中材质修正，未改变玩法或PNG。",
+  "web": {
+    "states": 30,
+    "selectedControls": 52,
+    "unexpectedCenterFilters": [],
+    "errors": [],
+    "missing": [],
+    "details": [
+      {
+        "width": 1920,
+        "page": "人物概览",
+        "controls": [
+          {
+            "text": "概览",
+            "class": "ui-button nav-button material-surface is-selected",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          }
+        ]
+      },
+      {
+        "width": 1920,
+        "page": "人物属性",
+        "controls": [
+          {
+            "text": "属性",
+            "class": "ui-button nav-button material-surface is-selected",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          },
+          {
+            "text": "全部",
+            "class": "ui-button small-button is-selected material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          }
+        ]
+      },
+      {
+        "width": 1920,
+        "page": "人物战斗",
+        "controls": [
+          {
+            "text": "战斗",
+            "class": "ui-button nav-button material-surface is-selected",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          },
+          {
+            "text": "招式\n20",
+            "class": "ui-button primary is-selected material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          }
+        ]
+      },
+      {
+        "width": 1920,
+        "page": "人物功法",
+        "controls": [
+          {
+            "text": "功法",
+            "class": "ui-button nav-button material-surface is-selected",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          },
+          {
+            "text": "太和感物养元宝册\n主修",
+            "class": "ui-button item-row is-selected material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          },
+          {
+            "text": "修持",
+            "class": "ui-button small-button is-selected material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          }
+        ]
+      },
+      {
+        "width": 1920,
+        "page": "人物造诣",
+        "controls": [
+          {
+            "text": "造诣",
+            "class": "ui-button nav-button material-surface is-selected",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          }
+        ]
+      },
+      {
+        "width": 1920,
+        "page": "人物装备",
+        "controls": [
+          {
+            "text": "装备",
+            "class": "ui-button nav-button material-surface is-selected",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          }
+        ]
+      },
+      {
+        "width": 1920,
+        "page": "人物关系",
+        "controls": [
+          {
+            "text": "关系",
+            "class": "ui-button nav-button material-surface is-selected",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          },
+          {
+            "text": "全部",
+            "class": "ui-button is-selected material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          }
+        ]
+      },
+      {
+        "width": 1920,
+        "page": "静室修行",
+        "controls": [
+          {
+            "text": "吐纳修行",
+            "class": "ui-button nav-button is-selected material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          },
+          {
+            "text": "指定天数",
+            "class": "ui-button is-selected material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          }
+        ]
+      },
+      {
+        "width": 1920,
+        "page": "静室研读",
+        "controls": [
+          {
+            "text": "功法研读",
+            "class": "ui-button nav-button material-surface is-selected",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          },
+          {
+            "text": "太和感物养元宝册\n当前查看",
+            "class": "ui-button item-row is-selected material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          },
+          {
+            "text": "第一卷\n听息",
+            "class": "ui-button is-selected-true material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          }
+        ]
+      },
+      {
+        "width": 1920,
+        "page": "静室突破",
+        "controls": [
+          {
+            "text": "闭关突破",
+            "class": "ui-button nav-button material-surface is-selected",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          }
+        ]
+      },
+      {
+        "width": 1920,
+        "page": "休息",
+        "controls": [
+          {
+            "text": "按时长",
+            "class": "ui-button is-selected material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          }
+        ]
+      },
+      {
+        "width": 1920,
+        "page": "炼丹",
+        "controls": [
+          {
+            "text": "完整",
+            "class": "ui-button is-selected material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9) brightness(0.94) saturate(0.8)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          }
+        ]
+      },
+      {
+        "width": 1920,
+        "page": "见闻",
+        "controls": [
+          {
+            "text": "见闻",
+            "class": "folder-tab material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          },
+          {
+            "text": "连续阅读",
+            "class": "is-selected material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          }
+        ]
+      },
+      {
+        "width": 1920,
+        "page": "任务",
+        "controls": [
+          {
+            "text": "任务",
+            "class": "folder-tab material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          },
+          {
+            "text": "进行中",
+            "class": "filter-button is-selected material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          },
+          {
+            "text": "行旅与积累\n阶段目标\n01",
+            "class": "entry-row is-selected material-surface",
+            "filter": "sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9) brightness(1)",
+            "center": [
+              "none"
+            ],
+            "caption": []
+          }
+        ]
+      },
+      {
+        "width": 1920,
+        "page": "记录",
+        "controls": [
+          {
+            "text": "记录",
+            "class": "folder-tab material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          }
+        ]
+      },
+      {
+        "width": 1280,
+        "page": "人物概览",
+        "controls": [
+          {
+            "text": "概览",
+            "class": "ui-button nav-button material-surface is-selected",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          }
+        ]
+      },
+      {
+        "width": 1280,
+        "page": "人物属性",
+        "controls": [
+          {
+            "text": "属性",
+            "class": "ui-button nav-button material-surface is-selected",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          },
+          {
+            "text": "全部",
+            "class": "ui-button small-button is-selected material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          }
+        ]
+      },
+      {
+        "width": 1280,
+        "page": "人物战斗",
+        "controls": [
+          {
+            "text": "战斗",
+            "class": "ui-button nav-button material-surface is-selected",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          },
+          {
+            "text": "招式\n20",
+            "class": "ui-button primary is-selected material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          }
+        ]
+      },
+      {
+        "width": 1280,
+        "page": "人物功法",
+        "controls": [
+          {
+            "text": "功法",
+            "class": "ui-button nav-button material-surface is-selected",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          },
+          {
+            "text": "太和感物养元宝册\n主修",
+            "class": "ui-button item-row is-selected material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          },
+          {
+            "text": "修持",
+            "class": "ui-button small-button is-selected material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          }
+        ]
+      },
+      {
+        "width": 1280,
+        "page": "人物造诣",
+        "controls": [
+          {
+            "text": "造诣",
+            "class": "ui-button nav-button material-surface is-selected",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          }
+        ]
+      },
+      {
+        "width": 1280,
+        "page": "人物装备",
+        "controls": [
+          {
+            "text": "装备",
+            "class": "ui-button nav-button material-surface is-selected",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          }
+        ]
+      },
+      {
+        "width": 1280,
+        "page": "人物关系",
+        "controls": [
+          {
+            "text": "关系",
+            "class": "ui-button nav-button material-surface is-selected",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          },
+          {
+            "text": "全部",
+            "class": "ui-button is-selected material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          }
+        ]
+      },
+      {
+        "width": 1280,
+        "page": "静室修行",
+        "controls": [
+          {
+            "text": "吐纳修行",
+            "class": "ui-button nav-button is-selected material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          },
+          {
+            "text": "指定天数",
+            "class": "ui-button is-selected material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          }
+        ]
+      },
+      {
+        "width": 1280,
+        "page": "静室研读",
+        "controls": [
+          {
+            "text": "功法研读",
+            "class": "ui-button nav-button material-surface is-selected",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          },
+          {
+            "text": "太和感物养元宝册\n当前查看",
+            "class": "ui-button item-row is-selected material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          },
+          {
+            "text": "第一卷\n听息",
+            "class": "ui-button is-selected-true material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          }
+        ]
+      },
+      {
+        "width": 1280,
+        "page": "静室突破",
+        "controls": [
+          {
+            "text": "闭关突破",
+            "class": "ui-button nav-button material-surface is-selected",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          }
+        ]
+      },
+      {
+        "width": 1280,
+        "page": "休息",
+        "controls": [
+          {
+            "text": "按时长",
+            "class": "ui-button is-selected material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          }
+        ]
+      },
+      {
+        "width": 1280,
+        "page": "炼丹",
+        "controls": [
+          {
+            "text": "完整",
+            "class": "ui-button is-selected material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9) brightness(0.94) saturate(0.8)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          }
+        ]
+      },
+      {
+        "width": 1280,
+        "page": "见闻",
+        "controls": [
+          {
+            "text": "见闻",
+            "class": "folder-tab material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          },
+          {
+            "text": "连续阅读",
+            "class": "is-selected material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          }
+        ]
+      },
+      {
+        "width": 1280,
+        "page": "任务",
+        "controls": [
+          {
+            "text": "任务",
+            "class": "folder-tab material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          },
+          {
+            "text": "进行中",
+            "class": "filter-button is-selected material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          },
+          {
+            "text": "行旅与积累\n阶段目标\n01",
+            "class": "entry-row is-selected material-surface",
+            "filter": "sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9) brightness(1)",
+            "center": [
+              "none"
+            ],
+            "caption": []
+          }
+        ]
+      },
+      {
+        "width": 1280,
+        "page": "记录",
+        "controls": [
+          {
+            "text": "记录",
+            "class": "folder-tab material-surface",
+            "filter": "url(\"#control-alpha-clean\") sepia(0.24) hue-rotate(36deg) saturate(0.8) brightness(0.9)",
+            "center": [
+              "none"
+            ],
+            "caption": [
+              "rgba(0, 0, 0, 0)"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "native": {
+    "status": "passed",
+    "width": 1280,
+    "height": 720,
+    "headless": false,
+    "passed": 134,
+    "failed": 0,
+    "failure": "",
+    "materialCatalogCount": 48,
+    "captures": [
+      "alchemy_paper_main_1280.png",
+      "alchemy_paper_picker_1280.png",
+      "alchemy_paper_notebook_1280.png",
+      "alchemy_paper_full_eight_1280.png"
+    ],
+    "checks": [
+      {
+        "Name": "使用项目内隔离用户目录",
+        "Passed": true,
+        "Detail": "E:\\stacklands\\output\\playwright\\paper-selection-native-user\\SlayTheSpire2\\"
+      },
+      {
+        "Name": "真实材料装入隔离人物 青木芯",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "真实材料装入隔离人物 山蚕长丝",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "真实材料装入隔离人物 灵泉露",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "真实材料装入隔离人物 溪纹藻丝",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "真实材料装入隔离人物 灵石",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "真实材料装入隔离人物 凝露松脂",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "真实材料装入隔离人物 回泉珠",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "真实材料装入隔离人物 月露苔",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "真实材料装入隔离人物 朱阳花籽",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "真实材料装入隔离人物 沉云玉屑",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "原材料全目录保持，未替换为网页11味夹具",
+        "Passed": true,
+        "Detail": "actual=48; expected=48"
+      },
+      {
+        "Name": "正式Owner绑定真实造诣与灵识",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "人物造诣只读，精力显示真实100",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "药签用度使用真实素材 JunHerbCard",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "药签用度使用真实素材 ChenHerbCard",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "药签用度使用真实素材 ZuoHerbGroup",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "药签用度使用真实素材 ShiHerbGroup",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "药签用度使用真实素材 BatchRequirements",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "不同控件使用原生按钮素材 FormulaBookButton",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "不同控件使用原生按钮素材 BrewButton",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "不同控件使用原生按钮素材 ReturnButton",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "沿用项目楷体字体",
+        "Passed": true,
+        "Detail": "res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf"
+      },
+      {
+        "Name": "统一返回位于右上角",
+        "Passed": true,
+        "Detail": "(1174.0702, 13.772582), (87.22632, 35.196598)"
+      },
+      {
+        "Name": "返回三角位于按钮内部文字右侧",
+        "Passed": true,
+        "Detail": "(1241.4028, 28.310307), (4.5908203, 6.121147)"
+      },
+      {
+        "Name": "丹炉保持演出所需的直接画布父节点",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "青木清露方四味真实资源为19灵识31精力8小时",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "用度显示真实资源并换算游戏小时",
+        "Passed": true,
+        "Detail": "19/31/8 小时"
+      },
+      {
+        "Name": "开炼前只展示本炉用度",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "真实材料精力灵识足够时允许开炼",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "截图使用目标原生窗口尺寸 main",
+        "Passed": true,
+        "Detail": "1280x720"
+      },
+      {
+        "Name": "保存原生截图 main",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 DosePlus_0",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "君药加量按钮同步配伍与可见份数",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 DoseMinus_0",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "君药减量恢复原份数与显示",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 @Button@70",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "移除按钮只修改草稿药位",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 PickHerb_0",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "君药按钮打开真实拣药界面",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "拣药检索提示字可读",
+        "Passed": true,
+        "Detail": "(0.40784314, 0.44705883, 0.39607844, 1)"
+      },
+      {
+        "Name": "控件可操作 ResetPickerFilters",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "正式拣药仅使用真实持有材料",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "同材其他药位禁选保持",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "截图使用目标原生窗口尺寸 picker",
+        "Passed": true,
+        "Detail": "1280x720"
+      },
+      {
+        "Name": "保存原生截图 picker",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "材料名称检索缩小实际目录",
+        "Passed": true,
+        "Detail": "凝露松脂"
+      },
+      {
+        "Name": "控件可操作 Material_凝露松脂",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "拣药点击更换君药草稿",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 PickHerb_0",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 ResetPickerFilters",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "五行筛选作用于实际持有目录",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 ResetPickerFilters",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "实际重置按钮恢复材料筛选",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 FormulaBookButton",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "丹方册按钮打开原生资料",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "丹方题名提示字可读",
+        "Passed": true,
+        "Detail": "(0.40784314, 0.44705883, 0.39607844, 1)"
+      },
+      {
+        "Name": "控件可操作 @Button@205",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "丹方册保留完整原目录，未截断为网页三方",
+        "Passed": true,
+        "Detail": "25"
+      },
+      {
+        "Name": "控件可操作 KnownFormula_huichun_青木清露方",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "截图使用目标原生窗口尺寸 notebook",
+        "Passed": true,
+        "Detail": "1280x720"
+      },
+      {
+        "Name": "保存原生截图 notebook",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 @Button@206",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "我的丹方仍读回原保存格式",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 @Button@796",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 @Button@221",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "载入保存丹方不改写记录或丢失投料",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "满配夹具使用八种真实持有材料",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "508造诣显示君臣佐使全部八味",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "第三位开放时药签保持326高 ZuoHerbGroup",
+        "Passed": true,
+        "Detail": "(284, 326)"
+      },
+      {
+        "Name": "第三位开放时药签保持326高 ShiHerbGroup",
+        "Passed": true,
+        "Detail": "(284, 326)"
+      },
+      {
+        "Name": "八味控件未越过药签边界 0",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 PickHerb_0",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "八味选药点击到达正确药位 0",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 DosePlus_0",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "八味份数加量点击有效 0",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 DoseMinus_0",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "八味份数减量点击恢复 0",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "八味控件未越过药签边界 1",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 PickHerb_1",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "八味选药点击到达正确药位 1",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 DosePlus_1",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "八味份数加量点击有效 1",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 DoseMinus_1",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "八味份数减量点击恢复 1",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "八味控件未越过药签边界 2",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 PickHerb_2",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "八味选药点击到达正确药位 2",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 DosePlus_2",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "八味份数加量点击有效 2",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 DoseMinus_2",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "八味份数减量点击恢复 2",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "八味控件未越过药签边界 3",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 PickHerb_3",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "八味选药点击到达正确药位 3",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 DosePlus_3",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "八味份数加量点击有效 3",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 DoseMinus_3",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "八味份数减量点击恢复 3",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "八味控件未越过药签边界 4",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 PickHerb_4",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "八味选药点击到达正确药位 4",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 DosePlus_4",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "八味份数加量点击有效 4",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 DoseMinus_4",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "八味份数减量点击恢复 4",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "八味控件未越过药签边界 5",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 PickHerb_5",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "八味选药点击到达正确药位 5",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 DosePlus_5",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "八味份数加量点击有效 5",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 DoseMinus_5",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "八味份数减量点击恢复 5",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "八味控件未越过药签边界 6",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 PickHerb_6",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "八味选药点击到达正确药位 6",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 DosePlus_6",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "八味份数加量点击有效 6",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 DoseMinus_6",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "八味份数减量点击恢复 6",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "八味控件未越过药签边界 7",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 PickHerb_7",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "八味选药点击到达正确药位 7",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 DosePlus_7",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "八味份数加量点击有效 7",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 DoseMinus_7",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "八味份数减量点击恢复 7",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "截图使用目标原生窗口尺寸 full_eight",
+        "Passed": true,
+        "Detail": "1280x720"
+      },
+      {
+        "Name": "保存原生截图 full_eight",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "纯配伍浏览不扣料精力、不推进历法、不生成炉次记录",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "开炼标记期间返回保护保持",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "鉴看领取阶段返回保护保持",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "控件可操作 ReturnButton",
+        "Passed": true,
+        "Detail": ""
+      },
+      {
+        "Name": "右上返回只关闭正式Owner页面，不切换旅程场景",
+        "Passed": true,
+        "Detail": ""
+      }
+    ],
+    "inputMethod": "Viewport.PushInput mouse hit testing",
+    "ownerIsIsolatedFixture": true,
+    "playerJourneyRead": false,
+    "brewStarted": false
+  },
+  "build": {
+    "success": true,
+    "warnings": 0,
+    "errors": 0
+  },
+  "native_process_exit_code": 0,
+  "native_runtime_errors": 0,
+  "native_uid_fallback_warnings": 2,
+  "source_sha256": {
+    "csharp/panel/CraftingPaperStyle.cs": "d84be9fce19722ecc197b016bed7e05ca86bdba65dc44a18b0f3a6febcd5a1f2",
+    "csharp/panel/PaperButtonFeedback.cs": "275a8540a06a858370ed7e8eb3cff4beec35d8a75c8fda5a86d0e41db9f7a6a3",
+    "docs/美术规范/全局界面风格母板_20261108/paper-button-selection.css": "abb61ec56ea7f2886459e7137d5798f4cff8b2765314a92e75293d2cf3b556d3",
+    "docs/美术规范/角色与静室纸墨木石样稿_20261108/preview.css": "c0142ec98c7ac9858a3a1e29aed364b9b2fadc6f6a5e5b1d96f28f7228c10d8b",
+    "docs/美术规范/休息纸墨木石样稿_20261108/rest.css": "f0066aaab1de2ce8baeaa5f46fdb591a34f6a6762a2f28c852c2593785d6469c",
+    "docs/美术规范/炼丹纸墨木石样稿_20261108/preview.css": "5f179ad1602e13253851158052fccc8fdfaa3446d735e6895acc34d15c2434df",
+    "docs/美术规范/见闻任务纸墨木石样稿_20261108/journal.css": "1027def4259362e596ccdcb9a6ff6413a6cf7f727266d649614cd76e1b822901"
+  }
+}

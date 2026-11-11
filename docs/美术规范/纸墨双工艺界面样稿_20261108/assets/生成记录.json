@@ -1,0 +1,121 @@
+{
+  "title": "纸墨双工艺界面道具插画生成记录",
+  "created_at_utc": "2026-11-08T11:25:54.417Z",
+  "generation_mode": "Built-in image_gen.imagegen",
+  "execution": "Two independent generation requests in parallel, one request per asset.",
+  "project_scope": "Only paper-workbench.png, ink-workbench.png and this record were created under the requested assets directory.",
+  "image_modifications": "None. Original PNG files were copied byte-for-byte; no cropping, resizing, background removal, compositing or alpha alteration.",
+  "inspection": "Visual inspection with view_image; read-only PNG dimensions and alpha histogram inspection with Pillow; SHA-256 verified identical to original files.",
+  "assets": [
+    {
+      "asset": "paper",
+      "original_path": "E:\\tmp\\CodexData\\generated_images\\01a1ba71-7580-7522-b241-ed6b51527be7\\exec-1908ee6e-ea05-4806-a8ef-699cb4e0f05a.png",
+      "workspace_path": "E:/stacklands/docs/美术规范/纸墨双工艺界面样稿_20261108/assets/paper-workbench.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1564,
+      "height": 1006,
+      "sha256": "e730b07eaafa5bcd2831337d039e128cecb3a3bd9dd840075e779d587b57e40d",
+      "workspace_sha256": "e730b07eaafa5bcd2831337d039e128cecb3a3bd9dd840075e779d587b57e40d",
+      "byte_identical_copy": true,
+      "has_alpha_channel": true,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "fully_transparent_pixels": 737387,
+      "partly_transparent_pixels": 835538,
+      "fully_opaque_pixels": 459,
+      "alpha_nonzero_bbox": [
+        0,
+        0,
+        1540,
+        1006
+      ],
+      "corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "final_prompt": "Use case: stylized-concept.\nAsset type: standalone transparent game prop illustration for the center of an ancient Chinese crafting interface, intended display about 700 x 450 pixels.\nPrimary request: one complete coherent group of ancient Chinese papermaking equipment, wide horizontal composition roughly 14:9. A low, wide wooden papermaking vat containing pale gray fibrous pulp; a bamboo papermaking screen and frame slightly raised above the vat so its function is unmistakable; a small tidy stack of completely blank unmarked papers beside the vat. All requested objects entirely visible with a modest transparent margin on all sides.\nView: slightly elevated front three-quarter view, low equipment silhouette, clear and legible at interface scale.\nStyle and materials: mature detailed Chinese ink-and-light-watercolor game illustration, restrained natural colors, matte weathered wood, muted bamboo, soft cool gray pulp, warm gray-white blank paper. Refined hand-painted textures and thin natural ink definition, matching a calm mountain-pavilion workshop game. Soft consistent light from upper left. Detailed but not photographic and not cartoon or plastic.\nBackground: genuinely transparent alpha outside the equipment group, including gaps between objects. No room, floor, scenery, tabletop rectangle, opaque paper backdrop, decorative background, checkerboard pattern, or broad shadow haze.\nAvoid: people, hands, human figures, animals, writing, letters, Chinese characters, labels, talisman markings, symbols, seals, stamps, UI panels, frame borders, gold decoration, gold color, glow, magical effects, excessive piles of objects, cropped objects. The paper stack must be blank. Draw only the requested equipment group.",
+      "requested_transparent_background": true,
+      "generation_calls": 1,
+      "visual_alpha_bounds": {
+        "name": "paper-workbench.png",
+        "visible_bbox_alpha_gt_16": [
+          20,
+          61,
+          1532,
+          946
+        ],
+        "visible_bbox_alpha_gt_128": [
+          21,
+          62,
+          1530,
+          945
+        ]
+      },
+      "visual_review": {
+        "inspected": true,
+        "content": "Low wooden vat, pale gray pulp, raised bamboo screen and blank paper stack are fully visible. No text, people, hand, symbols or UI.",
+        "notes": "A few very low-alpha pixels reach the top/bottom canvas edges; visible object bounds retain margins. The raw generated output was kept unchanged."
+      }
+    },
+    {
+      "asset": "ink",
+      "original_path": "E:\\tmp\\CodexData\\generated_images\\01a1ba71-7580-7522-b241-ed6b51527be7\\exec-e9df11ed-c5c3-45e5-8ce1-0a7698c00975.png",
+      "workspace_path": "E:/stacklands/docs/美术规范/纸墨双工艺界面样稿_20261108/assets/ink-workbench.png",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1564,
+      "height": 1006,
+      "sha256": "8ccea601aae6b164fa979ddf5a0cab7c8627336769f51f2e24d10743a4550de1",
+      "workspace_sha256": "8ccea601aae6b164fa979ddf5a0cab7c8627336769f51f2e24d10743a4550de1",
+      "byte_identical_copy": true,
+      "has_alpha_channel": true,
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "fully_transparent_pixels": 957664,
+      "partly_transparent_pixels": 615212,
+      "fully_opaque_pixels": 508,
+      "alpha_nonzero_bbox": [
+        31,
+        23,
+        1532,
+        1006
+      ],
+      "corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "final_prompt": "Use case: stylized-concept.\nAsset type: standalone transparent game prop illustration for the center of an ancient Chinese crafting interface, intended display about 700 x 450 pixels.\nPrimary request: one complete coherent group of ancient Chinese ink-grinding and ink-mixing equipment, wide horizontal composition roughly 14:9. A low gray-green stone mortar containing dark gray ink-source material, partly crushed so grinding is clear; one small stone pestle leaning diagonally against the mortar rim; beside it a shallow stone ink-mixing pool and one small plain ceramic bowl for mixing liquid. Make the mortar, grinding source, pestle and mixing vessels visually clear. This is grinding and preparing ink, not a display of a writing brush and inkstone.\nView: slightly elevated front three-quarter view, low equipment silhouette, clear and legible at interface scale.\nStyle and materials: mature detailed Chinese ink-and-light-watercolor game illustration, restrained natural colors, matte gray-green worn stone, dark neutral gray source pieces and ink, a small unadorned gray-white ceramic bowl. Refined hand-painted textures and thin natural ink definition, matching a calm mountain-pavilion workshop game. Soft consistent light from upper left. Detailed but not photographic and not cartoon or plastic.\nBackground: genuinely transparent alpha outside the equipment group, including gaps between objects. No room, floor, scenery, tabletop rectangle, opaque paper backdrop, decorative background, checkerboard pattern, or broad shadow haze. All requested objects fully visible with a modest transparent margin on all sides.\nAvoid: people, hands, human figures, animals, writing brushes, writing, letters, Chinese characters, labels, talisman markings, symbols, seals, stamps, UI panels, frame borders, gold decoration, gold color, glow, magical effects, cropped objects. Draw only the requested equipment group.",
+      "requested_transparent_background": true,
+      "generation_calls": 1,
+      "visual_alpha_bounds": {
+        "name": "ink-workbench.png",
+        "visible_bbox_alpha_gt_16": [
+          70,
+          251,
+          1493,
+          809
+        ],
+        "visible_bbox_alpha_gt_128": [
+          71,
+          252,
+          1492,
+          808
+        ]
+      },
+      "visual_review": {
+        "inspected": true,
+        "content": "Stone mortar with partly crushed dark source, leaning stone pestle, shallow mixing pool and plain ceramic bowl are fully visible. No brush, text, people, hand, symbols or UI.",
+        "notes": "The equipment group has generous transparent space above and below. The raw generated output was kept unchanged."
+      }
+    }
+  ]
+}

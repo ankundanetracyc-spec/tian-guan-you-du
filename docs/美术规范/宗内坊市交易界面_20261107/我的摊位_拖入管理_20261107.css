@@ -1,0 +1,47 @@
+#stage.owner-space-mode{background-image:url('../../../textures/ui/yuxu_market_20261107/market_stall_space_frame_v2.png')}
+.space-owner{position:absolute;left:84px;top:222px;width:1504px;height:616px}
+.inventory-sheet{position:absolute;left:25px;top:29px;width:399px;height:563px}
+.space-heading{font-size:28px;font-weight:normal;letter-spacing:3px;line-height:36px;margin:0}
+.space-subtitle{font-size:17px;color:#7b7d69;line-height:27px;margin:2px 0 0}
+.source-tabs{display:flex;gap:5px;margin:15px 0 12px}.source-tab{flex:1;height:31px;padding:1px 7px;font-size:18px;border:1px solid #b9ad93;background:#efe7d6}.source-tab.active{background:#d3dcc5;border-color:#87987c}
+.inventory-sheet .column-head{grid-template-columns:minmax(0,1fr) 60px;margin:0;height:35px;padding:0 10px}
+.inventory-index{height:326px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#a19a82 #ddd3bd50}
+.inventory-index .item-row{grid-template-columns:minmax(0,1fr) 60px;min-height:50px;padding:0 10px;font-size:22px}.inventory-index .item-row .count{font-size:21px}
+.inventory-index .item-row:disabled{opacity:.44}.inventory-index .item-row[draggable]{cursor:grab}
+.inventory-caption{border-top:1px solid #bcae92;padding:12px 10px 0;font-size:16px;line-height:1.6;color:#77816c}
+.spatial-sheet{position:absolute;left:507px;top:29px;width:959px;height:563px}
+.space-header{display:flex;align-items:center;gap:18px;height:57px;padding:0 0 13px;border-bottom:1px solid #b9ac90}
+.space-badge{font-size:18px;color:#52684c;border:1px solid #9da98b;background:#d5ddc7;padding:3px 10px}.space-badge.expired{color:#87633e;background:#e7ddc3;border-color:#b8a377}.space-badge.forfeited{color:#8d5947;background:#e6d9c9;border-color:#b49a80}
+.space-usage{margin-left:auto;font-size:20px;white-space:nowrap}.space-usage strong{font-size:28px;color:#53694d;font-weight:normal}.space-usage small{font-size:17px;color:#7b806c;margin-left:14px}
+.space-layout{display:grid;grid-template-columns:480px minmax(0,1fr);column-gap:37px;margin-top:26px}
+.stall-grid{position:relative;width:480px;height:288px;background-color:#ded7c470;background-image:linear-gradient(to right,#a69d807d 1px,transparent 1px),linear-gradient(to bottom,#a69d807d 1px,transparent 1px);background-size:48px 48px;outline:1px solid #9d9276;outline-offset:-1px;touch-action:none}
+.grid-item{position:absolute;border:1px solid #79846a6e;padding:0;background:#cfd7bc60;box-shadow:inset 0 0 13px #f3f1db77;cursor:grab;overflow:hidden;touch-action:none}
+.grid-item:hover{background:#c4d0af88}.grid-item.selected{outline:2px solid #687e5e;outline-offset:-2px;background:#bfcfa580;z-index:2}.grid-item.dim{opacity:.3}.grid-item.moving{opacity:.25}
+.grid-item img{position:absolute;left:50%;top:50%;object-fit:contain;pointer-events:none;transform-origin:center}.grid-item .grid-price{position:absolute;bottom:3px;right:4px;font-size:15px;line-height:19px;padding:0 3px;background:#eee8d4de;color:#4b6045;pointer-events:none}
+.grid-item:focus-visible{outline:2px solid #687e5e;outline-offset:-2px}
+.placement-preview{position:absolute;z-index:4;pointer-events:none;outline:2px solid #647b59;outline-offset:-2px;background:#b1c59b55;display:none}.placement-preview.invalid{outline-color:#a86d56;outline-style:dashed;background:#c79f8255}
+.drag-piece{position:absolute;z-index:24;pointer-events:none;background:#e9e3d07d;border:1px solid #85927577;display:none}.drag-piece img{position:absolute;left:50%;top:50%;object-fit:contain;transform-origin:center}
+.space-grid-caption{display:flex;justify-content:space-between;align-items:center;font-size:16px;color:#7c806a;margin:13px 0 0;line-height:25px}
+.space-message{font-size:20px;line-height:1.55;margin:24px 0 0;color:#586d50;min-height:64px}.space-message.warning{color:#986d45}.space-receipt{font-size:18px;color:#7a7e68;line-height:1.6;margin-top:9px;border-top:1px solid #bbad8c;padding-top:12px}
+.stall-information{border-left:1px solid #bcad8b;padding-left:26px;min-height:442px}
+.information-label{font-size:18px;color:#7b806b;line-height:25px}.lease-left{font-size:33px;color:#51694c;line-height:43px;margin:3px 0 5px}.lease-date{font-size:20px;line-height:30px}.reclaim-note{font-size:18px;color:#867c62;line-height:28px;margin:9px 0 9px;white-space:pre-line}.reclaim-note.warning{color:#996a45}
+.contract-link{padding:0;background:none;border:0;border-bottom:1px solid #9ba78b;color:#63765a;font-size:18px;line-height:26px}.contract-link:disabled{border-bottom:0}
+.stall-money{border-top:1px solid #bcae91;margin-top:17px;padding-top:13px}.money-line{display:flex;align-items:center;gap:11px;margin:2px 0 12px}.money-line img{width:28px;height:31px;object-fit:contain}.money-line strong{font-size:37px;font-weight:normal;color:#536c4d}.money-line span{font-size:21px;color:#6f7962}
+.stall-information .claim-button{height:42px;font-size:22px}.stall-income-note{font-size:16px;line-height:25px;color:#7c806b;margin:9px 0 0}
+.owner-space-selection .chosen-text{width:469px}.owner-space-selection .owner-price{left:560px}.owner-space-selection .owner-price input{width:96px}.owner-space-selection .owner-primary{width:180px;letter-spacing:1px}.owner-space-selection .owner-withdraw{right:211px;width:160px;letter-spacing:1px}.rotate-piece{position:absolute;left:862px;top:4px;height:34px;padding:1px 14px;font-size:19px}.owner-space-selection .planned-cells{left:1028px;top:12px;font-size:17px}
+.space-owner .empty{font-size:20px;line-height:1.65;padding:23px 10px}.grid-empty{position:absolute;inset:0;display:grid;place-content:center;text-align:center;font-size:22px;line-height:1.7;color:#7f8068;pointer-events:none;background:#eee8d22e}.grid-empty small{font-size:17px}
+
+/* 1920设计单位的36格，映射到1672底图坐标；窗口仅等比缩放。 */
+#stage.owner-space-mode .bottom-note{display:none}
+.space-owner{height:684px}.inventory-sheet{height:642px}.inventory-index{height:414px}.spatial-sheet{height:642px}
+.space-layout{grid-template-columns:627px minmax(0,1fr);column-gap:20px;margin-top:20px}
+.stall-grid{width:627px;height:564.3px;background-size:var(--cell) var(--cell)}
+.stall-information{padding-left:19px;min-height:564px}.lease-date{font-size:19px}.reclaim-note{font-size:17px;line-height:27px}
+.grid-item .grid-price{font-size:13px;line-height:16px;padding:0 2px;bottom:2px;right:2px}
+.inventory-sheet.drop-target{outline:2px solid #738768;outline-offset:9px;background:#d5dfc434}
+.market-toast{font-size:17px;line-height:1.6;color:#627656;margin-top:22px}.market-toast.warning{color:#99694d}
+.listing-shade{display:flex}.listing-modal{width:560px;padding:27px 32px 30px;background:#f0e8d7;border:3px solid #827c62;box-shadow:0 7px 30px #1f261f55}
+.listing-title{display:flex;align-items:center;gap:20px;padding-bottom:22px;border-bottom:1px solid #b7a98c}.listing-title img{width:57px;height:74px;object-fit:contain}.listing-title h2{font-size:29px;font-weight:normal;margin:0 0 6px;letter-spacing:2px}.listing-title p{font-size:21px;margin:0;color:#718167}
+.listing-fields{display:grid;grid-template-columns:1fr 1fr;gap:31px;margin:25px 0 19px}.listing-fields label{font-size:20px}.quantity-control,.price-control{display:flex;align-items:center;gap:8px;margin-top:12px}.quantity-control button{width:33px;height:38px;border:1px solid #b2a88e;background:#eee6d5;font:inherit}.listing-fields input{height:38px;width:90px;padding:3px 8px;font:inherit;border:1px solid #aaa28a;background:#faf3e5;outline:0}.listing-fields input:focus{border-color:#738868}.quantity-control input{width:95px;text-align:center}.price-control span{font-size:18px;white-space:nowrap}
+.listing-source{font-size:18px;color:#7c806c;line-height:1.6;min-height:29px;margin:0}.listing-fit{font-size:18px;color:#647b57;line-height:1.6;min-height:58px;margin:8px 0 17px}.listing-fit.invalid{color:#a06c51}
+.listing-modal .controls{display:flex;justify-content:flex-end;gap:16px}.listing-modal .controls button{height:41px;font-size:21px}.listing-modal .claim-button{width:160px}

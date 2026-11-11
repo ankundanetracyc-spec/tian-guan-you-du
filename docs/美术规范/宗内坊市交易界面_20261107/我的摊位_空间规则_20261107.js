@@ -1,0 +1,13 @@
+window.marketOwnerSpaceRules = {
+  "scope": "用户确认的空间管理设计参数，浏览器夹具引用；未接入游戏",
+  "columns": 10,
+  "rows": 6,
+  "cellDesignUnits": 48,
+  "rentSpiritStones": 1,
+  "leaseGameDays": 30,
+  "reclaimGameYears": 5,
+  "expiredGoods": "取回期限到达后，未取回物品归宗门，不再返还",
+  "saleProceeds": "售得灵石在摊位信息区领取，逾期仍保留，不罚没",
+  "storageAccess": "列表汇总普通行囊及可访问储物空间；允许从所在储物空间直接转出上架",
+  "placement": "逐件按真实宽高、朝向与坐标占格；不得用面积代替排放校验"
+};

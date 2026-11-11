@@ -1,0 +1,32 @@
+{
+  "title": "C 玄石星图·星斗阵枢",
+  "date": "2026-11-08",
+  "mode": "built-in image_gen",
+  "generation": "brand-new image, no referenced_image_paths or num_last_images_to_include",
+  "transparent_background": true,
+  "prompt": "Use case: stylized-concept. Asset type: ONE complete premium cultivation-fantasy game formation instrument style ideal, concept C named 'Xuanshi star-map / star-dipper calculus nexus' (do NOT write that name in the image). A completely NEW design, NOT a recoloring of any jade-and-gold disk and NOT an electronic circuit board.\n\nCamera and cutout: exact strict 90-degree orthographic overhead view, no perspective or tilt. Show the entire small flat instrument with a comfortable transparent margin all around. Genuine transparent alpha outside the object. The body is a thin near-dodecagonal disc of dark xuan-stone, almost black with a quiet matte ink-blue stone face, very restrained dark silver edge. No gold frame, no decorative jade medallion. No table, scene, hands or background.\n\nDesign language: an immortal cultivator's Chinese star-dipper calculation and formation instrument, sober, mysterious, scholarly and readable. Borrow only the point-and-line organization of historical Chinese star charts and sparse tiny perimeter observational graduations; do not reproduce a museum object. A handful of very tiny embedded silver-sand star pinpoints, minute faint grey perimeter star-house ticks, a large quiet clear usable center. No Western astrology, zodiac symbols, horoscope logo, cosmic sky, sci-fi radar, hologram, decorative star constellations covering the floor, flower patterns or jewel-encrusted ornament. No typography or legible characters anywhere.\n\nExactly FOUR individually mounted small functional components, each a very different silhouette, all low profile and clearly separate: (1) near the center-left, the formation eye is a single small flattened angular faceted smoky silver-blue crystal on an almost invisible thin black cradle, not a large gemstone ornament and not a star-shaped jewel; (2) in the lower-left region, the energy source is a long low narrow horizontal crystal-marrow trough, charcoal-edged with a shallow subdued pale blue-green crystal interior, no battery appearance; (3) upper-left, the sensor is a compact short star-pin socket, one very short silver needle visible from directly above in a small dark stone mounting, not a compass rose; (4) right-middle, the executor is a small vertical assembly of TWO thin crescent-shaped dark-jade plates stacked one above the other on a narrow subtle cradle, NOT a shield, moon jewelry or huge crescent decoration. All four feel like components installed on a working ancient star-calculus artifact, not loose treasure. Keep their footprints modest, leaving substantial calm dark stone between them.\n\nFunctional routes: precisely TWO thin non-crossing routes connecting actual tiny contact notches on the component mountings. The signal route runs from the upper-left star-pin sensor toward the upper contact of the right-side crescent executor, using delicate silver-sand engraved star-point/line segments with only a few tiny muted cinnabar control nodes. The energy route runs from the lower-left marrow trough toward the lower contact of the right-side crescent executor, a very narrow low-brightness cyan-white marrow flow in a hairline groove. Route them clearly apart with measured gentle bends, no intersections, no dangling decorative filaments, no tubes, ropes, wide colorful UI bars, PCB tracks, chip pins or metal connectors. The formation eye is an independent coordinating component, not a giant glowing centerpiece, and need not have a third line. The floor has no fixed fake constellation network and NO visible grid: the hidden 4-by-4 construction space is not drawn.\n\nRendering: Chinese ink-wash and restrained mineral-color game-prop illustration, exquisite but simple handcrafted stone and fine silver engraving. Predominantly deep ink-blue, charcoal and silver-grey with a trace of dim cyan-white. Slight pigment grain and crisp functional contours, shallow delicate bevels, very low emission, calm atmosphere, legible at game size. No dramatic lighting, excessive blooming, shiny gold, thick raised fantasy jewelry, modern technology, artificial UI, frame, text, labels, flag, character, extra modules or extra props. One beautiful coherent entire artifact, isolated on true transparency.",
+  "raw_path": "E:/tmp/CodexData/generated_images/01a1ba6c-5f78-7ae3-a6b7-fe90e469ba47/exec-0eb49de1-dabb-443d-ab71-81624497647a.png",
+  "output_path": "docs/美术规范/阵盘四路风格探索_20261108/C_玄石星图.png",
+  "status": "风格示意，未验4x4合法布局",
+  "inspiration": {
+    "source": "故宫博物院：铜镀金星象插屏",
+    "url": "https://www.dpm.org.cn/collection/clock/233128.html",
+    "scope": "只借鉴传统星图的点线组织及外围观测刻度，不复刻文物外观或星图；本图不是历史仪器复原。"
+  },
+  "checks": {
+    "strict_overhead": true,
+    "whole_artifact": true,
+    "independent_components": 4,
+    "no_ui_or_grid": true,
+    "no_flags": true,
+    "no_code_or_runtime_changes": true
+  },
+  "visual_features": [
+    "近十二边玄黑石盘与安静墨蓝石面",
+    "银灰细边、极少银砂星点与边缘刻度",
+    "扁棱晶阵眼、横长髓槽、短星针座、竖向双月牙玄玉叠枢",
+    "银砂朱星信号细刻线与低亮青白供能脉分别落到接点",
+    "无金框玉佩、现代芯片脚、黄道标志或科幻UI"
+  ],
+  "postprocess": "仅将内置工具原始RGBA输出原样复制到指定路径，未重新绘制、抠图或改色。"
+}

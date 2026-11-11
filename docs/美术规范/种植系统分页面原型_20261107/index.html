@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>瑶圃灵田 · 基质与培育</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="prototype.css">
+  <script defer src="catalog.js"></script>
+  <script defer src="prototype.js"></script>
+</head>
+<body>
+  <div id="reviewbar"><span>界面样稿 v1.3 · 演示数据</span><span class="review-hint">从行囊拖入材料，或选中后加入</span><button id="open-notes">样稿说明</button><button id="reset-demo">重置演示</button></div>
+  <div id="viewport">
+    <main id="app" aria-label="瑶圃灵田界面样稿">
+      <header class="app-header">
+        <div class="location">瑶圃峰<span>灵田</span></div>
+        <div class="field-nav" aria-label="切换田地"><button id="field-prev" aria-label="上一块田地">‹</button><select id="field-select" aria-label="当前田地"></select><button id="field-next" aria-label="下一块田地">›</button></div>
+        <button id="open-formation" class="header-tool"><span aria-hidden="true">阵</span>田地阵法</button>
+      </header>
+      <nav class="page-tabs" aria-label="田地功能">
+        <button data-route="overview">田地概况</button>
+        <button data-route="substrates">基质材料</button>
+        <button data-route="growth">成长预览</button>
+      </nav>
+      <section id="screen" aria-live="polite"></section>
+      <div id="modal-layer" hidden><div class="modal-shade"></div><section id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1"></section></div>
+      <div id="toast" role="status" hidden></div>
+    </main>
+  </div>
+</body>
+</html>

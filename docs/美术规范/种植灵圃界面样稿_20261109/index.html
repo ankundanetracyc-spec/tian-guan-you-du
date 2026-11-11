@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>瑶圃灵田 · 灵植培育样稿</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="prototype.css">
+  <link rel="stylesheet" href="controls.css">
+  <script defer src="../角色与静室纸墨木石样稿_20261108/skin-data.js"></script>
+  <script defer src="skin-config.js"></script>
+  <script defer src="../角色与静室纸墨木石样稿_20261108/materials.js"></script>
+  <script defer src="catalog.js"></script>
+  <script defer src="scene-fixture.js"></script>
+  <script defer src="prototype.js"></script>
+</head>
+<body>
+  <div id="reviewbar"><span>灵圃界面样稿 · v2.2</span><span class="review-hint">培育情境为界面示意 · 基质拖拽加入 · 阵法独立接入</span><button id="open-notes">样稿说明</button><button id="reset-demo">重置演示</button></div>
+  <div id="viewport">
+    <main id="app" class="game-shell" aria-label="瑶圃灵田界面样稿" data-skin="panel">
+      <header class="app-header" data-skin="woodFull">
+        <div class="location"><span class="location-mark">圃</span><div><strong>灵圃</strong><span>瑶圃峰</span></div></div>
+        <div class="field-nav" aria-label="切换田地"><button id="field-prev" aria-label="上一块田地" class="button icon-button" data-skin="buttonIcon"><span class="button-content"><span class="field-arrow" data-sprite="left"></span></span></button><span class="selector-well" data-skin="input"><select id="field-select" aria-label="当前田地"></select></span><button id="field-next" aria-label="下一块田地" class="button icon-button" data-skin="buttonIcon"><span class="button-content"><span class="field-arrow" data-sprite="right"></span></span></button></div>
+      </header>
+      <button id="preview-back" class="button page-return" aria-label="返回"><span class="button-content"><span>返回</span><i class="return-triangle" aria-hidden="true"></i></span></button>
+      <nav class="page-tabs" aria-label="田地功能">
+        <button data-route="overview" data-skin="buttonTab">田地概况</button>
+        <button data-route="substrates" data-skin="buttonTab">基质材料</button>
+        <button data-route="growth" data-skin="buttonTab">培育详览</button>
+      </nav>
+      <section id="screen" aria-live="polite"></section>
+      <div id="modal-layer" hidden><div class="modal-shade"></div><section id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1"></section></div>
+      <div id="toast" role="status" hidden></div>
+    </main>
+  </div>
+</body>
+</html>

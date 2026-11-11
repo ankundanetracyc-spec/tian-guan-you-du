@@ -1,0 +1,324 @@
+{
+  "note": "六组历史示例混合货单按最新10×6矩形逐件验证；仅演示组合，不生成真实NPC货物或库存。",
+  "passed": true,
+  "stalls": [
+    {
+      "stall": "stall_1",
+      "columns": 10,
+      "rows": 6,
+      "usedCells": 20,
+      "instanceCount": 5,
+      "placements": [
+        {
+          "key": "mist",
+          "path": "res://resources/entities/items/雾铃花.tres",
+          "width": 2,
+          "height": 4,
+          "ordinal": 1,
+          "x": 0,
+          "y": 0,
+          "rotated": false,
+          "placedWidth": 2,
+          "placedHeight": 4
+        },
+        {
+          "key": "scale",
+          "path": "res://resources/entities/items/赤鳞蜕.tres",
+          "width": 2,
+          "height": 3,
+          "ordinal": 1,
+          "x": 2,
+          "y": 0,
+          "rotated": false,
+          "placedWidth": 2,
+          "placedHeight": 3
+        },
+        {
+          "key": "agility",
+          "path": "res://resources/entities/items/alchemy/qingshen_1.tres",
+          "width": 1,
+          "height": 2,
+          "ordinal": 1,
+          "x": 4,
+          "y": 0,
+          "rotated": false,
+          "placedWidth": 1,
+          "placedHeight": 2
+        },
+        {
+          "key": "healing",
+          "path": "res://resources/entities/items/alchemy/huichun_1.tres",
+          "width": 1,
+          "height": 2,
+          "ordinal": 1,
+          "x": 5,
+          "y": 0,
+          "rotated": false,
+          "placedWidth": 1,
+          "placedHeight": 2
+        },
+        {
+          "key": "healing",
+          "path": "res://resources/entities/items/alchemy/huichun_1.tres",
+          "width": 1,
+          "height": 2,
+          "ordinal": 2,
+          "x": 6,
+          "y": 0,
+          "rotated": false,
+          "placedWidth": 1,
+          "placedHeight": 2
+        }
+      ]
+    },
+    {
+      "stall": "stall_2",
+      "columns": 10,
+      "rows": 6,
+      "usedCells": 21,
+      "instanceCount": 4,
+      "placements": [
+        {
+          "key": "copper",
+          "path": "res://resources/entities/items/铜髓矿.tres",
+          "width": 3,
+          "height": 3,
+          "ordinal": 1,
+          "x": 0,
+          "y": 0,
+          "rotated": false,
+          "placedWidth": 3,
+          "placedHeight": 3
+        },
+        {
+          "key": "bitter",
+          "path": "res://resources/entities/items/苦苔根.tres",
+          "width": 2,
+          "height": 4,
+          "ordinal": 1,
+          "x": 3,
+          "y": 0,
+          "rotated": false,
+          "placedWidth": 2,
+          "placedHeight": 4
+        },
+        {
+          "key": "healing",
+          "path": "res://resources/entities/items/alchemy/huichun_1.tres",
+          "width": 1,
+          "height": 2,
+          "ordinal": 1,
+          "x": 5,
+          "y": 0,
+          "rotated": false,
+          "placedWidth": 1,
+          "placedHeight": 2
+        },
+        {
+          "key": "healing",
+          "path": "res://resources/entities/items/alchemy/huichun_1.tres",
+          "width": 1,
+          "height": 2,
+          "ordinal": 2,
+          "x": 6,
+          "y": 0,
+          "rotated": false,
+          "placedWidth": 1,
+          "placedHeight": 2
+        }
+      ]
+    },
+    {
+      "stall": "stall_3",
+      "columns": 10,
+      "rows": 6,
+      "usedCells": 20,
+      "instanceCount": 3,
+      "placements": [
+        {
+          "key": "bone",
+          "path": "res://resources/entities/items/兽骨.tres",
+          "width": 2,
+          "height": 5,
+          "ordinal": 1,
+          "x": 0,
+          "y": 0,
+          "rotated": false,
+          "placedWidth": 2,
+          "placedHeight": 5
+        },
+        {
+          "key": "mist",
+          "path": "res://resources/entities/items/雾铃花.tres",
+          "width": 2,
+          "height": 4,
+          "ordinal": 1,
+          "x": 2,
+          "y": 0,
+          "rotated": false,
+          "placedWidth": 2,
+          "placedHeight": 4
+        },
+        {
+          "key": "agility",
+          "path": "res://resources/entities/items/alchemy/qingshen_1.tres",
+          "width": 1,
+          "height": 2,
+          "ordinal": 1,
+          "x": 4,
+          "y": 0,
+          "rotated": false,
+          "placedWidth": 1,
+          "placedHeight": 2
+        }
+      ]
+    },
+    {
+      "stall": "stall_4",
+      "columns": 10,
+      "rows": 6,
+      "usedCells": 20,
+      "instanceCount": 3,
+      "placements": [
+        {
+          "key": "hide",
+          "path": "res://resources/entities/items/兽皮.tres",
+          "width": 3,
+          "height": 4,
+          "ordinal": 1,
+          "x": 0,
+          "y": 0,
+          "rotated": false,
+          "placedWidth": 3,
+          "placedHeight": 4
+        },
+        {
+          "key": "scale",
+          "path": "res://resources/entities/items/赤鳞蜕.tres",
+          "width": 2,
+          "height": 3,
+          "ordinal": 1,
+          "x": 3,
+          "y": 0,
+          "rotated": false,
+          "placedWidth": 2,
+          "placedHeight": 3
+        },
+        {
+          "key": "healing",
+          "path": "res://resources/entities/items/alchemy/huichun_1.tres",
+          "width": 1,
+          "height": 2,
+          "ordinal": 1,
+          "x": 5,
+          "y": 0,
+          "rotated": false,
+          "placedWidth": 1,
+          "placedHeight": 2
+        }
+      ]
+    },
+    {
+      "stall": "stall_5",
+      "columns": 10,
+      "rows": 6,
+      "usedCells": 19,
+      "instanceCount": 4,
+      "placements": [
+        {
+          "key": "iron",
+          "path": "res://resources/entities/items/玄铁.tres",
+          "width": 3,
+          "height": 3,
+          "ordinal": 1,
+          "x": 0,
+          "y": 0,
+          "rotated": false,
+          "placedWidth": 3,
+          "placedHeight": 3
+        },
+        {
+          "key": "scale",
+          "path": "res://resources/entities/items/赤鳞蜕.tres",
+          "width": 2,
+          "height": 3,
+          "ordinal": 1,
+          "x": 3,
+          "y": 0,
+          "rotated": false,
+          "placedWidth": 2,
+          "placedHeight": 3
+        },
+        {
+          "key": "healing",
+          "path": "res://resources/entities/items/alchemy/huichun_1.tres",
+          "width": 1,
+          "height": 2,
+          "ordinal": 1,
+          "x": 5,
+          "y": 0,
+          "rotated": false,
+          "placedWidth": 1,
+          "placedHeight": 2
+        },
+        {
+          "key": "healing",
+          "path": "res://resources/entities/items/alchemy/huichun_1.tres",
+          "width": 1,
+          "height": 2,
+          "ordinal": 2,
+          "x": 6,
+          "y": 0,
+          "rotated": false,
+          "placedWidth": 1,
+          "placedHeight": 2
+        }
+      ]
+    },
+    {
+      "stall": "stall_6",
+      "columns": 10,
+      "rows": 6,
+      "usedCells": 20,
+      "instanceCount": 3,
+      "placements": [
+        {
+          "key": "bone",
+          "path": "res://resources/entities/items/兽骨.tres",
+          "width": 2,
+          "height": 5,
+          "ordinal": 1,
+          "x": 0,
+          "y": 0,
+          "rotated": false,
+          "placedWidth": 2,
+          "placedHeight": 5
+        },
+        {
+          "key": "bitter",
+          "path": "res://resources/entities/items/苦苔根.tres",
+          "width": 2,
+          "height": 4,
+          "ordinal": 1,
+          "x": 2,
+          "y": 0,
+          "rotated": false,
+          "placedWidth": 2,
+          "placedHeight": 4
+        },
+        {
+          "key": "agility",
+          "path": "res://resources/entities/items/alchemy/qingshen_1.tres",
+          "width": 1,
+          "height": 2,
+          "ordinal": 1,
+          "x": 4,
+          "y": 0,
+          "rotated": false,
+          "placedWidth": 1,
+          "placedHeight": 2
+        }
+      ]
+    }
+  ]
+}

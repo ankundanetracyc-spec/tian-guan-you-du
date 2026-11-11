@@ -1,0 +1,144 @@
+{
+  "date": "2026-11-08",
+  "method": "Playwright CLI / Microsoft Edge；真实dragTo鼠标拖放及点击、数量输入、切田和页面检查",
+  "version": "1.3",
+  "passed": 44,
+  "checks": [
+    "原型版本1.3",
+    "材料以行囊列表呈现",
+    "只列可作为基质且有剩余的演示行囊物品",
+    "未选择材料不能加入",
+    "无需保存方案或确认步骤",
+    "真实拖拽直接加入田地",
+    "加入同步减少行囊可用量",
+    "再次拖入同材合并",
+    "重复投递拖放事件不复制材料",
+    "拖到接收区以外不加入",
+    "取消拖拽清理反馈",
+    "选中行同步底部操作栏",
+    "选中后点击直接加入数量",
+    "加入不弹保存确认",
+    "拒绝非法或超量件数:-1",
+    "拒绝非法或超量件数:0",
+    "拒绝非法或超量件数:1.5",
+    "拒绝非法或超量件数:",
+    "拒绝非法或超量件数:5",
+    "功用详情按需打开且品级真实",
+    "搜索只保留匹配的可用材料",
+    "搜索保持输入焦点",
+    "筛掉选中物品后不会误加旧材料",
+    "拖拽尊重已选加入数量",
+    "无匹配时有空态且不能加入",
+    "键盘也能选中材料",
+    "当前田地直接记录三种七件",
+    "加入记录按田隔离",
+    "同一演示行囊跨田共用剩余数",
+    "阵法保持独立入口",
+    "功用来源只含本田已加入基质",
+    "成长页读取即时加入记录",
+    "未知培育作用不伪造环境改善",
+    "1920 substrates 布局和图片",
+    "1920 overview 布局和图片",
+    "1920 growth 布局和图片",
+    "1280 substrates 布局和图片",
+    "1280 overview 布局和图片",
+    "1280 growth 布局和图片",
+    "耗尽后从可用行囊列表移出",
+    "其他田用完余量不丢失本田已加记录",
+    "外部或不合资格拖入不改变记录",
+    "刷新恢复隔离演示数据",
+    "无脚本错误"
+  ],
+  "screenshots": [
+    "基质列表_v13_1920.png",
+    "基质列表_v13_1280.png",
+    "田地概况_v13_1920.png",
+    "田地概况_v13_1280.png",
+    "成长预览_v13_1920.png",
+    "成长预览_v13_1280.png"
+  ],
+  "errors": [],
+  "viewports": [
+    {
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "width": 1280,
+      "height": 720
+    }
+  ],
+  "driver": "output/playwright/planting_v13_20261108/audit.js",
+  "local_file_check": {
+    "version": "1.3",
+    "font": true,
+    "eligibleRows": 3,
+    "hasDropzone": true,
+    "missing_images": []
+  },
+  "material_source_checks": [
+    {
+      "name": "紫砂灵土",
+      "source": "resources/entities/items/紫砂灵土.tres",
+      "craft_source": "resources/material_craft/紫砂灵土材性.tres",
+      "utilities": [
+        {
+          "id": "藏",
+          "grade": 1
+        }
+      ],
+      "verified": true
+    },
+    {
+      "name": "泥脉石团",
+      "source": "resources/entities/items/泥脉石团.tres",
+      "craft_source": "resources/material_craft/泥脉石团材性.tres",
+      "utilities": [
+        {
+          "id": "镇",
+          "grade": 1
+        }
+      ],
+      "verified": true
+    },
+    {
+      "name": "兽骨",
+      "source": "resources/entities/items/兽骨.tres",
+      "craft_source": "resources/material_craft/兽骨材性.tres",
+      "utilities": [
+        {
+          "id": "固",
+          "grade": 1
+        },
+        {
+          "id": "生",
+          "grade": 1
+        }
+      ],
+      "verified": true
+    },
+    {
+      "name": "地脉焰炭",
+      "source": "resources/entities/items/地脉焰炭.tres",
+      "craft_source": "resources/material_craft/地脉焰炭材性.tres",
+      "utilities": [
+        {
+          "id": "聚",
+          "grade": 2
+        },
+        {
+          "id": "通",
+          "grade": 1
+        }
+      ],
+      "verified": true
+    }
+  ],
+  "eligibility": "仅为验证“行囊持有且允许作基质”列表的演示夹具，不是正式可入田白名单。正式资格和来源由物品/种植规则提供，未定义不放行。",
+  "capture": "通过界面拖入紫砂灵土两件、点击加入兽骨两件、按已选数量拖入泥脉石团三件，捕获两档三页；无截图状态注入。",
+  "limitations": [
+    "独立浏览器交互样稿，未读取或写入真实行囊、人物、存档。",
+    "可用资格与持有量为夹具，不建立正式材料白名单。",
+    "实际培育作用、操作时间、费用、计量及返还未定，不计算虚构成熟时间。"
+  ]
+}

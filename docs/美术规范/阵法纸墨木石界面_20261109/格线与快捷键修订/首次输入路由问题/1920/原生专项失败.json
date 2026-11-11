@@ -1,0 +1,88 @@
+{
+  "date": "2026-11-09",
+  "passed": false,
+  "stage": "工具菜单实际操作",
+  "error": "System.Exception: Esc未关闭工具菜单\r\n   at FormationPaperRevisionSmoke.ClosePopup(PopupMenu popup)\r\n   at FormationPaperRevisionSmoke._Ready()",
+  "resolution": [
+    1920,
+    1080
+  ],
+  "scope": "Only persistent grid, relocated tool menu, Q/E/Esc and their input isolation. Previous 590 checks and evidence are not overwritten or counted.",
+  "native_check_count": 25,
+  "input": "Viewport.PushInput mouse and physical keycode plus Unicode. Menu opens through actual mouse; focused item is activated by a real Enter event, not IdPressed emission.",
+  "appdata": "E:\\stacklands\\.godot\\test-results\\formation_paper_revision\\20261109_162925_771_1920\\isolated_appdata",
+  "draft_path": "user://formation_paper_revision/1920/isolated_draft.json",
+  "real_journey_loaded": false,
+  "character_save_opened": false,
+  "artifacts_or_knowledge_granted": false,
+  "canvas_comparison": {
+    "old_canvas_height": 717.32196,
+    "method": "旧工具行顶部减旧中央顶部再减原8单位间距",
+    "current_x": 422.86926,
+    "current_y": 135.43039,
+    "current_width": 1049.0117,
+    "current_height": 777.0032,
+    "gain": 59.681213,
+    "scale": 1.1477152
+  },
+  "visual_review": "pending screenshot inspection",
+  "checks": [
+    "实际分辨率与独立APPDATA匹配",
+    "真实入口展开工作台且验收人物未载入世界",
+    "空闲始终显示格线，动态落点与常驻文字签仍关闭",
+    "盘下六按钮工具行已移除",
+    "取消工具行后画布真实高度比旧版增加至少40设计单位且完整在视口内",
+    "工具菜单收在左侧部件标题区且不占盘下空间",
+    "六项工具仍完整，信号线和供能线保持原名",
+    "常显格线没有使空闲悬停卡或幽灵常亮",
+    "保存原生本档截图 01_常显格线与扩大的盘面.png",
+    "真实Q键选择信号线且状态保持原名",
+    "Q后鼠标拖动只铺三格朱砂信号线",
+    "保存原生本档截图 02_Q信号线.png",
+    "真实E键选择供能线且状态保持原名",
+    "E后鼠标拖动只铺浅金供能线且不改已有信号线",
+    "保存原生本档截图 03_E供能线.png",
+    "Esc回移动，格线保持而动态辅助收起",
+    "选择部件可以直接离开供能铺线",
+    "退出铺线后点击实际放件而非误铺线",
+    "R仍旋转选中部件及真实端口",
+    "右键仍取下部件",
+    "右键仍擦除实际线路",
+    "标题工具按钮实际打开菜单",
+    "菜单展开时Q和E不串到背后画布",
+    "保存原生本档截图 04_收起的六项工具菜单.png",
+    "保存原生本档截图 失败现场.png"
+  ],
+  "screenshots": [
+    {
+      "file": "01_常显格线与扩大的盘面.png",
+      "width": 1920,
+      "height": 1080,
+      "view": "actual Godot Viewport; no repaint"
+    },
+    {
+      "file": "02_Q信号线.png",
+      "width": 1920,
+      "height": 1080,
+      "view": "actual Godot Viewport; no repaint"
+    },
+    {
+      "file": "03_E供能线.png",
+      "width": 1920,
+      "height": 1080,
+      "view": "actual Godot Viewport; no repaint"
+    },
+    {
+      "file": "04_收起的六项工具菜单.png",
+      "width": 1920,
+      "height": 1080,
+      "view": "actual Godot Viewport; no repaint"
+    },
+    {
+      "file": "失败现场.png",
+      "width": 1920,
+      "height": 1080,
+      "view": "actual Godot Viewport; no repaint"
+    }
+  ]
+}

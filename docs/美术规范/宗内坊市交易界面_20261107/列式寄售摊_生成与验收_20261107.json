@@ -1,0 +1,66 @@
+{
+  "date": "2026-11-07",
+  "status": "待视觉评审，未接入游戏",
+  "generation": {
+    "tool": "内置 image_gen.imagegen",
+    "mode": "全新生成无字背景，无参考图片输入",
+    "asset": "textures/ui/yuxu_market_20261107/market_ledger_frame_v1.png",
+    "size": [
+      1672,
+      941
+    ],
+    "sha256": "95f56a72091a2aad666d209d447c17bfadd222c15d9703eb41add99e0016d19b",
+    "prompt": "坊市货单框架_v1_生成提示词.txt",
+    "source": "E:/tmp/CodexData/generated_images/01a1b27c-bc52-76a3-810c-a0211d7b2701/exec-d2d56d8c-3e5f-4fbb-9c89-ec7feae11703.png"
+  },
+  "layout": {
+    "visibleStalls": 4,
+    "sampleStalls": 6,
+    "orientation": "每摊纵向货单；横向浏览其他摊位",
+    "capacityMaximum": null,
+    "capacityShape": null,
+    "sampleUsedCells": [
+      20,
+      21,
+      20,
+      20,
+      19,
+      20
+    ],
+    "merging": "同正式定义、同价汇总；品质或属性不同不按名称合并；实际数量仍逐件占格"
+  },
+  "verification": {
+    "screenshots": {
+      "1920": "1920x1080",
+      "1280": "1280x720"
+    },
+    "browser": "Microsoft Edge / Playwright CLI",
+    "imageLoadingErrors": 0,
+    "browserConsoleErrors": 0,
+    "browserConsoleWarnings": 0,
+    "overflowRows1920": 0,
+    "clippedItemNames1280": 0,
+    "outsideMainRegions1280": 0,
+    "quantitySelection": {
+      "item": "回春丹·良效",
+      "quantity": 2,
+      "unitPrice": 6,
+      "total": 12
+    },
+    "horizontalBrowse": [
+      "乙字摊",
+      "丙字摊",
+      "丁字摊",
+      "戊字摊"
+    ],
+    "search": {
+      "term": "回春丹",
+      "visibleRows": 12,
+      "dimmedRows": 9,
+      "stallOrderUnchanged": true
+    },
+    "gameplayCodeChanged": false,
+    "playerSaveChanged": false,
+    "newArtAssetCreated": true
+  }
+}

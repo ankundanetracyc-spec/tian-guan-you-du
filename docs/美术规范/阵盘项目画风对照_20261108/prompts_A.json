@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-08",
+  "scheme": "A2 墨绘木符 · 项目画风对照",
+  "generator": "built-in image_gen.imagegen",
+  "prompt": "Use case: stylized-concept.\nAsset type: ONE complete concept illustration for a Chinese cultivation game's modular formation board, in the SAME existing project art style as the supplied references. NEW independent drawing, not a product render.\nInput image roles: Image 1 is a PURE STYLE reference for the project's accepted sword item icon: decisive charcoal ink contours, simplified broad planar colors, ivory bright planes and a little dry-brush variation. Do not draw a sword. Image 2 is a PURE STYLE and PALETTE reference for the actual game UI: muted grey-brown wood, grey-blue stone/jade, ivory, hand-drawn edges and broadly painted surfaces. Do NOT reproduce its text, roofs, shop layout, frames or controls. Do not borrow any old formation-disc image.\nMOST IMPORTANT — STYLE MATCH: This is a clearly HAND-PAINTED 2D GAME PROP, using strong ink outlines, 2-3 broad value shapes per material and sparse expressive dry-brush marks. It must sit naturally beside the supplied sword icon and UI. Paint shapes, not physically simulate materials. Keep colors medium-valued and softly muted: grey-brown wood around #70615A, grey-blue jade around #687681, ivory highlights, subdued aged-bronze accents. Not an all-black object. NOT photoreal, NOT 3D sculpted bas-relief, NOT PBR, NOT ornate antique-product photography. No microscopic woodgrain, reflective bevels, realistic specular metal, tiny chisel detail or deep ambient-occlusion shadows. A few broad brush streaks suggest wood; clean flat color patches suggest jade.\nSubject and camera: Strict 90-degree orthographic TOP VIEW of ONE complete thin cut-corner SHORT SQUARE spiritual-wood formation board, medium grey-brown. Shallow plain wooden rim, a handful of simple incised seal-pattern strokes at the outer edge. No big metal frame. Whole board centered on true transparent alpha with modest clear margin, square canvas.\nExactly FOUR separately attachable modules with DIFFERENT crisp silhouettes and enough open space:\n- One compact 1x1 square jade-seal core near the middle-left, with one simple abstract seal-pattern line, flat grey-blue and ivory planes.\n- One 2x1 horizontal spirit-stone trough toward lower-left: a single long wood-and-muted-bronze seat enclosing one ivory stone insert, illustrated with broad planes, not two repeated gemstones.\n- One 1x1 sensing needle seat toward upper-left: one ivory bone/jade needle fixed in a small wooden cradle, recognizable as a single part, not a compass dial.\n- One 1x2 vertical stacked-talisman execution module on the right: TWO narrow rectangular jade/wood tablet slips partially overlapping inside ONE slim wooden clasp. Straight rectangular strips, not a shield, not a heraldic badge, no pointed shield outline, no pendant. Simple painted talisman marks, not legible labels.\nTwo restrained hand-drawn embedded routes connect the sensing and source functions to the execution module: a fine muted CINNABAR signal inscription crosses the upper free space from the sensing seat to the module's upper end; a separate very fine PALE OCHRE-GOLD power inscription travels through the lower free space from the long source trough to its lower end. The routes remain apart and NEVER cross. They are flat ink-and-mineral marks integrated into the painted wood, not rounded cables or pipes. No need to connect the coordinating jade seal. Use a few expressive intentional curves but keep routes sparse and readable.\nThe implicit 4x4 arrangement stays invisible: absolutely NO grid lines, checker squares, slot holes or game pieces. No modern chip feet, PCB board, jewelry rings, large yin-yang, giant magic circle, glowing halo, smoke, neon, people, hands, background scene, loose materials, text, numbers, arrows, UI, border outside the physical board or cast shadow outside it. One complete playable-looking assembly, visually simple enough that ALL FOUR parts and both routes remain distinguishable when reduced to a small game image. Match the supplied project's flat ink-and-color illustration language above everything else.",
+  "referenced_image_paths": [
+    {
+      "path": "E:/stacklands/textures/ui/forged_swords_icons_20261025_v1/broad_sword.png",
+      "role": "Pure art-style anchor: strong ink contours, broad color planes, ivory highlights and dry-brush texture; subject not copied."
+    },
+    {
+      "path": "E:/stacklands/docs/美术规范/玄览峰拓印接入_20261107/08_善功堂_1920.png",
+      "role": "Pure style and palette reference: project grey-brown wood, grey-blue jade/stone and ivory; UI content and layout not copied."
+    }
+  ],
+  "old_disc_images_used": false,
+  "art_authority": "docs/plans/界面与美术/全局界面统一风格规范_20261108.md — 定调、木石承托与明暗装饰",
+  "raw_default_path": "E:\\tmp\\CodexData\\generated_images\\01a1ba83-5aca-73e3-bb57-8641b5917811\\exec-40d124e6-0c60-4304-8072-0ef3b74bf500.png",
+  "project_raw_path": "E:\\stacklands\\docs\\美术规范\\阵盘项目画风对照_20261108\\raw\\A_墨绘木符_generated.png",
+  "project_output_path": "E:\\stacklands\\docs\\美术规范\\阵盘项目画风对照_20261108\\A_墨绘木符.png",
+  "image_size": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "sha256": "4ea1a715e3b4bfac83cab7e33555557f49a7058d0dd969567eed94c9ee20d5f1",
+  "processing": "Generated once with two pure style references, then copied unchanged. No CLI, collage, recolor, code painting or size stretching.",
+  "visual_checks": [
+    "Viewed both exact project reference images before generation",
+    "Clear contour strokes and simplified painted grey-brown, grey-blue, ivory planes",
+    "Visible sparse dry-brush marks rather than realistic carved relief",
+    "Exactly four visually distinct component silhouettes",
+    "Top and bottom cinnabar/ochre routes do not cross",
+    "No shield outline, grid, UI labels, modern chip feet or background scene"
+  ],
+  "acceptance_boundary": "Style concept only, awaiting user evaluation. Exact 4x4 footprints, true port masks, routing legality, materials, gameplay and engine integration are not validated by this illustration."
+}

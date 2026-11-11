@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>玉虚宗内坊市 · 交互样板</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="stage">
+  <div class="scenery" aria-hidden="true"></div>
+  <div class="tint" aria-hidden="true"></div>
+  <header class="header">
+    <div class="mark">玉虚仙宗 <span> / </span> 和光峰</div>
+    <h1>宗内坊市</h1>
+    <div class="header-right"><span class="sample">交互样板 · 演示数据</span><button id="back" class="quiet">返回</button></div>
+  </header>
+  <main class="panel">
+    <div class="topline">
+      <nav class="tabs" aria-label="坊市页面">
+        <button class="tab active" data-tab="market">逛坊市</button>
+        <button class="tab" data-tab="stall">我的摊位</button>
+      </nav>
+      <div class="topnote">同门互市 · 以灵石交易</div>
+      <div class="balance"><img src="../../../textures/items/inventory_density_20261029/spirit_stone_1x1.png" alt="">灵石 <strong id="balance">18</strong></div>
+    </div>
+    <div id="market-view" class="body-grid">
+      <aside class="side">
+        <div class="section-head">物品分类<span>物　目</span></div>
+        <div id="categories" class="category-list"></div>
+        <div class="side-note"><span class="red-stamp">玉</span><p>宗内同门自售物品<br>数量与报价以摊位为准</p></div>
+      </aside>
+      <section class="market-main">
+        <div class="list-heading"><div><h2>同门摊货</h2><p>按物品查找，也可看看谁在出售</p></div><label class="search-wrap"><span>⌕</span><input id="search" type="search" placeholder="搜索物品" aria-label="搜索物品"></label></div>
+        <div class="list-meta"><span id="result-count">在售物品</span><span>单价 / 灵石</span></div>
+        <div id="market-list" class="market-list"></div>
+      </section>
+      <aside class="detail" id="market-detail" aria-live="polite"></aside>
+    </div>
+    <div id="stall-view" class="body-grid" hidden>
+      <aside class="side">
+        <div class="section-head">我的摊位<span>自　售</span></div>
+        <div class="stall-status"><span class="status-dot"></span><span id="stall-status">尚未租用</span></div>
+        <div class="rent-info"><div><span>摊位租金</span><strong>1 灵石 / 月</strong></div><div><span>租期</span><strong id="term">一游戏月</strong></div><div><span>续租</span><strong>手动</strong></div></div>
+        <button id="rent" class="wide secondary">租用摊位</button>
+        <div class="side-note"><span class="red-stamp">玉</span><p>摊位到期后停止售卖<br>剩余物品与所得可领取</p></div>
+      </aside>
+      <section class="market-main">
+        <div class="list-heading"><div><h2>我的行囊</h2><p>选择随身物品，设置数量和售价</p></div><span class="subtle">上架后由摊位保管</span></div>
+        <div class="list-meta"><span>可上架物品</span><span>持有数量</span></div>
+        <div id="inventory-list" class="inventory-list"></div>
+        <div id="listing-editor" class="editor" aria-live="polite"></div>
+      </section>
+      <aside class="detail my-stall">
+        <div class="detail-title"><div><span class="eyebrow">和光峰 · 自有摊位</span><h2>摊上物品</h2></div><span id="listing-count" class="badge">0 件</span></div>
+        <div id="my-listings" class="my-listings"></div>
+        <div class="earnings"><div><span>待领所得</span><strong><span id="pending">0</span> 灵石</strong></div><button id="claim" class="secondary" disabled>领取</button></div>
+        <button id="simulate" class="sample-action">样板操作：模拟同门买走一件</button>
+      </aside>
+    </div>
+    <footer><span>坊市仅供玉虚成员往来 · 贡献不可用于成员交易</span><span id="message" aria-live="polite">选择一件物品查看详情</span></footer>
+  </main>
+</div>
+<div id="modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="dialog"><div class="dialog-top"><span>玉虚 · 和光</span><button id="modal-x" aria-label="关闭">×</button></div><h2 id="modal-title"></h2><div id="modal-body"></div><div class="dialog-actions"><button id="modal-cancel" class="secondary">再想想</button><button id="modal-confirm" class="primary">确认</button></div></div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

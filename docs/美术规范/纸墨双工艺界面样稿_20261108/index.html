@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>符工 · 制符纸与研墨</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="preview.css">
+</head>
+<body data-craft="paper" data-phase="prepare">
+  <header class="preview-bar">
+    <strong>纸墨双工艺 · 界面样稿</strong>
+    <span>演示库存 · 规格方向示意，未作正式结算</span>
+    <nav aria-label="样稿查看"><button data-preview="prepare">准备</button><button data-preview="process">自动过程</button><button data-preview="result">鉴看示意</button></nav>
+    <a href="README.md">样稿说明</a>
+  </header>
+  <div id="viewport">
+    <main id="stage" aria-label="纸墨工坊">
+      <img class="room" src="../../../textures/ui/talisman_crafting_20261108/desk_v1.png" alt="山亭中的纸墨案面">
+      <header class="game-header skin wide">
+        <h1>符 工</h1>
+        <nav class="craft-tabs" aria-label="工艺选择"><button class="btn" data-craft="paper">制符纸</button><button class="btn" data-craft="ink">研墨</button></nav>
+        <span class="proficiency">符道造诣　—</span>
+        <button class="btn" data-action="plans">配伍册</button>
+        <button class="btn" data-action="help">工艺说明</button>
+        <button class="btn back" data-action="back" aria-label="返回">返回<span class="return-triangle" aria-hidden="true"></span></button>
+      </header>
+
+      <div id="prepare-layer">
+        <section class="materials skin tall" aria-labelledby="materials-title">
+          <header class="section-head"><h2 id="materials-title">本批材料</h2><button class="btn add-button" data-action="materials">＋ 选材</button></header>
+          <div id="material-list" class="scroll-area"></div>
+          <footer class="materials-footer"><span id="material-count"></span><button class="btn" data-action="clear">清空投料</button></footer>
+        </section>
+
+        <section class="work-title skin wide">
+          <div><span id="work-label">成 页</span><h2 id="work-title">通络符纸</h2></div>
+          <span id="work-brief">疏抄通络，留住可用纹层</span>
+        </section>
+        <div class="scene-art" id="scene-art">
+          <img id="workbench" src="assets/paper-spirit.svg" alt="灵机交织，悬纸渐成">
+          <div id="scene-mark" aria-hidden="true"></div>
+        </div>
+        <div class="scene-caption"><span id="scene-caption">灵机交织 · 蕴养成纸</span></div>
+
+        <section class="batch skin wide" aria-label="本批配伍">
+          <header class="section-head"><h2 id="batch-title">成页用料</h2><button class="text-button" data-action="relations">查看配伍 ›</button></header>
+          <div id="batch-summary" class="batch-summary"></div>
+          <div id="relation-strip" class="relation-strip"></div>
+        </section>
+
+        <aside class="target skin tall" aria-label="目标规格与制作条件">
+          <header class="section-head"><h2 id="target-heading">目标纸材</h2><button class="text-button" data-action="specs">纸材册 ›</button></header>
+          <button class="btn target-select" data-action="specs"><strong id="target-name">通络符纸</strong><span>更换 ›</span></button>
+          <section class="spirit-section" aria-label="目标灵力特性"><dl><div><dt><button class="field-button" data-action="spirit" id="spirit-label">承灵品阶</button></dt><dd>—</dd></div></dl><p id="spirit-brief">承受灵纹负担的能力</p></section>
+          <div class="field-heading"><h3 id="field-heading">目标纸性</h3><span>查看字段可知用途</span></div>
+          <dl id="field-list" class="field-list"></dl>
+          <section id="retained-section" class="retained-section" hidden><div class="field-heading"><h3>目标留存</h3><span>用于画符的来源</span></div><div id="retained-list"></div></section>
+          <section class="method-section"><div class="field-heading"><h3>本次工法</h3></div><button class="btn method-select" data-action="methods"><span id="method-name"></span><span>选择 ›</span></button></section>
+          <section class="cost-section" aria-label="本次用度"><div class="field-heading"><h3>本次用度</h3><span id="total-input"></span></div><div class="cost-grid"><span>灵识 <b>—</b></span><span>精力 <b>—</b></span><span>工时 <b>—</b></span></div></section>
+          <p id="requirements" class="requirements" role="status" hidden></p>
+          <button class="btn primary start-button" id="start-button" data-action="start">开始制纸</button>
+        </aside>
+      </div>
+
+      <section id="process-layer" hidden aria-label="自动制作过程">
+        <div class="process-heading skin wide"><span id="process-label">制符纸</span><h2 id="process-name">通络符纸</h2></div>
+        <img id="process-art" class="process-art" src="assets/paper-spirit.svg" alt="灵机蕴养成纸">
+        <div class="process-ripple" aria-hidden="true"></div>
+        <div class="process-footer skin wide"><ol id="process-steps"></ol><div class="process-control"><p id="process-copy"></p><button class="btn" data-action="skip">跳过演出</button></div></div>
+      </section>
+
+      <section id="result-layer" hidden aria-label="纸墨成品外观示意">
+        <div class="result-panel skin tall"><header class="section-head"><h2 id="result-heading">纸面鉴看</h2><span class="result-badge">外观示意</span></header><div class="result-main"><div id="result-visual" aria-hidden="true"></div><div><h3 id="result-name"></h3><p id="result-brief"></p><p id="result-spirit"></p><p class="result-quantity" id="result-quantity">张数　—</p></div></div><dl id="result-fields" class="result-fields"></dl><div id="result-utilities"></div><button class="btn primary" data-action="finish">完成鉴看</button></div>
+      </section>
+
+      <div id="overlay" hidden></div>
+      <div id="toast" role="status" hidden></div>
+    </main>
+  </div>
+  <script src="catalog.js"></script>
+  <script src="preview.js"></script>
+</body>
+</html>

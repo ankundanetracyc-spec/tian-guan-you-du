@@ -45,8 +45,8 @@
 
 ## 来源与版本
 
-- 职责：[玉虚仙宗宗门生态规划](../../plans/玉虚仙宗宗门生态规划.md)及当前峰内说明。
-- 风格：[UI视觉规范](../../UI视觉规范.md)；当前大世界底图 `textures/world/bai_chuan/acceptance_20261030/tiles/bc_22.png`。
+- 职责：[玉虚仙宗宗门生态规划](../../plans/剧情与宗门/玉虚仙宗宗门生态规划.md)及当前峰内说明。
+- 风格：[UI视觉规范](../../plans/界面与美术/UI视觉规范.md)；当前大世界底图 `textures/world/bai_chuan/acceptance_20261030/tiles/bc_22.png`。
 - 原游戏总览仍为 `textures/sect_overview/yuxu_xianzong_inner_overview_v6.png`；原八峰路径仍由 `scripts/world/bai_chuan/YuxuPeakInterior.gd`配置。
 - 最新九图放在 `textures/sect_overview/repaint_20261103/live_composition_item_style_20261104/`，总览为 `overview.png`；逐图输入及完整提示词见[本轮生成记录](实装构图重绘_生成记录_20261104.json)。
 - `yuxu_overview_v2.png`、`yuxu_overview_v3.png`、空间修订、局部版及上一批物品图标笔触版均为历史候选，不作为当前预览默认图。

@@ -1,0 +1,107 @@
+{
+  "status": "passed",
+  "date": "2026-11-09",
+  "scope": "独立NPC局部交互样稿；修行百科跳过；未替换正式入口",
+  "checks": 78,
+  "captures": 12,
+  "reviewedImages": 12,
+  "runs": [
+    {
+      "width": 1280,
+      "checks": 39,
+      "captures": 6,
+      "processExitCode": 0,
+      "report": "验收记录_1280.json",
+      "log": "运行_1280.log"
+    },
+    {
+      "width": 1920,
+      "checks": 39,
+      "captures": 6,
+      "processExitCode": 0,
+      "report": "验收记录_1920.json",
+      "log": "运行_1920.log"
+    }
+  ],
+  "images": [
+    {
+      "file": "人物交互_同门人物页_1280.png",
+      "sha256": "1d09e0e8fa97b9f19a498d67d25dba7a20e89a85a58db8d0761fbc37946f820c",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "人物交互_行脚修士页_1280.png",
+      "sha256": "445bd2b581bac7eba15068a6e58b4d80676a29c4713a2fa2e5f8ba0738752f8a",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "人物交互_无公开名头_1280.png",
+      "sha256": "2863a7d87c7cf583651c46a1d7560cff4797487002c8174be8e91a65153e81ee",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "人物交互_按钮按下_1280.png",
+      "sha256": "80aaa20907362d295466dc81655c8f0b5e424ed433c7c8a8dc0a14e5ffb63a08",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "人物交互_收起小页_1280.png",
+      "sha256": "eb240aa638744257b8523c823107c8eaae31f62f91301632b6cc98897dd4b652",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "人物交互_闭关限制_1280.png",
+      "sha256": "82dd5daed7f4ae2e52f6b58a73274b7915ba5c25e0e4b0da62704d6778032a7c",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "人物交互_同门人物页_1920.png",
+      "sha256": "9e581a309dd0ba45fe2bc6ff69aaf09d0dbe53035823791ec2051e0c5599fb63",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "人物交互_行脚修士页_1920.png",
+      "sha256": "a040371db1f88cfaf294ceeada9401089f1bfc4c2938f186f4e750b8ebd674e4",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "人物交互_无公开名头_1920.png",
+      "sha256": "3d4492aa8a8aa608c5ac1c2a5c9611832f956c7ba7ef7abcb0c18e597c1ecc76",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "人物交互_按钮按下_1920.png",
+      "sha256": "802d507ef3eef8477c1f72418f04b50c91a153cedcfc88dfe27bce31e02d7aed",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "人物交互_收起小页_1920.png",
+      "sha256": "482d70e14bad63256c430da9d160566178676883c354ace3e196b3ce2729e820",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "人物交互_闭关限制_1920.png",
+      "sha256": "5a813005ec3afed62b2d2b387c18a6e0676d44ea39f6f3dbc9471d4bcc30383e",
+      "visuallyReviewed": true
+    }
+  ],
+  "formalSourcesUnchanged": {
+    "csharp/panel/NpcInteractionPanel.cs": "d8b9928f4f0bd909a8fabe265bd7406487a44cb0426bd2b8858f16f0284a92c4",
+    "csharp/MainScene.NpcInteractions.cs": "0ac547ddbedb26930c608d48be1fbf3f1242a9e47e9509802369aae6ace346b7",
+    "csharp/MainScene.NpcProbe.cs": "d270fadf75465c09e708bf571e2e12251937f98ec405fc23535ca632d5dea605",
+    "csharp/MainScene.NpcHostility.cs": "cc12979e6760536cfbdc256e750cabe4592345fae737e77e7fb42f0c8b8dbd53",
+    "csharp/panel/PortraitRenderer.cs": "72334d5966d1043238efe316a2febd57208d45ff3a4349eeab5d24f007bca6a6",
+    "csharp/panel/PortraitRenderer.Npc.cs": "ab95295bd6f648525fb02ab755e26a0135bf8cc0e67c1fe521dcac2d3f251ddd",
+    "csharp/panel/EncyclopediaPanel.cs": "6df5343973d66dc3f6193151524747031bcdfaccc99146f319a4e74eea5ca0a3"
+  },
+  "runtimeAtCapture": {
+    ".godot/mono/temp/bin/Debug/stacklands.dll": "bbdaa36907a7ad241f34fd97c0ccc6c44532318ebcc39313381505bbc3a6106c",
+    "csharp/scene/NpcInteractionPaperPreviewScene.cs": "8c29454cd7ded19dd2910c778c31a7eed6fd8813c7efa288fb4ec0bc47116aeb",
+    "csharp/scene/NpcInteractionPaperCardPreview.cs": "3c8ba113462b1df3f0ee45efb5daca28cf5ebaa6c41e92f4ccc56ffa43afae37",
+    "csharp/debug/NpcInteractionPaperUiSmoke.cs": "903b3c726f925b277f2a2bea602397b9d74d988ef6640ffbf9a0b9623cf1820b",
+    "csharp/panel/CraftingPaperStyle.cs": "89e4d262d9240ca94fd3e295a59ec4937c1868eb7673d76ecfd6370fbdde0aec",
+    "csharp/panel/PaperButtonFeedback.cs": "74894219692f987a32ac356e170377e0950dacc10de809f7ca8b941ea26ace7c",
+    "tools/NativePaperCaptureHost.gd": "4176a1e9591f3693fe49a3cf9a5f821c97596a71420d6822117f6a27d2bb5bae"
+  },
+  "boundary": "样稿行动只记录选择并收起纸页，不执行真实NPC行动、财物、探查、交手、费用或存档"
+}

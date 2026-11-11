@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>玉虚宗内坊市 · 我的摊位空间管理</title>
+<link rel="icon" href="data:,">
+<style>
+@font-face{font-family:Zhenkai;src:url('../../../resources/font/LXGWZhenKaiSlabGB-Regular.ttf')}
+:root{--ink:#354034;--muted:#727966;--green:#667d61;--line:#b3a48a}
+*{box-sizing:border-box}[hidden]{display:none!important}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#51594f;font-family:Zhenkai,serif;color:var(--ink)}
+button,input{font:inherit;color:inherit}button{cursor:pointer}button:disabled{cursor:default;opacity:.42}
+#stage{position:absolute;width:1672px;height:941px;transform-origin:0 0;background:url('../../../textures/ui/yuxu_market_20261107/market_ledger_frame_v1.png') center/100% 100% no-repeat}
+.title{position:absolute;left:559px;top:25px;width:554px;height:92px;display:grid;place-items:center;font-size:45px;font-weight:normal;letter-spacing:9px;margin:0}
+.draft{position:absolute;right:111px;top:119px;font-size:14px;color:#dbd7c8;letter-spacing:1px}
+.toolbar{position:absolute;left:95px;top:158px;width:1482px;height:48px;display:flex;align-items:center;gap:8px}
+.paper-button{height:35px;padding:2px 19px;border:1px solid #a79b82;background:#eee6d5;box-shadow:inset 0 1px #fff8e8;font-size:21px;white-space:nowrap}
+.paper-button.active{background:#ced7c0;border-color:#87927b}.paper-button:hover:not(:disabled){background:#dae0ce}
+.paper-button:focus{outline:none}.paper-button:focus-visible,.claim-button:focus-visible,.buy:focus-visible{outline:1px solid #71846c;outline-offset:2px}
+.tab{width:119px}.care-note{position:absolute;left:269px;top:12px;font-size:18px;color:#66715e;letter-spacing:.5px}
+.drag-hint{position:absolute;left:612px;top:12px;width:223px;text-align:center;font-size:17px;color:#758069}
+.search{position:absolute;left:857px;top:7px;width:225px;height:34px;padding:4px 10px;border:1px solid #c2b79f;outline:0;background:#f6efdf;font-size:18px}.search:focus{border-color:#71856d}
+.balance{position:absolute;left:1117px;top:10px;width:220px;text-align:right;font-size:22px;display:flex;justify-content:flex-end;align-items:center;gap:8px}.balance img{width:22px;height:24px;object-fit:contain}
+.back{position:absolute;right:9px;top:6px;width:91px;padding:0}
+.rail-viewport{position:absolute;left:84px;top:222px;width:1504px;height:616px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;touch-action:pan-y;user-select:none;cursor:grab;overscroll-behavior:contain}
+.rail-viewport::-webkit-scrollbar{display:none}.rail-viewport.dragging,.rail-viewport.dragging *{cursor:grabbing!important}
+.rail{display:flex;width:max-content;height:616px}
+.stall{position:relative;flex:0 0 376px;width:376px;height:616px;display:flex;flex-direction:column;padding:32px 23px 29px;background:url('../../../textures/ui/yuxu_market_20261107/market_ledger_frame_v1.png') -79.26px -222px/1616.12px 941px no-repeat}
+.stall-header{height:61px;flex:none;position:relative;padding:1px 10px 0}
+.stall-header h2{font-size:28px;font-weight:normal;line-height:34px;letter-spacing:3px;margin:0}
+.owner{font-size:16px;color:#7d7969;line-height:25px}.custody{position:absolute;right:11px;top:5px;color:#6c7c64;font-size:16px;border:1px solid #a4af95;background:#d9dfcc9c;padding:1px 8px}
+.column-head{height:37px;flex:none;margin:0 6px;display:grid;grid-template-columns:minmax(0,1fr) 44px 49px;align-items:center;border-bottom:1px solid #c4b499;padding:0 8px;font-size:18px;color:#6b715f}
+.column-head span:not(:first-child){text-align:right}.rows{height:387px;flex:none;overflow-y:auto;margin:0 6px;scrollbar-width:thin;scrollbar-color:#a19a82 #ddd3bd50}
+.rows::-webkit-scrollbar{width:4px}.rows::-webkit-scrollbar-thumb{background:#a19a82}
+.item-row{position:relative;width:100%;min-height:48px;display:grid;grid-template-columns:minmax(0,1fr) 44px 49px;align-items:center;gap:0;padding:0 8px;border:0;border-bottom:1px solid #bfae8e66;background:transparent;font-size:21px;text-align:left}
+.item-row:hover{background:#dce2d153}.item-row.selected{background:#ced9bd9c;box-shadow:inset 3px 0 #6f8266}
+.item-row .name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:5px}.item-row .count,.item-row .price{text-align:right;font-size:20px}.item-row .price{color:#405340}
+.item-row.dim{opacity:.26}.item-row:focus-visible{outline:1px solid #6e8264;outline-offset:-2px}
+.empty{padding:25px 10px;color:#8d8c76;font-size:18px}.stall-note{flex:1;display:flex;align-items:end;justify-content:space-between;font-size:16px;color:#737c67;padding:0 13px 7px;white-space:nowrap}
+.stall-note .occupied{color:#6c725f}.stall-note .occupied span{font-size:20px;color:#465941}
+.selection{position:absolute;left:97px;top:852px;width:1480px;height:45px;display:flex;align-items:center}
+.chosen-icon{width:38px;height:38px;object-fit:contain;margin-right:13px}.chosen-text{width:634px;font-size:22px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.chosen-text small{display:block;font-size:16px;line-height:20px;color:#7c7b67;margin-top:3px}
+.quantity{position:absolute;left:830px;top:4px;display:flex;align-items:center;gap:10px;font-size:20px}.quantity button{width:30px;height:31px;border:1px solid #aaa48e;background:#f4eedf;font-size:22px;padding:0}.quantity output{width:29px;text-align:center}
+.total{position:absolute;right:198px;top:9px;font-size:21px;white-space:nowrap}.total strong{font-weight:normal;font-size:27px}
+.buy{position:absolute;right:15px;top:1px;width:165px;height:42px;background:#6d8166;border:1px solid #586f52;box-shadow:inset 0 1px #a4b295;color:#f4f0e1;font-size:25px;letter-spacing:4px}.buy:hover:not(:disabled){background:#788e70}
+.bottom-note{position:absolute;left:109px;bottom:12px;font-size:14px;color:#d3d4c7;letter-spacing:1px;text-shadow:0 1px #30382d}
+.hover-card{position:absolute;z-index:20;display:none;pointer-events:none;width:258px;padding:16px;background:#f4ecdb;border:2px solid #8e8b70;box-shadow:0 5px 12px #2f312d55}.hover-card img{width:78px;height:89px;object-fit:contain;float:right;margin-left:10px}.hover-card h3{font-size:25px;font-weight:normal;margin:0 0 10px}.hover-card p{font-size:18px;color:#6b725f;line-height:1.6;margin:0}
+.modal-shade{position:absolute;inset:0;background:#25302777;z-index:30;display:none;align-items:center;justify-content:center}.modal{width:540px;background:#f0e8d7;border:4px solid #817b61;box-shadow:0 7px 30px #1f261f55;padding:29px 33px}.modal h2{font-weight:normal;font-size:30px;margin:0 0 21px}.modal p{font-size:22px;line-height:1.65;margin:0 0 26px}.modal .controls{display:flex;justify-content:flex-end;gap:18px}.modal button{height:42px;font-size:22px}
+.modal p{white-space:pre-line}
+.owner-grid{position:absolute;left:84px;top:222px;width:1504px;height:616px;display:flex}
+.owner-card .stall-header h2{font-size:27px;letter-spacing:2px}.owner-card .rows{height:387px}
+.owner-intro{font-size:16px;color:#7d7969;line-height:25px}.contract-body{flex:1;padding:14px 12px 0}.contract-badge{display:inline-block;background:#d5dfc8;border:1px solid #9aaa8b;padding:4px 13px;font-size:20px;color:#4b6549;margin-bottom:21px}
+.contract-badge.inactive{background:#e9e2d2;border-color:#b8aa8b;color:#7f7965}.contract-label{font-size:18px;color:#7b806c;margin-bottom:4px}.contract-fee{font-size:28px;margin-bottom:20px}.contract-expiry{font-size:21px;line-height:1.5;min-height:70px}.contract-note{font-size:18px;color:#7d806d;line-height:1.7;margin:14px 0 23px;white-space:pre-line}.contract-body button{width:100%;height:43px;font-size:23px}
+.owner-usage{padding:0 12px 7px;font-size:19px;display:flex;align-items:center;justify-content:space-between}.owner-usage strong{font-weight:normal;font-size:29px;color:#50664b}.owner-card .inventory-head{grid-template-columns:minmax(0,1fr) 42px 59px}.owner-card .inventory-head span:last-child{font-size:16px}.owner-card .inventory-row{grid-template-columns:minmax(0,1fr) 42px 59px}
+.income-body{flex:1;padding:13px 12px 0}.pending-caption{font-size:19px;color:#747c66}.pending-value{font-size:43px;color:#4f684c;margin:4px 0 17px}.pending-value small{font-size:22px;margin-left:10px}.claim-button{width:100%;height:44px;background:#6d8166;border:1px solid #586f52;color:#f4f0e1;font-size:23px}.claim-button:hover:not(:disabled){background:#788e70}.claimed-note{font-size:17px;color:#7f826e;margin-top:10px}.history-title{font-size:21px;font-weight:normal;margin:30px 0 8px;border-bottom:1px solid #bfb293;padding-bottom:8px}.history-row{padding:10px 0;border-bottom:1px solid #c7b89866;font-size:19px;line-height:1.5}.history-row small{display:block;font-size:17px;color:#7b806d}.history-row .earned{color:#54714f;float:right}.owner-footnote{padding:0 12px 7px;font-size:16px;color:#7b826c}
+.owner-selection .chosen-text{width:455px}.owner-selection .quantity{left:516px}.owner-price{position:absolute;left:744px;top:5px;display:flex;gap:9px;align-items:center;font-size:20px}.owner-price input{width:99px;height:32px;border:1px solid #aaa48e;background:#f4eedf;padding:2px 7px;font-size:21px;outline:0}.owner-price input:focus{border-color:#73846b}.owner-price input:disabled{opacity:.5}.planned-cells{position:absolute;left:1050px;top:13px;font-size:18px;color:#778168}.owner-primary{right:15px}.owner-primary.with-withdraw{right:197px}.owner-withdraw{position:absolute;right:15px;top:1px;width:165px;height:42px;font-size:23px;letter-spacing:2px}.owner-selection .buy{letter-spacing:2px}
+</style>
+<link rel="stylesheet" href="我的摊位_格子管理_20261107.css">
+</head>
+<body>
+<div id="stage">
+  <h1 class="title">宗内坊市</h1><div class="draft">理想图 · 示例货单</div>
+  <div class="toolbar">
+    <button class="paper-button tab active" id="browse">逛坊市</button><button class="paper-button tab" id="mine">我的摊位</button>
+    <span class="care-note">坊市代管 · 摊租含照看</span>
+    <span class="drag-hint" id="dragHint">左右拖动查看摊位</span>
+    <input class="search" id="search" aria-label="查找摊货" placeholder="查找摊货" autocomplete="off">
+    <span class="balance"><img src="../../../textures/items/inventory_density_20261029/spirit_stone_1x1.png" alt="">灵石 <span id="wallet">18</span></span>
+    <button class="paper-button back" id="back">返回</button>
+  </div>
+  <div class="rail-viewport" id="viewport" tabindex="0" role="region" aria-label="左右拖动浏览寄售摊位"><div class="rail" id="stalls"></div></div>
+  <div class="selection" id="browseSelection">
+    <img id="chosenIcon" class="chosen-icon" alt=""><div class="chosen-text" id="chosen"></div>
+    <div class="quantity"><span>数量</span><button id="less" aria-label="减少购买数量">−</button><output id="quantity">1</output><button id="more" aria-label="增加购买数量">＋</button></div>
+    <div class="total">共需 <strong id="total">2</strong> 灵石</div><button class="buy" id="buy">购买</button>
+  </div>
+  <div class="space-owner" id="ownerPane" hidden>
+    <section class="inventory-sheet" aria-label="行囊与储物空间物品">
+      <h2 class="space-heading">行囊物品</h2><p class="space-subtitle">含随身与储物空间内物品</p>
+      <div class="source-tabs" role="group" aria-label="物品所在空间"><button class="source-tab active" id="scopeAll">全部物品</button><button class="source-tab" id="scopeBody">随身</button><button class="source-tab" id="scopeRing">储物空间</button></div>
+      <div class="column-head"><span>物品</span><span>数量</span></div><div class="inventory-index" id="ownerInventory"></div>
+      <div class="inventory-caption" id="ownerInventoryCaption">同物汇总数量，逐件移入摊位。<br>储物空间内物品可直接上架。</div>
+    </section>
+    <section class="spatial-sheet" aria-label="实际摊位空间与信息">
+      <header class="space-header"><h2 class="space-heading">寄售空间</h2><span class="space-badge" id="ownerLeaseState">租用中</span><div class="space-usage">已用 <strong id="ownerUsed">27</strong> / 60 格<small>10 × 6</small></div></header>
+      <div class="space-layout"><div>
+        <div class="stall-grid" id="ownerGrid" role="group" aria-label="10列6行的实际摊位格子"><div class="placement-preview" id="ownerPlacement"></div><div class="grid-empty" id="ownerGridEmpty" hidden></div></div>
+        <div class="space-grid-caption"><span>每件物品按实际占地摆放</span><span>R 旋转</span></div>
+        <div class="space-message" id="ownerMessage" role="status"></div><div class="space-receipt" id="ownerReceipt"></div>
+      </div><aside class="stall-information" aria-label="租期与所得">
+        <div class="information-label" id="ownerTimeCaption">租期剩余</div><div class="lease-left" id="ownerTimeLeft">20 日</div><div class="lease-date" id="ownerExpiry">到期 · 1年2月1日0时</div><p class="reclaim-note" id="ownerReclaimNote"></p><button class="contract-link" id="ownerLease">查看租约</button>
+        <div class="stall-money"><div class="information-label">售得灵石 · 待领取</div><div class="money-line"><img src="../../../textures/items/inventory_density_20261029/spirit_stone_1x1.png" alt=""><strong id="ownerPending">6</strong><span>灵石</span></div><button class="claim-button" id="ownerClaim">领取灵石</button><p class="stall-income-note" id="ownerIncomeNote">所得可在此领取。</p></div>
+      </aside></div>
+    </section>
+  </div>
+  <div class="selection owner-space-selection" id="ownerSelection" hidden>
+    <img id="ownerChosenIcon" class="chosen-icon" alt=""><div class="chosen-text" id="ownerChosen"></div>
+    <label class="owner-price">单价 <input id="ownerPrice" type="number" min="1" step="1" aria-label="灵石单价">灵石</label>
+    <button class="paper-button rotate-piece" id="ownerRotate">旋转 · R</button><span class="planned-cells" id="ownerPlannedCells"></span>
+    <button class="buy owner-primary" id="ownerPrimary">上架一件</button><button class="paper-button owner-withdraw" id="ownerWithdraw" hidden>取回物品</button>
+  </div>
+  <div class="drag-piece" id="ownerDragPiece"><img alt=""></div>
+  <div class="bottom-note" id="bottomNote">成员寄存货物，由坊市照看 · 以灵石交易</div>
+  <div class="hover-card" id="hover"></div>
+  <div class="modal-shade" id="shade"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><h2 id="modalTitle"></h2><p id="modalText"></p><div class="controls"><button class="paper-button" id="cancel">返回</button><button class="paper-button active" id="confirm">确认</button></div></div></div>
+</div>
+<script src="列式货单_示例数据_20261107.js"></script>
+<script>
+const $=id=>document.getElementById(id), stage=$('stage');
+let source,selected=null,quantity=1,scale=1,drag=null,suppressClickUntil=0,modalAction=null;
+const viewport=$('viewport');
+function fit(){cancelDrag();scale=Math.min(innerWidth/1672,innerHeight/941);stage.style.transform=`scale(${scale})`;stage.style.left=`${(innerWidth-1672*scale)/2}px`;stage.style.top=`${(innerHeight-941*scale)/2}px`;hideHover()}
+function imagePath(item){return '../../../'+item.icon.replace('res://','')}
+function showHover(item,event){if(drag?.active)return;const box=$('hover');box.innerHTML=`<img src="${imagePath(item)}" alt=""><h3>${item.name}</h3><p>${item.category}<br>占格 ${item.width} × ${item.height}<br>单价 ${item.price} 灵石</p>`;const rect=stage.getBoundingClientRect();const x=(event.clientX-rect.left)/scale,y=(event.clientY-rect.top)/scale;box.style.left=`${Math.min(x+18,1380)}px`;box.style.top=`${Math.min(y+12,660)}px`;box.style.display='block'}
+function hideHover(){$('hover').style.display='none'}
+function choose(stall,row){selected={stall,row};quantity=1;renderSelection();for(const button of document.querySelectorAll('.item-row'))button.classList.toggle('selected',button.dataset.stall===stall.id&&button.dataset.path===row.path)}
+function renderSelection(){if(!selected)return;const {stall,row}=selected;$('chosenIcon').src=imagePath(row);$('chosen').innerHTML=`${stall.name} · ${row.name}<small>单价 ${row.price} 灵石 · 剩余 ${row.quantity} 件</small>`;$('quantity').textContent=quantity;$('total').textContent=row.price*quantity;$('less').disabled=quantity<=1;$('more').disabled=quantity>=row.quantity}
+function render(){const term=$('search').value.trim(),position=viewport.scrollLeft;hideHover();$('stalls').replaceChildren();source.stalls.forEach(stall=>{const column=document.createElement('section');column.className='stall';column.setAttribute('aria-label',stall.name);column.innerHTML=`<header class="stall-header"><h2>${stall.name}</h2><span class="custody">坊市代管</span><div class="owner">寄售人 · ${stall.owner}</div></header><div class="column-head"><span>货物</span><span>数量</span><span>灵石</span></div><div class="rows"></div><div class="stall-note"><span>${stall.rows.length} 种货物</span><span class="occupied">占用 <span>${stall.usedCells}</span> 格</span></div>`;const rows=column.querySelector('.rows');stall.rows.forEach(row=>{const button=document.createElement('button');button.className='item-row';button.dataset.stall=stall.id;button.dataset.path=row.path;button.setAttribute('aria-label',`${stall.name} ${row.name} ${row.quantity}件 单价${row.price}灵石`);button.innerHTML=`<span class="name">${row.name}</span><span class="count">${row.quantity}</span><span class="price">${row.price}</span>`;button.classList.toggle('selected',selected?.stall.id===stall.id&&selected?.row.path===row.path);button.classList.toggle('dim',term.length>0&&!row.name.includes(term));button.onclick=()=>choose(stall,row);button.onmouseenter=event=>showHover(row,event);button.onmousemove=event=>showHover(row,event);button.onmouseleave=hideHover;button.onblur=hideHover;rows.append(button)});$('stalls').append(column)});viewport.scrollLeft=position;$('dragHint').textContent=`左右拖动 · 共 ${source.stalls.length} 摊`}
+function cancelDrag(){if(drag?.active){suppressClickUntil=performance.now()+200;if(viewport.hasPointerCapture(drag.id))viewport.releasePointerCapture(drag.id)}drag=null;viewport.classList.remove('dragging')}
+viewport.addEventListener('pointerdown',event=>{if(event.button!==0||!event.isPrimary)return;drag={id:event.pointerId,x:event.clientX,y:event.clientY,scroll:viewport.scrollLeft,active:false}});
+viewport.addEventListener('pointermove',event=>{if(!drag||event.pointerId!==drag.id)return;const dx=event.clientX-drag.x,dy=event.clientY-drag.y;if(!drag.active&&Math.abs(dx)>7&&Math.abs(dx)>Math.abs(dy)*1.2){drag.active=true;viewport.setPointerCapture(event.pointerId);viewport.classList.add('dragging');hideHover()}if(drag.active){viewport.scrollLeft=drag.scroll-dx/scale;event.preventDefault()}});
+viewport.addEventListener('pointerup',event=>{if(drag?.id===event.pointerId)cancelDrag()});viewport.addEventListener('pointercancel',cancelDrag);viewport.addEventListener('lostpointercapture',()=>{drag=null;viewport.classList.remove('dragging')});
+viewport.addEventListener('click',event=>{if(performance.now()<suppressClickUntil){event.preventDefault();event.stopImmediatePropagation()}},true);
+viewport.addEventListener('wheel',event=>{if(event.shiftKey||Math.abs(event.deltaX)>Math.abs(event.deltaY)){viewport.scrollLeft+=(event.shiftKey&&Math.abs(event.deltaX)<1?event.deltaY:event.deltaX)/scale;hideHover();event.preventDefault()}},{passive:false});
+viewport.addEventListener('scroll',hideHover);viewport.addEventListener('keydown',event=>{if(event.target===viewport&&['ArrowLeft','ArrowRight'].includes(event.key)){viewport.scrollLeft+=event.key==='ArrowLeft'?-94:94;event.preventDefault()}});addEventListener('blur',cancelDrag);
+function modal(title,text,action=null){hideHover();modalAction=action;$('modalTitle').textContent=title;$('modalText').textContent=text;$('shade').style.display='flex'}
+function closeModal(){$('shade').style.display='none';modalAction=null}
+$('search').oninput=render;$('less').onclick=()=>{quantity=Math.max(1,quantity-1);renderSelection()};$('more').onclick=()=>{quantity=Math.min(selected.row.quantity,quantity+1);renderSelection()};
+$('buy').onclick=()=>modal('确认购买',`${selected.stall.name} · ${selected.row.name} ×${quantity}\n共需 ${selected.row.price*quantity} 灵石，消耗 1 点精力。`);
+$('mine').onclick=()=>modal('租用摊位','租金：1 灵石 / 游戏月，包含坊市代管。\n租期三十日，到期不自动续租。');
+$('back').onclick=()=>modal('返回和光峰','结束本次逛坊。');$('browse').onclick=()=>{viewport.scrollLeft=0;$('search').value='';render()};$('cancel').onclick=closeModal;$('confirm').onclick=()=>{const action=modalAction;closeModal();action?.()};
+addEventListener('resize',fit);addEventListener('keydown',event=>{if(event.key==='Escape')closeModal()});
+source=window.marketListsSample;choose(source.stalls[0],source.stalls[0].rows[0]);render();fit();window.previewReady=true;
+</script>
+<script src="我的摊位_空间规则_20261107.js"></script>
+<script src="我的摊位_格子交互_20261107.js"></script>
+</body>
+</html>

@@ -1,0 +1,302 @@
+{
+  "date": "2026-11-09",
+  "authority": [
+    "docs/plans/百工技艺/种植/种植系统设定流程与界面规划_20261107.md",
+    "docs/plans/百工技艺/种植/灵植生境与培育规则候选_20261107.md",
+    "docs/plans/百工技艺/阵法/种植功用接入与多类环境阵法_20261108.md",
+    "docs/plans/物品与装备/物品词缀系统设计.md",
+    "docs/plans/百工技艺/阵法/阵法系统设计.md",
+    "docs/plans/百工技艺/阵法/阵盘制作与招式盘接入规划_20261107.md",
+    "docs/plans/界面与美术/全局界面统一风格规范_20261108.md"
+  ],
+  "materials": [
+    {
+      "name": "紫砂灵土",
+      "id": "mat_zisha_spirit_soil",
+      "resource": "resources/entities/items/紫砂灵土.tres",
+      "craft_resource": "resources/material_craft/紫砂灵土材性.tres",
+      "icon": "textures/items/inventory_density_20261029/mat_zisha_spirit_soil.png",
+      "kind": "矿材",
+      "facts": "土 · 颗粒 · 阴",
+      "utilities": [
+        {
+          "id": "藏",
+          "grade": 1
+        }
+      ],
+      "demo_stock": 12
+    },
+    {
+      "name": "泥脉石团",
+      "id": "mat_clay_vein_lump",
+      "resource": "resources/entities/items/泥脉石团.tres",
+      "craft_resource": "resources/material_craft/泥脉石团材性.tres",
+      "icon": "textures/items/inventory_density_20261029/mat_clay_vein_lump.png",
+      "kind": "矿材",
+      "facts": "土 · 致密 · 阴",
+      "utilities": [
+        {
+          "id": "镇",
+          "grade": 1
+        }
+      ],
+      "demo_stock": 8
+    },
+    {
+      "name": "兽骨",
+      "id": "mat_beast_bone",
+      "resource": "resources/entities/items/兽骨.tres",
+      "craft_resource": "resources/material_craft/兽骨材性.tres",
+      "icon": "textures/items/inventory_density_20261029/mat_beast_bone.png",
+      "kind": "兽材",
+      "facts": "土 · 致密 · 阳",
+      "utilities": [
+        {
+          "id": "固",
+          "grade": 1
+        },
+        {
+          "id": "生",
+          "grade": 1
+        }
+      ],
+      "demo_stock": 6
+    },
+    {
+      "name": "地脉焰炭",
+      "id": "mat_geovein_flame_coal",
+      "resource": "resources/entities/items/地脉焰炭.tres",
+      "craft_resource": "resources/material_craft/地脉焰炭材性.tres",
+      "icon": "textures/items/inventory_density_20261029/mat_geovein_flame_coal.png",
+      "kind": "炼器燃料",
+      "facts": "火 · 致密 · 阳",
+      "utilities": [
+        {
+          "id": "聚",
+          "grade": 2
+        },
+        {
+          "id": "通",
+          "grade": 1
+        }
+      ],
+      "demo_stock": 5
+    }
+  ],
+  "plants": [
+    {
+      "name": "月露苔",
+      "resource": "resources/entities/items/月露苔.tres",
+      "icon": "textures/items/inventory_density_20261029/mat_moon_dew_moss.png",
+      "needs": "此前界面稿定性需求示例，非正式数值"
+    },
+    {
+      "name": "雾铃花",
+      "resource": "resources/entities/items/雾铃花.tres",
+      "icon": "textures/items/inventory_density_20261029/mat_mist_bell_flower.png",
+      "needs": "未补猜新环境要求"
+    }
+  ],
+  "art": [
+    "resources/font/LXGWZhenKaiSlabGB-Regular.ttf",
+    "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/控件补充图集_v1.png",
+    "textures/ui/yuxu_library_20261107/library_frame.png",
+    "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_常规_v4.png",
+    "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_主操作_v4.png",
+    "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_短页签_v4.png",
+    "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_侧栏分页_v4.png",
+    "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_小图标_v4.png",
+    "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/控件_输入槽_v4.png"
+  ],
+  "fixture_note": "三田共用同批基础条件；一号田独立展示改造后的月露苔蕴养情境，不是新田先天地利，不由当前加入记录推导。12/8/6/5持有量、基质资格、定性环境与阶段均为隔离UI夹具，不是正式数值、白名单、玩家库存或免费投入规则。",
+  "formation_note": "阵法为独立系统，种植只留当前田地的打开入口，不设计具体阵法、布阵、功用映射或返回协议。",
+  "scope": "独立UI演示：行囊可用基质列表，拖拽或选择数量直接加入当前田地，不再另存方案；演示可用量随加入记录减少。物品资料与功用品级真实，资格和库存为夹具；不读写真实行囊、角色或存档。具体培育效果未定义，阵法只留独立入口。 一号田的改造后环境、阶段与植株状况为独立界面情境夹具；添加材料不会自动改变这些示意值。本轮不展示田图，阵法入口移至概况正文。",
+  "version": "2.1",
+  "utility_sources": [
+    "csharp/resources/MaterialCraftData.cs",
+    "csharp/resources/MaterialUtilityGrade.cs"
+  ],
+  "utilities": [
+    {
+      "id": "固",
+      "meaning": "稳定、承载"
+    },
+    {
+      "id": "聚",
+      "meaning": "汇集、蓄积"
+    },
+    {
+      "id": "通",
+      "meaning": "连通、导流"
+    },
+    {
+      "id": "化",
+      "meaning": "转换、炼化"
+    },
+    {
+      "id": "引",
+      "meaning": "牵引、导向"
+    },
+    {
+      "id": "破",
+      "meaning": "穿透、瓦解"
+    },
+    {
+      "id": "护",
+      "meaning": "保护、隔绝"
+    },
+    {
+      "id": "镇",
+      "meaning": "压制、固定"
+    },
+    {
+      "id": "生",
+      "meaning": "生长、修复"
+    },
+    {
+      "id": "明",
+      "meaning": "显化、辨识"
+    },
+    {
+      "id": "藏",
+      "meaning": "封存、收敛"
+    },
+    {
+      "id": "行",
+      "meaning": "运行、位移"
+    }
+  ],
+  "utility_grade_note": "单项数据1为九品、9为一品，不分下中上；不得用物品总品阶grade_value替代。",
+  "formation_entry": {
+    "label": "查看阵法",
+    "state": "未接入",
+    "interface": "PlantingPrototype.connectFormationSystem(handler)，仅传冻结的{fieldId}",
+    "location": "田地概况正文"
+  },
+  "demo_substrate_eligibility": {
+    "mat_zisha_spirit_soil": true,
+    "mat_clay_vein_lump": true,
+    "mat_beast_bone": true,
+    "mat_geovein_flame_coal": false
+  },
+  "eligibility_note": "仅为验证“行囊持有且允许作基质”列表的演示夹具，不是正式可入田白名单。正式资格和来源由物品/种植规则提供，未定义不放行。",
+  "shared_skin": {
+    "definition": "docs/美术规范/角色与静室纸墨木石样稿_20261108/skin-data.js",
+    "renderer": "docs/美术规范/角色与静室纸墨木石样稿_20261108/materials.js",
+    "pathAdapter": "docs/美术规范/种植灵圃界面样稿_20261109/skin-config.js",
+    "selection": "docs/美术规范/全局界面风格母板_20261108/paper-button-selection.css"
+  },
+  "scene_fixture": {
+    "source": "docs/美术规范/种植灵圃界面样稿_20261109/scene-fixture.js",
+    "note": "仅用于界面审阅。所有田地共享同批基础条件；一号田以独立的改造后情境展示月露苔蕴养。环境、阶段和长势不是正式物种参数或材料效果，不与加入材料自动换算，不写真实角色及存档。",
+    "fields": [
+      {
+        "id": "field-1",
+        "name": "一号田",
+        "target": "moon",
+        "crop": {
+          "id": "moon",
+          "stage": "蕴养"
+        },
+        "substrates": [],
+        "visual": "spirit-moss",
+        "environmentDemo": {
+          "temperature": "凉润",
+          "lingqi": "偏低",
+          "moisture": "湿润",
+          "light": "遮阴",
+          "ground": "阴湿岩面"
+        },
+        "sceneDescription": "苔叶渐展，露意凝于叶尖。",
+        "phaseSteps": [
+          "定植",
+          "生根",
+          "蕴养",
+          "可采"
+        ],
+        "phaseIndex": 2,
+        "injuryDemo": "未见明显损伤",
+        "environmentSource": "改造后培育情境示意，非初始地块优势或材料结算"
+      },
+      {
+        "id": "field-2",
+        "name": "二号田",
+        "target": "bell",
+        "crop": {
+          "id": "bell",
+          "stage": "幼苗"
+        },
+        "substrates": [],
+        "visual": "seedling",
+        "environmentDemo": null,
+        "sceneDescription": "幼苗初立，尚待细察其性。",
+        "phaseSteps": [
+          "幼苗"
+        ],
+        "phaseIndex": 0,
+        "injuryDemo": null,
+        "environmentSource": "共同基础条件；雾铃花完整需求仍未配置"
+      },
+      {
+        "id": "field-3",
+        "name": "三号田",
+        "target": "moon",
+        "crop": null,
+        "substrates": [],
+        "visual": "fallow",
+        "environmentDemo": null,
+        "sceneDescription": "原土未改，静待栽植。",
+        "phaseSteps": [],
+        "phaseIndex": -1,
+        "injuryDemo": null,
+        "environmentSource": "共同基础条件"
+      }
+    ],
+    "baseline": [
+      {
+        "key": "temperature",
+        "value": "偏暖"
+      },
+      {
+        "key": "lingqi",
+        "value": "偏低"
+      },
+      {
+        "key": "moisture",
+        "value": "湿润"
+      },
+      {
+        "key": "light",
+        "value": "直射"
+      },
+      {
+        "key": "ground",
+        "value": "普通土层"
+      }
+    ]
+  },
+  "generated_scene": {
+    "file": "docs/美术规范/种植灵圃界面样稿_20261109/assets/灵苔培育小景_v1.png",
+    "mode": "built-in imagegen; new scene-only illustration",
+    "size": [
+      1536,
+      1024
+    ],
+    "sha256": "f67d3387a68ffcc5d87b403a536e77e01172d21bbd8f1a70d6003513ea47e180",
+    "prompt": "docs/美术规范/种植灵圃界面样稿_20261109/assets/灵苔培育小景_v1.prompt.txt",
+    "original": "E:/tmp/CodexData/generated_images/01a1b475-4b0f-7761-8b94-cc96755ef90d/exec-d35427d1-f102-4185-abbc-d874d7c1c0c7.png",
+    "processing": "原图复制，未编辑位图；文字、控件与互动由HTML/CSS绘制",
+    "displayed": false,
+    "status": "v2.0历史插图保留；v2.1不渲染、不设空图框"
+  },
+  "ui_layout": {
+    "version": "2.1",
+    "fieldImage": false,
+    "columns": [
+      "五项当前生境及简要需求判定",
+      "灵植、阶段、长势与原因"
+    ],
+    "formationLocation": "田地概况正文，与基质并列，顶栏仅保留返回",
+    "styleBase": "docs/美术规范/种植系统分页面原型_20261107/prototype.css"
+  }
+}
