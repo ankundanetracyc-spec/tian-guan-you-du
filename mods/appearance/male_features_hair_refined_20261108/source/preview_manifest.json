@@ -1,0 +1,106 @@
+{
+  "status": "not_approved_skin_style_mismatch",
+  "date": "2026-11-08",
+  "mode": "built-in image_gen",
+  "outputs": [
+    {
+      "id": "01_clear_low_coil",
+      "name": "清正·后收束发",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-010f1735-d06f-4aac-9d15-6c5d270293ca.png",
+      "workspace_file": "preview/01_clear_low_coil.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "5974e184355dd97d08ad57d606aafdc1ef5eacd4e080d11feb06d95a6ff250c6",
+      "native_identical": true
+    },
+    {
+      "id": "02_gentle_side_sweep",
+      "name": "温雅·斜扫低尾",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-81d67b93-d268-4917-a3ad-26a13bbe7870.png",
+      "workspace_file": "preview/02_gentle_side_sweep.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "8e35bfe3ccd5e4bae7b55064faf97501dd0ff0914addeced65b8f18446a93029",
+      "native_identical": true
+    },
+    {
+      "id": "03_bright_fringe_braid",
+      "name": "明朗·碎发低辫",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-adfd9992-dc1c-457a-9691-85d66d55c7e2.png",
+      "workspace_file": "preview/03_bright_fringe_braid.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "c814fcf4dc5409a5c1213248b0afbbd7df25764b4151c285795c804ffc9a1962",
+      "native_identical": true
+    },
+    {
+      "id": "04_heroic_high_tail",
+      "name": "英气·露额高尾",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-5952abc0-c07c-4fd6-b0f3-d46871409ce8.png",
+      "workspace_file": "preview/04_heroic_high_tail.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "35be28452a211e92d7e0cb11e8adf5d029a6c2e1a65bf02928ecc09a7faa828a",
+      "native_identical": true
+    },
+    {
+      "id": "05_calm_loose_back",
+      "name": "清和·露耳松披",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-bc8b8bf7-c05a-404a-8caf-09acf5d844c2.png",
+      "workspace_file": "preview/05_calm_loose_back.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "edebd49fed1885d18567752b28758af1ec963eb9714a173c7e4a98a7b2c62f1c",
+      "native_identical": true
+    },
+    {
+      "id": "06_composed_temple_plait",
+      "name": "沉静·偏束细辫",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-ef73e65c-50cf-4c7a-9e3a-3d8516c72116.png",
+      "workspace_file": "preview/06_composed_temple_plait.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "fc1787fa2f25905b77f2d7dd47a229113203f35351174942027e64ee96c8ffe6",
+      "native_identical": true
+    }
+  ],
+  "baseline_check": {
+    "items": 61,
+    "png": 59,
+    "configs": 2,
+    "unchanged": true
+  },
+  "visual_review": {
+    "reviewed_all_six": true,
+    "suggested_first_looks": [
+      "02",
+      "04",
+      "06"
+    ],
+    "notes": [
+      "Faces are more balanced than rejected previous batch; user approval remains pending.",
+      "Hairstyle differences are greater than nose/lip differences; deduplicate features before any later installation.",
+      "01 retains a slightly heavier brow expression.",
+      "Whole portraits are not registered modular layers."
+    ]
+  },
+  "scope": "Preview only; no game assets, active configuration, code or saves changed. No build or runtime checks needed.",
+  "latest_user_feedback": {
+    "status": "not_approved_skin_style_mismatch",
+    "feedback": "感觉和现在的不是一个肤色和风格",
+    "followup_package": "mods/appearance/male_style_locked_variants_20261108",
+    "installed": false
+  }
+}

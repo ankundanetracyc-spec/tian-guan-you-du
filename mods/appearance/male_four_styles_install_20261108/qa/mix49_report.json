@@ -1,0 +1,738 @@
+{
+  "status": "49 front/back combinations rendered on each of light/dark QA backgrounds",
+  "front_column_order": [
+    1,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "back_row_order": [
+    1,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "total_unique_combinations": 49,
+  "rendered_backgrounds": 2,
+  "reused_fixed_components": "Current male01 face/skin/neck, nose, eyes, eyebrows, mouth and first clothing pair.",
+  "all_source_files_preserved": true,
+  "active_writes": false,
+  "input_hashes": {
+    "../ink_three_variants_20261004/male/hair_front/01.png": "1bd9ccc12beb55970225414c698cd2c18bb0fc93489e31254e6d1bcbb6021b0e",
+    "../ink_three_variants_20261004/male/hair_front/04.png": "1efd8c3a7630a1d0340e3acb5567be8d731293342c39c570f01b5654aec568ee",
+    "../ink_three_variants_20261004/male/hair_front/05.png": "346e4d42c8890b2cf084075ee5751db92ff17cba890672ab3738f8825b9f811f",
+    "male/hair_front/06.png": "8acddc9edd4b7b0900a5f34b776deccdb86b95d0e7aaddc48297102e1d691914",
+    "male/hair_front/07.png": "14491c88ddb54f5636a71e4a4aba1750e87046d915cea090ca0a5580dc002a13",
+    "male/hair_front/08.png": "ebbd2eaadbb8c7a5748f49265c3235e0ea5929d3e24db8d07d464aeb84f2b3bb",
+    "male/hair_front/09.png": "bccea1734e04770fa98826500b8f1baaf1a13e3d04f85964b5cc86a249fd1e20",
+    "../ink_three_variants_20261004/male/hair_back/01.png": "fd68eb34a86268596634df8512e3f468d0768aba8592800d8429dc94655865a3",
+    "../ink_three_variants_20261004/male/hair_back/04.png": "19b2fbe402f9d0c6abad57c2f1a972288f9a8c5c5707d5cbd0e0e15c774811c8",
+    "../ink_three_variants_20261004/male/hair_back/05.png": "b6ffb0366f15b3528a9ac66107e751a3da9afb17e2b77ad0cff0814656c7e741",
+    "male/hair_back/06.png": "7ed0990d32e9dd1c71622960169fef01737a9f89d7219402a86ab31f71ab4fc2",
+    "male/hair_back/07.png": "cd28c5d668e383959cacf73aea61465d082d34bd90c369404bdc911e56d7270e",
+    "male/hair_back/08.png": "4f3e33ee84dbeada96c4493d3057c6b41bf618b3bf58b4a78f19bb5445e01731",
+    "male/hair_back/09.png": "7efd9eb9309a5bdd2d22fe70e829cdfd1bd7b60e79b5e52f8ea0b4296028cb1a",
+    "../ink_three_variants_20261004/male/clothing_back/01.png": "cf9a4158283c3dc81463c07c08f2df5d01fa4cbb0e4b02ad016bdd2c721980b1",
+    "../ink_three_variants_20261004/male/face_shape/01.png": "d86319252035a286a92e8892b9816bdb917a39f7f41f4cb1edf40f4dee51c357",
+    "../ink_three_variants_20261004/male/clothing/01.png": "812f23c90be2527fa29d8f0ad76c166bef6c7546fcea8fd2a5416f0f00981851",
+    "../ink_three_variants_20261004/male/nose/01.png": "e7271b38d96922434dbdf4a085b83a0d35ea5560989d0cfda9177beb085a2e79",
+    "../ink_three_variants_20261004/male/eyes/01.png": "5ecb31eacb232bf8be1f83ddd97c50c3715b792564c73052f425aca7c20eb8af",
+    "../ink_three_variants_20261004/male/eyebrows/01.png": "b094a5d118e3b722b1901198c319919804cc93ab225c873366aa02af6fc6fa5f",
+    "../ink_three_variants_20261004/male/mouth/01.png": "471666da8f5b161007491c7f557e6aaf23c0b467d0414bc0839f7d54d942aa03"
+  },
+  "records": [
+    {
+      "front": 1,
+      "back": 1,
+      "background": "light",
+      "file": "qa/mix49/front01_back01_light.png",
+      "sha256": "d1d653d7a57466e8bd848949596e0c85a445d2bb4e5500561ca70ff7e19c54d3"
+    },
+    {
+      "front": 4,
+      "back": 1,
+      "background": "light",
+      "file": "qa/mix49/front04_back01_light.png",
+      "sha256": "488229059a6529d8d75a40b22e5022fb0307976e0dce6861884c5aa4cdd3b1df"
+    },
+    {
+      "front": 5,
+      "back": 1,
+      "background": "light",
+      "file": "qa/mix49/front05_back01_light.png",
+      "sha256": "e47b224dea384d5806918359f1a437c9b6d64f59f94549c1fe2204e85a3ec844"
+    },
+    {
+      "front": 6,
+      "back": 1,
+      "background": "light",
+      "file": "qa/mix49/front06_back01_light.png",
+      "sha256": "405d38bc67b2ff2175e6d872f7fdf60ca8bfdd1f76e317664ebd89e9e28cfae0"
+    },
+    {
+      "front": 7,
+      "back": 1,
+      "background": "light",
+      "file": "qa/mix49/front07_back01_light.png",
+      "sha256": "bb4ea2ce00fdbbec05c7cdafecb2f4c26fd7cb4cbfa5918b0b80fc2a887de0f9"
+    },
+    {
+      "front": 8,
+      "back": 1,
+      "background": "light",
+      "file": "qa/mix49/front08_back01_light.png",
+      "sha256": "87acc1730c5fd9ba219b4034321d8c7c0cc329535fe2359689bce7e93d861c14"
+    },
+    {
+      "front": 9,
+      "back": 1,
+      "background": "light",
+      "file": "qa/mix49/front09_back01_light.png",
+      "sha256": "5e641bcfe7913e9a202e18a34956db4e33762e7dade83afbdc730e9e8b6fe176"
+    },
+    {
+      "front": 1,
+      "back": 4,
+      "background": "light",
+      "file": "qa/mix49/front01_back04_light.png",
+      "sha256": "80942881c752fe42fa877ea8641f4163a46552c9ecb16e44fbfbaf0be357db11"
+    },
+    {
+      "front": 4,
+      "back": 4,
+      "background": "light",
+      "file": "qa/mix49/front04_back04_light.png",
+      "sha256": "939328c020bd48b655ab57f8deafc50201b6ce33633cba1dd07feb452f382378"
+    },
+    {
+      "front": 5,
+      "back": 4,
+      "background": "light",
+      "file": "qa/mix49/front05_back04_light.png",
+      "sha256": "fe4b43b9e903dfdd95471f25510935f979a2488972fdf8142cb5eec618763237"
+    },
+    {
+      "front": 6,
+      "back": 4,
+      "background": "light",
+      "file": "qa/mix49/front06_back04_light.png",
+      "sha256": "12f55f1fa4e4475337ddde149bff76d9aa30c12a79412fbc2edd53f4fc93b5fc"
+    },
+    {
+      "front": 7,
+      "back": 4,
+      "background": "light",
+      "file": "qa/mix49/front07_back04_light.png",
+      "sha256": "7e8af7905703893184fcb9ab2f537a5d23193b4b0a15355ffd629fb3c4119e2e"
+    },
+    {
+      "front": 8,
+      "back": 4,
+      "background": "light",
+      "file": "qa/mix49/front08_back04_light.png",
+      "sha256": "1d9109972175678249b6c1d782b14949a3ac564c969d0fa5a1b551213274f5bb"
+    },
+    {
+      "front": 9,
+      "back": 4,
+      "background": "light",
+      "file": "qa/mix49/front09_back04_light.png",
+      "sha256": "648cde137039d8695ae2259fe8c359755a7fe7a80c678b48e4fefe1ffffca6e4"
+    },
+    {
+      "front": 1,
+      "back": 5,
+      "background": "light",
+      "file": "qa/mix49/front01_back05_light.png",
+      "sha256": "054eceb3d966c5a32ebfd2bfe393d33902843ac695a2c324828683d2715d3f8a"
+    },
+    {
+      "front": 4,
+      "back": 5,
+      "background": "light",
+      "file": "qa/mix49/front04_back05_light.png",
+      "sha256": "a35fde33e240cfbb6b5584bc7c24e14d0d0685a525801e7928069f936ca1a886"
+    },
+    {
+      "front": 5,
+      "back": 5,
+      "background": "light",
+      "file": "qa/mix49/front05_back05_light.png",
+      "sha256": "066e4a7a0e2c577fcf303f6fa67bb5938b66cc509b1cf3684b64108866ebe5f5"
+    },
+    {
+      "front": 6,
+      "back": 5,
+      "background": "light",
+      "file": "qa/mix49/front06_back05_light.png",
+      "sha256": "40df46e00d32f7d97238e2f33086da120540eb0f742a69949cac3fff224b19d5"
+    },
+    {
+      "front": 7,
+      "back": 5,
+      "background": "light",
+      "file": "qa/mix49/front07_back05_light.png",
+      "sha256": "92128a54e33d766d9495b1bc2cc7f4730554d34b85d1e35afaf93143c23b529a"
+    },
+    {
+      "front": 8,
+      "back": 5,
+      "background": "light",
+      "file": "qa/mix49/front08_back05_light.png",
+      "sha256": "ad22947e9e0dc0f5d6f273361c7a206395c878ede9bd527571b4033594e6ba70"
+    },
+    {
+      "front": 9,
+      "back": 5,
+      "background": "light",
+      "file": "qa/mix49/front09_back05_light.png",
+      "sha256": "a6231776064b5f56513d4a63583417fdd47cb5543e3a689bc8e2ad6972499693"
+    },
+    {
+      "front": 1,
+      "back": 6,
+      "background": "light",
+      "file": "qa/mix49/front01_back06_light.png",
+      "sha256": "a0ad86471d557ca380492ab1c12fb0d4721895ee2010935f64abd711024ba6ff"
+    },
+    {
+      "front": 4,
+      "back": 6,
+      "background": "light",
+      "file": "qa/mix49/front04_back06_light.png",
+      "sha256": "6ba30ad26408ca0259529626a5b97547773fe5b7948c2d33828f1e93d63a819c"
+    },
+    {
+      "front": 5,
+      "back": 6,
+      "background": "light",
+      "file": "qa/mix49/front05_back06_light.png",
+      "sha256": "4b8acb4231352361271d36def80018172e83e422cc60af5f42fb0899afeb3406"
+    },
+    {
+      "front": 6,
+      "back": 6,
+      "background": "light",
+      "file": "qa/mix49/front06_back06_light.png",
+      "sha256": "380808cbf4b34c0bfa385ea14de536e92c2e95fbd2fef0883600fed6e02a407a"
+    },
+    {
+      "front": 7,
+      "back": 6,
+      "background": "light",
+      "file": "qa/mix49/front07_back06_light.png",
+      "sha256": "57d80b656e138e25ef2060fd09a6a6e9bbc20b6eee71dd3ab6485d48aef5bda3"
+    },
+    {
+      "front": 8,
+      "back": 6,
+      "background": "light",
+      "file": "qa/mix49/front08_back06_light.png",
+      "sha256": "cc4a870be093f619b2acf8ea2caac95602e177ba1b391758322a2118eab4dba9"
+    },
+    {
+      "front": 9,
+      "back": 6,
+      "background": "light",
+      "file": "qa/mix49/front09_back06_light.png",
+      "sha256": "51dab3305b64294d7f9343af6db575d6df50039048a380a53f2e8a4816543d7b"
+    },
+    {
+      "front": 1,
+      "back": 7,
+      "background": "light",
+      "file": "qa/mix49/front01_back07_light.png",
+      "sha256": "73b42ae18bc4d7fb026c84a3232ae51af0d75455ec9ef6592e15fef068e5dda4"
+    },
+    {
+      "front": 4,
+      "back": 7,
+      "background": "light",
+      "file": "qa/mix49/front04_back07_light.png",
+      "sha256": "c23db9d6c7ad24a4ebd339d5bebc6df7c9b73012f41f5795e3f61dc964ba917a"
+    },
+    {
+      "front": 5,
+      "back": 7,
+      "background": "light",
+      "file": "qa/mix49/front05_back07_light.png",
+      "sha256": "4d6009331a8b168301ea2a161866faab55e3d144964b1e3a8d1e0fcca8ca8177"
+    },
+    {
+      "front": 6,
+      "back": 7,
+      "background": "light",
+      "file": "qa/mix49/front06_back07_light.png",
+      "sha256": "75a63abb4955a10526735d57351638e20b1f30ad41afbe033986c2527254e2ce"
+    },
+    {
+      "front": 7,
+      "back": 7,
+      "background": "light",
+      "file": "qa/mix49/front07_back07_light.png",
+      "sha256": "7543e130934a503db06822e4d441d5e78b3fae46c2b2aeda4de3eb9da00a8ef9"
+    },
+    {
+      "front": 8,
+      "back": 7,
+      "background": "light",
+      "file": "qa/mix49/front08_back07_light.png",
+      "sha256": "6e02481fe9d1bb577dc94f6f8fae5617c4c1002e0610e16e42f09dddf5401541"
+    },
+    {
+      "front": 9,
+      "back": 7,
+      "background": "light",
+      "file": "qa/mix49/front09_back07_light.png",
+      "sha256": "d97698b44dff422de796a140235f999bf087b1ea18ebc946ff69783f302e5a6a"
+    },
+    {
+      "front": 1,
+      "back": 8,
+      "background": "light",
+      "file": "qa/mix49/front01_back08_light.png",
+      "sha256": "27ace06215e23c5736c352ce7dd6591d7570e2a95e59ce624b1fb9649cfcde90"
+    },
+    {
+      "front": 4,
+      "back": 8,
+      "background": "light",
+      "file": "qa/mix49/front04_back08_light.png",
+      "sha256": "af8d66c3ef5325b7149203e921064c9cb848249c5ebf2bdf98e801599f1a5b14"
+    },
+    {
+      "front": 5,
+      "back": 8,
+      "background": "light",
+      "file": "qa/mix49/front05_back08_light.png",
+      "sha256": "5b033b6b22a7b1171114f77f272ce184507464b677b0c705dd92437b2d68e131"
+    },
+    {
+      "front": 6,
+      "back": 8,
+      "background": "light",
+      "file": "qa/mix49/front06_back08_light.png",
+      "sha256": "27e39850b507806f0208ca8018c2d1243e0a26d2d153634ca2c2006d65b74f1a"
+    },
+    {
+      "front": 7,
+      "back": 8,
+      "background": "light",
+      "file": "qa/mix49/front07_back08_light.png",
+      "sha256": "ac978b270db20cbed626d0d9b64eacc34c74fc9678c6de89e4377f05cc2877c6"
+    },
+    {
+      "front": 8,
+      "back": 8,
+      "background": "light",
+      "file": "qa/mix49/front08_back08_light.png",
+      "sha256": "94c25f4dd5c62dd4547b6991b40871cceb6a3ed9a6c770f230b2cb96933aabd8"
+    },
+    {
+      "front": 9,
+      "back": 8,
+      "background": "light",
+      "file": "qa/mix49/front09_back08_light.png",
+      "sha256": "b2bfd419af2e57c2118ab7c94e4cad50efb7fd73fba1a3008729fcbd88297110"
+    },
+    {
+      "front": 1,
+      "back": 9,
+      "background": "light",
+      "file": "qa/mix49/front01_back09_light.png",
+      "sha256": "981b89ad69c1ca9ad20675c4468c175b1a296da5449ff9909c9d8a73083a0462"
+    },
+    {
+      "front": 4,
+      "back": 9,
+      "background": "light",
+      "file": "qa/mix49/front04_back09_light.png",
+      "sha256": "beda9a980c242e7439138e5783ce988b9bc5203fe0503365a3b21cc16ca0e6ff"
+    },
+    {
+      "front": 5,
+      "back": 9,
+      "background": "light",
+      "file": "qa/mix49/front05_back09_light.png",
+      "sha256": "1fcc3f8b1bdec4dfaa2aa80dc6e2ce680a6e87dd0cc4fe81463440e23bbeee2b"
+    },
+    {
+      "front": 6,
+      "back": 9,
+      "background": "light",
+      "file": "qa/mix49/front06_back09_light.png",
+      "sha256": "bbb29e4a36b4f50ac1dc3ca54657e0d8f2febc60afafa4e4927c0a2c955e9602"
+    },
+    {
+      "front": 7,
+      "back": 9,
+      "background": "light",
+      "file": "qa/mix49/front07_back09_light.png",
+      "sha256": "a8d4fe05676156e9f234ec88a05d0abc4c46b50d14700346c7db797c9c9b0973"
+    },
+    {
+      "front": 8,
+      "back": 9,
+      "background": "light",
+      "file": "qa/mix49/front08_back09_light.png",
+      "sha256": "d029d12bf11852e8474cce397f83aff9d8af479a8316a157bc7d5f7aa5879bf4"
+    },
+    {
+      "front": 9,
+      "back": 9,
+      "background": "light",
+      "file": "qa/mix49/front09_back09_light.png",
+      "sha256": "42fd8cb9c38bb5dd1e2384017fb74e5eb4ec7295737826e5d893f800c08405a9"
+    },
+    {
+      "front": 1,
+      "back": 1,
+      "background": "dark",
+      "file": "qa/mix49/front01_back01_dark.png",
+      "sha256": "c7d3417eda74bc69b61affc8e672ae14736c304f92c0d5ff1d8ffe82a7081481"
+    },
+    {
+      "front": 4,
+      "back": 1,
+      "background": "dark",
+      "file": "qa/mix49/front04_back01_dark.png",
+      "sha256": "de753da9d5a64fac08d1263f845b0a2dea1d83b3496faae1ebfde83920df0f64"
+    },
+    {
+      "front": 5,
+      "back": 1,
+      "background": "dark",
+      "file": "qa/mix49/front05_back01_dark.png",
+      "sha256": "45fdb6a6e409d2df94f32d69f5516cb62ace7c3971d99dd382d18f13db7d6555"
+    },
+    {
+      "front": 6,
+      "back": 1,
+      "background": "dark",
+      "file": "qa/mix49/front06_back01_dark.png",
+      "sha256": "7eb3edf16f367bf3b007796152007fcdea5314c409a3567af5744cc72b7eadfd"
+    },
+    {
+      "front": 7,
+      "back": 1,
+      "background": "dark",
+      "file": "qa/mix49/front07_back01_dark.png",
+      "sha256": "1766da905ed51474bdc826fb48c54025e3fac3f58885577c11791756f63c4f98"
+    },
+    {
+      "front": 8,
+      "back": 1,
+      "background": "dark",
+      "file": "qa/mix49/front08_back01_dark.png",
+      "sha256": "8e24d4375f22ee6bc1d7dd86cc00773fb7509a7ae11eb57133169c8f1b35c50c"
+    },
+    {
+      "front": 9,
+      "back": 1,
+      "background": "dark",
+      "file": "qa/mix49/front09_back01_dark.png",
+      "sha256": "a7f2c84e0e4dbd5aabfaa3067e37288ea7b2448cf468f4ef2da77cdd19e4144c"
+    },
+    {
+      "front": 1,
+      "back": 4,
+      "background": "dark",
+      "file": "qa/mix49/front01_back04_dark.png",
+      "sha256": "bc3734ca7c1b396885107b31d772fa23b5fd85b771971efec05dcc44e4ee7474"
+    },
+    {
+      "front": 4,
+      "back": 4,
+      "background": "dark",
+      "file": "qa/mix49/front04_back04_dark.png",
+      "sha256": "6622d0006b08dcc87ed51d314ffcf09fd21d854d993ddc7617aefd3f58f9d5b7"
+    },
+    {
+      "front": 5,
+      "back": 4,
+      "background": "dark",
+      "file": "qa/mix49/front05_back04_dark.png",
+      "sha256": "26fa1eab9fd885f66ea52909f67a79be0db9d50c74dc738df6d0459ded026c89"
+    },
+    {
+      "front": 6,
+      "back": 4,
+      "background": "dark",
+      "file": "qa/mix49/front06_back04_dark.png",
+      "sha256": "6fbecb5807b67859987d3c46405830754ffde4bf51aae46df6a6f41a75a4a5f5"
+    },
+    {
+      "front": 7,
+      "back": 4,
+      "background": "dark",
+      "file": "qa/mix49/front07_back04_dark.png",
+      "sha256": "977dd7427cd589793fb4c95533302b250c49e8ac13324278c904965f009bae11"
+    },
+    {
+      "front": 8,
+      "back": 4,
+      "background": "dark",
+      "file": "qa/mix49/front08_back04_dark.png",
+      "sha256": "12b12e07c9acb4fb8881871cf157814cd6fd0e6ae139754b051e1b2a0bd37fb3"
+    },
+    {
+      "front": 9,
+      "back": 4,
+      "background": "dark",
+      "file": "qa/mix49/front09_back04_dark.png",
+      "sha256": "a4f9ca91c756569b3080ac47d427db9eb70e724dc549a2ee1bbbce5647fe2a59"
+    },
+    {
+      "front": 1,
+      "back": 5,
+      "background": "dark",
+      "file": "qa/mix49/front01_back05_dark.png",
+      "sha256": "9da93ef1a76e647b3e2357ec46046783a87f1f17228edbb14ed3c16074caa413"
+    },
+    {
+      "front": 4,
+      "back": 5,
+      "background": "dark",
+      "file": "qa/mix49/front04_back05_dark.png",
+      "sha256": "81eff56a7ca9821c94f29fd8fad7b2d230492816a3f44fd0b688f3dede5c03d9"
+    },
+    {
+      "front": 5,
+      "back": 5,
+      "background": "dark",
+      "file": "qa/mix49/front05_back05_dark.png",
+      "sha256": "8393ca14db076a666d5ed6668f01776cd773362bb3b576762868afbc97998686"
+    },
+    {
+      "front": 6,
+      "back": 5,
+      "background": "dark",
+      "file": "qa/mix49/front06_back05_dark.png",
+      "sha256": "71bfb88e826e1ca8ae172fba643c25133a72348dc2416fd573ad81d7fe5100f9"
+    },
+    {
+      "front": 7,
+      "back": 5,
+      "background": "dark",
+      "file": "qa/mix49/front07_back05_dark.png",
+      "sha256": "c0ed7fcdfccf519ea3da3ff34044ddf225a701629d87fad3a5b69b985467e6af"
+    },
+    {
+      "front": 8,
+      "back": 5,
+      "background": "dark",
+      "file": "qa/mix49/front08_back05_dark.png",
+      "sha256": "ff28a9b9517ab2a092fbbc85a08c5f34cb2b68d56ba53592be71c84b743fe259"
+    },
+    {
+      "front": 9,
+      "back": 5,
+      "background": "dark",
+      "file": "qa/mix49/front09_back05_dark.png",
+      "sha256": "ad4aab0a4baea6f06d87b58a1bf5ee22401853b0ed965d9e0d464123b209ebd7"
+    },
+    {
+      "front": 1,
+      "back": 6,
+      "background": "dark",
+      "file": "qa/mix49/front01_back06_dark.png",
+      "sha256": "5778209936d39ff02557136692b608465a6899b5ac1c912d357b8c3b57ac5868"
+    },
+    {
+      "front": 4,
+      "back": 6,
+      "background": "dark",
+      "file": "qa/mix49/front04_back06_dark.png",
+      "sha256": "68f7c8ca36514f6f962c3f197f02d20604dd1ead5594e2f39e6acbe581307aa2"
+    },
+    {
+      "front": 5,
+      "back": 6,
+      "background": "dark",
+      "file": "qa/mix49/front05_back06_dark.png",
+      "sha256": "590dc84cdf035df148c88650c0d929efaf4291a2a7ebe4977666bf82b9c6e166"
+    },
+    {
+      "front": 6,
+      "back": 6,
+      "background": "dark",
+      "file": "qa/mix49/front06_back06_dark.png",
+      "sha256": "c606c0b5b43115acd51310eef6ab66017c5f2c932a8a16eb177041209cf00d7c"
+    },
+    {
+      "front": 7,
+      "back": 6,
+      "background": "dark",
+      "file": "qa/mix49/front07_back06_dark.png",
+      "sha256": "e490b3702004ef2f7d0fdb85238402fb994a58845bb0e25bf4ebc7f70ff7fde5"
+    },
+    {
+      "front": 8,
+      "back": 6,
+      "background": "dark",
+      "file": "qa/mix49/front08_back06_dark.png",
+      "sha256": "f851f8042730bd53edfac6a7cee43253edd0ccb8ee72cf1e478654dfd9b90189"
+    },
+    {
+      "front": 9,
+      "back": 6,
+      "background": "dark",
+      "file": "qa/mix49/front09_back06_dark.png",
+      "sha256": "d88b98de3cefa364fc1abf2231091f04f5f05faf1020be58b6e69002b4d9290a"
+    },
+    {
+      "front": 1,
+      "back": 7,
+      "background": "dark",
+      "file": "qa/mix49/front01_back07_dark.png",
+      "sha256": "2af36a54bc8de704db3e4f2042cb31a60109f119ff618d8cb0349e3a4b7cf210"
+    },
+    {
+      "front": 4,
+      "back": 7,
+      "background": "dark",
+      "file": "qa/mix49/front04_back07_dark.png",
+      "sha256": "753e72deb58237740bf59dd938f464937c7a959a39fb3a8c8e2986fd2c4be8f7"
+    },
+    {
+      "front": 5,
+      "back": 7,
+      "background": "dark",
+      "file": "qa/mix49/front05_back07_dark.png",
+      "sha256": "f5e692583aebc7291b57a2447c82dbe5ad4497b3b3724dfb95961b42617eda6f"
+    },
+    {
+      "front": 6,
+      "back": 7,
+      "background": "dark",
+      "file": "qa/mix49/front06_back07_dark.png",
+      "sha256": "bbfc02c1b3353395f619ca9d96a9b958376753ddb318c29b92fea2469e9683e2"
+    },
+    {
+      "front": 7,
+      "back": 7,
+      "background": "dark",
+      "file": "qa/mix49/front07_back07_dark.png",
+      "sha256": "aa4b7fdf31af2d3f914d446f7b6ae9c70662b103ad85a749b65d666de5beac7e"
+    },
+    {
+      "front": 8,
+      "back": 7,
+      "background": "dark",
+      "file": "qa/mix49/front08_back07_dark.png",
+      "sha256": "283d1bf6a65d4c6e0f56718ac8dc01fe45bad8caa746ced6caaca8767e80d46e"
+    },
+    {
+      "front": 9,
+      "back": 7,
+      "background": "dark",
+      "file": "qa/mix49/front09_back07_dark.png",
+      "sha256": "e2cec20b8d617c22afab3805aea1dfc27acacfa3a3797f5e9fb2faebd2ec953b"
+    },
+    {
+      "front": 1,
+      "back": 8,
+      "background": "dark",
+      "file": "qa/mix49/front01_back08_dark.png",
+      "sha256": "bee0fdd04c63c995a78d7ae4258edfedf1c03dc67718f6ba7247c2744a19d44b"
+    },
+    {
+      "front": 4,
+      "back": 8,
+      "background": "dark",
+      "file": "qa/mix49/front04_back08_dark.png",
+      "sha256": "64051157e293095dd4e364133dca7526cc5e1bfe37f4942aed9f8e911edd8c6f"
+    },
+    {
+      "front": 5,
+      "back": 8,
+      "background": "dark",
+      "file": "qa/mix49/front05_back08_dark.png",
+      "sha256": "e0adec0b5e8aca08f080e750953adec508d9ee444fc5e13903b1288084d5fe57"
+    },
+    {
+      "front": 6,
+      "back": 8,
+      "background": "dark",
+      "file": "qa/mix49/front06_back08_dark.png",
+      "sha256": "394c74b0fd26b45f400b9091249f2f1e77fa4ecde7579142c73d959def5e5ab4"
+    },
+    {
+      "front": 7,
+      "back": 8,
+      "background": "dark",
+      "file": "qa/mix49/front07_back08_dark.png",
+      "sha256": "f827d10f460a5fcb9ee53a4e28a76e4225dfc0ebcfef26074c266c0ff1bf0868"
+    },
+    {
+      "front": 8,
+      "back": 8,
+      "background": "dark",
+      "file": "qa/mix49/front08_back08_dark.png",
+      "sha256": "3571bf4178646ad0820d8c389d78e05a7199f4953a3583952855fd73992ef8ec"
+    },
+    {
+      "front": 9,
+      "back": 8,
+      "background": "dark",
+      "file": "qa/mix49/front09_back08_dark.png",
+      "sha256": "6e1414f2db4d4619e91c8dd3179c3fb6f96c3df1d5bd267519d50556e9d21eb0"
+    },
+    {
+      "front": 1,
+      "back": 9,
+      "background": "dark",
+      "file": "qa/mix49/front01_back09_dark.png",
+      "sha256": "ae7d9fdb23c4c79428303caa4a1793bcce9de2c86d59568dd3e30e7114eb4c10"
+    },
+    {
+      "front": 4,
+      "back": 9,
+      "background": "dark",
+      "file": "qa/mix49/front04_back09_dark.png",
+      "sha256": "d1b21c8fd347ec343fa0e5640e01c21b75c1cc576e78fee89236211ff6d51970"
+    },
+    {
+      "front": 5,
+      "back": 9,
+      "background": "dark",
+      "file": "qa/mix49/front05_back09_dark.png",
+      "sha256": "2e4cd5fb4361b9b40e6aca1401137ec96d34f1e77ebea62c099b1396739b88cf"
+    },
+    {
+      "front": 6,
+      "back": 9,
+      "background": "dark",
+      "file": "qa/mix49/front06_back09_dark.png",
+      "sha256": "8cefd3a2261a1cf9f5618414afd5eb84083b0689e5e1ba9a8ddcdc6f51169632"
+    },
+    {
+      "front": 7,
+      "back": 9,
+      "background": "dark",
+      "file": "qa/mix49/front07_back09_dark.png",
+      "sha256": "97e3869213d87b6f43ab71c37027f79f5375abf834336215f4590a3242aea97c"
+    },
+    {
+      "front": 8,
+      "back": 9,
+      "background": "dark",
+      "file": "qa/mix49/front08_back09_dark.png",
+      "sha256": "283795388afbcb041261dd5db6378a9bfb4d491c9b63e30331b095d482192b21"
+    },
+    {
+      "front": 9,
+      "back": 9,
+      "background": "dark",
+      "file": "qa/mix49/front09_back09_dark.png",
+      "sha256": "7e9a6bad0b2992682fc1c1b1f4092902f39799d0d414be24ab350577fd2fc1e9"
+    }
+  ],
+  "limitation": "Static QA composition only; view full-size cells for hair/skin coverage. This does not replace actual game/import/save verification."
+}

@@ -1,0 +1,130 @@
+{
+  "schema": "single-side-selected-static-combinations/v1",
+  "scope": "Static composition from frozen support and selected six PNGs; not actual game captures; noGodot/noactive writes",
+  "selected_input_hashes": {
+    "male/eyes/01.png": "71db127336c39993586392884e67968aa4e82f7cd36285e99506b5efa3a5e26b",
+    "male/eyebrows/01.png": "f4365b286f42047d44e56c2badbf81b86e692265454fc592c4cfecfaf2b0da21",
+    "male/eyes/04.png": "390f8b8f63bf61405a8a7395b5abddb0f58269859eaa4de5e97b1d100a982291",
+    "male/eyebrows/04.png": "5368a16c57d87a4721d9fbe6cf34f93d6a49e5a92f12d275b5ce932edc50c253",
+    "male/eyes/05.png": "17ba50881bfee9a9dea2de495a581f1123fea9352b7b8bb8e6a979cc7086ccf1",
+    "male/eyebrows/05.png": "275706c928aa7afdbf814f7c80d21207751b96298310a2c33deda571aaed9176"
+  },
+  "support_input_hashes": {
+    "reference/current_male/hair_front/01.png": "1bd9ccc12beb55970225414c698cd2c18bb0fc93489e31254e6d1bcbb6021b0e",
+    "reference/current_male/hair_front/04.png": "1efd8c3a7630a1d0340e3acb5567be8d731293342c39c570f01b5654aec568ee",
+    "reference/current_male/hair_front/05.png": "346e4d42c8890b2cf084075ee5751db92ff17cba890672ab3738f8825b9f811f",
+    "reference/current_male/hair_front/06.png": "8acddc9edd4b7b0900a5f34b776deccdb86b95d0e7aaddc48297102e1d691914",
+    "reference/current_male/hair_front/07.png": "14491c88ddb54f5636a71e4a4aba1750e87046d915cea090ca0a5580dc002a13",
+    "reference/current_male/hair_front/08.png": "ebbd2eaadbb8c7a5748f49265c3235e0ea5929d3e24db8d07d464aeb84f2b3bb",
+    "reference/current_male/hair_front/09.png": "bccea1734e04770fa98826500b8f1baaf1a13e3d04f85964b5cc86a249fd1e20",
+    "reference/current_male/hair_back/01.png": "fd68eb34a86268596634df8512e3f468d0768aba8592800d8429dc94655865a3",
+    "reference/current_male/hair_back/04.png": "19b2fbe402f9d0c6abad57c2f1a972288f9a8c5c5707d5cbd0e0e15c774811c8",
+    "reference/current_male/hair_back/05.png": "b6ffb0366f15b3528a9ac66107e751a3da9afb17e2b77ad0cff0814656c7e741",
+    "reference/current_male/hair_back/06.png": "7ed0990d32e9dd1c71622960169fef01737a9f89d7219402a86ab31f71ab4fc2",
+    "reference/current_male/hair_back/07.png": "cd28c5d668e383959cacf73aea61465d082d34bd90c369404bdc911e56d7270e",
+    "reference/current_male/hair_back/08.png": "4f3e33ee84dbeada96c4493d3057c6b41bf618b3bf58b4a78f19bb5445e01731",
+    "reference/current_male/hair_back/09.png": "7efd9eb9309a5bdd2d22fe70e829cdfd1bd7b60e79b5e52f8ea0b4296028cb1a",
+    "reference/current_male/clothing/01.png": "812f23c90be2527fa29d8f0ad76c166bef6c7546fcea8fd2a5416f0f00981851",
+    "reference/current_male/clothing/02.png": "9c37e7fde5a353f034fbdee301d4484da3de91e88943a792918c0443c5d346af",
+    "reference/current_male/clothing/03.png": "e312ab1747ece1f5cad7976de013c2ee474169f9aa0feb5c61a6fe84eb22347b",
+    "reference/current_male/clothing/04.png": "3a034405f7f612ad670839f058549f390843fb93fa8343df8898a456276554ac",
+    "reference/current_male/clothing/05.png": "f7a4c9833cd4f4a161c0edd9b089c8b95f15319aba2cdf37e41b1e814a537e4a",
+    "reference/current_male/clothing/06.png": "999a8d6e5f63ce25c3a409cd1d21974688ee86d322542844762b8a8185a9bd78",
+    "reference/current_male/clothing/07.png": "b4606a0de5c6fcdf42b9389b1e22e9e848b3489a01bf544c1382d53b679752ac",
+    "reference/current_male/clothing_back/01.png": "cf9a4158283c3dc81463c07c08f2df5d01fa4cbb0e4b02ad016bdd2c721980b1",
+    "reference/current_male/clothing_back/02.png": "60dcb9ba8fe14516a161a3bca3fe2de53ce4e741f66ebad87f651475ab7ada21",
+    "reference/current_male/clothing_back/03.png": "97ec93c4b684fd41bf4061d540a9e669ebe596e620c1aec26342397eece2838a",
+    "reference/current_male/clothing_back/04.png": "d84fff75cefc9af2dc3829ba49d6e1b7ec23362b3d89ea1ff41862e60056e26b",
+    "reference/current_male/clothing_back/05.png": "9d7db6db8c99a3df67ac860a208c61fbee8a68768c80ed1b391b086c141c3d7d",
+    "reference/current_male/clothing_back/06.png": "0df5d4611ceea963d138ff9bc4bed0d0c21e31e502602bc8269e5ccda292801f",
+    "reference/current_male/clothing_back/07.png": "ef7af6f7ee87e1ad4a81d9aabd2d78306b0ce8438899e517c2ee53f9457c50ee",
+    "reference/current_male/face_shape/01.png": "d86319252035a286a92e8892b9816bdb917a39f7f41f4cb1edf40f4dee51c357",
+    "reference/current_male/nose/01.png": "fea108d7478f923b820ad85c2bd0ea1aafd4ac0273c9702bec60a4ced9cc2d03",
+    "reference/current_male/mouth/01.png": "8ead9b1c2bd3bbd9d0efc95b14ba273dba4f70afe458d83cdb6067e5d246cf1b",
+    "reference/current_male/face_accessory/01.png": "1913847bf9091720c48139f49dfbb3aa70c4d20de82f2718e3dcd8348c6e5e9c",
+    "reference/current_male/face_accessory/02.png": "fcb82b82b862de2da397c4f6369df87a5786ce8fdf9abeae5511f30748aa7b94",
+    "reference/current_male/face_accessory/03.png": "8582fc742f60b7df10111cfc4d8a24e747221323afa05e8ce2afdcd671bd1199",
+    "reference/current_male/face_accessory/04.png": "29e4c3a7a5dfe4786e630fd7b3db7e5aff276bd80d231180079b8de99fffe0ad",
+    "reference/current_male/face_accessory/05.png": "0fece24df5ebd74a086bf50cf602aaa5523e4a61d62e679be9f9e1e9d2fcc76b",
+    "reference/current_male/face_accessory/06.png": "aaceb8ef949f763fb58b8a0fe5c58e86954f52e072a8762dccaa00b29db41b5b"
+  },
+  "outputs": [
+    {
+      "file": "qa/selected_static_seven_hair_light_1x.png",
+      "sha256": "5443fca8abcfe29c7c9dc49be230fb77eb8eda2543601d7d7a57797727d5cc43",
+      "crop": [
+        320,
+        100,
+        710,
+        650
+      ],
+      "image_resizing": false
+    },
+    {
+      "file": "qa/selected_static_seven_hair_dark_1x.png",
+      "sha256": "63a08444ab41ee711a5c8ebbd6734164c084830d768c672d58776c5fc2eac9c4",
+      "crop": [
+        320,
+        100,
+        710,
+        650
+      ],
+      "image_resizing": false
+    },
+    {
+      "file": "qa/selected_static_six_beards_light_1x.png",
+      "sha256": "f8a44959bc5d41c7edd55e09178b805233ddac1328bd4d55005e5e70acfd7baa",
+      "crop": [
+        365,
+        320,
+        665,
+        585
+      ],
+      "image_resizing": false
+    },
+    {
+      "file": "qa/selected_static_six_beards_dark_1x.png",
+      "sha256": "745904a7ff0fc9ca86b18bd5039d6fc9d6fa4dcdb0833f08ddc4cc0457e15c97",
+      "crop": [
+        365,
+        320,
+        665,
+        585
+      ],
+      "image_resizing": false
+    },
+    {
+      "file": "qa/selected_static_seven_collars_light_1x.png",
+      "sha256": "b47fa06364eef0532a9e97eb6a618be8dec1b0bcea1fe65b33c02a50c2432883",
+      "crop": [
+        280,
+        300,
+        760,
+        800
+      ],
+      "image_resizing": false
+    },
+    {
+      "file": "qa/selected_static_seven_collars_dark_1x.png",
+      "sha256": "01aa74b7bf62e46cfbd796c05a471bf038c0e1238c37487ac50927272930c24d",
+      "crop": [
+        280,
+        300,
+        760,
+        800
+      ],
+      "image_resizing": false
+    },
+    {
+      "file": "qa/selected_static_three_faces_light_1x.png",
+      "sha256": "3d92fc2525c661bfc532fdcf6fd671972afc3811d5eec7d322f2bff0086d54fd",
+      "image_resizing": false
+    },
+    {
+      "file": "qa/selected_static_three_faces_dark_1x.png",
+      "sha256": "f9cb7166a324aa0a9ad68850ae7ad277203a0df2a693fc80e270d11f7e72a0f8",
+      "image_resizing": false
+    }
+  ],
+  "candidate_PNGs_modified": false
+}
